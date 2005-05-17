@@ -187,7 +187,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ei onnis
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Aluetta ei voi puhdistaa....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Alkuperäinen {COPYRIGHT} 1995 Chris Sawyer, kaikki oikeudet pidätetään
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versio {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2005 OpenTTD-ryhmä
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2005 OpenTTD-tiimi
 STR_TRANSLATED_BY                                               :{BLACK}  Kääntäjä(t) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -2245,9 +2245,9 @@ STR_8077_FOSTER_MKII_SUPERBUS                                   :Foster MkII sup
 STR_8078_PLODDYPHUT_MKI_BUS                                     :Ploddyphut MkI -linja-auto
 STR_8079_PLODDYPHUT_MKII_BUS                                    :Ploddyphut MkII -linja-auto
 STR_807A_PLODDYPHUT_MKIII_BUS                                   :Ploddyphut MkIII -linja-auto
-STR_807B_BALOGH_COAL_TRUCK                                      :Balogh -hiilirekka
-STR_807C_UHL_COAL_TRUCK                                         :Uhl -hiilirekka
-STR_807D_DW_COAL_TRUCK                                          :DW -hiilirekka
+STR_807B_BALOGH_COAL_TRUCK                                      :Balogh -hiiliauto
+STR_807C_UHL_COAL_TRUCK                                         :Uhl -hiiliauto
+STR_807D_DW_COAL_TRUCK                                          :DW -hiiliauto
 STR_807E_MPS_MAIL_TRUCK                                         :MPS -postiauto
 STR_807F_REYNARD_MAIL_TRUCK                                     :Reynard -postiauto
 STR_8080_PERRY_MAIL_TRUCK                                       :Perry -postiauto
@@ -2260,72 +2260,72 @@ STR_8086_PERRY_OIL_TANKER                                       :Perry -öljysäil
 STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Talbott -karja-auto
 STR_8088_UHL_LIVESTOCK_VAN                                      :Uhl -karja-auto
 STR_8089_FOSTER_LIVESTOCK_VAN                                   :Foster -karja-auto
-STR_808A_BALOGH_GOODS_TRUCK                                     :Balogh -tavararekka
-STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Craighead -tavararekka
-STR_808C_GOSS_GOODS_TRUCK                                       :Goss -tavararekka
-STR_808D_HEREFORD_GRAIN_TRUCK                                   :Hereford -viljarekka
-STR_808E_THOMAS_GRAIN_TRUCK                                     :Thomas -viljarekka
-STR_808F_GOSS_GRAIN_TRUCK                                       :Goss -viljarekka
-STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe -tukkirekka
-STR_8091_FOSTER_WOOD_TRUCK                                      :Foster -tukkirekka
-STR_8092_MORELAND_WOOD_TRUCK                                    :Moreland -tukkirekka
-STR_8093_MPS_IRON_ORE_TRUCK                                     :MPS -rautamalmirekka
-STR_8094_UHL_IRON_ORE_TRUCK                                     :Uhl -rautamalmirekka
-STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Chippy -rautamalmirekka
-STR_8096_BALOGH_STEEL_TRUCK                                     :Balogh -teräsrekka
-STR_8097_UHL_STEEL_TRUCK                                        :Uhl -teräsrekka
-STR_8098_KELLING_STEEL_TRUCK                                    :Kelling -teräsrekka
-STR_8099_BALOGH_ARMORED_TRUCK                                   :Balogh -panssarirekka
-STR_809A_UHL_ARMORED_TRUCK                                      :Uhl -panssarirekka
-STR_809B_FOSTER_ARMORED_TRUCK                                   :Foster -panssarirekka
-STR_809C_FOSTER_FOOD_VAN                                        :Foster -ruokarekka
-STR_809D_PERRY_FOOD_VAN                                         :Perry -ruokarekka
-STR_809E_CHIPPY_FOOD_VAN                                        :Chippy -ruokarekka
-STR_809F_UHL_PAPER_TRUCK                                        :Uhl -paperirekka
-STR_80A0_BALOGH_PAPER_TRUCK                                     :Balogh -paperirekka
-STR_80A1_MPS_PAPER_TRUCK                                        :MPS -paperirekka
-STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS -kuparirekka
-STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl -kuparirekka
-STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss -kuparirekka
+STR_808A_BALOGH_GOODS_TRUCK                                     :Balogh -tavara-auto
+STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Craighead -tavara-auto
+STR_808C_GOSS_GOODS_TRUCK                                       :Goss -tavara-auto
+STR_808D_HEREFORD_GRAIN_TRUCK                                   :Hereford -vilja-auto
+STR_808E_THOMAS_GRAIN_TRUCK                                     :Thomas -vilja-auto
+STR_808F_GOSS_GRAIN_TRUCK                                       :Goss -vilja-auto
+STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe -tukkiauto
+STR_8091_FOSTER_WOOD_TRUCK                                      :Foster -tukkiauto
+STR_8092_MORELAND_WOOD_TRUCK                                    :Moreland -tukkiauto
+STR_8093_MPS_IRON_ORE_TRUCK                                     :MPS -rautamalmiauto
+STR_8094_UHL_IRON_ORE_TRUCK                                     :Uhl -rautamalmiauto
+STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Chippy -rautamalmiauto
+STR_8096_BALOGH_STEEL_TRUCK                                     :Balogh -teräsauto
+STR_8097_UHL_STEEL_TRUCK                                        :Uhl -teräsauto
+STR_8098_KELLING_STEEL_TRUCK                                    :Kelling -teräsauto
+STR_8099_BALOGH_ARMORED_TRUCK                                   :Balogh -panssariauto
+STR_809A_UHL_ARMORED_TRUCK                                      :Uhl -panssariauto
+STR_809B_FOSTER_ARMORED_TRUCK                                   :Foster -panssariauto
+STR_809C_FOSTER_FOOD_VAN                                        :Foster -ruoka-auto
+STR_809D_PERRY_FOOD_VAN                                         :Perry -ruoka-auto
+STR_809E_CHIPPY_FOOD_VAN                                        :Chippy -ruoka-auto
+STR_809F_UHL_PAPER_TRUCK                                        :Uhl -paperiauto
+STR_80A0_BALOGH_PAPER_TRUCK                                     :Balogh -paperiauto
+STR_80A1_MPS_PAPER_TRUCK                                        :MPS -paperiauto
+STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS -kupariauto
+STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl -kupariauto
+STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss -kupariauto
 STR_80A5_UHL_WATER_TANKER                                       :Uhl -vesisäiliöauto
 STR_80A6_BALOGH_WATER_TANKER                                    :Balogh -vesisäiliöauto
 STR_80A7_MPS_WATER_TANKER                                       :MPS -vesisäiliöauto
-STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh -hedelmärekka
-STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl -hedelmärekka
-STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling -hedelmärekka
-STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh -kumirekka
-STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl -kumirekka
-STR_80AD_RMT_RUBBER_TRUCK                                       :RMT -kumirekka
-STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :MightyMover -sokerirekka
-STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Powernaught -sokerirekka
-STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow -sokerirekka
-STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :MightyMover -limsarekka
-STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Powernaught -limsarekka
-STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Wizzowow -limsarekka
-STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :MightyMover -hattararekka
-STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught -hattararekka
-STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzowow -hattararekka
-STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :MightyMover -toffeerekka
-STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Powernaught -toffeerekka
-STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Wizzowow -toffeerekka
+STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh -hedelmäauto
+STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl -hedelmäauto
+STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling -hedelmäauto
+STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh -kumiauto
+STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl -kumiauto
+STR_80AD_RMT_RUBBER_TRUCK                                       :RMT -kumiauto
+STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :MightyMover -sokeriauto
+STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Powernaught -sokeriauto
+STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow -sokeriauto
+STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :MightyMover -kola-auto
+STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Powernaught -kola-auto
+STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Wizzowow -kola-auto
+STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :MightyMover -hattara-auto
+STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught -hattara-auto
+STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzowow -hattara-auto
+STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :MightyMover -toffeeauto
+STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Powernaught -toffeeauto
+STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Wizzowow -toffeeauto
 STR_80BA_MIGHTYMOVER_TOY_VAN                                    :MightyMover -lelupakettiauto
 STR_80BB_POWERNAUGHT_TOY_VAN                                    :Powernaught -lelupakettiauto
 STR_80BC_WIZZOWOW_TOY_VAN                                       :Wizzowow -lelupakettiauto
-STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :MightyMover -lelurekka
-STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Powernaught -lelurekka
-STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Wizzowow -lelurekka
-STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :MightyMover -patterirekka
-STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Powernaught -patterirekka
-STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Wizzowow -patterirekka
-STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :MightyMover -sihijuomarekka
-STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Powernaught -sihijuomarekka
-STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Wizzowow -sihijuomarekka
-STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :MightyMover -muovirekka
-STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Powernaught -muovirekka
-STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Wizzowow -muovirekka
-STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :MightyMover -kuplarekka
-STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught -kuplarekka
-STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow -kuplarekka
+STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :MightyMover -leluauto
+STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Powernaught -leluauto
+STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Wizzowow -leluauto
+STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :MightyMover -patteriauto
+STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Powernaught -patteriauto
+STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Wizzowow -patteriauto
+STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :MightyMover -sihijuoma-auto
+STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Powernaught -sihijuoma-auto
+STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Wizzowow -sihijuoma-auto
+STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :MightyMover -muoviauto
+STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Powernaught -muoviauto
+STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Wizzowow -muoviauto
+STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :MightyMover -kupla-auto
+STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught -kupla-auto
+STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow -kupla-auto
 STR_80CC_MPS_OIL_TANKER                                         :MPS -öljytankkeri
 STR_80CD_CS_INC_OIL_TANKER                                      :CS-Inc. -öljytankkeri
 STR_80CE_MPS_PASSENGER_FERRY                                    :MPS -matkustajalautta
@@ -2444,6 +2444,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Arvo: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{STRING}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Lastataan/puretaan
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Juna täytyy pysäyttää veturitallin sisällä
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Junan lähettäminen veturitalliin ei onnistu...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Ei enää tilaa pysähdyksille.
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Liian monta pysähdystä.

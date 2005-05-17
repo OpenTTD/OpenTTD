@@ -2444,6 +2444,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Valoare: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{STRING}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Încarcã / Descarcã
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Trenul trebuie oprit intr-un depou
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Nu pot trimite trenul la depou...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Nu mai este loc pentru comenzi
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Prea multe comenzi

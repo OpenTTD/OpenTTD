@@ -2444,6 +2444,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Valor: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{STRING}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Cargando / Descargando
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}El tren debe pararse dentro del depósito
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}No se puede enviar el tren al depósito...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}No hay más lugar para pedidos
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Demasiados pedidos
