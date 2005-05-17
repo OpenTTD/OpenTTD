@@ -555,7 +555,7 @@ void NetworkUDPRemoveAdvertise(void)
 	Packet *p;
 
 	/* Check if we are advertising */
-	if (!_networking || !_network_server || !_network_udp_server || !_network_advertise)
+	if (!_networking || !_network_server || !_network_udp_server)
 		return;
 
 	/* check for socket */
