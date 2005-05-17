@@ -1036,12 +1036,11 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 			NetworkTextMessage(action, GetDrawStringPlayerColor(ci->client_playas-1), false, ci->client_name, "%s", msg);
 			if (from_index == NETWORK_SERVER_INDEX)
 				show_local = false;
-			ci_to = ci;
+			ci_to = ci_own;
 		}
 
 		/* There is no such player */
-		if (ci_to == NULL)
-			break;
+		if (ci_to == NULL) break;
 
 		// Display the message locally (so you know you have sent it)
 		if (ci != NULL && show_local) {

@@ -413,8 +413,9 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	_error_message_2 = cmd >> 16;
 	_additional_cash_required = 0;
 
-	// spectator has no rights.
-	if (_current_player == OWNER_SPECTATOR) {
+	/** Spectator has no rights except for the dedicated server which
+	 * is a spectator but is the server, so can do anything */
+	if (_current_player == OWNER_SPECTATOR && !_network_dedicated) {
 		ShowErrorMessage(_error_message, _error_message_2, x, y);
 		_cmd_text = NULL;
 		return false;

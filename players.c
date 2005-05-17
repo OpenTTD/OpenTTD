@@ -674,7 +674,7 @@ int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (p != NULL) {
 			if (_local_player == OWNER_SPECTATOR) {
 				/* Check if we do not want to be a spectator in network */
-				if (!_networking || _network_server || _network_playas != OWNER_SPECTATOR) {
+				if (!_networking ||  (_network_server && !_network_dedicated) || _network_playas != OWNER_SPECTATOR) {
 					_local_player = p->index;
 					MarkWholeScreenDirty();
 				}
