@@ -800,14 +800,13 @@ static void EndGameWndProc(Window *w, WindowEvent *e)
 			DrawStringMultiCenter(x + (640 / 2), y + 157, STR_021B_ACHIEVES_STATUS, 640);
 		}
 	} break;
-	case WE_CLICK: { /* OnClick show the highscore chart */
-		int diff = w->window_number; // save values because deletewindow is called
-		int8 rank = WP(w, highscore_d).rank;
-		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
+	case WE_CLICK: /* Close the window (and show the highscore window) */
 		DeleteWindow(w);
-
-		ShowHighscoreTable(diff, rank);
-	} break;
+	break;
+	case WE_DESTROY: /* Show the highscore window when this one is closed */
+		if (!_networking) DoCommandP(0, 0, 0, NULL, CMD_PAUSE); // unpause
+		ShowHighscoreTable(w->window_number, WP(w, highscore_d).rank);
+		break;
 	}
 }
 
@@ -841,15 +840,17 @@ static void HighScoreWndProc(Window *w, WindowEvent *e)
 		}
 	} break;
 
-	case WE_CLICK: /* Onclick get back all hidden windows */
-		if (_game_mode != GM_MENU && !_networking)
-			ShowVitalWindows();
-
-		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
+	case WE_CLICK: /* Onclick to close window, and in destroy event handle the rest */
 		DeleteWindow(w);
 		break;
+
+	case WE_DESTROY: /* Get back all the hidden windows */
+		if (_game_mode != GM_MENU) ShowVitalWindows();
+
+		if (!_networking) DoCommandP(0, 0, 0, NULL, CMD_PAUSE); // unpause
+		break;
 	}
-}
+	}
 
 static const Widget _highscore_widgets[] = {
 {      WWT_PANEL, RESIZE_NONE, 16, 0, 640, 0, 480, 0x0, STR_NULL},
@@ -879,12 +880,11 @@ void ShowHighscoreTable(int difficulty, int8 ranking)
 {
 	Window *w;
 
-	if (!_networking) { // pause game to show chart
-		DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
-		/* Close all always on-top windows to get a clean screen */
-		if (_game_mode != GM_MENU)
-			HideVitalWindows();
-	}
+	// pause game to show the chart
+	if (!_networking) DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
+
+	/* Close all always on-top windows to get a clean screen */
+	if (_game_mode != GM_MENU) 	HideVitalWindows();
 
 	DeleteWindowById(WC_HIGHSCORE_ENDSCREEN, 0);
 	w = AllocateWindowDesc(&_highscore_desc);
@@ -903,11 +903,12 @@ void ShowEndGameChart(void)
 {
 	Window *w;
 
-	if (!_networking) { // pause the game and hide all windows to show end-chart
-		DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
-		HideVitalWindows();
-	}
+	/* Dedicated server doesn't need the highscore window */
+	if (_network_dedicated) return;
+	/* Pause in single-player to have a look at the highscore at your own leisure */
+	if (!_networking) DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
 
+	HideVitalWindows();
 	DeleteWindowById(WC_HIGHSCORE_ENDSCREEN, 0);
 	w = AllocateWindowDesc(&_endgame_desc);
 
