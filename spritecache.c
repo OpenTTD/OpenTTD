@@ -368,8 +368,12 @@ static void LoadGrfIndexed(const char *filename, const uint16 *index_tbl, int fi
 			SkipSprites(end);
 		} else { // load sprites and use indexes from start to end
 			do {
+			#ifdef NDEBUG
+				LoadNextSprite(start, file_index);
+			#else
 				bool b = LoadNextSprite(start, file_index);
 				assert(b);
+			#endif
 			} while (++start <= end);
 		}
 	}
