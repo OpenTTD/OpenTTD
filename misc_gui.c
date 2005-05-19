@@ -423,7 +423,7 @@ static const WindowDesc _build_trees_scen_desc = {
 
 void ShowBuildTreesToolbar(void)
 {
-	AllocateWindowDesc(&_build_trees_desc);
+	AllocateWindowDescFront(&_build_trees_desc, 0);
 }
 
 void ShowBuildTreesScenToolbar(void)
