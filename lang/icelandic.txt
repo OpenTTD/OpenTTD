@@ -371,8 +371,8 @@ STR_SORT_BY_DROPDOWN_NAME                                       :Nafn
 STR_SORT_BY_DATE                                                :{BLACK}Dagsetning
 STR_SORT_BY_UNSORTED                                            :Óflokkað
 STR_SORT_BY_NUMBER                                              :Númer
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :Gróði seinasta árs
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Gróði þessa árs
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Hagnaður síðasta árs
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Hagnaður þessa árs
 STR_SORT_BY_AGE                                                 :Aldur
 STR_SORT_BY_RELIABILITY                                         :Áreiðanleiki
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Burðargeta alls á hverja tegund farms
@@ -2011,7 +2011,7 @@ STR_7018_TRAIN_INCOME                                           :{GOLD}Lestartek
 STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Bílatekjur
 STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Flúgvélatekjur
 STR_701B_SHIP_INCOME                                            :{GOLD}Skipstekjur
-STR_701C_LOAN_INTEREST                                          :{GOLD}Lánavextir
+STR_701C_LOAN_INTEREST                                          :{GOLD}Lánsvextir
 STR_701D_OTHER                                                  :{GOLD}Annað
 STR_701E                                                        :{BLACK}-{CURRENCY64}
 STR_701F                                                        :{BLACK}+{CURRENCY64}

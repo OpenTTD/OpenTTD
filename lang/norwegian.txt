@@ -2814,9 +2814,9 @@ STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltlis
 
 ############ Lists rail types
 
-STR_RAIL_VEHICLES                                               :Jernbane-lokomotiv
-STR_MONORAIL_VEHICLES                                           :Monorail-lokomotiv
-STR_MAGLEV_VEHICLES                                             :Maglev-lokomotiv
+STR_RAIL_VEHICLES                                               :Jernbanelokomotiv
+STR_MONORAIL_VEHICLES                                           :Monoraillokomotiv
+STR_MAGLEV_VEHICLES                                             :Maglevlokomotiv
 
 ############ End of list of rail types
 
