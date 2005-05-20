@@ -4,6 +4,7 @@
 #include "ttd.h"
 #include "console.h"
 #include "debug.h"
+#include "string.h"
 
 int _debug_ai_level;
 int _debug_grf_level;
@@ -28,31 +29,30 @@ void CDECL debug(const char *s, ...)
 	IConsoleDebug(buf);
 }
 
+typedef struct DebugLevel {
+	const char *name;
+	int *level;
+} DebugLevel;
+
+#define DEBUG_LEVEL(x) { #x, &_debug_##x##_level }
+	static const DebugLevel debug_level[] = {
+	DEBUG_LEVEL(ai),
+	DEBUG_LEVEL(grf),
+	DEBUG_LEVEL(map),
+	DEBUG_LEVEL(misc),
+	DEBUG_LEVEL(ms),
+	DEBUG_LEVEL(net),
+	DEBUG_LEVEL(spritecache),
+	DEBUG_LEVEL(oldloader),
+	DEBUG_LEVEL(npf)
+	};
+#undef DEBUG_LEVEL
 
 void SetDebugString(const char *s)
 {
 	int v;
 	char *end;
 	const char *t;
-
-	typedef struct DebugLevel {
-		const char* name;
-		int* level;
-	} DebugLevel;
-
-	#define DEBUG_LEVEL(x) { #x, &_debug_##x##_level }
-	static const DebugLevel debug_level[] = {
-		DEBUG_LEVEL(ai),
-		DEBUG_LEVEL(grf),
-		DEBUG_LEVEL(map),
-		DEBUG_LEVEL(misc),
-		DEBUG_LEVEL(ms),
-		DEBUG_LEVEL(net),
-		DEBUG_LEVEL(spritecache),
-		DEBUG_LEVEL(oldloader),
-		DEBUG_LEVEL(npf)
-	};
-	#undef DEBUG_LEVEL
 
 	// global debugging level?
 	if (*s >= '0' && *s <= '9') {
@@ -95,4 +95,26 @@ void SetDebugString(const char *s)
 			return;
 		}
 	}
+}
+
+/** Print out the current debug-level
+ * Just return a string with the values of all the debug categorites
+ * @return string with debug-levels
+ */
+const char *GetDebugString(void)
+{
+	const DebugLevel *i;
+	static char dbgstr[100];
+	char dbgval[20];
+
+	memset(dbgstr, 0, sizeof(dbgstr));
+	i = debug_level;
+	snprintf(dbgstr, sizeof(dbgstr), "%s=%d", i->name, *i->level);
+
+	for (i++; i != endof(debug_level); i++) {
+		snprintf(dbgval, sizeof(dbgval), ", %s=%d", i->name, *i->level);
+		ttd_strlcat(dbgstr, dbgval, sizeof(dbgstr));
+	}
+
+	return dbgstr;
 }

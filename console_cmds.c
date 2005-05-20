@@ -833,13 +833,17 @@ DEF_CONSOLE_CMD(ConInfoCmd)
 DEF_CONSOLE_CMD(ConDebugLevel)
 {
 	if (argc == 0) {
-		IConsoleHelp("Set the default debugging level for the game. Usage: 'debug_level <level>'");
+		IConsoleHelp("Get/set the default debugging level for the game. Usage: 'debug_level [<level>]'");
 		IConsoleHelp("Level can be any combination of names, levels. Eg 'net=5 ms=4'. Remember to enclose it in \"'s");
 		return true;
 	}
 
-	if (argc < 2) return false;
-	SetDebugString(argv[1]);
+	if (argc > 2) return false;
+
+	if (argc == 1) {
+		IConsolePrintF(_icolour_def, "Current debug-level: '%s'", GetDebugString());
+	} else SetDebugString(argv[1]);
+
 	return true;
 }
 

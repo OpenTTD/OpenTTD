@@ -20,5 +20,6 @@
 void CDECL debug(const char *s, ...);
 
 void SetDebugString(const char *s);
+const char *GetDebugString(void);
 
 #endif
