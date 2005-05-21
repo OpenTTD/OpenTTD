@@ -12,7 +12,7 @@
 #include <pwd.h>
 #include <signal.h>
 
-#if ((defined(_POSIX_VERSION) && _POSIX_VERSION >= 200112L) || defined(__linux__)) && !defined(__dietlibc__)
+#if (defined(_POSIX_VERSION) && _POSIX_VERSION >= 200112L) || defined(__GLIBC__)
 	#define HAS_STATVFS
 #endif
 
