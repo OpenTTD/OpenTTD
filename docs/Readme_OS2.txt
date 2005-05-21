@@ -20,6 +20,11 @@ http://sourceforge.net/projects/openttd/ - see "os2-useful.zip".
 ftp://ftp.netlabs.org/pub/sdl/sdl-dev-os2-2004-12-22.zip which may
 help solve some problems).
 
+Please note that SDL release 2005-03-30 does NOT work with OpenTTD,
+at least in my experience and the experience of a couple of other
+users. If you experience problems with OpenTTD, please try downgrading
+to SDL 2004-12-22.
+
 Note that to actually play the game, I have found in my own
 experience that a version of the Scitech Display Drivers or its later
 incarnation (see www.scitech.com) are necessary for it to work. If

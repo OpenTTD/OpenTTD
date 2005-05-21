@@ -1,6 +1,6 @@
 OpenTTD README
-Last updated:    2005-05-15
-Release version: 0.4.0
+Last updated:    2005-05-21
+Release version: 0.4.1
 ------------------------------------------------------------------------
 
 

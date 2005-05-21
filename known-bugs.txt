@@ -14,11 +14,13 @@ by the number below on http://sourceforge.net/tracker/?group_id=103924&atid=6363
 If the the bug report is closed, it has been fixed, which then can be verified
 in the latest SVN version.
 
-Bugs for 0.4.0
+Bugs for 0.4.0.1
 ------------------------------------------------------------------------
 URL: http://sourceforge.net/tracker/?atid=636365&group_id=103924&func=browse
--		In certain circumstances the game can crash if you drag the minimap to a corner
--1197216	Error: !invalid string id 0 in GetString
+
+-		Minimap crash with certain views and certain resolutions
+-		"Broken" autoreplace for dual-headed trains
+-1203319	Pre-signal exits not working when one way signal
 -1197116	Some stations are cargo-less
 -1188897	Station with cargo enroute_from INVALID_STATION
 -1186802	Company value problem (loans)
@@ -34,9 +36,10 @@ URL: http://sourceforge.net/tracker/?atid=636365&group_id=103924&func=browse
 -1085486	Subsidies: Only count when station is in right suburb
 -992677		BeOS MIDI does not initialise on newer BeOS releases
 
-Minor Bugs for 0.4.0
+Minor Bugs for 0.4.0.1
 ------------------------------------------------------------------------
 URL: http://sourceforge.net/tracker/?atid=669662&group_id=103924&func=browse
+
 -1201284	permanent hilight in a depot
 -1197258	Window Z-order locked when exiting openttd
 -1193882	problems with dualhead engins in DB Set XL (v0.81)

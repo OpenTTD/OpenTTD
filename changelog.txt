@@ -1,3 +1,26 @@
+0.4.0.1 (2005-05-21)
+------------------------------------------------------------------------
+
+- Feature: Add 'clear' command and CTRL+L to empty console window
+- Feature: add the possibility to print out the current debug-level
+- Fix: [MacOSX] default path for midi player on mac is now correct again
+- Fix: Updated makefile for FreeBSD
+- Fix: Text overflows in about box
+- Fix: Link error while compiling as dedicated server
+- Fix: Do not execute empty commands
+- Fix: Make OpenTTD icon look good on Win2K and earlier
+- Fix: NetworkUDPRemoveAdvertise wasn't completely correct
+- Fix: Signs in multiplayer didn't work
+- Fix: Dedicated server desyncs
+- Fix: [ 1197216 ] Error: !invalid string id 0 in GetString, dedicated server endgame crash
+- Fix: Don't allow things to be renamed to nothing
+- Fix: Windows installer deletes spritecache files on uninstall
+- Fix: Depot window did not get redrawn when a non-train-engine was sold
+- Fix: Do not scroll the game with the arrow keys when the chatbox is open
+- Fix: Remove warning from release build when assertions are no longer active
+- Fix: It was possible to open more than one tree window
+
+
 0.4.0 (2005-05-15)
 ------------------------------------------------------------------------
 - Feature: Bigger maps. Enjoy playing up to 2028x2048 (64 times as big as you were used to!)
@@ -77,6 +100,8 @@
 - Fix: Game would crash if you full-screened with the 'fullscreen' button than chose a resolution from the dropdown box that was no longer valid.
 - Fix: Scrolling with the arrow keys is now smooth and it now also scrolls exactly in tile direction if e.g. up and left are pressed
 - Fix: many more fixes but I am too tired to list them all
+
+
 0.3.6 (2005-01-24)
 ------------------------------------------------------------------------
 - Feature: resizable windows. All useful windows are already made resizable.
