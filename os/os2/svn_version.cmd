@@ -4,8 +4,8 @@ rem
 rem Requires subversion (`svnversion') to be installed
 rem
 cd ..\..
-if not exist .svn goto nosvn
 if not "%RELEASE%"=="" goto forcerelease
+if not exist .svn goto nosvn
 svnversion -n . > os\os2\svnver.tmp
 if not "%ERRORLEVEL%"=="0" goto nosvn
 
