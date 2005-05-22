@@ -151,4 +151,9 @@ static inline void swap_tile(TileIndex *a, TileIndex *b) { TileIndex t = *a; *a 
 	}
 #endif
 
+// Fetch count bits starting at bit start from value
+#define GB(value, start, count) (((value) >> (start)) & ((1 << (count)) - 1))
+// Set count bits in value starting at bit start to data
+#define SB(value, start, count, data) ((value) = ((value) & ~(((1 << (count)) - 1) << (start))) | ((data) << (start)))
+
 #endif /* MACROS_H */

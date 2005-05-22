@@ -46,15 +46,14 @@ static inline bool CorrectZ(uint tileh)
 static inline uint TileHeight(TileIndex tile)
 {
 	assert(tile < MapSize());
-	return _map_type_and_height[tile] & 0xf;
+	return GB(_map_type_and_height[tile], 0, 4);
 }
 
 static inline void SetTileHeight(TileIndex tile, uint height)
 {
 	assert(tile < MapSize());
 	assert(height < 16);
-	_map_type_and_height[tile] &= ~0x0F;
-	_map_type_and_height[tile] |= height;
+	SB(_map_type_and_height[tile], 0, 4, height);
 }
 
 static inline uint TilePixelHeight(TileIndex tile)
@@ -65,14 +64,13 @@ static inline uint TilePixelHeight(TileIndex tile)
 static inline TileType GetTileType(TileIndex tile)
 {
 	assert(tile < MapSize());
-	return _map_type_and_height[tile] >> 4;
+	return GB(_map_type_and_height[tile], 4, 4);
 }
 
 static inline void SetTileType(TileIndex tile, TileType type)
 {
 	assert(tile < MapSize());
-	_map_type_and_height[tile] &= ~0xF0;
-	_map_type_and_height[tile] |= type << 4;
+	SB(_map_type_and_height[tile], 4, 4, type);
 }
 
 static inline bool IsTileType(TileIndex tile, TileType type)
