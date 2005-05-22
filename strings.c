@@ -124,11 +124,6 @@ static const StringID _cargo_string_list[NUM_LANDSCAPE][NUM_CARGO] = {
 	}
 };
 
-static char *str_cat(char *dst, const char *src)
-{
-	while ((*dst++ = *src++) != '\0') {}
-	return dst - 1;
-}
 
 static const char *GetStringPtr(StringID string)
 {
@@ -464,21 +459,18 @@ static char *DecodeString(char *buff, const char *str)
 				buff = FormatNoCommaNumber(buff, GetParamInt32());
 				break;
 			case 2: /* {REV} */
-				buff = str_cat(buff, _openttd_revision);
+				buff = strecpy(buff, _openttd_revision, NULL);
 				break;
 			case 3: { /* {SHORTCARGO} */
 				// Short description of cargotypes. Layout:
 				// 8-bit = cargo type
 				// 16-bit = cargo count
-				const char *s;
 				StringID cargo_str = _cargo_string_list[_opt_ptr->landscape][(byte)GetParamInt8()];
 				uint16 multiplier = (cargo_str == STR_LITERS) ? 1000 : 1;
 				// liquid type of cargo is multiplied by 100 to get correct amount
 				buff = FormatCommaNumber(buff, GetParamInt16() * multiplier);
-				s = GetStringPtr(cargo_str);
-
-				memcpy(buff++, " ", 1);
-				while (*s) *buff++ = *s++;
+				buff = strecpy(buff, " ", NULL);
+				buff = strecpy(buff, GetStringPtr(cargo_str), NULL);
 			} break;
 			case 4: /* {CURRCOMPACT64} */
 				// 64 bit compact currency-unit
@@ -494,14 +486,11 @@ static char *DecodeString(char *buff, const char *str)
 			GetParamInt16();
 			//assert(0);
 			break;
-		case 0x87: { // {VOLUME}
-			const char *s;
+		case 0x87: // {VOLUME}
 			buff = FormatCommaNumber(buff, GetParamInt16() * 1000);
-			memcpy(buff++, " ", 1);
-			s = GetStringPtr(STR_LITERS);
-			while (*s) *buff++ = *s++;
+			buff = strecpy(buff, " ", NULL);
+			buff = strecpy(buff, GetStringPtr(STR_LITERS), NULL);
 			break;
-		}
 
 		case 0x88: // {STRING}
 			buff = GetString(buff, (uint16)GetParamUint16());
@@ -684,8 +673,8 @@ static char *GenAndCoName(char *buff)
 		num = 12;
 	}
 
-	buff = str_cat(buff, _surname_list[base + ((num * (byte)(x >> 16)) >> 8)]);
-	buff = str_cat(buff, " & Co.");
+	buff = strecpy(buff, _surname_list[base + (num * GB(x, 16, 8) >> 8)], NULL);
+	buff = strecpy(buff, " & Co.", NULL);
 
 	return buff;
 }
@@ -715,7 +704,7 @@ static char *GenPlayerName_4(char *buff)
 		num = 12;
 	}
 
-	buff = str_cat(buff, _surname_list[base + ((num * (byte)(x >> 16)) >> 8)]);
+	buff = strecpy(buff, _surname_list[base + (num * GB(x, 16, 8) >> 8)], NULL);
 
 	return buff;
 }
@@ -749,7 +738,7 @@ static char *GetSpecialPlayerNameString(char *buff, int ind)
 {
 	switch (ind) {
 		case 1: // not used
-			return str_cat(buff, _silly_company_names[GetParamInt32() & 0xFFFF]);
+			return strecpy(buff, _silly_company_names[GetParamInt32() & 0xFFFF], NULL);
 
 		case 2: // used for Foobar & Co company names
 			return GenAndCoName(buff);
@@ -758,19 +747,20 @@ static char *GetSpecialPlayerNameString(char *buff, int ind)
 			return GenPlayerName_4(buff);
 
 		case 4: // song names
-			return str_cat(buff, _song_names[GetParamUint16() - 1]);
+			return strecpy(buff, _song_names[GetParamUint16() - 1], NULL);
 	}
 
 	// town name?
 	if (IS_INT_INSIDE(ind - 6, 0, SPECSTR_TOWNNAME_LAST-SPECSTR_TOWNNAME_START + 1)) {
 		buff = GetSpecialTownNameString(buff, ind - 6);
-		return str_cat(buff, " Transport");
+		return strecpy(buff, " Transport", NULL);
 	}
 
 	// language name?
 	if (IS_INT_INSIDE(ind, (SPECSTR_LANGUAGE_START - 0x70E4), (SPECSTR_LANGUAGE_END - 0x70E4) + 1)) {
 		int i = ind - (SPECSTR_LANGUAGE_START - 0x70E4);
-		return str_cat(buff, i == _dynlang.curr ? _langpack->own_name : _dynlang.ent[i].name);
+		return strecpy(buff,
+			i == _dynlang.curr ? _langpack->own_name : _dynlang.ent[i].name, NULL);
 	}
 
 	// resolution size?
@@ -782,7 +772,7 @@ static char *GetSpecialPlayerNameString(char *buff, int ind)
 	// screenshot format name?
 	if (IS_INT_INSIDE(ind, (SPECSTR_SCREENSHOT_START - 0x70E4), (SPECSTR_SCREENSHOT_END - 0x70E4) + 1)) {
 		int i = ind - (SPECSTR_SCREENSHOT_START - 0x70E4);
-		return str_cat(buff, GetScreenshotFormatDesc(i));
+		return strecpy(buff, GetScreenshotFormatDesc(i), NULL);
 	}
 
 	assert(0);
