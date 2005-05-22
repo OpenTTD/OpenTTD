@@ -360,18 +360,20 @@ static RealSpriteGroup* ResolveVehicleSpriteGroup(SpriteGroup *spritegroup,
 						veh = GetFirstVehicleInChain(veh);
 				}
 
-				if (dsg->variable == 0x40) {
+				if (dsg->variable == 0x40 || dsg->variable == 0x41) {
 					if (veh->type == VEH_Train) {
 						Vehicle *u = GetFirstVehicleInChain(veh);
 						byte chain_before = 0, chain_after = 0;
 
 						while (u != veh) {
-							u = u->next;
 							chain_before++;
-						}
-						while (u->next != NULL) {
+							if (dsg->variable == 0x41 && u->engine_type != veh->engine_type)
+								chain_before = 0;
 							u = u->next;
+						}
+						while (u->next != NULL && (dsg->variable == 0x40 || u->next->engine_type == veh->engine_type)) {
 							chain_after++;
+							u = u->next;
 						};
 
 						value = chain_before | chain_after << 8
@@ -446,8 +448,7 @@ static RealSpriteGroup* ResolveVehicleSpriteGroup(SpriteGroup *spritegroup,
 						veh_prop(0x57, veh->profit_last_year & 0xFF);
 						veh_prop(0x58, veh->profit_last_year);
 						veh_prop(0x59, veh->profit_last_year & 0xFF);
-/*						veh_prop(0x5A, veh->next_in_chain_old);
-						veh_prop(0x5B, veh->next_in_chain_old & 0xFF);*/
+						veh_prop(0x5A, veh->next == NULL ? INVALID_VEHICLE : veh->next->index);
 						veh_prop(0x5C, veh->value);
 						veh_prop(0x5D, veh->value & 0xFFFFFF);
 						veh_prop(0x5E, veh->value & 0xFFFF);
