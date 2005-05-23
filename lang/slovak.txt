@@ -995,7 +995,7 @@ STR_CONFIG_PATCHES_ON                                           :Zap.
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Zobraz rychlost vozidla v stavovej liste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Umoznit vystavbu na sikmine a pobrezi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Povolit v oblasti pokrytia realistickejsiu velkost: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Umoznit odstranenie viacerych mestskych ciest, mostov, atd.: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Umoznit odstranenie viacerych mestskych ciest, mostov... : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Umoznit stavbu dlhych vlakov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Zapnut realnu akceleraciu vlakov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Zakazat vlakom a lodiam otacenie o 90 st.: {ORANGE}{STRING} {LTBLUE} (vyzaduje NPF)

@@ -13,7 +13,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Zeminin düz olmasi gerekiyor
 STR_0008_WAITING                                                :{BLACK}Bekliyor: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (Tasindigi Istasyon:
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (Ta$indigi Istasyon:
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Kabul: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Kabul: {GOLD}
@@ -410,18 +410,218 @@ STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Firma tr
 STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Display list of company's road vehicles
 STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Firma gemileri listesini göster
 STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Display list of company's aircraft
+STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Yakinlastir
+STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Uzaklastir
+STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Demiryolu döse
+STR_0182_BUILD_ROADS                                            :{BLACK}Yol yap
+STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Tersane yap
+STR_0184_BUILD_AIRPORTS                                         :{BLACK}Havaalani yap
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Agac, isaret vb.yerlestir
+STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Zemin bilgileri
+STR_0187_OPTIONS                                                :{BLACK}Seçenekler
+STR_0188                                                        :{BLACK}{SMALLUPARROW}
+STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
+STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Bakim araligini degistiremiyorum...
+STR_018B_CLOSE_WINDOW                                           :{BLACK}Pencereyi kapat
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Pencere basligi - hareket ettirmek için sürükleyin
+STR_STICKY_BUTTON                                               :{BLACK}Pencereyi 'Tüm Pencereleri Kapat' tusu ile kapatilamaz olarak isaretle
+STR_RESIZE_BUTTON                                               :{BLACK}Pencere ölçülerini ayarlamak için tiklayip sürükleyin
+STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Zemin karesindeki bina vb.yi kaldir
+STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Zeminin bir kösesini alçalt
+STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Zeminin bir kösesini yükselt
+STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Kaydirma çubugu - listeyi asagi/yukari kaydirir
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Kaydirma çubugu - listeyi sola/saga kaydirir
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Show land contours on map
+STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Araçlari haritada göster
+STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Endüstrileri haritada göster
+STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Tasima rotalarini haritada göster
+STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Bitkileri haritada göster
+STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Arazi sahiplerini haritada göster
+STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Haritada kasaba isimlerini aç/kapa
+STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Bu yilki kari: {CURRENCY} (geçen sene: {CURRENCY})
 
 ############ range for service numbers starts
+STR_0199_YEAR                                                   :{COMMA16} yil ({COMMA16})
+STR_019A_YEARS                                                  :{COMMA16} yil ({COMMA16})
+STR_019B_YEARS                                                  :{RED}{COMMA16} yil ({COMMA16})
 ############ range for service numbers ends
 
+STR_019C_ROAD_VEHICLE                                           :Road vehicle
+STR_019D_AIRCRAFT                                               :Aircraft
+STR_019E_SHIP                                                   :Gemi
+STR_019F_TRAIN                                                  :Tren
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA16} yaslandi
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA16} çok yaslandi
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA16} çok yaslandi ve acilen yenilenmesi gerekli.
+STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Arazi bilgileri
+STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Düzenleme bedeli: {LTBLUE}N/A
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Düzenleme bedeli: {LTBLUE}{CURRENCY}
+STR_01A6_N_A                                                    :N/A
+STR_01A7_OWNER                                                  :{BLACK}Sahibi: {LTBLUE}{STRING}
+STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Yerel yönetim: {LTBLUE}{STRING}
+STR_01A9_NONE                                                   :Yok
+STR_01AA_NAME                                                   :{BLACK}Ad
+STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
 ############ range for days	starts
+STR_01AC_1ST                                                    :1.
+STR_01AD_2ND                                                    :2.
+STR_01AE_3RD                                                    :3.
+STR_01AF_4TH                                                    :4.
+STR_01B0_5TH                                                    :5.
+STR_01B1_6TH                                                    :6.
+STR_01B2_7TH                                                    :7.
+STR_01B3_8TH                                                    :8.
+STR_01B4_9TH                                                    :9.
+STR_01B5_10TH                                                   :10.
+STR_01B6_11TH                                                   :11.
+STR_01B7_12TH                                                   :12.
+STR_01B8_13TH                                                   :13.
+STR_01B9_14TH                                                   :14.
+STR_01BA_15TH                                                   :15.
+STR_01BB_16TH                                                   :16.
+STR_01BC_17TH                                                   :17.
+STR_01BD_18TH                                                   :18.
+STR_01BE_19TH                                                   :19.
+STR_01BF_20TH                                                   :20.
+STR_01C0_21ST                                                   :21.
+STR_01C1_22ND                                                   :22.
+STR_01C2_23RD                                                   :23rd
+STR_01C3_24TH                                                   :24.
+STR_01C4_25TH                                                   :25.
+STR_01C5_26TH                                                   :26.
+STR_01C6_27TH                                                   :27.
+STR_01C7_28TH                                                   :28.
+STR_01C8_29TH                                                   :29.
+STR_01C9_30TH                                                   :30.
+STR_01CA_31ST                                                   :31.
 ############ range for days	ends
 
+STR_01CB                                                        :{TINYFONT}{COMMA16}
+STR_01CC_TOGGLE_LARGE_SMALL_MAP                                 :{BLACK}Büyük/orta/küçük haritalara geç
+STR_01CD_SELECT_TUTORIAL_DEMONSTRATION                          :{WHITE}Ögretici/Demo Seç
 
 ############ range for cargo acecpted starts
+STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Kabul edilen kargo: {LTBLUE}{STRING}
+STR_01CF_CARGO_ACCEPTED                                         :{BLACK}Kabul edilen kargo: {LTBLUE}{STRING}, {STRING}
+STR_01D0_CARGO_ACCEPTED                                         :{BLACK}Kabul edilen kargo: {LTBLUE}{STRING}, {STRING}, {STRING}
+STR_CARGO_ACCEPTED_4                                            :{BLACK}Kabul edilen kargo: {LTBLUE}{STRING}, {STRING}, {STRING}, {STRING}
+STR_CARGO_ACCEPTED_5                                            :{BLACK}Kabul edilen kargo: {LTBLUE}{STRING}, {STRING}, {STRING}, {STRING}, {STRING}
 ############ range for cargo acecpted ends
 
+STR_01D1_8                                                      :({COMMA8}/8 {STRING})
+STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz Jukebox
+STR_01D3_SOUND_MUSIC                                            :Ses/muzik
+STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Ses/müzik penceresini göster
+STR_01D5_ALL                                                    :{TINYFONT}Hepsi
+STR_01D6_OLD_STYLE                                              :{TINYFONT}Eski Stil
+STR_01D7_NEW_STYLE                                              :{TINYFONT}Yeni Stil
+STR_01D8_EZY_STREET                                             :{TINYFONT}Ezy Street
+STR_01D9_CUSTOM_1                                               :{TINYFONT}Özel 1
+STR_01DA_CUSTOM_2                                               :{TINYFONT}Özel 2
+STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFONT}Müzik Sesi
+STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFONT}Efekt Sesi
+STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAX
+STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Seçimde bir önceki parçaya geç
+STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Seçimde bir sonraki parçaya geç
+STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Müzik çalmayi durdur
+STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Müzik çalmaya basla
+STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Müzik ve ses efektleri seviyesini ayarlamak için sürükle
+STR_01E3                                                        :{DKGREEN}{TINYFONT}--
+STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA8}
+STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA8}
+STR_01E6                                                        :{DKGREEN}{TINYFONT}------
+STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
+STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Parça{SETX 88}Ad
+STR_01E9_SHUFFLE                                                :{TINYFONT}Karisik
+STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Program
+STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Müzik Programi Seçimi
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA16} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA16}   "{STRING}"
+STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Parça Indeksi
+STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
+STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Temizle
+STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Kaydet
+STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Müzik parçalarinin su anki programi
+STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}"Tüm parçalar" programini seç
+STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}}"Eski stil müzik" programini seç
+STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}}}"Yeni stil müzik" programini seç
+STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}}}}'Özel 1' (kullanici-tanimli) programini seç
+STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}'Özel 2' (kullanici-tanimli) programini seç
+STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Su anki programi temizle(Sadece Özel1 veya Özel2)
+STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Müzik ayarlarini kaydet
+STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Su anki programa eklemek için müzik parçasina tiklayin (Sadece Özel1 veya Özel2)
+STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Karisik program açik/kapali seçimi
+STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Müzik parçasi seçim penceresini göster
+STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Görüntüyü endüstri/kasaba üzerinde odaklamak için tiklayin
+STR_01FE_DIFFICULTY                                             :{BLACK}Zorluk ({STRING})
+STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
+STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Son mesaj/haber raporu
+STR_0201_MESSAGE_SETTINGS                                       :Mesaj ayarlari
+STR_MESSAGE_HISTORY_MENU                                        :Mesaj geçmisi
+STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Son mesaj/haber raporunu göster, mesaj seçeneklerini göster
+STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Mesaj seçenekleri
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Mesaj tipleri:-
+STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Oyuncu istasyonuna ilk aracin gelisi
+STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Rakibin istasyonuna ilk aracin gelisi
+STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Kazalar / felaketler
+STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firma bilgileri
+STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomi degisimleri
+STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Oyuncu araçlari ile ilgili tavsiye / bilgiler
+STR_020C_NEW_VEHICLES                                           :{YELLOW}Yeni Araçlar
+STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Kargo kabulündeki degisiklikler
+STR_020E_SUBSIDIES                                              :{YELLOW}Tesvikler
+STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Genel bilgiler
+STR_MESSAGES_ALL                                                :{YELLOW}Tüm mesaj tipleri için ayarlar(kapali/özet/dolu)
+STR_MESSAGE_SOUND                                               :{YELLOW}Özet yeni mesajlar için sesli uyari
+STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...bir önceki mevkiden çok uzak
+STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Yüksek seviyeye ulasan firmalar {NUMU16}{}({STRING} Seviye)
+STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Firma Lig Tablosu{NUMU16}
+STR_0212                                                        :{BIGFONT}{COMMA16}.
+STR_0213_BUSINESSMAN                                            :Is Adami
+STR_0214_ENTREPRENEUR                                           :Büyük Yatirimci
+STR_0215_INDUSTRIALIST                                          :Sektör Öncüsü
+STR_0216_CAPITALIST                                             :Endüstri Devi
+STR_0217_MAGNATE                                                :Tekel
+STR_0218_MOGUL                                                  :Tekel Devi
+STR_0219_TYCOON_OF_THE_CENTURY                                  :Yüzyilin Tycoon'u
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{STRING}, {STRING}
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA16})
+STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{STRING} '{STRING}' seviyesine ulasti!
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{STRING} - {STRING} '{STRING}' seviyesine ulasti!
+STR_021D                                                        :{BLACK}
+STR_021E                                                        :{WHITE}
+STR_021F                                                        :{BLUE}{COMMA16}
+STR_0220_CREATE_SCENARIO                                        :{BLACK}Senaryo olustur
+STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
+STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Senaryo editörü
+STR_0223_LAND_GENERATION                                        :{WHITE}Arazi olusturma
+STR_0224                                                        :{BLACK}{UPARROW}
+STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0226_RANDOM_LAND                                            :{BLACK}Rasgele zemin
+STR_0227_RESET_LAND                                             :{BLACK}Zemini sifirla
+STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Zemin alanini arttir
+STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Zemin alanini azalt
+STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Rasgele zemin olu$tur
+STR_022B_RESET_LANDSCAPE                                        :{BLACK}Zemini sifirla
+STR_022C_RESET_LANDSCAPE                                        :{WHITE}Yer $ekillerini sifirla
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Yer $ekillerini sifirlamak istediginizden emin misiniz?
+STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Yer $ekili olu$turma
+STR_022F_TOWN_GENERATION                                        :{BLACK}Kasaba olu$turma
+STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Endüstri olu$turma
+STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Yol in$aasi
+STR_0232_VEGETATION_AND_OTHER_OBJECTS                           :{BLACK}Bitkilendirme ve diger nesneler
+STR_0233_TOWN_GENERATION                                        :{WHITE}Kasaba olu$turma
+STR_0234_NEW_TOWN                                               :{BLACK}Yeni Kasaba
+STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Yeni kasaba olu$tur
+STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Burada kasaba olu$turamiyorum...
+STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...haritanin kenarina çok yakin
+STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...ba$ka bir kasabaya çok yakin
+STR_0239_SITE_UNSUITABLE                                        :{WHITE}...bölge uygun degil
+STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...çok fazla kasaba
+STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Kasaba geni$ligini arttir
+STR_023C_EXPAND                                                 :{BLACK}Geni$let/Yay
+STR_023D_RANDOM_TOWN                                            :{BLACK}Rasgele Kasaba
 
 
 ############ range for menu	starts

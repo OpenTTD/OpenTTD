@@ -2033,6 +2033,7 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}No pots 
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...No hi ha prèstec per amortitzar
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} necesari
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}No es pot amortitzar prèstec...
+STR_INSUFFICIENT_FUNDS                                          :{WHITE}No es poden regalar els diners prestats pel banc...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Selecciona nova cara per el president
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Canvía l'aspecte dels vehicles de l'empresa
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Canvía el nom del president
@@ -2443,6 +2444,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Valor: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{STRING}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Carregant / Descarregant
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}El tren s'ha de parar dintre de la cotxera
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}No pots enviar el tren a cotxeres...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}No hi ha més espai per ordres
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Massa ordres
