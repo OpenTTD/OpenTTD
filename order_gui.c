@@ -52,7 +52,7 @@ static void DrawOrdersWindow(Window *w)
 
 	shared_orders = IsOrderListShared(v);
 
-	if ((uint)v->num_orders + shared_orders <= (uint)WP(w,order_d).sel)
+	if ((uint)v->num_orders + (shared_orders?1:0) <= (uint)WP(w,order_d).sel)
 		SETBIT(w->disabled_state, 5); /* delete */
 
 	if (v->num_orders == 0)

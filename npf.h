@@ -43,13 +43,6 @@ typedef enum { /* Flags for AyStarNode.userdata[NPF_NODE_FLAGS]. Use NPFGetBit()
 	NPF_FLAG_SEEN_SIGNAL, /* Used to mark that a signal was seen on the way, for rail only */
 	NPF_FLAG_REVERSE, /* Used to mark that this node was reached from the second start node, if applicable */
 	NPF_FLAG_LAST_SIGNAL_RED, /* Used to mark that the last signal on this path was red */
-	NPF_FLAG_TARGET_CHECKED, /* Used by end node checking function of npf to mark
-														 that they have evaluated this node. When this
-														 flag is on, NPF_FLAG_IS_TARGET is on when the
-														 node is a target, and off when it is not. Should
-														 never be used directly, only by the end node
-														 checking functions for caching of results. */
-	NPF_FLAG_IS_TARGET, /* See comment for NPF_FLAG_TARGET_CHECKED */
 } NPFNodeFlag;
 
 typedef struct NPFFoundTargetData { /* Meant to be stored in AyStar.userpath */

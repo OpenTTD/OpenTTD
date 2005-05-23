@@ -443,22 +443,14 @@ int32 NPFFindStationOrTile(AyStar* as, OpenListNode *current) {
 	AyStarNode *node = &current->path.node;
 	TileIndex tile = node->tile;
 
-	/* See if we checked this before */
-	if (NPFGetFlag(node, NPF_FLAG_TARGET_CHECKED))
-		return NPFGetFlag(node, NPF_FLAG_IS_TARGET);
-	/* We're gonna check this now and store the result, let's mark that */
-	NPFSetFlag(node, NPF_FLAG_TARGET_CHECKED, true);
-
 	/* If GetNeighbours said we could get here, we assume the station type
 	 * is correct */
 	if (
 		(fstd->station_index == -1 && tile == fstd->dest_coords) || /* We've found the tile, or */
 		(IsTileType(tile, MP_STATION) && _map2[tile] == fstd->station_index) /* the station */
 	) {
-		NPFSetFlag(node, NPF_FLAG_TARGET_CHECKED, true);
 		return AYSTAR_FOUND_END_NODE;
 	} else {
-		NPFSetFlag(node, NPF_FLAG_TARGET_CHECKED, false);
 		return AYSTAR_DONE;
 	}
 }
