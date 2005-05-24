@@ -256,7 +256,7 @@ int32 CmdGiveMoney(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  */
 int32 CmdChangeDifficultyLevel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	if (p1 >= GAME_DIFFICULTY_NUM) return CMD_ERROR;
+	if ((int32)p1 >= GAME_DIFFICULTY_NUM && p1 != (uint32)-1L) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		if (p1 != (uint32)-1L) {
