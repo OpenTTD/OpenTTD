@@ -3429,7 +3429,7 @@ static void AiStateBuildDefaultAirportBlocks(Player *p)
 				MarkTileDirtyByTile(aib->use_tile);
 			}
 #endif
-//			redsq_debug(aib->use_tile);
+//			SetRedErrorSquare(aib->use_tile);
 
 			if (rule == -1) {
 				// cannot build, terraform after a while

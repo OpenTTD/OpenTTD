@@ -52,7 +52,6 @@ extern void SetDifficultyLevel(int mode, GameOptions *gm_opt);
 extern void DoStartupNewPlayer(bool is_ai);
 extern void ShowOSErrorBox(const char *buf);
 
-void redsq_debug(int tile);
 bool LoadSavegame(const char *filename);
 
 extern void HalGameLoop(void);

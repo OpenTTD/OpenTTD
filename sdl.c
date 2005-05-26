@@ -686,25 +686,4 @@ const HalSoundDriver _sdl_sound_driver = {
 	SdlSoundStop,
 };
 
-
-#if 0 /* XXX what the heck is that? */
-#include "viewport.h"
-void redsq_debug(int tile)
-{
-	_thd.redsq = tile;
-	MarkWholeScreenDirty();
-	_screen.dst_ptr = _sdl_screen->pixels;
-	UpdateWindows();
-
-	SdlVideoMakeDirty(0,0,_screen.width,_screen.height);
-	DrawSurfaceToScreen();
-}
-
-static void DbgRedraw()
-{
-	SdlVideoMakeDirty(0,0,_screen.width,_screen.height);
-	DrawSurfaceToScreen();
-}
-#endif
-
 #endif /* WITH_SDL */
