@@ -841,13 +841,15 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (src_head->subtype == TS_Front_Engine)
 			UpdateTrainAcceleration(src_head);
 		InvalidateWindow(WC_VEHICLE_DETAILS, src_head->index);
+		InvalidateWindow(WC_VEHICLE_REFIT, src_head->index);
 
 		if (dst_head) {
 			if (dst_head->subtype == TS_Front_Engine)
 				UpdateTrainAcceleration(dst_head);
 			InvalidateWindow(WC_VEHICLE_DETAILS, dst_head->index);
-			/* Update the refit button */
+			/* Update the refit button and window */
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, dst_head->index, 12);
+			InvalidateWindow(WC_VEHICLE_REFIT, dst_head->index);
 		}
 
 		/* I added this to so that the refit buttons get updated */
@@ -996,6 +998,7 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				/* 5. If the train still exists, update its acceleration, window, etc. */
 				if (first != NULL && first->subtype == TS_Front_Engine) {
 					InvalidateWindow(WC_VEHICLE_DETAILS, first->index);
+					InvalidateWindow(WC_VEHICLE_REFIT, first->index);
 					UpdateTrainAcceleration(first);
 				}
 
@@ -1315,21 +1318,41 @@ int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	cost = 0;
 	num = 0;
 
+	// newgrf stuff can change graphics when refitting
+	if (!(flags & DC_EXEC))
+		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+
 	do {
 		/* XXX: We also refit all the attached wagons en-masse if they
 		 * can be refitted. This is how TTDPatch does it.  TODO: Have
 		 * some nice [Refit] button near each wagon. --pasky */
 		if (!CanRefitTo(v, new_cid)) continue;
 
-		if (new_cid != v->cargo_type && v->cargo_cap != 0) {
-			cost += (_price.build_railvehicle >> 8);
-			num += v->cargo_cap;
+		if (v->cargo_cap != 0) {
+			RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
+			uint16 amount = rvi->capacity;
+			CargoID old_cid = rvi->cargo_type;
+
+			/* the capacity depends on the cargo type, a rail vehicle
+			 * can carry twice as much mail/goods as normal cargo,
+			 * and four times as much passengers */
+			(old_cid == CT_PASSENGERS) ||
+			(amount <<= 1, old_cid == CT_MAIL || old_cid == CT_GOODS) ||
+			(amount <<= 1, true);
+			(new_cid == CT_PASSENGERS) ||
+			(amount >>= 1, new_cid == CT_MAIL || new_cid == CT_GOODS) ||
+			(amount >>= 1, true);
+
+			if (new_cid != v->cargo_type)
+				cost += (_price.build_railvehicle >> 8);
+			num += amount;
 			if (flags & DC_EXEC) {
 				//autorefitted train cars wants to keep the cargo
 				//it will be checked if the cargo is valid in CmdReplaceVehicle
 				if (!(SkipStoppedInDepotCheck))
 					v->cargo_count = 0;
 				v->cargo_type = new_cid;
+				v->cargo_cap = amount;
 				InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 			}
 		}
