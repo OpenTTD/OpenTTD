@@ -124,12 +124,11 @@ bool HandlePlacePushButton(Window *w, int widget, uint32 cursor, int mode, Place
 /* viewport.c */
 // XXX - maximum viewports is maximum windows - 2 (main toolbar + status bar)
 VARDEF ViewPort _viewports[25 - 2];
-VARDEF TileHighlightData _thd;
 VARDEF uint32 _active_viewports;
 
 VARDEF Point _tile_fract_coords;
 
-extern TileHighlightData * const _thd_ptr;
+extern TileHighlightData _thd;
 
 
 void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom);
