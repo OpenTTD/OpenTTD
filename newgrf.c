@@ -1971,6 +1971,7 @@ static void InitializeGRFSpecial(void)
 {
 	/* FIXME: We should rather reflect reality in _ttdpatch_flags[]. */
 
+	_ttdpatch_flags[0] = (1 << 0x1B); /* multihead */
 	_ttdpatch_flags[1] = (1 << 0x08)  /* mammothtrains */
 	                   | (1 << 0x0B)  /* subsidiaries */
 	                   | (1 << 0x14)  /* bridgespeedlimits */
@@ -1979,12 +1980,12 @@ static void InitializeGRFSpecial(void)
 	                   | (1 << 0x18)  /* newrvs */
 	                   | (1 << 0x19)  /* newships */
 	                   | (1 << 0x1A)  /* newplanes */
-			   | (1 << 0x1B); /* signalsontrafficside */
+			               | (1 << 0x1B); /* signalsontrafficside */
 	                   /* Uncomment following if you want to fool the GRF file.
 	                    * Some GRF files will refuse to load without this
 	                    * but you can still squeeze something from them even
 	                    * without the support - i.e. USSet. --pasky */
-			   //| (1 << 0x1C); /* electrifiedrailway */
+			               //| (1 << 0x1C); /* electrifiedrailway */
 
 	_ttdpatch_flags[2] = (1 << 0x0D)  /* buildonslopes */
 	                   | (1 << 0x16)  /* canals */
