@@ -34,7 +34,7 @@ build-stamp: configure-stamp
 
 	# Add here commands to compile the package.
 	
-	rm Makefile.config
+	rm Makefile.config || true
 	$(MAKE) PREFIX=/usr MIDI=/usr/bin/timidity INSTALL=1 BINARY_DIR=games DATA_DIR=share/games/openttd PERSONAL_DIR=.openttd USE_HOMEDIR=1
 
 	#/usr/bin/docbook-to-man debian/openttd.sgml > openttd.1

@@ -83,8 +83,10 @@
 # PREFIX:	Normally /usr/local
 # BINARY_DIR:	The location of the binary, normally games. (Will be prefixed
 #		with $PREFIX)
-# DATA_DIR: 	The location of the data (lang, data and gm), normally
-#		share/games/openttd. (Will be prefixed with $PREFIX)
+# DATA_DIR: 	The location of the data (lang, data, gm and scenario), normally
+#		share/games/openttd. (Will be prefixed with $PREFIX) Note that scenarios
+#		are only put here if USE_HOMEDIR is true, otherwise they are placed in
+#		PERSONAL_DIR/scenario
 # PERSONAL_DIR:	The directory where openttd.cfg and the save folder will be
 #		stored. You cannot use ~ here, define USE_HOMEDIR for that.
 # USE_HOMEDIR:	If this variable is set, PERSONAL_DIR will be prefixed with
@@ -954,13 +956,22 @@ endif
 	           $(DATA_DIR_INSTALL)/data \
 	           $(DATA_DIR_INSTALL)/gm \
 	           $(BINARY_DIR_INSTALL)
-	mkdir -p   $(PERSONAL_DIR)/scenario
+ifndef USE_HOMEDIR
+	mkdir -p $(PERSONAL_DIR)/scenario
+else
+	mkdir -p $(DATA_DIR_INSTALL)/scenario
+endif
 	install $(TTD) $(BINARY_DIR_INSTALL)
 	install -m 644 lang/*.lng $(DATA_DIR_INSTALL)/lang
 	install -m 644 data/*.grf $(DATA_DIR_INSTALL)/data
 	install -m 644 data/opntitle.dat $(DATA_DIR_INSTALL)/data
 	install -m 644 media/openttd.64.png $(DATA_DIR_INSTALL)
+	install -m 644 media/openttd.32.xpm $(DATA_DIR_INSTALL)
+ifndef USE_HOMEDIR
 	cp scenario/* $(PERSONAL_DIR)/scenario/
+else
+	cp scenario/* $(DATA_DIR_INSTALL)/scenario/
+endif
 else	#MorphOS
 install:
 	$(error make install is not supported on MorphOS)

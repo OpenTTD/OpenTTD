@@ -8,7 +8,8 @@ Standards-Version: 3.6.0
 Package: openttd
 Architecture: any
 Depends: ${shlibs:Depends}
-Description: An open source clone of the Microprose game "Transport Tycoon Deluxe"
+Suggests: timidity, freepats
+Description: open source clone of the Microprose game "Transport Tycoon Deluxe"
  An enhanced open source clone of the Microprose game "Transport Tycoon Deluxe".
  You require the data files of the original Transport Tycoon Deluxe
  for Windows to play the game. You have to MANUALLY copy them to the

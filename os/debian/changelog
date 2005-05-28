@@ -1,6 +1,39 @@
-openttd (0.3.4.1-1) unstable; urgency=low
+openttd (0.4.0.1-2) unstable; urgency=low
+
+  * Added Suggests: timidity, freepats
+
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Fri, 27 May 2005 02:19:24 +0200
+
+openttd (0.4.0.1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Matthijs Kooijman <matthijs@katherina.student.utwente.nl>  Mon, 23 May 2005 13:04:24 +0200
+
+openttd (0.4.0-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Matthijs Kooijman <matthijs@katherina.student.utwente.nl>  Mon, 16 May 2005 00:16:17 +0200
+
+openttd (0.3.6-1) unstable; urgency=low
+
+  * New upstream release
+  * Modifed Makefile to install xpm icon and scenarios in /usr/share/games/openttd/
+  * Added openttd.32.xpm, openttd.64.xpm was too big
+
+ -- root <root@katherina.student.utwente.nl>  Tue, 25 Jan 2005 19:21:08 +0100
+
+openttd (0.3.5-2) unstable; urgency=low
+
+  * Fixed some lintian warnings.
+  * Added openttd.64.xpm (icon for menu).
+
+ -- Matthijs Kooijman <matthijs@katherina.student.utwente.nl>  Mon, 27 Dec 2004 01:51:36 +0100
+
+openttd (0.3.5-1) unstable; urgency=low
 
   * Initial Release.
 
- -- Matthijs Kooijman <matthijs@katherina.student.utwente.nl>  Thu, 16 Sep 2004 00:59:38 +0200
+ -- Matthijs Kooijman <matthijs@katherina.student.utwente.nl>  Fri, 24 Dec 2004 02:58:47 +0100
 

@@ -1,2 +1,2 @@
 ?package(openttd):needs="X11" section="Games/Simulation" title="Openttd"\
-command="/usr/games/openttd" icon="/usr/share/games/openttd/openttd.64.xpm"
+command="/usr/games/openttd" icon="/usr/share/games/openttd/openttd.32.xpm"
