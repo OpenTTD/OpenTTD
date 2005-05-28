@@ -1541,13 +1541,11 @@ void InvalidateWindow(byte cls, WindowNumber number)
 void InvalidateWidget(Window *w, byte widget_index)
 {
 	const Widget *wi = &w->widget[widget_index];
-//	if (wi->left != -2) {
-		SetDirtyBlocks(
-			w->left + wi->left,
-			w->top + wi->top,
-			w->left + wi->right + 1,
-			w->top + wi->bottom + 1);
-//	}
+
+	/* Don't redraw the window if the widget is invisible or of no-type */
+	if (wi->type == WWT_EMPTY || HASBIT(w->hidden_state, widget_index)) return;
+
+	SetDirtyBlocks(w->left + wi->left, w->top + wi->top, w->left + wi->right + 1, w->top + wi->bottom + 1);
 }
 
 void InvalidateWindowWidget(byte cls, WindowNumber number, byte widget_index)
