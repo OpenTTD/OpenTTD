@@ -1136,7 +1136,7 @@ DEF_CONSOLE_CMD(ConProcServerIP)
 
 	if (argc != 1) return false;
 
-	_network_server_bind_ip = inet_addr(argv[0]);
+	_network_server_bind_ip = (strcmp(argv[0], "all") == 0) ? inet_addr("0.0.0.0") : inet_addr(argv[0]);
 	snprintf(_network_server_bind_ip_host, sizeof(_network_server_bind_ip_host), "%s", inet_ntoa(*(struct in_addr *)&_network_server_bind_ip));
 	IConsolePrintF(_icolour_warn, "'server_ip' changed to:  %s", inet_ntoa(*(struct in_addr *)&_network_server_bind_ip));
 	return true;
