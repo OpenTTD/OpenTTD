@@ -127,7 +127,7 @@ void AssignWindowViewport(Window *w, int x, int y,
 	} else {
 		int x = TileX(follow_flags) * 16;
 		int y = TileY(follow_flags) * 16;
-		WP(w,vp_d).follow_vehicle = 0xFFFF;
+		WP(w,vp_d).follow_vehicle = INVALID_VEHICLE;
 		z = GetSlopeZ(x,y);
 		pt = MapXYZToViewport(vp, x,y, z);
 	}
@@ -650,7 +650,7 @@ static void DrawTileSelection(const TileInfo *ti)
 
 	// Draw a red error square?
 	if (_thd.redsq != 0 && _thd.redsq == ti->tile) {
-		DrawSelectionSprite(0x030382F0 | _tileh_to_sprite[ti->tileh], ti);
+		DrawSelectionSprite(PALETTE_TILE_RED_PULSATING | (SPR_SELECT_TILE + _tileh_to_sprite[ti->tileh]), ti);
 		return;
 	}
 
@@ -661,8 +661,8 @@ static void DrawTileSelection(const TileInfo *ti)
 	// Inside the inner area?
 	if (IS_INSIDE_1D(ti->x, _thd.pos.x, _thd.size.x) && IS_INSIDE_1D(ti->y, _thd.pos.y, _thd.size.y)) {
 		if (_thd.drawstyle & HT_RECT) {
-			image = 0x2F0 + _tileh_to_sprite[ti->tileh];
-			if (_thd.make_square_red) image |= 0x3048000;
+			image = SPR_SELECT_TILE + _tileh_to_sprite[ti->tileh];
+			if (_thd.make_square_red) image |= PALETTE_SEL_TILE_RED;
 			DrawSelectionSprite(image, ti);
 		} else if (_thd.drawstyle & HT_POINT) {
 			// Figure out the Z coordinate for the single dot.
@@ -673,14 +673,13 @@ static void DrawTileSelection(const TileInfo *ti)
 					z += 8;
 				}
 			}
-			DrawGroundSpriteAt(_cur_dpi->zoom != 2 ? 0x306 : 0xFEE,ti->x, ti->y, z);
-
+			DrawGroundSpriteAt(_cur_dpi->zoom != 2 ? SPR_DOT : SPR_DOT_SMALL, ti->x, ti->y, z);
 		} else if (_thd.drawstyle & HT_RAIL /*&& _thd.place_mode == VHM_RAIL*/) { // autorail highlight piece under cursor
 			int type = _thd.drawstyle & 0xF;
 			assert(type<=5);
 			image = SPR_AUTORAIL_BASE + AutorailTilehSprite[ ti->tileh ][ AutorailType[type][0] ];
 
-			if (_thd.make_square_red) image |= 0x3048000;
+			if (_thd.make_square_red) image |= PALETTE_SEL_TILE_RED;
 			DrawSelectionSprite(image, ti);
 
 		} else if (IsPartOfAutoLine(ti->x, ti->y)) { // autorail highlighting long line
@@ -697,7 +696,7 @@ static void DrawTileSelection(const TileInfo *ti)
 
 				image = SPR_AUTORAIL_BASE + AutorailTilehSprite[ ti->tileh ][ AutorailType[dir][side] ];
 
-				if (_thd.make_square_red) image |= 0x3048000;
+				if (_thd.make_square_red) image |= PALETTE_SEL_TILE_RED;
 				DrawSelectionSprite(image, ti);
 			}
 		return;
@@ -709,7 +708,7 @@ static void DrawTileSelection(const TileInfo *ti)
 			IS_INSIDE_1D(ti->x, _thd.pos.x + _thd.offs.x, _thd.size.x + _thd.outersize.x) &&
 			IS_INSIDE_1D(ti->y, _thd.pos.y + _thd.offs.y, _thd.size.y + _thd.outersize.y)) {
 		// Draw a blue rect.
-		DrawSelectionSprite(0x30582F0 + _tileh_to_sprite[ti->tileh], ti);
+		DrawSelectionSprite(PALETTE_SEL_TILE_BLUE | (SPR_SELECT_TILE + _tileh_to_sprite[ti->tileh]), ti);
 		return;
 	}
 }
@@ -1309,7 +1308,7 @@ void UpdateViewportPosition(Window *w)
 {
 	ViewPort *vp = w->viewport;
 
-	if (WP(w,vp_d).follow_vehicle != 0xFFFF) {
+	if (WP(w,vp_d).follow_vehicle != INVALID_VEHICLE) {
 		Vehicle *veh;
 		Point pt;
 
