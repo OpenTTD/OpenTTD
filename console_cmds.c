@@ -1316,7 +1316,7 @@ void IConsoleStdLibRegister(void)
 
 	IConsoleVarRegister("server_port",           &_network_server_port, ICONSOLE_VAR_UINT32, "Set the server port. Changes take effect the next time you start a server");
 
-	IConsoleVarRegister("server_ip",             &_network_server_bind_ip, ICONSOLE_VAR_UINT32, "Set the IP the server binds to. Changes take effect the next time you start a server");
+	IConsoleVarRegister("server_ip",             &_network_server_bind_ip, ICONSOLE_VAR_UINT32, "Set the IP the server binds to. Changes take effect the next time you start a server. Use 'all' to bind to any IP.");
 	IConsoleVarProcAdd("server_ip",              ConProcServerIP);
 	IConsoleAliasRegister("server_bind_ip",      "server_ip %+");
 	IConsoleAliasRegister("server_ip_bind",      "server_ip %+");
