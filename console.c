@@ -691,6 +691,9 @@ void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char *tokens
 	memset(&aliases, 0, sizeof(aliases));
 	memset(&aliasstream, 0, sizeof(aliasstream));
 
+	if (_stdlib_con_developer)
+		IConsolePrintF(_icolour_dbg, "condbg: requested command is an alias; parsing...");
+
 	aliases[0] = aliasstream;
 	for (cmdptr = alias->cmdline, a_index = 0, astream_i = 0; *cmdptr != '\0'; cmdptr++) {
 		if (a_index >= lengthof(aliases) || astream_i >= lengthof(aliasstream)) break;
@@ -964,6 +967,9 @@ void IConsoleVarExec(const IConsoleVar *var, byte tokencount, char *token[ICON_T
 	byte t_index = tokencount;
 	uint32 value;
 
+	if (_stdlib_con_developer)
+		IConsolePrintF(_icolour_dbg, "condbg: requested command is a variable");
+
 	if (tokencount == 0) { /* Just print out value */
 		IConsoleVarPrintGetValue(var);
 		return;
@@ -976,7 +982,6 @@ void IConsoleVarExec(const IConsoleVar *var, byte tokencount, char *token[ICON_T
 		/* Some variables need really special handling, handle it in their callback procedure */
 		if (var->proc != NULL) {
 			var->proc(tokencount, &token[t_index - tokencount]); // set the new value
-			var->proc(0, NULL); // print out new value
 			return;
 		}
 		/* Strings need special processing. No need to convert the argument to
@@ -1034,6 +1039,8 @@ void IConsoleCmdExec(const char *cmdstr)
 
 	bool longtoken = false;
 	bool foundtoken = false;
+
+	if (cmdstr[0] == '#') return; // comments
 
 	for (cmdptr = cmdstr; *cmdptr != '\0'; cmdptr++) {
 		if (!IsValidAsciiChar(*cmdptr)) {

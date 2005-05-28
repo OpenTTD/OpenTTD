@@ -1086,6 +1086,8 @@ bool NetworkChangeCompanyPassword(byte argc, char *argv[])
 	if (!_network_server)
 		SEND_COMMAND(PACKET_CLIENT_SET_PASSWORD)(_network_player_info[_local_player].password);
 
+	IConsolePrintF(_icolour_warn, "'company_pw' changed to:  %s", _network_player_info[_local_player].password);
+
 	return true;
 }
 
@@ -1136,6 +1138,7 @@ DEF_CONSOLE_CMD(ConProcServerIP)
 
 	_network_server_bind_ip = inet_addr(argv[0]);
 	snprintf(_network_server_bind_ip_host, sizeof(_network_server_bind_ip_host), "%s", inet_ntoa(*(struct in_addr *)&_network_server_bind_ip));
+	IConsolePrintF(_icolour_warn, "'server_ip' changed to:  %s", inet_ntoa(*(struct in_addr *)&_network_server_bind_ip));
 	return true;
 }
 

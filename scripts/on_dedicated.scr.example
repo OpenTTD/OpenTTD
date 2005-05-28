@@ -1,3 +1,4 @@
 echo "Setting dedicated network server settings..."
-set server_pw "*"
-set server_name "My example dedicated gameserver"
+# empty the server password
+server_pw = "*"
+server_name = "My example dedicated gameserver"

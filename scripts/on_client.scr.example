@@ -1,2 +1,2 @@
 echo "Setting default network client settings..."
-set name "myname"
+name = "myname"
