@@ -471,6 +471,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 			ret = true;
 			break;
+		}
 		default:
 			ret = true;
 	}
