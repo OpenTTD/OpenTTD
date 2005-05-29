@@ -4,9 +4,9 @@
 
 ##id 0x0000
 STR_NULL                                                        :
-STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Fora da borda do mapa
-STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Muito perto da borda do mapa
-STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Dinheiro insuficiente - necessário {CURRENCY}
+STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Fora do mapa
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Muito próximo da borda do mapa
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Não há dinheiro - requer {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
 STR_EMPTY                                                       :
@@ -22,9 +22,9 @@ STR_000F_PASSENGERS                                             :Passageiros
 STR_0010_COAL                                                   :Carvão
 STR_0011_MAIL                                                   :Correspondências
 STR_0012_OIL                                                    :Petróleo
-STR_0013_LIVESTOCK                                              :Gado
-STR_0014_GOODS                                                  :Bens
-STR_0015_GRAIN                                                  :Cereais
+STR_0013_LIVESTOCK                                              :Insumos agrícolas
+STR_0014_GOODS                                                  :Mercadorias
+STR_0015_GRAIN                                                  :Grão
 STR_0016_WOOD                                                   :Madeira
 STR_0017_IRON_ORE                                               :Minério de Ferro
 STR_0018_STEEL                                                  :Aço

@@ -1595,7 +1595,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Rahoita uusien kaupparakennusten rakentamista kaupungissa.{}  Kulu: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Osta vuoden yksinoikeudet kaupungin liikennöintiin. Paikallisviranomaiset eivät salli muiden yhtiöiden kuljettaa matkustajia ja rahtia.{} Kulu: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Lahjo viranomaisia lisätäksesi arviotasi; rangaistus voi olla kuitenkin suuri, jos jäät kiinni.{}  Kulu: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}{TOWN}: liikenne on kaaoksessa!{}{}Yhtiön {STRING} rahoittama teiden uudelleenrakennusohjelma tuo kuuden kuukauden kurjuuden motoristeille!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}{TOWN}: liikenne on kaaoksessa!{}{}{STRING} rahoittaa katujen kunnostuksen; autoilijoille odotettavissa kuusi kuukautta kurjuutta!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA32})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (rakennetaan)
