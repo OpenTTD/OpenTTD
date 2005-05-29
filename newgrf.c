@@ -351,7 +351,11 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x20:	/* Air drag */
 		case 0x21:	/* Shorter tenders */
 		case 0x22:	/* Visual */
-		case 0x23: {/* Powered wagons weight bonus */
+		case 0x23:	/* Powered wagons weight bonus */
+		case 0x24:	/* High byte of vehicle weight */
+		case 0x25:	/* User-defined bit mask to set when checking veh. var. 42 */
+		case 0x26:	/* Retire vehicle early */
+			{
 			/* TODO */
 			FOR_EACH_OBJECT {
 				grf_load_byte(&buf);
@@ -457,6 +461,10 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		}	break;
 		case 0x17:      /* Callback */
 		case 0x18:      /* Tractive effort */
+		case 0x19:      /* Air drag */
+		case 0x1A:      /* Refit cost */
+		case 0x1B:      /* Retire vehicle early */
+			{
 			/* TODO */
 			FOR_EACH_OBJECT {
 				grf_load_byte(&buf);
@@ -558,7 +566,16 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				_engine_refit_masks[SHIP_ENGINES_INDEX + engine + i] = refit_mask;
 			}
 		}	break;
-		case 0x12: { /* Callback TODO */
+		case 0x12: /* Callback */
+		case 0x13: /* Refit cost */
+		case 0x14: /* Ocean speed fraction */
+		case 0x15: /* Canal speed fraction */
+		case 0x16: /* Retire vehicle early */
+		{
+			/* TODO */
+			FOR_EACH_OBJECT {
+				grf_load_byte(&buf);
+			}
 			ret = true;
 		}	break;
 		default:
@@ -663,7 +680,14 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 				_engine_refit_masks[AIRCRAFT_ENGINES_INDEX + engine + i] = refit_mask;
 			}
 		}	break;
-		case 0x14: { /* Callback TODO */
+		case 0x14: /* Callback */
+		case 0x15: /* Refit cost */
+		case 0x16: /* Retire vehicle early */
+		{
+			/* TODO */
+			FOR_EACH_OBJECT {
+				grf_load_byte(&buf);
+			}
 			ret = true;
 		}	break;
 		default:
