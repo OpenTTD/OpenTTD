@@ -348,6 +348,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x1C:	/* Refit cost */
 		case 0x1E:	/* Callback */
 		case 0x1F:	/* Tractive effort */
+		case 0x20:	/* Air drag */
 		case 0x21:	/* Shorter tenders */
 		case 0x22:	/* Visual */
 		case 0x23: {/* Powered wagons weight bonus */
