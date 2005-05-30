@@ -295,7 +295,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->service_interval = _patches.servint_aircraft;
 
 		v->date_of_last_service = _date;
-		v->build_year = _cur_year;
+		v->build_year = u->build_year = _cur_year;
 
 		v->cur_image = u->cur_image = 0xEA0;
 
