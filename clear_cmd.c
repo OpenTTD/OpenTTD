@@ -238,6 +238,9 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	tile = TILE_FROM_XY(x,y);
 
+	/* Make an extra check for map-bounds cause we add tiles to the originating tile */
+	if (tile + TILE_XY(1,1) > MapSize()) return CMD_ERROR;
+
 	if (p1 & 1) {
 		if (!TerraformTileHeight(&ts, tile+TILE_XY(1,0),
 				TileHeight(tile + TILE_XY(1, 0)) + direction))
@@ -449,8 +452,9 @@ int32 CmdSellLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	tile = TILE_FROM_XY(x,y);
 
-	if (!CheckTileOwnership(tile) && _current_player != OWNER_WATER)
-		return CMD_ERROR;
+	if (!IsTileType(tile, MP_UNMOVABLE) || _map5[tile] != 3) return CMD_ERROR;
+	if (!CheckTileOwnership(tile) && _current_player != OWNER_WATER) return CMD_ERROR;
+
 
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 

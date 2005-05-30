@@ -33,18 +33,21 @@ int32 CmdSetPlayerFace(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 int32 CmdSetPlayerColor(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p, *pp;
+	byte colour = (byte)p2;
+
+	if (p2 >= 16) return CMD_ERROR; // max 16 colours
 
 	p = GetPlayer(_current_player);
 
 	/* Ensure no two companies have the same colour */
 	FOR_ALL_PLAYERS(pp) {
-		if (pp->is_active && pp != p && pp->player_color == (byte)p2)
+		if (pp->is_active && pp != p && pp->player_color == colour)
 			return CMD_ERROR;
 	}
 
 	if (flags & DC_EXEC) {
-		_player_colors[_current_player] = (byte)p2;
-		p->player_color = (byte)p2;
+		_player_colors[_current_player] = colour;
+		p->player_color = colour;
 		MarkWholeScreenDirty();
 	}
 	return 0;
