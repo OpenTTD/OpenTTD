@@ -1672,7 +1672,7 @@ int32 CmdBuildAirport(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	/* Check if a valid, buildable airport was chosen for construction */
-	if (!HASBIT(GetValidAirports(), p1)) return CMD_ERROR;
+	if (p1 > lengthof(_airport_map5_tiles) || !HASBIT(GetValidAirports(), p1)) return CMD_ERROR;
 
 	tile = TILE_FROM_XY(x,y);
 
