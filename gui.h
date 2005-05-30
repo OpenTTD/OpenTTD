@@ -108,6 +108,7 @@ void HandleEditBox(Window *w, int wid);
 int HandleEditBoxKey(Window *w, int wid, WindowEvent *we);
 bool HandleCaret(Textbuf *tb);
 
+void DeleteTextBufferAll(Textbuf *tb);
 bool DeleteTextBufferChar(Textbuf *tb, int delmode);
 bool InsertTextBufferChar(Textbuf *tb, byte key);
 bool InsertTextBufferClipboard(Textbuf *tb);

@@ -151,8 +151,12 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 						SetWindowDirty(w);
 					}
 					break;
-					case (WKC_CTRL | 'L'):
+				case (WKC_CTRL | 'L'):
 					IConsoleCmdExec("clear");
+					break;
+				case (WKC_CTRL | 'U'):
+					DeleteTextBufferAll(&_iconsole_cmdline);
+					SetWindowDirty(w);
 					break;
 				case WKC_BACKSPACE: case WKC_DELETE:
 					if (DeleteTextBufferChar(&_iconsole_cmdline, e->keypress.keycode)) {

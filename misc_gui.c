@@ -784,6 +784,17 @@ bool DeleteTextBufferChar(Textbuf *tb, int delmode)
 }
 
 /**
+ * Delete every character in the textbuffer
+ * @param tb @Textbuf buffer to be emptied
+ */
+void DeleteTextBufferAll(Textbuf *tb)
+{
+	memset(tb->buf, 0, tb->maxlength);
+	tb->length = tb->width = 0;
+	tb->caretpos = tb->caretxoffs = 0;
+}
+
+/**
  * Insert a character to a textbuffer. If maxlength is zero, we don't care about
  * the screenlength but only about the physical length of the string
  * @param tb @Textbuf type to be changed
@@ -874,6 +885,10 @@ int HandleEditBoxKey(Window *w, int wid, WindowEvent *we)
 	case (WKC_CTRL | 'V'):
 		if (InsertTextBufferClipboard(&WP(w, querystr_d).text))
 			InvalidateWidget(w, wid);
+		break;
+	case (WKC_CTRL | 'U'):
+		DeleteTextBufferAll(&WP(w, querystr_d).text);
+		InvalidateWidget(w, wid);
 		break;
 	case WKC_BACKSPACE: case WKC_DELETE:
 		if (DeleteTextBufferChar(&WP(w, querystr_d).text, we->keypress.keycode))
