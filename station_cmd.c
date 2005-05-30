@@ -2966,7 +2966,7 @@ const TileTypeProcs _tile_type_station_procs = {
 	GetSlopeTileh_Station,			/* get_slope_tileh_proc */
 };
 
-static const byte _roadstop_desc[] = {
+static const SaveLoad _roadstop_desc[] = {
 	SLE_VAR(RoadStop,xy,           SLE_UINT32),
 	SLE_VAR(RoadStop,used,         SLE_UINT8),
 	SLE_VAR(RoadStop,status,       SLE_UINT8),
@@ -2983,7 +2983,7 @@ static const byte _roadstop_desc[] = {
 	SLE_END()
 };
 
-static const byte _station_desc[] = {
+static const SaveLoad _station_desc[] = {
 	SLE_CONDVAR(Station, xy,           SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
 	SLE_CONDVAR(Station, xy,           SLE_UINT32, 6, 255),
 	SLE_CONDVAR(Station, bus_tile_obsolete,    SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
@@ -3036,7 +3036,7 @@ static const byte _station_desc[] = {
 	SLE_END()
 };
 
-static const byte _goods_desc[] = {
+static const SaveLoad _goods_desc[] = {
 	SLE_VAR(GoodsEntry,waiting_acceptance,SLE_UINT16),
 	SLE_VAR(GoodsEntry,days_since_pickup,	SLE_UINT8),
 	SLE_VAR(GoodsEntry,rating,						SLE_UINT8),

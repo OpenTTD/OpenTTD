@@ -766,7 +766,7 @@ static void Load_NAME(void)
 	}
 }
 
-static const byte _game_opt_desc[] = {
+static const SaveLoad _game_opt_desc[] = {
 	// added a new difficulty option (town attitude) in version 4
 	SLE_CONDARR(GameOptions,diff,						SLE_FILE_I16 | SLE_VAR_I32, 17, 0, 3),
 	SLE_CONDARR(GameOptions,diff,						SLE_FILE_I16 | SLE_VAR_I32, 18, 4, 255),

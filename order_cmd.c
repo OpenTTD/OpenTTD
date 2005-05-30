@@ -1088,7 +1088,7 @@ void InitializeOrders(void)
 	_backup_orders_tile = 0;
 }
 
-static const byte _order_desc[] = {
+static const SaveLoad _order_desc[] = {
 	SLE_VAR(Order,type,					SLE_UINT8),
 	SLE_VAR(Order,flags,				SLE_UINT8),
 	SLE_VAR(Order,station,			SLE_UINT16),

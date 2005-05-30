@@ -1973,7 +1973,7 @@ const TileTypeProcs _tile_type_town_procs = {
 
 
 // Save and load of towns.
-static const byte _town_desc[] = {
+static const SaveLoad _town_desc[] = {
 	SLE_CONDVAR(Town, xy, SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
 	SLE_CONDVAR(Town, xy, SLE_UINT32, 6, 255),
 

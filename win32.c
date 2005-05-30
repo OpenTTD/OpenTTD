@@ -181,7 +181,7 @@ static void ClientSizeChanged(int w, int h)
 	}
 }
 
-void DoExitSave(void);
+extern void DoExitSave(void);
 
 static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
@@ -1194,8 +1194,11 @@ static const char _save_succeeded[] =
 	"Be aware that critical parts of the internal game state may have become "
 	"corrupted. The saved game is not guaranteed to work.";
 
-bool EmergencySave();
-
+static bool EmergencySave(void)
+{
+	SaveOrLoad("crash.sav", SL_SAVE);
+	return true;
+}
 
 typedef struct {
 	HINTERNET (WINAPI *InternetOpenA)(LPCSTR,DWORD, LPCSTR, LPCSTR, DWORD);

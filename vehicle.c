@@ -1815,7 +1815,7 @@ restart:
 
 
 // Save and load of vehicles
-const byte _common_veh_desc[] = {
+const SaveLoad _common_veh_desc[] = {
 	SLE_VAR(Vehicle,subtype,					SLE_UINT8),
 
 	SLE_REF(Vehicle,next,							REF_VEHICLE_OLD),
@@ -1912,7 +1912,7 @@ const byte _common_veh_desc[] = {
 };
 
 
-static const byte _train_desc[] = {
+static const SaveLoad _train_desc[] = {
 	SLE_WRITEBYTE(Vehicle,type,VEH_Train, 0), // Train type. VEH_Train in mem, 0 in file.
 	SLE_INCLUDEX(0, INC_VEHICLE_COMMON),
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleRail,crash_anim_pos), SLE_UINT16),
@@ -1929,7 +1929,7 @@ static const byte _train_desc[] = {
 	SLE_END()
 };
 
-static const byte _roadveh_desc[] = {
+static const SaveLoad _roadveh_desc[] = {
 	SLE_WRITEBYTE(Vehicle,type,VEH_Road, 1), // Road type. VEH_Road in mem, 1 in file.
 	SLE_INCLUDEX(0, INC_VEHICLE_COMMON),
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleRoad,state),					SLE_UINT8),
@@ -1949,7 +1949,7 @@ static const byte _roadveh_desc[] = {
 	SLE_END()
 };
 
-static const byte _ship_desc[] = {
+static const SaveLoad _ship_desc[] = {
 	SLE_WRITEBYTE(Vehicle,type,VEH_Ship, 2), // Ship type. VEH_Ship in mem, 2 in file.
 	SLE_INCLUDEX(0, INC_VEHICLE_COMMON),
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleShip,state),				SLE_UINT8),
@@ -1960,7 +1960,7 @@ static const byte _ship_desc[] = {
 	SLE_END()
 };
 
-static const byte _aircraft_desc[] = {
+static const SaveLoad _aircraft_desc[] = {
 	SLE_WRITEBYTE(Vehicle,type,VEH_Aircraft, 3), // Aircraft type. VEH_Aircraft in mem, 3 in file.
 	SLE_INCLUDEX(0, INC_VEHICLE_COMMON),
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleAir,crashed_counter),	SLE_UINT16),
@@ -1979,7 +1979,7 @@ static const byte _aircraft_desc[] = {
 	SLE_END()
 };
 
-static const byte _special_desc[] = {
+static const SaveLoad _special_desc[] = {
 	SLE_WRITEBYTE(Vehicle,type,VEH_Special, 4),
 
 	SLE_VAR(Vehicle,subtype,					SLE_UINT8),
@@ -2011,7 +2011,7 @@ static const byte _special_desc[] = {
 	SLE_END()
 };
 
-static const byte _disaster_desc[] = {
+static const SaveLoad _disaster_desc[] = {
 	SLE_WRITEBYTE(Vehicle,type,VEH_Disaster, 5),
 
 	SLE_REF(Vehicle,next,							REF_VEHICLE_OLD),

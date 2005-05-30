@@ -927,7 +927,7 @@ int GetPlayerMaxRailtype(int p)
 }
 
 
-static const byte _engine_desc[] = {
+static const SaveLoad _engine_desc[] = {
 	SLE_VAR(Engine,intro_date,						SLE_UINT16),
 	SLE_VAR(Engine,age,										SLE_UINT16),
 	SLE_VAR(Engine,reliability,						SLE_UINT16),

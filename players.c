@@ -951,7 +951,7 @@ void LoadFromHighScore(void)
 }
 
 // Save/load of players
-static const byte _player_desc[] = {
+static const SaveLoad _player_desc[] = {
 	SLE_VAR(Player,name_2,					SLE_UINT32),
 	SLE_VAR(Player,name_1,					SLE_STRINGID),
 
@@ -1000,7 +1000,7 @@ static const byte _player_desc[] = {
 	SLE_END()
 };
 
-static const byte _player_economy_desc[] = {
+static const SaveLoad _player_economy_desc[] = {
 	// these were changed to 64-bit in savegame format 2
 	SLE_CONDVAR(PlayerEconomyEntry,income,							SLE_INT32, 0, 1),
 	SLE_CONDVAR(PlayerEconomyEntry,expenses,						SLE_INT32, 0, 1),
@@ -1015,7 +1015,7 @@ static const byte _player_economy_desc[] = {
 	SLE_END()
 };
 
-static const byte _player_ai_desc[] = {
+static const SaveLoad _player_ai_desc[] = {
 	SLE_VAR(PlayerAI,state,							SLE_UINT8),
 	SLE_VAR(PlayerAI,tick,							SLE_UINT8),
 	SLE_CONDVAR(PlayerAI,state_counter, SLE_FILE_U16 | SLE_VAR_U32, 0, 12),
@@ -1059,7 +1059,7 @@ static const byte _player_ai_desc[] = {
 	SLE_END()
 };
 
-static const byte _player_ai_build_rec_desc[] = {
+static const SaveLoad _player_ai_build_rec_desc[] = {
 	SLE_CONDVAR(AiBuildRec,spec_tile, SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
 	SLE_CONDVAR(AiBuildRec,spec_tile, SLE_UINT32, 6, 255),
 	SLE_CONDVAR(AiBuildRec,use_tile,  SLE_FILE_U16 | SLE_VAR_U32, 0, 5),

@@ -1065,7 +1065,7 @@ no_add:;
 		InvalidateWindow(WC_SUBSIDIES_LIST, 0);
 }
 
-static const byte _subsidies_desc[] = {
+static const SaveLoad _subsidies_desc[] = {
 	SLE_VAR(Subsidy,cargo_type,		SLE_UINT8),
 	SLE_VAR(Subsidy,age,					SLE_UINT8),
 	SLE_CONDVAR(Subsidy,from,			SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
@@ -1650,7 +1650,7 @@ static void SaveLoad_CAPR(void)
 	SlArray(&_cargo_payment_rates_frac, NUM_CARGO, SLE_UINT16);
 }
 
-static const byte _economy_desc[] = {
+static const SaveLoad _economy_desc[] = {
 	SLE_VAR(Economy,max_loan,						SLE_INT32),
 	SLE_VAR(Economy,max_loan_unround,		SLE_INT32),
 	SLE_VAR(Economy,fluct,							SLE_FILE_I16 | SLE_VAR_I32),
@@ -1663,7 +1663,7 @@ static const byte _economy_desc[] = {
 // Economy variables
 static void SaveLoad_ECMY(void)
 {
-	SlObject(&_economy, &_economy_desc);
+	SlObject(&_economy, _economy_desc);
 }
 
 const ChunkHandler _economy_chunk_handlers[] = {

@@ -103,7 +103,7 @@ void InitializeDepot(void)
 }
 
 
-static const byte _depot_desc[] = {
+static const SaveLoad _depot_desc[] = {
 	SLE_CONDVAR(Depot, xy,			SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
 	SLE_CONDVAR(Depot, xy,			SLE_UINT32, 6, 255),
 	SLE_VAR(Depot,town_index,		SLE_UINT16),

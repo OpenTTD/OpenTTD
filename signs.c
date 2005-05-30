@@ -216,7 +216,7 @@ void InitializeSigns(void)
 	AddBlockToPool(&_sign_pool);
 }
 
-static const byte _sign_desc[] = {
+static const SaveLoad _sign_desc[] = {
 	SLE_VAR(SignStruct,str,						SLE_UINT16),
 	SLE_CONDVAR(SignStruct,x,					SLE_FILE_I16 | SLE_VAR_I32, 0, 4),
 	SLE_CONDVAR(SignStruct,y,					SLE_FILE_I16 | SLE_VAR_I32, 0, 4),

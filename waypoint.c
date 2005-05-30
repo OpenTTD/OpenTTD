@@ -429,7 +429,7 @@ void InitializeWaypoints(void)
 	AddBlockToPool(&_waypoint_pool);
 }
 
-static const byte _waypoint_desc[] = {
+static const SaveLoad _waypoint_desc[] = {
 	SLE_CONDVAR(Waypoint, xy, SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
 	SLE_CONDVAR(Waypoint, xy, SLE_UINT32, 6, 255),
 	SLE_CONDVAR(Waypoint, town_index, SLE_UINT16, 12, 255),

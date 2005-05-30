@@ -72,7 +72,7 @@
 //#include <alloca.h>
 //#include <malloc.h>
 # define __int64 long long
-# define NOT_REACHED()
+# define NOT_REACHED() assert(0)
 # define GCC_PACK __attribute__((packed))
 
 #	if (__GNUC__ == 2)
@@ -85,7 +85,7 @@
 #       define NORETURN
 #       define FORCEINLINE inline
 #       define CDECL
-#       define NOT_REACHED()
+#       define NOT_REACHED() assert(0)
 #       define GCC_PACK
 #       undef TTD_ALIGNMENT_4
 #       undef TTD_ALIGNMENT_2
@@ -104,7 +104,11 @@
 #	define FORCEINLINE __forceinline
 #	define inline _inline
 #	define CDECL _cdecl
-# define NOT_REACHED() _assume(0)
+# if defined(_DEBUG)
+#  define NOT_REACHED() assert(0)
+# else
+#  define NOT_REACHED() _assume(0)
+# endif
 int CDECL snprintf(char *str, size_t size, const char *format, ...);
 int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap);
 # undef TTD_ALIGNMENT_4
