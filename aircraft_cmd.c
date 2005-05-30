@@ -170,7 +170,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *vl[3], *v, *u, *w;
 	UnitID unit_num;
 	TileIndex tile = TILE_FROM_XY(x,y);
-	const AircraftVehicleInfo *avi = AircraftVehInfo(p1);
+	const AircraftVehicleInfo *avi;
 	Engine *e;
 
 	if (!IsEngineBuildable(p1, VEH_Aircraft)) return CMD_ERROR;
@@ -186,6 +186,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_QUERY_COST) return value;
 
+	avi = AircraftVehInfo(p1);
 	// allocate 2 or 3 vehicle structs, depending on type
 	if (!AllocateVehicles(vl, (avi->subtype & 1) == 0 ? 3 : 2) ||
 				IsOrderPoolFull())

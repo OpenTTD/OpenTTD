@@ -256,7 +256,7 @@ int32 CmdGiveMoney(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  */
 int32 CmdChangeDifficultyLevel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	if ((int32)p1 >= GAME_DIFFICULTY_NUM && p1 != (uint32)-1L) return CMD_ERROR;
+	if (p1 != (uint32)-1L && ((int32)p1 >= GAME_DIFFICULTY_NUM || (int32)p1 < 0)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		if (p1 != (uint32)-1L) {
@@ -267,7 +267,7 @@ int32 CmdChangeDifficultyLevel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		/* If we are a network-client, update the difficult setting (if it is open).
 		 * Use this instead of just dirtying the window because we need to load in
-		* the new difficulty settings */
+		 * the new difficulty settings */
 		if (_networking && !_network_server && FindWindowById(WC_GAME_OPTIONS, 0) != NULL)
 			ShowGameDifficulty();
 	}

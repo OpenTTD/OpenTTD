@@ -428,6 +428,10 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	// get pointer to command handler
 	assert((cmd & 0xFF) < lengthof(_command_proc_table));
 	proc = _command_proc_table[cmd & 0xFF].proc;
+	if (proc == NULL) {
+		_cmd_text = NULL;
+		return false;
+	}
 
 	// Some commands have a different output in dryrun than the realrun
 	//  e.g.: if you demolish a whole town, the dryrun would say okay.
