@@ -1,6 +1,8 @@
 #ifndef NPF_H
 #define NPF_H
 
+/* Blaat */
+
 #include "ttd.h"
 #include "aystar.h"
 #include "vehicle.h"
