@@ -857,6 +857,8 @@ STR_032C_3_AIR_SERVICE                                          :{BLACK}3: Air s
 STR_032D_4_SHIP_SERVICE                                         :{BLACK}4: Ship service
 STR_032E_5_RAILROAD_SERVICE_ADVANCED                            :{BLACK}5: Railway service (advanced)
 STR_032F_AUTOSAVE                                               :{RED}AUTOSAVE
+STR_SAVING_GAME                                                 :{RED}*  *  SAVING GAME  *  *
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Saving still in progress,{}please wait until it is finished!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Select 'Ezy Street style music' programme
 
 STR_0335_6                                                      :{BLACK}6

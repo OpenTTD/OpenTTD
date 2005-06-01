@@ -818,6 +818,44 @@ static void UninitNoComp(void)
 }
 
 //********************************************
+//********** START OF MEMORY CODE (in ram)****
+//********************************************
+
+enum {
+	SAVELOAD_POOL_BLOCK_SIZE_BITS = 17,
+	SAVELOAD_POOL_MAX_BLOCKS = 500
+};
+
+/* A maximum size of of 128K * 500 = 64.000KB savegames */
+static MemoryPool _saveload_pool = {"Savegame", SAVELOAD_POOL_MAX_BLOCKS, SAVELOAD_POOL_BLOCK_SIZE_BITS, sizeof(byte), NULL, 0, 0, NULL};
+static uint _save_byte_count;
+
+static bool InitMem(void)
+{
+	CleanPool(&_saveload_pool);
+	AddBlockToPool(&_saveload_pool);
+
+	/* A block from the pool is a contigious area of memory, so it is safe to write to it sequentially */
+	_save_byte_count = 0;
+	_sl.bufsize = _saveload_pool.total_items;
+	_sl.buf = (byte*)GetItemFromPool(&_saveload_pool, _save_byte_count);
+	return true;
+}
+
+static void UnInitMem(void)
+{
+	CleanPool(&_saveload_pool);
+}
+
+static void WriteMem(uint size)
+{
+	_save_byte_count += size;
+	/* Allocate new block and new buffer-pointer */
+	AddBlockIfNeeded(&_saveload_pool, _save_byte_count);
+	_sl.buf = (byte*)GetItemFromPool(&_saveload_pool, _save_byte_count);
+}
+
+//********************************************
 //********** START OF ZLIB CODE **************
 //********************************************
 
@@ -1064,33 +1102,35 @@ typedef struct {
 } SaveLoadFormat;
 
 static const SaveLoadFormat _saveload_formats[] = {
-	{"lzo",  TO_BE32X('OTTD'), InitLZO,      ReadLZO,    UninitLZO,      InitLZO,       WriteLZO,    UninitLZO},
-	{"none", TO_BE32X('OTTN'), InitNoComp,   ReadNoComp, UninitNoComp,   InitNoComp,    WriteNoComp, UninitNoComp},
+	{"memory", 0,                NULL,         NULL,       NULL,           InitMem,       WriteMem,    UnInitMem},
+	{"lzo",    TO_BE32X('OTTD'), InitLZO,      ReadLZO,    UninitLZO,      InitLZO,       WriteLZO,    UninitLZO},
+	{"none",   TO_BE32X('OTTN'), InitNoComp,   ReadNoComp, UninitNoComp,   InitNoComp,    WriteNoComp, UninitNoComp},
 #if defined(WITH_ZLIB)
-	{"zlib", TO_BE32X('OTTZ'), InitReadZlib, ReadZlib,   UninitReadZlib, InitWriteZlib, WriteZlib,   UninitWriteZlib},
+	{"zlib",   TO_BE32X('OTTZ'), InitReadZlib, ReadZlib,   UninitReadZlib, InitWriteZlib, WriteZlib,   UninitWriteZlib},
 #else
-	{"zlib", TO_BE32X('OTTZ'), NULL,         NULL,       NULL,           NULL,          NULL,        NULL}
+	{"zlib",   TO_BE32X('OTTZ'), NULL,         NULL,       NULL,           NULL,          NULL,        NULL},
 #endif
 };
 
 /**
  * Return the savegameformat of the game. Whether it was create with ZLIB compression
  * uncompressed, or another type
- * @param s Name of the savegame format
+ * @param s Name of the savegame format. If NULL it picks the first available one
  * @return Pointer to @SaveLoadFormat struct giving all characteristics of this type of savegame
  */
 static const SaveLoadFormat *GetSavegameFormat(const char *s)
 {
 	const SaveLoadFormat *def = endof(_saveload_formats) - 1;
-	int i;
 
 	// find default savegame format, the highest one with which files can be written
 	while (!def->init_write) def--;
 
-	if (_savegame_format[0]) {
-		for (i = 0; i != lengthof(_saveload_formats); i++)
-			if (_saveload_formats[i].init_write && !strcmp(s, _saveload_formats[i].name))
-				return _saveload_formats + i;
+	if (s != NULL && s[0] != '\0') {
+		const SaveLoadFormat *slf;
+		for (slf = &_saveload_formats[0]; slf != endof(_saveload_formats); slf++) {
+			if (slf->init_write != NULL && strcmp(s, slf->name) == 0)
+				return slf;
+		}
 
 		ShowInfoF("Savegame format '%s' is not available. Reverting to '%s'.", s, def->name);
 	}
@@ -1110,6 +1150,95 @@ static inline int AbortSaveLoad(void)
 
 	_sl.fh = NULL;
 	return SL_ERROR;
+}
+
+#include "network.h"
+#include "table/strings.h"
+#include "table/sprites.h"
+#include "gfx.h"
+#include "gui.h"
+
+static bool _saving_game = false;
+
+/** Update the gui accordingly when starting saving
+ * and set locks on saveload */
+static inline void SaveFileStart(void)
+{
+	SetMouseCursor(SPR_CURSOR_ZZZ);
+	SendWindowMessage(WC_STATUS_BAR, 0, true, 0, 0);
+	_saving_game = true;
+}
+
+/** Update the gui accordingly when saving is done and release locks
+ * on saveload */
+static inline void SaveFileDone(void)
+{
+	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE);
+	SendWindowMessage(WC_STATUS_BAR, 0, false, 0, 0);
+	_saving_game = false;
+}
+
+/** We have written the whole game into memory, _saveload_pool, now find
+ * and appropiate compressor and start writing to file.
+ */
+static bool SaveFileToDisk(void *ptr)
+{
+	const SaveLoadFormat *fmt = GetSavegameFormat(_savegame_format);
+	/* XXX - backup _sl.buf cause it is used internally by the writer
+	 * and we update it for our own purposes */
+	byte *tmp = _sl.buf;
+	uint32 hdr[2];
+
+	SaveFileStart();
+
+	/* XXX - Setup setjmp error handler if an error occurs anywhere deep during
+	 * loading/saving execute a longjmp() and continue execution here */
+	if (setjmp(_sl.excpt)) {
+		AbortSaveLoad();
+		_sl.buf = tmp;
+		_sl.excpt_uninit();
+
+		ShowInfoF("Save game failed: %s.", _sl.excpt_msg);
+		ShowErrorMessage(STR_4007_GAME_SAVE_FAILED, STR_NULL, 0, 0);
+
+		SaveFileDone();
+		return false;
+	}
+
+	/* We have written our stuff to memory, now write it to file! */
+	hdr[0] = fmt->tag;
+	hdr[1] = TO_BE32((SAVEGAME_MAJOR_VERSION << 16) + (SAVEGAME_MINOR_VERSION << 8));
+	if (fwrite(hdr, sizeof(hdr), 1, _sl.fh) != 1) SlError("file write failed");
+
+	if (!fmt->init_write()) SlError("cannot initialize compressor");
+	tmp = _sl.buf; // XXX - init_write can change _sl.buf, so update it
+
+	{
+		uint i;
+		uint count = 1 << _saveload_pool.block_size_bits;
+
+		assert(_save_byte_count == _sl.offs_base);
+		for (i = 0; i != _saveload_pool.current_blocks - 1; i++) {
+			_sl.buf = _saveload_pool.blocks[i];
+			fmt->writer(count);
+		}
+
+		/* The last block is (almost) always not fully filled, so only write away
+		 * as much data as it is in there */
+		_sl.buf = _saveload_pool.blocks[i];
+		fmt->writer(_save_byte_count - (i * count));
+
+		_sl.buf = tmp; // XXX - reset _sl.buf to its original value to let it continue its internal usage
+	}
+
+	fmt->uninit_write();
+	assert(_save_byte_count == _sl.offs_base);
+	GetSavegameFormat("memory")->uninit_write(); // clean the memorypool
+	fclose(_sl.fh);
+
+	SaveFileDone();
+	CloseOTTDThread();
+	return true;
 }
 
 /**
@@ -1133,6 +1262,12 @@ int SaveOrLoad(const char *filename, int mode)
 		return SL_OK;
 	}
 
+	/* An instance of saving is already active, don't start any other cause of global variables */
+	if (_saving_game == true) {
+		if (!_do_autosave) ShowErrorMessage(_error_message, STR_SAVE_STILL_IN_PROGRESS, 0, 0);
+		return SL_ERROR;
+	}
+
 	_sl.fh = fopen(filename, (mode == SL_SAVE) ? "wb" : "rb");
 	if (_sl.fh == NULL) {
 		DEBUG(misc, 0) ("Cannot open savegame for saving/loading.");
@@ -1147,7 +1282,8 @@ int SaveOrLoad(const char *filename, int mode)
 	_sl.includes = _desc_includes;
 	_sl.chs = _chunk_handlers;
 
-	/* Setup setjmp error handler, if it fails don't even bother loading the game */
+	/* XXX - Setup setjmp error handler if an error occurs anywhere deep during
+	 * loading/saving execute a longjmp() and continue execution here */
 	if (setjmp(_sl.excpt)) {
 		AbortSaveLoad();
 
@@ -1168,8 +1304,10 @@ int SaveOrLoad(const char *filename, int mode)
    * be clobbered by `longjmp' or `vfork'" */
 	version = 0;
 
+	/* General tactic is to first save the game to memory, then use an available writer
+	 * to write it to file, either in threaded mode if possible, or single-threaded */
 	if (mode == SL_SAVE) { /* SAVE game */
-		fmt = GetSavegameFormat(_savegame_format);
+		fmt = GetSavegameFormat("memory"); // write to memory
 
 		_sl.write_bytes = fmt->writer;
 		_sl.excpt_uninit = fmt->uninit_write;
@@ -1178,20 +1316,23 @@ int SaveOrLoad(const char *filename, int mode)
 			return AbortSaveLoad();
 		}
 
-		hdr[0] = fmt->tag;
-		hdr[1] = TO_BE32((SAVEGAME_MAJOR_VERSION << 16) + (SAVEGAME_MINOR_VERSION << 8));
-		if (fwrite(hdr, sizeof(hdr), 1, _sl.fh) != 1) SlError("Writing savegame header failed");
-
 		_sl.version = SAVEGAME_MAJOR_VERSION;
 
 		BeforeSaveGame();
 		SlSaveChunks();
 		SlWriteFill(); // flush the save buffer
-		fmt->uninit_write();
+
+		/* Write to file */
+		if (_network_server || !CreateOTTDThread(&SaveFileToDisk, NULL)) {
+			DEBUG(misc, 1) ("cannot create savegame thread, reverting to single-threaded mode...");
+			SaveFileToDisk(NULL);
+		}
 
 	} else { /* LOAD game */
+		assert(mode == SL_LOAD);
+
 		if (fread(hdr, sizeof(hdr), 1, _sl.fh) != 1) {
-			DEBUG(misc, 0) ("Cannot read Savegame header, aborting.");
+			DEBUG(misc, 0) ("Cannot read savegame header, aborting.");
 			return AbortSaveLoad();
 		}
 
@@ -1237,21 +1378,19 @@ int SaveOrLoad(const char *filename, int mode)
 			return AbortSaveLoad();
 		}
 
-		/* XXX - ??? Set the current map to 256x256, in case of an old map.
-		 * Else MAPS will read the wrong information. This should initialize
-		 * to savegame mapsize no?? */
+		/* Old maps were hardcoded to 256x256 and thus did not contain
+		 * any mapsize information. Pre-initialize to 256x256 to not to
+		 * confuse old games */
 		InitializeGame(8, 8);
 
 		SlLoadChunks();
 		fmt->uninit_read();
+		fclose(_sl.fh);
+
+		/* After loading fix up savegame for any internal changes that
+		* might've occured since then. If it fails, load back the old game */
+		if (!AfterLoadGame(version)) return SL_REINIT;
 	}
-
-	fclose(_sl.fh);
-
-	/* After loading fix up savegame for any internal changes that
-	 * might've occured since then. If it fails, load back the old game */
-	if (mode == SL_LOAD && !AfterLoadGame(version))
-			return SL_REINIT;
 
 	return SL_OK;
 }

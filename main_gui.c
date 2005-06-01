@@ -2207,24 +2207,24 @@ static bool DrawScrollingStatusText(NewsItem *ni, int pos)
 
 static void StatusBarWndProc(Window *w, WindowEvent *e)
 {
-	Player *p;
+	switch (e->event) {
+	case WE_PAINT: {
+		const Player *p = (_local_player == OWNER_SPECTATOR) ? NULL : DEREF_PLAYER(_local_player);
 
-	switch(e->event) {
-	case WE_PAINT:
 		DrawWindowWidgets(w);
 		SetDParam(0, _date);
 		DrawStringCentered(70, 1, ((_pause||_patches.status_long_date)?STR_00AF:STR_00AE), 0);
 
-		p = _local_player == OWNER_SPECTATOR ? NULL : DEREF_PLAYER(_local_player);
-
-		if (p) {
+		if (p != NULL) {
 			// Draw player money
 			SetDParam64(0, p->money64);
 			DrawStringCentered(570, 1, p->player_money >= 0 ? STR_0004 : STR_0005, 0);
 		}
 
 		// Draw status bar
-		if (_do_autosave) {
+		if (w->message.msg) { // true when saving is active
+			DrawStringCentered(320, 1, STR_SAVING_GAME, 0);
+		} else if (_do_autosave) {
 			DrawStringCentered(320, 1,	STR_032F_AUTOSAVE, 0);
 		} else if (_pause) {
 			DrawStringCentered(320, 1,	STR_0319_PAUSED, 0);
@@ -2241,17 +2241,19 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 			}
 		}
 
-		if (WP(w, def_d).data_2 > 0)
-			DrawSprite(SPR_BLOT | PALETTE_TO_RED, 489, 2);
+		if (WP(w, def_d).data_2 > 0) DrawSprite(SPR_BLOT | PALETTE_TO_RED, 489, 2);
+	} break;
+
+	case WE_MESSAGE:
+		w->message.msg = e->message.msg;
+		SetWindowDirty(w);
 		break;
 
 	case WE_CLICK:
-		if (e->click.widget == 1) {
-			ShowLastNewsMessage();
-		} else if (e->click.widget == 2) {
-			if (_local_player != OWNER_SPECTATOR) ShowPlayerFinances(_local_player);
-		} else {
-			ResetObjectToPlace();
+		switch (e->click.widget) {
+			case 1: ShowLastNewsMessage(); break;
+			case 2: if (_local_player != OWNER_SPECTATOR) ShowPlayerFinances(_local_player); break;
+			default: ResetObjectToPlace();
 		}
 		break;
 

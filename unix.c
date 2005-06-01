@@ -11,6 +11,7 @@
 #include <time.h>
 #include <pwd.h>
 #include <signal.h>
+#include <pthread.h>
 
 #if (defined(_POSIX_VERSION) && _POSIX_VERSION >= 200112L) || defined(__GLIBC__)
 	#define HAS_STATVFS
@@ -553,4 +554,19 @@ void DeterminePaths(void)
 bool InsertTextBufferClipboard(Textbuf *tb)
 {
 	return false;
+}
+
+static pthread_t thread1 = 0;
+bool CreateOTTDThread(void *func, void *param)
+{
+	return (pthread_create(&thread1, NULL, func, param) == 0) ? true : false;
+}
+
+void CloseOTTDThread(void) {return;}
+
+void JoinOTTDThread(void)
+{
+	if (thread1 == 0) return;
+
+	pthread_join(thread1, NULL);
 }
