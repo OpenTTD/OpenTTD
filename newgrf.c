@@ -1080,6 +1080,28 @@ ignoring:
 
 #undef FOR_EACH_OBJECT
 
+/**
+ * Creates a spritegroup representing a callback result
+ * @param value The value that was used to represent this callback result
+ * @return A spritegroup representing that callback result
+ */
+SpriteGroup NewCallBackResult(uint16 value)
+{
+	SpriteGroup group;
+
+	group.type = SGT_CALLBACK;
+
+	// Old style callback results have the highest byte 0xFF so signify it is a callback result
+	// New style ones only have the highest bit set (allows 15-bit results, instead of just 8)
+	if ((value >> 8) == 0xFF)
+		value &= 0xFF;
+	else
+		value &= ~0x8000;
+
+	group.g.callback.result = value;
+
+	return group;
+}
 
 /* Action 0x01 */
 static void NewSpriteSet(byte *buf, int len)
@@ -1183,36 +1205,42 @@ static void NewSpriteGroup(byte *buf, int len)
 			dg->divmod_val = grf_load_byte(&buf);
 		}
 
-		/* (groupid & 0x8000) means this is callback result; we happily
-		 * ignore that for now. */
+		/* (groupid & 0x8000) means this is callback result. */
 
 		dg->num_ranges = grf_load_byte(&buf);
 		dg->ranges = calloc(dg->num_ranges, sizeof(*dg->ranges));
 		for (i = 0; i < dg->num_ranges; i++) {
 			groupid = grf_load_word(&buf);
-			if (groupid & 0x8000 || groupid >= _cur_grffile->spritegroups_count) {
+			if (groupid & 0x8000) {
+				dg->ranges[i].group = NewCallBackResult(groupid);
+			} else if (groupid >= _cur_grffile->spritegroups_count) {
 				/* This doesn't exist for us. */
 				grf_load_word(&buf); // skip range
 				i--; dg->num_ranges--;
 				continue;
-			}
+			} else {
 			/* XXX: If multiple surreal sets attach a surreal
 			 * set this way, we are in trouble. */
-			dg->ranges[i].group = _cur_grffile->spritegroups[groupid];
+				dg->ranges[i].group = _cur_grffile->spritegroups[groupid];
+			}
+
 			dg->ranges[i].low = grf_load_byte(&buf);
 			dg->ranges[i].high = grf_load_byte(&buf);
 		}
 
 		groupid = grf_load_word(&buf);
-		if (groupid & 0x8000 || groupid >= _cur_grffile->spritegroups_count) {
+		if (groupid & 0x8000) {
+			dg->default_group = malloc(sizeof(*dg->default_group));
+			*dg->default_group = NewCallBackResult(groupid);
+		} else if (groupid >= _cur_grffile->spritegroups_count) {
 			/* This spritegroup stinks. */
 			free(dg->ranges), dg->ranges = NULL;
 			grfmsg(GMS_WARN, "NewSpriteGroup(%02x:0x%x): Default groupid %04x is cargo callback or unknown, ignoring spritegroup.", setid, numloaded, groupid);
 			return;
+		} else {
+			dg->default_group = malloc(sizeof(*dg->default_group));
+			memcpy(dg->default_group, &_cur_grffile->spritegroups[groupid], sizeof(*dg->default_group));
 		}
-
-		dg->default_group = malloc(sizeof(*dg->default_group));
-		memcpy(dg->default_group, &_cur_grffile->spritegroups[groupid], sizeof(*dg->default_group));
 
 		return;
 

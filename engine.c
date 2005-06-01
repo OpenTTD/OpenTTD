@@ -317,16 +317,17 @@ void SetCustomEngineSprites(byte engine, byte cargo, SpriteGroup *group)
 	_engine_custom_sprites[engine][cargo] = *group;
 }
 
-typedef RealSpriteGroup *(*resolve_callback)(SpriteGroup *spritegroup,
-	const Vehicle *veh, void *callback); /* XXX data pointer used as function pointer */
+typedef SpriteGroup *(*resolve_callback)(SpriteGroup *spritegroup,
+	const Vehicle *veh, uint16 callback_info, void *resolve_func); /* XXX data pointer used as function pointer */
 
-static RealSpriteGroup* ResolveVehicleSpriteGroup(SpriteGroup *spritegroup,
-	const Vehicle *veh, resolve_callback callback)
+static SpriteGroup* ResolveVehicleSpriteGroup(SpriteGroup *spritegroup,
+	const Vehicle *veh, uint16 callback_info, resolve_callback resolve_func)
 {
 	//debug("spgt %d", spritegroup->type);
 	switch (spritegroup->type) {
 		case SGT_REAL:
-			return &spritegroup->g.real;
+		case SGT_CALLBACK:
+			return spritegroup;
 
 		case SGT_DETERMINISTIC: {
 			DeterministicSpriteGroup *dsg = &spritegroup->g.determ;
@@ -334,8 +335,10 @@ static RealSpriteGroup* ResolveVehicleSpriteGroup(SpriteGroup *spritegroup,
 			int value = -1;
 
 			//debug("[%p] Having fun resolving variable %x", veh, dsg->variable);
-
-			if ((dsg->variable >> 6) == 0) {
+			if (dsg->variable == 0x0C) {
+				/* Callback ID */
+				value = callback_info & 0xFF;
+			} else if ((dsg->variable >> 6) == 0) {
 				/* General property */
 				value = GetDeterministicSpriteValue(dsg->variable);
 			} else {
@@ -351,7 +354,7 @@ static RealSpriteGroup* ResolveVehicleSpriteGroup(SpriteGroup *spritegroup,
 					} else {
 						target = dsg->default_group;
 					}
-					return callback(target, NULL, callback);
+					return resolve_func(target, NULL, callback_info, resolve_func);
 				}
 
 				if (dsg->var_scope == VSG_SCOPE_PARENT) {
@@ -472,7 +475,7 @@ static RealSpriteGroup* ResolveVehicleSpriteGroup(SpriteGroup *spritegroup,
 
 			target = value != -1 ? EvalDeterministicSpriteGroup(dsg, value) : dsg->default_group;
 			//debug("Resolved variable %x: %d, %p", dsg->variable, value, callback);
-			return callback(target, veh, callback);
+			return resolve_func(target, veh, callback_info, resolve_func);
 		}
 
 		case SGT_RANDOMIZED: {
@@ -482,7 +485,7 @@ static RealSpriteGroup* ResolveVehicleSpriteGroup(SpriteGroup *spritegroup,
 				/* Purchase list of something. Show the first one. */
 				assert(rsg->num_groups > 0);
 				//debug("going for %p: %d", rsg->groups[0], rsg->groups[0].type);
-				return callback(&rsg->groups[0], NULL, callback);
+				return resolve_func(&rsg->groups[0], NULL, callback_info, resolve_func);
 			}
 
 			if (rsg->var_scope == VSG_SCOPE_PARENT) {
@@ -491,7 +494,7 @@ static RealSpriteGroup* ResolveVehicleSpriteGroup(SpriteGroup *spritegroup,
 					veh = GetFirstVehicleInChain(veh);
 			}
 
-			return callback(EvalRandomizedSpriteGroup(rsg, veh->random_bits), veh, callback);
+			return resolve_func(EvalRandomizedSpriteGroup(rsg, veh->random_bits), veh, callback_info, resolve_func);
 		}
 
 		default:
@@ -543,13 +546,16 @@ int GetCustomEngineSprite(byte engine, const Vehicle *v, byte direction)
 	}
 
 	group = GetVehicleSpriteGroup(engine, v);
-	rsg = ResolveVehicleSpriteGroup(group, v, (resolve_callback) ResolveVehicleSpriteGroup);
+	group = ResolveVehicleSpriteGroup(group, v, 0, (resolve_callback) ResolveVehicleSpriteGroup);
 
-	if (rsg->sprites_per_set == 0 && cargo != 29) { /* XXX magic number */
+	if (group->type == SGT_REAL && group->g.real.sprites_per_set == 0 && cargo != GC_DEFAULT) {
 		// This group is empty but perhaps there'll be a default one.
-		rsg = ResolveVehicleSpriteGroup(&_engine_custom_sprites[engine][29], v,
+		group = ResolveVehicleSpriteGroup(&_engine_custom_sprites[engine][GC_DEFAULT], v, 0,
 		                                (resolve_callback) ResolveVehicleSpriteGroup);
 	}
+
+	assert(group->type == SGT_REAL);
+	rsg = &group->g.real;
 
 	if (!rsg->sprites_per_set) {
 		// This group is empty. This function users should therefore
@@ -582,6 +588,39 @@ int GetCustomEngineSprite(byte engine, const Vehicle *v, byte direction)
 	return r;
 }
 
+/**
+ * Evaluates a newgrf callback
+ * @param callback_info info about which callback to evaluate
+ *  (bit 0-7)  = CallBack id of the callback to use, see CallBackId enum
+ *  (bit 8-15) = Other info some callbacks need to have, callback specific, see CallBackId enum, not used yet
+ * @param engine Engine type of the vehicle to evaluate the callback for
+ * @param vehicle The vehicle to evaluate the callback for, NULL if it doesnt exist (yet)
+ * @return The value the callback returned, or CALLBACK_FAILED if it failed
+ */
+uint16 GetCallBackResult(uint16 callback_info, byte engine, const Vehicle *v)
+{
+	SpriteGroup *group;
+	byte cargo = GC_DEFAULT;
+
+	if (v != NULL)
+		cargo = _global_cargo_id[_opt.landscape][v->cargo_type];
+
+	group = &_engine_custom_sprites[engine][cargo];
+	group = ResolveVehicleSpriteGroup(group, v, callback_info, (resolve_callback) ResolveVehicleSpriteGroup);
+
+	if (group->type == SGT_REAL && group->g.real.sprites_per_set == 0 && cargo != GC_DEFAULT) {
+		// This group is empty but perhaps there'll be a default one.
+		group = ResolveVehicleSpriteGroup(&_engine_custom_sprites[engine][GC_DEFAULT], v, callback_info,
+		                                (resolve_callback) ResolveVehicleSpriteGroup);
+	}
+
+	if (group->type != SGT_CALLBACK)
+		return CALLBACK_FAILED;
+
+	return group->g.callback.result;
+}
+
+
 
 // Global variables are evil, yes, but we would end up with horribly overblown
 // calling convention otherwise and this should be 100% reentrant.
@@ -590,8 +629,8 @@ static byte _vsg_bits_to_reseed;
 
 extern int _custom_sprites_base;
 
-static RealSpriteGroup *TriggerVehicleSpriteGroup(SpriteGroup *spritegroup,
-	Vehicle *veh, resolve_callback callback)
+static SpriteGroup *TriggerVehicleSpriteGroup(SpriteGroup *spritegroup,
+	Vehicle *veh, uint16 callback_info, resolve_callback resolve_func)
 {
 	if (spritegroup->type == SGT_RANDOMIZED) {
 		_vsg_bits_to_reseed |= RandomizedSpriteGroupTriggeredBits(
@@ -601,23 +640,29 @@ static RealSpriteGroup *TriggerVehicleSpriteGroup(SpriteGroup *spritegroup,
 		);
 	}
 
-	return ResolveVehicleSpriteGroup(spritegroup, veh, callback);
+	return ResolveVehicleSpriteGroup(spritegroup, veh, callback_info, resolve_func);
 }
 
 static void DoTriggerVehicle(Vehicle *veh, VehicleTrigger trigger, byte base_random_bits, bool first)
 {
+	SpriteGroup *group;
 	RealSpriteGroup *rsg;
 	byte new_random_bits;
 
 	_vsg_random_triggers = trigger;
 	_vsg_bits_to_reseed = 0;
-	rsg = TriggerVehicleSpriteGroup(GetVehicleSpriteGroup(veh->engine_type, veh), veh,
-	                                (resolve_callback) TriggerVehicleSpriteGroup);
-	if (rsg->sprites_per_set == 0 && veh->cargo_type != 29) { /* XXX magic number */
+	group = TriggerVehicleSpriteGroup(GetVehicleSpriteGroup(veh->engine_type, veh), veh, 0,
+	                                  (resolve_callback) TriggerVehicleSpriteGroup);
+
+	if (group->type == SGT_REAL && group->g.real.sprites_per_set == 0 && veh->cargo_type != GC_DEFAULT) {
 		// This group turned out to be empty but perhaps there'll be a default one.
-		rsg = TriggerVehicleSpriteGroup(&_engine_custom_sprites[veh->engine_type][29], veh,
-						(resolve_callback) TriggerVehicleSpriteGroup);
+		group = TriggerVehicleSpriteGroup(&_engine_custom_sprites[veh->engine_type][GC_DEFAULT], veh, 0,
+		                                  (resolve_callback) TriggerVehicleSpriteGroup);
 	}
+
+	assert(group->type == SGT_REAL);
+	rsg = &group->g.real;
+
 	new_random_bits = Random();
 	veh->random_bits &= ~_vsg_bits_to_reseed;
 	veh->random_bits |= (first ? new_random_bits : base_random_bits) & _vsg_bits_to_reseed;

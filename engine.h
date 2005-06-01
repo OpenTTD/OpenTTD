@@ -122,6 +122,17 @@ enum GlobalCargo {
 	NUM_GLOBAL_CID  =  31
 };
 
+// This enum only lists implemented callbacks
+enum CallbackID {
+	// Refit capacity, the passed vehicle needs to have its ->cargo_type set to
+	// the cargo we are refitting to, returns the new cargo capacity
+	CB_REFIT_CAP = 0x15,
+};
+
+enum {
+	CALLBACK_FAILED = 0xFFFF
+};
+
 VARDEF const uint32 _default_refitmasks[NUM_VEHICLE_TYPES];
 VARDEF const CargoID _global_cargo_id[NUM_LANDSCAPE][NUM_CARGO];
 VARDEF const uint32 _landscape_global_cargo_mask[NUM_LANDSCAPE];
@@ -133,6 +144,7 @@ void SetWagonOverrideSprites(byte engine, struct SpriteGroup *group, byte *train
 void SetCustomEngineSprites(byte engine, byte cargo, struct SpriteGroup *group);
 // loaded is in percents, overriding_engine 0xffff is none
 int GetCustomEngineSprite(byte engine, const Vehicle *v, byte direction);
+uint16 GetCallBackResult(uint16 callback_info, byte engine, const Vehicle *v);
 #define GetCustomVehicleSprite(v, direction) GetCustomEngineSprite(v->engine_type, v, direction)
 #define GetCustomVehicleIcon(et, direction) GetCustomEngineSprite(et, NULL, direction)
 

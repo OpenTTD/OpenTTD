@@ -107,10 +107,15 @@ typedef struct RandomizedSpriteGroup {
 	SpriteGroup *groups;
 } RandomizedSpriteGroup;
 
+typedef struct CallbackResultSpriteGroup {
+	uint16 result;
+} CallbackResultSpriteGroup;
+
 typedef enum SpriteGroupType {
 	SGT_REAL,
 	SGT_DETERMINISTIC,
 	SGT_RANDOMIZED,
+	SGT_CALLBACK,
 } SpriteGroupType;
 
 struct SpriteGroup {
@@ -120,6 +125,7 @@ struct SpriteGroup {
 		RealSpriteGroup real;
 		DeterministicSpriteGroup determ;
 		RandomizedSpriteGroup random;
+		CallbackResultSpriteGroup callback;
 	} g;
 };
 
