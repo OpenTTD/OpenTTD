@@ -176,7 +176,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 			max_speed = min(rvi->max_speed, max_speed);
 
 		if (u->u.rail.track == 0x80)
-			max_speed = 61;
+			max_speed = min(61, max_speed);
 
 		vmass = rvi->weight;  //[t]
 		vmass += (_cargoc.weights[u->cargo_type] * u->cargo_count) / 16;
