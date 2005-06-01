@@ -627,11 +627,11 @@ static void HandleStationPlacement(uint start, uint end)
 	uint ey = TileY(end);
 	uint w,h;
 
-	if (sx > ex) intswap(sx,ex);
-	if (sy > ey) intswap(sy,ey);
+	if (sx > ex) uintswap(sx,ex);
+	if (sy > ey) uintswap(sy,ey);
 	w = ex - sx + 1;
 	h = ey - sy + 1;
-	if (!_railstation.orientation) intswap(w,h);
+	if (!_railstation.orientation) uintswap(w,h);
 
 	// TODO: Custom station selector GUI. Now we just try using first custom station
 	// (and fall back to normal stations if it isn't available).

@@ -878,7 +878,7 @@ static bool InitWriteZlib(void)
 
 static void WriteZlibLoop(z_streamp z, byte *p, uint len, int mode)
 {
-	char buf[1024]; // output buffer
+	byte buf[1024]; // output buffer
 	int r;
 	uint n;
 	z->next_in = p;

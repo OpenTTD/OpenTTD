@@ -656,7 +656,7 @@ static void AddInflation(void)
 	inf = _economy.infl_amount_pr * 54;
 	for(i=0; i!=NUM_CARGO; i++) {
 		AddSingleInflation(
-			_cargo_payment_rates + i,
+			(int32*)_cargo_payment_rates + i,
 			_cargo_payment_rates_frac + i,
 			inf
 		);

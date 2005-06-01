@@ -67,6 +67,7 @@ Order UnpackVersion4Order(uint16 packed)
 	order.flags   = (packed & 0x00F0) >> 4;
 	order.station = (packed & 0xFF00) >> 8;
 	order.next    = NULL;
+	order.index   = 0; // avoid compiler warning
 	return order;
 }
 

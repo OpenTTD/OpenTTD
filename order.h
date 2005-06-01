@@ -137,6 +137,7 @@ static inline Order UnpackOrder(uint32 packed)
 	order.flags   = (packed & 0x0000FF00) >> 8;
 	order.station = (packed & 0xFFFF0000) >> 16;
 	order.next    = NULL;
+	order.index   = 0; // avoid compiler warning
 	return order;
 }
 

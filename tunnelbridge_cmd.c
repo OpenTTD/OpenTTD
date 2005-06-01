@@ -1153,7 +1153,7 @@ static uint GetSlopeZ_TunnelBridge(TileInfo *ti) {
 	uint y = ti->y & 0xF;
 
 	// swap directions if Y tunnel/bridge to let the code handle the X case only.
-	if (ti->map5 & 1) intswap(x,y);
+	if (ti->map5 & 1) uintswap(x,y);
 
 	// to the side of the tunnel/bridge?
 	if (IS_INT_INSIDE(y, 5, 10+1)) {

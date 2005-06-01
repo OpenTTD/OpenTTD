@@ -131,6 +131,8 @@ static inline int KillFirstBit2x64(int value)
 
 static inline int intxchg_(int *a, int b) { int t = *a; *a = b; return t; }
 #define intswap(a,b) ((b) = intxchg_(&(a), (b)))
+static inline int uintxchg_(uint *a, uint b) { uint t = *a; *a = b; return t; }
+#define uintswap(a,b) ((b) = uintxchg_(&(a), (b)))
 
 static inline int myabs(int a) { if (a<0) a = -a; return a; }
 static inline int64 myabs64(int64 a) { if (a<0) a = -a; return a; }
