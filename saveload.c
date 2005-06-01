@@ -144,7 +144,7 @@ static inline void SlWriteUint64(uint64 x)
  * If the highest bit is set (7), then the index is bigger than 127
  * elements, so use the next byte to read in the real value.
  * The actual value is then both bytes added with the first shifted
- * 8 bytes to the right, and dropping the highest bit (which only indicated a big index).
+ * 8 bits to the left, and dropping the highest bit (which only indicated a big index).
  * x = ((x & 0x7F) << 8) + SlReadByte();
  * @return Return the value of the index
  */
@@ -160,7 +160,7 @@ static uint SlReadSimpleGamma(void)
 
 /**
  * Write the header descriptor of an object or an array.
- * If the element is bigger than 128, use 2 bytes for saving
+ * If the element is bigger than 127, use 2 bytes for saving
  * and use the highest byte of the first written one as a notice
  * that the length consists of 2 bytes. The length is fixed to a
  * maximum of 16384 since any higher value will have bit 15 set
