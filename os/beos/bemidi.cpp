@@ -1,7 +1,7 @@
 #ifdef __BEOS__
 
 #include "stdafx.h"
-#include "ttd.h"
+#include "openttd.h"
 #include "hal.h"
 
 // BeOS System Includes

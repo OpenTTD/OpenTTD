@@ -2,7 +2,7 @@
 #ifndef __MORPHOS__
 #include "stdafx.h"
 
-#include "ttd.h"
+#include "openttd.h"
 #include "hal.h"
 #include "sound.h"
 #include "string.h"
