@@ -4,6 +4,8 @@
 #include "string.h"
 #include "table/strings.h"
 #include "hal.h"
+#include "gfx.h"
+#include "gui.h"
 
 #include <direct.h>
 #include <unistd.h>
@@ -11,6 +13,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <process.h>
+#include <ctype.h>
 #include <time.h>
 #include <dos.h>
 
@@ -690,25 +693,54 @@ const HalMusicDriver _os2_music_driver = {
 	OS2MidiSetVolume,
 };
 
+/**
+ * Insert a chunk of text from the clipboard onto the textbuffer. Get TEXT clipboard
+ * and append this up to the maximum length (either absolute or screenlength). If maxlength
+ * is zero, we don't care about the screenlength but only about the physical length of the string
+ * @param tb @Textbuf type to be changed
+ * @return Return true on successfull change of Textbuf, or false otherwise
+ */
 bool InsertTextBufferClipboard(Textbuf *tb)
 {
-#if 0
 	HAB hab = 0; // anchor-block handle
-	PSZ pszClipText, pszLocalText;
+	PSZ pszClipText, pszClipText2;
+	uint16 width = 0;
+	uint16 length = 0;
+	char clipbuf[300];
+
+	pszClipText2 = clipbuf;
 
 	if (WinOpenClipbrd(hab))
 	{
 		if (pszClipText = (PSZ) WinQueryClipbrdData(hab, CF_TEXT))
-		{
-			while (*pszLocalText++ = *pszClipText++);
-		}
+			strncpy(clipbuf, pszClipText, 300);
+
 		WinCloseClipbrd(hab);
 	}
 
-	// text is now in pszLocalText, do something with it!
-#endif
-	// TODO
-	return false;
+	if (!pszClipText)
+		return false;
+
+	for (; IsValidAsciiChar(*pszClipText2) && (tb->length + length) < tb->maxlength - 1 &&
+		(tb->maxwidth == 0 || width + tb->width + GetCharacterWidth((byte)*pszClipText2) <= tb->maxwidth); pszClipText2++)
+	{
+		width += GetCharacterWidth((byte)*pszClipText2);
+		length++;
+	}
+
+	if (length == 0)
+		return false;
+
+	memmove(tb->buf + tb->caretpos + length, tb->buf + tb->caretpos, tb->length - tb->caretpos);
+	memcpy(tb->buf + tb->caretpos, clipbuf, length);
+	tb->width += width;
+	tb->caretxoffs += width;
+
+	tb->length += length;
+	tb->caretpos += length;
+	tb->buf[tb->length + 1] = '\0'; // terminating zero
+
+	return true;
 }
 
 static TID thread1 = 0;
@@ -719,7 +751,6 @@ static TID thread1 = 0;
 bool CreateOTTDThread(void *func, void *param)
 {
 	thread1 = _beginthread(func, NULL, 32768, param);
-	fprintf(stderr, "beginthread returns: %d\n", thread1); //
 
 	if (thread1 == -1)
 		return(false);
