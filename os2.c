@@ -707,45 +707,46 @@ const HalMusicDriver _os2_music_driver = {
  */
 bool InsertTextBufferClipboard(Textbuf *tb)
 {
-	HAB hab = 0; // anchor-block handle
-	PSZ pszClipText, pszClipText2;
-	uint16 width = 0;
-	uint16 length = 0;
-	char clipbuf[300];
-
-	pszClipText2 = clipbuf;
+	HAB hab = 0;
 
 	if (WinOpenClipbrd(hab))
 	{
-		if (pszClipText = (PSZ) WinQueryClipbrdData(hab, CF_TEXT))
-			strncpy(clipbuf, pszClipText, 300);
+		const char* text = (const char*)WinQueryClipbrdData(hab, CF_TEXT);
+
+		if (text != NULL)
+		{
+			uint length = 0;
+			uint width = 0;
+			const char* i;
+
+			for (i = text; IsValidAsciiChar(*i); i++)
+			{
+				uint w;
+
+				if (tb->length + length >= tb->maxlength - 1) break;
+
+				w = GetCharacterWidth((byte)*i);
+				if (tb->maxwidth != 0 && width + tb->width + w > tb->maxwidth) break;
+
+				width += w;
+				length++;
+			}
+
+			memmove(tb->buf + tb->caretpos + length, tb->buf + tb->caretpos, tb->length - tb->caretpos + 1);
+			memcpy(tb->buf + tb->caretpos, text, length);
+			tb->width += width;
+			tb->caretxoffs += width;
+			tb->length += length;
+			tb->caretpos += length;
+
+			WinCloseClipbrd(hab);
+			return true;
+		}
 
 		WinCloseClipbrd(hab);
 	}
 
-	if (!pszClipText)
-		return false;
-
-	for (; IsValidAsciiChar(*pszClipText2) && (tb->length + length) < tb->maxlength - 1 &&
-		(tb->maxwidth == 0 || width + tb->width + GetCharacterWidth((byte)*pszClipText2) <= tb->maxwidth); pszClipText2++)
-	{
-		width += GetCharacterWidth((byte)*pszClipText2);
-		length++;
-	}
-
-	if (length == 0)
-		return false;
-
-	memmove(tb->buf + tb->caretpos + length, tb->buf + tb->caretpos, tb->length - tb->caretpos);
-	memcpy(tb->buf + tb->caretpos, clipbuf, length);
-	tb->width += width;
-	tb->caretxoffs += width;
-
-	tb->length += length;
-	tb->caretpos += length;
-	tb->buf[tb->length + 1] = '\0'; // terminating zero
-
-	return true;
+	return false;
 }
 
 static TID thread1 = 0;
