@@ -499,7 +499,7 @@ static void IConsoleHookAdd(IConsoleHooks *hooks, IConsoleHookTypes type, IConso
 		case ICONSOLE_HOOK_POST_ACTION:
 			hooks->post = proc;
 			break;
-			default: NOT_REACHED();
+		default: NOT_REACHED();
 	}
 }
 
@@ -526,7 +526,7 @@ static bool IConsoleHookHandle(const IConsoleHooks *hooks, IConsoleHookTypes typ
 		case ICONSOLE_HOOK_POST_ACTION:
 			proc = hooks->post;
 			break;
-			default: NOT_REACHED();
+		default: NOT_REACHED();
 	}
 
 	return (proc == NULL) ? true : proc();
@@ -925,6 +925,7 @@ static char *IConsoleVarGetStringValue(const IConsoleVar *var)
 			break;
 		case ICONSOLE_VAR_STRING:
 			value = (char*)var->addr;
+			break;
 		default: NOT_REACHED();
 	}
 
