@@ -29,6 +29,11 @@
 #include <SDL.h>
 #endif
 
+static inline int strcasecmp(const char* s1, const char* s2)
+{
+	return stricmp(s1, s2);
+}
+
 static char *_fios_path;
 static char *_fios_save_path;
 static char *_fios_scn_path;
@@ -53,7 +58,7 @@ int compare_FiosItems(const void *a, const void *b)
 	if (_savegame_sort_order < 2) // sort by date
 		r = da->mtime < db->mtime ? -1 : 1;
 	else
-		r = stricmp(
+		r = strcasecmp(
 			da->title[0] != '\0' ? da->title : da->name,
 			db->title[0] != '\0' ? db->title : db->name
 		);
@@ -153,7 +158,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 			if (stat(filename, &sb) || S_ISDIR(sb.st_mode)) continue;
 
 			t = strrchr(dirent->d_name, '.');
-			if (t != NULL && stricmp(t, ".sav") == 0) { // OpenTTD
+			if (t != NULL && strcasecmp(t, ".sav") == 0) { // OpenTTD
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_FILE;
 				fios->mtime = sb.st_mtime;
@@ -161,9 +166,9 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 				ttd_strlcpy(fios->name, dirent->d_name, lengthof(fios->name));
 			} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO) {
 				if (t != NULL && (
-							stricmp(t, ".ss1") == 0 ||
-							stricmp(t, ".sv1") == 0 ||
-							stricmp(t, ".sv2") == 0
+							strcasecmp(t, ".ss1") == 0 ||
+							strcasecmp(t, ".sv1") == 0 ||
+							strcasecmp(t, ".sv2") == 0
 						)) { // TTDLX(Patch)
 					fios = FiosAlloc();
 					fios->type = FIOS_TYPE_OLDFILE;
@@ -273,7 +278,7 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 			if (stat(filename, &sb) || S_ISDIR(sb.st_mode)) continue;
 
 			t = strrchr(dirent->d_name, '.');
-			if (t != NULL && stricmp(t, ".scn") == 0) { // OpenTTD
+			if (t != NULL && strcasecmp(t, ".scn") == 0) { // OpenTTD
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_SCENARIO;
 				fios->mtime = sb.st_mtime;
@@ -282,8 +287,8 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 			} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO ||
 					mode == SLD_NEW_GAME) {
 				if (t != NULL && (
-							stricmp(t, ".sv0") == 0 ||
-							stricmp(t, ".ss0") == 0
+							strcasecmp(t, ".sv0") == 0 ||
+							strcasecmp(t, ".ss0") == 0
 						)) { // TTDLX(Patch)
 					fios = FiosAlloc();
 					fios->type = FIOS_TYPE_OLD_SCENARIO;
@@ -410,7 +415,7 @@ void FiosMakeSavegameName(char *buf, const char *name)
 
 	// Don't append the extension, if it is already there
 	period = strrchr(name, '.');
-	if (period != NULL && stricmp(period, extension) == 0) extension = "";
+	if (period != NULL && strcasecmp(period, extension) == 0) extension = "";
 
 	sprintf(buf, "%s\\%s%s", _fios_path, name, extension);
 }
