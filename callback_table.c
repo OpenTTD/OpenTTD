@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "ttd.h"
+#include "openttd.h"
 #include "functions.h"
 
 // If you add a callback for DoCommandP, also add the callback in here

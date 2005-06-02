@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "ttd.h"
+#include "openttd.h"
 #include "strings.h" // XXX InjectDParam()
 #include "table/strings.h"
 #include "map.h"

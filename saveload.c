@@ -14,7 +14,7 @@
  * @see SaveLoad
  */
 #include "stdafx.h"
-#include "ttd.h"
+#include "openttd.h"
 #include "debug.h"
 #include "vehicle.h"
 #include "station.h"

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "ttd.h"
+#include "openttd.h"
 #include "fileio.h"
 #if defined(UNIX) || defined(__OS2__)
 #include <ctype.h> // required for tolower()

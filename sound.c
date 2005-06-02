@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "ttd.h"
+#include "openttd.h"
 #include "map.h"
 #include "mixer.h"
 #include "sound.h"

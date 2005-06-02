@@ -7,7 +7,7 @@
 #include "tile.h"
 
 #define VARDEF
-#include "ttd.h"
+#include "openttd.h"
 #include "mixer.h"
 #include "spritecache.h"
 #include "gfx.h"

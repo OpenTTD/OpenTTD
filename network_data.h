@@ -1,7 +1,7 @@
 #ifndef NETWORK_DATA_H
 #define NETWORK_DATA_H
 
-#include "ttd.h"
+#include "openttd.h"
 #include "network.h"
 #include "network_core.h"
 

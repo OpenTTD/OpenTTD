@@ -3,7 +3,7 @@
 
 /* Blaat */
 
-#include "ttd.h"
+#include "openttd.h"
 #include "aystar.h"
 #include "vehicle.h"
 

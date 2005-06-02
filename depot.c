@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "ttd.h"
+#include "openttd.h"
 #include "depot.h"
 #include "tile.h"
 #include "map.h"

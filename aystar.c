@@ -15,7 +15,7 @@
  */
 
 #include "stdafx.h"
-#include "ttd.h"
+#include "openttd.h"
 #include "aystar.h"
 // This looks in the Hash if a node exists in ClosedList
 //  If so, it returns the PathNode, else NULL

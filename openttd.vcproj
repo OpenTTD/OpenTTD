@@ -2,7 +2,7 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="7.10"
-	Name="ttd"
+	Name="openttd"
 	SccProjectName=""
 	SccLocalPath="">
 	<Platforms>
@@ -38,7 +38,7 @@
 				DefaultCharIsUnsigned="TRUE"
 				UsePrecompiledHeader="1"
 				PrecompiledHeaderThrough="stdafx.h"
-				PrecompiledHeaderFile=".\Release/ttd.pch"
+				PrecompiledHeaderFile=".\Release/openttd.pch"
 				AssemblerOutput="2"
 				AssemblerListingLocation=".\Release/"
 				ObjectFile=".\Release/"
@@ -57,16 +57,16 @@
 				OutputFile=".\Release/openttd.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
-				ProgramDatabaseFile=".\Release/ttd.pdb"
+				ProgramDatabaseFile=".\Release/openttd.pdb"
 				GenerateMapFile="TRUE"
-				MapFileName=".\Release/ttd.map"
+				MapFileName=".\Release/openttd.map"
 				SubSystem="2"
 				OptimizeReferences="2"
 				OptimizeForWindows98="1"
 				TargetMachine="1"/>
 			<Tool
 				Name="VCMIDLTool"
-				TypeLibraryName=".\Release/ttd.tlb"
+				TypeLibraryName=".\Release/openttd.tlb"
 				HeaderFileName=""/>
 			<Tool
 				Name="VCPostBuildEventTool"/>
@@ -105,7 +105,7 @@
 				RuntimeLibrary="5"
 				UsePrecompiledHeader="2"
 				PrecompiledHeaderThrough="stdafx.h"
-				PrecompiledHeaderFile=".\Debug/ttd.pch"
+				PrecompiledHeaderFile=".\Debug/openttd.pch"
 				AssemblerListingLocation=".\Debug/"
 				ObjectFile=".\Debug/"
 				ProgramDataBaseFileName=".\Debug/"
@@ -125,12 +125,12 @@
 				LinkIncremental="0"
 				SuppressStartupBanner="TRUE"
 				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile=".\Debug/ttd.pdb"
+				ProgramDatabaseFile=".\Debug/openttd.pdb"
 				SubSystem="2"
 				TargetMachine="1"/>
 			<Tool
 				Name="VCMIDLTool"
-				TypeLibraryName=".\Debug/ttd.tlb"
+				TypeLibraryName=".\Debug/openttd.tlb"
 				HeaderFileName=""/>
 			<Tool
 				Name="VCPostBuildEventTool"/>
@@ -308,10 +308,10 @@
 				RelativePath=".\tile.c">
 			</File>
 			<File
-				RelativePath="ttd.c">
+				RelativePath="openttd.c">
 			</File>
 			<File
-				RelativePath="ttd.rc">
+				RelativePath="openttd.rc">
 			</File>
 			<File
 				RelativePath="vehicle.c">
@@ -475,7 +475,7 @@
 				RelativePath=".\town.h">
 			</File>
 			<File
-				RelativePath="ttd.h">
+				RelativePath="openttd.h">
 			</File>
 			<File
 				RelativePath="variables.h">

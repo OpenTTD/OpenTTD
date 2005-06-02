@@ -1,5 +1,5 @@
 #include "../stdafx.h"
-#include "../ttd.h"
+#include "../openttd.h"
 
 static const char *name_original_english_1[] = {
 	"Great ",

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #if defined(WITH_SDL)
-#include "ttd.h"
+#include "openttd.h"
 #include "debug.h"
 #include "gfx.h"
 #include "mixer.h"

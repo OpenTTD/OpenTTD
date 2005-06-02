@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "ttd.h"
+#include "openttd.h"
 #include "queue.h"
 
 static void Stack_Clear(Queue* q, bool free_values)

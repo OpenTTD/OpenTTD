@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "ttd.h"
+#include "openttd.h"
 #include "spritecache.h"
 #include "table/strings.h"
 #include "map.h"

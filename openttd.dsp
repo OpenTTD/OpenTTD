@@ -1,24 +1,24 @@
-# Microsoft Developer Studio Project File - Name="ttd" - Package Owner=<4>
+# Microsoft Developer Studio Project File - Name="openttd" - Package Owner=<4>
 # Microsoft Developer Studio Generated Build File, Format Version 6.00
 # ** DO NOT EDIT **
 
 # TARGTYPE "Win32 (x86) Console Application" 0x0103
 
-CFG=ttd - Win32 Debug
+CFG=openttd - Win32 Debug
 !MESSAGE This is not a valid makefile. To build this project using NMAKE,
 !MESSAGE use the Export Makefile command and run
 !MESSAGE
-!MESSAGE NMAKE /f "ttd.mak".
+!MESSAGE NMAKE /f "openttd.mak".
 !MESSAGE
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
 !MESSAGE
-!MESSAGE NMAKE /f "ttd.mak" CFG="ttd - Win32 Checked"
+!MESSAGE NMAKE /f "openttd.mak" CFG="openttd - Win32 Checked"
 !MESSAGE
 !MESSAGE Possible choices for configuration are:
 !MESSAGE
-!MESSAGE "ttd - Win32 Release" (based on "Win32 (x86) Console Application")
-!MESSAGE "ttd - Win32 Debug" (based on "Win32 (x86) Console Application")
+!MESSAGE "openttd - Win32 Release" (based on "Win32 (x86) Console Application")
+!MESSAGE "openttd - Win32 Debug" (based on "Win32 (x86) Console Application")
 !MESSAGE
 
 # Begin Project
@@ -28,7 +28,7 @@ CFG=ttd - Win32 Debug
 CPP=cl.exe
 RSC=rc.exe
 
-!IF  "$(CFG)" == "ttd - Win32 Release"
+!IF  "$(CFG)" == "openttd - Win32 Release"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 0
@@ -54,7 +54,7 @@ LINK32=link.exe
 # ADD LINK32 kernel32.lib user32.lib gdi32.lib winmm.lib ws2_32.lib libpng.lib zlibstat.lib /nologo /subsystem:windows /map /machine:I386 /opt:nowin98
 # SUBTRACT LINK32 /pdb:none
 
-!ELSEIF  "$(CFG)" == "ttd - Win32 Debug"
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 1
@@ -84,8 +84,8 @@ LINK32=link.exe
 
 # Begin Target
 
-# Name "ttd - Win32 Release"
-# Name "ttd - Win32 Debug"
+# Name "openttd - Win32 Release"
+# Name "openttd - Win32 Debug"
 
 # Begin Group "Source Files"
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
@@ -173,11 +173,11 @@ SOURCE=.\md5.c
 # Begin Source File
 SOURCE=.\minilzo.c
 
-!IF  "$(CFG)" == "ttd - Win32 Release"
+!IF  "$(CFG)" == "openttd - Win32 Release"
 
 # SUBTRACT CPP /YX /Yc /Yu
 
-!ELSEIF  "$(CFG)" == "ttd - Win32 Debug"
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
 # SUBTRACT CPP /YX
 
@@ -265,11 +265,11 @@ SOURCE=.\spritecache.c
 
 SOURCE=.\StdAfx.c
 
-!IF  "$(CFG)" == "ttd - Win32 Release"
+!IF  "$(CFG)" == "openttd - Win32 Release"
 
 # ADD CPP /Yc"stdafx.h"
 
-!ELSEIF  "$(CFG)" == "ttd - Win32 Debug"
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
 !ENDIF
 
@@ -292,22 +292,22 @@ SOURCE=.\tile.c
 # End Source File
 
 # Begin Source File
-SOURCE=.\ttd.c
+SOURCE=.\openttd.c
 # End Source File
 
 # Begin Source File
-SOURCE=.\ttd.rc
+SOURCE=.\openttd.rc
 # End Source File
 
 # Begin Source File
 
 SOURCE=.\unix.c
 
-!IF  "$(CFG)" == "ttd - Win32 Release"
+!IF  "$(CFG)" == "openttd - Win32 Release"
 
 # PROP Exclude_From_Build 1
 
-!ELSEIF  "$(CFG)" == "ttd - Win32 Debug"
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
 # PROP Exclude_From_Build 1
 
@@ -339,11 +339,11 @@ SOURCE=.\waypoint.c
 
 SOURCE=.\w32dm2.cpp
 
-!IF  "$(CFG)" == "ttd - Win32 Release"
+!IF  "$(CFG)" == "openttd - Win32 Release"
 
 # SUBTRACT CPP /YX /Yc /Yu
 
-!ELSEIF  "$(CFG)" == "ttd - Win32 Debug"
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
 !ENDIF
 
@@ -499,7 +499,7 @@ SOURCE=.\town.h
 # End Source File
 
 # Begin Source File
-SOURCE=.\ttd.h
+SOURCE=.\openttd.h
 # End Source File
 
 # Begin Source File

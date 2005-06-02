@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "ttd.h"
+#include "openttd.h"
 #include "sound.h"
 #include "string.h"
 #include "table/currency.h"

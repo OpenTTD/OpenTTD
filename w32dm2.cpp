@@ -37,7 +37,7 @@
 	extern "C" {
 #endif
 
-#include "ttd.h"
+#include "openttd.h"
 #include "debug.h"
 #include "sound.h"
 #include "hal.h"

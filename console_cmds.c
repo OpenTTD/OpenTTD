@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "ttd.h"
+#include "openttd.h"
 #include "console.h"
 #include "debug.h"
 #include "engine.h"

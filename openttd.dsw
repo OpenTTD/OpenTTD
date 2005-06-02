@@ -30,7 +30,7 @@ Package=<4>
 
 ###############################################################################
 
-Project: "ttd"=.\ttd.dsp - Package Owner=<4>
+Project: "openttd"=.\openttd.dsp - Package Owner=<4>
 
 Package=<5>
 {{{

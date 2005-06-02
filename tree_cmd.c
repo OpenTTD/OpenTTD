@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "ttd.h"
+#include "openttd.h"
 #include "table/strings.h"
 #include "table/tree_land.h"
 #include "map.h"

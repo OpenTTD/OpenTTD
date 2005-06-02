@@ -2,7 +2,7 @@
 
 #include <stdarg.h>
 
-#include "ttd.h"
+#include "openttd.h"
 #include "debug.h"
 #include "gfx.h"
 #include "fileio.h"

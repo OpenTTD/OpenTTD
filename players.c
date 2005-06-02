@@ -2,7 +2,7 @@
  * sjdlfkasjdf
  */
 #include "stdafx.h"
-#include "ttd.h"
+#include "openttd.h"
 #include "string.h"
 #include "strings.h"
 #include "table/strings.h"

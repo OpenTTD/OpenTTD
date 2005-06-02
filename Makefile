@@ -679,7 +679,7 @@ C_SOURCES += town_gui.c
 C_SOURCES += train_cmd.c
 C_SOURCES += train_gui.c
 C_SOURCES += tree_cmd.c
-C_SOURCES += ttd.c
+C_SOURCES += openttd.c
 C_SOURCES += tunnelbridge_cmd.c
 C_SOURCES += unmovable_cmd.c
 C_SOURCES += vehicle.c
@@ -830,7 +830,7 @@ lang/%.lng: lang/%.txt $(STRGEN) lang/english.txt
 	@echo '===> Compiling language $(*F)'
 	$(Q)$(STRGEN) $(STRGEN_FLAGS) $< $(LANG_ERRORS)
 
-winres.o: ttd.rc
+winres.o: openttd.rc
 	@echo '===> Compiling resource $<'
 	$(Q)$(WINDRES) -o $@ $<
 

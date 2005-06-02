@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include <stdio.h>
 #include <stdarg.h>
-#include "ttd.h"
+#include "openttd.h"
 #include "console.h"
 #include "debug.h"
 #include "string.h"

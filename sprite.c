@@ -2,7 +2,7 @@
 
 #include <stdarg.h>
 
-#include "ttd.h"
+#include "openttd.h"
 #include "sprite.h"
 
 
