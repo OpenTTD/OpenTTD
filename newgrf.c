@@ -225,6 +225,9 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT {
 				uint16 power = grf_load_word(&buf);
 
+				if (rvi[i].flags & RVI_MULTIHEAD)
+					power /= 2;
+
 				rvi[i].power = power;
 				dewagonize(power, engine + i);
 			}
@@ -269,9 +272,13 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				uint8 dual = grf_load_byte(&buf);
 
 				if (dual != 0) {
-					rvi[i].flags |= 1;
+					if (!(rvi[i].flags & RVI_MULTIHEAD)) // adjust power if needed
+						rvi[i].power /= 2;
+					rvi[i].flags |= RVI_MULTIHEAD;
 				} else {
-					rvi[i].flags &= ~1;
+					if (rvi[i].flags & RVI_MULTIHEAD) // adjust power if needed
+						rvi[i].power *= 2;
+					rvi[i].flags &= ~RVI_MULTIHEAD;
 				}
 			}
 		}	break;
