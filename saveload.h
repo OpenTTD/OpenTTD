@@ -188,7 +188,7 @@ struct SaveLoad {
 
 void SlSetArrayIndex(uint index);
 int SlIterateArray(void);
-void SlArray(void *array, uint length, uint conv);
+void SlArray(void *array, uint length, VarType conv);
 void SlObject(void *object, const SaveLoad *desc);
 void SlAutolength(AutolengthProc *proc, void *arg);
 uint SlGetFieldLength(void);
