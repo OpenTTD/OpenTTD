@@ -14,6 +14,7 @@ typedef struct RailVehicleInfo {
 	byte engclass; // 0: steam, 1: diesel, 2: electric
 	byte capacity;
 	byte cargo_type;
+	byte callbackmask; // see CallbackMask enum
 } RailVehicleInfo;
 
 typedef struct ShipVehicleInfo {
@@ -122,11 +123,18 @@ enum GlobalCargo {
 	NUM_GLOBAL_CID  =  31
 };
 
-// This enum only lists implemented callbacks
+// This enum lists the implemented callbacks
+// Use as argument for the GetCallBackResult function (see comments there)
 enum CallbackID {
 	// Refit capacity, the passed vehicle needs to have its ->cargo_type set to
 	// the cargo we are refitting to, returns the new cargo capacity
-	CB_REFIT_CAP = 0x15,
+	CBID_REFIT_CAP = 0x15,
+};
+
+// bit positions for rvi->callbackmask, indicates which callbacks are used by an engine
+// (some callbacks are always used, and dont appear here)
+enum CallbackMask {
+	CBM_REFIT_CAP = 3,
 };
 
 enum {

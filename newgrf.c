@@ -343,7 +343,12 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				_engine_refit_masks[engine + i] = refit_mask;
 			}
 		}	break;
-
+		case 0x1E:	/* Callback */
+			FOR_EACH_OBJECT {
+				byte callbacks = grf_load_byte(&buf);
+				rvi[i].callbackmask = callbacks;
+			}
+			break;
 		/* TODO */
 		/* Fall-through for unimplemented two bytes long properties. */
 		case 0x1B:	/* Powered wagons power bonus */
@@ -353,7 +358,6 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		/* Fall-through for unimplemented one byte long properties. */
 		case 0x1A:	/* Sort order */
 		case 0x1C:	/* Refit cost */
-		case 0x1E:	/* Callback */
 		case 0x1F:	/* Tractive effort */
 		case 0x20:	/* Air drag */
 		case 0x21:	/* Shorter tenders */

@@ -1326,15 +1326,17 @@ int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		if (v->cargo_cap != 0) {
 			RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
-			uint16 amount;
-			CargoID temp_cid = v->cargo_type;
+			uint16 amount = CALLBACK_FAILED;
 
-			/* Check the 'refit capacity' callback */
-			v->cargo_type = new_cid;
-			amount = GetCallBackResult(CB_REFIT_CAP, v->engine_type, v);
-			v->cargo_type = temp_cid;
+			if (HASBIT(rvi->callbackmask, CBM_REFIT_CAP)) {
+				/* Check the 'refit capacity' callback */
+				CargoID temp_cid = v->cargo_type;
+				v->cargo_type = new_cid;
+				amount = GetCallBackResult(CBID_REFIT_CAP, v->engine_type, v);
+				v->cargo_type = temp_cid;
+			}
 
-			if (amount == CALLBACK_FAILED) { // callback failed, use default
+			if (amount == CALLBACK_FAILED) { // callback failed or not used, use default
 				CargoID old_cid = rvi->cargo_type;
 				/* normally, the capacity depends on the cargo type, a rail vehicle
 				* can carry twice as much mail/goods as normal cargo,
