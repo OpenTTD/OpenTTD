@@ -81,6 +81,10 @@ static inline bool IsTileType(TileIndex tile, TileType type)
 static inline Owner GetTileOwner(TileIndex tile)
 {
 	assert(tile < MapSize());
+	assert(!IsTileType(tile, MP_HOUSE));
+	assert(!IsTileType(tile, MP_VOID));
+	assert(!IsTileType(tile, MP_INDUSTRY));
+
 	return _map_owner[tile];
 }
 
