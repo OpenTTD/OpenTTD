@@ -857,6 +857,8 @@ STR_032C_3_AIR_SERVICE                                          :{BLACK}3: Servi
 STR_032D_4_SHIP_SERVICE                                         :{BLACK}4: Serviço de barcos
 STR_032E_5_RAILROAD_SERVICE_ADVANCED                            :{BLACK}5: Serviço de ferrovias (avançado)
 STR_032F_AUTOSAVE                                               :{RED}Gravado automaticamente
+STR_SAVING_GAME                                                 :{RED}*  *  SALVANDO JOGO  *  *
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Gravação em progresso,{}por favor aguarde até que termine!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Selecionar programa 'Ezy Street'
 
 STR_0335_6                                                      :{BLACK}6

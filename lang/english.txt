@@ -572,8 +572,8 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}New veh
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Changes to cargo acceptance
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsidies
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}General information
-STR_MESSAGES_ALL                                                :{YELLOW}Setting for all messagetypes (off/summary/full)
-STR_MESSAGE_SOUND                                               :{YELLOW}Play sound for summarized newsmessages
+STR_MESSAGES_ALL                                                :{YELLOW}Set all message types to: Off / Summary/ Full
+STR_MESSAGE_SOUND                                               :{YELLOW}Play sound for summarised news messages
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...too far from previous destination
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top companies who reached {NUMU16}{}({STRING} Level)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Company League Table in {NUMU16}
@@ -703,8 +703,8 @@ STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Plant tr
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Place rocky areas on landscape
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Place lighthouse
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Place transmitter
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define desert area, press and hold CTRL to remove it
-STR_CREATE_LAKE                                                 :{BLACK}Define water area, will flood its surroundings if at sea level
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define desert area.{}Press and hold CTRL to remove it
+STR_CREATE_LAKE                                                 :{BLACK}Define water area.{}It will flood its surroundings if at sea level
 STR_0290_DELETE                                                 :{BLACK}Delete
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Delete this town completely
 STR_0292_SAVE_SCENARIO                                          :Save scenario
@@ -2446,7 +2446,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Value: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{STRING}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Loading / Unloading
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Train must be stopped inside depot
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Train must be stopped inside a depot
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Can't send train to depot...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}No more space for orders
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Too many orders
