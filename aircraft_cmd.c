@@ -823,12 +823,11 @@ static bool UpdateAircraftSpeed(Vehicle *v)
 // get Aircraft running altitude
 static byte GetAircraftFlyingAltitude(const Vehicle *v)
 {
-	byte maxz = 162;
-	if (v->max_speed != 37) {
-		maxz = 171;
-		if (v->max_speed != 74) {maxz = 180;}
+	switch (v->max_speed) {
+		case 37: return 162;
+		case 74: return 171;
+		default: return 180;
 	}
-	return maxz;
 }
 
 static bool AircraftController(Vehicle *v)
