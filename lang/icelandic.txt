@@ -703,8 +703,8 @@ STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Gróðurse
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Setja klettasvæði á landið
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Setja vita
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Setja sendi
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Skilgreina eyðimerkursvæði
-STR_CREATE_LAKE                                                 :{BLACK}Afmarkaðu vantssvæðið, það mun flæða yfir nálægt land ef það er við sjávarmál
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Afmarkaðu eyðimörk.{}Smelltu og haltu CTRL til að fjarlægja hana
+STR_CREATE_LAKE                                                 :{BLACK}Afmarkaðu vantssvæði.{}Það mun flæða yfir aðlægt svæði ef það er við sjávarmál
 STR_0290_DELETE                                                 :{BLACK}Eyða
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Eyða þessum bæ algjörlega
 STR_0292_SAVE_SCENARIO                                          :Vista kort
@@ -857,6 +857,8 @@ STR_032C_3_AIR_SERVICE                                          :{BLACK}3: Loftþ
 STR_032D_4_SHIP_SERVICE                                         :{BLACK}4: Skipaþjónusta
 STR_032E_5_RAILROAD_SERVICE_ADVANCED                            :{BLACK}5: Lestarþjónusta (sérhæft)
 STR_032F_AUTOSAVE                                               :{RED}SJÁLFVIRK VISTUN
+STR_SAVING_GAME                                                 :{RED}*  *  VISTA LEIK  *  *
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Vistun er enn í gangi,{}vinsamlegast bíddu á meðan hún klárst!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Velja 'Ezy gata' listann
 
 STR_0335_6                                                      :{BLACK}6

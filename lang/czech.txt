@@ -703,8 +703,8 @@ STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Umistit 
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Umistit kamenita uzemi po mape
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Umistit majak
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Umistit vysilac
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Vytvorit poustni oblast, s CTRL ji odstraníte
-STR_CREATE_LAKE                                                 :{BLACK}Vytvorit vodní plochu (sousední dílky se zaplaví také, kdyz jsou na úrovni more)
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Vytvorit poustni oblast{}Stiskem CTRL ji odstraníte
+STR_CREATE_LAKE                                                 :{BLACK}Vytvorit vodní plochu.{}Sousední dílky se zaplaví také, pokud jsou na úrovni more
 STR_0290_DELETE                                                 :{BLACK}Smaz
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Smazat celé toto mesto
 STR_0292_SAVE_SCENARIO                                          :Ulozit mapu

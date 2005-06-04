@@ -703,8 +703,8 @@ STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Plasser 
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Plasser steinete felt i landskapet
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Plasser fyrtårn
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Plasser radiosender
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definer ørken
-STR_CREATE_LAKE                                                 :{BLACK}Definer vannområde, vil flomme utover hvis på havnivå
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definer ørkenområde.{}Trykk og hold inne CTRL for å fjerne den
+STR_CREATE_LAKE                                                 :{BLACK}Definer vannområde.{}Det vil oversvømme området rundt hvis det er på sjønivå
 STR_0290_DELETE                                                 :{BLACK}Slett
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Slett denne byen fullstendig
 STR_0292_SAVE_SCENARIO                                          :Lagre scenario
@@ -857,6 +857,8 @@ STR_032C_3_AIR_SERVICE                                          :{BLACK}3: Flyse
 STR_032D_4_SHIP_SERVICE                                         :{BLACK}4: Skipsservice
 STR_032E_5_RAILROAD_SERVICE_ADVANCED                            :{BLACK}5: Jernbaneservice (avansert)
 STR_032F_AUTOSAVE                                               :{RED}AUTOLAGRING
+STR_SAVING_GAME                                                 :{RED}*  *  LAGRER SPILL  *  *
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Lagring foregår enda,{}vennligst vent til det er ferdig!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Velg 'Ezy style music' program
 
 STR_0335_6                                                      :{BLACK}6

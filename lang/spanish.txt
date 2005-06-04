@@ -703,8 +703,8 @@ STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Planta á
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Coloca zonas rocosas sobre el paisaje
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Colocar faro
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Colocar transmisor
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definir zona desertica
-STR_CREATE_LAKE                                                 :{BLACK}Define un area de agua, inundará los alrededores sin están a nivel del mar
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define área desertica.{}Pulsa y mantén CTRL para quitarla
+STR_CREATE_LAKE                                                 :{BLACK}Define zona de água.{}Inundará los alrededores hasta nivel del mar
 STR_0290_DELETE                                                 :{BLACK}Borrar
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Borrar esta población completamente
 STR_0292_SAVE_SCENARIO                                          :Guardar escenario
@@ -857,6 +857,8 @@ STR_032C_3_AIR_SERVICE                                          :{BLACK}3: Servi
 STR_032D_4_SHIP_SERVICE                                         :{BLACK}4: Servicio por barco
 STR_032E_5_RAILROAD_SERVICE_ADVANCED                            :{BLACK}5: Railway service (advanced)
 STR_032F_AUTOSAVE                                               :{RED}AUTOGUARDADO
+STR_SAVING_GAME                                                 :{RED}*  *  GUARDANDO JUEGO  *  *
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}El grabado está en progreso,{}por favor espere hasta que termine!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Elegir el programa musical de estilo 'Ezy Street'
 
 STR_0335_6                                                      :{BLACK}6

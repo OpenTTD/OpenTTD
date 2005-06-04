@@ -703,8 +703,8 @@ STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Zasadz d
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Umiesc kamieniste tereny
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Umiesc Latarnie morska
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Umiesc Antene
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Zdefiniuj teren pustyni
-STR_CREATE_LAKE                                                 :{BLACK}Okreslajac obszar wody, zalane zostana okolice jesli sa na poziomie morza
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definuj obszar pustyni.{}Wcinij i trzymaj CTRL by usunac
+STR_CREATE_LAKE                                                 :{BLACK}Definuj akwen wodny.{}Okolice beda zalane jesli sa na poziomie morza
 STR_0290_DELETE                                                 :{BLACK}Skasuj
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Skasuj to miasto calkowicie
 STR_0292_SAVE_SCENARIO                                          :Zapisz scenariusz
@@ -857,6 +857,8 @@ STR_032C_3_AIR_SERVICE                                          :{BLACK}3: Serwi
 STR_032D_4_SHIP_SERVICE                                         :{BLACK}4: Serwis statkow
 STR_032E_5_RAILROAD_SERVICE_ADVANCED                            :{BLACK}5: Serwis pociagow (zaawansowany)
 STR_032F_AUTOSAVE                                               :{RED}AUTOZAPIS
+STR_SAVING_GAME                                                 :{RED}*  *  ZAPISYWANIE GRY  *  *
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Zapisywanie trwa,{}prosze zaczekac do zakonczenia!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Wybierz program 'Ezy Street'
 
 STR_0335_6                                                      :{BLACK}6
