@@ -2251,7 +2251,7 @@ bool CreateOTTDThread(void *func, void *param)
 	hThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)func, param, 0, &dwThreadId);
 	SetThreadPriority(hThread, THREAD_PRIORITY_BELOW_NORMAL);
 
-	return (hThread == NULL) ? false : true;
+	return hThread != NULL;
 }
 
 void CloseOTTDThread(void)

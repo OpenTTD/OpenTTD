@@ -473,7 +473,7 @@ bool GetArgumentInteger(uint32 *value, const char *arg)
 	}
 
 	*value = strtoul(arg, &endptr, 0);
-	return (arg == endptr) ? false : true;
+	return arg != endptr;
 }
 
 // * ************************* * //

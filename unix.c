@@ -559,7 +559,7 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 static pthread_t thread1 = 0;
 bool CreateOTTDThread(void *func, void *param)
 {
-	return (pthread_create(&thread1, NULL, func, param) == 0) ? true : false;
+	return pthread_create(&thread1, NULL, func, param) == 0;
 }
 
 void CloseOTTDThread(void) {return;}

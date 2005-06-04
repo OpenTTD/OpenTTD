@@ -488,7 +488,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_CREATE: /* focus input box */
 		_selected_field = 3;
-		_network_game_info.use_password = (_network_server_password[0] == '\0') ? 0 : 1;
+		_network_game_info.use_password = (_network_server_password[0] != '\0');
 		break;
 
 	case WE_PAINT: {
@@ -591,7 +591,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 	case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
 		switch(e->dropdown.button) {
 			case 8:
-				_network_advertise = (e->dropdown.index == 0) ? false : true;
+				_network_advertise = (e->dropdown.index != 0);
 				break;
 			case 10:
 				_network_game_info.clients_max = e->dropdown.index + 2;
@@ -617,7 +617,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 	case WE_ON_EDIT_TEXT: {
 		const char *b = e->edittext.str;
 		ttd_strlcpy(_network_server_password, b, sizeof(_network_server_password));
-		_network_game_info.use_password = (_network_server_password[0] == '\0') ? 0 : 1;
+		_network_game_info.use_password = (_network_server_password[0] != '\0');
 		SetWindowDirty(w);
 	} break;
 	}
