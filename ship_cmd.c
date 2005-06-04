@@ -876,7 +876,7 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	/* The ai_new queries the vehicle cost before building the route,
 	 * so we must check against cheaters no sooner than now. --pasky */
 	if (!IsTileDepotType(tile, TRANSPORT_WATER)) return CMD_ERROR;
-	if (_map_owner[tile] != _current_player) return CMD_ERROR;
+	if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
 
 	v = AllocateVehicle();
 	if (v == NULL || IsOrderPoolFull() ||

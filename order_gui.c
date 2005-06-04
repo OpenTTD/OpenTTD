@@ -167,7 +167,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 	if (_patches.gotodepot) {
 		switch (GetTileType(tile)) {
 		case MP_RAILWAY:
-			if (v->type == VEH_Train && _map_owner[tile] == _local_player) {
+			if (v->type == VEH_Train && IsTileOwner(tile, _local_player)) {
 				if ((_map5[tile]&0xFC)==0xC0) {
 					order.type = OT_GOTO_DEPOT;
 					order.flags = OF_PART_OF_ORDERS;
@@ -178,7 +178,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 			break;
 
 		case MP_STREET:
-			if ((_map5[tile] & 0xF0) == 0x20 && v->type == VEH_Road && _map_owner[tile] == _local_player) {
+			if ((_map5[tile] & 0xF0) == 0x20 && v->type == VEH_Road && IsTileOwner(tile, _local_player)) {
 				order.type = OT_GOTO_DEPOT;
 				order.flags = OF_PART_OF_ORDERS;
 				order.station = GetDepotByTile(tile)->index;
@@ -188,7 +188,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 
 		case MP_STATION:
 			if (v->type != VEH_Aircraft) break;
-			if ( IsAircraftHangarTile(tile) && _map_owner[tile] == _local_player) {
+			if (IsAircraftHangarTile(tile) && IsTileOwner(tile, _local_player)) {
 				order.type = OT_GOTO_DEPOT;
 				order.flags = OF_PART_OF_ORDERS | OF_NON_STOP;	//XXX - whats the nonstop stuff doing here?
 				order.station = _map2[tile];
@@ -216,10 +216,10 @@ static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
 	}
 
 	// check waypoint
-	if (IsTileType(tile, MP_RAILWAY)
-	&& v->type == VEH_Train
-	&& _map_owner[tile] == _local_player
-	&& (_map5[tile]&0xFE)==0xC4) {
+	if (IsTileType(tile, MP_RAILWAY) &&
+			v->type == VEH_Train &&
+			IsTileOwner(tile, _local_player) &&
+			(_map5[tile] & 0xFE) == 0xC4) {
 		order.type = OT_GOTO_WAYPOINT;
 		order.flags = 0;
 		order.station = GetWaypointByTile(tile)->index;

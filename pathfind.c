@@ -133,7 +133,7 @@ static void TPFMode2(TrackPathFinder *tpf, uint tile, int direction)
 
 	if (tpf->tracktype == TRANSPORT_RAIL) {
 		if (IsTileType(tile, MP_RAILWAY) || IsTileType(tile, MP_STATION) || IsTileType(tile, MP_TUNNELBRIDGE)) {
-			owner = _map_owner[tile];
+			owner = GetTileOwner(tile);
 			/* Check if we are on the middle of a bridge (has no owner) */
 			if (IsTileType(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xC0) == 0xC0)
 				owner = -1;
@@ -150,7 +150,7 @@ static void TPFMode2(TrackPathFinder *tpf, uint tile, int direction)
 		if (IsTileType(tile, MP_RAILWAY) || IsTileType(tile, MP_STATION) || IsTileType(tile, MP_TUNNELBRIDGE))
 			/* Check if we are on the middle of a bridge (has no owner) */
 			if (!IsTileType(tile, MP_TUNNELBRIDGE) || (_map5[tile] & 0xC0) != 0xC0)
-				if (owner != -1 && _map_owner[tile] != owner)
+				if (owner != -1 && !IsTileOwner(tile, owner))
 					return;
 	}
 
@@ -296,7 +296,7 @@ static void TPFMode1(TrackPathFinder *tpf, uint tile, int direction)
 				/* Check if we are on a bridge (middle parts don't have an owner */
 				if (!IsTileType(tile, MP_TUNNELBRIDGE) || (_map5[tile] & 0xC0) != 0xC0)
 					if (!IsTileType(tile_org, MP_TUNNELBRIDGE) || (_map5[tile_org] & 0xC0) != 0xC0)
-						if (_map_owner[tile_org] != _map_owner[tile])
+						if (GetTileOwner(tile_org) != GetTileOwner(tile))
 							return;
 	}
 

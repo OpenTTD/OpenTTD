@@ -271,7 +271,7 @@ static void ShowBuildTrainWindow(uint tile)
 	w->resize.height = w->height - 14 * 4; /* Minimum of 4 vehicles in the display */
 
 	if (tile != 0) {
-		w->caption_color = _map_owner[tile];
+		w->caption_color = GetTileOwner(tile);
 		WP(w,buildtrain_d).railtype = _map3_lo[tile] & 0xF;
 	} else {
 		w->caption_color = _local_player;
@@ -307,7 +307,8 @@ static void DrawTrainDepotWindow(Window *w)
 	tile = w->window_number;
 
 	/* setup disabled buttons */
-	w->disabled_state = (_map_owner[tile]==_local_player) ? 0 : ((1<<4)|(1<<5)|(1<<8));
+	w->disabled_state =
+		IsTileOwner(tile, _local_player) ? 0 : ((1 << 4) | (1 << 5) | (1 << 8));
 
 	/* determine amount of items for scroller */
 	num = 0;
@@ -651,7 +652,7 @@ void ShowTrainDepotWindow(uint tile)
 
 	w = AllocateWindowDescFront(&_train_depot_desc, tile);
 	if (w) {
-		w->caption_color = _map_owner[w->window_number];
+		w->caption_color = GetTileOwner(w->window_number);
 		w->vscroll.cap = 6;
 		w->hscroll.cap = 10;
 		w->resize.step_width = 29;
@@ -1345,7 +1346,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 
 			tile = _last_built_train_depot_tile;
 			do {
-				if (_map_owner[tile] == _local_player && IsTileDepotType(tile, TRANSPORT_RAIL)) {
+				if (IsTileOwner(tile, _local_player) && IsTileDepotType(tile, TRANSPORT_RAIL)) {
 					ShowTrainDepotWindow(tile);
 					ShowBuildTrainWindow(tile);
 					return;

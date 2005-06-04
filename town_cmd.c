@@ -741,7 +741,7 @@ static int GrowTownAtRoad(Town *t, uint tile)
 
 		if (IsTileType(tile, MP_STREET)) {
 			/* Don't allow building over roads of other cities */
-			if (_map_owner[tile] == OWNER_TOWN && GetTown(_map2[tile]) != t)
+			if (IsTileOwner(tile, OWNER_TOWN) && GetTown(_map2[tile]) != t)
 				_grow_town_result = -1;
 			else if (_game_mode == GM_EDITOR) {
 				/* If we are in the SE, and this road-piece has no town owner yet, it just found an
@@ -1495,7 +1495,7 @@ void DeleteTown(Town *t)
 
 			case MP_STREET:
 			case MP_TUNNELBRIDGE:
-				if (_map_owner[tile] == OWNER_TOWN &&
+				if (IsTileOwner(tile, OWNER_TOWN) &&
 						ClosestTownFromTile(tile, (uint)-1) == t)
 					DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 				break;
@@ -1837,15 +1837,12 @@ Town *ClosestTownFromTile(uint tile, uint threshold)
 	Town *t;
 	uint dist, best = threshold;
 	Town *best_town = NULL;
-	byte owner;
 
 	// XXX - Fix this so for a given tiletype the owner of the type is in the same variable
-	if (IsTileType(tile, MP_STREET) && (_map5[tile] & 0xF0) == 0x10) { // rail crossing
-		owner = _map3_lo[tile];
-	} else
-		owner = _map_owner[tile];
-
-	if ((IsTileType(tile, MP_STREET) && owner == OWNER_TOWN) || IsTileType(tile, MP_HOUSE))
+	if (IsTileType(tile, MP_HOUSE) || (
+				IsTileType(tile, MP_STREET) &&
+				((_map5[tile] & 0xF0) != 0x10 ? GetTileOwner(tile) : _map3_lo[tile]) == OWNER_TOWN
+			))
 		return GetTown(_map2[tile]);
 
 	FOR_ALL_TOWNS(t) {

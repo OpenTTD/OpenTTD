@@ -21,7 +21,7 @@ static void DisasterClearSquare(TileIndex tile)
 
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
-			if (IS_HUMAN_PLAYER(_map_owner[tile])) DoClearSquare(tile);
+			if (IS_HUMAN_PLAYER(GetTileOwner(tile))) DoClearSquare(tile);
 			break;
 
 		case MP_HOUSE: {
@@ -173,9 +173,8 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 
 			if (IsValidTile(tile) &&
 					IsTileType(tile, MP_STATION) &&
-				IS_BYTE_INSIDE(_map5[tile], 8, 0x43) &&
-				IS_HUMAN_PLAYER(_map_owner[tile])) {
-
+					IS_BYTE_INSIDE(_map5[tile], 8, 0x43) &&
+					IS_HUMAN_PLAYER(GetTileOwner(tile))) {
 				v->current_order.station = 1;
 				v->age = 0;
 
@@ -199,9 +198,8 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 
 		if (IsValidTile(tile) &&
 				IsTileType(tile, MP_STATION) &&
-			IS_BYTE_INSIDE(_map5[tile], 8, 0x43) &&
-			IS_HUMAN_PLAYER(_map_owner[tile])) {
-
+				IS_BYTE_INSIDE(_map5[tile], 8, 0x43) &&
+				IS_HUMAN_PLAYER(GetTileOwner(tile))) {
 			st = GetStation(_map2[tile]);
 			CLRBITS(st->airport_flags, RUNWAY_IN_block);
 		}
@@ -242,8 +240,8 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 	tile = v->tile;/**/
 	if (IsValidTile(tile) &&
 			IsTileType(tile, MP_STATION) &&
-		IS_BYTE_INSIDE(_map5[tile], 8, 0x43) &&
-		IS_HUMAN_PLAYER(_map_owner[tile])) {
+			IS_BYTE_INSIDE(_map5[tile], 8, 0x43) &&
+			IS_HUMAN_PLAYER(GetTileOwner(tile))) {
 
 		st = GetStation(_map2[tile]);
 		SETBITS(st->airport_flags, RUNWAY_IN_block);
@@ -581,8 +579,8 @@ static void DisasterTick_4(Vehicle *v)
 		tile_org = tile = TILE_MASK(Random());
 		do {
 			if (IsTileType(tile, MP_RAILWAY) &&
-					(_map5[tile]&~3)!=0xC0 &&	IS_HUMAN_PLAYER(_map_owner[tile]))
-						break;
+					(_map5[tile] & ~3) != 0xC0 && IS_HUMAN_PLAYER(GetTileOwner(tile)))
+				break;
 			tile = TILE_MASK(tile+1);
 		} while (tile != tile_org);
 		v->dest_tile = tile;

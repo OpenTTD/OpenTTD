@@ -195,7 +195,7 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 					break;
 
 				case MP_CLEAR:
-					if (_map_owner[ti.tile] != OWNER_NONE) {
+					if (!IsTileOwner(ti.tile, OWNER_NONE)) {
 						_error_message = STR_2804_SITE_UNSUITABLE;
 						continue;
 					}
@@ -396,7 +396,7 @@ static void GetTileDesc_Trees(uint tile, TileDesc *td)
 	byte b;
 	StringID str;
 
-	td->owner = _map_owner[tile];
+	td->owner = GetTileOwner(tile);
 
 	b = _map3_lo[tile];
 	(str=STR_2810_CACTUS_PLANTS, b==0x1B) ||

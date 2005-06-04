@@ -628,7 +628,7 @@ static int32 DoClearTunnel(uint tile, uint32 flags)
 
 	// in scenario editor you can always destroy tunnels
 	if (_game_mode != GM_EDITOR && !CheckTileOwnership(tile)) {
-		if (!(_patches.extra_dynamite || _cheats.magic_bulldozer.value) || _map_owner[tile] != OWNER_TOWN)
+		if (!(_patches.extra_dynamite || _cheats.magic_bulldozer.value) || !IsTileOwner(tile, OWNER_TOWN))
 			return CMD_ERROR;
 	}
 
@@ -640,7 +640,7 @@ static int32 DoClearTunnel(uint tile, uint32 flags)
 	t = ClosestTownFromTile(tile, (uint)-1); //needed for town rating penalty
 	// check if you're allowed to remove the tunnel owned by a town
 	// removal allowal depends on difficulty settings
-	if(_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR ) {
+	if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR) {
 		if (!CheckforTownRating(tile, flags, t, TUNNELBRIDGE_REMOVE)) {
 			SetDParam(0, t->index);
 			return_cmd_error(STR_2009_LOCAL_AUTHORITY_REFUSES);
@@ -656,7 +656,7 @@ static int32 DoClearTunnel(uint tile, uint32 flags)
 		DoClearSquare(endtile);
 		UpdateSignalsOnSegment(tile, _updsignals_tunnel_dir[tile_dir]);
 		UpdateSignalsOnSegment(endtile, _updsignals_tunnel_dir[endtile_dir]);
-		if (_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR)
+		if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR)
 			ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM);
 	}
 	return  _price.clear_tunnel * (length + 1);
@@ -736,7 +736,7 @@ static int32 DoClearBridge(uint tile, uint32 flags)
 
 	// floods, scenario editor can always destroy bridges
 	if (_current_player != OWNER_WATER && _game_mode != GM_EDITOR && !CheckTileOwnership(tile)) {
-		if (!(_patches.extra_dynamite || _cheats.magic_bulldozer.value) || _map_owner[tile] != OWNER_TOWN)
+		if (!(_patches.extra_dynamite || _cheats.magic_bulldozer.value) || !IsTileOwner(tile, OWNER_TOWN))
 			return CMD_ERROR;
 	}
 
@@ -763,7 +763,7 @@ static int32 DoClearBridge(uint tile, uint32 flags)
 	t = ClosestTownFromTile(tile, (uint)-1); //needed for town rating penalty
 	// check if you're allowed to remove the bridge owned by a town.
 	// removal allowal depends on difficulty settings
-	if(_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR) {
+	if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR) {
 		if (!CheckforTownRating(tile, flags, t, TUNNELBRIDGE_REMOVE))
 			return CMD_ERROR;
 	}
@@ -775,7 +775,7 @@ static int32 DoClearBridge(uint tile, uint32 flags)
 
 		//checks if the owner is town then decrease town rating by RATING_TUNNEL_BRIDGE_DOWN_STEP until
 		// you have a "Poor" (0) town rating
-		if (_map_owner[tile] == OWNER_TOWN && _game_mode != GM_EDITOR)
+		if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR)
 			ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM);
 
 		do {
@@ -1281,7 +1281,7 @@ static void GetTileDesc_TunnelBridge(uint tile, TileDesc *td)
 			do tile += delta; while (_map5[tile] & 0x40);
 		}
 	}
-	td->owner = _map_owner[tile];
+	td->owner = GetTileOwner(tile);
 }
 
 
@@ -1370,8 +1370,7 @@ static uint32 GetTileTrackStatus_TunnelBridge(uint tile, TransportType mode)
 
 static void ChangeTileOwner_TunnelBridge(uint tile, byte old_player, byte new_player)
 {
-	if (_map_owner[tile] != old_player)
-		return;
+	if (!IsTileOwner(tile, old_player)) return;
 
 	if (new_player != 255) {
 		_map_owner[tile] = new_player;

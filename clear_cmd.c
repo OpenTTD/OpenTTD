@@ -399,7 +399,8 @@ int32 CmdPurchaseLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
-	if (IsTileType(tile, MP_UNMOVABLE) && _map5[tile] == 3 && _map_owner[tile] == _current_player)
+	if (IsTileType(tile, MP_UNMOVABLE) && _map5[tile] == 3 &&
+			IsTileOwner(tile, _current_player))
 		return_cmd_error(STR_5807_YOU_ALREADY_OWN_IT);
 
 	cost = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
@@ -837,7 +838,7 @@ static void GetTileDesc_Clear(uint tile, TileDesc *td)
 	if (i == 0)
 		i = (_map5[tile] & 3) + 8;
 	td->str = _clear_land_str[i - 1];
-	td->owner = _map_owner[tile];
+	td->owner = GetTileOwner(tile);
 }
 
 static void ChangeTileOwner_Clear(uint tile, byte old_player, byte new_player)

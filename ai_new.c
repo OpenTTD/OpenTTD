@@ -763,7 +763,7 @@ static void AiNew_State_FindDepot(Player *p) {
 				// Its a street, test if it is a depot
 				if (_map5[tile + TileOffsByDir(j)] & 0x20) {
 					// We found a depot, is it ours? (TELL ME!!!)
-					if (_map_owner[tile + TileOffsByDir(j)] == _current_player) {
+					if (IsTileOwner(tile + TileOffsByDir(j), _current_player)) {
 						// Now, is it pointing to the right direction.........
 						if ((_map5[tile + TileOffsByDir(j)] & 3) == (j ^ 2)) {
 							// Yeah!!!
@@ -1062,7 +1062,7 @@ static void AiNew_State_BuildDepot(Player *p) {
 	assert(p->ainew.state == AI_STATE_BUILD_DEPOT);
 
 	if (IsTileType(p->ainew.depot_tile, MP_STREET) && _map5[p->ainew.depot_tile] & 0x20) {
-		if (_map_owner[p->ainew.depot_tile] == _current_player) {
+		if (IsTileOwner(p->ainew.depot_tile, _current_player)) {
 			// The depot is already builded!
 			p->ainew.state = AI_STATE_BUILD_VEHICLE;
 			return;

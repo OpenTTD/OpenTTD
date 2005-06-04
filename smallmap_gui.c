@@ -496,12 +496,12 @@ static inline uint32 GetSmallMapOwnerPixels(TileIndex tile)
 {
 	TileType t = GetTileType(tile);
 
-	if (t == MP_HOUSE || _map_owner[tile] == OWNER_TOWN) {
-		t = 0x80;
-	} else if (t == MP_INDUSTRY) {
+	if (t == MP_INDUSTRY) {
 		t = 0xff;
+	} else if (t == MP_HOUSE || IsTileOwner(tile, OWNER_TOWN)) {
+		t = 0x80;
 	} else {
-		t = _map_owner[tile];
+		t = GetTileOwner(tile);
 	}
 
 	return _owner_colors[t];

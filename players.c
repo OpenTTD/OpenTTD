@@ -281,8 +281,10 @@ bool CheckOwnership(byte owner)
 
 bool CheckTileOwnership(uint tile)
 {
-	byte owner = _map_owner[tile];
+	byte owner = GetTileOwner(tile);
+
 	assert(owner <= OWNER_WATER);
+
 	if (owner == _current_player)
 		return true;
 	_error_message = STR_013B_OWNED_BY;

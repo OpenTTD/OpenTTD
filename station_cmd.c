@@ -2103,7 +2103,7 @@ static void DrawTile_Station(TileInfo *ti)
 	uint32 relocation = 0;
 
 	{
-		uint owner = _map_owner[ti->tile];
+		uint owner = GetTileOwner(ti->tile);
 		image_or_modificator = 0x315 << 16; /* NOTE: possible bug in ttd here? */
 		if (owner < MAX_PLAYERS)
 			image_or_modificator = PLAYER_SPRITE_COLOR(owner);
@@ -2204,7 +2204,7 @@ static void GetTileDesc_Station(uint tile, TileDesc *td)
 	byte m5;
 	StringID str;
 
-	td->owner = _map_owner[tile];
+	td->owner = GetTileOwner(tile);
 	td->build_date = GetStation(_map2[tile])->build_date;
 
 	m5 = _map5[tile];
@@ -2880,8 +2880,7 @@ void DeleteOilRig(uint tile)
 
 static void ChangeTileOwner_Station(uint tile, byte old_player, byte new_player)
 {
-	if (_map_owner[tile] != old_player)
-		return;
+	if (!IsTileOwner(tile, old_player)) return;
 
 	if (new_player != 255) {
 		Station *st = GetStation(_map2[tile]);

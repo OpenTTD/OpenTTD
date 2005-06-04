@@ -364,7 +364,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 						(rail_bit == 2 && m5 == 0x0A) // correct direction?
 					)) {
 				if (flags & DC_EXEC) {
-					_map3_lo[tile] = _map_owner[tile];
+					_map3_lo[tile] = GetTileOwner(tile);
 					_map_owner[tile] = _current_player;
 					_map3_hi[tile] = p1;
 					_map5[tile] = 0x10 | (rail_bit == 1 ? 0x08 : 0x00); // level crossing
@@ -1067,7 +1067,7 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 		if (m5 & RAIL_TYPE_SPECIAL)
 			return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
 
-		if (_map_owner[tile] != _current_player)
+		if (!IsTileOwner(tile, _current_player))
 			return_cmd_error(STR_1024_AREA_IS_OWNED_BY_ANOTHER);
 
 		return_cmd_error(STR_1008_MUST_REMOVE_RAILROAD_TRACK);
@@ -1324,7 +1324,7 @@ static void DrawTile_Track(TileInfo *ti)
 	uint32 tracktype_offs, image;
 	byte m5;
 
-	_drawtile_track_palette = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_map_owner[ti->tile]));
+	_drawtile_track_palette = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)));
 
 	tracktype_offs = (_map3_lo[ti->tile] & 0xF) * TRACKTYPE_SPRITE_PITCH;
 
@@ -1900,32 +1900,32 @@ static void TileLoop_Track(uint tile)
 		} else if (rail == RAIL_BIT_RIGHT) {
 			a2 = RAIL_GROUND_FENCE_VERT2;
 		} else {
-			owner = _map_owner[tile];
+			owner = GetTileOwner(tile);
 
 			if ( (!(rail&(RAIL_BIT_DIAG2|RAIL_BIT_UPPER|RAIL_BIT_LEFT)) && (rail&RAIL_BIT_DIAG1)) || rail==(RAIL_BIT_LOWER|RAIL_BIT_RIGHT)) {
 				if (!IsTileType(tile + TILE_XY(0,-1), MP_RAILWAY) ||
-						owner != _map_owner[tile + TILE_XY(0,-1)] ||
+						!IsTileOwner(tile + TILE_XY(0, -1), owner) ||
 						(_map5[tile + TILE_XY(0,-1)]==RAIL_BIT_UPPER || _map5[tile + TILE_XY(0,-1)]==RAIL_BIT_LEFT))
 							a2 = RAIL_GROUND_FENCE_NW;
 			}
 
 			if ( (!(rail&(RAIL_BIT_DIAG2|RAIL_BIT_LOWER|RAIL_BIT_RIGHT)) && (rail&RAIL_BIT_DIAG1)) || rail==(RAIL_BIT_UPPER|RAIL_BIT_LEFT)) {
 				if (!IsTileType(tile + TILE_XY(0,1), MP_RAILWAY) ||
-						owner != _map_owner[tile + TILE_XY(0,1)] ||
+						!IsTileOwner(tile + TILE_XY(0, 1), owner) ||
 						(_map5[tile + TILE_XY(0,1)]==RAIL_BIT_LOWER || _map5[tile + TILE_XY(0,1)]==RAIL_BIT_RIGHT))
 							a2 = (a2 == RAIL_GROUND_FENCE_NW) ? RAIL_GROUND_FENCE_SENW : RAIL_GROUND_FENCE_SE;
 			}
 
 			if ( (!(rail&(RAIL_BIT_DIAG1|RAIL_BIT_UPPER|RAIL_BIT_RIGHT)) && (rail&RAIL_BIT_DIAG2)) || rail==(RAIL_BIT_LOWER|RAIL_BIT_LEFT)) {
 				if (!IsTileType(tile + TILE_XY(-1,0), MP_RAILWAY) ||
-						owner != _map_owner[tile + TILE_XY(-1,0)] ||
+						!IsTileOwner(tile + TILE_XY(-1, 0), owner) ||
 						(_map5[tile + TILE_XY(-1,0)]==RAIL_BIT_UPPER || _map5[tile + TILE_XY(-1,0)]==RAIL_BIT_RIGHT))
 							a2 = RAIL_GROUND_FENCE_NE;
 			}
 
 			if ( (!(rail&(RAIL_BIT_DIAG1|RAIL_BIT_LOWER|RAIL_BIT_LEFT)) && (rail&RAIL_BIT_DIAG2)) || rail==(RAIL_BIT_UPPER|RAIL_BIT_RIGHT)) {
 				if (!IsTileType(tile + TILE_XY(1,0), MP_RAILWAY) ||
-						owner != _map_owner[tile + TILE_XY(1,0)] ||
+						!IsTileOwner(tile + TILE_XY(1, 0), owner) ||
 						(_map5[tile + TILE_XY(1,0)]==RAIL_BIT_LOWER || _map5[tile + TILE_XY(1,0)]==RAIL_BIT_LEFT))
 							a2 = (a2 == RAIL_GROUND_FENCE_NE) ? RAIL_GROUND_FENCE_NESW : RAIL_GROUND_FENCE_SW;
 			}
@@ -1997,7 +1997,7 @@ static void ClickTile_Track(uint tile)
 
 static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 {
-	td->owner = _map_owner[tile];
+	td->owner = GetTileOwner(tile);
 	switch (_map5[tile] & RAIL_TYPE_MASK) {
 		case RAIL_TYPE_NORMAL:
 			td->str = STR_1021_RAILROAD_TRACK;
@@ -2025,8 +2025,7 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 
 static void ChangeTileOwner_Track(uint tile, byte old_player, byte new_player)
 {
-	if (_map_owner[tile] != old_player)
-		return;
+	if (!IsTileOwner(tile, old_player)) return;
 
 	if (new_player != 255) {
 		_map_owner[tile] = new_player;

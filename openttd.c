@@ -1299,7 +1299,7 @@ bool AfterLoadGame(uint version)
 		uint h = MapSizeY();
 
 		BEGIN_TILE_LOOP(tile_cur, w, h, tile)
-			if (IsTileType(tile_cur, MP_WATER) && _map_owner[tile_cur] >= MAX_PLAYERS)
+			if (IsTileType(tile_cur, MP_WATER) && GetTileOwner(tile_cur) >= MAX_PLAYERS)
 				_map_owner[tile_cur] = OWNER_WATER;
 		END_TILE_LOOP(tile_cur, w, h, tile)
 	}
@@ -1393,13 +1393,14 @@ bool AfterLoadGame(uint version)
 				SetTileType(tile, MP_HOUSE);
 			} else if (IsTileType(tile, MP_STREET)) {
 				//XXX magic
-				SetTileType(tile, MP_VOID);
 				_map3_hi[tile] |= (_map2[tile] << 4);
-				if ( _map_owner[tile] == OWNER_TOWN)
+				if (IsTileOwner(tile, OWNER_TOWN)) {
+					SetTileType(tile, MP_VOID);
 					_map2[tile] = ClosestTownFromTile(tile,(uint)-1)->index;
-				else
+					SetTileType(tile, MP_STREET);
+				} else {
 					_map2[tile] = 0;
-				SetTileType(tile, MP_STREET);
+				}
 			}
 		} END_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0);
 	}

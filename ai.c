@@ -3637,8 +3637,8 @@ static void AiRemovePlayerRailOrRoad(Player *p, TileIndex tile)
 	byte m5;
 
 	if (IsTileType(tile, MP_RAILWAY)) {
-		if (_map_owner[tile] != _current_player)
-			return;
+		if (!IsTileOwner(tile, _current_player)) return;
+
 		m5 = _map5[tile];
 		if ((m5&~0x3) != 0xC0) {
 is_rail_crossing:;
@@ -3696,8 +3696,7 @@ pos_3:
 			DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 		}
 	} else if (IsTileType(tile, MP_STREET)) {
-		if (_map_owner[tile] != _current_player)
-			return;
+		if (!IsTileOwner(tile, _current_player)) return;
 
 		if ( (_map5[tile]&0xF0) == 0x10)
 			goto is_rail_crossing;
@@ -3707,19 +3706,19 @@ pos_3:
 
 			// Check if there are any stations around.
 			if (IsTileType(tile + TILE_XY(-1,0), MP_STATION) &&
-					_map_owner[tile + TILE_XY(-1,0)] == _current_player)
+					IsTileOwner(tile + TILE_XY(-1, 0), _current_player))
 						return;
 
 			if (IsTileType(tile + TILE_XY(1,0), MP_STATION) &&
-					_map_owner[tile + TILE_XY(1,0)] == _current_player)
+					IsTileOwner(tile + TILE_XY(1, 0), _current_player))
 						return;
 
 			if (IsTileType(tile + TILE_XY(0,-1), MP_STATION) &&
-					_map_owner[tile + TILE_XY(0,-1)] == _current_player)
+					IsTileOwner(tile + TILE_XY(0, -1), _current_player))
 						return;
 
 			if (IsTileType(tile + TILE_XY(0,1), MP_STATION) &&
-					_map_owner[tile + TILE_XY(0,1)] == _current_player)
+					IsTileOwner(tile + TILE_XY(0, 1), _current_player))
 						return;
 
 			dir = _map5[tile] & 3;
@@ -3735,7 +3734,7 @@ pos_3:
 	} else if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		byte b;
 
-		if (_map_owner[tile] != _current_player || (_map5[tile] & 0xC6) != 0x80)
+		if (!IsTileOwner(tile, _current_player) || (_map5[tile] & 0xC6) != 0x80)
 			return;
 
 		m5 = 0;

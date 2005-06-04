@@ -199,7 +199,7 @@ static void ShowBuildAircraftWindow(uint tile)
 	w->resize.step_height = 24;
 
 	if (tile != 0) {
-		w->caption_color = _map_owner[tile];
+		w->caption_color = GetTileOwner(tile);
 	} else {
 		w->caption_color = _local_player;
 	}
@@ -612,7 +612,8 @@ static void DrawAircraftDepotWindow(Window *w)
 	tile = w->window_number;
 
 	/* setup disabled buttons */
-	w->disabled_state = (_map_owner[tile]==_local_player) ? 0 : ((1<<4)|(1<<7));
+	w->disabled_state =
+		IsTileOwner(tile, _local_player) ? 0 : ((1 << 4) | (1 << 7));
 
 	/* determine amount of items for scroller */
 	num = 0;
@@ -828,7 +829,7 @@ void ShowAircraftDepotWindow(uint tile)
 
 	w = AllocateWindowDescFront(&_aircraft_depot_desc, tile);
 	if (w) {
-		w->caption_color = _map_owner[tile];
+		w->caption_color = GetTileOwner(tile);
 		w->vscroll.cap = 2;
 		w->hscroll.cap = 4;
 		w->resize.step_width = 74;
@@ -1013,7 +1014,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 
 			tile = _last_built_aircraft_depot_tile;
 			do {
-				if (_map_owner[tile] == _local_player && IsAircraftHangarTile(tile)) {
+				if (IsTileOwner(tile, _local_player) && IsAircraftHangarTile(tile)) {
 					ShowAircraftDepotWindow(tile);
 					ShowBuildAircraftWindow(tile);
 					return;

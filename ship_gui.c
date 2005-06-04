@@ -428,7 +428,7 @@ static void ShowBuildShipWindow(TileIndex tile)
 	w->resize.step_height = 24;
 
 	if (tile != 0) {
-		w->caption_color = _map_owner[tile];
+		w->caption_color = GetTileOwner(tile);
 	} else {
 		w->caption_color = _local_player;
 	}
@@ -588,7 +588,8 @@ static void DrawShipDepotWindow(Window *w)
 	tile = w->window_number;
 
 	/* setup disabled buttons */
-	w->disabled_state = (_map_owner[tile]==_local_player) ? 0 : ((1<<4)|(1<<7));
+	w->disabled_state =
+		IsTileOwner(tile, _local_player) ? 0 : ((1 << 4) | (1 << 7));
 
 	/* determine amount of items for scroller */
 	num = 0;
@@ -808,7 +809,7 @@ void ShowShipDepotWindow(uint tile)
 
 	w = AllocateWindowDescFront(&_ship_depot_desc,tile);
 	if (w) {
-		w->caption_color = _map_owner[w->window_number];
+		w->caption_color = GetTileOwner(w->window_number);
 		w->vscroll.cap = 2;
 		w->hscroll.cap = 3;
 		w->resize.step_width = 90;
@@ -995,7 +996,7 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 
 			tile = _last_built_ship_depot_tile;
 			do {
-				if (_map_owner[tile] == _local_player && IsTileDepotType(tile, TRANSPORT_WATER)) {
+				if (IsTileOwner(tile, _local_player) && IsTileDepotType(tile, TRANSPORT_WATER)) {
 					ShowShipDepotWindow(tile);
 					ShowBuildShipWindow(tile);
 					return;

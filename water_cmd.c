@@ -421,7 +421,7 @@ static void DrawTile_Water(TileInfo *ti)
 		return;
 	}
 
-	DrawWaterStuff(ti, _shipdepot_display_seq[ti->map5 & 0x7F], PLAYER_SPRITE_COLOR(_map_owner[ti->tile]), 0);
+	DrawWaterStuff(ti, _shipdepot_display_seq[ti->map5 & 0x7F], PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)), 0);
 }
 
 void DrawShipDepotSprite(int x, int y, int image)
@@ -465,7 +465,7 @@ static void GetTileDesc_Water(uint tile, TileDesc *td)
 	else
 		td->str = STR_3806_SHIP_DEPOT;
 
-	td->owner = _map_owner[tile];
+	td->owner = GetTileOwner(tile);
 }
 
 static void AnimateTile_Water(uint tile)
@@ -686,8 +686,7 @@ static void ClickTile_Water(uint tile)
 
 static void ChangeTileOwner_Water(uint tile, byte old_player, byte new_player)
 {
-	if (_map_owner[tile] != old_player)
-		return;
+	if (!IsTileOwner(tile, old_player)) return;
 
 	if (new_player != 255) {
 		_map_owner[tile] = new_player;

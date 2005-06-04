@@ -81,7 +81,7 @@ static bool CheckAllowRemoveRoad(uint tile, uint br, bool *edge_road)
 	if (IsTileType(tile, MP_STREET) && (_map5[tile] & 0xF0) == 0x10) {
 		owner = _map3_lo[tile];
 	} else {
-		owner = _map_owner[tile];
+		owner = GetTileOwner(tile);
 	}
 	// Only do the special processing if the road is owned
 	// by a town
@@ -157,7 +157,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (IsTileType(tile, MP_STREET) && (_map5[tile] & 0xF0) == 0x10) {
 		owner = _map3_lo[tile];
 	} else
-		owner = _map_owner[tile];
+		owner = GetTileOwner(tile);
 
 	if (owner == OWNER_TOWN && _game_mode != GM_EDITOR) {
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) { // index of town is not saved for bridge (no space)
@@ -686,7 +686,7 @@ static int32 ClearTile_Road(uint tile, byte flags) {
 		byte b = m5 & 0xF;
 
 		if (! ((1 << b) & (M(1)|M(2)|M(4)|M(8))) ) {
-			if ( (!(flags & DC_AI_BUILDING) || _map_owner[tile]!=OWNER_TOWN) && flags&DC_AUTO)
+			if ((!(flags & DC_AI_BUILDING) || !IsTileOwner(tile, OWNER_TOWN)) && flags & DC_AUTO)
 				return_cmd_error(STR_1801_MUST_REMOVE_ROAD_FIRST);
 		}
 		return DoCommandByTile(tile, b, 0, flags, CMD_REMOVE_ROAD);
@@ -835,7 +835,7 @@ static void DrawTile_Road(TileInfo *ti)
 		if (ti->tileh != 0) { DrawFoundation(ti, ti->tileh); }
 
 		ormod = 0x315;
-		player = _map_owner[ti->tile];
+		player = GetTileOwner(ti->tile);
 		if (player < MAX_PLAYERS)
 			ormod = PLAYER_SPRITE_COLOR(player);
 
@@ -1101,7 +1101,7 @@ static void GetTileDesc_Road(uint tile, TileDesc *td)
 	if (i == 0)
 		i = ((_map3_hi[tile] & 0x70) >> 4) + 3;
 	td->str = _road_tile_strings[i - 1];
-	td->owner = _map_owner[tile];
+	td->owner = GetTileOwner(tile);
 }
 
 static const byte _roadveh_enter_depot_unk0[4] = {
@@ -1145,8 +1145,7 @@ static void ChangeTileOwner_Road(uint tile, byte old_player, byte new_player)
 		_map3_lo[tile] = (new_player == 0xFF) ? OWNER_NONE : new_player;
 	}
 
-	if (_map_owner[tile] != old_player)
-		return;
+	if (!IsTileOwner(tile, old_player)) return;
 
 	if (new_player != 255) {
 		_map_owner[tile] = new_player;

@@ -133,7 +133,7 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	/* The ai_new queries the vehicle cost before building the route,
 	 * so we must check against cheaters no sooner than now. --pasky */
 	if (!IsTileDepotType(tile, TRANSPORT_ROAD)) return CMD_ERROR;
-	if (_map_owner[tile] != _current_player) return CMD_ERROR;
+	if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
 
 	v = AllocateVehicle();
 	if (v == NULL || IsOrderPoolFull())
@@ -297,7 +297,7 @@ static bool EnumRoadSignalFindDepot(uint tile, RoadFindDepotData *rfdd, int trac
 
 	if (IsTileType(tile, MP_STREET) &&
 			(_map5[tile] & 0xF0) == 0x20 &&
-			_map_owner[tile] == rfdd->owner) {
+			IsTileOwner(tile, rfdd->owner)) {
 
 		if (length < rfdd->best_length) {
 			rfdd->best_length = length;
@@ -1048,11 +1048,11 @@ static int RoadFindPathToDest(Vehicle *v, uint tile, int enterdir)
 	}
 
 	if (IsTileType(tile, MP_STREET)) {
-		if ((_map5[tile]&0xF0) == 0x20 && v->owner == _map_owner[tile])
+		if ((_map5[tile]&0xF0) == 0x20 && IsTileOwner(tile, v->owner))
 			/* Road crossing */
 			bitmask |= _road_veh_fp_ax_or[_map5[tile]&3];
 	} else if (IsTileType(tile, MP_STATION)) {
-		if (_map_owner[tile] == OWNER_NONE || _map_owner[tile] == v->owner) {
+		if (IsTileOwner(tile, OWNER_NONE) || IsTileOwner(tile, v->owner)) {
 			/* Our station */
 			Station *st = GetStation(_map2[tile]);
 			byte val = _map5[tile];

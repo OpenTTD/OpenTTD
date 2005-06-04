@@ -122,7 +122,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 			// statue
 			DrawGroundSprite(0x58C);
 
-			image = PLAYER_SPRITE_COLOR(_map_owner[ti->tile]);
+			image = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
 			image += 0x8A48;
 			if (_display_opt & DO_TRANS_BUILDINGS)
 				image = (image & 0x3FFF) | 0x3224000;
@@ -133,7 +133,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 			DrawClearLandTile(ti, 0);
 
 			AddSortableSpriteToDraw(
-				PLAYER_SPRITE_COLOR(_map_owner[ti->tile]) + 0x92B6,
+				PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)) + 0x92B6,
 				ti->x+8, ti->y+8,
 				1, 1,
 				10,
@@ -165,7 +165,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 
 		if (ti->tileh) DrawFoundation(ti, ti->tileh);
 
-		ormod = PLAYER_SPRITE_COLOR(_map_owner[ti->tile]);
+		ormod = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
 
 		t = &_unmovable_display_datas[ti->map5 & 0x7F];
 		DrawGroundSprite(t->ground_sprite | ormod);
@@ -255,7 +255,7 @@ static void GetTileDesc_Unmovable(uint tile, TileDesc *td)
 	int i = _map5[tile];
 	if (i & 0x80) i = -1;
 	td->str = _unmovable_tile_str[i + 1];
-	td->owner = _map_owner[tile];
+	td->owner = GetTileOwner(tile);
 }
 
 static void AnimateTile_Unmovable(uint tile)
@@ -308,7 +308,7 @@ static uint32 GetTileTrackStatus_Unmovable(uint tile, TransportType mode)
 static void ClickTile_Unmovable(uint tile)
 {
 	if (_map5[tile] & 0x80) {
-		ShowPlayerCompany(_map_owner[tile]);
+		ShowPlayerCompany(GetTileOwner(tile));
 	}
 }
 
@@ -396,8 +396,7 @@ restart:
 
 static void ChangeTileOwner_Unmovable(uint tile, byte old_player, byte new_player)
 {
-	if (_map_owner[tile] != old_player)
-		return;
+	if (!IsTileOwner(tile, old_player)) return;
 
 	if (_map5[tile]==3 && new_player != 255) {
 		_map_owner[tile] = new_player;

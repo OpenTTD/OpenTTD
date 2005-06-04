@@ -538,7 +538,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	 * to the player. Doesn't matter if only the cost is queried */
 	if (!(flags & DC_QUERY_COST)) {
 		if (!IsTileDepotType(tile, TRANSPORT_RAIL)) return CMD_ERROR;
-		if (_map_owner[tile] != _current_player) return CMD_ERROR;
+		if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
 	}
 
 	_cmd_build_rail_veh_var1 = 0;
@@ -1387,7 +1387,7 @@ typedef struct TrainFindDepotData {
 
 static bool TrainFindDepotEnumProc(uint tile, TrainFindDepotData *tfdd, int track, uint length, byte *state)
 {
-	if (IsTileType(tile, MP_RAILWAY) && _map_owner[tile] == tfdd->owner) {
+	if (IsTileType(tile, MP_RAILWAY) && IsTileOwner(tile, tfdd->owner)) {
 		if ((_map5[tile] & ~0x3) == 0xC0) {
 			if (length < tfdd->best_length) {
 				tfdd->best_length = length;
@@ -2314,7 +2314,7 @@ static bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
 		case MP_STREET:
 			// tracks over roads, do owner check of tracks (_map_owner[tile])
 			return
-				_map_owner[tile] == v->owner &&
+				IsTileOwner(tile, v->owner) &&
 				(v->subtype != TS_Front_Engine || (_map3_hi[tile] & 0xF) == v->u.rail.railtype);
 
 		default:
@@ -2322,7 +2322,7 @@ static bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
 	}
 
 	return
-		_map_owner[tile] == v->owner &&
+		IsTileOwner(tile, v->owner) &&
 		(v->subtype != TS_Front_Engine || (_map3_lo[tile] & 0xF) == v->u.rail.railtype);
 }
 
