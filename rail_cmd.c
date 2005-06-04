@@ -338,7 +338,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				return CMD_ERROR;
 			}
 			if (m5 & RAIL_TYPE_SPECIAL ||
-					_map_owner[tile] != _current_player ||
+					!IsTileOwner(tile, _current_player) ||
 					(_map3_lo[tile] & 0xFU) != p1) {
 				// Get detailed error message
 				return DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
