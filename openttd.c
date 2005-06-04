@@ -1188,11 +1188,9 @@ static void ConvertTownOwner(void)
 			if ((_map5[tile] & 0xF0) == 0x10 && _map3_lo[tile] & 0x80)
 				_map3_lo[tile] = OWNER_TOWN;
 
-			if (_map_owner[tile] & 0x80)
-				_map_owner[tile] = OWNER_TOWN;
+			if (_map_owner[tile] & 0x80) SetTileOwner(tile, OWNER_TOWN);
 		} else if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-			if (_map_owner[tile] & 0x80)
-				_map_owner[tile] = OWNER_TOWN;
+			if (_map_owner[tile] & 0x80) SetTileOwner(tile, OWNER_TOWN);
 		}
 	}
 }
@@ -1300,7 +1298,7 @@ bool AfterLoadGame(uint version)
 
 		BEGIN_TILE_LOOP(tile_cur, w, h, tile)
 			if (IsTileType(tile_cur, MP_WATER) && GetTileOwner(tile_cur) >= MAX_PLAYERS)
-				_map_owner[tile_cur] = OWNER_WATER;
+				SetTileOwner(tile_cur, OWNER_WATER);
 		END_TILE_LOOP(tile_cur, w, h, tile)
 	}
 

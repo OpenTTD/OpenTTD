@@ -689,7 +689,7 @@ static void ChangeTileOwner_Water(uint tile, byte old_player, byte new_player)
 	if (!IsTileOwner(tile, old_player)) return;
 
 	if (new_player != 255) {
-		_map_owner[tile] = new_player;
+		SetTileOwner(tile, new_player);
 	} else {
 		DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 	}

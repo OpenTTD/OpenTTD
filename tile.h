@@ -88,6 +88,16 @@ static inline Owner GetTileOwner(TileIndex tile)
 	return _map_owner[tile];
 }
 
+static inline void SetTileOwner(TileIndex tile, Owner owner)
+{
+	assert(tile < MapSize());
+	assert(!IsTileType(tile, MP_HOUSE));
+	assert(!IsTileType(tile, MP_VOID));
+	assert(!IsTileType(tile, MP_INDUSTRY));
+
+	_map_owner[tile] = owner;
+}
+
 static inline bool IsTileOwner(TileIndex tile, Owner owner)
 {
 	return GetTileOwner(tile) == owner;

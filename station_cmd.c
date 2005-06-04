@@ -2827,7 +2827,7 @@ void BuildOilRig(uint tile)
 
 			SetTileType(tile, MP_STATION);
 			_map5[tile] = 0x4B;
-			_map_owner[tile] = OWNER_NONE;
+			SetTileOwner(tile, OWNER_NONE);
 			_map3_lo[tile] = 0;
 			_map3_hi[tile] = 0;
 			_map2[tile] = st->index;
@@ -2884,7 +2884,7 @@ static void ChangeTileOwner_Station(uint tile, byte old_player, byte new_player)
 
 	if (new_player != 255) {
 		Station *st = GetStation(_map2[tile]);
-		_map_owner[tile] = new_player;
+		SetTileOwner(tile, new_player);
 		st->owner = new_player;
 		_global_station_sort_dirty = true; // transfer ownership of station to another player
 		InvalidateWindowClasses(WC_STATION_LIST);

@@ -358,7 +358,7 @@ void GenerateUnmovables(void)
 				continue;
 			SetTileType(tile, MP_UNMOVABLE);
 			_map5[tile] = 0;
-			_map_owner[tile] = OWNER_NONE;
+			SetTileOwner(tile, OWNER_NONE);
 			if (--j == 0)
 				break;
 		}
@@ -390,7 +390,7 @@ restart:
 
 		SetTileType(tile, MP_UNMOVABLE);
 		_map5[tile] = 1;
-		_map_owner[tile] = OWNER_NONE;
+		SetTileOwner(tile, OWNER_NONE);
 	} while (--i);
 }
 
@@ -399,7 +399,7 @@ static void ChangeTileOwner_Unmovable(uint tile, byte old_player, byte new_playe
 	if (!IsTileOwner(tile, old_player)) return;
 
 	if (_map5[tile]==3 && new_player != 255) {
-		_map_owner[tile] = new_player;
+		SetTileOwner(tile, new_player);
 	}	else {
 		DoClearSquare(tile);
 	}

@@ -316,7 +316,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					cost += ret;
 
 					if (flags & DC_EXEC) {
-						_map_owner[tile] = _current_player;
+						SetTileOwner(tile, _current_player);
 						_map3_lo[tile] &= ~0x0F;
 						_map3_lo[tile] |= p1;
 						_map5[tile] = (m5 & 0xC7) | 0x20; // railroad under bridge
@@ -365,7 +365,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					)) {
 				if (flags & DC_EXEC) {
 					_map3_lo[tile] = GetTileOwner(tile);
-					_map_owner[tile] = _current_player;
+					SetTileOwner(tile, _current_player);
 					_map3_hi[tile] = p1;
 					_map5[tile] = 0x10 | (rail_bit == 1 ? 0x08 : 0x00); // level crossing
 				}
@@ -387,7 +387,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			if (flags & DC_EXEC) {
 				SetTileType(tile, MP_RAILWAY);
-				_map_owner[tile] = _current_player;
+				SetTileOwner(tile, _current_player);
 				_map2[tile] = 0; // Bare land
 				_map3_lo[tile] = p1; // No signals, rail type
 				_map5[tile] = rail_bit;
@@ -461,7 +461,7 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (!(flags & DC_EXEC))
 			return _price.remove_rail;
 
-		_map_owner[tile] = OWNER_NONE;
+		SetTileOwner(tile, OWNER_NONE);
 		_map5[tile] = ti.map5 & 0xC7;
 	} else if (ti.type == MP_STREET) {
 		byte m5;
@@ -485,7 +485,7 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			return _price.remove_rail;
 
 		_map5[tile] = m5;
-		_map_owner[tile] = _map3_lo[tile];
+		SetTileOwner(tile, _map3_lo[tile]);
 		_map2[tile] = 0;
 	} else {
 		assert(ti.type == MP_RAILWAY);
@@ -2028,7 +2028,7 @@ static void ChangeTileOwner_Track(uint tile, byte old_player, byte new_player)
 	if (!IsTileOwner(tile, old_player)) return;
 
 	if (new_player != 255) {
-		_map_owner[tile] = new_player;
+		SetTileOwner(tile, new_player);
 	}	else {
 		DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 	}

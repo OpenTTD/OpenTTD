@@ -451,7 +451,7 @@ void ConvertGroundTilesIntoWaterTiles(void)
 		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h == 0) {
 			SetTileType(tile, MP_WATER);
 			_map5[tile] = 0;
-			_map_owner[tile] = OWNER_WATER;
+			SetTileOwner(tile, OWNER_WATER);
 		}
 	}
 }

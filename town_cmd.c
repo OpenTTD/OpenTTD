@@ -746,7 +746,7 @@ static int GrowTownAtRoad(Town *t, uint tile)
 			else if (_game_mode == GM_EDITOR) {
 				/* If we are in the SE, and this road-piece has no town owner yet, it just found an
 				*  owner :) (happy happy happy road now) */
-				_map_owner[tile] = OWNER_TOWN;
+				SetTileOwner(tile, OWNER_TOWN);
 				_map2[tile] = t->index;
 			}
 		}

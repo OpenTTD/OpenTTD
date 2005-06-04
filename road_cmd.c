@@ -195,7 +195,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (flags & DC_EXEC) {
 			ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
 			_map5[tile] = ti.map5 & 0xC7;
-			_map_owner[tile] = OWNER_NONE;
+			SetTileOwner(tile, OWNER_NONE);
 			MarkTileDirtyByTile(tile);
 		}
 		return cost;
@@ -470,7 +470,7 @@ do_clear:;
 			SetTileType(tile, MP_STREET);
 			_map5[tile] = 0;
 			_map2[tile] = p2;
-			_map_owner[tile] = _current_player;
+			SetTileOwner(tile, _current_player);
 		}
 
 		_map5[tile] |= (byte)pieces;
@@ -1148,14 +1148,14 @@ static void ChangeTileOwner_Road(uint tile, byte old_player, byte new_player)
 	if (!IsTileOwner(tile, old_player)) return;
 
 	if (new_player != 255) {
-		_map_owner[tile] = new_player;
+		SetTileOwner(tile, new_player);
 	}	else {
 		b = _map5[tile]&0xF0;
 		if (b == 0) {
-			_map_owner[tile] = OWNER_NONE;
+			SetTileOwner(tile, OWNER_NONE);
 		} else if (b == 0x10) {
 			_map5[tile] = (_map5[tile]&8) ? 0x5 : 0xA;
-			_map_owner[tile] = _map3_lo[tile];
+			SetTileOwner(tile, _map3_lo[tile]);
 			_map3_lo[tile] = 0;
 			_map3_hi[tile] &= 0x80;
 		} else {

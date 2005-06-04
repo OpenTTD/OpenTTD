@@ -711,7 +711,7 @@ static int32 DoClearBridge(uint tile, uint32 flags)
 
 		if (flags & DC_EXEC) {
 			_map5[tile] = _map5[tile] & ~0x38;
-			_map_owner[tile] = OWNER_NONE;
+			SetTileOwner(tile, OWNER_NONE);
 			MarkTileDirtyByTile(tile);
 		}
 		return cost;
@@ -726,7 +726,7 @@ static int32 DoClearBridge(uint tile, uint32 flags)
 		cost = _price.clear_water;
 		if (flags & DC_EXEC) {
 			_map5[tile] = _map5[tile] & ~0x38;
-			_map_owner[tile] = OWNER_NONE;
+			SetTileOwner(tile, OWNER_NONE);
 			MarkTileDirtyByTile(tile);
 		}
 		return cost;
@@ -1373,7 +1373,7 @@ static void ChangeTileOwner_TunnelBridge(uint tile, byte old_player, byte new_pl
 	if (!IsTileOwner(tile, old_player)) return;
 
 	if (new_player != 255) {
-		_map_owner[tile] = new_player;
+		SetTileOwner(tile, new_player);
 	}	else {
 		if((_map5[tile] & 0xC0)==0xC0) {
 			// the stuff BELOW the middle part is owned by the deleted player.
@@ -1382,7 +1382,7 @@ static void ChangeTileOwner_TunnelBridge(uint tile, byte old_player, byte new_pl
 				_map5[tile] &= ~(1 << 5 | 1 << 4 | 1 << 3); // no transport route under bridge anymore..
 			} else {
 				// for road, change the owner of the road to local authority
-				_map_owner[tile] = OWNER_NONE;
+				SetTileOwner(tile, OWNER_NONE);
 			}
 		} else {
 			DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);

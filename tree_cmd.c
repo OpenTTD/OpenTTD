@@ -580,7 +580,7 @@ static void TileLoop_Trees(uint tile)
 				if ((m2&0x30) != 0x20) // if not on snow/desert, then on rough land
 					m5 = 7;
 			}
-			_map_owner[tile] = OWNER_NONE;
+			SetTileOwner(tile, OWNER_NONE);
 		}
 	} else {
 		/* in the middle of a transition, change to next */
