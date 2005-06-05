@@ -606,6 +606,13 @@ uint16 GetCallBackResult(uint16 callback_info, byte engine, const Vehicle *v)
 		cargo = _global_cargo_id[_opt.landscape][v->cargo_type];
 
 	group = &_engine_custom_sprites[engine][cargo];
+
+	if (v != NULL && v->type == VEH_Train) {
+		SpriteGroup *overset = GetWagonOverrideSpriteSet(engine, v->u.rail.first_engine);
+
+		if (overset != NULL) group = overset;
+	}
+
 	group = ResolveVehicleSpriteGroup(group, v, callback_info, (resolve_callback) ResolveVehicleSpriteGroup);
 
 	if (group->type == SGT_REAL && group->g.real.sprites_per_set == 0 && cargo != GC_DEFAULT) {
