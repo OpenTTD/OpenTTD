@@ -50,8 +50,12 @@ typedef struct VehicleRail {
 	uint16 crash_anim_pos;
 	uint16 days_since_order_progr;
 
-	uint16 cached_weight; // cached power and weight for the vehicle.
-	uint32 cached_power;  // no need to save those, they are recomputed on load.
+	// cached values, recalculated on load and each time a vehicle is added to/removed from the consist.
+	uint16 cached_max_speed;  // max speed of the consist. (minimum of the max speed of all vehicles in the consist)
+	uint32 cached_power;      // total power of the consist.
+	// cached values, recalculated when the cargo on a train changes (in addition to the conditions above)
+	uint16 cached_weight;     // total weight of the consist.
+	uint16 cached_veh_weight; // weight of the vehicle.
 
 	// NOSAVE: for wagon override - id of the first engine in train
 	// 0xffff == not in train
@@ -307,6 +311,7 @@ UnitID GetFreeUnitNumber(byte type);
 
 int LoadUnloadVehicle(Vehicle *v);
 
+void TrainConsistChanged(Vehicle *v);
 void UpdateTrainAcceleration(Vehicle *v);
 int32 GetTrainRunningCost(const Vehicle *v);
 

@@ -28,6 +28,62 @@ static const byte _vehicle_initial_x_fract[4] = {10,8,4,8};
 static const byte _vehicle_initial_y_fract[4] = {8,4,8,10};
 static const byte _state_dir_table[4] = { 0x20, 8, 0x10, 4 };
 
+/**
+ * Recalculates the cached weight of a train and its vehicles. Should be called each time the cargo on
+ * the consist changes.
+ * @param v First vehicle of the consist.
+ */
+void TrainCargoChanged(Vehicle *v) {
+	Vehicle *u;
+	uint16 weight = 0;
+
+	for (u = v; u != NULL; u = u->next) {
+		const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
+		uint16 vweight = 0;
+
+		// vehicle weight is the sum of the weight of the vehicle and the wait of its cargo
+		vweight += rvi->weight;
+		vweight += (_cargoc.weights[u->cargo_type] * u->cargo_count) / 16;
+
+		// consist weight is the sum of the weight of all vehicles in the consist
+		weight += vweight;
+
+		// store vehicle weight in cache
+		u->u.rail.cached_veh_weight = vweight;
+	};
+
+	// store consist weight in cache
+	v->u.rail.cached_weight = weight;
+}
+
+/**
+ * Recalculates the cached stuff of a train. Should be called each time a vehicle is added to/removed from
+ * the consist, and when the game is loaded.
+ * @param v First vehicle of the consist.
+ */
+void TrainConsistChanged(Vehicle *v) {
+	Vehicle *u;
+	uint16 max_speed = 0xFFFF;
+	uint32 power = 0;
+
+	// recalculate cached weights too
+	TrainCargoChanged(v);
+
+	for (u = v; u != NULL; u = u->next) {
+		const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
+
+		// power is the sum of the powers of all engines in the consist
+		power += rvi->power;
+
+		// max speed is the minimun of the speed limits of all vehicles in the consist
+		if (rvi->max_speed != 0)
+			max_speed = min(rvi->max_speed, max_speed);
+	};
+
+	// store consist weight/max speed in cache
+	v->u.rail.cached_max_speed = max_speed;
+	v->u.rail.cached_power = power;
+}
 
 /* These two arrays are used for realistic acceleration. XXX: How should they
  * be interpreted? */
@@ -164,37 +220,25 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 		}
 	}
 
+	mass = v->u.rail.cached_weight;
+	power = v->u.rail.cached_power * 746;
+	max_speed = min(max_speed, v->u.rail.cached_max_speed);
+
 	for (u = v; u != NULL; u = u->next) {
-		const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
-		int vmass;
-
 		num++;
-		power += rvi->power * 746;	//[W]
 		drag_coeff += 3;
-
-		if (rvi->max_speed != 0)
-			max_speed = min(rvi->max_speed, max_speed);
 
 		if (u->u.rail.track == 0x80)
 			max_speed = min(61, max_speed);
 
-		vmass = rvi->weight;  //[t]
-		vmass += (_cargoc.weights[u->cargo_type] * u->cargo_count) / 16;
-		mass += vmass; //[t]
-
 		if (HASBIT(u->u.rail.flags, VRF_GOINGUP)) {
-			incl += vmass * 60;		//3% slope, quite a bit actually
+			incl += u->u.rail.cached_veh_weight * 60;		//3% slope, quite a bit actually
 		} else if (HASBIT(u->u.rail.flags, VRF_GOINGDOWN)) {
-			incl -= vmass * 60;
+			incl -= u->u.rail.cached_veh_weight * 60;
 		}
 	}
 
-
-	// these are shown in the UI
-	v->u.rail.cached_weight = mass;
-	v->u.rail.cached_power = power / 746;
 	v->max_speed = max_speed;
-
 
 	if (v->u.rail.railtype != 2) {
 		resistance = 13 * mass / 10;
@@ -238,32 +282,13 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 void UpdateTrainAcceleration(Vehicle *v)
 {
 	uint power = 0;
-	uint max_speed = 5000;
 	uint weight = 0;
-	Vehicle *u = v;
 
 	assert(v->subtype == TS_Front_Engine);
 
-	// compute stuff like max speed, power, and weight.
-	for (; u != NULL; u = u->next) {
-		const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
-
-		// power is sum of the power for all engines
-		power += rvi->power;
-
-		// limit the max speed to the speed of the slowest vehicle.
-		if (rvi->max_speed != 0 && rvi->max_speed <= max_speed)
-			max_speed = rvi->max_speed;
-
-		// weight is the sum of the weight of the wagon and the weight of the cargo.
-		weight += rvi->weight;
-		weight += (_cargoc.weights[u->cargo_type] * u->cargo_count) / 16;
-	}
-
-	// these are shown in the UI
-	v->u.rail.cached_weight = weight;
-	v->u.rail.cached_power = power;
-	v->max_speed = max_speed;
+	weight = v->u.rail.cached_weight;
+	power = v->u.rail.cached_power;
+	v->max_speed = v->u.rail.cached_max_speed;
 
 	assert(weight != 0);
 
@@ -605,6 +630,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if (rvi->flags&RVI_MULTIHEAD && (u = AllocateVehicle()) != NULL)
 				AddRearEngineToMultiheadedTrain(v, u, true);
 
+			TrainConsistChanged(v);
 			UpdateTrainAcceleration(v);
 			NormalizeTrainVehInDepot(v);
 
@@ -838,14 +864,18 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			dst->next = src;
 		}
 
-		if (src_head->subtype == TS_Front_Engine)
+		if (src_head->subtype == TS_Front_Engine) {
+			TrainConsistChanged(src_head);
 			UpdateTrainAcceleration(src_head);
+		}
 		InvalidateWindow(WC_VEHICLE_DETAILS, src_head->index);
 		InvalidateWindow(WC_VEHICLE_REFIT, src_head->index);
 
 		if (dst_head) {
-			if (dst_head->subtype == TS_Front_Engine)
+			if (dst_head->subtype == TS_Front_Engine) {
+				TrainConsistChanged(dst_head);
 				UpdateTrainAcceleration(dst_head);
+			}
 			InvalidateWindow(WC_VEHICLE_DETAILS, dst_head->index);
 			/* Update the refit button and window */
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, dst_head->index, 12);
@@ -999,6 +1029,7 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				if (first != NULL && first->subtype == TS_Front_Engine) {
 					InvalidateWindow(WC_VEHICLE_DETAILS, first->index);
 					InvalidateWindow(WC_VEHICLE_REFIT, first->index);
+					TrainConsistChanged(first);
 					UpdateTrainAcceleration(first);
 				}
 
@@ -1049,8 +1080,11 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				}
 			}
 
-			/* 3. If it is still a valid train after selling, update its acceleration */
-			if ((flags & DC_EXEC) && first != NULL && first->subtype == TS_Front_Engine) UpdateTrainAcceleration(first);
+			/* 3. If it is still a valid train after selling, update its acceleration and cached values */
+			if ((flags & DC_EXEC) && first != NULL && first->subtype == TS_Front_Engine) {
+				TrainConsistChanged(first);
+				UpdateTrainAcceleration(first);
+			}
 		} break;
 	}
 	return cost;
@@ -2116,7 +2150,8 @@ static void HandleTrainLoading(Vehicle *v, bool mode)
 				InvalidateWindow(WC_TRAINS_LIST, v->owner);
 				MarkTrainDirty(v);
 
-				// need to update acceleration since the goods on the train changed.
+				// need to update acceleration and cached values since the goods on the train changed.
+				TrainCargoChanged(v);
 				UpdateTrainAcceleration(v);
 			}
 			return;
@@ -2212,6 +2247,7 @@ static void TrainEnterStation(Vehicle *v, StationID station)
 	if (LoadUnloadVehicle(v) != 0) {
 		InvalidateWindow(WC_TRAINS_LIST, v->owner);
 		MarkTrainDirty(v);
+		TrainCargoChanged(v);
 		UpdateTrainAcceleration(v);
 	}
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);

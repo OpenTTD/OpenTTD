@@ -1405,6 +1405,7 @@ int LoadUnloadVehicle(Vehicle *v)
 		ge->days_since_pickup = 0;
 		t = u->max_speed;
 		if (u->type == VEH_Road) t >>=1;
+		if (u->type == VEH_Train) t = u->u.rail.cached_max_speed;
 
 		// if last speed is 0, we treat that as if no vehicle has ever visited the station.
 		ge->last_speed = t < 255 ? t : 255;
