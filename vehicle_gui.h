@@ -70,11 +70,11 @@ enum {
 
 void ShowReplaceVehicleWindow(byte vehicletype);
 
-void Set_DPARAM_Train_Engine_Build_Window(uint16 engine_number);
-void Set_DPARAM_Train_Car_Build_Window(Window *w, uint16 engine_number);
-void Set_DPARAM_Road_Veh_Build_Window(uint16 engine_number);
-void Set_DPARAM_Aircraft_Build_Window(uint16 engine_number);
-void Set_DPARAM_Ship_Build_Window(uint16 engine_number);
+void DrawTrainEnginePurchaseInfo(int x, int y, EngineID engine_number);
+void DrawTrainWagonPurchaseInfo(int x, int y, EngineID engine_number);
+void DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number);
+void DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number);
+void DrawShipPurchaseInfo(int x, int y, EngineID engine_number);
 
 
 #endif /* VEHICLE_GUI_H */

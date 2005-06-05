@@ -14,24 +14,47 @@
 #include "engine.h"
 #include "depot.h"
 
-void Set_DPARAM_Ship_Build_Window(uint16 engine_number)
+/**
+ * Draw the purchase info details of a ship at a given location.
+ * @param x,y location where to draw the info
+ * @param engine_number the engine of which to draw the info of
+ */
+void DrawShipPurchaseInfo(int x, int y, EngineID engine_number)
 {
 	YearMonthDay ymd;
 	const ShipVehicleInfo *svi = ShipVehInfo(engine_number);
 	Engine *e;
 
+	/* Purchase cost - Max speed */
 	SetDParam(0, svi->base_cost * (_price.ship_base>>3)>>5);
 	SetDParam(1, svi->max_speed * 10 >> 5);
-	SetDParam(2, _cargoc.names_long_p[svi->cargo_type]);
-	SetDParam(3, svi->capacity);
-	SetDParam(4, svi->refittable ? STR_9842_REFITTABLE : STR_EMPTY);
-	SetDParam(5, svi->running_cost * _price.ship_running >> 8);
+	DrawString(x,y, STR_PURCHASE_INFO_COST_SPEED, 0);
+	y += 10;
 
+	/* Cargo type + capacity */
+	SetDParam(0, _cargoc.names_long_p[svi->cargo_type]);
+	SetDParam(1, svi->capacity);
+	SetDParam(2, svi->refittable ? STR_9842_REFITTABLE : STR_EMPTY);
+	DrawString(x,y, STR_PURCHASE_INFO_CAPACITY, 0);
+	y += 10;
+
+	/* Running cost */
+	SetDParam(0, svi->running_cost * _price.ship_running >> 8);
+	DrawString(x,y, STR_PURCHASE_INFO_RUNNINGCOST, 0);
+	y += 10;
+
+	/* Design date - Life length */
 	e = &_engines[engine_number];
-	SetDParam(7, e->lifelength);
-	SetDParam(8, e->reliability * 100 >> 16);
 	ConvertDayToYMD(&ymd, e->intro_date);
-	SetDParam(6, ymd.year + 1920);
+	SetDParam(0, ymd.year + 1920);
+	SetDParam(1, e->lifelength);
+	DrawString(x,y, STR_PURCHASE_INFO_DESIGNED_LIFE, 0);
+	y += 10;
+
+	/* Reliability */
+	SetDParam(0, e->reliability * 100 >> 16);
+	DrawString(x,y, STR_PURCHASE_INFO_RELIABILITY, 0);
+	y += 10;
 }
 
 static void DrawShipImage(const Vehicle *v, int x, int y, VehicleID selection)
@@ -338,9 +361,7 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 			WP(w,buildtrain_d).sel_engine = selected_id;
 
 			if (selected_id != -1) {
-				Set_DPARAM_Ship_Build_Window(selected_id);
-
-				DrawString(2, w->widget[4].top + 1, STR_980A_COST_SPEED_CAPACITY_RUNNING, 0);
+				DrawShipPurchaseInfo(2, w->widget[4].top + 1, selected_id);
 			}
 		}
 		break;

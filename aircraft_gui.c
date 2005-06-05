@@ -15,25 +15,45 @@
 #include "player.h"
 #include "depot.h"
 
-
-void Set_DPARAM_Aircraft_Build_Window(uint16 engine_number)
+/**
+ * Draw the purchase info details of an aircraft at a given location.
+ * @param x,y location where to draw the info
+ * @param engine_number the engine of which to draw the info of
+ */
+void DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number)
 {
 	const AircraftVehicleInfo *avi = AircraftVehInfo(engine_number);
-	Engine *e;
+	Engine *e = &_engines[engine_number];
 	YearMonthDay ymd;
+	ConvertDayToYMD(&ymd, e->intro_date);
 
+	/* Purchase cost - Max speed */
 	SetDParam(0, avi->base_cost * (_price.aircraft_base>>3)>>5);
 	SetDParam(1, avi->max_speed * 8);
-	SetDParam(2, avi->passenger_capacity);
-	SetDParam(3, avi->mail_capacity);
-	SetDParam(4, avi->running_cost * _price.aircraft_running >> 8);
+	DrawString(x, y, STR_PURCHASE_INFO_COST_SPEED, 0);
+	y += 10;
 
-	e = &_engines[engine_number];
-	SetDParam(6, e->lifelength);
-	SetDParam(7, e->reliability * 100 >> 16);
-	ConvertDayToYMD(&ymd, e->intro_date);
-	SetDParam(5, ymd.year + 1920);
+	/* Cargo capacity */
+	SetDParam(0, avi->passenger_capacity);
+	SetDParam(1, avi->mail_capacity);
+	DrawString(x, y, STR_PURCHASE_INFO_AIRCRAFT_CAPACITY, 0);
+	y += 10;
 
+	/* Running cost */
+	SetDParam(0, avi->running_cost * _price.aircraft_running >> 8);
+	DrawString(x, y, STR_PURCHASE_INFO_RUNNINGCOST, 0);
+	y += 10;
+
+	/* Design date - Life length */
+	SetDParam(0, ymd.year + 1920);
+	SetDParam(1, e->lifelength);
+	DrawString(x, y, STR_PURCHASE_INFO_DESIGNED_LIFE, 0);
+	y += 10;
+
+	/* Reliability */
+	SetDParam(0, e->reliability * 100 >> 16);
+	DrawString(x, y, STR_PURCHASE_INFO_RELIABILITY, 0);
+	y += 10;
 }
 
 static void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection)
@@ -110,9 +130,7 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 			WP(w,buildtrain_d).sel_engine = selected_id;
 
 			if (selected_id != -1) {
-				Set_DPARAM_Aircraft_Build_Window(selected_id);
-
-				DrawString(2, w->widget[4].top + 1, STR_A007_COST_SPEED_CAPACITY_PASSENGERS, 0);
+				DrawAircraftPurchaseInfo(2, w->widget[4].top + 1, selected_id);
 			}
 		}
 	} break;

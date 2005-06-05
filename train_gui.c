@@ -17,43 +17,86 @@
 
 int _traininfo_vehicle_pitch = 0;
 
-void Set_DPARAM_Train_Engine_Build_Window(uint16 engine_number)
+/**
+ * Draw the purchase info details of train engine at a given location.
+ * @param x,y location where to draw the info
+ * @param engine_number the engine of which to draw the info of
+ */
+void DrawTrainEnginePurchaseInfo(int x, int y, EngineID engine_number)
 {
 	const RailVehicleInfo *rvi = RailVehInfo(engine_number);
-	Engine *e;
+	Engine *e = &_engines[engine_number];
 	int multihead = (rvi->flags&RVI_MULTIHEAD?1:0);
 	YearMonthDay ymd;
-
-
-	SetDParam(0, rvi->base_cost * (_price.build_railvehicle >> 3) >> 5);
-	SetDParam(2, rvi->max_speed * 10 >> 4);
-	SetDParam(3, rvi->power << multihead);
-	SetDParam(1, rvi->weight << multihead);
-	SetDParam(4, (rvi->running_cost_base * _price.running_rail[rvi->engclass] >> 8) << multihead);
-
-	SetDParam(5, STR_8838_N_A);
-	if (rvi->capacity != 0) {
-		SetDParam(6, rvi->capacity << multihead);
-		SetDParam(5, _cargoc.names_long_p[rvi->cargo_type]);
-	}
-
-	e = &_engines[engine_number];
-
-	SetDParam(8, e->lifelength);
-	SetDParam(9, e->reliability * 100 >> 16);
 	ConvertDayToYMD(&ymd, e->intro_date);
-	SetDParam(7, ymd.year + 1920);
+
+	/* Purchase Cost - Engine weight */
+	SetDParam(0, rvi->base_cost * (_price.build_railvehicle >> 3) >> 5);
+	SetDParam(1, rvi->weight << multihead);
+	DrawString(x,y, STR_PURCHASE_INFO_COST_WEIGHT, 0);
+	y += 10;
+
+	/* Max speed - Engine power */
+	SetDParam(0, rvi->max_speed * 10 >> 4);
+	SetDParam(1, rvi->power << multihead);
+	DrawString(x,y, STR_PURCHASE_INFO_SPEED_POWER, 0);
+	y += 10;
+
+	/* Running cost */
+	SetDParam(0, (rvi->running_cost_base * _price.running_rail[rvi->engclass] >> 8) << multihead);
+	DrawString(x,y, STR_PURCHASE_INFO_RUNNINGCOST, 0);
+	y += 10;
+
+	/* Cargo type + capacity, or N/A */
+	SetDParam(0, STR_8838_N_A);
+	SetDParam(2, STR_EMPTY);
+	if (rvi->capacity != 0) {
+		SetDParam(0, _cargoc.names_long_p[rvi->cargo_type]);
+		SetDParam(1, rvi->capacity << multihead);
+		SetDParam(2, STR_9842_REFITTABLE);
+	}
+	DrawString(x,y, STR_PURCHASE_INFO_CAPACITY, 0);
+	y += 10;
+
+	/* Design date - Life length */
+	SetDParam(0, ymd.year + 1920);
+	SetDParam(1, e->lifelength);
+	DrawString(x,y, STR_PURCHASE_INFO_DESIGNED_LIFE, 0);
+	y += 10;
+
+	/* Reliability */
+	SetDParam(0, e->reliability * 100 >> 16);
+	DrawString(x,y, STR_PURCHASE_INFO_RELIABILITY, 0);
+	y += 10;
 }
 
-void Set_DPARAM_Train_Car_Build_Window(Window *w, uint16 engine_number)
+/**
+ * Draw the purchase info details of a train wagon at a given location.
+ * @param x,y location where to draw the info
+ * @param engine_number the engine of which to draw the info of
+ */
+void DrawTrainWagonPurchaseInfo(int x, int y, EngineID engine_number)
 {
 	const RailVehicleInfo *rvi = RailVehInfo(engine_number);
+	bool refittable = (_engine_refit_masks[engine_number] != 0);
 
-	SetDParam(0, DoCommandByTile(w->window_number, engine_number, 0, DC_QUERY_COST, CMD_BUILD_RAIL_VEHICLE) );
-	SetDParam(4, rvi->capacity);
-	SetDParam(1, rvi->weight);
-	SetDParam(3, _cargoc.names_long_p[rvi->cargo_type]);
-	SetDParam(2, (_cargoc.weights[rvi->cargo_type] * rvi->capacity >> 4) + rvi->weight);
+	/* Purchase cost */
+	SetDParam(0, (rvi->base_cost * _price.build_railwagon) >> 8);
+	DrawString(x, y, STR_PURCHASE_INFO_COST, 0);
+	y += 10;
+
+	/* Wagon weight - (including cargo) */
+	SetDParam(0, rvi->weight);
+	SetDParam(1, (_cargoc.weights[rvi->cargo_type] * rvi->capacity >> 4) + rvi->weight);
+	DrawString(x, y, STR_PURCHASE_INFO_WEIGHT_CWEIGHT, 0);
+	y += 10;
+
+	/* Cargo type + capacity */
+	SetDParam(0, _cargoc.names_long_p[rvi->cargo_type]);
+	SetDParam(1, rvi->capacity);
+	SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
+	DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, 0);
+	y += 10;
 }
 
 void CcBuildWagon(bool success, uint tile, uint32 p1, uint32 p2)
@@ -173,14 +216,10 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 
 				if (!(rvi->flags & RVI_WAGON)) {
 					/* it's an engine */
-					Set_DPARAM_Train_Engine_Build_Window(selected_id);
-
-					DrawString(2, w->widget[4].top + 1, STR_8817_COST_WEIGHT_T_SPEED_POWER, 0);
+					DrawTrainEnginePurchaseInfo(2, w->widget[4].top + 1,selected_id);
 				} else {
 					/* it's a wagon */
-					Set_DPARAM_Train_Car_Build_Window(w, selected_id);
-
-					DrawString(2, w->widget[4].top + 1, STR_8821_COST_WEIGHT_T_T_CAPACITY, 0);
+					DrawTrainWagonPurchaseInfo(2, w->widget[4].top + 1, selected_id);
 				}
 			}
 		}

@@ -14,23 +14,46 @@
 #include "engine.h"
 #include "depot.h"
 
-void Set_DPARAM_Road_Veh_Build_Window(uint16 engine_number)
+/**
+ * Draw the purchase info details of road vehicle at a given location.
+ * @param x,y location where to draw the info
+ * @param engine_number the engine of which to draw the info of
+ */
+void DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number)
 {
 	const RoadVehicleInfo *rvi = RoadVehInfo(engine_number);
-	Engine *e;
+	Engine *e = &_engines[engine_number];
 	YearMonthDay ymd;
+	ConvertDayToYMD(&ymd, e->intro_date);
 
+	/* Purchase cost - Max speed */
 	SetDParam(0, rvi->base_cost * (_price.roadveh_base>>3)>>5);
 	SetDParam(1, rvi->max_speed * 10 >> 5);
-	SetDParam(2, rvi->running_cost * _price.roadveh_running >> 8);
-	SetDParam(4, rvi->capacity);
-	SetDParam(3, _cargoc.names_long_p[rvi->cargo_type]);
+	DrawString(x, y, STR_PURCHASE_INFO_COST_SPEED, 0);
+	y += 10;
 
-	e = &_engines[engine_number];
-	SetDParam(6, e->lifelength);
-	SetDParam(7, e->reliability * 100 >> 16);
-	ConvertDayToYMD(&ymd, e->intro_date);
-	SetDParam(5, ymd.year + 1920);
+	/* Running cost */
+	SetDParam(0, rvi->running_cost * _price.roadveh_running >> 8);
+	DrawString(x, y, STR_PURCHASE_INFO_RUNNINGCOST, 0);
+	y += 10;
+
+	/* Cargo type + capacity */
+	SetDParam(0, _cargoc.names_long_p[rvi->cargo_type]);
+	SetDParam(1, rvi->capacity);
+	SetDParam(2, STR_EMPTY);
+	DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, 0);
+	y += 10;
+
+	/* Design date - Life length */
+	SetDParam(0, ymd.year + 1920);
+	SetDParam(1, e->lifelength);
+	DrawString(x, y, STR_PURCHASE_INFO_DESIGNED_LIFE, 0);
+	y += 10;
+
+	/* Reliability */
+	SetDParam(0, e->reliability * 100 >> 16);
+	DrawString(x, y, STR_PURCHASE_INFO_RELIABILITY, 0);
+	y += 10;
 }
 
 static void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection)
@@ -379,9 +402,7 @@ static void DrawNewRoadVehWindow(Window *w)
 
 		WP(w,buildtrain_d).sel_engine = selected_id;
 		if (selected_id != -1) {
-			Set_DPARAM_Road_Veh_Build_Window(selected_id);
-
-			DrawString(2, w->widget[4].top + 1, STR_9008_COST_SPEED_RUNNING_COST, 0);
+			DrawRoadVehPurchaseInfo(2, w->widget[4].top + 1, selected_id);
 		}
 	}
 }

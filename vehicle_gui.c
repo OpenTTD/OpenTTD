@@ -844,12 +844,10 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 							if (selected_id[i] != -1) {
 								if (!(RailVehInfo(selected_id[i])->flags & RVI_WAGON)) {
 									/* it's an engine */
-									Set_DPARAM_Train_Engine_Build_Window(selected_id[i]);
-									DrawString(2 + offset, 15 + (14 * w->vscroll.cap), STR_8817_COST_WEIGHT_T_SPEED_POWER, 0);
+									DrawTrainEnginePurchaseInfo(2 + offset, 15 + (14 * w->vscroll.cap), selected_id[i]);
 								} else {
 									/* it's a wagon. Train cars are not replaced with the current GUI, but this code is ready for newgrf if anybody adds that*/
-									Set_DPARAM_Train_Car_Build_Window(w, selected_id[i]);
-									DrawString(2 + offset, 15 + (14 * w->vscroll.cap), STR_8821_COST_WEIGHT_T_T_CAPACITY, 0);
+									DrawTrainWagonPurchaseInfo(2 + offset, 15 + (14 * w->vscroll.cap), selected_id[i]);
 								}
 							}
 						}
@@ -858,11 +856,9 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 
 					case VEH_Road: {
 						if (selected_id[0] != -1) {
-							Set_DPARAM_Road_Veh_Build_Window(selected_id[0]);
-							DrawString(2, 15 + (14 * w->vscroll.cap), STR_9008_COST_SPEED_RUNNING_COST, 0);
+							DrawRoadVehPurchaseInfo(2, 15 + (14 * w->vscroll.cap), selected_id[0]);
 							if (selected_id[1] != -1) {
-								Set_DPARAM_Road_Veh_Build_Window(selected_id[1]);
-								DrawString(2 + 228, 15 + (14 * w->vscroll.cap), STR_9008_COST_SPEED_RUNNING_COST, 0);
+								DrawRoadVehPurchaseInfo(2 + 228, 15 + (14 * w->vscroll.cap), selected_id[1]);
 							}
 						}
 						break;
@@ -870,11 +866,9 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 
 					case VEH_Ship: {
 						if (selected_id[0] != -1) {
-							Set_DPARAM_Ship_Build_Window(selected_id[0]);
-							DrawString(2, 15 + (24 * w->vscroll.cap), STR_980A_COST_SPEED_CAPACITY_RUNNING, 0);
+							DrawShipPurchaseInfo(2, 15 + (24 * w->vscroll.cap), selected_id[0]);
 							if (selected_id[1] != -1) {
-								Set_DPARAM_Ship_Build_Window(selected_id[1]);
-								DrawString(2 + 228, 15 + (24 * w->vscroll.cap), STR_980A_COST_SPEED_CAPACITY_RUNNING, 0);
+								DrawShipPurchaseInfo(2 + 228, 15 + (24 * w->vscroll.cap), selected_id[1]);
 							}
 						}
 						break;
@@ -882,11 +876,9 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 
 					case VEH_Aircraft: {
 						if (selected_id[0] != -1) {
-							Set_DPARAM_Aircraft_Build_Window(selected_id[0]);
-							DrawString(2, 15 + (24 * w->vscroll.cap), STR_A007_COST_SPEED_CAPACITY_PASSENGERS, 0);
+							DrawAircraftPurchaseInfo(2, 15 + (24 * w->vscroll.cap), selected_id[0]);
 							if (selected_id[1] != -1) {
-								Set_DPARAM_Aircraft_Build_Window(selected_id[1]);
-								DrawString(2 + 228, 15 + (24 * w->vscroll.cap), STR_A007_COST_SPEED_CAPACITY_PASSENGERS, 0);
+								DrawAircraftPurchaseInfo(2 + 228, 15 + (24 * w->vscroll.cap), selected_id[1]);
 							}
 						}
 						break;
