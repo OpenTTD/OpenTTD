@@ -1343,7 +1343,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 
 			tile = _last_built_train_depot_tile;
 			do {
-				if (IsTileOwner(tile, _local_player) && IsTileDepotType(tile, TRANSPORT_RAIL)) {
+				if (IsTileDepotType(tile, TRANSPORT_RAIL) && IsTileOwner(tile, _local_player)) {
 					ShowTrainDepotWindow(tile);
 					ShowBuildTrainWindow(tile);
 					return;

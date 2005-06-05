@@ -892,7 +892,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 
 			tile = _last_built_road_depot_tile;
 			do {
-				if (IsTileOwner(tile, _local_player) && IsTileDepotType(tile, TRANSPORT_ROAD)) {
+				if (IsTileDepotType(tile, TRANSPORT_ROAD) && IsTileOwner(tile, _local_player)) {
 					ShowRoadDepotWindow(tile);
 					ShowBuildRoadVehWindow(tile);
 					return;

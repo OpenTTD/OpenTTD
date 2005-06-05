@@ -1014,7 +1014,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 
 			tile = _last_built_aircraft_depot_tile;
 			do {
-				if (IsTileOwner(tile, _local_player) && IsAircraftHangarTile(tile)) {
+				if (IsAircraftHangarTile(tile) && IsTileOwner(tile, _local_player)) {
 					ShowAircraftDepotWindow(tile);
 					ShowBuildAircraftWindow(tile);
 					return;

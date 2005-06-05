@@ -996,7 +996,7 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 
 			tile = _last_built_ship_depot_tile;
 			do {
-				if (IsTileOwner(tile, _local_player) && IsTileDepotType(tile, TRANSPORT_WATER)) {
+				if (IsTileDepotType(tile, TRANSPORT_WATER) && IsTileOwner(tile, _local_player)) {
 					ShowShipDepotWindow(tile);
 					ShowBuildShipWindow(tile);
 					return;
