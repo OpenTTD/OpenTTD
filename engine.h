@@ -21,6 +21,7 @@ typedef struct RailVehicleInfo {
 	                    //       for when the 'powered wagon' callback fails. But it should really also determine what
 	                    //       kind of visual effect to generate for a vehicle (default, steam, diesel, electric).
 	                    //       Same goes for the callback result, which atm is only used to check if a wagon is powered.
+	byte shorten_factor;	// length on main map for this type is 8 - shorten_factor
 } RailVehicleInfo;
 
 typedef struct ShipVehicleInfo {
@@ -136,6 +137,10 @@ enum CallbackID {
 	// TODO: interpret the rest of the result, aka "visual effects"
 	CBID_WAGON_POWER = 0x10,
 
+	// Vehicle length, returns the amount of 1/8's the vehicle is shorter
+	// only for train vehicles
+	CBID_VEH_LENGTH = 0x11,
+
 	// Refit capacity, the passed vehicle needs to have its ->cargo_type set to
 	// the cargo we are refitting to, returns the new cargo capacity
 	CBID_REFIT_CAP = 0x15,
@@ -145,6 +150,7 @@ enum CallbackID {
 // (some callbacks are always used, and dont appear here)
 enum CallbackMask {
 	CBM_WAGON_POWER = 0,
+	CBM_VEH_LENGTH = 1,
 	CBM_REFIT_CAP = 3,
 };
 

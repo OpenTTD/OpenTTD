@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "openttd.h"
+#include "debug.h"
 #include "table/strings.h"
 #include "map.h"
 #include "tile.h"
@@ -22,6 +23,7 @@
 	(is_custom_sprite(spritenum) ? IS_CUSTOM_FIRSTHEAD_SPRITE(spritenum) : _engine_sprite_add[spritenum] == 0)
 
 static bool TrainCheckIfLineEnds(Vehicle *v);
+static void TrainController(Vehicle *v);
 extern void ShowTrainViewWindow(Vehicle *v);
 
 static const byte _vehicle_initial_x_fract[4] = {10,8,4,8};
@@ -81,6 +83,7 @@ void TrainConsistChanged(Vehicle *v) {
 
 	for (u = v; u != NULL; u = u->next) {
 		const RailVehicleInfo *rvi_u = RailVehInfo(u->engine_type);
+		uint16 veh_len;
 
 		// update the 'first engine'
 		u->u.rail.first_engine = (v == u) ? INVALID_VEHICLE : first_engine;
@@ -109,6 +112,16 @@ void TrainConsistChanged(Vehicle *v) {
 		// max speed is the minimum of the speed limits of all vehicles in the consist
 		if (rvi_u->max_speed != 0)
 			max_speed = min(rvi_u->max_speed, max_speed);
+
+		// check the vehicle length (callback)
+		veh_len = CALLBACK_FAILED;
+		if (HASBIT(rvi_u->callbackmask, CBM_VEH_LENGTH))
+			veh_len = GetCallBackResult(CBID_VEH_LENGTH,  u->engine_type, u);
+		if (veh_len == CALLBACK_FAILED)
+			veh_len = rvi_u->shorten_factor;
+		assert(veh_len < 8);
+		u->u.rail.cached_veh_length = 8 - veh_len;
+
 	};
 
 	// store consist weight/max speed in cache
@@ -1257,6 +1270,52 @@ static void DisableTrainCrossing(TileIndex tile)
 	}
 }
 
+/**
+ * Advances wagons for train reversing, needed for variable length wagons.
+ * Needs to be called once before the train is reversed, and once after it.
+ * @param v First vehicle in chain
+ * @param before Set to true for the call before reversing, false otherwise
+ */
+static void AdvanceWagons(Vehicle *v, bool before)
+{
+	Vehicle *base, *first, *last, *tempnext;
+	int i, length;
+	int differential;
+
+	base = v;
+	first = base->next;
+	length = CountVehiclesInChain(v);
+
+	while (length > 2) {
+		// find pairwise matching wagon
+		// start<>end, start+1<>end-1, ... */
+		last = first;
+		for (i = length - 3; i; i--) {
+			last = last->next;
+		}
+
+		differential = last->u.rail.cached_veh_length - base->u.rail.cached_veh_length;
+		if (before)
+			differential *= -1;
+
+		if (differential > 0) {
+			// disconnect last car to make sure only this subset moves
+			tempnext = last->next;
+			last->next = NULL;
+
+			for (i = 0; i < differential; i++) {
+				TrainController(first);
+			}
+
+			last->next = tempnext;
+		}
+
+		base = first;
+		first = first->next;
+		length -= 2;
+	}
+}
+
 static void ReverseTrainDirection(Vehicle *v)
 {
 	int l = 0, r = -1;
@@ -1285,10 +1344,14 @@ static void ReverseTrainDirection(Vehicle *v)
 	u = v;
 	do r++; while ( (u = u->next) != NULL );
 
+	AdvanceWagons(v, true);
+
 	/* swap start<>end, start+1<>end-1, ... */
 	do {
 		ReverseTrainSwapVeh(v, l++, r--);
 	} while (l <= r);
+
+	AdvanceWagons(v, false);
 
 	if (IsTileDepotType(v->tile, TRANSPORT_RAIL))
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
@@ -2723,8 +2786,6 @@ static void TrainController(Vehicle *v)
 			v->x_pos = gp.x;
 			v->y_pos = gp.y;
 			VehiclePositionChanged(v);
-			if (prev == NULL)
-				CheckTrainCollision(v);
 			continue;
 		}
 common:;
@@ -2743,7 +2804,6 @@ common:;
 		if (prev == NULL) {
 			/* This is the first vehicle in the train */
 			AffectSpeedByZChange(v, old_z);
-			CheckTrainCollision(v);
 		}
 	}
 	return;
@@ -3106,6 +3166,7 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 
 		do {
 			TrainController(v);
+			CheckTrainCollision(v);
 			if (v->cur_speed <= 0x100)
 				break;
 		} while (--j != 0);

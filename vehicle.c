@@ -528,7 +528,7 @@ static void DoDrawVehicle(Vehicle *v)
 	if (v->vehstatus & VS_DISASTER) {
 		image |= 0x3224000;
 	} else if (v->vehstatus & VS_DEFPAL) {
-		image |= (v->vehstatus & VS_CRASHED) ? 0x3248000 : SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner));
+		image |= (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner));
 	}
 
 	AddSortableSpriteToDraw(image, v->x_pos + v->x_offs, v->y_pos + v->y_offs,

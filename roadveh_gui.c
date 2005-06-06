@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
+#include "table/sprites.h"
 #include "table/strings.h"
 #include "map.h"
 #include "window.h"
@@ -60,7 +61,8 @@ static void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection
 {
 	int image = GetRoadVehImage(v, 6);
 	uint32 ormod = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner));
-	if (v->vehstatus & VS_CRASHED) ormod = 0x3248000;
+	if (v->vehstatus & VS_CRASHED)
+		ormod = PALETTE_CRASH;
 	DrawSprite(image | ormod, x+14, y+6);
 
 	if (v->index == selection) {

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
+#include "table/sprites.h"
 #include "table/strings.h"
 #include "map.h"
 #include "window.h"
@@ -328,20 +329,27 @@ static void ShowBuildTrainWindow(uint tile)
 
 static void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, VehicleID selection)
 {
+	int max_x = x + count * 29;
+
 	do {
 		if (--skip < 0) {
 			int image = GetTrainImage(v, 6);
 			uint32 ormod = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner));
-			if (v->vehstatus & VS_CRASHED) ormod = 0x3248000;
-			DrawSprite(image | ormod, x+14, y+6+_traininfo_vehicle_pitch);
-			if (v->index == selection) DrawFrameRect(x-1, y-1, x+28, y+12, 15, 0x10);
-			x += 29;
-			count--;
+			int width = v->u.rail.cached_veh_length * 3;
+
+			if (x + width + 4 <= max_x) {
+				if (v->vehstatus & VS_CRASHED)
+					ormod = PALETTE_CRASH;
+				DrawSprite(image | ormod, x + 14, y + 6 + _traininfo_vehicle_pitch);
+				if (v->index == selection)
+					DrawFrameRect(x - 1, y - 1, x + width + 4, y + 12, 15, 0x10);
+			}
+			x += width + 5;
 		}
 
 		if (!(v = v->next))
 			break;
-	} while (count);
+	} while (x < max_x);
 }
 
 static void DrawTrainDepotWindow(Window *w)
@@ -409,8 +417,10 @@ static void DrawTrainDepotWindow(Window *w)
 			/*Draw the train counter */
 			i = 0;
 			u = v;
-			do i++; while ( (u=u->next) != NULL);		//Determine length of train
-			SetDParam(0, i);				//Set the counter
+			do {
+				i += u->u.rail.cached_veh_length + 1;
+			} while ( (u=u->next) != NULL);			//Determine length of train
+			SetDParam(0, (i+8) / 9);			//Set the counter
 			i = (w->hscroll.cap * 29) + (x + 26);		//Calculate position of text according to window size
 			DrawStringCentered(i, y+5, STR_TINY_BLACK, 0);	//Draw the counter
 
@@ -451,16 +461,11 @@ typedef struct GetDepotVehiclePtData {
 
 static int GetVehicleFromTrainDepotWndPt(Window *w, int x, int y, GetDepotVehiclePtData *d)
 {
-	int area_x;
 	int row;
+	int skip = 0;
 	Vehicle *v;
 
 	x = x - 23;
-	if (x < 0) {
-		area_x = (x >= -10) ? -2 : -1;
-	} else {
-		area_x = x / 29;
-	}
 
 	row = (y - 14) / 14;
 	if ( (uint) row >= w->vscroll.cap)
@@ -475,12 +480,12 @@ static int GetVehicleFromTrainDepotWndPt(Window *w, int x, int y, GetDepotVehicl
 				v->tile == w->window_number &&
 				v->u.rail.track == 0x80 &&
 				--row < 0) {
-					if (area_x >= 0) area_x += w->hscroll.pos;
+					skip = w->hscroll.pos;
 					goto found_it;
 		}
 	}
 
-	area_x--; /* free wagons don't have an initial loco. */
+	x -= 29; /* free wagons don't have an initial loco. */
 
 	/* and then the list of free wagons */
 	FOR_ALL_VEHICLES(v) {
@@ -502,11 +507,14 @@ found_it:
 	d->head = d->wagon = v;
 
 	/* either pressed the flag or the number, but only when it's a loco */
-	if (area_x < 0 && v->subtype == TS_Front_Engine)
-		return area_x;
+	if (x < 0 && v->subtype == TS_Front_Engine)
+		return (x >= -10) ? -2 : -1;
+
+	// skip vehicles that are scrolled off the left side
+	while (skip--) v = v->next;
 
 	/* find the vehicle in this row that was clicked */
-	while (--area_x >= 0) {
+	while ((x -= v->u.rail.cached_veh_length * 3 + 5) >= 0) {
 		v = v->next;
 		if (v == NULL) break;
 	}

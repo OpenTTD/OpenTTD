@@ -53,6 +53,7 @@ typedef struct VehicleRail {
 	// cached values, recalculated on load and each time a vehicle is added to/removed from the consist.
 	uint16 cached_max_speed;  // max speed of the consist. (minimum of the max speed of all vehicles in the consist)
 	uint32 cached_power;      // total power of the consist.
+	uint8 cached_veh_length;  // length of this vehicle in units of 1/8 of normal length, cached because this can be set by a callback
 	// cached values, recalculated when the cargo on a train changes (in addition to the conditions above)
 	uint16 cached_weight;     // total weight of the consist.
 	uint16 cached_veh_weight; // weight of the vehicle.

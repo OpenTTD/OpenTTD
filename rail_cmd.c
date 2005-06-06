@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "openttd.h"
+#include "debug.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "gfx.h"
@@ -9,6 +10,7 @@
 #include "viewport.h"
 #include "command.h"
 #include "pathfind.h"
+#include "engine.h"
 #include "town.h"
 #include "sound.h"
 #include "station.h"
@@ -2036,7 +2038,10 @@ static void ChangeTileOwner_Track(uint tile, byte old_player, byte new_player)
 
 static const byte _fractcoords_behind[4] = { 0x8F, 0x8, 0x80, 0xF8 };
 static const byte _fractcoords_enter[4] = { 0x8A, 0x48, 0x84, 0xA8 };
-static const byte _fractcoords_leave[4] = { 0x81, 0xD8, 0x8D, 0x18 };
+static const byte _deltacoord_leaveoffset[8] = {
+	-1,  0,  1,  0, /* x */
+	 0,  1,  0, -1  /* y */
+};
 static const byte _enter_directions[4] = {5, 7, 1, 3};
 static const byte _leave_directions[4] = {1, 3, 5, 7};
 static const byte _depot_track_mask[4] = {1, 2, 1, 2};
@@ -2044,7 +2049,9 @@ static const byte _depot_track_mask[4] = {1, 2, 1, 2};
 static uint32 VehicleEnter_Track(Vehicle *v, uint tile, int x, int y)
 {
 	byte fract_coord;
+	byte fract_coord_leave;
 	int dir;
+	int length;
 
 	// this routine applies only to trains in depot tiles
 	if (v->type != VEH_Train || !IsRailDepot(_map5[tile]))
@@ -2053,7 +2060,18 @@ static uint32 VehicleEnter_Track(Vehicle *v, uint tile, int x, int y)
 	/* depot direction */
 	dir = _map5[tile] & RAIL_DEPOT_DIR;
 
+	/* calculate the point where the following wagon should be activated */
+	/* this depends on the length of the current vehicle */
+	length = v->u.rail.cached_veh_length;
+
+	fract_coord_leave =
+		((_fractcoords_enter[dir] & 0x0F) +				// x
+			(length + 1) * _deltacoord_leaveoffset[dir]) +
+		(((_fractcoords_enter[dir] >> 4) +				// y
+			((length + 1) * _deltacoord_leaveoffset[dir+4])) << 4);
+
 	fract_coord = (x & 0xF) + ((y & 0xF) << 4);
+
 	if (_fractcoords_behind[dir] == fract_coord) {
 		/* make sure a train is not entering the tile from behind */
 		return 8;
@@ -2069,7 +2087,7 @@ static uint32 VehicleEnter_Track(Vehicle *v, uint tile, int x, int y)
 			InvalidateWindow(WC_VEHICLE_DEPOT, tile);
 			return 4;
 		}
-	} else if (_fractcoords_leave[dir] == fract_coord) {
+	} else if (fract_coord_leave == fract_coord) {
 		if (_leave_directions[dir] == v->direction) {
 			/* leave the depot? */
 			if ((v=v->next) != NULL) {

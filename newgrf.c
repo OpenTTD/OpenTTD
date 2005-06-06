@@ -353,7 +353,15 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x1E: { /* Callback */
 			FOR_EACH_OBJECT {
 				byte callbacks = grf_load_byte(&buf);
+
 				rvi[i].callbackmask = callbacks;
+			}
+		} break;
+		case 0x21: { /* Shorter vehicle */
+			FOR_EACH_OBJECT {
+				byte shorten_factor = grf_load_byte(&buf);
+
+				rvi[i].shorten_factor = shorten_factor;
 			}
 		} break;
 		case 0x22: { /* Visual effect */
@@ -377,7 +385,6 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x1C:	/* Refit cost */
 		case 0x1F:	/* Tractive effort */
 		case 0x20:	/* Air drag */
-		case 0x21:	/* Shorter tenders */
 		case 0x24:	/* High byte of vehicle weight */
 		case 0x25:	/* User-defined bit mask to set when checking veh. var. 42 */
 		case 0x26:	/* Retire vehicle early */
