@@ -2829,3 +2829,4 @@ STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {G
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Weight: {GOLD}{COMMA16}t  ({COMMA16}t)
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Speed: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacity: {GOLD}{COMMA16} passengers, {COMMA16} bags of mail
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Powered Wagons: {GOLD}+{COMMA16}hp{BLACK} Weight: {GOLD}+{COMMA8}t

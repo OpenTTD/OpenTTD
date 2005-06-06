@@ -41,9 +41,12 @@ void TrainCargoChanged(Vehicle *v) {
 		const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
 		uint16 vweight = 0;
 
-		// vehicle weight is the sum of the weight of the vehicle and the wait of its cargo
+		// vehicle weight is the sum of the weight of the vehicle and the weight of its cargo
 		vweight += rvi->weight;
 		vweight += (_cargoc.weights[u->cargo_type] * u->cargo_count) / 16;
+		// powered wagons have extra weight added
+		if HASBIT(u->u.rail.flags, VRF_POWEREDWAGON)
+			vweight += RailVehInfo(v->engine_type)->pow_wag_weight;
 
 		// consist weight is the sum of the weight of all vehicles in the consist
 		weight += vweight;
@@ -62,27 +65,45 @@ void TrainCargoChanged(Vehicle *v) {
  * @param v First vehicle of the consist.
  */
 void TrainConsistChanged(Vehicle *v) {
+	const RailVehicleInfo *rvi_v = RailVehInfo(v->engine_type);
 	Vehicle *u;
 	uint16 max_speed = 0xFFFF;
 	uint32 power = 0;
 
-	// recalculate cached weights too
-	TrainCargoChanged(v);
-
 	for (u = v; u != NULL; u = u->next) {
-		const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
+		const RailVehicleInfo *rvi_u = RailVehInfo(u->engine_type);
 
-		// power is the sum of the powers of all engines in the consist
-		power += rvi->power;
+		// power is the sum of the powers of all engines and powered wagons in the consist
+		power += rvi_u->power;
 
-		// max speed is the minimun of the speed limits of all vehicles in the consist
-		if (rvi->max_speed != 0)
-			max_speed = min(rvi->max_speed, max_speed);
+		// check if its a powered wagon
+		CLRBIT(u->u.rail.flags, VRF_POWEREDWAGON);
+		if ((rvi_v->pow_wag_power != 0) && (rvi_u->flags & RVI_WAGON) && UsesWagonOverride(u)) {
+			uint16 callback;
+
+			callback = GetCallBackResult(CBID_WAGON_POWER,  u->engine_type, u);
+
+			if (callback == CALLBACK_FAILED)
+				callback = rvi_u->visual_effect;
+
+			if (callback < 0x40) {
+				/* wagon is powered */
+				SETBIT(u->u.rail.flags, VRF_POWEREDWAGON); // cache 'powered' status
+				power += rvi_v->pow_wag_power;
+			}
+		}
+
+		// max speed is the minimum of the speed limits of all vehicles in the consist
+		if (rvi_u->max_speed != 0)
+			max_speed = min(rvi_u->max_speed, max_speed);
 	};
 
 	// store consist weight/max speed in cache
 	v->u.rail.cached_max_speed = max_speed;
 	v->u.rail.cached_power = power;
+
+	// recalculate cached weights too (we do this *after* the rest, so it is known which wagons are powered and need extra weight added)
+	TrainCargoChanged(v);
 }
 
 /* These two arrays are used for realistic acceleration. XXX: How should they

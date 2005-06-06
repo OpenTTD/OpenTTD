@@ -198,30 +198,30 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 	bool ret = false;
 
 	switch (prop) {
-		case 0x05: {	/* Track type */
+		case 0x05: { /* Track type */
 			FOR_EACH_OBJECT {
 				uint8 tracktype = grf_load_byte(&buf);
 
 				ei[i].railtype_climates &= 0xf;
 				ei[i].railtype_climates |= tracktype << 4;
 			}
-		}	break;
-		case 0x08: {	/* AI passenger service */
+		} break;
+		case 0x08: { /* AI passenger service */
 			/* TODO */
 			FOR_EACH_OBJECT {
 				grf_load_byte(&buf);
 			}
 			ret = true;
-		}	break;
-		case 0x09: {	/* Speed */
+		} break;
+		case 0x09: { /* Speed */
 			FOR_EACH_OBJECT {
 				uint16 speed = grf_load_word(&buf);
 
 				rvi[i].max_speed = speed;
 				dewagonize(speed, engine + i);
 			}
-		}	break;
-		case 0x0B: {	/* Power */
+		} break;
+		case 0x0B: { /* Power */
 			FOR_EACH_OBJECT {
 				uint16 power = grf_load_word(&buf);
 
@@ -231,16 +231,16 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				rvi[i].power = power;
 				dewagonize(power, engine + i);
 			}
-		}	break;
-		case 0x0D: {	/* Running cost factor */
+		} break;
+		case 0x0D: { /* Running cost factor */
 			FOR_EACH_OBJECT {
 				uint8 runcostfact = grf_load_byte(&buf);
 
 				rvi[i].running_cost_base = runcostfact;
 				dewagonize(runcostfact, engine + i);
 			}
-		}	break;
-		case 0x0E: {	/* Running cost base */
+		} break;
+		case 0x0E: { /* Running cost base */
 			FOR_EACH_OBJECT {
 				uint32 base = grf_load_dword(&buf);
 
@@ -257,8 +257,8 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				}
 				dewagonize(base, engine + i);
 			}
-		}	break;
-		case 0x12: {	/* Sprite ID */
+		} break;
+		case 0x12: { /* Sprite ID */
 			FOR_EACH_OBJECT {
 				uint8 spriteid = grf_load_byte(&buf);
 
@@ -266,8 +266,8 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 					_engine_original_sprites[engine + i] = rvi[i].image_index;
 				rvi[i].image_index = spriteid;
 			}
-		}	break;
-		case 0x13: {	/* Dual-headed */
+		} break;
+		case 0x13: { /* Dual-headed */
 			FOR_EACH_OBJECT {
 				uint8 dual = grf_load_byte(&buf);
 
@@ -281,42 +281,42 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 					rvi[i].flags &= ~RVI_MULTIHEAD;
 				}
 			}
-		}	break;
-		case 0x14: {	/* Cargo capacity */
+		} break;
+		case 0x14: { /* Cargo capacity */
 			FOR_EACH_OBJECT {
 				uint8 capacity = grf_load_byte(&buf);
 
 				rvi[i].capacity = capacity;
 			}
-		}	break;
-		case 0x15: {	/* Cargo type */
+		} break;
+		case 0x15: { /* Cargo type */
 			FOR_EACH_OBJECT {
 				uint8 ctype = grf_load_byte(&buf);
 
 				rvi[i].cargo_type = ctype;
 			}
-		}	break;
-		case 0x16: {	/* Weight */
+		} break;
+		case 0x16: { /* Weight */
 			FOR_EACH_OBJECT {
 				uint8 weight = grf_load_byte(&buf);
 
 				rvi[i].weight = weight;
 			}
-		}	break;
-		case 0x17: {	/* Cost factor */
+		} break;
+		case 0x17: { /* Cost factor */
 			FOR_EACH_OBJECT {
 				uint8 cfactor = grf_load_byte(&buf);
 
 				rvi[i].base_cost = cfactor;
 			}
-		}	break;
-		case 0x18: {	/* AI rank */
+		} break;
+		case 0x18: { /* AI rank */
 			/* TODO: _railveh_score should be merged to _rail_vehicle_info. */
 			FOR_EACH_OBJECT {
 				grf_load_byte(&buf);
 			}
 			ret = true;
-		}	break;
+		} break;
 		case 0x19: { /* Engine traction type */
 			/* TODO: What do the individual numbers mean?
 			 * XXX: And in what base are they, in fact? --pasky */
@@ -335,34 +335,49 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 				rvi[i].engclass = engclass;
 			}
-		}	break;
-		case 0x1D: {	/* Refit cargo */
+		} break;
+		case 0x1B: { /* Powered wagons power bonus */
+			FOR_EACH_OBJECT {
+				uint16 wag_power = grf_load_word(&buf);
+
+				rvi[i].pow_wag_power = wag_power;
+			}
+		} break;
+		case 0x1D: { /* Refit cargo */
 			FOR_EACH_OBJECT {
 				uint32 refit_mask = grf_load_dword(&buf);
 
 				_engine_refit_masks[engine + i] = refit_mask;
 			}
-		}	break;
-		case 0x1E:	/* Callback */
+		} break;
+		case 0x1E: { /* Callback */
 			FOR_EACH_OBJECT {
 				byte callbacks = grf_load_byte(&buf);
 				rvi[i].callbackmask = callbacks;
 			}
-			break;
-		/* TODO */
-		/* Fall-through for unimplemented two bytes long properties. */
-		case 0x1B:	/* Powered wagons power bonus */
+		} break;
+		case 0x22: { /* Visual effect */
+			// see note in engine.h about rvi->visual_effect
 			FOR_EACH_OBJECT {
-				grf_load_byte(&buf);
+				byte visual = grf_load_byte(&buf);
+
+				rvi[i].visual_effect = visual;
 			}
+		} break;
+		case 0x23: { /* Powered wagons weight bonus */
+			FOR_EACH_OBJECT {
+				byte wag_weight = grf_load_byte(&buf);
+
+				rvi[i].pow_wag_weight = wag_weight;
+			}
+		} break;
+		/* TODO */
 		/* Fall-through for unimplemented one byte long properties. */
 		case 0x1A:	/* Sort order */
 		case 0x1C:	/* Refit cost */
 		case 0x1F:	/* Tractive effort */
 		case 0x20:	/* Air drag */
 		case 0x21:	/* Shorter tenders */
-		case 0x22:	/* Visual */
-		case 0x23:	/* Powered wagons weight bonus */
 		case 0x24:	/* High byte of vehicle weight */
 		case 0x25:	/* User-defined bit mask to set when checking veh. var. 42 */
 		case 0x26:	/* Retire vehicle early */
@@ -388,28 +403,28 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 	bool ret = false;
 
 	switch (prop) {
-		case 0x08: {	/* Speed */
+		case 0x08: { /* Speed */
 			FOR_EACH_OBJECT {
 				uint8 speed = grf_load_byte(&buf);
 
 				rvi[i].max_speed = speed; // ?? units
 			}
 		}	break;
-		case 0x09: {	/* Running cost factor */
+		case 0x09: { /* Running cost factor */
 			FOR_EACH_OBJECT {
 				uint8 runcost = grf_load_byte(&buf);
 
 				rvi[i].running_cost = runcost;
 			}
 		}	break;
-		case 0x0A:	/* Running cost base */
+		case 0x0A: { /* Running cost base */
 			/* TODO: I have no idea. --pasky */
 			FOR_EACH_OBJECT {
 				grf_load_byte(&buf);
 			}
 			ret = true;
-			break;
-		case 0x0E: {	/* Sprite ID */
+		} break;
+		case 0x0E: { /* Sprite ID */
 			FOR_EACH_OBJECT {
 				uint8 spriteid = grf_load_byte(&buf);
 
@@ -424,7 +439,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				rvi[i].image_index = spriteid;
 			}
 		}	break;
-		case 0x0F: {	/* Cargo capacity */
+		case 0x0F: { /* Cargo capacity */
 			FOR_EACH_OBJECT {
 				uint16 capacity = grf_load_word(&buf);
 
@@ -438,14 +453,14 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				rvi[i].cargo_type = cargo;
 			}
 		}	break;
-		case 0x11: {	/* Cost factor */
+		case 0x11: { /* Cost factor */
 			FOR_EACH_OBJECT {
 				uint8 cost_factor = grf_load_byte(&buf);
 
 				rvi[i].base_cost = cost_factor; // ?? is it base_cost?
 			}
 		}	break;
-		case 0x12: {	/* SFX */
+		case 0x12: { /* SFX */
 			FOR_EACH_OBJECT {
 				uint8 sfx = grf_load_byte(&buf);
 

@@ -15,6 +15,12 @@ typedef struct RailVehicleInfo {
 	byte capacity;
 	byte cargo_type;
 	byte callbackmask; // see CallbackMask enum
+	uint16 pow_wag_power;
+	byte pow_wag_weight;
+	byte visual_effect; // NOTE: this is not 100% implemented yet, at the moment it is only used as a 'fallback' value
+	                    //       for when the 'powered wagon' callback fails. But it should really also determine what
+	                    //       kind of visual effect to generate for a vehicle (default, steam, diesel, electric).
+	                    //       Same goes for the callback result, which atm is only used to check if a wagon is powered.
 } RailVehicleInfo;
 
 typedef struct ShipVehicleInfo {
@@ -126,6 +132,10 @@ enum GlobalCargo {
 // This enum lists the implemented callbacks
 // Use as argument for the GetCallBackResult function (see comments there)
 enum CallbackID {
+	// Powered wagons, if the result is lower as 0x40 then the wagon is powered
+	// TODO: interpret the rest of the result, aka "visual effects"
+	CBID_WAGON_POWER = 0x10,
+
 	// Refit capacity, the passed vehicle needs to have its ->cargo_type set to
 	// the cargo we are refitting to, returns the new cargo capacity
 	CBID_REFIT_CAP = 0x15,
@@ -153,6 +163,7 @@ void SetCustomEngineSprites(byte engine, byte cargo, struct SpriteGroup *group);
 // loaded is in percents, overriding_engine 0xffff is none
 int GetCustomEngineSprite(byte engine, const Vehicle *v, byte direction);
 uint16 GetCallBackResult(uint16 callback_info, byte engine, const Vehicle *v);
+bool UsesWagonOverride(const Vehicle *v);
 #define GetCustomVehicleSprite(v, direction) GetCustomEngineSprite(v->engine_type, v, direction)
 #define GetCustomVehicleIcon(et, direction) GetCustomEngineSprite(et, NULL, direction)
 

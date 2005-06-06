@@ -47,6 +47,14 @@ void DrawTrainEnginePurchaseInfo(int x, int y, EngineID engine_number)
 	DrawString(x,y, STR_PURCHASE_INFO_RUNNINGCOST, 0);
 	y += 10;
 
+	/* Powered wagons power - Powered wagons extra weight */
+	if (rvi->pow_wag_power != 0) {
+		SetDParam(0, rvi->pow_wag_power);
+		SetDParam(1, rvi->pow_wag_weight);
+		DrawString(x,y, STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT, 0);
+		y += 10;
+	};
+
 	/* Cargo type + capacity, or N/A */
 	SetDParam(0, STR_8838_N_A);
 	SetDParam(2, STR_EMPTY);
@@ -280,15 +288,15 @@ static const Widget _new_rail_vehicle_widgets[] = {
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   227,     0,    13, STR_JUST_STRING,					STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   215,    14,   125, 0x801,										STR_8843_TRAIN_VEHICLE_SELECTION},
 {  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   216,   227,    14,   125, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,     RESIZE_TB,    14,     0,   227,   126,   187, 0x0,											STR_NULL},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   107,   188,   199, STR_881F_BUILD_VEHICLE,		STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   108,   215,   188,   199, STR_8820_RENAME,					STR_8845_RENAME_TRAIN_VEHICLE_TYPE},
-{  WWT_RESIZEBOX,     RESIZE_TB,    14,   216,   227,   188,   199, 0x0,											STR_RESIZE_BUTTON},
+{      WWT_PANEL,     RESIZE_TB,    14,     0,   227,   126,   197, 0x0,											STR_NULL},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   107,   198,   209, STR_881F_BUILD_VEHICLE,		STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   108,   215,   198,   209, STR_8820_RENAME,					STR_8845_RENAME_TRAIN_VEHICLE_TYPE},
+{  WWT_RESIZEBOX,     RESIZE_TB,    14,   216,   227,   198,   209, 0x0,											STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _new_rail_vehicle_desc = {
-	-1, -1, 228, 200,
+	-1, -1, 228, 210,
 	WC_BUILD_VEHICLE,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_new_rail_vehicle_widgets,

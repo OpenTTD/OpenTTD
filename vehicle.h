@@ -74,6 +74,9 @@ enum {
 	// used to calculate if train is going up or down
 	VRF_GOINGUP   = 1,
 	VRF_GOINGDOWN = 2,
+
+	// used to store if a wagon is powered or not
+	VRF_POWEREDWAGON = 3,
 };
 
 typedef struct VehicleAir {

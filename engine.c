@@ -589,6 +589,16 @@ int GetCustomEngineSprite(byte engine, const Vehicle *v, byte direction)
 }
 
 /**
+ * Check if a wagon is currently using a wagon override
+ * @param v The wagon to check
+ * @return true if it is using an override, false otherwise
+ */
+bool UsesWagonOverride(const Vehicle *v) {
+	assert(v->type == VEH_Train);
+	return (GetWagonOverrideSpriteSet(v->engine_type, v->u.rail.first_engine) != NULL);
+}
+
+/**
  * Evaluates a newgrf callback
  * @param callback_info info about which callback to evaluate
  *  (bit 0-7)  = CallBack id of the callback to use, see CallBackId enum
