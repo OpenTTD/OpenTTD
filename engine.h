@@ -144,6 +144,7 @@ enum CallbackID {
 // bit positions for rvi->callbackmask, indicates which callbacks are used by an engine
 // (some callbacks are always used, and dont appear here)
 enum CallbackMask {
+	CBM_WAGON_POWER = 0,
 	CBM_REFIT_CAP = 3,
 };
 

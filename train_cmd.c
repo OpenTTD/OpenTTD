@@ -79,9 +79,10 @@ void TrainConsistChanged(Vehicle *v) {
 		// check if its a powered wagon
 		CLRBIT(u->u.rail.flags, VRF_POWEREDWAGON);
 		if ((rvi_v->pow_wag_power != 0) && (rvi_u->flags & RVI_WAGON) && UsesWagonOverride(u)) {
-			uint16 callback;
+			uint16 callback = CALLBACK_FAILED;
 
-			callback = GetCallBackResult(CBID_WAGON_POWER,  u->engine_type, u);
+			if (HASBIT(rvi_u->callbackmask, CBM_WAGON_POWER))
+				callback = GetCallBackResult(CBID_WAGON_POWER,  u->engine_type, u);
 
 			if (callback == CALLBACK_FAILED)
 				callback = rvi_u->visual_effect;
