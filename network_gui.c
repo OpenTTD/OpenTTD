@@ -164,7 +164,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 						DrawSprite(SPR_LOCK, 186, y-1);
 
 					// draw red or green icon, depending on compatibility with server.
-					DrawSprite(SPR_BLOT | (compatible?0x30d8000:0x30b8000), 195, y);
+					DrawSprite(SPR_BLOT | (compatible ? PALETTE_TO_GREEN : PALETTE_TO_RED), 195, y);
 
 					// draw flag according to server language
 					DrawSprite(SPR_FLAGS_BASE + cur_item->info.server_lang, 206, y);
