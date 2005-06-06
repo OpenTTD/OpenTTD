@@ -2420,7 +2420,6 @@ STR_8813_FROM                                                   :{LTBLUE}{CARGO}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Le train {COMMA16} est en attente au dépôt
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nouveaux véhicules
 STR_8816                                                        :{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Prix: {GOLD}{CURRENCY}{BLACK} Poids: {GOLD}{COMMA16}t{}{BLACK}Vitesse: {GOLD}{VELOCITY}{BLACK}   Puissance: {GOLD}{COMMA32}ch{}{BLACK}Coût d'entretien: {GOLD}{CURRENCY}/an{}{BLACK}Capacité: {GOLD}{STRING}{}{BLACK}Conçu en: {GOLD}{NUMU16}{BLACK} Durée de vie: {GOLD}{COMMA16} ans{}{BLACK}Fiabilité max.: {GOLD}{COMMA8}%
 STR_8818_INFORMATION                                            :{BLACK}Information
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Train trop long
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Les trains peuvent être manipulés qu'une fois stoppés au dépôt
@@ -2430,7 +2429,6 @@ STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nouveaux
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nouveaux véhicules magnétiques
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Construire
 STR_8820_RENAME                                                 :{BLACK}Renommer
-STR_8821_COST_WEIGHT_T_T_CAPACITY                               :{BLACK}Prix: {GOLD}{CURRENCY}{}{BLACK}Poids: {GOLD}{COMMA16}t  ({COMMA16}t){}{BLACK}Capacité: {GOLD}{STRING}
 STR_8823_SKIP                                                   :{BLACK}Suivant
 STR_8824_DELETE                                                 :{BLACK}Supprimer
 STR_8825_NON_STOP                                               :{BLACK}Sans-arrêt
@@ -2523,7 +2521,6 @@ STR_9004_NEW_VEHICLES                                           :{BLACK}Nouveaux
 STR_9005_INFORMATION                                            :{BLACK}Information
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nouveaux véhicules
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Construire
-STR_9008_COST_SPEED_RUNNING_COST                                :{BLACK}Prix: {GOLD}{CURRENCY}{BLACK} Vitesse: {GOLD}{VELOCITY}{}{BLACK}Coût d'entretien: {GOLD}{CURRENCY}/an{}{BLACK}Capacité: {GOLD}{STRING}{}{BLACK}Conçu en: {GOLD}{NUMU16}{BLACK}  Durée de vie: {GOLD}{COMMA16} ans{}{BLACK}Fiabilité max.: {GOLD}{COMMA8}%
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Impossible de construire le véhicule...
 STR_900A_MUST_BUILD_ROAD_VEHICLE                                :{WHITE}Vous devez d'abord construire un dépôt routier
 STR_900B_ORDERS                                                 :{WHITE}{STRING} (Ordres)
@@ -2586,7 +2583,6 @@ STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Impossib
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Doit d'abord construire un dépôt naval
 STR_9808_NEW_SHIPS                                              :{WHITE}Nouveaux navires
 STR_9809_BUILD_SHIP                                             :{BLACK}Construire navire
-STR_980A_COST_SPEED_CAPACITY_RUNNING                            :{BLACK}Prix: {GOLD}{CURRENCY}{BLACK} Vitesse: {GOLD}{VELOCITY}{}{BLACK}Capacité: {GOLD}{STRING} {STRING}{}{BLACK}Coût d'entretien: {GOLD}{CURRENCY}/an{}{BLACK}Conçu en: {GOLD}{NUMU16}{BLACK}   Durée de vie: {GOLD}{COMMA16} ans{}{BLACK}Fiabilité max.: {GOLD}{COMMA8}%
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Navire doit être arrêté au dépôt
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Impossible de vendre navire...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Impossible de construire navire...
@@ -2655,7 +2651,6 @@ STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nouvel a
 STR_A004_INFORMATION                                            :{BLACK}Information
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nouvel Aéronef
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construire aéronef
-STR_A007_COST_SPEED_CAPACITY_PASSENGERS                         :{BLACK}Coût: {GOLD}{CURRENCY}{BLACK}   Vitesse: {GOLD}{VELOCITY}{}{BLACK}Capacité: {GOLD}{COMMA16} passagers, {COMMA16} sacs de courrier{}{BLACK}Coût d'opération: {GOLD}{CURRENCY}/an{}{BLACK}Conception: {GOLD}{NUMU16}{BLACK}   Durée de vie: {GOLD}{COMMA16} années{}{BLACK}Fiabilité max.: {GOLD}{COMMA8}%
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Impossible de construire l'aéronef...
 STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA16} Aéronef
 STR_A00A                                                        :{WHITE}{STRING}
@@ -2823,3 +2818,4 @@ STR_MAGLEV_VEHICLES                                             :Véhicules sur M
 ############ End of list of rail types
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
+

@@ -2420,7 +2420,6 @@ STR_8813_FROM                                                   :{LTBLUE}{CARGO}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Juna {COMMA16} odottaa veturitallilla
 STR_8815_NEW_VEHICLES                                           :{BLACK}Uusia liikennevälineitä
 STR_8816                                                        :{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Kulu: {GOLD}{CURRENCY}{BLACK} Paino: {GOLD}{COMMA16}t{}{BLACK}Nopeus: {GOLD}{VELOCITY}{BLACK}   Teho: {GOLD}{COMMA32}hv{}{BLACK}Käyttökustannukset: {GOLD}{CURRENCY}/vuosi{}{BLACK}Kapasiteetti: {GOLD}{STRING}{}{BLACK}Suunniteltu: {GOLD}{NUMU16}{BLACK} Käyttöikä: {GOLD}{COMMA16} vuotta{}{BLACK}Enimmäistoimintavarmuus: {GOLD}{COMMA8}%
 STR_8818_INFORMATION                                            :{BLACK}Tietoja
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Juna on liian pitkä.
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Junia voi muunnella vain, kun ne ovat pysähdyksissä veturitallilla.
@@ -2430,7 +2429,6 @@ STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Uusi yks
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Uusi MagLev-juna
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Rakenna yksikkö
 STR_8820_RENAME                                                 :{BLACK}Nimeä
-STR_8821_COST_WEIGHT_T_T_CAPACITY                               :{BLACK}Kulu: {GOLD}{CURRENCY}{}{BLACK}Paino: {GOLD}{COMMA16}t  ({COMMA16}t){}{BLACK}Kapasiteetti: {GOLD}{STRING}
 STR_8823_SKIP                                                   :{BLACK}Ohita
 STR_8824_DELETE                                                 :{BLACK}Poista
 STR_8825_NON_STOP                                               :{BLACK}Tauotta
@@ -2523,7 +2521,6 @@ STR_9004_NEW_VEHICLES                                           :{BLACK}Uusia aj
 STR_9005_INFORMATION                                            :{BLACK}Tietoja
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Uusia ajoneuvoja
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Rakenna ajoneuvo
-STR_9008_COST_SPEED_RUNNING_COST                                :{BLACK}Kulu: {GOLD}{CURRENCY}{BLACK} Nopeus: {GOLD}{VELOCITY}{}{BLACK}Käyttökustannukset: {GOLD}{CURRENCY}/vuosi{}{BLACK}Kapasiteetti: {GOLD}{STRING}{}{BLACK}Suunniteltu: {GOLD}{NUMU16}{BLACK}  Käyttöikä: {GOLD}{COMMA16} vuotta{}{BLACK}Enimmäistoimintavarmuus: {GOLD}{COMMA8}%
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Ajoneuvoa ei voi rakentaa...
 STR_900A_MUST_BUILD_ROAD_VEHICLE                                :{WHITE}Huoltoasema pitää rakentaa ensin.
 STR_900B_ORDERS                                                 :{WHITE}{STRING} (aikataulu)
@@ -2586,7 +2583,6 @@ STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Laivoja 
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Telakka pitää rakentaa ensin.
 STR_9808_NEW_SHIPS                                              :{WHITE}Uusia laivoja
 STR_9809_BUILD_SHIP                                             :{BLACK}Rakenna laiva
-STR_980A_COST_SPEED_CAPACITY_RUNNING                            :{BLACK}Kulu: {GOLD}{CURRENCY}{BLACK} Nopeus: {GOLD}{VELOCITY}{}{BLACK}Kapasiteetti: {GOLD}{STRING} {STRING}{}{BLACK}Käyttökustannukset: {GOLD}{CURRENCY}/vuosi{}{BLACK}Suunniteltu: {GOLD}{NUMU16}{BLACK}   Käyttöikä: {GOLD}{COMMA16} vuotta{}{BLACK}Enimmäistoimintavarmuus: {GOLD}{COMMA8}%
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Laivan pitää olla pysähdyksissä telakalla.
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Laivaa ei voi myydä...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Laivaa ei voi rakentaa...
@@ -2655,7 +2651,6 @@ STR_A003_NEW_AIRCRAFT                                           :{BLACK}Uusi len
 STR_A004_INFORMATION                                            :{BLACK}Tietoja
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Uusi lentokone
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Rakenna lentokone
-STR_A007_COST_SPEED_CAPACITY_PASSENGERS                         :{BLACK}Kulu: {GOLD}{CURRENCY}{BLACK} Nopeus: {GOLD}{VELOCITY}{}{BLACK}Kapasiteetti: {GOLD}{COMMA16} matkustajaa, {COMMA16} säkkiä postia{}{BLACK}Käyttökustannukset: {GOLD}{CURRENCY}/vuosi{}{BLACK}Suunniteltu: {GOLD}{NUMU16}{BLACK}  Käyttöikä: {GOLD}{COMMA16} vuotta{}{BLACK}Enimmäistoimintavarmuus: {GOLD}{COMMA8}%
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Lentokonetta ei voi rakentaa...
 STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA16} lentokonetta
 STR_A00A                                                        :{WHITE}{STRING}
@@ -2823,3 +2818,4 @@ STR_MAGLEV_VEHICLES                                             :Maglev-junat
 ############ End of list of rail types
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
+

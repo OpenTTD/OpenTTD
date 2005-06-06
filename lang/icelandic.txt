@@ -2420,7 +2420,6 @@ STR_8813_FROM                                                   :{LTBLUE}{CARGO}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Lest {COMMA16} bíður í skýli
 STR_8815_NEW_VEHICLES                                           :{BLACK}Ný faratæki
 STR_8816                                                        :{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Þyngd: {GOLD}{COMMA16}tonn{}{BLACK}Hraði: {GOLD}{VELOCITY}{BLACK}   Hestöfl: {GOLD}{COMMA32}{}{BLACK}Rekstrarkostnaður: {GOLD}{CURRENCY} á ári{}{BLACK}Burðargeta: {GOLD}{STRING}{}{BLACK}Hönnuð: {GOLD}{NUMU16}{BLACK} Líftími: {GOLD}{COMMA16} ár{}{BLACK}Áreiðanleiki mest: {GOLD}{COMMA8}%
 STR_8818_INFORMATION                                            :{BLACK}Upplýsingar
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Lestin er of löng
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Aðeins er hægt að eiga við lestir þegar þær bíða í skýli
@@ -2430,7 +2429,6 @@ STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nýir ein
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nýir segullestarvagnar
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Smíða vagn
 STR_8820_RENAME                                                 :{BLACK}Endurnefna
-STR_8821_COST_WEIGHT_T_T_CAPACITY                               :{BLACK}Verð: {GOLD}{CURRENCY}{}{BLACK}Þyngd: {GOLD}{COMMA16}tonn  ({COMMA16}tonn){}{BLACK}Burðargeta: {GOLD}{STRING}
 STR_8823_SKIP                                                   :{BLACK}Sleppa
 STR_8824_DELETE                                                 :{BLACK}Eyða
 STR_8825_NON_STOP                                               :{BLACK}Stansleysa
@@ -2523,7 +2521,6 @@ STR_9004_NEW_VEHICLES                                           :{BLACK}Ný Farar
 STR_9005_INFORMATION                                            :{BLACK}Upplýsingar
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nýjir bílar
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Byggja bíl
-STR_9008_COST_SPEED_RUNNING_COST                                :{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Hraði: {GOLD}{VELOCITY}{}{BLACK}Rekstrarkostnaður: {GOLD}{CURRENCY} á ári{}{BLACK}Burðargeta: {GOLD}{STRING}{}{BLACK}Hannaður: {GOLD}{NUMU16}{BLACK}  Líftími: {GOLD}{COMMA16} ár{}{BLACK}Hámarks áreiðanleiki: {GOLD}{COMMA8}%
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Get ekki byggt bíl...
 STR_900A_MUST_BUILD_ROAD_VEHICLE                                :{WHITE}Verður að bygga bílastöð fyrst
 STR_900B_ORDERS                                                 :{WHITE}{STRING} (Skipanir)
@@ -2586,7 +2583,6 @@ STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Get ekki
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Verður að smíða skip í slippnum fyrst
 STR_9808_NEW_SHIPS                                              :{WHITE}Ný skip
 STR_9809_BUILD_SHIP                                             :{BLACK}Smíða skip
-STR_980A_COST_SPEED_CAPACITY_RUNNING                            :{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Hámarkshraði: {GOLD}{VELOCITY}{}{BLACK}Burðargeta: {GOLD}{STRING} {STRING}{}{BLACK}Rekstrarkostnaður: {GOLD}{CURRENCY} á ári{}{BLACK}Hannað: {GOLD}{NUMU16}{BLACK}   Endingartími: {GOLD}{COMMA16} ár{}{BLACK}Hámarks áreiðanleiki: {GOLD}{COMMA8}%
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Skip verður að vera stöðvað í skýli
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Get ekki selt skip...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Get ekki smíðað skip...
@@ -2655,7 +2651,6 @@ STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nýja flu
 STR_A004_INFORMATION                                            :{BLACK}Upplýsingar
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Ný flugvél
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Smíða flugvél
-STR_A007_COST_SPEED_CAPACITY_PASSENGERS                         :{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Hraði: {GOLD}{VELOCITY}{}{BLACK}Burðargeta: {GOLD}{COMMA16} farþegar, {COMMA16} pokar af pósti{}{BLACK}Rekstrarkostnaður: {GOLD}{CURRENCY}á ári{}{BLACK}Hönnuð: {GOLD}{NUMU16}{BLACK}  Endingartími: {GOLD}{COMMA16} ár{}{BLACK}Hámarks áreiðanleiki: {GOLD}{COMMA8}%
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Get ekki smíðað flugvél...
 STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA16} Flugvél
 STR_A00A                                                        :{WHITE}{STRING}
@@ -2823,3 +2818,4 @@ STR_MAGLEV_VEHICLES                                             :Segulsvifvagnar
 ############ End of list of rail types
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
+

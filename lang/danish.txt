@@ -2418,7 +2418,6 @@ STR_8813_FROM                                                   :{LTBLUE}{CARGO}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Tog {COMMA16} Venter i depot
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nye køretøjer
 STR_8816                                                        :{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Pris: {GOLD}{CURRENCY}{BLACK} Vægt: {GOLD}{COMMA16}t{}{BLACK}Hastighed: {GOLD}{VELOCITY}{BLACK}   Styrke: {GOLD}{COMMA32}hp{}{BLACK}Kørselsomkostninger: {GOLD}{CURRENCY}/år{}{BLACK}Kapacitet: {GOLD}{STRING}{}{BLACK}Designet: {GOLD}{NUMU16}{BLACK} Levetid: {GOLD}{COMMA16} år{}{BLACK}Maks pålidelighed: {GOLD}{COMMA8}%
 STR_8818_INFORMATION                                            :{BLACK}Information
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Toget er for langt
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Tog kan kun ændres når de er stoppet i et depot
@@ -2428,7 +2427,6 @@ STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nye Mono
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nye Magnetskinne køretøjer
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Byg Køretøj
 STR_8820_RENAME                                                 :{BLACK}Omdøb
-STR_8821_COST_WEIGHT_T_T_CAPACITY                               :{BLACK}Pris: {GOLD}{CURRENCY}{}{BLACK}Vægt: {GOLD}{COMMA16}t  ({COMMA16}t){}{BLACK}Kapacitet: {GOLD}{STRING}
 STR_8823_SKIP                                                   :{BLACK}Spring over
 STR_8824_DELETE                                                 :{BLACK}Slet
 STR_8825_NON_STOP                                               :{BLACK}Uden stop
@@ -2521,7 +2519,6 @@ STR_9004_NEW_VEHICLES                                           :{BLACK}Nye køre
 STR_9005_INFORMATION                                            :{BLACK}Information
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nye lastbiler
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Byg køretøj
-STR_9008_COST_SPEED_RUNNING_COST                                :{BLACK}Pris: {GOLD}{CURRENCY}{BLACK} Hastighed: {GOLD}{VELOCITY}{}{BLACK}Kørselsomkostning: {GOLD}{CURRENCY}/år{}{BLACK}Kapacitet: {GOLD}{STRING}{}{BLACK}Designet: {GOLD}{NUMU16}{BLACK}  Livstid: {GOLD}{COMMA16} år{}{BLACK}Maks Pålidelighed: {GOLD}{COMMA8}%
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan ikke bygge lastbil...
 STR_900A_MUST_BUILD_ROAD_VEHICLE                                :{WHITE}Det er nødvendigt at bygge lastbilsdepot først
 STR_900B_ORDERS                                                 :{WHITE}{STRING} (Ordre)
@@ -2584,7 +2581,6 @@ STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Kan ikke
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Det er nødvendigt at bygge et skibsdepot først
 STR_9808_NEW_SHIPS                                              :{WHITE}Nye skibe
 STR_9809_BUILD_SHIP                                             :{BLACK}Byg skib
-STR_980A_COST_SPEED_CAPACITY_RUNNING                            :{BLACK}Pris: {GOLD}{CURRENCY}{BLACK} Hastighed: {GOLD}{VELOCITY}{}{BLACK}Kapacitet: {GOLD}{STRING} {STRING}{}{BLACK}Kørselsomkostning: {GOLD}{CURRENCY}/år{}{BLACK}Designet: {GOLD}{NUMU16}{BLACK}   Livetid: {GOLD}{COMMA16} år{}{BLACK}Maks Pålidelighed: {GOLD}{COMMA8}%
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Skibet skal være stoppet i et depot
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Kan ikke sælge skibet...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kan ikke bygge skibet...
@@ -2653,7 +2649,6 @@ STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nyt fly
 STR_A004_INFORMATION                                            :{BLACK}Information
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nyt fly
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Byg et fly
-STR_A007_COST_SPEED_CAPACITY_PASSENGERS                         :{BLACK}Pris: {GOLD}{CURRENCY}{BLACK} Hastighed: {GOLD}{VELOCITY}{}{BLACK}Kapacitet: {GOLD}{COMMA16} passagerer, {COMMA16} sække post{}{BLACK}Kørselsomkostning: {GOLD}{CURRENCY}/år{}{BLACK}Designet: {GOLD}{NUMU16}{BLACK}  Livstid: {GOLD}{COMMA16} år{}{BLACK}Maks Pålidelighed: {GOLD}{COMMA8}%
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kan ikke bygge fly...
 STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA16} Fly
 STR_A00A                                                        :{WHITE}{STRING}
@@ -2821,3 +2816,4 @@ STR_MAGLEV_VEHICLES                                             :Magnetskinnetog
 ############ End of list of rail types
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
+

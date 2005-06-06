@@ -2418,7 +2418,6 @@ STR_8813_FROM                                                   :{LTBLUE}{CARGO}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Vlak {COMMA16} caka v depe
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nove vozidla
 STR_8816                                                        :{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Nosnost: {GOLD}{COMMA16}t{}{BLACK}Rychlost: {GOLD}{VELOCITY}{BLACK}   Vykon: {GOLD}{COMMA32}hp{}{BLACK}Cena prevadzky: {GOLD}{CURRENCY}/rok{}{BLACK}Kapacita: {GOLD}{STRING}{}{BLACK}Navrnute: {GOLD}{NUMU16}{BLACK} Zivotnost: {GOLD}{COMMA16} rokov{}{BLACK}Spolahlivost: {GOLD}{COMMA8}%
 STR_8818_INFORMATION                                            :{BLACK}Informacie
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Vlak je prilis dlhy
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Vlaky sa daju prerobit len v depe
@@ -2428,7 +2427,6 @@ STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nove jed
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nove magneticke vlaky
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Vyrobit Vozidlo
 STR_8820_RENAME                                                 :{BLACK}Premenovat
-STR_8821_COST_WEIGHT_T_T_CAPACITY                               :{BLACK}Cena: {GOLD}{CURRENCY}{}{BLACK}Nosnost: {GOLD}{COMMA16}t  ({COMMA16}t){}{BLACK}Kapacita: {GOLD}{STRING}
 STR_8823_SKIP                                                   :{BLACK}Preskocit
 STR_8824_DELETE                                                 :{BLACK}Vynechat
 STR_8825_NON_STOP                                               :{BLACK}Non-Stop
@@ -2521,7 +2519,6 @@ STR_9004_NEW_VEHICLES                                           :{BLACK}Nove voz
 STR_9005_INFORMATION                                            :{BLACK}Informacia
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nove automobily
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Vyrobit vozidlo
-STR_9008_COST_SPEED_RUNNING_COST                                :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Rychlost: {GOLD}{VELOCITY}{}{BLACK}Cena prevadzky: {GOLD}{CURRENCY}/rok{}{BLACK}Kapacita: {GOLD}{STRING}{}{BLACK}Navrhnute: {GOLD}{NUMU16}{BLACK}  Zivotnost: {GOLD}{COMMA16} rokov{}{BLACK}Max. Spolahlivost: {GOLD}{COMMA8}%
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nemozno vyrobit automobil...
 STR_900A_MUST_BUILD_ROAD_VEHICLE                                :{WHITE}Najskor musi byt postavena garaz
 STR_900B_ORDERS                                                 :{WHITE}{STRING} (Prikazy)
@@ -2584,7 +2581,6 @@ STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Nemozno 
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Najskor musi byt postavena lodenica
 STR_9808_NEW_SHIPS                                              :{WHITE}Nove lode
 STR_9809_BUILD_SHIP                                             :{BLACK}Vyrobit lod
-STR_980A_COST_SPEED_CAPACITY_RUNNING                            :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Rychlost: {GOLD}{VELOCITY}{}{BLACK}Kapacita: {GOLD}{STRING} {STRING}{}{BLACK}Cena prevadzky: {GOLD}{CURRENCY}/rok{}{BLACK}Navrhnute: {GOLD}{NUMU16}{BLACK}   Zivotnost: {GOLD}{COMMA16} rokov{}{BLACK}Max. spolahlivost: {GOLD}{COMMA8}%
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}lob musi byt zastavena v lodenici
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Nemozno predat lod...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}nemozno vyrobit lod...
@@ -2653,7 +2649,6 @@ STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nove Lie
 STR_A004_INFORMATION                                            :{BLACK}Informacie
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nove Lietadlo
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Vyrobit lietadlo
-STR_A007_COST_SPEED_CAPACITY_PASSENGERS                         :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Rychlost: {GOLD}{VELOCITY}{}{BLACK}Kapacita: {GOLD}{COMMA16} cestujucich, {COMMA16} balikov posty{}{BLACK}Cena prevadzky: {GOLD}{CURRENCY}/rok{}{BLACK}Navrhnute: {GOLD}{NUMU16}{BLACK}  Zivotnost: {GOLD}{COMMA16} rokov{}{BLACK}Spolahlivost: {GOLD}{COMMA8}%
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nemozno vyrobit lietadlo...
 STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA16} Lietadlo
 STR_A00A                                                        :{WHITE}{STRING}
@@ -2821,3 +2816,4 @@ STR_MAGLEV_VEHICLES                                             :Lokomotiva pre 
 ############ End of list of rail types
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
+

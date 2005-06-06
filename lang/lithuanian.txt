@@ -2418,7 +2418,6 @@ STR_8813_FROM                                                   :{LTBLUE}{CARGO}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Traukinys {COMMA16} laukia depe
 STR_8815_NEW_VEHICLES                                           :{BLACK}Naujos tr. priemones
 STR_8816                                                        :{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Kaina: {GOLD}{CURRENCY}{BLACK} Svoris: {GOLD}{COMMA16}t{}{BLACK}Greitis: {GOLD}{VELOCITY}{BLACK}   Galia: {GOLD}{COMMA32}hp{}{BLACK}Darbo sanaudos: {GOLD}{CURRENCY}/met.{}{BLACK}Talpa: {GOLD}{STRING}{}{BLACK}Suprojektuota: {GOLD}{NUMU16}{BLACK} Amzius: {GOLD}{COMMA16} metai{}{BLACK}Maks. patikimumas: {GOLD}{COMMA8}%
 STR_8818_INFORMATION                                            :{BLACK}Informacijs
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Traukinys per ilgas
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Sukeisti traukinius galima tiktai sustabdytus depe
@@ -2428,7 +2427,6 @@ STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}New Mono
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}New Maglev Vehicles
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Pirkti
 STR_8820_RENAME                                                 :{BLACK}Pervardinti
-STR_8821_COST_WEIGHT_T_T_CAPACITY                               :{BLACK}Kaina: {GOLD}{CURRENCY}{}{BLACK}Svoris: {GOLD}{COMMA16}t  ({COMMA16}t){}{BLACK}Talpa: {GOLD}{STRING}
 STR_8823_SKIP                                                   :{BLACK}Praleisti
 STR_8824_DELETE                                                 :{BLACK}Istrinti
 STR_8825_NON_STOP                                               :{BLACK}Nestoti
@@ -2521,7 +2519,6 @@ STR_9004_NEW_VEHICLES                                           :{BLACK}Naujos t
 STR_9005_INFORMATION                                            :{BLACK}Informacija
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nauji automobiliai
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Isigyti priemone
-STR_9008_COST_SPEED_RUNNING_COST                                :{BLACK}Kaina: {GOLD}{CURRENCY}{BLACK} Greitis: {GOLD}{VELOCITY}{}{BLACK}Eksploatacijos islaidos: {GOLD}{CURRENCY}/met{}{BLACK}Talpa: {GOLD}{STRING}{}{BLACK}Suprojektuotas: {GOLD}{NUMU16}{BLACK}  Amzius: {GOLD}{COMMA16} met.{}{BLACK}Maksimalus patikimumas: {GOLD}{COMMA8}%
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Automobilio isigyti negalima...
 STR_900A_MUST_BUILD_ROAD_VEHICLE                                :{WHITE}Pirmiausia pastatyk automobiliu garaza
 STR_900B_ORDERS                                                 :{WHITE}{STRING} (Uzduotys)
@@ -2584,7 +2581,6 @@ STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Negalima
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Pirmiausia reikia pastatyti laivu depa
 STR_9808_NEW_SHIPS                                              :{WHITE}New Ships
 STR_9809_BUILD_SHIP                                             :{BLACK}Build Ship
-STR_980A_COST_SPEED_CAPACITY_RUNNING                            :{BLACK}Kaina: {GOLD}{CURRENCY}{BLACK} Greitis: {GOLD}{VELOCITY}{}{BLACK}Talpa: {GOLD}{STRING} {STRING}{}{BLACK}Eksploatacijos kaina: {GOLD}{CURRENCY}/met{}{BLACK}Suprojektuotas: {GOLD}{NUMU16}{BLACK}   Amzius: {GOLD}{COMMA16} met.{}{BLACK}Maks. patikimumas: {GOLD}{COMMA8}%
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Laivas turi buti sustabdytas garaze
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Laivo parduoti negalima...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Laivo isigyti negalima...
@@ -2653,7 +2649,6 @@ STR_A003_NEW_AIRCRAFT                                           :{BLACK}Naujas l
 STR_A004_INFORMATION                                            :{BLACK}Informacija
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Naujas lektuvas
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Isigyti lektuva
-STR_A007_COST_SPEED_CAPACITY_PASSENGERS                         :{BLACK}Kaina: {GOLD}{CURRENCY}{BLACK} Greitis: {GOLD}{VELOCITY}{}{BLACK}Talpumas: {GOLD}{COMMA16} keleiviu, {COMMA16} pasto maisu{}{BLACK}EDksploatacijos islaidos: {GOLD}{CURRENCY}/met.{}{BLACK}Suprojektuota: {GOLD}{NUMU16}{BLACK}  Amzius: {GOLD}{COMMA16} metai{}{BLACK}Maks. patikimumas: {GOLD}{COMMA8}%
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Negalima isigyti lektuvo...
 STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA16} Lektuvai
 STR_A00A                                                        :{WHITE}{STRING}
@@ -2821,3 +2816,4 @@ STR_MAGLEV_VEHICLES                                             :Magnetiniai tra
 ############ End of list of rail types
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
+

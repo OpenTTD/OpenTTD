@@ -857,6 +857,8 @@ STR_032C_3_AIR_SERVICE                                          :{BLACK}3: Servi
 STR_032D_4_SHIP_SERVICE                                         :{BLACK}4: Servizio navale
 STR_032E_5_RAILROAD_SERVICE_ADVANCED                            :{BLACK}5: Servizio ferroviario (avanzato)
 STR_032F_AUTOSAVE                                               :{RED}SALVATAGGIO AUTOMATICO...
+STR_SAVING_GAME                                                 :{RED}*  *  SALVATAGGIO PARTITA  *  *
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Salvataggio in corso,{}prego attenderne la fine!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Seleziona il programma 'Ezy Street'
 
 STR_0335_6                                                      :{BLACK}6
@@ -1926,7 +1928,7 @@ STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Numero 
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Partenza avversari: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Numero di città: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Numero di industrie: {ORANGE}{STRING}
-STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Interesse iniziale massimo: {ORANGE}{CURRENCY}
+STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Prestito iniziale massimo: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Tasso d'interesse iniziale: {ORANGE}{COMMA16}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Consumi dei veicoli: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Velocità di costruzione degli avversari: {ORANGE}{STRING}
@@ -2418,7 +2420,6 @@ STR_8813_FROM                                                   :{LTBLUE}{CARGO}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Treno {COMMA16} stà aspettando nel deposito
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nuovi Veicoli
 STR_8816                                                        :{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Costo: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{COMMA16}t{}{BLACK}Velocità: {GOLD}{VELOCITY}{BLACK}   Potenza: {GOLD}{COMMA32}cv{}{BLACK}Consumi: {GOLD}{CURRENCY}/anno{}{BLACK}Capienza: {GOLD}{STRING}{}{BLACK}Progettato nel: {GOLD}{NUMU16}{BLACK} Vita: {GOLD}{COMMA16} anni{}{BLACK}Max. Affidabilità: {GOLD}{COMMA8}%
 STR_8818_INFORMATION                                            :{BLACK}Informazioni
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Treno troppo lungo
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Un treno può essere modificato solo quando è fermo nel deposito
@@ -2428,7 +2429,6 @@ STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nuovo  V
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nuovo Veicolo Per Maglev
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Costruisci Veicolo
 STR_8820_RENAME                                                 :{BLACK}Rinomina
-STR_8821_COST_WEIGHT_T_T_CAPACITY                               :{BLACK}Costo: {GOLD}{CURRENCY}{}{BLACK}Peso: {GOLD}{COMMA16}t  ({COMMA16}t){}{BLACK}Capienza: {GOLD}{STRING}
 STR_8823_SKIP                                                   :{BLACK}Salta
 STR_8824_DELETE                                                 :{BLACK}Elimina
 STR_8825_NON_STOP                                               :{BLACK}Non-Stop
@@ -2521,7 +2521,6 @@ STR_9004_NEW_VEHICLES                                           :{BLACK}Nuovo Ve
 STR_9005_INFORMATION                                            :{BLACK}Informazioni
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nuovo Veicolo Stradale
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Costruisci Veicolo
-STR_9008_COST_SPEED_RUNNING_COST                                :{BLACK}Costo: {GOLD}{CURRENCY}{BLACK} Velocità: {GOLD}{VELOCITY}{}{BLACK}Consumi: {GOLD}{CURRENCY}/anno{}{BLACK}Capienza: {GOLD}{STRING}{}{BLACK}Progettato nel: {GOLD}{NUMU16}{BLACK}  Vita: {GOLD}{COMMA16} anni{}{BLACK}Affidabilità Max: {GOLD}{COMMA8}%
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Non puoi costruire veicolo...
 STR_900A_MUST_BUILD_ROAD_VEHICLE                                :{WHITE}Devi costruire un deposito prima
 STR_900B_ORDERS                                                 :{WHITE}{STRING} (Ordini)
@@ -2584,7 +2583,6 @@ STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Non puoi
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Devi costruire un deposito prima
 STR_9808_NEW_SHIPS                                              :{WHITE}Nuove Navi
 STR_9809_BUILD_SHIP                                             :{BLACK}Costruisci Nave
-STR_980A_COST_SPEED_CAPACITY_RUNNING                            :{BLACK}Costo: {GOLD}{CURRENCY}{BLACK} Velocità: {GOLD}{VELOCITY}{}{BLACK}Capienza: {GOLD}{STRING} {STRING}{}{BLACK}Consumi: {GOLD}{CURRENCY}/anno{}{BLACK}Progettata nel: {GOLD}{NUMU16}{BLACK}   Vita: {GOLD}{COMMA16} anni{}{BLACK}Affidabilità Max: {GOLD}{COMMA8}%
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}La nave deve essere ferma nel deposito
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Non puoi vendere la nave...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Non puoi costruire nave...
@@ -2653,7 +2651,6 @@ STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nuovo Ae
 STR_A004_INFORMATION                                            :{BLACK}Informazioni
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nuovo Aereo
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construisci Aereo
-STR_A007_COST_SPEED_CAPACITY_PASSENGERS                         :{BLACK}Costo: {GOLD}{CURRENCY}{BLACK} Velocità: {GOLD}{VELOCITY}{}{BLACK}Capienza: {GOLD}{COMMA16} passeggeri, {COMMA16} sacchi postali{}{BLACK}Consumi: {GOLD}{CURRENCY}/anno{}{BLACK}Progettato nel: {GOLD}{NUMU16}{BLACK}  Vita: {GOLD}{COMMA16} Anni{}{BLACK}Affidabilità Max: {GOLD}{COMMA8}%
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Non puoi costruire aereo
 STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA16} Aereo
 STR_A00A                                                        :{WHITE}{STRING}
@@ -2821,3 +2818,4 @@ STR_MAGLEV_VEHICLES                                             :Veicoli Maglev
 ############ End of list of rail types
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
+

@@ -703,8 +703,8 @@ STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Versprei
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Plaats steenachtige gebieden op de kaart
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Plaats vuurtoren
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Plaats radiomast
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Geef woestijngebied aan
-STR_CREATE_LAKE                                                 :{BLACK}Defineer water gebied, zal de omgeving later overstromen als deze op zeeniveau is
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definieer woestijn gebied.{}Gebruik CTRL om het te verwijderen
+STR_CREATE_LAKE                                                 :{BLACK}Definieer water gebied.{}Het zal de omgeving overstromen wanneer op zee niveau
 STR_0290_DELETE                                                 :{BLACK}Verwijder
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Verwijder deze hele stad
 STR_0292_SAVE_SCENARIO                                          :Scenario opslaan
@@ -2420,7 +2420,6 @@ STR_8813_FROM                                                   :{LTBLUE}{CARGO}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Trein {COMMA16} wacht in depot
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nieuwe voertuigen
 STR_8816                                                        :{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Gewicht: {GOLD}{COMMA16}t{}{BLACK}Snelheid: {GOLD}{VELOCITY}{BLACK}   Kracht: {GOLD}{COMMA32}pk{}{BLACK}Brandstofkosten: {GOLD}{CURRENCY}/jr{}{BLACK}Capaciteit: {GOLD}{STRING}{}{BLACK}Ontworpen: {GOLD}{NUMU16}{BLACK} Leeftijd: {GOLD}{COMMA16} jaren{}{BLACK}Max. betrouwbaarheid: {GOLD}{COMMA8}%
 STR_8818_INFORMATION                                            :{BLACK}Informatie
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Trein te lang
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Treinen kunnen alleen aangepast worden wanneer ze gestopt zijn binnen een depot
@@ -2430,7 +2429,6 @@ STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nieuwe m
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nieuwe maglevvoertuigen
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Bouw voertuig
 STR_8820_RENAME                                                 :{BLACK}Hernoemen
-STR_8821_COST_WEIGHT_T_T_CAPACITY                               :{BLACK}Kosten: {GOLD}{CURRENCY}{}{BLACK}Gewicht: {GOLD}{COMMA16}t  ({COMMA16}t){}{BLACK}Capaciteit: {GOLD}{STRING}
 STR_8823_SKIP                                                   :{BLACK}Sla over
 STR_8824_DELETE                                                 :{BLACK}Verwijder
 STR_8825_NON_STOP                                               :{BLACK}Non-stop
@@ -2523,7 +2521,6 @@ STR_9004_NEW_VEHICLES                                           :{BLACK}Nieuwe v
 STR_9005_INFORMATION                                            :{BLACK}Informatie
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nieuwe Wegvoertuigen
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Bouw Voertuigen
-STR_9008_COST_SPEED_RUNNING_COST                                :{BLACK}Prijs: {GOLD}{CURRENCY}{BLACK} Snelheid: {GOLD}{VELOCITY}{}{BLACK}Brandstofkosten: {GOLD}{CURRENCY}/jr{}{BLACK}Capaciteit: {GOLD}{STRING}{}{BLACK}Ontworpen: {GOLD}{NUMU16}{BLACK}  Leeftijd: {GOLD}{COMMA16} jaar{}{BLACK}Max. betrouwbaarheid: {GOLD}{COMMA8}%
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan het wegvoertuig niet bouwen...
 STR_900A_MUST_BUILD_ROAD_VEHICLE                                :{WHITE}Moet eerst wegvoertuig depot bouwen
 STR_900B_ORDERS                                                 :{WHITE}{STRING} (Orders)
@@ -2586,7 +2583,6 @@ STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Kan geen
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Bouw eerst een scheepswerf
 STR_9808_NEW_SHIPS                                              :{WHITE}Nieuwe schepen
 STR_9809_BUILD_SHIP                                             :{BLACK}Bouw schip
-STR_980A_COST_SPEED_CAPACITY_RUNNING                            :{BLACK}Prijs: {GOLD}{CURRENCY}{BLACK} Snelheid: {GOLD}{VELOCITY}{}{BLACK}Capaciteit: {GOLD}{STRING} {STRING}{}{BLACK}Running Cost: {GOLD}{CURRENCY}/jr{}{BLACK}Ontworpen: {GOLD}{NUMU16}{BLACK}   Leeftijd: {GOLD}{COMMA16} jaar{}{BLACK}Max. betrouwbaarheid: {GOLD}{COMMA8}%
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Schip moet gestopt zijn binnen een depot
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Kan schip niet verkopen...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kan schip niet kopen...
@@ -2655,7 +2651,6 @@ STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nieuw vl
 STR_A004_INFORMATION                                            :{BLACK}Informatie
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nieuw Vliegtuig
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Bouw Vliegtuig
-STR_A007_COST_SPEED_CAPACITY_PASSENGERS                         :{BLACK}Prijs: {GOLD}{CURRENCY}{BLACK} Snelheid: {GOLD}{VELOCITY}{}{BLACK}Capaciteit: {GOLD}{COMMA16} passagiers, {COMMA16} zakken post{}{BLACK} Onderhoudskosten: {GOLD}{CURRENCY}/jr{}{BLACK}Ontwikkeld: {GOLD}{NUMU16}{BLACK}  Levensduur: {GOLD}{COMMA16} jaar{}{BLACK}Max. Betrouwbaarheid: {GOLD}{COMMA8}%
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kan vliegtuig niet bouwen...
 STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA16} Vliegtuigen
 STR_A00A                                                        :{WHITE}{STRING}
@@ -2823,3 +2818,4 @@ STR_MAGLEV_VEHICLES                                             :Maglev Voertuig
 ############ End of list of rail types
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
+

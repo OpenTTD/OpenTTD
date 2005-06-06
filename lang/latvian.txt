@@ -2420,7 +2420,6 @@ STR_8813_FROM                                                   :{LTBLUE}{CARGO}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Train {COMMA16} is waiting in depot
 STR_8815_NEW_VEHICLES                                           :{BLACK}New Vehicles
 STR_8816                                                        :{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Svars: {GOLD}{COMMA16}t{}{BLACK}Âtrums: {GOLD}{VELOCITY}{BLACK}   Jauda: {GOLD}{COMMA32}zs{}{BLACK}Darbîbas izmaksas: {GOLD}{CURRENCY}/g{}{BLACK}Ietilpîba: {GOLD}{STRING}{}{BLACK}Izstrâdâts: {GOLD}{NUMU16}{BLACK} Dzîveslaiks: {GOLD}{COMMA16} gadi{}{BLACK}Maksimâlâ  darbîbas droðîba: {GOLD}{COMMA8}%
 STR_8818_INFORMATION                                            :{BLACK}Inform&#257;cija
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Train too long
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Trains can only be altered when stopped inside a depot
@@ -2430,7 +2429,6 @@ STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}New Mono
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}New Maglev Vehicles
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Build Vehicle
 STR_8820_RENAME                                                 :{BLACK}P&#257;rsaukt
-STR_8821_COST_WEIGHT_T_T_CAPACITY                               :{BLACK}Cena: {GOLD}{CURRENCY}{}{BLACK}Sv&#257;rs: {GOLD}{COMMA16}tonnas  ({COMMA16}t){}{BLACK}Capacit&#257;te: {GOLD}{STRING}
 STR_8823_SKIP                                                   :{BLACK}Skip
 STR_8824_DELETE                                                 :{BLACK}Delete
 STR_8825_NON_STOP                                               :{BLACK}Non-Stop
@@ -2523,7 +2521,6 @@ STR_9004_NEW_VEHICLES                                           :{BLACK}New Vehi
 STR_9005_INFORMATION                                            :{BLACK}Informâcija
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}New Road Vehicles
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Build Vehicle
-STR_9008_COST_SPEED_RUNNING_COST                                :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Speed: {GOLD}{VELOCITY}{}{BLACK}Running Cost: {GOLD}{CURRENCY}/yr{}{BLACK}Capacity: {GOLD}{STRING}{}{BLACK}Designed: {GOLD}{NUMU16}{BLACK}  Life: {GOLD}{COMMA16} years{}{BLACK}Max. Reliability: {GOLD}{COMMA8}%
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Can't build road vehicle...
 STR_900A_MUST_BUILD_ROAD_VEHICLE                                :{WHITE}Must build road vehicle depot first
 STR_900B_ORDERS                                                 :{WHITE}{STRING} (Orders)
@@ -2586,7 +2583,6 @@ STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Can't bu
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Must build ship depot first
 STR_9808_NEW_SHIPS                                              :{WHITE}New Ships
 STR_9809_BUILD_SHIP                                             :{BLACK}Build Ship
-STR_980A_COST_SPEED_CAPACITY_RUNNING                            :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Atrums: {GOLD}{VELOCITY}{}{BLACK}Capacity: {GOLD}{STRING} {STRING}{}{BLACK}Running Cost: {GOLD}{CURRENCY}/yr{}{BLACK}Designed: {GOLD}{NUMU16}{BLACK}   Life: {GOLD}{COMMA16} years{}{BLACK}Max. Reliability: {GOLD}{COMMA8}%
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Ship must be stopped in depot
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Can't sell ship...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Can't build ship...
@@ -2655,7 +2651,6 @@ STR_A003_NEW_AIRCRAFT                                           :{BLACK}New Airc
 STR_A004_INFORMATION                                            :{BLACK}Informâcija
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}New Aircraft
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Build Aircraft
-STR_A007_COST_SPEED_CAPACITY_PASSENGERS                         :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Atrums: {GOLD}{VELOCITY}{}{BLACK}Capacity: {GOLD}{COMMA16} passengers, {COMMA16} bags of mail{}{BLACK}Running Cost: {GOLD}{CURRENCY}/yr{}{BLACK}Designed: {GOLD}{NUMU16}{BLACK}  Life: {GOLD}{COMMA16} years{}{BLACK}Max. Reliability: {GOLD}{COMMA8}%
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Can't build aircraft...
 STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA16} Aircraft
 STR_A00A                                                        :{WHITE}{STRING}
@@ -2823,3 +2818,4 @@ STR_MAGLEV_VEHICLES                                             :Maglev transpor
 ############ End of list of rail types
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
+

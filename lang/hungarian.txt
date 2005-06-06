@@ -703,8 +703,8 @@ STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Véletlen
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Sziklás területek elhelyezése a térképen
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Világítótorony építése
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Rádióadó építése
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Sivatagos terület kijelölése
-STR_CREATE_LAKE                                                 :{BLACK}Jelöld ki a vízi területet (mélyföldön eláraszt mindent)
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Sivatag hoz létre.{}Nyomj CTRL-t az eltávolításához
+STR_CREATE_LAKE                                                 :{BLACK}Vizet hoz létre.{}A tengerszinten lév&#337; elemeket elárasztja
 STR_0290_DELETE                                                 :{BLACK}Töröl
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}A város teljes eltüntetése
 STR_0292_SAVE_SCENARIO                                          :Pálya mentése
@@ -2420,7 +2420,6 @@ STR_8813_FROM                                                   :{LTBLUE}{CARGO}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{COMMA16}. vonat a jármûtelepen várakozik
 STR_8815_NEW_VEHICLES                                           :{BLACK}Új jármûvek
 STR_8816                                                        :{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Ár: {GOLD}{CURRENCY}{BLACK} Súly: {GOLD}{COMMA16}t{}{BLACK}Sebesség: {GOLD}{VELOCITY}{BLACK}   Teljesítmény: {GOLD}{COMMA32}lóerõ{}{BLACK}Üzemeltetési Költség: {GOLD}{CURRENCY}/év{}{BLACK}Kapacitás: {GOLD}{STRING}{}{BLACK}Tervezés éve: {GOLD}{NUMU16}{BLACK} Élettartam: {GOLD}{COMMA16} év{}{BLACK}Legnagyobb megbízhatóság: {GOLD}{COMMA8}%
 STR_8818_INFORMATION                                            :{BLACK}Információk
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Túl hosszú a vonat
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Csak a jármûtelepen álló vonatokat lehet megváltoztatni
@@ -2430,7 +2429,6 @@ STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Új egysí
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Új MagLev jármûvek
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Megvesz
 STR_8820_RENAME                                                 :{BLACK}Átnevez
-STR_8821_COST_WEIGHT_T_T_CAPACITY                               :{BLACK}Ár: {GOLD}{CURRENCY}{}{BLACK}Súly: {GOLD}{COMMA16}t  ({COMMA16}t){}{BLACK}Kapacitás: {GOLD}{STRING}
 STR_8823_SKIP                                                   :{BLACK}Kihagy
 STR_8824_DELETE                                                 :{BLACK}Töröl
 STR_8825_NON_STOP                                               :{BLACK}Non-stop
@@ -2523,7 +2521,6 @@ STR_9004_NEW_VEHICLES                                           :{BLACK}Új jármû
 STR_9005_INFORMATION                                            :{BLACK}Információ
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Új közúti jármûvek
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Megvesz
-STR_9008_COST_SPEED_RUNNING_COST                                :{BLACK}Ár: {GOLD}{CURRENCY}{BLACK}   Sebesség: {GOLD}{VELOCITY}{}{BLACK}Mûködtetési költség: {GOLD}{CURRENCY}/év{}{BLACK}Kapacitás: {GOLD}{STRING}{}{BLACK}Tervezés éve: {GOLD}{NUMU16}{BLACK}   Élettartam: {GOLD}{COMMA16} év{}{BLACK}Legnagyobb megbízhatóság: {GOLD}{COMMA8}%
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nem veheted meg a közúti jármûvet...
 STR_900A_MUST_BUILD_ROAD_VEHICLE                                :{WHITE}Elõbb garázst kell építened
 STR_900B_ORDERS                                                 :{WHITE}{STRING} menetrendje
@@ -2586,7 +2583,6 @@ STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Nem vehe
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Elõbb dokkot kell építened
 STR_9808_NEW_SHIPS                                              :{WHITE}Új hajók
 STR_9809_BUILD_SHIP                                             :{BLACK}Megvesz
-STR_980A_COST_SPEED_CAPACITY_RUNNING                            :{BLACK}Ár: {GOLD}{CURRENCY}{BLACK}   Sebesség: {GOLD}{VELOCITY}{}{BLACK}Kapacitás: {GOLD}{STRING} {STRING}{}{BLACK}Mûködtetési költség: {GOLD}{CURRENCY}/év{}{BLACK}Tervezés éve: {GOLD}{NUMU16}{BLACK}   Élettartam: {GOLD}{COMMA16} év{}{BLACK}Legnagyobb megbízhatóság: {GOLD}{COMMA8}%
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}A dokkban kellene állnia ehhez
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Nem adhatod el a hajót...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Nem veheted meg a hajót...
@@ -2655,7 +2651,6 @@ STR_A003_NEW_AIRCRAFT                                           :{BLACK}Új repül
 STR_A004_INFORMATION                                            :{BLACK}Információ
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Új repülõgépek
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Megvesz
-STR_A007_COST_SPEED_CAPACITY_PASSENGERS                         :{BLACK}Ár: {GOLD}{CURRENCY}{BLACK}   Sebesség: {GOLD}{VELOCITY}{}{BLACK}Kapacitás: {GOLD}{COMMA16} utas, {COMMA16} csomag levél{}{BLACK}Mûködtetési költség: {GOLD}{CURRENCY}/év{}{BLACK}Tervezés éve: {GOLD}{NUMU16}{BLACK}   Élettartam: {GOLD}{COMMA16} év{}{BLACK}Legnagyobb megbízhatóság: {GOLD}{COMMA8}%
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nem veheted meg a repülõgépet...
 STR_A009_AIRCRAFT                                               :{WHITE}{STRING} repülõgépei - {COMMA16}
 STR_A00A                                                        :{WHITE}{STRING}
@@ -2823,3 +2818,4 @@ STR_MAGLEV_VEHICLES                                             :Maglev Vasutak
 ############ End of list of rail types
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
+

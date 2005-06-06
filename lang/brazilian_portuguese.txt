@@ -703,8 +703,8 @@ STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Plantar 
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Colocar rochas no terreno
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Colocar farol
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Colocar transmissor
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definir área deserta
-STR_CREATE_LAKE                                                 :{BLACK}Define área da água. Inunda as redondezas quando no nível do mar
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define área desértica.{}Pressione e segure CTRL para remove-la
+STR_CREATE_LAKE                                                 :{BLACK}Define área de água.{}Ela irá inundar quando no nível do mar
 STR_0290_DELETE                                                 :{BLACK}Apagar
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Apagar completamente esta cidade
 STR_0292_SAVE_SCENARIO                                          :Salvar cenário
@@ -2420,7 +2420,6 @@ STR_8813_FROM                                                   :{LTBLUE}{CARGO}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Comboio {COMMA16} está aguardando no depósito
 STR_8815_NEW_VEHICLES                                           :{BLACK}Novos Veículos
 STR_8816                                                        :{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Custo: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{COMMA16}t{}{BLACK}Velocidade: {GOLD}{VELOCITY}{BLACK}   Potência: {GOLD}{COMMA32}hp{}{BLACK}Custo de circulação: {GOLD}{CURRENCY}/ano{}{BLACK}Capacidade: {GOLD}{STRING}{}{BLACK}Projetado: {GOLD}{NUMU16}{BLACK} Vida: {GOLD}{COMMA16} anos{}{BLACK}Confiabilidade Máx.: {GOLD}{COMMA8}%
 STR_8818_INFORMATION                                            :{BLACK}Informação
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Trem muito longo
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Os trens só podem ser alterados quando parados num depósito
@@ -2430,7 +2429,6 @@ STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Novos Ve
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Novos Veículos Ferroviários(Trem-Bala)
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Construir Veículo
 STR_8820_RENAME                                                 :{BLACK}Renomear
-STR_8821_COST_WEIGHT_T_T_CAPACITY                               :{BLACK}Custo: {GOLD}{CURRENCY}{}{BLACK}Peso: {GOLD}{COMMA16}t  ({COMMA16}t){}{BLACK}Capacidade: {GOLD}{STRING}
 STR_8823_SKIP                                                   :{BLACK}Saltar
 STR_8824_DELETE                                                 :{BLACK}Eliminar
 STR_8825_NON_STOP                                               :{BLACK}Sem parar
@@ -2523,7 +2521,6 @@ STR_9004_NEW_VEHICLES                                           :{BLACK}Novos Ve
 STR_9005_INFORMATION                                            :{BLACK}Informação
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Novos Veículos de Estrada
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Construir Veículo
-STR_9008_COST_SPEED_RUNNING_COST                                :{BLACK}Custo: {GOLD}{CURRENCY}{BLACK} Velocidade: {GOLD}{VELOCITY}{}{BLACK}Custo de circulação: {GOLD}{CURRENCY}/ano{}{BLACK}Capacidade: {GOLD}{STRING}{}{BLACK}Projectado: {GOLD}{NUMU16}{BLACK}  Vida: {GOLD}{COMMA16} anos{}{BLACK}Fiabilidade Máx.: {GOLD}{COMMA8}%
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Não é possível construir veículo de estrada...
 STR_900A_MUST_BUILD_ROAD_VEHICLE                                :{WHITE}Deverá construir depósito de veículos de estrada primeiro
 STR_900B_ORDERS                                                 :{WHITE}{STRING} (Ordens)
@@ -2586,7 +2583,6 @@ STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Não é po
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}É necessário construir depósito naval primeiro
 STR_9808_NEW_SHIPS                                              :{WHITE}Novos Barcos
 STR_9809_BUILD_SHIP                                             :{BLACK}Construir Barco
-STR_980A_COST_SPEED_CAPACITY_RUNNING                            :{BLACK}Custo: {GOLD}{CURRENCY}{BLACK} Velocidade: {GOLD}{VELOCITY}{}{BLACK}Capacidade: {GOLD}{STRING} {STRING}{}{BLACK}Custo de circulação: {GOLD}{CURRENCY}/ano{}{BLACK}Projectado: {GOLD}{NUMU16}{BLACK}   Vida: {GOLD}{COMMA16} anos{}{BLACK}Fiabilidade Máx.: {GOLD}{COMMA8}%
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}O barco deverá estar parado no depósito
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Não é possível vender barco...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Não é possível construir barco...
@@ -2655,7 +2651,6 @@ STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nova Aer
 STR_A004_INFORMATION                                            :{BLACK}Informação
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nova Aeronave
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construir Aeronave
-STR_A007_COST_SPEED_CAPACITY_PASSENGERS                         :{BLACK}Custo: {GOLD}{CURRENCY}{BLACK} Velocidade: {GOLD}{VELOCITY}{}{BLACK}Capacidade: {GOLD}{COMMA16} passageiros, {COMMA16} sacos de correio{}{BLACK}Custo de circulação: {GOLD}{CURRENCY}/ano{}{BLACK}Projectado: {GOLD}{NUMU16}{BLACK}  Vida: {GOLD}{COMMA16} anos{}{BLACK}Fiabilidade Máx.: {GOLD}{COMMA8}%
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Não é possível construir aeronave...
 STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA16} Aeronaves
 STR_A00A                                                        :{WHITE}{STRING}
@@ -2823,3 +2818,4 @@ STR_MAGLEV_VEHICLES                                             :Maglevs
 ############ End of list of rail types
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
+

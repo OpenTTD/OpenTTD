@@ -2420,7 +2420,6 @@ STR_8813_FROM                                                   :{LTBLUE}{CARGO}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Tog {COMMA16} venter i togstallen
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nye tog/vogner
 STR_8816                                                        :{BLACK}-
-STR_8817_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Pris: {GOLD}{CURRENCY}{BLACK} Vekt: {GOLD}{COMMA16}t{}{BLACK}Fart: {GOLD}{VELOCITY}{BLACK}   Kraft: {GOLD}{COMMA32}hk{}{BLACK}Driftskostnad: {GOLD}{CURRENCY}/år{}{BLACK}Kapasitet: {GOLD}{STRING}{}{BLACK}Designet: {GOLD}{NUMU16}{BLACK} Levetid: {GOLD}{COMMA16} år{}{BLACK}Maks. Pålitelighet: {GOLD}{COMMA8}%
 STR_8818_INFORMATION                                            :{BLACK}Informasjon
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Toget er for langt
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Tog kan bare endres når det står stille i togstallen
@@ -2430,7 +2429,6 @@ STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nye tog/
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nye tog/vogner for Maglev
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Kjøp tog/vogn
 STR_8820_RENAME                                                 :{BLACK}Endre navn
-STR_8821_COST_WEIGHT_T_T_CAPACITY                               :{BLACK}Koster: {GOLD}{CURRENCY}{}{BLACK}Vekt: {GOLD}{COMMA16}t  ({COMMA16}t){}{BLACK}Kapasitet: {GOLD}{STRING}
 STR_8823_SKIP                                                   :{BLACK}Hopp over
 STR_8824_DELETE                                                 :{BLACK}Slett
 STR_8825_NON_STOP                                               :{BLACK}Uten stopp
@@ -2523,7 +2521,6 @@ STR_9004_NEW_VEHICLES                                           :{BLACK}Nye kjør
 STR_9005_INFORMATION                                            :{BLACK}Informasjon
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nye kjøretøy
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Kjøp kjøretøy
-STR_9008_COST_SPEED_RUNNING_COST                                :{BLACK}Koster: {GOLD}{CURRENCY}{BLACK} Fart: {GOLD}{VELOCITY}{}{BLACK}Driftkostnader: {GOLD}{CURRENCY}/år{}{BLACK}Kapasitet: {GOLD}{STRING}{}{BLACK}Designet: {GOLD}{NUMU16}{BLACK}  Levetid: {GOLD}{COMMA16} år{}{BLACK}Maks.pålitelighet: {GOLD}{COMMA8}%
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan ikke kjøpe kjøretøy...
 STR_900A_MUST_BUILD_ROAD_VEHICLE                                :{WHITE}Må bygge garasje først
 STR_900B_ORDERS                                                 :{WHITE}{STRING} (Ordre)
@@ -2586,7 +2583,6 @@ STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Kan ikke
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Må rive skipsdepotet først
 STR_9808_NEW_SHIPS                                              :{WHITE}Nye skip
 STR_9809_BUILD_SHIP                                             :{BLACK}Bygg skip
-STR_980A_COST_SPEED_CAPACITY_RUNNING                            :{BLACK}Koster: {GOLD}{CURRENCY}{BLACK} Fart: {GOLD}{VELOCITY}{}{BLACK}Kapasitet: {GOLD}{STRING} {STRING}{}{BLACK}Driftkostnader: {GOLD}{CURRENCY}/år{}{BLACK}Designet: {GOLD}{NUMU16}{BLACK}   Levetid: {GOLD}{COMMA16} år{}{BLACK}Maks. Pålitelighet: {GOLD}{COMMA8}%
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Må være stoppet i depotet
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Kan ikke selge skip...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kan ikke bygge skip...
@@ -2655,7 +2651,6 @@ STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nytt fly
 STR_A004_INFORMATION                                            :{BLACK}Informasjon
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nytt fly
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Bygg fly
-STR_A007_COST_SPEED_CAPACITY_PASSENGERS                         :{BLACK}Koster: {GOLD}{CURRENCY}{BLACK} Fart: {GOLD}{VELOCITY}{}{BLACK}Kapasitet: {GOLD}{COMMA16} passasjerer, {COMMA16} sekker post{}{BLACK}Driftkostnader: {GOLD}{CURRENCY}/år{}{BLACK}Designet: {GOLD}{NUMU16}{BLACK}  Levetid: {GOLD}{COMMA16} år{}{BLACK}Maks. Pålitelighet: {GOLD}{COMMA8}%
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kan ikke bygge fly...
 STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA16} Fly
 STR_A00A                                                        :{WHITE}{STRING}
@@ -2823,3 +2818,4 @@ STR_MAGLEV_VEHICLES                                             :Maglevlokomotiv
 ############ End of list of rail types
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
+
