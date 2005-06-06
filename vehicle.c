@@ -188,7 +188,7 @@ void AfterLoadVehicles(void)
 			v->left_coord = INVALID_COORD;
 			VehiclePositionChanged(v);
 
-			if (v->type == VEH_Train && v->subtype == TS_Front_Engine)
+			if (v->type == VEH_Train && (v->subtype == TS_Front_Engine || v->subtype == TS_Free_Car))
 				TrainConsistChanged(v);
 		}
 	}
@@ -1392,12 +1392,12 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if ( old_engine_type != new_engine_type ) {
 
 			// prevent that the rear engine can get replaced to something else than the front engine
-			if ( v->u.rail.first_engine != 0xffff && RailVehInfo(old_engine_type)->flags & RVI_MULTIHEAD && RailVehInfo(old_engine_type)->flags ) {
+			if ( v->u.rail.first_engine != INVALID_VEHICLE && RailVehInfo(old_engine_type)->flags & RVI_MULTIHEAD && RailVehInfo(old_engine_type)->flags ) {
 				if ( first->engine_type != new_engine_type ) return CMD_ERROR;
 			}
 
 			// checks if the engine is the first one
-			if ( v->u.rail.first_engine == 0xffff ) {
+			if ( v->u.rail.first_engine == INVALID_VEHICLE ) {
 				if ( RailVehInfo(new_engine_type)->flags & RVI_MULTIHEAD ) {
 					if ( u->engine_type == old_engine_type && v->next != NULL) {
 						rear_engine_cost = build_cost - u->value;
@@ -1471,7 +1471,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				v->spritenum = rvi->image_index + (( rvi->flags & RVI_MULTIHEAD && sprite - rvi2->image_index) ? 1 : 0);
 
 				// turn the last engine in a multiheaded train if needed
-				if ( v->next == NULL && v->u.rail.first_engine != 0xffff && rvi->flags & RVI_MULTIHEAD && v->spritenum == rvi->image_index )
+				if ( v->next == NULL && v->u.rail.first_engine != INVALID_VEHICLE && rvi->flags & RVI_MULTIHEAD && v->spritenum == rvi->image_index )
 					v->spritenum++;
 
 				v->cargo_type = rvi->cargo_type;
@@ -1517,14 +1517,8 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				}
 #endif
 
-				// updates the id of the front engine in the other units, since the front engine just got a new engine_id
-				// this is needed for wagon override
-				if ( v->u.rail.first_engine == 0xffff && v->next != NULL ) {
-					Vehicle *veh = v->next;
-					do {
-						veh->u.rail.first_engine = new_engine_type;
-					} while ( (veh=veh->next) != NULL );
-				}
+				// recalculate changed train values
+				TrainConsistChanged(first);
 				InvalidateWindowClasses(WC_TRAINS_LIST);
 				UpdateTrainAcceleration(first);
 				break;
@@ -2089,9 +2083,6 @@ static void Load_VEHS(void)
 		v = GetVehicle(index);
 		SlObject(v, _veh_descs[SlReadByte()]);
 
-		if (v->type == VEH_Train)
-			v->u.rail.first_engine = 0xffff;
-
 		/* Old savegames used 'last_station_visited = 0xFF', should be 0xFFFF */
 		if (_sl.version < 5 && v->last_station_visited == 0xFF)
 			v->last_station_visited = 0xFFFF;
@@ -2102,17 +2093,6 @@ static void Load_VEHS(void)
 			v->current_order.flags = (v->current_order.type & 0xF0) >> 4;
 			v->current_order.type  =  v->current_order.type & 0x0F;
 		}
-	}
-
-	// Iterate through trains and set first_engine appropriately.
-	FOR_ALL_VEHICLES(v) {
-		Vehicle *w;
-
-		if (v->type != VEH_Train || v->subtype != TS_Front_Engine)
-			continue;
-
-		for (w = v->next; w; w = w->next)
-			w->u.rail.first_engine = v->engine_type;
 	}
 
 	/* Check for shared order-lists (we now use pointers for that) */

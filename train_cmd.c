@@ -60,18 +60,30 @@ void TrainCargoChanged(Vehicle *v) {
 }
 
 /**
- * Recalculates the cached stuff of a train. Should be called each time a vehicle is added to/removed from
- * the consist, and when the game is loaded.
- * @param v First vehicle of the consist.
+ * Recalculates the cached stuff of a train. Should be called each time a vehicle is added
+ * to/removed from the chain, and when the game is loaded.
+ * Note: this needs to be called too for 'wagon chains' (in the depot, without an engine)
+ * @param v First vehicle of the chain.
  */
 void TrainConsistChanged(Vehicle *v) {
-	const RailVehicleInfo *rvi_v = RailVehInfo(v->engine_type);
+	const RailVehicleInfo *rvi_v;
 	Vehicle *u;
 	uint16 max_speed = 0xFFFF;
 	uint32 power = 0;
+	EngineID first_engine;
+
+	assert(v->type == VEH_Train);
+
+	assert(v->subtype == TS_Front_Engine || v->subtype == TS_Free_Car);
+
+	rvi_v = RailVehInfo(v->engine_type);
+	first_engine = (v->subtype == TS_Front_Engine) ? v->engine_type : INVALID_VEHICLE;
 
 	for (u = v; u != NULL; u = u->next) {
 		const RailVehicleInfo *rvi_u = RailVehInfo(u->engine_type);
+
+		// update the 'first engine'
+		u->u.rail.first_engine = (v == u) ? INVALID_VEHICLE : first_engine;
 
 		// power is the sum of the powers of all engines and powered wagons in the consist
 		power += rvi_u->power;
@@ -449,11 +461,6 @@ static int32 CmdBuildRailWagon(uint engine, uint tile, uint32 flags)
 			if (u != NULL) {
 				u->next = v;
 				v->subtype = TS_Not_First;
-				v->u.rail.first_engine = u->u.rail.first_engine;
-				if (v->u.rail.first_engine == 0xffff && u->subtype == TS_Front_Engine)
-					v->u.rail.first_engine = u->engine_type;
-			} else {
-				v->u.rail.first_engine = 0xffff;
 			}
 
 			v->cargo_type = rvi->cargo_type;
@@ -471,6 +478,7 @@ static int32 CmdBuildRailWagon(uint engine, uint tile, uint32 flags)
 			_new_wagon_id = v->index;
 
 			VehiclePositionChanged(v);
+			TrainConsistChanged(GetFirstVehicleInChain(v));
 
 			InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		}
@@ -547,7 +555,6 @@ void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u, bool building)
 	u->z_pos = v->z_pos;
 	u->z_height = 6;
 	u->u.rail.track = 0x80;
-	v->u.rail.first_engine = 0xffff;
 	u->vehstatus = v->vehstatus & ~VS_STOPPED;
 	u->subtype = TS_Not_First;
 	u->spritenum = v->spritenum + 1;
@@ -620,7 +627,6 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			v->z_pos = GetSlopeZ(x,y);
 			v->z_height = 6;
 			v->u.rail.track = 0x80;
-			v->u.rail.first_engine = 0xffff;
 			v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 			v->spritenum = rvi->image_index;
 			v->cargo_type = rvi->cargo_type;
@@ -705,14 +711,11 @@ static Vehicle *UnlinkWagon(Vehicle *v, Vehicle *first)
 {
 	Vehicle *u;
 
-	v->u.rail.first_engine = INVALID_VEHICLE;
-
 	// unlinking the first vehicle of the chain?
 	if (v == first) {
 		v = v->next;
 		if (v == NULL) return NULL;
 
-		for (u = v; u != NULL; u = u->next) u->u.rail.first_engine = v->engine_type;
 		v->subtype = TS_Free_Car;
 		return v;
 	}
@@ -838,10 +841,12 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				Vehicle *v = src_head;
 				while (v->next != src) v=v->next;
 				v->next = NULL;
+			} else {
+				src_head = NULL;
 			}
 		} else {
 			// unlink single wagon from linked list
-			UnlinkWagon(src, src_head);
+			src_head = UnlinkWagon(src, src_head);
 			src->next = NULL;
 		}
 
@@ -854,11 +859,10 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					assert(src->orders == NULL);
 					src->num_orders = 0;
 				}
-				dst_head = src;
 			} else {
 				src->subtype = TS_Free_Car;
 			}
-			src->u.rail.first_engine = 0xffff;
+			dst_head = src;
 		} else {
 			if (src->subtype == TS_Front_Engine) {
 				// the vehicle was previously a loco. need to free the order list and delete vehicle windows etc.
@@ -869,44 +873,42 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			src->subtype = TS_Not_First;
 			src->unitnumber = 0; // doesn't occupy a unitnumber anymore.
 
-			// setup first_engine
-			src->u.rail.first_engine = dst->u.rail.first_engine;
-			if (src->u.rail.first_engine == 0xffff && dst->subtype == TS_Front_Engine)
-				src->u.rail.first_engine = dst->engine_type;
-
 			// link in the wagon(s) in the chain.
 			{
 				Vehicle *v;
 
-				for (v = src; v->next != NULL; v = v->next) {
-					v->next->u.rail.first_engine = v->u.rail.first_engine;
-				}
+				for (v = src; v->next != NULL; v = v->next) {};
 				v->next = dst->next;
 			}
 			dst->next = src;
 		}
 
-		if (src_head->subtype == TS_Front_Engine) {
+		if (src_head) {
 			TrainConsistChanged(src_head);
-			UpdateTrainAcceleration(src_head);
-		}
-		InvalidateWindow(WC_VEHICLE_DETAILS, src_head->index);
-		InvalidateWindow(WC_VEHICLE_REFIT, src_head->index);
+			if (src_head->subtype == TS_Front_Engine) {
+				UpdateTrainAcceleration(src_head);
+				InvalidateWindow(WC_VEHICLE_DETAILS, src_head->index);
+				/* Update the refit button and window */
+				InvalidateWindow(WC_VEHICLE_REFIT, src_head->index);
+				InvalidateWindowWidget(WC_VEHICLE_VIEW, src_head->index, 12);
+			}
+			/* Update the depot window */
+			InvalidateWindow(WC_VEHICLE_DEPOT, src_head->tile);
+		};
 
 		if (dst_head) {
+			TrainConsistChanged(dst_head);
 			if (dst_head->subtype == TS_Front_Engine) {
-				TrainConsistChanged(dst_head);
 				UpdateTrainAcceleration(dst_head);
+				InvalidateWindow(WC_VEHICLE_DETAILS, dst_head->index);
+				/* Update the refit button and window */
+				InvalidateWindowWidget(WC_VEHICLE_VIEW, dst_head->index, 12);
+				InvalidateWindow(WC_VEHICLE_REFIT, dst_head->index);
 			}
-			InvalidateWindow(WC_VEHICLE_DETAILS, dst_head->index);
-			/* Update the refit button and window */
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, dst_head->index, 12);
-			InvalidateWindow(WC_VEHICLE_REFIT, dst_head->index);
+			/* Update the depot window */
+			InvalidateWindow(WC_VEHICLE_DEPOT, dst_head->tile);
 		}
 
-		/* I added this to so that the refit buttons get updated */
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, src_head->index, 12);
-		InvalidateWindow(WC_VEHICLE_DEPOT, src_head->tile);
 		RebuildVehicleLists();
 	}
 
@@ -1048,11 +1050,13 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				if (switch_engine) first->subtype = TS_Front_Engine;
 
 				/* 5. If the train still exists, update its acceleration, window, etc. */
-				if (first != NULL && first->subtype == TS_Front_Engine) {
-					InvalidateWindow(WC_VEHICLE_DETAILS, first->index);
-					InvalidateWindow(WC_VEHICLE_REFIT, first->index);
+				if (first != NULL) {
 					TrainConsistChanged(first);
-					UpdateTrainAcceleration(first);
+					if (first->subtype == TS_Front_Engine) {
+						InvalidateWindow(WC_VEHICLE_DETAILS, first->index);
+						InvalidateWindow(WC_VEHICLE_REFIT, first->index);
+						UpdateTrainAcceleration(first);
+					}
 				}
 
 
@@ -1103,9 +1107,10 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			}
 
 			/* 3. If it is still a valid train after selling, update its acceleration and cached values */
-			if ((flags & DC_EXEC) && first != NULL && first->subtype == TS_Front_Engine) {
+			if ((flags & DC_EXEC) && first != NULL) {
 				TrainConsistChanged(first);
-				UpdateTrainAcceleration(first);
+				if (first->subtype == TS_Front_Engine)
+					UpdateTrainAcceleration(first);
 			}
 		} break;
 	}
