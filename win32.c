@@ -2249,7 +2249,7 @@ bool CreateOTTDThread(void *func, void *param)
 {
 	DWORD dwThreadId;
 	hThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)func, param, 0, &dwThreadId);
-	SetThreadPriority(hThread, THREAD_PRIORITY_BELOW_NORMAL);
+	SetThreadPriority(hThread, THREAD_PRIORITY_NORMAL);
 
 	return hThread != NULL;
 }
