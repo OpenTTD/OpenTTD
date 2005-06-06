@@ -2,6 +2,7 @@
 #include "openttd.h"
 #include "spritecache.h"
 #include "table/strings.h"
+#include "table/sprites.h"
 #include "map.h"
 #include "tile.h"
 #include "gui.h"
@@ -14,32 +15,33 @@
 #include "sound.h"
 
 static const Widget _smallmap_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,    13,    11,   433,     0,    13, STR_00B0_MAP,STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     RESIZE_LR,    13,   434,   445,     0,    13, 0x0,         STR_STICKY_BUTTON},
-{     WWT_IMGBTN,     RESIZE_RB,    13,     0,   445,    14,   257, 0x0,					STR_NULL},
-{          WWT_6,     RESIZE_RB,    13,     2,   443,    16,   255, 0x0,					STR_NULL},
-{     WWT_IMGBTN,   RESIZE_LRTB,    13,   380,   401,   258,   279, 0x2E2,				STR_0191_SHOW_LAND_CONTOURS_ON_MAP},
-{     WWT_IMGBTN,   RESIZE_LRTB,    13,   402,   423,   258,   279, 0x2E3,				STR_0192_SHOW_VEHICLES_ON_MAP},
-{     WWT_IMGBTN,   RESIZE_LRTB,    13,   424,   445,   258,   279, 0x2E5,				STR_0193_SHOW_INDUSTRIES_ON_MAP},
-{     WWT_IMGBTN,   RESIZE_LRTB,    13,   380,   401,   280,   301, 0x2E4,				STR_0194_SHOW_TRANSPORT_ROUTES_ON},
-{     WWT_IMGBTN,   RESIZE_LRTB,    13,   402,   423,   280,   301, 0x2E6,				STR_0195_SHOW_VEGETATION_ON_MAP},
-{     WWT_IMGBTN,   RESIZE_LRTB,    13,   424,   445,   280,   301, 0x2E7,				STR_0196_SHOW_LAND_OWNERS_ON_MAP},
-{     WWT_IMGBTN,   RESIZE_LRTB,    13,   358,   379,   258,   279, 0x0,					STR_NULL},
-{     WWT_IMGBTN,   RESIZE_LRTB,    13,   358,   379,   280,   301, 0xFED,				STR_0197_TOGGLE_TOWN_NAMES_ON_OFF},
-{     WWT_IMGBTN,    RESIZE_RTB,    13,     0,   357,   258,   301, 0x0,					STR_NULL},
-{      WWT_PANEL,    RESIZE_RTB,    13,     0,   433,   302,   313, 0x0,					STR_NULL},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    13,   434,   445,   302,   313, 0x0,					STR_RESIZE_BUTTON},
-{   WIDGETS_END},
+{   WWT_TEXTBTN,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
+{   WWT_CAPTION,  RESIZE_RIGHT,    13,    11,   433,     0,    13, STR_00B0_MAP,            STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_STICKYBOX,     RESIZE_LR,    13,   434,   445,     0,    13, 0x0,                     STR_STICKY_BUTTON},
+{    WWT_IMGBTN,     RESIZE_RB,    13,     0,   445,    14,   257, 0x0,                     STR_NULL},
+{         WWT_6,     RESIZE_RB,    13,     2,   443,    16,   255, 0x0,                     STR_NULL},
+{    WWT_IMGBTN,   RESIZE_LRTB,    13,   380,   401,   258,   279, SPR_IMG_SHOW_COUNTOURS,  STR_0191_SHOW_LAND_CONTOURS_ON_MAP},
+{    WWT_IMGBTN,   RESIZE_LRTB,    13,   402,   423,   258,   279, SPR_IMG_SHOW_VEHICLES,   STR_0192_SHOW_VEHICLES_ON_MAP},
+{    WWT_IMGBTN,   RESIZE_LRTB,    13,   424,   445,   258,   279, SPR_IMG_INDUSTRY,        STR_0193_SHOW_INDUSTRIES_ON_MAP},
+{    WWT_IMGBTN,   RESIZE_LRTB,    13,   380,   401,   280,   301, SPR_IMG_SHOW_ROUTES,     STR_0194_SHOW_TRANSPORT_ROUTES_ON},
+{    WWT_IMGBTN,   RESIZE_LRTB,    13,   402,   423,   280,   301, SPR_IMG_PLANTTREES,      STR_0195_SHOW_VEGETATION_ON_MAP},
+{    WWT_IMGBTN,   RESIZE_LRTB,    13,   424,   445,   280,   301, SPR_IMG_COMPANY_GENERAL, STR_0196_SHOW_LAND_OWNERS_ON_MAP},
+{    WWT_IMGBTN,   RESIZE_LRTB,    13,   358,   379,   258,   279, 0x0,                     STR_NULL},
+{    WWT_IMGBTN,   RESIZE_LRTB,    13,   358,   379,   280,   301, SPR_IMG_TOWN,            STR_0197_TOGGLE_TOWN_NAMES_ON_OFF},
+{    WWT_IMGBTN,    RESIZE_RTB,    13,     0,   357,   258,   301, 0x0,                     STR_NULL},
+{     WWT_PANEL,    RESIZE_RTB,    13,     0,   433,   302,   313, 0x0,                     STR_NULL},
+{ WWT_RESIZEBOX,   RESIZE_LRTB,    13,   434,   445,   302,   313, 0x0,                     STR_RESIZE_BUTTON},
+{  WIDGETS_END},
 };
 
 static int _smallmap_type;
 static bool _smallmap_show_towns = true;
 
-#define MK(a,b) a,b
-#define MKEND() 0xffff
-#define MS(a,b) (a|0x100),b
+#define MK(a,b) a, b
+#define MKEND() 0xFFFF
+#define MS(a,b) (a | 0x100), b
 
+/* Legend text giving the colours to look for on the minimap */
 static const uint16 _legend_land_contours[] = {
 	MK(0x5A,STR_00F0_100M),
 	MK(0x5C,STR_00F1_200M),
@@ -231,6 +233,7 @@ static const uint16 * const _legend_table[] = {
 #	define MKCOLOR(x) (x)
 #endif
 
+/* Height encodings; 16 levels XXX - needs updating for more/finer heights! */
 static const uint32 _map_height_bits[16] = {
 	MKCOLOR(0x5A5A5A5A),
 	MKCOLOR(0x5A5B5A5B),
@@ -259,6 +262,7 @@ static inline uint32 ApplyMask(uint32 colour, const AndOr* mask)
 {
 	return (colour & mask->mand) | mask->mor;
 }
+
 
 static const AndOr _smallmap_contours_andor[] = {
 	{MKCOLOR(0x00000000),MKCOLOR(0xFFFFFFFF)},
@@ -305,6 +309,36 @@ static const AndOr _smallmap_vegetation_andor[] = {
 	{MKCOLOR(0x00D7D700),MKCOLOR(0xFF0000FF)},
 };
 
+typedef uint32 GetSmallMapPixels(TileIndex tile); // typedef callthrough function
+
+/**
+ * Draws one column of the small map in a certain mode onto the screen buffer. This
+ * function looks exactly the same for all types
+ *
+ * @param dst Pointer to a part of the screen buffer to write to.
+ * @param xc The X coordinate of the first tile in the column.
+ * @param yc The Y coordinate of the first tile in the column
+ * @param pitch Number of pixels to advance in the screen buffer each time a pixel is written.
+ * @param reps Number of lines to draw
+ * @param mask ?
+ * @param proc Pointer to the colour function
+ * @see GetSmallMapPixels(TileIndex)
+ */
+static void DrawSmallMapStuff(byte *dst, uint xc, uint yc, int pitch, int reps, uint32 mask, GetSmallMapPixels *proc)
+{
+	byte *dst_ptr_end = _screen.dst_ptr + _screen.width * _screen.height - _screen.width;
+
+	do {
+		// check if the tile (xc,yc) is within the map range
+		if (xc < MapSizeX() - 1 && yc < MapSizeY() - 1) {
+			// check if the dst pointer points to a pixel inside the screen buffer
+			if (dst > _screen.dst_ptr && dst < dst_ptr_end)
+				WRITE_PIXELS_OR(dst, proc(TILE_XY(xc, yc)) & mask );
+		}
+	// switch to next tile in the column
+	} while (xc++, yc++, dst += pitch, --reps != 0);
+}
+
 
 static inline TileType GetEffectiveTileType(TileIndex tile)
 {
@@ -324,7 +358,11 @@ static inline TileType GetEffectiveTileType(TileIndex tile)
 	return t;
 }
 
-
+/**
+ * Return the color a tile would be displayed with in the small map in mode "Contour".
+ * @param tile The tile of which we would like to get the color.
+ * @return The color of tile in the small map in mode "Contour"
+ */
 static inline uint32 GetSmallMapContoursPixels(TileIndex tile)
 {
 	TileType t = GetEffectiveTileType(tile);
@@ -333,16 +371,12 @@ static inline uint32 GetSmallMapContoursPixels(TileIndex tile)
 		ApplyMask(_map_height_bits[TileHeight(tile)], &_smallmap_contours_andor[t]);
 }
 
-static void DrawSmallMapContours(byte *dst, uint xc, uint yc, int pitch, int reps, uint32 mask)
-{
-	do {
-		if (xc < MapMaxX() && yc < MapMaxY())
-			if (dst > _screen.dst_ptr && dst < (_screen.dst_ptr + _screen.width * _screen.height - _screen.width))
-				WRITE_PIXELS_OR(dst, GetSmallMapContoursPixels(TILE_XY(xc,yc)) & mask);
-	} while (xc++,yc++,dst+=pitch,--reps != 0);
-}
-
-
+/**
+ * Return the color a tile would be displayed with in the small map in mode "Vehicles".
+ *
+ * @param t The tile of which we would like to get the color.
+ * @return The color of tile in the small map in mode "Vehicles"
+ */
 static inline uint32 GetSmallMapVehiclesPixels(TileIndex tile)
 {
 	TileType t = GetEffectiveTileType(tile);
@@ -350,15 +384,7 @@ static inline uint32 GetSmallMapVehiclesPixels(TileIndex tile)
 	return ApplyMask(MKCOLOR(0x54545454), &_smallmap_vehicles_andor[t]);
 }
 
-
-static void DrawSmallMapVehicles(byte *dst, uint xc, uint yc, int pitch, int reps, uint32 mask)
-{
-	do {
-		if (xc < MapMaxX() && yc < MapMaxY())
-			WRITE_PIXELS_OR( dst, GetSmallMapVehiclesPixels(TILE_XY(xc,yc)) & mask );
-	} while (xc++,yc++,dst+=pitch,--reps != 0);
-}
-
+/* Industry colours... a total of 175 gfx - XXX - increase if more industries */
 static const byte _industry_smallmap_colors[175] = {
 	215,215,215,215,215,215,215,184,
 	184,184,184,194,194,194,194,194,
@@ -384,6 +410,12 @@ static const byte _industry_smallmap_colors[175] = {
 	 15, 15, 15, 15, 15, 15, 15,
 };
 
+/**
+ * Return the color a tile would be displayed with in the small map in mode "Industries".
+ *
+ * @param tile The tile of which we would like to get the color.
+ * @return The color of tile in the small map in mode "Industries"
+ */
 static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile)
 {
 	TileType t = GetEffectiveTileType(tile);
@@ -391,19 +423,17 @@ static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile)
 	if (t == MP_INDUSTRY) {
 		byte color = _industry_smallmap_colors[_map5[tile]];
 		return color + (color << 8) + (color << 16) + (color << 24);
-	} else {
-		return ApplyMask(MKCOLOR(0x54545454), &_smallmap_vehicles_andor[t]);
 	}
+
+	return ApplyMask(MKCOLOR(0x54545454), &_smallmap_vehicles_andor[t]);
 }
 
-static void DrawSmallMapIndustries(byte *dst, uint xc, uint yc, int pitch, int reps, uint32 mask)
-{
-	do {
-		if (xc < MapMaxX() && yc < MapMaxY())
-			WRITE_PIXELS_OR(dst, GetSmallMapIndustriesPixels(TILE_XY(xc,yc)) & mask);
-	} while (xc++,yc++,dst+=pitch,--reps != 0);
-}
-
+/**
+ * Return the color a tile would be displayed with in the small map in mode "Routes".
+ *
+ * @param t The tile of which we would like to get the color.
+ * @return The color of tile  in the small map in mode "Routes"
+ */
 static inline uint32 GetSmallMapRoutesPixels(TileIndex tile)
 {
 	TileType t = GetEffectiveTileType(tile);
@@ -425,27 +455,20 @@ static inline uint32 GetSmallMapRoutesPixels(TileIndex tile)
 	return bits;
 }
 
-static void DrawSmallMapRoutes(byte *dst, uint xc, uint yc, int pitch, int reps, uint32 mask)
-{
-	do {
-		if (xc < MapMaxX() && yc < MapMaxY())
-			WRITE_PIXELS_OR(dst, GetSmallMapRoutesPixels(TILE_XY(xc,yc)) & mask);
-	} while (xc++,yc++,dst+=pitch,--reps != 0);
-}
 
 static const uint32 _vegetation_clear_bits[4 + 7] = {
-	MKCOLOR(0x37373737),
-	MKCOLOR(0x37373737),
-	MKCOLOR(0x37373737),
-	MKCOLOR(0x54545454),
+	MKCOLOR(0x37373737), ///< bare land
+	MKCOLOR(0x37373737), ///< 1/3 grass
+	MKCOLOR(0x37373737), ///< 2/3 grass
+	MKCOLOR(0x54545454), ///< full grass
 
-	MKCOLOR(0x52525252),
-	MKCOLOR(0x0A0A0A0A),
-	MKCOLOR(0x25252525),
-	MKCOLOR(0x98989898),
-	MKCOLOR(0xC2C2C2C2),
-	MKCOLOR(0x54545454),
-	MKCOLOR(0x54545454),
+	MKCOLOR(0x52525252), ///< rough land
+	MKCOLOR(0x0A0A0A0A), ///< rocks
+	MKCOLOR(0x25252525), ///< fields
+	MKCOLOR(0x98989898), ///< snow
+	MKCOLOR(0xC2C2C2C2), ///< desert
+	MKCOLOR(0x54545454), ///< unused
+	MKCOLOR(0x54545454), ///< unused
 };
 
 static inline uint32 GetSmallMapVegetationPixels(TileIndex tile)
@@ -481,17 +504,14 @@ static inline uint32 GetSmallMapVegetationPixels(TileIndex tile)
 }
 
 
-static void DrawSmallMapVegetation(byte *dst, uint xc, uint yc, int pitch, int reps, uint32 mask)
-{
-	do {
-		if (xc < MapMaxX() && yc < MapMaxY())
-			WRITE_PIXELS_OR(dst, GetSmallMapVegetationPixels(TILE_XY(xc,yc)) & mask);
-	} while (xc++,yc++,dst+=pitch,--reps != 0);
-}
-
-
 static uint32 _owner_colors[256];
 
+/**
+ * Return the color a tile would be displayed with in the small map in mode "Owner".
+ *
+ * @param t The tile of which we would like to get the color.
+ * @return The color of tile in the small map in mode "Owner"
+ */
 static inline uint32 GetSmallMapOwnerPixels(TileIndex tile)
 {
 	TileType t = GetTileType(tile);
@@ -505,15 +525,6 @@ static inline uint32 GetSmallMapOwnerPixels(TileIndex tile)
 	}
 
 	return _owner_colors[t];
-}
-
-
-static void DrawSmallMapOwners(byte *dst, uint xc, uint yc, int pitch, int reps, uint32 mask)
-{
-	do {
-		if (xc < MapMaxX() && yc < MapMaxY())
-			WRITE_PIXELS_OR(dst, GetSmallMapOwnerPixels(TILE_XY(xc,yc)) & mask);
-	} while (xc++,yc++,dst+=pitch,--reps != 0);
 }
 
 
@@ -531,15 +542,13 @@ static const uint32 _smallmap_mask_right[] = {
 
 /* each tile has 4 x pixels and 1 y pixel */
 
-typedef void SmallmapDrawProc(byte *dst, uint xc, uint yc, int pitch, int reps, uint32 mask);
-
-static SmallmapDrawProc *_smallmap_draw_procs[] = {
-	DrawSmallMapContours,
-	DrawSmallMapVehicles,
-	DrawSmallMapIndustries,
-	DrawSmallMapRoutes,
-	DrawSmallMapVegetation,
-	DrawSmallMapOwners,
+static GetSmallMapPixels *_smallmap_draw_procs[] = {
+	GetSmallMapContoursPixels,
+	GetSmallMapVehiclesPixels,
+	GetSmallMapIndustriesPixels,
+	GetSmallMapRoutesPixels,
+	GetSmallMapVegetationPixels,
+	GetSmallMapOwnerPixels,
 };
 
 static const byte _vehicle_type_colors[6] = {
@@ -562,6 +571,20 @@ static void DrawHorizMapIndicator(int x, int y, int x2, int y2)
 	GfxFillRect(x2 - 3, y, x2, y2, 69);
 }
 
+/**
+ * Draws the small map.
+ *
+ * Basically, the small map is draw column of pixels by column of pixels. The pixels
+ * are drawn directly into the screen buffer. The final map is drawn in multiple passes.
+ * The passes are:
+ * <ol><li>The colors of tiles in the different modes.</li>
+ * <li>Town names (optional)</li>
+ *
+ * @param dpi pointer to pixel to write onto
+ * @param w pointer to Window struct
+ * @param type type of map requested (vegetation, owners, routes, etc)
+ * @param show_towns true if the town names should be displayed, false if not.
+ */
 static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_towns)
 {
 	DrawPixelInfo *old_dpi;
@@ -569,7 +592,6 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 	byte *ptr;
 	int tile_x;
 	int tile_y;
-	SmallmapDrawProc *proc;
 	ViewPort *vp;
 
 	old_dpi = _cur_dpi;
@@ -594,7 +616,7 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active)
 				_owner_colors[p->index] =
-					dup_byte32(GetNonSprite(0x307 + p->player_color)[0xCB]);
+					dup_byte32(GetNonSprite(775 + p->player_color)[0xCB]); // XXX - magic pixel
 		}
 	}
 
@@ -619,8 +641,6 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 			tile_y++;
 		}
 	}
-
-	proc = _smallmap_draw_procs[type];
 
 	ptr = dpi->dst_ptr - dx - 4;
 	x = - dx - 4;
@@ -653,7 +673,7 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 		reps = (dpi->height - y + 1) / 2;
 		if (reps > 0) {
 //			assert(ptr >= dpi->dst_ptr);
-			proc(ptr, tile_x, tile_y, dpi->pitch*2, reps, mask);
+			DrawSmallMapStuff(ptr, tile_x, tile_y, dpi->pitch*2, reps, mask, _smallmap_draw_procs[type]);
 		}
 
 skip_column:
@@ -723,7 +743,7 @@ skip_column:
 	}
 
 	if (show_towns) {
-		Town *t;
+		const Town *t;
 
 		FOR_ALL_TOWNS(t) {
 			if (t->xy != 0) {
@@ -778,7 +798,7 @@ skip_column:
 
 static void SmallMapWindowProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		const uint16 *tbl;
 		int x,y,y_org;
@@ -816,8 +836,8 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
-		case 4: {/* main wnd */
+		switch (e->click.widget) {
+		case 4: {/* Main wnd */
 			Window *w2;
 			Point pt;
 
@@ -830,12 +850,12 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 			WP(w2,vp_d).scrollpos_y = pt.y + ((_cursor.pos.y - w->top - 16) << 4) - (w2->viewport->virtual_height >> 1);
 		} break;
 
-		case 5: /* show land contours */
-		case 6: /* show vehicles */
-		case 7: /* show industries */
-		case 8: /* show transport routes */
-		case 9: /* show vegetation */
-		case 10: /* show land owners */
+		case 5: /* Show land contours */
+		case 6: /* Show vehicles */
+		case 7: /* Show industries */
+		case 8: /* Show transport routes */
+		case 9: /* Show vegetation */
+		case 10: /* Show land owners */
 			w->click_state &= ~(1<<5|1<<6|1<<7|1<<8|1<<9|1<<10);
 			w->click_state |= 1 << e->click.widget;
 			_smallmap_type = e->click.widget - 5;

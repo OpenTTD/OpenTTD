@@ -18,7 +18,6 @@ Bugs for 0.4.0.1
 ------------------------------------------------------------------------
 URL: http://sourceforge.net/tracker/?atid=636365&group_id=103924&func=browse
 
--		Minimap crash with certain views and certain resolutions
 -		"Broken" autoreplace for dual-headed trains
 -1203319	Pre-signal exits not working when one way signal
 -1197116	Some stations are cargo-less
