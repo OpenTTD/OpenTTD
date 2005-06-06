@@ -845,6 +845,9 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				src_head = NULL;
 			}
 		} else {
+			// if moving within the same chain, dont use dst_head as it may get invalidated
+			if (src_head == dst_head)
+				dst_head = NULL;
 			// unlink single wagon from linked list
 			src_head = UnlinkWagon(src, src_head);
 			src->next = NULL;
