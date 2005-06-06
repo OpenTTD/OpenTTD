@@ -822,37 +822,54 @@ static void UninitNoComp(void)
 //********************************************
 
 enum {
-	SAVELOAD_POOL_BLOCK_SIZE_BITS = 17,
-	SAVELOAD_POOL_MAX_BLOCKS = 500
+	SAVE_POOL_BLOCK_SIZE_BITS = 17,
+	SAVE_POOL_MAX_BLOCKS = 500
 };
 
+#include "network.h"
+#include "table/strings.h"
+#include "table/sprites.h"
+#include "gfx.h"
+#include "gui.h"
+
+typedef struct ThreadedSave {
+	MemoryPool *save;
+	uint count;
+	bool ff_state;
+	bool saveinprogress;
+	uint32 cursor;
+} ThreadedSave;
+
 /* A maximum size of of 128K * 500 = 64.000KB savegames */
-static MemoryPool _saveload_pool = {"Savegame", SAVELOAD_POOL_MAX_BLOCKS, SAVELOAD_POOL_BLOCK_SIZE_BITS, sizeof(byte), NULL, 0, 0, NULL};
-static uint _save_byte_count;
+static MemoryPool _save_pool = {"Savegame", SAVE_POOL_MAX_BLOCKS, SAVE_POOL_BLOCK_SIZE_BITS, sizeof(byte), NULL, 0, 0, NULL};
+static ThreadedSave _ts;
 
 static bool InitMem(void)
 {
-	CleanPool(&_saveload_pool);
-	AddBlockToPool(&_saveload_pool);
+	_ts.save = &_save_pool;
+	_ts.count = 0;
+
+	CleanPool(_ts.save);
+	AddBlockToPool(_ts.save);
 
 	/* A block from the pool is a contigious area of memory, so it is safe to write to it sequentially */
-	_save_byte_count = 0;
-	_sl.bufsize = _saveload_pool.total_items;
-	_sl.buf = (byte*)GetItemFromPool(&_saveload_pool, _save_byte_count);
+	_sl.bufsize = _ts.save->total_items;
+	_sl.buf = (byte*)GetItemFromPool(_ts.save, _ts.count);
 	return true;
 }
 
 static void UnInitMem(void)
 {
-	CleanPool(&_saveload_pool);
+	CleanPool(_ts.save);
+	_ts.save = NULL;
 }
 
 static void WriteMem(uint size)
 {
-	_save_byte_count += size;
+	_ts.count += size;
 	/* Allocate new block and new buffer-pointer */
-	AddBlockIfNeeded(&_saveload_pool, _save_byte_count);
-	_sl.buf = (byte*)GetItemFromPool(&_saveload_pool, _save_byte_count);
+	AddBlockIfNeeded(_ts.save, _ts.count);
+	_sl.buf = (byte*)GetItemFromPool(_ts.save, _ts.count);
 }
 
 //********************************************
@@ -1152,33 +1169,31 @@ static inline int AbortSaveLoad(void)
 	return SL_ERROR;
 }
 
-#include "network.h"
-#include "table/strings.h"
-#include "table/sprites.h"
-#include "gfx.h"
-#include "gui.h"
-
-static bool _saving_game = false;
-
 /** Update the gui accordingly when starting saving
- * and set locks on saveload */
+ * and set locks on saveload. Also turn off fast-forward cause with that
+ * saving takes Aaaaages */
 static inline void SaveFileStart(void)
 {
-	SetMouseCursor(SPR_CURSOR_ZZZ);
+	_ts.ff_state = _fast_forward;
+	_fast_forward = false;
+	if (_cursor.sprite == SPR_CURSOR_MOUSE) SetMouseCursor(SPR_CURSOR_ZZZ);
+
 	SendWindowMessage(WC_STATUS_BAR, 0, true, 0, 0);
-	_saving_game = true;
+	_ts.saveinprogress = true;
 }
 
 /** Update the gui accordingly when saving is done and release locks
  * on saveload */
 static inline void SaveFileDone(void)
 {
+	_fast_forward = _ts.ff_state;
 	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE);
+
 	SendWindowMessage(WC_STATUS_BAR, 0, false, 0, 0);
-	_saving_game = false;
+	_ts.saveinprogress = false;
 }
 
-/** We have written the whole game into memory, _saveload_pool, now find
+/** We have written the whole game into memory, _save_pool, now find
  * and appropiate compressor and start writing to file.
  */
 static bool SaveFileToDisk(void *ptr)
@@ -1215,24 +1230,24 @@ static bool SaveFileToDisk(void *ptr)
 
 	{
 		uint i;
-		uint count = 1 << _saveload_pool.block_size_bits;
+		uint count = 1 << _ts.save->block_size_bits;
 
-		assert(_save_byte_count == _sl.offs_base);
-		for (i = 0; i != _saveload_pool.current_blocks - 1; i++) {
-			_sl.buf = _saveload_pool.blocks[i];
+		assert(_ts.count == _sl.offs_base);
+		for (i = 0; i != _ts.save->current_blocks - 1; i++) {
+			_sl.buf = _ts.save->blocks[i];
 			fmt->writer(count);
 		}
 
 		/* The last block is (almost) always not fully filled, so only write away
 		 * as much data as it is in there */
-		_sl.buf = _saveload_pool.blocks[i];
-		fmt->writer(_save_byte_count - (i * count));
+		_sl.buf = _ts.save->blocks[i];
+		fmt->writer(_ts.count - (i * count));
 
 		_sl.buf = tmp; // XXX - reset _sl.buf to its original value to let it continue its internal usage
 	}
 
 	fmt->uninit_write();
-	assert(_save_byte_count == _sl.offs_base);
+	assert(_ts.count == _sl.offs_base);
 	GetSavegameFormat("memory")->uninit_write(); // clean the memorypool
 	fclose(_sl.fh);
 
@@ -1254,18 +1269,20 @@ int SaveOrLoad(const char *filename, int mode)
 	const SaveLoadFormat *fmt;
   uint version;
 
-	/* Load a TTDLX or TTDPatch game */
+	/* An instance of saving is already active, so wait until it is done */
+	if (_ts.saveinprogress) {
+		if (!_do_autosave) ShowErrorMessage(_error_message, STR_SAVE_STILL_IN_PROGRESS, 0, 0);
+		JoinOTTDThread(); // synchronize and wait until save is finished to continue
+		// nonsense to do an autosave while we were still saving our game, so skip it
+		if (_do_autosave) return SL_OK;
+	}
+
+  /* Load a TTDLX or TTDPatch game */
 	if (mode == SL_OLD_LOAD) {
 		InitializeGame(8, 8); // set a mapsize of 256x256 for TTDPatch games or it might get confused
 		if (!LoadOldSaveGame(filename)) return SL_REINIT;
 		AfterLoadGame(0);
 		return SL_OK;
-	}
-
-	/* An instance of saving is already active, don't start any other cause of global variables */
-	if (_saving_game == true) {
-		if (!_do_autosave) ShowErrorMessage(_error_message, STR_SAVE_STILL_IN_PROGRESS, 0, 0);
-		return SL_ERROR;
 	}
 
 	_sl.fh = fopen(filename, (mode == SL_SAVE) ? "wb" : "rb");
@@ -1344,7 +1361,7 @@ int SaveOrLoad(const char *filename, int mode)
 				rewind(_sl.fh);
 				_sl.version = version = 0;
 				_sl.full_version = 0;
-				fmt = _saveload_formats + 0; // LZO
+				fmt = _saveload_formats + 1; // LZO
 				break;
 			}
 
