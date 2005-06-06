@@ -135,7 +135,7 @@ static void TerraformClick_Raise(Window *w)
 
 static void TerraformClick_Level(Window *w)
 {
-	HandlePlacePushButton(w, 6, ANIMCURSOR_LOWERLAND, 2, PlaceProc_LevelLand);
+	HandlePlacePushButton(w, 6, SPR_CURSOR_LEVEL_LAND, 2, PlaceProc_LevelLand);
 }
 
 static void TerraformClick_Dynamite(Window *w)

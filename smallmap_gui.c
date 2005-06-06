@@ -330,7 +330,7 @@ static void DrawSmallMapStuff(byte *dst, uint xc, uint yc, int pitch, int reps, 
 
 	do {
 		// check if the tile (xc,yc) is within the map range
-		if (xc < MapSizeX() - 1 && yc < MapSizeY() - 1) {
+		if (xc < MapMaxX() && yc < MapMaxY()) {
 			// check if the dst pointer points to a pixel inside the screen buffer
 			if (dst > _screen.dst_ptr && dst < dst_ptr_end)
 				WRITE_PIXELS_OR(dst, proc(TILE_XY(xc, yc)) & mask );
