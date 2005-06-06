@@ -563,7 +563,7 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 #if defined(__MORPHOS__) || defined(__AMIGA__)
  typedef int pthread_t;
  #define pthread_create(thread, attr, function, arg) (true)
- #define pthread_join(thread, retval) ()
+ #define pthread_join(thread, retval)
 #endif
 
 static pthread_t thread1 = 0;
