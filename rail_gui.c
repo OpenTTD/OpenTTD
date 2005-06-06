@@ -214,27 +214,27 @@ static void PlaceRail_AutoSignals(uint tile)
 
 static void BuildRailClick_N(Window *w)
 {
-	HandlePlacePushButton(w, 4, _cur_railtype*4 + 0x4EF, 1, PlaceRail_N);
+	HandlePlacePushButton(w, 4, _cur_railtype*4 + SPR_CURSOR_NS_TRACK, 1, PlaceRail_N);
 }
 
 static void BuildRailClick_NE(Window *w)
 {
-	HandlePlacePushButton(w, 5, _cur_railtype*4 + 0x4F0, 1, PlaceRail_NE);
+	HandlePlacePushButton(w, 5, _cur_railtype*4 + SPR_CURSOR_SWNE_TRACK, 1, PlaceRail_NE);
 }
 
 static void BuildRailClick_E(Window *w)
 {
-	HandlePlacePushButton(w, 6, _cur_railtype*4 + 0x4F1, 1, PlaceRail_E);
+	HandlePlacePushButton(w, 6, _cur_railtype*4 + SPR_CURSOR_EW_TRACK, 1, PlaceRail_E);
 }
 
 static void BuildRailClick_NW(Window *w)
 {
-	HandlePlacePushButton(w, 7, _cur_railtype*4 + 0x4F2, 1, PlaceRail_NW);
+	HandlePlacePushButton(w, 7, _cur_railtype*4 + SPR_CURSOR_NWSE_TRACK, 1, PlaceRail_NW);
 }
 
 static void BuildRailClick_AutoRail(Window *w)
 {
-	HandlePlacePushButton(w, 8, _cur_railtype + SPR_CURSOR_AUTORAIL, VHM_RAIL, PlaceRail_AutoRail);
+	HandlePlacePushButton(w, 8, SPR_CURSOR_AUTORAIL + _cur_railtype, VHM_RAIL, PlaceRail_AutoRail);
 }
 
 static void BuildRailClick_Demolish(Window *w)
@@ -242,10 +242,10 @@ static void BuildRailClick_Demolish(Window *w)
 	HandlePlacePushButton(w, 9, ANIMCURSOR_DEMOLISH, 1, PlaceProc_DemolishArea);
 }
 
-static const SpriteID _depot_cursors[] = {
-	0x510,
-	SPR_OPENTTD_BASE + 14,
-	SPR_OPENTTD_BASE + 15,
+static const CursorID _depot_cursors[] = {
+	SPR_CURSOR_RAIL_DEPOT,
+	SPR_CURSOR_MONO_DEPOT,
+	SPR_CURSOR_MAGLEV_DEPOT,
 };
 
 static void BuildRailClick_Depot(Window *w)
@@ -256,14 +256,14 @@ static void BuildRailClick_Depot(Window *w)
 static void BuildRailClick_Waypoint(Window *w)
 {
 	_waypoint_count = GetCustomStationsCount(STAT_CLASS_WAYP);
-	if (HandlePlacePushButton(w, 11, SPR_OPENTTD_BASE + 7, 1, PlaceRail_Waypoint)
+	if (HandlePlacePushButton(w, 11, SPR_CURSOR_WAYPOINT, 1, PlaceRail_Waypoint)
 	    && _waypoint_count > 0)
 		ShowBuildWaypointPicker();
 }
 
 static void BuildRailClick_Station(Window *w)
 {
-	if (HandlePlacePushButton(w, 12, 0x514, 1, PlaceRail_Station)) ShowStationBuilder();
+	if (HandlePlacePushButton(w, 12, SPR_CURSOR_RAIL_STATION, 1, PlaceRail_Station)) ShowStationBuilder();
 }
 
 static void BuildRailClick_AutoSignals(Window *w)
@@ -273,12 +273,12 @@ static void BuildRailClick_AutoSignals(Window *w)
 
 static void BuildRailClick_Bridge(Window *w)
 {
-	HandlePlacePushButton(w, 14, 0xA21, 1, PlaceRail_Bridge);
+	HandlePlacePushButton(w, 14, SPR_CURSOR_BRIDGE, 1, PlaceRail_Bridge);
 }
 
 static void BuildRailClick_Tunnel(Window *w)
 {
-	HandlePlacePushButton(w, 15, 0x982 + _cur_railtype, 3, PlaceRail_Tunnel);
+	HandlePlacePushButton(w, 15, SPR_CURSOR_TUNNEL_RAIL + _cur_railtype, 3, PlaceRail_Tunnel);
 }
 
 static void BuildRailClick_Remove(Window *w)
@@ -304,7 +304,7 @@ static void BuildRailClick_Remove(Window *w)
 
 static void BuildRailClick_Convert(Window *w)
 {
-	HandlePlacePushButton(w, 17, (SPR_OPENTTD_BASE + 26) + _cur_railtype * 2, 1, PlaceRail_ConvertRail);
+	HandlePlacePushButton(w, 17, SPR_CURSOR_CONVERT_RAIL + _cur_railtype * 2, 1, PlaceRail_ConvertRail);
 }
 
 static void BuildRailClick_Landscaping(Window *w)

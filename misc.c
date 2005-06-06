@@ -3,6 +3,7 @@
 #include "string.h"
 #include "strings.h" // XXX GetParam*
 #include "table/strings.h"
+#include "table/sprites.h"
 #include "map.h"
 #include "vehicle.h"
 #include "gfx.h"
@@ -208,7 +209,7 @@ void InitializeGame(uint log_x, uint log_y)
 
 	AddTypeToEngines(); // make sure all engines have a type
 
-	SetObjectToPlace(1, 0, 0, 0);
+	SetObjectToPlace(SPR_CURSOR_ZZZ, 0, 0, 0);
 
 	_pause = 0;
 	_fast_forward = 0;
@@ -270,7 +271,7 @@ void GenerateWorld(int mode, uint log_x, uint log_y)
 
 	_generating_world = true;
 	InitializeGame(log_x, log_y);
-	SetObjectToPlace(1, 0, 0, 0);
+	SetObjectToPlace(SPR_CURSOR_ZZZ, 0, 0, 0);
 
 	// Must start economy early because of the costs.
 	StartupEconomy();

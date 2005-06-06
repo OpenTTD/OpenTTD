@@ -593,7 +593,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 			if (tile == 0) {
 				if ((byte)w->window_number != _local_player)
 					return;
-				SetObjectToPlaceWnd(0x2D0, 1, w);
+				SetObjectToPlaceWnd(SPR_CURSOR_HQ, 1, w);
 				SetTileSelectSize(2, 2);
 			} else {
 				ScrollMainWindowToTile(tile);
@@ -601,7 +601,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case 8: /* relocate HQ */
-			SetObjectToPlaceWnd(0x2D0, 1, w);
+			SetObjectToPlaceWnd(SPR_CURSOR_HQ, 1, w);
 			SetTileSelectSize(2, 2);
 			break;
 		case 9: /* buy 25% */

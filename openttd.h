@@ -71,6 +71,7 @@ typedef byte CargoID;
 typedef uint16 StringID;
 typedef uint16 SpriteID;
 typedef uint32 PalSpriteID;
+typedef uint32 CursorID;
 
 typedef uint32 WindowNumber;
 typedef byte WindowClass;

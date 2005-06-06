@@ -108,13 +108,13 @@ typedef void OnButtonClick(Window *w);
 static void BuildRoadClick_NE(Window *w)
 {
 	_build_road_flag = 0;
-	HandlePlacePushButton(w, 3, 0x51F, 1, PlaceRoad_NE);
+	HandlePlacePushButton(w, 3, SPR_CURSOR_ROAD_NESW, 1, PlaceRoad_NE);
 }
 
 static void BuildRoadClick_NW(Window *w)
 {
 	_build_road_flag = 0;
-	HandlePlacePushButton(w, 4, 0x520, 1, PlaceRoad_NW);
+	HandlePlacePushButton(w, 4, SPR_CURSOR_ROAD_NWSE, 1, PlaceRoad_NW);
 }
 
 
@@ -126,31 +126,31 @@ static void BuildRoadClick_Demolish(Window *w)
 static void BuildRoadClick_Depot(Window *w)
 {
 	if (_game_mode == GM_EDITOR) return;
-	if (HandlePlacePushButton(w, 6, 0x511, 1, PlaceRoad_Depot)) ShowRoadDepotPicker();
+	if (HandlePlacePushButton(w, 6, SPR_CURSOR_ROAD_DEPOT, 1, PlaceRoad_Depot)) ShowRoadDepotPicker();
 }
 
 static void BuildRoadClick_BusStation(Window *w)
 {
 	if (_game_mode == GM_EDITOR) return;
-	if (HandlePlacePushButton(w, 7, 0xAA5, 1, PlaceRoad_BusStation)) ShowBusStationPicker();
+	if (HandlePlacePushButton(w, 7, SPR_CURSOR_BUS_STATION, 1, PlaceRoad_BusStation)) ShowBusStationPicker();
 }
 
 static void BuildRoadClick_TruckStation(Window *w)
 {
 	if (_game_mode == GM_EDITOR) return;
-	if (HandlePlacePushButton(w, 8, 0xAA6, 1, PlaceRoad_TruckStation)) ShowTruckStationPicker();
+	if (HandlePlacePushButton(w, 8, SPR_CURSOR_TRUCK_STATION, 1, PlaceRoad_TruckStation)) ShowTruckStationPicker();
 }
 
 static void BuildRoadClick_Bridge(Window *w)
 {
 	_build_road_flag = 0;
-	HandlePlacePushButton(w, 9, 0xA21, 1, PlaceRoad_Bridge);
+	HandlePlacePushButton(w, 9, SPR_CURSOR_BRIDGE, 1, PlaceRoad_Bridge);
 }
 
 static void BuildRoadClick_Tunnel(Window *w)
 {
 	_build_road_flag = 0;
-	HandlePlacePushButton(w, 10, 0x981, 3, PlaceRoad_Tunnel);
+	HandlePlacePushButton(w, 10, SPR_CURSOR_ROAD_TUNNEL, 3, PlaceRoad_Tunnel);
 }
 
 static void BuildRoadClick_Remove(Window *w)

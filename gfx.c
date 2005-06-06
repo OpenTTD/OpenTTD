@@ -1913,7 +1913,7 @@ bool FillDrawPixelInfo(DrawPixelInfo *n, DrawPixelInfo *o, int left, int top, in
 	return true;
 }
 
-static void SetCursorSprite(uint cursor)
+static void SetCursorSprite(CursorID cursor)
 {
 	CursorVars *cv = &_cursor;
 	const Sprite *p;
@@ -1934,12 +1934,12 @@ static void SetCursorSprite(uint cursor)
 static void SwitchAnimatedCursor(void)
 {
 	CursorVars *cv = &_cursor;
-	const uint16 *cur;
-	uint sprite;
+	const CursorID *cur = cv->animate_cur;
+	CursorID sprite;
 
-	cur = cv->animate_cur;
-	if (cur == NULL || *cur == 0xFFFF)
-		cur = cv->animate_list;
+	// ANIM_CURSOR_END is 0xFFFF in table/animcursors.h
+	if (cur == NULL || *cur == 0xFFFF) cur = cv->animate_list;
+
 	sprite = cur[0];
 	cv->animate_timeout = cur[1];
 	cv->animate_cur = cur + 2;
@@ -1954,7 +1954,7 @@ void CursorTick(void)
 		SwitchAnimatedCursor();
 }
 
-void SetMouseCursor(uint cursor)
+void SetMouseCursor(CursorID cursor)
 {
 	// Turn off animation
 	_cursor.animate_timeout = 0;
@@ -1962,7 +1962,7 @@ void SetMouseCursor(uint cursor)
 	SetCursorSprite(cursor);
 }
 
-void SetAnimatedMouseCursor(const uint16 *table)
+void SetAnimatedMouseCursor(const CursorID *table)
 {
 	_cursor.animate_list = table;
 	_cursor.animate_cur = NULL;

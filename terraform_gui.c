@@ -135,27 +135,27 @@ static void TerraformClick_Raise(Window *w)
 
 static void TerraformClick_Level(Window *w)
 {
-	HandlePlacePushButton(w, 6, SPR_OPENTTD_BASE+69, 2, PlaceProc_LevelLand);
+	HandlePlacePushButton(w, 6, ANIMCURSOR_LOWERLAND, 2, PlaceProc_LevelLand);
 }
 
 static void TerraformClick_Dynamite(Window *w)
 {
-	HandlePlacePushButton(w, 7, SPR_IMG_DYNAMITE+1 , 1, PlaceProc_DemolishArea);
+	HandlePlacePushButton(w, 7, ANIMCURSOR_DEMOLISH , 1, PlaceProc_DemolishArea);
 }
 
 static void TerraformClick_BuyLand(Window *w)
 {
-	HandlePlacePushButton(w, 8, 4792, 1, PlaceProc_BuyLand);
+	HandlePlacePushButton(w, 8, SPR_CURSOR_BUY_LAND, 1, PlaceProc_BuyLand);
 }
 
 static void TerraformClick_Trees(Window *w)
 {
-	if (HandlePlacePushButton(w, 9, 0, 1, PlaceProc_PlantTree)) ShowBuildTreesToolbar();
+	if (HandlePlacePushButton(w, 9, SPR_CURSOR_MOUSE, 1, PlaceProc_PlantTree)) ShowBuildTreesToolbar();
 }
 
 static void TerraformClick_PlaceSign(Window *w)
 {
-	HandlePlacePushButton(w, 10, 722, 1, PlaceProc_Sign);
+	HandlePlacePushButton(w, 10, SPR_CURSOR_SIGN, 1, PlaceProc_Sign);
 }
 
 static OnButtonClick * const _terraform_button_proc[] = {

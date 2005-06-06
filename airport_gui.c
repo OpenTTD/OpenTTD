@@ -40,7 +40,7 @@ static void PlaceAir_DemolishArea(uint tile)
 
 static void BuildAirClick_Airport(Window *w)
 {
-	if (HandlePlacePushButton(w, 3, 0xAA4, 1, PlaceAirport)) ShowBuildAirportPicker();
+	if (HandlePlacePushButton(w, 3, SPR_CURSOR_AIRPORT, 1, PlaceAirport)) ShowBuildAirportPicker();
 }
 
 static void BuildAirClick_Demolish(Window *w)

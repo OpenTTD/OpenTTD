@@ -837,7 +837,7 @@ typedef struct ThreadedSave {
 	uint count;
 	bool ff_state;
 	bool saveinprogress;
-	uint32 cursor;
+	CursorID cursor;
 } ThreadedSave;
 
 /* A maximum size of of 128K * 500 = 64.000KB savegames */

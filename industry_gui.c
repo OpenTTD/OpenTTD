@@ -3,6 +3,7 @@
 #include "debug.h"
 #include "strings.h"
 #include "table/strings.h"
+#include "table/sprites.h"
 #include "map.h"
 #include "gui.h"
 #include "window.h"
@@ -35,7 +36,7 @@ static void BuildIndustryWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK: {
 		int wid = e->click.widget;
 		if (wid >= 3) {
-			if (HandlePlacePushButton(w, wid, 0xFF1, 1, NULL))
+			if (HandlePlacePushButton(w, wid, SPR_CURSOR_INDUSTRY, 1, NULL))
 				WP(w,def_d).data_1 = wid - 3;
 		}
 	} break;

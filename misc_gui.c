@@ -161,11 +161,11 @@ static void Place_LandInfo(uint tile)
 
 void PlaceLandBlockInfo(void)
 {
-	if (_cursor.sprite == 0x2CF) {
+	if (_cursor.sprite == SPR_CURSOR_QUERY) {
 		ResetObjectToPlace();
 	} else {
 		_place_proc = Place_LandInfo;
-		SetObjectToPlace(0x2CF, 1, 1, 0);
+		SetObjectToPlace(SPR_CURSOR_QUERY, 1, 1, 0);
 	}
 }
 
@@ -317,12 +317,12 @@ static void BuildTreesWndProc(Window *w, WindowEvent *e)
 			if ( (uint)(wid-3) >= (uint)WP(w,tree_d).count)
 				return;
 
-			if (HandlePlacePushButton(w, wid, 0x7DA, 1, NULL))
+			if (HandlePlacePushButton(w, wid, SPR_CURSOR_TREE, 1, NULL))
 				_tree_to_plant = WP(w,tree_d).base + wid - 3;
 			break;
 
 		case 15: // tree of random type.
-			if (HandlePlacePushButton(w, 15, 0x7DA, 1, NULL))
+			if (HandlePlacePushButton(w, 15, SPR_CURSOR_TREE, 1, NULL))
 				_tree_to_plant = -1;
 			break;
 
@@ -1389,7 +1389,7 @@ void ShowSaveLoadDialog(int mode)
 {
 	Window *w;
 
-	SetObjectToPlace(1, 0, 0, 0);
+	SetObjectToPlace(SPR_CURSOR_ZZZ, 0, 0, 0);
 	DeleteWindowById(WC_QUERY_STRING, 0);
 	DeleteWindowById(WC_SAVELOAD, 0);
 

@@ -122,7 +122,7 @@ void HandleOnEditText(WindowEvent *e)
  * @return true if the button is clicked, false if it's unclicked
  */
 
-bool HandlePlacePushButton(Window *w, int widget, uint32 cursor, int mode, PlaceProc *placeproc)
+bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, int mode, PlaceProc *placeproc)
 {
 	uint32 mask = 1 << widget;
 
@@ -406,10 +406,10 @@ void ShowRenameWaypointWindow(Waypoint *wp)
 
 static void SelectSignTool(void)
 {
-	if (_cursor.sprite == 0x2D2)
+	if (_cursor.sprite == SPR_CURSOR_SIGN)
 		ResetObjectToPlace();
 	else {
-		SetObjectToPlace(0x2D2, 1, 1, 0);
+		SetObjectToPlace(SPR_CURSOR_SIGN, 1, 1, 0);
 		_place_proc = PlaceProc_Sign;
 	}
 }
@@ -1713,7 +1713,7 @@ static void ScenEditIndustryWndProc(Window *w, WindowEvent *e)
 		}
 
 		if ((button=e->click.widget) >= 4) {
-			if (HandlePlacePushButton(w, button, 0xFF1, 1, NULL))
+			if (HandlePlacePushButton(w, button, SPR_CURSOR_INDUSTRY, 1, NULL))
 				_industry_type_to_place = _industry_type_list[_opt.landscape][button - 4];
 		}
 		break;

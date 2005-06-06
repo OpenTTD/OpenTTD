@@ -20,10 +20,10 @@ struct DrawPixelInfo {
 typedef struct CursorVars {
 	Point pos, size, offs, delta;
 	Point draw_pos, draw_size;
-	uint32 sprite;
+	CursorID sprite;
 
 	int wheel; // mouse wheel movement
-	const uint16 *animate_list, *animate_cur;
+	const CursorID *animate_list, *animate_cur;
 	uint animate_timeout;
 
 	bool visible;
@@ -60,7 +60,7 @@ bool FillDrawPixelInfo(DrawPixelInfo *n, DrawPixelInfo *o, int left, int top, in
 void DrawOverlappedWindowForAll(int left, int top, int right, int bottom);
 
 void SetMouseCursor(uint cursor);
-void SetAnimatedMouseCursor(const uint16 *table);
+void SetAnimatedMouseCursor(const CursorID *table);
 void CursorTick(void);
 void DrawMouseCursor(void);
 void ScreenSizeChanged(void);

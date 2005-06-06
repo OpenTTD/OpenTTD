@@ -2176,14 +2176,14 @@ bool VpHandlePlaceSizingDrag(void)
 	return false;
 }
 
-void SetObjectToPlaceWnd(int icon, byte mode, Window *w)
+void SetObjectToPlaceWnd(CursorID icon, byte mode, Window *w)
 {
-	SetObjectToPlace(icon,mode,w->window_class, w->window_number);
+	SetObjectToPlace(icon, mode, w->window_class, w->window_number);
 }
 
 #include "table/animcursors.h"
 
-void SetObjectToPlace(int icon, byte mode, WindowClass window_class, WindowNumber window_num)
+void SetObjectToPlace(CursorID icon, byte mode, WindowClass window_class, WindowNumber window_num)
 {
 	Window *w;
 
@@ -2221,5 +2221,5 @@ void SetObjectToPlace(int icon, byte mode, WindowClass window_class, WindowNumbe
 
 void ResetObjectToPlace(void)
 {
-	SetObjectToPlace(0,0,0,0);
+	SetObjectToPlace(SPR_CURSOR_MOUSE, 0, 0, 0);
 }
