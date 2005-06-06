@@ -2819,3 +2819,14 @@ STR_MAGLEV_VEHICLES                                             :Pojazdy Maglew
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
 
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Koszt: {GOLD}{CURRENCY}{BLACK} Ciezar: {GOLD}{COMMA16}t
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}predkosc: {GOLD}{VELOCITY}{BLACK}   Moc: {GOLD}{COMMA32}hp
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Koszty uzytkowania: {GOLD}{CURRENCY}/yr
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ladownosc: {GOLD}{STRING} {STRING}
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Zaprojektowany: {GOLD}{NUMU16}{BLACK} Zywotnosc: {GOLD}{COMMA16} lat
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maksymalna niezawodnosc: {GOLD}{COMMA8}%
+STR_PURCHASE_INFO_COST                                          :{BLACK}Koszt: {GOLD}{CURRENCY}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Waga: {GOLD}{COMMA16}t  ({COMMA16}t)
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Koszt: {GOLD}{CURRENCY}{BLACK} Predkosc: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ladownosc: {GOLD}{COMMA16} pasazerow, {COMMA16} sztuk poczty
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moc: {GOLD}+{COMMA16}koni mechanicznych{BLACK} Waga: {GOLD}+{COMMA8}t

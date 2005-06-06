@@ -2819,3 +2819,14 @@ STR_MAGLEV_VEHICLES                                             :Vehicule Maglev
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
 
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Greutate: {GOLD}{COMMA16}t
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Viteza: {GOLD}{VELOCITY}{BLACK}   Putere: {GOLD}{COMMA32}hp
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cost de rulare: {GOLD}{CURRENCY}/an
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacitate: {GOLD}{STRING} {STRING}
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}An aparitie: {GOLD}{NUMU16}{BLACK} Durata de viata: {GOLD}{COMMA16} years
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Eficienta max.: {GOLD}{COMMA8}%
+STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Greutate: {GOLD}{COMMA16}t  ({COMMA16}t)
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Viteza: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacitate: {GOLD}{COMMA16} calatori, {COMMA16} saci de posta
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoane electrificate: {GOLD}+{COMMA16}cp{BLACK} Greutate: {GOLD}+{COMMA8}t

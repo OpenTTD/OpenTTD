@@ -2819,3 +2819,14 @@ STR_MAGLEV_VEHICLES                                             :Maglev transpor
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
 
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Svars: {GOLD}{COMMA16}t
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}A'trums: {GOLD}{VELOCITY}{BLACK}   Jauda: {GOLD}{COMMA32}zs
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Ekspua'tacijas izmaksas: {GOLD}{CURRENCY}/gada'
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ietilpi'ba: {GOLD}{STRING} {STRING}
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Raz'ots: {GOLD}{NUMU16}{BLACK} Termin's': {GOLD}{COMMA16} gadi
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks.Dros'i'ba: {GOLD}{COMMA8}%
+STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Sva'rs: {GOLD}{COMMA16}t  ({COMMA16}t)
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} A'trums: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ietilpi'ba: {GOLD}{COMMA16} pasaz'ieru, {COMMA16} pasta somas
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motor-vagoni: {GOLD}+{COMMA16}zs{BLACK} Sva'rs: {GOLD}+{COMMA8}t
