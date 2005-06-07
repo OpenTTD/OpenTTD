@@ -703,8 +703,8 @@ STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Zasadit 
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Umiestnit nahodne skaly
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Umiestnit majak
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Umiestnit vysielac
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definovat oblast puste
-STR_CREATE_LAKE                                                 :{BLACK}Vyznacenie oblasti vody (zaplavi okolie, ak je to na urovni mora)
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Vytvorit oblast puste.{}Drzanim CTRL ju odstranite
+STR_CREATE_LAKE                                                 :{BLACK}Vytvorit oblast vody.{}Susedne dlazdice sa zaplavia tiez, ak su na urovni mora
 STR_0290_DELETE                                                 :{BLACK}Vymazat
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Vymazat kompletne toto mesto
 STR_0292_SAVE_SCENARIO                                          :Ulozit scenar
@@ -857,6 +857,8 @@ STR_032C_3_AIR_SERVICE                                          :{BLACK}3: Letec
 STR_032D_4_SHIP_SERVICE                                         :{BLACK}4: Lodne sluzby
 STR_032E_5_RAILROAD_SERVICE_ADVANCED                            :{BLACK}5: Automobilove sluzby (rozsirene)
 STR_032F_AUTOSAVE                                               :{RED}AUTOULOZENIE
+STR_SAVING_GAME                                                 :{RED}*  *  HRA SA UKLADA  *  *
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Ukladanie hry este bezi,{}pockajte prosim na dokoncenie!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Vyber 'Ezy Street style music' program
 
 STR_0335_6                                                      :{BLACK}6
@@ -2817,3 +2819,14 @@ STR_MAGLEV_VEHICLES                                             :Lokomotiva pre 
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
 
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Hmotnost: {GOLD}{COMMA16}t
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rychlost: {GOLD}{VELOCITY}{BLACK}   Vykon: {GOLD}{COMMA32}hp
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cena prevadzky: {GOLD}{CURRENCY}/yr
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacita: {GOLD}{STRING} {STRING}
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Vyrobene: {GOLD}{NUMU16}{BLACK} Zivotnost: {GOLD}{COMMA16} rokov
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. spolahlivost: {GOLD}{COMMA8}%
+STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Hmotnost: {GOLD}{COMMA16}t  ({COMMA16}t)
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Rychlost: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacita: {GOLD}{COMMA16} cestujucich, {COMMA16} balikov posty
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pohanane vagony: {GOLD}+{COMMA16}hp{BLACK} Hmotnost: {GOLD}+{COMMA8}t

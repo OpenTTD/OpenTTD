@@ -4,104 +4,104 @@
 
 ##id 0x0000
 STR_NULL                                                        :
-STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Arpus kartes robežas
-STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Parak tuvu kartes malai
+STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}A'rpus kartes robez'as
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Pa'ra'k tuvu kartes malai
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nepietiek naudas - vajag {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
 STR_EMPTY                                                       :
-STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Zemei jabut plakanai
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Zemei ja'bu't plakanai
 STR_0008_WAITING                                                :{BLACK}Gaidam: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (cela no
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (cel'a' no
 STR_000B                                                        :{YELLOW}{STATION})
-STR_000C_ACCEPTS                                                :{BLACK}Pienem: {WHITE}
-STR_000D_ACCEPTS                                                :{BLACK}Pienem: {GOLD}
+STR_000C_ACCEPTS                                                :{BLACK}Pien'em: {WHITE}
+STR_000D_ACCEPTS                                                :{BLACK}Pien'em: {GOLD}
 STR_000E                                                        :
-STR_000F_PASSENGERS                                             :Pasažierus
+STR_000F_PASSENGERS                                             :Pasaz'ierus
 STR_0010_COAL                                                   :Ogles
 STR_0011_MAIL                                                   :Pastu
 STR_0012_OIL                                                    :Naftu
 STR_0013_LIVESTOCK                                              :Liellopus
 STR_0014_GOODS                                                  :Preces
 STR_0015_GRAIN                                                  :Graudus
-STR_0016_WOOD                                                   :Kokmaterialus
-STR_0017_IRON_ORE                                               :Dzelzs rudu
-STR_0018_STEEL                                                  :Teraudu
-STR_0019_VALUABLES                                              :V&#275;rtspap&#299;ri
-STR_001A_COPPER_ORE                                             :Vara r&#363;da
-STR_001B_MAIZE                                                  :Kukur&#363;za
-STR_001C_FRUIT                                                  :Aug&#316;i
+STR_0016_WOOD                                                   :Kokmateria'lus
+STR_0017_IRON_ORE                                               :Dzelzs ru'du
+STR_0018_STEEL                                                  :Te'raudu
+STR_0019_VALUABLES                                              :Ve'rtspapi'ri
+STR_001A_COPPER_ORE                                             :Vara ru'da
+STR_001B_MAIZE                                                  :Kukuru'za
+STR_001C_FRUIT                                                  :Augl'i
 STR_001D_DIAMONDS                                               :Dimanti
-STR_001E_FOOD                                                   :P&#257;rtika
-STR_001F_PAPER                                                  :Pap&#299;rs
+STR_001E_FOOD                                                   :Pa'rtika
+STR_001F_PAPER                                                  :Papi'rs
 STR_0020_GOLD                                                   :Zelts
-STR_0021_WATER                                                  :&#362;dens
-STR_0022_WHEAT                                                  :Kvieši
+STR_0021_WATER                                                  :U'dens
+STR_0022_WHEAT                                                  :Kvies'i
 STR_0023_RUBBER                                                 :Gumija
 STR_0024_SUGAR                                                  :Cukurs
-STR_0025_TOYS                                                   :Rota&#316;lietas
+STR_0025_TOYS                                                   :Rotal'lietas
 STR_0026_CANDY                                                  :Saldumi
 STR_0027_COLA                                                   :Kola
 STR_0028_COTTON_CANDY                                           :Cukurvate
-STR_0029_BUBBLES                                                :Burbu&#316;i
-STR_002A_TOFFEE                                                 :Cukurpl&#257;ksnes
+STR_0029_BUBBLES                                                :Burbul'i
+STR_002A_TOFFEE                                                 :Cukurpla'ksnes
 STR_002B_BATTERIES                                              :Baterijas
 STR_002C_PLASTIC                                                :Plastmasa
-STR_002D_FIZZY_DRINKS                                           :Burbu&#316;&#363;de&#326;i
+STR_002D_FIZZY_DRINKS                                           :Burbul'u'den'i
 STR_002E                                                        :
-STR_002F_PASSENGER                                              :Pasažieris
+STR_002F_PASSENGER                                              :Pasaz'ieris
 STR_0030_COAL                                                   :Ogle
 STR_0031_MAIL                                                   :Pasts
 STR_0032_OIL                                                    :Nafta
 STR_0033_LIVESTOCK                                              :Liellopi
 STR_0034_GOODS                                                  :Preces
 STR_0035_GRAIN                                                  :Graudi
-STR_0036_WOOD                                                   :Kokmatere&#257;li
-STR_0037_IRON_ORE                                               :Dzelzs r&#363;da
-STR_0038_STEEL                                                  :T&#275;rauds
-STR_0039_VALUABLES                                              :V&#275;rtspap&#299;ri
-STR_003A_COPPER_ORE                                             :Vara r&#363;da
-STR_003B_MAIZE                                                  :Kukur&#363;za
-STR_003C_FRUIT                                                  :Aug&#316;i
+STR_0036_WOOD                                                   :Kokmaterea'li
+STR_0037_IRON_ORE                                               :Dzelzs ru'da
+STR_0038_STEEL                                                  :Te'rauds
+STR_0039_VALUABLES                                              :Ve'rtspapi'ri
+STR_003A_COPPER_ORE                                             :Vara ru'da
+STR_003B_MAIZE                                                  :Kukuru'za
+STR_003C_FRUIT                                                  :Augl'i
 STR_003D_DIAMOND                                                :Dimanti
-STR_003E_FOOD                                                   :P&#257;rtika
-STR_003F_PAPER                                                  :pap&#299;rs
+STR_003E_FOOD                                                   :Pa'rtika
+STR_003F_PAPER                                                  :papi'rs
 STR_0040_GOLD                                                   :Zelts
-STR_0041_WATER                                                  :&#362;dens
-STR_0042_WHEAT                                                  :Kvieši
+STR_0041_WATER                                                  :U'dens
+STR_0042_WHEAT                                                  :Kvies'i
 STR_0043_RUBBER                                                 :Gumija
 STR_0044_SUGAR                                                  :Cukurs
-STR_0045_TOY                                                    :Rota&#316;lieta
+STR_0045_TOY                                                    :Rotal'lieta
 STR_0046_CANDY                                                  :Saldumi
 STR_0047_COLA                                                   :Kola
 STR_0048_COTTON_CANDY                                           :Cukurvate
 STR_0049_BUBBLE                                                 :Burbulis
-STR_004A_TOFFEE                                                 :Cukurpl&#257;ksn&#299;te
+STR_004A_TOFFEE                                                 :Cukurpla'ksni'te
 STR_004B_BATTERY                                                :Baterijas
 STR_004C_PLASTIC                                                :Plastmasas
-STR_004D_FIZZY_DRINK                                            :Burbu&#316;&#363;de&#326;u
+STR_004D_FIZZY_DRINK                                            :Burbul'u'den'u
 STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA16} pasažieris
-STR_0050_TON_OF_COAL                                            :{COMMA16} tonna og&#316;u
+STR_004F_PASSENGER                                              :{COMMA16} pasaz'ieris
+STR_0050_TON_OF_COAL                                            :{COMMA16} tonna ogl'u
 STR_0051_BAG_OF_MAIL                                            :{COMMA16} pasta maiss
 STR_0052_OF_OIL                                                 :{VOLUME} naftas
 STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA16} liellops
-STR_0054_CRATE_OF_GOODS                                         :{COMMA16} pre&#269;u kaste
+STR_0054_CRATE_OF_GOODS                                         :{COMMA16} prec'u kaste
 STR_0055_TON_OF_GRAIN                                           :{COMMA16} tonna graudu
-STR_0056_TON_OF_WOOD                                            :{COMMA16} tonna kokmatere&#257;lu
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA16} tonna dzelzs r&#363;das
-STR_0058_TON_OF_STEEL                                           :{COMMA16} tonna t&#275;rauda
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA16} maiss ar v&#275;rtspap&#299;riem
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA16} tonna vara r&#363;das
-STR_005B_TON_OF_MAIZE                                           :{COMMA16} tonna kukur&#363;zas
-STR_005C_TON_OF_FRUIT                                           :{COMMA16} tonna aug&#316;u
+STR_0056_TON_OF_WOOD                                            :{COMMA16} tonna kokmaterea'lu
+STR_0057_TON_OF_IRON_ORE                                        :{COMMA16} tonna dzelzs ru'das
+STR_0058_TON_OF_STEEL                                           :{COMMA16} tonna te'rauda
+STR_0059_BAG_OF_VALUABLES                                       :{COMMA16} maiss ar ve'rtspapi'riem
+STR_005A_TON_OF_COPPER_ORE                                      :{COMMA16} tonna vara ru'das
+STR_005B_TON_OF_MAIZE                                           :{COMMA16} tonna kukuru'zas
+STR_005C_TON_OF_FRUIT                                           :{COMMA16} tonna augl'u
 STR_005D_BAG_OF_DIAMONDS                                        :{COMMA16} maiss ar dimantiem
-STR_005E_TON_OF_FOOD                                            :{COMMA16} tonna p&#257;rtikas pre&#269;u
-STR_005F_TON_OF_PAPER                                           :{COMMA16} tonna pap&#299;ra
+STR_005E_TON_OF_FOOD                                            :{COMMA16} tonna pa'rtikas prec'u
+STR_005F_TON_OF_PAPER                                           :{COMMA16} tonna papi'ra
 STR_0060_BAG_OF_GOLD                                            :{COMMA16} zelta maiss
-STR_0061_OF_WATER                                               :{VOLUME} &#363;dens
-STR_0062_TON_OF_WHEAT                                           :{COMMA16} tonna kviešu
+STR_0061_OF_WATER                                               :{VOLUME} u'dens
+STR_0062_TON_OF_WHEAT                                           :{COMMA16} tonna kvies'u
 STR_0063_OF_RUBBER                                              :{VOLUME} tonna gumijas
 STR_0064_TON_OF_SUGAR                                           :{COMMA16} tonna cukura
 STR_0065_TOY                                                    :{COMMA16} rotal'lieta
@@ -2826,7 +2826,7 @@ STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ietilpi'
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Raz'ots: {GOLD}{NUMU16}{BLACK} Termin's': {GOLD}{COMMA16} gadi
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks.Dros'i'ba: {GOLD}{COMMA8}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Sva'rs: {GOLD}{COMMA16}t  ({COMMA16}t)
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Svars: {GOLD}{COMMA16}t  ({COMMA16}t)
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} A'trums: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ietilpi'ba: {GOLD}{COMMA16} pasaz'ieru, {COMMA16} pasta somas
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motor-vagoni: {GOLD}+{COMMA16}zs{BLACK} Sva'rs: {GOLD}+{COMMA8}t
