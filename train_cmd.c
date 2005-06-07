@@ -1258,7 +1258,7 @@ static void *TestTrainOnCrossing(Vehicle *v, void *data)
 static void DisableTrainCrossing(TileIndex tile)
 {
 	/* Test if we have a rail/road-crossing */
-	if (IsTileType(tile, MP_STREET) && (_map5[tile] & 0xF0) == 0x10) {
+	if (IsTileType(tile, MP_STREET) && IsLevelCrossing(tile)) {
 		/* Check if there is a train on the tile itself */
 		if (VehicleFromPos(tile, &tile, TestTrainOnCrossing) == NULL) {
 			/* If light is on, switch light off */
@@ -3082,7 +3082,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 		}
 		if ((ts &= (ts >> 16)) == 0) {
 			// make a rail/road crossing red
-			if (IsTileType(tile, MP_STREET) && (_map5[tile] & 0xF0) == 0x10) {
+			if (IsTileType(tile, MP_STREET) && IsLevelCrossing(tile)) {
 				if (!(_map5[tile] & 4)) {
 					_map5[tile] |= 4;
 					SndPlayVehicleFx(SND_0E_LEVEL_CROSSING, v);

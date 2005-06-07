@@ -592,9 +592,8 @@ static void RoadVehCheckTrainCrash(Vehicle *v)
 	tile = v->tile;
 
 	// Make sure it's a road/rail crossing
-	if (!IsTileType(tile, MP_STREET) ||
-		(_map5[tile] & 0xF0) != 0x10)
-				return;
+	if (!IsTileType(tile, MP_STREET) || !IsLevelCrossing(tile))
+		return;
 
 	if (VehicleFromPos(tile, v, (VehicleFromPosProc*)EnumCheckRoadVehCrashTrain) != NULL)
 		RoadVehCrash(v);

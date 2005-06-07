@@ -1185,7 +1185,7 @@ static void ConvertTownOwner(void)
 
 	for (tile = 0; tile != MapSize(); tile++) {
 		if (IsTileType(tile, MP_STREET)) {
-			if ((_map5[tile] & 0xF0) == 0x10 && _map3_lo[tile] & 0x80)
+			if (IsLevelCrossing(tile) && _map3_lo[tile] & 0x80)
 				_map3_lo[tile] = OWNER_TOWN;
 
 			if (_map_owner[tile] & 0x80) SetTileOwner(tile, OWNER_TOWN);

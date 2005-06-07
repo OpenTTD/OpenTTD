@@ -1841,7 +1841,7 @@ Town *ClosestTownFromTile(uint tile, uint threshold)
 	// XXX - Fix this so for a given tiletype the owner of the type is in the same variable
 	if (IsTileType(tile, MP_HOUSE) || (
 				IsTileType(tile, MP_STREET) &&
-				((_map5[tile] & 0xF0) != 0x10 ? GetTileOwner(tile) : _map3_lo[tile]) == OWNER_TOWN
+				(IsLevelCrossing(tile) ? _map3_lo[tile] == OWNER_TOWN : GetTileOwner(tile))
 			))
 		return GetTown(_map2[tile]);
 

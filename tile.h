@@ -103,4 +103,9 @@ static inline bool IsTileOwner(TileIndex tile, Owner owner)
 	return GetTileOwner(tile) == owner;
 }
 
+static inline bool IsLevelCrossing(TileIndex tile)
+{
+	return (_map5[tile] & 0xF0) == 0x10;
+}
+
 #endif

@@ -3700,7 +3700,7 @@ pos_3:
 	} else if (IsTileType(tile, MP_STREET)) {
 		if (!IsTileOwner(tile, _current_player)) return;
 
-		if ( (_map5[tile]&0xF0) == 0x10)
+		if (IsLevelCrossing(tile))
 			goto is_rail_crossing;
 
 		if ( (_map5[tile]&0xF0) == 0x20) {

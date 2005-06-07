@@ -484,7 +484,7 @@ static inline RailType GetTileRailType(TileIndex tile, byte trackdir)
 			break;
 		case MP_STREET:
 			/* rail/road crossing */
-			if ((_map5[tile] & 0xF0) == 0x10)
+			if (IsLevelCrossing(tile))
 				type = _map3_hi[tile] & RAILTYPE_MASK;
 			break;
 		case MP_STATION:

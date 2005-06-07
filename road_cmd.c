@@ -32,7 +32,7 @@ static bool HasTileRoadAt(uint tile, int i)
 		b = _map5[tile];
 
 		if ((b & 0xF0) == 0) {
-		} else if ((b & 0xF0) == 0x10) {
+		} else if (IsLevelCrossing(tile)) {
 			b = (b&8)?5:10;
 		} else if ((b & 0xF0) == 0x20) {
 			return (~b & 3) == i;
@@ -78,7 +78,7 @@ static bool CheckAllowRemoveRoad(uint tile, uint br, bool *edge_road)
 		return true;
 
 	// A railway crossing has the road owner in the map3_lo byte.
-	if (IsTileType(tile, MP_STREET) && (_map5[tile] & 0xF0) == 0x10) {
+	if (IsTileType(tile, MP_STREET) && IsLevelCrossing(tile)) {
 		owner = _map3_lo[tile];
 	} else {
 		owner = GetTileOwner(tile);
@@ -154,7 +154,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	// owner for railraod crossing is stored somewhere else
 	// XXX - Fix this so for a given tiletype the owner of the type is in the same variable
-	if (IsTileType(tile, MP_STREET) && (_map5[tile] & 0xF0) == 0x10) {
+	if (IsTileType(tile, MP_STREET) && IsLevelCrossing(tile)) {
 		owner = _map3_lo[tile];
 	} else
 		owner = GetTileOwner(tile);
@@ -483,7 +483,7 @@ do_clear:;
 int32 DoConvertStreetRail(uint tile, uint totype, bool exec)
 {
 	// not a railroad crossing?
-	if ((_map5[tile] & 0xF0) != 0x10) return CMD_ERROR;
+	if (!IsLevelCrossing(tile)) return CMD_ERROR;
 
 	// not owned by me?
 	if (!CheckTileOwnership(tile) || !EnsureNoVehicle(tile)) return CMD_ERROR;
@@ -937,7 +937,7 @@ static void GetAcceptedCargo_Road(uint tile, AcceptedCargo ac)
 
 static void AnimateTile_Road(uint tile)
 {
-	if ((_map5[tile] & 0xF0) == 0x10) {
+	if (IsLevelCrossing(tile)) {
 		MarkTileDirtyByTile(tile);
 	}
 }
@@ -1057,7 +1057,7 @@ static const byte _road_trackbits[16] = {
 
 static uint32 GetTileTrackStatus_Road(uint tile, TransportType mode)	{
 	if (mode == TRANSPORT_RAIL) {
-		if ((_map5[tile] & 0xF0) != 0x10)
+		if (!IsLevelCrossing(tile))
 			return 0;
 		return _map5[tile] & 8 ? 0x101 : 0x202;
 	} else if  (mode == TRANSPORT_ROAD) {
@@ -1067,7 +1067,7 @@ static uint32 GetTileTrackStatus_Road(uint tile, TransportType mode)	{
 			if (!_road_special_gettrackstatus && ((_map3_hi[tile]&0x70) >> 4) >= 6)
 				return 0;
 			return _road_trackbits[b&0xF] * 0x101;
-		} else if ((b&0xF0) == 0x10) {
+		} else if (IsLevelCrossing(tile)) {
 			/* Crossing */
 			uint32 r = 0x101;
 			if (b&8) r <<= 1;
@@ -1110,7 +1110,7 @@ static const byte _roadveh_enter_depot_unk0[4] = {
 
 static uint32 VehicleEnter_Road(Vehicle *v, uint tile, int x, int y)
 {
-	if ((_map5[tile] & 0xF0) == 0x10)	{
+	if (IsLevelCrossing(tile)) {
 		if (v->type == VEH_Train && (_map5[tile] & 4) == 0) {
 			/* train crossing a road */
 			SndPlayVehicleFx(SND_0E_LEVEL_CROSSING, v);
@@ -1130,7 +1130,8 @@ static uint32 VehicleEnter_Road(Vehicle *v, uint tile, int x, int y)
 
 static void VehicleLeave_Road(Vehicle *v, uint tile, int x, int y)
 {
-	if ((_map5[tile] & 0xF0) == 0x10 && v->type == VEH_Train && v->next == NULL) {
+	if (IsLevelCrossing(tile) && v->type == VEH_Train && v->next == NULL) {
+		// Turn off level crossing lights
 		_map5[tile] &= ~4;
 		MarkTileDirtyByTile(tile);
 	}
@@ -1141,7 +1142,7 @@ static void ChangeTileOwner_Road(uint tile, byte old_player, byte new_player)
 	byte b;
 
 	// road/rail crossing where the road is owned by the current player?
-	if (old_player == _map3_lo[tile] && (_map5[tile]&0xF0) == 0x10) {
+	if (old_player == _map3_lo[tile] && IsLevelCrossing(tile)) {
 		_map3_lo[tile] = (new_player == 0xFF) ? OWNER_NONE : new_player;
 	}
 
@@ -1153,7 +1154,7 @@ static void ChangeTileOwner_Road(uint tile, byte old_player, byte new_player)
 		b = _map5[tile]&0xF0;
 		if (b == 0) {
 			SetTileOwner(tile, OWNER_NONE);
-		} else if (b == 0x10) {
+		} else if (IsLevelCrossing(tile)) {
 			_map5[tile] = (_map5[tile]&8) ? 0x5 : 0xA;
 			SetTileOwner(tile, _map3_lo[tile]);
 			_map3_lo[tile] = 0;

@@ -374,7 +374,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				break;
 			}
 
-			if ((m5 & 0xF0) == 0x10 && (m5 & 0x08 ? 1 : 2) == rail_bit)
+			if (IsLevelCrossing(tile) == 0x10 && (m5 & 0x08 ? 1 : 2) == rail_bit)
 				return_cmd_error(STR_1007_ALREADY_BUILT);
 			/* FALLTHROUGH */
 
