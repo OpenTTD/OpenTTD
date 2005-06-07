@@ -119,7 +119,7 @@ void TrainConsistChanged(Vehicle *v) {
 			veh_len = GetCallBackResult(CBID_VEH_LENGTH,  u->engine_type, u);
 		if (veh_len == CALLBACK_FAILED)
 			veh_len = rvi_u->shorten_factor;
-		assert(veh_len < 8);
+		veh_len = clamp(veh_len, 0, 7);
 		u->u.rail.cached_veh_length = 8 - veh_len;
 
 	};
