@@ -104,7 +104,7 @@ static void AiStateVehLoop(Player *p)
 
 			/* not reliable? */
 			if ((v->age != 0 &&
-					_engines[v->engine_type].reliability < 35389) ||
+					GetEngine(v->engine_type)->reliability < 35389) ||
 					v->age >= v->max_age) {
 				p->ai.state = AIS_VEH_CHECK_REPLACE_VEHICLE;
 				p->ai.cur_veh = v;
@@ -126,7 +126,7 @@ static int AiChooseTrainToBuild(byte railtype, int32 money, byte flag, TileIndex
 
 	for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
 		const RailVehicleInfo *rvi = RailVehInfo(i);
-		Engine *e = DEREF_ENGINE(i);
+		const Engine* e = GetEngine(i);
 
 		if (e->railtype != railtype || rvi->flags & RVI_WAGON
 		    || !HASBIT(e->player_avail, _current_player) || e->reliability < 0x8A3D)
@@ -151,7 +151,8 @@ static int AiChooseRoadVehToBuild(byte cargo, int32 money, TileIndex tile)
 
 	int i = _cargoc.ai_roadveh_start[cargo];
 	int end = i + _cargoc.ai_roadveh_count[cargo];
-	Engine *e = &_engines[i];
+	const Engine* e = GetEngine(i);
+
 	do {
 		if (!HASBIT(e->player_avail, _current_player) || e->reliability < 0x8A3D)
 			continue;
@@ -174,7 +175,8 @@ static int AiChooseAircraftToBuild(int32 money, byte flag)
 
 	int i = AIRCRAFT_ENGINES_INDEX;
 	int end = i + NUM_AIRCRAFT_ENGINES;
-	Engine *e = &_engines[i];
+	const Engine* e = GetEngine(i);
+
 	do {
 		if (!HASBIT(e->player_avail, _current_player) || e->reliability < 0x8A3D)
 			continue;

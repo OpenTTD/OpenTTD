@@ -23,7 +23,7 @@
 void DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number)
 {
 	const RoadVehicleInfo *rvi = RoadVehInfo(engine_number);
-	Engine *e = &_engines[engine_number];
+	const Engine* e = GetEngine(engine_number);
 	YearMonthDay ymd;
 	ConvertDayToYMD(&ymd, e->intro_date);
 
@@ -370,7 +370,8 @@ static void DrawNewRoadVehWindow(Window *w)
 	{
 		int count = 0;
 		int num = NUM_ROAD_ENGINES;
-		Engine *e = &_engines[ROAD_ENGINES_INDEX];
+		const Engine* e = GetEngine(ROAD_ENGINES_INDEX);
+
 		do {
 			if (HASBIT(e->player_avail, _local_player))
 				count++;
@@ -382,7 +383,7 @@ static void DrawNewRoadVehWindow(Window *w)
 
 	{
 		int num = NUM_ROAD_ENGINES;
-		Engine *e = &_engines[ROAD_ENGINES_INDEX];
+		const Engine* e = GetEngine(ROAD_ENGINES_INDEX);
 		int x = 1;
 		int y = 15;
 		int sel = WP(w,buildtrain_d).sel_index;

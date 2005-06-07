@@ -839,7 +839,7 @@ int32 CmdWantEnginePreview(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Engine *e;
 	if (!IsEngineIndex(p1)) return CMD_ERROR;
 
-	e = DEREF_ENGINE(p1);
+	e = GetEngine(p1);
 	if (GetBestPlayer(e->preview_player) != _current_player) return CMD_ERROR;
 
 	if (flags & DC_EXEC)
@@ -1028,7 +1028,7 @@ static void Load_ENGN(void)
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {
-		SlObject(&_engines[index], _engine_desc);
+		SlObject(GetEngine(index), _engine_desc);
 	}
 }
 
@@ -1057,7 +1057,7 @@ bool IsEngineBuildable(uint engine, byte type)
 	// check if it's an engine that is in the engine array
 	if (!IsEngineIndex(engine)) return false;
 
-	e = DEREF_ENGINE(engine);
+	e = GetEngine(engine);
 
 	// check if it's an engine of specified type
 	if (e->type != type) return false;

@@ -256,7 +256,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		u->subtype = 4;
 
-		e = &_engines[p1];
+		e = GetEngine(p1);
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
 		v->max_age = e->lifelength * 366;
@@ -1470,7 +1470,7 @@ static void AircraftEventHandler_AtTerminal(Vehicle *v, const AirportFTAClass *A
 				// an exerpt of ServiceAircraft, without the invisibility stuff
 				v->date_of_last_service = _date;
 				v->breakdowns_since_last_service = 0;
-				v->reliability = _engines[v->engine_type].reliability;
+				v->reliability = GetEngine(v->engine_type)->reliability;
 				InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 			}
 		}

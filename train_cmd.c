@@ -481,7 +481,7 @@ static int32 CmdBuildRailWagon(uint engine, uint tile, uint32 flags)
 			v->value = value;
 //			v->day_counter = 0;
 
-			e = &_engines[engine];
+			e = GetEngine(engine);
 			v->u.rail.railtype = e->railtype;
 
 			v->build_year = _cur_year;
@@ -650,7 +650,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			v->dest_tile = 0;
 
 			v->engine_type = (byte)p1;
-			e = DEREF_ENGINE(p1);
+			e = GetEngine(p1);
 
 			v->reliability = e->reliability;
 			v->reliability_spd_dec = e->reliability_spd_dec;
@@ -1693,9 +1693,9 @@ static void HandleLocomotiveSmokeCloud(Vehicle *v)
 		int engtype = v->engine_type;
 
 		// no smoke?
-		if (RailVehInfo(engtype)->flags & 2
-		    || _engines[engtype].railtype > 0
-		    || (v->vehstatus&VS_HIDDEN) || (v->u.rail.track & 0xC0) )
+		if (RailVehInfo(engtype)->flags & 2 ||
+				GetEngine(engtype)->railtype > 0 ||
+				(v->vehstatus & VS_HIDDEN) || (v->u.rail.track & 0xC0))
 			continue;
 
 		switch (RailVehInfo(engtype)->engclass) {
@@ -1738,7 +1738,7 @@ static void TrainPlayLeaveStationSound(Vehicle *v)
 
 	int engtype = v->engine_type;
 
-	switch (_engines[engtype].railtype) {
+	switch (GetEngine(engtype)->railtype) {
 		case 0:
 			SndPlayVehicleFx(sfx[RailVehInfo(engtype)->engclass], v);
 			break;

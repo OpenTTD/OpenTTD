@@ -44,7 +44,7 @@ void DrawShipPurchaseInfo(int x, int y, EngineID engine_number)
 	y += 10;
 
 	/* Design date - Life length */
-	e = &_engines[engine_number];
+	e = GetEngine(engine_number);
 	ConvertDayToYMD(&ymd, e->intro_date);
 	SetDParam(0, ymd.year + 1920);
 	SetDParam(1, e->lifelength);
@@ -326,7 +326,8 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 		{
 			int count = 0;
 			int num = NUM_SHIP_ENGINES;
-			Engine *e = &_engines[SHIP_ENGINES_INDEX];
+			const Engine* e = GetEngine(SHIP_ENGINES_INDEX);
+
 			do {
 				if (HASBIT(e->player_avail, _local_player))
 					count++;
@@ -338,7 +339,7 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 
 		{
 			int num = NUM_SHIP_ENGINES;
-			Engine *e = &_engines[SHIP_ENGINES_INDEX];
+			const Engine* e = GetEngine(SHIP_ENGINES_INDEX);
 			int x = 2;
 			int y = 15;
 			int sel = WP(w,buildtrain_d).sel_index;

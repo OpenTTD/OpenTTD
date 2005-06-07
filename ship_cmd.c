@@ -912,7 +912,7 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->max_speed = svi->max_speed;
 		v->engine_type = (byte)p1;
 
-		e = &_engines[p1];
+		e = GetEngine(p1);
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
 		v->max_age = e->lifelength * 366;

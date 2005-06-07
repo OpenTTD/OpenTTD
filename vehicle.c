@@ -49,7 +49,7 @@ void VehicleServiceInDepot(Vehicle *v)
 {
 	v->date_of_last_service = _date;
 	v->breakdowns_since_last_service = 0;
-	v->reliability = _engines[v->engine_type].reliability;
+	v->reliability = GetEngine(v->engine_type)->reliability;
 }
 
 bool VehicleNeedsService(const Vehicle *v)
@@ -61,7 +61,7 @@ bool VehicleNeedsService(const Vehicle *v)
 		return false; /* Crashed vehicles don't need service anymore */
 
 	return _patches.servint_ispercent ?
-		(v->reliability < _engines[v->engine_type].reliability * (100 - v->service_interval) / 100) :
+		(v->reliability < GetEngine(v->engine_type)->reliability * (100 - v->service_interval) / 100) :
 		(v->date_of_last_service + v->service_interval < _date);
 }
 
@@ -1358,7 +1358,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsEngineIndex(new_engine_type)) return CMD_ERROR;
 
 	// check that the new vehicle type is the same as the original one
-	if (v->type != DEREF_ENGINE(new_engine_type)->type) return CMD_ERROR;
+	if (v->type != GetEngine(new_engine_type)->type) return CMD_ERROR;
 
 	// check that it's the vehicle's owner that requested the replace
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
@@ -1369,7 +1369,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	// makes sure that the player can actually buy the new engine. Renewing is still allowed to outdated engines
-	if (!HASBIT(DEREF_ENGINE(new_engine_type)->player_avail, v->owner) && old_engine_type != new_engine_type) return CMD_ERROR;
+	if (!HASBIT(GetEngine(new_engine_type)->player_avail, v->owner) && old_engine_type != new_engine_type) return CMD_ERROR;
 
 	switch (v->type) {
 		case VEH_Train:    build_cost = EstimateTrainCost(RailVehInfo(new_engine_type)); break;
@@ -1438,7 +1438,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		/* We do not really buy a new vehicle, we upgrade the old one */
-		Engine *e = DEREF_ENGINE(new_engine_type);
+		const Engine* e = GetEngine(new_engine_type);
 
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
@@ -1620,7 +1620,7 @@ void MaybeReplaceVehicle(Vehicle *v)
 	 the last 8 bit is the engine. The 8 bits in front of the engine is free so it have room for 16 bit engine entries */
 	new_engine_and_autoreplace_money = ((_patches.autorenew_money / 100000) << 16) + _autoreplace_array[v->engine_type];
 
-	assert(v->type == DEREF_ENGINE(_autoreplace_array[v->engine_type])->type);
+	assert(v->type == GetEngine(_autoreplace_array[v->engine_type])->type);
 
 	if ( v->type != VEH_Train ) {
 		DoCommandP(v->tile, v->index, new_engine_and_autoreplace_money, NULL, CMD_REPLACE_VEHICLE | CMD_SHOW_NO_ERROR);

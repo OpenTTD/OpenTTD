@@ -13,7 +13,7 @@
 static StringID GetEngineCategoryName(byte engine)
 {
 	if (engine < NUM_TRAIN_ENGINES) {
-		switch (_engines[engine].railtype) {
+		switch (GetEngine(engine)->railtype) {
 			case 0:
 				return STR_8102_RAILROAD_LOCOMOTIVE;
 			case 1:

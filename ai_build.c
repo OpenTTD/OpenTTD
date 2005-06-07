@@ -221,7 +221,7 @@ int AiNew_PickVehicle(Player *p) {
         for (i=start+count-1;i>=start;i--) {
         	// Is it availiable?
         	// Also, check if the reliability of the vehicle is above the AI_VEHICLE_MIN_RELIABILTY
-        	if (!HASBIT(_engines[i].player_avail, _current_player) || _engines[i].reliability * 100 < AI_VEHICLE_MIN_RELIABILTY << 16) continue;
+        	if (!HASBIT(GetEngine(i)->player_avail, _current_player) || GetEngine(i)->reliability * 100 < AI_VEHICLE_MIN_RELIABILTY << 16) continue;
         	// Can we build it?
         	ret = DoCommandByTile(0, i, 0, DC_QUERY_COST, CMD_BUILD_ROAD_VEH);
         	if (!CmdFailed(ret)) break;

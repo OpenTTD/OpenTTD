@@ -222,7 +222,7 @@ enum {
 };
 VARDEF Engine _engines[TOTAL_NUM_ENGINES];
 #define FOR_ALL_ENGINES(e) for (e = _engines; e != endof(_engines); e++)
-#define DEREF_ENGINE(i) (GetEngine(i))
+
 static inline Engine* GetEngine(uint i)
 {
   assert(i < lengthof(_engines));

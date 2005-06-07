@@ -24,7 +24,7 @@
 void DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number)
 {
 	const AircraftVehicleInfo *avi = AircraftVehInfo(engine_number);
-	Engine *e = &_engines[engine_number];
+	const Engine* e = GetEngine(engine_number);
 	YearMonthDay ymd;
 	ConvertDayToYMD(&ymd, e->intro_date);
 
@@ -97,7 +97,8 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 		{
 			int count = 0;
 			int num = NUM_AIRCRAFT_ENGINES;
-			Engine *e = &_engines[AIRCRAFT_ENGINES_INDEX];
+			const Engine* e = GetEngine(AIRCRAFT_ENGINES_INDEX);
+
 			do {
 				if (HASBIT(e->player_avail, _local_player))
 					count++;
@@ -109,7 +110,7 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 
 		{
 			int num = NUM_AIRCRAFT_ENGINES;
-			Engine *e = &_engines[AIRCRAFT_ENGINES_INDEX];
+			const Engine* e = GetEngine(AIRCRAFT_ENGINES_INDEX);
 			int x = 2;
 			int y = 15;
 			int sel = WP(w,buildtrain_d).sel_index;

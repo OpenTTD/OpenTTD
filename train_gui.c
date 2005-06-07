@@ -26,7 +26,7 @@ int _traininfo_vehicle_pitch = 0;
 void DrawTrainEnginePurchaseInfo(int x, int y, EngineID engine_number)
 {
 	const RailVehicleInfo *rvi = RailVehInfo(engine_number);
-	Engine *e = &_engines[engine_number];
+	const Engine* e = GetEngine(engine_number);
 	int multihead = (rvi->flags&RVI_MULTIHEAD?1:0);
 	YearMonthDay ymd;
 	ConvertDayToYMD(&ymd, e->intro_date);
@@ -157,7 +157,7 @@ static void engine_drawing_loop(int *x, int *y, int *pos, int *sel,
 	int i;
 
 	for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
-		const Engine *e = DEREF_ENGINE(i);
+		const Engine *e = GetEngine(i);
 		const RailVehicleInfo *rvi = RailVehInfo(i);
 
 		if (e->railtype != railtype || !(rvi->flags & RVI_WAGON) != is_engine ||
@@ -191,7 +191,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 			int i;
 
 			for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
-				const Engine *e = DEREF_ENGINE(i);
+				const Engine *e = GetEngine(i);
 				if (e->railtype == railtype
 				    && HASBIT(e->player_avail, _local_player))
 					count++;
