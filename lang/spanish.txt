@@ -2819,3 +2819,14 @@ STR_MAGLEV_VEHICLES                                             :Vehículos de Le
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
 
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{COMMA16}t
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocidad: {GOLD}{VELOCITY}{BLACK}   Potencia: {GOLD}{COMMA32}cv
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Coste de operación: {GOLD}{CURRENCY}/año
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacidad: {GOLD}{STRING} {STRING}
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Diseñado: {GOLD}{NUMU16}{BLACK} Vida: {GOLD}{COMMA16} años
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilidad máxima: {GOLD}{COMMA8}%
+STR_PURCHASE_INFO_COST                                          :{BLACK}Coste: {GOLD}{CURRENCY}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{COMMA16}t  ({COMMA16}t)
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Velocidad: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidad: {GOLD}{COMMA16} pasajeros, {COMMA16} sacas de correo
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagones con motor: {GOLD}+{COMMA16}cv{BLACK} Peso: {GOLD}+{COMMA8}t
