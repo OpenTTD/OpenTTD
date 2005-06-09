@@ -717,7 +717,7 @@ static int32 DoClearBridge(uint tile, uint32 flags)
 		return cost;
 
 	/* delete canal under bridge */
-	} else if(_map5[tile] == 0xC8 && TilePixelHeight(tile) != 0) {
+	} else if ((_map5[tile] & 0xC8) == 0xC8 && TilePixelHeight(tile) != 0) {
 		int32 cost;
 
 		// check for vehicles under bridge
