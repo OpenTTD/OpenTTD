@@ -855,6 +855,7 @@ STR_032C_3_AIR_SERVICE                                          :{BLACK}3: Servi
 STR_032D_4_SHIP_SERVICE                                         :{BLACK}4: Servicio a barco
 STR_032E_5_RAILROAD_SERVICE_ADVANCED                            :{BLACK}5: Servicio a ferrocarril (avanzado)
 STR_032F_AUTOSAVE                                               :{RED}AUTOGUARDADO
+STR_SAVING_GAME                                                 :{RED}*  *  GRABANDO PARTIDA  *  *
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Selecciona-lo programa 'Música Estilo Ezy Street'
 
 STR_0335_6                                                      :{BLACK}6
@@ -2435,6 +2436,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Valor: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{STRING}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Cargando / Descargando
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}O tren debe estar parado nun depósito
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}No se pode envía-lo tren o depósito...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Non haí espacio para máis ordes
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Demasiadas ordes
@@ -2750,6 +2752,7 @@ STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configur
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplica-los cambios
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Conf. parámetros
 STR_NEWGRF_TIP                                                  :{BLACK}Unha lista de tódolos sets Newgrf que tes instalados. Pincha nun set para cambia-la configuración
+STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}¡Non hai ficheiros newgrf instalados! Consulta no manual as instruccións para instalar novos gráficos
 STR_NEWGRF_FILENAME                                             :{BLACK}Ficheiro:
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
 
@@ -2798,3 +2801,7 @@ STR_MAGLEV_VEHICLES                                             :Vehículos Magle
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
 
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{COMMA16}t
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocidade: {GOLD}{VELOCITY}{BLACK}  Potencia: {GOLD}{COMMA32}cv
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Mantemento: {GOLD}{CURRENCY}/ano
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidade: {GOLD}{COMMA16} pasaxeiros, {COMMA16} sacos de correo

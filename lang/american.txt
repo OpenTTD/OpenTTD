@@ -703,8 +703,8 @@ STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Plant tr
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Place rocky areas on landscape
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Place lighthouse
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Place transmitter
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define desert area
-STR_CREATE_LAKE                                                 :{BLACK}Define water area, will flood its surroundings if at sea level
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define desert area.{}Press and hold CTRL to remove it
+STR_CREATE_LAKE                                                 :{BLACK}Define water area.{}It will flood its surroundings if at sea level
 STR_0290_DELETE                                                 :{BLACK}Delete
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Delete this town completely
 STR_0292_SAVE_SCENARIO                                          :Save scenario
@@ -857,6 +857,8 @@ STR_032C_3_AIR_SERVICE                                          :{BLACK}3: Air s
 STR_032D_4_SHIP_SERVICE                                         :{BLACK}4: Ship service
 STR_032E_5_RAILROAD_SERVICE_ADVANCED                            :{BLACK}5: Railroad service (advanced)
 STR_032F_AUTOSAVE                                               :{RED}AUTOSAVE
+STR_SAVING_GAME                                                 :{RED}*  *  SAVING GAME  *  *
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Saving still in progress,{}please wait until it is finished!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Select 'Ezy Street style music' program
 
 STR_0335_6                                                      :{BLACK}6
@@ -2817,3 +2819,14 @@ STR_MAGLEV_VEHICLES                                             :Maglev Vehicles
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
 
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Weight: {GOLD}{COMMA16}t
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Speed: {GOLD}{VELOCITY}{BLACK}   Power: {GOLD}{COMMA32}hp
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Running Cost: {GOLD}{CURRENCY}/yr
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacity: {GOLD}{STRING} {STRING}
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designed: {GOLD}{NUMU16}{BLACK} Life: {GOLD}{COMMA16} years
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Reliability: {GOLD}{COMMA8}%
+STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Weight: {GOLD}{COMMA16}t  ({COMMA16}t)
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Speed: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacity: {GOLD}{COMMA16} passengers, {COMMA16} bags of mail
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Powered Wagons: {GOLD}+{COMMA16}hp{BLACK} Weight: {GOLD}+{COMMA8}t
