@@ -184,6 +184,7 @@ static void MenuClickSettings(int index)
 	case 9: _display_opt ^= DO_FULL_ANIMATION; MarkWholeScreenDirty(); return;
 	case 10: _display_opt ^= DO_FULL_DETAIL; MarkWholeScreenDirty(); return;
 	case 11: _display_opt ^= DO_TRANS_BUILDINGS; MarkWholeScreenDirty(); return;
+	case 12: _display_opt ^= DO_TRANS_SIGNS; MarkWholeScreenDirty(); return;
 	}
 }
 
@@ -985,7 +986,7 @@ static void ToolbarOptionsClick(Window *w)
 {
 	uint16 x;
 
-	w = PopupMainToolbMenu(w,  43, 2, STR_02C3_GAME_OPTIONS, 12);
+	w = PopupMainToolbMenu(w,  43, 2, STR_02C3_GAME_OPTIONS, 13);
 
 	x = (uint16)-1;
 	if (_display_opt & DO_SHOW_TOWN_NAMES) x &= ~(1<<5);
@@ -995,6 +996,7 @@ static void ToolbarOptionsClick(Window *w)
 	if (_display_opt & DO_FULL_ANIMATION) x &= ~(1<<9);
 	if (_display_opt & DO_FULL_DETAIL) x &= ~(1<<10);
 	if (_display_opt & DO_TRANS_BUILDINGS) x &= ~(1<<11);
+	if (_display_opt & DO_TRANS_SIGNS) x &= ~(1<<12);
 	WP(w,menu_d).checked_items = x;
 }
 

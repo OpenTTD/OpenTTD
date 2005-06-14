@@ -768,6 +768,8 @@ STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SET
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Full detail
 STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Transparent buildings
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Transparent buildings
+STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Transparent station signs
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transparent station signs
 ############ range ends	here
 
 ############ range for menu	starts
