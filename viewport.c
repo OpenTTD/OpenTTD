@@ -1079,16 +1079,37 @@ static void ViewportSortParentSprites(ParentSpriteToDraw **psd)
 			psd2 = psd;
 
 			while ( (ps2=*++psd2) != NULL) {
+				bool mustswap = false;
+
 				if (ps2->unk16 & 1)
 					continue;
 
-				if (ps->tile_right >= ps2->tile_x &&
-						ps->tile_bottom >= ps2->tile_y &&
-						ps->tile_z_bottom >= ps2->tile_z && (
-						ps->tile_x >= ps2->tile_right ||
-						ps->tile_y >= ps2->tile_bottom ||
-						ps->tile_z >= ps2->tile_z_bottom
-						)) {
+				// Decide which sort order algorithm to use, based on whether the sprites have some overlapping area.
+				if (((ps2->tile_x > ps->tile_x && ps2->tile_x < ps->tile_right) ||
+				    (ps2->tile_right > ps->tile_x && ps2->tile_x < ps->tile_right)) &&        // overlap in X
+				    ((ps2->tile_y > ps->tile_y && ps2->tile_y < ps->tile_bottom) ||
+				    (ps2->tile_bottom > ps->tile_y && ps2->tile_y < ps->tile_bottom)) &&      // overlap in Y
+				    ((ps2->tile_z > ps->tile_z && ps2->tile_z < ps->tile_z_bottom) ||
+				    (ps2->tile_z_bottom > ps->tile_z && ps2->tile_z < ps->tile_z_bottom)) ) { // overlap in Z
+					// Sprites overlap.
+					// Use X+Y+Z as the sorting order, so sprites nearer the bottom of the screen,
+					// and with higher Z elevation, draw in front.
+					// Here X,Y,Z are the coordinates of the "center of mass" of the sprite,
+					// i.e. X=(left+right)/2, etc.
+					// However, since we only care about order, don't actually calculate the division / 2.
+					mustswap = ps->tile_x + ps->tile_right + ps->tile_y + ps->tile_bottom + ps->tile_z + ps->tile_z_bottom >
+					           ps2->tile_x + ps2->tile_right + ps2->tile_y + ps2->tile_bottom + ps2->tile_z + ps2->tile_z_bottom;
+				} else {
+					// No overlap; use the original TTD sort algorithm.
+					mustswap = (ps->tile_right >= ps2->tile_x &&
+					            ps->tile_bottom >= ps2->tile_y &&
+					            ps->tile_z_bottom >= ps2->tile_z &&
+					           (ps->tile_x >= ps2->tile_right ||
+					            ps->tile_y >= ps2->tile_bottom ||
+					            ps->tile_z >= ps2->tile_z_bottom));
+				}
+				if (mustswap) {
+					// Swap the two sprites ps and ps2 using bubble-sort algorithm.
 					psd3 = psd;
 					do {
 						ps3 = *psd3;

@@ -119,7 +119,7 @@ void TrainConsistChanged(Vehicle *v) {
 			veh_len = GetCallBackResult(CBID_VEH_LENGTH,  u->engine_type, u);
 		if (veh_len == CALLBACK_FAILED)
 			veh_len = rvi_u->shorten_factor;
-		veh_len = clamp(veh_len, 0, 7);
+		veh_len = clamp(veh_len, 0, u->next == NULL ? 7 : 5); // the clamp on vehicles not the last in chain is stricter, as too short wagons can break the 'follow next vehicle' code
 		u->u.rail.cached_veh_length = 8 - veh_len;
 
 	};
