@@ -842,13 +842,13 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 				editable = false;
 			if (pe->type == PE_BOOL) {
 				if (editable)
-					DrawFrameRect(x+5, y+1, x+15+9, y+9, (*(bool*)pe->variable)?6:4, (*(bool*)pe->variable)?0x20:0);
+					DrawFrameRect(x+5, y+1, x+15+9, y+9, (*(bool*)pe->variable) ? 6 : 4, (*(bool*)pe->variable) ? FR_LOWERED : 0);
 				else
-					DrawFrameRect(x+5, y+1, x+15+9, y+9, (*(bool*)pe->variable)?7:9, (*(bool*)pe->variable)?0x20:0);
+					DrawFrameRect(x+5, y+1, x+15+9, y+9, (*(bool*)pe->variable) ? 7 : 9, (*(bool*)pe->variable) ? FR_LOWERED : 0);
 				SetDParam(0, *(bool*)pe->variable ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
 			} else {
-				DrawFrameRect(x+5, y+1, x+5+9, y+9, 3, clk == i*2+1 ? 0x20 : 0);
-				DrawFrameRect(x+15, y+1, x+15+9, y+9, 3, clk == i*2+2 ? 0x20 : 0);
+				DrawFrameRect(x+5, y+1, x+5+9, y+9, 3, clk == i*2+1 ? FR_LOWERED : 0);
+				DrawFrameRect(x+15, y+1, x+15+9, y+9, 3, clk == i*2+2 ? FR_LOWERED : 0);
 				if (!editable) {
 					int color = 0x8000 | _color_list[3].unk2;
 					GfxFillRect(x+6, y+2, x+6+8, y+9, color);
@@ -1294,8 +1294,8 @@ void ShowNewgrf(void)
 /* state: 0 = none clicked, 0x01 = first clicked, 0x02 = second clicked */
 void DrawArrowButtons(int x, int y, int state)
 {
-	DrawFrameRect(x, y+1, x+9, y+9, 3, (state&0x01) ? 0x20 : 0);
-	DrawFrameRect(x+10, y+1, x+19, y+9, 3, (state&0x02) ? 0x20 : 0);
+	DrawFrameRect(x, y+1, x+9, y+9, 3, (state & 0x01) ? FR_LOWERED : 0);
+	DrawFrameRect(x+10, y+1, x+19, y+9, 3, (state & 0x02) ? FR_LOWERED : 0);
 	DrawStringCentered(x+5, y+1, STR_6819, 0);
 	DrawStringCentered(x+15, y+1, STR_681A, 0);
 }
@@ -1320,7 +1320,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 		i++;
 
 		// separator
-		DrawFrameRect(10, y+1, 29, y+9, 0, ((clk >> (i*2)) & 0x03)?0x20:0x00);
+		DrawFrameRect(10, y+1, 29, y+9, 0, ((clk >> (i*2)) & 0x03) ? FR_LOWERED : 0);
 		x = DrawString(x, y + 1, STR_CURRENCY_SEPARATOR, 0);
 		DoDrawString(_str_separator, x + 4, y + 1, 6);
 		x = 35;
@@ -1328,7 +1328,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 		i++;
 
 		// prefix
-		DrawFrameRect(10, y+1, 29, y+9, 0, ((clk >> (i*2)) & 0x03)?0x20:0x00);
+		DrawFrameRect(10, y+1, 29, y+9, 0, ((clk >> (i*2)) & 0x03) ? FR_LOWERED : 0);
 		x = DrawString(x, y + 1, STR_CURRENCY_PREFIX, 0);
 		DoDrawString(_currency_specs[23].prefix, x + 4, y + 1, 6);
 		x = 35;
@@ -1336,7 +1336,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 		i++;
 
 		// suffix
-		DrawFrameRect(10, y+1, 29, y+9, 0, ((clk >> (i*2)) & 0x03)?0x20:0x00);
+		DrawFrameRect(10, y+1, 29, y+9, 0, ((clk >> (i*2)) & 0x03) ? FR_LOWERED : 0);
 		x = DrawString(x, y + 1, STR_CURRENCY_SUFFIX, 0);
 		DoDrawString(_currency_specs[23].suffix, x + 4, y + 1, 6);
 		x = 35;

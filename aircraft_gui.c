@@ -67,7 +67,7 @@ static void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selectio
 	if (v->subtype == 0)
 		DrawSprite(0xF3D, x+25, y+5);
 	if (v->index == selection) {
-		DrawFrameRect(x-1, y-1, x+58, y+21, 0xF, 0x10);
+		DrawFrameRect(x-1, y-1, x+58, y+21, 0xF, FR_BORDERONLY);
 	}
 }
 

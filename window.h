@@ -61,6 +61,14 @@ typedef struct Widget {
 	uint16 tooltips;
 } Widget;
 
+enum FrameFlags {
+	FR_TRANSPARENT  = 0x01,  ///< Makes the background transparent if set
+	FR_NOBORDER     = 0x08,  ///< Hide border (draws just a solid box)
+	FR_BORDERONLY   = 0x10,  ///< Draw border only, no background
+	FR_LOWERED      = 0x20,  ///< If set the frame is lowered and the background color brighter (ie. buttons when pressed)
+	FR_DARKENED     = 0x40,  ///< If set the background is darker, allows for lowered frames with normal background color when used with FR_LOWERED (ie. dropdown boxes)
+};
+
 /* XXX - outside "byte event" so you can set event directly without going into
  * the union elements at first. Because of this every first element of the union
  * MUST BE 'byte event'. Whoever did this must get shot! Scheduled for immediate

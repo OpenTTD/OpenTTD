@@ -64,7 +64,7 @@ static void DrawShipImage(const Vehicle *v, int x, int y, VehicleID selection)
 	DrawSprite(image | ormod, x+32, y+10);
 
 	if (v->index == selection) {
-		DrawFrameRect(x-5, y-1, x+67, y+21, 15, 0x10);
+		DrawFrameRect(x-5, y-1, x+67, y+21, 15, FR_BORDERONLY);
 	}
 }
 

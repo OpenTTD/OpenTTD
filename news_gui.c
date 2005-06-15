@@ -765,7 +765,7 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 		for (i = 0, y = 26; i != 10; i++, y += 12, click_state >>= 1, val >>= 2) {
 			bool clicked = !!(click_state & 1);
 
-			DrawFrameRect(13, y, 89, 11 + y, 3, (clicked) ? 0x20 : 0);
+			DrawFrameRect(13, y, 89, 11 + y, 3, (clicked) ? FR_LOWERED : 0);
 			DrawStringCentered(((13 + 89 + 1) >> 1) + clicked, ((y + 11 + y + 1) >> 1) - 5 + clicked, message_opt[val & 0x3], 0x10);
 			DrawString(103, y + 1, i + STR_0206_ARRIVAL_OF_FIRST_VEHICLE, 0);
 		}

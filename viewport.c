@@ -1178,7 +1178,7 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, StringSpriteToDraw *ss)
 
 		/* Draw the rectangle if 'tranparent station signs' is off, or if we are drawing a general text sign (STR_2806) */
 			if(!(_display_opt & DO_TRANS_SIGNS) || ss->string == STR_2806)
-				DrawFrameRect(x,y, x+w, bottom, ss->color, (_display_opt & DO_TRANS_BUILDINGS) ? 0x9 : 0);
+				DrawFrameRect(x,y, x+w, bottom, ss->color, (_display_opt & DO_TRANS_BUILDINGS) ? FR_TRANSPARENT | FR_NOBORDER : 0);
 		}
 
 		SetDParam(0, ss->params[0]);

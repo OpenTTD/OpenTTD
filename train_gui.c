@@ -342,7 +342,7 @@ static void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, 
 					ormod = PALETTE_CRASH;
 				DrawSprite(image | ormod, x + 14, y + 6 + _traininfo_vehicle_pitch);
 				if (v->index == selection)
-					DrawFrameRect(x - 1, y - 1, x + width + 4, y + 12, 15, 0x10);
+					DrawFrameRect(x - 1, y - 1, x + width + 4, y + 12, 15, FR_BORDERONLY);
 			}
 			x += width + 5;
 		}

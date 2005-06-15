@@ -1725,19 +1725,19 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 			DrawSprite((SPR_OPENTTD_BASE + ((*ce->been_used)?67:66)), x+5, y+2);
 
 			if (ce->type == CE_BOOL) {
-				DrawFrameRect(x+20, y+1, x+30+9, y+9, (*(bool*)ce->variable)?6:4, (*(bool*)ce->variable)?0x20:0);
+				DrawFrameRect(x+20, y+1, x+30+9, y+9, (*(bool*)ce->variable) ? 6 : 4, (*(bool*)ce->variable) ? FR_LOWERED : 0);
 				SetDParam(0, *(bool*)ce->variable ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
 
 			}	else if (ce->type == CE_CLICK) {
-				DrawFrameRect(x+20, y+1, x+30+9, y+9, 0, (WP(w,def_d).data_1==i*2+1)?0x20:0x00);
-				if(i==0)
+				DrawFrameRect(x+20, y+1, x+30+9, y+9, 0, (WP(w,def_d).data_1 == i*2+1) ? FR_LOWERED : 0);
+				if (i == 0)
 					SetDParam64(0, (int64) 10000000);
 				else
 					SetDParam(0, false);
 
 			} else {
-				DrawFrameRect(x+20, y+1, x+20+9, y+9, 3, clk == i*2+1 ? 0x20 : 0);
-				DrawFrameRect(x+30, y+1, x+30+9, y+9, 3, clk == i*2+2 ? 0x20 : 0);
+				DrawFrameRect(x+20, y+1, x+20+9, y+9, 3, clk == i*2+1 ? FR_LOWERED : 0);
+				DrawFrameRect(x+30, y+1, x+30+9, y+9, 3, clk == i*2+2 ? FR_LOWERED : 0);
 				DrawStringCentered(x+25, y+1, STR_6819, 0);
 				DrawStringCentered(x+35, y+1, STR_681A, 0);
 

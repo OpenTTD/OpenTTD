@@ -366,8 +366,8 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 		DrawStringCentered(247, 15, STR_01DC_EFFECTS_VOLUME, 0);
 		DrawStringCentered(247, 29, STR_01DD_MIN_MAX, 0);
 
-		DrawFrameRect(108, 23, 174, 26, 14, 0x20);
-		DrawFrameRect(214, 23, 280, 26, 14, 0x20);
+		DrawFrameRect(108, 23, 174, 26, 14, FR_LOWERED);
+		DrawFrameRect(214, 23, 280, 26, 14, FR_LOWERED);
 
 		DrawFrameRect(108 + (msf.music_vol>>1),
 									22,
