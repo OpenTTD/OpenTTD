@@ -2493,7 +2493,7 @@ STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Verð: {CURRENCY} Þyngd: {COMMA16}tonn{}Hraði: {VELOCITY}  Hestöfl: {COMMA16}{}Rekstrarkostnaður: {CURRENCY} á ári{}Burðargeta: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Bilaður
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Aldur: {LTBLUE}{STRING}{BLACK}   Keyrslukostnaður: {LTBLUE}{CURRENCY}/ár
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Aldur: {LTBLUE}{STRING}{BLACK}   Rekstrarkostnaður: {LTBLUE}{CURRENCY} á ári
 STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Þyngd: {LTBLUE}{COMMA16}t  {BLACK}Hestöfl: {LTBLUE}{COMMA32}{BLACK} Hámarkshraði: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Hagnaður á þessu ári: {LTBLUE}{CURRENCY}  (síðasta ár: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA8}%  {BLACK}Bilanir frá síðustu viðgerð: {LTBLUE}{COMMA16}
@@ -2525,7 +2525,7 @@ STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Get ekki
 STR_900A_MUST_BUILD_ROAD_VEHICLE                                :{WHITE}Verður að bygga bílastöð fyrst
 STR_900B_ORDERS                                                 :{WHITE}{STRING} (Skipanir)
 STR_900C_DETAILS                                                :{WHITE}{STRING} (Upplýsingar)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Aldur: {LTBLUE}{STRING}{BLACK}   Keyrslukostnaður: {LTBLUE}{CURRENCY}/ár
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Aldur: {LTBLUE}{STRING}{BLACK}   Rekstrarkostnaður: {LTBLUE}{CURRENCY} á ári
 STR_900E_MAX_SPEED                                              :{BLACK}Hámarkshraði: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Hagnaður á þessu ári: {LTBLUE}{CURRENCY}  (síðasta ár: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA8}%  {BLACK}Bilanir frá síðustu viðgerð: {LTBLUE}{COMMA16}
