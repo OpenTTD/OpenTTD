@@ -768,6 +768,8 @@ STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SET
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Full detaljnivå
 STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Genomskinliga byggnader
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Genomskinliga byggnader
+STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Genomskinliga stationsskyltar
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Genomskinliga stationsskyltar
 ############ range ends	here
 
 ############ range for menu	starts
@@ -2397,14 +2399,6 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tåg i vä
 STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
 STR_8806_GO_TO                                                  :Gå till {STATION}
-STR_8807_GO_TO_UNLOAD                                           :Gå till {STATION} (Lasta av)
-STR_8808_GO_TO_LOAD                                             :Gå till {STATION} (Lasta)
-STR_8809                                                        :
-STR_880A_GO_NON_STOP_TO                                         :Gå non-stop till {STATION}
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Gå non-stop till {STATION} (Lasta av)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Gå non-stop till {STATION} (Lasta)
-STR_880D                                                        :
-STR_880E_GO_TO_TRAIN_DEPOT                                      :Gå till {TOWN} depå
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Servning vid {TOWN} Tåg depå
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Gå non-stop till {TOWN} depå
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Servning non-stop {TOWN} Tåg depå

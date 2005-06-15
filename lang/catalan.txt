@@ -2397,14 +2397,6 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren en 
 STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
 STR_8806_GO_TO                                                  :Anar a {STATION}
-STR_8807_GO_TO_UNLOAD                                           :Anar a {STATION} (Descarregar)
-STR_8808_GO_TO_LOAD                                             :Anar a {STATION} (Carregar)
-STR_8809                                                        :
-STR_880A_GO_NON_STOP_TO                                         :Anar sense parades a {STATION}
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Anar sense parades a {STATION} (Descarregar)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Anar sense parades a {STATION} (Carregar)
-STR_880D                                                        :
-STR_880E_GO_TO_TRAIN_DEPOT                                      :Anar a cotxeres de {TOWN}.
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Manteniment a cotxeres de {TOWN}.
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Anar sense parades a cotxeres de {TOWN}.
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Manteniment sense parades a cotxeres de {TOWN}.

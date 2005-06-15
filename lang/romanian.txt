@@ -768,6 +768,8 @@ STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SET
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Detalii grafice complete
 STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Clãdiri transparente (X)
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Peisaj transparent (X)
+STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Numele statiilor transparente
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Numele statiilor transparente
 ############ range ends	here
 
 ############ range for menu	starts
@@ -2397,14 +2399,6 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren în 
 STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
 STR_8806_GO_TO                                                  :Mergi la {STATION}
-STR_8807_GO_TO_UNLOAD                                           :Mergi la {STATION} (Descarcã)
-STR_8808_GO_TO_LOAD                                             :Mergi la {STATION} (Încarcã)
-STR_8809                                                        :
-STR_880A_GO_NON_STOP_TO                                         :Mergi non-stop la {STATION}
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Mergi non-stop la {STATION} (Descarcã)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Mergi non-stop la {STATION} (Încarcã)
-STR_880D                                                        :
-STR_880E_GO_TO_TRAIN_DEPOT                                      :Mergi la Depoul {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Service la Depoul {TOWN}
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Mergi non-stop la Depoul {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Non-stop pt. service la Depoul {TOWN}

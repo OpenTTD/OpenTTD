@@ -2397,14 +2397,6 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Lest fyr
 STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
 STR_8806_GO_TO                                                  :Fer til {STATION}
-STR_8807_GO_TO_UNLOAD                                           :Fer til {STATION} (Afferma)
-STR_8808_GO_TO_LOAD                                             :Fer til {STATION} (Ferma)
-STR_8809                                                        :
-STR_880A_GO_NON_STOP_TO                                         :Fer viðstöðulaust til {STATION}
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Fer viðstöðulaust til {STATION} (Afferma)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Fer viðstöðulaust til {STATION} (Ferma)
-STR_880D                                                        :
-STR_880E_GO_TO_TRAIN_DEPOT                                      :Fer til {TOWN} Lestar Byggingar
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Viðgerð í {TOWN} Lestar Byggingu
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Fer viðstöðulaust til {TOWN} Lestar Byggingar
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Viðgerð viðstöðulaust í {TOWN} Lestar Byggingu

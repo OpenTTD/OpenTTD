@@ -2397,14 +2397,6 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren en 
 STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
 STR_8806_GO_TO                                                  :Ir a {STATION}
-STR_8807_GO_TO_UNLOAD                                           :Ir a {STATION} (Descargar)
-STR_8808_GO_TO_LOAD                                             :Ir a {STATION} (Cargar)
-STR_8809                                                        :
-STR_880A_GO_NON_STOP_TO                                         :Ir sin parar a {STATION}
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Ir sin parar a {STATION} (Descargar)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Ir sin parar a {STATION} (Cargar)
-STR_880D                                                        :
-STR_880E_GO_TO_TRAIN_DEPOT                                      :Ir al depósito de {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Ir al depósito de {TOWN} para mantenimiento
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ir sin parar al depósito de {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Ir sin parar al depósito de {TOWN} para mantenimiento

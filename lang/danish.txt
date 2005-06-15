@@ -703,8 +703,8 @@ STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Plant tr
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Placer klippeområder på landskabet
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Placer fyrtårn
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Placer transmitter
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definer ørkenområde
-STR_CREATE_LAKE                                                 :{BLACK}Markere et område til at være vand, som vil oversvømme omgivelserne hvis det er ved havoverfladen
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definer ørkenområde.{}Hold CTRL inde for at fjerne
+STR_CREATE_LAKE                                                 :{BLACK}Definer vandområde.{}Vil oversvømme nærlæggende land i samme plan
 STR_0290_DELETE                                                 :{BLACK}Slet
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Slet denne by fuldstændigt
 STR_0292_SAVE_SCENARIO                                          :Gem scenarie
@@ -768,6 +768,8 @@ STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SET
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Fuld detalje
 STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Gennemsigtige bygninger
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Gennemsigtige bygninger
+STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Gennemsigtige station skilte
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Gennemsigtige station skilte
 ############ range ends	here
 
 ############ range for menu	starts
@@ -857,6 +859,8 @@ STR_032C_3_AIR_SERVICE                                          :{BLACK}3: Flyse
 STR_032D_4_SHIP_SERVICE                                         :{BLACK}4: Skibsservice
 STR_032E_5_RAILROAD_SERVICE_ADVANCED                            :{BLACK}5: Togservice (avanceret)
 STR_032F_AUTOSAVE                                               :{RED}AUTOSAVE
+STR_SAVING_GAME                                                 :{RED}*  *  GEMMER SPIL  *  *
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Gemmer stadig,{}vent venligst!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Vælg 'Ezy Street musik' program
 
 STR_0335_6                                                      :{BLACK}6
@@ -2395,14 +2399,6 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tog i ve
 STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
 STR_8806_GO_TO                                                  :Gå til {STATION}
-STR_8807_GO_TO_UNLOAD                                           :Gå til {STATION} (Aflæsse)
-STR_8808_GO_TO_LOAD                                             :Gå til {STATION} (Læsse)
-STR_8809                                                        :
-STR_880A_GO_NON_STOP_TO                                         :Gå uden stop til {STATION}
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Gå uden stop til {STATION} (Aflæsse)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Gå uden stop til {STATION} (Læsse)
-STR_880D                                                        :
-STR_880E_GO_TO_TRAIN_DEPOT                                      :Gå til {TOWN} depot
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Service i {TOWN} depot
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Gå uden stop til {TOWN} depot
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Service non-stop i {TOWN} depot
@@ -2817,3 +2813,12 @@ STR_MAGLEV_VEHICLES                                             :Magnetskinnetog
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
 
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Pris: {GOLD}{CURRENCY}{BLACK} Vægt: {GOLD}{COMMA16}t
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighed: {GOLD}{VELOCITY}{BLACK}   Styrke: {GOLD}{COMMA32}hp
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Kørselsudgift: {GOLD}{CURRENCY}/år
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Lasteevne: {GOLD}{STRING} {STRING}
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Pålidelighed: {GOLD}{COMMA8}%
+STR_PURCHASE_INFO_COST                                          :{BLACK}Pris: {GOLD}{CURRENCY}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vægt: {GOLD}{COMMA16}t  ({COMMA16}t)
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Pris: {GOLD}{CURRENCY}{BLACK} Hastighed: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Lasteevne: {GOLD}{COMMA16} passagerer, {COMMA16} sække post

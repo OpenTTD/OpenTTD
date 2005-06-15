@@ -768,6 +768,8 @@ STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SET
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Kaikki yksityiskohdat
 STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Läpinäkyvät rakennukset
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Läpinäkyvät rakennukset
+STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Läpinäkyvät asemakyltit
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Läpinäkyvät asemakyltit
 ############ range ends	here
 
 ############ range for menu	starts
@@ -2397,14 +2399,6 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Juna mat
 STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
 STR_8806_GO_TO                                                  :Asemalle {STATION}
-STR_8807_GO_TO_UNLOAD                                           :Asemalle {STATION} (pura kuorma)
-STR_8808_GO_TO_LOAD                                             :Asemalle {STATION} (lastaa)
-STR_8809                                                        :
-STR_880A_GO_NON_STOP_TO                                         :Tauotta asemalle {STATION}
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Tauotta asemalle {STATION} (pura kuorma)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Tauotta asemalle {STATION} (lastaa)
-STR_880D                                                        :
-STR_880E_GO_TO_TRAIN_DEPOT                                      :Mene veturitalliin ({TOWN})
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Huolto veturitallilla ({TOWN})
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Mene pysähtymättä veturitalliin ({TOWN})
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Huolto pysähtymättä veturitallilla ({TOWN})

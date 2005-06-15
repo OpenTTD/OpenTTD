@@ -2395,14 +2395,6 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Train in
 STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
 STR_8806_GO_TO                                                  :Vaziuoja i {STATION}
-STR_8807_GO_TO_UNLOAD                                           :Vaziuoja i {STATION} (Iskrauna)
-STR_8808_GO_TO_LOAD                                             :Vaziuoja i {STATION} (Pakrauna)
-STR_8809                                                        :
-STR_880A_GO_NON_STOP_TO                                         :Vaziuoja nestojant i {STATION}
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Vaziuoja nestojant i {STATION} (Iskrauti)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Vaziuoja nestojant i {STATION} (Pakrauti)
-STR_880D                                                        :
-STR_880E_GO_TO_TRAIN_DEPOT                                      :Vaziuoja i {TOWN} traukiniu depa
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Remontas {TOWN} traukiniu depe
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Vaziuoti nestojant i {TOWN} traukiniu depa
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Remontas nestojant {TOWN} traukiniu depe
