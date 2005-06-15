@@ -458,6 +458,7 @@ static void StationInitialize(Station *st, TileIndex tile)
 		ge->rating = 175;
 		ge->last_speed = 0;
 		ge->last_age = 0xFF;
+		ge->feeder_profit = 0;
 	}
 
 	_global_station_sort_dirty = true; // build a new station
@@ -3044,6 +3045,7 @@ static const SaveLoad _goods_desc[] = {
 	SLE_VAR(GoodsEntry,enroute_time,			SLE_UINT8),
 	SLE_VAR(GoodsEntry,last_speed,				SLE_UINT8),
 	SLE_VAR(GoodsEntry,last_age,					SLE_UINT8),
+	SLE_CONDVAR(GoodsEntry,feeder_profit,			SLE_INT32, 14, 255),
 
 	SLE_END()
 };

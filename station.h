@@ -14,6 +14,7 @@ typedef struct GoodsEntry {
 	byte enroute_time;
 	byte last_speed;
 	byte last_age;
+	int32 feeder_profit;
 } GoodsEntry;
 
 typedef enum RoadStopType {

@@ -193,6 +193,7 @@ bool EnsureNoVehicle(TileIndex tile);
 bool EnsureNoVehicleZ(TileIndex tile, byte z);
 void MarkAllViewportsDirty(int left, int top, int right, int bottom);
 void ShowCostOrIncomeAnimation(int x, int y, int z, int32 cost);
+void ShowFeederIncomeAnimation(int x, int y, int z, int32 cost);
 
 void DrawFoundation(TileInfo *ti, uint f);
 

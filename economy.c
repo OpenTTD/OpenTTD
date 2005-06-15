@@ -1237,26 +1237,14 @@ static int32 DeliverGoods(int num_pieces, byte cargo_type, uint16 source, uint16
 	subsidised = CheckSubsidised(s_from, s_to, cargo_type);
 
 	// Increase town's counter for some special goods types
-	{
-		Town *t = s_to->town;
-		if (cargo_type == CT_FOOD) t->new_act_food += num_pieces;
-		if (cargo_type == CT_WATER)  t->new_act_water += num_pieces;
-	}
+	if (cargo_type == CT_FOOD) s_to->town->new_act_food += num_pieces;
+	if (cargo_type == CT_WATER)  s_to->town->new_act_water += num_pieces;
 
 	// Give the goods to the industry.
 	DeliverGoodsToIndustry(s_to->xy, cargo_type, num_pieces);
 
 	// Determine profit
-	{
-		int t = DistanceManhattan(s_from->xy, s_to->xy);
-		int r = num_pieces;
-		profit = 0;
-		do {
-			int u = min(r, 255);
-			r -= u;
-			profit += GetTransportedGoodsIncome(u, t, days_in_transit, cargo_type);
-		} while (r != 0);
-	}
+	profit = GetTransportedGoodsIncome(num_pieces, DistanceManhattan(s_from->xy, s_to->xy), days_in_transit, cargo_type);
 
 	// Modify profit if a subsidy is in effect
 	if (subsidised) {
@@ -1338,6 +1326,8 @@ static bool LoadWait(const Vehicle *v, const Vehicle *u) {
 int LoadUnloadVehicle(Vehicle *v)
 {
 	int profit = 0;
+	int v_profit; //virtual profit for feeder systems
+	int v_profit_total = 0;
 	int unloading_time = 20;
 	Vehicle *u = v;
 	int result = 0;
@@ -1365,7 +1355,7 @@ int LoadUnloadVehicle(Vehicle *v)
 
 		/* unload? */
 		if (v->cargo_count != 0) {
-			if (v->cargo_source != last_visited && ge->waiting_acceptance & 0x8000) {
+			if ( v->cargo_source != last_visited && ge->waiting_acceptance & 0x8000 && !(u->current_order.flags & OF_TRANSFER) ) {
 				// deliver goods to the station
 				st->time_since_unload = 0;
 
@@ -1373,10 +1363,20 @@ int LoadUnloadVehicle(Vehicle *v)
 				profit += DeliverGoods(v->cargo_count, v->cargo_type, v->cargo_source, last_visited, v->cargo_days);
 				result |= 1;
 				v->cargo_count = 0;
-			} else if (u->current_order.flags & OF_UNLOAD) {
+			} else if (u->current_order.flags & ( OF_UNLOAD | OF_TRANSFER) ) {
 				/* unload goods and let it wait at the station */
 				st->time_since_unload = 0;
 
+				v_profit = GetTransportedGoodsIncome(
+						v->cargo_count,
+						DistanceManhattan(GetStation(v->cargo_source)->xy, GetStation(last_visited)->xy),
+						v->cargo_days,
+						v->cargo_type) * 3 / 2;
+
+				v_profit_total += v_profit;
+
+
+				unloading_time += v->cargo_count;
 				if ((t=ge->waiting_acceptance & 0xFFF) == 0) {
 					// No goods waiting at station
 					ge->enroute_time = v->cargo_days;
@@ -1390,6 +1390,8 @@ int LoadUnloadVehicle(Vehicle *v)
 				}
 				// Update amount of waiting cargo
 				ge->waiting_acceptance = (ge->waiting_acceptance &~0xFFF) | min(v->cargo_count + t, 0xFFF);
+				ge->feeder_profit += v_profit;
+				u->profit_this_year += v_profit;
 				result |= 2;
 				v->cargo_count = 0;
 			}
@@ -1415,6 +1417,9 @@ int LoadUnloadVehicle(Vehicle *v)
 		//  has capacity for it, load it on the vehicle.
 		if ((count=ge->waiting_acceptance & 0xFFF) != 0 &&
 				(cap = v->cargo_cap - v->cargo_count) != 0) {
+			int cargoshare;
+			int feeder_profit_share;
+
 			if (v->cargo_count == 0)
 				TriggerVehicle(v, VEHICLE_TRIGGER_NEW_CARGO);
 
@@ -1432,20 +1437,28 @@ int LoadUnloadVehicle(Vehicle *v)
 			completely_empty = false;
 
 			if (cap > count) cap = count;
+			cargoshare = cap * 10000 / ge->waiting_acceptance;
+			feeder_profit_share = ge->feeder_profit * cargoshare / 10000;
 			v->cargo_count += cap;
 			ge->waiting_acceptance -= cap;
+			v->profit_this_year -= feeder_profit_share;
+			ge->feeder_profit -= feeder_profit_share;
 			unloading_time += cap;
 			st->time_since_load = 0;
 
 			// And record the source of the cargo, and the days in travel.
-			v->cargo_source = ge->enroute_from;
+			v->cargo_source = st->index;	//changed this for feeder systems
 			v->cargo_days = ge->enroute_time;
 			result |= 2;
 			st->last_vehicle = v->index;
 		}
 	}
 
+
 	v = u;
+
+	if (v_profit_total > 0)
+		ShowFeederIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, v_profit_total);
 
 	if (v->type == VEH_Train) {
 		int num = - (int)GetStationPlatforms(st, v->tile) * 2;

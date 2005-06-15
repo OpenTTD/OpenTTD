@@ -593,6 +593,14 @@ void ShowCostOrIncomeAnimation(int x, int y, int z, int32 cost)
 	AddTextEffect(msg, pt.x, pt.y, 0x250);
 }
 
+void ShowFeederIncomeAnimation(int x, int y, int z, int32 cost)
+{
+	Point pt = RemapCoords(x,y,z);
+
+	SetDParam(0, cost);
+	AddTextEffect(STR_FEEDER, pt.x, pt.y, 0x250);
+}
+
 static Widget _tooltips_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,   199,     0,    31, 0x0, STR_NULL},
 {   WIDGETS_END},

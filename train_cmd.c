@@ -2327,7 +2327,7 @@ static void TrainEnterStation(Vehicle *v, StationID station)
 		// Yeah, keep the load/unload flags
 		// Non Stop now means if the order should be increased.
 		v->current_order.type = OT_LOADING;
-		v->current_order.flags &= OF_FULL_LOAD | OF_UNLOAD;
+		v->current_order.flags &= OF_FULL_LOAD | OF_UNLOAD | OF_TRANSFER;
 		v->current_order.flags |= OF_NON_STOP;
 	} else {
 		// No, just do a simple load

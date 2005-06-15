@@ -523,7 +523,7 @@ int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	VehicleID veh = p1 & 0xFFFF;
 
 	if (!IsVehicleIndex(veh)) return CMD_ERROR;
-	if (p2 != OFB_FULL_LOAD && p2 != OFB_UNLOAD && p2 != OFB_NON_STOP) return CMD_ERROR;
+	if (p2 != OFB_FULL_LOAD && p2 != OFB_UNLOAD && p2 != OFB_NON_STOP && p2 != OFB_TRANSFER) return CMD_ERROR;
 
 	v = GetVehicle(veh);
 	if (v->type == 0 || !CheckOwnership(v->owner)) return CMD_ERROR;
@@ -550,6 +550,9 @@ int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			break;
 		case OFB_NON_STOP:
 			TOGGLEBIT(order->flags, OFB_NON_STOP);
+			break;
+		case OFB_TRANSFER:
+			TOGGLEBIT(order->flags, OFB_TRANSFER);
 			break;
 		default: NOT_REACHED();
 		}

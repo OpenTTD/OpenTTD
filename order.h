@@ -19,6 +19,7 @@ enum {
 /* Order flag masks - these are for direct bit operations */
 enum {
 	//Flags for stations:
+	OF_TRANSFER       = 0x1,
 	OF_UNLOAD         = 0x2,
 	OF_FULL_LOAD      = 0x4, // Also used when to force an aircraft into a depot
 
@@ -32,6 +33,7 @@ enum {
 
 /* Order flags bits - these are for the *BIT macros */
 enum {
+	OFB_TRANSFER       = 0,
 	OFB_UNLOAD         = 1,
 	OFB_FULL_LOAD      = 2,
 	OFB_PART_OF_ORDERS = 1,
