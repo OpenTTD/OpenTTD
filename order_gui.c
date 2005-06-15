@@ -27,6 +27,7 @@ static int OrderGetSel(Window *w)
 }
 
 static StringID StationOrderStrings[] = {
+	STR_8806_GO_TO,
 	STR_8807_GO_TO_TRANSFER,
 	STR_8808_GO_TO_UNLOAD,
 	STR_8809_GO_TO_TRANSFER_UNLOAD,
