@@ -13,6 +13,7 @@
 #include "command.h"
 #include "settings.h"
 #include "hal.h" /* for file list */
+#include "vehicle.h"
 
 // ** scriptfile handling ** //
 static FILE *_script_file;
@@ -85,6 +86,28 @@ DEF_CONSOLE_HOOK(ConHookNoNetwork)
 static void IConsoleHelp(const char *str)
 {
 	IConsolePrintF(_icolour_warn, "- %s", str);
+}
+
+DEF_CONSOLE_CMD(ConStopAllVehicles)
+{
+	Vehicle* v;
+	if (argc == 0) {
+		IConsoleHelp("Stops all vehicles in the game. Use at your own risk... Usage: 'stopall'");
+		return true;
+	}
+
+	FOR_ALL_VEHICLES(v) {
+		if (IsValidVehicle(v)) {
+			/* Code ripped from CmdStartStopTrain. Can't call it, because of
+			 * ownership problems, so we'll duplicate some code, for now */
+			if (v->type == VEH_Train)
+				v->u.rail.days_since_order_progr = 0;
+			v->vehstatus |= VS_STOPPED;
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+			InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+		}
+	}
+	return true;
 }
 
 DEF_CONSOLE_CMD(ConResetEngines)
@@ -1236,6 +1259,7 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("cd",           ConChangeDirectory);
 	IConsoleCmdRegister("pwd",          ConPrintWorkingDirectory);
 	IConsoleCmdRegister("clear",        ConClearBuffer);
+	IConsoleCmdRegister("stopall",      ConStopAllVehicles);
 
 	IConsoleAliasRegister("dir",      "ls");
 	IConsoleAliasRegister("newmap",   "newgame");
@@ -1267,6 +1291,7 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("status",          ConStatus);
 	IConsoleCmdHookAdd("status",           ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleCmdHookAdd("resetengines",     ICONSOLE_HOOK_ACCESS, ConHookNoNetwork);
+	IConsoleCmdHookAdd("stopall",          ICONSOLE_HOOK_ACCESS, ConHookNoNetwork);
 
 	IConsoleCmdRegister("rcon",            ConRcon);
 	IConsoleCmdHookAdd("rcon",             ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
