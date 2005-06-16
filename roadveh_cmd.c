@@ -317,7 +317,7 @@ static Depot *FindClosestRoadDepot(Vehicle *v)
 	if (_patches.new_pathfinding_all) {
 		NPFFoundTargetData ftd;
 		/* See where we are now */
-		byte trackdir = GetVehicleTrackdir(v);
+		Trackdir trackdir = GetVehicleTrackdir(v);
 
 		ftd = NPFRouteToDepotBreadthFirst(v->tile, trackdir, TRANSPORT_ROAD, v->owner);
 		if (ftd.best_bird_dist == 0)
@@ -1101,7 +1101,7 @@ static int RoadFindPathToDest(Vehicle *v, uint tile, int enterdir)
 		byte trackdir;
 
 		NPFFillWithOrderData(&fstd, v);
-		trackdir = _dir_to_diag_trackdir[enterdir];
+		trackdir = DiagdirToDiagTrackdir(enterdir);
 		//debug("Finding path. Enterdir: %d, Trackdir: %d", enterdir, trackdir);
 
 		ftd = NPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_ROAD, v->owner);

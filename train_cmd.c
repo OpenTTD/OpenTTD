@@ -459,8 +459,8 @@ static int32 CmdBuildRailWagon(uint engine, uint tile, uint32 flags)
 			v->direction = (byte)(dir*2+1);
 			v->tile = (TileIndex)tile;
 
-			x = TileX(tile) * 16 | _vehicle_initial_x_fract[dir];
-			y = TileY(tile) * 16 | _vehicle_initial_y_fract[dir];
+			x = TileX(tile) * TILE_SIZE | _vehicle_initial_x_fract[dir];
+			y = TileY(tile) * TILE_SIZE | _vehicle_initial_y_fract[dir];
 
 			v->x_pos = x;
 			v->y_pos = y;
@@ -694,6 +694,9 @@ static bool IsTunnelTile(TileIndex tile)
 }
 
 
+/* Check if all the wagons of the given train are in a depot, returns the
+ * number of cars (including loco) then. If not, sets the error message to
+ * STR_881A_TRAINS_CAN_ONLY_BE_ALTERED and returns -1 */
 int CheckTrainStoppedInDepot(const Vehicle *v)
 {
 	int count;
@@ -1525,7 +1528,7 @@ static bool TrainFindDepotEnumProc(uint tile, TrainFindDepotData *tfdd, int trac
 
 		// make sure the train doesn't run against a oneway signal
 		if ((_map5[tile] & 0xC0) == 0x40) {
-			if (!(_map3_lo[tile] & _signal_along_trackdir[track]) && _map3_lo[tile] & _signal_against_trackdir[track])
+			if (!(_map3_lo[tile] & SignalAlongTrackdir(track)) && _map3_lo[tile] & SignalAgainstTrackdir(track))
 				return true;
 		}
 	}
@@ -1559,10 +1562,10 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 	if (_patches.new_pathfinding_all) {
 		NPFFoundTargetData ftd;
 		Vehicle* last = GetLastVehicleInChain(v);
-		byte trackdir = GetVehicleTrackdir(v);
-		byte trackdir_rev = REVERSE_TRACKDIR(GetVehicleTrackdir(last));
+		Trackdir trackdir = GetVehicleTrackdir(v);
+		Trackdir trackdir_rev = ReverseTrackdir(GetVehicleTrackdir(last));
 
-		assert (trackdir != 0xFF);
+		assert (trackdir != INVALID_TRACKDIR);
 		ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, last->tile, trackdir_rev, TRANSPORT_RAIL, v->owner, NPF_INFINITE_PENALTY);
 		if (ftd.best_bird_dist == 0) {
 			/* Found target */
@@ -1808,14 +1811,14 @@ static bool TrainTrackFollower(uint tile, TrainTrackFollowerData *ttfd, int trac
 	if (IsTileType(tile, MP_RAILWAY) && (_map5[tile]&0xC0) == 0x40) {
 		// the tile has a signal
 		byte m3 = _map3_lo[tile];
-		if (!(m3 & _signal_along_trackdir[track])) {
+		if (!(m3 & SignalAlongTrackdir(track))) {
 			// if one way signal not pointing towards us, stop going in this direction.
-			if (m3 & _signal_against_trackdir[track])
+			if (m3 & SignalAgainstTrackdir(track))
 				return true;
-		} else if (_map2[tile] & _signal_along_trackdir[track]) {
+		} else if (_map2[tile] & SignalAlongTrackdir(track)) {
 			// green signal in our direction. either one way or two way.
 			*state = true;
-		} else if (m3 & _signal_against_trackdir[track]) {
+		} else if (m3 & SignalAgainstTrackdir(track)) {
 			// two way signal. unless we passed another green signal on the way,
 			// stop going in this direction.
 			if (!*state) return true;
@@ -1904,26 +1907,25 @@ unsigned int rdtsc()
 
 
 /* choose a track */
-static byte ChooseTrainTrack(Vehicle *v, uint tile, int enterdir, byte trackbits)
+static byte ChooseTrainTrack(Vehicle *v, uint tile, int enterdir, TrackdirBits trackdirbits)
 {
 	TrainTrackFollowerData fd;
-	int bits = trackbits;
 	uint best_track;
 #if PF_BENCHMARK
 	int time = rdtsc();
 	static float f;
 #endif
 
-	assert( (bits & ~0x3F) == 0);
+	assert( (trackdirbits & ~0x3F) == 0);
 
 	/* quick return in case only one possible track is available */
-	if (KILL_FIRST_BIT(bits) == 0)
-		return FIND_FIRST_BIT(bits);
+	if (KILL_FIRST_BIT(trackdirbits) == 0)
+		return FIND_FIRST_BIT(trackdirbits);
 
 	if (_patches.new_pathfinding_all) { /* Use a new pathfinding for everything */
 		NPFFindStationOrTileData fstd;
 		NPFFoundTargetData ftd;
-		byte trackdir;
+		Trackdir trackdir;
 
 		NPFFillWithOrderData(&fstd, v);
 		/* The enterdir for the new tile, is the exitdir for the old tile */
@@ -1936,7 +1938,7 @@ static byte ChooseTrainTrack(Vehicle *v, uint tile, int enterdir, byte trackbits
 			/* We are already at our target. Just do something */
 			//TODO: maybe display error?
 			//TODO: go straight ahead if possible?
-			best_track = FIND_FIRST_BIT(bits);
+			best_track = FIND_FIRST_BIT(trackdirbits);
 		} else {
 			/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
 			the direction we need to take to get there, if ftd.best_bird_dist is not 0,
@@ -1960,7 +1962,7 @@ static byte ChooseTrainTrack(Vehicle *v, uint tile, int enterdir, byte trackbits
 
 			if (fd.best_track == 0xff) {
 				// blaha
-				best_track = FIND_FIRST_BIT(bits);
+				best_track = FIND_FIRST_BIT(trackdirbits);
 			} else {
 				best_track = fd.best_track & 7;
 			}
@@ -1975,8 +1977,8 @@ static byte ChooseTrainTrack(Vehicle *v, uint tile, int enterdir, byte trackbits
 			best_track = (uint)-1;
 
 			do {
-				i = FIND_FIRST_BIT(bits);
-				bits = KILL_FIRST_BIT(bits);
+				i = FIND_FIRST_BIT(trackdirbits);
+				trackdirbits = KILL_FIRST_BIT(trackdirbits);
 
 				fd.best_bird_dist = (uint)-1;
 				fd.best_track_dist = (uint)-1;
@@ -2016,7 +2018,7 @@ static byte ChooseTrainTrack(Vehicle *v, uint tile, int enterdir, byte trackbits
 				best_bird_dist = fd.best_bird_dist;
 				best_track_dist = fd.best_track_dist;
 		bad:;
-			} while (bits != 0);
+			} while (trackdirbits != 0);
 	//		printf("Train %d %s\n", v->unitnumber, best_track_dist == -1 ? "NOTFOUND" : "FOUND");
 			assert(best_track != (uint)-1);
 		}
@@ -2064,7 +2066,7 @@ static bool CheckReverseTrain(Vehicle *v)
 		NPFFillWithOrderData(&fstd, v);
 
 		trackdir = GetVehicleTrackdir(v);
-		trackdir_rev = REVERSE_TRACKDIR(GetVehicleTrackdir(last));
+		trackdir_rev = ReverseTrackdir(GetVehicleTrackdir(last));
 		assert(trackdir != 0xff);
 		assert(trackdir_rev != 0xff);
 
@@ -2704,7 +2706,7 @@ static void TrainController(Vehicle *v)
 				if (_patches.new_pathfinding_all && _patches.forbid_90_deg && prev == NULL)
 					/* We allow wagons to make 90 deg turns, because forbid_90_deg
 					 * can be switched on halfway a turn */
-					bits &= ~_track_crosses_tracks[FIND_FIRST_BIT(v->u.rail.track)];
+					bits &= ~TrackCrossesTracks(FIND_FIRST_BIT(v->u.rail.track));
 
 				if ( bits == 0) {
 					//debug("%x == 0", bits);
@@ -2821,13 +2823,13 @@ red_light: {
 		 * FIND_FIRST_BIT only handles 6 bits at a time. */
 		i = FindFirstBit2x64(ts);
 
-		if (!(_map3_lo[gp.new_tile] & _signal_against_trackdir[i])) {
+		if (!(_map3_lo[gp.new_tile] & SignalAgainstTrackdir(i))) {
 			v->cur_speed = 0;
 			v->subspeed = 0;
 			v->progress = 255-100;
 			if (++v->load_unload_time_rem < _patches.wait_oneway_signal * 20)
 				return;
-		} else if (_map3_lo[gp.new_tile] & _signal_along_trackdir[i]){
+		} else if (_map3_lo[gp.new_tile] & SignalAlongTrackdir(i)){
 			v->cur_speed = 0;
 			v->subspeed = 0;
 			v->progress = 255-10;

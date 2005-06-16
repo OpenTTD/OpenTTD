@@ -15,10 +15,10 @@
 #include "engine.h"
 #include "sound.h"
 #include "debug.h"
-#include "npf.h"
 #include "vehicle_gui.h"
 #include "depot.h"
 #include "station.h"
+#include "rail.h"
 
 #define INVALID_COORD (-0x8000)
 #define GEN_HASH(x,y) (((x & 0x1F80)>>7) + ((y & 0xFC0)))
@@ -1752,7 +1752,8 @@ byte GetVehicleTrackdir(const Vehicle* v)
 			return _track_direction_to_trackdir[FIND_FIRST_BIT(v->u.rail.track)][v->direction];
 			break;
 		case VEH_Ship:
-			if (v->u.ship.state == 0x80) /* We'll assume the ship is facing outwards */
+			if (v->u.ship.state == 0x80)  /* Inside a depot? */
+				/* We'll assume the ship is facing outwards */
 				return _dir_to_diag_trackdir[GetDepotDirection(v->tile, TRANSPORT_WATER)]; /* Ship in depot */
 
 			return _track_direction_to_trackdir[FIND_FIRST_BIT(v->u.ship.state)][v->direction];

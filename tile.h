@@ -18,17 +18,30 @@ typedef enum TileType {
 	MP_UNMOVABLE
 } TileType;
 
-/* XXX: This should be moved out to a new file (rail.h) along with some other
- * cleanups. I'll do that after 0.4) */
-typedef enum {
-	RAILTYPE_RAIL   = 0,
-	RAILTYPE_MONO   = 1,
-	RAILTYPE_MAGLEV = 2,
-	RAILTYPE_END,
-	RAILTYPE_MASK   = 0x3,
-	INVALID_RAILTYPE = 0xFF,
-} RailType;
+/* TODO: Find out values */
+/* Direction as commonly used in v->direction, 8 way. */
+typedef enum Directions {
+	DIR_N   = 0,
+	DIR_NE  = 1,      /* Northeast, upper right on your monitor */
+	DIR_E   = 2,
+	DIR_SE  = 3,
+	DIR_S   = 4,
+	DIR_SW  = 5,
+	DIR_W   = 6,
+	DIR_NW  = 7,
+	DIR_END,
+	INVALID_DIR = 0xFF,
+} Direction;
 
+/* Direction commonly used as the direction of entering and leaving tiles, 4-way */
+typedef enum DiagonalDirections {
+	DIAGDIR_NE  = 0,      /* Northeast, upper right on your monitor */
+	DIAGDIR_SE  = 1,
+	DIAGDIR_SW  = 2,
+	DIAGDIR_NW  = 3,
+	DIAGDIR_END,
+	INVALID_DIAGDIR = 0xFF,
+} DiagDirection;
 
 void SetMapExtraBits(TileIndex tile, byte flags);
 uint GetMapExtraBits(TileIndex tile);

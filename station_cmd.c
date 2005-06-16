@@ -18,7 +18,6 @@
 #include "player.h"
 #include "airport.h"
 #include "sprite.h"
-#include "npf.h"
 #include "depot.h"
 
 enum {

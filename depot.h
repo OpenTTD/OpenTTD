@@ -89,7 +89,7 @@ static inline bool IsTileDepotType(TileIndex tile, TransportType type)
 /**
  * Returns the direction the exit of the depot on the given tile is facing.
  */
-static inline uint GetDepotDirection(TileIndex tile, TransportType type)
+static inline DiagDirection GetDepotDirection(TileIndex tile, TransportType type)
 {
 	assert(IsTileDepotType(tile, type));
 
@@ -102,13 +102,13 @@ static inline uint GetDepotDirection(TileIndex tile, TransportType type)
 		case TRANSPORT_WATER:
 			/* Water is stubborn, it stores the directions in a different order. */
 			switch (_map5[tile] & 3) {
-				case 0: return 0;
-				case 1: return 2;
-				case 2: return 3;
-				case 3: return 1;
+				case 0: return DIAGDIR_NE;
+				case 1: return DIAGDIR_SW;
+				case 2: return DIAGDIR_NW;
+				case 3: return DIAGDIR_SE;
 			}
 		default:
-			return 0; /* Not reached */
+			return INVALID_DIAGDIR; /* Not reached */
 	}
 }
 

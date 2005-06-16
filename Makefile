@@ -648,6 +648,7 @@ C_SOURCES += player_gui.c
 C_SOURCES += players.c
 C_SOURCES += pool.c
 C_SOURCES += queue.c
+C_SOURCES += rail.c
 C_SOURCES += rail_cmd.c
 C_SOURCES += rail_gui.c
 C_SOURCES += rev.c

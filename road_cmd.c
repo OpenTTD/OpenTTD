@@ -9,7 +9,6 @@
 #include "player.h"
 #include "town.h"
 #include "gfx.h"
-#include "npf.h"
 #include "sound.h"
 #include "depot.h"
 
