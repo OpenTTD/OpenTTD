@@ -92,7 +92,7 @@ DEF_CONSOLE_CMD(ConStopAllVehicles)
 {
 	Vehicle* v;
 	if (argc == 0) {
-		IConsoleHelp("Stops all vehicles in the game. Use at your own risk... Usage: 'stopall'");
+		IConsoleHelp("Stops all vehicles in the game. For debugging only! Use at your own risk... Usage: 'stopall'");
 		return true;
 	}
 
