@@ -322,8 +322,10 @@ int32 NPFRoadPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 	/* Check for slope */
 	cost += NPFSlopeCost(current);
 
-	/* Check for turns */
-	//TODO
+	/* Check for turns. Road vehicles only really drive diagonal, turns are
+	 * represented by non-diagonal tracks */
+	if (!IsDiagonalTrackdir(current->direction))
+		cost += _patches.npf_road_curve_penalty;
 
 	NPFMarkTile(tile);
 	DEBUG(npf, 4)("Calculating G for: (%d, %d). Result: %d", TileX(current->tile), TileY(current->tile), cost);

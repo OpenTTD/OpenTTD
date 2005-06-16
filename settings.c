@@ -975,6 +975,8 @@ const SettingDesc patch_settings[] = {
 	 * rail curve penalty, since ships (realisticly) have more trouble with
 	 * making turns */
 	{"npf_water_curve_penalty",     SDT_UINT32, (void*)(NPF_TILE_LENGTH / 4),   &_patches.npf_water_curve_penalty,      NULL},
+	/* This is the penalty for road, same as for rail. */
+	{"npf_road_curve_penalty",      SDT_UINT32, (void*)(1),                     &_patches.npf_road_curve_penalty,       NULL},
 
 	{NULL,                          0,          NULL,                           NULL,                                   NULL}
 };
