@@ -95,7 +95,7 @@ static bool CheckTrackCombination(TileIndex tile, TrackBits to_build, uint flags
 	/* So, we have a tile with tracks on it (and possibly signals). Let's see
 	 * what tracks first */
 	current = GetTrackBits(tile);
-	future = current & to_build;
+	future = current | to_build;
 
 	/* Are we really building something new? */
 	if (current == future) {
