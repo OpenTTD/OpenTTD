@@ -1425,6 +1425,8 @@ STR_0800_COST                                                   :{TINYFONT}{RED}
 STR_0801_COST                                                   :{RED}Cost: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Income: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Income: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Pa'rved: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Pa'rved: {CURRENCY}
 STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Estimated Cost: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Estimated Cost: {CURRENCY}
 STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Estimated Income: {CURRENCY}
@@ -2399,6 +2401,18 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Train in
 STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
 STR_8806_GO_TO                                                  :Go to {STATION}
+STR_8807_GO_TO_TRANSFER                                         :Uz {STATION} (Pa'rvest un pan'emt kravu)
+STR_8808_GO_TO_UNLOAD                                           :Uz {STATION} (Nokraut)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Uz {STATION} (Pa'rvest un atsta't tuks'u)
+STR_880A_GO_TO_LOAD                                             :Uz {STATION} (Piekraut)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Go to {STATION} (Pa'rvest un gaidi't pilnu kravu)
+STR_880C_GO_NON_STOP_TO                                         :Bez pieturam uz {STATION}
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :Bez pieturam uz {STATION} (Pa'rvest un pan'emt kravu)
+STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Bez pieturam uz {STATION} (Nokraut)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Bez pieturam uz {STATION} (Pa'rvest un atsta't tuks'u)
+STR_8810_GO_NON_STOP_TO_LOAD                                    :Bez pieturam uz {STATION} (Piekraut)
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Bez pieturam uz {STATION} (Pa'rvest un gaidi't pilnu kravu)
+STR_GO_TO_TRAIN_DEPOT                                           :Uz {TOWN} Vilcienu Depo
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Service at {TOWN} Vilcienu Depo
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Go non-stop to {TOWN} Vilcienu Depo
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Service non-stop at {TOWN} Vilcienu Depo
@@ -2502,6 +2516,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Can't reverse direction of train...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Rename train vehicle type
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Can't rename train vehicle type...
+STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Uzsve'rtai pa'velei spiest tansportli'dzekl'im nomest kravu
+STR_886F_TRANSFER                                               :{BLACK}Tranzi'ts
 
 STR_TRAIN_STOPPING                                              :{RED}Stopping
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stopping, {VELOCITY}

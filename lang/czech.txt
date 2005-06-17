@@ -1425,6 +1425,8 @@ STR_0800_COST                                                   :{TINYFONT}{RED}
 STR_0801_COST                                                   :{RED}Cena: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Prijem: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Prijem: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Prekladka: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Prekladka: {CURRENCY}
 STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Odhadovaná cena: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Odhadovaná cena: {CURRENCY}
 STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Odhadovaný prijem: {CURRENCY}
@@ -2399,6 +2401,18 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}V ceste 
 STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
 STR_8806_GO_TO                                                  :Jet do {STATION}
+STR_8807_GO_TO_TRANSFER                                         :Jet do {STATION} (prelozit a nalozit jiný náklad)
+STR_8808_GO_TO_UNLOAD                                           :Jet do {STATION} (vylozit)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Jet do {STATION} (prelozit a nenakládat)
+STR_880A_GO_TO_LOAD                                             :Jet do {STATION} (nalozit)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Jet do {STATION} (prelozit a plne nalozit jiný náklad)
+STR_880C_GO_NON_STOP_TO                                         :Jet bez zastavení do {STATION}
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :Jet bez zastavení do {STATION} (prelozit a nalozit jiný náklad)
+STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Jet bez zastavení do {STATION} (vylozit)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Jet bez zastavení do {STATION} (prelozit a nenakládat)
+STR_8810_GO_NON_STOP_TO_LOAD                                    :Jet bez zastavení do {STATION} (nalozit)
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Jet bez zastavení do {STATION} (prelozit a plne nalozit jiný náklad)
+STR_GO_TO_TRAIN_DEPOT                                           :Jet do zeleznicniho depa v {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Udrzba v zeleznicnim depu {TOWN}
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Jet bez zastavení do zelezncniho depa {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Udrzba bez zastavení v zeleznicnim depu {TOWN}
@@ -2502,6 +2516,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nemohu zmenit smer vlaku...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Prejmenovat typ zeleznicniho vozidla
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nemohu prejmenovat typ zeleznicniho vozidla...
+STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}U oznaceneho prikazu vozidlo musí vylozit náklad
+STR_886F_TRANSFER                                               :{BLACK}Prekladka
 
 STR_TRAIN_STOPPING                                              :{RED}Zastavuje
 STR_TRAIN_STOPPING_VEL                                          :{RED}Zastavuje, {VELOCITY}

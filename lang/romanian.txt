@@ -1425,6 +1425,8 @@ STR_0800_COST                                                   :{TINYFONT}{RED}
 STR_0801_COST                                                   :{RED}Cheltuieli: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Încasãri: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Încasãri: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transferã: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Transferã: {CURRENCY}
 STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Cheltuieli estimate: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Cost estimat: {CURRENCY}
 STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Venit estimat: {CURRENCY}
@@ -2399,6 +2401,18 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren în 
 STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
 STR_8806_GO_TO                                                  :Mergi la {STATION}
+STR_8807_GO_TO_TRANSFER                                         :Mergi la {STATION} (Transferã si preia încãrcãtura)
+STR_8808_GO_TO_UNLOAD                                           :Mergi la {STATION} (Descarcã)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Mergi la {STATION} (Transferã si lasã descãrcat)
+STR_880A_GO_TO_LOAD                                             :Mergi la {STATION} (Încarcã)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Mergi la {STATION} (Transferã si încarcã 100%)
+STR_880C_GO_NON_STOP_TO                                         :Mergi non-stop la {STATION}
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :Mergi non-stop la {STATION} (Transferã si ia încãrcãtura)
+STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Mergi non-stop la {STATION} (Descarcã)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Mergi non-stop la {STATION} (Transferã si lasã descãrcat)
+STR_8810_GO_NON_STOP_TO_LOAD                                    :Mergi non-stop la {STATION} (Încarcã)
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Mergi non-stop la {STATION} (Transferã si încarcã 100%)
+STR_GO_TO_TRAIN_DEPOT                                           :Mergi la depoul {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Service la Depoul {TOWN}
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Mergi non-stop la Depoul {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Non-stop pt. service la Depoul {TOWN}
@@ -2502,6 +2516,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nu pot schimba sensul de mers al trenului...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Redenumeste modelul vehiculului feroviar
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nu pot redenumi modelul acestui vehicul...
+STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Comanda selectatã forteazã vehiculul sã arunce încãrcãtura
+STR_886F_TRANSFER                                               :{BLACK}Transferã
 
 STR_TRAIN_STOPPING                                              :{RED}Oprire
 STR_TRAIN_STOPPING_VEL                                          :{RED}Oprire, {VELOCITY}

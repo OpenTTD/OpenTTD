@@ -768,6 +768,8 @@ STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SET
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Wszystkie detale
 STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Przezroczyste budynki
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Przezroczyste budynki
+STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Transparentne nazwy stacji
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transparentne nazwy stacji
 ############ range ends	here
 
 ############ range for menu	starts
@@ -1423,6 +1425,8 @@ STR_0800_COST                                                   :{TINYFONT}{RED}
 STR_0801_COST                                                   :{RED}Koszt: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Przychod: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Przychod: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Przelew: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Przelew: {CURRENCY}
 STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Przypuszczalny koszt: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Przypuszczalny koszt: {CURRENCY}
 STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Przypuszczalny przychod: {CURRENCY}
@@ -2397,6 +2401,18 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Pociag n
 STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
 STR_8806_GO_TO                                                  :Idz do {STATION}
+STR_8807_GO_TO_TRANSFER                                         :Idz do {STATION} (Przewiez i wez cargo)
+STR_8808_GO_TO_UNLOAD                                           :Idz do {STATION} (Wyladunek)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Idz do {STATION} (Przewiez i wyladuj)
+STR_880A_GO_TO_LOAD                                             :Idz do {STATION} (Zaladunek)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Idz do {STATION} (Przewiez i czekaj na pelen zaladunek)
+STR_880C_GO_NON_STOP_TO                                         :Idz bez przystanku do {STATION}
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :Idz bez przystanku do {STATION} (Przewiez i wez cargo)
+STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Idz bez przystanku do {STATION} (Wyladunek)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Idz bez przstanku do {STATION} (Przewiez i oproznij)
+STR_8810_GO_NON_STOP_TO_LOAD                                    :Idz bez przystanku do {STATION} (Zaladunek)
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Idz bez przystanku do {STATION} (Przewiez i czekaj na pelen zaladunek)
+STR_GO_TO_TRAIN_DEPOT                                           :Idz do {TOWN} zajezdni
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Serwisuj w {TOWN} zajezdni
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Idz bez przystankow do  {TOWN} zajezdni
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Idz bez przystankow do serwisu w {TOWN} zajezdni
@@ -2500,6 +2516,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nie mozna odwrocic kierunku jazdy pociagu...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Zmiana nazwy typu pociagu
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nie mozna zmienic nazwy typu pojazdu...
+STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Spraw by zaznaczonym poleceniu pojazd byl zmusony do zrzutu cargo
+STR_886F_TRANSFER                                               :{BLACK}Przewiez
 
 STR_TRAIN_STOPPING                                              :{RED}Hamowanie
 STR_TRAIN_STOPPING_VEL                                          :{RED}Hamowanie, {VELOCITY}

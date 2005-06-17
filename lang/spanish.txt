@@ -768,6 +768,8 @@ STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SET
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Detalle completo
 STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Edificios transparentes
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Edificios transparentes
+STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Señales de estaciones transparentes
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Señales de estaciones transparentes
 ############ range ends	here
 
 ############ range for menu	starts
@@ -1423,6 +1425,8 @@ STR_0800_COST                                                   :{TINYFONT}{RED}
 STR_0801_COST                                                   :{RED}Coste: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Ingreso: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Ingreso: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transferir: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Transferir: {CURRENCY}
 STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Coste estimado: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Coste estimado: {CURRENCY}
 STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Ingreso estimado: {CURRENCY}
@@ -2397,6 +2401,18 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren en 
 STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
 STR_8806_GO_TO                                                  :Ir a {STATION}
+STR_8807_GO_TO_TRANSFER                                         :Ir a {STATION} (Transferir y cargar)
+STR_8808_GO_TO_UNLOAD                                           :Ir a {STATION} (Descargar)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Ir a {STATION} (Transferir y dejar vacío)
+STR_880A_GO_TO_LOAD                                             :Ir a {STATION} (Cargar)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Ir a {STATION} (Transferir y esperar a carga completa)
+STR_880C_GO_NON_STOP_TO                                         :Ir sin paradas a {STATION}
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :Ir sin paradas a {STATION} (Transferir y cargar)
+STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Ir sin paradas a {STATION} (Descargar)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Ir sin paradas a {STATION} (Transferir y dejar vacío)
+STR_8810_GO_NON_STOP_TO_LOAD                                    :Ir sin paradas a  {STATION} (Cargar)
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Ir sin paradas a {STATION} (Transferir y esperar a carga completa)
+STR_GO_TO_TRAIN_DEPOT                                           :Ir al depósito del tren de {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Ir al depósito de {TOWN} para mantenimiento
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ir sin parar al depósito de {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Ir sin parar al depósito de {TOWN} para mantenimiento
@@ -2500,6 +2516,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}No se puede revertir la dirección...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Renombrar tipo de vehículo
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}No se puede renombrar tipo de vehículo...
+STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Hacer que la orden marcada fuerce al vehículo a descargar
+STR_886F_TRANSFER                                               :{BLACK}Transferir
 
 STR_TRAIN_STOPPING                                              :{RED}Parándose
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parándose, {VELOCITY}
