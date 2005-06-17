@@ -1,3 +1,5 @@
+#include "stdafx.h"
+#include "openttd.h"
 #include "rail.h"
 
 /* XXX: Below 3 tables store duplicate data. Maybe remove some? */

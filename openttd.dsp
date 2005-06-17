@@ -230,6 +230,10 @@ SOURCE=.\queue.c
 # End Source File
 
 # Begin Source File
+SOURCE=.\rail.c
+# End Source File
+
+# Begin Source File
 SOURCE=.\saveload.c
 # End Source File
 
@@ -447,6 +451,10 @@ SOURCE=.\npf.h
 # End Source File
 
 # Begin Source File
+SOURCE=.\openttd.h
+# End Source File
+
+# Begin Source File
 SOURCE=.\pathfind.h
 # End Source File
 
@@ -460,6 +468,10 @@ SOURCE=.\player.h
 
 # Begin Source File
 SOURCE=.\queue.h
+# End Source File
+
+# Begin Source File
+SOURCE=.\rail.h
 # End Source File
 
 # Begin Source File
@@ -496,10 +508,6 @@ SOURCE=.\tile.h
 
 # Begin Source File
 SOURCE=.\town.h
-# End Source File
-
-# Begin Source File
-SOURCE=.\openttd.h
 # End Source File
 
 # Begin Source File

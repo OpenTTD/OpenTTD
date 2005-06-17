@@ -1,8 +1,6 @@
 #ifndef RAIL_H
 #define RAIL_H
 
-#include "stdafx.h"
-#include "openttd.h"
 #include "tile.h"
 
 /*
@@ -95,7 +93,8 @@ typedef enum Trackdirs {
   TRACKDIR_LOWER_E  = 3,
   TRACKDIR_LEFT_S   = 4,
   TRACKDIR_RIGHT_S  = 5,
-	/* Note the two missing values here. This enables trackdir -> track conversion by doing (trackdir & 7) */
+	/* Note the two missing values here. This enables trackdir -> track
+	 * conversion by doing (trackdir & 7) */
   TRACKDIR_DIAG1_SW = 8,
   TRACKDIR_DIAG2_NW = 9,
   TRACKDIR_UPPER_W  = 10,
@@ -136,12 +135,17 @@ typedef enum SignalStates {
 } SignalState;
 
 
+/**
+ * Maps a Trackdir to the corresponding TrackdirBits value
+ */
+static inline TrackdirBits TrackdirToTrackdirBits(Trackdir trackdir) { return (TrackdirBits)(1 << trackdir); }
+
 /*
  * These functions check the validity of Tracks and Trackdirs. assert against
  * them when convenient.
  */
 static inline bool IsValidTrack(Track track) { return track < TRACK_END; }
-static inline bool IsValidTrackdir(Trackdir trackdir) { return trackdir < TRACKDIR_END; }
+static inline bool IsValidTrackdir(Trackdir trackdir) { return (TrackdirToTrackdirBits(trackdir) & TRACKDIR_BIT_MASK) != 0; }
 
 /*
  * Functions to map tracks to the corresponding bits in the signal
@@ -160,15 +164,19 @@ static inline byte SignalAlongTrackdir(Trackdir trackdir) {return _signal_along_
  * Maps a trackdir to the bit that stores its status in the map arrays, in the
  * direction against the trackdir.
  */
-extern const byte _signal_against_trackdir[TRACKDIR_END];
-static inline byte SignalAgainstTrackdir(Trackdir trackdir) { return _signal_against_trackdir[trackdir]; }
+static inline byte SignalAgainstTrackdir(Trackdir trackdir) {
+	extern const byte _signal_against_trackdir[TRACKDIR_END];
+	return _signal_against_trackdir[trackdir];
+}
 
 /**
  * Maps a Track to the bits that store the status of the two signals that can
  * be present on the given track.
  */
-extern const byte _signal_on_track[TRACK_END];
-static inline byte SignalOnTrack(Track track) { return _signal_on_track[track]; }
+static inline byte SignalOnTrack(Track track) {
+	extern const byte _signal_on_track[TRACK_END];
+	return _signal_on_track[track];
+}
 
 /*
  * Some functions to query rail tiles
@@ -247,13 +255,10 @@ static inline bool HasTrack(TileIndex tile, Track track)
 /**
  * Maps a trackdir to the reverse trackdir.
  */
-extern const Trackdir _reverse_trackdir[TRACKDIR_END];
-static inline Trackdir ReverseTrackdir(Trackdir trackdir) { return _reverse_trackdir[trackdir]; }
-
-/**
- * Maps a Trackdir to the corresponding TrackdirBits value
- */
-static inline TrackdirBits TrackdirToTrackdirBits(Trackdir trackdir) { return (TrackdirBits)(1 << trackdir); }
+static inline Trackdir ReverseTrackdir(Trackdir trackdir) {
+	extern const Trackdir _reverse_trackdir[TRACKDIR_END];
+	return _reverse_trackdir[trackdir];
+}
 
 /*
  * Maps a Track to the corresponding TrackBits value
@@ -280,42 +285,54 @@ static inline TrackdirBits TrackToTrackdirBits(Track track) { Trackdir td = Trac
  * ahead. This will be the same trackdir for diagonal trackdirs, but a
  * different (alternating) one for straight trackdirs
  */
-extern const Trackdir _next_trackdir[TRACKDIR_END];
-static inline Trackdir NextTrackdir(Trackdir trackdir) { return _next_trackdir[trackdir]; }
+static inline Trackdir NextTrackdir(Trackdir trackdir) {
+	extern const Trackdir _next_trackdir[TRACKDIR_END];
+	return _next_trackdir[trackdir];
+}
 
 /**
  * Maps a track to all tracks that make 90 deg turns with it.
  */
-extern const TrackBits _track_crosses_tracks[TRACK_END];
-static inline TrackBits TrackCrossesTracks(Track track) { return _track_crosses_tracks[track]; }
+static inline TrackBits TrackCrossesTracks(Track track) {
+	extern const TrackBits _track_crosses_tracks[TRACK_END];
+	return _track_crosses_tracks[track];
+}
 
 /**
  * Maps a trackdir to the (4-way) direction the tile is exited when following
  * that trackdir.
  */
-extern const DiagDirection _trackdir_to_exitdir[TRACKDIR_END];
-static inline DiagDirection TrackdirToExitdir(Trackdir trackdir) { return _trackdir_to_exitdir[trackdir]; }
+static inline DiagDirection TrackdirToExitdir(Trackdir trackdir) {
+	extern const DiagDirection _trackdir_to_exitdir[TRACKDIR_END];
+	return _trackdir_to_exitdir[trackdir];
+}
 
 /**
  * Maps a track and an (4-way) dir to the trackdir that represents the track
  * with the exit in the given direction.
  */
-extern const Trackdir _track_exitdir_to_trackdir[TRACK_END][DIAGDIR_END];
-static inline Trackdir TrackExitdirToTrackdir(Track track, DiagDirection diagdir) { return _track_exitdir_to_trackdir[track][diagdir]; }
+static inline Trackdir TrackExitdirToTrackdir(Track track, DiagDirection diagdir) {
+	extern const Trackdir _track_exitdir_to_trackdir[TRACK_END][DIAGDIR_END];
+	return _track_exitdir_to_trackdir[track][diagdir];
+}
 
 /**
  * Maps a track and a full (8-way) direction to the trackdir that represents
  * the track running in the given direction.
  */
-extern const Trackdir _track_direction_to_trackdir[TRACK_END][DIR_END];
-static inline Trackdir TrackDirectionToTrackdir(Track track, Direction dir) { return _track_direction_to_trackdir[track][dir]; }
+static inline Trackdir TrackDirectionToTrackdir(Track track, Direction dir) {
+	extern const Trackdir _track_direction_to_trackdir[TRACK_END][DIR_END];
+	return _track_direction_to_trackdir[track][dir];
+}
 
 /**
  * Maps a (4-way) direction to the diagonal trackdir that runs in that
  * direction.
  */
-extern const Trackdir _dir_to_diag_trackdir[DIAGDIR_END];
-static inline Trackdir DiagdirToDiagTrackdir(DiagDirection diagdir) { return _dir_to_diag_trackdir[diagdir]; }
+static inline Trackdir DiagdirToDiagTrackdir(DiagDirection diagdir) {
+	extern const Trackdir _dir_to_diag_trackdir[DIAGDIR_END];
+	return _dir_to_diag_trackdir[diagdir];
+}
 
 /**
  * Maps a trackdir to the trackdirs that can be reached from it (ie, when
@@ -329,14 +346,18 @@ static inline TrackdirBits TrackdirReachesTrackdirs(Trackdir trackdir) { return 
 /**
  * Maps a trackdir to all trackdirs that make 90 deg turns with it.
  */
-extern const TrackdirBits _track_crosses_trackdirs[TRACKDIR_END];
-static inline TrackdirBits TrackdirCrossesTrackdirs(Trackdir trackdir) { return _track_crosses_trackdirs[TrackdirToTrack(trackdir)]; }
+static inline TrackdirBits TrackdirCrossesTrackdirs(Trackdir trackdir) {
+	extern const TrackdirBits _track_crosses_trackdirs[TRACKDIR_END];
+	return _track_crosses_trackdirs[TrackdirToTrack(trackdir)];
+}
 
 /**
  * Maps a (4-way) direction to the reverse.
  */
-extern const DiagDirection _reverse_diagdir[DIAGDIR_END];
-static inline DiagDirection ReverseDiagdir(DiagDirection diagdir) { return _reverse_diagdir[diagdir]; }
+static inline DiagDirection ReverseDiagdir(DiagDirection diagdir) {
+	extern const DiagDirection _reverse_diagdir[DIAGDIR_END];
+	return _reverse_diagdir[diagdir];
+}
 
 /* Checks if a given Track is diagonal */
 static inline bool IsDiagonalTrack(Track track) { return (track == TRACK_DIAG1) || (track == TRACK_DIAG2); }

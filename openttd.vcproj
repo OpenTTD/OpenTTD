@@ -257,6 +257,12 @@
 				RelativePath="oldloader.c">
 			</File>
 			<File
+				RelativePath="openttd.c">
+			</File>
+			<File
+				RelativePath="openttd.rc">
+			</File>
+			<File
 				RelativePath="pathfind.c">
 			</File>
 			<File
@@ -267,6 +273,9 @@
 			</File>
 			<File
 				RelativePath=".\queue.c">
+			</File>
+			<File
+				RelativePath=".\rail.c">
 			</File>
 			<File
 				RelativePath="saveload.c">
@@ -306,12 +315,6 @@
 			</File>
 			<File
 				RelativePath=".\tile.c">
-			</File>
-			<File
-				RelativePath="openttd.c">
-			</File>
-			<File
-				RelativePath="openttd.rc">
 			</File>
 			<File
 				RelativePath="vehicle.c">
@@ -436,6 +439,9 @@
 				RelativePath=".\npf.h">
 			</File>
 			<File
+				RelativePath="openttd.h">
+			</File>
+			<File
 				RelativePath="pathfind.h">
 			</File>
 			<File
@@ -446,6 +452,9 @@
 			</File>
 			<File
 				RelativePath=".\queue.h">
+			</File>
+			<File
+				RelativePath=".\rail.h">
 			</File>
 			<File
 				RelativePath="saveload.h">
@@ -473,9 +482,6 @@
 			</File>
 			<File
 				RelativePath=".\town.h">
-			</File>
-			<File
-				RelativePath="openttd.h">
 			</File>
 			<File
 				RelativePath="variables.h">
