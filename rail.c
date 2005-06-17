@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "rail.h"
+#include "station.h"
 
 /* XXX: Below 3 tables store duplicate data. Maybe remove some? */
 /* Maps a trackdir to the bit that stores its status in the map arrays, in the
@@ -95,3 +96,39 @@ const Trackdir _reverse_trackdir[] = {
 	TRACKDIR_DIAG1_SW, TRACKDIR_DIAG2_NW, TRACKDIR_UPPER_W, TRACKDIR_LOWER_W, TRACKDIR_LEFT_N, TRACKDIR_RIGHT_N, INVALID_TRACKDIR, INVALID_TRACKDIR,
 	TRACKDIR_DIAG1_NE, TRACKDIR_DIAG2_SE, TRACKDIR_UPPER_E, TRACKDIR_LOWER_E, TRACKDIR_LEFT_S, TRACKDIR_RIGHT_S
 };
+
+RailType GetTileRailType(TileIndex tile, byte trackdir)
+{
+	RailType type = INVALID_RAILTYPE;
+	switch (GetTileType(tile)) {
+		case MP_RAILWAY:
+			/* railway track */
+			type = _map3_lo[tile] & RAILTYPE_MASK;
+			break;
+		case MP_STREET:
+			/* rail/road crossing */
+			if (IsLevelCrossing(tile))
+				type = _map3_hi[tile] & RAILTYPE_MASK;
+			break;
+		case MP_STATION:
+			if (IsTrainStationTile(tile))
+				type = _map3_lo[tile] & RAILTYPE_MASK;
+			break;
+		case MP_TUNNELBRIDGE:
+			/* railway tunnel */
+			if ((_map5[tile] & 0xFC) == 0) type = _map3_lo[tile] & RAILTYPE_MASK;
+			/* railway bridge ending */
+			if ((_map5[tile] & 0xC6) == 0x80) type = _map3_lo[tile] & RAILTYPE_MASK;
+			/* on railway bridge */
+			if ((_map5[tile] & 0xC6) == 0xC0 && ((DiagDirection)(_map5[tile] & 0x1)) == (TrackdirToExitdir(trackdir) & 0x1))
+				type = (_map3_lo[tile] >> 4) & RAILTYPE_MASK;
+			/* under bridge (any type) */
+			if ((_map5[tile] & 0xC0) == 0xC0 && (_map5[tile] & 0x1) != (trackdir & 0x1))
+				type = _map3_lo[tile] & RAILTYPE_MASK;
+			break;
+		default:
+			break;
+	}
+	return type;
+}
+

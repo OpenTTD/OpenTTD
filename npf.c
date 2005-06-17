@@ -15,7 +15,7 @@ AyStar _npf_aystar;
  * the shorter piece is sqrt(2)/2*NPF_TILE_LENGTH =~ 0.7071
  */
 #define NPF_STRAIGHT_LENGTH (uint)(NPF_TILE_LENGTH * STRAIGHT_TRACK_LENGTH)
-static const uint _trackdir_length[14] = {
+static const uint _trackdir_length[TRACKDIR_END] = {
 	NPF_TILE_LENGTH, NPF_TILE_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH,
 	0, 0,
 	NPF_TILE_LENGTH, NPF_TILE_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH, NPF_STRAIGHT_LENGTH
@@ -27,13 +27,22 @@ uint NTPHash(uint key1, uint key2)
 	return PATHFIND_HASH_TILE(key1);
 }
 
+/**
+ * Calculates a hash value for use in the NPF.
+ * @param key1	The TileIndex of the tile to hash
+ * @param key1	The Trackdir of the track on the tile.
+ *
+ * @todo	Think of a better hash.
+ */
 uint NPFHash(uint key1, uint key2)
 {
 	/* TODO: think of a better hash? */
 	uint part1 = TileX(key1) & NPF_HASH_HALFMASK;
 	uint part2 = TileY(key1) & NPF_HASH_HALFMASK;
-	/* The value of 14 below is based on the maximum value of key2 (13) */
-	return ((((part1 << NPF_HASH_HALFBITS) | part2)) + (NPF_HASH_SIZE * key2 / 14)) % NPF_HASH_SIZE;
+
+	assert(IsValidTrackdir(key2));
+	assert(IsValidTile(key1));
+	return ((((part1 << NPF_HASH_HALFBITS) | part2)) + (NPF_HASH_SIZE * key2 / TRACKDIR_END)) % NPF_HASH_SIZE;
 }
 
 int32 NPFCalcZero(AyStar* as, AyStarNode* current, OpenListNode* parent) {
@@ -111,7 +120,7 @@ int32 NPFCalcStationOrTileHeuristic(AyStar* as, AyStarNode* current, OpenListNod
 void NPFFillTrackdirChoice(AyStarNode* current, OpenListNode* parent)
 {
 	if (parent->path.parent == NULL) {
-		byte trackdir = current->direction;
+		Trackdir trackdir = (Trackdir)current->direction;
 		/* This is a first order decision, so we'd better save the
 		 * direction we chose */
 		current->user_data[NPF_TRACKDIR_CHOICE] = trackdir;
@@ -128,9 +137,9 @@ void NPFFillTrackdirChoice(AyStarNode* current, OpenListNode* parent)
  * cost of that tile. If the tile is an exit, it will return the tunnel length
  * including the exit tile. Requires that this is a Tunnel tile */
 uint NPFTunnelCost(AyStarNode* current) {
-	byte exitdir = TrackdirToExitdir(current->direction);
+	DiagDirection exitdir = TrackdirToExitdir((Trackdir)current->direction);
 	TileIndex tile = current->tile;
-	if ( (uint)(_map5[tile] & 3) == ReverseDiagdir(exitdir)) {
+	if ( (DiagDirection)(_map5[tile] & 3) == ReverseDiagdir(exitdir)) {
 		/* We just popped out if this tunnel, since were
 		 * facing the tunnel exit */
 		FindLengthOfTunnelResult flotr;
@@ -199,14 +208,14 @@ void NPFMarkTile(TileIndex tile) {
 int32 NPFWaterPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 	//TileIndex tile = current->tile;
 	int32 cost = 0;
-	byte trackdir = current->direction;
+	Trackdir trackdir = (Trackdir)current->direction;
 
 	cost = _trackdir_length[trackdir]; /* Should be different for diagonal tracks */
 
-	if (IsBuoyTile(current->tile) && IsDiagonalTrackdir(current->direction))
+	if (IsBuoyTile(current->tile) && IsDiagonalTrackdir(trackdir))
 		cost += _patches.npf_buoy_penalty; /* A small penalty for going over buoys */
 
-	if (current->direction != NextTrackdir(parent->path.node.direction))
+	if (current->direction != NextTrackdir((Trackdir)parent->path.node.direction))
 		cost += _patches.npf_water_curve_penalty;
 
 	/* TODO More penalties? */
@@ -254,7 +263,7 @@ int32 NPFRoadPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 /* Determine the cost of this node, for railway tracks */
 int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 	TileIndex tile = current->tile;
-	byte trackdir = current->direction;
+	Trackdir trackdir = (Trackdir)current->direction;
 	int32 cost = 0;
 	/* HACK: We create a OpenListNode manualy, so we can call EndNodeCheck */
 	OpenListNode new_node;
@@ -318,15 +327,17 @@ int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 
 	/* Penalise the tile if it is a target tile and the last signal was
 	 * red */
+	/* HACK: We create a new_node here so we can call EndNodeCheck. Ugly as hell
+	 * of course... */
 	new_node.path.node = *current;
-	if (as->EndNodeCheck(as, &new_node)==AYSTAR_FOUND_END_NODE && NPFGetFlag(current, NPF_FLAG_LAST_SIGNAL_RED))
+	if (as->EndNodeCheck(as, &new_node) == AYSTAR_FOUND_END_NODE && NPFGetFlag(current, NPF_FLAG_LAST_SIGNAL_RED))
 		cost += _patches.npf_rail_lastred_penalty;
 
 	/* Check for slope */
 	cost += NPFSlopeCost(current);
 
 	/* Check for turns */
-	if (current->direction != NextTrackdir(parent->path.node.direction))
+	if (current->direction != NextTrackdir((Trackdir)parent->path.node.direction))
 		cost += _patches.npf_rail_curve_penalty;
 	//TODO, with realistic acceleration, also the amount of straight track between
 	//      curves should be taken into account, as this affects the speed limit.
@@ -382,52 +393,10 @@ int32 NPFFindStationOrTile(AyStar* as, OpenListNode *current) {
  */
 void NPFSaveTargetData(AyStar* as, OpenListNode* current) {
 	NPFFoundTargetData* ftd = (NPFFoundTargetData*)as->user_path;
-	ftd->best_trackdir = current->path.node.user_data[NPF_TRACKDIR_CHOICE];
+	ftd->best_trackdir = (Trackdir)current->path.node.user_data[NPF_TRACKDIR_CHOICE];
 	ftd->best_path_dist = current->g;
 	ftd->best_bird_dist = 0;
 	ftd->node = current->path.node;
-}
-
-/**
- * Return the rail type of tile, or INVALID_RAILTYPE if this is no rail tile.
- * Note that there is no check if the given trackdir is actually present on
- * the tile!
- * The given trackdir is used when there are (could be) multiple rail types on
- * one tile.
- */
-static inline RailType GetTileRailType(TileIndex tile, byte trackdir)
-{
-	byte type = INVALID_RAILTYPE;
-	switch (GetTileType(tile)) {
-		case MP_RAILWAY:
-			/* railway track */
-			type = _map3_lo[tile] & RAILTYPE_MASK;
-			break;
-		case MP_STREET:
-			/* rail/road crossing */
-			if (IsLevelCrossing(tile))
-				type = _map3_hi[tile] & RAILTYPE_MASK;
-			break;
-		case MP_STATION:
-			if (IsTrainStationTile(tile))
-				type = _map3_lo[tile] & RAILTYPE_MASK;
-			break;
-		case MP_TUNNELBRIDGE:
-			/* railway tunnel */
-			if ((_map5[tile] & 0xFC) == 0) type = _map3_lo[tile] & RAILTYPE_MASK;
-			/* railway bridge ending */
-			if ((_map5[tile] & 0xC6) == 0x80) type = _map3_lo[tile] & RAILTYPE_MASK;
-			/* on railway bridge */
-			if ((_map5[tile] & 0xC6) == 0xC0 && ((unsigned)(_map5[tile] & 0x1)) == (TrackdirToExitdir(trackdir) & 0x1))
-				type = (_map3_lo[tile] >> 4) & RAILTYPE_MASK;
-			/* under bridge (any type) */
-			if ((_map5[tile] & 0xC0) == 0xC0 && (_map5[tile] & 0x1) != (trackdir & 0x1))
-				type = _map3_lo[tile] & RAILTYPE_MASK;
-			break;
-		default:
-			break;
-	}
-	return type;
 }
 
 /* Will just follow the results of GetTileTrackStatus concerning where we can
@@ -437,12 +406,12 @@ static inline RailType GetTileRailType(TileIndex tile, byte trackdir)
  * AyStarNode.user_data[NPF_TRACKDIR_CHOICE] with an appropriate value, and
  * copy AyStarNode.user_data[NPF_NODE_FLAGS] from the parent */
 void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
-	Trackdir src_trackdir = current->path.node.direction;
+	Trackdir src_trackdir = (Trackdir)current->path.node.direction;
 	TileIndex src_tile = current->path.node.tile;
 	DiagDirection src_exitdir = TrackdirToExitdir(src_trackdir);
 	FindLengthOfTunnelResult flotr;
 	TileIndex dst_tile;
-	int i = 0;
+	int i;
 	TrackdirBits trackdirbits, ts;
 	TransportType type = aystar->user_data[NPF_TYPE];
 	/* Initialize to 0, so we can jump out (return) somewhere an have no neighbours */
@@ -462,7 +431,7 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 			 * those from one side only. Trackdirs don't support that (yet), so we'll
 			 * do this here. */
 
-			byte exitdir;
+			DiagDirection exitdir;
 			/* Find out the exit direction first */
 			if (IsRoadStationTile(src_tile))
 				exitdir = GetRoadStationDir(src_tile);
@@ -497,8 +466,8 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 	 * problem, but it might be nicer to compare with the first tile, or even
 	 * the type of the vehicle... Maybe an NPF_RAILTYPE userdata sometime? */
 	if (type == TRANSPORT_RAIL) {
-		byte src_type = GetTileRailType(src_tile, src_trackdir);
-		byte dst_type = GetTileRailType(dst_tile, TrackdirToExitdir(src_trackdir));
+		RailType src_type = GetTileRailType(src_tile, src_trackdir);
+		RailType dst_type = GetTileRailType(dst_tile, TrackdirToExitdir(src_trackdir));
 		if (src_type != dst_type) {
 			return;
 		}
@@ -519,7 +488,7 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 	/* Determine available tracks */
 	if (type != TRANSPORT_WATER && (IsRoadStationTile(dst_tile) || IsTileDepotType(dst_tile, type))){
 		/* Road stations and road and train depots return 0 on GTTS, so we have to do this by hand... */
-		byte exitdir;
+		DiagDirection exitdir;
 		if (IsRoadStationTile(dst_tile))
 			exitdir = GetRoadStationDir(dst_tile);
 		else /* Road or train depot */
@@ -541,9 +510,10 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 		trackdirbits &= ~TrackdirCrossesTrackdirs(src_trackdir);
 	DEBUG(npf,6)("After filtering: (%d, %d), possible trackdirs: %#x", TileX(dst_tile), TileY(dst_tile), trackdirbits);
 
+	i = 0;
 	/* Enumerate possible track */
 	while (trackdirbits != 0) {
-		byte dst_trackdir;
+		Trackdir dst_trackdir;
 		dst_trackdir =  FindFirstBit2x64(trackdirbits);
 		trackdirbits = KillFirstBit2x64(trackdirbits);
 		DEBUG(npf, 5)("Expanded into trackdir: %d, remaining trackdirs: %#x", dst_trackdir, trackdirbits);
