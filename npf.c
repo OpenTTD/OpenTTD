@@ -128,7 +128,7 @@ void NPFFillTrackdirChoice(AyStarNode* current, OpenListNode* parent)
  * cost of that tile. If the tile is an exit, it will return the tunnel length
  * including the exit tile. Requires that this is a Tunnel tile */
 uint NPFTunnelCost(AyStarNode* current) {
-	byte exitdir = _trackdir_to_exitdir[current->direction];
+	byte exitdir = TrackdirToExitdir(current->direction);
 	TileIndex tile = current->tile;
 	if ( (uint)(_map5[tile] & 3) == ReverseDiagdir(exitdir)) {
 		/* We just popped out if this tunnel, since were
@@ -145,7 +145,7 @@ uint NPFTunnelCost(AyStarNode* current) {
 }
 
 uint NPFSlopeCost(AyStarNode* current) {
-	TileIndex next = current->tile + TileOffsByDir(_trackdir_to_exitdir[current->direction]);
+	TileIndex next = current->tile + TileOffsByDir(TrackdirToExitdir(current->direction));
 	int x,y;
 	int8 z1,z2;
 
@@ -206,7 +206,7 @@ int32 NPFWaterPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 	if (IsBuoyTile(current->tile) && IsDiagonalTrackdir(current->direction))
 		cost += _patches.npf_buoy_penalty; /* A small penalty for going over buoys */
 
-	if (current->direction != _next_trackdir[parent->path.node.direction])
+	if (current->direction != NextTrackdir(parent->path.node.direction))
 		cost += _patches.npf_water_curve_penalty;
 
 	/* TODO More penalties? */
@@ -291,16 +291,17 @@ int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 	/* Determine extra costs */
 
 	/* Check for signals */
-	if (IsTileType(tile, MP_RAILWAY) && (_map5[tile] & 0xC0) == 0x40 && (_map3_lo[tile] & _signal_along_trackdir[trackdir]) != 0) {
+	if (IsTileType(tile, MP_RAILWAY) && HasSignalOnTrackdir(tile, trackdir)) {
 		/* Ordinary track with signals */
-		if ((_map2[tile] & _signal_along_trackdir[trackdir]) == 0) {
+		if (GetSignalState(tile, trackdir) == SIGNAL_STATE_RED) {
 			/* Signal facing us is red */
 			if (!NPFGetFlag(current, NPF_FLAG_SEEN_SIGNAL)) {
 				/* Penalize the first signal we
 				 * encounter, if it is red */
 
 				/* Is this a presignal exit or combo? */
-				if ((_map3_hi[tile] & 0x3) == 0x2 || (_map3_hi[tile] & 0x3) == 0x3)
+				SignalType sigtype = GetSignalType(tile, trackdir);
+				if (sigtype == SIGTYPE_EXIT || sigtype == SIGTYPE_COMBO)
 					/* Penalise exit and combo signals differently (heavier) */
 					cost += _patches.npf_rail_firstred_exit_penalty;
 				else
@@ -325,7 +326,7 @@ int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent) {
 	cost += NPFSlopeCost(current);
 
 	/* Check for turns */
-	if (current->direction != _next_trackdir[parent->path.node.direction])
+	if (current->direction != NextTrackdir(parent->path.node.direction))
 		cost += _patches.npf_rail_curve_penalty;
 	//TODO, with realistic acceleration, also the amount of straight track between
 	//      curves should be taken into account, as this affects the speed limit.
@@ -436,20 +437,20 @@ static inline RailType GetTileRailType(TileIndex tile, byte trackdir)
  * AyStarNode.user_data[NPF_TRACKDIR_CHOICE] with an appropriate value, and
  * copy AyStarNode.user_data[NPF_NODE_FLAGS] from the parent */
 void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
-	byte src_trackdir = current->path.node.direction;
+	Trackdir src_trackdir = current->path.node.direction;
 	TileIndex src_tile = current->path.node.tile;
-	byte src_exitdir = _trackdir_to_exitdir[src_trackdir];
+	DiagDirection src_exitdir = TrackdirToExitdir(src_trackdir);
 	FindLengthOfTunnelResult flotr;
 	TileIndex dst_tile;
 	int i = 0;
-	uint trackdirs, ts;
+	TrackdirBits trackdirbits, ts;
 	TransportType type = aystar->user_data[NPF_TYPE];
 	/* Initialize to 0, so we can jump out (return) somewhere an have no neighbours */
 	aystar->num_neighbours = 0;
 	DEBUG(npf, 4)("Expanding: (%d, %d, %d) [%d]", TileX(src_tile), TileY(src_tile), src_trackdir, src_tile);
 
 	/* Find dest tile */
-	if (IsTileType(src_tile, MP_TUNNELBRIDGE) && (_map5[src_tile] & 0xF0)==0 && (_map5[src_tile] & 3) == src_exitdir) {
+	if (IsTileType(src_tile, MP_TUNNELBRIDGE) && (_map5[src_tile] & 0xF0)==0 && (DiagDirection)(_map5[src_tile] & 3) == src_exitdir) {
 		/* This is a tunnel. We know this tunnel is our type,
 		 * otherwise we wouldn't have got here. It is also facing us,
 		 * so we should skip it's body */
@@ -472,7 +473,7 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 			 * otherwise (only for trains, since only with trains you can
 			 * (sometimes) reach tiles after reversing that you couldn't reach
 			 * without reversing. */
-			if (src_trackdir == _dir_to_diag_trackdir[ReverseDiagdir(exitdir)] && type == TRANSPORT_RAIL)
+			if (src_trackdir == DiagdirToDiagTrackdir(ReverseDiagdir(exitdir)) && type == TRANSPORT_RAIL)
 				/* We are headed inwards. We can only reverse here, so we'll not
 				 * consider this direction, but jump ahead to the reverse direction.
 				 * It would be nicer to return one neighbour here (the reverse
@@ -480,10 +481,10 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 				 * that one to return the tracks outside of the depot. But, because
 				 * the code layout is cleaner this way, we will just pretend we are
 				 * reversed already */
-				src_trackdir = _reverse_trackdir[src_trackdir];
+				src_trackdir = ReverseTrackdir(src_trackdir);
 		}
 		/* This a normal tile, a bridge, a tunnel exit, etc. */
-		dst_tile = AddTileIndexDiffCWrap(src_tile, TileIndexDiffCByDir(_trackdir_to_exitdir[src_trackdir]));
+		dst_tile = AddTileIndexDiffCWrap(src_tile, TileIndexDiffCByDir(TrackdirToExitdir(src_trackdir)));
 		if (dst_tile == INVALID_TILE) {
 			/* We reached the border of the map */
 			/* TODO Nicer control flow for this */
@@ -497,7 +498,7 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 	 * the type of the vehicle... Maybe an NPF_RAILTYPE userdata sometime? */
 	if (type == TRANSPORT_RAIL) {
 		byte src_type = GetTileRailType(src_tile, src_trackdir);
-		byte dst_type = GetTileRailType(dst_tile, _trackdir_to_exitdir[src_trackdir]);
+		byte dst_type = GetTileRailType(dst_tile, TrackdirToExitdir(src_trackdir));
 		if (src_type != dst_type) {
 			return;
 		}
@@ -531,31 +532,27 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 	} else {
 		ts = GetTileTrackStatus(dst_tile, type);
 	}
-	trackdirs = ts & 0x3F3F; /* Filter out signal status and the unused bits */
+	trackdirbits = ts & 0x3F3F; /* Filter out signal status and the unused bits */
 
-	DEBUG(npf, 4)("Next node: (%d, %d) [%d], possible trackdirs: %#x", TileX(dst_tile), TileY(dst_tile), dst_tile, trackdirs);
+	DEBUG(npf, 4)("Next node: (%d, %d) [%d], possible trackdirs: %#x", TileX(dst_tile), TileY(dst_tile), dst_tile, trackdirbits);
 	/* Select only trackdirs we can reach from our current trackdir */
-	trackdirs &= TrackdirReachesTrackdirs(src_trackdir);
+	trackdirbits &= TrackdirReachesTrackdirs(src_trackdir);
 	if (_patches.forbid_90_deg && (type == TRANSPORT_RAIL || type == TRANSPORT_WATER)) /* Filter out trackdirs that would make 90 deg turns for trains */
-		trackdirs &= ~_trackdir_crosses_trackdirs[src_trackdir];
-	DEBUG(npf,6)("After filtering: (%d, %d), possible trackdirs: %#x", TileX(dst_tile), TileY(dst_tile), trackdirs);
+		trackdirbits &= ~TrackdirCrossesTrackdirs(src_trackdir);
+	DEBUG(npf,6)("After filtering: (%d, %d), possible trackdirs: %#x", TileX(dst_tile), TileY(dst_tile), trackdirbits);
 
 	/* Enumerate possible track */
-	while (trackdirs != 0) {
+	while (trackdirbits != 0) {
 		byte dst_trackdir;
-		dst_trackdir =  FindFirstBit2x64(trackdirs);
-		trackdirs = KillFirstBit2x64(trackdirs);
-		DEBUG(npf, 5)("Expanded into trackdir: %d, remaining trackdirs: %#x", dst_trackdir, trackdirs);
+		dst_trackdir =  FindFirstBit2x64(trackdirbits);
+		trackdirbits = KillFirstBit2x64(trackdirbits);
+		DEBUG(npf, 5)("Expanded into trackdir: %d, remaining trackdirs: %#x", dst_trackdir, trackdirbits);
 
 		/* Check for oneway signal against us */
-		if (IsTileType(dst_tile, MP_RAILWAY) && (_map5[dst_tile]&0xC0) == 0x40) {
-			// the tile has a signal
-			byte signal_present = _map3_lo[dst_tile];
-			if (!(signal_present & _signal_along_trackdir[dst_trackdir])) {
+		if (IsTileType(dst_tile, MP_RAILWAY) && GetRailTileType(dst_tile) == RAIL_TYPE_SIGNALS) {
+			if (HasSignalOnTrackdir(dst_tile, ReverseTrackdir(dst_trackdir)) && !HasSignalOnTrackdir(dst_tile, dst_trackdir))
 				// if one way signal not pointing towards us, stop going in this direction.
-				if (signal_present & _signal_against_trackdir[dst_trackdir])
-					break;
-			}
+				break;
 		}
 		{
 			/* We've found ourselves a neighbour :-) */

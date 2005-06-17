@@ -4,7 +4,7 @@
 #include "macros.h"
 #include "map.h"
 
-typedef enum TileType {
+typedef enum TileTypes {
 	MP_CLEAR,
 	MP_RAILWAY,
 	MP_STREET,

@@ -1,5 +1,6 @@
 #include "rail.h"
 
+/* XXX: Below 3 tables store duplicate data. Maybe remove some? */
 /* Maps a trackdir to the bit that stores its status in the map arrays, in the
  * direction along with the trackdir */
 const byte _signal_along_trackdir[] = {
@@ -24,70 +25,71 @@ const byte _signal_on_track[] = {
  * track entering in this direction (including those making 90 degree turns)
  */
 const TrackdirBits _exitdir_reaches_trackdirs[] = {
-	TRACKDIR_BIT_DIAG1_NE|TRACKDIR_BIT_LOWER_E|TRACKDIR_BIT_LEFT_N,  /* DIAGDIR_NE */
-	TRACKDIR_BIT_DIAG2_SE|TRACKDIR_BIT_LEFT_S |TRACKDIR_BIT_UPPER_E, /* DIAGDIR_SE */
-	TRACKDIR_BIT_DIAG1_SW|TRACKDIR_BIT_UPPER_W|TRACKDIR_BIT_RIGHT_S, /* DIAGDIR_SW */
-	TRACKDIR_BIT_DIAG2_NW|TRACKDIR_BIT_RIGHT_N|TRACKDIR_BIT_LOWER_W  /* DIAGDIR_NW */
+	TRACKDIR_BIT_DIAG1_NE | TRACKDIR_BIT_LOWER_E | TRACKDIR_BIT_LEFT_N,  /* DIAGDIR_NE */
+	TRACKDIR_BIT_DIAG2_SE | TRACKDIR_BIT_LEFT_S  | TRACKDIR_BIT_UPPER_E, /* DIAGDIR_SE */
+	TRACKDIR_BIT_DIAG1_SW | TRACKDIR_BIT_UPPER_W | TRACKDIR_BIT_RIGHT_S, /* DIAGDIR_SW */
+	TRACKDIR_BIT_DIAG2_NW | TRACKDIR_BIT_RIGHT_N | TRACKDIR_BIT_LOWER_W  /* DIAGDIR_NW */
 };
 
-/* TODO: Remove magic numbers from tables below just like
- * _exitdir_reaches_trackdirs[] */
-
-const Trackdir _next_trackdir[14] = {
-	0,  1,  3,  2,  5,  4, 0, 0,
-	8,  9,  11, 10, 13, 12
+const Trackdir _next_trackdir[] = {
+	TRACKDIR_DIAG1_NE,  TRACKDIR_DIAG2_SE,  TRACKDIR_LOWER_E, TRACKDIR_UPPER_E, TRACKDIR_RIGHT_S, TRACKDIR_LEFT_S, INVALID_TRACKDIR, INVALID_TRACKDIR,
+	TRACKDIR_DIAG1_SW,  TRACKDIR_DIAG2_NW,  TRACKDIR_LOWER_W, TRACKDIR_UPPER_W, TRACKDIR_RIGHT_N, TRACKDIR_LEFT_N
 };
 
 /* Maps a trackdir to all trackdirs that make 90 deg turns with it. */
-const TrackdirBits _trackdir_crosses_trackdirs[] = {
-	0x0202, 0x0101, 0x3030, 0x3030, 0x0C0C, 0x0C0C, 0, 0,
-	0x0202, 0x0101, 0x3030, 0x3030, 0x0C0C, 0x0C0C
+const TrackdirBits _track_crosses_trackdirs[] = {
+	TRACKDIR_BIT_DIAG2_SE | TRACKDIR_BIT_DIAG2_NW,                                               /* TRACK_DIAG1 */
+	TRACKDIR_BIT_DIAG1_NE | TRACKDIR_BIT_DIAG1_SW,                                               /* TRACK_DIAG2 */
+	TRACKDIR_BIT_RIGHT_N  | TRACKDIR_BIT_RIGHT_S  | TRACKDIR_BIT_LEFT_N  | TRACKDIR_BIT_LEFT_S,  /* TRACK_UPPER */
+	TRACKDIR_BIT_RIGHT_N  | TRACKDIR_BIT_RIGHT_S  | TRACKDIR_BIT_LEFT_N  | TRACKDIR_BIT_LEFT_S,  /* TRACK_LOWER */
+	TRACKDIR_BIT_UPPER_W  | TRACKDIR_BIT_UPPER_E  | TRACKDIR_BIT_LOWER_W | TRACKDIR_BIT_LOWER_E, /* TRACK_LEFT  */
+	TRACKDIR_BIT_UPPER_W  | TRACKDIR_BIT_UPPER_E  | TRACKDIR_BIT_LOWER_W | TRACKDIR_BIT_LOWER_E  /* TRACK_RIGHT */
 };
 
 /* Maps a track to all tracks that make 90 deg turns with it. */
 const TrackBits _track_crosses_tracks[] = {
-	0x2, /* Track 1 -> Track 2 */
-	0x1, /* Track 2 -> Track 1 */
-	0x30, /* Upper -> Left | Right */
-	0x30, /* Lower -> Left | Right */
-	0x0C, /* Left -> Upper | Lower */
-	0x0C, /* Right -> Upper | Lower */
+	TRACK_BIT_DIAG2,                   /* TRACK_DIAG1 */
+	TRACK_BIT_DIAG1,                   /* TRACK_DIAG2 */
+	TRACK_BIT_LEFT  | TRACK_BIT_RIGHT, /* TRACK_UPPER */
+	TRACK_BIT_LEFT  | TRACK_BIT_RIGHT, /* TRACK_LOWER */
+	TRACK_BIT_UPPER | TRACK_BIT_LOWER, /* TRACK_LEFT  */
+	TRACK_BIT_UPPER | TRACK_BIT_LOWER  /* TRACK_RIGHT */
 };
 
 /* Maps a trackdir to the (4-way) direction the tile is exited when following
  * that trackdir */
 const DiagDirection _trackdir_to_exitdir[] = {
-	0,1,0,1,2,1, 0,0,
-	2,3,3,2,3,0,
+	DIAGDIR_NE,DIAGDIR_SE,DIAGDIR_NE,DIAGDIR_SE,DIAGDIR_SW,DIAGDIR_SE, DIAGDIR_NE,DIAGDIR_NE,
+	DIAGDIR_SW,DIAGDIR_NW,DIAGDIR_NW,DIAGDIR_SW,DIAGDIR_NW,DIAGDIR_NE,
 };
 
 const Trackdir _track_exitdir_to_trackdir[][DIAGDIR_END] = {
-	{0,    0xff, 8,    0xff},
-	{0xff, 1,    0xff, 9},
-	{2,    0xff, 0xff, 10},
-	{0xff, 3,    11,   0xf},
-	{0xff, 0xff, 4,    12},
-	{13,   5,    0xff, 0xff}
+	{TRACKDIR_DIAG1_NE, INVALID_TRACKDIR,  TRACKDIR_DIAG1_SW, INVALID_TRACKDIR},
+	{INVALID_TRACKDIR,  TRACKDIR_DIAG2_SE, INVALID_TRACKDIR,  TRACKDIR_DIAG2_NW},
+	{TRACKDIR_UPPER_E,  INVALID_TRACKDIR,  INVALID_TRACKDIR,  TRACKDIR_UPPER_W},
+	{INVALID_TRACKDIR,  TRACKDIR_LOWER_E,  TRACKDIR_LOWER_W,  INVALID_TRACKDIR},
+	{INVALID_TRACKDIR,  INVALID_TRACKDIR,  TRACKDIR_LEFT_S,   TRACKDIR_LEFT_N},
+	{TRACKDIR_RIGHT_N,  TRACKDIR_RIGHT_S,  INVALID_TRACKDIR,  INVALID_TRACKDIR}
 };
 
 const Trackdir _track_direction_to_trackdir[][DIR_END] = {
-	{0xff, 0,    0xff, 0xff, 0xff, 8,    0xff, 0xff},
-	{0xff, 0xff, 0xff, 1,    0xff, 0xff, 0xff, 9},
-	{0xff, 0xff, 2,    0xff, 0xff, 0xff, 10,   0xff},
-	{0xff, 0xff, 3,    0xff, 0xff, 0xff, 11,   0xff},
-	{12,   0xff, 0xff, 0xff, 4,    0xff, 0xff, 0xff},
-	{13,   0xff, 0xff, 0xff, 5,    0xff, 0xff, 0xff}
+	{INVALID_TRACKDIR, TRACKDIR_DIAG1_NE, INVALID_TRACKDIR, INVALID_TRACKDIR,  INVALID_TRACKDIR, TRACKDIR_DIAG1_SW, INVALID_TRACKDIR, INVALID_TRACKDIR},
+	{INVALID_TRACKDIR, INVALID_TRACKDIR,  INVALID_TRACKDIR, TRACKDIR_DIAG2_SE, INVALID_TRACKDIR, INVALID_TRACKDIR,  INVALID_TRACKDIR, TRACKDIR_DIAG2_NW},
+	{INVALID_TRACKDIR, INVALID_TRACKDIR,  TRACKDIR_UPPER_E, INVALID_TRACKDIR,  INVALID_TRACKDIR, INVALID_TRACKDIR,  TRACKDIR_UPPER_W, INVALID_TRACKDIR},
+	{INVALID_TRACKDIR, INVALID_TRACKDIR,  TRACKDIR_LOWER_E, INVALID_TRACKDIR,  INVALID_TRACKDIR, INVALID_TRACKDIR,  TRACKDIR_LOWER_W, INVALID_TRACKDIR},
+	{TRACKDIR_LEFT_N,  INVALID_TRACKDIR,  INVALID_TRACKDIR, INVALID_TRACKDIR,  TRACKDIR_LEFT_S,  INVALID_TRACKDIR,  INVALID_TRACKDIR, INVALID_TRACKDIR},
+	{TRACKDIR_RIGHT_N, INVALID_TRACKDIR,  INVALID_TRACKDIR, INVALID_TRACKDIR,  TRACKDIR_RIGHT_S, INVALID_TRACKDIR,  INVALID_TRACKDIR, INVALID_TRACKDIR}
 };
 
 const Trackdir _dir_to_diag_trackdir[] = {
-	0, 1, 8, 9,
+	TRACKDIR_DIAG1_NE, TRACKDIR_DIAG2_SE, TRACKDIR_DIAG1_SW, TRACKDIR_DIAG2_NW,
 };
 
 const DiagDirection _reverse_diagdir[] = {
-	2, 3, 0, 1
+	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE, DIAGDIR_SE
 };
 
 const Trackdir _reverse_trackdir[] = {
-	8, 9, 10, 11, 12, 13, 0xFF, 0xFF,
-	0, 1, 2,  3,  4,  5
+	TRACKDIR_DIAG1_SW, TRACKDIR_DIAG2_NW, TRACKDIR_UPPER_W, TRACKDIR_LOWER_W, TRACKDIR_LEFT_N, TRACKDIR_RIGHT_N, INVALID_TRACKDIR, INVALID_TRACKDIR,
+	TRACKDIR_DIAG1_NE, TRACKDIR_DIAG2_SE, TRACKDIR_UPPER_E, TRACKDIR_LOWER_E, TRACKDIR_LEFT_S, TRACKDIR_RIGHT_S
 };

@@ -3,6 +3,7 @@
 
 #include "pool.h"
 #include "order.h"
+#include "rail.h"
 
 enum {
 	VEH_Train = 0x10,
@@ -340,7 +341,7 @@ typedef struct GetNewVehiclePosResult {
  * For other vehicles types, or vehicles with no clear trackdir (such as those
  * in depots), returns 0xFF.
  */
-byte GetVehicleTrackdir(const Vehicle* v);
+Trackdir GetVehicleTrackdir(const Vehicle* v);
 
 /* returns true if staying in the same tile */
 bool GetNewVehiclePos(Vehicle *v, GetNewVehiclePosResult *gp);
