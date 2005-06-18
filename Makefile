@@ -219,8 +219,10 @@ endif
 endif
 
 # remove the dependancy for sdl if DEDICALTED is used
+# and add -lpthread to LDFLAGS, because SDL normally adds that...
 ifdef DEDICATED
 WITH_SDL:=
+LDFLAGS+=-lpthread
 endif
 
 
