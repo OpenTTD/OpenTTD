@@ -497,7 +497,7 @@ endif
 # MIDI setup
 ifdef OSX
 ifndef MIDI
-MIDI:=$(OSXAPP)/Contents/macosx/track_starter
+MIDI:=$(OSXAPP)/Contents/MacOS/track_starter
 endif
 ifndef SECOND_DATA_PATH
 SECOND_DATA_PATH:="$(OSXAPP)/Contents/Data/"
