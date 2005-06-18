@@ -518,8 +518,7 @@ static void MakeWindow(bool full_screen)
 		} else {
 			char Windowtitle[50] = "OpenTTD ";
 
-			snprintf(Windowtitle, lengthof(Windowtitle), "OpenTTD %s",
-				_openttd_revision);
+			strncat(Windowtitle, _openttd_revision, lengthof(Windowtitle));
 
 			_wnd.main_wnd = CreateWindow("TTD", Windowtitle, style, x, y, w, h, 0, 0, _inst, 0);
 			if (_wnd.main_wnd == NULL)
