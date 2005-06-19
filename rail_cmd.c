@@ -817,7 +817,7 @@ static int32 CmdSignalTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 
 {
 	int ex, ey;
 	int32 ret, total_cost, signal_ctr;
-	byte m5, signals;
+	byte signals;
 	TileIndex tile = TILE_FROM_XY(x, y);
 	bool error = true;
 
@@ -829,6 +829,9 @@ static int32 CmdSignalTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 
 
 	if (p1 > MapSize()) return CMD_ERROR;
 	if (signal_density == 0 || signal_density > 20) return CMD_ERROR;
+
+	if (!IsTileType(tile, MP_RAILWAY))
+		return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -846,7 +849,6 @@ static int32 CmdSignalTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 
 	track = TrackdirToTrack(trackdir); /* trackdir might have changed, keep track in sync */
 
 	// copy the signal-style of the first rail-piece if existing
-	m5 = _map5[tile];
 	if (GetRailTileType(tile) == RAIL_TYPE_SIGNALS && GetTrackBits(tile) != 0) { /* XXX: GetTrackBits check useless? */
 		signals = _map3_lo[tile] & SignalOnTrack(track);
 		if (signals == 0) signals = SignalOnTrack(track); /* Can this actually occur? */
@@ -855,18 +857,18 @@ static int32 CmdSignalTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 
 	} else // no signals exist, drag a two-way signal stretch
 		signals = SignalOnTrack(track);
 
-	/* signal_ctr       	- amount of tiles already processed
+	/* signal_ctr         - amount of tiles already processed
 	 * signals_density    - patch setting to put signal on every Nth tile (double space on |, -- tracks)
 	 **********
-	 * trackdir		- trackdir to build with autorail
-	 * semaphores	- semaphores or signals
+	 * trackdir   - trackdir to build with autorail
+	 * semaphores - semaphores or signals
 	 * signals    - is there a signal/semaphore on the first tile, copy its style (two-way/single-way)
 	                and convert all others to semaphore/signal
-	 * mode				- 1 remove signals, 0 build signals */
+	 * mode       - 1 remove signals, 0 build signals */
 	signal_ctr = total_cost = 0;
 	for (;;) {
 		// only build/remove signals with the specified density
-		if ((signal_ctr %	signal_density) == 0 ) {
+		if ((signal_ctr % signal_density) == 0 ) {
 			ret = DoCommand(x, y, TrackdirToTrack(trackdir) | semaphores, signals, flags, (mode == 1) ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS);
 
 			/* Abort placement for any other error than NOT_SUITABLE_TRACK
