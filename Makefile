@@ -149,6 +149,10 @@ else
 CONFIG_INCLUDED:=1
 endif
 
+ifndef LIBPNG-CONFIG
+LIBPNG-CONFIG :=libpng-config
+endif
+
 # updates Makefile.config if it's outdated
 ifneq ($(MAKEFILE_VERSION),$(CONFIG_VERSION))
 	ifndef MANUAL_CONFIG	# manual config should not check this
@@ -461,19 +465,19 @@ endif
 # libpng config
 ifdef WITH_PNG
 CDEFS += -DWITH_PNG
-CFLAGS += $(shell libpng-config --cflags)
+CFLAGS += $(shell $(LIBPNG-CONFIG) --cflags)
 
 # seems like older libpng versions are broken and need this
 PNGCONFIG_FLAGS = --ldflags --libs
 ifdef STATIC
 ifdef OSX
 # Seems like we need a tiny hack for OSX static to work
-LIBS += $(shell libpng-config --prefix)/lib/libpng.a
+LIBS += $(shell $(LIBPNG-CONFIG) --prefix)/lib/libpng.a
 else
-LIBS += $(shell libpng-config --static $(PNGCONFIG_FLAGS))
+LIBS += $(shell $(LIBPNG-CONFIG) --static $(PNGCONFIG_FLAGS))
 endif
 else
-LIBS += $(shell libpng-config  --L_opts $(PNGCONFIG_FLAGS))
+LIBS += $(shell $(LIBPNG-CONFIG)  --L_opts $(PNGCONFIG_FLAGS))
 endif
 endif
 

@@ -66,7 +66,7 @@ WITH_NETWORK:=1
 WITH_SDL:=$(shell $(SDL-CONFIG) --version 2>/dev/null)
 
 # libpng detection
-WITH_PNG:=$(shell libpng-config --version 2>/dev/null)
+WITH_PNG:=$(shell $(LIBPNG-CONFIG) --version 2>/dev/null)
 
 ifdef WITH_PNG
 # LibPNG depends on Zlib
