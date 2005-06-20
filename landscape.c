@@ -43,6 +43,10 @@ const byte _tileh_to_sprite[32] = {
 	0,0,0,0,0,0,0,16,0,0,0,17,0,15,18,0,
 };
 
+const byte _inclined_tileh[] = {
+	3, 9, 3, 6, 12, 6, 12, 9
+};
+
 
 void FindLandscapeHeightByTile(TileInfo *ti, TileIndex tile)
 {
