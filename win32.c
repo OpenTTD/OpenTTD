@@ -447,7 +447,7 @@ static void RegisterWndClass(void)
 			LoadCursor(NULL, IDC_ARROW),
 			0,
 			0,
-			"TTD"
+			"OTTD"
 		};
 		registered = true;
 		if (!RegisterClass(&wnd))
@@ -516,11 +516,11 @@ static void MakeWindow(bool full_screen)
 		if (_wnd.main_wnd) {
 			SetWindowPos(_wnd.main_wnd, 0, x, y, w, h, SWP_NOACTIVATE | SWP_NOOWNERZORDER | SWP_NOZORDER);
 		} else {
-			char Windowtitle[50] = "OpenTTD ";
+			char Windowtitle[50];
 
-			strncat(Windowtitle, _openttd_revision, lengthof(Windowtitle));
+			snprintf(Windowtitle, lengthof(Windowtitle), "OpenTTD %s", _openttd_revision);
 
-			_wnd.main_wnd = CreateWindow("TTD", Windowtitle, style, x, y, w, h, 0, 0, _inst, 0);
+			_wnd.main_wnd = CreateWindow("OTTD", Windowtitle, style, x, y, w, h, 0, 0, _inst, 0);
 			if (_wnd.main_wnd == NULL)
 				error("CreateWindow failed");
 		}
@@ -1233,7 +1233,7 @@ static char *SubmitCrashReport(HWND wnd, void *msg, size_t msglen, const char *a
 
 	if (_wininet.InternetOpen == NULL && !LoadLibraryList((void**)&_wininet, wininet_files)) return "can't load wininet.dll";
 
-	inet = _wininet.InternetOpen("TTD", INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0 );
+	inet = _wininet.InternetOpen("OTTD", INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0 );
 	if (inet == NULL) { err = "internetopen failed"; goto error1; }
 
 	conn = _wininet.InternetConnect(inet, "openttd.com", INTERNET_DEFAULT_HTTP_PORT, "", "", INTERNET_SERVICE_HTTP, 0, 0);
