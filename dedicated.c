@@ -312,8 +312,6 @@ static int DedicatedVideoMainLoop(void)
 		}
 		CSleep(1);
 	}
-
-	return ML_QUIT;
 }
 
 

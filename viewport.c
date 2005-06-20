@@ -1996,25 +1996,21 @@ static byte Check2x1AutoRail(int mode)
 		if (fxpy >= 20 && sxpy <= 12) { /*SwapSelection(); DoRailroadTrack(0); */return 3; }
 		if (fxmy < -3 && sxmy > 3) {/* DoRailroadTrack(0); */return 5; }
 		return 1;
-		break;
 
 	case 1:
 		if (fxmy > 3 && sxmy < -3) { /*SwapSelection(); DoRailroadTrack(0); */return 4; }
 		if (fxpy <= 12 && sxpy >= 20) { /*DoRailroadTrack(0); */return 2; }
 		return 1;
-		break;
 
 	case 2:
 		if (fxmy > 3 && sxmy < -3) { /*DoRailroadTrack(3);*/ return 4; }
 		if (fxpy >= 20 && sxpy <= 12) { /*SwapSelection(); DoRailroadTrack(0); */return 3; }
 		return 0;
-		break;
 
 	case 3:
 		if (fxmy < -3 && sxmy > 3) { /*SwapSelection(); DoRailroadTrack(3);*/ return 5; }
 		if (fxpy <= 12 && sxpy >= 20) { /*DoRailroadTrack(0); */return 2; }
 		return 0;
-		break;
 	}
 
 	return 0; // avoids compiler warnings

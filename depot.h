@@ -73,13 +73,13 @@ static inline bool IsTileDepotType(TileIndex tile, TransportType type)
 	{
 		case TRANSPORT_RAIL:
 			return IsTileType(tile, MP_RAILWAY) && (_map5[tile] & 0xFC) == 0xC0;
-			break;
+
 		case TRANSPORT_ROAD:
 			return IsTileType(tile, MP_STREET) && (_map5[tile] & 0xF0) == 0x20;
-			break;
+
 		case TRANSPORT_WATER:
 			return IsTileType(tile, MP_WATER) && (_map5[tile] & ~3) == 0x80;
-			break;
+
 		default:
 			assert(0);
 			return false;

@@ -194,7 +194,6 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 		switch (e->message.msg) {
 			case WE_CREATE: w->message.msg = e->message.wparam; break;
 			case WE_DESTROY: w->message.msg = 0; break;
-			break;
 		}
 		break;
 

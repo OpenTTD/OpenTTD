@@ -1750,14 +1750,14 @@ Trackdir GetVehicleTrackdir(const Vehicle* v)
 				return DiagdirToDiagTrackdir((v->direction >> 1) & 3);
 
 			return TrackDirectionToTrackdir(FIND_FIRST_BIT(v->u.rail.track),v->direction);
-			break;
+
 		case VEH_Ship:
 			if (v->u.ship.state == 0x80)  /* Inside a depot? */
 				/* We'll assume the ship is facing outwards */
 				return DiagdirToDiagTrackdir(GetDepotDirection(v->tile, TRANSPORT_WATER)); /* Ship in depot */
 
 			return TrackDirectionToTrackdir(FIND_FIRST_BIT(v->u.ship.state),v->direction);
-			break;
+
 		case VEH_Road:
 			if (v->u.road.state == 254) /* We'll assume the road vehicle is facing outwards */
 				return DiagdirToDiagTrackdir(GetDepotDirection(v->tile, TRANSPORT_ROAD)); /* Road vehicle in depot */
@@ -1766,7 +1766,7 @@ Trackdir GetVehicleTrackdir(const Vehicle* v)
 				return DiagdirToDiagTrackdir(GetRoadStationDir(v->tile)); /* Road vehicle in a station */
 
 			return DiagdirToDiagTrackdir((v->direction >> 1) & 3);
-			break;
+
 		/* case VEH_Aircraft: case VEH_Special: case VEH_Disaster: */
 		default: return 0xFF;
 	}
