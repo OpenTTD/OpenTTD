@@ -2516,7 +2516,7 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nie mozna odwrocic kierunku jazdy pociagu...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Zmiana nazwy typu pociagu
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nie mozna zmienic nazwy typu pojazdu...
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Spraw by zaznaczonym poleceniu pojazd byl zmusony do zrzutu cargo
+STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Spraw by w zaznaczonym poleceniu pojazd byl zmuszony do zrzutu cargo
 STR_886F_TRANSFER                                               :{BLACK}Przewiez
 
 STR_TRAIN_STOPPING                                              :{RED}Hamowanie

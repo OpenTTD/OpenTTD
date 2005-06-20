@@ -1425,6 +1425,8 @@ STR_0800_COST                                                   :{TINYFONT}{RED}
 STR_0801_COST                                                   :{RED}Kostnad: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Inntekt: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Inntekt: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Overføring: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Øverføring: {CURRENCY}
 STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Anslått kostnad: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Anslått kostand: {CURRENCY}
 STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Anslått inntekt: {CURRENCY}
@@ -2399,6 +2401,18 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tog i ve
 STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
 STR_8806_GO_TO                                                  :Kjør til {STATION}
+STR_8807_GO_TO_TRANSFER                                         :Gå til {STATION} (Overfør og ta last)
+STR_8808_GO_TO_UNLOAD                                           :Gå til {STATION} (Last av)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Gå til {STATION} (Overfør og forlat som tom)
+STR_880A_GO_TO_LOAD                                             :Gå til {STATION} (Last)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Gå til {STATION} (Overfør og vent på full last)
+STR_880C_GO_NON_STOP_TO                                         :Gå uten stopp til {STATION}
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :Gå uten stopp til {STATION} (Overfør og ta last)
+STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Gå uten stopp til {STATION} (Last av)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Gå uten stopp {STATION} (Overfør og forlat som tom)
+STR_8810_GO_NON_STOP_TO_LOAD                                    :Gå uten stopp til {STATION} (Last)
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Gå uten stopp til {STATION} (Overfør og vent på full last)
+STR_GO_TO_TRAIN_DEPOT                                           :Gå til {TOWN} Togdepot
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Service ved {TOWN} togstall
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Kjør uten å stoppe til {TOWN} togstall
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Service (uten å stoppe) ved {TOWN} togstall
@@ -2502,6 +2516,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Kan ikke snu toget...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Gi tog/vogn nytt navn
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kan ikke gi tog/vogn nytt navn...
+STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Få den merkede ordren til å tvinge kjøretøyet til å dumpe lasten
+STR_886F_TRANSFER                                               :{BLACK}Overfør
 
 STR_TRAIN_STOPPING                                              :{RED}Stopper
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stopper, {VELOCITY}
