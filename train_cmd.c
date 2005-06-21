@@ -2643,7 +2643,7 @@ static void *CheckVehicleAtSignal(Vehicle *v, void *data)
 
 static void TrainController(Vehicle *v)
 {
-	Vehicle *prev = NULL;
+	Vehicle *prev;
 	GetNewVehiclePosResult gp;
 	uint32 r, tracks,ts;
 	int i, enterdir, newdir, dir;
@@ -2652,7 +2652,7 @@ static void TrainController(Vehicle *v)
 	byte old_z;
 
 	/* For every vehicle after and including the given vehicle */
-	for (; v != NULL; prev = v, v = v->next) {
+	for (prev = GetPrevVehicleInChain(v); v != NULL; prev = v, v = v->next) {
 		BeginVehicleMove(v);
 
 		if (v->u.rail.track != 0x40) {
