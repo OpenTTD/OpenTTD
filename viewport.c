@@ -896,7 +896,7 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 					right > st->sign.left &&
 					left < st->sign.left + st->sign.width_2*4) {
 
-				sstd=AddStringToDraw(st->sign.left + 1, st->sign.top + 1, STR_305D_0, st->index, st->facilities, 0);
+				sstd=AddStringToDraw(st->sign.left + 1, st->sign.top + 1, STR_STATION_SIGN_TINY, st->index, st->facilities, 0);
 				if (sstd != NULL) {
 					sstd->color = (st->owner == OWNER_NONE || !st->facilities) ? 0xE : _player_colors[st->owner];
 					sstd->width = st->sign.width_2 | 0x8000;
