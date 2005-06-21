@@ -513,7 +513,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		SEND_COMMAND(PACKET_CLIENT_MAP_OK)();
 
 		if (_network_playas == 0 || _network_playas > MAX_PLAYERS ||
-				!DEREF_PLAYER(_network_playas - 1)->is_active) {
+				!GetPlayer(_network_playas - 1)->is_active) {
 
 			if (_network_playas == OWNER_SPECTATOR) {
 				// The client wants to be a spectator..
@@ -632,7 +632,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 				/* For speak to player or give money, we need the player-name */
 				if (ci_to->client_playas > MAX_PLAYERS)
 					return NETWORK_RECV_STATUS_OKAY; // This should never happen
-				GetString(name, DEREF_PLAYER(ci_to->client_playas-1)->name_1);
+				GetString(name, GetPlayer(ci_to->client_playas-1)->name_1);
 				ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
 				break;
 			default:

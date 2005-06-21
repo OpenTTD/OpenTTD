@@ -378,7 +378,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 					p->share_owners[i] = 0xFF;
 			}
 		}
-		p = DEREF_PLAYER(_current_player);
+		p = GetPlayer(_current_player);
 		/* Sell all the shares that people have on this company */
 		for (i = 0; i < 4; i++)
 			p->share_owners[i] = 0xFF;
@@ -484,7 +484,7 @@ void DrawNewsBankrupcy(Window *w)
 
 	DrawNewsBorder(w);
 
-	p = DEREF_PLAYER(WP(w,news_d).ni->string_id & 15);
+	p = GetPlayer(WP(w,news_d).ni->string_id & 15);
 	DrawPlayerFace(p->face, p->player_color, 2, 23);
 	GfxFillRect(3, 23, 3+91, 23+118, 0x4323);
 
@@ -553,7 +553,7 @@ void DrawNewsBankrupcy(Window *w)
 
 StringID GetNewsStringBankrupcy(NewsItem *ni)
 {
-	Player *p = DEREF_PLAYER(ni->string_id & 0xF);
+	Player *p = GetPlayer(ni->string_id & 0xF);
 
 	switch(ni->string_id >> 4) {
 	case 1:
@@ -1199,7 +1199,7 @@ static bool CheckSubsidised(Station *from, Station *to, byte cargo_type)
 			pair = SetupSubsidyDecodeParam(s, 0);
 			InjectDParam(2);
 
-			p = DEREF_PLAYER(_current_player);
+			p = GetPlayer(_current_player);
 			SetDParam(0, p->name_1);
 			SetDParam(1, p->name_2);
 			AddNewsItem(
@@ -1224,7 +1224,7 @@ static int32 DeliverGoods(int num_pieces, byte cargo_type, uint16 source, uint16
 
 	// Update player statistics
 	{
-		Player *p = DEREF_PLAYER(_current_player);
+		Player *p = GetPlayer(_current_player);
 		p->cur_economy.delivered_cargo += num_pieces;
 		SETBIT(p->cargo_types, cargo_type);
 	}
@@ -1525,14 +1525,14 @@ static void DoAcquireCompany(Player *p)
 	ChangeOwnershipOfPlayerItems(pi, _current_player);
 
 	if (p->bankrupt_value == 0) {
-		owner = DEREF_PLAYER(_current_player);
+		owner = GetPlayer(_current_player);
 		owner->current_loan += p->current_loan;
 	}
 
 	value = CalculateCompanyValue(p) >> 2;
 	for(i=0; i!=4; i++) {
 		if (p->share_owners[i] != 0xFF) {
-			owner = DEREF_PLAYER(p->share_owners[i]);
+			owner = GetPlayer(p->share_owners[i]);
 			owner->money64 += value;
 			owner->yearly_expenses[0][EXPENSES_OTHER] += value;
 			UpdatePlayerMoney32(owner);
@@ -1561,7 +1561,7 @@ int32 CmdBuyShareInCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (p1 >= MAX_PLAYERS || !_patches.allow_shares) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
-	p = DEREF_PLAYER(p1);
+	p = GetPlayer(p1);
 
 	/* Protect new companies from hostile takeovers */
 	if (_cur_year - p->inaugurated_year < 6) return_cmd_error(STR_7080_PROTECTED);
@@ -1606,7 +1606,7 @@ int32 CmdSellShareInCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (p1 >= MAX_PLAYERS || !_patches.allow_shares) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
-	p = DEREF_PLAYER(p1);
+	p = GetPlayer(p1);
 
 	/* Those lines are here for network-protection (clients can be slow) */
 	if (GetAmountOwnedBy(p, _current_player) == 0) return 0;
@@ -1640,7 +1640,7 @@ int32 CmdBuyCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (p1 >= MAX_PLAYERS || _networking) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
-	p = DEREF_PLAYER(p1);
+	p = GetPlayer(p1);
 
 	if (!p->is_ai) return CMD_ERROR;
 

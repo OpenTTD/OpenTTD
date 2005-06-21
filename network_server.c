@@ -1046,7 +1046,7 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 		if (ci != NULL && show_local) {
 			if (from_index == NETWORK_SERVER_INDEX) {
 				char name[NETWORK_NAME_LENGTH];
-				GetString(name, DEREF_PLAYER(ci_to->client_playas-1)->name_1);
+				GetString(name, GetPlayer(ci_to->client_playas-1)->name_1);
 				NetworkTextMessage(action, GetDrawStringPlayerColor(ci_own->client_playas-1), true, name, "%s", msg);
 			} else {
 				FOR_ALL_CLIENTS(cs) {

@@ -144,7 +144,7 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-		Player *p = DEREF_PLAYER(w->window_number);
+		Player *p = GetPlayer(w->window_number);
 
 		w->disabled_state = p->current_loan != 0 ? 0 : (1 << 7);
 
@@ -319,7 +319,7 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 		Player *p;
 		w->click_state = (w->click_state & ~(1<<5|1<<6)) | ((1<<5) << WP(w,facesel_d).gender);
 		DrawWindowWidgets(w);
-		p = DEREF_PLAYER(w->window_number);
+		p = GetPlayer(w->window_number);
 		DrawPlayerFace(WP(w,facesel_d).face, p->player_color, 2, 16);
 	} break;
 
@@ -501,7 +501,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-		Player *p = DEREF_PLAYER(w->window_number);
+		Player *p = GetPlayer(w->window_number);
 		uint32 dis = 0;
 
 		if (!IsWindowOfPrototype(w, _other_player_company_widgets)) {
@@ -561,7 +561,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 			Window *wf = AllocateWindowDescFront(&_select_player_face_desc, w->window_number);
 			if (wf) {
 				wf->caption_color = w->window_number;
-				WP(wf,facesel_d).face = DEREF_PLAYER(wf->window_number)->face;
+				WP(wf,facesel_d).face = GetPlayer(wf->window_number)->face;
 				WP(wf,facesel_d).gender = 0;
 			}
 		} break;
@@ -575,21 +575,21 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case 5: {/* change president name */
-			Player *p = DEREF_PLAYER(w->window_number);
+			Player *p = GetPlayer(w->window_number);
 			WP(w,def_d).byte_1 = 0;
 			SetDParam(0, p->president_name_2);
 			ShowQueryString(p->president_name_1, STR_700B_PRESIDENT_S_NAME, 31, 94, w->window_class, w->window_number);
 		} break;
 
 		case 6: {/* change company name */
-			Player *p = DEREF_PLAYER(w->window_number);
+			Player *p = GetPlayer(w->window_number);
 			WP(w,def_d).byte_1 = 1;
 			SetDParam(0, p->name_2);
 			ShowQueryString(p->name_1, STR_700A_COMPANY_NAME, 31, 150, w->window_class, w->window_number);
 		} break;
 
 		case 7: {/* build hq */
-			TileIndex tile = DEREF_PLAYER(w->window_number)->location_of_house;
+			TileIndex tile = GetPlayer(w->window_number)->location_of_house;
 			if (tile == 0) {
 				if ((byte)w->window_number != _local_player)
 					return;
@@ -632,7 +632,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 
 	case WE_PLACE_OBJ: {
 		/* You cannot destroy a HQ, only relocate it. So build_HQ is called, just with different flags */
-		TileIndex tile = DEREF_PLAYER(w->window_number)->location_of_house;
+		TileIndex tile = GetPlayer(w->window_number)->location_of_house;
 		if (DoCommandP(e->place.tile, (tile == 0) ? 0 : 1 | w->window_number, 0, NULL, CMD_BUILD_COMPANY_HQ | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS)))
 			ResetObjectToPlace();
 		break;
@@ -700,7 +700,7 @@ static void BuyCompanyWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-		Player *p = DEREF_PLAYER(w->window_number);
+		Player *p = GetPlayer(w->window_number);
 		SetDParam(0, p->name_1);
 		SetDParam(1, p->name_2);
 		DrawWindowWidgets(w);
@@ -779,7 +779,7 @@ static void EndGameWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT: {
-		const Player *p = DEREF_PLAYER(_local_player);
+		const Player *p = GetPlayer(_local_player);
 		uint x, y;
 
 		SetupHighScoreEndWindow(w, &x, &y);
@@ -918,7 +918,7 @@ void ShowEndGameChart(void)
 		WP(w, highscore_d).background_img = SPR_TYCOON_IMG1_BEGIN;
 
 		if (_local_player != OWNER_SPECTATOR) {
-			const Player *p = DEREF_PLAYER(_local_player);
+			const Player *p = GetPlayer(_local_player);
 			if (p->old_economy[0].performance_history == SCORE_MAX)
 				WP(w, highscore_d).background_img = SPR_TYCOON_IMG2_BEGIN;
 		}
@@ -930,7 +930,7 @@ void ShowEndGameChart(void)
 			WP(w, highscore_d).rank = SaveHighScoreValueNetwork();
 		} else {
 			// in single player _local player is always valid
-			const Player *p = DEREF_PLAYER(_local_player);
+			const Player *p = GetPlayer(_local_player);
 			w->window_number = _opt.diff_level;
 			WP(w, highscore_d).rank = SaveHighScoreValue(p);
 		}

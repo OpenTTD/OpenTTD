@@ -154,7 +154,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 		/* draw widgets, with player's name in the caption */
 		{
-			Player *p = DEREF_PLAYER(window_number);
+			Player *p = GetPlayer(window_number);
 			SetDParam(0, p->name_1);
 			SetDParam(1, p->name_2);
 			SetDParam(2, w->vscroll.count);

@@ -544,7 +544,7 @@ DEF_CONSOLE_CMD(ConResetCompany)
 
 	/* Check if company does exist */
 	index--;
-	p = DEREF_PLAYER(index);
+	p = GetPlayer(index);
 	if (!p->is_active) {
 		IConsoleError("Company does not exist.");
 		return true;

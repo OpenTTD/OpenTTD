@@ -13,7 +13,7 @@
 // TODO: make it train compatible
 static bool TestCanBuildStationHere(uint tile, byte dir)
 {
-	Player *p = DEREF_PLAYER(_current_player);
+	Player *p = GetPlayer(_current_player);
 
 	if (dir == TEST_STATION_NO_DIR) {
 		int32 ret;

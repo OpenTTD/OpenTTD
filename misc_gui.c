@@ -131,9 +131,9 @@ static void Place_LandInfo(uint tile)
 	lid.town = ClosestTownFromTile(tile, _patches.dist_local_authority);
 
 	if (_local_player >= MAX_PLAYERS)
-		p = DEREF_PLAYER(0);
+		p = GetPlayer(0);
 	else
-		p = DEREF_PLAYER(_local_player);
+		p = GetPlayer(_local_player);
 
 	old_money = p->money64;
 	p->money64 = p->player_money = 0x7fffffff;
@@ -470,7 +470,7 @@ static void ErrmsgWndProc(Window *w, WindowEvent *e)
 					_errmsg_message_1,
 					238);
 		} else {
-			Player *p = DEREF_PLAYER(GetDParamX(_errmsg_decode_params,2));
+			Player *p = GetPlayer(GetDParamX(_errmsg_decode_params,2));
 			DrawPlayerFace(p->face, p->player_color, 2, 16);
 
 			DrawStringMultiCenter(
@@ -1201,9 +1201,9 @@ static void GenerateFileName(void)
 	/* Check if we are not a specatator who wants to generate a name..
 	    Let's use the name of player #0 for now. */
 	if (_local_player < MAX_PLAYERS)
-		p = DEREF_PLAYER(_local_player);
+		p = GetPlayer(_local_player);
 	else
-		p = DEREF_PLAYER(0);
+		p = GetPlayer(0);
 
 	SetDParam(0, p->name_1);
 	SetDParam(1, p->name_2);

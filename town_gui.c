@@ -52,7 +52,7 @@ uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t)
 		}
 
 		// Things worth more than this are not shown
-		avail = DEREF_PLAYER(pid)->player_money + _price.station_value * 200;
+		avail = GetPlayer(pid)->player_money + _price.station_value * 200;
 		ref = _price.build_industry >> 8;
 
 		for (i = 0; i != lengthof(_town_action_costs); i++, avail_buttons >>= 1) {

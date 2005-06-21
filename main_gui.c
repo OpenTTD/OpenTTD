@@ -84,7 +84,7 @@ void HandleOnEditText(WindowEvent *e)
 			NetworkServer_HandleChat(NETWORK_ACTION_CHAT + (id & 0xFF), id & 0xFF, (id >> 8) & 0xFF, e->edittext.str, NETWORK_SERVER_INDEX);
 		break;
 	case 3: { /* Give money, you can only give money in excess of loan */
-		const Player *p = DEREF_PLAYER(_current_player);
+		const Player *p = GetPlayer(_current_player);
 		int32 money = min(p->money64 - p->current_loan, atoi(e->edittext.str) / GetCurrentCurrencyRate());
 		char msg[20];
 
@@ -329,7 +329,7 @@ static void MenuClickShowAir(int index)
 
 static void MenuClickBuildRail(int index)
 {
-	Player *p = DEREF_PLAYER(_local_player);
+	Player *p = GetPlayer(_local_player);
 	_last_built_railtype = min(index, p->max_railtype-1);
 	ShowBuildRailToolbar(_last_built_railtype, -1);
 }
@@ -941,7 +941,7 @@ static void ToolbarZoomOutClick(Window *w)
 
 static void ToolbarBuildRailClick(Window *w)
 {
-	Player *p = DEREF_PLAYER(_local_player);
+	Player *p = GetPlayer(_local_player);
 	Window *w2;
 	w2 = PopupMainToolbMenu(w, 457, 19, STR_1015_RAILROAD_CONSTRUCTION, p->max_railtype);
 	WP(w2,menu_d).sel_index = _last_built_railtype;
@@ -2211,7 +2211,7 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT: {
-		const Player *p = (_local_player == OWNER_SPECTATOR) ? NULL : DEREF_PLAYER(_local_player);
+		const Player *p = (_local_player == OWNER_SPECTATOR) ? NULL : GetPlayer(_local_player);
 
 		DrawWindowWidgets(w);
 		SetDParam(0, _date);

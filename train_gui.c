@@ -323,7 +323,7 @@ static void ShowBuildTrainWindow(uint tile)
 		WP(w,buildtrain_d).railtype = _map3_lo[tile] & 0xF;
 	} else {
 		w->caption_color = _local_player;
-		WP(w,buildtrain_d).railtype = DEREF_PLAYER(_local_player)->max_railtype - 1;
+		WP(w,buildtrain_d).railtype = GetPlayer(_local_player)->max_railtype - 1;
 	}
 }
 
@@ -1305,7 +1305,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 
 		/* draw the widgets */
 		{
-			const Player *p = DEREF_PLAYER(owner);
+			const Player *p = GetPlayer(owner);
 			if (station == -1) {
 				/* Company Name -- (###) Trains */
 				SetDParam(0, p->name_1);

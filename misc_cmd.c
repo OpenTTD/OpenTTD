@@ -137,7 +137,7 @@ int32 CmdChangeCompanyName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (str == 0) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		p = DEREF_PLAYER(_current_player);
+		p = GetPlayer(_current_player);
 		DeleteName(p->name_1);
 		p->name_1 = str;
 		MarkWholeScreenDirty();
@@ -163,7 +163,7 @@ int32 CmdChangePresidentName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (str == 0) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		p = DEREF_PLAYER(_current_player);
+		p = GetPlayer(_current_player);
 		DeleteName(p->president_name_1);
 		p->president_name_1 = str;
 
@@ -226,7 +226,7 @@ int32 CmdMoneyCheat(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  */
 int32 CmdGiveMoney(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	const Player *p = DEREF_PLAYER(_current_player);
+	const Player *p = GetPlayer(_current_player);
 	int32 amount = min((int32)p1, 20000000);
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);

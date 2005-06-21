@@ -904,7 +904,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 
 		// Paint the player icons
 		for (i=0;i<MAX_PLAYERS;i++) {
-       		if (!DEREF_PLAYER(i)->is_active) {
+       		if (!GetPlayer(i)->is_active) {
        			// Check if we have the player as an active player
        			if (!(w->disabled_state & (1 << (i+13)))) {
        				// Bah, player gone :(
@@ -1024,7 +1024,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 
         	// Hide the player who are not active
         	for (i=0;i<MAX_PLAYERS;i++) {
-        		if (!DEREF_PLAYER(i)->is_active) {
+        		if (!GetPlayer(i)->is_active) {
         			w->disabled_state += 1 << (i+13);
         		}
         	}

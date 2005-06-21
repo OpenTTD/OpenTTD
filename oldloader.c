@@ -810,7 +810,7 @@ static const OldChunks player_yearly_chunk[] = {
 static bool OldPlayerYearly(LoadgameState *ls, int num)
 {
 	int i;
-	Player *p = DEREF_PLAYER(_current_player_id);
+	Player *p = GetPlayer(_current_player_id);
 
 	for (i = 0; i < 13; i++) {
 		if (!LoadChunk(ls, NULL, player_yearly_chunk))
@@ -834,7 +834,7 @@ static const OldChunks player_economy_chunk[] = {
 static bool OldPlayerEconomy(LoadgameState *ls, int num)
 {
 	int i;
-	Player *p = DEREF_PLAYER(_current_player_id);
+	Player *p = GetPlayer(_current_player_id);
 
 	if (!LoadChunk(ls, &p->cur_economy, player_economy_chunk))
 		return false;
@@ -872,7 +872,7 @@ static const OldChunks player_ai_build_rec_chunk[] = {
 };
 static bool OldLoadAIBuildRec(LoadgameState *ls, int num)
 {
-	Player *p = DEREF_PLAYER(_current_player_id);
+	Player *p = GetPlayer(_current_player_id);
 
 	switch (num) {
 		case 0: return LoadChunk(ls, &p->ai.src, player_ai_build_rec_chunk);
@@ -987,7 +987,7 @@ static const OldChunks player_ai_chunk[] = {
 };
 static bool OldPlayerAI(LoadgameState *ls, int num)
 {
-	Player *p = DEREF_PLAYER(_current_player_id);
+	Player *p = GetPlayer(_current_player_id);
 
 	return LoadChunk(ls, &p->ai, player_ai_chunk);
 }
@@ -1035,7 +1035,7 @@ static const OldChunks player_chunk[] = {
 };
 static bool LoadOldPlayer(LoadgameState *ls, int num)
 {
-	Player *p = DEREF_PLAYER(num);
+	Player *p = GetPlayer(num);
 
 	_current_player_id = num;
 

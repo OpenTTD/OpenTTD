@@ -112,7 +112,7 @@ static void DrawSubsidiesWindow(Window *w)
 		if (s->cargo_type != 0xFF && s->age >= 12) {
 			SetupSubsidyDecodeParam(s, 1);
 
-			p = DEREF_PLAYER(GetStation(s->to)->owner);
+			p = GetPlayer(GetStation(s->to)->owner);
 			SetDParam(3, p->name_1);
 			SetDParam(4, p->name_2);
 

@@ -754,7 +754,7 @@ StringID GetCustomEngineName(int engine)
 
 void AcceptEnginePreview(Engine *e, PlayerID player)
 {
-	Player *p = DEREF_PLAYER(player);
+	Player *p = GetPlayer(player);
 
 	SETBIT(e->player_avail, player);
 

@@ -1033,7 +1033,7 @@ static void DoAutosave(void)
 	char buf[200];
 
 	if (_patches.keep_all_autosave && _local_player != OWNER_SPECTATOR) {
-		const Player *p = DEREF_PLAYER(_local_player);
+		const Player *p = GetPlayer(_local_player);
 		char *s;
 		sprintf(buf, "%s%s", _path.autosave_dir, PATHSEP);
 

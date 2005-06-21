@@ -942,7 +942,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 
 		/* draw the widgets */
 		{
-			const Player *p = DEREF_PLAYER(owner);
+			const Player *p = GetPlayer(owner);
 			if (station == -1) {
 				/* Company Name -- (###) Aircraft */
 				SetDParam(0, p->name_1);

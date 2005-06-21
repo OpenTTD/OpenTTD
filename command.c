@@ -336,7 +336,7 @@ int32 DoCommand(int x, int y, uint32 p1, uint32 p2, uint32 flags, uint procc)
 		_error_message = INVALID_STRING_ID;
 		// update last build coord of player
 		if ( (x|y) != 0 && _current_player < MAX_PLAYERS) {
-			DEREF_PLAYER(_current_player)->last_build_coordinate = TILE_FROM_XY(x,y);
+			GetPlayer(_current_player)->last_build_coordinate = TILE_FROM_XY(x,y);
 		}
 	}
 
@@ -386,7 +386,7 @@ int32 GetAvailableMoneyForCommand(void)
 {
 	PlayerID pid = _current_player;
 	if (pid >= MAX_PLAYERS) return 0x7FFFFFFF; // max int
-	return DEREF_PLAYER(pid)->player_money;
+	return GetPlayer(pid)->player_money;
 }
 
 // toplevel network safe docommand function for the current player. must not be called recursively.
@@ -497,7 +497,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 #endif /* ENABLE_NETWORK */
 
 	// update last build coordinate of player.
-	if ( tile != 0 && _current_player < MAX_PLAYERS) DEREF_PLAYER(_current_player)->last_build_coordinate = tile;
+	if ( tile != 0 && _current_player < MAX_PLAYERS) GetPlayer(_current_player)->last_build_coordinate = tile;
 
 	/* Actually try and execute the command. If no cost-type is given
 	 * use the construction one */

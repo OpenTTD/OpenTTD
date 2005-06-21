@@ -1556,7 +1556,7 @@ static void TownActionRoadRebuild(Town *t, int action)
 
 	SetDParam(0, t->index);
 
-	p = DEREF_PLAYER(_current_player);
+	p = GetPlayer(_current_player);
 	SetDParam(1, p->name_1);
 	SetDParam(2, p->name_2);
 

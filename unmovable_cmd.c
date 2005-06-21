@@ -36,7 +36,7 @@ int32 DestroyCompanyHQ(TileIndex tile, uint32 flags)
 		}
 		if (!dodelete) return CMD_ERROR;
 	} else /* Destruction was initiated by player */
-		p = DEREF_PLAYER(_current_player);
+		p = GetPlayer(_current_player);
 
 		if (p->location_of_house == 0) return CMD_ERROR;
 
@@ -62,7 +62,7 @@ int32 DestroyCompanyHQ(TileIndex tile, uint32 flags)
 int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileIndex tile = TILE_FROM_XY(x,y);
-	Player *p = DEREF_PLAYER(_current_player);
+	Player *p = GetPlayer(_current_player);
 	int cost;
 
 	SET_EXPENSES_TYPE(EXPENSES_PROPERTY);

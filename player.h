@@ -197,14 +197,13 @@ void UpdatePlayerMoney32(Player *p);
 #define MAX_PLAYERS 8
 VARDEF Player _players[MAX_PLAYERS];
 
-#define DEREF_PLAYER(i) (GetPlayer(i))
 static inline Player* GetPlayer(uint i)
 {
   assert(i < lengthof(_players));
   return &_players[i];
 }
 
-#define IS_HUMAN_PLAYER(p) (!DEREF_PLAYER((byte)(p))->is_ai)
+#define IS_HUMAN_PLAYER(p) (!GetPlayer((byte)(p))->is_ai)
 #define IS_INTERACTIVE_PLAYER(p) (((byte)p) == _local_player)
 
 typedef struct HighScore {

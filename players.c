@@ -194,7 +194,7 @@ bool CheckPlayerHasMoney(int32 cost)
 {
 	if (cost > 0) {
 		uint pid = _current_player;
-		if (pid < MAX_PLAYERS && cost > DEREF_PLAYER(pid)->player_money) {
+		if (pid < MAX_PLAYERS && cost > GetPlayer(pid)->player_money) {
 			SetDParam(0, cost);
 			_error_message = STR_0003_NOT_ENOUGH_CASH_REQUIRES;
 			return false;
@@ -222,12 +222,12 @@ void SubtractMoneyFromPlayer(int32 cost)
 {
 	PlayerID pid = _current_player;
 	if (pid < MAX_PLAYERS)
-		SubtractMoneyFromAnyPlayer(DEREF_PLAYER(pid), cost);
+		SubtractMoneyFromAnyPlayer(GetPlayer(pid), cost);
 }
 
 void SubtractMoneyFromPlayerFract(byte player, int32 cost)
 {
-	Player *p = DEREF_PLAYER(player);
+	Player *p = GetPlayer(player);
 	byte m = p->player_money_fraction;
 	p->player_money_fraction = m - (byte)cost;
 	cost >>= 8;
@@ -256,7 +256,7 @@ void GetNameOfOwner(byte owner, uint tile)
 		if (owner >= 8)
 			SetDParam(0, STR_0150_SOMEONE);
 		else {
-			Player *p = DEREF_PLAYER(owner);
+			Player *p = GetPlayer(owner);
 			SetDParam(0, p->name_1);
 			SetDParam(1, p->name_2);
 		}
@@ -544,7 +544,7 @@ void OnTick_Players(void)
 	if (_game_mode == GM_EDITOR)
 		return;
 
-	p = DEREF_PLAYER(_cur_player_tick_index);
+	p = GetPlayer(_cur_player_tick_index);
 	_cur_player_tick_index = (_cur_player_tick_index + 1) % MAX_PLAYERS;
 	if (p->name_1 != 0) GenerateCompanyName(p);
 
@@ -600,7 +600,7 @@ void PlayersYearlyLoop(void)
 
 	if (_patches.show_finances && _local_player != OWNER_SPECTATOR) {
 		ShowPlayerFinances(_local_player);
-		p = DEREF_PLAYER(_local_player);
+		p = GetPlayer(_local_player);
 		if (p->num_valid_stat_ent > 5 && p->old_economy[0].performance_history < p->old_economy[4].performance_history) {
 			SndPlayFx(SND_01_BAD_YEAR);
 		} else {
@@ -628,7 +628,7 @@ static void DeletePlayerStuff(int pi)
 	Player *p;
 
 	DeletePlayerWindows(pi);
-	p = DEREF_PLAYER(pi);
+	p = GetPlayer(pi);
 	DeleteName(p->name_1);
 	DeleteName(p->president_name_1);
 	p->name_1 = 0;
@@ -735,7 +735,7 @@ int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		if (!(flags & DC_EXEC)) return 0;
 
-		p = DEREF_PLAYER(p2);
+		p = GetPlayer(p2);
 
 		/* Only allow removal of HUMAN companies */
 		if (IS_HUMAN_PLAYER(p->index)) {
@@ -1115,7 +1115,7 @@ static void Load_PLYR(void)
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {
-		Player *p = DEREF_PLAYER(index);
+		Player *p = GetPlayer(index);
 		p->is_ai = (index != 0);
 		SaveLoad_PLYR(p);
 		_player_colors[index] = p->player_color;

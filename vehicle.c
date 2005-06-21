@@ -1415,7 +1415,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Check if there is money for the upgrade.. if not, give a nice news-item
 	    (that is needed, because this CMD is called automaticly) */
-	if ( DEREF_PLAYER(v->owner)->money64 < (int32)(autorefit_money + build_cost + rear_engine_cost - v->value)) {
+	if ( GetPlayer(v->owner)->money64 < (int32)(autorefit_money + build_cost + rear_engine_cost - v->value)) {
 		if (( _local_player == v->owner ) && ( v->unitnumber != 0 )) {  //v->unitnumber = 0 for train cars
 			int message;
 			SetDParam(0, v->unitnumber);
