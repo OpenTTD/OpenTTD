@@ -403,6 +403,7 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	uint tileh;
 	TileIndex tile;
 	byte m5;
+	int32 cost = _price.remove_rail;
 
 	if (!ValParamTrackOrientation(p2)) return CMD_ERROR;
 	trackbit = TrackToTrackBits(track);
@@ -474,12 +475,12 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if (!(GetTrackBits(tile) & trackbit))
 				return CMD_ERROR;
 
-			/* don't allow remove if there are signals on the track */
+			/* Charge extra to remove signals on the track, if they are there */
 			if (HasSignalOnTrack(tile, track))
-					return CMD_ERROR;
+				cost += DoCommand(x, y, track, 0, flags, CMD_REMOVE_SIGNALS);
 
 			if (!(flags & DC_EXEC))
-				return _price.remove_rail;
+				return cost;
 
 			/* We remove the trackbit here. */
 			_map5[tile] &= ~trackbit;
@@ -502,7 +503,7 @@ skip_mark_dirty:;
 
 	SetSignalsOnBothDir(tile, track);
 
-	return _price.remove_rail;
+	return cost;
 }
 
 static const struct {
