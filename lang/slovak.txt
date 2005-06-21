@@ -1425,6 +1425,8 @@ STR_0800_COST                                                   :{TINYFONT}{RED}
 STR_0801_COST                                                   :{RED}Cena: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Zisk: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Zisk: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Prekladka: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Prekladka: {CURRENCY}
 STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Priblizna cena: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Priblizna Cena: {CURRENCY}
 STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Priblizny Zisk: {CURRENCY}
@@ -2399,9 +2401,21 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak v c
 STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
 STR_8806_GO_TO                                                  :Chod do {STATION}
+STR_8807_GO_TO_TRANSFER                                         :Chod do {STATION} (prelozit a nalozit iny naklad)
+STR_8808_GO_TO_UNLOAD                                           :Chod do {STATION} (vylozit)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Chod do {STATION} (prelozit a nechat prazdne)
+STR_880A_GO_TO_LOAD                                             :Chod do {STATION} (nalozit)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Chod do {STATION} (prelozit a plne nalozit)
+STR_880C_GO_NON_STOP_TO                                         :Chod bez zastavenia do {STATION}
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :Chod bez zastavenia do {STATION} (prelozit a nalozit iny naklad)
+STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Chod bez zastavenia do {STATION} (vylozit)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Chod bez zastavenia do {STATION} (prelozit a nechat prazdne)
+STR_8810_GO_NON_STOP_TO_LOAD                                    :Chod bez zastavenia do {STATION} (nalozit)
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Chod bez zastavenia do {STATION} (prelozit a plne nalozit)
+STR_GO_TO_TRAIN_DEPOT                                           :Chod do depa {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Opravit v {TOWN} Vlakovom Depe
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Chod non-stop do {TOWN} depa
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Opravovat non-stop v {TOWN} Vlakovom Depe
+STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Chod bez zastavenia do depa {TOWN}
+STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Opravovat bez zastavenia v depe {TOWN}
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Smeruje do {TOWN} depa
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Smeruje do {TOWN} depa, {VELOCITY}
@@ -2478,7 +2492,7 @@ STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Zobrazit
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Zoznam prikazov - kliknut na prikaz pre zobrazenie
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Vynechat aktualny prikaz - preskocit na dalsi
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Vymazat oznaceny prikaz
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Oznaceny prikaz bude prevadzkovany non-stop
+STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Oznaceny prikaz bude prevedeny bez zastavenia
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Vlozit novy prikaz pred oznaceny prikaz, alebo na koniec zoznamu
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Na oznacenom prikaze bude vozidlo cakat na plne nalozenie
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Na oznacenom prikaze bude vozidlo uplne vylozene
@@ -2502,6 +2516,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nemozno zmenit smer vlaku...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Premenovat typ vlaku
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Typ vlaku nemoze byt premenovany...
+STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}U vyznaceneho prikazu musi vozidlo vylozit naklad
+STR_886F_TRANSFER                                               :{BLACK}Prekladka
 
 STR_TRAIN_STOPPING                                              :{RED}Zastavuje
 STR_TRAIN_STOPPING_VEL                                          :{RED}Zastavuje, {VELOCITY}
