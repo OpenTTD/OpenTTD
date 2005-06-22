@@ -1695,7 +1695,6 @@ STR_305AA_LARGE                                                 :{BLACK}Stórborg
 STR_305AB_LARGE                                                 :{BLACK}Alþjóðavöllur
 STR_305B_SIZE                                                   :{BLACK}Stærð
 STR_305C_0                                                      :{STATION} {STRINL 0x30D1}
-STR_305D_0                                                      :{TINYFONT}{BLACK}{STATION} {STRINL 0x30D1}
 STR_305E_RAILROAD_STATION                                       :Lestarstöð
 STR_305F_AIRCRAFT_HANGAR                                        :Flugskýli
 STR_3060_AIRPORT                                                :Flugvöllur

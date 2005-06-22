@@ -1693,7 +1693,6 @@ STR_305AA_LARGE                                                 :{BLACK}Tarpmies
 STR_305AB_LARGE                                                 :{BLACK}Tarptautinis oro uostas
 STR_305B_SIZE                                                   :{BLACK}Dydis
 STR_305C_0                                                      :{STATION} {STRINL 0x30D1}
-STR_305D_0                                                      :{TINYFONT}{BLACK}{STATION} {STRINL 0x30D1}
 STR_305E_RAILROAD_STATION                                       :Gelezinkelio stotis
 STR_305F_AIRCRAFT_HANGAR                                        :Lektuvo angaras
 STR_3060_AIRPORT                                                :Oro uostas

@@ -1699,7 +1699,6 @@ STR_305AA_LARGE                                                 :{BLACK}Metropol
 STR_305AB_LARGE                                                 :{BLACK}International airport
 STR_305B_SIZE                                                   :{BLACK}Size
 STR_305C_0                                                      :{STATION} {STRINL 0x30D1}
-STR_305D_0                                                      :{TINYFONT}{BLACK}{STATION} {STRINL 0x30D1}
 STR_305E_RAILROAD_STATION                                       :Railway station
 STR_305F_AIRCRAFT_HANGAR                                        :Aircraft hangar
 STR_3060_AIRPORT                                                :Lidosta

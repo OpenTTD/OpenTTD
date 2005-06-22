@@ -1688,7 +1688,6 @@ STR_305AA_LARGE                                                 :{BLACK}Aeroport
 STR_305AB_LARGE                                                 :{BLACK}Aeroporto Internacional
 STR_305B_SIZE                                                   :{BLACK}Tamaño
 STR_305C_0                                                      :{STATION} {STRINL 0x30D1}
-STR_305D_0                                                      :{TINYFONT}{BLACK}{STATION} {STRINL 0x30D1}
 STR_305E_RAILROAD_STATION                                       :Estación de ferrocarril
 STR_305F_AIRCRAFT_HANGAR                                        :Hangar de aeronaves
 STR_3060_AIRPORT                                                :Aeroporto

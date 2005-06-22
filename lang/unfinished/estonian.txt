@@ -1679,7 +1679,6 @@ STR_305AA_LARGE                                                 :{BLACK}Suurlinn
 STR_305AB_LARGE                                                 :{BLACK}Rahvusvaheline lennujaam
 STR_305B_SIZE                                                   :{BLACK}Suurus
 STR_305C_0                                                      :{STATION} {STRINL 0x30D1}
-STR_305D_0                                                      :{TINYFONT}{BLACK}{STATION} {STRINL 0x30D1}
 STR_305E_RAILROAD_STATION                                       :Raudteejaam
 STR_305F_AIRCRAFT_HANGAR                                        :Lennuki hangaar
 STR_3060_AIRPORT                                                :Lennujaam

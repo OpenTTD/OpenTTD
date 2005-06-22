@@ -1699,7 +1699,7 @@ STR_305AA_LARGE                                                 :{BLACK}Metropol
 STR_305AB_LARGE                                                 :{BLACK}Mezinárodní
 STR_305B_SIZE                                                   :{BLACK}Velikost
 STR_305C_0                                                      :{STATION} {STRINL 0x30D1}
-STR_305D_0                                                      :{TINYFONT}{BLACK}{STATION} {STRINL 0x30D1}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION} {STRINL 0x30D1}
 STR_305E_RAILROAD_STATION                                       :Nadrazi
 STR_305F_AIRCRAFT_HANGAR                                        :Hangár
 STR_3060_AIRPORT                                                :Letiste
