@@ -461,6 +461,12 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 		}
 	}
 
+	/* I can't enter a tunnel entry/exit tile from a tile above the tunnel. Note
+	 * that I can enter the tunnel from a tile below the tunnel entrance. This
+	 * solves the problem of vehicles wanting to drive off a tunnel entrance */
+	if (IsTileType(dst_tile, MP_TUNNELBRIDGE) && (_map5[dst_tile] & 0xF0) == 0 && GetTileZ(dst_tile) < GetTileZ(src_tile))
+		return;
+
 	/* check correct rail type (mono, maglev, etc)
 	 * XXX: This now compares with the previous tile, which should not pose a
 	 * problem, but it might be nicer to compare with the first tile, or even
