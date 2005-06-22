@@ -106,7 +106,8 @@ typedef enum TransportTypes {
   TRANSPORT_RAIL = 0,
 	TRANSPORT_ROAD = 1,
 	TRANSPORT_WATER,	// = 2
-	TRANSPORT_MAX			// = 3
+	TRANSPORT_END,
+	INVALID_TRANSPORT = 0xff,
 } TransportType;
 
 typedef struct TileInfo {

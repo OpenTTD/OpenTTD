@@ -18,7 +18,6 @@ typedef enum TileTypes {
 	MP_UNMOVABLE
 } TileType;
 
-/* TODO: Find out values */
 /* Direction as commonly used in v->direction, 8 way. */
 typedef enum Directions {
 	DIR_N   = 0,
@@ -114,11 +113,6 @@ static inline void SetTileOwner(TileIndex tile, Owner owner)
 static inline bool IsTileOwner(TileIndex tile, Owner owner)
 {
 	return GetTileOwner(tile) == owner;
-}
-
-static inline bool IsLevelCrossing(TileIndex tile)
-{
-	return (_map5[tile] & 0xF0) == 0x10;
 }
 
 #endif

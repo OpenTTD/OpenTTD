@@ -443,4 +443,33 @@ static inline bool HasSemaphores(TileIndex tile, Track track)
  */
 RailType GetTileRailType(TileIndex tile, byte trackdir);
 
+/**
+ * Returns whether the given tile is a level crossing.
+ */
+static inline bool IsLevelCrossing(TileIndex tile)
+{
+	return (_map5[tile] & 0xF0) == 0x10;
+}
+
+/**
+ * Gets the transport type of the given track on the given crossing tile.
+ * @return  The transport type of the given track, either TRANSPORT_ROAD,
+ * TRANSPORT_RAIL.
+ */
+static inline TransportType GetCrossingTransportType(TileIndex tile, Track track)
+{
+	/* XXX: Nicer way to write this? */
+	switch(track)
+	{
+		/* When map5 bit 3 is set, the road runs in the y direction (DIAG2) */
+		case TRACK_DIAG1:
+			return (HASBIT(_map5[tile], 3) ? TRANSPORT_RAIL : TRANSPORT_ROAD);
+		case TRACK_DIAG2:
+			return (HASBIT(_map5[tile], 3) ? TRANSPORT_ROAD : TRANSPORT_RAIL);
+		default:
+			assert(0);
+	}
+	return INVALID_TRANSPORT;
+}
+
 #endif // RAIL_H

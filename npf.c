@@ -399,6 +399,60 @@ void NPFSaveTargetData(AyStar* as, OpenListNode* current) {
 	ftd->node = current->path.node;
 }
 
+/**
+ * Finds out if a given player's vehicles are allowed to enter a given tile.
+ * @param owner    The owner of the vehicle.
+ * @param tile     The tile that is about to be entered.
+ * @param enterdir The direction from which the vehicle wants to enter the tile.
+ * @return         true if the vehicle can enter the tile.
+ * @todo           This function should be used in other places than just NPF,
+ *                 maybe moved to another file too.
+ */
+bool VehicleMayEnterTile(Owner owner, TileIndex tile, DiagDirection enterdir)
+{
+	if (
+		IsTileType(tile, MP_RAILWAY) /* Rail tile (also rail depot) */
+		|| IsTrainStationTile(tile) /* Rail station tile */
+		|| IsTileDepotType(tile, TRANSPORT_ROAD) /* Road depot tile */
+		|| IsRoadStationTile(tile) /* Road station tile */
+		|| IsTileDepotType(tile, TRANSPORT_WATER) /* Water depot tile */
+		)
+		return IsTileOwner(tile, owner); /* You need to own these tiles entirely to use them */
+
+	switch (GetTileType(tile)) {
+		case MP_STREET:
+			/* rail-road crossing : are we looking at the railway part? */
+			if (IsLevelCrossing(tile) && GetCrossingTransportType(tile, TrackdirToTrack(DiagdirToDiagTrackdir(enterdir))) == TRANSPORT_RAIL)
+				return IsTileOwner(tile, owner); /* Railway needs owner check, while the street is public */
+			break;
+		case MP_TUNNELBRIDGE:
+#if 0
+/* OPTIMISATION: If we are on the middle of a bridge, we will not do the cpu
+ * intensive owner check, instead we will just assume that if the vehicle
+ * managed to get on the bridge, it is probably allowed to :-)
+ */
+			if ((_map5[tile] & 0xC6) == 0xC0 && (unsigned)(_map5[tile] & 0x1) == (enterdir & 0x1)) {
+				/* on the middle part of a railway bridge: find bridge ending */
+				while (IsTileType(tile, MP_TUNNELBRIDGE) && !((_map5[tile] & 0xC6) == 0x80)) {
+					tile += TileOffsByDir(_map5[tile] & 0x1);
+				}
+			}
+			/* if we were on a railway middle part, we are now at a railway bridge ending */
+#endif
+			if (
+				(_map5[tile] & 0xFC) == 0 /* railway tunnel */
+				|| (_map5[tile] & 0xC6) == 0x80 /* railway bridge ending */
+				|| ((_map5[tile] & 0xF8) == 0xE0 && ((unsigned)_map5[tile] & 0x1) != (enterdir & 0x1)) /* railway under bridge */
+				)
+				return IsTileOwner(tile, owner);
+			break;
+		default:
+			break;
+	}
+
+	return true; /* no need to check */
+}
+
 /* Will just follow the results of GetTileTrackStatus concerning where we can
  * go and where not. Uses AyStar.user_data[NPF_TYPE] as the transport type and
  * an argument to GetTileTrackStatus. Will skip tunnels, meaning that the
@@ -480,16 +534,9 @@ void NPFFollowTrack(AyStar* aystar, OpenListNode* current) {
 	}
 
 	/* Check the owner of the tile */
-	if (
-		IsTileType(dst_tile, MP_RAILWAY) /* Rail tile (also rail depot) */
-		|| IsTrainStationTile(dst_tile) /* Rail station tile */
-		|| IsTileDepotType(dst_tile, TRANSPORT_ROAD) /* Road depot tile */
-		|| IsRoadStationTile(dst_tile) /* Road station tile */
-		|| IsTileDepotType(dst_tile, TRANSPORT_WATER) /* Water depot tile */
-	) /* TODO: Crossings, tunnels and bridges are "public" now */
-		/* The above cases are "private" tiles, we need to check the owner */
-		if (!IsTileOwner(dst_tile, aystar->user_data[NPF_OWNER]))
-			return;
+	if (!VehicleMayEnterTile(aystar->user_data[NPF_OWNER], dst_tile, TrackdirToExitdir(src_trackdir))) {
+		return;
+	}
 
 	/* Determine available tracks */
 	if (type != TRANSPORT_WATER && (IsRoadStationTile(dst_tile) || IsTileDepotType(dst_tile, type))){
