@@ -1699,6 +1699,7 @@ STR_305AA_LARGE                                                 :{BLACK}Nagyváro
 STR_305AB_LARGE                                                 :{BLACK}Nemzetközi repülõter
 STR_305B_SIZE                                                   :{BLACK}Méret
 STR_305C_0                                                      :{STATION} {STRINL 0x30D1}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION} {STRINL 0x30D1}
 STR_305E_RAILROAD_STATION                                       :Vasútállomás
 STR_305F_AIRCRAFT_HANGAR                                        :Reptéri hangár
 STR_3060_AIRPORT                                                :Repülõtér

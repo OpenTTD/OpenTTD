@@ -1699,6 +1699,7 @@ STR_305AA_LARGE                                                 :{BLACK}Metropol
 STR_305AB_LARGE                                                 :{BLACK}Medzinarodne letisko
 STR_305B_SIZE                                                   :{BLACK}Velkost
 STR_305C_0                                                      :{STATION} {STRINL 0x30D1}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION} {STRINL 0x30D1}
 STR_305E_RAILROAD_STATION                                       :Zeleznicna stanica
 STR_305F_AIRCRAFT_HANGAR                                        :Letecky hangar
 STR_3060_AIRPORT                                                :Letisko

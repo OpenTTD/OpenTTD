@@ -1425,6 +1425,8 @@ STR_0800_COST                                                   :{TINYFONT}{RED}
 STR_0801_COST                                                   :{RED}Kosten: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Einnahmen: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Einnahmen: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Umladen: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Umladen: {CURRENCY}
 STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Geschätzte Kosten: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Geschätzte Kosten: {CURRENCY}
 STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Geschätzte Einnahmen: {CURRENCY}
@@ -1697,6 +1699,7 @@ STR_305AA_LARGE                                                 :{BLACK}Großstäd
 STR_305AB_LARGE                                                 :{BLACK}Internationaler Flughafen
 STR_305B_SIZE                                                   :{BLACK}Größe
 STR_305C_0                                                      :{STATION} {STRINL 0x30D1}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION} {STRINL 0x30D1}
 STR_305E_RAILROAD_STATION                                       :Bahnhof
 STR_305F_AIRCRAFT_HANGAR                                        :Flugzeughangar
 STR_3060_AIRPORT                                                :Flughafen
@@ -2398,6 +2401,18 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Zug ist 
 STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
 STR_8806_GO_TO                                                  :Fahre nach {STATION}
+STR_8807_GO_TO_TRANSFER                                         :Fahre nach {STATION} (Umladen und beladen)
+STR_8808_GO_TO_UNLOAD                                           :Fahre nach {STATION} (Entladen)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Fahre nach {STATION} (Umladen und leer verlassen)
+STR_880A_GO_TO_LOAD                                             :Fahre nach {STATION} (Beladen)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Fahre nach{STATION} (Umladen und voll beladen)
+STR_880C_GO_NON_STOP_TO                                         :Fahre ohne Halt nach {STATION}
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :Fahre ohne Halt nach {STATION} (Umladen und beladen)
+STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Fahre ohne Halt nach {STATION} (Entladen)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Fahre nach {STATION} (Umladen und leer verlassen)
+STR_8810_GO_NON_STOP_TO_LOAD                                    :Fahre ohne Halt nach {STATION} (Beladen)
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Fahre ohne Halt nach {STATION} (Umladen und voll beladen)
+STR_GO_TO_TRAIN_DEPOT                                           :Fahre zum {TOWN} Zugdepot
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Wartung bei {TOWN} Zugdepot
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Fahre ohne Halt zu {TOWN} Zugdepot
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Wartung (ohne Halt) bei {TOWN} Zugdepot
@@ -2501,6 +2516,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Die Zugbewegung kann nicht umgekehrt werden...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Zugtyp umbenennen
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Zugtyp kann nicht umbenannt werden...
+STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Beim markierten Eintrag wird die Ladung in den Bahnhof entladen (für späteren Weitertransport)
+STR_886F_TRANSFER                                               :{BLACK}Umladen
 
 STR_TRAIN_STOPPING                                              :{RED}Halte an
 STR_TRAIN_STOPPING_VEL                                          :{RED}Halte an, {VELOCITY}
