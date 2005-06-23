@@ -416,18 +416,18 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 				rvi[i].max_speed = speed; // ?? units
 			}
-		}	break;
+		} break;
 		case 0x09: { /* Running cost factor */
 			FOR_EACH_OBJECT {
 				uint8 runcost = grf_load_byte(&buf);
 
 				rvi[i].running_cost = runcost;
 			}
-		}	break;
+		} break;
 		case 0x0A: { /* Running cost base */
 			/* TODO: I have no idea. --pasky */
 			FOR_EACH_OBJECT {
-				grf_load_byte(&buf);
+				grf_load_dword(&buf);
 			}
 			ret = true;
 		} break;
@@ -445,35 +445,35 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 				rvi[i].image_index = spriteid;
 			}
-		}	break;
+		} break;
 		case 0x0F: { /* Cargo capacity */
 			FOR_EACH_OBJECT {
-				uint16 capacity = grf_load_word(&buf);
+				uint16 capacity = grf_load_byte(&buf);
 
 				rvi[i].capacity = capacity;
 			}
-		}	break;
+		} break;
 		case 0x10: { /* Cargo type */
 			FOR_EACH_OBJECT {
 				uint8 cargo = grf_load_byte(&buf);
 
 				rvi[i].cargo_type = cargo;
 			}
-		}	break;
+		} break;
 		case 0x11: { /* Cost factor */
 			FOR_EACH_OBJECT {
 				uint8 cost_factor = grf_load_byte(&buf);
 
 				rvi[i].base_cost = cost_factor; // ?? is it base_cost?
 			}
-		}	break;
+		} break;
 		case 0x12: { /* SFX */
 			FOR_EACH_OBJECT {
 				uint8 sfx = grf_load_byte(&buf);
 
 				rvi[i].sfx = sfx;
 			}
-		}	break;
+		} break;
 		case 0x13:      /* Power in 10hp */
 		case 0x14:      /* Weight in 1/4 tons */
 		case 0x15:      /* Speed in mph*0.8 */
@@ -485,13 +485,13 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 			ret = true;
 			break;
-		case 0x16: {	/* Cargos available for refitting */
+		case 0x16: { /* Cargos available for refitting */
 			FOR_EACH_OBJECT {
 				uint32 refit_mask = grf_load_dword(&buf);
 
 				_engine_refit_masks[ROAD_ENGINES_INDEX + engine + i] = refit_mask;
 			}
-		}	break;
+		} break;
 		case 0x17:      /* Callback */
 		case 0x18:      /* Tractive effort */
 		case 0x19:      /* Air drag */
