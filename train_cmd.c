@@ -312,7 +312,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 		}
 	} else {
 		//"kickoff" acceleration
-		force = resistance * 10;
+		force = (mass * 8) + resistance;
 	}
 
 	if (force <= 0) force = 10000;
