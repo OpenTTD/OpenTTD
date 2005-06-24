@@ -16,7 +16,7 @@ static void ShowBuildDocksDepotPicker(void);
 
 static byte _ship_depot_direction;
 
-void CcBuildDocks(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildDocks(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		SndPlayTileFx(SND_02_SPLAT, tile);
@@ -24,38 +24,38 @@ void CcBuildDocks(bool success, uint tile, uint32 p1, uint32 p2)
 	}
 }
 
-void CcBuildCanal(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildCanal(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) SndPlayTileFx(SND_02_SPLAT, tile);
 }
 
 
-static void PlaceDocks_Dock(uint tile)
+static void PlaceDocks_Dock(TileIndex tile)
 {
 	DoCommandP(tile, 0, 0, CcBuildDocks, CMD_BUILD_DOCK | CMD_AUTO | CMD_MSG(STR_9802_CAN_T_BUILD_DOCK_HERE));
 }
 
-static void PlaceDocks_Depot(uint tile)
+static void PlaceDocks_Depot(TileIndex tile)
 {
 	DoCommandP(tile, _ship_depot_direction, 0, CcBuildDocks, CMD_BUILD_SHIP_DEPOT | CMD_AUTO | CMD_MSG(STR_3802_CAN_T_BUILD_SHIP_DEPOT));
 }
 
-static void PlaceDocks_Buoy(uint tile)
+static void PlaceDocks_Buoy(TileIndex tile)
 {
 	DoCommandP(tile, 0, 0, CcBuildDocks, CMD_BUILD_BUOY | CMD_AUTO | CMD_MSG(STR_9835_CAN_T_POSITION_BUOY_HERE));
 }
 
-static void PlaceDocks_DemolishArea(uint tile)
+static void PlaceDocks_DemolishArea(TileIndex tile)
 {
 	VpStartPlaceSizing(tile, VPM_X_AND_Y | GUI_PlaceProc_DemolishArea);
 }
 
-static void PlaceDocks_BuildCanal(uint tile)
+static void PlaceDocks_BuildCanal(TileIndex tile)
 {
 	VpStartPlaceSizing(tile, VPM_X_OR_Y);
 }
 
-static void PlaceDocks_BuildLock(uint tile)
+static void PlaceDocks_BuildLock(TileIndex tile)
 {
 	DoCommandP(tile, 0, 0, CcBuildDocks, CMD_BUILD_LOCK | CMD_AUTO | CMD_MSG(STR_CANT_BUILD_LOCKS));
 }
@@ -164,7 +164,8 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_PLACE_PRESIZE: {
-		uint tile_from, tile_to;
+		TileIndex tile_from;
+		TileIndex tile_to;
 
 		tile_from = tile_to = e->place.tile;
 		switch(GetTileSlope(tile_from, NULL)) {

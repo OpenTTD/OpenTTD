@@ -82,7 +82,7 @@ static void TerraformAddDirtyTileAround(TerraformerState *ts, TileIndex tile)
 	TerraformAddDirtyTile(ts, tile);
 }
 
-static int TerraformProc(TerraformerState *ts, uint tile, int mode)
+static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
 {
 	int r;
 	int32 ret;
@@ -130,7 +130,7 @@ static int TerraformProc(TerraformerState *ts, uint tile, int mode)
 	return 0;
 }
 
-static bool TerraformTileHeight(TerraformerState *ts, uint tile, int height)
+static bool TerraformTileHeight(TerraformerState *ts, TileIndex tile, int height)
 {
 	int nh;
 	TerraformerHeightMod *mod;
@@ -272,7 +272,7 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		for (count = ts.tile_table_count; count != 0; count--, ti++) {
 			uint z, t;
-			uint tile = *ti;
+			TileIndex tile = *ti;
 
 			z = TerraformGetHeightOfTile(&ts, tile + TILE_XY(0,0));
 			t = TerraformGetHeightOfTile(&ts, tile + TILE_XY(1,0));
@@ -417,7 +417,7 @@ int32 CmdPurchaseLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 
-static int32 ClearTile_Clear(uint tile, byte flags)
+static int32 ClearTile_Clear(TileIndex tile, byte flags)
 {
 	static const int32 * _clear_price_table[] = {
 			NULL,
@@ -544,12 +544,12 @@ static uint GetSlopeTileh_Clear(TileInfo *ti)
 	return ti->tileh;
 }
 
-static void GetAcceptedCargo_Clear(uint tile, AcceptedCargo ac)
+static void GetAcceptedCargo_Clear(TileIndex tile, AcceptedCargo ac)
 {
 	/* unused */
 }
 
-static void AnimateTile_Clear(uint tile)
+static void AnimateTile_Clear(TileIndex tile)
 {
 	/* unused */
 }
@@ -642,7 +642,7 @@ void TileLoopClearHelper(TileIndex tile)
 
 
 /* convert into snowy tiles */
-static void TileLoopClearAlps(uint tile)
+static void TileLoopClearAlps(TileIndex tile)
 {
 	int k;
 	byte m5,tmp;
@@ -703,7 +703,7 @@ static void TileLoopClearAlps(uint tile)
 	MarkTileDirtyByTile(tile);
 }
 
-static void TileLoopClearDesert(uint tile)
+static void TileLoopClearDesert(TileIndex tile)
 {
  	if ( (_map5[tile] & 0x1C) == 0x14)
 		return;
@@ -722,7 +722,7 @@ static void TileLoopClearDesert(uint tile)
 	MarkTileDirtyByTile(tile);
 }
 
-static void TileLoop_Clear(uint tile)
+static void TileLoop_Clear(TileIndex tile)
 {
 	byte m5,m3;
 
@@ -777,7 +777,7 @@ static void TileLoop_Clear(uint tile)
 void GenerateClearTile(void)
 {
 	int i,j;
-	uint tile,tile_new;
+	TileIndex tile;
 	uint32 r;
 
 	/* add hills */
@@ -796,6 +796,8 @@ void GenerateClearTile(void)
 		if (IsTileType(tile, MP_CLEAR)) {
 			j = ((r >> 16) & 0xF) + 5;
 			for(;;) {
+				TileIndex tile_new;
+
 				_map5[tile] = (byte)((_map5[tile] & ~(3<<2)) | (2<<2));
 				do {
 					if (--j == 0) goto get_out;
@@ -808,12 +810,12 @@ get_out:;
 	} while (--i);
 }
 
-static void ClickTile_Clear(uint tile)
+static void ClickTile_Clear(TileIndex tile)
 {
 	/* not used */
 }
 
-static uint32 GetTileTrackStatus_Clear(uint tile, TransportType mode)
+static uint32 GetTileTrackStatus_Clear(TileIndex tile, TransportType mode)
 {
 	return 0;
 }
@@ -832,7 +834,7 @@ static const StringID _clear_land_str[4+8-1] = {
 	STR_080D_GRASS,
 };
 
-static void GetTileDesc_Clear(uint tile, TileDesc *td)
+static void GetTileDesc_Clear(TileIndex tile, TileDesc *td)
 {
 	int i = (_map5[tile]>>2) & 7;
 	if (i == 0)
@@ -841,7 +843,7 @@ static void GetTileDesc_Clear(uint tile, TileDesc *td)
 	td->owner = GetTileOwner(tile);
 }
 
-static void ChangeTileOwner_Clear(uint tile, byte old_player, byte new_player)
+static void ChangeTileOwner_Clear(TileIndex tile, byte old_player, byte new_player)
 {
 	return;
 }

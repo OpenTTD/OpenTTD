@@ -129,7 +129,7 @@ void MakeDefaultWaypointName(Waypoint *wp)
 }
 
 /* Find a deleted waypoint close to a tile. */
-static Waypoint *FindDeletedWaypointCloseTo(uint tile)
+static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile)
 {
 	Waypoint *wp, *best = NULL;
 	uint thres = 8, cur_dist;
@@ -243,7 +243,7 @@ void WaypointsDailyLoop(void)
 }
 
 /* Remove a waypoint */
-int32 RemoveTrainWaypoint(uint tile, uint32 flags, bool justremove)
+int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 {
 	Waypoint *wp;
 
@@ -335,7 +335,7 @@ int32 CmdRenameWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /* This hacks together some dummy one-shot Station structure for a waypoint. */
-Station *ComposeWaypointStation(uint tile)
+Station *ComposeWaypointStation(TileIndex tile)
 {
 	Waypoint *wp = GetWaypointByTile(tile);
 	static Station stat;

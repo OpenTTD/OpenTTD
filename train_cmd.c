@@ -415,7 +415,7 @@ void DrawTrainEngineInfo(int engine, int x, int y, int maxw)
 }
 
 
-static int32 CmdBuildRailWagon(uint engine, uint tile, uint32 flags)
+static int32 CmdBuildRailWagon(uint engine, TileIndex tile, uint32 flags)
 {
 	int32 value;
 	Vehicle *v;
@@ -1506,7 +1506,7 @@ int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 typedef struct TrainFindDepotData {
 	uint best_length;
-	uint tile;
+	TileIndex tile;
 	byte owner;
 	/**
 	 * true if reversing is necesarry for the train to get to this depot This
@@ -1515,7 +1515,7 @@ typedef struct TrainFindDepotData {
 	bool reverse;
 } TrainFindDepotData;
 
-static bool TrainFindDepotEnumProc(uint tile, TrainFindDepotData *tfdd, int track, uint length, byte *state)
+static bool TrainFindDepotEnumProc(TileIndex tile, TrainFindDepotData *tfdd, int track, uint length, byte *state)
 {
 	if (IsTileType(tile, MP_RAILWAY) && IsTileOwner(tile, tfdd->owner)) {
 		if ((_map5[tile] & ~0x3) == 0xC0) {
@@ -1543,7 +1543,7 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 {
 	int i;
 	TrainFindDepotData tfdd;
-	uint tile = v->tile;
+	TileIndex tile = v->tile;
 
 	assert(!(v->vehstatus & VS_CRASHED));
 
@@ -1807,7 +1807,8 @@ typedef struct TrainTrackFollowerData {
 	byte best_track;
 } TrainTrackFollowerData;
 
-static bool TrainTrackFollower(uint tile, TrainTrackFollowerData *ttfd, int track, uint length, byte *state){
+static bool TrainTrackFollower(TileIndex tile, TrainTrackFollowerData *ttfd, int track, uint length, byte *state)
+{
 	if (IsTileType(tile, MP_RAILWAY) && (_map5[tile]&0xC0) == 0x40) {
 		// the tile has a signal
 		byte m3 = _map3_lo[tile];
@@ -1907,7 +1908,7 @@ unsigned int rdtsc()
 
 
 /* choose a track */
-static byte ChooseTrainTrack(Vehicle *v, uint tile, int enterdir, TrackdirBits trackdirbits)
+static byte ChooseTrainTrack(Vehicle *v, TileIndex tile, int enterdir, TrackdirBits trackdirbits)
 {
 	TrainTrackFollowerData fd;
 	uint best_track;
@@ -2384,7 +2385,7 @@ static const byte _new_vehicle_direction_table[11] = {
 	2, 3, 4,
 };
 
-static int GetNewVehicleDirectionByTile(uint new_tile, uint old_tile)
+static int GetNewVehicleDirectionByTile(TileIndex new_tile, TileIndex old_tile)
 {
 	uint offs = (TileY(new_tile) - TileY(old_tile) + 1) * 4 +
 							TileX(new_tile) - TileX(old_tile) + 1;
@@ -2506,7 +2507,7 @@ static const byte _otherside_signal_directions[14] = {
 	5, 7, 7, 5, 7, 1,
 };
 
-static void TrainMovedChangeSignals(uint tile, int dir)
+static void TrainMovedChangeSignals(TileIndex tile, int dir)
 {
 	int i;
 	if (IsTileType(tile, MP_RAILWAY) && (_map5[tile] & 0xC0) == 0x40) {
@@ -3005,7 +3006,7 @@ static const byte _breakdown_speeds[16] = {
 
 static bool TrainCheckIfLineEnds(Vehicle *v)
 {
-	uint tile;
+	TileIndex tile;
 	uint x,y;
 	int t;
 	uint32 ts;
@@ -3208,7 +3209,7 @@ static bool ValidateTrainInDepot( uint data_a, uint data_b )
 	return  (v->u.rail.track == 0x80 && (v->vehstatus | VS_STOPPED));
 }
 
-void TrainEnterDepot(Vehicle *v, uint tile)
+void TrainEnterDepot(Vehicle *v, TileIndex tile)
 {
 	SetSignalsOnBothDir(tile, _depot_track_ind[_map5[tile]&3]);
 

@@ -186,7 +186,7 @@ int32 CmdRenameSign(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  * Callback function that is called after a sign is placed
  *
  */
-void CcPlaceSign(bool success, uint tile, uint32 p1, uint32 p2)
+void CcPlaceSign(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		ShowRenameSignWindow(_new_sign_struct);
@@ -200,7 +200,7 @@ void CcPlaceSign(bool success, uint tile, uint32 p1, uint32 p2)
  *  sign-tool is selected
  *
  */
-void PlaceProc_Sign(uint tile)
+void PlaceProc_Sign(TileIndex tile)
 {
 	DoCommandP(tile, _current_player, 0, CcPlaceSign, CMD_PLACE_SIGN | CMD_MSG(STR_2809_CAN_T_PLACE_SIGN_HERE));
 }

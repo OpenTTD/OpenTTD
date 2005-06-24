@@ -21,7 +21,7 @@ static bool _road_special_gettrackstatus;
 void RoadVehEnterDepot(Vehicle *v);
 
 
-static bool HasTileRoadAt(uint tile, int i)
+static bool HasTileRoadAt(TileIndex tile, int i)
 {
 	int mask;
 	byte b;
@@ -58,7 +58,7 @@ static bool HasTileRoadAt(uint tile, int i)
 	return HASBIT(b, i);
 }
 
-static bool CheckAllowRemoveRoad(uint tile, uint br, bool *edge_road)
+static bool CheckAllowRemoveRoad(TileIndex tile, uint br, bool *edge_road)
 {
 	int blocks;
 	byte owner;
@@ -479,7 +479,7 @@ do_clear:;
 	return cost;
 }
 
-int32 DoConvertStreetRail(uint tile, uint totype, bool exec)
+int32 DoConvertStreetRail(TileIndex tile, uint totype, bool exec)
 {
 	// not a railroad crossing?
 	if (!IsLevelCrossing(tile)) return CMD_ERROR;
@@ -677,7 +677,8 @@ static int32 RemoveRoadDepot(uint tile, uint32 flags)
 
 #define M(x) (1<<(x))
 
-static int32 ClearTile_Road(uint tile, byte flags) {
+static int32 ClearTile_Road(TileIndex tile, byte flags)
+{
 	int32 ret;
 	byte m5 = _map5[tile];
 
@@ -929,12 +930,12 @@ static uint GetSlopeTileh_Road(TileInfo *ti)
 	return ti->tileh;
 }
 
-static void GetAcceptedCargo_Road(uint tile, AcceptedCargo ac)
+static void GetAcceptedCargo_Road(TileIndex tile, AcceptedCargo ac)
 {
 	/* not used */
 }
 
-static void AnimateTile_Road(uint tile)
+static void AnimateTile_Road(TileIndex tile)
 {
 	if (IsLevelCrossing(tile)) {
 		MarkTileDirtyByTile(tile);
@@ -958,7 +959,7 @@ static const byte _town_road_types_2[5][2] = {
 };
 
 
-static void TileLoop_Road(uint tile)
+static void TileLoop_Road(TileIndex tile)
 {
 	Town *t;
 	int grp;
@@ -1041,9 +1042,9 @@ static void TileLoop_Road(uint tile)
 	}
 }
 
-void ShowRoadDepotWindow(uint tile);
+void ShowRoadDepotWindow(TileIndex tile);
 
-static void ClickTile_Road(uint tile)
+static void ClickTile_Road(TileIndex tile)
 {
 	if ((_map5[tile] & 0xF0) == 0x20) {
 		ShowRoadDepotWindow(tile);
@@ -1054,7 +1055,8 @@ static const byte _road_trackbits[16] = {
 	0x0, 0x0, 0x0, 0x10, 0x0, 0x2, 0x8, 0x1A, 0x0, 0x4, 0x1, 0x15, 0x20, 0x26, 0x29, 0x3F,
 };
 
-static uint32 GetTileTrackStatus_Road(uint tile, TransportType mode)	{
+static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode)
+{
 	if (mode == TRANSPORT_RAIL) {
 		if (!IsLevelCrossing(tile))
 			return 0;
@@ -1094,7 +1096,7 @@ static const StringID _road_tile_strings[] = {
 	STR_1814_ROAD,
 };
 
-static void GetTileDesc_Road(uint tile, TileDesc *td)
+static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
 {
 	int i = (_map5[tile] >> 4);
 	if (i == 0)
@@ -1107,7 +1109,7 @@ static const byte _roadveh_enter_depot_unk0[4] = {
 	8, 9, 0, 1
 };
 
-static uint32 VehicleEnter_Road(Vehicle *v, uint tile, int x, int y)
+static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 {
 	if (IsLevelCrossing(tile)) {
 		if (v->type == VEH_Train && (_map5[tile] & 4) == 0) {
@@ -1127,7 +1129,7 @@ static uint32 VehicleEnter_Road(Vehicle *v, uint tile, int x, int y)
 	return 0;
 }
 
-static void VehicleLeave_Road(Vehicle *v, uint tile, int x, int y)
+static void VehicleLeave_Road(Vehicle *v, TileIndex tile, int x, int y)
 {
 	if (IsLevelCrossing(tile) && v->type == VEH_Train && v->next == NULL) {
 		// Turn off level crossing lights
@@ -1136,7 +1138,7 @@ static void VehicleLeave_Road(Vehicle *v, uint tile, int x, int y)
 	}
 }
 
-static void ChangeTileOwner_Road(uint tile, byte old_player, byte new_player)
+static void ChangeTileOwner_Road(TileIndex tile, byte old_player, byte new_player)
 {
 	byte b;
 

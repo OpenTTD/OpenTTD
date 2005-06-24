@@ -18,43 +18,44 @@ static uint GetSlopeTileh_Dummy(TileInfo *ti) {
 	return ti->tileh;
 }
 
-static int32 ClearTile_Dummy(uint tile, byte flags) {
+static int32 ClearTile_Dummy(TileIndex tile, byte flags)
+{
 	return_cmd_error(STR_0001_OFF_EDGE_OF_MAP);
 }
 
 
-static void GetAcceptedCargo_Dummy(uint tile, AcceptedCargo ac)
+static void GetAcceptedCargo_Dummy(TileIndex tile, AcceptedCargo ac)
 {
 	/* not used */
 }
 
-static void GetTileDesc_Dummy(uint tile, TileDesc *td)
+static void GetTileDesc_Dummy(TileIndex tile, TileDesc *td)
 {
 	td->str = STR_EMPTY;
 	td->owner = OWNER_NONE;
 }
 
-static void AnimateTile_Dummy(uint tile)
+static void AnimateTile_Dummy(TileIndex tile)
 {
 	/* not used */
 }
 
-static void TileLoop_Dummy(uint tile)
+static void TileLoop_Dummy(TileIndex tile)
 {
 	/* not used */
 }
 
-static void ClickTile_Dummy(uint tile)
+static void ClickTile_Dummy(TileIndex tile)
 {
 	/* not used */
 }
 
-static void ChangeTileOwner_Dummy(uint tile, byte old_player, byte new_player)
+static void ChangeTileOwner_Dummy(TileIndex tile, byte old_player, byte new_player)
 {
 	/* not used */
 }
 
-static uint32 GetTileTrackStatus_Dummy(uint tile, TransportType mode)
+static uint32 GetTileTrackStatus_Dummy(TileIndex tile, TransportType mode)
 {
 	return 0;
 }

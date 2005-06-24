@@ -5,9 +5,9 @@
 
 /* main_gui.c */
 void SetupColorsAndInitialWindow(void);
-void CcPlaySound10(bool success, uint tile, uint32 p1, uint32 p2);
-void CcBuildCanal(bool success, uint tile, uint32 p1, uint32 p2);
-void CcTerraform(bool success, uint tile, uint32 p1, uint32 p2);
+void CcPlaySound10(bool success, TileIndex tile, uint32 p1, uint32 p2);
+void CcBuildCanal(bool success, TileIndex tile, uint32 p1, uint32 p2);
+void CcTerraform(bool success, TileIndex tile, uint32 p1, uint32 p2);
 
 /* settings_gui.c */
 void ShowGameOptions(void);
@@ -33,7 +33,7 @@ void ShowMessageHistory(void);
 
 /* traintoolb_gui.c */
 void ShowBuildRailToolbar(int index, int button);
-void PlaceProc_BuyLand(uint tile);
+void PlaceProc_BuyLand(TileIndex tile);
 
 /* train_gui.c */
 void ShowPlayerTrains(int player, int station);
@@ -61,10 +61,10 @@ void ShowPlayerAircraft(int player, int station);
 /* terraform_gui.c */
 void ShowTerraformToolbar(void);
 
-void PlaceProc_DemolishArea(uint tile);
-void PlaceProc_LowerLand(uint tile);
-void PlaceProc_RaiseLand(uint tile);
-void PlaceProc_LevelLand(uint tile);
+void PlaceProc_DemolishArea(TileIndex tile);
+void PlaceProc_LowerLand(TileIndex tile);
+void PlaceProc_RaiseLand(TileIndex tile);
+void PlaceProc_LevelLand(TileIndex tile);
 bool GUIPlaceProcDragXY(const WindowEvent *we);
 
 enum { // max 32 - 4 = 28 types

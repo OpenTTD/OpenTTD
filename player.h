@@ -187,7 +187,7 @@ typedef struct Player {
 } Player;
 
 void ChangeOwnershipOfPlayerItems(byte old_player, byte new_player);
-void GetNameOfOwner(byte owner, uint tile);
+void GetNameOfOwner(byte owner, TileIndex tile);
 int64 CalculateCompanyValue(Player *p);
 void InvalidatePlayerWindows(Player *p);
 void AiDoGameLoop(Player *p);

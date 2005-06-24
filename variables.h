@@ -313,7 +313,7 @@ VARDEF bool _rightclick_emulate;
 // IN/OUT parameters to commands
 VARDEF byte _yearly_expenses_type;
 VARDEF TileIndex _terraform_err_tile;
-VARDEF uint _build_tunnel_endtile;
+VARDEF TileIndex _build_tunnel_endtile;
 VARDEF bool _generating_world;
 VARDEF int _new_town_size;
 VARDEF uint _returned_refit_amount;

@@ -58,7 +58,7 @@ int32 DestroyCompanyHQ(TileIndex tile, uint32 flags)
  * @param p1 relocate HQ (set to some value, usually 1 or true)
  * @param p2 unused
  */
- extern int32 CheckFlatLandBelow(uint tile, uint w, uint h, uint flags, uint invalid_dirs, int *);
+extern int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, int *);
 int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileIndex tile = TILE_FROM_XY(x,y);
@@ -193,7 +193,7 @@ static uint GetSlopeTileh_Unmovable(TileInfo *ti)
 	return 0;
 }
 
-static int32 ClearTile_Unmovable(uint tile, byte flags)
+static int32 ClearTile_Unmovable(TileIndex tile, byte flags)
 {
 	byte m5 = _map5[tile];
 
@@ -216,7 +216,7 @@ static int32 ClearTile_Unmovable(uint tile, byte flags)
 	return 0;
 }
 
-static void GetAcceptedCargo_Unmovable(uint tile, AcceptedCargo ac)
+static void GetAcceptedCargo_Unmovable(TileIndex tile, AcceptedCargo ac)
 {
 	byte m5 = _map5[tile];
 	uint level; // HQ level (depends on company performance) in the range 1..5.
@@ -250,7 +250,7 @@ static const StringID _unmovable_tile_str[] = {
 	STR_5805_COMPANY_OWNED_LAND,
 };
 
-static void GetTileDesc_Unmovable(uint tile, TileDesc *td)
+static void GetTileDesc_Unmovable(TileIndex tile, TileDesc *td)
 {
 	int i = _map5[tile];
 	if (i & 0x80) i = -1;
@@ -258,12 +258,12 @@ static void GetTileDesc_Unmovable(uint tile, TileDesc *td)
 	td->owner = GetTileOwner(tile);
 }
 
-static void AnimateTile_Unmovable(uint tile)
+static void AnimateTile_Unmovable(TileIndex tile)
 {
 	/* not used */
 }
 
-static void TileLoop_Unmovable(uint tile)
+static void TileLoop_Unmovable(TileIndex tile)
 {
 	byte m5 = _map5[tile];
 	byte level; // HQ level (depends on company performance) in the range 1..5.
@@ -300,12 +300,12 @@ static void TileLoop_Unmovable(uint tile)
 }
 
 
-static uint32 GetTileTrackStatus_Unmovable(uint tile, TransportType mode)
+static uint32 GetTileTrackStatus_Unmovable(TileIndex tile, TransportType mode)
 {
 	return 0;
 }
 
-static void ClickTile_Unmovable(uint tile)
+static void ClickTile_Unmovable(TileIndex tile)
 {
 	if (_map5[tile] & 0x80) {
 		ShowPlayerCompany(GetTileOwner(tile));
@@ -320,9 +320,9 @@ static const TileIndexDiffC _tile_add[] = {
 };
 
 /* checks, if a radio tower is within a 9x9 tile square around tile */
-static bool checkRadioTowerNearby(uint tile)
+static bool checkRadioTowerNearby(TileIndex tile)
 {
-	uint tile_s;
+	TileIndex tile_s;
 
 	tile_s = TILE_XY(TileX(tile) - 4, TileY(tile) - 4);
 
@@ -337,7 +337,7 @@ static bool checkRadioTowerNearby(uint tile)
 void GenerateUnmovables(void)
 {
 	int i,j;
-	uint tile;
+	TileIndex tile;
 	uint32 r;
 	int dir;
 	uint h;
@@ -394,7 +394,7 @@ restart:
 	} while (--i);
 }
 
-static void ChangeTileOwner_Unmovable(uint tile, byte old_player, byte new_player)
+static void ChangeTileOwner_Unmovable(TileIndex tile, byte old_player, byte new_player)
 {
 	if (!IsTileOwner(tile, old_player)) return;
 

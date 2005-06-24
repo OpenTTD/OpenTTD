@@ -5,7 +5,7 @@
 //supported on all archs)
 
 typedef struct TrackPathFinder TrackPathFinder;
-typedef bool TPFEnumProc(uint tile, void *data, int track, uint length, byte *state);
+typedef bool TPFEnumProc(TileIndex tile, void *data, int track, uint length, byte *state);
 typedef void TPFAfterProc(TrackPathFinder *tpf);
 
 
@@ -55,14 +55,14 @@ struct TrackPathFinder {
 	TrackPathFinderLink links[0x400]; /* hopefully, this is enough. */
 };
 
-void FollowTrack(uint tile, uint16 flags, byte direction, TPFEnumProc *enum_proc, TPFAfterProc *after_proc, void *data);
+void FollowTrack(TileIndex tile, uint16 flags, byte direction, TPFEnumProc *enum_proc, TPFAfterProc *after_proc, void *data);
 
 typedef struct {
-	uint tile;
+	TileIndex tile;
 	int length;
 } FindLengthOfTunnelResult;
-FindLengthOfTunnelResult FindLengthOfTunnel(uint tile, int direction);
+FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, int direction);
 
-void NewTrainPathfind(uint tile, byte direction, TPFEnumProc *enum_proc, void *data, byte *cache);
+void NewTrainPathfind(TileIndex tile, byte direction, TPFEnumProc *enum_proc, void *data, byte *cache);
 
 #endif /* PATHFIND_H */

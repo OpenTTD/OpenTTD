@@ -33,7 +33,7 @@ MemoryPool _depot_pool = { "Depots", DEPOT_POOL_MAX_BLOCKS, DEPOT_POOL_BLOCK_SIZ
  *
  * @return Returns the depot if the tile had a depot, else it returns NULL
  */
-Depot *GetDepotByTile(uint tile)
+Depot *GetDepotByTile(TileIndex tile)
 {
 	Depot *depot;
 
@@ -73,7 +73,7 @@ Depot *AllocateDepot(void)
 /**
  * Delete a depot
  */
-void DoDeleteDepot(uint tile)
+void DoDeleteDepot(TileIndex tile)
 {
 	Order order;
 	Depot *depot;

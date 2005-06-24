@@ -320,12 +320,12 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 	}
 }
 
-void DeleteAnimatedTile(uint tile)
+void DeleteAnimatedTile(TileIndex tile)
 {
 	TileIndex *ti;
 
 	for(ti=_animated_tile_list; ti!=endof(_animated_tile_list); ti++) {
-		if ( (TileIndex)tile == *ti) {
+		if (tile == *ti) {
 			/* remove the hole */
 			memmove(ti, ti+1, endof(_animated_tile_list) - 1 - ti);
 			/* and clear last item */
@@ -336,12 +336,12 @@ void DeleteAnimatedTile(uint tile)
 	}
 }
 
-bool AddAnimatedTile(uint tile)
+bool AddAnimatedTile(TileIndex tile)
 {
 	TileIndex *ti;
 
 	for(ti=_animated_tile_list; ti!=endof(_animated_tile_list); ti++) {
-		if ( (TileIndex)tile == *ti || *ti == 0) {
+		if (tile == *ti || *ti == 0) {
 			*ti = tile;
 			MarkTileDirtyByTile(tile);
 			return true;
@@ -354,7 +354,7 @@ bool AddAnimatedTile(uint tile)
 void AnimateAnimatedTiles(void)
 {
 	TileIndex *ti;
-	uint tile;
+	TileIndex tile;
 
 	for(ti=_animated_tile_list; ti!=endof(_animated_tile_list) && (tile=*ti) != 0; ti++) {
 		AnimateTile(tile);

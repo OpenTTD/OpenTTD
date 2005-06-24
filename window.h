@@ -84,8 +84,8 @@ union WindowEvent {
 	struct {
 		byte event;
 		Point pt;
-		uint tile;
-		uint starttile;
+		TileIndex tile;
+		TileIndex starttile;
 		int userdata;
 	} place;
 

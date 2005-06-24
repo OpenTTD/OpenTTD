@@ -35,7 +35,7 @@ static int GetRandomTreeType(TileIndex tile, uint seed)
 	}
 }
 
-static void PlaceTree(uint tile, uint32 r, byte m5_or)
+static void PlaceTree(TileIndex tile, uint32 r, byte m5_or)
 {
 	int tree = GetRandomTreeType(tile, (r >> 24));
 	byte m5;
@@ -66,15 +66,16 @@ static void PlaceTree(uint tile, uint32 r, byte m5_or)
 	}
 }
 
-static void DoPlaceMoreTrees(uint tile)
+static void DoPlaceMoreTrees(TileIndex tile)
 {
 	int i = 1000;
 	int x,y;
-	uint cur_tile;
 	int dist;
 
 	do {
 		uint32 r = Random();
+		TileIndex cur_tile;
+
 		x = (r & 0x1F) - 16;
 		y = ((r>>8) & 0x1F) - 16;
 
@@ -103,7 +104,7 @@ void PlaceTreesRandomly(void)
 {
 	int i;
 	uint32 r;
-	uint tile;
+	TileIndex tile;
 
 	i = ScaleByMapSize(1000);
 	do {
@@ -367,7 +368,8 @@ static uint GetSlopeTileh_Trees(TileInfo *ti) {
 	return ti->tileh;
 }
 
-static int32 ClearTile_Trees(uint tile, byte flags) {
+static int32 ClearTile_Trees(TileIndex tile, byte flags)
+{
 	int num;
 
 	if (flags & DC_EXEC && _current_player < MAX_PLAYERS) {
@@ -386,12 +388,12 @@ static int32 ClearTile_Trees(uint tile, byte flags) {
 	return num * _price.remove_trees;
 }
 
-static void GetAcceptedCargo_Trees(uint tile, AcceptedCargo ac)
+static void GetAcceptedCargo_Trees(TileIndex tile, AcceptedCargo ac)
 {
 	/* not used */
 }
 
-static void GetTileDesc_Trees(uint tile, TileDesc *td)
+static void GetTileDesc_Trees(TileIndex tile, TileDesc *td)
 {
 	byte b;
 	StringID str;
@@ -405,7 +407,7 @@ static void GetTileDesc_Trees(uint tile, TileDesc *td)
 	td->str = str;
 }
 
-static void AnimateTile_Trees(uint tile)
+static void AnimateTile_Trees(TileIndex tile)
 {
 	/* not used */
 }
@@ -417,7 +419,7 @@ static SoundFx _desert_sounds[] = {
 	SND_48_DISTANT_BIRD
 };
 
-static void TileLoopTreesDesert(uint tile)
+static void TileLoopTreesDesert(TileIndex tile)
 {
 	byte b;
 
@@ -436,7 +438,7 @@ static void TileLoopTreesDesert(uint tile)
 	}
 }
 
-static void TileLoopTreesAlps(uint tile)
+static void TileLoopTreesAlps(TileIndex tile)
 {
 	byte tmp, m2;
 	int k;
@@ -484,7 +486,7 @@ static void TileLoopTreesAlps(uint tile)
 	MarkTileDirtyByTile(tile);
 }
 
-static void TileLoop_Trees(uint tile)
+static void TileLoop_Trees(TileIndex tile)
 {
 	byte m5;
 	uint16 m2;
@@ -594,7 +596,7 @@ static void TileLoop_Trees(uint tile)
 void OnTick_Trees(void)
 {
 	uint32 r;
-	uint tile;
+	TileIndex tile;
 	byte m;
 	int tree;
 
@@ -646,17 +648,17 @@ void OnTick_Trees(void)
 	}
 }
 
-static void ClickTile_Trees(uint tile)
+static void ClickTile_Trees(TileIndex tile)
 {
 	/* not used */
 }
 
-static uint32 GetTileTrackStatus_Trees(uint tile, TransportType mode)
+static uint32 GetTileTrackStatus_Trees(TileIndex tile, TransportType mode)
 {
 	return 0;
 }
 
-static void ChangeTileOwner_Trees(uint tile, byte old_player, byte new_player)
+static void ChangeTileOwner_Trees(TileIndex tile, byte old_player, byte new_player)
 {
 	/* not used */
 }

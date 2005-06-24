@@ -64,14 +64,14 @@ void DrawRoadDepotSprite(int x, int y, int image);
 
 /* water_land.c */
 void DrawShipDepotSprite(int x, int y, int image);
-void TileLoop_Water(uint tile);
+void TileLoop_Water(TileIndex tile);
 
 /* players.c */
 bool CheckPlayerHasMoney(int32 cost);
 void SubtractMoneyFromPlayer(int32 cost);
 void SubtractMoneyFromPlayerFract(byte player, int32 cost);
 bool CheckOwnership(byte owner);
-bool CheckTileOwnership(uint tile);
+bool CheckTileOwnership(TileIndex tile);
 StringID GetPlayerNameString(byte player, byte index);
 
 /* standard */
@@ -124,18 +124,18 @@ void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...
 void UndrawTextMessage(void);
 void TextMessageDailyLoop(void);
 
-bool AddAnimatedTile(uint tile);
-void DeleteAnimatedTile(uint tile);
+bool AddAnimatedTile(TileIndex tile);
+void DeleteAnimatedTile(TileIndex tile);
 void AnimateAnimatedTiles(void);
 void InitializeAnimatedTiles(void);
 
 /* tunnelbridge_cmd.c */
-bool CheckTunnelInWay(uint tile, int z);
+bool CheckTunnelInWay(TileIndex tile, int z);
 bool CheckBridge_Stuff(byte bridge_type, int bridge_len);
 uint32 GetBridgeLength(TileIndex begin, TileIndex end);
 int CalcBridgeLenCostFactor(int x);
 
-typedef void CommandCallback(bool success, uint tile, uint32 p1, uint32 p2);
+typedef void CommandCallback(bool success, TileIndex tile, uint32 p1, uint32 p2);
 bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback, uint32 cmd);
 
 /* network.c */
@@ -148,7 +148,7 @@ bool NetworkServerStart(void);
 bool NetworkClientConnectGame(const char* host, unsigned short port);
 void NetworkReboot(void);
 void NetworkDisconnect(void);
-void NetworkSend_Command(uint32 tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback);
+void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback);
 
 /* misc_cmd.c */
 void PlaceTreesRandomly(void);
@@ -197,12 +197,12 @@ void ShowFeederIncomeAnimation(int x, int y, int z, int32 cost);
 
 void DrawFoundation(TileInfo *ti, uint f);
 
-bool CheckIfAuthorityAllows(uint tile);
-Town *ClosestTownFromTile(uint tile, uint threshold);
+bool CheckIfAuthorityAllows(TileIndex tile);
+Town *ClosestTownFromTile(TileIndex tile, uint threshold);
 void ChangeTownRating(Town *t, int add, int max);
 
 uint GetRoadBitsByTile(TileIndex tile);
-int GetTownRadiusGroup(Town *t, uint tile);
+int GetTownRadiusGroup(Town *t, TileIndex tile);
 void ShowNetworkChatQueryWindow(byte desttype, byte dest);
 void ShowNetworkGiveMoneyWindow(byte player);
 void ShowNetworkNeedGamePassword(void);

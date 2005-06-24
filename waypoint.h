@@ -53,8 +53,8 @@ static inline bool IsRailWaypoint(byte m5)
 	return (m5 & 0xFC) == 0xC4;
 }
 
-int32 RemoveTrainWaypoint(uint tile, uint32 flags, bool justremove);
-Station *ComposeWaypointStation(uint tile);
+int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove);
+Station *ComposeWaypointStation(TileIndex tile);
 Waypoint *GetWaypointByTile(TileIndex tile);
 void ShowRenameWaypointWindow(Waypoint *cp);
 void DrawWaypointSprite(int x, int y, int image, int railtype);

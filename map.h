@@ -45,7 +45,7 @@ typedef enum {
 } Owner;
 
 enum {
-	INVALID_TILE = (uint32) -1
+	INVALID_TILE = (TileIndex)-1
 };
 
 enum {

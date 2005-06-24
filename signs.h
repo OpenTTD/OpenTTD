@@ -55,7 +55,7 @@ VARDEF bool _sign_sort_dirty;
 VARDEF uint16 *_sign_sort;
 
 void UpdateAllSignVirtCoords(void);
-void PlaceProc_Sign(uint tile);
+void PlaceProc_Sign(TileIndex tile);
 
 /* misc.c */
 void ShowRenameSignWindow(SignStruct *ss);

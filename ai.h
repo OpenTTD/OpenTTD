@@ -240,20 +240,20 @@ AyStar *new_AyStar_AiPathFinder(int max_tiles_around, Ai_PathFinderInfo *PathFin
 void clean_AyStar_AiPathFinder(AyStar *aystar, Ai_PathFinderInfo *PathFinderInfo);
 
 // ai_shared.c
-int AiNew_GetRailDirection(uint tile_a, uint tile_b, uint tile_c);
-int AiNew_GetRoadDirection(uint tile_a, uint tile_b, uint tile_c);
-int AiNew_GetDirection(uint tile_a, uint tile_b);
+int AiNew_GetRailDirection(TileIndex tile_a, TileIndex tile_b, TileIndex tile_c);
+int AiNew_GetRoadDirection(TileIndex tile_a, TileIndex tile_b, TileIndex tile_c);
+int AiNew_GetDirection(TileIndex tile_a, TileIndex tile_b);
 bool AiNew_SetSpecialVehicleFlag(Player *p, Vehicle *v, uint flag);
 uint AiNew_GetSpecialVehicleFlag(Player *p, Vehicle *v);
 
 // ai_build.c
-bool AiNew_Build_CompanyHQ(Player *p, uint tile);
-int AiNew_Build_Station(Player *p, byte type, uint tile, byte length, byte numtracks, byte direction, byte flag);
-int AiNew_Build_Bridge(Player *p, uint tile_a, uint tile_b, byte flag);
+bool AiNew_Build_CompanyHQ(Player *p, TileIndex tile);
+int AiNew_Build_Station(Player *p, byte type, TileIndex tile, byte length, byte numtracks, byte direction, byte flag);
+int AiNew_Build_Bridge(Player *p, TileIndex tile_a, TileIndex tile_b, byte flag);
 int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte flag);
 int AiNew_PickVehicle(Player *p);
-int AiNew_Build_Vehicle(Player *p, uint tile, byte flag);
-int AiNew_Build_Depot(Player *p, uint tile, byte direction, byte flag);
+int AiNew_Build_Vehicle(Player *p, TileIndex tile, byte flag);
+int AiNew_Build_Depot(Player *p, TileIndex tile, byte direction, byte flag);
 
 
 #endif

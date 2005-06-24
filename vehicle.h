@@ -275,7 +275,7 @@ bool CanRefitTo(const Vehicle *v, CargoID cid_to);
 
 void ViewportAddVehicles(DrawPixelInfo *dpi);
 
-void TrainEnterDepot(Vehicle *v, uint tile);
+void TrainEnterDepot(Vehicle *v, TileIndex tile);
 
 void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u, bool building) ;
 
@@ -289,14 +289,14 @@ Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicle type);
 Vehicle *CreateEffectVehicleAbove(int x, int y, int z, EffectVehicle type);
 Vehicle *CreateEffectVehicleRel(const Vehicle *v, int x, int y, int z, EffectVehicle type);
 
-uint32 VehicleEnterTile(Vehicle *v, uint tile, int x, int y);
+uint32 VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y);
 
 void VehicleInTheWayErrMsg(Vehicle *v);
 Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z);
 TileIndex GetVehicleOutOfTunnelTile(const Vehicle *v);
 
-bool UpdateSignalsOnSegment(uint tile, byte direction);
-void SetSignalsOnBothDir(uint tile, byte track);
+bool UpdateSignalsOnSegment(TileIndex tile, byte direction);
+void SetSignalsOnBothDir(TileIndex tile, byte track);
 
 Vehicle *CheckClickOnVehicle(ViewPort *vp, int x, int y);
 //uint GetVehicleWeight(Vehicle *v);
@@ -326,8 +326,8 @@ bool VehicleNeedsService(const Vehicle *v);
 
 typedef struct GetNewVehiclePosResult {
 	int x,y;
-	uint old_tile;
-	uint new_tile;
+	TileIndex old_tile;
+	TileIndex new_tile;
 } GetNewVehiclePosResult;
 
 /**

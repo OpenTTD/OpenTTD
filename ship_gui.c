@@ -302,7 +302,7 @@ static void ShowShipDetailsWindow(Vehicle *v)
 	w->caption_color = v->owner;
 }
 
-void CcBuildShip(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildShip(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	if (!success) return;
@@ -602,7 +602,7 @@ void ShowShipViewWindow(Vehicle *v)
 
 static void DrawShipDepotWindow(Window *w)
 {
-	uint tile;
+	TileIndex tile;
 	Vehicle *v;
 	int num,x,y;
 	Depot *depot;
@@ -825,7 +825,7 @@ static const WindowDesc _ship_depot_desc = {
 	ShipDepotWndProc
 };
 
-void ShowShipDepotWindow(uint tile)
+void ShowShipDepotWindow(TileIndex tile)
 {
 	Window *w;
 
@@ -1010,7 +1010,7 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case 9: { /* Build new Vehicle */
-			uint tile;
+			TileIndex tile;
 
 			if (!IsWindowOfPrototype(w, _player_ships_widgets))
 				break;

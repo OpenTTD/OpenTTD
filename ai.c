@@ -281,7 +281,6 @@ static void AiHandleReplaceTrain(Player *p)
 	Vehicle *v = p->ai.cur_veh;
 	BackuppedOrders orderbak[1];
 	int veh;
-	uint tile;
 
 	// wait until the vehicle reaches the depot.
 	if (!IsTileDepotType(v->tile, TRANSPORT_RAIL) || v->u.rail.track != 0x80 || !(v->vehstatus&VS_STOPPED)) {
@@ -291,6 +290,8 @@ static void AiHandleReplaceTrain(Player *p)
 
 	veh = AiChooseTrainToReplaceWith(p, v);
 	if (veh != -1) {
+		TileIndex tile;
+
 		BackupVehicleOrders(v, orderbak);
 		tile = v->tile;
 
@@ -310,7 +311,6 @@ static void AiHandleReplaceRoadVeh(Player *p)
 	Vehicle *v = p->ai.cur_veh;
 	BackuppedOrders orderbak[1];
 	int veh;
-	uint tile;
 
 	if (!IsTileDepotType(v->tile, TRANSPORT_ROAD) || v->u.road.state != 254 || !(v->vehstatus&VS_STOPPED)) {
 		AiHandleGotoDepot(p, CMD_SEND_ROADVEH_TO_DEPOT);
@@ -319,6 +319,8 @@ static void AiHandleReplaceRoadVeh(Player *p)
 
 	veh = AiChooseRoadVehToReplaceWith(p, v);
 	if (veh != -1) {
+		TileIndex tile;
+
 		BackupVehicleOrders(v, orderbak);
 		tile = v->tile;
 
@@ -338,7 +340,6 @@ static void AiHandleReplaceAircraft(Player *p)
 	Vehicle *v = p->ai.cur_veh;
 	int veh;
 	BackuppedOrders orderbak[1];
-	uint tile;
 
 	if (!IsAircraftHangarTile(v->tile) && !(v->vehstatus&VS_STOPPED)) {
 		AiHandleGotoDepot(p, CMD_SEND_AIRCRAFT_TO_HANGAR);
@@ -347,6 +348,8 @@ static void AiHandleReplaceAircraft(Player *p)
 
 	veh = AiChooseAircraftToReplaceWith(p, v);
 	if (veh != -1) {
+		TileIndex tile;
+
 		BackupVehicleOrders(v, orderbak);
 		tile = v->tile;
 
@@ -1532,11 +1535,10 @@ static bool AiCheckTrackResources(TileIndex tile, const AiDefaultBlockData *p, b
 {
 	uint values[NUM_CARGO];
 	int w,h;
-	uint tile2;
 	int rad;
 
 	for(;p->mode != 4;p++) if (p->mode == 1) {
-		tile2 = TILE_ADD(tile, ToTileIndexDiff(p->tileoffs));
+		TileIndex tile2 = TILE_ADD(tile, ToTileIndexDiff(p->tileoffs));
 
 		w = ((p->attr>>1) & 7);
 		h = ((p->attr>>4) & 7);
@@ -1833,7 +1835,7 @@ typedef struct AiRailPathFindData {
 	bool flag;
 } AiRailPathFindData;
 
-static bool AiEnumFollowTrack(uint tile, AiRailPathFindData *a, int track, uint length, byte *state)
+static bool AiEnumFollowTrack(TileIndex tile, AiRailPathFindData *a, int track, uint length, byte *state)
 {
 	if (a->flag)
 		return true;
@@ -2175,7 +2177,7 @@ static bool AiRemoveTileAndGoForward(Player *p)
 	byte b;
 	int bit;
 	const byte *ptr;
-	uint tile = p->ai.cur_tile_a;
+	TileIndex tile = p->ai.cur_tile_a;
 	int offs;
 	TileIndex tilenew;
 
@@ -2494,7 +2496,8 @@ static bool AiCheckRoadResources(TileIndex tile, const AiDefaultBlockData *p, by
 		if (p->mode == 4) {
 			return true;
 		} else if (p->mode == 1) {
-			uint tile2 = TILE_ADD(tile, ToTileIndexDiff(p->tileoffs));
+			TileIndex tile2 = TILE_ADD(tile, ToTileIndexDiff(p->tileoffs));
+
 			if (cargo & 0x80) {
 				GetProductionAroundTiles(values, tile2, 1, 1, rad);
 				return values[cargo & 0x7F] != 0;
@@ -2765,13 +2768,13 @@ static bool AiCheckRoadPathBetter(AiRoadFinder *arf, const byte *p)
 }
 
 
-static bool AiEnumFollowRoad(uint tile, AiRoadEnum *a, int track, uint length, byte *state)
+static bool AiEnumFollowRoad(TileIndex tile, AiRoadEnum *a, int track, uint length, byte *state)
 {
 	uint dist = DistanceManhattan(tile, a->dest);
-	uint tile2;
 
 	if (dist <= a->best_dist) {
-		tile2 = TILE_MASK(tile + TileOffsByDir(_dir_by_track[track]));
+		TileIndex tile2 = TILE_MASK(tile + TileOffsByDir(_dir_by_track[track]));
+
 		if (IsTileType(tile2, MP_STREET) &&
 				(_map5[tile2]&0xF0) == 0) {
 			a->best_dist = dist;
@@ -2793,7 +2796,7 @@ static const uint16 _ai_road_table_and[4] = {
 static bool AiCheckRoadFinished(Player *p)
 {
 	AiRoadEnum are;
-	uint tile;
+	TileIndex tile;
 	int dir = p->ai.cur_dir_a;
 	uint32 bits;
 	int i;
@@ -2824,7 +2827,7 @@ static bool AiCheckRoadFinished(Player *p)
 }
 
 
-static bool AiBuildRoadHelper(uint tile, int flags, int type)
+static bool AiBuildRoadHelper(TileIndex tile, int flags, int type)
 {
 	static const byte _road_bits[] = {
 		8+2,
@@ -2962,7 +2965,7 @@ static void AiBuildRoadConstruct(Player *p)
 {
 	AiRoadFinder arf;
 	int i;
-	uint tile;
+	TileIndex tile;
 
 	// Reached destination?
 	if (AiCheckRoadFinished(p)) {
@@ -3164,7 +3167,8 @@ static int AiGetStationIdFromRoadBlock(TileIndex tile, int id)
 static void AiStateBuildRoadVehicles(Player *p)
 {
 	const AiDefaultBlockData *ptr;
-	uint tile,loco_id;
+	TileIndex tile;
+	uint loco_id;
 	int veh, i;
 
 	ptr = _road_default_block_data[p->ai.src.cur_building_rule]->data;
@@ -3236,7 +3240,8 @@ static void AiStateDeleteRoadBlocks(Player *p)
 
 static bool AiCheckIfHangar(Station *st)
 {
-	uint tile = st->airport_tile;
+	TileIndex tile = st->airport_tile;
+
 	// HANGAR of airports
 	// 0x20 - hangar large airport (32)
 	// 0x41 - hangar small airport (65)
@@ -3348,7 +3353,6 @@ static bool AiCheckAirportResources(TileIndex tile, const AiDefaultBlockData *p,
 {
 	uint values[NUM_CARGO];
 	int w,h;
-	uint tile2;
 	int rad;
 
 	if (_patches.modified_catchment) {
@@ -3358,7 +3362,8 @@ static bool AiCheckAirportResources(TileIndex tile, const AiDefaultBlockData *p,
 	}
 
 	for(;p->mode==0;p++) {
-		tile2 = TILE_ADD(tile, ToTileIndexDiff(p->tileoffs));
+		TileIndex tile2 = TILE_ADD(tile, ToTileIndexDiff(p->tileoffs));
+
 		w = _airport_size_x[p->attr];
 		h = _airport_size_y[p->attr];
 		if (cargo & 0x80) {
@@ -3481,7 +3486,7 @@ static int AiGetStationIdFromAircraftBlock(TileIndex tile, int id)
 static void AiStateBuildAircraftVehicles(Player *p)
 {
 	const AiDefaultBlockData *ptr;
-	uint tile;
+	TileIndex tile;
 	int veh;
 	int i;
 	uint loco_id;

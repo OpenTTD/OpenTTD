@@ -844,7 +844,8 @@ static bool AircraftController(Vehicle *v)
 
 	// prevent going to 0,0 if airport is deleted.
 	{
-		uint tile = st->airport_tile;
+		TileIndex tile = st->airport_tile;
+
 		if (tile == 0) tile = st->xy;
 		// xy of destination
 		x = TileX(tile) * 16;

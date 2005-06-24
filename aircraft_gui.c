@@ -71,7 +71,7 @@ static void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selectio
 	}
 }
 
-void CcBuildAircraft(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
@@ -206,7 +206,7 @@ static const WindowDesc _new_aircraft_desc = {
 	NewAircraftWndProc
 };
 
-static void ShowBuildAircraftWindow(uint tile)
+static void ShowBuildAircraftWindow(TileIndex tile)
 {
 	Window *w;
 
@@ -506,7 +506,8 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 		StringID str;
 
 		{
-			uint tile = v->tile;
+			TileIndex tile = v->tile;
+
 			if (IsTileType(tile, MP_STATION) &&
 					(_map5[tile] == 32 || _map5[tile] == 65) &&
 					v->vehstatus&VS_STOPPED)
@@ -626,7 +627,7 @@ void ShowAircraftViewWindow(Vehicle *v)
 
 static void DrawAircraftDepotWindow(Window *w)
 {
-	uint tile;
+	TileIndex tile;
 	Vehicle *v;
 	int num,x,y;
 
@@ -677,7 +678,7 @@ static void DrawAircraftDepotWindow(Window *w)
 static int GetVehicleFromAircraftDepotWndPt(Window *w, int x, int y, Vehicle **veh) {
 	uint xt,row,xm,ym;
 	Vehicle *v;
-	uint tile;
+	TileIndex tile;
 	int pos;
 
 	xt = x / 74;
@@ -844,7 +845,7 @@ static const WindowDesc _aircraft_depot_desc = {
 };
 
 
-void ShowAircraftDepotWindow(uint tile)
+void ShowAircraftDepotWindow(TileIndex tile)
 {
 	Window *w;
 
@@ -1028,7 +1029,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case 9: { /* Build new Vehicle */
-			uint tile;
+			TileIndex tile;
 
 			if (!IsWindowOfPrototype(w, _player_aircraft_widgets))
 				break;

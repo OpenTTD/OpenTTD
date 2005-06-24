@@ -21,7 +21,7 @@
 
 extern uint16 _custom_sprites_base;
 
-void ShowTrainDepotWindow(uint tile);
+void ShowTrainDepotWindow(TileIndex tile);
 
 /* Format of rail map5 byte.
  * 00 abcdef  => Normal rail
@@ -952,9 +952,9 @@ int32 CmdRemoveSignalTrack(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return CmdSignalTrackHelper(x, y, flags, p1, SETBIT(p2, 0));
 }
 
-typedef int32 DoConvertRailProc(uint tile, uint totype, bool exec);
+typedef int32 DoConvertRailProc(TileIndex tile, uint totype, bool exec);
 
-static int32 DoConvertRail(uint tile, uint totype, bool exec)
+static int32 DoConvertRail(TileIndex tile, uint totype, bool exec)
 {
 	if (!CheckTileOwnership(tile) || !EnsureNoVehicle(tile))
 		return CMD_ERROR;
@@ -972,9 +972,9 @@ static int32 DoConvertRail(uint tile, uint totype, bool exec)
 	return _price.build_rail / 2;
 }
 
-extern int32 DoConvertStationRail(uint tile, uint totype, bool exec);
-extern int32 DoConvertStreetRail(uint tile, uint totype, bool exec);
-extern int32 DoConvertTunnelBridgeRail(uint tile, uint totype, bool exec);
+extern int32 DoConvertStationRail(TileIndex tile, uint totype, bool exec);
+extern int32 DoConvertStreetRail(TileIndex tile, uint totype, bool exec);
+extern int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec);
 
 /** Convert one rail type to the other. You can convert normal rail to
  * monorail/maglev easily or vice-versa.
@@ -1026,7 +1026,7 @@ int32 CmdConvertRail(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	return (cost == 0) ? CMD_ERROR : cost;
 }
 
-static int32 RemoveTrainDepot(uint tile, uint32 flags)
+static int32 RemoveTrainDepot(TileIndex tile, uint32 flags)
 {
 	if (!CheckTileOwnership(tile) && _current_player != OWNER_WATER)
 		return CMD_ERROR;
@@ -1537,7 +1537,7 @@ typedef struct SetSignalsData {
 
 } SetSignalsData;
 
-static bool SetSignalsEnumProc(uint tile, SetSignalsData *ssd, int track, uint length, byte *state)
+static bool SetSignalsEnumProc(TileIndex tile, SetSignalsData *ssd, int track, uint length, byte *state)
 {
 	// the tile has signals?
 	if (IsTileType(tile, MP_RAILWAY)) {
@@ -1697,7 +1697,7 @@ static void ChangeSignalStates(SetSignalsData *ssd)
 
 	// then mark the signals in the segment accordingly
 	for(i=0; i!=ssd->cur; i++) {
-		uint tile = ssd->tile[i];
+		TileIndex tile = ssd->tile[i];
 		byte bit = _signals_table[ssd->bit[i]];
 		uint16 m2 = _map2[tile];
 
@@ -1745,7 +1745,7 @@ make_red:
 }
 
 
-bool UpdateSignalsOnSegment(uint tile, byte direction)
+bool UpdateSignalsOnSegment(TileIndex tile, byte direction)
 {
 	SetSignalsData ssd;
 	int result = -1;
@@ -1776,7 +1776,7 @@ bool UpdateSignalsOnSegment(uint tile, byte direction)
 	return (bool)result;
 }
 
-void SetSignalsOnBothDir(uint tile, byte track)
+void SetSignalsOnBothDir(TileIndex tile, byte track)
 {
 	static const byte _search_dir_1[6] = {1, 3, 1, 3, 5, 3};
 	static const byte _search_dir_2[6] = {5, 7, 7, 5, 7, 1};
@@ -1833,17 +1833,17 @@ static uint GetSlopeTileh_Track(TileInfo *ti)
 	return ti->tileh;
 }
 
-static void GetAcceptedCargo_Track(uint tile, AcceptedCargo ac)
+static void GetAcceptedCargo_Track(TileIndex tile, AcceptedCargo ac)
 {
 	/* not used */
 }
 
-static void AnimateTile_Track(uint tile)
+static void AnimateTile_Track(TileIndex tile)
 {
 	/* not used */
 }
 
-static void TileLoop_Track(uint tile)
+static void TileLoop_Track(TileIndex tile)
 {
 	byte a2;
 	byte rail;
@@ -1929,7 +1929,8 @@ modify_me:;
 }
 
 
-static uint32 GetTileTrackStatus_Track(uint tile, TransportType mode) {
+static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode)
+{
 	byte m5, a;
 	uint16 b;
 	uint32 ret;
@@ -1974,7 +1975,7 @@ static uint32 GetTileTrackStatus_Track(uint tile, TransportType mode) {
 	return ret;
 }
 
-static void ClickTile_Track(uint tile)
+static void ClickTile_Track(TileIndex tile)
 {
 	if (IsTileDepotType(tile, TRANSPORT_RAIL))
 		ShowTrainDepotWindow(tile);
@@ -2011,7 +2012,7 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 	}
 }
 
-static void ChangeTileOwner_Track(uint tile, byte old_player, byte new_player)
+static void ChangeTileOwner_Track(TileIndex tile, byte old_player, byte new_player)
 {
 	if (!IsTileOwner(tile, old_player)) return;
 
@@ -2032,7 +2033,7 @@ static const byte _enter_directions[4] = {5, 7, 1, 3};
 static const byte _leave_directions[4] = {1, 3, 5, 7};
 static const byte _depot_track_mask[4] = {1, 2, 1, 2};
 
-static uint32 VehicleEnter_Track(Vehicle *v, uint tile, int x, int y)
+static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 {
 	byte fract_coord;
 	byte fract_coord_leave;

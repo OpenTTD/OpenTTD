@@ -11,7 +11,7 @@
 
 // Tests if a station can be build on the given spot
 // TODO: make it train compatible
-static bool TestCanBuildStationHere(uint tile, byte dir)
+static bool TestCanBuildStationHere(TileIndex tile, byte dir)
 {
 	Player *p = GetPlayer(_current_player);
 

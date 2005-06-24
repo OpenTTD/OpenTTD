@@ -549,10 +549,10 @@ void *AddStringToDraw(int x, int y, StringID string, uint32 params_1, uint32 par
 
 #ifdef DEBUG_TILE_PUSH
 static int _num_push;
-static uint _pushed_tile[200];
+static TileIndex _pushed_tile[200];
 static int _pushed_track[200];
 
-static uint _stored_tile[200];
+static TileIndex _stored_tile[200];
 static int _stored_track[200];
 static int _num_stored;
 
@@ -564,7 +564,7 @@ void dbg_store_path(void)
 	MarkWholeScreenDirty();
 }
 
-void dbg_push_tile(uint tile, int track)
+void dbg_push_tile(TileIndex tile, int track)
 {
 	_pushed_tile[_num_push] = tile;
 	_pushed_track[_num_push++] = track;
@@ -684,7 +684,7 @@ static void DrawTileSelection(const TileInfo *ti)
 
 		} else if (IsPartOfAutoLine(ti->x, ti->y)) { // autorail highlighting long line
 				int dir = _thd.drawstyle & ~0xF0;
-				uint start = TILE_FROM_XY(_thd.selstart.x, _thd.selstart.y);
+				TileIndex start = TILE_FROM_XY(_thd.selstart.x, _thd.selstart.y);
 				int diffx, diffy;
 				int side;
 
@@ -1698,10 +1698,8 @@ static bool CheckClickOnWaypoint(ViewPort *vp, int x, int y)
 static void CheckClickOnLandscape(ViewPort *vp, int x, int y)
 {
 	Point pt = TranslateXYToTileCoord(vp,x,y);
-	if (pt.x != -1) {
-		uint tile = TILE_FROM_XY(pt.x, pt.y);
-		ClickTile(tile);
-	}
+
+	if (pt.x != -1) ClickTile(TILE_FROM_XY(pt.x, pt.y));
 }
 
 void HandleClickOnTrain(Vehicle *v);
@@ -1942,7 +1940,7 @@ void UpdateTileSelection(void)
 }
 
 // highlighting tiles while only going over them with the mouse
-void VpStartPlaceSizing(uint tile, int user)
+void VpStartPlaceSizing(TileIndex tile, int user)
 {
 	_thd.userdata = user;
 	_thd.selend.x = TileX(tile) * 16;

@@ -396,7 +396,7 @@ void NetworkAddCommandQueue(NetworkClientState *cs, CommandPacket *cp)
 }
 
 // Prepare a DoCommand to be send over the network
-void NetworkSend_Command(uint32 tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback)
+void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback)
 {
 	CommandPacket *c = malloc(sizeof(CommandPacket));
 	byte temp_callback;

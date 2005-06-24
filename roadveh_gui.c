@@ -410,7 +410,7 @@ static void DrawNewRoadVehWindow(Window *w)
 	}
 }
 
-void CcBuildRoadVeh(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildRoadVeh(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
@@ -526,7 +526,7 @@ static void ShowBuildRoadVehWindow(TileIndex tile)
 
 static void DrawRoadDepotWindow(Window *w)
 {
-	uint tile;
+	TileIndex tile;
 	Vehicle *v;
 	int num,x,y;
 	Depot *depot;
@@ -753,7 +753,7 @@ static const WindowDesc _road_depot_desc = {
 	RoadDepotWndProc
 };
 
-void ShowRoadDepotWindow(uint tile)
+void ShowRoadDepotWindow(TileIndex tile)
 {
 	Window *w;
 
@@ -909,7 +909,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case 9: { /* Build new Vehicle */
-			uint tile;
+			TileIndex tile;
 
 			if (!IsWindowOfPrototype(w, _player_roadveh_widgets))
 				break;

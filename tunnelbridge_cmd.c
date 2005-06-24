@@ -11,7 +11,7 @@
 #include "town.h"
 #include "sound.h"
 
-extern void DrawCanalWater(uint tile);
+extern void DrawCanalWater(TileIndex tile);
 
 static const byte _bridge_available_year[MAX_BRIDGES] = {
 	0, 0, 10, 0, 10, 10, 10, 10, 10, 10, 75, 85, 90
@@ -400,12 +400,10 @@ not_valid_below:;
 	return cost;
 }
 
-static bool DoCheckTunnelInWay(uint tile, uint z, uint dir)
+static bool DoCheckTunnelInWay(TileIndex tile, uint z, uint dir)
 {
+	TileIndexDiff delta = TileOffsByDir(dir);
 	TileInfo ti;
-	int delta;
-
-	delta = TileOffsByDir(dir);
 
 	do {
 		tile -= delta;
@@ -420,7 +418,7 @@ static bool DoCheckTunnelInWay(uint tile, uint z, uint dir)
 	return true;
 }
 
-bool CheckTunnelInWay(uint tile, int z)
+bool CheckTunnelInWay(TileIndex tile, int z)
 {
 	return DoCheckTunnelInWay(tile,z,0) &&
 		DoCheckTunnelInWay(tile,z,1) &&
@@ -593,7 +591,7 @@ TileIndex CheckTunnelBusy(TileIndex tile, uint *length)
 	byte m5 = _map5[tile];
 	int delta = TileOffsByDir(m5 & 3);
 	uint len = 0;
-	uint starttile = tile;
+	TileIndex starttile = tile;
 	Vehicle *v;
 
 	do {
@@ -617,7 +615,7 @@ TileIndex CheckTunnelBusy(TileIndex tile, uint *length)
 	return tile;
 }
 
-static int32 DoClearTunnel(uint tile, uint32 flags)
+static int32 DoClearTunnel(TileIndex tile, uint32 flags)
 {
 	Town *t;
 	TileIndex endtile;
@@ -662,10 +660,10 @@ static int32 DoClearTunnel(uint tile, uint32 flags)
 	return  _price.clear_tunnel * (length + 1);
 }
 
-static uint FindEdgesOfBridge(uint tile, uint *endtile)
+static TileIndex FindEdgesOfBridge(TileIndex tile, TileIndex *endtile)
 {
 	int direction = _map5[tile] & 1;
-	uint start;
+	TileIndex start;
 
 	// find start of bridge
 	for(;;) {
@@ -688,9 +686,9 @@ static uint FindEdgesOfBridge(uint tile, uint *endtile)
 	return start;
 }
 
-static int32 DoClearBridge(uint tile, uint32 flags)
+static int32 DoClearBridge(TileIndex tile, uint32 flags)
 {
-	uint endtile;
+	TileIndex endtile;
 	Vehicle *v;
 	Town *t;
 	int direction;
@@ -811,7 +809,8 @@ clear_it:;
 	return ((((endtile - tile) >> (direction?8:0))&0xFF)+1) * _price.clear_bridge;
 }
 
-static int32 ClearTile_TunnelBridge(uint tile, byte flags) {
+static int32 ClearTile_TunnelBridge(TileIndex tile, byte flags)
+{
 	byte m5 = _map5[tile];
 
 	if ((m5 & 0xF0) == 0) {
@@ -829,7 +828,7 @@ static int32 ClearTile_TunnelBridge(uint tile, byte flags) {
 	return CMD_ERROR;
 }
 
-int32 DoConvertTunnelBridgeRail(uint tile, uint totype, bool exec)
+int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 {
 	TileIndex endtile;
 	uint length;
@@ -1229,7 +1228,7 @@ static uint GetSlopeTileh_TunnelBridge(TileInfo *ti) {
 }
 
 
-static void GetAcceptedCargo_TunnelBridge(uint tile, AcceptedCargo ac)
+static void GetAcceptedCargo_TunnelBridge(TileIndex tile, AcceptedCargo ac)
 {
 	/* not used */
 }
@@ -1266,7 +1265,7 @@ static const StringID _bridge_tile_str[(MAX_BRIDGES + 3) + (MAX_BRIDGES + 3)] = 
 	0,0,0,
 };
 
-static void GetTileDesc_TunnelBridge(uint tile, TileDesc *td)
+static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 {
 	int delta;
 
@@ -1285,12 +1284,12 @@ static void GetTileDesc_TunnelBridge(uint tile, TileDesc *td)
 }
 
 
-static void AnimateTile_TunnelBridge(uint tile)
+static void AnimateTile_TunnelBridge(TileIndex tile)
 {
 	/* not used */
 }
 
-static void TileLoop_TunnelBridge(uint tile)
+static void TileLoop_TunnelBridge(TileIndex tile)
 {
 	if (_opt.landscape == LT_HILLY) {
 		if ( GetTileZ(tile) > _opt.snow_line) {
@@ -1315,13 +1314,13 @@ static void TileLoop_TunnelBridge(uint tile)
 	if ((_map5[tile] & 0xF8) == 0xC8) TileLoop_Water(tile);
 }
 
-static void ClickTile_TunnelBridge(uint tile)
+static void ClickTile_TunnelBridge(TileIndex tile)
 {
 	/* not used */
 }
 
 
-static uint32 GetTileTrackStatus_TunnelBridge(uint tile, TransportType mode)
+static uint32 GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType mode)
 {
 	uint32 result;
 	byte m5 = _map5[tile];
@@ -1368,7 +1367,7 @@ static uint32 GetTileTrackStatus_TunnelBridge(uint tile, TransportType mode)
 	return 0;
 }
 
-static void ChangeTileOwner_TunnelBridge(uint tile, byte old_player, byte new_player)
+static void ChangeTileOwner_TunnelBridge(TileIndex tile, byte old_player, byte new_player)
 {
 	if (!IsTileOwner(tile, old_player)) return;
 
@@ -1404,7 +1403,7 @@ static const byte _tunnel_fractcoord_5[4] = {0x92, 0x89, 0x58, 0x25};
 static const byte _tunnel_fractcoord_6[4] = {0x92, 0x89, 0x56, 0x45};
 static const byte _tunnel_fractcoord_7[4] = {0x52, 0x85, 0x96, 0x49};
 
-static uint32 VehicleEnter_TunnelBridge(Vehicle *v, uint tile, int x, int y)
+static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y)
 {
 	int z;
 	int dir, vdir;

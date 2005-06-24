@@ -29,19 +29,19 @@ struct {
 } _railstation;
 
 
-static void HandleStationPlacement(uint start, uint end);
+static void HandleStationPlacement(TileIndex start, TileIndex end);
 static void ShowBuildTrainDepotPicker(void);
 static void ShowBuildWaypointPicker(void);
 static void ShowStationBuilder(void);
 
 typedef void OnButtonClick(Window *w);
 
-void CcPlaySound1E(bool success, uint tile, uint32 p1, uint32 p2)
+void CcPlaySound1E(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) SndPlayTileFx(SND_20_SPLAT_2, tile);
 }
 
-static void GenericPlaceRail(uint tile, int cmd)
+static void GenericPlaceRail(TileIndex tile, int cmd)
 {
 	DoCommandP(tile, _cur_railtype, cmd, CcPlaySound1E,
 		_remove_button_clicked ?
@@ -50,34 +50,34 @@ static void GenericPlaceRail(uint tile, int cmd)
 		);
 }
 
-static void PlaceRail_N(uint tile)
+static void PlaceRail_N(TileIndex tile)
 {
 	int cmd = _tile_fract_coords.x > _tile_fract_coords.y ? 4 : 5;
 	GenericPlaceRail(tile, cmd);
 }
 
-static void PlaceRail_NE(uint tile)
+static void PlaceRail_NE(TileIndex tile)
 {
 	VpStartPlaceSizing(tile, VPM_FIX_Y);
 }
 
-static void PlaceRail_E(uint tile)
+static void PlaceRail_E(TileIndex tile)
 {
 	int cmd = _tile_fract_coords.x + _tile_fract_coords.y <= 15 ? 2 : 3;
 	GenericPlaceRail(tile, cmd);
 }
 
-static void PlaceRail_NW(uint tile)
+static void PlaceRail_NW(TileIndex tile)
 {
 	VpStartPlaceSizing(tile, VPM_FIX_X);
 }
 
-static void PlaceRail_AutoRail(uint tile)
+static void PlaceRail_AutoRail(TileIndex tile)
 {
 	VpStartPlaceSizing(tile, VPM_RAILDIRS);
 }
 
-static void PlaceExtraDepotRail(uint tile, uint16 extra)
+static void PlaceExtraDepotRail(TileIndex tile, uint16 extra)
 {
 	byte b = _map5[tile];
 
@@ -94,7 +94,7 @@ static const uint16 _place_depot_extra[12] = {
 };
 
 
-void CcRailDepot(bool success, uint tile, uint32 p1, uint32 p2)
+void CcRailDepot(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		int dir = p2;
@@ -112,13 +112,13 @@ void CcRailDepot(bool success, uint tile, uint32 p1, uint32 p2)
 	}
 }
 
-static void PlaceRail_Depot(uint tile)
+static void PlaceRail_Depot(TileIndex tile)
 {
 	DoCommandP(tile, _cur_railtype, _build_depot_direction, CcRailDepot,
 		CMD_BUILD_TRAIN_DEPOT | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_100E_CAN_T_BUILD_TRAIN_DEPOT));
 }
 
-static void PlaceRail_Waypoint(uint tile)
+static void PlaceRail_Waypoint(TileIndex tile)
 {
 	if (!_remove_button_clicked) {
 		DoCommandP(tile, (_waypoint_count > 0) ? (0x100 + _cur_waypoint_type) : 0, 0, CcPlaySound1E, CMD_BUILD_TRAIN_WAYPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_WAYPOINT));
@@ -127,7 +127,7 @@ static void PlaceRail_Waypoint(uint tile)
 	}
 }
 
-void CcStation(bool success, uint tile, uint32 p1, uint32 p2)
+void CcStation(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		SndPlayTileFx(SND_20_SPLAT_2, tile);
@@ -135,7 +135,7 @@ void CcStation(bool success, uint tile, uint32 p1, uint32 p2)
 	}
 }
 
-static void PlaceRail_Station(uint tile)
+static void PlaceRail_Station(TileIndex tile)
 {
 	if(_remove_button_clicked)
 		DoCommandP(tile, 0, 0, CcPlaySound1E, CMD_REMOVE_FROM_RAILROAD_STATION | CMD_MSG(STR_CANT_REMOVE_PART_OF_STATION));
@@ -150,7 +150,7 @@ static void PlaceRail_Station(uint tile)
 	}
 }
 
-static void GenericPlaceSignals(uint tile)
+static void GenericPlaceSignals(TileIndex tile)
 {
 	uint trackstat;
 	int i;
@@ -176,12 +176,12 @@ static void GenericPlaceSignals(uint tile)
 	}
 }
 
-static void PlaceRail_Bridge(uint tile)
+static void PlaceRail_Bridge(TileIndex tile)
 {
 	VpStartPlaceSizing(tile, VPM_X_OR_Y);
 }
 
-void CcBuildRailTunnel(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildRailTunnel(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		SndPlayTileFx(SND_20_SPLAT_2, tile);
@@ -191,23 +191,23 @@ void CcBuildRailTunnel(bool success, uint tile, uint32 p1, uint32 p2)
 	}
 }
 
-static void PlaceRail_Tunnel(uint tile)
+static void PlaceRail_Tunnel(TileIndex tile)
 {
 	DoCommandP(tile, _cur_railtype, 0, CcBuildRailTunnel,
 		CMD_BUILD_TUNNEL | CMD_AUTO | CMD_MSG(STR_5016_CAN_T_BUILD_TUNNEL_HERE));
 }
 
-void PlaceProc_BuyLand(uint tile)
+void PlaceProc_BuyLand(TileIndex tile)
 {
 	DoCommandP(tile, 0, 0, CcPlaySound1E, CMD_PURCHASE_LAND_AREA | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_5806_CAN_T_PURCHASE_THIS_LAND));
 }
 
-static void PlaceRail_ConvertRail(uint tile)
+static void PlaceRail_ConvertRail(TileIndex tile)
 {
 	VpStartPlaceSizing(tile, VPM_X_AND_Y | GUI_PlaceProc_ConvertRailArea);
 }
 
-static void PlaceRail_AutoSignals(uint tile)
+static void PlaceRail_AutoSignals(TileIndex tile)
 {
 	VpStartPlaceSizing(tile, VPM_SIGNALDIRS);
 }
@@ -473,7 +473,8 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_PLACE_PRESIZE: {
-		uint tile = e->place.tile;
+		TileIndex tile = e->place.tile;
+
 		DoCommandByTile(tile, 0, 0, DC_AUTO, CMD_BUILD_TUNNEL);
 		VpSetPresizeRange(tile, _build_tunnel_endtile==0?tile:_build_tunnel_endtile);
 	} break;
@@ -619,7 +620,7 @@ void ShowBuildRailToolbar(int index, int button)
 /* TODO: For custom stations, respect their allowed platforms/lengths bitmasks!
  * --pasky */
 
-static void HandleStationPlacement(uint start, uint end)
+static void HandleStationPlacement(TileIndex start, TileIndex end)
 {
 	uint sx = TileX(start);
 	uint sy = TileY(start);

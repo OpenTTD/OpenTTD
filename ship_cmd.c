@@ -19,7 +19,8 @@
 static const uint16 _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
 static const byte _ship_sometracks[4] = {0x19, 0x16, 0x25, 0x2A};
 
-static byte GetTileShipTrackStatus(uint tile) {
+static byte GetTileShipTrackStatus(TileIndex tile)
+{
 	uint32 r = GetTileTrackStatus(tile, TRANSPORT_WATER);
 	return r | r >> 8;
 }
@@ -68,8 +69,10 @@ static Depot *FindClosestShipDepot(Vehicle *v)
 {
 	Depot *depot;
 	Depot *best_depot = NULL;
-	uint tile, dist, best_dist = (uint)-1;
-	uint tile2 = v->tile;
+	uint dist;
+	uint best_dist = (uint)-1;
+	TileIndex tile;
+	TileIndex tile2 = v->tile;
 
 	if (_patches.new_pathfinding_all) {
 		NPFFoundTargetData ftd;
@@ -342,7 +345,7 @@ static const TileIndexDiffC _ship_leave_depot_offs[] = {
 
 static void CheckShipLeaveDepot(Vehicle *v)
 {
-	uint tile;
+	TileIndex tile;
 	int d;
 	uint m;
 
@@ -466,15 +469,15 @@ static void ShipArrivesAt(Vehicle *v, Station *st)
 }
 
 typedef struct {
-	uint skiptile;
-	uint dest_coords;
+	TileIndex skiptile;
+	TileIndex dest_coords;
 	uint best_bird_dist;
 	uint best_length;
 } PathFindShip;
 
 //extern void dbg_store_path();
 
-static bool ShipTrackFollower(uint tile, PathFindShip *pfs, int track, uint length, byte *state)
+static bool ShipTrackFollower(TileIndex tile, PathFindShip *pfs, int track, uint length, byte *state)
 {
 	// Found dest?
 	if (tile == pfs->dest_coords) {
@@ -506,7 +509,7 @@ static const byte _ship_search_directions[6][4] = {
 
 static const byte _pick_shiptrack_table[6] = {1, 3, 2, 2, 0, 0};
 
-static uint FindShipTrack(Vehicle *v, uint tile, int dir, uint bits, uint skiptile, int *track)
+static uint FindShipTrack(Vehicle *v, TileIndex tile, int dir, uint bits, TileIndex skiptile, int *track)
 {
 	PathFindShip pfs;
 	int i, best_track;
@@ -561,14 +564,14 @@ bad:;
 /* returns the track to choose on the next tile, or -1 when it's better to
  * reverse. The tile given is the tile we are about to enter, enterdir is the
  * direction in which we are entering the tile */
-static int ChooseShipTrack(Vehicle *v, uint tile, int enterdir, uint tracks)
+static int ChooseShipTrack(Vehicle *v, TileIndex tile, int enterdir, uint tracks)
 {
 	assert(enterdir>=0 && enterdir<=3);
 
 	if (_patches.new_pathfinding_all) {
 		NPFFindStationOrTileData fstd;
 		NPFFoundTargetData ftd;
-		uint src_tile = TILE_ADD(tile, TileOffsByDir(ReverseDiagdir(enterdir)));
+		TileIndex src_tile = TILE_ADD(tile, TileOffsByDir(ReverseDiagdir(enterdir)));
 		byte trackdir = GetVehicleTrackdir(v);
 		assert (trackdir != 0xFF); /* Check that we are not in a depot */
 
@@ -588,7 +591,7 @@ static int ChooseShipTrack(Vehicle *v, uint tile, int enterdir, uint tracks)
 		uint b;
 		uint tot_dist, dist;
 		int track;
-		uint tile2;
+		TileIndex tile2;
 
 		tile2 = TILE_ADD(tile, -TileOffsByDir(enterdir));
 		tot_dist = (uint)-1;
@@ -615,7 +618,7 @@ static const byte _new_vehicle_direction_table[11] = {
 	2, 3, 4,
 };
 
-static int ShipGetNewDirectionFromTiles(uint new_tile, uint old_tile)
+static int ShipGetNewDirectionFromTiles(TileIndex new_tile, TileIndex old_tile)
 {
 	uint offs = (TileY(new_tile) - TileY(old_tile) + 1) * 4 +
 							TileX(new_tile) - TileX(old_tile) + 1;
@@ -630,7 +633,7 @@ static int ShipGetNewDirection(Vehicle *v, int x, int y)
 	return _new_vehicle_direction_table[offs];
 }
 
-static int GetAvailShipTracks(uint tile, int dir)
+static int GetAvailShipTracks(TileIndex tile, int dir)
 {
 	uint32 r = GetTileTrackStatus(tile, TRANSPORT_WATER);
 	return (byte) ((r | r >> 8)) & _ship_sometracks[dir];

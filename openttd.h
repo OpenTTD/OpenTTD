@@ -116,7 +116,7 @@ typedef struct TileInfo {
 	uint tileh;
 	uint type;
 	uint map5;
-	uint tile;
+	TileIndex tile;
 	uint z;
 } TileInfo;
 
@@ -288,9 +288,9 @@ typedef int32 CommandProc(int x, int y, uint32 flags, uint32 p1, uint32 p2);
 
 typedef void DrawTileProc(TileInfo *ti);
 typedef uint GetSlopeZProc(TileInfo *ti);
-typedef int32 ClearTileProc(uint tile, byte flags);
-typedef void GetAcceptedCargoProc(uint tile, AcceptedCargo res);
-typedef void GetTileDescProc(uint tile, TileDesc *td);
+typedef int32 ClearTileProc(TileIndex tile, byte flags);
+typedef void GetAcceptedCargoProc(TileIndex tile, AcceptedCargo res);
+typedef void GetTileDescProc(TileIndex tile, TileDesc *td);
 /* GetTileTrackStatusProcs return a value that contains the possible tracks
  * that can be taken on a given tile by a given transport. The return value is
  * composed as follows: 0xaabbccdd. ccdd and aabb are bitmasks of trackdirs,
@@ -310,18 +310,18 @@ typedef void GetTileDescProc(uint tile, TileDesc *td);
  * possible options: 0-5 and 8-13, so we need 14 bits for a trackdir bitmask
  * above.
  */
-typedef uint32 GetTileTrackStatusProc(uint tile, TransportType mode);
-typedef void GetProducedCargoProc(uint tile, byte *b);
-typedef void ClickTileProc(uint tile);
-typedef void AnimateTileProc(uint tile);
-typedef void TileLoopProc(uint tile);
-typedef void ChangeTileOwnerProc(uint tile, byte old_player, byte new_player);
+typedef uint32 GetTileTrackStatusProc(TileIndex tile, TransportType mode);
+typedef void GetProducedCargoProc(TileIndex tile, byte *b);
+typedef void ClickTileProc(TileIndex tile);
+typedef void AnimateTileProc(TileIndex tile);
+typedef void TileLoopProc(TileIndex tile);
+typedef void ChangeTileOwnerProc(TileIndex tile, byte old_player, byte new_player);
 /* Return value has bit 0x2 set, when the vehicle enters a station. Then,
  * result << 8 contains the id of the station entered. If the return value has
  * bit 0x8 set, the vehicle could not and did not enter the tile. Are there
  * other bits that can be set? */
-typedef uint32 VehicleEnterTileProc(Vehicle *v, uint tile, int x, int y);
-typedef void VehicleLeaveTileProc(Vehicle *v, uint tile, int x, int y);
+typedef uint32 VehicleEnterTileProc(Vehicle *v, TileIndex tile, int x, int y);
+typedef void VehicleLeaveTileProc(Vehicle *v, TileIndex tile, int x, int y);
 typedef uint GetSlopeTilehProc(TileInfo *ti);
 
 typedef struct {
@@ -521,7 +521,7 @@ enum SpecialStrings {
 	STR_SPEC_USERSTRING = 0xF801,
 };
 
-typedef void PlaceProc(uint tile);
+typedef void PlaceProc(TileIndex tile);
 
 VARDEF byte _savegame_sort_order;
 

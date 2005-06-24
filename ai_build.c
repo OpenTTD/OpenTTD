@@ -11,7 +11,8 @@
 // Build HQ
 //  Params:
 //    tile : tile where HQ is going to be build
-bool AiNew_Build_CompanyHQ(Player *p, uint tile) {
+bool AiNew_Build_CompanyHQ(Player *p, TileIndex tile)
+{
 	if (CmdFailed(DoCommandByTile(tile, 0, 0, DC_AUTO | DC_NO_WATER, CMD_BUILD_COMPANY_HQ)))
 		return false;
 	DoCommandByTile(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_BUILD_COMPANY_HQ);
@@ -26,7 +27,8 @@ bool AiNew_Build_CompanyHQ(Player *p, uint tile) {
 //    numtracks : in case of AI_TRAIN: tracks of station
 //    direction : the direction of the station
 //    flag : flag passed to DoCommand (normally 0 to get the cost or DC_EXEC to build it)
-int AiNew_Build_Station(Player *p, byte type, uint tile, byte length, byte numtracks, byte direction, byte flag) {
+int AiNew_Build_Station(Player *p, byte type, TileIndex tile, byte length, byte numtracks, byte direction, byte flag)
+{
 	if (type == AI_TRAIN)
 		return DoCommandByTile(tile, direction + (numtracks << 8) + (length << 16), 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_RAILROAD_STATION);
 
@@ -41,7 +43,8 @@ int AiNew_Build_Station(Player *p, byte type, uint tile, byte length, byte numtr
 //   tile_a : starting point
 //   tile_b : end point
 //   flag : flag passed to DoCommand
-int AiNew_Build_Bridge(Player *p, uint tile_a, uint tile_b, byte flag) {
+int AiNew_Build_Bridge(Player *p, TileIndex tile_a, TileIndex tile_b, byte flag)
+{
 	int bridge_type, bridge_len, type, type2;
 
 	// Find a good bridgetype (the best money can buy)
@@ -233,7 +236,8 @@ int AiNew_PickVehicle(Player *p) {
 }
 
 // Builds the best vehicle possible
-int AiNew_Build_Vehicle(Player *p, uint tile, byte flag) {
+int AiNew_Build_Vehicle(Player *p, TileIndex tile, byte flag)
+{
 	int i = AiNew_PickVehicle(p);
 	if (i == -1) return CMD_ERROR;
 
@@ -243,7 +247,7 @@ int AiNew_Build_Vehicle(Player *p, uint tile, byte flag) {
 	return DoCommandByTile(tile, i, 0, flag, CMD_BUILD_ROAD_VEH);
 }
 
-int AiNew_Build_Depot(Player *p, uint tile, byte direction, byte flag)
+int AiNew_Build_Depot(Player *p, TileIndex tile, byte direction, byte flag)
 {
 	static const byte _roadbits_by_dir[4] = {2,1,8,4};
 	int ret, ret2;

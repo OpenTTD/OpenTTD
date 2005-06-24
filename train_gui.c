@@ -108,7 +108,7 @@ void DrawTrainWagonPurchaseInfo(int x, int y, EngineID engine_number)
 	y += 10;
 }
 
-void CcBuildWagon(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	Vehicle *v,*found;
 
@@ -136,7 +136,7 @@ void CcBuildWagon(bool success, uint tile, uint32 p1, uint32 p2)
 	}
 }
 
-void CcBuildLoco(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildLoco(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
@@ -304,7 +304,7 @@ static const WindowDesc _new_rail_vehicle_desc = {
 	NewRailVehicleWndProc
 };
 
-static void ShowBuildTrainWindow(uint tile)
+static void ShowBuildTrainWindow(TileIndex tile)
 {
 	Window *w;
 
@@ -354,7 +354,7 @@ static void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, 
 
 static void DrawTrainDepotWindow(Window *w)
 {
-	uint tile;
+	TileIndex tile;
 	Vehicle *v, *u;
 	int num,x,y,i, hnum;
 	Depot *depot;
@@ -701,7 +701,7 @@ static const WindowDesc _train_depot_desc = {
 };
 
 
-void ShowTrainDepotWindow(uint tile)
+void ShowTrainDepotWindow(TileIndex tile)
 {
 	Window *w;
 
@@ -1391,7 +1391,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case 9: { /* Build new Vehicle */
-			uint tile;
+			TileIndex tile;
 
 			if (!IsWindowOfPrototype(w, _player_trains_widgets))
 				break;

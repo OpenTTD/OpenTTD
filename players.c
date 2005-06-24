@@ -248,7 +248,7 @@ void UpdatePlayerMoney32(Player *p)
 		p->player_money = (int32)p->money64;
 }
 
-void GetNameOfOwner(byte owner, uint tile)
+void GetNameOfOwner(byte owner, TileIndex tile)
 {
 	SetDParam(2, owner);
 
@@ -279,7 +279,7 @@ bool CheckOwnership(byte owner)
 	return false;
 }
 
-bool CheckTileOwnership(uint tile)
+bool CheckTileOwnership(TileIndex tile)
 {
 	byte owner = GetTileOwner(tile);
 
@@ -297,7 +297,7 @@ bool CheckTileOwnership(uint tile)
 
 static void GenerateCompanyName(Player *p)
 {
-	uint tile;
+	TileIndex tile;
 	Town *t;
 	StringID str;
 	Player *pp;

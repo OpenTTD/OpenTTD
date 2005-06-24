@@ -40,7 +40,7 @@ void SetRedErrorSquare(TileIndex tile);
 void SetTileSelectSize(int w, int h);
 void SetTileSelectBigSize(int ox, int oy, int sx, int sy);
 
-void VpStartPlaceSizing(uint tile, int user);
+void VpStartPlaceSizing(TileIndex tile, int user);
 void VpStartPreSizing(void);
 void VpSetPresizeRange(uint from, uint to);
 void VpSetPlaceSizingLimit(int limit);

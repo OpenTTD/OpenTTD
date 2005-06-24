@@ -52,9 +52,9 @@ enum {
 // Local
 static int _grow_town_result;
 
-static bool BuildTownHouse(Town *t, uint tile);
-static void ClearTownHouse(Town *t, uint tile);
-static void DoBuildTownHouse(Town *t, uint tile);
+static bool BuildTownHouse(Town *t, TileIndex tile);
+static void ClearTownHouse(Town *t, TileIndex tile);
+static void DoBuildTownHouse(Town *t, TileIndex tile);
 
 typedef struct DrawTownTileStruct {
 	uint32 sprite_1;
@@ -150,7 +150,7 @@ static uint GetSlopeTileh_Town(TileInfo *ti)
 	return ti->tileh;
 }
 
-static void AnimateTile_Town(uint tile)
+static void AnimateTile_Town(TileIndex tile)
 {
 	int old;
 	int i;
@@ -188,7 +188,7 @@ static void AnimateTile_Town(uint tile)
 
 static void UpdateTownRadius(Town *t);
 
-static bool IsCloseToTown(uint tile, uint dist)
+static bool IsCloseToTown(TileIndex tile, uint dist)
 {
 	Town *t;
 
@@ -242,7 +242,7 @@ uint32 GetWorldPopulation(void)
 	return pop;
 }
 
-static void MakeSingleHouseBigger(uint tile)
+static void MakeSingleHouseBigger(TileIndex tile)
 {
 	byte b;
 
@@ -265,7 +265,7 @@ static void MakeSingleHouseBigger(uint tile)
 	MarkTileDirtyByTile(tile);
 }
 
-static void MakeTownHouseBigger(uint tile)
+static void MakeTownHouseBigger(TileIndex tile)
 {
 	uint flags = _house_more_flags[_map3_hi[tile]];
 	if (flags & 8) MakeSingleHouseBigger(TILE_ADDXY(tile, 0, 0));
@@ -274,7 +274,7 @@ static void MakeTownHouseBigger(uint tile)
 	if (flags & 1) MakeSingleHouseBigger(TILE_ADDXY(tile, 1, 1));
 }
 
-static void TileLoop_Town(uint tile)
+static void TileLoop_Town(TileIndex tile)
 {
 	int house;
 	Town *t;
@@ -330,12 +330,12 @@ static void TileLoop_Town(uint tile)
 	}
 }
 
-static void ClickTile_Town(uint tile)
+static void ClickTile_Town(TileIndex tile)
 {
 	/* not used */
 }
 
-static int32 ClearTile_Town(uint tile, byte flags)
+static int32 ClearTile_Town(TileIndex tile, byte flags)
 {
 	int house, rating;
 	int32 cost;
@@ -367,7 +367,7 @@ static int32 ClearTile_Town(uint tile, byte flags)
 	return cost;
 }
 
-static void GetAcceptedCargo_Town(uint tile, AcceptedCargo ac)
+static void GetAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
 {
 	int type = _map3_hi[tile];
 
@@ -377,7 +377,7 @@ static void GetAcceptedCargo_Town(uint tile, AcceptedCargo ac)
 	ac[CT_FOOD] = _housetype_cargo_food[type];
 }
 
-static void GetTileDesc_Town(uint tile, TileDesc *td)
+static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
 {
 	td->str = _town_tile_names[_map3_hi[tile]];
 	if ((_map3_lo[tile] & 0xC0) != 0xC0) {
@@ -388,13 +388,13 @@ static void GetTileDesc_Town(uint tile, TileDesc *td)
 	td->owner = OWNER_TOWN;
 }
 
-static uint32 GetTileTrackStatus_Town(uint tile, TransportType mode)
+static uint32 GetTileTrackStatus_Town(TileIndex tile, TransportType mode)
 {
 	/* not used */
 	return 0;
 }
 
-static void ChangeTileOwner_Town(uint tile, byte old_player, byte new_player)
+static void ChangeTileOwner_Town(TileIndex tile, byte old_player, byte new_player)
 {
 	/* not used */
 }
@@ -466,7 +466,7 @@ static byte GetTownRoadMask(TileIndex tile)
 	return r;
 }
 
-static bool IsRoadAllowedHere(uint tile, int dir)
+static bool IsRoadAllowedHere(TileIndex tile, int dir)
 {
 	uint k;
 	uint slope;
@@ -528,7 +528,7 @@ no_slope:
 	}
 }
 
-static bool TerraformTownTile(uint tile, int edges, int dir)
+static bool TerraformTownTile(TileIndex tile, int edges, int dir)
 {
 	int32 r;
 
@@ -541,7 +541,7 @@ static bool TerraformTownTile(uint tile, int edges, int dir)
 	return true;
 }
 
-static void LevelTownLand(uint tile)
+static void LevelTownLand(TileIndex tile)
 {
 	TileInfo ti;
 
@@ -560,15 +560,15 @@ static void LevelTownLand(uint tile)
 
 #define IS_WATER_TILE(t) (IsTileType((t), MP_WATER) && _map5[(t)] == 0)
 
-static void GrowTownInTile(uint *tile_ptr, uint mask, int block, Town *t1)
+static void GrowTownInTile(TileIndex *tile_ptr, uint mask, int block, Town *t1)
 {
 	uint16 r;
 	int a,b,rcmd;
-	uint tmptile;
+	TileIndex tmptile;
 	TileInfo ti;
 	int i;
 	int j;
-	uint tile = *tile_ptr;
+	TileIndex tile = *tile_ptr;
 
 	TILE_ASSERT(tile);
 
@@ -711,7 +711,7 @@ build_road_and_exit:
 
 
 // Returns true if a house was built, or no if the build failed.
-static int GrowTownAtRoad(Town *t, uint tile)
+static int GrowTownAtRoad(Town *t, TileIndex tile)
 {
 	uint mask;
 	int block = 5; // special case
@@ -772,7 +772,7 @@ static int GenRandomRoadBits(void)
 // Returns true if a house was built, or no if the build failed.
 bool GrowTown(Town *t)
 {
-	uint tile;
+	TileIndex tile;
 	const TileIndexDiffC *ptr;
 	TileInfo ti;
 	byte old_player;
@@ -1065,7 +1065,7 @@ int32 CmdBuildTown(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 Town *CreateRandomTown(uint attempts)
 {
-	uint tile;
+	TileIndex tile;
 	TileInfo ti;
 	Town *t;
 	uint32 townnameparts;
@@ -1121,7 +1121,8 @@ void GenerateTowns(void)
 	}
 }
 
-static bool CheckBuildHouseMode(Town *t1, uint tile, uint tileh, int mode) {
+static bool CheckBuildHouseMode(Town *t1, TileIndex tile, uint tileh, int mode)
+{
 	int b;
 	uint slope;
 
@@ -1143,7 +1144,7 @@ static bool CheckBuildHouseMode(Town *t1, uint tile, uint tileh, int mode) {
 	return DoCommandByTile(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR) != CMD_ERROR;
 }
 
-int GetTownRadiusGroup(Town *t, uint tile)
+int GetTownRadiusGroup(Town *t, TileIndex tile)
 {
 	uint dist;
 	int i,smallest;
@@ -1161,7 +1162,7 @@ int GetTownRadiusGroup(Town *t, uint tile)
 	return smallest;
 }
 
-static bool CheckFree2x2Area(Town *t1, uint tile)
+static bool CheckFree2x2Area(Town *t1, TileIndex tile)
 {
 	int i;
 
@@ -1185,7 +1186,7 @@ static bool CheckFree2x2Area(Town *t1, uint tile)
 	return true;
 }
 
-static void DoBuildTownHouse(Town *t, uint tile)
+static void DoBuildTownHouse(Town *t, TileIndex tile)
 {
 	int i;
 	uint bitmask;
@@ -1358,7 +1359,7 @@ static void DoBuildTownHouse(Town *t, uint tile)
 	// ENDING
 }
 
-static bool BuildTownHouse(Town *t, uint tile)
+static bool BuildTownHouse(Town *t, TileIndex tile)
 {
 	int32 r;
 
@@ -1374,14 +1375,15 @@ static bool BuildTownHouse(Town *t, uint tile)
 }
 
 
-static void DoClearTownHouseHelper(uint tile)
+static void DoClearTownHouseHelper(TileIndex tile)
 {
 	assert(IsTileType(tile, MP_HOUSE));
 	DoClearSquare(tile);
 	DeleteAnimatedTile(tile);
 }
 
-static void ClearTownHouse(Town *t, uint tile) {
+static void ClearTownHouse(Town *t, TileIndex tile)
+{
 	uint house = _map3_hi[tile];
 	uint eflags;
 
@@ -1564,7 +1566,7 @@ static void TownActionRoadRebuild(Town *t, int action)
 		NEWS_FLAGS(NM_NORMAL, NF_TILE, NT_GENERAL, 0), t->xy, 0);
 }
 
-static bool DoBuildStatueOfCompany(uint tile)
+static bool DoBuildStatueOfCompany(TileIndex tile)
 {
 	TileInfo ti;
 	byte old;
@@ -1616,7 +1618,7 @@ static void TownActionBuildStatue(Town *t, int action)
 		{-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0},
 		{ 0, 0}
 	};
-	uint tile = t->xy;
+	TileIndex tile = t->xy;
 	const TileIndexDiffC *p;
 
 	SETBIT(t->statues, _current_player);
@@ -1811,7 +1813,7 @@ static void UpdateTownUnwanted(Town *t)
 	}
 }
 
-bool CheckIfAuthorityAllows(uint tile)
+bool CheckIfAuthorityAllows(TileIndex tile)
 {
 	Town *t;
 
@@ -1832,7 +1834,7 @@ bool CheckIfAuthorityAllows(uint tile)
 }
 
 
-Town *ClosestTownFromTile(uint tile, uint threshold)
+Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 {
 	Town *t;
 	uint dist, best = threshold;
@@ -1892,7 +1894,7 @@ static const int _default_rating_settings [3][3] = {
 	{ 96, 384, 768},	// Hostile
 };
 
-bool CheckforTownRating(uint tile, uint32 flags, Town *t, byte type)
+bool CheckforTownRating(TileIndex tile, uint32 flags, Town *t, byte type)
 {
 	int modemod;
 

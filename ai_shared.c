@@ -5,7 +5,8 @@
 #include "ai.h"
 #include "vehicle.h"
 
-int AiNew_GetRailDirection(uint tile_a, uint tile_b, uint tile_c) {
+int AiNew_GetRailDirection(TileIndex tile_a, TileIndex tile_b, TileIndex tile_c)
+{
 	// 0 = vert
 	// 1 = horz
 	// 2 = dig up-left
@@ -46,7 +47,8 @@ int AiNew_GetRailDirection(uint tile_a, uint tile_b, uint tile_c) {
 	return 0;
 }
 
-int AiNew_GetRoadDirection(uint tile_a, uint tile_b, uint tile_c) {
+int AiNew_GetRoadDirection(TileIndex tile_a, TileIndex tile_b, TileIndex tile_c)
+{
 	int x1, x2, x3;
 	int y1, y2, y3;
 	int r;
@@ -75,7 +77,8 @@ int AiNew_GetRoadDirection(uint tile_a, uint tile_b, uint tile_c) {
 }
 
 // Get's the direction between 2 tiles seen from tile_a
-int AiNew_GetDirection(uint tile_a, uint tile_b) {
+int AiNew_GetDirection(TileIndex tile_a, TileIndex tile_b)
+{
 	if (TileY(tile_a) < TileY(tile_b)) return 1;
 	if (TileY(tile_a) > TileY(tile_b)) return 3;
 	if (TileX(tile_a) < TileX(tile_b)) return 2;

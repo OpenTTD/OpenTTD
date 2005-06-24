@@ -62,7 +62,7 @@ MemoryPool _roadstop_pool = { "RoadStop", ROADSTOP_POOL_MAX_BLOCKS, ROADSTOP_POO
 const byte _airport_size_x[] = {4, 6, 1, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
 const byte _airport_size_y[] = {3, 6, 1, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
 
-void ShowAircraftDepotWindow(uint tile);
+void ShowAircraftDepotWindow(TileIndex tile);
 extern void UpdateAirplanesOnNewStation(Station *st);
 
 static void MarkStationDirty(Station *st)
@@ -172,7 +172,7 @@ static byte FindCatchmentRadius(Station *st)
 
 #define CHECK_STATIONS_ERR ((Station*)-1)
 
-static Station *GetStationAround(uint tile, int w, int h, int closest_station)
+static Station *GetStationAround(TileIndex tile, int w, int h, int closest_station)
 {
 	// check around to see if there's any stations there
 	BEGIN_TILE_LOOP(tile_cur, w + 2, h + 2, tile - TILE_XY(1,1))
@@ -221,7 +221,7 @@ TileIndex GetStationTileForVehicle(const Vehicle *v, const Station *st)
 	}
 }
 
-static bool CheckStationSpreadOut(Station *st, uint tile, int w, int h)
+static bool CheckStationSpreadOut(Station *st, TileIndex tile, int w, int h)
 {
 	StationID station_index = st->index;
 	uint i;
@@ -275,7 +275,8 @@ static Station *AllocateStation(void)
 }
 
 
-static int CountMapSquareAround(uint tile, byte type, byte min, byte max) {
+static int CountMapSquareAround(TileIndex tile, byte type, byte min, byte max)
+{
 	static const TileIndexDiffC _count_square_table[] = {
 		{-3, -3}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0},
 		{-6,  1}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0},
@@ -300,7 +301,7 @@ static int CountMapSquareAround(uint tile, byte type, byte min, byte max) {
 
 #define M(x) ((x) - STR_SV_STNAME)
 
-static bool GenerateStationName(Station *st, uint tile, int flag)
+static bool GenerateStationName(Station *st, TileIndex tile, int flag)
 {
 	static const uint32 _gen_station_name_bits[] = {
 		0,                                      /* 0 */
@@ -743,11 +744,11 @@ static void DeleteStationIfEmpty(Station *st) {
 	}
 }
 
-static int32 ClearTile_Station(uint tile, byte flags);
+static int32 ClearTile_Station(TileIndex tile, byte flags);
 
 // Tries to clear the given area. Returns the cost in case of success.
 // Or an error code if it failed.
-int32 CheckFlatLandBelow(uint tile, uint w, uint h, uint flags, uint invalid_dirs, int *station)
+int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, int *station)
 {
 	int32 cost = 0, ret;
 
@@ -820,7 +821,7 @@ int32 CheckFlatLandBelow(uint tile, uint w, uint h, uint flags, uint invalid_dir
 static bool CanExpandRailroadStation(Station *st, uint *fin, int direction)
 {
 	uint curw = st->trainst_w, curh = st->trainst_h;
-	uint tile = fin[0];
+	TileIndex tile = fin[0];
 	uint w = fin[1];
 	uint h = fin[2];
 
@@ -1019,7 +1020,7 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (flags & DC_EXEC) {
-		int tile_delta;
+		TileIndexDiff tile_delta;
 		byte *layout_ptr;
 		StationID station_index = st->index;
 		StationSpec *statspec;
@@ -1072,7 +1073,7 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return cost;
 }
 
-static bool TileBelongsToRailStation(Station *st, uint tile)
+static bool TileBelongsToRailStation(Station *st, TileIndex tile)
 {
 	return IsTileType(tile, MP_STATION) && _map2[tile] == st->index && _map5[tile] < 8;
 }
@@ -1081,7 +1082,7 @@ static void MakeRailwayStationAreaSmaller(Station *st)
 {
 	uint w = st->trainst_w;
 	uint h = st->trainst_h;
-	uint tile = st->train_tile;
+	TileIndex tile = st->train_tile;
 	uint i;
 
 restart:
@@ -1152,7 +1153,7 @@ int32 CmdRemoveFromRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32
 }
 
 // determine the number of platforms for the station
-uint GetStationPlatforms(Station *st, uint tile)
+uint GetStationPlatforms(Station *st, TileIndex tile)
 {
 	uint t;
 	int dir,delta;
@@ -1389,7 +1390,7 @@ static int32 RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 	return cost;
 }
 
-int32 DoConvertStationRail(uint tile, uint totype, bool exec)
+int32 DoConvertStationRail(TileIndex tile, uint totype, bool exec)
 {
 	const Station *st = GetStation(_map2[tile]);
 	if (!CheckOwnership(st->owner) || !EnsureNoVehicle(tile)) return CMD_ERROR;
@@ -1786,7 +1787,7 @@ END_TILE_LOOP(tile_cur,w,h,tile)
 
 static int32 RemoveAirport(Station *st, uint32 flags)
 {
-	uint tile;
+	TileIndex tile;
 	int w,h;
 	int32 cost;
 
@@ -1901,7 +1902,7 @@ static bool CheckShipsOnBuoy(Station *st)
 
 static int32 RemoveBuoy(Station *st, uint32 flags)
 {
-	uint tile;
+	TileIndex tile;
 
 	if (_current_player >= MAX_PLAYERS) {
 		/* XXX: strange stuff */
@@ -2058,7 +2059,8 @@ int32 CmdBuildDock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 static int32 RemoveDock(Station *st, uint32 flags)
 {
-	uint tile1, tile2;
+	TileIndex tile1;
+	TileIndex tile2;
 
 	if (!CheckOwnership(st->owner))
 		return CMD_ERROR;
@@ -2194,12 +2196,12 @@ static uint GetSlopeTileh_Station(TileInfo *ti)
 	return 0;
 }
 
-static void GetAcceptedCargo_Station(uint tile, AcceptedCargo ac)
+static void GetAcceptedCargo_Station(TileIndex tile, AcceptedCargo ac)
 {
 	/* not used */
 }
 
-static void GetTileDesc_Station(uint tile, TileDesc *td)
+static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 {
 	byte m5;
 	StringID str;
@@ -2220,7 +2222,8 @@ static void GetTileDesc_Station(uint tile, TileDesc *td)
 }
 
 
-static uint32 GetTileTrackStatus_Station(uint tile, TransportType mode) {
+static uint32 GetTileTrackStatus_Station(TileIndex tile, TransportType mode)
+{
 	uint i = _map5[tile];
 	uint j = 0;
 
@@ -2247,7 +2250,7 @@ static uint32 GetTileTrackStatus_Station(uint tile, TransportType mode) {
 	return j;
 }
 
-static void TileLoop_Station(uint tile)
+static void TileLoop_Station(TileIndex tile)
 {
   //FIXME -- GetTileTrackStatus_Station -> animated stationtiles
   // hardcoded.....not good
@@ -2269,7 +2272,7 @@ static void TileLoop_Station(uint tile)
 }
 
 
-static void AnimateTile_Station(uint tile)
+static void AnimateTile_Station(TileIndex tile)
 {
 	byte m5 = _map5[tile];
 	//FIXME -- AnimateTile_Station -> not nice code, lots of things double
@@ -2310,7 +2313,7 @@ static void AnimateTile_Station(uint tile)
 	}
 }
 
-static void ClickTile_Station(uint tile)
+static void ClickTile_Station(TileIndex tile)
 {
   // 0x20 - hangar large airport (32)
   // 0x41 - hangar small airport (65)
@@ -2325,7 +2328,7 @@ static const byte _enter_station_speedtable[12] = {
 	215, 195, 175, 155, 135, 115, 95, 75, 55, 35, 15, 0
 };
 
-static uint32 VehicleEnter_Station(Vehicle *v, uint tile, int x, int y)
+static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 {
 	StationID station_id;
 	byte dir;
@@ -2676,7 +2679,7 @@ int32 CmdRenameStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 
-uint MoveGoodsToStation(uint tile, int w, int h, int type, uint amount)
+uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
 {
 	Station *around_ptr[8];
 	StationID around[8];
@@ -2813,7 +2816,7 @@ uint MoveGoodsToStation(uint tile, int w, int h, int type, uint amount)
 	return moved;
 }
 
-void BuildOilRig(uint tile)
+void BuildOilRig(TileIndex tile)
 {
 	Station *st;
 	int j;
@@ -2864,7 +2867,7 @@ void BuildOilRig(uint tile)
 	}
 }
 
-void DeleteOilRig(uint tile)
+void DeleteOilRig(TileIndex tile)
 {
 	Station *st = GetStation(_map2[tile]);
 
@@ -2878,7 +2881,7 @@ void DeleteOilRig(uint tile)
 	DeleteStation(st);
 }
 
-static void ChangeTileOwner_Station(uint tile, byte old_player, byte new_player)
+static void ChangeTileOwner_Station(TileIndex tile, byte old_player, byte new_player)
 {
 	if (!IsTileOwner(tile, old_player)) return;
 
@@ -2893,7 +2896,8 @@ static void ChangeTileOwner_Station(uint tile, byte old_player, byte new_player)
 	}
 }
 
-static int32 ClearTile_Station(uint tile, byte flags) {
+static int32 ClearTile_Station(TileIndex tile, byte flags)
+{
 	byte m5 = _map5[tile];
 	Station *st;
 

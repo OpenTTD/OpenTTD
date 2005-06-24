@@ -19,7 +19,7 @@ static byte _selected_airport_type;
 static void ShowBuildAirportPicker(void);
 
 
-void CcBuildAirport(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildAirport(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		SndPlayTileFx(SND_1F_SPLAT, tile);
@@ -27,12 +27,12 @@ void CcBuildAirport(bool success, uint tile, uint32 p1, uint32 p2)
 	}
 }
 
-static void PlaceAirport(uint tile)
+static void PlaceAirport(TileIndex tile)
 {
 	DoCommandP(tile, _selected_airport_type, 0, CcBuildAirport, CMD_BUILD_AIRPORT | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_A001_CAN_T_BUILD_AIRPORT_HERE));
 }
 
-static void PlaceAir_DemolishArea(uint tile)
+static void PlaceAir_DemolishArea(TileIndex tile)
 {
 	VpStartPlaceSizing(tile, 4);
 }

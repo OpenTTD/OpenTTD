@@ -15,7 +15,7 @@
 
 static void FloodVehicle(Vehicle *v);
 
-static bool IsClearWaterTile(uint tile)
+static bool IsClearWaterTile(TileIndex tile)
 {
 	TileInfo ti;
 	FindLandscapeHeightByTile(&ti, tile);
@@ -77,9 +77,9 @@ int32 CmdBuildShipDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return cost + _price.build_ship_depot;
 }
 
-static int32 RemoveShipDepot(uint tile, uint32 flags)
+static int32 RemoveShipDepot(TileIndex tile, uint32 flags)
 {
-	uint tile2;
+	TileIndex tile2;
 
 	if (!CheckTileOwnership(tile))
 		return CMD_ERROR;
@@ -105,7 +105,7 @@ static int32 RemoveShipDepot(uint tile, uint32 flags)
 }
 
 // build a shiplift
-static int32 DoBuildShiplift(uint tile, int dir, uint32 flags)
+static int32 DoBuildShiplift(TileIndex tile, int dir, uint32 flags)
 {
 	int32 ret;
 	int delta;
@@ -134,7 +134,7 @@ static int32 DoBuildShiplift(uint tile, int dir, uint32 flags)
 	return _price.clear_water * 22 >> 3;
 }
 
-static int32 RemoveShiplift(uint tile, uint32 flags)
+static int32 RemoveShiplift(TileIndex tile, uint32 flags)
 {
 	TileIndexDiff delta = TileOffsByDir(_map5[tile] & 3);
 
@@ -151,7 +151,7 @@ static int32 RemoveShiplift(uint tile, uint32 flags)
 	return _price.clear_water * 2;
 }
 
-static void MarkTilesAroundDirty(uint tile)
+static void MarkTilesAroundDirty(TileIndex tile)
 {
 	MarkTileDirtyByTile(TILE_ADDXY(tile, 0, 1));
 	MarkTileDirtyByTile(TILE_ADDXY(tile, 0, -1));
@@ -251,7 +251,8 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return (cost == 0) ? CMD_ERROR : cost;
 }
 
-static int32 ClearTile_Water(uint tile, byte flags) {
+static int32 ClearTile_Water(TileIndex tile, byte flags)
+{
 	byte m5 = _map5[tile];
 	uint slope;
 
@@ -339,7 +340,7 @@ static bool IsWateredTile(TileIndex tile)
 }
 
 // draw a canal styled water tile with dikes around
-void DrawCanalWater(uint tile)
+void DrawCanalWater(TileIndex tile)
 {
 	uint wa;
 
@@ -447,12 +448,12 @@ static uint GetSlopeTileh_Water(TileInfo *ti)
 	return ti->tileh;
 }
 
-static void GetAcceptedCargo_Water(uint tile, AcceptedCargo ac)
+static void GetAcceptedCargo_Water(TileIndex tile, AcceptedCargo ac)
 {
 	/* not used */
 }
 
-static void GetTileDesc_Water(uint tile, TileDesc *td)
+static void GetTileDesc_Water(TileIndex tile, TileDesc *td)
 {
 	if (_map5[tile] == 0 && TilePixelHeight(tile) == 0)
 		td->str = STR_3804_WATER;
@@ -468,7 +469,7 @@ static void GetTileDesc_Water(uint tile, TileDesc *td)
 	td->owner = GetTileOwner(tile);
 }
 
-static void AnimateTile_Water(uint tile)
+static void AnimateTile_Water(TileIndex tile)
 {
 	/* not used */
 }
@@ -602,7 +603,7 @@ static void FloodVehicle(Vehicle *v)
 }
 
 // called from tunnelbridge_cmd
-void TileLoop_Water(uint tile)
+void TileLoop_Water(TileIndex tile)
 {
 	int i;
 	static const TileIndexDiffC _tile_loop_offs_array[][5] = {
@@ -641,7 +642,7 @@ void TileLoop_Water(uint tile)
 static const byte _coast_tracks[16] = {0, 32, 4, 0, 16, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0};
 static const byte _shipdepot_tracks[4] = {1,1,2,2};
 static const byte _shiplift_tracks[12] = {1,2,1,2,1,2,1,2,1,2,1,2};
-static uint32 GetTileTrackStatus_Water(uint tile, TransportType mode)
+static uint32 GetTileTrackStatus_Water(TileIndex tile, TransportType mode)
 {
 	uint m5;
 	uint b;
@@ -671,9 +672,9 @@ static uint32 GetTileTrackStatus_Water(uint tile, TransportType mode)
 	return b + (b<<8);
 }
 
-extern void ShowShipDepotWindow(uint tile);
+extern void ShowShipDepotWindow(TileIndex tile);
 
-static void ClickTile_Water(uint tile)
+static void ClickTile_Water(TileIndex tile)
 {
 	byte m5 = _map5[tile] - 0x80;
 
@@ -684,7 +685,7 @@ static void ClickTile_Water(uint tile)
 	}
 }
 
-static void ChangeTileOwner_Water(uint tile, byte old_player, byte new_player)
+static void ChangeTileOwner_Water(TileIndex tile, byte old_player, byte new_player)
 {
 	if (!IsTileOwner(tile, old_player)) return;
 
@@ -695,7 +696,7 @@ static void ChangeTileOwner_Water(uint tile, byte old_player, byte new_player)
 	}
 }
 
-static uint32 VehicleEnter_Water(Vehicle *v, uint tile, int x, int y)
+static uint32 VehicleEnter_Water(Vehicle *v, TileIndex tile, int x, int y)
 {
 	return 0;
 }

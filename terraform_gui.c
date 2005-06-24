@@ -12,7 +12,7 @@
 #include "vehicle.h"
 #include "signs.h"
 
-void CcTerraform(bool success, uint tile, uint32 p1, uint32 p2)
+void CcTerraform(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		SndPlayTileFx(SND_1F_SPLAT, tile);
@@ -21,7 +21,7 @@ void CcTerraform(bool success, uint tile, uint32 p1, uint32 p2)
 	}
 }
 
-static void GenericRaiseLowerLand(uint tile, int mode)
+static void GenericRaiseLowerLand(TileIndex tile, int mode)
 {
 	if (mode) {
 		DoCommandP(tile, 8, (uint32)mode, CcTerraform, CMD_TERRAFORM_LAND | CMD_AUTO | CMD_MSG(STR_0808_CAN_T_RAISE_LAND_HERE));
@@ -101,27 +101,27 @@ static const uint16 _terraform_keycodes[] = {
 	'O',
 };
 
-void PlaceProc_DemolishArea(uint tile)
+void PlaceProc_DemolishArea(TileIndex tile)
 {
 	VpStartPlaceSizing(tile, VPM_X_AND_Y | GUI_PlaceProc_DemolishArea);
 }
 
-void PlaceProc_RaiseLand(uint tile)
+void PlaceProc_RaiseLand(TileIndex tile)
 {
 	GenericRaiseLowerLand(tile, 1);
 }
 
-void PlaceProc_LowerLand(uint tile)
+void PlaceProc_LowerLand(TileIndex tile)
 {
 	GenericRaiseLowerLand(tile, 0);
 }
 
-void PlaceProc_LevelLand(uint tile)
+void PlaceProc_LevelLand(TileIndex tile)
 {
 	VpStartPlaceSizing(tile, VPM_X_AND_Y | GUI_PlaceProc_LevelArea);
 }
 
-static void PlaceProc_PlantTree(uint tile) {}
+static void PlaceProc_PlantTree(TileIndex tile) {}
 
 static void TerraformClick_Lower(Window *w)
 {

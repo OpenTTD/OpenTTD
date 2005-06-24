@@ -5,7 +5,7 @@
 #include "pathfind.h"
 
 // remember which tiles we have already visited so we don't visit them again.
-static bool TPFSetTileBit(TrackPathFinder *tpf, uint tile, int dir)
+static bool TPFSetTileBit(TrackPathFinder *tpf, TileIndex tile, int dir)
 {
 	uint hash, val, offs;
 	TrackPathFinderLink *link, *new_link;
@@ -120,11 +120,11 @@ static const byte _otherdir_mask[4] = {
 };
 
 #ifdef DEBUG_TILE_PUSH
-extern void dbg_push_tile(uint tile, int track);
+extern void dbg_push_tile(TileIndex tile, int track);
 extern void dbg_pop_tile();
 #endif
 
-static void TPFMode2(TrackPathFinder *tpf, uint tile, int direction)
+static void TPFMode2(TrackPathFinder *tpf, TileIndex tile, int direction)
 {
 	uint bits;
 	int i;
@@ -211,7 +211,7 @@ static const int8 _get_tunlen_inc[5] = { -16, 0, 16, 0, -16 };
 /* Returns the end tile and the length of a tunnel. The length does not
  * include the starting tile (entry), it does include the end tile (exit).
  */
-FindLengthOfTunnelResult FindLengthOfTunnel(uint tile, int direction)
+FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, int direction)
 {
 	FindLengthOfTunnelResult flotr;
 	int x,y;
@@ -246,7 +246,8 @@ FindLengthOfTunnelResult FindLengthOfTunnel(uint tile, int direction)
 
 static const uint16 _tpfmode1_and[4] = { 0x1009, 0x16, 0x520, 0x2A00 };
 
-static uint SkipToEndOfTunnel(TrackPathFinder *tpf, uint tile, int direction) {
+static uint SkipToEndOfTunnel(TrackPathFinder *tpf, TileIndex tile, int direction)
+{
 	FindLengthOfTunnelResult flotr;
 	TPFSetTileBit(tpf, tile, 14);
 	flotr = FindLengthOfTunnel(tile, direction);
@@ -275,12 +276,12 @@ const byte _ffb_64[128] = {
 48,56,56,58,56,60,60,62,
 };
 
-static void TPFMode1(TrackPathFinder *tpf, uint tile, int direction)
+static void TPFMode1(TrackPathFinder *tpf, TileIndex tile, int direction)
 {
 	uint bits;
 	int i;
 	RememberData rd;
-	uint tile_org = tile;
+	TileIndex tile_org = tile;
 
 	if (IsTileType(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xF0) == 0) {
 		if ((_map5[tile] & 3) != direction || ((_map5[tile]>>2)&3) != tpf->tracktype)
@@ -370,7 +371,7 @@ static void TPFMode1(TrackPathFinder *tpf, uint tile, int direction)
 	} while (bits != 0);
 }
 
-void FollowTrack(uint tile, uint16 flags, byte direction, TPFEnumProc *enum_proc, TPFAfterProc *after_proc, void *data)
+void FollowTrack(TileIndex tile, uint16 flags, byte direction, TPFEnumProc *enum_proc, TPFAfterProc *after_proc, void *data)
 {
 	TrackPathFinder tpf;
 
@@ -513,7 +514,7 @@ static inline void HeapifyDown(NewTrackPathFinder *tpf)
 // mark a tile as visited and store the length of the path.
 // if we already had a better path to this tile, return false.
 // otherwise return true.
-static bool NtpVisit(NewTrackPathFinder *tpf, uint tile, uint dir, uint length)
+static bool NtpVisit(NewTrackPathFinder *tpf, TileIndex tile, uint dir, uint length)
 {
 	uint hash,head;
 	HashLink *link, *new_link;
@@ -587,7 +588,7 @@ static bool NtpVisit(NewTrackPathFinder *tpf, uint tile, uint dir, uint length)
 	return true;
 }
 
-static bool NtpCheck(NewTrackPathFinder *tpf, uint tile, uint dir, uint length)
+static bool NtpCheck(NewTrackPathFinder *tpf, TileIndex tile, uint dir, uint length)
 {
 	uint hash,head,offs;
 	HashLink *link;
@@ -617,7 +618,7 @@ static bool NtpCheck(NewTrackPathFinder *tpf, uint tile, uint dir, uint length)
 
 
 // new more optimized pathfinder for trains...
-static void NTPEnum(NewTrackPathFinder *tpf, uint tile, uint direction)
+static void NTPEnum(NewTrackPathFinder *tpf, TileIndex tile, uint direction)
 {
 	uint bits, tile_org;
 	int i;
@@ -744,7 +745,7 @@ popnext:
 
 
 // new pathfinder for trains. better and faster.
-void NewTrainPathfind(uint tile, byte direction, TPFEnumProc *enum_proc, void *data, byte *cache)
+void NewTrainPathfind(TileIndex tile, byte direction, TPFEnumProc *enum_proc, void *data, byte *cache)
 {
 	if (!_patches.new_pathfinding) {
 		FollowTrack(tile, 0x3000 | TRANSPORT_RAIL, direction, enum_proc, NULL, data);

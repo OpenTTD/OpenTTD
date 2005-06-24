@@ -187,7 +187,7 @@ VARDEF bool _global_station_sort_dirty;
 
 void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile, int w, int h, int rad);
 void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile, int w, int h, int rad);
-uint GetStationPlatforms(Station *st, uint tile);
+uint GetStationPlatforms(Station *st, TileIndex tile);
 
 
 /* Station layout for given dimensions - it is a two-dimensional array
@@ -278,7 +278,8 @@ RoadStop * GetPrimaryRoadStop(const Station *st, RoadStopType type);
 RoadStop * AllocateRoadStop( void );
 void ClearSlot(Vehicle *v, RoadStop *rs);
 
-static inline bool IsTrainStationTile(uint tile) {
+static inline bool IsTrainStationTile(TileIndex tile)
+{
 	return IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_map5[tile], 0, 8);
 }
 
@@ -314,7 +315,8 @@ static inline bool IsBuoyTile(TileIndex tile) {
 
 /* Get's the direction the station exit points towards. Ie, returns 0 for a
  * station with the exit NE. */
-static inline byte GetRoadStationDir(uint tile) {
+static inline byte GetRoadStationDir(TileIndex tile)
+{
 	assert(IsRoadStationTile(tile));
 	return (_map5[tile] - 0x43) & 3;
 }

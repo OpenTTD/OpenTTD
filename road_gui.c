@@ -26,30 +26,30 @@ static byte _place_road_flag;
 static byte _road_depot_orientation;
 static byte _road_station_picker_orientation;
 
-void CcPlaySound1D(bool success, uint tile, uint32 p1, uint32 p2)
+void CcPlaySound1D(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) SndPlayTileFx(SND_1F_SPLAT, tile);
 }
 
-static void PlaceRoad_NE(uint tile)
+static void PlaceRoad_NE(TileIndex tile)
 {
 	_place_road_flag = (_tile_fract_coords.y >= 8) + 4;
 	VpStartPlaceSizing(tile, VPM_FIX_X);
 }
 
-static void PlaceRoad_NW(uint tile)
+static void PlaceRoad_NW(TileIndex tile)
 {
 	_place_road_flag = (_tile_fract_coords.x >= 8) + 0;
 	VpStartPlaceSizing(tile, VPM_FIX_Y);
 }
 
-static void PlaceRoad_Bridge(uint tile)
+static void PlaceRoad_Bridge(TileIndex tile)
 {
 	VpStartPlaceSizing(tile, VPM_X_OR_Y);
 }
 
 
-void CcBuildRoadTunnel(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildRoadTunnel(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		SndPlayTileFx(SND_20_SPLAT_2, tile);
@@ -59,12 +59,12 @@ void CcBuildRoadTunnel(bool success, uint tile, uint32 p1, uint32 p2)
 	}
 }
 
-static void PlaceRoad_Tunnel(uint tile)
+static void PlaceRoad_Tunnel(TileIndex tile)
 {
 	DoCommandP(tile, 0x200, 0, CcBuildRoadTunnel, CMD_BUILD_TUNNEL | CMD_AUTO | CMD_MSG(STR_5016_CAN_T_BUILD_TUNNEL_HERE));
 }
 
-static void BuildRoadOutsideStation(uint tile, int direction)
+static void BuildRoadOutsideStation(TileIndex tile, int direction)
 {
 	static const byte _roadbits_by_dir[4] = {2,1,8,4};
 	tile += TileOffsByDir(direction);
@@ -74,7 +74,7 @@ static void BuildRoadOutsideStation(uint tile, int direction)
 	}
 }
 
-void CcRoadDepot(bool success, uint tile, uint32 p1, uint32 p2)
+void CcRoadDepot(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		SndPlayTileFx(SND_1F_SPLAT, tile);
@@ -83,22 +83,22 @@ void CcRoadDepot(bool success, uint tile, uint32 p1, uint32 p2)
 	}
 }
 
-static void PlaceRoad_Depot(uint tile)
+static void PlaceRoad_Depot(TileIndex tile)
 {
 	DoCommandP(tile, _road_depot_orientation, 0, CcRoadDepot, CMD_BUILD_ROAD_DEPOT | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1807_CAN_T_BUILD_ROAD_VEHICLE));
 }
 
-static void PlaceRoad_BusStation(uint tile)
+static void PlaceRoad_BusStation(TileIndex tile)
 {
 	DoCommandP(tile, _road_station_picker_orientation, RS_BUS, CcRoadDepot, CMD_BUILD_ROAD_STOP | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1808_CAN_T_BUILD_BUS_STATION));
 }
 
-static void PlaceRoad_TruckStation(uint tile)
+static void PlaceRoad_TruckStation(TileIndex tile)
 {
 	DoCommandP(tile, _road_station_picker_orientation, RS_TRUCK, CcRoadDepot, CMD_BUILD_ROAD_STOP | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1809_CAN_T_BUILD_TRUCK_STATION));
 }
 
-static void PlaceRoad_DemolishArea(uint tile)
+static void PlaceRoad_DemolishArea(TileIndex tile)
 {
 	VpStartPlaceSizing(tile, 4);
 }
@@ -253,8 +253,9 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e) {
 
 	case WE_PLACE_MOUSEUP:
 		if (e->place.pt.x != -1) {
-			uint start_tile = e->place.starttile;
-			uint end_tile = e->place.tile;
+			TileIndex start_tile = e->place.starttile;
+			TileIndex end_tile = e->place.tile;
+
 			if (e->place.userdata == 0) {
 				ResetObjectToPlace();
 				ShowBuildBridgeWindow(start_tile, end_tile, 0x80);
@@ -270,7 +271,8 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e) {
 		break;
 
 	case WE_PLACE_PRESIZE: {
-		uint tile = e->place.tile;
+		TileIndex tile = e->place.tile;
+
 		DoCommandByTile(tile, 0x200, 0, DC_AUTO, CMD_BUILD_TUNNEL);
 		VpSetPresizeRange(tile, _build_tunnel_endtile==0?tile:_build_tunnel_endtile);
 		break;

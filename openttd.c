@@ -1181,7 +1181,7 @@ void BeforeSaveGame(void)
 
 static void ConvertTownOwner(void)
 {
-	uint tile;
+	TileIndex tile;
 
 	for (tile = 0; tile != MapSize(); tile++) {
 		if (IsTileType(tile, MP_STREET)) {

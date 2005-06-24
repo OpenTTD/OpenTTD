@@ -183,7 +183,7 @@ static void DrawOrdersWindow(Window *w)
 	}
 }
 
-static Order GetOrderCmdFromTile(Vehicle *v, uint tile)
+static Order GetOrderCmdFromTile(Vehicle *v, TileIndex tile)
 {
 	Order order;
 	Station *st;
@@ -301,7 +301,7 @@ static bool HandleOrderVehClick(Vehicle *v, Vehicle *u, Window *w)
 	return true;
 }
 
-static void OrdersPlaceObj(Vehicle *v, uint tile, Window *w)
+static void OrdersPlaceObj(Vehicle *v, TileIndex tile, Window *w)
 {
 	Order cmd;
 	Vehicle *u;

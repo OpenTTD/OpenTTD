@@ -112,9 +112,9 @@ static inline DiagDirection GetDepotDirection(TileIndex tile, TransportType type
 	}
 }
 
-Depot *GetDepotByTile(uint tile);
+Depot *GetDepotByTile(TileIndex tile);
 void InitializeDepot(void);
 Depot *AllocateDepot(void);
-void DoDeleteDepot(uint tile);
+void DoDeleteDepot(TileIndex tile);
 
 #endif /* DEPOT_H */

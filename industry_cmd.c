@@ -37,8 +37,8 @@ byte _industry_sound_ctr;
 TileIndex _industry_sound_tile;
 
 void ShowIndustryViewWindow(int industry);
-void BuildOilRig(uint tile);
-void DeleteOilRig(uint tile);
+void BuildOilRig(TileIndex tile);
+void DeleteOilRig(TileIndex tile);
 
 typedef struct DrawIndustryTileStruct {
 	uint32 sprite_1;
@@ -401,7 +401,7 @@ static uint GetSlopeTileh_Industry(TileInfo *ti) {
 	return 0;
 }
 
-static void GetAcceptedCargo_Industry(uint tile, AcceptedCargo ac)
+static void GetAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
 {
 	int m5 = _map5[tile];
 	int a;
@@ -416,7 +416,7 @@ static void GetAcceptedCargo_Industry(uint tile, AcceptedCargo ac)
 	if (a >= 0) ac[a] = 8;
 }
 
-static void GetTileDesc_Industry(uint tile, TileDesc *td)
+static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
 {
 	Industry *i = GetIndustry(_map2[tile]);
 
@@ -428,7 +428,7 @@ static void GetTileDesc_Industry(uint tile, TileDesc *td)
 	}
 }
 
-static int32 ClearTile_Industry(uint tile, byte flags)
+static int32 ClearTile_Industry(TileIndex tile, byte flags)
 {
 	Industry *i = GetIndustry(_map2[tile]);
 
@@ -459,7 +459,7 @@ static const byte _industry_min_cargo[] = {
 	5, 5, 5, 5, 5,
 };
 
-static void TransportIndustryGoods(uint tile)
+static void TransportIndustryGoods(TileIndex tile)
 {
 	Industry *i;
 	int type;
@@ -502,7 +502,7 @@ static void TransportIndustryGoods(uint tile)
 }
 
 
-static void AnimateTile_Industry(uint tile)
+static void AnimateTile_Industry(TileIndex tile)
 {
 	byte m,n;
 
@@ -661,14 +661,14 @@ static void AnimateTile_Industry(uint tile)
 	}
 }
 
-static void MakeIndustryTileBiggerCase8(uint tile)
+static void MakeIndustryTileBiggerCase8(TileIndex tile)
 {
 	TileInfo ti;
 	FindLandscapeHeight(&ti, TileX(tile) * 16, TileY(tile) * 16);
 	CreateEffectVehicle(ti.x + 15, ti.y + 14, ti.z + 59 + (ti.tileh != 0 ? 8 : 0), EV_CHIMNEY_SMOKE);
 }
 
-static void MakeIndustryTileBigger(uint tile, byte size)
+static void MakeIndustryTileBigger(TileIndex tile, byte size)
 {
 	byte b = (byte)((size + (1<<2)) & (3<<2));
 
@@ -713,7 +713,7 @@ static void MakeIndustryTileBigger(uint tile, byte size)
 
 
 
-static void TileLoopIndustryCase161(uint tile)
+static void TileLoopIndustryCase161(TileIndex tile)
 {
 	int dir;
 	Vehicle *v;
@@ -738,7 +738,7 @@ static void TileLoopIndustryCase161(uint tile)
 		v->u.special.unk2 = dir;
 }
 
-static void TileLoop_Industry(uint tile)
+static void TileLoop_Industry(TileIndex tile)
 {
 	byte n;
 
@@ -847,24 +847,24 @@ static void TileLoop_Industry(uint tile)
 }
 
 
-static void ClickTile_Industry(uint tile)
+static void ClickTile_Industry(TileIndex tile)
 {
 	ShowIndustryViewWindow(_map2[tile]);
 }
 
-static uint32 GetTileTrackStatus_Industry(uint tile, TransportType mode)
+static uint32 GetTileTrackStatus_Industry(TileIndex tile, TransportType mode)
 {
 	return 0;
 }
 
-static void GetProducedCargo_Industry(uint tile, byte *b)
+static void GetProducedCargo_Industry(TileIndex tile, byte *b)
 {
 	Industry *i = GetIndustry(_map2[tile]);
 	b[0] = i->produced_cargo[0];
 	b[1] = i->produced_cargo[1];
 }
 
-static void ChangeTileOwner_Industry(uint tile, byte old_player, byte new_player)
+static void ChangeTileOwner_Industry(TileIndex tile, byte old_player, byte new_player)
 {
 	/* not used */
 }
@@ -922,7 +922,7 @@ static bool IsBadFarmFieldTile2(TileIndex tile)
 	}
 }
 
-static void SetupFarmFieldFence(uint tile, int size, byte type, int direction)
+static void SetupFarmFieldFence(TileIndex tile, int size, byte type, int direction)
 {
 	byte or, and;
 
@@ -947,7 +947,7 @@ static void SetupFarmFieldFence(uint tile, int size, byte type, int direction)
 	} while (--size);
 }
 
-static void PlantFarmField(uint tile)
+static void PlantFarmField(TileIndex tile)
 {
 	uint size_x, size_y;
 	uint32 r;
@@ -1008,7 +1008,8 @@ static void PlantFarmField(uint tile)
 
 static void MaybePlantFarmField(Industry *i)
 {
-	uint tile;
+	TileIndex tile;
+
 	if (CHANCE16(1,8)) {
 		int x = (i->width>>1) + Random() % 31 - 16;
 		int y = (i->height>>1) + Random() % 31 - 16;
@@ -1027,7 +1028,7 @@ static void ChopLumberMillTrees(Industry *i)
 		{-1,  0}
 	};
 
-	uint tile = i->xy;
+	TileIndex tile = i->xy;
 	int dir, a, j;
 
 	if ((_map_owner[tile] & 0x80) == 0)
@@ -1157,12 +1158,12 @@ void OnTick_Industry(void)
 }
 
 
-static bool CheckNewIndustry_NULL(uint tile, int type)
+static bool CheckNewIndustry_NULL(TileIndex tile, int type)
 {
 	return true;
 }
 
-static bool CheckNewIndustry_Forest(uint tile, int type)
+static bool CheckNewIndustry_Forest(TileIndex tile, int type)
 {
 	if (_opt.landscape == LT_HILLY) {
 		if (GetTileZ(tile) < _opt.snow_line + 16U) {
@@ -1176,7 +1177,7 @@ static bool CheckNewIndustry_Forest(uint tile, int type)
 extern bool _ignore_restrictions;
 
 /* Oil Rig and Oil Refinery */
-static bool CheckNewIndustry_Oil(uint tile, int type)
+static bool CheckNewIndustry_Oil(TileIndex tile, int type)
 {
 	if(_ignore_restrictions && _game_mode == GM_EDITOR)
 		return true;
@@ -1191,7 +1192,7 @@ static bool CheckNewIndustry_Oil(uint tile, int type)
 	return false;
 }
 
-static bool CheckNewIndustry_Farm(uint tile, int type)
+static bool CheckNewIndustry_Farm(TileIndex tile, int type)
 {
 	if (_opt.landscape == LT_HILLY) {
 		if (GetTileZ(tile) + 16 >= _opt.snow_line) {
@@ -1202,7 +1203,7 @@ static bool CheckNewIndustry_Farm(uint tile, int type)
 	return true;
 }
 
-static bool CheckNewIndustry_Plantation(uint tile, int type)
+static bool CheckNewIndustry_Plantation(TileIndex tile, int type)
 {
 	if (GetMapExtraBits(tile) == 1) {
 		_error_message = STR_0239_SITE_UNSUITABLE;
@@ -1212,7 +1213,7 @@ static bool CheckNewIndustry_Plantation(uint tile, int type)
 	return true;
 }
 
-static bool CheckNewIndustry_Water(uint tile, int type)
+static bool CheckNewIndustry_Water(TileIndex tile, int type)
 {
 	if (GetMapExtraBits(tile) != 1) {
 		_error_message = STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT;
@@ -1222,7 +1223,7 @@ static bool CheckNewIndustry_Water(uint tile, int type)
 	return true;
 }
 
-static bool CheckNewIndustry_Lumbermill(uint tile, int type)
+static bool CheckNewIndustry_Lumbermill(TileIndex tile, int type)
 {
 	if (GetMapExtraBits(tile) != 2) {
 		_error_message = STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST;
@@ -1231,7 +1232,7 @@ static bool CheckNewIndustry_Lumbermill(uint tile, int type)
 	return true;
 }
 
-static bool CheckNewIndustry_BubbleGen(uint tile, int type)
+static bool CheckNewIndustry_BubbleGen(TileIndex tile, int type)
 {
 	if (GetTileZ(tile) > 32) {
 		return false;
@@ -1239,7 +1240,7 @@ static bool CheckNewIndustry_BubbleGen(uint tile, int type)
 	return true;
 }
 
-typedef bool CheckNewIndustryProc(uint tile, int type);
+typedef bool CheckNewIndustryProc(TileIndex tile, int type);
 static CheckNewIndustryProc * const _check_new_industry_procs[] = {
 	CheckNewIndustry_NULL,
 	CheckNewIndustry_Forest,
@@ -1251,7 +1252,7 @@ static CheckNewIndustryProc * const _check_new_industry_procs[] = {
 	CheckNewIndustry_BubbleGen,
 };
 
-static bool CheckSuitableIndustryPos(uint tile)
+static bool CheckSuitableIndustryPos(TileIndex tile)
 {
 	uint x = TileX(tile);
 	uint y = TileY(tile);
@@ -1264,7 +1265,7 @@ static bool CheckSuitableIndustryPos(uint tile)
 	return true;
 }
 
-static Town *CheckMultipleIndustryInTown(uint tile, int type)
+static Town *CheckMultipleIndustryInTown(TileIndex tile, int type)
 {
 	Town *t;
 	Industry *i;
@@ -1311,15 +1312,15 @@ static const byte _industry_map5_bits[] = {
 	16, 16, 16, 16, 16, 16, 16,
 };
 
-static bool CheckIfIndustryTilesAreFree(uint tile, const IndustryTileTable *it, int type, Town *t)
+static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable *it, int type, Town *t)
 {
 	TileInfo ti;
-	uint cur_tile;
 
 	_error_message = STR_0239_SITE_UNSUITABLE;
 
 	do {
-		cur_tile = tile + ToTileIndexDiff(it->ti);
+		TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
+
 		if (!IsValidTile(cur_tile)) {
 			if (it->map5 == 0xff)
 				continue;
@@ -1397,7 +1398,7 @@ do_clear:
 	return true;
 }
 
-static bool CheckIfTooCloseToIndustry(uint tile, int type)
+static bool CheckIfTooCloseToIndustry(TileIndex tile, int type)
 {
 	Industry *i;
 	const IndustrySpec *spec;
@@ -1456,11 +1457,10 @@ static Industry *AllocateIndustry(void)
 	return NULL;
 }
 
-static void DoCreateNewIndustry(Industry *i, uint tile, int type, const IndustryTileTable *it, Town *t, byte owner)
+static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const IndustryTileTable *it, Town *t, byte owner)
 {
 	const IndustrySpec *spec;
 	uint32 r;
-	uint cur_tile;
 	int j;
 
 	i->xy = tile;
@@ -1509,7 +1509,7 @@ static void DoCreateNewIndustry(Industry *i, uint tile, int type, const Industry
 	i->prod_level = 0x10;
 
 	do {
-		cur_tile = tile + ToTileIndexDiff(it->ti);
+		TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
 
 		if (it->map5 != 0xFF) {
 			byte size;
@@ -1536,7 +1536,8 @@ static void DoCreateNewIndustry(Industry *i, uint tile, int type, const Industry
 		for(j=0; j!=50; j++) {
 			int x = Random() % 31 - 16;
 			int y = Random() % 31 - 16;
-			uint new_tile = TileAddWrap(tile, x, y);
+			TileIndex  new_tile = TileAddWrap(tile, x, y);
+
 			if (new_tile != INVALID_TILE)
 				PlantFarmField(new_tile);
 		}
@@ -1604,7 +1605,7 @@ int32 CmdBuildIndustry(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 
-Industry *CreateNewIndustry(uint tile, int type)
+Industry *CreateNewIndustry(TileIndex tile, int type)
 {
 	Town *t;
 	const IndustryTileTable *it;

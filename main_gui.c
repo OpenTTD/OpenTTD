@@ -144,7 +144,7 @@ bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, int mode, Pla
 }
 
 
-void CcPlaySound10(bool success, uint tile, uint32 p1, uint32 p2)
+void CcPlaySound10(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) SndPlayTileFx(SND_12_EXPLOSION, tile);
 }
@@ -1149,7 +1149,7 @@ static void AskResetLandscape(uint mode)
  * @param tile The top-left tile where the terraforming will start
  * @param mode 1 for raising, 0 for lowering land
  */
-static void CommonRaiseLowerBigLand(uint tile, int mode)
+static void CommonRaiseLowerBigLand(TileIndex tile, int mode)
 {
 	int sizex, sizey;
 	byte h;
@@ -1194,17 +1194,17 @@ static void CommonRaiseLowerBigLand(uint tile, int mode)
 	_generating_world = false;
 }
 
-static void PlaceProc_RaiseBigLand(uint tile)
+static void PlaceProc_RaiseBigLand(TileIndex tile)
 {
 	CommonRaiseLowerBigLand(tile, 1);
 }
 
-static void PlaceProc_LowerBigLand(uint tile)
+static void PlaceProc_LowerBigLand(TileIndex tile)
 {
 	CommonRaiseLowerBigLand(tile, 0);
 }
 
-static void PlaceProc_RockyArea(uint tile)
+static void PlaceProc_RockyArea(TileIndex tile)
 {
 	if (!IsTileType(tile, MP_CLEAR) && !IsTileType(tile, MP_TREES))
 		return;
@@ -1213,7 +1213,7 @@ static void PlaceProc_RockyArea(uint tile)
 	SndPlayTileFx(SND_1F_SPLAT, tile);
 }
 
-static void PlaceProc_LightHouse(uint tile)
+static void PlaceProc_LightHouse(TileIndex tile)
 {
 	TileInfo ti;
 
@@ -1225,7 +1225,7 @@ static void PlaceProc_LightHouse(uint tile)
 	SndPlayTileFx(SND_1F_SPLAT, tile);
 }
 
-static void PlaceProc_Transmitter(uint tile)
+static void PlaceProc_Transmitter(TileIndex tile)
 {
 	TileInfo ti;
 
@@ -1455,7 +1455,7 @@ static void ToolbarScenGenLand(Window *w)
 	ShowEditorTerraformToolBar();
 }
 
-void CcBuildTown(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildTown(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		SndPlayTileFx(SND_1F_SPLAT, tile);
@@ -1463,7 +1463,7 @@ void CcBuildTown(bool success, uint tile, uint32 p1, uint32 p2)
 	}
 }
 
-static void PlaceProc_Town(uint tile)
+static void PlaceProc_Town(TileIndex tile)
 {
 	DoCommandP(tile, 0, 0, CcBuildTown, CMD_BUILD_TOWN | CMD_MSG(STR_0236_CAN_T_BUILD_TOWN_HERE));
 }
@@ -1655,7 +1655,7 @@ static bool AnyTownExists(void)
 	return false;
 }
 
-extern Industry *CreateNewIndustry(uint tile, int type);
+extern Industry *CreateNewIndustry(TileIndex tile, int type);
 
 static bool TryBuildIndustry(TileIndex tile, int type)
 {

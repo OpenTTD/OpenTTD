@@ -47,7 +47,7 @@ void CheckSwitchToEuro(void)
 void UpdatePlayerHouse(Player *p, uint score)
 {
 	byte val;
-	uint tile = p->location_of_house;
+	TileIndex tile = p->location_of_house;
 
 	if (tile == 0)
 		return;
@@ -792,7 +792,8 @@ void StartupEconomy(void)
 
 Pair SetupSubsidyDecodeParam(Subsidy *s, bool mode)
 {
-	int tile, tile2;
+	TileIndex tile;
+	TileIndex tile2;
 	Industry *i;
 	Town *t;
 	Station *st;

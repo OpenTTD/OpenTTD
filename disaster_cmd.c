@@ -147,7 +147,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 	Station *st;
 	int x,y;
 	byte z;
-	uint tile;
+	TileIndex tile;
 
 	++v->tick_counter;
 
@@ -330,7 +330,7 @@ static void DisasterTick_UFO(Vehicle *v)
 
 static void DestructIndustry(Industry *i)
 {
-	uint tile;
+	TileIndex tile;
 
 	for(tile=0; tile != MapSize(); tile++) {
 		if (IsTileType(tile, MP_INDUSTRY) &&	_map2[tile] == i->index) {
@@ -389,7 +389,7 @@ static void DisasterTick_2(Vehicle *v)
 		}
 	} else if (v->current_order.station == 0) {
 		int x,y;
-		uint tile;
+		TileIndex tile;
 		int ind;
 
 		x = v->x_pos - 15*16;
@@ -460,7 +460,7 @@ static void DisasterTick_3(Vehicle *v)
 		}
 	} else if (v->current_order.station == 0) {
 		int x,y;
-		uint tile;
+		TileIndex tile;
 		int ind;
 
 		x = v->x_pos - 15*16;
@@ -504,7 +504,8 @@ static void DisasterTick_4(Vehicle *v)
 	byte z;
 	Vehicle *u,*w;
 	Town *t;
-	uint tile,tile_org;
+	TileIndex tile;
+	TileIndex tile_org;
 
 	v->tick_counter++;
 
@@ -638,7 +639,7 @@ static void DisasterTick_5_and_6(Vehicle *v)
 {
 	uint32 r;
 	GetNewVehiclePosResult gp;
-	uint tile;
+	TileIndex tile;
 
 	v->tick_counter++;
 
@@ -914,8 +915,9 @@ static void Disaster7_Init(void)
 					NEWS_FLAGS(NM_THIN,NF_VIEWPORT|NF_TILE,NT_ACCIDENT,0), i->xy + TILE_XY(1,1), 0);
 
 				{
-					uint tile = i->xy;
+					TileIndex tile = i->xy;
 					TileIndexDiff step = TileOffsByDir(Random() & 3);
+
 					int count = 30;
 					do {
 						DisasterClearSquare(tile);

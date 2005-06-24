@@ -282,7 +282,7 @@ int32 CmdSellRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 typedef struct RoadFindDepotData {
 	uint best_length;
-	uint tile;
+	TileIndex tile;
 	byte owner;
 } RoadFindDepotData;
 
@@ -291,7 +291,7 @@ static const byte _road_pf_directions[16] = {
 	2, 3, 3, 2, 3, 0, 255, 255,
 };
 
-static bool EnumRoadSignalFindDepot(uint tile, RoadFindDepotData *rfdd, int track, uint length, byte *state)
+static bool EnumRoadSignalFindDepot(TileIndex tile, RoadFindDepotData *rfdd, int track, uint length, byte *state)
 {
 	tile += TileOffsByDir(_road_pf_directions[track]);
 
@@ -309,7 +309,7 @@ static bool EnumRoadSignalFindDepot(uint tile, RoadFindDepotData *rfdd, int trac
 
 static Depot *FindClosestRoadDepot(Vehicle *v)
 {
-	uint tile = v->tile;
+	TileIndex tile = v->tile;
 	int i;
 
 	if (v->u.road.state == 255) { tile = GetVehicleOutOfTunnelTile(v); }
@@ -472,7 +472,7 @@ static void UpdateRoadVehDeltaXY(Vehicle *v)
 
 static void ClearCrashedStation(Vehicle *v)
 {
-	uint tile = v->tile;
+	TileIndex tile = v->tile;
 	byte *b, bb;
 
 	RoadStop *rs = GetRoadStopByTile(tile, GetRoadStopType(tile));
@@ -584,7 +584,7 @@ static void RoadVehCrash(Vehicle *v)
 
 static void RoadVehCheckTrainCrash(Vehicle *v)
 {
-	uint tile;
+	TileIndex tile;
 
 	if (v->u.road.state == 255)
 		return;
@@ -901,7 +901,7 @@ static byte RoadVehGetSlidingDirection(Vehicle *v, int x, int y)
 
 typedef struct OvertakeData {
 	Vehicle *u, *v;
-	uint tile;
+	TileIndex tile;
 	byte tilebits;
 } OvertakeData;
 
@@ -1012,7 +1012,7 @@ typedef struct {
 	uint mindist;
 } FindRoadToChooseData;
 
-static bool EnumRoadTrackFindDist(uint tile, FindRoadToChooseData *frd, int track, uint length, byte *state)
+static bool EnumRoadTrackFindDist(TileIndex tile, FindRoadToChooseData *frd, int track, uint length, byte *state)
 {
 	uint dist = DistanceManhattan(tile, frd->dest);
 	if (dist <= frd->mindist) {
@@ -1026,13 +1026,13 @@ static bool EnumRoadTrackFindDist(uint tile, FindRoadToChooseData *frd, int trac
 
 // Returns direction to choose
 // or -1 if the direction is currently blocked
-static int RoadFindPathToDest(Vehicle *v, uint tile, int enterdir)
+static int RoadFindPathToDest(Vehicle *v, TileIndex tile, int enterdir)
 {
 #define return_track(x) {best_track = x; goto found_best_track; }
 
 	uint16 signal;
 	uint bitmask;
-	uint desttile;
+	TileIndex desttile;
 	FindRoadToChooseData frd;
 	int best_track;
 	uint best_dist, best_maxlen;
@@ -1317,7 +1317,7 @@ static void RoadVehController(Vehicle *v)
 
 // switch to another tile
 	if (rd.x & 0x80) {
-		uint tile = v->tile + TileOffsByDir(rd.x & 3);
+		TileIndex tile = v->tile + TileOffsByDir(rd.x & 3);
 		int dir = RoadFindPathToDest(v, tile, rd.x&3);
 		int tmp;
 		uint32 r;

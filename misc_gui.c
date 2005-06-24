@@ -30,7 +30,7 @@ typedef struct LandInfoData {
 	Town *town;
 	int32 costclear;
 	AcceptedCargo ac;
-	uint tile;
+	TileIndex tile;
 	TileDesc td;
 } LandInfoData;
 
@@ -115,7 +115,7 @@ static const WindowDesc _land_info_desc = {
 	LandInfoWndProc
 };
 
-static void Place_LandInfo(uint tile)
+static void Place_LandInfo(TileIndex tile)
 {
 	Player *p;
 	static LandInfoData lid;

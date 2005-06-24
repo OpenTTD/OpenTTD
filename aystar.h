@@ -27,7 +27,7 @@ enum{
 
 typedef struct AyStarNode AyStarNode;
 struct AyStarNode {
-	uint tile;
+	TileIndex tile;
 	uint direction;
 	uint user_data[2];
 };

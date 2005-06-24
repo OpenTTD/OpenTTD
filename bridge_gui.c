@@ -24,7 +24,7 @@ extern const PalSpriteID _bridge_sprites[MAX_BRIDGES];
 extern const uint16 _bridge_speeds[MAX_BRIDGES];
 extern const StringID _bridge_material[MAX_BRIDGES];
 
-void CcBuildBridge(bool success, uint tile, uint32 p1, uint32 p2)
+void CcBuildBridge(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) SndPlayTileFx(SND_27_BLACKSMITH_ANVIL, tile);
 }
@@ -110,7 +110,7 @@ static const WindowDesc _build_road_bridge_desc = {
 };
 
 
-void ShowBuildBridgeWindow(uint start, uint end, byte bridge_type)
+void ShowBuildBridgeWindow(TileIndex start, TileIndex end, byte bridge_type)
 {
 	int j = 0;
 	int32 ret;
