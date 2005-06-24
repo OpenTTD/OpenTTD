@@ -301,11 +301,10 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		{
 			int count;
 			TerraformerHeightMod *mod;
-			uint til;
 
 			mod = ts.modheight;
 			for (count = ts.modheight_count; count != 0; count--, mod++) {
-				til = mod->tile;
+				TileIndex til = mod->tile;
 
 				SetTileHeight(til, mod->height);
 				TerraformAddDirtyTileAround(&ts, til);
