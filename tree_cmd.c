@@ -81,7 +81,7 @@ static void DoPlaceMoreTrees(TileIndex tile)
 
 		dist = myabs(x) + myabs(y);
 
-		cur_tile = TILE_MASK(tile + TILE_XY(x,y));
+		cur_tile = TILE_MASK(tile + TileDiffXY(x, y));
 
 		/* Only on tiles within 13 squares from tile,
 		    on clear tiles, and NOT on farm-tiles or rocks */

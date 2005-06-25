@@ -47,7 +47,7 @@ static void GenerateDesertArea(TileIndex end, TileIndex start)
 	size_y = (ey - sy) + 1;
 
 	_generating_world = true;
-	BEGIN_TILE_LOOP(tile, size_x, size_y, TILE_XY(sx, sy)) {
+	BEGIN_TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
 		if (GetTileType(tile) != MP_WATER) {
 			SetMapExtraBits(tile, (_ctrl_pressed) ? 0 : 1);
 			DoCommandP(tile, 0, 0, NULL, CMD_LANDSCAPE_CLEAR);

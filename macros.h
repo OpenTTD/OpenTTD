@@ -119,7 +119,7 @@ static inline int KillFirstBit2x64(int value)
 
 #define END_TILE_LOOP(var,w,h,tile)			\
 			} while (++var, --w_cur != 0);						\
-		} while (var += TILE_XY(0,1) - (w), --h_cur != 0);}
+		} while (var += TileDiffXY(0, 1) - (w), --h_cur != 0);}
 
 
 #define for_each_bit(_i,_b)										\

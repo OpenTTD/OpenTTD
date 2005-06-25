@@ -376,7 +376,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			break;
 		case 6:
 			i = GetIndustry(w->window_number);
-			ScrollMainWindowToTile(i->xy + TILE_XY(1,1));
+			ScrollMainWindowToTile(i->xy + TileDiffXY(1, 1));
 			break;
 		}
 		}
@@ -450,7 +450,7 @@ void ShowIndustryViewWindow(int industry)
 		WP(w,vp2_d).data_2 = 0;
 		WP(w,vp2_d).data_3 = 0;
 		i = GetIndustry(w->window_number);
-		AssignWindowViewport(w, 3, 17, 0xFE, 0x56, i->xy + TILE_XY(1,1), 1);
+		AssignWindowViewport(w, 3, 17, 0xFE, 0x56, i->xy + TileDiffXY(1, 1), 1);
 	}
 }
 

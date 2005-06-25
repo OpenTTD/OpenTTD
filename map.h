@@ -3,8 +3,6 @@
 
 #include "stdafx.h"
 
-#define TILE_XY(x,y) (((y) << MapLogX()) + (x))
-
 #define TILE_MASK(x) ((x) & ((1 << (MapLogX() + MapLogY())) - 1))
 #define TILE_ASSERT(x) assert(TILE_MASK(x) == (x));
 
@@ -35,6 +33,17 @@ uint ScaleByMapSize(uint); // Scale relative to the number of tiles
 uint ScaleByMapSize1D(uint); // Scale relative to the circumference of the map
 
 typedef uint32 TileIndex;
+typedef int32 TileIndexDiff;
+
+static inline TileIndex TileXY(uint x, uint y)
+{
+	return (y << MapLogX()) + x;
+}
+
+static inline TileIndexDiff TileDiffXY(int x, int y)
+{
+	return (y << MapLogX()) + x;
+}
 
 static inline TileIndex TileVirtXY(uint x, uint y)
 {
@@ -70,8 +79,6 @@ static inline uint TileY(TileIndex tile)
 }
 
 
-typedef int32 TileIndexDiff;
-
 typedef struct TileIndexDiffC {
 	int16 x;
 	int16 y;
@@ -91,7 +98,7 @@ static inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
 	#define TILE_ADD(x, y) (TileAdd((x), (y), #x " + " #y, __FILE__, __LINE__))
 #endif
 
-#define TILE_ADDXY(tile, x, y) TILE_ADD(tile, TILE_XY(x, y))
+#define TILE_ADDXY(tile, x, y) TILE_ADD(tile, TileDiffXY(x, y))
 
 uint TileAddWrap(TileIndex tile, int addx, int addy);
 
@@ -109,7 +116,7 @@ static inline TileIndex AddTileIndexDiffCWrap(TileIndex tile, TileIndexDiffC dif
 	if (x < 0 || y < 0 || x > (int)MapMaxX() || y > (int)MapMaxY())
 		return INVALID_TILE;
 	else
-		return TILE_XY(x, y);
+		return TileXY(x, y);
 }
 
 // Functions to calculate distances

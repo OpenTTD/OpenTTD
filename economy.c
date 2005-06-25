@@ -62,15 +62,15 @@ void UpdatePlayerHouse(Player *p, uint score)
 	if (val <= _map5[tile])
 		return;
 
-	_map5[tile + TILE_XY(0,0)] = val;
-	_map5[tile + TILE_XY(0,1)] = ++val;
-	_map5[tile + TILE_XY(1,0)] = ++val;
-	_map5[tile + TILE_XY(1,1)] = ++val;
+	_map5[tile + TileDiffXY(0, 0)] =   val;
+	_map5[tile + TileDiffXY(0, 1)] = ++val;
+	_map5[tile + TileDiffXY(1, 0)] = ++val;
+	_map5[tile + TileDiffXY(1, 1)] = ++val;
 
-	MarkTileDirtyByTile(tile + TILE_XY(0,0));
-	MarkTileDirtyByTile(tile + TILE_XY(0,1));
-	MarkTileDirtyByTile(tile + TILE_XY(1,0));
-	MarkTileDirtyByTile(tile + TILE_XY(1,1));
+	MarkTileDirtyByTile(tile + TileDiffXY(0, 0));
+	MarkTileDirtyByTile(tile + TileDiffXY(0, 1));
+	MarkTileDirtyByTile(tile + TileDiffXY(1, 0));
+	MarkTileDirtyByTile(tile + TileDiffXY(1, 1));
 }
 
 int64 CalculateCompanyValue(Player *p) {

@@ -621,7 +621,7 @@ static void AiNew_State_FindStation(Player *p) {
 	    //   taking eachothers passangers away (bad result when it does not)
 	    for (x = TileX(tile) - AI_FINDSTATION_TILE_RANGE; x <= TileX(tile) + AI_FINDSTATION_TILE_RANGE; x++) {
 	    	for (y = TileY(tile) - AI_FINDSTATION_TILE_RANGE; y <= TileY(tile) + AI_FINDSTATION_TILE_RANGE; y++) {
-	    		new_tile = TILE_XY(x,y);
+	    		new_tile = TileXY(x, y);
 	    		if (IsTileType(new_tile, MP_CLEAR) || IsTileType(new_tile, MP_TREES)) {
 	    			// This tile we can build on!
 	    			// Check acceptance
@@ -695,8 +695,8 @@ static void AiNew_State_FindPath(Player *p) {
     	// Init path_info
     	if (p->ainew.from_tile == AI_STATION_RANGE) {
     		// For truck routes we take a range around the industry
-	    	p->ainew.path_info.start_tile_tl = GetIndustry(p->ainew.from_ic)->xy - TILE_XY(1,1);
-	    	p->ainew.path_info.start_tile_br = GetIndustry(p->ainew.from_ic)->xy + TILE_XY(GetIndustry(p->ainew.from_ic)->width, GetIndustry(p->ainew.from_ic)->height) + TILE_XY(1,1);
+	    	p->ainew.path_info.start_tile_tl = GetIndustry(p->ainew.from_ic)->xy - TileDiffXY(1, 1);
+	    	p->ainew.path_info.start_tile_br = GetIndustry(p->ainew.from_ic)->xy + TileDiffXY(GetIndustry(p->ainew.from_ic)->width, GetIndustry(p->ainew.from_ic)->height) + TileDiffXY(1, 1);
 	    	p->ainew.path_info.start_direction = p->ainew.from_direction;
 	    } else {
 	    	p->ainew.path_info.start_tile_tl = p->ainew.from_tile;
@@ -705,8 +705,8 @@ static void AiNew_State_FindPath(Player *p) {
 	    }
 
 	    if (p->ainew.to_tile == AI_STATION_RANGE) {
-	    	p->ainew.path_info.end_tile_tl = GetIndustry(p->ainew.to_ic)->xy - TILE_XY(1,1);
-	    	p->ainew.path_info.end_tile_br = GetIndustry(p->ainew.to_ic)->xy + TILE_XY(GetIndustry(p->ainew.to_ic)->width, GetIndustry(p->ainew.to_ic)->height) + TILE_XY(1,1);
+	    	p->ainew.path_info.end_tile_tl = GetIndustry(p->ainew.to_ic)->xy - TileDiffXY(1, 1);
+	    	p->ainew.path_info.end_tile_br = GetIndustry(p->ainew.to_ic)->xy + TileDiffXY(GetIndustry(p->ainew.to_ic)->width, GetIndustry(p->ainew.to_ic)->height) + TileDiffXY(1, 1);
 	   	    p->ainew.path_info.end_direction = p->ainew.to_direction;
     	} else {
 	   	    p->ainew.path_info.end_tile_tl = p->ainew.to_tile;

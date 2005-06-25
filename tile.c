@@ -31,11 +31,11 @@ uint GetTileSlope(TileIndex tile, uint *h)
 	}
 
 	min = a = TileHeight(tile);
-	b = TileHeight(tile + TILE_XY(1,0));
+	b = TileHeight(tile + TileDiffXY(1, 0));
 	if (min >= b) min = b;
-	c = TileHeight(tile + TILE_XY(0,1));
+	c = TileHeight(tile + TileDiffXY(0, 1));
 	if (min >= c) min = c;
-	d = TileHeight(tile + TILE_XY(1,1));
+	d = TileHeight(tile + TileDiffXY(1, 1));
 	if (min >= d) min = d;
 
 	r = 0;

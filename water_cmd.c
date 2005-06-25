@@ -41,7 +41,7 @@ int32 CmdBuildShipDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	tile = TileVirtXY(x, y);
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
-	tile2 = tile + (p1 ? TILE_XY(0,1) : TILE_XY(1,0));
+	tile2 = tile + (p1 ? TileDiffXY(0, 1) : TileDiffXY(1, 0));
 	if (!EnsureNoVehicle(tile2)) return CMD_ERROR;
 
 	if (!IsClearWaterTile(tile) || !IsClearWaterTile(tile2))
@@ -87,7 +87,7 @@ static int32 RemoveShipDepot(TileIndex tile, uint32 flags)
 	if (!EnsureNoVehicle(tile))
 		return CMD_ERROR;
 
-	tile2 = tile + ((_map5[tile] & 2) ? TILE_XY(0,1) : TILE_XY(1,0));
+	tile2 = tile + ((_map5[tile] & 2) ? TileDiffXY(0, 1) : TileDiffXY(1, 0));
 
 	if (!EnsureNoVehicle(tile2))
 		return CMD_ERROR;
@@ -210,7 +210,7 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (_game_mode != GM_EDITOR && (sx != x && sy != y)) return CMD_ERROR;
 
 	cost = 0;
-	BEGIN_TILE_LOOP(tile, size_x, size_y, TILE_XY(sx, sy)) {
+	BEGIN_TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
 		ret = 0;
 		if (GetTileSlope(tile, NULL) != 0) return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 
@@ -306,8 +306,8 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 			return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
 
 		if (m5 == 0x80 || m5 == 0x82) {}
-		else if (m5 == 0x81) { tile -= TILE_XY(1,0); }
-		else if (m5 == 0x83) { tile -= TILE_XY(0,1); }
+		else if (m5 == 0x81) { tile -= TileDiffXY(1, 0); }
+		else if (m5 == 0x83) { tile -= TileDiffXY(0, 1); }
 		else
 			return CMD_ERROR;
 
@@ -680,7 +680,7 @@ static void ClickTile_Water(TileIndex tile)
 
 	if (IS_BYTE_INSIDE(m5, 0, 3+1)) {
 		if (m5 & 1)
-			tile += (m5==1) ? TILE_XY(-1,0) : TILE_XY(0,-1);
+			tile += (m5 == 1) ? TileDiffXY(-1, 0) : TileDiffXY(0, -1);
 		ShowShipDepotWindow(tile);
 	}
 }

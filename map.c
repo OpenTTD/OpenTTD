@@ -81,9 +81,9 @@ TileIndex TileAdd(TileIndex tile, TileIndexDiff add,
 #endif
 	}
 
-	assert(TILE_XY(x,y) == TILE_MASK(tile + add));
+	assert(TileXY(x,y) == TILE_MASK(tile + add));
 
-	return TILE_XY(x,y);
+	return TileXY(x,y);
 }
 #endif
 
@@ -115,7 +115,7 @@ uint ScaleByMapSize1D(uint n)
 //  addx = +3 and addy = -4. This function will now return
 //  INVALID_TILE, because the y is wrapped. This is needed in
 //  for example, farmland. When the tile is not wrapped,
-//  the result will be tile + TILE_XY(addx, addy)
+//  the result will be tile + TileDiffXY(addx, addy)
 uint TileAddWrap(TileIndex tile, int addx, int addy)
 {
 	uint x, y;
@@ -123,8 +123,8 @@ uint TileAddWrap(TileIndex tile, int addx, int addy)
 	y = TileY(tile) + addy;
 
 	// Are we about to wrap?
-		if (x < MapMaxX() && y < MapMaxY())
-		return tile + TILE_XY(addx, addy);
+	if (x < MapMaxX() && y < MapMaxY())
+		return tile + TileDiffXY(addx, addy);
 
 	return INVALID_TILE;
 }

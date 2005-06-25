@@ -627,10 +627,10 @@ static void DisasterTick_4b(Vehicle *v)
 				EV_EXPLOSION_SMALL);
 		}
 
-		BEGIN_TILE_LOOP(tile,6,6,v->tile - TILE_XY(3,3))
+		BEGIN_TILE_LOOP(tile, 6, 6, v->tile - TileDiffXY(3, 3))
 			tile = TILE_MASK(tile);
 			DisasterClearSquare(tile);
-		END_TILE_LOOP(tile,6,6,v->tile - TILE_XY(3,3))
+		END_TILE_LOOP(tile, 6, 6, v->tile - TileDiffXY(3, 3))
 	}
 }
 
@@ -744,7 +744,7 @@ static void Disaster1_Init(void)
 	x = TileX(Random()) * 16 + 8;
 
 	InitializeDisasterVehicle(v, x, 0, 135, 3, 2);
-	v->dest_tile = TILE_XY(MapSizeX() / 2, MapSizeY() / 2);
+	v->dest_tile = TileXY(MapSizeX() / 2, MapSizeY() / 2);
 	v->age = 0;
 
 	// Allocate shadow too?
@@ -846,7 +846,7 @@ static void Disaster4_Init(void)
 
 	y = MapMaxX() * 16 - 1;
 	InitializeDisasterVehicle(v, x, y, 135, 7, 9);
-	v->dest_tile = TILE_XY(MapSizeX() / 2, MapSizeY() / 2);
+	v->dest_tile = TileXY(MapSizeX() / 2, MapSizeY() / 2);
 	v->age = 0;
 
 	// Allocate shadow too?
@@ -912,7 +912,7 @@ static void Disaster7_Init(void)
 
 				SetDParam(0, i->town->index);
 				AddNewsItem(STR_B005_COAL_MINE_SUBSIDENCE_LEAVES,
-					NEWS_FLAGS(NM_THIN,NF_VIEWPORT|NF_TILE,NT_ACCIDENT,0), i->xy + TILE_XY(1,1), 0);
+					NEWS_FLAGS(NM_THIN,NF_VIEWPORT|NF_TILE,NT_ACCIDENT,0), i->xy + TileDiffXY(1, 1), 0);
 
 				{
 					TileIndex tile = i->xy;

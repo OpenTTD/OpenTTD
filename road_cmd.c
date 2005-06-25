@@ -548,7 +548,7 @@ int32 CmdBuildLongRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		if (tile == end_tile) break;
 
-		tile += HASBIT(p2, 2) ? TILE_XY(0, 1) : TILE_XY(1, 0);
+		tile += HASBIT(p2, 2) ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
 	}
 
 	return (cost == 0) ? CMD_ERROR : cost;
@@ -602,7 +602,7 @@ int32 CmdRemoveLongRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		if (tile == end_tile) break;
 
-		tile += HASBIT(p2, 2) ? TILE_XY(0, 1) : TILE_XY(1, 0);
+		tile += HASBIT(p2, 2) ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
 	}
 
 	return (cost == 0) ? CMD_ERROR : cost;

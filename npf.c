@@ -81,7 +81,7 @@ TileIndex CalcClosestStationTile(int station, TileIndex tile) {
 		ty = y3;
 
 	// return the tile of our target coordinates
-	return TILE_XY(tx,ty);
+	return TileXY(tx, ty);
 };
 
 /* Calcs the heuristic to the target station or tile. For train stations, it

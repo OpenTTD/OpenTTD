@@ -175,7 +175,7 @@ static byte FindCatchmentRadius(Station *st)
 static Station *GetStationAround(TileIndex tile, int w, int h, int closest_station)
 {
 	// check around to see if there's any stations there
-	BEGIN_TILE_LOOP(tile_cur, w + 2, h + 2, tile - TILE_XY(1,1))
+	BEGIN_TILE_LOOP(tile_cur, w + 2, h + 2, tile - TileDiffXY(1, 1))
 		if (IsTileType(tile_cur, MP_STATION)) {
 			int t;
 			t = _map2[tile_cur];
@@ -193,7 +193,7 @@ static Station *GetStationAround(TileIndex tile, int w, int h, int closest_stati
 				return CHECK_STATIONS_ERR;
 			}
 		}
-	END_TILE_LOOP(tile_cur, w + 2, h + 2, tile - TILE_XY(1,1))
+	END_TILE_LOOP(tile_cur, w + 2, h + 2, tile - TileDiffXY(1, 1))
 	return (closest_station == -1) ? NULL : GetStation(closest_station);
 }
 
@@ -550,7 +550,7 @@ void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
 		for (xc = x1; xc != x2; xc++) {
 			if (!(IS_INSIDE_1D(xc, x, w) && IS_INSIDE_1D(yc, y, h))) {
 				GetProducedCargoProc *gpc;
-				TileIndex tile = TILE_XY(xc, yc);
+				TileIndex tile = TileXY(xc, yc);
 
 				gpc = _tile_type_procs[GetTileType(tile)]->get_produced_cargo_proc;
 				if (gpc != NULL) {
@@ -596,7 +596,7 @@ void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile,
 
 	for (yc = y1; yc != y2; yc++) {
 		for (xc = x1; xc != x2; xc++) {
-			TileIndex tile = TILE_XY(xc, yc);
+			TileIndex tile = TileXY(xc, yc);
 
 			if (!IsTileType(tile, MP_STATION)) {
 				AcceptedCargo ac;
@@ -653,14 +653,14 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	if (st->train_tile != 0) {
 		MergePoint(&rect, st->train_tile);
 		MergePoint(&rect,
-			st->train_tile + TILE_XY(st->trainst_w - 1, st->trainst_h - 1)
+			st->train_tile + TileDiffXY(st->trainst_w - 1, st->trainst_h - 1)
 		);
 	}
 
 	if (st->airport_tile != 0) {
 		MergePoint(&rect, st->airport_tile);
 		MergePoint(&rect,
-			st->airport_tile + TILE_XY(
+			st->airport_tile + TileDiffXY(
 				_airport_size_x[st->airport_type] - 1,
 				_airport_size_y[st->airport_type] - 1
 			)
@@ -687,7 +687,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	if (rect.max_x >= rect.min_x) {
 		GetAcceptanceAroundTiles(
 			accepts,
-			TILE_XY(rect.min_x, rect.min_y),
+			TileXY(rect.min_x, rect.min_y),
 			rect.max_x - rect.min_x + 1,
 			rect.max_y - rect.min_y + 1,
 			rad
@@ -831,7 +831,7 @@ static bool CanExpandRailroadStation(Station *st, uint *fin, int direction)
 		int y = min(TileY(st->train_tile), TileY(tile));
 		curw = max(TileX(st->train_tile) + curw, TileX(tile) + w) - x;
 		curh = max(TileY(st->train_tile) + curh, TileY(tile) + h) - y;
-		tile = TILE_XY(x,y);
+		tile = TileXY(x, y);
 	} else {
 		// check so the direction is the same
 		if ((_map5[st->train_tile] & 1) != direction) {
@@ -840,19 +840,19 @@ static bool CanExpandRailroadStation(Station *st, uint *fin, int direction)
 		}
 
 		// check if the new station adjoins the old station in either direction
-		if (curw == w && st->train_tile == tile + TILE_XY(0, h)) {
+		if (curw == w && st->train_tile == tile + TileDiffXY(0, h)) {
 			// above
 			curh += h;
-		} else if (curw == w && st->train_tile == tile - TILE_XY(0, curh)) {
+		} else if (curw == w && st->train_tile == tile - TileDiffXY(0, curh)) {
 			// below
-			tile -= TILE_XY(0, curh);
+			tile -= TileDiffXY(0, curh);
 			curh += h;
-		} else if (curh == h && st->train_tile == tile + TILE_XY(w, 0)) {
+		} else if (curh == h && st->train_tile == tile + TileDiffXY(w, 0)) {
 			// to the left
 			curw += w;
-		} else if (curh == h && st->train_tile == tile - TILE_XY(curw, 0)) {
+		} else if (curh == h && st->train_tile == tile - TileDiffXY(curw, 0)) {
 			// to the right
-			tile -= TILE_XY(curw, 0);
+			tile -= TileDiffXY(curw, 0);
 			curw += w;
 		} else {
 			_error_message = STR_306D_NONUNIFORM_STATIONS_DISALLOWED;
@@ -1040,7 +1040,7 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		st->build_date = _date;
 
-		tile_delta = direction ? TILE_XY(0,1) : TILE_XY(1,0);
+		tile_delta = direction ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
 
 		statspec = (p2 & 0x10) != 0 ? GetCustomStation(STAT_CLASS_DFLT, p2 >> 8) : NULL;
 		layout_ptr = alloca(numtracks * plat_len);
@@ -1062,7 +1062,7 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 				tile += tile_delta;
 			} while (--w);
-			tile_org += tile_delta ^ TILE_XY(1,1);
+			tile_org += tile_delta ^ TileDiffXY(1, 1); // perpendicular to tile_delta
 		} while (--numtracks);
 
 		UpdateStationVirtCoordDirty(st);
@@ -1090,24 +1090,42 @@ restart:
 	// too small?
 	if (w != 0 && h != 0) {
 		// check the left side, x = constant, y changes
-		for(i=0; !TileBelongsToRailStation(st, tile + TILE_XY(0,i)) ;)
+		for (i = 0; !TileBelongsToRailStation(st, tile + TileDiffXY(0, i));) {
 			// the left side is unused?
-			if (++i==h) { tile += TILE_XY(1, 0); w--; goto restart; }
+			if (++i == h) {
+				tile += TileDiffXY(1, 0);
+				w--;
+				goto restart;
+			}
+		}
 
 		// check the right side, x = constant, y changes
-		for(i=0; !TileBelongsToRailStation(st, tile + TILE_XY(w-1,i)) ;)
+		for (i = 0; !TileBelongsToRailStation(st, tile + TileDiffXY(w - 1, i));) {
 			// the right side is unused?
-			if (++i==h) { w--; goto restart; }
+			if (++i == h) {
+				w--;
+				goto restart;
+			}
+		}
 
 		// check the upper side, y = constant, x changes
-		for(i=0; !TileBelongsToRailStation(st, tile + TILE_XY(i,0)) ;)
+		for (i = 0; !TileBelongsToRailStation(st, tile + TileDiffXY(i, 0));) {
 			// the left side is unused?
-			if (++i==w) { tile += TILE_XY(0, 1); h--; goto restart; }
+			if (++i == w) {
+				tile += TileDiffXY(0, 1);
+				h--;
+				goto restart;
+			}
+		}
 
 		// check the lower side, y = constant, x changes
-		for(i=0; !TileBelongsToRailStation(st, tile + TILE_XY(i,h-1)) ;)
+		for (i = 0; !TileBelongsToRailStation(st, tile + TileDiffXY(i, h - 1));) {
 			// the left side is unused?
-			if (++i==w) { h--; goto restart; }
+			if (++i == w) {
+				h--;
+				goto restart;
+			}
+		}
 	} else {
 		tile = 0;
 	}
@@ -1162,7 +1180,7 @@ uint GetStationPlatforms(Station *st, TileIndex tile)
 
 	len = 0;
 	dir = _map5[tile]&1;
-	delta = dir ? TILE_XY(0,1) : TILE_XY(1,0);
+	delta = dir ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
 
 	// find starting tile..
 	t = tile;
@@ -1373,10 +1391,10 @@ static int32 RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 				if (flags & DC_EXEC)
 					DoClearSquare(tile);
 			}
-			tile += TILE_XY(1, 0);
+			tile += TileDiffXY(1, 0);
 		} while (--w);
 		w = w_bak;
-		tile = tile + TILE_XY(-w, 1);
+		tile += TileDiffXY(-w, 1);
 	} while (--h);
 
 	if (flags & DC_EXEC) {
@@ -2712,7 +2730,7 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
 		max_rad = 4;
 	}
 
-	BEGIN_TILE_LOOP(cur_tile, w, h, tile - TILE_XY(max_rad,max_rad))
+	BEGIN_TILE_LOOP(cur_tile, w, h, tile - TileDiffXY(max_rad, max_rad))
 		cur_tile = TILE_MASK(cur_tile);
 		if (IsTileType(cur_tile, MP_STATION)) {
 			st_index = _map2[cur_tile];
@@ -2761,7 +2779,7 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
 					break;
 			}
 		}
-	END_TILE_LOOP(cur_tile, w, h, tile - TILE_XY(max_rad, max_rad))
+	END_TILE_LOOP(cur_tile, w, h, tile - TileDiffXY(max_rad, max_rad))
 
 	/* no stations around at all? */
 	if (around[0] == INVALID_STATION)

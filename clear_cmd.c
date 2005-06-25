@@ -76,9 +76,9 @@ static void TerraformAddDirtyTile(TerraformerState *ts, TileIndex tile)
 
 static void TerraformAddDirtyTileAround(TerraformerState *ts, TileIndex tile)
 {
-	TerraformAddDirtyTile(ts, tile+TILE_XY(0,-1));
-	TerraformAddDirtyTile(ts, tile+TILE_XY(-1,-1));
-	TerraformAddDirtyTile(ts, tile+TILE_XY(-1,0));
+	TerraformAddDirtyTile(ts, tile + TileDiffXY( 0, -1));
+	TerraformAddDirtyTile(ts, tile + TileDiffXY(-1, -1));
+	TerraformAddDirtyTile(ts, tile + TileDiffXY(-1,  0));
 	TerraformAddDirtyTile(ts, tile);
 }
 
@@ -152,17 +152,10 @@ static bool TerraformTileHeight(TerraformerState *ts, TileIndex tile, int height
 	if (nh < 0 || height == nh)
 		return false;
 
-	if (TerraformProc(ts, tile, 0)<0)
-		return false;
-
-	if (TerraformProc(ts, tile + TILE_XY(0,-1), 1)<0)
-		return false;
-
-	if (TerraformProc(ts, tile + TILE_XY(-1,-1), 2)<0)
-		return false;
-
-	if (TerraformProc(ts, tile + TILE_XY(-1,0), 3)<0)
-		return false;
+	if (TerraformProc(ts, tile, 0) < 0) return false;
+	if (TerraformProc(ts, tile + TileDiffXY( 0, -1), 1) < 0) return false;
+	if (TerraformProc(ts, tile + TileDiffXY(-1, -1), 2) < 0) return false;
+	if (TerraformProc(ts, tile + TileDiffXY(-1,  0), 3) < 0) return false;
 
 	mod = ts->modheight;
 	count = ts->modheight_count;
@@ -239,29 +232,29 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	tile = TileVirtXY(x, y);
 
 	/* Make an extra check for map-bounds cause we add tiles to the originating tile */
-	if (tile + TILE_XY(1,1) > MapSize()) return CMD_ERROR;
+	if (tile + TileDiffXY(1, 1) > MapSize()) return CMD_ERROR;
 
 	if (p1 & 1) {
-		if (!TerraformTileHeight(&ts, tile+TILE_XY(1,0),
-				TileHeight(tile + TILE_XY(1, 0)) + direction))
+		if (!TerraformTileHeight(&ts, tile + TileDiffXY(1, 0),
+				TileHeight(tile + TileDiffXY(1, 0)) + direction))
 					return CMD_ERROR;
 	}
 
 	if (p1 & 2) {
-		if (!TerraformTileHeight(&ts, tile+TILE_XY(1,1),
-				TileHeight(tile + TILE_XY(1, 1)) + direction))
+		if (!TerraformTileHeight(&ts, tile + TileDiffXY(1, 1),
+				TileHeight(tile + TileDiffXY(1, 1)) + direction))
 					return CMD_ERROR;
 	}
 
 	if (p1 & 4) {
-		if (!TerraformTileHeight(&ts, tile+TILE_XY(0,1),
-				TileHeight(tile + TILE_XY(0, 1)) + direction))
+		if (!TerraformTileHeight(&ts, tile + TileDiffXY(0, 1),
+				TileHeight(tile + TileDiffXY(0, 1)) + direction))
 					return CMD_ERROR;
 	}
 
 	if (p1 & 8) {
-		if (!TerraformTileHeight(&ts, tile+TILE_XY(0,0),
-				TileHeight(tile + TILE_XY(0, 0)) + direction))
+		if (!TerraformTileHeight(&ts, tile + TileDiffXY(0, 0),
+				TileHeight(tile + TileDiffXY(0, 0)) + direction))
 					return CMD_ERROR;
 	}
 
@@ -274,12 +267,12 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			uint z, t;
 			TileIndex tile = *ti;
 
-			z = TerraformGetHeightOfTile(&ts, tile + TILE_XY(0,0));
-			t = TerraformGetHeightOfTile(&ts, tile + TILE_XY(1,0));
+			z = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 0));
+			t = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(1, 0));
 			if (t <= z) z = t;
-			t = TerraformGetHeightOfTile(&ts, tile + TILE_XY(1,1));
+			t = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(1, 1));
 			if (t <= z) z = t;
-			t = TerraformGetHeightOfTile(&ts, tile + TILE_XY(0,1));
+			t = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 1));
 			if (t <= z) z = t;
 
 			if (!CheckTunnelInWay(tile, z*8))
@@ -351,7 +344,7 @@ int32 CmdLevelLand(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	sy = TileY(p1);
 	if (ex < sx) intswap(ex, sx);
 	if (ey < sy) intswap(ey, sy);
-	tile = TILE_XY(sx,sy);
+	tile = TileXY(sx, sy);
 
 	size_x = ex-sx+1;
 	size_y = ey-sy+1;
@@ -710,11 +703,11 @@ static void TileLoopClearDesert(TileIndex tile)
 	if (GetMapExtraBits(tile) == 1) {
 		_map5[tile] = 0x17;
 	} else {
-		if (GetMapExtraBits(tile+TILE_XY(1,0)) != 1 &&
-				GetMapExtraBits(tile+TILE_XY(-1,0)) != 1 &&
-				GetMapExtraBits(tile+TILE_XY(0,1)) != 1 &&
-				GetMapExtraBits(tile+TILE_XY(0,-1)) != 1)
-					return;
+		if (GetMapExtraBits(tile + TileDiffXY( 1,  0)) != 1 &&
+				GetMapExtraBits(tile + TileDiffXY(-1,  0)) != 1 &&
+				GetMapExtraBits(tile + TileDiffXY( 0,  1)) != 1 &&
+				GetMapExtraBits(tile + TileDiffXY( 0, -1)) != 1)
+			return;
 		_map5[tile] = 0x15;
 	}
 

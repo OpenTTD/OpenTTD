@@ -2421,14 +2421,14 @@ void SetupColorsAndInitialWindow(void)
 	switch(_game_mode) {
 	case GM_MENU:
 		w = AllocateWindow(0, 0, width, height, MainWindowWndProc, WC_MAIN_WINDOW, NULL);
-		AssignWindowViewport(w, 0, 0, width, height, TILE_XY(32, 32), 0);
+		AssignWindowViewport(w, 0, 0, width, height, TileXY(32, 32), 0);
 //		w = AllocateWindowDesc(&_toolb_intro_desc);
 //		w->flags4 &= ~WF_WHITE_BORDER_MASK;
 		ShowSelectGameWindow();
 		break;
 	case GM_NORMAL:
 		w = AllocateWindow(0, 0, width, height, MainWindowWndProc, WC_MAIN_WINDOW, NULL);
-		AssignWindowViewport(w, 0, 0, width, height, TILE_XY(32, 32), 0);
+		AssignWindowViewport(w, 0, 0, width, height, TileXY(32, 32), 0);
 
 		ShowVitalWindows();
 

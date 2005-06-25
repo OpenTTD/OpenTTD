@@ -41,10 +41,10 @@ int32 DestroyCompanyHQ(TileIndex tile, uint32 flags)
 		if (p->location_of_house == 0) return CMD_ERROR;
 
 		if (flags & DC_EXEC) {
-			DoClearSquare(p->location_of_house + TILE_XY(0,0));
-			DoClearSquare(p->location_of_house + TILE_XY(0,1));
-			DoClearSquare(p->location_of_house + TILE_XY(1,0));
-			DoClearSquare(p->location_of_house + TILE_XY(1,1));
+			DoClearSquare(p->location_of_house + TileDiffXY(0, 0));
+			DoClearSquare(p->location_of_house + TileDiffXY(0, 1));
+			DoClearSquare(p->location_of_house + TileDiffXY(1, 0));
+			DoClearSquare(p->location_of_house + TileDiffXY(1, 1));
 			p->location_of_house = 0; // reset HQ position
 			InvalidateWindow(WC_COMPANY, (int)p->index);
 		}
@@ -89,10 +89,10 @@ int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		p->location_of_house = tile;
 
-		ModifyTile(tile + TILE_XY(0,0), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x80);
-		ModifyTile(tile + TILE_XY(0,1), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x81);
-		ModifyTile(tile + TILE_XY(1,0), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x82);
-		ModifyTile(tile + TILE_XY(1,1), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x83);
+		ModifyTile(tile + TileDiffXY(0, 0), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x80);
+		ModifyTile(tile + TileDiffXY(0, 1), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x81);
+		ModifyTile(tile + TileDiffXY(1, 0), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x82);
+		ModifyTile(tile + TileDiffXY(1, 1), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x83);
 		UpdatePlayerHouse(p, score);
 		InvalidateWindow(WC_COMPANY, (int)p->index);
 	}
@@ -322,9 +322,7 @@ static const TileIndexDiffC _tile_add[] = {
 /* checks, if a radio tower is within a 9x9 tile square around tile */
 static bool checkRadioTowerNearby(TileIndex tile)
 {
-	TileIndex tile_s;
-
-	tile_s = TILE_XY(TileX(tile) - 4, TileY(tile) - 4);
+	TileIndex tile_s = tile - TileDiffXY(4, 4);
 
 	BEGIN_TILE_LOOP(tile, 9, 9, tile_s)
 		// already a radio tower here?
@@ -375,10 +373,10 @@ restart:
 		dir = r >> 30;
 		r %= (dir == 0 || dir == 2) ? MapMaxY() : MapMaxX();
 		tile =
-			(dir==0)?TILE_XY(0,r):0 +             // left
-			(dir==1)?TILE_XY(r,0):0 +             // top
-			(dir == 2) ? TILE_XY(MapMaxX(), r) : 0 + // right
-			(dir == 3) ? TILE_XY(r, MapMaxY()) : 0;  // bottom
+			(dir == 0) ? TileXY(0, r)         : 0 + // left
+			(dir == 1) ? TileXY(r, 0)         : 0 + // top
+			(dir == 2) ? TileXY(MapMaxX(), r) : 0 + // right
+			(dir == 3) ? TileXY(r, MapMaxY()) : 0;  // bottom
 		j = 20;
 		do {
 			if (--j == 0)

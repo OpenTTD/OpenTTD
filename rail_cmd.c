@@ -1891,30 +1891,30 @@ static void TileLoop_Track(TileIndex tile)
 			owner = GetTileOwner(tile);
 
 			if ( (!(rail&(TRACK_BIT_DIAG2|TRACK_BIT_UPPER|TRACK_BIT_LEFT)) && (rail&TRACK_BIT_DIAG1)) || rail==(TRACK_BIT_LOWER|TRACK_BIT_RIGHT)) {
-				if (!IsTileType(tile + TILE_XY(0,-1), MP_RAILWAY) ||
-						!IsTileOwner(tile + TILE_XY(0, -1), owner) ||
-						(_map5[tile + TILE_XY(0,-1)]==TRACK_BIT_UPPER || _map5[tile + TILE_XY(0,-1)]==TRACK_BIT_LEFT))
+				if (!IsTileType(tile + TileDiffXY(0, -1), MP_RAILWAY) ||
+						!IsTileOwner(tile + TileDiffXY(0, -1), owner) ||
+						(_map5[tile + TileDiffXY(0, -1)] == TRACK_BIT_UPPER || _map5[tile + TileDiffXY(0, -1)] == TRACK_BIT_LEFT))
 							a2 = RAIL_GROUND_FENCE_NW;
 			}
 
 			if ( (!(rail&(TRACK_BIT_DIAG2|TRACK_BIT_LOWER|TRACK_BIT_RIGHT)) && (rail&TRACK_BIT_DIAG1)) || rail==(TRACK_BIT_UPPER|TRACK_BIT_LEFT)) {
-				if (!IsTileType(tile + TILE_XY(0,1), MP_RAILWAY) ||
-						!IsTileOwner(tile + TILE_XY(0, 1), owner) ||
-						(_map5[tile + TILE_XY(0,1)]==TRACK_BIT_LOWER || _map5[tile + TILE_XY(0,1)]==TRACK_BIT_RIGHT))
+				if (!IsTileType(tile + TileDiffXY(0, 1), MP_RAILWAY) ||
+						!IsTileOwner(tile + TileDiffXY(0, 1), owner) ||
+						(_map5[tile + TileDiffXY(0, 1)] == TRACK_BIT_LOWER || _map5[tile + TileDiffXY(0, 1)] == TRACK_BIT_RIGHT))
 							a2 = (a2 == RAIL_GROUND_FENCE_NW) ? RAIL_GROUND_FENCE_SENW : RAIL_GROUND_FENCE_SE;
 			}
 
 			if ( (!(rail&(TRACK_BIT_DIAG1|TRACK_BIT_UPPER|TRACK_BIT_RIGHT)) && (rail&TRACK_BIT_DIAG2)) || rail==(TRACK_BIT_LOWER|TRACK_BIT_LEFT)) {
-				if (!IsTileType(tile + TILE_XY(-1,0), MP_RAILWAY) ||
-						!IsTileOwner(tile + TILE_XY(-1, 0), owner) ||
-						(_map5[tile + TILE_XY(-1,0)]==TRACK_BIT_UPPER || _map5[tile + TILE_XY(-1,0)]==TRACK_BIT_RIGHT))
+				if (!IsTileType(tile + TileDiffXY(-1, 0), MP_RAILWAY) ||
+						!IsTileOwner(tile + TileDiffXY(-1, 0), owner) ||
+						(_map5[tile + TileDiffXY(-1, 0)] == TRACK_BIT_UPPER || _map5[tile + TileDiffXY(-1, 0)] == TRACK_BIT_RIGHT))
 							a2 = RAIL_GROUND_FENCE_NE;
 			}
 
 			if ( (!(rail&(TRACK_BIT_DIAG1|TRACK_BIT_LOWER|TRACK_BIT_LEFT)) && (rail&TRACK_BIT_DIAG2)) || rail==(TRACK_BIT_UPPER|TRACK_BIT_RIGHT)) {
-				if (!IsTileType(tile + TILE_XY(1,0), MP_RAILWAY) ||
-						!IsTileOwner(tile + TILE_XY(1, 0), owner) ||
-						(_map5[tile + TILE_XY(1,0)]==TRACK_BIT_LOWER || _map5[tile + TILE_XY(1,0)]==TRACK_BIT_LEFT))
+				if (!IsTileType(tile + TileDiffXY(1, 0), MP_RAILWAY) ||
+						!IsTileOwner(tile + TileDiffXY(1, 0), owner) ||
+						(_map5[tile + TileDiffXY(1, 0)] == TRACK_BIT_LOWER || _map5[tile + TileDiffXY(1, 0)] == TRACK_BIT_LEFT))
 							a2 = (a2 == RAIL_GROUND_FENCE_NE) ? RAIL_GROUND_FENCE_NESW : RAIL_GROUND_FENCE_SW;
 			}
 		}

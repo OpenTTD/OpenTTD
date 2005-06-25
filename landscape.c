@@ -412,7 +412,7 @@ void RunTileLoop(void)
 		if (TileX(tile) < MapSizeX() - TILELOOP_SIZE) {
 			tile += TILELOOP_SIZE; /* no overflow */
 		} else {
-			tile = TILE_MASK(tile - TILELOOP_SIZE * (MapSizeX() / TILELOOP_SIZE-1) + TILE_XY(0, TILELOOP_SIZE)); /* x would overflow, also increase y */
+			tile = TILE_MASK(tile - TILELOOP_SIZE * (MapSizeX() / TILELOOP_SIZE - 1) + TileDiffXY(0, TILELOOP_SIZE)); /* x would overflow, also increase y */
 		}
 	} while (--count);
 	assert( (tile & ~TILELOOP_ASSERTMASK) == 0);
@@ -525,7 +525,7 @@ static void GenerateTerrain(int type, int flag)
 	if (y + h >= MapMaxY() - 1)
 		return;
 
-	tile = &_map_type_and_height[TILE_XY(x, y)];
+	tile = &_map_type_and_height[TileXY(x, y)];
 
 	switch (direction) {
 		case 0:
@@ -538,7 +538,7 @@ static void GenerateTerrain(int type, int flag)
 					p++;
 					tile_cur++;
 				}
-				tile += TILE_XY(0, 1);
+				tile += TileDiffXY(0, 1);
 			} while (--h != 0);
 			break;
 
@@ -550,14 +550,14 @@ static void GenerateTerrain(int type, int flag)
 				for (h_cur = h; h_cur != 0; --h_cur) {
 					if (*p >= *tile_cur) *tile_cur = *p;
 					p++;
-					tile_cur += TILE_XY(0, 1);
+					tile_cur += TileDiffXY(0, 1);
 				}
 				tile++;
 			} while (--w != 0);
 			break;
 
 		case 2:
-			tile += TILE_XY(w - 1, 0);
+			tile += TileDiffXY(w - 1, 0);
 			do {
 				byte *tile_cur = tile;
 				uint w_cur;
@@ -567,12 +567,12 @@ static void GenerateTerrain(int type, int flag)
 					p++;
 					tile_cur--;
 				}
-				tile += TILE_XY(0, 1);
+				tile += TileDiffXY(0, 1);
 			} while (--h != 0);
 			break;
 
 		case 3:
-			tile += TILE_XY(0, h - 1);
+			tile += TileDiffXY(0, h - 1);
 			do {
 				byte *tile_cur = tile;
 				uint h_cur;
@@ -580,7 +580,7 @@ static void GenerateTerrain(int type, int flag)
 				for (h_cur = h; h_cur != 0; --h_cur) {
 					if (*p >= *tile_cur) *tile_cur = *p;
 					p++;
-					tile_cur -= TILE_XY(0, 1);
+					tile_cur -= TileDiffXY(0, 1);
 				}
 				tile++;
 			} while (--w != 0);
@@ -684,7 +684,7 @@ TileIndex AdjustTileCoordRandomly(TileIndex a, byte rng)
 	int rn = rng;
 	uint32 r = Random();
 
-	return TILE_MASK(TILE_XY(
+	return TILE_MASK(TileXY(
 		TileX(a) + ((byte)r * rn * 2 >> 8) - rn,
 		TileY(a) + ((byte)(r >> 8) * rn * 2 >> 8) - rn
 	));

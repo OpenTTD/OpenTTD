@@ -636,7 +636,7 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 
 	// TODO: Custom station selector GUI. Now we just try using first custom station
 	// (and fall back to normal stations if it isn't available).
-	DoCommandP(TILE_XY(sx,sy), _railstation.orientation | (w<<8) | (h<<16),_cur_railtype|1<<4, CcStation,
+	DoCommandP(TileXY(sx, sy), _railstation.orientation | (w << 8) | (h << 16), _cur_railtype | 1 << 4, CcStation,
 		CMD_BUILD_RAILROAD_STATION | CMD_NO_WATER | CMD_AUTO | CMD_MSG(STR_100F_CAN_T_BUILD_RAILROAD_STATION));
 }
 

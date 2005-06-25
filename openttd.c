@@ -1292,7 +1292,7 @@ bool AfterLoadGame(uint version)
 	    (0x402) version, so I just check when versions are older, and then
 	    walk through the whole map.. */
 	if (version <= 0x402) {
-		TileIndex tile = TILE_XY(0,0);
+		TileIndex tile = TileXY(0, 0);
 		uint w = MapSizeX();
 		uint h = MapSizeY();
 

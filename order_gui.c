@@ -227,8 +227,8 @@ static Order GetOrderCmdFromTile(Vehicle *v, TileIndex tile)
 			if (IsTileDepotType(tile, TRANSPORT_WATER) &&
 					IsTileOwner(tile, _local_player)) {
 				switch (_map5[tile]) {
-				case 0x81: tile--; break;
-				case 0x83: tile-= TILE_XY(0,1); break;
+					case 0x81: tile -= TileDiffXY(1, 0); break;
+					case 0x83: tile -= TileDiffXY(0, 1); break;
 				}
 				order.type = OT_GOTO_DEPOT;
 				order.flags = OF_PART_OF_ORDERS;

@@ -669,7 +669,7 @@ static TileIndex FindEdgesOfBridge(TileIndex tile, TileIndex *endtile)
 	for(;;) {
 		if (IsTileType(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xE0) == 0x80)
 			break;
-		tile += direction ? TILE_XY(0,-1) : TILE_XY(-1,0);
+		tile += direction ? TileDiffXY(0, -1) : TileDiffXY(-1, 0);
 	}
 
 	start = tile;
@@ -678,7 +678,7 @@ static TileIndex FindEdgesOfBridge(TileIndex tile, TileIndex *endtile)
 	for(;;) {
 		if (IsTileType(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xE0) == 0xA0)
 			break;
-		tile += direction ? TILE_XY(0,1) : TILE_XY(1,0);
+		tile += direction ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
 	}
 
 	*endtile = tile;
@@ -745,8 +745,8 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 			Omit tile and endtile, since these are already checked, thus solving the problem
 			of bridges over water, or higher bridges, where z is not increased, eg level bridge
 	*/
-	tile		+= direction ? TILE_XY(0, 1) : TILE_XY( 1,0);
-	endtile	-= direction ? TILE_XY(0, 1) : TILE_XY( 1,0);
+	tile		+= direction ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
+	endtile	-= direction ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
 	/* Bridges on slopes might have their Z-value offset..correct this */
 	if ((v = FindVehicleBetween(tile, endtile, TilePixelHeight(tile) + 8 + GetCorrectTileHeight(tile))) != NULL) {
 		VehicleInTheWayErrMsg(v);
@@ -754,8 +754,8 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 	}
 
 	/* Put the tiles back to start/end position */
-	tile		-= direction ? TILE_XY(0, 1) : TILE_XY( 1,0);
-	endtile	+= direction ? TILE_XY(0, 1) : TILE_XY( 1,0);
+	tile		-= direction ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
+	endtile	+= direction ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
 
 
 	t = ClosestTownFromTile(tile, (uint)-1); //needed for town rating penalty
@@ -798,7 +798,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 clear_it:;
 				DoClearSquare(c);
 			}
-			c += direction ? TILE_XY(0,1) : TILE_XY(1,0);
+			c += direction ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
 		} while (c <= endtile);
 
 		SetSignalsOnBothDir(tile, direction);
@@ -898,7 +898,7 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 				MarkTileDirtyByTile(tile);
 			}
 			cost += (_price.build_rail>>1);
-			tile += _map5[tile]&1 ? TILE_XY(0,1) : TILE_XY(1,0);
+			tile += _map5[tile] & 1 ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
 		} while (tile <= endtile);
 
 		return cost;
@@ -910,11 +910,11 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 // fast routine for getting the height of a middle bridge tile. 'tile' MUST be a middle bridge tile.
 static uint GetBridgeHeight(const TileInfo *ti)
 {
-	uint delta;
+	TileIndexDiff delta;
 	TileIndex tile = ti->tile;
 
 	// find the end tile of the bridge.
-	delta = (_map5[tile] & 1) ? TILE_XY(0,1) : TILE_XY(1,0);
+	delta = (_map5[tile] & 1) ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
 	do {
 		assert((_map5[tile] & 0xC0) == 0xC0);	// bridge and middle part
 		tile += delta;
@@ -1267,8 +1267,6 @@ static const StringID _bridge_tile_str[(MAX_BRIDGES + 3) + (MAX_BRIDGES + 3)] = 
 
 static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 {
-	int delta;
-
 	if ((_map5[tile] & 0x80) == 0) {
 		td->str = STR_5017_RAILROAD_TUNNEL + ((_map5[tile] >> 2) & 3);
 	} else {
@@ -1276,7 +1274,8 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 
 		/* scan to the end of the bridge, that's where the owner is stored */
 		if (_map5[tile] & 0x40) {
-			delta = _map5[tile] & 1 ? TILE_XY(0,-1) : TILE_XY(-1,0);
+			TileIndexDiff delta = _map5[tile] & 1 ? TileDiffXY(0, -1) : TileDiffXY(-1, 0);
+
 			do tile += delta; while (_map5[tile] & 0x40);
 		}
 	}
@@ -1495,7 +1494,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 TileIndex GetVehicleOutOfTunnelTile(const Vehicle *v)
 {
 	TileIndex tile;
-	TileIndexDiff delta = (v->direction & 2) ? TILE_XY(0, 1) : TILE_XY(1, 0);
+	TileIndexDiff delta = (v->direction & 2) ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
 	byte z = v->z_pos;
 
 	for (tile = v->tile;; tile += delta) {

@@ -692,9 +692,7 @@ static void MakeIndustryTileBigger(TileIndex tile, byte size)
 		break;
 
 	case 24:
-		if (_map5[tile + TILE_XY(0,1)] == 24) {
-			BuildOilRig(tile);
-		}
+		if (_map5[tile + TileDiffXY(0, 1)] == 24) BuildOilRig(tile);
 		break;
 
 	case 143:
@@ -943,7 +941,7 @@ static void SetupFarmFieldFence(TileIndex tile, int size, byte type, int directi
 			_map3_hi[tile] = (_map3_hi[tile] & and) | or;
 		}
 
-		tile += direction ? TILE_XY(0,1) : TILE_XY(1,0);
+		tile += direction ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
 	} while (--size);
 }
 
@@ -966,7 +964,7 @@ static void PlantFarmField(TileIndex tile)
 	size_y = r >> 8;
 
 	/* offset tile to match size */
-	tile = tile - TILE_XY(size_x>>1, size_y>>1);
+	tile -= TileDiffXY(size_x / 2, size_y / 2);
 
 	/* check the amount of bad tiles */
 	count = 0;
@@ -1000,10 +998,10 @@ static void PlantFarmField(TileIndex tile)
 		type = _plantfarmfield_type[Random() & 0xF];
 	}
 
-	SetupFarmFieldFence(tile-TILE_XY(1,0), size_y, type, 1);
-	SetupFarmFieldFence(tile-TILE_XY(0,1), size_x, type, 0);
-	SetupFarmFieldFence(tile+TILE_XY(1,0) * (size_x-1), size_y, type, 1);
-	SetupFarmFieldFence(tile+TILE_XY(0,1) * (size_y-1), size_x, type, 0);
+	SetupFarmFieldFence(tile - TileDiffXY(1, 0), size_y, type, 1);
+	SetupFarmFieldFence(tile - TileDiffXY(0, 1), size_x, type, 0);
+	SetupFarmFieldFence(tile + TileDiffXY(size_x - 1, 0), size_y, type, 1);
+	SetupFarmFieldFence(tile + TileDiffXY(0, size_y - 1), size_x, type, 0);
 }
 
 static void MaybePlantFarmField(Industry *i)
@@ -1060,7 +1058,7 @@ static void ChopLumberMillTrees(Industry *i)
 				tile += ToTileIndexDiff(_chop_dir[dir]);
 			} while (--j);
 		}
-		tile -= TILE_XY(1,1);
+		tile -= TileDiffXY(1, 1);
 	}
 }
 
@@ -1532,7 +1530,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->height++;
 
 	if (i->type == IT_FARM || i->type == IT_FARM_2) {
-		tile = i->xy + TILE_XY((i->width >> 1), (i->height >> 1));
+		tile = i->xy + TileDiffXY(i->width / 2, i->height / 2);
 		for(j=0; j!=50; j++) {
 			int x = Random() % 31 - 16;
 			int y = Random() % 31 - 16;
@@ -1728,7 +1726,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 					SetDParam(2, i->type + STR_4802_COAL_MINE);
 					AddNewsItem(percent >= 0 ? STR_INDUSTRY_PROD_GOUP : STR_INDUSTRY_PROD_GODOWN,
 					            NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY, 0),
-					            i->xy + TILE_XY(1,1), 0);
+					            i->xy + TileDiffXY(1, 1), 0);
 				}
 			}
 			break;
@@ -1740,7 +1738,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 		SetDParam(0, i->town->index);
 		AddNewsItem(_industry_close_strings[i->type],
 		            NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY, 0),
-		            i->xy + TILE_XY(1,1), 0);
+		            i->xy + TileDiffXY(1, 1), 0);
 	}
 }
 
@@ -1887,7 +1885,7 @@ static void ChangeIndustryProduction(Industry *i)
 	if (str != STR_NULL) {
 		SetDParam(1, type + STR_4802_COAL_MINE);
 		SetDParam(0, i->town->index);
-		AddNewsItem(str, NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY, 0), i->xy + TILE_XY(1,1), 0);
+		AddNewsItem(str, NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY, 0), i->xy + TileDiffXY(1, 1), 0);
 	}
 }
 

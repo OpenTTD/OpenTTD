@@ -1254,26 +1254,24 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 				continue;
 
 			if (_housetype_extra_flags[house]&0x10) {
-				if (CheckFree2x2Area(t,tile) ||
-						CheckFree2x2Area(t,(tile+=TILE_XY(-1,0))) ||
-						CheckFree2x2Area(t,(tile+=TILE_XY(0,-1))) ||
-						CheckFree2x2Area(t,(tile+=TILE_XY(1,0))))
-							break;
-				tile += TILE_XY(0,1);
-			} else if (_housetype_extra_flags[house]&4) {
-				if (CheckBuildHouseMode(t, tile+TILE_XY(1,0), slope, 0))
+				if (CheckFree2x2Area(t, tile) ||
+						CheckFree2x2Area(t, (tile += TileDiffXY(-1,  0))) ||
+						CheckFree2x2Area(t, (tile += TileDiffXY( 0, -1))) ||
+						CheckFree2x2Area(t, (tile += TileDiffXY( 1,  0))))
 					break;
+				tile += TileDiffXY(0,1);
+			} else if (_housetype_extra_flags[house]&4) {
+				if (CheckBuildHouseMode(t, tile + TileDiffXY(1, 0), slope, 0)) break;
 
-				if (CheckBuildHouseMode(t, tile+TILE_XY(-1,0), slope, 1)) {
-					tile += TILE_XY(-1,0);
+				if (CheckBuildHouseMode(t, tile + TileDiffXY(-1, 0), slope, 1)) {
+					tile += TileDiffXY(-1, 0);
 					break;
 				}
 			} else if (_housetype_extra_flags[house]&8) {
-				if (CheckBuildHouseMode(t, tile+TILE_XY(0,1), slope, 2))
-					break;
+				if (CheckBuildHouseMode(t, tile + TileDiffXY(0, 1), slope, 2)) break;
 
-				if (CheckBuildHouseMode(t, tile+TILE_XY(0,-1), slope, 3)) {
-					tile += TILE_XY(0,-1);
+				if (CheckBuildHouseMode(t, tile + TileDiffXY(0, -1), slope, 3)) {
+					tile += TileDiffXY(0, -1);
 					break;
 				}
 			} else
@@ -1320,8 +1318,8 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 		eflags = _housetype_extra_flags[house];
 
 		if (eflags&0x18) {
-			assert(IsTileType(tile + TILE_XY(0,1), MP_CLEAR));
-			ModifyTile(tile + TILE_XY(0,1),
+			assert(IsTileType(tile + TileDiffXY(0, 1), MP_CLEAR));
+			ModifyTile(tile + TileDiffXY(0, 1),
 				MP_SETTYPE(MP_HOUSE) | MP_MAP2 | MP_MAP3LO | MP_MAP3HI | MP_MAP5 | MP_MAPOWNER,
 				t->index,
 				m3lo,			/* map3_lo */
@@ -1332,8 +1330,8 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 		}
 
 		if (eflags&0x14) {
-			assert(IsTileType(tile + TILE_XY(1,0), MP_CLEAR));
-			ModifyTile(tile + TILE_XY(1,0),
+			assert(IsTileType(tile + TileDiffXY(1, 0), MP_CLEAR));
+			ModifyTile(tile + TileDiffXY(1, 0),
 				MP_SETTYPE(MP_HOUSE) | MP_MAP2 | MP_MAP3LO | MP_MAP3HI | MP_MAP5 | MP_MAPOWNER,
 				t->index,
 				m3lo,			/* map3_lo */
@@ -1344,8 +1342,8 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 		}
 
 		if (eflags&0x10) {
-			assert(IsTileType(tile + TILE_XY(1,1), MP_CLEAR));
-			ModifyTile(tile + TILE_XY(1,1),
+			assert(IsTileType(tile + TileDiffXY(1, 1), MP_CLEAR));
+			ModifyTile(tile + TileDiffXY(1, 1),
 				MP_SETTYPE(MP_HOUSE) | MP_MAP2 | MP_MAP3LO | MP_MAP3HI | MP_MAP5 | MP_MAPOWNER,
 				t->index,
 				m3lo,			/* map3_lo */
@@ -1393,16 +1391,16 @@ static void ClearTownHouse(Town *t, TileIndex tile)
 	if (house >= 3) { // house id 0,1,2 MUST be single tile houses, or this code breaks.
 		if (_housetype_extra_flags[house-1] & 0x04) {
 			house--;
-			tile += TILE_XY(-1,0);
+			tile += TileDiffXY(-1, 0);
 		} else if (_housetype_extra_flags[house-1] & 0x18) {
 			house--;
-			tile += TILE_XY(0,-1);
+			tile += TileDiffXY(0, -1);
 		} else if (_housetype_extra_flags[house-2] & 0x10) {
 			house-=2;
-			tile += TILE_XY(-1,0);
+			tile += TileDiffXY(-1, 0);
 		} else if (_housetype_extra_flags[house-3] & 0x10) {
 			house-=3;
-			tile += TILE_XY(-1,-1);
+			tile += TileDiffXY(-1, -1);
 		}
 	}
 
@@ -1434,9 +1432,9 @@ static void ClearTownHouse(Town *t, TileIndex tile)
 	// Do the actual clearing of tiles
 	eflags = _housetype_extra_flags[house];
 	DoClearTownHouseHelper(tile);
-	if (eflags & 0x14) DoClearTownHouseHelper(tile + TILE_XY(1,0));
-	if (eflags & 0x18) DoClearTownHouseHelper(tile + TILE_XY(0,1));
-	if (eflags & 0x10) DoClearTownHouseHelper(tile + TILE_XY(1,1));
+	if (eflags & 0x14) DoClearTownHouseHelper(tile + TileDiffXY(1, 0));
+	if (eflags & 0x18) DoClearTownHouseHelper(tile + TileDiffXY(0, 1));
+	if (eflags & 0x10) DoClearTownHouseHelper(tile + TileDiffXY(1, 1));
 }
 
 /** Rename a town (server-only).

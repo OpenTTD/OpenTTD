@@ -333,7 +333,7 @@ static void DrawSmallMapStuff(byte *dst, uint xc, uint yc, int pitch, int reps, 
 		if (xc < MapMaxX() && yc < MapMaxY()) {
 			// check if the dst pointer points to a pixel inside the screen buffer
 			if (dst > _screen.dst_ptr && dst < dst_ptr_end)
-				WRITE_PIXELS_OR(dst, proc(TILE_XY(xc, yc)) & mask );
+				WRITE_PIXELS_OR(dst, proc(TileXY(xc, yc)) & mask);
 		}
 	// switch to next tile in the column
 	} while (xc++, yc++, dst += pitch, --reps != 0);

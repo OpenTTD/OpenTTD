@@ -633,7 +633,7 @@ static byte AiGetDirectionBetweenTiles(TileIndex a, TileIndex b)
 
 static TileIndex AiGetPctTileBetween(TileIndex a, TileIndex b, byte pct)
 {
-	return TILE_XY(
+	return TileXY(
 		TileX(a) + ((TileX(b) - TileX(a)) * pct >> 8),
 		TileY(a) + ((TileY(b) - TileY(a)) * pct >> 8)
 	);
@@ -3656,7 +3656,7 @@ is_rail_crossing:;
 
 			if (m5&0x25) {
 pos_0:
-				if (!(GetRailTrackStatus(TILE_MASK(tile-TILE_XY(1,0)))&0x19)) {
+				if (!(GetRailTrackStatus(TILE_MASK(tile - TileDiffXY(1, 0))) & 0x19)) {
 					p->ai.cur_dir_a = 0;
 					p->ai.cur_tile_a = tile;
 					p->ai.state = AIS_REMOVE_SINGLE_RAIL_TILE;
@@ -3666,7 +3666,7 @@ pos_0:
 
 			if (m5&0x2A) {
 pos_1:
-				if (!(GetRailTrackStatus(TILE_MASK(tile+TILE_XY(0,1)))&0x16)) {
+				if (!(GetRailTrackStatus(TILE_MASK(tile + TileDiffXY(0, 1))) & 0x16)) {
 					p->ai.cur_dir_a = 1;
 					p->ai.cur_tile_a = tile;
 					p->ai.state = AIS_REMOVE_SINGLE_RAIL_TILE;
@@ -3676,7 +3676,7 @@ pos_1:
 
 			if (m5&0x19) {
 pos_2:
-				if (!(GetRailTrackStatus(TILE_MASK(tile+TILE_XY(1,0)))&0x25)) {
+				if (!(GetRailTrackStatus(TILE_MASK(tile + TileDiffXY(1, 0))) & 0x25)) {
 					p->ai.cur_dir_a = 2;
 					p->ai.cur_tile_a = tile;
 					p->ai.state = AIS_REMOVE_SINGLE_RAIL_TILE;
@@ -3686,7 +3686,7 @@ pos_2:
 
 			if (m5&0x16) {
 pos_3:
-				if (!(GetRailTrackStatus(TILE_MASK(tile-TILE_XY(0,1)))&0x2A)) {
+				if (!(GetRailTrackStatus(TILE_MASK(tile - TileDiffXY(0, 1))) & 0x2A)) {
 					p->ai.cur_dir_a = 3;
 					p->ai.cur_tile_a = tile;
 					p->ai.state = AIS_REMOVE_SINGLE_RAIL_TILE;
@@ -3712,20 +3712,20 @@ pos_3:
 			int dir;
 
 			// Check if there are any stations around.
-			if (IsTileType(tile + TILE_XY(-1,0), MP_STATION) &&
-					IsTileOwner(tile + TILE_XY(-1, 0), _current_player))
+			if (IsTileType(tile + TileDiffXY(-1, 0), MP_STATION) &&
+					IsTileOwner(tile + TileDiffXY(-1, 0), _current_player))
 						return;
 
-			if (IsTileType(tile + TILE_XY(1,0), MP_STATION) &&
-					IsTileOwner(tile + TILE_XY(1, 0), _current_player))
+			if (IsTileType(tile + TileDiffXY(1, 0), MP_STATION) &&
+					IsTileOwner(tile + TileDiffXY(1, 0), _current_player))
 						return;
 
-			if (IsTileType(tile + TILE_XY(0,-1), MP_STATION) &&
-					IsTileOwner(tile + TILE_XY(0, -1), _current_player))
+			if (IsTileType(tile + TileDiffXY(0, -1), MP_STATION) &&
+					IsTileOwner(tile + TileDiffXY(0, -1), _current_player))
 						return;
 
-			if (IsTileType(tile + TILE_XY(0,1), MP_STATION) &&
-					IsTileOwner(tile + TILE_XY(0, 1), _current_player))
+			if (IsTileType(tile + TileDiffXY(0, 1), MP_STATION) &&
+					IsTileOwner(tile + TileDiffXY(0, 1), _current_player))
 						return;
 
 			dir = _map5[tile] & 3;

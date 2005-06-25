@@ -115,7 +115,7 @@ AyStar *new_AyStar_AiPathFinder(int max_tiles_around, Ai_PathFinderInfo *PathFin
 	// Now we add all the starting tiles
 	for (x = TileX(PathFinderInfo->start_tile_tl); x <= TileX(PathFinderInfo->start_tile_br); x++) {
 		for (y = TileY(PathFinderInfo->start_tile_tl); y <= TileY(PathFinderInfo->start_tile_br); y++) {
-			start_node.node.tile = TILE_XY(x, y);
+			start_node.node.tile = TileXY(x, y);
 			result->addstart(result, &start_node.node, 0);
 		}
 	}
@@ -144,9 +144,9 @@ void clean_AyStar_AiPathFinder(AyStar *aystar, Ai_PathFinderInfo *PathFinderInfo
 	// Now we add all the starting tiles
 	for (x = TileX(PathFinderInfo->start_tile_tl); x <= TileX(PathFinderInfo->start_tile_br); x++) {
 		for (y = TileY(PathFinderInfo->start_tile_tl); y <= TileY(PathFinderInfo->start_tile_br); y++) {
-			if (!(IsTileType(TILE_XY(x, y), MP_CLEAR) || IsTileType(TILE_XY(x, y), MP_TREES))) continue;
-			if (!TestCanBuildStationHere(TILE_XY(x, y), TEST_STATION_NO_DIR)) continue;
-			start_node.node.tile = TILE_XY(x, y);
+			if (!(IsTileType(TileXY(x, y), MP_CLEAR) || IsTileType(TileXY(x, y), MP_TREES))) continue;
+			if (!TestCanBuildStationHere(TileXY(x, y), TEST_STATION_NO_DIR)) continue;
+			start_node.node.tile = TileXY(x, y);
 			aystar->addstart(aystar, &start_node.node, 0);
 		}
 	}
