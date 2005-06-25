@@ -3,7 +3,6 @@
 
 #include "stdafx.h"
 
-#define TILE_FROM_XY(x,y) (TileIndex)((((y) >> 4) << MapLogX()) + ((x) >> 4))
 #define TILE_XY(x,y) (((y) << MapLogX()) + (x))
 
 #define TILE_MASK(x) ((x) & ((1 << (MapLogX() + MapLogY())) - 1))
@@ -36,6 +35,11 @@ uint ScaleByMapSize(uint); // Scale relative to the number of tiles
 uint ScaleByMapSize1D(uint); // Scale relative to the circumference of the map
 
 typedef uint32 TileIndex;
+
+static inline TileIndex TileVirtXY(uint x, uint y)
+{
+	return (y >> 4 << MapLogX()) + (x >> 4);
+}
 
 typedef enum {
 	OWNER_TOWN			= 0xf,	// a town owns the tile

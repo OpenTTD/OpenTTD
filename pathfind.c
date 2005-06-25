@@ -230,7 +230,7 @@ FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, int direction)
 		x += _get_tunlen_inc[direction];
 		y += _get_tunlen_inc[direction+1];
 
-		tile = TILE_FROM_XY(x,y);
+		tile = TileVirtXY(x, y);
 
 		if (IsTileType(tile, MP_TUNNELBRIDGE) &&
 				(_map5[tile] & 0xF0) == 0 &&					// tunnel entrance/exit

@@ -73,7 +73,7 @@ void FindLandscapeHeight(TileInfo *ti, uint x, uint y)
 		return;
 	}
 
-	FindLandscapeHeightByTile(ti, TILE_FROM_XY(x,y));
+	FindLandscapeHeightByTile(ti, TileVirtXY(x, y));
 }
 
 uint GetPartialZ(int x, int y, int corners)
@@ -284,7 +284,7 @@ void GetTileDesc(TileIndex tile, TileDesc *td)
  */
 int32 CmdLandscapeClear(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile = TILE_FROM_XY(x, y);
+	TileIndex tile = TileVirtXY(x, y);
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -318,7 +318,7 @@ int32 CmdClearArea(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 
 	for (x = sx; x <= ex; x += 16) {
 		for (y = sy; y <= ey; y += 16) {
-			ret = DoCommandByTile(TILE_FROM_XY(x,y), 0, 0, flags &~DC_EXEC, CMD_LANDSCAPE_CLEAR);
+			ret = DoCommandByTile(TileVirtXY(x, y), 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
 			if (CmdFailed(ret)) continue;
 			cost += ret;
 			success = true;
@@ -328,7 +328,7 @@ int32 CmdClearArea(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 					_additional_cash_required = ret;
 					return cost - ret;
 				}
-				DoCommandByTile(TILE_FROM_XY(x,y), 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+				DoCommandByTile(TileVirtXY(x, y), 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 
 				// draw explosion animation...
 				if ((x == sx || x == ex) && (y == sy || y == ey)) {

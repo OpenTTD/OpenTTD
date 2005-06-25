@@ -866,7 +866,7 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int32 value;
 	Vehicle *v;
 	UnitID unit_num;
-	TileIndex tile = TILE_FROM_XY(x,y);
+	TileIndex tile = TileVirtXY(x, y);
 	Engine *e;
 
 	if (!IsEngineBuildable(p1, VEH_Ship)) return CMD_ERROR;

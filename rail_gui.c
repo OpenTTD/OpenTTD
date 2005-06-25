@@ -314,7 +314,7 @@ static void BuildRailClick_Landscaping(Window *w)
 
 static void DoRailroadTrack(int mode)
 {
-	DoCommandP(TILE_FROM_XY(_thd.selstart.x, _thd.selstart.y), TILE_FROM_XY(_thd.selend.x, _thd.selend.y), _cur_railtype | (mode << 4), NULL,
+	DoCommandP(TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), _cur_railtype | (mode << 4), NULL,
 		_remove_button_clicked ?
 		CMD_REMOVE_RAILROAD_TRACK | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1012_CAN_T_REMOVE_RAILROAD_TRACK) :
 		CMD_BUILD_RAILROAD_TRACK  | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1011_CAN_T_BUILD_RAILROAD_TRACK)
@@ -327,7 +327,7 @@ static void HandleAutodirPlacement(void)
 	int trackstat = thd->drawstyle & 0xF; // 0..5
 
 	if (thd->drawstyle & HT_RAIL) { // one tile case
-		GenericPlaceRail(TILE_FROM_XY(thd->selend.x, thd->selend.y), trackstat);
+		GenericPlaceRail(TileVirtXY(thd->selend.x, thd->selend.y), trackstat);
 		return;
 	}
 
@@ -340,13 +340,13 @@ static void HandleAutoSignalPlacement(void)
 	byte trackstat = thd->drawstyle & 0xF; // 0..5
 
 	if (thd->drawstyle == HT_RECT) { // one tile case
-		GenericPlaceSignals(TILE_FROM_XY(thd->selend.x, thd->selend.y));
+		GenericPlaceSignals(TileVirtXY(thd->selend.x, thd->selend.y));
 		return;
 	}
 
 	// _patches.drag_signals_density is given as a parameter such that each user in a network
 	// game can specify his/her own signal density
-	DoCommandP(TILE_FROM_XY(thd->selstart.x, thd->selstart.y), TILE_FROM_XY(thd->selend.x, thd->selend.y),
+	DoCommandP(TileVirtXY(thd->selstart.x, thd->selstart.y), TileVirtXY(thd->selend.x, thd->selend.y),
 	(_ctrl_pressed ? 1 << 3 : 0) | (trackstat << 4) | (_patches.drag_signals_density << 24),
 	CcPlaySound1E,
 	(_remove_button_clicked ?	CMD_REMOVE_SIGNAL_TRACK | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM) :

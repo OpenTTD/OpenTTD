@@ -266,7 +266,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!ValParamRailtype(p1) || !ValParamTrackOrientation(track)) return CMD_ERROR;
 
-	tile = TILE_FROM_XY(x, y);
+	tile = TileVirtXY(x, y);
 	tileh = GetTileSlope(tile, NULL);
 	m5 = _map5[tile];
 	trackbit = TrackToTrackBits(track);
@@ -410,7 +410,7 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	tile = TILE_FROM_XY(x, y);
+	tile = TileVirtXY(x, y);
 	tileh = GetTileSlope(tile, NULL);
 
 	if (!IsTileType(tile, MP_TUNNELBRIDGE) && !IsTileType(tile, MP_STREET) && !IsTileType(tile, MP_RAILWAY))
@@ -588,7 +588,7 @@ static int32 CmdRailTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 p2
 
 	if (CmdFailed(ValidateAutoDrag(&trackdir, x, y, ex, ey))) return CMD_ERROR;
 
-	if (flags & DC_EXEC) SndPlayTileFx(SND_20_SPLAT_2, TILE_FROM_XY(x,y));
+	if (flags & DC_EXEC) SndPlayTileFx(SND_20_SPLAT_2, TileVirtXY(x, y));
 
 	for(;;) {
 		ret = DoCommand(x, y, p2 & 0x3, TrackdirToTrack(trackdir), flags, (mode == 0) ? CMD_BUILD_SINGLE_RAIL : CMD_REMOVE_SINGLE_RAIL);
@@ -638,7 +638,7 @@ int32 CmdRemoveRailroadTrack(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 int32 CmdBuildTrainDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Depot *d;
-	TileIndex tile = TILE_FROM_XY(x,y);
+	TileIndex tile = TileVirtXY(x, y);
 	int32 cost, ret;
 	uint tileh;
 
@@ -694,7 +694,7 @@ int32 CmdBuildTrainDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  */
 int32 CmdBuildSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile = TILE_FROM_XY(x, y);
+	TileIndex tile = TileVirtXY(x, y);
 	bool semaphore;
 	bool pre_signal;
 	Track track = (Track)(p1 & 0x7);
@@ -819,7 +819,7 @@ static int32 CmdSignalTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 
 	int ex, ey;
 	int32 ret, total_cost, signal_ctr;
 	byte signals;
-	TileIndex tile = TILE_FROM_XY(x, y);
+	TileIndex tile = TileVirtXY(x, y);
 	bool error = true;
 
 	int mode = p2 & 0x1;
@@ -910,7 +910,7 @@ int32 CmdBuildSignalTrack(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  */
 int32 CmdRemoveSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile = TILE_FROM_XY(x, y);
+	TileIndex tile = TileVirtXY(x, y);
 	Track track = (Track)(p1 & 0x7);
 
 	if (!ValParamTrackOrientation(track) || !IsTileType(tile, MP_RAILWAY) || !EnsureNoVehicle(tile))
@@ -1003,7 +1003,7 @@ int32 CmdConvertRail(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 
 	for (x = sx; x <= ex; x += TILE_SIZE) {
 		for (y = sy; y <= ey; y += TILE_SIZE) {
-			TileIndex tile = TILE_FROM_XY(x,y);
+			TileIndex tile = TileVirtXY(x, y);
 			DoConvertRailProc *proc;
 
 			if (IsTileType(tile, MP_RAILWAY)) proc = DoConvertRail;

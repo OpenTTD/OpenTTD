@@ -76,7 +76,7 @@ static void InitializeDisasterVehicle(Vehicle *v, int x, int y, byte z, byte dir
 	v->x_pos = x;
 	v->y_pos = y;
 	v->z_pos = z;
-	v->tile = TILE_FROM_XY(x,y);
+	v->tile = TileVirtXY(x, y);
 	v->direction = direction;
 	v->subtype = subtype;
 	v->x_offs = -1;
@@ -111,7 +111,7 @@ static void SetDisasterVehiclePos(Vehicle *v, int x, int y, byte z)
 	v->x_pos = x;
 	v->y_pos = y;
 	v->z_pos = z;
-	v->tile = TILE_FROM_XY(x,y);
+	v->tile = TileVirtXY(x, y);
 
 	DisasterVehicleUpdateImage(v);
 	VehiclePositionChanged(v);
@@ -398,7 +398,7 @@ static void DisasterTick_2(Vehicle *v)
 		if ( (uint)x > MapMaxX() * 16-1)
 			return;
 
-		tile = TILE_FROM_XY(x,y);
+		tile = TileVirtXY(x, y);
 		if (!IsTileType(tile, MP_INDUSTRY))
 			return;
 
@@ -469,7 +469,7 @@ static void DisasterTick_3(Vehicle *v)
 		if ( (uint)x > MapMaxX() * 16-1)
 			return;
 
-		tile = TILE_FROM_XY(x,y);
+		tile = TileVirtXY(x, y);
 		if (!IsTileType(tile, MP_INDUSTRY))
 			return;
 

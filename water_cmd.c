@@ -38,7 +38,7 @@ int32 CmdBuildShipDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (p1 > 3) return CMD_ERROR;
 
-	tile = TILE_FROM_XY(x,y);
+	tile = TileVirtXY(x, y);
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	tile2 = tile + (p1 ? TILE_XY(0,1) : TILE_XY(1,0));
@@ -166,7 +166,7 @@ static void MarkTilesAroundDirty(TileIndex tile)
  */
 int32 CmdBuildLock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile = TILE_FROM_XY(x,y);
+	TileIndex tile = TileVirtXY(x, y);
 	uint tileh;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);

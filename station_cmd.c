@@ -942,7 +942,7 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	tile_org = TILE_FROM_XY(x, y);
+	tile_org = TileVirtXY(x, y);
 
 	/* Does the authority allow this? */
 	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile_org)) return CMD_ERROR;
@@ -1125,7 +1125,7 @@ restart:
  */
 int32 CmdRemoveFromRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile = TILE_FROM_XY(x, y);
+	TileIndex tile = TileVirtXY(x, y);
 	Station *st;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
@@ -1451,7 +1451,7 @@ int32 CmdBuildRoadStop(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	tile = TILE_FROM_XY(x,y);
+	tile = TileVirtXY(x, y);
 
 	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile))
 		return CMD_ERROR;
@@ -1675,7 +1675,7 @@ int32 CmdBuildAirport(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	/* Check if a valid, buildable airport was chosen for construction */
 	if (p1 > lengthof(_airport_map5_tiles) || !HASBIT(GetValidAirports(), p1)) return CMD_ERROR;
 
-	tile = TILE_FROM_XY(x,y);
+	tile = TileVirtXY(x, y);
 
 	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile))
 		return CMD_ERROR;

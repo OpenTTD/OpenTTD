@@ -325,7 +325,7 @@ int32 DoCommand(int x, int y, uint32 p1, uint32 p2, uint32 flags, uint procc)
 	CommandProc *proc;
 
 	/* Do not even think about executing out-of-bounds tile-commands */
-	if (TILE_FROM_XY(x,y) > MapSize()) {
+	if (TileVirtXY(x, y) > MapSize()) {
 		_cmd_text = NULL;
 		return CMD_ERROR;
 	}
@@ -336,7 +336,7 @@ int32 DoCommand(int x, int y, uint32 p1, uint32 p2, uint32 flags, uint procc)
 		_error_message = INVALID_STRING_ID;
 		// update last build coord of player
 		if ( (x|y) != 0 && _current_player < MAX_PLAYERS) {
-			GetPlayer(_current_player)->last_build_coordinate = TILE_FROM_XY(x,y);
+			GetPlayer(_current_player)->last_build_coordinate = TileVirtXY(x, y);
 		}
 	}
 

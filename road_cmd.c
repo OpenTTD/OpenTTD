@@ -518,7 +518,7 @@ int32 CmdBuildLongRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (p1 > MapSize()) return CMD_ERROR;
 
 	start_tile = p1;
-	end_tile = TILE_FROM_XY(x, y);
+	end_tile = TileVirtXY(x, y);
 
 	/* Only drag in X or Y direction dictated by the direction variable */
 	if (!HASBIT(p2, 2) && TileY(start_tile) != TileY(end_tile)) return CMD_ERROR; // x-axis
@@ -572,7 +572,7 @@ int32 CmdRemoveLongRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (p1 > MapSize()) return CMD_ERROR;
 
 	start_tile = p1;
-	end_tile = TILE_FROM_XY(x, y);
+	end_tile = TileVirtXY(x, y);
 
 	/* Only drag in X or Y direction dictated by the direction variable */
 	if (!HASBIT(p2, 2) && TileY(start_tile) != TileY(end_tile)) return CMD_ERROR; // x-axis

@@ -1555,7 +1555,7 @@ int32 CmdBuildIndustry(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Town *t;
 	Industry *i;
-	TileIndex tile = TILE_FROM_XY(x,y);
+	TileIndex tile = TileVirtXY(x, y);
 	int num;
 	const IndustryTileTable * const *itt;
 	const IndustryTileTable *it;

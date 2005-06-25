@@ -236,7 +236,7 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	ts.modheight = modheight_data;
 	ts.tile_table = tile_table_data;
 
-	tile = TILE_FROM_XY(x,y);
+	tile = TileVirtXY(x, y);
 
 	/* Make an extra check for map-bounds cause we add tiles to the originating tile */
 	if (tile + TILE_XY(1,1) > MapSize()) return CMD_ERROR;
@@ -394,7 +394,7 @@ int32 CmdPurchaseLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	tile = TILE_FROM_XY(x,y);
+	tile = TileVirtXY(x, y);
 
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
@@ -450,7 +450,7 @@ int32 CmdSellLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	tile = TILE_FROM_XY(x,y);
+	tile = TileVirtXY(x, y);
 
 	if (!IsTileType(tile, MP_UNMOVABLE) || _map5[tile] != 3) return CMD_ERROR;
 	if (!CheckTileOwnership(tile) && _current_player != OWNER_WATER) return CMD_ERROR;

@@ -155,7 +155,7 @@ static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile)
  */
 int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile = TILE_FROM_XY(x, y);
+	TileIndex tile = TileVirtXY(x, y);
 	Waypoint *wp;
 	uint tileh;
 	uint dir;
@@ -285,7 +285,7 @@ int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
  */
 int32 CmdRemoveTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile = TILE_FROM_XY(x,y);
+	TileIndex tile = TileVirtXY(x, y);
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 	return RemoveTrainWaypoint(tile, flags, true);
 }

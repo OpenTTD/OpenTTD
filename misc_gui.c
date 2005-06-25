@@ -701,7 +701,7 @@ void DrawStationCoverageAreaText(int sx, int sy, uint mask, int rad) {
 	int y = _thd.pos.y;
 	uint accepts[NUM_CARGO];
 	if (x != -1) {
-		GetAcceptanceAroundTiles(accepts, TILE_FROM_XY(x, y), _thd.size.x /16, _thd.size.y /16 , rad);
+		GetAcceptanceAroundTiles(accepts, TileVirtXY(x, y), _thd.size.x / 16, _thd.size.y / 16 , rad);
 		DrawStationCoverageText(accepts, sx, sy, mask);
 	}
 }

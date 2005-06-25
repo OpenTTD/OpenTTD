@@ -684,7 +684,7 @@ static void DrawTileSelection(const TileInfo *ti)
 
 		} else if (IsPartOfAutoLine(ti->x, ti->y)) { // autorail highlighting long line
 				int dir = _thd.drawstyle & ~0xF0;
-				TileIndex start = TILE_FROM_XY(_thd.selstart.x, _thd.selstart.y);
+				TileIndex start = TileVirtXY(_thd.selstart.x, _thd.selstart.y);
 				int diffx, diffy;
 				int side;
 
@@ -1443,7 +1443,7 @@ void MarkTileDirty(int x, int y)
 	Point pt;
 	if (IS_INT_INSIDE(x, 0, MapSizeX() * 16) &&
 			IS_INT_INSIDE(y, 0, MapSizeY() * 16))
-		z = GetTileZ(TILE_FROM_XY(x,y));
+		z = GetTileZ(TileVirtXY(x, y));
 	pt = RemapCoords(x, y, z);
 
 	MarkAllViewportsDirty(
@@ -1699,7 +1699,7 @@ static void CheckClickOnLandscape(ViewPort *vp, int x, int y)
 {
 	Point pt = TranslateXYToTileCoord(vp,x,y);
 
-	if (pt.x != -1) ClickTile(TILE_FROM_XY(pt.x, pt.y));
+	if (pt.x != -1) ClickTile(TileVirtXY(pt.x, pt.y));
 }
 
 void HandleClickOnTrain(Vehicle *v);
@@ -1783,7 +1783,7 @@ void PlaceObject(void)
 	if ((w = GetCallbackWnd()) != NULL) {
 		e.event = WE_PLACE_OBJ;
 		e.place.pt = pt;
-		e.place.tile = TILE_FROM_XY(pt.x, pt.y);
+		e.place.tile = TileVirtXY(pt.x, pt.y);
 		w->wndproc(w, &e);
 	}
 }
@@ -2027,7 +2027,7 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 	w = myabs(dx) + 16;
 	h = myabs(dy) + 16;
 
-	if (TILE_FROM_XY(thd->selstart.x, thd->selstart.y) == TILE_FROM_XY(x,y)) { // check if we're only within one tile
+	if (TileVirtXY(thd->selstart.x, thd->selstart.y) == TileVirtXY(x, y)) { // check if we're only within one tile
 			if(method == VPM_RAILDIRS)
 				b = GetAutorailHT(x, y);
 			else // rect for autosignals on one tile
@@ -2187,8 +2187,8 @@ bool VpHandlePlaceSizingDrag(void)
 	// and call the mouseup event.
 	e.event = WE_PLACE_MOUSEUP;
 	e.place.pt = _thd.selend;
-	e.place.tile = TILE_FROM_XY(e.place.pt.x, e.place.pt.y);
-	e.place.starttile = TILE_FROM_XY(_thd.selstart.x, _thd.selstart.y);
+	e.place.tile = TileVirtXY(e.place.pt.x, e.place.pt.y);
+	e.place.starttile = TileVirtXY(_thd.selstart.x, _thd.selstart.y);
 	w->wndproc(w, &e);
 
 	return false;

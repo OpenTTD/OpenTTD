@@ -767,7 +767,7 @@ static void HandlePlacePresize(void)
 		_thd.selend.x = -1;
 		return;
 	}
-	e.place.tile = TILE_FROM_XY(e.place.pt.x, e.place.pt.y);
+	e.place.tile = TileVirtXY(e.place.pt.x, e.place.pt.y);
 	e.event = WE_PLACE_PRESIZE;
 	w->wndproc(w, &e);
 }

@@ -61,7 +61,7 @@ int32 DestroyCompanyHQ(TileIndex tile, uint32 flags)
 extern int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, int *);
 int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile = TILE_FROM_XY(x,y);
+	TileIndex tile = TileVirtXY(x, y);
 	Player *p = GetPlayer(_current_player);
 	int cost;
 

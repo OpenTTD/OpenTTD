@@ -596,7 +596,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v, *u;
 	UnitID unit_num;
 	Engine *e;
-	TileIndex tile = TILE_FROM_XY(x,y);
+	TileIndex tile = TileVirtXY(x, y);
 
 	/* Check if the engine-type is valid (for the player) */
 	if (!IsEngineBuildable(p1, VEH_Train)) return CMD_ERROR;
@@ -2366,7 +2366,7 @@ static byte AfterSetTrainPos(Vehicle *v, bool new_tile)
 		CLRBIT(v->u.rail.flags, VRF_GOINGDOWN);
 
 		if (new_z != old_z) {
-			TileIndex tile = TILE_FROM_XY(v->x_pos, v->y_pos);
+			TileIndex tile = TileVirtXY(v->x_pos, v->y_pos);
 
 			// XXX workaround, whole UP/DOWN detection needs overhaul
 			if (!IsTileType(tile, MP_TUNNELBRIDGE) || (_map5[tile] & 0x80) != 0)
@@ -2582,13 +2582,13 @@ static void CheckTrainCollision(Vehicle *v)
 	if (v->u.rail.track == 0x80)
 		return;
 
-	assert(v->u.rail.track == 0x40 || TILE_FROM_XY(v->x_pos, v->y_pos) == v->tile);
+	assert(v->u.rail.track == 0x40 || TileVirtXY(v->x_pos, v->y_pos) == v->tile);
 
 	tcc.v = v;
 	tcc.v_skip = v->next;
 
 	/* find colliding vehicle */
-	realcoll = VehicleFromPos(TILE_FROM_XY(v->x_pos, v->y_pos), &tcc, FindTrainCollideEnum);
+	realcoll = VehicleFromPos(TileVirtXY(v->x_pos, v->y_pos), &tcc, FindTrainCollideEnum);
 	if (realcoll == NULL)
 		return;
 

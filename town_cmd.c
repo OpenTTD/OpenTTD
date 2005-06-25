@@ -1023,7 +1023,7 @@ static Town *AllocateTown(void)
  */
 int32 CmdBuildTown(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile = TILE_FROM_XY(x,y);
+	TileIndex tile = TileVirtXY(x, y);
 	TileInfo ti;
 	Town *t;
 	uint32 townnameparts;

@@ -120,7 +120,7 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int32 cost;
 	Vehicle *v;
 	UnitID unit_num;
-	TileIndex tile = TILE_FROM_XY(x,y);
+	TileIndex tile = TileVirtXY(x, y);
 	Engine *e;
 
 	if (!IsEngineBuildable(p1, VEH_Road)) return CMD_ERROR;
@@ -789,7 +789,7 @@ static Vehicle *RoadVehFindCloseTo(Vehicle *v, int x, int y, byte dir)
 	rvf.y = y;
 	rvf.dir = dir;
 	rvf.veh = v;
-	u = VehicleFromPos(TILE_FROM_XY(x,y), &rvf, (VehicleFromPosProc*)EnumCheckRoadVehClose);
+	u = VehicleFromPos(TileVirtXY(x, y), &rvf, (VehicleFromPosProc*)EnumCheckRoadVehClose);
 
 	// This code protects a roadvehicle from being blocked for ever
 	//  If more than 1480 / 74 days a road vehicle is blocked, it will

@@ -592,7 +592,7 @@ static void ChimneySmokeTick(Vehicle *v)
 
 		BeginVehicleMove(v);
 
-		tile = TILE_FROM_XY(v->x_pos, v->y_pos);
+		tile = TileVirtXY(v->x_pos, v->y_pos);
 		if (!IsTileType(tile, MP_INDUSTRY)) {
 			EndVehicleMove(v);
 			DeleteVehicle(v);
@@ -1094,7 +1094,7 @@ static void BubbleTick(Vehicle *v)
 		et++;
 		SndPlayVehicleFx(SND_31_EXTRACT, v);
 
-		tile = TILE_FROM_XY(v->x_pos, v->y_pos);
+		tile = TileVirtXY(v->x_pos, v->y_pos);
 		if (IsTileType(tile, MP_INDUSTRY) &&
 				_map5[tile] == 0xA2) {
 			AddAnimatedTile(tile);
@@ -1703,7 +1703,7 @@ bool GetNewVehiclePos(Vehicle *v, GetNewVehiclePosResult *gp)
 	gp->x = x;
 	gp->y = y;
 	gp->old_tile = v->tile;
-	gp->new_tile = TILE_FROM_XY(x,y);
+	gp->new_tile = TileVirtXY(x, y);
 	return gp->old_tile == gp->new_tile;
 }
 

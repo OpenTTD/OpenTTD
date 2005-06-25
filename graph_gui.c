@@ -1206,7 +1206,7 @@ static void SignListWndProc(Window *w, WindowEvent *e)
 				return;
 
 			ss = GetSign(_sign_sort[id_v]);
-			ScrollMainWindowToTile(TILE_FROM_XY(ss->x, ss->y));
+			ScrollMainWindowToTile(TileVirtXY(ss->x, ss->y));
 		} break;
 		}
 	} break;

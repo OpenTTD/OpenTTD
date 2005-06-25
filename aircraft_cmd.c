@@ -169,7 +169,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int32 value;
 	Vehicle *vl[3], *v, *u, *w;
 	UnitID unit_num;
-	TileIndex tile = TILE_FROM_XY(x,y);
+	TileIndex tile = TileVirtXY(x, y);
 	const AircraftVehicleInfo *avi;
 	Engine *e;
 
