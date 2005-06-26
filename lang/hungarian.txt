@@ -2516,6 +2516,7 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nem fordíthatod meg a vonatot...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Márkanév megváltoztatása
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nem változtathatod meg a márkanevet...
+STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A kiválasztott állomásnál a járm&#369; a rakományt leteszi
 STR_886F_TRANSFER                                               :{BLACK}Elszállít
 
 STR_TRAIN_STOPPING                                              :{RED}Lassít
