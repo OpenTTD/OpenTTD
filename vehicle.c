@@ -359,18 +359,51 @@ Vehicle *GetLastVehicleInChain(Vehicle *v)
 	return v;
 }
 
+/** Finds the previous vehicle in a chain, by a brute force search.
+ * This old function is REALLY slow because it searches through all vehicles to
+ * find the previous vehicle, but if v->first has not been set, then this function
+ * will need to be used to find the previous one. This function should never be
+ * called by anything but GetFirstVehicleInChain
+ */
+static Vehicle *GetPrevVehicleInChain_bruteforce(const Vehicle *v)
+{
+	Vehicle *u;
+	
+	FOR_ALL_VEHICLES(u) if (u->type == VEH_Train && u->next == v) return u;
+	
+	return NULL;
+}
+
+/** Find the previous vehicle in a chain, by using the v->first cache.
+ * While this function is fast, it cannot be used in the GetFirstVehicleInChain
+ * function, otherwise you'll end up in an infinite loop call
+ */
 Vehicle *GetPrevVehicleInChain(const Vehicle *v)
 {
 	Vehicle *u;
+	assert(v != NULL);
 
-	FOR_ALL_VEHICLES(u) if (u->type == VEH_Train && u->next == v) return u;
+	u = GetFirstVehicleInChain(v);
+
+ 	// Check to see if this is the first
+	if (v == u) return NULL;
+
+	do {
+		if (u->next == v) return u;
+	} while ( ( u = u->next) != NULL);
 
 	return NULL;
 }
 
+/** Finds the first vehicle in a chain.
+ * This function reads out the v->first cache. Should the cache be dirty,
+ * it determines the first vehicle in a chain, and updates the cache.
+ */
 Vehicle *GetFirstVehicleInChain(const Vehicle *v)
 {
 	Vehicle* u;
+
+	assert(v != NULL);
 
 	if (v->first != NULL) {
 		if (v->first->subtype == TS_Front_Engine) return v->first;
@@ -384,7 +417,7 @@ Vehicle *GetFirstVehicleInChain(const Vehicle *v)
 	* is not saved in a savegame, so this has to be fixed up after loading */
 
 	/* Find the 'locomotive' or the first wagon in a chain */
-	while ((u = GetPrevVehicleInChain(v)) != NULL) v = u;
+	while ((u = GetPrevVehicleInChain_bruteforce(v)) != NULL) v = u;
 
 	/* Set the first pointer of all vehicles in that chain to the first wagon */
 	if (v->subtype == TS_Front_Engine)
