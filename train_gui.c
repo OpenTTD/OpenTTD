@@ -370,17 +370,17 @@ static void DrawTrainDepotWindow(Window *w)
 	hnum = 1;
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Train &&
-				  (v->subtype == TS_Front_Engine || v->subtype == TS_Free_Car) &&
-				v->tile == (TileIndex)tile &&
+			  (v->subtype == TS_Front_Engine || v->subtype == TS_Free_Car) &&
+				v->tile == tile &&
 				v->u.rail.track == 0x80) {
-					num++;
-					// determine number of items in the X direction.
-					if (v->subtype == TS_Front_Engine) {
-						i = 0;
-						u = v;
-						do i++; while ( (u=u->next) != NULL);
-						if (i > hnum) hnum = i;
-					}
+			num++;
+			// determine number of items in the X direction.
+			if (v->subtype == TS_Front_Engine) {
+				i = 0;
+				u = v;
+				do i++; while ((u = u->next) != NULL);
+				if (i > hnum) hnum = i;
+			}
 		}
 	}
 
@@ -403,12 +403,9 @@ static void DrawTrainDepotWindow(Window *w)
 
 	// draw all trains
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train &&
-				v->subtype == TS_Front_Engine &&
-				v->tile == (TileIndex)tile &&
-				v->u.rail.track == 0x80 &&
+		if (v->type == VEH_Train && v->subtype == TS_Front_Engine &&
+				v->tile == tile && v->u.rail.track == 0x80 &&
 				--num < 0 && num >= -w->vscroll.cap) {
-
 			DrawTrainImage(v, x+21, y, w->hscroll.cap, w->hscroll.pos, WP(w,traindepot_d).sel);
 			/* Draw the train number */
 			SetDParam(0, v->unitnumber);
@@ -433,12 +430,9 @@ static void DrawTrainDepotWindow(Window *w)
 
 	// draw all remaining vehicles
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train &&
-				v->subtype == TS_Free_Car &&
-				v->tile == (TileIndex)tile &&
-				v->u.rail.track == 0x80 &&
+		if (v->type == VEH_Train && v->subtype == TS_Free_Car &&
+				v->tile == tile && v->u.rail.track == 0x80 &&
 				--num < 0 && num >= -w->vscroll.cap) {
-
 			DrawTrainImage(v, x+50, y, w->hscroll.cap - 1, 0, WP(w,traindepot_d).sel);
 			DrawString(x, y+2, STR_8816, 0);
 

@@ -644,8 +644,7 @@ int32 CmdBuildRoadDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		if (_current_player == _local_player)
-			_last_built_road_depot_tile = (TileIndex)tile;
+		if (_current_player == _local_player) _last_built_road_depot_tile = tile;
 
 		dep->xy = tile;
 		dep->town_index = ClosestTownFromTile(tile, (uint)-1)->index;

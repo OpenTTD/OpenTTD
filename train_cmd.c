@@ -445,7 +445,7 @@ static int32 CmdBuildRailWagon(uint engine, TileIndex tile, uint32 flags)
 			u = NULL;
 
 			FOR_ALL_VEHICLES(w) {
-				if (w->type == VEH_Train && w->tile == (TileIndex)tile &&
+				if (w->type == VEH_Train && w->tile == tile &&
 				    w->subtype == TS_Free_Car && w->engine_type == engine) {
 					u = GetLastVehicleInChain(w);
 					break;
@@ -457,7 +457,7 @@ static int32 CmdBuildRailWagon(uint engine, TileIndex tile, uint32 flags)
 			dir = _map5[tile] & 3;
 
 			v->direction = (byte)(dir*2+1);
-			v->tile = (TileIndex)tile;
+			v->tile = tile;
 
 			x = TileX(tile) * TILE_SIZE | _vehicle_initial_x_fract[dir];
 			y = TileY(tile) * TILE_SIZE | _vehicle_initial_y_fract[dir];
@@ -633,7 +633,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			dir = _map5[tile] & 3;
 
 			v->direction = (byte)(dir*2+1);
-			v->tile = (TileIndex)tile;
+			v->tile = tile;
 			v->owner = _current_player;
 			v->x_pos = (x |= _vehicle_initial_x_fract[dir]);
 			v->y_pos = (y |= _vehicle_initial_y_fract[dir]);

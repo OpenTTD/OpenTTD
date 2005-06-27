@@ -616,9 +616,8 @@ static void DrawShipDepotWindow(Window *w)
 	/* determine amount of items for scroller */
 	num = 0;
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Ship && v->u.ship.state == 0x80 &&
-				v->tile == (TileIndex)tile)
-					num++;
+		if (v->type == VEH_Ship && v->u.ship.state == 0x80 && v->tile == tile)
+			num++;
 	}
 	SetVScrollCount(w, (num + w->hscroll.cap - 1) / w->hscroll.cap);
 
@@ -634,11 +633,8 @@ static void DrawShipDepotWindow(Window *w)
 	num = w->vscroll.pos * w->hscroll.cap;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Ship &&
-				v->u.ship.state == 0x80 &&
-				v->tile == (TileIndex)tile &&
+		if (v->type == VEH_Ship && v->u.ship.state == 0x80 && v->tile == tile &&
 				--num < 0 && num >= -w->vscroll.cap * w->hscroll.cap) {
-
 			DrawShipImage(v, x+19, y, WP(w,traindepot_d).sel);
 
 			SetDParam(0, v->unitnumber);
@@ -675,17 +671,13 @@ static int GetVehicleFromShipDepotWndPt(Window *w, int x, int y, Vehicle **veh)
 
 	tile = w->window_number;
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Ship &&
-				v->vehstatus&VS_HIDDEN &&
-				v->tile == (TileIndex)tile &&
+		if (v->type == VEH_Ship && v->vehstatus & VS_HIDDEN && v->tile == tile &&
 				--pos < 0) {
-					*veh = v;
-					if (xm >= 19)
-						return 0;
-					if (ym <= 10)
-						return -1; /* show window */
-					return -2; /* start stop */
-				}
+			*veh = v;
+			if (xm >= 19) return 0;
+			if (ym <= 10) return -1; /* show window */
+			return -2; /* start stop */
+		}
 	}
 
 	return 1; /* outside */

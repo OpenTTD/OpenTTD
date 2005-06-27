@@ -167,13 +167,12 @@ static bool TerraformTileHeight(TerraformerState *ts, TileIndex tile, int height
 			ts->modheight_count++;
 			break;
 		}
-		if (mod->tile == (TileIndex)tile)
-			break;
+		if (mod->tile == tile) break;
 		mod++;
 		count--;
 	}
 
-	mod->tile = (TileIndex)tile;
+	mod->tile = tile;
 	mod->height = (byte)height;
 
 	ts->cost += _price.terraform;

@@ -641,7 +641,7 @@ static void DrawAircraftDepotWindow(Window *w)
 	num = 0;
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Aircraft && v->subtype <= 2 && v->vehstatus&VS_HIDDEN &&
-				v->tile == (TileIndex)tile)
+				v->tile == tile)
 					num++;
 	}
 	SetVScrollCount(w, (num + w->hscroll.cap - 1) / w->hscroll.cap);
@@ -657,7 +657,7 @@ static void DrawAircraftDepotWindow(Window *w)
 		if (v->type == VEH_Aircraft &&
 				v->subtype <= 2 &&
 				v->vehstatus&VS_HIDDEN &&
-				v->tile == (TileIndex)tile &&
+				v->tile == tile &&
 				--num < 0 && num >= -w->vscroll.cap * w->hscroll.cap) {
 
 			DrawAircraftImage(v, x+12, y, WP(w,traindepot_d).sel);
@@ -695,20 +695,14 @@ static int GetVehicleFromAircraftDepotWndPt(Window *w, int x, int y, Vehicle **v
 
 	tile = w->window_number;
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Aircraft &&
-				v->subtype <= 2 &&
-				v->vehstatus&VS_HIDDEN &&
-				v->tile == (TileIndex)tile &&
+		if (v->type == VEH_Aircraft && v->subtype <= 2 &&
+				v->vehstatus & VS_HIDDEN && v->tile == tile &&
 				--pos < 0) {
-					*veh = v;
-					if (xm >= 12)
-						return 0;
-
-					if (ym <= 12)
-						return -1; /* show window */
-
-					return -2; /* start stop */
-				}
+			*veh = v;
+			if (xm >= 12) return 0;
+			if (ym <= 12) return -1; /* show window */
+			return -2; /* start stop */
+		}
 	}
 	return 1; /* outside */
 }

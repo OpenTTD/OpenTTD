@@ -22,12 +22,12 @@ static bool TPFSetTileBit(TrackPathFinder *tpf, TileIndex tile, int dir)
 		/* unused hash entry, set the appropriate bit in it and return true
 		 * to indicate that a bit was set. */
 		tpf->hash_head[hash] = bits;
-		tpf->hash_tile[hash] = (TileIndex)tile;
+		tpf->hash_tile[hash] = tile;
 		return true;
 	} else if (!(val & 0x8000)) {
 		/* single tile */
 
-		if ( (TileIndex)tile == tpf->hash_tile[hash] ) {
+		if (tile == tpf->hash_tile[hash]) {
 			/* found another bit for the same tile,
 			 * check if this bit is already set, if so, return false */
 			if (val & bits)
@@ -65,7 +65,7 @@ static bool TPFSetTileBit(TrackPathFinder *tpf, TileIndex tile, int dir)
 		offs = tpf->hash_tile[hash];
 		do {
 			link = PATHFIND_GET_LINK_PTR(tpf, offs);
-			if ( (TileIndex)tile == link->tile) {
+			if (tile == link->tile) {
 				/* found the tile in the link list,
 				 * check if the bit was alrady set, if so return false to indicate that the
 				 * bit was already set */
@@ -86,7 +86,7 @@ static bool TPFSetTileBit(TrackPathFinder *tpf, TileIndex tile, int dir)
 
 	/* then fill the link with the new info, and establish a ptr from the old
 	 * link to the new one */
-	new_link->tile = (TileIndex)tile;
+	new_link->tile = tile;
 	new_link->flags = bits;
 	new_link->next = 0xFFFF;
 
@@ -531,7 +531,7 @@ static bool NtpVisit(NewTrackPathFinder *tpf, TileIndex tile, uint dir, uint len
 	}
 
 	if (head != 0xffff) {
-		if ( (TileIndex)tile == tpf->hash_tile[hash] && (head & 0x3) == dir ) {
+		if (tile == tpf->hash_tile[hash] && (head & 0x3) == dir) {
 
 			// longer length
 			if (length >= (head >> 2)) return false;
@@ -563,7 +563,7 @@ static bool NtpVisit(NewTrackPathFinder *tpf, TileIndex tile, uint dir, uint len
 		uint offs = tpf->hash_tile[hash];
 		do {
 			link = NTP_GET_LINK_PTR(tpf, offs);
-			if ( (TileIndex)tile == link->tile && (uint)(link->typelength & 0x3) == dir) {
+			if (tile == link->tile && (uint)(link->typelength & 0x3) == dir) {
 				if (length >= (uint)(link->typelength >> 2)) return false;
 				link->typelength = dir | (length << 2);
 				return true;
@@ -580,7 +580,7 @@ static bool NtpVisit(NewTrackPathFinder *tpf, TileIndex tile, uint dir, uint len
 
 	/* then fill the link with the new info, and establish a ptr from the old
 	 * link to the new one */
-	new_link->tile = (TileIndex)tile;
+	new_link->tile = tile;
 	new_link->typelength = dir | (length << 2);
 	new_link->next = 0xFFFF;
 
@@ -607,7 +607,7 @@ static bool NtpCheck(NewTrackPathFinder *tpf, TileIndex tile, uint dir, uint len
 	offs = tpf->hash_tile[hash];
 	for(;;) {
 		link = NTP_GET_LINK_PTR(tpf, offs);
-		if ( (TileIndex)tile == link->tile && (uint)(link->typelength & 0x3) == dir) {
+		if (tile == link->tile && (uint)(link->typelength & 0x3) == dir) {
 			assert( (uint)(link->typelength >> 2) <= length);
 			return length == (uint)(link->typelength >> 2);
 		}

@@ -907,11 +907,8 @@ typedef struct OvertakeData {
 
 static void *EnumFindVehToOvertake(Vehicle *v, OvertakeData *od)
 {
-	if (v->tile != (TileIndex)od->tile ||
-			v->type != VEH_Road ||
-			v == od->u ||
-			v == od->v)
-				return NULL;
+	if (v->tile != od->tile || v->type != VEH_Road || v == od->u || v == od->v)
+		return NULL;
 	return v;
 }
 
@@ -1079,7 +1076,7 @@ static int RoadFindPathToDest(Vehicle *v, TileIndex tile, int enterdir)
 	if (v->u.road.reverse_ctr != 0) {
 		/* What happens here?? */
 		v->u.road.reverse_ctr = 0;
-		if (v->tile != (TileIndex)tile) {
+		if (v->tile != tile) {
 			return_track(_road_reverse_table[enterdir]);
 		}
 	}
