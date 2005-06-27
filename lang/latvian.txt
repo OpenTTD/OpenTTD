@@ -180,12 +180,12 @@ STR_00AD_FZ                                                     :{TINYFONT}BU
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Karte - {STRING}
-STR_00B1_GAME_OPTIONS                                           :{WHITE}Spçles parametri
-STR_00B2_MESSAGE                                                :{YELLOW}Ziòojums
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Ziòojums no {STRING}
+STR_00B1_GAME_OPTIONS                                           :{WHITE}Spe'les parametri
+STR_00B2_MESSAGE                                                :{YELLOW}Zin'ojums
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Zin'ojums no {STRING}
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ta' nevar dari't....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}S'o laukumu nevar noli'dzina't....
-STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Org'ìina'la's autortiesi'bas {COPYRIGHT} 1995 Chris Sawyer, Visas tiesîbas rezervçtas
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Org'ìina'la's autortiesi'bas {COPYRIGHT} 1995 Chris Sawyer, Visas tiesi'bas rezerve'tas
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versija {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2004 OpenTTD grupa
 STR_TRANSLATED_BY                                               :{BLACK}  Tulkota'js(i) - Leo Selavo
@@ -203,7 +203,7 @@ STR_00CE_4                                                      :{BLACK}4
 STR_00CF_5                                                      :{BLACK}5
 STR_00D0_NOTHING                                                :Neka'
 STR_00D1_DARK_BLUE                                              :Tums'i zils
-STR_00D2_PALE_GREEN                                             :Gaiši zal's'
+STR_00D2_PALE_GREEN                                             :Gais'i zal's'
 STR_00D3_PINK                                                   :Roza'
 STR_00D4_YELLOW                                                 :Dzeltens
 STR_00D5_RED                                                    :Sarkans
@@ -313,9 +313,9 @@ STR_0139_IMPERIAL_MILES                                         :Imperia'la's (j
 STR_013A_METRIC_KILOMETERS                                      :Metriska's (kilometri)
 STR_013B_OWNED_BY                                               :{WHITE}...pieder {STRING}
 STR_013C_CARGO                                                  :{BLACK}Krava
-STR_013D_INFORMATION                                            :{BLACK}Informâcija
+STR_013D_INFORMATION                                            :{BLACK}Informa'cija
 STR_013E_CAPACITIES                                             :{BLACK}Ietilpi'ba
-STR_013E_TOTAL_CARGO                                            :{BLACK}Krava Kopâ
+STR_013E_TOTAL_CARGO                                            :{BLACK}Krava kopa'
 STR_013F_CAPACITY                                               :{BLACK}Ietilpi'ba: {LTBLUE}{STRING}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Kope'ja' vilciena kravas ietilpi'ba:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
@@ -360,7 +360,7 @@ STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Vai tu 
 STR_0161_QUIT_GAME                                              :{WHITE}Pamest spe'li
 STR_SORT_ORDER_TIP                                              :{BLACK}Izve'le'ties saka'rtojumu (dilstos's/augos's)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Izve'le'ties sorte's'anas krite'riju
-SRT_SORT_BY                                                     :{BLACK}Sorte't pe'c
+SRT_SORT_BY                                                     :{BLACK}Saka'rtot pe'c
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Iedzi'vota'ju skaita
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Produkcijas
@@ -414,7 +414,7 @@ STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Palielin
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Samazina't skatu
 STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Bu've't sliez'u posmu
 STR_0182_BUILD_ROADS                                            :{BLACK}Bu've't cel'us
-STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Build ship docks
+STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Bu've't kug'u dokus
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Bu've't lidlaukus
 STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Sta'di't kokus, zi'mes, u.tml.
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Zemes informa'cija
@@ -531,28 +531,28 @@ STR_01E3                                                        :{DKGREEN}{TINYF
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA8}
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA8}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
-STR_01E7                                                        :{DKGREEN}{TINYFONT} "{STRING}"
+STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Treks{SETX 88}Nosaukums
 STR_01E9_SHUFFLE                                                :{TINYFONT}Sajaukt
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Programma
-STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Muzikas programmas izve'le
-STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA16}  "{STRING}"
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA16} "{STRING}"
+STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Mu'zikas programmas izve'le
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA16} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA16}   "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Treka indekss
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Programma - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Dze'st
-STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Saglabât
+STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Saglaba't
 STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Tekos'a' muzikas gabalu programma
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Atzi'me' ''visas dziesmas'' programmu
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Atzi'me' ''veca' stila muzika'' programmu
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Atzi'me' ''jauna' stila muzika'' programmu
-STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Atzi'me' ''Specia'la' 1'' (lietota'ja-define'ta) programmu
-STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Atzi'me' ''Specia'la' 2'' (lietota'ja-define'ta) programmu
-STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Dze'st tekos'o programmu (tikai Specia'lo-1 vai Specia'lo-2)
+STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Atzi'me' ''1. Specia'lo'' (lietota'ja-define'to) programmu
+STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Atzi'me' ''2. Specia'lo'' (lietota'ja-define'to) programmu
+STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Dze'st tekos'o programmu (tikai 1.Specia'lo vai 2.Specia'lo)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Saglaba't muzikas rez'i'mus
-STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Uzkliks'k'ini uz muzikas treku lai to pievienotu tekos'ajai programmai (Specia'lai-1 vai Specia'lai-2)
-STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Pa'rsle'gt treku sajauks'anu
-STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Para'di't muzikas treku atzi'me's'anas logu
+STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Uzkliks'k'ini uz muzikas treku lai to pievienotu tekos'ajai programmai (1.Specia'lai vai 2.Specia'lai)
+STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Pa'rsle'gt muzikas saraksta sajauks'anu
+STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Para'di't muzikas saraksta atzi'me's'anas logu
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Uzkliks'k'ini uz servisa lai iecentre'tu skatu uz industriju vai pilse'tu
 STR_01FE_DIFFICULTY                                             :{BLACK}Gru'ti'bas paka'pe ({STRING})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
@@ -561,7 +561,7 @@ STR_0201_MESSAGE_SETTINGS                                       :Zin'ojumu rez'i
 STR_MESSAGE_HISTORY_MENU                                        :Zin'ojumu ve'sture
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Para'di't pe'de'jo zin'u, para'di't zin'as rez'i'mus
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Zin'ojuma rez'i'mi
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Zin'ojumu paveidi:-
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Zin'ojumu veidi:-
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Spe'le'ta'ja stacija' ierodas pirmais transporta li'dzeklis
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Sa'ncens'a stacija' ierodas pirmais transporta li'dzeklis
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Negadijumi / ava'rijas
@@ -612,8 +612,8 @@ STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industri
 STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Cel'u konstrukcija
 STR_0232_VEGETATION_AND_OTHER_OBJECTS                           :{BLACK}Veg'eta'cija un citi objekti
 STR_0233_TOWN_GENERATION                                        :{WHITE}Pilse'tu g'enere's'ana
-STR_0234_NEW_TOWN                                               :{BLACK}Jauna Pilse'ta
-STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Construct new town
+STR_0234_NEW_TOWN                                               :{BLACK}Jauna pilse'ta
+STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Konstrue't jaunu pilse'tu
 STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Te nevar bu've't jaunu pilse'tu...
 STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...pa'ra'k tuvu kartes malai
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...pa'ra'k tuvu citai pilse'tai
@@ -630,336 +630,336 @@ STR_0242_SAWMILL                                                :{BLACK}Kokza'g'
 STR_0243_FOREST                                                 :{BLACK}Mez's'
 STR_0244_OIL_REFINERY                                           :{BLACK}Naftas pa'rstra'des ru'pni'ca
 STR_0245_OIL_RIG                                                :{BLACK}Naftas atradnes
-STR_0246_FACTORY                                                :{BLACK}Ru'pni'ca
-STR_0247_STEEL_MILL                                             :{BLACK}Te'rauda lietuve
-STR_0248_FARM                                                   :{BLACK}Ferma
+STR_0246_FACTORY                                                :{BLACK}Ru'pni'cu
+STR_0247_STEEL_MILL                                             :{BLACK}Te'rauda lietuvi
+STR_0248_FARM                                                   :{BLACK}Fermu
 STR_0249_IRON_ORE_MINE                                          :{BLACK}Dzelzs ru'das raktuves
-STR_024A_OIL_WELLS                                              :{BLACK}Naftas su'kn'u stacija
-STR_024B_BANK                                                   :{BLACK}Banka
-STR_024C_PAPER_MILL                                             :{BLACK}Papi'ra ru'pni'ca
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Pa'rtikas ru'pni'ca
-STR_024E_PRINTING_WORKS                                         :{BLACK}Druka'tava
+STR_024A_OIL_WELLS                                              :{BLACK}Naftas su'kn'u staciju
+STR_024B_BANK                                                   :{BLACK}Banku
+STR_024C_PAPER_MILL                                             :{BLACK}Papi'ra ru'pni'cu
+STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Pa'rtikas ru'pni'cu
+STR_024E_PRINTING_WORKS                                         :{BLACK}Druka'tavu
 STR_024F_GOLD_MINE                                              :{BLACK}Zelta atradnes
-STR_0250_LUMBER_MILL                                            :{BLACK}Bal'k'u za'g'e'tava
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Augl'u planta'cija
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Rubber Plantation
-STR_0253_WATER_SUPPLY                                           :{BLACK}Water Supply
-STR_0254_WATER_TOWER                                            :{BLACK}Water Tower
-STR_0255_DIAMOND_MINE                                           :{BLACK}Diamond Mine
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}Copper Ore Mine
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Candyfloss Forest
-STR_0258_CANDY_FACTORY                                          :{BLACK}Sweet Factory
-STR_0259_BATTERY_FARM                                           :{BLACK}Battery Farm
-STR_025A_COLA_WELLS                                             :{BLACK}Cola Wells
-STR_025B_TOY_SHOP                                               :{BLACK}Toy Shop
-STR_025C_TOY_FACTORY                                            :{BLACK}Toy Factory
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Plastic Fountains
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Fizzy Drink Factory
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Bubble Generator
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}Toffee Quarry
-STR_0261_SUGAR_MINE                                             :{BLACK}Sugar Mine
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Construct Coal Mine
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Construct Power Station
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Construct Sawmill
-STR_0265_PLANT_FOREST                                           :{BLACK}Plant Forest
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Construct Oil Refinery
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Construct Oil Rig (Can only be built near the edges of the map)
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Uzcelt Rupnîcu
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Construct Steel Mill
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Construct Farm
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Construct Iron Ore Mine
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Construct Oil Wells
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construct Bank (Can only be built in towns with a population greater than 1200)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Construct Paper Mill
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Construct Food Processing Plant
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Construct Printing Works
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Construct Gold Mine
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construct Bank (Can only be built in towns)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Construct Lumber Mill (to clear rainforest and produce Wood)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Plant Fruit Plantation
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Plant Rubber Plantation
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Construct Water Supply
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Construct Water Tower (Can only be built in towns)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Construct Diamond Mine
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Construct Copper Ore Mine
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Plant Candyfloss Forest
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Construct Sweet Factory
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Construct Battery Farm
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Construct Cola Wells
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Construct Toy Shop
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Construct Toy Factory
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Construct Plastic Fountains
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Construct Fizzy Drink Factory
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Construct Bubble Generator
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Construct Toffee Quarry
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Construct Sugar Mine
-STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Nevar uzcelt {STRING} šeit...
-STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...must build town first
-STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...only one allowed per town
-STR_0288_PLANT_TREES                                            :{BLACK}Plant trees
-STR_0289_PLACE_SIGN                                             :{BLACK}Place sign
-STR_028A_RANDOM_TREES                                           :{BLACK}Random Trees
-STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Plant trees randomly over landscape
-STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Place rocky areas on landscape
-STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Place lighthouse
-STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Place transmitter
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Noteikt tuksnes'a plati'bu.{}Spied un  turet CTRL tas izdse's'anai
-STR_CREATE_LAKE                                                 :{BLACK}Noteikt u'dens plati'bu.{}Ta' nopludo tas apkaimi ja ta ir ju'ras li'men'i
+STR_0250_LUMBER_MILL                                            :{BLACK}Bal'k'u za'g'e'tavu
+STR_0251_FRUIT_PLANTATION                                       :{BLACK}Augl'u planta'ciju
+STR_0252_RUBBER_PLANTATION                                      :{BLACK}Kauc'uka planta'ciju
+STR_0253_WATER_SUPPLY                                           :{BLACK}U'dens piega'di
+STR_0254_WATER_TOWER                                            :{BLACK}U'dens torni
+STR_0255_DIAMOND_MINE                                           :{BLACK}Dimanta raktuves
+STR_0256_COPPER_ORE_MINE                                        :{BLACK}Vara ru'das raktuves
+STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Cukurvates mez'u
+STR_0258_CANDY_FACTORY                                          :{BLACK}Saldumu ru'pni'cu
+STR_0259_BATTERY_FARM                                           :{BLACK}Bateriju fermu
+STR_025A_COLA_WELLS                                             :{BLACK}Kolas akas
+STR_025B_TOY_SHOP                                               :{BLACK}Rotal'lietu veikalu
+STR_025C_TOY_FACTORY                                            :{BLACK}Rotal'lietu ru'pni'cu
+STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Plastmasas stru'klakas
+STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Burbul'u'den'u ru'pni'cu
+STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Burbul'u g'eneratoru
+STR_0260_TOFFEE_QUARRY                                          :{BLACK}Toffee lauztuves
+STR_0261_SUGAR_MINE                                             :{BLACK}Cukura raktuves
+STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Bu've't ogl'u raktuves
+STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Bu've't spe'kstaciju
+STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Bu've't bal'k'u za'g'e'tavu
+STR_0265_PLANT_FOREST                                           :{BLACK}Sta'di't mez'u
+STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Bu've't naftas pa'rstra'des ru'pni'cu
+STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Bu've't naftas platformu (atl'auts celt tikai kartes malu tuvuma')
+STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Bu've't rupni'cu
+STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Bu've't te'rauda lietuvi
+STR_026A_CONSTRUCT_FARM                                         :{BLACK}Bu've't fermu
+STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Bu've't dzelzs ru'das raktuves
+STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Bu've't naftas atradnes
+STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bu've't banku (atl'auts bu've't tikai pilse'ta's kur iedzi'vota'ju skaits liela'ks par 1200)
+STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Bu've't papi'ra fabriku
+STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Bu've't pa'rtikas apstra'des ru'pni'cu
+STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Bu've't druka'tavu
+STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Bu've't zelta atradnes
+STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bu've't banku (atl'auts celt tikai pilse'ta's)
+STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Bu've't bal'k'u za'g'e'tavu (lai ti'ri'tu mez'us un raz'otu kokmaterea'lus)
+STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Sta'di't augl'u planta'ciju
+STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Sta'di't kauc'uka planta'ciju
+STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Bu've't u'dens piega'des staciju
+STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Bu've't u'dens torni (atl'auts bu've't tikai pilse'ta's)
+STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Bu've't dimanta raktuves
+STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Bu've't vara ru'das raktuves
+STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Sta'di't cukurvates mez'u
+STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Bu've't saldumu ru'pni'cu
+STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Bu've't bateriju fermu
+STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Bu've't kolas akas
+STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Bu've't rotal'lietu veikalu
+STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Bu've't rotal'lietu ru'pni'cu
+STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Bu've't plastmasas stru'klakas
+STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Bu've't burbul'u'den'u ru'pni'cu
+STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Bu've't burbul'u g'eneratoru
+STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Bu've't Toffee lauztuves
+STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Bu've't cukura raktuves
+STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}S'eit nevar bu've't {STRING}...
+STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...vispirms ja'cel' pilse'ta
+STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...pilse'ta' atl'auts tikai viens(a)
+STR_0288_PLANT_TREES                                            :{BLACK}Sta'di't kokus
+STR_0289_PLACE_SIGN                                             :{BLACK}Novietot zi'mi
+STR_028A_RANDOM_TREES                                           :{BLACK}Nejaus'i koki
+STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Nejaus'i sta'di't kokus pa visu plati'bu
+STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Novietot akmen'ainus apgabalus uz kartes
+STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Bu've't ba'ku
+STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Bu've't raidi'ta'ju
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Nora'di't tuksnes'a plati'bu.{}Spiest un turet CTRL lai to izdze'stu
+STR_CREATE_LAKE                                                 :{BLACK}Nora'di't u'dens plati'bu.{}Ta' tiks appludina'ta ja bu's ju'ras li'meni'
 STR_0290_DELETE                                                 :{BLACK}Izdzest
-STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Delete this town completely
-STR_0292_SAVE_SCENARIO                                          :Save scenario
-STR_0293_LOAD_SCENARIO                                          :Load scenario
-STR_0294_QUIT_EDITOR                                            :Quit editor
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Pilni'ba' izdze'st s'o pilse'tu
+STR_0292_SAVE_SCENARIO                                          :Saglaba't scena'riju
+STR_0293_LOAD_SCENARIO                                          :Iela'de't scena'riju
+STR_0294_QUIT_EDITOR                                            :Beigt redaktoru
 STR_0295                                                        :
-STR_0296_QUIT                                                   :Quit
-STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Save scenario, load scenario, abandon scenario editor, quit
-STR_0298_LOAD_SCENARIO                                          :{WHITE}Load Scenario
-STR_0299_SAVE_SCENARIO                                          :{WHITE}Save Scenario
-STR_029A_PLAY_SCENARIO                                          :{BLACK}Play Scenario
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Are you sure you want to quit this scenario ?
-STR_029C_QUIT_EDITOR                                            :{WHITE}Quit Editor
-STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...can only be built in towns with a population of at least 1200
-STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Move the starting date backward 1 year
-STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Move the starting date forward 1 year
-STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...ends of bridge must both be on land
-STR_02A1_SMALL                                                  :{BLACK}Small
-STR_02A2_MEDIUM                                                 :{BLACK}Medium
+STR_0296_QUIT                                                   :Beigt
+STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Saglaba't scena'riju, iela'de't scena'riju, pamest scena'rija redaktoru, beigt
+STR_0298_LOAD_SCENARIO                                          :{WHITE}Iela'de't scena'riju
+STR_0299_SAVE_SCENARIO                                          :{WHITE}Saglaba't scena'riju
+STR_029A_PLAY_SCENARIO                                          :{BLACK}Spe'le't scena'riju
+STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Vai ju's ties'a'm ve'laties izbeigt s'o scena'riju?
+STR_029C_QUIT_EDITOR                                            :{WHITE}Beigt redaktoru
+STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...atl'auts bu've't tikai pilse'ta's ar iedzi'vota'ju skaitu vismaz 1200
+STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Pa'rvietot starta datumu 1 gadu uz atpakal'u
+STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Pa'rvietot starta datumu 1 gadu uz prieks'u
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...abiem tilta galiem ja'bu't uz zemes
+STR_02A1_SMALL                                                  :{BLACK}Mazs
+STR_02A2_MEDIUM                                                 :{BLACK}Vide'js
 STR_02A3_LARGE                                                  :{BLACK}Liels
-STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Select town size
-STR_02A5_TOWN_SIZE                                              :{YELLOW}Town size:
+STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Nora'di't pilse'tas izme'rus
+STR_02A5_TOWN_SIZE                                              :{YELLOW}Pilse'tas izme'ri:
 
 STR_02B6                                                        :{STRING}  -  {STRING}
-STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Show last message or news report
+STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Para'di't pe'de'jo zin'ojumu
 STR_OFF                                                         :Nav
-STR_SUMMARY                                                     :Summary
-STR_FULL                                                        :Full
+STR_SUMMARY                                                     :Kopsavilkums
+STR_FULL                                                        :Pilns
 STR_02BA                                                        :{SILVER}- -  {STRING}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Town directory
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Vehicle design names
+STR_02BB_TOWN_DIRECTORY                                         :Pilse'tu saraksts
+STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Transporta li'dzekl'u dizaina nosaukumi
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BE_DEFAULT                                                :Default
-STR_02BF_CUSTOM                                                 :Custom
-STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Save custom names
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Vehicle design names selection
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Save customised vehicle design names
+STR_02BE_DEFAULT                                                :Pe'c nokluse's'anas
+STR_02BF_CUSTOM                                                 :Specia'ls
+STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Saglaba't specia'los nosaukumus
+STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Transporta li'dzekl'u dizaina nosaukumu izve'le
+STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Saglaba't specia'los transporta li'dzekl'a dizaina nosaukumus
 
 ############ range for menu	starts
-STR_02C3_GAME_OPTIONS                                           :Game options
-STR_02C4_GAME_OPTIONS                                           :Game options
-STR_02C5_DIFFICULTY_SETTINGS                                    :Difficulty settings
-STR_02C6_DIFFICULTY_SETTINGS                                    :Difficulty settings
-STR_02C7_CONFIG_PATCHES                                         :Configure patches
-STR_02C8_CONFIG_PATCHES                                         :Configure patches
-STR_NEWGRF_SETTINGS                                             :Newgrf settings
-STR_NEWGRF_SETTINGS2                                            :Newgrf settings
+STR_02C3_GAME_OPTIONS                                           :Spe'les rez'i'mi
+STR_02C4_GAME_OPTIONS                                           :Spe'les rez'i'mi
+STR_02C5_DIFFICULTY_SETTINGS                                    :Gru'ti'bas paka'pes
+STR_02C6_DIFFICULTY_SETTINGS                                    :Gru'ti'bas paka'pes
+STR_02C7_CONFIG_PATCHES                                         :Konfigure't labojumus (pac'us)
+STR_02C8_CONFIG_PATCHES                                         :Konfigure't labojumus (pac'us)
+STR_NEWGRF_SETTINGS                                             :Newgrf rez'i'mi
+STR_NEWGRF_SETTINGS2                                            :Newgrf rez'i'mi
 STR_GAMEOPTMENU_0A                                              :
 STR_GAMEOPTMENU_0B                                              :
-STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Town names displayed
-STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Town names displayed
-STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Station names displayed
-STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Station names displayed
-STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Signs displayed
-STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Signs displayed
-STR_WAYPOINTS_DISPLAYED                                         :{CHECKMARK}{SETX 12}Waypoints displayed
-STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Waypoints displayed
-STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Full animation
-STR_02D0_FULL_ANIMATION                                         :{SETX 12}Pilna animâcija
-STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Full detail
-STR_02D2_FULL_DETAIL                                            :{SETX 12}Full detail
-STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Transparent buildings
-STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Transparent buildings
+STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Ra'di't pilse'tu nosaukumus
+STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Ra'di't pilse'tu nosaukumus
+STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Ra'di't staciju nosaukumus
+STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Ra'di't staciju nosaukumus
+STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Ra'di't zi'mes
+STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Ra'di't zi'mes
+STR_WAYPOINTS_DISPLAYED                                         :{CHECKMARK}{SETX 12}Ra'di't cel'a-zi'mes
+STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Ra'di't cel'a-zi'mes
+STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Pilna anima'cija
+STR_02D0_FULL_ANIMATION                                         :{SETX 12}Pilna anima'cija
+STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Pilnas detal'as
+STR_02D2_FULL_DETAIL                                            :{SETX 12}Pilnas detal'as
+STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Caurspi'di'gas e'kas
+STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Caurspi'di'gas e'kas
 STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Caurspidi'gas staciju zi'mes
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Caurspidi'gas staciju zi'mes
 ############ range ends	here
 
 ############ range for menu	starts
-STR_02D5_LAND_BLOCK_INFO                                        :Land area information
+STR_02D5_LAND_BLOCK_INFO                                        :Zemes apgabala informa'cija
 STR_02D6                                                        :
-STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
-STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Giant Screenshot (Ctrl-G)
+STR_02D7_SCREENSHOT_CTRL_S                                      :Ekra'na kopija (Ctrl-S)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Liela ekra'na kopija (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Par 'OpenTTD'
 ############ range ends	here
 
-STR_02DB_OFF                                                    :{BLACK}Off
-STR_02DA_ON                                                     :{BLACK}On
-STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Display subsidies
-STR_02DD_SUBSIDIES                                              :Subsidies
-STR_02DE_MAP_OF_WORLD                                           :Pasaules Karte
-STR_EXTRA_VIEW_PORT                                             :Extra viewport
+STR_02DB_OFF                                                    :{BLACK}Nav
+STR_02DA_ON                                                     :{BLACK}Ir
+STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Ra'di't subsi'dijas
+STR_02DD_SUBSIDIES                                              :Subsi'dijas
+STR_02DE_MAP_OF_WORLD                                           :Pasaules karte
+STR_EXTRA_VIEW_PORT                                             :Papildus skats
 STR_SIGN_LIST                                                   :Zi'mju saraksts
-STR_02DF_TOWN_DIRECTORY                                         :Town directory
+STR_02DF_TOWN_DIRECTORY                                         :Pilse'tu saraksts
 STR_TOWN_POPULATION                                             :{BLACK}Pasaules iedzi'vota'ju skaits: {COMMA32}
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Viewport {COMMA16}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copy to viewport
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copy the location of the global view to this viewport
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Paste from viewport
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Paste the location of this viewport to the global view
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Skats {COMMA16}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kope't uz skatu
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kope't globa'la' skata atras'ana's vietu uz s'o skatu
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Kope't no skata
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Kope't atras'ana's vietu no s'i' skata uz globa'lo skatu
 
-STR_02E0_CURRENCY_UNITS                                         :{BLACK}Currency units
+STR_02E0_CURRENCY_UNITS                                         :{BLACK}Naudas vieni'bas
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
-STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Currency units selection
-STR_02E3_DISTANCE_UNITS                                         :{BLACK}Distance units
+STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Naudas vieni'bu izve'le
+STR_02E3_DISTANCE_UNITS                                         :{BLACK}Atta'luma vieni'bas
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
-STR_02E5_DISTANCE_UNITS_SELECTION                               :{BLACK}Distance units selection
-STR_02E6_ROAD_VEHICLES                                          :{BLACK}Road vehicles
+STR_02E5_DISTANCE_UNITS_SELECTION                               :{BLACK}Atta'luma vieni'bu izve'le
+STR_02E6_ROAD_VEHICLES                                          :{BLACK}Cel'a satiksmes li'dzekl'i
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Select side of road for vehicles to drive on
-STR_02E9_DRIVE_ON_LEFT                                          :Drive on left
-STR_02EA_DRIVE_ON_RIGHT                                         :Drive on right
-STR_02EB_TOWN_NAMES                                             :{BLACK}Town names
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Braucama's cel'a puses izve'le
+STR_02E9_DRIVE_ON_LEFT                                          :Braukt pa kreiso pusi
+STR_02EA_DRIVE_ON_RIGHT                                         :Braukt pa labo pusi
+STR_02EB_TOWN_NAMES                                             :{BLACK}Pilse'tu nosaukumi
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Select style of town names
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Pilse'tu nosaukumu stila izve'le
 
-STR_02F4_AUTOSAVE                                               :{BLACK}Autosave
+STR_02F4_AUTOSAVE                                               :{BLACK}Auto-saglaba's'ana
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Select interval between automatic game saves
-STR_02F7_OFF                                                    :Off
-STR_02F8_EVERY_3_MONTHS                                         :Every 3 months
-STR_02F9_EVERY_6_MONTHS                                         :Every 6 months
-STR_02FA_EVERY_12_MONTHS                                        :Every 12 months
-STR_02FB_START_A_NEW_GAME                                       :{BLACK}Sâkt jauno spçli
-STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Load a saved game
-STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS                          :{BLACK}View demonstrations/tutorials
-STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Create a customised game world/scenario
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Select single-player game
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Select multiplayer game of 2-8 players
-STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Display game options
-STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Display difficulty options
-STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Start a new game, using a customised scenario
-STR_0304_QUIT                                                   :{BLACK}Iziet
-STR_0305_QUIT_OPENTTD                                           :{BLACK}Quit 'OpenTTD'
-STR_0306_VIEW_DEMONSTRATION_TUTORIAL                            :{BLACK}View demonstration/tutorial
+STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Spe'les auto-saglaba's'anas laika inerva'la izve'le
+STR_02F7_OFF                                                    :Nav
+STR_02F8_EVERY_3_MONTHS                                         :Katrus 3 me'nes'us
+STR_02F9_EVERY_6_MONTHS                                         :Katrus 6 me'nes'us
+STR_02FA_EVERY_12_MONTHS                                        :Katrus 12 me'nes'us
+STR_02FB_START_A_NEW_GAME                                       :{BLACK}Sa'kt jaunu spe'li
+STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Iela'de't saglaba'to spe'li
+STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS                          :{BLACK}Apskati't demonstra'cijas un ma'ci'bu ri'kus
+STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Radi't specia'lu spe'les zemi un/vai scena'riju
+STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Izve'le'ties viena spe'le'ta'ja spe'li
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Izve'le'ties 2 li'dz 8 spe'le'ta'ju spe'li
+STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Ra'di't spe'les rez'i'mus
+STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Ra'di't gru'ti'bas paka'pes rez'i'mus
+STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Sa'kt jaunu spe'li ar specia'lu scena'riju
+STR_0304_QUIT                                                   :{BLACK}Beigt
+STR_0305_QUIT_OPENTTD                                           :{BLACK}Beigt 'OpenTTD'
+STR_0306_VIEW_DEMONSTRATION_TUTORIAL                            :{BLACK}Skati'ties demonstra'ciju vai ma'ci'bu scena'riju
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
-STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...can only be built in towns
-STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Select 'temperate' landscape style
-STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Select 'sub-arctic' landscape style
-STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Select 'sub-tropical' landscape style
-STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Select 'toyland' landscape style
-STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Fund construction of new industry
+STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...var celt tikai pilse'ta's
+STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Izve'le'ties ' me'renu ' zemes stilu
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Izve'le'ties ' sub-arktisku ' zemes stilu
+STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Izve'le'ties ' sub-tropisku ' zemes stilu
+STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Izve'le'ties ' rotal'u ' zemes stilu
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Finanse't jaunas industrijas bu'vnieci'bu
 
 ############ range for menu	starts
-STR_INDUSTRY_DIR                                                :Industry Directory
-STR_0313_FUND_NEW_INDUSTRY                                      :Fund new industry
+STR_INDUSTRY_DIR                                                :Industriju saraksts
+STR_0313_FUND_NEW_INDUSTRY                                      :Finanse't jaunu industriju
 ############ range ends here
 
-STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Fund new industry
+STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Finanse't jaunu industriju
 STR_JUST_STRING                                                 :{STRING}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...can only be built in towns
-STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...can only be built in rainforest areas
-STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...can only be built in desert areas
-STR_0319_PAUSED                                                 :{YELLOW}* *  PAUSED  *  *
+STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...var celt tikai pilse'ta's
+STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...var celt tikai mez'u apgabalos
+STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...var celt tikai tuksnes'ainos apgabalos
+STR_0319_PAUSED                                                 :{YELLOW}* *  PAUZE  *  *
 
-STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Screenshot successfully saved as '{STRING}'
-STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Screenshot failed!
+STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Ekra'na kopija saglaba'ta ieks'  '{STRING}'
+STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Ekra'na kopija neizdeva's!
 
-STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Purchase land for future use
-STR_032A_1_ROAD_VEHICLE_SERVICE                                 :{BLACK}1: Road vehicle service
-STR_032B_2_RAILROAD_SERVICE                                     :{BLACK}2: Railway service
-STR_032C_3_AIR_SERVICE                                          :{BLACK}3: Air service
-STR_032D_4_SHIP_SERVICE                                         :{BLACK}4: Ship service
-STR_032E_5_RAILROAD_SERVICE_ADVANCED                            :{BLACK}5: Railway service (advanced)
-STR_032F_AUTOSAVE                                               :{RED}AUTOSAVE
-STR_SAVING_GAME                                                 :{RED}*  *  Spe'le saglabajas*  *
-STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Notiek saglabas'ana,{}gaidiet!
-STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Select 'Ezy Street style music' programme
+STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Pe'rc zemi na'kotnes lietos'anai
+STR_032A_1_ROAD_VEHICLE_SERVICE                                 :{BLACK}1: Cel'a transporta li'dzekl'u serviss
+STR_032B_2_RAILROAD_SERVICE                                     :{BLACK}2: Dzelzscel'a serviss
+STR_032C_3_AIR_SERVICE                                          :{BLACK}3: Gaisa satiksmes serviss
+STR_032D_4_SHIP_SERVICE                                         :{BLACK}4: Kug'u serviss
+STR_032E_5_RAILROAD_SERVICE_ADVANCED                            :{BLACK}5: Dzelzscel'u serviss (specia'lais)
+STR_032F_AUTOSAVE                                               :{RED}AUTOSAGLABA'S'ANA
+STR_SAVING_GAME                                                 :{RED}*  *  Spe'le tiek saglaba'ta *  *
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Notiek saglabas'ana,{}lu'dzu uzgaidiet!
+STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}izve'lies 'Ez'u Ielas muzikas stila' programmu
 
 STR_0335_6                                                      :{BLACK}6
 STR_0336_7                                                      :{BLACK}7
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Angïu (Oriìinâlie)
-STR_TOWNNAME_FRENCH                                             :French
-STR_TOWNNAME_GERMAN                                             :German
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Angïu (Papildus)
-STR_TOWNNAME_LATIN_AMERICAN                                     :Latin-American
-STR_TOWNNAME_SILLY                                              :Silly
-STR_TOWNNAME_SWEDISH                                            :Swedish
-STR_TOWNNAME_DUTCH                                              :Dutch
-STR_TOWNNAME_FINNISH                                            :Finnish
-STR_TOWNNAME_POLISH                                             :Poïu
-STR_TOWNNAME_SLOVAKISH                                          :Slovakish
-STR_TOWNNAME_NORWEGIAN                                          :Norvçìu
-STR_TOWNNAME_HUNGARIAN                                          :Hungarian
-STR_TOWNNAME_AUSTRIAN                                           :Austrian
-STR_TOWNNAME_ROMANIAN                                           :Romanian
-STR_TOWNNAME_CZECH                                              :Czech
+STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Anglijas (orig'ina'lie)
+STR_TOWNNAME_FRENCH                                             :Francijas
+STR_TOWNNAME_GERMAN                                             :Va'cijas
+STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Anglijas (papildus)
+STR_TOWNNAME_LATIN_AMERICAN                                     :Lati'n'-Amerikas
+STR_TOWNNAME_SILLY                                              :Joci'gi
+STR_TOWNNAME_SWEDISH                                            :Zviedrijas
+STR_TOWNNAME_DUTCH                                              :Da'nijas
+STR_TOWNNAME_FINNISH                                            :Somijas
+STR_TOWNNAME_POLISH                                             :Polijas
+STR_TOWNNAME_SLOVAKISH                                          :Slova'kijas
+STR_TOWNNAME_NORWEGIAN                                          :Norve'g'ijas
+STR_TOWNNAME_HUNGARIAN                                          :Unga'rijas
+STR_TOWNNAME_AUSTRIAN                                           :Austrijas
+STR_TOWNNAME_ROMANIAN                                           :Ruma'nijas
+STR_TOWNNAME_CZECH                                              :C'ehijas
 STR_TOWNNAME_SWISS                                              :S'veices
 ############ end of	townname region
 
-STR_CURR_GBP                                                    :Pounds ({POUNDSIGN})
-STR_CURR_USD                                                    :Dollari ($)
+STR_CURR_GBP                                                    :Ma'rcin'as ({POUNDSIGN})
+STR_CURR_USD                                                    :Dola'ri ($)
 STR_CURR_EUR                                                    :Eiro (¤)
 STR_CURR_YEN                                                    :Jenas ({YENSIGN})
-STR_CURR_ATS                                                    :Austrian Shilling (ATS)
-STR_CURR_BEF                                                    :Belgian Franc (BEF)
-STR_CURR_CHF                                                    :Swiss Franc (CHF)
-STR_CURR_CZK                                                    :Czech Koruna (CZK)
-STR_CURR_DEM                                                    :Deutschmark (DEM)
-STR_CURR_DKK                                                    :Danish Krone (DKK)
-STR_CURR_ESP                                                    :Peseta (ESP)
-STR_CURR_FIM                                                    :Finnish Markka (FIM)
-STR_CURR_FRF                                                    :Franc (FRF)
-STR_CURR_GRD                                                    :Greek Drachma (GRD)
-STR_CURR_HUF                                                    :Hungarian Forint (HUF)
-STR_CURR_ISK                                                    :Icelandic Krona (ISK)
-STR_CURR_ITL                                                    :Italian Lira (ITL)
-STR_CURR_NLG                                                    :Dutch Guilder (NLG)
-STR_CURR_NOK                                                    :Norwegian Krone (NOK)
-STR_CURR_PLN                                                    :Polish Zloty (PLN)
-STR_CURR_ROL                                                    :Romanian Leu (ROL)
-STR_CURR_RUR                                                    :Krievijas Rubïi (RUR)
-STR_CURR_SEK                                                    :Swedish Krona (SEK)
+STR_CURR_ATS                                                    :Austrijas s'ilin'i (ATS)
+STR_CURR_BEF                                                    :Bel'g'ijas franki (BEF)
+STR_CURR_CHF                                                    :S'veices franki (CHF)
+STR_CURR_CZK                                                    :C'ehijas kronas (CZK)
+STR_CURR_DEM                                                    :Va'cijas markas (DEM)
+STR_CURR_DKK                                                    :Da'nijas kronas (DKK)
+STR_CURR_ESP                                                    :Pesetas (ESP)
+STR_CURR_FIM                                                    :Somijas marka (FIM)
+STR_CURR_FRF                                                    :Franki (FRF)
+STR_CURR_GRD                                                    :Griek'ijas drahmas (GRD)
+STR_CURR_HUF                                                    :Hungarijas forinti (HUF)
+STR_CURR_ISK                                                    :Islandes kronas (ISK)
+STR_CURR_ITL                                                    :Ita'lijas liras (ITL)
+STR_CURR_NLG                                                    :Da'nijas g'ilden'i (NLG)
+STR_CURR_NOK                                                    :Norve'g'ijas kronas (NOK)
+STR_CURR_PLN                                                    :Polijas zloti (PLN)
+STR_CURR_ROL                                                    :Ruma'nijas lejas (ROL)
+STR_CURR_RUR                                                    :Krievijas rubl'i (RUR)
+STR_CURR_SEK                                                    :Zviedru kronas (SEK)
 
-STR_CURR_CUSTOM                                                 :Custom...
+STR_CURR_CUSTOM                                                 :Specia'la...
 
 STR_OPTIONS_LANG                                                :{BLACK}Valoda
 STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Select the interface language to use
+STR_OPTIONS_LANG_TIP                                            :{BLACK}Interfeisa valodas izve'le
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}Fullscreen
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Check this box to play OpenTTD fullscreen mode
+STR_OPTIONS_FULLSCREEN                                          :{BLACK}Pilna ekra'na
+STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}iezi'me' k'eksi lai spe'le'tu OpenTTD pilna ekra'na rez'i'ma'
 
-STR_OPTIONS_RES                                                 :{BLACK}Screen resolution
+STR_OPTIONS_RES                                                 :{BLACK}Ekra'na izs'k'irtspe'ja
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_RES_TIP                                             :{BLACK}Select the screen resolution to use
+STR_OPTIONS_RES_TIP                                             :{BLACK}Ekra'na izs'k'irtspe'jas izve'le
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Screenshot format
+STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Ekra'na kopijas forma'ts
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Select the screenshot format to use
+STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Ekra'na kopijas forma'ta izve'le
 
-STR_AUTOSAVE_1_MONTH                                            :Every month
-STR_AUTOSAVE_FAILED                                             :{WHITE}Autosave failed
+STR_AUTOSAVE_1_MONTH                                            :Katru me'nesi
+STR_AUTOSAVE_FAILED                                             :{WHITE}auto-saglaba's'ana neizdeva's
 
-STR_MONTH_JAN                                                   :Janvâris
-STR_MONTH_FEB                                                   :Februâris
+STR_MONTH_JAN                                                   :Janva'ris
+STR_MONTH_FEB                                                   :Februa'ris
 STR_MONTH_MAR                                                   :Marts
-STR_MONTH_APR                                                   :Aprîlis
+STR_MONTH_APR                                                   :Apri'lis
 STR_MONTH_MAY                                                   :Maijs
-STR_MONTH_JUN                                                   :J&#363;nijs
-STR_MONTH_JUL                                                   :J&#363;lijs
+STR_MONTH_JUN                                                   :Ju'nijs
+STR_MONTH_JUL                                                   :Ju'lijs
 STR_MONTH_AUG                                                   :Augusts
 STR_MONTH_SEP                                                   :Septembris
 STR_MONTH_OCT                                                   :Oktobris
 STR_MONTH_NOV                                                   :Novembris
 STR_MONTH_DEC                                                   :Decembris
 
-STR_HEADING_FOR_STATION                                         :{LTBLUE}Heading for {STATION}
-STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Heading for {STATION}, {VELOCITY}
-STR_NO_ORDERS                                                   :{LTBLUE}No orders
-STR_NO_ORDERS_VEL                                               :{LTBLUE}No orders, {VELOCITY}
+STR_HEADING_FOR_STATION                                         :{LTBLUE}Dodas uz {STATION}
+STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Dodas uz {STATION}, {VELOCITY}
+STR_NO_ORDERS                                                   :{LTBLUE}Nav uzdevumu
+STR_NO_ORDERS_VEL                                               :{LTBLUE}Nav uzdevumu, {VELOCITY}
 
-STR_PASSENGERS                                                  :pasažieri
+STR_PASSENGERS                                                  :pasaz'ieri
 STR_BAGS                                                        :somas
 STR_TONS                                                        :tonnas
 STR_LITERS                                                      :litri
-STR_ITEMS                                                       :items
+STR_ITEMS                                                       :lietas
 STR_CRATES                                                      :kastes
 STR_RES_OTHER                                                   :cits
 STR_NOTHING                                                     :
 
-STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Can't share order list...
-STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Can't copy order list...
-STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - End of Shared Orders - -
+STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nevar dali'ties ar uzdevumu sarakstu...
+STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nevar kope't uzdevumu sarakstu...
+STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Dali'to uzdevumu beigas - -
 
 STR_TRAIN_IS_LOST                                               :{WHITE}Train {COMMA16} is lost.
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Train {COMMA16}'s profit last year was {CURRENCY}
@@ -1699,6 +1699,7 @@ STR_305AA_LARGE                                                 :{BLACK}Metropol
 STR_305AB_LARGE                                                 :{BLACK}International airport
 STR_305B_SIZE                                                   :{BLACK}Size
 STR_305C_0                                                      :{STATION} {STRINL 0x30D1}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION} {STRINL 0x30D1}
 STR_305E_RAILROAD_STATION                                       :Railway station
 STR_305F_AIRCRAFT_HANGAR                                        :Aircraft hangar
 STR_3060_AIRPORT                                                :Lidosta
