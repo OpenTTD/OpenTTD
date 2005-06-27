@@ -563,9 +563,8 @@ int GetCustomEngineSprite(byte engine, const Vehicle *v, byte direction)
 		return 0;
 	}
 
-	direction %= 8;
-	if (rsg->sprites_per_set == 4)
-		direction %= 4;
+	assert(rsg->sprites_per_set <= 8);
+	direction %= rsg->sprites_per_set;
 
 	totalsets = in_motion ? rsg->loaded_count : rsg->loading_count;
 
