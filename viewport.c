@@ -1486,6 +1486,13 @@ static void SetSelectionTilesDirty(void)
 }
 
 
+void SetSelectionRed(bool b)
+{
+	_thd.make_square_red = b;
+	SetSelectionTilesDirty();
+}
+
+
 static bool CheckClickOnTown(ViewPort *vp, int x, int y)
 {
 	Town *t;

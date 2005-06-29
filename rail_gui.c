@@ -288,9 +288,9 @@ static void BuildRailClick_Remove(Window *w)
 	SetWindowDirty(w);
 	SndPlayFx(SND_15_BEEP);
 
-	_thd.make_square_red = !!((w->click_state ^= (1 << 16)) & (1<<16));
-	MarkTileDirty(_thd.pos.x, _thd.pos.y);
+	w->click_state ^= (1 << 16);
 	_remove_button_clicked = (w->click_state & (1 << 16)) != 0;
+	SetSelectionRed((w->click_state & (1 << 16)) != 0);
 
 	// handle station builder
 	if( w->click_state & (1 << 16) )

@@ -159,8 +159,8 @@ static void BuildRoadClick_Remove(Window *w)
 		return;
 	SetWindowDirty(w);
 	SndPlayFx(SND_15_BEEP);
-	_thd.make_square_red = !!((w->click_state ^= (1 << 11)) & (1<<11));
-	MarkTileDirty(_thd.pos.x, _thd.pos.y);
+	w->click_state ^= (1 << 11);
+	SetSelectionRed((w->click_state & (1 << 11)) != 0);
 }
 
 static void BuildRoadClick_Landscaping(Window *w)

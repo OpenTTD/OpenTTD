@@ -11,6 +11,8 @@ struct ViewPort {
 	byte zoom;
 };
 
+void SetSelectionRed(bool);
+
 /* viewport.c */
 Point MapXYZToViewport(ViewPort *vp, uint x, uint y, uint z);
 void AssignWindowViewport(Window *w, int x, int y,
