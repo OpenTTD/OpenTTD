@@ -749,7 +749,7 @@ int32 CmdBuildSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			_map5[tile] |= RAIL_TYPE_SIGNALS; // change into signals
 			_map2[tile] |= 0xF0;              // all signals are on
 			_map3_lo[tile] &= ~0xF0;          // no signals built by default
-			_map3_hi[tile] = semaphore ? 4 : 0;
+			_map3_hi[tile] = semaphore ? 0x08 : 0;
 		}
 
 		if (p2 == 0) {
@@ -792,9 +792,9 @@ int32 CmdBuildSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			_map3_lo[tile] |= p2 & SignalOnTrack(track);
 			// convert between signal<->semaphores when dragging
 			if (semaphore)
-				SETBIT(_map3_hi[tile], 2);
+				SETBIT(_map3_hi[tile], 3);
 			else
-				CLRBIT(_map3_hi[tile], 2);
+				CLRBIT(_map3_hi[tile], 3);
 		}
 
 		MarkTileDirtyByTile(tile);
@@ -931,7 +931,7 @@ int32 CmdRemoveSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if ((_map3_lo[tile] & 0xF0) == 0) {
 			_map5[tile] &= ~RAIL_TYPE_SIGNALS;
 			_map2[tile] &= ~0xF0;
-			CLRBIT(_map3_hi[tile], 2); // remove any possible semaphores
+			CLRBIT(_map3_hi[tile], 3); // remove any possible semaphores
 		}
 
 		SetSignalsOnBothDir(tile, track);
@@ -1118,11 +1118,16 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 #include "table/track_land.h"
 
 // used for presignals
-static const SpriteID _signal_base_sprites[16] = {
+static const SpriteID _signal_base_sprites[32] = {
 	0x4FB,
 	0x1323,
 	0x1333,
 	0x1343,
+
+	0x0,	//PBS place, light signal
+	0x0,	//reserved for future use
+	0x0,	//reserved for future use
+	0x0,	//reserved for future use
 
 	// use semaphores instead of signals?
 	0x1353,
@@ -1130,16 +1135,31 @@ static const SpriteID _signal_base_sprites[16] = {
 	0x1373,
 	0x1383,
 
+	0x0,	//PBS place, semaphore
+	0x0,	//reserved for future use
+	0x0,	//reserved for future use
+	0x0,	//reserved for future use
+
 	// mirrored versions
 	0x4FB,
 	0x1323,
 	0x1333,
 	0x1343,
 
+	0x0,	//PBS place, semaphore
+	0x0,	//reserved for future use
+	0x0,	//reserved for future use
+	0x0,	//reserved for future use
+
 	0x13C6,
 	0x13D6,
 	0x13E6,
 	0x13F6,
+
+	0x0,	//PBS place, semaphore
+	0x0,	//reserved for future use
+	0x0,	//reserved for future use
+	0x0,	//reserved for future use
 };
 
 // used to determine the side of the road for the signal
@@ -1157,7 +1177,7 @@ static void DrawSignalHelper(TileInfo *ti, byte condition, uint32 image_and_pos)
 	uint v = _signal_position[(image_and_pos & 0xF) + (otherside ? 12 : 0)];
 	uint x = ti->x | (v&0xF);
 	uint y = ti->y | (v>>4);
-	uint sprite = _signal_base_sprites[(_map3_hi[ti->tile] & 7) + (otherside ? 8 : 0)] + (image_and_pos>>4) + ((condition != 0) ? 1 : 0);
+	uint sprite = _signal_base_sprites[(_map3_hi[ti->tile] & 0xF) + (otherside ? 0x10 : 0)] + (image_and_pos>>4) + ((condition != 0) ? 1 : 0);
 	AddSortableSpriteToDraw(sprite, x, y, 1, 1, 10, GetSlopeZ(x,y));
 }
 

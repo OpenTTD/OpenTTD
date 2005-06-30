@@ -1410,5 +1410,14 @@ bool AfterLoadGame(uint version)
 		}
 	}
 
+	if (version < 0xF00) {
+		BEGIN_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0) {
+			if (IsTileType(tile, MP_RAILWAY) && HasSignals(tile) && HASBIT(_map3_hi[tile], 2)) {
+				CLRBIT(_map3_hi[tile], 2);
+				SETBIT(_map3_hi[tile], 3);
+			}
+		} END_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0);
+	}
+
 	return true;
 }
