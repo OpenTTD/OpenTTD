@@ -72,12 +72,11 @@ static void UpdatePalette(HDC dc, uint start, uint count)
 {
 	RGBQUAD rgb[256];
 	uint i;
-	byte *b;
 
-		for (i = 0, b = _cur_palette + start * 3; i != count; i++, b += 3) {
-		rgb[i].rgbRed = b[0];
-		rgb[i].rgbGreen = b[1];
-		rgb[i].rgbBlue = b[2];
+	for (i = 0; i != count; i++) {
+		rgb[i].rgbRed   = _cur_palette[start + i].r;
+		rgb[i].rgbGreen = _cur_palette[start + i].g;
+		rgb[i].rgbBlue  = _cur_palette[start + i].b;
 		rgb[i].rgbReserved = 0;
 	}
 
