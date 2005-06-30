@@ -1425,6 +1425,8 @@ STR_0800_COST                                                   :{TINYFONT}{RED}
 STR_0801_COST                                                   :{RED}Kulu: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Tulo: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Tulo: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Siirr‰: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Siirr‰: {CURRENCY}
 STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Arvioitu kulu: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Arvioitu kulu: {CURRENCY}
 STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Arvioitu tulo: {CURRENCY}
@@ -1697,6 +1699,7 @@ STR_305AA_LARGE                                                 :{BLACK}Suurkaup
 STR_305AB_LARGE                                                 :{BLACK}Kansainv‰linen lentokentt‰
 STR_305B_SIZE                                                   :{BLACK}Koko
 STR_305C_0                                                      :{STATION} {STRINL 0x30D1}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION} {STRINL 0x30D1}
 STR_305E_RAILROAD_STATION                                       :Rautatieasema
 STR_305F_AIRCRAFT_HANGAR                                        :Lentokonesuoja
 STR_3060_AIRPORT                                                :Lentokentt‰
@@ -2398,6 +2401,18 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Juna mat
 STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
 STR_8806_GO_TO                                                  :Asemalle {STATION}
+STR_8807_GO_TO_TRANSFER                                         :Mene asemalle {STATION} (Siirr‰ ja ota rahti)
+STR_8808_GO_TO_UNLOAD                                           :Mene asemalle {STATION} (Pura rahti)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Mene asemalle {STATION} (Siirr‰ ja j‰t‰ tyhj‰ksi)
+STR_880A_GO_TO_LOAD                                             :Mene asemalle {STATION} (Lastaa)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Mene asemalle {STATION} (Siirr‰ ja odota t‰ytt‰ rahtia)
+STR_880C_GO_NON_STOP_TO                                         :Mene tauotta asemalle {STATION}
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :Mene tauotta asemalle {STATION} (Siirr‰ ja ota rahti)
+STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Mene tauotta asemalle {STATION} (Pura rahti)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Mene tauotta asemalle {STATION} (Siirr‰ ja j‰t‰ tyhj‰ksi)
+STR_8810_GO_NON_STOP_TO_LOAD                                    :Mene tauotta asemalle {STATION} (Lastaa)
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Mene tauotta asemalle {STATION} (Siirr‰ ja odota t‰ytt‰ rahtia)
+STR_GO_TO_TRAIN_DEPOT                                           :Mene kaupungin {TOWN} veturitalliin
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Huolto veturitallilla ({TOWN})
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Mene pys‰htym‰tt‰ veturitalliin ({TOWN})
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Huolto pys‰htym‰tt‰ veturitallilla ({TOWN})
@@ -2501,6 +2516,7 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Junan suuntaa ei voi k‰‰nt‰‰...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Nime‰ juna(vaunu)n tyyppi uudelleen.
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Juna(vaunu)n tyyppi‰ ei voi uudelleennimet‰...
+STR_886F_TRANSFER                                               :{BLACK}Siirr‰
 
 STR_TRAIN_STOPPING                                              :{RED}Pys‰ytet‰‰n
 STR_TRAIN_STOPPING_VEL                                          :{RED}Pys‰ytet‰‰n, {VELOCITY}
