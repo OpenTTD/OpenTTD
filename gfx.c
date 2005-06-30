@@ -738,12 +738,12 @@ static void GfxBlitZoomInUncomp(BlitterParams *bp)
 	if (bp->mode & 1) {
 		if (bp->info & 1) {
 			const byte *ctab = _color_remap_ptr;
-			byte b;
 
 			do {
-				for(i=0; i!=width; i++) {
-					if ((b=ctab[src[i]]) != 0)
-						dst[i] = b;
+				for (i = 0; i != width; i++) {
+					byte b = ctab[src[i]];
+
+					if (b != 0) dst[i] = b;
 				}
 				src += bp->width_org;
 				dst += bp->pitch;
@@ -754,9 +754,8 @@ static void GfxBlitZoomInUncomp(BlitterParams *bp)
 			const byte *ctab = _color_remap_ptr;
 
 			do {
-				for(i=0; i!=width; i++)
-					if (src[i])
-						dst[i] = ctab[dst[i]];
+				for (i = 0; i != width; i++)
+					if (src[i] != 0) dst[i] = ctab[dst[i]];
 				src += bp->width_org;
 				dst += bp->pitch;
 			} while (--height);
@@ -772,10 +771,10 @@ static void GfxBlitZoomInUncomp(BlitterParams *bp)
 			do {
 				int n = width;
 				while (n >= 4) {
-					if (src[0]) dst[0] = src[0];
-					if (src[1]) dst[1] = src[1];
-					if (src[2]) dst[2] = src[2];
-					if (src[3]) dst[3] = src[3];
+					if (src[0] != 0) dst[0] = src[0];
+					if (src[1] != 0) dst[1] = src[1];
+					if (src[2] != 0) dst[2] = src[2];
+					if (src[3] != 0) dst[3] = src[3];
 
 					dst += 4;
 					src += 4;
@@ -783,7 +782,7 @@ static void GfxBlitZoomInUncomp(BlitterParams *bp)
 				}
 
 				while (n) {
-					if (src[0]) dst[0] = src[0];
+					if (src[0] != 0) dst[0] = src[0];
 					src++;
 					dst++;
 					n--;
@@ -989,40 +988,36 @@ static void GfxBlitZoomMediumUncomp(BlitterParams *bp)
 	if (bp->mode & 1) {
 		if (bp->info & 1) {
 			const byte *ctab = _color_remap_ptr;
-			byte b;
 
-			height >>= 1;
-			if (height)	do {
-				for(i=0; i!=width>>1; i++)
-					if ((b=ctab[src[i*2]]) != 0)
-						dst[i] = b;
+			for (height >>= 1; height != 0; height--) {
+				for (i = 0; i != width >> 1; i++) {
+					byte b = ctab[src[i * 2]];
+
+					if (b != 0) dst[i] = b;
+				}
 				src += bp->width_org * 2;
 				dst += bp->pitch;
-			} while (--height);
+			}
 		}
 	} else if (bp->mode & 2) {
 		if (bp->info & 1) {
 			const byte *ctab = _color_remap_ptr;
 
-			height >>= 1;
-			if (height)	do {
-				for(i=0; i!=width>>1; i++)
-					if (src[i*2])
-						dst[i] = ctab[dst[i]];
+			for (height >>= 1; height != 0; height--) {
+				for (i = 0; i != width >> 1; i++)
+					if (src[i * 2] != 0) dst[i] = ctab[dst[i]];
 				src += bp->width_org * 2;
 				dst += bp->pitch;
-			} while (--height);
+			}
 		}
 	} else {
 		if (bp->info & 1) {
-			height >>= 1;
-			if (height)	do {
-				for(i=0; i!=width>>1; i++)
-					if (src[i*2])
-						dst[i] = src[i*2];
+			for (height >>= 1; height != 0; height--) {
+				for (i = 0; i != width >> 1; i++)
+					if (src[i * 2] != 0) dst[i] = src[i * 2];
 				src += bp->width_org * 2;
 				dst += bp->pitch;
-			} while (--height);
+			}
 		}
 	}
 }
@@ -1285,40 +1280,36 @@ static void GfxBlitZoomOutUncomp(BlitterParams *bp)
 	if (bp->mode & 1) {
 		if (bp->info & 1) {
 			const byte *ctab = _color_remap_ptr;
-			byte b;
 
-			height >>= 2;
-			if (height)	do {
-				for(i=0; i!=width>>2; i++)
-					if ((b=ctab[src[i*4]]) != 0)
-						dst[i] = b;
+			for (height >>= 2; height != 0; height--) {
+				for (i = 0; i != width >> 2; i++) {
+					byte b = ctab[src[i * 4]];
+
+					if (b != 0) dst[i] = b;
+				}
 				src += bp->width_org * 4;
 				dst += bp->pitch;
-			} while (--height);
+			}
 		}
 	} else if (bp->mode & 2) {
 		if (bp->info & 1) {
 			const byte *ctab = _color_remap_ptr;
 
-			height >>= 2;
-			if (height)	do {
-				for(i=0; i!=width>>2; i++)
-					if (src[i*4])
-						dst[i] = ctab[dst[i]];
+			for (height >>= 2; height != 0; height--) {
+				for (i = 0; i != width >> 2; i++)
+					if (src[i * 4] != 0) dst[i] = ctab[dst[i]];
 				src += bp->width_org * 4;
 				dst += bp->pitch;
-			} while (--height);
+			}
 		}
 	} else {
 		if (bp->info & 1) {
-			height >>= 2;
-			if (height)	do {
-				for(i=0; i!=width>>2; i++)
-					if (src[i*4])
-						dst[i] = src[i*4];
+			for (height >>= 2; height != 0; height--) {
+				for (i = 0; i != width >> 2; i++)
+					if (src[i * 4] != 0) dst[i] = src[i * 4];
 				src += bp->width_org * 4;
 				dst += bp->pitch;
-			} while (--height);
+			}
 		}
 	}
 }
