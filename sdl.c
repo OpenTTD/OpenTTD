@@ -195,13 +195,12 @@ static SDL_Color pal[256];
 static void UpdatePalette(uint start, uint end)
 {
 	uint i;
-	byte *b;
 
-	for (i = start, b = _cur_palette + start * 3; i != end; i++, b += 3) {
-		pal[i].r = b[0];
-		pal[i].g = b[1];
-		pal[i].b = b[2];
-		pal[i].unused = b[3];
+	for (i = start; i != end; i++) {
+		pal[i].r = _cur_palette[i].r;
+		pal[i].g = _cur_palette[i].g;
+		pal[i].b = _cur_palette[i].b;
+		pal[i].unused = 0;
 	}
 
 	SDL_CALL SDL_SetColors(_sdl_screen, pal, start, end);

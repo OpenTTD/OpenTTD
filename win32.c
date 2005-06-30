@@ -50,17 +50,16 @@ static void MakePalette(void)
 {
 	LOGPALETTE *pal;
 	uint i;
-	byte *b;
 
 	pal = alloca(sizeof(LOGPALETTE) + (256-1) * sizeof(PALETTEENTRY));
 
 	pal->palVersion = 0x300;
 	pal->palNumEntries = 256;
 
-	for (i = 0, b = _cur_palette; i != 256; i++, b += 3) {
-		pal->palPalEntry[i].peRed = b[0];
-		pal->palPalEntry[i].peGreen = b[1];
-		pal->palPalEntry[i].peBlue = b[2];
+	for (i = 0; i != 256; i++) {
+		pal->palPalEntry[i].peRed   = _cur_palette[i].r;
+		pal->palPalEntry[i].peGreen = _cur_palette[i].g;
+		pal->palPalEntry[i].peBlue  = _cur_palette[i].b;
 		pal->palPalEntry[i].peFlags = 0;
 
 	}

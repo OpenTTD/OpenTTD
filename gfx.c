@@ -6,6 +6,8 @@
 #include "table/palettes.h"
 #include "hal.h"
 
+Colour _cur_palette[256];
+
 static void GfxMainBlitter(const Sprite *sprite, int x, int y, int mode);
 
 static int _stringwidth_out;
@@ -1482,21 +1484,17 @@ static void GfxMainBlitter(const Sprite* sprite, int x, int y, int mode)
 #if 0
 static void GfxScalePalette(int pal, byte scaling)
 {
-	byte *dst, *src;
-	size_t count;
+	const Colour* src;
+	uint i;
 
 	GfxInitPalettes();
 
-	dst = _cur_palette;
 	src = GET_PALETTE(pal);
-	count = 256;
-	do {
-		dst[0] = (byte)(src[0] * scaling >> 8);
-		dst[1] = (byte)(src[1] * scaling >> 8);
-		dst[2] = (byte)(src[2] * scaling >> 8);
-		dst += 3;
-		src += 3;
-	} while (--count);
+	for (i = 0; i < lengthof(_cur_palette); i++) {
+		_cur_palette[i].r = src[i].r * scaling >> 8;
+		_cur_palette[i].g = src[i].g * scaling >> 8;
+		_cur_palette[i].b = src[i].b * scaling >> 8;
+	}
 }
 #endif
 
@@ -1504,8 +1502,7 @@ void DoPaletteAnimations(void);
 
 void GfxInitPalettes(void)
 {
-	int pal = _use_dos_palette?1:0;
-	memcpy(_cur_palette, _palettes[pal], 256*3);
+	memcpy(_cur_palette, _palettes[_use_dos_palette ? 1 : 0], sizeof(_cur_palette));
 
 	_pal_first_dirty = 0;
 	_pal_last_dirty = 255;
@@ -1514,12 +1511,11 @@ void GfxInitPalettes(void)
 
 #define EXTR(p,q) (((uint16)(_timer_counter * (p)) * (q)) >> 16)
 #define EXTR2(p,q) (((uint16)(~_timer_counter * (p)) * (q)) >> 16)
-#define COPY_TRIPLET do {d[0]=s[0+j]; d[1]=s[1+j]; d[2]=s[2+j];d+=3;}while(0)
 
 void DoPaletteAnimations(void)
 {
-	const byte *s;
-	byte *d;
+	const Colour* s;
+	Colour* d;
 	/* Amount of colors to be rotated.
 	 * A few more for the DOS palette, because the water colors are
 	 * 245-254 for DOS and 217-226 for Windows.  */
@@ -1527,46 +1523,46 @@ void DoPaletteAnimations(void)
 	int j;
 	int i;
 	const ExtraPaletteValues *ev = &_extra_palette_values;
-	byte old_val[114]; // max(c*(38:28)) = 114
+	Colour old_val[38]; // max(38, 28)
 
-	d = _cur_palette + 217*3;
-	memcpy(old_val, d, c*3);
+	d = &_cur_palette[217];
+	memcpy(old_val, d, c * sizeof(*old_val));
 
 	// Dark blue water
 	s = ev->a;
 	if (_opt.landscape == LT_CANDY) s = ev->ac;
-	j = EXTR(320,5) * 3;
+	j = EXTR(320,5);
 	for(i=0; i!=5; i++) {
-		COPY_TRIPLET;
-		j+=3;
-		if (j == 15) j = 0;
+		*d++ = s[j];
+		j++;
+		if (j == 5) j = 0;
 	}
 
 	// Glittery water
 	s = ev->b;
 	if (_opt.landscape == LT_CANDY) s = ev->bc;
-	j = EXTR(128, 15) * 3;
+	j = EXTR(128, 15);
 	for(i=0; i!=5; i++) {
-		COPY_TRIPLET;
-		j += 9;
-		if (j >= 45) j -= 45;
+		*d++ = s[j];
+		j += 3;
+		if (j >= 15) j -= 15;
 	}
 
 	s = ev->e;
-	j = EXTR2(512, 5) * 3;
+	j = EXTR2(512, 5);
 	for(i=0; i!=5; i++) {
-		COPY_TRIPLET;
-		j += 3;
-		if (j == 3*5) j = 0;
+		*d++ = s[j];
+		j++;
+		if (j == 5) j = 0;
 	}
 
 	// Oil refinery fire animation
 	s = ev->oil_ref;
-	j = EXTR2(512, 7) * 3;
+	j = EXTR2(512, 7);
 	for(i=0; i!=7; i++) {
-		COPY_TRIPLET;
-		j += 3;
-		if (j == 3*7) j = 0;
+		*d++ = s[j];
+		j++;
+		if (j == 7) j = 0;
 	}
 
 	// Radio tower blinking
@@ -1576,27 +1572,28 @@ void DoPaletteAnimations(void)
 		(v = 255, i < 0x3f) ||
 		(v = 128, i < 0x4A || i >= 0x75) ||
 		(v = 20);
-		d[0] = v;
-		d[1] = d[2] = 0;
-		d += 3;
+		d->r = v;
+		d->g = 0;
+		d->b = 0;
+		d++;
 
 		i ^= 0x40;
 		(v = 255, i < 0x3f) ||
 		(v = 128, i < 0x4A || i >= 0x75) ||
 		(v = 20);
-		d[0] = v;
-
-		d[1] = d[2] = 0;
-		d += 3;
+		d->r = v;
+		d->g = 0;
+		d->b = 0;
+		d++;
 	}
 
 	// Handle lighthouse and stadium animation
 	s = ev->lighthouse;
-	j = EXTR(256, 4) * 3;
+	j = EXTR(256, 4);
 	for(i=0; i!=4; i++) {
-		COPY_TRIPLET;
-		j += 3;
-		if (j == 3*4) j = 0;
+		*d++ = s[j];
+		j++;
+		if (j == 4) j = 0;
 	}
 
 	// Animate water for old DOS graphics
@@ -1604,27 +1601,27 @@ void DoPaletteAnimations(void)
 		// Dark blue water DOS
 		s = ev->a;
 		if (_opt.landscape == LT_CANDY) s = ev->ac;
-		j = EXTR(320,5) * 3;
+		j = EXTR(320,5);
 		for(i=0; i!=5; i++) {
-			COPY_TRIPLET;
-			j+=3;
-			if (j == 15) j = 0;
+			*d++ = s[j];
+			j++;
+			if (j == 5) j = 0;
 		}
 
 		// Glittery water DOS
 		s = ev->b;
 		if (_opt.landscape == LT_CANDY) s = ev->bc;
-		j = EXTR(128, 15) * 3;
+		j = EXTR(128, 15);
 		for(i=0; i!=5; i++) {
-			COPY_TRIPLET;
-			j += 9;
-			if (j >= 45) j -= 45;
+			*d++ = s[j];
+			j += 3;
+			if (j >= 15) j -= 15;
 		}
 	}
 
-	if (memcmp(old_val, _cur_palette + 217*3, c*3)) {
+	if (memcmp(old_val, &_cur_palette[217], c * sizeof(*old_val)) != 0) {
 		if (_pal_first_dirty > 217) _pal_first_dirty = 217;
-		if (_pal_last_dirty < 217+c) _pal_last_dirty = 217+c;
+		if (_pal_last_dirty < 217 + c) _pal_last_dirty = 217 + c;
 	}
 }
 

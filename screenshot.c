@@ -11,7 +11,7 @@
 
 // called by the ScreenShot proc to generate screenshot lines.
 typedef void ScreenshotCallback(void *userdata, byte *buf, uint y, uint pitch, uint n);
-typedef bool ScreenshotHandlerProc(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const byte *palette);
+typedef bool ScreenshotHandlerProc(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette);
 
 typedef struct {
 	const char *name;
@@ -52,7 +52,7 @@ typedef struct RgbQuad {
 assert_compile(sizeof(RgbQuad) == 4);
 
 // generic .BMP writer
-static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const byte *palette)
+static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
 {
 	BitmapFileHeader bfh;
 	BitmapInfoHeader bih;
@@ -93,9 +93,9 @@ static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *user
 
 	// convert the palette to the windows format
 	for (i = 0; i != 256; i++) {
-		rq[i].red = *palette++;
-		rq[i].green = *palette++;
-		rq[i].blue = *palette++;
+		rq[i].red   = palette[i].r;
+		rq[i].green = palette[i].g;
+		rq[i].blue  = palette[i].b;
 		rq[i].reserved = 0;
 	}
 
@@ -156,7 +156,7 @@ static void PNGAPI png_my_warning(png_structp png_ptr, png_const_charp message)
 	DEBUG(misc, 0) ("WARNING(libpng): %s - %s\n", message, (char *)png_get_error_ptr(png_ptr));
 }
 
-static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const byte *palette)
+static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
 {
 	png_color rq[256];
 	byte *buff;
@@ -201,15 +201,10 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 		PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_DEFAULT, PNG_FILTER_TYPE_DEFAULT);
 
 	// convert the palette to the .PNG format.
-	{
-    // avoids "might be clobbered" warning of argument "palette"
-		const byte *pal = palette;
-
-		for (i = 0; i != 256; i++) {
-			rq[i].red = *pal++;
-			rq[i].green = *pal++;
-			rq[i].blue = *pal++;
-		}
+	for (i = 0; i != 256; i++) {
+		rq[i].red   = palette[i].r;
+		rq[i].green = palette[i].g;
+		rq[i].blue  = palette[i].b;
 	}
 
 	png_set_PLTE(png_ptr, info_ptr, rq, 256);
@@ -275,7 +270,7 @@ typedef struct {
 } PcxHeader;
 assert_compile(sizeof(PcxHeader) == 128);
 
-static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const byte *palette)
+static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
 {
 	byte *buff;
 	FILE *f;
@@ -383,7 +378,9 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 		fclose(f);
 		return false;
 	}
-	if (fwrite(palette, 256 * 3, 1, f) != 1) {
+
+	{assert_compile(sizeof(*palette) == 3);}
+	if (fwrite(palette, 256 * sizeof(*palette), 1, f) != 1) {
 		fclose(f);
 		return false;
 	}

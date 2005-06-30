@@ -94,9 +94,13 @@ VARDEF bool _use_dos_palette;
 //enum { NUM_SPRITES = 0x1500 };
 enum { NUM_SPRITES = 0x3500 }; // 1500 + space for custom GRF sets
 
-/* tables.h */
-extern byte _palettes[4][256 * 3];
-VARDEF byte _cur_palette[768];
+typedef struct Colour {
+	byte r;
+	byte g;
+	byte b;
+} Colour;
+
+extern Colour _cur_palette[256];
 
 
 typedef enum StringColorFlags {
