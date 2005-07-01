@@ -7,7 +7,6 @@
 #include "command.h"
 #include "pathfind.h"
 #include "station.h"
-#include "gfx.h"
 #include "news.h"
 #include "engine.h"
 #include "gui.h"
@@ -39,17 +38,6 @@ void DrawShipEngine(int x, int y, int engine, uint32 image_ormod)
 		spritenum = _engine_original_sprites[engine];
 	}
 	DrawSprite((6 + _ship_sprites[spritenum]) | image_ormod, x, y);
-}
-
-void DrawShipEngineInfo(int engine, int x, int y, int maxw)
-{
-	const ShipVehicleInfo *svi = ShipVehInfo(engine);
-	SetDParam(0, svi->base_cost * (_price.ship_base>>3)>>5);
-	SetDParam(1, svi->max_speed * 10 >> 5);
-	SetDParam(2, _cargoc.names_long_p[svi->cargo_type]);
-	SetDParam(3, svi->capacity);
-	SetDParam(4, svi->running_cost * _price.ship_running >> 8);
-	DrawStringMultiCenter(x, y, STR_982E_COST_MAX_SPEED_CAPACITY, maxw);
 }
 
 int GetShipImage(const Vehicle *v, byte direction)

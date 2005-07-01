@@ -10,7 +10,6 @@
 #include "command.h"
 #include "station.h"
 #include "news.h"
-#include "gfx.h"
 #include "sound.h"
 #include "player.h"
 #include "airport.h"
@@ -116,18 +115,6 @@ void DrawAircraftEngine(int x, int y, int engine, uint32 image_ormod)
 	if ((AircraftVehInfo(engine)->subtype & 1) == 0) {
 		DrawSprite(0xF3D, x, y-5);
 	}
-}
-
-void DrawAircraftEngineInfo(int engine, int x, int y, int maxw)
-{
-	const AircraftVehicleInfo *avi = AircraftVehInfo(engine);
-	SetDParam(0, ((_price.aircraft_base >> 3) * avi->base_cost) >> 5);
-	SetDParam(1, avi->max_speed << 3);
-	SetDParam(2, avi->passenger_capacity);
-	SetDParam(3, avi->mail_capacity);
-	SetDParam(4, avi->running_cost * _price.aircraft_running >> 8);
-
-	DrawStringMultiCenter(x, y, STR_A02E_COST_MAX_SPEED_CAPACITY, maxw);
 }
 
 /* Allocate many vehicles */

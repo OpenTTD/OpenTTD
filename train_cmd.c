@@ -10,7 +10,6 @@
 #include "npf.h"
 #include "station.h"
 #include "table/train_cmd.h"
-#include "gfx.h"
 #include "news.h"
 #include "engine.h"
 #include "player.h"
@@ -390,28 +389,6 @@ void DrawTrainEngine(int x, int y, int engine, uint32 image_ormod)
 		}
 	}
 	DrawSprite(image | image_ormod, x, y);
-}
-
-void DrawTrainEngineInfo(int engine, int x, int y, int maxw)
-{
-	const RailVehicleInfo *rvi = RailVehInfo(engine);
-	int cap;
-	uint multihead = (rvi->flags & RVI_MULTIHEAD) ? 1 : 0;
-
-	SetDParam(0, ((_price.build_railvehicle >> 3) * rvi->base_cost) >> 5);
-	SetDParam(2, rvi->max_speed * 10 >> 4);
-	SetDParam(3, rvi->power << multihead);
-	SetDParam(1, rvi->weight << multihead);
-
-	SetDParam(4, (rvi->running_cost_base * _price.running_rail[rvi->engclass] >> 8) << multihead);
-
-	cap = rvi->capacity;
-	SetDParam(5, STR_8838_N_A);
-	if (cap != 0) {
-		SetDParam(6, cap << multihead);
-		SetDParam(5, _cargoc.names_long_p[rvi->cargo_type]);
-	}
-	DrawStringMultiCenter(x, y, STR_885B_COST_WEIGHT_T_SPEED_POWER, maxw);
 }
 
 

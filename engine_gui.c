@@ -49,6 +49,11 @@ typedef struct DrawEngineInfo {
 	DrawEngineInfoProc *info_proc;
 } DrawEngineInfo;
 
+static void DrawTrainEngineInfo(int engine, int x, int y, int maxw);
+static void DrawRoadVehEngineInfo(int engine, int x, int y, int maxw);
+static void DrawShipEngineInfo(int engine, int x, int y, int maxw);
+static void DrawAircraftEngineInfo(int engine, int x, int y, int maxw);
+
 static const DrawEngineInfo _draw_engine_list[4] = {
 	{DrawTrainEngine,DrawTrainEngineInfo},
 	{DrawRoadVehEngine,DrawRoadVehEngineInfo},
@@ -113,6 +118,28 @@ void ShowEnginePreviewWindow(int engine)
 	w->window_number = engine;
 }
 
+static void DrawTrainEngineInfo(int engine, int x, int y, int maxw)
+{
+	const RailVehicleInfo *rvi = RailVehInfo(engine);
+	int cap;
+	uint multihead = (rvi->flags & RVI_MULTIHEAD) ? 1 : 0;
+
+	SetDParam(0, (_price.build_railvehicle >> 3) * rvi->base_cost >> 5);
+	SetDParam(2, rvi->max_speed * 10 >> 4);
+	SetDParam(3, rvi->power << multihead);
+	SetDParam(1, rvi->weight << multihead);
+
+	SetDParam(4, rvi->running_cost_base * _price.running_rail[rvi->engclass] >> 8 << multihead);
+
+	cap = rvi->capacity;
+	SetDParam(5, STR_8838_N_A);
+	if (cap != 0) {
+		SetDParam(6, cap << multihead);
+		SetDParam(5, _cargoc.names_long_p[rvi->cargo_type]);
+	}
+	DrawStringMultiCenter(x, y, STR_885B_COST_WEIGHT_T_SPEED_POWER, maxw);
+}
+
 void DrawNewsNewTrainAvail(Window *w)
 {
 	int engine;
@@ -142,6 +169,18 @@ StringID GetNewsStringNewTrainAvail(NewsItem *ni)
 	return STR_02B6;
 }
 
+static void DrawAircraftEngineInfo(int engine, int x, int y, int maxw)
+{
+	const AircraftVehicleInfo *avi = AircraftVehInfo(engine);
+	SetDParam(0, (_price.aircraft_base >> 3) * avi->base_cost >> 5);
+	SetDParam(1, avi->max_speed << 3);
+	SetDParam(2, avi->passenger_capacity);
+	SetDParam(3, avi->mail_capacity);
+	SetDParam(4, avi->running_cost * _price.aircraft_running >> 8);
+
+	DrawStringMultiCenter(x, y, STR_A02E_COST_MAX_SPEED_CAPACITY, maxw);
+}
+
 void DrawNewsNewAircraftAvail(Window *w)
 {
 	int engine;
@@ -169,6 +208,20 @@ StringID GetNewsStringNewAircraftAvail(NewsItem *ni)
 	return STR_02B6;
 }
 
+static void DrawRoadVehEngineInfo(int engine, int x, int y, int maxw)
+{
+	const RoadVehicleInfo *rvi = RoadVehInfo(engine);
+
+	SetDParam(0, (_price.roadveh_base >> 3) * rvi->base_cost >> 5);
+	SetDParam(1, rvi->max_speed * 10 >> 5);
+	SetDParam(2, rvi->running_cost * _price.roadveh_running >> 8);
+
+	SetDParam(4, rvi->capacity);
+	SetDParam(3, _cargoc.names_long_p[rvi->cargo_type]);
+
+	DrawStringMultiCenter(x, y, STR_902A_COST_SPEED_RUNNING_COST, maxw);
+}
+
 void DrawNewsNewRoadVehAvail(Window *w)
 {
 	int engine;
@@ -193,6 +246,17 @@ StringID GetNewsStringNewRoadVehAvail(NewsItem *ni)
 	SetDParam(0, STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE);
 	SetDParam(1, GetCustomEngineName(engine));
 	return STR_02B6;
+}
+
+static void DrawShipEngineInfo(int engine, int x, int y, int maxw)
+{
+	const ShipVehicleInfo *svi = ShipVehInfo(engine);
+	SetDParam(0, svi->base_cost * (_price.ship_base >> 3) >> 5);
+	SetDParam(1, svi->max_speed * 10 >> 5);
+	SetDParam(2, _cargoc.names_long_p[svi->cargo_type]);
+	SetDParam(3, svi->capacity);
+	SetDParam(4, svi->running_cost * _price.ship_running >> 8);
+	DrawStringMultiCenter(x, y, STR_982E_COST_MAX_SPEED_CAPACITY, maxw);
 }
 
 void DrawNewsNewShipAvail(Window *w)

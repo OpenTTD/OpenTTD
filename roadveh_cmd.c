@@ -9,7 +9,6 @@
 #include "command.h"
 #include "station.h"
 #include "news.h"
-#include "gfx.h"
 #include "pathfind.h"
 #include "npf.h"
 #include "player.h"
@@ -89,20 +88,6 @@ void DrawRoadVehEngine(int x, int y, int engine, uint32 image_ormod)
 		spritenum = _engine_original_sprites[engine];
 	}
 	DrawSprite((6 + _roadveh_images[spritenum]) | image_ormod, x, y);
-}
-
-void DrawRoadVehEngineInfo(int engine, int x, int y, int maxw)
-{
-	const RoadVehicleInfo *rvi = RoadVehInfo(engine);
-
-	SetDParam(0, ((_price.roadveh_base >> 3) * rvi->base_cost) >> 5);
-	SetDParam(1, rvi->max_speed * 10 >> 5);
-	SetDParam(2, rvi->running_cost * _price.roadveh_running >> 8);
-
-	SetDParam(4, rvi->capacity);
-	SetDParam(3, _cargoc.names_long_p[rvi->cargo_type]);
-
-	DrawStringMultiCenter(x, y, STR_902A_COST_SPEED_RUNNING_COST, maxw);
 }
 
 int32 EstimateRoadVehCost(EngineID engine_type)
