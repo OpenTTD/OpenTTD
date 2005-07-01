@@ -6,7 +6,6 @@
 #include "table/sprites.h"
 #include "map.h"
 #include "vehicle.h"
-#include "gfx.h"
 #include "assert.h"
 #include "saveload.h"
 #include "network.h"

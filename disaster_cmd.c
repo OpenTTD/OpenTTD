@@ -6,7 +6,6 @@
 #include "vehicle.h"
 #include "command.h"
 #include "news.h"
-#include "gfx.h"
 #include "station.h"
 #include "town.h"
 #include "industry.h"

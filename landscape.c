@@ -5,7 +5,6 @@
 #include "table/sprites.h"
 #include "tile.h"
 #include <stdarg.h>
-#include "gfx.h"
 #include "viewport.h"
 #include "command.h"
 #include "vehicle.h"
