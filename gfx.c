@@ -621,19 +621,15 @@ static void GfxBlitTileZoomIn(BlitterParams *bp)
 
 				ctab = _color_remap_ptr;
 
-				while (num >= 4) {
+				for (; num >= 4; num -=4) {
 					dst[3] = ctab[src[3]];
 					dst[2] = ctab[src[2]];
 					dst[1] = ctab[src[1]];
 					dst[0] = ctab[src[0]];
 					dst += 4;
 					src += 4;
-					num -= 4;
 				}
-				while (num) {
-					*dst++ = ctab[*src++];
-					num--;
-				}
+				for (; num != 0; num--) *dst++ = ctab[*src++];
 			} while (!(done & 0x80));
 
 			bp->dst += bp->pitch;
@@ -666,10 +662,9 @@ static void GfxBlitTileZoomIn(BlitterParams *bp)
 				}
 
 				ctab = _color_remap_ptr;
-				while (num) {
+				for (; num != 0; num--) {
 					*dst = ctab[*dst];
 					dst++;
-					num--;
 				}
 			} while (!(done & 0x80));
 
@@ -843,12 +838,10 @@ static void GfxBlitTileZoomMedium(BlitterParams *bp)
 
 				ctab = _color_remap_ptr;
 				num = (num + 1) >> 1;
-				if (num) {
-					do {
+				for (; num != 0; num--) {
 						*dst = ctab[*src];
 						dst++;
-						src+=2;
-					} while (--num);
+						src += 2;
 				}
 			} while (!(done & 0x80));
 			bp->dst += bp->pitch;
@@ -895,13 +888,10 @@ static void GfxBlitTileZoomMedium(BlitterParams *bp)
 
 				ctab = _color_remap_ptr;
 				num = (num + 1) >> 1;
-				if (num) {
-					do {
+				for (; num != 0; num--) {
 						*dst = ctab[*dst];
 						dst++;
-					} while (--num);
 				}
-
 			} while (!(done & 0x80));
 			bp->dst += bp->pitch;
 			if (!--bp->height)
@@ -951,12 +941,10 @@ static void GfxBlitTileZoomMedium(BlitterParams *bp)
 
 				num = (num + 1) >> 1;
 
-				if (num) {
-					do {
+				for (; num != 0; num--) {
 						*dst = *src;
 						dst++;
-						src+=2;
-					} while (--num);
+						src += 2;
 				}
 
 			} while (!(done & 0x80));
@@ -1076,12 +1064,10 @@ static void GfxBlitTileZoomOut(BlitterParams *bp)
 
 				ctab = _color_remap_ptr;
 				num = (num + 3) >> 2;
-				if (num) {
-					do {
+				for (; num != 0; num--) {
 						*dst = ctab[*src];
 						dst++;
-						src+=4;
-					} while (--num);
+						src += 4;
 				}
 			} while (!(done & 0x80));
 			bp->dst += bp->pitch;
@@ -1150,11 +1136,9 @@ static void GfxBlitTileZoomOut(BlitterParams *bp)
 
 				ctab = _color_remap_ptr;
 				num = (num + 3) >> 2;
-				if (num) {
-					do {
+				for (; num != 0; num--) {
 						*dst = ctab[*dst];
 						dst++;
-					} while (--num);
 				}
 
 			} while (!(done & 0x80));
@@ -1228,14 +1212,11 @@ static void GfxBlitTileZoomOut(BlitterParams *bp)
 
 				num = (num + 3) >> 2;
 
-				if (num) {
-					do {
+				for (; num != 0; num--) {
 						*dst = *src;
 						dst++;
-						src+=4;
-					} while (--num);
+						src += 4;
 				}
-
 			} while (!(done & 0x80));
 
 			bp->dst += bp->pitch;
