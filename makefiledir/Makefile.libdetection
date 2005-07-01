@@ -19,7 +19,7 @@ FREEBSD:=1
 endif
 
 # Automatically recognize if building on MacOSX
-ifeq ($(VENDOR), apple)
+ifeq ($(shell uname), Darwin)
 OSX:=1
 # OSX uses the unix setup too
 UNIX:=1
