@@ -57,7 +57,7 @@ typedef enum RailTypes {
 } RailType;
 
 enum {
-	SIG_SEMAPHORE_MASK = 4,
+	SIG_SEMAPHORE_MASK = 1 << 3,
 };
 
 /* These are used to specify a single track. Can be translated to a trackbit
