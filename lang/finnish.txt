@@ -2516,6 +2516,7 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Junan suuntaa ei voi k‰‰nt‰‰...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Nime‰ juna(vaunu)n tyyppi uudelleen.
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Juna(vaunu)n tyyppi‰ ei voi uudelleennimet‰...
+STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Pakottaa tyhjent‰m‰‰n rahdin valitulla pys‰kill‰
 STR_886F_TRANSFER                                               :{BLACK}Siirr‰
 
 STR_TRAIN_STOPPING                                              :{RED}Pys‰ytet‰‰n
