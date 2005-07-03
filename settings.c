@@ -977,6 +977,8 @@ const SettingDesc patch_settings[] = {
 	{"npf_water_curve_penalty",     SDT_UINT32, (void*)(NPF_TILE_LENGTH / 4),   &_patches.npf_water_curve_penalty,      NULL},
 	/* This is the penalty for road, same as for rail. */
 	{"npf_road_curve_penalty",      SDT_UINT32, (void*)(1),                     &_patches.npf_road_curve_penalty,       NULL},
+	/* This is the penalty for level crossings, for both road and rail vehicles */
+ 	{"npf_crossing_penalty",        SDT_UINT32, (void*)(3 * NPF_TILE_LENGTH),   &_patches.npf_crossing_penalty,         NULL},
 
 	{NULL,                          0,          NULL,                           NULL,                                   NULL}
 };

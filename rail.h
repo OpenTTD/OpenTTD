@@ -441,7 +441,7 @@ static inline bool HasSemaphores(TileIndex tile, Track track)
  * The given trackdir is used when there are (could be) multiple rail types on
  * one tile.
  */
-RailType GetTileRailType(TileIndex tile, byte trackdir);
+RailType GetTileRailType(TileIndex tile, Trackdir trackdir);
 
 /**
  * Returns whether the given tile is a level crossing.
@@ -470,6 +470,19 @@ static inline TransportType GetCrossingTransportType(TileIndex tile, Track track
 			assert(0);
 	}
 	return INVALID_TRANSPORT;
+}
+
+/**
+ * Checks if an engine of the given RailType can drive on a tile with a given
+ * RailType. This would normally just be an equality check, but for electric
+ * rails (which also support non-electric engines).
+ * @return Whether the engine can drive on this tile.
+ * @param  enginetype The RailType of the engine we are considering.
+ * @param  tiletype   The RailType of the tile we are considering.
+ */
+static inline bool IsCompatibleRail(RailType enginetype, RailType tiletype)
+{
+	return enginetype == tiletype;
 }
 
 #endif // RAIL_H

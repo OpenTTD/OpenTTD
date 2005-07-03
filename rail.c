@@ -97,7 +97,7 @@ const Trackdir _reverse_trackdir[] = {
 	TRACKDIR_DIAG1_NE, TRACKDIR_DIAG2_SE, TRACKDIR_UPPER_E, TRACKDIR_LOWER_E, TRACKDIR_LEFT_S, TRACKDIR_RIGHT_S
 };
 
-RailType GetTileRailType(TileIndex tile, byte trackdir)
+RailType GetTileRailType(TileIndex tile, Trackdir trackdir)
 {
 	RailType type = INVALID_RAILTYPE;
 	switch (GetTileType(tile)) {
@@ -123,7 +123,7 @@ RailType GetTileRailType(TileIndex tile, byte trackdir)
 			if ((_map5[tile] & 0xC6) == 0xC0 && ((DiagDirection)(_map5[tile] & 0x1)) == (TrackdirToExitdir(trackdir) & 0x1))
 				type = (_map3_lo[tile] >> 4) & RAILTYPE_MASK;
 			/* under bridge (any type) */
-			if ((_map5[tile] & 0xC0) == 0xC0 && (_map5[tile] & 0x1) != (trackdir & 0x1))
+			if ((_map5[tile] & 0xC0) == 0xC0 && ((uint)_map5[tile] & 0x1) != (trackdir & 0x1))
 				type = _map3_lo[tile] & RAILTYPE_MASK;
 			break;
 		default:

@@ -131,6 +131,7 @@ static void TPFMode2(TrackPathFinder *tpf, TileIndex tile, int direction)
 	RememberData rd;
 	int owner = -1;
 
+	/* XXX: Mode 2 is currently only used for ships, why is this code here? */
 	if (tpf->tracktype == TRANSPORT_RAIL) {
 		if (IsTileType(tile, MP_RAILWAY) || IsTileType(tile, MP_STATION) || IsTileType(tile, MP_TUNNELBRIDGE)) {
 			owner = GetTileOwner(tile);
@@ -340,6 +341,10 @@ static void TPFMode1(TrackPathFinder *tpf, TileIndex tile, int direction)
 
 	/* if i can get rid of this, tail end recursion can be used to minimize
 	 * stack space dramatically. */
+
+	/* If we are doing signal setting, we must reverse at evere tile, so we
+	 * iterate all the tracks in a signal block, even when a normal train would
+	 * not reach it (for example, when two lines merge */
 	if (tpf->hasbit_13)
 		return;
 

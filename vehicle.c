@@ -368,9 +368,9 @@ Vehicle *GetLastVehicleInChain(Vehicle *v)
 static Vehicle *GetPrevVehicleInChain_bruteforce(const Vehicle *v)
 {
 	Vehicle *u;
-	
+
 	FOR_ALL_VEHICLES(u) if (u->type == VEH_Train && u->next == v) return u;
-	
+
 	return NULL;
 }
 

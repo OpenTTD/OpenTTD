@@ -65,7 +65,7 @@ static Depot *FindClosestShipDepot(Vehicle *v)
 	if (_patches.new_pathfinding_all) {
 		NPFFoundTargetData ftd;
 		byte trackdir = GetVehicleTrackdir(v);
-		ftd = NPFRouteToDepotTrialError(v->tile, trackdir, TRANSPORT_WATER, v->owner);
+		ftd = NPFRouteToDepotTrialError(v->tile, trackdir, TRANSPORT_WATER, v->owner, INVALID_RAILTYPE);
 		if (ftd.best_bird_dist == 0)
 			best_depot = GetDepotByTile(ftd.node.tile); /* Found target */
 		else
@@ -565,7 +565,7 @@ static int ChooseShipTrack(Vehicle *v, TileIndex tile, int enterdir, uint tracks
 
 		NPFFillWithOrderData(&fstd, v);
 
-		ftd = NPFRouteToStationOrTile(src_tile, trackdir, &fstd, TRANSPORT_WATER, v->owner);
+		ftd = NPFRouteToStationOrTile(src_tile, trackdir, &fstd, TRANSPORT_WATER, v->owner, INVALID_RAILTYPE);
 
 		if (ftd.best_trackdir != 0xff)
 			/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains

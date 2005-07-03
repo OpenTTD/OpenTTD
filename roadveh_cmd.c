@@ -304,7 +304,7 @@ static Depot *FindClosestRoadDepot(Vehicle *v)
 		/* See where we are now */
 		Trackdir trackdir = GetVehicleTrackdir(v);
 
-		ftd = NPFRouteToDepotBreadthFirst(v->tile, trackdir, TRANSPORT_ROAD, v->owner);
+		ftd = NPFRouteToDepotBreadthFirst(v->tile, trackdir, TRANSPORT_ROAD, v->owner, INVALID_RAILTYPE);
 		if (ftd.best_bird_dist == 0)
 			return GetDepotByTile(ftd.node.tile); /* Target found */
 		else
@@ -1086,7 +1086,7 @@ static int RoadFindPathToDest(Vehicle *v, TileIndex tile, int enterdir)
 		trackdir = DiagdirToDiagTrackdir(enterdir);
 		//debug("Finding path. Enterdir: %d, Trackdir: %d", enterdir, trackdir);
 
-		ftd = NPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_ROAD, v->owner);
+		ftd = NPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_ROAD, v->owner, INVALID_RAILTYPE);
 		if (ftd.best_trackdir == 0xff) {
 			/* We are already at our target. Just do something */
 			//TODO: maybe display error?
@@ -1163,7 +1163,7 @@ static uint RoadFindPathToStation(const Vehicle *v, TileIndex tile)
   fstd.dest_coords = tile;
   fstd.station_index = -1;	// indicates that the destination is a tile, not a station
 
-  return NPFRouteToStationOrTile(v->tile, trackdir, &fstd, TRANSPORT_ROAD, v->owner).best_path_dist;
+  return NPFRouteToStationOrTile(v->tile, trackdir, &fstd, TRANSPORT_ROAD, v->owner, INVALID_RAILTYPE).best_path_dist;
 }
 
 typedef struct RoadDriveEntry {
