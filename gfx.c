@@ -150,8 +150,7 @@ void GfxFillRect(int left, int top, int right, int bottom, int color) {
 
 			do {
 				int i;
-				for(i=0; i!=right;i++)
-					dst[i] = ctab[dst[i]];
+				for (i = 0; i != right; i++) dst[i] = ctab[dst[i]];
 				dst += dpi->pitch;
 			} while (--bottom);
 		}
@@ -159,8 +158,7 @@ void GfxFillRect(int left, int top, int right, int bottom, int color) {
 		byte bo = (oleft - left + dpi->left + otop - top + dpi->top) & 1;
 		do {
 			int i;
-			for (i = (bo ^= 1); i < right; i += 2)
-				dst[i] = (byte)color;
+			for (i = (bo ^= 1); i < right; i += 2) dst[i] = (byte)color;
 			dst += dpi->pitch;
 		} while (--bottom > 0);
 	}
@@ -1274,7 +1272,7 @@ static void GfxMainBlitter(const Sprite* sprite, int x, int y, int mode)
 	int start_x, start_y;
 	byte info;
 	BlitterParams bp;
-	int zoom_mask = ~((1 << (dpi->zoom))-1);
+	int zoom_mask = ~((1 << dpi->zoom) - 1);
 
 	static const BlitZoomFunc zf_tile[3] =
 	{
@@ -1309,65 +1307,63 @@ static void GfxMainBlitter(const Sprite* sprite, int x, int y, int mode)
 		start_y = 0;
 
 		if (dpi->zoom > 0) {
-			start_y += bp.height &~ zoom_mask;
+			start_y += bp.height & ~zoom_mask;
 			bp.height &= zoom_mask;
 			if (bp.height == 0) return;
-			y&=zoom_mask;
+			y &= zoom_mask;
 		}
 
 		if ( (y -= dpi->top) < 0) {
-			if ((bp.height += y) <= 0)
-				return;
+			bp.height += y;
+			if (bp.height <= 0) return;
 			start_y -= y;
 			y = 0;
 		} else {
-			bp.dst += bp.pitch * (y>>(dpi->zoom));
+			bp.dst += bp.pitch * (y >> dpi->zoom);
 		}
 		bp.start_y = start_y;
 
 		if ( (y = y + bp.height - dpi->height) > 0) {
-			if ( (bp.height -= y) <= 0)
-				return;
+			bp.height -= y;
+			if (bp.height <= 0) return;
 		}
 
 		start_x = 0;
 		x &= zoom_mask;
 		if ( (x -= dpi->left) < 0) {
-			if ((bp.width += x) <= 0)
-				return;
+			bp.width += x;
+			if (bp.width <= 0) return;
 			start_x -= x;
 			x = 0;
 		}
 		bp.start_x = start_x;
-		bp.dst += x>>(dpi->zoom);
+		bp.dst += x >> dpi->zoom;
 
 		if ( (x = x + bp.width - dpi->width) > 0) {
-			if ( (bp.width -= x) <= 0)
-				return;
+			bp.width -= x;
+			if (bp.width <= 0) return;
 		}
 
 		zf_tile[dpi->zoom](&bp);
 	} else {
-
 		bp.sprite += bp.width * (bp.height & ~zoom_mask);
 		bp.height &= zoom_mask;
-		if (bp.height == 0)
-			return;
+		if (bp.height == 0) return;
 
 		y &= zoom_mask;
 
 		if ( (y -= dpi->top) < 0) {
-			if ((bp.height += y) <= 0)
-				return;
+			bp.height += y;
+			if (bp.height <= 0) return;
 			bp.sprite -= bp.width * y;
 			y = 0;
 		} else {
-			bp.dst += bp.pitch * (y>>(dpi->zoom));
+			bp.dst += bp.pitch * (y >> dpi->zoom);
 		}
 
 		if ( (y = y + bp.height - dpi->height) > 0) {
-			if ( (bp.height -= y) <= 0)
-				return;
+			bp.height -= y;
+			if (bp.height <= 0) return;
 		}
 
 		start_x = 0;
@@ -1375,17 +1371,17 @@ static void GfxMainBlitter(const Sprite* sprite, int x, int y, int mode)
 		x &= zoom_mask;
 
 		if ( (x -= dpi->left) < 0) {
-			if ((bp.width += x) <= 0)
-				return;
+			bp.width += x;
+			if (bp.width <= 0) return;
 			start_x -= x;
 			bp.sprite -= x;
 			x = 0;
 		}
-		bp.dst += x>>(dpi->zoom);
+		bp.dst += x >> dpi->zoom;
 
 		if ( (x = x + bp.width - dpi->width) > 0) {
-			if ( (bp.width -= x) <= 0)
-				return;
+			bp.width -= x;
+			if (bp.width <= 0) return;
 			start_x += x;
 		}
 		bp.start_x = start_x;
@@ -1464,30 +1460,28 @@ void DoPaletteAnimations(void)
 	/* Amount of colors to be rotated.
 	 * A few more for the DOS palette, because the water colors are
 	 * 245-254 for DOS and 217-226 for Windows.  */
-	int c = _use_dos_palette?38:28;
-	int j;
-	int i;
 	const ExtraPaletteValues *ev = &_extra_palette_values;
+	int c = _use_dos_palette ? 38 : 28;
 	Colour old_val[38]; // max(38, 28)
+	uint i;
+	uint j;
 
 	d = &_cur_palette[217];
 	memcpy(old_val, d, c * sizeof(*old_val));
 
 	// Dark blue water
-	s = ev->a;
-	if (_opt.landscape == LT_CANDY) s = ev->ac;
-	j = EXTR(320,5);
-	for(i=0; i!=5; i++) {
+	s = (_opt.landscape == LT_CANDY) ? ev->ac : ev->a;
+	j = EXTR(320, 5);
+	for (i = 0; i != 5; i++) {
 		*d++ = s[j];
 		j++;
 		if (j == 5) j = 0;
 	}
 
 	// Glittery water
-	s = ev->b;
-	if (_opt.landscape == LT_CANDY) s = ev->bc;
+	s = (_opt.landscape == LT_CANDY) ? ev->bc : ev->b;
 	j = EXTR(128, 15);
-	for(i=0; i!=5; i++) {
+	for (i = 0; i != 5; i++) {
 		*d++ = s[j];
 		j += 3;
 		if (j >= 15) j -= 15;
@@ -1495,7 +1489,7 @@ void DoPaletteAnimations(void)
 
 	s = ev->e;
 	j = EXTR2(512, 5);
-	for(i=0; i!=5; i++) {
+	for (i = 0; i != 5; i++) {
 		*d++ = s[j];
 		j++;
 		if (j == 5) j = 0;
@@ -1504,7 +1498,7 @@ void DoPaletteAnimations(void)
 	// Oil refinery fire animation
 	s = ev->oil_ref;
 	j = EXTR2(512, 7);
-	for(i=0; i!=7; i++) {
+	for (i = 0; i != 7; i++) {
 		*d++ = s[j];
 		j++;
 		if (j == 7) j = 0;
@@ -1512,8 +1506,9 @@ void DoPaletteAnimations(void)
 
 	// Radio tower blinking
 	{
-		byte i,v;
-		i = (_timer_counter >> 1) & 0x7F;
+		byte i = (_timer_counter >> 1) & 0x7F;
+		byte v;
+
 		(v = 255, i < 0x3f) ||
 		(v = 128, i < 0x4A || i >= 0x75) ||
 		(v = 20);
@@ -1535,29 +1530,27 @@ void DoPaletteAnimations(void)
 	// Handle lighthouse and stadium animation
 	s = ev->lighthouse;
 	j = EXTR(256, 4);
-	for(i=0; i!=4; i++) {
+	for (i = 0; i != 4; i++) {
 		*d++ = s[j];
 		j++;
 		if (j == 4) j = 0;
 	}
 
 	// Animate water for old DOS graphics
-	if(_use_dos_palette) {
+	if (_use_dos_palette) {
 		// Dark blue water DOS
-		s = ev->a;
-		if (_opt.landscape == LT_CANDY) s = ev->ac;
-		j = EXTR(320,5);
-		for(i=0; i!=5; i++) {
+		s = (_opt.landscape == LT_CANDY) ? ev->ac : ev->a;
+		j = EXTR(320, 5);
+		for (i = 0; i != 5; i++) {
 			*d++ = s[j];
 			j++;
 			if (j == 5) j = 0;
 		}
 
 		// Glittery water DOS
-		s = ev->b;
-		if (_opt.landscape == LT_CANDY) s = ev->bc;
+		s = (_opt.landscape == LT_CANDY) ? ev->bc : ev->b;
 		j = EXTR(128, 15);
-		for(i=0; i!=5; i++) {
+		for (i = 0; i != 5; i++) {
 			*d++ = s[j];
 			j += 3;
 			if (j >= 15) j -= 15;
@@ -1573,22 +1566,20 @@ void DoPaletteAnimations(void)
 
 void LoadStringWidthTable(void)
 {
-	int i;
-	byte *b;
-
-	b = _stringwidth_table;
+	byte *b = _stringwidth_table;
+	uint i;
 
 	// 2 equals space.
-	for(i=2; i != 0xE2; i++) {
-		*b++ = (byte)((i < 93 || i >= 129 || i == 98) ? GetSprite(i)->width : 0);
+	for (i = 2; i != 226; i++) {
+		*b++ = (i < 93 || i >= 129 || i == 98) ? GetSprite(i)->width : 0;
 	}
 
-	for(i=0xE2; i != 0x1C2; i++) {
-		*b++ = (byte)((i < 317 || i >= 353) ? GetSprite(i)->width + 1 : 0);
+	for (i = 226; i != 450; i++) {
+		*b++ = (i < 317 || i >= 353) ? GetSprite(i)->width + 1 : 0;
 	}
 
-	for(i=0x1C2; i != 0x2A2; i++) {
-		*b++ = (byte)((i < 541 || i >= 577) ? GetSprite(i)->width + 1 : 0);
+	for (i = 450; i != 674; i++) {
+		*b++ = (i < 541 || i >= 577) ? GetSprite(i)->width + 1 : 0;
 	}
 }
 
