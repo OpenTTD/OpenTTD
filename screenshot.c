@@ -330,14 +330,15 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 
 		// write them to pcx
 		for (i = 0; i != n; i++) {
-			int runcount = 1;
-			byte *bufp = buff + i * w;
-			byte runchar = *bufp++;
-			uint left;
+			const byte* bufp = buff + i * w;
+			byte runchar = bufp[0];
+			uint runcount = 1;
+			uint j;
 
 			// for each pixel...
-			for (left = w - 1; left > 0; --left) {
-				byte ch = *bufp++;
+			for (j = 1; j < w; j++) {
+				byte ch = bufp[j];
+
 				if (ch != runchar || runcount >= 0x3f) {
 					if (runcount > 1 || (runchar & 0xC0) == 0xC0)
 						if (fputc(0xC0 | runcount, f) == EOF) {

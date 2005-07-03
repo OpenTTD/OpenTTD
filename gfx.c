@@ -765,7 +765,8 @@ static void GfxBlitZoomInUncomp(BlitterParams *bp)
 		} else {
 			do {
 				int n = width;
-				while (n >= 4) {
+
+				for (; n >= 4; n -= 4) {
 					if (src[0] != 0) dst[0] = src[0];
 					if (src[1] != 0) dst[1] = src[1];
 					if (src[2] != 0) dst[2] = src[2];
@@ -773,19 +774,16 @@ static void GfxBlitZoomInUncomp(BlitterParams *bp)
 
 					dst += 4;
 					src += 4;
-					n -= 4;
 				}
 
-				while (n) {
+				for (; n != 0; n--) {
 					if (src[0] != 0) dst[0] = src[0];
 					src++;
 					dst++;
-					n--;
 				}
 
 				src += bp->width_org - width;
 				dst += bp->pitch - width;
-
 			} while (--height);
 		}
 	}
@@ -815,8 +813,7 @@ static void GfxBlitTileZoomMedium(BlitterParams *bp)
 				if (skip & 1) {
 					skip++;
 					src++;
-					if (!--num)
-						continue;
+					if (--num == 0) continue;
 				}
 
 				if ( (skip -= bp->start_x) > 0) {
@@ -845,8 +842,7 @@ static void GfxBlitTileZoomMedium(BlitterParams *bp)
 				}
 			} while (!(done & 0x80));
 			bp->dst += bp->pitch;
-			if (!--bp->height)
-				return;
+			if (--bp->height == 0) return;
 
 			do {
 				done = src_o[0];
@@ -866,8 +862,7 @@ static void GfxBlitTileZoomMedium(BlitterParams *bp)
 
 				if (skip & 1) {
 					skip++;
-					if (!--num)
-						continue;
+					if (--num == 0) continue;
 				}
 
 				if ( (skip -= bp->start_x) > 0) {
@@ -894,8 +889,7 @@ static void GfxBlitTileZoomMedium(BlitterParams *bp)
 				}
 			} while (!(done & 0x80));
 			bp->dst += bp->pitch;
-			if (!--bp->height)
-				return;
+			if (--bp->height == 0) return;
 
 			do {
 				done = src_o[0];
@@ -918,8 +912,7 @@ static void GfxBlitTileZoomMedium(BlitterParams *bp)
 				if (skip & 1) {
 					skip++;
 					src++;
-					if (!--num)
-						continue;
+					if (--num == 0) continue;
 				}
 
 				if ( (skip -= bp->start_x) > 0) {
@@ -950,8 +943,7 @@ static void GfxBlitTileZoomMedium(BlitterParams *bp)
 			} while (!(done & 0x80));
 
 			bp->dst += bp->pitch;
-			if (!--bp->height)
-				return;
+			if (--bp->height == 0) return;
 
 			do {
 				done = src_o[0];
@@ -1034,15 +1026,14 @@ static void GfxBlitTileZoomOut(BlitterParams *bp)
 				if (skip & 1) {
 					skip++;
 					src++;
-					if (!--num)
-						continue;
+					if (--num == 0) continue;
 				}
 
 				if (skip & 2) {
-					skip+=2;
-					src+=2;
-					if ((num-=2) <= 0)
-						continue;
+					skip += 2;
+					src += 2;
+					num -= 2;
+					if (num <= 0) continue;
 				}
 
 				if ( (skip -= bp->start_x) > 0) {
@@ -1050,16 +1041,14 @@ static void GfxBlitTileZoomOut(BlitterParams *bp)
 				} else {
 					src -= skip;
 					num += skip;
-					if (num <= 0)
-						continue;
+					if (num <= 0) continue;
 					skip = 0;
 				}
 
 				skip = skip + num - bp->width;
 				if (skip > 0) {
 					num -= skip;
-					if (num <= 0)
-						continue;
+					if (num <= 0) continue;
 				}
 
 				ctab = _color_remap_ptr;
@@ -1071,29 +1060,25 @@ static void GfxBlitTileZoomOut(BlitterParams *bp)
 				}
 			} while (!(done & 0x80));
 			bp->dst += bp->pitch;
-			if (!--bp->height)
-				return;
+			if (--bp->height == 0) return;
 
 			do {
 				done = src_o[0];
 				src_o += (done & 0x7F) + 2;
 			} while (!(done & 0x80));
-			if (!--bp->height)
-				return;
+			if (--bp->height == 0) return;
 
 			do {
 				done = src_o[0];
 				src_o += (done & 0x7F) + 2;
 			} while (!(done & 0x80));
-			if (!--bp->height)
-				return;
+			if (--bp->height == 0) return;
 
 			do {
 				done = src_o[0];
 				src_o += (done & 0x7F) + 2;
 			} while (!(done & 0x80));
-			if (!--bp->height)
-				return;
+			if (--bp->height == 0) return;
 		}
 	} else if (bp->mode & 2) {
 		src_o += READ_LE_UINT16(src_o + bp->start_y * 2);
@@ -1108,30 +1093,27 @@ static void GfxBlitTileZoomOut(BlitterParams *bp)
 
 				if (skip & 1) {
 					skip++;
-					if (!--num)
-						continue;
+					if (--num == 0) continue;
 				}
 
 				if (skip & 2) {
-					skip+=2;
-					if ((num-=2) <= 0)
-						continue;
+					skip += 2;
+					num -= 2;
+					if (num <= 0) continue;
 				}
 
 				if ( (skip -= bp->start_x) > 0) {
 					dst += skip >> 2;
 				} else {
 					num += skip;
-					if (num <= 0)
-						continue;
+					if (num <= 0) continue;
 					skip = 0;
 				}
 
 				skip = skip + num - bp->width;
 				if (skip > 0) {
 					num -= skip;
-					if (num <= 0)
-						continue;
+					if (num <= 0) continue;
 				}
 
 				ctab = _color_remap_ptr;
@@ -1143,29 +1125,25 @@ static void GfxBlitTileZoomOut(BlitterParams *bp)
 
 			} while (!(done & 0x80));
 			bp->dst += bp->pitch;
-			if (!--bp->height)
-				return;
+			if (--bp->height == 0) return;
 
 			do {
 				done = src_o[0];
 				src_o += (done & 0x7F) + 2;
 			} while (!(done & 0x80));
-			if (!--bp->height)
-				return;
+			if (--bp->height == 0) return;
 
 			do {
 				done = src_o[0];
 				src_o += (done & 0x7F) + 2;
 			} while (!(done & 0x80));
-			if (!--bp->height)
-				return;
+			if (--bp->height == 0) return;
 
 			do {
 				done = src_o[0];
 				src_o += (done & 0x7F) + 2;
 			} while (!(done & 0x80));
-			if (!--bp->height)
-				return;
+			if (--bp->height == 0) return;
 		}
 	} else {
 		src_o += READ_LE_UINT16(src_o + bp->start_y * 2);
@@ -1182,15 +1160,14 @@ static void GfxBlitTileZoomOut(BlitterParams *bp)
 				if (skip & 1) {
 					skip++;
 					src++;
-					if (!--num)
-						continue;
+					if (--num == 0) continue;
 				}
 
 				if (skip & 2) {
-					skip+=2;
-					src+=2;
-					if ((num-=2) <= 0)
-						continue;
+					skip += 2;
+					src += 2;
+					num -= 2;
+					if (num <= 0) continue;
 				}
 
 				if ( (skip -= bp->start_x) > 0) {
@@ -1198,16 +1175,14 @@ static void GfxBlitTileZoomOut(BlitterParams *bp)
 				} else {
 					src -= skip;
 					num += skip;
-					if (num <= 0)
-						continue;
+					if (num <= 0) continue;
 					skip = 0;
 				}
 
 				skip = skip + num - bp->width;
 				if (skip > 0) {
 					num -= skip;
-					if (num <= 0)
-						continue;
+					if (num <= 0) continue;
 				}
 
 				num = (num + 3) >> 2;
@@ -1220,29 +1195,25 @@ static void GfxBlitTileZoomOut(BlitterParams *bp)
 			} while (!(done & 0x80));
 
 			bp->dst += bp->pitch;
-			if (!--bp->height)
-				return;
+			if (--bp->height == 0) return;
 
 			do {
 				done = src_o[0];
 				src_o += (done & 0x7F) + 2;
 			} while (!(done & 0x80));
-			if (!--bp->height)
-				return;
+			if (--bp->height == 0) return;
 
 			do {
 				done = src_o[0];
 				src_o += (done & 0x7F) + 2;
 			} while (!(done & 0x80));
-			if (!--bp->height)
-				return;
+			if (--bp->height == 0) return;
 
 			do {
 				done = src_o[0];
 				src_o += (done & 0x7F) + 2;
 			} while (!(done & 0x80));
-			if (!--bp->height)
-				return;
+			if (--bp->height == 0) return;
 		}
 	}
 }
@@ -1423,27 +1394,29 @@ static void GfxMainBlitter(const Sprite* sprite, int x, int y, int mode)
 			int totpix = bp.height_org * bp.width_org;
 			byte *dst = (byte*)alloca(totpix);
 			const byte *src = bp.sprite_org;
-			signed char b;
 
 			bp.sprite = dst + (bp.sprite - bp.sprite_org);
 
 			while (totpix != 0) {
+				signed char b;
+
 				assert(totpix > 0);
+
 				b = *src++;
 				if (b >= 0) {
-					int i, count=b;
-					for(i=0; i!=count; i++)
-						dst[i] = src[i];
+					uint count = b;
+					uint i;
+
+					for (i = 0; i != count; i++) dst[i] = src[i];
 					dst += count;
 					src += count;
 					totpix -= count;
 				} else {
-					byte *tmp = dst- (((b&7)<<8)|(*src++));
-					int i;
-					int count = -(b >> 3);
+					const byte *tmp = dst - (((b & 7) << 8) | *src++);
+					uint count = -(b >> 3);
+					uint i;
 
-					for(i=0; i!=count; i++)
-						dst[i] = tmp[i];
+					for (i = 0; i != count; i++) dst[i] = tmp[i];
 					dst += count;
 					totpix -= count;
 				}
