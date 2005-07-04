@@ -845,6 +845,7 @@ static const SettingDesc patch_player_settings[] = {
 // Non-static, needed in network_server.c
 const SettingDesc patch_settings[] = {
 	{"build_on_slopes",			SDT_BOOL,		(void*)true,	&_patches.build_on_slopes,			NULL},
+	{"auto_pbs_placement",	SDT_BOOL,		(void*)true,	&_patches.auto_pbs_placement,		NULL},
 	{"mammoth_trains",			SDT_BOOL,		(void*)true,	&_patches.mammoth_trains,				NULL},
 	{"join_stations",				SDT_BOOL,		(void*)true,	&_patches.join_stations,				NULL},
 	{"station_spread",			SDT_UINT8,	(void*)12,		&_patches.station_spread,				NULL},

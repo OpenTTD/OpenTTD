@@ -96,6 +96,11 @@ typedef void AyStar_GetNeighbours(AyStar *aystar, OpenListNode *current);
  */
 typedef void AyStar_FoundEndNode(AyStar *aystar, OpenListNode *current);
 
+/*
+ * Is called when aystar ends it pathfinding, but before cleanup.
+ */
+typedef void AyStar_BeforeExit(AyStar *aystar);
+
 // For internal use, see aystar.c
 typedef void AyStar_AddStartNode(AyStar *aystar, AyStarNode* start_node, uint g);
 typedef int AyStar_Main(AyStar *aystar);
@@ -115,6 +120,7 @@ struct AyStar {
 	AyStar_GetNeighbours* GetNeighbours;
 	AyStar_EndNodeCheck* EndNodeCheck;
 	AyStar_FoundEndNode* FoundEndNode;
+	AyStar_BeforeExit* BeforeExit;
 
 	/* These are completely untouched by AyStar, they can be accesed by
 	 * the application specific routines to input and output data.

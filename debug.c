@@ -14,6 +14,7 @@ int _debug_ms_level;
 int _debug_net_level;
 int _debug_spritecache_level;
 int _debug_oldloader_level;
+int _debug_pbs_level;
 int _debug_npf_level;
 
 
@@ -44,6 +45,7 @@ typedef struct DebugLevel {
 	DEBUG_LEVEL(net),
 	DEBUG_LEVEL(spritecache),
 	DEBUG_LEVEL(oldloader),
+	DEBUG_LEVEL(pbs),
 	DEBUG_LEVEL(npf)
 	};
 #undef DEBUG_LEVEL

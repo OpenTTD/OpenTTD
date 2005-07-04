@@ -93,11 +93,12 @@ map5 bit 7 clear: railway track
 <li>map2 bits 7..4: bit clear = signal shows red; same bits as in map3_lo</li>
 <li>OpenTTD bits in map3_hi:
 <table>
-<tr><td nowrap valign=top>bits 1..0: </td><td align=left>type of signal:</td></tr>
-<tr><td nowrap valign=top><tt>00</tt>: </td><td align=left>normal signals</td></tr>
-<tr><td nowrap valign=top><tt>01</tt>: </td><td align=left>pre-signals</td></tr>
-<tr><td nowrap valign=top><tt>10</tt>: </td><td align=left>exit-signals</td></tr>
-<tr><td nowrap valign=top><tt>11</tt>: </td><td align=left>combo-signals</td></tr>
+<tr><td nowrap valign=top>bits 2..0: </td><td align=left>type of signal:</td></tr>
+<tr><td nowrap valign=top><tt>000</tt>: </td><td align=left>normal signals</td></tr>
+<tr><td nowrap valign=top><tt>001</tt>: </td><td align=left>pre-signals</td></tr>
+<tr><td nowrap valign=top><tt>010</tt>: </td><td align=left>exit-signals</td></tr>
+<tr><td nowrap valign=top><tt>011</tt>: </td><td align=left>combo-signals</td></tr>
+<tr><td nowrap valign=top><tt>100</tt>: </td><td align=left>PBS signals</td></tr>
 <tr><td nowrap valign=top>bit 3: </td><td align=left>set = semaphore signals, clear = light signals</td></tr>
 </table></li>
 </ul></li>
@@ -120,7 +121,11 @@ map5 bit 7 clear: railway track
 <tr><td nowrap valign=top><tt>C</tt>&nbsp; </td><td align=left>on snow or desert</td></tr>
 </table></li>
 <li>map3_lo bits 0..3 = <a name="TrackType">track type</a>: <tt>0</tt> - conventional railway, <tt>1</tt> - monorail, <tt>2</tt> - maglev
-</li>
+<li>map3_lo bits 4..7 = Pbs reserved status:
+<table>
+<tr><td nowrap valign=top><tt>bits 4..6</tt>&nbsp; </td><td align=left>'Track'number of reserved track + 1, if this is zero it means nothing is reserved on this tile</td></tr>
+<tr><td nowrap valign=top><tt>bit 7</tt>&nbsp; </td><td align=left>If this is set, then the opposite track ('Track'number^1) is also reserved</td></tr>
+</table></li>
 </ul>
 map5 bits 7 and 6 set: railway depot / checkpoints
 <ul>
@@ -133,6 +138,7 @@ map5 bits 7 and 6 set: railway depot / checkpoints
 <li>map_owner: <a href="#OwnershipInfo">owner</a> of the depot / checkpoint</li>
 <li>map3_lo bits 0..3 = <a href="#TrackType">track type</a></li>
 <li>map3_lo bit 4 = use custom sprite (valid only for the checkpoint)</li>
+<li>map3_lo bit 6 = track on this tile is reserved by pbs</li>
 <li>map3_hi = custom station id</li>
 </ul>
 </td></tr>
@@ -157,6 +163,7 @@ map5 bit 4 set, bits 7..5 clear: level crossing
 <ul>
 <li>map5 bit 3: clear - road in the X direction, set - road in the Y direction (railway track always perpendicular)</li>
 <li>map5 bit 2: set if crossing lights are on</li>
+<li>map5 bit 0: set if rail track is reserved by pbs</li>
 <li>map_owner: <a href="#OwnershipInfo">owner</a> of the railway track</li>
 <li>map2: Index into the array of towns, 0 for non-town roads</li>
 <li>map3_lo bits 0..7: <a href="#OwnershipInfo">owner</a> of the road</li>
@@ -372,6 +379,7 @@ exit towards: <tt>47</tt> - NE, <tt>48</tt> - SE, <tt>49</tt> - SW, <tt>4A</tt> 
 <li>map2: index into the <a href="#_StationArray">array of stations</a></li>
 <li>map3_lo bits 0..3: <a href="#TrackType">track type</a> for railway stations, must be 0 for all the other stations</li>
 <li>map3_lo bit 4 = use custom sprite (valid only railway stations FOR NOW)</li>
+<li>map3lo bit 6 set = track is reserved by pbs (railway stations only)</li>
 <li>map3_hi = custom station id</li>
 </ul>
 </td></tr>
@@ -542,6 +550,8 @@ map5 bits 7..4 clear: tunnel entrance/exit
 <li>map_owner: <a href="#OwnershipInfo">owner</a> of the tunnel</li>
 <li>map3_lo bits 3..0 = <a href="#TrackType">track type</a> for railway tunnel, must be 0 for road tunnel</li>
 <li>map3_hi bit 7 set = on snow or desert</li>
+<li>map3hi bit 0 set = track with 'Track'number 0 is reserved by pbs</li>
+<li>map3hi bit 1 set = track with 'Track'number 1 is reserved by pbs</li>
 </ul>
 map5 bit 7 set: bridge
 <ul><li>

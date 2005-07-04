@@ -106,6 +106,7 @@ typedef struct Patches {
 	bool modified_catchment;	//different-size catchment areas
 	bool vehicle_speed;			// show vehicle speed
 	bool build_on_slopes;		// allow building on slopes
+	bool auto_pbs_placement;// automatic pbs signal placement
 	bool mammoth_trains;		// allow very long trains
 	bool join_stations;			// allow joining of train stations
 	bool full_load_any;			// new full load calculation, any cargo must be full

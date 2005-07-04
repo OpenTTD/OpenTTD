@@ -230,6 +230,10 @@ int AyStarMain_Main(AyStar *aystar) {
 	else if (r == AYSTAR_LIMIT_REACHED)
 		printf("[AyStar] Exceeded search_nodes, no path found\n");
 #endif
+
+	if (aystar->BeforeExit != NULL)
+		aystar->BeforeExit(aystar);
+
 	if (r != AYSTAR_STILL_BUSY)
 		/* We're done, clean up */
 		aystar->clear(aystar);

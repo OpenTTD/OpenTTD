@@ -14,6 +14,7 @@
 	extern int _debug_net_level;
 	extern int _debug_spritecache_level;
 	extern int _debug_oldloader_level;
+	extern int _debug_pbs_level;
 	extern int _debug_npf_level;
 #endif
 

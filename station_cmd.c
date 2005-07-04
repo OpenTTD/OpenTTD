@@ -19,6 +19,7 @@
 #include "airport.h"
 #include "sprite.h"
 #include "depot.h"
+#include "pbs.h"
 
 enum {
 	/* Max stations: 64000 (64 * 1000) */
@@ -2120,6 +2121,7 @@ static void DrawTile_Station(TileInfo *ti)
 	const DrawTileSeqStruct *dtss;
 	const DrawTileSprites *t = NULL;
 	byte railtype = _map3_lo[ti->tile] & 0xF;
+	int type_offset;
 	uint32 relocation = 0;
 
 	{
@@ -2154,15 +2156,27 @@ static void DrawTile_Station(TileInfo *ti)
 	if (image & 0x8000)
 		image |= image_or_modificator;
 
+	// For custom sprites, there's no railtype-based pitching.
+	type_offset = railtype * ((image & 0x3FFF) < _custom_sprites_base ? TRACKTYPE_SPRITE_PITCH : 1);
+
 	// station_land array has been increased from 82 elements to 114
 	// but this is something else. If AI builds station with 114 it looks all weird
-	image += railtype * ((image & 0x3FFF) < _custom_sprites_base ? TRACKTYPE_SPRITE_PITCH : 1);
+	image += type_offset;
 	DrawGroundSprite(image);
 
+	if (_debug_pbs_level >= 1) {
+		byte pbs = PBSTileReserved(ti->tile);
+		if (pbs & TRACK_BIT_DIAG1) DrawGroundSprite((0x3ED + type_offset) | PALETTE_CRASH);
+		if (pbs & TRACK_BIT_DIAG2) DrawGroundSprite((0x3EE + type_offset) | PALETTE_CRASH);
+		if (pbs & TRACK_BIT_UPPER) DrawGroundSprite((0x3EF + type_offset) | PALETTE_CRASH);
+		if (pbs & TRACK_BIT_LOWER) DrawGroundSprite((0x3F0 + type_offset) | PALETTE_CRASH);
+		if (pbs & TRACK_BIT_LEFT)  DrawGroundSprite((0x3F2 + type_offset) | PALETTE_CRASH);
+		if (pbs & TRACK_BIT_RIGHT) DrawGroundSprite((0x3F1 + type_offset) | PALETTE_CRASH);
+	}
+
 	foreach_draw_tile_seq(dtss, t->seq) {
-		image =	dtss->image + relocation;
-		// For custom sprites, there's no railtype-based pitching.
-		image += railtype * ((image & 0x3FFF) < _custom_sprites_base ? TRACKTYPE_SPRITE_PITCH : 0);
+		image = dtss->image + relocation;
+		image += type_offset;
 		if (_display_opt & DO_TRANS_BUILDINGS) {
 			image = (image & 0x3FFF) | 0x03224000;
 		} else {

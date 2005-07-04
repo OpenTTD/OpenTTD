@@ -68,6 +68,8 @@ typedef struct VehicleRail {
 	byte railtype;
 
 	byte flags;
+
+	byte pbs_status;
 } VehicleRail;
 
 enum {

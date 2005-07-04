@@ -42,7 +42,7 @@ enum Sprites {
 	SPR_ASCII_SPACE_BIG   = 450,
 
 	/* Extra graphic spritenumbers */
-	SPR_CANALS_BASE		= 5126,
+	SPR_CANALS_BASE		= 5382,
 	SPR_SLOPES_BASE		= SPR_CANALS_BASE + 70,
 	SPR_AUTORAIL_BASE		= SPR_SLOPES_BASE + 78,
 	SPR_OPENTTD_BASE	= SPR_AUTORAIL_BASE + 55, // can be lowered once autorail.grf is finalized

@@ -651,6 +651,7 @@ C_SOURCES += order_cmd.c
 C_SOURCES += order_gui.c
 C_SOURCES += openttd.c
 C_SOURCES += pathfind.c
+C_SOURCES += pbs.c
 C_SOURCES += player_gui.c
 C_SOURCES += players.c
 C_SOURCES += pool.c

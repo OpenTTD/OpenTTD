@@ -97,6 +97,8 @@ AyStar *new_AyStar_AiPathFinder(int max_tiles_around, Ai_PathFinderInfo *PathFin
 	result->FoundEndNode = AyStar_AiPathFinder_FoundEndNode;
 	result->GetNeighbours = AyStar_AiPathFinder_GetNeighbours;
 
+	result->BeforeExit = NULL;
+
 	result->free = AyStar_AiPathFinder_Free;
 
 	// Set some information

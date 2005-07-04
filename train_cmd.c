@@ -15,6 +15,7 @@
 #include "player.h"
 #include "sound.h"
 #include "depot.h"
+#include "debug.h"
 #include "waypoint.h"
 #include "vehicle_gui.h"
 
@@ -1296,13 +1297,85 @@ static void AdvanceWagons(Vehicle *v, bool before)
 	}
 }
 
+TileIndex GetVehicleTileOutOfTunnel(const Vehicle *v, bool reverse)
+{
+	TileIndex tile;
+	byte direction = (!reverse) ? DirToDiagdir(v->direction) : ReverseDiagdir(v->direction >> 1);
+	TileIndexDiff delta = TileOffsByDir(direction);
+
+	if (v->u.rail.track != 0x40)
+		return v->tile;
+
+	for (tile = v->tile;; tile += delta) {
+		if (IsTileType(tile, MP_TUNNELBRIDGE) &&
+				(_map5[tile] & 0xF3) != (direction) &&
+				GetTileZ(tile) == v->z_pos)
+ 			break;
+ 	}
+ 	return tile;
+
+};
+
 static void ReverseTrainDirection(Vehicle *v)
 {
 	int l = 0, r = -1;
 	Vehicle *u;
+	TileIndex tile;
+	byte trackdir;
+
+	u = GetLastVehicleInChain(v);
+	tile = GetVehicleTileOutOfTunnel(u, false);
+	trackdir = ReverseTrackdir(GetVehicleTrackdir(u));
+
+	if (PBSTileReserved(tile) & (1 << (trackdir&7))) {
+		NPFFindStationOrTileData fstd;
+		NPFFoundTargetData ftd;
+
+		NPFFillWithOrderData(&fstd, v);
+
+		tile = GetVehicleTileOutOfTunnel(u, true);
+
+		DEBUG(pbs, 2) ("pbs: (%i) choose reverse (RV), tile:%x, trackdir:%i",v->unitnumber,  u->tile, trackdir);
+		ftd = NPFRouteToStationOrTile(tile, trackdir, &fstd, TRANSPORT_RAIL, v->owner, v->u.rail.railtype, PBS_MODE_ANY);
+
+		if (ftd.best_trackdir == 0xFF) {
+			DEBUG(pbs, 0) ("pbs: (%i) no nodes encountered (RV)", v->unitnumber);
+			CLRBIT(v->u.rail.flags, VRF_REVERSING);
+			return;
+		}
+
+    // we found a way out of the pbs block
+		if (NPFGetFlag(&ftd.node, NPF_FLAG_PBS_EXIT)) {
+			if (NPFGetFlag(&ftd.node, NPF_FLAG_PBS_BLOCKED)) {
+				CLRBIT(v->u.rail.flags, VRF_REVERSING);
+				return;
+			}
+		}
+	}
+
+	tile = GetVehicleTileOutOfTunnel(v, false);
+	trackdir = GetVehicleTrackdir(v);
+
+	if (v->u.rail.pbs_status == PBS_STAT_HAS_PATH) {
+		byte trackdir = GetVehicleTrackdir(v);
+		TileIndex tile = AddTileIndexDiffCWrap(v->tile, TileIndexDiffCByDir(TrackdirToExitdir(trackdir)));
+		uint32 ts;
+		assert(tile != INVALID_TILE);
+		ts = GetTileTrackStatus(tile, TRANSPORT_RAIL);
+		ts &= TrackdirReachesTrackdirs(trackdir);
+		assert(ts != 0 && KillFirstBit2x64(ts) == 0);
+		trackdir = FindFirstBit2x64(ts);
+		PBSClearPath(tile, trackdir);
+		v->u.rail.pbs_status = PBS_STAT_NONE;
+	} else if (PBSTileReserved(tile) & (1 << (trackdir&7))) {
+		PBSClearPath(tile, trackdir);
+		if (v->u.rail.track != 0x40)
+			PBSReserveTrack(tile, trackdir & 7);
+	};
 
 	if (IsTileDepotType(v->tile, TRANSPORT_RAIL))
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+
 
 	/* Check if we were approaching a rail/road-crossing */
 	{
@@ -1748,12 +1821,35 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 
 		v->load_unload_time_rem = 0;
 
+		if (PBSIsPbsDepot(v->tile)) {
+			byte trackdir = GetVehicleTrackdir(v);
+			NPFFindStationOrTileData fstd;
+			NPFFoundTargetData ftd;
+
+			if (PBSTileUnavail(v->tile) & (1 << trackdir))
+				return true;
+
+			NPFFillWithOrderData(&fstd, v);
+
+			DEBUG(pbs, 2) ("pbs: (%i) choose depot (DP), tile:%x, trackdir:%i",v->unitnumber,  v->tile, trackdir);
+			ftd = NPFRouteToStationOrTile(v->tile, trackdir, &fstd, TRANSPORT_RAIL, v->owner, v->u.rail.railtype, PBS_MODE_GREEN);
+
+			// we found a way out of the pbs block
+			if (NPFGetFlag(&ftd.node, NPF_FLAG_PBS_EXIT)) {
+				if (NPFGetFlag(&ftd.node, NPF_FLAG_PBS_BLOCKED) || NPFGetFlag(&ftd.node, NPF_FLAG_PBS_RED))
+					return true;
+				else
+					goto green;
+			}
+		}
+
+
 		if (UpdateSignalsOnSegment(v->tile, v->direction)) {
 			InvalidateWindowClasses(WC_TRAINS_LIST);
 			return true;
 		}
 	}
-
+green:
 	VehicleServiceInDepot(v);
 	InvalidateWindowClasses(WC_TRAINS_LIST);
 	TrainPlayLeaveStationSound(v);
@@ -1904,13 +2000,26 @@ static byte ChooseTrainTrack(Vehicle *v, TileIndex tile, int enterdir, TrackdirB
 		NPFFindStationOrTileData fstd;
 		NPFFoundTargetData ftd;
 		Trackdir trackdir;
+		uint16 pbs_tracks;
 
 		NPFFillWithOrderData(&fstd, v);
 		/* The enterdir for the new tile, is the exitdir for the old tile */
 		trackdir = GetVehicleTrackdir(v);
 		assert(trackdir != 0xff);
 
-		ftd = NPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_RAIL, v->owner, v->u.rail.railtype);
+		pbs_tracks = PBSTileReserved(tile);
+		pbs_tracks |= pbs_tracks << 8;
+		pbs_tracks &= TrackdirReachesTrackdirs(trackdir);
+		if (pbs_tracks || (v->u.rail.pbs_status == PBS_STAT_NEED_PATH)) {
+			DEBUG(pbs, 2) ("pbs: (%i) choosefromblock, tile_org:%x tile_dst:%x  trackdir:%i  pbs_tracks:%i",v->unitnumber, tile,tile - TileOffsByDir(enterdir), trackdir, pbs_tracks);
+			// clear the currently planned path
+			if (v->u.rail.pbs_status != PBS_STAT_NEED_PATH) PBSClearPath(tile, FindFirstBit2x64(pbs_tracks));
+
+			// try to find a route to a green exit signal
+			ftd = NPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_RAIL, v->owner, v->u.rail.railtype, PBS_MODE_ANY);
+
+		} else
+			ftd = NPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_RAIL, v->owner, v->u.rail.railtype, PBS_MODE_NONE);
 
 		if (ftd.best_trackdir == 0xff) {
 			/* We are already at our target. Just do something */
@@ -1923,7 +2032,7 @@ static byte ChooseTrainTrack(Vehicle *v, TileIndex tile, int enterdir, TrackdirB
 			we did not find our target, but ftd.best_trackdir contains the direction leading
 			to the tile closest to our target. */
 			/* Discard enterdir information, making it a normal track */
-			best_track = ftd.best_trackdir & 7; /* TODO: Wrapper function? */
+			best_track = TrackdirToTrack(ftd.best_trackdir);
 		}
 	} else {
 
@@ -2048,7 +2157,8 @@ static bool CheckReverseTrain(Vehicle *v)
 		assert(trackdir != 0xff);
 		assert(trackdir_rev != 0xff);
 
-		ftd = NPFRouteToStationOrTileTwoWay(v->tile, trackdir, last->tile, trackdir_rev, &fstd, TRANSPORT_RAIL, v->owner, v->u.rail.railtype);
+		ftd = NPFRouteToStationOrTileTwoWay(v->tile, trackdir, last->tile, trackdir_rev, &fstd, TRANSPORT_RAIL, v->owner, v->u.rail.railtype, PBS_MODE_NONE);
+
 		if (ftd.best_bird_dist != 0) {
 			/* We didn't find anything, just keep on going straight ahead */
 			reverse_best = false;
@@ -2644,7 +2754,7 @@ static void TrainController(Vehicle *v)
 				} else {
 					/* is not inside depot */
 
-					if (!TrainCheckIfLineEnds(v))
+					if ((prev == NULL) && (!TrainCheckIfLineEnds(v)))
 						return;
 
 					r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
@@ -2699,10 +2809,53 @@ static void TrainController(Vehicle *v)
 				}
 
 				if (prev == NULL) {
+					byte trackdir;
 					/* Currently the locomotive is active. Determine which one of the
 					 * available tracks to choose */
 					chosen_track = 1 << ChooseTrainTrack(v, gp.new_tile, enterdir, bits);
 					assert(chosen_track & tracks);
+
+					trackdir = TrackEnterdirToTrackdir(FIND_FIRST_BIT(chosen_track), enterdir);
+					assert(trackdir != 0xff);
+
+					if (PBSIsPbsSignal(gp.new_tile,trackdir)) {
+						// encountered a pbs signal, and possible a pbs block
+						DEBUG(pbs, 3) ("pbs: (%i) arrive AT signal, tile:%x  pbs_stat:%i",v->unitnumber, gp.new_tile, v->u.rail.pbs_status);
+
+						if (v->u.rail.pbs_status == PBS_STAT_NONE) {
+							// we havent planned a path already, so try to find one now
+							NPFFindStationOrTileData fstd;
+							NPFFoundTargetData ftd;
+
+							NPFFillWithOrderData(&fstd, v);
+
+							DEBUG(pbs, 2) ("pbs: (%i) choose signal (TC), tile:%x, trackdir:%i",v->unitnumber,  gp.new_tile, trackdir);
+							ftd = NPFRouteToStationOrTile(gp.new_tile, trackdir, &fstd, TRANSPORT_RAIL, v->owner, v->u.rail.railtype, PBS_MODE_GREEN);
+
+							if (v->u.rail.force_proceed != 0)
+								goto green_light;
+
+							if (ftd.best_trackdir == 0xFF)
+								goto red_light;
+
+							// we found a way out of the pbs block
+							if (NPFGetFlag(&ftd.node, NPF_FLAG_PBS_EXIT)) {
+								if (NPFGetFlag(&ftd.node, NPF_FLAG_PBS_BLOCKED) || NPFGetFlag(&ftd.node, NPF_FLAG_PBS_RED))
+									goto red_light;
+								else {
+									goto green_light;
+								}
+
+							};
+
+						} else {
+							// we have already planned a path through this pbs block
+							// on entering the block, we reset our status
+							v->u.rail.pbs_status = PBS_STAT_NONE;
+							goto green_light;
+						};
+						DEBUG(pbs, 3) ("pbs: (%i) no green light found, or was no pbs-block",v->unitnumber);
+					};
 
 					/* Check if it's a red signal and that force proceed is not clicked. */
 					if ( (tracks>>16)&chosen_track && v->u.rail.force_proceed == 0) goto red_light;
@@ -2712,6 +2865,9 @@ static void TrainController(Vehicle *v)
 					/* The wagon is active, simply follow the prev vehicle. */
 					chosen_track = (byte)(_matching_tracks[GetDirectionToVehicle(prev, gp.x, gp.y)] & bits);
 				}
+green_light:
+				if (v->next == NULL)
+					PBSClearTrack(gp.old_tile, FIND_FIRST_BIT(v->u.rail.track));
 
 				/* make sure chosen track is a valid track */
 				assert(chosen_track==1 || chosen_track==2 || chosen_track==4 || chosen_track==8 || chosen_track==16 || chosen_track==32);
@@ -2740,12 +2896,12 @@ static void TrainController(Vehicle *v)
 				}
 
 				if (v->subtype == TS_Front_Engine)
- 				TrainMovedChangeSignals(gp.new_tile, enterdir);
+				TrainMovedChangeSignals(gp.new_tile, enterdir);
 
 				/* Signals can only change when the first
 				 * (above) or the last vehicle moves. */
 				if (v->next == NULL)
- 				TrainMovedChangeSignals(gp.old_tile, (enterdir) ^ 2);
+				TrainMovedChangeSignals(gp.old_tile, (enterdir) ^ 2);
 
 				if (prev == NULL) {
 					AffectSpeedByDirChange(v, chosen_dir);
@@ -2859,6 +3015,17 @@ static void DeleteLastWagon(Vehicle *v)
 	BeginVehicleMove(v);
 	EndVehicleMove(v);
 	DeleteVehicle(v);
+
+	// clear up reserved pbs tracks
+	if (PBSTileReserved(v->tile) & v->u.rail.track) {
+		if (v == u) {
+			PBSClearPath(v->tile, FIND_FIRST_BIT(v->u.rail.track));
+			PBSClearPath(v->tile, FIND_FIRST_BIT(v->u.rail.track) + 8);
+		};
+		if (v->tile != u->tile) {
+			PBSClearTrack(v->tile, FIND_FIRST_BIT(v->u.rail.track));
+		};
+	}
 
 	if (!(v->u.rail.track & 0xC0))
 		SetSignalsOnBothDir(v->tile, FIND_FIRST_BIT(v->u.rail.track));
@@ -2987,6 +3154,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 	uint x,y;
 	int t;
 	uint32 ts;
+	byte trackdir;
 
 	if ((uint)(t=v->breakdown_ctr) > 1) {
 		v->vehstatus |= VS_TRAIN_SLOWING;
@@ -3000,6 +3168,10 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 
 	// exit if inside a tunnel
 	if (v->u.rail.track & 0x40)
+		return true;
+
+	// exit if inside a depot
+	if (v->u.rail.track & 0x80)
 		return true;
 
 	tile = v->tile;
@@ -3024,6 +3196,12 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 	tile += TileOffsByDir(t);
 	// determine the track status on the next tile.
 	ts = GetTileTrackStatus(tile, TRANSPORT_RAIL) & _reachable_tracks[t];
+
+	// if there are tracks on the new tile, pick one (trackdir will only be used when its a signal tile, in which case only 1 trackdir is accessible for us)
+	if (ts & TRACKDIR_BIT_MASK)
+		trackdir = FindFirstBit2x64(ts & TRACKDIR_BIT_MASK);
+	else
+		trackdir = INVALID_TRACKDIR;
 
 	/* Calc position within the current tile ?? */
 	x = v->x_pos & 0xF;
@@ -3076,6 +3254,26 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 		ReverseTrainDirection(v);
 		return false;
 	}
+
+	if  (v->u.rail.pbs_status == PBS_STAT_HAS_PATH)
+		return true;
+
+	if ((trackdir != INVALID_TRACKDIR) && (PBSIsPbsSignal(tile,trackdir)) && !(IsTileType(v->tile, MP_STATION) && (v->current_order.station == _map2[v->tile]))) {
+		NPFFindStationOrTileData fstd;
+		NPFFoundTargetData ftd;
+
+		NPFFillWithOrderData(&fstd, v);
+
+		DEBUG(pbs, 2) ("pbs: (%i) choose signal (CEOL), tile:%x  trackdir:%i", v->unitnumber, tile, trackdir);
+		ftd = NPFRouteToStationOrTile(tile, trackdir, &fstd, TRANSPORT_RAIL, v->owner, v->u.rail.railtype, PBS_MODE_GREEN);
+
+		if (ftd.best_trackdir != 0xFF && NPFGetFlag(&ftd.node, NPF_FLAG_PBS_EXIT)) {
+			if (!(NPFGetFlag(&ftd.node, NPF_FLAG_PBS_BLOCKED) || NPFGetFlag(&ftd.node, NPF_FLAG_PBS_RED))) {
+				v->u.rail.pbs_status = PBS_STAT_HAS_PATH;
+				return true;
+			}
+		};
+	};
 
 	// slow down
 	v->vehstatus |= VS_TRAIN_SLOWING;
@@ -3236,6 +3434,12 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 {
 	Depot *depot;
 	TrainFindDepotData tfdd;
+
+	if (PBSTileReserved(v->tile) & v->u.rail.track)
+		return;
+
+	if (v->u.rail.pbs_status == PBS_STAT_HAS_PATH)
+		return;
 
 	if (_patches.servint_trains == 0)
 		return;

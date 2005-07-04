@@ -43,8 +43,9 @@ typedef enum SignalTypes {
   SIGTYPE_ENTRY   = 1,        // presignal block entry
   SIGTYPE_EXIT    = 2,        // presignal block exit
   SIGTYPE_COMBO   = 3,        // presignal inter-block
+	SIGTYPE_PBS     = 4,        // pbs signal
 	SIGTYPE_END,
-	SIGTYPE_MASK    = 3,
+	SIGTYPE_MASK    = 7,
 } SignalType;
 
 typedef enum RailTypes {
@@ -134,6 +135,11 @@ typedef enum SignalStates {
 	SIGNAL_STATE_GREEN = 1,
 } SignalState;
 
+// these are the maximums used for updating signal blocks, and checking if a depot is in a pbs block
+enum {
+	NUM_SSD_ENTRY = 256, // max amount of blocks
+	NUM_SSD_STACK = 32 ,// max amount of blocks to check recursively
+};
 
 /**
  * Maps a Trackdir to the corresponding TrackdirBits value
@@ -317,6 +323,15 @@ static inline Trackdir TrackExitdirToTrackdir(Track track, DiagDirection diagdir
 }
 
 /**
+ * Maps a track and an (4-way) dir to the trackdir that represents the track
+ * with the exit in the given direction.
+ */
+static inline Trackdir TrackEnterdirToTrackdir(Track track, DiagDirection diagdir) {
+	extern const Trackdir _track_enterdir_to_trackdir[TRACK_END][DIAGDIR_END];
+	return _track_enterdir_to_trackdir[track][diagdir];
+}
+
+/**
  * Maps a track and a full (8-way) direction to the trackdir that represents
  * the track running in the given direction.
  */
@@ -357,6 +372,14 @@ static inline TrackdirBits TrackdirCrossesTrackdirs(Trackdir trackdir) {
 static inline DiagDirection ReverseDiagdir(DiagDirection diagdir) {
 	extern const DiagDirection _reverse_diagdir[DIAGDIR_END];
 	return _reverse_diagdir[diagdir];
+}
+
+/**
+ * Maps a (8-way) direction to a (4-way) DiagDirection
+ */
+static inline DiagDirection DirToDiagdir(Direction dir) {
+	assert(dir < DIR_END);
+	return (DiagDirection)(dir >> 1);
 }
 
 /* Checks if a given Track is diagonal */
