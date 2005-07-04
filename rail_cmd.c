@@ -1326,10 +1326,88 @@ static void DrawSpecialBuilding(uint32 image, uint32 tracktype_offs,
 	AddSortableSpriteToDraw(image, ti->x + x, ti->y + y, xsize, ysize, zsize, ti->z + z);
 }
 
+/* Arrangement of the sprites
+ *  1) Single track in Y direction
+ *  2) Northern and southern trackbits set
+ *  3) "Basis" for 3-way switch
+ *  4) Single rail in Y direction without ground sprite
+ *  5) as above, X direction
+ *  6) as above, nortern track
+ *  7) as above, southern track
+ *  8) as above, eastern track
+ *  9) as above, western track
+ * 10) the offset of the snow sprites
+ */
+static SpriteID RailSpriteIDs[] = {
+	SPR_RAIL_TRACK_Y,
+	SPR_RAIL_TRACK_N_S,
+	SPR_RAIL_TRACK_BASE,
+	SPR_RAIL_SINGLE_Y,
+	SPR_RAIL_SINGLE_X,
+	SPR_RAIL_SINGLE_NORTH,
+	SPR_RAIL_SINGLE_SOUTH,
+	SPR_RAIL_SINGLE_EAST,
+	SPR_RAIL_SINGLE_WEST,
+	SPR_RAIL_SNOW_OFFSET,
+};
+
+static SpriteID MonoSpriteIDs[] = {
+	SPR_MONO_TRACK_Y,
+	SPR_MONO_TRACK_N_S,
+	SPR_MONO_TRACK_BASE,
+	SPR_MONO_SINGLE_Y,
+	SPR_MONO_SINGLE_X,
+	SPR_MONO_SINGLE_NORTH,
+	SPR_MONO_SINGLE_SOUTH,
+	SPR_MONO_SINGLE_EAST,
+	SPR_MONO_SINGLE_WEST,
+	SPR_MONO_SNOW_OFFSET,
+};
+
+static SpriteID MaglevSpriteIDs[] = {
+	SPR_MGLV_TRACK_Y,
+	SPR_MGLV_TRACK_N_S,
+	SPR_MGLV_TRACK_BASE,
+	SPR_MGLV_SINGLE_Y,
+	SPR_MGLV_SINGLE_X,
+	SPR_MGLV_SINGLE_NORTH,
+	SPR_MGLV_SINGLE_SOUTH,
+	SPR_MGLV_SINGLE_EAST,
+	SPR_MGLV_SINGLE_WEST,
+	SPR_MGLV_SNOW_OFFSET,
+};
+
+/** Sprite reference enum */
+enum {
+	TRACK_Y,
+	TRACK_N_S,
+	TRACK_BASE,
+	SINGLE_Y,
+	SINGLE_X,
+	SINGLE_NORTH,
+	SINGLE_SOUTH,
+	SINGLE_EAST,
+	SINGLE_WEST,
+	SNOW_OFFSET,
+};
+
+/** Contains the pointers to the arrays *SpriteIDs.
+  * There, all the Sprites are recorded that the
+  * Track Draw system requireds. Note: Pointer arrangement
+  * must match the tracktype number
+  */
+static SpriteID *TrackSpriteIDs[RAILTYPE_END] = {
+	RailSpriteIDs,
+	MonoSpriteIDs,
+	MaglevSpriteIDs
+};
+
 static void DrawTile_Track(TileInfo *ti)
 {
-	uint32 tracktype_offs, image;
+	uint32 tracktype_offs;
 	byte m5;
+	SpriteID *TrackSet = TrackSpriteIDs[GetRailType(ti->tile)];
+	uint32 image;	//XXX ok why the hell is SpriteID 16 bit when all the drawing routines need 32?
 
 	_drawtile_track_palette = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)));
 
@@ -1344,7 +1422,7 @@ static void DrawTile_Track(TileInfo *ti)
 		special = false;
 
 		// select the sprite to use based on the map5 byte.
-		(image = 0x3F3, m5 == TRACK_BIT_DIAG2) ||
+		(image = TrackSet[TRACK_Y], m5 == TRACK_BIT_DIAG2) ||
 		(image++,				m5 == TRACK_BIT_DIAG1) ||
 		(image++,				m5 == TRACK_BIT_UPPER) ||
 		(image++,				m5 == TRACK_BIT_LOWER) ||
@@ -1352,12 +1430,12 @@ static void DrawTile_Track(TileInfo *ti)
 		(image++,				m5 == TRACK_BIT_LEFT) ||
 		(image++,				m5 == (TRACK_BIT_DIAG1|TRACK_BIT_DIAG2)) ||
 
-		(image = 0x40B, m5 == (TRACK_BIT_UPPER|TRACK_BIT_LOWER)) ||
+		(image = TrackSet[TRACK_N_S], m5 == (TRACK_BIT_UPPER|TRACK_BIT_LOWER)) ||
 		(image++,				m5 == (TRACK_BIT_LEFT|TRACK_BIT_RIGHT)) ||
 
 		(special=true, false) ||
 
-		(image = 0x3FA, !(m5 & (TRACK_BIT_RIGHT|TRACK_BIT_UPPER|TRACK_BIT_DIAG1))) ||
+		(image = TrackSet[TRACK_BASE], !(m5 & (TRACK_BIT_RIGHT|TRACK_BIT_UPPER|TRACK_BIT_DIAG1))) ||
 		(image++,				!(m5 & (TRACK_BIT_LEFT|TRACK_BIT_LOWER|TRACK_BIT_DIAG1))) ||
 		(image++,				!(m5 & (TRACK_BIT_LEFT|TRACK_BIT_UPPER|TRACK_BIT_DIAG2))) ||
 		(image++,				!(m5 & (TRACK_BIT_RIGHT|TRACK_BIT_LOWER|TRACK_BIT_DIAG2))) ||
@@ -1368,23 +1446,24 @@ static void DrawTile_Track(TileInfo *ti)
 			if (f) DrawFoundation(ti, f);
 
 			// default sloped sprites..
-			if (ti->tileh != 0) image = _track_sloped_sprites[ti->tileh - 1] + 0x3F3;
+			if (ti->tileh != 0) image = _track_sloped_sprites[ti->tileh - 1] + TrackSet[TRACK_Y];
 		}
 
-		if ((_map2[ti->tile] & RAIL_MAP2LO_GROUND_MASK)==RAIL_GROUND_BROWN)
+		if ((_map2[ti->tile] & RAIL_MAP2LO_GROUND_MASK)==RAIL_GROUND_BROWN) {
 			image = (image & 0xFFFF) | 0x3178000; // use a brown palette
-		else if ((_map2[ti->tile] & RAIL_MAP2LO_GROUND_MASK)==RAIL_GROUND_ICE_DESERT)
-			image += 26;
+		 } else if ((_map2[ti->tile] & RAIL_MAP2LO_GROUND_MASK)==RAIL_GROUND_ICE_DESERT) {
+			image += TrackSet[SNOW_OFFSET];
+		}
 
-		DrawGroundSprite(image + tracktype_offs);
+		DrawGroundSprite(image);
 
 		if (special) {
-			if (m5 & TRACK_BIT_DIAG1) DrawGroundSprite(0x3ED + tracktype_offs);
-			if (m5 & TRACK_BIT_DIAG2) DrawGroundSprite(0x3EE + tracktype_offs);
-			if (m5 & TRACK_BIT_UPPER) DrawGroundSprite(0x3EF + tracktype_offs);
-			if (m5 & TRACK_BIT_LOWER) DrawGroundSprite(0x3F0 + tracktype_offs);
-			if (m5 & TRACK_BIT_LEFT)  DrawGroundSprite(0x3F2 + tracktype_offs);
-			if (m5 & TRACK_BIT_RIGHT) DrawGroundSprite(0x3F1 + tracktype_offs);
+			if (m5 & TRACK_BIT_DIAG1) DrawGroundSprite(TrackSet[SINGLE_Y]);
+			if (m5 & TRACK_BIT_DIAG2) DrawGroundSprite(TrackSet[SINGLE_X]);
+			if (m5 & TRACK_BIT_UPPER) DrawGroundSprite(TrackSet[SINGLE_NORTH]);
+			if (m5 & TRACK_BIT_LOWER) DrawGroundSprite(TrackSet[SINGLE_SOUTH]);
+			if (m5 & TRACK_BIT_LEFT)  DrawGroundSprite(TrackSet[SINGLE_WEST]);
+			if (m5 & TRACK_BIT_RIGHT) DrawGroundSprite(TrackSet[SINGLE_EAST]);
 		}
 
 		if (_display_opt & DO_FULL_DETAIL) {
