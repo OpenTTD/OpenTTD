@@ -37,8 +37,8 @@ bool IsEndOfLine(TileIndex tile, Trackdir trackdir)
 		return false;
 
 	// depot
-	if (IsTileDepotType(tile, TRANSPORT_RAIL))
-		return false;
+	if (IsTileDepotType(tile, TRANSPORT_RAIL) && (exitdir != GetDepotDirection(tile, TRANSPORT_RAIL)))
+		return true;
 
 	/* Calculate next tile */
 	dst_tile = tile + TileOffsByDir(exitdir);
@@ -51,14 +51,14 @@ bool IsEndOfLine(TileIndex tile, Trackdir trackdir)
 
 	{
 		byte src_type = GetTileRailType(tile, trackdir);
-		byte dst_type = GetTileRailType(dst_tile, TrackdirToExitdir(trackdir));
+		byte dst_type = GetTileRailType(dst_tile, exitdir);
 		if (src_type != dst_type) {
 			return true;
 		}
 		if (GetTileOwner(tile) != GetTileOwner(dst_tile))
 			return true;
 
-		if (IsTileDepotType(dst_tile, TRANSPORT_RAIL) && (TrackdirToExitdir(trackdir) != ReverseDiagdir(GetDepotDirection(dst_tile, TRANSPORT_RAIL))))
+		if (IsTileDepotType(dst_tile, TRANSPORT_RAIL) && (exitdir != ReverseDiagdir(GetDepotDirection(dst_tile, TRANSPORT_RAIL))))
 			return true;
 
 		/* Check for oneway signal against us */
