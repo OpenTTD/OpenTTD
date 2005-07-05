@@ -1813,7 +1813,7 @@ static void GRFInfo(byte *buf, int len)
 	_cur_grffile->grfid = grfid;
 	_cur_grffile->flags |= 0x0001; /* set active flag */
 
-	DEBUG(grf, 1) ("[%s] Loaded GRFv%d set %08lx - %s:\n%s\n",
+	DEBUG(grf, 1) ("[%s] Loaded GRFv%d set %08lx - %s:\n%s",
 	               _cur_grffile->filename, version, grfid, name, info);
 }
 

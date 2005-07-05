@@ -1059,7 +1059,7 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 		}
 		break;
 	default:
-		DEBUG(net, 0)("[NET][Server] Received unknown destination type %d. Doing broadcast instead.\n");
+		DEBUG(net, 0)("[NET][Server] Received unknown destination type %d. Doing broadcast instead.");
 		/* fall-through to next case */
 	case DESTTYPE_BROADCAST:
 		FOR_ALL_CLIENTS(cs) {

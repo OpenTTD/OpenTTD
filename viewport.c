@@ -360,7 +360,7 @@ void DrawGroundSpriteAt(uint32 image, int32 x, int32 y, byte z)
 
 	ts = (TileSpriteToDraw*)vd->spritelist_mem;
 	if ((byte*)ts >= vd->eof_spritelist_mem) {
-		DEBUG(misc, 0) ("Out of sprite mem\n");
+		DEBUG(misc, 0) ("Out of sprite mem");
 		return;
 	}
 
@@ -432,7 +432,7 @@ void AddSortableSpriteToDraw(uint32 image, int x, int y, int w, int h, byte dz, 
 
 	ps = (ParentSpriteToDraw*)vd->spritelist_mem;
 	if ((byte*)ps >= vd->eof_spritelist_mem) {
-		DEBUG(misc, 0) ("Out of sprite mem\n");
+		DEBUG(misc, 0) ("Out of sprite mem");
 		return;
 	}
 	if (vd->parent_list >= vd->eof_parent_list) {
@@ -442,7 +442,7 @@ void AddSortableSpriteToDraw(uint32 image, int x, int y, int w, int h, byte dz, 
 		//  parent_list somewhere below to a higher number.
 		// This can not really hurt you, it just gives some black
 		//  spots on the screen ;)
-		DEBUG(misc, 0) ("Out of sprite mem (parent_list)\n");
+		DEBUG(misc, 0) ("Out of sprite mem (parent_list)");
 		return;
 	}
 
@@ -498,7 +498,7 @@ void AddChildSpriteScreen(uint32 image, int x, int y)
 
 	cs = (ChildScreenSpriteToDraw*) vd->spritelist_mem;
 	if ((byte*)cs >= vd->eof_spritelist_mem) {
-		DEBUG(misc,0) ("Out of sprite mem\n");
+		DEBUG(misc, 0) ("Out of sprite mem");
 		return;
 	}
 
@@ -524,7 +524,7 @@ void *AddStringToDraw(int x, int y, StringID string, uint32 params_1, uint32 par
 
 	ss = (StringSpriteToDraw*)vd->spritelist_mem;
 	if ((byte*)ss >= vd->eof_spritelist_mem) {
-		DEBUG(misc, 0) ("Out of sprite mem\n");
+		DEBUG(misc, 0) ("Out of sprite mem");
 		return NULL;
 	}
 
