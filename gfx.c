@@ -16,7 +16,7 @@ static Rect _invalid_rect;
 static const byte *_color_remap_ptr;
 static byte _string_colorremap[3];
 
-#define DIRTY_BYTES_PER_LINE (MAX_SCREEN_WIDTH/64)
+#define DIRTY_BYTES_PER_LINE (MAX_SCREEN_WIDTH / 64)
 static byte _dirty_blocks[DIRTY_BYTES_PER_LINE * MAX_SCREEN_HEIGHT / 8];
 
 
@@ -35,16 +35,16 @@ void memcpy_pitch(void *d, void *s, int w, int h, int spitch, int dpitch)
 }
 
 
-void GfxScroll(int left, int top, int width, int height, int xo, int yo) {
-	byte *src, *dst;
+void GfxScroll(int left, int top, int width, int height, int xo, int yo)
+{
+	byte *src;
+	byte *dst;
 	int p;
 	int ht;
 
-	if (xo == 0 && yo == 0)
-		return;
+	if (xo == 0 && yo == 0) return;
 
-	if (_cursor.visible)
-		UndrawMouseCursor();
+	if (_cursor.visible) UndrawMouseCursor();
 	UndrawTextMessage();
 
 	p = _screen.pitch;
@@ -106,33 +106,27 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo) {
 }
 
 
-void GfxFillRect(int left, int top, int right, int bottom, int color) {
+void GfxFillRect(int left, int top, int right, int bottom, int color)
+{
 	DrawPixelInfo *dpi = _cur_dpi;
 	byte *dst;
 	const int otop = top;
 	const int oleft = left;
 
-	if (dpi->zoom != 0)
-		return;
-
-	if (left > right || top > bottom)
-		return;
-
-	if (right < dpi->left || left >= dpi->left + dpi->width)
-		return;
-
-	if (bottom < dpi->top || top >= dpi->top + dpi->height)
-		return;
+	if (dpi->zoom != 0) return;
+	if (left > right || top > bottom) return;
+	if (right < dpi->left || left >= dpi->left + dpi->width) return;
+	if (bottom < dpi->top || top >= dpi->top + dpi->height) return;
 
 	if ( (left -= dpi->left) < 0) left = 0;
 	right = right - dpi->left + 1;
-	if (right > dpi->width) right=dpi->width;
+	if (right > dpi->width) right = dpi->width;
 	right -= left;
 	assert(right > 0);
 
 	if ( (top -= dpi->top) < 0) top = 0;
 	bottom = bottom - dpi->top + 1;
-	if (bottom > dpi->height) bottom=dpi->height;
+	if (bottom > dpi->height) bottom = dpi->height;
 	bottom -= top;
 	assert(bottom > 0);
 
@@ -169,14 +163,15 @@ static void GfxSetPixel(int x, int y, int color)
 	DrawPixelInfo *dpi = _cur_dpi;
 	if ((x-=dpi->left) < 0 || x>=dpi->width || (y-=dpi->top)<0 || y>=dpi->height)
 		return;
-	dpi->dst_ptr[y*dpi->pitch+x] = color;
+	dpi->dst_ptr[y * dpi->pitch + x] = color;
 }
 
 void GfxDrawLine(int x, int y, int x2, int y2, int color)
 {
 	int dy;
 	int dx;
-	int stepx, stepy;
+	int stepx;
+	int stepy;
 	int frac;
 
 	// Check clipping first
@@ -184,26 +179,32 @@ void GfxDrawLine(int x, int y, int x2, int y2, int color)
 		DrawPixelInfo *dpi = _cur_dpi;
 		int t;
 
-		if (x < dpi->left && x2 < dpi->left)
-			return;
+		if (x < dpi->left && x2 < dpi->left) return;
 
-		if (y < dpi->top && y2 < dpi->top)
-			return;
+		if (y < dpi->top && y2 < dpi->top) return;
 
 		t = dpi->left + dpi->width;
-		if (x > t && x2 > t)
-			return;
+		if (x > t && x2 > t) return;
 
 		t = dpi->top + dpi->height;
-		if (y > t && y2 > t)
-			return;
+		if (y > t && y2 > t) return;
 	}
 
 	dy = (y2 - y) * 2;
-	if (dy < 0) { dy = -dy;  stepy = -1; } else { stepy = 1; }
+	if (dy < 0) {
+		dy = -dy;
+		stepy = -1;
+	} else {
+		stepy = 1;
+	}
 
 	dx = (x2 - x) * 2;
-	if (dx < 0) { dx = -dx;  stepx = -1; } else { stepx = 1; }
+	if (dx < 0) {
+		dx = -dx;
+		stepx = -1;
+	} else {
+		stepx = 1;
+	}
 
 	GfxSetPixel(x, y, color);
 	if (dx > dy) {
@@ -290,7 +291,7 @@ int DrawStringCentered(int x, int y, uint16 str, uint16 color)
 void DrawStringCenterUnderline(int x, int y, uint16 str, uint16 color)
 {
 	int w = DrawStringCentered(x, y, str, color);
-	GfxFillRect(x-(w>>1), y+10, x-(w>>1)+w, y+10, _string_colorremap[1]);
+	GfxFillRect(x - (w >> 1), y + 10, x - (w >> 1) + w, y + 10, _string_colorremap[1]);
 }
 
 static uint32 FormatStringLinebreaks(char *str, int maxw)
@@ -381,7 +382,8 @@ void DrawStringMultiCenter(int x, int y, uint16 str, int maxw)
 	}
 }
 
-void DrawStringMultiLine(int x, int y, uint16 str, int maxw) {
+void DrawStringMultiLine(int x, int y, uint16 str, int maxw)
+{
 	char buffer[512];
 	uint32 tmp;
 	int num, w, mt, t;
@@ -442,7 +444,8 @@ int GetStringWidth(const char *str)
 	return w;
 }
 
-void DrawFrameRect(int left, int top, int right, int bottom, int ctab, int flags) {
+void DrawFrameRect(int left, int top, int right, int bottom, int ctab, int flags)
+{
 	byte color_2 = _color_list[ctab].window_color_1a;
 	byte color_interior = _color_list[ctab].window_color_bga;
 	byte color_3 = _color_list[ctab].window_color_bgb;
@@ -450,21 +453,21 @@ void DrawFrameRect(int left, int top, int right, int bottom, int ctab, int flags
 
 	if (!(flags & 0x8))	{
 		if (!(flags & 0x20)) {
-			GfxFillRect(left, top, left, bottom-1, color);
-			GfxFillRect(left+1, top, right-1, top, color);
-			GfxFillRect(right, top, right, bottom-1, color_2);
+			GfxFillRect(left, top, left, bottom - 1, color);
+			GfxFillRect(left + 1, top, right - 1, top, color);
+			GfxFillRect(right, top, right, bottom - 1, color_2);
 			GfxFillRect(left, bottom, right, bottom, color_2);
 			if (!(flags & 0x10)) {
-				GfxFillRect(left+1, top+1, right-1, bottom-1, color_interior);
+				GfxFillRect(left + 1, top + 1, right - 1, bottom - 1, color_interior);
 			}
 		} else {
 			GfxFillRect(left, top, left, bottom, color_2);
-			GfxFillRect(left+1, top, right, top, color_2);
-			GfxFillRect(right, top+1, right, bottom-1, color);
-			GfxFillRect(left+1, bottom, right, bottom, color);
+			GfxFillRect(left + 1, top, right, top, color_2);
+			GfxFillRect(right, top + 1, right, bottom - 1, color);
+			GfxFillRect(left + 1, bottom, right, bottom, color);
 			if (!(flags & 0x10)) {
-				GfxFillRect(left+1, top+1, right-1, bottom-1,
-					flags&0x40 ? color_interior : color_3);
+				GfxFillRect(left + 1, top + 1, right - 1, bottom - 1,
+					flags & 0x40 ? color_interior : color_3);
 			}
 		}
 	} else if (flags & 0x1) {
@@ -554,7 +557,8 @@ skip_cont:;
 	}
 }
 
-void DrawSprite(uint32 img, int x, int y) {
+void DrawSprite(uint32 img, int x, int y)
+{
 	if (img & 0x8000) {
 		_color_remap_ptr = GetNonSprite(img >> 16) + 1;
 		GfxMainBlitter(GetSprite(img & 0x3FFF), x, y, 1);
@@ -573,7 +577,8 @@ typedef struct BlitterParams {
 	byte *dst;
 	int mode;
 	int width, height;
-	int width_org, height_org;
+	int width_org;
+	int height_org;
 	int pitch;
 	byte info;
 } BlitterParams;
@@ -605,16 +610,14 @@ static void GfxBlitTileZoomIn(BlitterParams *bp)
 				} else {
 					src -= skip;
 					num += skip;
-					if (num <= 0)
-						continue;
+					if (num <= 0) continue;
 					skip = 0;
 				}
 
 				skip = skip + num - bp->width;
 				if (skip > 0) {
 					num -= skip;
-					if (num <= 0)
-						continue;
+					if (num <= 0) continue;
 				}
 
 				ctab = _color_remap_ptr;
@@ -631,7 +634,7 @@ static void GfxBlitTileZoomIn(BlitterParams *bp)
 			} while (!(done & 0x80));
 
 			bp->dst += bp->pitch;
-		} while (--bp->height);
+		} while (--bp->height != 0);
 	} else if (bp->mode & 2) {
 		src_o += READ_LE_UINT16(src_o + bp->start_y * 2);
 		do {
@@ -647,16 +650,14 @@ static void GfxBlitTileZoomIn(BlitterParams *bp)
 					dst += skip;
 				} else {
 					num += skip;
-					if (num <= 0)
-						continue;
+					if (num <= 0) continue;
 					skip = 0;
 				}
 
 				skip = skip + num - bp->width;
 				if (skip > 0) {
 					num -= skip;
-					if (num <= 0)
-						continue;
+					if (num <= 0) continue;
 				}
 
 				ctab = _color_remap_ptr;
@@ -667,8 +668,7 @@ static void GfxBlitTileZoomIn(BlitterParams *bp)
 			} while (!(done & 0x80));
 
 			bp->dst += bp->pitch;
-		} while (--bp->height);
-
+		} while (--bp->height != 0);
 	} else {
 		src_o += READ_LE_UINT16(src_o + bp->start_y * 2);
 		do {
@@ -686,16 +686,14 @@ static void GfxBlitTileZoomIn(BlitterParams *bp)
 				} else {
 					src -= skip;
 					num += skip;
-					if (num <= 0)
-						continue;
+					if (num <= 0) continue;
 					skip = 0;
 				}
 
 				skip = skip + num - bp->width;
 				if (skip > 0) {
 					num -= skip;
-					if (num <= 0)
-						continue;
+					if (num <= 0) continue;
 				}
 #if defined(_WIN32)
 				if (num & 1) *dst++ = *src++;
@@ -705,7 +703,7 @@ static void GfxBlitTileZoomIn(BlitterParams *bp)
 						*(uint32*)dst = *(uint32*)src;
 						dst += 4;
 						src += 4;
-					} while (--num);
+					} while (--num != 0);
 				}
 #else
 				memcpy(dst, src, num);
@@ -713,7 +711,7 @@ static void GfxBlitTileZoomIn(BlitterParams *bp)
 			} while (!(done & 0x80));
 
 			bp->dst += bp->pitch;
-		} while (--bp->height);
+		} while (--bp->height != 0);
 	}
 }
 
@@ -740,7 +738,7 @@ static void GfxBlitZoomInUncomp(BlitterParams *bp)
 				}
 				src += bp->width_org;
 				dst += bp->pitch;
-			} while (--height);
+			} while (--height != 0);
 		}
 	} else if (bp->mode & 2) {
 		if (bp->info & 1) {
@@ -751,7 +749,7 @@ static void GfxBlitZoomInUncomp(BlitterParams *bp)
 					if (src[i] != 0) dst[i] = ctab[dst[i]];
 				src += bp->width_org;
 				dst += bp->pitch;
-			} while (--height);
+			} while (--height != 0);
 		}
 	} else {
 		if (!(bp->info & 1)) {
@@ -759,7 +757,7 @@ static void GfxBlitZoomInUncomp(BlitterParams *bp)
 				memcpy(dst, src, width);
 				src += bp->width_org;
 				dst += bp->pitch;
-			} while (--height);
+			} while (--height != 0);
 		} else {
 			do {
 				int n = width;
@@ -782,7 +780,7 @@ static void GfxBlitZoomInUncomp(BlitterParams *bp)
 
 				src += bp->width_org - width;
 				dst += bp->pitch - width;
-			} while (--height);
+			} while (--height != 0);
 		}
 	}
 }
@@ -819,16 +817,14 @@ static void GfxBlitTileZoomMedium(BlitterParams *bp)
 				} else {
 					src -= skip;
 					num += skip;
-					if (num <= 0)
-						continue;
+					if (num <= 0) continue;
 					skip = 0;
 				}
 
 				skip = skip + num - bp->width;
 				if (skip > 0) {
 					num -= skip;
-					if (num <= 0)
-						continue;
+					if (num <= 0) continue;
 				}
 
 				ctab = _color_remap_ptr;
@@ -846,7 +842,7 @@ static void GfxBlitTileZoomMedium(BlitterParams *bp)
 				done = src_o[0];
 				src_o += (done & 0x7F) + 2;
 			} while (!(done & 0x80));
-		} while (--bp->height);
+		} while (--bp->height != 0);
 	} else if (bp->mode & 2) {
 		src_o += READ_LE_UINT16(src_o + bp->start_y * 2);
 		do {
@@ -867,16 +863,14 @@ static void GfxBlitTileZoomMedium(BlitterParams *bp)
 					dst += skip >> 1;
 				} else {
 					num += skip;
-					if (num <= 0)
-						continue;
+					if (num <= 0) continue;
 					skip = 0;
 				}
 
 				skip = skip + num - bp->width;
 				if (skip > 0) {
 					num -= skip;
-					if (num <= 0)
-						continue;
+					if (num <= 0) continue;
 				}
 
 				ctab = _color_remap_ptr;
@@ -893,8 +887,7 @@ static void GfxBlitTileZoomMedium(BlitterParams *bp)
 				done = src_o[0];
 				src_o += (done & 0x7F) + 2;
 			} while (!(done & 0x80));
-		} while (--bp->height);
-
+		} while (--bp->height != 0);
 	} else {
 		src_o += READ_LE_UINT16(src_o + bp->start_y * 2);
 		do {
@@ -918,16 +911,14 @@ static void GfxBlitTileZoomMedium(BlitterParams *bp)
 				} else {
 					src -= skip;
 					num += skip;
-					if (num <= 0)
-						continue;
+					if (num <= 0) continue;
 					skip = 0;
 				}
 
 				skip = skip + num - bp->width;
 				if (skip > 0) {
 					num -= skip;
-					if (num <= 0)
-						continue;
+					if (num <= 0) continue;
 				}
 
 				num = (num + 1) >> 1;
@@ -947,8 +938,7 @@ static void GfxBlitTileZoomMedium(BlitterParams *bp)
 				done = src_o[0];
 				src_o += (done & 0x7F) + 2;
 			} while (!(done & 0x80));
-
-		} while (--bp->height);
+		} while (--bp->height != 0);
 	}
 }
 
@@ -1450,8 +1440,8 @@ void GfxInitPalettes(void)
 	DoPaletteAnimations();
 }
 
-#define EXTR(p,q) (((uint16)(_timer_counter * (p)) * (q)) >> 16)
-#define EXTR2(p,q) (((uint16)(~_timer_counter * (p)) * (q)) >> 16)
+#define EXTR(p, q) (((uint16)(_timer_counter * (p)) * (q)) >> 16)
+#define EXTR2(p, q) (((uint16)(~_timer_counter * (p)) * (q)) >> 16)
 
 void DoPaletteAnimations(void)
 {
@@ -1608,32 +1598,40 @@ void UndrawMouseCursor(void)
 
 void DrawMouseCursor(void)
 {
-	int x,y,w,h;
+	int x;
+	int y;
+	int w;
+	int h;
 
 	// Don't draw the mouse cursor if it's already drawn
 	if (_cursor.visible) {
-		if (!_cursor.dirty)
-			return;
+		if (!_cursor.dirty) return;
 		UndrawMouseCursor();
 	}
 
 	w = _cursor.size.x;
 	x = _cursor.pos.x + _cursor.offs.x;
-	if (x < 0) { w += x; x=0; }
-	if (w>_screen.width-x) { w = _screen.width-x; }
+	if (x < 0) {
+		w += x;
+		x = 0;
+	}
+	if (w > _screen.width - x) w = _screen.width - x;
 	if (w <= 0) return;
 	_cursor.draw_pos.x = x;
 	_cursor.draw_size.x = w;
 
 	h = _cursor.size.y;
 	y = _cursor.pos.y + _cursor.offs.y;
-	if (y < 0) { h += y; y=0; }
-	if (h>_screen.height-y) { h = _screen.height-y; }
+	if (y < 0) {
+		h += y;
+		y = 0;
+	}
+	if (h > _screen.height - y) h = _screen.height - y;
 	if (h <= 0) return;
 	_cursor.draw_pos.y = y;
 	_cursor.draw_size.y = h;
 
-	assert(w*h < (int) sizeof(_cursor_backup));
+	assert(w * h < (int)sizeof(_cursor_backup));
 
 	// Make backup of stuff below cursor
 	memcpy_pitch(
@@ -1654,12 +1652,13 @@ void DrawMouseCursor(void)
 #if defined(_DEBUG)
 static void DbgScreenRect(int left, int top, int right, int bottom)
 {
-	DrawPixelInfo dp,*old;
+	DrawPixelInfo dp;
+	DrawPixelInfo* old;
 
 	old = _cur_dpi;
 	_cur_dpi = &dp;
 	dp = _screen;
-	GfxFillRect(left, top, right-1, bottom-1, rand() & 255);
+	GfxFillRect(left, top, right - 1, bottom - 1, rand() & 255);
 	_cur_dpi = old;
 }
 #endif
@@ -1686,13 +1685,14 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
 #endif
 		DrawOverlappedWindowForAll(left, top, right, bottom);
 
-	_video_driver->make_dirty(left, top, right-left, bottom-top);
+	_video_driver->make_dirty(left, top, right - left, bottom - top);
 }
 
 void DrawDirtyBlocks(void)
 {
 	byte *b = _dirty_blocks;
-	int x=0,y=0;
+	int x = 0;
+	int y = 0;
 	const int w = (_screen.width + 63) & ~63;
 	const int h = (_screen.height + 7) & ~7;
 
@@ -1762,37 +1762,38 @@ void DrawDirtyBlocks(void)
 void SetDirtyBlocks(int left, int top, int right, int bottom)
 {
 	byte *b;
-	int width,height,i;
+	int width;
+	int height;
 
 	if (left < 0) left = 0;
 	if (top < 0) top = 0;
 	if (right > _screen.width) right = _screen.width;
 	if (bottom > _screen.height) bottom = _screen.height;
 
-	if (left >= right || top >= bottom)
-		return;
+	if (left >= right || top >= bottom) return;
 
-	if (left < _invalid_rect.left)	_invalid_rect.left = left;
-	if (top < _invalid_rect.top)  	_invalid_rect.top = top;
-	if (right > _invalid_rect.right)_invalid_rect.right = right;
-	if (bottom > _invalid_rect.bottom)_invalid_rect.bottom = bottom;
+	if (left   < _invalid_rect.left  ) _invalid_rect.left   = left;
+	if (top    < _invalid_rect.top   ) _invalid_rect.top    = top;
+	if (right  > _invalid_rect.right ) _invalid_rect.right  = right;
+	if (bottom > _invalid_rect.bottom) _invalid_rect.bottom = bottom;
 
 	left >>= 6;
-	top >>= 3;
+	top  >>= 3;
 
 	b = _dirty_blocks + top * DIRTY_BYTES_PER_LINE + left;
 
-	width = ((right-1) >> 6) - left + 1;
-	height = ((bottom-1) >> 3) - top + 1;
+	width  = ((right  - 1) >> 6) - left + 1;
+	height = ((bottom - 1) >> 3) - top  + 1;
 
 	assert(width > 0 && height > 0);
 
 	do {
-		i=width;
+		int i = width;
+
 		do b[--i] = 0xFF; while (i);
 
 		b += DIRTY_BYTES_PER_LINE;
-	} while (--height);
+	} while (--height != 0);
 }
 
 void MarkWholeScreenDirty(void)
@@ -1804,8 +1805,7 @@ bool FillDrawPixelInfo(DrawPixelInfo *n, DrawPixelInfo *o, int left, int top, in
 {
 	int t;
 
-	if (o == NULL)
-		o = _cur_dpi;
+	if (o == NULL) o = _cur_dpi;
 
 	n->zoom = 0;
 
@@ -1814,22 +1814,22 @@ bool FillDrawPixelInfo(DrawPixelInfo *n, DrawPixelInfo *o, int left, int top, in
 
 	n->left = 0;
 	if ((left -= o->left) < 0) {
-		if ((width += left) < 0)
-			return false;
+		width += left;
+		if (width < 0) return false;
 		n->left = -left;
 		left = 0;
 	}
 
 	if ((t=width + left - o->width) > 0) {
-		if ((width -= t) < 0)
-			return false;
+		width -= t;
+		if (width < 0) return false;
 	}
 	n->width = width;
 
 	n->top = 0;
 	if ((top -= o->top) < 0) {
-		if ((height += top) < 0)
-			return false;
+		height += top;
+		if (height < 0) return false;
 		n->top = -top;
 		top = 0;
 	}
@@ -1837,11 +1837,10 @@ bool FillDrawPixelInfo(DrawPixelInfo *n, DrawPixelInfo *o, int left, int top, in
 	n->dst_ptr = o->dst_ptr + left + top * (n->pitch = o->pitch);
 
 	if ((t=height + top - o->height) > 0) {
-		if ((height-=t) < 0)
-			return false;
+		height -= t;
+		if (height < 0) return false;
 	}
 	n->height = height;
-
 
 	return true;
 }
@@ -1851,8 +1850,7 @@ static void SetCursorSprite(CursorID cursor)
 	CursorVars *cv = &_cursor;
 	const Sprite *p;
 
-	if (cv->sprite == cursor)
-		return;
+	if (cv->sprite == cursor) return;
 
 	p =	GetSprite(cursor & 0x3FFF);
 	cv->sprite = cursor;
@@ -1882,8 +1880,7 @@ static void SwitchAnimatedCursor(void)
 
 void CursorTick(void)
 {
-	CursorVars *cv = &_cursor;
-	if (cv->animate_timeout && !--cv->animate_timeout)
+	if (_cursor.animate_timeout != 0 && --_cursor.animate_timeout == 0)
 		SwitchAnimatedCursor();
 }
 
