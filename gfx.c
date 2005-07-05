@@ -1376,38 +1376,6 @@ static void GfxMainBlitter(const Sprite* sprite, int x, int y, int mode)
 		}
 		bp.start_x = start_x;
 
-		if (info&2) {
-			int totpix = bp.height_org * bp.width_org;
-			byte *dst = (byte*)alloca(totpix);
-			const byte *src = bp.sprite_org;
-
-			bp.sprite = dst + (bp.sprite - bp.sprite_org);
-
-			while (totpix != 0) {
-				signed char b;
-
-				assert(totpix > 0);
-
-				b = *src++;
-				if (b >= 0) {
-					uint count = b;
-					uint i;
-
-					for (i = 0; i != count; i++) dst[i] = src[i];
-					dst += count;
-					src += count;
-					totpix -= count;
-				} else {
-					const byte *tmp = dst - (((b & 7) << 8) | *src++);
-					uint count = -(b >> 3);
-					uint i;
-
-					for (i = 0; i != count; i++) dst[i] = tmp[i];
-					dst += count;
-					totpix -= count;
-				}
-			}
-		}
 		zf_uncomp[dpi->zoom](&bp);
 	}
 }

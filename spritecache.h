@@ -9,7 +9,6 @@ typedef struct Sprite {
 	int16 y_offs;
 	byte data[VARARRAY_SIZE];
 } Sprite;
-assert_compile(sizeof(Sprite) == 8);
 
 typedef struct {
 	int xoffs, yoffs;

@@ -31,7 +31,7 @@ uint16 _custom_sprites_base;
 static Sprite _cur_sprite;
 
 
-static byte *_sprite_ptr[NUM_SPRITES];
+static void* _sprite_ptr[NUM_SPRITES];
 static uint16 _sprite_size[NUM_SPRITES];
 static uint32 _sprite_file_pos[NUM_SPRITES];
 
@@ -148,11 +148,14 @@ static void ReadSpriteHeaderSkipData(int num, int load_index)
 	}
 }
 
-static void ReadSprite(SpriteID id, void *buffer)
+static void* AllocSprite(size_t);
+
+static void* ReadSprite(SpriteID id)
 {
 	uint num = _sprite_size[id];
 	byte type;
-	byte* dest;
+
+	DEBUG(spritecache, 9) ("load sprite %d", id);
 
 	if (_sprite_file_pos[id] == 0) {
 		error(
@@ -165,43 +168,46 @@ static void ReadSprite(SpriteID id, void *buffer)
 	FioSeekToFile(_sprite_file_pos[id]);
 
 	type = FioReadByte();
-	/* We've decoded special sprites when reading headers. */
-	if (type != 0xFF) {
-		/* read sprite hdr */
-		Sprite* sprite = buffer;
-		sprite->info = type;
-		sprite->height = FioReadByte();
-		if (id == 142) sprite->height = 10; // Compensate for a TTD bug
-		sprite->width = FioReadWord();
+	if (type == 0xFF) {
+		byte* dest = AllocSprite(num);
+
+		_sprite_ptr[id] = dest;
+		FioReadBlock(dest, num);
+
+		return dest;
+	} else {
+		uint height = FioReadByte();
+		uint width  = FioReadWord();
+		Sprite* sprite;
+		byte* dest;
+
+		num = (type & 0x02) ? width * height : num - 8;
+		sprite = AllocSprite(sizeof(*sprite) + num);
+		_sprite_ptr[id] = sprite;
+		sprite->info   = type;
+		sprite->height = (id != 142) ? height : 10;
+		sprite->width  = width;
 		sprite->x_offs = FioReadWord();
 		sprite->y_offs = FioReadWord();
-		dest = sprite->data;
-		num -= 8;
-	} else {
-		dest = buffer;
-	}
 
-	if (type & 2) {
-		for (; num > 0; --num)
-			*dest++ = FioReadByte();
-	} else {
+		dest = sprite->data;
 		while (num > 0) {
 			int8 i = FioReadByte();
 
 			if (i >= 0) {
 				num -= i;
-				for (; i > 0; --i)
-					*dest++ = FioReadByte();
+				for (; i > 0; --i) *dest++ = FioReadByte();
 			} else {
 				const byte* rel = dest - (((i & 7) << 8) | FioReadByte());
 
 				i = -(i >> 3);
 				num -= i;
 
-				for (; i > 0; --i)
-					*dest++ = *rel++;
+				for (; i > 0; --i) *dest++ = *rel++;
 			}
 		}
+
+		return sprite;
 	}
 }
 
@@ -499,7 +505,7 @@ static void CompactSpriteCache(void)
 		if (s->size & S_FREE_MASK) {
 			MemBlock* next = NextBlock(s);
 			MemBlock temp;
-			byte** i;
+			void** i;
 
 			// Since free blocks are automatically coalesced, this should hold true.
 			assert(!(next->size & S_FREE_MASK));
@@ -606,14 +612,9 @@ static void DeleteEntryFromSpriteCache(void)
 	}
 }
 
-static byte *LoadSpriteToMem(SpriteID sprite)
+static void* AllocSprite(size_t mem_req)
 {
-	size_t mem_req;
-
-	DEBUG(spritecache, 9) ("load sprite %d", sprite);
-
-	// Number of needed bytes
-	mem_req = sizeof(MemBlock) + _sprite_size[sprite];
+	mem_req += sizeof(MemBlock);
 
 	/* Align this to an uint32 boundary. This also makes sure that the 2 least
 	 * bits are not used, so we could use those for other things. */
@@ -638,11 +639,6 @@ static byte *LoadSpriteToMem(SpriteID sprite)
 						NextBlock(s)->size = (cur_size - mem_req) | S_FREE_MASK;
 					}
 
-					_sprite_ptr[sprite] = s->data;
-
-					ReadSprite(sprite, s->data);
-
-					// Return sprite ptr
 					return s->data;
 				}
 			}
@@ -698,7 +694,7 @@ static uint RotateSprite(uint s)
 
 const void *GetRawSprite(SpriteID sprite)
 {
-	byte *p;
+	void* p;
 
 	assert(sprite < NUM_SPRITES);
 
@@ -714,10 +710,9 @@ const void *GetRawSprite(SpriteID sprite)
 	_sprite_lru[sprite] = 0;
 #endif
 
-	// Check if the sprite is loaded already?
 	p = _sprite_ptr[sprite];
-	if (p == NULL)
-		p = LoadSpriteToMem(sprite);  // No, need to load it.
+	// Load the sprite, if it is not loaded, yet
+	if (p == NULL) p = ReadSprite(sprite);
 	return p;
 }
 
