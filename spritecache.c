@@ -185,7 +185,7 @@ static void* ReadSprite(SpriteID id)
 		sprite = AllocSprite(sizeof(*sprite) + num);
 		_sprite_ptr[id] = sprite;
 		sprite->info   = type;
-		sprite->height = (id != 142) ? height : 10;
+		sprite->height = (id != 142) ? height : 10; // Compensate for a TTD bug
 		sprite->width  = width;
 		sprite->x_offs = FioReadWord();
 		sprite->y_offs = FioReadWord();
