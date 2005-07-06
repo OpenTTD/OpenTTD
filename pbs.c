@@ -14,8 +14,8 @@
 
 /* reserved track encoding:
  normal railway tracks:
-   map3lo bits 4..6 = 'Track'number of reserved track + 1, if this is zero it means nothing is reserved on this tile
-   map3lo bit  7    = if this is set, then the opposite track ('Track'number^1) is also reserved
+   map3hi bits 4..6 = 'Track'number of reserved track + 1, if this is zero it means nothing is reserved on this tile
+   map3hi bit  7    = if this is set, then the opposite track ('Track'number^1) is also reserved
  waypoints/stations:
    map3lo bit 6 set = track is reserved
  tunnels/bridges:
