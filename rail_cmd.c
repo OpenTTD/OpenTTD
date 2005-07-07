@@ -2153,14 +2153,16 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 			break;
 
 		case RAIL_TYPE_SIGNALS: {
-			const StringID signal_type[] = {
+			const StringID signal_type[7] = {
 				STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS,
 				STR_RAILROAD_TRACK_WITH_PRESIGNALS,
 				STR_RAILROAD_TRACK_WITH_EXITSIGNALS,
-				STR_RAILROAD_TRACK_WITH_COMBOSIGNALS
+				STR_RAILROAD_TRACK_WITH_COMBOSIGNALS,
+				STR_RAILROAD_TRACK_WITH_PBSSIGNALS,
+				STR_NULL, STR_NULL
 			};
 
-			td->str = signal_type[_map3_hi[tile] & 0x03];
+			td->str = signal_type[_map3_hi[tile] & 0x7];
 			break;
 		}
 
