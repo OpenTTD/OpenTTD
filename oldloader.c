@@ -1069,6 +1069,12 @@ static bool LoadOldPlayer(LoadgameState *ls, int num)
 	if (p->location_of_house == 0xFFFF)
 		p->location_of_house = 0;
 
+	/* State 20 for AI players is sell vehicle. Since the AI struct is not
+	 * really figured out as of now, p->ai.cur_veh; needed for 'sell vehicle'
+	 * is NULL and the function will crash. To fix this, just change the state
+	 * to some harmless state, like 'loop vehicle'; 1 */
+	if (!IS_HUMAN_PLAYER(num) && p->ai.state == 20) p->ai.state = 1;
+
 	return true;
 }
 
@@ -1567,13 +1573,16 @@ static bool LoadOldMain(LoadgameState *ls)
 	}
 
 	for (i = 0; i < OLD_MAP_SIZE; i ++) {
-		/* We save presignals different from TTDPatch, convert them */
-		if (IsTileType(i, MP_RAILWAY) && (_map5[i] & 0xC0) == 0x40) {
-			/* This byte is always zero in TTD for this type of tile */
-			if (_map3_hi[i]) {
-				/* Convert the presignals to our own format */
-				_map3_hi[i] = (_map3_hi[i] >> 1) & 7;
+		if (IsTileType(i, MP_RAILWAY)) {
+			/* We save presignals different from TTDPatch, convert them */
+			if ((_map5[i] & 0xC0) == 0x40) {
+				/* This byte is always zero in TTD for this type of tile */
+				if (_map3_hi[i]) /* Convert the presignals to our own format */
+					_map3_hi[i] = (_map3_hi[i] >> 1) & 7;
 			}
+			/* TTDPatch stores PBS things in L6 and all elsewhere; so we'll just
+			* clear it for ourselves and let OTTD's rebuild PBS itself */
+			_map3_hi[i] &= 0xF; /* Only keep the lower four bits; upper four is PBS */
 		}
 	}
 
