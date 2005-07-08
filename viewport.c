@@ -1875,7 +1875,7 @@ void SetTileSelectBigSize(int ox, int oy, int sx, int sy) {
 /* returns the best autorail highlight type from map coordinates */
 static byte GetAutorailHT(int x, int y)
 {
-	int i;
+	byte i;
 	i = AutorailPiece[x&0xF][y&0xF];
 	return HT_RAIL | i;
 }

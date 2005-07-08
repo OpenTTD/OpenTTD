@@ -50,7 +50,7 @@ const int AutorailTilehSprite[31][6] = {
 
 // maps each pixel of a tile (16x16) to a selection type
 // (0,0) is the top corner, (16,16) the bottom corner
-const int AutorailPiece[16][16] = {
+const byte AutorailPiece[16][16] = {
 	{ 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5 },
 	{ 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5 },
 	{ 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5 },
