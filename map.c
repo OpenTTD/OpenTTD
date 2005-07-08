@@ -39,7 +39,7 @@ void InitMap(uint log_x, uint log_y)
 	_map3_hi   = realloc(_map3_hi,   map_size * sizeof(_map3_hi[0]));
 	_map5      = realloc(_map5,      map_size * sizeof(_map5[0]));
 	_map_extra_bits =
-		realloc(_map_extra_bits, map_size * sizeof(_map_extra_bits[0] / 4));
+		realloc(_map_extra_bits, map_size * sizeof(_map_extra_bits[0]) / 4);
 
 	// XXX TODO handle memory shortage more gracefully
 	if (_map_type_and_height == NULL ||
