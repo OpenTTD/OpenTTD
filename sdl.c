@@ -399,7 +399,7 @@ static const VkMapping _vk_mapping[] = {
 
 static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)
 {
-	const VkMapping	*map;
+	const VkMapping *map;
 	uint key = 0;
 	for (map = _vk_mapping; map != endof(_vk_mapping); ++map) {
 		if ((uint)(sym->sym - map->vk_from) <= map->vk_count) {
@@ -573,7 +573,7 @@ static int SdlVideoMainLoop(void)
 		while ((i = PollEvent()) == -1) {}
 		if (i >= 0) return i;
 
-		if (_exit_game)	return ML_QUIT;
+		if (_exit_game) return ML_QUIT;
 
 		mod = SDL_CALL SDL_GetModState();
 		keys = SDL_CALL SDL_GetKeyState(&numkeys);
@@ -613,7 +613,7 @@ static int SdlVideoMainLoop(void)
 				CheckPaletteAnim();
 				pal_tick = 1;
 			}
- 			DrawSurfaceToScreen();
+			DrawSurfaceToScreen();
 		} else {
 			SDL_CALL SDL_Delay(1);
 			_screen.dst_ptr = _sdl_screen->pixels;

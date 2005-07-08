@@ -25,7 +25,7 @@ int32 DestroyCompanyHQ(TileIndex tile, uint32 flags)
 	SET_EXPENSES_TYPE(EXPENSES_PROPERTY);
 
 	/* Find player that has HQ flooded, and reset their location_of_house */
-	if (_current_player == OWNER_WATER)	{
+	if (_current_player == OWNER_WATER) {
 		bool dodelete = false;
 
 		FOR_ALL_PLAYERS(p) {
@@ -171,7 +171,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 		DrawGroundSprite(t->ground_sprite | ormod);
 
 		foreach_draw_tile_seq(dtss, t->seq) {
-			image =	dtss->image;
+			image = dtss->image;
 			if (_display_opt & DO_TRANS_BUILDINGS) {
 				image = (image & 0x3FFF) | 0x03224000;
 			} else {
@@ -202,7 +202,7 @@ static int32 ClearTile_Unmovable(TileIndex tile, byte flags)
 		return_cmd_error(STR_5804_COMPANY_HEADQUARTERS_IN);
 	}
 
-	if (m5 == 3)	// company owned land
+	if (m5 == 3) // company owned land
 		return DoCommandByTile(tile, 0, 0, flags, CMD_SELL_LAND_AREA);
 
 	// checks if you're allowed to remove unmovable things
@@ -398,7 +398,7 @@ static void ChangeTileOwner_Unmovable(TileIndex tile, byte old_player, byte new_
 
 	if (_map5[tile]==3 && new_player != 255) {
 		SetTileOwner(tile, new_player);
-	}	else {
+	} else {
 		DoClearSquare(tile);
 	}
 }

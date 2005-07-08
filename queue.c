@@ -534,7 +534,7 @@ void stat_Hash(Hash* h)
 		if (usage[i]) {
 			printf("%d:%d ", i, usage[i]);
 /*
- 			if (i>0){
+			if (i>0){
 				uint j;
 				for (j=0;j<(usage[i] * 160 / 800);j++)
 					printf("#");
@@ -566,7 +566,7 @@ void clear_Hash(Hash* h, bool free_values)
 				HashNode* prev = node;
 				node = node->next;
 				if (free_values)
-			 		free(prev->value);
+					free(prev->value);
 				free(prev);
 			}
 		}

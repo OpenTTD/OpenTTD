@@ -103,7 +103,7 @@ typedef struct {
 #define AS(x, z) {x, 0, z}
 #define AM(x, y, z, w) {x, y - x, z}
 
-#ifndef	VK_OEM_3
+#ifndef VK_OEM_3
 #define VK_OEM_3 0xC0
 #endif
 
@@ -148,9 +148,9 @@ static uint MapWindowsKey(uint sym)
 		}
 	}
 
-	if (GetAsyncKeyState(VK_SHIFT)<0)	key |= WKC_SHIFT;
-	if (GetAsyncKeyState(VK_CONTROL)<0)	key |= WKC_CTRL;
-	if (GetAsyncKeyState(VK_MENU)<0)	key |= WKC_ALT;
+	if (GetAsyncKeyState(VK_SHIFT)   < 0) key |= WKC_SHIFT;
+	if (GetAsyncKeyState(VK_CONTROL) < 0) key |= WKC_CTRL;
+	if (GetAsyncKeyState(VK_MENU)    < 0) key |= WKC_ALT;
 	return key;
 }
 
@@ -318,7 +318,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			ClientSizeChanged(_wnd.width, _wnd.height);
 			MarkWholeScreenDirty();
 		}
-	}	break;
+	} break;
 
 	case WM_SYSKEYDOWN: /* user presses F10 or Alt, both activating the title-menu */
 		switch (wParam) {
@@ -1073,7 +1073,8 @@ static uint32 *_crc_table;
 
 static void MakeCRCTable(uint32 *table) {
 	uint32 crc, poly = 0xEDB88320L;
-	int	i, j;
+	int i;
+	int j;
 
 	_crc_table = table;
 

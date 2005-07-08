@@ -706,7 +706,7 @@ const void *GetRawSprite(SpriteID sprite)
 #if defined(WANT_NEW_LRU)
 	_sprite_lru_new[sprite] = ++_sprite_lru_counter;
 #else
-	_sprite_lru_cur[sprite]	= ++_sprite_lru_counter;
+	_sprite_lru_cur[sprite] = ++_sprite_lru_counter;
 	_sprite_lru[sprite] = 0;
 #endif
 
@@ -727,7 +727,7 @@ static const char * const _cached_filenames[4] = {
 
 #define OPENTTD_SPRITES_COUNT 98
 static const uint16 _openttd_grf_indexes[] = {
-	SPR_OPENTTD_BASE+0,	SPR_OPENTTD_BASE+7, // icons etc
+	SPR_OPENTTD_BASE + 0, SPR_OPENTTD_BASE + 7, // icons etc
 	134, 134,  // euro symbol medium size
 	582, 582,  // euro symbol large size
 	358, 358,  // euro symbol tiny

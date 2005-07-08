@@ -155,7 +155,7 @@ void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom)
 
 	while (++v != _last_window) {
 		if (right > v->left &&
-		 		bottom > v->top &&
+				bottom > v->top &&
 				left < v->left + v->width &&
 				top < v->top + v->height) {
 
@@ -660,13 +660,13 @@ Window *AllocateWindowDesc(const WindowDesc *desc)
 		if (pt.x > _screen.width + 10 - desc->width)
 			pt.x = (_screen.width + 10 - desc->width) - 20;
 		pt.y = w->top + 10;
-	} else if (desc->cls == WC_BUILD_TOOLBAR) {	// open Build Toolbars aligned
+	} else if (desc->cls == WC_BUILD_TOOLBAR) { // open Build Toolbars aligned
 		/* Override the position if a toolbar is opened according to the place of the maintoolbar
 		 * The main toolbar (WC_MAIN_TOOLBAR) is 640px in width */
 		switch (_patches.toolbar_pos) {
-		case 1:		pt.x = ((_screen.width + 640) >> 1) - desc->width; break;
-		case 2:		pt.x = _screen.width - desc->width; break;
-		default:	pt.x = 640 - desc->width;
+			case 1:  pt.x = ((_screen.width + 640) >> 1) - desc->width; break;
+			case 2:  pt.x = _screen.width - desc->width; break;
+			default: pt.x = 640 - desc->width;
 		}
 		pt.y = desc->top;
 	} else {
@@ -1641,9 +1641,9 @@ int PositionMainToolbar(Window *w)
 		w = FindWindowById(WC_MAIN_TOOLBAR, 0);
 
 	switch (_patches.toolbar_pos) {
-		case 1:		w->left = (_screen.width - w->width) >> 1; break;
-		case 2:		w->left = _screen.width - w->width; break;
-		default:	w->left = 0;
+		case 1:  w->left = (_screen.width - w->width) >> 1; break;
+		case 2:  w->left = _screen.width - w->width; break;
+		default: w->left = 0;
 	}
 	SetDirtyBlocks(0, 0, _screen.width, w->height); // invalidate the whole top part
 	return w->left;

@@ -218,7 +218,7 @@ int SlIterateArray(void)
 		next_offs = SlGetOffs() + length;
 
 		switch (_sl.block_mode) {
-		case CH_SPARSE_ARRAY:	index = SlReadSparseIndex(); break;
+		case CH_SPARSE_ARRAY: index = SlReadSparseIndex(); break;
 		case CH_ARRAY:        index = _sl.array_index++; break;
 		default:
 			DEBUG(misc, 0) ("SlIterateArray: error");
@@ -326,7 +326,7 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 		// Write the value to the file and check if its value is in the desired range
 		switch (conv & 0xF) {
 		case SLE_FILE_I8: assert(x >= -128 && x <= 127);     SlWriteByte(x);break;
-		case SLE_FILE_U8:	assert(x >= 0 && x <= 255);        SlWriteByte(x);break;
+		case SLE_FILE_U8: assert(x >= 0 && x <= 255);        SlWriteByte(x);break;
 		case SLE_FILE_I16:assert(x >= -32768 && x <= 32767); SlWriteUint16(x);break;
 		case SLE_FILE_STRINGID:
 		case SLE_FILE_U16:assert(x >= 0 && x <= 65535);      SlWriteUint16(x);break;
@@ -465,7 +465,7 @@ static size_t SlCalcObjLength(void *object, const SaveLoad *sld)
 			length++; // a byte is logically of size 1
 		} else if (sld->cmd == SL_INCLUDE) {
 			length += SlCalcObjLength(NULL, _sl.includes[sld->version_from]);
-		}	else
+		} else
 			assert(sld->cmd == SL_END);
 	}
 	return length;
@@ -526,7 +526,7 @@ void SlObject(void *object, const SaveLoad *sld)
 		 * include_index: common code to include from _desc_includes[], abused by sld->version_from */
 		} else if (sld->cmd == SL_INCLUDE) {
 			SlObject(ptr, _sl.includes[sld->version_from]);
-		}	else
+		} else
 			assert(sld->cmd == SL_END);
 	}
 }
@@ -941,7 +941,7 @@ static void WriteZlibLoop(z_streamp z, byte *p, uint len, int mode)
 	do {
 		z->next_out = buf;
 		z->avail_out = sizeof(buf);
-		r	= deflate(z, mode);
+		r = deflate(z, mode);
 			// bytes were emitted?
 		if ((n=sizeof(buf) - z->avail_out) != 0) {
 			if (fwrite(buf, n, 1, _sl.fh) != 1) SlError("file write error");
@@ -1437,7 +1437,7 @@ int GetSavegameType(char *file)
 	f = fopen(file, "rb");
 	if (fread(&hdr, sizeof(hdr), 1, f) != 1) {
 		printf("Savegame is obsolete or invalid format.\n");
-		mode = SL_LOAD;	// don't try to get filename, just show name as it is written
+		mode = SL_LOAD; // don't try to get filename, just show name as it is written
 	}
 	else {
 		// see if we have any loader for this type.

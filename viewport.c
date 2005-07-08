@@ -339,7 +339,7 @@ Point GetTileZoomCenterWindow(bool in, Window * w)
 
 	vp = w->viewport;
 
-	if (in)	{
+	if (in) {
 		x = ( (_cursor.pos.x - vp->left ) >> 1) + (vp->width >> 2);
 		y = ( (_cursor.pos.y - vp->top ) >> 1) + (vp->height >> 2);
 	}

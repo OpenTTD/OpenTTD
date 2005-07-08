@@ -20,7 +20,7 @@ static Point HandleScrollbarHittest(Scrollbar *sb, int top, int bottom)
 	count = sb->count;
 	cap = sb->cap;
 
-	if (count != 0)	top += height * pos / count;
+	if (count != 0) top += height * pos / count;
 
 	if (cap > count) cap = count;
 	if (count != 0)
@@ -160,7 +160,8 @@ void DrawWindowWidgets(Window *w)
 	uint32 dparam_backup[20];
 	uint32 cur_click, cur_disabled, cur_hidden;
 
-	if (w->desc_flags & WDF_RESTORE_DPARAM)	COPY_OUT_DPARAM(dparam_backup, 0, lengthof(dparam_backup));
+	if (w->desc_flags & WDF_RESTORE_DPARAM)
+		COPY_OUT_DPARAM(dparam_backup, 0, lengthof(dparam_backup));
 
 	wi = w->widget;
 
@@ -425,7 +426,8 @@ void DrawWindowWidgets(Window *w)
 
 			DrawStringCentered( (r.left+r.right+1)>>1, r.top+2, wi->unkA, 0x84);
 restore_dparam:;
-			if (w->desc_flags & WDF_RESTORE_DPARAM)	COPY_IN_DPARAM(0, dparam_backup, lengthof(dparam_backup));
+			if (w->desc_flags & WDF_RESTORE_DPARAM)
+				COPY_IN_DPARAM(0, dparam_backup, lengthof(dparam_backup));
 draw_default:;
 			if (cur_disabled & 1) {
 				GfxFillRect(r.left+1, r.top+1, r.right-1, r.bottom-1, _color_list[wi->color&0xF].unk2 | 0x8000);

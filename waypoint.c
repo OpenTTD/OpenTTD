@@ -320,7 +320,7 @@ int32 CmdRenameWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		} else {
 			DeleteName(str);
 		}
-	}	else {
+	} else {
 		if (flags & DC_EXEC) {
 			wp = GetWaypoint(p1);
 			if (wp->string != STR_NULL)
@@ -434,8 +434,8 @@ static const SaveLoad _waypoint_desc[] = {
 	SLE_CONDVAR(Waypoint, xy, SLE_UINT32, 6, 255),
 	SLE_CONDVAR(Waypoint, town_index, SLE_UINT16, 12, 255),
 	SLE_CONDVAR(Waypoint, town_cn, SLE_UINT8, 12, 255),
-	SLE_VAR(Waypoint,string,		SLE_UINT16),
-	SLE_VAR(Waypoint,deleted,						SLE_UINT8),
+	SLE_VAR(Waypoint, string, SLE_UINT16),
+	SLE_VAR(Waypoint, deleted, SLE_UINT8),
 
 	SLE_CONDVAR(Waypoint, build_date, SLE_UINT16, 3, 255),
 	SLE_CONDVAR(Waypoint, stat_id, SLE_UINT8, 3, 255),

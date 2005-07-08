@@ -262,7 +262,7 @@ static void DisasterTick_UFO(Vehicle *v)
 // fly around randomly
 		int x = TileX(v->dest_tile) * 16;
 		int y = TileY(v->dest_tile) * 16;
-		if (abs(x - v->x_pos) +	abs(y - v->y_pos) >= 16) {
+		if (abs(x - v->x_pos) + abs(y - v->y_pos) >= 16) {
 			v->direction = GetDirectionTowards(v, x, y);
 			GetNewVehiclePos(v, &gp);
 			SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
@@ -331,8 +331,8 @@ static void DestructIndustry(Industry *i)
 {
 	TileIndex tile;
 
-	for(tile=0; tile != MapSize(); tile++) {
-		if (IsTileType(tile, MP_INDUSTRY) &&	_map2[tile] == i->index) {
+	for (tile = 0; tile != MapSize(); tile++) {
+		if (IsTileType(tile, MP_INDUSTRY) && _map2[tile] == i->index) {
 			_map_owner[tile] = 0;
 			MarkTileDirtyByTile(tile);
 		}
@@ -563,7 +563,7 @@ static void DisasterTick_4(Vehicle *v)
 
 		int x = TileX(v->dest_tile) * 16;
 		int y = TileY(v->dest_tile) * 16;
-		if (abs(x - v->x_pos) +	abs(y - v->y_pos) >= 16) {
+		if (abs(x - v->x_pos) + abs(y - v->y_pos) >= 16) {
 			v->direction = GetDirectionTowards(v, x, y);
 			GetNewVehiclePos(v, &gp);
 			SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
@@ -907,7 +907,7 @@ static void Disaster7_Init(void)
 
 	do {
 		FOR_ALL_INDUSTRIES(i) {
-			if (i->xy != 0 && i->type == IT_COAL_MINE	&& --index < 0) {
+			if (i->xy != 0 && i->type == IT_COAL_MINE && --index < 0) {
 
 				SetDParam(0, i->town->index);
 				AddNewsItem(STR_B005_COAL_MINE_SUBSIDENCE_LEAVES,

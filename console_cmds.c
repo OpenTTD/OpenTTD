@@ -707,7 +707,7 @@ DEF_CONSOLE_CMD(ConScript)
 	if (!CloseConsoleLogIfActive()) {
 		if (argc < 2) return false;
 
-		IConsolePrintF(_icolour_def, "file output started to: %s",	argv[1]);
+		IConsolePrintF(_icolour_def, "file output started to: %s", argv[1]);
 		_iconsole_output_file = fopen(argv[1], "ab");
 		if (_iconsole_output_file == NULL) IConsoleError("could not open file");
 	}
@@ -902,31 +902,31 @@ DEF_CONSOLE_CMD(ConHelp)
 		const IConsoleAlias *alias;
 
 		cmd = IConsoleCmdGet(argv[1]);
-	 	if (cmd != NULL) {
-	 		cmd->proc(0, NULL);
-	 		return true;
-	 	}
+		if (cmd != NULL) {
+			cmd->proc(0, NULL);
+			return true;
+		}
 
-	 	alias = IConsoleAliasGet(argv[1]);
-	 	if (alias != NULL) {
-	 		cmd = IConsoleCmdGet(alias->cmdline);
-	 		if (cmd != NULL) {
-	 			cmd->proc(0, NULL);
-	 			return true;
-	 		}
-	 		IConsolePrintF(_icolour_err, "ERROR: alias is of special type, please see its execution-line: '%s'", alias->cmdline);
-	 		return true;
-	 	}
+		alias = IConsoleAliasGet(argv[1]);
+		if (alias != NULL) {
+			cmd = IConsoleCmdGet(alias->cmdline);
+			if (cmd != NULL) {
+				cmd->proc(0, NULL);
+				return true;
+			}
+			IConsolePrintF(_icolour_err, "ERROR: alias is of special type, please see its execution-line: '%s'", alias->cmdline);
+			return true;
+		}
 
-	 	var = IConsoleVarGet(argv[1]);
-   	if (var != NULL && var->help != NULL) {
-   		IConsoleHelp(var->help);
-   		return true;
-   	}
+		var = IConsoleVarGet(argv[1]);
+		if (var != NULL && var->help != NULL) {
+			IConsoleHelp(var->help);
+			return true;
+		}
 
-   	IConsoleError("command or variable not found");
-   	return true;
-  }
+		IConsoleError("command or variable not found");
+		return true;
+	}
 
 	IConsolePrint(13, " ---- OpenTTD Console Help ---- ");
 	IConsolePrint( 1, " - variables: [command to list all variables: list_vars]");
@@ -1050,7 +1050,7 @@ DEF_CONSOLE_CMD(ConSayClient)
 {
 	if (argc == 0) {
 		IConsoleHelp("Chat to a certain player in a multiplayer game. Usage: 'say_client <client-no> \"<msg>\"'");
-  	IConsoleHelp("For client-id's, see the command 'clients'");
+		IConsoleHelp("For client-id's, see the command 'clients'");
 		return true;
 	}
 
@@ -1252,9 +1252,9 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("screenshot",   ConScreenShot);
 	IConsoleCmdRegister("script",       ConScript);
 	IConsoleCmdRegister("scrollto",     ConScrollToTile);
-	IConsoleCmdRegister("alias",	      ConAlias);
-	IConsoleCmdRegister("load",			    ConLoad);
-	IConsoleCmdRegister("save",			    ConSave);
+	IConsoleCmdRegister("alias",        ConAlias);
+	IConsoleCmdRegister("load",         ConLoad);
+	IConsoleCmdRegister("save",         ConSave);
 	IConsoleCmdRegister("ls",           ConListFiles);
 	IConsoleCmdRegister("cd",           ConChangeDirectory);
 	IConsoleCmdRegister("pwd",          ConPrintWorkingDirectory);

@@ -72,7 +72,7 @@ static int CDECL StationNameSorter(const void *a, const void *b)
 		GetString(_bufcache, st->string_id);
 	}
 
-	return strcmp(buf1, _bufcache);	// sort by name
+	return strcmp(buf1, _bufcache); // sort by name
 }
 
 static void GlobalSortStationList(void)
@@ -93,7 +93,7 @@ static void GlobalSortStationList(void)
 		if(st->xy && st->owner != OWNER_NONE) {
 			_station_sort[n].index = st->index;
 			_station_sort[n++].owner = st->owner;
-			_num_station_sort[st->owner]++;	// add number of stations of player
+			_num_station_sort[st->owner]++; // add number of stations of player
 		}
 	}
 
@@ -117,11 +117,11 @@ static void MakeSortedStationList(byte owner)
 	uint32 n = 0;
 
 	if (owner == 0) { // first element starts at 0th element and has n elements as described above
-		firstelement =	&_station_sort[0];
-		n =							_num_station_sort[0];
-	}	else { // nth element starts at the end of the previous one, and has n elements as described above
-		firstelement =	&_station_sort[_num_station_sort[owner-1]];
-		n =							_num_station_sort[owner] - _num_station_sort[owner-1];
+		firstelement = &_station_sort[0];
+		n = _num_station_sort[0];
+	} else { // nth element starts at the end of the previous one, and has n elements as described above
+		firstelement = &_station_sort[_num_station_sort[owner - 1]];
+		n = _num_station_sort[owner] - _num_station_sort[owner - 1];
 	}
 
 	_last_station_idx = 0; // used for "cache" in namesorting
@@ -165,18 +165,18 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			byte p = 0;
 			Station *st;
 			int x,xb = 2;
-			int y = 16;	// offset from top of widget
+			int y = 16; // offset from top of widget
 			int j;
 
-			if (w->vscroll.count == 0) {	// player has no stations
+			if (w->vscroll.count == 0) { // player has no stations
 				DrawString(xb, y, STR_304A_NONE, 0);
 				return;
 			}
 
-			i += w->vscroll.pos;	// offset from sorted station list of current player
+			i += w->vscroll.pos; // offset from sorted station list of current player
 			assert(i < _num_station_sort[window_number]); // at least one station must exist
 
-			while (i < _num_station_sort[window_number]) {	// do until max number of stations of owner
+			while (i < _num_station_sort[window_number]) { // do until max number of stations of owner
 				st = GetStation(_station_sort[i].index);
 
 				assert(st->xy && st->owner == window_number);
@@ -194,7 +194,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 					}
 				}
 				y += 10;
-				i++;	// next station
+				i++; // next station
 				if (++p == w->vscroll.cap) { break;} // max number of stations in 1 window
 			}
 		}
@@ -211,7 +211,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			{
 				const byte owner = (byte)w->window_number;
 				Station *st;
-				id_v	+= (owner == 0) ? 0 : _num_station_sort[owner - 1]; // first element in list
+				id_v += (owner == 0) ? 0 : _num_station_sort[owner - 1]; // first element in list
 
 				if (id_v >= _num_station_sort[owner]) { return;} // click out of station bound
 
@@ -470,7 +470,7 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 			SetDParam(0, st->town->townnametype);
 			SetDParam(1, st->town->townnameparts);
 			ShowQueryString(st->string_id, STR_3030_RENAME_STATION_LOADING, 31, 180, w->window_class, w->window_number);
-		}	break;
+		} break;
 
 		case 10: { /* Show a list of scheduled trains to this station */
 			const Station *st = GetStation(w->window_number);

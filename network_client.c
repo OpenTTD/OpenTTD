@@ -848,7 +848,7 @@ NetworkRecvStatus NetworkClient_ReadPackets(NetworkClientState *cs)
 		byte type = NetworkRecv_uint8(MY_CLIENT, p);
 		if (type < PACKET_END && _network_client_packet[type] != NULL && !MY_CLIENT->quited) {
 			res = _network_client_packet[type](p);
-		}	else {
+		} else {
 			res = NETWORK_RECV_STATUS_MALFORMED_PACKET;
 			DEBUG(net, 0)("[NET][client] Received invalid packet type %d", type);
 		}

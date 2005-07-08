@@ -141,7 +141,7 @@ static int NullVideoMainLoop(void)
 		GameLoop();
 		_screen.dst_ptr = _null_video_mem;
 		UpdateWindows();
-	}	while (--i);
+	} while (--i);
 	return ML_QUIT;
 }
 
@@ -584,7 +584,7 @@ int ttd_main(int argc, char* argv[])
 			_config_file = strdup(mgo.opt);
 			break;
 		case -2:
- 		case 'h':
+		case 'h':
 			showhelp();
 			return 0;
 		}
@@ -751,7 +751,7 @@ static void MakeNewGame(void)
 	// In a dedicated server, the server does not play
 	if (_network_dedicated) {
 		_local_player = OWNER_SPECTATOR;
-	}	else {
+	} else {
 		// Create a single player
 		DoStartupNewPlayer(false);
 
@@ -1220,7 +1220,7 @@ static void UpdateExclusiveRights(void)
 					Build an array town_blocked[ town_id ][ player_id ]
 				 that stores if at least one station in that town is blocked for a player
 			2.) Go through that array, if you find a town that is not blocked for
-				 	one player, but for all others, then give him exclusivity.
+					one player, but for all others, then give him exclusivity.
 	*/
 }
 
