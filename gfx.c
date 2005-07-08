@@ -451,7 +451,7 @@ void DrawFrameRect(int left, int top, int right, int bottom, int ctab, int flags
 	byte color_3 = _color_list[ctab].window_color_bgb;
 	byte color = _color_list[ctab].window_color_2;
 
-	if (!(flags & 0x8))	{
+	if (!(flags & 0x8)) {
 		if (!(flags & 0x20)) {
 			GfxFillRect(left, top, left, bottom - 1, color);
 			GfxFillRect(left + 1, top, right - 1, top, color);
@@ -1659,66 +1659,72 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
 void DrawDirtyBlocks(void)
 {
 	byte *b = _dirty_blocks;
-	int x = 0;
-	int y = 0;
 	const int w = (_screen.width + 63) & ~63;
 	const int h = (_screen.height + 7) & ~7;
+	int x;
+	int y;
 
+	y = 0;
 	do {
-		if (*b != 0) {
-			int left,top;
-			int right = x + 64;
-			int bottom = y;
-			byte *p = b;
-			int h2;
-			// First try coalescing downwards
-			do {
-				*p = 0;
-				p += DIRTY_BYTES_PER_LINE;
-				bottom += 8;
-			} while (bottom != h && *p);
+		x = 0;
+		do {
+			if (*b != 0) {
+				int left;
+				int top;
+				int right = x + 64;
+				int bottom = y;
+				byte *p = b;
+				int h2;
 
-			// Try coalescing to the right too.
-			h2 = (bottom - y) >> 3;
-			assert(h2>0);
-			p = b;
-
-			while (right != w) {
-				byte *p2 = ++p;
-				int h = h2;
-				// Check if a full line of dirty flags is set.
+				// First try coalescing downwards
 				do {
-					if (!*p2) goto no_more_coalesc;
-					p2 += DIRTY_BYTES_PER_LINE;
-				} while (--h);
+					*p = 0;
+					p += DIRTY_BYTES_PER_LINE;
+					bottom += 8;
+				} while (bottom != h && *p != 0);
 
-				// Wohoo, can combine it one step to the right!
-				// Do that, and clear the bits.
-				right += 64;
+				// Try coalescing to the right too.
+				h2 = (bottom - y) >> 3;
+				assert(h2 > 0);
+				p = b;
 
-				h = h2;
-				p2 = p;
-				do {
-					*p2 = 0;
-					p2 += DIRTY_BYTES_PER_LINE;
-				} while (--h);
+				while (right != w) {
+					byte *p2 = ++p;
+					int h = h2;
+					// Check if a full line of dirty flags is set.
+					do {
+						if (!*p2) goto no_more_coalesc;
+						p2 += DIRTY_BYTES_PER_LINE;
+					} while (--h != 0);
+
+					// Wohoo, can combine it one step to the right!
+					// Do that, and clear the bits.
+					right += 64;
+
+					h = h2;
+					p2 = p;
+					do {
+						*p2 = 0;
+						p2 += DIRTY_BYTES_PER_LINE;
+					} while (--h != 0);
+				}
+				no_more_coalesc:
+
+				left = x;
+				top = y;
+
+				if (left   < _invalid_rect.left  ) left   = _invalid_rect.left;
+				if (top    < _invalid_rect.top   ) top    = _invalid_rect.top;
+				if (right  > _invalid_rect.right ) right  = _invalid_rect.right;
+				if (bottom > _invalid_rect.bottom) bottom = _invalid_rect.bottom;
+
+				if (left < right && top < bottom) {
+					RedrawScreenRect(left, top, right, bottom);
+				}
+
 			}
-			no_more_coalesc:;
-
-			left = x;
-			top = y;
-
-			if (left < _invalid_rect.left)left = _invalid_rect.left;
-			if (top < _invalid_rect.top)	top = _invalid_rect.top;
-			if (right > _invalid_rect.right)right = _invalid_rect.right;
-			if (bottom > _invalid_rect.bottom)bottom = _invalid_rect.bottom;
-
-			if (left < right && top < bottom) {
-				RedrawScreenRect(left, top, right, bottom);
-			}
-
-		}
-	} while (b++, (x+=64) != w || (x=0,b+=-(w>>6)+DIRTY_BYTES_PER_LINE,(y+=8) != h));
+		} while (b++, (x += 64) != w);
+	} while (b += -(w >> 6) + DIRTY_BYTES_PER_LINE, (y += 8) != h);
 
 	_invalid_rect.left = w;
 	_invalid_rect.top = h;
@@ -1820,7 +1826,7 @@ static void SetCursorSprite(CursorID cursor)
 
 	if (cv->sprite == cursor) return;
 
-	p =	GetSprite(cursor & 0x3FFF);
+	p = GetSprite(cursor & 0x3FFF);
 	cv->sprite = cursor;
 	cv->size.y = p->height;
 	cv->size.x = p->width;

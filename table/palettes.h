@@ -1,5 +1,5 @@
 #define M(r, g, b) { r, g, b }
-static Colour _palettes[][256] = {
+static const Colour _palettes[][256] = {
 	/* palette 1 (TTD Windows) */
 	{
 		M(  0,   0,   0), M(212,   0, 212), M(212,   0, 212), M(212,   0, 212),
