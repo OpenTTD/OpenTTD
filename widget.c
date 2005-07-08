@@ -125,14 +125,11 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 	SetWindowDirty(w);
 }
 
-/*****************************************************
- * Returns the index for the widget located at the given
- * position relative to the window.
- * Parameters:
- *   w   - Window
- *   x/y - Window client coordinates
- * Returns:
- *   A widget index, or -1 if no widget was found.
+/** Returns the index for the widget located at the given position
+ * relative to the window. It includes all widget-corner pixels as well.
+ * @param *w Window to look inside
+ * @param  x,y Window client coordinates
+ * @return A widget index, or -1 if no widget was found.
  */
 int GetWidgetFromPos(Window *w, int x, int y)
 {
@@ -141,19 +138,16 @@ int GetWidgetFromPos(Window *w, int x, int y)
 
 	// Go through the widgets and check if we find the widget that the coordinate is
 	// inside.
-	for(index=0,wi=w->widget; wi->type != WWT_LAST; index++, wi++) {
+	for (index = 0,wi = w->widget; wi->type != WWT_LAST; index++, wi++) {
 		if (wi->type == WWT_EMPTY || wi->type == WWT_FRAME)
 			continue;
 
-		if (x >= wi->left &&
-		    x < wi->right &&
-				y >= wi->top &&
-				y < wi->bottom && !HASBIT(w->hidden_state,index)) {
+		if (x >= wi->left && x <= wi->right && y >= wi->top &&  y <= wi->bottom &&
+				!HASBIT(w->hidden_state,index)) {
 				found_index = index;
 		}
 	}
 
-	// Return the index
 	return found_index;
 }
 

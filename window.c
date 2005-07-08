@@ -98,12 +98,21 @@ void DispatchRightClickEvent(Window *w, int x, int y) {
 	w->wndproc(w, &e);
 }
 
-
-void DispatchMouseWheelEvent(Window *w, uint widget, int wheel)
+/** Dispatch the mousewheel-action to the window which will scroll any
+ * compatible scrollbars if the mouse is pointed over the bar or its contents
+ * @param *w Window
+ * @param widget the widget where the scrollwheel was used
+ * @param wheel scroll up or down
+ */
+void DispatchMouseWheelEvent(Window *w, int widget, int wheel)
 {
-	const Widget *wi1 = &w->widget[widget];
-	const Widget *wi2 = &w->widget[widget + 1];
+	const Widget *wi1, *wi2;
 	Scrollbar *sb;
+
+	if (widget < 0) return;
+
+	wi1 = &w->widget[widget];
+	wi2 = &w->widget[widget + 1];
 
 	/* The listbox can only scroll if scrolling was done on the scrollbar itself,
 	 * or on the listbox (and the next item is (must be) the scrollbar)
