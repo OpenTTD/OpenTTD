@@ -831,7 +831,7 @@ void CheckExternalFiles(void)
 			win++;
 
 	if (!FileMD5(sample_cat_win, false) && !FileMD5(sample_cat_dos, false))
-		printf("Your sample.cat file is corrupted or missing!");
+		printf("Your sample.cat file is corrupted or missing!\n");
 
 	/*
 	 * forced DOS palette via command line -> leave it that way
