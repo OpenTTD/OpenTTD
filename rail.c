@@ -109,6 +109,7 @@ const Trackdir _reverse_trackdir[] = {
 RailType GetTileRailType(TileIndex tile, Trackdir trackdir)
 {
 	RailType type = INVALID_RAILTYPE;
+	DiagDirection exitdir = TrackdirToExitdir(trackdir);
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
 			/* railway track */
@@ -129,10 +130,10 @@ RailType GetTileRailType(TileIndex tile, Trackdir trackdir)
 			/* railway bridge ending */
 			if ((_map5[tile] & 0xC6) == 0x80) type = _map3_lo[tile] & RAILTYPE_MASK;
 			/* on railway bridge */
-			if ((_map5[tile] & 0xC6) == 0xC0 && ((DiagDirection)(_map5[tile] & 0x1)) == (TrackdirToExitdir(trackdir) & 0x1))
+			if ((_map5[tile] & 0xC6) == 0xC0 && ((DiagDirection)(_map5[tile] & 0x1)) == (exitdir & 0x1))
 				type = (_map3_lo[tile] >> 4) & RAILTYPE_MASK;
 			/* under bridge (any type) */
-			if ((_map5[tile] & 0xC0) == 0xC0 && ((uint)_map5[tile] & 0x1) != (trackdir & 0x1))
+			if ((_map5[tile] & 0xC0) == 0xC0 && ((uint)_map5[tile] & 0x1) != (exitdir & 0x1))
 				type = _map3_lo[tile] & RAILTYPE_MASK;
 			break;
 		default:
