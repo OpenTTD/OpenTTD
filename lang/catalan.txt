@@ -1484,6 +1484,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Vía de tren amb
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Vía de tren amb pre-senyals
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Vía de tren amb senyals de sortida
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Vía de tren amb senyals combinades
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Via de tren amb senyals pbs
 
 
 

@@ -1484,6 +1484,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Gleis mit norma
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Gleis mit Vorsignalen
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Gleis mit Ausfahrtsignalen
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Gleis mit kombinierten Vor-/Ausfahrtsignalen
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Gleise mit PBS-Signalen
 
 
 

@@ -1484,6 +1484,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Cale feratã cu 
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Cale feratã cu pre-semnalizare
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Cale feratã cu semnale de iesire
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Cale feratã cu semnale combinate
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Cai ferate cu semnalizare PBS
 
 
 

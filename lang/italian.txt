@@ -1484,6 +1484,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Binario ferrovi
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Binario ferroviario con presegnali
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Binario ferroviario con segnali di uscita
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Binario ferroviario con segnali combinati
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Binario ferroviario con segnali pbs
 
 
 

@@ -1484,6 +1484,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Tory ze zwykla 
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Tory z pre-sygnalami
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Tory z sygnalizacja wyjsciowa
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Tory z sygnalizacja combo
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Tory kolejowe wraz z sygnalami pbs
 
 
 

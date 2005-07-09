@@ -1484,6 +1484,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Vasúti sin szem
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Vasúti sin elõrejelzõ szemaforral
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Vasúti sin kijáratjelzõ szemaforral
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Vasúti sin vegyes szemaforral
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Vasúti sín intelligens jelz&#337;kkel
 
 
 

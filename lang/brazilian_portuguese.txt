@@ -1484,6 +1484,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ferrovia com si
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ferrovia com pre-sinais
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Ferrovia com sinais de saída
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ferrovia com sinais combinados
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Ferrovia com sinalização PBS
 
 
 

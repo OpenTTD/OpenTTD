@@ -1484,6 +1484,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Spoor met norma
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Spoor met voorseinen
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Spoor met uitgangseinen
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Spoor met combinatieseinen
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Spoor met pbs-seinen
 
 
 

@@ -1484,6 +1484,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Jernbanespor me
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Jernbanespor med for-signaler
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Jernbanespor med forlat-signaler
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Jernbanespor med kombinerte signaler
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Jernbane med PBS-signaler
 
 
 
