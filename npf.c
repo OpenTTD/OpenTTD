@@ -24,9 +24,10 @@ static const uint _trackdir_length[TRACKDIR_END] = {
 /**
  * Check if a rail track is the end of the line. Will also consider 1-way signals to be the end of a line.
  * @param tile The tile on which the current track is.
- * @param trackdir The (track)direction in which you want to look
+ * @param trackdir The (track)direction in which you want to look.
+ * @param enginetype The type of the engine for which we are checking this.
  */
-bool IsEndOfLine(TileIndex tile, Trackdir trackdir)
+bool IsEndOfLine(TileIndex tile, Trackdir trackdir, RailType enginetype)
 {
 	byte exitdir = TrackdirToExitdir(trackdir);
 	TileIndex dst_tile;
@@ -50,11 +51,9 @@ bool IsEndOfLine(TileIndex tile, Trackdir trackdir)
 		return true;
 
 	{
-		byte src_type = GetTileRailType(tile, trackdir);
 		byte dst_type = GetTileRailType(dst_tile, exitdir);
-		if (src_type != dst_type) {
+		if (!IsCompatibleRail(enginetype, dst_type))
 			return true;
-		}
 		if (GetTileOwner(tile) != GetTileOwner(dst_tile))
 			return true;
 
@@ -137,7 +136,7 @@ void NPFReservePBSPath(AyStar *as)
 	if (ftd->best_trackdir == 0xFF)
 		return;
 
-	if (!NPFGetFlag(&ftd->node, NPF_FLAG_PBS_EXIT) && IsEndOfLine(ftd->node.tile, ftd->node.direction) && !NPFGetFlag(&ftd->node, NPF_FLAG_SEEN_SIGNAL)) {
+	if (!NPFGetFlag(&ftd->node, NPF_FLAG_PBS_EXIT) && IsEndOfLine(ftd->node.tile, ftd->node.direction, as->user_data[NPF_RAILTYPE]) && !NPFGetFlag(&ftd->node, NPF_FLAG_SEEN_SIGNAL)) {
 		/* The path ends in an end of line, we'll need to reserve a path.
 		 * We treat and end of line as a red exit signal */
 		eol_end = true;
@@ -231,7 +230,7 @@ static int32 NPFCalcStationOrTileHeuristic(AyStar* as, AyStarNode* current, Open
 	   of the 'closest' tile */
 	if ((as->user_data[NPF_PBS_MODE] != PBS_MODE_NONE)
 	&&  (!NPFGetFlag(current , NPF_FLAG_SEEN_SIGNAL))
-	&&  (!IsEndOfLine(current->tile, current->direction)))
+	&&  (!IsEndOfLine(current->tile, current->direction, as->user_data[NPF_RAILTYPE])))
 		return dist;
 
 	if ((dist < ftd->best_bird_dist) ||
@@ -565,7 +564,7 @@ static int32 NPFFindStationOrTile(AyStar* as, OpenListNode *current)
 	) {
 		NPFSetFlag(&current->path.node, NPF_FLAG_PBS_TARGET_SEEN, true);
 		/* for pbs runs, only accept we've found the target if we've also found a way out of the block */
-		if ((as->user_data[NPF_PBS_MODE] != PBS_MODE_NONE) && !NPFGetFlag(node, NPF_FLAG_SEEN_SIGNAL) && !IsEndOfLine(node->tile, node->direction))
+		if ((as->user_data[NPF_PBS_MODE] != PBS_MODE_NONE) && !NPFGetFlag(node, NPF_FLAG_SEEN_SIGNAL) && !IsEndOfLine(node->tile, node->direction, as->user_data[NPF_RAILTYPE]))
 			return AYSTAR_DONE;
 		return AYSTAR_FOUND_END_NODE;
 	} else {
