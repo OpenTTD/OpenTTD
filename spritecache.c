@@ -745,20 +745,16 @@ static const uint16 _openttd_grf_indexes[] = {
 /* Check that the supplied MD5 hash matches that stored for the supplied filename */
 static bool CheckMD5Digest(const MD5File file, md5_byte_t *digest, bool warn)
 {
-	int i, matching_bytes=0;
+	uint i;
 
 	/* Loop through each byte of the file MD5 and the stored MD5... */
-	for (i = 0; i < 16; i++)
-	{
-		if (file.hash[i] == digest[i])
-			matching_bytes++;
-	};
+	for (i = 0; i < 16; i++) if (file.hash[i] != digest[i]) break;
 
 		/* If all bytes of the MD5's match (i.e. the MD5's match)... */
-	if (matching_bytes == 16) {
+	if (i == 16) {
 		return true;
 	} else {
-		if (warn) printf("MD5 of %s is ****INCORRECT**** - File Corrupt.\n", file.filename);
+		if (warn) fprintf(stderr, "MD5 of %s is ****INCORRECT**** - File Corrupt.\n", file.filename);
 		return false;
 	};
 }
@@ -769,10 +765,6 @@ static bool FileMD5(const MD5File file, bool warn)
 {
 	FILE *f;
 	char buf[MAX_PATH];
-
-	md5_state_t filemd5state;
-	int len=0;
-	md5_byte_t buffer[1024], digest[16];
 
 	// open file
 	sprintf(buf, "%s%s", _path.data_dir, file.filename);
@@ -789,12 +781,16 @@ static bool FileMD5(const MD5File file, bool warn)
 #endif
 
 	if (f != NULL) {
+		md5_state_t filemd5state;
+		md5_byte_t buffer[1024];
+		md5_byte_t digest[16];
+		size_t len;
+
 		md5_init(&filemd5state);
-		while ((len = fread(buffer, 1, 1024, f)) != 0)
+		while ((len = fread(buffer, 1, sizeof(buffer), f)) != 0)
 			md5_append(&filemd5state, buffer, len);
 
-		if (ferror(f))
-			if (warn) printf("Error Reading from %s \n", buf);
+		if (ferror(f) && warn) fprintf(stderr, "Error Reading from %s \n", buf);
 		fclose(f);
 
 		md5_finish(&filemd5state, digest);
@@ -816,22 +812,14 @@ void CheckExternalFiles(void)
 	uint dos = 0;
 	uint win = 0;
 
-	for (i = 0; i < 2; i++)
-	  if (FileMD5(files_dos.basic[i], true))
-			dos++;
-	for (i = 0; i < 3; i++)
-	  if (FileMD5(files_dos.landscape[i], true))
-			dos++;
+	for (i = 0; i < 2; i++) if (FileMD5(files_dos.basic[i], true)) dos++;
+	for (i = 0; i < 3; i++) if (FileMD5(files_dos.landscape[i], true)) dos++;
 
-	for (i = 0; i < 2; i++)
-	  if (FileMD5(files_win.basic[i], true))
-			win++;
-	for (i = 0; i < 3; i++)
-	  if (FileMD5(files_win.landscape[i], true))
-			win++;
+	for (i = 0; i < 2; i++) if (FileMD5(files_win.basic[i], true)) win++;
+	for (i = 0; i < 3; i++) if (FileMD5(files_win.landscape[i], true)) win++;
 
 	if (!FileMD5(sample_cat_win, false) && !FileMD5(sample_cat_dos, false))
-		printf("Your sample.cat file is corrupted or missing!\n");
+		fprintf(stderr, "Your sample.cat file is corrupted or missing!\n");
 
 	/*
 	 * forced DOS palette via command line -> leave it that way
