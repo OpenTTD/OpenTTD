@@ -505,7 +505,13 @@ static inline TransportType GetCrossingTransportType(TileIndex tile, Track track
  */
 static inline bool IsCompatibleRail(RailType enginetype, RailType tiletype)
 {
-	return enginetype == tiletype;
+	static const bool EquivRailTypes[RAILTYPE_END][RAILTYPE_END] = {
+	{ true, false, false },
+	{ false, true, false },
+	{ false, false, true },
+	};
+
+	return EquivRailTypes[enginetype][tiletype];
 }
 
 #endif // RAIL_H

@@ -2542,7 +2542,8 @@ static bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
 
 	return
 		IsTileOwner(tile, v->owner) &&
-		(v->subtype != TS_Front_Engine || (_map3_lo[tile] & 0xF) == v->u.rail.railtype);
+		(v->subtype != TS_Front_Engine ||
+		IsCompatibleRail(v->u.rail.railtype, GetRailType(tile)));
 }
 
 typedef struct {
