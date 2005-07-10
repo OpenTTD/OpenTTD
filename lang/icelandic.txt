@@ -1484,6 +1484,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Lestarteinn með
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Lestarteinn með forljósum
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Lestarteinn með útljósum
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Lestarteinn með samljósum
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Lestarteinn með pbs ljósi
 
 
 

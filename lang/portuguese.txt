@@ -1484,6 +1484,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Caminhos-de-fer
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Caminhos-de-ferro com pre-sinais
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Caminhos-de-ferro com sinais de saída
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Caminhos-de-ferro com sinais combinados
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Caminho de ferro com sinais pbs
 
 
 
