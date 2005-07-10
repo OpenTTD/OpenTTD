@@ -15,6 +15,9 @@ int _debug_net_level;
 int _debug_spritecache_level;
 int _debug_oldloader_level;
 int _debug_pbs_level;
+#ifdef GPMI
+int _debug_gpmi_level;
+#endif /* GPMI */
 int _debug_npf_level;
 
 
@@ -46,6 +49,9 @@ typedef struct DebugLevel {
 	DEBUG_LEVEL(spritecache),
 	DEBUG_LEVEL(oldloader),
 	DEBUG_LEVEL(pbs),
+#ifdef GPMI
+	DEBUG_LEVEL(gpmi),
+#endif	
 	DEBUG_LEVEL(npf)
 	};
 #undef DEBUG_LEVEL
@@ -120,3 +126,10 @@ const char *GetDebugString(void)
 
 	return dbgstr;
 }
+
+#ifdef GPMI
+void gpmi_debug_openttd(int level, char *s)
+{
+	DEBUG(gpmi, level)("[GPMI] %s", s);
+}
+#endif /* GPMI */

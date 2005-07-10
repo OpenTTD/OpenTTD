@@ -386,6 +386,15 @@ endif
 
 CFLAGS += $(BASECFLAGS)
 
+# See if we want to enable GPMI
+ifdef GPMI
+CFLAGS  += -DGPMI
+GPMI_STATIC_PATH = `gpmi-config --static`
+LDFLAGS += -rdynamic `gpmi-config --libs`
+# Static link paths into the game
+LDFLAGS += $(GPMI_STATIC_PATH)/paths-static.o
+endif
+
 ifdef UNIX
 CDEFS += -DUNIX
 endif

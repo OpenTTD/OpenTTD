@@ -37,6 +37,11 @@
 
 #include <stdarg.h>
 
+#ifdef GPMI
+#include <gpmi.h>
+#include <gpmi/packages/paths.h>
+#endif /* GPMI */
+
 void GenerateWorld(int mode, uint log_x, uint log_y);
 void CallLandscapeTick(void);
 void IncreaseDate(void);
@@ -592,6 +597,18 @@ int ttd_main(int argc, char* argv[])
 
 	DeterminePaths();
 	CheckExternalFiles();
+
+#ifdef GPMI
+	/* Set the debug proc */
+	gpmi_debug_proc    = &gpmi_debug_openttd;
+
+	/* Initialize GPMI */
+	gpmi_init();
+
+	/* Add our paths so we can find our own packages */
+	gpmi_path_append(&gpmi_path_modules, "gpmi/modules");
+	gpmi_path_append(&gpmi_path_packages, "gpmi/packages");
+#endif /* GPMI */
 
 #ifdef UNIX
 	// We must fork here, or we'll end up without some resources we need (like sockets)
