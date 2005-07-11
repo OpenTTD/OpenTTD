@@ -5,7 +5,7 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Hors limites
-STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Trop près du bord de la carte
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Trop près des bords de la carte
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Fonds insuffisants - requiers {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
@@ -185,7 +185,7 @@ STR_00B2_MESSAGE                                                :{YELLOW}Message
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Message de {STRING}
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Impossible d'exécuter....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Impossible de balayer....
-STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright originel {COPYRIGHT} 1995 Chris Sawyer, Tous droits réservés
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, Tous droits réservés
 STR_00B7_VERSION                                                :{BLACK}OpenTTD version {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2005 The OpenTTD team
 STR_TRANSLATED_BY                                               :{BLACK}  Traducteur(s) -
@@ -247,7 +247,7 @@ STR_00FA_COAL_MINE                                              :{BLACK}{TINYFON
 STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Centrale Électrique
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Forêt
 STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Scierie
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Raffinerie de pétrole
+STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Raffinerie pétrolière
 STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Ferme
 STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Usine
 STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Imprimerie
@@ -276,9 +276,9 @@ STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFON
 STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Générateur de Bulles
 STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Carrière de Caramel
 STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Mine de Sucre
-STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Gare Ferroviaire
+STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Gare ferroviaire
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Zone de Chargement
-STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Arrêt d'Autobus
+STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Arrêt d'autobus
 STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Aéroport/Héliport
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Port
 STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Terre en friche
@@ -429,7 +429,7 @@ STR_RESIZE_BUTTON                                               :{BLACK}Cliquez 
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Démolir les constructions sur un carré de terrain
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Abaisser le terrain
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Élever le terrain
-STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Barre de défilement - défile la liste en haut/en bas
+STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Barre de défilement - Défile la liste de bas en haut
 STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Barre de défilement - Défile la liste de gauche à droite
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Afficher le relief sur la carte
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Afficher les véhicules sur la carte
@@ -628,8 +628,8 @@ STR_0240_COAL_MINE                                              :{BLACK}Mine de 
 STR_0241_POWER_STATION                                          :{BLACK}Centrale Électrique
 STR_0242_SAWMILL                                                :{BLACK}Scierie
 STR_0243_FOREST                                                 :{BLACK}Forêt
-STR_0244_OIL_REFINERY                                           :{BLACK}Raffinerie de pétrole
-STR_0245_OIL_RIG                                                :{BLACK}Plate-forme Pétrolière
+STR_0244_OIL_REFINERY                                           :{BLACK}Raffinerie pétrolière
+STR_0245_OIL_RIG                                                :{BLACK}Plate-forme pétrolière
 STR_0246_FACTORY                                                :{BLACK}Usine
 STR_0247_STEEL_MILL                                             :{BLACK}Aciérie
 STR_0248_FARM                                                   :{BLACK}Ferme
@@ -662,13 +662,13 @@ STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Construi
 STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Construire Centrale Électrique
 STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Construire Scierie
 STR_0265_PLANT_FOREST                                           :{BLACK}Semer une Forêt
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Construire Raffinerie de Pétrole
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Construire Plate-forme Pétrolière (Peut seulement être construit au bord de la carte)
+STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Construire une raffinerie  pétrolière
+STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}La construire d'une plate-forme pétrolière ne peut se faire qu'aux bords de la carte
 STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Construire Usine
 STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Construire Aciérie
 STR_026A_CONSTRUCT_FARM                                         :{BLACK}Construire Ferme
 STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Construire Mine de Fer
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Construire Puits de Pétrole
+STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Construire puits de pétrole
 STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construire Banque (Peut seulement être construite dans les villes ayant plus de 1200 habitants)
 STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Construire Papetière
 STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Construire Usine Agroalimentaire
@@ -1075,9 +1075,9 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permett
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Espacements des signaux en mode drag & drop : {ORANGE}{STRING} case(s)
 STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}Permettre pose automatique signaux PBS: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Position de la barre d'outils principale: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :A Gauche
+STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :À gauche
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centrée
-STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :A Droite
+STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :À droite
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Rayon d'attraction des fenêtres : {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Rayon d'attraction des fenêtres : {ORANGE}inactif
 
@@ -1448,12 +1448,12 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Combinai
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}L'excavation endommagerait le tunnel
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Déjà au niveau de la mer
 STR_1004_TOO_HIGH                                               :{WHITE}Trop élevé
-STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Aucun rail convenable
+STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Aucuns rails convenables
 STR_1006_TRAIN_INSIDE_DEPOT                                     :{WHITE}Train à l'intérieur du dépôt
 STR_1007_ALREADY_BUILT                                          :{WHITE}...déjà construit
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Doit d'abord enlever les rails
 STR_1009_TOO_MANY_DEPOTS                                        :{WHITE}Trop de dépôts
-STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Construction de Rail
+STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Construction de voie ferrée
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Construction de Monorail
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Construction de MagLev
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Choisir Pont Ferroviaire
@@ -1464,7 +1464,7 @@ STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Impossib
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Impossible de retirer les rails d'ici...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Impossible de retirer les signaux d'ici...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orientation du Dépôt
-STR_1015_RAILROAD_CONSTRUCTION                                  :Construction de Rail
+STR_1015_RAILROAD_CONSTRUCTION                                  :Construction de voie ferrée
 STR_1016_MONORAIL_CONSTRUCTION                                  :Construction de Monorail
 STR_1017_MAGLEV_CONSTRUCTION                                    :Construction de MagLev
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Construire des rails
@@ -1475,16 +1475,16 @@ STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Construi
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Construire un tunel ferroviaire
 STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Basculer construire/retirer pour rails et signaux
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Sélection de Pont - cliquez sur un pont pour le construire
-STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Sélectionnez l'orientation du dépôt
-STR_1021_RAILROAD_TRACK                                         :Rail
-STR_1022_RAILROAD_TRACK_WITH_SIGNALS                            :Rail avec signaux
-STR_1023_RAILROAD_TRAIN_DEPOT                                   :Dépôt de trains
+STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Choisir l'orientation du dépôt
+STR_1021_RAILROAD_TRACK                                         :Rails
+STR_1022_RAILROAD_TRACK_WITH_SIGNALS                            :Rails avec signaux
+STR_1023_RAILROAD_TRAIN_DEPOT                                   :Dépôt ferroviaire
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...appartient à une autre compagnie
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Rail avec des signaux normaux
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Rail avec des pré-signaux
-STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Rail avec des signaux de sortie
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Rail avec des signaux combinés
-STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Voie ferrée avec signal PBS
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Rails avec des signaux normaux
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Rails avec des pré-signaux
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Rails avec des signaux de sortie
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Rails avec des signaux combinés
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Rails avec des signaux PBS
 
 
 
@@ -1642,7 +1642,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Trop prè
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Ajouter une ou plusieurs gares
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Trop de gares dans cette ville
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Trop de gares
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Trop d'arrêts de bus
+STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Trop d'arrêts d'autobus
 STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Trop d'aires de chargement
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Trop près d'une autre gare
 STR_300A_0                                                      :{WHITE}{STATION} {STRINL 0x30D1}
@@ -1672,11 +1672,11 @@ STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} n'accepte plus: {STRING} ou {STRING}
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} accepte désormais: {STRING}
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} accepte désormais: {STRING} et {STRING}
-STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Arrêt de bus
+STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Arrêt d'autobus
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Station de camions
-STR_3044_TOO_CLOSE_TO_ANOTHER_BUS                               :{WHITE}Trop près d'un autre arrêt
+STR_3044_TOO_CLOSE_TO_ANOTHER_BUS                               :{WHITE}Trop près d'un autre arrêt d'autobus
 STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK                             :{WHITE}Trop près d'une autre gare
-STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Détruisez d'abord l'arrêt
+STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Détruisez d'abord l'arrêt d'autobus
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Détruisez d'abord la station
 STR_3048_STATIONS                                               :{WHITE}{STRING} - {COMMA16} Stations
 STR_3049_0                                                      :{YELLOW}{STATION} {STRINL 0x30D1}
@@ -1684,10 +1684,10 @@ STR_304A_NONE                                                   :{YELLOW}- Aucun
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...l'endroit ne convient pas
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Trop près d'un autre port
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Détruisez d'abord le port
-STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Choix de l'orientation de la gare
+STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Choisir l'orientation de la gare
 STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Choix du nombre de voies
-STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Choix de la longueur du quai
-STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Choix de l'orientation de la station
+STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Choisir la longueur de la gare
+STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Choisir l'orientation de l'arrêt d'autobus
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Choix de l'orientation de l'aire de chargement
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centrer la vue sur la station
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Montrer la réputation de la station
@@ -1706,7 +1706,7 @@ STR_305E_RAILROAD_STATION                                       :Gare
 STR_305F_AIRCRAFT_HANGAR                                        :Hangar d'aéronefs
 STR_3060_AIRPORT                                                :Aéroport
 STR_3061_TRUCK_LOADING_AREA                                     :Aire de chargement
-STR_3062_BUS_STATION                                            :Arrêt de bus
+STR_3062_BUS_STATION                                            :Arrêt d'autobus
 STR_3063_SHIP_DOCK                                              :Port
 STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}Afficher la zone couverte
 STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}Ne pas afficher la zone couverte
@@ -1723,7 +1723,7 @@ STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...stati
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientation du dépot naval
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...doit être construit sur l'eau
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Impossible de construire le dépôt naval ici...
-STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Choix de l'orientation du dépôt
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Choisir l'orientation du dépôt naval
 STR_3804_WATER                                                  :Eau
 STR_3805_COAST_OR_RIVERBANK                                     :Côte de riverbank
 STR_3806_SHIP_DEPOT                                             :Dépôt naval
@@ -1755,14 +1755,14 @@ STR_4802_COAL_MINE                                              :Mine de charbon
 STR_4803_POWER_STATION                                          :Centrale électrique
 STR_4804_SAWMILL                                                :Scierie
 STR_4805_FOREST                                                 :Forêt
-STR_4806_OIL_REFINERY                                           :Raffinerie
+STR_4806_OIL_REFINERY                                           :Raffinerie  pétrolière
 STR_4807_OIL_RIG                                                :Plate-forme pétrolière
 STR_4808_FACTORY                                                :Usine
 STR_4809_PRINTING_WORKS                                         :Imprimerie
 STR_480A_STEEL_MILL                                             :Aciérie
 STR_480B_FARM                                                   :Ferme
 STR_480C_COPPER_ORE_MINE                                        :Mine de cuivre
-STR_480D_OIL_WELLS                                              :Puits de pétrôle
+STR_480D_OIL_WELLS                                              :Puits de pétrole
 STR_480E_BANK                                                   :Banque
 STR_480F_FOOD_PROCESSING_PLANT                                  :Usine alimentaire
 STR_4810_PAPER_MILL                                             :Papetière
@@ -1808,7 +1808,7 @@ STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT
 STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Le manque d'arbres proches force {TOWN} {STRING} à fermer bientôt!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{TOWN} {STRING} augmente la production!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nouveau filon de charbon trouvé à {TOWN} {STRING}!{}La production devrait doubler!
-STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nouvelle nappe de pétrôle trouvée à {TOWN} {STRING}!{}La production devrait doubler!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nouveaux gisements pétrolifères découverts à {TOWN} {STRING}!{}La production devrait doubler!
 STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}De nouvelles méthodes d'élevage à {TOWN} {STRING} permettent de doubler la production!
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{TOWN} {STRING} : production en baisse de 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Invasion d'insectes à {TOWN} {STRING}!{}Production en baisse de 50%
@@ -1833,7 +1833,7 @@ STR_500C                                                        :
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_500E_SUSPENSION_STEEL                                       :A suspensions, Acier
 STR_500F_GIRDER_STEEL                                           :A poutres, Acier
-STR_5010_CANTILEVER_STEEL                                       :Porte-a-faux, Steel
+STR_5010_CANTILEVER_STEEL                                       :Porte-à-faux en acier
 STR_5011_SUSPENSION_CONCRETE                                    :A suspensions, Béton
 STR_5012_WOODEN                                                 :Bois
 STR_5013_CONCRETE                                               :Béton
@@ -1847,13 +1847,13 @@ STR_5019                                                        :
 STR_501A                                                        :
 STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Pont ferroviaire suspendu en acier
 STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Pont ferroviaire à poutres en acier
-STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Pont ferroviaire en porte-a-faux en acier
+STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Pont ferroviaire à porte-à-faux en acier
 STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :Pont ferroviaire suspendu renforcé en béton
 STR_501F_WOODEN_RAIL_BRIDGE                                     :Pont ferroviaire en bois
 STR_5020_CONCRETE_RAIL_BRIDGE                                   :Pont ferroviaire en béton
 STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :Pont routier suspendu en acier
 STR_5022_STEEL_GIRDER_ROAD_BRIDGE                               :Pont routier à poutres en acier
-STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :Pont routier en porte-a-faux en acier
+STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :Pont routier à porte-à-faux en acier
 STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :Pont routier suspendu renforcé en béton
 STR_5025_WOODEN_ROAD_BRIDGE                                     :Pont routier en bois
 STR_5026_CONCRETE_ROAD_BRIDGE                                   :Pont routier en béton
@@ -1896,7 +1896,7 @@ STR_SV_STNAME_WOODS                                             :{STRING} Bois
 STR_SV_STNAME_LAKESIDE                                          :{STRING} Bords de lac
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Echange
 STR_SV_STNAME_AIRPORT                                           :{STRING} Aéroport
-STR_SV_STNAME_OILFIELD                                          :{STRING} Gisement
+STR_SV_STNAME_OILFIELD                                          :{STRING} Gisement pétrolifère
 STR_SV_STNAME_MINES                                             :{STRING} Mines
 STR_SV_STNAME_DOCKS                                             :{STRING} Docks
 STR_SV_STNAME_BUOY_1                                            :{STRING} Bouée 1
@@ -2160,7 +2160,7 @@ STR_801A_ASIASTAR_ELECTRIC                                      :'AsiaStar' (Ele
 STR_801B_PASSENGER_CAR                                          :Wagon de voyageurs
 STR_801C_MAIL_VAN                                               :Wagon de courrier
 STR_801D_COAL_CAR                                               :Wagon de charbon
-STR_801E_OIL_TANKER                                             :Citerne de pétrôle
+STR_801E_OIL_TANKER                                             :Citerne de pétrole
 STR_801F_LIVESTOCK_VAN                                          :Wagon à bétail
 STR_8020_GOODS_VAN                                              :Wagon de biens
 STR_8021_GRAIN_HOPPER                                           :Wagon à grain
@@ -2190,7 +2190,7 @@ STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
 STR_8039_PASSENGER_CAR                                          :Wagon de voyageurs
 STR_803A_MAIL_VAN                                               :Wagon de courrier
 STR_803B_COAL_CAR                                               :Wagon de charbon
-STR_803C_OIL_TANKER                                             :Citerne de pétrôle
+STR_803C_OIL_TANKER                                             :Citerne de pétrole
 STR_803D_LIVESTOCK_VAN                                          :Wagon à bétail
 STR_803E_GOODS_VAN                                              :Wagon de biens
 STR_803F_GRAIN_HOPPER                                           :Wagon à grain
@@ -2222,7 +2222,7 @@ STR_8058_WIZZOWOW_ROCKETEER                                     :Wizzowow Rocket
 STR_8059_PASSENGER_CAR                                          :Wagon de voyageurs
 STR_805A_MAIL_VAN                                               :Wagon de courrier
 STR_805B_COAL_CAR                                               :Wagon de charbon
-STR_805C_OIL_TANKER                                             :Citerne de pétrôle
+STR_805C_OIL_TANKER                                             :Citerne de pétrole
 STR_805D_LIVESTOCK_VAN                                          :Wagon à bétail
 STR_805E_GOODS_VAN                                              :Wagon de biens
 STR_805F_GRAIN_HOPPER                                           :Wagon à grain
@@ -2246,96 +2246,96 @@ STR_8070_TOY_VAN                                                :Wagon à jouets
 STR_8071_BATTERY_TRUCK                                          :Wagon à batteries
 STR_8072_FIZZY_DRINK_TRUCK                                      :Wagon à boisson gazeuses
 STR_8073_PLASTIC_TRUCK                                          :Wagon à plastique
-STR_8074_MPS_REGAL_BUS                                          :MPS Regal Bus
-STR_8075_HEREFORD_LEOPARD_BUS                                   :Hereford Leopard Bus
-STR_8076_FOSTER_BUS                                             :Foster Bus
-STR_8077_FOSTER_MKII_SUPERBUS                                   :Foster MkII Superbus
-STR_8078_PLODDYPHUT_MKI_BUS                                     :Ploddyphut MkI Bus
-STR_8079_PLODDYPHUT_MKII_BUS                                    :Ploddyphut MkII Bus
-STR_807A_PLODDYPHUT_MKIII_BUS                                   :Ploddyphut MkIII Bus
-STR_807B_BALOGH_COAL_TRUCK                                      :Balogh Camion de charbon
-STR_807C_UHL_COAL_TRUCK                                         :Uhl Camion de charbon
-STR_807D_DW_COAL_TRUCK                                          :DW Camion de charbon
-STR_807E_MPS_MAIL_TRUCK                                         :MPS Camion de courrier
-STR_807F_REYNARD_MAIL_TRUCK                                     :Reynard Camion de courrier
-STR_8080_PERRY_MAIL_TRUCK                                       :Perry Camion de courrier
-STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :MightyMover Camion de courrier
-STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Powernaught Camion de courrier
-STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Wizzowow Camion de courrier
-STR_8084_WITCOMBE_OIL_TANKER                                    :Witcombe Citerne de pétrole
-STR_8085_FOSTER_OIL_TANKER                                      :Foster Citerne de pétrole
-STR_8086_PERRY_OIL_TANKER                                       :Perry Citerne de pétrole
-STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Talbott Camion à bétail
-STR_8088_UHL_LIVESTOCK_VAN                                      :Uhl Camion à bétail
-STR_8089_FOSTER_LIVESTOCK_VAN                                   :Foster Camion à bétail
-STR_808A_BALOGH_GOODS_TRUCK                                     :Balogh Camion de biens
-STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Craighead Camion de biens
-STR_808C_GOSS_GOODS_TRUCK                                       :Goss Camion de biens
-STR_808D_HEREFORD_GRAIN_TRUCK                                   :Hereford Camion à grain
-STR_808E_THOMAS_GRAIN_TRUCK                                     :Thomas Camion à grain
-STR_808F_GOSS_GRAIN_TRUCK                                       :Goss Camion à grain
-STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe Camion de bois
-STR_8091_FOSTER_WOOD_TRUCK                                      :Foster Camion de bois
-STR_8092_MORELAND_WOOD_TRUCK                                    :Moreland Camion de bois
-STR_8093_MPS_IRON_ORE_TRUCK                                     :MPS Camion de fer
-STR_8094_UHL_IRON_ORE_TRUCK                                     :Uhl Camion de fer
-STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Chippy Camion de fer
-STR_8096_BALOGH_STEEL_TRUCK                                     :Balogh Camion d'acier
-STR_8097_UHL_STEEL_TRUCK                                        :Uhl Camion d'acier
-STR_8098_KELLING_STEEL_TRUCK                                    :Kelling Camion d'acier
+STR_8074_MPS_REGAL_BUS                                          :Autobus MPS Regal
+STR_8075_HEREFORD_LEOPARD_BUS                                   :Autobus Hereford Leopard
+STR_8076_FOSTER_BUS                                             :Autobus Foster
+STR_8077_FOSTER_MKII_SUPERBUS                                   :Superbus Foster MkII
+STR_8078_PLODDYPHUT_MKI_BUS                                     :Autobus Ploddyphut MkI
+STR_8079_PLODDYPHUT_MKII_BUS                                    :Autobus Ploddyphut MkII
+STR_807A_PLODDYPHUT_MKIII_BUS                                   :Autobus Ploddyphut MkIII
+STR_807B_BALOGH_COAL_TRUCK                                      :Camion à charbon Balogh
+STR_807C_UHL_COAL_TRUCK                                         :Camion à charbon Uhl
+STR_807D_DW_COAL_TRUCK                                          :Camion à charbon DW
+STR_807E_MPS_MAIL_TRUCK                                         :Fourgon postal MPS
+STR_807F_REYNARD_MAIL_TRUCK                                     :Fourgon postal Reynard
+STR_8080_PERRY_MAIL_TRUCK                                       :Fourgon postal Perry
+STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :Fourgon postal MightyMover
+STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Fourgon postal Powernaught
+STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Fourgon postal Wizzowow
+STR_8084_WITCOMBE_OIL_TANKER                                    :Citerne de pétrole Witcombe
+STR_8085_FOSTER_OIL_TANKER                                      :Citerne de pétrole Foster
+STR_8086_PERRY_OIL_TANKER                                       :Citerne de pétrole Perry
+STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Camion à bétail Talbott
+STR_8088_UHL_LIVESTOCK_VAN                                      :Camion à bétail Uhl
+STR_8089_FOSTER_LIVESTOCK_VAN                                   :Camion à bétail Foster
+STR_808A_BALOGH_GOODS_TRUCK                                     :Camion de biens Balogh
+STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Camion de biens Craighead
+STR_808C_GOSS_GOODS_TRUCK                                       :Camion de biens Goss
+STR_808D_HEREFORD_GRAIN_TRUCK                                   :Camion à grain Hereford
+STR_808E_THOMAS_GRAIN_TRUCK                                     :Camion à grain Thomas
+STR_808F_GOSS_GRAIN_TRUCK                                       :Camion à grain Goss
+STR_8090_WITCOMBE_WOOD_TRUCK                                    :Camion de bois Witcombe
+STR_8091_FOSTER_WOOD_TRUCK                                      :Camion de bois Foster
+STR_8092_MORELAND_WOOD_TRUCK                                    :Camion de bois Moreland
+STR_8093_MPS_IRON_ORE_TRUCK                                     :Camion de fer MPS
+STR_8094_UHL_IRON_ORE_TRUCK                                     :Camion de fer Uhl
+STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Camion de fer Chippy
+STR_8096_BALOGH_STEEL_TRUCK                                     :Camion d'acier Balogh
+STR_8097_UHL_STEEL_TRUCK                                        :Camion d'acier Uhl
+STR_8098_KELLING_STEEL_TRUCK                                    :Camion d'acier Kelling
 STR_8099_BALOGH_ARMORED_TRUCK                                   :Balogh Fourgon blindé
 STR_809A_UHL_ARMORED_TRUCK                                      :Uhl Fourgon blindé
 STR_809B_FOSTER_ARMORED_TRUCK                                   :Foster Fourgon blindé
-STR_809C_FOSTER_FOOD_VAN                                        :Foster Camion de nourriture
-STR_809D_PERRY_FOOD_VAN                                         :Perry Camion de nourriture
-STR_809E_CHIPPY_FOOD_VAN                                        :Chippy Camion de nourriture
-STR_809F_UHL_PAPER_TRUCK                                        :Uhl Camion de papier
-STR_80A0_BALOGH_PAPER_TRUCK                                     :Balogh Camion de papier
-STR_80A1_MPS_PAPER_TRUCK                                        :MPS Camion de papier
-STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS Camion de cuivre
+STR_809C_FOSTER_FOOD_VAN                                        :Camion de nourriture Foster
+STR_809D_PERRY_FOOD_VAN                                         :Camion de nourriture Perry
+STR_809E_CHIPPY_FOOD_VAN                                        :Camion de nourriture Chippy
+STR_809F_UHL_PAPER_TRUCK                                        :Camion de papier Uhl
+STR_80A0_BALOGH_PAPER_TRUCK                                     :Camion de papier Balogh
+STR_80A1_MPS_PAPER_TRUCK                                        :Camion de papier MPS
+STR_80A2_MPS_COPPER_ORE_TRUCK                                   :Camion de cuivre MPS
 STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl Camion de cuivre
 STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss Camion de cuivre
 STR_80A5_UHL_WATER_TANKER                                       :Uhl Citerne d'eau
 STR_80A6_BALOGH_WATER_TANKER                                    :Balogh Citerne d'eau
 STR_80A7_MPS_WATER_TANKER                                       :MPS Citerne d'eau
-STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh Camion de fruits
-STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl Camion de fruits
-STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling Camion de fruits
-STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh Camion de caoutchouc
-STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl Camion de caoutchouc
-STR_80AD_RMT_RUBBER_TRUCK                                       :RMT Camion de caoutchouc
-STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :MightyMover Camion de sucre
-STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Powernaught Camion de sucre
-STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow Camion de sucre
-STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :MightyMover Camion de Cola
-STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Powernaught Camion de Cola
-STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Wizzowow Camion de Cola
-STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :MightyMover Camion de barbe à papa
-STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught Camion de barbe à papa
-STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzowow Camion de barbe à papa
-STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :MightyMover Camion de caramel
-STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Powernaught Camion de caramel
-STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Wizzowow Camion de sucreries
-STR_80BA_MIGHTYMOVER_TOY_VAN                                    :MightyMover Camion de jouets
-STR_80BB_POWERNAUGHT_TOY_VAN                                    :Powernaught Camion de jouets
-STR_80BC_WIZZOWOW_TOY_VAN                                       :Wizzowow Camion de jouets
-STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :MightyMover Camion de sucreries
-STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Powernaught Camion de sucreries
-STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Wizzowow Camion de sucreries
-STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :MightyMover Camion de batteries
-STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Powernaught Camion de batteries
-STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Wizzowow Camion de batteries
-STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :MightyMover Camion de boissons gazeuses
-STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Powernaught Camion de boissons gazeuses
-STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Wizzowow Camion de boissons gazeuses
-STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :MightyMover Camion de plastique
-STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Powernaught Camion de plastique
-STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Wizzowow Camion de plastique
-STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :MightyMover Camion de bulles
-STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught Camion de bulles
-STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow Camion de bulles
-STR_80CC_MPS_OIL_TANKER                                         :MPS Citerne de pétrole
-STR_80CD_CS_INC_OIL_TANKER                                      :CS-Inc. Citerne de pétrole
+STR_80A8_BALOGH_FRUIT_TRUCK                                     :Camion de fruits Balogh
+STR_80A9_UHL_FRUIT_TRUCK                                        :Camion de fruits Uhl
+STR_80AA_KELLING_FRUIT_TRUCK                                    :Camion de fruits Kelling
+STR_80AB_BALOGH_RUBBER_TRUCK                                    :Camion de caoutchouc Balogh
+STR_80AC_UHL_RUBBER_TRUCK                                       :Camion de caoutchouc Uhl
+STR_80AD_RMT_RUBBER_TRUCK                                       :Camion de caoutchouc RMT
+STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :Camion de sucre MightyMover
+STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Camion de sucre Powernaught
+STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Camion de sucre Wizzowow
+STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :Camion de Cola MightyMover
+STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Camion de Cola Powernaught
+STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Camion de Cola Wizzowow
+STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :Camion de barbe à papa MightyMover
+STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Camion de barbe à papa Powernaught
+STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Camion de barbe à papa Wizzowow
+STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :Camion de caramel MightyMover
+STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Camion de caramel Powernaught
+STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Camion de sucreries Wizzowow
+STR_80BA_MIGHTYMOVER_TOY_VAN                                    :Camion de jouets MightyMover
+STR_80BB_POWERNAUGHT_TOY_VAN                                    :Camion de jouets Powernaught
+STR_80BC_WIZZOWOW_TOY_VAN                                       :Camion de jouets Wizzowow
+STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :Camion de sucreries MightyMover
+STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Camion de sucreries Powernaught
+STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Camion de sucreries Wizzowow
+STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :Camion de batteries MightyMover
+STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Camion de batteries Powernaught
+STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Camion de batteries Wizzowow
+STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :Camion de boissons gazeuses MightyMover
+STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Camion de boissons gazeuses Powernaught
+STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Camion de boissons gazeuses Wizzowow
+STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :Camion de plastique MightyMover
+STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Camion de plastique Powernaught
+STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Camion de plastique Wizzowow
+STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :Camion de bulles MightyMover
+STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Camion de bulles Powernaught
+STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Camion de bulles Wizzowow
+STR_80CC_MPS_OIL_TANKER                                         :Citerne de pétrole MPS
+STR_80CD_CS_INC_OIL_TANKER                                      :Citerne de pétrole CS-Inc.
 STR_80CE_MPS_PASSENGER_FERRY                                    :MPS Ferry de voyageurs
 STR_80CF_FFP_PASSENGER_FERRY                                    :FFP Ferry de voyageurs
 STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell 300 Aéroglisseur
@@ -2588,7 +2588,7 @@ STR_SERVICE_AT_ROADVEH_DEPOT                                    :Entretien au dé
 STR_9800_DOCK_CONSTRUCTION                                      :Construction Portuaire
 STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Construction Portuaire
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Impossible de construire port ici...
-STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Dépôt Naval
+STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Dépôt naval
 STR_9804_NEW_SHIPS                                              :{BLACK}Nouveaux navires
 STR_9805_SHIPS                                                  :{WHITE}{STRING} - {COMMA16} Navires
 STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Impossible de construire navire...
@@ -2612,7 +2612,7 @@ STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Impossib
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Impossible d'envoyer le navire au dépôt...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Impossible de trouver dépôt local
 STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}En route pour le dépôt naval de {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}En route pour {TOWN} Dépôt Naval, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}En route pour {TOWN} dépôt naval, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Navire {COMMA16} est en attente au dépôt
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construire un port
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Construire un dépôt naval (pour construire et entretenir les navires)
@@ -2731,7 +2731,7 @@ SERVICE_AT_AIRPORT_HANGAR                                       :Entretien au ha
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Désastre impliquant un Zeppelin à {STATION}!
 STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Véhicule routier détruit dans use collision avec un 'OVNI'!
-STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Explosion d'une raffinerie de pétrole près de {TOWN}!
+STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Explosion d'une raffinerie  pétrolière près de {TOWN}!
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Usine détruite dans des circonstances suspectes près de {TOWN}!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}Un 'OVNI' attérit près de {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Affaissement d'une veine de charbon entraîne la desctruction de la mine de {TOWN}!

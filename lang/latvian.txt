@@ -1484,6 +1484,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Railway track w
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Railway track with pre-signals
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Railway track with exit-signals
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Railway track with combo-signals
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Dzelzcel's' ar pbs signa'liem
 
 
 
