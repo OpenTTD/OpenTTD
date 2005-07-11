@@ -1351,30 +1351,25 @@ static void GfxMainBlitter(const Sprite* sprite, int x, int y, int mode)
 			bp.dst += bp.pitch * (y >> dpi->zoom);
 		}
 
-		if ( (y = y + bp.height - dpi->height) > 0) {
-			bp.height -= y;
+		if (bp.height > dpi->height - y) {
+			bp.height = dpi->height - y;
 			if (bp.height <= 0) return;
 		}
-
-		start_x = 0;
 
 		x &= zoom_mask;
 
 		if ( (x -= dpi->left) < 0) {
 			bp.width += x;
 			if (bp.width <= 0) return;
-			start_x -= x;
 			bp.sprite -= x;
 			x = 0;
 		}
 		bp.dst += x >> dpi->zoom;
 
-		if ( (x = x + bp.width - dpi->width) > 0) {
-			bp.width -= x;
+		if (bp.width > dpi->width - x) {
+			bp.width = dpi->width - x;
 			if (bp.width <= 0) return;
-			start_x += x;
 		}
-		bp.start_x = start_x;
 
 		zf_uncomp[dpi->zoom](&bp);
 	}
