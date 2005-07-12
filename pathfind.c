@@ -429,15 +429,6 @@ typedef struct {
 	byte first_track;
 } StackedItem;
 
-static const byte _new_dir[6][4] = {
-{0,0xff,2,0xff,},
-{0xff,1,0xff,3,},
-{0xff,0,3,0xff,},
-{1,0xff,0xff,2,},
-{3,2,0xff,0xff,},
-{0xff,0xff,1,0,},
-};
-
 static const byte _new_track[6][4] = {
 {0,0xff,8,0xff,},
 {0xff,1,0xff,9,},
@@ -698,7 +689,7 @@ restart:
 		}
 
 		// regular rail tile, determine the tracks that are actually reachable.
-		bits &= _bits_mask[direction];
+		bits = _map5[tile] & _bits_mask[direction];
 		if (bits == 0) goto stop_search; // no tracks there? stop searching.
 
 		// intersection? then we need to branch the search space,
