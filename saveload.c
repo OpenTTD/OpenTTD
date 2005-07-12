@@ -152,8 +152,18 @@ static uint SlReadSimpleGamma(void)
 {
 	uint i = SlReadByte();
 	if (HASBIT(i, 7)) {
-		i = (i << 8) + SlReadByte();
-		CLRBIT(i, 15);
+		i &= ~0x80;
+		if (HASBIT(i, 6)) {
+			i &= ~0x40;
+			if (HASBIT(i, 5)) {
+				i &= ~0x20;
+				if (HASBIT(i, 4))
+					SlError("Unsupported gamma");
+				i = (i << 8) | SlReadByte();
+			}
+			i = (i << 8) | SlReadByte();
+		}
+		i = (i << 8) | SlReadByte();
 	}
 	return i;
 }
@@ -162,25 +172,37 @@ static uint SlReadSimpleGamma(void)
  * Write the header descriptor of an object or an array.
  * If the element is bigger than 127, use 2 bytes for saving
  * and use the highest byte of the first written one as a notice
- * that the length consists of 2 bytes. The length is fixed to a
- * maximum of 16384 since any higher value will have bit 15 set
- * and the notice, would obfuscate the real value
+ * that the length consists of 2 bytes, etc.. like this:
+ * 0xxxxxxx
+ * 10xxxxxx xxxxxxxx
+ * 110xxxxx xxxxxxxx xxxxxxxx
+ * 1110xxxx xxxxxxxx xxxxxxxx xxxxxxxx
  * @param i Index being written
- * @todo the maximum of 16384 can easily be reached with vehicles, so raise this artificial limit
  */
+
 static void SlWriteSimpleGamma(uint i)
 {
-	assert(i < (1 << 14));
-
 	if (i >= (1 << 7)) {
-		SlWriteByte((byte)((1 << 7) | (i >> 8)));
-		SlWriteByte((byte)i);
-	} else
-		SlWriteByte(i);
+		if (i >= (1 << 14)) {
+			if (i >= (1 << 21)) {
+				assert(i < (1 << 28));
+				SlWriteByte((byte)0xE0 | (i>>24));
+				SlWriteByte((byte)(i>>16));
+			} else {
+				SlWriteByte((byte)0xC0 | (i>>16));
+			}
+			SlWriteByte((byte)(i>>8));
+		} else {
+			SlWriteByte((byte)(0x80 | (i>>8)));
+		}
+	}
+	SlWriteByte(i);
 }
 
-/** Return if the length will use up 1 or two bytes in a savegame */
-static inline uint SlGetGammaLength(uint i) {return (i >= (1 << 7)) ? 2 : 1;}
+/** Return how many bytes used to encode a gamma value */
+static inline uint SlGetGammaLength(uint i) {
+	return 1 + (i >= (1 << 7)) + (i >= (1 << 14)) + (i >= (1 << 21));
+}
 
 static inline int SlReadSparseIndex(void) {return SlReadSimpleGamma();}
 static inline void SlWriteSparseIndex(uint index) {SlWriteSimpleGamma(index);}
@@ -241,8 +263,11 @@ void SlSetLength(size_t length)
 		_sl.need_length = NL_NONE;
 		switch (_sl.block_mode) {
 		case CH_RIFF:
-			// Really simple to write a RIFF length :)
-			SlWriteUint32(length);
+			// Ugly encoding of >16M RIFF chunks
+			// The lower 24 bits are normal
+			// The uppermost 4 bits are bits 24:27
+			assert(length < (1<<28));
+			SlWriteUint32((length & 0xFFFFFF) | ((length >> 24) << 28));
 			break;
 		case CH_ARRAY:
 			assert(_sl.last_array_index <= _sl.array_index);
@@ -614,16 +639,19 @@ static void SlLoadChunk(const ChunkHandler *ch)
 	case CH_SPARSE_ARRAY:
 		ch->load_proc();
 		break;
-	case CH_RIFF:
-		// Read length
-		len = SlReadByte() << 16;
-		len += SlReadUint16();
-		_sl.obj_len = len;
-		endoffs = SlGetOffs() + len;
-		ch->load_proc();
-		assert(SlGetOffs() == endoffs);
+	default:
+		if ((m & 0xF) == CH_RIFF) {
+			// Read length
+			len = (SlReadByte() << 16) | ((m >> 4) << 24);
+			len += SlReadUint16();
+			_sl.obj_len = len;
+			endoffs = SlGetOffs() + len;
+			ch->load_proc();
+			assert(SlGetOffs() == endoffs);
+		} else {
+			SlError("Invalid chunk type");
+		}
 		break;
-	default: NOT_REACHED();
 	}
 }
 
