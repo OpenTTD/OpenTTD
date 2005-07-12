@@ -690,7 +690,7 @@ restart:
 
 		// Not a regular rail tile?
 		// Then we can't use the code below, but revert to more general code.
-		if (!IsTileType(tile, MP_RAILWAY) || (bits = _map5[tile]) & 0x80) {
+		if (!IsTileType(tile, MP_RAILWAY) || !IsPlainRailTile(tile)) {
 			bits = GetTileTrackStatus(tile, TRANSPORT_RAIL) & _tpfmode1_and[direction];
 			bits = (bits | (bits >> 8)) & 0x3F;
 			if (bits == 0) goto stop_search;
@@ -708,13 +708,14 @@ restart:
 		track = _new_track[FIND_FIRST_BIT(bits)][direction];
 
 		// Check if this rail is an upwards slope. If it is, then add a penalty.
-		if ((track & 7) <= 5 && (_is_upwards_slope[GetTileSlope(tile, NULL)] & (1 << track)) ) {
+		// Small optimization here.. if (track&7)>1 then it can't be a slope so we avoid calling GetTileSlope
+		if ((track & 7) <= 1 && (_is_upwards_slope[GetTileSlope(tile, NULL)] & (1 << track)) ) {
 			// upwards slope. add some penalty.
 			si.cur_length += 2;
 		}
 
 		// railway tile with signals..?
-		if (_map5[tile] & 0x40) {
+		if (HasSignals(tile)) {
 			byte m3;
 
 			m3 = _map3_lo[tile];
