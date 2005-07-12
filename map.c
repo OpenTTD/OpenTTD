@@ -25,11 +25,11 @@ void InitMap(uint log_x, uint log_y)
 
 	DEBUG(map, 1)("Allocating map of size %dx%d", log_x, log_y);
 
-	// XXX - MSVC6 volatile workaround
-	*(volatile uint*)&_map_log_x = log_x;
-	*(volatile uint*)&_map_log_y = log_y;
+	_map_log_x = log_x;
+	_map_log_y = log_y;
 
-	map_size = MapSize();
+	// XXX - MSVC6 workaround
+	map_size = 1 << (log_x + log_y);
 
 	_map_type_and_height =
 		realloc(_map_type_and_height, map_size * sizeof(_map_type_and_height[0]));
