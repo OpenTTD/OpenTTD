@@ -1882,33 +1882,16 @@ typedef struct TrainTrackFollowerData {
 
 static bool TrainTrackFollower(TileIndex tile, TrainTrackFollowerData *ttfd, int track, uint length, byte *state)
 {
-	if (IsTileType(tile, MP_RAILWAY) && (_map5[tile]&0xC0) == 0x40) {
-		// the tile has a signal
-		byte m3 = _map3_lo[tile];
-		if (!(m3 & SignalAlongTrackdir(track))) {
-			// if one way signal not pointing towards us, stop going in this direction.
-			if (m3 & SignalAgainstTrackdir(track))
-				return true;
-		} else if (_map2[tile] & SignalAlongTrackdir(track)) {
-			// green signal in our direction. either one way or two way.
-			*state = true;
-		} else if (m3 & SignalAgainstTrackdir(track)) {
-			// two way signal. unless we passed another green signal on the way,
-			// stop going in this direction.
-			if (!*state) return true;
-		}
-	}
-
 	// heading for nowhere?
 	if (ttfd->dest_coords == 0)
 		return false;
 
 	// did we reach the final station?
- if ((ttfd->station_index == INVALID_STATION && tile == ttfd->dest_coords) ||
-  (IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_map5[tile], 0, 8) && _map2[tile] == ttfd->station_index)) {
-  /* We do not check for dest_coords if we have a station_index,
-   * because in that case the dest_coords are just an
-   * approximation of where the station is */
+	if ((ttfd->station_index == INVALID_STATION && tile == ttfd->dest_coords) ||
+		(IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_map5[tile], 0, 8) && _map2[tile] == ttfd->station_index)) {
+		/* We do not check for dest_coords if we have a station_index,
+		 * because in that case the dest_coords are just an
+		 * approximation of where the station is */
 		// found station
 		ttfd->best_bird_dist = 0;
 		if (length < ttfd->best_track_dist) {
@@ -1970,6 +1953,7 @@ static const byte _search_directions[6][4] = {
 
 static const byte _pick_track_table[6] = {1, 3, 2, 2, 0, 0};
 #if PF_BENCHMARK
+#if !defined(_MSC_VER)
 unsigned int rdtsc()
 {
      unsigned int high, low;
@@ -1977,7 +1961,17 @@ unsigned int rdtsc()
      __asm__ __volatile__ ("rdtsc" : "=a" (low), "=d" (high));
      return low;
 }
+#else
+static unsigned int _declspec(naked) rdtsc(void)
+{
+	_asm {
+		rdtsc
+		ret
+	}
+}
 #endif
+#endif
+
 
 
 /* choose a track */
@@ -2035,79 +2029,20 @@ static byte ChooseTrainTrack(Vehicle *v, TileIndex tile, int enterdir, TrackdirB
 			best_track = TrackdirToTrack(ftd.best_trackdir);
 		}
 	} else {
-
 		FillWithStationData(&fd, v);
 
-		if (_patches.new_pathfinding) {
-			/* New train pathfinding */
-			fd.best_bird_dist = (uint)-1;
-			fd.best_track_dist = (uint)-1;
-			fd.best_track = 0xFF;
-			NewTrainPathfind(tile - TileOffsByDir(enterdir), enterdir, (TPFEnumProc*)TrainTrackFollower, &fd, NULL);
+		/* New train pathfinding */
+		fd.best_bird_dist = (uint)-1;
+		fd.best_track_dist = (uint)-1;
+		fd.best_track = 0xFF;
 
-	//		printf("Train %d %s\n", v->unitnumber, fd.best_track_dist == -1 ? "NOTFOUND" : "FOUND");
+		NewTrainPathfind(tile - TileOffsByDir(enterdir), enterdir, (TPFEnumProc*)TrainTrackFollower, &fd, NULL);
 
-			if (fd.best_track == 0xff) {
-				// blaha
-				best_track = FIND_FIRST_BIT(trackdirbits);
-			} else {
-				best_track = fd.best_track & 7;
-			}
+		if (fd.best_track == 0xff) {
+			// blaha
+			best_track = FIND_FIRST_BIT(trackdirbits);
 		} else {
-			/* Original pathfinding */
-			int i, r;
-			uint best_bird_dist  = 0;
-			uint best_track_dist = 0;
-			byte train_dir = v->direction & 3;
-
-
-			best_track = (uint)-1;
-
-			do {
-				i = FIND_FIRST_BIT(trackdirbits);
-				trackdirbits = KILL_FIRST_BIT(trackdirbits);
-
-				fd.best_bird_dist = (uint)-1;
-				fd.best_track_dist = (uint)-1;
-
-				NewTrainPathfind(tile, _search_directions[i][enterdir], (TPFEnumProc*)TrainTrackFollower, &fd, NULL);
-				if (best_track != (uint)-1) {
-					if (best_track_dist == (uint)-1) {
-						if (fd.best_track_dist == (uint)-1) {
-							/* neither reached the destination, pick the one with the smallest bird dist */
-							if (fd.best_bird_dist > best_bird_dist) goto bad;
-							if (fd.best_bird_dist < best_bird_dist) goto good;
-						} else {
-							/* we found the destination for the first time */
-							goto good;
-						}
-					} else {
-						if (fd.best_track_dist == (uint)-1) {
-							/* didn't find destination, but we've found the destination previously */
-							goto bad;
-						} else {
-							/* both old & new reached the destination, compare track length */
-							if (fd.best_track_dist > best_track_dist) goto bad;
-							if (fd.best_track_dist < best_track_dist) goto good;
-						}
-					}
-
-					/* if we reach this position, there's two paths of equal value so far.
-					 * pick one randomly. */
-					r = (byte)Random();
-					if (_pick_track_table[i] == train_dir) r += 80;
-					if (_pick_track_table[best_track] == train_dir) r -= 80;
-
-					if (r <= 127) goto bad;
-				}
-		good:;
-				best_track = i;
-				best_bird_dist = fd.best_bird_dist;
-				best_track_dist = fd.best_track_dist;
-		bad:;
-			} while (trackdirbits != 0);
-	//		printf("Train %d %s\n", v->unitnumber, best_track_dist == -1 ? "NOTFOUND" : "FOUND");
-			assert(best_track != (uint)-1);
+			best_track = fd.best_track & 7;
 		}
 	}
 

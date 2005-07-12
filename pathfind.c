@@ -3,6 +3,8 @@
 #include "map.h"
 #include "tile.h"
 #include "pathfind.h"
+#include "rail.h"
+#include "debug.h"
 
 // remember which tiles we have already visited so we don't visit them again.
 static bool TPFSetTileBit(TrackPathFinder *tpf, TileIndex tile, int dir)
@@ -42,8 +44,10 @@ static bool TPFSetTileBit(TrackPathFinder *tpf, TileIndex tile, int dir)
 
 			/* allocate a link. if out of links, handle this by returning
 			 * that a tile was already visisted. */
-			if (tpf->num_links_left == 0)
+			if (tpf->num_links_left == 0) {
+				DEBUG(misc, 4) ("[NTP] no links left\n");
 				return false;
+			}
 			tpf->num_links_left--;
 			link = tpf->new_link++;
 
@@ -79,8 +83,10 @@ static bool TPFSetTileBit(TrackPathFinder *tpf, TileIndex tile, int dir)
 
 	/* get here if we need to add a new link to link,
 	 * first, allocate a new link, in the same way as before */
-	if (tpf->num_links_left == 0)
+	if (tpf->num_links_left == 0) {
+			DEBUG(misc, 4)("[NTP] no links left\n");
 			return false;
+	}
 	tpf->num_links_left--;
 	new_link = tpf->new_link++;
 
@@ -524,7 +530,7 @@ static bool NtpVisit(NewTrackPathFinder *tpf, TileIndex tile, uint dir, uint len
 	uint hash,head;
 	HashLink *link, *new_link;
 
-	assert(length < 1024);
+	assert(length < 16384-1);
 
 	hash = PATHFIND_HASH_TILE(tile);
 
@@ -622,6 +628,25 @@ static bool NtpCheck(NewTrackPathFinder *tpf, TileIndex tile, uint dir, uint len
 }
 
 
+static const uint16 _is_upwards_slope[15] = {
+	0, // no tileh
+	(1 << TRACKDIR_DIAG1_SW) | (1 << TRACKDIR_DIAG2_NW), // 1
+	(1 << TRACKDIR_DIAG1_SW) | (1 << TRACKDIR_DIAG2_SE), // 2
+	(1 << TRACKDIR_DIAG1_SW), // 3
+	(1 << TRACKDIR_DIAG1_NE) | (1 << TRACKDIR_DIAG2_SE), // 4
+	0, // 5
+	(1 << TRACKDIR_DIAG2_SE), // 6
+	0, // 7
+	(1 << TRACKDIR_DIAG1_NE) | (1 << TRACKDIR_DIAG2_NW), // 8,
+	(1 << TRACKDIR_DIAG2_NW), // 9
+	0, //10
+	0, //11,
+	(1 << TRACKDIR_DIAG1_NE), //12
+	0, //13
+	0, //14
+};
+
+
 // new more optimized pathfinder for trains...
 static void NTPEnum(NewTrackPathFinder *tpf, TileIndex tile, uint direction)
 {
@@ -642,7 +667,7 @@ restart:
 			if ( (uint)(_map5[tile] & 3) != direction || ((_map5[tile]>>1)&6) != tpf->tracktype)
 				/* We are not driving into the tunnel, or it
 				 * is an invalid tunnel */
-				goto popnext;
+				goto stop_search;
 			flotr = FindLengthOfTunnel(tile, direction);
 			si.cur_length += flotr.length;
 			tile = flotr.tile;
@@ -653,68 +678,128 @@ restart:
 	tile_org = tile;
 
 	for(;;) {
+		int track;
+
 		tile += TileOffsByDir(direction);
 
 		// too long search length? bail out.
-		if (++si.cur_length >= tpf->maxlength)
-			goto popnext;
+		if (++si.cur_length >= tpf->maxlength) {
+			DEBUG(misc,4) ("[NTP] cur_length too big\n");
+			goto stop_search;
+		}
 
-		// not a regular rail tile?
-		if (!IsTileType(tile, MP_RAILWAY) || (bits = _map5[tile]) & 0xC0) {
+		// Not a regular rail tile?
+		// Then we can't use the code below, but revert to more general code.
+		if (!IsTileType(tile, MP_RAILWAY) || (bits = _map5[tile]) & 0x80) {
 			bits = GetTileTrackStatus(tile, TRANSPORT_RAIL) & _tpfmode1_and[direction];
 			bits = (bits | (bits >> 8)) & 0x3F;
+			if (bits == 0) goto stop_search;
 			break;
 		}
 
 		// regular rail tile, determine the tracks that are actually reachable.
 		bits &= _bits_mask[direction];
-		if (bits == 0) goto popnext; // no tracks there? stop searching.
+		if (bits == 0) goto stop_search; // no tracks there? stop searching.
 
-		// complex tile?, let the generic handler handle that..
+		// intersection? then we need to branch the search space,
+		// can't handle that from here.
 		if (KILL_FIRST_BIT(bits) != 0) break;
 
-		// don't bother calling the callback when we have regular tracks only.
-		// it's usually not needed anyway. that will speed up things.
-		direction = _new_dir[FIND_FIRST_BIT(bits)][direction];
+		track = _new_track[FIND_FIRST_BIT(bits)][direction];
+
+		// Check if this rail is an upwards slope. If it is, then add a penalty.
+		if ((track & 7) <= 5 && (_is_upwards_slope[GetTileSlope(tile, NULL)] & (1 << track)) ) {
+			// upwards slope. add some penalty.
+			si.cur_length += 2;
+		}
+
+		// railway tile with signals..?
+		if (_map5[tile] & 0x40) {
+			byte m3;
+
+			m3 = _map3_lo[tile];
+			if (!(m3 & SignalAlongTrackdir(track))) {
+				// if one way signal not pointing towards us, stop going in this direction.
+				if (m3 & SignalAgainstTrackdir(track))
+					goto stop_search;
+			} else if (_map2[tile] & SignalAlongTrackdir(track)) {
+				// green signal in our direction. either one way or two way.
+				si.state |= 1;
+			} else {
+				// reached a red signal.
+				if (m3 & SignalAgainstTrackdir(track)) {
+					// two way red signal. unless we passed another green signal on the way,
+					// stop going in this direction.
+					// this is to prevent us from going into a full platform.
+					if (!(si.state&1))
+						goto stop_search;
+				}
+				// add some penalty since this path has a red signal on it.
+				// only add this penalty max 2 times.
+				if ((si.state & 6) != 4) {
+					si.cur_length += 10;
+					si.state += 2; // remember that we added penalty.
+				}
+			}
+
+			if (tpf->enum_proc(tile, tpf->userdata, track, si.cur_length, &si.state))
+				goto stop_search; // we should stop searching in this direction
+		}
+
+		// continue with the next track
+		direction = _tpf_new_direction[track];
 		assert(direction != 0xFF);
-		if (tile == tile_org) goto popnext; // detect infinite loop..
+
+		// check if we're running around chasing our tail... (infinite loop)
+		if (tile == tile_org)
+			goto stop_search;
 	}
 
-	if (!bits) goto popnext;
-
-	// if only one reachable track, use tail recursion optimization.
+	// if only one possible track to choose from, just continue
 	if (KILL_FIRST_BIT(bits) == 0) {
 		i = _new_track[FIND_FIRST_BIT(bits)][direction];
-		// call the callback
+		// call the callback to check if we've reached the destination
 		if (tpf->enum_proc(tile, tpf->userdata, i, si.cur_length, &si.state))
-			goto popnext; // we should stop searching in this direction.
+			goto stop_search; // we should stop searching in this direction.
 
 		// we should continue searching. determine new direction.
 		direction = _tpf_new_direction[i];
 		goto restart; // use tail recursion optimization.
 	}
 
-	// too high recursion depth.. bail out..
-	if (si.depth >= _patches.pf_maxdepth)
-		goto popnext;
+	////////////////
+	// We got multiple tracks to choose between (intersection).
+	// Branch the search space into several branches.
+	// Push each alternative on the stack.
+	////////////////
 
-	si.depth++; // increase recursion depth.
+	// Increase recursion depth counter, and
+	// Check so the depth is not too big.. to prevent enourmous slowdown.
+	if (si.depth >= _patches.pf_maxdepth) {
+		DEBUG(misc, 4) ("[NTP] depth too big\n");
+		goto stop_search;
+	}
+	si.depth++;
 
-	// see if this tile was already visited..?
+	// Check if we've already visited this intersection.
+	// If we've already visited it with a better length, then
+	// there's no point in visiting it again.
 	if (NtpVisit(tpf, tile, direction, si.cur_length)) {
-		// push all possible alternatives
+		// Push all possible alternatives that we can reach from here
+		// onto the priority heap.
 		si.tile = tile;
 		do {
 			si.track = _new_track[FIND_FIRST_BIT(bits)][direction];
-
 			// out of stack items, bail out?
-			if (tpf->nstack >= lengthof(tpf->stack))
+			if (tpf->nstack >= lengthof(tpf->stack)) {
+				DEBUG(misc, 4) ("[NTP] out of stack\n");
 				break;
+			}
 			tpf->stack[tpf->nstack] = si;
 			HeapifyUp(tpf);
 		} while ((bits = KILL_FIRST_BIT(bits)) != 0);
 
-		// if this is the first recursion step, we need to fill the first_track member.
+		// If this is the first intersection, we need to fill the first_track member.
 		// so the code outside knows which path is better.
 		// also randomize the order in which we search through them.
 		if (si.depth == 1) {
@@ -732,13 +817,21 @@ restart:
 		}
 	}
 
-popnext:
-	// where to continue.
+
+stop_search:
+	// Now continue searching from the intersection that has the lowest
+	// cost.
+	// Pop the lowest cost item from the priority heap.
 	do {
-		if (tpf->nstack == 0) return; // nothing left?
+		if (tpf->nstack == 0)
+			return; // nothing left? then we're done!
 		si = tpf->stack[0];
 		tile = si.tile;
 		HeapifyDown(tpf);
+
+	// First check if we've already visited the tile we're just about to continue at.
+	// If we've already visited it, no point in continuing from there.
+	// Then call the callback.
 	} while (
 		!NtpCheck(tpf, tile, _tpf_prev_direction[si.track], si.cur_length) || // already have better path to that tile?
 		tpf->enum_proc(tile, tpf->userdata, si.track, si.cur_length, &si.state)
@@ -752,20 +845,17 @@ popnext:
 // new pathfinder for trains. better and faster.
 void NewTrainPathfind(TileIndex tile, byte direction, TPFEnumProc *enum_proc, void *data, byte *cache)
 {
-	if (!_patches.new_pathfinding) {
-		FollowTrack(tile, 0x3000 | TRANSPORT_RAIL, direction, enum_proc, NULL, data);
-	} else {
-		NewTrackPathFinder tpf;
-		tpf.userdata = data;
-		tpf.enum_proc = enum_proc;
-		tpf.tracktype = 0;
-		tpf.maxlength = _patches.pf_maxlength;
-		tpf.nstack = 0;
-		tpf.new_link = tpf.links;
-		tpf.num_links_left = lengthof(tpf.links);
-		memset(tpf.hash_head, 0, sizeof(tpf.hash_head));
+	NewTrackPathFinder tpf;
 
-		NTPEnum(&tpf, tile, direction);
-	}
+	tpf.userdata = data;
+	tpf.enum_proc = enum_proc;
+	tpf.tracktype = 0;
+	tpf.maxlength = _patches.pf_maxlength;
+	tpf.nstack = 0;
+	tpf.new_link = tpf.links;
+	tpf.num_links_left = lengthof(tpf.links);
+	memset(tpf.hash_head, 0, sizeof(tpf.hash_head));
+
+	NTPEnum(&tpf, tile, direction);
 }
 

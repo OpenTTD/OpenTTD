@@ -890,7 +890,6 @@ const SettingDesc patch_settings[] = {
 	{"servint_aircraft",		SDT_UINT16, (void*)100,		&_patches.servint_aircraft,			NULL},
 	{"no_servicing_if_no_breakdowns", SDT_BOOL, (void*)0, &_patches.no_servicing_if_no_breakdowns, NULL},
 
-	{"new_pathfinding",			SDT_BOOL,		(void*)true,	&_patches.new_pathfinding,			NULL},
 	{"pf_maxlength",				SDT_UINT16, (void*)512,		&_patches.pf_maxlength,					NULL},
 	{"pf_maxdepth",					SDT_UINT8,	(void*)16,		&_patches.pf_maxdepth,					NULL},
 
@@ -1083,5 +1082,12 @@ void CheckConfig(void)
 			_news_display_opt = 0xAAAAAAAA; // set all news-messages to full 1010101010...
 			break;
 		}
+	}
+
+	// Increase old default values for pf_maxdepth and pf_maxlength
+	// to support big networks.
+	if (_patches.pf_maxdepth == 16 && _patches.pf_maxlength == 512) {
+		_patches.pf_maxdepth = 48;
+		_patches.pf_maxlength = 4096;
 	}
 }
