@@ -142,7 +142,7 @@ static void TPFMode2(TrackPathFinder *tpf, TileIndex tile, int direction)
 		if (IsTileType(tile, MP_RAILWAY) || IsTileType(tile, MP_STATION) || IsTileType(tile, MP_TUNNELBRIDGE)) {
 			owner = GetTileOwner(tile);
 			/* Check if we are on the middle of a bridge (has no owner) */
-			if (IsTileType(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xC0) == 0xC0)
+			if (IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5 & 0xC0) == 0xC0)
 				owner = -1;
 		}
 	}
@@ -156,7 +156,7 @@ static void TPFMode2(TrackPathFinder *tpf, TileIndex tile, int direction)
 	if (tpf->tracktype == TRANSPORT_RAIL) {
 		if (IsTileType(tile, MP_RAILWAY) || IsTileType(tile, MP_STATION) || IsTileType(tile, MP_TUNNELBRIDGE))
 			/* Check if we are on the middle of a bridge (has no owner) */
-			if (!IsTileType(tile, MP_TUNNELBRIDGE) || (_map5[tile] & 0xC0) != 0xC0)
+			if (!IsTileType(tile, MP_TUNNELBRIDGE) || (_m[tile].m5 & 0xC0) != 0xC0)
 				if (owner != -1 && !IsTileOwner(tile, owner))
 					return;
 	}
@@ -240,9 +240,9 @@ FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, int direction)
 		tile = TileVirtXY(x, y);
 
 		if (IsTileType(tile, MP_TUNNELBRIDGE) &&
-				(_map5[tile] & 0xF0) == 0 &&					// tunnel entrance/exit
-				//((_map5[tile]>>2)&3) == type &&		// rail/road-tunnel <-- This is not necesary to check, right?
-				((_map5[tile] & 3)^2) == direction &&	// entrance towards: 0 = NE, 1 = SE, 2 = SW, 3 = NW
+				(_m[tile].m5 & 0xF0) == 0 &&					// tunnel entrance/exit
+				//((_m[tile].m5>>2)&3) == type &&		// rail/road-tunnel <-- This is not necesary to check, right?
+				((_m[tile].m5 & 3)^2) == direction &&	// entrance towards: 0 = NE, 1 = SE, 2 = SW, 3 = NW
 				GetSlopeZ(x+8, y+8) == z)
 					break;
 	}
@@ -290,8 +290,8 @@ static void TPFMode1(TrackPathFinder *tpf, TileIndex tile, int direction)
 	RememberData rd;
 	TileIndex tile_org = tile;
 
-	if (IsTileType(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xF0) == 0) {
-		if ((_map5[tile] & 3) != direction || ((_map5[tile]>>2)&3) != tpf->tracktype)
+	if (IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5 & 0xF0) == 0) {
+		if ((_m[tile].m5 & 3) != direction || ((_m[tile].m5>>2)&3) != tpf->tracktype)
 			return;
 		tile = SkipToEndOfTunnel(tpf, tile, direction);
 	}
@@ -302,8 +302,8 @@ static void TPFMode1(TrackPathFinder *tpf, TileIndex tile, int direction)
 		if (IsTileType(tile_org, MP_RAILWAY) || IsTileType(tile_org, MP_STATION) || IsTileType(tile_org, MP_TUNNELBRIDGE))
 			if (IsTileType(tile, MP_RAILWAY) || IsTileType(tile, MP_STATION) || IsTileType(tile, MP_TUNNELBRIDGE))
 				/* Check if we are on a bridge (middle parts don't have an owner */
-				if (!IsTileType(tile, MP_TUNNELBRIDGE) || (_map5[tile] & 0xC0) != 0xC0)
-					if (!IsTileType(tile_org, MP_TUNNELBRIDGE) || (_map5[tile_org] & 0xC0) != 0xC0)
+				if (!IsTileType(tile, MP_TUNNELBRIDGE) || (_m[tile].m5 & 0xC0) != 0xC0)
+					if (!IsTileType(tile_org, MP_TUNNELBRIDGE) || (_m[tile_org].m5 & 0xC0) != 0xC0)
 						if (GetTileOwner(tile_org) != GetTileOwner(tile))
 							return;
 	}
@@ -651,11 +651,11 @@ static void NTPEnum(NewTrackPathFinder *tpf, TileIndex tile, uint direction)
 	si.state = 0;
 
 restart:
-	if (IsTileType(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xF0) == 0) {
+	if (IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5 & 0xF0) == 0) {
 		/* This is a tunnel tile */
-		if ( (uint)(_map5[tile] & 3) != (direction ^ 2)) { /* ^ 2 is reversing the direction */
+		if ( (uint)(_m[tile].m5 & 3) != (direction ^ 2)) { /* ^ 2 is reversing the direction */
 			/* We are not just driving out of the tunnel */
-			if ( (uint)(_map5[tile] & 3) != direction || ((_map5[tile]>>1)&6) != tpf->tracktype)
+			if ( (uint)(_m[tile].m5 & 3) != direction || ((_m[tile].m5>>1)&6) != tpf->tracktype)
 				/* We are not driving into the tunnel, or it
 				 * is an invalid tunnel */
 				goto stop_search;
@@ -689,7 +689,7 @@ restart:
 		}
 
 		// regular rail tile, determine the tracks that are actually reachable.
-		bits = _map5[tile] & _bits_mask[direction];
+		bits = _m[tile].m5 & _bits_mask[direction];
 		if (bits == 0) goto stop_search; // no tracks there? stop searching.
 
 		// intersection? then we need to branch the search space,
@@ -709,12 +709,12 @@ restart:
 		if (HasSignals(tile)) {
 			byte m3;
 
-			m3 = _map3_lo[tile];
+			m3 = _m[tile].m3;
 			if (!(m3 & SignalAlongTrackdir(track))) {
 				// if one way signal not pointing towards us, stop going in this direction.
 				if (m3 & SignalAgainstTrackdir(track))
 					goto stop_search;
-			} else if (_map2[tile] & SignalAlongTrackdir(track)) {
+			} else if (_m[tile].m2 & SignalAlongTrackdir(track)) {
 				// green signal in our direction. either one way or two way.
 				si.state |= 1;
 			} else {

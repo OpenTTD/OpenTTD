@@ -260,7 +260,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			->layout for #th position of depot. Since layout must start with depots, it is simple
 		*/
 		{
-			const Station* st = GetStation(_map2[tile]);
+			const Station* st = GetStation(_m[tile].m2);
 			const AirportFTAClass* Airport = GetAirport(st->airport_type);
 			uint i;
 
@@ -277,7 +277,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		v->u.air.state = HANGAR;
 		v->u.air.previous_pos = v->u.air.pos;
-		v->u.air.targetairport = _map2[tile];
+		v->u.air.targetairport = _m[tile].m2;
 		v->next = u;
 
 		v->service_interval = _patches.servint_aircraft;
@@ -326,7 +326,7 @@ bool IsAircraftHangarTile(TileIndex tile)
 	// 0x20 - hangar large airport (32)
 	// 0x41 - hangar small airport (65)
 	return IsTileType(tile, MP_STATION) &&
-				(_map5[tile] == 32 || _map5[tile] == 65 || _map5[tile] == 86);
+				(_m[tile].m5 == 32 || _m[tile].m5 == 65 || _m[tile].m5 == 86);
 }
 
 static bool CheckStoppedInHangar(Vehicle *v)

@@ -367,7 +367,7 @@ static void FixOldStations(void)
 
 	FOR_ALL_STATIONS(st) {
 		/* Check if we need to swap width and height for the station */
-		if (st->train_tile != 0 && _map5[st->train_tile] & 1) {
+		if (st->train_tile != 0 && _m[st->train_tile].m5 & 1) {
 			swap_byte(&st->trainst_w, &st->trainst_h);
 		}
 
@@ -1399,17 +1399,21 @@ static bool LoadOldMapPart1(LoadgameState *ls, int num)
 	uint i;
 
 	for (i = 0; i < OLD_MAP_SIZE; i++) {
-		_map_owner[i] = ReadByte(ls);
+		_m[i].owner = ReadByte(ls);
 	}
 	for (i = 0; i < OLD_MAP_SIZE; i++) {
-		_map2[i] = ReadByte(ls);
+		_m[i].m2 = ReadByte(ls);
 	}
 	for (i = 0; i < OLD_MAP_SIZE; i++) {
 		_old_map3[i * 2] = ReadByte(ls);
 		_old_map3[i * 2 + 1] = ReadByte(ls);
 	}
 	for (i = 0; i < OLD_MAP_SIZE / 4; i++) {
-		_map_extra_bits[i] = ReadByte(ls);
+		byte b = ReadByte(ls);
+		_m[i * 4 + 0].extra = GB(b, 0, 2);
+		_m[i * 4 + 1].extra = GB(b, 2, 2);
+		_m[i * 4 + 2].extra = GB(b, 4, 2);
+		_m[i * 4 + 3].extra = GB(b, 6, 2);
 	}
 
 	return !ls->failed;
@@ -1419,10 +1423,10 @@ static bool LoadOldMapPart2(LoadgameState *ls, int num)
 	uint i;
 
 	for (i = 0; i < OLD_MAP_SIZE; i++) {
-		_map_type_and_height[i] = ReadByte(ls);
+		_m[i].type_height = ReadByte(ls);
 	}
 	for (i = 0; i < OLD_MAP_SIZE; i++) {
-		_map5[i] = ReadByte(ls);
+		_m[i].m5 = ReadByte(ls);
 	}
 
 	return !ls->failed;
@@ -1568,21 +1572,21 @@ static bool LoadOldMain(LoadgameState *ls)
 
 	/* _old_map3 is changed in _map3_lo and _map3_hi */
 	for (i = 0; i < OLD_MAP_SIZE; i++) {
-		_map3_lo[i] = _old_map3[i * 2];
-		_map3_hi[i] = _old_map3[i * 2 + 1];
+		_m[i].m3 = _old_map3[i * 2];
+		_m[i].m4 = _old_map3[i * 2 + 1];
 	}
 
 	for (i = 0; i < OLD_MAP_SIZE; i ++) {
 		if (IsTileType(i, MP_RAILWAY)) {
 			/* We save presignals different from TTDPatch, convert them */
-			if ((_map5[i] & 0xC0) == 0x40) {
+			if ((_m[i].m5 & 0xC0) == 0x40) {
 				/* This byte is always zero in TTD for this type of tile */
-				if (_map3_hi[i]) /* Convert the presignals to our own format */
-					_map3_hi[i] = (_map3_hi[i] >> 1) & 7;
+				if (_m[i].m4) /* Convert the presignals to our own format */
+					_m[i].m4 = (_m[i].m4 >> 1) & 7;
 			}
 			/* TTDPatch stores PBS things in L6 and all elsewhere; so we'll just
 			* clear it for ourselves and let OTTD's rebuild PBS itself */
-			_map3_hi[i] &= 0xF; /* Only keep the lower four bits; upper four is PBS */
+			_m[i].m4 &= 0xF; /* Only keep the lower four bits; upper four is PBS */
 		}
 	}
 

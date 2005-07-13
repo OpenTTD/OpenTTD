@@ -4,13 +4,13 @@
 void SetMapExtraBits(TileIndex tile, byte bits)
 {
 	assert(tile < MapSize());
-	SB(_map_extra_bits[tile >> 2], (tile & 3) * 2, 2, bits & 3);
+	SB(_m[tile].extra, 0, 2, bits & 3);
 }
 
 uint GetMapExtraBits(TileIndex tile)
 {
 	assert(tile < MapSize());
-	return GB(_map_extra_bits[tile >> 2], (tile & 3) * 2, 2);
+	return GB(_m[tile].extra, 0, 2);
 }
 
 

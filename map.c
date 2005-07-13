@@ -7,13 +7,7 @@
 uint _map_log_x;
 uint _map_log_y;
 
-byte   *_map_type_and_height = NULL;
-byte   *_map_owner           = NULL;
-uint16 *_map2                = NULL;
-byte   *_map3_lo             = NULL;
-byte   *_map3_hi             = NULL;
-byte   *_map5                = NULL;
-byte   *_map_extra_bits      = NULL;
+Tile* _m = NULL;
 
 
 void InitMap(uint log_x, uint log_y)
@@ -31,25 +25,11 @@ void InitMap(uint log_x, uint log_y)
 	// XXX - MSVC6 workaround
 	map_size = 1 << (log_x + log_y);
 
-	_map_type_and_height =
-		realloc(_map_type_and_height, map_size * sizeof(_map_type_and_height[0]));
-	_map_owner = realloc(_map_owner, map_size * sizeof(_map_owner[0]));
-	_map2      = realloc(_map2,      map_size * sizeof(_map2[0]));
-	_map3_lo   = realloc(_map3_lo,   map_size * sizeof(_map3_lo[0]));
-	_map3_hi   = realloc(_map3_hi,   map_size * sizeof(_map3_hi[0]));
-	_map5      = realloc(_map5,      map_size * sizeof(_map5[0]));
-	_map_extra_bits =
-		realloc(_map_extra_bits, map_size * sizeof(_map_extra_bits[0]) / 4);
+	free(_m);
+	_m = malloc(map_size * sizeof(*_m));
 
 	// XXX TODO handle memory shortage more gracefully
-	if (_map_type_and_height == NULL ||
-			_map_owner           == NULL ||
-			_map2                == NULL ||
-			_map3_lo             == NULL ||
-			_map3_hi             == NULL ||
-			_map5                == NULL ||
-			_map_extra_bits      == NULL)
-		error("Failed to allocate memory for the map");
+	if (_m == NULL) error("Failed to allocate memory for the map");
 }
 
 

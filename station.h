@@ -270,7 +270,7 @@ int GetCustomStationsCount(StationClass sclass);
 RoadStop * GetRoadStopByTile(TileIndex tile, RoadStopType type);
 static inline int GetRoadStopType(TileIndex tile)
 {
-	return (_map5[tile] < 0x47) ? RS_TRUCK : RS_BUS;
+	return (_m[tile].m5 < 0x47) ? RS_TRUCK : RS_BUS;
 }
 
 uint GetNumRoadStops(const Station *st, RoadStopType type);
@@ -280,7 +280,7 @@ void ClearSlot(Vehicle *v, RoadStop *rs);
 
 static inline bool IsTrainStationTile(TileIndex tile)
 {
-	return IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_map5[tile], 0, 8);
+	return IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_m[tile].m5, 0, 8);
 }
 
 static inline bool IsCompatibleTrainStationTile(TileIndex tile, TileIndex ref)
@@ -288,12 +288,12 @@ static inline bool IsCompatibleTrainStationTile(TileIndex tile, TileIndex ref)
 	assert(IsTrainStationTile(ref));
 	return
 		IsTrainStationTile(tile) &&
-		(_map3_lo[tile] & 0x0F) == (_map3_lo[ref] & 0x0F) && // same rail type?
-		(_map5[tile] & 0x01) == (_map5[ref] & 0x01); // same direction?
+		(_m[tile].m3 & 0x0F) == (_m[ref].m3 & 0x0F) && // same rail type?
+		(_m[tile].m5 & 0x01) == (_m[ref].m5 & 0x01); // same direction?
 }
 
 static inline bool IsRoadStationTile(TileIndex tile) {
-	return IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_map5[tile], 0x43, 0x4B);
+	return IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_m[tile].m5, 0x43, 0x4B);
 }
 
 /**
@@ -310,7 +310,7 @@ static inline bool IsBuoy(const Station* st)
 }
 
 static inline bool IsBuoyTile(TileIndex tile) {
-	return IsTileType(tile, MP_STATION) && _map5[tile] == 0x52;
+	return IsTileType(tile, MP_STATION) && _m[tile].m5 == 0x52;
 }
 
 /* Get's the direction the station exit points towards. Ie, returns 0 for a
@@ -318,7 +318,7 @@ static inline bool IsBuoyTile(TileIndex tile) {
 static inline byte GetRoadStationDir(TileIndex tile)
 {
 	assert(IsRoadStationTile(tile));
-	return (_map5[tile] - 0x43) & 3;
+	return (_m[tile].m5 - 0x43) & 3;
 }
 
 #endif /* STATION_H */

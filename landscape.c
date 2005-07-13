@@ -52,7 +52,7 @@ void FindLandscapeHeightByTile(TileInfo *ti, TileIndex tile)
 	assert(tile < MapSize());
 
 	ti->tile = tile;
-	ti->map5 = _map5[tile];
+	ti->map5 = _m[tile].m5;
 	ti->type = GetTileType(tile);
 	ti->tileh = GetTileSlope(tile, &ti->z);
 }
@@ -359,29 +359,29 @@ void CDECL ModifyTile(TileIndex tile, uint flags, ...)
 	if (flags & (MP_MAP2_CLEAR | MP_MAP2)) {
 		int x = 0;
 		if (flags & MP_MAP2) x = va_arg(va, int);
-		_map2[tile] = x;
+		_m[tile].m2 = x;
 	}
 
 	if (flags & (MP_MAP3LO_CLEAR | MP_MAP3LO)) {
 		int x = 0;
 		if (flags & MP_MAP3LO) x = va_arg(va, int);
-		_map3_lo[tile] = x;
+		_m[tile].m3 = x;
 	}
 
 	if (flags & (MP_MAP3HI_CLEAR | MP_MAP3HI)) {
 		int x = 0;
 		if (flags & MP_MAP3HI) x = va_arg(va, int);
-		_map3_hi[tile] = x;
+		_m[tile].m4 = x;
 	}
 
 	if (flags & (MP_MAPOWNER|MP_MAPOWNER_CURRENT)) {
 		byte x = _current_player;
 		if (flags & MP_MAPOWNER) x = va_arg(va, int);
-		_map_owner[tile] = x;
+		_m[tile].owner = x;
 	}
 
 	if (flags & MP_MAP5) {
-		_map5[tile] = va_arg(va, int);
+		_m[tile].m5 = va_arg(va, int);
 	}
 
 	va_end(va);
@@ -428,15 +428,17 @@ void InitializeLandscape(uint log_x, uint log_y)
 	uint i;
 
 	InitMap(log_x, log_y);
-	map_size = MapSize();
 
-	memset(_map_type_and_height, MP_CLEAR << 4, map_size);
-	memset(_map_owner,              OWNER_NONE, map_size);
-	memset(_map2,                            0, map_size * sizeof(_map2[0]));
-	memset(_map3_lo,                         0, map_size);
-	memset(_map3_hi,                         0, map_size);
-	memset(_map5,                            3, map_size);
-	memset(_map_extra_bits,                  0, map_size / 4);
+	map_size = MapSize();
+	for (i = 0; i < map_size; i++) {
+		_m[i].type_height = MP_CLEAR << 4;
+		_m[i].owner       = OWNER_NONE;
+		_m[i].m2          = 0;
+		_m[i].m3          = 0;
+		_m[i].m4          = 0;
+		_m[i].m5          = 3;
+		_m[i].extra       = 0;
+	}
 
 	// create void tiles at the border
 	for (i = 0; i < MapMaxY(); ++i)
@@ -453,7 +455,7 @@ void ConvertGroundTilesIntoWaterTiles(void)
 	for (tile = 0; tile < MapSize(); ++tile) {
 		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h == 0) {
 			SetTileType(tile, MP_WATER);
-			_map5[tile] = 0;
+			_m[tile].m5 = 0;
 			SetTileOwner(tile, OWNER_WATER);
 		}
 	}
@@ -471,7 +473,7 @@ static void GenerateTerrain(int type, int flag)
 	uint h;
 	const Sprite* template;
 	const byte *p;
-	byte *tile;
+	Tile* tile;
 	byte direction;
 
 	r = Random();
@@ -524,16 +526,16 @@ static void GenerateTerrain(int type, int flag)
 	if (y + h >= MapMaxY() - 1)
 		return;
 
-	tile = &_map_type_and_height[TileXY(x, y)];
+	tile = &_m[TileXY(x, y)];
 
 	switch (direction) {
 		case 0:
 			do {
-				byte *tile_cur = tile;
+				Tile* tile_cur = tile;
 				uint w_cur;
 
 				for (w_cur = w; w_cur != 0; --w_cur) {
-					if (*p >= *tile_cur) *tile_cur = *p;
+					if (*p >= tile_cur->type_height) tile_cur->type_height = *p;
 					p++;
 					tile_cur++;
 				}
@@ -543,11 +545,11 @@ static void GenerateTerrain(int type, int flag)
 
 		case 1:
 			do {
-				byte *tile_cur = tile;
+				Tile* tile_cur = tile;
 				uint h_cur;
 
 				for (h_cur = h; h_cur != 0; --h_cur) {
-					if (*p >= *tile_cur) *tile_cur = *p;
+					if (*p >= tile_cur->type_height) tile_cur->type_height = *p;
 					p++;
 					tile_cur += TileDiffXY(0, 1);
 				}
@@ -558,11 +560,11 @@ static void GenerateTerrain(int type, int flag)
 		case 2:
 			tile += TileDiffXY(w - 1, 0);
 			do {
-				byte *tile_cur = tile;
+				Tile* tile_cur = tile;
 				uint w_cur;
 
 				for (w_cur = w; w_cur != 0; --w_cur) {
-					if (*p >= *tile_cur) *tile_cur = *p;
+					if (*p >= tile_cur->type_height) tile_cur->type_height = *p;
 					p++;
 					tile_cur--;
 				}
@@ -573,11 +575,11 @@ static void GenerateTerrain(int type, int flag)
 		case 3:
 			tile += TileDiffXY(0, h - 1);
 			do {
-				byte *tile_cur = tile;
+				Tile* tile_cur = tile;
 				uint h_cur;
 
 				for (h_cur = h; h_cur != 0; --h_cur) {
-					if (*p >= *tile_cur) *tile_cur = *p;
+					if (*p >= tile_cur->type_height) tile_cur->type_height = *p;
 					p++;
 					tile_cur -= TileDiffXY(0, 1);
 				}
@@ -613,7 +615,7 @@ static void CreateDesertOrRainForest(void)
 		for (data = _make_desert_or_rainforest_data;
 				data != endof(_make_desert_or_rainforest_data); ++data) {
 			TileIndex t = TILE_MASK(tile + ToTileIndexDiff(*data));
-			if (IsTileType(t, MP_CLEAR) && (_map5[t] & 0x1c) == 0x14) break;
+			if (IsTileType(t, MP_CLEAR) && (_m[t].m5 & 0x1c) == 0x14) break;
 		}
 		if (data == endof(_make_desert_or_rainforest_data))
 			SetMapExtraBits(tile, 2);

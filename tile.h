@@ -58,14 +58,14 @@ static inline bool CorrectZ(uint tileh)
 static inline uint TileHeight(TileIndex tile)
 {
 	assert(tile < MapSize());
-	return GB(_map_type_and_height[tile], 0, 4);
+	return GB(_m[tile].type_height, 0, 4);
 }
 
 static inline void SetTileHeight(TileIndex tile, uint height)
 {
 	assert(tile < MapSize());
 	assert(height < 16);
-	SB(_map_type_and_height[tile], 0, 4, height);
+	SB(_m[tile].type_height, 0, 4, height);
 }
 
 static inline uint TilePixelHeight(TileIndex tile)
@@ -76,13 +76,13 @@ static inline uint TilePixelHeight(TileIndex tile)
 static inline TileType GetTileType(TileIndex tile)
 {
 	assert(tile < MapSize());
-	return GB(_map_type_and_height[tile], 4, 4);
+	return GB(_m[tile].type_height, 4, 4);
 }
 
 static inline void SetTileType(TileIndex tile, TileType type)
 {
 	assert(tile < MapSize());
-	SB(_map_type_and_height[tile], 4, 4, type);
+	SB(_m[tile].type_height, 4, 4, type);
 }
 
 static inline bool IsTileType(TileIndex tile, TileType type)
@@ -97,7 +97,7 @@ static inline Owner GetTileOwner(TileIndex tile)
 	assert(!IsTileType(tile, MP_VOID));
 	assert(!IsTileType(tile, MP_INDUSTRY));
 
-	return _map_owner[tile];
+	return _m[tile].owner;
 }
 
 static inline void SetTileOwner(TileIndex tile, Owner owner)
@@ -107,7 +107,7 @@ static inline void SetTileOwner(TileIndex tile, Owner owner)
 	assert(!IsTileType(tile, MP_VOID));
 	assert(!IsTileType(tile, MP_INDUSTRY));
 
-	_map_owner[tile] = owner;
+	_m[tile].owner = owner;
 }
 
 static inline bool IsTileOwner(TileIndex tile, Owner owner)

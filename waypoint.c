@@ -165,7 +165,7 @@ int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	/* if custom gfx are used, make sure it is within bounds */
 	if (p1 > 0x100 + (uint)GetCustomStationsCount(STAT_CLASS_WAYP)) return CMD_ERROR;
 
-	if (!IsTileType(tile, MP_RAILWAY) || ((dir = 0, _map5[tile] != 1) && (dir = 1, _map5[tile] != 2)))
+	if (!IsTileType(tile, MP_RAILWAY) || ((dir = 0, _m[tile].m5 != 1) && (dir = 1, _m[tile].m5 != 2)))
 		return_cmd_error(STR_1005_NO_SUITABLE_RAILROAD_TRACK);
 
 	if (!CheckTileOwnership(tile))
@@ -194,8 +194,8 @@ int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		ModifyTile(tile, MP_MAP5, RAIL_TYPE_WAYPOINT | dir);
 		if (--p1 & 0x100) { // waypoint type 0 uses default graphics
 			// custom graphics
-			_map3_lo[tile] |= 16;
-			_map3_hi[tile] = p1 & 0xff;
+			_m[tile].m3 |= 16;
+			_m[tile].m4 = p1 & 0xff;
 		}
 
 		wp->deleted = 0;
@@ -248,7 +248,7 @@ int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 	Waypoint *wp;
 
 	/* Make sure it's a waypoint */
-	if (!IsTileType(tile, MP_RAILWAY) || !IsRailWaypoint(_map5[tile]))
+	if (!IsTileType(tile, MP_RAILWAY) || !IsRailWaypoint(_m[tile].m5))
 		return CMD_ERROR;
 
 	if (!CheckTileOwnership(tile) && !(_current_player == OWNER_WATER))
@@ -258,7 +258,7 @@ int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		int direction = _map5[tile] & RAIL_WAYPOINT_TRACK_MASK;
+		int direction = _m[tile].m5 & RAIL_WAYPOINT_TRACK_MASK;
 
 		wp = GetWaypointByTile(tile);
 
@@ -267,8 +267,8 @@ int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 
 		if (justremove) {
 			ModifyTile(tile, MP_MAP5, 1<<direction);
-			_map3_lo[tile] &= ~16;
-			_map3_hi[tile] = 0;
+			_m[tile].m3 &= ~16;
+			_m[tile].m4 = 0;
 		} else {
 			DoClearSquare(tile);
 			SetSignalsOnBothDir(tile, direction);

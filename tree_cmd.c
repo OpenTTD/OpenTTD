@@ -44,20 +44,20 @@ static void PlaceTree(TileIndex tile, uint32 r, byte m5_or)
 		m5 = (byte)(r >> 16);
 		if ((m5 & 0x7) == 7) m5--; // there is no growth state 7
 
-		_map5[tile] = m5 & 0x07;	// growth state;
-		_map5[tile] |=  m5 & 0xC0;	// amount of trees
+		_m[tile].m5 = m5 & 0x07;	// growth state;
+		_m[tile].m5 |=  m5 & 0xC0;	// amount of trees
 
-		_map3_lo[tile] = tree;		// set type of tree
-		_map3_hi[tile] = 0;		// no hedge
+		_m[tile].m3 = tree;		// set type of tree
+		_m[tile].m4 = 0;		// no hedge
 
 		// above snowline?
 		if (_opt.landscape == LT_HILLY && GetTileZ(tile) > _opt.snow_line) {
-			_map2[tile] = 0xE0;	// set land type to snow
-			_map2[tile] |= (byte)(r >> 24)&0x07; // randomize counter
+			_m[tile].m2 = 0xE0;	// set land type to snow
+			_m[tile].m2 |= (byte)(r >> 24)&0x07; // randomize counter
 		}
 		else
 		{
-			_map2[tile] = (byte)(r >> 24)&0x1F; // randomize counter and ground
+			_m[tile].m2 = (byte)(r >> 24)&0x1F; // randomize counter and ground
 		}
 
 
@@ -86,7 +86,7 @@ static void DoPlaceMoreTrees(TileIndex tile)
 		/* Only on tiles within 13 squares from tile,
 		    on clear tiles, and NOT on farm-tiles or rocks */
 		if (dist <= 13 && IsTileType(cur_tile, MP_CLEAR) &&
-			 (_map5[cur_tile] & 0x1F) != 0x0F && (_map5[cur_tile] & 0x1C) != 8) {
+			 (_m[cur_tile].m5 & 0x1F) != 0x0F && (_m[cur_tile].m5 & 0x1C) != 8) {
 			PlaceTree(cur_tile, r, dist <= 6 ? 0xC0 : 0);
 		}
 	} while (--i);
@@ -111,7 +111,7 @@ void PlaceTreesRandomly(void)
 		r = Random();
 		tile = TILE_MASK(r);
 		/* Only on clear tiles, and NOT on farm-tiles or rocks */
-		if (IsTileType(tile, MP_CLEAR) && (_map5[tile] & 0x1F) != 0x0F && (_map5[tile] & 0x1C) != 8) {
+		if (IsTileType(tile, MP_CLEAR) && (_m[tile].m5 & 0x1F) != 0x0F && (_m[tile].m5 & 0x1C) != 8) {
 			PlaceTree(tile, r, 0);
 		}
 	} while (--i);
@@ -188,7 +188,7 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 					}
 
 					if (flags & DC_EXEC) {
-						_map5[ti.tile] = ti.map5 + 0x40;
+						_m[ti.tile].m5 = ti.map5 + 0x40;
 						MarkTileDirtyByTile(ti.tile);
 					}
 					// 2x as expensive to add more trees to an existing tile
@@ -274,7 +274,7 @@ static void DrawTile_Trees(TileInfo *ti)
 	byte z;
 	TreeListEnt te[4];
 
-	m2 = _map2[ti->tile];
+	m2 = _m[ti->tile].m2;
 
 	if ( (m2&0x30) == 0) {
 		DrawClearLandTile(ti, 3);
@@ -284,7 +284,7 @@ static void DrawTile_Trees(TileInfo *ti)
 		DrawHillyLandTile(ti);
 	}
 
-	DrawClearLandFence(ti, _map3_hi[ti->tile] >> 2);
+	DrawClearLandFence(ti, _m[ti->tile].m4 >> 2);
 
 	z = ti->z;
 	if (ti->tileh != 0) {
@@ -306,7 +306,7 @@ static void DrawTile_Trees(TileInfo *ti)
 
 		d = _tree_layout_xy[(tmp & 0x30) >> 4];
 
-		index = ((tmp>>6)&3) + (_map3_lo[ti->tile]<<2);
+		index = ((tmp>>6)&3) + (_m[ti->tile].m3<<2);
 
 		/* different tree styles above one of the grounds */
 		if ((m2 & 0xB0) == 0xA0 && index >= 48 && index < 80)
@@ -378,8 +378,8 @@ static int32 ClearTile_Trees(TileIndex tile, byte flags)
 			ChangeTownRating(t, RATING_TREE_DOWN_STEP, RATING_TREE_MINIMUM);
 	}
 
-	num = (_map5[tile] >> 6) + 1;
-	if ( (byte)(_map3_lo[tile]-0x14) <= (0x1A-0x14))
+	num = (_m[tile].m5 >> 6) + 1;
+	if ( (byte)(_m[tile].m3-0x14) <= (0x1A-0x14))
 		num <<= 2;
 
 	if (flags & DC_EXEC)
@@ -400,7 +400,7 @@ static void GetTileDesc_Trees(TileIndex tile, TileDesc *td)
 
 	td->owner = GetTileOwner(tile);
 
-	b = _map3_lo[tile];
+	b = _m[tile].m3;
 	(str=STR_2810_CACTUS_PLANTS, b==0x1B) ||
 	(str=STR_280F_RAINFOREST, IS_BYTE_INSIDE(b, 0x14, 0x1A+1)) ||
 	(str=STR_280E_TREES, true);
@@ -430,9 +430,9 @@ static void TileLoopTreesDesert(TileIndex tile)
 			SndPlayTileFx(_desert_sounds[(r >> 16) & 3], tile);
 		}
 	} else if (b == 1) {
-		if ((_map2[tile] & 0x30) != 0x20) {
-			_map2[tile] &= 0xF;
-			_map2[tile] |= 0xE0;
+		if ((_m[tile].m2 & 0x30) != 0x20) {
+			_m[tile].m2 &= 0xF;
+			_m[tile].m2 |= 0xE0;
 			MarkTileDirtyByTile(tile);
 		}
 	}
@@ -446,7 +446,7 @@ static void TileLoopTreesAlps(TileIndex tile)
 	/* distance from snow line, in steps of 8 */
 	k = GetTileZ(tile) - _opt.snow_line;
 
-	tmp = _map5[tile] & 0xF0;
+	tmp = _m[tile].m5 & 0xF0;
 
 	if (k < -8) {
 		/* snow_m2_down */
@@ -481,8 +481,8 @@ static void TileLoopTreesAlps(TileIndex tile)
 		}
 	}
 
-	_map2[tile] &= 0xF;
-	_map2[tile] |= m2;
+	_m[tile].m2 &= 0xF;
+	_m[tile].m2 |= m2;
 	MarkTileDirtyByTile(tile);
 }
 
@@ -512,16 +512,16 @@ static void TileLoop_Trees(TileIndex tile)
 
 	/* increase counter */
 	{
-		uint16 m2 = _map2[tile];
-		_map2[tile] = m2 = (m2 & 0xF0) | ((m2+1)&0xF);
+		uint16 m2 = _m[tile].m2;
+		_m[tile].m2 = m2 = (m2 & 0xF0) | ((m2+1)&0xF);
 		if (m2 & 0xF)
 			return;
 	}
 
-	m5 = _map5[tile];
+	m5 = _m[tile].m5;
 	if ((m5&7) == 3) {
 		/* regular sized tree */
-		if (_opt.landscape == LT_DESERT && _map3_lo[tile]!=0x1B && GetMapExtraBits(tile)==1) {
+		if (_opt.landscape == LT_DESERT && _m[tile].m3!=0x1B && GetMapExtraBits(tile)==1) {
 			m5++; /* start destructing */
 		} else {
 			switch(Random() & 0x7) {
@@ -537,25 +537,25 @@ static void TileLoop_Trees(TileIndex tile)
 				/* fall through */
 
 			case 2: { /* add a neighbouring tree */
-				byte m3 = _map3_lo[tile];
+				byte m3 = _m[tile].m3;
 
 				tile += ToTileIndexDiff(_tileloop_trees_dir[Random() & 7]);
 
 				if (!IsTileType(tile, MP_CLEAR))
 					return;
 
-				if ( (_map5[tile] & 0x1C) == 4) {
-					_map2[tile] = 0x10;
-				} else if ((_map5[tile] & 0x1C) == 16) {
-					_map2[tile] = ((_map5[tile] & 3) << 6) | 0x20;
+				if ( (_m[tile].m5 & 0x1C) == 4) {
+					_m[tile].m2 = 0x10;
+				} else if ((_m[tile].m5 & 0x1C) == 16) {
+					_m[tile].m2 = ((_m[tile].m5 & 3) << 6) | 0x20;
 				} else {
-					if ((_map5[tile] & 0x1F) != 3)
+					if ((_m[tile].m5 & 0x1F) != 3)
 						return;
-					_map2[tile] = 0;
+					_m[tile].m2 = 0;
 				}
 
-				_map3_lo[tile] = m3;
-				_map3_hi[tile] = 0;
+				_m[tile].m3 = m3;
+				_m[tile].m4 = 0;
 				SetTileType(tile, MP_TREES);
 
 				m5 = 0;
@@ -576,7 +576,7 @@ static void TileLoop_Trees(TileIndex tile)
 			SetTileType(tile, MP_CLEAR);
 
 			m5 = 3;
-			m2 = _map2[tile];
+			m2 = _m[tile].m2;
 			if ((m2&0x30) != 0) { // on snow/desert or rough land
 				m5 = (m2 >> 6) | 0x10;
 				if ((m2&0x30) != 0x20) // if not on snow/desert, then on rough land
@@ -589,7 +589,7 @@ static void TileLoop_Trees(TileIndex tile)
 		m5++;
 	}
 
-	_map5[tile] = m5;
+	_m[tile].m5 = m5;
 	MarkTileDirtyByTile(tile);
 }
 
@@ -604,7 +604,7 @@ void OnTick_Trees(void)
 	if (_opt.landscape == LT_DESERT &&
 			(r=Random(),tile=TILE_MASK(r),GetMapExtraBits(tile)==2) &&
 			IsTileType(tile, MP_CLEAR) &&
-			(m=_map5[tile]&0x1C, m<=4) &&
+			(m=_m[tile].m5&0x1C, m<=4) &&
 			(tree=GetRandomTreeType(tile, r>>24)) >= 0) {
 
 		ModifyTile(tile,
@@ -612,7 +612,7 @@ void OnTick_Trees(void)
 			MP_MAP2 | MP_MAP3LO | MP_MAP3HI | MP_MAP5,
 			(m == 4 ? 0x10 : 0),
 			tree,
-			_map3_hi[tile] & ~3,
+			_m[tile].m4 & ~3,
 			0
 		);
 	}
@@ -625,7 +625,7 @@ void OnTick_Trees(void)
 	r = Random();
 	tile = TILE_MASK(r);
 	if (IsTileType(tile, MP_CLEAR) &&
-			(m=_map5[tile]&0x1C, m==0 || m==4 || m==0x10) &&
+			(m=_m[tile].m5&0x1C, m==0 || m==4 || m==0x10) &&
 			(tree=GetRandomTreeType(tile, r>>24)) >= 0) {
 		int m2;
 
@@ -634,7 +634,7 @@ void OnTick_Trees(void)
 		} else if (m == 4) {
 			m2 = 0x10;
 		} else {
-			m2 = ((_map5[tile] & 3) << 6) | 0x20;
+			m2 = ((_m[tile].m5 & 3) << 6) | 0x20;
 		}
 
 		ModifyTile(tile,
@@ -642,7 +642,7 @@ void OnTick_Trees(void)
 			MP_MAP2 | MP_MAP3LO | MP_MAP3HI | MP_MAP5,
 			m2,
 			tree,
-			_map3_hi[tile] & ~3,
+			_m[tile].m4 & ~3,
 			0
 		);
 	}

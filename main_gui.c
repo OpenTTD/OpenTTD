@@ -1209,7 +1209,7 @@ static void PlaceProc_RockyArea(TileIndex tile)
 	if (!IsTileType(tile, MP_CLEAR) && !IsTileType(tile, MP_TREES))
 		return;
 
-	ModifyTile(tile, MP_SETTYPE(MP_CLEAR) | MP_MAP5, (_map5[tile] & ~0x1C) | 0xB);
+	ModifyTile(tile, MP_SETTYPE(MP_CLEAR) | MP_MAP5, (_m[tile].m5 & ~0x1C) | 0xB);
 	SndPlayTileFx(SND_1F_SPLAT, tile);
 }
 

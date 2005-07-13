@@ -194,7 +194,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, TileIndex tile)
 		switch (GetTileType(tile)) {
 		case MP_RAILWAY:
 			if (v->type == VEH_Train && IsTileOwner(tile, _local_player)) {
-				if ((_map5[tile]&0xFC)==0xC0) {
+				if ((_m[tile].m5&0xFC)==0xC0) {
 					order.type = OT_GOTO_DEPOT;
 					order.flags = OF_PART_OF_ORDERS;
 					order.station = GetDepotByTile(tile)->index;
@@ -204,7 +204,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, TileIndex tile)
 			break;
 
 		case MP_STREET:
-			if ((_map5[tile] & 0xF0) == 0x20 && v->type == VEH_Road && IsTileOwner(tile, _local_player)) {
+			if ((_m[tile].m5 & 0xF0) == 0x20 && v->type == VEH_Road && IsTileOwner(tile, _local_player)) {
 				order.type = OT_GOTO_DEPOT;
 				order.flags = OF_PART_OF_ORDERS;
 				order.station = GetDepotByTile(tile)->index;
@@ -217,7 +217,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, TileIndex tile)
 			if (IsAircraftHangarTile(tile) && IsTileOwner(tile, _local_player)) {
 				order.type = OT_GOTO_DEPOT;
 				order.flags = OF_PART_OF_ORDERS | OF_NON_STOP;	//XXX - whats the nonstop stuff doing here?
-				order.station = _map2[tile];
+				order.station = _m[tile].m2;
 				return order;
 			}
 			break;
@@ -226,7 +226,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, TileIndex tile)
 			if (v->type != VEH_Ship) break;
 			if (IsTileDepotType(tile, TRANSPORT_WATER) &&
 					IsTileOwner(tile, _local_player)) {
-				switch (_map5[tile]) {
+				switch (_m[tile].m5) {
 					case 0x81: tile -= TileDiffXY(1, 0); break;
 					case 0x83: tile -= TileDiffXY(0, 1); break;
 				}
@@ -245,7 +245,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, TileIndex tile)
 	if (IsTileType(tile, MP_RAILWAY) &&
 			v->type == VEH_Train &&
 			IsTileOwner(tile, _local_player) &&
-			(_map5[tile] & 0xFE) == 0xC4) {
+			(_m[tile].m5 & 0xFE) == 0xC4) {
 		order.type = OT_GOTO_WAYPOINT;
 		order.flags = 0;
 		order.station = GetWaypointByTile(tile)->index;
@@ -253,7 +253,7 @@ static Order GetOrderCmdFromTile(Vehicle *v, TileIndex tile)
 	}
 
 	if (IsTileType(tile, MP_STATION)) {
-		st = GetStation(st_index = _map2[tile]);
+		st = GetStation(st_index = _m[tile].m2);
 
 		if (st->owner == _current_player || st->owner == OWNER_NONE) {
 			byte facil;

@@ -31,7 +31,7 @@ static bool HasTileRoadAt(TileIndex tile, int i)
 
 	switch (GetTileType(tile)) {
 	case MP_STREET:
-		b = _map5[tile];
+		b = _m[tile].m5;
 
 		if ((b & 0xF0) == 0) {
 		} else if (IsLevelCrossing(tile)) {
@@ -43,7 +43,7 @@ static bool HasTileRoadAt(TileIndex tile, int i)
 		break;
 
 	case MP_STATION:
-		b = _map5[tile];
+		b = _m[tile].m5;
 		if (!IS_BYTE_INSIDE(b, 0x43, 0x43+8))
 			return false;
 		return ((~(b - 0x43) & 3) == i);
@@ -81,7 +81,7 @@ static bool CheckAllowRemoveRoad(TileIndex tile, uint br, bool *edge_road)
 
 	// A railway crossing has the road owner in the map3_lo byte.
 	if (IsTileType(tile, MP_STREET) && IsLevelCrossing(tile)) {
-		owner = _map3_lo[tile];
+		owner = _m[tile].m3;
 	} else {
 		owner = GetTileOwner(tile);
 	}
@@ -157,7 +157,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	// owner for railraod crossing is stored somewhere else
 	// XXX - Fix this so for a given tiletype the owner of the type is in the same variable
 	if (IsTileType(tile, MP_STREET) && IsLevelCrossing(tile)) {
-		owner = _map3_lo[tile];
+		owner = _m[tile].m3;
 	} else
 		owner = GetTileOwner(tile);
 
@@ -165,7 +165,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) { // index of town is not saved for bridge (no space)
 			t = ClosestTownFromTile(tile, _patches.dist_local_authority);
 		} else
-			t = GetTown(_map2[tile]);
+			t = GetTown(_m[tile].m2);
 	} else
 		t = NULL;
 
@@ -196,7 +196,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		if (flags & DC_EXEC) {
 			ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
-			_map5[tile] = ti.map5 & 0xC7;
+			_m[tile].m5 = ti.map5 & 0xC7;
 			SetTileOwner(tile, OWNER_NONE);
 			MarkTileDirtyByTile(tile);
 		}
@@ -228,8 +228,8 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if (flags & DC_EXEC) {
 				ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
 
-				_map5[tile] ^= c;
-				if ((_map5[tile]&0xF) == 0)
+				_m[tile].m5 ^= c;
+				if ((_m[tile].m5&0xF) == 0)
 					DoClearSquare(tile);
 				else
 					MarkTileDirtyByTile(tile);
@@ -255,7 +255,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				ModifyTile(tile,
 					MP_SETTYPE(MP_RAILWAY) |
 					MP_MAP2_CLEAR | MP_MAP3LO | MP_MAP3HI_CLEAR | MP_MAP5,
-					_map3_hi[tile] & 0xF, /* map3_lo */
+					_m[tile].m4 & 0xF, /* map3_lo */
 					c											/* map5 */
 				);
 				if (pbs_track != 0)
@@ -408,7 +408,7 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				MP_MAP2 | MP_MAP3LO | MP_MAP3HI | MP_MAP5,
 				p2,
 				_current_player, /* map3_lo */
-				_map3_lo[tile] & 0xF, /* map3_hi */
+				_m[tile].m3 & 0xF, /* map3_hi */
 				m5 /* map5 */
 			);
 			if (pbs_track != 0)
@@ -476,12 +476,12 @@ do_clear:;
 	if (flags & DC_EXEC) {
 		if (ti.type != MP_STREET) {
 			SetTileType(tile, MP_STREET);
-			_map5[tile] = 0;
-			_map2[tile] = p2;
+			_m[tile].m5 = 0;
+			_m[tile].m2 = p2;
 			SetTileOwner(tile, _current_player);
 		}
 
-		_map5[tile] |= (byte)pieces;
+		_m[tile].m5 |= (byte)pieces;
 
 		MarkTileDirtyByTile(tile);
 	}
@@ -497,11 +497,11 @@ int32 DoConvertStreetRail(TileIndex tile, uint totype, bool exec)
 	if (!CheckTileOwnership(tile) || !EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	// tile is already of requested type?
-	if ( (uint)(_map3_hi[tile] & 0xF) == totype) return CMD_ERROR;
+	if ( (uint)(_m[tile].m4 & 0xF) == totype) return CMD_ERROR;
 
 	if (exec) {
 		// change type.
-		_map3_hi[tile] = (_map3_hi[tile] & 0xF0) + totype;
+		_m[tile].m4 = (_m[tile].m4 & 0xF0) + totype;
 		MarkTileDirtyByTile(tile);
 	}
 
@@ -688,7 +688,7 @@ static int32 RemoveRoadDepot(TileIndex tile, uint32 flags)
 static int32 ClearTile_Road(TileIndex tile, byte flags)
 {
 	int32 ret;
-	byte m5 = _map5[tile];
+	byte m5 = _m[tile].m5;
 
 	if ( (m5 & 0xF0) == 0) {
 		byte b = m5 & 0xF;
@@ -783,11 +783,11 @@ static void DrawTile_Road(TileInfo *ti)
 			image = _road_tile_sprites_1[ti->map5 & 0xF];
 		}
 
-		m2 = (_map3_hi[ti->tile] & 0x70) >> 4;
+		m2 = (_m[ti->tile].m4 & 0x70) >> 4;
 
 		if (m2 == 0) image |= 0x3178000;
 
-		if (_map3_hi[ti->tile] & 0x80) {
+		if (_m[ti->tile].m4 & 0x80) {
 			image += 19;
 		} else if (m2 > 1 && m2 != 6) {
 			image -= 19; /* pavement along the road? */
@@ -826,15 +826,15 @@ static void DrawTile_Road(TileInfo *ti)
 		if ( (ti->map5 & 4) != 0)
 			image += 2;
 
-		if ( _map3_hi[ti->tile] & 0x80) {
+		if ( _m[ti->tile].m4 & 0x80) {
 			image += 8;
 		} else {
-			m2 = (_map3_hi[ti->tile] & 0x70) >> 4;
+			m2 = (_m[ti->tile].m4 & 0x70) >> 4;
 			if (m2 == 0) image |= 0x3178000;
 			if (m2 > 1) image += 4;
 		}
 
-		DrawGroundSprite(image + (_map3_hi[ti->tile] & 0xF) * 12);
+		DrawGroundSprite(image + (_m[ti->tile].m4 & 0xF) * 12);
 
 		if (_debug_pbs_level >= 1) {
 			byte pbs = PBSTileReserved(ti->tile);
@@ -985,22 +985,22 @@ static void TileLoop_Road(TileIndex tile)
 
 	if (_opt.landscape == LT_HILLY) {
 		// Fix snow style if the road is above the snowline
-		if ((_map3_hi[tile] & 0x80) != ((GetTileZ(tile) > _opt.snow_line) ? 0x80 : 0x00)) {
-			_map3_hi[tile] ^= 0x80;
+		if ((_m[tile].m4 & 0x80) != ((GetTileZ(tile) > _opt.snow_line) ? 0x80 : 0x00)) {
+			_m[tile].m4 ^= 0x80;
 			MarkTileDirtyByTile(tile);
 		}
 	} else if (_opt.landscape == LT_DESERT) {
 		// Fix desert style
-		if (GetMapExtraBits(tile) == 1 && !(_map3_hi[tile] & 0x80)) {
-			_map3_hi[tile] |= 0x80;
+		if (GetMapExtraBits(tile) == 1 && !(_m[tile].m4 & 0x80)) {
+			_m[tile].m4 |= 0x80;
 			MarkTileDirtyByTile(tile);
 		}
 	}
 
-	if (_map5[tile] & 0xE0)
+	if (_m[tile].m5 & 0xE0)
 		return;
 
-	if (((_map3_hi[tile] & 0x70) >> 4) < 6) {
+	if (((_m[tile].m4 & 0x70) >> 4) < 6) {
 		t = ClosestTownFromTile(tile, (uint)-1);
 
 		grp = 0;
@@ -1010,9 +1010,9 @@ static void TileLoop_Road(TileIndex tile)
 			// Show an animation to indicate road work
 			if (t->road_build_months != 0 &&
 					!(DistanceManhattan(t->xy, tile) >= 8 && grp == 0) &&
-					(_map5[tile]==5 || _map5[tile]==10)) {
+					(_m[tile].m5==5 || _m[tile].m5==10)) {
 				if (GetTileSlope(tile, NULL) == 0 && EnsureNoVehicle(tile) && CHANCE16(1,20)) {
-					_map3_hi[tile] |= ((((_map3_hi[tile] & 0x70) >> 4 ) <=  2) ? 7 : 6) << 4;
+					_m[tile].m4 |= ((((_m[tile].m4 & 0x70) >> 4 ) <=  2) ? 7 : 6) << 4;
 
 					SndPlayTileFx(SND_21_JACKHAMMER, tile);
 					CreateEffectVehicleAbove(
@@ -1028,7 +1028,7 @@ static void TileLoop_Road(TileIndex tile)
 
 		{
 			const byte *p = (_opt.landscape == LT_CANDY) ? _town_road_types_2[grp] : _town_road_types[grp];
-			byte b = (_map3_hi[tile] & 0x70) >> 4;
+			byte b = (_m[tile].m4 & 0x70) >> 4;
 
 			if (b == p[0])
 				return;
@@ -1040,23 +1040,23 @@ static void TileLoop_Road(TileIndex tile)
 			} else {
 				b = 0;
 			}
-			_map3_hi[tile] = (_map3_hi[tile] & ~0x70) | (b << 4);
+			_m[tile].m4 = (_m[tile].m4 & ~0x70) | (b << 4);
 			MarkTileDirtyByTile(tile);
 		}
 	} else {
 		// Handle road work
 		//XXX undocumented
 
-		byte b = _map3_hi[tile];
+		byte b = _m[tile].m4;
 		//roadworks take place only
 		//keep roadworks running for 16 loops
 		//lower 4 bits of map3_hi store the counter now
 		if ((b & 0xF) != 0xF) {
-			_map3_hi[tile] = b + 1;
+			_m[tile].m4 = b + 1;
 			return;
 		}
 		//roadworks finished
-		_map3_hi[tile] = ((((b& 0x70) >> 4)== 6) ? 1 : 2) << 4;
+		_m[tile].m4 = ((((b& 0x70) >> 4)== 6) ? 1 : 2) << 4;
 		MarkTileDirtyByTile(tile);
 	}
 }
@@ -1065,7 +1065,7 @@ void ShowRoadDepotWindow(TileIndex tile);
 
 static void ClickTile_Road(TileIndex tile)
 {
-	if ((_map5[tile] & 0xF0) == 0x20) {
+	if ((_m[tile].m5 & 0xF0) == 0x20) {
 		ShowRoadDepotWindow(tile);
 	}
 }
@@ -1079,12 +1079,12 @@ static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode)
 	if (mode == TRANSPORT_RAIL) {
 		if (!IsLevelCrossing(tile))
 			return 0;
-		return _map5[tile] & 8 ? 0x101 : 0x202;
+		return _m[tile].m5 & 8 ? 0x101 : 0x202;
 	} else if  (mode == TRANSPORT_ROAD) {
-		byte b = _map5[tile];
+		byte b = _m[tile].m5;
 		if ((b & 0xF0) == 0) {
 			/* Ordinary road */
-			if (!_road_special_gettrackstatus && ((_map3_hi[tile]&0x70) >> 4) >= 6)
+			if (!_road_special_gettrackstatus && ((_m[tile].m4&0x70) >> 4) >= 6)
 				return 0;
 			return _road_trackbits[b&0xF] * 0x101;
 		} else if (IsLevelCrossing(tile)) {
@@ -1117,9 +1117,9 @@ static const StringID _road_tile_strings[] = {
 
 static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
 {
-	int i = (_map5[tile] >> 4);
+	int i = (_m[tile].m5 >> 4);
 	if (i == 0)
-		i = ((_map3_hi[tile] & 0x70) >> 4) + 3;
+		i = ((_m[tile].m4 & 0x70) >> 4) + 3;
 	td->str = _road_tile_strings[i - 1];
 	td->owner = GetTileOwner(tile);
 }
@@ -1131,15 +1131,15 @@ static const byte _roadveh_enter_depot_unk0[4] = {
 static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 {
 	if (IsLevelCrossing(tile)) {
-		if (v->type == VEH_Train && (_map5[tile] & 4) == 0) {
+		if (v->type == VEH_Train && (_m[tile].m5 & 4) == 0) {
 			/* train crossing a road */
 			SndPlayVehicleFx(SND_0E_LEVEL_CROSSING, v);
-			_map5[tile] |= 4;
+			_m[tile].m5 |= 4;
 			MarkTileDirtyByTile(tile);
 		}
-	} else if ((_map5[tile]&0xF0) ==  0x20){
+	} else if ((_m[tile].m5&0xF0) ==  0x20){
 		if (v->type == VEH_Road && v->u.road.frame == 11) {
-			if (_roadveh_enter_depot_unk0[_map5[tile]&3] == v->u.road.state) {
+			if (_roadveh_enter_depot_unk0[_m[tile].m5&3] == v->u.road.state) {
 				RoadVehEnterDepot(v);
 				return 4;
 			}
@@ -1152,7 +1152,7 @@ static void VehicleLeave_Road(Vehicle *v, TileIndex tile, int x, int y)
 {
 	if (IsLevelCrossing(tile) && v->type == VEH_Train && v->next == NULL) {
 		// Turn off level crossing lights
-		_map5[tile] &= ~4;
+		_m[tile].m5 &= ~4;
 		MarkTileDirtyByTile(tile);
 	}
 }
@@ -1162,8 +1162,8 @@ static void ChangeTileOwner_Road(TileIndex tile, byte old_player, byte new_playe
 	byte b;
 
 	// road/rail crossing where the road is owned by the current player?
-	if (old_player == _map3_lo[tile] && IsLevelCrossing(tile)) {
-		_map3_lo[tile] = (new_player == 0xFF) ? OWNER_NONE : new_player;
+	if (old_player == _m[tile].m3 && IsLevelCrossing(tile)) {
+		_m[tile].m3 = (new_player == 0xFF) ? OWNER_NONE : new_player;
 	}
 
 	if (!IsTileOwner(tile, old_player)) return;
@@ -1171,14 +1171,14 @@ static void ChangeTileOwner_Road(TileIndex tile, byte old_player, byte new_playe
 	if (new_player != 255) {
 		SetTileOwner(tile, new_player);
 	}	else {
-		b = _map5[tile]&0xF0;
+		b = _m[tile].m5&0xF0;
 		if (b == 0) {
 			SetTileOwner(tile, OWNER_NONE);
 		} else if (IsLevelCrossing(tile)) {
-			_map5[tile] = (_map5[tile]&8) ? 0x5 : 0xA;
-			SetTileOwner(tile, _map3_lo[tile]);
-			_map3_lo[tile] = 0;
-			_map3_hi[tile] &= 0x80;
+			_m[tile].m5 = (_m[tile].m5&8) ? 0x5 : 0xA;
+			SetTileOwner(tile, _m[tile].m3);
+			_m[tile].m3 = 0;
+			_m[tile].m4 &= 0x80;
 		} else {
 			DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 		}

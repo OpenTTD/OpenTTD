@@ -59,13 +59,13 @@ void UpdatePlayerHouse(Player *p, uint score)
 	(val+= 4, true);
 
 /* house is already big enough */
-	if (val <= _map5[tile])
+	if (val <= _m[tile].m5)
 		return;
 
-	_map5[tile + TileDiffXY(0, 0)] =   val;
-	_map5[tile + TileDiffXY(0, 1)] = ++val;
-	_map5[tile + TileDiffXY(1, 0)] = ++val;
-	_map5[tile + TileDiffXY(1, 1)] = ++val;
+	_m[tile + TileDiffXY(0, 0)].m5 =   val;
+	_m[tile + TileDiffXY(0, 1)].m5 = ++val;
+	_m[tile + TileDiffXY(1, 0)].m5 = ++val;
+	_m[tile + TileDiffXY(1, 1)].m5 = ++val;
 
 	MarkTileDirtyByTile(tile + TileDiffXY(0, 0));
 	MarkTileDirtyByTile(tile + TileDiffXY(0, 1));

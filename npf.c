@@ -34,7 +34,7 @@ bool IsEndOfLine(TileIndex tile, Trackdir trackdir, RailType enginetype)
 	uint32 ts;
 
 	// tunnel entrance?
-	if (IsTileType(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xF0)==0 && (_map5[tile] & 3) == exitdir)
+	if (IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5 & 0xF0)==0 && (_m[tile].m5 & 3) == exitdir)
 		return false;
 
 	// depot
@@ -271,7 +271,7 @@ static uint NPFTunnelCost(AyStarNode* current)
 {
 	DiagDirection exitdir = TrackdirToExitdir((Trackdir)current->direction);
 	TileIndex tile = current->tile;
-	if ( (DiagDirection)(_map5[tile] & 3) == ReverseDiagdir(exitdir)) {
+	if ( (DiagDirection)(_m[tile].m5 & 3) == ReverseDiagdir(exitdir)) {
 		/* We just popped out if this tunnel, since were
 		 * facing the tunnel exit */
 		FindLengthOfTunnelResult flotr;
@@ -323,13 +323,13 @@ static void NPFMarkTile(TileIndex tile)
 				/* DEBUG: mark visited tiles by mowing the grass under them
 				 * ;-) */
 				if (!IsTileDepotType(tile, TRANSPORT_RAIL)) {
-					_map2[tile] &= ~15; /* Clear bits 0-3 */
+					_m[tile].m2 &= ~15; /* Clear bits 0-3 */
 					MarkTileDirtyByTile(tile);
 				}
 				break;
 			case MP_STREET:
 				if (!IsTileDepotType(tile, TRANSPORT_ROAD)) {
-					_map3_hi[tile] &= ~0x70; /* Clear bits 4-6 */
+					_m[tile].m4 &= ~0x70; /* Clear bits 4-6 */
 					MarkTileDirtyByTile(tile);
 				}
 				break;
@@ -367,7 +367,7 @@ static int32 NPFRoadPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 	/* Determine base length */
 	switch (GetTileType(tile)) {
 		case MP_TUNNELBRIDGE:
-			if ((_map5[tile] & 0xF0)==0) {
+			if ((_m[tile].m5 & 0xF0)==0) {
 				cost = NPFTunnelCost(current);
 				break;
 			}
@@ -376,7 +376,7 @@ static int32 NPFRoadPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 		case MP_STREET:
 			cost = NPF_TILE_LENGTH;
 			/* Increase the cost for level crossings */
-			if ((_map5[tile] & 0xF0) == 0x10)
+			if ((_m[tile].m5 & 0xF0) == 0x10)
 				cost += _patches.npf_crossing_penalty;
 			break;
 		default:
@@ -411,7 +411,7 @@ static int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 	/* Determine base length */
 	switch (GetTileType(tile)) {
 		case MP_TUNNELBRIDGE:
-			if ((_map5[tile] & 0xF0)==0) {
+			if ((_m[tile].m5 & 0xF0)==0) {
 				cost = NPFTunnelCost(current);
 				break;
 			}
@@ -559,7 +559,7 @@ static int32 NPFFindStationOrTile(AyStar* as, OpenListNode *current)
 	 * is correct */
 	if (
 		(fstd->station_index == -1 && tile == fstd->dest_coords) || /* We've found the tile, or */
-		(IsTileType(tile, MP_STATION) && _map2[tile] == fstd->station_index) || /* the station */
+		(IsTileType(tile, MP_STATION) && _m[tile].m2 == fstd->station_index) || /* the station */
 		(NPFGetFlag(node, NPF_FLAG_PBS_TARGET_SEEN)) /* or, we've passed it already (for pbs) */
 	) {
 		NPFSetFlag(&current->path.node, NPF_FLAG_PBS_TARGET_SEEN, true);
@@ -618,18 +618,18 @@ static bool VehicleMayEnterTile(Owner owner, TileIndex tile, DiagDirection enter
  * intensive owner check, instead we will just assume that if the vehicle
  * managed to get on the bridge, it is probably allowed to :-)
  */
-			if ((_map5[tile] & 0xC6) == 0xC0 && (unsigned)(_map5[tile] & 0x1) == (enterdir & 0x1)) {
+			if ((_m[tile].m5 & 0xC6) == 0xC0 && (unsigned)(_m[tile].m5 & 0x1) == (enterdir & 0x1)) {
 				/* on the middle part of a railway bridge: find bridge ending */
-				while (IsTileType(tile, MP_TUNNELBRIDGE) && !((_map5[tile] & 0xC6) == 0x80)) {
-					tile += TileOffsByDir(_map5[tile] & 0x1);
+				while (IsTileType(tile, MP_TUNNELBRIDGE) && !((_m[tile].m5 & 0xC6) == 0x80)) {
+					tile += TileOffsByDir(_m[tile].m5 & 0x1);
 				}
 			}
 			/* if we were on a railway middle part, we are now at a railway bridge ending */
 #endif
 			if (
-				(_map5[tile] & 0xFC) == 0 /* railway tunnel */
-				|| (_map5[tile] & 0xC6) == 0x80 /* railway bridge ending */
-				|| ((_map5[tile] & 0xF8) == 0xE0 && ((unsigned)_map5[tile] & 0x1) != (enterdir & 0x1)) /* railway under bridge */
+				(_m[tile].m5 & 0xFC) == 0 /* railway tunnel */
+				|| (_m[tile].m5 & 0xC6) == 0x80 /* railway bridge ending */
+				|| ((_m[tile].m5 & 0xF8) == 0xE0 && ((unsigned)_m[tile].m5 & 0x1) != (enterdir & 0x1)) /* railway under bridge */
 				)
 				return IsTileOwner(tile, owner);
 			break;
@@ -663,7 +663,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	aystar->EndNodeCheck(aystar, current);
 
 	/* Find dest tile */
-	if (IsTileType(src_tile, MP_TUNNELBRIDGE) && (_map5[src_tile] & 0xF0)==0 && (DiagDirection)(_map5[src_tile] & 3) == src_exitdir) {
+	if (IsTileType(src_tile, MP_TUNNELBRIDGE) && (_m[src_tile].m5 & 0xF0)==0 && (DiagDirection)(_m[src_tile].m5 & 3) == src_exitdir) {
 		/* This is a tunnel. We know this tunnel is our type,
 		 * otherwise we wouldn't have got here. It is also facing us,
 		 * so we should skip it's body */
@@ -708,7 +708,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	/* I can't enter a tunnel entry/exit tile from a tile above the tunnel. Note
 	 * that I can enter the tunnel from a tile below the tunnel entrance. This
 	 * solves the problem of vehicles wanting to drive off a tunnel entrance */
-	if (IsTileType(dst_tile, MP_TUNNELBRIDGE) && (_map5[dst_tile] & 0xF0) == 0 && GetTileZ(dst_tile) < GetTileZ(src_tile))
+	if (IsTileType(dst_tile, MP_TUNNELBRIDGE) && (_m[dst_tile].m5 & 0xF0) == 0 && GetTileZ(dst_tile) < GetTileZ(src_tile))
 		return;
 
 	/* check correct rail type (mono, maglev, etc) */

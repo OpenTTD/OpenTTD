@@ -842,14 +842,14 @@ static const SaveLoadGlobVarList _map_dimensions[] = {
 	{NULL, 0, 0, 0}
 };
 
-static void Save_MAPSIZE(void)
+static void Save_MAPS(void)
 {
 	_map_dim_x = MapSizeX();
 	_map_dim_y = MapSizeY();
 	SlGlobList(_map_dimensions);
 }
 
-static void Load_MAPSIZE(void)
+static void Load_MAPS(void)
 {
 	uint bits_x = 0;
 	uint bits_y = 0;
@@ -862,44 +862,220 @@ static void Load_MAPSIZE(void)
 	InitMap(bits_x, bits_y);
 }
 
-static void SaveLoad_MAPT(void)
+static void Load_MAPT(void)
 {
-  SlArray(_map_type_and_height, MapSize(), SLE_UINT8);
-}
+	uint size = MapSize();
+	uint i;
 
-static void SaveLoad_MAP2(void)
-{
-	if (_sl.version < 5) {
-		/* In those versions the _map2 was 8 bits */
-		SlArray(_map2, MapSize(), SLE_FILE_U8 | SLE_VAR_U16);
-	} else {
-		SlArray(_map2, MapSize(), SLE_UINT16);
+	for (i = 0; i != size;) {
+		byte buf[4096];
+		uint j;
+
+		SlArray(buf, lengthof(buf), SLE_UINT8);
+		for (j = 0; j != lengthof(buf); j++) _m[i++].type_height = buf[j];
 	}
 }
 
-static void SaveLoad_M3LO(void)
+static void Save_MAPT(void)
 {
-  SlArray(_map3_lo, MapSize(), SLE_UINT8);
+	uint size = MapSize();
+	uint i;
+
+	SlSetLength(size);
+	for (i = 0; i != size;) {
+		byte buf[4096];
+		uint j;
+
+		for (j = 0; j != lengthof(buf); j++) buf[j] = _m[i++].type_height;
+		SlArray(buf, lengthof(buf), SLE_UINT8);
+	}
 }
 
-static void SaveLoad_M3HI(void)
+static void Load_MAPO(void)
 {
-  SlArray(_map3_hi, MapSize(), SLE_UINT8);
+	uint size = MapSize();
+	uint i;
+
+	for (i = 0; i != size;) {
+		byte buf[4096];
+		uint j;
+
+		SlArray(buf, lengthof(buf), SLE_UINT8);
+		for (j = 0; j != lengthof(buf); j++) _m[i++].owner = buf[j];
+	}
 }
 
-static void SaveLoad_MAPO(void)
+static void Save_MAPO(void)
 {
-  SlArray(_map_owner, MapSize(), SLE_UINT8);
+	uint size = MapSize();
+	uint i;
+
+	SlSetLength(size);
+	for (i = 0; i != size;) {
+		byte buf[4096];
+		uint j;
+
+		for (j = 0; j != lengthof(buf); j++) buf[j] = _m[i++].owner;
+		SlArray(buf, lengthof(buf), SLE_UINT8);
+	}
 }
 
-static void SaveLoad_MAP5(void)
+static void Load_MAP2(void)
 {
-  SlArray(_map5, MapSize(), SLE_UINT8);
+	uint size = MapSize();
+	uint i;
+
+	for (i = 0; i != size;) {
+		uint16 buf[4096];
+		uint j;
+
+		SlArray(buf, lengthof(buf),
+			/* In those versions the m2 was 8 bits */
+			_sl.version < 5 ? SLE_FILE_U8 | SLE_VAR_U16 : SLE_UINT16
+		);
+		for (j = 0; j != lengthof(buf); j++) _m[i++].m2 = buf[j];
+	}
 }
 
-static void SaveLoad_MAPE(void)
+static void Save_MAP2(void)
 {
-  SlArray(_map_extra_bits, MapSize() / 4, SLE_UINT8);
+	uint size = MapSize();
+	uint i;
+
+	SlSetLength(size * sizeof(_m[0].m2));
+	for (i = 0; i != size;) {
+		uint16 buf[4096];
+		uint j;
+
+		for (j = 0; j != lengthof(buf); j++) buf[j] = _m[i++].m2;
+		SlArray(buf, lengthof(buf), SLE_UINT16);
+	}
+}
+
+static void Load_MAP3(void)
+{
+	uint size = MapSize();
+	uint i;
+
+	for (i = 0; i != size;) {
+		byte buf[4096];
+		uint j;
+
+		SlArray(buf, lengthof(buf), SLE_UINT8);
+		for (j = 0; j != lengthof(buf); j++) _m[i++].m3 = buf[j];
+	}
+}
+
+static void Save_MAP3(void)
+{
+	uint size = MapSize();
+	uint i;
+
+	SlSetLength(size);
+	for (i = 0; i != size;) {
+		byte buf[4096];
+		uint j;
+
+		for (j = 0; j != lengthof(buf); j++) buf[j] = _m[i++].m3;
+		SlArray(buf, lengthof(buf), SLE_UINT8);
+	}
+}
+
+static void Load_MAP4(void)
+{
+	uint size = MapSize();
+	uint i;
+
+	for (i = 0; i != size;) {
+		byte buf[4096];
+		uint j;
+
+		SlArray(buf, lengthof(buf), SLE_UINT8);
+		for (j = 0; j != lengthof(buf); j++) _m[i++].m4 = buf[j];
+	}
+}
+
+static void Save_MAP4(void)
+{
+	uint size = MapSize();
+	uint i;
+
+	SlSetLength(size);
+	for (i = 0; i != size;) {
+		byte buf[4096];
+		uint j;
+
+		for (j = 0; j != lengthof(buf); j++) buf[j] = _m[i++].m4;
+		SlArray(buf, lengthof(buf), SLE_UINT8);
+	}
+}
+
+static void Load_MAP5(void)
+{
+	uint size = MapSize();
+	uint i;
+
+	for (i = 0; i != size;) {
+		byte buf[4096];
+		uint j;
+
+		SlArray(buf, lengthof(buf), SLE_UINT8);
+		for (j = 0; j != lengthof(buf); j++) _m[i++].m5 = buf[j];
+	}
+}
+
+static void Save_MAP5(void)
+{
+	uint size = MapSize();
+	uint i;
+
+	SlSetLength(size);
+	for (i = 0; i != size;) {
+		byte buf[4096];
+		uint j;
+
+		for (j = 0; j != lengthof(buf); j++) buf[j] = _m[i++].m5;
+		SlArray(buf, lengthof(buf), SLE_UINT8);
+	}
+}
+
+static void Load_MAPE(void)
+{
+	uint size = MapSize();
+	uint i;
+
+	for (i = 0; i != size;) {
+		uint8 buf[1024];
+		uint j;
+
+		SlArray(buf, lengthof(buf), SLE_UINT8);
+		for (j = 0; j != lengthof(buf); j++) {
+			_m[i++].extra = GB(buf[j], 0, 2);
+			_m[i++].extra = GB(buf[j], 2, 2);
+			_m[i++].extra = GB(buf[j], 4, 2);
+			_m[i++].extra = GB(buf[j], 6, 2);
+		}
+	}
+}
+
+static void Save_MAPE(void)
+{
+	uint size = MapSize();
+	uint i;
+
+	SlSetLength(size / 4);
+	for (i = 0; i != size;) {
+		uint8 buf[1024];
+		uint j;
+
+		for (j = 0; j != lengthof(buf); j++) {
+			buf[j]  = _m[i++].extra << 0;
+			buf[j] |= _m[i++].extra << 2;
+			buf[j] |= _m[i++].extra << 4;
+			buf[j] |= _m[i++].extra << 6;
+		}
+		SlArray(buf, lengthof(buf), SLE_UINT8);
+	}
 }
 
 
@@ -930,14 +1106,14 @@ static void Load_CHTS(void)
 
 
 const ChunkHandler _misc_chunk_handlers[] = {
-	{ 'MAPS', Save_MAPSIZE,  Load_MAPSIZE,  CH_RIFF },
-	{ 'MAPT', SaveLoad_MAPT, SaveLoad_MAPT, CH_RIFF },
-	{ 'MAP2', SaveLoad_MAP2, SaveLoad_MAP2, CH_RIFF },
-	{ 'M3LO', SaveLoad_M3LO, SaveLoad_M3LO, CH_RIFF },
-	{ 'M3HI', SaveLoad_M3HI, SaveLoad_M3HI, CH_RIFF },
-	{ 'MAPO', SaveLoad_MAPO, SaveLoad_MAPO, CH_RIFF },
-	{ 'MAP5', SaveLoad_MAP5, SaveLoad_MAP5, CH_RIFF },
-	{ 'MAPE', SaveLoad_MAPE, SaveLoad_MAPE, CH_RIFF },
+	{ 'MAPS', Save_MAPS, Load_MAPS, CH_RIFF },
+	{ 'MAPT', Save_MAPT, Load_MAPT, CH_RIFF },
+	{ 'MAPO', Save_MAPO, Load_MAPO, CH_RIFF },
+	{ 'MAP2', Save_MAP2, Load_MAP2, CH_RIFF },
+	{ 'M3LO', Save_MAP3, Load_MAP3, CH_RIFF },
+	{ 'M3HI', Save_MAP4, Load_MAP4, CH_RIFF },
+	{ 'MAP5', Save_MAP5, Load_MAP5, CH_RIFF },
+	{ 'MAPE', Save_MAPE, Load_MAPE, CH_RIFF },
 
 	{ 'NAME', Save_NAME, Load_NAME, CH_ARRAY},
 	{ 'DATE', SaveLoad_DATE, SaveLoad_DATE, CH_RIFF},

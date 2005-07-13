@@ -79,7 +79,7 @@ static void PlaceRail_AutoRail(TileIndex tile)
 
 static void PlaceExtraDepotRail(TileIndex tile, uint16 extra)
 {
-	byte b = _map5[tile];
+	byte b = _m[tile].m5;
 
 	if (b & 0xC0 || !(b & (extra >> 8)))
 		return;

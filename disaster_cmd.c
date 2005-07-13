@@ -172,12 +172,12 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 
 			if (IsValidTile(tile) &&
 					IsTileType(tile, MP_STATION) &&
-					IS_BYTE_INSIDE(_map5[tile], 8, 0x43) &&
+					IS_BYTE_INSIDE(_m[tile].m5, 8, 0x43) &&
 					IS_HUMAN_PLAYER(GetTileOwner(tile))) {
 				v->current_order.station = 1;
 				v->age = 0;
 
-				SetDParam(0, _map2[tile]);
+				SetDParam(0, _m[tile].m2);
 				AddNewsItem(STR_B000_ZEPPELIN_DISASTER_AT,
 					NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ACCIDENT, 0),
 					v->index,
@@ -197,9 +197,9 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 
 		if (IsValidTile(tile) &&
 				IsTileType(tile, MP_STATION) &&
-				IS_BYTE_INSIDE(_map5[tile], 8, 0x43) &&
+				IS_BYTE_INSIDE(_m[tile].m5, 8, 0x43) &&
 				IS_HUMAN_PLAYER(GetTileOwner(tile))) {
-			st = GetStation(_map2[tile]);
+			st = GetStation(_m[tile].m2);
 			CLRBITS(st->airport_flags, RUNWAY_IN_block);
 		}
 
@@ -239,10 +239,10 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 	tile = v->tile;/**/
 	if (IsValidTile(tile) &&
 			IsTileType(tile, MP_STATION) &&
-			IS_BYTE_INSIDE(_map5[tile], 8, 0x43) &&
+			IS_BYTE_INSIDE(_m[tile].m5, 8, 0x43) &&
 			IS_HUMAN_PLAYER(GetTileOwner(tile))) {
 
-		st = GetStation(_map2[tile]);
+		st = GetStation(_m[tile].m2);
 		SETBITS(st->airport_flags, RUNWAY_IN_block);
 	}
 }
@@ -332,8 +332,8 @@ static void DestructIndustry(Industry *i)
 	TileIndex tile;
 
 	for (tile = 0; tile != MapSize(); tile++) {
-		if (IsTileType(tile, MP_INDUSTRY) && _map2[tile] == i->index) {
-			_map_owner[tile] = 0;
+		if (IsTileType(tile, MP_INDUSTRY) && _m[tile].m2 == i->index) {
+			_m[tile].owner = 0;
 			MarkTileDirtyByTile(tile);
 		}
 	}
@@ -401,7 +401,7 @@ static void DisasterTick_2(Vehicle *v)
 		if (!IsTileType(tile, MP_INDUSTRY))
 			return;
 
-		v->dest_tile = ind = _map2[tile];
+		v->dest_tile = ind = _m[tile].m2;
 
 		if (GetIndustry(ind)->type == IT_OIL_REFINERY) {
 			v->current_order.station = 1;
@@ -472,7 +472,7 @@ static void DisasterTick_3(Vehicle *v)
 		if (!IsTileType(tile, MP_INDUSTRY))
 			return;
 
-		v->dest_tile = ind = _map2[tile];
+		v->dest_tile = ind = _m[tile].m2;
 
 		if (GetIndustry(ind)->type == IT_FACTORY) {
 			v->current_order.station = 1;
@@ -579,7 +579,7 @@ static void DisasterTick_4(Vehicle *v)
 		tile_org = tile = TILE_MASK(Random());
 		do {
 			if (IsTileType(tile, MP_RAILWAY) &&
-					(_map5[tile] & ~3) != 0xC0 && IS_HUMAN_PLAYER(GetTileOwner(tile)))
+					(_m[tile].m5 & ~3) != 0xC0 && IS_HUMAN_PLAYER(GetTileOwner(tile)))
 				break;
 			tile = TILE_MASK(tile+1);
 		} while (tile != tile_org);

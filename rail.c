@@ -113,28 +113,28 @@ RailType GetTileRailType(TileIndex tile, Trackdir trackdir)
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
 			/* railway track */
-			type = _map3_lo[tile] & RAILTYPE_MASK;
+			type = _m[tile].m3 & RAILTYPE_MASK;
 			break;
 		case MP_STREET:
 			/* rail/road crossing */
 			if (IsLevelCrossing(tile))
-				type = _map3_hi[tile] & RAILTYPE_MASK;
+				type = _m[tile].m4 & RAILTYPE_MASK;
 			break;
 		case MP_STATION:
 			if (IsTrainStationTile(tile))
-				type = _map3_lo[tile] & RAILTYPE_MASK;
+				type = _m[tile].m3 & RAILTYPE_MASK;
 			break;
 		case MP_TUNNELBRIDGE:
 			/* railway tunnel */
-			if ((_map5[tile] & 0xFC) == 0) type = _map3_lo[tile] & RAILTYPE_MASK;
+			if ((_m[tile].m5 & 0xFC) == 0) type = _m[tile].m3 & RAILTYPE_MASK;
 			/* railway bridge ending */
-			if ((_map5[tile] & 0xC6) == 0x80) type = _map3_lo[tile] & RAILTYPE_MASK;
+			if ((_m[tile].m5 & 0xC6) == 0x80) type = _m[tile].m3 & RAILTYPE_MASK;
 			/* on railway bridge */
-			if ((_map5[tile] & 0xC6) == 0xC0 && ((DiagDirection)(_map5[tile] & 0x1)) == (exitdir & 0x1))
-				type = (_map3_lo[tile] >> 4) & RAILTYPE_MASK;
+			if ((_m[tile].m5 & 0xC6) == 0xC0 && ((DiagDirection)(_m[tile].m5 & 0x1)) == (exitdir & 0x1))
+				type = (_m[tile].m3 >> 4) & RAILTYPE_MASK;
 			/* under bridge (any type) */
-			if ((_map5[tile] & 0xC0) == 0xC0 && ((uint)_map5[tile] & 0x1) != (exitdir & 0x1))
-				type = _map3_lo[tile] & RAILTYPE_MASK;
+			if ((_m[tile].m5 & 0xC0) == 0xC0 && ((uint)_m[tile].m5 & 0x1) != (exitdir & 0x1))
+				type = _m[tile].m3 & RAILTYPE_MASK;
 			break;
 		default:
 			break;

@@ -73,7 +73,7 @@ typedef struct DrawTownTileStruct {
 
 static void TownDrawTileProc1(TileInfo *ti)
 {
-	AddChildSpriteScreen(0x5A3, 0xE, 0x3C - (_map_owner[ti->tile]&0x7F));
+	AddChildSpriteScreen(0x5A3, 0xE, 0x3C - (_m[ti->tile].owner&0x7F));
 }
 
 typedef void TownDrawTileProc(TileInfo *ti);
@@ -91,8 +91,8 @@ static void DrawTile_Town(TileInfo *ti)
 	/* Retrieve pointer to the draw town tile struct */
 	{
 		/* this "randomizes" on the (up to) 4 variants of a building */
-		byte gfx   = (byte)_map3_hi[ti->tile];
-		byte stage = _map3_lo[ti->tile] >> 6;
+		byte gfx   = (byte)_m[ti->tile].m4;
+		byte stage = _m[ti->tile].m3 >> 6;
 		uint variant;
 		variant  = ti->x >> 4;
 		variant ^= ti->x >> 6;
@@ -159,27 +159,27 @@ static void AnimateTile_Town(TileIndex tile)
 	if (_tick_counter & 3)
 		return;
 
-	if (_map3_hi[tile] != 4 && _map3_hi[tile] != 5)
+	if (_m[tile].m4 != 4 && _m[tile].m4 != 5)
 		return;
 
-	if (!((old=_map_owner[tile])&0x80)) {
-		_map_owner[tile] |= 0x80;
+	if (!((old=_m[tile].owner)&0x80)) {
+		_m[tile].owner |= 0x80;
 
 		do {
 			i = (Random()&7) - 1;
 		} while (i < 0 || i == 1 || i*6==old);
 
-		_map5[tile] = (_map5[tile] & ~0x3F) | i;
+		_m[tile].m5 = (_m[tile].m5 & ~0x3F) | i;
 	}
 
-	a = _map_owner[tile]&0x7F;
-	b = (_map5[tile]&0x3F) * 6;
+	a = _m[tile].owner&0x7F;
+	b = (_m[tile].m5&0x3F) * 6;
 	a += (a < b) ? 1 : -1;
-	_map_owner[tile] = (_map_owner[tile]&0x80)|a;
+	_m[tile].owner = (_m[tile].owner&0x80)|a;
 
 	if (a == b) {
-		_map5[tile] &= 0x40;
-		_map_owner[tile] &= 0x7F;
+		_m[tile].m5 &= 0x40;
+		_m[tile].owner &= 0x7F;
 		DeleteAnimatedTile(tile);
 	}
 
@@ -248,26 +248,26 @@ static void MakeSingleHouseBigger(TileIndex tile)
 
 	assert(IsTileType(tile, MP_HOUSE));
 
-	b = _map5[tile];
+	b = _m[tile].m5;
 	if (b & 0x80)
 		return;
 
-	_map5[tile] = (b & 0xC0) | ((b+1)&7);
+	_m[tile].m5 = (b & 0xC0) | ((b+1)&7);
 
-	if ((_map5[tile]&7) != 0)
+	if ((_m[tile].m5&7) != 0)
 		return;
 
-	_map3_lo[tile] = _map3_lo[tile] + 0x40;
+	_m[tile].m3 = _m[tile].m3 + 0x40;
 
-	if ( (_map3_lo[tile] & 0xC0) == 0xC0) {
-		ChangePopulation(GetTown(_map2[tile]), _housetype_population[_map3_hi[tile]]);
+	if ( (_m[tile].m3 & 0xC0) == 0xC0) {
+		ChangePopulation(GetTown(_m[tile].m2), _housetype_population[_m[tile].m4]);
 	}
 	MarkTileDirtyByTile(tile);
 }
 
 static void MakeTownHouseBigger(TileIndex tile)
 {
-	uint flags = _house_more_flags[_map3_hi[tile]];
+	uint flags = _house_more_flags[_m[tile].m4];
 	if (flags & 8) MakeSingleHouseBigger(TILE_ADDXY(tile, 0, 0));
 	if (flags & 4) MakeSingleHouseBigger(TILE_ADDXY(tile, 0, 1));
 	if (flags & 2) MakeSingleHouseBigger(TILE_ADDXY(tile, 1, 0));
@@ -280,20 +280,20 @@ static void TileLoop_Town(TileIndex tile)
 	Town *t;
 	uint32 r;
 
-	if ((_map3_lo[tile] & 0xC0) != 0xC0) {
+	if ((_m[tile].m3 & 0xC0) != 0xC0) {
 		MakeTownHouseBigger(tile);
 		return;
 	}
 
-	house = _map3_hi[tile];
+	house = _m[tile].m4;
 	if (_housetype_extra_flags[house] & 0x20 &&
-			!(_map5[tile] & 0x80) &&
+			!(_m[tile].m5 & 0x80) &&
 			CHANCE16(1,2) &&
 			AddAnimatedTile(tile)) {
-		_map5[tile] = (_map5[tile] & 0x40)|0x80;
+		_m[tile].m5 = (_m[tile].m5 & 0x40)|0x80;
 	}
 
-	t = GetTown(_map2[tile]);
+	t = GetTown(_m[tile].m2);
 
 	r = Random();
 
@@ -345,12 +345,12 @@ static int32 ClearTile_Town(TileIndex tile, byte flags)
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 	if (flags&DC_AUTO && !(flags&DC_AI_BUILDING)) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
 
-	house = _map3_hi[tile];
+	house = _m[tile].m4;
 	cost = _price.remove_house * _housetype_remove_cost[house] >> 8;
 
 	rating = _housetype_remove_ratingmod[house];
 	_cleared_town_rating += rating;
-	_cleared_town = t = GetTown(_map2[tile]);
+	_cleared_town = t = GetTown(_m[tile].m2);
 
 	if (_current_player < MAX_PLAYERS) {
 		if (rating > t->ratings[_current_player] && !(flags & DC_NO_TOWN_RATING) && !_cheats.magic_bulldozer.value) {
@@ -369,7 +369,7 @@ static int32 ClearTile_Town(TileIndex tile, byte flags)
 
 static void GetAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
 {
-	int type = _map3_hi[tile];
+	int type = _m[tile].m4;
 
 	ac[CT_PASSENGERS] = _housetype_cargo_passengers[type];
 	ac[CT_MAIL] = _housetype_cargo_mail[type];
@@ -379,8 +379,8 @@ static void GetAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
 
 static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
 {
-	td->str = _town_tile_names[_map3_hi[tile]];
-	if ((_map3_lo[tile] & 0xC0) != 0xC0) {
+	td->str = _town_tile_names[_m[tile].m4];
+	if ((_m[tile].m3 & 0xC0) != 0xC0) {
 		SetDParamX(td->dparam, 0, td->str);
 		td->str = STR_2058_UNDER_CONSTRUCTION;
 	}
@@ -558,7 +558,7 @@ static void LevelTownLand(TileIndex tile)
 	}
 }
 
-#define IS_WATER_TILE(t) (IsTileType((t), MP_WATER) && _map5[(t)] == 0)
+#define IS_WATER_TILE(t) (IsTileType((t), MP_WATER) && _m[(t)].m5 == 0)
 
 static void GrowTownInTile(TileIndex *tile_ptr, uint mask, int block, Town *t1)
 {
@@ -616,8 +616,8 @@ static void GrowTownInTile(TileIndex *tile_ptr, uint mask, int block, Town *t1)
 	} else {
 
 		// Reached a tunnel? Then continue at the other side of it.
-		if (IsTileType(tile, MP_TUNNELBRIDGE) && (_map5[tile]& ~3) == 4) {
-			FindLengthOfTunnelResult flotr = FindLengthOfTunnel(tile, _map5[tile]&3);
+		if (IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5& ~3) == 4) {
+			FindLengthOfTunnelResult flotr = FindLengthOfTunnel(tile, _m[tile].m5&3);
 			*tile_ptr = flotr.tile;
 			return;
 		}
@@ -741,13 +741,13 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 
 		if (IsTileType(tile, MP_STREET)) {
 			/* Don't allow building over roads of other cities */
-			if (IsTileOwner(tile, OWNER_TOWN) && GetTown(_map2[tile]) != t)
+			if (IsTileOwner(tile, OWNER_TOWN) && GetTown(_m[tile].m2) != t)
 				_grow_town_result = -1;
 			else if (_game_mode == GM_EDITOR) {
 				/* If we are in the SE, and this road-piece has no town owner yet, it just found an
 				*  owner :) (happy happy happy road now) */
 				SetTileOwner(tile, OWNER_TOWN);
-				_map2[tile] = t->index;
+				_m[tile].m2 = t->index;
 			}
 		}
 
@@ -1382,7 +1382,7 @@ static void DoClearTownHouseHelper(TileIndex tile)
 
 static void ClearTownHouse(Town *t, TileIndex tile)
 {
-	uint house = _map3_hi[tile];
+	uint house = _m[tile].m4;
 	uint eflags;
 
 	assert(IsTileType(tile, MP_HOUSE));
@@ -1406,7 +1406,7 @@ static void ClearTownHouse(Town *t, TileIndex tile)
 
 	// Remove population from the town if the
 	// house is finished.
-	if ((~_map3_lo[tile] & 0xC0) == 0) {
+	if ((~_m[tile].m3 & 0xC0) == 0) {
 		ChangePopulation(t, -_housetype_population[house]);
 	}
 
@@ -1489,7 +1489,7 @@ void DeleteTown(Town *t)
 	for (tile = 0; tile < MapSize(); ++tile) {
 		switch (GetTileType(tile)) {
 			case MP_HOUSE:
-				if (GetTown(_map2[tile]) == t)
+				if (GetTown(_m[tile].m2) == t)
 					DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 				break;
 
@@ -1841,9 +1841,9 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 	// XXX - Fix this so for a given tiletype the owner of the type is in the same variable
 	if (IsTileType(tile, MP_HOUSE) || (
 				IsTileType(tile, MP_STREET) &&
-				(IsLevelCrossing(tile) ? _map3_lo[tile] : GetTileOwner(tile)) == OWNER_TOWN
+				(IsLevelCrossing(tile) ? _m[tile].m3 : GetTileOwner(tile)) == OWNER_TOWN
 			))
-		return GetTown(_map2[tile]);
+		return GetTown(_m[tile].m2);
 
 	FOR_ALL_TOWNS(t) {
 		if (t->xy != 0) {

@@ -104,7 +104,7 @@ RoadStop * GetPrimaryRoadStop(const Station *st, RoadStopType type)
 
 RoadStop * GetRoadStopByTile(TileIndex tile, RoadStopType type)
 {
-	const Station *st = GetStation(_map2[tile]);
+	const Station *st = GetStation(_m[tile].m2);
 	RoadStop *rs;
 
 	for ( rs = GetPrimaryRoadStop(st, type); rs->xy != tile; rs = rs->next)
@@ -179,7 +179,7 @@ static Station *GetStationAround(TileIndex tile, int w, int h, int closest_stati
 	BEGIN_TILE_LOOP(tile_cur, w + 2, h + 2, tile - TileDiffXY(1, 1))
 		if (IsTileType(tile_cur, MP_STATION)) {
 			int t;
-			t = _map2[tile_cur];
+			t = _m[tile_cur].m2;
 			{
 				Station *st = GetStation(t);
 				// you cannot take control of an oilrig!!
@@ -233,7 +233,7 @@ static bool CheckStationSpreadOut(Station *st, TileIndex tile, int w, int h)
 	uint t;
 
 	for (i = 0; i != MapSize(); i++) {
-		if (IsTileType(i, MP_STATION) && _map2[i] == station_index) {
+		if (IsTileType(i, MP_STATION) && _m[i].m2 == station_index) {
 			t = TileX(i);
 			if (t < x1) x1 = t;
 			if (t > x2) x2 = t;
@@ -293,7 +293,7 @@ static int CountMapSquareAround(TileIndex tile, byte type, byte min, byte max)
 	for (p = _count_square_table; p != endof(_count_square_table); ++p) {
 		tile = TILE_MASK(tile + ToTileIndexDiff(*p));
 
-		if (IsTileType(tile, type) && _map5[tile] >= min && _map5[tile] <= max)
+		if (IsTileType(tile, type) && _m[tile].m5 >= min && _m[tile].m5 <= max)
 			num++;
 	}
 
@@ -797,11 +797,11 @@ int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invali
 		// so station points to -1 if we can build on any station. or it points to a station if we're only allowed to build
 		// on exactly that station.
 		if (station != NULL && IsTileType(tile_cur, MP_STATION)) {
-			if (_map5[tile_cur] >= 8) {
+			if (_m[tile_cur].m5 >= 8) {
 				_error_message = ClearTile_Station(tile_cur, DC_AUTO); // get error message
 				return CMD_ERROR;
 			} else {
-				int st = _map2[tile_cur];
+				int st = _m[tile_cur].m2;
 				if (*station == -1)
 					*station = st;
 				else if (*station != st) {
@@ -835,7 +835,7 @@ static bool CanExpandRailroadStation(Station *st, uint *fin, int direction)
 		tile = TileXY(x, y);
 	} else {
 		// check so the direction is the same
-		if ((_map5[st->train_tile] & 1) != direction) {
+		if ((_m[st->train_tile].m5 & 1) != direction) {
 			_error_message = STR_306D_NONUNIFORM_STATIONS_DISALLOWED;
 			return false;
 		}
@@ -1076,7 +1076,7 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 static bool TileBelongsToRailStation(Station *st, TileIndex tile)
 {
-	return IsTileType(tile, MP_STATION) && _map2[tile] == st->index && _map5[tile] < 8;
+	return IsTileType(tile, MP_STATION) && _m[tile].m2 == st->index && _m[tile].m5 < 8;
 }
 
 static void MakeRailwayStationAreaSmaller(Station *st)
@@ -1150,8 +1150,8 @@ int32 CmdRemoveFromRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	// make sure the specified tile belongs to the current player, and that it is a railroad station.
-	if (!IsTileType(tile, MP_STATION) || _map5[tile] >= 8 || !_patches.nonuniform_stations) return CMD_ERROR;
-	st = GetStation(_map2[tile]);
+	if (!IsTileType(tile, MP_STATION) || _m[tile].m5 >= 8 || !_patches.nonuniform_stations) return CMD_ERROR;
+	st = GetStation(_m[tile].m2);
 	if (_current_player != OWNER_WATER && (!CheckOwnership(st->owner) || !EnsureNoVehicle(tile))) return CMD_ERROR;
 
 	// if we reached here, it means we can actually delete it. do that.
@@ -1180,16 +1180,16 @@ uint GetStationPlatforms(Station *st, TileIndex tile)
 	assert(TileBelongsToRailStation(st, tile));
 
 	len = 0;
-	dir = _map5[tile]&1;
+	dir = _m[tile].m5&1;
 	delta = dir ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
 
 	// find starting tile..
 	t = tile;
-	do { t -= delta; len++; } while (TileBelongsToRailStation(st, t) && (_map5[t]&1) == dir);
+	do { t -= delta; len++; } while (TileBelongsToRailStation(st, t) && (_m[t].m5&1) == dir);
 
 	// find ending tile
 	t = tile;
-	do { t += delta; len++; }while (TileBelongsToRailStation(st, t) && (_map5[t]&1) == dir);
+	do { t += delta; len++; }while (TileBelongsToRailStation(st, t) && (_m[t].m5&1) == dir);
 
 	return len - 1;
 }
@@ -1411,18 +1411,18 @@ static int32 RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 
 int32 DoConvertStationRail(TileIndex tile, uint totype, bool exec)
 {
-	const Station *st = GetStation(_map2[tile]);
+	const Station *st = GetStation(_m[tile].m2);
 	if (!CheckOwnership(st->owner) || !EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	// tile is not a railroad station?
-	if (_map5[tile] >= 8) return CMD_ERROR;
+	if (_m[tile].m5 >= 8) return CMD_ERROR;
 
 	// tile is already of requested type?
-	if ( (uint)(_map3_lo[tile] & 0xF) == totype) return CMD_ERROR;
+	if ( (uint)(_m[tile].m3 & 0xF) == totype) return CMD_ERROR;
 
 	if (exec) {
 		// change type.
-		_map3_lo[tile] = (_map3_lo[tile] & 0xF0) + totype;
+		_m[tile].m3 = (_m[tile].m3 & 0xF0) + totype;
 		MarkTileDirtyByTile(tile);
 	}
 
@@ -1547,7 +1547,7 @@ int32 CmdBuildRoadStop(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			MP_SETTYPE(MP_STATION) | MP_MAPOWNER_CURRENT |
 			MP_MAP2 | MP_MAP5 | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR,
 			st->index,                       /* map2 parameter */
-			/* XXX - Truck stops have 0x43 _map5[] value + direction
+			/* XXX - Truck stops have 0x43 _m[].m5 value + direction
 			 * XXX - Bus stops have a _map5 value of 0x47 + direction */
 			((type) ? 0x43 : 0x47) + p1 /* map5 parameter */
 		);
@@ -1564,7 +1564,7 @@ static int32 RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 {
 	RoadStop **primary_stop;
 	RoadStop *cur_stop;
-	bool is_truck = _map5[tile] < 0x47;
+	bool is_truck = _m[tile].m5 < 0x47;
 
 	if (_current_player != OWNER_WATER && !CheckOwnership(st->owner))
 		return CMD_ERROR;
@@ -2085,7 +2085,7 @@ static int32 RemoveDock(Station *st, uint32 flags)
 		return CMD_ERROR;
 
 	tile1 = st->dock_tile;
-	tile2 = tile1 + TileOffsByDir(_map5[tile1] - 0x4C);
+	tile2 = tile1 + TileOffsByDir(_m[tile1].m5 - 0x4C);
 
 	if (!EnsureNoVehicle(tile1))
 		return CMD_ERROR;
@@ -2120,7 +2120,7 @@ static void DrawTile_Station(TileInfo *ti)
 	uint32 image;
 	const DrawTileSeqStruct *dtss;
 	const DrawTileSprites *t = NULL;
-	byte railtype = _map3_lo[ti->tile] & 0xF;
+	byte railtype = _m[ti->tile].m3 & 0xF;
 	int type_offset;
 	uint32 relocation = 0;
 
@@ -2135,14 +2135,14 @@ static void DrawTile_Station(TileInfo *ti)
 	if (ti->tileh != 0 && (ti->map5 < 0x4C || ti->map5 > 0x51))
 		DrawFoundation(ti, ti->tileh);
 
-	if (_map3_lo[ti->tile] & 0x10) {
+	if (_m[ti->tile].m3 & 0x10) {
 		// look for customization
-		StationSpec *statspec = GetCustomStation(STAT_CLASS_DFLT, _map3_hi[ti->tile]);
+		StationSpec *statspec = GetCustomStation(STAT_CLASS_DFLT, _m[ti->tile].m4);
 
 		//debug("Cust-o-mized %p", statspec);
 
 		if (statspec != NULL) {
-			Station *st = GetStation(_map2[ti->tile]);
+			Station *st = GetStation(_m[ti->tile].m2);
 
 			relocation = GetCustomStationRelocation(statspec, st, 0);
 			//debug("Relocation %d", relocation);
@@ -2239,9 +2239,9 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 	StringID str;
 
 	td->owner = GetTileOwner(tile);
-	td->build_date = GetStation(_map2[tile])->build_date;
+	td->build_date = GetStation(_m[tile].m2)->build_date;
 
-	m5 = _map5[tile];
+	m5 = _m[tile].m5;
 	(str=STR_305E_RAILROAD_STATION, m5 < 8) ||
 	(str=STR_305F_AIRCRAFT_HANGAR, m5==32 || m5==45) || // hangars
 	(str=STR_3060_AIRPORT, m5 < 0x43 || (m5 >= 83 && m5 <= 114)) ||
@@ -2256,7 +2256,7 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 
 static uint32 GetTileTrackStatus_Station(TileIndex tile, TransportType mode)
 {
-	uint i = _map5[tile];
+	uint i = _m[tile].m5;
 	uint j = 0;
 
 	switch (mode) {
@@ -2290,15 +2290,15 @@ static void TileLoop_Station(TileIndex tile)
   // 0x66 - radar metropolitan airport (102)
   // 0x5A - radar international airport (90)
   // 0x3A - flag small airport (58)
-	if (_map5[tile] == 39 || _map5[tile] == 58 || _map5[tile] == 90 || _map5[tile] == 102)
+	if (_m[tile].m5 == 39 || _m[tile].m5 == 58 || _m[tile].m5 == 90 || _m[tile].m5 == 102)
 		AddAnimatedTile(tile);
 
 	// treat a bouy tile as water.
-	else if (_map5[tile] == 0x52)
+	else if (_m[tile].m5 == 0x52)
 		TileLoop_Water(tile);
 
 	// treat a oilrig (the station part) as water
-	else if (_map5[tile] == 0x4B)
+	else if (_m[tile].m5 == 0x4B)
 		TileLoop_Water(tile);
 
 }
@@ -2306,7 +2306,7 @@ static void TileLoop_Station(TileIndex tile)
 
 static void AnimateTile_Station(TileIndex tile)
 {
-	byte m5 = _map5[tile];
+	byte m5 = _m[tile].m5;
 	//FIXME -- AnimateTile_Station -> not nice code, lots of things double
   // again hardcoded...was a quick hack
 
@@ -2318,7 +2318,7 @@ static void AnimateTile_Station(TileIndex tile)
 		if (++m5 == 50+1)
 			m5 = 39;
 
-		_map5[tile] = m5;
+		_m[tile].m5 = m5;
 		MarkTileDirtyByTile(tile);
   //added - begin
 	} else if (m5 >= 90 && m5 <= 113) { // turning radar with ground under it (different fences) (90 - 101 | 102 - 113)
@@ -2330,7 +2330,7 @@ static void AnimateTile_Station(TileIndex tile)
 		if (m5 == 101+1) {m5 = 90;}  // radar with fences in south
 		else if (m5 == 113+1) {m5 = 102;} // radar with fences in north
 
-		_map5[tile] = m5;
+		_m[tile].m5 = m5;
 		MarkTileDirtyByTile(tile);
 	//added - end
 	} else if (m5 >= 0x3A && m5 <= 0x3D) {  // windsack (58 - 61)
@@ -2340,7 +2340,7 @@ static void AnimateTile_Station(TileIndex tile)
 		if (++m5 == 0x3D+1)
 			m5 = 0x3A;
 
-		_map5[tile] = m5;
+		_m[tile].m5 = m5;
 		MarkTileDirtyByTile(tile);
 	}
 }
@@ -2349,10 +2349,10 @@ static void ClickTile_Station(TileIndex tile)
 {
   // 0x20 - hangar large airport (32)
   // 0x41 - hangar small airport (65)
-	if (_map5[tile] == 32 || _map5[tile] == 65) {
+	if (_m[tile].m5 == 32 || _m[tile].m5 == 65) {
 		ShowAircraftDepotWindow(tile);
 	} else {
-		ShowStationViewWindow(_map2[tile]);
+		ShowStationViewWindow(_m[tile].m2);
 	}
 }
 
@@ -2367,10 +2367,10 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 	uint16 spd;
 
 	if (v->type == VEH_Train) {
-		if (IS_BYTE_INSIDE(_map5[tile], 0, 8) && v->subtype == TS_Front_Engine &&
+		if (IS_BYTE_INSIDE(_m[tile].m5, 0, 8) && v->subtype == TS_Front_Engine &&
 				!IsCompatibleTrainStationTile(tile + TileOffsByDir(v->direction >> 1), tile)) {
 
-			station_id = _map2[tile];
+			station_id = _m[tile].m2;
 			if ((!(v->current_order.flags & OF_NON_STOP) && !_patches.new_nonstop) ||
 					(v->current_order.type == OT_GOTO_STATION && v->current_order.station == station_id)) {
 
@@ -2399,7 +2399,7 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 		}
 	} else if (v->type == VEH_Road) {
 		if (v->u.road.state < 16 && (v->u.road.state&4)==0 && v->u.road.frame==0) {
-			byte m5 = _map5[tile];
+			byte m5 = _m[tile].m5;
 			byte *b, bb,state;
 
 			if (IS_BYTE_INSIDE(m5, 0x43, 0x4B)) {
@@ -2747,7 +2747,7 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
 	BEGIN_TILE_LOOP(cur_tile, w, h, tile - TileDiffXY(max_rad, max_rad))
 		cur_tile = TILE_MASK(cur_tile);
 		if (IsTileType(cur_tile, MP_STATION)) {
-			st_index = _map2[cur_tile];
+			st_index = _m[cur_tile].m2;
 			for(i=0; i!=8; i++)	{
 				if (around[i] == INVALID_STATION) {
 					st = GetStation(st_index);
@@ -2861,11 +2861,11 @@ void BuildOilRig(TileIndex tile)
 				return;
 
 			SetTileType(tile, MP_STATION);
-			_map5[tile] = 0x4B;
+			_m[tile].m5 = 0x4B;
 			SetTileOwner(tile, OWNER_NONE);
-			_map3_lo[tile] = 0;
-			_map3_hi[tile] = 0;
-			_map2[tile] = st->index;
+			_m[tile].m3 = 0;
+			_m[tile].m4 = 0;
+			_m[tile].m2 = st->index;
 
 			st->owner = OWNER_NONE;
       st->airport_flags = 0;
@@ -2901,7 +2901,7 @@ void BuildOilRig(TileIndex tile)
 
 void DeleteOilRig(TileIndex tile)
 {
-	Station *st = GetStation(_map2[tile]);
+	Station *st = GetStation(_m[tile].m2);
 
 	DoClearSquare(tile);
 
@@ -2918,7 +2918,7 @@ static void ChangeTileOwner_Station(TileIndex tile, byte old_player, byte new_pl
 	if (!IsTileOwner(tile, old_player)) return;
 
 	if (new_player != 255) {
-		Station *st = GetStation(_map2[tile]);
+		Station *st = GetStation(_m[tile].m2);
 		SetTileOwner(tile, new_player);
 		st->owner = new_player;
 		_global_station_sort_dirty = true; // transfer ownership of station to another player
@@ -2930,7 +2930,7 @@ static void ChangeTileOwner_Station(TileIndex tile, byte old_player, byte new_pl
 
 static int32 ClearTile_Station(TileIndex tile, byte flags)
 {
-	byte m5 = _map5[tile];
+	byte m5 = _m[tile].m5;
 	Station *st;
 
 	if (flags & DC_AUTO) {
@@ -2944,7 +2944,7 @@ static int32 ClearTile_Station(TileIndex tile, byte flags)
 		return_cmd_error(STR_4800_IN_THE_WAY);
 	}
 
-	st = GetStation(_map2[tile]);
+	st = GetStation(_m[tile].m2);
 
 	if (m5 < 8)
 		return RemoveRailroadStation(st, tile, flags);
@@ -3128,7 +3128,7 @@ static void Load_STNS(void)
 		if (st->train_tile && st->trainst_h == 0) {
 			int w = st->trainst_w >> 4;
 			int h = st->trainst_w & 0xF;
-			if (_map5[st->train_tile]&1) intswap(w,h);
+			if (_m[st->train_tile].m5&1) intswap(w,h);
 			st->trainst_w = w;
 			st->trainst_h = h;
 		}

@@ -345,7 +345,7 @@ static inline TileType GetEffectiveTileType(TileIndex tile)
 	TileType t = GetTileType(tile);
 
 	if (t == MP_TUNNELBRIDGE) {
-		t = _map5[tile];
+		t = _m[tile].m5;
 		if ((t & 0x80) == 0) t >>= 1;
 		if ((t & 6) == 0) {
 			t = MP_RAILWAY;
@@ -421,7 +421,7 @@ static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile)
 	TileType t = GetEffectiveTileType(tile);
 
 	if (t == MP_INDUSTRY) {
-		byte color = _industry_smallmap_colors[_map5[tile]];
+		byte color = _industry_smallmap_colors[_m[tile].m5];
 		return color + (color << 8) + (color << 16) + (color << 24);
 	}
 
@@ -440,7 +440,7 @@ static inline uint32 GetSmallMapRoutesPixels(TileIndex tile)
 	uint32 bits;
 
 	if (t == MP_STATION) {
-		byte m5 = _map5[tile];
+		byte m5 = _m[tile].m5;
 		(bits = MKCOLOR(0x56565656), m5 < 8) ||			//   8 - railroad station (green)
 		(bits = MKCOLOR(0xB8B8B8B8), m5 < 0x43) ||	//  67 - airport (red)
 		(bits = MKCOLOR(0xC2C2C2C2), m5 < 0x47) ||	//  71 - truck loading bay (orange)
@@ -479,17 +479,17 @@ static inline uint32 GetSmallMapVegetationPixels(TileIndex tile)
 
 	switch (t) {
 		case MP_CLEAR:
-			i = (_map5[tile] & 0x1F) - 4;
+			i = (_m[tile].m5 & 0x1F) - 4;
 			if (i >= 0) i >>= 2;
 			bits = _vegetation_clear_bits[i + 4];
 			break;
 
 		case MP_INDUSTRY:
-			bits = IS_BYTE_INSIDE(_map5[tile], 0x10, 0x12) ? MKCOLOR(0xD0D0D0D0) : MKCOLOR(0xB5B5B5B5);
+			bits = IS_BYTE_INSIDE(_m[tile].m5, 0x10, 0x12) ? MKCOLOR(0xD0D0D0D0) : MKCOLOR(0xB5B5B5B5);
 			break;
 
 		case MP_TREES:
-			if ((_map2[tile] & 0x30) == 0x20)
+			if ((_m[tile].m2 & 0x30) == 0x20)
 				bits = (_opt.landscape == LT_HILLY) ? MKCOLOR(0x98575798) : MKCOLOR(0xC25757C2);
 			else
 				bits = MKCOLOR(0x54575754);

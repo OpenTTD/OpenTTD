@@ -269,7 +269,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	tile = TileVirtXY(x, y);
 	tileh = GetTileSlope(tile, NULL);
-	m5 = _map5[tile];
+	m5 = _m[tile].m5;
 	trackbit = TrackToTrackBits(track);
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
@@ -290,9 +290,9 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 					if (flags & DC_EXEC) {
 						SetTileOwner(tile, _current_player);
-						_map3_lo[tile] &= ~0x0F;
-						_map3_lo[tile] |= p1;
-						_map5[tile] = (m5 & 0xC7) | 0x20; // railroad under bridge
+						_m[tile].m3 &= ~0x0F;
+						_m[tile].m3 |= p1;
+						_m[tile].m5 = (m5 & 0xC7) | 0x20; // railroad under bridge
 					}
 					break;
 
@@ -312,7 +312,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			}
 			if (m5 & RAIL_TYPE_SPECIAL ||
 					!IsTileOwner(tile, _current_player) ||
-					(_map3_lo[tile] & 0xFU) != p1) {
+					(_m[tile].m3 & 0xFU) != p1) {
 				// Get detailed error message
 				return DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			}
@@ -322,8 +322,8 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			cost += ret;
 
 			if (flags & DC_EXEC) {
-				_map2[tile] &= ~RAIL_MAP2LO_GROUND_MASK; // Bare land
-				_map5[tile] = m5 | trackbit;
+				_m[tile].m2 &= ~RAIL_MAP2LO_GROUND_MASK; // Bare land
+				_m[tile].m5 = m5 | trackbit;
 			}
 			break;
 
@@ -337,10 +337,10 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 						(track == TRACK_DIAG2 && m5 == 0x0A) // correct direction?
 					)) {
 				if (flags & DC_EXEC) {
-					_map3_lo[tile] = GetTileOwner(tile);
+					_m[tile].m3 = GetTileOwner(tile);
 					SetTileOwner(tile, _current_player);
-					_map3_hi[tile] = p1;
-					_map5[tile] = 0x10 | (track == TRACK_DIAG1 ? 0x08 : 0x00); // level crossing
+					_m[tile].m4 = p1;
+					_m[tile].m5 = 0x10 | (track == TRACK_DIAG1 ? 0x08 : 0x00); // level crossing
 				}
 				break;
 			}
@@ -361,9 +361,9 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if (flags & DC_EXEC) {
 				SetTileType(tile, MP_RAILWAY);
 				SetTileOwner(tile, _current_player);
-				_map2[tile] = 0; // Bare land
-				_map3_lo[tile] = p1; // No signals, rail type
-				_map5[tile] = trackbit;
+				_m[tile].m2 = 0; // Bare land
+				_m[tile].m3 = p1; // No signals, rail type
+				_m[tile].m5 = trackbit;
 			}
 			break;
 	}
@@ -430,27 +430,27 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if (!EnsureNoVehicleZ(tile, TilePixelHeight(tile)))
 				return CMD_ERROR;
 
-			if ((_map5[tile] & 0xF8) != 0xE0)
+			if ((_m[tile].m5 & 0xF8) != 0xE0)
 				return CMD_ERROR;
 
-			if ( ((_map5[tile] & 1) ? 1 : 2) != trackbit )
+			if ( ((_m[tile].m5 & 1) ? 1 : 2) != trackbit )
 				return CMD_ERROR;
 
 			if (!(flags & DC_EXEC))
 				return _price.remove_rail;
 
 		SetTileOwner(tile, OWNER_NONE);
-			_map5[tile] = _map5[tile] & 0xC7;
+			_m[tile].m5 = _m[tile].m5 & 0xC7;
 			break;
 		case MP_STREET:
-			if (!(_map5[tile] & 0xF0))
+			if (!(_m[tile].m5 & 0xF0))
 				return CMD_ERROR;
 
-			if (_map5[tile] & 0xE0)
+			if (_m[tile].m5 & 0xE0)
 				return CMD_ERROR;
 
 			/* This is a crossing, let's check if the direction is correct */
-			if (_map5[tile] & 8) {
+			if (_m[tile].m5 & 8) {
 				m5 = 5;
 				if (track != TRACK_DIAG1)
 					return CMD_ERROR;
@@ -463,9 +463,9 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if (!(flags & DC_EXEC))
 				return _price.remove_rail;
 
-			_map5[tile] = m5;
-			SetTileOwner(tile, _map3_lo[tile]);
-			_map2[tile] = 0;
+			_m[tile].m5 = m5;
+			SetTileOwner(tile, _m[tile].m3);
+			_m[tile].m2 = 0;
 			break;
 		case MP_RAILWAY:
 
@@ -484,7 +484,7 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				return cost;
 
 			/* We remove the trackbit here. */
-			_map5[tile] &= ~trackbit;
+			_m[tile].m5 &= ~trackbit;
 
 			if (GetTrackBits(tile)  == 0) {
 				/* The tile has no tracks left, it is no longer a rail tile */
@@ -710,7 +710,7 @@ int32 CmdBuildSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	/* Protect against invalid signal copying */
 	if (p2 != 0 && (p2 & SignalOnTrack(track)) == 0) return CMD_ERROR;
 
-	m5 = _map5[tile];
+	m5 = _m[tile].m5;
 
 	/* You can only build signals on plain rail tiles, and the selected track must exist */
 	if (!IsPlainRailTile(tile) || !HasTrack(tile, track)) return CMD_ERROR;
@@ -747,40 +747,40 @@ int32 CmdBuildSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		if (GetRailTileType(tile) != RAIL_TYPE_SIGNALS) {
 			// there are no signals at all on this tile yet
-			_map5[tile] |= RAIL_TYPE_SIGNALS; // change into signals
-			_map2[tile] |= 0xF0;              // all signals are on
-			_map3_lo[tile] &= ~0xF0;          // no signals built by default
-			_map3_hi[tile] = semaphore ? 0x08 : 0;
+			_m[tile].m5 |= RAIL_TYPE_SIGNALS; // change into signals
+			_m[tile].m2 |= 0xF0;              // all signals are on
+			_m[tile].m3 &= ~0xF0;          // no signals built by default
+			_m[tile].m4 = semaphore ? 0x08 : 0;
 		}
 
 		if (p2 == 0) {
 			if (!HasSignalOnTrack(tile, track)) {
 				// build new signals
-				_map3_lo[tile] |= SignalOnTrack(track);
+				_m[tile].m3 |= SignalOnTrack(track);
 			} else {
 				if (pre_signal) {
 					// cycle between normal -> pre -> exit -> combo -> pbs ->...
 					byte type = ((GetSignalType(tile, track) + 1) % 5);
-					_map3_hi[tile] &= ~0x07;
-					_map3_hi[tile] |= type ;
+					_m[tile].m4 &= ~0x07;
+					_m[tile].m4 |= type ;
 				} else {
 					// cycle between two-way -> one-way -> one-way -> ...
 					/* TODO: Rewrite switch into something more general */
 					switch (track) {
 						case TRACK_LOWER:
 						case TRACK_RIGHT: {
-							byte signal = (_map3_lo[tile] - 0x10) & 0x30;
+							byte signal = (_m[tile].m3 - 0x10) & 0x30;
 							if (signal == 0) signal = 0x30;
-							_map3_lo[tile] &= ~0x30;
-							_map3_lo[tile] |= signal;
+							_m[tile].m3 &= ~0x30;
+							_m[tile].m3 |= signal;
 							break;
 						}
 
 						default: {
-							byte signal = (_map3_lo[tile] - 0x40) & 0xC0;
+							byte signal = (_m[tile].m3 - 0x40) & 0xC0;
 							if (signal == 0) signal = 0xC0;
-							_map3_lo[tile] &= ~0xC0;
-							_map3_lo[tile] |= signal;
+							_m[tile].m3 &= ~0xC0;
+							_m[tile].m3 |= signal;
 							break;
 						}
 					}
@@ -789,13 +789,13 @@ int32 CmdBuildSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		} else {
 			/* If CmdBuildManySignals is called with copying signals, just copy the
 			 * direction of the first signal given as parameter by CmdBuildManySignals */
-			_map3_lo[tile] &= ~SignalOnTrack(track);
-			_map3_lo[tile] |= p2 & SignalOnTrack(track);
+			_m[tile].m3 &= ~SignalOnTrack(track);
+			_m[tile].m3 |= p2 & SignalOnTrack(track);
 			// convert between signal<->semaphores when dragging
 			if (semaphore)
-				SETBIT(_map3_hi[tile], 3);
+				SETBIT(_m[tile].m4, 3);
 			else
-				CLRBIT(_map3_hi[tile], 3);
+				CLRBIT(_m[tile].m4, 3);
 		}
 
 		MarkTileDirtyByTile(tile);
@@ -851,7 +851,7 @@ static int32 CmdSignalTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 
 
 	// copy the signal-style of the first rail-piece if existing
 	if (GetRailTileType(tile) == RAIL_TYPE_SIGNALS && GetTrackBits(tile) != 0) { /* XXX: GetTrackBits check useless? */
-		signals = _map3_lo[tile] & SignalOnTrack(track);
+		signals = _m[tile].m3 & SignalOnTrack(track);
 		if (signals == 0) signals = SignalOnTrack(track); /* Can this actually occur? */
 
 		semaphores = (HasSemaphores(tile, track) ? 8 : 0); // copy signal/semaphores style (independent of CTRL)
@@ -926,13 +926,13 @@ int32 CmdRemoveSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Do it? */
 	if (flags & DC_EXEC) {
-		_map3_lo[tile] &= ~SignalOnTrack(track);
+		_m[tile].m3 &= ~SignalOnTrack(track);
 
 		/* removed last signal from tile? */
-		if ((_map3_lo[tile] & 0xF0) == 0) {
-			_map5[tile] &= ~RAIL_TYPE_SIGNALS;
-			_map2[tile] &= ~0xF0;
-			CLRBIT(_map3_hi[tile], 3); // remove any possible semaphores
+		if ((_m[tile].m3 & 0xF0) == 0) {
+			_m[tile].m5 &= ~RAIL_TYPE_SIGNALS;
+			_m[tile].m2 &= ~0xF0;
+			CLRBIT(_m[tile].m4, 3); // remove any possible semaphores
 		}
 
 		SetSignalsOnBothDir(tile, track);
@@ -965,7 +965,7 @@ static int32 DoConvertRail(TileIndex tile, uint totype, bool exec)
 
 	// change type.
 	if (exec) {
-		_map3_lo[tile] = (_map3_lo[tile] & 0xF0) + totype;
+		_m[tile].m3 = (_m[tile].m3 & 0xF0) + totype;
 		MarkTileDirtyByTile(tile);
 	}
 
@@ -1050,7 +1050,7 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 	int32 ret;
 	byte m5;
 
-	m5 = _map5[tile];
+	m5 = _m[tile].m5;
 
 	if (flags & DC_AUTO) {
 		if (m5 & RAIL_TYPE_SPECIAL)
@@ -1066,12 +1066,12 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 
 	switch (GetRailTileType(tile)) {
 		case RAIL_TYPE_SIGNALS:
-			if (_map3_lo[tile] & _signals_table_both[0]) {
+			if (_m[tile].m3 & _signals_table_both[0]) {
 				ret = DoCommandByTile(tile, 0, 0, flags, CMD_REMOVE_SIGNALS);
 				if (ret == CMD_ERROR) return CMD_ERROR;
 				cost += ret;
 			}
-			if (_map3_lo[tile] & _signals_table_both[3]) {
+			if (_m[tile].m3 & _signals_table_both[3]) {
 				ret = DoCommandByTile(tile, 3, 0, flags, CMD_REMOVE_SIGNALS);
 				if (ret == CMD_ERROR) return CMD_ERROR;
 				cost += ret;
@@ -1184,7 +1184,7 @@ static void DrawSignalHelper(TileInfo *ti, byte condition, uint32 image_and_pos)
 	uint v = _signal_position[(image_and_pos & 0xF) + (otherside ? 12 : 0)];
 	uint x = ti->x | (v&0xF);
 	uint y = ti->y | (v>>4);
-	uint sprite = _signal_base_sprites[(_map3_hi[ti->tile] & 0xF) + (otherside ? 0x10 : 0)] + (image_and_pos>>4) + ((condition != 0) ? 1 : 0);
+	uint sprite = _signal_base_sprites[(_m[ti->tile].m4 & 0xF) + (otherside ? 0x10 : 0)] + (image_and_pos>>4) + ((condition != 0) ? 1 : 0);
 	AddSortableSpriteToDraw(sprite, x, y, 1, 1, 10, GetSlopeZ(x,y));
 }
 
@@ -1419,7 +1419,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 	_drawtile_track_palette = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)));
 
-	tracktype_offs = (_map3_lo[ti->tile] & 0xF) * TRACKTYPE_SPRITE_PITCH;
+	tracktype_offs = (_m[ti->tile].m3 & 0xF) * TRACKTYPE_SPRITE_PITCH;
 
 	m5 = (byte)ti->map5;
 	if (!(m5 & RAIL_TYPE_SPECIAL)) {
@@ -1457,9 +1457,9 @@ static void DrawTile_Track(TileInfo *ti)
 			if (ti->tileh != 0) image = _track_sloped_sprites[ti->tileh - 1] + TrackSet[TRACK_Y];
 		}
 
-		if ((_map2[ti->tile] & RAIL_MAP2LO_GROUND_MASK)==RAIL_GROUND_BROWN) {
+		if ((_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK)==RAIL_GROUND_BROWN) {
 			image = (image & 0xFFFF) | 0x3178000; // use a brown palette
-		 } else if ((_map2[ti->tile] & RAIL_MAP2LO_GROUND_MASK)==RAIL_GROUND_ICE_DESERT) {
+		 } else if ((_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK)==RAIL_GROUND_ICE_DESERT) {
 			image += TrackSet[SNOW_OFFSET];
 		}
 
@@ -1485,7 +1485,7 @@ static void DrawTile_Track(TileInfo *ti)
 		}
 
 		if (_display_opt & DO_FULL_DETAIL) {
-			_detailed_track_proc[_map2[ti->tile] & RAIL_MAP2LO_GROUND_MASK](ti);
+			_detailed_track_proc[_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK](ti);
 		}
 
 		/* draw signals also? */
@@ -1495,7 +1495,7 @@ static void DrawTile_Track(TileInfo *ti)
 		{
 			byte m23;
 
-			m23 = (_map3_lo[ti->tile] >> 4) | (_map2[ti->tile] & 0xF0);
+			m23 = (_m[ti->tile].m3 >> 4) | (_m[ti->tile].m2 & 0xF0);
 
 #define HAS_SIGNAL(x) (m23 & (byte)(0x1 << (x)))
 #define ISON_SIGNAL(x) (m23 & (byte)(0x10 << (x)))
@@ -1541,16 +1541,16 @@ static void DrawTile_Track(TileInfo *ti)
 
 		if (ti->tileh != 0) { DrawFoundation(ti, ti->tileh); }
 
-		if (IsRailWaypoint(m5) && _map3_lo[ti->tile] & 16) {
+		if (IsRailWaypoint(m5) && _m[ti->tile].m3 & 16) {
 			// look for customization
-			StationSpec *stat = GetCustomStation(STAT_CLASS_WAYP, _map3_hi[ti->tile]);
+			StationSpec *stat = GetCustomStation(STAT_CLASS_WAYP, _m[ti->tile].m4);
 
 			if (stat) {
 				DrawTileSeqStruct const *seq;
 				// emulate station tile - open with building
 				DrawTileSprites *cust = &stat->renderdata[2 + (m5 & 0x1)];
 				uint32 relocation = GetCustomStationRelocation(stat, ComposeWaypointStation(ti->tile), 0);
-				int railtype=(_map3_lo[ti->tile] & 0xF);
+				int railtype=(_m[ti->tile].m3 & 0xF);
 
 				/* We don't touch the 0x8000 bit. In all this
 				 * waypoint code, it is used to indicate that
@@ -1583,7 +1583,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 		// adjust ground tile for desert
 		// (don't adjust for arctic depots, because snow in depots looks weird)
-		if ((_map2[ti->tile] & RAIL_MAP2LO_GROUND_MASK)==RAIL_GROUND_ICE_DESERT && (_opt.landscape == LT_DESERT || type>=4))
+		if ((_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK)==RAIL_GROUND_ICE_DESERT && (_opt.landscape == LT_DESERT || type>=4))
 		{
 			if(image!=3981)
 				image += 26; // tile with tracks
@@ -1673,7 +1673,7 @@ static bool SetSignalsEnumProc(TileIndex tile, SetSignalsData *ssd, int track, u
 	// the tile has signals?
 	if (IsTileType(tile, MP_RAILWAY)) {
 		if (HasSignalOnTrack(tile, TrackdirToTrack(track))) {
-			if ((_map3_lo[tile] & _signals_table[track]) != 0) {
+			if ((_m[tile].m3 & _signals_table[track]) != 0) {
 				// yes, add the signal to the list of signals
 				if (ssd->cur != NUM_SSD_ENTRY) {
 					ssd->tile[ssd->cur] = tile; // remember the tile index
@@ -1685,7 +1685,7 @@ static bool SetSignalsEnumProc(TileIndex tile, SetSignalsData *ssd, int track, u
 				SETBIT(ssd->has_pbssignal, 2);
 
 				// remember if this block has a presignal.
-				ssd->has_presignal |= (_map3_hi[tile]&1);
+				ssd->has_presignal |= (_m[tile].m4&1);
 			}
 
 			if (PBSIsPbsSignal(tile, ReverseTrackdir(track)) || PBSIsPbsSignal(tile, track)) {
@@ -1695,16 +1695,16 @@ static bool SetSignalsEnumProc(TileIndex tile, SetSignalsData *ssd, int track, u
 				ssd->has_pbssignal |= num;
 			}
 
-			if ((_map3_lo[tile] & _signals_table_both[track]) != 0) {
+			if ((_m[tile].m3 & _signals_table_both[track]) != 0) {
 				ssd->pbs_tile[ssd->pbs_cur] = tile; // remember the tile index
 				ssd->pbs_cur++;
 			}
 
-			if (_map3_lo[tile]&_signals_table_other[track]) {
-				if (_map3_hi[tile]&2) {
+			if (_m[tile].m3&_signals_table_other[track]) {
+				if (_m[tile].m4&2) {
 					// this is an exit signal that points out from the segment
 					ssd->presignal_exits++;
-					if ((_map2[tile]&_signals_table_other[track]) != 0)
+					if ((_m[tile].m2&_signals_table_other[track]) != 0)
 						ssd->presignal_exits_free++;
 				}
 				if (PBSIsPbsSignal(tile, track))
@@ -1761,10 +1761,10 @@ bool SignalVehicleCheck(TileIndex tile, uint track)
 	 * is some kind of invisible black hole, and there is some special magic going
 	 * on in there. This 'workaround' can be removed once the maprewrite is done.
 	 */
-	if (GetTileType(tile)==MP_TUNNELBRIDGE && ((_map5[tile] & 0xF0)==0)) {
+	if (GetTileType(tile)==MP_TUNNELBRIDGE && ((_m[tile].m5 & 0xF0)==0)) {
 		// It is a tunnel we're checking, we need to do some special stuff
 		// because VehicleFromPos will not find the vihicle otherwise
-		byte direction = _map5[tile] & 3;
+		byte direction = _m[tile].m5 & 3;
 		FindLengthOfTunnelResult flotr;
 		flotr = FindLengthOfTunnel(tile, direction);
 		dest.track = 1 << (direction & 1); // get the trackbit the vehicle would have if it has not entered the tunnel yet (ie is still visible)
@@ -1849,8 +1849,8 @@ static void ChangeSignalStates(SetSignalsData *ssd)
 	if (_patches.auto_pbs_placement && !(ssd->stop) && (ssd->has_pbssignal == 0xE) && !ssd->has_presignal && (ssd->presignal_exits == 0)) // 0xE means at least 2 pbs signals, and at least 1 entry and 1 exit, see comments ssd->has_pbssignal
 	for(i=0; i!=ssd->pbs_cur; i++) {
 		TileIndex tile = ssd->pbs_tile[i];
-		_map3_hi[tile] &= ~0x07;
-		_map3_hi[tile] |= 0x04;
+		_m[tile].m4 &= ~0x07;
+		_m[tile].m4 |= 0x04;
 		MarkTileDirtyByTile(tile);
 	};
 
@@ -1858,16 +1858,16 @@ static void ChangeSignalStates(SetSignalsData *ssd)
 	for(i=0; i!=ssd->cur; i++) {
 		TileIndex tile = ssd->tile[i];
 		byte bit = _signals_table[ssd->bit[i]];
-		uint16 m2 = _map2[tile];
+		uint16 m2 = _m[tile].m2;
 
 		// presignals don't turn green if there is at least one presignal exit and none are free
-		if (_map3_hi[tile] & 1) {
+		if (_m[tile].m4 & 1) {
 			int ex = ssd->presignal_exits, exfree = ssd->presignal_exits_free;
 
 			// subtract for dual combo signals so they don't count themselves
-			if (_map3_hi[tile]&2 && _map3_lo[tile]&_signals_table_other[ssd->bit[i]]) {
+			if (_m[tile].m4&2 && _m[tile].m3&_signals_table_other[ssd->bit[i]]) {
 				ex--;
-				if ((_map2[tile]&_signals_table_other[ssd->bit[i]]) != 0) exfree--;
+				if ((_m[tile].m2&_signals_table_other[ssd->bit[i]]) != 0) exfree--;
 			}
 
 			// if we have exits and none are free, make red.
@@ -1887,7 +1887,7 @@ make_red:
 		}
 
 		/* Update signals on the other side of this exit-combo signal; it changed. */
-		if (_map3_hi[tile] & 2 ) {
+		if (_m[tile].m4 & 2 ) {
 			if (ssd->cur_stack != NUM_SSD_STACK) {
 				ssd->next_tile[ssd->cur_stack] = tile;
 				ssd->next_dir[ssd->cur_stack] = _dir_from_track[ssd->bit[i]];
@@ -1898,7 +1898,7 @@ make_red:
 		}
 
 		// it changed, so toggle it
-		_map2[tile] = m2 ^ bit;
+		_m[tile].m2 = m2 ^ bit;
 		MarkTileDirtyByTile(tile);
 	}
 }
@@ -2010,7 +2010,7 @@ static void TileLoop_Track(TileIndex tile)
 	uint16 m2;
 	byte owner;
 
-	m2 = _map2[tile] & 0xF;
+	m2 = _m[tile].m2 & 0xF;
 
 	/* special code for alps landscape */
 	if (_opt.landscape == LT_HILLY) {
@@ -2030,14 +2030,14 @@ static void TileLoop_Track(TileIndex tile)
 	}
 
 	// Don't continue tile loop for depots
-	if (_map5[tile] & RAIL_TYPE_SPECIAL)
+	if (_m[tile].m5 & RAIL_TYPE_SPECIAL)
 		return;
 
 	a2 = RAIL_GROUND_GREEN;
 
 	if (m2 != RAIL_GROUND_BROWN) { /* wait until bottom is green */
 		/* determine direction of fence */
-		rail = _map5[tile] & TRACK_BIT_MASK;
+		rail = _m[tile].m5 & TRACK_BIT_MASK;
 
 		if (rail == TRACK_BIT_UPPER) {
 			a2 = RAIL_GROUND_FENCE_HORIZ1;
@@ -2053,28 +2053,28 @@ static void TileLoop_Track(TileIndex tile)
 			if ( (!(rail&(TRACK_BIT_DIAG2|TRACK_BIT_UPPER|TRACK_BIT_LEFT)) && (rail&TRACK_BIT_DIAG1)) || rail==(TRACK_BIT_LOWER|TRACK_BIT_RIGHT)) {
 				if (!IsTileType(tile + TileDiffXY(0, -1), MP_RAILWAY) ||
 						!IsTileOwner(tile + TileDiffXY(0, -1), owner) ||
-						(_map5[tile + TileDiffXY(0, -1)] == TRACK_BIT_UPPER || _map5[tile + TileDiffXY(0, -1)] == TRACK_BIT_LEFT))
+						(_m[tile + TileDiffXY(0, -1)].m5 == TRACK_BIT_UPPER || _m[tile + TileDiffXY(0, -1)].m5 == TRACK_BIT_LEFT))
 							a2 = RAIL_GROUND_FENCE_NW;
 			}
 
 			if ( (!(rail&(TRACK_BIT_DIAG2|TRACK_BIT_LOWER|TRACK_BIT_RIGHT)) && (rail&TRACK_BIT_DIAG1)) || rail==(TRACK_BIT_UPPER|TRACK_BIT_LEFT)) {
 				if (!IsTileType(tile + TileDiffXY(0, 1), MP_RAILWAY) ||
 						!IsTileOwner(tile + TileDiffXY(0, 1), owner) ||
-						(_map5[tile + TileDiffXY(0, 1)] == TRACK_BIT_LOWER || _map5[tile + TileDiffXY(0, 1)] == TRACK_BIT_RIGHT))
+						(_m[tile + TileDiffXY(0, 1)].m5 == TRACK_BIT_LOWER || _m[tile + TileDiffXY(0, 1)].m5 == TRACK_BIT_RIGHT))
 							a2 = (a2 == RAIL_GROUND_FENCE_NW) ? RAIL_GROUND_FENCE_SENW : RAIL_GROUND_FENCE_SE;
 			}
 
 			if ( (!(rail&(TRACK_BIT_DIAG1|TRACK_BIT_UPPER|TRACK_BIT_RIGHT)) && (rail&TRACK_BIT_DIAG2)) || rail==(TRACK_BIT_LOWER|TRACK_BIT_LEFT)) {
 				if (!IsTileType(tile + TileDiffXY(-1, 0), MP_RAILWAY) ||
 						!IsTileOwner(tile + TileDiffXY(-1, 0), owner) ||
-						(_map5[tile + TileDiffXY(-1, 0)] == TRACK_BIT_UPPER || _map5[tile + TileDiffXY(-1, 0)] == TRACK_BIT_RIGHT))
+						(_m[tile + TileDiffXY(-1, 0)].m5 == TRACK_BIT_UPPER || _m[tile + TileDiffXY(-1, 0)].m5 == TRACK_BIT_RIGHT))
 							a2 = RAIL_GROUND_FENCE_NE;
 			}
 
 			if ( (!(rail&(TRACK_BIT_DIAG1|TRACK_BIT_LOWER|TRACK_BIT_LEFT)) && (rail&TRACK_BIT_DIAG2)) || rail==(TRACK_BIT_UPPER|TRACK_BIT_RIGHT)) {
 				if (!IsTileType(tile + TileDiffXY(1, 0), MP_RAILWAY) ||
 						!IsTileOwner(tile + TileDiffXY(1, 0), owner) ||
-						(_map5[tile + TileDiffXY(1, 0)] == TRACK_BIT_LOWER || _map5[tile + TileDiffXY(1, 0)] == TRACK_BIT_LEFT))
+						(_m[tile + TileDiffXY(1, 0)].m5 == TRACK_BIT_LOWER || _m[tile + TileDiffXY(1, 0)].m5 == TRACK_BIT_LEFT))
 							a2 = (a2 == RAIL_GROUND_FENCE_NE) ? RAIL_GROUND_FENCE_NESW : RAIL_GROUND_FENCE_SW;
 			}
 		}
@@ -2083,7 +2083,7 @@ static void TileLoop_Track(TileIndex tile)
 modify_me:;
 	/* tile changed? */
 	if ( m2 != a2) {
-		_map2[tile] = (_map2[tile] & ~RAIL_MAP2LO_GROUND_MASK) | a2;
+		_m[tile].m2 = (_m[tile].m2 & ~RAIL_MAP2LO_GROUND_MASK) | a2;
 		MarkTileDirtyByTile(tile);
 	}
 }
@@ -2098,7 +2098,7 @@ static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode)
 	if (mode != TRANSPORT_RAIL)
 		return 0;
 
-	m5 = _map5[tile];
+	m5 = _m[tile].m5;
 
 	if (!(m5 & RAIL_TYPE_SPECIAL)) {
 		ret = (m5 | (m5 << 8)) & 0x3F3F;
@@ -2109,8 +2109,8 @@ static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode)
 		} else {
 			/* has_signals */
 
-			a = _map3_lo[tile];
-			b = _map2[tile];
+			a = _m[tile].m3;
+			b = _m[tile].m2;
 
 			b &= a;
 
@@ -2139,7 +2139,7 @@ static void ClickTile_Track(TileIndex tile)
 {
 	if (IsTileDepotType(tile, TRANSPORT_RAIL))
 		ShowTrainDepotWindow(tile);
-	else if (IsRailWaypoint(_map5[tile]))
+	else if (IsRailWaypoint(_m[tile].m5))
 		ShowRenameWaypointWindow(GetWaypointByTile(tile));
 
 }
@@ -2162,13 +2162,13 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 				STR_NULL, STR_NULL
 			};
 
-			td->str = signal_type[_map3_hi[tile] & 0x7];
+			td->str = signal_type[_m[tile].m4 & 0x7];
 			break;
 		}
 
 		case RAIL_TYPE_DEPOT_WAYPOINT:
 		default:
-			td->str = ((_map5[tile] & RAIL_SUBTYPE_MASK) == RAIL_SUBTYPE_DEPOT) ?
+			td->str = ((_m[tile].m5 & RAIL_SUBTYPE_MASK) == RAIL_SUBTYPE_DEPOT) ?
 				STR_1023_RAILROAD_TRAIN_DEPOT : STR_LANDINFO_WAYPOINT;
 			break;
 	}

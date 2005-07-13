@@ -72,13 +72,13 @@ static inline bool IsTileDepotType(TileIndex tile, TransportType type)
 	switch(type)
 	{
 		case TRANSPORT_RAIL:
-			return IsTileType(tile, MP_RAILWAY) && (_map5[tile] & 0xFC) == 0xC0;
+			return IsTileType(tile, MP_RAILWAY) && (_m[tile].m5 & 0xFC) == 0xC0;
 
 		case TRANSPORT_ROAD:
-			return IsTileType(tile, MP_STREET) && (_map5[tile] & 0xF0) == 0x20;
+			return IsTileType(tile, MP_STREET) && (_m[tile].m5 & 0xF0) == 0x20;
 
 		case TRANSPORT_WATER:
-			return IsTileType(tile, MP_WATER) && (_map5[tile] & ~3) == 0x80;
+			return IsTileType(tile, MP_WATER) && (_m[tile].m5 & ~3) == 0x80;
 
 		default:
 			assert(0);
@@ -98,10 +98,10 @@ static inline DiagDirection GetDepotDirection(TileIndex tile, TransportType type
 		case TRANSPORT_RAIL:
 		case TRANSPORT_ROAD:
 			/* Rail and road store a diagonal direction in bits 0 and 1 */
-			return (DiagDirection)(_map5[tile] & 3);
+			return (DiagDirection)(_m[tile].m5 & 3);
 		case TRANSPORT_WATER:
 			/* Water is stubborn, it stores the directions in a different order. */
-			switch (_map5[tile] & 3) {
+			switch (_m[tile].m5 & 3) {
 				case 0: return DIAGDIR_NE;
 				case 1: return DIAGDIR_SW;
 				case 2: return DIAGDIR_NW;

@@ -2182,7 +2182,7 @@ static bool AiRemoveTileAndGoForward(Player *p)
 	TileIndex tilenew;
 
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-		if (!(_map5[tile] & 0x80)) {
+		if (!(_m[tile].m5 & 0x80)) {
 			// Clear the tunnel and continue at the other side of it.
 			if (CmdFailed(DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR)) )
 				return false;
@@ -2190,18 +2190,18 @@ static bool AiRemoveTileAndGoForward(Player *p)
 			return true;
 		}
 
-		if (!(_map5[tile] & 0x40)) {
+		if (!(_m[tile].m5 & 0x40)) {
 
 			// Check if the bridge points in the right direction.
 			// This is not really needed the first place AiRemoveTileAndGoForward is called.
-			if ((_map5[tile]&1) != (p->ai.cur_dir_a&1))
+			if ((_m[tile].m5&1) != (p->ai.cur_dir_a&1))
 				return false;
 
 			// Find other side of bridge.
 			offs = TileOffsByDir(p->ai.cur_dir_a);
 			do {
 				tile = TILE_MASK(tile - offs);
-			} while (_map5[tile] & 0x40);
+			} while (_m[tile].m5 & 0x40);
 
 			tilenew = TILE_MASK(tile - offs);
 			// And clear the bridge.
@@ -2222,7 +2222,7 @@ static bool AiRemoveTileAndGoForward(Player *p)
 
 	// Then remove and signals if there are any.
 	if (IsTileType(tile, MP_RAILWAY) &&
-			(_map5[tile]&0xC0) == 0x40) {
+			(_m[tile].m5&0xC0) == 0x40) {
 		DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_REMOVE_SIGNALS);
 	}
 
@@ -2360,7 +2360,7 @@ static int AiGetStationIdByDef(TileIndex tile, int id)
 {
 	const AiDefaultBlockData *p = _default_rail_track_data[id]->data;
 	while (p->mode != 1) p++;
-	return _map2[TILE_ADD(tile, ToTileIndexDiff(p->tileoffs))];
+	return _m[TILE_ADD(tile, ToTileIndexDiff(p->tileoffs))].m2;
 }
 
 static void AiStateBuildRailVeh(Player *p)
@@ -2546,12 +2546,12 @@ static int32 AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBlockData 
 
 		if (p->mode == 2) {
 			if (IsTileType(c, MP_STREET) &&
-					(_map5[c]&0xF0)==0 &&
-					(_map5[c]&p->attr)!=0) {
+					(_m[c].m5&0xF0)==0 &&
+					(_m[c].m5&p->attr)!=0) {
 				roadflag |= 2;
 
 				// all bits are already built?
-				if ((_map5[c]&p->attr)==p->attr)
+				if ((_m[c].m5&p->attr)==p->attr)
 					continue;
 			}
 
@@ -2592,7 +2592,7 @@ clear_town_stuff:;
 			if (GetTileSlope(c, NULL) != 0)
 				return CMD_ERROR;
 
-			if (!(IsTileType(c, MP_STREET) && (_map5[c] & 0xF0) == 0)) {
+			if (!(IsTileType(c, MP_STREET) && (_m[c].m5 & 0xF0) == 0)) {
 				ret = DoCommandByTile(c, 0, 0, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_LANDSCAPE_CLEAR);
 				if (CmdFailed(ret)) return CMD_ERROR;
 			}
@@ -2776,7 +2776,7 @@ static bool AiEnumFollowRoad(TileIndex tile, AiRoadEnum *a, int track, uint leng
 		TileIndex tile2 = TILE_MASK(tile + TileOffsByDir(_dir_by_track[track]));
 
 		if (IsTileType(tile2, MP_STREET) &&
-				(_map5[tile2]&0xF0) == 0) {
+				(_m[tile2].m5&0xF0) == 0) {
 			a->best_dist = dist;
 			a->best_tile = tile;
 			a->best_track = track;
@@ -3161,7 +3161,7 @@ static int AiGetStationIdFromRoadBlock(TileIndex tile, int id)
 {
 	const AiDefaultBlockData *p = _road_default_block_data[id]->data;
 	while (p->mode != 1) p++;
-	return _map2[TILE_ADD(tile, ToTileIndexDiff(p->tileoffs))];
+	return _m[TILE_ADD(tile, ToTileIndexDiff(p->tileoffs))].m2;
 }
 
 static void AiStateBuildRoadVehicles(Player *p)
@@ -3245,7 +3245,7 @@ static bool AiCheckIfHangar(Station *st)
 	// HANGAR of airports
 	// 0x20 - hangar large airport (32)
 	// 0x41 - hangar small airport (65)
-	return (_map5[tile] == 32 || _map5[tile] == 65);
+	return (_m[tile].m5 == 32 || _m[tile].m5 == 65);
 }
 
 static void AiStateAirportStuff(Player *p)
@@ -3431,8 +3431,8 @@ static void AiStateBuildDefaultAirportBlocks(Player *p)
 					!IsTileType(aib->use_tile, MP_STATION)
 					) {
 
-				_map_type_and_height[aib->use_tile] = 0xa1;
-				_map5[aib->use_tile] = 0x80;
+				_m[aib->use_tile].type_height = 0xa1;
+				_m[aib->use_tile].m5 = 0x80;
 				MarkTileDirtyByTile(aib->use_tile);
 			}
 #endif
@@ -3480,7 +3480,7 @@ static int AiGetStationIdFromAircraftBlock(TileIndex tile, int id)
 {
 	const AiDefaultBlockData *p = _airport_default_block_data[id];
 	while (p->mode != 1) p++;
-	return _map2[TILE_ADD(tile, ToTileIndexDiff(p->tileoffs))];
+	return _m[TILE_ADD(tile, ToTileIndexDiff(p->tileoffs))].m2;
 }
 
 static void AiStateBuildAircraftVehicles(Player *p)
@@ -3646,7 +3646,7 @@ static void AiRemovePlayerRailOrRoad(Player *p, TileIndex tile)
 	if (IsTileType(tile, MP_RAILWAY)) {
 		if (!IsTileOwner(tile, _current_player)) return;
 
-		m5 = _map5[tile];
+		m5 = _m[tile].m5;
 		if ((m5&~0x3) != 0xC0) {
 is_rail_crossing:;
 			m5 = GetRailTrackStatus(tile);
@@ -3708,7 +3708,7 @@ pos_3:
 		if (IsLevelCrossing(tile))
 			goto is_rail_crossing;
 
-		if ( (_map5[tile]&0xF0) == 0x20) {
+		if ( (_m[tile].m5&0xF0) == 0x20) {
 			int dir;
 
 			// Check if there are any stations around.
@@ -3728,7 +3728,7 @@ pos_3:
 					IsTileOwner(tile + TileDiffXY(0, 1), _current_player))
 						return;
 
-			dir = _map5[tile] & 3;
+			dir = _m[tile].m5 & 3;
 
 			DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 			DoCommandByTile(
@@ -3741,12 +3741,12 @@ pos_3:
 	} else if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		byte b;
 
-		if (!IsTileOwner(tile, _current_player) || (_map5[tile] & 0xC6) != 0x80)
+		if (!IsTileOwner(tile, _current_player) || (_m[tile].m5 & 0xC6) != 0x80)
 			return;
 
 		m5 = 0;
 
-		b = _map5[tile] & 0x21;
+		b = _m[tile].m5 & 0x21;
 		if (b == 0) goto pos_0;
 		if (b == 1) goto pos_3;
 		if (b == 0x20) goto pos_2;

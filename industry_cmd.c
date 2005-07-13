@@ -255,10 +255,10 @@ static void IndustryDrawTileProc1(TileInfo *ti)
 	const DrawIndustrySpec1Struct *d;
 	uint32 image;
 
-	if (!(_map_owner[ti->tile] & 0x80))
+	if (!(_m[ti->tile].owner & 0x80))
 		return;
 
-	d = &_draw_industry_spec1[_map3_lo[ti->tile]];
+	d = &_draw_industry_spec1[_m[ti->tile].m3];
 
 	AddChildSpriteScreen(0x12A7 + d->image_1, d->x, 0);
 
@@ -274,8 +274,8 @@ static void IndustryDrawTileProc2(TileInfo *ti)
 {
 	int x = 0;
 
-	if (_map_owner[ti->tile] & 0x80) {
-		x = _industry_anim_offs[_map3_lo[ti->tile]];
+	if (_m[ti->tile].owner & 0x80) {
+		x = _industry_anim_offs[_m[ti->tile].m3];
 		if ( (byte)x == 0xFF)
 			x = 0;
 	}
@@ -286,9 +286,9 @@ static void IndustryDrawTileProc2(TileInfo *ti)
 
 static void IndustryDrawTileProc3(TileInfo *ti)
 {
-	if (_map_owner[ti->tile] & 0x80) {
+	if (_m[ti->tile].owner & 0x80) {
 		AddChildSpriteScreen(0x128B, 5,
-			_industry_anim_offs_2[_map3_lo[ti->tile]]);
+			_industry_anim_offs_2[_m[ti->tile].m3]);
 	}
 	AddChildSpriteScreen(4746, 3, 67);
 }
@@ -297,7 +297,7 @@ static void IndustryDrawTileProc4(TileInfo *ti)
 {
 	const DrawIndustrySpec4Struct *d;
 
-	d = &_industry_anim_offs_3[_map3_lo[ti->tile]];
+	d = &_industry_anim_offs_3[_m[ti->tile].m3];
 
 	if (d->image_1 != 0xFF) {
 		AddChildSpriteScreen(0x126F, 0x32 - d->image_1 * 2, 0x60 + d->image_1);
@@ -313,7 +313,7 @@ static void IndustryDrawTileProc4(TileInfo *ti)
 
 static void DrawCoalPlantSparkles(TileInfo *ti)
 {
-	int image = _map_owner[ti->tile];
+	int image = _m[ti->tile].owner;
 	if (image & 0x80) {
 		image = (image >> 2) & 0x1F;
 		if (image != 0 && image < 7) {
@@ -342,11 +342,11 @@ static void DrawTile_Industry(TileInfo *ti)
 	uint32 image, ormod;
 
 	/* Pointer to industry */
-	ind = GetIndustry(_map2[ti->tile]);
+	ind = GetIndustry(_m[ti->tile].m2);
 	ormod = (ind->color_map+0x307)<<16;
 
 	/* Retrieve pointer to the draw industry tile struct */
-	dits = &_industry_draw_tile_data[(ti->map5<<2) | (_map_owner[ti->tile]&3)];
+	dits = &_industry_draw_tile_data[(ti->map5<<2) | (_m[ti->tile].owner&3)];
 
 	image = dits->sprite_1;
 	if (image&0x8000 && (image & 0xFFFF0000) == 0)
@@ -403,7 +403,7 @@ static uint GetSlopeTileh_Industry(TileInfo *ti) {
 
 static void GetAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
 {
-	int m5 = _map5[tile];
+	int m5 = _m[tile].m5;
 	int a;
 
 	a = _industry_map5_accepts_1[m5];
@@ -418,11 +418,11 @@ static void GetAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
 
 static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
 {
-	Industry *i = GetIndustry(_map2[tile]);
+	Industry *i = GetIndustry(_m[tile].m2);
 
 	td->owner = i->owner;
 	td->str = STR_4802_COAL_MINE + i->type;
-	if ((_map_owner[tile] & 0x80) == 0) {
+	if ((_m[tile].owner & 0x80) == 0) {
 		SetDParamX(td->dparam, 0, td->str);
 		td->str = STR_2058_UNDER_CONSTRUCTION;
 	}
@@ -430,7 +430,7 @@ static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
 
 static int32 ClearTile_Industry(TileIndex tile, byte flags)
 {
-	Industry *i = GetIndustry(_map2[tile]);
+	Industry *i = GetIndustry(_m[tile].m2);
 
 	/*	* water can destroy industries
 			* in editor you can bulldoze industries
@@ -466,7 +466,7 @@ static void TransportIndustryGoods(TileIndex tile)
 	uint cw, am;
 	byte m5;
 
-	i = GetIndustry(_map2[tile]);
+	i = GetIndustry(_m[tile].m2);
 
 	type = i->type;
 	cw = min(i->cargo_waiting[0], 255);
@@ -480,9 +480,9 @@ static void TransportIndustryGoods(TileIndex tile)
 
 		am = MoveGoodsToStation(i->xy, i->width, i->height, i->produced_cargo[0], cw);
 		i->last_mo_transported[0] += am;
-		if (am != 0 && (m5 = _industry_produce_map5[_map5[tile]]) != 0xFF) {
-			_map5[tile] = m5;
-			_map_owner[tile] = 0x80;
+		if (am != 0 && (m5 = _industry_produce_map5[_m[tile].m5]) != 0xFF) {
+			_m[tile].m5 = m5;
+			_m[tile].owner = 0x80;
 			MarkTileDirtyByTile(tile);
 		}
 	}
@@ -506,10 +506,10 @@ static void AnimateTile_Industry(TileIndex tile)
 {
 	byte m,n;
 
-	switch(_map5[tile]) {
+	switch(_m[tile].m5) {
 	case 174:
 		if ((_tick_counter & 1) == 0) {
-			m = _map3_lo[tile] + 1;
+			m = _m[tile].m3 + 1;
 
 			switch(m & 7) {
 			case 2:	SndPlayTileFx(SND_2D_RIP_2, tile); break;
@@ -520,7 +520,7 @@ static void AnimateTile_Industry(TileIndex tile)
 				m = 0;
 				DeleteAnimatedTile(tile);
 			}
-			_map3_lo[tile] = m;
+			_m[tile].m3 = m;
 
 			MarkTileDirtyByTile(tile);
 		}
@@ -528,7 +528,7 @@ static void AnimateTile_Industry(TileIndex tile)
 
 	case 165:
 		if ((_tick_counter & 3) == 0) {
-			m = _map3_lo[tile];
+			m = _m[tile].m3;
 
 			if (_industry_anim_offs[m] == 0xFF) {
 				SndPlayTileFx(SND_30_CARTOON_SOUND, tile);
@@ -538,7 +538,7 @@ static void AnimateTile_Industry(TileIndex tile)
 				m = 0;
 				DeleteAnimatedTile(tile);
 			}
-			_map3_lo[tile] = m;
+			_m[tile].m3 = m;
 
 			MarkTileDirtyByTile(tile);
 		}
@@ -546,13 +546,13 @@ static void AnimateTile_Industry(TileIndex tile)
 
 	case 162:
 		if ((_tick_counter&1) == 0) {
-			m = _map3_lo[tile];
+			m = _m[tile].m3;
 
 			if (++m >= 40) {
 				m = 0;
 				DeleteAnimatedTile(tile);
 			}
-			_map3_lo[tile] = m;
+			_m[tile].m3 = m;
 
 			MarkTileDirtyByTile(tile);
 		}
@@ -561,12 +561,12 @@ static void AnimateTile_Industry(TileIndex tile)
 	// Sparks on a coal plant
 	case 10:
 		if ((_tick_counter & 3) == 0) {
-			m = _map_owner[tile];
+			m = _m[tile].owner;
 			if ((m & (31<<2)) == (6 << 2)) {
-				_map_owner[tile] = m&~(31<<2);
+				_m[tile].owner = m&~(31<<2);
 				DeleteAnimatedTile(tile);
 			} else {
-				_map_owner[tile] = m + (1<<2);
+				_m[tile].owner = m + (1<<2);
 				MarkTileDirtyByTile(tile);
 			}
 		}
@@ -574,7 +574,7 @@ static void AnimateTile_Industry(TileIndex tile)
 
 	case 143:
 		if ((_tick_counter & 1) == 0) {
-			m = _map3_lo[tile] + 1;
+			m = _m[tile].m3 + 1;
 
 			if (m == 1) {
 				SndPlayTileFx(SND_2C_MACHINERY, tile);
@@ -584,11 +584,11 @@ static void AnimateTile_Industry(TileIndex tile)
 				SndPlayTileFx(SND_2A_EXTRACT_AND_POP, tile);
 			}
 
-			if (m >= 50 && (m=0,++_map3_hi[tile] >= 8)) {
-				_map3_hi[tile] = 0;
+			if (m >= 50 && (m=0,++_m[tile].m4 >= 8)) {
+				_m[tile].m4 = 0;
 				DeleteAnimatedTile(tile);
 			}
-			_map3_lo[tile] = m;
+			_m[tile].m3 = m;
 			MarkTileDirtyByTile(tile);
 		}
 		break;
@@ -596,9 +596,9 @@ static void AnimateTile_Industry(TileIndex tile)
 	case 148: case 149: case 150: case 151:
 	case 152: case 153: case 154: case 155:
 		if ((_tick_counter & 3) == 0) {
-			m = _map5[tile]	+ 1;
+			m = _m[tile].m5	+ 1;
 			if (m == 155+1) m = 148;
-			_map5[tile] = m;
+			_m[tile].m5 = m;
 
 			MarkTileDirtyByTile(tile);
 		}
@@ -607,16 +607,16 @@ static void AnimateTile_Industry(TileIndex tile)
 	case 30: case 31: case 32:
 		if ((_tick_counter & 7) == 0) {
 			bool b = CHANCE16(1,7);
-			m = _map_owner[tile];
+			m = _m[tile].owner;
 			m = (m & 3) + 1;
-			n = _map5[tile];
+			n = _m[tile].m5;
 			if (m == 4 && (m=0,++n) == 32+1 && (n=30,b)) {
-				_map_owner[tile] = 0x83;
-				_map5[tile] = 29;
+				_m[tile].owner = 0x83;
+				_m[tile].m5 = 29;
 				DeleteAnimatedTile(tile);
 			} else {
-				_map5[tile] = n;
-				_map_owner[tile] = (_map_owner[tile] & ~3) | m;
+				_m[tile].m5 = n;
+				_m[tile].owner = (_m[tile].owner & ~3) | m;
 				MarkTileDirtyByTile(tile);
 			}
 		}
@@ -632,8 +632,8 @@ static void AnimateTile_Industry(TileIndex tile)
 
 			if (state < 0x1A0) {
 				if (state < 0x20 || state >= 0x180) {
-					if (!	(_map_owner[tile] & 0x40)) {
-						_map_owner[tile] |= 0x40;
+					if (!	(_m[tile].owner & 0x40)) {
+						_m[tile].owner |= 0x40;
 						SndPlayTileFx(SND_0B_MINING_MACHINERY, tile);
 					}
 					if (state & 7)
@@ -642,9 +642,9 @@ static void AnimateTile_Industry(TileIndex tile)
 					if (state & 3)
 						return;
 				}
-				m = (_map_owner[tile] + 1) | 0x40;
+				m = (_m[tile].owner + 1) | 0x40;
 				if (m > 0xC2) m = 0xC0;
-				_map_owner[tile] = m;
+				_m[tile].owner = m;
 				MarkTileDirtyByTile(tile);
 			} else if (state >= 0x200 && state < 0x3A0) {
 				int i;
@@ -652,9 +652,9 @@ static void AnimateTile_Industry(TileIndex tile)
 				if (state & i)
 					return;
 
-				m = (_map_owner[tile] & 0xBF) - 1;
+				m = (_m[tile].owner & 0xBF) - 1;
 				if (m < 0x80) m = 0x82;
-				_map_owner[tile] = m;
+				_m[tile].owner = m;
 				MarkTileDirtyByTile(tile);
 			}
 		} break;
@@ -673,33 +673,33 @@ static void MakeIndustryTileBigger(TileIndex tile, byte size)
 	byte b = (byte)((size + (1<<2)) & (3<<2));
 
 	if (b != 0) {
-		_map_owner[tile] = b | (size & 3);
+		_m[tile].owner = b | (size & 3);
 		return;
 	}
 
 	size = (size + 1) & 3;
 	if (size == 3) size |= 0x80;
-	_map_owner[tile] = size | b;
+	_m[tile].owner = size | b;
 
 	MarkTileDirtyByTile(tile);
 
-	if (!(_map_owner[tile] & 0x80))
+	if (!(_m[tile].owner & 0x80))
 		return;
 
-	switch(_map5[tile]) {
+	switch(_m[tile].m5) {
 	case 8:
 		MakeIndustryTileBiggerCase8(tile);
 		break;
 
 	case 24:
-		if (_map5[tile + TileDiffXY(0, 1)] == 24) BuildOilRig(tile);
+		if (_m[tile + TileDiffXY(0, 1)].m5 == 24) BuildOilRig(tile);
 		break;
 
 	case 143:
 	case 162:
 	case 165:
-		_map3_lo[tile] = 0;
-		_map3_hi[tile] = 0;
+		_m[tile].m3 = 0;
+		_m[tile].m4 = 0;
 		break;
 
 	case 148: case 149: case 150: case 151:
@@ -740,8 +740,8 @@ static void TileLoop_Industry(TileIndex tile)
 {
 	byte n;
 
-	if (!(_map_owner[tile] & 0x80)) {
-		MakeIndustryTileBigger(tile, _map_owner[tile]);
+	if (!(_m[tile].owner & 0x80)) {
+		MakeIndustryTileBigger(tile, _m[tile].owner);
 		return;
 	}
 
@@ -750,18 +750,18 @@ static void TileLoop_Industry(TileIndex tile)
 
 	TransportIndustryGoods(tile);
 
-	n = _industry_map5_animation_next[_map5[tile]];
+	n = _industry_map5_animation_next[_m[tile].m5];
 	if (n != 255) {
-		_map5[tile] = n;
-		_map_owner[tile] = 0;
+		_m[tile].m5 = n;
+		_m[tile].owner = 0;
 		MarkTileDirtyByTile(tile);
 		return;
 	}
 
-#define SET_AND_ANIMATE(tile,a,b) { _map5[tile]=a; _map_owner[tile]=b; AddAnimatedTile(tile); }
-#define SET_AND_UNANIMATE(tile,a,b) { _map5[tile]=a; _map_owner[tile]=b; DeleteAnimatedTile(tile); }
+#define SET_AND_ANIMATE(tile,a,b) { _m[tile].m5=a; _m[tile].owner=b; AddAnimatedTile(tile); }
+#define SET_AND_UNANIMATE(tile,a,b) { _m[tile].m5=a; _m[tile].owner=b; DeleteAnimatedTile(tile); }
 
-	switch(_map5[tile]) {
+	switch(_m[tile].m5) {
 	case 0x18: // coast line at oilrigs
 	case 0x19:
 	case 0x1A:
@@ -818,11 +818,11 @@ static void TileLoop_Industry(TileIndex tile)
 
 
 	case 143: {
-			Industry *i = GetIndustry(_map2[tile]);
+			Industry *i = GetIndustry(_m[tile].m2);
 			if (i->was_cargo_delivered) {
 				i->was_cargo_delivered = false;
-				if ((_map3_hi[tile]|_map3_lo[tile]) != 0)
-					_map3_hi[tile] = 0;
+				if ((_m[tile].m4|_m[tile].m3) != 0)
+					_m[tile].m4 = 0;
 				AddAnimatedTile(tile);
 			}
 		}
@@ -847,7 +847,7 @@ static void TileLoop_Industry(TileIndex tile)
 
 static void ClickTile_Industry(TileIndex tile)
 {
-	ShowIndustryViewWindow(_map2[tile]);
+	ShowIndustryViewWindow(_m[tile].m2);
 }
 
 static uint32 GetTileTrackStatus_Industry(TileIndex tile, TransportType mode)
@@ -857,7 +857,7 @@ static uint32 GetTileTrackStatus_Industry(TileIndex tile, TransportType mode)
 
 static void GetProducedCargo_Industry(TileIndex tile, byte *b)
 {
-	Industry *i = GetIndustry(_map2[tile]);
+	Industry *i = GetIndustry(_m[tile].m2);
 	b[0] = i->produced_cargo[0];
 	b[1] = i->produced_cargo[1];
 }
@@ -871,10 +871,10 @@ void DeleteIndustry(Industry *i)
 {
 	BEGIN_TILE_LOOP(tile_cur, i->width, i->height, i->xy);
 		if (IsTileType(tile_cur, MP_INDUSTRY)) {
-			if (_map2[tile_cur] == i->index) {
+			if (_m[tile_cur].m2 == i->index) {
 				DoClearSquare(tile_cur);
 			}
-		} else if (IsTileType(tile_cur, MP_STATION) && _map5[tile_cur] == 0x4B) {
+		} else if (IsTileType(tile_cur, MP_STATION) && _m[tile_cur].m5 == 0x4B) {
 			DeleteOilRig(tile_cur);
 		}
 	END_TILE_LOOP(tile_cur, i->width, i->height, i->xy);
@@ -892,7 +892,7 @@ static bool IsBadFarmFieldTile(TileIndex tile)
 {
 	switch (GetTileType(tile)) {
 		case MP_CLEAR: {
-			byte m5 = _map5[tile] & 0x1C;
+			byte m5 = _m[tile].m5 & 0x1C;
 			return m5 == 0xC || m5 == 0x10;
 		}
 
@@ -908,7 +908,7 @@ static bool IsBadFarmFieldTile2(TileIndex tile)
 {
 	switch (GetTileType(tile)) {
 		case MP_CLEAR: {
-			byte m5 = _map5[tile] & 0x1C;
+			byte m5 = _m[tile].m5 & 0x1C;
 			return m5 == 0x10;
 		}
 
@@ -938,7 +938,7 @@ static void SetupFarmFieldFence(TileIndex tile, int size, byte type, int directi
 				or <<= 3;
 				and = (byte)~0xE0;
 			}
-			_map3_hi[tile] = (_map3_hi[tile] & and) | or;
+			_m[tile].m4 = (_m[tile].m4 & and) | or;
 		}
 
 		tile += direction ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
@@ -1029,7 +1029,7 @@ static void ChopLumberMillTrees(Industry *i)
 	TileIndex tile = i->xy;
 	int dir, a, j;
 
-	if ((_map_owner[tile] & 0x80) == 0)
+	if ((_m[tile].owner & 0x80) == 0)
 		return;
 
 	/* search outwards as a rectangular spiral */
@@ -1520,9 +1520,9 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 			DoCommandByTile(cur_tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 
 			SetTileType(cur_tile, MP_INDUSTRY);
-			_map5[cur_tile] = it->map5;
-			_map2[cur_tile] = i->index;
-			_map_owner[cur_tile] = _generating_world ? 0x1E : 0; /* maturity */
+			_m[cur_tile].m5 = it->map5;
+			_m[cur_tile].m2 = i->index;
+			_m[cur_tile].owner = _generating_world ? 0x1E : 0; /* maturity */
 		}
 	} while ((++it)->ti.x != -0x80);
 

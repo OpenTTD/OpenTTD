@@ -6,13 +6,17 @@
 #define TILE_MASK(x) ((x) & ((1 << (MapLogX() + MapLogY())) - 1))
 #define TILE_ASSERT(x) assert(TILE_MASK(x) == (x));
 
-extern byte   *_map_type_and_height;
-extern byte   *_map_owner;
-extern uint16 *_map2;
-extern byte   *_map3_lo;
-extern byte   *_map3_hi;
-extern byte   *_map5;
-extern byte   *_map_extra_bits;
+typedef struct Tile {
+	byte type_height;
+	byte owner;
+	uint16 m2;
+	byte m3;
+	byte m4;
+	byte m5;
+	byte extra;
+} Tile;
+
+extern Tile* _m;
 
 void InitMap(uint log_x, uint log_y);
 

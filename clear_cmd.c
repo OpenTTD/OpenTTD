@@ -110,7 +110,7 @@ static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
 
 		// If we have a single diagonal track there, the other side of
 		// tile can be terraformed.
-		if ((_map5[tile]&~0x40) == _railway_modes[mode])
+		if ((_m[tile].m5&~0x40) == _railway_modes[mode])
 			return 0;
 	}
 
@@ -390,7 +390,7 @@ int32 CmdPurchaseLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
-	if (IsTileType(tile, MP_UNMOVABLE) && _map5[tile] == 3 &&
+	if (IsTileType(tile, MP_UNMOVABLE) && _m[tile].m5 == 3 &&
 			IsTileOwner(tile, _current_player))
 		return_cmd_error(STR_5807_YOU_ALREADY_OWN_IT);
 
@@ -420,7 +420,7 @@ static int32 ClearTile_Clear(TileIndex tile, byte flags)
 			&_price.purchase_land,&_price.purchase_land,&_price.purchase_land,&_price.purchase_land,
 			&_price.clear_2,&_price.clear_2,&_price.clear_2,&_price.clear_2,
 	};
-	const int32 *price = _clear_price_table[_map5[tile] & 0x1F];
+	const int32 *price = _clear_price_table[_m[tile].m5 & 0x1F];
 
 	if (flags & DC_EXEC)
 		DoClearSquare(tile);
@@ -444,7 +444,7 @@ int32 CmdSellLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	tile = TileVirtXY(x, y);
 
-	if (!IsTileType(tile, MP_UNMOVABLE) || _map5[tile] != 3) return CMD_ERROR;
+	if (!IsTileType(tile, MP_UNMOVABLE) || _m[tile].m5 != 3) return CMD_ERROR;
 	if (!CheckTileOwnership(tile) && _current_player != OWNER_WATER) return CMD_ERROR;
 
 
@@ -510,7 +510,7 @@ static void DrawTile_Clear(TileInfo *ti)
 		break;
 
 	case 3:
-		DrawGroundSprite( _clear_land_sprites_1[_map3_lo[ti->tile]&0xF] + _tileh_to_sprite[ti->tileh]);
+		DrawGroundSprite( _clear_land_sprites_1[_m[ti->tile].m3&0xF] + _tileh_to_sprite[ti->tileh]);
 		break;
 
 	case 4:
@@ -522,7 +522,7 @@ static void DrawTile_Clear(TileInfo *ti)
 		break;
 	}
 
-	DrawClearLandFence(ti, _map3_hi[ti->tile] >> 2);
+	DrawClearLandFence(ti, _m[ti->tile].m4 >> 2);
 }
 
 static uint GetSlopeZ_Clear(TileInfo *ti)
@@ -554,11 +554,11 @@ void TileLoopClearHelper(TileIndex tile)
 
 	switch (GetTileType(tile)) {
 		case MP_CLEAR:
-			img_1 = img_by_map5[(_map5[tile] & 0x1C) >> 2];
+			img_1 = img_by_map5[(_m[tile].m5 & 0x1C) >> 2];
 			break;
 
 		case MP_TREES:
-			if ((_map2[tile] & 0x30) == 0x20)
+			if ((_m[tile].m2 & 0x30) == 0x20)
 				img_1 = 1;
 			else
 				img_1 = 0;
@@ -571,11 +571,11 @@ void TileLoopClearHelper(TileIndex tile)
 
 	switch (GetTileType(TILE_ADDXY(tile, 1, 0))) {
 		case MP_CLEAR:
-			img_2 = img_by_map5[(_map5[TILE_ADDXY(tile, 1, 0)] & 0x1C) >> 2];
+			img_2 = img_by_map5[(_m[TILE_ADDXY(tile, 1, 0)].m5 & 0x1C) >> 2];
 			break;
 
 		case MP_TREES:
-			if ((_map2[TILE_ADDXY(tile, 1, 0)] & 0x30) == 0x20)
+			if ((_m[TILE_ADDXY(tile, 1, 0)].m2 & 0x30) == 0x20)
 				img_2 = 1;
 			else
 				img_2 = 0;
@@ -586,25 +586,25 @@ void TileLoopClearHelper(TileIndex tile)
 			break;
 	}
 
-	if ((_map3_hi[tile] & 0xE0) == 0) {
+	if ((_m[tile].m4 & 0xE0) == 0) {
 		if ((img_1 & 2) != (img_2 & 2)) {
-			_map3_hi[tile] |= 3 << 5;
+			_m[tile].m4 |= 3 << 5;
 			dirty = tile;
 		}
 	} else {
 		if (img_1 == 1 && img_2 == 1) {
-			_map3_hi[tile] &= ~(3 << 5);
+			_m[tile].m4 &= ~(3 << 5);
 			dirty = tile;
 		}
 	}
 
 	switch (GetTileType(TILE_ADDXY(tile, 0, 1))) {
 		case MP_CLEAR:
-			img_2 = img_by_map5[(_map5[TILE_ADDXY(tile, 0, 1)] & 0x1C) >> 2];
+			img_2 = img_by_map5[(_m[TILE_ADDXY(tile, 0, 1)].m5 & 0x1C) >> 2];
 			break;
 
 		case MP_TREES:
-			if ((_map2[TILE_ADDXY(tile, 0, 1)] & 0x30) == 0x20)
+			if ((_m[TILE_ADDXY(tile, 0, 1)].m2 & 0x30) == 0x20)
 				img_2 = 1;
 			else
 				img_2 = 0;
@@ -615,14 +615,14 @@ void TileLoopClearHelper(TileIndex tile)
 			break;
 	}
 
-	if ((_map3_hi[tile] & 0x1C) == 0) {
+	if ((_m[tile].m4 & 0x1C) == 0) {
 		if ((img_1 & 2) != (img_2 & 2)) {
-			_map3_hi[tile] |= 3 << 2;
+			_m[tile].m4 |= 3 << 2;
 			dirty = tile;
 		}
 	} else {
 		if (img_1 == 1 && img_2 == 1) {
-			_map3_hi[tile] &= ~(3 << 2);
+			_m[tile].m4 &= ~(3 << 2);
 			dirty = tile;
 		}
 	}
@@ -641,8 +641,8 @@ static void TileLoopClearAlps(TileIndex tile)
 	/* distance from snow line, in steps of 8 */
 	k = GetTileZ(tile) - _opt.snow_line;
 
-	m5 = _map5[tile] & 0x1C;
-	tmp = _map5[tile] & 3;
+	m5 = _m[tile].m5 & 0x1C;
+	tmp = _m[tile].m5 & 3;
 
 	if (k < -8) {
 		/* snow_m2_down */
@@ -690,24 +690,24 @@ static void TileLoopClearAlps(TileIndex tile)
 			return;
 	}
 
-	_map5[tile] = m5;
+	_m[tile].m5 = m5;
 	MarkTileDirtyByTile(tile);
 }
 
 static void TileLoopClearDesert(TileIndex tile)
 {
- 	if ( (_map5[tile] & 0x1C) == 0x14)
+ 	if ( (_m[tile].m5 & 0x1C) == 0x14)
 		return;
 
 	if (GetMapExtraBits(tile) == 1) {
-		_map5[tile] = 0x17;
+		_m[tile].m5 = 0x17;
 	} else {
 		if (GetMapExtraBits(tile + TileDiffXY( 1,  0)) != 1 &&
 				GetMapExtraBits(tile + TileDiffXY(-1,  0)) != 1 &&
 				GetMapExtraBits(tile + TileDiffXY( 0,  1)) != 1 &&
 				GetMapExtraBits(tile + TileDiffXY( 0, -1)) != 1)
 			return;
-		_map5[tile] = 0x15;
+		_m[tile].m5 = 0x15;
 	}
 
 	MarkTileDirtyByTile(tile);
@@ -725,7 +725,7 @@ static void TileLoop_Clear(TileIndex tile)
 		TileLoopClearAlps(tile);
 	}
 
-	m5 = _map5[tile];
+	m5 = _m[tile].m5;
 	if ( (m5 & 0x1C) == 0x10 || (m5 & 0x1C) == 0x14)
 		return;
 
@@ -737,7 +737,7 @@ static void TileLoop_Clear(TileIndex tile)
 			m5 += 0x20;
 			if (m5 >= 0x20) {
 				// Didn't overflow
-				_map5[tile] = m5;
+				_m[tile].m5 = m5;
 				return;
 			}
 			/* did overflow, so continue */
@@ -750,18 +750,18 @@ static void TileLoop_Clear(TileIndex tile)
 		m5 += 0x20;
 		if (m5 >= 0x20) {
 			// Didn't overflow
-			_map5[tile] = m5;
+			_m[tile].m5 = m5;
 			return;
 		}
 		/* overflowed */
-		m3 = _map3_lo[tile] + 1;
+		m3 = _m[tile].m3 + 1;
 		assert( (m3 & 0xF) != 0);
 		if ( (m3 & 0xF) >= 9) /* NOTE: will not work properly if m3&0xF == 0xF */
 			m3 &= ~0xF;
-		_map3_lo[tile] = m3;
+		_m[tile].m3 = m3;
 	}
 
-	_map5[tile] = m5;
+	_m[tile].m5 = m5;
 	MarkTileDirtyByTile(tile);
 }
 
@@ -776,7 +776,7 @@ void GenerateClearTile(void)
 	do {
 		tile = TILE_MASK(Random());
 		if (IsTileType(tile, MP_CLEAR))
-			_map5[tile] = (byte)((_map5[tile] & ~(3<<2)) | (1<<2));
+			_m[tile].m5 = (byte)((_m[tile].m5 & ~(3<<2)) | (1<<2));
 	} while (--i);
 
 	/* add grey squares */
@@ -789,7 +789,7 @@ void GenerateClearTile(void)
 			for(;;) {
 				TileIndex tile_new;
 
-				_map5[tile] = (byte)((_map5[tile] & ~(3<<2)) | (2<<2));
+				_m[tile].m5 = (byte)((_m[tile].m5 & ~(3<<2)) | (2<<2));
 				do {
 					if (--j == 0) goto get_out;
 					tile_new = tile + TileOffsByDir(Random() & 3);
@@ -827,9 +827,9 @@ static const StringID _clear_land_str[4+8-1] = {
 
 static void GetTileDesc_Clear(TileIndex tile, TileDesc *td)
 {
-	int i = (_map5[tile]>>2) & 7;
+	int i = (_m[tile].m5>>2) & 7;
 	if (i == 0)
-		i = (_map5[tile] & 3) + 8;
+		i = (_m[tile].m5 & 3) + 8;
 	td->str = _clear_land_str[i - 1];
 	td->owner = GetTileOwner(tile);
 }

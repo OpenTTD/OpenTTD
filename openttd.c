@@ -1202,12 +1202,12 @@ static void ConvertTownOwner(void)
 
 	for (tile = 0; tile != MapSize(); tile++) {
 		if (IsTileType(tile, MP_STREET)) {
-			if (IsLevelCrossing(tile) && _map3_lo[tile] & 0x80)
-				_map3_lo[tile] = OWNER_TOWN;
+			if (IsLevelCrossing(tile) && _m[tile].m3 & 0x80)
+				_m[tile].m3 = OWNER_TOWN;
 
-			if (_map_owner[tile] & 0x80) SetTileOwner(tile, OWNER_TOWN);
+			if (_m[tile].owner & 0x80) SetTileOwner(tile, OWNER_TOWN);
 		} else if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-			if (_map_owner[tile] & 0x80) SetTileOwner(tile, OWNER_TOWN);
+			if (_m[tile].owner & 0x80) SetTileOwner(tile, OWNER_TOWN);
 		}
 	}
 }
@@ -1401,20 +1401,20 @@ bool AfterLoadGame(uint version)
 	if (version <= 0x600) {
 		BEGIN_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0) {
 			if (IsTileType(tile, MP_HOUSE)) {
-				_map3_hi[tile] = _map2[tile];
+				_m[tile].m4 = _m[tile].m2;
 				//XXX magic
 				SetTileType(tile, MP_VOID);
-				_map2[tile] = ClosestTownFromTile(tile,(uint)-1)->index;
+				_m[tile].m2 = ClosestTownFromTile(tile,(uint)-1)->index;
 				SetTileType(tile, MP_HOUSE);
 			} else if (IsTileType(tile, MP_STREET)) {
 				//XXX magic
-				_map3_hi[tile] |= (_map2[tile] << 4);
+				_m[tile].m4 |= (_m[tile].m2 << 4);
 				if (IsTileOwner(tile, OWNER_TOWN)) {
 					SetTileType(tile, MP_VOID);
-					_map2[tile] = ClosestTownFromTile(tile,(uint)-1)->index;
+					_m[tile].m2 = ClosestTownFromTile(tile,(uint)-1)->index;
 					SetTileType(tile, MP_STREET);
 				} else {
-					_map2[tile] = 0;
+					_m[tile].m2 = 0;
 				}
 			}
 		} END_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0);
@@ -1429,9 +1429,9 @@ bool AfterLoadGame(uint version)
 
 	if (version < 0xF00) {
 		BEGIN_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0) {
-			if (IsTileType(tile, MP_RAILWAY) && HasSignals(tile) && HASBIT(_map3_hi[tile], 2)) {
-				CLRBIT(_map3_hi[tile], 2);
-				SETBIT(_map3_hi[tile], 3);
+			if (IsTileType(tile, MP_RAILWAY) && HasSignals(tile) && HASBIT(_m[tile].m4, 2)) {
+				CLRBIT(_m[tile].m4, 2);
+				SETBIT(_m[tile].m4, 3);
 			}
 		} END_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0);
 	}

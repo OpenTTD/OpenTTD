@@ -1128,10 +1128,7 @@ static void BubbleTick(Vehicle *v)
 		SndPlayVehicleFx(SND_31_EXTRACT, v);
 
 		tile = TileVirtXY(v->x_pos, v->y_pos);
-		if (IsTileType(tile, MP_INDUSTRY) &&
-				_map5[tile] == 0xA2) {
-			AddAnimatedTile(tile);
-		}
+		if (IsTileType(tile, MP_INDUSTRY) && _m[tile].m5 == 0xA2) AddAnimatedTile(tile);
 	}
 
 	v->engine_type = et;

@@ -87,7 +87,7 @@ static int32 RemoveShipDepot(TileIndex tile, uint32 flags)
 	if (!EnsureNoVehicle(tile))
 		return CMD_ERROR;
 
-	tile2 = tile + ((_map5[tile] & 2) ? TileDiffXY(0, 1) : TileDiffXY(1, 0));
+	tile2 = tile + ((_m[tile].m5 & 2) ? TileDiffXY(0, 1) : TileDiffXY(1, 0));
 
 	if (!EnsureNoVehicle(tile2))
 		return CMD_ERROR;
@@ -136,7 +136,7 @@ static int32 DoBuildShiplift(TileIndex tile, int dir, uint32 flags)
 
 static int32 RemoveShiplift(TileIndex tile, uint32 flags)
 {
-	TileIndexDiff delta = TileOffsByDir(_map5[tile] & 3);
+	TileIndexDiff delta = TileOffsByDir(_m[tile].m5 & 3);
 
 	// make sure no vehicle is on the tile.
 	if (!EnsureNoVehicle(tile) || !EnsureNoVehicle(tile + delta) || !EnsureNoVehicle(tile - delta))
@@ -219,11 +219,11 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				_error_message = STR_1007_ALREADY_BUILT;
 			} else {
 				/* is middle piece of a bridge? */
-				if (IsTileType(tile, MP_TUNNELBRIDGE) && _map5[tile] & 0x40) { /* build under bridge */
-					if (_map5[tile] & 0x20) // transport route under bridge
+				if (IsTileType(tile, MP_TUNNELBRIDGE) && _m[tile].m5 & 0x40) { /* build under bridge */
+					if (_m[tile].m5 & 0x20) // transport route under bridge
 						return_cmd_error(STR_5800_OBJECT_IN_THE_WAY);
 
-					if (_map5[tile] & 0x18) // already water under bridge
+					if (_m[tile].m5 & 0x18) // already water under bridge
 						return_cmd_error(STR_1007_ALREADY_BUILT);
 				/* no bridge? then try to clear it. */
 				} else
@@ -236,7 +236,7 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				if (flags & DC_EXEC) {
 					if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 						// change owner to OWNER_WATER and set land under bridge bit to water
-						ModifyTile(tile, MP_MAP5 | MP_MAPOWNER, OWNER_WATER, _map5[tile] | 0x08);
+						ModifyTile(tile, MP_MAP5 | MP_MAPOWNER, OWNER_WATER, _m[tile].m5 | 0x08);
 					} else {
 						ModifyTile(tile, MP_SETTYPE(MP_WATER) | MP_MAPOWNER | MP_MAP5 | MP_MAP2_CLEAR | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR, OWNER_WATER, 0);
 					}
@@ -253,7 +253,7 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 static int32 ClearTile_Water(TileIndex tile, byte flags)
 {
-	byte m5 = _map5[tile];
+	byte m5 = _m[tile].m5;
 	uint slope;
 
 	if (m5 <= 1) { // water and shore
@@ -318,7 +318,7 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 // return true if a tile is a water tile.
 static bool IsWateredTile(TileIndex tile)
 {
-	byte m5 = _map5[tile];
+	byte m5 = _m[tile].m5;
 
 	switch (GetTileType(tile)) {
 		case MP_WATER:
@@ -455,13 +455,13 @@ static void GetAcceptedCargo_Water(TileIndex tile, AcceptedCargo ac)
 
 static void GetTileDesc_Water(TileIndex tile, TileDesc *td)
 {
-	if (_map5[tile] == 0 && TilePixelHeight(tile) == 0)
+	if (_m[tile].m5 == 0 && TilePixelHeight(tile) == 0)
 		td->str = STR_3804_WATER;
-	else if (_map5[tile] == 0)
+	else if (_m[tile].m5 == 0)
 		td->str = STR_LANDINFO_CANAL;
-	else if (_map5[tile] == 1)
+	else if (_m[tile].m5 == 1)
 		td->str = STR_3805_COAST_OR_RIVERBANK;
-	else if ((_map5[tile]&0xF0) == 0x10)
+	else if ((_m[tile].m5&0xF0) == 0x10)
 		td->str = STR_LANDINFO_LOCK;
 	else
 		td->str = STR_3806_SHIP_DEPOT;
@@ -492,7 +492,7 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 		switch (GetTileType(target)) {
 			case MP_RAILWAY: {
 				uint slope = GetTileSlope(target, NULL);
-				byte tracks = _map5[target] & 0x3F;
+				byte tracks = _m[target].m5 & 0x3F;
 				if (!(
 						(slope == 1 && tracks == 0x20) ||
 						(slope == 2 && tracks == 0x04) ||
@@ -517,8 +517,8 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 
 			case MP_TUNNELBRIDGE:
 				// Middle part of bridge with clear land below?
-				if ((_map5[target] & 0xF8) == 0xC0) {
-					_map5[target] |= 0x08;
+				if ((_m[target].m5 & 0xF8) == 0xC0) {
+					_m[target].m5 |= 0x08;
 					MarkTileDirtyByTile(tile);
 				}
 				break;
@@ -528,7 +528,7 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 		}
 	} else {
 		if (IsTileType(target, MP_TUNNELBRIDGE)) {
-			byte m5 = _map5[target];
+			byte m5 = _m[target].m5;
 			if ((m5 & 0xF8) == 0xC8 || (m5 & 0xF8) == 0xF0)
 				return;
 
@@ -650,7 +650,7 @@ static uint32 GetTileTrackStatus_Water(TileIndex tile, TransportType mode)
 	if (mode != TRANSPORT_WATER)
 		return 0;
 
-	m5 = _map5[tile];
+	m5 = _m[tile].m5;
 	if (m5 == 0)
 		return 0x3F3F;
 
@@ -676,7 +676,7 @@ extern void ShowShipDepotWindow(TileIndex tile);
 
 static void ClickTile_Water(TileIndex tile)
 {
-	byte m5 = _map5[tile] - 0x80;
+	byte m5 = _m[tile].m5 - 0x80;
 
 	if (IS_BYTE_INSIDE(m5, 0, 3+1)) {
 		if (m5 & 1)

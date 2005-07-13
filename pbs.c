@@ -50,32 +50,32 @@ void PBSReserveTrack(TileIndex tile, Track track) {
 	assert(track <= 5);
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
-			if ((_map5[tile] & ~1) == 0xC4) {
+			if ((_m[tile].m5 & ~1) == 0xC4) {
 				// waypoint
-				SETBIT(_map3_lo[tile], 6);
+				SETBIT(_m[tile].m3, 6);
 			} else {
 				// normal rail track
-				byte encrt = (_map3_hi[tile] & 0xF0) >> 4; // get current encoded info (see comments at top of file)
+				byte encrt = (_m[tile].m4 & 0xF0) >> 4; // get current encoded info (see comments at top of file)
 
 				if (encrt == 0) // nothing reserved before
 					encrt = track + 1;
 				else if (encrt == (track^1) + 1) // opposite track reserved before
 					encrt |= 8;
 
-				_map3_hi[tile] &= ~0xF0;
-				_map3_hi[tile] |= encrt << 4;
+				_m[tile].m4 &= ~0xF0;
+				_m[tile].m4 |= encrt << 4;
 			}
 			break;
 		case MP_TUNNELBRIDGE:
-			_map3_hi[tile] |= (1 << track) & 3;
+			_m[tile].m4 |= (1 << track) & 3;
 			break;
 		case MP_STATION:
-			SETBIT(_map3_lo[tile], 6);
+			SETBIT(_m[tile].m3, 6);
 			break;
 		case MP_STREET:
 			// make sure it is a railroad crossing
 			if (!IsLevelCrossing(tile)) return;
-			SETBIT(_map5[tile], 0);
+			SETBIT(_m[tile].m5, 0);
 			break;
 		default:
 			return;
@@ -89,32 +89,32 @@ byte PBSTileReserved(TileIndex tile) {
 	assert(IsValidTile(tile));
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
-			if ((_map5[tile] & ~1) == 0xC4) {
+			if ((_m[tile].m5 & ~1) == 0xC4) {
 				// waypoint
 				// check if its reserved
-				if (!HASBIT(_map3_lo[tile], 6)) return 0;
+				if (!HASBIT(_m[tile].m3, 6)) return 0;
 				// return the track for the correct direction
-				return HASBIT(_map5[tile], 0) ? 2 : 1;
+				return HASBIT(_m[tile].m5, 0) ? 2 : 1;
 			} else {
 				// normal track
-				byte res = encrt_to_reserved[(_map3_hi[tile] & 0xF0) >> 4];
+				byte res = encrt_to_reserved[(_m[tile].m4 & 0xF0) >> 4];
 				assert(res != 0xFF);
 				return res;
 			};
 		case MP_TUNNELBRIDGE:
-			return (_map3_hi[tile] & 3);
+			return (_m[tile].m4 & 3);
 		case MP_STATION:
 			// check if its reserved
-			if (!HASBIT(_map3_lo[tile], 6)) return 0;
+			if (!HASBIT(_m[tile].m3, 6)) return 0;
 			// return the track for the correct direction
-			return HASBIT(_map5[tile], 0) ? 2 : 1;
+			return HASBIT(_m[tile].m5, 0) ? 2 : 1;
 		case MP_STREET:
 			// make sure its a railroad crossing
 			if (!IsLevelCrossing(tile)) return 0;
 			// check if its reserved
-			if (!HASBIT(_map5[tile], 0)) return 0;
+			if (!HASBIT(_m[tile].m5, 0)) return 0;
 			// return the track for the correct direction
-			return HASBIT(_map5[tile], 3) ? 1 : 2;
+			return HASBIT(_m[tile].m5, 3) ? 1 : 2;
 		default:
 			return 0;
 	};
@@ -124,24 +124,24 @@ uint16 PBSTileUnavail(TileIndex tile) {
 	assert(IsValidTile(tile));
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
-			if ((_map5[tile] & ~1) == 0xC4) {
+			if ((_m[tile].m5 & ~1) == 0xC4) {
 				// waypoint
-				return HASBIT(_map3_lo[tile], 6) ? TRACKDIR_BIT_MASK : 0;
+				return HASBIT(_m[tile].m3, 6) ? TRACKDIR_BIT_MASK : 0;
 			} else {
 				// normal track
-				uint16 res = encrt_to_unavail[(_map3_hi[tile] & 0xF0) >> 4];
+				uint16 res = encrt_to_unavail[(_m[tile].m4 & 0xF0) >> 4];
 				assert(res != 0xFFFF);
 				return res;
 			};
 		case MP_TUNNELBRIDGE:
-			return (_map3_hi[tile] & 3) | ((_map3_hi[tile] & 3) << 8);
+			return (_m[tile].m4 & 3) | ((_m[tile].m4 & 3) << 8);
 		case MP_STATION:
-			return HASBIT(_map3_lo[tile], 6) ? TRACKDIR_BIT_MASK : 0;
+			return HASBIT(_m[tile].m3, 6) ? TRACKDIR_BIT_MASK : 0;
 		case MP_STREET:
 			// make sure its a railroad crossing
 			if (!IsLevelCrossing(tile)) return 0;
 			// check if its reserved
-			return (HASBIT(_map5[tile], 0)) ? TRACKDIR_BIT_MASK : 0;
+			return (HASBIT(_m[tile].m5, 0)) ? TRACKDIR_BIT_MASK : 0;
 		default:
 			return 0;
 	};
@@ -152,12 +152,12 @@ void PBSClearTrack(TileIndex tile, Track track) {
 	assert(track <= 5);
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
-			if ((_map5[tile] & ~1) == 0xC4) {
+			if ((_m[tile].m5 & ~1) == 0xC4) {
 				// waypoint
-				CLRBIT(_map3_lo[tile], 6);
+				CLRBIT(_m[tile].m3, 6);
 			} else {
 				// normal rail track
-				byte encrt = (_map3_hi[tile] & 0xF0) >> 4;
+				byte encrt = (_m[tile].m4 & 0xF0) >> 4;
 
 				if (encrt == track + 1)
 					encrt = 0;
@@ -166,20 +166,20 @@ void PBSClearTrack(TileIndex tile, Track track) {
 				else if (encrt == (track^1) + 1 + 8)
 					encrt &= 7;
 
-				_map3_hi[tile] &= ~0xF0;
-				_map3_hi[tile] |= encrt << 4;
+				_m[tile].m4 &= ~0xF0;
+				_m[tile].m4 |= encrt << 4;
 			}
 			break;
 		case MP_TUNNELBRIDGE:
-			_map3_hi[tile] &= ~((1 << track) & 3);
+			_m[tile].m4 &= ~((1 << track) & 3);
 			break;
 		case MP_STATION:
-			CLRBIT(_map3_lo[tile], 6);
+			CLRBIT(_m[tile].m3, 6);
 			break;
 		case MP_STREET:
 			// make sure it is a railroad crossing
 			if (!IsLevelCrossing(tile)) return;
-			CLRBIT(_map5[tile], 0);
+			CLRBIT(_m[tile].m5, 0);
 			break;
 		default:
 			return;
@@ -197,7 +197,7 @@ void PBSClearPath(TileIndex tile, Trackdir trackdir) {
 	do {
 		PBSClearTrack(tile, trackdir & 7);
 
-		if (IsTileType(tile, MP_TUNNELBRIDGE) && (_map5[tile] & 0xF0)==0 && (unsigned)(_map5[tile] & 3) == TrackdirToExitdir(trackdir)) {
+		if (IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5 & 0xF0)==0 && (unsigned)(_m[tile].m5 & 3) == TrackdirToExitdir(trackdir)) {
 			// this is a tunnel
 			flotr = FindLengthOfTunnel(tile, TrackdirToExitdir(trackdir));
 

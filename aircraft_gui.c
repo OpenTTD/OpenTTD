@@ -509,7 +509,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 			TileIndex tile = v->tile;
 
 			if (IsTileType(tile, MP_STATION) &&
-					(_map5[tile] == 32 || _map5[tile] == 65) &&
+					(_m[tile].m5 == 32 || _m[tile].m5 == 65) &&
 					v->vehstatus&VS_STOPPED)
 						disabled = 0;
 		}
@@ -646,7 +646,7 @@ static void DrawAircraftDepotWindow(Window *w)
 	}
 	SetVScrollCount(w, (num + w->hscroll.cap - 1) / w->hscroll.cap);
 
-	SetDParam(0, _map2[tile]);
+	SetDParam(0, _m[tile].m2);
 	DrawWindowWidgets(w);
 
 	x = 2;

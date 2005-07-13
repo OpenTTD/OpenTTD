@@ -195,7 +195,7 @@ static uint GetSlopeTileh_Unmovable(TileInfo *ti)
 
 static int32 ClearTile_Unmovable(TileIndex tile, byte flags)
 {
-	byte m5 = _map5[tile];
+	byte m5 = _m[tile].m5;
 
 	if (m5 & 0x80) {
 		if (_current_player == OWNER_WATER) return DestroyCompanyHQ(tile, DC_EXEC);
@@ -218,7 +218,7 @@ static int32 ClearTile_Unmovable(TileIndex tile, byte flags)
 
 static void GetAcceptedCargo_Unmovable(TileIndex tile, AcceptedCargo ac)
 {
-	byte m5 = _map5[tile];
+	byte m5 = _m[tile].m5;
 	uint level; // HQ level (depends on company performance) in the range 1..5.
 
 	if (!(m5 & 0x80)) {
@@ -252,7 +252,7 @@ static const StringID _unmovable_tile_str[] = {
 
 static void GetTileDesc_Unmovable(TileIndex tile, TileDesc *td)
 {
-	int i = _map5[tile];
+	int i = _m[tile].m5;
 	if (i & 0x80) i = -1;
 	td->str = _unmovable_tile_str[i + 1];
 	td->owner = GetTileOwner(tile);
@@ -265,7 +265,7 @@ static void AnimateTile_Unmovable(TileIndex tile)
 
 static void TileLoop_Unmovable(TileIndex tile)
 {
-	byte m5 = _map5[tile];
+	byte m5 = _m[tile].m5;
 	byte level; // HQ level (depends on company performance) in the range 1..5.
 	uint32 r;
 
@@ -307,7 +307,7 @@ static uint32 GetTileTrackStatus_Unmovable(TileIndex tile, TransportType mode)
 
 static void ClickTile_Unmovable(TileIndex tile)
 {
-	if (_map5[tile] & 0x80) {
+	if (_m[tile].m5 & 0x80) {
 		ShowPlayerCompany(GetTileOwner(tile));
 	}
 }
@@ -326,7 +326,7 @@ static bool checkRadioTowerNearby(TileIndex tile)
 
 	BEGIN_TILE_LOOP(tile, 9, 9, tile_s)
 		// already a radio tower here?
-		if (IsTileType(tile, MP_UNMOVABLE) && _map5[tile] == 0)
+		if (IsTileType(tile, MP_UNMOVABLE) && _m[tile].m5 == 0)
 			return false;
 	END_TILE_LOOP(tile, 9, 9, tile_s)
 	return true;
@@ -355,7 +355,7 @@ void GenerateUnmovables(void)
 			if(!checkRadioTowerNearby(tile))
 				continue;
 			SetTileType(tile, MP_UNMOVABLE);
-			_map5[tile] = 0;
+			_m[tile].m5 = 0;
 			SetTileOwner(tile, OWNER_NONE);
 			if (--j == 0)
 				break;
@@ -387,7 +387,7 @@ restart:
 		assert(tile == TILE_MASK(tile));
 
 		SetTileType(tile, MP_UNMOVABLE);
-		_map5[tile] = 1;
+		_m[tile].m5 = 1;
 		SetTileOwner(tile, OWNER_NONE);
 	} while (--i);
 }
@@ -396,7 +396,7 @@ static void ChangeTileOwner_Unmovable(TileIndex tile, byte old_player, byte new_
 {
 	if (!IsTileOwner(tile, old_player)) return;
 
-	if (_map5[tile]==3 && new_player != 255) {
+	if (_m[tile].m5==3 && new_player != 255) {
 		SetTileOwner(tile, new_player);
 	} else {
 		DoClearSquare(tile);

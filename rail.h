@@ -38,7 +38,7 @@ typedef enum RailTileSubtypes {
 } RailTileSubtype;
 
 typedef enum SignalTypes {
-	/* Stored in _map3_hi[0..1] for MP_RAILWAY */
+	/* Stored in m4[0..1] for MP_RAILWAY */
   SIGTYPE_NORMAL  = 0,        // normal signal
   SIGTYPE_ENTRY   = 1,        // presignal block entry
   SIGTYPE_EXIT    = 2,        // presignal block exit
@@ -195,13 +195,13 @@ static inline byte SignalOnTrack(Track track) {
 static inline RailTileType GetRailTileType(TileIndex tile)
 {
 	assert(IsTileType(tile, MP_RAILWAY));
-	return (_map5[tile] & RAIL_TILE_TYPE_MASK);
+	return (_m[tile].m5 & RAIL_TILE_TYPE_MASK);
 }
 
 /**
  * Returns the rail type of the given rail tile (ie rail, mono, maglev).
  */
-static inline RailType GetRailType(TileIndex tile) { return (RailType)(_map3_lo[tile] & RAILTYPE_MASK); }
+static inline RailType GetRailType(TileIndex tile) { return (RailType)(_m[tile].m3 & RAILTYPE_MASK); }
 
 /**
  * Checks if a rail tile has signals.
@@ -218,7 +218,7 @@ static inline bool HasSignals(TileIndex tile)
 static inline RailTileSubtype GetRailTileSubtype(TileIndex tile)
 {
 	assert(GetRailTileType(tile) == RAIL_TYPE_DEPOT_WAYPOINT);
-	return (RailTileSubtype)(_map5[tile] & RAIL_SUBTYPE_MASK);
+	return (RailTileSubtype)(_m[tile].m5 & RAIL_SUBTYPE_MASK);
 }
 
 /**
@@ -237,7 +237,7 @@ static inline bool IsPlainRailTile(TileIndex tile)
 static inline TrackBits GetTrackBits(TileIndex tile)
 {
 	assert(GetRailTileType(tile) == RAIL_TYPE_NORMAL || GetRailTileType(tile) == RAIL_TYPE_SIGNALS);
-	return (TrackBits)(_map5[tile] & TRACK_BIT_MASK);
+	return (TrackBits)(_m[tile].m5 & TRACK_BIT_MASK);
 }
 
 /**
@@ -399,7 +399,7 @@ static inline bool IsDiagonalTrackdir(Trackdir trackdir) { return IsDiagonalTrac
 static inline bool HasSignalOnTrack(TileIndex tile, Track track)
 {
 	assert(IsValidTrack(track));
-	return ((GetRailTileType(tile) == RAIL_TYPE_SIGNALS) && ((_map3_lo[tile] & SignalOnTrack(track)) != 0));
+	return ((GetRailTileType(tile) == RAIL_TYPE_SIGNALS) && ((_m[tile].m3 & SignalOnTrack(track)) != 0));
 }
 
 /**
@@ -412,7 +412,7 @@ static inline bool HasSignalOnTrack(TileIndex tile, Track track)
 static inline bool HasSignalOnTrackdir(TileIndex tile, Trackdir trackdir)
 {
 	assert (IsValidTrackdir(trackdir));
-	return (GetRailTileType(tile) == RAIL_TYPE_SIGNALS) && (_map3_lo[tile] & SignalAlongTrackdir(trackdir));
+	return (GetRailTileType(tile) == RAIL_TYPE_SIGNALS) && (_m[tile].m3 & SignalAlongTrackdir(trackdir));
 }
 
 /**
@@ -425,7 +425,7 @@ static inline SignalState GetSignalState(TileIndex tile, Trackdir trackdir)
 {
 	assert(IsValidTrackdir(trackdir));
 	assert(HasSignalOnTrack(tile, TrackdirToTrack(trackdir)));
-	return ((_map2[tile] & SignalAlongTrackdir(trackdir))?SIGNAL_STATE_GREEN:SIGNAL_STATE_RED);
+	return ((_m[tile].m2 & SignalAlongTrackdir(trackdir))?SIGNAL_STATE_GREEN:SIGNAL_STATE_RED);
 }
 
 /**
@@ -439,7 +439,7 @@ static inline SignalType GetSignalType(TileIndex tile, Track track)
 {
 	assert(IsValidTrack(track));
 	assert(GetRailTileType(tile) == RAIL_TYPE_SIGNALS);
-	return (SignalType)(_map3_hi[tile] & SIGTYPE_MASK);
+	return (SignalType)(_m[tile].m4 & SIGTYPE_MASK);
 }
 
 /**
@@ -454,7 +454,7 @@ static inline SignalType GetSignalType(TileIndex tile, Track track)
 static inline bool HasSemaphores(TileIndex tile, Track track)
 {
 	assert(IsValidTrack(track));
-	return (_map3_hi[tile] & SIG_SEMAPHORE_MASK);
+	return (_m[tile].m4 & SIG_SEMAPHORE_MASK);
 }
 
 /**
@@ -471,7 +471,7 @@ RailType GetTileRailType(TileIndex tile, Trackdir trackdir);
  */
 static inline bool IsLevelCrossing(TileIndex tile)
 {
-	return (_map5[tile] & 0xF0) == 0x10;
+	return (_m[tile].m5 & 0xF0) == 0x10;
 }
 
 /**
@@ -486,9 +486,9 @@ static inline TransportType GetCrossingTransportType(TileIndex tile, Track track
 	{
 		/* When map5 bit 3 is set, the road runs in the y direction (DIAG2) */
 		case TRACK_DIAG1:
-			return (HASBIT(_map5[tile], 3) ? TRANSPORT_RAIL : TRANSPORT_ROAD);
+			return (HASBIT(_m[tile].m5, 3) ? TRANSPORT_RAIL : TRANSPORT_ROAD);
 		case TRACK_DIAG2:
-			return (HASBIT(_map5[tile], 3) ? TRANSPORT_ROAD : TRANSPORT_RAIL);
+			return (HASBIT(_m[tile].m5, 3) ? TRANSPORT_ROAD : TRANSPORT_RAIL);
 		default:
 			assert(0);
 	}

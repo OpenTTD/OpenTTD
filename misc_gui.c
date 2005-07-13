@@ -150,12 +150,12 @@ static void Place_LandInfo(TileIndex tile)
 	#if defined(_DEBUG)
 		DEBUG(misc, 0) ("TILE: %#x (%i,%i)", tile, TileX(tile), TileY(tile));
 		DEBUG(misc, 0) ("TILE: %d ", tile);
-		DEBUG(misc, 0) ("_map_type_and_height=%#x", _map_type_and_height[tile]);
-		DEBUG(misc, 0) ("_map2=%#x", _map2[tile]);
-		DEBUG(misc, 0) ("_map3_lo=%#x", _map3_lo[tile]);
-		DEBUG(misc, 0) ("_map3_hi=%#x", _map3_hi[tile]);
-		DEBUG(misc, 0) ("_map5=%#x", _map5[tile]);
-		DEBUG(misc, 0) ("_map_owner=%#x", _map_owner[tile]);
+		DEBUG(misc, 0) ("_type_height = %#x", _m[tile].type_height);
+		DEBUG(misc, 0) ("m2           = %#x", _m[tile].m2);
+		DEBUG(misc, 0) ("m3           = %#x", _m[tile].m3);
+		DEBUG(misc, 0) ("m4           = %#x", _m[tile].m4);
+		DEBUG(misc, 0) ("m5           = %#x", _m[tile].m5);
+		DEBUG(misc, 0) ("owner        = %#x", _m[tile].owner);
 	#endif
 }
 

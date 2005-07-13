@@ -249,7 +249,7 @@ static void ProcessShipOrder(Vehicle *v)
 
 		st = GetStation(order->station);
 		if (st->dock_tile != 0) {
-			v->dest_tile = TILE_ADD(st->dock_tile, ToTileIndexDiff(_dock_offs[_map5[st->dock_tile]-0x4B]));
+			v->dest_tile = TILE_ADD(st->dock_tile, ToTileIndexDiff(_dock_offs[_m[st->dock_tile].m5-0x4B]));
 		}
 	} else if (order->type == OT_GOTO_DEPOT) {
 		v->dest_tile = GetDepot(order->station)->xy;
@@ -341,7 +341,7 @@ static void CheckShipLeaveDepot(Vehicle *v)
 		return;
 
 	tile = v->tile;
-	d = (_map5[tile]&2) ? 1 : 0;
+	d = (_m[tile].m5&2) ? 1 : 0;
 
 	// Check first side
 	if (_ship_sometracks[d] & GetTileShipTrackStatus(TILE_ADD(tile, ToTileIndexDiff(_ship_leave_depot_offs[d])))) {

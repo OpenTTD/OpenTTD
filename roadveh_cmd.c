@@ -281,7 +281,7 @@ static bool EnumRoadSignalFindDepot(TileIndex tile, RoadFindDepotData *rfdd, int
 	tile += TileOffsByDir(_road_pf_directions[track]);
 
 	if (IsTileType(tile, MP_STREET) &&
-			(_map5[tile] & 0xF0) == 0x20 &&
+			(_m[tile].m5 & 0xF0) == 0x20 &&
 			IsTileOwner(tile, rfdd->owner)) {
 
 		if (length < rfdd->best_length) {
@@ -1029,14 +1029,14 @@ static int RoadFindPathToDest(Vehicle *v, TileIndex tile, int enterdir)
 	}
 
 	if (IsTileType(tile, MP_STREET)) {
-		if ((_map5[tile]&0xF0) == 0x20 && IsTileOwner(tile, v->owner))
+		if ((_m[tile].m5&0xF0) == 0x20 && IsTileOwner(tile, v->owner))
 			/* Road crossing */
-			bitmask |= _road_veh_fp_ax_or[_map5[tile]&3];
+			bitmask |= _road_veh_fp_ax_or[_m[tile].m5&3];
 	} else if (IsTileType(tile, MP_STATION)) {
 		if (IsTileOwner(tile, OWNER_NONE) || IsTileOwner(tile, v->owner)) {
 			/* Our station */
-			Station *st = GetStation(_map2[tile]);
-			byte val = _map5[tile];
+			Station *st = GetStation(_m[tile].m2);
+			byte val = _m[tile].m5;
 			if (v->cargo_type != CT_PASSENGERS) {
 				if (IS_BYTE_INSIDE(val, 0x43, 0x47) && (_patches.roadveh_queue || st->truck_stops->status&3))
 					bitmask |= _road_veh_fp_ax_or[(val-0x43)&3];
@@ -1101,12 +1101,12 @@ static int RoadFindPathToDest(Vehicle *v, TileIndex tile, int enterdir)
 		}
 	} else {
 		if (IsTileType(desttile, MP_STREET)) {
-			m5 = _map5[desttile];
+			m5 = _m[desttile].m5;
 			if ((m5&0xF0) == 0x20)
 				/* We are heading for a Depot */
 				goto do_it;
 		} else if (IsTileType(desttile, MP_STATION)) {
-			m5 = _map5[desttile];
+			m5 = _m[desttile].m5;
 			if (IS_BYTE_INSIDE(m5, 0x43, 0x4B)) {
 				/* We are heading for a station */
 				m5 -= 0x43;
@@ -1230,7 +1230,7 @@ static void RoadVehController(Vehicle *v)
 
 		v->cur_speed = 0;
 
-		dir = _map5[v->tile]&3;
+		dir = _m[v->tile].m5&3;
 		v->direction = dir*2+1;
 
 		rd2 = _roadveh_data_2[dir];
@@ -1279,7 +1279,7 @@ static void RoadVehController(Vehicle *v)
 		}
 
 		if (IsTileType(gp.new_tile, MP_TUNNELBRIDGE) &&
-				(_map5[gp.new_tile]&0xF0) == 0 &&
+				(_m[gp.new_tile].m5&0xF0) == 0 &&
 				(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y)&4)) {
 
 			//new_dir = RoadGetNewDirection(v, gp.x, gp.y)
@@ -1340,7 +1340,7 @@ again:
 
 		if (IS_BYTE_INSIDE(v->u.road.state, 0x20, 0x30) && IsTileType(v->tile, MP_STATION)) {
 			if ((tmp&7) >= 6) { v->cur_speed = 0; return; }
-			if (IS_BYTE_INSIDE(_map5[v->tile], 0x43, 0x4B)) {
+			if (IS_BYTE_INSIDE(_m[v->tile].m5, 0x43, 0x4B)) {
 				RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
 				byte *b = &rs->status;
 
@@ -1435,7 +1435,7 @@ again:
 		RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
 		byte *b = &rs->status;
 
-		st = GetStation(_map2[v->tile]);
+		st = GetStation(_m[v->tile].m2);
 
 		if (v->current_order.type != OT_LEAVESTATION &&
 				v->current_order.type != OT_GOTO_DEPOT) {
@@ -1443,7 +1443,7 @@ again:
 
 			*b &= ~0x80;
 
-			v->last_station_visited = _map2[v->tile];
+			v->last_station_visited = _m[v->tile].m2;
 
 			RoadVehArrivesAt(v, st);
 

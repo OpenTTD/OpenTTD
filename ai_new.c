@@ -589,7 +589,7 @@ static void AiNew_State_FindStation(Player *p) {
 								new_tile = st->xy;
 								// Cheap way to get the direction of the station...
 								//  Bus stations save it as 0x47 .. 0x4A, so decrease it with 0x47, and tada!
-								direction = _map5[st->xy] - 0x47;
+								direction = _m[st->xy].m5 - 0x47;
 								break;
 							}
 						}
@@ -761,11 +761,11 @@ static void AiNew_State_FindDepot(Player *p) {
 		for (j = 0; j < 4; j++) {
 			if (IsTileType(tile + TileOffsByDir(j), MP_STREET)) {
 				// Its a street, test if it is a depot
-				if (_map5[tile + TileOffsByDir(j)] & 0x20) {
+				if (_m[tile + TileOffsByDir(j)].m5 & 0x20) {
 					// We found a depot, is it ours? (TELL ME!!!)
 					if (IsTileOwner(tile + TileOffsByDir(j), _current_player)) {
 						// Now, is it pointing to the right direction.........
-						if ((_map5[tile + TileOffsByDir(j)] & 3) == (j ^ 2)) {
+						if ((_m[tile + TileOffsByDir(j)].m5 & 3) == (j ^ 2)) {
 							// Yeah!!!
 							p->ainew.depot_tile = tile + TileOffsByDir(j);
 							p->ainew.depot_direction = j ^ 2; // Reverse direction
@@ -1061,7 +1061,7 @@ static void AiNew_State_BuildDepot(Player *p) {
 	int res = 0;
 	assert(p->ainew.state == AI_STATE_BUILD_DEPOT);
 
-	if (IsTileType(p->ainew.depot_tile, MP_STREET) && _map5[p->ainew.depot_tile] & 0x20) {
+	if (IsTileType(p->ainew.depot_tile, MP_STREET) && _m[p->ainew.depot_tile].m5 & 0x20) {
 		if (IsTileOwner(p->ainew.depot_tile, _current_player)) {
 			// The depot is already builded!
 			p->ainew.state = AI_STATE_BUILD_VEHICLE;
@@ -1151,7 +1151,7 @@ static void AiNew_State_GiveOrders(Player *p) {
 		idx = 0;
 		order.type = OT_GOTO_STATION;
 		order.flags = 0;
-		order.station = _map2[p->ainew.from_tile];
+		order.station = _m[p->ainew.from_tile].m2;
     if (p->ainew.tbt == AI_TRUCK && p->ainew.from_deliver)
 			order.flags |= OF_FULL_LOAD;
 		DoCommandByTile(0, p->ainew.veh_id + (idx << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
@@ -1159,7 +1159,7 @@ static void AiNew_State_GiveOrders(Player *p) {
 		idx = 1;
 		order.type = OT_GOTO_STATION;
 		order.flags = 0;
-		order.station = _map2[p->ainew.to_tile];
+		order.station = _m[p->ainew.to_tile].m2;
     if (p->ainew.tbt == AI_TRUCK && p->ainew.to_deliver)
 			order.flags |= OF_FULL_LOAD;
 		DoCommandByTile(0, p->ainew.veh_id + (idx << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
