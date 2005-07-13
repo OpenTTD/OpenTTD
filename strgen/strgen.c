@@ -238,9 +238,10 @@ static const CmdStruct _cmd_structs[] = {
 	// 0x7B=123 is the LAST special character we may use.
 
 	// Numbers
-	{"COMMA32", EmitSingleByte, 0x7B},
-	{"COMMA16", EmitSingleByte, 0x7C},
-	{"COMMA8", EmitSingleByte, 0x7D},
+	{"COMMA32", EmitSingleByte, 0x7B}, // These all do the same thing nowadays
+	{"COMMA16", EmitSingleByte, 0x7B},
+	{"COMMA8", EmitSingleByte, 0x7B},
+
 	{"NUMU16", EmitSingleByte, 0x7E},
 
 	{"CURRENCY", EmitSingleByte, 0x7F},
