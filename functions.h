@@ -101,6 +101,9 @@ void NORETURN CDECL error(const char *str, ...);
 #else
 	uint32 Random(void);
 	uint RandomRange(uint max);
+
+	static inline TileIndex RandomTileSeed(uint32 r) { return TILE_MASK(r); }
+	static inline TileIndex RandomTile(void) { return TILE_MASK(Random()); }
 #endif
 
 void InitPlayerRandoms(void);

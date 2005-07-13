@@ -1660,7 +1660,7 @@ static void PlaceInitialIndustry(byte type, int amount)
 		do {
 			int i = 2000;
 			do {
-				if (CreateNewIndustry(TILE_MASK(Random()), type) != NULL)
+				if (CreateNewIndustry(RandomTile(), type) != NULL)
 					break;
 			} while (--i != 0);
 		} while (--num);

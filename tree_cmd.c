@@ -96,7 +96,7 @@ static void PlaceMoreTrees(void)
 {
 	int i = ScaleByMapSize((Random() & 0x1F) + 25);
 	do {
-		DoPlaceMoreTrees(TILE_MASK(Random()));
+		DoPlaceMoreTrees(RandomTile());
 	} while (--i);
 }
 
@@ -109,7 +109,7 @@ void PlaceTreesRandomly(void)
 	i = ScaleByMapSize(1000);
 	do {
 		r = Random();
-		tile = TILE_MASK(r);
+		tile = RandomTileSeed(r);
 		/* Only on clear tiles, and NOT on farm-tiles or rocks */
 		if (IsTileType(tile, MP_CLEAR) && (_m[tile].m5 & 0x1F) != 0x0F && (_m[tile].m5 & 0x1C) != 8) {
 			PlaceTree(tile, r, 0);
@@ -122,7 +122,7 @@ void PlaceTreesRandomly(void)
 
 		do {
 			r = Random();
-			tile = TILE_MASK(r);
+			tile = RandomTileSeed(r);
 			if (IsTileType(tile, MP_CLEAR) && GetMapExtraBits(tile) == 2) {
 				PlaceTree(tile, r, 0);
 			}
@@ -602,7 +602,7 @@ void OnTick_Trees(void)
 
 	/* place a tree at a random rainforest spot */
 	if (_opt.landscape == LT_DESERT &&
-			(r=Random(),tile=TILE_MASK(r),GetMapExtraBits(tile)==2) &&
+			(r=Random(),tile=RandomTileSeed(r),GetMapExtraBits(tile)==2) &&
 			IsTileType(tile, MP_CLEAR) &&
 			(m=_m[tile].m5&0x1C, m<=4) &&
 			(tree=GetRandomTreeType(tile, r>>24)) >= 0) {

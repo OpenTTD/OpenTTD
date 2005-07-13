@@ -1072,7 +1072,7 @@ Town *CreateRandomTown(uint attempts)
 
 	do {
 		// Generate a tile index not too close from the edge
-		tile = TILE_MASK(Random());
+		tile = RandomTile();
 		if (DistanceFromEdge(tile) < 20)
 			continue;
 

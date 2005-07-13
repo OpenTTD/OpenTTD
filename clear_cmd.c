@@ -774,7 +774,7 @@ void GenerateClearTile(void)
 	/* add hills */
 	i = ScaleByMapSize((Random() & 0x3FF) + 0x400);
 	do {
-		tile = TILE_MASK(Random());
+		tile = RandomTile();
 		if (IsTileType(tile, MP_CLEAR))
 			_m[tile].m5 = (byte)((_m[tile].m5 & ~(3<<2)) | (1<<2));
 	} while (--i);
@@ -783,7 +783,7 @@ void GenerateClearTile(void)
 	i = ScaleByMapSize((Random() & 0x7F) + 0x80);
 	do {
 		r = Random();
-		tile = TILE_MASK(r);
+		tile = RandomTileSeed(r);
 		if (IsTileType(tile, MP_CLEAR)) {
 			j = ((r >> 16) & 0xF) + 5;
 			for(;;) {

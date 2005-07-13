@@ -174,7 +174,7 @@ void InitializeAirportGui(void);
 void InitializeDock(void);
 void InitializeDockGui(void);
 void InitializeIndustries(void);
-void InitializeLandscape(uint log_x, uint log_y);
+void InitializeLandscape(void);
 void InitializeTowns(void);
 void InitializeTrees(void);
 void InitializeSigns(void);
@@ -197,10 +197,13 @@ void GenerateTrees(void);
 
 void ConvertGroundTilesIntoWaterTiles(void);
 
-void InitializeGame(uint log_x, uint log_y)
+void InitializeGame(uint size_x, uint size_y)
 {
-	// Initialize the autoreplace array. Needs to be cleared between each game
 	uint i;
+
+	AllocateMap(size_x, size_y);
+
+	// Initialize the autoreplace array. Needs to be cleared between each game
 	for (i = 0; i < lengthof(_autoreplace_array); i++)
 		_autoreplace_array[i] = i;
 
@@ -229,7 +232,7 @@ void InitializeGame(uint log_x, uint log_y)
 	InitializeOrders();
 
 	InitNewsItemStructs();
-	InitializeLandscape(log_x, log_y);
+	InitializeLandscape();
 	InitializeClearLand();
 	InitializeRail();
 	InitializeRailGui();
@@ -261,7 +264,7 @@ void InitializeGame(uint log_x, uint log_y)
 	ResetObjectToPlace();
 }
 
-void GenerateWorld(int mode, uint log_x, uint log_y)
+void GenerateWorld(int mode, uint size_x, uint size_y)
 {
 	int i;
 
@@ -269,7 +272,7 @@ void GenerateWorld(int mode, uint log_x, uint log_y)
 	_current_player = OWNER_NONE;
 
 	_generating_world = true;
-	InitializeGame(log_x, log_y);
+	InitializeGame(size_x, size_y);
 	SetObjectToPlace(SPR_CURSOR_ZZZ, 0, 0, 0);
 
 	// Must start economy early because of the costs.
@@ -851,15 +854,8 @@ static void Save_MAPS(void)
 
 static void Load_MAPS(void)
 {
-	uint bits_x = 0;
-	uint bits_y = 0;
-
 	SlGlobList(_map_dimensions);
-
-	for (; _map_dim_x > 1; _map_dim_x >>= 1) ++bits_x;
-	for (; _map_dim_y > 1; _map_dim_y >>= 1) ++bits_y;
-
-	InitMap(bits_x, bits_y);
+	AllocateMap(_map_dim_x, _map_dim_y);
 }
 
 

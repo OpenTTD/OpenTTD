@@ -347,10 +347,7 @@ void GenerateUnmovables(void)
 	i = ScaleByMapSize(1000);
 	j = ScaleByMapSize(40); // maximum number of radio towers on the map
 	do {
-		r = Random();
-		tile = r % MapSize();
-//		TILE_MASK seems to be not working correctly. Radio masts accumulate in one area.
-//		tile = TILE_MASK(r);
+		tile = RandomTile();
 		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h >= 32) {
 			if(!checkRadioTowerNearby(tile))
 				continue;

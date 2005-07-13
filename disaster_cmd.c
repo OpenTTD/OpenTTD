@@ -269,7 +269,7 @@ static void DisasterTick_UFO(Vehicle *v)
 			return;
 		}
 		if (++v->age < 6) {
-			v->dest_tile = TILE_MASK(Random());
+			v->dest_tile = RandomTile();
 			return;
 		}
 		v->current_order.station = 1;
@@ -571,12 +571,12 @@ static void DisasterTick_4(Vehicle *v)
 		}
 
 		if (++v->age < 6) {
-			v->dest_tile = TILE_MASK(Random());
+			v->dest_tile = RandomTile();
 			return;
 		}
 		v->current_order.station = 1;
 
-		tile_org = tile = TILE_MASK(Random());
+		tile_org = tile = RandomTile();
 		do {
 			if (IsTileType(tile, MP_RAILWAY) &&
 					(_m[tile].m5 & ~3) != 0xC0 && IS_HUMAN_PLAYER(GetTileOwner(tile)))

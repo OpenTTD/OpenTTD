@@ -8,6 +8,8 @@
 #pragma warning(disable: 4100) // parameter not used
 #pragma warning(disable: 4244) // conversion
 #pragma warning(disable: 4245) // conversion
+#pragma warning(disable: 4305) // 'initializing' : truncation from 'const int ' to 'char '
+#pragma warning(disable: 4018) // warning C4018: '==' : signed/unsigned mismatch
 #pragma warning(disable: 4201) // nameless union
 #pragma warning(disable: 4514) // removed unref inline
 #pragma warning(disable: 4127) // constant conditional expression

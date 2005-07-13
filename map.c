@@ -5,28 +5,35 @@
 #include "map.h"
 
 uint _map_log_x;
-uint _map_log_y;
+uint _map_size_x;
+uint _map_size_y;
+uint _map_tile_mask;
+uint _map_size;
 
 Tile* _m = NULL;
 
 
-void InitMap(uint log_x, uint log_y)
+void AllocateMap(uint size_x, uint size_y)
 {
-	uint map_size;
-
-	if (log_x < 6 || log_x > 11 || log_y < 6 || log_y > 11)
+	// Make sure that the map size is within the limits and that
+	// the x axis size is a power of 2.
+	if (size_x < 64 || size_x > 2048 ||
+			size_y < 64 || size_y > 2048 ||
+			(size_x&(size_x-1)) != 0 ||
+			(size_y&(size_y-1)) != 0)
 		error("Invalid map size");
 
-	DEBUG(map, 1)("Allocating map of size %dx%d", log_x, log_y);
+	DEBUG(map, 1)("Allocating map of size %dx%d", size_x, size_y);
 
-	_map_log_x = log_x;
-	_map_log_y = log_y;
+	_map_log_x = FindFirstBit(size_x);
+	_map_size_x = size_x;
+	_map_size_y = size_y;
+	_map_size = size_x * size_y;
+	_map_tile_mask = _map_size - 1;
 
-	// XXX - MSVC6 workaround
-	map_size = 1 << (log_x + log_y);
-
+	// free/malloc uses less memory than realloc.
 	free(_m);
-	_m = malloc(map_size * sizeof(*_m));
+	_m = malloc(_map_size * sizeof(*_m));
 
 	// XXX TODO handle memory shortage more gracefully
 	if (_m == NULL) error("Failed to allocate memory for the map");
@@ -70,23 +77,21 @@ TileIndex TileAdd(TileIndex tile, TileIndexDiff add,
 
 uint ScaleByMapSize(uint n)
 {
-	int shift = (int)MapLogX() - 8 + (int)MapLogY() - 8;
-
-	if (shift < 0)
-		return (n + (1 << -shift) - 1) >> -shift;
-	else
-		return n << shift;
+	// First shift by 12 to prevent integer overflow for large values of n.
+	// >>12 is safe since the min mapsize is 64x64
+	// Add (1<<4)-1 to round upwards.
+	return (n * (MapSize() >> 12) + (1<<4) - 1) >> 4;
 }
 
 
+// Scale relative to the circumference of the map
 uint ScaleByMapSize1D(uint n)
 {
-	int shift = ((int)MapLogX() - 8 + (int)MapLogY() - 8) / 2;
-
-	if (shift < 0)
-		return (n + (1 << -shift) - 1) >> -shift;
-	else
-		return n << shift;
+	// Normal circumference for the X+Y is 256+256 = 1<<9
+	// Note, not actually taking the full circumference into account,
+	// just half of it.
+	// (1<<9) - 1 is there to scale upwards.
+	return (n * (MapSizeX() + MapSizeY()) + (1<<9) - 1) >> 9;
 }
 
 

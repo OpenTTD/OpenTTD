@@ -42,7 +42,7 @@ static int _rename_what;
 
 static byte _terraform_size = 1;
 static byte _last_built_railtype;
-extern void GenerateWorld(int mode, uint log_x, uint log_y);
+extern void GenerateWorld(int mode, uint size_x, uint size_y);
 
 extern void GenerateIndustries(void);
 extern void GenerateTowns(void);
@@ -1080,7 +1080,7 @@ static void ResetLandscape(void)
 	_random_seeds[0][0] = InteractiveRandom();
 	_random_seeds[0][1] = InteractiveRandom();
 
-	GenerateWorld(1, _patches.map_x, _patches.map_y);
+	GenerateWorld(1, 1<<_patches.map_x, 1<<_patches.map_y);
 	MarkWholeScreenDirty();
 }
 

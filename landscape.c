@@ -422,12 +422,11 @@ void RunTileLoop(void)
 	_cur_tileloop_tile = tile;
 }
 
-void InitializeLandscape(uint log_x, uint log_y)
+void InitializeLandscape()
 {
 	uint map_size;
 	uint i;
 
-	InitMap(log_x, log_y);
 
 	map_size = MapSize();
 	for (i = 0; i < map_size; i++) {

@@ -3,8 +3,17 @@
 
 #include "stdafx.h"
 
-#define TILE_MASK(x) ((x) & ((1 << (MapLogX() + MapLogY())) - 1))
+// Putting externs inside inline functions seems to confuse the aliasing
+// checking on MSVC6. Never use those variables directly.
+extern uint _map_log_x;
+extern uint _map_size_x;
+extern uint _map_size_y;
+extern uint _map_tile_mask;
+extern uint _map_size;
+
+#define TILE_MASK(x) ((x) & _map_tile_mask)
 #define TILE_ASSERT(x) assert(TILE_MASK(x) == (x));
+#define RANDOM_TILE(r) TILE_MASK(r)
 
 typedef struct Tile {
 	byte type_height;
@@ -20,17 +29,18 @@ extern Tile* _m;
 
 void InitMap(uint log_x, uint log_y);
 
+void AllocateMap(uint size_x, uint size_y);
+
 // binary logarithm of the map size, try to avoid using this one
-static inline uint MapLogX(void)  { extern uint _map_log_x; return _map_log_x; }
-static inline uint MapLogY(void)  { extern uint _map_log_y; return _map_log_y; }
+static inline uint MapLogX(void)  { return _map_log_x; }
 /* The size of the map */
-static inline uint MapSizeX(void) { return 1 << MapLogX(); }
-static inline uint MapSizeY(void) { return 1 << MapLogY(); }
+static inline uint MapSizeX(void) { return _map_size_x; }
+static inline uint MapSizeY(void) { return _map_size_y; }
 /* The maximum coordinates */
-static inline uint MapMaxX(void) { return MapSizeX() - 1; }
-static inline uint MapMaxY(void) { return MapSizeY() - 1; }
+static inline uint MapMaxX(void) { return _map_size_x - 1; }
+static inline uint MapMaxY(void) { return _map_size_y - 1; }
 /* The number of tiles in the map */
-static inline uint MapSize(void) { return MapSizeX() * MapSizeY(); }
+static inline uint MapSize(void) { return _map_size; }
 
 // Scale a number relative to the map size
 uint ScaleByMapSize(uint); // Scale relative to the number of tiles
@@ -41,12 +51,16 @@ typedef int32 TileIndexDiff;
 
 static inline TileIndex TileXY(uint x, uint y)
 {
-	return (y << MapLogX()) + x;
+	return (y * MapSizeX()) + x;
 }
 
 static inline TileIndexDiff TileDiffXY(int x, int y)
 {
-	return (y << MapLogX()) + x;
+	// Multiplication gives much better optimization on MSVC than shifting.
+	// 0 << shift isn't optimized to 0 properly.
+	// Typically x and y are constants, and then this doesn't result
+	// in any actual multiplication in the assembly code..
+	return (y * MapSizeX()) + x;
 }
 
 static inline TileIndex TileVirtXY(uint x, uint y)
