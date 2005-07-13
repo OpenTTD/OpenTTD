@@ -242,13 +242,13 @@ static const CmdStruct _cmd_structs[] = {
 	{"COMMA16", EmitSingleByte, 0x7B},
 	{"COMMA8", EmitSingleByte, 0x7B},
 
-	{"NUMU16", EmitSingleByte, 0x7E},
+	{"NUMU16", EmitSingleByte, 0x7E}, // These two do the same thing nowadays
+	{"INT32", EmitSingleByte, 0x7E},	// signed 32 bit integer
 
 	{"CURRENCY", EmitSingleByte, 0x7F},
 
 	// 0x85
 	{"CURRCOMPACT", EmitEscapedByte, 0},		// compact currency (32 bits)
-	{"INT32", EmitEscapedByte, 1},					// signed 32 bit integer
 	{"REV", EmitEscapedByte, 2},						// openttd revision string
 	{"SHORTCARGO", EmitEscapedByte, 3},			// short cargo description, only ### tons, or ### litres
 	{"CURRCOMPACT64", EmitEscapedByte, 4},	// compact currency 64 bits

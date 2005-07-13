@@ -416,8 +416,8 @@ static char *DecodeString(char *buff, const char *str)
 		case 0x7D: // {COMMA8}
 			assert(0);
 			break;
-		case 0x7E: // {NUMU16}
-			buff = FormatNoCommaNumber(buff, GetParamInt16());
+		case 0x7E: // {NUMU16}, {INT32}
+			buff = FormatNoCommaNumber(buff, GetParamInt32());
 			break;
 		case 0x7F: // {CURRENCY}
 			buff = FormatGenericCurrency(buff, &_currency_specs[_opt_ptr->currency], GetParamInt32(), false);
@@ -452,9 +452,6 @@ static char *DecodeString(char *buff, const char *str)
 			switch (*str++) {
 			case 0: /* {CURRCOMPACT} */
 				buff = FormatGenericCurrency(buff, &_currency_specs[_opt_ptr->currency], GetParamInt32(), true);
-				break;
-			case 1: /* {INT32} */
-				buff = FormatNoCommaNumber(buff, GetParamInt32());
 				break;
 			case 2: /* {REV} */
 				buff = strecpy(buff, _openttd_revision, NULL);
