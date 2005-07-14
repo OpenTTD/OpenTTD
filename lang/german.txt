@@ -1073,7 +1073,7 @@ STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Spiel b
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Feinere Wirtschaft aktivieren (mehrere, kleinere Ver‰nderungen)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Erlaube Anteile an anderen Firmen zu kaufen
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Errichte Signale alle {ORANGE}{STRING} Felder beim Ziehen mit der Maus
-STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}Erlaube automatische Errichtung von PBS-Signalen: {ORANGE}{STRING}
+STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}Erlaube automatische Errichtung von Fahrstraﬂen-Signalen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Position der Haupttoolbar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Links
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Mitte
@@ -1484,7 +1484,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Gleis mit norma
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Gleis mit Vorsignalen
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Gleis mit Ausfahrtsignalen
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Gleis mit kombinierten Vor-/Ausfahrtsignalen
-STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Gleise mit PBS-Signalen
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Gleise mit Fahrstraﬂen-Signalen
 
 
 

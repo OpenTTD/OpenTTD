@@ -262,7 +262,7 @@ STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFON
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Mine de Cuivre
 STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Plantation de Fruits
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Plantation de Caoutchouc
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Source d'Eau
+STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Source d'eau
 STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Château d'eau
 STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Scierie
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Forêt de Barbe à Papa
@@ -643,7 +643,7 @@ STR_024F_GOLD_MINE                                              :{BLACK}Mine d'O
 STR_0250_LUMBER_MILL                                            :{BLACK}Scierie
 STR_0251_FRUIT_PLANTATION                                       :{BLACK}Plantation de Fruits
 STR_0252_RUBBER_PLANTATION                                      :{BLACK}Plantation de Caoutchouc
-STR_0253_WATER_SUPPLY                                           :{BLACK}Source d'Eau
+STR_0253_WATER_SUPPLY                                           :{BLACK}Source d'eau
 STR_0254_WATER_TOWER                                            :{BLACK}Château d'eau
 STR_0255_DIAMOND_MINE                                           :{BLACK}Mine de Diamant
 STR_0256_COPPER_ORE_MINE                                        :{BLACK}Mine de Cuivre
@@ -678,7 +678,7 @@ STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construi
 STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Construire Scierie (pour la coupe de forêt tropicale et la production de Bois)
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Semer une Plantation de Fruits
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Semer une Plantation de Caoutchouc
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Construire Source d'Eau
+STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Construire Source d'eau
 STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Construire Château d'eau (Peut seulement être construite en ville)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Construire Mine de Diamant
 STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Construire Mine de Cuivre
@@ -1193,7 +1193,7 @@ STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Construi
 STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Construire une mine de fer
 STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Financer une plantation de fruits
 STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Financer une plantation de caoutchouc
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Financer une station de pompage
+STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Financer la construction d'une Source d'eau
 STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Planter une forêt de barbe à papa
 STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Financer une ferme de piles
 STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Forer pour trouver du cola
@@ -2295,9 +2295,9 @@ STR_80A1_MPS_PAPER_TRUCK                                        :Camion de papie
 STR_80A2_MPS_COPPER_ORE_TRUCK                                   :Camion de cuivre MPS
 STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl Camion de cuivre
 STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss Camion de cuivre
-STR_80A5_UHL_WATER_TANKER                                       :Uhl Citerne d'eau
-STR_80A6_BALOGH_WATER_TANKER                                    :Balogh Citerne d'eau
-STR_80A7_MPS_WATER_TANKER                                       :MPS Citerne d'eau
+STR_80A5_UHL_WATER_TANKER                                       :Citerne d'eau Uhl
+STR_80A6_BALOGH_WATER_TANKER                                    :Citerne d'eau Balogh
+STR_80A7_MPS_WATER_TANKER                                       :Citerne d'eau MPS
 STR_80A8_BALOGH_FRUIT_TRUCK                                     :Camion de fruits Balogh
 STR_80A9_UHL_FRUIT_TRUCK                                        :Camion de fruits Uhl
 STR_80AA_KELLING_FRUIT_TRUCK                                    :Camion de fruits Kelling
