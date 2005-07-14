@@ -82,69 +82,69 @@ STR_004B_BATTERY                                                :Batteri
 STR_004C_PLASTIC                                                :Plastikk
 STR_004D_FIZZY_DRINK                                            :Brus
 STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA16} passasjer
-STR_0050_TON_OF_COAL                                            :{COMMA16} tonn kull
-STR_0051_BAG_OF_MAIL                                            :{COMMA16} postsekk
+STR_004F_PASSENGER                                              :{COMMA} passasjer
+STR_0050_TON_OF_COAL                                            :{COMMA} tonn kull
+STR_0051_BAG_OF_MAIL                                            :{COMMA} postsekk
 STR_0052_OF_OIL                                                 :{VOLUME} olje
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA16} enhet buskap
-STR_0054_CRATE_OF_GOODS                                         :{COMMA16} kasse gods
-STR_0055_TON_OF_GRAIN                                           :{COMMA16} tonn korn
-STR_0056_TON_OF_WOOD                                            :{COMMA16} tonn tømmer
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA16} tonn jernmalm
-STR_0058_TON_OF_STEEL                                           :{COMMA16} tonn stål
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA16} sekk med verdisaker
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA16} tonn kobbermalm
-STR_005B_TON_OF_MAIZE                                           :{COMMA16} tonn mais
-STR_005C_TON_OF_FRUIT                                           :{COMMA16} tonn frukt
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA16} sekk med diamanter
-STR_005E_TON_OF_FOOD                                            :{COMMA16} tonn mat
-STR_005F_TON_OF_PAPER                                           :{COMMA16} tonn papir
-STR_0060_BAG_OF_GOLD                                            :{COMMA16} sekk med gull
+STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} enhet buskap
+STR_0054_CRATE_OF_GOODS                                         :{COMMA} kasse gods
+STR_0055_TON_OF_GRAIN                                           :{COMMA} tonn korn
+STR_0056_TON_OF_WOOD                                            :{COMMA} tonn tømmer
+STR_0057_TON_OF_IRON_ORE                                        :{COMMA} tonn jernmalm
+STR_0058_TON_OF_STEEL                                           :{COMMA} tonn stål
+STR_0059_BAG_OF_VALUABLES                                       :{COMMA} sekk med verdisaker
+STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} tonn kobbermalm
+STR_005B_TON_OF_MAIZE                                           :{COMMA} tonn mais
+STR_005C_TON_OF_FRUIT                                           :{COMMA} tonn frukt
+STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} sekk med diamanter
+STR_005E_TON_OF_FOOD                                            :{COMMA} tonn mat
+STR_005F_TON_OF_PAPER                                           :{COMMA} tonn papir
+STR_0060_BAG_OF_GOLD                                            :{COMMA} sekk med gull
 STR_0061_OF_WATER                                               :{VOLUME} vann
-STR_0062_TON_OF_WHEAT                                           :{COMMA16} tonn hvete
+STR_0062_TON_OF_WHEAT                                           :{COMMA} tonn hvete
 STR_0063_OF_RUBBER                                              :{VOLUME} gummi
-STR_0064_TON_OF_SUGAR                                           :{COMMA16} tonn sukker
-STR_0065_TOY                                                    :{COMMA16} leke
-STR_0066_BAG_OF_CANDY                                           :{COMMA16} sekk med søtsaker
+STR_0064_TON_OF_SUGAR                                           :{COMMA} tonn sukker
+STR_0065_TOY                                                    :{COMMA} leke
+STR_0066_BAG_OF_CANDY                                           :{COMMA} sekk med søtsaker
 STR_0067_OF_COLA                                                :{VOLUME} cola
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA16} tonn sukkerspinn
-STR_0069_BUBBLE                                                 :{COMMA16} boble
-STR_006A_TON_OF_TOFFEE                                          :{COMMA16} tonn karamell
-STR_006B_BATTERY                                                :{COMMA16} batteri
+STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} tonn sukkerspinn
+STR_0069_BUBBLE                                                 :{COMMA} boble
+STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonn karamell
+STR_006B_BATTERY                                                :{COMMA} batteri
 STR_006C_OF_PLASTIC                                             :{VOLUME} plastikk
-STR_006D_FIZZY_DRINK                                            :{COMMA16} brus
+STR_006D_FIZZY_DRINK                                            :{COMMA} brus
 STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA16} passasjerer
-STR_0070_TONS_OF_COAL                                           :{COMMA16} tonn kull
-STR_0071_BAGS_OF_MAIL                                           :{COMMA16} postsekker
+STR_006F_PASSENGERS                                             :{COMMA} passasjerer
+STR_0070_TONS_OF_COAL                                           :{COMMA} tonn kull
+STR_0071_BAGS_OF_MAIL                                           :{COMMA} postsekker
 STR_0072_OF_OIL                                                 :{VOLUME} olje
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA16} enheter buskap
-STR_0074_CRATES_OF_GOODS                                        :{COMMA16} kasser gods
-STR_0075_TONS_OF_GRAIN                                          :{COMMA16} tonn korn
-STR_0076_TONS_OF_WOOD                                           :{COMMA16} tonn tømmer
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA16} tonn jernmalm
-STR_0078_TONS_OF_STEEL                                          :{COMMA16} tonn stål
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA16} sekker med verdisaker
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA16} tonn kobbermalm
-STR_007B_TONS_OF_MAIZE                                          :{COMMA16} tonn mais
-STR_007C_TONS_OF_FRUIT                                          :{COMMA16} tonn frukt
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA16} sekker med diamanter
-STR_007E_TONS_OF_FOOD                                           :{COMMA16} tonn mat
-STR_007F_TONS_OF_PAPER                                          :{COMMA16} tonn papir
-STR_0080_BAGS_OF_GOLD                                           :{COMMA16} sekker gull
+STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} enheter buskap
+STR_0074_CRATES_OF_GOODS                                        :{COMMA} kasser gods
+STR_0075_TONS_OF_GRAIN                                          :{COMMA} tonn korn
+STR_0076_TONS_OF_WOOD                                           :{COMMA} tonn tømmer
+STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} tonn jernmalm
+STR_0078_TONS_OF_STEEL                                          :{COMMA} tonn stål
+STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} sekker med verdisaker
+STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} tonn kobbermalm
+STR_007B_TONS_OF_MAIZE                                          :{COMMA} tonn mais
+STR_007C_TONS_OF_FRUIT                                          :{COMMA} tonn frukt
+STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} sekker med diamanter
+STR_007E_TONS_OF_FOOD                                           :{COMMA} tonn mat
+STR_007F_TONS_OF_PAPER                                          :{COMMA} tonn papir
+STR_0080_BAGS_OF_GOLD                                           :{COMMA} sekker gull
 STR_0081_OF_WATER                                               :{VOLUME} vann
-STR_0082_TONS_OF_WHEAT                                          :{COMMA16} tonn hvete
+STR_0082_TONS_OF_WHEAT                                          :{COMMA} tonn hvete
 STR_0083_OF_RUBBER                                              :{VOLUME} gummi
-STR_0084_TONS_OF_SUGAR                                          :{COMMA16} tonn sukker
-STR_0085_TOYS                                                   :{COMMA16} leker
-STR_0086_BAGS_OF_CANDY                                          :{COMMA16} sekker søtsaker
+STR_0084_TONS_OF_SUGAR                                          :{COMMA} tonn sukker
+STR_0085_TOYS                                                   :{COMMA} leker
+STR_0086_BAGS_OF_CANDY                                          :{COMMA} sekker søtsaker
 STR_0087_OF_COLA                                                :{VOLUME} cola
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA16} tonn sukkerspinn
-STR_0089_BUBBLES                                                :{COMMA16} bobler
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA16} tonn karameller
-STR_008B_BATTERIES                                              :{COMMA16} batterier
+STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} tonn sukkerspinn
+STR_0089_BUBBLES                                                :{COMMA} bobler
+STR_008A_TONS_OF_TOFFEE                                         :{COMMA} tonn karameller
+STR_008B_BATTERIES                                              :{COMMA} batterier
 STR_008C_OF_PLASTIC                                             :{VOLUME} plastikk
-STR_008D_FIZZY_DRINKS                                           :{COMMA16} brus
+STR_008D_FIZZY_DRINKS                                           :{COMMA} brus
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
 STR_0090_CL                                                     :{TINYFONT}KL
@@ -219,8 +219,8 @@ STR_00DE_BROWN                                                  :Brun
 STR_00DF_GREY                                                   :Grå
 STR_00E0_WHITE                                                  :Hvit
 STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}For mange kjøretøy i spillet
-STR_00E2                                                        :{BLACK}{COMMA16}
-STR_00E3                                                        :{RED}{COMMA16}
+STR_00E2                                                        :{BLACK}{COMMA}
+STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}Sted
 STR_00E5_CONTOURS                                               :Konturer
 STR_00E6_VEHICLES                                               :Kjøretøy
@@ -441,18 +441,18 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Skru av/
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Fortjeneste i år: {CURRENCY} (sist år: {CURRENCY})
 
 ############ range for service numbers starts
-STR_0199_YEAR                                                   :{COMMA16} år ({COMMA16})
-STR_019A_YEARS                                                  :{COMMA16} år ({COMMA16})
-STR_019B_YEARS                                                  :{RED}{COMMA16} år ({COMMA16})
+STR_0199_YEAR                                                   :{COMMA} år ({COMMA})
+STR_019A_YEARS                                                  :{COMMA} år ({COMMA})
+STR_019B_YEARS                                                  :{RED}{COMMA} år ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Kjøretøy
 STR_019D_AIRCRAFT                                               :Fly
 STR_019E_SHIP                                                   :Skip
 STR_019F_TRAIN                                                  :Tog
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA16} er gammel
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA16} er veldig gammel
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA16} er veldig gammel og må byttes ut snarest
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} er gammel
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} er veldig gammel
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} er veldig gammel og må byttes ut snarest
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informasjon om felt
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Fjerningskostnad: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Fjerningskostnad:  {LTBLUE}{CURRENCY}
@@ -497,7 +497,7 @@ STR_01C9_30TH                                                   :30.
 STR_01CA_31ST                                                   :31.
 ############ range for days	ends
 
-STR_01CB                                                        :{TINYFONT}{COMMA16}
+STR_01CB                                                        :{TINYFONT}{COMMA}
 STR_01CC_TOGGLE_LARGE_SMALL_MAP                                 :{BLACK}Veksle mellom stort og lite kart
 STR_01CD_SELECT_TUTORIAL_DEMONSTRATION                          :{WHITE}Velg Veiledning/Demonstrasjon
 
@@ -509,7 +509,7 @@ STR_CARGO_ACCEPTED_4                                            :{BLACK}Aksepter
 STR_CARGO_ACCEPTED_5                                            :{BLACK}Aksepterte varer: {LTBLUE}{STRING}, {STRING}, {STRING}, {STRING}, {STRING}
 ############ range for cargo acecpted ends
 
-STR_01D1_8                                                      :({COMMA8}/8 {STRING})
+STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz Jukebox
 STR_01D3_SOUND_MUSIC                                            :Lyd/Musikk
 STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Vis lyd/musikkinnstillinger
@@ -528,16 +528,16 @@ STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Stopp mu
 STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Start musikken
 STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Dra for å endre volum på musikk og lydeffekter
 STR_01E3                                                        :{DKGREEN}{TINYFONT}--
-STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA8}
-STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA8}
+STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
+STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Spor{SETX 88}Tittel
 STR_01E9_SHUFFLE                                                :{TINYFONT}Tilfeldig
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Program
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Musikkprogram
-STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA16} "{STRING}"
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA16}   "{STRING}"
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA}   "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Sporregister
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Tøm
@@ -577,7 +577,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Spill a
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...for langt i fra forrige destinasjon
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Beste firma som nådde {NUMU16}{}({STRING} Nivå)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Firmarangering i {NUMU16}
-STR_0212                                                        :{BIGFONT}{COMMA16}.
+STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Forretningsmann
 STR_0214_ENTREPRENEUR                                           :Entreprenør
 STR_0215_INDUSTRIALIST                                          :Industrialist
@@ -586,12 +586,12 @@ STR_0217_MAGNATE                                                :Magnat
 STR_0218_MOGUL                                                  :Mogul
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Århundrets finansfyrste
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{STRING}, {STRING}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA16})
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{STRING} oppnår '{STRING}'-status!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{STRING} av {STRING} oppnår '{STRING}'-status!
 STR_021D                                                        :{BLACK}
 STR_021E                                                        :{WHITE}
-STR_021F                                                        :{BLUE}{COMMA16}
+STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Lag scenario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenarioredigerer
@@ -788,8 +788,8 @@ STR_02DE_MAP_OF_WORLD                                           :Verdenskart
 STR_EXTRA_VIEW_PORT                                             :Ekstra vindu
 STR_SIGN_LIST                                                   :Skiltliste
 STR_02DF_TOWN_DIRECTORY                                         :Byoversikt
-STR_TOWN_POPULATION                                             :{BLACK}Verdensbefolkning: {COMMA32}
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vindu {COMMA16}
+STR_TOWN_POPULATION                                             :{BLACK}Verdensbefolkning: {COMMA}
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vindu {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopier til vindu
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopier stedet til den globale synsvinkelen til dette vinduet
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Kopier fra vindu
@@ -961,34 +961,34 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan ikke
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan ikke kopiere ordre liste...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Slutt på delte ordre - -
 
-STR_TRAIN_IS_LOST                                               :{WHITE}Tog {COMMA16} har kjørt seg vill.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Tog {COMMA16} sin fortjeneste sist år var {CURRENCY}
+STR_TRAIN_IS_LOST                                               :{WHITE}Tog {COMMA} har kjørt seg vill.
+STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Tog {COMMA} sin fortjeneste sist år var {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europeisk Valutta Union!{}{} Euro er introdusert som den utelukkede valuttaen for hverdagslige forretninger i landet ditt!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Tog {COMMA16} har for få ordrer i kjøreplanen
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Tog {COMMA16} har en tom ordre
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Tog {COMMA16} har to like ordrer
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Tog {COMMA16} har en ugyldig stasjon i ordrene
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Kjøretøy {COMMA16} har for få ordrer i kjøreplanen
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Kjøretøy {COMMA16} har en tom ordre
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Kjøretøy {COMMA16} har to like ordrer
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Kjøretøy {COMMA16} har en ugyldig stasjon i ordrene
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Skip {COMMA16} har for få ordrer i kjøreplanen
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Skip {COMMA16} har en tom ordre
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Ship {COMMA16} har to like ordrer
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Skip {COMMA16} har en ugyldig stasjon i ordrene
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Fly {COMMA16} har for få ordrer i kjøreplanen
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Fly {COMMA16} har en tom ordre
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Fly {COMMA16} har to like ordrer
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Fly {COMMA16} har en ugyldig stasjon i ordrene
+STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Tog {COMMA} har for få ordrer i kjøreplanen
+STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Tog {COMMA} har en tom ordre
+STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Tog {COMMA} har to like ordrer
+STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Tog {COMMA} har en ugyldig stasjon i ordrene
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Kjøretøy {COMMA} har for få ordrer i kjøreplanen
+STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Kjøretøy {COMMA} har en tom ordre
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Kjøretøy {COMMA} har to like ordrer
+STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Kjøretøy {COMMA} har en ugyldig stasjon i ordrene
+STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Skip {COMMA} har for få ordrer i kjøreplanen
+STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Skip {COMMA} har en tom ordre
+STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Ship {COMMA} har to like ordrer
+STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Skip {COMMA} har en ugyldig stasjon i ordrene
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Fly {COMMA} har for få ordrer i kjøreplanen
+STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Fly {COMMA} har en tom ordre
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Fly {COMMA} har to like ordrer
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Fly {COMMA} har en ugyldig stasjon i ordrene
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autoforny feilet på tog {COMMA16} (money limit)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autoforny feilet på kjøretøy {COMMA16} (money limit)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autoforny feilet på skip {COMMA16} (money limit)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autoforny feilet på fly {COMMA16} (money limit)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autoforny feilet på tog {COMMA} (money limit)
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autoforny feilet på kjøretøy {COMMA} (money limit)
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autoforny feilet på skip {COMMA} (money limit)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autoforny feilet på fly {COMMA} (money limit)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Patchinnstillinger
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Endre patchinnstillinger
@@ -1104,7 +1104,7 @@ STR_CHEATS                                                      :{WHITE}Juks
 STR_CHEATS_TIP                                                  :{BLACK}Avkryssningsbokser indikerer at du har brukt denne juksekoden tidligere.
 STR_CHEATS_WARNING                                              :{BLACK}Advarsel! Vær klar over at du er i ferd med å bedra dine motstandere og at straffen for slike handlinger er å brenne i helvete etter din død.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Øk pengebeholdningen med {CURRENCY64}
-STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Spiller som spiller: {ORANGE}{COMMA16}
+STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Spiller som spiller: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldoser (fjern industrier, ufjernbare ting): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneller kan krysse hverandre: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Tillat bygging i pause modus: {ORANGE}{STRING}
@@ -1120,7 +1120,7 @@ STR_GO_TO_WAYPOINT                                              :Kjør via {WAYPO
 STR_GO_NON_STOP_TO_WAYPOINT                                     :Gå uten stopp via {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY                                           :Kontrollpunkt {TOWN}
-STR_WAYPOINTNAME_CITY_SERIAL                                    :Kontrollpunkt {TOWN} #{COMMA16}
+STR_WAYPOINTNAME_CITY_SERIAL                                    :Kontrollpunkt {TOWN} #{COMMA}
 STR_LANDINFO_WAYPOINT                                           :Kontrollpunkt
 
 STR_WAYPOINT                                                    :{WHITE}Kontrollpunkt
@@ -1203,8 +1203,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Finansie
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Bygg sukkergruve
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrier
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% transportert)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% transportert)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA}% transportert)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportert)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{TOWN} {STRING}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...For nært en annen industri
@@ -1244,15 +1244,15 @@ STR_NETWORK_ADD_SERVER                                          :{BLACK}Legg til
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Legger til en tjener i listen over tjenere som alltid vil bli skjekket for aktive spill.
 STR_NETWORK_ENTER_IP                                            :{BLACK}Skriv inn IP adressen til serveren
 
-STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klienter
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klienter på nett / Maks. antall klienter
 STR_NETWORK_GAME_INFO                                           :{SILVER}SPILLOVERSIKT
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Klienter:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_CLIENTS                                             :{SILVER}Klienter:  {WHITE}{COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Språk:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Brikkesett:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Kartstørrelse:  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Kartstørrelse:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Tjenerversjon:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Server addresse:  {WHITE}{STRING} : {NUMU16}
 STR_NETWORK_START_DATE                                          :{SILVER}Startet:  {WHITE}{DATE_SHORT}
@@ -1517,21 +1517,21 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Jernbaneovergan
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Byer
-STR_TOWN_LABEL_POP                                              :{WHITE}{STRING} ({COMMA32})
+STR_TOWN_LABEL_POP                                              :{WHITE}{STRING} ({COMMA})
 STR_2001                                                        :{WHITE}{STRING}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2003                                                        :{TINYFONT}{WHITE}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Bygningen må rives først
 STR_2005                                                        :{WHITE}{TOWN}
-STR_2006_POPULATION                                             :{BLACK}Innbyggertall: {ORANGE}{COMMA32}{BLACK}  Antall hus: {ORANGE}{COMMA32}
+STR_2006_POPULATION                                             :{BLACK}Innbyggertall: {ORANGE}{COMMA}{BLACK}  Antall hus: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Bytt navn
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Kan ikke bytte navn på byen...
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} bystyret nekter deg å gjøre dette.
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Bynavn - trykk på by navnet for å se på byen
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Sentrer bildet rundt byen
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Bytt navn på byen
-STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passasjerer siste måned: {ORANGE}{COMMA32}{BLACK}  maks: {ORANGE}{COMMA32}
-STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Post sist måned: {ORANGE}{COMMA32}{BLACK}  maks: {ORANGE}{COMMA32}
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passasjerer siste måned: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Post sist måned: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_200F_TALL_OFFICE_BLOCK                                      :Høyhus
 STR_2010_OFFICE_BLOCK                                           :Kontorblokk
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Leilighetsblokk
@@ -1605,7 +1605,7 @@ STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Bestikk bystyret til å forbedre vurderingen av firmaet, men du riskerer å bli bøtlagt hvis du blir oppdaget.{}  Koster: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Traffkkaos i {TOWN}!{}{}Ombygging av veien, finasiert av {STRING}, fører med seg seks måneders veiproblemer.
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
-STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA32})
+STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (under bygging)
 STR_2059_IGLOO                                                  :Iglo
 STR_205A_TEPEES                                                 :Indianertelt
@@ -1667,7 +1667,7 @@ STR_303B_EXCELLENT                                              :Utmerket
 STR_303C_OUTSTANDING                                            :Fremragende
 ############ range for rating ends
 
-STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA8}%)
+STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} aksepterer ikke lenger {STRING}
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} aksepterer ikke lenger {STRING} eller {STRING}
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} aksepterer nå {STRING}
@@ -1678,7 +1678,7 @@ STR_3044_TOO_CLOSE_TO_ANOTHER_BUS                               :{WHITE}For nærm
 STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK                             :{WHITE}For nærme en annen lasteterminal
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Må rive bussterminal først
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Må rive lasteterminal først
-STR_3048_STATIONS                                               :{WHITE}{STRING} - {COMMA16} Stasjoner
+STR_3048_STATIONS                                               :{WHITE}{STRING} - {COMMA} Stasjoner
 STR_3049_0                                                      :{YELLOW}{STATION} {STRINL 0x30D1}
 STR_304A_NONE                                                   :{YELLOW}- Ingen -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...upassende område
@@ -1735,7 +1735,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Last inn
 STR_4002_SAVE                                                   :{BLACK}Lagre
 STR_4003_DELETE                                                 :{BLACK}Slett
 STR_4004                                                        :{STRING}, {DATE_LONG}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA32} megabyte ledig
+STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte ledig
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kan ikke lese fra disk
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Lagring av spillet feilet
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Kan ikke slette fil
@@ -1796,7 +1796,7 @@ STR_4829_REQUIRES                                               :{BLACK}Trenger:
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produksjon sist måned:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA16}% transportert)
+STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% transportert)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Sentrer bildet på industriområdet
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Ny {STRING} under bygging i nærheten av {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Ny {STRING} plantes i nærheten av {TOWN}!
@@ -1813,8 +1813,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{TOWN} {STRING} sin produksjon har sunket med 50 %
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Insektinvasjon på {TOWN} {STRING}!{}Produksjonen synker med 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...kan bare plasseres i nærheten av kartkanten
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Produksjonen av {STRING} ved {TOWN}{STRING} øker med {COMMA16}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Produksjonen av {STRING} ved {TOWN}{STRING} synker med {COMMA16}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Produksjonen av {STRING} ved {TOWN}{STRING} øker med {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Produksjonen av {STRING} ved {TOWN}{STRING} synker med {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Tog i tunnelen
@@ -1877,10 +1877,10 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...du ei
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Uten navn{SKIP}
-STR_SV_TRAIN_NAME                                               :Tog {COMMA16}
-STR_SV_ROADVEH_NAME                                             :Kjøretøy {COMMA16}
-STR_SV_SHIP_NAME                                                :Skip {COMMA16}
-STR_SV_AIRCRAFT_NAME                                            :Fly {COMMA16}
+STR_SV_TRAIN_NAME                                               :Tog {COMMA}
+STR_SV_ROADVEH_NAME                                             :Kjøretøy {COMMA}
+STR_SV_SHIP_NAME                                                :Skip {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Fly {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} Nord
@@ -1930,12 +1930,12 @@ STR_6804_CUSTOM                                                 :{BLACK}Egendefi
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
-STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Maks. antall konkurrenter: {ORANGE}{COMMA16}
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Maks. antall konkurrenter: {ORANGE}{COMMA}
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Konkurrentenes starttidspunkt: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Antall byer: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Antall industrier: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maksimalt startlån: {ORANGE}{CURRENCY}
-STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Startrente: {ORANGE}{COMMA16}%
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Startrente: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Driftskostnader for kjøretøy: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Konstruksjonshastighet hos konkurrenter: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Konkurrentenes intelligens: {ORANGE}{STRING}
@@ -1994,7 +1994,7 @@ STR_683B_HOSTILE                                                :Fientlig
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{STRING} {BLACK}{STRING}
-STR_7002_PLAYER                                                 :(Spiller {COMMA16})
+STR_7002_PLAYER                                                 :(Spiller {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nytt ansikt
 STR_7005_COLOR_SCHEME                                           :{BLACK}Firmafarge
 STR_7006_COLOR_SCHEME                                           :{GOLD}Firmafarge:
@@ -2028,7 +2028,7 @@ STR_7021                                                        :{STRING}{STRING
 STR_7022_INCOME_GRAPH                                           :{WHITE}Inntektsgraf
 STR_CURRCOMPACT32                                               :{CURRCOMPACT}
 STR_CURRCOMPACT64                                               :{CURRCOMPACT64}
-STR_7024                                                        :{COMMA32}
+STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Overskuddsgraf
 STR_7026_BANK_BALANCE                                           :{WHITE}Saldo
 STR_7027_LOAN                                                   :{WHITE}Lån
@@ -2052,14 +2052,14 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Betal ti
 STR_7037_PRESIDENT                                              :{WHITE}{STRING}{}{GOLD}(Sjef)
 STR_7038_INAUGURATED                                            :{GOLD}Grunnlagt: {WHITE}{NUMU16}
 STR_7039_VEHICLES                                               :{GOLD}Kjøretøy:
-STR_703A_TRAIN                                                  :{WHITE}{COMMA16} tog
-STR_703B_TRAINS                                                 :{WHITE}{COMMA16} tog
-STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA16} kjøretøy
-STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA16} kjøretøy
-STR_703E_AIRCRAFT                                               :{WHITE}{COMMA16} fly
-STR_703F_AIRCRAFT                                               :{WHITE}{COMMA16} fly
-STR_7040_SHIP                                                   :{WHITE}{COMMA16} skip
-STR_7041_SHIPS                                                  :{WHITE}{COMMA16} skip
+STR_703A_TRAIN                                                  :{WHITE}{COMMA} tog
+STR_703B_TRAINS                                                 :{WHITE}{COMMA} tog
+STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA} kjøretøy
+STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA} kjøretøy
+STR_703E_AIRCRAFT                                               :{WHITE}{COMMA} fly
+STR_703F_AIRCRAFT                                               :{WHITE}{COMMA} fly
+STR_7040_SHIP                                                   :{WHITE}{COMMA} skip
+STR_7041_SHIPS                                                  :{WHITE}{COMMA} skip
 STR_7042_NONE                                                   :{WHITE}Ingen
 STR_7043_FACE_SELECTION                                         :{WHITE}Velg utseende
 STR_7044_MALE                                                   :{BLACK}Mann
@@ -2124,8 +2124,8 @@ STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Kjøp 25%
 STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Selg 25% av aksjene du eier
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Kan ikke kjøpe 25% av aksjene...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Kan ikke selge 25% av aksjene...
-STR_707D_OWNED_BY                                               :{WHITE}({COMMA16}% eies av {STRING})
-STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA16}% eies av {STRING}{}   {COMMA16}% eies av {STRING})
+STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% eies av {STRING})
+STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% eies av {STRING}{}   {COMMA}% eies av {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{STRING} har blitt kjøpt opp av {STRING}!
 STR_7080_PROTECTED                                              :{WHITE}Dette selskapet selger ikke aksjer enda...
 
@@ -2400,8 +2400,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Innbyggerne jubler . . .{}Første tog ankommer {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Detaljer)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tog i veien
-STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
 STR_8806_GO_TO                                                  :Kjør til {STATION}
 STR_8807_GO_TO_TRANSFER                                         :Gå til {STATION} (Overfør og ta last)
 STR_8808_GO_TO_UNLOAD                                           :Gå til {STATION} (Last av)
@@ -2427,13 +2427,13 @@ STR_INVALID_ORDER                                               :{RED} (Ugyldig 
 STR_UNKNOWN_DESTINATION                                         :Ukjent destinasjon
 STR_8812_EMPTY                                                  :{LTBLUE}Tom
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} fra {STATION}
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Tog {COMMA16} venter i togstallen
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Tog {COMMA} venter i togstallen
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nye tog/vogner
 STR_8816                                                        :{BLACK}-
 STR_8818_INFORMATION                                            :{BLACK}Informasjon
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Toget er for langt
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Tog kan bare endres når det står stille i togstallen
-STR_881B_TRAINS                                                 :{WHITE}{STRING} - {COMMA16} Tog
+STR_881B_TRAINS                                                 :{WHITE}{STRING} - {COMMA} Tog
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nye tog/vogner for jernbane
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nye tog/vogner for Monorail
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nye tog/vogner for Maglev
@@ -2467,8 +2467,8 @@ STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Kan ikke selge jernbanekjøretøy...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Kan ikke finne en togstall i nærheten
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Kan ikke stoppe/starte tog...
-STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Service interval: {LTBLUE}{COMMA16}dager{BLACK}   Sist service: {LTBLUE}{DATE_LONG}
-STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Service intervall: {LTBLUE}{COMMA16}%{BLACK}   Sist service: {LTBLUE}{DATE_LONG}
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Service interval: {LTBLUE}{COMMA}dager{BLACK}   Sist service: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Service intervall: {LTBLUE}{COMMA}%{BLACK}   Sist service: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Tog - trykk på tog for mer informasjon
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Bygg nye tog (trenger en togstall)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Tog - trykk på tog for mer info. Dra vogn for å legge til/fjerne fra tog
@@ -2501,12 +2501,12 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Gjør den
 STR_SERVICE_HINT                                                :{BLACK}Hopp over ordren med mindre service trengs.
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nytt {STRING} er nå tilgjengelig!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Koster: {CURRENCY} Vekt: {COMMA16}t{}Fart: {VELOCITY}  Kraft: {COMMA16}hk{}Driftkostnader: {CURRENCY}/år{}Kapasitet: {STRING}
+STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Koster: {CURRENCY} Vekt: {COMMA}t{}Fart: {VELOCITY}  Kraft: {COMMA}hk{}Driftkostnader: {CURRENCY}/år{}Kapasitet: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Havarert
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftkostnad: {LTBLUE}{CURRENCY}/år
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Vekt: {LTBLUE}{COMMA16}t  {BLACK}Kraft: {LTBLUE}{COMMA32}hk{BLACK} Maks. fart: {LTBLUE}{VELOCITY}
+STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Vekt: {LTBLUE}{COMMA}t  {BLACK}Kraft: {LTBLUE}{COMMA}hk{BLACK} Maks. fart: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Inntekt i år: {LTBLUE}{CURRENCY}  (sist år: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelighet: {LTBLUE}{COMMA8}%  {BLACK}Havarier siden sist service: {LTBLUE}{COMMA16}
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelighet: {LTBLUE}{COMMA}%  {BLACK}Havarier siden sist service: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Stoppet
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Kan ikke tvinge tog til å kjøre på rødt lys ved fare...
 STR_8863_CRASHED                                                :{RED}Krasjet
@@ -2514,7 +2514,7 @@ STR_8863_CRASHED                                                :{RED}Krasjet
 STR_8865_NAME_TRAIN                                             :{WHITE}Navngi tog
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Kan ikke navngi tog...
 STR_8867_NAME_TRAIN                                             :{BLACK}Navngi tog
-STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Togkrasj!{}{COMMA16} dør i kollisjonen
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Togkrasj!{}{COMMA} dør i kollisjonen
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Kan ikke snu toget...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Gi tog/vogn nytt navn
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kan ikke gi tog/vogn nytt navn...
@@ -2526,7 +2526,7 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Stopper, {
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Kjøretøy i veien
-STR_9001_ROAD_VEHICLES                                          :{WHITE}{STRING} - {COMMA16} Kjøretøy
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{STRING} - {COMMA} Kjøretøy
 STR_9002                                                        :{WHITE}{STRING}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Garasje
 STR_9004_NEW_VEHICLES                                           :{BLACK}Nye kjøretøy
@@ -2540,13 +2540,13 @@ STR_900C_DETAILS                                                :{WHITE}{STRING}
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftkostnader: {LTBLUE}{CURRENCY}/år
 STR_900E_MAX_SPEED                                              :{BLACK}Maks. fart: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Inntekt i år: {LTBLUE}{CURRENCY}  (sist år: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelighet: {LTBLUE}{COMMA8}%  {BLACK}Havarier siden sist service: {LTBLUE}{COMMA16}
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelighet: {LTBLUE}{COMMA}%  {BLACK}Havarier siden sist service: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Bygget: {LTBLUE}{NUMU16}{BLACK} Verdi: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Kapasitet: {LTBLUE}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}må være stoppet i en garasje
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan ikke selge kjøretøy...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan ikke starte/stoppe kjøretøy...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Kjøretøy {COMMA16} er i garasjen
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Kjøretøy {COMMA} er i garasjen
 STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Er på vei til {TOWN} garasje
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Er på vei til {TOWN} garasje, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Kan ikke sende kjøretøy til garasje...
@@ -2575,7 +2575,7 @@ STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Navngi k
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Innbyggerne jubler . . .{}Første buss ankommer {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Innbyggerne jubler . . .{}Første lastebil ankommer {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Kollisjon!{}Sjåfør dør etter kollisjon med tog
-STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Kollisjon!{}{COMMA16} dør etter kollisjon med tog
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Kollisjon!{}{COMMA} dør etter kollisjon med tog
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Kan ikke snu...
 STR_9034_RENAME                                                 :{BLACK}Endre navn
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Endre navnet til kjøretøytypen
@@ -2590,7 +2590,7 @@ STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Bygg hav
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Kan ikke bygge havn her...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Skipsdepot
 STR_9804_NEW_SHIPS                                              :{BLACK}Nye skip
-STR_9805_SHIPS                                                  :{WHITE}{STRING} - {COMMA16} Skip
+STR_9805_SHIPS                                                  :{WHITE}{STRING} - {COMMA} Skip
 STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Kan ikke bygge skip...
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Må rive skipsdepotet først
 STR_9808_NEW_SHIPS                                              :{WHITE}Nye skip
@@ -2605,7 +2605,7 @@ STR_9811_DETAILS                                                :{WHITE}{STRING}
 STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftkostnader: {LTBLUE}{CURRENCY}/år
 STR_9813_MAX_SPEED                                              :{BLACK}Maks. fart: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Inntekt i år: {LTBLUE}{CURRENCY}  (sist år: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelighet: {LTBLUE}{COMMA8}%  {BLACK}Havarier siden sist service: {LTBLUE}{COMMA16}
+STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelighet: {LTBLUE}{COMMA}%  {BLACK}Havarier siden sist service: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Bygget: {LTBLUE}{NUMU16}{BLACK} Verdi: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Kapasitet: {LTBLUE}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan ikke starte/stoppe skip...
@@ -2613,7 +2613,7 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan ikke
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan ikke finne et depot i nærheten
 STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Er på vei mot {TOWN} skipsdepot
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Er på vei mot {TOWN} skipsdepot, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Skip {COMMA16} venter i depotet
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Skip {COMMA} venter i depotet
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Bygg havn
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Bygg skipsdepot (trengs for bygging og service av skip)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Skip - trykk på skip for mer informasjon
@@ -2664,19 +2664,19 @@ STR_A004_INFORMATION                                            :{BLACK}Informas
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nytt fly
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Bygg fly
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kan ikke bygge fly...
-STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA16} Fly
+STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA} Fly
 STR_A00A                                                        :{WHITE}{STRING}
 STR_A00B_ORDERS                                                 :{WHITE}{STRING} (Ordre)
 STR_A00C_DETAILS                                                :{WHITE}{STRING} (Detaljer)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftkostnader: {LTBLUE}{CURRENCY}/år
 STR_A00E_MAX_SPEED                                              :{BLACK}Maks. fart: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Inntekt i år: {LTBLUE}{CURRENCY}  (sist år: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelighet: {LTBLUE}{COMMA8}%  {BLACK}Havarier siden sist service: {LTBLUE}{COMMA16}
+STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelighet: {LTBLUE}{COMMA}%  {BLACK}Havarier siden sist service: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Bygget: {LTBLUE}{NUMU16}{BLACK} Verdi: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kan ikke sende fly til hangar...
 STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Er på vei til {STATION} hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Er på vei til {STATION} hangar, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Fly {COMMA16} venter i hangaren
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Fly {COMMA} venter i hangaren
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Det er et fly i veien
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan ikke stoppe/starte flyet...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Flyet er i luften
@@ -2702,14 +2702,14 @@ STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Send fly
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Vis detaljer om flyet
 STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Nytt fly er nå tilgjengelig
 STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Koster: {CURRENCY} Maks. fart: {VELOCITY}{}Kapasitet: {COMMA16} passasjerer, {COMMA16} sekker post {}Driftkostnader: {CURRENCY}/år
+STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Koster: {CURRENCY} Maks. fart: {VELOCITY}{}Kapasitet: {COMMA} passasjerer, {COMMA} sekker post {}Driftkostnader: {CURRENCY}/år
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Navngi fly
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Kan ikke navngi fly...
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Navngi fly
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Innbyggerne jubler . . .{}Første fly ankommer {STATION}!
-STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Flykrasj!{}{COMMA16} dør ved {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Flystyrt!{}Fly gikk tom for drivstoff, {COMMA16} døde i eksplosjon!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Flykrasj!{}{COMMA} dør ved {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Flystyrt!{}Fly gikk tom for drivstoff, {COMMA} døde i eksplosjon!
 STR_A035_DESTINATIONS                                           :{TINYFONT}{BLACK}Stoppested:
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Endre navn
@@ -2735,7 +2735,7 @@ STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Fabrikk ødelagt på mistenkeligvis i nærheten av {TOWN}!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}"UFO" lander i nærheten av {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Gruvegangkollaps fører til store ødeleggelser i nærheten av {TOWN}!
-STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Floder over!{}Minst {COMMA16} presumed fortapt eller død etter dødlig flod!
+STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Floder over!{}Minst {COMMA} presumed fortapt eller død etter dødlig flod!
 
 STR_BRIBE_FAILED                                                :{WHITE}Ditt forsøk på bestikkelser
 STR_BRIBE_FAILED_2                                              :{WHITE}har blitt oppdaget av en regional inspektør.
@@ -2745,7 +2745,7 @@ STR_MULTIPLAYER_PAUSED                                          :{WHITE}Spillet 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detaljert prestasjons nivå
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalje
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
-STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA32}/{COMMA32})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{INT32}%
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{INT32}
 ############ Those following lines need to be in this order!!
@@ -2780,7 +2780,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Filnavn:
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vanlig valuta
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Valutakurs: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA16}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Valutakurs: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Deler:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffiks:
@@ -2794,10 +2794,10 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA16} Tog
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA16} Kjøretøy
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA16} Fly
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA16} Skip
+STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Tog
+STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Kjøretøy
+STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Fly
+STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Skip
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Vis alle tog som har denne stasjonen på deres timeplan
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Vis alle kjøretøy som har denne stasjonen på deres timeplan
@@ -2819,7 +2819,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dette vi
 STR_REPLACE_HELP                                                :{BLACK}Dette verktøyet lar deg bytte ut en type lokomotiv med en annen. Dette blir gjort neste gang lokomotivet er innom et depot.
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltliste - {COMMA16} Skilt
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltliste - {COMMA} Skilt
 
 ############ Lists rail types
 
@@ -2829,16 +2829,16 @@ STR_MAGLEV_VEHICLES                                             :Maglevlokomotiv
 
 ############ End of list of rail types
 
-STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
+STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Vekt: {GOLD}{COMMA16}t
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighet: {GOLD}{VELOCITY}{BLACK}   Effekt: {GOLD}{COMMA32}hk
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Vekt: {GOLD}{COMMA}t
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighet: {GOLD}{VELOCITY}{BLACK}   Effekt: {GOLD}{COMMA}hk
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Driftskostnad: {GOLD}{CURRENCY}/år
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasitet: {GOLD}{STRING} {STRING}
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Markedsintrodusert: {GOLD}{NUMU16}{BLACK} Levetid: {GOLD}{COMMA16} år
-STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks pålitelighet: {GOLD}{COMMA8}%
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Markedsintrodusert: {GOLD}{NUMU16}{BLACK} Levetid: {GOLD}{COMMA} år
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks pålitelighet: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kostnad: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vekt: {GOLD}{COMMA16}t  ({COMMA16}t)
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vekt: {GOLD}{COMMA}t  ({COMMA}t)
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Hastighet: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasitet: {GOLD}{COMMA16} passasjerer, {COMMA16} sekker post
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Lokomotivvogner: {GOLD}+{COMMA16}hk{BLACK} Vekt: {GOLD}+{COMMA8}t
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasitet: {GOLD}{COMMA} passasjerer, {COMMA} sekker post
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Lokomotivvogner: {GOLD}+{COMMA}hk{BLACK} Vekt: {GOLD}+{COMMA}t

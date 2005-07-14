@@ -82,69 +82,69 @@ STR_004B_BATTERY                                                :Batterij
 STR_004C_PLASTIC                                                :Plastic
 STR_004D_FIZZY_DRINK                                            :Frisdrank
 STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA16} passagier
-STR_0050_TON_OF_COAL                                            :{COMMA16} ton kolen
-STR_0051_BAG_OF_MAIL                                            :{COMMA16} zak post
+STR_004F_PASSENGER                                              :{COMMA} passagier
+STR_0050_TON_OF_COAL                                            :{COMMA} ton kolen
+STR_0051_BAG_OF_MAIL                                            :{COMMA} zak post
 STR_0052_OF_OIL                                                 :{VOLUME} olie
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA16} stuk vee
-STR_0054_CRATE_OF_GOODS                                         :{COMMA16} pallet goederen
-STR_0055_TON_OF_GRAIN                                           :{COMMA16} ton graan
-STR_0056_TON_OF_WOOD                                            :{COMMA16} ton hout
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA16} ton ijzererts
-STR_0058_TON_OF_STEEL                                           :{COMMA16} ton staal
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA16} zak kostbaarheden
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA16} ton kopererts
-STR_005B_TON_OF_MAIZE                                           :{COMMA16} ton maïs
-STR_005C_TON_OF_FRUIT                                           :{COMMA16} ton fruit
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA16} zak diamanten
-STR_005E_TON_OF_FOOD                                            :{COMMA16} ton voedsel
-STR_005F_TON_OF_PAPER                                           :{COMMA16} ton papier
-STR_0060_BAG_OF_GOLD                                            :{COMMA16} zak goud
+STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} stuk vee
+STR_0054_CRATE_OF_GOODS                                         :{COMMA} pallet goederen
+STR_0055_TON_OF_GRAIN                                           :{COMMA} ton graan
+STR_0056_TON_OF_WOOD                                            :{COMMA} ton hout
+STR_0057_TON_OF_IRON_ORE                                        :{COMMA} ton ijzererts
+STR_0058_TON_OF_STEEL                                           :{COMMA} ton staal
+STR_0059_BAG_OF_VALUABLES                                       :{COMMA} zak kostbaarheden
+STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} ton kopererts
+STR_005B_TON_OF_MAIZE                                           :{COMMA} ton maïs
+STR_005C_TON_OF_FRUIT                                           :{COMMA} ton fruit
+STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} zak diamanten
+STR_005E_TON_OF_FOOD                                            :{COMMA} ton voedsel
+STR_005F_TON_OF_PAPER                                           :{COMMA} ton papier
+STR_0060_BAG_OF_GOLD                                            :{COMMA} zak goud
 STR_0061_OF_WATER                                               :{VOLUME} water
-STR_0062_TON_OF_WHEAT                                           :{COMMA16} ton tarwe
+STR_0062_TON_OF_WHEAT                                           :{COMMA} ton tarwe
 STR_0063_OF_RUBBER                                              :{VOLUME} rubber
-STR_0064_TON_OF_SUGAR                                           :{COMMA16} ton suiker
-STR_0065_TOY                                                    :{COMMA16} speelgoed
-STR_0066_BAG_OF_CANDY                                           :{COMMA16} zak snoep
+STR_0064_TON_OF_SUGAR                                           :{COMMA} ton suiker
+STR_0065_TOY                                                    :{COMMA} speelgoed
+STR_0066_BAG_OF_CANDY                                           :{COMMA} zak snoep
 STR_0067_OF_COLA                                                :{VOLUME} cola
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA16} ton suikerspinnen
-STR_0069_BUBBLE                                                 :{COMMA16} bel
-STR_006A_TON_OF_TOFFEE                                          :{COMMA16} ton toffee
-STR_006B_BATTERY                                                :{COMMA16} batterij
+STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} ton suikerspinnen
+STR_0069_BUBBLE                                                 :{COMMA} bel
+STR_006A_TON_OF_TOFFEE                                          :{COMMA} ton toffee
+STR_006B_BATTERY                                                :{COMMA} batterij
 STR_006C_OF_PLASTIC                                             :{VOLUME} plastic
-STR_006D_FIZZY_DRINK                                            :{COMMA16} blikje frisdrank
+STR_006D_FIZZY_DRINK                                            :{COMMA} blikje frisdrank
 STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA16} passagiers
-STR_0070_TONS_OF_COAL                                           :{COMMA16} ton kolen
-STR_0071_BAGS_OF_MAIL                                           :{COMMA16} zakken post
+STR_006F_PASSENGERS                                             :{COMMA} passagiers
+STR_0070_TONS_OF_COAL                                           :{COMMA} ton kolen
+STR_0071_BAGS_OF_MAIL                                           :{COMMA} zakken post
 STR_0072_OF_OIL                                                 :{VOLUME} olie
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA16} stuks vee
-STR_0074_CRATES_OF_GOODS                                        :{COMMA16} pallets goederen
-STR_0075_TONS_OF_GRAIN                                          :{COMMA16} ton graan
-STR_0076_TONS_OF_WOOD                                           :{COMMA16} ton hout
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA16} ton ijzererts
-STR_0078_TONS_OF_STEEL                                          :{COMMA16} ton staal
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA16} zakken kostbaarheden
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA16} ton kopererts
-STR_007B_TONS_OF_MAIZE                                          :{COMMA16} ton maïs
-STR_007C_TONS_OF_FRUIT                                          :{COMMA16} ton fruit
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA16} zakken diamanten
-STR_007E_TONS_OF_FOOD                                           :{COMMA16} ton voedsel
-STR_007F_TONS_OF_PAPER                                          :{COMMA16} ton papier
-STR_0080_BAGS_OF_GOLD                                           :{COMMA16} zakken goud
+STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} stuks vee
+STR_0074_CRATES_OF_GOODS                                        :{COMMA} pallets goederen
+STR_0075_TONS_OF_GRAIN                                          :{COMMA} ton graan
+STR_0076_TONS_OF_WOOD                                           :{COMMA} ton hout
+STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} ton ijzererts
+STR_0078_TONS_OF_STEEL                                          :{COMMA} ton staal
+STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} zakken kostbaarheden
+STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} ton kopererts
+STR_007B_TONS_OF_MAIZE                                          :{COMMA} ton maïs
+STR_007C_TONS_OF_FRUIT                                          :{COMMA} ton fruit
+STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} zakken diamanten
+STR_007E_TONS_OF_FOOD                                           :{COMMA} ton voedsel
+STR_007F_TONS_OF_PAPER                                          :{COMMA} ton papier
+STR_0080_BAGS_OF_GOLD                                           :{COMMA} zakken goud
 STR_0081_OF_WATER                                               :{VOLUME} water
-STR_0082_TONS_OF_WHEAT                                          :{COMMA16} ton tarwe
+STR_0082_TONS_OF_WHEAT                                          :{COMMA} ton tarwe
 STR_0083_OF_RUBBER                                              :{VOLUME} rubber
-STR_0084_TONS_OF_SUGAR                                          :{COMMA16} ton suiker
-STR_0085_TOYS                                                   :{COMMA16} speelgoed
-STR_0086_BAGS_OF_CANDY                                          :{COMMA16} zakken snoep
+STR_0084_TONS_OF_SUGAR                                          :{COMMA} ton suiker
+STR_0085_TOYS                                                   :{COMMA} speelgoed
+STR_0086_BAGS_OF_CANDY                                          :{COMMA} zakken snoep
 STR_0087_OF_COLA                                                :{VOLUME} cola
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA16} ton suikerspinnen
-STR_0089_BUBBLES                                                :{COMMA16} bellen
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA16} ton toffee
-STR_008B_BATTERIES                                              :{COMMA16} batterijen
+STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} ton suikerspinnen
+STR_0089_BUBBLES                                                :{COMMA} bellen
+STR_008A_TONS_OF_TOFFEE                                         :{COMMA} ton toffee
+STR_008B_BATTERIES                                              :{COMMA} batterijen
 STR_008C_OF_PLASTIC                                             :{VOLUME} plastic
-STR_008D_FIZZY_DRINKS                                           :{COMMA16} blikjes frisdrank
+STR_008D_FIZZY_DRINKS                                           :{COMMA} blikjes frisdrank
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
 STR_0090_CL                                                     :{TINYFONT}KL
@@ -219,8 +219,8 @@ STR_00DE_BROWN                                                  :Bruin
 STR_00DF_GREY                                                   :Grijs
 STR_00E0_WHITE                                                  :Wit
 STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Te veel voertuigen in het spel
-STR_00E2                                                        :{BLACK}{COMMA16}
-STR_00E3                                                        :{RED}{COMMA16}
+STR_00E2                                                        :{BLACK}{COMMA}
+STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}Locatie
 STR_00E5_CONTOURS                                               :Contouren
 STR_00E6_VEHICLES                                               :Voertuigen
@@ -441,18 +441,18 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Plaatsna
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Winst dit jaar: {CURRENCY} (vorig jaar: {CURRENCY})
 
 ############ range for service numbers starts
-STR_0199_YEAR                                                   :{COMMA16} jaar ({COMMA16})
-STR_019A_YEARS                                                  :{COMMA16} jaren ({COMMA16})
-STR_019B_YEARS                                                  :{RED}{COMMA16} jaren ({COMMA16})
+STR_0199_YEAR                                                   :{COMMA} jaar ({COMMA})
+STR_019A_YEARS                                                  :{COMMA} jaren ({COMMA})
+STR_019B_YEARS                                                  :{RED}{COMMA} jaren ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Voertuig
 STR_019D_AIRCRAFT                                               :Vliegtuig
 STR_019E_SHIP                                                   :Schip
 STR_019F_TRAIN                                                  :Trein
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA16} wordt oud
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA16} wordt erg oud
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA16} wordt erg oud en is aan vervanging toe
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} wordt oud
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} wordt erg oud
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} wordt erg oud en is aan vervanging toe
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Landinformatie
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Sloopkosten: {LTBLUE}niet mogelijk
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Sloopkosten: {LTBLUE}{CURRENCY}
@@ -497,7 +497,7 @@ STR_01C9_30TH                                                   :30
 STR_01CA_31ST                                                   :31
 ############ range for days	ends
 
-STR_01CB                                                        :{TINYFONT}{COMMA16}
+STR_01CB                                                        :{TINYFONT}{COMMA}
 STR_01CC_TOGGLE_LARGE_SMALL_MAP                                 :{BLACK}Maakt kaart groter/kleiner
 STR_01CD_SELECT_TUTORIAL_DEMONSTRATION                          :{WHITE}Kies uitleg/demonstratie
 
@@ -509,7 +509,7 @@ STR_CARGO_ACCEPTED_4                                            :{BLACK}Acceptee
 STR_CARGO_ACCEPTED_5                                            :{BLACK}Accepteert: {LTBLUE}{STRING}, {STRING}, {STRING}, {STRING}, {STRING}
 ############ range for cargo acecpted ends
 
-STR_01D1_8                                                      :({COMMA8}/8 {STRING})
+STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz jukebox
 STR_01D3_SOUND_MUSIC                                            :Geluid/muziek
 STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Toon geluid/muziek scherm
@@ -528,16 +528,16 @@ STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Stop muz
 STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Start muziek
 STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Gebruik de schuifbalken om het volume aan te passen
 STR_01E3                                                        :{DKGREEN}{TINYFONT}--
-STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA8}
-STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA8}
+STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
+STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Nummer{SETX 88}Titel
 STR_01E9_SHUFFLE                                                :{TINYFONT}Shuffle
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Programma
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Muziekprogrammakeuze
-STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA16} "{STRING}"
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA16}   "{STRING}"
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA}   "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Nummer index
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Programma - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Leeg
@@ -577,7 +577,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Speel e
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...te ver van vorige bestemming
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top bedrijven die {NUMU16} bereikt hebben{}({STRING} Niveau)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Bedrijfswedstrijdtabel in {NUMU16}
-STR_0212                                                        :{BIGFONT}{COMMA16}.
+STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Zakenman
 STR_0214_ENTREPRENEUR                                           :Entrepreneur
 STR_0215_INDUSTRIALIST                                          :Industrialist
@@ -586,12 +586,12 @@ STR_0217_MAGNATE                                                :Magnaat
 STR_0218_MOGUL                                                  :Mogul
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Tycoon van de Eeuw
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{STRING}, {STRING}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA16})
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{STRING} bereikt '{STRING}' status!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{STRING} van {STRING} bereikt '{STRING}' status!
 STR_021D                                                        :{BLACK}
 STR_021E                                                        :{WHITE}
-STR_021F                                                        :{BLUE}{COMMA16}
+STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Maak scenario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenario editor
@@ -788,8 +788,8 @@ STR_02DE_MAP_OF_WORLD                                           :Kaart
 STR_EXTRA_VIEW_PORT                                             :Extra kijkvenster
 STR_SIGN_LIST                                                   :Bordjes lijst
 STR_02DF_TOWN_DIRECTORY                                         :Stedenlijst
-STR_TOWN_POPULATION                                             :{BLACK}Wereld populatie: {COMMA32}
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Kijkvenster {COMMA16}
+STR_TOWN_POPULATION                                             :{BLACK}Wereld populatie: {COMMA}
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Kijkvenster {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopieer naar kijkvenster
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopieer de lokatie van het algemene scherm naar dit kijkvenster
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Plak van kijkvenster
@@ -961,34 +961,34 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan orde
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan orderlijst niet kopieren...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Einde gedeelde orders - -
 
-STR_TRAIN_IS_LOST                                               :{WHITE}Trein {COMMA16} is verdwaald.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Winst van trein {COMMA16} was vorig jaar {CURRENCY}
+STR_TRAIN_IS_LOST                                               :{WHITE}Trein {COMMA} is verdwaald.
+STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Winst van trein {COMMA} was vorig jaar {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europese Monetaire Unie!{}{}De Euro is geïntroduceerd als de enige munt voor alledaagse transacties in jouw land!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Trein {COMMA16} heeft te weinig opdrachten
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Trein {COMMA16} heeft een lege opdracht
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Trein {COMMA16} heeft dubbele orders
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Trein {COMMA16} heeft een ongeldig station in de orders
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Wegvoertuig {COMMA16} heeft te weinig orders in de orderlijst
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Wegvoertuig {COMMA16} heeft lege order
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Wegvoertuig {COMMA16} heeft dubbele orders
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Wegvoertuig {COMMA16} heeft een ongeldig station in de orders
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Schip {COMMA16} heeft te weinig order is orderlijst
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Schip {COMMA16} heeft lege order
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Schip {COMMA16} heeft dubbele orders
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Schip {COMMA16} heeft een ongeldig station in de orders
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Vliegtuig {COMMA16} heeft te weinig orders in orderlijst
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Vliegtuig {COMMA16} heeft lege order
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Vliegtuig {COMMA16} heeft dubbele orders
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Vliegtuig {COMMA16} heeft een ongeldig station in de orders
+STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Trein {COMMA} heeft te weinig opdrachten
+STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Trein {COMMA} heeft een lege opdracht
+STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Trein {COMMA} heeft dubbele orders
+STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Trein {COMMA} heeft een ongeldig station in de orders
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Wegvoertuig {COMMA} heeft te weinig orders in de orderlijst
+STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Wegvoertuig {COMMA} heeft lege order
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Wegvoertuig {COMMA} heeft dubbele orders
+STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Wegvoertuig {COMMA} heeft een ongeldig station in de orders
+STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Schip {COMMA} heeft te weinig order is orderlijst
+STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Schip {COMMA} heeft lege order
+STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Schip {COMMA} heeft dubbele orders
+STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Schip {COMMA} heeft een ongeldig station in de orders
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Vliegtuig {COMMA} heeft te weinig orders in orderlijst
+STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Vliegtuig {COMMA} heeft lege order
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Vliegtuig {COMMA} heeft dubbele orders
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Vliegtuig {COMMA} heeft een ongeldig station in de orders
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Automatisch vernieuwen mislukt bij trein {COMMA16} (onvoldoende geld)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automatisch vernieuwen mislukt bij voertuig {COMMA16} (onvoldoende geld)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatisch vernieuwen mislukt bij schip {COMMA16} (onvoldoende geld)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatisch vernieuwen mislukt bij vliegtuig {COMMA16} (onvoldoende geld)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Automatisch vernieuwen mislukt bij trein {COMMA} (onvoldoende geld)
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automatisch vernieuwen mislukt bij voertuig {COMMA} (onvoldoende geld)
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatisch vernieuwen mislukt bij schip {COMMA} (onvoldoende geld)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatisch vernieuwen mislukt bij vliegtuig {COMMA} (onvoldoende geld)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Kies Patches
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Kies welke patches je wilt gebruiken
@@ -1104,7 +1104,7 @@ STR_CHEATS                                                      :{WHITE}Cheats
 STR_CHEATS_TIP                                                  :{BLACK}Keuzevakjes geven aan of je deze cheat al ooit gebruikt hebt.
 STR_CHEATS_WARNING                                              :{BLACK}Waarschuwing! Je staat op het punt je concurrenten te verraden. Denk eraan dat zo'n schande eeuwig onthouden wordt.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Verhoog geld met {CURRENCY64}
-STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Spelend als speler: {ORANGE}{COMMA16}
+STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Spelend als speler: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magische bulldozer (industrieën en andere onverplaatsbare objecten verwijderen): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnels mogen elkaar kruisen: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Bouwen in gepauzeerde toestand: {ORANGE}{STRING}
@@ -1120,7 +1120,7 @@ STR_GO_TO_WAYPOINT                                              :Ga via {WAYPOIN
 STR_GO_NON_STOP_TO_WAYPOINT                                     :Ga non-stop via {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY                                           :Tussenstop {TOWN}
-STR_WAYPOINTNAME_CITY_SERIAL                                    :Tussenstop {TOWN} #{COMMA16}
+STR_WAYPOINTNAME_CITY_SERIAL                                    :Tussenstop {TOWN} #{COMMA}
 STR_LANDINFO_WAYPOINT                                           :Controlepost
 
 STR_WAYPOINT                                                    :{WHITE}Controlepost
@@ -1203,8 +1203,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Sticht t
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Graaf suikermijn
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrielijst
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% vervoerd)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% vervoerd)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA}% vervoerd)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% vervoerd)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{TOWN} {STRING}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...te dicht bij een andere industrie
@@ -1244,15 +1244,15 @@ STR_NETWORK_ADD_SERVER                                          :{BLACK}Voeg ser
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Voegt een server toe aan de lijst die altijd gecontroleerd zal worden op draaiende spellen.
 STR_NETWORK_ENTER_IP                                            :{BLACK}IP adres van de server invoeren
 
-STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Spelers
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Spelers online / spelers maximaal
 STR_NETWORK_GAME_INFO                                           :{SILVER}SPEL INFORMATIE
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Spelers:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_CLIENTS                                             :{SILVER}Spelers:  {WHITE}{COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Taal:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Klimaat:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Kaartgrootte:  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Kaartgrootte:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Server versie:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Server adres:  {WHITE}{STRING} : {NUMU16}
 STR_NETWORK_START_DATE                                          :{SILVER}Start datum:  {WHITE}{DATE_SHORT}
@@ -1517,21 +1517,21 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Gelijke weg/spo
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Steden
-STR_TOWN_LABEL_POP                                              :{WHITE}{STRING} ({COMMA32})
+STR_TOWN_LABEL_POP                                              :{WHITE}{STRING} ({COMMA})
 STR_2001                                                        :{WHITE}{STRING}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2003                                                        :{TINYFONT}{WHITE}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Gebouw moet eerst gesloopt worden
 STR_2005                                                        :{WHITE}{TOWN}
-STR_2006_POPULATION                                             :{BLACK}Bevolking: {ORANGE}{COMMA32}{BLACK}  Huizen: {ORANGE}{COMMA32}
+STR_2006_POPULATION                                             :{BLACK}Bevolking: {ORANGE}{COMMA}{BLACK}  Huizen: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Hernoem stad
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Kan stad niet hernoemen...
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}De gemeenteraad van {TOWN} staat dit niet toe
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Plaatsnamen - klik op naam om het hoofdbeeld te centreren op de stad
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centreer de hoofdbeeld op de lokatie van de stad
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Hernoem stad
-STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passagiers afelopen maand: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
-STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Post afgelopen maand: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passagiers afelopen maand: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Post afgelopen maand: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200F_TALL_OFFICE_BLOCK                                      :Hoog kantoorgebouw
 STR_2010_OFFICE_BLOCK                                           :Kantoorgebouw
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Klein flatgebouw
@@ -1605,7 +1605,7 @@ STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Koop het plaatselijk gezag om om je rang te verhogen, met het gevaar van een strenge sanctie, wanneer gepakt.{}  Kosten: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Verkeerschaos in {TOWN}!{}{}Wegreparatie betaald door {STRING} zorgt voor 6 maanden van irritatie bij weggebruikers!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
-STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA32})
+STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (in aanbouw)
 STR_2059_IGLOO                                                  :Iglo
 STR_205A_TEPEES                                                 :Tepees
@@ -1667,7 +1667,7 @@ STR_303B_EXCELLENT                                              :Geweldig
 STR_303C_OUTSTANDING                                            :Uitstekend
 ############ range for rating ends
 
-STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA8}%)
+STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} accepteert niet langer {STRING}
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} accepteert niet langer {STRING} en {STRING}
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} accepteert voortaan {STRING}
@@ -1678,7 +1678,7 @@ STR_3044_TOO_CLOSE_TO_ANOTHER_BUS                               :{WHITE}Te dicht
 STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK                             :{WHITE}Te dicht bij een ander vrachtwagenstation
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Verwijder eerst bushalte
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Verwijder eerst vrachtwagenstation
-STR_3048_STATIONS                                               :{WHITE}{STRING} - {COMMA16} Stations
+STR_3048_STATIONS                                               :{WHITE}{STRING} - {COMMA} Stations
 STR_3049_0                                                      :{YELLOW}{STATION} {STRINL 0x30D1}
 STR_304A_NONE                                                   :{YELLOW}- Geen -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...plaats ongeschikt
@@ -1735,7 +1735,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Spel Lad
 STR_4002_SAVE                                                   :{BLACK}Opslaan
 STR_4003_DELETE                                                 :{BLACK}Verwijderen
 STR_4004                                                        :{STRING}, {DATE_LONG}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA32} megabytes vrij
+STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabytes vrij
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kan niet lezen van schijf
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Opslaan Spel Mislukt
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Kan bestand niet verwijderen
@@ -1796,7 +1796,7 @@ STR_4829_REQUIRES                                               :{BLACK}Vereist:
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Productie vorige maand:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA16}% getransporteerd)
+STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% getransporteerd)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centreer het hoofdbeeld op de locatie van de industrie
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Nieuw {STRING} in aanbouw bij {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Nieuw {STRING} in aanplant bij {TOWN}!
@@ -1813,8 +1813,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}Productie van {TOWN} {STRING} verlaagd met 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Insectenplaag zorgt voor ravage bij {TOWN} {STRING}!{}Productie gezakt met 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...kan alleen aan de rand van de kaart geplaatst worden
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} productie van {TOWN} {STRING} stijgt met {COMMA16}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} productie van {TOWN} {STRING} daalt met {COMMA16}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} productie van {TOWN} {STRING} stijgt met {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} productie van {TOWN} {STRING} daalt met {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Trein in tunnel
@@ -1877,10 +1877,10 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...het i
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Geen naam{SKIP}
-STR_SV_TRAIN_NAME                                               :Trein {COMMA16}
-STR_SV_ROADVEH_NAME                                             :Automobiel {COMMA16}
-STR_SV_SHIP_NAME                                                :Schip {COMMA16}
-STR_SV_AIRCRAFT_NAME                                            :Vliegtuig {COMMA16}
+STR_SV_TRAIN_NAME                                               :Trein {COMMA}
+STR_SV_ROADVEH_NAME                                             :Automobiel {COMMA}
+STR_SV_SHIP_NAME                                                :Schip {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Vliegtuig {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} Noord
@@ -1930,12 +1930,12 @@ STR_6804_CUSTOM                                                 :{BLACK}Aangepas
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
-STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Maximaal aantal tegenstanders: {ORANGE}{COMMA16}
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Maximaal aantal tegenstanders: {ORANGE}{COMMA}
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Starttijd van tegenstanders: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Aantal steden: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Aantal industrieën: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maximale lening: {ORANGE}{CURRENCY}
-STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Startrente: {ORANGE}{COMMA16}%
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Startrente: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Brandstofkosten: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Bouwsnelheid van tegenstanders: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Intelligentie van tegenstanders: {ORANGE}{STRING}
@@ -1994,7 +1994,7 @@ STR_683B_HOSTILE                                                :Negatief
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{STRING} {BLACK}{STRING}
-STR_7002_PLAYER                                                 :(Speler {COMMA16})
+STR_7002_PLAYER                                                 :(Speler {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nieuw gezicht
 STR_7005_COLOR_SCHEME                                           :{BLACK}Kleurenschema
 STR_7006_COLOR_SCHEME                                           :{GOLD}Kleurenschema:
@@ -2028,7 +2028,7 @@ STR_7021                                                        :{STRING}{STRING
 STR_7022_INCOME_GRAPH                                           :{WHITE}Inkomstengrafiek
 STR_CURRCOMPACT32                                               :{CURRCOMPACT}
 STR_CURRCOMPACT64                                               :{CURRCOMPACT64}
-STR_7024                                                        :{COMMA32}
+STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Bedrijfswinst Grafiek
 STR_7026_BANK_BALANCE                                           :{WHITE}Bank Saldo
 STR_7027_LOAN                                                   :{WHITE}Lening
@@ -2052,14 +2052,14 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Betaal d
 STR_7037_PRESIDENT                                              :{WHITE}{STRING}{}{GOLD}(Directeur)
 STR_7038_INAUGURATED                                            :{GOLD}Gesticht: {WHITE}{NUMU16}
 STR_7039_VEHICLES                                               :{GOLD}Voertuigen:
-STR_703A_TRAIN                                                  :{WHITE}{COMMA16} trein
-STR_703B_TRAINS                                                 :{WHITE}{COMMA16} treinen
-STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA16} wegvoertuig
-STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA16} wegvoertuigen
-STR_703E_AIRCRAFT                                               :{WHITE}{COMMA16} vliegtuig
-STR_703F_AIRCRAFT                                               :{WHITE}{COMMA16} vliegtuigen
-STR_7040_SHIP                                                   :{WHITE}{COMMA16} schip
-STR_7041_SHIPS                                                  :{WHITE}{COMMA16} schepen
+STR_703A_TRAIN                                                  :{WHITE}{COMMA} trein
+STR_703B_TRAINS                                                 :{WHITE}{COMMA} treinen
+STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA} wegvoertuig
+STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA} wegvoertuigen
+STR_703E_AIRCRAFT                                               :{WHITE}{COMMA} vliegtuig
+STR_703F_AIRCRAFT                                               :{WHITE}{COMMA} vliegtuigen
+STR_7040_SHIP                                                   :{WHITE}{COMMA} schip
+STR_7041_SHIPS                                                  :{WHITE}{COMMA} schepen
 STR_7042_NONE                                                   :{WHITE}Geen
 STR_7043_FACE_SELECTION                                         :{WHITE}Gezichtsselectie
 STR_7044_MALE                                                   :{BLACK}Mannelijk
@@ -2124,8 +2124,8 @@ STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Koop een
 STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Verkoop een aandeel van 25% in dit bedrijf
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Kan geen 25% aandeel in dit bedrijf kopen...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Kan geen 25% aandeel in dit bedrijf verkopen...
-STR_707D_OWNED_BY                                               :{WHITE}({COMMA16}% eigendom van {STRING})
-STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA16}% eigendom van {STRING}{}   {COMMA16}% eigendom van {STRING})
+STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% eigendom van {STRING})
+STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% eigendom van {STRING}{}   {COMMA}% eigendom van {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{STRING} is overgenomen door {STRING}!
 STR_7080_PROTECTED                                              :{WHITE}Dit bedrijf verhandelt nog geen aandelen...
 
@@ -2400,8 +2400,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Inwoners feesten... {}Eerste trein arriveert in {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trein in de weg
-STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
 STR_8806_GO_TO                                                  :Ga naar {STATION}
 STR_8807_GO_TO_TRANSFER                                         :Ga naar {STATION} (Overladen en neem goederen)
 STR_8808_GO_TO_UNLOAD                                           :Ga naar {STATION} (Uit laden)
@@ -2427,13 +2427,13 @@ STR_INVALID_ORDER                                               :{RED} (Ongeldig
 STR_UNKNOWN_DESTINATION                                         :onbekende bestemming
 STR_8812_EMPTY                                                  :{LTBLUE}Leeg
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} van {STATION}
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Trein {COMMA16} wacht in depot
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Trein {COMMA} wacht in depot
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nieuwe voertuigen
 STR_8816                                                        :{BLACK}-
 STR_8818_INFORMATION                                            :{BLACK}Informatie
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Trein te lang
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Treinen kunnen alleen aangepast worden wanneer ze gestopt zijn binnen een depot
-STR_881B_TRAINS                                                 :{WHITE}{STRING} - {COMMA16} Treinen
+STR_881B_TRAINS                                                 :{WHITE}{STRING} - {COMMA} Treinen
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nieuwe spoorvoertuigen
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nieuwe monorailvoertuigen
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nieuwe maglevvoertuigen
@@ -2467,8 +2467,8 @@ STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Kan treinonderdeel niet verkopen
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Kan geen route naar lokale depot vinden
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Kan trein niet starten of stoppen...
-STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Reparatieinterval: {LTBLUE}{COMMA16}dagen{BLACK}   Laatste reparatie: {LTBLUE}{DATE_LONG}
-STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Service interval: {LTBLUE}{COMMA16}%{BLACK}   Laatste service: {LTBLUE}{DATE_LONG}
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Reparatieinterval: {LTBLUE}{COMMA}dagen{BLACK}   Laatste reparatie: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Service interval: {LTBLUE}{COMMA}%{BLACK}   Laatste service: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Treinen - klik op een trein voor informatie
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Bouwt nieuwe treinen (treindepot nodig)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Treinen - klik op trein voor info., sleep voertuig om toe tevoegen/verwijderen van trein
@@ -2501,12 +2501,12 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Zorg dat
 STR_SERVICE_HINT                                                :{BLACK}Sla deze order over tenzij een reparatie nodig is
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nieuwe {STRING} nu beschikbaar!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Prijs: {CURRENCY} Gewicht: {COMMA16}t{}Snelheid: {VELOCITY}  Kracht: {COMMA16}pk{}Brandstofprijs: {CURRENCY}/jr{}Capaciteit: {STRING}
+STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Prijs: {CURRENCY} Gewicht: {COMMA}t{}Snelheid: {VELOCITY}  Kracht: {COMMA}pk{}Brandstofprijs: {CURRENCY}/jr{}Capaciteit: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Kapot
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Leeftijd: {LTBLUE}{STRING}{BLACK}   Brandstofkosten: {LTBLUE}{CURRENCY}/jr
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Gewicht: {LTBLUE}{COMMA16}t  {BLACK}Kracht: {LTBLUE}{COMMA32}pk{BLACK} Max. snelheid: {LTBLUE}{VELOCITY}
+STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Gewicht: {LTBLUE}{COMMA}t  {BLACK}Kracht: {LTBLUE}{COMMA}pk{BLACK} Max. snelheid: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Winst dit jaar: {LTBLUE}{CURRENCY}  (vorig jaar: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Betrouwbaarheid: {LTBLUE}{COMMA8}%  {BLACK}Pechgevallen sinds laatste reparatie: {LTBLUE}{COMMA16}
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Betrouwbaarheid: {LTBLUE}{COMMA}%  {BLACK}Pechgevallen sinds laatste reparatie: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Gestopt
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Kan trein niet het signaal laten passeren bij gevaar...
 STR_8863_CRASHED                                                :{RED}Gecrashed!
@@ -2514,7 +2514,7 @@ STR_8863_CRASHED                                                :{RED}Gecrashed!
 STR_8865_NAME_TRAIN                                             :{WHITE}Hernoem trein
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Kan trein niet zo noemen...
 STR_8867_NAME_TRAIN                                             :{BLACK}Trein benaming
-STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Trein Ongeluk!{}{COMMA16} gedood in een vuurbal na de botsing
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Trein Ongeluk!{}{COMMA} gedood in een vuurbal na de botsing
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Kan de richting van de trein niet omdraaien...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Hernoem trein voertuig type
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kan het trein voertuig type niet hernoemen...
@@ -2526,7 +2526,7 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Aan het st
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Wegvoertuig in de weg
-STR_9001_ROAD_VEHICLES                                          :{WHITE}{STRING} - {COMMA16} Wegvoertuigen
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{STRING} - {COMMA} Wegvoertuigen
 STR_9002                                                        :{WHITE}{STRING}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Bouw wegvoertuigdepot
 STR_9004_NEW_VEHICLES                                           :{BLACK}Nieuwe voertuigen
@@ -2540,13 +2540,13 @@ STR_900C_DETAILS                                                :{WHITE}{STRING}
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Leeftijd: {LTBLUE}{STRING}{BLACK}   Brandstofkosten: {LTBLUE}{CURRENCY}/jr
 STR_900E_MAX_SPEED                                              :{BLACK}Max. snelheid: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Winst dit jaar: {LTBLUE}{CURRENCY}  (vorig jaar: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Betrouwbaarheid: {LTBLUE}{COMMA8}%  {BLACK}Pechgevallen sinds laatste reparaties: {LTBLUE}{COMMA16}
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Betrouwbaarheid: {LTBLUE}{COMMA}%  {BLACK}Pechgevallen sinds laatste reparaties: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Gebouwd: {LTBLUE}{NUMU16}{BLACK} Waarde: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Capaciteit: {LTBLUE}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...moet gestopt zijn binnen een wegvoertuig depot
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan dit wegvoertuig niet verkopen...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan wegvoertuig niet starten of stoppen...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Wegvoertuig {COMMA16} wacht in depot
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Wegvoertuig {COMMA} wacht in depot
 STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Op weg naar {TOWN} Weg Depot
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Op weg naar {TOWN} Weg Depot, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Kan voertuig niet naar depot sturen...
@@ -2575,7 +2575,7 @@ STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Benoem w
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Inwoners feesten...{}Eerste bus arriveert in {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Inwoners feesten...{}Eerste vrachtwagen arriveert in {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Wegvoertuig gebotst!{}Bestuurder verongelukt door treinbotsing
-STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Wegvoertuig gebotst!{}{COMMA16} verongelukt door treinbotsing
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Wegvoertuig gebotst!{}{COMMA} verongelukt door treinbotsing
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Kan voertuig niet omdraaien...
 STR_9034_RENAME                                                 :{BLACK}Hernoem
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Hernoem wegvoertuigtype
@@ -2590,7 +2590,7 @@ STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Dokbouw
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Kan hier geen dok bouwen...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Scheepswerf
 STR_9804_NEW_SHIPS                                              :{BLACK}Nieuwe schepen
-STR_9805_SHIPS                                                  :{WHITE}{STRING} - {COMMA16} Schepen
+STR_9805_SHIPS                                                  :{WHITE}{STRING} - {COMMA} Schepen
 STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Kan geen schip bouwen...
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Bouw eerst een scheepswerf
 STR_9808_NEW_SHIPS                                              :{WHITE}Nieuwe schepen
@@ -2605,7 +2605,7 @@ STR_9811_DETAILS                                                :{WHITE}{STRING}
 STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Leeftijd: {LTBLUE}{STRING}{BLACK}   Brandstofkosten: {LTBLUE}{CURRENCY}/jr
 STR_9813_MAX_SPEED                                              :{BLACK}Max. snelheid: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Winst dit jaar: {LTBLUE}{CURRENCY}  (vorig jaar: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Betrouwbaarheid: {LTBLUE}{COMMA8}%  {BLACK}Pechgevallen sinds laatste reparatie: {LTBLUE}{COMMA16}
+STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Betrouwbaarheid: {LTBLUE}{COMMA}%  {BLACK}Pechgevallen sinds laatste reparatie: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Gebouwd: {LTBLUE}{NUMU16}{BLACK} Waarde: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Capaciteit: {LTBLUE}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan schip niet starten of stoppen...
@@ -2613,7 +2613,7 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan schi
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan lokaal depot niet vinden
 STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Op weg naar {TOWN} Scheepswerf
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Op weg naar {TOWN} Scheepswerf, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Schip {COMMA16} wacht in depot
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Schip {COMMA} wacht in depot
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Bouw haven
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Bouw scheepswerf (om schepen te bouwen en te repareren)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Schepen - klik op schip voor informatie
@@ -2664,19 +2664,19 @@ STR_A004_INFORMATION                                            :{BLACK}Informat
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nieuw Vliegtuig
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Bouw Vliegtuig
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kan vliegtuig niet bouwen...
-STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA16} Vliegtuigen
+STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA} Vliegtuigen
 STR_A00A                                                        :{WHITE}{STRING}
 STR_A00B_ORDERS                                                 :{WHITE}{STRING} (Orders)
 STR_A00C_DETAILS                                                :{WHITE}{STRING} (Details)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Leeftijd: {LTBLUE}{STRING}{BLACK}   Brandstofkosten: {LTBLUE}{CURRENCY}/jr
 STR_A00E_MAX_SPEED                                              :{BLACK}Max. snelheid: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Winst dit jaar: {LTBLUE}{CURRENCY}  (vorig jaar: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Betrouwbaarheid: {LTBLUE}{COMMA8}%  {BLACK}Pechgevallen sinds laatste reparatie: {LTBLUE}{COMMA16}
+STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Betrouwbaarheid: {LTBLUE}{COMMA}%  {BLACK}Pechgevallen sinds laatste reparatie: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Bouwdatum: {LTBLUE}{NUMU16}{BLACK} Waarde: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kan vliegtuig niet naar hangar sturen...
 STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Op weg naar {STATION} Hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Op weg naar {STATION} Hangar, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Vliegtuig {COMMA16} wacht in de vliegtuig hangar
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Vliegtuig {COMMA} wacht in de vliegtuig hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Vliegtuig in de weg
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan vliegtuig niet stoppen/starten...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Vliegutig is in the lucht
@@ -2702,14 +2702,14 @@ STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Stuur vl
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Laat vliegtuigdetails zien
 STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Nieuw vliegtuig nu beschikbaar!
 STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Prijs: {CURRENCY} Max. snelheid: {VELOCITY}{}Capaciteit: {COMMA16} passagiers, {COMMA16} zakken post{}Brandstofkosten: {CURRENCY}/jr
+STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Prijs: {CURRENCY} Max. snelheid: {VELOCITY}{}Capaciteit: {COMMA} passagiers, {COMMA} zakken post{}Brandstofkosten: {CURRENCY}/jr
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Hernoem vliegtuig
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Kan vliegtuig niet hernoemen...
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Hernoem vliegtuig
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Inwoners feesten...{}Eerste vliegtuig arriveert in {STATION}!
-STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Vliegtuig neergestort!{}{COMMA16} sterven in een vuurbal bij {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Vliegtuig Neergestort!{}Vliegtuig had brandstoftekort, {COMMA16} komen om in explosie!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Vliegtuig neergestort!{}{COMMA} sterven in een vuurbal bij {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Vliegtuig Neergestort!{}Vliegtuig had brandstoftekort, {COMMA} komen om in explosie!
 STR_A035_DESTINATIONS                                           :{TINYFONT}{BLACK}Doelen:
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Hernoem
@@ -2735,7 +2735,7 @@ STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Fabriek in de buurt van {TOWN} is vernietigd onder verdachte omstandigheden!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}'UFO' landt in de buurt van {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Instorting van kolenmijn laat spoor van vernietiging achter in de buurt van {TOWN}!
-STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Overstromingen!{}Minstens {COMMA16} zijn vermist of dood na overstromingen!
+STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Overstromingen!{}Minstens {COMMA} zijn vermist of dood na overstromingen!
 
 STR_BRIBE_FAILED                                                :{WHITE}Je poging tot omkopen is
 STR_BRIBE_FAILED_2                                              :{WHITE}ondekt door regionale onderzoekers
@@ -2745,7 +2745,7 @@ STR_MULTIPLAYER_PAUSED                                          :{WHITE}Spel is 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detail van de prestatiewaarde
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detail
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
-STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA32}/{COMMA32})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{INT32}%
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{INT32}
 ############ Those following lines need to be in this order!!
@@ -2780,7 +2780,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Bestands
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Aangepaste valuta
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wisselkoers: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA16}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wisselkoers: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Scheidingsteken:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Voorvoegsel:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Achtervoegsel:
@@ -2794,10 +2794,10 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA16} Treinen
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA16} Wegvoertuigen
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA16} Vliegtuigen
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA16} Schepen
+STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Treinen
+STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Wegvoertuigen
+STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Vliegtuigen
+STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Schepen
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Geef alle treinen weer die dit station in hun opdrachtenlijst hebben
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Geef alle wegvoertuigen weer die dit station in hun opdrachtenlijst hebben
@@ -2819,7 +2819,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dit geef
 STR_REPLACE_HELP                                                :{BLACK}Deze optie stelt je in staat om een type locomotief te selecteren en die te vervangen door een andere. Dit zal automatisch gebeuren zodra de voertuigen een depot inrijden
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Bordjes lijst - {COMMA16} Bordjes
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Bordjes lijst - {COMMA} Bordjes
 
 ############ Lists rail types
 
@@ -2829,16 +2829,16 @@ STR_MAGLEV_VEHICLES                                             :Maglev Voertuig
 
 ############ End of list of rail types
 
-STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
+STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Gewicht: {GOLD}{COMMA16}t
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Snelheid: {GOLD}{VELOCITY}{BLACK}   Kracht: {GOLD}{COMMA32}pk
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Gewicht: {GOLD}{COMMA}t
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Snelheid: {GOLD}{VELOCITY}{BLACK}   Kracht: {GOLD}{COMMA}pk
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Onderhoudskosten: {GOLD}{CURRENCY}/jr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capaciteit: {GOLD}{STRING} {STRING}
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Ontworpen: {GOLD}{NUMU16}{BLACK} Levensduur: {GOLD}{COMMA16} jaar
-STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Betrouwbaarheid: {GOLD}{COMMA8}%
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Ontworpen: {GOLD}{NUMU16}{BLACK} Levensduur: {GOLD}{COMMA} jaar
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Betrouwbaarheid: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kosten: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht: {GOLD}{COMMA16}t  ({COMMA16}t)
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht: {GOLD}{COMMA}t  ({COMMA}t)
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Snelheid: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capaciteit: {GOLD}{COMMA16} passagiers, {COMMA16} zakken post
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Aangedreven wagons: {GOLD}+{COMMA16}pk{BLACK} Gewicht: {GOLD}+{COMMA8}t
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capaciteit: {GOLD}{COMMA} passagiers, {COMMA} zakken post
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Aangedreven wagons: {GOLD}+{COMMA}pk{BLACK} Gewicht: {GOLD}+{COMMA}t

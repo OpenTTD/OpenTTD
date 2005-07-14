@@ -82,69 +82,69 @@ STR_004B_BATTERY                                                :Rafhlöðu
 STR_004C_PLASTIC                                                :Plast
 STR_004D_FIZZY_DRINK                                            :Gosdrykkja
 STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA16} farþegi
-STR_0050_TON_OF_COAL                                            :{COMMA16} tonn af kolum
-STR_0051_BAG_OF_MAIL                                            :{COMMA16} pokar af pósti
+STR_004F_PASSENGER                                              :{COMMA} farþegi
+STR_0050_TON_OF_COAL                                            :{COMMA} tonn af kolum
+STR_0051_BAG_OF_MAIL                                            :{COMMA} pokar af pósti
 STR_0052_OF_OIL                                                 :{VOLUME} af olíu
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA16} nautgripur
-STR_0054_CRATE_OF_GOODS                                         :{COMMA16} kassi af vörum
-STR_0055_TON_OF_GRAIN                                           :{COMMA16} tonn af korni
-STR_0056_TON_OF_WOOD                                            :{COMMA16} tonn af timbri
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA16} tonn af járngrýti
-STR_0058_TON_OF_STEEL                                           :{COMMA16} tonn af stáli
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA16} poki af verðmætum
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA16} tonn af kopar
-STR_005B_TON_OF_MAIZE                                           :{COMMA16} tonn af maís
-STR_005C_TON_OF_FRUIT                                           :{COMMA16} tonn af ávöxtum
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA16} poki af demöntum
-STR_005E_TON_OF_FOOD                                            :{COMMA16} tonn af matvælum
-STR_005F_TON_OF_PAPER                                           :{COMMA16} tonn af pappír
-STR_0060_BAG_OF_GOLD                                            :{COMMA16} poki af gulli
+STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} nautgripur
+STR_0054_CRATE_OF_GOODS                                         :{COMMA} kassi af vörum
+STR_0055_TON_OF_GRAIN                                           :{COMMA} tonn af korni
+STR_0056_TON_OF_WOOD                                            :{COMMA} tonn af timbri
+STR_0057_TON_OF_IRON_ORE                                        :{COMMA} tonn af járngrýti
+STR_0058_TON_OF_STEEL                                           :{COMMA} tonn af stáli
+STR_0059_BAG_OF_VALUABLES                                       :{COMMA} poki af verðmætum
+STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} tonn af kopar
+STR_005B_TON_OF_MAIZE                                           :{COMMA} tonn af maís
+STR_005C_TON_OF_FRUIT                                           :{COMMA} tonn af ávöxtum
+STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} poki af demöntum
+STR_005E_TON_OF_FOOD                                            :{COMMA} tonn af matvælum
+STR_005F_TON_OF_PAPER                                           :{COMMA} tonn af pappír
+STR_0060_BAG_OF_GOLD                                            :{COMMA} poki af gulli
 STR_0061_OF_WATER                                               :{VOLUME} af vatni
-STR_0062_TON_OF_WHEAT                                           :{COMMA16} tonn af hveiti
+STR_0062_TON_OF_WHEAT                                           :{COMMA} tonn af hveiti
 STR_0063_OF_RUBBER                                              :{VOLUME} af gúmmíi
-STR_0064_TON_OF_SUGAR                                           :{COMMA16} tonn af sykri
-STR_0065_TOY                                                    :{COMMA16} leikfang
-STR_0066_BAG_OF_CANDY                                           :{COMMA16} poki af sælgæti
+STR_0064_TON_OF_SUGAR                                           :{COMMA} tonn af sykri
+STR_0065_TOY                                                    :{COMMA} leikfang
+STR_0066_BAG_OF_CANDY                                           :{COMMA} poki af sælgæti
 STR_0067_OF_COLA                                                :{VOLUME} af kóladrykk
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA16} tonn af sykurfrauði
-STR_0069_BUBBLE                                                 :{COMMA16} kúla
-STR_006A_TON_OF_TOFFEE                                          :{COMMA16} tonn af toffý
-STR_006B_BATTERY                                                :{COMMA16} rafhlaða
+STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} tonn af sykurfrauði
+STR_0069_BUBBLE                                                 :{COMMA} kúla
+STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonn af toffý
+STR_006B_BATTERY                                                :{COMMA} rafhlaða
 STR_006C_OF_PLASTIC                                             :{VOLUME} af plasti
-STR_006D_FIZZY_DRINK                                            :{COMMA16} gosdrykkur
+STR_006D_FIZZY_DRINK                                            :{COMMA} gosdrykkur
 STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA16} farþegar
-STR_0070_TONS_OF_COAL                                           :{COMMA16} tonn af kolum
-STR_0071_BAGS_OF_MAIL                                           :{COMMA16} pokar af pósti
+STR_006F_PASSENGERS                                             :{COMMA} farþegar
+STR_0070_TONS_OF_COAL                                           :{COMMA} tonn af kolum
+STR_0071_BAGS_OF_MAIL                                           :{COMMA} pokar af pósti
 STR_0072_OF_OIL                                                 :{VOLUME} af olíu
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA16} nautgripir
-STR_0074_CRATES_OF_GOODS                                        :{COMMA16} kassar af vörum
-STR_0075_TONS_OF_GRAIN                                          :{COMMA16} tonn af korni
-STR_0076_TONS_OF_WOOD                                           :{COMMA16} tonn af timbri
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA16} tonn af járngrýti
-STR_0078_TONS_OF_STEEL                                          :{COMMA16} tonn af stáli
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA16} pokar af verðmætum
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA16} tonn af kopar
-STR_007B_TONS_OF_MAIZE                                          :{COMMA16} tonn af maís
-STR_007C_TONS_OF_FRUIT                                          :{COMMA16} tonn af ávöxtum
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA16} pokar af demöntum
-STR_007E_TONS_OF_FOOD                                           :{COMMA16} tonn af matvælum
-STR_007F_TONS_OF_PAPER                                          :{COMMA16} tonn af pappír
-STR_0080_BAGS_OF_GOLD                                           :{COMMA16} pokar af gulli
+STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} nautgripir
+STR_0074_CRATES_OF_GOODS                                        :{COMMA} kassar af vörum
+STR_0075_TONS_OF_GRAIN                                          :{COMMA} tonn af korni
+STR_0076_TONS_OF_WOOD                                           :{COMMA} tonn af timbri
+STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} tonn af járngrýti
+STR_0078_TONS_OF_STEEL                                          :{COMMA} tonn af stáli
+STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} pokar af verðmætum
+STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} tonn af kopar
+STR_007B_TONS_OF_MAIZE                                          :{COMMA} tonn af maís
+STR_007C_TONS_OF_FRUIT                                          :{COMMA} tonn af ávöxtum
+STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} pokar af demöntum
+STR_007E_TONS_OF_FOOD                                           :{COMMA} tonn af matvælum
+STR_007F_TONS_OF_PAPER                                          :{COMMA} tonn af pappír
+STR_0080_BAGS_OF_GOLD                                           :{COMMA} pokar af gulli
 STR_0081_OF_WATER                                               :{VOLUME} af vatni
-STR_0082_TONS_OF_WHEAT                                          :{COMMA16} tonn af hveiti
+STR_0082_TONS_OF_WHEAT                                          :{COMMA} tonn af hveiti
 STR_0083_OF_RUBBER                                              :{VOLUME} af gúmmíi
-STR_0084_TONS_OF_SUGAR                                          :{COMMA16} tonn af sykri
-STR_0085_TOYS                                                   :{COMMA16} leikföng
-STR_0086_BAGS_OF_CANDY                                          :{COMMA16} pokar af sælgæti
+STR_0084_TONS_OF_SUGAR                                          :{COMMA} tonn af sykri
+STR_0085_TOYS                                                   :{COMMA} leikföng
+STR_0086_BAGS_OF_CANDY                                          :{COMMA} pokar af sælgæti
 STR_0087_OF_COLA                                                :{VOLUME} af kóla
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA16} tonn af sykurfrauði
-STR_0089_BUBBLES                                                :{COMMA16} kúlur
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA16} tonn af toffý
-STR_008B_BATTERIES                                              :{COMMA16} rafhlöður
+STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} tonn af sykurfrauði
+STR_0089_BUBBLES                                                :{COMMA} kúlur
+STR_008A_TONS_OF_TOFFEE                                         :{COMMA} tonn af toffý
+STR_008B_BATTERIES                                              :{COMMA} rafhlöður
 STR_008C_OF_PLASTIC                                             :{VOLUME} af plasti
-STR_008D_FIZZY_DRINKS                                           :{COMMA16} gosdrykkir
+STR_008D_FIZZY_DRINKS                                           :{COMMA} gosdrykkir
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
 STR_0090_CL                                                     :{TINYFONT}CL
@@ -219,8 +219,8 @@ STR_00DE_BROWN                                                  :Brúnn
 STR_00DF_GREY                                                   :Grár
 STR_00E0_WHITE                                                  :Hvítur
 STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Of mörg farartæki í leiknum
-STR_00E2                                                        :{BLACK}{COMMA16}
-STR_00E3                                                        :{RED}{COMMA16}
+STR_00E2                                                        :{BLACK}{COMMA}
+STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}Staður
 STR_00E5_CONTOURS                                               :Útlínur
 STR_00E6_VEHICLES                                               :Farartæki
@@ -441,18 +441,18 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Sýna/fel
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Hagnaður þetta ár: {CURRENCY} (síðasta ár: {CURRENCY})
 
 ############ range for service numbers starts
-STR_0199_YEAR                                                   :{COMMA16} ár ({COMMA16})
-STR_019A_YEARS                                                  :{COMMA16} ár ({COMMA16})
-STR_019B_YEARS                                                  :{RED}{COMMA16} ár ({COMMA16})
+STR_0199_YEAR                                                   :{COMMA} ár ({COMMA})
+STR_019A_YEARS                                                  :{COMMA} ár ({COMMA})
+STR_019B_YEARS                                                  :{RED}{COMMA} ár ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Bifreið
 STR_019D_AIRCRAFT                                               :Flugvél
 STR_019E_SHIP                                                   :Skip
 STR_019F_TRAIN                                                  :Lest
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA16} er að eldast
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA16} er að eldast um of
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA16} er að eldast um of og þarfnast nauðsynlega endurnýjunar
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} er að eldast
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} er að eldast um of
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} er að eldast um of og þarfnast nauðsynlega endurnýjunar
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Landsvæðisupplýsingar
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Kostnaður við hreinsun: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Kostnaður við hreinsun: {LTBLUE}{CURRENCY}
@@ -497,7 +497,7 @@ STR_01C9_30TH                                                   :30.
 STR_01CA_31ST                                                   :31.
 ############ range for days	ends
 
-STR_01CB                                                        :{TINYFONT}{COMMA16}
+STR_01CB                                                        :{TINYFONT}{COMMA}
 STR_01CC_TOGGLE_LARGE_SMALL_MAP                                 :{BLACK}Stór/lítil kortastærð
 STR_01CD_SELECT_TUTORIAL_DEMONSTRATION                          :{WHITE}Velja Leiðbeiningar/Sýnikennslu
 
@@ -509,7 +509,7 @@ STR_CARGO_ACCEPTED_4                                            :{BLACK}Tekið á 
 STR_CARGO_ACCEPTED_5                                            :{BLACK}Tekið á móti: {LTBLUE}{STRING}, {STRING}, {STRING}, {STRING}, {STRING}
 ############ range for cargo acecpted ends
 
-STR_01D1_8                                                      :({COMMA8}/8 {STRING})
+STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz glymskratti
 STR_01D3_SOUND_MUSIC                                            :Hljóð/tónlist
 STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Sýna hljóð/tónlistar glugga
@@ -528,16 +528,16 @@ STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Hætta að
 STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Byrja að spila tónlist
 STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Dragðu sleðana til að stilla hljóð/tónlistar styrkinn
 STR_01E3                                                        :{DKGREEN}{TINYFONT}--
-STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA8}
-STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA8}
+STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
+STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Lag{SETX 88}Titill
 STR_01E9_SHUFFLE                                                :{TINYFONT}Stokka
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Listar
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Lagalistar
-STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA16} "{STRING}"
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA16}   "{STRING}"
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA}   "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Laganúmer
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Listi - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Hreinsa
@@ -577,7 +577,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Spila h
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...of langt frá fyrri stað
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Efstu fyrirtæki sem náðu {NUMU16}{}({STRING} stig)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Sambandstafla fyrirtækis í {NUMU16}
-STR_0212                                                        :{BIGFONT}{COMMA16}.
+STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Viðskiptamaður
 STR_0214_ENTREPRENEUR                                           :Athafnamaður
 STR_0215_INDUSTRIALIST                                          :Iðnjöfur
@@ -586,12 +586,12 @@ STR_0217_MAGNATE                                                :Áhrifamaður
 STR_0218_MOGUL                                                  :Stórlax
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Viðskiptajöfur aldarinnar
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{STRING}, {STRING}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA16})
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{STRING} öðlast '{STRING}' titil!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{STRING} úr {STRING} öðlast '{STRING}' titil!
 STR_021D                                                        :{BLACK}
 STR_021E                                                        :{WHITE}
-STR_021F                                                        :{BLUE}{COMMA16}
+STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Búa til kort
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Kortagerð
@@ -788,8 +788,8 @@ STR_02DE_MAP_OF_WORLD                                           :Heimskort
 STR_EXTRA_VIEW_PORT                                             :Auka sjónarhorn
 STR_SIGN_LIST                                                   :Skiltalisti
 STR_02DF_TOWN_DIRECTORY                                         :Bæjarmappa
-STR_TOWN_POPULATION                                             :{BLACK}Heildaríbúafjöldi: {COMMA32}
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Sjónarhorn {COMMA16}
+STR_TOWN_POPULATION                                             :{BLACK}Heildaríbúafjöldi: {COMMA}
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Sjónarhorn {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Afrita í sjónarhorn
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Afrita aðalsjónarhornið í sjónarhornsrammann
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Afrita frá sjónarhorni
@@ -961,34 +961,34 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Get ekki
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Get ekki afritað áætlun...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Endi sameiginlegra skipana - -
 
-STR_TRAIN_IS_LOST                                               :{WHITE}Lest {COMMA16} er týnd.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Hagnaður lestar {COMMA16} á síðasta ári var {CURRENCY}
+STR_TRAIN_IS_LOST                                               :{WHITE}Lest {COMMA} er týnd.
+STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Hagnaður lestar {COMMA} á síðasta ári var {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Gjaldeyrissameining í Evrópu!{}{}Evran er nú eini gjaldeyririnn fyrir öll viðskipti í þínu landi!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Lest {COMMA16} hefur of fáar skipanir á áætluninni
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Lest {COMMA16} hefur tóma skipun
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Lest {COMMA16} hefur tvöfaldar skipanir
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Lest {COMMA16} hefur ógilda stöð í áætluninni
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Bifreið {COMMA16} hefur of fáar skipanir á áætluninni
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Bifreið {COMMA16} hefur tóma skipun
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Bifreið {COMMA16} hefur tvöfaldar skipanir
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Bifreið {COMMA16} hefur ógilda stöð í áætluninni
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Skip {COMMA16} hefur of fáar skipanir á áætluninni
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Skip {COMMA16} hefur tóma skipun
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Skip {COMMA16} hefur tvöfaldar skipanir
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Skip {COMMA16} hefur ógilda stöð í áætluninni
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Flugvél {COMMA16} hefur of fáar skipanir á áætluninni
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Flugvél {COMMA16} hefur tóma skipun
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Flugvél {COMMA16} hefur tvöfaldar skipanir
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Flugvél {COMMA16} hefur ógilda stöð í áætluninni
+STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Lest {COMMA} hefur of fáar skipanir á áætluninni
+STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Lest {COMMA} hefur tóma skipun
+STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Lest {COMMA} hefur tvöfaldar skipanir
+STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Lest {COMMA} hefur ógilda stöð í áætluninni
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Bifreið {COMMA} hefur of fáar skipanir á áætluninni
+STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Bifreið {COMMA} hefur tóma skipun
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Bifreið {COMMA} hefur tvöfaldar skipanir
+STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Bifreið {COMMA} hefur ógilda stöð í áætluninni
+STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Skip {COMMA} hefur of fáar skipanir á áætluninni
+STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Skip {COMMA} hefur tóma skipun
+STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Skip {COMMA} hefur tvöfaldar skipanir
+STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Skip {COMMA} hefur ógilda stöð í áætluninni
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Flugvél {COMMA} hefur of fáar skipanir á áætluninni
+STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Flugvél {COMMA} hefur tóma skipun
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Flugvél {COMMA} hefur tvöfaldar skipanir
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Flugvél {COMMA} hefur ógilda stöð í áætluninni
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Sjálfvirk uppfæring lestar {COMMA16} mistókst (takmarkað fjármagn)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Sjálfvirk uppfæring bifreiðar {COMMA16} mistókst (takmarkað fjármagn)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Sjálfvirk uppfæring skips {COMMA16} mistókst (takmarkað fjármagn)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Sjálfvirk uppfæring flugvélar {COMMA16} mistókst (takmarkað fjármagn)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Sjálfvirk uppfæring lestar {COMMA} mistókst (takmarkað fjármagn)
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Sjálfvirk uppfæring bifreiðar {COMMA} mistókst (takmarkað fjármagn)
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Sjálfvirk uppfæring skips {COMMA} mistókst (takmarkað fjármagn)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Sjálfvirk uppfæring flugvélar {COMMA} mistókst (takmarkað fjármagn)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Auka stillingar
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Auka stillingar
@@ -1104,7 +1104,7 @@ STR_CHEATS                                                      :{WHITE}Svindl
 STR_CHEATS_TIP                                                  :{BLACK}Valreitur segir til um ef þú hefur notað þetta svindl áður
 STR_CHEATS_WARNING                                              :{BLACK}Aðvörun! Þú ert í þann mund að svíkja keppinauta þína. Hafðu í huga að þess lags svívirðing mun ætíð höfð í minnum.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Auka pening um {CURRENCY64}
-STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Spila sem leikmaður: {ORANGE}{COMMA16}
+STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Spila sem leikmaður: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Töfrajarðýta (eyða iðnaði og óeyðanlegu): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Göng mega skerast: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Byggja í bið: {ORANGE}{STRING}
@@ -1120,7 +1120,7 @@ STR_GO_TO_WAYPOINT                                              :Fara með {WAYPO
 STR_GO_NON_STOP_TO_WAYPOINT                                     :Ekki stöðva á {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY                                           :Millistöð {TOWN}
-STR_WAYPOINTNAME_CITY_SERIAL                                    :Millistöð {TOWN} #{COMMA16}
+STR_WAYPOINTNAME_CITY_SERIAL                                    :Millistöð {TOWN} #{COMMA}
 STR_LANDINFO_WAYPOINT                                           :Millistöð
 
 STR_WAYPOINT                                                    :{WHITE}Leiðarvísir
@@ -1203,8 +1203,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Grafa Ka
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Grafa Sykurnámu
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Iðnaðir
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% flutt)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% flutt)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA}% flutt)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% flutt)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{TOWN} {STRING}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...of nálægt öðrum iðnaði
@@ -1244,15 +1244,15 @@ STR_NETWORK_ADD_SERVER                                          :{BLACK}Bæta við
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Bætir þjóni við listann sem mun alltaf sýna leiki í spilun
 STR_NETWORK_ENTER_IP                                            :{BLACK}Sláðu inn IP tölu þjónsins
 
-STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Notendur
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Tengdir notendur / hámarksfjöldi notenda
 STR_NETWORK_GAME_INFO                                           :{SILVER}UPPLÝSINGAR UM LEIK
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Notendur:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_CLIENTS                                             :{SILVER}Notendur:  {WHITE}{COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Tungumál:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Landslag:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Stærð:  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Stærð:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Útgáfa þjóns:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Veffang þjóns:  {WHITE}{STRING} : {NUMU16}
 STR_NETWORK_START_DATE                                          :{SILVER}Upphafsdagsetning:  {WHITE}{DATE_SHORT}
@@ -1517,21 +1517,21 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Vega/lestar gat
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Bæir
-STR_TOWN_LABEL_POP                                              :{WHITE}{STRING} ({COMMA32})
+STR_TOWN_LABEL_POP                                              :{WHITE}{STRING} ({COMMA})
 STR_2001                                                        :{WHITE}{STRING}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2003                                                        :{TINYFONT}{WHITE}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Verður að eyða byggingu fyrst
 STR_2005                                                        :{WHITE}{TOWN}
-STR_2006_POPULATION                                             :{BLACK}Íbúafjöldi: {ORANGE}{COMMA32}{BLACK}  Hús: {ORANGE}{COMMA32}
+STR_2006_POPULATION                                             :{BLACK}Íbúafjöldi: {ORANGE}{COMMA}{BLACK}  Hús: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Endurskíra bæ
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Get ekki endurskírt bæ...
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} bæjaryfirvöld leyfa þetta ekki
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Bæjarnöfn - ýttu á nafn til að færa sjónarhorn að viðkomandi bæ
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Færa sjónarhorn á staðsetningu bæjar
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Breyta nafni bæjar
-STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Farþegar síðasta mánaðar: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
-STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Póstur síðasta mánaðar: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Farþegar síðasta mánaðar: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Póstur síðasta mánaðar: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200F_TALL_OFFICE_BLOCK                                      :Há skrifstofubygging
 STR_2010_OFFICE_BLOCK                                           :Skrifstofubygging
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Lítil íbúðarbygging
@@ -1605,7 +1605,7 @@ STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Múta bæjaryfirvöldum til að auka við fylgi þitt, með hættu á þungri refsingu komist það upp.{}  Kostnaður: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Glundroði í umferð {TOWN}!{}{}Uppbygging vega kostuð af {STRING} veldur 6 mánaða vesæld meðal ökumanna!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
-STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA32})
+STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (í byggingu)
 STR_2059_IGLOO                                                  :Snjóhús
 STR_205A_TEPEES                                                 :Indíánatjald
@@ -1667,7 +1667,7 @@ STR_303B_EXCELLENT                                              :Frábær
 STR_303C_OUTSTANDING                                            :Framúrskarandi
 ############ range for rating ends
 
-STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA8}%)
+STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} tekur ekki lengur við {STRING}
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} tekur ekki lengur við {STRING} eða {STRING}
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} tekur nú við {STRING}
@@ -1678,7 +1678,7 @@ STR_3044_TOO_CLOSE_TO_ANOTHER_BUS                               :{WHITE}Of nálæg
 STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK                             :{WHITE}Of nálægt annarri póstvagnsstöð
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Verður að eyða strætisvagnastöðinni fyrst
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Verður að eyða póstvagnsstöðinni fyrst
-STR_3048_STATIONS                                               :{WHITE}{STRING} - {COMMA16} Stöðvar
+STR_3048_STATIONS                                               :{WHITE}{STRING} - {COMMA} Stöðvar
 STR_3049_0                                                      :{YELLOW}{STATION} {STRINL 0x30D1}
 STR_304A_NONE                                                   :{YELLOW}- Ekkert -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...óhentug staðsetning
@@ -1735,7 +1735,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Opna lei
 STR_4002_SAVE                                                   :{BLACK}Vista
 STR_4003_DELETE                                                 :{BLACK}Eyða
 STR_4004                                                        :{STRING}, {DATE_LONG}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA32} megabæti laus
+STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabæti laus
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Get ekki lesið af drifi
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Vistun leiks mistókst
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Get ekki eytt skrá
@@ -1796,7 +1796,7 @@ STR_4829_REQUIRES                                               :{BLACK}Tekur vi
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Framleiðsla síðasta mánaðar:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA16}% flutt)
+STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% flutt)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Miðja aðalsjónarhorn á iðnað
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Ný {STRING} í byggingu við {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Ný {STRING} er að rísa við {TOWN}!
@@ -1813,8 +1813,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}50% samdráttur í framleiðslu hjá {TOWN} {STRING}
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Skordýraplága veldur tjóni á {TOWN} {STRING}!{}Framleiðsla minnkar um 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...getur aðeins verið staðsett nálægt brún kortsins
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING}framleiðsla í {TOWN} {STRING} eykst um {COMMA16}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING}framleiðsla í {TOWN} {STRING} minnkar um {COMMA16}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING}framleiðsla í {TOWN} {STRING} eykst um {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING}framleiðsla í {TOWN} {STRING} minnkar um {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Lest í göngunum
@@ -1877,10 +1877,10 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...þú át
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Ónefnt{SKIP}
-STR_SV_TRAIN_NAME                                               :Lest {COMMA16}
-STR_SV_ROADVEH_NAME                                             :Bifreið {COMMA16}
-STR_SV_SHIP_NAME                                                :Skip {COMMA16}
-STR_SV_AIRCRAFT_NAME                                            :Flugvél {COMMA16}
+STR_SV_TRAIN_NAME                                               :Lest {COMMA}
+STR_SV_ROADVEH_NAME                                             :Bifreið {COMMA}
+STR_SV_SHIP_NAME                                                :Skip {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Flugvél {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} Norður
@@ -1930,12 +1930,12 @@ STR_6804_CUSTOM                                                 :{BLACK}Sérsniði
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
-STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Hámarksfjöldi keppinauta: {ORANGE}{COMMA16}
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Hámarksfjöldi keppinauta: {ORANGE}{COMMA}
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Byrjunartími keppinauta: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Fjöldi bæja: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Fjöldi iðnaða: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Hámarkslán í upphafi: {ORANGE}{CURRENCY}
-STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Vextir í upphafi: {ORANGE}{COMMA16}%
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Vextir í upphafi: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Rekstrarkostnaður farartækja: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Byggingarhraði keppinauta: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Hæfni keppinauta: {ORANGE}{STRING}
@@ -1994,7 +1994,7 @@ STR_683B_HOSTILE                                                :Fjandsamleg
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{STRING} {BLACK}{STRING}
-STR_7002_PLAYER                                                 :(Leikmaður {COMMA16})
+STR_7002_PLAYER                                                 :(Leikmaður {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nýtt Andlit
 STR_7005_COLOR_SCHEME                                           :{BLACK}Litaskema
 STR_7006_COLOR_SCHEME                                           :{GOLD}Litaskema:
@@ -2028,7 +2028,7 @@ STR_7021                                                        :{STRING}{STRING
 STR_7022_INCOME_GRAPH                                           :{WHITE}Tekjulínurit
 STR_CURRCOMPACT32                                               :{CURRCOMPACT}
 STR_CURRCOMPACT64                                               :{CURRCOMPACT64}
-STR_7024                                                        :{COMMA32}
+STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Resktrartekju línurit
 STR_7026_BANK_BALANCE                                           :{WHITE}Bankainnistæða
 STR_7027_LOAN                                                   :{WHITE}Lán
@@ -2052,14 +2052,14 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Borga ti
 STR_7037_PRESIDENT                                              :{WHITE}{STRING}{}{GOLD}(Manager)
 STR_7038_INAUGURATED                                            :{GOLD}Hafið: {WHITE}{NUMU16}
 STR_7039_VEHICLES                                               :{GOLD}Farartæki:
-STR_703A_TRAIN                                                  :{WHITE}{COMMA16} lest
-STR_703B_TRAINS                                                 :{WHITE}{COMMA16} lestir
-STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA16} bíll
-STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA16} bílar
-STR_703E_AIRCRAFT                                               :{WHITE}{COMMA16} flugvél
-STR_703F_AIRCRAFT                                               :{WHITE}{COMMA16} flugvélar
-STR_7040_SHIP                                                   :{WHITE}{COMMA16} skip
-STR_7041_SHIPS                                                  :{WHITE}{COMMA16} skip
+STR_703A_TRAIN                                                  :{WHITE}{COMMA} lest
+STR_703B_TRAINS                                                 :{WHITE}{COMMA} lestir
+STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA} bíll
+STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA} bílar
+STR_703E_AIRCRAFT                                               :{WHITE}{COMMA} flugvél
+STR_703F_AIRCRAFT                                               :{WHITE}{COMMA} flugvélar
+STR_7040_SHIP                                                   :{WHITE}{COMMA} skip
+STR_7041_SHIPS                                                  :{WHITE}{COMMA} skip
 STR_7042_NONE                                                   :{WHITE}Engin
 STR_7043_FACE_SELECTION                                         :{WHITE}Andlitsval
 STR_7044_MALE                                                   :{BLACK}Karlmaður
@@ -2124,8 +2124,8 @@ STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Kaupa 25
 STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Selja 25% hlut í þessu fyrirtæki
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Get ekki keypt 25% hlut í þessu fyrirtæki...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Get ekki selt 25% hlut í þessu fyrirtæki...
-STR_707D_OWNED_BY                                               :{WHITE}({COMMA16}% í eigu {STRING})
-STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA16}% í eigu {STRING}{}   {COMMA16}% í eigu {STRING})
+STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% í eigu {STRING})
+STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% í eigu {STRING}{}   {COMMA}% í eigu {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{STRING} hefur verið yfirtekið af {STRING}!
 STR_7080_PROTECTED                                              :{WHITE}Þetta fyrirtæki er ekki nógu gamalt til að versla með hluti ...
 
@@ -2400,8 +2400,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} L
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsta lest kemur við á {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Upplýsingar)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Lest fyrir
-STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
 STR_8806_GO_TO                                                  :Fer til {STATION}
 STR_8807_GO_TO_TRANSFER                                         :Fer til {STATION} (Yfirfæra og ferma)
 STR_8808_GO_TO_UNLOAD                                           :Fer til {STATION} (Afferma)
@@ -2427,13 +2427,13 @@ STR_INVALID_ORDER                                               :{RED} (Ógild Sk
 STR_UNKNOWN_DESTINATION                                         :óþekktur áfangastaður
 STR_8812_EMPTY                                                  :{LTBLUE}Tómt
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} frá {STATION}
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Lest {COMMA16} bíður í skýli
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Lest {COMMA} bíður í skýli
 STR_8815_NEW_VEHICLES                                           :{BLACK}Ný faratæki
 STR_8816                                                        :{BLACK}-
 STR_8818_INFORMATION                                            :{BLACK}Upplýsingar
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Lestin er of löng
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Aðeins er hægt að eiga við lestir þegar þær bíða í skýli
-STR_881B_TRAINS                                                 :{WHITE}{STRING} - {COMMA16} Lestir
+STR_881B_TRAINS                                                 :{WHITE}{STRING} - {COMMA} Lestir
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nýir lestarvagnar
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nýir einteingungsvagnar
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nýir segullestarvagnar
@@ -2467,8 +2467,8 @@ STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Get ekki selt lest...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Get ekki fundið leit til staðbundins skýlis
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Get ekki ræst/stöðva lest...
-STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Skoðanamillibil: {LTBLUE}{COMMA16}dagar{BLACK}   Seinasta skoðun: {LTBLUE}{DATE_LONG}
-STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Skoðanamillibil: {LTBLUE}{COMMA16}%{BLACK}   Seinasta skoðun: {LTBLUE}{DATE_LONG}
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Skoðanamillibil: {LTBLUE}{COMMA}dagar{BLACK}   Seinasta skoðun: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Skoðanamillibil: {LTBLUE}{COMMA}%{BLACK}   Seinasta skoðun: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Lestir - smelltu á lest fyrir nánari upplýsingar
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Búa til nýjar lestir (þarfnast lestarskýlis)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Lestir - ýttu á lest fyrir uppl., dragðu farartæki til að bæta við/fjarlægja úr lest
@@ -2501,12 +2501,12 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Neyða le
 STR_SERVICE_HINT                                                :{BLACK}Sleppa þessarri skipun nema þörf sé á viðgerð
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Ný {STRING} er nú fáanleg!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Verð: {CURRENCY} Þyngd: {COMMA16}tonn{}Hraði: {VELOCITY}  Hestöfl: {COMMA16}{}Rekstrarkostnaður: {CURRENCY} á ári{}Burðargeta: {STRING}
+STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Verð: {CURRENCY} Þyngd: {COMMA}tonn{}Hraði: {VELOCITY}  Hestöfl: {COMMA}{}Rekstrarkostnaður: {CURRENCY} á ári{}Burðargeta: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Bilaður
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Aldur: {LTBLUE}{STRING}{BLACK}   Rekstrarkostnaður: {LTBLUE}{CURRENCY} á ári
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Þyngd: {LTBLUE}{COMMA16}t  {BLACK}Hestöfl: {LTBLUE}{COMMA32}{BLACK} Hámarkshraði: {LTBLUE}{VELOCITY}
+STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Þyngd: {LTBLUE}{COMMA}t  {BLACK}Hestöfl: {LTBLUE}{COMMA}{BLACK} Hámarkshraði: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Hagnaður á þessu ári: {LTBLUE}{CURRENCY}  (síðasta ár: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA8}%  {BLACK}Bilanir frá síðustu viðgerð: {LTBLUE}{COMMA16}
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA}%  {BLACK}Bilanir frá síðustu viðgerð: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Stöðvaður
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Get ekki látið lest fara framhjá hættumerki...
 STR_8863_CRASHED                                                :{RED}Árekstur!
@@ -2514,7 +2514,7 @@ STR_8863_CRASHED                                                :{RED}Árekstur!
 STR_8865_NAME_TRAIN                                             :{WHITE}Skírðu lestina
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Get ekki skírt lest...
 STR_8867_NAME_TRAIN                                             :{BLACK}Skýrðu lestina
-STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Lestarslys!{}{COMMA16} deyja í sprengingu eftir árekstur
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Lestarslys!{}{COMMA} deyja í sprengingu eftir árekstur
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Get ekki snúið lest við...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Endurskíra lestargerð
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Get ekki endurskírt lestargerð...
@@ -2526,7 +2526,7 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Stöðva, {V
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Bíll fyrir
-STR_9001_ROAD_VEHICLES                                          :{WHITE}{STRING} - {COMMA16} Bílar
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{STRING} - {COMMA} Bílar
 STR_9002                                                        :{WHITE}{STRING}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Bílastöð
 STR_9004_NEW_VEHICLES                                           :{BLACK}Ný Farartæki
@@ -2540,13 +2540,13 @@ STR_900C_DETAILS                                                :{WHITE}{STRING}
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Aldur: {LTBLUE}{STRING}{BLACK}   Rekstrarkostnaður: {LTBLUE}{CURRENCY} á ári
 STR_900E_MAX_SPEED                                              :{BLACK}Hámarkshraði: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Hagnaður á þessu ári: {LTBLUE}{CURRENCY}  (síðasta ár: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA8}%  {BLACK}Bilanir frá síðustu viðgerð: {LTBLUE}{COMMA16}
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA}%  {BLACK}Bilanir frá síðustu viðgerð: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Byggður: {LTBLUE}{NUMU16}{BLACK} Virði: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...verður að stöðvast í bifreiðaskýli
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Get ekki selt bifreið...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Get ekki stöðvað/ræst bifreið...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Bifreið {COMMA16} bíður nú í skýli
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Bifreið {COMMA} bíður nú í skýli
 STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Er á leið til bifreiðaskýlis {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Er á leið til bifreiðaskýlis {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Get ekki sent bifreið í skýli...
@@ -2575,7 +2575,7 @@ STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Nefna bi
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsti strætisvagn kemur við á {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsti vörubíll kemur við á {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Bílslys!{}Bílstjóri deyr í sprengingu eftir árekstur við lest
-STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Bílslys!{}{COMMA16} deyja í sprengingu eftir árekstur við lest
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Bílslys!{}{COMMA} deyja í sprengingu eftir árekstur við lest
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Get ekki snúið bifreið við...
 STR_9034_RENAME                                                 :{BLACK}Endurnefna
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Endurnefna tegund bifreiðar
@@ -2590,7 +2590,7 @@ STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Hafnarfr
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Get ekki byggt höfn hér...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Slippur
 STR_9804_NEW_SHIPS                                              :{BLACK}Ný skip
-STR_9805_SHIPS                                                  :{WHITE}{STRING} - {COMMA16} Skip
+STR_9805_SHIPS                                                  :{WHITE}{STRING} - {COMMA} Skip
 STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Get ekki smíðað skip..
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Verður að smíða skip í slippnum fyrst
 STR_9808_NEW_SHIPS                                              :{WHITE}Ný skip
@@ -2605,7 +2605,7 @@ STR_9811_DETAILS                                                :{WHITE}{STRING}
 STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Aldur: {LTBLUE}{STRING}{BLACK}   Rekstrarkostnaður: {LTBLUE}{CURRENCY}á ári
 STR_9813_MAX_SPEED                                              :{BLACK}Hámarkshraði: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Tekjur þessa árs: {LTBLUE}{CURRENCY}  (síðasta ár: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA8}%  {BLACK}Bilanir frá síðustu skoðun: {LTBLUE}{COMMA16}
+STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA}%  {BLACK}Bilanir frá síðustu skoðun: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Smíðað: {LTBLUE}{NUMU16}{BLACK} Verðmæti: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Get ekki stöðvað/ræst skip...
@@ -2613,7 +2613,7 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Get ekki
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Finnur ekkert nálægt skýli
 STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Stefnir að {TOWN} skipaskýlinu
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Stefnir að {TOWN} skipaskýlinu, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Skip {COMMA16} bíður í skýli
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Skip {COMMA} bíður í skýli
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Byggja höfn
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Reisa skipaskýli (til að smíða og skoða skip)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Skip - smelltu á skip fyrir nánari upplýsingar
@@ -2664,19 +2664,19 @@ STR_A004_INFORMATION                                            :{BLACK}Upplýsin
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Ný flugvél
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Smíða flugvél
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Get ekki smíðað flugvél...
-STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA16} Flugvél
+STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA} Flugvél
 STR_A00A                                                        :{WHITE}{STRING}
 STR_A00B_ORDERS                                                 :{WHITE}{STRING} (Skipanir)
 STR_A00C_DETAILS                                                :{WHITE}{STRING} (Upplýsingar)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Aldur: {LTBLUE}{STRING}{BLACK}   Rekstrarkostnaður: {LTBLUE}{CURRENCY}á ári
 STR_A00E_MAX_SPEED                                              :{BLACK}Hámarkshraði: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Hagnaður í ár: {LTBLUE}{CURRENCY}  (í fyrra: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA8}%  {BLACK}Bilanir frá síðustu skoðun: {LTBLUE}{COMMA16}
+STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA}%  {BLACK}Bilanir frá síðustu skoðun: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Smíðuð: {LTBLUE}{NUMU16}{BLACK} Virði: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Get ekki sent flugvél í flugskýli...
 STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Stefnir á {STATION} flugskýli
 STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Stefnir á {STATION} flugskýli, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Flugvél {COMMA16} bíður í flugskýli
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Flugvél {COMMA} bíður í flugskýli
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Flugvél er fyrir
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Get ekki stöðvað/ræst flugvél...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}flugvélin er á flugi
@@ -2702,14 +2702,14 @@ STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Senda fl
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Sýna nánari upplýsingar um skip
 STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Ný flugvél nú fáanleg!
 STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Verð: {CURRENCY} Hámarkshraði: {VELOCITY}{}Burðargeta: {COMMA16} farþegar, {COMMA16} pokar af pósti{}Rekstrarkostnaður: {CURRENCY}á ári
+STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Verð: {CURRENCY} Hámarkshraði: {VELOCITY}{}Burðargeta: {COMMA} farþegar, {COMMA} pokar af pósti{}Rekstrarkostnaður: {CURRENCY}á ári
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nefna flugvélina
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Get ekki nefnt flugvélina...
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Nefna flugvélina
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsta flugvél kemur við á {STATION}!
-STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Flugslys!{}{COMMA16} deyja í sprengingu á {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Flugslys!{}Flugvél varð eldsneytislaus, {COMMA16} deyja í sprengingu!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Flugslys!{}{COMMA} deyja í sprengingu á {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Flugslys!{}Flugvél varð eldsneytislaus, {COMMA} deyja í sprengingu!
 STR_A035_DESTINATIONS                                           :{TINYFONT}{BLACK}Áfangastaðir:
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Endurnefna
@@ -2735,7 +2735,7 @@ STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Verksmiðja eyðilegst við grunsamlegar kringumstæður nálægt {TOWN}!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}FFH lendir rétt hjá {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Hrun í kolanámu veldur eyðileggingu nálægt {TOWN}!
-STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Flóð!{}Að minnsta kosti {COMMA16} er saknað og eru taldir af eftir gífurleg flóð!
+STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Flóð!{}Að minnsta kosti {COMMA} er saknað og eru taldir af eftir gífurleg flóð!
 
 STR_BRIBE_FAILED                                                :{WHITE}Tilraun þín til múturs var
 STR_BRIBE_FAILED_2                                              :{WHITE}uppgvötuð af héraðsrannsóknarmanni
@@ -2745,7 +2745,7 @@ STR_MULTIPLAYER_PAUSED                                          :{WHITE}Leikurin
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Nákvæm frammistöðumæling
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Upplýsingar
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
-STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA32}/{COMMA32})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{INT32}%
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{INT32}
 ############ Those following lines need to be in this order!!
@@ -2780,7 +2780,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Skráarna
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF einkenni:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Sérvalinn gjaldeyrir
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Gengi: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA16}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Gengi: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Aðskilnaðarmerki:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Forskeyti:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Viðskeyti:
@@ -2794,10 +2794,10 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA16} Lestir
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA16} Bifreiðir
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA16} Flugvélar
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA16} Skip
+STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Lestir
+STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Bifreiðir
+STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Flugvélar
+STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Skip
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Sýna allar lestir sem hafa þessa stöð á áætlun
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Sýna allar bifreiðir sem hafa þessa stöð á áætlun
@@ -2819,7 +2819,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Sýnir hv
 STR_REPLACE_HELP                                                :{BLACK}Þetta gerir þér kleift að skipta út öllum vögum af einni tegund með annarri, þegar þeir fara í lestarskýli
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Merkjalisti - {COMMA16} merki
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Merkjalisti - {COMMA} merki
 
 ############ Lists rail types
 
@@ -2829,16 +2829,16 @@ STR_MAGLEV_VEHICLES                                             :Segulsvifvagnar
 
 ############ End of list of rail types
 
-STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
+STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Þyngd: {GOLD}{COMMA16}tonn
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hámarkshraði: {GOLD}{VELOCITY}{BLACK}   Hestöfl: {GOLD}{COMMA32}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Þyngd: {GOLD}{COMMA}tonn
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hámarkshraði: {GOLD}{VELOCITY}{BLACK}   Hestöfl: {GOLD}{COMMA}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Rekstrarkostnaður: {GOLD}{CURRENCY} á ári
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Burðargeta: {GOLD}{STRING} {STRING}
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Hönnun: {GOLD}{NUMU16}{BLACK} Endingartími: {GOLD}{COMMA16} ár
-STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Hámarks áreiðanleiki: {GOLD}{COMMA8}%
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Hönnun: {GOLD}{NUMU16}{BLACK} Endingartími: {GOLD}{COMMA} ár
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Hámarks áreiðanleiki: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Verð: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Þyngd: {GOLD}{COMMA16}tonn  ({COMMA16}tonn)
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Þyngd: {GOLD}{COMMA}tonn  ({COMMA}tonn)
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Hámarkshraði: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Burðargeta: {GOLD}{COMMA16} farþegar, {COMMA16} pokar af pósti
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Drifvagnar: {GOLD}+{COMMA16} hestöfl{BLACK} Þyngd: {GOLD}+{COMMA8} tonn
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Burðargeta: {GOLD}{COMMA} farþegar, {COMMA} pokar af pósti
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Drifvagnar: {GOLD}+{COMMA} hestöfl{BLACK} Þyngd: {GOLD}+{COMMA} tonn

@@ -82,69 +82,69 @@ STR_004B_BATTERY                                                :baterii
 STR_004C_PLASTIC                                                :plastic
 STR_004D_FIZZY_DRINK                                            :suc
 STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA16} cãlãtor
-STR_0050_TON_OF_COAL                                            :{COMMA16} tonã de cãrbune
-STR_0051_BAG_OF_MAIL                                            :{COMMA16} sac cu colete postale
+STR_004F_PASSENGER                                              :{COMMA} cãlãtor
+STR_0050_TON_OF_COAL                                            :{COMMA} tonã de cãrbune
+STR_0051_BAG_OF_MAIL                                            :{COMMA} sac cu colete postale
 STR_0052_OF_OIL                                                 :{VOLUME} de petrol
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA16} animal
-STR_0054_CRATE_OF_GOODS                                         :{COMMA16} pachet de bunuri
-STR_0055_TON_OF_GRAIN                                           :{COMMA16} tonã de cereale
-STR_0056_TON_OF_WOOD                                            :{COMMA16} tonã de lemne
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA16} tonã de minereu de fier
-STR_0058_TON_OF_STEEL                                           :{COMMA16} tonã de otel
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA16} cutie de valori
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA16} tonã de minereu de cupru
-STR_005B_TON_OF_MAIZE                                           :{COMMA16} tonã de porumb
-STR_005C_TON_OF_FRUIT                                           :{COMMA16} tonã de fructe
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA16} sac cu diamante
-STR_005E_TON_OF_FOOD                                            :{COMMA16} tonã de alimente
-STR_005F_TON_OF_PAPER                                           :{COMMA16} tonã de hârtie
-STR_0060_BAG_OF_GOLD                                            :{COMMA16} sac cu aur
+STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} animal
+STR_0054_CRATE_OF_GOODS                                         :{COMMA} pachet de bunuri
+STR_0055_TON_OF_GRAIN                                           :{COMMA} tonã de cereale
+STR_0056_TON_OF_WOOD                                            :{COMMA} tonã de lemne
+STR_0057_TON_OF_IRON_ORE                                        :{COMMA} tonã de minereu de fier
+STR_0058_TON_OF_STEEL                                           :{COMMA} tonã de otel
+STR_0059_BAG_OF_VALUABLES                                       :{COMMA} cutie de valori
+STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} tonã de minereu de cupru
+STR_005B_TON_OF_MAIZE                                           :{COMMA} tonã de porumb
+STR_005C_TON_OF_FRUIT                                           :{COMMA} tonã de fructe
+STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} sac cu diamante
+STR_005E_TON_OF_FOOD                                            :{COMMA} tonã de alimente
+STR_005F_TON_OF_PAPER                                           :{COMMA} tonã de hârtie
+STR_0060_BAG_OF_GOLD                                            :{COMMA} sac cu aur
 STR_0061_OF_WATER                                               :{VOLUME} de apã
-STR_0062_TON_OF_WHEAT                                           :{COMMA16} tonã de grâu
+STR_0062_TON_OF_WHEAT                                           :{COMMA} tonã de grâu
 STR_0063_OF_RUBBER                                              :{VOLUME} de cauciuc
-STR_0064_TON_OF_SUGAR                                           :{COMMA16} tonã de zahãr
-STR_0065_TOY                                                    :{COMMA16} sac cu jucãrii
-STR_0066_BAG_OF_CANDY                                           :{COMMA16} sac cu bomboane
+STR_0064_TON_OF_SUGAR                                           :{COMMA} tonã de zahãr
+STR_0065_TOY                                                    :{COMMA} sac cu jucãrii
+STR_0066_BAG_OF_CANDY                                           :{COMMA} sac cu bomboane
 STR_0067_OF_COLA                                                :{VOLUME} de cola
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA16} tonã de vatã de zahãr
-STR_0069_BUBBLE                                                 :{COMMA16} balonas
-STR_006A_TON_OF_TOFFEE                                          :{COMMA16} tonã de caramel
-STR_006B_BATTERY                                                :{COMMA16} baterie
+STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} tonã de vatã de zahãr
+STR_0069_BUBBLE                                                 :{COMMA} balonas
+STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonã de caramel
+STR_006B_BATTERY                                                :{COMMA} baterie
 STR_006C_OF_PLASTIC                                             :{VOLUME} de plastic
-STR_006D_FIZZY_DRINK                                            :{COMMA16} bidon cu suc
+STR_006D_FIZZY_DRINK                                            :{COMMA} bidon cu suc
 STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA16} cãlãtori
-STR_0070_TONS_OF_COAL                                           :{COMMA16} tone de cãrbune
-STR_0071_BAGS_OF_MAIL                                           :{COMMA16} saci cu colete postale
+STR_006F_PASSENGERS                                             :{COMMA} cãlãtori
+STR_0070_TONS_OF_COAL                                           :{COMMA} tone de cãrbune
+STR_0071_BAGS_OF_MAIL                                           :{COMMA} saci cu colete postale
 STR_0072_OF_OIL                                                 :{VOLUME} de petrol
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA16} animale
-STR_0074_CRATES_OF_GOODS                                        :{COMMA16} pachete de bunuri
-STR_0075_TONS_OF_GRAIN                                          :{COMMA16} tone de cereale
-STR_0076_TONS_OF_WOOD                                           :{COMMA16} tone de lemne
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA16} tone de minereu de fier
-STR_0078_TONS_OF_STEEL                                          :{COMMA16} tone de otel
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA16} cutii de valori
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA16} tone de minereu de cupru
-STR_007B_TONS_OF_MAIZE                                          :{COMMA16} tone de porumb
-STR_007C_TONS_OF_FRUIT                                          :{COMMA16} tone de fructe
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA16} saci cu diamante
-STR_007E_TONS_OF_FOOD                                           :{COMMA16} tone de alimente
-STR_007F_TONS_OF_PAPER                                          :{COMMA16} tone de hârtie
-STR_0080_BAGS_OF_GOLD                                           :{COMMA16} saci cu aur
+STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} animale
+STR_0074_CRATES_OF_GOODS                                        :{COMMA} pachete de bunuri
+STR_0075_TONS_OF_GRAIN                                          :{COMMA} tone de cereale
+STR_0076_TONS_OF_WOOD                                           :{COMMA} tone de lemne
+STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} tone de minereu de fier
+STR_0078_TONS_OF_STEEL                                          :{COMMA} tone de otel
+STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} cutii de valori
+STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} tone de minereu de cupru
+STR_007B_TONS_OF_MAIZE                                          :{COMMA} tone de porumb
+STR_007C_TONS_OF_FRUIT                                          :{COMMA} tone de fructe
+STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} saci cu diamante
+STR_007E_TONS_OF_FOOD                                           :{COMMA} tone de alimente
+STR_007F_TONS_OF_PAPER                                          :{COMMA} tone de hârtie
+STR_0080_BAGS_OF_GOLD                                           :{COMMA} saci cu aur
 STR_0081_OF_WATER                                               :{VOLUME} de apã
-STR_0082_TONS_OF_WHEAT                                          :{COMMA16} tone de grâu
+STR_0082_TONS_OF_WHEAT                                          :{COMMA} tone de grâu
 STR_0083_OF_RUBBER                                              :{VOLUME} de cauciuc
-STR_0084_TONS_OF_SUGAR                                          :{COMMA16} tone de zahãr
-STR_0085_TOYS                                                   :{COMMA16} saci cu jucãrii
-STR_0086_BAGS_OF_CANDY                                          :{COMMA16} saci cu bomboane
+STR_0084_TONS_OF_SUGAR                                          :{COMMA} tone de zahãr
+STR_0085_TOYS                                                   :{COMMA} saci cu jucãrii
+STR_0086_BAGS_OF_CANDY                                          :{COMMA} saci cu bomboane
 STR_0087_OF_COLA                                                :{VOLUME} de cola
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA16} tone de vatã de zahãr
-STR_0089_BUBBLES                                                :{COMMA16} balonase
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA16} tone de caramel
-STR_008B_BATTERIES                                              :{COMMA16} baterii
+STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} tone de vatã de zahãr
+STR_0089_BUBBLES                                                :{COMMA} balonase
+STR_008A_TONS_OF_TOFFEE                                         :{COMMA} tone de caramel
+STR_008B_BATTERIES                                              :{COMMA} baterii
 STR_008C_OF_PLASTIC                                             :{VOLUME} de plastic
-STR_008D_FIZZY_DRINKS                                           :{COMMA16} bidoane cu suc
+STR_008D_FIZZY_DRINKS                                           :{COMMA} bidoane cu suc
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}CL
 STR_0090_CL                                                     :{TINYFONT}CB
@@ -219,8 +219,8 @@ STR_00DE_BROWN                                                  :Maro
 STR_00DF_GREY                                                   :Gri
 STR_00E0_WHITE                                                  :Alb
 STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Prea multe vehicule în joc
-STR_00E2                                                        :{BLACK}{COMMA16}
-STR_00E3                                                        :{RED}{COMMA16}
+STR_00E2                                                        :{BLACK}{COMMA}
+STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}Locatie
 STR_00E5_CONTOURS                                               :Relief
 STR_00E6_VEHICLES                                               :Vehicule
@@ -441,18 +441,18 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Activeaz
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Profit anul acesta: {CURRENCY} (anul trecut: {CURRENCY})
 
 ############ range for service numbers starts
-STR_0199_YEAR                                                   :{COMMA16} an ({COMMA16})
-STR_019A_YEARS                                                  :{COMMA16} ani ({COMMA16})
-STR_019B_YEARS                                                  :{RED}{COMMA16} ani ({COMMA16})
+STR_0199_YEAR                                                   :{COMMA} an ({COMMA})
+STR_019A_YEARS                                                  :{COMMA} ani ({COMMA})
+STR_019B_YEARS                                                  :{RED}{COMMA} ani ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Autovehicolul
 STR_019D_AIRCRAFT                                               :Aeronava
 STR_019E_SHIP                                                   :Nava
 STR_019F_TRAIN                                                  :Trenul
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA16} este vechi
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA16} este foarte vechi
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA16} este foarte vechi si trebuie înlocuit urgent
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} este vechi
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} este foarte vechi
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} este foarte vechi si trebuie înlocuit urgent
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informatii teren
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Costul demolãrii: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Costul demolãrii: {LTBLUE}{CURRENCY}
@@ -497,7 +497,7 @@ STR_01C9_30TH                                                   :30
 STR_01CA_31ST                                                   :31
 ############ range for days	ends
 
-STR_01CB                                                        :{TINYFONT}{COMMA16}
+STR_01CB                                                        :{TINYFONT}{COMMA}
 STR_01CC_TOGGLE_LARGE_SMALL_MAP                                 :{BLACK}Comutator dimensiune harta (micã/mijlocie/mare)
 STR_01CD_SELECT_TUTORIAL_DEMONSTRATION                          :{WHITE}Alege vizionarea unui tutorial (demonstratie)
 
@@ -509,7 +509,7 @@ STR_CARGO_ACCEPTED_4                                            :{BLACK}Încãrcãt
 STR_CARGO_ACCEPTED_5                                            :{BLACK}Încãrcãturi acceptate: {LTBLUE}{STRING}, {STRING}, {STRING}, {STRING}, {STRING}
 ############ range for cargo acecpted ends
 
-STR_01D1_8                                                      :({COMMA8}/8 {STRING})
+STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Tonomatul cu jazz
 STR_01D3_SOUND_MUSIC                                            :Sunet/muzicã
 STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Afiseazã fereastra pentru configurarea sunetului/muzicii
@@ -528,16 +528,16 @@ STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Opreste 
 STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Porneste muzica
 STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Foloseste acest indicator pentru a regla volumul muzicii si al efectelor sonore
 STR_01E3                                                        :{DKGREEN}{TINYFONT}--
-STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA8}
-STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA8}
+STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
+STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Piesa nr: {SETX 88}Titlul
 STR_01E9_SHUFFLE                                                :{TINYFONT}Amestecã
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Program
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Programare piese muzicale
-STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA16} "{STRING}"
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA16}   "{STRING}"
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA}   "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Lista melodiilor
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Sterge
@@ -577,7 +577,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Sunet p
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...prea departe de destinatia precedentã
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Primele companii care au atins {NUMU16}{}(Nivelul {STRING})
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Clasamentul companiilor in {NUMU16}
-STR_0212                                                        :{BIGFONT}{COMMA16}.
+STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Om de afaceri
 STR_0214_ENTREPRENEUR                                           :Întreprinzãtor
 STR_0215_INDUSTRIALIST                                          :Industrias
@@ -586,12 +586,12 @@ STR_0217_MAGNATE                                                :Magnat
 STR_0218_MOGUL                                                  :Mogul
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Magnatul Secolului
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{STRING}, {STRING}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA16})
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{STRING} a dobandit titlul de '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{STRING} al {STRING} dobandeste titlul de '{STRING}'!
 STR_021D                                                        :{BLACK}
 STR_021E                                                        :{WHITE}
-STR_021F                                                        :{BLUE}{COMMA16}
+STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Creeazã scenariu
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Editor scenarii
@@ -788,8 +788,8 @@ STR_02DE_MAP_OF_WORLD                                           :Harta lumii (F4
 STR_EXTRA_VIEW_PORT                                             :Extra ecran
 STR_SIGN_LIST                                                   :Lista de semne
 STR_02DF_TOWN_DIRECTORY                                         :Lista oraselor
-STR_TOWN_POPULATION                                             :{BLACK}Populatia totala: {COMMA32}
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Ecran{COMMA16}
+STR_TOWN_POPULATION                                             :{BLACK}Populatia totala: {COMMA}
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Ecran{COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copiaza pe ecranul principal
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copiaza locatia ecranului principal in acest ecran
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Importa din ecran
@@ -961,34 +961,34 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nu pot c
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nu pot copia lista de comenzi...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Sfârsitul comenzilor comune - -
 
-STR_TRAIN_IS_LOST                                               :{WHITE}Trenul {COMMA16} s-a rãtãcit.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Profitul trenului {COMMA16} a fost anul trecut de {CURRENCY}
+STR_TRAIN_IS_LOST                                               :{WHITE}Trenul {COMMA} s-a rãtãcit.
+STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Profitul trenului {COMMA} a fost anul trecut de {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Uniunea Monetarã Europeanã!{}{}Euro este introdus în tarã ca monedã unicã de folosintã în tranzactiile zilnice!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Trenul {COMMA16} are prea putine comenzi în listã
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Trenul {COMMA16} nu are comenzi
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Trenul {COMMA16} are comenzi repetate
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Trenul {COMMA16} are o statie inexistentã în comenzi
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Autovehiculul {COMMA16} are prea putine comenzi în listã
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Autovehiculul {COMMA16} nu are comenzi
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Autovehiculul {COMMA16} are comenzi repetate
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Autovehiculul {COMMA16} are o statie inexistentã în comenzi
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Nava {COMMA16} are prea putine comenzi în listã
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Nava {COMMA16} nu are comenzi
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Nava {COMMA16} are comenzi repetate
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Nava {COMMA16} are o statie inexistentã în comenzi
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Aeronava {COMMA16} are prea putine comenzi în listã
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Aeronava {COMMA16} nu are comenzi
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Aeronava {COMMA16} are comenzi repetate
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Aeronava {COMMA16} are o statie inexistentã în comenzi
+STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Trenul {COMMA} are prea putine comenzi în listã
+STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Trenul {COMMA} nu are comenzi
+STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Trenul {COMMA} are comenzi repetate
+STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Trenul {COMMA} are o statie inexistentã în comenzi
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Autovehiculul {COMMA} are prea putine comenzi în listã
+STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Autovehiculul {COMMA} nu are comenzi
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Autovehiculul {COMMA} are comenzi repetate
+STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Autovehiculul {COMMA} are o statie inexistentã în comenzi
+STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Nava {COMMA} are prea putine comenzi în listã
+STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Nava {COMMA} nu are comenzi
+STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Nava {COMMA} are comenzi repetate
+STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Nava {COMMA} are o statie inexistentã în comenzi
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Aeronava {COMMA} are prea putine comenzi în listã
+STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Aeronava {COMMA} nu are comenzi
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Aeronava {COMMA} are comenzi repetate
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Aeronava {COMMA} are o statie inexistentã în comenzi
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Înnoirea trenului {COMMA16} a esuat (fonduri limitate)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Înnoirea autovehiculului {COMMA16} a esuat (fonduri limitate)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Înnoirea navei {COMMA16} a esuat (fonduri limitate)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Înnoirea aeronavei {COMMA16} a esuat (fonduri limitate)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Înnoirea trenului {COMMA} a esuat (fonduri limitate)
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Înnoirea autovehiculului {COMMA} a esuat (fonduri limitate)
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Înnoirea navei {COMMA} a esuat (fonduri limitate)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Înnoirea aeronavei {COMMA} a esuat (fonduri limitate)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Configurare patch
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configureazã patch-urile OpenTTD
@@ -1104,7 +1104,7 @@ STR_CHEATS                                                      :{WHITE}Cheat-ur
 STR_CHEATS_TIP                                                  :{BLACK}Checkbox-urile aratã un cheat folosit anterior
 STR_CHEATS_WARNING                                              :{BLACK}Atentie! Esti pe cale sã-ti trãdezi colegii de joc! Nu uita cã aceastã rusine va rãmâne înregistratã pentru totdeauna!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Mãreste fondurile cu {CURRENCY64}
-STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Joacã în locul jucãtorului: {ORANGE}{COMMA16}
+STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Joacã în locul jucãtorului: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer magic (demoleazã industrii si lucruri amovibile): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunelele se pot intersecta: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Construieste în modul pauzã: {ORANGE}{STRING}
@@ -1120,7 +1120,7 @@ STR_GO_TO_WAYPOINT                                              :Mergi via {WAYP
 STR_GO_NON_STOP_TO_WAYPOINT                                     :Mergi non-stop via {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY                                           :Halta {TOWN}
-STR_WAYPOINTNAME_CITY_SERIAL                                    :Halta {TOWN} #{COMMA16}
+STR_WAYPOINTNAME_CITY_SERIAL                                    :Halta {TOWN} #{COMMA}
 STR_LANDINFO_WAYPOINT                                           :Haltã de miscare
 
 STR_WAYPOINT                                                    :{WHITE}Punct de tranzit
@@ -1203,8 +1203,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Construi
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Construieste minã de zahãr
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrii
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% transportat)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% transportat)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA}% transportat)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportat)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{TOWN} {STRING}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...prea aproape de altã industrie
@@ -1244,15 +1244,15 @@ STR_NETWORK_ADD_SERVER                                          :{BLACK}Adauga u
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Adauga un server pe lista care va fi verificata pentru jocuri active
 STR_NETWORK_ENTER_IP                                            :{BLACK}Introdu IP-ul serverului
 
-STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clienti
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clienti online / Nr. max. clienti
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO JOC
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Clienti:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_CLIENTS                                             :{SILVER}Clienti:  {WHITE}{COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Limba:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Tileset:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Marimea hartii:  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Marimea hartii:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versiune server:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adresa serverului:  {WHITE}{STRING} : {NUMU16}
 STR_NETWORK_START_DATE                                          :{SILVER}Data de inceput:  {WHITE}{DATE_SHORT}
@@ -1517,21 +1517,21 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Traversare la n
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Orase
-STR_TOWN_LABEL_POP                                              :{WHITE}{STRING} ({COMMA32})
+STR_TOWN_LABEL_POP                                              :{WHITE}{STRING} ({COMMA})
 STR_2001                                                        :{WHITE}{STRING}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2003                                                        :{TINYFONT}{WHITE}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Mai întâi trebuie sã demolezi clãdirea
 STR_2005                                                        :{WHITE}{TOWN}
-STR_2006_POPULATION                                             :{BLACK}Populatia: {ORANGE}{COMMA32}{BLACK}  Locuinte: {ORANGE}{COMMA32}
+STR_2006_POPULATION                                             :{BLACK}Populatia: {ORANGE}{COMMA}{BLACK}  Locuinte: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Redenumire
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Nu pot redenumi orasul...
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Autoritãtile locale din {TOWN} refuzã sã permitã acest lucru
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Numele oraselor - clic pe un nume pentru a centra imaginea pe orasul respectiv
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Mutã imaginea pe locatia orasului
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Schimbã numele orasului
-STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Calatori luna trecuta: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
-STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Colete postale luna trecuta: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Calatori luna trecuta: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Colete postale luna trecuta: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200F_TALL_OFFICE_BLOCK                                      :Clãdire înaltã de birouri
 STR_2010_OFFICE_BLOCK                                           :Clãdire de birouri
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Clãdire micã de birouri
@@ -1605,7 +1605,7 @@ STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Mituieste autoritãtile locale pentru a-ti îmbunãtãti ratingul, dar cu riscul de a fi prins si de a plãti amenzi serioase.{}  Cost: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Haos pe strãzile din {TOWN}!{}{}Programul finantat de {STRING} pentru reconstructia strãzilor, aduce 6 luni de haos participantilor la trafic!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
-STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA32})
+STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (în constructie)
 STR_2059_IGLOO                                                  :Iglu
 STR_205A_TEPEES                                                 :Corturi
@@ -1667,7 +1667,7 @@ STR_303B_EXCELLENT                                              :Excelent
 STR_303C_OUTSTANDING                                            :Fantastic
 ############ range for rating ends
 
-STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA8}%)
+STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} nu mai acceptã {STRING}
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} nu mai acceptã {STRING} sau {STRING}
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} acceptã acum {STRING}
@@ -1678,7 +1678,7 @@ STR_3044_TOO_CLOSE_TO_ANOTHER_BUS                               :{WHITE}Prea apr
 STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK                             :{WHITE}Prea aproape de altã platformã pentru camioane
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Mai intâi trebuie demolatã statia de autbuz
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Mai intâi trebuie demolatã platforma pentru camioane
-STR_3048_STATIONS                                               :{WHITE}{STRING} - {COMMA16} Statii
+STR_3048_STATIONS                                               :{WHITE}{STRING} - {COMMA} Statii
 STR_3049_0                                                      :{YELLOW}{STATION} {STRINL 0x30D1}
 STR_304A_NONE                                                   :{YELLOW}- Nici una -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...locatie nepotrivitã
@@ -1735,7 +1735,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Încarcã 
 STR_4002_SAVE                                                   :{BLACK}Salveazã
 STR_4003_DELETE                                                 :{BLACK}Sterge
 STR_4004                                                        :{STRING}, {DATE_LONG}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA32} megabytes liberi
+STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabytes liberi
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Nu pot citi acest drive
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Salvarea jocului esuatã
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Stergerea jocului esuatã
@@ -1796,7 +1796,7 @@ STR_4829_REQUIRES                                               :{BLACK}Are nevo
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Productia luna trecutã:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA16}% transportat)
+STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% transportat)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centreazã imaginea pe locatia industriei
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Un nou obiectiv industrial ({STRING}) se construieste lângã {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}O nouã {STRING} se planteazã lângã {TOWN}!
@@ -1813,8 +1813,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}Productia obiectivului {TOWN} - {STRING} a scãzut la jumãtate!
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Pagube majore din cauza insectelor la {TOWN} - {STRING}!{}Productia a scãzut cu 50%!
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...se poate construi doar la marginea hãrtii
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Productia de {STRING} de la {TOWN} - {STRING} a crescut cu {COMMA16}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Productia de {STRING} de la {TOWN} - {STRING} a scãzut cu {COMMA16}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Productia de {STRING} de la {TOWN} - {STRING} a crescut cu {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Productia de {STRING} de la {TOWN} - {STRING} a scãzut cu {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Tren în tunel
@@ -1877,10 +1877,10 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...este 
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :NoName{SKIP}
-STR_SV_TRAIN_NAME                                               :Trenul {COMMA16}
-STR_SV_ROADVEH_NAME                                             :Autovehiculul {COMMA16}
-STR_SV_SHIP_NAME                                                :Nava {COMMA16}
-STR_SV_AIRCRAFT_NAME                                            :Aeronava {COMMA16}
+STR_SV_TRAIN_NAME                                               :Trenul {COMMA}
+STR_SV_ROADVEH_NAME                                             :Autovehiculul {COMMA}
+STR_SV_SHIP_NAME                                                :Nava {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Aeronava {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} Nord
@@ -1930,12 +1930,12 @@ STR_6804_CUSTOM                                                 :{BLACK}Propriu
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
-STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Numãrul maxim de companii concurente: {ORANGE}{COMMA16}
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Numãrul maxim de companii concurente: {ORANGE}{COMMA}
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Când intrã concurentii pe piatã: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Numãrul de orase de pe hartã: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Numãrul de obiective industriale: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Valoarea maximã a împrumutului initial: {ORANGE}{CURRENCY}
-STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Rata initialã a dobânzii: {ORANGE}{COMMA16}%
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Rata initialã a dobânzii: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Costul de exploatare al vehiculelor: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Viteza de constructie a concurentilor: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Gradul de inteligentã al concurentilor: {ORANGE}{STRING}
@@ -1994,7 +1994,7 @@ STR_683B_HOSTILE                                                :ostilã
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{STRING} {BLACK}{STRING}
-STR_7002_PLAYER                                                 :(Jucãtorul {COMMA16})
+STR_7002_PLAYER                                                 :(Jucãtorul {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Schimbã foto
 STR_7005_COLOR_SCHEME                                           :{BLACK}Culoare
 STR_7006_COLOR_SCHEME                                           :{GOLD}Culoare:
@@ -2028,7 +2028,7 @@ STR_7021                                                        :{STRING}{STRING
 STR_7022_INCOME_GRAPH                                           :{WHITE}Graficul veniturilor
 STR_CURRCOMPACT32                                               :{CURRCOMPACT}
 STR_CURRCOMPACT64                                               :{CURRCOMPACT64}
-STR_7024                                                        :{COMMA32}
+STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Graficul profitului din operare
 STR_7026_BANK_BALANCE                                           :{WHITE}Balantã curentã
 STR_7027_LOAN                                                   :{WHITE}Credite
@@ -2052,14 +2052,14 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Plãteste
 STR_7037_PRESIDENT                                              :{WHITE}{STRING}{}{GOLD}(Presedinte)
 STR_7038_INAUGURATED                                            :{GOLD}Anul înfiintãrii: {WHITE}{NUMU16}
 STR_7039_VEHICLES                                               :{GOLD}Vehicule:
-STR_703A_TRAIN                                                  :{WHITE}{COMMA16} tren
-STR_703B_TRAINS                                                 :{WHITE}{COMMA16} trenuri
-STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA16} autovehicul
-STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA16} autovehicule
-STR_703E_AIRCRAFT                                               :{WHITE}{COMMA16} aeronavã
-STR_703F_AIRCRAFT                                               :{WHITE}{COMMA16} aeronave
-STR_7040_SHIP                                                   :{WHITE}{COMMA16} navã
-STR_7041_SHIPS                                                  :{WHITE}{COMMA16} nave
+STR_703A_TRAIN                                                  :{WHITE}{COMMA} tren
+STR_703B_TRAINS                                                 :{WHITE}{COMMA} trenuri
+STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA} autovehicul
+STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA} autovehicule
+STR_703E_AIRCRAFT                                               :{WHITE}{COMMA} aeronavã
+STR_703F_AIRCRAFT                                               :{WHITE}{COMMA} aeronave
+STR_7040_SHIP                                                   :{WHITE}{COMMA} navã
+STR_7041_SHIPS                                                  :{WHITE}{COMMA} nave
 STR_7042_NONE                                                   :{WHITE}Nici unul
 STR_7043_FACE_SELECTION                                         :{WHITE}Alegerea fotografiei
 STR_7044_MALE                                                   :{BLACK}Bãrbat
@@ -2124,8 +2124,8 @@ STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Cumpãrã 
 STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Vinde 25% din actiunile aceste companii
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Nu pot cumpãra 25% din aceastã companie...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Nu pot vinde 25% din aceastã companie...
-STR_707D_OWNED_BY                                               :{WHITE}({COMMA16}% detinute de {STRING})
-STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA16}% detinute de {STRING}{}   {COMMA16}% detinute de {STRING})
+STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% detinute de {STRING})
+STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% detinute de {STRING}{}   {COMMA}% detinute de {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{STRING} a fost preluatã de {STRING}!
 STR_7080_PROTECTED                                              :{WHITE}Aceasta companie inca nu vinde actiuni...
 
@@ -2400,8 +2400,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Depoul {
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cetãtenii sãrbãtoresc {}sosirea primului tren la {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Detalii)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren în drum
-STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
 STR_8806_GO_TO                                                  :Mergi la {STATION}
 STR_8807_GO_TO_TRANSFER                                         :Mergi la {STATION} (Transferã si preia încãrcãtura)
 STR_8808_GO_TO_UNLOAD                                           :Mergi la {STATION} (Descarcã)
@@ -2427,13 +2427,13 @@ STR_INVALID_ORDER                                               :{RED} (Comenzi 
 STR_UNKNOWN_DESTINATION                                         :destinatie necunoscutã
 STR_8812_EMPTY                                                  :{LTBLUE}Gol
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} de la {STATION}
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Trenul {COMMA16} asteaptã în depou
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Trenul {COMMA} asteaptã în depou
 STR_8815_NEW_VEHICLES                                           :{BLACK}Vehicule noi
 STR_8816                                                        :{BLACK}-
 STR_8818_INFORMATION                                            :{BLACK}Informatii
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Tren prea lung
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Trenurile pot fi modificate doar când se aflã într-un depou
-STR_881B_TRAINS                                                 :{WHITE}{STRING} - {COMMA16} Trenuri
+STR_881B_TRAINS                                                 :{WHITE}{STRING} - {COMMA} Trenuri
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Noi vehicule feroviare
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Noi vehicule monorail
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Noi vehicule maglev
@@ -2467,8 +2467,8 @@ STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Nu pot vinde vehiculul...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Nu pot gãsi un drum spre un depou local
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Nu pot opri-porni trenul...
-STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Intervalul pt. service: {LTBLUE}{COMMA16}zile{BLACK}   Ultimul service: {LTBLUE}{DATE_LONG}
-STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Intervalul de service: {LTBLUE}{COMMA16}%{BLACK}   Ultimul service: {LTBLUE}{DATE_LONG}
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Intervalul pt. service: {LTBLUE}{COMMA}zile{BLACK}   Ultimul service: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Intervalul de service: {LTBLUE}{COMMA}%{BLACK}   Ultimul service: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trenuri - apasã aici pentru informatii despre trenuri
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Cumpãrã trenuri noi (necesitã un depou)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trenuri - clic pe tren pentru informatii, mutã vehiculele pentru adaugare scoatere din tren
@@ -2501,12 +2501,12 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Forteazã
 STR_SERVICE_HINT                                                :{BLACK}Sãri peste aceastã comandã dacã nu este necesar un service
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Stiri: {STRING} este acum disponibil!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Cost: {CURRENCY} Greutate: {COMMA16}t{}Vitezã: {VELOCITY}  Putere: {COMMA16}cp{}Cost de rulare: {CURRENCY}/an{}Capacitate: {STRING}
+STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Cost: {CURRENCY} Greutate: {COMMA}t{}Vitezã: {VELOCITY}  Putere: {COMMA}cp{}Cost de rulare: {CURRENCY}/an{}Capacitate: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Defectiune
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vechimea: {LTBLUE}{STRING}{BLACK}   Cost de rulare: {LTBLUE}{CURRENCY}/an
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Greutate: {LTBLUE}{COMMA16}t  {BLACK}Putere: {LTBLUE}{COMMA32}cp{BLACK} Vitezã max.: {LTBLUE}{VELOCITY}
+STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Greutate: {LTBLUE}{COMMA}t  {BLACK}Putere: {LTBLUE}{COMMA}cp{BLACK} Vitezã max.: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit anul acesta: {LTBLUE}{CURRENCY}  (anul trecut: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eficientã: {LTBLUE}{COMMA8}%  {BLACK}Defectiuni de la ultimul service: {LTBLUE}{COMMA16}
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eficientã: {LTBLUE}{COMMA}%  {BLACK}Defectiuni de la ultimul service: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Oprit
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Nu pot permite trenului sã treacã în caz de pericol...
 STR_8863_CRASHED                                                :{RED}Accident!
@@ -2514,7 +2514,7 @@ STR_8863_CRASHED                                                :{RED}Accident!
 STR_8865_NAME_TRAIN                                             :{WHITE}Numele trenului
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Nu pot redenumi trenul...
 STR_8867_NAME_TRAIN                                             :{BLACK}Numele trenului
-STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Accident feroviar!{}{COMMA16} victime în urma unei coliziuni
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Accident feroviar!{}{COMMA} victime în urma unei coliziuni
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nu pot schimba sensul de mers al trenului...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Redenumeste modelul vehiculului feroviar
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nu pot redenumi modelul acestui vehicul...
@@ -2526,7 +2526,7 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Oprire, {V
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Autovehicul in cale
-STR_9001_ROAD_VEHICLES                                          :{WHITE}{STRING} - {COMMA16}Autovehicule
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{STRING} - {COMMA}Autovehicule
 STR_9002                                                        :{WHITE}{STRING}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}Autobaza {TOWN}
 STR_9004_NEW_VEHICLES                                           :{BLACK}Autovehicule noi
@@ -2540,13 +2540,13 @@ STR_900C_DETAILS                                                :{WHITE}{STRING}
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Vârsta: {LTBLUE}{STRING}{BLACK}   Cost de rulare: {LTBLUE}{CURRENCY}/an
 STR_900E_MAX_SPEED                                              :{BLACK}Vitezã max.: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit anul acesta: {LTBLUE}{CURRENCY}  (anul trecut: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eficientã: {LTBLUE}{COMMA8}%  {BLACK}Defectiuni de la ultimul service: {LTBLUE}{COMMA16}
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eficientã: {LTBLUE}{COMMA}%  {BLACK}Defectiuni de la ultimul service: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Cumpãrat: {LTBLUE}{NUMU16}{BLACK} Valoare: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...trebuie oprit intr-o autobazã
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nu pot vinde autovehiculul...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nu pot opri/porni autovehiculul...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Autovehiculul {COMMA16} e parcat la autobazã
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Autovehiculul {COMMA} e parcat la autobazã
 STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Merge la Autobaza {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Merge la Autobaza {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Nu pot trimite autovehiculul la autobazã...
@@ -2575,7 +2575,7 @@ STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Numele a
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cetãtenii sãrbãtoresc{}sosirea primului autobuz la {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cetãtenii sãrbãtoresc{}sosirea primului camion la {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Accident rutier!{}Soferul decedat in urma coliziunii cu un tren
-STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Accident rutier!{}{COMMA16} victime in urma coliziunii cu un tren
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Accident rutier!{}{COMMA} victime in urma coliziunii cu un tren
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Nu pot schimba întoarce autvehiculul...
 STR_9034_RENAME                                                 :{BLACK}Redenumeste
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Redenumeste modelul de autovehicul
@@ -2590,7 +2590,7 @@ STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Construc
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Nu pot construi port aici...
 STR_9803_SHIP_DEPOT                                             :{WHITE}Santierul Naval {TOWN}
 STR_9804_NEW_SHIPS                                              :{BLACK}Nave noi
-STR_9805_SHIPS                                                  :{WHITE}{STRING} - {COMMA16}Nave
+STR_9805_SHIPS                                                  :{WHITE}{STRING} - {COMMA}Nave
 STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Nu pot construi nave...
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Construieste mai intâi un santier
 STR_9808_NEW_SHIPS                                              :{WHITE}Nave noi
@@ -2605,7 +2605,7 @@ STR_9811_DETAILS                                                :{WHITE}{STRING}
 STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Vârsta: {LTBLUE}{STRING}{BLACK}   Cost de rulare: {LTBLUE}{CURRENCY}/an
 STR_9813_MAX_SPEED                                              :{BLACK}Viteza max.: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit anul acesta: {LTBLUE}{CURRENCY}  (anul trecut: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eficientã: {LTBLUE}{COMMA8}%  {BLACK}Defectiuni de la ultimul service: {LTBLUE}{COMMA16}
+STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eficientã: {LTBLUE}{COMMA}%  {BLACK}Defectiuni de la ultimul service: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Construit: {LTBLUE}{NUMU16}{BLACK} Valoare: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nu pot opri/porni nava...
@@ -2613,7 +2613,7 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nu pot t
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nu pot gãsi un santier apropiat
 STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Merge la Santierul {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Merge la Santierul {TOWN}, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Nava {COMMA16} este stationatã în santier
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Nava {COMMA} este stationatã în santier
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construieste port
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Constructie santier naval (pentru construirea si repararea navelor)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Nave - clic pe o navã pentru informatii
@@ -2664,19 +2664,19 @@ STR_A004_INFORMATION                                            :{BLACK}Informat
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Aeronavã nouã
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Cumpãrã aeronavã
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nu pot cumpãra aeronava...
-STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA16} Aeronave
+STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA} Aeronave
 STR_A00A                                                        :{WHITE}{STRING}
 STR_A00B_ORDERS                                                 :{WHITE}{STRING} (Comenzi)
 STR_A00C_DETAILS                                                :{WHITE}{STRING} (Detalii)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Vârstã: {LTBLUE}{STRING}{BLACK}   Cost de rulare: {LTBLUE}{CURRENCY}/an
 STR_A00E_MAX_SPEED                                              :{BLACK}Vitezã max.: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit anul acesta: {LTBLUE}{CURRENCY}  (anul trecut: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eficientã: {LTBLUE}{COMMA8}%  {BLACK}Defectiuni de la ultimul service: {LTBLUE}{COMMA16}
+STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eficientã: {LTBLUE}{COMMA}%  {BLACK}Defectiuni de la ultimul service: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Cumpãrat în: {LTBLUE}{NUMU16}{BLACK} Valoare: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nu pot trimite nava într+un hangar...
 STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Merge la Hangarul {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Merge la Hangarul{STATION}, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Aeronava {COMMA16} se aflã în hangar
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Aeronava {COMMA} se aflã în hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeronavã în cale
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nu pot opri/porni aeronava...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Aeronavã se aflã în zbor
@@ -2702,14 +2702,14 @@ STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Trimite 
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Afiseazã detaliile aeronavei
 STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Un nou tip de aeronavã disponibil!
 STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Pret: {CURRENCY} Viteza max.: {VELOCITY}{}Capacitate: {COMMA16} cãlãtori, {COMMA16} saci de postã{}Cost de rulare: {CURRENCY}/an
+STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Pret: {CURRENCY} Viteza max.: {VELOCITY}{}Capacitate: {COMMA} cãlãtori, {COMMA} saci de postã{}Cost de rulare: {CURRENCY}/an
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Redenumeste aeronava
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Nu pot redenumi aeronava...
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Redenumeste aeronava
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cetãtenii sãrbãtoresc {}sosirea primei aeronave la {STATION}!
-STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Accident aviatic!{}{COMMA16} victime în urma prãbusirii de la {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Accident aerian!{}Aeronava in pana de combustibil, {COMMA16} victime in urma dezastrulu!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Accident aviatic!{}{COMMA} victime în urma prãbusirii de la {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Accident aerian!{}Aeronava in pana de combustibil, {COMMA} victime in urma dezastrulu!
 STR_A035_DESTINATIONS                                           :{TINYFONT}{BLACK}Destinatii:
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Redenumire
@@ -2735,7 +2735,7 @@ STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Fabricã de conserve distrusã în conditii misterioase lângã {TOWN}!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}Un OZN a aterizat lângã {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Prãbusirea unei mine de cupru lângã {TOWN} provoacã daune majore!
-STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Inundatii!{}Se estimeaza cel putin {COMMA16}  victime!
+STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Inundatii!{}Se estimeaza cel putin {COMMA}  victime!
 
 STR_BRIBE_FAILED                                                :{WHITE}Încercarea ta de mituire
 STR_BRIBE_FAILED_2                                              :{WHITE}a fost descoperitã de un procuror local
@@ -2745,7 +2745,7 @@ STR_MULTIPLAYER_PAUSED                                          :{WHITE}Jocul es
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Ratingul de performantã detaliat
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalii
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
-STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA32}/{COMMA32})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{INT32}%
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{INT32}
 ############ Those following lines need to be in this order!!
@@ -2780,7 +2780,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Nume fis
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moneda proprie
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Curs de schimb: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA16}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Curs de schimb: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufix:
@@ -2794,10 +2794,10 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA16} Trenuri
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA16} Autovehicule
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA16} Aeronave
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA16} Nave
+STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Trenuri
+STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Autovehicule
+STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Aeronave
+STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Nave
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Afiseaza toate trenurile care opresc in aceasta statie
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Afiseaza toate autovehiculele care opresc in aceasta statie
@@ -2819,7 +2819,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Afiseaza
 STR_REPLACE_HELP                                                :{BLACK}Aceasta functie iti permite sa selectezi un model de vehicul si sa-l inlocuiesti cu altul. Schimbarea se va efectua automat la intrarea vehiculului intr-un depou.
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de semne - {COMMA16} Semne
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de semne - {COMMA} Semne
 
 ############ Lists rail types
 
@@ -2829,16 +2829,16 @@ STR_MAGLEV_VEHICLES                                             :Vehicule Maglev
 
 ############ End of list of rail types
 
-STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
+STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Greutate: {GOLD}{COMMA16}t
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Viteza: {GOLD}{VELOCITY}{BLACK}   Putere: {GOLD}{COMMA32}hp
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Greutate: {GOLD}{COMMA}t
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Viteza: {GOLD}{VELOCITY}{BLACK}   Putere: {GOLD}{COMMA}hp
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cost de rulare: {GOLD}{CURRENCY}/an
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacitate: {GOLD}{STRING} {STRING}
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}An aparitie: {GOLD}{NUMU16}{BLACK} Durata de viata: {GOLD}{COMMA16} years
-STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Eficienta max.: {GOLD}{COMMA8}%
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}An aparitie: {GOLD}{NUMU16}{BLACK} Durata de viata: {GOLD}{COMMA} years
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Eficienta max.: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Greutate: {GOLD}{COMMA16}t  ({COMMA16}t)
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Greutate: {GOLD}{COMMA}t  ({COMMA}t)
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Viteza: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacitate: {GOLD}{COMMA16} calatori, {COMMA16} saci de posta
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoane electrificate: {GOLD}+{COMMA16}cp{BLACK} Greutate: {GOLD}+{COMMA8}t
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacitate: {GOLD}{COMMA} calatori, {COMMA} saci de posta
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoane electrificate: {GOLD}+{COMMA}cp{BLACK} Greutate: {GOLD}+{COMMA}t

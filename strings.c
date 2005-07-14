@@ -415,12 +415,8 @@ static char *DecodeString(char *buff, const char *str)
 			*buff++ = *str++;
 			*buff++ = *str++;
 			break;
-		case 0x7B: // {COMMA32}
+		case 0x7B: // {COMMA}
 			buff = FormatCommaNumber(buff, GetParamInt32());
-			break;
-		case 0x7C: // {COMMA16}
-		case 0x7D: // {COMMA8}
-			assert(0);
 			break;
 		case 0x7E: // {NUMU16}, {INT32}
 			buff = FormatNoCommaNumber(buff, GetParamInt32());

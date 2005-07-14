@@ -82,69 +82,69 @@ STR_004B_BATTERY                                                :Pilas
 STR_004C_PLASTIC                                                :Plástico
 STR_004D_FIZZY_DRINK                                            :Refresco
 STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA16} pasajero
-STR_0050_TON_OF_COAL                                            :{COMMA16} tonelada de carbón
-STR_0051_BAG_OF_MAIL                                            :{COMMA16} saca de correo
+STR_004F_PASSENGER                                              :{COMMA} pasajero
+STR_0050_TON_OF_COAL                                            :{COMMA} tonelada de carbón
+STR_0051_BAG_OF_MAIL                                            :{COMMA} saca de correo
 STR_0052_OF_OIL                                                 :{VOLUME} de petróleo
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA16} cabeza de ganado
-STR_0054_CRATE_OF_GOODS                                         :{COMMA16} caja de mercancía
-STR_0055_TON_OF_GRAIN                                           :{COMMA16} tonelada de grano
-STR_0056_TON_OF_WOOD                                            :{COMMA16} tonelada de madera
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA16} tonelada de mineral de hierro
-STR_0058_TON_OF_STEEL                                           :{COMMA16} tonelada de acero
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA16} bolsa de objetos de valor
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA16} tonelada de mineral de cobre
-STR_005B_TON_OF_MAIZE                                           :{COMMA16} tonelada de maíz
-STR_005C_TON_OF_FRUIT                                           :{COMMA16} tonelada de fruta
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA16} bolsa de diamantes
-STR_005E_TON_OF_FOOD                                            :{COMMA16} tonelada de alimento
-STR_005F_TON_OF_PAPER                                           :{COMMA16} tonelada de papel
-STR_0060_BAG_OF_GOLD                                            :{COMMA16} bolsa de oro
+STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} cabeza de ganado
+STR_0054_CRATE_OF_GOODS                                         :{COMMA} caja de mercancía
+STR_0055_TON_OF_GRAIN                                           :{COMMA} tonelada de grano
+STR_0056_TON_OF_WOOD                                            :{COMMA} tonelada de madera
+STR_0057_TON_OF_IRON_ORE                                        :{COMMA} tonelada de mineral de hierro
+STR_0058_TON_OF_STEEL                                           :{COMMA} tonelada de acero
+STR_0059_BAG_OF_VALUABLES                                       :{COMMA} bolsa de objetos de valor
+STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} tonelada de mineral de cobre
+STR_005B_TON_OF_MAIZE                                           :{COMMA} tonelada de maíz
+STR_005C_TON_OF_FRUIT                                           :{COMMA} tonelada de fruta
+STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} bolsa de diamantes
+STR_005E_TON_OF_FOOD                                            :{COMMA} tonelada de alimento
+STR_005F_TON_OF_PAPER                                           :{COMMA} tonelada de papel
+STR_0060_BAG_OF_GOLD                                            :{COMMA} bolsa de oro
 STR_0061_OF_WATER                                               :{VOLUME} de agua
-STR_0062_TON_OF_WHEAT                                           :{COMMA16} tonelada de trigo
+STR_0062_TON_OF_WHEAT                                           :{COMMA} tonelada de trigo
 STR_0063_OF_RUBBER                                              :{VOLUME} de caucho
-STR_0064_TON_OF_SUGAR                                           :{COMMA16} tonelada de azucar
-STR_0065_TOY                                                    :{COMMA16} juguete
-STR_0066_BAG_OF_CANDY                                           :{COMMA16} bolsa de dulces
+STR_0064_TON_OF_SUGAR                                           :{COMMA} tonelada de azucar
+STR_0065_TOY                                                    :{COMMA} juguete
+STR_0066_BAG_OF_CANDY                                           :{COMMA} bolsa de dulces
 STR_0067_OF_COLA                                                :{VOLUME} de cola
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA16} tonelada de algodón de azúcar
-STR_0069_BUBBLE                                                 :{COMMA16} burbuja
-STR_006A_TON_OF_TOFFEE                                          :{COMMA16} tonelada de caramelo
-STR_006B_BATTERY                                                :{COMMA16} pila
+STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} tonelada de algodón de azúcar
+STR_0069_BUBBLE                                                 :{COMMA} burbuja
+STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonelada de caramelo
+STR_006B_BATTERY                                                :{COMMA} pila
 STR_006C_OF_PLASTIC                                             :{VOLUME} de plástico
-STR_006D_FIZZY_DRINK                                            :{COMMA16} refresco
+STR_006D_FIZZY_DRINK                                            :{COMMA} refresco
 STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA16} pasajeros
-STR_0070_TONS_OF_COAL                                           :{COMMA16} toneladas de carbón
-STR_0071_BAGS_OF_MAIL                                           :{COMMA16} sacas de correo
+STR_006F_PASSENGERS                                             :{COMMA} pasajeros
+STR_0070_TONS_OF_COAL                                           :{COMMA} toneladas de carbón
+STR_0071_BAGS_OF_MAIL                                           :{COMMA} sacas de correo
 STR_0072_OF_OIL                                                 :{VOLUME} de petróleo
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA16} cabezas de ganado
-STR_0074_CRATES_OF_GOODS                                        :{COMMA16} cajas de mercancías
-STR_0075_TONS_OF_GRAIN                                          :{COMMA16} toneladas de grano
-STR_0076_TONS_OF_WOOD                                           :{COMMA16} toneladas de madera
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA16} toneladas de mineral de hierro
-STR_0078_TONS_OF_STEEL                                          :{COMMA16} toneladas de acero
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA16} bolsas de objetos de valor
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA16} toneladas de mineral de cobre
-STR_007B_TONS_OF_MAIZE                                          :{COMMA16} toneladas de maíz
-STR_007C_TONS_OF_FRUIT                                          :{COMMA16} toneladas de fruta
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA16} bolsas de diamantes
-STR_007E_TONS_OF_FOOD                                           :{COMMA16} toneladas de alimento
-STR_007F_TONS_OF_PAPER                                          :{COMMA16} toneladas de papel
-STR_0080_BAGS_OF_GOLD                                           :{COMMA16} bolsas de oro
+STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} cabezas de ganado
+STR_0074_CRATES_OF_GOODS                                        :{COMMA} cajas de mercancías
+STR_0075_TONS_OF_GRAIN                                          :{COMMA} toneladas de grano
+STR_0076_TONS_OF_WOOD                                           :{COMMA} toneladas de madera
+STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} toneladas de mineral de hierro
+STR_0078_TONS_OF_STEEL                                          :{COMMA} toneladas de acero
+STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} bolsas de objetos de valor
+STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} toneladas de mineral de cobre
+STR_007B_TONS_OF_MAIZE                                          :{COMMA} toneladas de maíz
+STR_007C_TONS_OF_FRUIT                                          :{COMMA} toneladas de fruta
+STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} bolsas de diamantes
+STR_007E_TONS_OF_FOOD                                           :{COMMA} toneladas de alimento
+STR_007F_TONS_OF_PAPER                                          :{COMMA} toneladas de papel
+STR_0080_BAGS_OF_GOLD                                           :{COMMA} bolsas de oro
 STR_0081_OF_WATER                                               :{VOLUME} de agua
-STR_0082_TONS_OF_WHEAT                                          :{COMMA16} toneladas de trigo
+STR_0082_TONS_OF_WHEAT                                          :{COMMA} toneladas de trigo
 STR_0083_OF_RUBBER                                              :{VOLUME} de caucho
-STR_0084_TONS_OF_SUGAR                                          :{COMMA16} toneladas de azúcar
-STR_0085_TOYS                                                   :{COMMA16} juguetes
-STR_0086_BAGS_OF_CANDY                                          :{COMMA16} bolsas de dulces
+STR_0084_TONS_OF_SUGAR                                          :{COMMA} toneladas de azúcar
+STR_0085_TOYS                                                   :{COMMA} juguetes
+STR_0086_BAGS_OF_CANDY                                          :{COMMA} bolsas de dulces
 STR_0087_OF_COLA                                                :{VOLUME} de cola
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA16} toneladas de algodón de azúcar
-STR_0089_BUBBLES                                                :{COMMA16} burbujas
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA16} toneladas de caramelos
-STR_008B_BATTERIES                                              :{COMMA16} pilas
+STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} toneladas de algodón de azúcar
+STR_0089_BUBBLES                                                :{COMMA} burbujas
+STR_008A_TONS_OF_TOFFEE                                         :{COMMA} toneladas de caramelos
+STR_008B_BATTERIES                                              :{COMMA} pilas
 STR_008C_OF_PLASTIC                                             :{VOLUME} de plástico
-STR_008D_FIZZY_DRINKS                                           :{COMMA16} refrescos
+STR_008D_FIZZY_DRINKS                                           :{COMMA} refrescos
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
 STR_0090_CL                                                     :{TINYFONT}CL
@@ -219,8 +219,8 @@ STR_00DE_BROWN                                                  :Marrón
 STR_00DF_GREY                                                   :Gris
 STR_00E0_WHITE                                                  :Blanco
 STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Demasiados vehículos en el juego
-STR_00E2                                                        :{BLACK}{COMMA16}
-STR_00E3                                                        :{RED}{COMMA16}
+STR_00E2                                                        :{BLACK}{COMMA}
+STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}Sitio
 STR_00E5_CONTOURS                                               :Contornos
 STR_00E6_VEHICLES                                               :Vehículos
@@ -441,18 +441,18 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Poner/qu
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Benefício este año: {CURRENCY} (año anterior: {CURRENCY})
 
 ############ range for service numbers starts
-STR_0199_YEAR                                                   :{COMMA16} año ({COMMA16})
-STR_019A_YEARS                                                  :{COMMA16} años ({COMMA16})
-STR_019B_YEARS                                                  :{RED}{COMMA16} años ({COMMA16})
+STR_0199_YEAR                                                   :{COMMA} año ({COMMA})
+STR_019A_YEARS                                                  :{COMMA} años ({COMMA})
+STR_019B_YEARS                                                  :{RED}{COMMA} años ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Vehículo de carretera
 STR_019D_AIRCRAFT                                               :Aeronave
 STR_019E_SHIP                                                   :Barco
 STR_019F_TRAIN                                                  :Tren
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA16} se está volviendo viejo
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA16} se está volviendo muy viejo
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA16} se está volviendo demasiado viejo y requiere de ser reemplazado urgentemente
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} se está volviendo viejo
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} se está volviendo muy viejo
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} se está volviendo demasiado viejo y requiere de ser reemplazado urgentemente
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Información sobre el terreno
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Coste de desbroce: {LTBLUE}N/D
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Coste de desbroce: {LTBLUE}{CURRENCY}
@@ -497,7 +497,7 @@ STR_01C9_30TH                                                   :30
 STR_01CA_31ST                                                   :31
 ############ range for days	ends
 
-STR_01CB                                                        :{TINYFONT}{COMMA16}
+STR_01CB                                                        :{TINYFONT}{COMMA}
 STR_01CC_TOGGLE_LARGE_SMALL_MAP                                 :{BLACK}Cambio entre mapa grande/pequeño
 STR_01CD_SELECT_TUTORIAL_DEMONSTRATION                          :{WHITE}Seleccionar Tutorial/Demonstración
 
@@ -509,7 +509,7 @@ STR_CARGO_ACCEPTED_4                                            :{BLACK}Carga ac
 STR_CARGO_ACCEPTED_5                                            :{BLACK}Carga aceptada: {LTBLUE}{STRING}, {STRING}, {STRING}, {STRING}, {STRING}
 ############ range for cargo acecpted ends
 
-STR_01D1_8                                                      :({COMMA8}/8 {STRING})
+STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Selección de Jazz
 STR_01D3_SOUND_MUSIC                                            :Sonido/música
 STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Mostrar ventana de sonido/música
@@ -528,16 +528,16 @@ STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Detener 
 STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Comenzar música
 STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Mueva los cursores para fijar volumen de música y efectos
 STR_01E3                                                        :{DKGREEN}{TINYFONT}--
-STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA8}
-STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA8}
+STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
+STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Pista{SETX 88}Título
 STR_01E9_SHUFFLE                                                :{TINYFONT}Mezclar
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Programa
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Selección del programa de música
-STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA16} "{STRING}"
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA16}   "{STRING}"
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA}   "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Índice de pistas
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Programa - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Borrar
@@ -577,7 +577,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Reprodu
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...demasiado lejano del destino anterior
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top de empresas que han alcanzado {NUMU16}{}(Nivel {STRING})
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Tabla clasificatoria de empresas en {NUMU16}
-STR_0212                                                        :{BIGFONT}{COMMA16}.
+STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Hombre de negocios
 STR_0214_ENTREPRENEUR                                           :Empresario
 STR_0215_INDUSTRIALIST                                          :Industrial
@@ -586,12 +586,12 @@ STR_0217_MAGNATE                                                :Magnate
 STR_0218_MOGUL                                                  :Mogul
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Magnate del siglo
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{STRING}, {STRING}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA16})
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{STRING} logra el estado '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{STRING} de {STRING} logra el estado '{STRING}'!
 STR_021D                                                        :{BLACK}
 STR_021E                                                        :{WHITE}
-STR_021F                                                        :{BLUE}{COMMA16}
+STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Crear Escenario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Editor de escenarios
@@ -788,8 +788,8 @@ STR_02DE_MAP_OF_WORLD                                           :Mapa del mundo
 STR_EXTRA_VIEW_PORT                                             :Punto de vista extra
 STR_SIGN_LIST                                                   :Lista de señales
 STR_02DF_TOWN_DIRECTORY                                         :Listado de poblaciones
-STR_TOWN_POPULATION                                             :{BLACK}Población mundial: {COMMA32}
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vista {COMMA16}
+STR_TOWN_POPULATION                                             :{BLACK}Población mundial: {COMMA}
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vista {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copiar punto de vista
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copia la localización de la vista global a este punto de vista
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Pegar punto de vista
@@ -961,34 +961,34 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}No se pu
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}No se puede copiar la lista de órdenes...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fin de órdenes compartidas - -
 
-STR_TRAIN_IS_LOST                                               :{WHITE}Tren {COMMA16} está perdido.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}El beneficio del tren {COMMA16} para el pasado año fué {CURRENCY}
+STR_TRAIN_IS_LOST                                               :{WHITE}Tren {COMMA} está perdido.
+STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}El beneficio del tren {COMMA} para el pasado año fué {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}¡Unión Monetaria Europea!{}{}El Euro es introducido como la moneda oficial para todas las transacciones de su país!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}El tren {COMMA16} tienes muy pocas órdenes en su calendario
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}El tren {COMMA16} tiene una orden vacía
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}El tren {COMMA16} tiene órdenes duplicadas
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}El tren {COMMA16} tiene una estación no válida en sus órdenes
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}El vehículo de carretera {COMMA16} tienes muy pocas órdenes en su calendario
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}El vehículo de carretera {COMMA16} tiene una orden vacía
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}El vehículo de carretera {COMMA16} tiene órdenes duplicadas
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}El vehículo de carretera {COMMA16} tiene una estación no válida en sus órdenes
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}El barco {COMMA16} tienes muy pocas órdenes en su calendario
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Ship {COMMA16} tiene una orden vacía
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Ship {COMMA16} tiene órdenes duplicadas
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Ship {COMMA16} tiene una estación no válida en sus órdenes
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}La aeronave {COMMA16} tiene muy pocas órdenes en su calendario
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}La aeronave {COMMA16} tiene una orden vacía
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}La aeronave {COMMA16} tiene órdenes duplicadas
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}La aeronave {COMMA16} tiene una estación no válida en sus órdenes
+STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}El tren {COMMA} tienes muy pocas órdenes en su calendario
+STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}El tren {COMMA} tiene una orden vacía
+STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}El tren {COMMA} tiene órdenes duplicadas
+STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}El tren {COMMA} tiene una estación no válida en sus órdenes
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}El vehículo de carretera {COMMA} tienes muy pocas órdenes en su calendario
+STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}El vehículo de carretera {COMMA} tiene una orden vacía
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}El vehículo de carretera {COMMA} tiene órdenes duplicadas
+STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}El vehículo de carretera {COMMA} tiene una estación no válida en sus órdenes
+STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}El barco {COMMA} tienes muy pocas órdenes en su calendario
+STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Ship {COMMA} tiene una orden vacía
+STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Ship {COMMA} tiene órdenes duplicadas
+STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Ship {COMMA} tiene una estación no válida en sus órdenes
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}La aeronave {COMMA} tiene muy pocas órdenes en su calendario
+STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}La aeronave {COMMA} tiene una orden vacía
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}La aeronave {COMMA} tiene órdenes duplicadas
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}La aeronave {COMMA} tiene una estación no válida en sus órdenes
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Auto renovar ha fallado con el tren {COMMA16} (límite de dinero)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}AAuto renovar ha fallado con el vehículo de carretera {COMMA16} (límite de dinero)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Auto renovar ha fallado con el barco {COMMA16} (límite de dinero)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Auto renovar ha fallado con la aeronave {COMMA16} (límite de dinero)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Auto renovar ha fallado con el tren {COMMA} (límite de dinero)
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}AAuto renovar ha fallado con el vehículo de carretera {COMMA} (límite de dinero)
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Auto renovar ha fallado con el barco {COMMA} (límite de dinero)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Auto renovar ha fallado con la aeronave {COMMA} (límite de dinero)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Configurar Parches
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configurar los parches
@@ -1104,7 +1104,7 @@ STR_CHEATS                                                      :{WHITE}Trucos
 STR_CHEATS_TIP                                                  :{BLACK}Las casillas indican si ha usado este truco antes
 STR_CHEATS_WARNING                                              :{BLACK}Atención! Usted está a punto de traicionar a sus competidores. Tenga presente que tal deshonra será recordada para toda la eternidad.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Incrementar dinero en {CURRENCY64}
-STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Jugar como el jugador: {ORANGE}{COMMA16}
+STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Jugar como el jugador: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer mágico (elimina industrias, etc.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Los túneles pueden cruzarse: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Construir mientras se está en pausa: {ORANGE}{STRING}
@@ -1120,7 +1120,7 @@ STR_GO_TO_WAYPOINT                                              :Ir vía {WAYPOIN
 STR_GO_NON_STOP_TO_WAYPOINT                                     :Ir directo via {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY                                           :Punto de paso {TOWN}
-STR_WAYPOINTNAME_CITY_SERIAL                                    :Punto de paso {TOWN} #{COMMA16}
+STR_WAYPOINTNAME_CITY_SERIAL                                    :Punto de paso {TOWN} #{COMMA}
 STR_LANDINFO_WAYPOINT                                           :Punto de paso
 
 STR_WAYPOINT                                                    :{WHITE}Punto de paso
@@ -1203,8 +1203,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Fundar c
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Construir mina de azúcar
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrias
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% transportado)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% transportado)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA}% transportado)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportado)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{TOWN} {STRING}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...demasiado cercano a otra industria
@@ -1244,15 +1244,15 @@ STR_NETWORK_ADD_SERVER                                          :{BLACK}Añadir s
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Añade un servidor a la lista que será siempre consultada para ver juegos en ejecución.
 STR_NETWORK_ENTER_IP                                            :{BLACK}Introduce la dirección IP del servidor
 
-STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clientes
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clientes online / máx clientes
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO JUEGO
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Clientes:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_CLIENTS                                             :{SILVER}Clientes:  {WHITE}{COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Idioma:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Escenario:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Tamaño Mapa:  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Tamaño Mapa:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versión servidor:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Dirección servidor:  {WHITE}{STRING} : {NUMU16}
 STR_NETWORK_START_DATE                                          :{SILVER}Fecha inicio:  {WHITE}{DATE_SHORT}
@@ -1517,21 +1517,21 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Paso a nivel
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Poblaciones
-STR_TOWN_LABEL_POP                                              :{WHITE}{STRING} ({COMMA32})
+STR_TOWN_LABEL_POP                                              :{WHITE}{STRING} ({COMMA})
 STR_2001                                                        :{WHITE}{STRING}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2003                                                        :{TINYFONT}{WHITE}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}El edificio debe demolerse primero
 STR_2005                                                        :{WHITE}{TOWN}
-STR_2006_POPULATION                                             :{BLACK}Habitantes: {ORANGE}{COMMA32}{BLACK}  Casas: {ORANGE}{COMMA32}
+STR_2006_POPULATION                                             :{BLACK}Habitantes: {ORANGE}{COMMA}{BLACK}  Casas: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Renombrar población
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}No se puede renombrar población...
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} las autoridades locales rechazan esto
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Nombres de población - haga click sobre el nombre para centrar la vista en la población
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrar la vista sobre la población
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Cambiar nombre de la población
-STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Pasajeros último mes: {ORANGE}{COMMA32}{BLACK}  máx: {ORANGE}{COMMA32}
-STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Correo último mes: {ORANGE}{COMMA32}{BLACK}  máx: {ORANGE}{COMMA32}
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Pasajeros último mes: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Correo último mes: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
 STR_200F_TALL_OFFICE_BLOCK                                      :Bloque alto de oficinas
 STR_2010_OFFICE_BLOCK                                           :Bloque de oficinas
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Bloque de viviendas pequeño
@@ -1605,7 +1605,7 @@ STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Soborne a las autoridades locales para aumentar su ranking, con el riesgo de una severa penalización si es descubierto.{}  Coste: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Colapso circulatorio en {TOWN}!{}{}¡Programa de reconstrucción de carreteras patrocinado por {STRING} causa 6 meses de problemas a los conductores!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
-STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA32})
+STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (bajo construcción)
 STR_2059_IGLOO                                                  :Iglú
 STR_205A_TEPEES                                                 :Tipis
@@ -1667,7 +1667,7 @@ STR_303B_EXCELLENT                                              :Excelente
 STR_303C_OUTSTANDING                                            :Excepcional
 ############ range for rating ends
 
-STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA8}%)
+STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} ya no acepta {STRING}
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} ya no acepta {STRING} ni {STRING}
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} acepta ahora {STRING}
@@ -1678,7 +1678,7 @@ STR_3044_TOO_CLOSE_TO_ANOTHER_BUS                               :{WHITE}Demasiad
 STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK                             :{WHITE}Demasiado cerca de otra estación de camione
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Primero debe demolerse estación de autobús
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Primero debe demolerse estación de camiones
-STR_3048_STATIONS                                               :{WHITE}{STRING} - {COMMA16} Estaciones
+STR_3048_STATIONS                                               :{WHITE}{STRING} - {COMMA} Estaciones
 STR_3049_0                                                      :{YELLOW}{STATION} {STRINL 0x30D1}
 STR_304A_NONE                                                   :{YELLOW}- Ninguna -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...lugar inapropiado
@@ -1735,7 +1735,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Cargar J
 STR_4002_SAVE                                                   :{BLACK}Guardar
 STR_4003_DELETE                                                 :{BLACK}Borrar
 STR_4004                                                        :{STRING}, {DATE_LONG}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA32} megabytes libres
+STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabytes libres
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}No es posible leer la unidad
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Error guardando juego
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}No es posible borrar el fichero
@@ -1796,7 +1796,7 @@ STR_4829_REQUIRES                                               :{BLACK}Requiere
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Producción mes anterior:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA16}% transportado)
+STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% transportado)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrar la vista sobre la industria
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Nuevo {STRING} bajo construcción cerca de {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Nuevo {STRING} está siendo plantado cerca de {TOWN}!
@@ -1813,8 +1813,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}La producción de {TOWN} {STRING} desciende un 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}¡Plaga de insectos causa estragos en {TOWN} {STRING}!{}Producción por debajo del 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...sólo se puede colocar cerca de los bordes del mapa
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}¡La producción de {STRING} en {TOWN} {STRING} sube un {COMMA16}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}¡La producción de {STRING} en {TOWN} {STRING} desciende un {COMMA16}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}¡La producción de {STRING} en {TOWN} {STRING} sube un {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}¡La producción de {STRING} en {TOWN} {STRING} desciende un {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Tren en túnel
@@ -1877,10 +1877,10 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...ya es
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Sin nombre{SKIP}
-STR_SV_TRAIN_NAME                                               :Tren {COMMA16}
-STR_SV_ROADVEH_NAME                                             :Vehículo de carretera {COMMA16}
-STR_SV_SHIP_NAME                                                :Barco {COMMA16}
-STR_SV_AIRCRAFT_NAME                                            :Aeronave {COMMA16}
+STR_SV_TRAIN_NAME                                               :Tren {COMMA}
+STR_SV_ROADVEH_NAME                                             :Vehículo de carretera {COMMA}
+STR_SV_SHIP_NAME                                                :Barco {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Aeronave {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} Norte
@@ -1930,12 +1930,12 @@ STR_6804_CUSTOM                                                 :{BLACK}Personal
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
-STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Nº Máximo de jugadores: {ORANGE}{COMMA16}
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Nº Máximo de jugadores: {ORANGE}{COMMA}
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Tiempo de inicio de la competencia: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Nº. de poblaciones: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Nº. de industrias: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Préstamo inicial máximo: {ORANGE}{CURRENCY}
-STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Tasa de interés inicial: {ORANGE}{COMMA16}%
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Tasa de interés inicial: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Costes de Operación de Vehículo: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Velocidad de construcción de la competencia: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Inteligencia de la competencia: {ORANGE}{STRING}
@@ -1994,7 +1994,7 @@ STR_683B_HOSTILE                                                :Hostil
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{STRING} {BLACK}{STRING}
-STR_7002_PLAYER                                                 :(Jugador {COMMA16})
+STR_7002_PLAYER                                                 :(Jugador {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nueva Cara
 STR_7005_COLOR_SCHEME                                           :{BLACK}Esquema Color
 STR_7006_COLOR_SCHEME                                           :{GOLD}Esquema color:
@@ -2028,7 +2028,7 @@ STR_7021                                                        :{STRING}{STRING
 STR_7022_INCOME_GRAPH                                           :{WHITE}Gráfico de Ingresos
 STR_CURRCOMPACT32                                               :{CURRCOMPACT}
 STR_CURRCOMPACT64                                               :{CURRCOMPACT64}
-STR_7024                                                        :{COMMA32}
+STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Gráfico de Beneficio Operativo
 STR_7026_BANK_BALANCE                                           :{WHITE}Saldo en Banco
 STR_7027_LOAN                                                   :{WHITE}Préstamo
@@ -2052,14 +2052,14 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Pagar pa
 STR_7037_PRESIDENT                                              :{WHITE}{STRING}{}{GOLD}(Presidente)
 STR_7038_INAUGURATED                                            :{GOLD}Inaugurado: {WHITE}{NUMU16}
 STR_7039_VEHICLES                                               :{GOLD}Vehiculos:
-STR_703A_TRAIN                                                  :{WHITE}{COMMA16} tren
-STR_703B_TRAINS                                                 :{WHITE}{COMMA16} trenes
-STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA16} veh. carretera
-STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA16} vehs. carreta
-STR_703E_AIRCRAFT                                               :{WHITE}{COMMA16} aeroplano
-STR_703F_AIRCRAFT                                               :{WHITE}{COMMA16} aeroplanos
-STR_7040_SHIP                                                   :{WHITE}{COMMA16} barco
-STR_7041_SHIPS                                                  :{WHITE}{COMMA16} barcos
+STR_703A_TRAIN                                                  :{WHITE}{COMMA} tren
+STR_703B_TRAINS                                                 :{WHITE}{COMMA} trenes
+STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA} veh. carretera
+STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA} vehs. carreta
+STR_703E_AIRCRAFT                                               :{WHITE}{COMMA} aeroplano
+STR_703F_AIRCRAFT                                               :{WHITE}{COMMA} aeroplanos
+STR_7040_SHIP                                                   :{WHITE}{COMMA} barco
+STR_7041_SHIPS                                                  :{WHITE}{COMMA} barcos
 STR_7042_NONE                                                   :{WHITE}Ninguno
 STR_7043_FACE_SELECTION                                         :{WHITE}Selección de cara
 STR_7044_MALE                                                   :{BLACK}Hombre
@@ -2124,8 +2124,8 @@ STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Comprar 
 STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Vender 25% acciones de esta empresa
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}No se puede comprar el 25% de acciones...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}No se puede vender el 25% de acciones...
-STR_707D_OWNED_BY                                               :{WHITE}({COMMA16}% propiedad de {STRING})
-STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA16}% propiedad de {STRING}{}   {COMMA16}% propiedad de {STRING})
+STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% propiedad de {STRING})
+STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% propiedad de {STRING}{}   {COMMA}% propiedad de {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{STRING} ha sido comprada por {STRING}!
 STR_7080_PROTECTED                                              :{WHITE}Esta empresa todavía no dispone acciones a la venta...
 
@@ -2400,8 +2400,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}, 
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Los ciudadanos celebran . . .{}¡Primer tren llega a {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Detalles)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren en camino
-STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
 STR_8806_GO_TO                                                  :Ir a {STATION}
 STR_8807_GO_TO_TRANSFER                                         :Ir a {STATION} (Transferir y cargar)
 STR_8808_GO_TO_UNLOAD                                           :Ir a {STATION} (Descargar)
@@ -2427,13 +2427,13 @@ STR_INVALID_ORDER                                               :{RED} (Orden in
 STR_UNKNOWN_DESTINATION                                         :destino desconocido
 STR_8812_EMPTY                                                  :{LTBLUE}Vacío
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} desde {STATION}
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}El tren {COMMA16} está esperando en el depósito
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}El tren {COMMA} está esperando en el depósito
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nuevos Vehículos
 STR_8816                                                        :{BLACK}-
 STR_8818_INFORMATION                                            :{BLACK}Información
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Tren demasiado largo
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Los trenes únicamente puede ser modificados en el interior de los depósitos
-STR_881B_TRAINS                                                 :{WHITE}{STRING} - {COMMA16} Trenes
+STR_881B_TRAINS                                                 :{WHITE}{STRING} - {COMMA} Trenes
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nuevos vehículos de raíl
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nuevos vehículos de monorraíl
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nuevos vehículos de levitación magnética
@@ -2467,8 +2467,8 @@ STR_8838_N_A                                                    :N/D{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}No se puede vender tren...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}No se puede encontrar ruta al depósito
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}No se puede parar/arrancar tren...
-STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Intervalo de despacho: {LTBLUE}{COMMA16}días{BLACK}   Último servicio: {LTBLUE}{DATE_LONG}
-STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Intervalo de despacho: {LTBLUE}{COMMA16}%{BLACK}   Último servicio: {LTBLUE}{DATE_LONG}
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Intervalo de despacho: {LTBLUE}{COMMA}días{BLACK}   Último servicio: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Intervalo de despacho: {LTBLUE}{COMMA}%{BLACK}   Último servicio: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trenes - click en tren para información
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Construir nuevos trenes (requiere depósito)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trenes - click en tren para info., arrastrar vehículo para añadir/retirar del tren
@@ -2501,12 +2501,12 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Hacer qu
 STR_SERVICE_HINT                                                :{BLACK}Saltar esta orden a menos que el servicio sea necesario
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nuevo {STRING} ahora disponible!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Coste: {CURRENCY} Peso: {COMMA16}t{}Velocidad: {VELOCITY}  Potencia: {COMMA16}hp{}Coste Operativo: {CURRENCY}/año{}Capacidad: {STRING}
+STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Coste: {CURRENCY} Peso: {COMMA}t{}Velocidad: {VELOCITY}  Potencia: {COMMA}hp{}Coste Operativo: {CURRENCY}/año{}Capacidad: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Averiado
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Edad: {LTBLUE}{STRING}{BLACK}   Coste Operativo: {LTBLUE}{CURRENCY}/año
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Peso: {LTBLUE}{COMMA16}t  {BLACK}Potencia: {LTBLUE}{COMMA32}hp{BLACK} Velocidad Máx.: {LTBLUE}{VELOCITY}
+STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Peso: {LTBLUE}{COMMA}t  {BLACK}Potencia: {LTBLUE}{COMMA}hp{BLACK} Velocidad Máx.: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Beneficio este año: {LTBLUE}{CURRENCY}  (último año: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilidad: {LTBLUE}{COMMA8}%  {BLACK}Averías desde último mantenimiento: {LTBLUE}{COMMA16}
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilidad: {LTBLUE}{COMMA}%  {BLACK}Averías desde último mantenimiento: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Parado
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}No se puede pasar la señal en peligro al tren...
 STR_8863_CRASHED                                                :{RED}¡Siniestrado!
@@ -2514,7 +2514,7 @@ STR_8863_CRASHED                                                :{RED}¡Siniestra
 STR_8865_NAME_TRAIN                                             :{WHITE}Nombrar tren
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}No se puede nombrar tren...
 STR_8867_NAME_TRAIN                                             :{BLACK}Nombrar tren
-STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}¡Siniestro ferroviario!{}{COMMA16} fallecidos en la explosión de la colisión
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}¡Siniestro ferroviario!{}{COMMA} fallecidos en la explosión de la colisión
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}No se puede revertir la dirección...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Renombrar tipo de vehículo
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}No se puede renombrar tipo de vehículo...
@@ -2526,7 +2526,7 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Parándose,
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vehículo de carretera en camino
-STR_9001_ROAD_VEHICLES                                          :{WHITE}{STRING} - {COMMA16} Vehículos de Carretera
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{STRING} - {COMMA} Vehículos de Carretera
 STR_9002                                                        :{WHITE}{STRING}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Depósito de vehículos
 STR_9004_NEW_VEHICLES                                           :{BLACK}Nuevos vehículos
@@ -2540,13 +2540,13 @@ STR_900C_DETAILS                                                :{WHITE}{STRING}
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Edad: {LTBLUE}{STRING}{BLACK}   Coste Operativo: {LTBLUE}{CURRENCY}/año
 STR_900E_MAX_SPEED                                              :{BLACK}Velocidad Máx.: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Beneficio este año: {LTBLUE}{CURRENCY}  (último año: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilidad: {LTBLUE}{COMMA8}%  {BLACK}Averías desde último despacho: {LTBLUE}{COMMA16}
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilidad: {LTBLUE}{COMMA}%  {BLACK}Averías desde último despacho: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Const.: {LTBLUE}{NUMU16}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Capacidad: {LTBLUE}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...debe estar detenido dentro de un depósito
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}No se puede vender vehículo...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}No se puede detener/arrancar vehículo...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Vehículo de carretera {COMMA16} espera en depósito
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Vehículo de carretera {COMMA} espera en depósito
 STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Hacia el depósito de {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Hacia el depósito de {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}No se puede enviar vehículo al depósito...
@@ -2575,7 +2575,7 @@ STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Nombrar 
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Los ciudadanos celebran . . .{}¡Primer autobús llega a {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Los ciudadanos celebran . . .{}¡Primer camión llega a {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}¡Accidente de tráfico!{}El conductor fallece en la explosión tras la colisión con el tren
-STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Accidente de tráfico!{}{COMMA16} fallecidos en la explosión tras la colisión con el tren
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Accidente de tráfico!{}{COMMA} fallecidos en la explosión tras la colisión con el tren
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}No se puede hacer girar al vehículo...
 STR_9034_RENAME                                                 :{BLACK}Renombrar
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Renombrar tipo de vehículo
@@ -2590,7 +2590,7 @@ STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Construi
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}No se pueden construir muelles aquí...
 STR_9803_SHIP_DEPOT                                             :{WHITE}Astillero de {TOWN}
 STR_9804_NEW_SHIPS                                              :{BLACK}Nuevos barcos
-STR_9805_SHIPS                                                  :{WHITE}{STRING} - {COMMA16} Barcos
+STR_9805_SHIPS                                                  :{WHITE}{STRING} - {COMMA} Barcos
 STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}No se pueden construir barcos...
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Primero debe construirse astillero
 STR_9808_NEW_SHIPS                                              :{WHITE}Nuevos barcos
@@ -2605,7 +2605,7 @@ STR_9811_DETAILS                                                :{WHITE}{STRING}
 STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Edad: {LTBLUE}{STRING}{BLACK}   Coste Operativo: {LTBLUE}{CURRENCY}/año
 STR_9813_MAX_SPEED                                              :{BLACK}Velocidad Máx.: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Beneficio este año: {LTBLUE}{CURRENCY}  (año anterior: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilidad: {LTBLUE}{COMMA8}%  {BLACK}Averías desde último despacho: {LTBLUE}{COMMA16}
+STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilidad: {LTBLUE}{COMMA}%  {BLACK}Averías desde último despacho: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Const.: {LTBLUE}{NUMU16}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Capacidad: {LTBLUE}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}No se puede detener/arrancar barco...
@@ -2613,7 +2613,7 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}No se pu
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}No se puede encontrar ruta al astillero
 STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Hacia el astillero de {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Hacia el astillero de {TOWN}, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Barco {COMMA16} esperando en astilleros
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Barco {COMMA} esperando en astilleros
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construir muelles
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Construir astillero (para construir y despachar barcos)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Barcos - click en barco para información
@@ -2664,19 +2664,19 @@ STR_A004_INFORMATION                                            :{BLACK}Informac
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nuevo avilón
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construir aeronave
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}No se puede construir aeronave...
-STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA16} Aeronave
+STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA} Aeronave
 STR_A00A                                                        :{WHITE}{STRING}
 STR_A00B_ORDERS                                                 :{WHITE}{STRING} (Órdenes)
 STR_A00C_DETAILS                                                :{WHITE}{STRING} (Detalles)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Edad: {LTBLUE}{STRING}{BLACK}   Coste Operativo: {LTBLUE}{CURRENCY}/año
 STR_A00E_MAX_SPEED                                              :{BLACK}Velocidad Máx.: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Beneficio este año: {LTBLUE}{CURRENCY}  (año anterior: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilidad: {LTBLUE}{COMMA8}%  {BLACK}Averías desde último despacho: {LTBLUE}{COMMA16}
+STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilidad: {LTBLUE}{COMMA}%  {BLACK}Averías desde último despacho: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Const.: {LTBLUE}{NUMU16}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}No se puede enviar la aeronave al hangar
 STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Ir al hangar de {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Ir al hangar de {STATION}, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}La aeronave {COMMA16} está esperando en el hangar
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}La aeronave {COMMA} está esperando en el hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeronave en camino
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}No se puede detener/arrancar aeronave...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}La aeronave está en vuelo
@@ -2702,14 +2702,14 @@ STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Enviar a
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Mostrar detalles de la aeronave
 STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}¡Nueva aeronave ya disponible!
 STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Coste: {CURRENCY} Velocidad Máx.: {VELOCITY}{}Capacidad: {COMMA16} pasajeros, {COMMA16} sacas de correo{}Coste Operativo: {CURRENCY}/año
+STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Coste: {CURRENCY} Velocidad Máx.: {VELOCITY}{}Capacidad: {COMMA} pasajeros, {COMMA} sacas de correo{}Coste Operativo: {CURRENCY}/año
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nombrar aeronave
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}No se puede nombrar aeronave...
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Nombrar aeronave
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Los ciudadanos celebran . . .{}¡Primera aeronave llega a {STATION}!
-STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}¡Avión siniestrado!{}{COMMA16} fallecidos en la explosión en {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Accidente aéreo!{}La aeronave se quedó sin combustible, {COMMA16} personas mueren en la tragedia!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}¡Avión siniestrado!{}{COMMA} fallecidos en la explosión en {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Accidente aéreo!{}La aeronave se quedó sin combustible, {COMMA} personas mueren en la tragedia!
 STR_A035_DESTINATIONS                                           :{TINYFONT}{BLACK}Destinos:
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Renombrar
@@ -2735,7 +2735,7 @@ STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}¡Fábrica destruída en sospechosas circunstancias cerca de {TOWN}!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}¡OVNI aterriza cerca de {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}¡Hundimiento de mina de carbón deja ola de destrucción en {TOWN}!
-STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}¡Inundación!{}Al menos {COMMA16} desaparecidos o muertos después de las terribles inundaciones!
+STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}¡Inundación!{}Al menos {COMMA} desaparecidos o muertos después de las terribles inundaciones!
 
 STR_BRIBE_FAILED                                                :{WHITE}Su intento de soborno ha sido
 STR_BRIBE_FAILED_2                                              :{WHITE}descubierto por un investigador regional.
@@ -2745,7 +2745,7 @@ STR_MULTIPLAYER_PAUSED                                          :{WHITE}Juego pa
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detalle de rendimiento
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalle
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
-STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA32}/{COMMA32})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{INT32}%
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{INT32}
 ############ Those following lines need to be in this order!!
@@ -2780,7 +2780,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Fichero:
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moneda personalizada
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Tasa de cambio: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA16}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Tasa de cambio: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefijo:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufijo:
@@ -2794,10 +2794,10 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA16} Trenes
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA16} Vehículos de carretera
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA16} Aeronaves
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA16} Barcos
+STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Trenes
+STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Vehículos de carretera
+STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Aeronaves
+STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Barcos
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Mostrar todos los trenes que tienen esta estación en su horario
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Mostrar todos los vehículos de carretera que tienen esta estación en su horario
@@ -2819,7 +2819,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Muestra 
 STR_REPLACE_HELP                                                :{BLACK}Esta función permite seleccionar un tipo de locomotora y reemplazarla por otra. El cambio se realizará cuando el vehículo llegue al depósito
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de señales - {COMMA16} Señales
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de señales - {COMMA} Señales
 
 ############ Lists rail types
 
@@ -2829,16 +2829,16 @@ STR_MAGLEV_VEHICLES                                             :Vehículos de Le
 
 ############ End of list of rail types
 
-STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
+STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{COMMA16}t
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocidad: {GOLD}{VELOCITY}{BLACK}   Potencia: {GOLD}{COMMA32}cv
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{COMMA}t
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocidad: {GOLD}{VELOCITY}{BLACK}   Potencia: {GOLD}{COMMA}cv
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Coste de operación: {GOLD}{CURRENCY}/año
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacidad: {GOLD}{STRING} {STRING}
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Diseñado: {GOLD}{NUMU16}{BLACK} Vida: {GOLD}{COMMA16} años
-STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilidad máxima: {GOLD}{COMMA8}%
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Diseñado: {GOLD}{NUMU16}{BLACK} Vida: {GOLD}{COMMA} años
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilidad máxima: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Coste: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{COMMA16}t  ({COMMA16}t)
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{COMMA}t  ({COMMA}t)
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Velocidad: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidad: {GOLD}{COMMA16} pasajeros, {COMMA16} sacas de correo
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagones con motor: {GOLD}+{COMMA16}cv{BLACK} Peso: {GOLD}+{COMMA8}t
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidad: {GOLD}{COMMA} pasajeros, {COMMA} sacas de correo
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagones con motor: {GOLD}+{COMMA}cv{BLACK} Peso: {GOLD}+{COMMA}t

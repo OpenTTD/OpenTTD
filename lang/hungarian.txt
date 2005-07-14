@@ -82,69 +82,69 @@ STR_004B_BATTERY                                                :elem
 STR_004C_PLASTIC                                                :mûanyag
 STR_004D_FIZZY_DRINK                                            :szénsavas ital
 STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA16} utas
-STR_0050_TON_OF_COAL                                            :{COMMA16} tonna szén
-STR_0051_BAG_OF_MAIL                                            :{COMMA16} csomag levél
+STR_004F_PASSENGER                                              :{COMMA} utas
+STR_0050_TON_OF_COAL                                            :{COMMA} tonna szén
+STR_0051_BAG_OF_MAIL                                            :{COMMA} csomag levél
 STR_0052_OF_OIL                                                 :{VOLUME} olaj
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA16} állat
-STR_0054_CRATE_OF_GOODS                                         :{COMMA16} láda áru
-STR_0055_TON_OF_GRAIN                                           :{COMMA16} tonna búza
-STR_0056_TON_OF_WOOD                                            :{COMMA16} tonna fa
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA16} tonna vasérc
-STR_0058_TON_OF_STEEL                                           :{COMMA16} tonna acél
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA16} csomag értéktárgy
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA16} tonna rézérc
-STR_005B_TON_OF_MAIZE                                           :{COMMA16} tonna kukorica
-STR_005C_TON_OF_FRUIT                                           :{COMMA16} tonna gyümölcs
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA16} zsák gyémánt
-STR_005E_TON_OF_FOOD                                            :{COMMA16} tonna étel
-STR_005F_TON_OF_PAPER                                           :{COMMA16} tonna papír
-STR_0060_BAG_OF_GOLD                                            :{COMMA16} zsák arany
+STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} állat
+STR_0054_CRATE_OF_GOODS                                         :{COMMA} láda áru
+STR_0055_TON_OF_GRAIN                                           :{COMMA} tonna búza
+STR_0056_TON_OF_WOOD                                            :{COMMA} tonna fa
+STR_0057_TON_OF_IRON_ORE                                        :{COMMA} tonna vasérc
+STR_0058_TON_OF_STEEL                                           :{COMMA} tonna acél
+STR_0059_BAG_OF_VALUABLES                                       :{COMMA} csomag értéktárgy
+STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} tonna rézérc
+STR_005B_TON_OF_MAIZE                                           :{COMMA} tonna kukorica
+STR_005C_TON_OF_FRUIT                                           :{COMMA} tonna gyümölcs
+STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} zsák gyémánt
+STR_005E_TON_OF_FOOD                                            :{COMMA} tonna étel
+STR_005F_TON_OF_PAPER                                           :{COMMA} tonna papír
+STR_0060_BAG_OF_GOLD                                            :{COMMA} zsák arany
 STR_0061_OF_WATER                                               :{VOLUME} víz
-STR_0062_TON_OF_WHEAT                                           :{COMMA16} tonna búza
+STR_0062_TON_OF_WHEAT                                           :{COMMA} tonna búza
 STR_0063_OF_RUBBER                                              :{VOLUME} gumi
-STR_0064_TON_OF_SUGAR                                           :{COMMA16} tonna cukor
-STR_0065_TOY                                                    :{COMMA16} játék
-STR_0066_BAG_OF_CANDY                                           :{COMMA16} zsák cukorka
+STR_0064_TON_OF_SUGAR                                           :{COMMA} tonna cukor
+STR_0065_TOY                                                    :{COMMA} játék
+STR_0066_BAG_OF_CANDY                                           :{COMMA} zsák cukorka
 STR_0067_OF_COLA                                                :{VOLUME} kóla
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA16} tonna vattacukor
-STR_0069_BUBBLE                                                 :{COMMA16} buborék
-STR_006A_TON_OF_TOFFEE                                          :{COMMA16} tonna tejkaramella
-STR_006B_BATTERY                                                :{COMMA16} elem
+STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} tonna vattacukor
+STR_0069_BUBBLE                                                 :{COMMA} buborék
+STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonna tejkaramella
+STR_006B_BATTERY                                                :{COMMA} elem
 STR_006C_OF_PLASTIC                                             :{VOLUME} mûanyag
-STR_006D_FIZZY_DRINK                                            :{COMMA16} szénsavas ital
+STR_006D_FIZZY_DRINK                                            :{COMMA} szénsavas ital
 STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA16} utas
-STR_0070_TONS_OF_COAL                                           :{COMMA16} tonna szén
-STR_0071_BAGS_OF_MAIL                                           :{COMMA16} csomag levél
+STR_006F_PASSENGERS                                             :{COMMA} utas
+STR_0070_TONS_OF_COAL                                           :{COMMA} tonna szén
+STR_0071_BAGS_OF_MAIL                                           :{COMMA} csomag levél
 STR_0072_OF_OIL                                                 :{VOLUME} olaj
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA16} állat
-STR_0074_CRATES_OF_GOODS                                        :{COMMA16} láda áru
-STR_0075_TONS_OF_GRAIN                                          :{COMMA16} tonna búza
-STR_0076_TONS_OF_WOOD                                           :{COMMA16} tonna fa
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA16} tonna vasérc
-STR_0078_TONS_OF_STEEL                                          :{COMMA16} tonna acél
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA16} csomag értéktárgy
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA16} tonna rézérc
-STR_007B_TONS_OF_MAIZE                                          :{COMMA16} tonna kukorica
-STR_007C_TONS_OF_FRUIT                                          :{COMMA16} tonna gyümölcs
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA16} zsák gyémánt
-STR_007E_TONS_OF_FOOD                                           :{COMMA16} tonna étel
-STR_007F_TONS_OF_PAPER                                          :{COMMA16} tonna papír
-STR_0080_BAGS_OF_GOLD                                           :{COMMA16} zsák arany
+STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} állat
+STR_0074_CRATES_OF_GOODS                                        :{COMMA} láda áru
+STR_0075_TONS_OF_GRAIN                                          :{COMMA} tonna búza
+STR_0076_TONS_OF_WOOD                                           :{COMMA} tonna fa
+STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} tonna vasérc
+STR_0078_TONS_OF_STEEL                                          :{COMMA} tonna acél
+STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} csomag értéktárgy
+STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} tonna rézérc
+STR_007B_TONS_OF_MAIZE                                          :{COMMA} tonna kukorica
+STR_007C_TONS_OF_FRUIT                                          :{COMMA} tonna gyümölcs
+STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} zsák gyémánt
+STR_007E_TONS_OF_FOOD                                           :{COMMA} tonna étel
+STR_007F_TONS_OF_PAPER                                          :{COMMA} tonna papír
+STR_0080_BAGS_OF_GOLD                                           :{COMMA} zsák arany
 STR_0081_OF_WATER                                               :{VOLUME} víz
-STR_0082_TONS_OF_WHEAT                                          :{COMMA16} tonna búza
+STR_0082_TONS_OF_WHEAT                                          :{COMMA} tonna búza
 STR_0083_OF_RUBBER                                              :{VOLUME} gumi
-STR_0084_TONS_OF_SUGAR                                          :{COMMA16} tonna cukor
-STR_0085_TOYS                                                   :{COMMA16} játék
-STR_0086_BAGS_OF_CANDY                                          :{COMMA16} zsák cukorka
+STR_0084_TONS_OF_SUGAR                                          :{COMMA} tonna cukor
+STR_0085_TOYS                                                   :{COMMA} játék
+STR_0086_BAGS_OF_CANDY                                          :{COMMA} zsák cukorka
 STR_0087_OF_COLA                                                :{VOLUME} kóla
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA16} tonna vattacukor
-STR_0089_BUBBLES                                                :{COMMA16} buborék
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA16} tonna tejkaramella
-STR_008B_BATTERIES                                              :{COMMA16} elem
+STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} tonna vattacukor
+STR_0089_BUBBLES                                                :{COMMA} buborék
+STR_008A_TONS_OF_TOFFEE                                         :{COMMA} tonna tejkaramella
+STR_008B_BATTERIES                                              :{COMMA} elem
 STR_008C_OF_PLASTIC                                             :{VOLUME} mûanyag
-STR_008D_FIZZY_DRINKS                                           :{COMMA16} szénsavas ital
+STR_008D_FIZZY_DRINKS                                           :{COMMA} szénsavas ital
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}UT
 STR_0090_CL                                                     :{TINYFONT}SZ
@@ -219,8 +219,8 @@ STR_00DE_BROWN                                                  :Barna
 STR_00DF_GREY                                                   :Szürke
 STR_00E0_WHITE                                                  :Fehér
 STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Túl sok jármû van a játékban
-STR_00E2                                                        :{BLACK}{COMMA16}
-STR_00E3                                                        :{RED}{COMMA16}
+STR_00E2                                                        :{BLACK}{COMMA}
+STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}Megnéz
 STR_00E5_CONTOURS                                               :Domborzat
 STR_00E6_VEHICLES                                               :Jármûvek
@@ -441,18 +441,18 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Városnev
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Ezévi nyereség: {CURRENCY} (Tavalyi: {CURRENCY})
 
 ############ range for service numbers starts
-STR_0199_YEAR                                                   :{COMMA16} év ({COMMA16})
-STR_019A_YEARS                                                  :{COMMA16} év ({COMMA16})
-STR_019B_YEARS                                                  :{RED}{COMMA16} év ({COMMA16})
+STR_0199_YEAR                                                   :{COMMA} év ({COMMA})
+STR_019A_YEARS                                                  :{COMMA} év ({COMMA})
+STR_019B_YEARS                                                  :{RED}{COMMA} év ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :közúti jármû
 STR_019D_AIRCRAFT                                               :repülõgép
 STR_019E_SHIP                                                   :hajó
 STR_019F_TRAIN                                                  :vonat
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA16} kezd elöregedni
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA16} kezd nagyon elöregedni
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA16} nagyon öreg és sürgõsen ki kell cserélni
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} kezd elöregedni
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} kezd nagyon elöregedni
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} nagyon öreg és sürgõsen ki kell cserélni
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Terület-információ
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}{LTBLUE}Nem lehet lerombolni
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}A megtisztítás költsége: {LTBLUE}{CURRENCY}
@@ -497,7 +497,7 @@ STR_01C9_30TH                                                   :30.
 STR_01CA_31ST                                                   :31.
 ############ range for days	ends
 
-STR_01CB                                                        :{TINYFONT}{COMMA16}
+STR_01CB                                                        :{TINYFONT}{COMMA}
 STR_01CC_TOGGLE_LARGE_SMALL_MAP                                 :{BLACK}Váltás kis és nagy térkép között
 STR_01CD_SELECT_TUTORIAL_DEMONSTRATION                          :{WHITE}Válassz egy tanítást/demót
 
@@ -509,7 +509,7 @@ STR_CARGO_ACCEPTED_4                                            :{BLACK}Elfogad:
 STR_CARGO_ACCEPTED_5                                            :{BLACK}Elfogad: {LTBLUE}{STRING}, {STRING}, {STRING}, {STRING}, {STRING}
 ############ range for cargo acecpted ends
 
-STR_01D1_8                                                      :({COMMA8}/8 {STRING})
+STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz zenegép
 STR_01D3_SOUND_MUSIC                                            :Hang/zene
 STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Hang/zene beállítás
@@ -528,16 +528,16 @@ STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Zene leá
 STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Zene elindítása
 STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}A csúszkákkal beállíthatod a zene és a hanghatások hangerejét
 STR_01E3                                                        :{DKGREEN}{TINYFONT}--
-STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA8}
-STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA8}
+STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
+STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Szám{SETX 88}Cím
 STR_01E9_SHUFFLE                                                :{TINYFONT}Kever
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Mûsor
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Zenei mûsor kiválasztása
-STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA16}   "{STRING}"
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA16}   "{STRING}"
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA}   "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA}   "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Számlista
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}"{STRING}" mûsora
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Törlés
@@ -577,7 +577,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Figyelm
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...túl távol van az elõzõ céltól
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Legjobb cégek melyek elérték a {NUMU16}{}({STRING} Szintet)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Cégdicsõség tábla {NUMU16}
-STR_0212                                                        :{BIGFONT}{COMMA16}.
+STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Üzletember
 STR_0214_ENTREPRENEUR                                           :Vállalkozó
 STR_0215_INDUSTRIALIST                                          :Iparos
@@ -586,12 +586,12 @@ STR_0217_MAGNATE                                                :Mágnás
 STR_0218_MOGUL                                                  :Fejes
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Az évszázad iparmágnása
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{STRING}, {STRING}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA16})
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{STRING} elérte a '{STRING}' rangot!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{STRING} - {STRING} elérte a '{STRING}' rangot!
 STR_021D                                                        :{BLACK}
 STR_021E                                                        :{WHITE}
-STR_021F                                                        :{BLUE}{COMMA16}
+STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Saját pálya készítése
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}pályaszerkesztõ
@@ -788,8 +788,8 @@ STR_02DE_MAP_OF_WORLD                                           :Világtérkép
 STR_EXTRA_VIEW_PORT                                             :Extra látkép
 STR_SIGN_LIST                                                   :Feliratok listája
 STR_02DF_TOWN_DIRECTORY                                         :Városlista
-STR_TOWN_POPULATION                                             :{BLACK}Világnépesség: {COMMA32}
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}{COMMA16}. látkép
+STR_TOWN_POPULATION                                             :{BLACK}Világnépesség: {COMMA}
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}{COMMA}. látkép
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Látkép aktualizálása
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Beállítja a globális látkép pozicióját erre a látképre
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Látkép visszatöltése
@@ -961,34 +961,34 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nem lehe
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nem lehet másolni a menetrendet...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Megosztott menetrend vége - -
 
-STR_TRAIN_IS_LOST                                               :{WHITE}{COMMA16}. vonat eltévedt.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}{COMMA16}. vonat profitja az elmúlt évben: {CURRENCY}
+STR_TRAIN_IS_LOST                                               :{WHITE}{COMMA}. vonat eltévedt.
+STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}{COMMA}. vonat profitja az elmúlt évben: {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Európai Pénzügyi Únió!{}{}Az Euro bevezetésre került mint egyedüli valuta a mindennapi pénzügyi tranzakciókra az országodban!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}A(z) {COMMA16}. vonatnak túl rövid a menetrendje
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}A(z) {COMMA16}. vonatnak üres a menetrendje
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}A(z) {COMMA16}. vonatnak duplikált utasításai vannak
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}A(z) {COMMA16}. vonatnak nemlétezõ állomás van a menetrendjében
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}A(z) {COMMA16}. közúti jármûnek túl kevés a teendõje
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}A(z) {COMMA16}. közúti jármûnek nincs teendõje
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}A(z) {COMMA16}. köyúti jármûnek duplikált utasításai vannak
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}A(z) {COMMA16}. közúti jármûnek nemlétezõ állomás van a menetrendjében
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}A(z) {COMMA16}. hajónak túl rövid a menetrendje
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}A(z) {COMMA16}. hajónak üres a menetrendje
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}A(z) {COMMA16}. hajónak duplikált utasításai vannak
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}A(z) {COMMA16}. hajónak nemlétezõ állomás van a menetrendjében
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}A(z) {COMMA16}. repülõnek túl rövid a menetrendje
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}A(z) {COMMA16}. repülõnek üres a menetrendje
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}A(z) {COMMA16}. repülõnek duplikált utasitásai vannak
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}A(z) {COMMA16}. repülõnek nemlétezõ állomás van a menetrendjében
+STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}A(z) {COMMA}. vonatnak túl rövid a menetrendje
+STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}A(z) {COMMA}. vonatnak üres a menetrendje
+STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}A(z) {COMMA}. vonatnak duplikált utasításai vannak
+STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}A(z) {COMMA}. vonatnak nemlétezõ állomás van a menetrendjében
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}A(z) {COMMA}. közúti jármûnek túl kevés a teendõje
+STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}A(z) {COMMA}. közúti jármûnek nincs teendõje
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}A(z) {COMMA}. köyúti jármûnek duplikált utasításai vannak
+STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}A(z) {COMMA}. közúti jármûnek nemlétezõ állomás van a menetrendjében
+STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}A(z) {COMMA}. hajónak túl rövid a menetrendje
+STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}A(z) {COMMA}. hajónak üres a menetrendje
+STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}A(z) {COMMA}. hajónak duplikált utasításai vannak
+STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}A(z) {COMMA}. hajónak nemlétezõ állomás van a menetrendjében
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}A(z) {COMMA}. repülõnek túl rövid a menetrendje
+STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}A(z) {COMMA}. repülõnek üres a menetrendje
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}A(z) {COMMA}. repülõnek duplikált utasitásai vannak
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}A(z) {COMMA}. repülõnek nemlétezõ állomás van a menetrendjében
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autorenew sikertelen a(z) {COMMA16}. vonaton (pénzlimit)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autorenew sikertelen a(z) {COMMA16}. közúti jármûvön (pénzlimit)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autorenew sikertelen a(z) {COMMA16}. hajón (pénzlimit)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autorenew sikertelen a(z) {COMMA16}. repülõn (pénzlimit)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autorenew sikertelen a(z) {COMMA}. vonaton (pénzlimit)
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autorenew sikertelen a(z) {COMMA}. közúti jármûvön (pénzlimit)
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autorenew sikertelen a(z) {COMMA}. hajón (pénzlimit)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autorenew sikertelen a(z) {COMMA}. repülõn (pénzlimit)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Foltok beállítása
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Foltok beállítása
@@ -1104,7 +1104,7 @@ STR_CHEATS                                                      :{WHITE}Csalások
 STR_CHEATS_TIP                                                  :{BLACK}A kijelölõnégyzetek jelzik a csalások eddigi használtságát
 STR_CHEATS_WARNING                                              :{BLACK}Figyelem! Te épp a versenytársaidat készülöd elárulni. Sose felejtsd el, hogy egy ilyen szégyenletes tett sose merül feledésbe.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tõkeemelés {CURRENCY64}
-STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Játszani mint játékos #{ORANGE}{COMMA16}
+STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Játszani mint játékos #{ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Csodabuldózer (lerombol gazdasági épületeket, stb): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}A csatornák keresztezhessék egymást: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Építés szünet módban: {ORANGE}{STRING}
@@ -1120,7 +1120,7 @@ STR_GO_TO_WAYPOINT                                              :{WAYPOINT}on át
 STR_GO_NON_STOP_TO_WAYPOINT                                     :Úton {WAYPOINT} ellenõrzõ ponton át
 
 STR_WAYPOINTNAME_CITY                                           :{TOWN}i ellenõrzõ pont
-STR_WAYPOINTNAME_CITY_SERIAL                                    :{TOWN}i {COMMA16}. ellenõrzõ pont
+STR_WAYPOINTNAME_CITY_SERIAL                                    :{TOWN}i {COMMA}. ellenõrzõ pont
 STR_LANDINFO_WAYPOINT                                           :Ellenõrzõ pont
 
 STR_WAYPOINT                                                    :{WHITE}Ellenõrzõ pont
@@ -1203,8 +1203,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Tejkaram
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Cukorbánya építése
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Gazdasági épületek
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% elszállítva)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% elszállítva)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA}% elszállítva)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% elszállítva)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{TOWN} {STRING}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...túl közel egy másik gazdasági épülethez
@@ -1244,15 +1244,15 @@ STR_NETWORK_ADD_SERVER                                          :{BLACK}Szerver 
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Hozzáadja a szervert a listához, így késõbb gyorsabban tudsz hozzá csatlakozni
 STR_NETWORK_ENTER_IP                                            :{BLACK}Írd be a szerver IP címét
 
-STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Kliens
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Kliens online / kliens max
 STR_NETWORK_GAME_INFO                                           :{SILVER}JÁTÉK INFÓ
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Kliens:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_CLIENTS                                             :{SILVER}Kliens:  {WHITE}{COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Nyelv:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Tájtípus:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}A pálya nagysága:  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}A pálya nagysága:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Szerver verzió:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}A szerver címe:  {WHITE}{STRING} : {NUMU16}
 STR_NETWORK_START_DATE                                          :{SILVER}Kezdési dátum:  {WHITE}{DATE_SHORT}
@@ -1517,21 +1517,21 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Út/vasút keresz
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Városok
-STR_TOWN_LABEL_POP                                              :{WHITE}{STRING} ({COMMA32})
+STR_TOWN_LABEL_POP                                              :{WHITE}{STRING} ({COMMA})
 STR_2001                                                        :{WHITE}{STRING}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2003                                                        :{TINYFONT}{WHITE}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Elõbb le kell rombolnod az épületet
 STR_2005                                                        :{WHITE}{TOWN}
-STR_2006_POPULATION                                             :{BLACK}Lakosság: {ORANGE}{COMMA32}{BLACK} Házak: {ORANGE}{COMMA32}
+STR_2006_POPULATION                                             :{BLACK}Lakosság: {ORANGE}{COMMA}{BLACK} Házak: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Város átnevezése
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Nem nevezheted át a várost...
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} önkormányzata nem engedélyezi
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Városnevek - kattints egy névre a város megnézéséhez
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}A fõ nézetet a városra állítja
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}A város nevének megváltoztatása
-STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Utasok az elõzõ hónapban: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
-STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Levélcsomagok az elõzõ hónapban: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Utasok az elõzõ hónapban: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Levélcsomagok az elõzõ hónapban: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200F_TALL_OFFICE_BLOCK                                      :Magas irodaház
 STR_2010_OFFICE_BLOCK                                           :Irodaház
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Kis bérház
@@ -1605,7 +1605,7 @@ STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} A megítélésed növelése az önkormányzat megvesztegetésével, komoly büntetést kockáztatva, ha ez kiderül.{} Ára: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Közlekedési zûrzavar {TOWN} városában!{}{}{STRING} által indított útjavítás keseríti meg hat hónapig az autóvezetõk életét!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
-STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA32})
+STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (építés alatt)
 STR_2059_IGLOO                                                  :Jégkunyhó
 STR_205A_TEPEES                                                 :Indiánsátor
@@ -1667,7 +1667,7 @@ STR_303B_EXCELLENT                                              :kiváló
 STR_303C_OUTSTANDING                                            :kimagasló
 ############ range for rating ends
 
-STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA8}%)
+STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} többé nem fogad el {STRING}
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} többé nem fogad el {STRING} és {STRING}
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} most már elfogad {STRING}
@@ -1678,7 +1678,7 @@ STR_3044_TOO_CLOSE_TO_ANOTHER_BUS                               :{WHITE}Túl köze
 STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK                             :{WHITE}Túl közel van egy másik teherautó-rakodóhoz
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Elõbb le kell rombolnod a buszmegállót
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Elõbb le kell rombolnod a teherautó-rakodóhelyet
-STR_3048_STATIONS                                               :{WHITE}{STRING} állomásai - {COMMA16}
+STR_3048_STATIONS                                               :{WHITE}{STRING} állomásai - {COMMA}
 STR_3049_0                                                      :{YELLOW}{STATION} {STRINL 0x30D1}
 STR_304A_NONE                                                   :{YELLOW}- Nincs -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...nem alkalmas rá a hely
@@ -1735,7 +1735,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Játék be
 STR_4002_SAVE                                                   :{BLACK}Ment
 STR_4003_DELETE                                                 :{BLACK}Töröl
 STR_4004                                                        :{STRING}, {DATE_LONG}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA32} megabájt szabad
+STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabájt szabad
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Nem olvasható a meghajtó
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}A mentés nem sikerült
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Nem sikerült törölni a fájlt
@@ -1796,7 +1796,7 @@ STR_4829_REQUIRES                                               :{BLACK}Felhaszn
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Múlt havi termelés:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA16}% elszállítva)
+STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% elszállítva)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}A fõ nézetet a gazdasági épületre állítja
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Új {STRING} épül {TOWN} közelében!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Új {STRING} ültettek {TOWN} közelében!
@@ -1813,8 +1813,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{TOWN}i {STRING} termelése a felére csökkent
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Egy rovaráradat {TOWN}i {STRING} pusztulását okozta!{}A termelés a felére csökkent
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...csak a térkép széléhez közel építhetõ
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} termelés nõtt! {TOWN}i {STRING} mostantól {COMMA16}%-al többet termel!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} termelés csökkent! {TOWN} {STRING} mostantól {COMMA16}%-al kevesebbet termel!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} termelés nõtt! {TOWN}i {STRING} mostantól {COMMA}%-al többet termel!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} termelés csökkent! {TOWN} {STRING} mostantól {COMMA}%-al kevesebbet termel!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Vonat van az alagútban
@@ -1877,10 +1877,10 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...már a
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Névtelen{SKIP}
-STR_SV_TRAIN_NAME                                               :Vonat {COMMA16}
-STR_SV_ROADVEH_NAME                                             :Közúti jármû {COMMA16}
-STR_SV_SHIP_NAME                                                :Hajó {COMMA16}
-STR_SV_AIRCRAFT_NAME                                            :Repülõ {COMMA16}
+STR_SV_TRAIN_NAME                                               :Vonat {COMMA}
+STR_SV_ROADVEH_NAME                                             :Közúti jármû {COMMA}
+STR_SV_SHIP_NAME                                                :Hajó {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Repülõ {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :Észak-{STRING}
@@ -1930,12 +1930,12 @@ STR_6804_CUSTOM                                                 :{BLACK}Egyéni
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
-STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Ellenfelek száma legfeljebb: {ORANGE}{COMMA16}
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Ellenfelek száma legfeljebb: {ORANGE}{COMMA}
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Ellenfelek kezdésének ideje: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Városok száma: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Gazdasági épületek száma: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Max. kezdeti kölcsön: {ORANGE}{CURRENCY}
-STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Éves kamatláb: {ORANGE}{COMMA16}%
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Éves kamatláb: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Jármû fenntartási költség: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Ellenfelek építkezési sebessége: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Ellenfelek intelligenciája: {ORANGE}{STRING}
@@ -1994,7 +1994,7 @@ STR_683B_HOSTILE                                                :Ellenséges
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{STRING} {BLACK}{STRING}
-STR_7002_PLAYER                                                 :({COMMA16}. játékos)
+STR_7002_PLAYER                                                 :({COMMA}. játékos)
 STR_7004_NEW_FACE                                               :{BLACK}Új arc
 STR_7005_COLOR_SCHEME                                           :{BLACK}Szín váltása
 STR_7006_COLOR_SCHEME                                           :{GOLD}Szín:
@@ -2028,7 +2028,7 @@ STR_7021                                                        :{STRING}{STRING
 STR_7022_INCOME_GRAPH                                           :{WHITE}Jövedelem grafikon
 STR_CURRCOMPACT32                                               :{CURRCOMPACT}
 STR_CURRCOMPACT64                                               :{CURRCOMPACT64}
-STR_7024                                                        :{COMMA32}
+STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Mûködési nyereség grafikon
 STR_7026_BANK_BALANCE                                           :{WHITE}Banki egyenleg
 STR_7027_LOAN                                                   :{WHITE}Kölcsön
@@ -2052,14 +2052,14 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}A kölcsö
 STR_7037_PRESIDENT                                              :{WHITE}{STRING}{}{GOLD}(Elnök)
 STR_7038_INAUGURATED                                            :{GOLD}Alapítás éve: {WHITE}{NUMU16}
 STR_7039_VEHICLES                                               :{GOLD}Jármûvek:
-STR_703A_TRAIN                                                  :{WHITE}{COMMA16} vonat
-STR_703B_TRAINS                                                 :{WHITE}{COMMA16} vonat
-STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA16} közúti jármû
-STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA16} közúti jármû
-STR_703E_AIRCRAFT                                               :{WHITE}{COMMA16} repülõgép
-STR_703F_AIRCRAFT                                               :{WHITE}{COMMA16} repülõgép
-STR_7040_SHIP                                                   :{WHITE}{COMMA16} hajó
-STR_7041_SHIPS                                                  :{WHITE}{COMMA16} hajó
+STR_703A_TRAIN                                                  :{WHITE}{COMMA} vonat
+STR_703B_TRAINS                                                 :{WHITE}{COMMA} vonat
+STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA} közúti jármû
+STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA} közúti jármû
+STR_703E_AIRCRAFT                                               :{WHITE}{COMMA} repülõgép
+STR_703F_AIRCRAFT                                               :{WHITE}{COMMA} repülõgép
+STR_7040_SHIP                                                   :{WHITE}{COMMA} hajó
+STR_7041_SHIPS                                                  :{WHITE}{COMMA} hajó
 STR_7042_NONE                                                   :{WHITE}Nincs
 STR_7043_FACE_SELECTION                                         :{WHITE}Arcválasztás
 STR_7044_MALE                                                   :{BLACK}Férfi
@@ -2124,8 +2124,8 @@ STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}25% megv
 STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}25% eladása ebbõl a cégbõl
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Nem vehetsz 25%-ot ebbõl a cégbõl...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Nem adhatsz el 25%-ot ebbõl a cégbõl...
-STR_707D_OWNED_BY                                               :{WHITE}({COMMA16}% {STRING} tulajdona)
-STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA16}% {STRING} tulajdona{}   {COMMA16}% {STRING} tulajdona)
+STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% {STRING} tulajdona)
+STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% {STRING} tulajdona{}   {COMMA}% {STRING} tulajdona)
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{STRING} céget felvásárolta {STRING}!
 STR_7080_PROTECTED                                              :{WHITE}Ez a cég egyelõre még nem rendelkezik részvényekkel...
 
@@ -2400,8 +2400,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}i 
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Az emberek ünnepelnek . . .{}Megérkezett az elsõ vonat {STATION} állomásra!
 STR_8802_DETAILS                                                :{WHITE}{STRING} adatai
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vonat van az útban
-STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
 STR_8806_GO_TO                                                  :Menj {STATION} állomásra
 STR_8807_GO_TO_TRANSFER                                         :Menj {STATION} (odaszállít és felvesz rakományt)
 STR_8808_GO_TO_UNLOAD                                           :Menj {STATION} (lepakol)
@@ -2427,13 +2427,13 @@ STR_INVALID_ORDER                                               :{RED} (Hibás me
 STR_UNKNOWN_DESTINATION                                         :ismeretlen célpont
 STR_8812_EMPTY                                                  :{LTBLUE}Üres
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} {STATION} állomásról
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{COMMA16}. vonat a jármûtelepen várakozik
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{COMMA}. vonat a jármûtelepen várakozik
 STR_8815_NEW_VEHICLES                                           :{BLACK}Új jármûvek
 STR_8816                                                        :{BLACK}-
 STR_8818_INFORMATION                                            :{BLACK}Információk
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Túl hosszú a vonat
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Csak a jármûtelepen álló vonatokat lehet megváltoztatni
-STR_881B_TRAINS                                                 :{WHITE}{STRING} vonatai - {COMMA16}
+STR_881B_TRAINS                                                 :{WHITE}{STRING} vonatai - {COMMA}
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Új vasúti jármûvek
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Új egysínû jármûvek
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Új MagLev jármûvek
@@ -2467,8 +2467,8 @@ STR_8838_N_A                                                    :Nincs{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Nem adhatod el a vasúti jármûvet...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Nem találok utat a helyi jármûtelepre
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Nem indíthatod el/ állíthatod meg a vonatot...
-STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Javítási idõköz: {LTBLUE}{COMMA16} nap{BLACK}   Utolsó javítás: {LTBLUE}{DATE_LONG}
-STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Szervíz-intervallum: {LTBLUE}{COMMA16}%{BLACK}   Utolsó szervíz: {LTBLUE}{DATE_LONG}
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Javítási idõköz: {LTBLUE}{COMMA} nap{BLACK}   Utolsó javítás: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Szervíz-intervallum: {LTBLUE}{COMMA}%{BLACK}   Utolsó szervíz: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vonatok - kattints egy vonatra az adataihoz
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Új vonatok vásárlása (jármûtelep szükséges hozzá)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vonatok - kattints egy vonatra az adataihoz, húzással áthelyezheted a jármûveket
@@ -2501,12 +2501,12 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A kijelö
 STR_SERVICE_HINT                                                :{BLACK}Célpont kihagyása, ha javítás szükséges
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Új {STRING} használható!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Ár: {CURRENCY}    Súly: {COMMA16}t{}Sebesség: {VELOCITY}    Teljesítmény: {COMMA16}le{}Mûködtetési költség: {CURRENCY}/év{}Kapacitás: {STRING}
+STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Ár: {CURRENCY}    Súly: {COMMA}t{}Sebesség: {VELOCITY}    Teljesítmény: {COMMA}le{}Mûködtetési költség: {CURRENCY}/év{}Kapacitás: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Lerobbant
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Kor: {LTBLUE}{STRING}{BLACK}   Mûködtetési költség: {LTBLUE}{CURRENCY}/év
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Súly: {LTBLUE}{COMMA16}t   {BLACK}Teljesítmény: {LTBLUE}{COMMA32} le{BLACK}   Végsebesség: {LTBLUE} {VELOCITY}
+STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Súly: {LTBLUE}{COMMA}t   {BLACK}Teljesítmény: {LTBLUE}{COMMA} le{BLACK}   Végsebesség: {LTBLUE} {VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Ezévi haszon: {LTBLUE}{CURRENCY}  (tavalyi: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Megbízhatóság: {LTBLUE}{COMMA8}%   {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA16}
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Megbízhatóság: {LTBLUE}{COMMA}%   {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Áll
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Nem indíthatod el a vonatot veszélyben...
 STR_8863_CRASHED                                                :{RED}Balesetet szenvedett!
@@ -2514,7 +2514,7 @@ STR_8863_CRASHED                                                :{RED}Balesetet 
 STR_8865_NAME_TRAIN                                             :{WHITE}Vonat átnevezése
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Nem nevezheted át a vonatot...
 STR_8867_NAME_TRAIN                                             :{BLACK}Vonat átnevezése
-STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Vonatbaleset!{}{COMMA16} ember halt meg az ütközésnél
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Vonatbaleset!{}{COMMA} ember halt meg az ütközésnél
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nem fordíthatod meg a vonatot...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Márkanév megváltoztatása
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nem változtathatod meg a márkanevet...
@@ -2526,7 +2526,7 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Lassít, {V
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Közúti jármû van az útban
-STR_9001_ROAD_VEHICLES                                          :{WHITE}{STRING} közúti jármûvei - {COMMA16}
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{STRING} közúti jármûvei - {COMMA}
 STR_9002                                                        :{WHITE}{STRING}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN}i garázs
 STR_9004_NEW_VEHICLES                                           :{BLACK}Új jármûvek
@@ -2540,13 +2540,13 @@ STR_900C_DETAILS                                                :{WHITE}{STRING}
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Kor: {LTBLUE}{STRING}{BLACK}   Mûködtetési költség: {LTBLUE}{CURRENCY}/év
 STR_900E_MAX_SPEED                                              :{BLACK}Végsebesség: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Ezévi haszon: {LTBLUE}{CURRENCY}  (tavalyi: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Megbízhatóság: {LTBLUE}{COMMA8}%   {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA16}
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Megbízhatóság: {LTBLUE}{COMMA}%   {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Vásárlás éve: {LTBLUE}{NUMU16}{BLACK}   Érték: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...garázsban kellene állnia ehhez
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nem adhatod el a közúti jármûvet...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nem indíthatod el/ állíthatod meg a közúti jármûvet...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{COMMA16}. közúti jármû a garázsban várakozik
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{COMMA}. közúti jármû a garázsban várakozik
 STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Úton a {TOWN}i garázsba
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Úton a {TOWN}i garázsba, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Nem küldheted a jármûvet a garázsba...
@@ -2575,7 +2575,7 @@ STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Közúti j
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Az emberek ünnepelnek . . .{}Megérkezett az elsõ busz {STATION} állomásra!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Az emberek ünnepelnek . . .{}Megérkezett az elsõ teherautó {STATION} állomásra!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Közúti baleset!{}A vezetõ meghalt a vonattal való ütközéskor
-STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Közúti baleset!{}{COMMA16} ember meghalt a vonattal való ütközéskor
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Közúti baleset!{}{COMMA} ember meghalt a vonattal való ütközéskor
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Nem fordíthatod vissza a jármûvet...
 STR_9034_RENAME                                                 :{BLACK}Átnevez
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}A közúti jármû márkanevének megváltoztatása
@@ -2590,7 +2590,7 @@ STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Kikötõép
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Nem építhetsz ide kikötõt...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN}i dokk
 STR_9804_NEW_SHIPS                                              :{BLACK}Új hajók
-STR_9805_SHIPS                                                  :{WHITE}{STRING} hajói - {COMMA16}
+STR_9805_SHIPS                                                  :{WHITE}{STRING} hajói - {COMMA}
 STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Nem vehetsz hajókat...
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Elõbb dokkot kell építened
 STR_9808_NEW_SHIPS                                              :{WHITE}Új hajók
@@ -2605,7 +2605,7 @@ STR_9811_DETAILS                                                :{WHITE}{STRING}
 STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Kor: {LTBLUE}{STRING}{BLACK}   Mûködtetési költség: {LTBLUE}{CURRENCY}/év
 STR_9813_MAX_SPEED                                              :{BLACK}Végsebesség: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Ezévi haszon: {LTBLUE}{CURRENCY}  (tavalyi: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Megbízhatóság: {LTBLUE}{COMMA8}%   {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA16}
+STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Megbízhatóság: {LTBLUE}{COMMA}%   {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Vásárlás éve: {LTBLUE}{NUMU16}{BLACK}   Érték: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nem indíthatod el/ állíthatod meg a hajót...
@@ -2613,7 +2613,7 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nem küld
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nem találom a helyi dokkot
 STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Úton a {TOWN}i dokkba
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Úton a {TOWN}i dokkba, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{COMMA16}. hajó a dokkban várakozik
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{COMMA}. hajó a dokkban várakozik
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Kikötõ építése
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Dokk építése (hajók vételére és karbantartására)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Hajók - kattints egy hajóra az adataihoz
@@ -2664,19 +2664,19 @@ STR_A004_INFORMATION                                            :{BLACK}Informác
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Új repülõgépek
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Megvesz
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nem veheted meg a repülõgépet...
-STR_A009_AIRCRAFT                                               :{WHITE}{STRING} repülõgépei - {COMMA16}
+STR_A009_AIRCRAFT                                               :{WHITE}{STRING} repülõgépei - {COMMA}
 STR_A00A                                                        :{WHITE}{STRING}
 STR_A00B_ORDERS                                                 :{WHITE}{STRING} menetrendje
 STR_A00C_DETAILS                                                :{WHITE}{STRING} adatai
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Kor: {LTBLUE}{STRING}{BLACK}   Mûködtetési költség: {LTBLUE}{CURRENCY}/év
 STR_A00E_MAX_SPEED                                              :{BLACK}Végsebesség: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Ezévi haszon: {LTBLUE}{CURRENCY}  (tavalyi: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Megbízhatóság: {LTBLUE}{COMMA8}%   {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA16}
+STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Megbízhatóság: {LTBLUE}{COMMA}%   {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Vásárlás éve: {LTBLUE}{NUMU16}{BLACK}   Érték: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nem küldheted a repülõgépet a hangárba...
 STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Úton a {STATION} hangárjába
 STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Úton a {STATION} hangárjába, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{COMMA16}. repülõgép a hangárban várakozik
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{COMMA}. repülõgép a hangárban várakozik
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Repülõgép van az útban
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nem indíthatod el/ állíthatod meg a repülõgépet...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}... a levegõben van
@@ -2702,14 +2702,14 @@ STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Hangárba
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}A repülõgép adatai
 STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Új repülõgép használható!
 STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Ár: {CURRENCY}    Végsebesség: {VELOCITY}{}Kapacitás: {COMMA16} utas, {COMMA16} csomag levél{}Mûködtetési költség: {CURRENCY}/év
+STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Ár: {CURRENCY}    Végsebesség: {VELOCITY}{}Kapacitás: {COMMA} utas, {COMMA} csomag levél{}Mûködtetési költség: {CURRENCY}/év
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Repülõgép átnevezése
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Nem nevezheted át a repülõgépet...
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Repülõgép átnevezése
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Az emberek ünnepelnek . . .{}Megérkezett az elsõ repülõgép {STATION} állomásra!
-STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Lezuhant egy repülõgép!{}{COMMA16} ember halt meg a zuhanás után {STATION} állomáson
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Repülõ baleset!{}A repülõnek elfogyott az üzemanyaga, {COMMA16} ember halt meg a zuhanásban!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Lezuhant egy repülõgép!{}{COMMA} ember halt meg a zuhanás után {STATION} állomáson
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Repülõ baleset!{}A repülõnek elfogyott az üzemanyaga, {COMMA} ember halt meg a zuhanásban!
 STR_A035_DESTINATIONS                                           :{TINYFONT}{BLACK}Célpontok:
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Átnevez
@@ -2735,7 +2735,7 @@ STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Gyanús körülmények között felrobbant egy gyár {TOWN} közelében!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}'UFO' szállt le {TOWN} közelében!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Egy szénbánya lesüllyedése földcsuszamlást okozott {TOWN} közelében!
-STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Áradás!{}Legalább {COMMA16} ember meghalt vagy eltünt a halálos áradás következtében!
+STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Áradás!{}Legalább {COMMA} ember meghalt vagy eltünt a halálos áradás következtében!
 
 STR_BRIBE_FAILED                                                :{WHITE}A megvesztegetési kísérleted
 STR_BRIBE_FAILED_2                                              :{WHITE}lefülelte egy helyi nyomozó!
@@ -2745,7 +2745,7 @@ STR_MULTIPLAYER_PAUSED                                          :{WHITE}Játék fe
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Teljesítményértékelések részletezése
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Részletek
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
-STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA32}/{COMMA32})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{INT32}%
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{INT32}
 ############ Those following lines need to be in this order!!
@@ -2780,7 +2780,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Fájlnév:
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Saját pénznem
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Értékarány: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA16}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Értékarány: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Elválasztó:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Elõtag:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Elõtag:
@@ -2794,10 +2794,10 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA16} Vonatok
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA16} Közúti jármûvek
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA16} Repülõgépek
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA16} Hajók
+STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Vonatok
+STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Közúti jármûvek
+STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Repülõgépek
+STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Hajók
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Kilistázza az összes vonatot, aminek a menetrendjében szerepel ez az állomás
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Kilistázza az összes közúti jármûvet, aminek a menetrendjében szerepel ez az állomás
@@ -2819,7 +2819,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Megmutat
 STR_REPLACE_HELP                                                :{BLACK}Ez az opció lehetõve teszi, hogy kiválassz mozdonytípust és lecseréld másfajtára. Ez aztán automatikusan fog megtörténni, amikor a jármû karbantartásra a depóba megy
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Feliratok listája ({COMMA16} db)
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Feliratok listája ({COMMA} db)
 
 ############ Lists rail types
 
@@ -2829,16 +2829,16 @@ STR_MAGLEV_VEHICLES                                             :Maglev Vasutak
 
 ############ End of list of rail types
 
-STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
+STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Ár: {GOLD}{CURRENCY}{BLACK} Súly: {GOLD}{COMMA16}t
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Sebesség: {GOLD}{VELOCITY}{BLACK} Telj.: {GOLD}{COMMA32} lóerõ
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Ár: {GOLD}{CURRENCY}{BLACK} Súly: {GOLD}{COMMA}t
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Sebesség: {GOLD}{VELOCITY}{BLACK} Telj.: {GOLD}{COMMA} lóerõ
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Üzemeltetés: {GOLD}{CURRENCY}/év
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacitás: {GOLD}{STRING} {STRING}
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Kifejlesztve: {GOLD}{NUMU16}{BLACK} Élettartam: {GOLD}{COMMA16} év
-STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. üzemképesség: {GOLD}{COMMA8}%
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Kifejlesztve: {GOLD}{NUMU16}{BLACK} Élettartam: {GOLD}{COMMA} év
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. üzemképesség: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Ár: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Súly: {GOLD}{COMMA16}t  ({COMMA16}t)
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Súly: {GOLD}{COMMA}t  ({COMMA}t)
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Ár: {GOLD}{CURRENCY}{BLACK} Sebesség: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacitás: {GOLD}{COMMA16} utas, {COMMA16} csomag levél
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Meghajtott vagonok: {GOLD}+{COMMA16} lóerõ{BLACK} Súly: {GOLD}+{COMMA8}t
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacitás: {GOLD}{COMMA} utas, {COMMA} csomag levél
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Meghajtott vagonok: {GOLD}+{COMMA} lóerõ{BLACK} Súly: {GOLD}+{COMMA}t

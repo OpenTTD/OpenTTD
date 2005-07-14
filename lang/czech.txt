@@ -82,69 +82,69 @@ STR_004B_BATTERY                                                :baterií
 STR_004C_PLASTIC                                                :plastu
 STR_004D_FIZZY_DRINK                                            :limonád
 STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA16} cestující
-STR_0050_TON_OF_COAL                                            :{COMMA16} tuna uhlí
-STR_0051_BAG_OF_MAIL                                            :{COMMA16} balík posty
+STR_004F_PASSENGER                                              :{COMMA} cestující
+STR_0050_TON_OF_COAL                                            :{COMMA} tuna uhlí
+STR_0051_BAG_OF_MAIL                                            :{COMMA} balík posty
 STR_0052_OF_OIL                                                 :{VOLUME} ropy
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA16} kus dobytka
-STR_0054_CRATE_OF_GOODS                                         :{COMMA16} krabice zbozi
-STR_0055_TON_OF_GRAIN                                           :{COMMA16} tuna zrní
-STR_0056_TON_OF_WOOD                                            :{COMMA16} tuna dreva
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA16} tuna zelezne rudy
-STR_0058_TON_OF_STEEL                                           :{COMMA16} tuna oceli
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA16} balík cenin
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA16} tuna medene rudy
-STR_005B_TON_OF_MAIZE                                           :{COMMA16} tuna kukurice
-STR_005C_TON_OF_FRUIT                                           :{COMMA16} tuna ovoce
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA16} pytel diamantu
-STR_005E_TON_OF_FOOD                                            :{COMMA16} tuna jídla
-STR_005F_TON_OF_PAPER                                           :{COMMA16} tuna papíru
-STR_0060_BAG_OF_GOLD                                            :{COMMA16} balík zlata
+STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} kus dobytka
+STR_0054_CRATE_OF_GOODS                                         :{COMMA} krabice zbozi
+STR_0055_TON_OF_GRAIN                                           :{COMMA} tuna zrní
+STR_0056_TON_OF_WOOD                                            :{COMMA} tuna dreva
+STR_0057_TON_OF_IRON_ORE                                        :{COMMA} tuna zelezne rudy
+STR_0058_TON_OF_STEEL                                           :{COMMA} tuna oceli
+STR_0059_BAG_OF_VALUABLES                                       :{COMMA} balík cenin
+STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} tuna medene rudy
+STR_005B_TON_OF_MAIZE                                           :{COMMA} tuna kukurice
+STR_005C_TON_OF_FRUIT                                           :{COMMA} tuna ovoce
+STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} pytel diamantu
+STR_005E_TON_OF_FOOD                                            :{COMMA} tuna jídla
+STR_005F_TON_OF_PAPER                                           :{COMMA} tuna papíru
+STR_0060_BAG_OF_GOLD                                            :{COMMA} balík zlata
 STR_0061_OF_WATER                                               :{VOLUME} vody
-STR_0062_TON_OF_WHEAT                                           :{COMMA16} tuna kukurice
+STR_0062_TON_OF_WHEAT                                           :{COMMA} tuna kukurice
 STR_0063_OF_RUBBER                                              :{VOLUME} kaucuku
-STR_0064_TON_OF_SUGAR                                           :{COMMA16} tuna cukru
-STR_0065_TOY                                                    :{COMMA16} hracka
-STR_0066_BAG_OF_CANDY                                           :{COMMA16} pytel bonbonu
+STR_0064_TON_OF_SUGAR                                           :{COMMA} tuna cukru
+STR_0065_TOY                                                    :{COMMA} hracka
+STR_0066_BAG_OF_CANDY                                           :{COMMA} pytel bonbonu
 STR_0067_OF_COLA                                                :{VOLUME} coly
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA16} tuna cukrové vaty
-STR_0069_BUBBLE                                                 :{COMMA16} bublin
-STR_006A_TON_OF_TOFFEE                                          :{COMMA16} tuna karamelu
-STR_006B_BATTERY                                                :{COMMA16} baterie
+STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} tuna cukrové vaty
+STR_0069_BUBBLE                                                 :{COMMA} bublin
+STR_006A_TON_OF_TOFFEE                                          :{COMMA} tuna karamelu
+STR_006B_BATTERY                                                :{COMMA} baterie
 STR_006C_OF_PLASTIC                                             :{VOLUME} plastu
-STR_006D_FIZZY_DRINK                                            :{COMMA16} limonád
+STR_006D_FIZZY_DRINK                                            :{COMMA} limonád
 STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA16} cestujících
-STR_0070_TONS_OF_COAL                                           :{COMMA16} tun uhlí
-STR_0071_BAGS_OF_MAIL                                           :{COMMA16} baliku posty
+STR_006F_PASSENGERS                                             :{COMMA} cestujících
+STR_0070_TONS_OF_COAL                                           :{COMMA} tun uhlí
+STR_0071_BAGS_OF_MAIL                                           :{COMMA} baliku posty
 STR_0072_OF_OIL                                                 :{VOLUME} ropy
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA16} kusu dobytka
-STR_0074_CRATES_OF_GOODS                                        :{COMMA16} krabic zbozi
-STR_0075_TONS_OF_GRAIN                                          :{COMMA16} tun zrní
-STR_0076_TONS_OF_WOOD                                           :{COMMA16} tun dreva
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA16} tun zelezne rudy
-STR_0078_TONS_OF_STEEL                                          :{COMMA16} tun oceli
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA16} baliku cenin
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA16} tun medene rudy
-STR_007B_TONS_OF_MAIZE                                          :{COMMA16} tun kukurice
-STR_007C_TONS_OF_FRUIT                                          :{COMMA16} tun ovoce
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA16} baliku diamantu
-STR_007E_TONS_OF_FOOD                                           :{COMMA16} tun jídla
-STR_007F_TONS_OF_PAPER                                          :{COMMA16} tun papíru
-STR_0080_BAGS_OF_GOLD                                           :{COMMA16} baliku zlata
+STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} kusu dobytka
+STR_0074_CRATES_OF_GOODS                                        :{COMMA} krabic zbozi
+STR_0075_TONS_OF_GRAIN                                          :{COMMA} tun zrní
+STR_0076_TONS_OF_WOOD                                           :{COMMA} tun dreva
+STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} tun zelezne rudy
+STR_0078_TONS_OF_STEEL                                          :{COMMA} tun oceli
+STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} baliku cenin
+STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} tun medene rudy
+STR_007B_TONS_OF_MAIZE                                          :{COMMA} tun kukurice
+STR_007C_TONS_OF_FRUIT                                          :{COMMA} tun ovoce
+STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} baliku diamantu
+STR_007E_TONS_OF_FOOD                                           :{COMMA} tun jídla
+STR_007F_TONS_OF_PAPER                                          :{COMMA} tun papíru
+STR_0080_BAGS_OF_GOLD                                           :{COMMA} baliku zlata
 STR_0081_OF_WATER                                               :{VOLUME} vody
-STR_0082_TONS_OF_WHEAT                                          :{COMMA16} tun psenice
+STR_0082_TONS_OF_WHEAT                                          :{COMMA} tun psenice
 STR_0083_OF_RUBBER                                              :{VOLUME} kaucuku
-STR_0084_TONS_OF_SUGAR                                          :{COMMA16} tun cukru
-STR_0085_TOYS                                                   :{COMMA16} hracek
-STR_0086_BAGS_OF_CANDY                                          :{COMMA16} pytlu bonbonu
+STR_0084_TONS_OF_SUGAR                                          :{COMMA} tun cukru
+STR_0085_TOYS                                                   :{COMMA} hracek
+STR_0086_BAGS_OF_CANDY                                          :{COMMA} pytlu bonbonu
 STR_0087_OF_COLA                                                :{VOLUME} coly
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA16} tun cukrové vaty
-STR_0089_BUBBLES                                                :{COMMA16} bublin
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA16} tun karamelu
-STR_008B_BATTERIES                                              :{COMMA16} baterií
+STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} tun cukrové vaty
+STR_0089_BUBBLES                                                :{COMMA} bublin
+STR_008A_TONS_OF_TOFFEE                                         :{COMMA} tun karamelu
+STR_008B_BATTERIES                                              :{COMMA} baterií
 STR_008C_OF_PLASTIC                                             :{VOLUME} plastu
-STR_008D_FIZZY_DRINKS                                           :{COMMA16} limonád
+STR_008D_FIZZY_DRINKS                                           :{COMMA} limonád
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}CS
 STR_0090_CL                                                     :{TINYFONT}UH
@@ -219,8 +219,8 @@ STR_00DE_BROWN                                                  :Hneda
 STR_00DF_GREY                                                   :Seda
 STR_00E0_WHITE                                                  :Bílá
 STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Prilis mnoho vozidel ve hre
-STR_00E2                                                        :{BLACK}{COMMA16}
-STR_00E3                                                        :{RED}{COMMA16}
+STR_00E2                                                        :{BLACK}{COMMA}
+STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}Umisteni
 STR_00E5_CONTOURS                                               :Profil
 STR_00E6_VEHICLES                                               :Dopravní prostredky
@@ -441,18 +441,18 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Zobrazov
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Zisk tento rok: {CURRENCY} (minulý rok: {CURRENCY})
 
 ############ range for service numbers starts
-STR_0199_YEAR                                                   :{COMMA16} rok ({COMMA16})
-STR_019A_YEARS                                                  :{COMMA16} let ({COMMA16})
-STR_019B_YEARS                                                  :{RED}{COMMA16} let ({COMMA16})
+STR_0199_YEAR                                                   :{COMMA} rok ({COMMA})
+STR_019A_YEARS                                                  :{COMMA} let ({COMMA})
+STR_019B_YEARS                                                  :{RED}{COMMA} let ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Silnicni vozidlo
 STR_019D_AIRCRAFT                                               :Letadlo
 STR_019E_SHIP                                                   :Lod
 STR_019F_TRAIN                                                  :Vlak
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA16} je stare
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA16} je velmi stare
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA16} je velmi stare a potrebuje nahradit
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} je stare
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} je velmi stare
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} je velmi stare a potrebuje nahradit
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informace o uzemi
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Cena za vycisteni: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cena za vycisteni: {LTBLUE}{CURRENCY}
@@ -497,7 +497,7 @@ STR_01C9_30TH                                                   :30.
 STR_01CA_31ST                                                   :31.
 ############ range for days	ends
 
-STR_01CB                                                        :{TINYFONT}{COMMA16}
+STR_01CB                                                        :{TINYFONT}{COMMA}
 STR_01CC_TOGGLE_LARGE_SMALL_MAP                                 :{BLACK}Prepnout velkou/malou mapu
 STR_01CD_SELECT_TUTORIAL_DEMONSTRATION                          :{WHITE}Zvolit Tutorial/Ukazka
 
@@ -509,7 +509,7 @@ STR_CARGO_ACCEPTED_4                                            :{BLACK}Prijiman
 STR_CARGO_ACCEPTED_5                                            :{BLACK}Prijimane zbozi: {LTBLUE}{STRING}, {STRING}, {STRING}, {STRING}, {STRING}
 ############ range for cargo acecpted ends
 
-STR_01D1_8                                                      :({COMMA8}/8 {STRING})
+STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jukebox
 STR_01D3_SOUND_MUSIC                                            :Zvuk/Hudba
 STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Ukázat zvukove/hudebni okno
@@ -528,16 +528,16 @@ STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Zastavit
 STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Zacit prehravat hudbu
 STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Tahej posouvatka pro nastaveni hlasitosti hudby a zvukovych efektu
 STR_01E3                                                        :{DKGREEN}{TINYFONT}--
-STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA8}
-STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA8}
+STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
+STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Skladba{SETX 88}Název
 STR_01E9_SHUFFLE                                                :{TINYFONT}Nahodne
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Program
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Volba programu hudby
-STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA16} "{STRING}"
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA16}   "{STRING}"
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA}   "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Index skladeb
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Vymazat
@@ -577,7 +577,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Prehrat
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...prilis daleko od predchazejiciho cile
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Nejlepsi spolecnosti, které dosáhly {NUMU16}{}({STRING} uroven)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Tabulka spolecnosti v roce {NUMU16}
-STR_0212                                                        :{BIGFONT}{COMMA16}.
+STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Obchodník
 STR_0214_ENTREPRENEUR                                           :Manazer
 STR_0215_INDUSTRIALIST                                          :Továrník
@@ -586,12 +586,12 @@ STR_0217_MAGNATE                                                :Magnát
 STR_0218_MOGUL                                                  :Velemagnát
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Magnát století
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{STRING}, {STRING}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA16})
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{STRING} získal oznaceni '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{STRING} z {STRING} získal oznaceni '{STRING}' status!
 STR_021D                                                        :{BLACK}
 STR_021E                                                        :{WHITE}
-STR_021F                                                        :{BLUE}{COMMA16}
+STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Vytvorit mapu
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Editor mapy
@@ -788,8 +788,8 @@ STR_02DE_MAP_OF_WORLD                                           :Mapa sveta
 STR_EXTRA_VIEW_PORT                                             :Dalsi pohled
 STR_SIGN_LIST                                                   :Seznam popisku
 STR_02DF_TOWN_DIRECTORY                                         :Seznam mest
-STR_TOWN_POPULATION                                             :{BLACK}Populace sveta: {COMMA32}
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pohled {COMMA16}
+STR_TOWN_POPULATION                                             :{BLACK}Populace sveta: {COMMA}
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pohled {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Nastavit jako pohled
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Nastavit soucasne zorné pole jako pohled
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Prejit na pohled
@@ -961,34 +961,34 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nemuzu s
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nemohu kopírovat seznam prikazu...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Konec sdílených prikazu - -
 
-STR_TRAIN_IS_LOST                                               :{WHITE}Vlak {COMMA16} je ztracen.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Zisk vlaku {COMMA16} za posledni rok byl {CURRENCY}
+STR_TRAIN_IS_LOST                                               :{WHITE}Vlak {COMMA} je ztracen.
+STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Zisk vlaku {COMMA} za posledni rok byl {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Evropská menova unie{}{}Euro se v této zemi stalo jedinou menou pro kazdodenni obchodní transakce!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Vlak {COMMA16} má prilis málo prikazu
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Vlak {COMMA16} nemá zadne prikazy
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Vlak {COMMA16} má zdvojené prikazy
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Vlak {COMMA16} má v prikazech neplatnou stanici
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Silnicni vozidlo {COMMA16} má prilis málo prikazu
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Silnicni vozidlo {COMMA16} nemá zadne prikazy
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Silnicni vozidlo {COMMA16} má zdvojené prikazy
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Silnicni vozidlo {COMMA16} má v prikazech neplatnou stanici
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Lod {COMMA16} má prilis málo prikazu
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Lod {COMMA16} nemá zadne prikazy
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Lod {COMMA16} má zdvojené prikazy
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Lod {COMMA16} má v prikazech neplatnou stanici
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Letadlo {COMMA16} má prilis málo prikazu
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Letadlo {COMMA16} nemá zadne prikazy
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Letadlo {COMMA16} má zdvojené prikazy
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Letadlo {COMMA16} má v prikazech neplatnou stanici
+STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Vlak {COMMA} má prilis málo prikazu
+STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Vlak {COMMA} nemá zadne prikazy
+STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Vlak {COMMA} má zdvojené prikazy
+STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Vlak {COMMA} má v prikazech neplatnou stanici
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Silnicni vozidlo {COMMA} má prilis málo prikazu
+STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Silnicni vozidlo {COMMA} nemá zadne prikazy
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Silnicni vozidlo {COMMA} má zdvojené prikazy
+STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Silnicni vozidlo {COMMA} má v prikazech neplatnou stanici
+STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Lod {COMMA} má prilis málo prikazu
+STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Lod {COMMA} nemá zadne prikazy
+STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Lod {COMMA} má zdvojené prikazy
+STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Lod {COMMA} má v prikazech neplatnou stanici
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Letadlo {COMMA} má prilis málo prikazu
+STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Letadlo {COMMA} nemá zadne prikazy
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Letadlo {COMMA} má zdvojené prikazy
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Letadlo {COMMA} má v prikazech neplatnou stanici
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Obnovení vlaku {COMMA16} selhalo (financni limit)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Obnovení silnicniho vozidla {COMMA16} selhalo (financni limit)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Obnovení lodi {COMMA16} selhalo (financni limit)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Obnovení letadla {COMMA16} selhalo (financni limit)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Obnovení vlaku {COMMA} selhalo (financni limit)
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Obnovení silnicniho vozidla {COMMA} selhalo (financni limit)
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Obnovení lodi {COMMA} selhalo (financni limit)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Obnovení letadla {COMMA} selhalo (financni limit)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Nastavit patche
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Nastavit patche
@@ -1103,7 +1103,7 @@ STR_CHEATS                                                      :{WHITE}Cheaty
 STR_CHEATS_TIP                                                  :{BLACK}Zaskrtavaci policka indikuji jestli jsi tento cheat jiz pouzil.
 STR_CHEATS_WARNING                                              :{BLACK}Varování! Chystas se podvést ostatní hrace. Pamatuj si, ze tento podlý cin nebude nikdy zapomenut!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Navysit peníze o {CURRENCY64}
-STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Hrajes jako hrac: {ORANGE}{COMMA16}
+STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Hrajes jako hrac: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magický buldozer (odstraní prumysl a neodstranitelné predmety): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunely se mohou krizit: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Povolit staveni v pauze: {ORANGE}{STRING}
@@ -1119,7 +1119,7 @@ STR_GO_TO_WAYPOINT                                              :Jet pres {WAYPO
 STR_GO_NON_STOP_TO_WAYPOINT                                     :Jet bez zastávky pres {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY                                           :Kontrolní bod {TOWN}
-STR_WAYPOINTNAME_CITY_SERIAL                                    :Kontrolní bod {TOWN} #{COMMA16}
+STR_WAYPOINTNAME_CITY_SERIAL                                    :Kontrolní bod {TOWN} #{COMMA}
 STR_LANDINFO_WAYPOINT                                           :Kontrolní bod
 
 STR_WAYPOINT                                                    :{WHITE}Kontrolní bod
@@ -1202,8 +1202,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Vyhloubi
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Vyhloubit cukrový dul
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Prumysl
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% prepraveno)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% prepraveno)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA}% prepraveno)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% prepraveno)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{TOWN} {STRING}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...prilis blízko k jinému prumyslu
@@ -1243,15 +1243,15 @@ STR_NETWORK_ADD_SERVER                                          :{BLACK}Pridat s
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Prida server do seznamu, ve kterém se budou hledat bezici hry.
 STR_NETWORK_ENTER_IP                                            :{BLACK}Vloz IP adresu serveru
 
-STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Hracu
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Hracu online / maximalne
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO O HRE
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Klientu:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_CLIENTS                                             :{SILVER}Klientu:  {WHITE}{COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Jazyk:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Prostredi:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Velikost mapy:  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Velikost mapy:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Verze hry na serveru:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adresa serveru:  {WHITE}{STRING} : {NUMU16}
 STR_NETWORK_START_DATE                                          :{SILVER}Pocatecni datum:  {WHITE}{DATE_SHORT}
@@ -1515,21 +1515,21 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Zeleznicni prej
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Mesta
-STR_TOWN_LABEL_POP                                              :{WHITE}{STRING} ({COMMA32})
+STR_TOWN_LABEL_POP                                              :{WHITE}{STRING} ({COMMA})
 STR_2001                                                        :{WHITE}{STRING}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2003                                                        :{TINYFONT}{WHITE}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Budova musi byt nejprve znicena
 STR_2005                                                        :{WHITE}{TOWN}
-STR_2006_POPULATION                                             :{BLACK}Populace: {ORANGE}{COMMA32}{BLACK} Domu: {ORANGE}{COMMA32}
+STR_2006_POPULATION                                             :{BLACK}Populace: {ORANGE}{COMMA}{BLACK} Domu: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Prejmenovat mesto
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Nemohu prejmenovat mesto:
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Místní správa mesta {TOWN} odmita vydat povoleni.
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Jména mest - stiskni na jmenu mesta pro pohled na mesto
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Umistit pohled na mesto
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Zmenit jméno mesta
-STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Cestující minulý mesic: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
-STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Posta minulý mesic: {ORANGE}{COMMA32}{BLACK}  max: {ORANGE}{COMMA32}
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Cestující minulý mesic: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Posta minulý mesic: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200F_TALL_OFFICE_BLOCK                                      :Vysoký kancelarsky blok
 STR_2010_OFFICE_BLOCK                                           :Kancelarsky blok
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Malé bytovky
@@ -1603,7 +1603,7 @@ STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Podplatit místní správu pro zvyseni hodnocení spolecnosti. Riziko trestu v pripade pristizeni.{}  Cena: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Dopravni chaos v {TOWN}!{}{}Program prestavby ulic sponzorovaný {STRING} prinasi motoristum 6 mesicu utrpení!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
-STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA32})
+STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (ve vystavbe)
 STR_2059_IGLOO                                                  :Iglu
 STR_205A_TEPEES                                                 :Teepee
@@ -1665,7 +1665,7 @@ STR_303B_EXCELLENT                                              :Vynikající
 STR_303C_OUTSTANDING                                            :Uzasne
 ############ range for rating ends
 
-STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA8}%)
+STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} uz více neprijima {STRING}
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} uz více neprijima {STRING} nebo {STRING}
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} nyní prijima {STRING}
@@ -1676,7 +1676,7 @@ STR_3044_TOO_CLOSE_TO_ANOTHER_BUS                               :{WHITE}Prilis b
 STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK                             :{WHITE}Prilis blizko k jiné nákladové rampe
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Musis nejprve znicit autobusovou zastávku
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Musis nejprve znicit nákladovou rampu
-STR_3048_STATIONS                                               :{WHITE}{STRING} - {COMMA16} stanic
+STR_3048_STATIONS                                               :{WHITE}{STRING} - {COMMA} stanic
 STR_3049_0                                                      :{YELLOW}{STATION} {STRINL 0x30D1}
 STR_304A_NONE                                                   :{YELLOW}- Nic -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...nepouzitelne místo
@@ -1733,7 +1733,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Otevrit 
 STR_4002_SAVE                                                   :{BLACK}Ulozit
 STR_4003_DELETE                                                 :{BLACK}Smazat
 STR_4004                                                        :{STRING}, {DATE_LONG}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA32} MB volných
+STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} MB volných
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Nemohu cist jednotku
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Ulozeni hry selhalo
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Nemohu smazat soubor
@@ -1794,7 +1794,7 @@ STR_4829_REQUIRES                                               :{BLACK}Vyzaduje
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produkce minulý mesic:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA16}% prepraveno)
+STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% prepraveno)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Nastavit pohled na prumysl
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}{STRING} v konstrukci pobliz mesta {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Nový {STRING} je vysazen pobliz mesta {TOWN}!
@@ -1811,8 +1811,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{TOWN} {STRING} produkce poklesla o 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Zamoreni skudci v {TOWN} {STRING}!{}Produkce poklesla o 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...muze byt umisteno pouze pobliz okraju mapy
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Produkce {STRING} v {TOWN} {STRING} vzrostla o {COMMA16}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Produkce {STRING} v {TOWN} {STRING} poklesla o {COMMA16}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Produkce {STRING} v {TOWN} {STRING} vzrostla o {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Produkce {STRING} v {TOWN} {STRING} poklesla o {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Vlak v tunelu
@@ -1875,10 +1875,10 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...jiz j
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Beze jména{SKIP}
-STR_SV_TRAIN_NAME                                               :Vlak {COMMA16}
-STR_SV_ROADVEH_NAME                                             :Silnicni vozidlo {COMMA16}
-STR_SV_SHIP_NAME                                                :Lod {COMMA16}
-STR_SV_AIRCRAFT_NAME                                            :Letadlo {COMMA16}
+STR_SV_TRAIN_NAME                                               :Vlak {COMMA}
+STR_SV_ROADVEH_NAME                                             :Silnicni vozidlo {COMMA}
+STR_SV_SHIP_NAME                                                :Lod {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Letadlo {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} sever
@@ -1928,12 +1928,12 @@ STR_6804_CUSTOM                                                 :{BLACK}Uzivatel
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
-STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Maximalni pocet protivniku: {ORANGE}{COMMA16}
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Maximalni pocet protivniku: {ORANGE}{COMMA}
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Cas startu protivniku: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Mnozstvi mest: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Mnozstvi prumyslu: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maximalni pocatecni dluh: {ORANGE}{CURRENCY}
-STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Pocatecni urokova sazba: {ORANGE}{COMMA16}%
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Pocatecni urokova sazba: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Cena provozu vozidel: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Rychlost výstavby protivniku: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Inteligence protivniku: {ORANGE}{STRING}
@@ -1992,7 +1992,7 @@ STR_683B_HOSTILE                                                :zaujatý
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{STRING} {BLACK}{STRING}
-STR_7002_PLAYER                                                 :(hrac {COMMA16})
+STR_7002_PLAYER                                                 :(hrac {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nový oblicej
 STR_7005_COLOR_SCHEME                                           :{BLACK}Barva
 STR_7006_COLOR_SCHEME                                           :{GOLD}Barevné schéma:
@@ -2026,7 +2026,7 @@ STR_7021                                                        :{STRING}{STRING
 STR_7022_INCOME_GRAPH                                           :{WHITE}Graf prijmu
 STR_CURRCOMPACT32                                               :{CURRCOMPACT}
 STR_CURRCOMPACT64                                               :{CURRCOMPACT64}
-STR_7024                                                        :{COMMA32}
+STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Graf provozního zisku
 STR_7026_BANK_BALANCE                                           :{WHITE}Stav na uctu
 STR_7027_LOAN                                                   :{WHITE}Pujcka
@@ -2050,14 +2050,14 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Splatit 
 STR_7037_PRESIDENT                                              :{WHITE}{STRING}{}{GOLD}(Prezident)
 STR_7038_INAUGURATED                                            :{GOLD}Zalozeno: {WHITE}{NUMU16}
 STR_7039_VEHICLES                                               :{GOLD}Vozidla:
-STR_703A_TRAIN                                                  :{WHITE}{COMMA16} vlak
-STR_703B_TRAINS                                                 :{WHITE}{COMMA16} vlaku
-STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA16} silnicni vozidlo
-STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA16} silnicnich vozidel
-STR_703E_AIRCRAFT                                               :{WHITE}{COMMA16} letadlo
-STR_703F_AIRCRAFT                                               :{WHITE}{COMMA16} letadel
-STR_7040_SHIP                                                   :{WHITE}{COMMA16} lod
-STR_7041_SHIPS                                                  :{WHITE}{COMMA16} lodí
+STR_703A_TRAIN                                                  :{WHITE}{COMMA} vlak
+STR_703B_TRAINS                                                 :{WHITE}{COMMA} vlaku
+STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA} silnicni vozidlo
+STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA} silnicnich vozidel
+STR_703E_AIRCRAFT                                               :{WHITE}{COMMA} letadlo
+STR_703F_AIRCRAFT                                               :{WHITE}{COMMA} letadel
+STR_7040_SHIP                                                   :{WHITE}{COMMA} lod
+STR_7041_SHIPS                                                  :{WHITE}{COMMA} lodí
 STR_7042_NONE                                                   :{WHITE}Nic
 STR_7043_FACE_SELECTION                                         :{WHITE}Volba tvare
 STR_7044_MALE                                                   :{BLACK}Muzske
@@ -2122,8 +2122,8 @@ STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Koupit 2
 STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Prodat 25% podíl v této spolecnosti
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Nemohu koupit 25% podíl v této spolecnosti...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Nemohu prodat 25% podíl v této spolecnosti...
-STR_707D_OWNED_BY                                               :{WHITE}({COMMA16}% vlastneno {STRING})
-STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA16}% vlastneno {STRING}{}   {COMMA16}% vlastneno {STRING})
+STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% vlastneno {STRING})
+STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% vlastneno {STRING}{}   {COMMA}% vlastneno {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{STRING} byla prevzata {STRING}!
 STR_7080_PROTECTED                                              :{WHITE}Tato spolecnost zatím neobchoduje s akciemi...
 
@@ -2398,8 +2398,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Zeleznic
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První vlak dorazil do {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Detaily)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}V ceste je vlak
-STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
 STR_8806_GO_TO                                                  :Jet do {STATION}
 STR_8807_GO_TO_TRANSFER                                         :Jet do {STATION} (prelozit a nalozit jiný náklad)
 STR_8808_GO_TO_UNLOAD                                           :Jet do {STATION} (vylozit)
@@ -2425,13 +2425,13 @@ STR_INVALID_ORDER                                               :{RED} (neplatný
 STR_UNKNOWN_DESTINATION                                         :neznámý cíl
 STR_8812_EMPTY                                                  :{LTBLUE}Prázdný
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} z {STATION}
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Vlak {COMMA16} ceka v depu
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Vlak {COMMA} ceka v depu
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nová vozidla
 STR_8816                                                        :{BLACK}-
 STR_8818_INFORMATION                                            :{BLACK}Informace
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Prilis dlouhý vlak
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Vlaky lze menit, jen kdyz stojí uvnitr depa
-STR_881B_TRAINS                                                 :{WHITE}{STRING} - {COMMA16} vlaku
+STR_881B_TRAINS                                                 :{WHITE}{STRING} - {COMMA} vlaku
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nové lokomotivy a vagony
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nové lokomotivy a vagony pro monorail
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nové lokomotivy a vagony pro maglev
@@ -2465,8 +2465,8 @@ STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Nemohu prodat vagon/lokomotivu...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Nemohu najít cestu do místního depa...
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Nemohu rozjet/zastavit vlak...
-STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Interval servisu: {LTBLUE}{COMMA16}dní{BLACK}   Naposledy v servisu: {LTBLUE}{DATE_LONG}
-STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Interval servisu: {LTBLUE}{COMMA16}%{BLACK}   Naposledy v servisu: {LTBLUE}{DATE_LONG}
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Interval servisu: {LTBLUE}{COMMA}dní{BLACK}   Naposledy v servisu: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Interval servisu: {LTBLUE}{COMMA}%{BLACK}   Naposledy v servisu: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vlaky - klepni na vlak pro informace
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Kupovat nové vlaky (vyzaduje zeleznicni depo)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vlaky - stiskni na vlaku pro info, presun vagon pro pridani ci odebrani z vlaku
@@ -2499,12 +2499,12 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Oznaceny
 STR_SERVICE_HINT                                                :{BLACK}Preskoc tento cil pokud neni potreba pravidelna udrzba
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Dalsi {STRING} je k dispozici!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Cena: {CURRENCY} Hmotnost: {COMMA16}t{}Rychlost: {VELOCITY}  Výkon: {COMMA16} koní{}Cena provozu: {CURRENCY} rocne{}Kapacita: {STRING}
+STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Cena: {CURRENCY} Hmotnost: {COMMA}t{}Rychlost: {VELOCITY}  Výkon: {COMMA} koní{}Cena provozu: {CURRENCY} rocne{}Kapacita: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Porucha
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Stari: {LTBLUE}{STRING}{BLACK}   Cena provozu: {LTBLUE}{CURRENCY} rocne
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Hmotnost: {LTBLUE}{COMMA16}t  {BLACK}Výkon: {LTBLUE}{COMMA32} koní{BLACK} Max. rychlost: {LTBLUE}{VELOCITY}
+STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Hmotnost: {LTBLUE}{COMMA}t  {BLACK}Výkon: {LTBLUE}{COMMA} koní{BLACK} Max. rychlost: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Prijem tento rok: {LTBLUE}{CURRENCY}  (minulý rok: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolehlivost: {LTBLUE}{COMMA8}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA16}
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolehlivost: {LTBLUE}{COMMA}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Zastaveno
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Nemohu vlak nechat projet semafory v nebezpeci...
 STR_8863_CRASHED                                                :{RED}Nehoda!
@@ -2512,7 +2512,7 @@ STR_8863_CRASHED                                                :{RED}Nehoda!
 STR_8865_NAME_TRAIN                                             :{WHITE}Pojmenovat vlak
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Nelze pojmenovat vlak...
 STR_8867_NAME_TRAIN                                             :{BLACK}Pojmenovat vlak
-STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Zaleznicni nestesti!{}{COMMA16} lidi zemrelo po srazce v plamenech
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Zaleznicni nestesti!{}{COMMA} lidi zemrelo po srazce v plamenech
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nemohu zmenit smer vlaku...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Prejmenovat typ zeleznicniho vozidla
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nemohu prejmenovat typ zeleznicniho vozidla...
@@ -2524,7 +2524,7 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Zastavuje,
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Silnicni vozidlo v ceste
-STR_9001_ROAD_VEHICLES                                          :{WHITE}{STRING} - {COMMA16} silnicnich vozidel
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{STRING} - {COMMA} silnicnich vozidel
 STR_9002                                                        :{WHITE}{STRING}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}Garaze pro silnicni vozidla {TOWN}
 STR_9004_NEW_VEHICLES                                           :{BLACK}Nová silnicni vozidla
@@ -2538,13 +2538,13 @@ STR_900C_DETAILS                                                :{WHITE}{STRING}
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Stari: {LTBLUE}{STRING}{BLACK}   Cena provozu: {LTBLUE}{CURRENCY} rocne
 STR_900E_MAX_SPEED                                              :{BLACK}Max. rychlost: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Prijem tento rok: {LTBLUE}{CURRENCY}  (minulý rok): {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolehlivost: {LTBLUE}{COMMA8}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA16}
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolehlivost: {LTBLUE}{COMMA}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Koupen: {LTBLUE}{NUMU16}{BLACK} Cena: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...musi byt zastaven v garazi
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nemohu prodat silnicni vozidlo...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nemohu zastavit/rozjet silnicni vozidlo...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Silnicni vozidlo {COMMA16} ceka v garazi
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Silnicni vozidlo {COMMA} ceka v garazi
 STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Mirim do garaze {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Mirim do garaze {TOWN} , {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Nemohu poslat silnicni vozidlo do garaze...
@@ -2573,7 +2573,7 @@ STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Prejmeno
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První autobus prijel do {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První nákladní vozidlo prijelo do {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Dopravní nehoda!{}Ridic zahynul v plamenech pri srazce s vlakem
-STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Dopravní nehoda!{}{COMMA16} lidí zahynulo v plamenech pri srazce s vlakem
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Dopravní nehoda!{}{COMMA} lidí zahynulo v plamenech pri srazce s vlakem
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Nelze otocit vozidlo...
 STR_9034_RENAME                                                 :{BLACK}Prejmenovat
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Prejmenovat typ silnicniho vozidla
@@ -2588,7 +2588,7 @@ STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Konstruk
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Zde nelze postavit pristav...
 STR_9803_SHIP_DEPOT                                             :{WHITE}Lodní depo {TOWN}
 STR_9804_NEW_SHIPS                                              :{BLACK}Nové lode
-STR_9805_SHIPS                                                  :{WHITE}{STRING} - {COMMA16} lodí
+STR_9805_SHIPS                                                  :{WHITE}{STRING} - {COMMA} lodí
 STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Nemohu koupit lod...
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Nejprve musis postavit lodní depo
 STR_9808_NEW_SHIPS                                              :{WHITE}Nové lode
@@ -2603,7 +2603,7 @@ STR_9811_DETAILS                                                :{WHITE}{STRING}
 STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Stari: {LTBLUE}{STRING}{BLACK}   Cena provozu: {LTBLUE}{CURRENCY} rocne
 STR_9813_MAX_SPEED                                              :{BLACK}Max. rychlost: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Prijem tento rok: {LTBLUE}{CURRENCY}  (minulý rok: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolehlivost: {LTBLUE}{COMMA8}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA16}
+STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolehlivost: {LTBLUE}{COMMA}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Koupeno: {LTBLUE}{NUMU16}{BLACK} Cena: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nelze rozjet/zastavit lod...
@@ -2611,7 +2611,7 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nelze po
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nemohu najít místní depo
 STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Jedu do depa {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Jedu do depa {TOWN}, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Lod {COMMA16} ceka v depu
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Lod {COMMA} ceka v depu
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Postavit pristavní molo
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Postavit lodní depo (na nákup a servis lodí)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Lode - informace ziskas klepnutím na jméno lodi
@@ -2662,19 +2662,19 @@ STR_A004_INFORMATION                                            :{BLACK}Informac
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nové letadlo
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Koupit letadlo
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nelze koupit letadlo...
-STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA16} letadel a helikoptér
+STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA} letadel a helikoptér
 STR_A00A                                                        :{WHITE}{STRING}
 STR_A00B_ORDERS                                                 :{WHITE}{STRING} (Prikazy)
 STR_A00C_DETAILS                                                :{WHITE}{STRING} (Detaily)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Stari: {LTBLUE}{STRING}{BLACK}   Cena provozu: {LTBLUE}{CURRENCY} rocne
 STR_A00E_MAX_SPEED                                              :{BLACK}Max. rychlost: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Prijem tento rok: {LTBLUE}{CURRENCY}  (minulý rok: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolehlivost: {LTBLUE}{COMMA8}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA16}
+STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolehlivost: {LTBLUE}{COMMA}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Koupeno: {LTBLUE}{NUMU16}{BLACK} Cena: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nelze poslat letadlo do hangáru...
 STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Jedu do hangáru {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Jedu do hangáru {STATION}, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Letadlo {COMMA16} ceka v hangáru
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Letadlo {COMMA} ceka v hangáru
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Letadlo v ceste
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nemohu rozjet/zastavit letadlo...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Letadlo letí
@@ -2700,14 +2700,14 @@ STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Poslat l
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Ukázat detaily letadla
 STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Nové letadlo je k dispozici!
 STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cena: {CURRENCY} Max. rychlost: {VELOCITY}{}Kapacita: {COMMA16} cestujících, {COMMA16} baliku posty{}Cena provozu: {CURRENCY} rocne
+STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cena: {CURRENCY} Max. rychlost: {VELOCITY}{}Kapacita: {COMMA} cestujících, {COMMA} baliku posty{}Cena provozu: {CURRENCY} rocne
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Prejmenovat letadlo
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Nelze prejmenovat letadlo
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Prejmenovat letadlo
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První letadlo pristalo v {STATION}!
-STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Pád letadla!{}{COMMA16} zahynulo v plamenech v {STATION}.
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Letecká havárie!{}Kvuli vycerpani paliva zemrelo {COMMA16} lidí v ohnivém pekle!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Pád letadla!{}{COMMA} zahynulo v plamenech v {STATION}.
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Letecká havárie!{}Kvuli vycerpani paliva zemrelo {COMMA} lidí v ohnivém pekle!
 STR_A035_DESTINATIONS                                           :{TINYFONT}{BLACK}Cíle:
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Prejmenovat
@@ -2733,7 +2733,7 @@ STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Za podezrelych okolností byla znicena továrna u {TOWN}!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}UFO pristalo pobliz {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Pokles terénu u uhelného dolu {TOWN} zpusobil velké skody!
-STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Záplavy!{}Po straslivych záplavách je odhadem {COMMA16} lidí pohresovanych nebo mrtvých!
+STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Záplavy!{}Po straslivych záplavách je odhadem {COMMA} lidí pohresovanych nebo mrtvých!
 
 STR_BRIBE_FAILED                                                :{WHITE}Tvuj pokus o úplatek byl
 STR_BRIBE_FAILED_2                                              :{WHITE}odhalen místním vysetrovatelem.
@@ -2743,7 +2743,7 @@ STR_MULTIPLAYER_PAUSED                                          :{WHITE}Hra je v
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Podrobné hodnocení výkonu
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Podrobne
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
-STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA32}/{COMMA32})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{INT32}%
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{INT32}
 ############ Those following lines need to be in this order!!
@@ -2778,7 +2778,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Jméno so
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vlastní mena
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz meny: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA16}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz meny: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Oddelovac:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Predpona:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Pripona:
@@ -2792,10 +2792,10 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA16} vlaku
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA16} silnicnich vozidel
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA16} letadel
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA16} lodi
+STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} vlaku
+STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} silnicnich vozidel
+STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} letadel
+STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} lodi
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Zobrazit vsechny vlaky, které mají tuto stanici v jízdním radu
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Zobrazit vsechna silnicni vozidla, která mají tuto stanici v jízdním radu
@@ -2817,7 +2817,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Tady je 
 STR_REPLACE_HELP                                                :{BLACK}Tato moznost hry ti umoznuje vybrat typ lokomotivy, který nechá vymenit za jiný. To se bude automaticky provadet, kdyz lokomotiva zajede do depa.
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam popisku - {COMMA16} popisku
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam popisku - {COMMA} popisku
 
 ############ Lists rail types
 
@@ -2827,16 +2827,16 @@ STR_MAGLEV_VEHICLES                                             :Lokomotivy pro 
 
 ############ End of list of rail types
 
-STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
+STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Hmotnost: {GOLD}{COMMA16} t
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rychlost: {GOLD}{VELOCITY}{BLACK}   Výkon: {GOLD}{COMMA32} hp
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Hmotnost: {GOLD}{COMMA} t
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rychlost: {GOLD}{VELOCITY}{BLACK}   Výkon: {GOLD}{COMMA} hp
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Provozní cena: {GOLD}{CURRENCY} rocne
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacita: {GOLD}{STRING} {STRING}
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Vyvinuto: {GOLD}{NUMU16}{BLACK} Zivotnost: {GOLD}{COMMA16} let
-STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. spolehlivost: {GOLD}{COMMA8}%
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Vyvinuto: {GOLD}{NUMU16}{BLACK} Zivotnost: {GOLD}{COMMA} let
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. spolehlivost: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Hmotnost: {GOLD}{COMMA16} t  ({COMMA16} t)
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Hmotnost: {GOLD}{COMMA} t  ({COMMA} t)
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Rychlost: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacita: {GOLD}{COMMA16} cestujících, {COMMA16} baliku posty
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pohanene vagony: {GOLD}+{COMMA16} hp{BLACK} Hmotnost: {GOLD}+{COMMA8} t
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacita: {GOLD}{COMMA} cestujících, {COMMA} baliku posty
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pohanene vagony: {GOLD}+{COMMA} hp{BLACK} Hmotnost: {GOLD}+{COMMA} t

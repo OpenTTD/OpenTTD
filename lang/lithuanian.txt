@@ -82,69 +82,69 @@ STR_004B_BATTERY                                                :Bateriju
 STR_004C_PLASTIC                                                :Plastic
 STR_004D_FIZZY_DRINK                                            :Gaiviuju gerimu
 STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA16} keleiviai
-STR_0050_TON_OF_COAL                                            :{COMMA16} tonu anglies
-STR_0051_BAG_OF_MAIL                                            :{COMMA16} pasto maisu
+STR_004F_PASSENGER                                              :{COMMA} keleiviai
+STR_0050_TON_OF_COAL                                            :{COMMA} tonu anglies
+STR_0051_BAG_OF_MAIL                                            :{COMMA} pasto maisu
 STR_0052_OF_OIL                                                 :{VOLUME} naftos
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA16} galvijas
-STR_0054_CRATE_OF_GOODS                                         :{COMMA16} prekiu deze
-STR_0055_TON_OF_GRAIN                                           :{COMMA16} tonu grudu
-STR_0056_TON_OF_WOOD                                            :{COMMA16} tonu medienos
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA16} tonu gelezies rudos
-STR_0058_TON_OF_STEEL                                           :{COMMA16} tonu plieno
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA16} bag of valuables
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA16} tonu vario rudos
-STR_005B_TON_OF_MAIZE                                           :{COMMA16} tonu kukuruzu
-STR_005C_TON_OF_FRUIT                                           :{COMMA16} tonu vaisiu
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA16} deziu deimantu
-STR_005E_TON_OF_FOOD                                            :{COMMA16} tonu maisto
-STR_005F_TON_OF_PAPER                                           :{COMMA16} tonu popieriaus
-STR_0060_BAG_OF_GOLD                                            :{COMMA16} aukso kapsu
+STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} galvijas
+STR_0054_CRATE_OF_GOODS                                         :{COMMA} prekiu deze
+STR_0055_TON_OF_GRAIN                                           :{COMMA} tonu grudu
+STR_0056_TON_OF_WOOD                                            :{COMMA} tonu medienos
+STR_0057_TON_OF_IRON_ORE                                        :{COMMA} tonu gelezies rudos
+STR_0058_TON_OF_STEEL                                           :{COMMA} tonu plieno
+STR_0059_BAG_OF_VALUABLES                                       :{COMMA} bag of valuables
+STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} tonu vario rudos
+STR_005B_TON_OF_MAIZE                                           :{COMMA} tonu kukuruzu
+STR_005C_TON_OF_FRUIT                                           :{COMMA} tonu vaisiu
+STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} deziu deimantu
+STR_005E_TON_OF_FOOD                                            :{COMMA} tonu maisto
+STR_005F_TON_OF_PAPER                                           :{COMMA} tonu popieriaus
+STR_0060_BAG_OF_GOLD                                            :{COMMA} aukso kapsu
 STR_0061_OF_WATER                                               :{VOLUME} vandens
-STR_0062_TON_OF_WHEAT                                           :{COMMA16} tonu kvieciu
+STR_0062_TON_OF_WHEAT                                           :{COMMA} tonu kvieciu
 STR_0063_OF_RUBBER                                              :{VOLUME} kauciuko
-STR_0064_TON_OF_SUGAR                                           :{COMMA16} tonu cukraus
-STR_0065_TOY                                                    :{COMMA16} zaislu
-STR_0066_BAG_OF_CANDY                                           :{COMMA16} saldumynu krepseliu
+STR_0064_TON_OF_SUGAR                                           :{COMMA} tonu cukraus
+STR_0065_TOY                                                    :{COMMA} zaislu
+STR_0066_BAG_OF_CANDY                                           :{COMMA} saldumynu krepseliu
 STR_0067_OF_COLA                                                :{VOLUME} Coca-Colos
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA16} tonu cukraus vatos
-STR_0069_BUBBLE                                                 :{COMMA16} burbulu
-STR_006A_TON_OF_TOFFEE                                          :{COMMA16} tonu karameles
-STR_006B_BATTERY                                                :{COMMA16} bateriju
+STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} tonu cukraus vatos
+STR_0069_BUBBLE                                                 :{COMMA} burbulu
+STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonu karameles
+STR_006B_BATTERY                                                :{COMMA} bateriju
 STR_006C_OF_PLASTIC                                             :{VOLUME} plastmases
-STR_006D_FIZZY_DRINK                                            :{COMMA16} gaiviuju gerimu
+STR_006D_FIZZY_DRINK                                            :{COMMA} gaiviuju gerimu
 STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA16} keleiviu
-STR_0070_TONS_OF_COAL                                           :{COMMA16} tonu anglies
-STR_0071_BAGS_OF_MAIL                                           :{COMMA16} pasto maisu
+STR_006F_PASSENGERS                                             :{COMMA} keleiviu
+STR_0070_TONS_OF_COAL                                           :{COMMA} tonu anglies
+STR_0071_BAGS_OF_MAIL                                           :{COMMA} pasto maisu
 STR_0072_OF_OIL                                                 :{VOLUME} naftos
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA16} galviju
-STR_0074_CRATES_OF_GOODS                                        :{COMMA16} prekiu deziu
-STR_0075_TONS_OF_GRAIN                                          :{COMMA16} tonu grudu
-STR_0076_TONS_OF_WOOD                                           :{COMMA16} tonu medienos
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA16} tonu gelezies rudos
-STR_0078_TONS_OF_STEEL                                          :{COMMA16} tonu plieno
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA16} brangenybiu maisu
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA16} tonu vario rudos
-STR_007B_TONS_OF_MAIZE                                          :{COMMA16} tonu kukuruzu
-STR_007C_TONS_OF_FRUIT                                          :{COMMA16} tonu vaisiu
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA16} deimantu deziu
-STR_007E_TONS_OF_FOOD                                           :{COMMA16} tonu maisto
-STR_007F_TONS_OF_PAPER                                          :{COMMA16} tonu popieriaus
-STR_0080_BAGS_OF_GOLD                                           :{COMMA16} aukso kapsu
+STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} galviju
+STR_0074_CRATES_OF_GOODS                                        :{COMMA} prekiu deziu
+STR_0075_TONS_OF_GRAIN                                          :{COMMA} tonu grudu
+STR_0076_TONS_OF_WOOD                                           :{COMMA} tonu medienos
+STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} tonu gelezies rudos
+STR_0078_TONS_OF_STEEL                                          :{COMMA} tonu plieno
+STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} brangenybiu maisu
+STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} tonu vario rudos
+STR_007B_TONS_OF_MAIZE                                          :{COMMA} tonu kukuruzu
+STR_007C_TONS_OF_FRUIT                                          :{COMMA} tonu vaisiu
+STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} deimantu deziu
+STR_007E_TONS_OF_FOOD                                           :{COMMA} tonu maisto
+STR_007F_TONS_OF_PAPER                                          :{COMMA} tonu popieriaus
+STR_0080_BAGS_OF_GOLD                                           :{COMMA} aukso kapsu
 STR_0081_OF_WATER                                               :{VOLUME} vandens
-STR_0082_TONS_OF_WHEAT                                          :{COMMA16} tonu kvieciu
+STR_0082_TONS_OF_WHEAT                                          :{COMMA} tonu kvieciu
 STR_0083_OF_RUBBER                                              :{VOLUME} kauciuko
-STR_0084_TONS_OF_SUGAR                                          :{COMMA16} tonu cukraus
-STR_0085_TOYS                                                   :{COMMA16} zaislu
-STR_0086_BAGS_OF_CANDY                                          :{COMMA16} krepseliu saldumynu
+STR_0084_TONS_OF_SUGAR                                          :{COMMA} tonu cukraus
+STR_0085_TOYS                                                   :{COMMA} zaislu
+STR_0086_BAGS_OF_CANDY                                          :{COMMA} krepseliu saldumynu
 STR_0087_OF_COLA                                                :{VOLUME} Coca-Colos
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA16} tonu cukraus vatos
-STR_0089_BUBBLES                                                :{COMMA16} burbulu
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA16} tonu karameles
-STR_008B_BATTERIES                                              :{COMMA16} bateriju
+STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} tonu cukraus vatos
+STR_0089_BUBBLES                                                :{COMMA} burbulu
+STR_008A_TONS_OF_TOFFEE                                         :{COMMA} tonu karameles
+STR_008B_BATTERIES                                              :{COMMA} bateriju
 STR_008C_OF_PLASTIC                                             :{VOLUME} plastmases
-STR_008D_FIZZY_DRINKS                                           :{COMMA16} gaiviuju gerimu
+STR_008D_FIZZY_DRINKS                                           :{COMMA} gaiviuju gerimu
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
 STR_0090_CL                                                     :{TINYFONT}CL
@@ -219,8 +219,8 @@ STR_00DE_BROWN                                                  :Ruda
 STR_00DF_GREY                                                   :Pilka
 STR_00E0_WHITE                                                  :Balta
 STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Per daug transporto priemoniu zaidime
-STR_00E2                                                        :{BLACK}{COMMA16}
-STR_00E3                                                        :{RED}{COMMA16}
+STR_00E2                                                        :{BLACK}{COMMA}
+STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}Vieta
 STR_00E5_CONTOURS                                               :Konturai
 STR_00E6_VEHICLES                                               :Transporto priemones
@@ -441,18 +441,18 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Rodyti/p
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Pelnas siais metais: {CURRENCY} (praeitais metais: {CURRENCY})
 
 ############ range for service numbers starts
-STR_0199_YEAR                                                   :{COMMA16} metai ({COMMA16})
-STR_019A_YEARS                                                  :{COMMA16} metai ({COMMA16})
-STR_019B_YEARS                                                  :{RED}{COMMA16} metai ({COMMA16})
+STR_0199_YEAR                                                   :{COMMA} metai ({COMMA})
+STR_019A_YEARS                                                  :{COMMA} metai ({COMMA})
+STR_019B_YEARS                                                  :{RED}{COMMA} metai ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Automobilis
 STR_019D_AIRCRAFT                                               :Lektuvas
 STR_019E_SHIP                                                   :Laivas
 STR_019F_TRAIN                                                  :Traukinys
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA16} sensta
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA16} labai suseno
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA16} labai suseno ir butinai turi buti pakeistas
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} sensta
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} labai suseno
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} labai suseno ir butinai turi buti pakeistas
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informacija apie zemes plota
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Kaina isvalyti: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Kaina isvalyti: {LTBLUE}{CURRENCY}
@@ -497,7 +497,7 @@ STR_01C9_30TH                                                   :30-a
 STR_01CA_31ST                                                   :31-a
 ############ range for days	ends
 
-STR_01CB                                                        :{TINYFONT}{COMMA16}
+STR_01CB                                                        :{TINYFONT}{COMMA}
 STR_01CC_TOGGLE_LARGE_SMALL_MAP                                 :{BLACK}Pakeisti dideli/vidutini/maza zemelapio dydi
 STR_01CD_SELECT_TUTORIAL_DEMONSTRATION                          :{WHITE}Pasirink Pavyzdi/Demonstracija
 
@@ -509,7 +509,7 @@ STR_CARGO_ACCEPTED_4                                            :{BLACK}Krovinys
 STR_CARGO_ACCEPTED_5                                            :{BLACK}Krovinys priimamas: {LTBLUE}{STRING}, {STRING}, {STRING}, {STRING}, {STRING}
 ############ range for cargo acecpted ends
 
-STR_01D1_8                                                      :({COMMA8}/8 {STRING})
+STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz Jukebox
 STR_01D3_SOUND_MUSIC                                            :Garsas/muzika
 STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Rodyti garso/muzikos nustatymu langa
@@ -528,16 +528,16 @@ STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Sustabdy
 STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Groti muzika
 STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Tempk uz slankiklio, jei nori nustatyti muzikos ir efektu garsuma
 STR_01E3                                                        :{DKGREEN}{TINYFONT}--
-STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA8}
-STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA8}
+STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
+STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Takelis{SETX 88}Pavadinimas
 STR_01E9_SHUFFLE                                                :{TINYFONT}Atsitiktinis
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Programa
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Muzikos programos pasirinkimas
-STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA16} "{STRING}"
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA16}   "{STRING}"
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA}   "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Takelio numeris
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Programa - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Isvalyti
@@ -577,7 +577,7 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Groti g
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...per toli nuo pries tai buvusio keliones tikslo
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Geriausios kompanijos, kurios pasieke {NUMU16}{}({STRING} lygi)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Kompaniju Lygos lentele {NUMU16}
-STR_0212                                                        :{BIGFONT}{COMMA16}.
+STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Biznierius
 STR_0214_ENTREPRENEUR                                           :Verslininkas
 STR_0215_INDUSTRIALIST                                          :Fabrikantas
@@ -586,12 +586,12 @@ STR_0217_MAGNATE                                                :Magnatas
 STR_0218_MOGUL                                                  :Didziausias magnatas
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Amziaus magnatas
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{STRING}, {STRING}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA16})
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{STRING} achieves '{STRING}' status!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{STRING} of {STRING} achieves '{STRING}' status!
 STR_021D                                                        :{BLACK}
 STR_021E                                                        :{WHITE}
-STR_021F                                                        :{BLUE}{COMMA16}
+STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Sukurti scenariju
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenarijaus Redaktorius
@@ -786,8 +786,8 @@ STR_02DE_MAP_OF_WORLD                                           :Zemelapis
 STR_EXTRA_VIEW_PORT                                             :Papildomas perziuros langas
 STR_SIGN_LIST                                                   :Zenklu sarasas
 STR_02DF_TOWN_DIRECTORY                                         :Miestu sarasas
-STR_TOWN_POPULATION                                             :{BLACK}Pasaulio populiacija: {COMMA32}
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Perziuros langas {COMMA16}
+STR_TOWN_POPULATION                                             :{BLACK}Pasaulio populiacija: {COMMA}
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Perziuros langas {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopijuoti i perziuros langa
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopijuoti globaline padeti i si perziuros langa
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Ikelti is perziuros lango
@@ -957,34 +957,34 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Uzduociu
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Uzduociu saraso kopijuoti negalima...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Bendru uzduociu pabaiga - -
 
-STR_TRAIN_IS_LOST                                               :{WHITE}Traukinys {COMMA16} pasimete.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Traukinio {COMMA16} pelnas praeitais metais buvo {CURRENCY}
+STR_TRAIN_IS_LOST                                               :{WHITE}Traukinys {COMMA} pasimete.
+STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Traukinio {COMMA} pelnas praeitais metais buvo {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Bendras Europos sajungos piniginis vienetas - Euras!{}{}Nuo siol Euras tampa pagrindine valiuta kasdieniniuose atsiskaitymuose!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Traukinys {COMMA16} turi per mazai uzduociu
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Traukinys {COMMA16} neturi uzduociu
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Traukinys {COMMA16} turi kelias vienodas uzduotis
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Traukinio {COMMA16} uzduociu sarase yra netinkamu stoteliu
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Automobilis {COMMA16} turi per mazai uzduociu
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Automobilis {COMMA16} neturi uzduociu
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Automobilis {COMMA16} turi kelias vienodas uzduotis
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Automobilio {COMMA16} uzduociu sarase yra netinkamu stoteliu
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Laivas {COMMA16} turi per mazai uzduociu
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Laivas {COMMA16} neturi uzduociu
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Laivas {COMMA16} turi kelias vienodas uzduotis
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Laivo {COMMA16} uzduociu sarase yra netinkamu stoteliu
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Lektuvas {COMMA16} turi per mazai uzduociu
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Lektuvas {COMMA16} neturi uzduociu
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Lektuvas {COMMA16} turi kelias vienodas uzduotis
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Lektuvo {COMMA16} uzduociu sarase yra netinkamu stoteliu
+STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Traukinys {COMMA} turi per mazai uzduociu
+STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Traukinys {COMMA} neturi uzduociu
+STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Traukinys {COMMA} turi kelias vienodas uzduotis
+STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Traukinio {COMMA} uzduociu sarase yra netinkamu stoteliu
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Automobilis {COMMA} turi per mazai uzduociu
+STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Automobilis {COMMA} neturi uzduociu
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Automobilis {COMMA} turi kelias vienodas uzduotis
+STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Automobilio {COMMA} uzduociu sarase yra netinkamu stoteliu
+STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Laivas {COMMA} turi per mazai uzduociu
+STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Laivas {COMMA} neturi uzduociu
+STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Laivas {COMMA} turi kelias vienodas uzduotis
+STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Laivo {COMMA} uzduociu sarase yra netinkamu stoteliu
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Lektuvas {COMMA} turi per mazai uzduociu
+STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Lektuvas {COMMA} neturi uzduociu
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Lektuvas {COMMA} turi kelias vienodas uzduotis
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Lektuvo {COMMA} uzduociu sarase yra netinkamu stoteliu
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Traukinio {COMMA16} automatiskai atnaujinti nepavyko (pinigu limitas)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automobilio {COMMA16} automatiskai atnaujinti nepavyko (pinigu limitas)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Laivo {COMMA16} automatinis atnaujimimas nepavyko (pinigu limitas)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Lektuvo {COMMA16} automatinis atnaujimimas nepavyko (pinigu limitas)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Traukinio {COMMA} automatiskai atnaujinti nepavyko (pinigu limitas)
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automobilio {COMMA} automatiskai atnaujinti nepavyko (pinigu limitas)
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Laivo {COMMA} automatinis atnaujimimas nepavyko (pinigu limitas)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Lektuvo {COMMA} automatinis atnaujimimas nepavyko (pinigu limitas)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Nustatymu konfiguravimas
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Konfiguruok nustatymus
@@ -1099,7 +1099,7 @@ STR_CHEATS                                                      :{WHITE}Sukciavi
 STR_CHEATS_TIP                                                  :{BLACK}Laukeliai rodo ar jus naudojote si triuka pries tai
 STR_CHEATS_WARNING                                              :{BLACK}Demesio! Tu bandai isduoti vargsus savo varzovus. Tai bus tavo geda visiems laikams ir niekada neuzmirsta.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Padauginti pinigu {CURRENCY64}
-STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Zaisti uz zaideja: {ORANGE}{COMMA16}
+STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Zaisti uz zaideja: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magiskas buldozeris (pasalina gamyklas ir kt.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneliai gali susikirsti: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Galima statyti pauzes rezime: {ORANGE}{STRING}
@@ -1115,7 +1115,7 @@ STR_GO_TO_WAYPOINT                                              :Vaziuoti per {W
 STR_GO_NON_STOP_TO_WAYPOINT                                     :Vaziuoti be sustojimo per {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY                                           :Kontroles punktas {TOWN}
-STR_WAYPOINTNAME_CITY_SERIAL                                    :{TOWN} kontroles punktas#{COMMA16}
+STR_WAYPOINTNAME_CITY_SERIAL                                    :{TOWN} kontroles punktas#{COMMA}
 STR_LANDINFO_WAYPOINT                                           :Kontroles punktas
 
 STR_WAYPOINT                                                    :{WHITE}Kontroles punktas
@@ -1198,8 +1198,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Statyti 
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Statyti cukraus kasykla
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Gamyklos
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA16}% transportuota)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA16}%/{COMMA16}% transportuota)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA}% transportuota)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportuota)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{TOWN} {STRING}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...per arti kitos gamyklos
@@ -1239,15 +1239,15 @@ STR_NETWORK_ADD_SERVER                                          :{BLACK}Prideti 
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Prideda serveri i sarasa, kuris tikrinamas ieskant zaidimu
 STR_NETWORK_ENTER_IP                                            :{BLACK}Ivesk adresa (IP)
 
-STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA16}/{COMMA16}
+STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Zaidejai
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Zaidzia / maksimaliai zaideju
 STR_NETWORK_GAME_INFO                                           :{SILVER}Zaidimo informacija
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Zaidejai:  {WHITE}{COMMA8} / {COMMA8}
+STR_NETWORK_CLIENTS                                             :{SILVER}Zaidejai:  {WHITE}{COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Kalba:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Tileset:  {WHITE}{STRING}
-STR_NETWORK_MAP_SIZE                                            :{SILVER}Map size:  {WHITE}{COMMA16}x{COMMA16}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Map size:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Serverio versija:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Serverio adresas:  {WHITE}{STRING} : {NUMU16}
 STR_NETWORK_START_DATE                                          :{SILVER}Zaidimo pradzia:  {WHITE}{DATE_SHORT}
@@ -1509,21 +1509,21 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Gelezinkelio pe
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Miestai
-STR_TOWN_LABEL_POP                                              :{WHITE}{STRING} ({COMMA32})
+STR_TOWN_LABEL_POP                                              :{WHITE}{STRING} ({COMMA})
 STR_2001                                                        :{WHITE}{STRING}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2003                                                        :{TINYFONT}{WHITE}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Pirmiau turi butu nugriautas pastatas
 STR_2005                                                        :{WHITE}{TOWN}
-STR_2006_POPULATION                                             :{BLACK}Populiacija: {ORANGE}{COMMA32}{BLACK}  Namu skaicius: {ORANGE}{COMMA32}
+STR_2006_POPULATION                                             :{BLACK}Populiacija: {ORANGE}{COMMA}{BLACK}  Namu skaicius: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Pervardinti miesta
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Negalima pervardinti miesto...
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} vietine valdzia neleidzia
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Paspausk ant pavavinimo, kad parodyti ekrano centre
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Rodyti miesta ekrano centre
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Keisti miesto varda
-STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Keleiviu skaicius praeita menesi: {ORANGE}{COMMA32}{BLACK}  Maks.: {ORANGE}{COMMA32}
-STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Pasto siuntu praejusi menesi: {ORANGE}{COMMA32}{BLACK}  Maks.: {ORANGE}{COMMA32}
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Keleiviu skaicius praeita menesi: {ORANGE}{COMMA}{BLACK}  Maks.: {ORANGE}{COMMA}
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Pasto siuntu praejusi menesi: {ORANGE}{COMMA}{BLACK}  Maks.: {ORANGE}{COMMA}
 STR_200F_TALL_OFFICE_BLOCK                                      :Aukstas biuru pastatas
 STR_2010_OFFICE_BLOCK                                           :Biuru kompleksas
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Nedidelis daugiabutis
@@ -1597,7 +1597,7 @@ STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Bribe the local authority to increase your rating, at the risk of a severe penalty if caught.{}  Cost: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Eismo chaosas {TOWN}!{}{}Keliu rekonstrukcija, finansuojama {STRING}, sukels 6 menesiu chaosa keliuose!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
-STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA32})
+STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (under construction)
 STR_2059_IGLOO                                                  :Igloo
 STR_205A_TEPEES                                                 :Tepees
@@ -1659,7 +1659,7 @@ STR_303B_EXCELLENT                                              :Puikus
 STR_303C_OUTSTANDING                                            :Nuostabus
 ############ range for rating ends
 
-STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA8}%)
+STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} daugiau nepriima {STRING}
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} daugiau nepriima {STRING} arba {STRING}
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} jau priima {STRING}
@@ -1670,7 +1670,7 @@ STR_3044_TOO_CLOSE_TO_ANOTHER_BUS                               :{WHITE}Per arti
 STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK                             :{WHITE}Per arti kitos sunkvezimiu pakrovimo aiksteles
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Pirmiausia turi nugriauti autobusu stotele
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Pirmiausia turi nugriauti sunkvezimiu pakrovimo aikstele
-STR_3048_STATIONS                                               :{WHITE}{STRING} - {COMMA16} Stoteles
+STR_3048_STATIONS                                               :{WHITE}{STRING} - {COMMA} Stoteles
 STR_3049_0                                                      :{YELLOW}{STATION} {STRINL 0x30D1}
 STR_304A_NONE                                                   :{YELLOW}- Nieko -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...netinkama vieta
@@ -1726,7 +1726,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Atverti 
 STR_4002_SAVE                                                   :{BLACK}Issaugoti
 STR_4003_DELETE                                                 :{BLACK}Trinti
 STR_4004                                                        :{STRING}, {DATE_LONG}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA32} Mb laisva
+STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} Mb laisva
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Negali pasiekti disko
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Zaidimo issaugoti nepavyko
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Failo istrinti nepavyko
@@ -1787,7 +1787,7 @@ STR_4829_REQUIRES                                               :{BLACK}Laukia: 
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Progukcija praeita menesi:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA16}% transportuota)
+STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% transportuota)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Rodyti gamykla ekrano centre
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Statomas naujas {STRING} netoli miesto: {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Sodinamas naujas {STRING} netoli miesto: {TOWN}!
@@ -1804,8 +1804,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{TOWN} {STRING} produkcija krenta 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Vabzdziu anpludzio baime vercia {TOWN} {STRING}!{} mazinti produkcija perpus.
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...gali buti tik prie zemelapio krastu
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} produkcija auga ({TOWN} {STRING}) - {COMMA16}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} produkcija krenta ({TOWN} {STRING}) - {COMMA16}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} produkcija auga ({TOWN} {STRING}) - {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} produkcija krenta ({TOWN} {STRING}) - {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Tunelyje traukinys
@@ -1868,10 +1868,10 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...jis i
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Bevardis{SKIP}
-STR_SV_TRAIN_NAME                                               :Traukinys {COMMA16}
-STR_SV_ROADVEH_NAME                                             :Automobilis  {COMMA16}
-STR_SV_SHIP_NAME                                                :Laivas {COMMA16}
-STR_SV_AIRCRAFT_NAME                                            :Lektuvas {COMMA16}
+STR_SV_TRAIN_NAME                                               :Traukinys {COMMA}
+STR_SV_ROADVEH_NAME                                             :Automobilis  {COMMA}
+STR_SV_SHIP_NAME                                                :Laivas {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Lektuvas {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} Siaure
@@ -1921,12 +1921,12 @@ STR_6804_CUSTOM                                                 :{BLACK}Individu
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
-STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Maksimalus priesininku skaicius: {ORANGE}{COMMA16}
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Maksimalus priesininku skaicius: {ORANGE}{COMMA}
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Priesininkas pradeda zaidima: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Miestu gausumas zemelapyje: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Gamyklu gausumas zemelapyje: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maksimali paskola: {ORANGE}{CURRENCY}
-STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Pradinis palukanu procentas: {ORANGE}{COMMA16}%
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Pradinis palukanu procentas: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Islaidu transporto priem. eksploatacijai lygis: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Priesininku konstrukciju statymo greitis: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Priesininku intelektas: {ORANGE}{STRING}
@@ -1985,7 +1985,7 @@ STR_683B_HOSTILE                                                :Priesiskas
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{STRING} {BLACK}{STRING}
-STR_7002_PLAYER                                                 :(Zaidejas {COMMA16})
+STR_7002_PLAYER                                                 :(Zaidejas {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Naujas veidas
 STR_7005_COLOR_SCHEME                                           :{BLACK}Spalva
 STR_7006_COLOR_SCHEME                                           :{GOLD}Spalva:
@@ -2019,7 +2019,7 @@ STR_7021                                                        :{STRING}{STRING
 STR_7022_INCOME_GRAPH                                           :{WHITE}Pajamu diagrama
 STR_CURRCOMPACT32                                               :{CURRCOMPACT}
 STR_CURRCOMPACT64                                               :{CURRCOMPACT64}
-STR_7024                                                        :{COMMA32}
+STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Operating Profit Graph
 STR_7026_BANK_BALANCE                                           :{WHITE}Saskaitos balansas
 STR_7027_LOAN                                                   :{WHITE}Paskola
@@ -2043,14 +2043,14 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Grazina 
 STR_7037_PRESIDENT                                              :{WHITE}{STRING}{}{GOLD}(Direktorius)
 STR_7038_INAUGURATED                                            :{GOLD}Eina pareigas nuo: {WHITE}{NUMU16}
 STR_7039_VEHICLES                                               :{GOLD}Transporto priemones:
-STR_703A_TRAIN                                                  :{WHITE}{COMMA16} traukinys
-STR_703B_TRAINS                                                 :{WHITE}{COMMA16} traukiniai
-STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA16} automobilis
-STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA16} automobiliai
-STR_703E_AIRCRAFT                                               :{WHITE}{COMMA16} lektuvas
-STR_703F_AIRCRAFT                                               :{WHITE}{COMMA16} lektuvai
-STR_7040_SHIP                                                   :{WHITE}{COMMA16} laivas
-STR_7041_SHIPS                                                  :{WHITE}{COMMA16} laivai
+STR_703A_TRAIN                                                  :{WHITE}{COMMA} traukinys
+STR_703B_TRAINS                                                 :{WHITE}{COMMA} traukiniai
+STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA} automobilis
+STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA} automobiliai
+STR_703E_AIRCRAFT                                               :{WHITE}{COMMA} lektuvas
+STR_703F_AIRCRAFT                                               :{WHITE}{COMMA} lektuvai
+STR_7040_SHIP                                                   :{WHITE}{COMMA} laivas
+STR_7041_SHIPS                                                  :{WHITE}{COMMA} laivai
 STR_7042_NONE                                                   :{WHITE}Neturi
 STR_7043_FACE_SELECTION                                         :{WHITE}Veido pasirinkimas
 STR_7044_MALE                                                   :{BLACK}Vyras
@@ -2115,8 +2115,8 @@ STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Pirkti 2
 STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Parduoti 25% sios kompanijos akciju
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Negalima nusipirkti 25% sios kompanijos akciju...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Negalima parduoti 25% sios kompanijos akciju...
-STR_707D_OWNED_BY                                               :{WHITE}({COMMA16}% priklauso {STRING})
-STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA16}% priklauso {STRING}{}   {COMMA16}% priklauso {STRING})
+STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% priklauso {STRING})
+STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% priklauso {STRING}{}   {COMMA}% priklauso {STRING})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{STRING} buvo perimta {STRING}!
 STR_7080_PROTECTED                                              :{WHITE}Si kompanija dar pernelyg jauna, kad galetu pardavineti savo akcijas...
 
@@ -2391,8 +2391,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Citizens celebrate . . .{}First train arrives at {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Train in the way
-STR_8804                                                        :{SETX 10}{COMMA8}: {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA8}: {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
 STR_8806_GO_TO                                                  :Vaziuoja i {STATION}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Remontas {TOWN} traukiniu depe
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Vaziuoti nestojant i {TOWN} traukiniu depa
@@ -2406,13 +2406,13 @@ STR_INVALID_ORDER                                               :{RED} (Neteisin
 STR_UNKNOWN_DESTINATION                                         :nezinomas tikslas
 STR_8812_EMPTY                                                  :{LTBLUE}Tuscias
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} is {STATION}
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Traukinys {COMMA16} laukia depe
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Traukinys {COMMA} laukia depe
 STR_8815_NEW_VEHICLES                                           :{BLACK}Naujos tr. priemones
 STR_8816                                                        :{BLACK}-
 STR_8818_INFORMATION                                            :{BLACK}Informacijs
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Traukinys per ilgas
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Sukeisti traukinius galima tiktai sustabdytus depe
-STR_881B_TRAINS                                                 :{WHITE}{STRING} - {COMMA16} traukiniai
+STR_881B_TRAINS                                                 :{WHITE}{STRING} - {COMMA} traukiniai
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}New Rail Vehicles
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}New Monorail Vehicles
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}New Maglev Vehicles
@@ -2446,8 +2446,8 @@ STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Priemones negalima parduoti...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Neranda kelio iki artimiausio garazo
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Traukinio sustabdyti/paleisti negalima...
-STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Remonto intervalas: {LTBLUE}{COMMA16}dienos{BLACK}   Paskutinis remontas: {LTBLUE}{DATE_LONG}
-STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Remonto intervalas: {LTBLUE}{COMMA16}%{BLACK}   Paskutinis remontas: {LTBLUE}{DATE_LONG}
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Remonto intervalas: {LTBLUE}{COMMA}dienos{BLACK}   Paskutinis remontas: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Remonto intervalas: {LTBLUE}{COMMA}%{BLACK}   Paskutinis remontas: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Traukiniai - spausk ant traukinio, jei nori detalesnes informacijos
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Isigyti nauju traukiniu (reikia traukiniu depo)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Traukiniai - paspausk ant traukinio jei nori detalesnes informacijos, tempk vagona, jei nori ji prikabinti/pasalinti nuo traukinio
@@ -2480,12 +2480,12 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Iskrauti
 STR_SERVICE_HINT                                                :{BLACK}Nevykdyti sios uzduoties iki tol, kol nereikes remonto
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Naujas {STRING} atsirado!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Kaina: {CURRENCY} Svoris: {COMMA16}t{}Greitis: {VELOCITY}  Galia: {COMMA16}aj{}Eksploatacijos islaidos: {CURRENCY}/met{}Talpa: {STRING}
+STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Kaina: {CURRENCY} Svoris: {COMMA}t{}Greitis: {VELOCITY}  Galia: {COMMA}aj{}Eksploatacijos islaidos: {CURRENCY}/met{}Talpa: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Sugedo
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Amzius: {LTBLUE}{STRING}{BLACK}   Eksploatacijos islaidos: {LTBLUE}{CURRENCY}/met
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Svoris: {LTBLUE}{COMMA16}t  {BLACK}Galia: {LTBLUE}{COMMA32}aj{BLACK} Maks. greitis: {LTBLUE}{VELOCITY}
+STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Svoris: {LTBLUE}{COMMA}t  {BLACK}Galia: {LTBLUE}{COMMA}aj{BLACK} Maks. greitis: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Siu metu pelnas : {LTBLUE}{CURRENCY}  (praeitu metu: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Patikimumas: {LTBLUE}{COMMA8}%  {BLACK}Gedimai nuo praeito remonto: {LTBLUE}{COMMA16}
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Patikimumas: {LTBLUE}{COMMA}%  {BLACK}Gedimai nuo praeito remonto: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Sustabdyta
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Can't make train pass signal at danger...
 STR_8863_CRASHED                                                :{RED}Avarija!
@@ -2493,7 +2493,7 @@ STR_8863_CRASHED                                                :{RED}Avarija!
 STR_8865_NAME_TRAIN                                             :{WHITE}Traukinio vardas
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Negali pakeisti traukinio vardo...
 STR_8867_NAME_TRAIN                                             :{BLACK}Traukinio vardas
-STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Traukinio avarija!{}{COMMA16} zuvo liepsnose po katastrofos
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Traukinio avarija!{}{COMMA} zuvo liepsnose po katastrofos
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Traukinio vaziavimo krypties pakeisti negalima...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Rename train vehicle type
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Can't rename train vehicle type...
@@ -2503,7 +2503,7 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Stabdomas,
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automobilis kelyje
-STR_9001_ROAD_VEHICLES                                          :{WHITE}{STRING} - {COMMA16} Automobiliai
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{STRING} - {COMMA} Automobiliai
 STR_9002                                                        :{WHITE}{STRING}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Automobiliu garazas
 STR_9004_NEW_VEHICLES                                           :{BLACK}Naujos tr. priemones
@@ -2517,13 +2517,13 @@ STR_900C_DETAILS                                                :{WHITE}{STRING}
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Amzius: {LTBLUE}{STRING}{BLACK}   Eksploatacijos islaidos: {LTBLUE}{CURRENCY}/met
 STR_900E_MAX_SPEED                                              :{BLACK}Maks. greitis: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Pelnas siais metais: {LTBLUE}{CURRENCY}  (praejusiais metais: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Patikimumas: {LTBLUE}{COMMA8}%  {BLACK}Sugedo po paskutinio remonto: {LTBLUE}{COMMA16}
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Patikimumas: {LTBLUE}{COMMA}%  {BLACK}Sugedo po paskutinio remonto: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Pastatytas: {LTBLUE}{NUMU16}{BLACK} Verte: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...automobilis turi buti sustabdytas garaze
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Automobilio parduoti negalima...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Automobilio sustabdyti/paleisti negalima...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Automobilis {COMMA16} laukia garaze
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Automobilis {COMMA} laukia garaze
 STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Uzduotis: {TOWN} garazas
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Uzduotis: {TOWN} garazas, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Negalima rasti automobilio garazo...
@@ -2552,7 +2552,7 @@ STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Pavadint
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Gyventojai svencia. . .{}Pirmas autobusas atvyko i {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Gyventojai svencia. . .{}Pirmas sunkvezimis atvyko i {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Automobilio avarija!{}Automobilio vairuotojas zuvo po susidurimo su traukiniu
-STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Automobilio avarija!{}{COMMA16} sudege po susidurimo su traukiniu
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Automobilio avarija!{}{COMMA} sudege po susidurimo su traukiniu
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Automobilis negali apsisukti...
 STR_9034_RENAME                                                 :{BLACK}Pervardinti
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Pervardinti automobiliu tipa
@@ -2567,7 +2567,7 @@ STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Dock con
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Can't build dock here...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Laivu depas
 STR_9804_NEW_SHIPS                                              :{BLACK}Naujas laivas
-STR_9805_SHIPS                                                  :{WHITE}{STRING} - {COMMA16} Laivai
+STR_9805_SHIPS                                                  :{WHITE}{STRING} - {COMMA} Laivai
 STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Negalima isigyti laivo...
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Pirmiausia reikia pastatyti laivu depa
 STR_9808_NEW_SHIPS                                              :{WHITE}New Ships
@@ -2582,7 +2582,7 @@ STR_9811_DETAILS                                                :{WHITE}{STRING}
 STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Amzius: {LTBLUE}{STRING}{BLACK}   Eksploatavimo islaidos: {LTBLUE}{CURRENCY}/met
 STR_9813_MAX_SPEED                                              :{BLACK}Maks. greitis: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Pelnas siais metais: {LTBLUE}{CURRENCY}  (praeitais metais: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Patikimumas: {LTBLUE}{COMMA8}%  {BLACK}Gedimai po paskutinio remonto: {LTBLUE}{COMMA16}
+STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Patikimumas: {LTBLUE}{COMMA}%  {BLACK}Gedimai po paskutinio remonto: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Pastatytas: {LTBLUE}{NUMU16}{BLACK} Verte: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Sustabdyti/paleisti laivo negalima...
@@ -2590,7 +2590,7 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nusiusti
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Negali rasti artimiausio laivu depo
 STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Kursas: {TOWN} laivu depas
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Kursas: {TOWN} laivu depas, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Laivas laukia depe: {COMMA16}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Laivas laukia depe: {COMMA}
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Statyti laivu doka
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Statyti laivu depa (nauju laivu isigijimui, remontui)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Laivai - paspausk ant laivo, jei nori daugiau informacijos
@@ -2641,19 +2641,19 @@ STR_A004_INFORMATION                                            :{BLACK}Informac
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Naujas lektuvas
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Isigyti lektuva
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Negalima isigyti lektuvo...
-STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA16} Lektuvai
+STR_A009_AIRCRAFT                                               :{WHITE}{STRING} - {COMMA} Lektuvai
 STR_A00A                                                        :{WHITE}{STRING}
 STR_A00B_ORDERS                                                 :{WHITE}{STRING} (Uzduotys)
 STR_A00C_DETAILS                                                :{WHITE}{STRING} (Detaliau)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Amzius: {LTBLUE}{STRING}{BLACK}   Eksploatacijos islaidos: {LTBLUE}{CURRENCY}/met.
 STR_A00E_MAX_SPEED                                              :{BLACK}Maks. greitis: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Pelnas siais metais: {LTBLUE}{CURRENCY}  (praeitais metais: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Patikimumas: {LTBLUE}{COMMA8}%  {BLACK}Gedimai po paskutinio remonto: {LTBLUE}{COMMA16}
+STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Patikimumas: {LTBLUE}{COMMA}%  {BLACK}Gedimai po paskutinio remonto: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Pastatytas: {LTBLUE}{NUMU16}{BLACK} Verte: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Negalima lektuvo nusiusti i angara...
 STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Kursas: {STATION} angaras
 STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Kursas: {STATION} angarasangar, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Lektuvas {COMMA16} laukia angare
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Lektuvas {COMMA} laukia angare
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Oro uostai
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Negalima cia statyti oro uosto...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Lektuvas dabar skrenda
@@ -2679,14 +2679,14 @@ STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Siusti l
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Rodyti lektuvo informacija
 STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Atsirado naujas lektuvas!
 STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kaina: {CURRENCY} Maks. greitis: {VELOCITY}{}Talpa: {COMMA16} keleiviu, {COMMA16} pasto maisail{}Eksploatacijos islaidos: {CURRENCY}/met.
+STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kaina: {CURRENCY} Maks. greitis: {VELOCITY}{}Talpa: {COMMA} keleiviu, {COMMA} pasto maisail{}Eksploatacijos islaidos: {CURRENCY}/met.
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Pervardinti lektuva
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Negalima pervardinti lektuvo...
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Pervardinti lektuva
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Gyventojai dziugauja. . .{}Pirmas lektuvas atvyko i {STATION}!
-STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Lektuvo katastrofa!{}{COMMA16} sudege liepsnose prie {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Lektuvo katastrofa!{}Lektuvas pritruko degalu, {COMMA16} nukrito ant zemes!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Lektuvo katastrofa!{}{COMMA} sudege liepsnose prie {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Lektuvo katastrofa!{}Lektuvas pritruko degalu, {COMMA} nukrito ant zemes!
 STR_A035_DESTINATIONS                                           :{TINYFONT}{BLACK}Paskirtis:
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Pervardinti
@@ -2712,7 +2712,7 @@ STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT} Del neaiskiu aplinkybiu sunaikinta ferma salia {TOWN}!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}Ateiviai nusileido salia {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Anglies kasyklose salia {TOWN} sedantis gruntas sukele katastrofa - kasykla nenaudojama!
-STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Potvynis!{}Automobilio {COMMA16} buvo pasigesta, kaip spejama, tai susije su potvyniu!
+STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Potvynis!{}Automobilio {COMMA} buvo pasigesta, kaip spejama, tai susije su potvyniu!
 
 STR_BRIBE_FAILED                                                :{WHITE}Tavo meginimas papirkti buvo
 STR_BRIBE_FAILED_2                                              :{WHITE}issaiskinta vietiniu pareigunu
@@ -2722,7 +2722,7 @@ STR_MULTIPLAYER_PAUSED                                          :{WHITE}Zaidimas
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Issamus veiklos ivertinimas
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaliai
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
-STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA32}/{COMMA32})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{INT32}%
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{INT32}
 ############ Those following lines need to be in this order!!
@@ -2757,7 +2757,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Failo va
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Pasirinkti valiuta
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Keitimo santykis: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA16}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Keitimo santykis: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Skyriklis:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Priesdelis:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Pavadinimas:
@@ -2771,10 +2771,10 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA16} Traukiniai
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA16} Automobiliai
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA16} Lektuvai
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA16} Laivai
+STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Traukiniai
+STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Automobiliai
+STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Lektuvai
+STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Laivai
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Rodyti visus traukinius, kuriu uzduotuse yra itraukta si stotele
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Rodyti visus automobilius, kuriu uzduotyse yra pamineta si stotele
@@ -2796,7 +2796,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Kaireje 
 STR_REPLACE_HELP                                                :{BLACK}Tai leidzia tau keisti viena tr. priemoniu tipa kitu, kai pirmojo tipo traukinys uzsuka i depa
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Zenklu sarasas - {COMMA16} Zenklai
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Zenklu sarasas - {COMMA} Zenklai
 
 ############ Lists rail types
 
@@ -2806,5 +2806,5 @@ STR_MAGLEV_VEHICLES                                             :Magnetiniai tra
 
 ############ End of list of rail types
 
-STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA16}
+STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
