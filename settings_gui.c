@@ -1384,21 +1384,21 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 			case 1: // separator
 				if ( IS_INT_INSIDE(x, 10, 30) )  // clicked button
 					WP(w,def_d).data_1 =  (1 << (line * 2 + 1));
-				str = AllocateName(_str_separator, 0);
+				str = BindCString(_str_separator);
 				len = 1;
 				edittext = true;
 			break;
 			case 2: // prefix
 				if ( IS_INT_INSIDE(x, 10, 30) )  // clicked button
 					WP(w,def_d).data_1 =  (1 << (line * 2 + 1));
-				str = AllocateName(_currency_specs[23].prefix, 0);
+				str = BindCString(_currency_specs[23].prefix);
 				len = 12;
 				edittext = true;
 			break;
 			case 3: // suffix
 				if ( IS_INT_INSIDE(x, 10, 30) )  // clicked button
 					WP(w,def_d).data_1 =  (1 << (line * 2 + 1));
-				str = AllocateName(_currency_specs[23].suffix, 0);
+				str = BindCString(_currency_specs[23].suffix);
 				len = 12;
 				edittext = true;
 			break;
@@ -1432,7 +1432,6 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 			250, // characters up to this width pixels, whichever is satisfied first
 			w->window_class,
 			w->window_number);
-			if (str !=  STR_CONFIG_PATCHES_INT32) DeleteName(str);
 		}
 
 		w->flags4 |= 5 << WF_TIMEOUT_SHL;

@@ -125,6 +125,17 @@ static const StringID _cargo_string_list[NUM_LANDSCAPE][NUM_CARGO] = {
 };
 
 
+#define NUM_BOUND_STRINGS 8
+
+// Array to hold the bound strings.
+static const char *_bound_strings[NUM_BOUND_STRINGS];
+
+// This index is used to implement a "round-robin" allocating of
+// slots for BindCString. NUM_BOUND_STRINGS slots are reserved.
+// Which means that after NUM_BOUND_STRINGS calls to BindCString,
+// the indices will be reused.
+static int _bind_index;
+
 static const char *GetStringPtr(StringID string)
 {
 	return _langpack_offs[_langtab_start[string >> 11] + (string & 0x7FF)];
@@ -142,9 +153,6 @@ char *GetString(char *buffr, StringID string)
 
 		case 0x30D1:
 			return StationGetSpecialString(buffr);
-
-		case STR_SPEC_SCREENSHOT_NAME:
-			return DecodeString(buffr, _screenshot_name);
 	}
 
 	switch (tab) {
@@ -160,7 +168,11 @@ char *GetString(char *buffr, StringID string)
 			return GetName(index, buffr);
 
 		case 31: // special or dynamic strings
-			return DecodeString(buffr, _userstring);
+			if (index < (STR_SPEC_USERSTRING & 0x7FF)) {
+				return DecodeString(buffr, _bound_strings[index]);
+			} else {
+				return DecodeString(buffr, _userstring);
+			}
 
 		default:
 			break;
@@ -173,6 +185,22 @@ char *GetString(char *buffr, StringID string)
 		);
 
 	return DecodeString(buffr, GetStringPtr(string));
+}
+
+// This function takes a C-string and allocates a temporary string ID.
+// The duration of the bound string is valid only until the next GetString,
+// so be careful.
+StringID BindCString(const char *str)
+{
+	int idx = (++_bind_index) & (NUM_BOUND_STRINGS - 1);
+	_bound_strings[idx] = str;
+	return idx + STR_SPEC_DYNSTRING;
+}
+
+// This function is used to "bind" a C string to a OpenTTD dparam slot.
+void SetDParamStr(uint n, const char *str)
+{
+	SetDParam(n, BindCString(str));
 }
 
 void InjectDParam(int amount)

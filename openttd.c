@@ -738,7 +738,7 @@ int ttd_main(int argc, char* argv[])
 static void ShowScreenshotResult(bool b)
 {
 	if (b) {
-		SetDParam(0, STR_SPEC_SCREENSHOT_NAME);
+		SetDParamStr(0, _screenshot_name);
 		ShowErrorMessage(INVALID_STRING_ID, STR_031B_SCREENSHOT_SUCCESSFULLY, 0, 0);
 	} else {
 		ShowErrorMessage(INVALID_STRING_ID, STR_031C_SCREENSHOT_FAILED, 0, 0);

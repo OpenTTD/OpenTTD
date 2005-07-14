@@ -190,10 +190,11 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 
 			DrawStringMultiCenter(365, 30, STR_NETWORK_GAME_INFO, 0);
 
-			SetDParam(0, _str_game_name);
+
+			SetDParamStr(0, _selected_item->info.server_name);
 			DrawStringMultiCenter(365, 42, STR_ORANGE, 2); // game name
 
-			SetDParam(0, _str_map_name);
+			SetDParamStr(0, _selected_item->info.map_name);
 			DrawStringMultiCenter(365, 54, STR_02BD, 2); // map name
 
 			SetDParam(0, _selected_item->info.clients_on);
@@ -214,11 +215,11 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			DrawString(260, y, STR_NETWORK_MAP_SIZE, 2); // map size
 			y+=10;
 
-			SetDParam(0, _str_server_version);
+			SetDParamStr(0, _selected_item->info.server_revision);
 			DrawString(260, y, STR_NETWORK_SERVER_VERSION, 2); // server version
 			y+=10;
 
-			SetDParam(0, _str_server_address);
+			SetDParamStr(0, _selected_item->info.hostname);
 			SetDParam(1, _selected_item->port);
 			DrawString(260, y, STR_NETWORK_SERVER_ADDRESS, 2); // server address
 			y+=10;
@@ -273,30 +274,6 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 					return;
 				}
 				_selected_item = cur_item;
-
-				DeleteName(_str_game_name);
-				DeleteName(_str_map_name);
-				DeleteName(_str_server_version);
-				DeleteName(_str_server_address);
-				if (_selected_item->info.server_name[0] != '\0')
-					_str_game_name = AllocateName(_selected_item->info.server_name, 0);
-				else
-					_str_game_name = STR_EMPTY;
-
-				if (_selected_item->info.map_name[0] != '\0')
-					_str_map_name = AllocateName(_selected_item->info.map_name, 0);
-				else
-					_str_map_name = STR_EMPTY;
-
-				if (_selected_item->info.server_revision[0] != '\0')
-					_str_server_version = AllocateName(_selected_item->info.server_revision, 0);
-				else
-					_str_server_version = STR_EMPTY;
-
-				if (_selected_item->info.hostname[0] != '\0')
-					_str_server_address = AllocateName(_selected_item->info.hostname, 0);
-				else
-					_str_server_address = STR_EMPTY;
 			}
 			SetWindowDirty(w);
 		} break;
@@ -307,16 +284,13 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 		case 12: { // Add a server
-				StringID str = AllocateName(_network_default_ip, 0);
-
 				ShowQueryString(
-				str,
+				BindCString(_network_default_ip),
 				STR_NETWORK_ENTER_IP,
 				31 | 0x1000,  // maximum number of characters OR
 				250, // characters up to this width pixels, whichever is satisfied first
 				w->window_class,
 				w->window_number);
-				DeleteName(str);
 		} break;
 		case 13: /* Start server */
 			ShowNetworkStartServerWindow();
@@ -536,10 +510,8 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			ShowNetworkGameWindow();
 			break;
 		case 4: { /* Set password button */
-			StringID str;
-			str = AllocateName(_network_server_password, 0);
-			ShowQueryString(str, STR_NETWORK_SET_PASSWORD, 20, 250, w->window_class, w->window_number);
-			DeleteName(str);
+			ShowQueryString(BindCString(_network_server_password),
+				STR_NETWORK_SET_PASSWORD, 20, 250, w->window_class, w->window_number);
 			} break;
 		case 5: { /* Select map */
 			int y = (e->click.pt.y - NSSWND_START) / NSSWND_ROWSIZE;
@@ -697,7 +669,6 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 	switch(e->event) {
 	case WE_PAINT: {
 		int y = NET_PRC__OFFSET_TOP_WIDGET_COMPANY, pos;
-		StringID str;
 
 		w->disabled_state = (_selected_company_item == -1) ? 1 << 7 : 0;
 
@@ -745,10 +716,8 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 			uint xm;
 			y = 65;
 
-			str = AllocateName(_network_player_info[_selected_company_item].company_name, 0);
-			SetDParam(0, str);
+			SetDParamStr(0, _network_player_info[_selected_company_item].company_name);
 			DrawString(x, y, STR_NETWORK_COMPANY_NAME, 2);
-			DeleteName(str);
 			y += 10;
 
 			SetDParam(0, _network_player_info[_selected_company_item].inaugurated_year + MAX_YEAR_BEGIN_REAL);
@@ -787,10 +756,8 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 			DrawString(x, y, STR_NETWORK_STATIONS, 2); // stations
 			y += 10;
 
-			str = AllocateName(_network_player_info[_selected_company_item].players, 0);
-			SetDParam(0, str);
+			SetDParamStr(0, _network_player_info[_selected_company_item].players);
 			xm = DrawString(x, y, STR_NETWORK_PLAYERS, 2); // players
-			DeleteName(str);
 			y += 10;
 		}
 	}	break;

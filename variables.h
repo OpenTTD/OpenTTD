@@ -424,6 +424,16 @@ static inline uint32 GetDParam(uint n)
 	return _decode_parameters[n];
 }
 
+// Used to bind a C string name to a dparam number.
+// NOTE: This has a short lifetime. You can't
+//       use this string much later or it will be gone.
+void SetDParamStr(uint n, const char *str);
+
+// This function takes a C-string and allocates a temporary string ID.
+// The duration of the bound string is valid only until the next acll to GetString,
+// so be careful.
+StringID BindCString(const char *str);
+
 
 #define COPY_IN_DPARAM(offs,src,num) memcpy(_decode_parameters + offs, src, sizeof(uint32) * (num))
 #define COPY_OUT_DPARAM(dst,offs,num) memcpy(dst,_decode_parameters + offs, sizeof(uint32) * (num))

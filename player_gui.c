@@ -614,11 +614,9 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		case 11: { /* Password protect company */
 			#ifdef ENABLE_NETWORK
 			if (!IsWindowOfPrototype(w, _other_player_company_widgets)) {
-				StringID str;
 				WP(w,def_d).byte_1 = 2;
-				str = AllocateName(_network_player_info[_local_player].password, 0);
-				ShowQueryString(str, STR_SET_COMPANY_PASSWORD, sizeof(_network_player_info[_local_player].password), 250, w->window_class, w->window_number);
-				DeleteName(str);
+				ShowQueryString(BindCString(_network_player_info[_local_player].password),
+					STR_SET_COMPANY_PASSWORD, sizeof(_network_player_info[_local_player].password), 250, w->window_class, w->window_number);
 			}
 			#endif
 		}	break;

@@ -93,7 +93,6 @@ void CDECL NetworkTextMessage(NetworkAction action, uint16 color, bool self_send
 	const int duration = 10; // Game days the messages stay visible
 	char message[1024];
 	char temp[1024];
-	StringID TempStr = STR_NULL;
 
 	va_start(va, str);
 	vsprintf(buf, str, va);
@@ -110,11 +109,9 @@ void CDECL NetworkTextMessage(NetworkAction action, uint16 color, bool self_send
 			break;
 		case NETWORK_ACTION_GIVE_MONEY:
 			if (self_send) {
-				TempStr = AllocateName(name, 0);
-				SetDParam(0, TempStr);
+				SetDParamStr(0, name);
 				SetDParam(1, atoi(buf));
 				GetString(temp, STR_NETWORK_GAVE_MONEY_AWAY);
-				DeleteName(TempStr);
 				snprintf(message, sizeof(message), "*** %s", temp);
 			} else {
 				SetDParam(0, atoi(buf));
@@ -124,31 +121,23 @@ void CDECL NetworkTextMessage(NetworkAction action, uint16 color, bool self_send
 			break;
 		case NETWORK_ACTION_CHAT_PLAYER:
 			if (self_send) {
-				TempStr = AllocateName(name, 0);
-				SetDParam(0, TempStr);
+				SetDParamStr(0, name);
 				GetString(temp, STR_NETWORK_CHAT_TO_COMPANY);
-				DeleteName(TempStr);
 				snprintf(message, sizeof(message), "%s %s", temp, buf);
 			} else {
-				TempStr = AllocateName(name, 0);
-				SetDParam(0, TempStr);
+				SetDParamStr(0, name);
 				GetString(temp, STR_NETWORK_CHAT_COMPANY);
-				DeleteName(TempStr);
 				snprintf(message, sizeof(message), "%s %s", temp, buf);
 			}
 			break;
 		case NETWORK_ACTION_CHAT_CLIENT:
 			if (self_send) {
-				TempStr = AllocateName(name, 0);
-				SetDParam(0, TempStr);
+				SetDParamStr(0, name);
 				GetString(temp, STR_NETWORK_CHAT_TO_CLIENT);
-				DeleteName(TempStr);
 				snprintf(message, sizeof(message), "%s %s", temp, buf);
 			} else {
-				TempStr = AllocateName(name, 0);
-				SetDParam(0, TempStr);
+				SetDParamStr(0, name);
 				GetString(temp, STR_NETWORK_CHAT_CLIENT);
-				DeleteName(TempStr);
 				snprintf(message, sizeof(message), "%s %s", temp, buf);
 			}
 			break;
@@ -157,10 +146,8 @@ void CDECL NetworkTextMessage(NetworkAction action, uint16 color, bool self_send
 			snprintf(message, sizeof(message), "*** %s %s %s", name, temp, buf);
 			break;
 		default:
-			TempStr = AllocateName(name, 0);
-			SetDParam(0, TempStr);
+			SetDParamStr(0, name);
 			GetString(temp, STR_NETWORK_CHAT_ALL);
-			DeleteName(TempStr);
 			snprintf(message, sizeof(message), "%s %s", temp, buf);
 			break;
 	}

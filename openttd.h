@@ -517,8 +517,9 @@ enum SpecialStrings {
 	SPECSTR_SCREENSHOT_START = 0x7140,
 	SPECSTR_SCREENSHOT_END = 0x715F,
 
-	STR_SPEC_SCREENSHOT_NAME = 0xF800,
-	STR_SPEC_USERSTRING = 0xF801,
+	// Used to implement SetDParamStr
+	STR_SPEC_DYNSTRING = 0xF800,
+	STR_SPEC_USERSTRING = 0xF808,
 };
 
 typedef void PlaceProc(TileIndex tile);
