@@ -846,7 +846,7 @@ static long CDECL MidiSendCommand(const char *cmd, ...) {
 static bool MidiIntPlaySong(const char *filename)
 {
 	MidiSendCommand("close all");
-	if (MidiSendCommand("open %s type sequencer alias song", filename) != 0)
+	if (MidiSendCommand("open \"%s\" type sequencer alias song", filename) != 0)
 		return false;
 
 	if (MidiSendCommand("play song from 0") != 0)
