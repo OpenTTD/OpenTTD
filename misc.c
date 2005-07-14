@@ -320,7 +320,7 @@ void DeleteName(StringID id)
 char *GetName(int id, char *buff)
 {
 	if (id & 0x400) GetParamInt32();
-	if (id & 0x200) GetParamUint16();
+	if (id & 0x200) GetParamInt32();
 
 	return strecpy(buff, _name_array[id & ~0x600], NULL);
 }

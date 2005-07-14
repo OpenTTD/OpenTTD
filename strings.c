@@ -208,7 +208,6 @@ void InjectDParam(int amount)
 	memmove(_decode_parameters + amount, _decode_parameters, sizeof(_decode_parameters) - amount * sizeof(uint32));
 }
 
-
 int32 GetParamInt32(void)
 {
 	int32 result = GetDParam(0);
@@ -223,27 +222,6 @@ static int64 GetParamInt64(void)
 	return result;
 }
 
-
-int GetParamInt16(void)
-{
-	int result = (int16)GetDParam(0);
-	memmove(&_decode_parameters[0], &_decode_parameters[1], sizeof(uint32) * (lengthof(_decode_parameters)-1));
-	return result;
-}
-
-int GetParamInt8(void)
-{
-	int result = (int8)GetDParam(0);
-	memmove(&_decode_parameters[0], &_decode_parameters[1], sizeof(uint32) * (lengthof(_decode_parameters)-1));
-	return result;
-}
-
-int GetParamUint16(void)
-{
-	int result = GetDParam(0);
-	memmove(&_decode_parameters[0], &_decode_parameters[1], sizeof(uint32) * (lengthof(_decode_parameters)-1));
-	return result;
-}
 
 static const uint32 _divisor_table[] = {
 	1000000000,
@@ -456,13 +434,13 @@ static char *DecodeString(char *buff, const char *str)
 			buff = GetString(buff, READ_LE_UINT16(str-2));
 			break;
 		case 0x82: // {DATE_LONG}
-			buff = FormatYmdString(buff, GetParamUint16());
+			buff = FormatYmdString(buff, GetParamInt32());
 			break;
 		case 0x83: // {DATE_SHORT}
-			buff = FormatMonthAndYear(buff, GetParamUint16());
+			buff = FormatMonthAndYear(buff, GetParamInt32());
 			break;
 		case 0x84: {// {VELOCITY}
-			int value = GetParamInt16();
+			int value = GetParamInt32();
 			if (_opt_ptr->kilometers) value = value * 1648 >> 10;
 			buff = FormatCommaNumber(buff, value);
 			if (_opt_ptr->kilometers) {
@@ -488,10 +466,10 @@ static char *DecodeString(char *buff, const char *str)
 				// Short description of cargotypes. Layout:
 				// 8-bit = cargo type
 				// 16-bit = cargo count
-				StringID cargo_str = _cargo_string_list[_opt_ptr->landscape][(byte)GetParamInt8()];
+				StringID cargo_str = _cargo_string_list[_opt_ptr->landscape][GetParamInt32()];
 				uint16 multiplier = (cargo_str == STR_LITERS) ? 1000 : 1;
 				// liquid type of cargo is multiplied by 100 to get correct amount
-				buff = FormatCommaNumber(buff, GetParamInt16() * multiplier);
+				buff = FormatCommaNumber(buff, GetParamInt32() * multiplier);
 				buff = strecpy(buff, " ", NULL);
 				buff = strecpy(buff, GetStringPtr(cargo_str), NULL);
 			} break;
@@ -506,24 +484,24 @@ static char *DecodeString(char *buff, const char *str)
 			break;
 
 		case 0x86: // {SKIP}
-			GetParamInt16();
+			GetParamInt32();
 			//assert(0);
 			break;
 		case 0x87: // {VOLUME}
-			buff = FormatCommaNumber(buff, GetParamInt16() * 1000);
+			buff = FormatCommaNumber(buff, GetParamInt32() * 1000);
 			buff = strecpy(buff, " ", NULL);
 			buff = strecpy(buff, GetStringPtr(STR_LITERS), NULL);
 			break;
 
 		case 0x88: // {STRING}
-			buff = GetString(buff, (uint16)GetParamUint16());
+			buff = GetString(buff, GetParamInt32());
 			break;
 
 		case 0x99: { // {CARGO}
 			// Layout now is:
 			//   8bit   - cargo type
 			//   16-bit - cargo count
-			int cargo_str = _cargoc.names_long_s[GetParamInt8()];
+			int cargo_str = _cargoc.names_long_s[GetParamInt32()];
 			// Now check if the cargo count is 1, if it is, increase string by 32.
 			if (GetDParam(0) != 1) cargo_str += 32;
 			buff = GetString(buff, cargo_str);
@@ -580,7 +558,7 @@ static char *DecodeString(char *buff, const char *str)
 		} break;
 
 		case 0x9E: { // {DATE_TINY}
-			buff = FormatTinyDate(buff, GetParamUint16());
+			buff = FormatTinyDate(buff, GetParamInt32());
 			break;
 		}
 
@@ -599,7 +577,7 @@ static char *DecodeString(char *buff, const char *str)
 
 static char *StationGetSpecialString(char *buff)
 {
-	int x = GetParamInt8();
+	int x = GetParamInt32();
 	if (x & 0x01) *buff++ = '\xB4';
 	if (x & 0x02) *buff++ = '\xB5';
 	if (x & 0x04) *buff++ = '\xB6';
@@ -770,7 +748,7 @@ static char *GetSpecialPlayerNameString(char *buff, int ind)
 			return GenPlayerName_4(buff);
 
 		case 4: // song names
-			return strecpy(buff, _song_names[GetParamUint16() - 1], NULL);
+			return strecpy(buff, _song_names[GetParamInt32() - 1], NULL);
 	}
 
 	// town name?
