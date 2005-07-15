@@ -139,7 +139,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	TileInfo ti;
 	int32 cost;
 	TileIndex tile;
-	byte owner;
+	PlayerID owner;
 	Town *t;
 	/* true if the roadpiece was always removeable,
 	 * false if it was a center piece. Affects town ratings drop */
@@ -154,12 +154,11 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	FindLandscapeHeight(&ti, x, y);
 	tile = ti.tile;
 
-	// owner for railraod crossing is stored somewhere else
+	if (!IsTileType(tile, MP_STREET) && !IsTileType(tile, MP_TUNNELBRIDGE)) return CMD_ERROR;
+
+	// owner for railroad crossing is stored somewhere else
 	// XXX - Fix this so for a given tiletype the owner of the type is in the same variable
-	if (IsTileType(tile, MP_STREET) && IsLevelCrossing(tile)) {
-		owner = _m[tile].m3;
-	} else
-		owner = GetTileOwner(tile);
+	owner = IsLevelCrossing(tile) ? _m[tile].m3 : GetTileOwner(tile);
 
 	if (owner == OWNER_TOWN && _game_mode != GM_EDITOR) {
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) { // index of town is not saved for bridge (no space)
