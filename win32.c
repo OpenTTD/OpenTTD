@@ -21,9 +21,9 @@
 static struct {
 	HWND main_wnd;
 	HBITMAP dib_sect;
-	void *bitmap_bits;
-	void *buffer_bits;
-	void *alloced_bits;
+	Pixel *bitmap_bits;
+	Pixel *buffer_bits;
+	Pixel *alloced_bits;
 	HPALETTE gdi_palette;
 	int width,height;
 	int width_org, height_org;
@@ -568,7 +568,7 @@ static bool AllocateDibSection(int w, int h)
 		DeleteObject(_wnd.dib_sect);
 
 	dc = GetDC(0);
-	_wnd.dib_sect = CreateDIBSection(dc, bi, DIB_RGB_COLORS, &_wnd.bitmap_bits, NULL, 0);
+	_wnd.dib_sect = CreateDIBSection(dc, bi, DIB_RGB_COLORS, (void**)&_wnd.bitmap_bits, NULL, 0);
 	if (_wnd.dib_sect == NULL)
 		error("CreateDIBSection failed");
 	ReleaseDC(0, dc);
@@ -665,8 +665,8 @@ static void Win32GdiStop(void)
 static void filter(int left, int top, int width, int height)
 {
 	uint p = _screen.pitch;
-	byte *s = (byte*)_wnd.buffer_bits + top * p + left;
-	byte *d = (byte*)_wnd.bitmap_bits + top * p * 4 + left * 2;
+	const Pixel *s = _wnd.buffer_bits + top * p + left;
+	Pixel *d = _wnd.bitmap_bits + top * p * 4 + left * 2;
 
 	for (; height > 0; height--) {
 		int i;

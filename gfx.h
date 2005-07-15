@@ -1,6 +1,7 @@
 #ifndef GFX_H
 #define GFX_H
 
+typedef byte Pixel;
 
 typedef struct ColorList {
 	byte unk0, unk1, unk2;
@@ -10,7 +11,7 @@ typedef struct ColorList {
 } ColorList;
 
 struct DrawPixelInfo {
-	byte *dst_ptr;
+	Pixel *dst_ptr;
 	int left, top, width, height;
 	int pitch;
 	uint16 zoom;

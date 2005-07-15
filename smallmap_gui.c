@@ -190,9 +190,8 @@ static const uint16 * const _legend_table[] = {
 };
 
 #if defined(TTD_ALIGNMENT_4)
-	static inline void WRITE_PIXELS(void *dst, uint32 val)
+	static inline void WRITE_PIXELS(Pixel* d, uint32 val)
 	{
-		byte *d = (byte*)dst;
 #	if defined(TTD_BIG_ENDIAN)
 		d[0] = (byte)(val >> 24);
 		d[1] = (byte)(val >> 16);
@@ -207,9 +206,8 @@ static const uint16 * const _legend_table[] = {
 	}
 
 /* need to use OR, otherwise we will overwrite the wrong pixels at the edges :( */
-	static inline void WRITE_PIXELS_OR(void *dst, uint32 val)
+	static inline void WRITE_PIXELS_OR(Pixel* d, uint32 val)
 	{
-		byte *d = (byte*)dst;
 #	if defined(TTD_BIG_ENDIAN)
 		d[0] |= (byte)(val >> 24);
 		d[1] |= (byte)(val >> 16);
@@ -324,9 +322,9 @@ typedef uint32 GetSmallMapPixels(TileIndex tile); // typedef callthrough functio
  * @param proc Pointer to the colour function
  * @see GetSmallMapPixels(TileIndex)
  */
-static void DrawSmallMapStuff(byte *dst, uint xc, uint yc, int pitch, int reps, uint32 mask, GetSmallMapPixels *proc)
+static void DrawSmallMapStuff(Pixel *dst, uint xc, uint yc, int pitch, int reps, uint32 mask, GetSmallMapPixels *proc)
 {
-	byte *dst_ptr_end = _screen.dst_ptr + _screen.width * _screen.height - _screen.width;
+	Pixel *dst_ptr_end = _screen.dst_ptr + _screen.width * _screen.height - _screen.width;
 
 	do {
 		// check if the tile (xc,yc) is within the map range
@@ -589,7 +587,7 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 {
 	DrawPixelInfo *old_dpi;
 	int dx,dy, x, y, x2, y2;
-	byte *ptr;
+	Pixel *ptr;
 	int tile_x;
 	int tile_y;
 	ViewPort *vp;

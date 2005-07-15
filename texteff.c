@@ -43,7 +43,7 @@ const int _textmessage_box_y = 150;  // Height of box
 const int _textmessage_box_bottom = 30; // Pixels from bottom
 const int _textmessage_box_max_width = 400; // Max width of box
 
-static byte _textmessage_backup[150*400]; // (y * max_width)
+static Pixel _textmessage_backup[150 * 400]; // (y * max_width)
 
 extern void memcpy_pitch(void *d, void *s, int w, int h, int spitch, int dpitch);
 

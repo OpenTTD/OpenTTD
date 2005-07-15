@@ -11,7 +11,7 @@ Colour _cur_palette[256];
 static void GfxMainBlitter(const Sprite *sprite, int x, int y, int mode);
 
 static int _stringwidth_out;
-static byte _cursor_backup[64*64];
+static Pixel _cursor_backup[64 * 64];
 static Rect _invalid_rect;
 static const byte *_color_remap_ptr;
 static byte _string_colorremap[3];
@@ -37,8 +37,8 @@ void memcpy_pitch(void *d, void *s, int w, int h, int spitch, int dpitch)
 
 void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 {
-	byte *src;
-	byte *dst;
+	const Pixel *src;
+	Pixel *dst;
 	int p;
 	int ht;
 
@@ -109,7 +109,7 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 void GfxFillRect(int left, int top, int right, int bottom, int color)
 {
 	DrawPixelInfo *dpi = _cur_dpi;
-	byte *dst;
+	Pixel *dst;
 	const int otop = top;
 	const int oleft = left;
 
@@ -574,7 +574,7 @@ typedef struct BlitterParams {
 	int start_x, start_y;
 	const byte* sprite;
 	const byte* sprite_org;
-	byte *dst;
+	Pixel *dst;
 	int mode;
 	int width, height;
 	int width_org;
@@ -589,7 +589,7 @@ static void GfxBlitTileZoomIn(BlitterParams *bp)
 	const byte* src;
 	int num, skip;
 	byte done;
-	byte *dst;
+	Pixel *dst;
 	const byte* ctab;
 
 	if (bp->mode & 1) {
@@ -718,7 +718,7 @@ static void GfxBlitTileZoomIn(BlitterParams *bp)
 static void GfxBlitZoomInUncomp(BlitterParams *bp)
 {
 	const byte *src = bp->sprite;
-	byte *dst = bp->dst;
+	Pixel *dst = bp->dst;
 	int height = bp->height;
 	int width = bp->width;
 	int i;
@@ -791,7 +791,7 @@ static void GfxBlitTileZoomMedium(BlitterParams *bp)
 	const byte* src;
 	int num, skip;
 	byte done;
-	byte *dst;
+	Pixel *dst;
 	const byte* ctab;
 
 	if (bp->mode & 1) {
@@ -945,7 +945,7 @@ static void GfxBlitTileZoomMedium(BlitterParams *bp)
 static void GfxBlitZoomMediumUncomp(BlitterParams *bp)
 {
 	const byte *src = bp->sprite;
-	byte *dst = bp->dst;
+	Pixel *dst = bp->dst;
 	int height = bp->height;
 	int width = bp->width;
 	int i;
@@ -996,7 +996,7 @@ static void GfxBlitTileZoomOut(BlitterParams *bp)
 	const byte* src;
 	int num, skip;
 	byte done;
-	byte *dst;
+	Pixel *dst;
 	const byte* ctab;
 
 	if (bp->mode & 1) {
@@ -1209,7 +1209,7 @@ static void GfxBlitTileZoomOut(BlitterParams *bp)
 static void GfxBlitZoomOutUncomp(BlitterParams *bp)
 {
 	const byte* src = bp->sprite;
-	byte *dst = bp->dst;
+	Pixel *dst = bp->dst;
 	int height = bp->height;
 	int width = bp->width;
 	int i;

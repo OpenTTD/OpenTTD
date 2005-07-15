@@ -57,7 +57,7 @@ static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *user
 	BitmapFileHeader bfh;
 	BitmapInfoHeader bih;
 	RgbQuad rq[256];
-	byte *buff;
+	Pixel *buff;
 	FILE *f;
 	uint i, padw;
 	uint n, maxlines;
@@ -159,7 +159,7 @@ static void PNGAPI png_my_warning(png_structp png_ptr, png_const_charp message)
 static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
 {
 	png_color rq[256];
-	byte *buff;
+	Pixel *buff;
 	FILE *f;
 	uint i, y, n;
 	uint maxlines;
@@ -272,7 +272,7 @@ assert_compile(sizeof(PcxHeader) == 128);
 
 static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette)
 {
-	byte *buff;
+	Pixel *buff;
 	FILE *f;
 	uint maxlines;
 	uint y;
@@ -330,14 +330,14 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 
 		// write them to pcx
 		for (i = 0; i != n; i++) {
-			const byte* bufp = buff + i * w;
+			const Pixel* bufp = buff + i * w;
 			byte runchar = bufp[0];
 			uint runcount = 1;
 			uint j;
 
 			// for each pixel...
 			for (j = 1; j < w; j++) {
-				byte ch = bufp[j];
+				Pixel ch = bufp[j];
 
 				if (ch != runchar || runcount >= 0x3f) {
 					if (runcount > 1 || (runchar & 0xC0) == 0xC0)
@@ -426,7 +426,7 @@ void SetScreenshotFormat(int i)
 }
 
 // screenshot generator that dumps the current video buffer
-static void CurrentScreenCallback(void *userdata, byte *buf, uint y, uint pitch, uint n)
+static void CurrentScreenCallback(void *userdata, Pixel *buf, uint y, uint pitch, uint n)
 {
 	for (; n > 0; --n) {
 		memcpy(buf, _screen.dst_ptr + y * _screen.pitch, _screen.width);
@@ -436,7 +436,7 @@ static void CurrentScreenCallback(void *userdata, byte *buf, uint y, uint pitch,
 }
 
 // generate a large piece of the world
-static void LargeWorldCallback(void *userdata, byte *buf, uint y, uint pitch, uint n)
+static void LargeWorldCallback(void *userdata, Pixel *buf, uint y, uint pitch, uint n)
 {
 	ViewPort *vp = (ViewPort *)userdata;
 	DrawPixelInfo dpi, *old_dpi;
