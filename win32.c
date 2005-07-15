@@ -2124,6 +2124,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	_random_seeds[0][0] = GetTickCount();
 	_random_seeds[0][1] = _random_seeds[0][0] * 0x1234567;
 #endif
+	SeedMT(_random_seeds[0][0]);
 
 	argc = ParseCommandLine(GetCommandLine(), argv, lengthof(argv));
 
@@ -2262,4 +2263,10 @@ void JoinOTTDThread(void)
 	if (hThread == NULL) return;
 
 	WaitForSingleObject(hThread, INFINITE);
+}
+
+
+void CSleep(int milliseconds)
+{
+	Sleep(milliseconds);
 }

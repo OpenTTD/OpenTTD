@@ -29,13 +29,14 @@ static inline uint32 ROR(uint32 x, int n)
      it completely! -- TrueLight */
 #undef PLAYER_SEED_RANDOM
 
+#ifndef MERSENNE_TWISTER
+
 #ifdef RANDOM_DEBUG
 #include "network_data.h"
-
 uint32 DoRandom(int line, const char *file)
-#else
+#else // RANDOM_DEBUG
 uint32 Random(void)
-#endif
+#endif // RANDOM_DEBUG
 {
 
 uint32 s;
@@ -66,8 +67,9 @@ uint32 t;
 	return _random_seeds[0][1] = ROR(s, 3) - 1;
 #endif
 }
+#endif // MERSENNE_TWISTER
 
-#ifdef RANDOM_DEBUG
+#if defined(RANDOM_DEBUG) && !defined(MERSENNE_TWISTER)
 uint DoRandomRange(uint max, int line, const char *file)
 {
 	return (uint16)DoRandom(line, file) * max >> 16;
@@ -78,6 +80,7 @@ uint RandomRange(uint max)
 	return (uint16)Random() * max >> 16;
 }
 #endif
+
 
 uint32 InteractiveRandom(void)
 {
@@ -92,6 +95,8 @@ uint InteractiveRandomRange(uint max)
 	return (uint16)InteractiveRandom() * max >> 16;
 }
 
+
+#ifdef PLAYER_SEED_RANDOM
 void InitPlayerRandoms(void)
 {
 	int i;
@@ -100,6 +105,7 @@ void InitPlayerRandoms(void)
 		_player_seeds[i][1]=InteractiveRandom();
 	}
 }
+#endif
 
 void SetDate(uint date)
 {
@@ -111,55 +117,6 @@ void SetDate(uint date)
 	_network_last_advertise_date = 0;
 #endif /* ENABLE_NETWORK */
 }
-
-
-#ifdef ENABLE_NETWORK
-
-// multi os compatible sleep function
-
-#ifdef __AMIGA__
-// usleep() implementation
-#	include <devices/timer.h>
-#	include <dos/dos.h>
-
-	extern struct Device      *TimerBase    = NULL;
-	extern struct MsgPort     *TimerPort    = NULL;
-	extern struct timerequest *TimerRequest = NULL;
-#endif // __AMIGA__
-
-void CSleep(int milliseconds)
-{
-	#if defined(WIN32)
-		Sleep(milliseconds);
-	#endif
-	#if defined(UNIX)
-		#if !defined(__BEOS__) && !defined(__AMIGA__)
-			usleep(milliseconds * 1000);
-		#endif
-		#ifdef __BEOS__
-			snooze(milliseconds * 1000);
-		#endif
-		#if defined(__AMIGA__)
-		{
-			ULONG signals;
-			ULONG TimerSigBit = 1 << TimerPort->mp_SigBit;
-
-			// send IORequest
-			TimerRequest->tr_node.io_Command = TR_ADDREQUEST;
-			TimerRequest->tr_time.tv_secs    = (milliseconds * 1000) / 1000000;
-			TimerRequest->tr_time.tv_micro   = (milliseconds * 1000) % 1000000;
-			SendIO((struct IORequest *)TimerRequest);
-
-			if (!((signals = Wait(TimerSigBit | SIGBREAKF_CTRL_C)) & TimerSigBit) ) {
-				AbortIO((struct IORequest *)TimerRequest);
-			}
-			WaitIO((struct IORequest *)TimerRequest);
-		}
-		#endif // __AMIGA__
-	#endif
-}
-
-#endif /* ENABLE_NETWORK */
 
 void InitializeVehicles(void);
 void InitializeWaypoints(void);

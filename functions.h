@@ -93,6 +93,21 @@ void NORETURN CDECL error(const char *str, ...);
 
 //#define RANDOM_DEBUG
 
+
+// Enable this to produce higher quality random numbers.
+// Doesn't work with network yet.
+//#define MERSENNE_TWISTER
+
+// Mersenne twister functions
+void SeedMT(uint32 seed);
+uint32 RandomMT(void);
+
+
+#ifdef MERSENNE_TWISTER
+	static inline uint32 Random(void) { return RandomMT(); }
+	uint RandomRange(uint max);
+#else
+
 #ifdef RANDOM_DEBUG
 	#define Random() DoRandom(__LINE__, __FILE__)
 	uint32 DoRandom(int line, const char *file);
@@ -101,12 +116,18 @@ void NORETURN CDECL error(const char *str, ...);
 #else
 	uint32 Random(void);
 	uint RandomRange(uint max);
+#endif
+#endif // MERSENNE_TWISTER
 
-	static inline TileIndex RandomTileSeed(uint32 r) { return TILE_MASK(r); }
-	static inline TileIndex RandomTile(void) { return TILE_MASK(Random()); }
+static inline TileIndex RandomTileSeed(uint32 r) { return TILE_MASK(r); }
+static inline TileIndex RandomTile(void) { return TILE_MASK(Random()); }
+
+
+#ifdef PLAYER_SEED_RANDOM
+void InitPlayerRandoms(void);
 #endif
 
-void InitPlayerRandoms(void);
+
 
 uint32 InteractiveRandom(void); /* Used for random sequences that are not the same on the other end of the multiplayer link */
 uint InteractiveRandomRange(uint max);

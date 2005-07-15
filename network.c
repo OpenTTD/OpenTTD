@@ -773,7 +773,9 @@ static void NetworkInitialize(void)
 
 	_network_reconnect = 0;
 
+#ifdef PLAYER_SEED_RANDOM
 	InitPlayerRandoms();
+#endif
 
 	NetworkUDPInitialize();
 }

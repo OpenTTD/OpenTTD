@@ -474,6 +474,7 @@ int CDECL main(int argc, char* argv[])
 #endif
 
 	_random_seeds[0][1] = _random_seeds[0][0] = time(NULL);
+	SeedMT(_random_seeds[0][1]);
 
 	signal(SIGPIPE, SIG_IGN);
 
@@ -581,3 +582,49 @@ void JoinOTTDThread(void)
 
 	pthread_join(thread1, NULL);
 }
+
+
+
+#ifdef ENABLE_NETWORK
+
+// multi os compatible sleep function
+
+#ifdef __AMIGA__
+// usleep() implementation
+#	include <devices/timer.h>
+#	include <dos/dos.h>
+
+	extern struct Device      *TimerBase    = NULL;
+	extern struct MsgPort     *TimerPort    = NULL;
+	extern struct timerequest *TimerRequest = NULL;
+#endif // __AMIGA__
+
+void CSleep(int milliseconds)
+{
+	#if !defined(__BEOS__) && !defined(__AMIGA__)
+		usleep(milliseconds * 1000);
+	#endif
+	#ifdef __BEOS__
+		snooze(milliseconds * 1000);
+	#endif
+	#if defined(__AMIGA__)
+	{
+		ULONG signals;
+		ULONG TimerSigBit = 1 << TimerPort->mp_SigBit;
+
+		// send IORequest
+		TimerRequest->tr_node.io_Command = TR_ADDREQUEST;
+		TimerRequest->tr_time.tv_secs    = (milliseconds * 1000) / 1000000;
+		TimerRequest->tr_time.tv_micro   = (milliseconds * 1000) % 1000000;
+		SendIO((struct IORequest *)TimerRequest);
+
+		if (!((signals = Wait(TimerSigBit | SIGBREAKF_CTRL_C)) & TimerSigBit) ) {
+			AbortIO((struct IORequest *)TimerRequest);
+		}
+		WaitIO((struct IORequest *)TimerRequest);
+	}
+	#endif // __AMIGA__
+}
+
+#endif /* ENABLE_NETWORK */
+

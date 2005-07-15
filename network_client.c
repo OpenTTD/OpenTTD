@@ -488,11 +488,13 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 	// Check if this was the last packet
 	if (maptype == MAP_PACKET_END) {
 		// We also get, very nice, the player_seeds in this packet
+#ifdef PLAYER_SEED_RANDOM
 		int i;
 		for (i = 0; i < MAX_PLAYERS; i++) {
 			_player_seeds[i][0] = NetworkRecv_uint32(MY_CLIENT, p);
 			_player_seeds[i][1] = NetworkRecv_uint32(MY_CLIENT, p);
 		}
+#endif
 
 		fclose(file_pointer);
 

@@ -676,7 +676,9 @@ int ttd_main(int argc, char* argv[])
 	InitializeGUI();
 	IConsoleCmdExec("exec scripts/autoexec.scr 0");
 
+#ifdef PLAYER_SEED_RANDOM
 	InitPlayerRandoms();
+#endif
 
 	GenerateWorld(1, 64, 64); // Make the viewport initialization happy
 
