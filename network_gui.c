@@ -43,8 +43,6 @@ static const StringID _lan_internet_types_dropdown[] = {
 	INVALID_STRING_ID
 };
 
-static StringID _str_map_name, _str_game_name, _str_server_version, _str_server_address;
-
 enum {
 	NET_PRC__OFFSET_TOP_WIDGET					= 74,
 	NET_PRC__OFFSET_TOP_WIDGET_COMPANY	= 42,
@@ -181,7 +179,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		if (_selected_item == NULL) {
 			DrawStringMultiCenter(365, 40, STR_NETWORK_GAME_INFO, 0);
 		} else if (!_selected_item->online) {
-			SetDParam(0, _str_game_name);
+			SetDParamStr(0, _selected_item->info.server_name);
 			DrawStringMultiCenter(365, 42, STR_ORANGE, 2); // game name
 
 			DrawStringMultiCenter(365, 110, STR_NETWORK_SERVER_OFFLINE, 2); // server offline
@@ -397,7 +395,7 @@ static const Widget _network_game_window_widgets[] = {
 static const WindowDesc _network_game_window_desc = {
 	WDP_CENTER, WDP_CENTER, 490, 215,
 	WC_NETWORK_WINDOW,0,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESTORE_DPARAM,
+	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_network_game_window_widgets,
 	NetworkGameWindowWndProc,
 };
@@ -624,7 +622,7 @@ static const Widget _network_start_server_window_widgets[] = {
 static const WindowDesc _network_start_server_window_desc = {
 	WDP_CENTER, WDP_CENTER, 420, 200,
 	WC_NETWORK_WINDOW,0,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESTORE_DPARAM,
+	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_network_start_server_window_widgets,
 	NetworkStartServerWindowWndProc,
 };
@@ -681,7 +679,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 
 		DrawWindowWidgets(w);
 
-		SetDParam(0, _str_game_name);
+		SetDParamStr(0, _selected_item->info.server_name);
 		DrawString(10, 22, STR_NETWORK_PREPARE_TO_JOIN, 2);
 
 		// draw company list

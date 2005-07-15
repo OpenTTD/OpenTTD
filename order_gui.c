@@ -543,7 +543,7 @@ static const Widget _orders_train_widgets[] = {
 static const WindowDesc _orders_train_desc = {
 	-1,-1, 385, 88,
 	WC_VEHICLE_ORDERS,WC_VEHICLE_VIEW,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESTORE_DPARAM | WDF_RESIZABLE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_orders_train_widgets,
 	OrdersWndProc
 };
@@ -568,7 +568,7 @@ static const Widget _orders_widgets[] = {
 static const WindowDesc _orders_desc = {
 	-1,-1, 396, 88,
 	WC_VEHICLE_ORDERS,WC_VEHICLE_VIEW,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESTORE_DPARAM | WDF_RESIZABLE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_orders_widgets,
 	OrdersWndProc
 };

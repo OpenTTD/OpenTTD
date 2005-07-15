@@ -182,7 +182,7 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 static const WindowDesc _player_finances_desc = {
 	-1,-1, 407, 216,
 	WC_FINANCES,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESTORE_DPARAM | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_player_finances_widgets,
 	PlayerFinancesWndProc
 };
@@ -190,7 +190,7 @@ static const WindowDesc _player_finances_desc = {
 static const WindowDesc _player_finances_small_desc = {
 	-1,-1, 280, 60,
 	WC_FINANCES,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESTORE_DPARAM | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_player_finances_small_widgets,
 	PlayerFinancesWndProc
 };
@@ -198,7 +198,7 @@ static const WindowDesc _player_finances_small_desc = {
 static const WindowDesc _other_player_finances_desc = {
 	-1,-1, 407, 204,
 	WC_FINANCES,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESTORE_DPARAM | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_other_player_finances_widgets,
 	PlayerFinancesWndProc
 };
@@ -206,7 +206,7 @@ static const WindowDesc _other_player_finances_desc = {
 static const WindowDesc _other_player_finances_small_desc = {
 	-1,-1, 280, 48,
 	WC_FINANCES,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESTORE_DPARAM | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_other_player_finances_small_widgets,
 	PlayerFinancesWndProc
 };

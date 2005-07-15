@@ -269,7 +269,7 @@ static const Widget _game_options_widgets[] = {
 static const WindowDesc _game_options_desc = {
 	WDP_CENTER, WDP_CENTER, 370, 239,
 	WC_GAME_OPTIONS,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESTORE_DPARAM | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_game_options_widgets,
 	GameOptionsWndProc
 };

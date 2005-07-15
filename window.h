@@ -229,7 +229,7 @@ enum {
 	WDF_STD_TOOLTIPS   = 1, /* use standard routine when displaying tooltips */
 	WDF_DEF_WIDGET     = 2,	/* default widget control for some widgets in the on click event */
 	WDF_STD_BTN        = 4,	/* default handling for close and drag widgets (widget no 0 and 1) */
-	WDF_RESTORE_DPARAM = 8, /* when drawing widgets, restore the dparam so all widgets recieve the same set of them */
+
 	WDF_UNCLICK_BUTTONS=16, /* Unclick buttons when the window event times out */
 	WDF_STICKY_BUTTON  =32, /* Set window to sticky mode; they are not closed unless closed with 'X' (widget 2) */
 	WDF_RESIZABLE      =64, /* A window can be resized */

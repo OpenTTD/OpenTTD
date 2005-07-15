@@ -157,11 +157,7 @@ void DrawWindowWidgets(Window *w)
 	const Widget *wi;
 	DrawPixelInfo *dpi = _cur_dpi;
 	Rect r;
-	uint32 dparam_backup[20];
 	uint32 cur_click, cur_disabled, cur_hidden;
-
-	if (w->desc_flags & WDF_RESTORE_DPARAM)
-		COPY_OUT_DPARAM(dparam_backup, 0, lengthof(dparam_backup));
 
 	wi = w->widget;
 
@@ -207,7 +203,7 @@ void DrawWindowWidgets(Window *w)
 
 			DrawStringCentered(((r.left + r.right + 1) >> 1) + clicked, ((r.top + r.bottom + 1) >> 1) - 5 + clicked, str, 0);
 			//DrawStringCentered((r.left + r.right+1)>>1, ((r.top+r.bottom + 1)>>1) - 5, str, 0);
-			goto restore_dparam;
+			goto draw_default;
 		}
 
 		case WWT_6: {
@@ -216,7 +212,6 @@ void DrawWindowWidgets(Window *w)
 
 			if ((str = wi->unkA) != 0) {
 				DrawString(r.left+2, r.top+1, str, 0);
-				goto restore_dparam;
 			}
 			goto draw_default;
 		}
@@ -396,7 +391,7 @@ void DrawWindowWidgets(Window *w)
 			GfxFillRect(r.left+1, r.bottom-1, r.right-1, r.bottom-1, c1);
 			GfxFillRect(r.left, r.bottom, r.right, r.bottom, c2);
 
-			goto restore_dparam;
+			goto draw_default;
 		}
 
 		case WWT_STICKYBOX: {
@@ -425,9 +420,6 @@ void DrawWindowWidgets(Window *w)
 			}
 
 			DrawStringCentered( (r.left+r.right+1)>>1, r.top+2, wi->unkA, 0x84);
-restore_dparam:;
-			if (w->desc_flags & WDF_RESTORE_DPARAM)
-				COPY_IN_DPARAM(0, dparam_backup, lengthof(dparam_backup));
 draw_default:;
 			if (cur_disabled & 1) {
 				GfxFillRect(r.left+1, r.top+1, r.right-1, r.bottom-1, _color_list[wi->color&0xF].unk2 | 0x8000);
