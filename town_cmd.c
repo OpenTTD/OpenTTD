@@ -221,10 +221,10 @@ void UpdateTownVirtCoord(Town *t)
 
 	MarkTownSignDirty(t);
 	pt = RemapCoords2(TileX(t->xy) * 16, TileY(t->xy) * 16);
-	SetDParam(0, t->townnametype);
-	SetDParam(1, t->townnameparts);
-	SetDParam(2, t->population);
-	UpdateViewportSignPos(&t->sign, pt.x, pt.y - 24, _patches.population_in_label ? STR_TOWN_LABEL_POP : STR_2001);
+	SetDParam(0, t->index);
+	SetDParam(1, t->population);
+	UpdateViewportSignPos(&t->sign, pt.x, pt.y - 24,
+		_patches.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL);
 	MarkTownSignDirty(t);
 }
 
@@ -911,8 +911,8 @@ restart:
 			if (t2->xy != 0) {
 				// We can't just compare the numbers since
 				// several numbers may map to a single name.
-				SetDParam(0, t2->townnameparts);
-				GetString(buf2, t2->townnametype);
+				SetDParam(0, t2->index);
+				GetString(buf2, STR_TOWN);
 				if (strcmp(buf1, buf2) == 0) {
 					if (tries-- < 0)
 						return false;

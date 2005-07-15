@@ -55,21 +55,17 @@ static uint16 _last_station_idx;
 static int CDECL StationNameSorter(const void *a, const void *b)
 {
 	char buf1[64];
-	Station *st;
+	int32 argv[1];
 	const SortStruct *cmp1 = (const SortStruct*)a;
 	const SortStruct *cmp2 = (const SortStruct*)b;
 
-	st = GetStation(cmp1->index);
-	SetDParam(0, st->town->townnametype);
-	SetDParam(1, st->town->townnameparts);
-	GetString(buf1, st->string_id);
+	argv[0] = cmp1->index;
+	GetStringWithArgs(buf1, STR_STATION, argv);
 
 	if ( cmp2->index != _last_station_idx) {
 		_last_station_idx = cmp2->index;
-		st = GetStation(cmp2->index);
-		SetDParam(0, st->town->townnametype);
-		SetDParam(1, st->town->townnameparts);
-		GetString(_bufcache, st->string_id);
+		argv[0] = cmp2->index;
+		GetStringWithArgs(_bufcache, STR_STATION, argv);
 	}
 
 	return strcmp(buf1, _bufcache); // sort by name
@@ -466,10 +462,8 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case 9: {
-			Station *st = GetStation(w->window_number);
-			SetDParam(0, st->town->townnametype);
-			SetDParam(1, st->town->townnameparts);
-			ShowQueryString(st->string_id, STR_3030_RENAME_STATION_LOADING, 31, 180, w->window_class, w->window_number);
+			SetDParam(0, w->window_number);
+			ShowQueryString(STR_STATION, STR_3030_RENAME_STATION_LOADING, 31, 180, w->window_class, w->window_number);
 		} break;
 
 		case 10: { /* Show a list of scheduled trains to this station */

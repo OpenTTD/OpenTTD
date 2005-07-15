@@ -40,7 +40,6 @@ static void LandInfoWndProc(Window *w, WindowEvent *e)
 	StringID str;
 
 	if (e->event == WE_PAINT) {
-		int idx = 0;
 		int i;
 
 		DrawWindowWidgets(w);
@@ -70,8 +69,8 @@ static void LandInfoWndProc(Window *w, WindowEvent *e)
 
 		SetDParam(0, STR_01A9_NONE);
 		if (lid->town != NULL) {
-			SetDParam(0, lid->town->townnametype);
-			SetDParam(1, lid->town->townnameparts);
+			SetDParam(0, STR_TOWN);
+			SetDParam(1, lid->town->index);
 		}
 		DrawStringCentered(140,60, STR_01A8_LOCAL_AUTHORITY, 0);
 

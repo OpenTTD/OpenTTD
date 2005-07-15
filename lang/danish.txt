@@ -12,8 +12,8 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Landet skal være flat
 STR_0008_WAITING                                                :{BLACK}Venter: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING1}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING1}{YELLOW}  (på vej fra
+STR_0009                                                        :{WHITE}{STRING}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (på vej fra
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Accepterer: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Accepterer: {GOLD}
@@ -182,7 +182,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Kort - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Spilindstillinger
 STR_00B2_MESSAGE                                                :{YELLOW}Besked
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Besked Fra {STRING1}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Besked Fra {STRING}
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Det kan jeg ikke....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan ikke rydde området....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, Alle retigheder reserveret
@@ -311,12 +311,12 @@ STR_OSNAME_OS2                                                  :OS/2
 
 STR_0139_IMPERIAL_MILES                                         :Imperial (miles)
 STR_013A_METRIC_KILOMETERS                                      :Meter (kilometer)
-STR_013B_OWNED_BY                                               :{WHITE}...ejes af {STRING2}
+STR_013B_OWNED_BY                                               :{WHITE}...ejes af {STRING}
 STR_013C_CARGO                                                  :{BLACK}Last
 STR_013D_INFORMATION                                            :{BLACK}Information
 STR_013E_CAPACITIES                                             :{BLACK}Lasteevner
 STR_013E_TOTAL_CARGO                                            :{BLACK}Samlet last
-STR_013F_CAPACITY                                               :{BLACK}Lasteevne: {LTBLUE}{STRING1}
+STR_013F_CAPACITY                                               :{BLACK}Lasteevne: {LTBLUE}{STRING}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Samlet last (lasteevne) på dette tog:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Nyt Spil
@@ -395,7 +395,7 @@ STR_016D_DEC                                                    :Dec
 
 STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
 STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_0170                                                        :{TINYFONT}{STRING2}-
+STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}Pause spillet
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Gem spillet, afslut spillet, afslut
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Vis en liste over selskabets stationer
@@ -457,8 +457,8 @@ STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Land omr
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Pris for at rydde: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Pris for at rydde: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
-STR_01A7_OWNER                                                  :{BLACK}Ejer: {LTBLUE}{STRING1}
-STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Lokal myndighed: {LTBLUE}{STRING1}
+STR_01A7_OWNER                                                  :{BLACK}Ejer: {LTBLUE}{STRING}
+STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Lokal myndighed: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Ingen
 STR_01AA_NAME                                                   :{BLACK}Navn
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
@@ -525,13 +525,13 @@ STR_01E3                                                        :{DKGREEN}{TINYF
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
-STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING1}"
+STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Nummer{SETX 88}Titel
 STR_01E9_SHUFFLE                                                :{TINYFONT}Bland
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Programmer
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Musik Program Valg
-STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING1}"
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA}   "{STRING1}"
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA}   "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Nummer Index
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Ryd
@@ -722,7 +722,7 @@ STR_02A3_LARGE                                                  :{BLACK}Stor
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Vælg bystørrelse
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Bystørrelse:
 
-STR_02B6                                                        :{STRING}  -  {STRING5}
+STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Vis sidste besked eller nyheds rapport
 STR_OFF                                                         :Fra
 STR_SUMMARY                                                     :Resume
@@ -990,88 +990,88 @@ STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Indstil 
 
 STR_CONFIG_PATCHES_OFF                                          :Fra
 STR_CONFIG_PATCHES_ON                                           :Til
-STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Vis køretøjets fart i statusbaren: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Tillad bygning på skråninger og kyster: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Tillad mere realistisk størrelse på stationernes opland: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Tillad nedriving af industribygninger, flere veje, osv: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Aktiver bygning af meget lange tog: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Aktiver realistisk acceleration af tog: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Forbyd skibe og tog at dreje 90 grader: {ORANGE}{STRING1} {LTBLUE} (skal bruge NPF)
-STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Foren togstationer der bygges ved siden af hinanden: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Forlad stationen hvis en slags last bliver fyldt, hvis 'fuld last': {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Brug forbedret indlæsnings algoritme: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Aflever kun last til en station hvis der er en forespørgsel: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Tillad bygning af meget lange broer: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Tillad go til depot ordrer: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Tillad opførslen af råmateriale industrier: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Tillad flere af samme slags industri per by: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Tillad at flere af samme slags industri kan være tæt på hinanden: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Vis altid lang dato i statusbaren: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Vis signaler i kørselssiden: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Vis finansvinduet i slutningen af året: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch kombatibel nonstop håndtering: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Kø dannelse af lastbiler (med kvante effekt): {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Pannorer vindue når musen er ved kanten: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Tillad bestikkelse af de lokale myndigheder: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEW_DEPOT_FINDING                            :{LTBLUE}Find nyt depot: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ikke uniforme stationer: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND                           :{LTBLUE}Ny stifindingsalgoritme til tog: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Ny global ruteplanlægger (NPF, tilsidesætter NTP): {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Vis køretøjets fart i statusbaren: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Tillad bygning på skråninger og kyster: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Tillad mere realistisk størrelse på stationernes opland: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Tillad nedriving af industribygninger, flere veje, osv: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Aktiver bygning af meget lange tog: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Aktiver realistisk acceleration af tog: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Forbyd skibe og tog at dreje 90 grader: {ORANGE}{STRING} {LTBLUE} (skal bruge NPF)
+STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Foren togstationer der bygges ved siden af hinanden: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Forlad stationen hvis en slags last bliver fyldt, hvis 'fuld last': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Brug forbedret indlæsnings algoritme: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Aflever kun last til en station hvis der er en forespørgsel: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Tillad bygning af meget lange broer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Tillad go til depot ordrer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Tillad opførslen af råmateriale industrier: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Tillad flere af samme slags industri per by: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Tillad at flere af samme slags industri kan være tæt på hinanden: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Vis altid lang dato i statusbaren: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Vis signaler i kørselssiden: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Vis finansvinduet i slutningen af året: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch kombatibel nonstop håndtering: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Kø dannelse af lastbiler (med kvante effekt): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Pannorer vindue når musen er ved kanten: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Tillad bestikkelse af de lokale myndigheder: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_DEPOT_FINDING                            :{LTBLUE}Find nyt depot: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ikke uniforme stationer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND                           :{LTBLUE}Ny stifindingsalgoritme til tog: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Ny global ruteplanlægger (NPF, tilsidesætter NTP): {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Tillad altid små lufthavne: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Tillad altid små lufthavne: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Et tog er faret vild hvis der ikke er sket fremskridt i: {ORANGE}{STRING1} dage
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Et tog er faret vild hvis der ikke er sket fremskridt i: {ORANGE}{STRING} dage
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Et tog er faret vild hvis der ikke er sket fremskridt i: {ORANGE}deaktiveret
-STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Kontroller køretøjers ordreliste: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Kontroller køretøjers ordreliste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :Nej
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :Ja, på nær ved stoppet køretøjer
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :Ja, på alle køretøjer
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Advar hvis et tog har underskud: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Køretøjernes levealder udløber aldrig: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Advar hvis et tog har underskud: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Køretøjernes levealder udløber aldrig: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automatisk fornyelse af køretøjer når de bliver gamle
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Automatisk fornyelse når køretøj er {ORANGE}{STRING1}{LTBLUE} måneder under/over max alder
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Antal penge i banken før automatisk fornyelse af køretøjer: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Levetid for fejlmeddelser: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Vis byens indbyggertal i bynavnet: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Usynlige træer (med gennemsigtige bygninger): {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Snelinjehøjden: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max station udbreddelse: {ORANGE}{STRING1} {RED}Advarsel: Høj værdi gør spillet langsomt
-STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatisk service på helikopterlandingspladser: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Automatisk fornyelse når køretøj er {ORANGE}{STRING}{LTBLUE} måneder under/over max alder
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Antal penge i banken før automatisk fornyelse af køretøjer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Levetid for fejlmeddelser: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Vis byens indbyggertal i bynavnet: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Usynlige træer (med gennemsigtige bygninger): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Snelinjehøjden: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max station udbreddelse: {ORANGE}{STRING} {RED}Advarsel: Høj værdi gør spillet langsomt
+STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatisk service på helikopterlandingspladser: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks antal tog per spiller: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks antal lastbiler per spiller: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Maks antal fly per spiller: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Maks antal skibe per spiller: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks antal tog per spiller: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks antal lastbiler per spiller: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Maks antal fly per spiller: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Maks antal skibe per spiller: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Deaktiver tog for computeren: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Deaktiver lastbiler for computeren: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Deaktiver fly for computeren: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Deaktiver skibe for computeren: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Deaktiver tog for computeren: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Deaktiver lastbiler for computeren: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Deaktiver fly for computeren: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Deaktiver skibe for computeren: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Slå den nye kunstige intelligents til (alpha): {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Slå den nye kunstige intelligents til (alpha): {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Standard service interval for tog: {ORANGE}{STRING1} dage/%
+STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Standard service interval for tog: {ORANGE}{STRING} dage/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard service interval for tog: {ORANGE}slået fra
-STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Standard service interval for vejkøretøjer: {ORANGE}{STRING1} dage/%
+STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Standard service interval for vejkøretøjer: {ORANGE}{STRING} dage/%
 STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Standard service interval for vejkøretøjer: {ORANGE}slået fra
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Standard service interval for fly: {ORANGE}{STRING1} dage/%
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Standard service interval for fly: {ORANGE}{STRING} dage/%
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standard service interval for fly: {ORANGE}slået fra
-STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Standard service interval for skibe: {ORANGE}{STRING1} dage/%
+STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Standard service interval for skibe: {ORANGE}{STRING} dage/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Standard service interval for skibe: {ORANGE}slået fra
-STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Slå service fra, når nedbrud er sat til ingen: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Slå service fra, når nedbrud er sat til ingen: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Farvede nyheder dukker op i: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Start dato: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Afslut spillet i: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Farvede nyheder dukker op i: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Start dato: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Afslut spillet i: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Aktiver rolig økonomi (flere små ændringer)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Tillad at købe aktier i andre selskaber
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}When dragging place signals every: {ORANGE}{STRING1} tile(s)
-STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Placering af værktøjslinie: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}When dragging place signals every: {ORANGE}{STRING} tile(s)
+STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Placering af værktøjslinie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Venstre
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Center
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Højre
-STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Vinduernes sammenkoblings afstand: {ORANGE}{STRING1} px
+STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Vinduernes sammenkoblings afstand: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Vinduernes sammenkoblings afstand: {ORANGE}slået fra
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Brugerflade
@@ -1098,13 +1098,13 @@ STR_CHEATS_TIP                                                  :{BLACK}Checkbox
 STR_CHEATS_WARNING                                              :{BLACK}Advarsel! Du er ved at forråde dine modstandere. Husk at dette vil blive husket i al evighed.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Forøg kassebeholdning med {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Spil som spiller: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldozer (nedriv ting, som normalt ikke kan fjernes): {ORANGE}{STRING1}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunneler kan krydse hinanden: {ORANGE}{STRING1}
-STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Tillad at bygge mens pause er aktiveret: {ORANGE}{STRING1}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldozer (nedriv ting, som normalt ikke kan fjernes): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunneler kan krydse hinanden: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Tillad at bygge mens pause er aktiveret: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetfly vil ikke styrte (ofte) i små lufthavne: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Skift klima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Ændre dato: {ORANGE} {DATE_SHORT}
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktiver modifisering af produktion: {ORANGE}{STRING1}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktiver modifisering af produktion: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Retning mod {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Retning mod {WAYPOINT}, {VELOCITY}
@@ -1196,9 +1196,9 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Opfør Ka
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Byg Sukkermine
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrier
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING1}){YELLOW} ({COMMA}% transporteret)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING1}/{STRING1}){YELLOW} ({COMMA}%/{COMMA}% transported)
-STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{TOWN} {STRING}
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}% transporteret)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% transported)
+STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...for tæt på en anden industribygning
 
@@ -1207,7 +1207,7 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Ombyg to
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vælg den slags last toget skal køre med
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Ombyg toget til at køre med den markerede slags last
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Kan ikke ombygge toget...
-STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Service intervaller er i procent: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Service intervaller er i procent: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Skift produktion
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Velkommen til den nye kunstige intelligents, der er under udarbejdelse. Du kan forvente problemer. Når det sker, så lav et screenshot og sæt det på forummet
@@ -1410,8 +1410,8 @@ STR_NETWORK_SEND                                                :{BLACK}Send
 ############ end network gui strings
 
 
-STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X-størrelse af kort: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-størrelse af kort: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X-størrelse af kort: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-størrelse af kort: {ORANGE}{STRING}
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Pris: {CURRENCY}
@@ -1506,10 +1506,8 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Jernbaneoverskæ
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Byer
-STR_TOWN_LABEL_POP                                              :{WHITE}{STRING1} ({COMMA})
-STR_2001                                                        :{WHITE}{STRING1}
-STR_2002                                                        :{TINYFONT}{BLACK}{STRING1}
-STR_2003                                                        :{TINYFONT}{WHITE}{STRING1}
+STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Det er nødvendigt at nedrive bygningen først
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Indbyggere: {ORANGE}{COMMA}{BLACK}  Huse: {ORANGE}{COMMA}
@@ -1545,16 +1543,15 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Transpor
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Specialaftaler
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Specialaftaler til udlicitering:-
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} fra {STRING2} til {STRING2}
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} fra {STRING} til {STRING}
 STR_2028_BY                                                     :{YELLOW} (inden {DATE_SHORT})
-STR_2029                                                        :{TOWN} {STRING}
 STR_202A_NONE                                                   :{ORANGE}Ingen
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Specialaftaler der allerede er vundet:-
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} fra {STATION} til {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, indtil {DATE_SHORT})
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Specialaftale udløbet:{}{}{STRING} fra {STRING2} til {STRING2} vil ikke længere udløse en bonus.
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Specialaftale udløbet:{}{}{STRING} fra {STRING} til {STRING} vil ikke længere udløse en bonus.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Tilbud om specialaftale tilbagetrukket:{}{}{STRING} fragt fra {STATION} til {STATION} er ikke længere til udlicitering.
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Tilbud om specialaftale:{}{}Første {STRING} fragt fra {STRING2} til {STRING2}  vil udløse et års bonus kontrakt med de lokale myndigheder!
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Tilbud om specialaftale:{}{}Første {STRING} fragt fra {STRING} til {STRING}  vil udløse et års bonus kontrakt med de lokale myndigheder!
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Specialaftale tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give 50% mere i de næste 12 måneder!
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Specialaftale tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give dobbelt udbytte i de næste 12 måneder!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Specialaftale tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give tredobbelt udbytte i de næste 12 måneder!
@@ -1600,6 +1597,10 @@ STR_2059_IGLOO                                                  :Iglo
 STR_205A_TEPEES                                                 :Tipi
 STR_205B_TEAPOT_HOUSE                                           :Tepottehus
 STR_205C_PIGGY_BANK                                             :Sparegris
+STR_INDUSTRY                                                    :{INDUSTRY}
+STR_TOWN                                                        :{TOWN}
+STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
+STR_STATION                                                     :{STATION}
 
 ##id 0x2800
 STR_LANDSCAPING                                                 :Landskabsværktøjer
@@ -1737,7 +1738,7 @@ STR_4010_GENERATE_RANDOM_NEW_GAME                               :Generer nyt til
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} i vejen
-STR_4801                                                        :{WHITE}{TOWN} {STRING}
+STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :Kulmine
 STR_4803_POWER_STATION                                          :Kraftværk
 STR_4804_SAWMILL                                                :Savværk
@@ -1783,25 +1784,25 @@ STR_4829_REQUIRES                                               :{BLACK}Kræver: 
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produktion sidste måned:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING1}{BLACK} ({COMMA}% transporteret)
+STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% transporteret)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrer skærmen over placeringen af industrien
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Ny {STRING} under konstruktion tæt på {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Ny {STRING} bliver plantet tæt på {TOWN}!
 STR_482F_COST                                                   :{BLACK}Pris: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Kan ikke bygge denne industritype her...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...skov kan kun plantes over snelinjen
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{TOWN} {STRING} rapporterer om øjeblikkelig nedlukning!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Forsyningsproblemer foresager {TOWN} {STRING} til at meddele om øjeblikkelig lukning!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Mangel på træer i nærheden får {TOWN} {STRING} til at lukke omgående!
-STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{TOWN} {STRING} øger produktionen!
-STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Ny kulåre fundet tæt på {TOWN} {STRING}!{}Produktionen forventes at fordobles!
-STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nye oliereserver fundet tæt ved {TOWN} {STRING}!{}Produktionen forventes at fordoble!
-STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Forbedrede landbrugsmetoder ved {TOWN} {STRING} gør at produktionen forventes fordoblet!
-STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{TOWN} {STRING} produktion er faldet med 50%
-STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Insekter foresager kaos ved {TOWN} {STRING}!{}Produktionen er faldet med 50%
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} rapporterer om øjeblikkelig nedlukning!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Forsyningsproblemer foresager {INDUSTRY} til at meddele om øjeblikkelig lukning!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Mangel på træer i nærheden får {INDUSTRY} til at lukke omgående!
+STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} øger produktionen!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Ny kulåre fundet tæt på {INDUSTRY}!{}Produktionen forventes at fordobles!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nye oliereserver fundet tæt ved {INDUSTRY}!{}Produktionen forventes at fordoble!
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Forbedrede landbrugsmetoder ved {INDUSTRY} gør at produktionen forventes fordoblet!
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} produktion er faldet med 50%
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Insekter foresager kaos ved {INDUSTRY}!{}Produktionen er faldet med 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...kan kun placeres nær kanten af kortet
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} produktionen på {TOWN} {STRING} vokser med {COMMA}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} produktionen på {TOWN} {STRING} sænkes med {COMMA}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} produktionen på {INDUSTRY} vokser med {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} produktionen på {INDUSTRY} sænkes med {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Der er et tog i tunnelen
@@ -1869,39 +1870,39 @@ STR_SV_ROADVEH_NAME                                             :Lastbil {COMMA}
 STR_SV_SHIP_NAME                                                :Skib {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Fly {COMMA}
 
-STR_SV_STNAME                                                   :{STRING1}
-STR_SV_STNAME_NORTH                                             :{STRING1} Nord
-STR_SV_STNAME_SOUTH                                             :{STRING1} Syd
-STR_SV_STNAME_EAST                                              :{STRING1} Øst
-STR_SV_STNAME_WEST                                              :{STRING1} Vest
-STR_SV_STNAME_CENTRAL                                           :{STRING1} Hovedbanegård
-STR_SV_STNAME_TRANSFER                                          :{STRING1} Centrum
-STR_SV_STNAME_HALT                                              :{STRING1} Stop
-STR_SV_STNAME_VALLEY                                            :{STRING1} Dalen
-STR_SV_STNAME_HEIGHTS                                           :{STRING1} Bakke
-STR_SV_STNAME_WOODS                                             :{STRING1} Park
-STR_SV_STNAME_LAKESIDE                                          :{STRING1} Sø
-STR_SV_STNAME_EXCHANGE                                          :{STRING1} Marked
-STR_SV_STNAME_AIRPORT                                           :{STRING1} Lufthavn
-STR_SV_STNAME_OILFIELD                                          :{STRING1} Oliefelt
-STR_SV_STNAME_MINES                                             :{STRING1} Miner
-STR_SV_STNAME_DOCKS                                             :{STRING1} Havn
-STR_SV_STNAME_BUOY_1                                            :{STRING1} Bøje 1
-STR_SV_STNAME_BUOY_2                                            :{STRING1} Bøje 2
-STR_SV_STNAME_BUOY_3                                            :{STRING1} Bøje 3
-STR_SV_STNAME_BUOY_4                                            :{STRING1} Bøje 4
-STR_SV_STNAME_BUOY_5                                            :{STRING1} Bøje 5
-STR_SV_STNAME_BUOY_6                                            :{STRING1} Bøje 6
-STR_SV_STNAME_BUOY_7                                            :{STRING1} Bøje 7
-STR_SV_STNAME_BUOY_8                                            :{STRING1} Bøje 8
-STR_SV_STNAME_BUOY_9                                            :{STRING1} Bøje 9
-STR_SV_STNAME_ANNEXE                                            :{STRING1} Forstad
-STR_SV_STNAME_SIDINGS                                           :{STRING1} Sidespor
-STR_SV_STNAME_BRANCH                                            :{STRING1} Torv
-STR_SV_STNAME_UPPER                                             :Øvre {STRING1}
-STR_SV_STNAME_LOWER                                             :Nedre {STRING1}
-STR_SV_STNAME_HELIPORT                                          :{STRING1} Helicopterplads
-STR_SV_STNAME_FOREST                                            :{STRING1} Skov
+STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_NORTH                                             :{STRING} Nord
+STR_SV_STNAME_SOUTH                                             :{STRING} Syd
+STR_SV_STNAME_EAST                                              :{STRING} Øst
+STR_SV_STNAME_WEST                                              :{STRING} Vest
+STR_SV_STNAME_CENTRAL                                           :{STRING} Hovedbanegård
+STR_SV_STNAME_TRANSFER                                          :{STRING} Centrum
+STR_SV_STNAME_HALT                                              :{STRING} Stop
+STR_SV_STNAME_VALLEY                                            :{STRING} Dalen
+STR_SV_STNAME_HEIGHTS                                           :{STRING} Bakke
+STR_SV_STNAME_WOODS                                             :{STRING} Park
+STR_SV_STNAME_LAKESIDE                                          :{STRING} Sø
+STR_SV_STNAME_EXCHANGE                                          :{STRING} Marked
+STR_SV_STNAME_AIRPORT                                           :{STRING} Lufthavn
+STR_SV_STNAME_OILFIELD                                          :{STRING} Oliefelt
+STR_SV_STNAME_MINES                                             :{STRING} Miner
+STR_SV_STNAME_DOCKS                                             :{STRING} Havn
+STR_SV_STNAME_BUOY_1                                            :{STRING} Bøje 1
+STR_SV_STNAME_BUOY_2                                            :{STRING} Bøje 2
+STR_SV_STNAME_BUOY_3                                            :{STRING} Bøje 3
+STR_SV_STNAME_BUOY_4                                            :{STRING} Bøje 4
+STR_SV_STNAME_BUOY_5                                            :{STRING} Bøje 5
+STR_SV_STNAME_BUOY_6                                            :{STRING} Bøje 6
+STR_SV_STNAME_BUOY_7                                            :{STRING} Bøje 7
+STR_SV_STNAME_BUOY_8                                            :{STRING} Bøje 8
+STR_SV_STNAME_BUOY_9                                            :{STRING} Bøje 9
+STR_SV_STNAME_ANNEXE                                            :{STRING} Forstad
+STR_SV_STNAME_SIDINGS                                           :{STRING} Sidespor
+STR_SV_STNAME_BRANCH                                            :{STRING} Torv
+STR_SV_STNAME_UPPER                                             :Øvre {STRING}
+STR_SV_STNAME_LOWER                                             :Nedre {STRING}
+STR_SV_STNAME_HELIPORT                                          :{STRING} Helicopterplads
+STR_SV_STNAME_FOREST                                            :{STRING} Skov
 
 ############ end of	savegame specific region!
 
@@ -2385,10 +2386,10 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :magnetskinnelok
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} depot
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Indbyggerene fester . . .{}Første tog ankommer til {STATION}!
-STR_8802_DETAILS                                                :{WHITE}{STRING1} (Detaljer)
+STR_8802_DETAILS                                                :{WHITE}{STRING} (Detaljer)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tog i vejen
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING1}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING1}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
 STR_8806_GO_TO                                                  :Gå til {STATION}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Service i {TOWN} depot
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Gå uden stop til {TOWN} depot
@@ -2476,9 +2477,9 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Få den m
 STR_SERVICE_HINT                                                :{BLACK}Spring denne ordre over hvis der ikke er behov for service
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Ny {STRING} tilgængelig nu!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Pris: {CURRENCY} Vægt: {COMMA}t{}Hastighed: {VELOCITY}  Styrke: {COMMA}hp{}Kørselsomkostning: {CURRENCY}/år{}Kapacitet: {STRING1}
+STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Pris: {CURRENCY} Vægt: {COMMA}t{}Hastighed: {VELOCITY}  Styrke: {COMMA}hp{}Kørselsomkostning: {CURRENCY}/år{}Kapacitet: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Gået i stykker
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING2}{BLACK}   Kørselsomkostning: {LTBLUE}{CURRENCY}/år
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Kørselsomkostning: {LTBLUE}{CURRENCY}/år
 STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Vægt: {LTBLUE}{COMMA}t  {BLACK}Styrke: {LTBLUE}{COMMA}hp{BLACK} Maks hastighed: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Dette års profit: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålidelighed {LTBLUE}{COMMA}%  {BLACK}nedbrud siden sidste service: {LTBLUE}{COMMA}
@@ -2509,12 +2510,12 @@ STR_9007_BUILD_VEHICLE                                          :{BLACK}Byg køre
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan ikke bygge lastbil...
 STR_900A_MUST_BUILD_ROAD_VEHICLE                                :{WHITE}Det er nødvendigt at bygge lastbilsdepot først
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING2}{BLACK}   Kørselsomkostning: {LTBLUE}{CURRENCY}/år
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Kørselsomkostning: {LTBLUE}{CURRENCY}/år
 STR_900E_MAX_SPEED                                              :{BLACK}Maks hastighed: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Dette års profit: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålidelighed: {LTBLUE}{COMMA}%  {BLACK}Nedbrud siden sidste service: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Bygget: {LTBLUE}{NUM}{BLACK} Værdi: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{STRING1}
+STR_9012_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...skal være stoppet inde i et depot først
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan ikke sælge lastbil...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan ikke stoppe/starte lastbil...
@@ -2539,7 +2540,7 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Liste ov
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Byg den markerede lastbil
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Ny lastbil er tilgængelig!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Pris: {CURRENCY}{}Hastighed: {VELOCITY}{}Kørselsomkostning: {CURRENCY}/år{}Kapacitet: {STRING1}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Pris: {CURRENCY}{}Hastighed: {VELOCITY}{}Kørselsomkostning: {CURRENCY}/år{}Kapacitet: {STRING}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Giv lastbilen et navn
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Kan ikke give lastbilen et navn...
@@ -2573,12 +2574,12 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kan ikke
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Der er et skib i vejen
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING2}{BLACK}   Kørselsomkostning: {LTBLUE}{CURRENCY}/år
+STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Kørselsomkostning: {LTBLUE}{CURRENCY}/år
 STR_9813_MAX_SPEED                                              :{BLACK}Maks hastighed: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Dette års profit: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålidelighed: {LTBLUE}{COMMA}%  {BLACK}Nedbrud siden sidste service: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Bygget: {LTBLUE}{NUM}{BLACK} Værdi: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{STRING1}
+STR_9817_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan ikke stoppe/starte skibet...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan ikke sende skibet til depot...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan ikke finde lokalt depot
@@ -2602,7 +2603,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Send ski
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Vis detaljer omkring skibet
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nyt skib er tilgængeligt!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Pris: {CURRENCY} Maks Hastighed: {VELOCITY}{}Kapacitet: {STRING1}{}Kørselsomkostning: {CURRENCY}/år
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Pris: {CURRENCY} Maks Hastighed: {VELOCITY}{}Kapacitet: {STRING}{}Kørselsomkostning: {CURRENCY}/år
 STR_982F_NAME_SHIP                                              :{BLACK}Giv skibet et navn
 
 STR_9831_NAME_SHIP                                              :{WHITE}Giv skibet et navn
@@ -2620,7 +2621,7 @@ STR_983C_REFIT_SHIP                                             :{BLACK}Ombyg sk
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vælg den slags last skibet skal sejle med
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Ombyg skibet til den markerede slags last
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vælg den lasttype der skal sejles med:-
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{STRING1}{}{BLACK}Pris for ombyggelse: {GOLD}{CURRENCY}
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{STRING}{}{BLACK}Pris for ombyggelse: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kan ikke ombygge skib...
 STR_9842_REFITTABLE                                             :(ombygning mulig)
 STR_GO_TO_SHIP_DEPOT                                            :Sejl til {TOWN} Skip Depot
@@ -2639,7 +2640,7 @@ STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Ordre)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING2}{BLACK}   Kørselsomkostning: {LTBLUE}{CURRENCY}/år
+STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Kørselsomkostning: {LTBLUE}{CURRENCY}/år
 STR_A00E_MAX_SPEED                                              :{BLACK}Maks hastighed: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Dette års profit: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålidelighed: {LTBLUE}{COMMA}%  {BLACK}Nedbrud siden sidste service: {LTBLUE}{COMMA}
@@ -2652,8 +2653,8 @@ STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Fly i ve
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan ikke stoppe/starte fly...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Flyet er i luften
 STR_A018_MUST_BUILD_AIRPORT_FIRST                               :{WHITE}Det er nødvendigt at bygge en lufthavn først
-STR_A019_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{STRING1}, {STRING1}
-STR_A01A_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{STRING1}
+STR_A019_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{STRING}, {STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Flyet skal være stoppet i en flyhangar
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Kan ikke sælge flyet...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Lufthavnskonstruktion
@@ -2693,7 +2694,7 @@ STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Ombyg fl
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vælg den type last flyet skal flyve med
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Ombyg flyet til at flyve med den markerede slags last
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vælg den type last der skal flyves med:-
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{STRING1}{}{BLACK}Ombygningspris: {GOLD}{CURRENCY}
+STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{STRING}{}{BLACK}Ombygningspris: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kan ikke ombygge fly...
 STR_A043_REFITTABLE                                             :(ombygning mulig)
 STR_GO_TO_AIRPORT_HANGAR                                        :Flyv til {STATION} hangar
@@ -2805,7 +2806,7 @@ STR_TINY_BLACK                                                  :{BLACK}{TINYFON
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Pris: {GOLD}{CURRENCY}{BLACK} Vægt: {GOLD}{COMMA}t
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighed: {GOLD}{VELOCITY}{BLACK}   Styrke: {GOLD}{COMMA}hp
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Kørselsudgift: {GOLD}{CURRENCY}/år
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Lasteevne: {GOLD}{STRING1} {STRING}
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Lasteevne: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Pålidelighed: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Pris: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vægt: {GOLD}{COMMA}t  ({COMMA}t)

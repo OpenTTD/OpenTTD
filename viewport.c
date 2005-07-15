@@ -799,7 +799,9 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 					right > t->sign.left &&
 					left < t->sign.left + t->sign.width_1) {
 
-				AddStringToDraw(t->sign.left + 1, t->sign.top + 1, _patches.population_in_label ? STR_TOWN_LABEL_POP : STR_2001, t->townnametype, t->townnameparts, t->population);
+				AddStringToDraw(t->sign.left + 1, t->sign.top + 1,
+					_patches.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL,
+					t->index, t->population, 0);
 			}
 		}
 	} else if (dpi->zoom == 1) {
@@ -813,7 +815,9 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 					right > t->sign.left &&
 					left < t->sign.left + t->sign.width_1*2) {
 
-				AddStringToDraw(t->sign.left + 1, t->sign.top + 1, _patches.population_in_label ? STR_TOWN_LABEL_POP : STR_2001, t->townnametype, t->townnameparts, t->population);
+				AddStringToDraw(t->sign.left + 1, t->sign.top + 1,
+					_patches.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL,
+					t->index, t->population, 0);
 			}
 		}
 	} else {
@@ -828,8 +832,8 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 					right > t->sign.left &&
 					left < t->sign.left + t->sign.width_2*4) {
 
-				AddStringToDraw(t->sign.left + 5, t->sign.top + 1, STR_2002, t->townnametype, t->townnameparts, 0);
-				AddStringToDraw(t->sign.left + 1, t->sign.top - 3, STR_2003, t->townnametype, t->townnameparts, 0);
+				AddStringToDraw(t->sign.left + 5, t->sign.top + 1, STR_TOWN_LABEL_TINY_BLACK, t->index, 0, 0);
+				AddStringToDraw(t->sign.left + 1, t->sign.top - 3, STR_TOWN_LABEL_TINY_WHITE, t->index, 0, 0);
 			}
 		}
 	}

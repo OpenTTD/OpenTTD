@@ -10,6 +10,7 @@
 #include "news.h"
 #include "screenshot.h"
 #include "waypoint.h"
+#include "industry.h"
 
 static char *StationGetSpecialString(char *buff, int x);
 static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed);
@@ -529,8 +530,24 @@ static char *FormatString(char *buff, const char *str, const int32 *argv)
 				break;
 			}
 
-			case 10: {
+			case 10: { /* {STATIONFEATURES} */
 				buff = StationGetSpecialString(buff, GetInt32(&argv));
+				break;
+			}
+
+			case 11: { /* {INDUSTRY} */
+				Industry *i = GetIndustry(GetInt32(&argv));
+				int32 args[2];
+
+				// industry not valid anymore?
+				if (i->xy == 0)
+					break;
+
+				// First print the town name and the industry type name
+				// The string STR_INDUSTRY_PATTERN controls the formatting
+				args[0] = i->town->index;
+				args[1] = i->type + STR_4802_COAL_MINE;
+				buff = FormatString(buff, GetStringPtr(STR_INDUSTRY_FORMAT), args);
 				break;
 			}
 

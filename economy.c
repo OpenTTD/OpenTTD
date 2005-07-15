@@ -794,9 +794,6 @@ Pair SetupSubsidyDecodeParam(Subsidy *s, bool mode)
 {
 	TileIndex tile;
 	TileIndex tile2;
-	Industry *i;
-	Town *t;
-	Station *st;
 	Pair tp;
 
 	/* if mode is false, convert into plural */
@@ -804,43 +801,34 @@ Pair SetupSubsidyDecodeParam(Subsidy *s, bool mode)
 
 	if (s->age < 12) {
 		if (!(s->cargo_type == CT_PASSENGERS || s->cargo_type == CT_MAIL)) {
-			SetDParam(1, STR_2029);
-			i = GetIndustry(s->from);
-			tile = i->xy;
-			SetDParam(2, i->town->index);
-			SetDParam(3, i->type + STR_4802_COAL_MINE);
+			SetDParam(1, STR_INDUSTRY);
+			SetDParam(2, s->from);
+			tile = GetIndustry(s->from)->xy;
 
 			if (s->cargo_type != CT_GOODS && s->cargo_type != CT_FOOD) {
-				SetDParam(4, STR_2029);
-				i = GetIndustry(s->to);
-				tile2 = i->xy;
-				SetDParam(5, i->town->index);
-				SetDParam(6, i->type + STR_4802_COAL_MINE);
+				SetDParam(4, STR_INDUSTRY);
+				SetDParam(5, s->to);
+				tile2 = GetIndustry(s->to)->xy;
 			} else {
-				t = GetTown(s->to);
-				tile2 = t->xy;
-				SetDParam(4, t->townnametype);
-				SetDParam(5, t->townnameparts);
+				SetDParam(4, STR_TOWN);
+				SetDParam(5, s->to);
+				tile2 = GetTown(s->to)->xy;
 			}
 		} else {
-			t = GetTown(s->from);
-			tile = t->xy;
-			SetDParam(1, t->townnametype);
-			SetDParam(2, t->townnameparts);
+			SetDParam(1, STR_TOWN);
+			SetDParam(2, s->from);
+			tile = GetTown(s->from)->xy;
 
-			t = GetTown(s->to);
-			tile2 = t->xy;
-			SetDParam(4, t->townnametype);
-			SetDParam(5, t->townnameparts);
+			SetDParam(4, STR_TOWN);
+			SetDParam(5, s->to);
+			tile2 = GetTown(s->to)->xy;
 		}
 	} else {
-		st = GetStation(s->from);
-		tile = st->xy;
-		SetDParam(1, st->index);
+		SetDParam(1, s->from);
+		tile = GetStation(s->from)->xy;
 
-		st = GetStation(s->to);
-		tile2 = st->xy;
-		SetDParam(2, st->index);
+		SetDParam(2, s->to);
+		tile2 = GetStation(s->to)->xy;
 	}
 
 	tp.a = tile;

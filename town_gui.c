@@ -257,8 +257,8 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 			ShowTownAuthorityWindow(w->window_number);
 			break;
 		case 8: /* rename */
-			SetDParam(0, t->townnameparts);
-			ShowQueryString(t->townnametype, STR_2007_RENAME_TOWN, 31, 130, w->window_class, w->window_number);
+			SetDParam(0, w->window_number);
+			ShowQueryString(STR_TOWN, STR_2007_RENAME_TOWN, 31, 130, w->window_class, w->window_number);
 			break;
 		case 9: /* expand town */
 			ExpandTown(t);
@@ -365,13 +365,12 @@ static uint16 _last_town_idx;
 static int CDECL TownNameSorter(const void *a, const void *b)
 {
 	char buf1[64];
-	const Town *t;
 	uint16 val;
 	int r;
+	int32 argv[1];
 
-	t = GetTown(*(const uint16*)a);
-	SetDParam(0, t->townnameparts);
-	GetString(buf1, t->townnametype);
+	argv[0] = *(const uint16*)a;
+	GetStringWithArgs(buf1, STR_TOWN, argv);
 
 	/* If 'b' is the same town as in the last round, use the cached value
 	 *  We do this to speed stuff up ('b' is called with the same value a lot of
@@ -379,9 +378,8 @@ static int CDECL TownNameSorter(const void *a, const void *b)
 	val = *(const uint16*)b;
 	if (val != _last_town_idx) {
 		_last_town_idx = val;
-		t = GetTown(val);
-		SetDParam(0, t->townnameparts);
-		GetString(_bufcache, t->townnametype);
+		argv[0] = val;
+		GetStringWithArgs(_bufcache, STR_TOWN, argv);
 	}
 
 	r = strcmp(buf1, _bufcache);

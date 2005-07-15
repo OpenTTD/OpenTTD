@@ -281,8 +281,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 		// Destroy Industry button costing money removed per request of dominik
 		//w->disabled_state = (_patches.extra_dynamite && !_networking && _game_mode != GM_EDITOR) ? 0 : (1 << 6);
 		i = GetIndustry(w->window_number);
-		SetDParam(0, i->town->index);
-		SetDParam(1, i->type + STR_4802_COAL_MINE);
+		SetDParam(0, w->window_number);
 		DrawWindowWidgets(w);
 
 		if (i->accepts_cargo[0] != CT_INVALID) {
@@ -523,13 +522,13 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 
 	// default to string sorting if they are otherwise equal
 	if (r == 0) {
-		SetDParam(0, i->town->townnameparts);
-		GetString(buf1, i->town->townnametype);
+		SetDParam(0, i->town->index);
+		GetString(buf1, STR_TOWN);
 
 		if ( (val=*(const uint16*)b) != _last_industry_idx) {
 			_last_industry_idx = val;
-			SetDParam(0, j->town->townnameparts);
-			GetString(_bufcache, j->town->townnametype);
+			SetDParam(0, j->town->index);
+			GetString(_bufcache, STR_TOWN);
 		}
 		r = strcmp(buf1, _bufcache);
 	}
@@ -585,20 +584,19 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 
 		while (p < _num_industry_sort) {
 			i = GetIndustry(_industry_sort[p]);
-			SetDParam(0, i->town->index);
-			SetDParam(1, i->type + STR_4802_COAL_MINE);
+			SetDParam(0, i->index);
 			if (i->produced_cargo[0] != 0xFF) {
-				SetDParam(3, i->total_production[0]);
-				SetDParam(2, _cargoc.names_long_s[i->produced_cargo[0]] + ((i->total_production[0]!=1)<<5));
+				SetDParam(2, i->total_production[0]);
+				SetDParam(1, _cargoc.names_long_s[i->produced_cargo[0]] + ((i->total_production[0]!=1)<<5));
 
 				if (i->produced_cargo[1] != 0xFF) {
-					SetDParam(5, i->total_production[1]);
-					SetDParam(4, _cargoc.names_long_s[i->produced_cargo[1]] + ((i->total_production[1]!=1)<<5));
-					SetDParam(6, i->pct_transported[0] * 100 >> 8);
-					SetDParam(7, i->pct_transported[1] * 100 >> 8);
+					SetDParam(4, i->total_production[1]);
+					SetDParam(3, _cargoc.names_long_s[i->produced_cargo[1]] + ((i->total_production[1]!=1)<<5));
+					SetDParam(5, i->pct_transported[0] * 100 >> 8);
+					SetDParam(6, i->pct_transported[1] * 100 >> 8);
 					DrawString(4, 28+n*10, STR_INDUSTRYDIR_ITEM_TWO, 0);
 				} else {
-					SetDParam(4, i->pct_transported[0] * 100 >> 8);
+					SetDParam(3, i->pct_transported[0] * 100 >> 8);
 					DrawString(4, 28+n*10, STR_INDUSTRYDIR_ITEM, 0);
 				}
 			} else {

@@ -1197,9 +1197,9 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Fund Tof
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Construct Sugar Mine
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industries
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING1}){YELLOW} ({COMMA}% transported)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING1}/{STRING1}){YELLOW} ({COMMA}%/{COMMA}% transported)
-STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{TOWN} {STRING}
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING1}){YELLOW} ({COMMA}% transported)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING1}/{STRING1}){YELLOW} ({COMMA}%/{COMMA}% transported)
+STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...too close to another industry
 
@@ -1510,10 +1510,11 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Road/rail level
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Towns
-STR_TOWN_LABEL_POP                                              :{WHITE}{STRING1} ({COMMA})
-STR_2001                                                        :{WHITE}{STRING1}
+STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
+STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
+STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING1}
-STR_2003                                                        :{TINYFONT}{WHITE}{STRING1}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Building must be demolished first
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Population: {ORANGE}{COMMA}{BLACK}  Houses: {ORANGE}{COMMA}
@@ -1551,7 +1552,6 @@ STR_2025_SUBSIDIES                                              :{WHITE}Subsidie
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subsidies on offer for services taking:-
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} from {STRING2} to {STRING2}
 STR_2028_BY                                                     :{YELLOW} (by {DATE_SHORT})
-STR_2029                                                        :{TOWN} {STRING}
 STR_202A_NONE                                                   :{ORANGE}None
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Services already subsidised:-
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} from {STATION} to {STATION}{YELLOW} ({COMPANY}
@@ -1604,6 +1604,11 @@ STR_2059_IGLOO                                                  :Igloo
 STR_205A_TEPEES                                                 :Tepees
 STR_205B_TEAPOT_HOUSE                                           :Teapot-House
 STR_205C_PIGGY_BANK                                             :Piggy-Bank
+
+STR_INDUSTRY                                                    :{INDUSTRY}
+STR_TOWN                                                        :{TOWN}
+STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
+STR_STATION                                                     :{STATION}
 
 ##id 0x2800
 STR_LANDSCAPING                                                 :Landscaping
@@ -1742,7 +1747,7 @@ STR_4010_GENERATE_RANDOM_NEW_GAME                               :Generate random
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} in the way
-STR_4801                                                        :{WHITE}{TOWN} {STRING}
+STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :Coal Mine
 STR_4803_POWER_STATION                                          :Power Station
 STR_4804_SAWMILL                                                :Sawmill
@@ -1795,18 +1800,18 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Cost: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Can't construct this industry type here...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...forest can only be planted above snow-line
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{TOWN} {STRING} announces imminent closure!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Supply problems cause {TOWN} {STRING} to announce imminent closure!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Lack of nearby trees causes {TOWN} {STRING} to announce imminent closure!
-STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{TOWN} {STRING} increases production!
-STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}New coal seam found at {TOWN} {STRING}!{}Production is expected to double!
-STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}New oil reserves found at {TOWN} {STRING}!{}Production is expected to double!
-STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Improved farming methods at {TOWN} {STRING} are expected to double production!
-STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{TOWN} {STRING} production down by 50%
-STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Insect infestation causes havoc at {TOWN} {STRING}!{}Production down by 50%
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} announces imminent closure!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Supply problems cause {INDUSTRY} to announce imminent closure!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Lack of nearby trees causes {INDUSTRY} to announce imminent closure!
+STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} increases production!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}New coal seam found at {INDUSTRY}!{}Production is expected to double!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}New oil reserves found at {INDUSTRY}!{}Production is expected to double!
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Improved farming methods at {INDUSTRY} are expected to double production!
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} production down by 50%
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Insect infestation causes havoc at {INDUSTRY}!{}Production down by 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...can only be positioned near edges of map
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} production at {TOWN} {STRING} increases {COMMA}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} production at {TOWN} {STRING} decreases {COMMA}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} production at {INDUSTRY} increases {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} production at {INDUSTRY} decreases {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Train in tunnel

@@ -1719,10 +1719,9 @@ static void ExtChangeIndustryProduction(Industry *i)
 
 				mag = abs(percent);
 				if (mag >= 10) {
-					SetDParam(3, mag);
+					SetDParam(2, mag);
 					SetDParam(0, _cargoc.names_s[i->produced_cargo[j]]);
-					SetDParam(1, i->town->index);
-					SetDParam(2, i->type + STR_4802_COAL_MINE);
+					SetDParam(1, i->index);
 					AddNewsItem(percent >= 0 ? STR_INDUSTRY_PROD_GOUP : STR_INDUSTRY_PROD_GODOWN,
 					            NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY, 0),
 					            i->xy + TileDiffXY(1, 1), 0);
@@ -1733,8 +1732,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 
 	if (closeit) {
 		i->prod_level = 0;
-		SetDParam(1, i->type + STR_4802_COAL_MINE);
-		SetDParam(0, i->town->index);
+		SetDParam(0, i->index);
 		AddNewsItem(_industry_close_strings[i->type],
 		            NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY, 0),
 		            i->xy + TileDiffXY(1, 1), 0);
@@ -1882,8 +1880,7 @@ static void ChangeIndustryProduction(Industry *i)
 	}
 
 	if (str != STR_NULL) {
-		SetDParam(1, type + STR_4802_COAL_MINE);
-		SetDParam(0, i->town->index);
+		SetDParam(0, i->index);
 		AddNewsItem(str, NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY, 0), i->xy + TileDiffXY(1, 1), 0);
 	}
 }

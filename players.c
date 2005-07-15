@@ -262,8 +262,8 @@ void GetNameOfOwner(byte owner, TileIndex tile)
 		}
 	} else {
 		Town *t = ClosestTownFromTile(tile, (uint)-1);
-		SetDParam(0, t->townnametype);
-		SetDParam(1, t->townnameparts);
+		SetDParam(0, STR_TOWN);
+		SetDParam(1, t->index);
 	}
 }
 

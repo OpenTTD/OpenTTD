@@ -12,8 +12,8 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Necesitã teren plat
 STR_0008_WAITING                                                :{BLACK}În asteptare: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING1}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING1}{YELLOW}  (plecat de la
+STR_0009                                                        :{WHITE}{STRING}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (plecat de la
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Acceptã: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Acceptã: {GOLD}
@@ -182,7 +182,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Harta - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Optiuni
 STR_00B2_MESSAGE                                                :{YELLOW}Mesaj
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Mesaj de la {STRING1}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Mesaj de la {STRING}
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Nu pot face asta....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Nu pot curãta terenul....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, toate drepturile rezervate
@@ -311,12 +311,12 @@ STR_OSNAME_OS2                                                  :OS/2
 
 STR_0139_IMPERIAL_MILES                                         :Anglo-americane (Mile)
 STR_013A_METRIC_KILOMETERS                                      :Metrice (Kilometri)
-STR_013B_OWNED_BY                                               :{WHITE}...apartine companiei {STRING2}
+STR_013B_OWNED_BY                                               :{WHITE}...apartine companiei {STRING}
 STR_013C_CARGO                                                  :{BLACK}Încãrcãturã
 STR_013D_INFORMATION                                            :{BLACK}Informatii
 STR_013E_CAPACITIES                                             :{BLACK}Capacitãti
 STR_013E_TOTAL_CARGO                                            :{BLACK}Încãrcãturi
-STR_013F_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{STRING1}
+STR_013F_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{STRING}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Încãrcãtura totalã (capacitatea) acestui tren:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Joc nou
@@ -395,7 +395,7 @@ STR_016D_DEC                                                    :Dec
 
 STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
 STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_0170                                                        :{TINYFONT}{STRING2}-
+STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}Pauzã joc (F1)
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Salvare/abandon/iesire joc
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Afiseazã lista cu statiile companiei
@@ -457,8 +457,8 @@ STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informat
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Costul demolãrii: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Costul demolãrii: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
-STR_01A7_OWNER                                                  :{BLACK}Proprietar: {LTBLUE}{STRING1}
-STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Autoritatea localã: {LTBLUE}{STRING1}
+STR_01A7_OWNER                                                  :{BLACK}Proprietar: {LTBLUE}{STRING}
+STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Autoritatea localã: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :nici una
 STR_01AA_NAME                                                   :{BLACK}Nume
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
@@ -525,13 +525,13 @@ STR_01E3                                                        :{DKGREEN}{TINYF
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
-STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING1}"
+STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Piesa nr: {SETX 88}Titlul
 STR_01E9_SHUFFLE                                                :{TINYFONT}Amestecã
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Program
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Programare piese muzicale
-STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING1}"
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA}   "{STRING1}"
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA}   "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Lista melodiilor
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Sterge
@@ -722,7 +722,7 @@ STR_02A3_LARGE                                                  :{BLACK}Mare
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Alege mãrimea orasului
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Mãrime oras:
 
-STR_02B6                                                        :{STRING}  -  {STRING5}
+STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Re-afiseazã ultimul mesaj
 STR_OFF                                                         :Oprit
 STR_SUMMARY                                                     :Pe scurt
@@ -990,89 +990,89 @@ STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Configur
 
 STR_CONFIG_PATCHES_OFF                                          :inactiv
 STR_CONFIG_PATCHES_ON                                           :activ
-STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Afiseazã viteza vehiculelor in bara de jos: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Permite construirea pe coastã si in pantã: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permite arii de cuprindere mai realistice: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permite demolarea unui nr. mai mare constructii: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permite constructia de trenuri foarte lungi: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Permite acceleratie realisticã pentru trenuri: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Interzice trenurilor si navelor sa faca intoarceri de 90 de grade: {ORANGE}{STRING1} {LTBLUE} (necesita NPF)
-STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Uneste gãrile alãturate: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Pãrãseste statia când orice tip de marfã este 'full load': {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Foloseste algoritmul de LOAD imbunatatit: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflatia: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Livreazã marfa doar in statiile unde aceasta este ceruta: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Permite constructia de poduri foarte lungi: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Permite ordine de tipul "mergi la depou": {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Permite constructia de industrii pentru materii prime: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Permite mai multe industrii similare in acelasi oras: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industrii identice pot fi construite aproape una de cealaltã: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Afiseazã intotdeauna data in format lung in bara de stare: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Afiseazã semnalele pe partea de circulatie: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Afiseazã finantele la sfârsitul fiecãrui an: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Utilizeazã o metodã gen TTDPatch pentru 'non stop': {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Autovehiculele formeazã o coadã (cu efecte cuantice): {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Mutã imaginea când mouse-ul este la marginea ecranului: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permite mituirea autoritãtilor locale: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEW_DEPOT_FINDING                            :{LTBLUE}Metodã nouã pentru gãsire depou: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Statii neuniforme: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND                           :{LTBLUE}Algoritm nou pentru gãsirea drumurilor (trenuri): {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nou pathfinding global(NPF, dezactiveaza NTP): {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Afiseazã viteza vehiculelor in bara de jos: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Permite construirea pe coastã si in pantã: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permite arii de cuprindere mai realistice: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permite demolarea unui nr. mai mare constructii: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permite constructia de trenuri foarte lungi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Permite acceleratie realisticã pentru trenuri: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Interzice trenurilor si navelor sa faca intoarceri de 90 de grade: {ORANGE}{STRING} {LTBLUE} (necesita NPF)
+STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Uneste gãrile alãturate: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Pãrãseste statia când orice tip de marfã este 'full load': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Foloseste algoritmul de LOAD imbunatatit: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflatia: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Livreazã marfa doar in statiile unde aceasta este ceruta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Permite constructia de poduri foarte lungi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Permite ordine de tipul "mergi la depou": {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Permite constructia de industrii pentru materii prime: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Permite mai multe industrii similare in acelasi oras: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industrii identice pot fi construite aproape una de cealaltã: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Afiseazã intotdeauna data in format lung in bara de stare: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Afiseazã semnalele pe partea de circulatie: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Afiseazã finantele la sfârsitul fiecãrui an: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Utilizeazã o metodã gen TTDPatch pentru 'non stop': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Autovehiculele formeazã o coadã (cu efecte cuantice): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Mutã imaginea când mouse-ul este la marginea ecranului: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permite mituirea autoritãtilor locale: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_DEPOT_FINDING                            :{LTBLUE}Metodã nouã pentru gãsire depou: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Statii neuniforme: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND                           :{LTBLUE}Algoritm nou pentru gãsirea drumurilor (trenuri): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nou pathfinding global(NPF, dezactiveaza NTP): {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permite întotdeauna aeroporturi mici: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permite întotdeauna aeroporturi mici: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Un tren este rãtãcit dacã nu face un progres timp de: {ORANGE}{STRING1} zile
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Un tren este rãtãcit dacã nu face un progres timp de: {ORANGE}{STRING} zile
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Un tren este considerat rãtãcit dacã nu face un progres: {ORANGE}dezactivat
-STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Verificarea ordinelor vehiculelor: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Verificarea ordinelor vehiculelor: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nu
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :da, dar exclude vehiculele oprite
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :pentru toate vehiculele
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Avertizare in cazul in care un tren are profit negativ: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vehiculele nu expirã niciodatã: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Avertizare in cazul in care un tren are profit negativ: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vehiculele nu expirã niciodatã: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Înnoire automatã pentru vehiculele învechite
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Înnoire automatã cu {ORANGE}{STRING1}{LTBLUE} luni pânã la/dupã atingerea vechimii max.
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Fonduri minime pentru înnoire automatã: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Durata mesajelor de eroare: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Afiseaza populatia unui oras langa nume: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Ascunde arborii la alegerea optiunii 'clãdiri transparente': {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altitudinea de înzãpezire: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Mãrimea maximã a statiilor: {ORANGE}{STRING1} {RED}(valorile mari încetinesc jocul!)
-STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Service automat pentru elicoptere la helipaduri: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Înnoire automatã cu {ORANGE}{STRING}{LTBLUE} luni pânã la/dupã atingerea vechimii max.
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Fonduri minime pentru înnoire automatã: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Durata mesajelor de eroare: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Afiseaza populatia unui oras langa nume: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Ascunde arborii la alegerea optiunii 'clãdiri transparente': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altitudinea de înzãpezire: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Mãrimea maximã a statiilor: {ORANGE}{STRING} {RED}(valorile mari încetinesc jocul!)
+STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Service automat pentru elicoptere la helipaduri: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nr. max. de trenuri pentru un jucãtor: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Nr. max. de autovehicule pentru un jucãtor: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Nr. max. de aeronave pentru un jucãtor: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Nr. max. de nave pentru un jucãtor: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nr. max. de trenuri pentru un jucãtor: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Nr. max. de autovehicule pentru un jucãtor: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Nr. max. de aeronave pentru un jucãtor: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Nr. max. de nave pentru un jucãtor: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Dezactiveazã trenurile pentru jucãtorii PC: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Dezactiveazã autovehiculele pentru jucãtorii PC: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Dezactiveazã aeronavele pentru jucãtorii PC: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Dezactiveazã navele pentru jucãtorii PC: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Dezactiveazã trenurile pentru jucãtorii PC: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Dezactiveazã autovehiculele pentru jucãtorii PC: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Dezactiveazã aeronavele pentru jucãtorii PC: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Dezactiveazã navele pentru jucãtorii PC: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Foloseste noul AI (versiune alfa): {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Foloseste noul AI (versiune alfa): {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Intervalul de service presetat pentru trenuri: {ORANGE}{STRING1} zile
+STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Intervalul de service presetat pentru trenuri: {ORANGE}{STRING} zile
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalul de service presetat pentru trenuri: {ORANGE}dezactivat
-STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Intervalul de service presetat pentru autovehicule: {ORANGE}{STRING1} zile
+STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Intervalul de service presetat pentru autovehicule: {ORANGE}{STRING} zile
 STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Intervalul de service presetat pentru autovehicule: {ORANGE}dezactivat
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Intervalul de service presetat pentru aeronave: {ORANGE}{STRING1} zile
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Intervalul de service presetat pentru aeronave: {ORANGE}{STRING} zile
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Intervalul de service presetat pentru aeronave: {ORANGE}dezactivat
-STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Intervalul de service presetat pentru nave: {ORANGE}{STRING1} zile
+STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Intervalul de service presetat pentru nave: {ORANGE}{STRING} zile
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalul de service presetat pentru nave: {ORANGE}dezactivat
-STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Deactivare service cand defectiunile sunt anulate: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Deactivare service cand defectiunile sunt anulate: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Stirile în culori apar în anul: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Anul de început a jocului: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Termina jocul in: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Stirile în culori apar în anul: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Anul de început a jocului: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Termina jocul in: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Economie cu schimbãri de productie mai reduse, dar mai frecvente
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permite cumpararea de actiuni de la alte companii
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Plasare automatã a semnalelor la fiecare: {ORANGE}{STRING1} pãtrãtele
-STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}Permite plasarea automata a semnalelor PBS: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Pozitia listei cu instrumente: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Plasare automatã a semnalelor la fiecare: {ORANGE}{STRING} pãtrãtele
+STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}Permite plasarea automata a semnalelor PBS: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Pozitia listei cu instrumente: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :stânga
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :centru
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :dreapta
-STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Distanta de 'snap' pentru ferestre: {ORANGE}{STRING1} px
+STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Distanta de 'snap' pentru ferestre: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Distanta de 'snap' pentru ferestre: {ORANGE}dezactivata
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interfatã
@@ -1099,13 +1099,13 @@ STR_CHEATS_TIP                                                  :{BLACK}Checkbox
 STR_CHEATS_WARNING                                              :{BLACK}Atentie! Esti pe cale sã-ti trãdezi colegii de joc! Nu uita cã aceastã rusine va rãmâne înregistratã pentru totdeauna!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Mãreste fondurile cu {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Joacã în locul jucãtorului: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer magic (demoleazã industrii si lucruri amovibile): {ORANGE}{STRING1}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunelele se pot intersecta: {ORANGE}{STRING1}
-STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Construieste în modul pauzã: {ORANGE}{STRING1}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer magic (demoleazã industrii si lucruri amovibile): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunelele se pot intersecta: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Construieste în modul pauzã: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Avioanele cu reactie nu se vor prãbusi (frecvent) pe aeroporturile mici: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Schimbã peisajul: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Schimbã data: {ORANGE} {DATE_SHORT}
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activeaza accesul la valorile de productie: {ORANGE}{STRING1}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activeaza accesul la valorile de productie: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Merge spre {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Merge spre {WAYPOINT}, {VELOCITY}
@@ -1197,9 +1197,9 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Construi
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Construieste minã de zahãr
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrii
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING1}){YELLOW} ({COMMA}% transportat)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING1}/{STRING1}){YELLOW} ({COMMA}%/{COMMA}% transportat)
-STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{TOWN} {STRING}
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}% transportat)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportat)
+STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...prea aproape de altã industrie
 
@@ -1208,7 +1208,7 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Refit tr
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Alege tipul de marfã transportat de tren
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Modificã trenul pentru a transporta marfa aleasã
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nu pot modifica trenul...
-STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Intervaluri de service in procente: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Intervaluri de service in procente: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Schimba productia
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Salut! Sunt noul algoritm AI, încã în teste. Dacã apar probleme, salveazã un screenshot si pune-l pe forum. Baftã!
@@ -1411,8 +1411,8 @@ STR_NETWORK_SEND                                                :{BLACK}Trimite
 ############ end network gui strings
 
 
-STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}Marimea X a hartii: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Marimea Y a hartii: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}Marimea X a hartii: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Marimea Y a hartii: {ORANGE}{STRING}
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Cheltuieli: {CURRENCY}
@@ -1510,10 +1510,8 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Traversare la n
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Orase
-STR_TOWN_LABEL_POP                                              :{WHITE}{STRING1} ({COMMA})
-STR_2001                                                        :{WHITE}{STRING1}
-STR_2002                                                        :{TINYFONT}{BLACK}{STRING1}
-STR_2003                                                        :{TINYFONT}{WHITE}{STRING1}
+STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Mai întâi trebuie sã demolezi clãdirea
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Populatia: {ORANGE}{COMMA}{BLACK}  Locuinte: {ORANGE}{COMMA}
@@ -1549,16 +1547,15 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Ratingul
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subventii (F6)
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subventii disponibile:
-STR_2027_FROM_TO                                                :{ORANGE}- {STRING} de la {STRING2} la {STRING2}
+STR_2027_FROM_TO                                                :{ORANGE}- {STRING} de la {STRING} la {STRING}
 STR_2028_BY                                                     :{YELLOW} (data limitã: {DATE_SHORT})
-STR_2029                                                        :{TOWN} {STRING}
 STR_202A_NONE                                                   :{ORANGE}- nici una
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Subventii acordate la ora actualã:
 STR_202C_FROM_TO                                                :{ORANGE}- {STRING} de la {STATION} la {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, pânã în {DATE_SHORT})
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Ofertã expiratã:{}{}Transportul de {STRING} de la {STRING2} la {STRING2} nu va mai fi subventionat
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Ofertã expiratã:{}{}Transportul de {STRING} de la {STRING} la {STRING} nu va mai fi subventionat
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Ofertã închisã:{}{}Transportul de {STRING} de la {STATION} la {STATION} nu va mai fi subventionat
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subventie oferitã:{}{}Primul transport de {STRING} de la {STRING2} la {STRING2} va atrage subventionarea pe un an din partea autoritãtilor locale
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subventie oferitã:{}{}Primul transport de {STRING} de la {STRING} la {STRING} va atrage subventionarea pe un an din partea autoritãtilor locale
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subventie acordatã companiei {COMPANY}!{}{}Transportul de {STRING} de la {STATION} la {STATION} va aduce încasãri cu 50% mai mari timp de un an!
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subventie acordatã companiei {COMPANY}!{}{}Transportul de {STRING} de la {STATION} la {STATION} va aduce încasãri duble timp de un an!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subventie acordatã companiei {COMPANY}!{}{}Transportul de {STRING} de la {STATION} la {STATION} va aduce încasãri triple timp de un an!
@@ -1604,6 +1601,10 @@ STR_2059_IGLOO                                                  :Iglu
 STR_205A_TEPEES                                                 :Corturi
 STR_205B_TEAPOT_HOUSE                                           :Casã-ceainic
 STR_205C_PIGGY_BANK                                             :Pusculitã
+STR_INDUSTRY                                                    :{INDUSTRY}
+STR_TOWN                                                        :{TOWN}
+STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
+STR_STATION                                                     :{STATION}
 
 ##id 0x2800
 STR_LANDSCAPING                                                 :Modificare peisaj
@@ -1742,7 +1743,7 @@ STR_4010_GENERATE_RANDOM_NEW_GAME                               :Genereazã o har
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} în cale
-STR_4801                                                        :{WHITE}{TOWN}: {STRING}
+STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :Minã de cãrbune
 STR_4803_POWER_STATION                                          :Termocentralã
 STR_4804_SAWMILL                                                :Exploatatie forestierã
@@ -1788,25 +1789,15 @@ STR_4829_REQUIRES                                               :{BLACK}Are nevo
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Productia luna trecutã:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING1}{BLACK} ({COMMA}% transportat)
+STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% transportat)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centreazã imaginea pe locatia industriei
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Un nou obiectiv industrial ({STRING}) se construieste lângã {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}O nouã {STRING} se planteazã lângã {TOWN}!
 STR_482F_COST                                                   :{BLACK}Cost: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Acest tip de industrie nu se poate construi aici...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...pãdurile pot fi plantate doar in zonele inzãpezite
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{TOWN} {STRING} anuntã inchiderea iminentã!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Un obiectiv de lângã {TOWN} va fi închis din cauza aprovizionãrii deficitare ({STRING})!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Din cauza zonei despãdurite de lângã {TOWN}, o {STRING} anuntã inchiderea iminentã!
-STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}Obiectivul {TOWN} - {STRING} si-a mãrit productia!
-STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Noi rezerve de cãrbune descoperite la {TOWN} - {STRING}!{}Se asteaptã o dublare a productiei!
-STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Noi rezerve de petrol descoperite la {TOWN} - {STRING}!{}Se asteaptã o dublare a productiei!
-STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Tehnologiile agricole îmbunãtãtite vor dubla productia la {TOWN} - {STRING}!
-STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}Productia obiectivului {TOWN} - {STRING} a scãzut la jumãtate!
-STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Pagube majore din cauza insectelor la {TOWN} - {STRING}!{}Productia a scãzut cu 50%!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} anuntã inchiderea iminentã!
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...se poate construi doar la marginea hãrtii
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Productia de {STRING} de la {TOWN} - {STRING} a crescut cu {COMMA}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Productia de {STRING} de la {TOWN} - {STRING} a scãzut cu {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Tren în tunel
@@ -1874,39 +1865,39 @@ STR_SV_ROADVEH_NAME                                             :Autovehiculul {
 STR_SV_SHIP_NAME                                                :Nava {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Aeronava {COMMA}
 
-STR_SV_STNAME                                                   :{STRING1}
-STR_SV_STNAME_NORTH                                             :{STRING1} Nord
-STR_SV_STNAME_SOUTH                                             :{STRING1} Sud
-STR_SV_STNAME_EAST                                              :{STRING1} Est
-STR_SV_STNAME_WEST                                              :{STRING1} Vest
-STR_SV_STNAME_CENTRAL                                           :{STRING1} Centru
-STR_SV_STNAME_TRANSFER                                          :{STRING1} Transfer
-STR_SV_STNAME_HALT                                              :Popasul {STRING1}
-STR_SV_STNAME_VALLEY                                            :Valea {STRING1}
-STR_SV_STNAME_HEIGHTS                                           :Dealurile {STRING1}
-STR_SV_STNAME_WOODS                                             :Pãdurea {STRING1}
-STR_SV_STNAME_LAKESIDE                                          :Lacul {STRING1}
-STR_SV_STNAME_EXCHANGE                                          :Piata {STRING1}
-STR_SV_STNAME_AIRPORT                                           :Aeroportul {STRING1}
-STR_SV_STNAME_OILFIELD                                          :Platforma {STRING1}
-STR_SV_STNAME_MINES                                             :Minele {STRING1}
-STR_SV_STNAME_DOCKS                                             :Portul {STRING1}
-STR_SV_STNAME_BUOY_1                                            :{STRING1} Balizã 1
-STR_SV_STNAME_BUOY_2                                            :{STRING1} Balizã 2
-STR_SV_STNAME_BUOY_3                                            :{STRING1} Balizã 3
-STR_SV_STNAME_BUOY_4                                            :{STRING1} Balizã 4
-STR_SV_STNAME_BUOY_5                                            :{STRING1} Balizã 5
-STR_SV_STNAME_BUOY_6                                            :{STRING1} Balizã 6
-STR_SV_STNAME_BUOY_7                                            :{STRING1} Balizã 7
-STR_SV_STNAME_BUOY_8                                            :{STRING1} Balizã 8
-STR_SV_STNAME_BUOY_9                                            :{STRING1} Balizã 9
-STR_SV_STNAME_ANNEXE                                            :Anexa {STRING1}
-STR_SV_STNAME_SIDINGS                                           :{STRING1} Belvedere
-STR_SV_STNAME_BRANCH                                            :Ramura {STRING1}
-STR_SV_STNAME_UPPER                                             :{STRING1} de Sus
-STR_SV_STNAME_LOWER                                             :{STRING1} de Jos
-STR_SV_STNAME_HELIPORT                                          :Heliportul {STRING1}
-STR_SV_STNAME_FOREST                                            :Pãdurea {STRING1}
+STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_NORTH                                             :{STRING} Nord
+STR_SV_STNAME_SOUTH                                             :{STRING} Sud
+STR_SV_STNAME_EAST                                              :{STRING} Est
+STR_SV_STNAME_WEST                                              :{STRING} Vest
+STR_SV_STNAME_CENTRAL                                           :{STRING} Centru
+STR_SV_STNAME_TRANSFER                                          :{STRING} Transfer
+STR_SV_STNAME_HALT                                              :Popasul {STRING}
+STR_SV_STNAME_VALLEY                                            :Valea {STRING}
+STR_SV_STNAME_HEIGHTS                                           :Dealurile {STRING}
+STR_SV_STNAME_WOODS                                             :Pãdurea {STRING}
+STR_SV_STNAME_LAKESIDE                                          :Lacul {STRING}
+STR_SV_STNAME_EXCHANGE                                          :Piata {STRING}
+STR_SV_STNAME_AIRPORT                                           :Aeroportul {STRING}
+STR_SV_STNAME_OILFIELD                                          :Platforma {STRING}
+STR_SV_STNAME_MINES                                             :Minele {STRING}
+STR_SV_STNAME_DOCKS                                             :Portul {STRING}
+STR_SV_STNAME_BUOY_1                                            :{STRING} Balizã 1
+STR_SV_STNAME_BUOY_2                                            :{STRING} Balizã 2
+STR_SV_STNAME_BUOY_3                                            :{STRING} Balizã 3
+STR_SV_STNAME_BUOY_4                                            :{STRING} Balizã 4
+STR_SV_STNAME_BUOY_5                                            :{STRING} Balizã 5
+STR_SV_STNAME_BUOY_6                                            :{STRING} Balizã 6
+STR_SV_STNAME_BUOY_7                                            :{STRING} Balizã 7
+STR_SV_STNAME_BUOY_8                                            :{STRING} Balizã 8
+STR_SV_STNAME_BUOY_9                                            :{STRING} Balizã 9
+STR_SV_STNAME_ANNEXE                                            :Anexa {STRING}
+STR_SV_STNAME_SIDINGS                                           :{STRING} Belvedere
+STR_SV_STNAME_BRANCH                                            :Ramura {STRING}
+STR_SV_STNAME_UPPER                                             :{STRING} de Sus
+STR_SV_STNAME_LOWER                                             :{STRING} de Jos
+STR_SV_STNAME_HELIPORT                                          :Heliportul {STRING}
+STR_SV_STNAME_FOREST                                            :Pãdurea {STRING}
 
 ############ end of	savegame specific region!
 
@@ -2390,10 +2381,10 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :vehicul maglev
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}Depoul {TOWN}
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cetãtenii sãrbãtoresc {}sosirea primului tren la {STATION}!
-STR_8802_DETAILS                                                :{WHITE}{STRING1} (Detalii)
+STR_8802_DETAILS                                                :{WHITE}{STRING} (Detalii)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren în drum
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING1}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING1}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
 STR_8806_GO_TO                                                  :Mergi la {STATION}
 STR_8807_GO_TO_TRANSFER                                         :Mergi la {STATION} (Transferã si preia încãrcãtura)
 STR_8808_GO_TO_UNLOAD                                           :Mergi la {STATION} (Descarcã)
@@ -2493,9 +2484,9 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Forteazã
 STR_SERVICE_HINT                                                :{BLACK}Sãri peste aceastã comandã dacã nu este necesar un service
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Stiri: {STRING} este acum disponibil!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Cost: {CURRENCY} Greutate: {COMMA}t{}Vitezã: {VELOCITY}  Putere: {COMMA}cp{}Cost de rulare: {CURRENCY}/an{}Capacitate: {STRING1}
+STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Cost: {CURRENCY} Greutate: {COMMA}t{}Vitezã: {VELOCITY}  Putere: {COMMA}cp{}Cost de rulare: {CURRENCY}/an{}Capacitate: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Defectiune
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vechimea: {LTBLUE}{STRING2}{BLACK}   Cost de rulare: {LTBLUE}{CURRENCY}/an
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vechimea: {LTBLUE}{STRING}{BLACK}   Cost de rulare: {LTBLUE}{CURRENCY}/an
 STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Greutate: {LTBLUE}{COMMA}t  {BLACK}Putere: {LTBLUE}{COMMA}cp{BLACK} Vitezã max.: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit anul acesta: {LTBLUE}{CURRENCY}  (anul trecut: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eficientã: {LTBLUE}{COMMA}%  {BLACK}Defectiuni de la ultimul service: {LTBLUE}{COMMA}
@@ -2528,12 +2519,12 @@ STR_9007_BUILD_VEHICLE                                          :{BLACK}Cumpãrã 
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nu pot cumpãra autovehicul...
 STR_900A_MUST_BUILD_ROAD_VEHICLE                                :{WHITE}Mai intâi trebuie construitã o autobazã
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detalii)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Vârsta: {LTBLUE}{STRING2}{BLACK}   Cost de rulare: {LTBLUE}{CURRENCY}/an
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Vârsta: {LTBLUE}{STRING}{BLACK}   Cost de rulare: {LTBLUE}{CURRENCY}/an
 STR_900E_MAX_SPEED                                              :{BLACK}Vitezã max.: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit anul acesta: {LTBLUE}{CURRENCY}  (anul trecut: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eficientã: {LTBLUE}{COMMA}%  {BLACK}Defectiuni de la ultimul service: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Cumpãrat: {LTBLUE}{NUM}{BLACK} Valoare: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{STRING1}
+STR_9012_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...trebuie oprit intr-o autobazã
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nu pot vinde autovehiculul...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nu pot opri/porni autovehiculul...
@@ -2558,7 +2549,7 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Road veh
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Cumpãrã autovehiculul selectat
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Un nou autovehicul disponibil!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Pret: {CURRENCY}{}Vitezã: {VELOCITY}{}Cost de rulare: {CURRENCY}/an{}Capacitate: {STRING1}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Pret: {CURRENCY}{}Vitezã: {VELOCITY}{}Cost de rulare: {CURRENCY}/an{}Capacitate: {STRING}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Numele autovehiculului
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Nu pot redenumi autovehiculul...
@@ -2592,12 +2583,12 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Nu pot c
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Navã în cale
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detalii)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Vârsta: {LTBLUE}{STRING2}{BLACK}   Cost de rulare: {LTBLUE}{CURRENCY}/an
+STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Vârsta: {LTBLUE}{STRING}{BLACK}   Cost de rulare: {LTBLUE}{CURRENCY}/an
 STR_9813_MAX_SPEED                                              :{BLACK}Viteza max.: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit anul acesta: {LTBLUE}{CURRENCY}  (anul trecut: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eficientã: {LTBLUE}{COMMA}%  {BLACK}Defectiuni de la ultimul service: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Construit: {LTBLUE}{NUM}{BLACK} Valoare: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{STRING1}
+STR_9817_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nu pot opri/porni nava...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nu pot trimite nava în santier...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nu pot gãsi un santier apropiat
@@ -2621,7 +2612,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Trimite 
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Afiseazã detaliile navei
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}O nouã navã este disponibilã!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cost: {CURRENCY} Viteza max.: {VELOCITY}{}Capacitate: {STRING1}{}Cost de rulare: {CURRENCY}/an
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cost: {CURRENCY} Viteza max.: {VELOCITY}{}Capacitate: {STRING}{}Cost de rulare: {CURRENCY}/an
 STR_982F_NAME_SHIP                                              :{BLACK}Alege un nume pentru aceastã navã
 
 STR_9831_NAME_SHIP                                              :{WHITE}Alege un nume pentru aceastã navã
@@ -2639,7 +2630,7 @@ STR_983C_REFIT_SHIP                                             :{BLACK}Schimbã 
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Alege tipul de încãrcãturã ce va fi transportat de navã
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Schimbã tipul de încãrcãturã al acestei nave
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Alege tipul încãrcãturii:-
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Noua capacitate: {GOLD}{STRING1}{}{BLACK}Costul transformãrii: {GOLD}{CURRENCY}
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Noua capacitate: {GOLD}{STRING}{}{BLACK}Costul transformãrii: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nu pot schimba tipul navei...
 STR_9842_REFITTABLE                                             :(suportã alte mãrfuri)
 STR_GO_TO_SHIP_DEPOT                                            :Mergi la Santierul Naval {TOWN}
@@ -2658,7 +2649,7 @@ STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Comenzi)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detalii)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Vârstã: {LTBLUE}{STRING2}{BLACK}   Cost de rulare: {LTBLUE}{CURRENCY}/an
+STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Vârstã: {LTBLUE}{STRING}{BLACK}   Cost de rulare: {LTBLUE}{CURRENCY}/an
 STR_A00E_MAX_SPEED                                              :{BLACK}Vitezã max.: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit anul acesta: {LTBLUE}{CURRENCY}  (anul trecut: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eficientã: {LTBLUE}{COMMA}%  {BLACK}Defectiuni de la ultimul service: {LTBLUE}{COMMA}
@@ -2671,8 +2662,8 @@ STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeronavã
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nu pot opri/porni aeronava...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Aeronavã se aflã în zbor
 STR_A018_MUST_BUILD_AIRPORT_FIRST                               :{WHITE}Mai întâi trebuie sã construiesti un aeroport
-STR_A019_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{STRING1}, {STRING1}
-STR_A01A_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{STRING1}
+STR_A019_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{STRING}, {STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Aeronava trebuie sã se afle într-un hangar
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Nu pot vinde aeronava...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Constructie aeroport
@@ -2712,7 +2703,7 @@ STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Schimbã 
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Alege marfa care doresti sã fie transportatã
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Schimbã tipul de încãrcãturã al acestei aeronave
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Alege marfa de transportat:-
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Noua capacitate: {GOLD}{STRING1}{}{BLACK}Costul transformãrii: {GOLD}{CURRENCY}
+STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Noua capacitate: {GOLD}{STRING}{}{BLACK}Costul transformãrii: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nu pot schimba tipul de încãrcãturã...
 STR_A043_REFITTABLE                                             :(suportã alte mãrfuri)
 STR_GO_TO_AIRPORT_HANGAR                                        :Mergi la Hangarul {STATION}
@@ -2824,7 +2815,7 @@ STR_TINY_BLACK                                                  :{BLACK}{TINYFON
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Greutate: {GOLD}{COMMA}t
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Viteza: {GOLD}{VELOCITY}{BLACK}   Putere: {GOLD}{COMMA}hp
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cost de rulare: {GOLD}{CURRENCY}/an
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacitate: {GOLD}{STRING1} {STRING}
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacitate: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}An aparitie: {GOLD}{NUM}{BLACK} Durata de viata: {GOLD}{COMMA} years
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Eficienta max.: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY}

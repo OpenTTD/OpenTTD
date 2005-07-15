@@ -12,8 +12,8 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Wymagany plaski teren
 STR_0008_WAITING                                                :{BLACK}Czeka: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING1}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING1}{YELLOW}  (w drodze z
+STR_0009                                                        :{WHITE}{STRING}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (w drodze z
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Akceptuje: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Akceptuje: {GOLD}
@@ -182,7 +182,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Mapa - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Opcje gry
 STR_00B2_MESSAGE                                                :{YELLOW}Wiadomosc
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Wiadomosc od {STRING1}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Wiadomosc od {STRING}
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Niemozna tego zrobic....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Nie mozna wyczyscic terenu....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
@@ -311,12 +311,12 @@ STR_OSNAME_OS2                                                  :OS/2
 
 STR_0139_IMPERIAL_MILES                                         :Brytyjski (mile)
 STR_013A_METRIC_KILOMETERS                                      :Metryczny (kilometry)
-STR_013B_OWNED_BY                                               :{WHITE}...w posiadaniu {STRING2}
+STR_013B_OWNED_BY                                               :{WHITE}...w posiadaniu {STRING}
 STR_013C_CARGO                                                  :{BLACK}Ladunek
 STR_013D_INFORMATION                                            :{BLACK}Informacja
 STR_013E_CAPACITIES                                             :{BLACK}Pojemnosc
 STR_013E_TOTAL_CARGO                                            :{BLACK}Calkowity ladunek
-STR_013F_CAPACITY                                               :{BLACK}Pojemnosc: {LTBLUE}{STRING1}
+STR_013F_CAPACITY                                               :{BLACK}Pojemnosc: {LTBLUE}{STRING}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Calkowita pojemnosc tego pociagu:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Nowa gra
@@ -395,7 +395,7 @@ STR_016D_DEC                                                    :Gru
 
 STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
 STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_0170                                                        :{TINYFONT}{STRING2}-
+STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}Pauza
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Zapis gry, opuszczenie gry, wyjscie
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Wyswietl liste stacji firmy
@@ -457,8 +457,8 @@ STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informac
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Koszt czyszczenia: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Koszt czyszczenia: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :Brak
-STR_01A7_OWNER                                                  :{BLACK}Wlasciciel: {LTBLUE}{STRING1}
-STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Lokalne wladze: {LTBLUE}{STRING1}
+STR_01A7_OWNER                                                  :{BLACK}Wlasciciel: {LTBLUE}{STRING}
+STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Lokalne wladze: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Brak
 STR_01AA_NAME                                                   :{BLACK}Nazwa
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
@@ -525,13 +525,13 @@ STR_01E3                                                        :{DKGREEN}{TINYF
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
-STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING1}"
+STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Sciezka{SETX 88}Tytul
 STR_01E9_SHUFFLE                                                :{TINYFONT}Przypadkowo
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Program
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Wybor Programu
-STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING1}"
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA}   "{STRING1}"
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA}   "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Wykaz sciezek
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Programuj - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Wyczysc
@@ -722,7 +722,7 @@ STR_02A3_LARGE                                                  :{BLACK}Duze
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Wybierz wielkosc miasta
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Wielkosc miasta:
 
-STR_02B6                                                        :{STRING}  -  {STRING5}
+STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Pokaz ostatnia wiadomosc lub ogloszenie
 STR_OFF                                                         :Wyl
 STR_SUMMARY                                                     :Sumarycznie
@@ -990,89 +990,89 @@ STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Konfigur
 
 STR_CONFIG_PATCHES_OFF                                          :Wyl
 STR_CONFIG_PATCHES_ON                                           :Wla
-STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Pokazuj predkosc pojazdow w pasku statusu: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Pozwol budowac na pochylosciach i wybrzezach: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Zezwol na bardziej realistyczny zasieg obejmowania: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Pozwol usuwac drogi, mosty, tunele etc. nalezace do miasta: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Pozwol budowac bardzo dlugie pociagi: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Realistyczne przyspieszenie pociagow: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Zabron pociagom i statkom skretow o 90st: {ORANGE}{STRING1} {LTBLUE} (wymaga NPF)
-STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Polacz stacje budowane jedna obok drugiej: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Wyjazd ze stacji gdy jakis towar jest pelny, gdy 'Zaladunek': {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Uzyj ulepszonego algorytmu zaladunku: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflacja: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Dostarcz ladunek do stacji tylko jesli jest zapotrzebowanie: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Pozwol budowac bardzo dlugie mosty: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Zezwalaj na wysylanie do zajezdni: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Pozwol budowac obiekty produkujace surowce: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Pozwol na wiele podobnych przedsiebiorstw w miescie: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Przedsiebiorstwa jednego typu moga byc bud. obok siebie: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Zawsze pokazuj date w dlugim formacie w pasku statusu: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Pokazuj semafory po stronie jazdy: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Pokazuj okno finansow na koniec roku: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Kompatybilnosc obslugi nonstop z TTDPatch: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Kolejki samochodow (with quantum effects): {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Przesun okno kiedy kursor jest przy krawedzi: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Pozwol dawac lapowki lokalnym wladzom: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEW_DEPOT_FINDING                            :{LTBLUE}Szukanie nowych zajezdni: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Niejednolite stacje: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND                           :{LTBLUE}Nowy algorytm szukania drogi dla pociagow: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nowe szukanie drogi (NPF, zastepuje NTP): {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Pokazuj predkosc pojazdow w pasku statusu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Pozwol budowac na pochylosciach i wybrzezach: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Zezwol na bardziej realistyczny zasieg obejmowania: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Pozwol usuwac drogi, mosty, tunele etc. nalezace do miasta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Pozwol budowac bardzo dlugie pociagi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Realistyczne przyspieszenie pociagow: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Zabron pociagom i statkom skretow o 90st: {ORANGE}{STRING} {LTBLUE} (wymaga NPF)
+STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Polacz stacje budowane jedna obok drugiej: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Wyjazd ze stacji gdy jakis towar jest pelny, gdy 'Zaladunek': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Uzyj ulepszonego algorytmu zaladunku: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflacja: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Dostarcz ladunek do stacji tylko jesli jest zapotrzebowanie: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Pozwol budowac bardzo dlugie mosty: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Zezwalaj na wysylanie do zajezdni: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Pozwol budowac obiekty produkujace surowce: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Pozwol na wiele podobnych przedsiebiorstw w miescie: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Przedsiebiorstwa jednego typu moga byc bud. obok siebie: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Zawsze pokazuj date w dlugim formacie w pasku statusu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Pokazuj semafory po stronie jazdy: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Pokazuj okno finansow na koniec roku: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Kompatybilnosc obslugi nonstop z TTDPatch: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Kolejki samochodow (with quantum effects): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Przesun okno kiedy kursor jest przy krawedzi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Pozwol dawac lapowki lokalnym wladzom: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_DEPOT_FINDING                            :{LTBLUE}Szukanie nowych zajezdni: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Niejednolite stacje: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND                           :{LTBLUE}Nowy algorytm szukania drogi dla pociagow: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nowe szukanie drogi (NPF, zastepuje NTP): {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Zawsze zezwalaj budowac male lotniska: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Zawsze zezwalaj budowac male lotniska: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Pociag zagubil sie jesli nie porusza sie przez: {ORANGE}{STRING1} dni
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Pociag zagubil sie jesli nie porusza sie przez: {ORANGE}{STRING} dni
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Pociag zagubil sie jesli nie porusza sie: {ORANGE}niedostepne
-STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Przejrzyj polecenia pojazdow: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Przejrzyj polecenia pojazdow: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nie
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :tak, ale wyklucz pojazdy zatrzymane
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :wszystkich pojazdow
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Ostrzegaj jesli pociag przynosi straty: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Pojazdy nigdy nie starzeja sie: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Ostrzegaj jesli pociag przynosi straty: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Pojazdy nigdy nie starzeja sie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Autoodnowienie pojazdu gdy staje sie stary
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autoodnowienie nastepuje {ORANGE}{STRING1}{LTBLUE} miesiecy przed/po maks wieku
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minimalna ilosc pieniedzy potrzebna do autoodnowienia: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Czas trwania komunikatu o bledzie: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Pokaz populacje miasta w jego nazwie: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Niewidoczne drzewa (razem z przezroczystymi budynkami): {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Wysokosc granicy wiecznych sniegow: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks wielkosc stacji: {ORANGE}{STRING1} {RED}Uwaga: Duze wartosci spowalniaja gre
-STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Serwisuj helikoptery na lotniskach automatycznie: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autoodnowienie nastepuje {ORANGE}{STRING}{LTBLUE} miesiecy przed/po maks wieku
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minimalna ilosc pieniedzy potrzebna do autoodnowienia: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Czas trwania komunikatu o bledzie: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Pokaz populacje miasta w jego nazwie: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Niewidoczne drzewa (razem z przezroczystymi budynkami): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Wysokosc granicy wiecznych sniegow: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks wielkosc stacji: {ORANGE}{STRING} {RED}Uwaga: Duze wartosci spowalniaja gre
+STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Serwisuj helikoptery na lotniskach automatycznie: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks liczba pociagow na gracza: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks liczba samochodow na gracza: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Maks liczba samolotow na gracza: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Maks liczba statkow na gracza: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks liczba pociagow na gracza: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks liczba samochodow na gracza: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Maks liczba samolotow na gracza: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Maks liczba statkow na gracza: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Pociagi niedostepne dla komputera: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Samochody niedostepne dla komputera: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Samoloty niedostepne dla komputera: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Statki niedostepne dla komputera: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Pociagi niedostepne dla komputera: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Samochody niedostepne dla komputera: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Samoloty niedostepne dla komputera: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Statki niedostepne dla komputera: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Dostepne nowe AI (alpha): {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Dostepne nowe AI (alpha): {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Domyslny okres miedzy serwis. dla pociagow: {ORANGE}{STRING1} dni
+STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Domyslny okres miedzy serwis. dla pociagow: {ORANGE}{STRING} dni
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Domyslny okres miedzy serwis. dla pociagow: {ORANGE}niedostepne
-STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Domyslny okres miedzy serwis. dla samochodow: {ORANGE}{STRING1} dni
+STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Domyslny okres miedzy serwis. dla samochodow: {ORANGE}{STRING} dni
 STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Domyslny okres miedzy serwis. dla samochodow: {ORANGE}niedostepne
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Domyslny okres miedzy serwis. dla samolotow: {ORANGE}{STRING1} dni
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Domyslny okres miedzy serwis. dla samolotow: {ORANGE}{STRING} dni
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Domyslny okres miedzy serwis. dla samolotow: {ORANGE}niedostepne
-STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Domyslny okres miedzy serwis. dla statkow: {ORANGE}{STRING1} dni
+STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Domyslny okres miedzy serwis. dla statkow: {ORANGE}{STRING} dni
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Domyslny okres miedzy serwis. dla statkow: {ORANGE}niedostepne
-STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Serwis niedostepny jesli uszkodzenia pojazdow wylaczone: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Serwis niedostepny jesli uszkodzenia pojazdow wylaczone: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Pojawianie sie kolorowych wiadomosci w: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Data rozpoczecia: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Data zakonczenia: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Pojawianie sie kolorowych wiadomosci w: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Data rozpoczecia: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Data zakonczenia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Pozwol na lagodna ekonomie (male zmiany)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Pozwol kupowac udzialy w innych firmach
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}W trakcie przeciagania ustaw sygnaly co: {ORANGE}{STRING1} kratke(i)
-STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}Zezwol na automatyczne stawianie sygnalow pbs: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Pozycja glownego paska narzedzi: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}W trakcie przeciagania ustaw sygnaly co: {ORANGE}{STRING} kratke(i)
+STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}Zezwol na automatyczne stawianie sygnalow pbs: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Pozycja glownego paska narzedzi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :z lewej
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :centralnie
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :z prawej
-STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Strefa przyciagania okien: {ORANGE}{STRING1} pkt
+STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Strefa przyciagania okien: {ORANGE}{STRING} pkt
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Strefa przyciagania okien: {ORANGE}niedostepne
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interfejs
@@ -1099,13 +1099,13 @@ STR_CHEATS_TIP                                                  :{BLACK}Checkbox
 STR_CHEATS_WARNING                                              :{BLACK}Uwaga! Wlasnie chcesz zdradzic swoich wspolnikow. Zwaz, ze zostanie to zapamietane na wieki!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Zwieksz ilosc pieniedzy o {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Gra jako gracz: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magiczny buldozer (usuwanie przedsiebiorstw etc.): {ORANGE}{STRING1}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunele moga sie krzyzowac: {ORANGE}{STRING1}
-STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Budowanie w czasie pauzy: {ORANGE}{STRING1}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magiczny buldozer (usuwanie przedsiebiorstw etc.): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunele moga sie krzyzowac: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Budowanie w czasie pauzy: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Odrzutowce nie beda sie rozbijac (czesto) na malych lotniskach: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Zmien klimat: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Zmien date: {ORANGE} {DATE_SHORT}
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Pozwol modyfikowac wielkosc produkcji: {ORANGE}{STRING1}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Pozwol modyfikowac wielkosc produkcji: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Zmierza do {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Zmierza do {WAYPOINT}, {VELOCITY}
@@ -1197,9 +1197,9 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Zbuduj k
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Wybuduj kopalnie cukru
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Przemysl
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING1}){YELLOW} ({COMMA}% przetransportowano)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING1}/{STRING1}){YELLOW} ({COMMA}%/{COMMA}% przetransportowano)
-STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{TOWN} {STRING}
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}% przetransportowano)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% przetransportowano)
+STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...zbyt blisko innego przedsiebiorstwa
 
@@ -1208,7 +1208,7 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Przebudo
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz typ ladunku jaki ma przewozic pociag
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Przebudowa pociagu do przewozu podswietlonych towarow
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nie mozna przebudowac pociagu...
-STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Okres miedzy serwisowania w procentach: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Okres miedzy serwisowania w procentach: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmiana produkcji
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Witamy w nowym AI. Mozesz oczekiwac problemow. Gdy to sie stanie, wykonaj zrzut ekranu i wyslij go na forum. Powodzenia!
@@ -1411,8 +1411,8 @@ STR_NETWORK_SEND                                                :{BLACK}Wyslij
 ############ end network gui strings
 
 
-STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}Rozmiar mapy X: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Rozmiar mapy Y: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}Rozmiar mapy X: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Rozmiar mapy Y: {ORANGE}{STRING}
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Koszt: {CURRENCY}
@@ -1510,10 +1510,8 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Poziom przecina
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Miasta
-STR_TOWN_LABEL_POP                                              :{WHITE}{STRING1} ({COMMA})
-STR_2001                                                        :{WHITE}{STRING1}
-STR_2002                                                        :{TINYFONT}{BLACK}{STRING1}
-STR_2003                                                        :{TINYFONT}{WHITE}{STRING1}
+STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Budynek musi byc najpierw zburzony
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Populacja: {ORANGE}{COMMA}{BLACK}  Domow: {ORANGE}{COMMA}
@@ -1549,16 +1547,15 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Ocena tr
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsydia
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Oferta subsydiow dla uslugi przewozu:-
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} z {STRING2} do {STRING2}
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} z {STRING} do {STRING}
 STR_2028_BY                                                     :{YELLOW} (do {DATE_SHORT})
-STR_2029                                                        :{TOWN} {STRING}
 STR_202A_NONE                                                   :{ORANGE}Zadne
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Uslugi juz subsydiowane:-
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} z {STATION} do {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, do {DATE_SHORT})
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subsydiowanie wygaslo:{}{}{STRING} z {STRING2} do {STRING2} juz nie bedzie dotowane.
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subsydiowanie wygaslo:{}{}{STRING} z {STRING} do {STRING} juz nie bedzie dotowane.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Koniec dotacji:{}{}{STRING} usluga z {STATION} do {STATION} juz nie jest subsydiowana
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Oferta uslugi dotowanej:{}{}Pierwszy przewoz {STRING} z  {STRING2} do {STRING2} bedzie dotowane przez rok przez lokalne wladze!
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Oferta uslugi dotowanej:{}{}Pierwszy przewoz {STRING} z  {STRING} do {STRING} bedzie dotowane przez rok przez lokalne wladze!
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Przyznano subsydia dla {COMPANY}!{}{}Przewoz {STRING} z {STATION} do {STATION} bedzie placony 50% wiecej przez nastepny rok!
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Przyznano subsydia dla {COMPANY}!{}{}Przewoz {STRING} z {STATION} do {STATION} bedzie placony podwojnie przez nastepny rok!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Przyznano subsydia dla {COMPANY}!{}{}Przewoz {STRING} z {STATION} do {STATION} bedzie placony potrojnie przez nastepny rok!
@@ -1604,6 +1601,10 @@ STR_2059_IGLOO                                                  :Iglo
 STR_205A_TEPEES                                                 :Tipi
 STR_205B_TEAPOT_HOUSE                                           :Dom-Czajniczek
 STR_205C_PIGGY_BANK                                             :Swinka-skarbonka
+STR_INDUSTRY                                                    :{INDUSTRY}
+STR_TOWN                                                        :{TOWN}
+STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
+STR_STATION                                                     :{STATION}
 
 ##id 0x2800
 STR_LANDSCAPING                                                 :Krajobraz
@@ -1742,7 +1743,7 @@ STR_4010_GENERATE_RANDOM_NEW_GAME                               :generacja przyp
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} na drodze
-STR_4801                                                        :{WHITE}{TOWN} {STRING}
+STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :Kopalnia wegla
 STR_4803_POWER_STATION                                          :Elektrownia
 STR_4804_SAWMILL                                                :Tartak
@@ -1788,25 +1789,25 @@ STR_4829_REQUIRES                                               :{BLACK}Wymagani
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Wyprodukowano w ostatnim miesiacu:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING1}{BLACK} ({COMMA}% przetransportowano)
+STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% przetransportowano)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centruj glowny widok na przedsiebiorstwie
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Rozpoczeto budowe nowego {STRING} blisko {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Nowy {STRING} zostal obsadzony blisko {TOWN}!
 STR_482F_COST                                                   :{BLACK}Koszt: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Nie mozna tutaj wybudowac tego przedsiebiorstwa...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...las moze byc posadzony tylko ponizej lini wiecznego lodu
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{TOWN} {STRING} oglasza bliskie zamkniecie!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Problemy z zaopatrz. w {TOWN} {STRING} oglosza bliskie zamkniecie!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Niedobor drzew w {TOWN} {STRING} oglosza bliskie zamkniecie!
-STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{TOWN} {STRING} zwieksza produkcje!
-STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Odkryty nowy poklad wegla {TOWN} {STRING}!{} Podwojenie produkcji!
-STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Odkryte nowe rezerwy ropy {TOWN} {STRING}!{} Podwojenie produkcji!
-STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Unowoczesniono prod. rolna w {TOWN} {STRING} Podwojenie produkcji!
-STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{TOWN} {STRING} produkcja zmniejszona o 50%
-STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Plaga insektow w {TOWN} {STRING}!{}Produkcja spadla o 50%
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} oglasza bliskie zamkniecie!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Problemy z zaopatrz. w {INDUSTRY} oglosza bliskie zamkniecie!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Niedobor drzew w {INDUSTRY} oglosza bliskie zamkniecie!
+STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} zwieksza produkcje!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Odkryty nowy poklad wegla {INDUSTRY}!{} Podwojenie produkcji!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Odkryte nowe rezerwy ropy {INDUSTRY}!{} Podwojenie produkcji!
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Unowoczesniono prod. rolna w {INDUSTRY} Podwojenie produkcji!
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} produkcja zmniejszona o 50%
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Plaga insektow w {INDUSTRY}!{}Produkcja spadla o 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...moze byc usytuowane tylko blisko krawedzi mapy
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} produkcja w {TOWN} {STRING} zwiekszona o {COMMA}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} produkcja w {TOWN} {STRING} zmniejszona o {COMMA}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} produkcja w {INDUSTRY} zwiekszona o {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} produkcja w {INDUSTRY} zmniejszona o {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Pociag w tunelu
@@ -1874,39 +1875,39 @@ STR_SV_ROADVEH_NAME                                             :Samochod {COMMA
 STR_SV_SHIP_NAME                                                :Statek {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Samolot {COMMA}
 
-STR_SV_STNAME                                                   :{STRING1}
-STR_SV_STNAME_NORTH                                             :{STRING1} Polnoc
-STR_SV_STNAME_SOUTH                                             :{STRING1} Poludnie
-STR_SV_STNAME_EAST                                              :{STRING1} Wschod
-STR_SV_STNAME_WEST                                              :{STRING1} Zachod
-STR_SV_STNAME_CENTRAL                                           :{STRING1} Centrum
-STR_SV_STNAME_TRANSFER                                          :{STRING1} Transfer
-STR_SV_STNAME_HALT                                              :{STRING1} Stop
-STR_SV_STNAME_VALLEY                                            :{STRING1} Dolina
-STR_SV_STNAME_HEIGHTS                                           :{STRING1} Wzgorza
-STR_SV_STNAME_WOODS                                             :{STRING1} Tartak
-STR_SV_STNAME_LAKESIDE                                          :{STRING1} Jezioro
-STR_SV_STNAME_EXCHANGE                                          :{STRING1} Gielda
-STR_SV_STNAME_AIRPORT                                           :{STRING1} Lotnisko
-STR_SV_STNAME_OILFIELD                                          :{STRING1} Nafta
-STR_SV_STNAME_MINES                                             :{STRING1} Kopalnia
-STR_SV_STNAME_DOCKS                                             :{STRING1} Port
-STR_SV_STNAME_BUOY_1                                            :{STRING1} Boja 1
-STR_SV_STNAME_BUOY_2                                            :{STRING1} Boja 2
-STR_SV_STNAME_BUOY_3                                            :{STRING1} Boja 3
-STR_SV_STNAME_BUOY_4                                            :{STRING1} Boja 4
-STR_SV_STNAME_BUOY_5                                            :{STRING1} Boja 5
-STR_SV_STNAME_BUOY_6                                            :{STRING1} Boja 6
-STR_SV_STNAME_BUOY_7                                            :{STRING1} Boja 7
-STR_SV_STNAME_BUOY_8                                            :{STRING1} Boja 8
-STR_SV_STNAME_BUOY_9                                            :{STRING1} Boja 9
-STR_SV_STNAME_ANNEXE                                            :{STRING1} Pawilon
-STR_SV_STNAME_SIDINGS                                           :{STRING1} Bocznica
-STR_SV_STNAME_BRANCH                                            :{STRING1} Rozjazd
-STR_SV_STNAME_UPPER                                             :{STRING1} Gorny
-STR_SV_STNAME_LOWER                                             :{STRING1} Dolny
-STR_SV_STNAME_HELIPORT                                          :{STRING1} Heliport
-STR_SV_STNAME_FOREST                                            :{STRING1} Las
+STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_NORTH                                             :{STRING} Polnoc
+STR_SV_STNAME_SOUTH                                             :{STRING} Poludnie
+STR_SV_STNAME_EAST                                              :{STRING} Wschod
+STR_SV_STNAME_WEST                                              :{STRING} Zachod
+STR_SV_STNAME_CENTRAL                                           :{STRING} Centrum
+STR_SV_STNAME_TRANSFER                                          :{STRING} Transfer
+STR_SV_STNAME_HALT                                              :{STRING} Stop
+STR_SV_STNAME_VALLEY                                            :{STRING} Dolina
+STR_SV_STNAME_HEIGHTS                                           :{STRING} Wzgorza
+STR_SV_STNAME_WOODS                                             :{STRING} Tartak
+STR_SV_STNAME_LAKESIDE                                          :{STRING} Jezioro
+STR_SV_STNAME_EXCHANGE                                          :{STRING} Gielda
+STR_SV_STNAME_AIRPORT                                           :{STRING} Lotnisko
+STR_SV_STNAME_OILFIELD                                          :{STRING} Nafta
+STR_SV_STNAME_MINES                                             :{STRING} Kopalnia
+STR_SV_STNAME_DOCKS                                             :{STRING} Port
+STR_SV_STNAME_BUOY_1                                            :{STRING} Boja 1
+STR_SV_STNAME_BUOY_2                                            :{STRING} Boja 2
+STR_SV_STNAME_BUOY_3                                            :{STRING} Boja 3
+STR_SV_STNAME_BUOY_4                                            :{STRING} Boja 4
+STR_SV_STNAME_BUOY_5                                            :{STRING} Boja 5
+STR_SV_STNAME_BUOY_6                                            :{STRING} Boja 6
+STR_SV_STNAME_BUOY_7                                            :{STRING} Boja 7
+STR_SV_STNAME_BUOY_8                                            :{STRING} Boja 8
+STR_SV_STNAME_BUOY_9                                            :{STRING} Boja 9
+STR_SV_STNAME_ANNEXE                                            :{STRING} Pawilon
+STR_SV_STNAME_SIDINGS                                           :{STRING} Bocznica
+STR_SV_STNAME_BRANCH                                            :{STRING} Rozjazd
+STR_SV_STNAME_UPPER                                             :{STRING} Gorny
+STR_SV_STNAME_LOWER                                             :{STRING} Dolny
+STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
+STR_SV_STNAME_FOREST                                            :{STRING} Las
 
 ############ end of	savegame specific region!
 
@@ -2390,10 +2391,10 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :Lokomotywa na p
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Zajezdnia
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mieszkancy swietuja . . .{}Pierwszy pociag przybyl do {STATION}!
-STR_8802_DETAILS                                                :{WHITE}{STRING1} (Szczegoly)
+STR_8802_DETAILS                                                :{WHITE}{STRING} (Szczegoly)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Pociag na drodze
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING1}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING1}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
 STR_8806_GO_TO                                                  :Idz do {STATION}
 STR_8807_GO_TO_TRANSFER                                         :Idz do {STATION} (Przewiez i wez cargo)
 STR_8808_GO_TO_UNLOAD                                           :Idz do {STATION} (Wyladunek)
@@ -2493,9 +2494,9 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Spraw ab
 STR_SERVICE_HINT                                                :{BLACK}Pomin to polecenie jesli jest wymagany serwis
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nowa {STRING} juz dostepna!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Koszt: {CURRENCY} Waga: {COMMA}t{}Predkosc: {VELOCITY}  Moc: {COMMA}KM{}Utrzymanie: {CURRENCY}/rok{}Pojemnosc: {STRING1}
+STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Koszt: {CURRENCY} Waga: {COMMA}t{}Predkosc: {VELOCITY}  Moc: {COMMA}KM{}Utrzymanie: {CURRENCY}/rok{}Pojemnosc: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Awaria
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Wiek: {LTBLUE}{STRING2}{BLACK}   Utrzymanie: {LTBLUE}{CURRENCY}/rok
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK}   Utrzymanie: {LTBLUE}{CURRENCY}/rok
 STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Waga: {LTBLUE}{COMMA}t  {BLACK}Moc: {LTBLUE}{COMMA}KM{BLACK} Max. predkosc: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY}  (w ostatnim roku: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Niezawodnosc: {LTBLUE}{COMMA}%  {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
@@ -2528,12 +2529,12 @@ STR_9007_BUILD_VEHICLE                                          :{BLACK}Zbuduj p
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nie mozna zbudowac samochodu...
 STR_900A_MUST_BUILD_ROAD_VEHICLE                                :{WHITE}Musisz najpierw zbudowac zajezdnie samochodowa
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Szczegoly)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Wiek: {LTBLUE}{STRING2}{BLACK}   Utrzymanie: {LTBLUE}{CURRENCY}/rok
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK}   Utrzymanie: {LTBLUE}{CURRENCY}/rok
 STR_900E_MAX_SPEED                                              :{BLACK}Max. predkkosc: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY}  (ostatni rok: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Niezawodnosc: {LTBLUE}{COMMA}%  {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Zbudowany: {LTBLUE}{NUM}{BLACK} Wartosc: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Pojemnosc: {LTBLUE}{STRING1}
+STR_9012_CAPACITY                                               :{BLACK}Pojemnosc: {LTBLUE}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...musi byc zatrzymany w zajezdni samochodowej
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nie mozna sprzedac samochodu...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nie mozna zatrzymac/ruszyc samochodu...
@@ -2558,7 +2559,7 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Lista wy
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Zbuduj wybrany samochod
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Dostepny jest nowy samochod!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Koszt: {CURRENCY}{}Predkosc: {VELOCITY}{}Utrzymanie: {CURRENCY}/rok{}Pojemnosc: {STRING1}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Koszt: {CURRENCY}{}Predkosc: {VELOCITY}{}Utrzymanie: {CURRENCY}/rok{}Pojemnosc: {STRING}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nazwij samochod
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Nie mozna nazwac samochodu...
@@ -2592,12 +2593,12 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Nie mozn
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Statek na drodze
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Szczegoly)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Wiek: {LTBLUE}{STRING2}{BLACK}   Utrzymanie: {LTBLUE}{CURRENCY}/rok
+STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK}   Utrzymanie: {LTBLUE}{CURRENCY}/rok
 STR_9813_MAX_SPEED                                              :{BLACK}Max. predkosc: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY}  (w ostatnim roku: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Niezawodnosc: {LTBLUE}{COMMA}%  {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Wybudowany: {LTBLUE}{NUM}{BLACK} Wartosc: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Pojemnosc: {LTBLUE}{STRING1}
+STR_9817_CAPACITY                                               :{BLACK}Pojemnosc: {LTBLUE}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nie mozna zatrzymac/ruszyc statku...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nie mozna wyslac statku do stoczni...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nie mozna znalezc zajezdni
@@ -2621,7 +2622,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Wyslij s
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Pokaz szczegoly statku
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Dostepny nowy statek!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Koszt: {CURRENCY} Max. Predkosc: {VELOCITY}{}Pojemnosc: {STRING1}{}Utrzymanie: {CURRENCY}/rok
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Koszt: {CURRENCY} Max. Predkosc: {VELOCITY}{}Pojemnosc: {STRING}{}Utrzymanie: {CURRENCY}/rok
 STR_982F_NAME_SHIP                                              :{BLACK}Nazwa statku
 
 STR_9831_NAME_SHIP                                              :{WHITE}Nazwa statku
@@ -2639,7 +2640,7 @@ STR_983C_REFIT_SHIP                                             :{BLACK}Przebudo
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz typ ladunku jaki ma przewozic statek
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Zmien statek zeby mogl przewozic zaznaczony typ ladunku
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wybierz typ ladunku do przewozu:-
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nowa pojemnosc: {GOLD}{STRING1}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY}
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nowa pojemnosc: {GOLD}{STRING}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nie mozna przebudowac statku...
 STR_9842_REFITTABLE                                             :(zm. typu lad.)
 STR_GO_TO_SHIP_DEPOT                                            :Idz do stoczni w {TOWN}
@@ -2658,7 +2659,7 @@ STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Polecenia)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Szczegoly)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Wiek: {LTBLUE}{STRING2}{BLACK}   Utrzymanie: {LTBLUE}{CURRENCY}/rok
+STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK}   Utrzymanie: {LTBLUE}{CURRENCY}/rok
 STR_A00E_MAX_SPEED                                              :{BLACK}Max. predkosc: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY}  (w ostatnim roku: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Niezawodnosc: {LTBLUE}{COMMA}%  {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
@@ -2671,8 +2672,8 @@ STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Samolot 
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nie mozna zatrzymac/ruszyc samolotu
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Samolot wlasnie leci
 STR_A018_MUST_BUILD_AIRPORT_FIRST                               :{WHITE}Trzeba najpierw zbudowac lotnisko
-STR_A019_CAPACITY                                               :{BLACK}Pojemnosc: {LTBLUE}{STRING1}, {STRING1}
-STR_A01A_CAPACITY                                               :{BLACK}Pojemnosc: {LTBLUE}{STRING1}
+STR_A019_CAPACITY                                               :{BLACK}Pojemnosc: {LTBLUE}{STRING}, {STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Pojemnosc: {LTBLUE}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Samolot musi byc zatrzymany w hangarze
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Nie mozna sprzedac samolotu...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Konstrukcje lotnicze
@@ -2712,7 +2713,7 @@ STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Przebudo
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz typ towaru jaki ma przenosic samolot
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Przebudowa samolotu do przewozu podswietlonych towarow
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wybierz typ towaru do przewozu:-
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nowa pojemnosc: {GOLD}{STRING1}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY}
+STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nowa pojemnosc: {GOLD}{STRING}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nie mozna przebudowac samolotu...
 STR_A043_REFITTABLE                                             :(zm. typ lad.)
 STR_GO_TO_AIRPORT_HANGAR                                        :Idz do hangaru na {STATION}
@@ -2824,7 +2825,7 @@ STR_TINY_BLACK                                                  :{BLACK}{TINYFON
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Koszt: {GOLD}{CURRENCY}{BLACK} Waga: {GOLD}{COMMA}t
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Predkosc: {GOLD}{VELOCITY}{BLACK}   Moc: {GOLD}{COMMA}KM
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Koszty uzytkowania: {GOLD}{CURRENCY}/rok
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ladownosc: {GOLD}{STRING1} {STRING}
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ladownosc: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Zaprojektowany: {GOLD}{NUM}{BLACK} Zywotnosc: {GOLD}{COMMA} lat
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maksymalna niezawodnosc: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Koszt: {GOLD}{CURRENCY}
