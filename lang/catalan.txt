@@ -501,9 +501,7 @@ STR_01CB                                                        :{TINYFONT}{COMM
 STR_01CC_TOGGLE_LARGE_SMALL_MAP                                 :{BLACK}Intercanviar mida gran/petita del mapa
 STR_01CD_SELECT_TUTORIAL_DEMONSTRATION                          :{WHITE}Seleccionar Tutorial/Demostració
 
-############ range for cargo acecpted starts
 STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Càrrega acceptada: {LTBLUE}
-############ range for cargo acecpted ends
 
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jukebox de Jazz

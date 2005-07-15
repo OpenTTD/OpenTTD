@@ -501,9 +501,7 @@ STR_01CB                                                        :{TINYFONT}{COMM
 STR_01CC_TOGGLE_LARGE_SMALL_MAP                                 :{BLACK}Prepnut malu / velku mapu
 STR_01CD_SELECT_TUTORIAL_DEMONSTRATION                          :{WHITE}Vybrat Nacvik / Ukazku
 
-############ range for cargo acecpted starts
 STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Prijma naklad: {LTBLUE}
-############ range for cargo acecpted ends
 
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Gramofon

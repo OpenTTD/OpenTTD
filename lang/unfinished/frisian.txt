@@ -157,8 +157,6 @@ STR_01C8_29TH                                                   :29
 ############ range for days	ends
 
 
-############ range for cargo acecpted starts
-############ range for cargo acecpted ends
 
 
 

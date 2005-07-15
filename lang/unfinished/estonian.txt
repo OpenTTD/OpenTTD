@@ -492,13 +492,7 @@ STR_01CB                                                        :{TINYFONT}{COMM
 STR_01CC_TOGGLE_LARGE_SMALL_MAP                                 :{BLACK}Kaardi suuruse muutmine
 STR_01CD_SELECT_TUTORIAL_DEMONSTRATION                          :{WHITE}Vali Õpetus / Näited
 
-############ range for cargo acecpted starts
 STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Vastuvõetavad veosed: {LTBLUE}{STRING}
-STR_01CF_CARGO_ACCEPTED                                         :{BLACK}Vastuvõetavad veosed: {LTBLUE}{STRING}, {STRING}
-STR_01D0_CARGO_ACCEPTED                                         :{BLACK}Vastuvõetavad veosed: {LTBLUE}{STRING}, {STRING}, {STRING}
-STR_CARGO_ACCEPTED_4                                            :{BLACK}Vastuvõetavad veosed: {LTBLUE}{STRING}, {STRING}, {STRING}, {STRING}
-STR_CARGO_ACCEPTED_5                                            :{BLACK}Vastuvõetavad veosed: {LTBLUE}{STRING}, {STRING}, {STRING}, {STRING}, {STRING}
-############ range for cargo acecpted ends
 
 STR_01D1_8                                                      :({COMMA8}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Muusikakeskus
@@ -1191,7 +1185,6 @@ STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{TOWN} 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...liiga lähedal mõnele teisele tööstusele
 
 STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Rongi seadistamine mõne teise veosetüübi transportimiseks
-STR_RAIL_REFIT                                                  :{WHITE}{STRING} (ümberseadistamine)
 STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Seadista ümber
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vali veosetüüp, mida rong peaks kandma
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Rongi seadistamine valitud veose tüübile
@@ -1599,7 +1592,6 @@ STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...siin 
 STR_2804_SITE_UNSUITABLE                                        :{WHITE}...ebasobiv koht
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Siia ei saa puud istutada...
 STR_2806                                                        :{WHITE}{STRING}
-STR_2807                                                        :{TINYFONT}{WHITE}{STRING}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...liiga palju silte
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Siia ei saa silti paigaldada...
 STR_280A_SIGN                                                   :Silt

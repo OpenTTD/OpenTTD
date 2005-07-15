@@ -501,9 +501,7 @@ STR_01CB                                                        :{TINYFONT}{COMM
 STR_01CC_TOGGLE_LARGE_SMALL_MAP                                 :{BLACK}Przelaczanie miedzy duza/mala mapa
 STR_01CD_SELECT_TUTORIAL_DEMONSTRATION                          :{WHITE}Wybierz Wprowadzenie/Demo
 
-############ range for cargo acecpted starts
 STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Akceptowany ladunek: {LTBLUE}
-############ range for cargo acecpted ends
 
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz Jukebox

@@ -501,9 +501,7 @@ STR_01CB                                                        :{TINYFONT}{COMM
 STR_01CC_TOGGLE_LARGE_SMALL_MAP                                 :{BLACK}Pakeisti dideli/vidutini/maza zemelapio dydi
 STR_01CD_SELECT_TUTORIAL_DEMONSTRATION                          :{WHITE}Pasirink Pavyzdi/Demonstracija
 
-############ range for cargo acecpted starts
 STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Krovinys priimamas: {LTBLUE}
-############ range for cargo acecpted ends
 
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz Jukebox
@@ -2799,3 +2797,4 @@ STR_MAGLEV_VEHICLES                                             :Magnetiniai tra
 ############ End of list of rail types
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
+

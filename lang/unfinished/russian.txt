@@ -226,8 +226,6 @@ STR_00EB_ROADS                                                  :{BLACK}{TINYFON
 ############ range for days	ends
 
 
-############ range for cargo acecpted starts
-############ range for cargo acecpted ends
 
 
 
