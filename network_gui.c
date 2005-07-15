@@ -99,18 +99,20 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		_selected_item = NULL;
 		break;
 	case WE_PAINT: {
+		NetworkGameList *sel = _selected_item;
+
 		w->disabled_state = 0;
 
-		if (_selected_item == NULL) {
+		if (sel == NULL) {
 			SETBIT(w->disabled_state, 17); SETBIT(w->disabled_state, 18);
-		} else if (!_selected_item->online) {
+		} else if (!sel->online) {
 			SETBIT(w->disabled_state, 17); // Server offline, join button disabled
-		} else if (_selected_item->info.clients_on == _selected_item->info.clients_max) {
+		} else if (sel->info.clients_on == sel->info.clients_max) {
 			SETBIT(w->disabled_state, 17); // Server full, join button disabled
 
 			// revisions don't match, check if server has no revision; then allow connection
-		} else if (strncmp(_selected_item->info.server_revision, _openttd_revision, NETWORK_REVISION_LENGTH - 1) != 0) {
-			if (strncmp(_selected_item->info.server_revision, NOREV_STRING, sizeof(_selected_item->info.server_revision)) != 0)
+		} else if (strncmp(sel->info.server_revision, _openttd_revision, NETWORK_REVISION_LENGTH - 1) != 0) {
+			if (strncmp(sel->info.server_revision, NOREV_STRING, sizeof(sel->info.server_revision)) != 0)
 				SETBIT(w->disabled_state, 17); // Revision mismatch, join button disabled
 		}
 
@@ -139,11 +141,11 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			}
 
 			while (cur_item != NULL) {
-				bool compatible = (strncmp(cur_item->info.server_revision, _openttd_revision, NETWORK_REVISION_LENGTH - 1) == 0);
-				if (strncmp(cur_item->info.server_revision, NOREV_STRING, sizeof(cur_item->info.server_revision)) == 0)
-					compatible = true;
+				bool compatible =
+					!strncmp(cur_item->info.server_revision, _openttd_revision, NETWORK_REVISION_LENGTH - 1) ||
+					!strncmp(cur_item->info.server_revision, NOREV_STRING, sizeof(cur_item->info.server_revision));
 
-				if (cur_item == _selected_item)
+				if (cur_item == sel)
 					GfxFillRect(11, y - 2, 218, y + 9, 10); // show highlighted item with a different colour
 
 				snprintf(servername, sizeof(servername), "%s", cur_item->info.server_name);
@@ -176,10 +178,10 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 
 		// right menu
 		GfxFillRect(252, 23, 478, 65, 157);
-		if (_selected_item == NULL) {
+		if (sel == NULL) {
 			DrawStringMultiCenter(365, 40, STR_NETWORK_GAME_INFO, 0);
-		} else if (!_selected_item->online) {
-			SetDParamStr(0, _selected_item->info.server_name);
+		} else if (!sel->online) {
+			SetDParamStr(0, sel->info.server_name);
 			DrawStringMultiCenter(365, 42, STR_ORANGE, 2); // game name
 
 			DrawStringMultiCenter(365, 110, STR_NETWORK_SERVER_OFFLINE, 2); // server offline
@@ -189,56 +191,60 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			DrawStringMultiCenter(365, 30, STR_NETWORK_GAME_INFO, 0);
 
 
-			SetDParamStr(0, _selected_item->info.server_name);
+			SetDParamStr(0, sel->info.server_name);
 			DrawStringMultiCenter(365, 42, STR_ORANGE, 2); // game name
 
-			SetDParamStr(0, _selected_item->info.map_name);
+			SetDParamStr(0, sel->info.map_name);
 			DrawStringMultiCenter(365, 54, STR_02BD, 2); // map name
 
-			SetDParam(0, _selected_item->info.clients_on);
-			SetDParam(1, _selected_item->info.clients_max);
+			SetDParam(0, sel->info.clients_on);
+			SetDParam(1, sel->info.clients_max);
 			DrawString(260, y, STR_NETWORK_CLIENTS, 2); // clients on the server / maximum slots
 			y+=10;
 
-			SetDParam(0, STR_NETWORK_LANG_ANY+_selected_item->info.server_lang);
-			DrawString(260, y, STR_NETWORK_LANGUAGE, 2); // server language
+			if (sel->info.server_lang < NETWORK_NUM_LANGUAGES) {
+				SetDParam(0, STR_NETWORK_LANG_ANY+sel->info.server_lang);
+				DrawString(260, y, STR_NETWORK_LANGUAGE, 2); // server language
+			}
 			y+=10;
 
-			SetDParam(0, STR_TEMPERATE_LANDSCAPE+_selected_item->info.map_set);
-			DrawString(260, y, STR_NETWORK_TILESET, 2); // tileset
+			if (sel->info.map_set < NUM_LANDSCAPE ) {
+				SetDParam(0, STR_TEMPERATE_LANDSCAPE+sel->info.map_set);
+				DrawString(260, y, STR_NETWORK_TILESET, 2); // tileset
+			}
 			y+=10;
 
-			SetDParam(0, _selected_item->info.map_width);
-			SetDParam(1, _selected_item->info.map_height);
+			SetDParam(0, sel->info.map_width);
+			SetDParam(1, sel->info.map_height);
 			DrawString(260, y, STR_NETWORK_MAP_SIZE, 2); // map size
 			y+=10;
 
-			SetDParamStr(0, _selected_item->info.server_revision);
+			SetDParamStr(0, sel->info.server_revision);
 			DrawString(260, y, STR_NETWORK_SERVER_VERSION, 2); // server version
 			y+=10;
 
-			SetDParamStr(0, _selected_item->info.hostname);
-			SetDParam(1, _selected_item->port);
+			SetDParamStr(0, sel->info.hostname);
+			SetDParam(1, sel->port);
 			DrawString(260, y, STR_NETWORK_SERVER_ADDRESS, 2); // server address
 			y+=10;
 
-			SetDParam(0, _selected_item->info.start_date);
+			SetDParam(0, sel->info.start_date);
 			DrawString(260, y, STR_NETWORK_START_DATE, 2); // start date
 			y+=10;
 
-			SetDParam(0, _selected_item->info.game_date);
+			SetDParam(0, sel->info.game_date);
 			DrawString(260, y, STR_NETWORK_CURRENT_DATE, 2); // current date
 			y+=10;
 
 			y+=2;
 
-			if (strncmp(_selected_item->info.server_revision, _openttd_revision, NETWORK_REVISION_LENGTH - 1) != 0) {
-				if (strncmp(_selected_item->info.server_revision, NOREV_STRING, sizeof(_selected_item->info.server_revision)) != 0)
+			if (strncmp(sel->info.server_revision, _openttd_revision, NETWORK_REVISION_LENGTH - 1) != 0) {
+				if (strncmp(sel->info.server_revision, NOREV_STRING, sizeof(sel->info.server_revision)) != 0)
 					DrawStringMultiCenter(365, y, STR_NETWORK_VERSION_MISMATCH, 2); // server mismatch
-			} else if (_selected_item->info.clients_on == _selected_item->info.clients_max) {
+			} else if (sel->info.clients_on == sel->info.clients_max) {
 				// Show: server full, when clients_on == clients_max
 				DrawStringMultiCenter(365, y, STR_NETWORK_SERVER_FULL, 2); // server full
-			} else if (_selected_item->info.use_password)
+			} else if (sel->info.use_password)
 				DrawStringMultiCenter(365, y, STR_NETWORK_PASSWORD, 2); // password warning
 
 			y+=10;

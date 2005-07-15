@@ -49,6 +49,8 @@ enum {
 	NETWORK_PLAYERS_LENGTH     = 200,
 	NETWORK_CLIENT_NAME_LENGTH = 25,
 	NETWORK_RCONCOMMAND_LENGTH = 500,
+
+	NETWORK_NUM_LANGUAGES      = 4,
 };
 
 // This is the struct used by both client and server
