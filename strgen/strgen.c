@@ -89,7 +89,7 @@ static void CDECL Warning(const char *s, ...)
 	va_start(va, s);
 	vsprintf(buf, s, va);
 	va_end(va);
-	fprintf(stderr, "%d: Warning: %s\n", _cur_line, buf);
+	fprintf(stderr, "Warning:(%d): %s\n", _cur_line, buf);
 	_warnings++;
 }
 
@@ -101,7 +101,7 @@ static void CDECL Error(const char *s, ...)
 	va_start(va, s);
 	vsprintf(buf, s, va);
 	va_end(va);
-	fprintf(stderr, "%d: Error: %s\n", _cur_line, buf);
+	fprintf(stderr, "Error:(%d): %s\n", _cur_line, buf);
 	_errors++;
 }
 
@@ -241,6 +241,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"STRING5", EmitEscapedByte, 9, 5},				// included string that consumes FIVE arguments
 
 	{"STATIONFEATURES", EmitEscapedByte, 10, 1},				// station features string, icons of the features
+	{"INDUSTRY", EmitEscapedByte, 11, 1},			// industry, takes an industry #
 
 	{"DATE_LONG", EmitSingleByte, 0x82, 1},
 	{"DATE_SHORT", EmitSingleByte, 0x83, 1},
@@ -441,7 +442,7 @@ static const CmdStruct *TranslateCmdForCompare(const CmdStruct *a)
 }
 
 
-static bool CheckCommandsMatch(char *a, char *b)
+static bool CheckCommandsMatch(char *a, char *b, const char *name)
 {
 	ParsedCommandStruct templ;
 	ParsedCommandStruct lang;
@@ -453,7 +454,7 @@ static bool CheckCommandsMatch(char *a, char *b)
 
 	// For each string in templ, see if we find it in lang
 	if (templ.np != lang.np) {
-		Error("template string and language string have a different # of commands");
+		Warning("%s: template string and language string have a different # of commands", name);
 		result = false;
 	}
 
@@ -471,7 +472,7 @@ static bool CheckCommandsMatch(char *a, char *b)
 		}
 
 		if (!found) {
-			Error("Command '%s' exists in template file but not in language file", templ.pairs[i].a->cmd);
+			Warning("%s: command '%s' exists in template file but not in language file", name, templ.pairs[i].a->cmd);
 			result = false;
 		}
 	}
@@ -480,7 +481,7 @@ static bool CheckCommandsMatch(char *a, char *b)
 	// Check if the non consumer commands match up also.
 	for(i = 0; i < lengthof(templ.cmd); i++) {
 		if (TranslateCmdForCompare(templ.cmd[i]) != TranslateCmdForCompare(lang.cmd[i])) {
-			Error("Param idx #%d '%s' doesn't match with template command '%s'", i,
+			Warning("%s: Param idx #%d '%s' doesn't match with template command '%s'", name, i,
 				!lang.cmd[i] ? "<empty>" : lang.cmd[i]->cmd,
 				!templ.cmd[i] ? "<empty>" : templ.cmd[i]->cmd);
 			result = false;
@@ -539,7 +540,7 @@ static void HandleString(char *str, bool master)
 		HashAdd(str, ent);
 	} else {
 		if (ent == -1) {
-			Error("String name '%s' does not exist in master file", str);
+			Warning("String name '%s' does not exist in master file", str);
 			return;
 		}
 
@@ -553,8 +554,7 @@ static void HandleString(char *str, bool master)
 			_translated[ent] = strdup(_master[ent]);
 		} else {
 			// check that the commands match
-			if (!CheckCommandsMatch(s, _master[ent])) {
-				Error("String name '%s' does not match the layout of the master string\n", str);
+			if (!CheckCommandsMatch(s, _master[ent], str)) {
 				return;
 			}
 			_translated[ent] = strdup(s);
