@@ -1647,8 +1647,14 @@ static const byte _numof_industry_table[4][12] = {
 
 static void PlaceInitialIndustry(byte type, int amount)
 {
-	int num =
-		ScaleByMapSize(_numof_industry_table[_opt.diff.number_industries][amount]);
+	int num = _numof_industry_table[_opt.diff.number_industries][amount];
+
+	if (type == IT_OIL_REFINERY || type == IT_OIL_RIG) {
+		// These are always placed next to the coastline, so we scale by the perimeter instead.
+		num = ScaleByMapSize1D(num);
+	} else {
+		num = ScaleByMapSize(num);
+	}
 
 	if (_opt.diff.number_industries != 0)
 	{
