@@ -314,19 +314,18 @@ static const CmdStruct *FindCmd(const char *s, int len)
 }
 
 
-// returns 0 on EOL
-// returns 1-255 on literal byte
-// else returns command struct
-static const CmdStruct *parse_command_string(char **str, char *param, const char *errortext)
+/* Returns command struct of next command in str
+ * NULL if command is invalid or if there are no more commands in str
+ */
+static const CmdStruct *ParseCommandString(char **str, char *param, const char *errortext)
 {
-	char *s = *str, *start;
-	byte c = *s++;
+	char *s = *str;
+	char *start;
+	byte c;
 	const CmdStruct *cmd;
 
-	if (c != '{') {
-		*str = s;
-		return (CmdStruct*) (int)c;
-	}
+	for (; *s != '{'; s++) if (*s == '\0') return NULL;
+	s++;
 
 	// parse command name
 	start = s;
@@ -390,15 +389,8 @@ static bool check_commands_match(char *a, char *b)
 	char param[100];
 
 	do {
-		// read until next command from a.
-		do {
-			ar = parse_command_string(&a, param, NULL);
-		} while (ar != NULL && (unsigned long)ar <= 255);
-
-		// read until next command from b.
-		do {
-			br = parse_command_string(&b, param, NULL);
-		} while (br != NULL && (unsigned long)br <= 255);
+		ar = ParseCommandString(&a, param, NULL);
+		br = ParseCommandString(&b, param, NULL);
 
 		// make sure they are identical
 		if (ar != br) return false;
@@ -535,11 +527,9 @@ static void parse_file(const char *file, bool english)
 				hash = my_hash_str(hash, s + 1);
 
 				s = s + 2 + strlen(s + 1);
-				while ((cs = parse_command_string(&s, buf, NULL)) != 0) {
-					if ( (uint)cs >= 256) {
-						hash ^= (cs - _cmd_structs) * 0x1234567;
-						if (hash & 1) hash = (hash >> 1) ^ 0xF00BAA4; else hash >>= 1;
-					}
+				while ((cs = ParseCommandString(&s, buf, NULL)) != NULL) {
+					hash ^= (cs - _cmd_structs) * 0x1234567;
+					if (hash & 1) hash = (hash >> 1) ^ 0xF00BAA4; else hash >>= 1;
 				}
 			}
 		}
@@ -735,13 +725,12 @@ static void write_langfile(const char *filename, int show_todo)
 	for (i = 0; i != 32; i++) {
 		for (j = 0; j != in_use[i]; j++) {
 			char *s = allstr[(i << 11) + j];
-			char *str;
 
 			if (s == NULL) {
 				write_length(f, 0);
 			} else {
 				// move to string
-				str = s + 2 + strlen(s + 1);
+				char* str = s + 2 + strlen(s + 1);
 
 				if (show_todo && s[0]) {
 					if (show_todo == 2) {
@@ -752,12 +741,12 @@ static void write_langfile(const char *filename, int show_todo)
 					}
 				}
 
-				for(;;) {
-					cs = parse_command_string(&str, param, s[0] ? "english.lng" : filename);
-					if (cs == NULL) break;
-					if ( (unsigned long) cs <= 255) {
-						put_byte( (byte) (int)cs);
+				while (*str != '\0') {
+					if (*str != '{') {
+						put_byte(*str++);
 					} else {
+						cs = ParseCommandString(&str, param, s[0] ? "english.lng" : filename);
+						if (cs == NULL) break;
 						cs->proc(param, cs->value);
 					}
 				}
