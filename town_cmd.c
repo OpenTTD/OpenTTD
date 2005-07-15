@@ -159,8 +159,7 @@ static void AnimateTile_Town(TileIndex tile)
 	if (_tick_counter & 3)
 		return;
 
-	if (_m[tile].m4 != 4 && _m[tile].m4 != 5)
-		return;
+	assert(_m[tile].m4 == 4 || _m[tile].m4 == 5);
 
 	if (!((old=_m[tile].owner)&0x80)) {
 		_m[tile].owner |= 0x80;

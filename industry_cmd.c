@@ -821,8 +821,7 @@ static void TileLoop_Industry(TileIndex tile)
 			Industry *i = GetIndustry(_m[tile].m2);
 			if (i->was_cargo_delivered) {
 				i->was_cargo_delivered = false;
-				if ((_m[tile].m4|_m[tile].m3) != 0)
-					_m[tile].m4 = 0;
+				_m[tile].m4 = 0;
 				AddAnimatedTile(tile);
 			}
 		}
