@@ -71,14 +71,14 @@ typedef struct DrawTownTileStruct {
 #include "table/town_land.h"
 
 
-static void TownDrawTileProc1(TileInfo *ti)
+static void TownDrawHouseLift(TileInfo *ti)
 {
 	AddChildSpriteScreen(0x5A3, 0xE, 0x3C - (_m[ti->tile].owner&0x7F));
 }
 
 typedef void TownDrawTileProc(TileInfo *ti);
 static TownDrawTileProc * const _town_draw_tile_procs[1] = {
-	TownDrawTileProc1
+	TownDrawHouseLift
 };
 
 
@@ -159,7 +159,14 @@ static void AnimateTile_Town(TileIndex tile)
 	if (_tick_counter & 3)
 		return;
 
-	assert(_m[tile].m4 == 4 || _m[tile].m4 == 5);
+	// If the house is not one with a lift anymore, then stop this animating.
+	// Not exactly sure when this happens, but probably when a house changes.
+	// Before this was just a return...so it'd leak animated tiles..
+	// That bug seems to have been here since day 1??
+	if (!(_housetype_extra_flags[_m[tile].m4] & 0x20)) {
+		DeleteAnimatedTile(tile);
+		return;
+	}
 
 	if (!((old=_m[tile].owner)&0x80)) {
 		_m[tile].owner |= 0x80;
@@ -2085,5 +2092,3 @@ void AfterLoadTown(void)
 const ChunkHandler _town_chunk_handlers[] = {
 	{ 'CITY', Save_TOWN, Load_TOWN, CH_ARRAY | CH_LAST},
 };
-
-
