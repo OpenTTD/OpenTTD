@@ -19,8 +19,6 @@
 
 /* Compiles a list of strings into a compiled string list */
 
-#define lengthof(x) (sizeof(x)/sizeof(x[0]))
-
 typedef void (*ParseCmdProc)(char *buf, int value);
 
 typedef struct {
@@ -41,46 +39,51 @@ typedef struct CmdStruct {
 typedef struct LineName {
 	struct LineName *hash_next;
 	int value;
-	char str[1];
+	char str[VARARRAY_SIZE];
 } LineName;
 
-int _cur_line;
-bool _warnings;
+static int _cur_line;
+static bool _warnings;
 
-uint32 _hash;
-char _lang_name[32], _lang_ownname[32], _lang_isocode[16];
+static uint32 _hash;
+static char _lang_name[32];
+static char _lang_ownname[32];
+static char _lang_isocode[16];
 
 #define HASH_SIZE 1023
-LineName *_hash_head[HASH_SIZE];
-unsigned int hash_str(const char *s) {
-	unsigned int hash = 0;
-	for(;*s;s++)
-		hash = ((hash << 3) | (hash >> 29)) ^ *s;
+static LineName *_hash_head[HASH_SIZE];
+
+static uint HashStr(const char *s)
+{
+	uint hash = 0;
+	for (; *s; s++) hash = ((hash << 3) | (hash >> 29)) ^ *s;
 	return hash % HASH_SIZE;
 }
-void hash_add(const char *s, int value) {
-	unsigned int len = strlen(s);
-	LineName *ln = (LineName*)malloc(sizeof(LineName) + len);
-	unsigned int hash = hash_str(s);
+
+static void HashAdd(const char *s, int value)
+{
+	uint len = strlen(s) + 1;
+	LineName *ln = malloc(sizeof(*ln) + len);
+	uint hash = HashStr(s);
+
 	ln->hash_next = _hash_head[hash];
 	_hash_head[hash] = ln;
 	ln->value = value;
-	ln->str[len] = 0;
 	memcpy(ln->str, s, len);
 }
 
-int hash_find(const char *s) {
-	LineName *ln = _hash_head[hash_str(s)];
-	while (ln != NULL) {
-		if (!strcmp(ln->str, s)) {
-			return ln->value;
-		}
-		ln = ln->hash_next;
+static int HashFind(const char *s)
+{
+	LineName *ln;
+
+	for (ln = _hash_head[HashStr(s)]; ln != NULL; ln = ln->hash_next) {
+		if (strcmp(ln->str, s) == 0) return ln->value;
 	}
 	return -1;
 }
 
-void warning(const char *s, ...) {
+static void warning(const char *s, ...)
+{
 	char buf[1024];
 	va_list va;
 	va_start(va, s);
@@ -90,7 +93,8 @@ void warning(const char *s, ...) {
 	_warnings = true;
 }
 
-void NORETURN error(const char *s, ...) {
+static void NORETURN error(const char *s, ...)
+{
 	char buf[1024];
 	va_list va;
 	va_start(va, s);
@@ -100,7 +104,7 @@ void NORETURN error(const char *s, ...) {
 	exit(1);
 }
 
-void ttd_strlcpy(char *dst, const char *src, size_t len)
+static void ttd_strlcpy(char *dst, const char *src, size_t len)
 {
 	assert(len > 0);
 	while (--len && *src)
@@ -112,19 +116,21 @@ void ttd_strlcpy(char *dst, const char *src, size_t len)
 // first byte tells if it's english.lng or a custom language file
 // second part is the name of the string
 // third part is the actual string contents
-char *allstr[65536];
+static char *allstr[65536];
 
-byte _put_buf[4096];
-int _put_pos;
-int _next_string_id;
+static byte _put_buf[4096];
+static int _put_pos;
+static int _next_string_id;
 
-void put_byte(byte c) {
+static void put_byte(byte c)
+{
 	if (_put_pos == lengthof(_put_buf))
 		error("Put buffer too small");
 	_put_buf[_put_pos++] = c;
 }
 
-void emit_buf(int ent) {
+static void emit_buf(int ent)
+{
 	char *s;
 
 	if (ent < 0 || ent >= 0x10000) {
@@ -147,31 +153,32 @@ void emit_buf(int ent) {
 	_put_pos = 0;
 }
 
-void EmitSingleByte(char *buf, int value) {
-	if (*buf != 0)
-		warning("Ignoring trailing letters in command");
+static void EmitSingleByte(char *buf, int value)
+{
+	if (*buf != '\0') warning("Ignoring trailing letters in command");
 	put_byte((byte)value);
 }
 
-void EmitEscapedByte(char *buf, int value) {
-	if (*buf != 0)
-		warning("Ignoring trailing letters in command");
+static void EmitEscapedByte(char *buf, int value)
+{
+	if (*buf != '\0') warning("Ignoring trailing letters in command");
 	put_byte((byte)0x85);
 	put_byte((byte)value);
 }
 
 
-void EmitStringInl(char *buf, int value) {
+static void EmitStringInl(char *buf, int value)
+{
 	int id;
 
-	if (*buf>='0' && *buf <= '9') {
+	if (*buf >= '0' && *buf <= '9') {
 		id = strtol(buf, NULL, 0);
-		if (id < 0 || id>=0x10000) {
+		if (id < 0 || id >= 0x10000) {
 			warning("Invalid inline num %s\n", buf);
 			return;
 		}
 	} else {
-		id = hash_find(buf);
+		id = HashFind(buf);
 		if (id == -1) {
 			warning("Invalid inline string '%s'", buf);
 			return;
@@ -183,21 +190,26 @@ void EmitStringInl(char *buf, int value) {
 	put_byte((byte)(id >> 8));
 }
 
-void EmitSetX(char *buf, int value) {
+static void EmitSetX(char *buf, int value)
+{
 	char *err;
 	int x = strtol(buf, &err, 0);
-	if (*err != 0)
-		error("SetX param invalid");
+
+	if (*err != '\0') error("SetX param invalid");
 	put_byte(1);
 	put_byte((byte)x);
 }
 
-void EmitSetXY(char *buf, int value) {
+static void EmitSetXY(char *buf, int value)
+{
 	char *err;
-	int x = strtol(buf, &err, 0), y;
-	if (*err != 0) error("SetXY param invalid");
-	y = strtol(err+1, &err, 0);
-	if (*err != 0) error("SetXY param invalid");
+	int x;
+	int y;
+
+	x = strtol(buf, &err, 0);
+	if (*err != '\0') error("SetXY param invalid");
+	y = strtol(err + 1, &err, 0);
+	if (*err != '\0') error("SetXY param invalid");
 
 	put_byte(0x1F);
 	put_byte((byte)x);
@@ -291,12 +303,12 @@ static const CmdStruct _cmd_structs[] = {
 	{"THREE_FOURTH", EmitSingleByte, 0xBE},
 };
 
-const CmdStruct *find_cmd(const char *s, int len) {
-	int i;
-	const CmdStruct *cs = _cmd_structs;
-	for(i=0; i!=lengthof(_cmd_structs); i++,cs++) {
-		if (!strncmp(cs->cmd, s, len) && cs->cmd[len] == 0)
-			return cs;
+static const CmdStruct *FindCmd(const char *s, int len)
+{
+	const CmdStruct *cs;
+
+	for (cs = _cmd_structs; cs != endof(_cmd_structs); cs++) {
+		if (strncmp(cs->cmd, s, len) == 0 && cs->cmd[len] == '\0') return cs;
 	}
 	return NULL;
 }
@@ -305,7 +317,7 @@ const CmdStruct *find_cmd(const char *s, int len) {
 // returns 0 on EOL
 // returns 1-255 on literal byte
 // else returns command struct
-const CmdStruct *parse_command_string(char **str, char *param, const char *errortext)
+static const CmdStruct *parse_command_string(char **str, char *param, const char *errortext)
 {
 	char *s = *str, *start;
 	byte c = *s++;
@@ -322,13 +334,13 @@ const CmdStruct *parse_command_string(char **str, char *param, const char *error
 		c = *s++;
 		if (c == '}' || c == ' ')
 			break;
-		if (c == 0) {
+		if (c == '\0') {
 			if (errortext) warning("Missing } from command '%s' in '%s'", start, errortext);
 			return NULL;
 		}
 	}
 
-	cmd = find_cmd(start, s - start - 1);
+	cmd = FindCmd(start, s - start - 1);
 	if (cmd == NULL) {
 		if (errortext) warning("Undefined command '%.*s' in '%s'", s - start - 1, start, errortext);
 		return NULL;
@@ -356,24 +368,25 @@ const CmdStruct *parse_command_string(char **str, char *param, const char *error
 }
 
 
-void handle_pragma(char *str)
+static void handle_pragma(char *str)
 {
-	if (!memcmp(str, "id ", 3)) {
+	if (memcmp(str, "id ", 3) == 0) {
 		_next_string_id = strtoul(str + 3, NULL, 0);
-	} else if (!memcmp(str, "name ", 5)) {
+	} else if (memcmp(str, "name ", 5) == 0) {
 		ttd_strlcpy(_lang_name, str + 5, sizeof(_lang_name));
-	} else if (!memcmp(str, "ownname ", 8)) {
+	} else if (memcmp(str, "ownname ", 8) == 0) {
 		ttd_strlcpy(_lang_ownname, str + 8, sizeof(_lang_ownname));
-	} else if (!memcmp(str, "isocode ", 8)) {
+	} else if (memcmp(str, "isocode ", 8) == 0) {
 		ttd_strlcpy(_lang_isocode, str + 8, sizeof(_lang_isocode));
 	} else {
 		error("unknown pragma '%s'", str);
 	}
 }
 
-bool check_commands_match(char *a, char *b)
+static bool check_commands_match(char *a, char *b)
 {
-	const CmdStruct *ar, *br;
+	const CmdStruct *ar;
+	const CmdStruct *br;
 	char param[100];
 
 	do {
@@ -389,13 +402,16 @@ bool check_commands_match(char *a, char *b)
 
 		// make sure they are identical
 		if (ar != br) return false;
-	} while (ar);
+	} while (ar != NULL);
 
 	return true;
 }
 
-void handle_string(char *str, bool master) {
-	char *s,*t,*r;
+static void handle_string(char *str, bool master)
+{
+	char *s;
+	char *t;
+	char *r;
 	int ent;
 
 	if (*str == '#') {
@@ -405,7 +421,7 @@ void handle_string(char *str, bool master) {
 	}
 
 	// Ignore comments & blank lines
-	if (*str == ';' || *str == ' ' || *str == 0)
+	if (*str == ';' || *str == ' ' || *str == '\0')
 		return;
 
 	s = strchr(str, ':');
@@ -415,10 +431,10 @@ void handle_string(char *str, bool master) {
 	}
 
 	// Trim spaces
-	for(t=s;t > str && (t[-1]==' ' || t[-1]=='\t'); t--);
-	*t = 0;
+	for (t = s; t > str && (t[-1] == ' ' || t[-1] == '\t'); t--);
+	*t = '\0';
 
-	ent = hash_find(str);
+	ent = HashFind(str);
 
 	s++; // skip :
 
@@ -442,7 +458,7 @@ void handle_string(char *str, bool master) {
 		allstr[ent] = r;
 
 		// add to hash table
-		hash_add(str, ent);
+		HashAdd(str, ent);
 	} else {
 		if (ent == -1) {
 			warning("String name '%s' does not exist in master file", str);
@@ -463,7 +479,7 @@ void handle_string(char *str, bool master) {
 			return;
 		}
 
-		if (s[0] == ':' && s[1] == 0) {
+		if (s[0] == ':' && s[1] == '\0') {
 			allstr[ent][0] = 0; // use string from master file legitiately
 			free(r);
 		} else {
@@ -473,29 +489,30 @@ void handle_string(char *str, bool master) {
 	}
 }
 
-uint32 my_hash_str(uint32 hash, const char *s)
+static uint32 my_hash_str(uint32 hash, const char *s)
 {
-	for(;*s;s++) {
+	for (; *s != '\0'; s++) {
 		hash = ((hash << 3) | (hash >> 29)) ^ *s;
-		if (hash & 1) hash = (hash>>1) ^ 0xDEADBEEF; else hash >>= 1;
+		if (hash & 1) hash = (hash >> 1) ^ 0xDEADBEEF; else hash >>= 1;
 	}
 	return hash;
 
 }
 
-void parse_file(const char *file, bool english) {
+static void parse_file(const char *file, bool english)
+{
 	char buf[2048];
 	int i;
 	FILE *in;
 
 	in = fopen(file, "r");
-	if (in == NULL) { error("Cannot open file '%s'", file); }
+	if (in == NULL) error("Cannot open file '%s'", file);
 
 	_cur_line = 1;
 	while (fgets(buf, sizeof(buf),in) != NULL) {
 		i = strlen(buf);
-		while (i>0 && (buf[i-1]=='\r' || buf[i-1]=='\n' || buf[i-1] == ' ')) i--;
-		buf[i] = 0;
+		while (i > 0 && (buf[i - 1] == '\r' || buf[i - 1] == '\n' || buf[i - 1] == ' ')) i--;
+		buf[i] = '\0';
 
 		handle_string(buf, english);
 		_cur_line++;
@@ -506,19 +523,22 @@ void parse_file(const char *file, bool english) {
 	// make a hash of the file to get a unique "version number"
 	if (english) {
 		uint32 hash = 0;
-		char *s;
-		const CmdStruct *cs;
-		for(i = 0; i!=65536; i++) {
-			if ((s=allstr[i]) != NULL) {
+
+		for (i = 0; i != 65536; i++) {
+			char *s = allstr[i];
+
+			if (s != NULL) {
+				const CmdStruct *cs;
+
 				hash ^= i * 0x717239;
-				if (hash & 1) hash = (hash>>1) ^ 0xDEADBEEF; else hash >>= 1;
+				if (hash & 1) hash = (hash >> 1) ^ 0xDEADBEEF; else hash >>= 1;
 				hash = my_hash_str(hash, s + 1);
 
 				s = s + 2 + strlen(s + 1);
 				while ((cs = parse_command_string(&s, buf, NULL)) != 0) {
 					if ( (uint)cs >= 256) {
 						hash ^= (cs - _cmd_structs) * 0x1234567;
-						if (hash & 1) hash = (hash>>1) ^ 0xF00BAA4; else hash >>= 1;
+						if (hash & 1) hash = (hash >> 1) ^ 0xF00BAA4; else hash >>= 1;
 					}
 				}
 			}
@@ -527,23 +547,24 @@ void parse_file(const char *file, bool english) {
 	}
 }
 
-int count_inuse(int grp) {
+static int count_inuse(int grp)
+{
 	int i;
 
-	for(i=0x800; --i >= 0;) {
-		if (allstr[(grp<<11)+i] != NULL)
-			break;
+	for (i = 0x800; --i >= 0;) {
+		if (allstr[(grp << 11) + i] != NULL) break;
 	}
 	return i + 1;
 }
 
-void check_all_used() {
+static void check_all_used(void)
+{
 	int i;
 	LineName *ln;
 	int num_warn = 10;
 
-	for (i=0; i!=HASH_SIZE; i++) {
-		for(ln = _hash_head[i]; ln!=NULL; ln = ln->hash_next) {
+	for (i = 0; i != HASH_SIZE; i++) {
+		for (ln = _hash_head[i]; ln != NULL; ln = ln->hash_next) {
 			if (allstr[ln->value] == 0) {
 				if (++num_warn < 50) {
 					warning("String %s has no definition. Using NULL value", ln->str);
@@ -555,7 +576,7 @@ void check_all_used() {
 	}
 }
 
-void write_length(FILE *f, uint length)
+static void write_length(FILE *f, uint length)
 {
 	if (length < 0xC0) {
 		fputc(length, f);
@@ -567,27 +588,30 @@ void write_length(FILE *f, uint length)
 	}
 }
 
-void gen_output(FILE *f) {
+static void gen_output(FILE *f)
+{
 	uint16 in_use[32];
 	uint16 in_use_file[32];
-	int i,j;
+	int i;
+	int j;
 	int tot_str = 0;
 
 	check_all_used();
 
-	for(i=0; i!=32; i++) {
+	for (i = 0; i != 32; i++) {
 		int n = count_inuse(i);
+
 		in_use[i] = n;
 		in_use_file[i] = TO_LE16(n);
 		tot_str += n;
 	}
 
-	fwrite(in_use_file, 32*sizeof(uint16), 1, f);
+	fwrite(in_use_file, 32 * sizeof(uint16), 1, f);
 
-	for(i=0; i!=32; i++) {
-		for(j=0; j!=in_use[i]; j++) {
-			char *s = allstr[(i<<11)+j];
-			if (s == NULL) error("Internal error, s==NULL");
+	for (i = 0; i != 32; i++) {
+		for (j = 0; j != in_use[i]; j++) {
+			char *s = allstr[(i << 11) + j];
+			if (s == NULL) error("Internal error, s == NULL");
 
 			write_length(f, *(uint16*)s);
 			fwrite(s + sizeof(uint16), *(uint16*)s , 1, f);
@@ -602,7 +626,7 @@ void gen_output(FILE *f) {
 	}
 }
 
-bool compare_files(const char *n1, const char *n2)
+static bool compare_files(const char *n1, const char *n2)
 {
 	FILE *f1, *f2;
 	char b1[4096];
@@ -619,7 +643,7 @@ bool compare_files(const char *n1, const char *n2)
 		l1 = fread(b1, 1, sizeof(b1), f1);
 		l2 = fread(b2, 1, sizeof(b2), f2);
 
-		if (l1 != l2 || memcmp(b1, b2, l1)) {
+		if (l1 != l2 || memcmp(b1, b2, l1) != 0) {
 			fclose(f2);
 			fclose(f1);
 			return false;
@@ -631,7 +655,7 @@ bool compare_files(const char *n1, const char *n2)
 	return true;
 }
 
-void write_strings_h(const char *filename)
+static void write_strings_h(const char *filename)
 {
 	FILE *out;
 	int i;
@@ -639,13 +663,13 @@ void write_strings_h(const char *filename)
 	int lastgrp;
 
 	out = fopen("tmp.xxx", "w");
-	if (out == NULL) { error("can't open tmp.xxx"); }
+	if (out == NULL) error("can't open tmp.xxx");
 
 	fprintf(out, "enum {");
 
 	lastgrp = 0;
 
-	for(i = 0; i!=65536; i++) {
+	for (i = 0; i != 65536; i++) {
 		if (allstr[i]) {
 			if (lastgrp != (i >> 11)) {
 				lastgrp = (i >> 11);
@@ -663,8 +687,7 @@ void write_strings_h(const char *filename)
 		"\nenum {\n"
 		"\tLANGUAGE_PACK_IDENT = 0x474E414C, // Big Endian value for 'LANG' (LE is 0x 4C 41 4E 47)\n"
 		"\tLANGUAGE_PACK_VERSION = 0x%X,\n"
-		"};\n", (unsigned int)_hash);
-
+		"};\n", (uint)_hash);
 
 	fclose(out);
 
@@ -680,12 +703,13 @@ void write_strings_h(const char *filename)
 	}
 }
 
-void write_langfile(const char *filename, int show_todo)
+static void write_langfile(const char *filename, int show_todo)
 {
 	FILE *f;
 	int in_use[32];
 	LanguagePackHeader hdr;
-	int i,j;
+	int i;
+	int j;
 	const CmdStruct *cs;
 	char param[128];
 
@@ -693,7 +717,7 @@ void write_langfile(const char *filename, int show_todo)
 	if (f == NULL) error("can't open %s", filename);
 
 	memset(&hdr, 0, sizeof(hdr));
-	for(i=0; i!=32; i++) {
+	for (i = 0; i != 32; i++) {
 		int n = count_inuse(i);
 		in_use[i] = n;
 		hdr.offsets[i] = TO_LE16(n);
@@ -708,9 +732,10 @@ void write_langfile(const char *filename, int show_todo)
 
 	fwrite(&hdr, sizeof(hdr), 1, f);
 
-	for(i=0; i!=32; i++) {
-		for(j=0; j!=in_use[i]; j++) {
-			char *s = allstr[(i<<11)+j], *str;
+	for (i = 0; i != 32; i++) {
+		for (j = 0; j != in_use[i]; j++) {
+			char *s = allstr[(i << 11) + j];
+			char *str;
 
 			if (s == NULL) {
 				write_length(f, 0);
@@ -751,23 +776,24 @@ void write_langfile(const char *filename, int show_todo)
 
 int CDECL main(int argc, char* argv[])
 {
-	char *r;
-	char buf[256];
 	int show_todo = 0;
 
-	if (argc > 1 && (!strcmp(argv[1], "-v") || !strcmp(argv[1], "--version"))) {
+	if (argc > 1 &&
+			(strcmp(argv[1], "-v") == 0 || strcmp(argv[1], "--version") == 0)) {
 		puts("$Revision$");
 		return 0;
 	}
 
-	if (argc > 1 && !strcmp(argv[1], "-t")) {
+	if (argc > 1 && strcmp(argv[1], "-t") == 0) {
 		show_todo = 1;
-		argc--, argv++;
+		argc--;
+		argv++;
 	}
 
-	if (argc > 1 && !strcmp(argv[1], "-w")) {
+	if (argc > 1 && strcmp(argv[1], "-w") == 0) {
 		show_todo = 2;
-		argc--, argv++;
+		argc--;
+		argv++;
 	}
 
 
@@ -780,14 +806,16 @@ int CDECL main(int argc, char* argv[])
 
 		write_langfile("lang/english.lng", 0);
 		write_strings_h("table/strings.h");
-
 	} else if (argc == 2) {
+		char buf[256];
+		char *r;
+
 		parse_file("lang/english.txt", true);
 		parse_file(argv[1], false);
 		if (_warnings) return 1;
 		strcpy(buf, argv[1]);
 		r = strrchr(buf, '.');
-		if (!r || strcmp(r, ".txt")) r = strchr(buf, 0);
+		if (r == NULL || strcmp(r, ".txt") != 0) r = strchr(buf, 0);
 		strcpy(r, ".lng");
 		write_langfile(buf, show_todo);
 	} else {
@@ -796,4 +824,3 @@ int CDECL main(int argc, char* argv[])
 
 	return 0;
 }
-
