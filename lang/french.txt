@@ -1500,7 +1500,7 @@ STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Construi
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Construire un pont routier
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Construire un tunnel routier
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Basculer construire/détruire routes
-STR_1812_BRIDGE_SELECTION_CLICK                                 :{BLACK}{BLACK}Sélection de Pont - cliquer sur le type de pont désiré pour le construire
+STR_1812_BRIDGE_SELECTION_CLICK                                 :{BLACK}Sélection de Pont - cliquer sur le type de pont désiré pour le construire
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Choisir orientation du dépôt routier
 STR_1814_ROAD                                                   :Route
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Route avec lampadaires
