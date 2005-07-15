@@ -51,7 +51,7 @@ typedef struct DebugLevel {
 	DEBUG_LEVEL(pbs),
 #ifdef GPMI
 	DEBUG_LEVEL(gpmi),
-#endif	
+#endif
 	DEBUG_LEVEL(npf)
 	};
 #undef DEBUG_LEVEL
