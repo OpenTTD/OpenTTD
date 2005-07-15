@@ -984,3 +984,4 @@ void InitializeLanguagePacks(void)
 	if (!ReadLanguagePack(def))
 		error("can't read language pack '%s'", dl->ent[def].file);
 }
+

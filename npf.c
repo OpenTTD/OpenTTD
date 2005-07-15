@@ -71,11 +71,13 @@ bool IsEndOfLine(TileIndex tile, Trackdir trackdir, RailType enginetype)
 	}
 };
 
+#if 0
 static uint NTPHash(uint key1, uint key2)
 {
 	/* This function uses the old hash, which is fixed on 10 bits (1024 buckets) */
 	return PATHFIND_HASH_TILE(key1);
 }
+#endif
 
 /**
  * Calculates a hash value for use in the NPF.

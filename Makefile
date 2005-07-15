@@ -639,6 +639,7 @@ C_SOURCES += landscape.c
 C_SOURCES += main_gui.c
 C_SOURCES += map.c
 C_SOURCES += md5.c
+C_SOURCES += mersenne.c
 C_SOURCES += minilzo.c
 C_SOURCES += misc.c
 C_SOURCES += misc_cmd.c

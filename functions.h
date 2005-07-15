@@ -79,7 +79,7 @@ void ShowInfo(const char *str);
 void CDECL ShowInfoF(const char *str, ...);
 void NORETURN CDECL error(const char *str, ...);
 
-/* ttd.c */
+/* openttd.c */
 
 // **************
 // * Warning: DO NOT enable this unless you understand what it does

@@ -1,5 +1,5 @@
-#ifndef TTD_H
-#define TTD_H
+#ifndef OPENTTD_H
+#define OPENTTD_H
 
 #ifndef VARDEF
 #define VARDEF extern
@@ -548,4 +548,4 @@ VARDEF byte _no_scroll;
 #include "functions.h"
 #include "variables.h"
 
-#endif /* TTD_H */
+#endif /* OPENTTD_H */
