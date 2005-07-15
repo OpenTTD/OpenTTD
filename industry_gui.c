@@ -304,6 +304,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 
 			SetDParam(1, i->total_production[0]);
 			SetDParam(0, _cargoc.names_long_s[i->produced_cargo[0]] + ((i->total_production[0]!=1)<<5));
+
 			SetDParam(2, i->pct_transported[0] * 100 >> 8);
 			DrawString(4 + (NEED_ALTERB ? 30 : 0), 127, STR_482B_TRANSPORTED, 0);
 			// Let's put out those buttons..

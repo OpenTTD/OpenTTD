@@ -838,19 +838,12 @@ static void CompanyLeagueWndProc(Window *w, WindowEvent *e)
 
 		i = 0;
 		do {
-			SetDParam(0, i + 1 + STR_01AB);
+			SetDParam(0, i + STR_01AC_1ST);
 			p = plist[i];
 			SetDParam(1, p->name_1);
 			SetDParam(2, p->name_2);
-
 			SetDParam(3, GetPlayerNameString(p->index, 4));
-			/*	WARNING ugly hack!
-					GetPlayerNameString sets up (Player #) if the player is human in an extra DPARAM16
-					It seems that if player is non-human, nothing is set up, so param is 0. GetString doesn't like
-					that because there is another param after it.
-					So we'll just shift the rating one back if player is AI and all is fine
-				*/
-			SetDParam((IS_HUMAN_PLAYER(p->index) ? 5 : 4), GetPerformanceTitleFromValue(p->old_economy[1].performance_history));
+			SetDParam(5, GetPerformanceTitleFromValue(p->old_economy[1].performance_history));
 
 			DrawString(2, 15 + i * 10, i == 0 ? STR_7054 : STR_7055, 0);
 			DrawPlayerIcon(p->index, 27, 16 + i * 10);

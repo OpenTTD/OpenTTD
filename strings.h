@@ -10,6 +10,8 @@ static inline char* InlineString(char* buf, uint16 string)
 }
 
 char *GetString(char *buffr, uint16 string);
+char *GetStringWithArgs(char *buffr, uint16 string, const int32 *argv);
+
 void InjectDParam(int amount);
 int32 GetParamInt32(void);
 uint GetCurrentCurrencyRate(void);

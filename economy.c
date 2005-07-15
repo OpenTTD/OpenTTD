@@ -807,23 +807,20 @@ Pair SetupSubsidyDecodeParam(Subsidy *s, bool mode)
 			SetDParam(1, STR_2029);
 			i = GetIndustry(s->from);
 			tile = i->xy;
-			SetDParam(2, i->town->townnametype);
-			SetDParam(3, i->town->townnameparts);
-
-			SetDParam(4, i->type + STR_4802_COAL_MINE);
+			SetDParam(2, i->town->index);
+			SetDParam(3, i->type + STR_4802_COAL_MINE);
 
 			if (s->cargo_type != CT_GOODS && s->cargo_type != CT_FOOD) {
-				SetDParam(5, STR_2029);
+				SetDParam(4, STR_2029);
 				i = GetIndustry(s->to);
 				tile2 = i->xy;
-				SetDParam(8, i->type + STR_4802_COAL_MINE);
-				SetDParam(6, i->town->townnametype);
-				SetDParam(7, i->town->townnameparts);
+				SetDParam(5, i->town->index);
+				SetDParam(6, i->type + STR_4802_COAL_MINE);
 			} else {
 				t = GetTown(s->to);
 				tile2 = t->xy;
-				SetDParam(5, t->townnametype);
-				SetDParam(6, t->townnameparts);
+				SetDParam(4, t->townnametype);
+				SetDParam(5, t->townnameparts);
 			}
 		} else {
 			t = GetTown(s->from);
@@ -833,8 +830,8 @@ Pair SetupSubsidyDecodeParam(Subsidy *s, bool mode)
 
 			t = GetTown(s->to);
 			tile2 = t->xy;
-			SetDParam(3, t->townnametype);
-			SetDParam(4, t->townnameparts);
+			SetDParam(4, t->townnametype);
+			SetDParam(5, t->townnameparts);
 		}
 	} else {
 		st = GetStation(s->from);

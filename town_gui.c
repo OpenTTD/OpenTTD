@@ -132,13 +132,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 					(str++, r <= RATING_EXCELLENT) ||											// Excellent
 					(str++, true);														// Outstanding
 
-					/*	WARNING ugly hack!
-							GetPlayerNameString sets up (Player #) if the player is human in an extra DPARAM16
-							It seems that if player is non-human, nothing is set up, so param is 0. GetString doesn't like
-							that because there is another param after it.
-							So we'll just shift the rating one back if player is AI and all is fine
-						*/
-					SetDParam((IS_HUMAN_PLAYER(p->index) ? 4 : 3), str);
+					SetDParam(4, str);
 					if (t->exclusivity == p->index) // red icon for player with exclusive rights
 						DrawSprite((SPR_BLOT) | 0x30b8000, 18, y);
 

@@ -11,11 +11,11 @@
 #include "screenshot.h"
 #include "waypoint.h"
 
-static char *StationGetSpecialString(char *buff);
-static char *GetSpecialTownNameString(char *buff, int ind);
-static char *GetSpecialPlayerNameString(char *buff, int ind);
+static char *StationGetSpecialString(char *buff, int x);
+static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed);
+static char *GetSpecialPlayerNameString(char *buff, int ind, const int32 *argv);
 
-static char *DecodeString(char *buff, const char *str);
+static char *FormatString(char *buff, const char *str, const int32 *argv);
 
 extern const char _openttd_revision[];
 
@@ -125,6 +125,35 @@ static const StringID _cargo_string_list[NUM_LANDSCAPE][NUM_CARGO] = {
 };
 
 
+// Read an int64 from the argv array.
+static inline int64 GetInt64(const int32 **argv)
+{
+	int64 result;
+
+	assert(argv);
+	result = (uint32)(*argv)[0] + ((uint64)(uint32)(*argv)[1] << 32);
+	(*argv)+=2;
+	return result;
+}
+
+// Read an int32 from the argv array.
+static inline int32 GetInt32(const int32 **argv)
+{
+	assert(argv);
+	return *(*argv)++;
+}
+
+// Read an array from the argv array.
+static inline const int32 *GetArgvPtr(const int32 **argv, int n)
+{
+	const int32 *result;
+	assert(*argv);
+	result = *argv;
+	(*argv) += n;
+	return result;
+}
+
+
 #define NUM_BOUND_STRINGS 8
 
 // Array to hold the bound strings.
@@ -141,41 +170,38 @@ static const char *GetStringPtr(StringID string)
 	return _langpack_offs[_langtab_start[string >> 11] + (string & 0x7FF)];
 }
 
-char *GetString(char *buffr, StringID string)
+char *GetStringWithArgs(char *buffr, StringID string, const int32 *argv)
 {
 	uint index = string & 0x7FF;
 	uint tab = string >> 11;
 
-	switch (string) {
-		case 0:
-			error("!invalid string id 0 in GetString");
-			break;
-
-		case 0x30D1:
-			return StationGetSpecialString(buffr);
+	if (!string) {
+		error("!invalid string id 0 in GetString");
 	}
 
 	switch (tab) {
 		case 4:
-			if (index >= 0xC0) return GetSpecialTownNameString(buffr, index - 0xC0);
+			if (index >= 0xC0)
+				return GetSpecialTownNameString(buffr, index - 0xC0, GetInt32(&argv));
 			break;
 
 		case 14:
-			if (index >= 0xE4) return GetSpecialPlayerNameString(buffr, index - 0xE4);
+			if (index >= 0xE4)
+				return GetSpecialPlayerNameString(buffr, index - 0xE4, argv);
 			break;
 
+		// User defined name
 		case 15:
 			return GetName(index, buffr);
 
-		case 31: // special or dynamic strings
+		case 31:
+			// dynamic strings. These are NOT to be passed through the formatter,
+			// but passed through verbatim.
 			if (index < (STR_SPEC_USERSTRING & 0x7FF)) {
-				return DecodeString(buffr, _bound_strings[index]);
-			} else {
-				return DecodeString(buffr, _userstring);
+				return strecpy(buffr, _bound_strings[index], NULL);
 			}
 
-		default:
-			break;
+			return FormatString(buffr, _userstring, NULL);
 	}
 
 	if (index >= _langtab_num[tab])
@@ -184,8 +210,14 @@ char *GetString(char *buffr, StringID string)
 			"Probably because an old version of the .lng file.\n", string
 		);
 
-	return DecodeString(buffr, GetStringPtr(string));
+	return FormatString(buffr, GetStringPtr(string), argv);
 }
+
+char *GetString(char *buffr, StringID string)
+{
+	return GetStringWithArgs(buffr, string, (int32*)_decode_parameters);
+}
+
 
 // This function takes a C-string and allocates a temporary string ID.
 // The duration of the bound string is valid only until the next GetString,
@@ -207,21 +239,6 @@ void InjectDParam(int amount)
 {
 	memmove(_decode_parameters + amount, _decode_parameters, sizeof(_decode_parameters) - amount * sizeof(uint32));
 }
-
-int32 GetParamInt32(void)
-{
-	int32 result = GetDParam(0);
-	memmove(&_decode_parameters[0], &_decode_parameters[1], sizeof(uint32) * (lengthof(_decode_parameters)-1));
-	return result;
-}
-
-static int64 GetParamInt64(void)
-{
-	int64 result = GetDParam(0) + ((uint64)GetDParam(1) << 32);
-	memmove(&_decode_parameters[0], &_decode_parameters[2], sizeof(uint32) * (lengthof(_decode_parameters)-2));
-	return result;
-}
-
 
 static const uint32 _divisor_table[] = {
 	1000000000,
@@ -400,9 +417,10 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, int64 n
 	return buff;
 }
 
-static char *DecodeString(char *buff, const char *str)
+static char *FormatString(char *buff, const char *str, const int32 *argv)
 {
 	byte b;
+	const int32 *argv_orig = argv;
 
 	while ((b = *str++) != '\0') {
 		switch (b) {
@@ -416,27 +434,33 @@ static char *DecodeString(char *buff, const char *str)
 			*buff++ = *str++;
 			break;
 		case 0x7B: // {COMMA}
-			buff = FormatCommaNumber(buff, GetParamInt32());
+			buff = FormatCommaNumber(buff, GetInt32(&argv));
+			break;
+		case 0x7C: // Move argument pointer
+			argv = argv_orig + (byte)*str++;
+			break;
+		case 0x7D:
+			assert(0);
 			break;
 		case 0x7E: // {NUMU16}, {INT32}
-			buff = FormatNoCommaNumber(buff, GetParamInt32());
+			buff = FormatNoCommaNumber(buff, GetInt32(&argv));
 			break;
 		case 0x7F: // {CURRENCY}
-			buff = FormatGenericCurrency(buff, &_currency_specs[_opt_ptr->currency], GetParamInt32(), false);
+			buff = FormatGenericCurrency(buff, &_currency_specs[_opt_ptr->currency], GetInt32(&argv), false);
 			break;
 		// 0x80 is reserved for EURO
 		case 0x81: // {STRINL}
 			str += 2;
-			buff = GetString(buff, READ_LE_UINT16(str-2));
+			buff = GetStringWithArgs(buff, READ_LE_UINT16(str-2), argv);
 			break;
 		case 0x82: // {DATE_LONG}
-			buff = FormatYmdString(buff, GetParamInt32());
+			buff = FormatYmdString(buff, GetInt32(&argv));
 			break;
 		case 0x83: // {DATE_SHORT}
-			buff = FormatMonthAndYear(buff, GetParamInt32());
+			buff = FormatMonthAndYear(buff, GetInt32(&argv));
 			break;
 		case 0x84: {// {VELOCITY}
-			int value = GetParamInt32();
+			int value = GetInt32(&argv);
 			if (_opt_ptr->kilometers) value = value * 1648 >> 10;
 			buff = FormatCommaNumber(buff, value);
 			if (_opt_ptr->kilometers) {
@@ -453,7 +477,7 @@ static char *DecodeString(char *buff, const char *str)
 		case 0x85:
 			switch (*str++) {
 			case 0: /* {CURRCOMPACT} */
-				buff = FormatGenericCurrency(buff, &_currency_specs[_opt_ptr->currency], GetParamInt32(), true);
+				buff = FormatGenericCurrency(buff, &_currency_specs[_opt_ptr->currency], GetInt32(&argv), true);
 				break;
 			case 2: /* {REV} */
 				buff = strecpy(buff, _openttd_revision, NULL);
@@ -462,17 +486,53 @@ static char *DecodeString(char *buff, const char *str)
 				// Short description of cargotypes. Layout:
 				// 8-bit = cargo type
 				// 16-bit = cargo count
-				StringID cargo_str = _cargo_string_list[_opt_ptr->landscape][GetParamInt32()];
+				StringID cargo_str = _cargo_string_list[_opt_ptr->landscape][GetInt32(&argv)];
 				uint16 multiplier = (cargo_str == STR_LITERS) ? 1000 : 1;
 				// liquid type of cargo is multiplied by 100 to get correct amount
-				buff = FormatCommaNumber(buff, GetParamInt32() * multiplier);
+				buff = FormatCommaNumber(buff, GetInt32(&argv) * multiplier);
 				buff = strecpy(buff, " ", NULL);
 				buff = strecpy(buff, GetStringPtr(cargo_str), NULL);
 			} break;
-			case 4: /* {CURRCOMPACT64} */
+			case 4: {/* {CURRCOMPACT64} */
 				// 64 bit compact currency-unit
-				buff = FormatGenericCurrency(buff, &_currency_specs[_opt_ptr->currency], GetParamInt64(), true);
+				buff = FormatGenericCurrency(buff, &_currency_specs[_opt_ptr->currency], GetInt64(&argv), true);
 				break;
+			}
+			case 5: { /* {STRING1} */
+				// String that consumes ONE argument
+				StringID str = GetInt32(&argv);
+				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 1));
+				break;
+			}
+			case 6: { /* {STRING2} */
+				// String that consumes TWO arguments
+				StringID str = GetInt32(&argv);
+				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 2));
+				break;
+			}
+			case 7: { /* {STRING3} */
+				// String that consumes THREE arguments
+				StringID str = GetInt32(&argv);
+				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 3));
+				break;
+			}
+			case 8: { /* {STRING4} */
+				// String that consumes FOUR arguments
+				StringID str = GetInt32(&argv);
+				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 4));
+				break;
+			}
+			case 9: { /* {STRING5} */
+				// String that consumes FIVE arguments
+				StringID str = GetInt32(&argv);
+				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 5));
+				break;
+			}
+
+			case 10: {
+				buff = StationGetSpecialString(buff, GetInt32(&argv));
+				break;
+			}
 
 			default:
 				error("!invalid escape sequence in string");
@@ -480,81 +540,79 @@ static char *DecodeString(char *buff, const char *str)
 			break;
 
 		case 0x86: // {SKIP}
-			GetParamInt32();
-			//assert(0);
+			argv++;
 			break;
 		case 0x87: // {VOLUME}
-			buff = FormatCommaNumber(buff, GetParamInt32() * 1000);
+			buff = FormatCommaNumber(buff, GetInt32(&argv) * 1000);
 			buff = strecpy(buff, " ", NULL);
 			buff = strecpy(buff, GetStringPtr(STR_LITERS), NULL);
 			break;
 
-		case 0x88: // {STRING}
-			buff = GetString(buff, GetParamInt32());
+		case 0x88: {// {STRING}
+			StringID str = GetInt32(&argv);
+			// WARNING. It's prohibited for the included string to consume any arguments.
+			// For included strings that consume argument, you should use STRING1, STRING2 etc.
+			// To debug stuff you can set argv to NULL and it will tell you
+			buff = GetStringWithArgs(buff, str, argv);
 			break;
+		}
 
 		case 0x99: { // {CARGO}
 			// Layout now is:
 			//   8bit   - cargo type
 			//   16-bit - cargo count
-			int cargo_str = _cargoc.names_long_s[GetParamInt32()];
+			int cargo_str = _cargoc.names_long_s[GetInt32(&argv)];
 			// Now check if the cargo count is 1, if it is, increase string by 32.
-			if (GetDParam(0) != 1) cargo_str += 32;
-			buff = GetString(buff, cargo_str);
+			if (GetInt32(&argv) != 1) cargo_str += 32;
+			buff = GetStringWithArgs(buff, cargo_str, argv - 1);
 			break;
 		}
 
 		case 0x9A: { // {STATION}
 			Station *st;
-			InjectDParam(1);
-			st = GetStation(GetDParam(1));
+			int32 temp[2];
+
+			st = GetStation(GetInt32(&argv));
 			if (st->xy == 0) { // station doesn't exist anymore
-				buff = GetString(buff, STR_UNKNOWN_DESTINATION);
+				buff = GetStringWithArgs(buff, STR_UNKNOWN_DESTINATION, NULL);
 				break;
 			}
-			SetDParam(0, st->town->townnametype);
-			SetDParam(1, st->town->townnameparts);
-			buff = GetString(buff, st->string_id);
+			temp[0] = st->town->townnametype;
+			temp[1] = st->town->townnameparts;
+			buff = GetStringWithArgs(buff, st->string_id, temp);
 			break;
 		}
 		case 0x9B: { // {TOWN}
 			Town *t;
-			t = GetTown(GetDParam(0));
+			int32 temp[1];
+			t = GetTown(GetInt32(&argv));
 			assert(t->xy);
-			SetDParam(0, t->townnameparts);
-			buff = GetString(buff, t->townnametype);
+			temp[0] = t->townnameparts;
+			buff = GetStringWithArgs(buff, t->townnametype, temp);
 			break;
 		}
 
 		case 0x9C: { // {CURRENCY64}
-			buff = FormatGenericCurrency(buff, &_currency_specs[_opt_ptr->currency], GetParamInt64(), false);
+			buff = FormatGenericCurrency(buff, &_currency_specs[_opt_ptr->currency], GetInt64(&argv), false);
 			break;
 		}
 
 		case 0x9D: { // {WAYPOINT}
-			Waypoint *wp = GetWaypoint(GetDParam(0));
+			int32 temp[2];
+			Waypoint *wp = GetWaypoint(GetInt32(&argv));
 			StringID str;
-			int idx;
 			if (wp->string != STR_NULL) {
-				GetParamInt32(); // skip it
 				str = wp->string;
 			} else {
-				idx = wp->town_cn;
-				if (idx == 0) {
-					str = STR_WAYPOINTNAME_CITY;
-				} else {
-					InjectDParam(1);
-					SetDParam(1, idx + 1);
-					str = STR_WAYPOINTNAME_CITY_SERIAL;
-				}
-				SetDParam(0, wp->town_index);
+				temp[0] = wp->town_index;
+				temp[1] = wp->town_cn + 1;
+				str = wp->town_cn == 0 ? STR_WAYPOINTNAME_CITY : STR_WAYPOINTNAME_CITY_SERIAL;
 			}
-
-			buff = GetString(buff, str);
+			buff = GetStringWithArgs(buff, str, temp);
 		} break;
 
 		case 0x9E: { // {DATE_TINY}
-			buff = FormatTinyDate(buff, GetParamInt32());
+			buff = FormatTinyDate(buff, GetInt32(&argv));
 			break;
 		}
 
@@ -571,9 +629,8 @@ static char *DecodeString(char *buff, const char *str)
 }
 
 
-static char *StationGetSpecialString(char *buff)
+static char *StationGetSpecialString(char *buff, int x)
 {
-	int x = GetParamInt32();
 	if (x & 0x01) *buff++ = '\xB4';
 	if (x & 0x02) *buff++ = '\xB5';
 	if (x & 0x04) *buff++ = '\xB6';
@@ -583,11 +640,9 @@ static char *StationGetSpecialString(char *buff)
 	return buff;
 }
 
-static char *GetSpecialTownNameString(char *buff, int ind)
+static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed)
 {
-	uint32 x = GetParamInt32();
-
-	_town_name_generators[ind](buff, x);
+	_town_name_generators[ind](buff, seed);
 
 	while (*buff != '\0') buff++;
 	return buff;
@@ -658,9 +713,8 @@ static const char _initial_name_letters[] = {
 	'K', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'W',
 };
 
-static char *GenAndCoName(char *buff)
+static char *GenAndCoName(char *buff, uint32 arg)
 {
-	uint32 x = GetParamInt32();
 	uint base,num;
 
 	base = 0;
@@ -670,15 +724,14 @@ static char *GenAndCoName(char *buff)
 		num = 12;
 	}
 
-	buff = strecpy(buff, _surname_list[base + (num * GB(x, 16, 8) >> 8)], NULL);
+	buff = strecpy(buff, _surname_list[base + (num * GB(arg, 16, 8) >> 8)], NULL);
 	buff = strecpy(buff, " & Co.", NULL);
 
 	return buff;
 }
 
-static char *GenPlayerName_4(char *buff)
+static char *GenPresidentName(char *buff, uint32 x)
 {
-	uint32 x = GetParamInt32();
 	uint i, base, num;
 
 	buff[0] = _initial_name_letters[(sizeof(_initial_name_letters) * (byte)x) >> 8];
@@ -731,25 +784,25 @@ static const char * const _song_names[] = {
 	"Hard Drivin'"
 };
 
-static char *GetSpecialPlayerNameString(char *buff, int ind)
+static char *GetSpecialPlayerNameString(char *buff, int ind, const int32 *argv)
 {
 	switch (ind) {
 		case 1: // not used
-			return strecpy(buff, _silly_company_names[GetParamInt32() & 0xFFFF], NULL);
+			return strecpy(buff, _silly_company_names[GetInt32(&argv) & 0xFFFF], NULL);
 
 		case 2: // used for Foobar & Co company names
-			return GenAndCoName(buff);
+			return GenAndCoName(buff, GetInt32(&argv));
 
 		case 3: // President name
-			return GenPlayerName_4(buff);
+			return GenPresidentName(buff, GetInt32(&argv));
 
 		case 4: // song names
-			return strecpy(buff, _song_names[GetParamInt32() - 1], NULL);
+			return strecpy(buff, _song_names[GetInt32(&argv) - 1], NULL);
 	}
 
 	// town name?
 	if (IS_INT_INSIDE(ind - 6, 0, SPECSTR_TOWNNAME_LAST-SPECSTR_TOWNNAME_START + 1)) {
-		buff = GetSpecialTownNameString(buff, ind - 6);
+		buff = GetSpecialTownNameString(buff, ind - 6, GetInt32(&argv));
 		return strecpy(buff, " Transport", NULL);
 	}
 

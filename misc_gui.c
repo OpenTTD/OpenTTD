@@ -75,23 +75,33 @@ static void LandInfoWndProc(Window *w, WindowEvent *e)
 		}
 		DrawStringCentered(140,60, STR_01A8_LOCAL_AUTHORITY, 0);
 
-		str = STR_01CE_CARGO_ACCEPTED - 1;
+		{
+			char buf[512];
+			char *p = GetString(buf, STR_01CE_CARGO_ACCEPTED);
+			bool found = false;
 
-		/* XXX if a tile accepts more cargo types than there are template strings
-		 * this breaks */
-		for (i = 0; i < NUM_CARGO; ++i) {
-			if (lid->ac[i] > 0) {
-				if (lid->ac[i] < 8) {
-					SetDParam(idx++, STR_01D1_8);
-					SetDParam(idx++, lid->ac[i]);
+			for (i = 0; i < NUM_CARGO; ++i) {
+				if (lid->ac[i] > 0) {
+					// Add a comma between each item.
+					if (found) { *p++ = ','; *p++ = ' '; }
+					found = true;
+
+					// If the accepted value is less than 8, show it in 1/8:ths
+					if (lid->ac[i] < 8) {
+						int32 argv[2] = {
+							lid->ac[i],
+							_cargoc.names_s[i]
+						};
+						p = GetStringWithArgs(p, STR_01D1_8, argv);
+					} else {
+						p = GetString(p, _cargoc.names_s[i]);
+					}
 				}
-				SetDParam(idx++, _cargoc.names_s[i]);
-				str++;
 			}
-		}
 
-		if (str != (STR_01CE_CARGO_ACCEPTED - 1))
-			DrawStringMultiCenter(140, 76, str, 276);
+			if (found)
+				DrawStringMultiCenter(140, 76, BindCString(buf), 276);
+		}
 
 		if (lid->td.build_date != 0) {
 			SetDParam(0,lid->td.build_date);
