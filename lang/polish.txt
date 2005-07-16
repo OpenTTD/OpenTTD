@@ -1601,6 +1601,7 @@ STR_2059_IGLOO                                                  :Iglo
 STR_205A_TEPEES                                                 :Tipi
 STR_205B_TEAPOT_HOUSE                                           :Dom-Czajniczek
 STR_205C_PIGGY_BANK                                             :Swinka-skarbonka
+
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
 STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}

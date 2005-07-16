@@ -1601,6 +1601,7 @@ STR_2059_IGLOO                                                  :Igloo
 STR_205A_TEPEES                                                 :Tepees
 STR_205B_TEAPOT_HOUSE                                           :Teapot-House
 STR_205C_PIGGY_BANK                                             :Cûku-Banka
+
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
 STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}

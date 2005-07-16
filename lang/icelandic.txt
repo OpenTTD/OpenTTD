@@ -1601,6 +1601,7 @@ STR_2059_IGLOO                                                  :Snjóhús
 STR_205A_TEPEES                                                 :Indíánatjald
 STR_205B_TEAPOT_HOUSE                                           :Teketilshús
 STR_205C_PIGGY_BANK                                             :Svínabanki
+
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
 STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}

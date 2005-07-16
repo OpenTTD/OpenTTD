@@ -1489,9 +1489,7 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Raudtee ülesõit
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Linnad
 STR_TOWN_LABEL_POP                                              :{WHITE}{STRING} ({COMMA32})
-STR_2001                                                        :{WHITE}{STRING}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
-STR_2003                                                        :{TINYFONT}{WHITE}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Ehitis tuleb enne hävitada
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Populatsioon: {ORANGE}{COMMA32}{BLACK} Maju: {ORANGE}{COMMA32}
@@ -1529,7 +1527,6 @@ STR_2025_SUBSIDIES                                              :{WHITE}Subsiidi
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Pakutavad subsiidiumid teenusepakkumise eest:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} kohast {STRING} kohta {STRING}
 STR_2028_BY                                                     :{YELLOW} (kuni {DATE_SHORT})
-STR_2029                                                        :{STRING} {STRING}
 STR_202A_NONE                                                   :{ORANGE}Mitte ühtegi
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Teenused, mida juba subsideeritakse:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} kohast {STATION} kohta {STATION}{YELLOW} ({STRING}
@@ -1582,6 +1579,7 @@ STR_2059_IGLOO                                                  :Iglu
 STR_205A_TEPEES                                                 :Tipid
 STR_205B_TEAPOT_HOUSE                                           :Teepoti maja
 STR_205C_PIGGY_BANK                                             :Krossu pank
+
 
 ##id 0x2800
 STR_LANDSCAPING                                                 :Maapinna kujunuds

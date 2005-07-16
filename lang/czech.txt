@@ -851,7 +851,7 @@ STR_032A_1_ROAD_VEHICLE_SERVICE                                 :{BLACK}1: Udrzb
 STR_032B_2_RAILROAD_SERVICE                                     :{BLACK}2: Udrzby vlaku
 STR_032C_3_AIR_SERVICE                                          :{BLACK}3: Udrzby letadel
 STR_032D_4_SHIP_SERVICE                                         :{BLACK}4: Udrzby lodi
-STR_032E_5_RAILROAD_SERVICE_ADVANCED                            :{BLACK}5: Udrzby vlaku ( rozsirene )
+STR_032E_5_RAILROAD_SERVICE_ADVANCED                            :{BLACK}5: Udrzby vlaku (pokrocile)
 STR_032F_AUTOSAVE                                               :{RED}Automatické ukládání
 STR_SAVING_GAME                                                 :{RED}*  *  UKLÁDÁ SE HRA  *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Ukládání jeste bezi,{}pockejte prosím, nez dobehne!
@@ -1067,6 +1067,7 @@ STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Ukoncit
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Plynulé zmeny ekonomiky (více mensich zmen)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Povolit kupování podilu z ostatních spolecnosti
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Pri tazeni umistovat signály kazdych(e): {ORANGE}{STRING} dilku(y)
+STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}Povolit automatické pokládání PBS signalu: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Umisteni hlavní listy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Vlevo
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Uprostred
@@ -1472,10 +1473,11 @@ STR_1021_RAILROAD_TRACK                                         :Koleje
 STR_1022_RAILROAD_TRACK_WITH_SIGNALS                            :Koleje se semaforem
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Zeleznicni depo
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...uzemi vlastni jina spolecnost
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Zeleznicni trat s normalnimi signaly
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Zeleznicni trat s predsignaly
-STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Zeleznicni trat s vystupnimy signaly
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Zeleznicni trat s kombinovanymi signaly
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Zeleznicni trat s normálními signály
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Zeleznicni trat s presignály
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Zeleznicni trat s výstupními signály
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Zeleznicni trat s kombinovanými signály
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Koleje s PBS signály
 
 
 
@@ -1509,6 +1511,9 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Zeleznicni prej
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Mesta
 STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
+STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
+STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Budova musi byt nejprve znicena
 STR_2005                                                        :{WHITE}{TOWN}
@@ -1599,6 +1604,7 @@ STR_2059_IGLOO                                                  :Iglu
 STR_205A_TEPEES                                                 :Teepee
 STR_205B_TEAPOT_HOUSE                                           :Dum Konvicka
 STR_205C_PIGGY_BANK                                             :Banka Prasatko
+
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
 STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}

@@ -1601,6 +1601,7 @@ STR_2059_IGLOO                                                  :Jégkunyhó
 STR_205A_TEPEES                                                 :Indiánsátor
 STR_205B_TEAPOT_HOUSE                                           :Teáskanna-ház
 STR_205C_PIGGY_BANK                                             :Malacpersely
+
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
 STR_INDUSTRY_FORMAT                                             :{TOWN}i {STRING}

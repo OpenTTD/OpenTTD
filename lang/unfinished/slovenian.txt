@@ -82,35 +82,35 @@ STR_004B_BATTERY                                                :baterija
 STR_004C_PLASTIC                                                :plastika
 STR_004D_FIZZY_DRINK                                            :gazirana pijaca
 STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA16} potnik
-STR_0050_TON_OF_COAL                                            :{COMMA16} ton premoga
-STR_0051_BAG_OF_MAIL                                            :{COMMA16} vrec poste
+STR_004F_PASSENGER                                              :{COMMA} potnikov
+STR_0050_TON_OF_COAL                                            :{COMMA} ton premoga
+STR_0051_BAG_OF_MAIL                                            :{COMMA} vrec poste
 STR_0052_OF_OIL                                                 :{VOLUME} nafte
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA16} glav zivine
-STR_0054_CRATE_OF_GOODS                                         :{COMMA16} gajb tovora
-STR_0055_TON_OF_GRAIN                                           :{COMMA16} ton zita
-STR_0056_TON_OF_WOOD                                            :{COMMA16} ton lesa
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA16} ton zelezove rude
-STR_0058_TON_OF_STEEL                                           :{COMMA16} ton jekla
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA16} vrec dragocenosti
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA16} ton bakrove rude
-STR_005B_TON_OF_MAIZE                                           :{COMMA16} ton koruze
-STR_005C_TON_OF_FRUIT                                           :{COMMA16} ton sadja
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA16} vrec diamantov
-STR_005E_TON_OF_FOOD                                            :{COMMA16} ton hrane
-STR_005F_TON_OF_PAPER                                           :{COMMA16} ton papirja
-STR_0060_BAG_OF_GOLD                                            :{COMMA16} vrec zlata
+STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} glav zivine
+STR_0054_CRATE_OF_GOODS                                         :{COMMA} gajb tovora
+STR_0055_TON_OF_GRAIN                                           :{COMMA} ton zita
+STR_0056_TON_OF_WOOD                                            :{COMMA} tonne of wood
+STR_0057_TON_OF_IRON_ORE                                        :{COMMA} ton zelezove rude
+STR_0058_TON_OF_STEEL                                           :{COMMA} ton jekla
+STR_0059_BAG_OF_VALUABLES                                       :{COMMA} vrec dragocenosti
+STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} ton bakrove rude
+STR_005B_TON_OF_MAIZE                                           :{COMMA} ton koruze
+STR_005C_TON_OF_FRUIT                                           :{COMMA} ton sadja
+STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} vrec diamantov
+STR_005E_TON_OF_FOOD                                            :{COMMA} ton hrane
+STR_005F_TON_OF_PAPER                                           :{COMMA} ton papirja
+STR_0060_BAG_OF_GOLD                                            :{COMMA} vrec zlata
 STR_0061_OF_WATER                                               :{VOLUME} vode
-STR_0062_TON_OF_WHEAT                                           :{COMMA16} ton psenice
+STR_0062_TON_OF_WHEAT                                           :{COMMA} ton psenice
 STR_0063_OF_RUBBER                                              :{VOLUME} gume
-STR_0064_TON_OF_SUGAR                                           :{COMMA16} ton sladkorja
-STR_0065_TOY                                                    :{COMMA16} igrac
-STR_0066_BAG_OF_CANDY                                           :{COMMA16} vrec bombonov
+STR_0064_TON_OF_SUGAR                                           :{COMMA} ton sladkorja
+STR_0065_TOY                                                    :{COMMA} igrac
+STR_0066_BAG_OF_CANDY                                           :{COMMA} vrec bombonov
 STR_0067_OF_COLA                                                :{VOLUME} cockte
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA16} ton sladkorne pene
-STR_0069_BUBBLE                                                 :{COMMA16} balonckov
-STR_006A_TON_OF_TOFFEE                                          :{COMMA16} ton karamele
-STR_006B_BATTERY                                                :{COMMA16} baterij
+STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} ton sladkorne pene
+STR_0069_BUBBLE                                                 :{COMMA} balonckov
+STR_006A_TON_OF_TOFFEE                                          :{COMMA} ton karamele
+STR_006B_BATTERY                                                :{COMMA} baterij
 STR_006C_OF_PLASTIC                                             :{VOLUME} plastike
 STR_006D_FIZZY_DRINK                                            :{COMMA16} gaziranih pijac
 STR_006E                                                        :
@@ -501,6 +501,28 @@ STR_01CB                                                        :{TINYFONT}{COMM
 STR_01CC_TOGGLE_LARGE_SMALL_MAP                                 :{BLACK}Izberi velika/srednja/majhna velikost mape
 STR_01CD_SELECT_TUTORIAL_DEMONSTRATION                          :{WHITE}Izberi tutorial/demonstracijo
 
+
+
+
+############ range for menu	starts
+############ range ends	here
+
+############ range for menu	starts
+############ range ends	here
+
+
+
+
+############ range for menu	starts
+############ range ends here
+
+
+
+
+
+############ start of townname region
+############ end of	townname region
+
 STR_CURR_GBP                                                    :Funt ({POUNDSIGN})
 STR_CURR_USD                                                    :Dolar ($)
 STR_CURR_EUR                                                    :Euro (¤)
@@ -529,7 +551,11 @@ STR_CURR_CUSTOM                                                 :Poljubno...
 
 STR_OPTIONS_LANG                                                :{BLACK}Jezik
 
+
+
+
 STR_AUTOSAVE_1_MONTH                                            :Vsak mesec
+
 STR_MONTH_JAN                                                   :Januar
 STR_MONTH_FEB                                                   :Februar
 STR_MONTH_MAR                                                   :Marec
@@ -544,10 +570,184 @@ STR_MONTH_NOV                                                   :November
 STR_MONTH_DEC                                                   :December
 
 
+
+
+
+# Start of order review system.
+# DON'T ADD OR REMOVE LINES HERE
+# end of order system
+
+
+
 STR_CONFIG_PATCHES_OFF                                          :Izklopi
 STR_CONFIG_PATCHES_ON                                           :Vklopi
+
+
+
+
+
+
+
+
 
 STR_CONFIG_PATCHES_DISABLED                                     :dizejblano
 STR_CONFIG_PATCHES_INT32                                        :{INT32}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ network gui strings
+
+
+
+
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+############ end network gui strings
+
+
+
+##id 0x0800
+
+##id 0x1000
+
+
+
+##id 0x1800
+
+##id 0x2000
+
+
+##id 0x2800
+
+##id 0x3000
+
+
+############ range for rating starts
+############ range for rating ends
+
+
+##id 0x3800
+
+##id 0x4000
+
+##id 0x4800
+
+############ range for requires	starts
+############ range for requires	ends
+
+
+##id 0x5000
+
+##id 0x5800
+
+
+############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
+############ These strings may never get a new id, or savegames	will break!
+##id 0x6000
+
+
+############ end of	savegame specific region!
+
+##id 0x6800
+
+############ range for difficulty levels starts
+############ range for difficulty levels ends
+
+############ range for difficulty settings starts
+############ range for difficulty settings ends
+
+
+##id 0x7000
+
+##id 0x8000
+
+##id 0x8800
+
+
+
+
+
+
+##id 0x9000
+
+
+##id 0x9800
+
+
+##id 0xA000
+
+
+##id 0xB000
+
+
+############ Those following lines need to be in this order!!
+############ End of order list
+
+
+
+
+
+
+
+
+############ Lists rail types
+
+
+############ End of list of rail types
+
 

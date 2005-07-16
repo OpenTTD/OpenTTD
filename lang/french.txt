@@ -1601,6 +1601,7 @@ STR_2059_IGLOO                                                  :Iglou
 STR_205A_TEPEES                                                 :Tipis
 STR_205B_TEAPOT_HOUSE                                           :Salon de thé
 STR_205C_PIGGY_BANK                                             :Tirelire
+
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
 STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
@@ -1677,7 +1678,7 @@ STR_304A_NONE                                                   :{YELLOW}- Aucun
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...l'endroit ne convient pas
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Trop près d'un autre port
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Détruisez d'abord le port
-STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Choisir l'orientation de la gare
+STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Choisir l'orientation de la gare ferroviaire
 STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Choix du nombre de voies
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Choisir la longueur de la gare
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Choisir l'orientation de l'arrêt d'autobus
@@ -1695,7 +1696,7 @@ STR_305AB_LARGE                                                 :{BLACK}Aéroport
 STR_305B_SIZE                                                   :{BLACK}Taille
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION} {STATIONFEATURES}
-STR_305E_RAILROAD_STATION                                       :Gare
+STR_305E_RAILROAD_STATION                                       :Gare ferroviaire
 STR_305F_AIRCRAFT_HANGAR                                        :Hangar d'aéronefs
 STR_3060_AIRPORT                                                :Aéroport
 STR_3061_TRUCK_LOADING_AREA                                     :Aire de chargement
@@ -1975,7 +1976,7 @@ STR_6830_IMMEDIATE                                              :Immédiat
 STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 mois après le joueur
 STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 mois après le joueur
 STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 mois après le joueur
-STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :A la fin de la ligne et aux gares
+STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :À la fin de la ligne et aux gares
 STR_6835_AT_END_OF_LINE_ONLY                                    :A la fin de la ligne seulement
 STR_6836_OFF                                                    :Inactif
 STR_6837_ON                                                     :Actif
@@ -2752,7 +2753,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Prêt :
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total :
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Nombre de véhicules. Ceci inclut les véhicules routiers, les trains, les navies et les aéronefs.
-STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Nombre de parties de stations. Chaque partie d'une station (i.e. gare, arrêt de bus, [aéro]port) est compté, même si elles sont connectées à une seule station.
+STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Nombre de parties de stations. Chaque partie d'une station (i.e. gare, arrêt de bus, [aéro]port) est comptée, même si elles sont connectées à une seule station.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Le profit du véhicule ayant le revenu le plus bas (de tous les véhicules ayant plus de 2 année d'existence)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Quantité d'argent fait dans le mois ayant le plus bas profit des trois dernières années.
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Quantité d'argent fait dans le mois ayant le plus haut profit des trois dernières années.

@@ -1511,6 +1511,9 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Bahnübergang
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Städte
 STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
+STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
+STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Gebäude muss erst abgerissen werden
 STR_2005                                                        :{WHITE}{TOWN}
@@ -1601,6 +1604,7 @@ STR_2059_IGLOO                                                  :Iglu
 STR_205A_TEPEES                                                 :Zelt
 STR_205B_TEAPOT_HOUSE                                           :Teekannenhaus
 STR_205C_PIGGY_BANK                                             :Piggy-Bank
+
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
 STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}

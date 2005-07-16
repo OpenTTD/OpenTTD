@@ -1601,6 +1601,7 @@ STR_2059_IGLOO                                                  :Iglu
 STR_205A_TEPEES                                                 :Tiipiitä
 STR_205B_TEAPOT_HOUSE                                           :Teesalonki
 STR_205C_PIGGY_BANK                                             :Säästöpossu
+
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
 STR_INDUSTRY_FORMAT                                             :{TOWN} ({STRING})

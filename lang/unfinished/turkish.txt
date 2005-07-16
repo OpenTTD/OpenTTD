@@ -742,6 +742,7 @@ STR_023D_RANDOM_TOWN                                            :{BLACK}Rasgele 
 
 ##id 0x2000
 
+
 ##id 0x2800
 
 ##id 0x3000

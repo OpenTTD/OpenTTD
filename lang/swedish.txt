@@ -1597,6 +1597,7 @@ STR_2059_IGLOO                                                  :Igloo
 STR_205A_TEPEES                                                 :Kåtor
 STR_205B_TEAPOT_HOUSE                                           :Tekanne-Hus
 STR_205C_PIGGY_BANK                                             :Spargris
+
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
 STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
