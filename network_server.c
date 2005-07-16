@@ -1485,27 +1485,13 @@ bool NetworkServer_ReadPackets(NetworkClientState *cs)
 
 // Handle the local command-queue
 void NetworkHandleCommandQueue(NetworkClientState *cs) {
-	if (cs->command_queue != NULL) {
-		CommandPacket *cp;
-		CommandPacket *cp_prev;
+	CommandPacket *cp;
 
-		cp = cs->command_queue;
-		cp_prev = NULL;
+	while ( (cp = cs->command_queue) != NULL) {
+		SEND_COMMAND(PACKET_SERVER_COMMAND)(cs, cp);
 
-		while (cp != NULL) {
-			SEND_COMMAND(PACKET_SERVER_COMMAND)(cs, cp);
-
-			if (cp_prev != NULL) {
-				cp_prev->next = cp->next;
-				free(cp);
-				cp = cp_prev->next;
-			} else {
-				// This means we are at our first packet
-				cs->command_queue = cp->next;
-				free(cp);
-				cp = cs->command_queue;
-			}
-		}
+		cs->command_queue = cp->next;
+		free(cp);
 	}
 }
 
