@@ -1512,17 +1512,24 @@ void NetworkHandleCommandQueue(NetworkClientState *cs) {
 // This is called every tick if this is a _network_server
 void NetworkServer_Tick(void)
 {
-#ifndef ENABLE_NETWORK_SYNC_EVERY_FRAME
-	static uint32 last_sync_frame = 0;
-#endif
 	NetworkClientState *cs;
 	bool send_frame = false;
+#ifndef ENABLE_NETWORK_SYNC_EVERY_FRAME
+	bool send_sync = false;
+#endif
 
 	// Update max-frame-counter
 	if (_frame_counter > _frame_counter_max) {
 		_frame_counter_max = _frame_counter + _network_frame_freq;
 		send_frame = true;
 	}
+
+#ifndef ENABLE_NETWORK_SYNC_EVERY_FRAME
+	if (_frame_counter >= _last_sync_frame + _network_sync_freq) {
+		_last_sync_frame = _frame_counter;
+		send_sync = true;
+	}
+#endif
 
 	// Now we are done with the frame, inform the clients that they can
 	//  do their frame!
@@ -1556,30 +1563,21 @@ void NetworkServer_Tick(void)
 			}
 		}
 
-
-		// Check if we can send command, and if we have anything in the queue
-		if (cs->status > STATUS_DONE_MAP) {
+		if (cs->status >= STATUS_PRE_ACTIVE) {
+			// Check if we can send command, and if we have anything in the queue
 			NetworkHandleCommandQueue(cs);
-		}
 
-		// Do we need to send the new frame-packet?
-		if (send_frame && (cs->status == STATUS_ACTIVE || cs->status == STATUS_PRE_ACTIVE)) {
-			SEND_COMMAND(PACKET_SERVER_FRAME)(cs);
-		}
-#ifndef ENABLE_NETWORK_SYNC_EVERY_FRAME
-		// Is it time to send a sync-packet to all clients?
-		if (last_sync_frame + _network_sync_freq < _frame_counter) {
-			SEND_COMMAND(PACKET_SERVER_SYNC)(cs);
-		}
-#endif
-	}
+			// Send an updated _frame_counter_max to the client
+			if (send_frame)
+				SEND_COMMAND(PACKET_SERVER_FRAME)(cs);
 
 #ifndef ENABLE_NETWORK_SYNC_EVERY_FRAME
-	// Update the last_sync_frame if needed!
-	if (last_sync_frame + _network_sync_freq < _frame_counter) {
-		last_sync_frame = _frame_counter;
-	}
+			// Send a sync-check packet
+			if (send_sync)
+				SEND_COMMAND(PACKET_SERVER_SYNC)(cs);
 #endif
+		}
+	}
 
 	/* See if we need to advertise */
 	NetworkUDPAdvertise();

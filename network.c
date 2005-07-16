@@ -947,6 +947,7 @@ bool NetworkServerStart(void)
 	_frame_counter = 0;
 	_frame_counter_server = 0;
 	_frame_counter_max = 0;
+	_last_sync_frame = 0;
 	_network_own_client_index = NETWORK_SERVER_INDEX;
 
 	if (!_network_dedicated)

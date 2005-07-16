@@ -146,6 +146,8 @@ VARDEF char _network_unique_id[NETWORK_NAME_LENGTH]; // Our own unique ID
 VARDEF uint32 _frame_counter_server; // The frame_counter of the server, if in network-mode
 VARDEF uint32 _frame_counter_max; // To where we may go with our clients
 
+VARDEF uint32 _last_sync_frame; // Used in the server to store the last time a sync packet was sent to clients.
+
 // networking settings
 VARDEF uint32 _network_ip_list[MAX_INTERFACES + 1]; // Network IPs
 VARDEF uint16 _network_game_count;
