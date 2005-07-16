@@ -1101,37 +1101,38 @@ static void NetworkSend(void)
 // Handle the local-command-queue
 static void NetworkHandleLocalQueue(void)
 {
-	if (_local_command_queue != NULL) {
-		CommandPacket *cp;
-		CommandPacket *cp_prev;
+	CommandPacket *cp, **cp_prev;
 
-		cp = _local_command_queue;
-		cp_prev = NULL;
+	cp_prev = &_local_command_queue;
 
-		while (cp != NULL) {
-			if (_frame_counter > cp->frame) {
-				// We can execute this command
-				NetworkExecuteCommand(cp);
+	while ( (cp = *cp_prev) != NULL) {
 
-				if (cp_prev != NULL) {
-					cp_prev->next = cp->next;
-					free(cp);
-					cp = cp_prev->next;
-				} else {
-					// This means we are at our first packet
-					_local_command_queue = cp->next;
-					free(cp);
-					cp = _local_command_queue;
-				}
+		// The queue is always in order, which means
+		// that the first element will be executed first.
+		if (_frame_counter < cp->frame)
+			break;
 
-			} else {
-				// Command is in the future, skip to next
-				//  (commands don't have to be in order in the queue!!)
-				cp_prev = cp;
-				cp = cp->next;
-			}
+		if (_frame_counter > cp->frame) {
+			// If we reach here, it means for whatever reason, we've already executed
+			// past the command we need to execute.
+			DEBUG(net, 0)("[NET] Trying to execute a packet in the past!");
+			assert(0);
 		}
+
+		// We can execute this command
+		NetworkExecuteCommand(cp);
+
+		*cp_prev = cp->next;
+		free(cp);
 	}
+
+	// Just a safety check, to be removed in the future.
+	// Make sure that no older command appears towards the end of the queue
+	// In that case we missed executing it. This will never happen.
+	for(cp = _local_command_queue; cp; cp = cp->next) {
+		assert(_frame_counter < cp->frame);
+	}
+
 }
 
 static bool NetworkDoClientLoop(void)
