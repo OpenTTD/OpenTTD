@@ -289,7 +289,7 @@ static void DrawTile_Trees(TileInfo *ti)
 	z = ti->z;
 	if (ti->tileh != 0) {
 		z += 4;
-		if (ti->tileh & 0x10)
+		if (IsSteepTileh(ti->tileh))
 			z += 4;
 	}
 

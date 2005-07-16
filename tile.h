@@ -61,6 +61,11 @@ static inline uint TileHeight(TileIndex tile)
 	return GB(_m[tile].type_height, 0, 4);
 }
 
+static inline bool IsSteepTileh(uint tileh)
+{
+	return (tileh & 0x10);
+}
+
 static inline void SetTileHeight(TileIndex tile, uint height)
 {
 	assert(tile < MapSize());

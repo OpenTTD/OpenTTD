@@ -764,8 +764,18 @@ int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invali
 
 		tileh = GetTileSlope(tile_cur, &z);
 
-		// steep slopes are completely prohibited
-		if (tileh & 0x10 || (((!_patches.ainew_active && _is_ai_player) || !_patches.build_on_slopes) && tileh != 0)) {
+		/* Prohibit building if
+			1) The tile is "steep" (i.e. stretches two height levels)
+			-OR-
+			2) The tile is non-flat if
+				a) the player building is an "old-school" AI
+				-OR-
+				b) the build_on_slopes switch is disabled
+		*/
+		if (IsSteepTileh(tileh) ||
+			(((!_patches.ainew_active && _is_ai_player) || !_patches.build_on_slopes)
+			&& tileh != 0)) {
+
 			_error_message = STR_0007_FLAT_LAND_REQUIRED;
 			return CMD_ERROR;
 		}

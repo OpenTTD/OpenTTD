@@ -1339,7 +1339,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 			} else {
 				if (ti.type == MP_WATER && ti.map5 == 0)
 					return false;
-				if (ti.tileh & 0x10)
+				if (IsSteepTileh(ti.tileh))
 					return false;
 
 				if (ti.tileh != 0) {

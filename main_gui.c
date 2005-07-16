@@ -1218,7 +1218,7 @@ static void PlaceProc_LightHouse(TileIndex tile)
 	TileInfo ti;
 
 	FindLandscapeHeightByTile(&ti, tile);
-	if (ti.type != MP_CLEAR || (ti.tileh & 0x10))
+	if (IsTileType(tile, MP_CLEAR) || IsSteepTileh(ti.tileh))
 		return;
 
 	ModifyTile(tile, MP_SETTYPE(MP_UNMOVABLE) | MP_MAP5, 1);
@@ -1230,7 +1230,7 @@ static void PlaceProc_Transmitter(TileIndex tile)
 	TileInfo ti;
 
 	FindLandscapeHeightByTile(&ti, tile);
-	if (ti.type != MP_CLEAR || (ti.tileh & 0x10))
+	if (IsTileType(tile, MP_CLEAR) || IsSteepTileh(ti.tileh))
 		return;
 
 	ModifyTile(tile, MP_SETTYPE(MP_UNMOVABLE) | MP_MAP5, 0);

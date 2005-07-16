@@ -152,6 +152,9 @@ static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile)
  * @param x,y coordinates where waypoint will be built
  * @param p1 graphics for waypoint type, bit 8 signifies custom waypoint gfx (& 0x100)
  * @param p2 unused
+ *
+ * @todo When checking for the tile slope,
+ * distingush between "Flat land required" and "land sloped in wrong direction"
  */
 int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -175,7 +178,7 @@ int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	tileh = GetTileSlope(tile, NULL);
 	if (tileh != 0) {
-		if (!_patches.build_on_slopes || tileh & 0x10 || !(tileh & (0x3 << dir)) || !(tileh & ~(0x3 << dir)))
+		if (!_patches.build_on_slopes || IsSteepTileh(tileh) || !(tileh & (0x3 << dir)) || !(tileh & ~(0x3 << dir)))
 			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 	}
 

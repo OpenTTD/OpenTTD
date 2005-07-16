@@ -322,7 +322,7 @@ static const byte _valid_tileh_slopes_road[3][15] = {
 
 static uint32 CheckRoadSlope(int tileh, byte *pieces, byte existing)
 {
-	if (!(tileh & 0x10)) {
+	if (!IsSteepTileh(tileh)) {
 		byte road_bits = *pieces | existing;
 
 		// no special foundation
@@ -385,7 +385,7 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	} else if (ti.type == MP_RAILWAY) {
 		byte m5;
 
-		if (ti.tileh & 0x10) // very steep tile
+		if (IsSteepTileh(ti.tile)) // very steep tile
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 		if(!_valid_tileh_slopes_road[2][ti.tileh]) // prevent certain slopes
@@ -417,7 +417,7 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	} else if (ti.type == MP_TUNNELBRIDGE) {
 
 		/* check for flat land */
-		if (ti.tileh & 0x10) // very steep tile
+		if (IsSteepTileh(ti.tileh)) // very steep tile
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 		/* is this middle part of a bridge? */
@@ -620,6 +620,9 @@ int32 CmdRemoveLongRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  * @param x,y tile coordinates where the depot will be built
  * @param p1 depot direction (0 through 3), where 0 is NW, 1 is NE, etc.
  * @param p2 unused
+ *
+ * @todo When checking for the tile slope,
+ * distingush between "Flat land required" and "land sloped in wrong direction"
  */
 int32 CmdBuildRoadDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -639,8 +642,12 @@ int32 CmdBuildRoadDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!EnsureNoVehicle(tile))
 		return CMD_ERROR;
 
-	if (ti.tileh != 0) {
-		if (!_patches.build_on_slopes || (ti.tileh & 0x10 || !((0x4C >> p1) & ti.tileh) ))
+	if ((ti.tileh != 0) && (
+			!_patches.build_on_slopes ||
+			IsSteepTileh(ti.tileh) ||
+			!CanBuildDepotByTileh(p1, ti.tileh)
+		)
+	) {
 			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 	}
 

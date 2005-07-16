@@ -669,7 +669,7 @@ static void DrawTileSelection(const TileInfo *ti)
 			byte z = ti->z;
 			if (ti->tileh & 8) {
 				z += 8;
-				if (!(ti->tileh & 2) && (ti->tileh & 0x10)) {
+				if (!(ti->tileh & 2) && (IsSteepTileh(ti->tileh))) {
 					z += 8;
 				}
 			}

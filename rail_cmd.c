@@ -217,7 +217,7 @@ uint GetRailFoundation(uint tileh, uint bits)
 static uint32 CheckRailSlope(uint tileh, TrackBits rail_bits, TrackBits existing, TileIndex tile)
 {
 	// never allow building on top of steep tiles
-	if (!(tileh & 0x10)) {
+	if (!IsSteepTileh(tileh)) {
 		rail_bits |= existing;
 
 		// don't allow building on the lower side of a coast
@@ -634,7 +634,10 @@ int32 CmdRemoveRailroadTrack(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 /** Build a train depot
  * @param x,y position of the train depot
  * @param p1 rail type
- * @param p2 depot direction (0 through 3), where 0 is NW, 1 is NE, etc.
+ * @param p2 depot direction (0 through 3), where 0 is NE, 1 is SE, 2 is SW, 3 is NW
+ *
+ * @todo When checking for the tile slope,
+ * distingush between "Flat land required" and "land sloped in wrong direction"
  */
 int32 CmdBuildTrainDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -650,8 +653,23 @@ int32 CmdBuildTrainDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!ValParamRailtype(p1) || p2 > 3) return CMD_ERROR;
 
 	tileh = GetTileSlope(tile, NULL);
-	if (tileh != 0) {
-		if ((!_patches.ainew_active && _is_ai_player) || !_patches.build_on_slopes || (tileh & 0x10 || !((0x4C >> p2) & tileh) ))
+
+	/* Prohibit construction if
+		The tile is non-flat AND
+		1) The AI is "old-school"
+		2) build-on-slopes is disabled
+		3) the tile is steep i.e. spans two height levels
+		4) the exit points in the wrong direction
+
+	*/
+
+	if (tileh != 0 && (
+			(!_patches.ainew_active && _is_ai_player) ||
+			!_patches.build_on_slopes ||
+			IsSteepTileh(tileh) ||
+			!CanBuildDepotByTileh(p2, tileh)
+		)
+	) {
 			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 	}
 

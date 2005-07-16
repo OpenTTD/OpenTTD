@@ -88,7 +88,7 @@ enum {
  */
 static uint32 CheckBridgeSlope(uint direction, uint tileh, bool is_start_tile)
 {
-	if (!(tileh & 0x10)) {	// disable building on very steep slopes
+	if (!IsSteepTileh(tileh)) {	// disable building on very steep slopes
 
 		if (is_start_tile) {
 			/* check slope at start tile
@@ -981,7 +981,7 @@ static void DrawBridgePillars(TileInfo *ti, int x, int y, int z)
 		p = _tileh_bits[(image & 1) * 2 + (ti->map5&0x01)];
 		front_height = ti->z + ((ti->tileh & p[0])?8:0);
 		back_height = ti->z + ((ti->tileh & p[1])?8:0);
-		if (ti->tileh & 0x10) {
+		if (IsSteepTileh(ti->tileh)) {
 			if (!(ti->tileh & p[2])) front_height += 8;
 			if (!(ti->tileh & p[3])) back_height += 8;
 		}
