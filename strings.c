@@ -27,6 +27,8 @@ typedef struct LanguagePack {
 	char own_name[32];	// the localized name of this language
 	char isocode[16];	// the ISO code for the language (not country code)
 	uint16 offsets[32];	// the offsets
+	byte plural_form;		// how to compute plural forms
+	byte pad[3];				// pad header to be a multiple of 4
 	char data[VARARRAY_SIZE];
 } LanguagePack;
 
@@ -418,6 +420,89 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, int64 n
 	return buff;
 }
 
+static int DeterminePluralForm(int32 n)
+{
+	// The absolute value determines plurality
+	if (n < 0) n = -n;
+
+	switch(_langpack->plural_form) {
+	// Two forms, singular used for one only
+	// Used in:
+	//   Danish, Dutch, English, German, Norwegian, Swedish, Estonian, Finnish,
+	//   Greek, Hebrew, Italian, Portuguese, Spanish, Esperanto
+	case 0:
+	default:
+		return n != 1;
+
+	// Only one form
+	// Used in:
+	//   Hungarian, Japanese, Korean, Turkish
+	case 1:
+		return 0;
+
+	// Two forms, singular used for zero and one
+	// Used in:
+	//   French, Brazilian Portuguese
+	case 2:
+		return n > 1;
+
+	// Three forms, special case for zero
+	// Used in:
+	//   Latvian
+	case 3:
+		return n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2;
+
+	// Three forms, special case for one and two
+	// Used in:
+	//   Gaelige (Irish)
+	case 4:
+		return n==1 ? 0 : n==2 ? 1 : 2;
+
+	// Three forms, special case for numbers ending in 1[2-9]
+	// Used in:
+	//   Lithuanian
+	case 5:
+		return n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2;
+
+	// Three forms, special cases for numbers ending in 1 and 2, 3, 4, except those ending in 1[1-4]
+	// Used in:
+	//   Croatian, Czech, Russian, Slovak, Ukrainian
+	case 6:
+		return n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;
+
+	// Three forms, special case for one and some numbers ending in 2, 3, or 4
+	// Used in:
+	//   Polish
+	case 7:
+		return n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;
+
+	// Four forms, special case for one and all numbers ending in 02, 03, or 04
+	// Used in:
+	//   Slovenian
+	case 8:
+		return n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3;
+	}
+}
+
+static const char *ParseStringChoice(const char *b, uint form, char *dst, int *dstlen)
+{
+	//<NUM> {Length of each string} {each string}
+	uint n = (byte)*b++;
+	uint pos,i, mylen=0,mypos=0;
+	for(i=pos=0; i!=n; i++) {
+		uint len = (byte)*b++;
+		if (i == form) {
+			mypos = pos;
+			mylen = len;
+		}
+		pos += len;
+	}
+	*dstlen = mylen;
+	memcpy(dst, b + mypos, mylen);
+	return b + pos;
+}
+
+
 static char *FormatString(char *buff, const char *str, const int32 *argv)
 {
 	byte b;
@@ -440,9 +525,13 @@ static char *FormatString(char *buff, const char *str, const int32 *argv)
 		case 0x7C: // Move argument pointer
 			argv = argv_orig + (byte)*str++;
 			break;
-		case 0x7D:
-			assert(0);
+		case 0x7D: { // {PLURAL}
+			int32 v = argv_orig[(byte)*str++]; // contains the number that determines plural
+			int len;
+			str = ParseStringChoice(str, DeterminePluralForm(v), buff, &len);
+			buff += len;
 			break;
+		}
 		case 0x7E: // {NUMU16}, {INT32}
 			buff = FormatNoCommaNumber(buff, GetInt32(&argv));
 			break;

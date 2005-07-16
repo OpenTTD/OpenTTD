@@ -28,6 +28,8 @@ typedef struct {
 	char own_name[32];	// the localized name of this language
 	char isocode[16];	// the ISO code for the language (not country code)
 	uint16 offsets[32];	// the offsets
+	byte plural_form;		// plural form index
+	byte pad[3];				// pad header to be a multiple of 4
 } LanguagePackHeader;
 
 typedef struct CmdStruct {
@@ -35,6 +37,7 @@ typedef struct CmdStruct {
 	ParseCmdProc proc;
 	long value;
 	int8 consumes;
+	bool dont_count;
 } CmdStruct;
 
 static int _cur_line;
@@ -54,7 +57,12 @@ static int _next_string_id;
 
 static uint32 _hash;
 static char _lang_name[32], _lang_ownname[32], _lang_isocode[16];
+static byte _lang_pluralform;
 
+// for each plural value, this is the number of plural forms.
+static const byte _plural_form_counts[] = { 2,1,2,3,3,3,3,3,4 };
+
+static const char *_cur_ident;
 
 static uint HashStr(const char *s)
 {
@@ -169,7 +177,7 @@ static void EmitSetXY(char *buf, int value)
 	int x,y;
 
 	x = strtol(buf, &err, 0);
-	if (*err != 0) Fatal("SetXY param invalid");
+	if (*err != ' ') Fatal("SetXY param invalid");
 	y = strtol(err+1, &err, 0);
 	if (*err != 0) Fatal("SetXY param invalid");
 
@@ -177,6 +185,102 @@ static void EmitSetXY(char *buf, int value)
 	PutByte((byte)x);
 	PutByte((byte)y);
 }
+
+// The plural specifier looks like
+// {NUM} {PLURAL -1 passenger passengers} then it picks either passenger/passengers depending on the count in NUM
+
+// This is encoded like
+//  CommandByte <ARG#> <NUM> {Length of each string} {each string}
+
+bool ParseRelNum(char **buf, int *value, bool *relative)
+{
+	char *s = *buf, *end;
+	bool rel = false;
+	while (*s == ' ' || *s == '\t') s++;
+	if (*s == '+') { rel = true; s++; }
+	*value = strtol(s, &end, 0);
+	if (end == s) return false;
+	*relative = rel | (*value < 0);
+	*buf = end;
+	return true;
+}
+
+// Parse out the next word, or NULL
+char *ParseWord(char **buf)
+{
+	char *s = *buf, *r;
+	while (*s == ' ' || *s == '\t') s++;
+	if (*s == 0)
+		return NULL;
+
+	if (*s == '"') {
+		r = ++s;
+		// parse until next " or NUL
+		for(;;) {
+			if (*s == 0)
+				break;
+			if (*s == '"') {
+				*s++ = 0;
+				break;
+			}
+			s++;
+		}
+	} else {
+		// proceed until whitespace or NUL
+		r = s;
+		for(;;) {
+			if (*s == 0)
+				break;
+			if (*s == ' ' || *s == '\t') {
+				*s++ = 0;
+				break;
+			}
+			s++;
+		}
+	}
+	*buf = s;
+	return r;
+}
+
+// Forward declaration
+static int TranslateArgumentIdx(int arg, bool relative);
+
+static void EmitPlural(char *buf, int value)
+{
+	int v,i,j;
+	bool relative;
+	char *words[5];
+	int nw = 0;
+
+	// Parse out the number.
+	if (!ParseRelNum(&buf, &v, &relative))
+		Fatal("Plural param invalid");
+
+	// Parse each string
+	for(nw=0; nw<5; nw++) {
+		words[nw] = ParseWord(&buf);
+		if (!words[nw])
+			break;
+	}
+
+	if (nw == 0)
+		Fatal("No plural words");
+
+	if (_plural_form_counts[_lang_pluralform] != nw)
+		Fatal("%s: Invalid number of plural forms. Expecting %d, found %d.", _cur_ident,
+			_plural_form_counts[_lang_pluralform], nw);
+
+	PutByte(0x7D);
+	PutByte(TranslateArgumentIdx(v, relative));
+	PutByte(nw);
+	for(i=0; i<nw; i++)
+		PutByte(strlen(words[i]));
+	for(i=0; i<nw; i++) {
+		for(j=0; words[i][j]; j++)
+			PutByte(words[i][j]);
+	}
+}
+
 
 
 static const CmdStruct _cmd_structs[] = {
@@ -189,7 +293,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"BIGFONT", EmitSingleByte, 9, 0},
 
 	// New line
-	{"", EmitSingleByte, 10, 0},
+	{"", EmitSingleByte, 10, 0, true},
 
 	// Colors
 	{"BLUE", EmitSingleByte,    15, 0},
@@ -242,6 +346,8 @@ static const CmdStruct _cmd_structs[] = {
 
 	{"STATIONFEATURES", EmitEscapedByte, 10, 1},				// station features string, icons of the features
 	{"INDUSTRY", EmitEscapedByte, 11, 1},			// industry, takes an industry #
+
+	{"PLURAL", EmitPlural, 0, 0, true},							// plural specifier
 
 	{"DATE_LONG", EmitSingleByte, 0x82, 1},
 	{"DATE_SHORT", EmitSingleByte, 0x83, 1},
@@ -349,7 +455,7 @@ static const CmdStruct *ParseCommandString(char **str, char *param, int *argno, 
 				Error("Missing } from command '%s'", start);
 				return NULL;
 			}
-			if ( s - start == 60)
+			if ( s - start == 250)
 				Fatal("param command too long");
 			*param++ = c;
 		}
@@ -372,6 +478,10 @@ static void HandlePragma(char *str)
 		ttd_strlcpy(_lang_ownname, str + 8, sizeof(_lang_ownname));
 	} else if (!memcmp(str, "isocode ", 8)) {
 		ttd_strlcpy(_lang_isocode, str + 8, sizeof(_lang_isocode));
+	} else if (!memcmp(str, "plural ", 7)) {
+		_lang_pluralform = atoi(str + 7);
+		if (_lang_pluralform >= lengthof(_plural_form_counts))
+			Fatal("Invalid pluralform %d", _lang_pluralform);
 	} else {
 		Fatal("unknown pragma '%s'", str);
 	}
@@ -414,7 +524,7 @@ static void ExtractCommandString(ParsedCommandStruct *p, char *s, bool warnings)
 			if (p->cmd[argidx] != NULL && p->cmd[argidx] != ar) Fatal("duplicate param idx %d", argidx);
 
 			p->cmd[argidx++] = ar;
-		} else if (ar->cmd[0] != '\0') { // Ignore {}.. it can appear in any order.
+		} else if (!ar->dont_count) { // Ignore some of them
 			if (p->np >= lengthof(p->pairs)) Fatal("too many commands in string, max %d", lengthof(p->pairs));
 			p->pairs[p->np].a = ar;
 			p->pairs[p->np].v = param[0]?strdup(param):"";
@@ -604,7 +714,7 @@ static void MakeHashOfStrings()
 	uint32 hash = 0;
 	char *s;
 	const CmdStruct *cs;
-	char buf[128];
+	char buf[256];
 	int i;
 	int argno;
 
@@ -729,21 +839,31 @@ static void WriteStringsH(const char *filename)
 	}
 }
 
+static ParsedCommandStruct _cur_pcs;
+static int _cur_argidx;
 
-static void PutArgidxCommand(ParsedCommandStruct *pcs, int argidx)
+static int TranslateArgumentIdx(int argidx, bool relative)
 {
 	int i, sum;
 
-	if (argidx >= lengthof(pcs->cmd))
+	if (relative)
+		argidx += _cur_argidx;
+
+	if (argidx < 0 || argidx >= lengthof(_cur_pcs.cmd))
 		Fatal("invalid argidx %d", argidx);
 
 	for(i = sum = 0; i < argidx; i++) {
-		const CmdStruct *cs = pcs->cmd[i++];
+		const CmdStruct *cs = _cur_pcs.cmd[i++];
 		sum += cs ? cs->consumes : 1;
 	}
 
+	return sum;
+}
+
+static void PutArgidxCommand(void)
+{
 	PutByte(0x7C);
-	PutByte((byte)sum);
+	PutByte(TranslateArgumentIdx(0, true));
 }
 
 
@@ -754,9 +874,8 @@ static void WriteLangfile(const char *filename, int show_todo)
 	LanguagePackHeader hdr;
 	int i,j;
 	const CmdStruct *cs;
-	char param[128];
+	char param[256];
 	int argno;
-	ParsedCommandStruct pcs;
 
 	f = fopen(filename, "wb");
 	if (f == NULL) Fatal("can't open %s", filename);
@@ -771,6 +890,7 @@ static void WriteLangfile(const char *filename, int show_todo)
 	// see line 655: fprintf(..."\tLANGUAGE_PACK_IDENT = 0x474E414C,...)
 	hdr.ident = TO_LE32(0x474E414C); // Big Endian value for 'LANG'
 	hdr.version = TO_LE32(_hash);
+	hdr.plural_form = _lang_pluralform;
 	strcpy(hdr.name, _lang_name);
 	strcpy(hdr.own_name, _lang_ownname);
 	strcpy(hdr.isocode, _lang_isocode);
@@ -781,13 +901,14 @@ static void WriteLangfile(const char *filename, int show_todo)
 		for(j = 0; j != in_use[i]; j++) {
 			int idx = (i<<11)+j;
 			char *str;
-			int argidx;
 
 			// For undefined strings, just set that it's an empty string
 			if (_strname[idx] == NULL) {
 				WriteLength(f, 0);
 				continue;
 			}
+
+			_cur_ident = _strname[idx];
 
 			// Produce a message if a string doesn't have a translation.
 			if (show_todo && _translated[idx] == NULL) {
@@ -800,10 +921,10 @@ static void WriteLangfile(const char *filename, int show_todo)
 			}
 
 			// Extract the strings and stuff from the english command string
-			ExtractCommandString(&pcs, _master[idx], false);
+			ExtractCommandString(&_cur_pcs, _master[idx], false);
 
 			str = _translated[idx] ? _translated[idx] : _master[idx];
-			argidx = 0;
+			_cur_argidx = 0;
 
 			while (*str != '\0') {
 				// Process characters as they are until we encounter a {
@@ -817,13 +938,13 @@ static void WriteLangfile(const char *filename, int show_todo)
 				// For params that consume values, we need to handle the argindex properly
 				if (cs->consumes) {
 					// Check if we need to output a move-param command
-					if (argno!=-1 && argno != argidx) {
-						argidx = argno;
-						PutArgidxCommand(&pcs, argidx);
+					if (argno!=-1 && argno != _cur_argidx) {
+						_cur_argidx = argno;
+						PutArgidxCommand();
 					}
 
 					// Output the one from the master string... it's always accurate.
-					cs = pcs.cmd[argidx++];
+					cs = _cur_pcs.cmd[_cur_argidx++];
 					if (!cs)
 						Fatal("cs == NULL");
 				}
