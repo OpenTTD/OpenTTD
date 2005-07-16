@@ -1280,7 +1280,7 @@ static bool SaveFileToDisk(void *ptr)
 	fclose(_sl.fh);
 
 	SaveFileDone();
-	CloseOTTDThread();
+	if (*(bool*)ptr) CloseOTTDThread();
 	return true;
 }
 
@@ -1352,6 +1352,7 @@ int SaveOrLoad(const char *filename, int mode)
 	/* General tactic is to first save the game to memory, then use an available writer
 	 * to write it to file, either in threaded mode if possible, or single-threaded */
 	if (mode == SL_SAVE) { /* SAVE game */
+		bool threaded = true;
 		fmt = GetSavegameFormat("memory"); // write to memory
 
 		_sl.write_bytes = fmt->writer;
@@ -1368,9 +1369,10 @@ int SaveOrLoad(const char *filename, int mode)
 		SlWriteFill(); // flush the save buffer
 
 		/* Write to file */
-		if (_network_server || !CreateOTTDThread(&SaveFileToDisk, NULL)) {
+		if (_network_server || !CreateOTTDThread(&SaveFileToDisk, &threaded)) {
 			DEBUG(misc, 1) ("cannot create savegame thread, reverting to single-threaded mode...");
-			SaveFileToDisk(NULL);
+			threaded = false;
+			SaveFileToDisk(&threaded);
 		}
 
 	} else { /* LOAD game */
