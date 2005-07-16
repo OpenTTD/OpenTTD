@@ -525,7 +525,7 @@ static char *FormatString(char *buff, const char *str, const int32 *argv)
 		case 0x7C: // Move argument pointer
 			argv = argv_orig + (byte)*str++;
 			break;
-		case 0x7D: { // {PLURAL}
+		case 0x7D: { // {P}
 			int32 v = argv_orig[(byte)*str++]; // contains the number that determines plural
 			int len;
 			str = ParseStringChoice(str, DeterminePluralForm(v), buff, &len);
@@ -640,6 +640,24 @@ static char *FormatString(char *buff, const char *str, const int32 *argv)
 				break;
 			}
 
+			case 12: { // {VOLUME}
+				buff = FormatCommaNumber(buff, GetInt32(&argv) * 1000);
+				buff = strecpy(buff, " ", NULL);
+				buff = strecpy(buff, GetStringPtr(STR_LITERS), NULL);
+				break;
+			}
+
+			case 13: { // {G 0 Der Die Das}
+				byte *s = (byte*)GetStringPtr(argv_orig[(byte)*str++]); // contains the string that determines gender.
+				int len;
+				int gender = 0;
+				if (s && s[0] == 0x87)
+					gender = s[1];
+				str = ParseStringChoice(str, gender, buff, &len);
+				buff += len;
+				break;
+			}
+
 			default:
 				error("!invalid escape sequence in string");
 			}
@@ -648,10 +666,11 @@ static char *FormatString(char *buff, const char *str, const int32 *argv)
 		case 0x86: // {SKIP}
 			argv++;
 			break;
-		case 0x87: // {VOLUME}
-			buff = FormatCommaNumber(buff, GetInt32(&argv) * 1000);
-			buff = strecpy(buff, " ", NULL);
-			buff = strecpy(buff, GetStringPtr(STR_LITERS), NULL);
+
+		// This sets up the gender for the string.
+		// We just ignore this one. It's used somewhere else.
+		case 0x87: // {GENDER 0}
+			str++;
 			break;
 
 		case 0x88: {// {STRING}
@@ -667,10 +686,8 @@ static char *FormatString(char *buff, const char *str, const int32 *argv)
 			// Layout now is:
 			//   8bit   - cargo type
 			//   16-bit - cargo count
-			int cargo_str = _cargoc.names_long_s[GetInt32(&argv)];
-			// Now check if the cargo count is 1, if it is, increase string by 32.
-			if (GetInt32(&argv) != 1) cargo_str += 32;
-			buff = GetStringWithArgs(buff, cargo_str, argv - 1);
+			StringID cargo_str = _cargoc.names_long[GetInt32(&argv)];
+			buff = GetStringWithArgs(buff, cargo_str, argv);
 			break;
 		}
 

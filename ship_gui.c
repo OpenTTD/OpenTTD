@@ -32,7 +32,7 @@ void DrawShipPurchaseInfo(int x, int y, EngineID engine_number)
 	y += 10;
 
 	/* Cargo type + capacity */
-	SetDParam(0, _cargoc.names_long_p[svi->cargo_type]);
+	SetDParam(0, _cargoc.names_long[svi->cargo_type]);
 	SetDParam(1, svi->capacity);
 	SetDParam(2, svi->refittable ? STR_9842_REFITTABLE : STR_EMPTY);
 	DrawString(x,y, STR_PURCHASE_INFO_CAPACITY, 0);
@@ -87,7 +87,7 @@ static void ShipRefitWndProc(Window *w, WindowEvent *e)
 			int32 cost = DoCommandByTile(v->tile, v->index, WP(w,refit_d).cargo, DC_QUERY_COST, CMD_REFIT_SHIP);
 			if (!CmdFailed(cost)) {
 				SetDParam(2, cost);
-				SetDParam(0, _cargoc.names_long_p[WP(w,refit_d).cargo]);
+				SetDParam(0, _cargoc.names_long[WP(w,refit_d).cargo]);
 				SetDParam(1, v->cargo_cap);
 				DrawString(1, 137, STR_9840_NEW_CAPACITY_COST_OF_REFIT, 0);
 			}
@@ -214,7 +214,7 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 		SetDParam(2, v->value);
 		DrawString(74, 57, STR_9816_BUILT_VALUE, 0);
 
-		SetDParam(0, _cargoc.names_long_p[v->cargo_type]);
+		SetDParam(0, _cargoc.names_long[v->cargo_type]);
 		SetDParam(1, v->cargo_cap);
 		DrawString(74, 67, STR_9817_CAPACITY, 0);
 

@@ -301,8 +301,8 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 		if (i->produced_cargo[0] != CT_INVALID) {
 			DrawString(2, 117, STR_482A_PRODUCTION_LAST_MONTH, 0);
 
+			SetDParam(0, _cargoc.names_long[i->produced_cargo[0]]);
 			SetDParam(1, i->total_production[0]);
-			SetDParam(0, _cargoc.names_long_s[i->produced_cargo[0]] + ((i->total_production[0]!=1)<<5));
 
 			SetDParam(2, i->pct_transported[0] * 100 >> 8);
 			DrawString(4 + (NEED_ALTERB ? 30 : 0), 127, STR_482B_TRANSPORTED, 0);
@@ -311,8 +311,8 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 				DrawArrowButtons(5, 127, (WP(w,vp2_d).data_2 == 1 ? WP(w,vp2_d).data_3 : 0));
 
 			if (i->produced_cargo[1] != CT_INVALID) {
+				SetDParam(0, _cargoc.names_long[i->produced_cargo[1]]);
 				SetDParam(1, i->total_production[1]);
-				SetDParam(0, _cargoc.names_long_s[i->produced_cargo[1]] + ((i->total_production[1]!=1)<<5));
 				SetDParam(2, i->pct_transported[1] * 100 >> 8);
 				DrawString(4 + (NEED_ALTERB ? 30 : 0), 137, STR_482B_TRANSPORTED, 0);
 				// Let's put out those buttons..
@@ -586,12 +586,12 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 			i = GetIndustry(_industry_sort[p]);
 			SetDParam(0, i->index);
 			if (i->produced_cargo[0] != 0xFF) {
+				SetDParam(1, _cargoc.names_long[i->produced_cargo[0]]);
 				SetDParam(2, i->total_production[0]);
-				SetDParam(1, _cargoc.names_long_s[i->produced_cargo[0]] + ((i->total_production[0]!=1)<<5));
 
 				if (i->produced_cargo[1] != 0xFF) {
+					SetDParam(3, _cargoc.names_long[i->produced_cargo[1]]);
 					SetDParam(4, i->total_production[1]);
-					SetDParam(3, _cargoc.names_long_s[i->produced_cargo[1]] + ((i->total_production[1]!=1)<<5));
 					SetDParam(5, i->pct_transported[0] * 100 >> 8);
 					SetDParam(6, i->pct_transported[1] * 100 >> 8);
 					DrawString(4, 28+n*10, STR_INDUSTRYDIR_ITEM_TWO, 0);

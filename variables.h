@@ -379,8 +379,7 @@ VARDEF FILE *_log_file_fd;
 typedef struct {
 	StringID names_s[NUM_CARGO];
 	StringID names_p[NUM_CARGO];
-	StringID names_long_s[NUM_CARGO];
-	StringID names_long_p[NUM_CARGO];
+	StringID names_long[NUM_CARGO];
 	StringID names_short[NUM_CARGO];
 	byte weights[NUM_CARGO];
 	SpriteID sprites[NUM_CARGO];

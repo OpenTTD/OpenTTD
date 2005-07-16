@@ -60,7 +60,7 @@ void DrawTrainEnginePurchaseInfo(int x, int y, EngineID engine_number)
 	SetDParam(0, STR_8838_N_A);
 	SetDParam(2, STR_EMPTY);
 	if (rvi->capacity != 0) {
-		SetDParam(0, _cargoc.names_long_p[rvi->cargo_type]);
+		SetDParam(0, _cargoc.names_long[rvi->cargo_type]);
 		SetDParam(1, rvi->capacity << multihead);
 		SetDParam(2, STR_9842_REFITTABLE);
 	}
@@ -101,7 +101,7 @@ void DrawTrainWagonPurchaseInfo(int x, int y, EngineID engine_number)
 	y += 10;
 
 	/* Cargo type + capacity */
-	SetDParam(0, _cargoc.names_long_p[rvi->cargo_type]);
+	SetDParam(0, _cargoc.names_long[rvi->cargo_type]);
 	SetDParam(1, rvi->capacity);
 	SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
 	DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, 0);
@@ -730,7 +730,7 @@ static void RailVehicleRefitWndProc(Window *w, WindowEvent *e)
 			int32 cost = DoCommandByTile(v->tile, v->index, WP(w,refit_d).cargo, DC_QUERY_COST, CMD_REFIT_RAIL_VEHICLE);
 			if (!CmdFailed(cost)) {
 				SetDParam(2, cost);
-				SetDParam(0, _cargoc.names_long_p[WP(w,refit_d).cargo]);
+				SetDParam(0, _cargoc.names_long[WP(w,refit_d).cargo]);
 				SetDParam(1, _returned_refit_amount);
 				DrawString(1, 137, STR_9840_NEW_CAPACITY_COST_OF_REFIT, 0);
 			}
@@ -1010,8 +1010,8 @@ static void TrainDetailsInfoTab(const Vehicle *v, int x, int y)
 static void TrainDetailsCapacityTab(const Vehicle *v, int x, int y)
 {
 	if (v->cargo_cap != 0) {
+		SetDParam(0, _cargoc.names_long[v->cargo_type]);
 		SetDParam(1, v->cargo_cap);
-		SetDParam(0, _cargoc.names_long_p[v->cargo_type]);
 		DrawString(x, y, STR_013F_CAPACITY, 0);
 	}
 }

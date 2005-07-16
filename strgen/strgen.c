@@ -59,6 +59,9 @@ static uint32 _hash;
 static char _lang_name[32], _lang_ownname[32], _lang_isocode[16];
 static byte _lang_pluralform;
 
+static char _genders[8][8];
+static int _numgenders;
+
 // for each plural value, this is the number of plural forms.
 static const byte _plural_form_counts[] = { 2,1,2,3,3,3,3,3,4 };
 
@@ -245,16 +248,28 @@ char *ParseWord(char **buf)
 // Forward declaration
 static int TranslateArgumentIdx(int arg, bool relative);
 
+static void EmitWordList(char **words, int nw)
+{
+	int i,j;
+
+	PutByte(nw);
+	for(i=0; i<nw; i++)
+		PutByte(strlen(words[i]));
+	for(i=0; i<nw; i++) {
+		for(j=0; words[i][j]; j++)
+			PutByte(words[i][j]);
+	}
+}
+
 static void EmitPlural(char *buf, int value)
 {
-	int v,i,j;
+	int v;
 	bool relative;
 	char *words[5];
 	int nw = 0;
 
-	// Parse out the number.
-	if (!ParseRelNum(&buf, &v, &relative))
-		Fatal("Plural param invalid");
+	// Parse out the number, if one exists.
+	if (!ParseRelNum(&buf, &v, &relative)) { v = -1; relative = true; }
 
 	// Parse each string
 	for(nw=0; nw<5; nw++) {
@@ -272,15 +287,47 @@ static void EmitPlural(char *buf, int value)
 
 	PutByte(0x7D);
 	PutByte(TranslateArgumentIdx(v, relative));
-	PutByte(nw);
-	for(i=0; i<nw; i++)
-		PutByte(strlen(words[i]));
-	for(i=0; i<nw; i++) {
-		for(j=0; words[i][j]; j++)
-			PutByte(words[i][j]);
-	}
+	EmitWordList(words, nw);
 }
 
+
+static void EmitGender(char *buf, int value)
+{
+	int v;
+	bool relative;
+	char *words[8];
+	int nw;
+
+	if (buf[0] == '=') {
+		buf++;
+
+		// This is a {G=DER} command
+		for(nw=0; ;nw++) {
+			if (nw >= 8)
+				Fatal("G argument '%s' invalid", buf);
+			if (!strcmp(buf, _genders[nw]))
+				break;
+		}
+		// now nw contains the gender index
+		PutByte(0x87);
+		PutByte(nw);
+
+	} else {
+		// This is a {G 0 foo bar two} command.
+		if (!ParseRelNum(&buf, &v, &relative)) { v = 0; relative = true; }
+
+		for(nw=0; nw<8; nw++) {
+			words[nw] = ParseWord(&buf);
+			if (!words[nw])
+				break;
+		}
+		if (nw != _numgenders) Fatal("Bad # of arguments for gender command");
+		PutByte(0x85);
+		PutByte(13);
+		PutByte(TranslateArgumentIdx(v, relative));
+		EmitWordList(words, nw);
+	}
+}
 
 
 static const CmdStruct _cmd_structs[] = {
@@ -346,8 +393,10 @@ static const CmdStruct _cmd_structs[] = {
 
 	{"STATIONFEATURES", EmitEscapedByte, 10, 1},				// station features string, icons of the features
 	{"INDUSTRY", EmitEscapedByte, 11, 1},			// industry, takes an industry #
+	{"VOLUME", EmitEscapedByte, 12, 1},
 
-	{"PLURAL", EmitPlural, 0, 0, true},							// plural specifier
+	{"P", EmitPlural, 0, 0, true},							// plural specifier
+	{"G", EmitGender, 0, 0, true},							// gender specifier
 
 	{"DATE_LONG", EmitSingleByte, 0x82, 1},
 	{"DATE_SHORT", EmitSingleByte, 0x83, 1},
@@ -355,7 +404,6 @@ static const CmdStruct _cmd_structs[] = {
 	{"VELOCITY", EmitSingleByte, 0x84, 1},
 
 	{"SKIP", EmitSingleByte, 0x86, 1},
-	{"VOLUME", EmitSingleByte, 0x87, 1},
 
 	{"STRING", EmitSingleByte, 0x88, 1},
 
@@ -431,7 +479,7 @@ static const CmdStruct *ParseCommandString(char **str, char *param, int *argno, 
 	start = s;
 	for(;;) {
 		c = *s++;
-		if (c == '}' || c == ' ')
+		if (c == '}' || c == ' ' || c == '=')
 			break;
 		if (c == '\0') {
 			Error("Missing } from command '%s'", start);
@@ -445,7 +493,8 @@ static const CmdStruct *ParseCommandString(char **str, char *param, int *argno, 
 		return NULL;
 	}
 
-	if (c == ' ') {
+	if (c != '}') {
+		if (c == '=') s--;
 		// copy params
 		start = s;
 		for(;;) {
@@ -482,6 +531,15 @@ static void HandlePragma(char *str)
 		_lang_pluralform = atoi(str + 7);
 		if (_lang_pluralform >= lengthof(_plural_form_counts))
 			Fatal("Invalid pluralform %d", _lang_pluralform);
+	} else if (!memcmp(str, "gender ", 7)) {
+		char *buf = str + 7, *s;
+		int i;
+		for(i=0; i<8; i++) {
+			s = ParseWord(&buf);
+			if (!s) break;
+			ttd_strlcpy(_genders[i], s, sizeof(_genders[i]));
+			_numgenders++;
+		}
 	} else {
 		Fatal("unknown pragma '%s'", str);
 	}

@@ -372,7 +372,7 @@ static void DrawStationViewWindow(Window *w)
 		if ( st->goods[i].enroute_from == station_id) {
 			if (--pos < 0) {
 				SetDParam(1, waiting);
-				SetDParam(0, _cargoc.names_long_s[i] + (waiting==1 ? 0 : 32));
+				SetDParam(0, _cargoc.names_long[i]);
 				DrawStringRightAligned(x + 234, y, STR_0009, 0);
 				y += 10;
 			}
@@ -380,7 +380,7 @@ static void DrawStationViewWindow(Window *w)
 			/* enroute */
 			if (--pos < 0) {
 				SetDParam(1, waiting);
-				SetDParam(0, _cargoc.names_long_s[i] + (waiting==1 ? 0 : 32));
+				SetDParam(0, _cargoc.names_long[i]);
 				DrawStringRightAligned(x + 234, y, STR_000A_EN_ROUTE_FROM, 0);
 				y += 10;
 			}

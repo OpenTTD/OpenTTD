@@ -245,7 +245,7 @@ static void AircraftRefitWndProc(Window *w, WindowEvent *e)
 			int32 cost = DoCommandByTile(v->tile, v->index, WP(w,refit_d).cargo, DC_QUERY_COST, CMD_REFIT_AIRCRAFT);
 			if (!CmdFailed(cost)) {
 				SetDParam(2, cost);
-				SetDParam(0, _cargoc.names_long_p[WP(w,refit_d).cargo]);
+				SetDParam(0, _cargoc.names_long[WP(w,refit_d).cargo]);
 				SetDParam(1, _aircraft_refit_capacity);
 				DrawString(1, 137, STR_A041_NEW_CAPACITY_COST_OF_REFIT, 0);
 			}
@@ -377,10 +377,10 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 					DrawString(60, y, STR_A011_BUILT_VALUE, 0);
 					y += 10;
 
-					SetDParam(0, _cargoc.names_long_p[v->cargo_type]);
+					SetDParam(0, _cargoc.names_long[v->cargo_type]);
 					SetDParam(1, v->cargo_cap);
 					u = v->next;
-					SetDParam(2, _cargoc.names_long_p[u->cargo_type]);
+					SetDParam(2, _cargoc.names_long[u->cargo_type]);
 					SetDParam(3, u->cargo_cap);
 					DrawString(60, y, STR_A019_CAPACITY + (u->cargo_cap == 0), 0);
 					y += 14;

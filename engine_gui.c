@@ -135,7 +135,7 @@ static void DrawTrainEngineInfo(int engine, int x, int y, int maxw)
 	SetDParam(5, STR_8838_N_A);
 	if (cap != 0) {
 		SetDParam(6, cap << multihead);
-		SetDParam(5, _cargoc.names_long_p[rvi->cargo_type]);
+		SetDParam(5, _cargoc.names_long[rvi->cargo_type]);
 	}
 	DrawStringMultiCenter(x, y, STR_885B_COST_WEIGHT_T_SPEED_POWER, maxw);
 }
@@ -217,7 +217,7 @@ static void DrawRoadVehEngineInfo(int engine, int x, int y, int maxw)
 	SetDParam(2, rvi->running_cost * _price.roadveh_running >> 8);
 
 	SetDParam(4, rvi->capacity);
-	SetDParam(3, _cargoc.names_long_p[rvi->cargo_type]);
+	SetDParam(3, _cargoc.names_long[rvi->cargo_type]);
 
 	DrawStringMultiCenter(x, y, STR_902A_COST_SPEED_RUNNING_COST, maxw);
 }
@@ -253,7 +253,7 @@ static void DrawShipEngineInfo(int engine, int x, int y, int maxw)
 	const ShipVehicleInfo *svi = ShipVehInfo(engine);
 	SetDParam(0, svi->base_cost * (_price.ship_base >> 3) >> 5);
 	SetDParam(1, svi->max_speed * 10 >> 5);
-	SetDParam(2, _cargoc.names_long_p[svi->cargo_type]);
+	SetDParam(2, _cargoc.names_long[svi->cargo_type]);
 	SetDParam(3, svi->capacity);
 	SetDParam(4, svi->running_cost * _price.ship_running >> 8);
 	DrawStringMultiCenter(x, y, STR_982E_COST_MAX_SPEED_CAPACITY, maxw);
