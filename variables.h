@@ -83,10 +83,6 @@ VARDEF uint16 _station_tick_ctr;
 
 VARDEF uint32 _random_seeds[2][2];
 
-#ifdef PLAYER_SEED_RANDOM
-VARDEF uint32 _player_seeds[MAX_PLAYERS][2];
-#endif
-
 // Iterator through all towns in OnTick_Town
 VARDEF uint32 _cur_town_ctr;
 // Frequency iterator at the same place

@@ -323,9 +323,6 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 			NetworkSend_Packet(p, cs);
 			if (feof(file_pointer)) {
 				// Done reading!
-#ifdef PLAYER_SEED_RANDOM
-				int i;
-#endif
 				Packet *p;
 
 				// XXX - Delete this when patch-settings are saved in-game
@@ -333,13 +330,6 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 
 				p = NetworkSend_Init(PACKET_SERVER_MAP);
 				NetworkSend_uint8(p, MAP_PACKET_END);
-#ifdef PLAYER_SEED_RANDOM
-				// Send the player_seeds in this packet
-				for (i = 0; i < MAX_PLAYERS; i++) {
-					NetworkSend_uint32(p, _player_seeds[i][0]);
-					NetworkSend_uint32(p, _player_seeds[i][1]);
-				}
-#endif
 				NetworkSend_Packet(p, cs);
 
 				// Set the status to DONE_MAP, no we will wait for the client

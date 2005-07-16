@@ -24,11 +24,6 @@ static inline uint32 ROR(uint32 x, int n)
 	return (x >> n) + (x << ((sizeof(x)*8)-n));
 }
 
-/* XXX - Player-seeds don't seem to be used anymore.. which is a good thing
-     so I just disabled them for now. If there are no problems, we can remove
-     it completely! -- TrueLight */
-#undef PLAYER_SEED_RANDOM
-
 #ifndef MERSENNE_TWISTER
 
 #ifdef RANDOM_DEBUG
@@ -47,25 +42,10 @@ uint32 t;
 		printf("Random [%d/%d] %s:%d\n",_frame_counter, _current_player, file, line);
 #endif
 
-#ifdef PLAYER_SEED_RANDOM
-	if (_current_player>=MAX_PLAYERS || !_networking) {
-		s = _random_seeds[0][0];
-		t = _random_seeds[0][1];
-		_random_seeds[0][0] = s + ROR(t ^ 0x1234567F, 7) + 1;
-		return _random_seeds[0][1] = ROR(s, 3) - 1;
-	} else {
-		uint32 s = _player_seeds[_current_player][0];
-		uint32 t = _player_seeds[_current_player][1];
-		_player_seeds[_current_player][0] = s + ROR(t ^ 0x1234567F, 7) + 1;
-		DEBUG(net, 1)("[NET-Seeds] Player seed called!");
-		return _player_seeds[_current_player][1] = ROR(s, 3) - 1;
-	}
-#else
 	s = _random_seeds[0][0];
 	t = _random_seeds[0][1];
 	_random_seeds[0][0] = s + ROR(t ^ 0x1234567F, 7) + 1;
 	return _random_seeds[0][1] = ROR(s, 3) - 1;
-#endif
 }
 #endif // MERSENNE_TWISTER
 
@@ -94,18 +74,6 @@ uint InteractiveRandomRange(uint max)
 {
 	return (uint16)InteractiveRandom() * max >> 16;
 }
-
-
-#ifdef PLAYER_SEED_RANDOM
-void InitPlayerRandoms(void)
-{
-	int i;
-	for (i=0; i<MAX_PLAYERS; i++) {
-		_player_seeds[i][0]=InteractiveRandom();
-		_player_seeds[i][1]=InteractiveRandom();
-	}
-}
-#endif
 
 void SetDate(uint date)
 {
