@@ -1634,87 +1634,61 @@ void OnNewDay_RoadVeh(Vehicle *v)
 
 	/* update destination */
 	if (v->current_order.type == OT_GOTO_STATION && !(v->vehstatus & VS_CRASHED)) {
-		RoadStop *rs;
-		uint32 mindist = 0xFFFFFFFF;
 		int num;
 		RoadStopType type = (v->cargo_type == CT_PASSENGERS) ? RS_BUS : RS_TRUCK;
 
-		typedef struct {
-			uint32 dist;
-			RoadStop *rs;
-		} StopStruct;
-
-		StopStruct *stop, *firststop;
-
 		st = GetStation(v->current_order.station);
-		rs = GetPrimaryRoadStop(st, type);
 		num = GetNumRoadStops(st, type);
 
-		firststop = stop = malloc(num * sizeof(StopStruct));
-
 		//Current slot has expired
-		if ( (v->u.road.slot_age++ <= 0) && (v->u.road.slot != NULL)) {
+		if ( (v->u.road.slot_age++ <= 0) && (v->u.road.slot != NULL))
 			ClearSlot(v, v->u.road.slot);
-		}
 
 		//We do not have a slot, so make one
-		if (v->u.road.slot == NULL && rs != NULL) {
+		if (v->u.road.slot == NULL) {
+			RoadStop *rs = GetPrimaryRoadStop(st, type);
+			RoadStop *first_stop = rs;
+			RoadStop *best_stop = NULL;
+			uint32 mindist = 120, dist; // 120 is threshold distance.
+
 		//first we need to find out how far our stations are away.
-
 			DEBUG(ms, 2) ("Multistop: Attempting to obtain a slot for vehicle %d at station %d (0x%x)", v->unitnumber, st->index, st->xy);
-			do {
-				stop->dist = RoadFindPathToStation(v, rs->xy) / NPF_TILE_LENGTH;
-				DEBUG(ms, 3) ("Multistop: Distance to stop at 0x%x is %d", rs->xy, stop->dist);
-				stop->rs = rs;
+			for(; rs != NULL; rs = rs->next) {
+				// Only consider those with at least a free slot.
+				if (!(rs->slot[0] == INVALID_SLOT || rs->slot[1] == INVALID_SLOT))
+					continue;
 
-				if (stop->dist < mindist) {
-					mindist = stop->dist;
+				// Previously the NPF pathfinder was used here even if NPF is OFF.. WTF?
+				assert(NUM_SLOTS == 2);
+				dist = DistanceManhattan(v->tile, rs->xy);
+
+				// Remember the one with the shortest distance
+				if (dist < mindist) {
+					mindist = dist;
+					best_stop = rs;
 				}
-
-				stop++;
-				rs = rs->next;
-			} while (rs != NULL);
-
-			if (mindist < 180) {	//if we're reasonably close, get us a slot
-				int k;
-				bubblesort(firststop, num, sizeof(StopStruct), dist_compare);
-
-				stop = firststop;
-				for (k = 0; k < num; k++) {
-					int i;
-					bool br = false;
-					for (i = 0; i < NUM_SLOTS; i++) {
-						if ((stop->rs->slot[i] == INVALID_SLOT) && (stop->dist < 120)) {
-
-							//Hooray we found a free slot. Assign it
-							DEBUG(ms, 1) ("Multistop: Slot %d at 0x%x assigned to vehicle %d", i, stop->rs->xy, v->unitnumber);
-							stop->rs->slot[i] = v->index;
-							v->u.road.slot = stop->rs;
-
-							v->dest_tile = stop->rs->xy;
-							v->u.road.slot_age = -30;
-							v->u.road.slotindex = i;
-
-							br = true;
-							break;
-
-						}
-					}
-					stop++;
-					if (br) break;
-				}
+				DEBUG(ms, 3) ("Multistop: Distance to stop at 0x%x is %d", rs->xy, dist);
 			}
 
-		//now we couldn't assign a slot for one reason or another.
-		//so we just go to the nearest station
-			if (v->u.road.slot == NULL) {
+			// best_stop now contains the best stop we found.
+			if (best_stop) {
+				int slot;
+				// Find a free slot in this stop. We know that at least one is free.
+				assert(best_stop->slot[0] == INVALID_SLOT || best_stop->slot[1] == INVALID_SLOT);
+				slot = (best_stop->slot[0] == INVALID_SLOT) ? 0 : 1;
+				best_stop->slot[slot] = v->index;
+				v->u.road.slot = best_stop;
+				v->dest_tile = best_stop->xy;
+				v->u.road.slot_age = -30;
+				v->u.road.slotindex = slot;
+				DEBUG(ms, 1) ("Multistop: Slot %d at 0x%x assigned to vehicle %d", slot, best_stop->xy, v->unitnumber);
+			} else if (first_stop) {
+				//now we couldn't assign a slot for one reason or another.
+				//so we just go towards the first station
 				DEBUG(ms, 1) ("Multistop: No free slot found for vehicle %d, going to default station", v->unitnumber);
-				v->dest_tile = firststop->rs->xy;
+				v->dest_tile = first_stop->xy;
 			}
 		}
-
-		free(firststop);
-		firststop = stop = NULL;
 	}
 
 	if (v->vehstatus & VS_STOPPED)
@@ -1748,4 +1722,3 @@ void RoadVehiclesYearlyLoop(void)
 		}
 	}
 }
-

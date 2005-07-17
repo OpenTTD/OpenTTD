@@ -844,7 +844,7 @@ bool CheckOrders(uint data_a, uint data_b)
 		return false;
 
 	/* Only check every 20 days, so that we don't flood the message log */
-	if ( ( ( v->day_counter % 20) == 0 ) && (v->owner == _local_player) ) {
+	if ( (v->owner == _local_player) && (v->day_counter % 20 == 0) ) {
 		int n_st, problem_type = -1;
 		const Order *order;
 		const Station *st;
