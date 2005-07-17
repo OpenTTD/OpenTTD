@@ -2,6 +2,7 @@
 #include "openttd.h"
 #include "spritecache.h"
 #include "strings.h"
+#include "string.h"
 #include "gfx.h"
 #include "table/palettes.h"
 #include "hal.h"
@@ -255,9 +256,63 @@ enum {
 	ASCII_COLORSTART = 15,
 };
 
+/** Truncate a given string to a maximum width if neccessary.
+ * If the string is truncated, add three dots ('...') to show this.
+ * @param *dest string that is checked and possibly truncated
+ * @param maxw maximum width in pixels of the string
+ * @return new width of (truncated) string */
+static int TruncateString(char *str, uint maxw)
+{
+	int w = 0;
+	int base = _stringwidth_base;
+	int ddd, ddd_w;
+
+	byte c;
+	char *ddd_pos;
+
+	base = _stringwidth_base;
+	ddd_w = ddd = GetCharacterWidth(base + '.') * 3;
+
+	for (c = *str, ddd_pos = str; *str != '\0'; c = (*++str)) {
+		if (c >= ASCII_LETTERSTART) {
+			w += GetCharacterWidth(base + c);
+
+			if (w >= maxw) {
+				// string got too big... insert dotdotdot
+				ddd_pos[0] = ddd_pos[1] = ddd_pos[2] = '.';
+				ddd_pos[3] = 0;
+				return ddd_w;
+			}
+		} else {
+			if (c == ASCII_SETX) str++;
+			else if (c == ASCII_SETXY) str += 2;
+			else if (c == ASCII_TINYFONT) {
+				base = 224;
+				ddd = GetCharacterWidth(base + '.') * 3;
+			} else if (c == ASCII_BIGFONT) {
+				base = 448;
+				ddd = GetCharacterWidth(base + '.') * 3;
+			}
+		}
+
+		// Remember the last position where three dots fit.
+		if (w + ddd < maxw) {
+			ddd_w = w + ddd;
+			ddd_pos = str;
+		}
+	}
+
+	return w;
+}
+
+static inline int TruncateStringID(StringID src, char *dest, uint maxw)
+{
+	GetString(dest, src);
+	return TruncateString(dest, maxw);
+}
 
 /* returns right coordinate */
-int DrawString(int x, int y, uint16 str, uint16 color)
+int DrawString(int x, int y, StringID str, uint16 color)
 {
 	char buffer[512];
 
@@ -265,8 +320,15 @@ int DrawString(int x, int y, uint16 str, uint16 color)
 	return DoDrawString(buffer, x, y, color);
 }
 
+int DrawStringTruncated(int x, int y, StringID str, uint16 color, uint maxw)
+{
+	char buffer[512];
+	TruncateStringID(str, buffer, maxw);
+	return DoDrawString(buffer, x, y, color);
+}
 
-void DrawStringRightAligned(int x, int y, uint16 str, uint16 color)
+
+void DrawStringRightAligned(int x, int y, StringID str, uint16 color)
 {
 	char buffer[512];
 
@@ -274,8 +336,16 @@ void DrawStringRightAligned(int x, int y, uint16 str, uint16 color)
 	DoDrawString(buffer, x - GetStringWidth(buffer), y, color);
 }
 
+void DrawStringRightAlignedTruncated(int x, int y, StringID str, uint16 color, uint maxw)
+{
+	char buffer[512];
 
-int DrawStringCentered(int x, int y, uint16 str, uint16 color)
+	TruncateStringID(str, buffer, maxw);
+	DoDrawString(buffer, x - GetStringWidth(buffer), y, color);
+}
+
+
+int DrawStringCentered(int x, int y, StringID str, uint16 color)
 {
 	char buffer[512];
 	int w;
@@ -288,9 +358,22 @@ int DrawStringCentered(int x, int y, uint16 str, uint16 color)
 	return w;
 }
 
-void DrawStringCenterUnderline(int x, int y, uint16 str, uint16 color)
+int DrawStringCenteredTruncated(int x, int y, StringID str, uint16 color, uint maxw)
+{
+	char buffer[512];
+	int w = TruncateStringID(str, buffer, maxw);
+	return DoDrawString(buffer, x - (w / 2), y, color);
+}
+
+void DrawStringCenterUnderline(int x, int y, StringID str, uint16 color)
 {
 	int w = DrawStringCentered(x, y, str, color);
+	GfxFillRect(x - (w >> 1), y + 10, x - (w >> 1) + w, y + 10, _string_colorremap[1]);
+}
+
+void DrawStringCenterUnderlineTruncated(int x, int y, StringID str, uint16 color, uint maxw)
+{
+	int w = DrawStringCenteredTruncated(x, y, str, color, maxw);
 	GfxFillRect(x - (w >> 1), y + 10, x - (w >> 1) + w, y + 10, _string_colorremap[1]);
 }
 
@@ -333,7 +416,6 @@ static uint32 FormatStringLinebreaks(char *str, int maxw)
 		str[-1] = 0;
 	}
 }
-
 
 void DrawStringMultiCenter(int x, int y, uint16 str, int maxw)
 {
@@ -555,6 +637,14 @@ skip_cont:;
 			printf("Unknown string command character %d\n", c);
 		}
 	}
+}
+
+int DoDrawStringTruncated(const char *str, int x, int y, uint16 color, uint maxw)
+{
+	char buffer[512];
+	ttd_strlcpy(buffer, str, sizeof(buffer));
+	TruncateString(buffer, maxw);
+	return DoDrawString(buffer, x, y, color);
 }
 
 void DrawSprite(uint32 img, int x, int y)

@@ -35,11 +35,22 @@ typedef struct CursorVars {
 
 void RedrawScreenRect(int left, int top, int right, int bottom);
 void GfxScroll(int left, int top, int width, int height, int xo, int yo);
-int DrawStringCentered(int x, int y, uint16 str, uint16 color);
-int DrawString(int x, int y, uint16 str, uint16 color);
-void DrawStringCenterUnderline(int x, int y, uint16 str, uint16 color);
+
+int DrawStringCentered(int x, int y, StringID str, uint16 color);
+int DrawStringCenteredTruncated(int x, int y, StringID str, uint16 color, uint maxw);
+
+int DrawString(int x, int y, StringID str, uint16 color);
+int DrawStringTruncated(int x, int y, StringID str, uint16 color, uint maxw);
+
 int DoDrawString(const char *string, int x, int y, uint16 color);
-void DrawStringRightAligned(int x, int y, uint16 str, uint16 color);
+int DoDrawStringTruncated(const char *str, int x, int y, uint16 color, uint maxw);
+
+void DrawStringCenterUnderline(int x, int y, StringID str, uint16 color);
+void DrawStringCenterUnderlineTruncated(int x, int y, StringID str, uint16 color, uint maxw);
+
+void DrawStringRightAligned(int x, int y, StringID str, uint16 color);
+void DrawStringRightAlignedTruncated(int x, int y, StringID str, uint16 color, uint maxw);
+
 void GfxFillRect(int left, int top, int right, int bottom, int color);
 void GfxDrawLine(int left, int top, int right, int bottom, int color);
 void DrawFrameRect(int left, int top, int right, int bottom, int color, int flags);
