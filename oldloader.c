@@ -1641,7 +1641,7 @@ void GetOldSaveGameName(char *title, const char *file)
 		return;
 
 	if (fread(title, 1, 48, f) != 48)
-		title[0] = '\0';
+		snprintf(title, 48, "Corrupt file");
 
 	fclose(f);
 }

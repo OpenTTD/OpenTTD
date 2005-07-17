@@ -320,8 +320,9 @@ VARDEF uint _returned_refit_amount;
 
 // Deals with the type of the savegame, independent of extension
 typedef struct {
-	int mode;						// savegame/scenario type (old, new)
-	char name[MAX_PATH];	// name
+	int mode;             // savegame/scenario type (old, new)
+	char name[MAX_PATH];  // name
+	char title[255];      // internal name of the game
 } SmallFiosItem;
 
 // Used when switching from the intro menu.

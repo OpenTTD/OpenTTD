@@ -198,6 +198,7 @@ static const FiosItem* GetFiosItem(const char* file)
 
 	for (i = 0; i < _fios_num; i++) {
 		if (strcmp(file, _fios_list[i].name) == 0) break;
+		if (strcmp(file, _fios_list[i].title) == 0) break;
 	}
 
 	if (i == _fios_num) { /* If no name matches, try to parse it as number */
@@ -227,11 +228,13 @@ DEF_CONSOLE_CMD(ConLoad)
 	item = GetFiosItem(file);
 	if (item != NULL) {
 		switch (item->type) {
-			case FIOS_TYPE_FILE: case FIOS_TYPE_OLDFILE:
+			case FIOS_TYPE_FILE: case FIOS_TYPE_OLDFILE: {
 				_switch_mode = SM_LOAD;
 				SetFiosType(item->type);
-				strcpy(_file_to_saveload.name, FiosBrowseTo(item));
-				break;
+
+				ttd_strlcpy(_file_to_saveload.name, FiosBrowseTo(item), sizeof(_file_to_saveload.name));
+				ttd_strlcpy(_file_to_saveload.title, item->title, sizeof(_file_to_saveload.title));
+			} break;
 			default: IConsolePrintF(_icolour_err, "%s: Not a savegame.", file);
 		}
 	} else
@@ -255,7 +258,7 @@ DEF_CONSOLE_CMD(ConListFiles)
 
 	for (i = 0; i < _fios_num; i++) {
 		const FiosItem *item = &_fios_list[i];
-		IConsolePrintF(_icolour_def, "%d) %s", i, (item->title[0] != '\0') ? item->title : item->name);
+		IConsolePrintF(_icolour_def, "%d) %s", i, item->title);
 	}
 
 	FiosFreeSavegameList();
