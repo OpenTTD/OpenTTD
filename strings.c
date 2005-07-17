@@ -16,7 +16,7 @@ static char *StationGetSpecialString(char *buff, int x);
 static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed);
 static char *GetSpecialPlayerNameString(char *buff, int ind, const int32 *argv);
 
-static char *FormatString(char *buff, const char *str, const int32 *argv);
+static char *FormatString(char *buff, const char *str, const int32 *argv, uint casei);
 
 extern const char _openttd_revision[];
 
@@ -173,12 +173,16 @@ static const char *GetStringPtr(StringID string)
 	return _langpack_offs[_langtab_start[string >> 11] + (string & 0x7FF)];
 }
 
-char *GetStringWithArgs(char *buffr, StringID string, const int32 *argv)
+// The highest 8 bits of string contain the "case index".
+// These 8 bits will only be set when FormatString wants to print
+// the string in a different case. No one else except FormatString
+// should set those bits.
+char *GetStringWithArgs(char *buffr, uint string, const int32 *argv)
 {
 	uint index = string & 0x7FF;
-	uint tab = string >> 11;
+	uint tab = (string >> 11) & 0x1F;
 
-	if (!string) {
+	if (!(string & 0xFFFF)) {
 		error("!invalid string id 0 in GetString");
 	}
 
@@ -204,7 +208,7 @@ char *GetStringWithArgs(char *buffr, StringID string, const int32 *argv)
 				return strecpy(buffr, _bound_strings[index], NULL);
 			}
 
-			return FormatString(buffr, _userstring, NULL);
+			return FormatString(buffr, _userstring, NULL, 0);
 	}
 
 	if (index >= _langtab_num[tab])
@@ -213,7 +217,7 @@ char *GetStringWithArgs(char *buffr, StringID string, const int32 *argv)
 			"Probably because an old version of the .lng file.\n", string
 		);
 
-	return FormatString(buffr, GetStringPtr(string), argv);
+	return FormatString(buffr, GetStringPtr(string&0xFFFF), argv, string >> 24);
 }
 
 char *GetString(char *buffr, StringID string)
@@ -503,10 +507,11 @@ static const char *ParseStringChoice(const char *b, uint form, char *dst, int *d
 }
 
 
-static char *FormatString(char *buff, const char *str, const int32 *argv)
+static char *FormatString(char *buff, const char *str, const int32 *argv, uint casei)
 {
 	byte b;
 	const int32 *argv_orig = argv;
+	uint modifier = 0;
 
 	while ((b = *str++) != '\0') {
 		switch (b) {
@@ -532,7 +537,7 @@ static char *FormatString(char *buff, const char *str, const int32 *argv)
 			buff += len;
 			break;
 		}
-		case 0x7E: // {NUMU16}, {INT32}
+		case 0x7E: // {NUM}
 			buff = FormatNoCommaNumber(buff, GetInt32(&argv));
 			break;
 		case 0x7F: // {CURRENCY}
@@ -562,7 +567,6 @@ static char *FormatString(char *buff, const char *str, const int32 *argv)
 			}
 			break;
 		}
-
 		// 0x85 is used as escape character..
 		case 0x85:
 			switch (*str++) {
@@ -590,32 +594,37 @@ static char *FormatString(char *buff, const char *str, const int32 *argv)
 			}
 			case 5: { /* {STRING1} */
 				// String that consumes ONE argument
-				StringID str = GetInt32(&argv);
+				uint str = modifier + GetInt32(&argv);
 				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 1));
+				modifier = 0;
 				break;
 			}
 			case 6: { /* {STRING2} */
 				// String that consumes TWO arguments
-				StringID str = GetInt32(&argv);
+				uint str = modifier + GetInt32(&argv);
 				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 2));
+				modifier = 0;
 				break;
 			}
 			case 7: { /* {STRING3} */
 				// String that consumes THREE arguments
-				StringID str = GetInt32(&argv);
+				uint str = modifier + GetInt32(&argv);
 				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 3));
+				modifier = 0;
 				break;
 			}
 			case 8: { /* {STRING4} */
 				// String that consumes FOUR arguments
-				StringID str = GetInt32(&argv);
+				uint str = modifier + GetInt32(&argv);
 				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 4));
+				modifier = 0;
 				break;
 			}
 			case 9: { /* {STRING5} */
 				// String that consumes FIVE arguments
-				StringID str = GetInt32(&argv);
+				uint str = modifier + GetInt32(&argv);
 				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 5));
+				modifier = 0;
 				break;
 			}
 
@@ -636,14 +645,16 @@ static char *FormatString(char *buff, const char *str, const int32 *argv)
 				// The string STR_INDUSTRY_PATTERN controls the formatting
 				args[0] = i->town->index;
 				args[1] = i->type + STR_4802_COAL_MINE;
-				buff = FormatString(buff, GetStringPtr(STR_INDUSTRY_FORMAT), args);
+				buff = FormatString(buff, GetStringPtr(STR_INDUSTRY_FORMAT), args, modifier >> 24);
+				modifier = 0;
 				break;
 			}
 
 			case 12: { // {VOLUME}
 				buff = FormatCommaNumber(buff, GetInt32(&argv) * 1000);
 				buff = strecpy(buff, " ", NULL);
-				buff = strecpy(buff, GetStringPtr(STR_LITERS), NULL);
+				buff = FormatString(buff, GetStringPtr(STR_LITERS), NULL, modifier >> 24);
+				modifier = 0;
 				break;
 			}
 
@@ -658,6 +669,20 @@ static char *FormatString(char *buff, const char *str, const int32 *argv)
 				break;
 			}
 
+			case 14: { // {DATE_TINY}
+				buff = FormatTinyDate(buff, GetInt32(&argv));
+				break;
+			}
+
+			case 15: { // {CARGO}
+				// Layout now is:
+				//   8bit   - cargo type
+				//   16-bit - cargo count
+				StringID cargo_str = _cargoc.names_long[GetInt32(&argv)];
+				buff = GetStringWithArgs(buff, cargo_str, argv);
+				break;
+			}
+
 			default:
 				error("!invalid escape sequence in string");
 			}
@@ -668,28 +693,34 @@ static char *FormatString(char *buff, const char *str, const int32 *argv)
 			break;
 
 		// This sets up the gender for the string.
-		// We just ignore this one. It's used somewhere else.
+		// We just ignore this one. It's used in {G 0 Der Die Das} to determine the case.
 		case 0x87: // {GENDER 0}
 			str++;
 			break;
 
 		case 0x88: {// {STRING}
-			StringID str = GetInt32(&argv);
+			uint str = modifier + GetInt32(&argv);
 			// WARNING. It's prohibited for the included string to consume any arguments.
 			// For included strings that consume argument, you should use STRING1, STRING2 etc.
 			// To debug stuff you can set argv to NULL and it will tell you
 			buff = GetStringWithArgs(buff, str, argv);
+			modifier = 0;
 			break;
 		}
 
-		case 0x99: { // {CARGO}
-			// Layout now is:
-			//   8bit   - cargo type
-			//   16-bit - cargo count
-			StringID cargo_str = _cargoc.names_long[GetInt32(&argv)];
-			buff = GetStringWithArgs(buff, cargo_str, argv);
-			break;
-		}
+		case 0x99: { // {WAYPOINT}
+			int32 temp[2];
+			Waypoint *wp = GetWaypoint(GetInt32(&argv));
+			StringID str;
+			if (wp->string != STR_NULL) {
+				str = wp->string;
+			} else {
+				temp[0] = wp->town_index;
+				temp[1] = wp->town_cn + 1;
+				str = wp->town_cn == 0 ? STR_WAYPOINTNAME_CITY : STR_WAYPOINTNAME_CITY_SERIAL;
+			}
+			buff = GetStringWithArgs(buff, str, temp);
+		} break;
 
 		case 0x9A: { // {STATION}
 			Station *st;
@@ -720,22 +751,27 @@ static char *FormatString(char *buff, const char *str, const int32 *argv)
 			break;
 		}
 
-		case 0x9D: { // {WAYPOINT}
-			int32 temp[2];
-			Waypoint *wp = GetWaypoint(GetInt32(&argv));
-			StringID str;
-			if (wp->string != STR_NULL) {
-				str = wp->string;
-			} else {
-				temp[0] = wp->town_index;
-				temp[1] = wp->town_cn + 1;
-				str = wp->town_cn == 0 ? STR_WAYPOINTNAME_CITY : STR_WAYPOINTNAME_CITY_SERIAL;
-			}
-			buff = GetStringWithArgs(buff, str, temp);
-		} break;
+		case 0x9D: { // {SETCASE}
+		             // This is a pseudo command, it's outputted when someone does {STRING.ack}
+			// The modifier is added to all subsequent GetStringWithArgs that accept the modifier.
+			modifier = (byte)*str++ << 24;
+			break;
+		}
 
-		case 0x9E: { // {DATE_TINY}
-			buff = FormatTinyDate(buff, GetInt32(&argv));
+		case 0x9E: { // {Used to implement case switching}
+			// <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <STRINGDEFAULT>
+			// Each LEN is printed using 2 bytes in big endian order.
+			uint num = (byte)*str++;
+			while (num) {
+				if (str[0] == casei) {
+					// Found the case, adjust str pointer and continue
+					str += 3;
+					break;
+				}
+				// Otherwise skip to the next case
+				str += 3 + (str[1] << 8) + str[2];
+				num--;
+			}
 			break;
 		}
 
