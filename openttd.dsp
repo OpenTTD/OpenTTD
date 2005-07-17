@@ -171,6 +171,10 @@ SOURCE=.\md5.c
 # End Source File
 
 # Begin Source File
+SOURCE=.\mersenne.c
+# End Source File
+
+# Begin Source File
 SOURCE=.\minilzo.c
 
 !IF  "$(CFG)" == "openttd - Win32 Release"
