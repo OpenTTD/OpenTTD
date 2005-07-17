@@ -1,5 +1,5 @@
-#ifndef AI_H
-#define AI_H
+#ifndef AI_NEW_H
+#define AI_NEW_H
 
 #include "aystar.h"
 
@@ -255,5 +255,4 @@ int AiNew_PickVehicle(Player *p);
 int AiNew_Build_Vehicle(Player *p, TileIndex tile, byte flag);
 int AiNew_Build_Depot(Player *p, TileIndex tile, byte direction, byte flag);
 
-
-#endif
+#endif /* AI_NEW_H */
