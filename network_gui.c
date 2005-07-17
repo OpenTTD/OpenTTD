@@ -53,30 +53,9 @@ enum {
 static NetworkGameList *_selected_item = NULL;
 static int8 _selected_company_item = -1;
 
-// Truncates a string to max_width (via GetStringWidth) and adds 3 dots
-//  at the end of the name.
-static void NetworkTruncateString(char *name, const int max_width)
-{
-	char temp[NETWORK_NAME_LENGTH];
-	char internal_name[NETWORK_NAME_LENGTH];
-
-	ttd_strlcpy(internal_name, name, sizeof(internal_name));
-
-	if (GetStringWidth(internal_name) > max_width) {
-		// Servername is too long, trunc it!
-		snprintf(temp, sizeof(temp), "%s...", internal_name);
-		// Continue to delete 1 char of the string till it is in range
-		while (GetStringWidth(temp) > max_width) {
-			internal_name[strlen(internal_name) - 1] = '\0';
-			snprintf(temp, sizeof(temp), "%s...", internal_name);
-		}
-		ttd_strlcpy(name, temp, sizeof(temp));
-	}
-}
-
 extern const char _openttd_revision[];
 
-static FiosItem *selected_map = NULL; // to highlight slected map
+static FiosItem *_selected_map = NULL; // to highlight slected map
 
 // called when a new server is found on the network
 void UpdateNetworkGameWindow(bool unselect)
@@ -132,7 +111,6 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			uint16 y = NET_PRC__OFFSET_TOP_WIDGET + 3;
 			int32 n = 0;
 			int32 pos = w->vscroll.pos;
-			char servername[NETWORK_NAME_LENGTH];
 			const NetworkGameList *cur_item = _network_game_list;
 
 			while (pos > 0 && cur_item != NULL) {
@@ -148,9 +126,8 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 				if (cur_item == sel)
 					GfxFillRect(11, y - 2, 218, y + 9, 10); // show highlighted item with a different colour
 
-				snprintf(servername, sizeof(servername), "%s", cur_item->info.server_name);
-				NetworkTruncateString(servername, 110);
-				DoDrawString(servername, 15, y, 16); // server name
+				SetDParamStr(0, cur_item->info.server_name);
+				DrawStringTruncated(15, y, STR_02BD, 16, 110);
 
 				SetDParam(0, cur_item->info.clients_on);
 				SetDParam(1, cur_item->info.clients_max);
@@ -192,10 +169,10 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 
 
 			SetDParamStr(0, sel->info.server_name);
-			DrawStringMultiCenter(365, 42, STR_ORANGE, 2); // game name
+			DrawStringCenteredTruncated(365, 42, STR_ORANGE, 16, 220); // game name
 
 			SetDParamStr(0, sel->info.map_name);
-			DrawStringMultiCenter(365, 54, STR_02BD, 2); // map name
+			DrawStringCenteredTruncated(365, 54, STR_02BD, 16, 220); // map name
 
 			SetDParam(0, sel->info.clients_on);
 			SetDParam(1, sel->info.clients_max);
@@ -495,11 +472,11 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		pos = w->vscroll.pos;
 		while (pos < _fios_num + 1) {
 			item = _fios_list + pos - 1;
-			if (item == selected_map || (pos == 0 && selected_map == NULL))
+			if (item == _selected_map || (pos == 0 && _selected_map == NULL))
 				GfxFillRect(11, y - 1, 259, y + 10, 155); // show highlighted item with a different colour
 
 			if (pos == 0) DrawString(14, y, STR_4010_GENERATE_RANDOM_NEW_GAME, 9);
-			else DoDrawString(item->title[0] ? item->title : item->name, 14, y, _fios_colors[item->type] );
+			else DoDrawString(item->title, 14, y, _fios_colors[item->type] );
 			pos++;
 			y += NSSWND_ROWSIZE;
 
@@ -521,8 +498,8 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			int y = (e->click.pt.y - NSSWND_START) / NSSWND_ROWSIZE;
 			if ((y += w->vscroll.pos) >= w->vscroll.count)
 				return;
-			if (y == 0) selected_map = NULL;
-			else selected_map = _fios_list + y-1;
+
+			_selected_map = (y == 0) ? NULL : _fios_list + y - 1;
 			SetWindowDirty(w);
 			} break;
 		case 7: case 8: /* Connection type */
@@ -538,14 +515,15 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			_is_network_server = true;
 			ttd_strlcpy(_network_server_name, WP(w, querystr_d).text.buf, sizeof(_network_server_name));
 			UpdateTextBufferSize(&WP(w, querystr_d).text);
-			if (selected_map == NULL) { // start random new game
+			if (_selected_map == NULL) { // start random new game
 				GenRandomNewGame(Random(), InteractiveRandom());
 			} else { // load a scenario
-				char *name;
-				if ((name = FiosBrowseTo(selected_map)) != NULL) {
-					SetFiosType(selected_map->type);
-					strcpy(_file_to_saveload.name, name);
-					snprintf(_network_game_info.map_name, sizeof(_network_game_info.map_name), "Loaded scenario");
+				char *name = FiosBrowseTo(_selected_map);
+				if (name != NULL) {
+					SetFiosType(_selected_map->type);
+					ttd_strlcpy(_file_to_saveload.name, name, sizeof(_file_to_saveload.name));
+					ttd_strlcpy(_file_to_saveload.title, _selected_map->title, sizeof(_file_to_saveload.title));
+
 					DeleteWindow(w);
 					StartScenarioEditor(Random(), InteractiveRandom());
 				}
@@ -555,7 +533,6 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			_is_network_server = true;
 			ttd_strlcpy(_network_server_name, WP(w, querystr_d).text.buf, sizeof(_network_server_name));
 			UpdateTextBufferSize(&WP(w, querystr_d).text);
-			snprintf(_network_game_info.map_name, sizeof(_network_game_info.map_name), "Loaded game");
 			/* XXX - WC_NETWORK_WINDOW should stay, but if it stays, it gets
 			 * copied all the elements of 'load game' and upon closing that, it segfaults */
 			DeleteWindowById(WC_NETWORK_WINDOW, 0);

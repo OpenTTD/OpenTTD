@@ -1163,7 +1163,7 @@ void BuildFileList(void)
 		_fios_list = FiosGetSavegameList(&_fios_num, _saveload_mode);
 }
 
-static void DrawFiosTexts(void)
+static void DrawFiosTexts(uint maxw)
 {
 	static const char *path = NULL;
 	static StringID str = STR_4006_UNABLE_TO_READ_DRIVE;
@@ -1176,7 +1176,7 @@ static void DrawFiosTexts(void)
 
 	if (str != STR_4006_UNABLE_TO_READ_DRIVE) SetDParam(0, tot);
 	DrawString(2, 37, str, 0);
-	DoDrawString(path, 2, 27, 16);
+	DoDrawStringTruncated(path, 2, 27, 16, 5);
 }
 
 static void MakeSortedSaveGameList(void)
@@ -1231,7 +1231,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 
 		SetVScrollCount(w, _fios_num);
 		DrawWindowWidgets(w);
-		DrawFiosTexts();
+		DrawFiosTexts(w->width);
 
 		if (_savegame_sort_dirty) {
 			_savegame_sort_dirty = false;
@@ -1245,7 +1245,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		pos = w->vscroll.pos;
 		while (pos < _fios_num) {
 			item = _fios_list + pos;
-			DoDrawString(item->title[0] ? item->title : item->name, 4, y, _fios_colors[item->type] );
+			DoDrawString(item->title, 4, y, _fios_colors[item->type]);
 			pos++;
 			y+=10;
 			if (y >= w->vscroll.cap*10+w->widget[6].top+1)
@@ -1282,19 +1282,17 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 			file = _fios_list + y;
 
 			if ((name = FiosBrowseTo(file)) != NULL) {
-				if (_saveload_mode == SLD_LOAD_GAME) {
-					_switch_mode = SM_LOAD;
+				if (_saveload_mode == SLD_LOAD_GAME || _saveload_mode == SLD_LOAD_SCENARIO) {
+					_switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_SCENARIO : SM_LOAD;
+
 					SetFiosType(file->type);
-					strcpy(_file_to_saveload.name, name);
-					DeleteWindow(w);
-				} else if (_saveload_mode == SLD_LOAD_SCENARIO) {
-					_switch_mode = (_game_mode == GM_MENU) ? SM_LOAD : SM_LOAD_SCENARIO;
-					SetFiosType(file->type);
-					strcpy(_file_to_saveload.name, name);
+					ttd_strlcpy(_file_to_saveload.name, name, sizeof(_file_to_saveload.name));
+					ttd_strlcpy(_file_to_saveload.title, file->title, sizeof(_file_to_saveload.title));
+
 					DeleteWindow(w);
 				} else {
 					// SLD_SAVE_GAME, SLD_SAVE_SCENARIO copy clicked name to editbox
-					ttd_strlcpy(WP(w, querystr_d).text.buf, (file->title[0] != '\0') ? file->title : file->name, WP(w, querystr_d).text.maxlength);
+					ttd_strlcpy(WP(w, querystr_d).text.buf, file->title, WP(w, querystr_d).text.maxlength);
 					UpdateTextBufferSize(&WP(w, querystr_d).text);
 					InvalidateWidget(w, 9);
 				}
@@ -1485,7 +1483,7 @@ static void SelectScenarioWndProc(Window *w, WindowEvent *e) {
 		pos = w->vscroll.pos;
 		while (pos < _fios_num) {
 			item = _fios_list + pos;
-			DoDrawString(item->title[0] ? item->title : item->name, 4, y, _fios_colors[item->type] );
+			DoDrawString(item->title, 4, y, _fios_colors[item->type] );
 			pos++;
 			y+=10;
 			if (y >= w->vscroll.cap*10+list_start)

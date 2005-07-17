@@ -907,12 +907,16 @@ void SwitchMode(int new_mode)
 	case SM_NEWGAME: /* New Game --> 'Random game' */
 #ifdef ENABLE_NETWORK
 		if (_network_server)
-			snprintf(_network_game_info.map_name, 40, "Random");
+			snprintf(_network_game_info.map_name, NETWORK_NAME_LENGTH, "Random Map");
 #endif /* ENABLE_NETWORK */
 		MakeNewGame();
 		break;
 
 	case SM_START_SCENARIO: /* New Game --> Choose one of the preset scenarios */
+		#ifdef ENABLE_NETWORK
+			if (_network_server)
+				snprintf(_network_game_info.map_name, NETWORK_NAME_LENGTH, "%s (Loaded scenario)", _file_to_saveload.title);
+		#endif /* ENABLE_NETWORK */
 		StartScenario();
 		break;
 
@@ -928,7 +932,7 @@ void SwitchMode(int new_mode)
 			DoCommandP(0, 0, 0, NULL, CMD_PAUSE); // decrease pause counter (was increased from opening load dialog)
 #ifdef ENABLE_NETWORK
 			if (_network_server)
-				snprintf(_network_game_info.map_name, 40, "Loaded game");
+				snprintf(_network_game_info.map_name, NETWORK_NAME_LENGTH, "%s (Loaded game)", _file_to_saveload.title);
 #endif /* ENABLE_NETWORK */
 		}
 		break;
@@ -950,11 +954,6 @@ void SwitchMode(int new_mode)
 			_generating_world = false;
 			// delete all stations owned by a player
 			DeleteAllPlayerStations();
-
-#ifdef ENABLE_NETWORK
-			if (_network_server)
-				snprintf(_network_game_info.map_name, 40, "Loaded scenario");
-#endif /* ENABLE_NETWORK */
 		} else
 			ShowErrorMessage(INVALID_STRING_ID, STR_4009_GAME_LOAD_FAILED, 0, 0);
 
