@@ -61,6 +61,10 @@ typedef struct ParentSpriteToDraw {
 	byte tile_z_bottom;
 } ParentSpriteToDraw;
 
+// Quick hack to know how much memory to reserve when allocating from the spritelist
+// to prevent a buffer overflow.
+#define LARGEST_SPRITELIST_STRUCT ParentSpriteToDraw
+
 typedef struct ViewportDrawer {
 	DrawPixelInfo dpi;
 
@@ -1236,7 +1240,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	vd.parent_list = parent_list;
 	vd.eof_parent_list = &parent_list[lengthof(parent_list)];
 	vd.spritelist_mem = mem;
-	vd.eof_spritelist_mem = &mem[sizeof(mem) - 0x40];
+	vd.eof_spritelist_mem = &mem[sizeof(mem) - sizeof(LARGEST_SPRITELIST_STRUCT)];
 	vd.last_string = &vd.first_string;
 	vd.first_string = NULL;
 	vd.last_tile = &vd.first_tile;
