@@ -126,6 +126,12 @@ static inline TileIndex RandomTile(void) { return TILE_MASK(Random()); }
 uint32 InteractiveRandom(void); /* Used for random sequences that are not the same on the other end of the multiplayer link */
 uint InteractiveRandomRange(uint max);
 
+
+// Used for profiling
+#define TIC() { extern uint32 rdtsc(void); uint32 _xxx_ = rdtsc();
+#define TOC(s) 	_xxx_ = rdtsc() - _xxx_; printf("%s: %d\n", s, _xxx_); }
+
+
 void SetDate(uint date);
 /* facedraw.c */
 void DrawPlayerFace(uint32 face, int color, int x, int y);

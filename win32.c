@@ -2038,7 +2038,7 @@ static int ParseCommandLine(char *line, char **argv, int max_argc)
 
 
 #if defined(_MSC_VER)
-static uint64 _declspec(naked) rdtsc(void)
+uint32 _declspec(naked) rdtsc(void)
 {
 	_asm {
 		rdtsc
