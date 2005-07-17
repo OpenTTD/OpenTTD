@@ -169,10 +169,10 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 
 
 			SetDParamStr(0, sel->info.server_name);
-			DrawStringCenteredTruncated(365, 42, STR_ORANGE, 16, 220); // game name
+			DrawStringCenteredTruncated(w->widget[16].left, w->widget[16].right, 42, STR_ORANGE, 16); // game name
 
 			SetDParamStr(0, sel->info.map_name);
-			DrawStringCenteredTruncated(365, 54, STR_02BD, 16, 220); // map name
+			DrawStringCenteredTruncated(w->widget[16].left, w->widget[16].right, 54, STR_02BD, 16); // map name
 
 			SetDParam(0, sel->info.clients_on);
 			SetDParam(1, sel->info.clients_max);
