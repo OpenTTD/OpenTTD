@@ -114,38 +114,6 @@ STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonni t
 STR_006B_BATTERY                                                :{COMMA} patteri
 STR_006C_OF_PLASTIC                                             :{VOLUME} muovia
 STR_006D_FIZZY_DRINK                                            :{COMMA} sihijuoma
-STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA} matkustajaa
-STR_0070_TONS_OF_COAL                                           :{COMMA} tonnia kivihiiltä
-STR_0071_BAGS_OF_MAIL                                           :{COMMA} säkkiä postia
-STR_0072_OF_OIL                                                 :{VOLUME} öljyä
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} erää karjaa
-STR_0074_CRATES_OF_GOODS                                        :{COMMA} laatikkoa tavaroita
-STR_0075_TONS_OF_GRAIN                                          :{COMMA} tonnia viljaa
-STR_0076_TONS_OF_WOOD                                           :{COMMA} tonnia puutavaraa
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} tonnia rautamalmia
-STR_0078_TONS_OF_STEEL                                          :{COMMA} tonnia terästä
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} säkkiä arvotavaroita
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} tonnia kuparimalmia
-STR_007B_TONS_OF_MAIZE                                          :{COMMA} tonnia maissia
-STR_007C_TONS_OF_FRUIT                                          :{COMMA} tonnia hedelmiä
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} säkkiä timantteja
-STR_007E_TONS_OF_FOOD                                           :{COMMA} tonnia ruokaa
-STR_007F_TONS_OF_PAPER                                          :{COMMA} tonnia paperia
-STR_0080_BAGS_OF_GOLD                                           :{COMMA} säkkiä kultaa
-STR_0081_OF_WATER                                               :{VOLUME} vettä
-STR_0082_TONS_OF_WHEAT                                          :{COMMA} tonnia vehnää
-STR_0083_OF_RUBBER                                              :{VOLUME} kumia
-STR_0084_TONS_OF_SUGAR                                          :{COMMA} tonnia sokeria
-STR_0085_TOYS                                                   :{COMMA} lelua
-STR_0086_BAGS_OF_CANDY                                          :{COMMA} tonnia karkkia
-STR_0087_OF_COLA                                                :{VOLUME} limsaa
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} tonnia hattaraa
-STR_0089_BUBBLES                                                :{COMMA} kuplaa
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA} tonnia toffeeta
-STR_008B_BATTERIES                                              :{COMMA} patteria
-STR_008C_OF_PLASTIC                                             :{VOLUME} muovia
-STR_008D_FIZZY_DRINKS                                           :{COMMA} sihijuomaa
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}MA
 STR_0090_CL                                                     :{TINYFONT}HL

@@ -1,6 +1,7 @@
 ##name Turkish
 ##ownname Türkçe
 ##isocode tr
+##plural 0
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -113,38 +114,6 @@ STR_006A_TON_OF_TOFFEE                                          :{COMMA16} ton t
 STR_006B_BATTERY                                                :{COMMA16} pil
 STR_006C_OF_PLASTIC                                             :{VOLUME} plastik
 STR_006D_FIZZY_DRINK                                            :{COMMA16} fizzy gazozu
-STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA16} yolcu
-STR_0070_TONS_OF_COAL                                           :{COMMA16} ton kömür
-STR_0071_BAGS_OF_MAIL                                           :{COMMA16} çanta posta
-STR_0072_OF_OIL                                                 :{VOLUME} petrol
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA16} adet hayvansal ürün
-STR_0074_CRATES_OF_GOODS                                        :{COMMA16} kasa mamül madde
-STR_0075_TONS_OF_GRAIN                                          :{COMMA16} ton hububat
-STR_0076_TONS_OF_WOOD                                           :{COMMA16} ton agaç
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA16} ton demir
-STR_0078_TONS_OF_STEEL                                          :{COMMA16} ton çelik
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA16} çanta mücevherat
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA16} ton bakir
-STR_007B_TONS_OF_MAIZE                                          :{COMMA16} ton misir
-STR_007C_TONS_OF_FRUIT                                          :{COMMA16} ton meyve
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA16} çanta elmas
-STR_007E_TONS_OF_FOOD                                           :{COMMA16} ton gida
-STR_007F_TONS_OF_PAPER                                          :{COMMA16} ton kagit
-STR_0080_BAGS_OF_GOLD                                           :{COMMA16} çanta altin
-STR_0081_OF_WATER                                               :{VOLUME} su
-STR_0082_TONS_OF_WHEAT                                          :{COMMA16} ton bugday
-STR_0083_OF_RUBBER                                              :{VOLUME} kauçuk
-STR_0084_TONS_OF_SUGAR                                          :{COMMA16} ton seker
-STR_0085_TOYS                                                   :{COMMA16} oyuncak
-STR_0086_BAGS_OF_CANDY                                          :{COMMA16} çanta sekerleme
-STR_0087_OF_COLA                                                :{VOLUME} kola
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA16} ton pamuk helva
-STR_0089_BUBBLES                                                :{COMMA16} köpükçük
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA16} ton tofita
-STR_008B_BATTERIES                                              :{COMMA16} pil
-STR_008C_OF_PLASTIC                                             :{VOLUME} plastik
-STR_008D_FIZZY_DRINKS                                           :{COMMA16} fizzy gazozu
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}YL
 STR_0090_CL                                                     :{TINYFONT}KÖ

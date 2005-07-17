@@ -114,38 +114,6 @@ STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonu ka
 STR_006B_BATTERY                                                :{COMMA} bateriju
 STR_006C_OF_PLASTIC                                             :{VOLUME} plastmases
 STR_006D_FIZZY_DRINK                                            :{COMMA} gaiviuju gerimu
-STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA} keleiviu
-STR_0070_TONS_OF_COAL                                           :{COMMA} tonu anglies
-STR_0071_BAGS_OF_MAIL                                           :{COMMA} pasto maisu
-STR_0072_OF_OIL                                                 :{VOLUME} naftos
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} galviju
-STR_0074_CRATES_OF_GOODS                                        :{COMMA} prekiu deziu
-STR_0075_TONS_OF_GRAIN                                          :{COMMA} tonu grudu
-STR_0076_TONS_OF_WOOD                                           :{COMMA} tonu medienos
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} tonu gelezies rudos
-STR_0078_TONS_OF_STEEL                                          :{COMMA} tonu plieno
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} brangenybiu maisu
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} tonu vario rudos
-STR_007B_TONS_OF_MAIZE                                          :{COMMA} tonu kukuruzu
-STR_007C_TONS_OF_FRUIT                                          :{COMMA} tonu vaisiu
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} deimantu deziu
-STR_007E_TONS_OF_FOOD                                           :{COMMA} tonu maisto
-STR_007F_TONS_OF_PAPER                                          :{COMMA} tonu popieriaus
-STR_0080_BAGS_OF_GOLD                                           :{COMMA} aukso kapsu
-STR_0081_OF_WATER                                               :{VOLUME} vandens
-STR_0082_TONS_OF_WHEAT                                          :{COMMA} tonu kvieciu
-STR_0083_OF_RUBBER                                              :{VOLUME} kauciuko
-STR_0084_TONS_OF_SUGAR                                          :{COMMA} tonu cukraus
-STR_0085_TOYS                                                   :{COMMA} zaislu
-STR_0086_BAGS_OF_CANDY                                          :{COMMA} krepseliu saldumynu
-STR_0087_OF_COLA                                                :{VOLUME} Coca-Colos
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} tonu cukraus vatos
-STR_0089_BUBBLES                                                :{COMMA} burbulu
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA} tonu karameles
-STR_008B_BATTERIES                                              :{COMMA} bateriju
-STR_008C_OF_PLASTIC                                             :{VOLUME} plastmases
-STR_008D_FIZZY_DRINKS                                           :{COMMA} gaiviuju gerimu
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
 STR_0090_CL                                                     :{TINYFONT}CL

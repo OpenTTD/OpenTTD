@@ -114,38 +114,6 @@ STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonn ka
 STR_006B_BATTERY                                                :{COMMA} batteri
 STR_006C_OF_PLASTIC                                             :{VOLUME} plastikk
 STR_006D_FIZZY_DRINK                                            :{COMMA} brus
-STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA} passasjerer
-STR_0070_TONS_OF_COAL                                           :{COMMA} tonn kull
-STR_0071_BAGS_OF_MAIL                                           :{COMMA} postsekker
-STR_0072_OF_OIL                                                 :{VOLUME} olje
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} enheter buskap
-STR_0074_CRATES_OF_GOODS                                        :{COMMA} kasser gods
-STR_0075_TONS_OF_GRAIN                                          :{COMMA} tonn korn
-STR_0076_TONS_OF_WOOD                                           :{COMMA} tonn tømmer
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} tonn jernmalm
-STR_0078_TONS_OF_STEEL                                          :{COMMA} tonn stål
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} sekker med verdisaker
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} tonn kobbermalm
-STR_007B_TONS_OF_MAIZE                                          :{COMMA} tonn mais
-STR_007C_TONS_OF_FRUIT                                          :{COMMA} tonn frukt
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} sekker med diamanter
-STR_007E_TONS_OF_FOOD                                           :{COMMA} tonn mat
-STR_007F_TONS_OF_PAPER                                          :{COMMA} tonn papir
-STR_0080_BAGS_OF_GOLD                                           :{COMMA} sekker gull
-STR_0081_OF_WATER                                               :{VOLUME} vann
-STR_0082_TONS_OF_WHEAT                                          :{COMMA} tonn hvete
-STR_0083_OF_RUBBER                                              :{VOLUME} gummi
-STR_0084_TONS_OF_SUGAR                                          :{COMMA} tonn sukker
-STR_0085_TOYS                                                   :{COMMA} leker
-STR_0086_BAGS_OF_CANDY                                          :{COMMA} sekker søtsaker
-STR_0087_OF_COLA                                                :{VOLUME} cola
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} tonn sukkerspinn
-STR_0089_BUBBLES                                                :{COMMA} bobler
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA} tonn karameller
-STR_008B_BATTERIES                                              :{COMMA} batterier
-STR_008C_OF_PLASTIC                                             :{VOLUME} plastikk
-STR_008D_FIZZY_DRINKS                                           :{COMMA} brus
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
 STR_0090_CL                                                     :{TINYFONT}KL

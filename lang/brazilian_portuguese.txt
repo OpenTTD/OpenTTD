@@ -114,38 +114,6 @@ STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonelad
 STR_006B_BATTERY                                                :{COMMA} bateria
 STR_006C_OF_PLASTIC                                             :{VOLUME} de plástico
 STR_006D_FIZZY_DRINK                                            :{COMMA} Bebida Gasosa
-STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA} passageiros
-STR_0070_TONS_OF_COAL                                           :{COMMA} toneladas de carvão
-STR_0071_BAGS_OF_MAIL                                           :{COMMA} sacos de correspondência
-STR_0072_OF_OIL                                                 :{VOLUME} de petróleo
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} insumos de gado
-STR_0074_CRATES_OF_GOODS                                        :{COMMA} caixas de bens
-STR_0075_TONS_OF_GRAIN                                          :{COMMA} toneladas de cereais
-STR_0076_TONS_OF_WOOD                                           :{COMMA} toneladas de madeira
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} toneladas de minério de ferro
-STR_0078_TONS_OF_STEEL                                          :{COMMA} toneladas de aço
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} sacos de valores
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} toneladas de minério de cobre
-STR_007B_TONS_OF_MAIZE                                          :{COMMA} toneladas de milho
-STR_007C_TONS_OF_FRUIT                                          :{COMMA} toneladas de fruta
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} sacos de diamantes
-STR_007E_TONS_OF_FOOD                                           :{COMMA} toneladas de comida
-STR_007F_TONS_OF_PAPER                                          :{COMMA} toneladas de papel
-STR_0080_BAGS_OF_GOLD                                           :{COMMA} sacos de ouro
-STR_0081_OF_WATER                                               :{VOLUME} de água
-STR_0082_TONS_OF_WHEAT                                          :{COMMA} toneladas de trigo
-STR_0083_OF_RUBBER                                              :{VOLUME} de borracha
-STR_0084_TONS_OF_SUGAR                                          :{COMMA} toneladas de açúcar
-STR_0085_TOYS                                                   :{COMMA} brinquedos
-STR_0086_BAGS_OF_CANDY                                          :{COMMA} sacos de doces
-STR_0087_OF_COLA                                                :{VOLUME} de cola
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} toneladas de algodão doce
-STR_0089_BUBBLES                                                :{COMMA} bolhas
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA} toneladas de caramelo
-STR_008B_BATTERIES                                              :{COMMA} baterias
-STR_008C_OF_PLASTIC                                             :{VOLUME} de plástico
-STR_008D_FIZZY_DRINKS                                           :{COMMA} bebidas gasosas
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
 STR_0090_CL                                                     :{TINYFONT}CL
@@ -1512,6 +1480,9 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Passagem de nív
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Cidades
 STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
+STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
+STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}O edifício deve ser demolido primeiro
 STR_2005                                                        :{WHITE}{TOWN}
@@ -1799,9 +1770,17 @@ STR_482F_COST                                                   :{BLACK}Custo: {
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Não é possível construir este tipo de indústria aqui...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...a floresta só pode ser plantada acima do nível de neve
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}Em {INDUSTRY} anuncia fechamento em breve!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Problemas de abastecimento forçaram {INDUSTRY} a anunciar falência iminente!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Falta de árvores nas proximidades forçaram {INDUSTRY} a anunciar falência iminente!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}Em {INDUSTRY} aumenta a produção!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nova jazida de carvão encontrada em {INDUSTRY}!{}A expectativa é de dobrar a produção!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Novas reservas de petróleo encontradas em {INDUSTRY}!{}A expectativa é de dobrar a produção!
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Métodos aperfeiçoados de agricultura em {INDUSTRY}! A expectativa é de dobrar a produção!
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}Em {INDUSTRY} diminui produção em 50%
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Infestação de insetos causa destruição em {INDUSTRY}!{}Produção diminui em 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...só pode ser colocado perto das bordas do mapa
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} a produção em {INDUSTRY} aumenta {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} a produção em {INDUSTRY} diminui {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Há um trem no túnel

@@ -1,6 +1,7 @@
 ##name Russian_latin_char
 ##ownname Russkiy
 ##isocode ru
+##plural 0
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -113,38 +114,6 @@ STR_006A_TON_OF_TOFFEE                                          :{COMMA16} tonna
 STR_006B_BATTERY                                                :{COMMA16} batareyki
 STR_006C_OF_PLASTIC                                             :{VOLUME} plastika
 STR_006D_FIZZY_DRINK                                            :{COMMA16} shipuchie napitki
-STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA16} passajiri
-STR_0070_TONS_OF_COAL                                           :{COMMA16} tonn uglya
-STR_0071_BAGS_OF_MAIL                                           :{COMMA16} meshkov s pochtoy
-STR_0072_OF_OIL                                                 :{VOLUME} nefti
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA16} golov domashnego skota
-STR_0074_CRATES_OF_GOODS                                        :{COMMA16} korobok s tovarom
-STR_0075_TONS_OF_GRAIN                                          :{COMMA16} tonn zerna
-STR_0076_TONS_OF_WOOD                                           :{COMMA16} tonn dereva
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA16} tonn zheleznoy rudi
-STR_0078_TONS_OF_STEEL                                          :{COMMA16} tonn stali
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA16} meshkov s dragocennostyami
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA16} tonn mednoy rudi
-STR_007B_TONS_OF_MAIZE                                          :{COMMA16} tonn kukuruzi
-STR_007C_TONS_OF_FRUIT                                          :{COMMA16} tonn fruktov
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA16} meshkov s almazami
-STR_007E_TONS_OF_FOOD                                           :{COMMA16} tonn prodovolstviya
-STR_007F_TONS_OF_PAPER                                          :{COMMA16} tonn bumagi
-STR_0080_BAGS_OF_GOLD                                           :{COMMA16} meshkov zolota
-STR_0081_OF_WATER                                               :{VOLUME} vodi
-STR_0082_TONS_OF_WHEAT                                          :{COMMA16} tonn pshenici
-STR_0083_OF_RUBBER                                              :{VOLUME} rezini
-STR_0084_TONS_OF_SUGAR                                          :{COMMA16} tonn sahara
-STR_0085_TOYS                                                   :{COMMA16} igrushek
-STR_0086_BAGS_OF_CANDY                                          :{COMMA16} meshkov so sladostyami
-STR_0087_OF_COLA                                                :{VOLUME} koli
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA16} tonn saharnoy vati
-STR_0089_BUBBLES                                                :{COMMA16} puzirkov
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA16} tonn irisok
-STR_008B_BATTERIES                                              :{COMMA16} batareek
-STR_008C_OF_PLASTIC                                             :{VOLUME} plastika
-STR_008D_FIZZY_DRINKS                                           :{COMMA16} shipuchih napitkov
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
 STR_0090_CL                                                     :{TINYFONT}CL

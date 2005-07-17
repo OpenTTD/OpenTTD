@@ -114,38 +114,6 @@ STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonna c
 STR_006B_BATTERY                                                :{COMMA} baterija
 STR_006C_OF_PLASTIC                                             :{VOLUME} plastmasas
 STR_006D_FIZZY_DRINK                                            :{COMMA} burbul'u'dens
-STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA} pasaz'ieri
-STR_0070_TONS_OF_COAL                                           :{COMMA} tonnas ogl'u
-STR_0071_BAGS_OF_MAIL                                           :{COMMA} pasta maisi
-STR_0072_OF_OIL                                                 :{VOLUME} naftas
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} liellopi
-STR_0074_CRATES_OF_GOODS                                        :{COMMA} kastes ar prece'm
-STR_0075_TONS_OF_GRAIN                                          :{COMMA} tonnas graudu
-STR_0076_TONS_OF_WOOD                                           :{COMMA} tonnas kokmaterea'lu
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} tonnas dzelzs ru'das
-STR_0078_TONS_OF_STEEL                                          :{COMMA} tonnas te'rauda
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} maisi ar ve;rtslieta'm
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} tonnas vara ru'das
-STR_007B_TONS_OF_MAIZE                                          :{COMMA} tonnas kukuru'zas
-STR_007C_TONS_OF_FRUIT                                          :{COMMA} tonnas augl'u
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} maisi ar dimantiem
-STR_007E_TONS_OF_FOOD                                           :{COMMA} tonnas pa'rtikas prec'u
-STR_007F_TONS_OF_PAPER                                          :{COMMA} tonnas papi'ra
-STR_0080_BAGS_OF_GOLD                                           :{COMMA} zelta maisi
-STR_0081_OF_WATER                                               :{VOLUME} u'dens
-STR_0082_TONS_OF_WHEAT                                          :{COMMA} tonnas kvies'u
-STR_0083_OF_RUBBER                                              :{VOLUME} gumijas
-STR_0084_TONS_OF_SUGAR                                          :{COMMA} tonnas cukura
-STR_0085_TOYS                                                   :{COMMA} rotal'lietas
-STR_0086_BAGS_OF_CANDY                                          :{COMMA} saldumu maisi
-STR_0087_OF_COLA                                                :{VOLUME} kolas
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} tonnas cukurvates
-STR_0089_BUBBLES                                                :{COMMA} burbul'i
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA} tonnas cukurpla'ksni's'u
-STR_008B_BATTERIES                                              :{COMMA} baterijas
-STR_008C_OF_PLASTIC                                             :{VOLUME} plastmasas
-STR_008D_FIZZY_DRINKS                                           :{COMMA} burbul'u'den'u
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PA
 STR_0090_CL                                                     :{TINYFONT}OG

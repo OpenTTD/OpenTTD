@@ -114,38 +114,6 @@ STR_006A_TON_OF_TOFFEE                                          :{COMMA} tuna ka
 STR_006B_BATTERY                                                :{COMMA} baterie
 STR_006C_OF_PLASTIC                                             :{VOLUME} plastu
 STR_006D_FIZZY_DRINK                                            :{COMMA} limonád
-STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA} cestujících
-STR_0070_TONS_OF_COAL                                           :{COMMA} tun uhlí
-STR_0071_BAGS_OF_MAIL                                           :{COMMA} baliku posty
-STR_0072_OF_OIL                                                 :{VOLUME} ropy
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} kusu dobytka
-STR_0074_CRATES_OF_GOODS                                        :{COMMA} krabic zbozi
-STR_0075_TONS_OF_GRAIN                                          :{COMMA} tun zrní
-STR_0076_TONS_OF_WOOD                                           :{COMMA} tun dreva
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} tun zelezne rudy
-STR_0078_TONS_OF_STEEL                                          :{COMMA} tun oceli
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} baliku cenin
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} tun medene rudy
-STR_007B_TONS_OF_MAIZE                                          :{COMMA} tun kukurice
-STR_007C_TONS_OF_FRUIT                                          :{COMMA} tun ovoce
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} baliku diamantu
-STR_007E_TONS_OF_FOOD                                           :{COMMA} tun jídla
-STR_007F_TONS_OF_PAPER                                          :{COMMA} tun papíru
-STR_0080_BAGS_OF_GOLD                                           :{COMMA} baliku zlata
-STR_0081_OF_WATER                                               :{VOLUME} vody
-STR_0082_TONS_OF_WHEAT                                          :{COMMA} tun psenice
-STR_0083_OF_RUBBER                                              :{VOLUME} kaucuku
-STR_0084_TONS_OF_SUGAR                                          :{COMMA} tun cukru
-STR_0085_TOYS                                                   :{COMMA} hracek
-STR_0086_BAGS_OF_CANDY                                          :{COMMA} pytlu bonbonu
-STR_0087_OF_COLA                                                :{VOLUME} coly
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} tun cukrové vaty
-STR_0089_BUBBLES                                                :{COMMA} bublin
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA} tun karamelu
-STR_008B_BATTERIES                                              :{COMMA} baterií
-STR_008C_OF_PLASTIC                                             :{VOLUME} plastu
-STR_008D_FIZZY_DRINKS                                           :{COMMA} limonád
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}CS
 STR_0090_CL                                                     :{TINYFONT}UH
@@ -583,7 +551,7 @@ STR_0219_TYCOON_OF_THE_CENTURY                                  :Magnát století
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYERNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} získal oznaceni '{STRING}'!
-STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} z {COMPANY} získal oznaceni '{STRING}' status!
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} z {COMPANY} získal oznaceni '{STRING}'!
 STR_021D                                                        :{BLACK}
 STR_021E                                                        :{WHITE}
 STR_021F                                                        :{BLUE}{COMMA}

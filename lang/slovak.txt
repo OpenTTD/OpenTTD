@@ -114,38 +114,6 @@ STR_006A_TON_OF_TOFFEE                                          :{COMMA} tona ka
 STR_006B_BATTERY                                                :{COMMA} bateria
 STR_006C_OF_PLASTIC                                             :{VOLUME} zuvacka
 STR_006D_FIZZY_DRINK                                            :{COMMA} sumienka
-STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA} cestujucich
-STR_0070_TONS_OF_COAL                                           :{COMMA} ton uhlia
-STR_0071_BAGS_OF_MAIL                                           :{COMMA} balikov posty
-STR_0072_OF_OIL                                                 :{VOLUME} ropy
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} kusov dobytka
-STR_0074_CRATES_OF_GOODS                                        :{COMMA} debien tovaru
-STR_0075_TONS_OF_GRAIN                                          :{COMMA} ton obilia
-STR_0076_TONS_OF_WOOD                                           :{COMMA} ton dreva
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} ton zeleznej rudy
-STR_0078_TONS_OF_STEEL                                          :{COMMA} ton ocele
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} vriec cennosti
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} ton medennej rudy
-STR_007B_TONS_OF_MAIZE                                          :{COMMA} ton kukurice
-STR_007C_TONS_OF_FRUIT                                          :{COMMA} ton ovocia
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} debien diamantov
-STR_007E_TONS_OF_FOOD                                           :{COMMA} ton jedla
-STR_007F_TONS_OF_PAPER                                          :{COMMA} ton papiera
-STR_0080_BAGS_OF_GOLD                                           :{COMMA} debien zlata
-STR_0081_OF_WATER                                               :{VOLUME} vody
-STR_0082_TONS_OF_WHEAT                                          :{COMMA} ton psenice
-STR_0083_OF_RUBBER                                              :{VOLUME} kaucuku
-STR_0084_TONS_OF_SUGAR                                          :{COMMA} ton cukru
-STR_0085_TOYS                                                   :{COMMA} hraciek
-STR_0086_BAGS_OF_CANDY                                          :{COMMA} debien cukrikov
-STR_0087_OF_COLA                                                :{VOLUME} kofoly
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} ton cukrovej vaty
-STR_0089_BUBBLES                                                :{COMMA} bublin
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA} ton karamelu
-STR_008B_BATTERIES                                              :{COMMA} baterii
-STR_008C_OF_PLASTIC                                             :{VOLUME} zuvaciek
-STR_008D_FIZZY_DRINKS                                           :{COMMA} sumienky
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}CE
 STR_0090_CL                                                     :{TINYFONT}UH
@@ -1512,6 +1480,8 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Zeleznicny prej
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Mesta
 STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
+STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Budova sa musi zburat
 STR_2005                                                        :{WHITE}{TOWN}

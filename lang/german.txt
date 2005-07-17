@@ -114,38 +114,6 @@ STR_006A_TON_OF_TOFFEE                                          :{COMMA} Tonne K
 STR_006B_BATTERY                                                :{COMMA} Batterie
 STR_006C_OF_PLASTIC                                             :{VOLUME}  Plastik
 STR_006D_FIZZY_DRINK                                            :{COMMA} Limonade
-STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA} Passagiere
-STR_0070_TONS_OF_COAL                                           :{COMMA} Tonnen Kohle
-STR_0071_BAGS_OF_MAIL                                           :{COMMA} Postsäcke
-STR_0072_OF_OIL                                                 :{VOLUME}  Öl
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} Stück Vieh
-STR_0074_CRATES_OF_GOODS                                        :{COMMA} Warenkisten
-STR_0075_TONS_OF_GRAIN                                          :{COMMA} Tonnen Getreide
-STR_0076_TONS_OF_WOOD                                           :{COMMA} Tonnen Holz
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} Tonnen Eisenerz
-STR_0078_TONS_OF_STEEL                                          :{COMMA} Tonnen Stahl
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} Säcke mit Wertsachen
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} Tonnen Kupfererz
-STR_007B_TONS_OF_MAIZE                                          :{COMMA} Tonnen Mais
-STR_007C_TONS_OF_FRUIT                                          :{COMMA} Tonnen Früchte
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} Säcke mit Diamanten
-STR_007E_TONS_OF_FOOD                                           :{COMMA} Tonnen Nahrungsmittel
-STR_007F_TONS_OF_PAPER                                          :{COMMA} Tonnen Papier
-STR_0080_BAGS_OF_GOLD                                           :{COMMA} Säcke mit Gold
-STR_0081_OF_WATER                                               :{VOLUME}  Wasser
-STR_0082_TONS_OF_WHEAT                                          :{COMMA} Tonnen Weizen
-STR_0083_OF_RUBBER                                              :{VOLUME}  Kautschuk
-STR_0084_TONS_OF_SUGAR                                          :{COMMA} Tonnen Zucker
-STR_0085_TOYS                                                   :{COMMA} Spielwaren
-STR_0086_BAGS_OF_CANDY                                          :{COMMA} Tonnen Bonbons
-STR_0087_OF_COLA                                                :{VOLUME}  Cola
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} Tonnen Zuckerwatte
-STR_0089_BUBBLES                                                :{COMMA} Luftblasen
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA} Tonnen Karamell
-STR_008B_BATTERIES                                              :{COMMA} Batterien
-STR_008C_OF_PLASTIC                                             :{VOLUME}  Plastik
-STR_008D_FIZZY_DRINKS                                           :{COMMA} Limonade
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
 STR_0090_CL                                                     :{TINYFONT}KL

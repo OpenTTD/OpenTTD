@@ -1,6 +1,7 @@
 ##name Estonian
 ##ownname eesti keel
 ##isocode et
+##plural 0
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -113,38 +114,6 @@ STR_006A_TON_OF_TOFFEE                                          :{COMMA16} tonn 
 STR_006B_BATTERY                                                :{COMMA16} patarei
 STR_006C_OF_PLASTIC                                             :{VOLUME} plastmassi
 STR_006D_FIZZY_DRINK                                            :{COMMA16} kihisevaid jooke
-STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA16} reisijat
-STR_0070_TONS_OF_COAL                                           :{COMMA16} tonni kivisütt
-STR_0071_BAGS_OF_MAIL                                           :{COMMA16} postipakki
-STR_0072_OF_OIL                                                 :{VOLUME} naftat
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA16} looma
-STR_0074_CRATES_OF_GOODS                                        :{COMMA16} kasti kaupa
-STR_0075_TONS_OF_GRAIN                                          :{COMMA16} tonni teravilja
-STR_0076_TONS_OF_WOOD                                           :{COMMA16} tonni puitu
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA16} tonni rauamaaki
-STR_0078_TONS_OF_STEEL                                          :{COMMA16} tonni terast
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA16} kotitäit väärisasju
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA16} tonni vasemaaki
-STR_007B_TONS_OF_MAIZE                                          :{COMMA16} tonni maisi
-STR_007C_TONS_OF_FRUIT                                          :{COMMA16} tonni puuvilju
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA16} kotitäit teemate
-STR_007E_TONS_OF_FOOD                                           :{COMMA16} tonni toitu
-STR_007F_TONS_OF_PAPER                                          :{COMMA16} tonni paberit
-STR_0080_BAGS_OF_GOLD                                           :{COMMA16} kotitäit kulda
-STR_0081_OF_WATER                                               :{VOLUME} vett
-STR_0082_TONS_OF_WHEAT                                          :{COMMA16} tonni nisu
-STR_0083_OF_RUBBER                                              :{VOLUME} kautðukki
-STR_0084_TONS_OF_SUGAR                                          :{COMMA16} tonni suhkrut
-STR_0085_TOYS                                                   :{COMMA16} mänguasja
-STR_0086_BAGS_OF_CANDY                                          :{COMMA16} kotitäit maiustusi
-STR_0087_OF_COLA                                                :{VOLUME} koolat
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA16} tonni suhkruvatti
-STR_0089_BUBBLES                                                :{COMMA16} mulli
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA16} tonni iirist
-STR_008B_BATTERIES                                              :{COMMA16} patareid
-STR_008C_OF_PLASTIC                                             :{VOLUME} plastmassi
-STR_008D_FIZZY_DRINKS                                           :{COMMA16} kihisevaid jooke
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
 STR_0090_CL                                                     :{TINYFONT}CL

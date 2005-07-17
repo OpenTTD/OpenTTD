@@ -114,38 +114,6 @@ STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonna t
 STR_006B_BATTERY                                                :{COMMA} elem
 STR_006C_OF_PLASTIC                                             :{VOLUME} mûanyag
 STR_006D_FIZZY_DRINK                                            :{COMMA} szénsavas ital
-STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA} utas
-STR_0070_TONS_OF_COAL                                           :{COMMA} tonna szén
-STR_0071_BAGS_OF_MAIL                                           :{COMMA} csomag levél
-STR_0072_OF_OIL                                                 :{VOLUME} olaj
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} állat
-STR_0074_CRATES_OF_GOODS                                        :{COMMA} láda áru
-STR_0075_TONS_OF_GRAIN                                          :{COMMA} tonna búza
-STR_0076_TONS_OF_WOOD                                           :{COMMA} tonna fa
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} tonna vasérc
-STR_0078_TONS_OF_STEEL                                          :{COMMA} tonna acél
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} csomag értéktárgy
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} tonna rézérc
-STR_007B_TONS_OF_MAIZE                                          :{COMMA} tonna kukorica
-STR_007C_TONS_OF_FRUIT                                          :{COMMA} tonna gyümölcs
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} zsák gyémánt
-STR_007E_TONS_OF_FOOD                                           :{COMMA} tonna étel
-STR_007F_TONS_OF_PAPER                                          :{COMMA} tonna papír
-STR_0080_BAGS_OF_GOLD                                           :{COMMA} zsák arany
-STR_0081_OF_WATER                                               :{VOLUME} víz
-STR_0082_TONS_OF_WHEAT                                          :{COMMA} tonna búza
-STR_0083_OF_RUBBER                                              :{VOLUME} gumi
-STR_0084_TONS_OF_SUGAR                                          :{COMMA} tonna cukor
-STR_0085_TOYS                                                   :{COMMA} játék
-STR_0086_BAGS_OF_CANDY                                          :{COMMA} zsák cukorka
-STR_0087_OF_COLA                                                :{VOLUME} kóla
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} tonna vattacukor
-STR_0089_BUBBLES                                                :{COMMA} buborék
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA} tonna tejkaramella
-STR_008B_BATTERIES                                              :{COMMA} elem
-STR_008C_OF_PLASTIC                                             :{VOLUME} mûanyag
-STR_008D_FIZZY_DRINKS                                           :{COMMA} szénsavas ital
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}UT
 STR_0090_CL                                                     :{TINYFONT}SZ

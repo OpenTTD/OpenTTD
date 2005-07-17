@@ -114,38 +114,6 @@ STR_006A_TON_OF_TOFFEE                                          :{COMMA} ton. di
 STR_006B_BATTERY                                                :{COMMA} batteria
 STR_006C_OF_PLASTIC                                             :{VOLUME} di plastica
 STR_006D_FIZZY_DRINK                                            :{COMMA} bibite frizzanti
-STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA} passeggeri
-STR_0070_TONS_OF_COAL                                           :{COMMA} ton. di carbone
-STR_0071_BAGS_OF_MAIL                                           :{COMMA} sacchi postali
-STR_0072_OF_OIL                                                 :{VOLUME} di petrolio
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} capi di bestiame
-STR_0074_CRATES_OF_GOODS                                        :{COMMA} casse di beni
-STR_0075_TONS_OF_GRAIN                                          :{COMMA} ton. di grano
-STR_0076_TONS_OF_WOOD                                           :{COMMA} ton. di legna
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} ton. di ferro grezzo
-STR_0078_TONS_OF_STEEL                                          :{COMMA} ton. di acciaio
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} borse di valori
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} ton. di rame grezzo
-STR_007B_TONS_OF_MAIZE                                          :{COMMA} ton. di mais
-STR_007C_TONS_OF_FRUIT                                          :{COMMA} ton. di frutta
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} borse di diamanti
-STR_007E_TONS_OF_FOOD                                           :{COMMA} ton. di cibo
-STR_007F_TONS_OF_PAPER                                          :{COMMA} ton. di carta
-STR_0080_BAGS_OF_GOLD                                           :{COMMA} borse d'oro
-STR_0081_OF_WATER                                               :{VOLUME} d'acqua
-STR_0082_TONS_OF_WHEAT                                          :{COMMA} ton. di frumento
-STR_0083_OF_RUBBER                                              :{VOLUME} di gomma
-STR_0084_TONS_OF_SUGAR                                          :{COMMA} ton. di zucchero
-STR_0085_TOYS                                                   :{COMMA} giocattoli
-STR_0086_BAGS_OF_CANDY                                          :{COMMA} buste di caramelle
-STR_0087_OF_COLA                                                :{VOLUME} di cola
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} ton. di cotone candito
-STR_0089_BUBBLES                                                :{COMMA} bolle
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA} ton. di toffee
-STR_008B_BATTERIES                                              :{COMMA} batterie
-STR_008C_OF_PLASTIC                                             :{VOLUME} di plastica
-STR_008D_FIZZY_DRINKS                                           :{COMMA} bevande frizzanti
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
 STR_0090_CL                                                     :{TINYFONT}CL
@@ -1512,6 +1480,9 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Passaggio a liv
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Città
 STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
+STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
+STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}E' necessario demolire l'edificio prima
 STR_2005                                                        :{WHITE}{TOWN}

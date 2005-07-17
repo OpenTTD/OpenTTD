@@ -114,38 +114,6 @@ STR_006A_TON_OF_TOFFEE                                          :{COMMA} ton of 
 STR_006B_BATTERY                                                :{COMMA} battery
 STR_006C_OF_PLASTIC                                             :{VOLUME} of plastic
 STR_006D_FIZZY_DRINK                                            :{COMMA} fizzy drink
-STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA} passengers
-STR_0070_TONS_OF_COAL                                           :{COMMA} tons of coal
-STR_0071_BAGS_OF_MAIL                                           :{COMMA} bags of mail
-STR_0072_OF_OIL                                                 :{VOLUME} of oil
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} items of livestock
-STR_0074_CRATES_OF_GOODS                                        :{COMMA} crates of goods
-STR_0075_TONS_OF_GRAIN                                          :{COMMA} tons of grain
-STR_0076_TONS_OF_WOOD                                           :{COMMA} tons of wood
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} tons of iron ore
-STR_0078_TONS_OF_STEEL                                          :{COMMA} tons of steel
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} bags of valuables
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} tons of copper ore
-STR_007B_TONS_OF_MAIZE                                          :{COMMA} tons of maize
-STR_007C_TONS_OF_FRUIT                                          :{COMMA} tons of fruit
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} bags of diamonds
-STR_007E_TONS_OF_FOOD                                           :{COMMA} tons of food
-STR_007F_TONS_OF_PAPER                                          :{COMMA} tons of paper
-STR_0080_BAGS_OF_GOLD                                           :{COMMA} bags of gold
-STR_0081_OF_WATER                                               :{VOLUME} of water
-STR_0082_TONS_OF_WHEAT                                          :{COMMA} tons of wheat
-STR_0083_OF_RUBBER                                              :{VOLUME} of rubber
-STR_0084_TONS_OF_SUGAR                                          :{COMMA} tons of sugar
-STR_0085_TOYS                                                   :{COMMA} toys
-STR_0086_BAGS_OF_CANDY                                          :{COMMA} bags of candy
-STR_0087_OF_COLA                                                :{VOLUME} of cola
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} tons of cotton candy
-STR_0089_BUBBLES                                                :{COMMA} bubbles
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA} tons of toffee
-STR_008B_BATTERIES                                              :{COMMA} batteries
-STR_008C_OF_PLASTIC                                             :{VOLUME} of plastic
-STR_008D_FIZZY_DRINKS                                           :{COMMA} fizzy drinks
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
 STR_0090_CL                                                     :{TINYFONT}CL

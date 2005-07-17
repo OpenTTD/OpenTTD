@@ -114,38 +114,6 @@ STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonã de
 STR_006B_BATTERY                                                :{COMMA} baterie
 STR_006C_OF_PLASTIC                                             :{VOLUME} de plastic
 STR_006D_FIZZY_DRINK                                            :{COMMA} bidon cu suc
-STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA} cãlãtori
-STR_0070_TONS_OF_COAL                                           :{COMMA} tone de cãrbune
-STR_0071_BAGS_OF_MAIL                                           :{COMMA} saci cu colete postale
-STR_0072_OF_OIL                                                 :{VOLUME} de petrol
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} animale
-STR_0074_CRATES_OF_GOODS                                        :{COMMA} pachete de bunuri
-STR_0075_TONS_OF_GRAIN                                          :{COMMA} tone de cereale
-STR_0076_TONS_OF_WOOD                                           :{COMMA} tone de lemne
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} tone de minereu de fier
-STR_0078_TONS_OF_STEEL                                          :{COMMA} tone de otel
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} cutii de valori
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} tone de minereu de cupru
-STR_007B_TONS_OF_MAIZE                                          :{COMMA} tone de porumb
-STR_007C_TONS_OF_FRUIT                                          :{COMMA} tone de fructe
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} saci cu diamante
-STR_007E_TONS_OF_FOOD                                           :{COMMA} tone de alimente
-STR_007F_TONS_OF_PAPER                                          :{COMMA} tone de hârtie
-STR_0080_BAGS_OF_GOLD                                           :{COMMA} saci cu aur
-STR_0081_OF_WATER                                               :{VOLUME} de apã
-STR_0082_TONS_OF_WHEAT                                          :{COMMA} tone de grâu
-STR_0083_OF_RUBBER                                              :{VOLUME} de cauciuc
-STR_0084_TONS_OF_SUGAR                                          :{COMMA} tone de zahãr
-STR_0085_TOYS                                                   :{COMMA} saci cu jucãrii
-STR_0086_BAGS_OF_CANDY                                          :{COMMA} saci cu bomboane
-STR_0087_OF_COLA                                                :{VOLUME} de cola
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} tone de vatã de zahãr
-STR_0089_BUBBLES                                                :{COMMA} balonase
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA} tone de caramel
-STR_008B_BATTERIES                                              :{COMMA} baterii
-STR_008C_OF_PLASTIC                                             :{VOLUME} de plastic
-STR_008D_FIZZY_DRINKS                                           :{COMMA} bidoane cu suc
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}CL
 STR_0090_CL                                                     :{TINYFONT}CB

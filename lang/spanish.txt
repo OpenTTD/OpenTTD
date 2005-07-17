@@ -114,38 +114,6 @@ STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonelad
 STR_006B_BATTERY                                                :{COMMA} pila
 STR_006C_OF_PLASTIC                                             :{VOLUME} de plástico
 STR_006D_FIZZY_DRINK                                            :{COMMA} refresco
-STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA} pasajeros
-STR_0070_TONS_OF_COAL                                           :{COMMA} toneladas de carbón
-STR_0071_BAGS_OF_MAIL                                           :{COMMA} sacas de correo
-STR_0072_OF_OIL                                                 :{VOLUME} de petróleo
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} cabezas de ganado
-STR_0074_CRATES_OF_GOODS                                        :{COMMA} cajas de mercancías
-STR_0075_TONS_OF_GRAIN                                          :{COMMA} toneladas de grano
-STR_0076_TONS_OF_WOOD                                           :{COMMA} toneladas de madera
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} toneladas de mineral de hierro
-STR_0078_TONS_OF_STEEL                                          :{COMMA} toneladas de acero
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} bolsas de objetos de valor
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} toneladas de mineral de cobre
-STR_007B_TONS_OF_MAIZE                                          :{COMMA} toneladas de maíz
-STR_007C_TONS_OF_FRUIT                                          :{COMMA} toneladas de fruta
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} bolsas de diamantes
-STR_007E_TONS_OF_FOOD                                           :{COMMA} toneladas de alimento
-STR_007F_TONS_OF_PAPER                                          :{COMMA} toneladas de papel
-STR_0080_BAGS_OF_GOLD                                           :{COMMA} bolsas de oro
-STR_0081_OF_WATER                                               :{VOLUME} de agua
-STR_0082_TONS_OF_WHEAT                                          :{COMMA} toneladas de trigo
-STR_0083_OF_RUBBER                                              :{VOLUME} de caucho
-STR_0084_TONS_OF_SUGAR                                          :{COMMA} toneladas de azúcar
-STR_0085_TOYS                                                   :{COMMA} juguetes
-STR_0086_BAGS_OF_CANDY                                          :{COMMA} bolsas de dulces
-STR_0087_OF_COLA                                                :{VOLUME} de cola
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} toneladas de algodón de azúcar
-STR_0089_BUBBLES                                                :{COMMA} burbujas
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA} toneladas de caramelos
-STR_008B_BATTERIES                                              :{COMMA} pilas
-STR_008C_OF_PLASTIC                                             :{VOLUME} de plástico
-STR_008D_FIZZY_DRINKS                                           :{COMMA} refrescos
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
 STR_0090_CL                                                     :{TINYFONT}CL

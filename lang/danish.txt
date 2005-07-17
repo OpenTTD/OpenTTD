@@ -114,38 +114,6 @@ STR_006A_TON_OF_TOFFEE                                          :{COMMA} ton kar
 STR_006B_BATTERY                                                :{COMMA} batteri
 STR_006C_OF_PLASTIC                                             :{VOLUME} plastik
 STR_006D_FIZZY_DRINK                                            :{COMMA} sodavand
-STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA} passagerer
-STR_0070_TONS_OF_COAL                                           :{COMMA} tons kul
-STR_0071_BAGS_OF_MAIL                                           :{COMMA} sække post
-STR_0072_OF_OIL                                                 :{VOLUME} olie
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} stk. kvæg
-STR_0074_CRATES_OF_GOODS                                        :{COMMA} kasser gods
-STR_0075_TONS_OF_GRAIN                                          :{COMMA} tons korn
-STR_0076_TONS_OF_WOOD                                           :{COMMA} tons træ
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} tons jernmalm
-STR_0078_TONS_OF_STEEL                                          :{COMMA} tons stål
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} sække værdigendstande
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} tons kobbermalm
-STR_007B_TONS_OF_MAIZE                                          :{COMMA} tons majs
-STR_007C_TONS_OF_FRUIT                                          :{COMMA} tons frugt
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} sække diamanter
-STR_007E_TONS_OF_FOOD                                           :{COMMA} tons mad
-STR_007F_TONS_OF_PAPER                                          :{COMMA} tons papir
-STR_0080_BAGS_OF_GOLD                                           :{COMMA} sække guld
-STR_0081_OF_WATER                                               :{VOLUME} vand
-STR_0082_TONS_OF_WHEAT                                          :{COMMA} tons hvede
-STR_0083_OF_RUBBER                                              :{VOLUME} gummi
-STR_0084_TONS_OF_SUGAR                                          :{COMMA} tons sukker
-STR_0085_TOYS                                                   :{COMMA} legetøj
-STR_0086_BAGS_OF_CANDY                                          :{COMMA} sække slik
-STR_0087_OF_COLA                                                :{VOLUME} cola
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} tons candyfloss
-STR_0089_BUBBLES                                                :{COMMA} bobler
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA} tons karamel
-STR_008B_BATTERIES                                              :{COMMA} batterier
-STR_008C_OF_PLASTIC                                             :{VOLUME} plastik
-STR_008D_FIZZY_DRINKS                                           :{COMMA} sodavand
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
 STR_0090_CL                                                     :{TINYFONT}CL

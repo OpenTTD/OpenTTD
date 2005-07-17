@@ -1,6 +1,7 @@
 ##name Catalan
 ##ownname Català
 ##isocode ca
+##plural 0
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -113,38 +114,6 @@ STR_006A_TON_OF_TOFFEE                                          :{COMMA} tona de
 STR_006B_BATTERY                                                :{COMMA} pila
 STR_006C_OF_PLASTIC                                             :{VOLUME} de plàstic
 STR_006D_FIZZY_DRINK                                            :{COMMA} beguda gasosa
-STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA} passatgers
-STR_0070_TONS_OF_COAL                                           :{COMMA} tones de carbó
-STR_0071_BAGS_OF_MAIL                                           :{COMMA} saques de correu
-STR_0072_OF_OIL                                                 :{VOLUME} de petroli
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} caps de bestiar
-STR_0074_CRATES_OF_GOODS                                        :{COMMA} palets de mercaderíes
-STR_0075_TONS_OF_GRAIN                                          :{COMMA} tones de gra
-STR_0076_TONS_OF_WOOD                                           :{COMMA} tones de fusta
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} tones de mineral de ferro
-STR_0078_TONS_OF_STEEL                                          :{COMMA} tones d'acer
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} saques de valors
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} tones de mineral de coure
-STR_007B_TONS_OF_MAIZE                                          :{COMMA} tones de blat de moro
-STR_007C_TONS_OF_FRUIT                                          :{COMMA} tones de fruita
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} saques de diamants
-STR_007E_TONS_OF_FOOD                                           :{COMMA} tones de queviures
-STR_007F_TONS_OF_PAPER                                          :{COMMA} tones de paper
-STR_0080_BAGS_OF_GOLD                                           :{COMMA} sacs d'or
-STR_0081_OF_WATER                                               :{VOLUME} d'aigua
-STR_0082_TONS_OF_WHEAT                                          :{COMMA} tones de blat
-STR_0083_OF_RUBBER                                              :{VOLUME} de cautxú
-STR_0084_TONS_OF_SUGAR                                          :{COMMA} tones de sucre
-STR_0085_TOYS                                                   :{COMMA} joguines
-STR_0086_BAGS_OF_CANDY                                          :{COMMA} bosses de dolços
-STR_0087_OF_COLA                                                :{VOLUME} de refrescs
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} tones de cotó de sucre
-STR_0089_BUBBLES                                                :{COMMA} bombolles
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA} tones de caramels
-STR_008B_BATTERIES                                              :{COMMA} piles
-STR_008C_OF_PLASTIC                                             :{VOLUME} de plàstic
-STR_008D_FIZZY_DRINKS                                           :{COMMA} begudes gasoses
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
 STR_0090_CL                                                     :{TINYFONT}CB

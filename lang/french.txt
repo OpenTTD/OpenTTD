@@ -83,7 +83,7 @@ STR_004B_BATTERY                                                :Batterie
 STR_004C_PLASTIC                                                :Plastique
 STR_004D_FIZZY_DRINK                                            :Boisson Gazeuse
 STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA} passager
+STR_004F_PASSENGER                                              :{COMMA} passager{P
 STR_0050_TON_OF_COAL                                            :{COMMA} tonne de charbon
 STR_0051_BAG_OF_MAIL                                            :{COMMA} sac de courrier
 STR_0052_OF_OIL                                                 :{VOLUME} de pétrole
@@ -114,38 +114,6 @@ STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonne d
 STR_006B_BATTERY                                                :{COMMA} batterie
 STR_006C_OF_PLASTIC                                             :{VOLUME} de plastique
 STR_006D_FIZZY_DRINK                                            :{COMMA} boisson gazeuse
-STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA} passagers
-STR_0070_TONS_OF_COAL                                           :{COMMA} tonnes de charbon
-STR_0071_BAGS_OF_MAIL                                           :{COMMA} sacs de courrier
-STR_0072_OF_OIL                                                 :{VOLUME} de pétrole
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} têtes de bétail
-STR_0074_CRATES_OF_GOODS                                        :{COMMA} caisses de biens
-STR_0075_TONS_OF_GRAIN                                          :{COMMA} tonnes de grain
-STR_0076_TONS_OF_WOOD                                           :{COMMA} tonnes de bois
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} tonnes de fer
-STR_0078_TONS_OF_STEEL                                          :{COMMA} tonnes d'acier
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} sacs d'objets de valeur
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} tonnes de cuivre
-STR_007B_TONS_OF_MAIZE                                          :{COMMA} tonnes de maïs
-STR_007C_TONS_OF_FRUIT                                          :{COMMA} tonnes de fruits
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} sacs de diamants
-STR_007E_TONS_OF_FOOD                                           :{COMMA} tonnes de nourriture
-STR_007F_TONS_OF_PAPER                                          :{COMMA} tonnes de papier
-STR_0080_BAGS_OF_GOLD                                           :{COMMA} sacs d'or
-STR_0081_OF_WATER                                               :{VOLUME} d'eau
-STR_0082_TONS_OF_WHEAT                                          :{COMMA} tonnes de blé
-STR_0083_OF_RUBBER                                              :{VOLUME} de caoutchouc
-STR_0084_TONS_OF_SUGAR                                          :{COMMA} tonnes de sucre
-STR_0085_TOYS                                                   :{COMMA} jouets
-STR_0086_BAGS_OF_CANDY                                          :{COMMA} sacs de sucreries
-STR_0087_OF_COLA                                                :{VOLUME} de cola
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} tonnes de barbe à papa
-STR_0089_BUBBLES                                                :{COMMA} bulles
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA} tonnes de caramel
-STR_008B_BATTERIES                                              :{COMMA} batteries
-STR_008C_OF_PLASTIC                                             :{VOLUME} de plastique
-STR_008D_FIZZY_DRINKS                                           :{COMMA} boisson gazeuses
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
 STR_0090_CL                                                     :{TINYFONT}CL
@@ -1512,6 +1480,9 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Route/rail Croi
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Villes
 STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
+STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
+STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}L'édifice doit d'abord être démolit
 STR_2005                                                        :{WHITE}{TOWN}
@@ -2331,11 +2302,11 @@ STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Camion de bulle
 STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Camion de bulles Wizzowow
 STR_80CC_MPS_OIL_TANKER                                         :Camion-citerne de pétrole MPS
 STR_80CD_CS_INC_OIL_TANKER                                      :Camion-citerne de pétrole CS-Inc.
-STR_80CE_MPS_PASSENGER_FERRY                                    :MPS Ferry de voyageurs
-STR_80CF_FFP_PASSENGER_FERRY                                    :FFP Ferry de voyageurs
+STR_80CE_MPS_PASSENGER_FERRY                                    :Ferry de voyageurs MPS
+STR_80CF_FFP_PASSENGER_FERRY                                    :Ferry de voyageurs FFP
 STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell 300 Aéroglisseur
 STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug Ferry de voyageurs
-STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake Ferry de voyageurs
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Ferry de voyageurs Shivershake
 STR_80D3_YATE_CARGO_SHIP                                        :Navire cargo Yate
 STR_80D4_BAKEWELL_CARGO_SHIP                                    :Navire cargo Bakewell
 STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Navire cargo Mightymover

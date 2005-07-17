@@ -111,41 +111,9 @@ STR_0067_OF_COLA                                                :{VOLUME} coli
 STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} ton waty cukrowej
 STR_0069_BUBBLE                                                 :{COMMA} babelkow
 STR_006A_TON_OF_TOFFEE                                          :{COMMA} ton tofi
-STR_006B_BATTERY                                                :{COMMA} baterii
+STR_006B_BATTERY                                                :{COMMA} bateri{P a i}
 STR_006C_OF_PLASTIC                                             :{VOLUME} plastiku
 STR_006D_FIZZY_DRINK                                            :{COMMA} napoju gazowanego
-STR_006E                                                        :
-STR_006F_PASSENGERS                                             :{COMMA} pasazerow
-STR_0070_TONS_OF_COAL                                           :{COMMA} ton wegla
-STR_0071_BAGS_OF_MAIL                                           :{COMMA} paczek z poczta
-STR_0072_OF_OIL                                                 :{VOLUME} ropy
-STR_0073_ITEMS_OF_LIVESTOCK                                     :{COMMA} sztuk zywca
-STR_0074_CRATES_OF_GOODS                                        :{COMMA} towarow
-STR_0075_TONS_OF_GRAIN                                          :{COMMA} ton zboza
-STR_0076_TONS_OF_WOOD                                           :{COMMA} ton drewna
-STR_0077_TONS_OF_IRON_ORE                                       :{COMMA} ton rudy zelaza
-STR_0078_TONS_OF_STEEL                                          :{COMMA} ton stali
-STR_0079_BAGS_OF_VALUABLES                                      :{COMMA} kosztownosci
-STR_007A_TONS_OF_COPPER_ORE                                     :{COMMA} ton rudy miedzi
-STR_007B_TONS_OF_MAIZE                                          :{COMMA} ton kukurydzy
-STR_007C_TONS_OF_FRUIT                                          :{COMMA} ton owocow
-STR_007D_BAGS_OF_DIAMONDS                                       :{COMMA} diamentow
-STR_007E_TONS_OF_FOOD                                           :{COMMA} ton zywnosci
-STR_007F_TONS_OF_PAPER                                          :{COMMA} ton papieru
-STR_0080_BAGS_OF_GOLD                                           :{COMMA} zlota
-STR_0081_OF_WATER                                               :{VOLUME} wody
-STR_0082_TONS_OF_WHEAT                                          :{COMMA} ton pszenicy
-STR_0083_OF_RUBBER                                              :{VOLUME} kauczuku
-STR_0084_TONS_OF_SUGAR                                          :{COMMA} ton cukru
-STR_0085_TOYS                                                   :{COMMA} zabawek
-STR_0086_BAGS_OF_CANDY                                          :{COMMA} slodyczy
-STR_0087_OF_COLA                                                :{VOLUME} coli
-STR_0088_TONS_OF_COTTON_CANDY                                   :{COMMA} ton waty cukrowej
-STR_0089_BUBBLES                                                :{COMMA} babelkow
-STR_008A_TONS_OF_TOFFEE                                         :{COMMA} ton tofi
-STR_008B_BATTERIES                                              :{COMMA} baterii
-STR_008C_OF_PLASTIC                                             :{VOLUME} plastiku
-STR_008D_FIZZY_DRINKS                                           :{COMMA} napojow gazowanych
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
 STR_0090_CL                                                     :{TINYFONT}CL
@@ -1512,6 +1480,9 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Poziom przecina
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Miasta
 STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
+STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
+STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Budynek musi byc najpierw zburzony
 STR_2005                                                        :{WHITE}{TOWN}
