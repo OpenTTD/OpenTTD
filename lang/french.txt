@@ -83,7 +83,7 @@ STR_004B_BATTERY                                                :Batterie
 STR_004C_PLASTIC                                                :Plastique
 STR_004D_FIZZY_DRINK                                            :Boisson Gazeuse
 STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA} passager{P
+STR_004F_PASSENGER                                              :{COMMA} passager
 STR_0050_TON_OF_COAL                                            :{COMMA} tonne de charbon
 STR_0051_BAG_OF_MAIL                                            :{COMMA} sac de courrier
 STR_0052_OF_OIL                                                 :{VOLUME} de pétrole
