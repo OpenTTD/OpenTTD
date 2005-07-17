@@ -277,10 +277,8 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 		}
 
 		/* draw the flag plus orders */
-		{	int w_width = w->widget[5].right - w->widget[5].left;
-			DrawSprite(v->vehstatus & VS_STOPPED ? 0xC12 : 0xC13, 2, w->widget[5].top + 1);
-			DrawStringCenteredTruncated(w_width / 2 + 6, w->widget[5].top + 1, str, 0, w_width - 8);
-		}
+		DrawSprite(v->vehstatus & VS_STOPPED ? 0xC12 : 0xC13, 2, w->widget[5].top + 1);
+		DrawStringCenteredTruncated(w->widget[5].left + 8, w->widget[5].right, w->widget[5].top + 1, str, 0);
 		DrawWindowViewport(w);
 	} break;
 

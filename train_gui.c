@@ -417,9 +417,9 @@ static void DrawTrainDepotWindow(Window *w)
 			do {
 				i += u->u.rail.cached_veh_length + 1;
 			} while ( (u=u->next) != NULL);			//Determine length of train
-			SetDParam(0, (i+8) / 9);			//Set the counter
-			i = (w->hscroll.cap * 29) + (x + 26);		//Calculate position of text according to window size
-			DrawStringCentered(i, y+5, STR_TINY_BLACK, 0);	//Draw the counter
+
+			SetDParam(0, (i + 8) / 9);			//Set the counter
+			DrawStringRightAligned(w->widget[6].right - 1, y + 4, STR_TINY_BLACK, 0);	//Draw the counter
 
 			/* Draw the pretty flag */
 			DrawSprite(v->vehstatus&VS_STOPPED ? 0xC12 : 0xC13, x+15, y);
@@ -441,8 +441,7 @@ static void DrawTrainDepotWindow(Window *w)
 			u = v;
 			do i++; while ( (u=u->next) != NULL);		//Determine length of train
 			SetDParam(0, i);				//Set the counter
-			i = (w->hscroll.cap * 29) + (x + 26);		//Calculate position of text according to window size
-			DrawStringCentered(i, y+5, STR_TINY_BLACK, 0);	//Draw the counter
+			DrawStringRightAligned(w->widget[6].right - 1, y + 4, STR_TINY_BLACK, 0);	//Draw the counter
 			y += 14;
 		}
 	}
@@ -883,10 +882,8 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 		}
 
 		/* draw the flag plus orders */
-		{	int w_width = w->widget[5].right - w->widget[5].left;
-			DrawSprite(v->vehstatus & VS_STOPPED ? 0xC12 : 0xC13, 2, w->widget[5].top + 1);
-			DrawStringCenteredTruncated(w_width / 2 + 6, w->widget[5].top + 1, str, 0, w_width - 8);
-		}
+		DrawSprite(v->vehstatus & VS_STOPPED ? 0xC12 : 0xC13, 2, w->widget[5].top + 1);
+		DrawStringCenteredTruncated(w->widget[5].left + 8, w->widget[5].right, w->widget[5].top + 1, str, 0);
 		DrawWindowViewport(w);
 	}	break;
 

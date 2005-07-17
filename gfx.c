@@ -261,9 +261,9 @@ enum {
  * @param *dest string that is checked and possibly truncated
  * @param maxw maximum width in pixels of the string
  * @return new width of (truncated) string */
-static uint TruncateString(char *str, uint maxw)
+static int TruncateString(char *str, int maxw)
 {
-	uint w = 0;
+	int w = 0;
 	int base = _stringwidth_base;
 	int ddd, ddd_w;
 
@@ -273,7 +273,7 @@ static uint TruncateString(char *str, uint maxw)
 	base = _stringwidth_base;
 	ddd_w = ddd = GetCharacterWidth(base + '.') * 3;
 
-	for (c = *str, ddd_pos = str; *str != '\0'; c = (*++str)) {
+	for (ddd_pos = str; (c = *str++) != '\0'; ) {
 		if (c >= ASCII_LETTERSTART) {
 			w += GetCharacterWidth(base + c);
 
@@ -298,14 +298,14 @@ static uint TruncateString(char *str, uint maxw)
 		// Remember the last position where three dots fit.
 		if (w + ddd < maxw) {
 			ddd_w = w + ddd;
-			ddd_pos = str + 1;
+			ddd_pos = str;
 		}
 	}
 
 	return w;
 }
 
-static inline uint TruncateStringID(StringID src, char *dest, uint maxw)
+static inline int TruncateStringID(StringID src, char *dest, int maxw)
 {
 	GetString(dest, src);
 	return TruncateString(dest, maxw);
@@ -358,11 +358,11 @@ int DrawStringCentered(int x, int y, StringID str, uint16 color)
 	return w;
 }
 
-int DrawStringCenteredTruncated(int x, int y, StringID str, uint16 color, uint maxw)
+int DrawStringCenteredTruncated(int xl, int xr, int y, StringID str, uint16 color)
 {
 	char buffer[512];
-	uint w = TruncateStringID(str, buffer, maxw);
-	return DoDrawString(buffer, x - (w / 2), y, color);
+	int w = TruncateStringID(str, buffer, xr - xl);
+	return DoDrawString(buffer, (xl + xr - w) / 2, y, color);
 }
 
 void DrawStringCenterUnderline(int x, int y, StringID str, uint16 color)
@@ -371,10 +371,10 @@ void DrawStringCenterUnderline(int x, int y, StringID str, uint16 color)
 	GfxFillRect(x - (w >> 1), y + 10, x - (w >> 1) + w, y + 10, _string_colorremap[1]);
 }
 
-void DrawStringCenterUnderlineTruncated(int x, int y, StringID str, uint16 color, uint maxw)
+void DrawStringCenterUnderlineTruncated(int xl, int xr, int y, StringID str, uint16 color)
 {
-	int w = DrawStringCenteredTruncated(x, y, str, color, maxw);
-	GfxFillRect(x - (w >> 1), y + 10, x - (w >> 1) + w, y + 10, _string_colorremap[1]);
+	int w = DrawStringCenteredTruncated(xl, xr, y, str, color);
+	GfxFillRect((xl + xr - w) / 2, y + 10, (xl + xr + w) / 2, y + 10, _string_colorremap[1]);
 }
 
 static uint32 FormatStringLinebreaks(char *str, int maxw)
