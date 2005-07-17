@@ -62,7 +62,7 @@ VARDEF uint16 _date_fract;
 // Amount of game ticks
 VARDEF uint16 _tick_counter;
 
-// Used when calling OnNewDay
+// This one is not used anymore.
 VARDEF VehicleID _vehicle_id_ctr_day;
 
 // Skip aging of cargo?

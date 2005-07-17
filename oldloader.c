@@ -422,8 +422,6 @@ static void FixOldVehicles(void)
 			}
 		}
 	}
-
-	_vehicle_id_ctr_day = 0;
 }
 
 /*

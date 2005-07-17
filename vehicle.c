@@ -2149,9 +2149,6 @@ static void Load_VEHS(void)
 			}
 		}
 	}
-
-	if (_sl.full_version < 0x0B01)
-		_vehicle_id_ctr_day = 0;
 }
 
 const ChunkHandler _veh_chunk_handlers[] = {

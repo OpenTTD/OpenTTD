@@ -138,7 +138,6 @@ void InitializeGame(uint size_x, uint size_y)
 	_tick_counter = 0;
 	_date_fract = 0;
 	_cur_tileloop_tile = 0;
-	_vehicle_id_ctr_day = 0;
 
 	{
 		uint starting = ConvertIntDate(_patches.starting_date);
@@ -485,40 +484,21 @@ static const uint16 _autosave_months[] = {
 };
 
 /**
- * Runs the day_proc of 'amount' vehicles.
+ * Runs the day_proc for every DAY_TICKS vehicle starting at daytick.
  */
-static void RunVehicleDayProc(uint amount)
+static void RunVehicleDayProc(uint daytick)
 {
-	Vehicle *v;
-	VehicleID ctr;
-	uint i;
+	uint i, total = _vehicle_pool.total_items;
 
-	ctr = _vehicle_id_ctr_day;
-
-	/* If the CTR is already over the size of the pool, don't even run the for-loop */
-	if (ctr >= GetVehiclePoolSize()) {
-		_vehicle_id_ctr_day += amount;
-		return;
-	}
-
-	for (i = 0; i < amount; i++, ctr++) {
-		/* Skip non-existing vehicles */
-		if (ctr >= GetVehiclePoolSize()) {
-			_vehicle_id_ctr_day += amount;
-			return;
-		}
-
-		v = GetVehicle(ctr);
+	for (i = daytick; i < total; i += DAY_TICKS) {
+		Vehicle *v = GetVehicle(i);
 		if (v->type != 0)
 			_on_new_vehicle_day_proc[v->type - 0x10](v);
 	}
-
-	_vehicle_id_ctr_day = ctr;
 }
 
 void IncreaseDate(void)
 {
-	uint32 total_vehicles = (1 << _vehicle_pool.block_size_bits) * _vehicle_pool.max_blocks;
 	YearMonthDay ymd;
 
 	if (_game_mode == GM_MENU) {
@@ -526,7 +506,7 @@ void IncreaseDate(void)
 		return;
 	}
 
-	RunVehicleDayProc(total_vehicles / DAY_TICKS);
+	RunVehicleDayProc(_date_fract);
 
 	/* increase day, and check if a new day is there? */
 	_tick_counter++;
@@ -538,13 +518,6 @@ void IncreaseDate(void)
 
 	/* yeah, increse day counter and call various daily loops */
 	_date++;
-
-	/* We have a hole because of rounding errors, between the last vehicle checked and the max amount
-	 *  of vehicles.. correct for that problem here */
-	RunVehicleDayProc(total_vehicles - _vehicle_id_ctr_day);
-
-	assert(_vehicle_id_ctr_day == total_vehicles);
-	_vehicle_id_ctr_day = 0;
 
 	TextMessageDailyLoop();
 
