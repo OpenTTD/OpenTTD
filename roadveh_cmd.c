@@ -1649,7 +1649,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 			RoadStop *rs = GetPrimaryRoadStop(st, type);
 			RoadStop *first_stop = rs;
 			RoadStop *best_stop = NULL;
-			uint32 mindist = 120, dist; // 120 is threshold distance.
+			uint32 mindist = 12, dist; // 12 is threshold distance.
 
 		//first we need to find out how far our stations are away.
 			DEBUG(ms, 2) ("Multistop: Attempting to obtain a slot for vehicle %d at station %d (0x%x)", v->unitnumber, st->index, st->xy);
@@ -1661,6 +1661,27 @@ void OnNewDay_RoadVeh(Vehicle *v)
 				// Previously the NPF pathfinder was used here even if NPF is OFF.. WTF?
 				assert(NUM_SLOTS == 2);
 				dist = DistanceManhattan(v->tile, rs->xy);
+
+				// Check if the station is located BEHIND the vehicle..
+				// In that case, add penalty.
+				switch(v->direction) {
+				case 1: // going north east,x position decreasing
+					if (v->x_pos <= TileX(rs->xy) * 16 + 15)
+						dist += 6;
+					break;
+				case 3: // Going south east, y position increasing
+					if (v->y_pos >= TileY(rs->xy) * 16)
+						dist += 6;
+					break;
+				case 5: // Going south west, x position increasing
+					if (v->x_pos >= TileX(rs->xy) * 16)
+						dist += 6;
+					break;
+				case 7: // Going north west, y position decrasing.
+					if (v->y_pos <= TileY(rs->xy) * 16 + 15)
+						dist += 6;
+					break;
+				}
 
 				// Remember the one with the shortest distance
 				if (dist < mindist) {
@@ -1679,9 +1700,9 @@ void OnNewDay_RoadVeh(Vehicle *v)
 				best_stop->slot[slot] = v->index;
 				v->u.road.slot = best_stop;
 				v->dest_tile = best_stop->xy;
-				v->u.road.slot_age = -30;
+				v->u.road.slot_age = -5;
 				v->u.road.slotindex = slot;
-				DEBUG(ms, 1) ("Multistop: Slot %d at 0x%x assigned to vehicle %d", slot, best_stop->xy, v->unitnumber);
+				DEBUG(ms, 1) ("Multistop: Slot %d at 0x%x assigned to vehicle %d (0x%x)", slot, best_stop->xy, v->unitnumber, v->tile);
 			} else if (first_stop) {
 				//now we couldn't assign a slot for one reason or another.
 				//so we just go towards the first station
