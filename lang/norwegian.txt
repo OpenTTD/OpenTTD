@@ -1,6 +1,7 @@
 ##name Norwegian
 ##ownname Norsk, bokmål
 ##isocode nb
+##plural 0
 
 ##id 0x0000
 STR_NULL                                                        :

@@ -1,6 +1,7 @@
 ##name Latvian
 ##ownname Latvie¨u valoda
 ##isocode lv
+##plural 3
 
 ##id 0x0000
 STR_NULL                                                        :

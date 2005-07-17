@@ -1,6 +1,7 @@
 ##name Lithuanian
 ##ownname Lietuviu
 ##isocode lt
+##plural 5
 
 ##id 0x0000
 STR_NULL                                                        :

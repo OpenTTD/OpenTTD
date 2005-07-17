@@ -1,6 +1,7 @@
 ##name Polish
 ##ownname Polski
 ##isocode pl
+##plural 7
 
 ##id 0x0000
 STR_NULL                                                        :

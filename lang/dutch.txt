@@ -1,6 +1,7 @@
 ##name Dutch
 ##ownname Nederlands
 ##isocode nl
+##plural 0
 
 ##id 0x0000
 STR_NULL                                                        :

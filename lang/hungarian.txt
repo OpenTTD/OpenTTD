@@ -1,6 +1,7 @@
 ##name Hungarian
 ##ownname Magyar
 ##isocode hu
+##plural 1
 
 ##id 0x0000
 STR_NULL                                                        :

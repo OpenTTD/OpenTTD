@@ -1,6 +1,7 @@
 ##name Slovak
 ##ownname Slovensky
 ##isocode sk
+##plural 6
 
 ##id 0x0000
 STR_NULL                                                        :

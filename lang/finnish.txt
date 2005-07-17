@@ -1,6 +1,7 @@
 ##name Finnish
 ##ownname Suomi
 ##isocode fi
+##plural 0
 
 ##id 0x0000
 STR_NULL                                                        :

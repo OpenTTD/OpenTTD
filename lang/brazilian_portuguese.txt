@@ -1,6 +1,7 @@
 ##name Brazilian-Portuguese
 ##ownname Português-Brasil
 ##isocode pt_BR
+##plural 2
 
 ##id 0x0000
 STR_NULL                                                        :

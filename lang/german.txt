@@ -1,6 +1,7 @@
 ##name German
 ##ownname Deutsch
 ##isocode de
+##plural 0
 
 ##id 0x0000
 STR_NULL                                                        :

@@ -1,6 +1,7 @@
 ##name Spanish
 ##ownname Español (ES)
 ##isocode es
+##plural 0
 
 ##id 0x0000
 STR_NULL                                                        :

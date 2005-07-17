@@ -1,6 +1,7 @@
 ##name Galician
 ##ownname Galego
 ##isocode gl
+##plural 0
 
 ##id 0x0000
 STR_NULL                                                        :
