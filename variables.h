@@ -379,7 +379,6 @@ VARDEF FILE *_log_file_fd;
 // NOSAVE: These can be recalculated from InitializeLandscapeVariables
 typedef struct {
 	StringID names_s[NUM_CARGO];
-	StringID names_p[NUM_CARGO];
 	StringID names_long[NUM_CARGO];
 	StringID names_short[NUM_CARGO];
 	byte weights[NUM_CARGO];

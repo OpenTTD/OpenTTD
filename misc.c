@@ -423,9 +423,7 @@ void InitializeLandscapeVariables(bool only_constants)
 
 		str = lpd->names[i];
 		_cargoc.names_s[i] = str;
-		_cargoc.names_p[i] = (str += 0x20);
-		_cargoc.names_long[i] = (str += 0x20);
-//		_cargoc.names_long_p[i] = (str += 0x20);
+		_cargoc.names_long[i] = (str += 0x40);
 		_cargoc.names_short[i] = (str += 0x20);
 		_cargoc.weights[i] = lpd->weights[i];
 
