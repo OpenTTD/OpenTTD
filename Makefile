@@ -603,7 +603,7 @@ endif
 
 ### Sources
 
-C_SOURCES += ai.c
+C_SOURCES += ai_old.c
 C_SOURCES += ai_build.c
 C_SOURCES += ai_new.c
 C_SOURCES += ai_pathfinder.c

@@ -3111,7 +3111,7 @@
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
-			path = ai.h;
+			path = ai_new.h;
 			refType = 2;
 			sourceTree = SOURCE_ROOT;
 		};
@@ -3119,7 +3119,7 @@
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.c;
-			path = ai.c;
+			path = ai_old.c;
 			refType = 2;
 			sourceTree = SOURCE_ROOT;
 		};

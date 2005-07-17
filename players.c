@@ -15,7 +15,7 @@
 #include "news.h"
 #include "saveload.h"
 #include "command.h"
-#include "ai.h"
+#include "ai_new.h"
 #include "sound.h"
 #include "network.h"
 

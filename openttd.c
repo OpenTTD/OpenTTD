@@ -27,7 +27,7 @@
 #include "fileio.h"
 #include "hal.h"
 #include "airport.h"
-#include "ai.h"
+#include "ai_new.h"
 #include "console.h"
 #include "screenshot.h"
 #include "network.h"

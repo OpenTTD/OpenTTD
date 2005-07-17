@@ -2,7 +2,7 @@
 #include "openttd.h"
 #include "debug.h"
 #include "map.h"
-#include "ai.h"
+#include "ai_new.h"
 #include "vehicle.h"
 
 int AiNew_GetRailDirection(TileIndex tile_a, TileIndex tile_b, TileIndex tile_c)

@@ -4,7 +4,7 @@
 #include "map.h"
 #include "tile.h"
 #include "command.h"
-#include "ai.h"
+#include "ai_new.h"
 #include "depot.h"
 
 #define TEST_STATION_NO_DIR 0xFF

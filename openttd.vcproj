@@ -161,7 +161,7 @@
 			Name="Source Files"
 			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat">
 			<File
-				RelativePath="ai.c">
+				RelativePath="ai_old.c">
 			</File>
 			<File
 				RelativePath=".\airport.c">
@@ -737,7 +737,7 @@
 			Name="AI Files"
 			Filter="">
 			<File
-				RelativePath=".\ai.h">
+				RelativePath=".\ai_new.h">
 			</File>
 			<File
 				RelativePath=".\ai_build.c">

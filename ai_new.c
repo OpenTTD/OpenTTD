@@ -22,7 +22,7 @@
 #include "map.h"
 #include "tile.h"
 #include "command.h"
-#include "ai.h"
+#include "ai_new.h"
 #include "town.h"
 #include "industry.h"
 #include "station.h"
