@@ -47,11 +47,11 @@ void DrawNewsNewAircraftAvail(Window *w);
 void DrawNewsBankrupcy(Window *w);
 static void MoveToNexItem(void);
 
-StringID GetNewsStringNewTrainAvail(NewsItem *ni);
-StringID GetNewsStringNewRoadVehAvail(NewsItem *ni);
-StringID GetNewsStringNewShipAvail(NewsItem *ni);
-StringID GetNewsStringNewAircraftAvail(NewsItem *ni);
-StringID GetNewsStringBankrupcy(NewsItem *ni);
+StringID GetNewsStringNewTrainAvail(const NewsItem *ni);
+StringID GetNewsStringNewRoadVehAvail(const NewsItem *ni);
+StringID GetNewsStringNewShipAvail(const NewsItem *ni);
+StringID GetNewsStringNewAircraftAvail(const NewsItem *ni);
+StringID GetNewsStringBankrupcy(const NewsItem *ni);
 
 static DrawNewsCallbackProc * const _draw_news_callback[] = {
 	DrawNewsNewTrainAvail,    /* DNC_TRAINAVAIL */
@@ -555,14 +555,18 @@ static byte getNews(byte i)
 	return i;
 }
 
-// cut string after len pixels
-static void GetNewsString(NewsItem *ni, char *buffer, uint max)
+/** Draw an unformatted news message truncated to a maximum length. If
+ * length exceeds maximum length it will be postfixed by '...'
+ * @param x,y position of the string
+ * @param color the color the string will be shown in
+ * @param *ni NewsItem being printed
+ * @param maxw maximum width of string in pixels
+ */
+static void DrawNewsString(int x, int y, uint16 color, const NewsItem *ni, uint maxw)
 {
-	char buf[512];
+	char buffer[512], buffer2[512];
+	char *ptr, *dest;
 	StringID str;
-	const char *s;
-	char *d;
-	uint len = 0;
 
 	if (ni->display_mode == 3) {
 		str = _get_news_string_callback[ni->callback](ni);
@@ -571,31 +575,21 @@ static void GetNewsString(NewsItem *ni, char *buffer, uint max)
 		str = ni->string_id;
 	}
 
-	GetString(buf, str);
-
-	s = buf;
-	d = buffer;
-
-	for (;; s++) {
-		// cut strings that are too long
-		if (len >= max-24) { // add 3x "." at the end
-			d[0] = d[1] = d[2] = '.';
-			d += 3;
-			*d = '\0';
-			break;
-		}
-
-		if (*s == '\0') {
-			*d = '\0';
-			break;
-		} else if (*s == '\r') {
-			d[0] = d[1] = d[2] = d[3] = ' ';
-			d += 4;
-		} else if ((byte)*s >= ' ' && ((byte)*s < 0x88 || (byte)*s >= 0x99)) {
-			len += GetCharacterWidth((byte)*s);
-			*d++ = *s;
+	GetString(buffer, str);
+	/* Copy the just gotten string to another buffer to remove any formatting
+	 * from it such as big fonts, etc. */
+	for (ptr = buffer, dest = buffer2; *ptr != '\0'; ptr++) {
+		if ((byte)*ptr == '\r') {
+			dest[0] = dest[1] = dest[2] = dest[3] = ' ';
+			dest += 4;
+		} else if ((byte)*ptr >= ' ' && ((byte)*ptr < 0x88 || (byte)*ptr >= 0x99)) {
+			*dest++ = *ptr;
 		}
 	}
+
+	*dest = '\0';
+	/* Truncate and show string; postfixed by '...' if neccessary */
+	DoDrawStringTruncated(buffer2, x, y, color, maxw);
 }
 
 
@@ -605,7 +599,6 @@ static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT: {
 		int y = 19;
 		byte p, show;
-		NewsItem *ni;
 
 		DrawWindowWidgets(w);
 
@@ -613,16 +606,13 @@ static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 		show = min(_total_news, w->vscroll.cap);
 
 		for (p = w->vscroll.pos; p < w->vscroll.pos + show; p++) {
-			char buffer[256];
-
 			// get news in correct order
-			ni = &_news_items[getNews(p)];
+			const NewsItem *ni = &_news_items[getNews(p)];
 
 			SetDParam(0, ni->date);
-			DrawString(4, y, STR_SHORT_DATE, 16);
+			DrawString(4, y, STR_SHORT_DATE, 12);
 
-			GetNewsString(ni, buffer, w->width-90);
-			DoDrawString(buffer, 82, y, 16);
+			DrawNewsString(82, y, 12, ni, w->width - 95);
 			y += 12;
 		}
 
