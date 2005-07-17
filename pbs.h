@@ -56,11 +56,13 @@ void PBSClearTrack(TileIndex tile, Track track);
  * @param track The track to unreserve, valid values 0-5.
  */
 
-void PBSClearPath(TileIndex tile, Trackdir trackdir);
+void PBSClearPath(TileIndex tile, Trackdir trackdir, TileIndex end_tile, Trackdir end_trackdir);
 /**<
  * Follows a planned(reserved) path, and unreserves the tracks.
  * @param tile The tile on which the path starts
  * @param trackdir The trackdirection in which the path starts
+ * @param end_tile The tile on which the path ends
+ * @param end_trackdir The trackdirection in which the path ends
  */
 
 bool PBSIsPbsSignal(TileIndex tile, Trackdir trackdir);

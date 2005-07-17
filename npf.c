@@ -180,27 +180,35 @@ void NPFReservePBSPath(AyStar *as)
 					 * BUT, you have to have a pretty fucked up junction layout for this to happen,
 					 * so we'll just stop this train, the user will eventually notice, so he can fix it.
 					 */
-					PBSClearPath(start, trackdir);
+					PBSClearPath(start, trackdir, curr->node.tile, curr->node.direction);
 					NPFSetFlag(&ftd->node, NPF_FLAG_PBS_BLOCKED, true);
 					DEBUG(pbs, 1) ("PBS: Self-crossing path!!!");
 					return;
 				};
 
-				PBSReserveTrack(curr->node.tile, (curr->node.direction & 7) );
+				PBSReserveTrack(curr->node.tile, TrackdirToTrack(curr->node.direction) );
 
-				/* we want to reserve the last tile (with the signal) on the path too */
-				if (prev != NULL && start == INVALID_TILE) {
-					PBSReserveTrack(prev->node.tile, (prev->node.direction & 7) );
-					start = prev->node.tile;
-					trackdir = ReverseTrackdir(prev->node.direction);
+				/* we want to reserve the last tile (with the signal) on the path too
+				   also remember this tile, cause its the end of the path (where we exit the block) */
+				if (start == INVALID_TILE) {
+					if (prev != NULL) {
+						PBSReserveTrack(prev->node.tile, TrackdirToTrack(prev->node.direction) );
+						start = prev->node.tile;
+						trackdir = ReverseTrackdir(prev->node.direction);
+					} else {
+						start = curr->node.tile;
+						trackdir = curr->node.direction;
+					}
 				}
 			}
 
 			prev = curr;
 			curr = curr->parent;
 		} while (curr != NULL);
+		// we remember the tile/track where this path leaves the pbs junction
+		ftd->node.tile = start;
+		ftd->node.direction = trackdir;
 	}
-
 }
 
 

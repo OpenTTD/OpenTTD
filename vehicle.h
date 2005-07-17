@@ -70,6 +70,8 @@ typedef struct VehicleRail {
 	byte flags;
 
 	byte pbs_status;
+	TileIndex pbs_end_tile;
+	Trackdir pbs_end_trackdir;
 } VehicleRail;
 
 enum {

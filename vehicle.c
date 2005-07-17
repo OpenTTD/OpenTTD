@@ -1947,8 +1947,10 @@ static const SaveLoad _train_desc[] = {
 	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,days_since_order_progr), SLE_UINT16, 2, 255),
 
 	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,pbs_status), SLE_UINT8, 2, 255),
-	// reserve extra space in savegame here. (currently 12 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 12, 2, 255),
+	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,pbs_end_tile), SLE_UINT32, 2, 255),
+	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,pbs_end_trackdir), SLE_UINT8, 2, 255),
+	// reserve extra space in savegame here. (currently 7 bytes)
+	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 7, 2, 255),
 
 	SLE_END()
 };

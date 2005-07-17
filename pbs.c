@@ -189,13 +189,17 @@ void PBSClearTrack(TileIndex tile, Track track) {
 		MarkTileDirtyByTile(tile);
 };
 
-void PBSClearPath(TileIndex tile, Trackdir trackdir) {
+void PBSClearPath(TileIndex tile, Trackdir trackdir, TileIndex end_tile, Trackdir end_trackdir) {
 	uint16 res;
 	FindLengthOfTunnelResult flotr;
 	assert(IsValidTile(tile));
-	assert((trackdir & ~8) <= 5);
+	assert(IsValidTrackdir(trackdir));
+
 	do {
-		PBSClearTrack(tile, trackdir & 7);
+		PBSClearTrack(tile, TrackdirToTrack(trackdir));
+
+		if (tile == end_tile && TrackdirToTrack(trackdir) == TrackdirToTrack(end_trackdir))
+			return;
 
 		if (IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5 & 0xF0)==0 && (unsigned)(_m[tile].m5 & 3) == TrackdirToExitdir(trackdir)) {
 			// this is a tunnel
@@ -204,11 +208,7 @@ void PBSClearPath(TileIndex tile, Trackdir trackdir) {
 			tile = flotr.tile;
 		} else {
 			byte exitdir = TrackdirToExitdir(trackdir);
-			if (IsTileDepotType(tile, TRANSPORT_RAIL) && (exitdir != GetDepotDirection(tile, TRANSPORT_RAIL)))
-				return;
 			tile = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDir(exitdir));
-			if (IsTileDepotType(tile, TRANSPORT_RAIL) && (exitdir != ReverseDiagdir(GetDepotDirection(tile, TRANSPORT_RAIL))))
-				return;
 		};
 
 		res = PBSTileReserved(tile);

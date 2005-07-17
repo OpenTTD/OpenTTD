@@ -1321,13 +1321,15 @@ static void ReverseTrainDirection(Vehicle *v)
 	int l = 0, r = -1;
 	Vehicle *u;
 	TileIndex tile;
-	byte trackdir;
+	Trackdir trackdir;
+	TileIndex pbs_end_tile = v->u.rail.pbs_end_tile; // these may be changed, and we may need
+	Trackdir pbs_end_trackdir = v->u.rail.pbs_end_trackdir; // the old values, so cache them
 
 	u = GetLastVehicleInChain(v);
 	tile = GetVehicleTileOutOfTunnel(u, false);
 	trackdir = ReverseTrackdir(GetVehicleTrackdir(u));
 
-	if (PBSTileReserved(tile) & (1 << (trackdir&7))) {
+	if (PBSTileReserved(tile) & (1 << TrackdirToTrack(trackdir))) {
 		NPFFindStationOrTileData fstd;
 		NPFFoundTargetData ftd;
 
@@ -1351,13 +1353,15 @@ static void ReverseTrainDirection(Vehicle *v)
 				return;
 			}
 		}
+
+		v->u.rail.pbs_end_tile = ftd.node.tile;
+		v->u.rail.pbs_end_trackdir = ftd.node.direction;
 	}
 
 	tile = GetVehicleTileOutOfTunnel(v, false);
 	trackdir = GetVehicleTrackdir(v);
 
 	if (v->u.rail.pbs_status == PBS_STAT_HAS_PATH) {
-		byte trackdir = GetVehicleTrackdir(v);
 		TileIndex tile = AddTileIndexDiffCWrap(v->tile, TileIndexDiffCByDir(TrackdirToExitdir(trackdir)));
 		uint32 ts;
 		assert(tile != INVALID_TILE);
@@ -1365,10 +1369,10 @@ static void ReverseTrainDirection(Vehicle *v)
 		ts &= TrackdirReachesTrackdirs(trackdir);
 		assert(ts != 0 && KillFirstBit2x64(ts) == 0);
 		trackdir = FindFirstBit2x64(ts);
-		PBSClearPath(tile, trackdir);
+		PBSClearPath(tile, trackdir, pbs_end_tile, pbs_end_trackdir);
 		v->u.rail.pbs_status = PBS_STAT_NONE;
-	} else if (PBSTileReserved(tile) & (1 << (trackdir&7))) {
-		PBSClearPath(tile, trackdir);
+	} else if (PBSTileReserved(tile) & (1 << TrackdirToTrack(trackdir))) {
+		PBSClearPath(tile, trackdir, pbs_end_tile, pbs_end_trackdir);
 		if (v->u.rail.track != 0x40)
 			PBSReserveTrack(tile, trackdir & 7);
 	};
@@ -1838,8 +1842,11 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 			if (NPFGetFlag(&ftd.node, NPF_FLAG_PBS_EXIT)) {
 				if (NPFGetFlag(&ftd.node, NPF_FLAG_PBS_BLOCKED) || NPFGetFlag(&ftd.node, NPF_FLAG_PBS_RED))
 					return true;
-				else
+				else {
+					v->u.rail.pbs_end_tile = ftd.node.tile;
+					v->u.rail.pbs_end_trackdir = ftd.node.direction;
 					goto green;
+				}
 			}
 		}
 
@@ -2007,10 +2014,13 @@ static byte ChooseTrainTrack(Vehicle *v, TileIndex tile, int enterdir, TrackdirB
 		if (pbs_tracks || (v->u.rail.pbs_status == PBS_STAT_NEED_PATH)) {
 			DEBUG(pbs, 2) ("pbs: (%i) choosefromblock, tile_org:%x tile_dst:%x  trackdir:%i  pbs_tracks:%i",v->unitnumber, tile,tile - TileOffsByDir(enterdir), trackdir, pbs_tracks);
 			// clear the currently planned path
-			if (v->u.rail.pbs_status != PBS_STAT_NEED_PATH) PBSClearPath(tile, FindFirstBit2x64(pbs_tracks));
+			if (v->u.rail.pbs_status != PBS_STAT_NEED_PATH) PBSClearPath(tile, FindFirstBit2x64(pbs_tracks), v->u.rail.pbs_end_tile, v->u.rail.pbs_end_trackdir);
 
 			// try to find a route to a green exit signal
 			ftd = NPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_RAIL, v->owner, v->u.rail.railtype, PBS_MODE_ANY);
+
+			v->u.rail.pbs_end_tile = ftd.node.tile;
+			v->u.rail.pbs_end_trackdir = ftd.node.direction;
 
 		} else
 			ftd = NPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_RAIL, v->owner, v->u.rail.railtype, PBS_MODE_NONE);
@@ -2779,6 +2789,8 @@ static void TrainController(Vehicle *v)
 								if (NPFGetFlag(&ftd.node, NPF_FLAG_PBS_BLOCKED) || NPFGetFlag(&ftd.node, NPF_FLAG_PBS_RED))
 									goto red_light;
 								else {
+									v->u.rail.pbs_end_tile = ftd.node.tile;
+									v->u.rail.pbs_end_trackdir = ftd.node.direction;
 									goto green_light;
 								}
 
@@ -2955,8 +2967,8 @@ static void DeleteLastWagon(Vehicle *v)
 	// clear up reserved pbs tracks
 	if (PBSTileReserved(v->tile) & v->u.rail.track) {
 		if (v == u) {
-			PBSClearPath(v->tile, FIND_FIRST_BIT(v->u.rail.track));
-			PBSClearPath(v->tile, FIND_FIRST_BIT(v->u.rail.track) + 8);
+			PBSClearPath(v->tile, FIND_FIRST_BIT(v->u.rail.track), v->u.rail.pbs_end_tile, v->u.rail.pbs_end_trackdir);
+			PBSClearPath(v->tile, FIND_FIRST_BIT(v->u.rail.track) + 8, v->u.rail.pbs_end_tile, v->u.rail.pbs_end_trackdir);
 		};
 		if (v->tile != u->tile) {
 			PBSClearTrack(v->tile, FIND_FIRST_BIT(v->u.rail.track));
@@ -3206,6 +3218,8 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 		if (ftd.best_trackdir != 0xFF && NPFGetFlag(&ftd.node, NPF_FLAG_PBS_EXIT)) {
 			if (!(NPFGetFlag(&ftd.node, NPF_FLAG_PBS_BLOCKED) || NPFGetFlag(&ftd.node, NPF_FLAG_PBS_RED))) {
 				v->u.rail.pbs_status = PBS_STAT_HAS_PATH;
+				v->u.rail.pbs_end_tile = ftd.node.tile;
+				v->u.rail.pbs_end_trackdir = ftd.node.direction;
 				return true;
 			}
 		};
