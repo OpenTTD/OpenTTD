@@ -58,6 +58,6 @@ void UpdateAllSignVirtCoords(void);
 void PlaceProc_Sign(TileIndex tile);
 
 /* misc.c */
-void ShowRenameSignWindow(SignStruct *ss);
+void ShowRenameSignWindow(const SignStruct *ss);
 
 #endif /* SIGNS_H */

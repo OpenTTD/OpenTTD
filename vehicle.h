@@ -302,7 +302,7 @@ TileIndex GetVehicleOutOfTunnelTile(const Vehicle *v);
 bool UpdateSignalsOnSegment(TileIndex tile, byte direction);
 void SetSignalsOnBothDir(TileIndex tile, byte track);
 
-Vehicle *CheckClickOnVehicle(ViewPort *vp, int x, int y);
+Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y);
 //uint GetVehicleWeight(Vehicle *v);
 
 void DecreaseVehicleValue(Vehicle *v);

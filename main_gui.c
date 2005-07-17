@@ -379,14 +379,14 @@ void ShowNetworkNeedCompanyPassword(void)
 
 #endif /* ENABLE_NETWORK */
 
-void ShowRenameSignWindow(SignStruct *ss)
+void ShowRenameSignWindow(const SignStruct *ss)
 {
 	_rename_id = ss->index;
 	_rename_what = 0;
 	ShowQueryString(ss->str, STR_280B_EDIT_SIGN_TEXT, 30, 180, 1, 0);
 }
 
-void ShowRenameWaypointWindow(Waypoint *wp)
+void ShowRenameWaypointWindow(const Waypoint *wp)
 {
 	int id = wp->index;
 

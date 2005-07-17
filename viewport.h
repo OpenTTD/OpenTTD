@@ -14,11 +14,10 @@ struct ViewPort {
 void SetSelectionRed(bool);
 
 /* viewport.c */
-Point MapXYZToViewport(ViewPort *vp, uint x, uint y, uint z);
 void AssignWindowViewport(Window *w, int x, int y,
 	int width, int height, uint32 follow_flags, byte zoom);
 void SetViewportPosition(Window *w, int x, int y);
-ViewPort *IsPtInWindowViewport(Window *w, int x, int y);
+ViewPort *IsPtInWindowViewport(const Window *w, int x, int y);
 Point GetTileBelowCursor(void);
 void ZoomInOrOutToCursorWindow(bool in, Window * w);
 Point GetTileZoomCenterWindow(bool in, Window * w);
@@ -36,7 +35,7 @@ void AddChildSpriteScreen(uint32 image, int x, int y);
 void StartSpriteCombine(void);
 void EndSpriteCombine(void);
 
-void HandleViewportClicked(ViewPort *vp, int x, int y);
+void HandleViewportClicked(const ViewPort *vp, int x, int y);
 void PlaceObject(void);
 void SetRedErrorSquare(TileIndex tile);
 void SetTileSelectSize(int w, int h);

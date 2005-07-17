@@ -56,7 +56,7 @@ static inline bool IsRailWaypoint(byte m5)
 int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove);
 Station *ComposeWaypointStation(TileIndex tile);
 Waypoint *GetWaypointByTile(TileIndex tile);
-void ShowRenameWaypointWindow(Waypoint *cp);
+void ShowRenameWaypointWindow(const Waypoint *cp);
 void DrawWaypointSprite(int x, int y, int image, int railtype);
 void UpdateWaypointSign(Waypoint *cp);
 void FixOldWaypoints(void);

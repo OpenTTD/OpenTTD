@@ -68,7 +68,8 @@ typedef struct ParentSpriteToDraw {
 typedef struct ViewportDrawer {
 	DrawPixelInfo dpi;
 
-	byte *spritelist_mem, *eof_spritelist_mem;
+	byte *spritelist_mem;
+	const byte *eof_spritelist_mem;
 
 	StringSpriteToDraw **last_string, *first_string;
 	TileSpriteToDraw **last_tile, *first_tile;
@@ -76,7 +77,7 @@ typedef struct ViewportDrawer {
 	ChildScreenSpriteToDraw **last_child;
 
 	ParentSpriteToDraw **parent_list;
-	ParentSpriteToDraw **eof_parent_list;
+	ParentSpriteToDraw * const *eof_parent_list;
 
 	byte combine_sprites;
 
@@ -90,11 +91,11 @@ TileHighlightData _thd;
 static TileInfo *_cur_ti;
 
 
-Point MapXYZToViewport(ViewPort *vp, uint x, uint y, uint z)
+static Point MapXYZToViewport(const ViewPort *vp, uint x, uint y, uint z)
 {
 	Point p = RemapCoords(x, y, z);
-	p.x -= (vp->virtual_width>>1);
-	p.y -= (vp->virtual_height>>1);
+	p.x -= vp->virtual_width / 2;
+	p.y -= vp->virtual_height / 2;
 	return p;
 }
 
@@ -103,13 +104,11 @@ void AssignWindowViewport(Window *w, int x, int y,
 {
 	ViewPort *vp;
 	Point pt;
-	byte z;
 	uint32 bit;
 
-	for(vp=_viewports,bit=1; ; vp++, bit<<=1) {
-		assert(vp!=endof(_viewports));
-		if (vp->width == 0)
-			break;
+	for (vp = _viewports, bit = 1; ; vp++, bit <<= 1) {
+		assert(vp != endof(_viewports));
+		if (vp->width == 0) break;
 	}
 	_active_viewports |= bit;
 
@@ -124,20 +123,21 @@ void AssignWindowViewport(Window *w, int x, int y,
 	vp->virtual_height = height << zoom;
 
 	if (follow_flags & 0x80000000) {
-		Vehicle *veh;
-		WP(w,vp_d).follow_vehicle = (VehicleID)(follow_flags & 0xFFFF);
-		veh = GetVehicle(WP(w,vp_d).follow_vehicle);
+		const Vehicle *veh;
+
+		WP(w, vp_d).follow_vehicle = (VehicleID)(follow_flags & 0xFFFF);
+		veh = GetVehicle(WP(w, vp_d).follow_vehicle);
 		pt = MapXYZToViewport(vp, veh->x_pos, veh->y_pos, veh->z_pos);
 	} else {
-		int x = TileX(follow_flags) * 16;
-		int y = TileY(follow_flags) * 16;
-		WP(w,vp_d).follow_vehicle = INVALID_VEHICLE;
-		z = GetSlopeZ(x,y);
-		pt = MapXYZToViewport(vp, x,y, z);
+		uint x = TileX(follow_flags) * 16;
+		uint y = TileY(follow_flags) * 16;
+
+		WP(w, vp_d).follow_vehicle = INVALID_VEHICLE;
+		pt = MapXYZToViewport(vp, x, y, GetSlopeZ(x, y));
 	}
 
-	WP(w,vp_d).scrollpos_x = pt.x;
-	WP(w,vp_d).scrollpos_y = pt.y;
+	WP(w, vp_d).scrollpos_x = pt.x;
+	WP(w, vp_d).scrollpos_y = pt.y;
 	w->viewport = vp;
 	vp->virtual_left = 0;//pt.x;
 	vp->virtual_top = 0;//pt.y;
@@ -149,9 +149,9 @@ static void DoSetViewportPosition(Window *w, int left, int top, int width, int h
 {
 	for (; w < _last_window; w++) {
 		if (left + width > w->left &&
-				w->left+w->width > left &&
+				w->left + w->width > left &&
 				top + height > w->top &&
-				w->top+w->height > top) {
+				w->top + w->height > top) {
 
 			if (left < w->left) {
 				DoSetViewportPosition(w, left, top, w->left - left, height);
@@ -187,7 +187,7 @@ static void DoSetViewportPosition(Window *w, int left, int top, int width, int h
 
 		if (abs(xo) >= width || abs(yo) >= height) {
 			/* fully_outside */
-			RedrawScreenRect(left, top, left+width, top+height);
+			RedrawScreenRect(left, top, left + width, top + height);
 			return;
 		}
 
@@ -229,8 +229,7 @@ void SetViewportPosition(Window *w, int x, int y)
 	old_left -= x;
 	old_top -= y;
 
-	if (old_top == 0 && old_left == 0)
-		return;
+	if (old_top == 0 && old_left == 0) return;
 
 	_vp_move_offs.x = old_left;
 	_vp_move_offs.y = old_top;
@@ -245,8 +244,8 @@ void SetViewportPosition(Window *w, int x, int y)
 		left = 0;
 	}
 
-	if ( (i=(left + width - _screen.width)) >= 0)
-		width -= i;
+	i = left + width - _screen.width;
+	if (i >= 0) width -= i;
 
 	if (width > 0) {
 		if (top < 0) {
@@ -254,19 +253,18 @@ void SetViewportPosition(Window *w, int x, int y)
 			top = 0;
 		}
 
-		if ( (i=(top + height - _screen.height)) >= 0) {
-			height -= i;
-		}
+		i = top + height - _screen.height;
+		if (i >= 0) height -= i;
 
-		if (height > 0)
-			DoSetViewportPosition(w+1, left, top, width, height);
+		if (height > 0) DoSetViewportPosition(w + 1, left, top, width, height);
 	}
 }
 
 
-ViewPort *IsPtInWindowViewport(Window *w, int x, int y)
+ViewPort *IsPtInWindowViewport(const Window *w, int x, int y)
 {
 	ViewPort *vp = w->viewport;
+
 	if (vp != NULL &&
 	    IS_INT_INSIDE(x, vp->left, vp->left + vp->width) &&
 			IS_INT_INSIDE(y, vp->top, vp->top + vp->height))
@@ -275,7 +273,7 @@ ViewPort *IsPtInWindowViewport(Window *w, int x, int y)
 	return NULL;
 }
 
-static Point TranslateXYToTileCoord(ViewPort *vp, int x, int y)
+static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
 {
 	int z;
 	Point pt;
@@ -344,10 +342,9 @@ Point GetTileZoomCenterWindow(bool in, Window * w)
 	vp = w->viewport;
 
 	if (in) {
-		x = ( (_cursor.pos.x - vp->left ) >> 1) + (vp->width >> 2);
-		y = ( (_cursor.pos.y - vp->top ) >> 1) + (vp->height >> 2);
-	}
-	else {
+		x = ((_cursor.pos.x - vp->left) >> 1) + (vp->width >> 2);
+		y = ((_cursor.pos.y - vp->top) >> 1) + (vp->height >> 2);
+	} else {
 		x = vp->width - (_cursor.pos.x - vp->left);
 		y = vp->height - (_cursor.pos.y - vp->top);
 	}
@@ -360,13 +357,13 @@ void DrawGroundSpriteAt(uint32 image, int32 x, int32 y, byte z)
 	ViewportDrawer *vd = _cur_vd;
 	TileSpriteToDraw *ts;
 
-	assert( (image & 0x3fff) < NUM_SPRITES);
+	assert((image & 0x3FFF) < NUM_SPRITES);
 
-	ts = (TileSpriteToDraw*)vd->spritelist_mem;
-	if ((byte*)ts >= vd->eof_spritelist_mem) {
+	if (vd->spritelist_mem >= vd->eof_spritelist_mem) {
 		DEBUG(misc, 0) ("Out of sprite mem");
 		return;
 	}
+	ts = (TileSpriteToDraw*)vd->spritelist_mem;
 
 	vd->spritelist_mem += sizeof(TileSpriteToDraw);
 
@@ -400,21 +397,17 @@ void OffsetGroundSprite(int x, int y)
 
 static void AddCombinedSprite(uint32 image, int x, int y, byte z)
 {
-	ViewportDrawer *vd = _cur_vd;
-	int t;
-	uint32 image_org = image;
-	const SpriteDimension *sd;
+	const ViewportDrawer *vd = _cur_vd;
 	Point pt = RemapCoords(x, y, z);
+	const SpriteDimension *sd = GetSpriteDimension(image & 0x3FFF);
 
-	sd = GetSpriteDimension(image & 0x3FFF);
-
-	if ((t = pt.x + sd->xoffs) >= vd->dpi.left + vd->dpi.width ||
-			(t + sd->xsize) <= vd->dpi.left ||
-			(t = pt.y + sd->yoffs) >= vd->dpi.top + vd->dpi.height ||
-			(t + sd->ysize) <= vd->dpi.top)
+	if (pt.x + sd->xoffs >= vd->dpi.left + vd->dpi.width ||
+			pt.x + sd->xoffs + sd->xsize <= vd->dpi.left ||
+			pt.y + sd->yoffs >= vd->dpi.top + vd->dpi.height ||
+			pt.y + sd->yoffs + sd->ysize <= vd->dpi.top)
 		return;
 
-	AddChildSpriteScreen(image_org, pt.x - vd->parent_list[-1]->left, pt.y - vd->parent_list[-1]->top);
+	AddChildSpriteScreen(image, pt.x - vd->parent_list[-1]->left, pt.y - vd->parent_list[-1]->top);
 }
 
 
@@ -425,7 +418,7 @@ void AddSortableSpriteToDraw(uint32 image, int x, int y, int w, int h, byte dz, 
 	const SpriteDimension *sd;
 	Point pt;
 
-	assert( (image & 0x3fff) < NUM_SPRITES);
+	assert((image & 0x3FFF) < NUM_SPRITES);
 
 	if (vd->combine_sprites == 2) {
 		AddCombinedSprite(image, x, y, z);
@@ -434,11 +427,12 @@ void AddSortableSpriteToDraw(uint32 image, int x, int y, int w, int h, byte dz, 
 
 	vd->last_child = NULL;
 
-	ps = (ParentSpriteToDraw*)vd->spritelist_mem;
-	if ((byte*)ps >= vd->eof_spritelist_mem) {
+	if (vd->spritelist_mem >= vd->eof_spritelist_mem) {
 		DEBUG(misc, 0) ("Out of sprite mem");
 		return;
 	}
+	ps = (ParentSpriteToDraw*)vd->spritelist_mem;
+
 	if (vd->parent_list >= vd->eof_parent_list) {
 		// This can happen rarely, mostly when you zoom out completely
 		//  and have a lot of stuff that moves (and is added to the
@@ -478,9 +472,7 @@ void AddSortableSpriteToDraw(uint32 image, int x, int y, int w, int h, byte dz, 
 
 	*vd->parent_list++ = ps;
 
-	if (vd->combine_sprites == 1) {
-		vd->combine_sprites = 2;
-	}
+	if (vd->combine_sprites == 1) vd->combine_sprites = 2;
 }
 
 void StartSpriteCombine(void)
@@ -498,16 +490,15 @@ void AddChildSpriteScreen(uint32 image, int x, int y)
 	ViewportDrawer *vd = _cur_vd;
 	ChildScreenSpriteToDraw *cs;
 
-	assert( (image & 0x3fff) < NUM_SPRITES);
+	assert((image & 0x3FFF) < NUM_SPRITES);
 
-	cs = (ChildScreenSpriteToDraw*) vd->spritelist_mem;
-	if ((byte*)cs >= vd->eof_spritelist_mem) {
+	if (vd->spritelist_mem >= vd->eof_spritelist_mem) {
 		DEBUG(misc, 0) ("Out of sprite mem");
 		return;
 	}
+	cs = (ChildScreenSpriteToDraw*)vd->spritelist_mem;
 
-	if (vd->last_child == NULL)
-		return;
+	if (vd->last_child == NULL) return;
 
 	vd->spritelist_mem += sizeof(ChildScreenSpriteToDraw);
 
@@ -526,11 +517,11 @@ void *AddStringToDraw(int x, int y, StringID string, uint32 params_1, uint32 par
 	ViewportDrawer *vd = _cur_vd;
 	StringSpriteToDraw *ss;
 
-	ss = (StringSpriteToDraw*)vd->spritelist_mem;
-	if ((byte*)ss >= vd->eof_spritelist_mem) {
+	if (vd->spritelist_mem >= vd->eof_spritelist_mem) {
 		DEBUG(misc, 0) ("Out of sprite mem");
 		return NULL;
 	}
+	ss = (StringSpriteToDraw*)vd->spritelist_mem;
 
 	vd->spritelist_mem += sizeof(StringSpriteToDraw);
 
@@ -552,13 +543,13 @@ void *AddStringToDraw(int x, int y, StringID string, uint32 params_1, uint32 par
 /* Debugging code */
 
 #ifdef DEBUG_TILE_PUSH
-static int _num_push;
+static uint _num_push;
 static TileIndex _pushed_tile[200];
 static int _pushed_track[200];
 
 static TileIndex _stored_tile[200];
 static int _stored_track[200];
-static int _num_stored;
+static uint _num_stored;
 
 void dbg_store_path(void)
 {
@@ -577,6 +568,7 @@ void dbg_push_tile(TileIndex tile, int track)
 
 void dbg_pop_tile(void)
 {
+	assert(_num_push > 0)
 	_num_push--;
 }
 
@@ -591,13 +583,14 @@ static const uint16 _dbg_track_sprite[] = {
 
 static int dbg_draw_pushed(const TileInfo *ti)
 {
-	int i;
-	if (ti->tile==0)
-		return 0;
-	for(i=0; i!=_num_stored; i++)
+	uint i;
+
+	if (ti->tile == 0) return 0;
+	for (i = 0; i != _num_stored; i++) {
 		if (_stored_tile[i] == ti->tile) {
 			DrawGroundSpriteAt(_dbg_track_sprite[_stored_track[i]&7], ti->x, ti->y, ti->z);
 		}
+	}
 	return -1;
 }
 
@@ -659,11 +652,11 @@ static void DrawTileSelection(const TileInfo *ti)
 	}
 
 	// no selection active?
-	if (_thd.drawstyle == 0)
-		return;
+	if (_thd.drawstyle == 0) return;
 
 	// Inside the inner area?
-	if (IS_INSIDE_1D(ti->x, _thd.pos.x, _thd.size.x) && IS_INSIDE_1D(ti->y, _thd.pos.y, _thd.size.y)) {
+	if (IS_INSIDE_1D(ti->x, _thd.pos.x, _thd.size.x) &&
+			IS_INSIDE_1D(ti->y, _thd.pos.y, _thd.size.y)) {
 		if (_thd.drawstyle & HT_RECT) {
 			image = SPR_SELECT_TILE + _tileh_to_sprite[ti->tileh];
 			if (_thd.make_square_red) image |= PALETTE_SEL_TILE_RED;
@@ -673,36 +666,37 @@ static void DrawTileSelection(const TileInfo *ti)
 			byte z = ti->z;
 			if (ti->tileh & 8) {
 				z += 8;
-				if (!(ti->tileh & 2) && (IsSteepTileh(ti->tileh))) {
-					z += 8;
-				}
+				if (!(ti->tileh & 2) && (IsSteepTileh(ti->tileh))) z += 8;
 			}
 			DrawGroundSpriteAt(_cur_dpi->zoom != 2 ? SPR_DOT : SPR_DOT_SMALL, ti->x, ti->y, z);
-		} else if (_thd.drawstyle & HT_RAIL /*&& _thd.place_mode == VHM_RAIL*/) { // autorail highlight piece under cursor
-			int type = _thd.drawstyle & 0xF;
-			assert(type<=5);
-			image = SPR_AUTORAIL_BASE + AutorailTilehSprite[ ti->tileh ][ AutorailType[type][0] ];
+		} else if (_thd.drawstyle & HT_RAIL /*&& _thd.place_mode == VHM_RAIL*/) {
+			// autorail highlight piece under cursor
+			uint type = _thd.drawstyle & 0xF;
+			assert(type <= 5);
+			image = SPR_AUTORAIL_BASE + AutorailTilehSprite[ti->tileh][AutorailType[type][0]];
 
 			if (_thd.make_square_red) image |= PALETTE_SEL_TILE_RED;
 			DrawSelectionSprite(image, ti);
 
-		} else if (IsPartOfAutoLine(ti->x, ti->y)) { // autorail highlighting long line
-				int dir = _thd.drawstyle & ~0xF0;
+		} else if (IsPartOfAutoLine(ti->x, ti->y)) {
+			// autorail highlighting long line
+			int dir = _thd.drawstyle & ~0xF0;
+			uint side;
+
+			if (dir < 2) {
+				side = 0;
+			} else {
 				TileIndex start = TileVirtXY(_thd.selstart.x, _thd.selstart.y);
-				int diffx, diffy;
-				int side;
-
-				diffx = myabs(TileX(start)-TileX(ti->tile));
-				diffy = myabs(TileY(start)-TileY(ti->tile));
-
-				side = myabs( diffx-diffy );
-				if(dir<2) side = 0;
-
-				image = SPR_AUTORAIL_BASE + AutorailTilehSprite[ ti->tileh ][ AutorailType[dir][side] ];
-
-				if (_thd.make_square_red) image |= PALETTE_SEL_TILE_RED;
-				DrawSelectionSprite(image, ti);
+				int diffx = myabs(TileX(start) - TileX(ti->tile));
+				int diffy = myabs(TileY(start) - TileY(ti->tile));
+				side = myabs(diffx - diffy);
 			}
+
+			image = SPR_AUTORAIL_BASE + AutorailTilehSprite[ti->tileh][AutorailType[dir][side]];
+
+			if (_thd.make_square_red) image |= PALETTE_SEL_TILE_RED;
+			DrawSelectionSprite(image, ti);
+		}
 		return;
 	}
 
@@ -1052,14 +1046,14 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 void UpdateViewportSignPos(ViewportSign *sign, int left, int top, StringID str)
 {
 	char buffer[128];
-	int w;
+	uint w;
 
 	sign->top = top;
 
 	GetString(buffer, str);
 	w = GetStringWidth(buffer) + 3;
 	sign->width_1 = w;
-	sign->left = left - (w >> 1);
+	sign->left = left - w / 2;
 
 	// zoomed out version
 	_stringwidth_base = 0xE0;
@@ -1074,23 +1068,25 @@ static void ViewportDrawTileSprites(TileSpriteToDraw *ts)
 	do {
 		Point pt = RemapCoords(ts->x, ts->y, ts->z);
 		DrawSprite(ts->image, pt.x, pt.y);
-	} while ( (ts = ts->next) != NULL);
+		ts = ts->next;
+	} while (ts != NULL);
 }
 
-static void ViewportSortParentSprites(ParentSpriteToDraw **psd)
+static void ViewportSortParentSprites(ParentSpriteToDraw* psd[])
 {
-	ParentSpriteToDraw *ps, *ps2,*ps3, **psd2, **psd3;
+	while (*psd != NULL) {
+		ParentSpriteToDraw* ps = *psd;
 
-	while((ps=*psd) != NULL) {
 		if (!(ps->unk16 & 1)) {
-			ps->unk16 |= 1;
-			psd2 = psd;
+			ParentSpriteToDraw** psd2 = psd;
 
-			while ( (ps2=*++psd2) != NULL) {
+			ps->unk16 |= 1;
+
+			while (*++psd2 != NULL) {
+				ParentSpriteToDraw* ps2 = *psd2;
 				bool mustswap = false;
 
-				if (ps2->unk16 & 1)
-					continue;
+				if (ps2->unk16 & 1) continue;
 
 				// Decide which sort order algorithm to use, based on whether the sprites have some overlapping area.
 				if (((ps2->tile_x > ps->tile_x && ps2->tile_x < ps->tile_right) ||
@@ -1118,11 +1114,12 @@ static void ViewportSortParentSprites(ParentSpriteToDraw **psd)
 				}
 				if (mustswap) {
 					// Swap the two sprites ps and ps2 using bubble-sort algorithm.
-					psd3 = psd;
+					ParentSpriteToDraw** psd3 = psd;
+
 					do {
-						ps3 = *psd3;
+						ParentSpriteToDraw* temp = *psd3;
 						*psd3 = ps2;
-						ps2 = ps3;
+						ps2 = temp;
 
 						psd3++;
 					} while (psd3 <= psd2);
@@ -1134,24 +1131,22 @@ static void ViewportSortParentSprites(ParentSpriteToDraw **psd)
 	}
 }
 
-static void ViewportDrawParentSprites(ParentSpriteToDraw **psd)
+static void ViewportDrawParentSprites(ParentSpriteToDraw *psd[])
 {
-	ParentSpriteToDraw *ps;
-	ChildScreenSpriteToDraw *cs;
-
-	for (;(ps=*psd) != NULL;psd++) {
+	for (; *psd != NULL; psd++) {
+		const ParentSpriteToDraw* ps = *psd;
 		Point pt = RemapCoords(ps->tile_x, ps->tile_y, ps->tile_z);
+		const ChildScreenSpriteToDraw* cs;
+
 		DrawSprite(ps->image, pt.x, pt.y);
 
-		cs = ps->child;
-		while (cs) {
+		for (cs = ps->child; cs != NULL; cs = cs->next) {
 			DrawSprite(cs->image, ps->left + cs->x, ps->top + cs->y);
-			cs = cs->next;
 		}
 	}
 }
 
-static void ViewportDrawStrings(DrawPixelInfo *dpi, StringSpriteToDraw *ss)
+static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDraw *ss)
 {
 	DrawPixelInfo dp;
 	byte zoom;
@@ -1159,7 +1154,7 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, StringSpriteToDraw *ss)
 	_cur_dpi = &dp;
 	dp = *dpi;
 
-	zoom = (byte)dp.zoom;
+	zoom = dp.zoom;
 	dp.zoom = 0;
 
 	dp.left >>= zoom;
@@ -1169,14 +1164,11 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, StringSpriteToDraw *ss)
 
 	do {
 		if (ss->width != 0) {
-			int x, y, w, bottom;
+			int x = (ss->x >> zoom) - 1;
+			int y = (ss->y >> zoom) - 1;
+			int bottom = y + 11;
+			int w = ss->width;
 
-			x = (ss->x >> zoom) - 1;
-			y = (ss->y >> zoom) - 1;
-
-			bottom = y + 11;
-
-			w = ss->width;
 			if (w & 0x8000) {
 				w &= ~0x8000;
 				y--;
@@ -1184,23 +1176,39 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, StringSpriteToDraw *ss)
 				w -= 3;
 			}
 
-		/* Draw the rectangle if 'tranparent station signs' is off, or if we are drawing a general text sign (STR_2806) */
-			if(!(_display_opt & DO_TRANS_SIGNS) || ss->string == STR_2806)
-				DrawFrameRect(x,y, x+w, bottom, ss->color, (_display_opt & DO_TRANS_BUILDINGS) ? FR_TRANSPARENT | FR_NOBORDER : 0);
+		/* Draw the rectangle if 'tranparent station signs' is off,
+		 * or if we are drawing a general text sign (STR_2806) */
+			if (!(_display_opt & DO_TRANS_SIGNS) || ss->string == STR_2806)
+				DrawFrameRect(
+					x, y, x + w, bottom, ss->color,
+					(_display_opt & DO_TRANS_BUILDINGS) ? FR_TRANSPARENT | FR_NOBORDER : 0
+				);
 		}
 
 		SetDParam(0, ss->params[0]);
 		SetDParam(1, ss->params[1]);
 		SetDParam(2, ss->params[2]);
-		/* if we didnt draw a rectangle, or if transparant building is on, draw the text in the color the rectangle would have */
-		if (((_display_opt & DO_TRANS_BUILDINGS) || (_display_opt & DO_TRANS_SIGNS && ss->string != STR_2806)) && ss->width != 0) {
-			/* Real colors need the IS_PALETTE_COLOR flag, otherwise colors from _string_colormap are assumed. */
-			DrawString(ss->x >> zoom, (ss->y >> zoom) - (ss->width&0x8000?2:0), ss->string,
-			           (_color_list[ss->color].window_color_bgb | IS_PALETTE_COLOR));
+		/* if we didn't draw a rectangle, or if transparant building is on,
+		 * draw the text in the color the rectangle would have */
+		if ((
+					(_display_opt & DO_TRANS_BUILDINGS) ||
+					(_display_opt & DO_TRANS_SIGNS && ss->string != STR_2806)
+				) && ss->width != 0) {
+			/* Real colors need the IS_PALETTE_COLOR flag
+			 * otherwise colors from _string_colormap are assumed. */
+			DrawString(
+				ss->x >> zoom, (ss->y >> zoom) - (ss->width & 0x8000 ? 2 : 0),
+				ss->string, (_color_list[ss->color].window_color_bgb | IS_PALETTE_COLOR)
+			);
 		} else {
-			DrawString(ss->x >> zoom, (ss->y >> zoom) - (ss->width&0x8000?2:0), ss->string, 16);
+			DrawString(
+				ss->x >> zoom, (ss->y >> zoom) - (ss->width & 0x8000 ? 2 : 0),
+				ss->string, 16
+			);
 		}
-	} while ( (ss = ss->next) != NULL);
+
+		ss = ss->next;
+	} while (ss != NULL);
 
 	_cur_dpi = dpi;
 }
@@ -1209,7 +1217,8 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 {
 	ViewportDrawer vd;
 	int mask;
-	int x,y;
+	int x;
+	int y;
 	DrawPixelInfo *old_dpi;
 
 	byte mem[VIEWPORT_DRAW_MEM];
@@ -1238,9 +1247,9 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	vd.dpi.dst_ptr = old_dpi->dst_ptr + x - old_dpi->left + (y - old_dpi->top) * old_dpi->pitch;
 
 	vd.parent_list = parent_list;
-	vd.eof_parent_list = &parent_list[lengthof(parent_list)];
+	vd.eof_parent_list = endof(parent_list);
 	vd.spritelist_mem = mem;
-	vd.eof_spritelist_mem = &mem[sizeof(mem) - sizeof(LARGEST_SPRITELIST_STRUCT)];
+	vd.eof_spritelist_mem = endof(mem) - sizeof(LARGEST_SPRITELIST_STRUCT);
 	vd.last_string = &vd.first_string;
 	vd.first_string = NULL;
 	vd.last_tile = &vd.first_tile;
@@ -1261,8 +1270,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	//  is checked)
 	assert(vd.parent_list <= endof(parent_list));
 
-	if (vd.first_tile != NULL)
-		ViewportDrawTileSprites(vd.first_tile);
+	if (vd.first_tile != NULL) ViewportDrawTileSprites(vd.first_tile);
 
 	/* null terminate parent sprite list */
 	*vd.parent_list = NULL;
@@ -1270,8 +1278,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	ViewportSortParentSprites(parent_list);
 	ViewportDrawParentSprites(parent_list);
 
-	if (vd.first_string != NULL)
-		ViewportDrawStrings(&vd.dpi, vd.first_string);
+	if (vd.first_string != NULL) ViewportDrawStrings(&vd.dpi, vd.first_string);
 
 	_cur_dpi = old_dpi;
 }
@@ -1302,28 +1309,23 @@ static void ViewportDrawChk(ViewPort *vp, int left, int top, int right, int bott
 
 static inline void ViewportDraw(ViewPort *vp, int left, int top, int right, int bottom)
 {
-	int t;
+	if (right <= vp->left || bottom <= vp->top) return;
 
-	if (right <= vp->left ||
-			bottom <= vp->top)
-				return;
-
-	if (left >= (t=vp->left + vp->width))
-		return;
+	if (left >= vp->left + vp->width) return;
 
 	if (left < vp->left) left = vp->left;
-	if (right > t) right = t;
+	if (right > vp->left + vp->width) right = vp->left + vp->width;
 
-	if (top >= (t = vp->top + vp->height))
-		return;
+	if (top >= vp->top + vp->height) return;
 
 	if (top < vp->top) top = vp->top;
-	if (bottom > t) bottom = t;
+	if (bottom > vp->top + vp->height) bottom = vp->top + vp->height;
 
 	ViewportDrawChk(vp, left, top, right, bottom);
 }
 
-void DrawWindowViewport(Window *w) {
+void DrawWindowViewport(Window *w)
+{
 	DrawPixelInfo *dpi = _cur_dpi;
 
 	dpi->left += w->left;
@@ -1333,19 +1335,16 @@ void DrawWindowViewport(Window *w) {
 
 	dpi->left -= w->left;
 	dpi->top -= w->top;
-
 }
 
 void UpdateViewportPosition(Window *w)
 {
-	ViewPort *vp = w->viewport;
+	const ViewPort *vp = w->viewport;
 
-	if (WP(w,vp_d).follow_vehicle != INVALID_VEHICLE) {
-		Vehicle *veh;
-		Point pt;
+	if (WP(w, vp_d).follow_vehicle != INVALID_VEHICLE) {
+		const Vehicle* veh = GetVehicle(WP(w,vp_d).follow_vehicle);
+		Point pt = MapXYZToViewport(vp, veh->x_pos, veh->y_pos, veh->z_pos);
 
-		veh = GetVehicle(WP(w,vp_d).follow_vehicle);
-		pt = MapXYZToViewport(vp, veh->x_pos, veh->y_pos, veh->z_pos);
 		SetViewportPosition(w, pt.x, pt.y);
 	} else {
 #if !defined(NEW_ROTATION)
@@ -1368,8 +1367,8 @@ void UpdateViewportPosition(Window *w)
 		x = (-vx + vy) / 2;
 		y = ( vx + vy) / 4;
 		// Set position
-		WP(w,vp_d).scrollpos_x = x - vp->virtual_width / 2;
-		WP(w,vp_d).scrollpos_y = y - vp->virtual_height / 2;
+		WP(w, vp_d).scrollpos_x = x - vp->virtual_width / 2;
+		WP(w, vp_d).scrollpos_y = y - vp->virtual_height / 2;
 #else
 		int x,y,t;
 		int err;
@@ -1391,29 +1390,25 @@ void UpdateViewportPosition(Window *w)
 		}
 #endif
 
-		SetViewportPosition(w, WP(w,vp_d).scrollpos_x, WP(w,vp_d).scrollpos_y);
+		SetViewportPosition(w, WP(w, vp_d).scrollpos_x, WP(w, vp_d).scrollpos_y);
 	}
 }
 
-static void MarkViewportDirty(ViewPort *vp, int left, int top, int right, int bottom)
+static void MarkViewportDirty(const ViewPort *vp, int left, int top, int right, int bottom)
 {
-	if ( (right -= vp->virtual_left) <= 0)
-		return;
+	right -= vp->virtual_left;
+	if (right <= 0) return;
 
-	if ( (bottom -= vp->virtual_top) <= 0)
-		return;
+	bottom -= vp->virtual_top;
+	if (bottom <= 0) return;
 
-	if ( (left -= vp->virtual_left) < 0)
-		left = 0;
+	left = max(0, left - vp->virtual_left);
 
-	if ((uint)left >= (uint)vp->virtual_width)
-		return;
+	if (left >= vp->virtual_width) return;
 
-	if ( (top -= vp->virtual_top) < 0)
-		top = 0;
+	top = max(0, top - vp->virtual_top);
 
-	if ((uint)top >= (uint)vp->virtual_height)
-		return;
+	if (top >= vp->virtual_height) return;
 
 	SetDirtyBlocks(
 		(left >> vp->zoom) + vp->left,
@@ -1425,7 +1420,7 @@ static void MarkViewportDirty(ViewPort *vp, int left, int top, int right, int bo
 
 void MarkAllViewportsDirty(int left, int top, int right, int bottom)
 {
-	ViewPort *vp = _viewports;
+	const ViewPort *vp = _viewports;
 	uint32 act = _active_viewports;
 	do {
 		if (act & 1) {
@@ -1435,7 +1430,8 @@ void MarkAllViewportsDirty(int left, int top, int right, int bottom)
 	} while (vp++,act>>=1);
 }
 
-void MarkTileDirtyByTile(TileIndex tile) {
+void MarkTileDirtyByTile(TileIndex tile)
+{
 	Point pt = RemapCoords(TileX(tile) * 16, TileY(tile) * 16, GetTileZ(tile));
 	MarkAllViewportsDirty(
 		pt.x - 31,
@@ -1447,8 +1443,9 @@ void MarkTileDirtyByTile(TileIndex tile) {
 
 void MarkTileDirty(int x, int y)
 {
-	int z = 0;
+	uint z = 0;
 	Point pt;
+
 	if (IS_INT_INSIDE(x, 0, MapSizeX() * 16) &&
 			IS_INT_INSIDE(y, 0, MapSizeY() * 16))
 		z = GetTileZ(TileVirtXY(x, y));
@@ -1501,12 +1498,11 @@ void SetSelectionRed(bool b)
 }
 
 
-static bool CheckClickOnTown(ViewPort *vp, int x, int y)
+static bool CheckClickOnTown(const ViewPort *vp, int x, int y)
 {
-	Town *t;
+	const Town *t;
 
-	if (!(_display_opt & DO_SHOW_TOWN_NAMES))
-		return false;
+	if (!(_display_opt & DO_SHOW_TOWN_NAMES)) return false;
 
 	if (vp->zoom < 1) {
 		x = x - vp->left + vp->virtual_left;
@@ -1553,12 +1549,11 @@ static bool CheckClickOnTown(ViewPort *vp, int x, int y)
 	return false;
 }
 
-static bool CheckClickOnStation(ViewPort *vp, int x, int y)
+static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 {
-	Station *st;
+	const Station *st;
 
-	if (!(_display_opt & DO_SHOW_STATION_NAMES))
-		return false;
+	if (!(_display_opt & DO_SHOW_STATION_NAMES)) return false;
 
 	if (vp->zoom < 1) {
 		x = x - vp->left + vp->virtual_left;
@@ -1605,12 +1600,11 @@ static bool CheckClickOnStation(ViewPort *vp, int x, int y)
 	return false;
 }
 
-static bool CheckClickOnSign(ViewPort *vp, int x, int y)
+static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 {
-	SignStruct *ss;
+	const SignStruct *ss;
 
-	if (!(_display_opt & DO_SHOW_SIGNS))
-		return false;
+	if (!(_display_opt & DO_SHOW_SIGNS)) return false;
 
 	if (vp->zoom < 1) {
 		x = x - vp->left + vp->virtual_left;
@@ -1657,12 +1651,11 @@ static bool CheckClickOnSign(ViewPort *vp, int x, int y)
 	return false;
 }
 
-static bool CheckClickOnWaypoint(ViewPort *vp, int x, int y)
+static bool CheckClickOnWaypoint(const ViewPort *vp, int x, int y)
 {
-	Waypoint *wp;
+	const Waypoint *wp;
 
-	if (!(_display_opt & DO_WAYPOINTS))
-		return false;
+	if (!(_display_opt & DO_WAYPOINTS)) return false;
 
 	if (vp->zoom < 1) {
 		x = x - vp->left + vp->virtual_left;
@@ -1710,9 +1703,9 @@ static bool CheckClickOnWaypoint(ViewPort *vp, int x, int y)
 }
 
 
-static void CheckClickOnLandscape(ViewPort *vp, int x, int y)
+static void CheckClickOnLandscape(const ViewPort *vp, int x, int y)
 {
-	Point pt = TranslateXYToTileCoord(vp,x,y);
+	Point pt = TranslateXYToTileCoord(vp, x, y);
 
 	if (pt.x != -1) ClickTile(TileVirtXY(pt.x, pt.y));
 }
@@ -1733,46 +1726,33 @@ static OnVehicleClickProc * const _on_vehicle_click_proc[6] = {
 	HandleClickOnDisasterVeh,
 };
 
-void HandleViewportClicked(ViewPort *vp, int x, int y)
+void HandleViewportClicked(const ViewPort *vp, int x, int y)
 {
-	if (CheckClickOnTown(vp, x, y))
-		return;
+	Vehicle* v;
 
-	if (CheckClickOnStation(vp, x, y))
-		return;
-
-	if (CheckClickOnSign(vp, x, y))
-		return;
-
-	if (CheckClickOnWaypoint(vp, x, y))
-		return;
-
+	if (CheckClickOnTown(vp, x, y)) return;
+	if (CheckClickOnStation(vp, x, y)) return;
+	if (CheckClickOnSign(vp, x, y)) return;
+	if (CheckClickOnWaypoint(vp, x, y)) return;
 	CheckClickOnLandscape(vp, x, y);
 
-	{
-		Vehicle *v = CheckClickOnVehicle(vp, x, y);
-		if (v) _on_vehicle_click_proc[v->type - 0x10](v);
-	}
+	v = CheckClickOnVehicle(vp, x, y);
+	if (v != NULL) _on_vehicle_click_proc[v->type - 0x10](v);
 }
 
 Vehicle *CheckMouseOverVehicle(void)
 {
-	Window *w;
-	ViewPort *vp;
+	const Window* w;
+	const ViewPort* vp;
 
 	int x = _cursor.pos.x;
 	int y = _cursor.pos.y;
 
 	w = FindWindowFromPt(x, y);
-	if (w == NULL)
-		return NULL;
+	if (w == NULL) return NULL;
 
 	vp = IsPtInWindowViewport(w, x, y);
-	if (vp) {
-		return CheckClickOnVehicle(vp, x, y);
-	} else {
-		return NULL;
-	}
+	return (vp != NULL) ? CheckClickOnVehicle(vp, x, y) : NULL;
 }
 
 
@@ -1781,11 +1761,9 @@ void PlaceObject(void)
 {
 	Point pt;
 	Window *w;
-	WindowEvent e;
 
 	pt = GetTileBelowCursor();
-	if (pt.x == -1)
-		return;
+	if (pt.x == -1) return;
 
 	if (_thd.place_mode == VHM_POINT) {
 		pt.x += 8;
@@ -1795,7 +1773,10 @@ void PlaceObject(void)
 	_tile_fract_coords.x = pt.x & 0xF;
 	_tile_fract_coords.y = pt.y & 0xF;
 
-	if ((w = GetCallbackWnd()) != NULL) {
+	w = GetCallbackWnd();
+	if (w != NULL) {
+		WindowEvent e;
+
 		e.event = WE_PLACE_OBJ;
 		e.place.pt = pt;
 		e.place.tile = TileVirtXY(pt.x, pt.y);
@@ -1805,24 +1786,23 @@ void PlaceObject(void)
 
 
 /* scrolls the viewport in a window to a given location */
-bool ScrollWindowTo(int x , int y, Window * w)
+bool ScrollWindowTo(int x , int y, Window* w)
 {
 	Point pt;
 
 	pt = MapXYZToViewport(w->viewport, x, y, GetSlopeZ(x, y));
-	WP(w,vp_d).follow_vehicle = -1;
+	WP(w, vp_d).follow_vehicle = INVALID_VEHICLE;
 
-	if (WP(w,vp_d).scrollpos_x == pt.x &&
-			WP(w,vp_d).scrollpos_y == pt.y)
-				return false;
+	if (WP(w, vp_d).scrollpos_x == pt.x && WP(w, vp_d).scrollpos_y == pt.y)
+		return false;
 
-	WP(w,vp_d).scrollpos_x = pt.x;
-	WP(w,vp_d).scrollpos_y = pt.y;
+	WP(w, vp_d).scrollpos_x = pt.x;
+	WP(w, vp_d).scrollpos_y = pt.y;
 	return true;
 }
 
 /* scrolls the viewport in a window to a given tile */
-bool ScrollWindowToTile(TileIndex tile, Window * w)
+bool ScrollWindowToTile(TileIndex tile, Window* w)
 {
 	return ScrollWindowTo(TileX(tile) * 16 + 8, TileY(tile) * 16 + 8, w);
 }
@@ -1831,19 +1811,7 @@ bool ScrollWindowToTile(TileIndex tile, Window * w)
 
 bool ScrollMainWindowTo(int x, int y)
 {
-	Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
-	Point pt;
-
-	pt = MapXYZToViewport(w->viewport, x, y, GetSlopeZ(x, y));
-	WP(w,vp_d).follow_vehicle = -1;
-
-	if (WP(w,vp_d).scrollpos_x == pt.x &&
-			WP(w,vp_d).scrollpos_y == pt.y)
-				return false;
-
-	WP(w,vp_d).scrollpos_x = pt.x;
-	WP(w,vp_d).scrollpos_y = pt.y;
-	return true;
+	return ScrollWindowTo(x, y, FindWindowById(WC_MAIN_WINDOW, 0));
 }
 
 
@@ -1873,7 +1841,8 @@ void SetTileSelectSize(int w, int h)
 	_thd.new_outersize.y = 0;
 }
 
-void SetTileSelectBigSize(int ox, int oy, int sx, int sy) {
+void SetTileSelectBigSize(int ox, int oy, int sx, int sy)
+{
 	_thd.offs.x = ox * 16;
 	_thd.offs.y = oy * 16;
 	_thd.new_outersize.x = sx * 16;
@@ -1883,16 +1852,14 @@ void SetTileSelectBigSize(int ox, int oy, int sx, int sy) {
 /* returns the best autorail highlight type from map coordinates */
 static byte GetAutorailHT(int x, int y)
 {
-	byte i;
-	i = AutorailPiece[x&0xF][y&0xF];
-	return HT_RAIL | i;
+	return HT_RAIL | AutorailPiece[x & 0xF][y & 0xF];
 }
 
 // called regular to update tile highlighting in all cases
 void UpdateTileSelection(void)
 {
-	Point pt;
-	int x1,y1;
+	int x1;
+	int y1;
 
 	_thd.new_drawstyle = 0;
 
@@ -1914,7 +1881,7 @@ void UpdateTileSelection(void)
 			_thd.new_drawstyle = _thd.next_drawstyle;
 		}
 	} else if (_thd.place_mode != VHM_NONE) {
-		pt = GetTileBelowCursor();
+		Point pt = GetTileBelowCursor();
 		x1 = pt.x;
 		y1 = pt.y;
 		if (x1 != -1) {
@@ -1939,7 +1906,6 @@ void UpdateTileSelection(void)
 	if (_thd.drawstyle != _thd.new_drawstyle ||
 			_thd.pos.x != _thd.new_pos.x || _thd.pos.y != _thd.new_pos.y ||
 			_thd.size.x != _thd.new_size.x || _thd.size.y != _thd.new_size.y) {
-
 		// clear the old selection?
 		if (_thd.drawstyle) SetSelectionTilesDirty();
 
@@ -2043,61 +2009,88 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 	h = myabs(dy) + 16;
 
 	if (TileVirtXY(thd->selstart.x, thd->selstart.y) == TileVirtXY(x, y)) { // check if we're only within one tile
-			if(method == VPM_RAILDIRS)
-				b = GetAutorailHT(x, y);
-			else // rect for autosignals on one tile
-				b = HT_RECT;
+		if (method == VPM_RAILDIRS)
+			b = GetAutorailHT(x, y);
+		else // rect for autosignals on one tile
+			b = HT_RECT;
 	} else if (h == 16) { // Is this in X direction?
-		if (dx==16) // 2x1 special handling
+		if (dx == 16) // 2x1 special handling
 			b = (Check2x1AutoRail(3)) | HT_LINE;
-		else if (dx==-16)
+		else if (dx == -16)
 			b = (Check2x1AutoRail(2)) | HT_LINE;
 		else
 			b = HT_LINE | HT_DIR_X;
 		y = thd->selstart.y;
 	} else if (w == 16) { // Or Y direction?
-		if (dy==16) // 2x1 special handling
+		if (dy == 16) // 2x1 special handling
 			b = (Check2x1AutoRail(1)) | HT_LINE;
-		else if (dy==-16) // 2x1 other direction
+		else if (dy == -16) // 2x1 other direction
 			b = (Check2x1AutoRail(0)) | HT_LINE;
 		else
 			b = HT_LINE | HT_DIR_Y;
 		x = thd->selstart.x;
 	} else if (w > h * 2) { // still count as x dir?
-			b = HT_LINE | HT_DIR_X;
+		b = HT_LINE | HT_DIR_X;
 		y = thd->selstart.y;
 	} else if (h > w * 2) { // still count as y dir?
-			b = HT_LINE | HT_DIR_Y;
+		b = HT_LINE | HT_DIR_Y;
 		x = thd->selstart.x;
 	} else { // complicated direction
 		d = w - h;
-		thd->selend.x = thd->selend.x&~0xF;
-		thd->selend.y = thd->selend.y&~0xF;
+		thd->selend.x = thd->selend.x & ~0xF;
+		thd->selend.y = thd->selend.y & ~0xF;
 
 		// four cases.
 		if (x > thd->selstart.x) {
 			if (y > thd->selstart.y) {
 				// south
-				if (d ==0) b = (x & 0xF) > (y & 0xF) ? HT_LINE | HT_DIR_VL : HT_LINE | HT_DIR_VR;
-				else if (d >= 0) { x = thd->selstart.x + h; b = HT_LINE | HT_DIR_VL; } // return px == py || px == py + 16;
-				else { y = thd->selstart.y + w; b = HT_LINE | HT_DIR_VR; } // return px == py || px == py - 16;
+				if (d == 0) {
+					b = (x & 0xF) > (y & 0xF) ? HT_LINE | HT_DIR_VL : HT_LINE | HT_DIR_VR;
+				} else if (d >= 0) {
+					x = thd->selstart.x + h;
+					b = HT_LINE | HT_DIR_VL;
+					// return px == py || px == py + 16;
+				} else {
+					y = thd->selstart.y + w;
+					b = HT_LINE | HT_DIR_VR;
+				} // return px == py || px == py - 16;
 			} else {
 				// west
-				if (d ==0) b = (x & 0xF) + (y & 0xF) >= 0x10 ? HT_LINE | HT_DIR_HL : HT_LINE | HT_DIR_HU;
-				else if (d >= 0) { x = thd->selstart.x + h; b = HT_LINE | HT_DIR_HL; }
-				else { y = thd->selstart.y - w; b = HT_LINE | HT_DIR_HU; }
+				if (d == 0) {
+					b = (x & 0xF) + (y & 0xF) >= 0x10 ? HT_LINE | HT_DIR_HL : HT_LINE | HT_DIR_HU;
+				} else if (d >= 0) {
+					x = thd->selstart.x + h;
+					b = HT_LINE | HT_DIR_HL;
+				} else {
+					y = thd->selstart.y - w;
+					b = HT_LINE | HT_DIR_HU;
+				}
 			}
 		} else {
 			if (y > thd->selstart.y) {
 				// east
-				if (d ==0) b = (x & 0xF) + (y & 0xF) >= 0x10 ? HT_LINE | HT_DIR_HL : HT_LINE | HT_DIR_HU;
-				else if (d >= 0) { x = thd->selstart.x - h; b = HT_LINE | HT_DIR_HU; } // return px == -py || px == -py - 16;
-				else { y = thd->selstart.y + w; b = HT_LINE | HT_DIR_HL; } // return px == -py || px == -py + 16;
+				if (d == 0) {
+					b = (x & 0xF) + (y & 0xF) >= 0x10 ? HT_LINE | HT_DIR_HL : HT_LINE | HT_DIR_HU;
+				} else if (d >= 0) {
+					x = thd->selstart.x - h;
+					b = HT_LINE | HT_DIR_HU;
+					// return px == -py || px == -py - 16;
+				} else {
+					y = thd->selstart.y + w;
+					b = HT_LINE | HT_DIR_HL;
+				} // return px == -py || px == -py + 16;
 			} else {
 				// north
-				if (d ==0) b = (x & 0xF) > (y & 0xF) ? HT_LINE | HT_DIR_VL : HT_LINE | HT_DIR_VR;
-				else if (d >= 0) { x = thd->selstart.x - h; b = HT_LINE | HT_DIR_VR; } // return px == py || px == py - 16;
-				else { y = thd->selstart.y - w; b = HT_LINE | HT_DIR_VL; } //return px == py || px == py + 16;
+				if (d == 0) {
+					b = (x & 0xF) > (y & 0xF) ? HT_LINE | HT_DIR_VL : HT_LINE | HT_DIR_VR;
+				} else if (d >= 0) {
+					x = thd->selstart.x - h;
+					b = HT_LINE | HT_DIR_VR;
+					// return px == py || px == py - 16;
+				} else {
+					y = thd->selstart.y - w;
+					b = HT_LINE | HT_DIR_VL;
+				} //return px == py || px == py + 16;
 			}
 		}
 	}
@@ -2109,7 +2102,8 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 // while dragging
 void VpSelectTilesWithMethod(int x, int y, int method)
 {
-	int sx,sy;
+	int sx;
+	int sy;
 
 	if (x == -1) {
 		_thd.selend.x = -1;
@@ -2124,34 +2118,37 @@ void VpSelectTilesWithMethod(int x, int y, int method)
 		return;
 	}
 
-	if (_thd.next_drawstyle == HT_POINT) { x += 8; y += 8; }
+	if (_thd.next_drawstyle == HT_POINT) {
+		x += 8;
+		y += 8;
+	}
 
 	sx = _thd.selstart.x;
 	sy = _thd.selstart.y;
 
-	switch(method) {
-	case VPM_FIX_X:
-		x = sx;
-		break;
+	switch (method) {
+		case VPM_FIX_X:
+			x = sx;
+			break;
 
-	case VPM_FIX_Y:
-		y = sy;
-		break;
+		case VPM_FIX_Y:
+			y = sy;
+			break;
 
-	case VPM_X_OR_Y:
-		if (myabs(sy - y) < myabs(sx - x)) y = sy; else x = sx;
-		break;
+		case VPM_X_OR_Y:
+			if (myabs(sy - y) < myabs(sx - x)) y = sy; else x = sx;
+			break;
 
-	case VPM_X_AND_Y:
-		break;
+		case VPM_X_AND_Y:
+			break;
 
-	// limit the selected area to a 10x10 rect.
-	case VPM_X_AND_Y_LIMITED: {
-		int limit = (_thd.sizelimit - 1) * 16;
-		x = sx + clamp(x - sx, -limit, limit);
-		y = sy + clamp(y - sy, -limit, limit);
-		break;
-	}
+		// limit the selected area to a 10x10 rect.
+		case VPM_X_AND_Y_LIMITED: {
+			int limit = (_thd.sizelimit - 1) * 16;
+			x = sx + clamp(x - sx, -limit, limit);
+			y = sy + clamp(y - sy, -limit, limit);
+			break;
+		}
 	}
 
 	_thd.selend.x = x;
@@ -2164,8 +2161,7 @@ bool VpHandlePlaceSizingDrag(void)
 	Window *w;
 	WindowEvent e;
 
-	if (_special_mouse_mode != WSM_SIZING)
-		return true;
+	if (_special_mouse_mode != WSM_SIZING) return true;
 
 	e.place.userdata = _thd.userdata;
 
@@ -2187,16 +2183,17 @@ bool VpHandlePlaceSizingDrag(void)
 	// mouse button released..
 	// keep the selected tool, but reset it to the original mode.
 	_special_mouse_mode = WSM_NONE;
-	if (_thd.next_drawstyle == HT_RECT)
+	if (_thd.next_drawstyle == HT_RECT) {
 		_thd.place_mode = VHM_RECT;
-	else if ((e.place.userdata & 0xF) == VPM_SIGNALDIRS) // some might call this a hack... -- Dominik
+	} else if ((e.place.userdata & 0xF) == VPM_SIGNALDIRS) { // some might call this a hack... -- Dominik
 		_thd.place_mode = VHM_RECT;
-	else if (_thd.next_drawstyle & HT_LINE)
+	} else if (_thd.next_drawstyle & HT_LINE) {
 		_thd.place_mode = VHM_RAIL;
-	else if (_thd.next_drawstyle & HT_RAIL)
+	} else if (_thd.next_drawstyle & HT_RAIL) {
 		_thd.place_mode = VHM_RAIL;
-	else
+	} else {
 		_thd.place_mode = VHM_POINT;
+	}
 	SetTileSelectSize(1, 1);
 
 	// and call the mouseup event.
@@ -2224,8 +2221,7 @@ void SetObjectToPlace(CursorID icon, byte mode, WindowClass window_class, Window
 	if (_thd.place_mode != 0) {
 		_thd.place_mode = 0;
 		w = FindWindowById(_thd.window_class, _thd.window_number);
-		if (w != NULL)
-			CallWindowEventNP(w, WE_ABORT_PLACE_OBJ);
+		if (w != NULL) CallWindowEventNP(w, WE_ABORT_PLACE_OBJ);
 	}
 
 	SetTileSelectSize(1, 1);

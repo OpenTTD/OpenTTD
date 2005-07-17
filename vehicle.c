@@ -1214,7 +1214,7 @@ static void EffectVehicle_Tick(Vehicle *v)
 	_effect_tick_procs[v->subtype](v);
 }
 
-Vehicle *CheckClickOnVehicle(ViewPort *vp, int x, int y)
+Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y)
 {
 	Vehicle *found = NULL, *v;
 	uint dist, best_dist = (uint)-1;

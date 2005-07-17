@@ -399,7 +399,7 @@ typedef struct {
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(refit_d));
 
 typedef struct {
-	uint16 follow_vehicle;
+	VehicleID follow_vehicle;
 	int32 scrollpos_x;
 	int32 scrollpos_y;
 } vp_d;
