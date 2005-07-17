@@ -481,10 +481,6 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 		SetDParam(1, v->unitnumber);
 		DrawWindowWidgets(w);
 
-		/* draw the flag */
-		DrawSprite(v->vehstatus & VS_STOPPED ? 0xC12 : 0xC13, 2,
-			w->widget[5].top + 1);
-
 		if (v->breakdown_ctr == 1) {
 			str = STR_885C_BROKEN_DOWN;
 		} else if (v->vehstatus & VS_STOPPED) {
@@ -519,8 +515,11 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 			}
 		}
 
-		DrawStringCentered((w->widget[5].right - w->widget[5].left) / 2,
-			w->widget[5].top + 1, str, 0);
+		/* draw the flag plus orders */
+		{	int w_width = w->widget[5].right - w->widget[5].left;
+			DrawSprite(v->vehstatus & VS_STOPPED ? 0xC12 : 0xC13, 2, w->widget[5].top + 1);
+			DrawStringCenteredTruncated(w_width / 2 + 6, w->widget[5].top + 1, str, 0, w_width - 8);
+		}
 		DrawWindowViewport(w);
 	} break;
 

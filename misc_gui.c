@@ -1176,7 +1176,7 @@ static void DrawFiosTexts(uint maxw)
 
 	if (str != STR_4006_UNABLE_TO_READ_DRIVE) SetDParam(0, tot);
 	DrawString(2, 37, str, 0);
-	DoDrawStringTruncated(path, 2, 27, 16, 5);
+	DoDrawStringTruncated(path, 2, 27, 16, maxw);
 }
 
 static void MakeSortedSaveGameList(void)
@@ -1245,7 +1245,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		pos = w->vscroll.pos;
 		while (pos < _fios_num) {
 			item = _fios_list + pos;
-			DoDrawString(item->title, 4, y, _fios_colors[item->type]);
+			DoDrawStringTruncated(item->title, 4, y, _fios_colors[item->type], w->width - 18);
 			pos++;
 			y+=10;
 			if (y >= w->vscroll.cap*10+w->widget[6].top+1)
