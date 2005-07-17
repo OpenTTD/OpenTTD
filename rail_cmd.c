@@ -486,6 +486,10 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			/* We remove the trackbit here. */
 			_m[tile].m5 &= ~trackbit;
 
+			/* Unreserve track for PBS */
+			if (PBSTileReserved(tile) & trackbit)
+				PBSClearTrack(tile, track);
+
 			if (GetTrackBits(tile)  == 0) {
 				/* The tile has no tracks left, it is no longer a rail tile */
 				DoClearSquare(tile);
