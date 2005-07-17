@@ -62,7 +62,6 @@ extern void HalGameLoop(void);
 
 uint32 _pixels_redrawn;
 bool _dbg_screen_rect;
-bool disable_computer; // We should get ride of this thing.. is only used for a debug-cheat
 static byte _os_version = 0;
 
 /* TODO: usrerror() for errors which are not of an internal nature but
@@ -1032,7 +1031,7 @@ void StateGameLoop(void)
 
 		// To bad the AI does not work in multiplayer, because states are not saved
 		//  perfectly
-		if (!disable_computer && !_networking)
+		if (!_networking)
 			RunOtherPlayersLoop();
 
 		CallWindowTickEvent();

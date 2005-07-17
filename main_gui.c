@@ -35,8 +35,6 @@ static const uint MaxDate = 29220; // 2000-01-01
 extern void DoTestSave(void);
 extern void DoTestLoad(void);
 
-extern bool disable_computer;
-
 static int _rename_id;
 static int _rename_what;
 

@@ -521,11 +521,13 @@ static void MaybeStartNewPlayer(void)
 			n++;
 
 	// when there's a lot of computers in game, the probability that a new one starts is lower
-	if (n < (uint)_opt.diff.max_no_competitors && n < RandomRange(_opt.diff.max_no_competitors + 2))
+	if (n < (uint)_opt.diff.max_no_competitors)
+		if (n < (!_network_server) ? RandomRange(_opt.diff.max_no_competitors + 2) : InteractiveRandomRange(_opt.diff.max_no_competitors + 2))
 		DoStartupNewPlayer(true);
 
 	// The next AI starts like the difficulty setting said, with +2 month max
-	_next_competitor_start = _opt.diff.competitor_start_time * 90 * DAY_TICKS + RandomRange(60 * DAY_TICKS) + 1;
+	_next_competitor_start = _opt.diff.competitor_start_time * 90 * DAY_TICKS + 1;
+	_next_competitor_start += (!_network_server) ? RandomRange(60 * DAY_TICKS) : InteractiveRandomRange(60 * DAY_TICKS);
 }
 
 void InitializePlayers(void)
