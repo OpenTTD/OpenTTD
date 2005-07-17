@@ -1154,6 +1154,7 @@ found_best_track:;
 	return best_track;
 }
 
+#if 0
 static uint RoadFindPathToStation(const Vehicle *v, TileIndex tile)
 {
   NPFFindStationOrTileData fstd;
@@ -1165,6 +1166,7 @@ static uint RoadFindPathToStation(const Vehicle *v, TileIndex tile)
 
   return NPFRouteToStationOrTile(v->tile, trackdir, &fstd, TRANSPORT_ROAD, v->owner, INVALID_RAILTYPE, PBS_MODE_NONE).best_path_dist;
 }
+#endif
 
 typedef struct RoadDriveEntry {
 	byte x,y;
@@ -1664,19 +1666,19 @@ void OnNewDay_RoadVeh(Vehicle *v)
 				// In that case, add penalty.
 				switch(v->direction) {
 				case 1: // going north east,x position decreasing
-					if (v->x_pos <= TileX(rs->xy) * 16 + 15)
+					if (v->x_pos <= (int32)TileX(rs->xy) * 16 + 15)
 						dist += 6;
 					break;
 				case 3: // Going south east, y position increasing
-					if (v->y_pos >= TileY(rs->xy) * 16)
+					if (v->y_pos >= (int32)TileY(rs->xy) * 16)
 						dist += 6;
 					break;
 				case 5: // Going south west, x position increasing
-					if (v->x_pos >= TileX(rs->xy) * 16)
+					if (v->x_pos >= (int32)TileX(rs->xy) * 16)
 						dist += 6;
 					break;
 				case 7: // Going north west, y position decrasing.
-					if (v->y_pos <= TileY(rs->xy) * 16 + 15)
+					if (v->y_pos <= (int32)TileY(rs->xy) * 16 + 15)
 						dist += 6;
 					break;
 				}

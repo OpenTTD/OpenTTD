@@ -634,7 +634,7 @@ static void ExtractCommandString(ParsedCommandStruct *p, char *s, bool warnings)
 
 	for(;;) {
 		// read until next command from a.
-		ar = ParseCommandString(&s, param, &argno, &casei);
+		ar = ParseCommandString((const char **)&s, param, &argno, &casei);
 		if (ar == NULL)
 			break;
 
@@ -891,7 +891,7 @@ static void MakeHashOfStrings()
 			hash = MyHashStr(hash, s + 1);
 
 			s = ls->english;
-			while ((cs = ParseCommandString(&s, buf, &argno, &casei)) != NULL) {
+			while ((cs = ParseCommandString((const char **)&s, buf, &argno, &casei)) != NULL) {
 				if (cs->flags & C_DONTCOUNT)
 					continue;
 

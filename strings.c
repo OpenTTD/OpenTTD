@@ -763,7 +763,7 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 			// Each LEN is printed using 2 bytes in big endian order.
 			uint num = (byte)*str++;
 			while (num) {
-				if (str[0] == casei) {
+				if ((byte)str[0] == casei) {
 					// Found the case, adjust str pointer and continue
 					str += 3;
 					break;

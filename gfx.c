@@ -261,9 +261,9 @@ enum {
  * @param *dest string that is checked and possibly truncated
  * @param maxw maximum width in pixels of the string
  * @return new width of (truncated) string */
-static int TruncateString(char *str, uint maxw)
+static uint TruncateString(char *str, uint maxw)
 {
-	int w = 0;
+	uint w = 0;
 	int base = _stringwidth_base;
 	int ddd, ddd_w;
 
@@ -305,7 +305,7 @@ static int TruncateString(char *str, uint maxw)
 	return w;
 }
 
-static inline int TruncateStringID(StringID src, char *dest, uint maxw)
+static inline uint TruncateStringID(StringID src, char *dest, uint maxw)
 {
 	GetString(dest, src);
 	return TruncateString(dest, maxw);
@@ -361,7 +361,7 @@ int DrawStringCentered(int x, int y, StringID str, uint16 color)
 int DrawStringCenteredTruncated(int x, int y, StringID str, uint16 color, uint maxw)
 {
 	char buffer[512];
-	int w = TruncateStringID(str, buffer, maxw);
+	uint w = TruncateStringID(str, buffer, maxw);
 	return DoDrawString(buffer, x - (w / 2), y, color);
 }
 
