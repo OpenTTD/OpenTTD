@@ -298,7 +298,7 @@ static int TruncateString(char *str, uint maxw)
 		// Remember the last position where three dots fit.
 		if (w + ddd < maxw) {
 			ddd_w = w + ddd;
-			ddd_pos = str;
+			ddd_pos = str + 1;
 		}
 	}
 
