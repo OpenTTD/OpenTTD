@@ -1634,11 +1634,9 @@ void OnNewDay_RoadVeh(Vehicle *v)
 
 	/* update destination */
 	if (v->current_order.type == OT_GOTO_STATION && !(v->vehstatus & VS_CRASHED)) {
-		int num;
 		RoadStopType type = (v->cargo_type == CT_PASSENGERS) ? RS_BUS : RS_TRUCK;
 
 		st = GetStation(v->current_order.station);
-		num = GetNumRoadStops(st, type);
 
 		//Current slot has expired
 		if ( (v->u.road.slot_age++ <= 0) && (v->u.road.slot != NULL))
