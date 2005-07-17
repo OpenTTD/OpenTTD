@@ -19,11 +19,6 @@ extern void InitNewsItemStructs(void);
 
 char _name_array[512][32];
 
-static inline uint32 ROR(uint32 x, int n)
-{
-	return (x >> n) + (x << ((sizeof(x)*8)-n));
-}
-
 #ifndef MERSENNE_TWISTER
 
 #ifdef RANDOM_DEBUG

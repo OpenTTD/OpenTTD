@@ -153,9 +153,16 @@ static inline void swap_tile(TileIndex *a, TileIndex *b) { TileIndex t = *a; *a 
 	}
 #endif
 
-// Fetch count bits starting at bit start from value
-#define GB(value, start, count) (((value) >> (start)) & ((1 << (count)) - 1))
-// Set count bits in value starting at bit start to data
-#define SB(value, start, count, data) ((value) = ((value) & ~(((1 << (count)) - 1) << (start))) | ((data) << (start)))
+/// Fetch n bits starting at bit s from x
+#define GB(x, s, n) (((x) >> (s)) & ((1 << (n)) - 1))
+/// Set n bits in x starting at bit s to d
+#define SB(x, s, n, d) ((x) = ((x) & ~(((1 << (n)) - 1) << (s))) | ((d) << (s)))
+
+/**
+ * ROtate x Left/Right by n (must be >= 0)
+ * @note Assumes a byte has 8 bits
+ */
+#define ROL(x, n) ((x) << (n) | (x) >> (sizeof(x) * 8 - (n)))
+#define ROR(x, n) ((x) >> (n) | (x) << (sizeof(x) * 8 - (n)))
 
 #endif /* MACROS_H */
