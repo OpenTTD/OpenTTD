@@ -487,6 +487,9 @@
 				RelativePath="StdAfx.h">
 			</File>
 			<File
+				RelativePath=".\string.h">
+			</File>
+			<File
 				RelativePath=".\tile.h">
 			</File>
 			<File
