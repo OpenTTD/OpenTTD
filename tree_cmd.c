@@ -132,10 +132,7 @@ void GenerateTrees(void)
 int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 {
 	int32 cost;
-	int sx;
-	int sy;
-	int x;
-	int y;
+	int sx, sy, x, y;
 
 	if (p2 > MapSize()) return CMD_ERROR;
 	/* Check the tree type. It can be random or some valid value within the current climate */
@@ -144,15 +141,16 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 
 	// make sure sx,sy are smaller than ex,ey
-	sx = TileX(p2) * 16;
-	sy = TileY(p2) * 16;
+	sx = TileX(p2);
+	sy = TileY(p2);
+	ex /= 16; ey /= 16;
 	if (ex < sx) intswap(ex, sx);
 	if (ey < sy) intswap(ey, sy);
 
 	cost = 0; // total cost
 
-	for (x = sx; x <= ex; x += 16) {
-		for (y = sy; y <= ey; y += 16) {
+	for (x = sx; x <= ex; x++) {
+		for (y = sy; y <= ey; y++) {
 			TileIndex tile = TileXY(x, y);
 
 			if (!EnsureNoVehicle(tile)) continue;
