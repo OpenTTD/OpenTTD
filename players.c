@@ -1,6 +1,3 @@
-/** @file,
- * sjdlfkasjdf
- */
 #include "stdafx.h"
 #include "openttd.h"
 #include "string.h"
