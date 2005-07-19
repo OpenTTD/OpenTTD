@@ -47,7 +47,7 @@ void TrainCargoChanged(Vehicle *v) {
 		vweight += rvi->weight;
 		vweight += (_cargoc.weights[u->cargo_type] * u->cargo_count) / 16;
 		// powered wagons have extra weight added
-		if HASBIT(u->u.rail.flags, VRF_POWEREDWAGON)
+		if (HASBIT(u->u.rail.flags, VRF_POWEREDWAGON))
 			vweight += RailVehInfo(v->engine_type)->pow_wag_weight;
 
 		// consist weight is the sum of the weight of all vehicles in the consist

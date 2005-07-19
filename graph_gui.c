@@ -1150,7 +1150,6 @@ static void SignListWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT: {
-		uint32 i;
 		int y = 16; // offset from top of widget
 
 		if (_sign_sort_dirty)
@@ -1167,8 +1166,8 @@ static void SignListWndProc(Window *w, WindowEvent *e)
 			return;
 		}
 
-		{
-			SignStruct *ss;
+		{	const SignStruct *ss;
+			uint16 i;
 
 			/* Start drawing the signs */
 			for (i = w->vscroll.pos; i < w->vscroll.cap + w->vscroll.pos && i < w->vscroll.count; i++) {
