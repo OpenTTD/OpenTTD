@@ -9,6 +9,10 @@
 #include "gui.h"
 #include "screenshot.h"
 
+char _screenshot_format_name[8];
+uint _num_screenshot_formats;
+uint _cur_screenshot_format;
+
 // called by the ScreenShot proc to generate screenshot lines.
 typedef void ScreenshotCallback(void *userdata, Pixel *buf, uint y, uint pitch, uint n);
 typedef bool ScreenshotHandlerProc(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette);

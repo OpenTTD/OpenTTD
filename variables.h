@@ -366,9 +366,6 @@ VARDEF int _num_resolutions;
 VARDEF uint16 _resolutions[32][2];
 VARDEF uint16 _cur_resolution[2];
 
-VARDEF char _screenshot_format_name[8];
-VARDEF int _num_screenshot_formats, _cur_screenshot_format;
-
 VARDEF char _savegame_format[8];
 
 VARDEF char *_config_file;

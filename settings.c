@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "openttd.h"
+#include "screenshot.h"
 #include "sound.h"
 #include "string.h"
 #include "table/currency.h"
