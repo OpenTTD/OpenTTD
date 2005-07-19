@@ -197,7 +197,8 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-		int y,i;
+		uint i;
+		int y;
 		byte *p;
 
 		w->disabled_state = (msf.playlist  <= 3) ? (1 << 11) : 0;
@@ -212,7 +213,7 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 		SetDParam(0, STR_01D5_ALL + msf.playlist);
 		DrawStringCentered(340, 15, STR_01EF_PROGRAM, 0);
 
-		for(i=1; (uint)i <= NUM_SONGS_AVAILABLE; i++) {
+		for (i = 1; i <= NUM_SONGS_AVAILABLE; i++) {
 			SetDParam(0, i);
 			SetDParam(2, i);
 			SetDParam(1, SPECSTR_SONGNAME);

@@ -948,7 +948,7 @@ static void PlantFarmField(TileIndex tile)
 {
 	uint size_x, size_y;
 	uint32 r;
-	int count;
+	uint count;
 	int type, type2;
 
 	if (_opt.landscape == LT_HILLY) {
@@ -971,8 +971,7 @@ static void PlantFarmField(TileIndex tile)
 		cur_tile = TILE_MASK(cur_tile);
 		count += IsBadFarmFieldTile(cur_tile);
 	END_TILE_LOOP(cur_tile, size_x, size_y, tile)
-	if ((uint)(count * 2) >= size_x * size_y)
-		return;
+	if (count * 2 >= size_x * size_y) return;
 
 	/* determine type of field */
 	r = Random();

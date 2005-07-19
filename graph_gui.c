@@ -1171,8 +1171,7 @@ static void SignListWndProc(Window *w, WindowEvent *e)
 			SignStruct *ss;
 
 			/* Start drawing the signs */
-			i = 0;
-			for (i = w->vscroll.pos; i < (uint)w->vscroll.cap + w->vscroll.pos && i < w->vscroll.count; i++) {
+			for (i = w->vscroll.pos; i < w->vscroll.cap + w->vscroll.pos && i < w->vscroll.count; i++) {
 				ss = GetSign(_sign_sort[i]);
 
 				if (ss->owner != OWNER_NONE)

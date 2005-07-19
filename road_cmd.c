@@ -496,7 +496,7 @@ int32 DoConvertStreetRail(TileIndex tile, uint totype, bool exec)
 	if (!CheckTileOwnership(tile) || !EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	// tile is already of requested type?
-	if ( (uint)(_m[tile].m4 & 0xF) == totype) return CMD_ERROR;
+	if ((_m[tile].m4 & 0xFU) == totype) return CMD_ERROR;
 
 	if (exec) {
 		// change type.

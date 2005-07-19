@@ -133,7 +133,7 @@ RailType GetTileRailType(TileIndex tile, Trackdir trackdir)
 			if ((_m[tile].m5 & 0xC6) == 0xC0 && ((DiagDirection)(_m[tile].m5 & 0x1)) == (exitdir & 0x1))
 				type = (_m[tile].m3 >> 4) & RAILTYPE_MASK;
 			/* under bridge (any type) */
-			if ((_m[tile].m5 & 0xC0) == 0xC0 && ((uint)_m[tile].m5 & 0x1) != (exitdir & 0x1))
+			if ((_m[tile].m5 & 0xC0) == 0xC0 && (_m[tile].m5 & 0x1U) != (exitdir & 0x1))
 				type = _m[tile].m3 & RAILTYPE_MASK;
 			break;
 		default:

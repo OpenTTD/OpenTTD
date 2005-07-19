@@ -529,7 +529,7 @@ void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
 	int x1,y1,x2,y2;
 	int xc,yc;
 
-	memset(produced, 0, NUM_CARGO * sizeof(uint));
+	memset(produced, 0, sizeof(AcceptedCargo));
 
 	x = TileX(tile);
 	y = TileY(tile);
@@ -1428,7 +1428,7 @@ int32 DoConvertStationRail(TileIndex tile, uint totype, bool exec)
 	if (_m[tile].m5 >= 8) return CMD_ERROR;
 
 	// tile is already of requested type?
-	if ( (uint)(_m[tile].m3 & 0xF) == totype) return CMD_ERROR;
+	if ((_m[tile].m3 & 0xFU) == totype) return CMD_ERROR;
 
 	if (exec) {
 		// change type.

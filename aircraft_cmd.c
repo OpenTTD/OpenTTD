@@ -909,7 +909,7 @@ static bool AircraftController(Vehicle *v)
 	dist = myabs(x + amd->x - v->x_pos) +  myabs(y + amd->y - v->y_pos);
 
 	// Need exact position?
-	if (!(amd->flag & AMED_EXACTPOS) && dist <= (uint)((amd->flag&AMED_SLOWTURN)?8:4))
+	if (!(amd->flag & AMED_EXACTPOS) && dist <= (amd->flag & AMED_SLOWTURN ? 8 : 4))
 		return true;
 
 	// At final pos?

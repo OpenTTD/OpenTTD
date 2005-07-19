@@ -10,7 +10,7 @@
 #include "sound.h"
 
 static struct BridgeData {
-	int count;
+	uint count;
 	TileIndex start_tile;
 	TileIndex end_tile;
 	byte type;
@@ -40,11 +40,11 @@ static void BuildBridgeWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-		int i;
+		uint i;
 
 		DrawWindowWidgets(w);
 
-		for(i=0; i < 4 && i + w->vscroll.pos < _bridge.count; i++) {
+		for (i = 0; i < 4 && i + w->vscroll.pos < _bridge.count; i++) {
 			int ind = _bridge.indexes[i + w->vscroll.pos];
 
 			SetDParam(2, _bridge.costs[i + w->vscroll.pos]);
@@ -58,7 +58,7 @@ static void BuildBridgeWndProc(Window *w, WindowEvent *e)
 
 	case WE_KEYPRESS: {
 		uint i = e->keypress.keycode - '1';
-		if (i < 9 && i < (uint)_bridge.count) {
+		if (i < 9 && i < _bridge.count) {
 			e->keypress.cont = false;
 			BuildBridge(w, i);
 		}
@@ -69,7 +69,7 @@ static void BuildBridgeWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 	 if (e->click.widget == 2) {
 			uint ind = ((int)e->click.pt.y - 14) / 22;
-			if (ind < 4 && (ind += w->vscroll.pos) < (uint)_bridge.count)
+			if (ind < 4 && (ind += w->vscroll.pos) < _bridge.count)
 				BuildBridge(w, ind);
 		}
 		break;
@@ -112,7 +112,7 @@ static const WindowDesc _build_road_bridge_desc = {
 
 void ShowBuildBridgeWindow(TileIndex start, TileIndex end, byte bridge_type)
 {
-	int j = 0;
+	uint j = 0;
 	int32 ret;
 	uint16 errmsg;
 

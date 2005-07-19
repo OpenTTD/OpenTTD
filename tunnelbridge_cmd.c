@@ -845,7 +845,7 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 		// railway tunnel
 		if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
-		if ( (uint)(_m[tile].m3 & 0xF) == totype) return CMD_ERROR;
+		if ((_m[tile].m3 & 0xFU) == totype) return CMD_ERROR;
 
 		endtile = CheckTunnelBusy(tile, &length);
 		if (endtile == INVALID_TILE) return CMD_ERROR;
@@ -864,7 +864,7 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 			return CMD_ERROR;
 
 		// tile is already of requested type?
-		if ( (uint)(_m[tile].m3 & 0xF) == totype) return CMD_ERROR;
+		if ((_m[tile].m3 & 0xFU) == totype) return CMD_ERROR;
 		// change type.
 		if (exec) {
 			_m[tile].m3 = (_m[tile].m3 & 0xF0) + totype;
@@ -893,7 +893,7 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 			return CMD_ERROR;
 		}
 
-		if ( (uint)(_m[tile].m3 & 0xF) == totype) return CMD_ERROR;
+		if ((_m[tile].m3 & 0xFU) == totype) return CMD_ERROR;
 		cost = 0;
 		do {
 			if (exec) {
