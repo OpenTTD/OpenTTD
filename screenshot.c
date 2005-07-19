@@ -10,7 +10,7 @@
 #include "screenshot.h"
 
 // called by the ScreenShot proc to generate screenshot lines.
-typedef void ScreenshotCallback(void *userdata, byte *buf, uint y, uint pitch, uint n);
+typedef void ScreenshotCallback(void *userdata, Pixel *buf, uint y, uint pitch, uint n);
 typedef bool ScreenshotHandlerProc(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette);
 
 typedef struct {
