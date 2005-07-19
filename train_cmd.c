@@ -666,11 +666,6 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return value;
 }
 
-static bool IsTunnelTile(TileIndex tile)
-{
-	return IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5 & 0x80) == 0;
-}
-
 
 /* Check if all the wagons of the given train are in a depot, returns the
  * number of cars (including loco) then. If not, sets the error message to
@@ -1307,9 +1302,7 @@ TileIndex GetVehicleTileOutOfTunnel(const Vehicle *v, bool reverse)
 		return v->tile;
 
 	for (tile = v->tile;; tile += delta) {
-		if (IsTileType(tile, MP_TUNNELBRIDGE) &&
-				(_m[tile].m5 & 0xF3) != (direction) &&
-				GetTileZ(tile) == v->z_pos)
+		if (IsTunnelTile(tile) && (_m[tile].m5 & 0x3) != (direction) && GetTileZ(tile) == v->z_pos)
  			break;
  	}
  	return tile;
@@ -1569,26 +1562,17 @@ typedef struct TrainFindDepotData {
 	bool reverse;
 } TrainFindDepotData;
 
-static bool TrainFindDepotEnumProc(TileIndex tile, TrainFindDepotData *tfdd, int track, uint length, byte *state)
+static bool NtpCallbFindDepot(TileIndex tile, TrainFindDepotData *tfdd, int track, uint length)
 {
 	if (IsTileType(tile, MP_RAILWAY) && IsTileOwner(tile, tfdd->owner)) {
 		if ((_m[tile].m5 & ~0x3) == 0xC0) {
-			if (length < tfdd->best_length) {
-				tfdd->best_length = length;
-				tfdd->tile = tile;
-			}
+			tfdd->best_length = length;
+			tfdd->tile = tile;
 			return true;
-		}
-
-		// make sure the train doesn't run against a oneway signal
-		if ((_m[tile].m5 & 0xC0) == 0x40) {
-			if (!(_m[tile].m3 & SignalAlongTrackdir(track)) && _m[tile].m3 & SignalAgainstTrackdir(track))
-				return true;
 		}
 	}
 
-	// stop  searching if we've found a destination that is closer already.
-	return length >= tfdd->best_length;
+	return false;
 }
 
 // returns the tile of a depot to goto to. The given vehicle must not be
@@ -1632,21 +1616,17 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 			if (NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE))
 				tfdd.reverse = true;
 		}
-	} else if (!_patches.new_depot_finding) {
-		// search in all directions
-		for(i=0; i!=4; i++)
-			NewTrainPathfind(tile, i, (TPFEnumProc*)TrainFindDepotEnumProc, &tfdd, NULL);
 	} else {
 		// search in the forward direction first.
 		i = v->direction >> 1;
 		if (!(v->direction & 1) && v->u.rail.track != _state_dir_table[i]) { i = (i - 1) & 3; }
-		NewTrainPathfind(tile, i, (TPFEnumProc*)TrainFindDepotEnumProc, &tfdd, NULL);
+		NewTrainPathfind(tile, 0, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
 		if (tfdd.best_length == (uint)-1){
 			tfdd.reverse = true;
 			// search in backwards direction
 			i = (v->direction^4) >> 1;
 			if (!(v->direction & 1) && v->u.rail.track != _state_dir_table[i]) { i = (i - 1) & 3; }
-			NewTrainPathfind(tile, i, (TPFEnumProc*)TrainFindDepotEnumProc, &tfdd, NULL);
+			NewTrainPathfind(tile, 0, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
 		}
 	}
 
@@ -1887,7 +1867,7 @@ typedef struct TrainTrackFollowerData {
 	byte best_track;
 } TrainTrackFollowerData;
 
-static bool TrainTrackFollower(TileIndex tile, TrainTrackFollowerData *ttfd, int track, uint length, byte *state)
+static bool NtpCallbFindStation(TileIndex tile, TrainTrackFollowerData *ttfd, int track, uint length)
 {
 	// heading for nowhere?
 	if (ttfd->dest_coords == 0)
@@ -1900,24 +1880,16 @@ static bool TrainTrackFollower(TileIndex tile, TrainTrackFollowerData *ttfd, int
 		 * because in that case the dest_coords are just an
 		 * approximation of where the station is */
 		// found station
-		ttfd->best_bird_dist = 0;
-		if (length < ttfd->best_track_dist) {
-			ttfd->best_track_dist = length;
-			ttfd->best_track = state[1];
-		}
+		ttfd->best_track = track;
 		return true;
 	} else {
 		uint dist;
 
-		// we've actually found the destination already. no point searching in directions longer than this.
-		if (ttfd->best_track_dist != (uint)-1)
-			return length >= ttfd->best_track_dist;
-
-		// didn't find station
+		// didn't find station, keep track of the best path so far.
 		dist = DistanceManhattan(tile, ttfd->dest_coords);
 		if (dist < ttfd->best_bird_dist) {
 			ttfd->best_bird_dist = dist;
-			ttfd->best_track = state[1];
+			ttfd->best_track = track;
 		}
 		return false;
 	}
@@ -2046,7 +2018,8 @@ static byte ChooseTrainTrack(Vehicle *v, TileIndex tile, int enterdir, TrackdirB
 		fd.best_track_dist = (uint)-1;
 		fd.best_track = 0xFF;
 
-		NewTrainPathfind(tile - TileOffsByDir(enterdir), enterdir, (TPFEnumProc*)TrainTrackFollower, &fd, NULL);
+		NewTrainPathfind(tile - TileOffsByDir(enterdir), v->dest_tile,
+			enterdir, (NTPEnumProc*)NtpCallbFindStation, &fd);
 
 		if (fd.best_track == 0xff) {
 			// blaha
@@ -2118,7 +2091,7 @@ static bool CheckReverseTrain(Vehicle *v)
 			fd.best_bird_dist = (uint)-1;
 			fd.best_track_dist = (uint)-1;
 
-			NewTrainPathfind(v->tile, reverse ^ i, (TPFEnumProc*)TrainTrackFollower, &fd, NULL);
+			NewTrainPathfind(v->tile, v->dest_tile, reverse ^ i, (NTPEnumProc*)NtpCallbFindStation, &fd);
 
 			if (best_track != -1) {
 				if (best_bird_dist != 0) {
@@ -2861,18 +2834,15 @@ green_light:
 			/* in tunnel */
 			GetNewVehiclePos(v, &gp);
 
-			if (IsTileType(gp.new_tile, MP_TUNNELBRIDGE) &&
-					!(_m[gp.new_tile].m5 & 0xF0)) {
-				r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
-				if (r & 0x4) goto common;
+			// Check if to exit the tunnel...
+			if (!IsTunnelTile(gp.new_tile) ||
+					!(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y)&0x4) ) {
+				v->x_pos = gp.x;
+				v->y_pos = gp.y;
+				VehiclePositionChanged(v);
+				continue;
 			}
-
-			v->x_pos = gp.x;
-			v->y_pos = gp.y;
-			VehiclePositionChanged(v);
-			continue;
 		}
-common:;
 
 		/* update image of train, as well as delta XY */
 		newdir = GetNewVehicleDirection(v, gp.x, gp.y);
@@ -3125,8 +3095,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 	tile = v->tile;
 
 	// tunnel entrance?
-	if (IsTileType(tile, MP_TUNNELBRIDGE) &&
-			(_m[tile].m5 & 0xF0) == 0 && (byte)((_m[tile].m5 & 3)*2+1) == v->direction)
+	if (IsTunnelTile(tile) && (byte)((_m[tile].m5 & 3)*2+1) == v->direction)
 				return true;
 
 	// depot?

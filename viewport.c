@@ -540,59 +540,41 @@ void *AddStringToDraw(int x, int y, StringID string, uint32 params_1, uint32 par
 	return ss;
 }
 
-/* Debugging code */
 
-#ifdef DEBUG_TILE_PUSH
-static uint _num_push;
-static TileIndex _pushed_tile[200];
-static int _pushed_track[200];
+#ifdef DEBUG_HILIGHT_MARKED_TILES
 
-static TileIndex _stored_tile[200];
-static int _stored_track[200];
-static uint _num_stored;
-
-void dbg_store_path(void)
+static void DrawHighlighedTile(const TileInfo *ti)
 {
-	memcpy(_stored_tile, _pushed_tile, sizeof(_stored_tile));
-	memcpy(_stored_track, _pushed_track, sizeof(_stored_tile));
-	_num_stored = _num_push;
-	MarkWholeScreenDirty();
+	if (_m[ti->tile].extra & 0x80) {
+		DrawSelectionSprite(PALETTE_TILE_RED_PULSATING | (SPR_SELECT_TILE + _tileh_to_sprite[ti->tileh]), ti);
+	}
 }
 
-void dbg_push_tile(TileIndex tile, int track)
-{
-	_pushed_tile[_num_push] = tile;
-	_pushed_track[_num_push++] = track;
-	dbg_store_path();
+int _debug_marked_tiles, _debug_red_tiles;
+
+// Helper functions that allow you mark a tile as red.
+void DebugMarkTile(TileIndex tile) {
+	_debug_marked_tiles++;
+	if (_m[tile].extra & 0x80)
+		return;
+	_debug_red_tiles++;
+	MarkTileDirtyByTile(tile);
+	_m[tile].extra = (_m[tile].extra & ~0xE0) | 0x80;
 }
 
-void dbg_pop_tile(void)
+void DebugClearMarkedTiles()
 {
-	assert(_num_push > 0)
-	_num_push--;
-}
-
-static const uint16 _dbg_track_sprite[] = {
-	0x3F4,
-	0x3F3,
-	0x3F5,
-	0x3F6,
-	0x3F8,
-	0x3F7,
-};
-
-static int dbg_draw_pushed(const TileInfo *ti)
-{
-	uint i;
-
-	if (ti->tile == 0) return 0;
-	for (i = 0; i != _num_stored; i++) {
-		if (_stored_tile[i] == ti->tile) {
-			DrawGroundSpriteAt(_dbg_track_sprite[_stored_track[i]&7], ti->x, ti->y, ti->z);
+	uint size = MapSize(), i;
+	for(i=0; i!=size; i++) {
+		if (_m[i].extra & 0x80) {
+			_m[i].extra &= ~0x80;
+			MarkTileDirtyByTile(i);
 		}
 	}
-	return -1;
+	_debug_red_tiles = 0;
+	_debug_red_tiles = 0;
 }
+
 
 #endif
 
@@ -641,8 +623,8 @@ static void DrawTileSelection(const TileInfo *ti)
 {
 	uint32 image;
 
-#ifdef DEBUG_TILE_PUSH
-	dbg_draw_pushed(ti);
+#ifdef DEBUG_HILIGHT_MARKED_TILES
+	DrawHighlighedTile(ti);
 #endif
 
 	// Draw a red error square?

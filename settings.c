@@ -872,7 +872,6 @@ const SettingDesc patch_settings[] = {
 	{"snow_line_height",		SDT_UINT8,	(void*)7,			&_patches.snow_line_height,			NULL},
 
 	{"bribe",								SDT_BOOL,		(void*)true,	&_patches.bribe,								NULL},
-	{"new_depot_finding",		SDT_BOOL,		(void*)false,	&_patches.new_depot_finding,		NULL},
 
 	{"nonuniform_stations",	SDT_BOOL,		(void*)true,	&_patches.nonuniform_stations,	NULL},
 	{"always_small_airport",SDT_BOOL,		(void*)false,	&_patches.always_small_airport,	NULL},

@@ -679,7 +679,6 @@ static const PatchEntry _patches_vehicles[] = {
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_MAMMOTHTRAINS,		"mammoth_trains", 	&_patches.mammoth_trains,						0,  0,  0, NULL},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_GOTODEPOT,				"goto_depot", 			&_patches.gotodepot,								0,  0,  0, NULL},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_ROADVEH_QUEUE,		"roadveh_queue", 		&_patches.roadveh_queue,						0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_NEW_DEPOT_FINDING,"depot_finding", 		&_patches.new_depot_finding,				0,  0,  0, NULL},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL, "new_pathfinding_all", &_patches.new_pathfinding_all,		0,  0,  0, NULL},
 
 	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_WARN_INCOME_LESS, "train_income_warn", &_patches.train_income_warn,				0,  0,  0, NULL},

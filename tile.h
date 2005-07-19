@@ -15,7 +15,7 @@ typedef enum TileTypes {
 	MP_VOID, // invisible tiles at the SW and SE border
 	MP_INDUSTRY,
 	MP_TUNNELBRIDGE,
-	MP_UNMOVABLE
+	MP_UNMOVABLE,
 } TileType;
 
 /* Direction as commonly used in v->direction, 8 way. */
@@ -93,6 +93,11 @@ static inline void SetTileType(TileIndex tile, TileType type)
 static inline bool IsTileType(TileIndex tile, TileType type)
 {
 	return GetTileType(tile) == type;
+}
+
+static inline bool IsTunnelTile(TileIndex tile)
+{
+	return IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5 & 0xF0) == 0;
 }
 
 static inline Owner GetTileOwner(TileIndex tile)

@@ -8,6 +8,7 @@ typedef struct TrackPathFinder TrackPathFinder;
 typedef bool TPFEnumProc(TileIndex tile, void *data, int track, uint length, byte *state);
 typedef void TPFAfterProc(TrackPathFinder *tpf);
 
+typedef bool NTPEnumProc(TileIndex tile, void *data, int track, uint length);
 
 #define PATHFIND_GET_LINK_OFFS(tpf, link) ((byte*)(link) - (byte*)tpf->links)
 #define PATHFIND_GET_LINK_PTR(tpf, link_offs) (TrackPathFinderLink*)((byte*)tpf->links + (link_offs))
@@ -63,6 +64,6 @@ typedef struct {
 } FindLengthOfTunnelResult;
 FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, int direction);
 
-void NewTrainPathfind(TileIndex tile, byte direction, TPFEnumProc *enum_proc, void *data, byte *cache);
+void NewTrainPathfind(TileIndex tile, TileIndex dest, byte direction, NTPEnumProc *enum_proc, void *data);
 
 #endif /* PATHFIND_H */

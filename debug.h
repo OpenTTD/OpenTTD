@@ -15,6 +15,7 @@
 	extern int _debug_spritecache_level;
 	extern int _debug_oldloader_level;
 	extern int _debug_pbs_level;
+	extern int _debug_ntp_level;
 #ifdef GPMI
 	extern int _debug_gpmi_level;
 #endif /* GPMI */

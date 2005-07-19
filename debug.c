@@ -15,6 +15,7 @@ int _debug_net_level;
 int _debug_spritecache_level;
 int _debug_oldloader_level;
 int _debug_pbs_level;
+int _debug_ntp_level;
 #ifdef GPMI
 int _debug_gpmi_level;
 #endif /* GPMI */
@@ -49,6 +50,7 @@ typedef struct DebugLevel {
 	DEBUG_LEVEL(spritecache),
 	DEBUG_LEVEL(oldloader),
 	DEBUG_LEVEL(pbs),
+	DEBUG_LEVEL(ntp),
 #ifdef GPMI
 	DEBUG_LEVEL(gpmi),
 #endif

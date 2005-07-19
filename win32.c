@@ -181,6 +181,34 @@ static void ClientSizeChanged(int w, int h)
 
 extern void DoExitSave(void);
 
+#ifdef _DEBUG
+// Keep this function here..
+// It allows you to redraw the screen from within the MSVC debugger
+int RedrawScreenDebug()
+{
+	HDC dc,dc2;
+	static int _fooctr;
+	HBITMAP old_bmp;
+	HPALETTE old_palette;
+
+	_screen.dst_ptr = _wnd.buffer_bits;
+	UpdateWindows();
+
+	dc = GetDC(_wnd.main_wnd);
+	dc2 = CreateCompatibleDC(dc);
+
+	old_bmp = SelectObject(dc2, _wnd.dib_sect);
+	old_palette = SelectPalette(dc, _wnd.gdi_palette, FALSE);
+	BitBlt(dc, 0, 0, _wnd.width, _wnd.height, dc2, 0, 0, SRCCOPY);
+	SelectPalette(dc, old_palette, TRUE);
+	SelectObject(dc2, old_bmp);
+	DeleteDC(dc2);
+	ReleaseDC(_wnd.main_wnd, dc);
+
+	return _fooctr++;
+}
+#endif
+
 static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg) {
@@ -2266,4 +2294,19 @@ void JoinOTTDThread(void)
 void CSleep(int milliseconds)
 {
 	Sleep(milliseconds);
+}
+
+
+// Utility function to get the current timestamp in milliseconds
+// Useful for profiling
+int64 GetTS()
+{
+	static double freq;
+	__int64 value;
+	if (!freq) {
+		QueryPerformanceFrequency((LARGE_INTEGER*)&value);
+		freq = (double)1000000 / value;
+	}
+	QueryPerformanceCounter((LARGE_INTEGER*)&value);
+	return (__int64)(value * freq);
 }

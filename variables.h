@@ -130,7 +130,6 @@ typedef struct Patches {
 	byte errmsg_duration;		// duration of error message
 	byte snow_line_height;	// a number 0-15 that configured snow line height
 	bool bribe;							// enable bribing the local authority
-	bool new_depot_finding;	// use new algorithm to find a depot.
 	bool nonuniform_stations;// allow nonuniform train stations
 	bool always_small_airport; // always allow small airports
 	bool realistic_acceleration; // realistic acceleration for trains
