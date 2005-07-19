@@ -38,6 +38,7 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo);
 
 int DrawStringCentered(int x, int y, StringID str, uint16 color);
 int DrawStringCenteredTruncated(int xl, int xr, int y, StringID str, uint16 color);
+int DoDrawStringCentered(int x, int y, const char *str, uint16 color);
 
 int DrawString(int x, int y, StringID str, uint16 color);
 int DrawStringTruncated(int x, int y, StringID str, uint16 color, uint maxw);

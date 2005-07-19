@@ -253,7 +253,7 @@ X.X) Credits:
 The OpenTTD team (in alphabetical order):
   Bjarni Corfitzen (Bjarni)      - Mac OS X port, coder
   Victor Fischer (Celestar)      - Programming everywhere you need him to
-  Tamas Faragó (Darkvater)       - Lead programmer
+  Tamás Faragó (Darkvater)       - Lead programmer
   Kerekes Miham (MiHaMiX)        - Maintainer of translator service, and host of nightlies
   Owen Rudge (orudge)            - Contributor, forum host, master server host, OS/2 port
   Christoph Mallon (Tron)        - Programmer, code correctness police

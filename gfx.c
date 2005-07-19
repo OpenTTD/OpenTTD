@@ -365,6 +365,13 @@ int DrawStringCenteredTruncated(int xl, int xr, int y, StringID str, uint16 colo
 	return DoDrawString(buffer, (xl + xr - w) / 2, y, color);
 }
 
+int DoDrawStringCentered(int x, int y, const char *str, uint16 color)
+{
+	int w = GetStringWidth(str);
+	DoDrawString(str, x - w / 2, y, color);
+	return w;
+}
+
 void DrawStringCenterUnderline(int x, int y, StringID str, uint16 color)
 {
 	int w = DrawStringCentered(x, y, str, color);

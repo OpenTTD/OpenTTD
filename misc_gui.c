@@ -188,7 +188,7 @@ static const char *credits[] = {
 	"  Matthijs Kooijman (blathijs) - Pathfinder-god",
 	"  Bjarni Corfitzen (Bjarni) - MacOSX port, coder",
 	"  Victor Fischer (Celestar) - Programming everywhere you need him to",
-	"  Tamas Faragó (Darkvater) - Lead coder",
+	"  Tamás Faragó (Darkvater) - Lead coder",
 	"  Kerekes Miham (MiHaMiX) - Translator system, and Nightlies host",
 	"  Owen Rudge (orudge) - Forum- and masterserver host, OS/2 port",
 	"  Christoph Mallon (Tron) - Programmer, code correctness police",
@@ -246,7 +246,8 @@ static void AboutWindowProc(Window *w, WindowEvent *e)
 		// If the last text has scrolled start anew from the start
 		if (y < 50) WP(w, scroller_d).height = w->height - 40;
 
-		DrawStringMultiCenter(210, w->height - 15, STR_00BA_COPYRIGHT_OPENTTD, 398);
+		DoDrawStringCentered(210, w->height - 25, "Website: http://www.openttd.org", 16);
+		DrawStringCentered(210, w->height - 15, STR_00BA_COPYRIGHT_OPENTTD, 0);
 	}	break;
 	case WE_MOUSELOOP: /* Timer to scroll the text and adjust the new top */
 		if (WP(w, scroller_d).counter++ % 3 == 0) {
