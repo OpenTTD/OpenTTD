@@ -2,6 +2,7 @@
 #include "openttd.h"
 #include "screenshot.h"
 #include "sound.h"
+#include "spritecache.h"
 #include "string.h"
 #include "table/currency.h"
 #include "network.h"

@@ -341,8 +341,6 @@ VARDEF Vehicle *_place_clicked_vehicle;
 
 VARDEF char _ini_videodriver[16], _ini_musicdriver[16], _ini_sounddriver[16];
 
-VARDEF bool _cache_sprites;
-
 // debug features
 VARDEF char _savedump_path[64];
 VARDEF uint _savedump_first, _savedump_freq, _savedump_last;

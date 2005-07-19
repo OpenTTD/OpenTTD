@@ -31,4 +31,6 @@ static inline const byte *GetNonSprite(SpriteID sprite)
 void GfxLoadSprites(void);
 void IncreaseSpriteLRU(void);
 
+extern bool _cache_sprites;
+
 #endif

@@ -54,6 +54,8 @@ static uint16 _sprite_xsize[NUM_SPRITES];
 static uint8 _sprite_ysize[NUM_SPRITES];
 #endif
 
+bool _cache_sprites;
+
 typedef struct MemBlock {
 	uint32 size;
 	byte data[VARARRAY_SIZE];
