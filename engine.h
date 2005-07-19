@@ -1,6 +1,9 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
+/** @file engine.h
+  */
+
 #include "sprite.h"
 
 typedef struct RailVehicleInfo {
@@ -57,12 +60,15 @@ typedef struct RoadVehicleInfo {
 	byte cargo_type;
 } RoadVehicleInfo;
 
+/** Information about a vehicle
+  * @see table/engines.h
+  */
 typedef struct EngineInfo {
 	uint16 base_intro;
-	byte unk2;
+	byte unk2;              ///< Carriages have the highest bit set in this one
 	byte lifelength;
 	byte base_life;
-	byte railtype_climates;
+	byte railtype_climates; ///< contains the railtype in the lower four bits, and a mask to the climates where the vehicle is available in the upper four
 } EngineInfo;
 
 typedef struct Engine {
