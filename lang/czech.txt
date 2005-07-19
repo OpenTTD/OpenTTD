@@ -2,6 +2,8 @@
 ##ownname Cesky
 ##isocode cs
 ##plural 6
+##case news
+##case subs
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -13,43 +15,99 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Je potreba plochá zeme
 STR_0008_WAITING                                                :{BLACK}Ceka tu: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING1}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING1}{YELLOW}  (na ceste z
+STR_0009                                                        :{WHITE}{STRING}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (na ceste z
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Prijima: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Prijima: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :cestující
+STR_000F_PASSENGERS.news                                        :cestujících
+STR_000F_PASSENGERS.subs                                        :Cestující
 STR_0010_COAL                                                   :uhlí
+STR_0010_COAL.subs                                              :Uhlí
 STR_0011_MAIL                                                   :posta
+STR_0011_MAIL.news                                              :posty
+STR_0011_MAIL.subs                                              :Posta
 STR_0012_OIL                                                    :ropa
+STR_0012_OIL.news                                               :ropy
+STR_0012_OIL.subs                                               :Ropa
 STR_0013_LIVESTOCK                                              :dobytek
+STR_0013_LIVESTOCK.news                                         :dobytka
+STR_0013_LIVESTOCK.subs                                         :Dobytek
 STR_0014_GOODS                                                  :zbozi
+STR_0014_GOODS.subs                                             :Zbozi
 STR_0015_GRAIN                                                  :zrní
+STR_0015_GRAIN.subs                                             :Zrní
 STR_0016_WOOD                                                   :drevo
+STR_0016_WOOD.news                                              :dreva
+STR_0016_WOOD.subs                                              :Drevo
 STR_0017_IRON_ORE                                               :zelezna ruda
+STR_0017_IRON_ORE.news                                          :zelezne rudy
+STR_0017_IRON_ORE.subs                                          :Zelezna ruda
 STR_0018_STEEL                                                  :ocel
+STR_0018_STEEL.news                                             :oceli
+STR_0018_STEEL.subs                                             :Ocel
 STR_0019_VALUABLES                                              :ceniny
+STR_0019_VALUABLES.news                                         :cenin
+STR_0019_VALUABLES.subs                                         :Ceniny
 STR_001A_COPPER_ORE                                             :medena ruda
+STR_001A_COPPER_ORE.news                                        :medene rudy
+STR_001A_COPPER_ORE.subs                                        :Medena ruda
 STR_001B_MAIZE                                                  :kukurice
+STR_001B_MAIZE.subs                                             :Kukurice
 STR_001C_FRUIT                                                  :ovoce
+STR_001C_FRUIT.subs                                             :Ovoce
 STR_001D_DIAMONDS                                               :diamanty
+STR_001D_DIAMONDS.news                                          :diamantu
+STR_001D_DIAMONDS.subs                                          :Diamanty
 STR_001E_FOOD                                                   :jídlo
+STR_001E_FOOD.news                                              :jídlo
+STR_001E_FOOD.subs                                              :Jídlo
 STR_001F_PAPER                                                  :papír
+STR_001F_PAPER.news                                             :papíru
+STR_001F_PAPER.subs                                             :Papír
 STR_0020_GOLD                                                   :zlato
+STR_0020_GOLD.news                                              :zlata
+STR_0020_GOLD.subs                                              :Zlato
 STR_0021_WATER                                                  :voda
+STR_0021_WATER.news                                             :vody
+STR_0021_WATER.subs                                             :Voda
 STR_0022_WHEAT                                                  :psenice
+STR_0022_WHEAT.subs                                             :Psenice
 STR_0023_RUBBER                                                 :kaucuk
+STR_0023_RUBBER.news                                            :kaucuku
+STR_0023_RUBBER.subs                                            :Kaucuk
 STR_0024_SUGAR                                                  :cukr
+STR_0024_SUGAR.news                                             :cukru
+STR_0024_SUGAR.subs                                             :Cukr
 STR_0025_TOYS                                                   :hracky
+STR_0025_TOYS.news                                              :hracek
+STR_0025_TOYS.subs                                              :Hracky
 STR_0026_CANDY                                                  :bonbony
+STR_0026_CANDY.news                                             :bonbonu
+STR_0026_CANDY.subs                                             :Bonbony
 STR_0027_COLA                                                   :cola
+STR_0027_COLA.news                                              :coly
+STR_0027_COLA.subs                                              :Cola
 STR_0028_COTTON_CANDY                                           :cukrová vata
+STR_0028_COTTON_CANDY.news                                      :cukrové vaty
+STR_0028_COTTON_CANDY.subs                                      :Cukrová vata
 STR_0029_BUBBLES                                                :bubliny
+STR_0029_BUBBLES.news                                           :bublin
+STR_0029_BUBBLES.subs                                           :Bubliny
 STR_002A_TOFFEE                                                 :karamel
+STR_002A_TOFFEE.news                                            :karamelu
+STR_002A_TOFFEE.subs                                            :Karamel
 STR_002B_BATTERIES                                              :baterie
+STR_002B_BATTERIES.news                                         :baterií
+STR_002B_BATTERIES.subs                                         :Baterie
 STR_002C_PLASTIC                                                :plast
+STR_002C_PLASTIC.news                                           :plastu
+STR_002C_PLASTIC.subs                                           :Plast
 STR_002D_FIZZY_DRINKS                                           :limonáda
+STR_002D_FIZZY_DRINKS.news                                      :limonád
+STR_002D_FIZZY_DRINKS.subs                                      :Limonáda
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :cestujících
 STR_0030_COAL                                                   :uhlí
@@ -83,37 +141,37 @@ STR_004B_BATTERY                                                :baterií
 STR_004C_PLASTIC                                                :plastu
 STR_004D_FIZZY_DRINK                                            :limonád
 STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA} cestující
-STR_0050_TON_OF_COAL                                            :{COMMA} tuna uhlí
-STR_0051_BAG_OF_MAIL                                            :{COMMA} balík posty
+STR_004F_PASSENGER                                              :{COMMA} cestující{P "" "" ch}
+STR_0050_TON_OF_COAL                                            :{COMMA} tun{P a y ""} uhlí
+STR_0051_BAG_OF_MAIL                                            :{COMMA} balík{P "" "y" u} posty
 STR_0052_OF_OIL                                                 :{VOLUME} ropy
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} kus dobytka
-STR_0054_CRATE_OF_GOODS                                         :{COMMA} krabice zbozi
-STR_0055_TON_OF_GRAIN                                           :{COMMA} tuna zrní
-STR_0056_TON_OF_WOOD                                            :{COMMA} tuna dreva
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA} tuna zelezne rudy
-STR_0058_TON_OF_STEEL                                           :{COMMA} tuna oceli
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA} balík cenin
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} tuna medene rudy
-STR_005B_TON_OF_MAIZE                                           :{COMMA} tuna kukurice
-STR_005C_TON_OF_FRUIT                                           :{COMMA} tuna ovoce
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} pytel diamantu
-STR_005E_TON_OF_FOOD                                            :{COMMA} tuna jídla
-STR_005F_TON_OF_PAPER                                           :{COMMA} tuna papíru
-STR_0060_BAG_OF_GOLD                                            :{COMMA} balík zlata
+STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} kus{P "" y u} dobytka
+STR_0054_CRATE_OF_GOODS                                         :{COMMA} krabic{P e e ""} zbozi
+STR_0055_TON_OF_GRAIN                                           :{COMMA} tun{P a y ""} zrní
+STR_0056_TON_OF_WOOD                                            :{COMMA} tun{P a y ""} dreva
+STR_0057_TON_OF_IRON_ORE                                        :{COMMA} tun{P a y ""} zelezne rudy
+STR_0058_TON_OF_STEEL                                           :{COMMA} tun{P a y ""} oceli
+STR_0059_BAG_OF_VALUABLES                                       :{COMMA} balík{P "" "y" u} cenin
+STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} tun{P a y ""} medene rudy
+STR_005B_TON_OF_MAIZE                                           :{COMMA} tun{P a y ""} kukurice
+STR_005C_TON_OF_FRUIT                                           :{COMMA} tun{P a y ""} ovoce
+STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} pyt{P el le lu} diamantu
+STR_005E_TON_OF_FOOD                                            :{COMMA} tun{P a y ""} jídla
+STR_005F_TON_OF_PAPER                                           :{COMMA} tun{P a y ""} papíru
+STR_0060_BAG_OF_GOLD                                            :{COMMA} balík{P "" "y" u}
 STR_0061_OF_WATER                                               :{VOLUME} vody
-STR_0062_TON_OF_WHEAT                                           :{COMMA} tuna kukurice
+STR_0062_TON_OF_WHEAT                                           :{COMMA} tun{P a y ""} kukurice
 STR_0063_OF_RUBBER                                              :{VOLUME} kaucuku
-STR_0064_TON_OF_SUGAR                                           :{COMMA} tuna cukru
-STR_0065_TOY                                                    :{COMMA} hracka
-STR_0066_BAG_OF_CANDY                                           :{COMMA} pytel bonbonu
+STR_0064_TON_OF_SUGAR                                           :{COMMA} tun{P a y ""} cukru
+STR_0065_TOY                                                    :{COMMA} hrac{P ka ky ek}
+STR_0066_BAG_OF_CANDY                                           :{COMMA} pyt{P el le lu} bonbonu
 STR_0067_OF_COLA                                                :{VOLUME} coly
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} tuna cukrové vaty
-STR_0069_BUBBLE                                                 :{COMMA} bublin
-STR_006A_TON_OF_TOFFEE                                          :{COMMA} tuna karamelu
-STR_006B_BATTERY                                                :{COMMA} baterie
+STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} tun{P a y ""} cukrové vaty
+STR_0069_BUBBLE                                                 :{COMMA} bublin{P a y ""}
+STR_006A_TON_OF_TOFFEE                                          :{COMMA} tun{P a y ""} karamelu
+STR_006B_BATTERY                                                :{COMMA} bateri{P e e í}
 STR_006C_OF_PLASTIC                                             :{VOLUME} plastu
-STR_006D_FIZZY_DRINK                                            :{COMMA} limonád
+STR_006D_FIZZY_DRINK                                            :{COMMA} limonád{P a y ""}
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}CS
 STR_0090_CL                                                     :{TINYFONT}UH
@@ -419,10 +477,10 @@ STR_019C_ROAD_VEHICLE                                           :Silnicni vozidl
 STR_019D_AIRCRAFT                                               :Letadlo
 STR_019E_SHIP                                                   :Lod
 STR_019F_TRAIN                                                  :Vlak
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} je stare
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} je velmi stare
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} je velmi stare a potrebuje nahradit
-STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informace o uzemi
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} je staré
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} je velmi staré
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} je velmi staré a potrebuje nahradit
+STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informace o uzemí
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Cena za vycisteni: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cena za vycisteni: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
@@ -475,9 +533,9 @@ STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Prijiman
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jukebox
 STR_01D3_SOUND_MUSIC                                            :Zvuk/Hudba
-STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Ukázat zvukove/hudebni okno
+STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Ukázat zvukové/hudební okno
 STR_01D5_ALL                                                    :{TINYFONT}Vse
-STR_01D6_OLD_STYLE                                              :{TINYFONT}Stare
+STR_01D6_OLD_STYLE                                              :{TINYFONT}Staré
 STR_01D7_NEW_STYLE                                              :{TINYFONT}Nové
 STR_01D8_EZY_STREET                                             :{TINYFONT}Ezy Street
 STR_01D9_CUSTOM_1                                               :{TINYFONT}Volba 1
@@ -489,7 +547,7 @@ STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Skocit n
 STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Skocit na dalsi skladbu ve vyberu
 STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Zastavit prehravani hudby
 STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Zacit prehravat hudbu
-STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Tahej posouvatka pro nastaveni hlasitosti hudby a zvukovych efektu
+STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Tahej posouvátka pro nastaveni hlasitosti hudby a zvukových efektu
 STR_01E3                                                        :{DKGREEN}{TINYFONT}--
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
@@ -505,9 +563,9 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Vymazat
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Ulozit
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Momentalni program skladeb
+STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Momentální program skladeb
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Zvolit program 'vsechny skladby'
-STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Zvolit program 'stare skladby'
+STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Zvolit program 'staré skladby'
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Zvolit program 'nové skladby'
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Zvolit program 'Volba 1' (uzivatelsky nastaveny)
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Zvolit program 'Volba 2' (uzivatelsky nastaveny)
@@ -633,7 +691,7 @@ STR_026A_CONSTRUCT_FARM                                         :{BLACK}Zalozit 
 STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Postavit dul na zeleznou rudu
 STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Postavit ropne vrty
 STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Postavit banku (lze vybudovat jen ve mestech s polulaci vetsi nez 1200)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Postavit papirnu
+STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Postavit papírnu
 STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Postavit tovarnu na zpracovani potravin
 STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Postavit tiskarnu
 STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Postavit zlaty dul
@@ -1056,7 +1114,7 @@ STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Zmenit hodnotu nastavení
-STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Vsechny nebo nektere základní intervaly servisu nize nesouhlasí s vybraným nastavením! 5-90% nebo 30-800 dní jsou platné hodnoty
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Vsechny nebo nektere základní intervaly servisu nize nesouhlasí s vybraným nastavením! 5-90 % nebo 30-800 dní jsou platné hodnoty
 
 STR_TEMPERATE_LANDSCAPE                                         :krajina mírného pásma
 STR_SUB_ARCTIC_LANDSCAPE                                        :subarktická krajina
@@ -1166,8 +1224,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Vyhloubi
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Vyhloubit cukrový dul
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Prumysl
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}% prepraveno)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% prepraveno)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA} % prepraveno)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA} %/{COMMA} % prepraveno)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...prilis blízko k jinému prumyslu
@@ -1430,7 +1488,7 @@ STR_1015_RAILROAD_CONSTRUCTION                                  :Výstavba kolejí
 STR_1016_MONORAIL_CONSTRUCTION                                  :Výstavba monorailu
 STR_1017_MAGLEV_CONSTRUCTION                                    :Výstavba maglevu
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Polozit koleje
-STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Postavit zeleznicni depo ( pro nakup a servis vlaku )
+STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Postavit zeleznicni depo (pro nákup a servis vlaku)
 STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Postavit nadrazi
 STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Postavit semafory
 STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Postavit zeleznicni most
@@ -1519,19 +1577,19 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Hodnocen
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Dotace
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Nabídnuté dotace pro sluzbu:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} z {STRING} do {STRING}
+STR_2027_FROM_TO                                                :{ORANGE}{STRING.subs} z {STRING} do {STRING}
 STR_2028_BY                                                     :{YELLOW} (do {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Nic
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Jiz priznane dotace:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} z {STATION} do {STATION}{YELLOW} ({COMPANY}
+STR_202C_FROM_TO                                                :{ORANGE}{STRING.subs} z {STATION} do {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, do {DATE_SHORT})
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Nabídka dotace prepravy vyprsela:{}{}Dotace dopravy {STRING} z {STRING} do {STRING} nebude dále nabízena.
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Nabídka dotace prepravy vyprsela:{}{}Dotace dopravy {STRING.news} z {STRING} do {STRING} nebude dále nabízena.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Ukonceni dotovaní dopravy:{}{}Dotace pro {STRING} z {STATION} do {STATION} jiz nebude dále poskytována.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Nabídka dotace:{}{}Doprava {STRING} z {STRING} do {STRING} bude jeden rok dotovana místní správou!
-STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace pridelena spolecnosti {COMPANY}.{}{}Doprava {STRING} z {STATION} do {STATION} bude po jeden rok vynaset 150% normalní ceny.
-STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace pridelena spolecnosti {COMPANY}.{}{}Doprava {STRING} z {STATION} do {STATION} bude po jeden rok vynaset dvojnásobek normalní ceny!
-STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace pridelena spolecnosti {COMPANY}.{}{}Doprava {STRING} z {STATION} do {STATION} bude po jeden rok vynaset trojnásobek normalní ceny!
-STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace pridelena spolecnosti {COMPANY}.{}{}Doprava {STRING} z {STATION} do {STATION} bude po jeden rok vynaset ctyrnasobek normalní ceny!
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace pridelena spolecnosti {COMPANY}.{}{}Doprava {STRING.news} z {STATION} do {STATION} bude po jeden rok vynaset 150 % normalní ceny.
+STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace pridelena spolecnosti {COMPANY}.{}{}Doprava {STRING.news} z {STATION} do {STATION} bude po jeden rok vynaset dvojnásobek normalní ceny!
+STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace pridelena spolecnosti {COMPANY}.{}{}Doprava {STRING.news} z {STATION} do {STATION} bude po jeden rok vynaset trojnásobek normalní ceny!
+STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace pridelena spolecnosti {COMPANY}.{}{}Doprava {STRING.news} z {STATION} do {STATION} bude po jeden rok vynaset ctyrnasobek normalní ceny!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Místní správa mesta {TOWN} zakazuje stavbu dalsiho letiste v tomto meste.
 STR_2036_COTTAGES                                               :Chatky
 STR_2037_HOUSES                                                 :Domy
@@ -1546,7 +1604,7 @@ STR_203F_HOUSES                                                 :Domy
 STR_2040_CINEMA                                                 :Kino
 STR_2041_SHOPPING_MALL                                          :Nákupní stredisko
 STR_2042_DO_IT                                                  :{BLACK}Udelej to
-STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}Seznam vsech veci ktere lze delat v tomto meste - stiskni na cinnosti pro vice detailu:
+STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}Seznam vsech veci, které lze delat v tomto meste - oznac cinnost pro více detailu:
 STR_2044_CARRY_OUT_THE_HIGHLIGHTED                              :{BLACK}Proved oznacenou cinnost z vyse uvedeného seznamu.
 STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Mozne cinnosti:
 STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Malá reklamní kampan
@@ -1644,7 +1702,7 @@ STR_3044_TOO_CLOSE_TO_ANOTHER_BUS                               :{WHITE}Prilis b
 STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK                             :{WHITE}Prilis blizko k jiné nákladové rampe
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Musis nejprve znicit autobusovou zastávku
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Musis nejprve znicit nákladovou rampu
-STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} stanic
+STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} stanic{P e e ""}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nic -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...nepouzitelne místo
@@ -1762,7 +1820,7 @@ STR_4829_REQUIRES                                               :{BLACK}Vyzaduje
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produkce minulý mesic:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% prepraveno)
+STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA} % prepraveno)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Nastavit pohled na prumysl
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}{STRING} v konstrukci pobliz mesta {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Nový {STRING} je vysazen pobliz mesta {TOWN}!
@@ -1770,17 +1828,17 @@ STR_482F_COST                                                   :{BLACK}Cena: {Y
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Tento druh prumyslu zde nemohu postavit...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...lesy lze vysadit jen nad snehovou lini
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} ohlasuje okamzite uzavreni!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Zasobovaci problemy zpusobily uzavreni {INDUSTRY}!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Zásobovaci problémy zpusobily uzavreni {INDUSTRY}!
 STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Nedostatek stromu zpusobil uzavreni {INDUSTRY}!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} zvysuje produkci!
-STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nové lozisko uhli nalezene v {INDUSTRY}!{}zdvojnasobi produkci!
-STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nové zasoby ropy nalezene v {INDUSTRY}!{}zdvojnasobi produkci!
-STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Lepsi metody pestovani {INDUSTRY} zdvojnasobi produkci!
-STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} produkce poklesla o 50%
-STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Zamoreni skudci v {INDUSTRY}!{}Produkce poklesla o 50%
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nové lozisko uhlí nalezené v {INDUSTRY}!{}zdvojnásobí produkci!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nové zásoby ropy nalezené v {INDUSTRY}!{}zdvojnásobí produkci!
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Lepsi metody pestovani {INDUSTRY} zdvojnásobí produkci!
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} produkce poklesla o 50 %
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Zamoreni skudci v {INDUSTRY}!{}Produkce poklesla o 50 %
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...muze byt umisteno pouze pobliz okraju mapy
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Produkce {STRING} v {INDUSTRY} vzrostla o {COMMA}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Produkce {STRING} v {INDUSTRY} poklesla o {COMMA}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Produkce {STRING.news} v {INDUSTRY} vzrostla o {COMMA} %!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Produkce {STRING.news} v {INDUSTRY} poklesla o {COMMA} %!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Vlak v tunelu
@@ -2018,20 +2076,20 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Splatit 
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Prezident)
 STR_7038_INAUGURATED                                            :{GOLD}Zalozeno: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Vozidla:
-STR_703A_TRAIN                                                  :{WHITE}{COMMA} vlak
-STR_703B_TRAINS                                                 :{WHITE}{COMMA} vlaku
-STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA} silnicni vozidlo
-STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA} silnicnich vozidel
-STR_703E_AIRCRAFT                                               :{WHITE}{COMMA} letadlo
-STR_703F_AIRCRAFT                                               :{WHITE}{COMMA} letadel
-STR_7040_SHIP                                                   :{WHITE}{COMMA} lod
-STR_7041_SHIPS                                                  :{WHITE}{COMMA} lodí
+STR_703A_TRAIN                                                  :{WHITE}{COMMA} vlak{P "" y u}
+STR_703B_TRAINS                                                 :{WHITE}{COMMA} vlak{P "" y u}
+STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA} silnicni{P "" "" ch} vozid{P lo la el}
+STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA} silnicni{P "" "" ch} vozid{P lo la el}
+STR_703E_AIRCRAFT                                               :{WHITE}{COMMA} letad{P lo la el}
+STR_703F_AIRCRAFT                                               :{WHITE}{COMMA} letad{P lo la el}
+STR_7040_SHIP                                                   :{WHITE}{COMMA} lod{P "" e í}
+STR_7041_SHIPS                                                  :{WHITE}{COMMA} lod{P "" e í}
 STR_7042_NONE                                                   :{WHITE}Nic
 STR_7043_FACE_SELECTION                                         :{WHITE}Volba tvare
 STR_7044_MALE                                                   :{BLACK}Muzske
 STR_7045_FEMALE                                                 :{BLACK}Zenske
 STR_7046_NEW_FACE                                               :{BLACK}Nový oblicej
-STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Zrusit volbu noveho obliceje
+STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Zrusit volbu nového obliceje
 STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Potvrdit vyber obliceje
 STR_7049_SELECT_MALE_FACES                                      :{BLACK}Zvolit muzske obliceje
 STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Zvolit zenske obliceje
@@ -2046,21 +2104,21 @@ STR_7052_COMPANY_VALUES                                         :{WHITE}Hodnota 
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Tabulka poradi spolecnosti
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
-STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Dopravni spolecnost ma problemy!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} bude prodana nebo vyhlasi bankrot pokud se brzy nezvysi vykonnost!
+STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Dopravní spolecnost má problémy!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} bude prodána nebo vyhlasí bankrot, pokud se brzy nezvysi výkonnost!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Prezident)
-STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Sjednoceni dopravnich spolecnosti!
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY} byla prodana {COMPANY} za {CURRENCY}!
-STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Hledame spolecnost ktera prevezme nasi spolecnost{}{}Chcete zakoupit {COMPANY} za {CURRENCY}?
+STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Slouceni dopravních spolecnosti!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY} byla prodána {COMPANY} za {CURRENCY}!
+STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Hledáme spolecnost, která prevezme nasi spolecnost{}{}Chcete zakoupit {COMPANY} za {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankrot!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY} byla zavrena veritely a podily byly prodany!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY} byla zavrena veriteli a podíly byly prodány!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Nová spolecnost zalozena!
 STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} zacina stavet pobliz {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Nemohu koupit spolecnost...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Ceny za prepravu nákladu
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Doba prepravy ve dnech
 STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Platba za doruceni 10 jednotek (nebo 10 000 litru) nákladu do vzdáleností 20 ctverecku
-STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Zobrazit / skryt graf pro urcity druh nákladu
+STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Zobrazit / skrýt graf pro urcitý druh nákladu
 STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
 STR_7066_ENGINEER                                               :Strojvudce
 STR_7067_TRAFFIC_MANAGER                                        :Manazer dopravy
@@ -2073,7 +2131,7 @@ STR_706D_PRESIDENT                                              :Prezident
 STR_706E_TYCOON                                                 :Magnát
 STR_706F_BUILD_HQ                                               :{BLACK}Reditelstvi
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Vybudovat reditelstvi spolecnosti / ukázat reditelstvi spolecnosti
-STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Sídlo spolecnosti muzes vystavit jinde za 1% její hodnoty
+STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Sídlo spolecnosti muzes vystavit jinde za 1 % její hodnoty
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Nemohu postavit reditelstvi spolecnosti
 STR_7072_VIEW_HQ                                                :{BLACK}Reditelstvi
 STR_RELOCATE_HQ                                                 :{BLACK}Presidlit
@@ -2219,87 +2277,87 @@ STR_8077_FOSTER_MKII_SUPERBUS                                   :Foster MkII Sup
 STR_8078_PLODDYPHUT_MKI_BUS                                     :Ploddyphut MkI Bus
 STR_8079_PLODDYPHUT_MKII_BUS                                    :Ploddyphut MkII Bus
 STR_807A_PLODDYPHUT_MKIII_BUS                                   :Ploddyphut MkIII Bus
-STR_807B_BALOGH_COAL_TRUCK                                      :Balogh Vuz na uhli
-STR_807C_UHL_COAL_TRUCK                                         :Uhl Vuz na uhli
-STR_807D_DW_COAL_TRUCK                                          :DW Vuz na uhli
-STR_807E_MPS_MAIL_TRUCK                                         :MPS Postovni vuz
-STR_807F_REYNARD_MAIL_TRUCK                                     :Reynard Postovni vuz
-STR_8080_PERRY_MAIL_TRUCK                                       :Perry Postovni vuz
-STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :MightyMover Postovni vuz
-STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Powernaught Postovni vuz
-STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Wizzowow Postovni vuz
-STR_8084_WITCOMBE_OIL_TANKER                                    :Witcombe Cisterna na ropu
-STR_8085_FOSTER_OIL_TANKER                                      :Foster Cisterna na ropu
-STR_8086_PERRY_OIL_TANKER                                       :Perry Cisterna na ropu
-STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Talbott Vuz na dobytek
-STR_8088_UHL_LIVESTOCK_VAN                                      :Uhl Vuz na dobytek
-STR_8089_FOSTER_LIVESTOCK_VAN                                   :Foster Vuz na dobytek
-STR_808A_BALOGH_GOODS_TRUCK                                     :Balogh Vuz na zbozi
-STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Craighead Vuz na zbozi
-STR_808C_GOSS_GOODS_TRUCK                                       :Goss Vuz na zbozi
-STR_808D_HEREFORD_GRAIN_TRUCK                                   :Hereford Vuz na zrni
-STR_808E_THOMAS_GRAIN_TRUCK                                     :Thomas Vuz na zrni
-STR_808F_GOSS_GRAIN_TRUCK                                       :Goss Vuz na zrni
-STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe Vuz na drevo
-STR_8091_FOSTER_WOOD_TRUCK                                      :Foster Vuz na drevo
-STR_8092_MORELAND_WOOD_TRUCK                                    :Moreland Vuz na drevo
-STR_8093_MPS_IRON_ORE_TRUCK                                     :MPS Vuz na zeleznou rudu
-STR_8094_UHL_IRON_ORE_TRUCK                                     :Uhl Vuz na zeleznou rudu
-STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Chippy Vuz na zeleznou rudu
-STR_8096_BALOGH_STEEL_TRUCK                                     :Balogh Vuz na ocel
-STR_8097_UHL_STEEL_TRUCK                                        :Uhl Vuz na ocel
-STR_8098_KELLING_STEEL_TRUCK                                    :Kelling Vuz na ocel
+STR_807B_BALOGH_COAL_TRUCK                                      :Balogh vuz na uhlí
+STR_807C_UHL_COAL_TRUCK                                         :Uhl vuz na uhlí
+STR_807D_DW_COAL_TRUCK                                          :DW vuz na uhlí
+STR_807E_MPS_MAIL_TRUCK                                         :MPS postovni vuz
+STR_807F_REYNARD_MAIL_TRUCK                                     :Reynard postovni vuz
+STR_8080_PERRY_MAIL_TRUCK                                       :Perry postovni vuz
+STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :MightyMover postovni vuz
+STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Powernaught postovni vuz
+STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Wizzowow postovni vuz
+STR_8084_WITCOMBE_OIL_TANKER                                    :Witcombe cisterna na ropu
+STR_8085_FOSTER_OIL_TANKER                                      :Foster cisterna na ropu
+STR_8086_PERRY_OIL_TANKER                                       :Perry cisterna na ropu
+STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Talbott vuz na dobytek
+STR_8088_UHL_LIVESTOCK_VAN                                      :Uhl vuz na dobytek
+STR_8089_FOSTER_LIVESTOCK_VAN                                   :Foster vuz na dobytek
+STR_808A_BALOGH_GOODS_TRUCK                                     :Balogh vuz na zbozi
+STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Craighead vuz na zbozi
+STR_808C_GOSS_GOODS_TRUCK                                       :Goss vuz na zbozi
+STR_808D_HEREFORD_GRAIN_TRUCK                                   :Hereford vuz na zrní
+STR_808E_THOMAS_GRAIN_TRUCK                                     :Thomas vuz na zrní
+STR_808F_GOSS_GRAIN_TRUCK                                       :Goss vuz na zrní
+STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe vuz na drevo
+STR_8091_FOSTER_WOOD_TRUCK                                      :Foster vuz na drevo
+STR_8092_MORELAND_WOOD_TRUCK                                    :Moreland vuz na drevo
+STR_8093_MPS_IRON_ORE_TRUCK                                     :MPS vuz na zeleznou rudu
+STR_8094_UHL_IRON_ORE_TRUCK                                     :Uhl vuz na zeleznou rudu
+STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Chippy vuz na zeleznou rudu
+STR_8096_BALOGH_STEEL_TRUCK                                     :Balogh vuz na ocel
+STR_8097_UHL_STEEL_TRUCK                                        :Uhl vuz na ocel
+STR_8098_KELLING_STEEL_TRUCK                                    :Kelling vuz na ocel
 STR_8099_BALOGH_ARMORED_TRUCK                                   :Balogh Obrneny vuz
 STR_809A_UHL_ARMORED_TRUCK                                      :Uhl Obrneny vuz
 STR_809B_FOSTER_ARMORED_TRUCK                                   :Foster Obrneny vuz
-STR_809C_FOSTER_FOOD_VAN                                        :Foster Vuz na jidlo
-STR_809D_PERRY_FOOD_VAN                                         :Perry Vuz na jidlo
-STR_809E_CHIPPY_FOOD_VAN                                        :Chippy Vuz na jidlo
-STR_809F_UHL_PAPER_TRUCK                                        :Uhl Vuz na papir
-STR_80A0_BALOGH_PAPER_TRUCK                                     :Balogh Vuz na papir
-STR_80A1_MPS_PAPER_TRUCK                                        :MPS Vuz na papir
-STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS Vuz na medenou rudu
-STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl Vuz na medenou rudu
-STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss Vuz na medenou rudu
+STR_809C_FOSTER_FOOD_VAN                                        :Foster vuz na jídlo
+STR_809D_PERRY_FOOD_VAN                                         :Perry vuz na jídlo
+STR_809E_CHIPPY_FOOD_VAN                                        :Chippy vuz na jídlo
+STR_809F_UHL_PAPER_TRUCK                                        :Uhl vuz na papír
+STR_80A0_BALOGH_PAPER_TRUCK                                     :Balogh vuz na papír
+STR_80A1_MPS_PAPER_TRUCK                                        :MPS vuz na papír
+STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS vuz na medenou rudu
+STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl vuz na medenou rudu
+STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss vuz na medenou rudu
 STR_80A5_UHL_WATER_TANKER                                       :Uhl Cisterna na vodu
 STR_80A6_BALOGH_WATER_TANKER                                    :Balogh Cisterna na vodu
 STR_80A7_MPS_WATER_TANKER                                       :MPS Cisterna na vodu
-STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh Vuz na ovoce
-STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl Vuz na ovoce
-STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling Vuz na ovoce
-STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh Vuz na kaucuk
-STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl Vuz na kaucuk
-STR_80AD_RMT_RUBBER_TRUCK                                       :RMT Vuz na kaucuk
-STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :MightyMover Vuz na cukr
-STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Powernaught Vuz na cukr
-STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow Vuz na cukr
+STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh vuz na ovoce
+STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl vuz na ovoce
+STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling vuz na ovoce
+STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh vuz na kaucuk
+STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl vuz na kaucuk
+STR_80AD_RMT_RUBBER_TRUCK                                       :RMT vuz na kaucuk
+STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :MightyMover vuz na cukr
+STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Powernaught vuz na cukr
+STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow vuz na cukr
 STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :MightyMover Cisterna na kolu
 STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Powernaught Cisterna na kolu
 STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Wizzowow Cisterna na kolu
-STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :MightyMover Vuz na cukrovou vatu
-STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught Vuz na cukrovou vatu
-STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzowow Vuz na cukrovou vatu
-STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :MightyMover Vuz na karamel
-STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Powernaught Vuz na karamel
-STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Wizzowow Vuz na karamel
-STR_80BA_MIGHTYMOVER_TOY_VAN                                    :MightyMover Vuz na hracky
+STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :MightyMover vuz na cukrovou vatu
+STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught vuz na cukrovou vatu
+STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzowow vuz na cukrovou vatu
+STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :MightyMover vuz na karamel
+STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Powernaught vuz na karamel
+STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Wizzowow vuz na karamel
+STR_80BA_MIGHTYMOVER_TOY_VAN                                    :MightyMover vuz na hracky
 STR_80BB_POWERNAUGHT_TOY_VAN                                    :Powernaught Vuy na hracky
-STR_80BC_WIZZOWOW_TOY_VAN                                       :Wizzowow Vuz na hracky
-STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :MightyMover Vuz na bonbony
-STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Powernaught Vuz na bonbony
-STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Wizzowow Vuz na bonbony
-STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :MightyMover Vuz na baterky
-STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Powernaught Vuz na baterky
-STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Wizzowow Vuz na baterky
-STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :MightyMover Vuz na limonady
-STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Powernaught Vuz na limonady
-STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Wizzowow Vuz na limonady
-STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :MightyMover Vuz na plast
-STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Powernaught Vuz na plast
-STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Wizzowow Vuz na plast
-STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :MightyMover Vuz na bubliny
-STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught Vuz na bubliny
-STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow Vuz na bubliny
+STR_80BC_WIZZOWOW_TOY_VAN                                       :Wizzowow vuz na hracky
+STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :MightyMover vuz na bonbony
+STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Powernaught vuz na bonbony
+STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Wizzowow vuz na bonbony
+STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :MightyMover vuz na baterky
+STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Powernaught vuz na baterky
+STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Wizzowow vuz na baterky
+STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :MightyMover vuz na limonady
+STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Powernaught vuz na limonady
+STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Wizzowow vuz na limonady
+STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :MightyMover vuz na plast
+STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Powernaught vuz na plast
+STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Wizzowow vuz na plast
+STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :MightyMover vuz na bubliny
+STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught vuz na bubliny
+STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow vuz na bubliny
 STR_80CC_MPS_OIL_TANKER                                         :MPS Ropny tanker
 STR_80CD_CS_INC_OIL_TANKER                                      :CS-Inc. Ropny tanker
 STR_80CE_MPS_PASSENGER_FERRY                                    :MPS Trajekt pro cestující
@@ -2399,7 +2457,7 @@ STR_8816                                                        :{BLACK}-
 STR_8818_INFORMATION                                            :{BLACK}Informace
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Prilis dlouhý vlak
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Vlaky lze menit, jen kdyz stojí uvnitr depa
-STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} vlaku
+STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} vlak{P "" y u}
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nové lokomotivy a vagony
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nové lokomotivy a vagony pro monorail
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nové lokomotivy a vagony pro maglev
@@ -2555,7 +2613,7 @@ STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Konstruk
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Zde nelze postavit pristav...
 STR_9803_SHIP_DEPOT                                             :{WHITE}Lodní depo {TOWN}
 STR_9804_NEW_SHIPS                                              :{BLACK}Nové lode
-STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} lodí
+STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} lod{P "" e í}
 STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Nemohu koupit lod...
 STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Nejprve musis postavit lodní depo
 STR_9808_NEW_SHIPS                                              :{WHITE}Nové lode
@@ -2628,7 +2686,7 @@ STR_A004_INFORMATION                                            :{BLACK}Informac
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nové letadlo
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Koupit letadlo
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nelze koupit letadlo...
-STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} letadel a helikoptér
+STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} letad{P lo la el}
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Prikazy)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detaily)
@@ -2758,10 +2816,10 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} vlaku
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} silnicnich vozidel
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} letadel
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} lodi
+STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} vlak{P "" y u}
+STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} silnicni{P "" a ch} vozid{P lo la el}
+STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} letad{P lo la el}
+STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} lod{P "" e í}
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Zobrazit vsechny vlaky, které mají tuto stanici v jízdním radu
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Zobrazit vsechna silnicni vozidla, která mají tuto stanici v jízdním radu
@@ -2783,7 +2841,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Tady je 
 STR_REPLACE_HELP                                                :{BLACK}Tato moznost hry ti umoznuje vybrat typ lokomotivy, který nechá vymenit za jiný. To se bude automaticky provadet, kdyz lokomotiva zajede do depa.
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam popisku - {COMMA} popisku
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam popisku - {COMMA} popis{P ek ky ku}
 
 ############ Lists rail types
 
