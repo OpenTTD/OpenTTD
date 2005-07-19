@@ -905,6 +905,7 @@ static void WriteMem(uint size)
 //********************************************
 
 #if defined(WITH_ZLIB)
+#define ZLIB_WINAPI // Needed so zlib uses the right calling convention.
 #include <zlib.h>
 static z_stream _z;
 
