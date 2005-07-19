@@ -385,7 +385,7 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	} else if (ti.type == MP_RAILWAY) {
 		byte m5;
 
-		if (IsSteepTileh(ti.tile)) // very steep tile
+		if (IsSteepTileh(ti.tileh)) // very steep tile
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 		if(!_valid_tileh_slopes_road[2][ti.tileh]) // prevent certain slopes
