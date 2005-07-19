@@ -1292,7 +1292,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 					DeleteWindow(w);
 				} else {
 					// SLD_SAVE_GAME, SLD_SAVE_SCENARIO copy clicked name to editbox
-					ttd_strlcpy(WP(w, querystr_d).text.buf, file->title, WP(w, querystr_d).text.maxlength);
+					ttd_strlcpy(WP(w, querystr_d).text.buf, file->name, WP(w, querystr_d).text.maxlength);
 					UpdateTextBufferSize(&WP(w, querystr_d).text);
 					InvalidateWidget(w, 9);
 				}
