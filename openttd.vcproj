@@ -48,6 +48,7 @@
 				WarnAsError="TRUE"
 				SuppressStartupBanner="TRUE"
 				DebugInformationFormat="3"
+				CallingConvention="1"
 				CompileAs="1"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
@@ -114,7 +115,7 @@
 				SuppressStartupBanner="TRUE"
 				Detect64BitPortabilityProblems="FALSE"
 				DebugInformationFormat="4"
-				CallingConvention="0"
+				CallingConvention="1"
 				CompileAs="1"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
@@ -740,13 +741,13 @@
 			Name="AI Files"
 			Filter="">
 			<File
-				RelativePath=".\ai_new.h">
-			</File>
-			<File
 				RelativePath=".\ai_build.c">
 			</File>
 			<File
 				RelativePath=".\ai_new.c">
+			</File>
+			<File
+				RelativePath=".\ai_new.h">
 			</File>
 			<File
 				RelativePath=".\ai_pathfinder.c">
