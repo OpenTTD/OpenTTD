@@ -679,7 +679,7 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 				//   8bit   - cargo type
 				//   16-bit - cargo count
 				StringID cargo_str = _cargoc.names_long[GetInt32(&argv)];
-				buff = GetStringWithArgs(buff, cargo_str, argv);
+				buff = GetStringWithArgs(buff, cargo_str, argv++);
 				break;
 			}
 
