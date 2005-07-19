@@ -111,7 +111,7 @@ STR_0067_OF_COLA                                                :{VOLUME} coli
 STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} ton waty cukrowej
 STR_0069_BUBBLE                                                 :{COMMA} babelkow
 STR_006A_TON_OF_TOFFEE                                          :{COMMA} ton tofi
-STR_006B_BATTERY                                                :{COMMA} bateri{P a i i}
+STR_006B_BATTERY                                                :{COMMA} bateri{P a i}
 STR_006C_OF_PLASTIC                                             :{VOLUME} plastiku
 STR_006D_FIZZY_DRINK                                            :{COMMA} napoju gazowanego
 STR_008E                                                        :

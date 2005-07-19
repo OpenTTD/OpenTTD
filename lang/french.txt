@@ -83,37 +83,37 @@ STR_004B_BATTERY                                                :Batterie
 STR_004C_PLASTIC                                                :Plastique
 STR_004D_FIZZY_DRINK                                            :Boisson Gazeuse
 STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA} passager
-STR_0050_TON_OF_COAL                                            :{COMMA} tonne de charbon
-STR_0051_BAG_OF_MAIL                                            :{COMMA} sac de courrier
+STR_004F_PASSENGER                                              :{COMMA} passager{P "" s}
+STR_0050_TON_OF_COAL                                            :{COMMA} tonne{P "" s}  de charbon
+STR_0051_BAG_OF_MAIL                                            :{COMMA} sac{P " postal" "s postaux"}
 STR_0052_OF_OIL                                                 :{VOLUME} de pétrole
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} tête de bétail
-STR_0054_CRATE_OF_GOODS                                         :{COMMA} caisse de biens
-STR_0055_TON_OF_GRAIN                                           :{COMMA} tonne de grain
-STR_0056_TON_OF_WOOD                                            :{COMMA} tonne de bois
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA} tonne de fer
-STR_0058_TON_OF_STEEL                                           :{COMMA} tonne d'acier
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA} sac d'objets de valeur
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} tonne de cuivre
-STR_005B_TON_OF_MAIZE                                           :{COMMA} tonne de maïs
-STR_005C_TON_OF_FRUIT                                           :{COMMA} tonne de fruits
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} sac de diamants
-STR_005E_TON_OF_FOOD                                            :{COMMA} tonne de nourriture
-STR_005F_TON_OF_PAPER                                           :{COMMA} tonne de papier
-STR_0060_BAG_OF_GOLD                                            :{COMMA} sac d'or
+STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} tête{P "" s} de bétail
+STR_0054_CRATE_OF_GOODS                                         :{COMMA} caisse{P "" s} de biens
+STR_0055_TON_OF_GRAIN                                           :{COMMA} tonne{P "" s}  de grains
+STR_0056_TON_OF_WOOD                                            :{COMMA} tonne{P "" s}  de bois
+STR_0057_TON_OF_IRON_ORE                                        :{COMMA} tonne{P "" s}  de fer
+STR_0058_TON_OF_STEEL                                           :{COMMA} tonne{P "" s}  d'acier
+STR_0059_BAG_OF_VALUABLES                                       :{COMMA} sac{P "" s} d'objets de valeur
+STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} tonne{P "" s} de cuivre
+STR_005B_TON_OF_MAIZE                                           :{COMMA} tonne{P "" s}  de maïs
+STR_005C_TON_OF_FRUIT                                           :{COMMA} tonne{P "" s}  de fruits
+STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} sac{P "" s} de diamants
+STR_005E_TON_OF_FOOD                                            :{COMMA} tonne{P "" s}  de nourriture
+STR_005F_TON_OF_PAPER                                           :{COMMA} tonne{P "" s}  de papier
+STR_0060_BAG_OF_GOLD                                            :{COMMA} sac{P "" s} d'or
 STR_0061_OF_WATER                                               :{VOLUME} d'eau
-STR_0062_TON_OF_WHEAT                                           :{COMMA} tonne de blé
+STR_0062_TON_OF_WHEAT                                           :{COMMA} tonne{P "" s}  de blé
 STR_0063_OF_RUBBER                                              :{VOLUME} de caoutchouc
-STR_0064_TON_OF_SUGAR                                           :{COMMA} tonne de sucre
-STR_0065_TOY                                                    :{COMMA} jouet
-STR_0066_BAG_OF_CANDY                                           :{COMMA} sac de jouet
+STR_0064_TON_OF_SUGAR                                           :{COMMA} tonne{P "" s}  de sucre
+STR_0065_TOY                                                    :{COMMA} jouet{P "" s}
+STR_0066_BAG_OF_CANDY                                           :{COMMA} sac{P "" s} de jouets
 STR_0067_OF_COLA                                                :{VOLUME} de cola
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} tonne de barbe à papa
-STR_0069_BUBBLE                                                 :{COMMA} bulle
-STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonne de caramel
-STR_006B_BATTERY                                                :{COMMA} batterie
+STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} tonne{P "" s}  de barbe à papa
+STR_0069_BUBBLE                                                 :{COMMA} bulle{P "" s}
+STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonne{P "" s}  de caramel
+STR_006B_BATTERY                                                :{COMMA} batterie{P "" s}
 STR_006C_OF_PLASTIC                                             :{VOLUME} de plastique
-STR_006D_FIZZY_DRINK                                            :{COMMA} boisson gazeuse
+STR_006D_FIZZY_DRINK                                            :{COMMA} boisson{P " gazeuse" "s gazeuses"}
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
 STR_0090_CL                                                     :{TINYFONT}CL
@@ -156,7 +156,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Impossib
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Impossible de balayer....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, Tous droits réservés
 STR_00B7_VERSION                                                :{BLACK}OpenTTD version {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2005 The OpenTTD team
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2005 L'équipe OpenTTD
 STR_TRANSLATED_BY                                               :{BLACK}  Traducteur(s) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -224,7 +224,7 @@ STR_0102_OIL_WELLS                                              :{BLACK}{TINYFON
 STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Mine de fer
 STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Aciérie
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}Banque
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Usine papetière
+STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Papeterie
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Mine d'Or
 STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Usine Agroalimentaire
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Mine de Diamant
@@ -268,7 +268,7 @@ STR_012E_CANCEL                                                 :{BLACK}Annuler
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Renommer
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Trop de noms déjà définis
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Nom déjà utilisé
+STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Ce nom est déjà utilisé
 
 STR_0133_WINDOWS                                                :Windows
 STR_0134_UNIX                                                   :Unix
@@ -290,7 +290,7 @@ STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Capacité
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Nouvelle Partie
 STR_0141_LOAD_GAME                                              :{BLACK}Charger une Partie
-STR_0142_TUTORIAL_DEMONSTRATION                                 :{BLACK}Tutoriel / Démonstration
+STR_0142_TUTORIAL_DEMONSTRATION                                 :{BLACK}Didacticiel/Démonstration
 STR_SINGLE_PLAYER                                               :{BLACK}Un joueur
 STR_MULTIPLAYER                                                 :{BLACK}Multijoueurs
 
@@ -392,9 +392,9 @@ STR_0188                                                        :{BLACK}{SMALLUP
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Impossible de modifier l'intervalle de service...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Fermer la fenêtre
-STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Titre de fenêtre - Glissez ceci pour déplacer la fenêtre
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Titre de fenêtre - Faire Glisser pour déplacer la fenêtre
 STR_STICKY_BUTTON                                               :{BLACK}Marquer cette fenêtre comme ineffaçable pour la touche 'Fermer toutes les fenêtres'
-STR_RESIZE_BUTTON                                               :{BLACK}Cliquez et glissez pour redimensionner cette fenêtre
+STR_RESIZE_BUTTON                                               :{BLACK}Cliquer et faire glisse pour redimensionner la fenêtre
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Démolir les constructions sur un carré de terrain
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Abaisser le terrain
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Élever le terrain
@@ -489,7 +489,7 @@ STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Sauter à
 STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Sauter à la piste suivante dans la sélection
 STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Arrêter la musique
 STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Démarrer la musique
-STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Glissez les curseurs pour changer le volume
+STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Faire glisser les curseurs pour changer le volume
 STR_01E3                                                        :{DKGREEN}{TINYFONT}--
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
@@ -513,10 +513,10 @@ STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Choisir 
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Choisir le programme personnalisé 'Personnalisé 2'
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Balayer le programme courrant (Personnalisé 1 ou Personnalisé 2 seulement)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Sauver les paramètres musicaux
-STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Cliquez sur une piste pour l'ajouter au pragramme courrant (Custom1 ou Custom2 seulement)
+STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Cliquer sur une piste pour l'ajouter au programme courant (Custom1 ou Custom2 seulement)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Active/Désactive le mode aléatoire
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Afficher la fenêtre de sélection de pistes
-STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Cliquez sur le service pour centrer la vue sur l'industrie ou la ville
+STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Cliquer sur le service pour centrer la vue sur l'industrie ou la ville
 STR_01FE_DIFFICULTY                                             :{BLACK}Difficulté ({STRING})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Message/Bulletin précédent
@@ -536,7 +536,7 @@ STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Changem
 STR_020E_SUBSIDIES                                              :{YELLOW}Subventions
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Information génerale
 STR_MESSAGES_ALL                                                :{YELLOW}Pour tout types de messages (aucun/sommaire/complet)
-STR_MESSAGE_SOUND                                               :{YELLOW}Emettre son pour les bulletins sommaires
+STR_MESSAGE_SOUND                                               :{YELLOW}Émettre son pour les bulletins sommaires
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...trop loin de la destination précédente
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Meilleures compagnies, qui ont atteint {NUM}{}({STRING} niveau)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Tableau du Championnat des compagnies en {NUM}
@@ -688,7 +688,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...les d
 STR_02A1_SMALL                                                  :{BLACK}Petite
 STR_02A2_MEDIUM                                                 :{BLACK}Moyenne
 STR_02A3_LARGE                                                  :{BLACK}Grande
-STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Sélectionnez la taille de la ville
+STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Sélectionner la taille de la ville
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Taille:
 
 STR_02B6                                                        :{STRING}  -  {STRING}
@@ -775,14 +775,14 @@ STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Sélectio
 
 STR_02F4_AUTOSAVE                                               :{BLACK}Sauvegarde automatique
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Sélectionnez l'intervalle de temps entre les sauvegardes automatiques
+STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Sélectionner l'intervalle de temps entre les sauvegardes automatiques
 STR_02F7_OFF                                                    :Inactif
 STR_02F8_EVERY_3_MONTHS                                         :Tous les 3 mois
 STR_02F9_EVERY_6_MONTHS                                         :Tous les 6 mois
 STR_02FA_EVERY_12_MONTHS                                        :Tous les 12 mois
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Commencer une nouvelle partie
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Charger une partie sauvée
-STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS                          :{BLACK}Visionner démonstrations/didacticiels
+STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS                          :{BLACK}Visionner Didacticiels/Démonstrations
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Créer un monde/scénario de jeu personnalisé
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Selectionner mode joueur simple
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Sélectionnner une partie multi-joueurs de 2 à 8 joueurs
@@ -791,7 +791,7 @@ STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Afficher
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Débuter une nouvelle partie à partir d'un scénario
 STR_0304_QUIT                                                   :{BLACK}Quitter
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Quitter 'OpenTTD'
-STR_0306_VIEW_DEMONSTRATION_TUTORIAL                            :{BLACK}Visionner démonstration/didacticiel
+STR_0306_VIEW_DEMONSTRATION_TUTORIAL                            :{BLACK}Visionner Didacticiel/Démonstration
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...peut seulement être construit en ville
 STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Selectionner l'environnement 'Tempéré'
@@ -1134,7 +1134,7 @@ STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Impossib
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Impossible de convertir le type de rail...
 STR_CONVERT_RAIL_TIP                                            :{BLACK}Convertir/Améliorer le type de rail
 
-STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Glissez la locomotive ici pour vendre le train entier
+STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Faire Glisser la locomotive ici pour vendre tout le train
 
 STR_DRAG_DROP                                                   :{BLACK}Glisser/déposer
 STR_STATION_DRAG_DROP                                           :{BLACK}Construire une gare avec le glisser/déposer
@@ -1190,7 +1190,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Multijou
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Nom du joueur:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Ceci est le nom avec lequel les autres joueurs pourront vous identifier
 STR_NETWORK_CONNECTION                                          :{BLACK}Connection :
-STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Choisissez entre un jeu Internet et un jeu sur réseau local
+STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Choisir entre un jeu Internet ou sur réseau local
 
 STR_NETWORK_START_SERVER                                        :{BLACK}Démarrer le serveur
 STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Démarre son propre serveur
@@ -1198,13 +1198,13 @@ STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Démarre 
 STR_NETWORK_GAME_NAME                                           :{BLACK}Nom
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Nom de la partie
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Langage, version du serveur, etc.
-STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Cliquez une partie de la liste pour la sélectionner
+STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Cliquer sur une partie de la liste pour la sélectionner
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Trouver un serveur
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Cherche sur le réseau un serveur
 STR_NETWORK_ADD_SERVER                                          :{BLACK}Ajouter un serveur
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Ajouter à la liste un serveur où le jeu cherchera toujours des parties en cours.
-STR_NETWORK_ENTER_IP                                            :{BLACK}Entrez l'adresse IP du serveur
+STR_NETWORK_ENTER_IP                                            :{BLACK}Saisir l'adresse IP du serveur
 
 STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clients
@@ -1232,9 +1232,9 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Commence
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Nom de la partie:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Le nom de la partie sera affiché aux autres joueurs dans le menu de sélection de partie multijoueur
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Choisir le mot de passe
-STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Protéger votre partie avec un mot de passe si vous ne souhaitez pas que d'autres joueurs la rejoignent
-STR_NETWORK_SELECT_MAP                                          :{BLACK}Choisissez une carte:
-STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Sur quelle carte voulez-vous jouer?
+STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Protéger votre partie avec un mot de passe si vous ne souhaitez pas que d'autres l'utilisent
+STR_NETWORK_SELECT_MAP                                          :{BLACK}Choisir une carte:
+STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Sur quelle carte désirez-vous jouer?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Nombre de clients max. :
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Choisir un nombre maximum de clients. Tous les emplacements n'auront pas besoin d'être remplis.
 STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1272,7 +1272,7 @@ STR_NETWORK_LANG_FRENCH                                         :Français
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Chat d'avant jeu
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Se prépare à rejoindre :   {ORANGE}{STRING}
-STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Une liste des compagnies présentes dans le jeu.  Vous pouvez soit en rejoindre une, soit en créer une.
+STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Liste des compagnies présentes dans le jeu.  Vous pouvez soit en rejoindre une, soit en créer une.
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nouvelle compagnie
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Crée une nouvelle compagnie
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Observer une partie
@@ -1313,7 +1313,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Déconnecter
 
-STR_NETWORK_CHAT_QUERY_CAPTION                                  :{WHITE}Entrez votre message à envoyer
+STR_NETWORK_CHAT_QUERY_CAPTION                                  :{WHITE}Saisir le message à envoyer
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Enter the amount of money you want to give
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Le serveur est protégé. Entrez le mot de passe
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}La compagnie est protégée. Entrez le mot de passe
@@ -1333,7 +1333,7 @@ STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} La révi
 STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Mot de passe incorrect.
 STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Le serveur est plein
 STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Vous êtes bannis de ce serveur
-STR_NETWORK_ERR_KICKED                                          :{WHITE} Vous avez été jeté du serveur
+STR_NETWORK_ERR_KICKED                                          :{WHITE} Vous avez été exclu de la partie
 STR_NETWORK_ERR_CHEATER                                         :{WHITE} Tricher n'est pas autorisé sur ce serveur
 
 STR_NETWORK_ERR_LEFT                                            :a quitté la partie
@@ -1354,7 +1354,7 @@ STR_NETWORK_ERR_CLIENT_CHEATER                                  :a tenté de tric
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :a rejoint la partie
 STR_NETWORK_GIVE_MONEY                                          :vous a donné un peu d'argent ({CURRENCY})
-STR_NETWORK_GAVE_MONEY_AWAY                                     :vous avez donné à {STRING} de l'argent ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY                                     :Vous avez envoyé à {STRING} la somme de ({CURRENCY})
 STR_NETWORK_CHAT_COMPANY                                        :[Equipe] {STRING}:
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Equipe] A {STRING}:
 STR_NETWORK_CHAT_CLIENT                                         :[Privé] {STRING}:
@@ -1490,7 +1490,7 @@ STR_2006_POPULATION                                             :{BLACK}Populati
 STR_2007_RENAME_TOWN                                            :Renommer Ville
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Impossible de renommer la ville...
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}La municipalité de {TOWN} refuse cette opération
-STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Noms des villes - Cliquez sur un nom pour défiler à l'emplacement
+STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Noms des villes - Cliquer sur un nom pour défiler à l'emplacement
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrer la vue sur la ville
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Renommer la ville
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passagers le mois dernier : {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
@@ -1546,7 +1546,7 @@ STR_203F_HOUSES                                                 :Maisons
 STR_2040_CINEMA                                                 :Cinéma
 STR_2041_SHOPPING_MALL                                          :Centre commercial
 STR_2042_DO_IT                                                  :{BLACK}Lancer cette action
-STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}Liste des actions à entreprendre dans cette ville - Cliquez sur une action pour obtenir des détails
+STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}Liste des actions à entreprendre dans cette ville - Cliquer sur une action pour obtenir des détails
 STR_2044_CARRY_OUT_THE_HIGHLIGHTED                              :{BLACK}Lancer l'action sélectionnée ci-dessus
 STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Actions disponibles:
 STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Petite campagne de publicité
@@ -1642,7 +1642,7 @@ STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Arrêt d'
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Station de camions
 STR_3044_TOO_CLOSE_TO_ANOTHER_BUS                               :{WHITE}Trop près d'un autre arrêt d'autobus
 STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK                             :{WHITE}Trop près d'une autre gare
-STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Détruisez d'abord l'arrêt d'autobus
+STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Détruire d'abord l'arrêt d'autobus
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Détruisez d'abord la station
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stations
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
@@ -1659,7 +1659,7 @@ STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centrer 
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Montrer la réputation de la station
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Renommer la station
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Afficher les marchandises acceptées
-STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Nom des stations - Cliquez sur un nom pour centrer la vue
+STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Nom des stations - Cliquer sur un nom pour centrer la vue
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Choix du type & taille de l'aéroport
 STR_3059_SMALL                                                  :{BLACK}Petit
 STR_305A_LARGE                                                  :{BLACK}Grand
@@ -1711,7 +1711,7 @@ STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nom séle
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Supprime la sauvegarde sélectionnée
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Sauvegarde la partie avec le nom choisi
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Choix du type de partie
-STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Choisissez un scénario (vert), une partie préparée (bleu), ou une partie aléatoire
+STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Choisir un scénario (vert), une partie préparée (bleu), ou une partie aléatoire
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Générer une partie aléatoirement
 
 ##id 0x4800
@@ -2012,7 +2012,7 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Choix d'
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Change la couleur des véhicules
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Change le nom du président directeur général
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Change le nom de la compagnie
-STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Cliquez pour choisir une couleur
+STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Cliquer pour choisir une couleur
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Augmenter le prêt
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Rembourser une partie du prêt
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(President)
@@ -2039,7 +2039,7 @@ STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Génère u
 STR_704C_KEY                                                    :{BLACK}Légende
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Affiche la légende
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Légende du graphique des compagnies
-STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Cliquez ici pour activer/désactiver l'affichage de la compagnie
+STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Cliquer ici pour activer/désactiver l'affichage de la compagnie
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Cargaison livrée
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Historique de performace (performance max=1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Valeur de la compagnie
@@ -2305,7 +2305,7 @@ STR_80CD_CS_INC_OIL_TANKER                                      :Camion-citerne 
 STR_80CE_MPS_PASSENGER_FERRY                                    :Ferry de voyageurs MPS
 STR_80CF_FFP_PASSENGER_FERRY                                    :Ferry de voyageurs FFP
 STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell 300 Aéroglisseur
-STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug Ferry de voyageurs
+STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Ferry de voyageurs Chugger-Chug
 STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Ferry de voyageurs Shivershake
 STR_80D3_YATE_CARGO_SHIP                                        :Navire cargo Yate
 STR_80D4_BAKEWELL_CARGO_SHIP                                    :Navire cargo Bakewell
@@ -2435,16 +2435,16 @@ STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Impossib
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Impossible de démarrer/stopper le train...
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Intervalle d'entretien: {LTBLUE}{COMMA}jours{BLACK}   , dernier le : {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Intervalle d'entretien: {LTBLUE}{COMMA}%{BLACK}   , dernier le : {LTBLUE}{DATE_LONG}
-STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trains - Cliquez sur un train pour obtenir des informations
+STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trains - Cliquer sur un train pour obtenir des informations
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Contruire de nouveaux trains (nécessite un dépôt ferroviaire)
-STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trains - Cliquez sur un train pour obtenir des informations, glissez le wagon pour l'ajouter/le supprimer du train
+STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trains - Cliquer sur un train pour obtenir des informations, glisser le wagon pour l'ajouter/le supprimer du train
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Construire un nouveau train/wagon
-STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Glissez le véhicule ici pour le vendre
+STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Glisser le véhicule ici pour le vendre
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrer la vue sur le dépôt
-STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Selection du véhicule - Cliquez pour obtenir des informations
+STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Selection du véhicule - Cliquer pour obtenir des informations
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Construire le véhicule sélectionné
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Renommer le type du véhicule
-STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Action courante du train. Cliquez pour le démarrer/l'arrêter
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Action courante du train. Cliquer pour le démarrer/l'arrêter
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Montrer les ordres du train
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrer la vue sur le train
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Envoyer le train au dépôt
@@ -2457,7 +2457,7 @@ STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Afficher
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Afficher des informations sur les wagons
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Montrer les capacités de chaque wagon
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Montre la capacité totale du train, séparé par type de marchandise
-STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Liste des ordres - Cliquez sur un ordre pour le sélectionner
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Liste des ordres - Cliquer sur un ordre pour le sélectionner.  Cliquer avec Ctrl déplace la vue sur la station
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Saute l'ordre courant, et enchaîne sur le suivant
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Supprime l'ordre sélectionné
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Transformer l'ordre sélectionné en Sans-Arrêt
@@ -2516,19 +2516,19 @@ STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Roule v
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Roule vers le dépôt de {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Impossible d'envoyer le véhicule au dépôt...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Impossible de trouver le dépôt
-STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Véhicules - Cliquez sur un véhicule pour obtenir des informations
+STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Véhicules - Cliquer sur un véhicule pour obtenir des informations
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Construire de nouveaux véhicules (nécessite un dépôt routier)
-STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Comportement courant du véhicule - cliquez pour le démarrer/l'arrêter
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Comportement courant du véhicule - cliquer pour le démarrer/l'arrêter
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Affiche les ordres
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centre la vue sur le véhicule
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Envoie le véhicule au dépôt
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Force le véhicule à faire demi-tour
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Affiche les détails
-STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Véhicules - cliquez pour obtenir des informations
+STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Véhicules - cliquer pour obtenir des informations
 STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Construire un nouveau véhicule
-STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Glissez un véhicule ici pour le vendre
+STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Glisser un véhicule jusqu'ici pour le vendre
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centre la vue sur le dépôt
-STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Choix du véhicule - cliquez sur un véhicule pour obtenir des informations
+STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Choix du véhicule - cliquer sur un véhicule pour obtenir des informations
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Construire le véhicule sélectionné
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Nouveau véhicule disponible!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
@@ -2580,15 +2580,15 @@ STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}En rout
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Navire {COMMA} est en attente au dépôt
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construire un port
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Construire un dépôt naval (pour construire et entretenir les navires)
-STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Navires - cliquez sur un navire pour informations
+STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Navires - cliquer sur un navire pour informations
 STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Construire nouveau navire
-STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Glissez navire jusqu'ici pour le vendre
+STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Glisse le navire jusqu'ici pour le vendre
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrer la vue sur emplacement du dépôt naval
-STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Navires - cliquez sur un navire pour informations
+STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Navires - cliquer sur un navire pour informations
 STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Construire nouveaux navires (nécessite un dépôt naval)
-STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Liste de sélection de navire - cliquez sur un navire pour informations
+STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Liste de sélection de navire - cliquer sur un navire pour informations
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Construire le navire surligné
-STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Action courante du navire - cliquez ici pour arrêter/démarrer le navire
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Action courante du navire - cliquer ici pour arrêter/démarrer le navire
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Afficher les ordres du navire
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrer la vue sur l'emplacement du navire
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Envoyer navire au dépôt
@@ -2610,9 +2610,9 @@ STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}Impossbi
 STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Réaménager navire pour transporter une cargaison différente
 STR_983B_REFIT                                                  :{WHITE}{VEHICLE} (Réaménager)
 STR_983C_REFIT_SHIP                                             :{BLACK}Réaménager navire
-STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Choisissez le type de cargaisons à transporter
+STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Choisir le type de cargaisons à transporter
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Réaménager le navire pour transporter la cargaison sélectionnée
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selectionnez cargaison à transporter:-
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selectionner cargaison à transporter:-
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nouvelle capacité: {GOLD}{STRING}{}{BLACK}Cost of refit: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Impossible de réaménager le navire...
 STR_9842_REFITTABLE                                             :(réaménageable)
@@ -2651,15 +2651,15 @@ STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Aéronef 
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Impossible de vendre l'aéronef...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Construction d'aéroport
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Construire un aéroport
-STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aéronef - cliquez sur l'aéronef pour informations
+STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aéronef - cliquer sur l'aéronef pour informations
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construire un nouvel aéronef (nécessite un aéroport avec hangar)
-STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aéronef - cliquez sur l'aéronef pour informations
+STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aéronef - cliquer sur l'aéronef pour informations
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construire nouvel aéronef
-STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Glissez l'aéronef ici pour le vendre
+STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Glisser l'aéronef jusqu'ici ici pour le vendre
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centrer la vue principale sur l'emplacement du hangar
-STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Liste de sélection d'aéronef - cliquez sur les aéronefs pour de plus amples informations
+STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Liste de sélection d'aéronef - cliquer sur les aéronefs pour de plus amples informations
 STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Construire l'aéronef sélectionné
-STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Action courante de l'aéronef - cliquez ici pour arrêter/démarrer l'aéronef
+STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Action courante de l'aéronef - cliquer ici pour arrêter/démarrer l'aéronef
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Afficher les ordres de l'aéronef
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centrer la vue principale sur l'emplacement de l'aéronef
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Envoyer l'aéronef au hangar
@@ -2738,7 +2738,7 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total de
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Paramètres Newgrf
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Appliquer les changements
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Changer les paramètres
-STR_NEWGRF_TIP                                                  :{BLACK}Une liste de tous les sets Newgrf que vous avez installé. Cliquez un set pour changer les paramètres.
+STR_NEWGRF_TIP                                                  :{BLACK}Une liste de tous les sets Newgrf installés. Cliquer un set pour changer les paramètres.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Il n'y a actuellement aucun fichier Newgrf installé ! Veuillez vous référer au manuel pour des instructions sur l'installation de nouveaux graphiques.
 STR_NEWGRF_FILENAME                                             :{BLACK}Nom de fichier:
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
@@ -2774,11 +2774,11 @@ STR_REPLACE_VEHICLES_START                                      :{BLACK}Commence
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stopper le remplacement
 STR_NOT_REPLACING                                               :{BLACK}Pas en cours de remplacement
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Aucun véhicule selectionné
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Choisissez le type de locomotive à remplacer
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Choisissez le nouveau type de locomotive que vous voudriez utiliser à la place du type de locomotive sélectionné à gauche
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Appuyez sur ce bouton si vous ne voulez pas remplacer la locomotive que vous avez choisi à gauche
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Appuyez sur ce bouton si vous voulez remplacer la locomotive de gauche par celle sélectionnée à droite
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Choisissez un type de rail pour le remplacement de locomotives
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Choisir le type de locomotive à remplacer
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Choisir le nouveau type de locomotive devant remplacer le type de locomotive sélectionné à gauche
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Appuyer sur ce bouton pour arrêter le remplacement du type locomotive sélectionné à gauche
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Appuyer sur ce bouton pour commencer le remplacement du type locomotive sélectionné à gauche avec la sélection de droite
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Choisir un type de rail pour le remplacement de locomotives
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Ceci affiche par quelle locomotive celle qui est sélectionnée à gauche sera remplacée
 STR_REPLACE_HELP                                                :{BLACK}Cette caractéristique permet de choisir un type de locomotive et de le remplacer par un autre. Ceci sera fait automatiquement  quand le véhicule rentre dans un dépôt
 

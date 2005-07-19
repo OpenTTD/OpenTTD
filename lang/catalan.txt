@@ -1480,6 +1480,9 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Pas a nivell
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Poblacions
 STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
+STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
+STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}L'edifici s'ha d'enderrocar primer
 STR_2005                                                        :{WHITE}{TOWN}
