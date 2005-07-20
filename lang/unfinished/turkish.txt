@@ -1,10 +1,6 @@
 ##name Turkish
 ##ownname Türkçe
 ##isocode tr
-
-##name English
-##ownname English (UK)
-##isocode en_GB
 ##plural 0
 
 ##id 0x0000

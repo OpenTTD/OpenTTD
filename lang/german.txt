@@ -1,10 +1,6 @@
 ##name German
 ##ownname Deutsch
 ##isocode de
-
-##name English
-##ownname English (UK)
-##isocode en_GB
 ##plural 0
 
 ##id 0x0000
@@ -87,37 +83,37 @@ STR_004B_BATTERY                                                :Batterie
 STR_004C_PLASTIC                                                :Plastik
 STR_004D_FIZZY_DRINK                                            :Limonade
 STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA} Passagier{P "" e}
-STR_0050_TON_OF_COAL                                            :{COMMA} Tonne{P "" n} Kohle
-STR_0051_BAG_OF_MAIL                                            :{COMMA} Posts{P ack äcke}
-STR_0052_OF_OIL                                                 :{VOLUME} Öl
+STR_004F_PASSENGER                                              :{COMMA} Passagier
+STR_0050_TON_OF_COAL                                            :{COMMA} Tonne Kohle
+STR_0051_BAG_OF_MAIL                                            :{COMMA} Postsack
+STR_0052_OF_OIL                                                 :{VOLUME}  Öl
 STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} Stück Vieh
-STR_0054_CRATE_OF_GOODS                                         :{COMMA} Warenkiste{P "" n}
-STR_0055_TON_OF_GRAIN                                           :{COMMA} Tonne{P "" n} Getreide
+STR_0054_CRATE_OF_GOODS                                         :{COMMA} Warenkiste
+STR_0055_TON_OF_GRAIN                                           :{COMMA} Tonne Getreide
 STR_0056_TON_OF_WOOD                                            :{COMMA} Tonne Holz
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA} Tonne{P "" n} Eisenerz
-STR_0058_TON_OF_STEEL                                           :{COMMA} Tonne{P "" n} Stahl
+STR_0057_TON_OF_IRON_ORE                                        :{COMMA} Tonne Eisenerz
+STR_0058_TON_OF_STEEL                                           :{COMMA} Tonne Stahl
 STR_0059_BAG_OF_VALUABLES                                       :{COMMA} Sack mit Wertsachen
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} Tonne{P "" n} Kupfererz
-STR_005B_TON_OF_MAIZE                                           :{COMMA} Tonne{P "" n} Mais
-STR_005C_TON_OF_FRUIT                                           :{COMMA} Tonne{P "" n} Früchte
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} {P Sack Säcke} mit Diamanten
-STR_005E_TON_OF_FOOD                                            :{COMMA} Tonne{P "" n} Nahrungsmittel
-STR_005F_TON_OF_PAPER                                           :{COMMA} Tonne{P "" n} Papier
-STR_0060_BAG_OF_GOLD                                            :{COMMA} {P Sack Säcke} mit Gold
-STR_0061_OF_WATER                                               :{VOLUME} Wasser
-STR_0062_TON_OF_WHEAT                                           :{COMMA} Tonne{P "" n} Weizen
-STR_0063_OF_RUBBER                                              :{VOLUME} Kautschuk
-STR_0064_TON_OF_SUGAR                                           :{COMMA} Tonne{P "" n} Zucker
-STR_0065_TOY                                                    :{COMMA} Spielzeug{P "" e}
-STR_0066_BAG_OF_CANDY                                           :{COMMA} {P Sack Säcke} mit Bonbons
-STR_0067_OF_COLA                                                :{VOLUME} Cola
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} Tonne{P "" n} Zuckerwatte
-STR_0069_BUBBLE                                                 :{COMMA} Luftblase{P "" n}
-STR_006A_TON_OF_TOFFEE                                          :{COMMA} Tonne{P "" n} Karamell
-STR_006B_BATTERY                                                :{COMMA} Batterie{P "" n}
-STR_006C_OF_PLASTIC                                             :{VOLUME} Plastik
-STR_006D_FIZZY_DRINK                                            :{COMMA} Limonade{P "" n}
+STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} Tonne Kupfererz
+STR_005B_TON_OF_MAIZE                                           :{COMMA} Tonne Mais
+STR_005C_TON_OF_FRUIT                                           :{COMMA} Tonne Früchte
+STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} Sack mit Diamanten
+STR_005E_TON_OF_FOOD                                            :{COMMA} Tonne Nahrungsmittel
+STR_005F_TON_OF_PAPER                                           :{COMMA} Tonne Papier
+STR_0060_BAG_OF_GOLD                                            :{COMMA} Sack mit Gold
+STR_0061_OF_WATER                                               :{VOLUME}  Wasser
+STR_0062_TON_OF_WHEAT                                           :{COMMA} Tonne Weizen
+STR_0063_OF_RUBBER                                              :{VOLUME}  Kautschuk
+STR_0064_TON_OF_SUGAR                                           :{COMMA} Tonne Zucker
+STR_0065_TOY                                                    :{COMMA} Spielzeug
+STR_0066_BAG_OF_CANDY                                           :{COMMA} Sack mit Bonbons
+STR_0067_OF_COLA                                                :{VOLUME}  Cola
+STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} Tonne Zuckerwatte
+STR_0069_BUBBLE                                                 :{COMMA} Luftblase
+STR_006A_TON_OF_TOFFEE                                          :{COMMA} Tonne Karamell
+STR_006B_BATTERY                                                :{COMMA} Batterie
+STR_006C_OF_PLASTIC                                             :{VOLUME}  Plastik
+STR_006D_FIZZY_DRINK                                            :{COMMA} Limonade
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
 STR_0090_CL                                                     :{TINYFONT}KL

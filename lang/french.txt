@@ -3,11 +3,6 @@
 ##isocode fr
 ##plural 2
 
-##name English
-##ownname English (UK)
-##isocode en_GB
-##plural 0
-
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Hors limites
@@ -2254,9 +2249,9 @@ STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Camion de fer C
 STR_8096_BALOGH_STEEL_TRUCK                                     :Camion d'acier Balogh
 STR_8097_UHL_STEEL_TRUCK                                        :Camion d'acier Uhl
 STR_8098_KELLING_STEEL_TRUCK                                    :Camion d'acier Kelling
-STR_8099_BALOGH_ARMORED_TRUCK                                   :Fourgon blindé Balogh
-STR_809A_UHL_ARMORED_TRUCK                                      :Fourgon blindé Uhl
-STR_809B_FOSTER_ARMORED_TRUCK                                   :Fourgon blindé Foster
+STR_8099_BALOGH_ARMORED_TRUCK                                   :Balogh Fourgon blindé
+STR_809A_UHL_ARMORED_TRUCK                                      :Uhl Fourgon blindé
+STR_809B_FOSTER_ARMORED_TRUCK                                   :Foster Fourgon blindé
 STR_809C_FOSTER_FOOD_VAN                                        :Camion de nourriture Foster
 STR_809D_PERRY_FOOD_VAN                                         :Camion de nourriture Perry
 STR_809E_CHIPPY_FOOD_VAN                                        :Camion de nourriture Chippy
