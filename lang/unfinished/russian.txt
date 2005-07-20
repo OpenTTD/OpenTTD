@@ -1,6 +1,10 @@
 ##name Russian_latin_char
 ##ownname Russkiy
 ##isocode ru
+
+##name English
+##ownname English (UK)
+##isocode en_GB
 ##plural 0
 
 ##id 0x0000

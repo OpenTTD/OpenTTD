@@ -3,6 +3,11 @@
 ##isocode pt_BR
 ##plural 2
 
+##name English
+##ownname English (UK)
+##isocode en_GB
+##plural 0
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Fora do mapa

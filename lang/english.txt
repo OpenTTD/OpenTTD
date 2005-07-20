@@ -1,6 +1,10 @@
 ##name English
 ##ownname English (UK)
 ##isocode en_GB
+
+##name English
+##ownname English (UK)
+##isocode en_GB
 ##plural 0
 
 ##id 0x0000

@@ -1,6 +1,10 @@
 ##name Norwegian
 ##ownname Norsk, bokmål
 ##isocode nb
+
+##name English
+##ownname English (UK)
+##isocode en_GB
 ##plural 0
 
 ##id 0x0000
