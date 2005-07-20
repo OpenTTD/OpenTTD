@@ -184,8 +184,8 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	/* unpack parameters */
-	bridge_type = p2 & 0xFF;
-	railtype = (byte)(p2 >> 8);
+	bridge_type = GB(p2, 0, 8);
+	railtype    = GB(p2, 8, 8);
 
 	if (p1 > MapSize()) return CMD_ERROR;
 
@@ -1023,8 +1023,8 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		if (ice)
 			image += 32;
 
-		image += _draw_tunnel_table_1[(ti->map5 >> 2) & 0x3];
-		image += (ti->map5 & 3) << 1;
+		image += _draw_tunnel_table_1[GB(ti->map5, 2, 2)];
+		image += GB(ti->map5, 0, 2) * 2;
 		DrawGroundSprite(image);
 
 		AddSortableSpriteToDraw(image+1, ti->x + 15, ti->y + 15, 1, 1, 8, (byte)ti->z);
@@ -1055,7 +1055,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			}
 
 			// bridge ending.
-			b = _bridge_sprite_table[(_m[ti->tile].m2 >> 4) & 0xF][6];
+			b = _bridge_sprite_table[GB(_m[ti->tile].m2, 4, 4)][6];
 			b += (tmp&(3<<1))*4; /* actually ((tmp>>2)&3)*8 */
 			b += (tmp&1); // direction
 			if (ti->tileh == 0) b += 4; // sloped "entrance" ?
@@ -1077,7 +1077,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			uint z;
 			int x,y;
 
-			image = (ti->map5 >> 3) & 3;	// type of stuff under bridge (only defined for 0,1)
+			image = GB(ti->map5, 3, 2); // type of stuff under bridge (only defined for 0,1)
 			assert(image <= 1);
 
 			if (!(ti->map5 & 0x20)) {
@@ -1115,7 +1115,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				DrawGroundSprite(image);
 			}
 			// get bridge sprites
-			b = _bridge_sprite_table[(_m[ti->tile].m2 >> 4) & 0xF][_m[ti->tile].m2&0xF] + tmp * 4;
+			b = _bridge_sprite_table[GB(_m[ti->tile].m2, 4, 4)][GB(_m[ti->tile].m2, 0, 4)] + tmp * 4;
 
 			z = GetBridgeHeight(ti) + 5;
 
@@ -1285,9 +1285,9 @@ static const StringID _bridge_tile_str[(MAX_BRIDGES + 3) + (MAX_BRIDGES + 3)] = 
 static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 {
 	if ((_m[tile].m5 & 0x80) == 0) {
-		td->str = STR_5017_RAILROAD_TUNNEL + ((_m[tile].m5 >> 2) & 3);
+		td->str = STR_5017_RAILROAD_TUNNEL + GB(_m[tile].m5, 2, 2);
 	} else {
-		td->str = _bridge_tile_str[ (_m[tile].m2 >> 4) + (((_m[tile].m5>>1)&3)<<4) ];
+		td->str = _bridge_tile_str[GB(_m[tile].m5, 1, 2) << 4 | GB(_m[tile].m2, 4, 4)];
 
 		/* scan to the end of the bridge, that's where the owner is stored */
 		if (_m[tile].m5 & 0x40) {

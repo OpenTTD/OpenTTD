@@ -577,7 +577,7 @@ static int32 CmdRailTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 p2
 {
 	int ex, ey;
 	int32 ret, total_cost = 0;
-	Track track = (Track)((p2 >> 4) & 7);
+	Track track = (Track)GB(p2, 4, 3);
 	Trackdir trackdir;
 	byte mode = HASBIT(p2, 7);
 
@@ -845,7 +845,7 @@ static int32 CmdSignalTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 
 	bool error = true;
 
 	int mode = p2 & 0x1;
-	Track track = (p2 >> 4) & 7;
+	Track track = GB(p2, 4, 3);
 	Trackdir trackdir = TrackToTrackdir(track);
 	byte semaphores = (HASBIT(p2, 3)) ? 8 : 0;
 	byte signal_density = (p2 >> 24);

@@ -789,7 +789,7 @@ static void DrawTile_Road(TileInfo *ti)
 			image = _road_tile_sprites_1[ti->map5 & 0xF];
 		}
 
-		m2 = (_m[ti->tile].m4 & 0x70) >> 4;
+		m2 = GB(_m[ti->tile].m4, 4, 3);
 
 		if (m2 == 0) image |= 0x3178000;
 
@@ -835,7 +835,7 @@ static void DrawTile_Road(TileInfo *ti)
 		if ( _m[ti->tile].m4 & 0x80) {
 			image += 8;
 		} else {
-			m2 = (_m[ti->tile].m4 & 0x70) >> 4;
+			m2 = GB(_m[ti->tile].m4, 4, 3);
 			if (m2 == 0) image |= 0x3178000;
 			if (m2 > 1) image += 4;
 		}
@@ -1006,7 +1006,7 @@ static void TileLoop_Road(TileIndex tile)
 	if (_m[tile].m5 & 0xE0)
 		return;
 
-	if (((_m[tile].m4 & 0x70) >> 4) < 6) {
+	if (GB(_m[tile].m4, 4, 3) < 6) {
 		t = ClosestTownFromTile(tile, (uint)-1);
 
 		grp = 0;
@@ -1018,7 +1018,7 @@ static void TileLoop_Road(TileIndex tile)
 					!(DistanceManhattan(t->xy, tile) >= 8 && grp == 0) &&
 					(_m[tile].m5==5 || _m[tile].m5==10)) {
 				if (GetTileSlope(tile, NULL) == 0 && EnsureNoVehicle(tile) && CHANCE16(1,20)) {
-					_m[tile].m4 |= ((((_m[tile].m4 & 0x70) >> 4 ) <=  2) ? 7 : 6) << 4;
+					_m[tile].m4 |= (GB(_m[tile].m4, 4, 3) <=  2 ? 7 : 6) << 4;
 
 					SndPlayTileFx(SND_21_JACKHAMMER, tile);
 					CreateEffectVehicleAbove(
@@ -1034,7 +1034,7 @@ static void TileLoop_Road(TileIndex tile)
 
 		{
 			const byte *p = (_opt.landscape == LT_CANDY) ? _town_road_types_2[grp] : _town_road_types[grp];
-			byte b = (_m[tile].m4 & 0x70) >> 4;
+			byte b = GB(_m[tile].m4, 4, 3);
 
 			if (b == p[0])
 				return;
@@ -1062,7 +1062,7 @@ static void TileLoop_Road(TileIndex tile)
 			return;
 		}
 		//roadworks finished
-		_m[tile].m4 = ((((b& 0x70) >> 4)== 6) ? 1 : 2) << 4;
+		_m[tile].m4 = (GB(b, 4, 3) == 6 ? 1 : 2) << 4;
 		MarkTileDirtyByTile(tile);
 	}
 }
@@ -1090,7 +1090,7 @@ static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode)
 		byte b = _m[tile].m5;
 		if ((b & 0xF0) == 0) {
 			/* Ordinary road */
-			if (!_road_special_gettrackstatus && ((_m[tile].m4&0x70) >> 4) >= 6)
+			if (!_road_special_gettrackstatus && GB(_m[tile].m4, 4, 3) >= 6)
 				return 0;
 			return _road_trackbits[b&0xF] * 0x101;
 		} else if (IsLevelCrossing(tile)) {
@@ -1125,7 +1125,7 @@ static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
 {
 	int i = (_m[tile].m5 >> 4);
 	if (i == 0)
-		i = ((_m[tile].m4 & 0x70) >> 4) + 3;
+		i = GB(_m[tile].m4, 4, 3) + 3;
 	td->str = _road_tile_strings[i - 1];
 	td->owner = GetTileOwner(tile);
 }

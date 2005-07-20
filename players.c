@@ -45,7 +45,7 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 	/* draw the chin */
 	/* FIXME: real code uses -2 in zoomlevel 1 */
 	{
-		uint val = (face >> 4) & 3;
+		uint val = GB(face, 4, 2);
 		if (!(flag & 2)) {
 			DrawSprite(0x327 + (flag&1?0:val), x, y);
 		} else {
@@ -54,8 +54,8 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 	}
 	/* draw the eyes */
 	{
-		uint val1 = (face >> 6)&15;
-		uint val2 = (face >> 20)&7;
+		uint val1 = GB(face,  6, 4);
+		uint val2 = GB(face, 20, 3);
 		uint32 high = 0x314<<16;
 
 		if (val2 >= 6) {
@@ -81,7 +81,7 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 
 	/* draw the mouth */
 	{
-		uint val = (face >> 10) & 63;
+		uint val = GB(face, 10, 6);
 		uint val2;
 
 		if (!(flag&1)) {
@@ -127,7 +127,7 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 
 	/* draw the hair */
 	{
-		uint val = (face >> 16) & 15;
+		uint val = GB(face, 16, 4);
 		if (!(flag&2)) {
 			if (!(flag&1)) {
 				DrawSprite(0x382 + (val*9>>4), x, y);
@@ -145,7 +145,7 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 
 	/* draw the tie */
 	{
-		uint val = (face >> 20) & 0xFF;
+		uint val = GB(face, 20, 8);
 
 		if (!(flag&1)) {
 			DrawSprite(0x36B + ((val&3)*3>>2), x, y);
@@ -164,7 +164,7 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 
 	/* draw the glasses */
 	{
-		uint val = (face >> 28) & 7;
+		uint val = GB(face, 28, 3);
 
 		if (!(flag&2)) {
 			if (val<=1) {
@@ -371,7 +371,7 @@ static byte GeneratePlayerColor(void)
 	n = 100;
 	do {
 		r = Random();
-		COLOR_SWAP(r & 0xF, (r >> 4) & 0xF);
+		COLOR_SWAP(GB(r, 0, 4), GB(r, 4, 4));
 	} while (--n);
 
 	// Bubble sort it according to the values in table 1
@@ -754,8 +754,8 @@ int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	} break;
 
 	case 3: { /* Merge a company (#1) into another company (#2), elimination company #1 */
-		PlayerID pid_old = p2 & 0xFFFF;
-		PlayerID pid_new = (p2 >> 16) & 0xFFFF;
+		PlayerID pid_old = GB(p2,  0, 16);
+		PlayerID pid_new = GB(p2, 16, 16);
 
 		if (pid_old >= MAX_PLAYERS || pid_new >= MAX_PLAYERS) return CMD_ERROR;
 

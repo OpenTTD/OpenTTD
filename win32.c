@@ -2142,8 +2142,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 #if defined(_MSC_VER)
 	{
 		uint64 seed = rdtsc();
-		_random_seeds[0][0] = seed & 0xffffffff;
-		_random_seeds[0][1] = seed >> 32;
+		_random_seeds[0][0] = GB(seed,  0, 32);
+		_random_seeds[0][1] = GB(seed, 32, 32);
 	}
 #else
 	_random_seeds[0][0] = GetTickCount();

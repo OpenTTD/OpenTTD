@@ -196,22 +196,22 @@ void StartupEngines(void)
 		e->player_avail = 0;
 
 		r = Random();
-		e->intro_date = (uint16)((r & 0x1FF) + ei->base_intro);
+		e->intro_date = GB(r, 0, 9) + ei->base_intro;
 		if (e->intro_date <= _date) {
 			e->age = (_date - e->intro_date) >> 5;
 			e->player_avail = (byte)-1;
 			e->flags |= ENGINE_AVAILABLE;
 		}
 
-		e->reliability_start = (uint16)(((r >> 16) & 0x3fff) + 0x7AE0);
+		e->reliability_start = GB(r, 16, 14) + 0x7AE0;
 		r = Random();
-		e->reliability_max = (uint16)((r & 0x3fff) + 0xbfff);
-		e->reliability_final = (uint16)(((r>>16) & 0x3fff) + 0x3fff);
+		e->reliability_max   = GB(r,  0, 14) + 0xBFFF;
+		e->reliability_final = GB(r, 16, 14) + 0x3FFF;
 
 		r = Random();
-		e->duration_phase_1 = (uint16)((r & 0x1F) + 7);
-		e->duration_phase_2 = (uint16)(((r >> 5) & 0xF) + ei->base_life * 12 - 96);
-		e->duration_phase_3 = (uint16)(((r >> 9) & 0x7F) + 120);
+		e->duration_phase_1 = GB(r, 0, 5) + 7;
+		e->duration_phase_2 = GB(r, 5, 4) + ei->base_life * 12 - 96;
+		e->duration_phase_3 = GB(r, 9, 7) + 120;
 
 		e->reliability_spd_dec = (ei->unk2&0x7F) << 2;
 

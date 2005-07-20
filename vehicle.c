@@ -612,8 +612,8 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 static void ChimneySmokeInit(Vehicle *v)
 {
 	uint32 r = Random();
-	v->cur_image = SPR_CHIMNEY_SMOKE_0 + (r & 7);
-	v->progress = (r >> 16) & 7;
+	v->cur_image = SPR_CHIMNEY_SMOKE_0 + GB(r, 0, 3);
+	v->progress = GB(r, 16, 3);
 }
 
 static void ChimneySmokeTick(Vehicle *v)
@@ -1299,8 +1299,8 @@ void CheckVehicleBreakdown(Vehicle *v)
 
 	/* check if to break down */
 	if (_breakdown_chance[(uint)min(rel, 0xffff) >> 10] <= v->breakdown_chance) {
-		v->breakdown_ctr = (byte)(((r >> 16) & 0x3F) + 0x3F);
-		v->breakdown_delay = (byte)(((r >> 24) & 0x7F) | 0x80);
+		v->breakdown_ctr    = GB(r, 16, 6) + 0x3F;
+		v->breakdown_delay  = GB(r, 24, 7) + 0x80;
 		v->breakdown_chance = 0;
 	}
 }

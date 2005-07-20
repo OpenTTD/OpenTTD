@@ -179,8 +179,8 @@ static const char *GetStringPtr(StringID string)
 // should set those bits.
 char *GetStringWithArgs(char *buffr, uint string, const int32 *argv)
 {
-	uint index = string & 0x7FF;
-	uint tab = (string >> 11) & 0x1F;
+	uint index = GB(string,  0, 11);
+	uint tab   = GB(string, 11,  5);
 
 	if (!(string & 0xFFFF)) {
 		error("!invalid string id 0 in GetString");

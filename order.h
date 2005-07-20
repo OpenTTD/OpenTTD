@@ -135,9 +135,9 @@ static inline uint32 PackOrder(const Order *order)
 static inline Order UnpackOrder(uint32 packed)
 {
 	Order order;
-	order.type    = (packed & 0x000000FF);
-	order.flags   = (packed & 0x0000FF00) >> 8;
-	order.station = (packed & 0xFFFF0000) >> 16;
+	order.type    = GB(packed,  0,  8);
+	order.flags   = GB(packed,  8,  8);
+	order.station = GB(packed, 16, 16);
 	order.next    = NULL;
 	order.index   = 0; // avoid compiler warning
 	return order;

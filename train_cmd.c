@@ -3013,9 +3013,9 @@ static void HandleCrashedTrain(Vehicle *v)
 				r = Random();
 
 				CreateEffectVehicleRel(u,
-					2 + ((r>>8)&7),
-					2 + ((r>>16)&7),
-					5 + (r&7),
+					GB(r,  8, 3) + 2,
+					GB(r, 16, 3) + 2,
+					GB(r,  0, 3) + 5,
 					EV_EXPLOSION_SMALL);
 				break;
 			}

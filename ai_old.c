@@ -1534,15 +1534,16 @@ static void AiStateWantNewRoute(Player *p)
 static bool AiCheckTrackResources(TileIndex tile, const AiDefaultBlockData *p, byte cargo)
 {
 	uint values[NUM_CARGO];
-	int w,h;
 	int rad;
 
 	for(;p->mode != 4;p++) if (p->mode == 1) {
 		TileIndex tile2 = TILE_ADD(tile, ToTileIndexDiff(p->tileoffs));
+		uint w;
+		uint h;
 
-		w = ((p->attr>>1) & 7);
-		h = ((p->attr>>4) & 7);
-		if (p->attr&1) intswap(w, h);
+		w = GB(p->attr, 1, 3);
+		h = GB(p->attr, 4, 3);
+		if (p->attr & 1) uintswap(w, h);
 
 
 		if (_patches.modified_catchment) {

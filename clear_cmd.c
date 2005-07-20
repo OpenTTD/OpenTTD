@@ -470,7 +470,7 @@ void DrawHillyLandTile(TileInfo *ti)
 	if (ti->tileh != 0) {
 		DrawGroundSprite(0xFA0 + _tileh_to_sprite[ti->tileh]);
 	} else {
-		DrawGroundSprite(_landscape_clear_sprites[((ti->x^ti->y) >> 4) & 0x7]);
+		DrawGroundSprite(_landscape_clear_sprites[GB(ti->x ^ ti->y, 4, 3)]);
 	}
 }
 
@@ -485,11 +485,11 @@ void DrawClearLandFence(TileInfo *ti, byte img)
 	}
 
 	if (img & 0x38) {
-		DrawGroundSpriteAt(_clear_land_fence_sprites_1[((img >> 3) & 7) - 1] + _fence_mod_by_tileh[ti->tileh], ti->x, ti->y, z);
+		DrawGroundSpriteAt(_clear_land_fence_sprites_1[GB(img, 3, 3) - 1] + _fence_mod_by_tileh[ti->tileh], ti->x, ti->y, z);
 	}
 
 	if (img & 0x7) {
-		DrawGroundSpriteAt(_clear_land_fence_sprites_1[(img & 7) - 1] + _fence_mod_by_tileh_2[ti->tileh], ti->x, ti->y, z);
+		DrawGroundSpriteAt(_clear_land_fence_sprites_1[GB(img, 0, 3) - 1] + _fence_mod_by_tileh_2[ti->tileh], ti->x, ti->y, z);
 	}
 }
 
@@ -785,7 +785,7 @@ void GenerateClearTile(void)
 		r = Random();
 		tile = RandomTileSeed(r);
 		if (IsTileType(tile, MP_CLEAR)) {
-			j = ((r >> 16) & 0xF) + 5;
+			j = GB(r, 16, 4) + 5;
 			for(;;) {
 				TileIndex tile_new;
 

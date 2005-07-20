@@ -352,7 +352,7 @@ void CDECL ModifyTile(TileIndex tile, uint flags, ...)
 
 	va_start(va, flags);
 
-	if ((i = (flags >> 8) & 0xF) != 0) {
+	if ((i = GB(flags, 8, 4)) != 0) {
 		SetTileType(tile, i - 1);
 	}
 
@@ -485,7 +485,7 @@ static void GenerateTerrain(int type, int flag)
 	if (x < 2 || y < 2)
 		return;
 
-	direction = (r >> 22) & 3;
+	direction = GB(r, 22, 2);
 	if (direction & 1) {
 		w = template->height;
 		h = template->width;
@@ -632,16 +632,16 @@ void GenerateLandscape(void)
 			GenerateTerrain(2, 0);
 
 		r = Random();
-		flag = (r & 3) | 4;
-		for (i = ScaleByMapSize(((r >> 16) & 0x7F) + 450); i != 0; --i)
+		flag = GB(r, 0, 2) | 4;
+		for (i = ScaleByMapSize(GB(r, 16, 7) + 450); i != 0; --i)
 			GenerateTerrain(4, flag);
 	} else if (_opt.landscape == LT_DESERT) {
 		for (i = ScaleByMapSize((Random()&0x7F) + 170); i != 0; --i)
 			GenerateTerrain(0, 0);
 
 		r = Random();
-		flag = (r & 3) | 4;
-		for (i = ScaleByMapSize(((r >> 16) & 0xFF) + 1700); i != 0; --i)
+		flag = GB(r, 0, 2) | 4;
+		for (i = ScaleByMapSize(GB(r, 16, 8) + 1700); i != 0; --i)
 			GenerateTerrain(0, flag);
 
 		flag ^= 2;

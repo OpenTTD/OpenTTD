@@ -44,30 +44,30 @@ void NetworkSend_uint8(Packet *packet, uint8 data)
 void NetworkSend_uint16(Packet *packet, uint16 data)
 {
 	assert(packet->size < sizeof(packet->buffer) - sizeof(data));
-	packet->buffer[packet->size++] = data & 0xFF;
-	packet->buffer[packet->size++] = (data >> 8) & 0xFF;
+	packet->buffer[packet->size++] = GB(data, 0, 8);
+	packet->buffer[packet->size++] = GB(data, 8, 8);
 }
 
 void NetworkSend_uint32(Packet *packet, uint32 data)
 {
 	assert(packet->size < sizeof(packet->buffer) - sizeof(data));
-	packet->buffer[packet->size++] = data & 0xFF;
-	packet->buffer[packet->size++] = (data >>= 8) & 0xFF;
-	packet->buffer[packet->size++] = (data >>= 8) & 0xFF;
-	packet->buffer[packet->size++] = (data >> 8) & 0xFF;
+	packet->buffer[packet->size++] = GB(data,  0, 8);
+	packet->buffer[packet->size++] = GB(data,  8, 8);
+	packet->buffer[packet->size++] = GB(data, 16, 8);
+	packet->buffer[packet->size++] = GB(data, 24, 8);
 }
 
 void NetworkSend_uint64(Packet *packet, uint64 data)
 {
 	assert(packet->size < sizeof(packet->buffer) - sizeof(data));
-	packet->buffer[packet->size++] = data & 0xFF;
-	packet->buffer[packet->size++] = (data >>= 8) & 0xFF;
-	packet->buffer[packet->size++] = (data >>= 8) & 0xFF;
-	packet->buffer[packet->size++] = (data >>= 8) & 0xFF;
-	packet->buffer[packet->size++] = (data >>= 8) & 0xFF;
-	packet->buffer[packet->size++] = (data >>= 8) & 0xFF;
-	packet->buffer[packet->size++] = (data >>= 8) & 0xFF;
-	packet->buffer[packet->size++] = (data >> 8) & 0xFF;
+	packet->buffer[packet->size++] = GB(data,  0, 8);
+	packet->buffer[packet->size++] = GB(data,  8, 8);
+	packet->buffer[packet->size++] = GB(data, 16, 8);
+	packet->buffer[packet->size++] = GB(data, 24, 8);
+	packet->buffer[packet->size++] = GB(data, 32, 8);
+	packet->buffer[packet->size++] = GB(data, 40, 8);
+	packet->buffer[packet->size++] = GB(data, 48, 8);
+	packet->buffer[packet->size++] = GB(data, 56, 8);
 }
 
 // Sends a string over the network. It sends out

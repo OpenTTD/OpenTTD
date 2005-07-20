@@ -40,9 +40,9 @@ MemoryPool _order_pool = { "Orders", ORDER_POOL_MAX_BLOCKS, ORDER_POOL_BLOCK_SIZ
 Order UnpackOldOrder(uint16 packed)
 {
 	Order order;
-	order.type    = (packed & 0x000F);
-	order.flags   = (packed & 0x00F0) >> 4;
-	order.station = (packed & 0xFF00) >> 8;
+	order.type    = GB(packed, 0, 4);
+	order.flags   = GB(packed, 4, 4);
+	order.station = GB(packed, 8, 8);
 	order.next    = NULL;
 
 	// Sanity check
@@ -63,9 +63,9 @@ Order UnpackOldOrder(uint16 packed)
 Order UnpackVersion4Order(uint16 packed)
 {
 	Order order;
-	order.type    = (packed & 0x000F);
-	order.flags   = (packed & 0x00F0) >> 4;
-	order.station = (packed & 0xFF00) >> 8;
+	order.type    = GB(packed, 0, 4);
+	order.flags   = GB(packed, 4, 4);
+	order.station = GB(packed, 8, 8);
 	order.next    = NULL;
 	order.index   = 0; // avoid compiler warning
 	return order;
@@ -144,17 +144,17 @@ void AssignOrder(Order *order, Order data)
 /** Add an order to the orderlist of a vehicle.
  * @param x,y unused
  * @param p1 various bitstuffed elements
- * - p1 = (bit  0 - 15) - ID of the vehicle (p1 & 0xFFFF)
+ * - p1 = (bit  0 - 15) - ID of the vehicle
  * - p1 = (bit 16 - 31) - the selected order (if any). If the last order is given,
- *                        the order will be inserted before that one (p1 & 0xFFFF0000)>>16
- *                        only the first 8 bytes used currently (bit 16 - 23) (max 255)
+ *                        the order will be inserted before that one
+ *                        only the first 8 bits used currently (bit 16 - 23) (max 255)
  * @param p2 packed order to insert
  */
 int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
-	VehicleID veh = p1 & 0xFFFF;
-	OrderID sel_ord = p1 >> 16;
+	VehicleID veh   = GB(p1,  0, 16);
+	OrderID sel_ord = GB(p1, 16, 16);
 	Order new_order = UnpackOrder(p2);
 
 	if (!IsVehicleIndex(veh)) return CMD_ERROR;
@@ -509,18 +509,18 @@ int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 /** Modify an order in the orderlist of a vehicle.
  * @param x,y unused
  * @param p1 various bitstuffed elements
- * - p1 = (bit  0 - 15) - ID of the vehicle (p1 & 0xFFFF)
+ * - p1 = (bit  0 - 15) - ID of the vehicle
  * - p1 = (bit 16 - 31) - the selected order (if any). If the last order is given,
- *                        the order will be inserted before that one (p1 & 0xFFFF0000)>>16
- *                        only the first 8 bytes used currently (bit 16 - 23) (max 255)
+ *                        the order will be inserted before that one
+ *                        only the first 8 bits used currently (bit 16 - 23) (max 255)
  * @param p2 mode to change the order to (always set)
  */
 int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	Order *order;
-	OrderID sel_ord = p1 >> 16; // XXX - automatically truncated to 8 bits.
-	VehicleID veh = p1 & 0xFFFF;
+	OrderID sel_ord = GB(p1, 16, 16); // XXX - automatically truncated to 8 bits.
+	VehicleID veh   = GB(p1,  0, 16);
 
 	if (!IsVehicleIndex(veh)) return CMD_ERROR;
 	if (p2 != OFB_FULL_LOAD && p2 != OFB_UNLOAD && p2 != OFB_NON_STOP && p2 != OFB_TRANSFER) return CMD_ERROR;
@@ -583,8 +583,8 @@ int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *dst;
-	VehicleID veh_src = (p1 >> 16) & 0xFFFF;
-	VehicleID veh_dst = p1 & 0xFFFF;
+	VehicleID veh_src = GB(p1, 16, 16);
+	VehicleID veh_dst = GB(p1,  0, 16);
 
 	if (!IsVehicleIndex(veh_dst)) return CMD_ERROR;
 

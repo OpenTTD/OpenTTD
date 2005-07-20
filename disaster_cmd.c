@@ -226,9 +226,9 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 			uint32 r = Random();
 
 			CreateEffectVehicleRel(v,
-				-7 + (r&0xF),
-				-7 + (r>>4&0xF),
-				5 + (r>>8&0x7),
+				GB(r, 0, 4) - 7,
+				GB(r, 4, 4) - 7,
+				GB(r, 8, 3) + 5,
 				EV_EXPLOSION_SMALL);
 		}
 	} else if (v->age == 350) {
@@ -364,9 +364,9 @@ static void DisasterTick_2(Vehicle *v)
 			uint32 r = Random();
 
 			CreateEffectVehicleAbove(
-				x + (r & 0x3F),
-				y + (r >> 6 & 0x3F),
-				(r >> 12 & 0xF),
+				GB(r,  0, 6) + x,
+				GB(r,  6, 6) + y,
+				GB(r, 12, 4),
 				EV_EXPLOSION_SMALL);
 
 			if (++v->age >= 55)
@@ -435,9 +435,9 @@ static void DisasterTick_3(Vehicle *v)
 			uint32 r = Random();
 
 			CreateEffectVehicleAbove(
-				x + (r & 0x3F),
-				y + (r >> 6 & 0x3F),
-				(r >> 12 & 0xF),
+				GB(r,  0, 6) + x,
+				GB(r,  6, 6) + y,
+				GB(r, 12, 4),
 				EV_EXPLOSION_SMALL);
 
 			if (++v->age >= 55)
@@ -620,8 +620,8 @@ static void DisasterTick_4b(Vehicle *v)
 		for(i=0; i!=80; i++) {
 			uint32 r = Random();
 			CreateEffectVehicleAbove(
-				v->x_pos-32+(r&0x3F),
-				v->y_pos-32+(r>>5&0x3F),
+				GB(r, 0, 6) + v->x_pos - 32,
+				GB(r, 5, 6) + v->y_pos - 32,
 				0,
 				EV_EXPLOSION_SMALL);
 		}

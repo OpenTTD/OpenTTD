@@ -315,7 +315,7 @@ static void DrawCoalPlantSparkles(TileInfo *ti)
 {
 	int image = _m[ti->tile].owner;
 	if (image & 0x80) {
-		image = (image >> 2) & 0x1F;
+		image = GB(image, 2, 5);
 		if (image != 0 && image < 7) {
 			AddChildSpriteScreen(image + 0x806,
 				_coal_plant_sparkles_x[image-1],
@@ -1802,7 +1802,7 @@ static void MaybeNewIndustry(uint32 r)
 	int j;
 	Industry *i;
 
-	type = _new_industry_rand[_opt.landscape][(r >> 16) & 0x1F];
+	type = _new_industry_rand[_opt.landscape][GB(r, 16, 5)];
 	if (type == IT_OIL_WELL && _date > 10958)
 		return;
 

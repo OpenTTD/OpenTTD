@@ -1045,13 +1045,13 @@ static void HandleCrashedAircraft(Vehicle *v)
 
 	if (v->u.air.crashed_counter < 650) {
 		if (CHANCE16R(1,32,r)) {
-			v->direction = (v->direction+_crashed_aircraft_moddir[(r >> 16)&3]) & 7;
+			v->direction = (v->direction + _crashed_aircraft_moddir[GB(r, 16, 2)]) & 7;
 			SetAircraftPosition(v, v->x_pos, v->y_pos, v->z_pos);
 			r = Random();
 			CreateEffectVehicleRel(v,
-				4 + (r&0xF),
-				4 + ((r>>4)&0xF),
-				((r>>8)&0xF),
+				GB(r, 0, 4) + 4,
+				GB(r, 4, 4) + 4,
+				GB(r, 8, 4),
 				EV_EXPLOSION_SMALL);
 		}
 	} else if (v->u.air.crashed_counter >= 10000) {

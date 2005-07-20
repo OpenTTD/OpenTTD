@@ -933,8 +933,8 @@ static void GetStationLayout(byte *layout, int numtracks, int plat_len, StationS
  * @param x,y starting position of station dragging/placement
  * @param p1 various bitstuffed elements
  * - p1 = (bit  0)    - orientation (p1 & 1)
- * - p1 = (bit  8-15) - number of tracks (p1 >> 8) & 0xFF)
- * - p1 = (bit 16-23) - platform length (p1 >> 16) & 0xFF)
+ * - p1 = (bit  8-15) - number of tracks
+ * - p1 = (bit 16-23) - platform length
  * @param p2 various bitstuffed elements
  * - p2 = (bit  0- 3) - railtype (p2 & 0xF)
  * - p2 = (bit  4)    - set for custom station (p2 & 0x10)
@@ -961,8 +961,8 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	/* unpack parameters */
 	direction = p1 & 1;
-	numtracks = (p1 >> 8) & 0xFF;
-	plat_len = (p1 >> 16) & 0xFF;
+	numtracks = GB(p1,  8, 8);
+	plat_len  = GB(p1, 16, 8);
 	/* w = length, h = num_tracks */
 	if (direction) {
 		h_org = plat_len;

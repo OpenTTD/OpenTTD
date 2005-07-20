@@ -722,8 +722,8 @@ static bool LoadOldStation(LoadgameState *ls, int num)
 	if (st->xy != 0) {
 		if (st->train_tile) {
 			/* Calculate the trainst_w and trainst_h */
-			int w = (_old_platforms >> 3) & 0x7;
-			int h = (_old_platforms & 0x7);
+			uint w = GB(_old_platforms, 3, 3);
+			uint h = GB(_old_platforms, 0, 3);
 			st->trainst_w = w;
 			st->trainst_h = h;
 		}

@@ -132,8 +132,8 @@ static void SelectSongToPlay(void)
 		i = 500;
 		do {
 			uint32 r = InteractiveRandom();
-			byte *a = &_cur_playlist[r & 0x1F];
-			byte *b = &_cur_playlist[(r >> 8)&0x1F];
+			byte *a = &_cur_playlist[GB(r, 0, 5)];
+			byte *b = &_cur_playlist[GB(r, 8, 5)];
 
 			if (*a != 0 && *b != 0) {
 				byte t = *a;

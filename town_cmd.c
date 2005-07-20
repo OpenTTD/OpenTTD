@@ -769,9 +769,10 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 static int GenRandomRoadBits(void)
 {
 	uint32 r = Random();
-	int a = r&3, b = (r >> 8) & 3;
+	uint a = GB(r, 0, 2);
+	uint b = GB(r, 8, 2);
 	if (a == b) b ^= 2;
-	return (1<<a)+(1<<b);
+	return (1 << a) + (1 << b);
 }
 
 // Grow the town
@@ -1307,7 +1308,7 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 				ChangePopulation(t, _housetype_population[house]);
 
 			// Initial value for map5.
-			m5 = (r >> 16) & 0x3F;
+			m5 = GB(r, 16, 6);
 		}
 
 		assert(IsTileType(tile, MP_CLEAR));
