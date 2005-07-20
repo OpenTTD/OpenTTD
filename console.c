@@ -827,7 +827,7 @@ static void IConsoleVarSetValue(const IConsoleVar *var, uint32 value)
 			*(byte*)var->addr = (byte)value;
 			break;
 		case ICONSOLE_VAR_UINT16:
-			*(uint16*)var->addr = (byte)value;
+			*(uint16*)var->addr = (uint16)value;
 			break;
 		case ICONSOLE_VAR_INT16:
 			*(int16*)var->addr = (int16)value;
