@@ -348,7 +348,7 @@ static int LoadNewGrfFile(const char *filename, int load_index, int file_index)
 
 	for (i = 0; LoadNextSprite(load_index + i, file_index); i++) {
 		if (load_index + i >= NUM_SPRITES)
-			error("Too many sprites (%x). Recompile with higher NUM_SPRITES value or remove some custom GRF files.",
+			error("Too many sprites (0x%X). Recompile with higher NUM_SPRITES value or remove some custom GRF files.",
 			      load_index + i);
 	}
 
