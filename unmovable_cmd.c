@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"
+#include "table/sprites.h"
 #include "map.h"
 #include "tile.h"
 #include "command.h"
@@ -125,7 +126,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 			image = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
 			image += 0x8A48;
 			if (_display_opt & DO_TRANS_BUILDINGS)
-				image = (image & 0x3FFF) | 0x3224000;
+				MAKE_TRANSPARENT(image);
 			AddSortableSpriteToDraw(image, ti->x, ti->y, 16, 16, 25, ti->z);
 		} else if (ti->map5 == 3) {
 
@@ -151,7 +152,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 
 			image = dtus->image;
 			if (_display_opt & DO_TRANS_BUILDINGS)
-				image = (image & 0x3FFF) | 0x3224000;
+				MAKE_TRANSPARENT(image);
 
 			AddSortableSpriteToDraw(image,
 				ti->x | dtus->subcoord_x,
@@ -173,7 +174,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 		foreach_draw_tile_seq(dtss, t->seq) {
 			image = dtss->image;
 			if (_display_opt & DO_TRANS_BUILDINGS) {
-				image = (image & 0x3FFF) | 0x03224000;
+				MAKE_TRANSPARENT(image);
 			} else {
 				image |= ormod;
 			}

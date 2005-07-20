@@ -2188,7 +2188,7 @@ static void DrawTile_Station(TileInfo *ti)
 		image = dtss->image + relocation;
 		image += type_offset;
 		if (_display_opt & DO_TRANS_BUILDINGS) {
-			image = (image & 0x3FFF) | 0x03224000;
+			MAKE_TRANSPARENT(image);
 		} else {
 			if (image&0x8000) image |= image_or_modificator;
 		}

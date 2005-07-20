@@ -2,6 +2,7 @@
 #include "openttd.h"
 #include "strings.h"
 #include "table/strings.h"
+#include "table/sprites.h"
 #include "map.h"
 #include "tile.h"
 #include "viewport.h"
@@ -117,7 +118,7 @@ static void DrawTile_Town(TileInfo *ti)
 	/* Add a house on top of the ground? */
 	if ((image = dcts->sprite_2) != 0) {
 		if (_display_opt & DO_TRANS_BUILDINGS)
-			image = (image & 0x3FFF) | 0x3224000;
+			MAKE_TRANSPARENT(image);
 
 		AddSortableSpriteToDraw(image,
 			ti->x + dcts->subtile_x,

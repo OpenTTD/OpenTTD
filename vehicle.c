@@ -559,7 +559,7 @@ static void DoDrawVehicle(Vehicle *v)
 	uint32 image = v->cur_image;
 
 	if (v->vehstatus & VS_DISASTER) {
-		image |= 0x3224000;
+		MAKE_TRANSPARENT(image);
 	} else if (v->vehstatus & VS_DEFPAL) {
 		image |= (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner));
 	}

@@ -391,7 +391,7 @@ static void DrawWaterStuff(TileInfo *ti, const WaterDrawTileStruct *wdts,
 	for (; wdts->delta_x != 0x80; wdts++) {
 		image =	wdts->image + base;
 		if (_display_opt & DO_TRANS_BUILDINGS) {
-			image = (image & 0x3FFF) | 0x03224000;
+			MAKE_TRANSPARENT(image);
 		} else {
 			image |= palette;
 		}

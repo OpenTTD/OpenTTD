@@ -1352,7 +1352,7 @@ static void DrawSpecialBuilding(uint32 image, uint32 tracktype_offs,
 		image |= _drawtile_track_palette;
 	image += tracktype_offs;
 	if (_display_opt & DO_TRANS_BUILDINGS) // show transparent depots
-		image = (image & 0x3FFF) | 0x3224000;
+		MAKE_TRANSPARENT(image);
 	AddSortableSpriteToDraw(image, ti->x + x, ti->y + y, xsize, ysize, zsize, ti->z + z);
 }
 

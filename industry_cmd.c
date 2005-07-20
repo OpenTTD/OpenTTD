@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"
+#include "table/sprites.h"
 #include "map.h"
 #include "tile.h"
 #include "viewport.h"
@@ -370,7 +371,7 @@ static void DrawTile_Industry(TileInfo *ti)
 			image |= ormod;
 
 		if (_display_opt & DO_TRANS_BUILDINGS)
-			image = (image & 0x3FFF) | 0x3224000;
+			MAKE_TRANSPARENT(image);
 
 		AddSortableSpriteToDraw(image,
 			ti->x | (dits->subtile_xy>>4),

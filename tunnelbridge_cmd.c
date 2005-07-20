@@ -959,7 +959,7 @@ static void DrawBridgePillars(TileInfo *ti, int x, int y, int z)
 	image = b[12 + (ti->map5&0x01)];
 	piece = _m[ti->tile].m2&0xF;
 	if (image != 0 && piece != 0) {
-		if (_display_opt & DO_TRANS_BUILDINGS) image = (image & 0x3FFF) | 0x03224000;
+		if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 		DrawGroundSpriteAt(image, x, y, z);
 	}
 
@@ -976,7 +976,7 @@ static void DrawBridgePillars(TileInfo *ti, int x, int y, int z)
 			{2,4,8,1,  11,16,9,0},
 		};
 
-		if (_display_opt & DO_TRANS_BUILDINGS) image = (image & 0x3FFF) | 0x03224000;
+		if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 
 		p = _tileh_bits[(image & 1) * 2 + (ti->map5&0x01)];
 		front_height = ti->z + ((ti->tileh & p[0])?8:0);
@@ -1070,7 +1070,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			}
 
 			// draw ramp
-			if (_display_opt & DO_TRANS_BUILDINGS) image = (image & 0x3FFF) | 0x03224000;
+			if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 			AddSortableSpriteToDraw(image, ti->x, ti->y, 16, 16, 7, ti->z);
 		} else {
 			// bridge middle part.
@@ -1121,13 +1121,13 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 			// draw rail
 			image = b[0];
-			if (_display_opt & DO_TRANS_BUILDINGS) image = (image & 0x3FFF) | 0x03224000;
+			if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 			AddSortableSpriteToDraw(image, ti->x, ti->y, (ti->map5&1)?11:16, (ti->map5&1)?16:11, 1, z);
 
 			x = ti->x;
 			y = ti->y;
 			image = b[1];
-			if (_display_opt & DO_TRANS_BUILDINGS) image = (image & 0x3FFF) | 0x03224000;
+			if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 
 			// draw roof
 			if (ti->map5&1) {
@@ -1142,7 +1142,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				// draw poles below for small bridges
 				image = b[2];
 				if (image) {
-					if (_display_opt & DO_TRANS_BUILDINGS) image = (image & 0x3FFF) | 0x03224000;
+					if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 					DrawGroundSpriteAt(image, x, y, z);
 				}
 			} else if (_patches.bridge_pillars) {
