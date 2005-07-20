@@ -487,7 +487,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 	p->ai.state = 5; /* AIS_WANT_NEW_ROUTE */
 	p->share_owners[0] = p->share_owners[1] = p->share_owners[2] = p->share_owners[3] = 0xFF;
 
-	p->max_railtype = GetPlayerMaxRailtype(index);
+	p->avail_railtypes = GetPlayerRailtypes(index);
 	p->inaugurated_year = _cur_year;
 	p->face = Random();
 
@@ -620,6 +620,27 @@ void DeletePlayerWindows(int pi)
 	DeleteWindowById(WC_SHIPS_LIST, (-1 << 16) | pi);
 	DeleteWindowById(WC_AIRCRAFT_LIST, (-1 << 16) | pi);
 	DeleteWindowById(WC_BUY_COMPANY, pi);
+}
+
+byte GetPlayerRailtypes(int p)
+{
+	Engine *e;
+	int rt = 0;
+	int i;
+
+	for(e = _engines, i = 0; i != lengthof(_engines); e++, i++) {
+		if (!HASBIT(e->player_avail, p))
+			continue;
+
+		/* Skip all wagons */
+		if ((i >= 27 && i < 54) || (i >= 57 && i < 84) || (i >= 89 && i < 116))
+			continue;
+
+		assert(e->railtype < RAILTYPE_END);
+		SETBIT(rt, e->railtype);
+	}
+
+	return rt;
 }
 
 static void DeletePlayerStuff(int pi)
@@ -969,7 +990,7 @@ static const SaveLoad _player_desc[] = {
 
 	SLE_VAR(Player,player_color,		SLE_UINT8),
 	SLE_VAR(Player,player_money_fraction,SLE_UINT8),
-	SLE_VAR(Player,max_railtype,		SLE_UINT8),
+	SLE_VAR(Player,avail_railtypes,		SLE_UINT8),
 	SLE_VAR(Player,block_preview,		SLE_UINT8),
 
 	SLE_VAR(Player,cargo_types,			SLE_UINT16),

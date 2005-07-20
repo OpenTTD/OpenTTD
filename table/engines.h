@@ -9,9 +9,18 @@
 
 /** Writes the properties of a vehicle into the EngineInfo struct.
   * @see EngineInfo
+  * @param a Introduction date
+  * @param e Rail Type of the vehicle
+  * @param f Bitmask of the climates
   */
-
 #define MK(a,b,c,d,e,f) {a,b,c,d,((e)<<4)|(f)}
+/** Writes the properties of a train carriage into the EngineInfo struct.
+  * @see EngineInfo
+  * @param a Introduction date
+  * @param e Rail Type of the vehicle
+  * @param f Bitmask of the climates
+  * @note the 0x80 in parameter b sets the "is carriage bit"
+  */
 #define MW(a,b,c,d,e,f) {a,b|0x80,c,d,((e)<<4)|(f)}
 
 EngineInfo _engine_info[TOTAL_NUM_ENGINES] = {

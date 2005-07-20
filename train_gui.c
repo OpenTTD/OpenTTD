@@ -323,7 +323,7 @@ static void ShowBuildTrainWindow(TileIndex tile)
 		WP(w,buildtrain_d).railtype = _m[tile].m3 & 0xF;
 	} else {
 		w->caption_color = _local_player;
-		WP(w,buildtrain_d).railtype = GetPlayer(_local_player)->max_railtype - 1;
+		WP(w,buildtrain_d).railtype = GetBestRailtype(GetPlayer(_local_player));
 	}
 }
 

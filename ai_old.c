@@ -1075,7 +1075,7 @@ static void AiWantPassengerRoute(Player *p)
 static void AiWantTrainRoute(Player *p)
 {
 	uint16 r;
-	p->ai.railtype_to_use = p->max_railtype - 1;
+	p->ai.railtype_to_use = GetBestRailtype(p);
 	r = (uint16)Random();
 
 	if (r > 0xD000) {

@@ -12,8 +12,6 @@
 #include "saveload.h"
 #include "sprite.h"
 
-#define UPDATE_PLAYER_RAILTYPE(e,p) if ((byte)(e->railtype + 1) > p->max_railtype) p->max_railtype = e->railtype + 1;
-
 enum {
 	ENGINE_AVAILABLE = 1,
 	ENGINE_INTRODUCING = 2,
@@ -755,9 +753,9 @@ void AcceptEnginePreview(Engine *e, PlayerID player)
 {
 	Player *p = GetPlayer(player);
 
+	assert(e->railtype < RAILTYPE_END);
 	SETBIT(e->player_avail, player);
-
-	UPDATE_PLAYER_RAILTYPE(e, p);
+	SETBIT(p->avail_railtypes, e->railtype);
 
 	e->preview_player = 0xFF;
 	InvalidateWindowClasses(WC_BUILD_VEHICLE);
@@ -897,8 +895,10 @@ static void NewVehicleAvailable(Engine *e)
 
 	// make maglev / monorail available
 	FOR_ALL_PLAYERS(p) {
-		if (p->is_active)
-			UPDATE_PLAYER_RAILTYPE(e,p);
+		if (p->is_active) {
+			assert(e->railtype < RAILTYPE_END);
+			SETBIT(p->avail_railtypes, e->railtype);
+		}
 	}
 
 	if ((byte)index < NUM_TRAIN_ENGINES) {
@@ -965,26 +965,6 @@ int32 CmdRenameEngine(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	return 0;
-}
-
-int GetPlayerMaxRailtype(int p)
-{
-	Engine *e;
-	int rt = 0;
-	int i;
-
-	for(e=_engines,i=0; i!=lengthof(_engines); e++,i++) {
-		if (!HASBIT(e->player_avail, p))
-			continue;
-
-		if ((i >= 27 && i < 54) || (i >= 57 && i < 84) || (i >= 89 && i < 116))
-			continue;
-
-		if (rt < e->railtype)
-			rt = e->railtype;
-	}
-
-	return rt + 1;
 }
 
 

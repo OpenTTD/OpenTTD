@@ -1020,7 +1020,7 @@ static const OldChunks player_chunk[] = {
 
 	OCL_SVAR(  OC_UINT8, Player, block_preview ),
 	OCL_SVAR(  OC_UINT8, Player, ai.tick ),
-	OCL_SVAR(  OC_UINT8, Player, max_railtype ),
+	OCL_SVAR(  OC_UINT8, Player, avail_railtypes ),
 	OCL_SVAR(   OC_TILE, Player, location_of_house ),
 	OCL_SVAR(  OC_UINT8, Player, share_owners[0] ),
 	OCL_SVAR(  OC_UINT8, Player, share_owners[1] ),

@@ -327,8 +327,7 @@ static void MenuClickShowAir(int index)
 
 static void MenuClickBuildRail(int index)
 {
-	Player *p = GetPlayer(_local_player);
-	_last_built_railtype = min(index, p->max_railtype-1);
+	_last_built_railtype = index;
 	ShowBuildRailToolbar(_last_built_railtype, -1);
 }
 
@@ -941,7 +940,7 @@ static void ToolbarBuildRailClick(Window *w)
 {
 	Player *p = GetPlayer(_local_player);
 	Window *w2;
-	w2 = PopupMainToolbMenu(w, 457, 19, STR_1015_RAILROAD_CONSTRUCTION, p->max_railtype);
+	w2 = PopupMainToolbMenu(w, 457, 19, STR_1015_RAILROAD_CONSTRUCTION, GetNumRailtypes(p));
 	WP(w2,menu_d).sel_index = _last_built_railtype;
 }
 

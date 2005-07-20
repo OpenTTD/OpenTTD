@@ -2,6 +2,8 @@
 #define PLAYER_H
 
 #include "aystar.h"
+#include "engine.h"
+#include "rail.h"
 
 typedef struct PlayerEconomyEntry {
 	int32 income;
@@ -157,7 +159,7 @@ typedef struct Player {
 
 	byte player_color;
 	byte player_money_fraction;
-	byte max_railtype;
+	byte avail_railtypes;
 	byte block_preview;
 	PlayerID index;
 
@@ -201,6 +203,44 @@ static inline Player* GetPlayer(uint i)
 {
   assert(i < lengthof(_players));
   return &_players[i];
+}
+
+/** Returns the number of rail types the player can build
+  * @param *p Player in question
+  */
+static inline int GetNumRailtypes(Player *p)
+{
+	int num = 0;
+	int i;
+
+	for (i = 0; i < (int)sizeof(p->avail_railtypes) * 8; i++)
+		if (HASBIT(p->avail_railtypes, i)) num++;
+
+	assert(num <= RAILTYPE_END);
+	return num;
+}
+
+byte GetPlayerRailtypes(int p);
+
+/** Finds out if a Player has a certain railtype available
+  */
+static inline bool HasRailtypeAvail(Player *p, RailType Railtype)
+{
+	return HASBIT(p->avail_railtypes, Railtype);
+}
+
+/** Returns the "best" railtype a player can build.
+  * As the AI doesn't know what the BEST one is, we
+  * have our own priority list here. When adding
+  * new railtypes, modify this function
+  * @param p the player "in action"
+  * @return The "best" railtype a player has available
+  */
+static inline byte GetBestRailtype(Player *p)
+{
+	if (HasRailtypeAvail(p, RAILTYPE_MAGLEV)) return RAILTYPE_MAGLEV;
+	if (HasRailtypeAvail(p, RAILTYPE_MONO)) return RAILTYPE_MONO;
+	return RAILTYPE_RAIL;
 }
 
 #define IS_HUMAN_PLAYER(p) (!GetPlayer((byte)(p))->is_ai)

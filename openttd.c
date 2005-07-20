@@ -1279,6 +1279,7 @@ bool AfterLoadGame(uint version)
 {
 	Window *w;
 	ViewPort *vp;
+	Player *p;
 
 	// in version 2.1 of the savegame, town owner was unified.
 	if (version <= 0x200) {
@@ -1430,6 +1431,10 @@ bool AfterLoadGame(uint version)
 				SETBIT(_m[tile].m4, 3);
 			}
 		} END_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0);
+	}
+
+	FOR_ALL_PLAYERS(p) {
+		p->avail_railtypes = GetPlayerRailtypes(p->index);
 	}
 
 	return true;
