@@ -121,7 +121,7 @@ static inline uint64 SlReadUint64(void)
 	return (uint64)x << 32 | y;
 }
 
-static inline void SlWriteUint16(VarType v)
+static inline void SlWriteUint16(uint16 v)
 {
 	SlWriteByte((byte)(v >> 8));
 	SlWriteByte((byte)v);
