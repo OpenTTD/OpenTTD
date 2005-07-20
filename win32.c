@@ -2299,7 +2299,7 @@ void CSleep(int milliseconds)
 
 // Utility function to get the current timestamp in milliseconds
 // Useful for profiling
-int64 GetTS()
+int64 GetTS(void)
 {
 	static double freq;
 	__int64 value;
