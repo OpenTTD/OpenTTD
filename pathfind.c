@@ -664,11 +664,14 @@ static void NTPEnum(NewTrackPathFinder *tpf, TileIndex tile, uint direction)
 	FindLengthOfTunnelResult flotr;
 	int estimation;
 
+	
+
 	// Need to have a special case for the start.
 	// We shouldn't call the callback for the current tile.
 	si.cur_length = 1; // Need to start at 1 cause 0 is a reserved value.
 	si.depth = 0;
 	si.state = 0;
+	si.first_track = 0xFF;
 	goto start_at;
 
 	for(;;) {
@@ -690,7 +693,9 @@ callback_and_continue:
 		if (tpf->enum_proc(tile, tpf->userdata, si.first_track, si.cur_length))
 			return;
 
+		assert(si.track <= 13);
 		direction = _tpf_new_direction[si.track];
+		assert(direction <= 3);
 
 start_at:
 		// If the tile is the entry tile of a tunnel, and we're not going out of the tunnel,
@@ -715,6 +720,7 @@ start_at:
 		// a rail net and find the first intersection
 		tile_org = tile;
 		for(;;) {
+			assert(direction <= 3);
 			tile += TileOffsByDir(direction);
 
 			// too long search length? bail out.
@@ -812,7 +818,7 @@ start_at:
 
 			// continue with the next track
 			direction = _tpf_new_direction[track];
-			assert(direction != 0xFF);
+			assert(direction <= 3);
 
 			// safety check if we're running around chasing our tail... (infinite loop)
 			if (tile == tile_org) {
@@ -850,7 +856,9 @@ start_at:
 		si.depth++;
 		si.tile = tile;
 		do {
+			assert(direction <= 3);
 			si.track = _new_track[FIND_FIRST_BIT(bits)][direction];
+			assert(si.track <= 13);
 			si.priority = si.cur_length + estimation;
 
 			// out of stack items, bail out?
