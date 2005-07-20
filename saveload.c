@@ -1235,8 +1235,10 @@ static bool SaveFileToDisk(void *ptr)
 	const SaveLoadFormat *fmt = GetSavegameFormat(_savegame_format);
 	/* XXX - backup _sl.buf cause it is used internally by the writer
 	 * and we update it for our own purposes */
-	byte *tmp = _sl.buf;
+	static byte *tmp = NULL;
 	uint32 hdr[2];
+
+	tmp = _sl.buf;
 
 	SaveFileStart();
 
