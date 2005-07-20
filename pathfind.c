@@ -695,7 +695,6 @@ callback_and_continue:
 
 		assert(si.track <= 13);
 		direction = _tpf_new_direction[si.track];
-		assert(direction <= 3);
 
 start_at:
 		// If the tile is the entry tile of a tunnel, and we're not going out of the tunnel,
@@ -754,19 +753,19 @@ start_at:
 			}
 
 			// Regular rail tile, determine which tracks exist.
-			bits = _m[tile].m5 & 0x3F;
-			if (bits == 0)
-				break; // None at all?
+			bits = _m[tile].m5 & _bits_mask[direction];
 
-			// Make sure that the tile contains exactly ONE track
-			if (KILL_FIRST_BIT(bits) != 0) {
-				// It contained many tracks,
-				// but first, mask out the tracks that are not reachable
-				bits &= _bits_mask[direction];
+			// The tile has no reachable tracks, or
+			// does the tile contain more than one track?
+			if (bits == 0 || KILL_FIRST_BIT(_m[tile].m5 & 0x3F) != 0)
 				break;
-			}
+
+			// If we reach here, the tile has exactly one track, and this
+			// track is reachable.
 
 			track = _new_track[FIND_FIRST_BIT(bits)][direction];
+			assert(track != 0xff);
+
 			si.cur_length += _length_of_track[track];
 
 			// Check if this rail is an upwards slope. If it is, then add a penalty.
@@ -818,7 +817,6 @@ start_at:
 
 			// continue with the next track
 			direction = _tpf_new_direction[track];
-			assert(direction <= 3);
 
 			// safety check if we're running around chasing our tail... (infinite loop)
 			if (tile == tile_org) {
@@ -856,9 +854,7 @@ start_at:
 		si.depth++;
 		si.tile = tile;
 		do {
-			assert(direction <= 3);
 			si.track = _new_track[FIND_FIRST_BIT(bits)][direction];
-			assert(si.track <= 13);
 			si.priority = si.cur_length + estimation;
 
 			// out of stack items, bail out?
