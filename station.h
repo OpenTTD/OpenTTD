@@ -1,6 +1,7 @@
 #ifndef STATION_H
 #define STATION_H
 
+#include "player.h"
 #include "pool.h"
 #include "sprite.h"
 #include "tile.h"

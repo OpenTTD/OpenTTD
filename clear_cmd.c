@@ -2,6 +2,7 @@
 #include "openttd.h"
 #include "table/strings.h"
 #include "map.h"
+#include "player.h"
 #include "tile.h"
 #include "viewport.h"
 #include "command.h"

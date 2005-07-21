@@ -1,8 +1,6 @@
 #ifndef VARIABLES_H
 #define VARIABLES_H
 
-#include "player.h"
-
 // ********* START OF SAVE REGION
 #if !defined(MAX_PATH)
 # define MAX_PATH 260
@@ -265,9 +263,6 @@ VARDEF int _timer_counter;
 VARDEF byte _cur_year;
 VARDEF byte _cur_month;
 
-// NOSAVE: can be determined from player structs
-VARDEF byte _player_colors[MAX_PLAYERS];
-
 VARDEF bool _in_state_game_loop;
 VARDEF uint32 _frame_counter;
 
@@ -289,7 +284,6 @@ VARDEF StringID _error_message_2;
 VARDEF int32 _additional_cash_required;
 
 VARDEF uint32 _decode_parameters[20];
-VARDEF PlayerID _current_player;
 
 VARDEF int _docommand_recursive;
 

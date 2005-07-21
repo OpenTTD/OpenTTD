@@ -196,8 +196,12 @@ void AiDoGameLoop(Player *p);
 void UpdatePlayerMoney32(Player *p);
 #define FOR_ALL_PLAYERS(p) for(p=_players; p != endof(_players); p++)
 
+extern PlayerID _current_player;
+
 #define MAX_PLAYERS 8
 VARDEF Player _players[MAX_PLAYERS];
+// NOSAVE: can be determined from player structs
+VARDEF byte _player_colors[MAX_PLAYERS];
 
 static inline Player* GetPlayer(uint i)
 {
@@ -228,6 +232,9 @@ static inline bool HasRailtypeAvail(Player *p, RailType Railtype)
 {
 	return HASBIT(p->avail_railtypes, Railtype);
 }
+
+/* Validate functions for rail building */
+static inline bool ValParamRailtype(uint32 rail) { return HASBIT(GetPlayer(_current_player)->avail_railtypes, rail);}
 
 /** Returns the "best" railtype a player can build.
   * As the AI doesn't know what the BEST one is, we

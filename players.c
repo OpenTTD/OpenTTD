@@ -16,6 +16,8 @@
 #include "sound.h"
 #include "network.h"
 
+PlayerID _current_player;
+
 extern void StartupEconomy(void);
 
 static const SpriteID cheeks_table[4] = {

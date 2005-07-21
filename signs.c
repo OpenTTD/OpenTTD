@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"
+#include "player.h"
 #include "signs.h"
 #include "saveload.h"
 #include "command.h"

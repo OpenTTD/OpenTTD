@@ -2,6 +2,7 @@
 #include "openttd.h"
 #include "table/sprites.h"
 #include "table/strings.h"
+#include "player.h"
 #include "tile.h"
 #include "window.h"
 #include "gui.h"

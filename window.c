@@ -2,6 +2,7 @@
 #include "openttd.h"
 #include "debug.h"
 #include "map.h"
+#include "player.h"
 #include "window.h"
 #include "gfx.h"
 #include "viewport.h"

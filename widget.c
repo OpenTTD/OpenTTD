@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "openttd.h"
+#include "player.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "window.h"
