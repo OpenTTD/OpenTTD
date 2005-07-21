@@ -180,10 +180,9 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 
 void InvalidatePlayerWindows(Player *p)
 {
-	uint pid = p->index;
-	if ( (byte)pid == _local_player)
-		InvalidateWindow(WC_STATUS_BAR, 0);
+	PlayerID pid = p->index;
 
+	if (pid == _local_player) InvalidateWindow(WC_STATUS_BAR, 0);
 	InvalidateWindow(WC_FINANCES, pid);
 }
 

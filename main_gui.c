@@ -502,7 +502,7 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 
 		do {
 			if (sel== 0) GfxFillRect(x, y, x + eo, y+9, 0);
-			DrawString(x + 2, y, (StringID)(string + (chk&1)), (byte)(sel==0?(byte)0xC:(byte)0x10));
+			DrawString(x + 2, y, string + (chk & 1), sel == 0 ? 0xC : 0x10);
 			y += 10;
 			string += inc;
 			chk >>= 1;
@@ -642,7 +642,7 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 				SetDParam(1, p->name_2);
 				SetDParam(2, GetPlayerNameString(p->index, 3));
 
-				color = (byte)((p->index==sel) ? 0xC : 0x10);
+				color = (p->index == sel) ? 0xC : 0x10;
 				if (chk&1) color = 14;
 				DrawString(x + 19, y, STR_7021, color);
 

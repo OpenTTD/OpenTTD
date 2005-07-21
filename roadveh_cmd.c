@@ -449,10 +449,10 @@ static void UpdateRoadVehDeltaXY(Vehicle *v)
 	};
 #undef MKIT
 	uint32 x = _delta_xy_table[v->direction];
-	v->x_offs = (byte)x;
-	v->y_offs = (byte)(x>>=8);
-	v->sprite_width = (byte)(x>>=8);
-	v->sprite_height = (byte)(x>>=8);
+	v->x_offs        = GB(x,  0, 8);
+	v->y_offs        = GB(x,  8, 8);
+	v->sprite_width  = GB(x, 16, 8);
+	v->sprite_height = GB(x, 24, 8);
 }
 
 static void ClearCrashedStation(Vehicle *v)
@@ -927,7 +927,7 @@ static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
 	if (v->u.road.state >= 32 || (v->u.road.state&7) > 1 )
 		return;
 
-	tt = (byte)(GetTileTrackStatus(v->tile, TRANSPORT_ROAD) & 0x3F);
+	tt = GetTileTrackStatus(v->tile, TRANSPORT_ROAD) & 0x3F;
 	if ((tt & 3) == 0)
 		return;
 	if ((tt & 0x3C) != 0)

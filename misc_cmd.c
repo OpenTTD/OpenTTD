@@ -32,9 +32,10 @@ int32 CmdSetPlayerFace(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 int32 CmdSetPlayerColor(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p, *pp;
-	byte colour = (byte)p2;
+	byte colour;
 
 	if (p2 >= 16) return CMD_ERROR; // max 16 colours
+	colour = p2;
 
 	p = GetPlayer(_current_player);
 

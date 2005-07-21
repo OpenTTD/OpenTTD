@@ -960,8 +960,8 @@ static void PlantFarmField(TileIndex tile)
 	/* determine field size */
 	r = (Random() & 0x303) + 0x404;
 	if (_opt.landscape == LT_HILLY) r += 0x404;
-	size_x = (byte)r;
-	size_y = r >> 8;
+	size_x = GB(r, 0, 8);
+	size_y = GB(r, 8, 8);
 
 	/* offset tile to match size */
 	tile -= TileDiffXY(size_x / 2, size_y / 2);
@@ -977,7 +977,7 @@ static void PlantFarmField(TileIndex tile)
 	/* determine type of field */
 	r = Random();
 	type = ((r & 0xE0) | 0xF);
-	type2 = ((byte)(r >> 8) * 9) >> 8;
+	type2 = GB(r, 8, 8) * 9 >> 8;
 
 	/* make field */
 	BEGIN_TILE_LOOP(cur_tile, size_x, size_y, tile)

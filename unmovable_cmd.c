@@ -267,7 +267,7 @@ static void AnimateTile_Unmovable(TileIndex tile)
 static void TileLoop_Unmovable(TileIndex tile)
 {
 	byte m5 = _m[tile].m5;
-	byte level; // HQ level (depends on company performance) in the range 1..5.
+	uint level; // HQ level (depends on company performance) in the range 1..5.
 	uint32 r;
 
 	if (!(m5 & 0x80)) {
@@ -278,23 +278,22 @@ static void TileLoop_Unmovable(TileIndex tile)
 	/* HQ accepts passenger and mail; but we have to divide the values
 	 * between 4 tiles it occupies! */
 
-	level = (m5 & ~0x80) / 4 + 1;
+	level = GB(m5, 0, 7) / 4 + 1;
 	assert(level < 6);
 
 	r = Random();
 	// Top town buildings generate 250, so the top HQ type makes 256.
-	if ((byte) r < (256 / 4 /  (6 - level))) {
-		uint amt = ((byte) r >> 3) / 4 + 1;
+	if (GB(r, 0, 8) < (256 / 4 / (6 - level))) {
+		uint amt = GB(r, 0, 8) / 8 / 4 + 1;
 		if (_economy.fluct <= 0) amt = (amt + 1) >> 1;
 		MoveGoodsToStation(tile, 2, 2, CT_PASSENGERS, amt);
 	}
 
-	r >>= 8;
 	// Top town building generates 90, HQ can make up to 196. The
 	// proportion passengers:mail is about the same as in the acceptance
 	// equations.
-	if ((byte) r < (196 / 4 / (6 - level))) {
-		uint amt = ((byte) r >> 3) / 4 + 1;
+	if (GB(r, 8, 8) < (196 / 4 / (6 - level))) {
+		uint amt = GB(r, 8, 8) / 8 / 4 + 1;
 		if (_economy.fluct <= 0) amt = (amt + 1) >> 1;
 		MoveGoodsToStation(tile, 2, 2, CT_MAIL, amt);
 	}

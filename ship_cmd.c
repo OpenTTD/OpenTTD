@@ -312,10 +312,10 @@ static void UpdateShipDeltaXY(Vehicle *v, int dir)
 	};
 #undef MKIT
 	uint32 x = _delta_xy_table[dir];
-	v->x_offs = (byte)x;
-	v->y_offs = (byte)(x>>=8);
-	v->sprite_width = (byte)(x>>=8);
-	v->sprite_height = (byte)(x>>=8);
+	v->x_offs        = GB(x,  0, 8);
+	v->y_offs        = GB(x,  8, 8);
+	v->sprite_width  = GB(x, 16, 8);
+	v->sprite_height = GB(x, 24, 8);
 }
 
 static void RecalcShipStuff(Vehicle *v)
@@ -532,7 +532,7 @@ static uint FindShipTrack(Vehicle *v, TileIndex tile, int dir, uint bits, TileIn
 
 			/* if we reach this position, there's two paths of equal value so far.
 			 * pick one randomly. */
-			r = (byte)Random();
+			r = GB(Random(), 0, 8);
 			if (_pick_shiptrack_table[i] == ship_dir) r += 80;
 			if (_pick_shiptrack_table[best_track] == ship_dir) r -= 80;
 			if (r <= 127) goto bad;

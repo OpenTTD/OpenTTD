@@ -742,7 +742,7 @@ static void TileLoop_Clear(TileIndex tile)
 			}
 			/* did overflow, so continue */
 		} else {
-			m5 = ((byte)Random() > 21) ? (2) : (6);
+			m5 = (GB(Random(), 0, 8) > 21) ? 2 : 6;
 		}
 		m5++;
 	} else if (_game_mode != GM_EDITOR) {
@@ -767,29 +767,27 @@ static void TileLoop_Clear(TileIndex tile)
 
 void GenerateClearTile(void)
 {
-	int i,j;
+	uint i;
 	TileIndex tile;
-	uint32 r;
 
 	/* add hills */
 	i = ScaleByMapSize((Random() & 0x3FF) + 0x400);
 	do {
 		tile = RandomTile();
-		if (IsTileType(tile, MP_CLEAR))
-			_m[tile].m5 = (byte)((_m[tile].m5 & ~(3<<2)) | (1<<2));
+		if (IsTileType(tile, MP_CLEAR)) SB(_m[tile].m5, 2, 2, 1);
 	} while (--i);
 
 	/* add grey squares */
 	i = ScaleByMapSize((Random() & 0x7F) + 0x80);
 	do {
-		r = Random();
+		uint32 r = Random();
 		tile = RandomTileSeed(r);
 		if (IsTileType(tile, MP_CLEAR)) {
-			j = GB(r, 16, 4) + 5;
+			uint j = GB(r, 16, 4) + 5;
 			for(;;) {
 				TileIndex tile_new;
 
-				_m[tile].m5 = (byte)((_m[tile].m5 & ~(3<<2)) | (2<<2));
+				SB(_m[tile].m5, 2, 2, 2);
 				do {
 					if (--j == 0) goto get_out;
 					tile_new = tile + TileOffsByDir(Random() & 3);

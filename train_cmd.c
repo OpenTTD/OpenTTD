@@ -398,7 +398,6 @@ static int32 CmdBuildRailWagon(uint engine, TileIndex tile, uint32 flags)
 	int32 value;
 	Vehicle *v;
 	const RailVehicleInfo *rvi;
-	int dir;
 	const Engine *e;
 	int x,y;
 
@@ -417,6 +416,7 @@ static int32 CmdBuildRailWagon(uint engine, TileIndex tile, uint32 flags)
 		if (flags & DC_EXEC) {
 			byte img = rvi->image_index;
 			Vehicle *u, *w;
+			uint dir;
 
 			v->spritenum = img;
 
@@ -432,9 +432,9 @@ static int32 CmdBuildRailWagon(uint engine, TileIndex tile, uint32 flags)
 
 			v->engine_type = engine;
 
-			dir = _m[tile].m5 & 3;
+			dir = GB(_m[tile].m5, 0, 2);
 
-			v->direction = (byte)(dir*2+1);
+			v->direction = dir * 2 + 1;
 			v->tile = tile;
 
 			x = TileX(tile) * TILE_SIZE | _vehicle_initial_x_fract[dir];
@@ -570,7 +570,7 @@ void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u, bool building)
 int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	const RailVehicleInfo *rvi;
-	int value,dir;
+	int value;
 	Vehicle *v, *u;
 	UnitID unit_num;
 	Engine *e;
@@ -606,11 +606,13 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 		if (flags & DC_EXEC) {
+			uint dir;
+
 			v->unitnumber = unit_num;
 
-			dir = _m[tile].m5 & 3;
+			dir = GB(_m[tile].m5, 0, 2);
 
-			v->direction = (byte)(dir*2+1);
+			v->direction = dir * 2 + 1;
 			v->tile = tile;
 			v->owner = _current_player;
 			v->x_pos = (x |= _vehicle_initial_x_fract[dir]);
@@ -1126,10 +1128,10 @@ static void UpdateTrainDeltaXY(Vehicle *v, int direction)
 
 	uint32 x = _delta_xy_table[direction];
 
-	v->x_offs = (byte)x;
-	v->y_offs = (byte)(x>>=8);
-	v->sprite_width = (byte)(x>>=8);
-	v->sprite_height = (byte)(x>>=8);
+	v->x_offs        = GB(x,  0, 8);
+	v->y_offs        = GB(x,  8, 8);
+	v->sprite_width  = GB(x, 16, 8);
+	v->sprite_height = GB(x, 24, 8);
 }
 
 static void UpdateVarsAfterSwap(Vehicle *v)
@@ -2116,7 +2118,7 @@ static bool CheckReverseTrain(Vehicle *v)
 
 				/* if we reach this position, there's two paths of equal value so far.
 				 * pick one randomly. */
-				r = (byte)Random();
+				r = GB(Random(), 0, 8);
 				if (_pick_track_table[i] == (v->direction & 3)) r += 80;
 				if (_pick_track_table[best_track] == (v->direction & 3)) r -= 80;
 				if (r <= 127) goto bad;
@@ -3095,8 +3097,8 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 	tile = v->tile;
 
 	// tunnel entrance?
-	if (IsTunnelTile(tile) && (byte)((_m[tile].m5 & 3)*2+1) == v->direction)
-				return true;
+	if (IsTunnelTile(tile) && GB(_m[tile].m5, 0, 2) * 2 + 1 == v->direction)
+		return true;
 
 	// depot?
 	/* XXX -- When enabled, this makes it possible to crash trains of others

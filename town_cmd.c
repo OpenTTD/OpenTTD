@@ -92,7 +92,7 @@ static void DrawTile_Town(TileInfo *ti)
 	/* Retrieve pointer to the draw town tile struct */
 	{
 		/* this "randomizes" on the (up to) 4 variants of a building */
-		byte gfx   = (byte)_m[ti->tile].m4;
+		byte gfx   = _m[ti->tile].m4;
 		byte stage = _m[ti->tile].m3 >> 6;
 		uint variant;
 		variant  = ti->x >> 4;
@@ -304,16 +304,20 @@ static void TileLoop_Town(TileIndex tile)
 
 	r = Random();
 
-	if ( (byte)r < _housetype_population[house] ) {
-		uint amt = ((byte)r >> 3) + 1, moved;
+	if (GB(r, 0, 8) < _housetype_population[house]) {
+		uint amt = GB(r, 0, 8) / 8 + 1;
+		uint moved;
+
 		if (_economy.fluct <= 0) amt = (amt + 1) >> 1;
 		t->new_max_pass += amt;
 		moved = MoveGoodsToStation(tile, 1, 1, CT_PASSENGERS, amt);
 		t->new_act_pass += moved;
 	}
 
-	if ( (byte)(r>>8) < _housetype_mailamount[house] ) {
-		uint amt = ((byte)(r>>8) >> 3) + 1, moved;
+	if (GB(r, 8, 8) < _housetype_mailamount[house] ) {
+		uint amt = GB(r, 8, 8) / 8 + 1;
+		uint moved;
+
 		if (_economy.fluct <= 0) amt = (amt + 1) >> 1;
 		t->new_max_mail += amt;
 		moved = MoveGoodsToStation(tile, 1, 1, CT_MAIL, amt);
@@ -321,17 +325,14 @@ static void TileLoop_Town(TileIndex tile)
 	}
 
 	if (_house_more_flags[house]&8 && (t->flags12&1) && --t->time_until_rebuild == 0) {
-		r>>=16;
-		t->time_until_rebuild = (r & 63) + 130;
+		t->time_until_rebuild = GB(r, 16, 6) + 130;
 
 		_current_player = OWNER_TOWN;
 
 		ClearTownHouse(t, tile);
 
 		// rebuild with another house?
-		if ( (byte) (r >> 8) >= 12) {
-			DoBuildTownHouse(t, tile);
-		}
+		if (GB(r, 24, 8) >= 12) DoBuildTownHouse(t, tile);
 
 		_current_player = OWNER_NONE;
 	}
@@ -1303,7 +1304,7 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 
 			// Value for map3lo
 			m3lo = 0xC0;
-			if ((byte)r >= 220) m3lo &= (r>>8);
+			if (GB(r, 0, 8) >= 220) m3lo &= (r>>8);
 
 			if (m3lo == 0xC0)
 				ChangePopulation(t, _housetype_population[house]);

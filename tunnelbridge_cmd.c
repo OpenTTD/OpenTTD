@@ -377,8 +377,7 @@ not_valid_below:;
 			}
 
 			_m[ti.tile].m2 = (bridge_type << 4) | m5;
-			_m[ti.tile].m3 &= 0xF;
-			_m[ti.tile].m3 |= (byte)(railtype << 4);
+			SB(_m[ti.tile].m3, 4, 4, railtype);
 
 			MarkTileDirtyByTile(ti.tile);
 		}
@@ -549,8 +548,8 @@ int32 CmdBuildTunnel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (p1 != 0x200 && !ValParamRailtype(p1)) return CMD_ERROR;
 
-	_build_tunnel_railtype = (byte)(p1 & 0xFF);
-	_build_tunnel_bh = (byte)(p1 >> 8);
+	_build_tunnel_railtype = GB(p1, 0, 8);
+	_build_tunnel_bh       = GB(p1, 8, 8);
 
 	_build_tunnel_endtile = 0;
 	excavated_tile = 0;
@@ -602,7 +601,7 @@ TileIndex CheckTunnelBusy(TileIndex tile, uint *length)
 	} while (
 		!IsTileType(tile, MP_TUNNELBRIDGE) ||
 		(_m[tile].m5 & 0xF0) != 0 ||
-		(byte)(_m[tile].m5 ^ 2) != m5 ||
+		(_m[tile].m5 ^ 2) != m5 ||
 		GetTileZ(tile) != z
 	);
 
@@ -1015,9 +1014,9 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 	bool ice = _m[ti->tile].m4 & 0x80;
 
 	// draw tunnel?
-	if ( (byte)(ti->map5&0xF0) == 0) {
+	if ((ti->map5 & 0xF0) == 0) {
 		/* railway type */
-		image = (_m[ti->tile].m3 & 0xF) * 8;
+		image = GB(_m[ti->tile].m3, 0, 4) * 8;
 
 		/* ice? */
 		if (ice)

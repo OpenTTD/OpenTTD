@@ -893,12 +893,12 @@ static char *GenPresidentName(char *buff, uint32 x)
 {
 	uint i, base, num;
 
-	buff[0] = _initial_name_letters[(sizeof(_initial_name_letters) * (byte)x) >> 8];
+	buff[0] = _initial_name_letters[sizeof(_initial_name_letters) * GB(x, 0, 8) >> 8];
 	buff[1] = '.';
 	buff[2] = ' '; // Insert a space after initial and period "I. Firstname" instead of "I.Firstname"
 	buff += 3;
 
-	i = ((sizeof(_initial_name_letters) + 35) * (byte)(x >> 8)) >> 8;
+	i = (sizeof(_initial_name_letters) + 35) * GB(x, 8, 8) >> 8;
 	if (i < sizeof(_initial_name_letters)) {
 		buff[0] = _initial_name_letters[i];
 		buff[1] = '.';

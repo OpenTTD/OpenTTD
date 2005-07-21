@@ -579,7 +579,7 @@ static void DrawNewsString(int x, int y, uint16 color, const NewsItem *ni, uint 
 	/* Copy the just gotten string to another buffer to remove any formatting
 	 * from it such as big fonts, etc. */
 	for (ptr = buffer, dest = buffer2; *ptr != '\0'; ptr++) {
-		if ((byte)*ptr == '\r') {
+		if (*ptr == '\r') {
 			dest[0] = dest[1] = dest[2] = dest[3] = ' ';
 			dest += 4;
 		} else if ((byte)*ptr >= ' ' && ((byte)*ptr < 0x88 || (byte)*ptr >= 0x99)) {

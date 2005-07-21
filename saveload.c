@@ -123,14 +123,14 @@ static inline uint64 SlReadUint64(void)
 
 static inline void SlWriteUint16(uint16 v)
 {
-	SlWriteByte((byte)(v >> 8));
-	SlWriteByte((byte)v);
+	SlWriteByte(GB(v, 8, 8));
+	SlWriteByte(GB(v, 0, 8));
 }
 
 static inline void SlWriteUint32(uint32 v)
 {
-	SlWriteUint16((uint16)(v >> 16));
-	SlWriteUint16((uint16)v);
+	SlWriteUint16(GB(v, 16, 16));
+	SlWriteUint16(GB(v,  0, 16));
 }
 
 static inline void SlWriteUint64(uint64 x)

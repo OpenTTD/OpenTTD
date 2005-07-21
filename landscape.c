@@ -685,8 +685,8 @@ TileIndex AdjustTileCoordRandomly(TileIndex a, byte rng)
 	uint32 r = Random();
 
 	return TILE_MASK(TileXY(
-		TileX(a) + ((byte)r * rn * 2 >> 8) - rn,
-		TileY(a) + ((byte)(r >> 8) * rn * 2 >> 8) - rn
+		TileX(a) + (GB(r, 0, 8) * rn * 2 >> 8) - rn,
+		TileY(a) + (GB(r, 8, 8) * rn * 2 >> 8) - rn
 	));
 }
 
