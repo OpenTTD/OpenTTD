@@ -15,6 +15,7 @@
 #include <io.h>
 #include <fcntl.h>
 #include "network.h"
+#include "variables.h"
 
 #define SMART_PALETTE_ANIM
 
