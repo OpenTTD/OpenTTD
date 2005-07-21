@@ -30,6 +30,7 @@
 
 #include "openttd.h"
 #include "string.h"
+#include "variables.h"
 #include "sound.h"
 #include "hal.h"
 
