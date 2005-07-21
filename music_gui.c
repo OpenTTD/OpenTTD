@@ -7,6 +7,10 @@
 #include "sound.h"
 #include "hal.h"
 
+static byte _music_wnd_cursong;
+static bool _song_is_active;
+static byte _cur_playlist[33];
+
 #define NUM_SONGS_AVAILABLE 22
 
 

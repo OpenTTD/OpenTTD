@@ -12,9 +12,6 @@ typedef struct MusicFileSettings {
 	char extmidi[80];
 } MusicFileSettings;
 
-VARDEF byte _music_wnd_cursong;
-VARDEF bool _song_is_active;
-VARDEF byte _cur_playlist[33];
 VARDEF MusicFileSettings msf;
 
 bool SoundInitialize(const char *filename);
