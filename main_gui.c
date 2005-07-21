@@ -20,6 +20,7 @@
 #include "network.h"
 #include "signs.h"
 #include "waypoint.h"
+#include "variables.h"
 
 #include "network_data.h"
 #include "network_client.h"

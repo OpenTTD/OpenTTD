@@ -13,6 +13,7 @@
 #include "vehicle.h"
 #include "town.h"
 #include "sound.h"
+#include "variables.h"
 
 static const Widget _smallmap_widgets[] = {
 {   WWT_TEXTBTN,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},

@@ -15,6 +15,7 @@
 #include "viewport.h"
 #include "player.h"
 #include "depot.h"
+#include "vehicle_gui.h"
 
 /**
  * Draw the purchase info details of an aircraft at a given location.

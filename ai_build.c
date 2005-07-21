@@ -7,6 +7,7 @@
 #include "ai_new.h"
 #include "engine.h"
 #include "station.h"
+#include "variables.h"
 
 // Build HQ
 //  Params:

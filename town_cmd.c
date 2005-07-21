@@ -18,6 +18,7 @@
 #include "economy.h"
 #include "gui.h"
 #include "network.h"
+#include "variables.h"
 
 enum {
 	/* Max towns: 64000 (8 * 8000) */

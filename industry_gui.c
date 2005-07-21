@@ -12,6 +12,7 @@
 #include "viewport.h"
 #include "industry.h"
 #include "town.h"
+#include "variables.h"
 
 /* Present in table/build_industry.h" */
 extern const byte _build_industry_types[4][12];

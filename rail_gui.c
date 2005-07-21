@@ -14,6 +14,7 @@
 #include "station.h"
 #include "waypoint.h"
 #include "debug.h"
+#include "variables.h"
 
 static uint _cur_railtype;
 static bool _remove_button_clicked;

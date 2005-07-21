@@ -13,6 +13,7 @@
 #include "saveload.h"
 #include "economy.h"
 #include "sound.h"
+#include "variables.h"
 
 enum {
 	/* Max industries: 64000 (8 * 8000) */

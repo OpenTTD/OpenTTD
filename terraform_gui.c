@@ -12,6 +12,7 @@
 #include "command.h"
 #include "vehicle.h"
 #include "signs.h"
+#include "variables.h"
 
 void CcTerraform(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {

@@ -51,7 +51,7 @@ typedef struct YearMonthDay {
 #define MAX_YEAR_END_REAL 2090
 #define MAX_YEAR_END 170
 
-#include "macros.h"
+#include "map.h"
 
 // Forward declarations of structs.
 typedef struct Vehicle Vehicle;

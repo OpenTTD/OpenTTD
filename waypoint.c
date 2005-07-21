@@ -10,6 +10,7 @@
 #include "tile.h"
 #include "town.h"
 #include "waypoint.h"
+#include "variables.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "table/track_land.h"

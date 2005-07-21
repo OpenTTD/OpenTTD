@@ -8,6 +8,7 @@
 #include "engine.h"
 #include "command.h"
 #include "news.h"
+#include "variables.h"
 
 
 static StringID GetEngineCategoryName(byte engine)

@@ -4,6 +4,7 @@
 #include "string.h"
 #include "table/strings.h"
 #include "hal.h"
+#include "variables.h"
 
 #include <dirent.h>
 #include <unistd.h>

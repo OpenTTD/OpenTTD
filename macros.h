@@ -110,17 +110,6 @@ static inline int KillFirstBit2x64(int value)
 #define CHANCE16R(a,b,r) ((uint16)(r=Random()) <= (uint16)((65536 * a) / b))
 #define CHANCE16I(a,b,v) ((uint16)(v) <= (uint16)((65536 * a) / b))
 
-#define BEGIN_TILE_LOOP(var,w,h,tile)		\
-		{int h_cur = h;									\
-		uint var = tile;									\
-		do {														\
-			int w_cur = w;								\
-			do {
-
-#define END_TILE_LOOP(var,w,h,tile)			\
-			} while (++var, --w_cur != 0);						\
-		} while (var += TileDiffXY(0, 1) - (w), --h_cur != 0);}
-
 
 #define for_each_bit(_i,_b)										\
 	for(_i=0; _b!=0; _i++,_b>>=1)								\
@@ -164,5 +153,11 @@ static inline void swap_tile(TileIndex *a, TileIndex *b) { TileIndex t = *a; *a 
  */
 #define ROL(x, n) ((x) << (n) | (x) >> (sizeof(x) * 8 - (n)))
 #define ROR(x, n) ((x) >> (n) | (x) << (sizeof(x) * 8 - (n)))
+
+/* IS_INT_INSIDE = filter for ascii-function codes like BELL and so on [we need an special filter here later] */
+static inline bool IsValidAsciiChar(byte key)
+{
+	return IS_INT_INSIDE(key, ' ', 256);
+}
 
 #endif /* MACROS_H */

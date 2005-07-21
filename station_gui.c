@@ -10,6 +10,8 @@
 #include "player.h"
 #include "town.h"
 #include "command.h"
+#include "variables.h"
+#include "vehicle_gui.h"
 
 static void StationsWndShowStationRating(int x, int y, int type, uint acceptance, int rating)
 {

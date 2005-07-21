@@ -14,6 +14,7 @@
 #include "town.h"
 #include "signs.h"
 #include "waypoint.h"
+#include "variables.h"
 
 #define VIEWPORT_DRAW_MEM (65536 * 2)
 

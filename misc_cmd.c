@@ -9,6 +9,7 @@
 #include "gui.h"
 #include "economy.h"
 #include "network.h"
+#include "variables.h"
 
 /** Change the player's face.
  * @param x,y unused

@@ -9,6 +9,7 @@
 #include "viewport.h"
 #include "command.h"
 #include "vehicle.h"
+#include "variables.h"
 
 extern const TileTypeProcs
 	_tile_type_clear_procs,

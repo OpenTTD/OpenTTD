@@ -7,6 +7,7 @@
 #include "gfx.h"
 #include "viewport.h"
 #include "console.h"
+#include "variables.h"
 
 // delta between mouse cursor and upper left corner of dragged window
 static Point _drag_delta;

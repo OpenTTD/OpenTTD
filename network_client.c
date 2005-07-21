@@ -14,6 +14,7 @@
 #include "window.h"
 #include "settings.h"
 #include "console.h"
+#include "variables.h"
 
 
 // This file handles all the client-commands

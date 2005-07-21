@@ -146,6 +146,20 @@ uint DistanceTrack(TileIndex, TileIndex); // Returns the shortest distance one c
 uint DistanceFromEdge(TileIndex); // shortest distance from any edge of the map
 
 
+#define BEGIN_TILE_LOOP(var,w,h,tile)                      \
+	{                                                        \
+		int h_cur = h;                                         \
+		uint var = tile;                                       \
+		do {                                                   \
+			int w_cur = w;                                       \
+			do {
+
+#define END_TILE_LOOP(var,w,h,tile)                        \
+			} while (++var, --w_cur != 0);                       \
+		} while (var += TileDiffXY(0, 1) - (w), --h_cur != 0); \
+	}
+
+
 static inline TileIndexDiff TileOffsByDir(uint dir)
 {
 	extern const TileIndexDiffC _tileoffs_by_dir[4];

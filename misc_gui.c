@@ -18,6 +18,7 @@
 #include "sound.h"
 #include "network.h"
 #include "string.h"
+#include "variables.h"
 
 #include "hal.h" // for file list
 

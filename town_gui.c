@@ -12,6 +12,7 @@
 #include "command.h"
 #include "player.h"
 #include "network.h"
+#include "variables.h"
 
 static const Widget _town_authority_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},

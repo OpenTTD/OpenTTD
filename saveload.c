@@ -21,6 +21,7 @@
 #include "town.h"
 #include "player.h"
 #include "saveload.h"
+#include "variables.h"
 
 enum {
 	SAVEGAME_MAJOR_VERSION = 15,

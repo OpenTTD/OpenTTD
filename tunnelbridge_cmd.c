@@ -12,6 +12,7 @@
 #include "sound.h"
 #include "pbs.h"
 #include "debug.h"
+#include "variables.h"
 
 extern void DrawCanalWater(TileIndex tile);
 

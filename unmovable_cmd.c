@@ -12,6 +12,7 @@
 #include "economy.h"
 #include "town.h"
 #include "sprite.h"
+#include "variables.h"
 
 /** Destroy a HQ.
  * During normal gameplay you can only implicitely destroy a HQ when you are

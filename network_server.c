@@ -15,6 +15,7 @@
 #include "vehicle.h"
 #include "station.h"
 #include "settings.h"
+#include "variables.h"
 
 // This file handles all the server-commands
 

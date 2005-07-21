@@ -9,6 +9,7 @@
 #include "command.h"
 #include "console.h"
 #include "network.h"
+#include "variables.h"
 
 extern void SwitchMode(int new_mode);
 

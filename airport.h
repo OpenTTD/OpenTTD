@@ -2,7 +2,6 @@
 #define AIRPORT_H
 
 #include "airport_movement.h"
-#include "variables.h"
 
 enum {MAX_TERMINALS = 6};
 enum {MAX_HELIPADS  = 2};
@@ -54,15 +53,6 @@ const AirportFTAClass* GetAirport(const byte airport_type);
  * Bit 0 means the small airport is buildable, etc.
  * @todo set availability of airports by year, instead of airplane
  */
-static inline uint32 GetValidAirports(void)
-{
-	uint32 bytemask = _avail_aircraft; /// sets the first 3 bytes, 0 - 2, @see AdjustAvailAircraft()
-
-	// 1980-1-1 is --> 21915
-	// 1990-1-1 is --> 25568
-	if (_date >= 21915) {SETBIT(bytemask, 3);}	// metropilitan airport 1980
-	if (_date >= 25568) {SETBIT(bytemask, 4);}	// international airport 1990
-	return bytemask;
-}
+uint32 GetValidAirports(void);
 
 #endif /* AIRPORT_H */

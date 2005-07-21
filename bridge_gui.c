@@ -8,6 +8,7 @@
 #include "gfx.h"
 #include "command.h"
 #include "sound.h"
+#include "variables.h"
 
 static struct BridgeData {
 	uint count;

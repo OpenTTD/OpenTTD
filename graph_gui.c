@@ -9,6 +9,7 @@
 #include "signs.h"
 #include "strings.h"
 #include "debug.h"
+#include "variables.h"
 
 static uint _legend_excludebits;
 static uint _legend_cargobits;

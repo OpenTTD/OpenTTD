@@ -114,8 +114,6 @@ bool InsertTextBufferChar(Textbuf *tb, byte key);
 bool InsertTextBufferClipboard(Textbuf *tb);
 bool MoveTextBufferPos(Textbuf *tb, int navmode);
 void UpdateTextBufferSize(Textbuf *tb);
-/* IS_INT_INSIDE = filter for ascii-function codes like BELL and so on [we need an special filter here later] */
-static inline bool IsValidAsciiChar(byte key) {return IS_INT_INSIDE(key, ' ', 256);}
 
 void BuildFileList(void);
 void SetFiosType(const byte fiostype);

@@ -2,7 +2,6 @@
 #define AIRPORT_MOVEMENT_H
 
 #include "stdafx.h"
-#include "macros.h"
 
 typedef struct AirportMovingData {
 	int x,y;

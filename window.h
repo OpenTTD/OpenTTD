@@ -1,8 +1,6 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
-#include "vehicle_gui.h"
-
 typedef union WindowEvent WindowEvent;
 
 //typedef void WindowProc(Window *w, int event, int wparam, long lparam);

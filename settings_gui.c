@@ -14,6 +14,7 @@
 #include "network.h"
 #include "console.h"
 #include "town.h"
+#include "variables.h"
 
 static uint32 _difficulty_click_a;
 static uint32 _difficulty_click_b;

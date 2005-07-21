@@ -18,6 +18,8 @@
 #include "sound.h"
 #include "engine.h"
 #include "network_data.h"
+#include "variables.h"
+#include "vehicle_gui.h"
 
 // get a mask of the allowed currencies depending on the year
 uint GetMaskOfAllowedCurrencies(void)

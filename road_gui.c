@@ -10,6 +10,7 @@
 #include "gfx.h"
 #include "sound.h"
 #include "command.h"
+#include "variables.h"
 //needed for catchments
 #include "station.h"
 

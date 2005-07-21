@@ -17,9 +17,6 @@ void BuildVehicleList(struct vehiclelist_d *vl, int type, int owner, int station
 void SortVehicleList(struct vehiclelist_d *vl);
 
 int CDECL GeneralOwnerSorter(const void *a, const void *b);
-VARDEF uint32	_internal_name_sorter_id;	// internal StringID for default vehicle-names
-VARDEF uint32	_last_vehicle_idx;				// cached index to hopefully speed up name-sorting
-VARDEF bool		_internal_sort_order;			// descending/ascending
 
 #define PERIODIC_RESORT_DAYS 10
 #define DEF_SORTER(yyyy) int CDECL yyyy(const void *a, const void *b)
@@ -60,7 +57,7 @@ typedef struct Sorting {
 	Listing train;
 } Sorting;
 
-VARDEF Sorting _sorting;
+extern Sorting _sorting;
 
 enum {
   PLY_WND_PRC__OFFSET_TOP_WIDGET	= 26,

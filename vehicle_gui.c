@@ -11,6 +11,14 @@
 #include "gui.h"
 #include "command.h"
 #include "gfx.h"
+#include "variables.h"
+#include "vehicle_gui.h"
+
+Sorting _sorting;
+
+static uint32 _internal_name_sorter_id; // internal StringID for default vehicle-names
+static uint32 _last_vehicle_idx;        // cached index to hopefully speed up name-sorting
+static bool   _internal_sort_order;     // descending/ascending
 
 VehicleSortListingTypeFunctions * const _vehicle_sorter[] = {
 	&VehicleUnsortedSorter,

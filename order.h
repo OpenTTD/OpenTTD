@@ -1,6 +1,7 @@
 #ifndef ORDER_H
 #define ORDER_H
 
+#include "macros.h"
 #include "pool.h"
 
 /* Order types */

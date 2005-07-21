@@ -12,6 +12,7 @@
 #include "player.h"
 #include "airport_movement.h"
 #include "sound.h"
+#include "variables.h"
 
 static void DisasterClearSquare(TileIndex tile)
 {

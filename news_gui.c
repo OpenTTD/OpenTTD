@@ -10,6 +10,7 @@
 #include "news.h"
 #include "vehicle.h"
 #include "sound.h"
+#include "variables.h"
 
 /* News system
 News system is realized as a FIFO queue (in an array)

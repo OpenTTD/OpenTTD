@@ -11,6 +11,7 @@
 #include "screenshot.h"
 #include "waypoint.h"
 #include "industry.h"
+#include "variables.h"
 
 static char *StationGetSpecialString(char *buff, int x);
 static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed);

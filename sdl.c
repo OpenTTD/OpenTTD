@@ -10,6 +10,7 @@
 #include "player.h"
 #include "hal.h"
 #include "network.h"
+#include "variables.h"
 
 #ifdef UNIX
 #include <signal.h>

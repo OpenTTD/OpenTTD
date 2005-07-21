@@ -14,6 +14,7 @@
 #include "player.h"
 #include "engine.h"
 #include "depot.h"
+#include "vehicle_gui.h"
 
 /**
  * Draw the purchase info details of road vehicle at a given location.

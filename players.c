@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "openttd.h"
+#include "engine.h"
 #include "string.h"
 #include "strings.h"
 #include "table/strings.h"
@@ -15,6 +16,7 @@
 #include "ai_new.h"
 #include "sound.h"
 #include "network.h"
+#include "variables.h"
 
 PlayerID _current_player;
 

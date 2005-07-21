@@ -10,6 +10,7 @@
 #include "window.h"
 #include "command.h"
 #include "console.h"
+#include "variables.h"
 #ifdef WIN32
 #	include <windows.h> /* GetTickCount */
 #	include <conio.h>

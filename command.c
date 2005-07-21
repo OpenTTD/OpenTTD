@@ -6,6 +6,7 @@
 #include "command.h"
 #include "player.h"
 #include "network.h"
+#include "variables.h"
 
 const char* _cmd_text = NULL;
 

@@ -6,6 +6,8 @@
 #include "gfx.h"
 #include "sound.h"
 #include "hal.h"
+#include "macros.h"
+#include "variables.h"
 
 static byte _music_wnd_cursong;
 static bool _song_is_active;

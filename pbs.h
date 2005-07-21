@@ -5,7 +5,6 @@
  *  @see pbs.c */
 
 #include "vehicle.h"
-#include "tile.h"
 #include "map.h"
 #include "rail.h"
 

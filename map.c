@@ -2,6 +2,7 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
+#include "macros.h"
 #include "map.h"
 
 uint _map_log_x;

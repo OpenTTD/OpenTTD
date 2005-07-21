@@ -11,6 +11,7 @@
 #include "news.h"
 #include "saveload.h"
 #include "sprite.h"
+#include "variables.h"
 
 enum {
 	ENGINE_AVAILABLE = 1,

@@ -2,7 +2,6 @@
 #define PLAYER_H
 
 #include "aystar.h"
-#include "engine.h"
 #include "rail.h"
 
 typedef struct PlayerEconomyEntry {

@@ -10,6 +10,7 @@
 #include "station.h"
 #include "sprite.h"
 #include "newgrf.h"
+#include "variables.h"
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)

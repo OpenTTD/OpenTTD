@@ -9,6 +9,7 @@
 #include "player.h"
 #include "gfx.h"
 #include "economy.h"
+#include "variables.h"
 
 static void HandleSubsidyClick(int y)
 {

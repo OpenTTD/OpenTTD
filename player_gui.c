@@ -11,6 +11,7 @@
 #include "vehicle.h"
 #include "economy.h"
 #include "network.h"
+#include "variables.h"
 
 #ifdef ENABLE_NETWORK
 #include "network_data.h"
