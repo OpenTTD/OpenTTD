@@ -2,6 +2,7 @@
 #define AI_NEW_H
 
 #include "aystar.h"
+#include "player.h"
 
 /*
  * These defines can be altered to change the behavoir of the AI

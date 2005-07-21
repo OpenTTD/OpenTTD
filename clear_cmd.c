@@ -5,6 +5,7 @@
 #include "tile.h"
 #include "viewport.h"
 #include "command.h"
+#include "variables.h"
 
 typedef struct TerraformerHeightMod {
 	TileIndex tile;

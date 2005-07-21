@@ -4,6 +4,7 @@
 
 #include "openttd.h"
 #include "sprite.h"
+#include "variables.h"
 
 
 SpriteGroup *EvalDeterministicSpriteGroup(DeterministicSpriteGroup *dsg, int value)

@@ -4,6 +4,7 @@
 #include "sound.h"
 #include "spritecache.h"
 #include "string.h"
+#include "variables.h"
 #include "table/currency.h"
 #include "network.h"
 #include "settings.h"

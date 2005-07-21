@@ -6,6 +6,7 @@
 #include "hal.h"
 #include "sound.h"
 #include "string.h"
+#include "variables.h"
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/wait.h>

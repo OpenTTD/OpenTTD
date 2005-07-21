@@ -7,6 +7,7 @@
 #include "hal.h"
 #include "console.h"
 #include "string.h"
+#include "variables.h"
 #include <stdarg.h> /* va_list */
 
 typedef struct TextEffect {

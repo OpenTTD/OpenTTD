@@ -6,6 +6,7 @@
 #include "command.h"
 #include "ai_new.h"
 #include "depot.h"
+#include "variables.h"
 
 #define TEST_STATION_NO_DIR 0xFF
 

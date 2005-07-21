@@ -5,6 +5,7 @@
 #include "pathfind.h"
 #include "rail.h"
 #include "debug.h"
+#include "variables.h"
 
 // remember which tiles we have already visited so we don't visit them again.
 static bool TPFSetTileBit(TrackPathFinder *tpf, TileIndex tile, int dir)

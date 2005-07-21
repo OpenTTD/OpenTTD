@@ -4,6 +4,7 @@
 #include "pool.h"
 #include "order.h"
 #include "rail.h"
+#include "variables.h"
 
 enum {
 	VEH_Train = 0x10,

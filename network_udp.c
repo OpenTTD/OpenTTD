@@ -8,6 +8,7 @@
 #include "map.h"
 #include "network_gamelist.h"
 #include "network_udp.h"
+#include "variables.h"
 
 extern void UpdateNetworkGameWindow(bool unselect);
 extern void NetworkPopulateCompanyInfo(void);

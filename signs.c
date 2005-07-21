@@ -5,6 +5,7 @@
 #include "saveload.h"
 #include "command.h"
 #include "strings.h"
+#include "variables.h"
 
 enum {
 	/* Max signs: 64000 (4 * 16000) */

@@ -6,6 +6,7 @@
 
 #include "pool.h"
 #include "tile.h"
+#include "variables.h"
 
 struct Depot {
 	TileIndex xy;

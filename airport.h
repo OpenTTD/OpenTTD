@@ -2,6 +2,7 @@
 #define AIRPORT_H
 
 #include "airport_movement.h"
+#include "variables.h"
 
 enum {MAX_TERMINALS = 6};
 enum {MAX_HELIPADS  = 2};

@@ -5,6 +5,8 @@
 
 #ifdef ENABLE_NETWORK
 
+#include "player.h"
+
 // If this line is enable, every frame will have a sync test
 //  this is not needed in normal games. Normal is like 1 sync in 100
 //  frames. You can enable this if you have a lot of desyncs on a certain

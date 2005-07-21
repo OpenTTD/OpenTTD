@@ -9,6 +9,7 @@
 #include "command.h"
 #include "town.h"
 #include "sound.h"
+#include "variables.h"
 
 static int GetRandomTreeType(TileIndex tile, uint seed)
 {

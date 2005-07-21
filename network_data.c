@@ -10,6 +10,7 @@
 #include "network_client.h"
 #include "command.h"
 #include "callback_table.h"
+#include "variables.h"
 
 // This files handles the send/receive of all packets
 

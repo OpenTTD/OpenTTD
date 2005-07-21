@@ -6,6 +6,7 @@
 #include "gfx.h"
 #include "table/palettes.h"
 #include "hal.h"
+#include "variables.h"
 
 Colour _cur_palette[256];
 

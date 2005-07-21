@@ -5,6 +5,7 @@
 #include "map.h"
 #include "network_data.h"
 #include "command.h"
+#include "variables.h"
 
 #if defined(WITH_REV)
 	extern const char _openttd_revision[];
