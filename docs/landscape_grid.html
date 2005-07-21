@@ -14,22 +14,22 @@
 </head>
 <body style="direction: ltr;">
 <h3 style="font-weight: bold;">Landscape</h3>
-<span style="font-weight: bold;"></span>Five arrays are used to encode the information of the contents of the tile.
+<span style="font-weight: bold;"></span>Five attributes hold the information about a tile.
 This can be seen in the <a href="landscape.html">Landscape</a> document. This page tries to give an overview of used and free bits of
 the array so you can quickly see what is used and what is not.
 <ul>
   <li><span style="font-weight: bold;"><span class="freebits">O</span></span> - bit is free</li>
   <li><span style="font-weight: bold;">X</span> - bit is used</li>
-  <li><span style="font-weight: bold;"><span class="abuse">&nbsp;&nbsp;&nbsp;</span></span> - bit of _map_* is abused for different purposes</li>
+  <li><span style="font-weight: bold;"><span class="abuse">&nbsp;&nbsp;&nbsp;</span></span> - bit of attribute is abused for different purposes</li>
   <li><b>NOTE: </b>counting the bits starts with bit0 in the most left position (eg. a bit screwed LE format; BIT by BIT) </li>
 </ul>
 <p>
 <ul>
-  <li><span style="font-weight: bold;">_map_owner[]</span> - 8 bits in size, used to identify the owner of that tile (eg piece of rail, bridge, etc.).</li>
-  <li><span style="font-weight: bold;">_map2[]</span> - 16 bits in size, used to identify the index of the given tile (object) in the (object-)array.</li>
-  <li><span style="font-weight: bold;">_map3[]</span> - 16 bits in size, which is split up into _map3lo[] and _map3hi[] is used for general storage.</li>
-  <li><span style="font-weight: bold;">_map_type_and_height[]</span> - 8 bits in size, stores tile height (lower 4 bits) and tile class (upper 4 bits).</li>
-  <li><span style="font-weight: bold;">_map5[]</span> - 8 bits in size, is used for general storage.</li>
+  <li><span style="font-weight: bold;">type_height</span> - 8 bits in size, stores tile height (lower 4 bits) and tile class (upper 4 bits)</li>
+  <li><span style="font-weight: bold;">owner</span> - 8 bits in size, used to identify the owner of that tile (eg piece of rail, bridge, etc.)</li>
+  <li><span style="font-weight: bold;">m2</span> - 16 bits in size, used to identify the index of the given tile (object) in the (object-)array</li>
+  <li><span style="font-weight: bold;">m3/m4</span> - 16 bits in size, which is split up into m3 and m4 is used for general storage</li>
+  <li><span style="font-weight: bold;">m5</span> - 8 bits in size, is used for general storage</li>
 </ul>
 
 <table style="text-align: left;" border="1" cellpadding="2"
@@ -37,11 +37,11 @@ the array so you can quickly see what is used and what is not.
   <tbody>
     <tr>
       <th style="white-space: nowrap; text-align: left;">class</th>
-      <th style="white-space: nowrap; text-align: center;">_map_owner[L1] (8)</th>
-      <th style="white-space: nowrap; text-align: center;">_map2[L2] (16)</th>
-      <th style="white-space: nowrap; text-align: center;">_map3[lo&amp; hi,L3] (16)</th>
-      <th style="white-space: nowrap; text-align: center;">_map_type_and_height[L4] (8)</th>
-      <th style="white-space: nowrap; text-align: center;">_map5[L5] (8)</th>
+      <th style="white-space: nowrap; text-align: center;">owner[L1] (8)</th>
+      <th style="white-space: nowrap; text-align: center;">m2[L2] (16)</th>
+      <th style="white-space: nowrap; text-align: center;">m3/m4[L3] (16)</th>
+      <th style="white-space: nowrap; text-align: center;">type_height[L4] (8)</th>
+      <th style="white-space: nowrap; text-align: center;">m5[L5] (8)</th>
     </tr>
     <tr>
       <td style="white-space: nowrap; text-align: left;">bits</td>
