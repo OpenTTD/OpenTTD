@@ -111,7 +111,7 @@ STR_0067_OF_COLA                                                :{VOLUME} de col
 STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} tonelada de algodão doce
 STR_0069_BUBBLE                                                 :{COMMA} bolha
 STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonelada de caramelo
-STR_006B_BATTERY                                                :{COMMA} batter{P y ies}
+STR_006B_BATTERY                                                :{COMMA} pilh{P y as}
 STR_006C_OF_PLASTIC                                             :{VOLUME} de plástico
 STR_006D_FIZZY_DRINK                                            :{COMMA} Bebida Gasosa
 STR_008E                                                        :

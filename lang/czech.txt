@@ -2,8 +2,7 @@
 ##ownname Cesky
 ##isocode cs
 ##plural 6
-##case news
-##case subs
+##case news subs
 
 ##id 0x0000
 STR_NULL                                                        :
