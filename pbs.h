@@ -72,12 +72,13 @@ bool PBSIsPbsSignal(TileIndex tile, Trackdir trackdir);
  * @return True when there are pbs signals on that tile
  */
 
-bool PBSIsPbsDepot(uint tile);
+bool PBSIsPbsSegment(uint tile, Trackdir trackdir);
 /**<
- * Checks if a depot is inside a pbs block.
- * Tis means that the block it is in needs to have at least 1 signal, and that all signals in it need to be pbs signals.
- * @param tile The depot tile to check
- * @return True when the depot is inside a pbs block.
+ * Checks if a signal/depot leads to a pbs block.
+ * This means that the block needs to have at least 1 signal, and that all signals in it need to be pbs signals.
+ * @param tile The tile to check
+ * @param trackdir The direction in which to check
+ * @return True when the depot is inside a pbs block
  */
 
 #endif

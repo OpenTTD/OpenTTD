@@ -525,7 +525,7 @@ static int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 			if (NPFGetFlag(current, NPF_FLAG_PBS_BLOCKED)) {
 				cost += 1000;
 			}
-			if (PBSIsPbsDepot(tile)) {
+			if (PBSIsPbsSegment(tile, ReverseTrackdir(trackdir))) {
 				NPFSetFlag(current, NPF_FLAG_PBS_EXIT, true);
 				NPFSetFlag(current, NPF_FLAG_SEEN_SIGNAL, true);
 			}

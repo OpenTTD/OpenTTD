@@ -269,11 +269,11 @@ static bool SetSignalsEnumProcPBS(uint tile, SetSignalsDataPbs *ssd, int trackdi
 	return false;
 }
 
-bool PBSIsPbsDepot(uint tile)
+bool PBSIsPbsSegment(uint tile, Trackdir trackdir)
 {
 	SetSignalsDataPbs ssd;
-	bool result = false;
-	DiagDirection direction = GetDepotDirection(tile,TRANSPORT_RAIL);
+	bool result = PBSIsPbsSignal(tile, trackdir);
+	DiagDirection direction = TrackdirToExitdir(trackdir);//GetDepotDirection(tile,TRANSPORT_RAIL);
 	int i;
 
 	ssd.cur = 0;

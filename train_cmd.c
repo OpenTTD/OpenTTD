@@ -1801,6 +1801,7 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 			return false;
 
 	if (v->u.rail.force_proceed == 0) {
+		byte trackdir = GetVehicleTrackdir(v);
 		if (++v->load_unload_time_rem < 37) {
 			InvalidateWindowClasses(WC_TRAINS_LIST);
 			return true;
@@ -1808,8 +1809,7 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 
 		v->load_unload_time_rem = 0;
 
-		if (PBSIsPbsDepot(v->tile)) {
-			byte trackdir = GetVehicleTrackdir(v);
+		if (PBSIsPbsSegment(v->tile, trackdir)) {
 			NPFFindStationOrTileData fstd;
 			NPFFoundTargetData ftd;
 
