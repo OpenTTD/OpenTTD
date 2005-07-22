@@ -54,22 +54,24 @@
 #include <dmusicc.h>
 #include <dmusicf.h>
 
-#define VARIANT int
-
 #define MSGBOX(output)	DEBUG(misc, 0) ("DirectMusic driver: %s\n", output); //MessageBox(NULL, output, "dxmci",MB_OK);
-#define MULTI_TO_WIDE( x,y )  MultiByteToWideChar( CP_ACP,MB_PRECOMPOSED, y,-1,x,_MAX_PATH);
+
+static void MultiToWide(WCHAR* to, const char* from)
+{
+	MultiByteToWideChar(CP_ACP, MB_PRECOMPOSED, from, -1, to, _MAX_PATH);
+}
 
 // the performance object controls manipulation of  the segments
-IDirectMusicPerformance *performance = NULL;
+static IDirectMusicPerformance *performance = NULL;
 
 // the segment object is where the MIDI data is stored for playback
-IDirectMusicSegment *segment = NULL;
+static IDirectMusicSegment *segment = NULL;
 
 // the loader bject can load many types of DMusic related files
-IDirectMusicLoader *loader = NULL;
+static IDirectMusicLoader *loader = NULL;
 
 // whether we've initialized COM or not (when deciding whether to shut down)
-int COMInitialized = 0;
+static int COMInitialized = 0;
 
 
 extern "C" bool LoadLibraryList(void **proc, const char *dll);
@@ -109,7 +111,7 @@ extern "C" {
 #endif
 
 // Initialize COM and DirectMusic
-bool InitDirectMusic (void)
+bool InitDirectMusic(void)
 {
 	if (NULL != performance)
 		return true;
@@ -127,12 +129,13 @@ bool InitDirectMusic (void)
 
 	// Create the performance object via CoCreateInstance
 	if (FAILED(_proc.CoCreateInstance(
-			(REFCLSID)CLSID_DirectMusicPerformance,
-			NULL,
-			CLSCTX_INPROC,
-			(REFIID)IID_IDirectMusicPerformance,
-			(LPVOID *)&performance))) {
-		MSGBOX ("Failed to create the performance object");
+				CLSID_DirectMusicPerformance,
+				NULL,
+				CLSCTX_INPROC,
+				IID_IDirectMusicPerformance,
+				(LPVOID*)&performance
+			))) {
+		MSGBOX("Failed to create the performance object");
 		return false;
 	}
 
@@ -143,7 +146,7 @@ bool InitDirectMusic (void)
 	}
 
 	// Choose default Windows synth
-	if (FAILED(performance->AddPort (NULL))) {
+	if (FAILED(performance->AddPort(NULL))) {
 		MSGBOX("AddPort failed");
 		return false;
 	}
@@ -151,10 +154,13 @@ bool InitDirectMusic (void)
 	// now we'll create the loader object. This will be used to load the
 	// midi file for our demo. Again, we need to use CoCreateInstance
 	// and pass the appropriate ID parameters
-	if (FAILED(_proc.CoCreateInstance((REFCLSID)CLSID_DirectMusicLoader,
-			NULL, CLSCTX_INPROC,
-			(REFIID)IID_IDirectMusicLoader,
-			(LPVOID *)&loader))) {
+	if (FAILED(_proc.CoCreateInstance(
+				CLSID_DirectMusicLoader,
+				NULL,
+				CLSCTX_INPROC,
+				IID_IDirectMusicLoader,
+				(LPVOID*)&loader
+			))) {
 		MSGBOX("Failed to create loader object");
 		return false;
 	}
@@ -166,28 +172,28 @@ bool InitDirectMusic (void)
 
 // Releases memory used by all of the initialized
 // DirectMusic objects in the program
-void ReleaseSegment (void)
+void ReleaseSegment(void)
 {
 	if (NULL != segment) {
-		segment->Release ();
+		segment->Release();
 		segment = NULL;
 	}
 }
-void ShutdownDirectMusic (void)
+
+void ShutdownDirectMusic(void)
 {
 	// release everything but the segment, which the performance
 	// will release automatically (and it'll crash if it's been
 	// released already)
 
 	if (NULL != loader) {
-		loader->Release ();
+		loader->Release();
 		loader = NULL;
 	}
 
-	if (NULL != performance)
-	{
- 		performance->CloseDown ();
-		performance->Release ();
+	if (NULL != performance) {
+		performance->CloseDown();
+		performance->Release();
 		performance = NULL;
 	}
 
@@ -198,7 +204,7 @@ void ShutdownDirectMusic (void)
 }
 
 // Load MIDI file for playing
-bool LoadMIDI (char *directory, char *filename)
+bool LoadMIDI(const char *directory, const char *filename)
 {
 	DMUS_OBJECTDESC obj_desc;
 	WCHAR w_directory[_MAX_PATH];	// utf-16 version of the directory name.
@@ -207,22 +213,23 @@ bool LoadMIDI (char *directory, char *filename)
 	if (NULL == performance)
 		return false;
 
-	MULTI_TO_WIDE(w_directory,directory);
+	MultiToWide(w_directory, directory);
 
-	if (FAILED(loader->SetSearchDirectory((REFGUID) GUID_DirectMusicAllTypes,
-				w_directory, FALSE))) {
+	if (FAILED(loader->SetSearchDirectory(
+				GUID_DirectMusicAllTypes, w_directory, FALSE
+			))) {
 		MSGBOX("LoadMIDI: SetSearchDirectory failed");
 		return false;
 	}
 
 	// set up the loader object info
-	ZeroMemory (&obj_desc, sizeof (obj_desc));
-	obj_desc.dwSize = sizeof (obj_desc);
+	ZeroMemory(&obj_desc, sizeof(obj_desc));
+	obj_desc.dwSize = sizeof(obj_desc);
 
-	MULTI_TO_WIDE(w_filename,filename);
+	MultiToWide(w_filename, filename);
 	obj_desc.guidClass = CLSID_DirectMusicSegment;
 
-	wcscpy (obj_desc.wszFileName,w_filename);
+	wcscpy(obj_desc.wszFileName, w_filename);
 	obj_desc.dwValidData = DMUS_OBJ_CLASS | DMUS_OBJ_FILENAME;
 
 	// release the existing segment if we have any
@@ -230,24 +237,24 @@ bool LoadMIDI (char *directory, char *filename)
 		ReleaseSegment();
 
 	// and make a new segment
-	if (FAILED(loader->GetObject(&obj_desc,
-			(REFIID)IID_IDirectMusicSegment,
-			(LPVOID *) &segment))) {
+	if (FAILED(loader->GetObject(
+				&obj_desc, IID_IDirectMusicSegment, (LPVOID*)&segment
+			))) {
 		MSGBOX("LoadMIDI: Get object failed");
-		return FALSE;
+		return false;
 	}
 
 	// next we need to tell the segment what kind of data it contains. We do this
 	// with the IDirectMusicSegment::SetParam function.
-	if (FAILED(segment->SetParam((REFGUID)GUID_StandardMIDIFile,
-			0xFFFFFFFF, 0, 0, (LPVOID)performance))) {
+	if (FAILED(segment->SetParam(
+				GUID_StandardMIDIFile, 0xFFFFFFFF, 0, 0, performance
+			))) {
 		MSGBOX("LoadMIDI: SetParam (MIDI file) failed");
 		return false;
 	}
 
 	// finally, we need to tell the segment to 'download' the instruments
-	if (FAILED(segment->SetParam((REFGUID)GUID_Download,
-			0xFFFFFFFF, 0, 0, (LPVOID)performance))) {
+	if (FAILED(segment->SetParam(GUID_Download, 0xFFFFFFFF, 0, 0, performance))) {
 		MSGBOX("LoadMIDI: Failed to download instruments");
 		return false;
 	}
@@ -257,7 +264,7 @@ bool LoadMIDI (char *directory, char *filename)
 }
 
 // Start playing the MIDI file
-void PlaySegment (void)
+void PlaySegment(void)
 {
 	if (NULL == performance)
 		return;
@@ -268,7 +275,7 @@ void PlaySegment (void)
 }
 
 // Stop playing
-void StopSegment (void)
+void StopSegment(void)
 {
 	if (NULL == performance || NULL == segment)
 		return;
@@ -279,13 +286,13 @@ void StopSegment (void)
 }
 
 // Find out whether playing has started or stopped
-bool IsSegmentPlaying (void)
+bool IsSegmentPlaying(void)
 {
 	if (NULL == performance || NULL == segment)
-		return FALSE;
+		return false;
 
 	// IsPlaying return S_OK if the segment is currently playing
-	return performance->IsPlaying(segment, NULL) == S_OK ? TRUE : FALSE;
+	return performance->IsPlaying(segment, NULL) == S_OK;
 }
 
 void SetVolume(long vol)

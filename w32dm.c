@@ -60,14 +60,11 @@ extern void StopSegment (void);
 extern bool IsSegmentPlaying (void);
 extern void SetVolume (long);
 
-bool seeking = false;
+static bool seeking = false;
 
 static const char * DMusicMidiStart(const char * const *parm)
 {
-	if (InitDirectMusic() == true)
-		return(0);
-
-  return("Unable to initialize DirectMusic");
+	return InitDirectMusic() ? NULL : "Unable to initialize DirectMusic";
 }
 
 static void DMusicMidiStop(void)
@@ -85,8 +82,7 @@ static void DMusicMidiPlaySong(const char *filename)
 	ttd_strlcpy(dir, filename, MAX_PATH);
 	pos = strrchr(dir, '\\') + 1;
 	ttd_strlcpy(file, pos, MAX_PATH);
-	//strchr(file, ' ')[0] = 0;
-	*pos = 0;
+	*pos = '\0';
 
 	LoadMIDI(dir, file);
 	PlaySegment();
@@ -100,14 +96,12 @@ static void DMusicMidiStopSong(void)
 
 static bool DMusicMidiIsSongPlaying(void)
 {
-	if ((IsSegmentPlaying() == 0) && (seeking == true)) // Not the nicest code, but there is a
-		return(true);                                   // short delay before playing actually
-                                                        // starts. OpenTTD makes no provision for
-	if (IsSegmentPlaying() == 1)                        // this.
-		seeking = false;
+	/* Not the nicest code, but there is a short delay before playing actually 
+	 * starts. OpenTTD makes no provision for this. */
+	if (!IsSegmentPlaying() && seeking) return true;
+	if (IsSegmentPlaying()) seeking = false;
 
-
-	return(IsSegmentPlaying());
+	return IsSegmentPlaying();
 }
 
 static void DMusicMidiSetVolume(byte vol)
