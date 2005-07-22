@@ -1,11 +1,15 @@
 #include "stdafx.h"
 #include "openttd.h"
+#include "variables.h"
 #include "window.h"
 #include "string.h"
 #include "table/strings.h"
 #include "hal.h"
 #include "gfx.h"
 #include "gui.h"
+#include "saveload.h"
+#include "functions.h"
+#include "macros.h"
 
 #include <direct.h>
 #include <unistd.h>
@@ -24,6 +28,8 @@
 
 #include <os2.h>
 #include <os2me.h>
+
+#include <i86.h>
 
 #if defined(WITH_SDL)
 #include <SDL.h>
@@ -772,3 +778,9 @@ void JoinOTTDThread(void)
 
 	DosWaitThread(&thread1, DCWW_WAIT);
 }
+
+void CSleep(int milliseconds)
+{
+	delay(milliseconds);
+}
+
