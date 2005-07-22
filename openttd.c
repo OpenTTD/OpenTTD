@@ -9,6 +9,7 @@
 
 #define VARDEF
 #include "openttd.h"
+#include "functions.h"
 #include "mixer.h"
 #include "spritecache.h"
 #include "gfx.h"

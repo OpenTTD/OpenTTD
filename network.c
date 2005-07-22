@@ -1,5 +1,7 @@
 #include "stdafx.h"
+#include "openttd.h"
 #include "debug.h"
+#include "functions.h"
 #include "string.h"
 #include "strings.h"
 #include "map.h"

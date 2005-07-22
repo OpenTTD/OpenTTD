@@ -6,6 +6,7 @@
 #include "debug.h"
 #include "gfx.h"
 #include "fileio.h"
+#include "functions.h"
 #include "engine.h"
 #include "station.h"
 #include "sprite.h"

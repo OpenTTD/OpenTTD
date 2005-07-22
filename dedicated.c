@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
+#include "functions.h"
 #include "network.h"
 #include "hal.h"
 

@@ -16,6 +16,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
+#include "functions.h"
 #include "vehicle.h"
 #include "station.h"
 #include "town.h"

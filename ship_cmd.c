@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"
+#include "functions.h"
 #include "map.h"
 #include "tile.h"
 #include "vehicle.h"

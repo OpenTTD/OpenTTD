@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
+#include "functions.h"
 #include "gfx.h"
 #include "spritecache.h"
 #include "table/sprites.h"

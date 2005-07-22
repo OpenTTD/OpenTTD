@@ -2,6 +2,7 @@
 #include "openttd.h"
 
 #include "command.h"
+#include "functions.h"
 #include "gfx.h"
 #include "map.h"
 #include "order.h"

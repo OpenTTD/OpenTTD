@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "fileio.h"
+#include "functions.h"
 #include "macros.h"
 #include "variables.h"
 #if defined(UNIX) || defined(__OS2__)

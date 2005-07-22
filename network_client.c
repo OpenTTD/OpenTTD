@@ -7,6 +7,7 @@
 #ifdef ENABLE_NETWORK
 
 #include "table/strings.h"
+#include "functions.h"
 #include "network_client.h"
 #include "network_gamelist.h"
 #include "saveload.h"

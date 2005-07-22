@@ -4,6 +4,7 @@
 #include "openttd.h"
 #include "console.h"
 #include "debug.h"
+#include "functions.h"
 #include "string.h"
 
 int _debug_ai_level;

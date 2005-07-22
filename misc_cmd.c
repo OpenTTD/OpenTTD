@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "openttd.h"
+#include "functions.h"
 #include "string.h"
 #include "table/strings.h"
 #include "command.h"

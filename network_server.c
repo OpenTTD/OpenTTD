@@ -7,6 +7,7 @@
 #ifdef ENABLE_NETWORK
 
 #include "table/strings.h"
+#include "functions.h"
 #include "network_server.h"
 #include "network_udp.h"
 #include "console.h"

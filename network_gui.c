@@ -10,13 +10,13 @@
 #ifdef ENABLE_NETWORK
 
 #include "table/strings.h"
+#include "functions.h"
 #include "network_data.h"
 #include "network_gamelist.h"
 #include "window.h"
 #include "gui.h"
 #include "gfx.h"
 #include "command.h"
-#include "functions.h"
 #include "variables.h"
 #include "network_server.h"
 #include "network_udp.h"

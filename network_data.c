@@ -5,6 +5,7 @@
 // Is the network enabled?
 #ifdef ENABLE_NETWORK
 
+#include "functions.h"
 #include "string.h"
 #include "table/strings.h"
 #include "network_client.h"

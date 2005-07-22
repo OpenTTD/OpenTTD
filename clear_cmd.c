@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"
+#include "functions.h"
 #include "map.h"
 #include "player.h"
 #include "tile.h"

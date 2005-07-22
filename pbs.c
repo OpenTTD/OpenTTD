@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "openttd.h"
-#include "pbs.h"
 #include "functions.h"
+#include "pbs.h"
 #include "debug.h"
 #include "map.h"
 #include "tile.h"

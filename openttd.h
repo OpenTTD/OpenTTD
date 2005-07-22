@@ -547,6 +547,4 @@ enum {
 };
 VARDEF byte _no_scroll;
 
-#include "functions.h"
-
 #endif /* OPENTTD_H */

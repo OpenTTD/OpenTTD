@@ -3,6 +3,7 @@
 #if defined(WITH_SDL)
 #include "openttd.h"
 #include "debug.h"
+#include "functions.h"
 #include "gfx.h"
 #include "mixer.h"
 #include "window.h"

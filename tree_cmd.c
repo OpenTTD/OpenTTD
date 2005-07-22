@@ -3,6 +3,7 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "table/tree_land.h"
+#include "functions.h"
 #include "map.h"
 #include "tile.h"
 #include "viewport.h"

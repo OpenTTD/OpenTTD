@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
+#include "functions.h"
 #include "table/strings.h"
 #include "engine.h"
 #include "table/engines.h"
