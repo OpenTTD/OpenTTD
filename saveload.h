@@ -3,6 +3,22 @@
 
 #include <setjmp.h>
 
+typedef enum SaveOrLoadResult {
+	SL_OK = 0, // completed successfully
+	SL_ERROR = 1, // error that was caught before internal structures were modified
+	SL_REINIT = 2, // error that was caught in the middle of updating game state, need to clear it. (can only happen during load)
+} SaveOrLoadResult;
+
+typedef enum SaveOrLoadMode {
+	SL_INVALID = -1,
+	SL_LOAD = 0,
+	SL_SAVE = 1,
+	SL_OLD_LOAD = 2,
+} SaveOrLoadMode;
+
+SaveOrLoadResult SaveOrLoad(const char *filename, int mode);
+
+
 typedef void ChunkSaveLoadProc(void);
 typedef void AutolengthProc(void *arg);
 

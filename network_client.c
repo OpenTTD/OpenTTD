@@ -9,6 +9,7 @@
 #include "table/strings.h"
 #include "network_client.h"
 #include "network_gamelist.h"
+#include "saveload.h"
 #include "command.h"
 #include "gfx.h"
 #include "window.h"

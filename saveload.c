@@ -1196,7 +1196,7 @@ extern void BeforeSaveGame(void);
 extern bool LoadOldSaveGame(const char *file);
 
 /** Small helper function to close the to be loaded savegame an signal error */
-static inline int AbortSaveLoad(void)
+static inline SaveOrLoadResult AbortSaveLoad(void)
 {
 	if (_sl.fh != NULL) fclose(_sl.fh);
 
@@ -1300,7 +1300,7 @@ static bool SaveFileToDisk(void *ptr)
  * @param mode Save or load. Load can also be a TTD(Patch) game. Use SL_LOAD, SL_OLD_LOAD or SL_SAVE
  * @return Return the results of the action. SL_OK, SL_ERROR or SL_REINIT ("unload" the game)
  */
-int SaveOrLoad(const char *filename, int mode)
+SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 {
 	uint32 hdr[2];
 	const SaveLoadFormat *fmt;

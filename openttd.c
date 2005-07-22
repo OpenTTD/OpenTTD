@@ -2,6 +2,7 @@
 #include "string.h"
 #include "table/strings.h"
 #include "debug.h"
+#include "saveload.h"
 #include "strings.h"
 #include "map.h"
 #include "tile.h"

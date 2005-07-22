@@ -12,6 +12,7 @@
 #include "console.h"
 #include "command.h"
 #include "gfx.h"
+#include "saveload.h"
 #include "vehicle.h"
 #include "station.h"
 #include "settings.h"

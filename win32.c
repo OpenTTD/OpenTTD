@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
+#include "saveload.h"
 #include "string.h"
 #include "table/strings.h"
 #include "gfx.h"
