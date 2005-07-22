@@ -1315,10 +1315,14 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		HandleEditBox(w, 9);
 		break;
 	case WE_KEYPRESS:
-		switch (HandleEditBoxKey(w, 9, e)) {
-		case 1:
-			HandleButtonClick(w, 11);
-			break;
+		if (e->keypress.keycode == WKC_ESC) {
+			DeleteWindow(w);
+			return;
+		}
+
+		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
+			if (HandleEditBoxKey(w, 9, e) == 1) /* Press Enter */
+					HandleButtonClick(w, 11);
 		}
 		break;
 	case WE_TIMEOUT:
