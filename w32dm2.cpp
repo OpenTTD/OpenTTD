@@ -240,14 +240,14 @@ bool LoadMIDI (char *directory, char *filename)
 	// next we need to tell the segment what kind of data it contains. We do this
 	// with the IDirectMusicSegment::SetParam function.
 	if (FAILED(segment->SetParam((REFGUID)GUID_StandardMIDIFile,
-			-1, 0, 0, (LPVOID)performance))) {
+			0xFFFFFFFF, 0, 0, (LPVOID)performance))) {
 		MSGBOX("LoadMIDI: SetParam (MIDI file) failed");
 		return false;
 	}
 
 	// finally, we need to tell the segment to 'download' the instruments
 	if (FAILED(segment->SetParam((REFGUID)GUID_Download,
-			-1, 0, 0, (LPVOID)performance))) {
+			0xFFFFFFFF, 0, 0, (LPVOID)performance))) {
 		MSGBOX("LoadMIDI: Failed to download instruments");
 		return false;
 	}
