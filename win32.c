@@ -1079,7 +1079,7 @@ void CreateConsole(void)
 	SetConsoleScreenBufferSize(hand, coninfo.dwSize);
 
 	// redirect unbuffered STDIN, STDOUT, STDERR to the console
-#if !defined(__CYGWIN__) && 0
+#if !defined(__CYGWIN__)
 	*stdout = *_fdopen( _open_osfhandle((long)hand, _O_TEXT), "w" );
 	*stdin = *_fdopen(_open_osfhandle((long)GetStdHandle(STD_INPUT_HANDLE), _O_TEXT), "r" );
 	*stderr = *_fdopen(_open_osfhandle((long)GetStdHandle(STD_ERROR_HANDLE), _O_TEXT), "w" );
