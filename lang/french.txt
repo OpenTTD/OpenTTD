@@ -1071,7 +1071,7 @@ STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Jouer e
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer magique (enlèvement industries et objets fixes): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Les tunnels peuvent se croiser: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Construire pendant le mode pause: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Les jets ne se crashent plus (fréquemment) sur les petites aéroports: {ORANGE} {STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Les jets ne s'écrasent plus (fréquemment) sur les petits aéroports: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Changer de climat : {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Changer la date: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permettre la modification des valeurs de production : {ORANGE}{STRING}
@@ -2480,7 +2480,7 @@ STR_8863_CRASHED                                                :{RED}Crashé!
 STR_8865_NAME_TRAIN                                             :{WHITE}Renommer le train
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Impossible de renommer le train...
 STR_8867_NAME_TRAIN                                             :{BLACK}Renommer le train
-STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Accident ferroviaire!{}{COMMA} mort(s) brulé(s) vif(s) dans la collision
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Tragédie ferroviaire!{}{COMMA} mort(s) brulé(s) vif(s) dans la collision
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Impossible de faire faire demi-tour...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Renommer le type de train
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Impossible de renommer le type de train...
@@ -2539,8 +2539,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Impossib
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Renommer le véhicule
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Les habitants célèbrent . . .{}Le premier bus arrive à {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Les habitants célèbrent . . .{}Le premier camion arrive à {STATION}!
-STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Accident routier!{}Un automobiliste meurt brulé vif après collision avec un train
-STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Accident routier!{}{COMMA} meurent brulés vifs après une collision avec un train
+STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Tragédie routière!{}Un automobiliste meurt brulé vif lors d'une collision avec un train
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Tragédie routière!{}{COMMA} morts, brulés vifs lors d'une collision avec un train
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Impossible de faire faire demi-tour au véhicule...
 STR_9034_RENAME                                                 :{BLACK}Renommer
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Renommer type de véhicule routier
@@ -2672,8 +2672,8 @@ STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nommer l
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Impossible de nommer l'aéronef...
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Nommer l'aéronef
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Les habitants célèbrent . . .{}Arrivée du premier aéronef à {STATION}!
-STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Écrasement d'un aéronef!{}{COMMA} meurent brulés vifs à {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Crash d'aéronef !{}L'aéronef n'avait plus de carburant, {COMMA} meurent de manière horrible !
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Tragédie aérienne!{}{COMMA} morts brulés vifs à {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Tragédie aérienne !{}L'aéronef n'avait plus de carburant, {COMMA} passagers meurent dans l'incendie!
 STR_A035_DESTINATIONS                                           :{TINYFONT}{BLACK}Destinations:
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Renommer
