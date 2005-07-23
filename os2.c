@@ -35,6 +35,15 @@
 #include <SDL.h>
 #endif
 
+#include "sound/null_s.h"
+#include "sound/sdl_s.h"
+
+#include "video/null_v.h"
+#include "video/sdl_v.h"
+
+#include "music/null_m.h"
+#include "music/os2_m.h"
+
 static inline int strcasecmp(const char* s1, const char* s2)
 {
 	return stricmp(s1, s2);
@@ -634,70 +643,6 @@ void OS2_SwitchToConsoleMode(void)
 	// Change flag from PM to VIO
 	pib->pib_ultype = 3;
 }
-
-/**********************
- * OS/2 MIDI PLAYER
- **********************/
-
-/* Interesting how similar the MCI API in OS/2 is to the Win32 MCI API,
- * eh? Anyone would think they both came from the same place originally! ;)
- */
-
-static long CDECL MidiSendCommand(const char *cmd, ...)
-{
-	va_list va;
-	char buf[512];
-	va_start(va, cmd);
-	vsprintf(buf, cmd, va);
-	va_end(va);
-	return mciSendString(buf, NULL, 0, NULL, 0);
-}
-
-static void OS2MidiPlaySong(const char *filename)
-{
-	MidiSendCommand("close all");
-
-	if (MidiSendCommand("open %s type sequencer alias song", filename) != 0)
-		return;
-
-	MidiSendCommand("play song from 0");
-}
-
-static void OS2MidiStopSong(void)
-{
-	MidiSendCommand("close all");
-}
-
-static void OS2MidiSetVolume(byte vol)
-{
-	MidiSendCommand("set song audio volume %d", ((vol/127)*100));
-}
-
-static bool OS2MidiIsSongPlaying(void)
-{
-	char buf[16];
-	mciSendString("status song mode", buf, sizeof(buf), NULL, 0);
-	return strcmp(buf, "playing") == 0 || strcmp(buf, "seeking") == 0;
-}
-
-static const char *OS2MidiStart(const char * const *parm)
-{
-	return 0;
-}
-
-static void OS2MidiStop(void)
-{
-	MidiSendCommand("close all");
-}
-
-const HalMusicDriver _os2_music_driver = {
-	OS2MidiStart,
-	OS2MidiStop,
-	OS2MidiPlaySong,
-	OS2MidiStopSong,
-	OS2MidiIsSongPlaying,
-	OS2MidiSetVolume,
-};
 
 /**
  * Insert a chunk of text from the clipboard onto the textbuffer. Get TEXT clipboard
