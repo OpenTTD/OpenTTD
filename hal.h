@@ -55,12 +55,6 @@ extern const DriverDesc _video_driver_descs[];
 extern const DriverDesc _sound_driver_descs[];
 extern const DriverDesc _music_driver_descs[];
 
-#if defined(__BEOS__)
-extern const HalMusicDriver _bemidi_music_driver;
-#endif
-
-extern const HalVideoDriver _dedicated_video_driver;
-
 enum DriverType {
 	VIDEO_DRIVER = 0,
 	SOUND_DRIVER = 1,

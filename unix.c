@@ -7,12 +7,14 @@
 #include "hal.h"
 #include "variables.h"
 
+#include "music/bemidi.h"
 #include "music/extmidi.h"
 #include "music/null_m.h"
 
 #include "sound/null_s.h"
 #include "sound/sdl_s.h"
 
+#include "video/dedicated_v.h"
 #include "video/null_v.h"
 #include "video/sdl_v.h"
 

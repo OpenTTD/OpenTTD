@@ -711,6 +711,7 @@ C_SOURCES += widget.c
 C_SOURCES += window.c
 C_SOURCES += music/null_m.c
 C_SOURCES += sound/null_s.c
+C_SOURCES += video/dedicated_v.c
 C_SOURCES += video/null_v.c
 
 CXX_SOURCES =

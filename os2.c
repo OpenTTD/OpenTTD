@@ -29,6 +29,7 @@
 #include "sound/null_s.h"
 #include "sound/sdl_s.h"
 
+#include "video/dedicated_v.h"
 #include "video/null_v.h"
 #include "video/sdl_v.h"
 
