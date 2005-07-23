@@ -3,7 +3,7 @@
 #include "stdafx.h"
 
 #include "openttd.h"
-#include "hal.h"
+#include "music/extmidi.h"
 #include "sound.h"
 #include "string.h"
 #include "variables.h"

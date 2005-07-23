@@ -7,6 +7,15 @@
 #include "hal.h"
 #include "variables.h"
 
+#include "music/extmidi.h"
+#include "music/null.h"
+
+#include "sound/null.h"
+#include "sound/sdl.h"
+
+#include "video/null.h"
+#include "video/sdl.h"
+
 #include <dirent.h>
 #include <unistd.h>
 #include <sys/stat.h>

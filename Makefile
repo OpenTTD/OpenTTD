@@ -335,6 +335,7 @@ ifdef PROFILE
 endif
 
 CDEFS=-DWITH_REV
+CFLAGS += -I. -I-
 
 ifndef DEBUG
 ifndef PROFILE
@@ -624,6 +625,7 @@ C_SOURCES += dedicated.c
 C_SOURCES += depot.c
 C_SOURCES += disaster_cmd.c
 C_SOURCES += dock_gui.c
+C_SOURCES += driver.c
 C_SOURCES += dummy_land.c
 C_SOURCES += economy.c
 C_SOURCES += engine.c
@@ -707,24 +709,32 @@ C_SOURCES += water_cmd.c
 C_SOURCES += waypoint.c
 C_SOURCES += widget.c
 C_SOURCES += window.c
+C_SOURCES += music/null.c
+C_SOURCES += sound/null.c
+C_SOURCES += video/null.c
 
 CXX_SOURCES =
 
 ifdef WITH_SDL
 C_SOURCES += sdl.c
+C_SOURCES += sound/sdl.c
+C_SOURCES += video/sdl.c
 endif
 
 ifdef WIN32
-C_SOURCES += win32.c w32dm.c
+C_SOURCES += win32.c
+C_SOURCES += music/win32.c
+C_SOURCES += sound/win32.c
+C_SOURCES += video/win32.c
 else
-C_SOURCES += extmidi.c unix.c
+C_SOURCES += unix.c
+C_SOURCES += music/extmidi.c
 endif
 
 OBJS = $(C_SOURCES:%.c=%.o) $(CXX_SOURCES:%.cpp=%.o)
 
 ifdef BEOS
-CXX_SOURCES += os/beos/bemidi.cpp
-CFLAGS += -I.
+CXX_SOURCES += music/bemidi.cpp
 endif
 
 ifdef WIN32
@@ -733,7 +743,8 @@ OBJS += winres.o
 endif
 
 ifdef WITH_DIRECTMUSIC
-CXX_SOURCES += w32dm2.cpp
+C_SOURCES += music/dmusic.c
+CXX_SOURCES += music/dmusic2.cpp
 endif
 
 DEPS = $(OBJS:%.o=.deps/%.d)
@@ -1022,7 +1033,7 @@ upgradeconf: $(MAKE_CONFIG)
 ### Internal build rules
 
 # This makes sure the .deps dir is always around.
-DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
+DEPS_MAGIC := $(shell mkdir -p .deps .deps/music .deps/sound .deps/video)
 
 # Introduce the dependencies
 -include $(DEPS)

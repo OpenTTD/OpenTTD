@@ -1,8 +1,6 @@
-#ifdef __BEOS__
-
 #include "stdafx.h"
 #include "openttd.h"
-#include "hal.h"
+#include "music/bemidi.h"
 
 // BeOS System Includes
 #include <MidiSynthFile.h>
@@ -51,5 +49,3 @@ const HalMusicDriver _bemidi_music_driver = {
 	bemidi_is_playing,
 	bemidi_set_volume,
 };
-
-#endif // __BEOS__

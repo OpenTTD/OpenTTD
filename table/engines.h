@@ -5,7 +5,7 @@
   * This file contains all the data for vehicles
   */
 
-#include "../sound.h"
+#include "sound.h"
 
 /** Writes the properties of a vehicle into the EngineInfo struct.
   * @see EngineInfo

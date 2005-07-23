@@ -47,10 +47,6 @@ enum {
 	HALERR_ERROR = 1,
 };
 
-extern const HalMusicDriver _null_music_driver;
-extern const HalVideoDriver _null_video_driver;
-extern const HalSoundDriver _null_sound_driver;
-
 VARDEF HalMusicDriver *_music_driver;
 VARDEF HalSoundDriver *_sound_driver;
 VARDEF HalVideoDriver *_video_driver;
@@ -58,15 +54,6 @@ VARDEF HalVideoDriver *_video_driver;
 extern const DriverDesc _video_driver_descs[];
 extern const DriverDesc _sound_driver_descs[];
 extern const DriverDesc _music_driver_descs[];
-
-#if defined(WITH_SDL)
-extern const HalSoundDriver _sdl_sound_driver;
-extern const HalVideoDriver _sdl_video_driver;
-#endif
-
-#if defined(UNIX)
-extern const HalMusicDriver _extmidi_music_driver;
-#endif
 
 #if defined(__BEOS__)
 extern const HalMusicDriver _bemidi_music_driver;
@@ -86,13 +73,6 @@ enum DriverType {
 
 extern void GameLoop(void);
 extern bool _dbg_screen_rect;
-
-void LoadDriver(int driver, const char *name);
-
-const char *GetDriverParam(const char * const *parm, const char *name);
-bool GetDriverParamBool(const char * const *parm, const char *name);
-int GetDriverParamInt(const char * const *parm, const char *name, int def);
-
 
 
 // Deals with finding savegames

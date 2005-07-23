@@ -2,6 +2,7 @@
 #include "string.h"
 #include "table/strings.h"
 #include "debug.h"
+#include "driver.h"
 #include "saveload.h"
 #include "strings.h"
 #include "map.h"
@@ -64,7 +65,6 @@ extern void HalGameLoop(void);
 
 uint32 _pixels_redrawn;
 bool _dbg_screen_rect;
-static byte _os_version = 0;
 
 /* TODO: usrerror() for errors which are not of an internal nature but
  * caused by the user, i.e. missing files or fatal configuration errors.
@@ -112,104 +112,6 @@ char * CDECL str_fmt(const char *str, ...)
 }
 
 
-// NULL midi driver
-static const char *NullMidiStart(const char * const *parm) { return NULL; }
-static void NullMidiStop(void) {}
-static void NullMidiPlaySong(const char *filename) {}
-static void NullMidiStopSong(void) {}
-static bool NullMidiIsSongPlaying(void) { return true; }
-static void NullMidiSetVolume(byte vol) {}
-
-const HalMusicDriver _null_music_driver = {
-	NullMidiStart,
-	NullMidiStop,
-	NullMidiPlaySong,
-	NullMidiStopSong,
-	NullMidiIsSongPlaying,
-	NullMidiSetVolume,
-};
-
-// NULL video driver
-static void *_null_video_mem;
-static const char *NullVideoStart(const char * const *parm)
-{
-	_screen.width = _screen.pitch = _cur_resolution[0];
-	_screen.height = _cur_resolution[1];
-	_null_video_mem = malloc(_cur_resolution[0]*_cur_resolution[1]);
-	return NULL;
-}
-static void NullVideoStop(void) { free(_null_video_mem); }
-static void NullVideoMakeDirty(int left, int top, int width, int height) {}
-static int NullVideoMainLoop(void)
-{
-	int i = 1000;
-	do {
-		GameLoop();
-		_screen.dst_ptr = _null_video_mem;
-		UpdateWindows();
-	} while (--i);
-	return ML_QUIT;
-}
-
-static bool NullVideoChangeRes(int w, int h) { return false; }
-static void NullVideoFullScreen(bool fs) {}
-
-const HalVideoDriver _null_video_driver = {
-	NullVideoStart,
-	NullVideoStop,
-	NullVideoMakeDirty,
-	NullVideoMainLoop,
-	NullVideoChangeRes,
-	NullVideoFullScreen,
-};
-
-// NULL sound driver
-static const char *NullSoundStart(const char * const *parm) { return NULL; }
-static void NullSoundStop(void) {}
-const HalSoundDriver _null_sound_driver = {
-	NullSoundStart,
-	NullSoundStop,
-};
-
-enum {
-	DF_PRIORITY_MASK = 0xf,
-};
-
-typedef struct {
-	const DriverDesc *descs;
-	const char *name;
-	void *var;
-} DriverClass;
-
-static DriverClass _driver_classes[] = {
-	{_video_driver_descs, "video", &_video_driver},
-	{_sound_driver_descs, "sound", &_sound_driver},
-	{_music_driver_descs, "music", &_music_driver},
-};
-
-static const DriverDesc *GetDriverByName(const DriverDesc *dd, const char *name)
-{
-	do {
-		if (!strcmp(dd->name, name))
-			return dd;
-	} while ((++dd)->name);
-	return NULL;
-}
-
-static const DriverDesc *ChooseDefaultDriver(const DriverDesc *dd)
-{
-	const DriverDesc *best = NULL;
-	int best_pri = -1;
-	do {
-		if ((int)(dd->flags&DF_PRIORITY_MASK) > best_pri && _os_version >= (byte)dd->flags) {
-			best_pri = dd->flags&DF_PRIORITY_MASK;
-			best = dd;
-		}
-	} while ((++dd)->name);
-	return best;
-}
-
-
 void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
 {
 	FILE *in;
@@ -239,56 +141,9 @@ void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
 	return mem;
 }
 
-void LoadDriver(int driver, const char *name)
-{
-	const DriverClass *dc = &_driver_classes[driver];
-	const DriverDesc *dd;
-	const void **var;
-	const void *drv;
-	const char *err;
-	char *parm;
-	char buffer[256];
-	const char *parms[32];
-
-	parms[0] = NULL;
-
-	if (!*name) {
-		dd = ChooseDefaultDriver(dc->descs);
-	} else {
-		// Extract the driver name and put parameter list in parm
-		ttd_strlcpy(buffer, name, sizeof(buffer));
-		parm = strchr(buffer, ':');
-		if (parm) {
-			uint np = 0;
-			// Tokenize the parm.
-			do {
-				*parm++ = 0;
-				if (np < lengthof(parms) - 1)
-					parms[np++] = parm;
-				while (*parm != 0 && *parm != ',')
-					parm++;
-			} while (*parm == ',');
-			parms[np] = NULL;
-		}
-		dd = GetDriverByName(dc->descs, buffer);
-		if (dd == NULL)
-			error("No such %s driver: %s\n", dc->name, buffer);
-	}
-	var = dc->var;
-	if (*var != NULL) ((const HalCommonDriver*)*var)->stop();
-	*var = NULL;
-	drv = dd->drv;
-	if ((err=((const HalCommonDriver*)drv)->start(parms)) != NULL)
-		error("Unable to load driver %s(%s). The error was: %s\n", dd->name, dd->longname, err);
-	*var = drv;
-}
-
 static void showhelp(void)
 {
 	char buf[4096], *p;
-	const DriverClass *dc = _driver_classes;
-	const DriverDesc *dd;
-	int i;
 
 	p = strecpy(buf,
 		"Command line options:\n"
@@ -314,42 +169,11 @@ static void showhelp(void)
 		lastof(buf)
 	);
 
-	for(i=0; i!=lengthof(_driver_classes); i++,dc++) {
-		p += sprintf(p, "List of %s drivers:\n", dc->name);
-		dd = dc->descs;
-		do {
-			p += sprintf(p, "%10s: %s\n", dd->name, dd->longname);
-		} while ((++dd)->name);
-	}
+	GetDriverList(p);
 
 	ShowInfo(buf);
 }
 
-
-const char *GetDriverParam(const char * const *parm, const char *name)
-{
-	const char *p;
-	int len = strlen(name);
-	while ((p = *parm++) != NULL) {
-		if (!strncmp(p,name,len)) {
-			if (p[len] == '=') return p + len + 1;
-			if (p[len] == 0)   return p + len;
-		}
-	}
-	return NULL;
-}
-
-bool GetDriverParamBool(const char * const *parm, const char *name)
-{
-	const char *p = GetDriverParam(parm, name);
-	return p != NULL;
-}
-
-int GetDriverParamInt(const char * const *parm, const char *name, int def)
-{
-	const char *p = GetDriverParam(parm, name);
-	return p != NULL ? atoi(p) : def;
-}
 
 typedef struct {
 	char *opt;
@@ -645,7 +469,6 @@ int ttd_main(int argc, char* argv[])
 
 	// Sample catalogue
 	DEBUG(misc, 1) ("Loading sound effects...");
-	_os_version = GetOSVersion();
 	MxInitialize(11025);
 	SoundInitialize("sample.cat");
 

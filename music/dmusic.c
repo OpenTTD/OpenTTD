@@ -32,7 +32,7 @@
 #include "string.h"
 #include "variables.h"
 #include "sound.h"
-#include "hal.h"
+#include "music/dmusic.h"
 
 static const char * DMusicMidiStart(const char * const *parm);
 static void DMusicMidiStop(void);
