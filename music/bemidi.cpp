@@ -5,7 +5,7 @@
 // BeOS System Includes
 #include <MidiSynthFile.h>
 
-BMidiSynthFile midiSynthFile;
+static BMidiSynthFile midiSynthFile;
 
 static const char *bemidi_start(const char * const *parm)
 {
