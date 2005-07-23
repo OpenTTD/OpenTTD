@@ -1030,10 +1030,10 @@ static const SaveLoad _player_economy_desc[] = {
 	// these were changed to 64-bit in savegame format 2
 	SLE_CONDVAR(PlayerEconomyEntry,income,							SLE_INT32, 0, 1),
 	SLE_CONDVAR(PlayerEconomyEntry,expenses,						SLE_INT32, 0, 1),
-	SLE_CONDVAR(PlayerEconomyEntry,company_value,				SLE_INT32, 0, 1),
+	SLE_CONDVAR(PlayerEconomyEntry,company_value, SLE_FILE_I32 | SLE_VAR_I64, 0, 1),
 	SLE_CONDVAR(PlayerEconomyEntry,income,	SLE_FILE_I64 | SLE_VAR_I32, 2, 255),
 	SLE_CONDVAR(PlayerEconomyEntry,expenses,SLE_FILE_I64 | SLE_VAR_I32, 2, 255),
-	SLE_CONDVAR(PlayerEconomyEntry,company_value,SLE_FILE_I64 | SLE_VAR_I32, 2, 255),
+	SLE_CONDVAR(PlayerEconomyEntry,company_value, SLE_INT64, 2, 255),
 
 	SLE_VAR(PlayerEconomyEntry,delivered_cargo,			SLE_INT32),
 	SLE_VAR(PlayerEconomyEntry,performance_history,	SLE_INT32),
