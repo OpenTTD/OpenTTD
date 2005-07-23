@@ -709,23 +709,23 @@ C_SOURCES += water_cmd.c
 C_SOURCES += waypoint.c
 C_SOURCES += widget.c
 C_SOURCES += window.c
-C_SOURCES += music/null.c
-C_SOURCES += sound/null.c
-C_SOURCES += video/null.c
+C_SOURCES += music/null_m.c
+C_SOURCES += sound/null_s.c
+C_SOURCES += video/null_v.c
 
 CXX_SOURCES =
 
 ifdef WITH_SDL
 C_SOURCES += sdl.c
-C_SOURCES += sound/sdl.c
-C_SOURCES += video/sdl.c
+C_SOURCES += sound/sdl_s.c
+C_SOURCES += video/sdl_v.c
 endif
 
 ifdef WIN32
 C_SOURCES += win32.c
-C_SOURCES += music/win32.c
-C_SOURCES += sound/win32.c
-C_SOURCES += video/win32.c
+C_SOURCES += music/win32_m.c
+C_SOURCES += sound/win32_s.c
+C_SOURCES += video/win32_v.c
 else
 C_SOURCES += unix.c
 C_SOURCES += music/extmidi.c

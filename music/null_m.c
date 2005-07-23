@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "openttd.h"
-#include "music/null.h"
+#include "music/null_m.h"
 
 static const char* NullMidiStart(const char* const* parm) { return NULL; }
 static void NullMidiStop(void) {}

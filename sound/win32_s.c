@@ -3,7 +3,7 @@
 #include "driver.h"
 #include "functions.h"
 #include "mixer.h"
-#include "sound/win32.h"
+#include "sound/win32_s.h"
 #include <windows.h>
 
 static HWAVEOUT _waveout;

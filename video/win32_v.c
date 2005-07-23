@@ -6,7 +6,7 @@
 #include "network.h"
 #include "variables.h"
 #include "window.h"
-#include "video/win32.h"
+#include "video/win32_v.h"
 #include <windows.h>
 
 static struct {

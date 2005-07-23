@@ -8,13 +8,13 @@
 #include "variables.h"
 
 #include "music/extmidi.h"
-#include "music/null.h"
+#include "music/null_m.h"
 
-#include "sound/null.h"
-#include "sound/sdl.h"
+#include "sound/null_s.h"
+#include "sound/sdl_s.h"
 
-#include "video/null.h"
-#include "video/sdl.h"
+#include "video/null_v.h"
+#include "video/sdl_v.h"
 
 #include <dirent.h>
 #include <unistd.h>

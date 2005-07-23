@@ -18,14 +18,14 @@
 #include "driver.h"
 
 #include "music/dmusic.h"
-#include "music/null.h"
-#include "music/win32.h"
+#include "music/null_m.h"
+#include "music/win32_m.h"
 
-#include "sound/null.h"
-#include "sound/win32.h"
+#include "sound/null_s.h"
+#include "sound/win32_s.h"
 
-#include "video/null.h"
-#include "video/win32.h"
+#include "video/null_v.h"
+#include "video/win32_v.h"
 
 static bool _has_console;
 

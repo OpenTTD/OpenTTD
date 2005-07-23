@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "openttd.h"
-#include "music/win32.h"
+#include "music/win32_m.h"
 #include <windows.h>
 
 static struct {

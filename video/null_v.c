@@ -2,7 +2,7 @@
 #include "openttd.h"
 #include "gfx.h"
 #include "variables.h"
-#include "video/null.h"
+#include "video/null_v.h"
 #include "window.h"
 
 static void* _null_video_mem = NULL;

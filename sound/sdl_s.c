@@ -3,7 +3,7 @@
 #include "driver.h"
 #include "mixer.h"
 #include "sdl.h"
-#include "sound/sdl.h"
+#include "sound/sdl_s.h"
 #include <SDL.h>
 
 static void CDECL fill_sound_buffer(void *userdata, Uint8 *stream, int len)

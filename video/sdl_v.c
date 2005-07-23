@@ -6,7 +6,7 @@
 #include "macros.h"
 #include "sdl.h"
 #include "window.h"
-#include "video/sdl.h"
+#include "video/sdl_v.h"
 #include <SDL.h>
 #include "network.h"
 #include "variables.h"
