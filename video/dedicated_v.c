@@ -18,6 +18,10 @@
 #	include <sys/types.h>
 #	include <unistd.h>
 #	include <conio.h>
+
+#	define INCL_DOS
+#	include <os2.h>
+
 #	define STDIN 0  /* file descriptor for standard input */
 
 /** 
