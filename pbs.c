@@ -40,7 +40,7 @@ static const byte encrt_to_reserved[16] = {
  * to the track(dir)s that are unavailable due to reservations.
  * 0xFFFF are invalid entries and should never be accessed.
  */
-static const int16 encrt_to_unavail[16] = {
+static const uint16 encrt_to_unavail[16] = {
 	0x0000, 0x3F3F, 0x3F3F, 0x3737, 0x3B3B, 0x1F1F, 0x2F2F, 0xFFFF,
 	0xFFFF, 0xFFFF, 0xFFFF, 0x3F3F, 0x3F3F, 0x3F3F, 0x3F3F, 0xFFFF
 };
@@ -79,7 +79,7 @@ void PBSReserveTrack(TileIndex tile, Track track) {
 			break;
 		default:
 			return;
-	};
+	}
 	// if debugging, mark tile dirty to show reserved status
 	if (_debug_pbs_level >= 1)
 		MarkTileDirtyByTile(tile);
@@ -100,7 +100,7 @@ byte PBSTileReserved(TileIndex tile) {
 				byte res = encrt_to_reserved[(_m[tile].m4 & 0xF0) >> 4];
 				assert(res != 0xFF);
 				return res;
-			};
+			}
 		case MP_TUNNELBRIDGE:
 			return (_m[tile].m4 & 3);
 		case MP_STATION:
@@ -117,8 +117,8 @@ byte PBSTileReserved(TileIndex tile) {
 			return HASBIT(_m[tile].m5, 3) ? 1 : 2;
 		default:
 			return 0;
-	};
-};
+	}
+}
 
 uint16 PBSTileUnavail(TileIndex tile) {
 	assert(IsValidTile(tile));
@@ -132,7 +132,7 @@ uint16 PBSTileUnavail(TileIndex tile) {
 				uint16 res = encrt_to_unavail[(_m[tile].m4 & 0xF0) >> 4];
 				assert(res != 0xFFFF);
 				return res;
-			};
+			}
 		case MP_TUNNELBRIDGE:
 			return (_m[tile].m4 & 3) | ((_m[tile].m4 & 3) << 8);
 		case MP_STATION:
@@ -144,8 +144,8 @@ uint16 PBSTileUnavail(TileIndex tile) {
 			return (HASBIT(_m[tile].m5, 0)) ? TRACKDIR_BIT_MASK : 0;
 		default:
 			return 0;
-	};
-};
+	}
+}
 
 void PBSClearTrack(TileIndex tile, Track track) {
 	assert(IsValidTile(tile));
@@ -183,11 +183,11 @@ void PBSClearTrack(TileIndex tile, Track track) {
 			break;
 		default:
 			return;
-	};
+	}
 	// if debugging, mark tile dirty to show reserved status
 	if (_debug_pbs_level >= 1)
 		MarkTileDirtyByTile(tile);
-};
+}
 
 void PBSClearPath(TileIndex tile, Trackdir trackdir, TileIndex end_tile, Trackdir end_trackdir) {
 	uint16 res;
@@ -209,7 +209,7 @@ void PBSClearPath(TileIndex tile, Trackdir trackdir, TileIndex end_tile, Trackdi
 		} else {
 			byte exitdir = TrackdirToExitdir(trackdir);
 			tile = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDir(exitdir));
-		};
+		}
 
 		res = PBSTileReserved(tile);
 		res |= res << 8;
@@ -217,7 +217,7 @@ void PBSClearPath(TileIndex tile, Trackdir trackdir, TileIndex end_tile, Trackdi
 		trackdir = FindFirstBit2x64(res);
 
 	} while (res != 0);
-};
+}
 
 bool PBSIsPbsSignal(TileIndex tile, Trackdir trackdir)
 {
@@ -240,7 +240,7 @@ bool PBSIsPbsSignal(TileIndex tile, Trackdir trackdir)
 		return true;
 	else
 		return false;
-};
+}
 
 typedef struct SetSignalsDataPbs {
 	int cur;
@@ -285,7 +285,7 @@ bool PBSIsPbsSegment(uint tile, Trackdir trackdir)
 		if (!PBSIsPbsSignal(tile, bit) && !PBSIsPbsSignal(tile, bit | 8))
 			return false;
 		result = true;
-	};
+	}
 
 	return result;
 }

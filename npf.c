@@ -70,7 +70,7 @@ bool IsEndOfLine(TileIndex tile, Trackdir trackdir, RailType enginetype)
 
 		return false;
 	}
-};
+}
 
 #if 0
 static uint NTPHash(uint key1, uint key2)
@@ -127,7 +127,7 @@ static TileIndex CalcClosestStationTile(StationID station, TileIndex tile)
 
 	// return the tile of our target coordinates
 	return TileXY(x, y);
-};
+}
 
 /* On PBS pathfinding runs, this is called before pathfinding ends (BeforeExit aystar callback), and will
  * reserve the appropriate tracks, if needed. */

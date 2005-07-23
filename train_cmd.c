@@ -1310,7 +1310,7 @@ TileIndex GetVehicleTileOutOfTunnel(const Vehicle *v, bool reverse)
  	}
  	return tile;
 
-};
+}
 
 static void ReverseTrainDirection(Vehicle *v)
 {
