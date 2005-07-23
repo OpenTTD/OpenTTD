@@ -1,13 +1,10 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "variables.h"
-#include "window.h"
 #include "string.h"
 #include "table/strings.h"
-#include "hal.h"
 #include "gfx.h"
 #include "gui.h"
-#include "saveload.h"
 #include "functions.h"
 #include "macros.h"
 
@@ -22,18 +19,12 @@
 #include <dos.h>
 
 #define INCL_DOS
-#define INCL_OS2MM
 #define INCL_WIN
 #define INCL_WINCLIPBOARD
 
 #include <os2.h>
-#include <os2me.h>
 
 #include <i86.h>
-
-#if defined(WITH_SDL)
-#include <SDL.h>
-#endif
 
 #include "sound/null_s.h"
 #include "sound/sdl_s.h"

@@ -59,10 +59,6 @@ extern const DriverDesc _music_driver_descs[];
 extern const HalMusicDriver _bemidi_music_driver;
 #endif
 
-#if defined(__OS2__)
-extern const HalMusicDriver _os2_music_driver;
-#endif
-
 extern const HalVideoDriver _dedicated_video_driver;
 
 enum DriverType {
