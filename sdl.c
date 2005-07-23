@@ -628,13 +628,7 @@ static int SdlVideoMainLoop(void)
 
 static bool SdlVideoChangeRes(int w, int h)
 {
-	/* See if the mode is available. Ignore return value
-	 * since we will get back a valid resolution anyways. Either exactly
-	 * the same one, or one clamped to the closest available one */
-	GetAvailableVideoMode(&w, &h);
-
-	CreateMainSurface(w, h);
-	return true;
+	return CreateMainSurface(w, h);
 }
 
 static void SdlVideoFullScreen(bool full_screen)
