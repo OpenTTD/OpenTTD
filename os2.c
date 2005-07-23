@@ -620,22 +620,6 @@ void DeterminePaths(void)
 	mkdir(_path.scenario_dir);
 }
 
-// FUNCTION: OS2_SwitchToConsoleMode
-//
-// Switches OpenTTD to a console app at run-time, instead of a PM app
-// Necessary to see stdout, etc
-
-void OS2_SwitchToConsoleMode(void)
-{
-	PPIB pib;
-	PTIB tib;
-
-	DosGetInfoBlocks(&tib, &pib);
-
-	// Change flag from PM to VIO
-	pib->pib_ultype = 3;
-}
-
 /**
  * Insert a chunk of text from the clipboard onto the textbuffer. Get TEXT clipboard
  * and append this up to the maximum length (either absolute or screenlength). If maxlength

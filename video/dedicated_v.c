@@ -3,6 +3,7 @@
 #include "debug.h"
 #include "functions.h"
 #include "network.h"
+#include "video/dedicated_v.h"
 
 #ifdef ENABLE_NETWORK
 
@@ -11,12 +12,6 @@
 #include "command.h"
 #include "console.h"
 #include "variables.h"
-#include "video/dedicated_v.h"
-
-#ifdef WIN32
-#	include <windows.h> /* GetTickCount */
-#	include <conio.h>
-#endif
 
 #ifdef __OS2__
 #	include <sys/time.h> /* gettimeofday */
@@ -25,7 +20,19 @@
 #	include <conio.h>
 #	define STDIN 0  /* file descriptor for standard input */
 
-	extern void OS2_SwitchToConsoleMode();
+/** 
+ * Switches OpenTTD to a console app at run-time, instead of a PM app
+ * Necessary to see stdout, etc. */
+static void OS2_SwitchToConsoleMode(void)
+{
+	PPIB pib;
+	PTIB tib;
+
+	DosGetInfoBlocks(&tib, &pib);
+
+	// Change flag from PM to VIO
+	pib->pib_ultype = 3;
+}
 #endif
 
 #ifdef UNIX
@@ -34,14 +41,7 @@
 #	include <unistd.h>
 #	include <signal.h>
 #	define STDIN 0  /* file descriptor for standard input */
-#endif
 
-static void *_dedicated_video_mem;
-
-extern bool SafeSaveOrLoad(const char *filename, int mode, int newgm);
-extern void SwitchMode(int new_mode);
-
-#ifdef UNIX
 /* Signal handlers */
 static void DedicatedSignalHandler(int sig)
 {
@@ -51,13 +51,15 @@ static void DedicatedSignalHandler(int sig)
 #endif
 
 #ifdef WIN32
+#include <windows.h> /* GetTickCount */
+#include <conio.h>
 #include <time.h>
-HANDLE hEvent;
+static HANDLE hEvent;
 static HANDLE hThread; // Thread to close
 static char _win_console_thread_buffer[200];
 
 /* Windows Console thread. Just loop and signal when input has been received */
-void WINAPI CheckForConsoleInput(void)
+static void WINAPI CheckForConsoleInput(void)
 {
 	while (true) {
 		fgets(_win_console_thread_buffer, lengthof(_win_console_thread_buffer), stdin);
@@ -65,7 +67,7 @@ void WINAPI CheckForConsoleInput(void)
 	}
 }
 
-void CreateWindowsConsoleThread(void)
+static void CreateWindowsConsoleThread(void)
 {
 	static char tbuffer[9];
 	DWORD dwThreadId;
@@ -81,7 +83,7 @@ void CreateWindowsConsoleThread(void)
 	DEBUG(misc, 0) ("Windows console thread started...");
 }
 
-void CloseWindowsConsoleThread(void)
+static void CloseWindowsConsoleThread(void)
 {
 	CloseHandle(hThread);
 	CloseHandle(hEvent);
@@ -89,6 +91,13 @@ void CloseWindowsConsoleThread(void)
 }
 
 #endif
+
+
+static void *_dedicated_video_mem;
+
+extern bool SafeSaveOrLoad(const char *filename, int mode, int newgm);
+extern void SwitchMode(int new_mode);
+
 
 static const char *DedicatedVideoStart(const char * const *parm)
 {
@@ -132,7 +141,6 @@ static bool InputWaiting(void)
 {
 	struct timeval tv;
 	fd_set readfds;
-	byte ret;
 
 	tv.tv_sec = 0;
 	tv.tv_usec = 1;
@@ -141,21 +149,29 @@ static bool InputWaiting(void)
 	FD_SET(STDIN, &readfds);
 
 	/* don't care about writefds and exceptfds: */
-	ret = select(STDIN + 1, &readfds, NULL, NULL, &tv);
-
-	if (ret > 0)
-		return true;
-
-	return false;
+	return select(STDIN + 1, &readfds, NULL, NULL, &tv) > 0;
 }
+
+static uint32 GetTime(void)
+{
+	struct timeval tim;
+
+	gettimeofday(&tim, NULL);
+	return tim.tv_usec / 1000 + tim.tv_sec * 1000;
+}
+
 #else
+
 static bool InputWaiting(void)
 {
-	if (WaitForSingleObject(hEvent, 1) == WAIT_OBJECT_0)
-		return true;
-
-	return false;
+	return WaitForSingleObject(hEvent, 1) == WAIT_OBJECT_0;
 }
+
+static uint32 GetTime(void)
+{
+	return GetTickCount();
+}
+
 #endif
 
 static void DedicatedHandleKeyInput(void)
@@ -195,18 +211,10 @@ static void DedicatedHandleKeyInput(void)
 
 static int DedicatedVideoMainLoop(void)
 {
-#ifndef WIN32
-	struct timeval tim;
-#endif
 	uint32 next_tick;
 	uint32 cur_ticks;
 
-#ifdef WIN32
-	next_tick = GetTickCount() + 30;
-#else
-	gettimeofday(&tim, NULL);
-	next_tick = (tim.tv_usec / 1000) + 30 + (tim.tv_sec * 1000);
-#endif
+	next_tick = GetTime() + 30;
 
 	/* Signal handlers */
 #ifdef UNIX
@@ -254,12 +262,7 @@ static int DedicatedVideoMainLoop(void)
 		if (!_dedicated_forks)
 			DedicatedHandleKeyInput();
 
-#ifdef WIN32
-		cur_ticks = GetTickCount();
-#else
-		gettimeofday(&tim, NULL);
-		cur_ticks = (tim.tv_usec / 1000) + (tim.tv_sec * 1000);
-#endif
+		cur_ticks = GetTime();
 
 		if (cur_ticks >= next_tick) {
 			next_tick += 30;
@@ -272,19 +275,7 @@ static int DedicatedVideoMainLoop(void)
 	}
 }
 
-
-const HalVideoDriver _dedicated_video_driver = {
-	DedicatedVideoStart,
-	DedicatedVideoStop,
-	DedicatedVideoMakeDirty,
-	DedicatedVideoMainLoop,
-	DedicatedVideoChangeRes,
-	DedicatedVideoFullScreen,
-};
-
 #else
-
-static void *_dedicated_video_mem;
 
 static const char *DedicatedVideoStart(const char * const *parm)
 {
@@ -293,11 +284,13 @@ static const char *DedicatedVideoStart(const char * const *parm)
 	return NULL;
 }
 
-static void DedicatedVideoStop(void) { free(_dedicated_video_mem); }
+static void DedicatedVideoStop(void) {}
 static void DedicatedVideoMakeDirty(int left, int top, int width, int height) {}
 static bool DedicatedVideoChangeRes(int w, int h) { return false; }
 static void DedicatedVideoFullScreen(bool fs) {}
 static int DedicatedVideoMainLoop(void) { return ML_QUIT; }
+
+#endif /* ENABLE_NETWORK */
 
 const HalVideoDriver _dedicated_video_driver = {
 	DedicatedVideoStart,
@@ -307,5 +300,3 @@ const HalVideoDriver _dedicated_video_driver = {
 	DedicatedVideoChangeRes,
 	DedicatedVideoFullScreen,
 };
-
-#endif /* ENABLE_NETWORK */
