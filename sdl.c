@@ -17,7 +17,7 @@ static int _sdl_usage;
 
 #ifdef DYNAMICALLY_LOADED_SDL
 
-bool LoadLibraryList(void **proc, const char *dll);
+#include "win32.h"
 
 #define M(x) x "\0"
 static const char sdl_files[] =
@@ -59,7 +59,7 @@ static const char *LoadSdlDLL(void)
 {
 	if (sdl_proc.SDL_Init != NULL)
 		return NULL;
-	if (!LoadLibraryList((void**)&sdl_proc, sdl_files))
+	if (!LoadLibraryList((Function*)&sdl_proc, sdl_files))
 		return "Unable to load sdl.dll";
 	return NULL;
 }

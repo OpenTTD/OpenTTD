@@ -14,6 +14,7 @@
 #include <io.h>
 #include <fcntl.h>
 #include "variables.h"
+#include "win32.h"
 
 #include "driver.h"
 
@@ -22,10 +23,12 @@
 #include "music/win32_m.h"
 
 #include "sound/null_s.h"
+#include "sound/sdl_s.h"
 #include "sound/win32_s.h"
 
 #include "video/dedicated_v.h"
 #include "video/null_v.h"
+#include "video/sdl_v.h"
 #include "video/win32_v.h"
 
 static bool _has_console;
@@ -36,23 +39,20 @@ static bool _has_console;
 
 
 // Helper function needed by dynamically loading SDL
-bool LoadLibraryList(void **proc, const char *dll)
+bool LoadLibraryList(Function proc[], const char* dll)
 {
-	HMODULE lib;
-	void *p;
-
 	while (*dll != '\0') {
-		lib = LoadLibrary(dll);
-		if (lib == NULL)
-			return false;
+		HMODULE lib = LoadLibrary(dll);
+
+		if (lib == NULL) return false;
 		while (true) {
-			while(*dll++ != '\0');
-			if (*dll == '\0')
-				break;
+		  	FARPROC p;
+
+			while (*dll++ != '\0');
+			if (*dll == '\0') break;
 			p = GetProcAddress(lib, dll);
-			if (p == NULL)
-				return false;
-			*proc++ = p;
+			if (p == NULL) return false;
+			*proc++ = (Function)p;
 		}
 		dll++;
 	}
@@ -181,7 +181,7 @@ static char *PrintModuleList(char *output)
 	BOOL res;
 	int count,i;
 
-	if (LoadLibraryList((void*)&EnumProcessModules, "psapi.dll\0EnumProcessModules\0")) {
+	if (LoadLibraryList((Function*)&EnumProcessModules, "psapi.dll\0EnumProcessModules\0")) {
 		proc = OpenProcess(PROCESS_ALL_ACCESS, FALSE, GetCurrentProcessId());
 		if (proc) {
 			res = EnumProcessModules(proc, modules, sizeof(modules), &needed);
@@ -241,15 +241,15 @@ static const char wininet_files[] =
 static WinInetProcs _wininet;
 
 
-static char *SubmitCrashReport(HWND wnd, void *msg, size_t msglen, const char *arg)
+static const char *SubmitCrashReport(HWND wnd, void *msg, size_t msglen, const char *arg)
 {
 	HINTERNET inet, conn, http;
-	char *err = NULL;
+	const char *err = NULL;
 	DWORD code, len;
 	static char buf[100];
 	char buff[100];
 
-	if (_wininet.InternetOpen == NULL && !LoadLibraryList((void**)&_wininet, wininet_files)) return "can't load wininet.dll";
+	if (_wininet.InternetOpen == NULL && !LoadLibraryList((Function*)&_wininet, wininet_files)) return "can't load wininet.dll";
 
 	inet = _wininet.InternetOpen("OTTD", INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0 );
 	if (inet == NULL) { err = "internetopen failed"; goto error1; }
@@ -368,7 +368,7 @@ static BOOL CALLBACK CrashDialogFunc(HWND wnd,UINT msg,WPARAM wParam,LPARAM lPar
 			break;
 		}
 		case 14: { // Submit crash report
-			char *s;
+			const char *s;
 
 			SetCursor(LoadCursor(NULL, IDC_WAIT));
 
