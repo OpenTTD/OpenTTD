@@ -1,3 +1,5 @@
+# $Id$
+
 # This Makefile is partially based on "a completely generic Makefile",
 # originally created by Justin Husted <husted@cs>
 #
