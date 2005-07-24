@@ -361,7 +361,7 @@ void DrawGroundSpriteAt(uint32 image, int32 x, int32 y, byte z)
 	ViewportDrawer *vd = _cur_vd;
 	TileSpriteToDraw *ts;
 
-	assert((image & 0x3FFF) < NUM_SPRITES);
+	assert((image & SPRITE_MASK) < MAX_SPRITES);
 
 	if (vd->spritelist_mem >= vd->eof_spritelist_mem) {
 		DEBUG(misc, 0) ("Out of sprite mem");
@@ -403,7 +403,7 @@ static void AddCombinedSprite(uint32 image, int x, int y, byte z)
 {
 	const ViewportDrawer *vd = _cur_vd;
 	Point pt = RemapCoords(x, y, z);
-	const SpriteDimension *sd = GetSpriteDimension(image & 0x3FFF);
+	const SpriteDimension *sd = GetSpriteDimension(image & SPRITE_MASK);
 
 	if (pt.x + sd->xoffs >= vd->dpi.left + vd->dpi.width ||
 			pt.x + sd->xoffs + sd->xsize <= vd->dpi.left ||
@@ -422,7 +422,7 @@ void AddSortableSpriteToDraw(uint32 image, int x, int y, int w, int h, byte dz, 
 	const SpriteDimension *sd;
 	Point pt;
 
-	assert((image & 0x3FFF) < NUM_SPRITES);
+	assert((image & SPRITE_MASK) < MAX_SPRITES);
 
 	if (vd->combine_sprites == 2) {
 		AddCombinedSprite(image, x, y, z);
@@ -462,7 +462,7 @@ void AddSortableSpriteToDraw(uint32 image, int x, int y, int w, int h, byte dz, 
 
 	pt = RemapCoords(x, y, z);
 
-	sd = GetSpriteDimension(image & 0x3FFF);
+	sd = GetSpriteDimension(image & SPRITE_MASK);
 	if ((ps->left = (pt.x += sd->xoffs)) >= vd->dpi.left + vd->dpi.width ||
 			(ps->right = (pt.x + sd->xsize)) <= vd->dpi.left ||
 			(ps->top = (pt.y += sd->yoffs)) >= vd->dpi.top + vd->dpi.height ||
@@ -494,7 +494,7 @@ void AddChildSpriteScreen(uint32 image, int x, int y)
 	ViewportDrawer *vd = _cur_vd;
 	ChildScreenSpriteToDraw *cs;
 
-	assert((image & 0x3FFF) < NUM_SPRITES);
+	assert((image & SPRITE_MASK) < MAX_SPRITES);
 
 	if (vd->spritelist_mem >= vd->eof_spritelist_mem) {
 		DEBUG(misc, 0) ("Out of sprite mem");

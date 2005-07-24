@@ -606,7 +606,7 @@ void InputLoop(void);
 void UpdateWindows(void);
 void InvalidateWidget(Window *w, byte widget_index);
 
-void GuiShowTooltips(uint16 string_id);
+void GuiShowTooltips(StringID string_id);
 
 void UnclickWindowButtons(Window *w);
 void UnclickSomeWindowButtons(Window *w, uint32 mask);

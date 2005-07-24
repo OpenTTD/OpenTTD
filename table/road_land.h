@@ -6,27 +6,27 @@
 
 static const DrawRoadSeqStruct _road_display_datas_0[] = {
 	TILE_SEQ_BEGIN(0xA4A)
-	TILE_SEQ_LINE(0x8584, 0, 15, 16, 1)
+	TILE_SEQ_LINE(0x584 | PALETTE_MODIFIER_COLOR, 0, 15, 16, 1)
 	TILE_SEQ_END()
 };
 
 static const DrawRoadSeqStruct _road_display_datas_1[] = {
 	TILE_SEQ_BEGIN(0xA4A)
 	TILE_SEQ_LINE(0x580, 0, 0, 1, 16)
-	TILE_SEQ_LINE(0x8581, 15, 0, 1, 16)
+	TILE_SEQ_LINE(0x581 | PALETTE_MODIFIER_COLOR, 15, 0, 1, 16)
 	TILE_SEQ_END()
 };
 
 static const DrawRoadSeqStruct _road_display_datas_2[] = {
 	TILE_SEQ_BEGIN(0xA4A)
 	TILE_SEQ_LINE(0x582, 0, 0, 16, 1)
-	TILE_SEQ_LINE(0x8583, 0, 15, 16, 1)
+	TILE_SEQ_LINE(0x583 | PALETTE_MODIFIER_COLOR, 0, 15, 16, 1)
 	TILE_SEQ_END()
 };
 
 static const DrawRoadSeqStruct _road_display_datas_3[] = {
 	TILE_SEQ_BEGIN(0xA4A)
-	TILE_SEQ_LINE(0x8585, 15, 0, 1, 16)
+	TILE_SEQ_LINE(0x585 | PALETTE_MODIFIER_COLOR, 15, 0, 1, 16)
 	TILE_SEQ_END()
 };
 

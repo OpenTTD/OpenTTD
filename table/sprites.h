@@ -3,23 +3,25 @@
 #ifndef SPRITES_H
 #define SPRITES_H
 
-/* NOTE:
+/** @file sprites.h
+	This file contails all sprite-related enums and defines. These consist mainly of
+  the sprite numbers and a bunch of masks and macros to handle sprites and to get
+  rid of all the magic numbers in the code.
+
+@NOTE:
 	ALL SPRITE NUMBERS BELOW 5126 are in the main files
 	SPR_CANALS_BASE is in canalsw.grf
 	SPR_SLOPES_BASE is in trkfoundw.grf
 	SPR_OPENTTD_BASE is in openttd.grf
-*/
 
-/*
 	All elements which consist of two elements should
 	have the same name and then suffixes
 		_GROUND and _BUILD for building-type sprites
 		_REAR and _FRONT for transport-type sprites (tiles where vehicles are on)
 	These sprites are split because of the Z order of the elements
 		(like some parts of a bridge are behind the vehicle, while others are before)
-*/
 
-/*
+
 	All sprites which are described here are referenced only one to a handful of times
 	throughout the code. When introducing new sprite enums, use meaningful names.
 	Don't be lazy and typing, and only use abbrevations when their meaning is clear or
@@ -29,6 +31,8 @@
 	30 characters in length. If your editor doen't help you simplifying your work,
 	get a proper editor. If your Operating Systems don't have any decent editors,
 	get a proper Operating System.
+
+	@todo Split the "Sprites" enum into smaller chunks and document them
 */
 
 
@@ -869,7 +873,7 @@ enum Sprites {
 	SPR_IMG_REMOVE				= 714
 };
 
-/* Cursor sprite numbers */
+/** Cursor sprite numbers */
 typedef enum CursorSprites {
 	/* Terraform */
 	/* Cursors */
@@ -940,85 +944,127 @@ typedef enum CursorSprites {
 	SPR_CURSOR_ROAD_TUNNEL    = 2433,
 } CursorSprite;
 
-// Animation macro in table/animcursors.h (_animcursors[])
+/// Animation macro in table/animcursors.h (_animcursors[])
 enum AnimCursors {
-	ANIMCURSOR_DEMOLISH     = -1,	//  704 -  707 - demolish dynamite
-	ANIMCURSOR_LOWERLAND    = -2,	//  699 -  701 - lower land tool
-	ANIMCURSOR_RAISELAND    = -3,	//  696 -  698 - raise land tool
-	ANIMCURSOR_PICKSTATION  = -4,	//  716 -  718 - goto-order icon
-	ANIMCURSOR_BUILDSIGNALS	= -5,	// 1292 - 1293 - build signal
+	ANIMCURSOR_DEMOLISH     = -1,	///<  704 -  707 - demolish dynamite
+	ANIMCURSOR_LOWERLAND    = -2,	///<  699 -  701 - lower land tool
+	ANIMCURSOR_RAISELAND    = -3,	///<  696 -  698 - raise land tool
+	ANIMCURSOR_PICKSTATION  = -4,	///<  716 -  718 - goto-order icon
+	ANIMCURSOR_BUILDSIGNALS	= -5,	///< 1292 - 1293 - build signal
 };
 
-enum {
-	MAX_SPRITES = 0x3FFF, //the highest number a sprite can have
+/**
+  * Bitmask setup. For the graphics system, 32 bits are used to define
+  * the sprite to be displayed. This variable contains various information:<p>
+	* <ul><li> SPRITE_WIDTH is the number of bits used for the actual sprite to be displayed.
+  * This always starts at bit 0.</li>
+  * <li> TRANSPARENT_BIT is the bit number which toggles sprite transparency</li>
+  * <li> RECOLOR_BIT toggles the recoloring system</li>
+  * <li> PALETTE_SPRITE_WIDTH and PALETTE_SPRITE_START determine the position and number of
+  * bits used for the recoloring process. For transparency, it must be 0x322.</li>
+  */
+enum SpriteSetup {
+	TRANSPARENT_BIT = 31,       ///< toggles transparency in the sprite
+	RECOLOR_BIT = 15,           ///< toggles recoloring in the sprite
+	PALETTE_SPRITE_START = 16,  ///< number of the first bit of the sprite containing the recolor palette
+	PALETTE_SPRITE_WIDTH = 11,  ///< number of bits of the sprite containing the recolor palette
+	SPRITE_WIDTH = 14,          ///< number of bits for the sprite number
 };
 
-/*
-	these numbers change the colors of the palette for a sprite
-	both need to be fed a sprite which contains the "new" colors
+/**
+	these masks change the colors of the palette for a sprite.
+	Apart from this bit, a sprite number is needed to define
+  the palette used for recoloring. This palette is stored
+	in the bits marked by PALETTE_SPRITE_MASK.
+  @note Do not modify this enum. Alter SpriteSetup instead
+  @see SpriteSetup
 */
 enum Modifiers {
-	PALETTE_MODIFIER_TRANSPARENT 	= 0x4000,
-	PALETTE_MODIFIER_COLOR 				= 0x8000,
+	///when a sprite is to be displayed transparently, this bit needs to be set.
+	PALETTE_MODIFIER_TRANSPARENT 	= 1 << TRANSPARENT_BIT,
+	///this bit is set when a recoloring process is in action
+	PALETTE_MODIFIER_COLOR 				= 1 << RECOLOR_BIT,
 };
 
+/** Masks needed for sprite operations.
+  * @note Do not modify this enum. Alter SpriteSetup instead
+  * @see SpriteSetup
+  */
+enum SpriteMasks {
+	///Maximum number of sprites that can be loaded at a given time.
+	MAX_SPRITES = (1 << SPRITE_WIDTH) - 1,
+	///The mask to for the main sprite
+	SPRITE_MASK = MAX_SPRITES,
+	///The mask for the auxiliary sprite (the one that takes care of recoloring)
+	PALETTE_SPRITE_MASK = ((1 << PALETTE_SPRITE_WIDTH) - 1) << PALETTE_SPRITE_START,
+};
+
+assert_compile( (1 << TRANSPARENT_BIT & SPRITE_MASK) == 0 );
+assert_compile( (1 << RECOLOR_BIT & SPRITE_MASK) == 0 );
+assert_compile( TRANSPARENT_BIT != RECOLOR_BIT );
+assert_compile( (1 << TRANSPARENT_BIT & PALETTE_SPRITE_MASK) == 0);
+assert_compile( (1 << RECOLOR_BIT & PALETTE_SPRITE_MASK) == 0 );
+assert_compile( (PALETTE_SPRITE_MASK & SPRITE_MASK) == 0 );
+assert_compile( SPRITE_WIDTH + PALETTE_SPRITE_WIDTH <= 30 );
+
+#define PALETTE_RECOLOR_SPRITE(a) (a << PALETTE_SPRITE_START | PALETTE_MODIFIER_COLOR)
 enum PaletteSprites {
 	//note: these numbers are already the modified once the renderer needs.
 	//the actual sprite number is the upper 16 bits of the number
 
-	//Here a puslating red tile is drawn if you try to build a wrong tunnel or raise/lower land where it is not possible
-	PALETTE_TILE_RED_PULSATING 	= 0x3038000,
-	//makes a square red. is used when removing rails or other stuff
-	PALETTE_SEL_TILE_RED 				= 0x3048000,
-	//This draws a blueish square (catchment areas for example)
-	PALETTE_SEL_TILE_BLUE 			= 0x3058000,
+	///Here a puslating red tile is drawn if you try to build a wrong tunnel or raise/lower land where it is not possible
+	PALETTE_TILE_RED_PULSATING 	= PALETTE_RECOLOR_SPRITE(0x303),
+	///makes a square red. is used when removing rails or other stuff
+	PALETTE_SEL_TILE_RED 				= PALETTE_RECOLOR_SPRITE(0x304),
+	///This draws a blueish square (catchment areas for example)
+	PALETTE_SEL_TILE_BLUE 			= PALETTE_RECOLOR_SPRITE(0x305),
 	//0x306 is a real sprite (the little dot you get when you try to raise/lower a corner of the map
 	//here the color switches begin
 	//use this if you add stuff to the value, so that the resulting color
 	//is not a fixed value.
 	//NOTE THAT THE SWITCH 0x8000 is NOT present in _TO_COLORS yet!
-	PALETTE_TO_COLORS 					= 0x3070000,
-	PALETTE_TO_DARK_BLUE 				= 0x3078000,
-	PALETTE_TO_PALE_GREEN 			= 0x3088000,
-	PALETTE_TO_PINK 						= 0x3098000,
-	PALETTE_TO_YELLOW 					= 0x30A8000,
-	PALETTE_TO_RED 							= 0x30B8000,
-	PALETTE_TO_LIGHT_BLUE 			= 0x30C8000,
-	PALETTE_TO_GREEN 						= 0x30D8000,
-	PALETTE_TO_DARK_GREEN 			= 0x30E8000,
-	PALETTE_TO_BLUE 						= 0x30F8000,
-	PALETTE_TO_CREAM 						= 0x3108000,
+	PALETTE_TO_COLORS 					= 0x307 << PALETTE_SPRITE_START,
+	PALETTE_TO_DARK_BLUE 				= PALETTE_RECOLOR_SPRITE(0x307),
+	PALETTE_TO_PALE_GREEN 			= PALETTE_RECOLOR_SPRITE(0x308),
+	PALETTE_TO_PINK 						= PALETTE_RECOLOR_SPRITE(0x309),
+	PALETTE_TO_YELLOW 					= PALETTE_RECOLOR_SPRITE(0x30A),
+	PALETTE_TO_RED 							= PALETTE_RECOLOR_SPRITE(0x30B),
+	PALETTE_TO_LIGHT_BLUE 			= PALETTE_RECOLOR_SPRITE(0x30C),
+	PALETTE_TO_GREEN 						= PALETTE_RECOLOR_SPRITE(0x30D),
+	PALETTE_TO_DARK_GREEN 			= PALETTE_RECOLOR_SPRITE(0x30E),
+	PALETTE_TO_BLUE 						= PALETTE_RECOLOR_SPRITE(0x30F),
+	PALETTE_TO_CREAM 						= PALETTE_RECOLOR_SPRITE(0x310),
 	//maybe don't use as player color because it doesn't display in the graphs?
-	PALETTE_TO_MAUVE 						= 0x3118000,
-	PALETTE_TO_PURPLE 					= 0x3128000,
-	PALETTE_TO_ORANGE 					= 0x3138000,
-	PALETTE_TO_BROWN 						= 0x3148000,
-	PALETTE_TO_GREY 						= 0x3158000,
-	PALETTE_TO_WHITE 						= 0x3168000,
+	PALETTE_TO_MAUVE 						= PALETTE_RECOLOR_SPRITE(0x311),
+	PALETTE_TO_PURPLE 					= PALETTE_RECOLOR_SPRITE(0x312),
+	PALETTE_TO_ORANGE 					= PALETTE_RECOLOR_SPRITE(0x313),
+	PALETTE_TO_BROWN 						= PALETTE_RECOLOR_SPRITE(0x314),
+	PALETTE_TO_GREY 						= PALETTE_RECOLOR_SPRITE(0x315),
+	PALETTE_TO_WHITE 						= PALETTE_RECOLOR_SPRITE(0x316),
  	//sets color to bare land stuff, for rail and road (and crossings)
-	PALETTE_TO_BARE_LAND 				= 0x3178000,
+	PALETTE_TO_BARE_LAND 				= PALETTE_RECOLOR_SPRITE(0x317),
 	//XXX is 318-31A really not used?
 	//XXX FIXME I dunno yet what this is
-	PALETTE_31B 								= 0x31B8000,
+	PALETTE_31B 								= PALETTE_RECOLOR_SPRITE(0x31B),
 	//structure color to something brownish (for the cantilever bridges for example)
-	PALETTE_TO_STRUCT_BROWN 		= 0x31C8000,
-	PALETTE_31D 								= 0x31D8000, //XXX FIXME Don't know this either
+	PALETTE_TO_STRUCT_BROWN 		= PALETTE_RECOLOR_SPRITE(0x31C),
+	PALETTE_31D 								= PALETTE_RECOLOR_SPRITE(0x31D), //XXX FIXME Don't know this either
 	//sets bridge or structure to red, little concrete one and cantilever use this one for example
-	PALETTE_TO_STRUCT_RED 			= 0x31E8000,
+	PALETTE_TO_STRUCT_RED 			= PALETTE_RECOLOR_SPRITE(0x31E),
 	//XXX 31F
-	PALETTE_TO_STRUCT_CONCRETE 	= 0x3208000,  //Sets the suspension bridge to concrete, also other strucutures use it
-	PALETTE_TO_STRUCT_YELLOW 		= 0x3218000,    //Sets the bridge color to yellow (suspension and tubular)
-	PALETTE_TO_TRANSPARENT 			= 0x3224000,	//This sets the sprite to transparent
+	PALETTE_TO_STRUCT_CONCRETE 	= PALETTE_RECOLOR_SPRITE(0x320),  //Sets the suspension bridge to concrete, also other strucutures use it
+	PALETTE_TO_STRUCT_YELLOW 		= PALETTE_RECOLOR_SPRITE(0x321),    //Sets the bridge color to yellow (suspension and tubular)
+	PALETTE_TO_TRANSPARENT 			= 0x322 << PALETTE_SPRITE_START | PALETTE_MODIFIER_TRANSPARENT,	//This sets the sprite to transparent
 	//This is used for changing the tubular bridges to the silicon display, or some grayish color
-	PALETTE_TO_STRUCT_GREY 			= 0x3238000,
-	PALETTE_CRASH 							= 0x3248000,	//this changes stuff to the "crash color"
+	PALETTE_TO_STRUCT_GREY 			= PALETTE_RECOLOR_SPRITE(0x323),
+	PALETTE_CRASH 							= PALETTE_RECOLOR_SPRITE(0x324),	//this changes stuff to the "crash color"
 	//XXX another place where structures are colored.
 	//I'm not sure which colors these are
-	PALETTE_59E 								= 0x59E8000,
-	PALETTE_59F 								= 0x59F8000,
-
+	PALETTE_59E 								= PALETTE_RECOLOR_SPRITE(0x59E),
+	PALETTE_59F 								= PALETTE_RECOLOR_SPRITE(0x59F),
 };
+#undef PALETTE_RECOLOR_SPRITE
 
-#define MAKE_TRANSPARENT(img) (img = (img & MAX_SPRITES) | PALETTE_TO_TRANSPARENT)
+#define MAKE_TRANSPARENT(img) (img = (img & SPRITE_MASK) | PALETTE_TO_TRANSPARENT)
 
 #endif /* SPRITES_H */

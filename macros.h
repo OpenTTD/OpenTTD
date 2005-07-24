@@ -60,8 +60,8 @@ static inline int64 BIGMULS(int32 a, int32 b) {
 #define SETBITS(x,y) ((x) |= (y))
 #define CLRBITS(x,y) ((x) &= ~(y))
 
-#define PLAYER_SPRITE_COLOR(owner) ((_player_colors[owner] << 16) + 0x3070000)
-#define SPRITE_PALETTE(x) ((x) + 0x8000)
+#define PLAYER_SPRITE_COLOR(owner) ( (_player_colors[owner] + 0x307) << PALETTE_SPRITE_START)
+#define SPRITE_PALETTE(x) ((x) | PALETTE_MODIFIER_COLOR)
 
 extern const byte _ffb_64[128];
 /* Returns the position of the first bit that is not zero, counted from the

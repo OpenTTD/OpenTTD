@@ -35,27 +35,27 @@ uint16 _custom_sprites_base;
 static Sprite _cur_sprite;
 
 
-static void* _sprite_ptr[NUM_SPRITES];
-static uint16 _sprite_size[NUM_SPRITES];
-static uint32 _sprite_file_pos[NUM_SPRITES];
+static void* _sprite_ptr[MAX_SPRITES];
+static uint16 _sprite_size[MAX_SPRITES];
+static uint32 _sprite_file_pos[MAX_SPRITES];
 
 // This one is probably not needed.
 #if defined(WANT_LOCKED)
-static bool _sprite_locked[NUM_SPRITES];
+static bool _sprite_locked[MAX_SPRITES];
 #endif
 
 #if defined(WANT_NEW_LRU)
-static int16 _sprite_lru_new[NUM_SPRITES];
+static int16 _sprite_lru_new[MAX_SPRITES];
 #else
-static uint16 _sprite_lru[NUM_SPRITES];
-static uint16 _sprite_lru_cur[NUM_SPRITES];
+static uint16 _sprite_lru[MAX_SPRITES];
+static uint16 _sprite_lru_cur[MAX_SPRITES];
 #endif
 
 #ifdef WANT_SPRITESIZES
-static int8 _sprite_xoffs[NUM_SPRITES];
-static int8 _sprite_yoffs[NUM_SPRITES];
-static uint16 _sprite_xsize[NUM_SPRITES];
-static uint8 _sprite_ysize[NUM_SPRITES];
+static int8 _sprite_xoffs[MAX_SPRITES];
+static int8 _sprite_yoffs[MAX_SPRITES];
+static uint16 _sprite_xsize[MAX_SPRITES];
+static uint8 _sprite_ysize[MAX_SPRITES];
 #endif
 
 bool _cache_sprites;
@@ -83,13 +83,13 @@ typedef struct FileList {
 #include "table/files.h"
 #include "table/landscape_sprite.h"
 
-static const uint16 * const _landscape_spriteindexes[] = {
+static const SpriteID * const _landscape_spriteindexes[] = {
 	_landscape_spriteindexes_1,
 	_landscape_spriteindexes_2,
 	_landscape_spriteindexes_3,
 };
 
-static const uint16 * const _slopes_spriteindexes[] = {
+static const SpriteID * const _slopes_spriteindexes[] = {
 	_slopes_spriteindexes_0,
 	_slopes_spriteindexes_1,
 	_slopes_spriteindexes_2,
@@ -238,7 +238,7 @@ static bool LoadNextSprite(int load_index, byte file_index)
 		_replace_sprites_offset[0]++;
 		_replace_sprites_count[0]--;
 
-		if ((offset + count) <= NUM_SPRITES) {
+		if ((offset + count) <= MAX_SPRITES) {
 			load_index = offset;
 		} else {
 			DEBUG(spritecache, 1) ("Sprites to be replaced are out of range: %x+%x",
@@ -294,7 +294,7 @@ static void SkipSprites(uint count)
 		if (size == 0)
 			return;
 
-		ReadSpriteHeaderSkipData(size, NUM_SPRITES - 1);
+		ReadSpriteHeaderSkipData(size, MAX_SPRITES - 1);
 	}
 }
 
@@ -313,10 +313,11 @@ static int LoadGrfFile(const char *filename, int load_index, int file_index)
 
 	while (LoadNextSprite(load_index, file_index)) {
 		load_index++;
-		if (load_index >= NUM_SPRITES) {
-			error("Too many sprites. Recompile with higher NUM_SPRITES value or remove some custom GRF files.");
+		if (load_index >= MAX_SPRITES) {
+			error("Too many sprites. Recompile with higher MAX_SPRITES value or remove some custom GRF files.");
 		}
 	}
+	DEBUG(spritecache, 2) ("Currently %i sprites are loaded", load_index);
 
 	return load_index - load_index_org;
 }
@@ -351,8 +352,8 @@ static int LoadNewGrfFile(const char *filename, int load_index, int file_index)
 	}
 
 	for (i = 0; LoadNextSprite(load_index + i, file_index); i++) {
-		if (load_index + i >= NUM_SPRITES)
-			error("Too many sprites (0x%X). Recompile with higher NUM_SPRITES value or remove some custom GRF files.",
+		if (load_index + i >= MAX_SPRITES)
+			error("Too many sprites (0x%X). Recompile with higher MAX_SPRITES value or remove some custom GRF files.",
 			      load_index + i);
 	}
 
@@ -364,7 +365,7 @@ static int LoadNewGrfFile(const char *filename, int load_index, int file_index)
 	return i;
 }
 
-static void LoadGrfIndexed(const char *filename, const uint16 *index_tbl, int file_index)
+static void LoadGrfIndexed(const char *filename, const SpriteID *index_tbl, int file_index)
 {
 	int start;
 
@@ -472,7 +473,7 @@ void IncreaseSpriteLRU(void)
 	if (_sprite_lru_counter > 16384) {
 		DEBUG(spritecache, 2) ("fixing lru %d, inuse=%d", _sprite_lru_counter, GetSpriteCacheUsage());
 
-		for (i = 0; i != NUM_SPRITES; i++)
+		for (i = 0; i != MAX_SPRITES; i++)
 			if (_sprite_ptr[i] != NULL) {
 				if (_sprite_lru_new[i] >= 0) {
 					_sprite_lru_new[i] = -1;
@@ -483,7 +484,7 @@ void IncreaseSpriteLRU(void)
 		_sprite_lru_counter = 0;
 	}
 #else
-	for (i = 0; i != NUM_SPRITES; i++)
+	for (i = 0; i != MAX_SPRITES; i++)
 		if (_sprite_ptr[i] != NULL && _sprite_lru[i] != 65535)
 			_sprite_lru[i]++;
 	// Reset the lru counter.
@@ -560,7 +561,7 @@ static void DeleteEntryFromSpriteCache(void)
 
 #if defined(WANT_NEW_LRU)
 	cur_lru = 0xffff;
-	for (i = 0; i != NUM_SPRITES; i++) {
+	for (i = 0; i != MAX_SPRITES; i++) {
 		if (_sprite_ptr[i] != 0 &&
 				_sprite_lru_new[i] < cur_lru
 #if defined(WANT_LOCKED)
@@ -574,7 +575,7 @@ static void DeleteEntryFromSpriteCache(void)
 #else
 	{
 	uint16 cur_lru = 0, cur_lru_cur = 0xffff;
-	for (i = 0; i != NUM_SPRITES; i++) {
+	for (i = 0; i != MAX_SPRITES; i++) {
 		if (_sprite_ptr[i] == 0 ||
 #if defined(WANT_LOCKED)
 				_sprite_locked[i] ||
@@ -702,7 +703,7 @@ const void *GetRawSprite(SpriteID sprite)
 {
 	void* p;
 
-	assert(sprite < NUM_SPRITES);
+	assert(sprite < MAX_SPRITES);
 
 #if defined(NEW_ROTATION)
 	sprite = RotateSprite(sprite);
@@ -732,7 +733,7 @@ static const char * const _cached_filenames[4] = {
 };
 
 #define OPENTTD_SPRITES_COUNT 98
-static const uint16 _openttd_grf_indexes[] = {
+static const SpriteID _openttd_grf_indexes[] = {
 	SPR_OPENTTD_BASE + 0, SPR_OPENTTD_BASE + 7, // icons etc
 	134, 134,  // euro symbol medium size
 	582, 582,  // euro symbol large size
@@ -910,6 +911,7 @@ static void LoadSpriteTables(void)
 				if (_loading_stage == 0)
 					InitNewGRFFile(_newgrf_files[j], load_index);
 				load_index += LoadNewGrfFile(_newgrf_files[j], load_index, i++);
+				DEBUG(spritecache, 2) ("Currently %i sprites are loaded", load_index);
 			}
 		}
 

@@ -15,27 +15,27 @@ typedef struct WaterDrawTileStruct {
 
 static const WaterDrawTileStruct _shipdepot_display_seq_1[] = {
 	BEGIN(0xFDD),
-	{ 0, 15, 0, 16, 1, 0x14, 0x8FE8 },
+	{ 0, 15, 0, 16, 1, 0x14, 0xFE8 | PALETTE_MODIFIER_COLOR },
 	END(0)
 };
 
 static const WaterDrawTileStruct _shipdepot_display_seq_2[] = {
 	BEGIN(0xFDD),
 	{ 0,  0, 0, 16, 1, 0x14, 0xFEA },
-	{ 0, 15, 0, 16, 1, 0x14, 0x8FE6 },
+	{ 0, 15, 0, 16, 1, 0x14, 0xFE6 | PALETTE_MODIFIER_COLOR },
 	END(0)
 };
 
 static const WaterDrawTileStruct _shipdepot_display_seq_3[] = {
 	BEGIN(0xFDD),
-	{ 15, 0, 0, 1, 0x10, 0x14, 0x8FE9 },
+	{ 15, 0, 0, 1, 0x10, 0x14, 0xFE9 | PALETTE_MODIFIER_COLOR },
 	END(0)
 };
 
 static const WaterDrawTileStruct _shipdepot_display_seq_4[] = {
 	BEGIN(0xFDD),
 	{  0, 0, 0, 1, 16, 0x14, 0xFEB },
-	{ 15, 0, 0, 1, 16, 0x14, 0x8FE7 },
+	{ 15, 0, 0, 1, 16, 0x14, 0xFE7 | PALETTE_MODIFIER_COLOR },
 	END(0)
 };
 

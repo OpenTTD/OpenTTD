@@ -545,7 +545,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 
 		DrawString(110,48, STR_7006_COLOR_SCHEME, 0);
 		// Draw company-colour bus (0xC19)
-		DrawSprite(PLAYER_SPRITE_COLOR(p->index) + 0x8C19, 215, 49);
+		DrawSprite(PLAYER_SPRITE_COLOR(p->index) + (0xC19 | PALETTE_MODIFIER_COLOR), 215, 49);
 
 		DrawPlayerFace(p->face, p->player_color, 2, 16);
 

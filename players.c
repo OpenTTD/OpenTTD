@@ -1,5 +1,8 @@
 /* $Id$ */
 
+/** @file players.c
+  * @todo Cleanup the messy DrawPlayerFace function asap
+  */
 #include "stdafx.h"
 #include "openttd.h"
 #include "engine.h"
@@ -7,6 +10,7 @@
 #include "string.h"
 #include "strings.h"
 #include "table/strings.h"
+#include "table/sprites.h"
 #include "map.h"
 #include "player.h"
 #include "town.h"
@@ -44,7 +48,7 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 		flag |= 2;
 
 	/* draw the gradient */
-	DrawSprite( (color<<16) + 0x0307836A, x, y);
+	DrawSprite( (color + 0x307) << PALETTE_SPRITE_START | PALETTE_MODIFIER_COLOR | 0x36A, x, y);
 
 	/* draw the cheeks */
 	DrawSprite(cheeks_table[flag&3], x, y);
@@ -63,25 +67,25 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 	{
 		uint val1 = GB(face,  6, 4);
 		uint val2 = GB(face, 20, 3);
-		uint32 high = 0x314<<16;
+		uint32 high = 0x314 << PALETTE_SPRITE_START;
 
 		if (val2 >= 6) {
-			high = 0x30F<<16;
+			high = 0x30F << PALETTE_SPRITE_START;
 			if (val2 != 6)
-				high = 0x30D<<16;
+				high = 0x30D << PALETTE_SPRITE_START;
 		}
 
 		if (!(flag & 2)) {
 			if (!(flag & 1)) {
-				DrawSprite(high+((val1 * 12 >> 4) + 0x832B), x, y);
+				DrawSprite(high+((val1 * 12 >> 4) + (0x32B | PALETTE_MODIFIER_COLOR)), x, y);
 			} else {
-				DrawSprite(high+(val1 + 0x8337), x, y);
+				DrawSprite(high+(val1 + (0x337 | PALETTE_MODIFIER_COLOR)), x, y);
 			}
 		} else {
 			if (!(flag & 1)) {
-				DrawSprite(high+((val1 * 11 >> 4) + 0x839A), x, y);
+				DrawSprite(high+((val1 * 11 >> 4) + (0x39A | PALETTE_MODIFIER_COLOR)), x, y);
 			} else {
-				DrawSprite(high+(val1 + 0x83B8), x, y);
+				DrawSprite(high+(val1 + (0x3B8 | PALETTE_MODIFIER_COLOR)), x, y);
 			}
 		}
 	}

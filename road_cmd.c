@@ -794,7 +794,7 @@ static void DrawTile_Road(TileInfo *ti)
 
 		m2 = GB(_m[ti->tile].m4, 4, 3);
 
-		if (m2 == 0) image |= 0x3178000;
+		if (m2 == 0) image |= PALETTE_TO_BARE_LAND;
 
 		if (_m[ti->tile].m4 & 0x80) {
 			image += 19;
@@ -839,7 +839,7 @@ static void DrawTile_Road(TileInfo *ti)
 			image += 8;
 		} else {
 			m2 = GB(_m[ti->tile].m4, 4, 3);
-			if (m2 == 0) image |= 0x3178000;
+			if (m2 == 0) image |= PALETTE_TO_BARE_LAND;
 			if (m2 > 1) image += 4;
 		}
 
@@ -862,7 +862,7 @@ static void DrawTile_Road(TileInfo *ti)
 
 		if (ti->tileh != 0) { DrawFoundation(ti, ti->tileh); }
 
-		ormod = 0x315;
+		ormod = PALETTE_TO_GREY;	//was this a bug/problem?
 		player = GetTileOwner(ti->tile);
 		if (player < MAX_PLAYERS)
 			ormod = PLAYER_SPRITE_COLOR(player);
@@ -874,7 +874,7 @@ static void DrawTile_Road(TileInfo *ti)
 		for (; drss->image != 0; drss++) {
 			uint32 image = drss->image;
 
-			if (image & 0x8000)
+			if (image & PALETTE_MODIFIER_COLOR)
 				image |= ormod;
 			if (_display_opt & DO_TRANS_BUILDINGS) // show transparent depots
 				MAKE_TRANSPARENT(image);
@@ -903,7 +903,7 @@ void DrawRoadDepotSprite(int x, int y, int image)
 		Point pt = RemapCoords(dtss->subcoord_x, dtss->subcoord_y, 0);
 
 		image = dtss->image;
-		if (image & 0x8000)
+		if (image & PALETTE_MODIFIER_COLOR)
 			image |= ormod;
 
 		DrawSprite(image, x + pt.x, y + pt.y);

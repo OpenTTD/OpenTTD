@@ -5,6 +5,7 @@
 #include "debug.h"
 #include "functions.h"
 #include "table/strings.h"
+#include "table/sprites.h"
 #include "map.h"
 #include "window.h"
 #include "gui.h"

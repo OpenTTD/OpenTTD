@@ -149,42 +149,42 @@ static const PalSpriteID _tree_layout_sprite[164+(79-48+1)][4] = {
 	{     0x794,      0x794,      0x75c,      0x71d}, /* 125 */
 	{     0x794,      0x724,      0x794,      0x71d}, /* 126 */
 	{     0x794,      0x794,      0x771,      0x78d}, /* 127 */
-	{ 0x30b879b,  0x308879b,  0x311879b,  0x312879b}, /* 128 */
-	{     0x79b,  0x315879b,  0x30d879b,  0x316879b}, /* 129 */
-	{ 0x30d879b,  0x313879b,  0x309879b,      0x79b}, /* 130 */
-	{ 0x30a879b,  0x30b879b,  0x310879b,  0x30b879b}, /* 131 */
-	{     0x7a2,  0x30b87a2,  0x30987a2,  0x31287a2}, /* 132 */
-	{ 0x31187a2,  0x30d87a2,  0x30987a2,  0x31587a2}, /* 133 */
-	{ 0x30b87a2,  0x30887a2,  0x30a87a2,  0x31687a2}, /* 134 */
-	{ 0x31387a2,  0x31187a2,  0x31087a2,  0x31487a2}, /* 135 */
-	{ 0x30b87a9,      0x7a9,  0x31387a9,  0x31587a9}, /* 136 */
-	{ 0x31387a9,  0x30d87a9,  0x30887a9,  0x31187a9}, /* 137 */
-	{ 0x30987a9,  0x30b87a9,  0x30d87a9,  0x31487a9}, /* 138 */
-	{ 0x30d87a9,      0x7a9,  0x30b87a9,  0x31087a9}, /* 139 */
+	{ 0x79b | PALETTE_TO_RED,  0x79b | PALETTE_TO_PALE_GREEN,  0x79b | PALETTE_TO_MAUVE,  0x79b | PALETTE_TO_PURPLE}, /* 128 */
+	{     0x79b,  0x79b | PALETTE_TO_GREY,  0x79b | PALETTE_TO_GREEN,  0x79b | PALETTE_TO_WHITE}, /* 129 */
+	{ 0x79b | PALETTE_TO_GREEN,  0x79b | PALETTE_TO_ORANGE,  0x79b | PALETTE_TO_PINK,      0x79b}, /* 130 */
+	{ 0x79b | PALETTE_TO_YELLOW,  0x79b | PALETTE_TO_RED,  0x79b | PALETTE_TO_CREAM,  0x79b | PALETTE_TO_RED}, /* 131 */
+	{     0x7a2,  0x7a2 | PALETTE_TO_RED,  0x7a2 | PALETTE_TO_PINK,  0x7a2 | PALETTE_TO_PURPLE}, /* 132 */
+	{ 0x7a2 | PALETTE_TO_MAUVE,  0x7a2 | PALETTE_TO_GREEN,  0x7a2 | PALETTE_TO_PINK,  0x7a2 | PALETTE_TO_GREY}, /* 133 */
+	{ 0x7a2 | PALETTE_TO_RED,  0x7a2 | PALETTE_TO_PALE_GREEN,  0x7a2 | PALETTE_TO_YELLOW,  0x7a2 | PALETTE_TO_WHITE}, /* 134 */
+	{ 0x7a2 | PALETTE_TO_ORANGE,  0x7a2 | PALETTE_TO_MAUVE,  0x7a2 | PALETTE_TO_CREAM,  0x7a2 | PALETTE_TO_BROWN}, /* 135 */
+	{ 0x7a9 | PALETTE_TO_RED,      0x7a9,  0x7a9 | PALETTE_TO_ORANGE,  0x7a9 | PALETTE_TO_GREY}, /* 136 */
+	{ 0x7a9 | PALETTE_TO_ORANGE,  0x7a9 | PALETTE_TO_GREEN,  0x7a9 | PALETTE_TO_PALE_GREEN,  0x7a9 | PALETTE_TO_MAUVE}, /* 137 */
+	{ 0x7a9 | PALETTE_TO_PINK,  0x7a9 | PALETTE_TO_RED,  0x7a9 | PALETTE_TO_GREEN,  0x7a9 | PALETTE_TO_BROWN}, /* 138 */
+	{ 0x7a9 | PALETTE_TO_GREEN,      0x7a9,  0x7a9 | PALETTE_TO_RED,  0x7a9 | PALETTE_TO_CREAM}, /* 139 */
 	{     0x7b0,      0x7b0,      0x7b0,      0x7b0}, /* 140 */
 	{     0x7b0,      0x7b0,      0x7b0,      0x7b0}, /* 141 */
 	{     0x7b0,      0x7b0,      0x7b0,      0x7b0}, /* 142 */
 	{     0x7b0,      0x7b0,      0x7b0,      0x7b0}, /* 143 */
-	{ 0x30987b7,  0x30b87b7,  0x31387b7,  0x31187b7}, /* 144 */
-	{ 0x30b87b7,      0x7b7,  0x31587b7,  0x31087b7}, /* 145 */
-	{ 0x30d87b7,  0x31487b7,  0x30987b7,  0x30b87b7}, /* 146 */
-	{     0x7b7,  0x30887b7,  0x31387b7,  0x30b87b7}, /* 147 */
-	{ 0x30b87be,  0x30987be,  0x30d87be,      0x7be}, /* 148 */
-	{ 0x30d87be,  0x31487be,  0x31287be,  0x31587be}, /* 149 */
-	{ 0x31187be,  0x31087be,  0x31387be,  0x30b87be}, /* 150 */
-	{     0x7be,  0x30b87be,  0x30887be,  0x30987be}, /* 151 */
-	{ 0x30a87c5,  0x30b87c5,  0x31687c5,  0x31087c5}, /* 152 */
-	{ 0x30b87c5,  0x30887c5,  0x31487c5,  0x30a87c5}, /* 153 */
-	{     0x7c5,  0x31287c5,  0x30d87c5,  0x30a87c5}, /* 154 */
-	{ 0x30987c5,  0x31087c5,      0x7c5,  0x31587c5}, /* 155 */
-	{ 0x30a87cc,  0x31587cc,  0x31287cc,  0x31487cc}, /* 156 */
-	{ 0x30d87cc,      0x7cc,  0x31087cc,  0x31687cc}, /* 157 */
-	{ 0x30b87cc,  0x30887cc,  0x31187cc,  0x30b87cc}, /* 158 */
-	{ 0x30987cc,  0x31387cc,  0x30d87cc,  0x30a87cc}, /* 159 */
-	{ 0x30b87d3,  0x30987d3,  0x31487d3,  0x31687d3}, /* 160 */
-	{ 0x30d87d3,  0x31387d3,  0x31587d3,  0x31187d3}, /* 161 */
-	{ 0x30a87d3,  0x30887d3,      0x7d3,  0x31087d3}, /* 162 */
-	{ 0x31587d3,  0x30b87d3,  0x31687d3,      0x7d3}, /* 163 */
+	{ 0x7b7 | PALETTE_TO_PINK,  0x7b7 | PALETTE_TO_RED,  0x7b7 | PALETTE_TO_ORANGE,  0x7b7 | PALETTE_TO_MAUVE}, /* 144 */
+	{ 0x7b7 | PALETTE_TO_RED,      0x7b7,  0x7b7 | PALETTE_TO_GREY,  0x7b7 | PALETTE_TO_CREAM}, /* 145 */
+	{ 0x7b7 | PALETTE_TO_GREEN,  0x7b7 | PALETTE_TO_BROWN,  0x7b7 | PALETTE_TO_PINK,  0x7b7 | PALETTE_TO_RED}, /* 146 */
+	{     0x7b7,  0x7b7 | PALETTE_TO_PALE_GREEN,  0x7b7 | PALETTE_TO_ORANGE,  0x7b7 | PALETTE_TO_RED}, /* 147 */
+	{ 0x7be | PALETTE_TO_RED,  0x7be | PALETTE_TO_PINK,  0x7be | PALETTE_TO_GREEN,      0x7be}, /* 148 */
+	{ 0x7be | PALETTE_TO_GREEN,  0x7be | PALETTE_TO_BROWN,  0x7be | PALETTE_TO_PURPLE,  0x7be | PALETTE_TO_GREY}, /* 149 */
+	{ 0x7be | PALETTE_TO_MAUVE,  0x7be | PALETTE_TO_CREAM,  0x7be | PALETTE_TO_ORANGE,  0x7be | PALETTE_TO_RED}, /* 150 */
+	{     0x7be,  0x7be | PALETTE_TO_RED,  0x7be | PALETTE_TO_PALE_GREEN,  0x7be | PALETTE_TO_PINK}, /* 151 */
+	{ 0x7c5 | PALETTE_TO_YELLOW,  0x7c5 | PALETTE_TO_RED,  0x7c5 | PALETTE_TO_WHITE,  0x7c5 | PALETTE_TO_CREAM}, /* 152 */
+	{ 0x7c5 | PALETTE_TO_RED,  0x7c5 | PALETTE_TO_PALE_GREEN,  0x7c5 | PALETTE_TO_BROWN,  0x7c5 | PALETTE_TO_YELLOW}, /* 153 */
+	{     0x7c5,  0x7c5 | PALETTE_TO_PURPLE,  0x7c5 | PALETTE_TO_GREEN,  0x7c5 | PALETTE_TO_YELLOW}, /* 154 */
+	{ 0x7c5 | PALETTE_TO_PINK,  0x7c5 | PALETTE_TO_CREAM,      0x7c5,  0x7c5 | PALETTE_TO_GREY}, /* 155 */
+	{ 0x7cc | PALETTE_TO_YELLOW,  0x7cc | PALETTE_TO_GREY,  0x7cc | PALETTE_TO_PURPLE,  0x7cc | PALETTE_TO_BROWN}, /* 156 */
+	{ 0x7cc | PALETTE_TO_GREEN,      0x7cc,  0x7cc | PALETTE_TO_CREAM,  0x7cc | PALETTE_TO_WHITE}, /* 157 */
+	{ 0x7cc | PALETTE_TO_RED,  0x7cc | PALETTE_TO_PALE_GREEN,  0x7cc | PALETTE_TO_MAUVE,  0x7cc | PALETTE_TO_RED}, /* 158 */
+	{ 0x7cc | PALETTE_TO_PINK,  0x7cc | PALETTE_TO_ORANGE,  0x7cc | PALETTE_TO_GREEN,  0x7cc | PALETTE_TO_YELLOW}, /* 159 */
+	{ 0x7d3 | PALETTE_TO_RED,  0x7d3 | PALETTE_TO_PINK,  0x7d3 | PALETTE_TO_BROWN,  0x7d3 | PALETTE_TO_WHITE}, /* 160 */
+	{ 0x7d3 | PALETTE_TO_GREEN,  0x7d3 | PALETTE_TO_ORANGE,  0x7d3 | PALETTE_TO_GREY,  0x7d3 | PALETTE_TO_MAUVE}, /* 161 */
+	{ 0x7d3 | PALETTE_TO_YELLOW,  0x7d3 | PALETTE_TO_PALE_GREEN,      0x7d3,  0x7d3 | PALETTE_TO_CREAM}, /* 162 */
+	{ 0x7d3 | PALETTE_TO_GREY,  0x7d3 | PALETTE_TO_RED,  0x7d3 | PALETTE_TO_WHITE,      0x7d3}, /* 163 */
 	/* the extra things follow */
 	{     0x6e5,      0x6e5,      0x6e5,      0x6e5}, /* 0 */
 	{     0x6e5,      0x6e5,      0x6fa,      0x708}, /* 1 */

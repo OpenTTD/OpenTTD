@@ -1351,7 +1351,7 @@ static void DrawSpecialBuilding(uint32 image, uint32 tracktype_offs,
                                 byte x, byte y, byte z,
                                 byte xsize, byte ysize, byte zsize)
 {
-	if (image & 0x8000)
+	if (image & PALETTE_MODIFIER_COLOR)
 		image |= _drawtile_track_palette;
 	image += tracktype_offs;
 	if (_display_opt & DO_TRANS_BUILDINGS) // show transparent depots
@@ -1483,7 +1483,7 @@ static void DrawTile_Track(TileInfo *ti)
 		}
 
 		if ((_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK)==RAIL_GROUND_BROWN) {
-			image = (image & 0xFFFF) | 0x3178000; // use a brown palette
+			image = (image & SPRITE_MASK) | PALETTE_TO_BARE_LAND; // use a brown palette
 		 } else if ((_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK)==RAIL_GROUND_ICE_DESERT) {
 			image += TrackSet[SNOW_OFFSET];
 		}
@@ -1604,7 +1604,7 @@ static void DrawTile_Track(TileInfo *ti)
 		drss = _track_depot_layout_table[type];
 
 		image = drss++->image;
-		if (image & 0x8000) image = (image & 0x7FFF) + tracktype_offs;
+		if (image & PALETTE_MODIFIER_COLOR) image = (image & SPRITE_MASK) + tracktype_offs;
 
 		// adjust ground tile for desert
 		// (don't adjust for arctic depots, because snow in depots looks weird)
@@ -1653,13 +1653,13 @@ void DrawTrainDepotSprite(int x, int y, int image, int railtype)
 	y+=17;
 
 	img = dtss++->image;
-	if (img & 0x8000) img = (img & 0x7FFF) + railtype;
+	if (img & PALETTE_MODIFIER_COLOR) img = (img & SPRITE_MASK) + railtype;
 	DrawSprite(img, x, y);
 
 	for (; dtss->image != 0; dtss++) {
 		Point pt = RemapCoords(dtss->subcoord_x, dtss->subcoord_y, 0);
 		image = dtss->image;
-		if (image & 0x8000) image |= ormod;
+		if (image & PALETTE_MODIFIER_COLOR) image |= ormod;
 		DrawSprite(image + railtype, x + pt.x, y + pt.y);
 	}
 }

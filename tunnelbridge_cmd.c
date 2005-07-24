@@ -40,10 +40,10 @@ const uint16 _bridge_speeds[MAX_BRIDGES] = {
 };
 
 const PalSpriteID _bridge_sprites[MAX_BRIDGES] = {
-	0x0A24, 0x31E8A26, 0x0A25, 0x3208A22,
-	0x0A22, 0x3218A22, 0x0A23, 0x31C8A23,
-	0x31E8A23, 0x0A27, 0x0A28, 0x3218A28,
-	0x3238A28,
+	0x0A24, 0xA26 | PALETTE_TO_STRUCT_RED, 0x0A25, 0xA22 | PALETTE_TO_STRUCT_CONCRETE,
+	0x0A22, 0xA22 | PALETTE_TO_STRUCT_YELLOW, 0x0A23, 0xA23 | PALETTE_TO_STRUCT_BROWN,
+	0xA23 | PALETTE_TO_STRUCT_RED, 0x0A27, 0x0A28, 0xA28 | PALETTE_TO_STRUCT_YELLOW,
+	0xA28 | PALETTE_TO_STRUCT_GREY,
 };
 
 const StringID _bridge_material[MAX_BRIDGES] = {
@@ -1135,10 +1135,10 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			// draw roof
 			if (ti->map5&1) {
 				x += 12;
-				if (image&0x3FFF) AddSortableSpriteToDraw(image, x,y, 1, 16, 0x28, z);
+				if (image & SPRITE_MASK) AddSortableSpriteToDraw(image, x,y, 1, 16, 0x28, z);
 			} else {
 				y += 12;
-				if (image&0x3FFF) AddSortableSpriteToDraw(image, x,y, 16, 1, 0x28, z);
+				if (image & SPRITE_MASK) AddSortableSpriteToDraw(image, x,y, 16, 1, 0x28, z);
 			}
 
 			if (ti->z + 5 == z ) {

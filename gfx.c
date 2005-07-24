@@ -9,6 +9,7 @@
 #include "string.h"
 #include "gfx.h"
 #include "table/palettes.h"
+#include "table/sprites.h"
 #include "hal.h"
 #include "variables.h"
 
@@ -661,14 +662,14 @@ int DoDrawStringTruncated(const char *str, int x, int y, uint16 color, uint maxw
 
 void DrawSprite(uint32 img, int x, int y)
 {
-	if (img & 0x8000) {
-		_color_remap_ptr = GetNonSprite(img >> 16) + 1;
-		GfxMainBlitter(GetSprite(img & 0x3FFF), x, y, 1);
-	} else if (img & 0x4000) {
-		_color_remap_ptr = GetNonSprite(img >> 16) + 1;
-		GfxMainBlitter(GetSprite(img & 0x3FFF), x, y, 2);
+	if (img & PALETTE_MODIFIER_COLOR) {
+		_color_remap_ptr = GetNonSprite(GB(img, PALETTE_SPRITE_START, PALETTE_SPRITE_WIDTH)) + 1;
+		GfxMainBlitter(GetSprite(img & SPRITE_MASK), x, y, 1);
+	} else if (img & PALETTE_MODIFIER_TRANSPARENT) {
+		_color_remap_ptr = GetNonSprite(GB(img, PALETTE_SPRITE_START, PALETTE_SPRITE_WIDTH)) + 1;
+		GfxMainBlitter(GetSprite(img & SPRITE_MASK), x, y, 2);
 	} else {
-		GfxMainBlitter(GetSprite(img & 0x3FFF), x, y, 0);
+		GfxMainBlitter(GetSprite(img & SPRITE_MASK), x, y, 0);
 	}
 }
 
@@ -1923,7 +1924,7 @@ static void SetCursorSprite(CursorID cursor)
 
 	if (cv->sprite == cursor) return;
 
-	p = GetSprite(cursor & 0x3FFF);
+	p = GetSprite(cursor & SPRITE_MASK);
 	cv->sprite = cursor;
 	cv->size.y = p->height;
 	cv->size.x = p->width;

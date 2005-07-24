@@ -104,11 +104,6 @@ VARDEF int _pal_last_dirty;
 
 VARDEF bool _use_dos_palette;
 
-/* spritecache.c */
-//enum { NUM_SPRITES = 0x1320 };
-//enum { NUM_SPRITES = 0x1500 };
-enum { NUM_SPRITES = 0x3500 }; // 1500 + space for custom GRF sets
-
 typedef struct Colour {
 	byte r;
 	byte g;

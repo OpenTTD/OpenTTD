@@ -378,13 +378,13 @@ void DrawWaypointSprite(int x, int y, int stat_id, int railtype)
 		const DrawTrackSeqStruct *dtss = _track_depot_layout_table[4];
 
 		img = dtss++->image;
-		if (img & 0x8000) img = (img & 0x7FFF) + railtype*TRACKTYPE_SPRITE_PITCH;
+		if (img & PALETTE_MODIFIER_COLOR) img = (img & SPRITE_MASK) + railtype*TRACKTYPE_SPRITE_PITCH;
 		DrawSprite(img, x, y);
 
 		for (; dtss->image != 0; dtss++) {
 			Point pt = RemapCoords(dtss->subcoord_x, dtss->subcoord_y, 0);
 			img = dtss->image;
-			if (img & 0x8000) img |= ormod;
+			if (img & PALETTE_MODIFIER_COLOR) img |= ormod;
 			DrawSprite(img, x + pt.x, y + pt.y);
 		}
 		return;
@@ -400,14 +400,14 @@ void DrawWaypointSprite(int x, int y, int stat_id, int railtype)
 	img = cust->ground_sprite;
 	img += railtype * ((img < _custom_sprites_base) ? TRACKTYPE_SPRITE_PITCH : 1);
 
-	if (img & 0x8000) img = (img & 0x7FFF);
+	if (img & PALETTE_MODIFIER_COLOR) img = (img & SPRITE_MASK);
 	DrawSprite(img, x, y);
 
 	foreach_draw_tile_seq(seq, cust->seq) {
 		Point pt = RemapCoords(seq->delta_x, seq->delta_y, seq->delta_z);
 		uint32 image = seq->image + relocation;
 
-		DrawSprite((image&0x3FFF) | ormod, x + pt.x, y + pt.y);
+		DrawSprite((image & SPRITE_MASK) | ormod, x + pt.x, y + pt.y);
 	}
 }
 

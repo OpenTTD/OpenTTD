@@ -2139,7 +2139,7 @@ static void DrawTile_Station(TileInfo *ti)
 
 	{
 		uint owner = GetTileOwner(ti->tile);
-		image_or_modificator = 0x315 << 16; /* NOTE: possible bug in ttd here? */
+		image_or_modificator = PALETTE_TO_GREY; /* NOTE: possible bug in ttd here? */
 		if (owner < MAX_PLAYERS)
 			image_or_modificator = PLAYER_SPRITE_COLOR(owner);
 	}
@@ -2166,11 +2166,11 @@ static void DrawTile_Station(TileInfo *ti)
 	if (t == NULL) t = &_station_display_datas[ti->map5];
 
 	image = t->ground_sprite;
-	if (image & 0x8000)
+	if (image & PALETTE_MODIFIER_COLOR)
 		image |= image_or_modificator;
 
 	// For custom sprites, there's no railtype-based pitching.
-	type_offset = railtype * ((image & 0x3FFF) < _custom_sprites_base ? TRACKTYPE_SPRITE_PITCH : 1);
+	type_offset = railtype * ((image & SPRITE_MASK) < _custom_sprites_base ? TRACKTYPE_SPRITE_PITCH : 1);
 
 	// station_land array has been increased from 82 elements to 114
 	// but this is something else. If AI builds station with 114 it looks all weird
@@ -2193,7 +2193,7 @@ static void DrawTile_Station(TileInfo *ti)
 		if (_display_opt & DO_TRANS_BUILDINGS) {
 			MAKE_TRANSPARENT(image);
 		} else {
-			if (image&0x8000) image |= image_or_modificator;
+			if (image & PALETTE_MODIFIER_COLOR) image |= image_or_modificator;
 		}
 
 		if ((byte)dtss->delta_z != 0x80) {
@@ -2218,7 +2218,7 @@ void StationPickerDrawSprite(int x, int y, int railtype, int image)
 	t = &_station_display_datas[image];
 
 	img = t->ground_sprite;
-	if (img & 0x8000)
+	if (img & PALETTE_MODIFIER_COLOR)
 		img |= ormod;
 	DrawSprite(img + railtype, x, y);
 

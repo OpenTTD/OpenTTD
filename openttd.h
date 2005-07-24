@@ -71,7 +71,7 @@ typedef byte PlayerID;
 typedef byte OrderID;
 typedef byte CargoID;
 typedef uint16 StringID;
-typedef uint16 SpriteID;
+typedef uint32 SpriteID;
 typedef uint32 PalSpriteID;
 typedef uint32 CursorID;
 typedef uint16 EngineID; //! All enginenumbers should be of this type

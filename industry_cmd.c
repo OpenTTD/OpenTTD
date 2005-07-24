@@ -348,13 +348,13 @@ static void DrawTile_Industry(TileInfo *ti)
 
 	/* Pointer to industry */
 	ind = GetIndustry(_m[ti->tile].m2);
-	ormod = (ind->color_map+0x307)<<16;
+	ormod = (ind->color_map+0x307) << PALETTE_SPRITE_START;
 
 	/* Retrieve pointer to the draw industry tile struct */
 	dits = &_industry_draw_tile_data[(ti->map5<<2) | (_m[ti->tile].owner&3)];
 
 	image = dits->sprite_1;
-	if (image&0x8000 && (image & 0xFFFF0000) == 0)
+	if (image & PALETTE_MODIFIER_COLOR && (image & PALETTE_SPRITE_MASK) == 0)
 		image |= ormod;
 
 	z = ti->z;
@@ -371,7 +371,7 @@ static void DrawTile_Industry(TileInfo *ti)
 	/* Add industry on top of the ground? */
 	if ((image = dits->sprite_2) != 0) {
 
-		if (image&0x8000 && (image & 0xFFFF0000) == 0)
+		if (image & PALETTE_MODIFIER_COLOR && (image & PALETTE_SPRITE_MASK) == 0)
 			image |= ormod;
 
 		if (_display_opt & DO_TRANS_BUILDINGS)

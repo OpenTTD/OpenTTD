@@ -62,8 +62,8 @@ static void ClearTownHouse(Town *t, TileIndex tile);
 static void DoBuildTownHouse(Town *t, TileIndex tile);
 
 typedef struct DrawTownTileStruct {
-	uint32 sprite_1;
-	uint32 sprite_2;
+	SpriteID sprite_1;
+	SpriteID sprite_2;
 
 	byte subtile_x:4;
 	byte subtile_y:4;
