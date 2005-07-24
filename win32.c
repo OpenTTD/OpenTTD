@@ -23,13 +23,16 @@
 #include "music/win32_m.h"
 
 #include "sound/null_s.h"
-#include "sound/sdl_s.h"
 #include "sound/win32_s.h"
 
 #include "video/dedicated_v.h"
 #include "video/null_v.h"
-#include "video/sdl_v.h"
 #include "video/win32_v.h"
+
+#ifdef WITH_SDL
+	#include "sound/sdl_s.h"
+	#include "video/sdl_v.h"
+#endif
 
 static bool _has_console;
 
