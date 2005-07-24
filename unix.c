@@ -53,6 +53,10 @@ ULONG __stack = (1024*1024)*2; // maybe not that much is needed actually ;)
 // ULONG __stack =
 #endif
 
+#if defined(__APPLE__)
+#include "os/macosx/macos.h"
+#endif
+
 static char *_fios_path;
 static char *_fios_save_path;
 static char *_fios_scn_path;
@@ -467,10 +471,9 @@ void ShowInfo(const char *str)
 void ShowOSErrorBox(const char *buf)
 {
 #if defined(__APPLE__)
-	// this creates an error in the console and then opens the console.
-	// Colourcodes are not used in the console, so they are skipped here
-	fprintf(stderr, "Error: %s", buf);
-	system("/Applications/Utilities/Console.app/Contents/MacOS/Console &");
+	// this creates an NSAlertPanel with the contents of 'buf'
+	// this is the native and nicest way to do this on OSX
+	ShowMacDialog( buf, "See readme for more info\nMost likely you are missing files from the original TTD", "Quit" );
 #else
 	// all systems, but OSX
 	fprintf(stderr, "\033[1;31mError: %s\033[0;39m\n", buf);

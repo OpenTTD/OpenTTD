@@ -718,6 +718,8 @@ C_SOURCES += video/null_v.c
 
 CXX_SOURCES =
 
+OBJC_SOURCES =
+
 ifdef WITH_SDL
 C_SOURCES += sdl.c
 C_SOURCES += sound/sdl_s.c
@@ -734,7 +736,11 @@ C_SOURCES += unix.c
 C_SOURCES += music/extmidi.c
 endif
 
-OBJS = $(C_SOURCES:%.c=%.o) $(CXX_SOURCES:%.cpp=%.o)
+ifdef OSX
+OBJC_SOURCES += os/macosx/macos.m
+endif
+
+OBJS = $(C_SOURCES:%.c=%.o) $(CXX_SOURCES:%.cpp=%.o) $(OBJC_SOURCES:%.m=%.o)
 
 ifdef BEOS
 CXX_SOURCES += music/bemidi.cpp
@@ -794,6 +800,9 @@ quiet_cmd_c_compile = '===> Compiling $<'
 
 quiet_cmd_cxx_compile = '===> Compiling $<'
       cmd_cxx_compile = $(CXX) $(COMPILE_PARAMS)
+
+quiet_cmd_objc_compile = '===> Compiling $<'
+      cmd_objc_compile = $(CC) $(COMPILE_PARAMS)
 
 
 ##############################################################################
@@ -1036,7 +1045,7 @@ upgradeconf: $(MAKE_CONFIG)
 ### Internal build rules
 
 # This makes sure the .deps dir is always around.
-DEPS_MAGIC := $(shell mkdir -p .deps .deps/music .deps/sound .deps/video)
+DEPS_MAGIC := $(shell mkdir -p .deps .deps/music .deps/sound .deps/video .deps/os .deps/os/macosx)
 
 # Introduce the dependencies
 -include $(DEPS)
@@ -1053,6 +1062,10 @@ DEPS_MAGIC := $(shell mkdir -p .deps .deps/music .deps/sound .deps/video)
 %.o: %.cpp  $(MAKE_CONFIG) endian_target.h table/strings.h
 	$(call cmd,cxx_compile)
 	@mv $(<:%.cpp=%.d) $(<:%.cpp=.deps/%.d)
+
+%.o: %.m  $(MAKE_CONFIG) endian_target.h table/strings.h
+	$(call cmd,objc_compile)
+	@mv $(<:%.m=%.d) $(<:%.m=.deps/%.d)
 
 # Silence stale header dependencies
 %.h:

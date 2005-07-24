@@ -165,6 +165,10 @@ void FioOpenFile(int slot, const char *filename)
 			*s = tolower(*s);
 		f = fopen(buf, "rb");
 		}
+
+	if (f == NULL)
+		sprintf(buf, "%s%s", _path.data_dir, filename);	//makes it print the primary datadir path instead of the secundary one
+
 #endif
 	}
 #endif
