@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #define TILE_SEQ_END() { 0x80, 0, 0, 0, 0, 0, 0 }
 
 static const DrawTileUnmovableStruct _draw_tile_unmovable_data[] = {

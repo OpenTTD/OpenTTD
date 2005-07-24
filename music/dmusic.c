@@ -1,3 +1,5 @@
+/* $Id$ */
+
 /*********************************************************************
  * OpenTTD: An Open Source Transport Tycoon Deluxe clone             *
  * Copyright (c) 2002-2004 OpenTTD Developers. All Rights Reserved.  *

@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef NAMEGEN_H
 #define NAMEGEN_H
 

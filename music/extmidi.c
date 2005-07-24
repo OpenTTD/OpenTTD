@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef __BEOS__
 #ifndef __MORPHOS__
 #include "stdafx.h"

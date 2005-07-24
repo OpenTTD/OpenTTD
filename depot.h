@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef DEPOT_H
 #define DEPOT_H
 

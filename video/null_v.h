@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef VIDEO_NULL_H
 #define VIDEO_NULL_H
 

@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef NEWGRF_H
 #define NEWGRF_H
 

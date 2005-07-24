@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #define ANIM_CURSOR_LINE(a,b) a,b,
 #define ANIM_CURSOR_END() 0xFFFF
 

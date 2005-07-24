@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef MUSIC_BEMIDI_H
 #define MUSIC_BEMIDI_H
 

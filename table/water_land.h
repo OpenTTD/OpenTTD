@@ -1,3 +1,5 @@
+/* $Id$ */
+
 typedef struct WaterDrawTileStruct {
 	byte delta_x;
 	byte delta_y;

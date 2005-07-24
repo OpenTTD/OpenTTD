@@ -1,3 +1,5 @@
+/* $Id$ */
+
 typedef struct DrawTrackSeqStruct {
 	uint16 image;
 	byte subcoord_x;

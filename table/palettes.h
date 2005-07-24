@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #define M(r, g, b) { r, g, b }
 static const Colour _palettes[][256] = {
 	/* palette 1 (TTD Windows) */

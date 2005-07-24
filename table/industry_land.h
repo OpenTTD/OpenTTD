@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #define M(s1,s2,sx,sy,w,h,dz,p) {s1,s2,(sx<<4)|sy,((w-1)<<4)|(h-1),dz,p}
 
 static const DrawIndustryTileStruct _industry_draw_tile_data[700] = {

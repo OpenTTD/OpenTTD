@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef MUSIC_EXTERNAL_H
 #define MUSIC_EXTERNAL_H
 

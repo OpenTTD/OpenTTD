@@ -1,3 +1,5 @@
+/* $Id$ */
+
 static const SpriteID _landscape_spriteindexes_1[] = {
  0xF67,  0xF9F,
  0xAAD,  0xAB0,

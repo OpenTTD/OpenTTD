@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #define STRGEN
 
 #include "../stdafx.h"
@@ -1187,7 +1189,7 @@ int CDECL main(int argc, char* argv[])
 	int show_todo = 0;
 
 	if (argc > 1 && (!strcmp(argv[1], "-v") || !strcmp(argv[1], "--version"))) {
-		puts("$Revision$");
+		puts("$Revision: 2617 $");
 		return 0;
 	}
 

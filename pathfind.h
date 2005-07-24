@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef PATHFIND_H
 #define PATHFIND_H
 

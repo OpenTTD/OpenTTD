@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef VIDEO_WIN32_H
 #define VIDEO_WIN32_H
 

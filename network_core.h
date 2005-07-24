@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef NETWORK_CORE_H
 #define NETWORK_CORE_H
 

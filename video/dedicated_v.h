@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef VIDEO_DEDICATED_H
 #define VIDEO_DEDICATED_H
 

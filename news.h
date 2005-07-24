@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef NEWS_H
 #define NEWS_H
 

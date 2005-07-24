@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "music/win32_m.h"

@@ -1,3 +1,5 @@
+/* $Id$ */
+
 typedef struct {
 	byte mode;
 	byte attr;

@@ -1,3 +1,5 @@
+/* $Id$ */
+
 enum {
 	HOUSE_TEMP_CHURCH    = 0x03,
 	HOUSE_STADIUM        = 0x14,

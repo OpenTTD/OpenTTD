@@ -1,3 +1,5 @@
+/* $Id$ */
+
 // exchange rate    prefix
 // |  separator        |     postfix
 // |   |    Euro year  |       |

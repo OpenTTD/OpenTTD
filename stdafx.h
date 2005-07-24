@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #if !defined(_STDAFX_H)
 #define _STDAFX_H
 

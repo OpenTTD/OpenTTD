@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #define M(x,y) {x, y}
 
 static const TileIndexDiffC _make_desert_or_rainforest_data[] = {

@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef INDUSTRY_H
 #define INDUSTRY_H
 

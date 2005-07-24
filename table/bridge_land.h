@@ -1,3 +1,5 @@
+/* $Id$ */
+
 static const SpriteID _bridge_land_below[] = {
 	0xF8D, 0xFDD,0x11C6, 0xFDD,
 };

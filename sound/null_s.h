@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef SOUND_NULL_H
 #define SOUND_NULL_H
 

@@ -1,3 +1,5 @@
+/* $Id$ */
+
 static const SpriteID _landscape_clear_sprites[8] = {
 	0xFA0,
 	0xFB3,

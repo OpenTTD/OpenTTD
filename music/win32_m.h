@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef MUSIC_WIN32_H
 #define MUSIC_WIN32_H
 

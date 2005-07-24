@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef NPF_H
 #define NPF_H
 

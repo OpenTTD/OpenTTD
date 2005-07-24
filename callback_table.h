@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef CALLBACK_TABLE_H
 #define CALLBACK_TABLE_H
 

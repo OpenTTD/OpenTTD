@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef NETWORK_LAN_H
 #define NETWORK_LAN_H
 

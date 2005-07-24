@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #define MK(x,y, m) {{x, y}, m}
 
 #define MKEND {{-0x80, 0}, 0}

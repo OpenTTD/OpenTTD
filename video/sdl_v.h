@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef VIDEO_SDL_H
 #define VIDEO_SDL_H
 

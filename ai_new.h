@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef AI_NEW_H
 #define AI_NEW_H
 

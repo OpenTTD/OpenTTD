@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef ECONOMY_H
 #define ECONOMY_H
 

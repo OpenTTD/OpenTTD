@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef NETWORK_GAMELIST_H
 #define NETWORK_GAMELIST_H
 

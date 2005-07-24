@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef SIGNS_H
 #define SIGNS_H
 

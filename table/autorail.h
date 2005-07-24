@@ -1,3 +1,5 @@
+/* $Id$ */
+
 /* Rail selection types (directions):
  / \    / \    / \    / \   / \   / \
 /  /\  /\  \  /===\  /   \ /|  \ /  |\

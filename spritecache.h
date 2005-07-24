@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef SPRITECACHE_H
 #define SPRITECACHE_H
 

@@ -1,3 +1,5 @@
+/* $Id$ */
+
 static const LandscapePredefVar _landscape_predef_var[4] = {
 	{
 		/* normal names */

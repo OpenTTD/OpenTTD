@@ -1,3 +1,5 @@
+/* $Id$ */
+
 /*
  * This file has the header for AyStar
  *  AyStar is a fast pathfinding routine and is used for things like

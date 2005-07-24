@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef OPENTTD_H
 #define OPENTTD_H
 

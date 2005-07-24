@@ -1,3 +1,5 @@
+/* $Id$ */
+
 /*
  * Next part is in Dutch, and only here for me, TrueLight, the maker of this new AI
  */

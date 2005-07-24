@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #define TILE_SEQ_BEGIN(x) { x, 0, 0, 0, 0 },
 #define TILE_SEQ_LINE(a, b, c, d, e) { a, b, c, d, e },
 #define TILE_SEQ_END() { 0, 0, 0, 0, 0 }

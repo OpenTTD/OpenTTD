@@ -1,3 +1,5 @@
+/* $Id$ */
+
 /*
 	MD5 sums of graphics files
 

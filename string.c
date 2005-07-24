@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #include "stdafx.h"
 #include "string.h"
 

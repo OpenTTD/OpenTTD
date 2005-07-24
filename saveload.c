@@ -1,3 +1,5 @@
+/* $Id$ */
+
 /** @file
  * All actions handling saving and loading goes on in this file. The general actions
  * are as follows for saving a game (loading is analogous):

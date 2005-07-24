@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef SOUND_SDL_H
 #define SOUND_SDL_H
 

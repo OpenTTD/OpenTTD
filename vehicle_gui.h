@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef VEHICLE_GUI_H
 #define VEHICLE_GUI_H
 

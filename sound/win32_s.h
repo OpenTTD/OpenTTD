@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #ifndef SOUND_WIN32_H
 #define SOUND_WIN32_H
 
