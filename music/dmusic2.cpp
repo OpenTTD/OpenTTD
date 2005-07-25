@@ -26,7 +26,7 @@
 /* DirectMusic driver for Win32 */
 /* Based on dxmci from TTDPatch */
 
-#include "stdafx.h"
+#include "../stdafx.h"
 
 #ifdef WIN32_ENABLE_DIRECTMUSIC_SUPPORT
 
@@ -39,10 +39,8 @@
 	extern "C" {
 #endif
 
-#include "openttd.h"
-#include "debug.h"
-#include "sound.h"
-#include "hal.h"
+#include "../openttd.h"
+#include "../debug.h"
 
 #ifdef __cplusplus
 	}
