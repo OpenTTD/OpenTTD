@@ -189,7 +189,42 @@
 				RelativePath=".\dedicated.c">
 			</File>
 			<File
+				RelativePath=".\video\dedicated_v.c">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						PrecompiledHeaderThrough="../stdafx.h"
+						PrecompiledHeaderFile=".\Release/openttd2.pch"/>
+				</FileConfiguration>
+			</File>
+			<File
 				RelativePath=".\depot.c">
+			</File>
+			<File
+				RelativePath=".\music\dmusic.c">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						PrecompiledHeaderThrough="../stdafx.h"
+						PrecompiledHeaderFile=".\Release/openttd2.pch"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\music\dmusic2.cpp">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						PrecompiledHeaderThrough=""
+						PrecompiledHeaderFile=""
+						CompileAs="2"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\driver.c">
 			</File>
 			<File
 				RelativePath="economy.c">
@@ -258,6 +293,36 @@
 				RelativePath=".\npf.c">
 			</File>
 			<File
+				RelativePath=".\music\null_m.c">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						PrecompiledHeaderThrough="../stdafx.h"
+						PrecompiledHeaderFile=".\Release/openttd2.pch"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\sound\null_s.c">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						PrecompiledHeaderThrough="../stdafx.h"
+						PrecompiledHeaderFile=".\Release/openttd2.pch"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\video\null_v.c">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						PrecompiledHeaderThrough="../stdafx.h"
+						PrecompiledHeaderFile=".\Release/openttd2.pch"/>
+				</FileConfiguration>
+			</File>
+			<File
 				RelativePath="oldloader.c">
 			</File>
 			<File
@@ -292,6 +357,26 @@
 			</File>
 			<File
 				RelativePath="sdl.c">
+			</File>
+			<File
+				RelativePath=".\sound\sdl_s.c">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						PrecompiledHeaderThrough="../stdafx.h"
+						PrecompiledHeaderFile=".\Release/openttd2.pch"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\video\sdl_v.c">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						PrecompiledHeaderThrough="../stdafx.h"
+						PrecompiledHeaderFile=".\Release/openttd2.pch"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\settings.c">
@@ -330,19 +415,6 @@
 				RelativePath="viewport.c">
 			</File>
 			<File
-				RelativePath=".\w32dm.c">
-			</File>
-			<File
-				RelativePath=".\w32dm2.cpp">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						CompileAs="2"/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath=".\waypoint.c">
 			</File>
 			<File
@@ -350,6 +422,36 @@
 			</File>
 			<File
 				RelativePath="win32.c">
+			</File>
+			<File
+				RelativePath=".\music\win32_m.c">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						PrecompiledHeaderThrough="../stdafx.h"
+						PrecompiledHeaderFile=".\Release/openttd2.pch"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\sound\win32_s.c">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						PrecompiledHeaderThrough="../stdafx.h"
+						PrecompiledHeaderFile=".\Release/openttd2.pch"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\video\win32_v.c">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						PrecompiledHeaderThrough="../stdafx.h"
+						PrecompiledHeaderFile=".\Release/openttd2.pch"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="window.c">
@@ -377,7 +479,16 @@
 				RelativePath="debug.h">
 			</File>
 			<File
+				RelativePath=".\video\dedicated_v.h">
+			</File>
+			<File
 				RelativePath="depot.h">
+			</File>
+			<File
+				RelativePath=".\music\dmusic.h">
+			</File>
+			<File
+				RelativePath=".\driver.h">
 			</File>
 			<File
 				RelativePath="economy.h">
@@ -446,6 +557,15 @@
 				RelativePath=".\npf.h">
 			</File>
 			<File
+				RelativePath=".\music\null_m.h">
+			</File>
+			<File
+				RelativePath=".\sound\null_s.h">
+			</File>
+			<File
+				RelativePath=".\video\null_v.h">
+			</File>
+			<File
 				RelativePath="openttd.h">
 			</File>
 			<File
@@ -471,6 +591,12 @@
 			</File>
 			<File
 				RelativePath=".\screenshot.h">
+			</File>
+			<File
+				RelativePath=".\sound\sdl_s.h">
+			</File>
+			<File
+				RelativePath=".\video\sdl_v.h">
 			</File>
 			<File
 				RelativePath=".\signs.h">
@@ -510,6 +636,15 @@
 			</File>
 			<File
 				RelativePath="waypoint.h">
+			</File>
+			<File
+				RelativePath=".\music\win32_m.h">
+			</File>
+			<File
+				RelativePath=".\sound\win32_s.h">
+			</File>
+			<File
+				RelativePath=".\video\win32_v.h">
 			</File>
 			<File
 				RelativePath="window.h">
