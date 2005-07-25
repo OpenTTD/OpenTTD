@@ -1,6 +1,9 @@
 /* $Id$ */
 
 #include "stdafx.h"
+
+#ifdef WITH_SDL
+
 #include "openttd.h"
 #include "sdl.h"
 #include <SDL.h>
@@ -127,3 +130,5 @@ void SdlClose(uint32 x)
 		#endif
 	}
 }
+
+#endif

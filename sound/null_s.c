@@ -1,8 +1,8 @@
 /* $Id$ */
 
-#include "stdafx.h"
-#include "openttd.h"
-#include "sound/null_s.h"
+#include "../stdafx.h"
+#include "../openttd.h"
+#include "null_s.h"
 
 static const char *NullSoundStart(const char * const *parm) { return NULL; }
 static void NullSoundStop(void) {}

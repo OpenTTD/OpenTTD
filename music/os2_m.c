@@ -1,8 +1,8 @@
 /* $Id$ */
 
-#include "stdafx.h"
-#include "openttd.h"
-#include "music/os2_m.h"
+#include "../stdafx.h"
+#include "../openttd.h"
+#include "os2_m.h"
 
 #define INCL_DOS
 #define INCL_OS2MM

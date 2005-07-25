@@ -1,19 +1,19 @@
 /* $Id$ */
 
-#include "stdafx.h"
-#include "openttd.h"
-#include "debug.h"
-#include "functions.h"
-#include "network.h"
-#include "video/dedicated_v.h"
+#include "../stdafx.h"
+#include "../openttd.h"
+#include "dedicated_v.h"
 
 #ifdef ENABLE_NETWORK
 
-#include "gfx.h"
-#include "window.h"
-#include "command.h"
-#include "console.h"
-#include "variables.h"
+#include "../debug.h"
+#include "../functions.h"
+#include "../gfx.h"
+#include "../network.h"
+#include "../window.h"
+#include "../command.h"
+#include "../console.h"
+#include "../variables.h"
 
 #ifdef __OS2__
 #	include <sys/time.h> /* gettimeofday */

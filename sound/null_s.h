@@ -3,7 +3,7 @@
 #ifndef SOUND_NULL_H
 #define SOUND_NULL_H
 
-#include "hal.h"
+#include "../hal.h"
 
 extern const HalSoundDriver _null_sound_driver;
 

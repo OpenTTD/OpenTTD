@@ -1,14 +1,14 @@
 /* $Id$ */
 
-#include "stdafx.h"
-#include "openttd.h"
-#include "functions.h"
-#include "gfx.h"
-#include "macros.h"
-#include "network.h"
-#include "variables.h"
-#include "window.h"
-#include "video/win32_v.h"
+#include "../stdafx.h"
+#include "../openttd.h"
+#include "../functions.h"
+#include "../gfx.h"
+#include "../macros.h"
+#include "../network.h"
+#include "../variables.h"
+#include "../window.h"
+#include "win32_v.h"
 #include <windows.h>
 
 static struct {

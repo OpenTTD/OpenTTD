@@ -1,17 +1,20 @@
 /* $Id$ */
 
-#include "stdafx.h"
-#include "openttd.h"
-#include "debug.h"
-#include "functions.h"
-#include "gfx.h"
-#include "macros.h"
-#include "sdl.h"
-#include "window.h"
-#include "video/sdl_v.h"
+#include "../stdafx.h"
+
+#ifdef WITH_SDL
+
+#include "../openttd.h"
+#include "../debug.h"
+#include "../functions.h"
+#include "../gfx.h"
+#include "../macros.h"
+#include "../sdl.h"
+#include "../window.h"
+#include "../network.h"
+#include "../variables.h"
+#include "sdl_v.h"
 #include <SDL.h>
-#include "network.h"
-#include "variables.h"
 
 static SDL_Surface *_sdl_screen;
 static bool _all_modes;
@@ -488,3 +491,5 @@ const HalVideoDriver _sdl_video_driver = {
 	SdlVideoChangeRes,
 	SdlVideoFullScreen,
 };
+
+#endif

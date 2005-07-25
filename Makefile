@@ -337,7 +337,6 @@ ifdef PROFILE
 endif
 
 CDEFS=-DWITH_REV
-CFLAGS += -I. -I-
 
 ifndef DEBUG
 ifndef PROFILE

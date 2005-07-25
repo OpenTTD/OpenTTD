@@ -1,7 +1,7 @@
 /* $Id$ */
 
-#include "stdafx.h"
-#include "openttd.h"
+#include "../stdafx.h"
+#include "../openttd.h"
 
 static const char *name_original_english_1[] = {
 	"Great ",

@@ -1,11 +1,14 @@
 /* $Id$ */
 
-#include "stdafx.h"
-#include "openttd.h"
-#include "driver.h"
-#include "mixer.h"
-#include "sdl.h"
-#include "sound/sdl_s.h"
+#include "../stdafx.h"
+
+#ifdef WITH_SDL
+
+#include "../openttd.h"
+#include "../driver.h"
+#include "../mixer.h"
+#include "../sdl.h"
+#include "sdl_s.h"
 #include <SDL.h>
 
 static void CDECL fill_sound_buffer(void *userdata, Uint8 *stream, int len)
@@ -40,3 +43,5 @@ const HalSoundDriver _sdl_sound_driver = {
 	SdlSoundStart,
 	SdlSoundStop,
 };
+
+#endif

@@ -1,12 +1,13 @@
 /* $Id$ */
 
-#include "stdafx.h"
-#include "openttd.h"
-#include "driver.h"
-#include "functions.h"
-#include "mixer.h"
-#include "sound/win32_s.h"
+#include "../stdafx.h"
+#include "../openttd.h"
+#include "../driver.h"
+#include "../functions.h"
+#include "../mixer.h"
+#include "win32_s.h"
 #include <windows.h>
+#include <mmsystem.h>
 
 static HWAVEOUT _waveout;
 static WAVEHDR _wave_hdr[2];

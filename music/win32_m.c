@@ -1,9 +1,10 @@
 /* $Id$ */
 
-#include "stdafx.h"
-#include "openttd.h"
-#include "music/win32_m.h"
+#include "../stdafx.h"
+#include "../openttd.h"
+#include "win32_m.h"
 #include <windows.h>
+#include <mmsystem.h>
 
 static struct {
 	bool stop_song;

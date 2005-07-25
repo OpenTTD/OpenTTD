@@ -2,13 +2,12 @@
 
 #ifndef __BEOS__
 #ifndef __MORPHOS__
-#include "stdafx.h"
-
-#include "openttd.h"
-#include "music/extmidi.h"
-#include "sound.h"
-#include "string.h"
-#include "variables.h"
+#include "../stdafx.h"
+#include "../openttd.h"
+#include "../sound.h"
+#include "../string.h"
+#include "../variables.h"
+#include "extmidi.h"
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/wait.h>

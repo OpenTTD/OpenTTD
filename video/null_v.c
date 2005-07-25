@@ -1,11 +1,11 @@
 /* $Id$ */
 
-#include "stdafx.h"
-#include "openttd.h"
-#include "gfx.h"
-#include "variables.h"
-#include "video/null_v.h"
-#include "window.h"
+#include "../stdafx.h"
+#include "../openttd.h"
+#include "../gfx.h"
+#include "../variables.h"
+#include "../window.h"
+#include "null_v.h"
 
 static void* _null_video_mem = NULL;
 

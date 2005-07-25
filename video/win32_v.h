@@ -3,7 +3,7 @@
 #ifndef VIDEO_WIN32_H
 #define VIDEO_WIN32_H
 
-#include "hal.h"
+#include "../hal.h"
 
 bool MyShowCursor(bool show);
 

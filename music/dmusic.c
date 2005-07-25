@@ -26,15 +26,15 @@
 /* DirectMusic driver for Win32 */
 /* Based on dxmci from TTDPatch */
 
-#include "stdafx.h"
+#include "../stdafx.h"
 
 #ifdef WIN32_ENABLE_DIRECTMUSIC_SUPPORT
 
-#include "openttd.h"
-#include "string.h"
-#include "variables.h"
-#include "sound.h"
-#include "music/dmusic.h"
+#include "../openttd.h"
+#include "../string.h"
+#include "../variables.h"
+#include "../sound.h"
+#include "dmusic.h"
 
 static const char * DMusicMidiStart(const char * const *parm);
 static void DMusicMidiStop(void);
