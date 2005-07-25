@@ -135,11 +135,54 @@ SOURCE=.\debug.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\video\dedicated_v.c
+
+!IF  "$(CFG)" == "openttd - Win32 Release"
+
+# ADD CPP /Yu"../stdafx.h"
+
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+
+!ENDIF
+
+# End Source File
+# Begin Source File
+
 SOURCE=.\depot.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\music\dmusic.c
+
+!IF  "$(CFG)" == "openttd - Win32 Release"
+
+# ADD CPP /Yu"../stdafx.h"
+
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+
+!ENDIF
+
+# End Source File
+# Begin Source File
+
+SOURCE=.\music\dmusic2.cpp
+
+!IF  "$(CFG)" == "openttd - Win32 Release"
+
+# SUBTRACT CPP /YX /Yc /Yu
+
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+
+!ENDIF
+
+# End Source File
+# Begin Source File
+
 SOURCE=.\documentation.txt
+# End Source File
+# Begin Source File
+
+SOURCE=.\driver.c
 # End Source File
 # Begin Source File
 
@@ -214,6 +257,45 @@ SOURCE=.\npf.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\music\null_m.c
+
+!IF  "$(CFG)" == "openttd - Win32 Release"
+
+# ADD CPP /Yu"../stdafx.h"
+
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+
+!ENDIF
+
+# End Source File
+# Begin Source File
+
+SOURCE=.\sound\null_s.c
+
+!IF  "$(CFG)" == "openttd - Win32 Release"
+
+# ADD CPP /Yu"../stdafx.h"
+
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+
+!ENDIF
+
+# End Source File
+# Begin Source File
+
+SOURCE=.\video\null_v.c
+
+!IF  "$(CFG)" == "openttd - Win32 Release"
+
+# ADD CPP /Yu"../stdafx.h"
+
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+
+!ENDIF
+
+# End Source File
+# Begin Source File
+
 SOURCE=.\oldloader.c
 # End Source File
 # Begin Source File
@@ -259,6 +341,32 @@ SOURCE=.\screenshot.c
 # Begin Source File
 
 SOURCE=.\sdl.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\sound\sdl_s.c
+
+!IF  "$(CFG)" == "openttd - Win32 Release"
+
+# ADD CPP /Yu"../stdafx.h"
+
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+
+!ENDIF
+
+# End Source File
+# Begin Source File
+
+SOURCE=.\video\sdl_v.c
+
+!IF  "$(CFG)" == "openttd - Win32 Release"
+
+# ADD CPP /Yu"../stdafx.h"
+
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+
+!ENDIF
+
 # End Source File
 # Begin Source File
 
@@ -328,23 +436,6 @@ SOURCE=.\viewport.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\w32dm.c
-# End Source File
-# Begin Source File
-
-SOURCE=.\w32dm2.cpp
-
-!IF  "$(CFG)" == "openttd - Win32 Release"
-
-# SUBTRACT CPP /YX /Yc /Yu
-
-!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
-
-!ENDIF
-
-# End Source File
-# Begin Source File
-
 SOURCE=.\waypoint.c
 # End Source File
 # Begin Source File
@@ -354,6 +445,45 @@ SOURCE=.\widget.c
 # Begin Source File
 
 SOURCE=.\win32.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\music\win32_m.c
+
+!IF  "$(CFG)" == "openttd - Win32 Release"
+
+# ADD CPP /Yu"../stdafx.h"
+
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+
+!ENDIF
+
+# End Source File
+# Begin Source File
+
+SOURCE=.\sound\win32_s.c
+
+!IF  "$(CFG)" == "openttd - Win32 Release"
+
+# ADD CPP /Yu"../stdafx.h"
+
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+
+!ENDIF
+
+# End Source File
+# Begin Source File
+
+SOURCE=.\video\win32_v.c
+
+!IF  "$(CFG)" == "openttd - Win32 Release"
+
+# ADD CPP /Yu"../stdafx.h"
+
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+
+!ENDIF
+
 # End Source File
 # Begin Source File
 
@@ -385,7 +515,19 @@ SOURCE=.\debug.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\video\dedicated_v.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\depot.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\music\dmusic.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\driver.h
 # End Source File
 # Begin Source File
 
@@ -445,6 +587,18 @@ SOURCE=.\npf.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\music\null_m.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\sound\null_s.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\video\null_v.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\openttd.h
 # End Source File
 # Begin Source File
@@ -474,6 +628,14 @@ SOURCE=.\rail.h
 # Begin Source File
 
 SOURCE=.\saveload.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\sound\sdl_s.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\video\sdl_v.h
 # End Source File
 # Begin Source File
 
@@ -526,6 +688,18 @@ SOURCE=.\viewport.h
 # Begin Source File
 
 SOURCE=.\waypoint.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\music\win32_m.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\sound\win32_s.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\video\win32_v.h
 # End Source File
 # Begin Source File
 
