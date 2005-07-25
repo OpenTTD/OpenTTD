@@ -1480,6 +1480,7 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Zeleznicny prej
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Mesta
 STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}

@@ -7,7 +7,7 @@
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Hors limites
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Trop près des bords de la carte
-STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Fonds insuffisants - requiers {CURRENCY}
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Fonds insuffisants{}Somme de {CURRENCY} requise
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
 STR_EMPTY                                                       :
