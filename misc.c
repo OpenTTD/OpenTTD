@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
+#include "player.h"
 #include "string.h"
 #include "strings.h" // XXX GetParam*
 #include "table/strings.h"
