@@ -1,8 +1,8 @@
 /* $Id$ */
 
-#include "stdafx.h"
-#include "openttd.h"
-#include "music/bemidi.h"
+#include "../stdafx.h"
+#include "../openttd.h"
+#include "bemidi.h"
 
 // BeOS System Includes
 #include <MidiSynthFile.h>
