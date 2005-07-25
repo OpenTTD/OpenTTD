@@ -437,7 +437,9 @@ const DriverDesc _video_driver_descs[] = {
 #if defined(WITH_SDL)
 	{	"sdl",			"SDL Video Driver",			&_sdl_video_driver,			1},
 #endif
+#ifdef ENABLE_NETWORK
 	{	"dedicated",	"Dedicated Video Driver",	&_dedicated_video_driver,	0},
+#endif
 	{	NULL,			NULL,						NULL,						0}
 };
 

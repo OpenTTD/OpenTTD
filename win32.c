@@ -942,7 +942,9 @@ const DriverDesc _video_driver_descs[] = {
 	{"sdl", "SDL Video Driver",					&_sdl_video_driver,			1},
 #endif
 	{"win32", "Win32 GDI Video Driver",	&_win32_video_driver,		Windows_NT3_51},
+#ifdef ENABLE_NETWORK
 	{ "dedicated", "Dedicated Video Driver", &_dedicated_video_driver, 0},
+#endif
 	{ NULL, NULL, NULL, 0 }
 };
 

@@ -1,11 +1,10 @@
 /* $Id$ */
 
 #include "../stdafx.h"
-#include "../openttd.h"
-#include "dedicated_v.h"
 
 #ifdef ENABLE_NETWORK
 
+#include "../openttd.h"
 #include "../debug.h"
 #include "../functions.h"
 #include "../gfx.h"
@@ -14,6 +13,7 @@
 #include "../command.h"
 #include "../console.h"
 #include "../variables.h"
+#include "dedicated_v.h"
 
 #ifdef __OS2__
 #	include <sys/time.h> /* gettimeofday */
@@ -281,23 +281,6 @@ static int DedicatedVideoMainLoop(void)
 	}
 }
 
-#else
-
-static const char *DedicatedVideoStart(const char * const *parm)
-{
-	DEBUG(misc, 0) ("OpenTTD compiled without network support, exiting.");
-
-	return NULL;
-}
-
-static void DedicatedVideoStop(void) {}
-static void DedicatedVideoMakeDirty(int left, int top, int width, int height) {}
-static bool DedicatedVideoChangeRes(int w, int h) { return false; }
-static void DedicatedVideoFullScreen(bool fs) {}
-static int DedicatedVideoMainLoop(void) { return ML_QUIT; }
-
-#endif /* ENABLE_NETWORK */
-
 const HalVideoDriver _dedicated_video_driver = {
 	DedicatedVideoStart,
 	DedicatedVideoStop,
@@ -306,3 +289,5 @@ const HalVideoDriver _dedicated_video_driver = {
 	DedicatedVideoChangeRes,
 	DedicatedVideoFullScreen,
 };
+
+#endif /* ENABLE_NETWORK */

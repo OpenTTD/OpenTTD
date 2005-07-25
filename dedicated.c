@@ -1,32 +1,17 @@
 /* $Id$ */
 
 #include "stdafx.h"
-#include "openttd.h"
 
 #ifdef ENABLE_NETWORK
 
+#if defined(UNIX) && !defined(__MORPHOS__)
+
+#include "openttd.h"
 #include "variables.h"
 
-#ifdef __OS2__
-#	include <sys/types.h>
-#	include <unistd.h>
-#endif
+#include <sys/types.h>
+#include <unistd.h>
 
-#ifdef UNIX
-#	include <sys/types.h>
-#	include <unistd.h>
-#endif
-
-#ifdef __MORPHOS__
-/* Voids the fork, option will be disabled for MorphOS build anyway, because
- * MorphOS doesn't support forking (could only implemented with lots of code
- * changes here). */
-int fork(void) { return -1; }
-int dup2(int oldd, int newd) { return -1; }
-#endif
-
-#ifdef UNIX
-/* We want to fork our dedicated server */
 void DedicatedFork(void)
 {
 	/* Fork the program */
