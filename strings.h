@@ -14,6 +14,8 @@ static inline char* InlineString(char* buf, uint16 string)
 char *GetString(char *buffr, uint16 string);
 char *GetStringWithArgs(char *buffr, uint string, const int32 *argv);
 
+extern char _userstring[128];
+
 void InjectDParam(int amount);
 int32 GetParamInt32(void);
 uint GetCurrentCurrencyRate(void);
