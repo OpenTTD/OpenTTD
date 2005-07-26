@@ -66,6 +66,7 @@
 # MIDI: if set, it will use it as custom path to midi player.
 #       If unset, it will use the hardcoded path in the c code
 #       This can still be overriden by the music.extmidi openttd.cfg option.
+# WITH_DIRECTMUSIC: enable DirectMusic MIDI support
 # WITH_NETWORK: enable networking
 # DEDICATED: allows compilation on UNIX without SDL. Useful for dedicated servers
 #
@@ -118,9 +119,6 @@
 # CC_HOST: the gcc of your localhost if you are making a target that produces incompatible executables
 # CFLAGS_HOST: cflags used for CC_HOST. Make it something if you are getting errors when you try to compi
 #		windows executables on linux. (just: CFLAGS_HOST:='-I' or something)
-#
-# Experimental (does not work properly):
-# WITH_DIRECTMUSIC: enable DirectMusic MIDI support
 
 
 ##############################################################################
@@ -751,8 +749,7 @@ OBJS += winres.o
 endif
 
 ifdef WITH_DIRECTMUSIC
-C_SOURCES += music/dmusic.c
-CXX_SOURCES += music/dmusic2.cpp
+CXX_SOURCES += music/dmusic.cpp
 endif
 
 DEPS = $(OBJS:%.o=.deps/%.d)
