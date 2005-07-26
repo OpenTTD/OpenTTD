@@ -1729,8 +1729,6 @@ static void DbgScreenRect(int left, int top, int right, int bottom)
 }
 #endif
 
-extern bool _dbg_screen_rect;
-
 void RedrawScreenRect(int left, int top, int right, int bottom)
 {
 	assert(right <= _screen.width && bottom <= _screen.height);

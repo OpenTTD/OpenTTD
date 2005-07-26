@@ -27,8 +27,6 @@ void NetworkHandleCommandQueue(NetworkClientState *cs);
 void NetworkPopulateCompanyInfo(void);
 void NetworkSendPatchSettings(NetworkClientState *cs);
 
-extern const char _openttd_revision[];
-
 // Is the network enabled?
 
 // **********

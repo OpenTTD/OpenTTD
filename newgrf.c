@@ -35,7 +35,6 @@ GRFFile *_first_grffile;
 int _grffile_count;
 static int _cur_spriteid;
 static int _cur_stage;
-extern uint16 _custom_sprites_base;
 
 static int32 _paramlist[0x7f];
 static int _param_max;

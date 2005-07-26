@@ -62,9 +62,6 @@ extern void ShowOSErrorBox(const char *buf);
 
 bool LoadSavegame(const char *filename);
 
-extern void HalGameLoop(void);
-
-uint32 _pixels_redrawn;
 bool _dbg_screen_rect;
 
 /* TODO: usrerror() for errors which are not of an internal nature but

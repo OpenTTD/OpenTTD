@@ -647,8 +647,6 @@ uint16 GetCallBackResult(uint16 callback_info, byte engine, const Vehicle *v)
 static byte _vsg_random_triggers;
 static byte _vsg_bits_to_reseed;
 
-extern int _custom_sprites_base;
-
 static SpriteGroup *TriggerVehicleSpriteGroup(SpriteGroup *spritegroup,
 	Vehicle *veh, uint16 callback_info, resolve_callback resolve_func)
 {

@@ -16,10 +16,6 @@
 
 extern void SwitchMode(int new_mode);
 
-#if 0
-static void ShowSelectTutorialWindow() {}
-#endif
-
 static const Widget _select_game_widgets[] = {
 {    WWT_CAPTION, RESIZE_NONE, 13,   0, 335,   0,  13, STR_0307_OPENTTD,       STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 13,   0, 335,  14, 196, STR_NULL,               STR_NULL},

@@ -25,8 +25,6 @@ static int _num_dirty_rects;
 
 static void SdlVideoMakeDirty(int left, int top, int width, int height)
 {
-//	printf("(%d,%d)-(%d,%d)\n", left, top, width, height);
-//	_pixels_redrawn += width*height;
 	if (_num_dirty_rects < MAX_DIRTY_RECTS) {
 		_dirty_rects[_num_dirty_rects].x = left;
 		_dirty_rects[_num_dirty_rects].y = top;

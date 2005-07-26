@@ -27,8 +27,6 @@
 
 PlayerID _current_player;
 
-extern void StartupEconomy(void);
-
 static const SpriteID cheeks_table[4] = {
 	0x325, 0x326,
 	0x390, 0x3B0,
@@ -457,8 +455,6 @@ restart:;
 		return;
 	}
 }
-
-extern int GetPlayerMaxRailtype(int p);
 
 static Player *AllocatePlayer(void)
 {

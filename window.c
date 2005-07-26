@@ -1492,8 +1492,6 @@ void InputLoop(void)
 
 static int _we4_timer;
 
-extern uint32 _pixels_redrawn;
-
 void UpdateWindows(void)
 {
 	Window *w;
