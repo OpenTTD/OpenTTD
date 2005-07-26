@@ -39,10 +39,6 @@
 #endif
 
 
-#if defined(WITH_SDL)
-#include <SDL.h>
-#endif
-
 #ifdef __MORPHOS__
 #include <exec/types.h>
 ULONG __stack = (1024*1024)*2; // maybe not that much is needed actually ;)
