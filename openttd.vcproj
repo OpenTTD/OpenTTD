@@ -54,7 +54,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib"
+				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib dxguid.lib"
 				OutputFile=".\Release/openttd.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
@@ -101,7 +101,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;WITH_ZLIB;WITH_PNG;ENABLE_NETWORK"
+				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;WIN32_ENABLE_DIRECTMUSIC_SUPPORT;WITH_ZLIB;WITH_PNG;ENABLE_NETWORK"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="5"
 				UsePrecompiledHeader="2"
@@ -121,7 +121,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib"
+				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib dxguid.lib"
 				OutputFile=".\Debug/openttd.exe"
 				LinkIncremental="0"
 				SuppressStartupBanner="TRUE"
@@ -202,17 +202,7 @@
 				RelativePath=".\depot.c">
 			</File>
 			<File
-				RelativePath=".\music\dmusic.c">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						PrecompiledHeaderThrough="../stdafx.h"
-						PrecompiledHeaderFile=".\Release/openttd2.pch"/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\music\dmusic2.cpp">
+				RelativePath=".\music\dmusic.cpp">
 				<FileConfiguration
 					Name="Release|Win32">
 					<Tool
@@ -220,6 +210,12 @@
 						UsePrecompiledHeader="0"
 						PrecompiledHeaderThrough=""
 						PrecompiledHeaderFile=""
+						CompileAs="2"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
 						CompileAs="2"/>
 				</FileConfiguration>
 			</File>
