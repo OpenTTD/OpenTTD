@@ -440,8 +440,6 @@ extern const byte _airport_size_y[];
 
 /* misc */
 VARDEF char _screenshot_name[128];
-#define USERSTRING_LEN 128
-VARDEF char _userstring[USERSTRING_LEN];
 VARDEF byte _vehicle_design_names;
 
 /* tunnelbridge */

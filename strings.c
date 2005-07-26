@@ -16,6 +16,8 @@
 #include "industry.h"
 #include "variables.h"
 
+char _userstring[128];
+
 static char *StationGetSpecialString(char *buff, int x);
 static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed);
 static char *GetSpecialPlayerNameString(char *buff, int ind, const int32 *argv);

@@ -4,6 +4,8 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
+#include "string.h"
+#include "strings.h"
 #include "table/strings.h"
 #include "engine.h"
 #include "table/engines.h"
@@ -747,8 +749,7 @@ StringID GetCustomEngineName(int engine)
 {
 	if (!_engine_custom_names[engine])
 		return _engine_name_strings[engine];
-	strncpy(_userstring, _engine_custom_names[engine], USERSTRING_LEN);
-	_userstring[USERSTRING_LEN - 1] = '\0';
+	ttd_strlcpy(_userstring, _engine_custom_names[engine], lengthof(_userstring));
 	return STR_SPEC_USERSTRING;
 }
 
