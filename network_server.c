@@ -1326,9 +1326,9 @@ void NetworkPopulateCompanyInfo(void)
 		ci = DEREF_CLIENT_INFO(cs);
 		if (ci != NULL && ci->client_playas > 0 && ci->client_playas <= MAX_PLAYERS) {
 			if (strlen(_network_player_info[ci->client_playas-1].players) != 0)
-				strncat(_network_player_info[ci->client_playas-1].players, ", ", sizeof(_network_player_info[ci->client_playas-1].players));
+				ttd_strlcat(_network_player_info[ci->client_playas - 1].players, ", ", lengthof(_network_player_info[ci->client_playas - 1].players));
 
-			strncat(_network_player_info[ci->client_playas-1].players, client_name, sizeof(_network_player_info[ci->client_playas-1].players));
+			ttd_strlcat(_network_player_info[ci->client_playas - 1].players, client_name, lengthof(_network_player_info[ci->client_playas - 1].players));
 		}
 	}
 }
