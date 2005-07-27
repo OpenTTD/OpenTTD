@@ -1,50 +1,70 @@
 .\"                                      Hey, EMACS: -*- nroff -*-
-.\" First parameter, NAME, should be all caps
-.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
-.\" other parameters are allowed: see man(7), man(1)
-.TH OPENTTD 6 "September 16, 2004"
 .\" Please adjust this date whenever revising the manpage.
-.\"
-.\" Some roff macros, for reference:
-.\" .nh        disable hyphenation
-.\" .hy        enable hyphenation
-.\" .ad l      left justify
-.\" .ad b      justify to both left and right margins
-.\" .nf        disable filling
-.\" .fi        enable filling
-.\" .br        insert line break
-.\" .sp <n>    insert n+1 empty lines
-.\" for manpage-specific macros, see man(7)
-.SH NAME
-openttd \-  An open source clone of the Microprose game "Transport Tycoon Deluxe"
-.SH SYNOPSIS
-.B openttd
-.RI [ options ]
-.br
-.SH DESCRIPTION
-Unfortunately, there is no real manpage for openttd yet. Hopefully someone
-will write one soon. For now you should use
-.B openttd -h
-for more information, or check our Wiki manual: http://wiki.openttd.org/
-.PP
-.\" TeX users may be more comfortable with the \fB<whatever>\fP and
-.\" \fI<whatever>\fP escape sequences to invoke bold face and italics, 
-.\" respectively.
-.\" \fBopenttd\fP is a program that...
-.SH OPTIONS
-Wouldn't we like to have something here?
-.\" below are commented out, to serve as layout examples for when somebody
-.\" does actually fill this page
-.\" .TP
-.\" .B \-h, \-\-help
-.\" Show summary of options.
-.\" .TP
-.\" .B \-v, \-\-version
-.\" Show version of program.
-.\" .SH SEE ALSO
-.\" .BR bar (1),
-.\" .BR baz (1).
-.br
-.SH AUTHOR
-This manual page was written by Matthijs Kooijman <matthijs@katherina.student.utwente.nl>,
-for the Debian project (but may be used by others).
+.Dd July 27, 2005
+.Dt OPENTTD 6
+.Sh NAME
+.Nm openttd 
+.Nd An open source clone of the Microprose game "Transport Tycoon Deluxe"
+.Sh SYNOPSIS
+.Nm
+.Op Fl Defhi
+.Op Fl G Ar seed
+.Op Fl d Ar [level | cat=lvl[, ...]]
+.Op Fl g Ar [savegame]
+.Op Fl l Ar language
+.Op Fl n Ar [host[#player][:port]]
+.Op Fl r Ar widthxheight
+.Op Fl t Ar date
+.Op Fl m Ar driver
+.Op Fl s Ar driver
+.Op Fl v Ar driver
+.Sh OPTIONS
+.Bl -tag -width ".Fl n Ar host[#player][:port]"
+.It Fl D
+Start a dedicated server
+.It Fl G Ar seed
+Seed the pseudo random number generator
+.It Fl d Ar [level]
+Set debug verbosity for all categories to
+.Ar level
+or 1 if omitted
+.It Fl d Ar cat=level[, ...]
+Set debug verbosity for a specific category
+.It Fl e
+Start in world editor mode
+.It Fl f
+Fork into background (dedicated only, see
+.Fl D )
+.It Fl g Ar [savegame]
+Load
+.Ar savegame
+at start or start a new game if omitted
+.It Fl h
+Display a summary of all options and available drivers
+.It Fl i
+Force to use the DOS palette (use this if you see a lot of magenta)
+.It Fl l Ar language
+Set the language
+.It Fl m Ar driver
+Set the music driver, see
+.Fl h
+.It Fl n
+Start a network server
+.It Fl n Ar host[#player][:port]
+Join a network game, optionally specify player to play as and port to connect to
+.It Fl r Ar widthxheight
+Set the resolution
+.It Fl s Ar driver
+Set the sound driver, see
+.Fl h
+.It Fl t Ar date
+Set the starting date
+.It Fl v Ar driver
+Set the video driver, see
+.Fl h
+.Sh SEE ALSO
+http://wiki.openttd.org/
+.Sh HISTORY
+Transport Tycoon Deluxe was written by Chris Sawyer and published by Microprose.
+.Nm
+is a free reimplementation.
