@@ -9,17 +9,6 @@
 #include "hal.h"
 #include "variables.h"
 
-#include "music/bemidi.h"
-#include "music/extmidi.h"
-#include "music/null_m.h"
-
-#include "sound/null_s.h"
-#include "sound/sdl_s.h"
-
-#include "video/dedicated_v.h"
-#include "video/null_v.h"
-#include "video/sdl_v.h"
-
 #include <dirent.h>
 #include <unistd.h>
 #include <sys/stat.h>
@@ -367,53 +356,6 @@ void FiosDelete(const char *name)
 
 	snprintf(path, lengthof(path), "%s/%s", _fios_path, name);
 	unlink(path);
-}
-
-const DriverDesc _video_driver_descs[] = {
-	{"null",	"Null Video Driver",	&_null_video_driver,	0},
-#if defined(WITH_SDL)
-	{ "sdl",	"SDL Video Driver",		&_sdl_video_driver,		1},
-#endif
-#ifdef ENABLE_NETWORK
-	{ "dedicated", "Dedicated Video Driver", &_dedicated_video_driver, 0},
-#endif
-	{ NULL,		NULL,									NULL,									0}
-};
-
-const DriverDesc _sound_driver_descs[] = {
-	{"null",	"Null Sound Driver",	&_null_sound_driver,		0},
-#if defined(WITH_SDL)
-	{ "sdl",	"SDL Sound Driver",		&_sdl_sound_driver,			1},
-#endif
-	{ NULL,		NULL,									NULL,										0}
-};
-
-#if defined(__APPLE__)
-#define EXTMIDI_PRI 2
-#else
-#define EXTMIDI_PRI 0
-#endif
-
-const DriverDesc _music_driver_descs[] = {
-#ifndef __BEOS__
-#if !defined(__MORPHOS__) && !defined(__AMIGA__)
-// MorphOS and AmigaOS have no music support
-	{"extmidi",	"External MIDI Driver",	&_extmidi_music_driver,	EXTMIDI_PRI},
-#endif
-#endif
-#ifdef __BEOS__
-	{ "bemidi",	"BeOS MIDI Driver",			&_bemidi_music_driver,	1},
-#endif
-	{   "null",	"Null Music Driver",		&_null_music_driver,		1},
-	{     NULL,	NULL,										NULL,										0}
-};
-
-/* GetOSVersion returns the minimal required version of OS to be able to use that driver.
-	 Not needed for *nix. */
-byte GetOSVersion(void)
-{
-	return 2;  // any arbitrary number bigger than 0
-				// numbers lower than 2 breaks default music selection on mac
 }
 
 bool FileExists(const char *filename)

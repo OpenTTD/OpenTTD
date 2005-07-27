@@ -10,6 +10,7 @@
 #include "string.h"
 
 int _debug_ai_level;
+int _debug_driver_level;
 int _debug_grf_level;
 int _debug_map_level;
 int _debug_misc_level;
@@ -45,6 +46,7 @@ typedef struct DebugLevel {
 #define DEBUG_LEVEL(x) { #x, &_debug_##x##_level }
 	static const DebugLevel debug_level[] = {
 	DEBUG_LEVEL(ai),
+	DEBUG_LEVEL(driver),
 	DEBUG_LEVEL(grf),
 	DEBUG_LEVEL(map),
 	DEBUG_LEVEL(misc),

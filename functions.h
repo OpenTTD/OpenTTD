@@ -273,7 +273,6 @@ void LoadFromConfig(void);
 void SaveToConfig(void);
 void CheckConfig(void);
 int ttd_main(int argc, char* argv[]);
-byte GetOSVersion(void);
 
 void DeterminePaths(void);
 char * CDECL str_fmt(const char *str, ...);

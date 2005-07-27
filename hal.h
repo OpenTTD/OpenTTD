@@ -41,7 +41,6 @@ typedef struct {
 	const char *name;
 	const char *longname;
 	const void *drv;
-	uint32 flags;
 } DriverDesc;
 
 enum {

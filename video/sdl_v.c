@@ -169,7 +169,7 @@ static bool CreateMainSurface(int w, int h)
 
 	GetAvailableVideoMode(&w, &h);
 
-	DEBUG(misc, 1) ("sdl: using mode %dx%d", w, h);
+	DEBUG(driver, 1) ("sdl: using mode %dx%d", w, h);
 
 	// DO NOT CHANGE TO HWSURFACE, IT DOES NOT WORK
 	newscreen = SDL_CALL SDL_SetVideoMode(w, h, 8, SDL_SWSURFACE | SDL_HWPALETTE | (_fullscreen ? SDL_FULLSCREEN : SDL_RESIZABLE));
@@ -385,7 +385,7 @@ static const char *SdlVideoStart(const char * const *parm)
 	if (s != NULL) return s;
 
 	SDL_CALL SDL_VideoDriverName(buf, 30);
-	DEBUG(misc, 1) ("sdl: using driver '%s'", buf);
+	DEBUG(driver, 1) ("sdl: using driver '%s'", buf);
 
 	GetVideoModes();
 	CreateMainSurface(_cur_resolution[0], _cur_resolution[1]);

@@ -86,14 +86,14 @@ static void CreateWindowsConsoleThread(void)
 	if (hThread == NULL)
 		error("Cannot create console thread!");
 
-	DEBUG(misc, 0) ("Windows console thread started...");
+	DEBUG(driver, 1) ("Windows console thread started...");
 }
 
 static void CloseWindowsConsoleThread(void)
 {
 	CloseHandle(hThread);
 	CloseHandle(hEvent);
-	DEBUG(misc, 0) ("Windows console thread shut down...");
+	DEBUG(driver, 1) ("Windows console thread shut down...");
 }
 
 #endif
@@ -126,7 +126,7 @@ static const char *DedicatedVideoStart(const char * const *parm)
 	OS2_SwitchToConsoleMode();
 #endif
 
-	DEBUG(misc,0)("Loading dedicated server...");
+	DEBUG(driver, 1)("Loading dedicated server...");
 	return NULL;
 }
 
