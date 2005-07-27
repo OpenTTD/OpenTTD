@@ -4,6 +4,7 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
+#include "hal.h"
 #include "macros.h"
 #include "saveload.h"
 #include "string.h"
@@ -17,7 +18,6 @@
 #include <fcntl.h>
 #include "variables.h"
 #include "win32.h"
-#include "video/win32_v.h"
 
 static bool _has_console;
 
