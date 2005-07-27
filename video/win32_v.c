@@ -21,7 +21,6 @@ static struct {
 	HPALETTE gdi_palette;
 	int width,height;
 	int width_org, height_org;
-	bool cursor_visible;
 	bool switch_driver;
 	bool fullscreen;
 	bool double_size;
@@ -632,7 +631,6 @@ static void FindResolutions(void)
 static const char *Win32GdiStart(const char * const *parm)
 {
 	memset(&_wnd, 0, sizeof(_wnd));
-	_wnd.cursor_visible = true;
 
 	RegisterWndClass();
 

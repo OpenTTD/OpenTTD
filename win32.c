@@ -40,6 +40,8 @@ static bool _has_console;
 #endif
 
 
+static bool cursor_visible = true;
+
 bool MyShowCursor(bool show)
 {
 	if (_wnd.cursor_visible == show) return show;
