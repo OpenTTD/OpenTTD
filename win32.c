@@ -44,9 +44,9 @@ static bool cursor_visible = true;
 
 bool MyShowCursor(bool show)
 {
-	if (_wnd.cursor_visible == show) return show;
+	if (cursor_visible == show) return show;
 
-	_wnd.cursor_visible = show;
+	cursor_visible = show;
 	ShowCursor(show);
 
 	return !show;
