@@ -900,16 +900,8 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 
 		case WE_CLICK: {
 			switch(e->click.widget) {
-				case 14: case 15:/* Select sorting criteria dropdown menu */
-				// finds mask for available engines
-				{
-					int engine_avail = 0;
-					if (!HASBIT(GetEngine(NUM_NORMAL_RAIL_ENGINES + NUM_MONORAIL_ENGINES)->player_avail, _local_player)) {
-						engine_avail = 4;
-						if (!HASBIT(GetEngine(NUM_NORMAL_RAIL_ENGINES)->player_avail, _local_player))
-							engine_avail = 6;
-					}
-					ShowDropDownMenu(w, _rail_types_list, _railtype_selected_in_replace_gui, 15, engine_avail, 1);
+				case 14: case 15: { /* Select sorting criteria dropdown menu */
+					ShowDropDownMenu(w, _rail_types_list, _railtype_selected_in_replace_gui, 15, ~GetPlayer(_local_player)->avail_railtypes, 1);
 					break;
 				}
 				case 4: {
