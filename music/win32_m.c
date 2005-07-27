@@ -126,11 +126,18 @@ static DWORD WINAPI MidiThread(LPVOID arg)
 static const char *Win32MidiStart(const char * const *parm)
 {
 	DWORD threadId;
+	char buf[16];
+
+	mciSendStringA("capability sequencer has audio", buf, lengthof(buf), 0);
+	if (strcmp(buf, "true") != 0) return "MCI sequencer can't play audio";
 
 	memset(&_midi, 0, sizeof(_midi));
 	_midi.new_vol = -1;
-	CreateThread(NULL, 8192, MidiThread, 0, 0, &threadId);
-	return 0;
+
+	if (CreateThread(NULL, 8192, MidiThread, 0, 0, &threadId) == NULL)
+		return "Failed to create thread";
+
+	return NULL;
 }
 
 static void Win32MidiStop(void)
