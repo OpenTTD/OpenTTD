@@ -40,6 +40,17 @@ static bool _has_console;
 #endif
 
 
+bool MyShowCursor(bool show)
+{
+	if (_wnd.cursor_visible == show) return show;
+
+	_wnd.cursor_visible = show;
+	ShowCursor(show);
+
+	return !show;
+}
+
+
 // Helper function needed by dynamically loading SDL
 bool LoadLibraryList(Function proc[], const char* dll)
 {

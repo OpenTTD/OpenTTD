@@ -5,8 +5,6 @@
 
 #include "../hal.h"
 
-bool MyShowCursor(bool show);
-
 extern const HalVideoDriver _win32_video_driver;
 
 #endif

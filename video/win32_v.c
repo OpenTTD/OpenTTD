@@ -7,6 +7,7 @@
 #include "../macros.h"
 #include "../network.h"
 #include "../variables.h"
+#include "../win32.h"
 #include "../window.h"
 #include "win32_v.h"
 #include <windows.h>
@@ -63,17 +64,6 @@ static void UpdatePalette(HDC dc, uint start, uint count)
 	}
 
 	SetDIBColorTable(dc, start, count, rgb);
-}
-
-bool MyShowCursor(bool show)
-{
-	if (_wnd.cursor_visible == show)
-		return show;
-
-	_wnd.cursor_visible = show;
-	ShowCursor(show);
-
-	return !show;
 }
 
 typedef struct {
