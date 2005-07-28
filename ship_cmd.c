@@ -220,7 +220,7 @@ static void ProcessShipOrder(Vehicle *v)
 	}
 
 	if (v->current_order.type == OT_GOTO_DEPOT &&
-			(v->current_order.flags & (OF_UNLOAD | OF_FULL_LOAD)) == (OF_UNLOAD | OF_FULL_LOAD) &&
+			(v->current_order.flags & (OF_PART_OF_ORDERS | OF_SERVICE_IF_NEEDED)) == (OF_PART_OF_ORDERS | OF_SERVICE_IF_NEEDED) &&
 			!VehicleNeedsService(v)) {
 		v->cur_order_index++;
 	}
