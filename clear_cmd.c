@@ -415,23 +415,41 @@ int32 CmdPurchaseLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 static int32 ClearTile_Clear(TileIndex tile, byte flags)
 {
-	static const int32 * _clear_price_table[] = {
-			NULL,
-			&_price.clear_1, &_price.clear_1,&_price.clear_1,
-			&_price.purchase_land,&_price.purchase_land,&_price.purchase_land,&_price.purchase_land,
-			&_price.clear_2,&_price.clear_2,&_price.clear_2,&_price.clear_2,
-			&_price.clear_3,&_price.clear_3,&_price.clear_3,&_price.clear_3,
-			&_price.purchase_land,&_price.purchase_land,&_price.purchase_land,&_price.purchase_land,
-			&_price.purchase_land,&_price.purchase_land,&_price.purchase_land,&_price.purchase_land,
-			&_price.clear_2,&_price.clear_2,&_price.clear_2,&_price.clear_2,
+	static const int32 null = 0;
+	static const int32* clear_price_table[] = {
+		&null,
+		&_price.clear_1,
+		&_price.clear_1,
+		&_price.clear_1,
+		&_price.purchase_land,
+		&_price.purchase_land,
+		&_price.purchase_land,
+		&_price.purchase_land,
+		&_price.clear_2,
+		&_price.clear_2,
+		&_price.clear_2,
+		&_price.clear_2,
+		&_price.clear_3,
+		&_price.clear_3,
+		&_price.clear_3,
+		&_price.clear_3,
+		&_price.purchase_land,
+		&_price.purchase_land,
+		&_price.purchase_land,
+		&_price.purchase_land,
+		&_price.purchase_land,
+		&_price.purchase_land,
+		&_price.purchase_land,
+		&_price.purchase_land,
+		&_price.clear_2,
+		&_price.clear_2,
+		&_price.clear_2,
+		&_price.clear_2,
 	};
-	const int32 *price = _clear_price_table[_m[tile].m5 & 0x1F];
+	const int32 *price = clear_price_table[GB(_m[tile].m5, 0, 5)];
 
-	if (flags & DC_EXEC)
-		DoClearSquare(tile);
+	if (flags & DC_EXEC) DoClearSquare(tile);
 
-	if (price == NULL)
-		return 0;
 	return *price;
 }
 
@@ -479,8 +497,9 @@ void DrawHillyLandTile(TileInfo *ti)
 	}
 }
 
-void DrawClearLandFence(TileInfo *ti, byte img)
+void DrawClearLandFence(const TileInfo *ti)
 {
+	byte m4 = _m[ti->tile].m4;
 	byte z = ti->z;
 
 	if (ti->tileh & 2) {
@@ -489,21 +508,20 @@ void DrawClearLandFence(TileInfo *ti, byte img)
 			z += 8;
 	}
 
-	if (img & 0x38) {
-		DrawGroundSpriteAt(_clear_land_fence_sprites_1[GB(img, 3, 3) - 1] + _fence_mod_by_tileh[ti->tileh], ti->x, ti->y, z);
+	if (GB(m4, 5, 3) != 0) {
+		DrawGroundSpriteAt(_clear_land_fence_sprites_1[GB(m4, 5, 3) - 1] + _fence_mod_by_tileh[ti->tileh], ti->x, ti->y, z);
 	}
 
-	if (img & 0x7) {
-		DrawGroundSpriteAt(_clear_land_fence_sprites_1[GB(img, 0, 3) - 1] + _fence_mod_by_tileh_2[ti->tileh], ti->x, ti->y, z);
+	if (GB(m4, 2, 3) != 0) {
+		DrawGroundSpriteAt(_clear_land_fence_sprites_1[GB(m4, 2, 3) - 1] + _fence_mod_by_tileh_2[ti->tileh], ti->x, ti->y, z);
 	}
 }
 
 static void DrawTile_Clear(TileInfo *ti)
 {
-
-	switch((ti->map5 & (7<<2)) >> 2) {
+	switch (GB(ti->map5, 2, 3)) {
 	case 0:
-		DrawClearLandTile(ti, (ti->map5 & 3));
+		DrawClearLandTile(ti, GB(ti->map5, 0, 2));
 		break;
 
 	case 1:
@@ -515,19 +533,19 @@ static void DrawTile_Clear(TileInfo *ti)
 		break;
 
 	case 3:
-		DrawGroundSprite( _clear_land_sprites_1[_m[ti->tile].m3&0xF] + _tileh_to_sprite[ti->tileh]);
+		DrawGroundSprite(_clear_land_sprites_1[GB(_m[ti->tile].m3, 0, 4)] + _tileh_to_sprite[ti->tileh]);
 		break;
 
 	case 4:
-		DrawGroundSprite( _clear_land_sprites_2[ti->map5&3] + _tileh_to_sprite[ti->tileh]);
+		DrawGroundSprite(_clear_land_sprites_2[GB(ti->map5, 0, 2)] + _tileh_to_sprite[ti->tileh]);
 		break;
 
 	case 5:
-		DrawGroundSprite( _clear_land_sprites_3[ti->map5&3] + _tileh_to_sprite[ti->tileh]);
+		DrawGroundSprite(_clear_land_sprites_3[GB(ti->map5, 0, 2)] + _tileh_to_sprite[ti->tileh]);
 		break;
 	}
 
-	DrawClearLandFence(ti, _m[ti->tile].m4 >> 2);
+	DrawClearLandFence(ti);
 }
 
 static uint GetSlopeZ_Clear(TileInfo *ti)
@@ -814,7 +832,7 @@ static uint32 GetTileTrackStatus_Clear(TileIndex tile, TransportType mode)
 	return 0;
 }
 
-static const StringID _clear_land_str[4+8-1] = {
+static const StringID _clear_land_str[] = {
 	STR_080B_ROUGH_LAND,
 	STR_080A_ROCKS,
 	STR_080E_FIELDS,
@@ -830,9 +848,8 @@ static const StringID _clear_land_str[4+8-1] = {
 
 static void GetTileDesc_Clear(TileIndex tile, TileDesc *td)
 {
-	int i = (_m[tile].m5>>2) & 7;
-	if (i == 0)
-		i = (_m[tile].m5 & 3) + 8;
+	uint i = GB(_m[tile].m5, 2, 3);
+	if (i == 0) i = GB(_m[tile].m5, 0, 2) + 8;
 	td->str = _clear_land_str[i - 1];
 	td->owner = GetTileOwner(tile);
 }

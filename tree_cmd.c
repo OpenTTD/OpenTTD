@@ -264,7 +264,7 @@ static void DrawTile_Trees(TileInfo *ti)
 		DrawHillyLandTile(ti);
 	}
 
-	DrawClearLandFence(ti, _m[ti->tile].m4 >> 2);
+	DrawClearLandFence(ti);
 
 	z = ti->z;
 	if (ti->tileh != 0) {

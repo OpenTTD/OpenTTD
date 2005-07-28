@@ -52,7 +52,7 @@ static inline Point RemapCoords2(int x, int y)
 /* clear_land.c */
 void DrawHillyLandTile(TileInfo *ti);
 void DrawClearLandTile(TileInfo *ti, byte set);
-void DrawClearLandFence(TileInfo *ti, byte img);
+void DrawClearLandFence(const TileInfo *ti);
 void TileLoopClearHelper(TileIndex tile);
 
 /* station_land.c */
