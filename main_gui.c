@@ -486,6 +486,7 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 		StringID string;
 		int eo;
 		int inc;
+		byte color;
 
 		DrawWindowWidgets(w);
 
@@ -503,7 +504,9 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 
 		do {
 			if (sel== 0) GfxFillRect(x, y, x + eo, y+9, 0);
-			DrawString(x + 2, y, string + (chk & 1), sel == 0 ? 0xC : 0x10);
+			color = sel == 0 ? 0xC : 0x10;
+			if (HASBIT(WP(w,menu_d).disabled_items, (string - WP(w, menu_d).string_id))) color = 0xE;
+			DrawString(x + 2, y, string + (chk & 1), color);
 			y += 10;
 			string += inc;
 			chk >>= 1;
@@ -711,7 +714,7 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 	}
 }
 
-static Window *PopupMainToolbMenu(Window *w, int x, int main_button, StringID base_string, int item_count)
+static Window *PopupMainToolbMenu(Window *w, int x, int main_button, StringID base_string, int item_count, byte disabled_mask)
 {
 	x += w->left;
 
@@ -730,6 +733,7 @@ static Window *PopupMainToolbMenu(Window *w, int x, int main_button, StringID ba
 	WP(w,menu_d).action_id = (main_button >> 8) ? (main_button >> 8) : main_button;
 	WP(w,menu_d).string_id = base_string;
 	WP(w,menu_d).checked_items = 0;
+	WP(w,menu_d).disabled_items = disabled_mask;
 
 	_popup_menu_active = true;
 
@@ -760,6 +764,7 @@ static Window *PopupMainPlayerToolbMenu(Window *w, int x, int main_button, int g
 	WP(w,menu_d).action_id = main_button;
 	WP(w,menu_d).main_button = main_button;
 	WP(w,menu_d).checked_items = gray;
+	WP(w,menu_d).disabled_items = 0;
 	_popup_menu_active = true;
 	SndPlayFx(SND_15_BEEP);
 	return w;
@@ -767,22 +772,22 @@ static Window *PopupMainPlayerToolbMenu(Window *w, int x, int main_button, int g
 
 static void ToolbarSaveClick(Window *w)
 {
-	PopupMainToolbMenu(w, 66, 3, STR_015C_SAVE_GAME, 4);
+	PopupMainToolbMenu(w, 66, 3, STR_015C_SAVE_GAME, 4, 0);
 }
 
 static void ToolbarMapClick(Window *w)
 {
-	PopupMainToolbMenu(w, 96, 4, STR_02DE_MAP_OF_WORLD, 3);
+	PopupMainToolbMenu(w, 96, 4, STR_02DE_MAP_OF_WORLD, 3, 0);
 }
 
 static void ToolbarTownClick(Window *w)
 {
-	PopupMainToolbMenu(w, 118, 5, STR_02BB_TOWN_DIRECTORY, 1);
+	PopupMainToolbMenu(w, 118, 5, STR_02BB_TOWN_DIRECTORY, 1, 0);
 }
 
 static void ToolbarSubsidiesClick(Window *w)
 {
-	PopupMainToolbMenu(w, 140, 6, STR_02DD_SUBSIDIES, 1);
+	PopupMainToolbMenu(w, 140, 6, STR_02DD_SUBSIDIES, 1, 0);
 }
 
 static void ToolbarStationsClick(Window *w)
@@ -802,17 +807,17 @@ static void ToolbarPlayersClick(Window *w)
 
 static void ToolbarGraphsClick(Window *w)
 {
-	PopupMainToolbMenu(w, 236, 10, STR_0154_OPERATING_PROFIT_GRAPH, 6);
+	PopupMainToolbMenu(w, 236, 10, STR_0154_OPERATING_PROFIT_GRAPH, 6, 0);
 }
 
 static void ToolbarLeagueClick(Window *w)
 {
-	PopupMainToolbMenu(w, 258, 11, STR_015A_COMPANY_LEAGUE_TABLE, 2);
+	PopupMainToolbMenu(w, 258, 11, STR_015A_COMPANY_LEAGUE_TABLE, 2, 0);
 }
 
 static void ToolbarIndustryClick(Window *w)
 {
-	PopupMainToolbMenu(w, 280, 12, STR_INDUSTRY_DIR, 2);
+	PopupMainToolbMenu(w, 280, 12, STR_INDUSTRY_DIR, 2, 0);
 }
 
 static void ToolbarTrainClick(Window *w)
@@ -941,50 +946,50 @@ static void ToolbarBuildRailClick(Window *w)
 {
 	Player *p = GetPlayer(_local_player);
 	Window *w2;
-	w2 = PopupMainToolbMenu(w, 457, 19, STR_1015_RAILROAD_CONSTRUCTION, GetNumRailtypes(p));
+	w2 = PopupMainToolbMenu(w, 457, 19, STR_1015_RAILROAD_CONSTRUCTION, RAILTYPE_END, ~p->avail_railtypes);
 	WP(w2,menu_d).sel_index = _last_built_railtype;
 }
 
 static void ToolbarBuildRoadClick(Window *w)
 {
-	PopupMainToolbMenu(w, 479, 20, STR_180A_ROAD_CONSTRUCTION, 1);
+	PopupMainToolbMenu(w, 479, 20, STR_180A_ROAD_CONSTRUCTION, 1, 0);
 }
 
 static void ToolbarBuildWaterClick(Window *w)
 {
-	PopupMainToolbMenu(w, 501, 21, STR_9800_DOCK_CONSTRUCTION, 1);
+	PopupMainToolbMenu(w, 501, 21, STR_9800_DOCK_CONSTRUCTION, 1, 0);
 }
 
 static void ToolbarBuildAirClick(Window *w)
 {
-	PopupMainToolbMenu(w, 0x1E0, 22, STR_A01D_AIRPORT_CONSTRUCTION, 1);
+	PopupMainToolbMenu(w, 0x1E0, 22, STR_A01D_AIRPORT_CONSTRUCTION, 1, 0);
 }
 
 static void ToolbarForestClick(Window *w)
 {
-	PopupMainToolbMenu(w, 0x1E0, 23, STR_LANDSCAPING, 3);
+	PopupMainToolbMenu(w, 0x1E0, 23, STR_LANDSCAPING, 3, 0);
 }
 
 static void ToolbarMusicClick(Window *w)
 {
-	PopupMainToolbMenu(w, 0x1E0, 24, STR_01D3_SOUND_MUSIC, 1);
+	PopupMainToolbMenu(w, 0x1E0, 24, STR_01D3_SOUND_MUSIC, 1, 0);
 }
 
 static void ToolbarNewspaperClick(Window *w)
 {
-	PopupMainToolbMenu(w, 0x1E0, 25, STR_0200_LAST_MESSAGE_NEWS_REPORT, 3);
+	PopupMainToolbMenu(w, 0x1E0, 25, STR_0200_LAST_MESSAGE_NEWS_REPORT, 3, 0);
 }
 
 static void ToolbarHelpClick(Window *w)
 {
-	PopupMainToolbMenu(w, 0x1E0, 26, STR_02D5_LAND_BLOCK_INFO, 5);
+	PopupMainToolbMenu(w, 0x1E0, 26, STR_02D5_LAND_BLOCK_INFO, 5, 0);
 }
 
 static void ToolbarOptionsClick(Window *w)
 {
 	uint16 x;
 
-	w = PopupMainToolbMenu(w,  43, 2, STR_02C3_GAME_OPTIONS, 13);
+	w = PopupMainToolbMenu(w,  43, 2, STR_02C3_GAME_OPTIONS, 13, 0);
 
 	x = (uint16)-1;
 	if (_display_opt & DO_SHOW_TOWN_NAMES) x &= ~(1<<5);
@@ -1001,7 +1006,7 @@ static void ToolbarOptionsClick(Window *w)
 
 static void ToolbarScenSaveOrLoad(Window *w)
 {
-	PopupMainToolbMenu(w, 0x2C, 3, STR_0292_SAVE_SCENARIO, 5);
+	PopupMainToolbMenu(w, 0x2C, 3, STR_0292_SAVE_SCENARIO, 5, 0);
 }
 
 static void ToolbarScenDateBackward(Window *w)
@@ -1032,7 +1037,7 @@ static void ToolbarScenDateForward(Window *w)
 
 static void ToolbarScenMapTownDir(Window *w)
 {
-	PopupMainToolbMenu(w, 0x16A, 8 | (17<<8), STR_02DE_MAP_OF_WORLD, 4);
+	PopupMainToolbMenu(w, 0x16A, 8 | (17<<8), STR_02DE_MAP_OF_WORLD, 4, 0);
 }
 
 static void ToolbarScenZoomIn(Window *w)

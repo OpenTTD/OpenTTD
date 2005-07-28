@@ -316,6 +316,7 @@ typedef struct {
 	byte action_id;
 	StringID string_id; /* unk30 */
 	uint16 checked_items; /* unk32 */
+	byte disabled_items;
 } menu_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(menu_d));
 

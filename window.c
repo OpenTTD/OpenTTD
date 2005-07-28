@@ -1534,7 +1534,7 @@ int GetMenuItemIndex(Window *w, int x, int y)
 	if ((x -= w->left) >= 0 && x < w->width && (y -= w->top + 1) >= 0) {
 		y /= 10;
 
-		if (y < WP(w,menu_d).item_count)
+		if (y < WP(w,menu_d).item_count && !HASBIT(WP(w,menu_d).disabled_items, y))
 			return y;
 	}
 	return -1;
