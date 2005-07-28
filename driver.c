@@ -36,9 +36,54 @@ typedef struct DriverClass {
 	void *var;
 } DriverClass;
 
-static const DriverDesc _video_driver_descs[];
-static const DriverDesc _sound_driver_descs[];
-static const DriverDesc _music_driver_descs[];
+
+static const DriverDesc _music_driver_descs[] = {
+#ifdef __BEOS__
+	{ "bemidi",  "BeOS MIDI Driver",        &_bemidi_music_driver },
+#endif
+#ifdef __OS2__
+	{ "os2",     "OS/2 Music Driver",       &_os2_music_driver},
+#endif
+#ifdef WIN32_ENABLE_DIRECTMUSIC_SUPPORT
+	{ "dmusic",  "DirectMusic MIDI Driver", &_dmusic_midi_driver },
+#endif
+#ifdef WIN32
+	{ "win32",   "Win32 MIDI Driver",       &_win32_music_driver },
+#endif
+#ifdef UNIX
+#if !defined(__BEOS__) && !defined(__MORPHOS__) && !defined(__AMIGA__)
+	{ "extmidi", "External MIDI Driver",    &_extmidi_music_driver },
+#endif
+#endif
+	{ "null",    "Null Music Driver",       &_null_music_driver },
+	{ NULL, NULL, NULL}
+};
+
+static const DriverDesc _sound_driver_descs[] = {
+#ifdef WIN32
+	{ "win32", "Win32 WaveOut Driver", &_win32_sound_driver },
+#endif
+#ifdef WITH_SDL
+	{ "sdl",   "SDL Sound Driver",     &_sdl_sound_driver },
+#endif
+	{ "null",  "Null Sound Driver",    &_null_sound_driver },
+	{ NULL, NULL, NULL}
+};
+
+static const DriverDesc _video_driver_descs[] = {
+#ifdef WIN32
+	{ "win32",      "Win32 GDI Video Driver", &_win32_video_driver },
+#endif
+#ifdef WITH_SDL
+	{ "sdl",        "SDL Video Driver",       &_sdl_video_driver },
+#endif
+	{ "null",       "Null Video Driver",      &_null_video_driver},
+#ifdef ENABLE_NETWORK
+	{ "dedicated",  "Dedicated Video Driver", &_dedicated_video_driver},
+#endif
+	{ NULL, NULL, NULL}
+};
+
 
 static const DriverClass _driver_classes[] = {
 	{_video_driver_descs, "video", &_video_driver},
@@ -160,51 +205,3 @@ void GetDriverList(char* p)
 		}
 	}
 }
-
-
-static const DriverDesc _music_driver_descs[] = {
-#ifdef __BEOS__
-	{ "bemidi",  "BeOS MIDI Driver",        &_bemidi_music_driver },
-#endif
-#ifdef __OS2__
-	{ "os2",     "OS/2 Music Driver",       &_os2_music_driver},
-#endif
-#ifdef WIN32_ENABLE_DIRECTMUSIC_SUPPORT
-	{ "dmusic",  "DirectMusic MIDI Driver", &_dmusic_midi_driver },
-#endif
-#ifdef WIN32
-	{ "win32",   "Win32 MIDI Driver",       &_win32_music_driver },
-#endif
-#ifdef UNIX
-#if !defined(__BEOS__) && !defined(__MORPHOS__) && !defined(__AMIGA__)
-	{ "extmidi", "External MIDI Driver",    &_extmidi_music_driver },
-#endif
-#endif
-	{ "null",    "Null Music Driver",       &_null_music_driver },
-	{ NULL, NULL, NULL}
-};
-
-static const DriverDesc _sound_driver_descs[] = {
-#ifdef WIN32
-	{ "win32", "Win32 WaveOut Driver", &_win32_sound_driver },
-#endif
-#ifdef WITH_SDL
-	{	"sdl",   "SDL Sound Driver",     &_sdl_sound_driver },
-#endif
-	{	"null",  "Null Sound Driver",    &_null_sound_driver },
-	{	NULL, NULL, NULL}
-};
-
-static const DriverDesc _video_driver_descs[] = {
-#ifdef WIN32
-	{ "win32",      "Win32 GDI Video Driver", &_win32_video_driver },
-#endif
-#ifdef WITH_SDL
-	{ "sdl",        "SDL Video Driver",       &_sdl_video_driver },
-#endif
-	{ "null",       "Null Video Driver",      &_null_video_driver},
-#ifdef ENABLE_NETWORK
-	{ "dedicated",	"Dedicated Video Driver",	&_dedicated_video_driver},
-#endif
-	{ NULL, NULL, NULL}
-};
