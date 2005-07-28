@@ -1,5 +1,8 @@
 /* $Id$ */
 
+/** @file station_cmd.c
+  */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
@@ -2446,10 +2449,19 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 	return 0;
 }
 
+/** Removes a station from the list.
+  * This is done by setting the .xy property to 0,
+  * and doing some maintenance, especially clearing vehicle orders.
+  * Aircraft-Hangar orders need special treatment here, as the hangars are
+  * actually part of a station (tiletype is STATION), but the order type
+  * is OT_GOTO_DEPOT.
+  * @param st Station to be deleted
+  */
 static void DeleteStation(Station *st)
 {
 	Order order;
 	StationID index;
+	Vehicle *v;
 	st->xy = 0;
 
 	DeleteName(st->string_id);
@@ -2460,10 +2472,30 @@ static void DeleteStation(Station *st)
 	index = st->index;
 	DeleteWindowById(WC_STATION_VIEW, index);
 
+	//Now delete all orders that go to the station
 	order.type = OT_GOTO_STATION;
 	order.station = index;
 	DeleteDestinationFromVehicleOrder(order);
 
+	//And do the same with aircraft that have the station as a hangar-stop
+	FOR_ALL_VEHICLES(v) {
+		bool invalidate = false;
+		if (v->type == VEH_Aircraft) {
+			Order *order;
+			FOR_VEHICLE_ORDERS(v, order) {
+				if (order->type == OT_GOTO_DEPOT && order->station == index) {
+					order->type = OT_DUMMY;
+					order->flags = 0;
+					invalidate = true;
+				}
+			}
+		}
+		//Orders for the vehicle have been changed, invalidate the window
+		if (invalidate)
+			InvalidateWindow(WC_VEHICLE_ORDERS, v->index);
+	}
+
+	//Subsidies need removal as well
 	DeleteSubsidyWithStation(index);
 }
 
