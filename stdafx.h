@@ -20,9 +20,15 @@
 #endif
 
 #include <stdio.h>
-#include <assert.h>
 #include <string.h>
 #include <stdlib.h>
+
+// MacOS X will use an NSAlert to display failed assertaions since they're lost unless running from a terminal
+#if !defined(__APPLE__)
+#include <assert.h>
+#else
+#include "os/macosx/macos.h"
+#endif
 
 #if defined(UNIX) || defined(__MINGW32__)
 #	include <sys/types.h>
