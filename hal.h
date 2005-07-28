@@ -37,12 +37,6 @@ typedef struct {
 	void (*set_volume)(byte vol);
 } HalMusicDriver;
 
-typedef struct {
-	const char *name;
-	const char *longname;
-	const void *drv;
-} DriverDesc;
-
 enum {
 	HALERR_OK = 0,
 	HALERR_ERROR = 1,
@@ -51,10 +45,6 @@ enum {
 VARDEF HalMusicDriver *_music_driver;
 VARDEF HalSoundDriver *_sound_driver;
 VARDEF HalVideoDriver *_video_driver;
-
-extern const DriverDesc _video_driver_descs[];
-extern const DriverDesc _sound_driver_descs[];
-extern const DriverDesc _music_driver_descs[];
 
 enum DriverType {
 	VIDEO_DRIVER = 0,

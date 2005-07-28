@@ -24,20 +24,26 @@
 #include "video/sdl_v.h"
 #include "video/win32_v.h"
 
-typedef struct {
+typedef struct DriverDesc {
+	const char* name;
+	const char* longname;
+	const void* drv;
+} DriverDesc;
+
+typedef struct DriverClass {
 	const DriverDesc *descs;
 	const char *name;
 	void *var;
 } DriverClass;
 
-static DriverClass _driver_classes[] = {
+static const DriverDesc _video_driver_descs[];
+static const DriverDesc _sound_driver_descs[];
+static const DriverDesc _music_driver_descs[];
+
+static const DriverClass _driver_classes[] = {
 	{_video_driver_descs, "video", &_video_driver},
 	{_sound_driver_descs, "sound", &_sound_driver},
 	{_music_driver_descs, "music", &_music_driver},
-};
-
-enum {
-	DF_PRIORITY_MASK = 0xF,
 };
 
 static const DriverDesc* GetDriverByName(const DriverDesc* dd, const char* name)
@@ -156,7 +162,7 @@ void GetDriverList(char* p)
 }
 
 
-const DriverDesc _music_driver_descs[] = {
+static const DriverDesc _music_driver_descs[] = {
 #ifdef __BEOS__
 	{ "bemidi",  "BeOS MIDI Driver",        &_bemidi_music_driver },
 #endif
@@ -178,7 +184,7 @@ const DriverDesc _music_driver_descs[] = {
 	{ NULL, NULL, NULL}
 };
 
-const DriverDesc _sound_driver_descs[] = {
+static const DriverDesc _sound_driver_descs[] = {
 #ifdef WIN32
 	{ "win32", "Win32 WaveOut Driver", &_win32_sound_driver },
 #endif
@@ -189,7 +195,7 @@ const DriverDesc _sound_driver_descs[] = {
 	{	NULL, NULL, NULL}
 };
 
-const DriverDesc _video_driver_descs[] = {
+static const DriverDesc _video_driver_descs[] = {
 #ifdef WIN32
 	{ "win32",      "Win32 GDI Video Driver", &_win32_video_driver },
 #endif
