@@ -39,8 +39,11 @@ ULONG __stack = (1024*1024)*2; // maybe not that much is needed actually ;)
 #endif
 
 #if defined(__APPLE__)
-#include <SDL.h>	//the mac implementation needs this file included in the same file as main()
-#include "os/macosx/macos.h"
+	#if defined(WITH_SDL)
+		//the mac implementation needs this file included in the same file as main()
+		#include <SDL.h>
+	#endif
+	#include "os/macosx/macos.h"
 #endif
 
 static char *_fios_path;
