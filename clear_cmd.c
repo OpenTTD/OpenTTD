@@ -570,88 +570,65 @@ static void AnimateTile_Clear(TileIndex tile)
 
 void TileLoopClearHelper(TileIndex tile)
 {
-	byte img_1;
-	byte img_2;
-	static const byte img_by_map5[] = { 0, 0, 0, 2, 1, 1, 0, 0 };
+	byte self;
+	byte neighbour;
 	TileIndex dirty = INVALID_TILE;
 
 	switch (GetTileType(tile)) {
 		case MP_CLEAR:
-			img_1 = img_by_map5[(_m[tile].m5 & 0x1C) >> 2];
-			break;
-
-		case MP_TREES:
-			if ((_m[tile].m2 & 0x30) == 0x20)
-				img_1 = 1;
-			else
-				img_1 = 0;
+			self = (GB(_m[tile].m5, 0, 5) == 15);
 			break;
 
 		default:
-			img_1 = 0;
+			self = 0;
 			break;
 	}
 
 	switch (GetTileType(TILE_ADDXY(tile, 1, 0))) {
 		case MP_CLEAR:
-			img_2 = img_by_map5[(_m[TILE_ADDXY(tile, 1, 0)].m5 & 0x1C) >> 2];
-			break;
-
-		case MP_TREES:
-			if ((_m[TILE_ADDXY(tile, 1, 0)].m2 & 0x30) == 0x20)
-				img_2 = 1;
-			else
-				img_2 = 0;
+			neighbour = (GB(_m[TILE_ADDXY(tile, 1, 0)].m5, 0, 5) == 15);
 			break;
 
 		default:
-			img_2 = 0;
+			neighbour = 0;
 			break;
 	}
 
-	if ((_m[tile].m4 & 0xE0) == 0) {
-		if ((img_1 & 2) != (img_2 & 2)) {
-			_m[tile].m4 |= 3 << 5;
+	if (GB(_m[tile].m4, 5, 3) == 0) {
+		if (self != neighbour) {
+			SB(_m[tile].m4, 5, 3, 3);
 			dirty = tile;
 		}
 	} else {
-		if (img_1 == 1 && img_2 == 1) {
-			_m[tile].m4 &= ~(3 << 5);
+		if (self == 0 && neighbour == 0) {
+			SB(_m[tile].m4, 5, 3, 0);
 			dirty = tile;
 		}
 	}
 
 	switch (GetTileType(TILE_ADDXY(tile, 0, 1))) {
 		case MP_CLEAR:
-			img_2 = img_by_map5[(_m[TILE_ADDXY(tile, 0, 1)].m5 & 0x1C) >> 2];
-			break;
-
-		case MP_TREES:
-			if ((_m[TILE_ADDXY(tile, 0, 1)].m2 & 0x30) == 0x20)
-				img_2 = 1;
-			else
-				img_2 = 0;
+			neighbour = (GB(_m[TILE_ADDXY(tile, 0, 1)].m5, 0, 5) == 15);
 			break;
 
 		default:
-			img_2 = 0;
+			neighbour = 0;
 			break;
 	}
 
-	if ((_m[tile].m4 & 0x1C) == 0) {
-		if ((img_1 & 2) != (img_2 & 2)) {
-			_m[tile].m4 |= 3 << 2;
+	if (GB(_m[tile].m4, 2, 3) == 0) {
+		if (self != neighbour) {
+			SB(_m[tile].m4, 2, 3, 3);
 			dirty = tile;
 		}
 	} else {
-		if (img_1 == 1 && img_2 == 1) {
-			_m[tile].m4 &= ~(3 << 2);
+		if (self == 0 && neighbour == 0) {
+			SB(_m[tile].m4, 2, 3, 0);
 			dirty = tile;
 		}
 	}
 
-	if (dirty != INVALID_TILE)
-		MarkTileDirtyByTile(dirty);
+	if (dirty != INVALID_TILE) MarkTileDirtyByTile(dirty);
 }
 
 
