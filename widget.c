@@ -285,7 +285,7 @@ void DrawWindowWidgets(Window *w)
 
 			// draw "shaded" background
 			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c2);
-			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c1 | 0x8000);
+			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c1 | PALETTE_MODIFIER_GREYOUT);
 
 			// draw shaded lines
 			GfxFillRect(r.left+2, r.top+10, r.left+2, r.bottom-10, c1);
@@ -317,7 +317,7 @@ void DrawWindowWidgets(Window *w)
 
 			// draw "shaded" background
 			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c2);
-			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c1 | 0x8000);
+			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c1 | PALETTE_MODIFIER_GREYOUT);
 
 			// draw shaded lines
 			GfxFillRect(r.left+2, r.top+10, r.left+2, r.bottom-10, c1);
@@ -350,7 +350,7 @@ void DrawWindowWidgets(Window *w)
 
 			// draw "shaded" background
 			GfxFillRect(r.left+10, r.top, r.right-10, r.bottom, c2);
-			GfxFillRect(r.left+10, r.top, r.right-10, r.bottom, c1 | 0x8000);
+			GfxFillRect(r.left+10, r.top, r.right-10, r.bottom, c1 | PALETTE_MODIFIER_GREYOUT);
 
 			// draw shaded lines
 			GfxFillRect(r.left+10, r.top+2, r.right-10, r.top+2, c1);
@@ -426,7 +426,7 @@ void DrawWindowWidgets(Window *w)
 			DrawStringCentered( (r.left+r.right+1)>>1, r.top+2, wi->unkA, 0x84);
 draw_default:;
 			if (cur_disabled & 1) {
-				GfxFillRect(r.left+1, r.top+1, r.right-1, r.bottom-1, _color_list[wi->color&0xF].unk2 | 0x8000);
+				GfxFillRect(r.left+1, r.top+1, r.right-1, r.bottom-1, _color_list[wi->color&0xF].unk2 | PALETTE_MODIFIER_GREYOUT);
 			}
 		}
 		}
@@ -503,7 +503,7 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 					DrawString(x+2, y, _dropdown_items[i], sel==0 ? 12 : 16);
 
 					if (HASBIT(_dropdown_disabled, i) && !_dropdown_disabled_items) {
-						GfxFillRect(x, y, x+w->width-3, y + 9, 0x8000 +
+						GfxFillRect(x, y, x+w->width-3, y + 9, PALETTE_MODIFIER_GREYOUT |
 									_color_list[_dropdown_menu_widgets[0].color].window_color_bga);
 					}
 				} else {

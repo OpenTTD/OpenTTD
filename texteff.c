@@ -11,6 +11,7 @@
 #include "console.h"
 #include "string.h"
 #include "variables.h"
+#include "table/sprites.h"
 #include <stdarg.h> /* va_list */
 
 typedef struct TextEffect {
@@ -207,7 +208,7 @@ void DrawTextMessage(void)
 			continue;
 
 		j++;
-		GfxFillRect(_textmessage_box_left, _screen.height-_textmessage_box_bottom-j*13-2, _textmessage_box_left+_textmessage_width - 1, _screen.height-_textmessage_box_bottom-j*13+10, /* black, but with some alpha */ 0x4322);
+		GfxFillRect(_textmessage_box_left, _screen.height-_textmessage_box_bottom-j*13-2, _textmessage_box_left+_textmessage_width - 1, _screen.height-_textmessage_box_bottom-j*13+10, /* black, but with some alpha */ 0x322 | USE_COLORTABLE);
 
 		DoDrawString(_text_message_list[i].message, _textmessage_box_left + 2, _screen.height - _textmessage_box_bottom - j * 13 - 1, 0x10);
 		DoDrawString(_text_message_list[i].message, _textmessage_box_left + 3, _screen.height - _textmessage_box_bottom - j * 13, _text_message_list[i].color);

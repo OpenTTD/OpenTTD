@@ -1863,7 +1863,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 
 		// Draw brown-red toolbar bg.
 		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB2);
-		GfxFillRect(0, 0, w->width-1, w->height-1, 0x80B4);
+		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB4 | PALETTE_MODIFIER_GREYOUT);
 
 		// if spectator, disable things
 		if (_current_player == OWNER_SPECTATOR){
@@ -2089,7 +2089,7 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 
 		// Draw brown-red toolbar bg.
 		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB2);
-		GfxFillRect(0, 0, w->width-1, w->height-1, 0x80B4);
+		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB4 | PALETTE_MODIFIER_GREYOUT);
 
 		DrawWindowWidgets(w);
 

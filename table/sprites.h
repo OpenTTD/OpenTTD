@@ -984,6 +984,12 @@ enum Modifiers {
 	PALETTE_MODIFIER_TRANSPARENT 	= 1 << TRANSPARENT_BIT,
 	///this bit is set when a recoloring process is in action
 	PALETTE_MODIFIER_COLOR 				= 1 << RECOLOR_BIT,
+
+	//This is used for the GfxFillRect function
+	///Used to draw a "grey out" rectangle. @see GfxFillRect
+	PALETTE_MODIFIER_GREYOUT        = 1 << TRANSPARENT_BIT,
+	///Set when a colortable mode is used. @see GfxFillRect
+	USE_COLORTABLE                  = 1 << RECOLOR_BIT,
 };
 
 /** Masks needed for sprite operations.
@@ -997,6 +1003,8 @@ enum SpriteMasks {
 	SPRITE_MASK = MAX_SPRITES,
 	///The mask for the auxiliary sprite (the one that takes care of recoloring)
 	PALETTE_SPRITE_MASK = ((1 << PALETTE_SPRITE_WIDTH) - 1) << PALETTE_SPRITE_START,
+	///Mask for the auxiliary sprites if it is locate in the LSBs
+	COLORTABLE_MASK = (1 << PALETTE_SPRITE_WIDTH) - 1
 };
 
 assert_compile( (1 << TRANSPARENT_BIT & SPRITE_MASK) == 0 );

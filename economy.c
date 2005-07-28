@@ -5,6 +5,7 @@
 #include "functions.h"
 #include "strings.h" // XXX InjectDParam()
 #include "table/strings.h"
+#include "table/sprites.h"
 #include "map.h"
 #include "news.h"
 #include "player.h"
@@ -491,7 +492,7 @@ void DrawNewsBankrupcy(Window *w)
 
 	p = GetPlayer(WP(w,news_d).ni->string_id & 15);
 	DrawPlayerFace(p->face, p->player_color, 2, 23);
-	GfxFillRect(3, 23, 3+91, 23+118, 0x4323);
+	GfxFillRect(3, 23, 3+91, 23+118, 0x323 | USE_COLORTABLE);
 
 	SetDParam(0, p->president_name_1);
 	SetDParam(1, p->president_name_2);

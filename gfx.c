@@ -139,15 +139,15 @@ void GfxFillRect(int left, int top, int right, int bottom, int color)
 
 	dst = dpi->dst_ptr + top * dpi->pitch + left;
 
-	if (!(color & 0x8000)) {
-		if (!(color & 0x4000)) {
+	if (!(color & PALETTE_MODIFIER_GREYOUT)) {
+		if (!(color & USE_COLORTABLE)) {
 			do {
 				memset(dst, color, right);
 				dst += dpi->pitch;
 			} while (--bottom);
 		} else {
 			/* use colortable mode */
-			const byte* ctab = GetNonSprite(color & 0x3FFF) + 1;
+			const byte* ctab = GetNonSprite(color & COLORTABLE_MASK) + 1;
 
 			do {
 				int i;
@@ -567,7 +567,7 @@ void DrawFrameRect(int left, int top, int right, int bottom, int ctab, int flags
 		}
 	} else if (flags & 0x1) {
 		// transparency
-		GfxFillRect(left, top, right, bottom, 0x4322);
+		GfxFillRect(left, top, right, bottom, 0x322 | USE_COLORTABLE);
 	} else {
 		GfxFillRect(left, top, right, bottom, color_interior);
 	}
