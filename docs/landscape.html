@@ -49,7 +49,7 @@ OTTD's class-specific periodic tile processing routine is called once every +256
 <tr><td nowrap valign=top><tt>17</tt>&nbsp; </td><td align=left>full desert</td></tr>
 </table>
 </li>
-<li>m5 bits 7..6: update counter, incremented on every periodic processing for tile types other than <tt>03</tt>, <tt>07</tt>, <tt>0B</tt> and <tt>10</tt> and above, on wraparound the tile is updated (for fields, the type of fields in m3 is increased, for other types the tile type in m5 is increased)
+<li>m5 bits 7..5: update counter, incremented on every periodic processing for tile types other than <tt>03</tt>, <tt>07</tt>, <tt>0B</tt> and <tt>10</tt> and above, on wraparound the tile is updated (for fields, the type of fields in m3 is increased, for other types the tile type in m5 is increased)
 <br>(for snow and desert, these bits are not used, tile is updated on every periodic processing)
 </li>
 <li>owner: <a href="#OwnershipInfo">owner</a> of the tile (normally <tt>10</tt>)
