@@ -22,6 +22,7 @@
 #include "waypoint.h"
 #include "npf.h"
 #include "rail.h"
+#include "railtypes.h" // include table for railtypes
 
 extern uint16 _custom_sprites_base;
 

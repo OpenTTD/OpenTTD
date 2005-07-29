@@ -670,7 +670,6 @@ C_SOURCES += queue.c
 C_SOURCES += rail.c
 C_SOURCES += rail_cmd.c
 C_SOURCES += rail_gui.c
-C_SOURCES += railtypes.c
 C_SOURCES += rev.c
 C_SOURCES += road_cmd.c
 C_SOURCES += road_gui.c

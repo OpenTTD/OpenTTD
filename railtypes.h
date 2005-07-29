@@ -1,17 +1,12 @@
 /* $Id: */
 
-#include "stdafx.h"
-#include "openttd.h"
-#include "rail.h"
-#include "table/sprites.h"
-
-/** @file railtypes.c
+/** @file railtypes.h
  * All the railtype-specific information is stored here.
  */
 
 /** Global Railtype definition
  */
-RailtypeInfo railtypes[RAILTYPE_END] = {
+const RailtypeInfo _railtypes[RAILTYPE_END] = {
 	{
 		{
 			SPR_RAIL_TRACK_Y,

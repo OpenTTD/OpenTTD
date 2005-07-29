@@ -161,7 +161,7 @@ typedef struct RailtypeInfo {
 	byte compatible_railtypes;
 } RailtypeInfo;
 
-RailtypeInfo railtypes[RAILTYPE_END];
+extern const RailtypeInfo _railtypes[RAILTYPE_END];
 
 // these are the maximums used for updating signal blocks, and checking if a depot is in a pbs block
 enum {
@@ -528,10 +528,10 @@ static inline TransportType GetCrossingTransportType(TileIndex tile, Track track
  * @param railtype the rail type which the information is requested for
  * @return The pointer to the RailtypeInfo
  */
-static inline RailtypeInfo *GetRailTypeInfo(RailType railtype)
+static inline const RailtypeInfo *GetRailTypeInfo(RailType railtype)
 {
 	assert(railtype < RAILTYPE_END);
-	return &railtypes[railtype];
+	return &_railtypes[railtype];
 }
 
 /**
