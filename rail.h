@@ -139,6 +139,30 @@ typedef enum SignalStates {
 	SIGNAL_STATE_GREEN = 1,
 } SignalState;
 
+/** This struct contains all the info that is needed to draw and construct tracks.
+ */
+typedef struct RailtypeInfo {
+	struct {
+		SpriteID track_y;      ///< single piece of rail in Y direction, with ground
+		SpriteID track_ns;     ///< two pieces of rail in North and South corner (East-West direction)
+		SpriteID ground;       ///< ground sprite for a 3-way switch
+		SpriteID single_y;     ///< single piece of rail in Y direction, without ground
+		SpriteID single_x;     ///< single piece of rail in X direction
+		SpriteID single_n;     ///< single piece of rail in the northern corner
+		SpriteID single_s;     ///< single piece of rail in the southern corner
+		SpriteID single_e;     ///< single piece of rail in the eastern corner
+		SpriteID single_w;     ///< single piece of rail in the western corner
+	} base_sprites;
+
+	/** sprite number difference between a piece of track on a snowy ground and the corresponding one on normal ground */
+	SpriteID snow_offset;
+
+	/** bitmask to the OTHER railtypes that can be used by an engine of THIS railtype */
+	byte compatible_railtypes;
+} RailtypeInfo;
+
+RailtypeInfo railtypes[RAILTYPE_END];
+
 // these are the maximums used for updating signal blocks, and checking if a depot is in a pbs block
 enum {
 	NUM_SSD_ENTRY = 256, // max amount of blocks
@@ -500,6 +524,17 @@ static inline TransportType GetCrossingTransportType(TileIndex tile, Track track
 }
 
 /**
+ * Returns a pointer to the Railtype information for a given railtype
+ * @param railtype the rail type which the information is requested for
+ * @return The pointer to the RailtypeInfo
+ */
+static inline RailtypeInfo *GetRailTypeInfo(RailType railtype)
+{
+	assert(railtype < RAILTYPE_END);
+	return &railtypes[railtype];
+}
+
+/**
  * Checks if an engine of the given RailType can drive on a tile with a given
  * RailType. This would normally just be an equality check, but for electric
  * rails (which also support non-electric engines).
@@ -509,13 +544,7 @@ static inline TransportType GetCrossingTransportType(TileIndex tile, Track track
  */
 static inline bool IsCompatibleRail(RailType enginetype, RailType tiletype)
 {
-	static const bool EquivRailTypes[RAILTYPE_END][RAILTYPE_END] = {
-	{ true, false, false },
-	{ false, true, false },
-	{ false, false, true },
-	};
-
-	return EquivRailTypes[enginetype][tiletype];
+	return HASBIT(GetRailTypeInfo(enginetype)->compatible_railtypes, tiletype);
 }
 
 #endif // RAIL_H
