@@ -406,7 +406,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			DrawFrameRect( 5, y,  5 + 8, y + 8, 3, GetBitAndShift(&click_a) ? (1 << 5) : 0);
 			DrawFrameRect(15, y, 15 + 8, y + 8, 3, GetBitAndShift(&click_b) ? (1 << 5) : 0);
 			if (GetBitAndShift(&disabled) || (_networking && !_network_server)) {
-				int color = PALETTE_MODIFIER_COLOR | _color_list[3].unk2;
+				int color = PALETTE_MODIFIER_GREYOUT | _color_list[3].unk2;
 				GfxFillRect( 6, y + 1,  6 + 8, y + 8, color);
 				GfxFillRect(16, y + 1, 16 + 8, y + 8, color);
 			}
@@ -853,7 +853,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 				DrawFrameRect(x+5, y+1, x+5+9, y+9, 3, clk == i*2+1 ? FR_LOWERED : 0);
 				DrawFrameRect(x+15, y+1, x+15+9, y+9, 3, clk == i*2+2 ? FR_LOWERED : 0);
 				if (!editable) {
-					int color = 0x8000 | _color_list[3].unk2;
+					int color = PALETTE_MODIFIER_GREYOUT | _color_list[3].unk2;
 					GfxFillRect(x+6, y+2, x+6+8, y+9, color);
 					GfxFillRect(x+16, y+2, x+16+8, y+9, color);
 				}
