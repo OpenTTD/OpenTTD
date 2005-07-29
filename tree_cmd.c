@@ -424,7 +424,7 @@ static void TileLoopTreesAlps(TileIndex tile)
 	/* distance from snow line, in steps of 8 */
 	k = GetTileZ(tile) - _opt.snow_line;
 
-	tmp = _m[tile].m5 & 0xF0;
+	tmp = _m[tile].m2 & 0xF0;
 
 	if (k < -8) {
 		/* snow_m2_down */
@@ -444,7 +444,7 @@ static void TileLoopTreesAlps(TileIndex tile)
 		if (tmp == m2) return;
 	} else {
 		/* snow_p2_up */
-		if (tmp == 0xC0) {
+		if (tmp == 0xE0) {
 			uint32 r = Random();
 			if (CHANCE16I(1,200,r)) {
 				SndPlayTileFx((r & 0x80000000) ? SND_39_HEAVY_WIND : SND_34_WIND, tile);
