@@ -34,20 +34,19 @@ static void SdlVideoMakeDirty(int left, int top, int width, int height)
 	_num_dirty_rects++;
 }
 
-static SDL_Color pal[256];
-
-static void UpdatePalette(uint start, uint end)
+static void UpdatePalette(uint start, uint count)
 {
+	SDL_Color pal[256];
 	uint i;
 
-	for (i = start; i != end; i++) {
-		pal[i].r = _cur_palette[i].r;
-		pal[i].g = _cur_palette[i].g;
-		pal[i].b = _cur_palette[i].b;
+	for (i = 0; i != count; i++) {
+		pal[i].r = _cur_palette[start + i].r;
+		pal[i].g = _cur_palette[start + i].g;
+		pal[i].b = _cur_palette[start + i].b;
 		pal[i].unused = 0;
 	}
 
-	SDL_CALL SDL_SetColors(_sdl_screen, pal, start, end);
+	SDL_CALL SDL_SetColors(_sdl_screen, pal, start, count);
 }
 
 static void InitPalette(void)
@@ -57,8 +56,8 @@ static void InitPalette(void)
 
 static void CheckPaletteAnim(void)
 {
-	if(_pal_last_dirty != -1) {
-		UpdatePalette(_pal_first_dirty, _pal_last_dirty + 1);
+	if (_pal_last_dirty != -1) {
+		UpdatePalette(_pal_first_dirty, _pal_last_dirty - _pal_first_dirty + 1);
 		_pal_last_dirty = -1;
 	}
 }
