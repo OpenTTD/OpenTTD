@@ -1499,19 +1499,12 @@ void NetworkHandleCommandQueue(NetworkClientState *cs) {
 }
 
 // This is called every tick if this is a _network_server
-void NetworkServer_Tick(void)
+void NetworkServer_Tick(bool send_frame)
 {
 	NetworkClientState *cs;
-	bool send_frame = false;
 #ifndef ENABLE_NETWORK_SYNC_EVERY_FRAME
 	bool send_sync = false;
 #endif
-
-	// Update max-frame-counter
-	if (_frame_counter > _frame_counter_max) {
-		_frame_counter_max = _frame_counter + _network_frame_freq;
-		send_frame = true;
-	}
 
 #ifndef ENABLE_NETWORK_SYNC_EVERY_FRAME
 	if (_frame_counter >= _last_sync_frame + _network_sync_freq) {

@@ -16,7 +16,7 @@ bool NetworkFindName(char new_name[NETWORK_NAME_LENGTH]);
 void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest, const char *msg, uint16 from_index);
 
 bool NetworkServer_ReadPackets(NetworkClientState *cs);
-void NetworkServer_Tick(void);
+void NetworkServer_Tick(bool send_frame);
 void NetworkServerMonthlyLoop(void);
 void NetworkServerYearlyLoop(void);
 

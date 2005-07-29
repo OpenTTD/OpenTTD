@@ -1205,8 +1205,15 @@ void NetworkGameLoop(void)
 	if (!NetworkReceive()) return;
 
 	if (_network_server) {
+		bool send_frame = false;
+
 		// We first increase the _frame_counter
 		_frame_counter++;
+		// Update max-frame-counter
+		if (_frame_counter > _frame_counter_max) {
+			_frame_counter_max = _frame_counter + _network_frame_freq;
+			send_frame = true;
+		}
 
 		NetworkHandleLocalQueue();
 
@@ -1218,7 +1225,7 @@ void NetworkGameLoop(void)
 		_sync_seed_2 = _random_seeds[0][1];
 #endif
 
-		NetworkServer_Tick();
+		NetworkServer_Tick(send_frame);
 	} else {
 		// Client
 
