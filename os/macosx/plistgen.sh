@@ -31,7 +31,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
         <key>CFBundleInfoDictionaryVersion</key>
         <string>6.0</string>
         <key>CFBundleName</key>
-        <string>ottd</string>
+        <string>OpenTTD</string>
         <key>CFBundlePackageType</key>
         <string>APPL</string>
         <key>CFBundleShortVersionString</key>

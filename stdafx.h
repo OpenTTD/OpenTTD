@@ -24,7 +24,8 @@
 #include <stdlib.h>
 
 // MacOS X will use an NSAlert to display failed assertaions since they're lost unless running from a terminal
-#if !defined(__APPLE__)
+// strgen always runs from terminal and don't need a window for asserts
+#if !defined(__APPLE__) || defined(STRGEN)
 #include <assert.h>
 #else
 #include "os/macosx/macos.h"
