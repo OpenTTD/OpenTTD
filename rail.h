@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file rail.h */
+
 #ifndef RAIL_H
 #define RAIL_H
 
@@ -9,7 +11,7 @@
  * Some enums for accesing the map bytes for rail tiles
  */
 
-/* These types are used in the map5 byte for rail tiles. Use GetRailTileType() to
+/** These types are used in the map5 byte for rail tiles. Use GetRailTileType() to
  * get these values */
 typedef enum RailTileTypes {
 	RAIL_TYPE_NORMAL         = 0x0,
@@ -31,7 +33,7 @@ enum { /* DEPRECATED TODO: Rewrite all uses of this */
 	 * TRACK_BIT_* */
 };
 
-/* These subtypes are used in the map5 byte when the main rail type is
+/** These subtypes are used in the map5 byte when the main rail type is
  * RAIL_TYPE_DEPOT_WAYPOINT */
 typedef enum RailTileSubtypes {
 	RAIL_SUBTYPE_DEPOT    = 0x00,
@@ -63,7 +65,7 @@ enum {
 	SIG_SEMAPHORE_MASK = 1 << 3,
 };
 
-/* These are used to specify a single track. Can be translated to a trackbit
+/** These are used to specify a single track. Can be translated to a trackbit
  * with TrackToTrackbit */
 typedef enum Tracks {
   TRACK_DIAG1 = 0,
@@ -76,7 +78,7 @@ typedef enum Tracks {
   INVALID_TRACK = 0xFF,
 } Track;
 
-/* These are the bitfield variants of the above */
+/** These are the bitfield variants of the above */
 typedef enum TrackBits {
   TRACK_BIT_DIAG1 = 1,  // 0
   TRACK_BIT_DIAG2 = 2,  // 1
@@ -87,7 +89,7 @@ typedef enum TrackBits {
 	TRACK_BIT_MASK  = 0x3F,
 } TrackBits;
 
-/* These are a combination of tracks and directions. Values are 0-5 in one
+/** These are a combination of tracks and directions. Values are 0-5 in one
 direction (corresponding to the Track enum) and 8-13 in the other direction. */
 typedef enum Trackdirs {
   TRACKDIR_DIAG1_NE = 0,
@@ -108,7 +110,7 @@ typedef enum Trackdirs {
   INVALID_TRACKDIR  = 0xFF,
 } Trackdir;
 
-/* These are a combination of tracks and directions. Values are 0-5 in one
+/** These are a combination of tracks and directions. Values are 0-5 in one
 direction (corresponding to the Track enum) and 8-13 in the other direction. */
 typedef enum TrackdirBits {
   TRACKDIR_BIT_DIAG1_NE = 0x1,
@@ -128,7 +130,7 @@ typedef enum TrackdirBits {
   INVALID_TRACKDIR_BIT  = 0xFFFF,
 } TrackdirBits;
 
-/* These are states in which a signal can be. Currently these are only two, so
+/** These are states in which a signal can be. Currently these are only two, so
  * simple boolean logic will do. But do try to compare to this enum instead of
  * normal boolean evaluation, since that will make future additions easier.
  */
@@ -148,14 +150,14 @@ enum {
  */
 static inline TrackdirBits TrackdirToTrackdirBits(Trackdir trackdir) { return (TrackdirBits)(1 << trackdir); }
 
-/*
+/**
  * These functions check the validity of Tracks and Trackdirs. assert against
  * them when convenient.
  */
 static inline bool IsValidTrack(Track track) { return track < TRACK_END; }
 static inline bool IsValidTrackdir(Trackdir trackdir) { return (TrackdirToTrackdirBits(trackdir) & TRACKDIR_BIT_MASK) != 0; }
 
-/*
+/**
  * Functions to map tracks to the corresponding bits in the signal
  * presence/status bytes in the map. You should not use these directly, but
  * wrapper functions below instead. XXX: Which are these?
