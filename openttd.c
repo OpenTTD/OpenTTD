@@ -93,22 +93,6 @@ void CDECL ShowInfoF(const char *str, ...)
 	ShowInfo(buf);
 }
 
-char * CDECL str_fmt(const char *str, ...)
-{
-	char buf[4096];
-	va_list va;
-	int len;
-	char *p;
-
-	va_start(va, str);
-	len = vsprintf(buf, str, va);
-	va_end(va);
-	p = malloc(len + 1);
-	if (p)
-		memcpy(p, buf, len + 1);
-	return p;
-}
-
 
 void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
 {

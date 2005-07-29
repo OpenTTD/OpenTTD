@@ -3,6 +3,8 @@
 #include "stdafx.h"
 #include "string.h"
 
+#include <stdarg.h>
+
 void ttd_strlcat(char *dst, const char *src, size_t size)
 {
 	assert(size > 0);
@@ -38,4 +40,20 @@ char* strecpy(char* dst, const char* src, const char* last)
 	for (; *src != '\0' && dst != last; ++dst, ++src) *dst = *src;
 	*dst = '\0';
 	return dst;
+}
+
+
+char* CDECL str_fmt(const char* str, ...)
+{
+	char buf[4096];
+	va_list va;
+	int len;
+	char* p;
+
+	va_start(va, str);
+	len = vsprintf(buf, str, va);
+	va_end(va);
+	p = malloc(len + 1);
+	if (p != NULL) memcpy(p, buf, len + 1);
+	return p;
 }

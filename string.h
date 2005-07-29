@@ -23,4 +23,6 @@ void ttd_strlcpy(char *dst, const char *src, size_t size);
 char* strecat(char* dst, const char* src, const char* last);
 char* strecpy(char* dst, const char* src, const char* last);
 
+char* CDECL str_fmt(const char* str, ...);
+
 #endif
