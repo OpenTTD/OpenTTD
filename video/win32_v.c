@@ -21,7 +21,6 @@ static struct {
 	HPALETTE gdi_palette;
 	int width,height;
 	int width_org, height_org;
-	bool switch_driver;
 	bool fullscreen;
 	bool double_size;
 	bool has_focus;
@@ -698,7 +697,7 @@ static void CheckPaletteAnim(void)
 	InvalidateRect(_wnd.main_wnd, NULL, FALSE);
 }
 
-static int Win32GdiMainLoop(void)
+static void Win32GdiMainLoop(void)
 {
 	MSG mesg;
 	uint32 next_tick = GetTickCount() + 30, cur_ticks;
@@ -711,8 +710,7 @@ static int Win32GdiMainLoop(void)
 			TranslateMessage(&mesg);
 			DispatchMessage(&mesg);
 		}
-		if (_exit_game) return ML_QUIT;
-		if (_wnd.switch_driver) return ML_SWITCHDRIVER;
+		if (_exit_game) return;
 
 #if defined(_DEBUG)
 		if (_wnd.has_focus && GetAsyncKeyState(VK_SHIFT) < 0) {

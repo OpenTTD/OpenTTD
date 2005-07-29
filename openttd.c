@@ -521,7 +521,7 @@ int ttd_main(int argc, char* argv[])
 	}
 #endif /* ENABLE_NETWORK */
 
-	while (_video_driver->main_loop() == ML_SWITCHDRIVER) {}
+	_video_driver->main_loop();
 
 	JoinOTTDThread();
 	IConsoleFree();

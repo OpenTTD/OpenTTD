@@ -350,11 +350,11 @@ static int PollEvent(void)
 		if (_game_mode != GM_MENU) {
 			if(_patches.autosave_on_exit) {
 				DoExitSave();
-				return ML_QUIT;
+				return 0;
 			} else
 				AskExitGame();
 		} else
-			return ML_QUIT;
+			return 0;
 		break;
 
 		case SDL_KEYDOWN: /* Toggle full-screen on ALT + ENTER/F */
@@ -400,7 +400,7 @@ static void SdlVideoStop(void)
 	SdlClose(SDL_INIT_VIDEO);
 }
 
-static int SdlVideoMainLoop(void)
+static void SdlVideoMainLoop(void)
 {
 	uint32 next_tick = SDL_CALL SDL_GetTicks() + 30;
 	uint32 cur_ticks;
@@ -414,9 +414,9 @@ static int SdlVideoMainLoop(void)
 		InteractiveRandom(); // randomness
 
 		while ((i = PollEvent()) == -1) {}
-		if (i >= 0) return i;
+		if (i >= 0) return;
 
-		if (_exit_game) return ML_QUIT;
+		if (_exit_game) return;
 
 		mod = SDL_CALL SDL_GetModState();
 		keys = SDL_CALL SDL_GetKeyState(&numkeys);

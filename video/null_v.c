@@ -21,7 +21,7 @@ static void NullVideoStop(void) { free(_null_video_mem); }
 
 static void NullVideoMakeDirty(int left, int top, int width, int height) {}
 
-static int NullVideoMainLoop(void)
+static void NullVideoMainLoop(void)
 {
 	uint i;
 
@@ -30,8 +30,6 @@ static int NullVideoMainLoop(void)
 		_screen.dst_ptr = _null_video_mem;
 		UpdateWindows();
 	}
-
-	return ML_QUIT;
 }
 
 static bool NullVideoChangeRes(int w, int h) { return false; }

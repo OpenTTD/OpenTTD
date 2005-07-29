@@ -215,7 +215,7 @@ static void DedicatedHandleKeyInput(void)
 	IConsoleCmdExec(input_line); // execute command
 }
 
-static int DedicatedVideoMainLoop(void)
+static void DedicatedVideoMainLoop(void)
 {
 	uint32 next_tick;
 	uint32 cur_ticks;
@@ -257,13 +257,11 @@ static int DedicatedVideoMainLoop(void)
 
 	if (!_networking) {
 		DEBUG(net, 1)("Dedicated server could not be launched. Aborting.");
-		return ML_QUIT;
+		return;
 	}
 
-	while (true) {
+	while (!_exit_game) {
 		InteractiveRandom(); // randomness
-
-		if (_exit_game) return ML_QUIT;
 
 		if (!_dedicated_forks)
 			DedicatedHandleKeyInput();
