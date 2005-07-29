@@ -27,69 +27,73 @@
 typedef struct DriverDesc {
 	const char* name;
 	const char* longname;
-	const void* drv;
+	const HalCommonDriver* drv;
 } DriverDesc;
 
 typedef struct DriverClass {
 	const DriverDesc *descs;
 	const char *name;
-	void *var;
+	const HalCommonDriver** drv;
 } DriverClass;
 
 
+#define M(x, y, z) { x, y, (const HalCommonDriver*)z }
 static const DriverDesc _music_driver_descs[] = {
 #ifdef __BEOS__
-	{ "bemidi",  "BeOS MIDI Driver",        &_bemidi_music_driver },
+	M("bemidi",  "BeOS MIDI Driver",        &_bemidi_music_driver),
 #endif
 #ifdef __OS2__
-	{ "os2",     "OS/2 Music Driver",       &_os2_music_driver},
+	M("os2",     "OS/2 Music Driver",       &_os2_music_driver),
 #endif
 #ifdef WIN32_ENABLE_DIRECTMUSIC_SUPPORT
-	{ "dmusic",  "DirectMusic MIDI Driver", &_dmusic_midi_driver },
+	M("dmusic",  "DirectMusic MIDI Driver", &_dmusic_midi_driver),
 #endif
 #ifdef WIN32
-	{ "win32",   "Win32 MIDI Driver",       &_win32_music_driver },
+	M("win32",   "Win32 MIDI Driver",       &_win32_music_driver),
 #endif
 #ifdef UNIX
 #if !defined(__BEOS__) && !defined(__MORPHOS__) && !defined(__AMIGA__)
-	{ "extmidi", "External MIDI Driver",    &_extmidi_music_driver },
+	M("extmidi", "External MIDI Driver",    &_extmidi_music_driver),
 #endif
 #endif
-	{ "null",    "Null Music Driver",       &_null_music_driver },
-	{ NULL, NULL, NULL}
+	M("null",    "Null Music Driver",       &_null_music_driver),
+	M(NULL, NULL, NULL)
 };
 
 static const DriverDesc _sound_driver_descs[] = {
 #ifdef WIN32
-	{ "win32", "Win32 WaveOut Driver", &_win32_sound_driver },
+	M("win32", "Win32 WaveOut Driver", &_win32_sound_driver),
 #endif
 #ifdef WITH_SDL
-	{ "sdl",   "SDL Sound Driver",     &_sdl_sound_driver },
+	M("sdl",   "SDL Sound Driver",     &_sdl_sound_driver),
 #endif
-	{ "null",  "Null Sound Driver",    &_null_sound_driver },
-	{ NULL, NULL, NULL}
+	M("null",  "Null Sound Driver",    &_null_sound_driver),
+	M(NULL, NULL, NULL)
 };
 
 static const DriverDesc _video_driver_descs[] = {
 #ifdef WIN32
-	{ "win32",      "Win32 GDI Video Driver", &_win32_video_driver },
+	M("win32",      "Win32 GDI Video Driver", &_win32_video_driver),
 #endif
 #ifdef WITH_SDL
-	{ "sdl",        "SDL Video Driver",       &_sdl_video_driver },
+	M("sdl",        "SDL Video Driver",       &_sdl_video_driver),
 #endif
-	{ "null",       "Null Video Driver",      &_null_video_driver},
+	M("null",       "Null Video Driver",      &_null_video_driver),
 #ifdef ENABLE_NETWORK
-	{ "dedicated",  "Dedicated Video Driver", &_dedicated_video_driver},
+	M("dedicated",  "Dedicated Video Driver", &_dedicated_video_driver),
 #endif
-	{ NULL, NULL, NULL}
+	M(NULL, NULL, NULL)
 };
+#undef M
 
 
+#define M(x, y, z) { x, y, (const HalCommonDriver**)z }
 static const DriverClass _driver_classes[] = {
-	{_video_driver_descs, "video", &_video_driver},
-	{_sound_driver_descs, "sound", &_sound_driver},
-	{_music_driver_descs, "music", &_music_driver},
+	M(_video_driver_descs, "video", &_video_driver),
+	M(_sound_driver_descs, "sound", &_sound_driver),
+	M(_music_driver_descs, "music", &_music_driver)
 };
+#undef M
 
 static const DriverDesc* GetDriverByName(const DriverDesc* dd, const char* name)
 {
@@ -103,18 +107,11 @@ void LoadDriver(int driver, const char *name)
 {
 	const DriverClass *dc = &_driver_classes[driver];
 	const DriverDesc *dd;
-	const void **var;
-	const void *drv;
 	const char *err;
-	char *parm;
-	char buffer[256];
-	const char *parms[32];
-
-	parms[0] = NULL;
 
 	if (*name == '\0') {
 		for (dd = dc->descs; dd->name != NULL; dd++) {
-			err = ((const HalCommonDriver*)dd->drv)->start(parms);
+			err = dd->drv->start(NULL);
 			if (err == NULL) break;
 			DEBUG(driver, 1) ("Probing %s driver \"%s\" failed with error: %s",
 				dc->name, dd->name, err
@@ -127,20 +124,24 @@ void LoadDriver(int driver, const char *name)
 		DEBUG(driver, 1)
 			("Successfully probed %s driver \"%s\"", dc->name, dd->name);
 
-		var = dc->var;
-		*var = dd->drv;
+		*dc->drv = dd->drv;
 	} else {
+		char* parm;
+		char buffer[256];
+		const char* parms[32];
+
 		// Extract the driver name and put parameter list in parm
 		ttd_strlcpy(buffer, name, sizeof(buffer));
 		parm = strchr(buffer, ':');
-		if (parm) {
+		parms[0] = NULL;
+		if (parm != NULL) {
 			uint np = 0;
 			// Tokenize the parm.
 			do {
-				*parm++ = 0;
+				*parm++ = '\0';
 				if (np < lengthof(parms) - 1)
 					parms[np++] = parm;
-				while (*parm != 0 && *parm != ',')
+				while (*parm != '\0' && *parm != ',')
 					parm++;
 			} while (*parm == ',');
 			parms[np] = NULL;
@@ -149,26 +150,27 @@ void LoadDriver(int driver, const char *name)
 		if (dd == NULL)
 			error("No such %s driver: %s\n", dc->name, buffer);
 
-		var = dc->var;
-		if (*var != NULL) ((const HalCommonDriver*)*var)->stop();
-		*var = NULL;
-		drv = dd->drv;
+		if (*dc->drv != NULL) (*dc->drv)->stop();
+		*dc->drv = NULL;
 
-		err = ((const HalCommonDriver*)drv)->start(parms);
+		err = dd->drv->start(parms);
 		if (err != NULL) {
 			error("Unable to load driver %s(%s). The error was: %s\n",
 				dd->name, dd->longname, err
 			);
 		}
-		*var = drv;
+		*dc->drv = dd->drv;
 	}
 }
 
 
 static const char* GetDriverParam(const char* const* parm, const char* name)
 {
-	uint len = strlen(name);
+	uint len;
 
+	if (parm == NULL) return NULL;
+
+	len = strlen(name);
 	for (; *parm != NULL; parm++) {
 		const char* p = *parm;
 
