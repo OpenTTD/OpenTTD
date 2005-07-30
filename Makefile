@@ -1,16 +1,5 @@
 # $Id$
 
-# This Makefile is partially based on "a completely generic Makefile",
-# originally created by Justin Husted <husted@cs>
-#
-# Rewrite and sane dependencies support by Petr Baudis <pasky@ucw.cz>
-# Cygwin support and configuration by Jaen Saul <slowbyte@hot.ee>
-# A lot of modifications by Bjarni Corfitzen <bjarni@openttd.com>
-#
-# Last modified by: $Author: strigeus $
-# On: $Date: 2004/03/11 19:15:06 $
-
-
 ##############################################################################
 #
 # Usage
@@ -293,27 +282,19 @@ ifndef CFLAGS_HOST
 CFLAGS_HOST = $(BASECFLAGS)
 endif
 
-# When calling the compiler, use these flags
-# -g	debugging symbols
-# -Wall	all warnings
-# -s    automatic strip
-#
-# You may also want:
-# -O	optimize or -O2 fully optimize (O's above 2 are not recommended)
-# -pg	profile - generate profiling data.  See "man gprof" to use this.
 
 CC_VERSION = $(shell $(CC) -dumpversion | cut -c 1,3)
 
 # GNU make can only test for (in)equality
 # this is a workaround to test for >=
-ifeq ($(shell if test $(CC_VERSION) -ge 29; then echo true; fi), true)
+ifeq ($(shell expr $(CC_VERSION) \>= 29), 1)
   CFLAGS += -O -Wall -Wno-multichar -Wsign-compare -Wstrict-prototypes
   CFLAGS += -Wwrite-strings -Wpointer-arith
 endif
-ifeq ($(shell if test $(CC_VERSION) -ge 30; then echo true; fi), true)
+ifeq ($(shell expr $(CC_VERSION) \>= 30), 1)
   CFLAGS += -W -Wno-unused-parameter
 endif
-ifeq ($(shell if test $(CC_VERSION) -ge 34; then echo true; fi), true)
+ifeq ($(shell expr $(CC_VERSION) \>= 34), 1)
   CFLAGS += -Wdeclaration-after-statement -Wold-style-definition
 endif
 
@@ -533,15 +514,6 @@ ifdef WITH_NETWORK
 CDEFS += -DENABLE_NETWORK
 ifdef QNX
 LIBS += -lsocket
-endif
-ifdef UNIX
-ifndef OSX
-ifndef MORPHOS
-# this have caused problems on many platforms and disabling it didn't break anything
-# now we test if disabling it as a general breaks it for anybody
-#LIBS += -lresolv
-endif
-endif
 endif
 endif
 
