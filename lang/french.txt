@@ -855,13 +855,13 @@ STR_CURR_EUR                                                    :Euros (¤)
 STR_CURR_YEN                                                    :Yens ({YENSIGN})
 STR_CURR_ATS                                                    :Shilings Australiens (ATS)
 STR_CURR_BEF                                                    :Francs Belges (BEF)
-STR_CURR_CHF                                                    :Franc Suisse (CHF)
+STR_CURR_CHF                                                    :Francs Suisses (CHF)
 STR_CURR_CZK                                                    :Couronnes Tchèques (CZK)
 STR_CURR_DEM                                                    :Deutschmark (DEM)
 STR_CURR_DKK                                                    :Couronnes Danoise (DKK)
 STR_CURR_ESP                                                    :Peseta (ESP)
 STR_CURR_FIM                                                    :Marks Finlandais (FIM)
-STR_CURR_FRF                                                    :Franc (FRF)
+STR_CURR_FRF                                                    :Francs Français (FRF)
 STR_CURR_GRD                                                    :Drachmes Grec (GRD)
 STR_CURR_HUF                                                    :Hungarian Forint (HUF)
 STR_CURR_ISK                                                    :Couronnes Islandaises (ISK)
@@ -951,7 +951,7 @@ STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Aéronef 
 STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Le renouvellement automatique a échoué sur Train {COMMA} (limite d'argent)
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Le renouvellement automatique a échoué sur  Véhicule {COMMA} (limite d'argent)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Le renouvellement automatique a échoué sur Navire {COMMA} (limite d'argent)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Le renouvellement automatique a échoué sur aéronef {COMMA} (limite d'argent)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Le renouvellement automatique a échoué sur Aéronef {COMMA} (limite d'argent)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Options Avancées
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configurer les options avancées
@@ -1691,7 +1691,7 @@ STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...doit 
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Impossible de construire le dépôt naval ici...
 STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Choisir l'orientation du dépôt naval
 STR_3804_WATER                                                  :Eau
-STR_3805_COAST_OR_RIVERBANK                                     :Côte de riverbank
+STR_3805_COAST_OR_RIVERBANK                                     :Rivage ou berge
 STR_3806_SHIP_DEPOT                                             :Dépôt naval
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Impossible de construire sur l'eau
 
