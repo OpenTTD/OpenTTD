@@ -84,7 +84,7 @@ static void DoPlaceMoreTrees(TileIndex tile)
 
 static void PlaceMoreTrees(void)
 {
-	uint i = ScaleByMapSize((Random() & 0x1F) + 25);
+	uint i = ScaleByMapSize(GB(Random(), 0, 5) + 25);
 	do {
 		DoPlaceMoreTrees(RandomTile());
 	} while (--i);
@@ -305,7 +305,7 @@ static void DrawTile_Trees(TileInfo *ti)
 		/* put the trees to draw in a list */
 		i = (ti->map5 >> 6) + 1;
 		do {
-			uint32 image = s[0] + (--i == 0 ? (ti->map5 & 7) : 3);
+			uint32 image = s[0] + (--i == 0 ? GB(ti->map5, 0, 3) : 3);
 			if (_display_opt & DO_TRANS_BUILDINGS)
 				MAKE_TRANSPARENT(image);
 			te[i].image = image;
@@ -340,7 +340,7 @@ static void DrawTile_Trees(TileInfo *ti)
 
 
 static uint GetSlopeZ_Trees(TileInfo *ti) {
-	return GetPartialZ(ti->x&0xF, ti->y&0xF, ti->tileh) + ti->z;
+	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh) + ti->z;
 }
 
 static uint GetSlopeTileh_Trees(TileInfo *ti) {
@@ -349,7 +349,7 @@ static uint GetSlopeTileh_Trees(TileInfo *ti) {
 
 static int32 ClearTile_Trees(TileIndex tile, byte flags)
 {
-	int num;
+	uint num;
 
 	if (flags & DC_EXEC && _current_player < MAX_PLAYERS) {
 		Town *t = ClosestTownFromTile(tile, _patches.dist_local_authority);
@@ -357,12 +357,10 @@ static int32 ClearTile_Trees(TileIndex tile, byte flags)
 			ChangeTownRating(t, RATING_TREE_DOWN_STEP, RATING_TREE_MINIMUM);
 	}
 
-	num = (_m[tile].m5 >> 6) + 1;
-	if ( (byte)(_m[tile].m3-0x14) <= (0x1A-0x14))
-		num <<= 2;
+	num = GB(_m[tile].m5, 6, 2) + 1;
+	if (IS_INT_INSIDE(_m[tile].m3, 20, 26 + 1)) num *= 4;
 
-	if (flags & DC_EXEC)
-		DoClearSquare(tile);
+	if (flags & DC_EXEC) DoClearSquare(tile);
 
 	return num * _price.remove_trees;
 }
@@ -391,26 +389,25 @@ static void AnimateTile_Trees(TileIndex tile)
 	/* not used */
 }
 
-static SoundFx _desert_sounds[] = {
-	SND_42_LOON_BIRD,
-	SND_43_LION,
-	SND_44_MONKEYS,
-	SND_48_DISTANT_BIRD
-};
-
 static void TileLoopTreesDesert(TileIndex tile)
 {
-	byte b;
+	static const SoundFx forest_sounds[] = {
+		SND_42_LOON_BIRD,
+		SND_43_LION,
+		SND_44_MONKEYS,
+		SND_48_DISTANT_BIRD
+	};
 
-	b = GetMapExtraBits(tile);
+	byte b = GetMapExtraBits(tile);
+
 	if (b == 2) {
 		uint32 r = Random();
 
-		if (CHANCE16I(1,200, r)) SndPlayTileFx(_desert_sounds[GB(r, 16, 2)], tile);
+		if (CHANCE16I(1, 200, r)) SndPlayTileFx(forest_sounds[GB(r, 16, 2)], tile);
 	} else if (b == 1) {
-		if ((_m[tile].m2 & 0x30) != 0x20) {
-			_m[tile].m2 &= 0xF;
-			_m[tile].m2 |= 0xE0;
+		if (GB(_m[tile].m2, 4, 2) != 2) {
+			SB(_m[tile].m2, 4, 2, 2);
+			SB(_m[tile].m2, 6, 2, 3);
 			MarkTileDirtyByTile(tile);
 		}
 	}
@@ -427,31 +424,26 @@ static void TileLoopTreesAlps(TileIndex tile)
 	tmp = _m[tile].m2 & 0xF0;
 
 	if (k < -8) {
-		/* snow_m2_down */
 		if ((tmp & 0x30) != 0x20) return;
-		m2 = 0;
+		m2 = 0; // no snow
 	} else if (k == -8) {
-		/* snow_m1 */
-		m2 = 0x20;
+		m2 = 0x20; // 1/4 snow
 		if (tmp == m2) return;
-	} else if (k < 8) {
-		/* snow_0 */
-		m2 = 0x60;
+	} else if (k == 0) {
+		m2 = 0x60;// 1/2 snow
 		if (tmp == m2) return;
 	} else if (k == 8) {
-		/* snow_p1 */
-		m2 = 0xA0;
+		m2 = 0xA0; // 3/4 snow
 		if (tmp == m2) return;
 	} else {
-		/* snow_p2_up */
 		if (tmp == 0xE0) {
 			uint32 r = Random();
-			if (CHANCE16I(1,200,r)) {
+			if (CHANCE16I(1, 200, r)) {
 				SndPlayTileFx((r & 0x80000000) ? SND_39_HEAVY_WIND : SND_34_WIND, tile);
 			}
 			return;
 		} else {
-			m2 = 0xE0;
+			m2 = 0xE0; // full snow
 		}
 	}
 
