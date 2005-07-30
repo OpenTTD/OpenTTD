@@ -32,11 +32,6 @@ typedef struct {
 	void (*set_volume)(byte vol);
 } HalMusicDriver;
 
-enum {
-	HALERR_OK = 0,
-	HALERR_ERROR = 1,
-};
-
 VARDEF HalMusicDriver *_music_driver;
 VARDEF HalSoundDriver *_sound_driver;
 VARDEF HalVideoDriver *_video_driver;
