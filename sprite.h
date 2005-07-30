@@ -140,17 +140,17 @@ struct DeterministicSpriteGroupRange {
 /* This takes value (probably of the variable specified in the group) and
  * chooses corresponding SpriteGroup accordingly to the given
  * DeterministicSpriteGroup. */
-struct SpriteGroup *EvalDeterministicSpriteGroup(struct DeterministicSpriteGroup *dsg, int value);
+SpriteGroup *EvalDeterministicSpriteGroup(const DeterministicSpriteGroup *dsg, int value);
 /* Get value of a common deterministic SpriteGroup variable. */
 int GetDeterministicSpriteValue(byte var);
 
 /* This takes randomized bitmask (probably associated with
  * vehicle/station/whatever) and chooses corresponding SpriteGroup
  * accordingly to the given RandomizedSpriteGroup. */
-SpriteGroup *EvalRandomizedSpriteGroup(RandomizedSpriteGroup *rsg, byte random_bits);
+SpriteGroup *EvalRandomizedSpriteGroup(const RandomizedSpriteGroup *rsg, byte random_bits);
 /* Triggers given RandomizedSpriteGroup with given bitmask and returns and-mask
  * of random bits to be reseeded, or zero if there were no triggers matched
  * (then they are |ed to @waiting_triggers instead). */
-byte RandomizedSpriteGroupTriggeredBits(RandomizedSpriteGroup *rsg, byte triggers, byte *waiting_triggers);
+byte RandomizedSpriteGroupTriggeredBits(const RandomizedSpriteGroup *rsg, byte triggers, byte *waiting_triggers);
 
 #endif

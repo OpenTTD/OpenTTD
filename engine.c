@@ -163,36 +163,24 @@ static void CalcEngineReliability(Engine *e)
 
 void AddTypeToEngines(void)
 {
-	Engine *e;
-	uint32 counter = 0;
+	Engine* e = _engines;
 
-	for(e=_engines; e != endof(_engines); e++, counter++) {
-
-		e->type = VEH_Train;
-		if 	(counter >= ROAD_ENGINES_INDEX) {
-			e->type = VEH_Road;
-			if 	(counter >= SHIP_ENGINES_INDEX) {
-				e->type = VEH_Ship;
-				if 	(counter >= AIRCRAFT_ENGINES_INDEX) {
-					e->type = VEH_Aircraft;
-					if 	(counter >= TOTAL_NUM_ENGINES) {
-						e->type = VEH_Special;
-					}
-				}
-			}
-		}
-	}
+	do e->type = VEH_Train;    while (++e < &_engines[ROAD_ENGINES_INDEX]);
+	do e->type = VEH_Road;     while (++e < &_engines[SHIP_ENGINES_INDEX]);
+	do e->type = VEH_Ship;     while (++e < &_engines[AIRCRAFT_ENGINES_INDEX]);
+	do e->type = VEH_Aircraft; while (++e < &_engines[TOTAL_NUM_ENGINES]);
+	do e->type = VEH_Special;  while (++e < endof(_engines));
 }
 
 void StartupEngines(void)
 {
 	Engine *e;
 	const EngineInfo *ei;
-	uint32 r, counter = 0;
 
 	SetupEngineNames();
 
-	for(e=_engines, ei=_engine_info; e != endof(_engines); e++, ei++, counter++) {
+	for (e = _engines, ei = _engine_info; e != endof(_engines); e++, ei++) {
+		uint32 r;
 
 		e->age = 0;
 		e->railtype = ei->railtype_climates >> 4;
@@ -283,9 +271,9 @@ void SetWagonOverrideSprites(byte engine, SpriteGroup *group, byte *train_id,
 	memcpy(wo->train_id, train_id, trains);
 }
 
-static SpriteGroup *GetWagonOverrideSpriteSet(byte engine, byte overriding_engine)
+static const SpriteGroup *GetWagonOverrideSpriteSet(byte engine, byte overriding_engine)
 {
-	WagonOverrides *wos = &_engine_wagon_overrides[engine];
+	const WagonOverrides *wos = &_engine_wagon_overrides[engine];
 	int i;
 
 	// XXX: This could turn out to be a timesink on profiles. We could
@@ -294,7 +282,7 @@ static SpriteGroup *GetWagonOverrideSpriteSet(byte engine, byte overriding_engin
 	// that. --pasky
 
 	for (i = 0; i < wos->overrides_count; i++) {
-		WagonOverride *wo = &wos->overrides[i];
+		const WagonOverride *wo = &wos->overrides[i];
 		int j;
 
 		for (j = 0; j < wo->trains; j++) {
@@ -306,7 +294,6 @@ static SpriteGroup *GetWagonOverrideSpriteSet(byte engine, byte overriding_engin
 }
 
 
-byte _engine_original_sprites[TOTAL_NUM_ENGINES];
 // 0 - 28 are cargos, 29 is default, 30 is the advert (purchase list)
 // (It isn't and shouldn't be like this in the GRF files since new cargo types
 // may appear in future - however it's more convenient to store it like this in
@@ -321,10 +308,10 @@ void SetCustomEngineSprites(byte engine, byte cargo, SpriteGroup *group)
 	_engine_custom_sprites[engine][cargo] = *group;
 }
 
-typedef SpriteGroup *(*resolve_callback)(SpriteGroup *spritegroup,
+typedef SpriteGroup *(*resolve_callback)(const SpriteGroup *spritegroup,
 	const Vehicle *veh, uint16 callback_info, void *resolve_func); /* XXX data pointer used as function pointer */
 
-static SpriteGroup* ResolveVehicleSpriteGroup(SpriteGroup *spritegroup,
+static const SpriteGroup* ResolveVehicleSpriteGroup(const SpriteGroup *spritegroup,
 	const Vehicle *veh, uint16 callback_info, resolve_callback resolve_func)
 {
 	//debug("spgt %d", spritegroup->type);
@@ -334,8 +321,8 @@ static SpriteGroup* ResolveVehicleSpriteGroup(SpriteGroup *spritegroup,
 			return spritegroup;
 
 		case SGT_DETERMINISTIC: {
-			DeterministicSpriteGroup *dsg = &spritegroup->g.determ;
-			SpriteGroup *target;
+			const DeterministicSpriteGroup *dsg = &spritegroup->g.determ;
+			const SpriteGroup *target;
 			int value = -1;
 
 			//debug("[%p] Having fun resolving variable %x", veh, dsg->variable);
@@ -369,7 +356,7 @@ static SpriteGroup* ResolveVehicleSpriteGroup(SpriteGroup *spritegroup,
 
 				if (dsg->variable == 0x40 || dsg->variable == 0x41) {
 					if (veh->type == VEH_Train) {
-						Vehicle *u = GetFirstVehicleInChain(veh);
+						const Vehicle *u = GetFirstVehicleInChain(veh);
 						byte chain_before = 0, chain_after = 0;
 
 						while (u != veh) {
@@ -483,7 +470,7 @@ static SpriteGroup* ResolveVehicleSpriteGroup(SpriteGroup *spritegroup,
 		}
 
 		case SGT_RANDOMIZED: {
-			RandomizedSpriteGroup *rsg = &spritegroup->g.random;
+			const RandomizedSpriteGroup *rsg = &spritegroup->g.random;
 
 			if (veh == NULL) {
 				/* Purchase list of something. Show the first one. */
@@ -507,9 +494,9 @@ static SpriteGroup* ResolveVehicleSpriteGroup(SpriteGroup *spritegroup,
 	}
 }
 
-static SpriteGroup *GetVehicleSpriteGroup(byte engine, const Vehicle *v)
+static const SpriteGroup *GetVehicleSpriteGroup(byte engine, const Vehicle *v)
 {
-	SpriteGroup *group;
+	const SpriteGroup *group;
 	byte cargo = GC_PURCHASE;
 
 	if (v != NULL) {
@@ -520,7 +507,7 @@ static SpriteGroup *GetVehicleSpriteGroup(byte engine, const Vehicle *v)
 	group = &_engine_custom_sprites[engine][cargo];
 
 	if (v != NULL && v->type == VEH_Train) {
-		SpriteGroup *overset = GetWagonOverrideSpriteSet(engine, v->u.rail.first_engine);
+		const SpriteGroup *overset = GetWagonOverrideSpriteSet(engine, v->u.rail.first_engine);
 
 		if (overset != NULL) group = overset;
 	}
@@ -530,8 +517,8 @@ static SpriteGroup *GetVehicleSpriteGroup(byte engine, const Vehicle *v)
 
 int GetCustomEngineSprite(byte engine, const Vehicle *v, byte direction)
 {
-	SpriteGroup *group;
-	RealSpriteGroup *rsg;
+	const SpriteGroup *group;
+	const RealSpriteGroup *rsg;
 	byte cargo = GC_PURCHASE;
 	byte loaded = 0;
 	bool in_motion = 0;
@@ -598,7 +585,7 @@ int GetCustomEngineSprite(byte engine, const Vehicle *v, byte direction)
  */
 bool UsesWagonOverride(const Vehicle *v) {
 	assert(v->type == VEH_Train);
-	return (GetWagonOverrideSpriteSet(v->engine_type, v->u.rail.first_engine) != NULL);
+	return GetWagonOverrideSpriteSet(v->engine_type, v->u.rail.first_engine) != NULL;
 }
 
 /**
@@ -612,7 +599,7 @@ bool UsesWagonOverride(const Vehicle *v) {
  */
 uint16 GetCallBackResult(uint16 callback_info, byte engine, const Vehicle *v)
 {
-	SpriteGroup *group;
+	const SpriteGroup *group;
 	byte cargo = GC_DEFAULT;
 
 	if (v != NULL)
@@ -621,7 +608,7 @@ uint16 GetCallBackResult(uint16 callback_info, byte engine, const Vehicle *v)
 	group = &_engine_custom_sprites[engine][cargo];
 
 	if (v != NULL && v->type == VEH_Train) {
-		SpriteGroup *overset = GetWagonOverrideSpriteSet(engine, v->u.rail.first_engine);
+		const SpriteGroup *overset = GetWagonOverrideSpriteSet(engine, v->u.rail.first_engine);
 
 		if (overset != NULL) group = overset;
 	}
@@ -647,7 +634,7 @@ uint16 GetCallBackResult(uint16 callback_info, byte engine, const Vehicle *v)
 static byte _vsg_random_triggers;
 static byte _vsg_bits_to_reseed;
 
-static SpriteGroup *TriggerVehicleSpriteGroup(SpriteGroup *spritegroup,
+static const SpriteGroup *TriggerVehicleSpriteGroup(const SpriteGroup *spritegroup,
 	Vehicle *veh, uint16 callback_info, resolve_callback resolve_func)
 {
 	if (spritegroup->type == SGT_RANDOMIZED) {
@@ -663,8 +650,8 @@ static SpriteGroup *TriggerVehicleSpriteGroup(SpriteGroup *spritegroup,
 
 static void DoTriggerVehicle(Vehicle *veh, VehicleTrigger trigger, byte base_random_bits, bool first)
 {
-	SpriteGroup *group;
-	RealSpriteGroup *rsg;
+	const SpriteGroup *group;
+	const RealSpriteGroup *rsg;
 	byte new_random_bits;
 
 	_vsg_random_triggers = trigger;
@@ -793,12 +780,13 @@ static PlayerID GetBestPlayer(PlayerID pp)
 
 void EnginesDailyLoop(void)
 {
-	Engine *e;
-	int i;
+	uint i;
 
 	if (_cur_year >= 130) return;
 
-	for (e = _engines, i = 0; i != TOTAL_NUM_ENGINES; e++, i++) {
+	for (i = 0; i != lengthof(_engines); i++) {
+		Engine* e = &_engines[i];
+
 		if (e->flags & ENGINE_INTRODUCING) {
 			if (e->flags & ENGINE_PREVIEWING) {
 				if (e->preview_player != 0xFF && !--e->preview_wait) {
@@ -920,9 +908,9 @@ void EnginesMonthlyLoop(void)
 	Engine *e;
 
 	if (_cur_year < 130) {
-		for(e=_engines; e != endof(_engines); e++) {
+		for (e = _engines; e != endof(_engines); e++) {
 			// Age the vehicle
-			if (e->flags&ENGINE_AVAILABLE && e->age != 0xFFFF) {
+			if (e->flags & ENGINE_AVAILABLE && e->age != 0xFFFF) {
 				e->age++;
 				CalcEngineReliability(e);
 			}
@@ -998,11 +986,11 @@ static const SaveLoad _engine_desc[] = {
 
 static void Save_ENGN(void)
 {
-	Engine *e;
-	int i;
-	for(i=0,e=_engines; i != lengthof(_engines); i++,e++) {
+	uint i;
+
+	for (i = 0; i != lengthof(_engines); i++) {
 		SlSetArrayIndex(i);
-		SlObject(e, _engine_desc);
+		SlObject(&_engines[i], _engine_desc);
 	}
 }
 

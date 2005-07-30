@@ -9,7 +9,7 @@
 #include "variables.h"
 
 
-SpriteGroup *EvalDeterministicSpriteGroup(DeterministicSpriteGroup *dsg, int value)
+SpriteGroup *EvalDeterministicSpriteGroup(const DeterministicSpriteGroup *dsg, int value)
 {
 	int i;
 
@@ -64,7 +64,7 @@ int GetDeterministicSpriteValue(byte var)
 	}
 }
 
-SpriteGroup *EvalRandomizedSpriteGroup(RandomizedSpriteGroup *rsg, byte random_bits)
+SpriteGroup *EvalRandomizedSpriteGroup(const RandomizedSpriteGroup *rsg, byte random_bits)
 {
 	byte mask;
 	byte index;
@@ -78,7 +78,7 @@ SpriteGroup *EvalRandomizedSpriteGroup(RandomizedSpriteGroup *rsg, byte random_b
 	return &rsg->groups[index];
 }
 
-byte RandomizedSpriteGroupTriggeredBits(RandomizedSpriteGroup *rsg,
+byte RandomizedSpriteGroupTriggeredBits(const RandomizedSpriteGroup *rsg,
 	byte triggers, byte *waiting_triggers)
 {
 	byte match = rsg->triggers & (*waiting_triggers | triggers);
