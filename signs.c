@@ -8,7 +8,6 @@
 #include "signs.h"
 #include "saveload.h"
 #include "command.h"
-#include "strings.h"
 #include "variables.h"
 
 enum {

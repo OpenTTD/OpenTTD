@@ -5,12 +5,10 @@
 #include "functions.h"
 #include "player.h"
 #include "string.h"
-#include "strings.h" // XXX GetParam*
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "map.h"
 #include "vehicle.h"
-#include "assert.h"
 #include "saveload.h"
 #include "network.h"
 #include "network_data.h"
