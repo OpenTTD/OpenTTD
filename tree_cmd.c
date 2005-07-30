@@ -485,11 +485,8 @@ static void TileLoop_Trees(TileIndex tile)
 	TileLoopClearHelper(tile);
 
 	/* increase counter */
-	{
-		uint16 m2 = _m[tile].m2;
-		_m[tile].m2 = m2 = (m2 & 0xF0) | ((m2 + 1) & 0xF);
-		if ((m2 & 0xF) != 0) return;
-	}
+	AB(_m[tile].m2, 0, 4, 1);
+	if (GB(_m[tile].m2, 0, 4) != 0) return;
 
 	m5 = _m[tile].m5;
 	if (GB(m5, 0, 3) == 3) {

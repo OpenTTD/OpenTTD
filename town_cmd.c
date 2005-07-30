@@ -180,7 +180,7 @@ static void AnimateTile_Town(TileIndex tile)
 			i = (Random()&7) - 1;
 		} while (i < 0 || i == 1 || i*6==old);
 
-		_m[tile].m5 = (_m[tile].m5 & ~0x3F) | i;
+		SB(_m[tile].m5, 0, 6, i);
 	}
 
 	a = _m[tile].owner&0x7F;
@@ -255,18 +255,12 @@ uint32 GetWorldPopulation(void)
 
 static void MakeSingleHouseBigger(TileIndex tile)
 {
-	byte b;
-
 	assert(IsTileType(tile, MP_HOUSE));
 
-	b = _m[tile].m5;
-	if (b & 0x80)
-		return;
+	if (_m[tile].m5 & 0x80) return;
 
-	_m[tile].m5 = (b & 0xC0) | ((b+1)&7);
-
-	if ((_m[tile].m5&7) != 0)
-		return;
+	AB(_m[tile].m5, 0, 3, 1);
+	if (GB(_m[tile].m5, 0, 3) != 0) return;
 
 	_m[tile].m3 = _m[tile].m3 + 0x40;
 

@@ -146,8 +146,10 @@ static inline void swap_tile(TileIndex *a, TileIndex *b) { TileIndex t = *a; *a 
 
 /// Fetch n bits starting at bit s from x
 #define GB(x, s, n) (((x) >> (s)) & ((1 << (n)) - 1))
-/// Set n bits in x starting at bit s to d
+/// Set n bits starting at bit s in x to d
 #define SB(x, s, n, d) ((x) = ((x) & ~(((1 << (n)) - 1) << (s))) | ((d) << (s)))
+/// Add i to the n bits starting at bit s in x
+#define AB(x, s, n, i) ((x) = ((x) & ~(((1 << (n)) - 1) << (s))) | (((x) + ((i) << (s))) & (((1 << (n)) - 1) << (s))))
 
 /**
  * ROtate x Left/Right by n (must be >= 0)
