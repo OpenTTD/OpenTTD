@@ -44,7 +44,7 @@ WFileName
 17
 ..\..\openttd.tgt
 89
-22
+113
 11
 VComponent
 12
@@ -60,5 +60,5 @@ WFileName
 23
 ..\..\strgen\strgen.tgt
 0
-2
+1
 8

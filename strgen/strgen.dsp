@@ -90,23 +90,6 @@ LINK32=link.exe
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=.\stdafx.c
-
-!IF  "$(CFG)" == "strgen - Win32 Debug"
-
-# SUBTRACT CPP /YX /Yc /Yu
-
-!ELSEIF  "$(CFG)" == "strgen - Win32 Release"
-
-# SUBTRACT BASE CPP /YX /Yc /Yu
-# ADD CPP /Gr /Zp4 /MD /GX- /O1
-# SUBTRACT CPP /Z<none> /YX /Yc /Yu
-
-!ENDIF
-
-# End Source File
-# Begin Source File
-
 SOURCE=.\strgen.c
 
 !IF  "$(CFG)" == "strgen - Win32 Debug"
