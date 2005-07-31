@@ -290,7 +290,6 @@ STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Carico t
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Nuovo Gioco
 STR_0141_LOAD_GAME                                              :{BLACK}Carica Gioco
-STR_0142_TUTORIAL_DEMONSTRATION                                 :{BLACK}Tutorial / Dimostrazione
 STR_SINGLE_PLAYER                                               :{BLACK}Singolo giocatore
 STR_MULTIPLAYER                                                 :{BLACK}Multiplayer
 
@@ -467,8 +466,6 @@ STR_01CA_31ST                                                   :31
 ############ range for days	ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
-STR_01CC_TOGGLE_LARGE_SMALL_MAP                                 :{BLACK}Seleziona dimensione mappa grande/piccola
-STR_01CD_SELECT_TUTORIAL_DEMONSTRATION                          :{WHITE}Seleziona Tutorial/Demonstrazione
 
 STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Merci accettate: {LTBLUE}
 
@@ -573,7 +570,6 @@ STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generazi
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generazione città
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generazione industrie
 STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Costruzioni stradali
-STR_0232_VEGETATION_AND_OTHER_OBJECTS                           :{BLACK}Vegetazione ed altri oggetti
 STR_0233_TOWN_GENERATION                                        :{WHITE}Generazione Città
 STR_0234_NEW_TOWN                                               :{BLACK}Nuova Città
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Costruisci nuova città
@@ -782,7 +778,6 @@ STR_02F9_EVERY_6_MONTHS                                         :Ogni 6 mesi
 STR_02FA_EVERY_12_MONTHS                                        :Ogni 12 mesi
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Inizia nuovo gioco
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Carica un gioco salvato
-STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS                          :{BLACK}Guarda dimostrazione/tutorial
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Crea uno scenario personalizzato
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Seleziona giocatore singolo
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Seleziona un gioco multiplayer da 2-8 giocatori
@@ -791,7 +786,6 @@ STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Mostra o
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Inizia una partita con uno scenario personalizzato
 STR_0304_QUIT                                                   :{BLACK}Esci
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Esci 'OpenTTD'
-STR_0306_VIEW_DEMONSTRATION_TUTORIAL                            :{BLACK}Guarda dimostrazione/tutorial
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...può essere costruito solo in città
 STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Seleziona paesaggio 'temperato'
@@ -816,11 +810,6 @@ STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Screensh
 STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Screenshot non riuscito!
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Compra terreno per usi futuri
-STR_032A_1_ROAD_VEHICLE_SERVICE                                 :{BLACK}1: Servizio stradale
-STR_032B_2_RAILROAD_SERVICE                                     :{BLACK}2: Servizio ferroviario
-STR_032C_3_AIR_SERVICE                                          :{BLACK}3: Servizio aereo
-STR_032D_4_SHIP_SERVICE                                         :{BLACK}4: Servizio navale
-STR_032E_5_RAILROAD_SERVICE_ADVANCED                            :{BLACK}5: Servizio ferroviario (avanzato)
 STR_032F_AUTOSAVE                                               :{RED}SALVATAGGIO AUTOMATICO...
 STR_SAVING_GAME                                                 :{RED}*  *  SALVATAGGIO PARTITA  *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Salvataggio in corso,{}prego attenderne la fine!
@@ -985,7 +974,6 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Scorri 
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Consenti corruzione autorità locale: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING                            :{LTBLUE}Nuovo sistema individuazione deposito: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Stazioni non uniformi: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND                           :{LTBLUE}Nuovo algoritmo pathfinding dei treni: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nuovo pathfinding globale (NPF, sovrascrive NTP): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Consenti la costruzione piccoli aeroporti: {ORANGE}{STRING}
@@ -1469,7 +1457,6 @@ STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Costruis
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Costruisci ponte stradale
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Costruisci tunnel stradale
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Seleziona costruisci/demolisci per le costruzioni stradali
-STR_1812_BRIDGE_SELECTION_CLICK                                 :{BLACK}Selezione ponte - clicca sul  tipo di ponte per costruirlo
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Seleziona orientamento deposito veicoli stradali
 STR_1814_ROAD                                                   :Strada
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Strada con lampioni
@@ -1640,8 +1627,6 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} adesso accetta {STRING} e {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Orientamento fermata
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orient. Stazione Camion
-STR_3044_TOO_CLOSE_TO_ANOTHER_BUS                               :{WHITE}Troppo vicina a un'altra stazione bus
-STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK                             :{WHITE}Troppo vicina a un'altra stazione camion
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Devi demolire stazione bus prima
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Devi demolire stazione camion prima
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stazioni
@@ -1677,7 +1662,6 @@ STR_3063_SHIP_DOCK                                              :Molo
 STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}Evidenzia l'area di copertura del sito proposto
 STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}Non evidenziare  l'area di copertura del sito proposto
 STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Evidenzia area coperta
-STR_3067_MONORAIL_STATION_SELECT                                :{WHITE}Selezione stazione per monorotaia
 STR_3068_DOCK                                                   :{WHITE}Molo
 STR_3069_BUOY                                                   :Boa
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boa in mezzo
@@ -1825,7 +1809,6 @@ STR_5025_WOODEN_ROAD_BRIDGE                                     :Ponte stradale 
 STR_5026_CONCRETE_ROAD_BRIDGE                                   :Ponte stradale in cemento
 STR_5027_TUBULAR_RAIL_BRIDGE                                    :Ponte ferroviario tubolare
 STR_5028_TUBULAR_ROAD_BRIDGE                                    :Ponte stradale tubolare
-STR_5029_STEEL                                                  :Acciaio
 
 ##id 0x5800
 STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Oggetto in mezzo
@@ -2391,7 +2374,6 @@ STR_8813_FROM                                                   :{LTBLUE}{CARGO}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Treno {COMMA} stà aspettando nel deposito
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nuovi Veicoli
 STR_8816                                                        :{BLACK}-
-STR_8818_INFORMATION                                            :{BLACK}Informazioni
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Treno troppo lungo
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Un treno può essere modificato solo quando è fermo nel deposito
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Treni
@@ -2422,7 +2404,6 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Troppi o
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Non puoi inserire nuovo ordine...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Non puoi cancellare quest'ordine...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Non puoi modificare quest'ordine...
-STR_8836_MUST_BUILD_TRAIN_DEPOT                                 :{WHITE}Devi costruire un deposito ferroviario prima
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Non puoi spostare il veicolo...
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Non puoi vendere veicolo ferroviario...
@@ -2491,11 +2472,9 @@ STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Deposito Veicoli Stradali
 STR_9004_NEW_VEHICLES                                           :{BLACK}Nuovo Veicolo Stradale
-STR_9005_INFORMATION                                            :{BLACK}Informazioni
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nuovo Veicolo Stradale
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Costruisci Veicolo
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Non puoi costruire veicolo...
-STR_900A_MUST_BUILD_ROAD_VEHICLE                                :{WHITE}Devi costruire un deposito prima
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Dettagli)
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Età: {LTBLUE}{STRING}{BLACK}   Consumi: {LTBLUE}{CURRENCY}/anno
 STR_900E_MAX_SPEED                                              :{BLACK}Velocità Max: {LTBLUE}{VELOCITY}
@@ -2551,8 +2530,6 @@ STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Non puoi
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Deposito Navale
 STR_9804_NEW_SHIPS                                              :{BLACK}Nuove Navi
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Navi
-STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Non puoi costruire nave...
-STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Devi costruire un deposito prima
 STR_9808_NEW_SHIPS                                              :{WHITE}Nuove Navi
 STR_9809_BUILD_SHIP                                             :{BLACK}Costruisci Nave
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}La nave deve essere ferma nel deposito
@@ -2619,7 +2596,6 @@ STR_A000_AIRPORTS                                               :{WHITE}Aeroport
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Non puoi costruire aeroporto qui...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangar
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nuovo Aereo
-STR_A004_INFORMATION                                            :{BLACK}Informazioni
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nuovo Aereo
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construisci Aereo
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Non puoi costruire aereo
@@ -2639,7 +2615,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Aereo {C
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aereo in mezzo
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Non puoi far fermare/ripartire aereo...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Aereo in volo
-STR_A018_MUST_BUILD_AIRPORT_FIRST                               :{WHITE}Costruisci aeroporto prima
 STR_A019_CAPACITY                                               :{BLACK}Capienza: {LTBLUE}{STRING}, {STRING}
 STR_A01A_CAPACITY                                               :{BLACK}Capienza: {LTBLUE}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Dev'essere fermo nell'hangar
@@ -2669,7 +2644,6 @@ STR_A032_NAME_AIRCRAFT                                          :{BLACK}Nome aer
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Primo aereo atterrato a {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Aereo precipitato!{}{COMMA} morti in una palla di fuoco a {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Incidente aereo!{}L'aereo ha finito il carburante, {COMMA} morti in una palla di fuoco!
-STR_A035_DESTINATIONS                                           :{TINYFONT}{BLACK}Destinazioni:
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Rinomina
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Rinomina tipo di aereo
@@ -2683,7 +2657,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Converti
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Seleziona il tipo di merce da caricare:-
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nuova capacità: {GOLD}{STRING}{}{BLACK}Costo conversione: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Non puoi convertire aereo...
-STR_A043_REFITTABLE                                             :(convertibile)
 STR_GO_TO_AIRPORT_HANGAR                                        :Vai a {STATION} Hangar
 SERVICE_AT_AIRPORT_HANGAR                                       :Manutenzione a {STATION} Hangar
 
@@ -2699,7 +2672,6 @@ STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT
 STR_BRIBE_FAILED                                                :{WHITE}Il tentativo di corruzione è stato
 STR_BRIBE_FAILED_2                                              :{WHITE}scoperto dagli ispettori regionali.
 STR_BUILD_DATE                                                  :{BLACK}Realizzato il: {LTBLUE}{DATE_LONG}
-STR_MULTIPLAYER_PAUSED                                          :{WHITE}Gioco in pausa.{}Il comando non può essere eseguito
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Dettagli valutazione delle prestazioni
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Dettagli

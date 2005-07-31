@@ -290,7 +290,6 @@ STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Încãrcãt
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Joc nou
 STR_0141_LOAD_GAME                                              :{BLACK}Încarcã joc
-STR_0142_TUTORIAL_DEMONSTRATION                                 :{BLACK}Tutorial/Demonstratie
 STR_SINGLE_PLAYER                                               :{BLACK}Un singur jucãtor
 STR_MULTIPLAYER                                                 :{BLACK}Multiplayer
 
@@ -467,8 +466,6 @@ STR_01CA_31ST                                                   :31
 ############ range for days	ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
-STR_01CC_TOGGLE_LARGE_SMALL_MAP                                 :{BLACK}Comutator dimensiune harta (micã/mijlocie/mare)
-STR_01CD_SELECT_TUTORIAL_DEMONSTRATION                          :{WHITE}Alege vizionarea unui tutorial (demonstratie)
 
 STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Încãrcãturi acceptate: {LTBLUE}
 
@@ -573,7 +570,6 @@ STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generare
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generare oras
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generare industrii
 STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Constructii rutiere
-STR_0232_VEGETATION_AND_OTHER_OBJECTS                           :{BLACK}Vegetatie si alte obiecte
 STR_0233_TOWN_GENERATION                                        :{WHITE}Generare oras
 STR_0234_NEW_TOWN                                               :{BLACK}Oras nou
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Construieste un oras nou
@@ -782,7 +778,6 @@ STR_02F9_EVERY_6_MONTHS                                         :La fiecare 6 lu
 STR_02FA_EVERY_12_MONTHS                                        :La fiecare 12 luni
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Începere joc nou
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Incarca un joc salvat
-STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS                          :{BLACK}Vizionare demo-uri/tutoriale
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Creeazã un joc/scenariu propriu
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Alege un joc cu un singur jucãtor
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Alege un joc multiplayer cu 2-8 jucatori
@@ -791,7 +786,6 @@ STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Afiseaza
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Începerea unui joc nou folosind un scenariu deja existent
 STR_0304_QUIT                                                   :{BLACK}Iesire
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Iesi din 'OpenTTD'
-STR_0306_VIEW_DEMONSTRATION_TUTORIAL                            :{BLACK}Vizionare demonstratie/tutorial
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...se poate construi doar în orase
 STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Alege peisajul 'climã temperatã'
@@ -816,11 +810,6 @@ STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Screensh
 STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Screenshot nerealizat!
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Cumpãrã teren pentru folosire ulterioarã
-STR_032A_1_ROAD_VEHICLE_SERVICE                                 :{BLACK}1: Transporturi auto
-STR_032B_2_RAILROAD_SERVICE                                     :{BLACK}2: Transporturi feroviare
-STR_032C_3_AIR_SERVICE                                          :{BLACK}3: Transporturi aeriene
-STR_032D_4_SHIP_SERVICE                                         :{BLACK}4: Transporturi navale
-STR_032E_5_RAILROAD_SERVICE_ADVANCED                            :{BLACK}5: Transporturi feroviare (avansat)
 STR_032F_AUTOSAVE                                               :{RED}SALVARE AUTOMATÃ
 STR_SAVING_GAME                                                 :{RED}*  *  SALVARE JOC *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Salvarea se efectueaza încã,{}vã rugãm asteptati pânã se încheie!
@@ -985,7 +974,6 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Mutã im
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permite mituirea autoritãtilor locale: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING                            :{LTBLUE}Metodã nouã pentru gãsire depou: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Statii neuniforme: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND                           :{LTBLUE}Algoritm nou pentru gãsirea drumurilor (trenuri): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nou pathfinding global(NPF, dezactiveaza NTP): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permite întotdeauna aeroporturi mici: {ORANGE}{STRING}
@@ -1469,7 +1457,6 @@ STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Construi
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Construieste pod rutier
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Construieste tunel rutier
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Comutator pentru constructie/demolare sosele
-STR_1812_BRIDGE_SELECTION_CLICK                                 :{BLACK}Alegere pod - clicl pe podul selectat pentru a-l construi
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Alege orientarea autobazei
 STR_1814_ROAD                                                   :Stradã
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Stradã iluminatã
@@ -1637,8 +1624,6 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} acceptã acum {STRING} si {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Orientarea statiei
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientarea statiei
-STR_3044_TOO_CLOSE_TO_ANOTHER_BUS                               :{WHITE}Prea aproape de altã statie de autobuz
-STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK                             :{WHITE}Prea aproape de altã platformã pentru camioane
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Mai intâi trebuie demolatã statia de autbuz
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Mai intâi trebuie demolatã platforma pentru camioane
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Statii
@@ -1674,7 +1659,6 @@ STR_3063_SHIP_DOCK                                              :Port
 STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}Aratã aria de acoperire a locatiei propuse
 STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}Nu arãta aria de acoperire a locatiei propuse
 STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Aratã aria de acoperire
-STR_3067_MONORAIL_STATION_SELECT                                :{WHITE}Selecteazã gara monorail
 STR_3068_DOCK                                                   :{WHITE}Port
 STR_3069_BUOY                                                   :Balizã
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...balizã în cale
@@ -1812,7 +1796,6 @@ STR_5025_WOODEN_ROAD_BRIDGE                                     :Pod rutier din 
 STR_5026_CONCRETE_ROAD_BRIDGE                                   :Pod rutier din beton
 STR_5027_TUBULAR_RAIL_BRIDGE                                    :Pod feroviar tubular
 STR_5028_TUBULAR_ROAD_BRIDGE                                    :Pod rutier tubular
-STR_5029_STEEL                                                  :Otel
 
 ##id 0x5800
 STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Obiect in cale
@@ -2378,7 +2361,6 @@ STR_8813_FROM                                                   :{LTBLUE}{CARGO}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Trenul {COMMA} asteaptã în depou
 STR_8815_NEW_VEHICLES                                           :{BLACK}Vehicule noi
 STR_8816                                                        :{BLACK}-
-STR_8818_INFORMATION                                            :{BLACK}Informatii
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Tren prea lung
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Trenurile pot fi modificate doar când se aflã într-un depou
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Trenuri
@@ -2409,7 +2391,6 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Prea mul
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Nu pot adãuga o comandã nouã...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Nu pot sterge aceastã comandã...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nu pot modifica aceastã comandã...
-STR_8836_MUST_BUILD_TRAIN_DEPOT                                 :{WHITE}Mai intâi trebuie construit un depou
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nu pot muta vehiculul...
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Nu pot vinde vehiculul...
@@ -2478,11 +2459,9 @@ STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}Autobaza {TOWN}
 STR_9004_NEW_VEHICLES                                           :{BLACK}Autovehicule noi
-STR_9005_INFORMATION                                            :{BLACK}Informatii
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Autovehicule noi
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Cumpãrã vehicul
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nu pot cumpãra autovehicul...
-STR_900A_MUST_BUILD_ROAD_VEHICLE                                :{WHITE}Mai intâi trebuie construitã o autobazã
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detalii)
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Vârsta: {LTBLUE}{STRING}{BLACK}   Cost de rulare: {LTBLUE}{CURRENCY}/an
 STR_900E_MAX_SPEED                                              :{BLACK}Vitezã max.: {LTBLUE}{VELOCITY}
@@ -2538,8 +2517,6 @@ STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Nu pot c
 STR_9803_SHIP_DEPOT                                             :{WHITE}Santierul Naval {TOWN}
 STR_9804_NEW_SHIPS                                              :{BLACK}Nave noi
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA}Nave
-STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Nu pot construi nave...
-STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Construieste mai intâi un santier
 STR_9808_NEW_SHIPS                                              :{WHITE}Nave noi
 STR_9809_BUILD_SHIP                                             :{BLACK}Construieste navã
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Nava trebuie sã fie stationatã într-un santier
@@ -2606,7 +2583,6 @@ STR_A000_AIRPORTS                                               :{WHITE}Airoport
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Nu pot construi un aeroport aici...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangar
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Aeronavã nouã
-STR_A004_INFORMATION                                            :{BLACK}Informatii
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Aeronavã nouã
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Cumpãrã aeronavã
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nu pot cumpãra aeronava...
@@ -2626,7 +2602,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Aeronava
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeronavã în cale
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nu pot opri/porni aeronava...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Aeronavã se aflã în zbor
-STR_A018_MUST_BUILD_AIRPORT_FIRST                               :{WHITE}Mai întâi trebuie sã construiesti un aeroport
 STR_A019_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{STRING}, {STRING}
 STR_A01A_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Aeronava trebuie sã se afle într-un hangar
@@ -2656,7 +2631,6 @@ STR_A032_NAME_AIRCRAFT                                          :{BLACK}Redenume
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cetãtenii sãrbãtoresc {}sosirea primei aeronave la {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Accident aviatic!{}{COMMA} victime în urma prãbusirii de la {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Accident aerian!{}Aeronava in pana de combustibil, {COMMA} victime in urma dezastrulu!
-STR_A035_DESTINATIONS                                           :{TINYFONT}{BLACK}Destinatii:
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Redenumire
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Redenumeste modelul aeronavei
@@ -2670,7 +2644,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Schimbã 
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Alege marfa de transportat:-
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Noua capacitate: {GOLD}{STRING}{}{BLACK}Costul transformãrii: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nu pot schimba tipul de încãrcãturã...
-STR_A043_REFITTABLE                                             :(suportã alte mãrfuri)
 STR_GO_TO_AIRPORT_HANGAR                                        :Mergi la Hangarul {STATION}
 SERVICE_AT_AIRPORT_HANGAR                                       :Service la Hangarul {STATION}
 
@@ -2686,7 +2659,6 @@ STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT
 STR_BRIBE_FAILED                                                :{WHITE}Încercarea ta de mituire
 STR_BRIBE_FAILED_2                                              :{WHITE}a fost descoperitã de un procuror local
 STR_BUILD_DATE                                                  :{BLACK}Data constructiei: {LTBLUE}{DATE_LONG}
-STR_MULTIPLAYER_PAUSED                                          :{WHITE}Jocul este in pauza.{}Comanda nu s-a putut executa
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Ratingul de performantã detaliat
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalii

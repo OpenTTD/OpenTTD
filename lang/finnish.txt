@@ -290,7 +290,6 @@ STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Kokonais
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Uusi peli
 STR_0141_LOAD_GAME                                              :{BLACK}Lataa peli
-STR_0142_TUTORIAL_DEMONSTRATION                                 :{BLACK}Pikaopetus/Esittely
 STR_SINGLE_PLAYER                                               :{BLACK}Yksinpeli
 STR_MULTIPLAYER                                                 :{BLACK}Moninpeli
 
@@ -467,8 +466,6 @@ STR_01CA_31ST                                                   :31.
 ############ range for days	ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
-STR_01CC_TOGGLE_LARGE_SMALL_MAP                                 :{BLACK}Suuri/pieni karttakoko
-STR_01CD_SELECT_TUTORIAL_DEMONSTRATION                          :{WHITE}Valitse pikaohje/esitys.
 
 STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Vastaanottaa rahtia: {LTBLUE}
 
@@ -573,7 +570,6 @@ STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Luo maas
 STR_022F_TOWN_GENERATION                                        :{BLACK}Luo kaupunkeja
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Luo teollisuutta
 STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Rakenna teit‰
-STR_0232_VEGETATION_AND_OTHER_OBJECTS                           :{BLACK}Kasvillisuus ynn‰ muuta
 STR_0233_TOWN_GENERATION                                        :{WHITE}Luo kaupunkeja
 STR_0234_NEW_TOWN                                               :{BLACK}Uusi kaupunki
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Rakenna uusi kaupunki
@@ -782,7 +778,6 @@ STR_02F9_EVERY_6_MONTHS                                         :Joka 6. kuukaus
 STR_02FA_EVERY_12_MONTHS                                        :Joka 12. kuukausi
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Aloita uusi peli.
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Lataa tallennettu peli.
-STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS                          :{BLACK}N‰yt‰ esitykset/pikaohjeet.
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Luo oma pelimaailma/skenaario.
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Valitse yksinpeli.
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Valitse 2-8 pelaajan moninpeli.
@@ -791,7 +786,6 @@ STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}N‰yt‰ va
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Aloita uusi peli k‰ytt‰en omaa skenaariota.
 STR_0304_QUIT                                                   :{BLACK}Sulje
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Sulje 'OpenTTD'.
-STR_0306_VIEW_DEMONSTRATION_TUTORIAL                            :{BLACK}N‰yt‰ esitys/pikaohje.
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...voidaan rakentaa vain kaupunkeihin.
 STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Valitse 'lauhkea' ilmasto.
@@ -816,11 +810,6 @@ STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Kuvankaa
 STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Kuvankaappaus ep‰onnistui!
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Osta maata tulevaa k‰yttˆ‰ varten.
-STR_032A_1_ROAD_VEHICLE_SERVICE                                 :{BLACK}1: Ajoneuvohuolto
-STR_032B_2_RAILROAD_SERVICE                                     :{BLACK}2: Rautatiehuolto
-STR_032C_3_AIR_SERVICE                                          :{BLACK}3: Ilmahuolto
-STR_032D_4_SHIP_SERVICE                                         :{BLACK}4: Laivahuolto
-STR_032E_5_RAILROAD_SERVICE_ADVANCED                            :{BLACK}5: Rautatiehuolto (edistynyt)
 STR_032F_AUTOSAVE                                               :{RED}AUTOMAATTITALLENNUS
 STR_SAVING_GAME                                                 :{RED}*  *  TALLENNETAAN PELIƒ  *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Tallentaminen k‰ynniss‰,{}odota, kunnes se on ohi!
@@ -985,7 +974,6 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Vierit‰
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Salli viranomaisten lahjominen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING                            :{LTBLUE}Uusi huoltoasemahaku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ep‰yhten‰iset asemat: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND                           :{LTBLUE}Uusi algoritmi junien tienhaulle: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Uusi globaali tienhakualgor. (NPF, korvaa NTP:n): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Salli aina pienet lentokent‰t: {ORANGE}{STRING}
@@ -1469,7 +1457,6 @@ STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Rakenna 
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Rakenna maantiesilta
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Rakenna maantietunneli
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Tien rakentaminen/siirt‰minen p‰‰lle/pois
-STR_1812_BRIDGE_SELECTION_CLICK                                 :{BLACK}Sillan valinta - valitse rakennettavan sillan tyyppi.
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Valitse huoltoaseman suunta.
 STR_1814_ROAD                                                   :Tie
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Tie katuvaloilla
@@ -1640,8 +1627,6 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}Asema {S
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}Asema {STATION} ottaa vastaan {STRING} ja {STRING}.
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Linta-autoaseman suunn.
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Lastauslaiturin suunta
-STR_3044_TOO_CLOSE_TO_ANOTHER_BUS                               :{WHITE}Liian l‰hell‰ toista linja-autoasemaa.
-STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK                             :{WHITE}Liian l‰hell‰ toista lastauslaituria.
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Linja-autoasema pit‰‰ tuhota ensin.
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Lastauslaituri pit‰‰ tuhota ensin.
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} asemaa
@@ -1677,7 +1662,6 @@ STR_3063_SHIP_DOCK                                              :Satama
 STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}Korosta ehdotetun tontin vaikutusalue.
 STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}ƒl‰ korosta ehdotetun tontin vaikutusaluetta.
 STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Vaikutusalueen korostus
-STR_3067_MONORAIL_STATION_SELECT                                :{WHITE}Yksiraideaseman valinta
 STR_3068_DOCK                                                   :{WHITE}Satama
 STR_3069_BUOY                                                   :Poiju
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...poiju on tiell‰.
@@ -1825,7 +1809,6 @@ STR_5025_WOODEN_ROAD_BRIDGE                                     :Puinen maanties
 STR_5026_CONCRETE_ROAD_BRIDGE                                   :Betoninen maantiesilta
 STR_5027_TUBULAR_RAIL_BRIDGE                                    :Putkirakenteinen rautatiesilta
 STR_5028_TUBULAR_ROAD_BRIDGE                                    :Putkirakenteinen maantiesilta
-STR_5029_STEEL                                                  :Ter‰ksinen
 
 ##id 0x5800
 STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Objekti on tiell‰.
@@ -2391,7 +2374,6 @@ STR_8813_FROM                                                   :{LTBLUE}{CARGO}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Juna {COMMA} odottaa veturitallilla
 STR_8815_NEW_VEHICLES                                           :{BLACK}Uusia liikennev‰lineit‰
 STR_8816                                                        :{BLACK}-
-STR_8818_INFORMATION                                            :{BLACK}Tietoja
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Juna on liian pitk‰.
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Junia voi muunnella vain, kun ne ovat pys‰hdyksiss‰ veturitallilla.
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} junaa
@@ -2422,7 +2404,6 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Liian mo
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Uutta pys‰hdyst‰ ei voi lis‰t‰...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Pys‰hdyst‰ ei voi poistaa...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Pys‰hdyst‰ ei voi muokata...
-STR_8836_MUST_BUILD_TRAIN_DEPOT                                 :{WHITE}Veturitalli pit‰‰ rakentaa ensin.
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Liikennev‰linett‰ ei voi siirt‰‰...
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Yksikkˆ‰ ei voi myyd‰...
@@ -2491,11 +2472,9 @@ STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} huoltoasema
 STR_9004_NEW_VEHICLES                                           :{BLACK}Uusia ajoneuvoja
-STR_9005_INFORMATION                                            :{BLACK}Tietoja
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Uusia ajoneuvoja
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Rakenna ajoneuvo
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Ajoneuvoa ei voi rakentaa...
-STR_900A_MUST_BUILD_ROAD_VEHICLE                                :{WHITE}Huoltoasema pit‰‰ rakentaa ensin.
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (yksityiskohdat)
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Ik‰: {LTBLUE}{STRING}{BLACK}   K‰yttˆkustanukset: {LTBLUE}{CURRENCY}/vuosi
 STR_900E_MAX_SPEED                                              :{BLACK}Huippunopeus: {LTBLUE}{VELOCITY}
@@ -2551,8 +2530,6 @@ STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Satamaa 
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN}, telakka
 STR_9804_NEW_SHIPS                                              :{BLACK}Uusia laivoja
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} laivaa
-STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Laivoja ei voi rakentaa...
-STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Telakka pit‰‰ rakentaa ensin.
 STR_9808_NEW_SHIPS                                              :{WHITE}Uusia laivoja
 STR_9809_BUILD_SHIP                                             :{BLACK}Rakenna laiva
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Laivan pit‰‰ olla pys‰hdyksiss‰ telakalla.
@@ -2619,7 +2596,6 @@ STR_A000_AIRPORTS                                               :{WHITE}Lentoken
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Lentokentt‰‰ ei voi rakentaa...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}Lentokonehalli, {STATION}
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Uusi lentokone
-STR_A004_INFORMATION                                            :{BLACK}Tietoja
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Uusi lentokone
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Rakenna lentokone
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Lentokonetta ei voi rakentaa...
@@ -2639,7 +2615,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Lentokon
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Lentokone on tiell‰.
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Lentokonetta ei voi pys‰ytt‰‰/laittaa liikkeelle...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Lentokone on lennossa.
-STR_A018_MUST_BUILD_AIRPORT_FIRST                               :{WHITE}Lentokentt‰ pit‰‰ rakentaa ensin.
 STR_A019_CAPACITY                                               :{BLACK}Kapasiteetti: {LTBLUE}{STRING}, {STRING}
 STR_A01A_CAPACITY                                               :{BLACK}Kapasiteetti: {LTBLUE}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Lentokoneen pit‰‰ olla pys‰hdyksiss‰ lentokonehallissa.
@@ -2669,7 +2644,6 @@ STR_A032_NAME_AIRCRAFT                                          :{BLACK}Nime‰ le
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimm‰inen lentokone saapuu asemalle {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Lento-onnettomuus!{}{COMMA} kuolee tulipallossa asemalla {STATION}.
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Lentokoneonnettomuus!{}Lentokoneelta loppui polttoaine, {COMMA} kuolee tulipallossa!
-STR_A035_DESTINATIONS                                           :{TINYFONT}{BLACK}Kohteet:
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Nime‰
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Nime‰ lentokonetyyppi uudelleen.
@@ -2683,7 +2657,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Sovita l
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Valitse kuljetettava rahtityyppi:-
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Uusi kapasiteetti: {GOLD}{STRING}{}{BLACK}Sovituksen kulu: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Lentokonetta ei voi sovittaa...
-STR_A043_REFITTABLE                                             :(sovitettava)
 STR_GO_TO_AIRPORT_HANGAR                                        :Aseta kohteeksi lentokonehalli, {STATION}
 SERVICE_AT_AIRPORT_HANGAR                                       :Huolto, kohteena lentokonehalli, {STATION}
 
@@ -2699,7 +2672,6 @@ STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT
 STR_BRIBE_FAILED                                                :{WHITE}Yleinen syytt‰j‰ on saanut selville
 STR_BRIBE_FAILED_2                                              :{WHITE}lahjontayrityksesi.
 STR_BUILD_DATE                                                  :{BLACK}Rakennettu: {LTBLUE}{DATE_LONG}
-STR_MULTIPLAYER_PAUSED                                          :{WHITE}Peli on tauolla.{}Komentoa ei voida suorittaa.
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Yksityiskohtainen suoritustehoarvio
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Yksityiskohta

@@ -290,7 +290,6 @@ STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Total ka
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Nytt spill
 STR_0141_LOAD_GAME                                              :{BLACK}Last inn spill
-STR_0142_TUTORIAL_DEMONSTRATION                                 :{BLACK}Veiledning / Demonstrasjon
 STR_SINGLE_PLAYER                                               :{BLACK}Énspiller
 STR_MULTIPLAYER                                                 :{BLACK}Flerspiller
 
@@ -467,8 +466,6 @@ STR_01CA_31ST                                                   :31.
 ############ range for days	ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
-STR_01CC_TOGGLE_LARGE_SMALL_MAP                                 :{BLACK}Veksle mellom stort og lite kart
-STR_01CD_SELECT_TUTORIAL_DEMONSTRATION                          :{WHITE}Velg Veiledning/Demonstrasjon
 
 STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Aksepterte varer: {LTBLUE}
 
@@ -573,7 +570,6 @@ STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landskap
 STR_022F_TOWN_GENERATION                                        :{BLACK}Bygenerering
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrigenerering
 STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Veibygging
-STR_0232_VEGETATION_AND_OTHER_OBJECTS                           :{BLACK}Vegetasjon og andre objekter
 STR_0233_TOWN_GENERATION                                        :{WHITE}Bygenerering
 STR_0234_NEW_TOWN                                               :{BLACK}Ny by
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Grunnlegg en ny by
@@ -782,7 +778,6 @@ STR_02F9_EVERY_6_MONTHS                                         :Hver 6. måned
 STR_02FA_EVERY_12_MONTHS                                        :Hver 12. måned
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Start nytt spill
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Last inn et lagret spill
-STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS                          :{BLACK}Se demontrasjoner/veiledninger
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Spesiallag en spillverden eller et scenario
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Velg énspiller-modus
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Velg flerspiller-spill med 2-8 spillere
@@ -791,7 +786,6 @@ STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Vis vans
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Start et nytt spill som bruker et scenario
 STR_0304_QUIT                                                   :{BLACK}Avslutt
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Avslutt 'OpenTTD'
-STR_0306_VIEW_DEMONSTRATION_TUTORIAL                            :{BLACK}Se demonstrasjon/veiledning
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan bare bygges i byer
 STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Velg temperert miljø
@@ -816,11 +810,6 @@ STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Skjermdu
 STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Skjermdump feilet!
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Kjøp land for fremtidig bruk
-STR_032A_1_ROAD_VEHICLE_SERVICE                                 :{BLACK}1: Kjøretøyservice
-STR_032B_2_RAILROAD_SERVICE                                     :{BLACK}2: Jernbaneservice
-STR_032C_3_AIR_SERVICE                                          :{BLACK}3: Flyservice
-STR_032D_4_SHIP_SERVICE                                         :{BLACK}4: Skipsservice
-STR_032E_5_RAILROAD_SERVICE_ADVANCED                            :{BLACK}5: Jernbaneservice (avansert)
 STR_032F_AUTOSAVE                                               :{RED}AUTOLAGRING
 STR_SAVING_GAME                                                 :{RED}*  *  LAGRER SPILL  *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Lagring foregår enda,{}vennligst vent til det er ferdig!
@@ -985,7 +974,6 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Flytt p
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Tillat bestikkelser av bystyret: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING                            :{LTBLUE}Ny togstallokalisering: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ikke-ensartede stasjoner: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND                           :{LTBLUE}Ny algoritme for togs kjørerute: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Ny global rutesøking (NGR, overstyrer NTK): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Alltid tillat bygging av små flyplasser: {ORANGE}{STRING}
@@ -1469,7 +1457,6 @@ STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Bygg las
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Bygg bro
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Bygg tunnel
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Velg mellom bygging/fjerning for veibygging
-STR_1812_BRIDGE_SELECTION_CLICK                                 :{BLACK}Brovalg - trykk på broen du har valgt for å bygge den.
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Velg garasjens retning
 STR_1814_ROAD                                                   :Vei
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Vei med gatelykter
@@ -1637,8 +1624,6 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} aksepterer nå {STRING} og {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Retning på bussterminal
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Retning på lasteterminal
-STR_3044_TOO_CLOSE_TO_ANOTHER_BUS                               :{WHITE}For nærme en annen bussterminal
-STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK                             :{WHITE}For nærme en annen lasteterminal
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Må rive bussterminal først
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Må rive lasteterminal først
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stasjoner
@@ -1674,7 +1659,6 @@ STR_3063_SHIP_DOCK                                              :Havn
 STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}Vis dekningsområdet til den foreslåtte plassering
 STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}Ikke vis dekningsområdet til den foreslåtte plassering
 STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Dekningsområde
-STR_3067_MONORAIL_STATION_SELECT                                :{WHITE}Monorailstasjon valg.
 STR_3068_DOCK                                                   :{WHITE}Havn
 STR_3069_BUOY                                                   :Bøye
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...bøyen er i veien
@@ -1822,7 +1806,6 @@ STR_5025_WOODEN_ROAD_BRIDGE                                     :Trebro (vei)
 STR_5026_CONCRETE_ROAD_BRIDGE                                   :Betongbro (vei)
 STR_5027_TUBULAR_RAIL_BRIDGE                                    :Rørformet bro (jernbane)
 STR_5028_TUBULAR_ROAD_BRIDGE                                    :Rørformet bro (vei)
-STR_5029_STEEL                                                  :Stål
 
 ##id 0x5800
 STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Objekt er i veien
@@ -2388,7 +2371,6 @@ STR_8813_FROM                                                   :{LTBLUE}{CARGO}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Tog {COMMA} venter i togstallen
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nye tog/vogner
 STR_8816                                                        :{BLACK}-
-STR_8818_INFORMATION                                            :{BLACK}Informasjon
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Toget er for langt
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Tog kan bare endres når det står stille i togstallen
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Tog
@@ -2419,7 +2401,6 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}For mang
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Kan ikke sette inn ny ordre...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Kan ikke slette denne ordren...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kan ikke endre denne ordren...
-STR_8836_MUST_BUILD_TRAIN_DEPOT                                 :{WHITE}Må bygge togstall først
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kan ikke flytte kjøretøy...
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Kan ikke selge jernbanekjøretøy...
@@ -2488,11 +2469,9 @@ STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Garasje
 STR_9004_NEW_VEHICLES                                           :{BLACK}Nye kjøretøy
-STR_9005_INFORMATION                                            :{BLACK}Informasjon
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nye kjøretøy
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Kjøp kjøretøy
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan ikke kjøpe kjøretøy...
-STR_900A_MUST_BUILD_ROAD_VEHICLE                                :{WHITE}Må bygge garasje først
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftkostnader: {LTBLUE}{CURRENCY}/år
 STR_900E_MAX_SPEED                                              :{BLACK}Maks. fart: {LTBLUE}{VELOCITY}
@@ -2548,8 +2527,6 @@ STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Kan ikke
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Skipsdepot
 STR_9804_NEW_SHIPS                                              :{BLACK}Nye skip
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Skip
-STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Kan ikke bygge skip...
-STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Må rive skipsdepotet først
 STR_9808_NEW_SHIPS                                              :{WHITE}Nye skip
 STR_9809_BUILD_SHIP                                             :{BLACK}Bygg skip
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Må være stoppet i depotet
@@ -2616,7 +2593,6 @@ STR_A000_AIRPORTS                                               :{WHITE}Flyplass
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Kan ikke bygge flyplass her...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangar
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nytt fly
-STR_A004_INFORMATION                                            :{BLACK}Informasjon
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nytt fly
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Bygg fly
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kan ikke bygge fly...
@@ -2636,7 +2612,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Fly {COM
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Det er et fly i veien
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan ikke stoppe/starte flyet...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Flyet er i luften
-STR_A018_MUST_BUILD_AIRPORT_FIRST                               :{WHITE}Må bygge flyplass først
 STR_A019_CAPACITY                                               :{BLACK}Kapasitet: {LTBLUE}{STRING}, {STRING}
 STR_A01A_CAPACITY                                               :{BLACK}Kapasitet: {LTBLUE}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Må stå i en hangar
@@ -2666,7 +2641,6 @@ STR_A032_NAME_AIRCRAFT                                          :{BLACK}Navngi f
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Innbyggerne jubler . . .{}Første fly ankommer {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Flykrasj!{}{COMMA} dør ved {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Flystyrt!{}Fly gikk tom for drivstoff, {COMMA} døde i eksplosjon!
-STR_A035_DESTINATIONS                                           :{TINYFONT}{BLACK}Stoppested:
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Endre navn
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Endre navn til flytype
@@ -2680,7 +2654,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Bygg om 
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Velg varetype:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapasitet: {GOLD}{STRING}{}{BLACK}Kostnad for ombygging: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kan ikke bygge om flyet...
-STR_A043_REFITTABLE                                             :(ombyggbart)
 STR_GO_TO_AIRPORT_HANGAR                                        :Fly til {STATION} hangar
 SERVICE_AT_AIRPORT_HANGAR                                       :Service ved {STATION} hangar
 
@@ -2696,7 +2669,6 @@ STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT
 STR_BRIBE_FAILED                                                :{WHITE}Ditt forsøk på bestikkelser
 STR_BRIBE_FAILED_2                                              :{WHITE}har blitt oppdaget av en regional inspektør.
 STR_BUILD_DATE                                                  :{BLACK}Byggt: {LTBLUE}{DATE_LONG}
-STR_MULTIPLAYER_PAUSED                                          :{WHITE}Spillet er pauset.{}Kommando kan ikke utføres
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detaljert prestasjons nivå
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalje

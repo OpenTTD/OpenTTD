@@ -290,7 +290,6 @@ STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Teljes r
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Új játék
 STR_0141_LOAD_GAME                                              :{BLACK}Játék betöltése
-STR_0142_TUTORIAL_DEMONSTRATION                                 :{BLACK}Tanítás / Demo
 STR_SINGLE_PLAYER                                               :{BLACK}Egyjátékos
 STR_MULTIPLAYER                                                 :{BLACK}Többjátékos
 
@@ -467,8 +466,6 @@ STR_01CA_31ST                                                   :31.
 ############ range for days	ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
-STR_01CC_TOGGLE_LARGE_SMALL_MAP                                 :{BLACK}Váltás kis és nagy térkép között
-STR_01CD_SELECT_TUTORIAL_DEMONSTRATION                          :{WHITE}Válassz egy tanítást/demót
 
 STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Elfogad: {LTBLUE}
 
@@ -573,7 +570,6 @@ STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Táj szer
 STR_022F_TOWN_GENERATION                                        :{BLACK}Városkészítés
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Gazdasági épület készítése
 STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Útépítés
-STR_0232_VEGETATION_AND_OTHER_OBJECTS                           :{BLACK}Növényzet és egyéb tárgyak
 STR_0233_TOWN_GENERATION                                        :{WHITE}Városkészítés
 STR_0234_NEW_TOWN                                               :{BLACK}Új város
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Új város építése
@@ -782,7 +778,6 @@ STR_02F9_EVERY_6_MONTHS                                         :6 havonta
 STR_02FA_EVERY_12_MONTHS                                        :12 havonta
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Új játék kezdése
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Mentett játék betöltése
-STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS                          :{BLACK}Demonstrációk/tanítások megnézése
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Testreszabott pálya készítése
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Egy játékos játék kiválasztása
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Többjátékos mód kiválasztása 2-8 játékosig
@@ -791,7 +786,6 @@ STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}A nehézs
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Új játék kezdése saját pályán
 STR_0304_QUIT                                                   :{BLACK}Kilépés
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Kilépés az OpenTTD-bõl
-STR_0306_VIEW_DEMONSTRATION_TUTORIAL                            :{BLACK}Demonstráció/tanítás megnézése
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...csak városban építhetõ
 STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Mérsékelt táj kiválasztása
@@ -816,11 +810,6 @@ STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}A képern
 STR_031C_SCREENSHOT_FAILED                                      :{WHITE}A képmentés nem sikerült!
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Föld megvétele késõbbi használatra
-STR_032A_1_ROAD_VEHICLE_SERVICE                                 :{BLACK}1: Közúti szállítás
-STR_032B_2_RAILROAD_SERVICE                                     :{BLACK}2: Vasúti szállítás
-STR_032C_3_AIR_SERVICE                                          :{BLACK}3: Légi szállítás
-STR_032D_4_SHIP_SERVICE                                         :{BLACK}4: Vízi szállítás
-STR_032E_5_RAILROAD_SERVICE_ADVANCED                            :{BLACK}5: Haladó vasúti szállítás
 STR_032F_AUTOSAVE                                               :{RED}Automatikus mentés
 STR_SAVING_GAME                                                 :{RED}*  *  JÁTÉK MENTÉSE  *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}A mentés még tart,{}kérlek várd meg a végét!
@@ -985,7 +974,6 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Ablakmo
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Önkormányzatok lefizethetõsége: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING                            :{LTBLUE}Új garázskeresés: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Különbözõ vágánytípusok engedélyezése egy állomáson: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND                           :{LTBLUE}Új algoritmus a vonatok útkeresésére: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Új útvonalkeresõ (NPF, felülbírálja az NTP-t): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Mindig engedélyezze a kis repülõtereket: {ORANGE}{STRING}
@@ -1469,7 +1457,6 @@ STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Teheraut
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Közúti híd építése
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Közúti alagút építése
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Építés/felszedés közötti váltás utaknál
-STR_1812_BRIDGE_SELECTION_CLICK                                 :{BLACK}Híd kiválasztása - kattints arra a hídra, amit meg akarsz építeni
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Válaszd ki a garázs helyzetét
 STR_1814_ROAD                                                   :Út
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Út lámpákkal
@@ -1640,8 +1627,6 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} most már elfogad {STRING} és {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Buszmegálló helyzete
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Rakodóhely helyzete
-STR_3044_TOO_CLOSE_TO_ANOTHER_BUS                               :{WHITE}Túl közel van egy másik buszmegállóhoz
-STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK                             :{WHITE}Túl közel van egy másik teherautó-rakodóhoz
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Elõbb le kell rombolnod a buszmegállót
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Elõbb le kell rombolnod a teherautó-rakodóhelyet
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} állomásai - {COMMA}
@@ -1677,7 +1662,6 @@ STR_3063_SHIP_DOCK                                              :Kikötõ
 STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}A kiválasztott helyen lefedett terület mutatása
 STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}A kiválasztott helyen lefedett terület elrejtése
 STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Lefedett terület mutatása:
-STR_3067_MONORAIL_STATION_SELECT                                :{WHITE}Egysínû állomás beállítása
 STR_3068_DOCK                                                   :{WHITE}Kikötõ
 STR_3069_BUOY                                                   :Bója
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...bója van az útban
@@ -1825,7 +1809,6 @@ STR_5025_WOODEN_ROAD_BRIDGE                                     :Fa közúti híd
 STR_5026_CONCRETE_ROAD_BRIDGE                                   :Beton közúti híd
 STR_5027_TUBULAR_RAIL_BRIDGE                                    :Csõ vasúti híd
 STR_5028_TUBULAR_ROAD_BRIDGE                                    :Csõ közúti híd
-STR_5029_STEEL                                                  :Acél
 
 ##id 0x5800
 STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Tárgy van az útban
@@ -2391,7 +2374,6 @@ STR_8813_FROM                                                   :{LTBLUE}{CARGO}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{COMMA}. vonat a jármûtelepen várakozik
 STR_8815_NEW_VEHICLES                                           :{BLACK}Új jármûvek
 STR_8816                                                        :{BLACK}-
-STR_8818_INFORMATION                                            :{BLACK}Információk
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Túl hosszú a vonat
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Csak a jármûtelepen álló vonatokat lehet megváltoztatni
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} vonatai - {COMMA}
@@ -2422,7 +2404,6 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Túl sok 
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Nem adhatsz meg új célpontot...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Nem törölheted ezt a célpontot...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nem módosíthatod ezt a célpontot...
-STR_8836_MUST_BUILD_TRAIN_DEPOT                                 :{WHITE}Elõbb jármûtelepet kell építened
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nem mozgathatod a jármûvet...
 STR_8838_N_A                                                    :Nincs{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Nem adhatod el a vasúti jármûvet...
@@ -2491,11 +2472,9 @@ STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN}i garázs
 STR_9004_NEW_VEHICLES                                           :{BLACK}Új jármûvek
-STR_9005_INFORMATION                                            :{BLACK}Információ
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Új közúti jármûvek
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Megvesz
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nem veheted meg a közúti jármûvet...
-STR_900A_MUST_BUILD_ROAD_VEHICLE                                :{WHITE}Elõbb garázst kell építened
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} adatai
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Kor: {LTBLUE}{STRING}{BLACK}   Mûködtetési költség: {LTBLUE}{CURRENCY}/év
 STR_900E_MAX_SPEED                                              :{BLACK}Végsebesség: {LTBLUE}{VELOCITY}
@@ -2551,8 +2530,6 @@ STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Nem épít
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN}i dokk
 STR_9804_NEW_SHIPS                                              :{BLACK}Új hajók
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} hajói - {COMMA}
-STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Nem vehetsz hajókat...
-STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Elõbb dokkot kell építened
 STR_9808_NEW_SHIPS                                              :{WHITE}Új hajók
 STR_9809_BUILD_SHIP                                             :{BLACK}Megvesz
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}A dokkban kellene állnia ehhez
@@ -2619,7 +2596,6 @@ STR_A000_AIRPORTS                                               :{WHITE}Repterek
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Nem építhetsz ide repülõteret...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} hangárja
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Új repülõgépek
-STR_A004_INFORMATION                                            :{BLACK}Információ
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Új repülõgépek
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Megvesz
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nem veheted meg a repülõgépet...
@@ -2639,7 +2615,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{COMMA}.
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Repülõgép van az útban
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nem indíthatod el/ állíthatod meg a repülõgépet...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}... a levegõben van
-STR_A018_MUST_BUILD_AIRPORT_FIRST                               :{WHITE}Elõbb repülõteret kell építened
 STR_A019_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{STRING}, {STRING}
 STR_A01A_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}A hangárban kellene állnia ehhez
@@ -2669,7 +2644,6 @@ STR_A032_NAME_AIRCRAFT                                          :{BLACK}Repülõgé
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Az emberek ünnepelnek . . .{}Megérkezett az elsõ repülõgép {STATION} állomásra!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Lezuhant egy repülõgép!{}{COMMA} ember halt meg a zuhanás után {STATION} állomáson
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Repülõ baleset!{}A repülõnek elfogyott az üzemanyaga, {COMMA} ember halt meg a zuhanásban!
-STR_A035_DESTINATIONS                                           :{TINYFONT}{BLACK}Célpontok:
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Átnevez
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}A repülõgép márkanevének megváltoztatása
@@ -2683,7 +2657,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}A repülõ
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Átalakítás, hogy szállíthasson:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Új kapacitás: {GOLD}{STRING}{}{BLACK}Átalakítás költsége: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nem alakíthatod át a repülõgépet...
-STR_A043_REFITTABLE                                             :(átalakítható)
 STR_GO_TO_AIRPORT_HANGAR                                        :Menj a {STATION} repülõtér hangárjába
 SERVICE_AT_AIRPORT_HANGAR                                       :Service at {STATION} Hangar
 
@@ -2699,7 +2672,6 @@ STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT
 STR_BRIBE_FAILED                                                :{WHITE}A megvesztegetési kísérleted
 STR_BRIBE_FAILED_2                                              :{WHITE}lefülelte egy helyi nyomozó!
 STR_BUILD_DATE                                                  :{BLACK}Építve: {LTBLUE}{DATE_LONG}
-STR_MULTIPLAYER_PAUSED                                          :{WHITE}Játék felfüggesztve.{}A parancs nem végrehajtható
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Teljesítményértékelések részletezése
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Részletek

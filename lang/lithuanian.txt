@@ -290,7 +290,6 @@ STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Visa tra
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Naujas zaidimas
 STR_0141_LOAD_GAME                                              :{BLACK}Atverti zaidima
-STR_0142_TUTORIAL_DEMONSTRATION                                 :{BLACK}Pavyzdziai / Demonstracijos
 STR_SINGLE_PLAYER                                               :{BLACK}Vienas zaidejas
 STR_MULTIPLAYER                                                 :{BLACK}Keli zaidejai
 
@@ -467,8 +466,6 @@ STR_01CA_31ST                                                   :31-a
 ############ range for days	ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
-STR_01CC_TOGGLE_LARGE_SMALL_MAP                                 :{BLACK}Pakeisti dideli/vidutini/maza zemelapio dydi
-STR_01CD_SELECT_TUTORIAL_DEMONSTRATION                          :{WHITE}Pasirink Pavyzdi/Demonstracija
 
 STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Krovinys priimamas: {LTBLUE}
 
@@ -573,7 +570,6 @@ STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landsaft
 STR_022F_TOWN_GENERATION                                        :{BLACK}Miestu generavimas
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Pramones generavimas
 STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Kelio konstrukcijos
-STR_0232_VEGETATION_AND_OTHER_OBJECTS                           :{BLACK}Augmenija ir kiti objektai
 STR_0233_TOWN_GENERATION                                        :{WHITE}Miesto generavimas
 STR_0234_NEW_TOWN                                               :{BLACK}Naujas miestas
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Ikurti nauja miesta
@@ -780,7 +776,6 @@ STR_02F9_EVERY_6_MONTHS                                         :Kas 6 menesius
 STR_02FA_EVERY_12_MONTHS                                        :Kas 12 menesiu
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Pradeti nauja zaidima
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Atverti issaugota zaidima
-STR_02FD_VIEW_DEMONSTRATIONS_TUTORIALS                          :{BLACK}Ziureti demonstracijas/pavyzdzius
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Sukurk savo zaidimo zemelapi/scenariju
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Pasirink 1 zaidejo zaidima
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Pasirink keliu zaideju (2-8) zaidima tinkle
@@ -789,7 +784,6 @@ STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Rodyti s
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Naujas zaidimas naudojantis scenarijumi
 STR_0304_QUIT                                                   :{BLACK}Baigti
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Baigti 'OpenTTD'
-STR_0306_VIEW_DEMONSTRATION_TUTORIAL                            :{BLACK}Ziureti demo
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...gali buti statomas tik miestuose
 STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Pasirink vidutini klimato tipa
@@ -814,11 +808,6 @@ STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Ekrano v
 STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Ekrano vaizdas neissaugotas!
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Nusipirkti zeme velesniam naudojimui
-STR_032A_1_ROAD_VEHICLE_SERVICE                                 :{BLACK}1: Automobiliu servisas
-STR_032B_2_RAILROAD_SERVICE                                     :{BLACK}2: Traukiniu servisas
-STR_032C_3_AIR_SERVICE                                          :{BLACK}3: Lektuvu servisas
-STR_032D_4_SHIP_SERVICE                                         :{BLACK}4: Laivu servisas
-STR_032E_5_RAILROAD_SERVICE_ADVANCED                            :{BLACK}5: Gelezinkelio servisas (pazangus)
 STR_032F_AUTOSAVE                                               :{RED}AUTOMATINIS SAUGOJIMAS
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Pasirink 'Ezy Street' muzikos stiliaus programa
 
@@ -981,7 +970,6 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Perstum
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Leisti papirkineti miesto valdzia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_DEPOT_FINDING                            :{LTBLUE}Naujo depo radimas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Nestandartines stoteles: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_TRAIN_PATHFIND                           :{LTBLUE}Naujas algoritmas traukiniu kelio radimui (NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Globalus kelio radimo algoritmas (NPF, panaikina NTP): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Visada leisti statyti mazus oro uotus: {ORANGE}{STRING}
@@ -1461,7 +1449,6 @@ STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Statyti 
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Statyti tilta automobiliams
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Statyti tuneli automobiliams
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Kelio konstrukciju pasalinimas
-STR_1812_BRIDGE_SELECTION_CLICK                                 :{BLACK}Tilto statymas - uzzymek statomo tilto ribas
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Pasirink automobiliu garazo orientacija
 STR_1814_ROAD                                                   :Kelias
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Kelias su zibintais
@@ -1629,8 +1616,6 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} jau priima {STRING} ir {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Autobuso stoteles orientacija
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Sunkvezimio pakrovimo aiksteles orientacija
-STR_3044_TOO_CLOSE_TO_ANOTHER_BUS                               :{WHITE}Per arti kitos autobuso aiksteles
-STR_3045_TOO_CLOSE_TO_ANOTHER_TRUCK                             :{WHITE}Per arti kitos sunkvezimiu pakrovimo aiksteles
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Pirmiausia turi nugriauti autobusu stotele
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Pirmiausia turi nugriauti sunkvezimiu pakrovimo aikstele
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stoteles
@@ -1665,7 +1650,6 @@ STR_3063_SHIP_DOCK                                              :Laivu prieplauk
 STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}Rodyti stoteles aptarnaujama teritorija
 STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}Nerodyti stoteles aptarnaujamos teritorijos
 STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Rodyk aptarnaujama teritorija
-STR_3067_MONORAIL_STATION_SELECT                                :{WHITE}Monorail Station Select
 STR_3068_DOCK                                                   :{WHITE}Prieplauka
 STR_3069_BUOY                                                   :Pluduras
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...pluduras pakeliui
@@ -1813,7 +1797,6 @@ STR_5025_WOODEN_ROAD_BRIDGE                                     :Medinis tiltas
 STR_5026_CONCRETE_ROAD_BRIDGE                                   :Betoninis tiltas
 STR_5027_TUBULAR_RAIL_BRIDGE                                    :Vamzdinis gelezinkelio tiltas
 STR_5028_TUBULAR_ROAD_BRIDGE                                    :Vamzdinis tiltas
-STR_5029_STEEL                                                  :Plienas
 
 ##id 0x5800
 STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Kelyje objektas
@@ -2367,7 +2350,6 @@ STR_8813_FROM                                                   :{LTBLUE}{CARGO}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Traukinys {COMMA} laukia depe
 STR_8815_NEW_VEHICLES                                           :{BLACK}Naujos tr. priemones
 STR_8816                                                        :{BLACK}-
-STR_8818_INFORMATION                                            :{BLACK}Informacijs
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Traukinys per ilgas
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Sukeisti traukinius galima tiktai sustabdytus depe
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} traukiniai
@@ -2398,7 +2380,6 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Per daug
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Negali iterpti naujos uzduoties...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Sios uzduoties negalima istrinti...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Sios uzduoties negalima keisti...
-STR_8836_MUST_BUILD_TRAIN_DEPOT                                 :{WHITE}Pirmiausia pastatyk traukiniu depa
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Transporto priemones perkelti negalima...
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Priemones negalima parduoti...
@@ -2465,11 +2446,9 @@ STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Automobiliu garazas
 STR_9004_NEW_VEHICLES                                           :{BLACK}Naujos tr. priemones
-STR_9005_INFORMATION                                            :{BLACK}Informacija
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nauji automobiliai
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Isigyti priemone
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Automobilio isigyti negalima...
-STR_900A_MUST_BUILD_ROAD_VEHICLE                                :{WHITE}Pirmiausia pastatyk automobiliu garaza
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detaliau)
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Amzius: {LTBLUE}{STRING}{BLACK}   Eksploatacijos islaidos: {LTBLUE}{CURRENCY}/met
 STR_900E_MAX_SPEED                                              :{BLACK}Maks. greitis: {LTBLUE}{VELOCITY}
@@ -2525,8 +2504,6 @@ STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Can't bu
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Laivu depas
 STR_9804_NEW_SHIPS                                              :{BLACK}Naujas laivas
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Laivai
-STR_9806_CAN_T_BUILD_SHIPS                                      :{WHITE}Negalima isigyti laivo...
-STR_9807_MUST_BUILD_SHIP_DEPOT_FIRST                            :{WHITE}Pirmiausia reikia pastatyti laivu depa
 STR_9808_NEW_SHIPS                                              :{WHITE}New Ships
 STR_9809_BUILD_SHIP                                             :{BLACK}Build Ship
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Laivas turi buti sustabdytas garaze
@@ -2593,7 +2570,6 @@ STR_A000_AIRPORTS                                               :{WHITE}Oro uost
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Negalima cia statyti oro uosto...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Lektuvu angaras
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Naujas lektuvas
-STR_A004_INFORMATION                                            :{BLACK}Informacija
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Naujas lektuvas
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Isigyti lektuva
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Negalima isigyti lektuvo...
@@ -2613,7 +2589,6 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Lektuvas
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Oro uostai
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Negalima cia statyti oro uosto...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Lektuvas dabar skrenda
-STR_A018_MUST_BUILD_AIRPORT_FIRST                               :{WHITE}Pirmiausia reikia pastatyti oro uosta
 STR_A019_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{STRING}, {STRING}
 STR_A01A_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Lektuvas turi buti sustabdytas angare
@@ -2643,7 +2618,6 @@ STR_A032_NAME_AIRCRAFT                                          :{BLACK}Pervardi
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Gyventojai dziugauja. . .{}Pirmas lektuvas atvyko i {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Lektuvo katastrofa!{}{COMMA} sudege liepsnose prie {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Lektuvo katastrofa!{}Lektuvas pritruko degalu, {COMMA} nukrito ant zemes!
-STR_A035_DESTINATIONS                                           :{TINYFONT}{BLACK}Paskirtis:
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Pervardinti
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Pakeisti lektuvo varda
@@ -2657,7 +2631,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Pakeisti
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Pasirink nauja kroviniu tipa:-
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nauja talpa: {GOLD}{STRING}{}{BLACK}Pakeitimo kaina: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Negalima pakeisti krovinio tipo...
-STR_A043_REFITTABLE                                             :(keiciami kroviniai)
 STR_GO_TO_AIRPORT_HANGAR                                        :Kursas: {STATION} angaras
 SERVICE_AT_AIRPORT_HANGAR                                       :Remontas angare: {STATION}
 
@@ -2673,7 +2646,6 @@ STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT
 STR_BRIBE_FAILED                                                :{WHITE}Tavo meginimas papirkti buvo
 STR_BRIBE_FAILED_2                                              :{WHITE}issaiskinta vietiniu pareigunu
 STR_BUILD_DATE                                                  :{BLACK}Pastatytas: {LTBLUE}{DATE_LONG}
-STR_MULTIPLAYER_PAUSED                                          :{WHITE}Zaidimas sustabdytas.{}Veiksmas negali buti atliktas
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Issamus veiklos ivertinimas
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaliai
