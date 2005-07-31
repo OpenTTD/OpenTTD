@@ -1992,8 +1992,7 @@ STR_701F                                                        :{BLACK}+{CURREN
 STR_7020_TOTAL                                                  :{WHITE}Total:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Income Graph
-STR_CURRCOMPACT32                                               :{CURRCOMPACT}
-STR_CURRCOMPACT64                                               :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Operating Profit Graph
 STR_7026_BANK_BALANCE                                           :{WHITE}Bank Balance

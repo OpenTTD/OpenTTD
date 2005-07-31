@@ -335,7 +335,7 @@ static void OperatingProfitWndProc(Window *w, WindowEvent *e)
 		gd.top = 18;
 		gd.height = 136;
 		gd.include_neg = true;
-		gd.format_str_y_axis = STR_CURRCOMPACT32;
+		gd.format_str_y_axis = STR_CURRCOMPACT;
 		gd.color_3 = 0x10;
 		gd.color_2 = 0xD7;
 		gd.bg_line_color = 0xE;
@@ -409,7 +409,7 @@ static void IncomeGraphWndProc(Window *w, WindowEvent *e)
 		gd.top = 18;
 		gd.height = 104;
 		gd.include_neg = false;
-		gd.format_str_y_axis = STR_CURRCOMPACT32;
+		gd.format_str_y_axis = STR_CURRCOMPACT;
 		gd.color_3 = 0x10;
 		gd.color_2 = 0xD7;
 		gd.bg_line_color = 0xE;
@@ -631,7 +631,7 @@ static void CompanyValueGraphWndProc(Window *w, WindowEvent *e)
 		gd.top = 18;
 		gd.height = 200;
 		gd.include_neg = false;
-		gd.format_str_y_axis = STR_CURRCOMPACT64;
+		gd.format_str_y_axis = STR_CURRCOMPACT;
 		gd.color_3 = 0x10;
 		gd.color_2 = 0xD7;
 		gd.bg_line_color = 0xE;
@@ -717,7 +717,7 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 		gd.top = 24;
 		gd.height = 104;
 		gd.include_neg = false;
-		gd.format_str_y_axis = STR_CURRCOMPACT32;
+		gd.format_str_y_axis = STR_CURRCOMPACT;
 		gd.color_3 = 16;
 		gd.color_2 = 215;
 		gd.bg_line_color = 14;

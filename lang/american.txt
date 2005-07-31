@@ -1982,8 +1982,7 @@ STR_701F                                                        :{BLACK}+{CURREN
 STR_7020_TOTAL                                                  :{WHITE}Total:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Income Graph
-STR_CURRCOMPACT32                                               :{CURRCOMPACT}
-STR_CURRCOMPACT64                                               :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Operating Profit Graph
 STR_7026_BANK_BALANCE                                           :{WHITE}Bank Balance
@@ -2008,14 +2007,10 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Repay pa
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(President)
 STR_7038_INAUGURATED                                            :{GOLD}Inaugurated: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Vehicles:
-STR_703A_TRAIN                                                  :{WHITE}{COMMA} train
-STR_703B_TRAINS                                                 :{WHITE}{COMMA} trains
-STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA} road vehicle
-STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA} road vehicles
-STR_703E_AIRCRAFT                                               :{WHITE}{COMMA} aircraft
-STR_703F_AIRCRAFT                                               :{WHITE}{COMMA} aircraft
-STR_7040_SHIP                                                   :{WHITE}{COMMA} ship
-STR_7041_SHIPS                                                  :{WHITE}{COMMA} ships
+STR_TRAINS                                                      :{WHITE}{COMMA} train{P "" s}
+STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} road vehicle{P "" s}
+STR_AIRCRAFT                                                    :{WHITE}{COMMA} aircraft
+STR_SHIPS                                                       :{WHITE}{COMMA} ship{P "" s}
 STR_7042_NONE                                                   :{WHITE}None
 STR_7043_FACE_SELECTION                                         :{WHITE}Face Selection
 STR_7044_MALE                                                   :{BLACK}Male

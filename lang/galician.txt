@@ -1967,8 +1967,7 @@ STR_701F                                                        :{BLACK}+{CURREN
 STR_7020_TOTAL                                                  :{WHITE}Total:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Gráfico de Ingresos
-STR_CURRCOMPACT32                                               :{CURRCOMPACT}
-STR_CURRCOMPACT64                                               :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Gráfica de Beneficios Operativos
 STR_7026_BANK_BALANCE                                           :{WHITE}Balance do Banco
@@ -1992,14 +1991,10 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Pagar pa
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Presidente)
 STR_7038_INAUGURATED                                            :{GOLD}Inaugurado: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Vehículos:
-STR_703A_TRAIN                                                  :{WHITE}{COMMA} tren
-STR_703B_TRAINS                                                 :{WHITE}{COMMA} trens
-STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA} vehículo de estrada
-STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA} vehículos de estrada
-STR_703E_AIRCRAFT                                               :{WHITE}Aeronaves {COMMA}
-STR_703F_AIRCRAFT                                               :{WHITE}Aeronaves {COMMA}
-STR_7040_SHIP                                                   :{WHITE}{COMMA} barco
-STR_7041_SHIPS                                                  :{WHITE}{COMMA} barcos
+STR_TRAINS                                                      :{WHITE}{COMMA} tren{P "" s}
+STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} vehículo{P "" s} de estrada
+STR_AIRCRAFT                                                    :{WHITE}Aeronaves {COMMA}
+STR_SHIPS                                                       :{WHITE}{COMMA} barco{P "" s}
 STR_7042_NONE                                                   :{WHITE}Ningún
 STR_7043_FACE_SELECTION                                         :{WHITE}Selecció de cara
 STR_7044_MALE                                                   :{BLACK}Home

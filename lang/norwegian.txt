@@ -1989,8 +1989,7 @@ STR_701F                                                        :{BLACK}+{CURREN
 STR_7020_TOTAL                                                  :{WHITE}Totalt:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Inntektsgraf
-STR_CURRCOMPACT32                                               :{CURRCOMPACT}
-STR_CURRCOMPACT64                                               :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Overskuddsgraf
 STR_7026_BANK_BALANCE                                           :{WHITE}Saldo
@@ -2015,14 +2014,10 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Betal ti
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Sjef)
 STR_7038_INAUGURATED                                            :{GOLD}Grunnlagt: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Kjøretøy:
-STR_703A_TRAIN                                                  :{WHITE}{COMMA} tog
-STR_703B_TRAINS                                                 :{WHITE}{COMMA} tog
-STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA} kjøretøy
-STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA} kjøretøy
-STR_703E_AIRCRAFT                                               :{WHITE}{COMMA} fly
-STR_703F_AIRCRAFT                                               :{WHITE}{COMMA} fly
-STR_7040_SHIP                                                   :{WHITE}{COMMA} skip
-STR_7041_SHIPS                                                  :{WHITE}{COMMA} skip
+STR_TRAINS                                                      :{WHITE}{COMMA} tog
+STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} kjøretøy
+STR_AIRCRAFT                                                    :{WHITE}{COMMA} fly
+STR_SHIPS                                                       :{WHITE}{COMMA} skip
 STR_7042_NONE                                                   :{WHITE}Ingen
 STR_7043_FACE_SELECTION                                         :{WHITE}Velg utseende
 STR_7044_MALE                                                   :{BLACK}Mann

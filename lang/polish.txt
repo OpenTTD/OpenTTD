@@ -1992,8 +1992,7 @@ STR_701F                                                        :{BLACK}+{CURREN
 STR_7020_TOTAL                                                  :{WHITE}Calkowicie:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Wykres przychodow
-STR_CURRCOMPACT32                                               :{CURRCOMPACT}
-STR_CURRCOMPACT64                                               :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Wykres obrotow
 STR_7026_BANK_BALANCE                                           :{WHITE}Bilans bankowy
@@ -2018,14 +2017,10 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Zwroc cz
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Prezes)
 STR_7038_INAUGURATED                                            :{GOLD}Inauguracja: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Pojazdy:
-STR_703A_TRAIN                                                  :{WHITE}{COMMA} pociag
-STR_703B_TRAINS                                                 :{WHITE}{COMMA} pociagi(ow)
-STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA} samochod
-STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA} samochody(ow)
-STR_703E_AIRCRAFT                                               :{WHITE}{COMMA} samolot
-STR_703F_AIRCRAFT                                               :{WHITE}{COMMA} samoloty(ow)
-STR_7040_SHIP                                                   :{WHITE}{COMMA} statek
-STR_7041_SHIPS                                                  :{WHITE}{COMMA} statki(ow)
+STR_TRAINS                                                      :{WHITE}{COMMA} pociag{P "" i(ow)}
+STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} samochod{P "" y(ow)}
+STR_AIRCRAFT                                                    :{WHITE}{COMMA} samolot{P "" y(ow)}
+STR_SHIPS                                                       :{WHITE}{COMMA} statek{P "" i(ow)}
 STR_7042_NONE                                                   :{WHITE}Brak
 STR_7043_FACE_SELECTION                                         :{WHITE}Wybor twarzy
 STR_7044_MALE                                                   :{BLACK}Mezczyzna

@@ -447,25 +447,25 @@ static void DrawPlayerVehiclesAmount(int player)
 	} else {
 		if (train != 0) {
 			SetDParam(0, train);
-			DrawString(x + 70, y, train==1 ? STR_703A_TRAIN : STR_703B_TRAINS, 0);
+			DrawString(x + 70, y, STR_TRAINS, 0);
 			y += 10;
 		}
 
 		if (road != 0) {
 			SetDParam(0, road);
-			DrawString(x + 70, y, road==1 ? STR_703C_ROAD_VEHICLE : STR_703D_ROAD_VEHICLES, 0);
+			DrawString(x + 70, y, STR_ROAD_VEHICLES, 0);
 			y += 10;
 		}
 
 		if (air != 0) {
 			SetDParam(0, air);
-			DrawString(x + 70, y, air==1 ? STR_703E_AIRCRAFT : STR_703F_AIRCRAFT, 0);
+			DrawString(x + 70, y, STR_AIRCRAFT, 0);
 			y += 10;
 		}
 
 		if (ship != 0) {
 			SetDParam(0, ship);
-			DrawString(x + 70, y, ship==1 ? STR_7040_SHIP : STR_7041_SHIPS, 0);
+			DrawString(x + 70, y, STR_SHIPS, 0);
 		}
 	}
 }

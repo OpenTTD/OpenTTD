@@ -1992,8 +1992,7 @@ STR_701F                                                        :{BLACK}+{CURREN
 STR_7020_TOTAL                                                  :{WHITE}Totaal:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Inkomstengrafiek
-STR_CURRCOMPACT32                                               :{CURRCOMPACT}
-STR_CURRCOMPACT64                                               :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Bedrijfswinst Grafiek
 STR_7026_BANK_BALANCE                                           :{WHITE}Bank Saldo
@@ -2018,14 +2017,10 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Betaal d
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Directeur)
 STR_7038_INAUGURATED                                            :{GOLD}Gesticht: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Voertuigen:
-STR_703A_TRAIN                                                  :{WHITE}{COMMA} trein
-STR_703B_TRAINS                                                 :{WHITE}{COMMA} treinen
-STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA} wegvoertuig
-STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA} wegvoertuigen
-STR_703E_AIRCRAFT                                               :{WHITE}{COMMA} vliegtuig
-STR_703F_AIRCRAFT                                               :{WHITE}{COMMA} vliegtuigen
-STR_7040_SHIP                                                   :{WHITE}{COMMA} schip
-STR_7041_SHIPS                                                  :{WHITE}{COMMA} schepen
+STR_TRAINS                                                      :{WHITE}{COMMA} trein{P "" en}
+STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} wegvoertuig{P "" en}
+STR_AIRCRAFT                                                    :{WHITE}{COMMA} vliegtuig{P "" en}
+STR_SHIPS                                                       :{WHITE}{COMMA} sch{P ip epen}
 STR_7042_NONE                                                   :{WHITE}Geen
 STR_7043_FACE_SELECTION                                         :{WHITE}Gezichtsselectie
 STR_7044_MALE                                                   :{BLACK}Mannelijk

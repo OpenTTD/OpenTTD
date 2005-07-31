@@ -1992,8 +1992,7 @@ STR_701F                                                        :{BLACK}+{CURREN
 STR_7020_TOTAL                                                  :{WHITE}Összesen:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Jövedelem grafikon
-STR_CURRCOMPACT32                                               :{CURRCOMPACT}
-STR_CURRCOMPACT64                                               :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Mûködési nyereség grafikon
 STR_7026_BANK_BALANCE                                           :{WHITE}Banki egyenleg
@@ -2018,14 +2017,10 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}A kölcsö
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Elnök)
 STR_7038_INAUGURATED                                            :{GOLD}Alapítás éve: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Jármûvek:
-STR_703A_TRAIN                                                  :{WHITE}{COMMA} vonat
-STR_703B_TRAINS                                                 :{WHITE}{COMMA} vonat
-STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA} közúti jármû
-STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA} közúti jármû
-STR_703E_AIRCRAFT                                               :{WHITE}{COMMA} repülõgép
-STR_703F_AIRCRAFT                                               :{WHITE}{COMMA} repülõgép
-STR_7040_SHIP                                                   :{WHITE}{COMMA} hajó
-STR_7041_SHIPS                                                  :{WHITE}{COMMA} hajó
+STR_TRAINS                                                      :{WHITE}{COMMA} vonat
+STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} közúti jármû
+STR_AIRCRAFT                                                    :{WHITE}{COMMA} repülõgép
+STR_SHIPS                                                       :{WHITE}{COMMA} hajó
 STR_7042_NONE                                                   :{WHITE}Nincs
 STR_7043_FACE_SELECTION                                         :{WHITE}Arcválasztás
 STR_7044_MALE                                                   :{BLACK}Férfi
