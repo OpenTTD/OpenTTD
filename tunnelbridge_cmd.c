@@ -1022,7 +1022,6 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		/* railway type */
 		image = GB(_m[ti->tile].m3, 0, 4) * 8;
 
-		/* ice? */
 		if (ice)
 			image += 32;
 
@@ -1085,7 +1084,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 			if (!(ti->map5 & 0x20)) {
 				// draw land under bridge
-				if (ice) image += 2;					// ice too?
+				if (ice) image += 2;
 
 				if (image != 1 || ti->tileh == 0)
 					DrawGroundSprite(_bridge_land_below[image] + _tileh_to_sprite[ti->tileh]);
@@ -1104,11 +1103,12 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				}
 
 				if (!(image&1)) {
+					const RailtypeInfo *rti = GetRailTypeInfo(_m[ti->tile].m3 & 0xF);
 					// railway
 					image = 0x3F3 + (ti->map5 & 1);
 					if (ti->tileh != 0) image = _track_sloped_sprites[ti->tileh - 1] + 0x3F3;
-					image += (_m[ti->tile].m3 & 0xF) * TRACKTYPE_SPRITE_PITCH;
-					if (ice) image += 26; // ice?
+					image += rti->total_offset;
+					if (ice) image += rti->snow_offset;
 				} else {
 					// road
 					image = 1332 + (ti->map5 & 1);

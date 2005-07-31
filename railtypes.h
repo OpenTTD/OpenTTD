@@ -21,6 +21,7 @@ const RailtypeInfo _railtypes[RAILTYPE_END] = {
 		},
 		SPR_RAIL_SNOW_OFFSET,
 		(1 << RAILTYPE_RAIL),
+		0,
 	},
 	{
 		{
@@ -36,6 +37,7 @@ const RailtypeInfo _railtypes[RAILTYPE_END] = {
 		},
 		SPR_MONO_SNOW_OFFSET,
 		(1 << RAILTYPE_MONO),
+		82,
 	},
 	{
 		{
@@ -51,6 +53,7 @@ const RailtypeInfo _railtypes[RAILTYPE_END] = {
 		},
 		SPR_MGLV_SNOW_OFFSET,
 		(1 << RAILTYPE_MAGLEV),
+		164,
 	},
 };
 

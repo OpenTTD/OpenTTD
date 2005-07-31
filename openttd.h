@@ -465,12 +465,6 @@ enum {
 	EXPENSES_OTHER = 12,
 };
 
-// Tile type misc constants, don't know where to put these
-enum {
-	TRACKTYPE_SPRITE_PITCH = 0x52,
-};
-
-
 // special string constants
 enum SpecialStrings {
 

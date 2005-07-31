@@ -159,6 +159,16 @@ typedef struct RailtypeInfo {
 
 	/** bitmask to the OTHER railtypes that can be used by an engine of THIS railtype */
 	byte compatible_railtypes;
+
+	/**
+	 * Offset between the current railtype and normal rail. This means that:<p>
+	 * 1) All the sprites in a railset MUST be in the same order. This order
+	 *    is determined by normal rail. Check sprites 1005 and following for this order<p>
+	 * 2) The position where the railtype is loaded must always be the same, otherwise
+	 *    the offset will fail.<p>
+	 * @note: Something more flexible might be desirable in the future.
+	 */
+	SpriteID total_offset;
 } RailtypeInfo;
 
 extern const RailtypeInfo _railtypes[RAILTYPE_END];

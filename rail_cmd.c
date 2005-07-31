@@ -1347,14 +1347,14 @@ DetailedTrackProc * const _detailed_track_proc[16] = {
 	DetTrackDrawProc_Null,
 };
 
-static void DrawSpecialBuilding(uint32 image, uint32 tracktype_offs,
+static void DrawSpecialBuilding(uint32 image, uint32 offset,
                                 TileInfo *ti,
                                 byte x, byte y, byte z,
                                 byte xsize, byte ysize, byte zsize)
 {
 	if (image & PALETTE_MODIFIER_COLOR)
 		image |= _drawtile_track_palette;
-	image += tracktype_offs;
+	image += offset;
 	if (_display_opt & DO_TRANS_BUILDINGS) // show transparent depots
 		MAKE_TRANSPARENT(image);
 	AddSortableSpriteToDraw(image, ti->x + x, ti->y + y, xsize, ysize, zsize, ti->z + z);
@@ -1362,14 +1362,11 @@ static void DrawSpecialBuilding(uint32 image, uint32 tracktype_offs,
 
 static void DrawTile_Track(TileInfo *ti)
 {
-	uint32 tracktype_offs;
 	byte m5;
 	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 	uint32 image;	//XXX ok why the hell is SpriteID 16 bit when all the drawing routines need 32?
 
 	_drawtile_track_palette = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)));
-
-	tracktype_offs = (_m[ti->tile].m3 & 0xF) * TRACKTYPE_SPRITE_PITCH;
 
 	m5 = (byte)ti->map5;
 	if (!(m5 & RAIL_TYPE_SPECIAL)) {
@@ -1407,9 +1404,9 @@ static void DrawTile_Track(TileInfo *ti)
 			if (ti->tileh != 0) image = _track_sloped_sprites[ti->tileh - 1] + rti->base_sprites.track_y;
 		}
 
-		if ((_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK)==RAIL_GROUND_BROWN) {
+		if ((_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK) == RAIL_GROUND_BROWN) {
 			image = (image & SPRITE_MASK) | PALETTE_TO_BARE_LAND; // use a brown palette
-		 } else if ((_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK)==RAIL_GROUND_ICE_DESERT) {
+		 } else if ((_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK) == RAIL_GROUND_ICE_DESERT) {
 			image += rti->snow_offset;
 		}
 
@@ -1491,7 +1488,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 		if (ti->tileh != 0) { DrawFoundation(ti, ti->tileh); }
 
-		if (IsRailWaypoint(m5) && _m[ti->tile].m3 & 16) {
+		if (IsRailWaypoint(m5) && HASBIT(_m[ti->tile].m3, 4)) {
 			// look for customization
 			StationSpec *stat = GetCustomStation(STAT_CLASS_WAYP, _m[ti->tile].m4);
 
@@ -1500,7 +1497,6 @@ static void DrawTile_Track(TileInfo *ti)
 				// emulate station tile - open with building
 				DrawTileSprites *cust = &stat->renderdata[2 + (m5 & 0x1)];
 				uint32 relocation = GetCustomStationRelocation(stat, ComposeWaypointStation(ti->tile), 0);
-				int railtype=(_m[ti->tile].m3 & 0xF);
 
 				/* We don't touch the 0x8000 bit. In all this
 				 * waypoint code, it is used to indicate that
@@ -1512,7 +1508,7 @@ static void DrawTile_Track(TileInfo *ti)
 				 * up to the GRF file to decide that. */
 
 				image = cust->ground_sprite;
-				image += railtype*((image<_custom_sprites_base)?TRACKTYPE_SPRITE_PITCH:1);
+				image += (image < _custom_sprites_base) ? rti->total_offset : GetRailType(ti->tile);
 
 				DrawGroundSprite(image);
 
@@ -1529,32 +1525,34 @@ static void DrawTile_Track(TileInfo *ti)
 		drss = _track_depot_layout_table[type];
 
 		image = drss++->image;
-		if (image & PALETTE_MODIFIER_COLOR) image = (image & SPRITE_MASK) + tracktype_offs;
+		/* @note This is kind of an ugly hack, as the PALETTE_MODIFIER_COLOR indicates
+	 	 * whether the sprite is railtype dependent. Rewrite this asap */
+		if (image & PALETTE_MODIFIER_COLOR) image = (image & SPRITE_MASK) + rti->total_offset;
 
 		// adjust ground tile for desert
 		// (don't adjust for arctic depots, because snow in depots looks weird)
-		if ((_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK)==RAIL_GROUND_ICE_DESERT && (_opt.landscape == LT_DESERT || type>=4))
-		{
-			if(image!=3981)
-				image += 26; // tile with tracks
+		// type >= 4 means waypoints
+		if ((_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK) == RAIL_GROUND_ICE_DESERT && (_opt.landscape == LT_DESERT || type >= 4)) {
+			if (image != SPR_FLAT_GRASS_TILE)
+				image += rti->snow_offset; // tile with tracks
 			else
-				image = 4550; // flat ground
+				image = SPR_FLAT_SNOWY_TILE; // flat ground
 		}
 
 		DrawGroundSprite(image);
 
 		if (_debug_pbs_level >= 1) {
 			byte pbs = PBSTileReserved(ti->tile);
-			if (pbs & TRACK_BIT_DIAG1) DrawGroundSprite((0x3ED + tracktype_offs) | PALETTE_CRASH);
-			if (pbs & TRACK_BIT_DIAG2) DrawGroundSprite((0x3EE + tracktype_offs) | PALETTE_CRASH);
-			if (pbs & TRACK_BIT_UPPER) DrawGroundSprite((0x3EF + tracktype_offs) | PALETTE_CRASH);
-			if (pbs & TRACK_BIT_LOWER) DrawGroundSprite((0x3F0 + tracktype_offs) | PALETTE_CRASH);
-			if (pbs & TRACK_BIT_LEFT)  DrawGroundSprite((0x3F2 + tracktype_offs) | PALETTE_CRASH);
-			if (pbs & TRACK_BIT_RIGHT) DrawGroundSprite((0x3F1 + tracktype_offs) | PALETTE_CRASH);
+			if (pbs & TRACK_BIT_DIAG1) DrawGroundSprite(rti->base_sprites.single_y | PALETTE_CRASH);
+			if (pbs & TRACK_BIT_DIAG2) DrawGroundSprite(rti->base_sprites.single_x | PALETTE_CRASH);
+			if (pbs & TRACK_BIT_UPPER) DrawGroundSprite(rti->base_sprites.single_n | PALETTE_CRASH);
+			if (pbs & TRACK_BIT_LOWER) DrawGroundSprite(rti->base_sprites.single_s | PALETTE_CRASH);
+			if (pbs & TRACK_BIT_LEFT)  DrawGroundSprite(rti->base_sprites.single_w | PALETTE_CRASH);
+			if (pbs & TRACK_BIT_RIGHT) DrawGroundSprite(rti->base_sprites.single_e | PALETTE_CRASH);
 		}
 
-		while ((image=drss->image) != 0) {
-			DrawSpecialBuilding(image, type < 4 ? tracktype_offs : 0, ti,
+		while ((image = drss->image) != 0) {
+			DrawSpecialBuilding(image, type < 4 ? rti->total_offset : 0, ti,
 			                    drss->subcoord_x, drss->subcoord_y, 0,
 			                    drss->width, drss->height, 0x17);
 			drss++;
@@ -1565,10 +1563,8 @@ static void DrawTile_Track(TileInfo *ti)
 void DrawTrainDepotSprite(int x, int y, int image, int railtype)
 {
 	uint32 ormod, img;
+	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 	const DrawTrackSeqStruct *dtss;
-
-	/* baseimage */
-	railtype *= TRACKTYPE_SPRITE_PITCH;
 
 	ormod = PLAYER_SPRITE_COLOR(_local_player);
 
@@ -1578,14 +1574,16 @@ void DrawTrainDepotSprite(int x, int y, int image, int railtype)
 	y+=17;
 
 	img = dtss++->image;
-	if (img & PALETTE_MODIFIER_COLOR) img = (img & SPRITE_MASK) + railtype;
+	/* @note This is kind of an ugly hack, as the PALETTE_MODIFIER_COLOR indicates
+	 * whether the sprite is railtype dependent. Rewrite this asap */
+	if (img & PALETTE_MODIFIER_COLOR) img = (img & SPRITE_MASK) + rti->total_offset;
 	DrawSprite(img, x, y);
 
 	for (; dtss->image != 0; dtss++) {
 		Point pt = RemapCoords(dtss->subcoord_x, dtss->subcoord_y, 0);
 		image = dtss->image;
 		if (image & PALETTE_MODIFIER_COLOR) image |= ormod;
-		DrawSprite(image + railtype, x + pt.x, y + pt.y);
+		DrawSprite(image + rti->total_offset, x + pt.x, y + pt.y);
 	}
 }
 

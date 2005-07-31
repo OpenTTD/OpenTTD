@@ -360,12 +360,13 @@ Station *ComposeWaypointStation(TileIndex tile)
 extern uint16 _custom_sprites_base;
 
 /* Draw a waypoint */
-void DrawWaypointSprite(int x, int y, int stat_id, int railtype)
+void DrawWaypointSprite(int x, int y, int stat_id, uint railtype)
 {
 	StationSpec *stat;
 	uint32 relocation;
 	DrawTileSprites *cust;
 	DrawTileSeqStruct const *seq;
+	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 	uint32 ormod, img;
 
 	ormod = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player));
@@ -378,7 +379,7 @@ void DrawWaypointSprite(int x, int y, int stat_id, int railtype)
 		const DrawTrackSeqStruct *dtss = _track_depot_layout_table[4];
 
 		img = dtss++->image;
-		if (img & PALETTE_MODIFIER_COLOR) img = (img & SPRITE_MASK) + railtype*TRACKTYPE_SPRITE_PITCH;
+		if (img & PALETTE_MODIFIER_COLOR) img = (img & SPRITE_MASK) + rti->total_offset;
 		DrawSprite(img, x, y);
 
 		for (; dtss->image != 0; dtss++) {
@@ -398,7 +399,7 @@ void DrawWaypointSprite(int x, int y, int stat_id, int railtype)
 	cust = &stat->renderdata[2];
 
 	img = cust->ground_sprite;
-	img += railtype * ((img < _custom_sprites_base) ? TRACKTYPE_SPRITE_PITCH : 1);
+	img += (img < _custom_sprites_base) ? rti->total_offset : railtype;
 
 	if (img & PALETTE_MODIFIER_COLOR) img = (img & SPRITE_MASK);
 	DrawSprite(img, x, y);
