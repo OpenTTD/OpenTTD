@@ -154,6 +154,17 @@ void CcBuildLoco(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	ShowTrainViewWindow(v);
 }
 
+void CcCloneTrain(bool success, uint tile, uint32 p1, uint32 p2)
+{
+	Vehicle *v;
+
+	if (!success)
+		return;
+
+	v = GetVehicle(_new_train_id);
+	ShowTrainViewWindow(v);
+}
+
 static void engine_drawing_loop(int *x, int *y, int *pos, int *sel,
 	int *selected_id, byte railtype, byte show_max, bool is_engine)
 {
@@ -366,7 +377,7 @@ static void DrawTrainDepotWindow(Window *w)
 
 	/* setup disabled buttons */
 	w->disabled_state =
-		IsTileOwner(tile, _local_player) ? 0 : ((1 << 4) | (1 << 5) | (1 << 8));
+		IsTileOwner(tile, _local_player) ? 0 : ((1 << 4) | (1 << 5) | (1 << 8) | (1<<9));
 
 	/* determine amount of items for scroller */
 	num = 0;
@@ -580,6 +591,47 @@ static void TrainDepotClickTrain(Window *w, int x, int y)
 	}
 }
 
+/**
+ * Clones a train
+ * @param *v is the original vehicle to clone
+ * @param *w is the window of the depot where the clone is build
+ */
+static bool HandleCloneVehClick(Vehicle *v, Window *w)
+{
+
+	if (!v){
+		return false;
+	}
+
+	// for train vehicles: subtype 0 for locs and not zero for others
+	if (v->type == VEH_Train && v->subtype != 0) {
+		v = GetFirstVehicleInChain(v);
+		if (v->subtype != 0) // This happens when clicking on a train in depot with no loc attached
+			return false;
+	}else{
+		if (v->type != VEH_Train) {
+			// it's not a train, Do Nothing
+			return false;
+		}
+	}
+
+    DoCommandP(w->window_number, v->index, _ctrl_pressed ? 1 : 0, CcCloneTrain, CMD_CLONE_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));
+
+	ResetObjectToPlace();
+
+	return true;
+}
+
+static void ClonePlaceObj(uint tile, Window *w)
+{
+	Vehicle *v;
+
+
+	v = CheckMouseOverVehicle();
+	if (v && HandleCloneVehClick(v, w))
+		return;
+}
+
 static void TrainDepotWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
@@ -590,16 +642,50 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK: {
 		switch(e->click.widget) {
 		case 8:
+			ResetObjectToPlace();
 			ShowBuildTrainWindow(w->window_number);
 			break;
-		case 9:
+		case 10:
+			ResetObjectToPlace();
 			ScrollMainWindowToTile(w->window_number);
 			break;
 		case 6:
 			TrainDepotClickTrain(w, e->click.pt.x, e->click.pt.y);
 			break;
+		case 9: /* clone button */
+			InvalidateWidget(w, 9);
+			TOGGLEBIT(w->click_state, 9);
+
+			if (HASBIT(w->click_state, 9)) {
+				_place_clicked_vehicle = NULL;
+				SetObjectToPlaceWnd(SPR_CURSOR_CLONE, VHM_RECT, w);
+			} else {
+				ResetObjectToPlace();
+			}
+			break;
+
+ 		}
+ 	} break;
+ 
+	case WE_PLACE_OBJ: {
+		ClonePlaceObj(e->place.tile, w);
+	} break;
+
+	case WE_ABORT_PLACE_OBJ: {
+		CLRBIT(w->click_state, 9);
+		InvalidateWidget(w, 9);
+	} break;
+	
+	// check if a vehicle in a depot was clicked..
+	case WE_MOUSELOOP: {
+		Vehicle *v = _place_clicked_vehicle;
+	// since OTTD checks all open depot windows, we will make sure that it triggers the one with a clicked clone button
+		if (v != NULL && HASBIT(w->click_state, 9)) {
+			_place_clicked_vehicle = NULL;
+			HandleCloneVehClick( v, w);
 		}
 	} break;
+
 
 	case WE_DESTROY:
 		DeleteWindowById(WC_BUILD_VEHICLE, w->window_number);
@@ -680,10 +766,14 @@ static const Widget _train_depot_widgets[] = {
 
 {     WWT_MATRIX,     RESIZE_RB,    14,     0,   325,    14,    97, 0x601,									STR_883F_TRAINS_CLICK_ON_TRAIN_FOR},
 {  WWT_SCROLLBAR,    RESIZE_LRB,    14,   349,   360,    14,   109, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   167,   110,   121, STR_8815_NEW_VEHICLES,	STR_8840_BUILD_NEW_TRAIN_VEHICLE},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   168,   348,   110,   121, STR_00E4_LOCATION,			STR_8842_CENTER_MAIN_VIEW_ON_TRAIN},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   116,   110,   121, STR_8815_NEW_VEHICLES,	STR_8840_BUILD_NEW_TRAIN_VEHICLE},
+{WWT_NODISTXTBTN,     RESIZE_TB,    14,   117,   232,   110,   121, STR_CLONE_TRAIN,		STR_CLONE_TRAIN_DEPOT_INFO},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   233,   348,   110,   121, STR_00E4_LOCATION,			STR_8842_CENTER_MAIN_VIEW_ON_TRAIN},
+
+
 { WWT_HSCROLLBAR,    RESIZE_RTB,    14,     0,   325,    98,   109, 0x0,										STR_HSCROLL_BAR_SCROLLS_LIST},
 {      WWT_PANEL,    RESIZE_RTB,    14,   349,   348,   110,   121, 0x0,										STR_NULL},
+
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   349,   360,   110,   121, 0x0,										STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
@@ -803,6 +893,7 @@ static Widget _train_view_widgets[] = {
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  86, 103, 0x2B2,    STR_8847_SHOW_TRAIN_S_ORDERS },
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249, 104, 121, 0x2B3,    STR_884C_SHOW_TRAIN_DETAILS },
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  68,  85, 0x2B4,    STR_RAIL_REFIT_VEHICLE_TO_CARRY },
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  32,  49, SPR_CLONE_TRAIN,      STR_CLONE_TRAIN_INFO },
 { WWT_PANEL,      RESIZE_LRB,   14, 232, 249, 122, 121, 0x0,      STR_NULL },
 { WWT_RESIZEBOX,  RESIZE_LRTB,  14, 238, 249, 122, 133, 0x0,      STR_NULL },
 { WIDGETS_END }
@@ -833,7 +924,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 
 		/* draw widgets & caption */
 		SetDParam(0, v->string_id);
-		SetDParam(1, v->unitnumber);
+		SetDParam(1, v->unitnumber); 
 		DrawWindowWidgets(w);
 
 		if (v->u.rail.crash_anim_pos != 0) {
@@ -920,6 +1011,9 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 		case 12:
 			ShowRailVehicleRefitWindow(v);
 			break;
+		case 13:
+			DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, NULL, CMD_CLONE_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));
+			break;
 		}
 	} break;
 
@@ -942,7 +1036,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 
 		v = GetVehicle(w->window_number);
 		assert(v->type == VEH_Train);
-		h = CheckTrainStoppedInDepot(v) >= 0 ? (1 << 9) : (1 << 12);
+		h = CheckTrainStoppedInDepot(v) >= 0 ? (1 << 9)| (1 << 7) : (1 << 12) | (1 << 13);
 		if (h != w->hidden_state) {
 			w->hidden_state = h;
 			SetWindowDirty(w);

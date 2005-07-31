@@ -64,6 +64,11 @@ enum Sprites {
 	SPR_ARROW_LEFT    = SPR_OPENTTD_BASE + 97,
 	SPR_ARROW_RIGHT   = SPR_OPENTTD_BASE + 98,
 
+	/* Clone vehicles stuff */
+	SPR_CLONE_AIRCRAFT = SPR_OPENTTD_BASE + 99,
+	SPR_CLONE_ROADVEH = SPR_OPENTTD_BASE + 99,
+	SPR_CLONE_TRAIN = SPR_OPENTTD_BASE + 99,
+	SPR_CLONE_SHIP = SPR_OPENTTD_BASE + 99,
 
 	/* Network GUI sprites */
 	SPR_SQUARE = SPR_OPENTTD_BASE + 23,     // colored square (used for newgrf compatibility)
@@ -942,6 +947,8 @@ typedef enum CursorSprites {
 	SPR_CURSOR_BUS_STATION    = 2725,
 	SPR_CURSOR_TRUCK_STATION  = 2726,
 	SPR_CURSOR_ROAD_TUNNEL    = 2433,
+
+	SPR_CURSOR_CLONE = SPR_OPENTTD_BASE + 100,
 } CursorSprite;
 
 /// Animation macro in table/animcursors.h (_animcursors[])

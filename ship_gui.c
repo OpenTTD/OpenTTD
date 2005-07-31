@@ -320,6 +320,15 @@ void CcBuildShip(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	ShowShipViewWindow(v);
 }
 
+void CcCloneShip(bool success, uint tile, uint32 p1, uint32 p2)
+{
+	Vehicle *v;
+	if (!success) return;
+
+	v = GetVehicle(_new_ship_id);
+	ShowShipViewWindow(v);
+}
+
 static void NewShipWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
@@ -465,60 +474,60 @@ static void ShowBuildShipWindow(TileIndex tile)
 
 static void ShipViewWndProc(Window *w, WindowEvent *e) {
 	switch(e->event) {
-	case WE_PAINT: {
-		Vehicle *v = GetVehicle(w->window_number);
-		uint32 disabled = 1<<8;
-		StringID str;
+		case WE_PAINT: {
+			Vehicle *v = GetVehicle(w->window_number);
+			uint32 disabled = 1<<8;
+			StringID str;
 
-		// Possible to refit?
-		if (ShipVehInfo(v->engine_type)->refittable &&
+			// Possible to refit?
+			if (ShipVehInfo(v->engine_type)->refittable &&
 				v->vehstatus&VS_STOPPED &&
 				v->u.ship.state == 0x80 &&
 				IsTileDepotType(v->tile, TRANSPORT_WATER))
-			disabled = 0;
+				disabled = 0;
 
-		if (v->owner != _local_player)
-			disabled |= 1<<8 | 1<<7;
-		w->disabled_state = disabled;
+			if (v->owner != _local_player)
+				disabled |= 1<<8 | 1<<7;
+			w->disabled_state = disabled;
 
-		/* draw widgets & caption */
-		SetDParam(0, v->string_id);
-		SetDParam(1, v->unitnumber);
-		DrawWindowWidgets(w);
+			/* draw widgets & caption */
+			SetDParam(0, v->string_id);
+			SetDParam(1, v->unitnumber);
+			DrawWindowWidgets(w);
 
-		if (v->breakdown_ctr == 1) {
-			str = STR_885C_BROKEN_DOWN;
-		} else if (v->vehstatus & VS_STOPPED) {
-			str = STR_8861_STOPPED;
-		} else {
-			switch (v->current_order.type) {
-			case OT_GOTO_STATION: {
-				SetDParam(0, v->current_order.station);
-				SetDParam(1, v->cur_speed * 10 >> 5);
-				str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
-			} break;
+			if (v->breakdown_ctr == 1) {
+				str = STR_885C_BROKEN_DOWN;
+			} else if (v->vehstatus & VS_STOPPED) {
+				str = STR_8861_STOPPED;
+			} else {
+				switch (v->current_order.type) {
+					case OT_GOTO_STATION: {
+						SetDParam(0, v->current_order.station);
+						SetDParam(1, v->cur_speed * 10 >> 5);
+						str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
+					} break;
 
-			case OT_GOTO_DEPOT: {
-				Depot *depot = GetDepot(v->current_order.station);
-				SetDParam(0, depot->town_index);
-				SetDParam(1, v->cur_speed * 10 >> 5);
-				str = STR_HEADING_FOR_SHIP_DEPOT + _patches.vehicle_speed;
-			} break;
+					case OT_GOTO_DEPOT: {
+						Depot *depot = GetDepot(v->current_order.station);
+						SetDParam(0, depot->town_index);
+						SetDParam(1, v->cur_speed * 10 >> 5);
+						str = STR_HEADING_FOR_SHIP_DEPOT + _patches.vehicle_speed;
+					} break;
 
-			case OT_LOADING:
-			case OT_LEAVESTATION:
-				str = STR_882F_LOADING_UNLOADING;
-				break;
-
-			default:
-				if (v->num_orders == 0) {
-					str = STR_NO_ORDERS + _patches.vehicle_speed;
-					SetDParam(0, v->cur_speed * 10 >> 5);
-				} else
-					str = STR_EMPTY;
-				break;
+					case OT_LOADING:
+					case OT_LEAVESTATION:
+						str = STR_882F_LOADING_UNLOADING;
+						break;
+						
+					default:
+						if (v->num_orders == 0) {
+							str = STR_NO_ORDERS + _patches.vehicle_speed;
+							SetDParam(0, v->cur_speed * 10 >> 5);
+						} else
+							str = STR_EMPTY;
+						break;
+				}
 			}
-		}
 
 		/* draw the flag plus orders */
 		DrawSprite(v->vehstatus & VS_STOPPED ? 0xC12 : 0xC13, 2, w->widget[5].top + 1);
@@ -526,43 +535,61 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 		DrawWindowViewport(w);
 	} break;
 
-	case WE_CLICK: {
-		Vehicle *v = GetVehicle(w->window_number);
+		case WE_CLICK: {
+			Vehicle *v = GetVehicle(w->window_number);
 
-		switch(e->click.widget) {
-		case 5: /* start stop */
-			DoCommandP(v->tile, v->index, 0, NULL, CMD_START_STOP_SHIP | CMD_MSG(STR_9818_CAN_T_STOP_START_SHIP));
+			switch(e->click.widget) {
+				case 5: /* start stop */
+					DoCommandP(v->tile, v->index, 0, NULL, CMD_START_STOP_SHIP | CMD_MSG(STR_9818_CAN_T_STOP_START_SHIP));
+					break;
+				case 6: /* center main view */
+					ScrollMainWindowTo(v->x_pos, v->y_pos);
+					break;
+				case 7: /* goto hangar */
+					DoCommandP(v->tile, v->index, 0, NULL, CMD_SEND_SHIP_TO_DEPOT | CMD_MSG(STR_9819_CAN_T_SEND_SHIP_TO_DEPOT));
+					break;
+				case 8: /* refit */
+					ShowShipRefitWindow(v);
+					break;
+				case 9: /* show orders */
+					ShowOrdersWindow(v);
+					break;
+				case 10: /* show details */
+					ShowShipDetailsWindow(v);
+					break;
+				case 11: {
+					/* clone vehicle */
+					Vehicle *v;
+					v = GetVehicle(w->window_number);
+					DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, CcCloneShip, CMD_CLONE_VEHICLE | CMD_MSG(STR_980D_CAN_T_BUILD_SHIP));
+				} break;
+			}
+		} break;
+
+		case WE_RESIZE:
+			w->viewport->width  += e->sizing.diff.x;
+			w->viewport->height += e->sizing.diff.y;
+			w->viewport->virtual_width  += e->sizing.diff.x;
+			w->viewport->virtual_height += e->sizing.diff.y;
 			break;
-		case 6: /* center main view */
-			ScrollMainWindowTo(v->x_pos, v->y_pos);
+
+		case WE_DESTROY:
+			DeleteWindowById(WC_VEHICLE_ORDERS, w->window_number);
+			DeleteWindowById(WC_VEHICLE_REFIT, w->window_number);
+			DeleteWindowById(WC_VEHICLE_DETAILS, w->window_number);
 			break;
-		case 7: /* goto hangar */
-			DoCommandP(v->tile, v->index, 0, NULL, CMD_SEND_SHIP_TO_DEPOT | CMD_MSG(STR_9819_CAN_T_SEND_SHIP_TO_DEPOT));
-			break;
-		case 8: /* refit */
-			ShowShipRefitWindow(v);
-			break;
-		case 9: /* show orders */
-			ShowOrdersWindow(v);
-			break;
-		case 10: /* show details */
-			ShowShipDetailsWindow(v);
-			break;
+
+		case WE_MOUSELOOP:
+		{
+			Vehicle *v;
+			uint32 h;
+			v = GetVehicle(w->window_number);
+			h = IsTileDepotType(v->tile, TRANSPORT_WATER) && v->vehstatus & VS_HIDDEN ? (1<< 7) : (1 << 11);
+			if (h != w->hidden_state) {
+				w->hidden_state = h;
+				SetWindowDirty(w);
+			}
 		}
-	} break;
-
-	case WE_RESIZE:
-		w->viewport->width  += e->sizing.diff.x;
-		w->viewport->height += e->sizing.diff.y;
-		w->viewport->virtual_width  += e->sizing.diff.x;
-		w->viewport->virtual_height += e->sizing.diff.y;
-		break;
-
-	case WE_DESTROY:
-		DeleteWindowById(WC_VEHICLE_ORDERS, w->window_number);
-		DeleteWindowById(WC_VEHICLE_REFIT, w->window_number);
-		DeleteWindowById(WC_VEHICLE_DETAILS, w->window_number);
-		break;
 	}
 }
 
@@ -578,6 +605,7 @@ static const Widget _ship_view_widgets[] = {
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  50,  67, 0x2B4,    STR_983A_REFIT_CARGO_SHIP_TO_CARRY},
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  68,  85, 0x2B2,    STR_9828_SHOW_SHIP_S_ORDERS},
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  86, 103, 0x2B3,    STR_982B_SHOW_SHIP_DETAILS},
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  32,  49, SPR_CLONE_SHIP,      STR_CLONE_SHIP_INFO},
 { WWT_PANEL,      RESIZE_LRB,   14, 232, 249, 104, 103, 0x0,      STR_NULL },
 { WWT_RESIZEBOX,  RESIZE_LRTB,  14, 238, 249, 104, 115, 0x0,      STR_NULL },
 { WIDGETS_END }
@@ -720,6 +748,41 @@ static void ShipDepotClick(Window *w, int x, int y)
 	}
 }
 
+/**
+ * Clones a ship
+ * @param *v is the original vehicle to clone
+ * @param *w is the window of the depot where the clone is build
+ */
+static bool HandleCloneVehClick(Vehicle *v, Window *w)
+{
+
+	if (!v){
+		return false;
+	}
+
+	if (v->type != VEH_Ship) {
+		// it's not a ship, do nothing
+		return false;
+	}
+
+
+    DoCommandP(w->window_number, v->index, _ctrl_pressed ? 1 : 0,CcCloneShip,CMD_CLONE_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));
+
+	ResetObjectToPlace();
+
+	return true;
+}
+
+static void ClonePlaceObj(uint tile, Window *w)
+{
+	Vehicle *v;
+
+
+	v = CheckMouseOverVehicle();
+	if (v && HandleCloneVehClick(v, w))
+		return;
+}
+
 static void ShipDepotWndProc(Window *w, WindowEvent *e) {
 	switch(e->event) {
 	case WE_PAINT:
@@ -733,14 +796,49 @@ static void ShipDepotWndProc(Window *w, WindowEvent *e) {
 			break;
 
 		case 7:
+			ResetObjectToPlace();
 			ShowBuildShipWindow(w->window_number);
 			break;
+			
+			case 8: /* clone button */
+			InvalidateWidget(w, 8);
+				TOGGLEBIT(w->click_state, 8);
+				
+				if (HASBIT(w->click_state, 8)) {
+					_place_clicked_vehicle = NULL;
+					SetObjectToPlaceWnd(SPR_CURSOR_CLONE, VHM_RECT, w);
+				} else {
+					ResetObjectToPlace();
+				}
+					break;
 
-		case 8: /* scroll to tile */
+		case 9: /* scroll to tile */
+			ResetObjectToPlace();
 			ScrollMainWindowToTile(w->window_number);
 			break;
 		}
 		break;
+		
+	case WE_PLACE_OBJ: {
+		//ClonePlaceObj(e->place.tile, w);
+		ClonePlaceObj(w->window_number, w);
+	} break;
+
+	case WE_ABORT_PLACE_OBJ: {
+		CLRBIT(w->click_state, 8);
+		InvalidateWidget(w, 8);
+	} break;
+	
+	// check if a vehicle in a depot was clicked..
+	case WE_MOUSELOOP: {
+		Vehicle *v = _place_clicked_vehicle;
+
+	// since OTTD checks all open depot windows, we will make sure that it triggers the one with a clicked clone button
+		if (v != NULL && HASBIT(w->click_state, 8)) {
+			_place_clicked_vehicle = NULL;
+			HandleCloneVehClick(v, w);
+		}
+	} break;
 
 	case WE_DESTROY:
 		DeleteWindowById(WC_BUILD_VEHICLE, w->window_number);
@@ -804,8 +902,9 @@ static const Widget _ship_depot_widgets[] = {
 
 {     WWT_MATRIX,     RESIZE_RB,    14,     0,   269,    14,    61, 0x203,									STR_981F_SHIPS_CLICK_ON_SHIP_FOR},
 {  WWT_SCROLLBAR,    RESIZE_LRB,    14,   293,   304,    14,    61, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   146,    62,    73, STR_9804_NEW_SHIPS,			STR_9820_BUILD_NEW_SHIP},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   147,   292,    62,    73, STR_00E4_LOCATION,			STR_9822_CENTER_MAIN_VIEW_ON_SHIP},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,    96,    62,    73, STR_9804_NEW_SHIPS,			STR_9820_BUILD_NEW_SHIP},
+{WWT_NODISTXTBTN,     RESIZE_TB,    14,    97,   194,    62,    73, STR_CLONE_SHIP,		STR_CLONE_SHIP_DEPOT_INFO},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   195,   292,    62,    73, STR_00E4_LOCATION,			STR_9822_CENTER_MAIN_VIEW_ON_SHIP},
 {      WWT_PANEL,    RESIZE_RTB,    14,   293,   292,    62,    73, 0x0,													STR_NULL},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   293,   304,    62,    73, 0x0,										STR_RESIZE_BUTTON},
 {   WIDGETS_END},

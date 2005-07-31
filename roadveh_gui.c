@@ -230,6 +230,16 @@ static void ShowRoadVehDetailsWindow(Vehicle *v)
 	w->caption_color = v->owner;
 }
 
+void CcCloneRoadVeh(bool success, uint tile, uint32 p1, uint32 p2)
+{
+	Vehicle *v;
+
+	if (!success) return;
+
+	v = GetVehicle(_new_roadveh_id);
+	ShowRoadVehViewWindow(v);
+}
+
 static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
@@ -308,6 +318,12 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 		case 10: /* show details */
 			ShowRoadVehDetailsWindow(v);
 			break;
+		case 11: {
+			/* clone vehicle */
+			Vehicle *v;
+			v = GetVehicle(w->window_number);
+			DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, CcCloneRoadVeh, CMD_CLONE_VEHICLE | CMD_MSG(STR_9009_CAN_T_BUILD_ROAD_VEHICLE));
+			} break;
 		}
 	} break;
 
@@ -322,6 +338,18 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 		DeleteWindowById(WC_VEHICLE_ORDERS, w->window_number);
 		DeleteWindowById(WC_VEHICLE_DETAILS, w->window_number);
 		break;
+
+	case WE_MOUSELOOP:
+		{
+			Vehicle *v;
+			uint32 h;
+			v = GetVehicle(w->window_number);
+			h = IsTileDepotType(v->tile, TRANSPORT_ROAD) && (v->vehstatus&VS_STOPPED) ? (1<< 7) : (1 << 11);
+			if (h != w->hidden_state) {
+				w->hidden_state = h;
+				SetWindowDirty(w);
+			}
+		}
 	}
 }
 
@@ -337,6 +365,7 @@ static const Widget _roadveh_view_widgets[] = {
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  50,  67, 0x2CB,    STR_9020_FORCE_VEHICLE_TO_TURN_AROUND },
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  68,  85, 0x2B2,    STR_901D_SHOW_VEHICLE_S_ORDERS },
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  86, 103, 0x2B3,    STR_9021_SHOW_ROAD_VEHICLE_DETAILS },
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  32,  49, SPR_CLONE_ROADVEH,      STR_CLONE_ROAD_VEHICLE_INFO },
 { WWT_PANEL,      RESIZE_LRB,   14, 232, 249, 104, 103, 0x0,      STR_NULL },
 { WWT_RESIZEBOX,  RESIZE_LRTB,  14, 238, 249, 104, 115, 0x0,      STR_NULL },
 { WIDGETS_END }
@@ -536,7 +565,7 @@ static void DrawRoadDepotWindow(Window *w)
 
 	/* setup disabled buttons */
 	w->disabled_state =
-		IsTileOwner(tile, _local_player) ? 0 : ((1 << 4) | (1 << 7));
+		IsTileOwner(tile, _local_player) ? 0 : ((1<<4) | (1<<7) | (1<<8));
 
 	/* determine amount of items for scroller */
 	num = 0;
@@ -640,6 +669,41 @@ static void RoadDepotClickVeh(Window *w, int x, int y)
 	}
 }
 
+/**
+ * Clones a road vehicle
+ * @param *v is the original vehicle to clone
+ * @param *w is the window of the depot where the clone is build
+ */
+static bool HandleCloneVehClick(Vehicle *v, Window *w)
+{
+
+	if (!v){
+		return false;
+	}
+
+	if (v->type != VEH_Road) {
+		// it's not a road vehicle, do nothing
+		return false;
+	}
+
+
+    DoCommandP(w->window_number, v->index, _ctrl_pressed ? 1 : 0,CcCloneRoadVeh,CMD_CLONE_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));
+
+	ResetObjectToPlace();
+
+	return true;
+}
+
+static void ClonePlaceObj(uint tile, Window *w)
+{
+	Vehicle *v;
+
+
+	v = CheckMouseOverVehicle();
+	if (v && HandleCloneVehClick(v, w))
+		return;
+}
+
 static void RoadDepotWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
@@ -654,12 +718,45 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case 7:
+			ResetObjectToPlace();
 			ShowBuildRoadVehWindow(w->window_number);
 			break;
+			
+		case 8: /* clone button */
+			InvalidateWidget(w, 8);
+				TOGGLEBIT(w->click_state, 8);
+				
+				if (HASBIT(w->click_state, 8)) {
+					_place_clicked_vehicle = NULL;
+					SetObjectToPlaceWnd(SPR_CURSOR_CLONE, VHM_RECT, w);
+				} else {
+					ResetObjectToPlace();
+				}
+					break;
+				
+			case 9: /* scroll to tile */
+				ResetObjectToPlace();
+				ScrollMainWindowToTile(w->window_number);
+					break;
+		}
+	} break;
+	
+		case WE_PLACE_OBJ: {
+		ClonePlaceObj(e->place.tile, w);
+	} break;
 
-		case 8: /* scroll to tile */
-			ScrollMainWindowToTile(w->window_number);
-			break;
+	case WE_ABORT_PLACE_OBJ: {
+		CLRBIT(w->click_state, 8);
+		InvalidateWidget(w, 8);
+	} break;
+	
+	// check if a vehicle in a depot was clicked..
+	case WE_MOUSELOOP: {
+		Vehicle *v = _place_clicked_vehicle;
+	// since OTTD checks all open depot windows, we will make sure that it triggers the one with a clicked clone button
+		if (v != NULL && HASBIT(w->click_state, 8)) {
+			_place_clicked_vehicle = NULL;
+			HandleCloneVehClick( v, w);
 		}
 	} break;
 
@@ -729,8 +826,9 @@ static const Widget _road_depot_widgets[] = {
 
 {     WWT_MATRIX,     RESIZE_RB,    14,     0,   279,    14,    55, 0x305,												STR_9022_VEHICLES_CLICK_ON_VEHICLE},
 {  WWT_SCROLLBAR,    RESIZE_LRB,    14,   303,   314,    14,    55, 0x0,													STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   150,    56,    67, STR_9004_NEW_VEHICLES,				STR_9023_BUILD_NEW_ROAD_VEHICLE},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   151,   302,    56,    67, STR_00E4_LOCATION,						STR_9025_CENTER_MAIN_VIEW_ON_ROAD},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   100,    56,    67, STR_9004_NEW_VEHICLES,				STR_9023_BUILD_NEW_ROAD_VEHICLE},
+{WWT_NODISTXTBTN,     RESIZE_TB,    14,   101,   200,    56,    67, STR_CLONE_ROAD_VEHICLE,		STR_CLONE_ROAD_VEHICLE_DEPOT_INFO},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   201,   302,    56,    67, STR_00E4_LOCATION,						STR_9025_CENTER_MAIN_VIEW_ON_ROAD},
 {      WWT_PANEL,    RESIZE_RTB,    14,   303,   302,    56,    67, 0x0,													STR_NULL},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   303,   314,    56,    67, 0x0,													STR_RESIZE_BUTTON},
 {   WIDGETS_END},

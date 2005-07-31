@@ -568,7 +568,7 @@ void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u, bool building)
 /** Build a railroad vehicle.
  * @param x,y tile coordinates (depot) where rail-vehicle is built
  * @param p1 engine type id
- * @param p2 unused
+ * @param p2 build only one engine, even if it is a dualheaded engine. It also prevents any free cars from being added to the train
  */
 int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -594,10 +594,19 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	rvi = RailVehInfo(p1);
+	e = GetEngine(p1);
+
+	/* Check if depot and new engine uses the same kind of tracks */
+	if (!IsCompatibleRail(e->railtype, GetRailType(tile))) return CMD_ERROR;
 
 	if (rvi->flags & RVI_WAGON) return CmdBuildRailWagon(p1, tile, flags);
 
 	value = EstimateTrainCost(rvi);
+		
+	//make sure we only pay for half a dualheaded engine if we only requested half of it
+	if (rvi->flags&RVI_MULTIHEAD && HASBIT(p2,0))
+		value /= 2;
+	
 
 	if (!(flags & DC_QUERY_COST)) {
 		v = AllocateVehicle();
@@ -633,7 +642,6 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			v->dest_tile = 0;
 
 			v->engine_type = (byte)p1;
-			e = GetEngine(p1);
 
 			v->reliability = e->reliability;
 			v->reliability_spd_dec = e->reliability_spd_dec;
@@ -651,12 +659,16 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			VehiclePositionChanged(v);
 
-			if (rvi->flags&RVI_MULTIHEAD && (u = AllocateVehicle()) != NULL)
-				AddRearEngineToMultiheadedTrain(v, u, true);
+			if (rvi->flags&RVI_MULTIHEAD && (u = AllocateVehicle()) != NULL && !HASBIT(p2,0)) {
+					AddRearEngineToMultiheadedTrain(v, u, true);
+			}
 
 			TrainConsistChanged(v);
 			UpdateTrainAcceleration(v);
-			NormalizeTrainVehInDepot(v);
+
+			if (!HASBIT(p2,0)) {	// do not move the cars if HASBIT(p2,0) is set
+				NormalizeTrainVehInDepot(v);
+			}
 
 			InvalidateWindow(WC_VEHICLE_DEPOT, tile);
 			RebuildVehicleLists();
@@ -1472,10 +1484,7 @@ int32 CmdForceTrainProceed(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 /** Refits a train to the specified cargo type.
  * @param x,y unused
  * @param p1 vehicle ID of the train to refit
- * @param p2 various bitstuffed elements
- * - p2 = (bit 0-7) - the new cargo type to refit to (p2 & 0xFF)
- * - p2 = (bit 8)   - skip check for stopped in depot, used by autoreplace (p2 & 0x100)
- * @todo p2 bit8 check <b>NEEDS TO GO</b>
+ * @param p2 the new cargo type to refit to (p2 & 0xFF)
  */
 int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -1483,14 +1492,13 @@ int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int32 cost;
 	uint num;
 	CargoID new_cid = p2 & 0xFF; //gets the cargo number
-	bool SkipStoppedInDepotCheck = !!HASBIT(p2, 8); // XXX - needs to go, yes?
 
 	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
 	if (v->type != VEH_Train || !CheckOwnership(v->owner)) return CMD_ERROR;
-	if (!SkipStoppedInDepotCheck && CheckTrainStoppedInDepot(v) < 0) return_cmd_error(STR_TRAIN_MUST_BE_STOPPED);
+	if (CheckTrainStoppedInDepot(v) < 0) return_cmd_error(STR_TRAIN_MUST_BE_STOPPED);
 
 	/* Check cargo */
 	if (new_cid > NUM_CARGO) return CMD_ERROR;
@@ -1537,10 +1545,7 @@ int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					cost += (_price.build_railvehicle >> 8);
 				num += amount;
 				if (flags & DC_EXEC) {
-					//autorefitted train cars wants to keep the cargo
-					//it will be checked if the cargo is valid in CmdReplaceVehicle
-					if (!(SkipStoppedInDepotCheck))
-						v->cargo_count = 0;
+					v->cargo_count = 0;
 					v->cargo_type = new_cid;
 					v->cargo_cap = amount;
 					InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
@@ -1548,8 +1553,7 @@ int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				}
 			}
 		}
-	// SkipStoppedInDepotCheck is called by CmdReplace and it should only apply to the single car it is called for
-	} while ( (v=v->next) != NULL || SkipStoppedInDepotCheck );
+	} while ( (v=v->next) != NULL );
 
 	_returned_refit_amount = num;
 

@@ -332,7 +332,7 @@ bool IsAircraftHangarTile(TileIndex tile)
 				(_m[tile].m5 == 32 || _m[tile].m5 == 65 || _m[tile].m5 == 86);
 }
 
-static bool CheckStoppedInHangar(Vehicle *v)
+bool CheckStoppedInHangar(Vehicle *v)
 {
 	if (!(v->vehstatus & VS_STOPPED) || !IsAircraftHangarTile(v->tile)) {
 		_error_message = STR_A01B_AIRCRAFT_MUST_BE_STOPPED;

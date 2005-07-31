@@ -21,6 +21,7 @@
 #include "vehicle_gui.h"
 #include "depot.h"
 #include "station.h"
+#include "gui.h"
 #include "rail.h"
 
 #define INVALID_COORD (-0x8000)
@@ -1668,6 +1669,122 @@ void MaybeReplaceVehicle(Vehicle *v)
 	}
 	_current_player = OWNER_NONE;
 }
+
+int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 veh1_veh2, uint32 mode);
+int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2);
+int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2);
+int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2);
+int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2);
+int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2);
+ 
+
+typedef int32 VehBuildProc(int x, int y, uint32 flags, uint32 p1, uint32 p2);
+
+static VehBuildProc * const _veh_build_proc_table[] = {
+	CmdBuildRailVehicle,
+	CmdBuildRoadVeh,
+	CmdBuildShip,
+	CmdBuildAircraft,
+};
+
+static VehicleID * _new_vehicle_id_proc_table[] = {
+	&_new_train_id,
+	&_new_roadveh_id,
+	&_new_ship_id,
+	&_new_aircraft_id,	
+};
+
+/** Clone a vehicle. If it is a train, it will clone all the cars too
+  * @param x,y unused
+  * @param p1 the original vehicle's index
+  * @param p2 1 = shared orders, else copied orders
+  */
+int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+{
+	Vehicle *vfront, *v;
+	Vehicle *wfront, *w1, *w2;
+	int cost, total_cost;
+	VehBuildProc *proc;
+	VehicleID *new_id;
+	uint refit_command = 0;
+	byte needs_refitting = 255;
+
+	if (!IsVehicleIndex(p1))
+		return CMD_ERROR;
+	v = GetVehicle(p1);
+	wfront = v; 
+	w1 = v;
+	vfront = v;
+
+	if (!CheckOwnership(v->owner))
+		return CMD_ERROR;
+
+	if (v->type == VEH_Train && v->subtype != TS_Front_Engine) return CMD_ERROR;
+
+	//no need to check if it is a depot since the build command do that
+	switch (v->type) {
+		case VEH_Train:		refit_command = CMD_REFIT_RAIL_VEHICLE; break;
+		case VEH_Road:		break;
+		case VEH_Ship:		refit_command = CMD_REFIT_SHIP; break;
+		case VEH_Aircraft:	refit_command = CMD_REFIT_AIRCRAFT; break;
+		default: return CMD_ERROR;
+	}
+
+	proc = _veh_build_proc_table[v->type - VEH_Train];
+	new_id = _new_vehicle_id_proc_table[v->type - VEH_Train];
+	total_cost = proc(x, y, flags, v->engine_type, 1);
+	if (total_cost == CMD_ERROR)
+		return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		wfront = GetVehicle(*new_id);
+		w1 = wfront;
+		CmdCloneOrder(x, y, flags, (v->index << 16) | w1->index, p2 & 1 ? CO_SHARE : CO_COPY);
+
+		if (wfront->cargo_type != v->cargo_type) {
+			//a refit is needed
+			needs_refitting = v->cargo_type;
+		}
+	}
+	if (v->type == VEH_Train) {
+		// now we handle the cars
+		v = v->next;
+		while (v != NULL) {
+			cost = proc(x, y, flags, v->engine_type, 1);
+			if (cost == CMD_ERROR)
+				return CMD_ERROR;
+			total_cost += cost;
+
+			if (flags & DC_EXEC) {
+				// add this unit to the end of the train
+				w2 = GetVehicle(RailVehInfo(v->engine_type)->flags & RVI_WAGON ? _new_wagon_id : _new_train_id);
+				CmdMoveRailVehicle(x, y, flags, (w1->index << 16) | w2->index, 0);
+				w1 = w2;
+			}
+			v = v->next;
+		}
+
+		if (flags & DC_EXEC) {
+			_new_train_id = wfront->index;
+			v = vfront;
+			w1 = wfront;
+			while (w1 != NULL && v != NULL) {
+				w1->spritenum = v->spritenum; // makes sure that multiheaded engines are facing the correct way
+				if (w1->cargo_type != v->cargo_type)	// checks if a refit is needed
+					needs_refitting = v->cargo_type;
+				w1 = w1->next;
+				v = v->next;
+			}
+			
+		}
+	}
+	if (flags && DC_EXEC && needs_refitting != 255 && v->type != VEH_Road) {	// right now we do not refit road vehicles
+		if (DoCommandByTile(wfront->tile, wfront->index, needs_refitting, 0, refit_command) != CMD_ERROR)
+			DoCommandByTile(wfront->tile, wfront->index, needs_refitting, DC_EXEC, refit_command);
+	}
+	return total_cost;
+}
+
 
 /** Give a custom name to your vehicle
  * @param x,y unused

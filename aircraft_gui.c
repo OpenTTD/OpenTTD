@@ -89,6 +89,15 @@ void CcBuildAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	}
 }
 
+void CcCloneAircraft(bool success, uint tile, uint32 p1, uint32 p2)
+{
+	Vehicle *v;
+
+	if (success) {
+		v = GetVehicle(_new_aircraft_id);
+		ShowAircraftViewWindow(v);
+	}
+}
 
 static void NewAircraftWndProc(Window *w, WindowEvent *e)
 {
@@ -496,10 +505,13 @@ static const Widget _aircraft_view_widgets[] = {
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  50,  67, 0x2B4,    STR_A03B_REFIT_AIRCRAFT_TO_CARRY },
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  68,  85, 0x2B2,    STR_A028_SHOW_AIRCRAFT_S_ORDERS },
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  86, 103, 0x2B3,    STR_A02B_SHOW_AIRCRAFT_DETAILS },
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  32,  49, SPR_CLONE_AIRCRAFT,      STR_CLONE_AIRCRAFT_INFO },
 { WWT_PANEL,      RESIZE_LRB,   14, 232, 249, 104, 103, 0x0,      STR_NULL },
 { WWT_RESIZEBOX,  RESIZE_LRTB,  14, 238, 249, 104, 115, 0x0,      STR_NULL },
 { WIDGETS_END }
 };
+
+bool CheckStoppedInHangar(Vehicle *v);
 
 static void AircraftViewWndProc(Window *w, WindowEvent *e)
 {
@@ -587,6 +599,12 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 		case 10: /* show details */
 			ShowAircraftDetailsWindow(v);
 			break;
+		case 11: {
+			/* clone vehicle */
+			Vehicle *v;
+			v = GetVehicle(w->window_number);
+			DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, CcCloneAircraft, CMD_CLONE_VEHICLE | CMD_MSG(STR_A008_CAN_T_BUILD_AIRCRAFT));
+		} break;
 		}
 	} break;
 
@@ -602,6 +620,19 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 		DeleteWindowById(WC_VEHICLE_REFIT, w->window_number);
 		DeleteWindowById(WC_VEHICLE_DETAILS, w->window_number);
 		break;
+		
+		       case WE_MOUSELOOP:
+               {
+                       Vehicle *v;
+                       uint32 h;
+                       v = GetVehicle(w->window_number);
+                       h = CheckStoppedInHangar(v) ? (1<< 7) : (1 << 11);
+                       if (h != w->hidden_state) {
+                               w->hidden_state = h;
+                               SetWindowDirty(w);
+                       }
+               } break;
+
 	}
 }
 
@@ -636,7 +667,7 @@ static void DrawAircraftDepotWindow(Window *w)
 
 	/* setup disabled buttons */
 	w->disabled_state =
-		IsTileOwner(tile, _local_player) ? 0 : ((1 << 4) | (1 << 7));
+		IsTileOwner(tile, _local_player) ? 0 : ((1<<4) | (1<<7) | (1<<8));
 
 	/* determine amount of items for scroller */
 	num = 0;
@@ -741,6 +772,42 @@ static void AircraftDepotClickAircraft(Window *w, int x, int y)
 	}
 }
 
+/**
+ * Clones an aircraft
+ * @param *v is the original vehicle to clone
+ * @param *w is the window of the hangar where the clone is build
+ */
+static bool HandleCloneVehClick(Vehicle *v, Window *w)
+{
+
+	if (!v){
+		return false;
+	}
+
+	if (v->type != VEH_Aircraft) {
+		// it's not an aircraft, do nothing
+		return false;
+	}
+
+
+    DoCommandP(w->window_number, v->index, _ctrl_pressed ? 1 : 0,CcCloneAircraft,CMD_CLONE_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));
+
+	ResetObjectToPlace();
+
+	return true;
+}
+
+static void ClonePlaceObj(uint tile, Window *w)
+{
+	Vehicle *v;
+
+
+	v = CheckMouseOverVehicle();
+	if (v && HandleCloneVehClick(v, w))
+		return;
+}
+
+
 static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
@@ -754,14 +821,48 @@ static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 			AircraftDepotClickAircraft(w, e->click.pt.x, e->click.pt.y);
 			break;
 		case 7: /* show build aircraft window */
+			ResetObjectToPlace();
 			ShowBuildAircraftWindow(w->window_number);
 			break;
-		case 8: /* scroll to tile */
+			
+				case 8: /* clone button */
+			InvalidateWidget(w, 8);
+				TOGGLEBIT(w->click_state, 8);
+				
+				if (HASBIT(w->click_state, 8)) {
+					_place_clicked_vehicle = NULL;
+					SetObjectToPlaceWnd(SPR_CURSOR_CLONE, VHM_RECT, w);
+				} else {
+					ResetObjectToPlace();
+				}
+					break;
+		case 9: /* scroll to tile */
+			ResetObjectToPlace();
 			ScrollMainWindowToTile(w->window_number);
 			break;
 		}
 		break;
 
+
+case WE_PLACE_OBJ: {
+		ClonePlaceObj(e->place.tile, w);
+	} break;
+
+	case WE_ABORT_PLACE_OBJ: {
+		CLRBIT(w->click_state, 8);
+		InvalidateWidget(w, 8);
+	} break;
+	
+	// check if a vehicle in a depot was clicked..
+	case WE_MOUSELOOP: {
+		Vehicle *v = _place_clicked_vehicle;
+		// since OTTD checks all open depot windows, we will make sure that it triggers the one with a clicked clone button
+		if (v != NULL && HASBIT(w->click_state, 8)) {
+			_place_clicked_vehicle = NULL;
+			HandleCloneVehClick( v, w);
+		}
+	} break;
+	
 	case WE_DESTROY:
 		DeleteWindowById(WC_BUILD_VEHICLE, w->window_number);
 		break;
@@ -824,8 +925,9 @@ static const Widget _aircraft_depot_widgets[] = {
 
 {     WWT_MATRIX,     RESIZE_RB,    14,     0,   295,    14,    61, 0x204,										STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT},
 {  WWT_SCROLLBAR,    RESIZE_LRB,    14,   319,   330,    14,    61, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   159,    62,    73, STR_A003_NEW_AIRCRAFT,		STR_A022_BUILD_NEW_AIRCRAFT},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   160,   318,    62,    73, STR_00E4_LOCATION,				STR_A024_CENTER_MAIN_VIEW_ON_HANGAR},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   105,    62,    73, STR_A003_NEW_AIRCRAFT,		STR_A022_BUILD_NEW_AIRCRAFT},
+{WWT_NODISTXTBTN,     RESIZE_TB,    14,   106,   212,    62,    73, STR_CLONE_AIRCRAFT,		STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   213,   318,    62,    73, STR_00E4_LOCATION,				STR_A024_CENTER_MAIN_VIEW_ON_HANGAR},
 {      WWT_PANEL,    RESIZE_RTB,    14,   319,   318,    62,    73, 0x0,													STR_NULL},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   319,   330,    62,    73, 0x0,											STR_RESIZE_BUTTON},
 {   WIDGETS_END},
