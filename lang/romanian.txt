@@ -409,9 +409,8 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Activeaz
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Profit anul acesta: {CURRENCY} (anul trecut: {CURRENCY})
 
 ############ range for service numbers starts
-STR_0199_YEAR                                                   :{COMMA} an ({COMMA})
-STR_019A_YEARS                                                  :{COMMA} ani ({COMMA})
-STR_019B_YEARS                                                  :{RED}{COMMA} ani ({COMMA})
+STR_AGE                                                         :{COMMA} an{P "" i} ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} an{P "" i} ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Autovehicolul

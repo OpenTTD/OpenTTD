@@ -409,9 +409,8 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Iesle'gt
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}S'i' gada iena'kums: {CURRENCY} (paga'jus'aja' gada': {CURRENCY})
 
 ############ range for service numbers starts
-STR_0199_YEAR                                                   :{COMMA} gads ({COMMA})
-STR_019A_YEARS                                                  :{COMMA} gadi ({COMMA})
-STR_019B_YEARS                                                  :{RED}{COMMA} gadi ({COMMA})
+STR_AGE                                                         :{COMMA} gad{P s i} ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} gad{P s i} ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Cel'u transporta li'dzeklis

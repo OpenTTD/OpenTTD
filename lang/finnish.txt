@@ -409,9 +409,8 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Kaupunki
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Voittoa tänä vuonna: {CURRENCY} (viime vuonna: {CURRENCY}).
 
 ############ range for service numbers starts
-STR_0199_YEAR                                                   :{COMMA} vuosi ({COMMA})
-STR_019A_YEARS                                                  :{COMMA} vuotta ({COMMA})
-STR_019B_YEARS                                                  :{RED}{COMMA} vuotta ({COMMA})
+STR_AGE                                                         :{COMMA} vuo{P si tta} ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} vuo{P si tta} ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Ajoneuvo

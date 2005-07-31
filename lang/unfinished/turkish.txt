@@ -409,9 +409,8 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Haritada
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Bu yilki kari: {CURRENCY} (geçen sene: {CURRENCY})
 
 ############ range for service numbers starts
-STR_0199_YEAR                                                   :{COMMA16} yil ({COMMA16})
-STR_019A_YEARS                                                  :{COMMA16} yil ({COMMA16})
-STR_019B_YEARS                                                  :{RED}{COMMA16} yil ({COMMA16})
+STR_AGE                                                         :{COMMA16} yil ({COMMA16})
+STR_AGE_RED                                                     :{RED}{COMMA16} yil ({COMMA16})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Road vehicle

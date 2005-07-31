@@ -409,9 +409,8 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Rodyti/p
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Pelnas siais metais: {CURRENCY} (praeitais metais: {CURRENCY})
 
 ############ range for service numbers starts
-STR_0199_YEAR                                                   :{COMMA} metai ({COMMA})
-STR_019A_YEARS                                                  :{COMMA} metai ({COMMA})
-STR_019B_YEARS                                                  :{RED}{COMMA} metai ({COMMA})
+STR_AGE                                                         :{COMMA} metai ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} metai ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Automobilis

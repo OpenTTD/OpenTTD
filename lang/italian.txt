@@ -409,9 +409,8 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Visualiz
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Profitto quest'anno: {CURRENCY} (anno scorso: {CURRENCY})
 
 ############ range for service numbers starts
-STR_0199_YEAR                                                   :{COMMA} anno ({COMMA})
-STR_019A_YEARS                                                  :{COMMA} anni ({COMMA})
-STR_019B_YEARS                                                  :{RED}{COMMA} anni ({COMMA})
+STR_AGE                                                         :{COMMA} ann{P o i} ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} ann{P o i} ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Veicolo Stradale

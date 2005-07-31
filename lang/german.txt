@@ -374,10 +374,10 @@ STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Firmenfi
 STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Allgemeine Firmeninformationen anzeigen
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Diagramm anzeigen
 STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Firmentabelle anzeigen
-STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Zugliste der Firmen
-STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Fahrzeugliste der Firmen
-STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Schiffsliste der Firmen
-STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Flugzeugliste der Firmen
+STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Zuglisten der Firmen
+STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Fahrzeuglisten der Firmen
+STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Schiffslisten der Firmen
+STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Flugzeuglisten der Firmen
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Heranzoomen (vergrößern)
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Wegzoomen (verkleinern)
 STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Gleise legen
@@ -409,9 +409,8 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Stadtnam
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Profit laufendes Jahr: {CURRENCY} (vorheriges Jahr: {CURRENCY})
 
 ############ range for service numbers starts
-STR_0199_YEAR                                                   :{COMMA} Jahr ({COMMA})
-STR_019A_YEARS                                                  :{COMMA} Jahre ({COMMA})
-STR_019B_YEARS                                                  :{RED}{COMMA} Jahre ({COMMA})
+STR_AGE                                                         :{COMMA} Jahr{P "" e} ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} Jahr{P "" e} ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Fahrzeug
@@ -869,7 +868,7 @@ STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{S
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Sprache für die Oberfläche aussuchen
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Vollbild
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Diese Checkbox aktivieren, um OpenTTD im Vollbildmodus zu spielen
+STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}OpenTTD im Vollbildmodus spielen
 
 STR_OPTIONS_RES                                                 :{BLACK}Bildschirmgröße
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1025,7 +1024,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Feinere
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Erlaube Anteile an anderen Firmen zu kaufen
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Errichte Signale alle {ORANGE}{STRING} Felder beim Ziehen mit der Maus
 STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}Erlaube automatische Errichtung von Fahrstraßen-Signalen: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Position der Haupttoolbar: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Position der Werkzeugleiste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Links
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Mitte
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Rechts
@@ -1195,19 +1194,19 @@ STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Fügt ein
 STR_NETWORK_ENTER_IP                                            :{BLACK}IP Adresse des Servers eingeben
 
 STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
-STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clienten
-STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clienten online / Clienten max.
-STR_NETWORK_GAME_INFO                                           :{SILVER}GAME INFO
+STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klienten
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klienten online / Klienten max.
+STR_NETWORK_GAME_INFO                                           :{SILVER}SPIEL-INFO
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Clienten:  {WHITE}{COMMA} / {COMMA}
+STR_NETWORK_CLIENTS                                             :{SILVER}Klienten:  {WHITE}{COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Sprache:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Landschaft:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Kartengröße:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Serverversion:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Server Adresse:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Serveradresse:  {WHITE}{STRING} : {NUM}
 STR_NETWORK_START_DATE                                          :{SILVER}Startdatum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Aktuelles Datum:  {WHITE}{DATE_SHORT}
-STR_NETWORK_PASSWORD                                            :{SILVER}Passwort geschützt!
+STR_NETWORK_PASSWORD                                            :{SILVER}passwortgeschützt!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER VOLL
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}Versionskonflikt festgestellt
@@ -1223,23 +1222,23 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Passwort
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Vergebe ein Passwort, um zu verhindern, dass unbefugte Leute beitreten können
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Karte auswählen:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Welche Karte möchtest du spielen?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Max. Anzahl an Clienten:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Wählt die max. Anzahl an Clienten aus. Nicht alle Slots müssen belegt werden.
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Max. Anzahl an Klienten:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Wählt die max. Anzahl an Klienten aus. Nicht alle Slots müssen belegt werden.
 STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (ankündigen)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_CLIENTS                                           :2 Clienten
-STR_NETWORK_3_CLIENTS                                           :3 Clienten
-STR_NETWORK_4_CLIENTS                                           :4 Clienten
-STR_NETWORK_5_CLIENTS                                           :5 Clienten
-STR_NETWORK_6_CLIENTS                                           :6 Clienten
-STR_NETWORK_7_CLIENTS                                           :7 Clienten
-STR_NETWORK_8_CLIENTS                                           :8 Clienten
-STR_NETWORK_9_CLIENTS                                           :9 Clienten
-STR_NETWORK_10_CLIENTS                                          :10 Clienten
+STR_NETWORK_2_CLIENTS                                           :2 Klienten
+STR_NETWORK_3_CLIENTS                                           :3 Klienten
+STR_NETWORK_4_CLIENTS                                           :4 Klienten
+STR_NETWORK_5_CLIENTS                                           :5 Klienten
+STR_NETWORK_6_CLIENTS                                           :6 Klienten
+STR_NETWORK_7_CLIENTS                                           :7 Klienten
+STR_NETWORK_8_CLIENTS                                           :8 Klienten
+STR_NETWORK_9_CLIENTS                                           :9 Klienten
+STR_NETWORK_10_CLIENTS                                          :10 Klienten
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Gesprochene Sprachen:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Damit andere Spieler wissen, welche Sprache auf diesem Server gesprochen wird.
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1260,7 +1259,7 @@ STR_NETWORK_LANG_FRENCH                                         :Französisch
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Mehrspielerlobby
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Spieleintritt vorbereiten:   {ORANGE}{STRING}
-STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Eine Liste aller Firmen, die sich im Spiel befinden.
+STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Eine Liste aller Firmen, die sich im Spiel befinden
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Neues Unternehmen
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Ein neues Unternehmen gründen
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Beim Spiel zusehen
@@ -1287,7 +1286,7 @@ STR_NETWORK_CONNECTING                                          :{WHITE}Verbinde
 
 ############ Leave those lines in this order!!
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Verbinde..
-STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Authorisierung..
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorisierung..
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Warten..
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Herunterladen der Karte..
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Verarbeite Spieldaten..
@@ -1296,7 +1295,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Re
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Hole Spielinformationen..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Hole Firmeninformationen..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} Client(en) vor uns
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} Klient{P "" en} vor uns
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} KB bisher heruntergeladen
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Trennen
@@ -1322,7 +1321,7 @@ STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Falsche
 STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Der Server ist voll.
 STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE}Du bist von diesem Server verbannt
 STR_NETWORK_ERR_KICKED                                          :{WHITE} Du wurdest vom Server gekickt.
-STR_NETWORK_ERR_CHEATER                                         :{WHITE} Cheating ist auf diesem Server nicht erlaubt
+STR_NETWORK_ERR_CHEATER                                         :{WHITE}Schummeln ist auf diesem Server nicht erlaubt
 
 STR_NETWORK_ERR_LEFT                                            :hat das Spiel verlassen.
 ############ Leave those lines in this order!!
@@ -1404,7 +1403,7 @@ STR_1007_ALREADY_BUILT                                          :{WHITE}...ist b
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Gleise müssen erst entfernt werden
 STR_1009_TOO_MANY_DEPOTS                                        :{WHITE}Zu viele Depots
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Gleis- / Bahnhofsbau
-STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Monorailbau
+STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Einschienbahnbau
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Magnetschwebebahnbau
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Eisenbahnbrücke auswählen
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Kann hier kein Zugdepot bauen...
@@ -1415,7 +1414,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Gleise k
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Kann die Signale hier nicht entfernen...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Zugdepotausrichtung
 STR_1015_RAILROAD_CONSTRUCTION                                  :Eisenbahnbau
-STR_1016_MONORAIL_CONSTRUCTION                                  :Monorailbau
+STR_1016_MONORAIL_CONSTRUCTION                                  :Einschienbahnbau
 STR_1017_MAGLEV_CONSTRUCTION                                    :Magnetschwebebahnbau
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Gleise legen
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Zugdepot bauen (zum Bau und zur Wartung von Zügen)
@@ -1501,7 +1500,7 @@ STR_201E_STADIUM                                                :Stadion
 STR_201F_OLD_HOUSES                                             :Alte Häuser
 STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Stadtverwaltung
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Zeige Einzelheiten der Stadtverwaltung
-STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} Stadtverwaltung
+STR_2022_LOCAL_AUTHORITY                                        :{WHITE}Stadtverwaltung {TOWN}
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Bewertung der Transportfirma:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subventionen
@@ -1519,7 +1518,7 @@ STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvention wird vergeben an {COMPANY}!{}{}{STRING}transport von {STATION} nach {STATION} bringt im nächsten Jahr den doppelten Frachtpreis!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvention wird vergeben an {COMPANY}!{}{}{STRING}transport von {STATION} nach {STATION} bringt im nächsten Jahr den dreifachen Frachtpreis!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvention wird vergeben an {COMPANY}!{}{}{STRING}transport von {STATION} nach {STATION} bringt im nächsten Jahr den vierfachen Frachtpreis!
-STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} Die Stadtverwaltung erlaubt nicht den Bau eines weiteren Flughafens in der Stadt
+STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Die Stadtverwaltung {TOWN} erlaubt nicht den Bau eines weiteren Flughafens in der Stadt
 STR_2036_COTTAGES                                               :Landhaus
 STR_2037_HOUSES                                                 :Haus
 STR_2038_FLATS                                                  :Wohnhaus
@@ -1540,7 +1539,7 @@ STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Kleine Werbekam
 STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Mittlere Werbekampagne
 STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Große Werbekampagne
 STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Straßenreparaturen des Ortes finanzieren
-STR_204A_BUILD_STATUE_OF_COMPANY                                :Statue des Transporteigentümers finanzieren
+STR_204A_BUILD_STATUE_OF_COMPANY                                :Statue des Firmeneigentümers finanzieren
 STR_204B_FUND_NEW_BUILDINGS                                     :Neue Gebäude finanzieren
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Exklusive Transportrechte kaufen
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Die Stadtverwaltung bestechen
@@ -1555,11 +1554,11 @@ STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Verkehrschaos in {TOWN}!{}{}Straßensanierungsprogramm finanziert durch {COMPANY} wird 6 Monate lang Verzögerungen im Verkehr bewirken!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (in Bearbeitung)
+STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (im Bau)
 STR_2059_IGLOO                                                  :Iglu
 STR_205A_TEPEES                                                 :Zelt
 STR_205B_TEAPOT_HOUSE                                           :Teekannenhaus
-STR_205C_PIGGY_BANK                                             :Piggy-Bank
+STR_205C_PIGGY_BANK                                             :Sparschwein
 
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
@@ -1621,15 +1620,15 @@ STR_303C_OUTSTANDING                                            :Hervorragend
 ############ range for rating ends
 
 STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
-STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} akzeptiert keine  {STRING} mehr
+STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} akzeptiert keine {STRING} mehr
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} akzeptiert keine {STRING} oder {STRING} mehr
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} akzeptiert jetzt {STRING}
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} akzeptiert jetzt {STRING} und {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Busbahnhof-Ausr.
-STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Lkw-Ladeplatzes-Ausr.
+STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Lkw-Ladeplatz-Ausr.
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Der Busbahnhof muss erst abgerissen werden
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Der Lkw-Ladeplatz muss erst abgerissen werden
-STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Haltestellen
+STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Haltestelle{P "" n}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Keine -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...Gelände ungeeignet
@@ -2015,8 +2014,8 @@ STR_7049_SELECT_MALE_FACES                                      :{BLACK}Wähle mä
 STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Wähle weibliches Gesicht aus
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Wähle zufälliges neues Gesicht
 STR_704C_KEY                                                    :{BLACK}Schlüssel
-STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Aufschlüsselung für Diagramm
-STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Schlüssel für Firmen - Diagramm
+STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Aufschlüsselung des Diagramms
+STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Schlüssel des Firmendiagramms
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Graph der Firma ein-/ausblenden
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Beförderte Frachteinheiten
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Bewertung der Firmenleistung (Höchstwert = 1000)
@@ -2336,7 +2335,7 @@ STR_8102_RAILROAD_LOCOMOTIVE                                    :Lokomotive
 STR_8103_ROAD_VEHICLE                                           :Fahrzeug
 STR_8104_AIRCRAFT                                               :Flugzeug
 STR_8105_SHIP                                                   :Schiff
-STR_8106_MONORAIL_LOCOMOTIVE                                    :Monorailbahn
+STR_8106_MONORAIL_LOCOMOTIVE                                    :Einschienbahn
 STR_8107_MAGLEV_LOCOMOTIVE                                      :Magnetschwebebahn
 
 ##id 0x8800
@@ -2376,9 +2375,9 @@ STR_8815_NEW_VEHICLES                                           :{BLACK}Neue Fah
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Zug zu lang
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Züge können nur verändert werden, wenn sie im Depot halten
-STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Züge
+STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Z{P ug üge}
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Neues Schienenfahrzeug
-STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Neue Monorailzüge
+STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Neue Einschienbahnzüge
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Neue Magnetzüge
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Fahrzeug bauen
 STR_8820_RENAME                                                 :{BLACK}Umbenennen
@@ -2468,7 +2467,7 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Halte an, 
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Fahrzeug ist im Weg
-STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Fahrzeuge
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Fahrzeug{P "" e}
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Fahrzeugdepot
 STR_9004_NEW_VEHICLES                                           :{BLACK}Neue Fahrzeuge
@@ -2529,7 +2528,7 @@ STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Hafenanl
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Kann den Hafen hier nicht bauen...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Werft
 STR_9804_NEW_SHIPS                                              :{BLACK}Neue Schiffe
-STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Schiffe
+STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Schiff{P "" e}
 STR_9808_NEW_SHIPS                                              :{WHITE}Neue Schiffe
 STR_9809_BUILD_SHIP                                             :{BLACK}Baue Schiff
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Schiff muss in der Werft angehalten werden
@@ -2564,7 +2563,7 @@ STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Laufende
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Aufträge des Schiffes
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Anzeige auf das Schiff zentrieren
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Schicke das Schiff zur Werft
-STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Zeige Schiffs Einzelheiten
+STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Zeige Einzelheiten des Schiffes
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Neues Schiff ist erhältlich!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kosten: {CURRENCY}   Max. Geschwindigk.: {VELOCITY}{}Kapazität: {STRING}{}Betriebskosten: {CURRENCY}/Jahr
@@ -2599,7 +2598,7 @@ STR_A003_NEW_AIRCRAFT                                           :{BLACK}Neues Fl
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Neues Flugzeug
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Flugzeug bauen
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kann das Flugzeug nicht bauen...
-STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Flugzeuge
+STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Flugzeug{P "" e}
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Aufträge)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Einzelheiten)
@@ -2611,7 +2610,7 @@ STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kann das Flugzeug nicht in den Hangar schicken...
 STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Unterwegs zu {STATION} Hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Unterwegs zu {STATION} Hangar, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Flugzeug {COMMA} wartet im Flugzeug Hangar
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Flugzeug {COMMA} wartet im Hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Flugzeug ist auf dem Weg
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kann das Flugzeug nicht anhalten/starten...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Das Flugzeug ist in der Luft
@@ -2619,7 +2618,7 @@ STR_A019_CAPACITY                                               :{BLACK}Kapazitä
 STR_A01A_CAPACITY                                               :{BLACK}Kapazität: {LTBLUE}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Flugzeug muss im Hangar angehalten werden
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Kann das Flugzeug nicht verkaufen...
-STR_A01D_AIRPORT_CONSTRUCTION                                   :Flugzeugbau
+STR_A01D_AIRPORT_CONSTRUCTION                                   :Flughafenbau
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Baue Flughafen
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Flugzeuge - für Einzelheiten auf das Flugzeug klicken
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Baue neues Flugzeug (setzt Flughafen mit Hangar voraus)
@@ -2662,9 +2661,9 @@ SERVICE_AT_AIRPORT_HANGAR                                       :Wartung bei {ST
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeppelinabsturz bei {STATION}!
-STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Fahrzeug bei einem UFO-Zusammenstoß zerstört!
+STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Fahrzeug bei Zusammenstoß mit einem 'UFO' zerstört!
 STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Explosion einer Ölraffinerie nahe {TOWN}!
-STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Fabrik nahe {TOWN} durch mysteriöse Umstände zerstört!
+STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Fabrik nahe {TOWN} unter mysteriösen Umständen zerstört!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}'UFO' landet bei {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Stolleneinbruch hinterläßt einen Pfad der Zerstörung bei {TOWN}!
 STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Hochwasser!{}Mindestens {COMMA} Menschen vermisst oder tot nach schwerer Flut!
@@ -2750,12 +2749,12 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Hier wir
 STR_REPLACE_HELP                                                :{BLACK}Dieses Feature ermöglicht es, einen Fahrzeugtyp auszuwählen und ihn durch einen anderen ersetzen zu lassen. Dies geschieht automatisch, wenn das Fahrzeug regulär das Depot besucht.
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Schilderliste - {COMMA} Schild(er)
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Schilderliste - {COMMA} Schild{P "" er}
 
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Eisenbahn
-STR_MONORAIL_VEHICLES                                           :Monorail
+STR_MONORAIL_VEHICLES                                           :Einschienbahn
 STR_MAGLEV_VEHICLES                                             :Magnetschwebebahn
 
 ############ End of list of rail types

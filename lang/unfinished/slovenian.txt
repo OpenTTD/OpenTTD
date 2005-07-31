@@ -409,9 +409,8 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Vkljuci/
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Profit to leto: {CURRENCY} (prejsnje leto: {CURRENCY})
 
 ############ range for service numbers starts
-STR_0199_YEAR                                                   :{COMMA16} leto ({COMMA16})
-STR_019A_YEARS                                                  :{COMMA16} let ({COMMA16})
-STR_019B_YEARS                                                  :{RED}{COMMA16} let ({COMMA16})
+STR_AGE                                                         :{COMMA16} let{P o ""} ({COMMA16})
+STR_AGE_RED                                                     :{RED}{COMMA16} let{P o ""} ({COMMA16})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Cestno vozilo

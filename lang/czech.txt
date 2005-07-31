@@ -466,9 +466,8 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Zobrazov
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Zisk tento rok: {CURRENCY} (minulý rok: {CURRENCY})
 
 ############ range for service numbers starts
-STR_0199_YEAR                                                   :{COMMA} rok ({COMMA})
-STR_019A_YEARS                                                  :{COMMA} let ({COMMA})
-STR_019B_YEARS                                                  :{RED}{COMMA} let ({COMMA})
+STR_AGE                                                         :{COMMA} {P rok let} ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} {P rok let} ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Silnicni vozidlo

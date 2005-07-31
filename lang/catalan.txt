@@ -409,9 +409,8 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Activar/
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Benefici enguany: {CURRENCY} (darrer any: {CURRENCY})
 
 ############ range for service numbers starts
-STR_0199_YEAR                                                   :{COMMA} any ({COMMA})
-STR_019A_YEARS                                                  :{COMMA} anys ({COMMA})
-STR_019B_YEARS                                                  :{RED}{COMMA} anys ({COMMA})
+STR_AGE                                                         :{COMMA} any{P "" s} ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} any{P "" s} ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Vehicle

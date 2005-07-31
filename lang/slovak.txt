@@ -409,9 +409,8 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Zapnut /
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Zisk tento rok: {CURRENCY} (posledny rok: {CURRENCY})
 
 ############ range for service numbers starts
-STR_0199_YEAR                                                   :{COMMA} rok ({COMMA})
-STR_019A_YEARS                                                  :{COMMA} rokov ({COMMA})
-STR_019B_YEARS                                                  :{RED}{COMMA} rokov ({COMMA})
+STR_AGE                                                         :{COMMA} rok{P "" ov} ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} rok{P "" ov} ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Automobil

@@ -409,9 +409,8 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Växla st
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Vinst detta år: {CURRENCY} (förra året: {CURRENCY})
 
 ############ range for service numbers starts
-STR_0199_YEAR                                                   :{COMMA} år ({COMMA})
-STR_019A_YEARS                                                  :{COMMA} år ({COMMA})
-STR_019B_YEARS                                                  :{RED}{COMMA} år ({COMMA})
+STR_AGE                                                         :{COMMA} år ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} år ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Vägfordon

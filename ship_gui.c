@@ -169,17 +169,10 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 		/* Draw running cost */
 		{
 			int year = v->age / 366;
-			StringID str;
 
 			SetDParam(1, year);
 
-			str = STR_0199_YEAR;
-			if (year != 1) {
-				str++;
-				if (v->max_age - 366 < v->age)
-					str++;
-			}
-			SetDParam(0, str);
+			SetDParam(0, (v->age + 365 < v->max_age) ? STR_AGE : STR_AGE_RED);
 			SetDParam(2, v->max_age / 366);
 			SetDParam(3, ShipVehInfo(v->engine_type)->running_cost * _price.ship_running >> 8);
 			DrawString(2, 15, STR_9812_AGE_RUNNING_COST_YR, 0);

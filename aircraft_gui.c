@@ -333,17 +333,10 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 		/* Draw running cost */
 		{
 			int year = v->age / 366;
-			StringID str;
 
 			SetDParam(1, year);
 
-			str = STR_0199_YEAR;
-			if (year != 1) {
-				str++;
-				if (v->max_age - 366 < v->age)
-					str++;
-			}
-			SetDParam(0, str);
+			SetDParam(0, (v->age + 365 < v->max_age) ? STR_AGE : STR_AGE_RED);
 			SetDParam(2, v->max_age / 366);
 			SetDParam(3, _price.aircraft_running * AircraftVehInfo(v->engine_type)->running_cost >> 8);
 			DrawString(2, 15, STR_A00D_AGE_RUNNING_COST_YR, 0);

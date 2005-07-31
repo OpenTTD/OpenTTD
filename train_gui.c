@@ -1122,7 +1122,6 @@ static void DrawTrainDetailsWindow(Window *w)
 	const Vehicle *v, *u;
 	uint16 tot_cargo[NUM_CARGO][2];	// count total cargo ([0]-actual cargo, [1]-total cargo)
 	int i,num,x,y,sel;
-	StringID str;
 	byte det_tab = WP(w, traindetails_d).tab;
 
 	/* Count number of vehicles */
@@ -1171,13 +1170,7 @@ static void DrawTrainDetailsWindow(Window *w)
 
 	x = 2;
 
-	str = STR_0199_YEAR;
-	if (num != 1) {
-		str += STR_019A_YEARS - STR_0199_YEAR;
-		if ((uint16)(v->max_age - 366) < v->age)
-			str += STR_019B_YEARS - STR_019A_YEARS;
-	}
-	SetDParam(0, str);
+	SetDParam(0, (v->age + 365 < v->max_age) ? STR_AGE : STR_AGE_RED);
 	SetDParam(2, v->max_age / 366);
 	SetDParam(3, GetTrainRunningCost(v) >> 8);
 	DrawString(x, 15, STR_885D_AGE_RUNNING_COST_YR, 0);
