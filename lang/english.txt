@@ -2382,11 +2382,11 @@ STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}New Mono
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}New Maglev Vehicles
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Build Vehicle
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clone Vehicle
-STR_CLONE_ROAD_VEHICLE_INFO 	                                :{BLACK}This will build a copy of the road vehicle. Control-click will share the orders
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO	                        :{BLACK}This will build a copy of a road vehicle. Click this button and then on a road vehicle inside or outside the depot. Control-click will share the orders
-STR_CLONE_TRAIN                                     		:{BLACK}Clone Train
-STR_CLONE_TRAIN_INFO 	                  			:{BLACK}This will build a copy of the train including all cars. Control-click will share the orders
-STR_CLONE_TRAIN_DEPOT_INFO	                        	:{BLACK}This will build a copy of a train including all cars. Click this button and then on a train inside or outside the depot. Control-click will share the orders
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}This will build a copy of the road vehicle. Control-click will share the orders
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}This will build a copy of a road vehicle. Click this button and then on a road vehicle inside or outside the depot. Control-click will share the orders
+STR_CLONE_TRAIN                                                 :{BLACK}Clone Train
+STR_CLONE_TRAIN_INFO                                            :{BLACK}This will build a copy of the train including all cars. Control-click will share the orders
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}This will build a copy of a train including all cars. Click this button and then on a train inside or outside the depot. Control-click will share the orders
 STR_8820_RENAME                                                 :{BLACK}Rename
 STR_8823_SKIP                                                   :{BLACK}Skip
 STR_8824_DELETE                                                 :{BLACK}Delete
@@ -2538,9 +2538,9 @@ STR_9804_NEW_SHIPS                                              :{BLACK}New Ship
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Ships
 STR_9808_NEW_SHIPS                                              :{WHITE}New Ships
 STR_9809_BUILD_SHIP                                             :{BLACK}Build Ship
-STR_CLONE_SHIP                                              	:{BLACK}Clone Ship
-STR_CLONE_SHIP_INFO 	                                        :{BLACK}This will build a copy of the ship. Control-click will share the orders
-STR_CLONE_SHIP_DEPOT_INFO	                          	:{BLACK}This will build a copy of a ship. Click this button and then on a ship inside or outside the depot. Control-click will share the orders
+STR_CLONE_SHIP                                                  :{BLACK}Clone Ship
+STR_CLONE_SHIP_INFO                                             :{BLACK}This will build a copy of the ship. Control-click will share the orders
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}This will build a copy of a ship. Click this button and then on a ship inside or outside the depot. Control-click will share the orders
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Ship must be stopped in depot
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Can't sell ship...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Can't build ship...
@@ -2605,9 +2605,9 @@ STR_A000_AIRPORTS                                               :{WHITE}Airports
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Can't build airport here...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Aircraft Hangar
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}New Aircraft
-STR_CLONE_AIRCRAFT                                           	:{BLACK}Clone Aircraft
-STR_CLONE_AIRCRAFT_INFO                                        	:{BLACK}This will build a copy of the aircraft. Control-click will share the orders
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                          	:{BLACK}This will build a copy of an aircraft. Click this button and then on an aircraft inside or outside the hangar. Control-click will share the orders
+STR_CLONE_AIRCRAFT                                              :{BLACK}Clone Aircraft
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}This will build a copy of the aircraft. Control-click will share the orders
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}This will build a copy of an aircraft. Click this button and then on an aircraft inside or outside the hangar. Control-click will share the orders
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}New Aircraft
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Build Aircraft
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Can't build aircraft...

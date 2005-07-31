@@ -2000,14 +2000,6 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Repay pa
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Manager)
 STR_7038_INAUGURATED                                            :{GOLD}Inaugurated: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Vehicles:
-STR_703A_TRAIN                                                  :{WHITE}{COMMA} train
-STR_703B_TRAINS                                                 :{WHITE}{COMMA} trains
-STR_703C_ROAD_VEHICLE                                           :{WHITE}{COMMA} road vehicle
-STR_703D_ROAD_VEHICLES                                          :{WHITE}{COMMA} road vehicles
-STR_703E_AIRCRAFT                                               :{WHITE}{COMMA} aircraft
-STR_703F_AIRCRAFT                                               :{WHITE}{COMMA} aircraft
-STR_7040_SHIP                                                   :{WHITE}{COMMA} ship
-STR_7041_SHIPS                                                  :{WHITE}{COMMA} ships
 STR_7042_NONE                                                   :{WHITE}Neviens
 STR_7043_FACE_SELECTION                                         :{WHITE}Face Selection
 STR_7044_MALE                                                   :{BLACK}Viriešu

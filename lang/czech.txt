@@ -2438,6 +2438,12 @@ STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nové lok
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nové lokomotivy a vagony pro monorail
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nové lokomotivy a vagony pro maglev
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Koupit vuz
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Klonovat vozidlo
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Vytvori se kopie silnicniho vozidla. Se stisknutým Ctrl se budou sdílet prikazy.
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Vytvori se kopie silnicniho vozidla. Klepni na toto tlacitko a pak na vozidlo v nebo vne depa. Se stisknutým Ctrl se budou sdílet prikazy.
+STR_CLONE_TRAIN                                                 :{BLACK}Klonovat vlak
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Vytvori se kopie vlaku se vsemi vagony. Se stisknutým Ctrl se budou sdílet prikazy.
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Vytvori se kopie vlaku se vsemi vagony. Klepni na toto tlacitko a pak na vlak v nebo vne depa. Se stisknutým Ctrl se budou sdílet prikazy.
 STR_8820_RENAME                                                 :{BLACK}Prejmenovat
 STR_8823_SKIP                                                   :{BLACK}Preskocit
 STR_8824_DELETE                                                 :{BLACK}Smazat
@@ -2589,6 +2595,9 @@ STR_9804_NEW_SHIPS                                              :{BLACK}Nové lod
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} lod{P "" e í}
 STR_9808_NEW_SHIPS                                              :{WHITE}Nové lode
 STR_9809_BUILD_SHIP                                             :{BLACK}Koupit lod
+STR_CLONE_SHIP                                                  :{BLACK}Klonovat lod
+STR_CLONE_SHIP_INFO                                             :{BLACK}Vytvori se kopie lode. Se stisknutým Ctrl se budou sdílet prikazy.
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Vytvori se kopie lode. Klepni na toto tlacitko a pak na lod v nebo vne lodního depa. Se stisknutým Ctrl se budou sdílet prikazy.
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Lod musí být zastavena v depu
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Nelze prodat lod...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Nelze koupit lod...
@@ -2653,6 +2662,9 @@ STR_A000_AIRPORTS                                               :{WHITE}Letiste
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Zde nelze postavit letiste...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Letistni hangár
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nová letadla
+STR_CLONE_AIRCRAFT                                              :{BLACK}Klonovat letadlo
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Vytvori se kopie letadla. Se stisknutým Ctrl se budou sdílet prikazy.
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Vytvori se kopie letadla. Klepni na toto tlacitko a pak na letadlo v nebo vne hangáru. Se stisknutým Ctrl se budou sdílet prikazy.
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nové letadlo
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Koupit letadlo
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nelze koupit letadlo...

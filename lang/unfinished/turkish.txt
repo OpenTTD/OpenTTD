@@ -290,7 +290,6 @@ STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Bu treni
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Yeni Oyun
 STR_0141_LOAD_GAME                                              :{BLACK}Yükle
-STR_0142_TUTORIAL_DEMONSTRATION                                 :{BLACK}Ögretici / Demo
 STR_SINGLE_PLAYER                                               :{BLACK}Tek Oyunculu
 STR_MULTIPLAYER                                                 :{BLACK}Çok Oyunculu
 
@@ -467,8 +466,6 @@ STR_01CA_31ST                                                   :31.
 ############ range for days	ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA16}
-STR_01CC_TOGGLE_LARGE_SMALL_MAP                                 :{BLACK}Büyük/orta/küçük haritalara geç
-STR_01CD_SELECT_TUTORIAL_DEMONSTRATION                          :{WHITE}Ögretici/Demo Seç
 
 STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Kabul edilen kargo: {LTBLUE}{STRING}
 
@@ -573,7 +570,6 @@ STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Yer $eki
 STR_022F_TOWN_GENERATION                                        :{BLACK}Kasaba olu$turma
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Endüstri olu$turma
 STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Yol in$aasi
-STR_0232_VEGETATION_AND_OTHER_OBJECTS                           :{BLACK}Bitkilendirme ve diger nesneler
 STR_0233_TOWN_GENERATION                                        :{WHITE}Kasaba olu$turma
 STR_0234_NEW_TOWN                                               :{BLACK}Yeni Kasaba
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Yeni kasaba olu$tur

@@ -83,37 +83,37 @@ STR_004B_BATTERY                                                :Baterie
 STR_004C_PLASTIC                                                :Zuvacky
 STR_004D_FIZZY_DRINK                                            :Sumienka
 STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA} cestujuci
-STR_0050_TON_OF_COAL                                            :{COMMA} tona uhlia
-STR_0051_BAG_OF_MAIL                                            :{COMMA} balik posty
+STR_004F_PASSENGER                                              :{COMMA} cestujuci{P "" "" ch}
+STR_0050_TON_OF_COAL                                            :{COMMA} ton{P a y ""} uhlia
+STR_0051_BAG_OF_MAIL                                            :{COMMA} balik{P "" y ov} posty
 STR_0052_OF_OIL                                                 :{VOLUME} ropy
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} kus dobytka
-STR_0054_CRATE_OF_GOODS                                         :{COMMA} debna tovaru
-STR_0055_TON_OF_GRAIN                                           :{COMMA} tona obilia
-STR_0056_TON_OF_WOOD                                            :{COMMA} tona dreva
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA} tona zeleznej rudy
-STR_0058_TON_OF_STEEL                                           :{COMMA} tona ocele
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA} vreco cennosti
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} tona medennej rudy
-STR_005B_TON_OF_MAIZE                                           :{COMMA} tona kukurice
-STR_005C_TON_OF_FRUIT                                           :{COMMA} tona ovocia
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} debna diamantov
-STR_005E_TON_OF_FOOD                                            :{COMMA} tona jedla
-STR_005F_TON_OF_PAPER                                           :{COMMA} tona papiera
-STR_0060_BAG_OF_GOLD                                            :{COMMA} debna zlata
+STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} kus{P "" y ov} dobytka
+STR_0054_CRATE_OF_GOODS                                         :{COMMA} deb{P na ny ien} tovaru
+STR_0055_TON_OF_GRAIN                                           :{COMMA} ton{P a y ""} obilia
+STR_0056_TON_OF_WOOD                                            :{COMMA} ton{P a y ""} dreva
+STR_0057_TON_OF_IRON_ORE                                        :{COMMA} ton{P a y ""} zeleznej rudy
+STR_0058_TON_OF_STEEL                                           :{COMMA} ton{P a y ""} ocele
+STR_0059_BAG_OF_VALUABLES                                       :{COMMA} vr{P eco ecia iec} cennosti
+STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} ton{P a y ""} medennej rudy
+STR_005B_TON_OF_MAIZE                                           :{COMMA} ton{P a y ""} kukurice
+STR_005C_TON_OF_FRUIT                                           :{COMMA} ton{P a y ""} ovocia
+STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} deb{P na ny ien} diamantov
+STR_005E_TON_OF_FOOD                                            :{COMMA} ton{P a y ""} jedla
+STR_005F_TON_OF_PAPER                                           :{COMMA} ton{P a y ""} papiera
+STR_0060_BAG_OF_GOLD                                            :{COMMA} deb{P na ny ien} zlata
 STR_0061_OF_WATER                                               :{VOLUME} voda
-STR_0062_TON_OF_WHEAT                                           :{COMMA} tona psenice
+STR_0062_TON_OF_WHEAT                                           :{COMMA} ton{P a y ""} psenice
 STR_0063_OF_RUBBER                                              :{VOLUME} kaucuk
-STR_0064_TON_OF_SUGAR                                           :{COMMA} tona cukru
-STR_0065_TOY                                                    :{COMMA} hracka
-STR_0066_BAG_OF_CANDY                                           :{COMMA} debna cukrikov
+STR_0064_TON_OF_SUGAR                                           :{COMMA} ton{P a y ""} cukru
+STR_0065_TOY                                                    :{COMMA} hrac{P ka ky iek}
+STR_0066_BAG_OF_CANDY                                           :{COMMA} deb{P na ny ien} cukrikov
 STR_0067_OF_COLA                                                :{VOLUME} kofola
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} tona cukrovej vaty
-STR_0069_BUBBLE                                                 :{COMMA} bublina
-STR_006A_TON_OF_TOFFEE                                          :{COMMA} tona karamelu
-STR_006B_BATTERY                                                :{COMMA} bateria
+STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} ton{P a y ""} cukrovej vaty
+STR_0069_BUBBLE                                                 :{COMMA} bublin{P a y ""}
+STR_006A_TON_OF_TOFFEE                                          :{COMMA} ton{P a y ""} karamelu
+STR_006B_BATTERY                                                :{COMMA} bateri{P a e i}
 STR_006C_OF_PLASTIC                                             :{VOLUME} zuvacka
-STR_006D_FIZZY_DRINK                                            :{COMMA} sumienka
+STR_006D_FIZZY_DRINK                                            :{COMMA} sumien{P ka ky ok}
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}CE
 STR_0090_CL                                                     :{TINYFONT}UH
