@@ -1160,8 +1160,6 @@ STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUST
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...prea aproape de altã industrie
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Refit train to carry a different cargo type
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Refit train
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Alege tipul de marfã transportat de tren
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Modificã trenul pentru a transporta marfa aleasã
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nu pot modifica trenul...
@@ -1173,7 +1171,6 @@ TEMP_AI_ACTIVATED                                               :{WHITE}Atentie:
 
 ############ network gui strings
 
-STR_NETWORK_MULTIPLAYER                                         :{WHITE}Multiplayer
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Numele jucãtorului:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Acesta este numele prin care te vor identifica ceilalti
@@ -2489,7 +2486,6 @@ STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Autovehi
 STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Cumpãrã un autovehicul
 STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Mutã un autovehicul aici pentru a-l vinde
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centreazã imaginea pe locatia acestei autobaze
-STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Road vehicle selection list - click on vehicle for information
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Cumpãrã autovehiculul selectat
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Un nou autovehicul disponibil!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
