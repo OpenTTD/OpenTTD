@@ -130,12 +130,12 @@ static void DoStopMusic(void)
 
 static void SelectSongToPlay(void)
 {
-	int i = 0;
+	uint i = 0;
 
+	memset(_cur_playlist, 0, sizeof(_cur_playlist));
 	do {
 		_cur_playlist[i] = _playlists[msf.playlist][i];
-	} while ( _cur_playlist[i++] != 0);
-	memset(_cur_playlist + i, 0, 33 - i);
+	} while (_playlists[msf.playlist][i++] != 0 && i < lengthof(_cur_playlist) - 1);
 
 	if (msf.shuffle) {
 		i = 500;
