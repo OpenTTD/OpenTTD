@@ -1778,7 +1778,7 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			
 		}
 	}
-	if (flags && DC_EXEC && needs_refitting != 255 && v->type != VEH_Road) {	// right now we do not refit road vehicles
+	if (flags & DC_EXEC && needs_refitting != 255 && vfront->type != VEH_Road) {	// right now we do not refit road vehicles
 		if (DoCommandByTile(wfront->tile, wfront->index, needs_refitting, 0, refit_command) != CMD_ERROR)
 			DoCommandByTile(wfront->tile, wfront->index, needs_refitting, DC_EXEC, refit_command);
 	}
