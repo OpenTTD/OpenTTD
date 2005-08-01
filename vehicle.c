@@ -1676,7 +1676,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2);
 int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2);
 int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2);
 int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2);
- 
+
 
 typedef int32 VehBuildProc(int x, int y, uint32 flags, uint32 p1, uint32 p2);
 
@@ -1691,7 +1691,7 @@ static VehicleID * _new_vehicle_id_proc_table[] = {
 	&_new_train_id,
 	&_new_roadveh_id,
 	&_new_ship_id,
-	&_new_aircraft_id,	
+	&_new_aircraft_id,
 };
 
 /** Clone a vehicle. If it is a train, it will clone all the cars too
@@ -1712,7 +1712,7 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsVehicleIndex(p1))
 		return CMD_ERROR;
 	v = GetVehicle(p1);
-	wfront = v; 
+	wfront = v;
 	w1 = v;
 	vfront = v;
 
@@ -1775,7 +1775,7 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				w1 = w1->next;
 				v = v->next;
 			}
-			
+
 		}
 	}
 	if (flags & DC_EXEC && needs_refitting != 255 && vfront->type != VEH_Road) {	// right now we do not refit road vehicles

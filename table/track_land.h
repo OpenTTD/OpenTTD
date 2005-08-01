@@ -63,9 +63,3 @@ static const DrawTrackSeqStruct* const _track_depot_layout_table[] = {
 	_track_waypoint_table_1,
 };
 
-static const byte _track_sloped_sprites[14] = {
-	14, 15, 22, 13,
-	 0, 21, 17, 12,
-	23,  0, 18, 20,
-	19, 16
-};

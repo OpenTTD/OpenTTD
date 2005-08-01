@@ -668,7 +668,7 @@ static void NTPEnum(NewTrackPathFinder *tpf, TileIndex tile, uint direction)
 	FindLengthOfTunnelResult flotr;
 	int estimation;
 
-	
+
 
 	// Need to have a special case for the start.
 	// We shouldn't call the callback for the current tile.

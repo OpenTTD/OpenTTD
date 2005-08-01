@@ -26,7 +26,7 @@
 
 #	define STDIN 0  /* file descriptor for standard input */
 
-/** 
+/**
  * Switches OpenTTD to a console app at run-time, instead of a PM app
  * Necessary to see stdout, etc. */
 static void OS2_SwitchToConsoleMode(void)

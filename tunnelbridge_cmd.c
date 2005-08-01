@@ -17,6 +17,12 @@
 #include "debug.h"
 #include "variables.h"
 
+#include "table/bridge_land.h"
+#include "table/tunnel_land.h"
+
+extern const byte _track_sloped_sprites[14];
+extern const SpriteID _water_shore_sprites[15];
+
 extern void DrawCanalWater(TileIndex tile);
 
 static const byte _bridge_available_year[MAX_BRIDGES] = {
@@ -943,11 +949,6 @@ static const byte _bridge_foundations[2][16] = {
 };
 
 extern const byte _road_sloped_sprites[14];
-
-#include "table/track_land.h"
-#include "table/bridge_land.h"
-#include "table/tunnel_land.h"
-#include "table/water_land.h"
 
 static void DrawBridgePillars(TileInfo *ti, int x, int y, int z)
 {

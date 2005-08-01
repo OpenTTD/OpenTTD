@@ -95,7 +95,7 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 
 			SetDParam(1, year);
 
-			SetDParam(0, (v->age + 365 < v->max_age) ? STR_AGE : STR_AGE_RED);  
+			SetDParam(0, (v->age + 365 < v->max_age) ? STR_AGE : STR_AGE_RED);
 			SetDParam(2, v->max_age / 366);
 			SetDParam(3, RoadVehInfo(v->engine_type)->running_cost * _price.roadveh_running >> 8);
 			DrawString(2, 15, STR_900D_AGE_RUNNING_COST_YR, 0);
@@ -714,11 +714,11 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 			ResetObjectToPlace();
 			ShowBuildRoadVehWindow(w->window_number);
 			break;
-			
+
 		case 8: /* clone button */
 			InvalidateWidget(w, 8);
 				TOGGLEBIT(w->click_state, 8);
-				
+
 				if (HASBIT(w->click_state, 8)) {
 					_place_clicked_vehicle = NULL;
 					SetObjectToPlaceWnd(SPR_CURSOR_CLONE, VHM_RECT, w);
@@ -726,14 +726,14 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 					ResetObjectToPlace();
 				}
 					break;
-				
+
 			case 9: /* scroll to tile */
 				ResetObjectToPlace();
 				ScrollMainWindowToTile(w->window_number);
 					break;
 		}
 	} break;
-	
+
 		case WE_PLACE_OBJ: {
 		ClonePlaceObj(e->place.tile, w);
 	} break;
@@ -742,7 +742,7 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 		CLRBIT(w->click_state, 8);
 		InvalidateWidget(w, 8);
 	} break;
-	
+
 	// check if a vehicle in a depot was clicked..
 	case WE_MOUSELOOP: {
 		Vehicle *v = _place_clicked_vehicle;

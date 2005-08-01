@@ -613,7 +613,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 		DeleteWindowById(WC_VEHICLE_REFIT, w->window_number);
 		DeleteWindowById(WC_VEHICLE_DETAILS, w->window_number);
 		break;
-		
+
 		       case WE_MOUSELOOP:
                {
                        Vehicle *v;
@@ -817,11 +817,11 @@ static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 			ResetObjectToPlace();
 			ShowBuildAircraftWindow(w->window_number);
 			break;
-			
+
 				case 8: /* clone button */
 			InvalidateWidget(w, 8);
 				TOGGLEBIT(w->click_state, 8);
-				
+
 				if (HASBIT(w->click_state, 8)) {
 					_place_clicked_vehicle = NULL;
 					SetObjectToPlaceWnd(SPR_CURSOR_CLONE, VHM_RECT, w);
@@ -845,7 +845,7 @@ case WE_PLACE_OBJ: {
 		CLRBIT(w->click_state, 8);
 		InvalidateWidget(w, 8);
 	} break;
-	
+
 	// check if a vehicle in a depot was clicked..
 	case WE_MOUSELOOP: {
 		Vehicle *v = _place_clicked_vehicle;
@@ -855,7 +855,7 @@ case WE_PLACE_OBJ: {
 			HandleCloneVehClick( v, w);
 		}
 	} break;
-	
+
 	case WE_DESTROY:
 		DeleteWindowById(WC_BUILD_VEHICLE, w->window_number);
 		break;

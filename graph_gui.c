@@ -936,8 +936,8 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 		for (i=0;i<NUM_SCORE;i++) {
 			y += 20;
     		val = _score_part[owner][i];
-    		needed = score_info[i].needed;
-    		score = score_info[i].score;
+    		needed = _score_info[i].needed;
+    		score = _score_info[i].score;
     		// SCORE_TOTAL has his own rulez ;)
     		if (i == SCORE_TOTAL) {
     			needed = total_score;

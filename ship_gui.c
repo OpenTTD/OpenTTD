@@ -511,7 +511,7 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 					case OT_LEAVESTATION:
 						str = STR_882F_LOADING_UNLOADING;
 						break;
-						
+
 					default:
 						if (v->num_orders == 0) {
 							str = STR_NO_ORDERS + _patches.vehicle_speed;
@@ -792,11 +792,11 @@ static void ShipDepotWndProc(Window *w, WindowEvent *e) {
 			ResetObjectToPlace();
 			ShowBuildShipWindow(w->window_number);
 			break;
-			
+
 			case 8: /* clone button */
 			InvalidateWidget(w, 8);
 				TOGGLEBIT(w->click_state, 8);
-				
+
 				if (HASBIT(w->click_state, 8)) {
 					_place_clicked_vehicle = NULL;
 					SetObjectToPlaceWnd(SPR_CURSOR_CLONE, VHM_RECT, w);
@@ -811,7 +811,7 @@ static void ShipDepotWndProc(Window *w, WindowEvent *e) {
 			break;
 		}
 		break;
-		
+
 	case WE_PLACE_OBJ: {
 		//ClonePlaceObj(e->place.tile, w);
 		ClonePlaceObj(w->window_number, w);
@@ -821,7 +821,7 @@ static void ShipDepotWndProc(Window *w, WindowEvent *e) {
 		CLRBIT(w->click_state, 8);
 		InvalidateWidget(w, 8);
 	} break;
-	
+
 	// check if a vehicle in a depot was clicked..
 	case WE_MOUSELOOP: {
 		Vehicle *v = _place_clicked_vehicle;

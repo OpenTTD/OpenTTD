@@ -666,7 +666,7 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 
  		}
  	} break;
- 
+
 	case WE_PLACE_OBJ: {
 		ClonePlaceObj(e->place.tile, w);
 	} break;
@@ -675,7 +675,7 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 		CLRBIT(w->click_state, 9);
 		InvalidateWidget(w, 9);
 	} break;
-	
+
 	// check if a vehicle in a depot was clicked..
 	case WE_MOUSELOOP: {
 		Vehicle *v = _place_clicked_vehicle;
@@ -924,7 +924,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 
 		/* draw widgets & caption */
 		SetDParam(0, v->string_id);
-		SetDParam(1, v->unitnumber); 
+		SetDParam(1, v->unitnumber);
 		DrawWindowWidgets(w);
 
 		if (v->u.rail.crash_anim_pos != 0) {

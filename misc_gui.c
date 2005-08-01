@@ -1158,6 +1158,9 @@ static const Widget _save_dialog_scen_widgets[] = {
 };
 
 
+// Colors for fios types
+const byte _fios_colors[] = {13, 9, 9, 6, 5, 6, 5};
+
 void BuildFileList(void)
 {
 	_fios_path_changed = true;

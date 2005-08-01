@@ -25,6 +25,23 @@
 #include "variables.h"
 #include "vehicle_gui.h"
 
+// Score info
+const ScoreInfo _score_info[] = {
+    {SCORE_VEHICLES,		120, 			100},
+    {SCORE_STATIONS,		80, 			100},
+    {SCORE_MIN_PROFIT,	10000,		100},
+    {SCORE_MIN_INCOME,	50000,		50},
+    {SCORE_MAX_INCOME,	100000,		100},
+    {SCORE_DELIVERED,		40000, 		400},
+    {SCORE_CARGO,				8,				50},
+    {SCORE_MONEY,				10000000,	50},
+    {SCORE_LOAN,				250000,		50},
+    {SCORE_TOTAL,				0,				0}
+};
+
+int _score_part[MAX_PLAYERS][NUM_SCORE];
+
+
 // get a mask of the allowed currencies depending on the year
 uint GetMaskOfAllowedCurrencies(void)
 {
@@ -129,7 +146,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 /* Count vehicles */
 	{
 		Vehicle *v;
-		int32 min_profit = score_info[SCORE_MIN_PROFIT].needed;
+		int32 min_profit = _score_info[SCORE_MIN_PROFIT].needed;
 		uint num = 0;
 
 		FOR_ALL_VEHICLES(v) {
@@ -228,7 +245,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 
 /* Generate score for loan */
 	{
-		_score_part[owner][SCORE_LOAN] = score_info[SCORE_LOAN].needed - p->current_loan;
+		_score_part[owner][SCORE_LOAN] = _score_info[SCORE_LOAN].needed - p->current_loan;
 	}
 
 	// Now we calculate the score for each item..
@@ -241,10 +258,12 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 			// Skip the total
 			if (i == SCORE_TOTAL) continue;
 			// Check the score
-			s = (_score_part[owner][i] >= score_info[i].needed) ? score_info[i].score : ((_score_part[owner][i] * score_info[i].score) / score_info[i].needed);
+			s = (_score_part[owner][i] >= _score_info[i].needed) ?
+				_score_info[i].score :
+				((_score_part[owner][i] * _score_info[i].score) / _score_info[i].needed);
 			if (s < 0) s = 0;
 			score += s;
-			total_score += score_info[i].score;
+			total_score += _score_info[i].score;
 		}
 
 		_score_part[owner][SCORE_TOTAL] = score;

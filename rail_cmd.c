@@ -26,6 +26,13 @@
 
 extern uint16 _custom_sprites_base;
 
+const byte _track_sloped_sprites[14] = {
+	14, 15, 22, 13,
+	 0, 21, 17, 12,
+	23,  0, 18, 20,
+	19, 16
+};
+
 void ShowTrainDepotWindow(TileIndex tile);
 
 /* Format of rail map5 byte.
@@ -1584,6 +1591,24 @@ void DrawTrainDepotSprite(int x, int y, int image, int railtype)
 		image = dtss->image;
 		if (image & PALETTE_MODIFIER_COLOR) image |= ormod;
 		DrawSprite(image + rti->total_offset, x + pt.x, y + pt.y);
+	}
+}
+
+void DrawDefaultWaypointSprite(int x, int y, int railtype)
+{
+	const DrawTrackSeqStruct *dtss = _track_depot_layout_table[4];
+	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
+	uint32 img;
+
+	img = dtss++->image;
+	if (img & PALETTE_MODIFIER_COLOR) img = (img & SPRITE_MASK) + rti->total_offset;
+	DrawSprite(img, x, y);
+
+	for (; dtss->image != 0; dtss++) {
+		Point pt = RemapCoords(dtss->subcoord_x, dtss->subcoord_y, 0);
+		img = dtss->image;
+		if (img & PALETTE_MODIFIER_COLOR) img |= PLAYER_SPRITE_COLOR(_local_player);
+		DrawSprite(img, x + pt.x, y + pt.y);
 	}
 }
 

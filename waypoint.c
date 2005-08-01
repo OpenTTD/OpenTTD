@@ -16,7 +16,6 @@
 #include "variables.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "table/track_land.h"
 
 enum {
 	/* Max waypoints: 64000 (8 * 8000) */
@@ -359,6 +358,7 @@ Station *ComposeWaypointStation(TileIndex tile)
 
 extern uint16 _custom_sprites_base;
 
+
 /* Draw a waypoint */
 void DrawWaypointSprite(int x, int y, int stat_id, uint railtype)
 {
@@ -376,18 +376,7 @@ void DrawWaypointSprite(int x, int y, int stat_id, uint railtype)
 
 	/* draw default waypoint graphics of ID 0 */
 	if (stat_id == 0) {
-		const DrawTrackSeqStruct *dtss = _track_depot_layout_table[4];
-
-		img = dtss++->image;
-		if (img & PALETTE_MODIFIER_COLOR) img = (img & SPRITE_MASK) + rti->total_offset;
-		DrawSprite(img, x, y);
-
-		for (; dtss->image != 0; dtss++) {
-			Point pt = RemapCoords(dtss->subcoord_x, dtss->subcoord_y, 0);
-			img = dtss->image;
-			if (img & PALETTE_MODIFIER_COLOR) img |= ormod;
-			DrawSprite(img, x + pt.x, y + pt.y);
-		}
+		DrawDefaultWaypointSprite(x, y, railtype);
 		return;
 	}
 
@@ -407,7 +396,6 @@ void DrawWaypointSprite(int x, int y, int stat_id, uint railtype)
 	foreach_draw_tile_seq(seq, cust->seq) {
 		Point pt = RemapCoords(seq->delta_x, seq->delta_y, seq->delta_z);
 		uint32 image = seq->image + relocation;
-
 		DrawSprite((image & SPRITE_MASK) | ormod, x + pt.x, y + pt.y);
 	}
 }

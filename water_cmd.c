@@ -16,6 +16,11 @@
 #include "depot.h"
 #include "vehicle_gui.h"
 
+const SpriteID _water_shore_sprites[15] = {
+	0, 0xFDF, 0xFE0, 0xFE4, 0xFDE, 0, 0xFE2, 0, 0xFE1, 0xFE5, 0, 0, 0xFE3, 0, 0
+};
+
+
 static void FloodVehicle(Vehicle *v);
 
 static bool IsClearWaterTile(TileIndex tile)
