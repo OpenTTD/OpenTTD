@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file bridge_gui.c Graphical user interface for bridge construction*/
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"
@@ -12,6 +14,7 @@
 #include "command.h"
 #include "sound.h"
 #include "variables.h"
+#include "bridge.h"
 
 static struct BridgeData {
 	uint count;
@@ -20,13 +23,7 @@ static struct BridgeData {
 	byte type;
 	byte indexes[MAX_BRIDGES];
 	int32 costs[MAX_BRIDGES];
-} _bridge;
-
-extern const uint16 _bridge_type_price_mod[MAX_BRIDGES];
-
-extern const PalSpriteID _bridge_sprites[MAX_BRIDGES];
-extern const uint16 _bridge_speeds[MAX_BRIDGES];
-extern const StringID _bridge_material[MAX_BRIDGES];
+} _bridgedata;
 
 void CcBuildBridge(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
@@ -36,7 +33,7 @@ void CcBuildBridge(bool success, TileIndex tile, uint32 p1, uint32 p2)
 static void BuildBridge(Window *w, int i)
 {
 	DeleteWindow(w);
-	DoCommandP(_bridge.end_tile, _bridge.start_tile, _bridge.indexes[i] | (_bridge.type << 8), CcBuildBridge,
+	DoCommandP(_bridgedata.end_tile, _bridgedata.start_tile, _bridgedata.indexes[i] | (_bridgedata.type << 8), CcBuildBridge,
 		CMD_BUILD_BRIDGE | CMD_AUTO | CMD_MSG(STR_5015_CAN_T_BUILD_BRIDGE_HERE));
 }
 
@@ -48,21 +45,21 @@ static void BuildBridgeWndProc(Window *w, WindowEvent *e)
 
 		DrawWindowWidgets(w);
 
-		for (i = 0; i < 4 && i + w->vscroll.pos < _bridge.count; i++) {
-			int ind = _bridge.indexes[i + w->vscroll.pos];
+		for (i = 0; i < 4 && i + w->vscroll.pos < _bridgedata.count; i++) {
+			const Bridge *b = &_bridge[_bridgedata.indexes[i + w->vscroll.pos]];
 
-			SetDParam(2, _bridge.costs[i + w->vscroll.pos]);
-			SetDParam(1, (_bridge_speeds[ind] >> 4) * 10);
-			SetDParam(0, _bridge_material[ind]);
-			DrawSprite(_bridge_sprites[ind], 3, 15 + i * 22);
+			SetDParam(2, _bridgedata.costs[i + w->vscroll.pos]);
+			SetDParam(1, (b->speed >> 4) * 10);
+			SetDParam(0, b->material);
+			DrawSprite(b->sprite, 3, 15 + i * 22);
 
-			DrawString(44, 15 + i*22 , STR_500D, 0);
+			DrawString(44, 15 + i * 22 , STR_500D, 0);
 		}
 	} break;
 
 	case WE_KEYPRESS: {
 		uint i = e->keypress.keycode - '1';
-		if (i < 9 && i < _bridge.count) {
+		if (i < 9 && i < _bridgedata.count) {
 			e->keypress.cont = false;
 			BuildBridge(w, i);
 		}
@@ -73,7 +70,7 @@ static void BuildBridgeWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 	 if (e->click.widget == 2) {
 			uint ind = ((int)e->click.pt.y - 14) / 22;
-			if (ind < 4 && (ind += w->vscroll.pos) < _bridge.count)
+			if (ind < 4 && (ind += w->vscroll.pos) < _bridgedata.count)
 				BuildBridge(w, ind);
 		}
 		break;
@@ -122,9 +119,9 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, byte bridge_type)
 
 	DeleteWindowById(WC_BUILD_BRIDGE, 0);
 
-	_bridge.type = bridge_type;
-	_bridge.start_tile = start;
-	_bridge.end_tile = end;
+	_bridgedata.type = bridge_type;
+	_bridgedata.start_tile = start;
+	_bridgedata.end_tile = end;
 
 	errmsg = 0xFFFF;
 
@@ -138,30 +135,31 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, byte bridge_type)
 	// check which bridges can be built
 	else {
 		int bridge_len;			// length of the middle parts of the bridge
-		int tot_bridge_len;	// total length of bridge
+		int tot_bridgedata_len;	// total length of bridge
 
 		// get absolute bridge length
 		bridge_len = GetBridgeLength(start, end);
-		tot_bridge_len = bridge_len + 2;
+		tot_bridgedata_len = bridge_len + 2;
 
-		tot_bridge_len = CalcBridgeLenCostFactor(tot_bridge_len);
+		tot_bridgedata_len = CalcBridgeLenCostFactor(tot_bridgedata_len);
 
 		for (bridge_type = 0; bridge_type != MAX_BRIDGES; bridge_type++) {	// loop for all bridgetypes
 
 			if (CheckBridge_Stuff(bridge_type, bridge_len)) {
+				const Bridge *b = &_bridge[bridge_type];
 				// bridge is accepted, add to list
 				// add to terraforming & bulldozing costs the cost of the bridge itself (not computed with DC_QUERY_COST)
-				_bridge.costs[j] = ret + (((int64)tot_bridge_len * _price.build_bridge * _bridge_type_price_mod[bridge_type]) >> 8);
-				_bridge.indexes[j] = bridge_type;
+				_bridgedata.costs[j] = ret + (((int64)tot_bridgedata_len * _price.build_bridge * b->price) >> 8);
+				_bridgedata.indexes[j] = bridge_type;
 				j++;
 			}
 		}
 	}
 
-	_bridge.count = j;
+	_bridgedata.count = j;
 
 	if (j != 0) {
-		Window *w = AllocateWindowDesc((_bridge.type & 0x80) ? &_build_road_bridge_desc : &_build_bridge_desc);
+		Window *w = AllocateWindowDesc((_bridgedata.type & 0x80) ? &_build_road_bridge_desc : &_build_bridge_desc);
 		w->vscroll.cap = 4;
 		w->vscroll.count = (byte)j;
 	} else {

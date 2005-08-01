@@ -1,5 +1,10 @@
 /* $Id$ */
 
+/** @file tunnelbridge_cmd.c
+ * This file deals with tunnels and bridges (non-gui stuff)
+ * @todo seperate this file into two
+ */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/sprites.h"
@@ -16,6 +21,7 @@
 #include "pbs.h"
 #include "debug.h"
 #include "variables.h"
+#include "bridge.h"
 
 #include "table/bridge_land.h"
 #include "table/tunnel_land.h"
@@ -25,47 +31,28 @@ extern const SpriteID _water_shore_sprites[15];
 
 extern void DrawCanalWater(TileIndex tile);
 
-static const byte _bridge_available_year[MAX_BRIDGES] = {
-	0, 0, 10, 0, 10, 10, 10, 10, 10, 10, 75, 85, 90
-};
-
-static const byte _bridge_minlen[MAX_BRIDGES] = {
-	0, 0, 0, 2, 3, 3, 3, 3, 3, 0, 2, 2, 2
-};
-
-static const byte _bridge_maxlen[MAX_BRIDGES] = {
-	16, 2, 5, 10, 16, 16, 7, 8, 9, 2, 16, 32, 32,
-};
-
-const uint16 _bridge_type_price_mod[MAX_BRIDGES] = {
-	80, 112, 144, 168, 185, 192, 224, 232, 248, 240, 255, 380, 510,
-};
-
-const uint16 _bridge_speeds[MAX_BRIDGES] = {
-	0x20, 0x30, 0x40, 0x50, 0x60, 0x70, 0x0A0, 0x0D0, 0x0F0, 0x100, 0x140, 0x200, 0x260
-};
-
-const PalSpriteID _bridge_sprites[MAX_BRIDGES] = {
-	0x0A24, 0xA26 | PALETTE_TO_STRUCT_RED, 0x0A25, 0xA22 | PALETTE_TO_STRUCT_CONCRETE,
-	0x0A22, 0xA22 | PALETTE_TO_STRUCT_YELLOW, 0x0A23, 0xA23 | PALETTE_TO_STRUCT_BROWN,
-	0xA23 | PALETTE_TO_STRUCT_RED, 0x0A27, 0x0A28, 0xA28 | PALETTE_TO_STRUCT_YELLOW,
-	0xA28 | PALETTE_TO_STRUCT_GREY,
-};
-
-const StringID _bridge_material[MAX_BRIDGES] = {
-	STR_5012_WOODEN,
-	STR_5013_CONCRETE,
-	STR_500F_GIRDER_STEEL,
-	STR_5011_SUSPENSION_CONCRETE,
-	STR_500E_SUSPENSION_STEEL,
-	STR_500E_SUSPENSION_STEEL,
-	STR_5010_CANTILEVER_STEEL,
-	STR_5010_CANTILEVER_STEEL,
-	STR_5010_CANTILEVER_STEEL,
-	STR_500F_GIRDER_STEEL,
-	STR_5014_TUBULAR_STEEL,
-	STR_5014_TUBULAR_STEEL,
-	STR_BRIDGE_TUBULAR_SILICON,
+const Bridge _bridge[] = {
+/*
+	   year of availablity 
+	   |  minimum length
+	   |  |   maximum length
+	   |  |   |    price
+	   |  |   |    |    maximum speed
+	   |  |   |    |    |  sprite to use in GUI                string with description
+	   |  |   |    |    |  |                                   |                            */
+	{  0, 0, 16,  80,  32, 0xA24                             , STR_5012_WOODEN              },
+	{  0, 0,  2, 112,  48, 0xA26 | PALETTE_TO_STRUCT_RED     , STR_5013_CONCRETE            },
+	{ 10, 0,  5, 144,  64, 0xA25                             , STR_500F_GIRDER_STEEL        },
+	{  0, 2, 10, 168,  80, 0xA22 | PALETTE_TO_STRUCT_CONCRETE, STR_5011_SUSPENSION_CONCRETE },
+	{ 10, 3, 16, 185,  96, 0xA22                             , STR_500E_SUSPENSION_STEEL    },
+	{ 10, 3, 16, 192, 112, 0xA22 | PALETTE_TO_STRUCT_YELLOW  , STR_500E_SUSPENSION_STEEL	},
+	{ 10, 3,  7, 224, 160, 0xA23                             , STR_5010_CANTILEVER_STEEL    },
+	{ 10, 3,  8, 232, 208, 0xA23 | PALETTE_TO_STRUCT_BROWN   , STR_5010_CANTILEVER_STEEL    },
+	{ 10, 3,  9, 248, 240, 0xA23 | PALETTE_TO_STRUCT_RED     , STR_5010_CANTILEVER_STEEL    },
+	{ 10, 0,  2, 240, 256, 0xA27                             , STR_500F_GIRDER_STEEL        },
+	{ 75, 2, 16, 255, 320, 0xA28                             , STR_5014_TUBULAR_STEEL       },
+	{ 85, 2, 32, 380, 512, 0xA28 | PALETTE_TO_STRUCT_YELLOW  , STR_5014_TUBULAR_STEEL       },
+	{ 90, 2, 32, 510, 608, 0xA28 | PALETTE_TO_STRUCT_GREY    , STR_BRIDGE_TUBULAR_SILICON   }
 };
 
 // calculate the price factor for building a long bridge.
@@ -91,7 +78,27 @@ enum {
 	BRIDGE_NO_FOUNDATION = 1 << 0 | 1 << 3 | 1 << 6 | 1 << 9 | 1 << 12,
 };
 
-/*	check if bridge can be built on slope
+/**
+ * Determines which piece of a bridge is contained in the current tile
+ * @param tile The tile to analyze
+ * @return the piece
+ */
+static inline int GetBridgePiece(TileIndex tile)
+{
+	return GB(_m[tile].m2, 0, 4);
+}
+
+/**
+ * Determines the type of bridge on a tile
+ * @param tile The tile to analyze
+ * @return The bridge type
+ */
+static inline int GetBridgeType(TileIndex tile)
+{
+	return GB(_m[tile].m2, 4, 4);
+}
+
+/**	check if bridge can be built on slope
  *	direction 0 = X-axis, direction 1 = Y-axis
  *	is_start_tile = false		<-- end tile
  *	is_start_tile = true		<-- start tile
@@ -159,15 +166,16 @@ uint32 GetBridgeLength(TileIndex begin, TileIndex end)
 bool CheckBridge_Stuff(byte bridge_type, int bridge_len)
 {
 	int max;	// max possible length of a bridge (with patch 100)
+	const Bridge *b = &_bridge[bridge_type];
 
 	if (bridge_type >= MAX_BRIDGES) return false;
-	if (_bridge_available_year[bridge_type] > _cur_year) return false;
+	if (b->avail_year > _cur_year) return false;
 
-	max = _bridge_maxlen[bridge_type];
+	max = b->max_length;
 	if (max >= 16 && _patches.longbridges)
 		max = 100;
 
-	if (bridge_len < _bridge_minlen[bridge_type] || bridge_len > max) return false;
+	if (bridge_len < b->min_length || bridge_len > max) return false;
 
 	return true;
 }
@@ -400,12 +408,14 @@ not_valid_below:;
 			and cost is computed in "bridge_gui.c". For AI, Towns this has to be of course calculated
 	*/
 	if (!(flags & DC_QUERY_COST)) {
+		const Bridge *b = &_bridge[bridge_type];
+
 		bridge_len += 2;	// begin and end tiles/ramps
 
 		if (_current_player < MAX_PLAYERS && !(_is_ai_player && !_patches.ainew_active))
 			bridge_len = CalcBridgeLenCostFactor(bridge_len);
 
-		cost += ((int64)bridge_len * _price.build_bridge * _bridge_type_price_mod[bridge_type]) >> 8;
+		cost += ((int64)bridge_len * _price.build_bridge * b->price) >> 8;
 	}
 
 	return cost;
@@ -956,12 +966,14 @@ static void DrawBridgePillars(TileInfo *ti, int x, int y, int z)
 	uint32 image;
 	int piece;
 
-	b = _bridge_poles_table[_m[ti->tile].m2>>4];
+	b = _bridge_poles_table[GetBridgeType(ti->tile)];
 
 	// Draw first piece
 	// (necessary for cantilever bridges)
+
 	image = b[12 + (ti->map5&0x01)];
-	piece = _m[ti->tile].m2&0xF;
+	piece = GetBridgePiece(ti->tile);
+
 	if (image != 0 && piece != 0) {
 		if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 		DrawGroundSpriteAt(image, x, y, z);
@@ -985,6 +997,7 @@ static void DrawBridgePillars(TileInfo *ti, int x, int y, int z)
 		p = _tileh_bits[(image & 1) * 2 + (ti->map5&0x01)];
 		front_height = ti->z + ((ti->tileh & p[0])?8:0);
 		back_height = ti->z + ((ti->tileh & p[1])?8:0);
+
 		if (IsSteepTileh(ti->tileh)) {
 			if (!(ti->tileh & p[2])) front_height += 8;
 			if (!(ti->tileh & p[3])) back_height += 8;
@@ -1505,7 +1518,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 			if (!(_m[tile].m5 & 0x40) || // start/end tile of bridge
 					myabs(h - v->z_pos) > 2) { // high above the ground -> on the bridge
 				/* modify speed of vehicle */
-				uint16 spd = _bridge_speeds[_m[tile].m2 >> 4];
+				uint16 spd = _bridge[GetBridgeType(tile)].speed;
 				if (v->type == VEH_Road) spd<<=1;
 				if (spd < v->cur_speed)
 					v->cur_speed = spd;
