@@ -1084,13 +1084,32 @@ void InitializeLanguagePacks(void)
 	int n;
 	int m;
 	int def;
+	int fallback;
 	LanguagePack hdr;
 	FILE *in;
 	char *files[32];
+	uint j;
+
+	char lang[] = "en";
+	static const char* env[] = {
+		"LANGUAGE",
+		"LC_ALL",
+		"LC_MESSAGES",
+		"LANG"
+	};
+
+	for (j = 0; j < lengthof(env); j++) {
+		const char* envlang = getenv(env[j]);
+		if (envlang != NULL) {
+			snprintf(lang, lengthof(lang), "%.2s", envlang);
+			break;
+		}
+	}
 
 	n = GetLanguageList(files, lengthof(files));
 
-	def = 0; // default language file
+	def = -1;
+	fallback = 0;
 
 	// go through the language files and make sure that they are valid.
 	for (i = m = 0; i != n; i++) {
@@ -1110,10 +1129,12 @@ void InitializeLanguagePacks(void)
 		dl->ent[m].file = files[i];
 		dl->ent[m].name = strdup(hdr.name);
 
-		if (strcmp(hdr.name, "English") == 0) def = m;
+		if (strcmp(hdr.name, "English") == 0) fallback = m;
+		if (strcmp(hdr.isocode, lang) == 0) def = m;
 
 		m++;
 	}
+	if (def == -1) def = fallback;
 
 	if (m == 0)
 		error(n == 0 ? "No available language packs" : "Invalid version of language packs");
