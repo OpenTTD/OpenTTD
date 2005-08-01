@@ -548,8 +548,6 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{STRIN
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA16})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{STRING} '{STRING}' seviyesine ulasti!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{STRING} - {STRING} '{STRING}' seviyesine ulasti!
-STR_021D                                                        :{BLACK}
-STR_021E                                                        :{WHITE}
 STR_021F                                                        :{BLUE}{COMMA16}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Senaryo olustur
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD

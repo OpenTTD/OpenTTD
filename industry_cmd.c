@@ -1825,7 +1825,11 @@ static void MaybeNewIndustry(uint32 r)
 
 	SetDParam(0, type + STR_4802_COAL_MINE);
 	SetDParam(1, i->town->index);
-	AddNewsItem(	STR_482D_NEW_UNDER_CONSTRUCTION + (type == IT_FOREST), NEWS_FLAGS(NM_THIN,NF_VIEWPORT|NF_TILE,NT_ECONOMY,0), i->xy, 0);
+	AddNewsItem(
+		(type != IT_FOREST) ?
+			STR_482D_NEW_UNDER_CONSTRUCTION : STR_482E_NEW_BEING_PLANTED_NEAR,
+		NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY,0), i->xy, 0
+	);
 }
 
 static void ChangeIndustryProduction(Industry *i)

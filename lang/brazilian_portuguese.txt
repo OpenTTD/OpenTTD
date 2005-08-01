@@ -548,8 +548,6 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYE
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} conquista '{STRING}' desempenho!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} de {COMPANY} conquista '{STRING}' desempenho!
-STR_021D                                                        :{BLACK}
-STR_021E                                                        :{WHITE}
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Criar Cenário
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
@@ -971,7 +969,6 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Função 
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Fila de veículos de estrada (com efeitos de quantidade): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Deslocar janela quando o cursor está na borda do mapa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permitir o suborno da autoridade local: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_DEPOT_FINDING                            :{LTBLUE}Novo sistema de localização de depósitos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estações não uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Novo busca de caminho global (NPF, sobrepõe NTP): {ORANGE}{STRING}
 
@@ -1246,8 +1243,6 @@ STR_NETWORK_START_GAME                                          :{BLACK}Iniciar 
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Iniciar um novo jogo em rede
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Abrir Jogo
 STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Continuar um jogo multi-jogador anteriormente gravado (assegure-se de conectar com o jogador correto)
-STR_NETWORK_LOAD_SCENARIO                                       :{BLACK}Abrir Cenário
-STR_NETWORK_LOAD_SCENARIO_TIP                                   :{BLACK}Iniciar um novo jogo em rede a partir de um cenário
 
 ############ Leave those lines in this order!!
 STR_NETWORK_LANG_ANY                                            :Qualquer
@@ -1398,10 +1393,8 @@ STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}A escava
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Já está ao nível do mar
 STR_1004_TOO_HIGH                                               :{WHITE}Muito alto
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Tipo de linha não apropriado
-STR_1006_TRAIN_INSIDE_DEPOT                                     :{WHITE}Trem no depósito
 STR_1007_ALREADY_BUILT                                          :{WHITE}...já construído
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Deverá remover a linha férrea primeiro
-STR_1009_TOO_MANY_DEPOTS                                        :{WHITE}Muitos depósitos
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Construir ferrovias
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Construir ferrovias (monotrilho)
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Construir ferrovias (trem-bala)
@@ -1426,7 +1419,6 @@ STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Alternar
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Seleção de ponte - clique na ponte desejada para construir
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Selecionar a orientação do depósito
 STR_1021_RAILROAD_TRACK                                         :Ferrovias
-STR_1022_RAILROAD_TRACK_WITH_SIGNALS                            :Ferrovia com sinais
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Depósito ferroviário
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...a área é propriedade de outra empresa
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ferrovia com sinais normais
@@ -1792,8 +1784,6 @@ STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Não é po
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Não é possível construir túnel aqui...
 STR_5017_RAILROAD_TUNNEL                                        :Túnel ferroviário
 STR_5018_ROAD_TUNNEL                                            :Túnel de estrada
-STR_5019                                                        :
-STR_501A                                                        :
 STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Ponte ferroviária suspensa em aço
 STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Ponte ferroviária com vigas em aço
 STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Ponte ferroviária cantilever em aço

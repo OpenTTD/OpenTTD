@@ -548,8 +548,6 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYE
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} sasniegus'i  '{STRING}' statusu!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} no {COMPANY} sasniegusi '{STRING}' statusu!
-STR_021D                                                        :{BLACK}
-STR_021E                                                        :{WHITE}
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Radi't scena'riju
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
@@ -1155,8 +1153,6 @@ STR_5004                                                        :
 STR_500C                                                        :
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_500E_SUSPENSION_STEEL                                       :Vanšu, Terauda
-STR_5019                                                        :
-STR_501A                                                        :
 
 ##id 0x5800
 STR_5803_COMPANY_HEADQUARTERS                                   :Firmas Ofiss

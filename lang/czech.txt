@@ -605,8 +605,6 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYE
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} získal oznaceni '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} z {COMPANY} získal oznaceni '{STRING}'!
-STR_021D                                                        :{BLACK}
-STR_021E                                                        :{WHITE}
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Vytvorit mapu
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
@@ -1028,7 +1026,6 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Pouziti
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Silnicni vozidla stojí fronty (s kvantovým efektem): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Posouvat okno, kdyz je kurzor na okraji: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Povolit úplatek místní sprave: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_DEPOT_FINDING                            :{LTBLUE}Nové vyhledávání dep: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Nejednolité stanice: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nový globální algoritmus hledání cesty (NPF, nahradí NTP): {ORANGE}{STRING}
 
@@ -1303,8 +1300,6 @@ STR_NETWORK_START_GAME                                          :{BLACK}Zacit hr
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Hru po síti zacit s náhodnou mapou nebo se scenariem
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Nahrát hru
 STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Pokracovat ve drive ulozene hre pro více hracu (ujisti se, ze se pripojujes na správného hrace)
-STR_NETWORK_LOAD_SCENARIO                                       :{BLACK}Hrát mapu
-STR_NETWORK_LOAD_SCENARIO_TIP                                   :{BLACK}Zacit sitovou hru ze scenaria
 
 ############ Leave those lines in this order!!
 STR_NETWORK_LANG_ANY                                            :Jakýkoli
@@ -1455,10 +1450,8 @@ STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Úprava t
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Jiz na úrovni more
 STR_1004_TOO_HIGH                                               :{WHITE}Prilis vysoko
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Zadne pouzitelne koleje
-STR_1006_TRAIN_INSIDE_DEPOT                                     :{WHITE}Vlak v depu
 STR_1007_ALREADY_BUILT                                          :{WHITE}...jiz vystaveno
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Musis nejprve odstranit koleje
-STR_1009_TOO_MANY_DEPOTS                                        :{WHITE}Prilis mnoho dep
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Výstavba kolejí
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Výstavba monorailu
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Výstavba maglevu
@@ -1483,7 +1476,6 @@ STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Prepnout
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Vyber mostu - stiskni vybrany typ mostu pro vystavbu
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Zvolit orientaci zeleznicniho depa
 STR_1021_RAILROAD_TRACK                                         :Koleje
-STR_1022_RAILROAD_TRACK_WITH_SIGNALS                            :Koleje se semaforem
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Zeleznicni depo
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...uzemi vlastni jina spolecnost
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Zeleznicni trat s normálními signály
@@ -1849,8 +1841,6 @@ STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Zde nelz
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Zde nelze postavit tunel...
 STR_5017_RAILROAD_TUNNEL                                        :Zeleznicni tunel
 STR_5018_ROAD_TUNNEL                                            :Silnicni tunel
-STR_5019                                                        :
-STR_501A                                                        :
 STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Ocelový zaveseny zeleznicni most
 STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Ocelový trámový zeleznicni most
 STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Ocelový konzolový zeleznicni most

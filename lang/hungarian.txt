@@ -548,8 +548,6 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYE
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} elérte a '{STRING}' rangot!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} - {COMPANY} elérte a '{STRING}' rangot!
-STR_021D                                                        :{BLACK}
-STR_021E                                                        :{WHITE}
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Saját pálya készítése
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
@@ -971,7 +969,6 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatc
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Közúti jármûvek sorbanállása (quantum effektektus): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Ablakmozgatás, ha az egér a képernyõ szélén van: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Önkormányzatok lefizethetõsége: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_DEPOT_FINDING                            :{LTBLUE}Új garázskeresés: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Különbözõ vágánytípusok engedélyezése egy állomáson: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Új útvonalkeresõ (NPF, felülbírálja az NTP-t): {ORANGE}{STRING}
 
@@ -1246,8 +1243,6 @@ STR_NETWORK_START_GAME                                          :{BLACK}Játék el
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Új hálózati játék kezdése véletlen térképpel vagy misszióval
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Játék betöltése
 STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Korábban elmentett többfelhasználós játék folytatása (gyõzõdj meg, hogy megfelelõ játékosként kapcsolódtál)
-STR_NETWORK_LOAD_SCENARIO                                       :{BLACK}Pálya betöltése
-STR_NETWORK_LOAD_SCENARIO_TIP                                   :{BLACK}Új hálózati játék kezdése missziós alapon
 
 ############ Leave those lines in this order!!
 STR_NETWORK_LANG_ANY                                            :Bármilyen
@@ -1398,10 +1393,8 @@ STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Az ásás 
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Már tengerszinten van
 STR_1004_TOO_HIGH                                               :{WHITE}Túl magas
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Nincs megfelelõ sín
-STR_1006_TRAIN_INSIDE_DEPOT                                     :{WHITE}A vonat a jármûtelepen van
 STR_1007_ALREADY_BUILT                                          :{WHITE}...már van itt
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Elõbb le kell rombolnod a sínt
-STR_1009_TOO_MANY_DEPOTS                                        :{WHITE}Túl sok a raktár
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Vasútépítés
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Egysínû vasút építése
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}MagLev vasút építése
@@ -1426,7 +1419,6 @@ STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Felszedé
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Híd kiválasztása - kattints arra a hídra, amit meg akarsz építeni
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Válaszd ki a jármûtelep helyzetét
 STR_1021_RAILROAD_TRACK                                         :Vasúti sín
-STR_1022_RAILROAD_TRACK_WITH_SIGNALS                            :Vasúti sín szemaforral
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Jármûtelep
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...a terület más cégé
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Vasúti sin szemaforral
@@ -1792,8 +1784,6 @@ STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Nem épít
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Nem áshatsz ide alagutat...
 STR_5017_RAILROAD_TUNNEL                                        :Vasúti alagút
 STR_5018_ROAD_TUNNEL                                            :Közúti alagút
-STR_5019                                                        :
-STR_501A                                                        :
 STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Acél függõ vasúti híd
 STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Gerendás acél vasúti híd
 STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Konzolos acél vasúti híd

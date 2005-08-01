@@ -548,8 +548,6 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYE
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} uppnår '{STRING}' status!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} från {COMPANY} uppnår '{STRING}' status!
-STR_021D                                                        :{BLACK}
-STR_021E                                                        :{WHITE}
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Nytt scenario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
@@ -971,7 +969,6 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatc
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Vägfordonsköing (med kvanteffekter): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Scrolla vyn när musen är vid kanten: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Tillåt mutning av den lokala kommunen: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_DEPOT_FINDING                            :{LTBLUE}Ny algoritm för att hitta depå: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Icke-rektangulära stationer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Ny globalt sätt att hitta rutt (NPF, åsidosätter NTP): {ORANGE}{STRING}
 
@@ -1245,8 +1242,6 @@ STR_NETWORK_START_GAME                                          :{BLACK}Starta s
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Starta ett nytt spel med en slumpmässig karta eller från ett scenario
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Ladda spel
 STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Återuppta ett tidigare sparat spel för flera spelare (tänk på att välja rätt spelare vid start)
-STR_NETWORK_LOAD_SCENARIO                                       :{BLACK}Ladda scenario
-STR_NETWORK_LOAD_SCENARIO_TIP                                   :{BLACK}Starta ett nätverksspel från ett scenario
 
 ############ Leave those lines in this order!!
 STR_NETWORK_LANG_ANY                                            :Valfritt
@@ -1395,10 +1390,8 @@ STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Utgrävni
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Redan på havsnivå
 STR_1004_TOO_HIGH                                               :{WHITE}För hög
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Inget passande järnvägsspår
-STR_1006_TRAIN_INSIDE_DEPOT                                     :{WHITE}Tåg inuti depå
 STR_1007_ALREADY_BUILT                                          :{WHITE}...redan byggd
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Måste ta bort järnväg först
-STR_1009_TOO_MANY_DEPOTS                                        :{WHITE}För många depåer
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Bygg järnväg
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Bygg monorail
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Bygg maglev
@@ -1423,7 +1416,6 @@ STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Växla me
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Välj bro - klicka på vald bro för att bygga den
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Välj riktning för depå
 STR_1021_RAILROAD_TRACK                                         :Järnvägsspår
-STR_1022_RAILROAD_TRACK_WITH_SIGNALS                            :Järnvägsspår med signaler
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Järnvägsdepå
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...området ägs av ett annat företag
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Järnväg med normala signaler
@@ -1784,8 +1776,6 @@ STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Kan inte
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Kan inte bygga tunnel här...
 STR_5017_RAILROAD_TUNNEL                                        :Järnvägstunnel
 STR_5018_ROAD_TUNNEL                                            :Vägtunnel
-STR_5019                                                        :
-STR_501A                                                        :
 STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Upphängd järnvägsbro av stål
 STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Järnvägsbro med stålbalkar
 STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Järnvägsbro med utskjutande stålstöd

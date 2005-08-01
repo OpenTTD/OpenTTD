@@ -1288,7 +1288,8 @@ static const StringID _bridge_tile_str[(MAX_BRIDGES + 3) + (MAX_BRIDGES + 3)] = 
 static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 {
 	if ((_m[tile].m5 & 0x80) == 0) {
-		td->str = STR_5017_RAILROAD_TUNNEL + GB(_m[tile].m5, 2, 2);
+		td->str =
+			(GB(_m[tile].m5, 2, 2) == 0) ? STR_5017_RAILROAD_TUNNEL : STR_5018_ROAD_TUNNEL;
 	} else {
 		td->str = _bridge_tile_str[GB(_m[tile].m5, 1, 2) << 4 | GB(_m[tile].m2, 4, 4)];
 

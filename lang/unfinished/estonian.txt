@@ -537,8 +537,6 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{STRIN
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA16})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{STRING} saavtas '{STRING}' staatuse!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{STRING} {STRING}'st saavutas '{STRING}' staatuse!
-STR_021D                                                        :{BLACK}
-STR_021E                                                        :{WHITE}
 STR_021F                                                        :{BLUE}{COMMA16}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Kaardi tegemine
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
@@ -953,7 +951,6 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatc
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Maanteesõidukite järjekorrad (koos mahueffektidega): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Keri vaadet, kui hiir on viidud ekraani serva: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Luba kohalikele võimudele altkäemaksu maksmine: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_DEPOT_FINDING                            :{LTBLUE}Uue depoo otsimine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Luba suvalise kujuga jaamad: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Uus teeotsimise algoritm(NPF asendab NTP): {ORANGE}{STRING}
 
@@ -1227,8 +1224,6 @@ STR_NETWORK_START_GAME                                          :{BLACK}Alusta m
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Uue võrgumängu alustamine suvalise kaardiga
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Mängu laadimine
 STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Varasema võrgumängu jätkamine (vaata, et ühendad ennast õige mängijana)
-STR_NETWORK_LOAD_SCENARIO                                       :{BLACK}Laadi kaart
-STR_NETWORK_LOAD_SCENARIO_TIP                                   :{BLACK}Alusta uut võrgumängu olemasoleva kaardiga
 
 ############ Leave those lines in this order!!
 STR_NETWORK_LANG_ANY                                            :Suvaline
@@ -1377,10 +1372,8 @@ STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Kaevanus
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Juba jõutud merepinna tasemele
 STR_1004_TOO_HIGH                                               :{WHITE}Liiga kõrge
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Rööpad pole sobivad
-STR_1006_TRAIN_INSIDE_DEPOT                                     :{WHITE}Depoos on rong
 STR_1007_ALREADY_BUILT                                          :{WHITE}...juba ehitatud
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Enne tuleb raudtee eemaldada
-STR_1009_TOO_MANY_DEPOTS                                        :{WHITE}Liiga palju depoosid
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Raudtee ehitamine
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Monorelssi ehitamine
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}MagLevi ehitamine
@@ -1405,7 +1398,6 @@ STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Rööbaste
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Silla valik - vajuta sobival sillal, et seda ehitada
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Depoo orientatsiooni valimine
 STR_1021_RAILROAD_TRACK                                         :Raudteerööpad
-STR_1022_RAILROAD_TRACK_WITH_SIGNALS                            :Raudteerööpad koos signaaltuledega
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Rongi depoo
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...ala kuulub teisele ettevõttele
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Raudtee tavaliste signaaltuledega
@@ -1762,8 +1754,6 @@ STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Siia ei 
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Siia ei saa tunnelit ehitada...
 STR_5017_RAILROAD_TUNNEL                                        :Raudteetunnel
 STR_5018_ROAD_TUNNEL                                            :Maanteetunnel
-STR_5019                                                        :
-STR_501A                                                        :
 STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Terasest raudtee rippsild
 STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Terasest võrestikuga raudteesild
 STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Terasest ulgtoestikuga raudteesild

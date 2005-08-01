@@ -548,8 +548,6 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYE
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} achieves '{STRING}' status!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} of {COMPANY} achieves '{STRING}' status!
-STR_021D                                                        :{BLACK}
-STR_021E                                                        :{WHITE}
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Create Scenario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
@@ -971,7 +969,6 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatc
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Road vehicle queueing (with quantum effects): {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Pan window when mouse is at the edge: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Allow bribing of the local authority: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEW_DEPOT_FINDING                            :{LTBLUE}New depot finding: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Nonuniform stations: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}New global pathfinding (NPF, overrides NTP): {ORANGE}{STRING1}
 
@@ -1246,8 +1243,6 @@ STR_NETWORK_START_GAME                                          :{BLACK}Start Ga
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Start a new network game from a random map, or scenario
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Load Game
 STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Resume an earlier saved multiplayer game (be sure to connect as the correct player)
-STR_NETWORK_LOAD_SCENARIO                                       :{BLACK}Load Scenario
-STR_NETWORK_LOAD_SCENARIO_TIP                                   :{BLACK}Start a new network game from a scenario
 
 ############ Leave those lines in this order!!
 STR_NETWORK_LANG_ANY                                            :Any
@@ -1398,10 +1393,8 @@ STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Excavati
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Already at sea-level
 STR_1004_TOO_HIGH                                               :{WHITE}Too high
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}No suitable railway track
-STR_1006_TRAIN_INSIDE_DEPOT                                     :{WHITE}Train inside depot
 STR_1007_ALREADY_BUILT                                          :{WHITE}...already built
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Must remove railway track first
-STR_1009_TOO_MANY_DEPOTS                                        :{WHITE}Too many depots
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Railway Construction
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Monorail Construction
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}MagLev Construction
@@ -1426,7 +1419,6 @@ STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Toggle b
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Bridge selection - click on your prefered bridge to build it
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Select railway depot orientation
 STR_1021_RAILROAD_TRACK                                         :Railway track
-STR_1022_RAILROAD_TRACK_WITH_SIGNALS                            :Railway track with signals
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Railway train depot
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...area is owned by another company
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Railway track with normal signals
@@ -1792,8 +1784,6 @@ STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Can't bu
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Can't build tunnel here...
 STR_5017_RAILROAD_TUNNEL                                        :Railway tunnel
 STR_5018_ROAD_TUNNEL                                            :Road tunnel
-STR_5019                                                        :
-STR_501A                                                        :
 STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Steel suspension rail bridge
 STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Steel girder rail bridge
 STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Steel cantilever rail bridge

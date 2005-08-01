@@ -548,8 +548,6 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYE
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} achieves '{STRING}' status!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} of {COMPANY} achieves '{STRING}' status!
-STR_021D                                                        :{BLACK}
-STR_021E                                                        :{WHITE}
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Sukurti scenariju
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
@@ -967,7 +965,6 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatc
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Automobiliu vilkstine (su kvantavimo efektu): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Perstumti vaizda, kai pele pasiekia ekrano krasta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Leisti papirkineti miesto valdzia: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_DEPOT_FINDING                            :{LTBLUE}Naujo depo radimas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Nestandartines stoteles: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Globalus kelio radimo algoritmas (NPF, panaikina NTP): {ORANGE}{STRING}
 
@@ -1241,8 +1238,6 @@ STR_NETWORK_START_GAME                                          :{BLACK}Pradeti 
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Predeti nauja zaidima tinkle (atsitiktinis zemelapis ar scenarijus)
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Atverti zaidima
 STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Atstatyti anksciau issaugota zaidima tinkle (isitikink kad prisijungei prie to pacio zaidejo)
-STR_NETWORK_LOAD_SCENARIO                                       :{BLACK}Atverti scenariju
-STR_NETWORK_LOAD_SCENARIO_TIP                                   :{BLACK}Pradeti zaidima tinkle pagal scenariju
 
 ############ Leave those lines in this order!!
 STR_NETWORK_LANG_ANY                                            :Bet kokia
@@ -1391,10 +1386,8 @@ STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Kasineji
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Ir taip juros lygis
 STR_1004_TOO_HIGH                                               :{WHITE}Per auksta
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Netinkamas begis
-STR_1006_TRAIN_INSIDE_DEPOT                                     :{WHITE}Traukinys depe
 STR_1007_ALREADY_BUILT                                          :{WHITE}...jau pastatytas
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Pirmiau pasalinkite gelezinkelio begius
-STR_1009_TOO_MANY_DEPOTS                                        :{WHITE}Per daug depu
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Gelezinkelio statyba
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Vienbegio gelezinkelio statyba
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}MagLev statyba
@@ -1419,7 +1412,6 @@ STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Pasalina
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Tilto statymas - parink kur statyti tilta
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Pasirink gelezinkelio depo orientacija
 STR_1021_RAILROAD_TRACK                                         :Genezinkelio begiai
-STR_1022_RAILROAD_TRACK_WITH_SIGNALS                            :Gelezinkelio begiai su sviesoforu
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Traukiniu depas
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...sis langelis priklauso kitai kompanijai
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Gelezinkelio begiai su paprastais sviesoforais
@@ -1780,8 +1772,6 @@ STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Negalima
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Negalima cia statyti tunelio...
 STR_5017_RAILROAD_TUNNEL                                        :Gelezinkelio tunelis
 STR_5018_ROAD_TUNNEL                                            :Tunelis
-STR_5019                                                        :
-STR_501A                                                        :
 STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Plieninis kabantis gelezinkelio tiltas
 STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Plieno siju gelezinkelio tiltas
 STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Plieno konstrukciju gelezinkelio tiltas

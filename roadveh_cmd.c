@@ -561,7 +561,9 @@ static void RoadVehCrash(Vehicle *v)
 	v->cargo_count = 0;
 	SetDParam(0, pass);
 
-	AddNewsItem(STR_9031_ROAD_VEHICLE_CRASH_DRIVER+(pass!=1),
+	AddNewsItem(
+		(pass == 1) ?
+			STR_9031_ROAD_VEHICLE_CRASH_DRIVER : STR_9032_ROAD_VEHICLE_CRASH_DIE,
 		NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ACCIDENT, 0),
 		v->index,
 		0);

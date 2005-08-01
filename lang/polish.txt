@@ -548,8 +548,6 @@ STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYE
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} osiaga status: '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} z {COMPANY} osiagnelo status '{STRING}'!
-STR_021D                                                        :{BLACK}
-STR_021E                                                        :{WHITE}
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Tworzenie scenariusza
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
@@ -971,7 +969,6 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Kompaty
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Kolejki samochodow (with quantum effects): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Przesun okno kiedy kursor jest przy krawedzi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Pozwol dawac lapowki lokalnym wladzom: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_DEPOT_FINDING                            :{LTBLUE}Szukanie nowych zajezdni: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Niejednolite stacje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nowe szukanie drogi (NPF, zastepuje NTP): {ORANGE}{STRING}
 
@@ -1246,8 +1243,6 @@ STR_NETWORK_START_GAME                                          :{BLACK}Rozpoczn
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Uruchom nowa gre sieciowa z przypadkowa mapa lub scenariuszem
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Zaladuj gre
 STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Przywroc wczesniej zapisana gre wieloosobowa(upewnij sie ze polaczyles sie jako odpowiedni gracz)
-STR_NETWORK_LOAD_SCENARIO                                       :{BLACK}Zaladuj scenariusz
-STR_NETWORK_LOAD_SCENARIO_TIP                                   :{BLACK}Uruchom gre sieciowa uzywajac scenariusza
 
 ############ Leave those lines in this order!!
 STR_NETWORK_LANG_ANY                                            :Dowolny
@@ -1398,10 +1393,8 @@ STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Wykop zn
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Juz na poziome morza
 STR_1004_TOO_HIGH                                               :{WHITE}Zbyt wysoko
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Nie ma odpowiedniego rodz. torow
-STR_1006_TRAIN_INSIDE_DEPOT                                     :{WHITE}Pociag w zajezdni
 STR_1007_ALREADY_BUILT                                          :{WHITE}...juz zbudowano
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Najpierw trzeba usunac tory
-STR_1009_TOO_MANY_DEPOTS                                        :{WHITE}Zbyt wiele zajezdni
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Konstrukcja torowiska
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Konstrukcja szyny trak.
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Konstrukcja szyny MagLev
@@ -1426,7 +1419,6 @@ STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Przelacz
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Wybor mostu - klik na wybranym moscie aby go zbudowac
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Wybierz orientacje zajezdni kolejowej
 STR_1021_RAILROAD_TRACK                                         :Tory
-STR_1022_RAILROAD_TRACK_WITH_SIGNALS                            :Tory wraz z sygnalizacja
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Zajezdnia kolejowa
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...teren jest wlasnoscia innej firmy
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Tory ze zwykla sygnalizacja
@@ -1792,8 +1784,6 @@ STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Nie mozn
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Nie mozna tutaj wybudowac tunelu...
 STR_5017_RAILROAD_TUNNEL                                        :Tunel kolejowy
 STR_5018_ROAD_TUNNEL                                            :Tunel samochodowy
-STR_5019                                                        :
-STR_501A                                                        :
 STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Stalowy most kolejowy podwieszany
 STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Stalowy dzwigarowy most kolejowy
 STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Stalowy wspornikowy most kolejowy
