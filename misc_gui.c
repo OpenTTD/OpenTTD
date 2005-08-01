@@ -1328,7 +1328,9 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		break;
 	case WE_TIMEOUT:
 		if (HASBIT(w->click_state, 10)) { /* Delete button clicked */
-			FiosDelete(WP(w,querystr_d).text.buf);
+			if (!FiosDelete(WP(w,querystr_d).text.buf)) {
+				ShowErrorMessage(INVALID_STRING_ID, STR_4008_UNABLE_TO_DELETE_FILE, 0, 0);
+			}
 			SetWindowDirty(w);
 			BuildFileList();
 			if (_saveload_mode == SLD_SAVE_GAME) {

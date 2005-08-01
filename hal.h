@@ -87,7 +87,7 @@ char *FiosBrowseTo(const FiosItem *item);
 // Return path, free space and stringID
 StringID FiosGetDescText(const char **path, uint32 *tot);
 // Delete a name
-void FiosDelete(const char *name);
+bool FiosDelete(const char *name);
 // Make a filename from a name
 void FiosMakeSavegameName(char *buf, const char *name);
 

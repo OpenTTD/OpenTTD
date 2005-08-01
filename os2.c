@@ -415,12 +415,12 @@ void FiosMakeSavegameName(char *buf, const char *name)
 	sprintf(buf, "%s\\%s%s", _fios_path, name, extension);
 }
 
-void FiosDelete(const char *name)
+bool FiosDelete(const char *name)
 {
 	char path[512];
 
 	snprintf(path, lengthof(path), "%s\\%s", _fios_path, name);
-	unlink(path);
+	return unlink(path) == 0;
 }
 
 bool FileExists(const char *filename)
