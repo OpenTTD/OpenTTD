@@ -821,11 +821,11 @@ Pair SetupSubsidyDecodeParam(Subsidy *s, bool mode)
 	TileIndex tile2;
 	Pair tp;
 
-	/* if mode is false, convert into plural */
-	SetDParam(0, _cargoc.names_s[s->cargo_type] + (mode?0:32));
+	/* if mode is false, use the singular form */
+	SetDParam(0, _cargoc.names_s[s->cargo_type] + (mode ? 0 : 32));
 
 	if (s->age < 12) {
-		if (!(s->cargo_type == CT_PASSENGERS || s->cargo_type == CT_MAIL)) {
+		if (s->cargo_type != CT_PASSENGERS && s->cargo_type != CT_MAIL) {
 			SetDParam(1, STR_INDUSTRY);
 			SetDParam(2, s->from);
 			tile = GetIndustry(s->from)->xy;
