@@ -93,7 +93,6 @@ STR_0055_TON_OF_GRAIN                                           :{COMMA} tonu gr
 STR_0056_TON_OF_WOOD                                            :{COMMA} tonu medienos
 STR_0057_TON_OF_IRON_ORE                                        :{COMMA} tonu gelezies rudos
 STR_0058_TON_OF_STEEL                                           :{COMMA} tonu plieno
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA} bag of valuables
 STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} tonu vario rudos
 STR_005B_TON_OF_MAIZE                                           :{COMMA} tonu kukuruzu
 STR_005C_TON_OF_FRUIT                                           :{COMMA} tonu vaisiu
