@@ -680,7 +680,7 @@ static bool HandleCloneVehClick(Vehicle *v, Window *w)
 	}
 
 
-    DoCommandP(w->window_number, v->index, _ctrl_pressed ? 1 : 0,CcCloneRoadVeh,CMD_CLONE_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));
+    DoCommandP(w->window_number, v->index, _ctrl_pressed ? 1 : 0,CcCloneRoadVeh,CMD_CLONE_VEHICLE | CMD_MSG(STR_9009_CAN_T_BUILD_ROAD_VEHICLE));
 
 	ResetObjectToPlace();
 
