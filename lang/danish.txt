@@ -156,7 +156,6 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Det kan 
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan ikke rydde området....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, Alle retigheder reserveret
 STR_00B7_VERSION                                                :{BLACK}OpenTTD version {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2005 The OpenTTD team
 STR_TRANSLATED_BY                                               :{BLACK}  Oversætter(e) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -1259,7 +1258,6 @@ STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Lav en n
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Tilskuer spil
 STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Se et spil som tilskuer
 STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Tilslut dig selskab
-STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Help manage this company
 STR_NETWORK_REFRESH                                             :{BLACK}Genopfrisk serveren
 STR_NETWORK_REFRESH_TIP                                         :{BLACK}Genopfrisk server info
 
@@ -1286,8 +1284,6 @@ STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) He
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Behandler data..
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registere..
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Fetching game info..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Fetching company info..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient(er) foran dig
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kbytes hentet indtil videre
@@ -1324,11 +1320,9 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :synkroniserings
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :kunne ikke hente kortet
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :forbindelsen blev afbrudt
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protokol fejl
-STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :Not Authorised
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :modtog en underlig pakke
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :forkert revision
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :navnet er allerede i brug
-STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :wrong game-password
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :forkert player-id i DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :smidt ud af serveren
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :prøvede at snyde
@@ -1959,7 +1953,6 @@ STR_7022_INCOME_GRAPH                                           :{WHITE}Indkomst
 STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Profit Garf
-STR_7026_BANK_BALANCE                                           :{WHITE}Bank Balance
 STR_7027_LOAN                                                   :{WHITE}Lån
 STR_MAX_LOAN                                                    :{WHITE}Max Lån:  {BLACK}{CURRENCY64}
 STR_7028                                                        :{BLACK}{CURRENCY64}
@@ -1979,7 +1972,6 @@ STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Klik på 
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Forøg lånet
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Tilbagebetal en del af lånet
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Direktør)
-STR_7038_INAUGURATED                                            :{GOLD}Inaugurated: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Køretøjer:
 STR_TRAINS                                                      :{WHITE}{COMMA} tog
 STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} lastbil{P "" er}

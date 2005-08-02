@@ -1298,7 +1298,6 @@ STR_NETWORK_DISCONNECT                                          :{BLACK}Desconec
 STR_NETWORK_CHAT_QUERY_CAPTION                                  :{WHITE}Teclee el mensaje de texto a enviar
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introduce la cantidad de dinero que desea dar
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor protegido. Teclee la contraseña
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Company is protected. Enter password
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Lista de clientes
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} No se han encontrado dispositivos de red o juego compilado sin ENABLE_NETWORK
@@ -1328,7 +1327,6 @@ STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :error protocolo
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :no autorizado
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :recibido paquete extraño
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :versión incorrecta
-STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :name already in use
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :contraseña de juego incorrecta
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :id de jugador incorrecto en DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :expulsado por el servidor

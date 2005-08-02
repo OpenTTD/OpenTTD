@@ -154,9 +154,7 @@ STR_00B2_MESSAGE                                                :{YELLOW}Sprava
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Sprava od {STRING}
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Takto sa to neda...
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Oblast sa neda vycistit...
-STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_00B7_VERSION                                                :{BLACK}OpenTTD version {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2005 The OpenTTD team
 STR_TRANSLATED_BY                                               :{BLACK} Preklad - gpsoft
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -1639,7 +1637,6 @@ STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Nazvy st
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Vybrat velkost/typ letiska
 STR_3059_SMALL                                                  :{BLACK}Male
 STR_305A_LARGE                                                  :{BLACK}Velke
-STR_305AA_LARGE                                                 :{BLACK}Metropolitan airport
 STR_305AB_LARGE                                                 :{BLACK}Medzinarodne letisko
 STR_305B_SIZE                                                   :{BLACK}Velkost
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}

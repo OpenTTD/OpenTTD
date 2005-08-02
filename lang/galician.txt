@@ -156,7 +156,6 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Non pode
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Non podes limpar esta área....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright Orixinal {COPYRIGHT} 1995 Chris Sawyer, Tódolos dereitos reservados
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versión {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2005 The OpenTTD team
 STR_TRANSLATED_BY                                               :{BLACK}  Traductor(es) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -732,19 +731,15 @@ STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Capt.Pant. Xiga
 STR_02D9_ABOUT_OPENTTD                                          :Acerca de 'OpenTTD'
 ############ range ends	here
 
-STR_02DB_OFF                                                    :{BLACK}Off
-STR_02DA_ON                                                     :{BLACK}On
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Amosa-los subsidios
 STR_02DD_SUBSIDIES                                              :Subsidios
 STR_02DE_MAP_OF_WORLD                                           :Mapa do Mundo
-STR_EXTRA_VIEW_PORT                                             :Extra viewport
 STR_SIGN_LIST                                                   :Lista de sinais
 STR_02DF_TOWN_DIRECTORY                                         :Directorio de cidades
 STR_TOWN_POPULATION                                             :{BLACK}Poboación mundial: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vista {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copiar a vista
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copia a sitaución da vista global nesta vista
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Paste from viewport
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Pega a situación desta vista na vista global
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Unidades monetarias
@@ -1018,7 +1013,6 @@ STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posició
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Esquerda
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centro
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Dereita
-STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Window snap radius: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radio de agarre da fiestra: {ORANGE}desactivado
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interface
@@ -1301,7 +1295,6 @@ STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Non se 
 STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Non se pode arrinca-lo servidor
 STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Non se pode conectar
 STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Conexión #{NUM} fora de tempo
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} A protocol-error was made and the connection was closed
 STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} A revisión deste cliente no e igual ca revisión do servidor.
 STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Contrasinal errónea
 STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} O servidor está cheo

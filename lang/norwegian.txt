@@ -2033,7 +2033,6 @@ STR_7069_ROUTE_SUPERVISOR                                       :Oppsynsmann
 STR_706A_DIRECTOR                                               :Direktør
 STR_706B_CHIEF_EXECUTIVE                                        :Sjefsleder
 STR_706C_CHAIRMAN                                               :Formann
-STR_706D_PRESIDENT                                              :President
 STR_706E_TYCOON                                                 :Finansfyrste
 STR_706F_BUILD_HQ                                               :{BLACK}Bygg HK
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Bygg firmaets hovedkontor / se firmaets hovedkontor

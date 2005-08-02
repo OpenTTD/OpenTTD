@@ -5,19 +5,11 @@
 
 ##id 0x0000
 STR_NULL                                                        :
-STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Off edge of map
-STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Too close to edge of map
-STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Not enough cash - requires {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
 STR_EMPTY                                                       :
-STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Flat land required
-STR_0008_WAITING                                                :{BLACK}Waiting: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (en-route from
 STR_000B                                                        :{YELLOW}{STATION})
-STR_000C_ACCEPTS                                                :{BLACK}Accepts: {WHITE}
-STR_000D_ACCEPTS                                                :{BLACK}Accepts: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Passengers
 STR_0010_COAL                                                   :Coal

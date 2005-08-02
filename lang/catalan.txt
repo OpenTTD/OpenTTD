@@ -156,7 +156,6 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}No es po
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}No es pot netejar l'àrea....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright Original {COPYRIGHT} 1995 Chris Sawyer, Tots els Drets reservats
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versió {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2005 The OpenTTD team
 STR_TRANSLATED_BY                                               :{BLACK}  Traductor(s) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -741,15 +740,9 @@ STR_02DA_ON                                                     :{BLACK}Actiu
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Mostrar subvencions
 STR_02DD_SUBSIDIES                                              :Subvencions
 STR_02DE_MAP_OF_WORLD                                           :Mapa del món
-STR_EXTRA_VIEW_PORT                                             :Extra viewport
 STR_SIGN_LIST                                                   :Llista de senyals
 STR_02DF_TOWN_DIRECTORY                                         :Directori de Poblacions
 STR_TOWN_POPULATION                                             :{BLACK}Població mundial: {COMMA}
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Viewport {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copy to viewport
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copy the location of the global view to this viewport
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Paste from viewport
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Paste the location of this viewport to the global view
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Unitats de moneda
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
@@ -1197,7 +1190,6 @@ STR_NETWORK_GAME_INFO                                           :{SILVER}INFORMA
 STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Clients:  {WHITE}{COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Idioma:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Tileset:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Tamany del mapa:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versió del servidor:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adreça del servidor:  {WHITE}{STRING} : {NUM}
@@ -1251,7 +1243,6 @@ STR_NETWORK_LANG_GERMAN                                         :Alemany
 STR_NETWORK_LANG_FRENCH                                         :Francès
 ############ End of leave-in-this-order
 
-STR_NETWORK_GAME_LOBBY                                          :{WHITE}Multiplayer game lobby
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Preparant per connectar:   {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Una llista de totes les empreses actuals en aquest joc. Pots utilitzar una o bé iniciar un
@@ -1349,7 +1340,6 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE} El serv
 STR_NETWORK_SERVER                                              :Servidor
 STR_NETWORK_CLIENT                                              :Client
 
-STR_NETWORK_CLIENTLIST_NONE                                     :(none)
 STR_NETWORK_CLIENTLIST_KICK                                     :Breu
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Entregar diners
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Parlar a tothom
@@ -1368,7 +1358,6 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Tamany-
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Cost: {CURRENCY}
 STR_0801_COST                                                   :{RED}Cost: {CURRENCY}
-STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Income: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Ingressos: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transferir: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Transferir: {CURRENCY}
@@ -1525,7 +1514,6 @@ STR_2040_CINEMA                                                 :Cine
 STR_2041_SHOPPING_MALL                                          :Grans Magatzems
 STR_2042_DO_IT                                                  :{BLACK}Fer-ho
 STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}Llista de coses per fer en aquesta població - clica en un item per més detalls
-STR_2044_CARRY_OUT_THE_HIGHLIGHTED                              :{BLACK}Carry out the highlighted action in the list above
 STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Accions disponibles:
 STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Petita campanya de publicitat
 STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Important campanya de publicitat
@@ -1568,7 +1556,6 @@ STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}No es po
 STR_2806                                                        :{WHITE}{STRING}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...massa senyals
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}No es pot situar un senyal aqui...
-STR_280A_SIGN                                                   :Sign
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Editar el text del senyal
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}No es pot canviar el nom del senyal...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Selecciona el tipus d'arbre a plantar
@@ -1604,7 +1591,6 @@ STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}Ratis lo
 STR_3035_APPALLING                                              :Pèsim
 STR_3036_VERY_POOR                                              :Molt Pobre
 STR_3037_POOR                                                   :Pobre
-STR_3038_MEDIOCRE                                               :Mediocre
 STR_3039_GOOD                                                   :Bó
 STR_303A_VERY_GOOD                                              :Molt Bó
 STR_303B_EXCELLENT                                              :Excelent
@@ -1943,7 +1929,6 @@ STR_700A_COMPANY_NAME                                           :Nom Empresa
 STR_700B_PRESIDENT_S_NAME                                       :Nom President
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}No es pot canviar el nom d'empresa...
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}No es pot canviar el nom de president...
-STR_700E_FINANCES                                               :{WHITE}{COMPANY} Finances {BLACK}{PLAYERNAME}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Despeses/Ingresos
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Construcció

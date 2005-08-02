@@ -534,8 +534,6 @@ STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Generel
 STR_MESSAGES_ALL                                                :{YELLOW}Inställning för alla meddelandetyper (på/av/summarisk)
 STR_MESSAGE_SOUND                                               :{YELLOW}Spela upp ljud för summariska nyhetsmeddelanden
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...för långt från föregående destination
-STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top companies who reached {NUM}{}({STRING} Level)
-STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Company League Table in {NUM}
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Affärsman
 STR_0214_ENTREPRENEUR                                           :Entreprenör
@@ -1011,8 +1009,6 @@ STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Standar
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Standard serviceintervall för flygplan: {ORANGE}{STRING} dagar
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standard serviceintervall för flygplan: {ORANGE}av
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Standard serviceintervall för skepp: {ORANGE}{STRING} dagar
-STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Default service interval for ships: {ORANGE}av
-STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Disable servicing when breakdowns set to none: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Färgade nyheter visas i: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Startdatum: {ORANGE}{STRING}

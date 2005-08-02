@@ -154,7 +154,6 @@ STR_00B2_MESSAGE                                                :{YELLOW}Wiadomo
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Wiadomosc od {STRING}
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Niemozna tego zrobic....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Nie mozna wyczyscic terenu....
-STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_00B7_VERSION                                                :{BLACK}Wersja OpenTTD {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2005 Zespol OpenTTD
 STR_TRANSLATED_BY                                               :{BLACK}  Tlumacz(e) - : Tom and PolPot and Spooqy
@@ -1720,7 +1719,6 @@ STR_481A_FARM                                                   :Farma
 STR_481B_LUMBER_MILL                                            :Tartak
 STR_481C_COTTON_CANDY_FOREST                                    :Las waty cukrowej
 STR_481D_CANDY_FACTORY                                          :Zaklad cukierniczy
-STR_481E_BATTERY_FARM                                           :Battery Farm
 STR_481F_COLA_WELLS                                             :Studnia Coli
 STR_4820_TOY_SHOP                                               :Sklep z zabawkami
 STR_4821_TOY_FACTORY                                            :Fabryka zabawek
@@ -2034,8 +2032,6 @@ STR_7067_TRAFFIC_MANAGER                                        :Zarzadca ruchu
 STR_7068_TRANSPORT_COORDINATOR                                  :Koordynator transportu
 STR_7069_ROUTE_SUPERVISOR                                       :Kierownik drog
 STR_706A_DIRECTOR                                               :Dyrektor
-STR_706B_CHIEF_EXECUTIVE                                        :Chief Executive
-STR_706C_CHAIRMAN                                               :Chairman
 STR_706D_PRESIDENT                                              :Prezes
 STR_706E_TYCOON                                                 :Magnat
 STR_706F_BUILD_HQ                                               :{BLACK}Budowa siedziby gl.

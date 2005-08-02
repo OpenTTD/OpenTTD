@@ -1114,7 +1114,6 @@ STR_BUOY_IS_IN_USE                                              :{WHITE}... a bó
 
 STR_LANDINFO_COORDS                                             :{BLACK}Koordináták: {LTBLUE}{NUM}x{NUM} ({STRING})
 
-STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Can't remove part of station...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Itt nem lehet átalakítani a sínt...
 STR_CONVERT_RAIL_TIP                                            :{BLACK}Sínek átalakítása a kiválasztott típusra
 
@@ -2587,7 +2586,6 @@ STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Új kapac
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nem alakíthatod át a hajót...
 STR_9842_REFITTABLE                                             :(átalakítható)
 STR_GO_TO_SHIP_DEPOT                                            :Menj a {TOWN}i kikötõbe
-SERVICE_AT_SHIP_DEPOT                                           :Service at {TOWN} Ship Depot
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Repterek
@@ -2659,7 +2657,6 @@ STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Átalakítá
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Új kapacitás: {GOLD}{STRING}{}{BLACK}Átalakítás költsége: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nem alakíthatod át a repülõgépet...
 STR_GO_TO_AIRPORT_HANGAR                                        :Menj a {STATION} repülõtér hangárjába
-SERVICE_AT_AIRPORT_HANGAR                                       :Service at {STATION} Hangar
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeppelinbaleset {STATION} közelében!

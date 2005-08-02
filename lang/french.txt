@@ -966,7 +966,6 @@ STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Affiche
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Signaux ferroviaires du côté du sens de conduite: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Afficher le bilan de finances en fin d'année: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Compatibilité TTDPatch "nonstop handling": {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROADVEH_QUEUE                                ::{LTBLUE}Road vehicle queueing (avec effets quantiques): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Défiler la vue horizontalement avec le pointeur: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permettre la corruption de la municipalité: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Gares non uniformes: {ORANGE}{STRING}
@@ -1296,7 +1295,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Déconnecter
 
 STR_NETWORK_CHAT_QUERY_CAPTION                                  :{WHITE}Saisir le message à envoyer
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Enter the amount of money you want to give
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Le serveur est protégé. Entrez le mot de passe
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}La compagnie est protégée. Entrez le mot de passe
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Liste des clients
@@ -2470,7 +2468,6 @@ STR_9004_NEW_VEHICLES                                           :{BLACK}Nouveaux
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nouveaux véhicules
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Construire
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Impossible de construire le véhicule...
-STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Details)
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Âge: {LTBLUE}{STRING}{BLACK}   Coût d'entretien: {LTBLUE}{CURRENCY}/an
 STR_900E_MAX_SPEED                                              :{BLACK}Vitesse max.: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit de cette année: {LTBLUE}{CURRENCY}  (année dernière: {CURRENCY})
@@ -2651,7 +2648,6 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Renommer
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Renommer type d'aéronef
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Impossible de renommer type d'aéronef...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Réaménager aéronef pour transporter un différent type de cargaison
-STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Refit)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Réaménager aéronef
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Choisir type de cargaison à transporter
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Réaménager aéronef pour transporter type de cargaison sélectionné

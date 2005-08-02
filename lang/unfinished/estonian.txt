@@ -14,7 +14,6 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Maa peab olema tasane
 STR_0008_WAITING                                                :{BLACK}Ootel: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (en-route from
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Vıtab vastu: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Vıtab vastu: {GOLD}
@@ -156,7 +155,6 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Seda ei 
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Seda ala ei saa puhastada....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Originaali autoriıigus {COPYRIGHT} 1995 Chris Sawyer, Kıik ıigused kaitstud
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versioon {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2005 The OpenTTD team
 STR_TRANSLATED_BY                                               :{BLACK}  Tılkija(d) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -1042,7 +1040,6 @@ STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Muuda k
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Luba muutuvad tootmisv‰‰rtused: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Suudub kontrollpunti: {WAYPOINT}
-STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Heading for {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT                                              :L‰bi punkti {WAYPOINT}
 STR_GO_NON_STOP_TO_WAYPOINT                                     :L‰bi peatumata punkti{WAYPOINT}

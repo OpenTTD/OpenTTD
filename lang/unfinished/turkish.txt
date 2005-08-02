@@ -103,7 +103,6 @@ STR_005F_TON_OF_PAPER                                           :{COMMA16} ton k
 STR_0060_BAG_OF_GOLD                                            :{COMMA16} çanta altin
 STR_0061_OF_WATER                                               :{VOLUME} su
 STR_0062_TON_OF_WHEAT                                           :{COMMA16} ton bugday
-STR_0063_OF_RUBBER                                              :{VOLUME} of rubber
 STR_0064_TON_OF_SUGAR                                           :{COMMA16} ton seker
 STR_0065_TOY                                                    :{COMMA16} oyuncak
 STR_0066_BAG_OF_CANDY                                           :{COMMA16} çanta sekerleme
@@ -148,7 +147,6 @@ STR_00AC_PL                                                     :{TINYFONT}PL
 STR_00AD_FZ                                                     :{TINYFONT}FG
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
-STR_00B0_MAP                                                    :{WHITE}Map - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Oyun Seçenekleri
 STR_00B2_MESSAGE                                                :{YELLOW}Mesaj
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Mesaj {STRING}
@@ -219,38 +217,21 @@ STR_00FD_SAWMILL                                                :{BLACK}{TINYFON
 STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Petrol Rafinerisi
 STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Çiftlik
 STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Fabrika
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Printing Works
 STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Petrol Kuyusu
 STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Demir Madeni
 STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Çelik Isletmesi
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}Banka
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Paper Mill
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Altin Madeni
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Food Processing Plant
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Elmas Madeni
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Bakir Madeni
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Fruit Plantation
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Rubber Plantation
 STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Su Kaynagi
 STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Su Kulesi
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Lumber Mill
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Candyfloss Forest
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Sweet Factory
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Battery Farm
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Cola Wells
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Toy Shop
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Toy Factory
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Plastic Fountains
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Fizzy Drink Factory
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Bubble Generator
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Toffee Quarry
 STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Seker Madeni
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Demiryolu Istasyonu
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Kamyon Yükleme Yeri
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Otobüs Gari
 STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Havaalani/Helikopter Pisti
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Liman
-STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Rough Land
 STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Yesil Alan
 STR_0122_BARE_LAND                                              :{BLACK}{TINYFONT}Açik Arazi
 STR_0123_FIELDS                                                 :{BLACK}{TINYFONT}Tarlalar
@@ -266,7 +247,6 @@ STR_012C_MESSAGE                                                :{WHITE}Mesaj
 STR_012D                                                        :{WHITE}{STRING}
 STR_012E_CANCEL                                                 :{BLACK}Iptal
 STR_012F_OK                                                     :{BLACK}Tamam
-STR_0130_RENAME                                                 :{BLACK}Rename
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Çok fazla isim tanimlandi
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Seçili isim kullaniliyor
 
@@ -375,9 +355,7 @@ STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Genel fi
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Grafikleri göster
 STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Firma lig tablosunu göster
 STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Firma trenleri listesini göster
-STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Display list of company's road vehicles
 STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Firma gemileri listesini göster
-STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Display list of company's aircraft
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Yakinlastir
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Uzaklastir
 STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Demiryolu döse
@@ -399,7 +377,6 @@ STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Zeminin 
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Zeminin bir kösesini yükselt
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Kaydirma çubugu - listeyi asagi/yukari kaydirir
 STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Kaydirma çubugu - listeyi sola/saga kaydirir
-STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Show land contours on map
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Araçlari haritada göster
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Endüstrileri haritada göster
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Tasima rotalarini haritada göster
@@ -413,8 +390,6 @@ STR_AGE                                                         :{COMMA16} yil (
 STR_AGE_RED                                                     :{RED}{COMMA16} yil ({COMMA16})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Road vehicle
-STR_019D_AIRCRAFT                                               :Aircraft
 STR_019E_SHIP                                                   :Gemi
 STR_019F_TRAIN                                                  :Tren
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA16} yaslandi
@@ -453,7 +428,6 @@ STR_01BE_19TH                                                   :19.
 STR_01BF_20TH                                                   :20.
 STR_01C0_21ST                                                   :21.
 STR_01C1_22ND                                                   :22.
-STR_01C2_23RD                                                   :23rd
 STR_01C3_24TH                                                   :24.
 STR_01C4_25TH                                                   :25.
 STR_01C5_26TH                                                   :26.
