@@ -1,4 +1,4 @@
-/* $Id: $ */
+/* $Id$ */
 
 /** @file bridge.h Header file for bridges */
 
