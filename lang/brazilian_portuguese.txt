@@ -2370,6 +2370,12 @@ STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Novos Ve
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Novos Veículos Ferroviários(Monotrilho)
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Novos Veículos Ferroviários(Trem-Bala)
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Construir Veículo
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clonar Veículo
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Isso vai construir uma cópia do veículo. Control-clique vai compartilhar as ordens
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Isso vai construir uma cópia do veículo. Clique neste botão e depois em um veículo dentro ou fora do depósito. Control-clique vai compartilhar as ordens
+STR_CLONE_TRAIN                                                 :{BLACK}Clonar Trem
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Isso vai construir uma cópia do trem, incluindo os vagões. Control-clique vai compartilhar as ordens
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Isso vai construir uma cópia do trem, incluindo os vagões. Clique nesse botão e depois em um trem dentro ou fora do depósito . Control-clique vai compartilhar as ordens
 STR_8820_RENAME                                                 :{BLACK}Renomear
 STR_8823_SKIP                                                   :{BLACK}Saltar
 STR_8824_DELETE                                                 :{BLACK}Eliminar
@@ -2521,6 +2527,9 @@ STR_9804_NEW_SHIPS                                              :{BLACK}Novos Ba
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Barcos
 STR_9808_NEW_SHIPS                                              :{WHITE}Novos Barcos
 STR_9809_BUILD_SHIP                                             :{BLACK}Construir Barco
+STR_CLONE_SHIP                                                  :{BLACK}Clonar Navio
+STR_CLONE_SHIP_INFO                                             :{BLACK}Isso vai construir uma cópia do navio. Control-clique vai compartilhar as ordens
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Isso vai construir uma cópia de um navio. Clique nesse botão e depois em um navio dentro ou fora do depósito. Control-clique vai compartilhar as ordens
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}O barco deverá estar parado no depósito
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Não é possível vender barco...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Não é possível construir barco...
@@ -2585,6 +2594,9 @@ STR_A000_AIRPORTS                                               :{WHITE}Aeroport
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Não é possível construir aeroporto aqui...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangar
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nova Aeronave
+STR_CLONE_AIRCRAFT                                              :{BLACK}Clonar Aeronave
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Isso vai construir uma cópia da aeronave. Control-clique vai compartilhar as ordens
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Isso vai construir uma cópia de uma aeronave. Clique nesse botão e depois em uma aeronave dentro ou fora do hangar. Control-clique vai compartilhar as ordens
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nova Aeronave
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construir Aeronave
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Não é possível construir aeronave...

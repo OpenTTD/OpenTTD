@@ -1321,6 +1321,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :recibiuse un pa
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :revisión errónea
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :o nome xa está en uso
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :contrasinal incorrecta
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :id de xogador errónea en DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :pateado polo servidor
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :intentaba usar un truco
 ############ End of leave-in-this-order
@@ -1360,6 +1361,8 @@ STR_0800_COST                                                   :{TINYFONT}{RED}
 STR_0801_COST                                                   :{RED}Coste: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Ingreso: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Ingreso: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transferir: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Transferir: {CURRENCY}
 STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Coste Estimado: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Estimated Coste: {CURRENCY}
 STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Ingreso Estimado: {CURRENCY}
@@ -1445,6 +1448,9 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Paso a nivel pa
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Cidades
 STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
+STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
+STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Debes demole-lo edificio primeiro
 STR_2005                                                        :{WHITE}{TOWN}
@@ -1627,6 +1633,7 @@ STR_305AA_LARGE                                                 :{BLACK}Aeroport
 STR_305AB_LARGE                                                 :{BLACK}Aeroporto Internacional
 STR_305B_SIZE                                                   :{BLACK}Tamaño
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION} {STATIONFEATURES}
 STR_305E_RAILROAD_STATION                                       :Estación de ferrocarril
 STR_305F_AIRCRAFT_HANGAR                                        :Hangar de aeronaves
 STR_3060_AIRPORT                                                :Aeroporto
@@ -1728,6 +1735,9 @@ STR_482F_COST                                                   :{BLACK}Coste: {
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Non se pode construír ese tipo de industria aí...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...o bosqur só se pode plantar sobre a liña de neve
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}¡{INDUSTRY} anuncia o seu peche inminente!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}¡Problemas de suministro en {INDUSTRY} provocan o seu peche inminente!
+STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}¡{INDUSTRY} incrementa a súa producción!
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} baixa a producción nun 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...só se pode emprazar cerca dos bordes do mapa
 STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}¡A producción de {STRING} en {INDUSTRY} sube un {COMMA}%!
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}¡A producción de {STRING} en {INDUSTRY} baixa un {COMMA}%!

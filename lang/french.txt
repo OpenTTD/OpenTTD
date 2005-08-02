@@ -835,31 +835,31 @@ STR_TOWNNAME_CZECH                                              :Tchèques
 STR_TOWNNAME_SWISS                                              :Suisse
 ############ end of	townname region
 
-STR_CURR_GBP                                                    :Livres ({POUNDSIGN})
-STR_CURR_USD                                                    :Dollars ($)
-STR_CURR_EUR                                                    :Euros (¤)
-STR_CURR_YEN                                                    :Yens ({YENSIGN})
-STR_CURR_ATS                                                    :Shilings Australiens (ATS)
-STR_CURR_BEF                                                    :Francs Belges (BEF)
-STR_CURR_CHF                                                    :Francs Suisses (CHF)
-STR_CURR_CZK                                                    :Couronnes Tchèques (CZK)
-STR_CURR_DEM                                                    :Deutschmark (DEM)
-STR_CURR_DKK                                                    :Couronnes Danoise (DKK)
+STR_CURR_GBP                                                    :Livre ({POUNDSIGN})
+STR_CURR_USD                                                    :Dollar ($)
+STR_CURR_EUR                                                    :Euro (¤)
+STR_CURR_YEN                                                    :Yen ({YENSIGN})
+STR_CURR_ATS                                                    :Shiling Australien (ATS)
+STR_CURR_BEF                                                    :Franc Belge (BEF)
+STR_CURR_CHF                                                    :Franc Suisse (CHF)
+STR_CURR_CZK                                                    :Couronne Tchèque (CZK)
+STR_CURR_DEM                                                    :Mark Allemand (DEM)
+STR_CURR_DKK                                                    :Couronne Danoise (DKK)
 STR_CURR_ESP                                                    :Peseta (ESP)
-STR_CURR_FIM                                                    :Marks Finlandais (FIM)
-STR_CURR_FRF                                                    :Francs Français (FRF)
-STR_CURR_GRD                                                    :Drachmes Grec (GRD)
-STR_CURR_HUF                                                    :Hungarian Forint (HUF)
-STR_CURR_ISK                                                    :Couronnes Islandaises (ISK)
-STR_CURR_ITL                                                    :Lires Italiennes (ITL)
-STR_CURR_NLG                                                    :Florins Hollandais (NLG)
-STR_CURR_NOK                                                    :Cour. Norvégiennes (NOK)
-STR_CURR_PLN                                                    :Polish Zloty (PLN)
-STR_CURR_ROL                                                    :Leu Roumain (Lei)
-STR_CURR_RUR                                                    :Roubles Russes (RUR)
-STR_CURR_SEK                                                    :Couronnes Suédoises (SEK)
+STR_CURR_FIM                                                    :Mark Finlandais (FIM)
+STR_CURR_FRF                                                    :Franc Françai (FRF)
+STR_CURR_GRD                                                    :Drachme Grec (GRD)
+STR_CURR_HUF                                                    :Florint Hongrois (HUF)
+STR_CURR_ISK                                                    :Couronne Islandaise (ISK)
+STR_CURR_ITL                                                    :Lire Italienne (ITL)
+STR_CURR_NLG                                                    :Florint Hollandais (NLG)
+STR_CURR_NOK                                                    :Courronne Norvégienne (NOK)
+STR_CURR_PLN                                                    :Nouv.Zloty  Polonais(PLN)
+STR_CURR_ROL                                                    :Leu Roumain (LEI)
+STR_CURR_RUR                                                    :Rouble Russe (RUR)
+STR_CURR_SEK                                                    :Couronne Suédoise (SEK)
 
-STR_CURR_CUSTOM                                                 :Personnalisé...
+STR_CURR_CUSTOM                                                 :Personnalisée...
 
 STR_OPTIONS_LANG                                                :{BLACK}Langue
 STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -966,6 +966,7 @@ STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Affiche
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Signaux ferroviaires du côté du sens de conduite: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Afficher le bilan de finances en fin d'année: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Compatibilité TTDPatch "nonstop handling": {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE                                ::{LTBLUE}Road vehicle queueing (avec effets quantiques): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Défiler la vue horizontalement avec le pointeur: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permettre la corruption de la municipalité: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Gares non uniformes: {ORANGE}{STRING}
@@ -985,7 +986,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Renouve
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Auto-renouveler les véhicules {ORANGE}{STRING}{LTBLUE} mois avant/après l'âge maximum
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Argent nécessaire pour l'auto-renouvelement : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Temps d'affichage des messages d'erreur: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Montrer la population d'une ville dans son label : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Afficher la population d'une ville dans son label : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Arbres invisibles (quand les bâtiments sont transparents) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altitude d'enneigement: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Etendue max. des stations: {ORANGE}{STRING} {RED}Attention: Valeur élevée = jeu lent
@@ -1492,7 +1493,7 @@ STR_201F_OLD_HOUSES                                             :Vieilles maison
 STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Municipalité
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Afficher des informations sur la municipalité
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}Municipalité de {TOWN}
-STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Réputation de la compagnie de transport:
+STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Notation de la compagnie de transport:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subventions
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Offres de subvention pour le transport de:-
@@ -1595,9 +1596,9 @@ STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Vous dev
 
 STR_3030_RENAME_STATION_LOADING                                 :Renommer la gare
 STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Impossible de renommer la gare...
-STR_3032_RATINGS                                                :{BLACK}Réputation
+STR_3032_RATINGS                                                :{BLACK}Notations
 STR_3033_ACCEPTS                                                :{BLACK}Accepte
-STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}Réputation du service de transport:
+STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}Notation du service de transport:
 
 ############ range for rating starts
 STR_3035_APPALLING                                              :Épouvantable
@@ -1631,7 +1632,7 @@ STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Choisir 
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Choisir l'orientation de l'arrêt d'autobus
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Choix de l'orientation de l'aire de chargement
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centrer la vue sur la station
-STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Montrer la réputation de la station
+STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Afficher la notation de la station
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Renommer la station
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Afficher les marchandises acceptées
 STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Nom des stations - Cliquer sur un nom pour centrer la vue
@@ -2020,7 +2021,7 @@ STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Nous sommes à la recherche d'un acheteur pour notre compagnie{}{}Voulez vous acheter {COMPANY} pour {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Banqueroute!
 STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY} à été fermée par ses créanciers et tous ses actifs vendus!
-STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Nouvelle compagnie de transport crée!
+STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Fondation d'une nouvelle compagnie de transport!
 STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} commence à construire près de {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Impossible d'acheter la compagnie...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Valeur des cargaisons
@@ -2369,6 +2370,12 @@ STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nouveaux
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nouveaux véhicules monorail
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nouveaux véhicules magnétiques
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Construire
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Copier Véhicule
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Effectuer la copie d'un véhicule routier. Ctrl-Click partagera les ordres
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Effectuer la copie d'un véhicule routier. Cliquer ici puis sur un véhicule routier dans ou hors un dépot. Ctrl-Click partagera les ordres
+STR_CLONE_TRAIN                                                 :{BLACK}Copier Train
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Effectuer la copie d'un train et ses wagons. Ctrl-Click partagera les ordres
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Effectuer la copie d'un train et ses wagons. Cliquer ici puis sur un train dans ou hors un dépot. Ctrl-Click partagera les ordres
 STR_8820_RENAME                                                 :{BLACK}Renommer
 STR_8823_SKIP                                                   :{BLACK}Suivant
 STR_8824_DELETE                                                 :{BLACK}Supprimer
@@ -2409,7 +2416,7 @@ STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Selectio
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Construire le véhicule sélectionné
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Renommer le type du véhicule
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Action courante du train. Cliquer pour le démarrer/l'arrêter
-STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Montrer les ordres du train
+STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Afficher les ordres du train
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrer la vue sur le train
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Envoyer le train au dépôt
 STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Forcer le train à continuer sans tenir compte des feux
@@ -2419,8 +2426,8 @@ STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Augmente
 STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Diminuer l'intervalle d'entretien
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Afficher des informations les marchandises
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Afficher des informations sur les wagons
-STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Montrer les capacités de chaque wagon
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Montre la capacité totale du train, séparé par type de marchandise
+STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Afficher la capacité de chaque wagon
+STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Afficher la capacité totale du train, par type de marchandise
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Liste des ordres - Cliquer sur un ordre pour le sélectionner.  Cliquer avec Ctrl déplace la vue sur la station
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Saute l'ordre courant, et enchaîne sur le suivant
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Supprime l'ordre sélectionné
@@ -2520,6 +2527,9 @@ STR_9804_NEW_SHIPS                                              :{BLACK}Nouveaux
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Navires
 STR_9808_NEW_SHIPS                                              :{WHITE}Nouveaux navires
 STR_9809_BUILD_SHIP                                             :{BLACK}Construire navire
+STR_CLONE_SHIP                                                  :{BLACK}Copier Navire
+STR_CLONE_SHIP_INFO                                             :{BLACK}Effectuer la copie d'un navire. Ctrl-Click partagera les ordres
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Effectuer la copie d'un navire. Cliquer ici puis sur un navire dans ou hors d'un dépot naval. Ctrl-Click partagera les ordres
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Navire doit être arrêté au dépôt
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Impossible de vendre navire...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Impossible de construire navire...
@@ -2584,6 +2594,9 @@ STR_A000_AIRPORTS                                               :{WHITE}Aéroport
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Impossible de construire un aéroport ici...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}Hangar à {STATION}
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nouvel aéronef
+STR_CLONE_AIRCRAFT                                              :{BLACK}Copier aéronef
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Effectuer une copie de l'aéronef. Ctrl-Click partagera les ordres
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Effectuer la copie d'un aéronef. Cliquer ici puis sur un aéronef dans ou hors un hangar. Ctrl-Click partagera les ordres
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nouvel Aéronef
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construire aéronef
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Impossible de construire l'aéronef...
@@ -2700,7 +2713,7 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Devise personnalisée
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taux de change : {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA}
-STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separateur :
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Séparateur :
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Préfixe :
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffixe :
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Passer à l'Euro : {ORANGE}{NUM}
@@ -2718,10 +2731,10 @@ STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION
 STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Aéronefs
 STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Navires
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Montre tous les trains qui ont cette station dans leur itinéraire
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Montre tous les véhicules routiers qui ont cette station dans leur itinéraire
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Montre tous les aéronefs qui ont cette station dans leur itinéraire
-STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Montre tous les navires qui ont cette station dans leur itinéraire
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Afficher les trains ayant cette station dans leurs cédules
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Afficher les véhicules routiers ayant cette station dans leurs cédules
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Afficher les aéronefs ayant cette station dans leurs cédules
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Afficher les navires ayant cette station dans leurs cédules
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Remplacement véhicules
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacer des Véhicules

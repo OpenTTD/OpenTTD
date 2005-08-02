@@ -2370,6 +2370,12 @@ STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Neues Sc
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Neue Einschienbahnzüge
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Neue Magnetzüge
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Fahrzeug bauen
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Fahrzeug duplizieren
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Baut eine Kopie des Fahrzeuges. Strg+Klick erzeugt gemeinsamen Fahrplan
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Baut eine Kopie des Fahrzeuges. Klicke diese Schaltfläche und dann auf ein Fahrzeug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
+STR_CLONE_TRAIN                                                 :{BLACK}Zug duplizieren
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Baut eine Kopie des Zuges mit allen Waggons. Strg+Klick erzeugt gemeinsamen Fahrplan
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Baut eine Kopie des Zuges mit allen Waggons. Klicke diese Schaltfläche und dann auf einen Zug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
 STR_8820_RENAME                                                 :{BLACK}Umbenennen
 STR_8823_SKIP                                                   :{BLACK}Übergehen
 STR_8824_DELETE                                                 :{BLACK}Löschen
@@ -2521,6 +2527,9 @@ STR_9804_NEW_SHIPS                                              :{BLACK}Neue Sch
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Schiff{P "" e}
 STR_9808_NEW_SHIPS                                              :{WHITE}Neue Schiffe
 STR_9809_BUILD_SHIP                                             :{BLACK}Baue Schiff
+STR_CLONE_SHIP                                                  :{BLACK}Schiff duplizieren
+STR_CLONE_SHIP_INFO                                             :{BLACK}Baut eine Kopie des Schiffes. Strg+Klick erzeugt gemeinsamen Fahrplan
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Baut eine Kopie des Schiffes. Klicke diese Schaltfläche und dann auf eine Schiff innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Schiff muss in der Werft angehalten werden
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Kann das Schiff nicht verkaufen...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kann das Schiff nicht bauen...
@@ -2585,6 +2594,9 @@ STR_A000_AIRPORTS                                               :{WHITE}Flughäfe
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Flughafen kann hier nicht gebaut werden...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Flugzeughangar
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Neues Flugzeug
+STR_CLONE_AIRCRAFT                                              :{BLACK}Flugzeug duplizieren
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Baut eine Kopie des Flugzeuges. Strg+Klick erzeugt gemeinsamen Fahrplan
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Baut eine Kopie des Flugzeuges. Klicke diese Schaltfläche und dann auf eine Flugzeug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Neues Flugzeug
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Flugzeug bauen
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kann das Flugzeug nicht bauen...
