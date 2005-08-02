@@ -1,4 +1,4 @@
-/* $Id: $ */
+/* $Id$ */
 
 /** @file railtypes.h
  * All the railtype-specific information is stored here.
