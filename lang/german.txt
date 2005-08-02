@@ -421,9 +421,9 @@ STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING}
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} ist veraltet
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} ist völlig veraltet und sollte ersetzt werden
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Gebietsinformation
-STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Kosten für die Räumung: {LTBLUE}N/A
+STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Kosten für die Räumung: {LTBLUE}k.A.
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Kosten für die Räumung: {LTBLUE}{CURRENCY}
-STR_01A6_N_A                                                    :N/A
+STR_01A6_N_A                                                    :k.A.
 STR_01A7_OWNER                                                  :{BLACK}Eigentümer: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Gehört zur Gemeinde: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Keine
@@ -1949,12 +1949,12 @@ STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Baukosten
 STR_7012_NEW_VEHICLES                                           :{GOLD}Neue Fahrzeuge
 STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Betriebskosten Züge
-STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Betriebskosten Fahrzeug
+STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Betriebskosten Fahrzeuge
 STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Betriebskosten Flugzeuge
 STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Betriebskosten Schiffe
 STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Betriebskosten Gebäude
 STR_7018_TRAIN_INCOME                                           :{GOLD}Einnahmen Züge
-STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Einnahmen Fahrzeug
+STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Einnahmen Fahrzeuge
 STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Einnahmen Flugzeuge
 STR_701B_SHIP_INCOME                                            :{GOLD}Einnahmen Schiffe
 STR_701C_LOAN_INTEREST                                          :{GOLD}Kreditzinsen
@@ -2400,7 +2400,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Kann kei
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Kann den Auftrag nicht löschen...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kann den Auftrag nicht bearbeiten...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kann das Fahrzeug nicht bewegen...
-STR_8838_N_A                                                    :N/A{SKIP}
+STR_8838_N_A                                                    :k.A.{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Kann Schienenfahrzeug nicht verkaufen...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Kann keinen weg zum Depot finden
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Kann den Zug nicht anhalten/starten ...
