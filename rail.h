@@ -142,6 +142,8 @@ typedef enum SignalStates {
 /** This struct contains all the info that is needed to draw and construct tracks.
  */
 typedef struct RailtypeInfo {
+	/** Struct containing the main sprites. @note not all sprites are listed, but only
+	 *  the ones used directly in the code */
 	struct {
 		SpriteID track_y;      ///< single piece of rail in Y direction, with ground
 		SpriteID track_ns;     ///< two pieces of rail in North and South corner (East-West direction)
@@ -153,6 +155,23 @@ typedef struct RailtypeInfo {
 		SpriteID single_e;     ///< single piece of rail in the eastern corner
 		SpriteID single_w;     ///< single piece of rail in the western corner
 	} base_sprites;
+
+	/** struct containing the sprites for the rail GUI. @note only sprites referred to
+	 * directly in the code are listed */
+	struct {
+		SpriteID build_ns_rail;      ///< button for building single rail in N-S direction
+		SpriteID build_x_rail;       ///< button for building single rail in X direction
+		SpriteID build_ew_rail;      ///< button for building single rail in E-W direction
+		SpriteID build_y_rail;       ///< button for building single rail in Y direction
+		SpriteID auto_rail;          ///< button for the autorail construction
+		SpriteID build_depot;        ///< button for building depots
+		SpriteID build_tunnel;       ///< button for building a tunnel
+		SpriteID convert_rail;       ///< button for converting rail
+	} gui_sprites;
+
+	struct {
+		StringID toolbar_caption;
+	} strings;
 
 	/** sprite number difference between a piece of track on a snowy ground and the corresponding one on normal ground */
 	SpriteID snow_offset;
