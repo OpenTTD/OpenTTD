@@ -339,12 +339,12 @@ STR_SORT_BY_DROPDOWN_NAME                                       :Name
 STR_SORT_BY_DATE                                                :{BLACK}Datum
 STR_SORT_BY_UNSORTED                                            :Unsortiert
 STR_SORT_BY_NUMBER                                              :Nummer
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :Gewinn letztes Jahr
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Gewinn dieses Jahr
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profit letztes Jahr
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profit dieses Jahr
 STR_SORT_BY_AGE                                                 :Alter
 STR_SORT_BY_RELIABILITY                                         :Zuverlässigkeit
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Gesamtkapazität pro Fracht
-STR_SORT_BY_MAX_SPEED                                           :Maximalgeschwindigkeit
+STR_SORT_BY_MAX_SPEED                                           :Höchstgeschwindigkeit
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -1413,7 +1413,7 @@ STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Gleise l
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Zugdepot bauen (zum Bau und zur Wartung von Zügen)
 STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Bahnhof bauen
 STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Signale errichten
-STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Bahnbrücken bauen
+STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Bahnbrücke bauen
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Eisenbahntunnel bauen
 STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Umschalter für Bau/Abriss von Gleisen und Signalen
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Brückenauswahl - klicke auf die gewünschte Brücke, um sie zu bauen
@@ -1832,7 +1832,7 @@ STR_SV_STNAME_VALLEY                                            :{STRING} Tal
 STR_SV_STNAME_HEIGHTS                                           :{STRING} Höhe
 STR_SV_STNAME_WOODS                                             :{STRING} Wald
 STR_SV_STNAME_LAKESIDE                                          :{STRING} Seeblick
-STR_SV_STNAME_EXCHANGE                                          :{STRING} Zentral
+STR_SV_STNAME_EXCHANGE                                          :{STRING} Zentrum
 STR_SV_STNAME_AIRPORT                                           :{STRING} Flughafen
 STR_SV_STNAME_OILFIELD                                          :{STRING} Ölfeld
 STR_SV_STNAME_MINES                                             :{STRING} Mine
@@ -2228,9 +2228,9 @@ STR_80A1_MPS_PAPER_TRUCK                                        :MPS Papierlaste
 STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS Kupfererzlaster
 STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl Kupfererzlaster
 STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss Kupfererzlaster
-STR_80A5_UHL_WATER_TANKER                                       :Uhl Wasser Tankwagen
-STR_80A6_BALOGH_WATER_TANKER                                    :Balogh Wasser Tankwagen
-STR_80A7_MPS_WATER_TANKER                                       :MPS Wasser Tankwagen
+STR_80A5_UHL_WATER_TANKER                                       :Uhl Wassertankwagen
+STR_80A6_BALOGH_WATER_TANKER                                    :Balogh Wassertankwagen
+STR_80A7_MPS_WATER_TANKER                                       :MPS Wassertankwagen
 STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh Früchtetransporter
 STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl Früchtetransporter
 STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling Früchtetransporter
@@ -2242,7 +2242,7 @@ STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Powernaught Zuc
 STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow Zuckertransporter
 STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :MightyMover Cola-Tankwagen
 STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Powernaught Cola-Tankwagen
-STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Wizzowow Cola Tankwagen
+STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Wizzowow Cola-Tankwagen
 STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :MightyMover Zuckerwattelaster
 STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught Zuckerwattelaster
 STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzowow Zuckerwattelaster
@@ -2441,7 +2441,7 @@ STR_885A                                                        :{BLACK}{BIGFONT
 STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Kosten: {CURRENCY}   Gewicht: {COMMA}t{}Geschwindigk.: {VELOCITY} Leistung: {COMMA} PS {}Betriebskosten: {CURRENCY}/Jahr{}Kapazität: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Panne
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}  Betriebskosten: {LTBLUE}{CURRENCY}/Jahr
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Gewicht: {LTBLUE}{COMMA}t   {BLACK}Leistung: {LTBLUE}{COMMA} PS {BLACK}   Max. Geschwindigk.: {LTBLUE}{VELOCITY}
+STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Gewicht: {LTBLUE}{COMMA}t  {BLACK}Leistung: {LTBLUE}{COMMA} PS {BLACK}  Höchstgeschwindigk.: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit lfd. Jahr: {LTBLUE}{CURRENCY}  (letztes Jahr: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zuverlässigkeit: {LTBLUE}{COMMA}% {BLACK}Ausfälle seit letzter Wartung: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Angehalten
@@ -2472,7 +2472,7 @@ STR_9007_BUILD_VEHICLE                                          :{BLACK}Baue Fah
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kann das Fahrzeug nicht bauen...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Einzelheiten)
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}  Betriebskosten: {LTBLUE}{CURRENCY}/Jahr
-STR_900E_MAX_SPEED                                              :{BLACK}Max. Geschwindigk.: {LTBLUE}{VELOCITY}
+STR_900E_MAX_SPEED                                              :{BLACK}Höchstgeschwindigk.: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit lfd. Jahr: {LTBLUE}{CURRENCY}  (letztes Jahr: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zuverlässigkeit: {LTBLUE}{COMMA}% {BLACK}Pannen seit letzter Wartung: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}  Gebaut: {LTBLUE}{NUM}{BLACK} Wert: {LTBLUE}{CURRENCY}
@@ -2537,7 +2537,7 @@ STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Schiff i
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Einzelheiten)
 STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}  Betriebskosten: {LTBLUE}{CURRENCY}/Jahr
-STR_9813_MAX_SPEED                                              :{BLACK}Max. Geschwindigk.: {LTBLUE}{VELOCITY}
+STR_9813_MAX_SPEED                                              :{BLACK}Höchstgeschwindigk.: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit lfd. Jahr: {LTBLUE}{CURRENCY}  (letztes Jahr: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zuverlässigkeit: {LTBLUE}{COMMA}% {BLACK}Pannen seit letzter Wartung: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK} Gebaut: {LTBLUE}{NUM}{BLACK}   Wert: {LTBLUE}{CURRENCY}
@@ -2565,7 +2565,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Schicke 
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Zeige Einzelheiten des Schiffes
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Neues Schiff ist erhältlich!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kosten: {CURRENCY}   Max. Geschwindigk.: {VELOCITY}{}Kapazität: {STRING}{}Betriebskosten: {CURRENCY}/Jahr
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kosten: {CURRENCY}  Höchstgeschwindigk.: {VELOCITY}{}Kapazität: {STRING}{}Betriebskosten: {CURRENCY}/Jahr
 STR_982F_NAME_SHIP                                              :{BLACK}Schiffsname
 
 STR_9831_NAME_SHIP                                              :{WHITE}Schiffsname
@@ -2605,7 +2605,7 @@ STR_A00A                                                        :{WHITE}{VEHICLE
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Aufträge)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Einzelheiten)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}  Betriebskosten: {LTBLUE}{CURRENCY}/Jahr
-STR_A00E_MAX_SPEED                                              :{BLACK}Max. Geschwindigk.: {LTBLUE}{VELOCITY}
+STR_A00E_MAX_SPEED                                              :{BLACK}Höchstgeschwindigk.: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit lfd. Jahr: {LTBLUE}{CURRENCY}  (letztes Jahr: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zuverlässigkeit: {LTBLUE}{COMMA}% {BLACK}Pannen seit letzter Wartung: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK} Gebaut: {LTBLUE}{NUM}{BLACK}   Wert: {LTBLUE}{CURRENCY}
@@ -2637,7 +2637,7 @@ STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Schicke 
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Zeige Einzelheiten des Flugzeuges
 STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Neues Flugzeug ist jetzt verfügbar!
 STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kosten: {CURRENCY}   Max. Geschwindigk.: {VELOCITY}{}Kapazität: {COMMA} Passagiere, {COMMA} Postsäcke{}Betriebskosten: {CURRENCY}/Jahr
+STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kosten: {CURRENCY}  Höchstgeschwindigk.: {VELOCITY}{}Kapazität: {COMMA} Passagiere, {COMMA} Postsäcke{}Betriebskosten: {CURRENCY}/Jahr
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Flugzeugname
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Kann Flugzeugname nicht vergeben...
@@ -2683,7 +2683,7 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Fahrzeuge:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stationen:
-STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. Gewinn:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. Profit:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. Einkommen:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Max. Einkommen:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Geliefert:
@@ -2694,7 +2694,7 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Gesamt:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Anzahl an Fahrzeugen (Straßenfahrzeuge, Züge, Schiffe und Flugzeuge/Helikopter)
 STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Anzahl an Stationen (Jeder Teil einer Station zählt einzeln: Bahnhof, Ladeplatz, Busbahnhof, Flugplatz)
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Geringster Gewinn der Fahrzeuge, die älter als 2 Jahre sind
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Geringster Profit der Fahrzeuge, die älter als 2 Jahre sind
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Geringste Monatseinnahmen in den letzten 12 Quartalen
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Höchste Monatseinnahmen in den letzten 12 Quartalen
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}In den letzten 4 Quartalen gelieferte Frachteinheiten
@@ -2764,7 +2764,7 @@ STR_MAGLEV_VEHICLES                                             :Magnetschwebeba
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Gewicht: {GOLD}{COMMA}t
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Geschwindigk.: {GOLD}{VELOCITY}{BLACK}   Leistung: {GOLD}{COMMA}PS
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Geschwindigk.: {GOLD}{VELOCITY}{BLACK}   Leistung: {GOLD}{COMMA} PS
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Betriebskosten: {GOLD}{CURRENCY}/Jahr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapazität: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Entwurf: {GOLD}{NUM}{BLACK} Lebensdauer: {GOLD}{COMMA} Jahre
@@ -2773,4 +2773,4 @@ STR_PURCHASE_INFO_COST                                          :{BLACK}Kosten: 
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht: {GOLD}{COMMA}t  ({COMMA}t)
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Geschwindigk.: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapazität: {GOLD}{COMMA} Passagiere, {COMMA} Postsäcke
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Angetriebene Waggons: {GOLD}+{COMMA}PS{BLACK} Gewicht: {GOLD}+{COMMA}t
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Angetriebene Waggons: {GOLD}+{COMMA} PS{BLACK} Gewicht: {GOLD}+{COMMA}t
