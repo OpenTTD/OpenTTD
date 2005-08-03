@@ -615,7 +615,7 @@ void ShowFeederIncomeAnimation(int x, int y, int z, int32 cost)
 	AddTextEffect(STR_FEEDER, pt.x, pt.y, 0x250);
 }
 
-static Widget _tooltips_widgets[] = {
+static const Widget _tooltips_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,   199,     0,    31, 0x0, STR_NULL},
 {   WIDGETS_END},
 };
@@ -665,9 +665,6 @@ void GuiShowTooltips(StringID string_id)
 		right = 200;
 	}
 
-	_tooltips_widgets[0].right = right;
-	_tooltips_widgets[0].bottom = bottom;
-
 	y = _cursor.pos.y + 30;
 	if (y < 22) y = 22;
 
@@ -681,6 +678,8 @@ void GuiShowTooltips(StringID string_id)
 	w = AllocateWindow(x, y, right, bottom, TooltipsWndProc, WC_TOOLTIPS, _tooltips_widgets);
 	WP(w,tooltips_d).string_id = string_id;
 	w->flags4 &= ~WF_WHITE_BORDER_MASK;
+	w->widget[0].right = right;
+	w->widget[0].bottom = bottom;
 }
 
 

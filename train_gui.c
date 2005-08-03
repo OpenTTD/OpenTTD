@@ -879,7 +879,7 @@ static void ShowRailVehicleRefitWindow(Vehicle *v)
 	WP(w,refit_d).sel = -1;
 }
 
-static Widget _train_view_widgets[] = {
+static const Widget _train_view_widgets[] = {
 { WWT_CLOSEBOX,   RESIZE_NONE,  14,   0,  10,   0,  13, STR_00C5, STR_018B_CLOSE_WINDOW },
 { WWT_CAPTION,    RESIZE_RIGHT, 14,  11, 237,   0,  13, STR_882E, STR_018C_WINDOW_TITLE_DRAG_THIS },
 { WWT_STICKYBOX,  RESIZE_LR,    14, 238, 249,   0,  13, 0x0,      STR_STICKY_BUTTON },
