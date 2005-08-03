@@ -1554,7 +1554,7 @@ STR_205C_PIGGY_BANK                                             :Sparschwein
 
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
-STR_INDUSTRY_FORMAT                                             :{STRING} {TOWN}
+STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
 STR_STATION                                                     :{STATION}
 
 ##id 0x2800
