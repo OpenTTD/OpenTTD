@@ -421,8 +421,8 @@ STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING}
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} ist veraltet
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} ist völlig veraltet und sollte ersetzt werden
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Gebietsinformation
-STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Kosten für die Räumung: {LTBLUE}k.A.
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Kosten für die Räumung: {LTBLUE}{CURRENCY}
+STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Räumungskosten: {LTBLUE}k.A.
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Räumungskosten: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :k.A.
 STR_01A7_OWNER                                                  :{BLACK}Eigentümer: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Gehört zur Gemeinde: {LTBLUE}{STRING}
@@ -1554,7 +1554,7 @@ STR_205C_PIGGY_BANK                                             :Sparschwein
 
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
-STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
+STR_INDUSTRY_FORMAT                                             :{STRING} {TOWN}
 STR_STATION                                                     :{STATION}
 
 ##id 0x2800
@@ -1825,7 +1825,7 @@ STR_SV_STNAME_NORTH                                             :{STRING} Nord
 STR_SV_STNAME_SOUTH                                             :{STRING} Süd
 STR_SV_STNAME_EAST                                              :{STRING} Ost
 STR_SV_STNAME_WEST                                              :{STRING} West
-STR_SV_STNAME_CENTRAL                                           :{STRING} Zentral
+STR_SV_STNAME_CENTRAL                                           :{STRING} Zentrum
 STR_SV_STNAME_TRANSFER                                          :{STRING} Transfer
 STR_SV_STNAME_HALT                                              :{STRING} Halt
 STR_SV_STNAME_VALLEY                                            :{STRING} Tal
@@ -1948,10 +1948,10 @@ STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Ausgaben
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Baukosten
 STR_7012_NEW_VEHICLES                                           :{GOLD}Neue Fahrzeuge
-STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Betriebskosten Züge
-STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Betriebskosten Fahrzeuge
-STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Betriebskosten Flugzeuge
-STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Betriebskosten Schiffe
+STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Zugbetriebskosten
+STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Fahrzeugbetriebskosten
+STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Flugzeugbetriebskosten
+STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Schiffbetriebskosten
 STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Betriebskosten Gebäude
 STR_7018_TRAIN_INCOME                                           :{GOLD}Einnahmen Züge
 STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Einnahmen Fahrzeuge
