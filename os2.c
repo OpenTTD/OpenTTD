@@ -14,10 +14,8 @@
 #include <direct.h>
 #include <unistd.h>
 #include <sys/stat.h>
-#include <stdarg.h>
 #include <stdlib.h>
 #include <process.h>
-#include <ctype.h>
 #include <time.h>
 #include <dos.h>
 

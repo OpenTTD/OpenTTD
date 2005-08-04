@@ -1,9 +1,6 @@
 /* $Id$ */
 
 #include "stdafx.h"
-
-#include <stdarg.h>
-
 #include "openttd.h"
 #include "sprite.h"
 #include "variables.h"

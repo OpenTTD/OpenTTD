@@ -13,7 +13,6 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #include <time.h>
-#include <pwd.h>
 #include <signal.h>
 #if !defined(__MORPHOS__) && !defined(__AMIGA__)
  #include <pthread.h>
