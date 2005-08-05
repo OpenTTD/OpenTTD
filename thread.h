@@ -11,9 +11,9 @@
 
 typedef struct Thread Thread;
 
-typedef void (*ThreadFunc)(void*);
+typedef void* (*ThreadFunc)(void*);
 
 Thread* OTTDCreateThread(ThreadFunc, void*);
-void    OTTDJoinThread(Thread*);
+void*   OTTDJoinThread(Thread*);
 
 #endif

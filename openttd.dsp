@@ -402,6 +402,10 @@ SOURCE=.\texteff.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\thread.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\tile.c
 # End Source File
 # Begin Source File
@@ -647,6 +651,10 @@ SOURCE=.\string.h
 # Begin Source File
 
 SOURCE=.\strings.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\thread.h
 # End Source File
 # Begin Source File
 

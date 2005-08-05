@@ -402,6 +402,9 @@
 				RelativePath="texteff.c">
 			</File>
 			<File
+				RelativePath=".\thread.c">
+			</File>
+			<File
 				RelativePath=".\tile.c">
 			</File>
 			<File
@@ -611,6 +614,9 @@
 			</File>
 			<File
 				RelativePath=".\string.h">
+			</File>
+			<File
+				RelativePath=".\thread.h">
 			</File>
 			<File
 				RelativePath=".\tile.h">

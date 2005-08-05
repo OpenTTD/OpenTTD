@@ -1235,7 +1235,7 @@ static inline void SaveFileDone(void)
 /** We have written the whole game into memory, _save_pool, now find
  * and appropiate compressor and start writing to file.
  */
-static void SaveFileToDisk(void* arg)
+static void* SaveFileToDisk(void* arg)
 {
 	const SaveLoadFormat *fmt = GetSavegameFormat(_savegame_format);
 	/* XXX - backup _sl.buf cause it is used internally by the writer
@@ -1258,7 +1258,7 @@ static void SaveFileToDisk(void* arg)
 		ShowErrorMessage(STR_4007_GAME_SAVE_FAILED, STR_NULL, 0, 0);
 
 		SaveFileDone();
-		return;
+		return NULL;
 	}
 
 	/* We have written our stuff to memory, now write it to file! */
@@ -1293,6 +1293,7 @@ static void SaveFileToDisk(void* arg)
 	fclose(_sl.fh);
 
 	SaveFileDone();
+	return NULL;
 }
 
 
