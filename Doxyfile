@@ -1,9 +1,7 @@
-# Doxyfile 1.4.1-KDevelop
-
 #---------------------------------------------------------------------------
 # Project related configuration options
 #---------------------------------------------------------------------------
-PROJECT_NAME           = openttd.kdevelop
+PROJECT_NAME           = openttd
 OUTPUT_DIRECTORY       = docs/source/
 CREATE_SUBDIRS         = NO
 OUTPUT_LANGUAGE        = English
