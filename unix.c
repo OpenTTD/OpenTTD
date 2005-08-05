@@ -14,9 +14,6 @@
 #include <sys/stat.h>
 #include <time.h>
 #include <signal.h>
-#if !defined(__MORPHOS__) && !defined(__AMIGA__)
- #include <pthread.h>
-#endif
 
 #if (defined(_POSIX_VERSION) && _POSIX_VERSION >= 200112L) || defined(__GLIBC__)
 	#define HAS_STATVFS
@@ -514,29 +511,6 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 {
 	return false;
 }
-
-/** Dummy stubs as MorphOS/ AmigaOS does not really
- *  know about a thread concept nor has a working libpthread */
-#if defined(__MORPHOS__) || defined(__AMIGA__)
- typedef int pthread_t;
- #define pthread_create(thread, attr, function, arg) (true)
- #define pthread_join(thread, retval)
-#endif
-
-static pthread_t thread1 = 0;
-
-bool CreateOTTDThread(void *func, void *param)
-{
-	return pthread_create(&thread1, NULL, func, param) == 0;
-}
-
-void JoinOTTDThread(void)
-{
-	if (thread1 == 0) return;
-
-	pthread_join(thread1, NULL);
-}
-
 
 
 #ifdef ENABLE_NETWORK

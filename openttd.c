@@ -507,7 +507,7 @@ int ttd_main(int argc, char* argv[])
 
 	_video_driver->main_loop();
 
-	JoinOTTDThread();
+	WaitTillSaved();
 	IConsoleFree();
 
 #ifdef ENABLE_NETWORK

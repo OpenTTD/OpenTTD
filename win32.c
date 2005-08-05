@@ -1193,25 +1193,6 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 	return false;
 }
 
-static HANDLE hThread;
-
-bool CreateOTTDThread(void *func, void *param)
-{
-	DWORD dwThreadId;
-	hThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)func, param, 0, &dwThreadId);
-	SetThreadPriority(hThread, THREAD_PRIORITY_NORMAL);
-
-	return hThread != NULL;
-}
-
-void JoinOTTDThread(void)
-{
-	if (hThread == NULL) return;
-
-	WaitForSingleObject(hThread, INFINITE);
-	if (!CloseHandle(hThread)) DEBUG(misc, 0) ("Failed to close thread handle!");
-}
-
 
 void CSleep(int milliseconds)
 {

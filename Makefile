@@ -665,6 +665,7 @@ C_SOURCES += strings.c
 C_SOURCES += subsidy_gui.c
 C_SOURCES += terraform_gui.c
 C_SOURCES += texteff.c
+C_SOURCES += thread.c
 C_SOURCES += tile.c
 C_SOURCES += town_cmd.c
 C_SOURCES += town_gui.c

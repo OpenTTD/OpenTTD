@@ -15,11 +15,9 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #include <stdlib.h>
-#include <process.h>
 #include <time.h>
 #include <dos.h>
 
-#define INCL_DOS
 #define INCL_WIN
 #define INCL_WINCLIPBOARD
 
@@ -632,28 +630,6 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 	return false;
 }
 
-static TID thread1 = 0;
-
-// The thread function must be declared and compiled using _Optlink linkage, apparently
-// It seems to work, though :)
-
-bool CreateOTTDThread(void *func, void *param)
-{
-	thread1 = _beginthread(func, NULL, 32768, param);
-
-	if (thread1 == -1)
-		return(false);
-
-	return(true);
-}
-
-void JoinOTTDThread(void)
-{
-	if (thread1 == 0)
-		return;
-
-	DosWaitThread(&thread1, DCWW_WAIT);
-}
 
 void CSleep(int milliseconds)
 {

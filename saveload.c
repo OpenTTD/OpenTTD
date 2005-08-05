@@ -21,6 +21,7 @@
 #include "functions.h"
 #include "vehicle.h"
 #include "station.h"
+#include "thread.h"
 #include "town.h"
 #include "player.h"
 #include "saveload.h"
@@ -1234,7 +1235,7 @@ static inline void SaveFileDone(void)
 /** We have written the whole game into memory, _save_pool, now find
  * and appropiate compressor and start writing to file.
  */
-static bool SaveFileToDisk(void *ptr)
+static void SaveFileToDisk(void* arg)
 {
 	const SaveLoadFormat *fmt = GetSavegameFormat(_savegame_format);
 	/* XXX - backup _sl.buf cause it is used internally by the writer
@@ -1257,7 +1258,7 @@ static bool SaveFileToDisk(void *ptr)
 		ShowErrorMessage(STR_4007_GAME_SAVE_FAILED, STR_NULL, 0, 0);
 
 		SaveFileDone();
-		return false;
+		return;
 	}
 
 	/* We have written our stuff to memory, now write it to file! */
@@ -1292,8 +1293,17 @@ static bool SaveFileToDisk(void *ptr)
 	fclose(_sl.fh);
 
 	SaveFileDone();
-	return true;
 }
+
+
+static Thread* save_thread;
+
+void WaitTillSaved(void)
+{
+	OTTDJoinThread(save_thread);
+	save_thread = NULL;
+}
+
 
 /**
  * Main Save or Load function where the high-level saveload functions are
@@ -1311,7 +1321,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 	/* An instance of saving is already active, so wait until it is done */
 	if (_ts.saveinprogress) {
 		if (!_do_autosave) ShowErrorMessage(_error_message, STR_SAVE_STILL_IN_PROGRESS, 0, 0);
-		JoinOTTDThread(); // synchronize and wait until save is finished to continue
+		WaitTillSaved();
 		// nonsense to do an autosave while we were still saving our game, so skip it
 		if (_do_autosave) return SL_OK;
 	}
@@ -1379,7 +1389,8 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 		SlWriteFill(); // flush the save buffer
 
 		/* Write to file */
-		if (_network_server || !CreateOTTDThread(&SaveFileToDisk, NULL)) {
+		if (_network_server ||
+				(save_thread = OTTDCreateThread(&SaveFileToDisk, NULL)) == NULL) {
 			DEBUG(misc, 1) ("cannot create savegame thread, reverting to single-threaded mode...");
 			SaveFileToDisk(NULL);
 		}
