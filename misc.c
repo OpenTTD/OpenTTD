@@ -130,8 +130,6 @@ void InitializeGame(uint size_x, uint size_y)
 	for (i = 0; i < lengthof(_autoreplace_array); i++)
 		_autoreplace_array[i] = i;
 
-	_railtype_selected_in_replace_gui = 0;
-
 	AddTypeToEngines(); // make sure all engines have a type
 
 	SetObjectToPlace(SPR_CURSOR_ZZZ, 0, 0, 0);

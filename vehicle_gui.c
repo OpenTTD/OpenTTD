@@ -23,6 +23,9 @@ static uint32 _internal_name_sorter_id; // internal StringID for default vehicle
 static uint32 _last_vehicle_idx;        // cached index to hopefully speed up name-sorting
 static bool   _internal_sort_order;     // descending/ascending
 
+static uint16 _player_num_engines[256];
+static byte _railtype_selected_in_replace_gui;
+
 VehicleSortListingTypeFunctions * const _vehicle_sorter[] = {
 	&VehicleUnsortedSorter,
 	&VehicleNumberSorter,
@@ -158,6 +161,7 @@ void SortVehicleList(vehiclelist_d *vl)
 /* General Vehicle GUI based procedures that are independent of vehicle types */
 void InitializeVehiclesGuiList(void)
 {
+	_railtype_selected_in_replace_gui = 0;
 }
 
 // draw the vehicle profit button in the vehicle list window.
