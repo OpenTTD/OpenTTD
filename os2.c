@@ -647,12 +647,6 @@ bool CreateOTTDThread(void *func, void *param)
 	return(true);
 }
 
-void CloseOTTDThread(void)
-{
-	_endthread();
-	return;
-}
-
 void JoinOTTDThread(void)
 {
 	if (thread1 == 0)

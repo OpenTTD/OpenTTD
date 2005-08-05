@@ -1204,16 +1204,12 @@ bool CreateOTTDThread(void *func, void *param)
 	return hThread != NULL;
 }
 
-void CloseOTTDThread(void)
-{
-	if (!CloseHandle(hThread)) DEBUG(misc, 0) ("Failed to close thread?...");
-}
-
 void JoinOTTDThread(void)
 {
 	if (hThread == NULL) return;
 
 	WaitForSingleObject(hThread, INFINITE);
+	if (!CloseHandle(hThread)) DEBUG(misc, 0) ("Failed to close thread handle!");
 }
 
 

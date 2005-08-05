@@ -530,8 +530,6 @@ bool CreateOTTDThread(void *func, void *param)
 	return pthread_create(&thread1, NULL, func, param) == 0;
 }
 
-void CloseOTTDThread(void) {return;}
-
 void JoinOTTDThread(void)
 {
 	if (thread1 == 0) return;
