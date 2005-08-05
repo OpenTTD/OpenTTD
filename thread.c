@@ -17,7 +17,7 @@ void* OTTDJoinThread(Thread*) { return NULL; }
 
 struct Thread {
 	TID thread;
-	ThradFunc func;
+	ThreadFunc func;
 	void* arg;
 	void* ret;
 };
@@ -98,7 +98,7 @@ void* OTTDJoinThread(Thread* t)
 
 struct Thread {
 	HANDLE thread;
-	ThradFunc func;
+	ThreadFunc func;
 	void* arg;
 	void* ret;
 };
@@ -119,7 +119,7 @@ Thread* OTTDCreateThread(ThreadFunc function, void* arg)
 
 	t->func = function;
 	t->arg  = arg;
-	t->thread = CreateThread(NULL, 0, Proxy, arg, 0, &dwThreadId);
+	t->thread = CreateThread(NULL, 0, Proxy, t, 0, &dwThreadId);
 
 	if (t->thread != NULL) {
 		return t;
