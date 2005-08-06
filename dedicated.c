@@ -20,25 +20,28 @@ void DedicatedFork(void)
 		case -1:
 			perror("Unable to fork");
 			exit(1);
-		case 0:
-			// We're the child
+
+		case 0: { // We're the child
+			FILE* f;
 
 			/* Open the log-file to log all stuff too */
-			_log_file_fd = fopen(_log_file, "a");
-			if (!_log_file_fd) {
+			f = fopen(_log_file, "a");
+			if (f == NULL) {
 				perror("Unable to open logfile");
 				exit(1);
 			}
 			/* Redirect stdout and stderr to log-file */
-			if (dup2(fileno(_log_file_fd), fileno(stdout)) == -1) {
+			if (dup2(fileno(f), fileno(stdout)) == -1) {
 				perror("Rerouting stdout");
 				exit(1);
 			}
-			if (dup2(fileno(_log_file_fd), fileno(stderr)) == -1) {
+			if (dup2(fileno(f), fileno(stderr)) == -1) {
 				perror("Rerouting stderr");
 				exit(1);
 			}
 			break;
+		}
+
 		default:
 			// We're the parent
 			printf("Loading dedicated server...\n");
