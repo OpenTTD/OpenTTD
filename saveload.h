@@ -58,46 +58,10 @@ typedef enum SLRefType {
 typedef uint ReferenceToIntProc(const void *obj, SLRefType rt);
 typedef void *IntToReferenceProc(uint index, SLRefType rt);
 
-typedef struct SaveLoad SaveLoad;
 
-/** The saveload struct, containing reader-writer functions, bufffer, version, etc. */
-typedef struct {
-	bool save;                           /// are we doing a save or a load atm. True when saving
-	byte need_length;                    /// ???
-	byte block_mode;                     /// ???
-	bool error;                          /// did an error occur or not
-	byte version;                        /// the major savegame version identifier
-	uint16 full_version;                 /// the full version of the savegame
+extern byte   _sl_version;      /// the major savegame version identifier
+extern uint16 _sl_full_version; /// the full version of the savegame
 
-	int obj_len;                         /// the length of the current object we are busy with
-	int array_index, last_array_index;   /// in the case of an array, the current and last positions
-
-	uint32 offs_base;                    /// the offset in number of bytes since we started writing data (eg uncompressed savegame size)
-
-	WriterProc *write_bytes;             /// savegame writer function
-	ReaderProc *read_bytes;              /// savegame loader function
-
-	ReferenceToIntProc *ref_to_int_proc; /// function to convert pointers to numbers when saving a game
-	IntToReferenceProc *int_to_ref_proc; /// function to convert numbers to pointers when loading a game
-
-	const ChunkHandler* const *chs;      /// the chunk of data that is being processed atm (vehicles, signs, etc.)
-	const SaveLoad* const *includes;     /// the internal layouf of the given chunk
-
-	/** When saving/loading savegames, they are always saved to a temporary memory-place
-	 * to be flushed to file (save) or to final place (load) when full. */
-	byte *bufp, *bufe;                   /// bufp(ointer) gives the current position in the buffer bufe(nd) gives the end of the buffer
-
-	// these 3 may be used by compressor/decompressors.
-	byte *buf;                           /// pointer to temporary memory to read/write, initialized by SaveLoadFormat->initread/write
-	uint bufsize;                        /// the size of the temporary memory *buf
-	FILE *fh;                            /// the file from which is read or written to
-
-	void (*excpt_uninit)(void);          /// the function to execute on any encountered error
-	const char *excpt_msg;               /// the error message
-	jmp_buf excpt;                       /// @todo used to jump to "exception handler";  really ugly
-} SaverLoader;
-
-extern SaverLoader _sl;
 
 enum {
 	INC_VEHICLE_COMMON = 0,
@@ -172,14 +136,14 @@ enum SaveLoadTypes {
 };
 
 /** SaveLoad type struct. Do NOT use this directly but use the SLE_ macros defined just below! */
-struct SaveLoad {
+typedef struct SaveLoad {
 	byte cmd;             /// the action to take with the saved/loaded type, All types need different action
 	VarType type;         /// type of the variable to be saved, int
 	uint16 offset;        /// offset of this variable in the struct (max offset is 65536)
 	uint16 length;        /// (conditional) length of the variable (eg. arrays) (max array size is 65536 elements)
 	uint16 version_from;  /// save/load the variable starting from this savegame version
 	uint16 version_to;    /// save/load the variable until this savegame version
-};
+} SaveLoad;
 
 /* Simple variables, references (pointers) and arrays */
 #define SLE_VAR(base, variable, type) {SL_VAR, type, offsetof(base, variable), 0, 0, 0}

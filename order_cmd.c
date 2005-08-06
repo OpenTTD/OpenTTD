@@ -1120,13 +1120,13 @@ static void Save_ORDR(void)
 
 static void Load_ORDR(void)
 {
-	if (_sl.full_version <= 0x501) {
+	if (_sl_full_version <= 0x501) {
 		/* Version older than 0x502 did not have a ->next pointer. Convert them
 		    (in the old days, the orderlist was 5000 items big) */
 		uint len = SlGetFieldLength();
 		uint i;
 
-		if (_sl.version < 5) {
+		if (_sl_version < 5) {
 			/* Pre-version 5 had an other layout for orders
 			    (uint16 instead of uint32) */
 			uint16 orders[5000];
@@ -1142,7 +1142,7 @@ static void Load_ORDR(void)
 
 				AssignOrder(GetOrder(i), UnpackVersion4Order(orders[i]));
 			}
-		} else if (_sl.full_version <= 0x501) {
+		} else if (_sl_full_version <= 0x501) {
 			uint32 orders[5000];
 
 			len /= sizeof(uint32);

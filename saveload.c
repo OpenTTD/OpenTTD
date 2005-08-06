@@ -34,9 +34,46 @@ enum {
 	SAVEGAME_LOADABLE_VERSION = (SAVEGAME_MAJOR_VERSION << 8) + SAVEGAME_MINOR_VERSION
 };
 
-enum NeedLengthValues {NL_NONE = 0, NL_WANTLENGTH = 1, NL_CALCLENGTH = 2};
+byte   _sl_version;      /// the major savegame version identifier
+uint16 _sl_full_version; /// the full version of the savegame
 
-SaverLoader _sl;
+/** The saveload struct, containing reader-writer functions, bufffer, version, etc. */
+static struct {
+	bool save;                           /// are we doing a save or a load atm. True when saving
+	byte need_length;                    /// ???
+	byte block_mode;                     /// ???
+	bool error;                          /// did an error occur or not
+
+	int obj_len;                         /// the length of the current object we are busy with
+	int array_index, last_array_index;   /// in the case of an array, the current and last positions
+
+	uint32 offs_base;                    /// the offset in number of bytes since we started writing data (eg uncompressed savegame size)
+
+	WriterProc *write_bytes;             /// savegame writer function
+	ReaderProc *read_bytes;              /// savegame loader function
+
+	ReferenceToIntProc *ref_to_int_proc; /// function to convert pointers to numbers when saving a game
+	IntToReferenceProc *int_to_ref_proc; /// function to convert numbers to pointers when loading a game
+
+	const ChunkHandler* const *chs;      /// the chunk of data that is being processed atm (vehicles, signs, etc.)
+	const SaveLoad* const *includes;     /// the internal layouf of the given chunk
+
+	/** When saving/loading savegames, they are always saved to a temporary memory-place
+	 * to be flushed to file (save) or to final place (load) when full. */
+	byte *bufp, *bufe;                   /// bufp(ointer) gives the current position in the buffer bufe(nd) gives the end of the buffer
+
+	// these 3 may be used by compressor/decompressors.
+	byte *buf;                           /// pointer to temporary memory to read/write, initialized by SaveLoadFormat->initread/write
+	uint bufsize;                        /// the size of the temporary memory *buf
+	FILE *fh;                            /// the file from which is read or written to
+
+	void (*excpt_uninit)(void);          /// the function to execute on any encountered error
+	const char *excpt_msg;               /// the error message
+	jmp_buf excpt;                       /// @todo used to jump to "exception handler";  really ugly
+} _sl;
+
+
+enum NeedLengthValues {NL_NONE = 0, NL_WANTLENGTH = 1, NL_CALCLENGTH = 2};
 
 /**
  * Fill the input buffer by reading from the file with the given reader
@@ -441,7 +478,7 @@ void SlArray(void *array, uint length, VarType conv)
 
 	/* NOTICE - handle some buggy stuff, in really old versions everything was saved
 	 * as a byte-type. So detect this, and adjust array size accordingly */
-	if (!_sl.save && _sl.version == 0) {
+	if (!_sl.save && _sl_version == 0) {
 		if (conv == SLE_INT16 || conv == SLE_UINT16 || conv == SLE_STRINGID) {
 			length *= 2; // int16, uint16 and StringID are 2 bytes in size
 			conv = SLE_INT8;
@@ -478,7 +515,7 @@ static size_t SlCalcObjLength(void *object, const SaveLoad *sld)
 		if (sld->cmd < SL_WRITEBYTE) {
 			if (HASBIT(sld->cmd, 2)) {
 				// check if the field is used in the current savegame version
-				if (_sl.version < sld->version_from || _sl.version > sld->version_to)
+				if (_sl_version < sld->version_from || _sl_version > sld->version_to)
 					continue;
 			}
 
@@ -522,7 +559,7 @@ void SlObject(void *object, const SaveLoad *sld)
 			/* CONDITIONAL saveload types depend on the savegame version */
 			if (HASBIT(sld->cmd, 2)) {
 				// check if the field is of the right version, if not, proceed to next one
-				if (_sl.version < sld->version_from || _sl.version > sld->version_to)
+				if (_sl_version < sld->version_from || _sl_version > sld->version_to)
 					continue;
 			}
 
@@ -571,7 +608,7 @@ static size_t SlCalcGlobListLength(const SaveLoadGlobVarList *desc)
 
 	for (; desc->address != NULL; desc++) {
 		// Of course the global variable must exist in the sought savegame version
-		if (_sl.version >= desc->from_version && _sl.version <= desc->to_version)
+		if (_sl_version >= desc->from_version && _sl_version <= desc->to_version)
 			length += SlCalcConvLen(NULL, desc->conv);
 	}
 	return length;
@@ -590,7 +627,7 @@ void SlGlobList(const SaveLoadGlobVarList *desc)
 	}
 
 	for (; desc->address != NULL; desc++) {
-		if (_sl.version >= desc->from_version && _sl.version <= desc->to_version)
+		if (_sl_version >= desc->from_version && _sl_version <= desc->to_version)
 			SlSaveLoadConv(desc->address, desc->conv);
 	}
 }
@@ -781,7 +818,7 @@ static uint ReadLZO(void)
 	// Check if size is bad
 	((uint32*)out)[0] = size = tmp[1];
 
-	if (_sl.version != 0) {
+	if (_sl_version != 0) {
 		tmp[0] = TO_BE32(tmp[0]);
 		size = TO_BE32(size);
 	}
@@ -1089,7 +1126,7 @@ static void *IntToReference(uint index, SLRefType rt)
 {
 	/* After version 4.3 REF_VEHICLE_OLD is saved as REF_VEHICLE,
 	 * and should be loaded like that */
-	if (rt == REF_VEHICLE_OLD && _sl.full_version >= ((4 << 8) | 4))
+	if (rt == REF_VEHICLE_OLD && _sl_full_version >= ((4 << 8) | 4))
 		rt = REF_VEHICLE;
 
 	/* No need to look up NULL pointers, just return immediately */
@@ -1383,7 +1420,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 			return AbortSaveLoad();
 		}
 
-		_sl.version = SAVEGAME_MAJOR_VERSION;
+		_sl_version = SAVEGAME_MAJOR_VERSION;
 
 		BeforeSaveGame();
 		SlSaveChunks();
@@ -1411,8 +1448,8 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 			if (fmt == endof(_saveload_formats)) {
 				DEBUG(misc, 0) ("Unknown savegame type, trying to load it as the buggy format.");
 				rewind(_sl.fh);
-				_sl.version = version = 0;
-				_sl.full_version = 0;
+				_sl_version = version = 0;
+				_sl_full_version = 0;
 				fmt = _saveload_formats + 1; // LZO
 				break;
 			}
@@ -1427,8 +1464,8 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 					return AbortSaveLoad();
 				}
 
-				_sl.version = (version >> 8);
-				_sl.full_version = version;
+				_sl_version = (version >> 8);
+				_sl_full_version = version;
 				break;
 			}
 		}
