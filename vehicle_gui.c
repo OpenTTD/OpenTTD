@@ -744,6 +744,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 	uint16 click_scroll_pos = w->vscroll2.pos;
 	uint16 click_scroll_cap = w->vscroll2.cap;
 	byte click_side = 1;
+	Player *p = GetPlayer(_local_player);
 
 	switch(e->event) {
 		case WE_PAINT:
@@ -813,13 +814,13 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 					}
 				}
 
-				if ( selected_id[0] == selected_id[1] || _autoreplace_array[selected_id[0]] == selected_id[1]
+				if ( selected_id[0] == selected_id[1] || p->engine_replacement[selected_id[0]] == selected_id[1]
 					|| selected_id[0] == -1 || selected_id[1] == -1 )
 					SETBIT(w->disabled_state, 4);
 				else
 					CLRBIT(w->disabled_state, 4);
 
-				if ( _autoreplace_array[selected_id[0]] == selected_id[0] || selected_id[0] == -1 )
+				if (p->engine_replacement[selected_id[0]] == INVALID_ENGINE || selected_id[0] == -1)
 					SETBIT(w->disabled_state, 6);
 				else
 					CLRBIT(w->disabled_state, 6);
@@ -831,10 +832,10 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 
 				// sets up the string for the vehicle that is being replaced to
 				if ( selected_id[0] != -1 ) {
-					if ( selected_id[0] == _autoreplace_array[selected_id[0]] )
+					if (p->engine_replacement[selected_id[0]] == INVALID_ENGINE)
 						SetDParam(0, STR_NOT_REPLACING);
 					else
-						SetDParam(0, GetCustomEngineName(_autoreplace_array[selected_id[0]]));
+						SetDParam(0, GetCustomEngineName(p->engine_replacement[selected_id[0]]));
 				} else {
 					SetDParam(0, STR_NOT_REPLACING_VEHICLE_SELECTED);
 				}
@@ -908,14 +909,17 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 					ShowDropDownMenu(w, _rail_types_list, _railtype_selected_in_replace_gui, 15, ~GetPlayer(_local_player)->avail_railtypes, 1);
 					break;
 				}
-				case 4: {
-					_autoreplace_array[WP(w,replaceveh_d).sel_engine[0]] = WP(w,replaceveh_d).sel_engine[1];
+				case 4: { /* Start replacing */
+					EngineID veh_from = WP(w, replaceveh_d).sel_engine[0];
+					EngineID veh_to = WP(w, replaceveh_d).sel_engine[1];
+					DoCommandP(0, 3, veh_from + (veh_to << 16), NULL, CMD_REPLACE_VEHICLE);
 					SetWindowDirty(w);
 					break;
 				}
 
-				case 6: {
-					_autoreplace_array[WP(w,replaceveh_d).sel_engine[0]] = WP(w,replaceveh_d).sel_engine[0];
+				case 6: { /* Stop replacing */
+					EngineID veh_from = WP(w, replaceveh_d).sel_engine[0];
+					DoCommandP(0, 3, veh_from + (INVALID_ENGINE << 16), NULL, CMD_REPLACE_VEHICLE);
 					SetWindowDirty(w);
 					break;
 				}

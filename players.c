@@ -474,7 +474,7 @@ static Player *AllocatePlayer(void)
 Player *DoStartupNewPlayer(bool is_ai)
 {
 	Player *p;
-	int index;
+	int index, i;
 
 	p = AllocatePlayer();
 	if (p == NULL) return NULL;
@@ -496,6 +496,14 @@ Player *DoStartupNewPlayer(bool is_ai)
 	p->avail_railtypes = GetPlayerRailtypes(index);
 	p->inaugurated_year = _cur_year;
 	p->face = Random();
+
+	/* Engine renewal settings */
+	for (i = 0; i < 256; i++)
+		p->engine_replacement[i] = INVALID_ENGINE;
+
+	p->engine_renew = false;
+	p->engine_renew_months = -6;
+	p->engine_renew_money = 100000;
 
 	GeneratePresidentName(p);
 
@@ -661,6 +669,119 @@ static void DeletePlayerStuff(int pi)
 	p->president_name_1 = 0;
 }
 
+/** Change engine renewal parameters
+ * @param x,y unused
+ * @param p1 bits 0-3 command
+ * - p1 = 0 - change auto renew bool
+ * - p1 = 1 - change auto renew months
+ * - p1 = 2 - change auto renew money
+ * - p1 = 3 - change auto renew array
+ * - p1 = 4 - change bool, months & money all together
+ * @param p2 value to set
+ * if p1 = 0, then:
+ * - p2 = enable engine renewal
+ * if p1 = 1, then:
+ * - p2 = months left before engine expires to replace it
+ * if p1 = 2, then
+ * - p2 = minimum amount of money available
+ * if p1 = 3, then:
+ * - p2 bits  0-15 = old engine type
+ * - p2 bits 16-31 = new engine type
+ * if p1 = 4, then:
+ * - p1 bit     15 = enable engine renewal
+ * - p1 bits 16-31 = months left before engine expires to replace it
+ * - p2 bits  0-31 = minimum amount of money available
+ */
+int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+{
+	Player *p;
+	if (!(_current_player < MAX_PLAYERS))
+		return CMD_ERROR;
+
+	p = GetPlayer(_current_player);
+	switch (GB(p1, 0, 3)) {
+		case 0:
+			if (p->engine_renew == (bool)GB(p2, 0, 1))
+				return CMD_ERROR;
+
+			if (flags & DC_EXEC) {
+				p->engine_renew = (bool)GB(p2, 0, 1);
+				if (_current_player == _local_player) {
+					_patches.autorenew = p->engine_renew;
+					InvalidateWindow(WC_GAME_OPTIONS, 0);
+				}
+			}
+			break;
+		case 1:
+			if (p->engine_renew_months == (int16)p2)
+				return CMD_ERROR;
+
+			if (flags & DC_EXEC) {
+				p->engine_renew_months = (int16)p2;
+				if (_current_player == _local_player) {
+					_patches.autorenew_months = p->engine_renew_months;
+					InvalidateWindow(WC_GAME_OPTIONS, 0);
+				}
+			}
+			break;
+		case 2:
+			if (p->engine_renew_money == (uint32)p2)
+				return CMD_ERROR;
+
+			if (flags & DC_EXEC) {
+				p->engine_renew_money = (uint32)p2;
+				if (_current_player == _local_player) {
+					_patches.autorenew_money = p->engine_renew_money;
+					InvalidateWindow(WC_GAME_OPTIONS, 0);
+				}
+			}
+			break;
+		case 3: {
+			EngineID old_engine_type = GB(p2, 0, 16);
+			EngineID new_engine_type = GB(p2, 16, 16);
+
+			if (new_engine_type != INVALID_ENGINE) {
+				/* First we make sure that it's a valid type the user requested
+				 * check that it's an engine that is in the engine array */
+				if(!IsEngineIndex(new_engine_type))
+					return CMD_ERROR;
+
+				// check that the new vehicle type is the same as the original one
+				if (GetEngine(old_engine_type)->type != GetEngine(new_engine_type)->type)
+					return CMD_ERROR;
+
+				// make sure that we do not replace a plane with a helicopter or vise versa
+				if (GetEngine(new_engine_type)->type == VEH_Aircraft && HASBIT(AircraftVehInfo(old_engine_type)->subtype, 0) != HASBIT(AircraftVehInfo(new_engine_type)->subtype, 0))
+					return CMD_ERROR;
+
+				// make sure that the player can actually buy the new engine
+				if (!HASBIT(GetEngine(new_engine_type)->player_avail, _current_player))
+					return CMD_ERROR;
+			}
+
+			if (flags & DC_EXEC) {
+				p->engine_replacement[old_engine_type] = new_engine_type;
+			}
+		} break;
+		case 4:
+			if (flags & DC_EXEC) {
+				p->engine_renew = (bool)GB(p1, 15, 1);
+				p->engine_renew_months = (int16)GB(p1, 16, 16);
+				p->engine_renew_money = (uint32)p2;
+
+				if (_current_player == _local_player) {
+					_patches.autorenew = p->engine_renew;
+					_patches.autorenew_months = p->engine_renew_months;
+					_patches.autorenew_money = p->engine_renew_money;
+					InvalidateWindow(WC_GAME_OPTIONS, 0);
+				}
+			}
+			break;
+	}
+
+	return 0;
+}
+
 /** Control the players: add, delete, etc.
  * @param x,y unused
  * @param p1 various functionality
@@ -706,6 +827,8 @@ int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					_local_player = p->index;
 					MarkWholeScreenDirty();
 				}
+			} else if (p->index == _local_player) {
+				DoCommandP(0, (_patches.autorenew << 15 ) | (_patches.autorenew_months << 16) | 4, _patches.autorenew_money, NULL, CMD_REPLACE_VEHICLE);
 			}
 #ifdef ENABLE_NETWORK
 			if (_network_server) {
@@ -1021,6 +1144,12 @@ static const SaveLoad _player_desc[] = {
 
 	SLE_CONDVAR(Player,is_ai,			SLE_UINT8, 2, 255),
 	SLE_CONDVAR(Player,is_active,	SLE_UINT8, 4, 255),
+
+	// Engine renewal settings
+	SLE_CONDARR(Player,engine_replacement,  SLE_UINT16, 256, 16, 255),
+	SLE_CONDVAR(Player,engine_renew,         SLE_UINT8,      16, 255),
+	SLE_CONDVAR(Player,engine_renew_months,  SLE_INT16,      16, 255),
+	SLE_CONDVAR(Player,engine_renew_money,  SLE_UINT32,      16, 255),
 
 	// reserve extra space in savegame here. (currently 64 bytes)
 	SLE_CONDARR(NullStruct,null,SLE_FILE_U64 | SLE_VAR_NULL, 8, 2, 255),

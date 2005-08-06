@@ -187,6 +187,10 @@ typedef struct Player {
 	int64 yearly_expenses[3][13];
 	PlayerEconomyEntry cur_economy;
 	PlayerEconomyEntry old_economy[24];
+	EngineID engine_replacement[256];
+	bool engine_renew;
+	int16 engine_renew_months;
+	uint32 engine_renew_money;
 } Player;
 
 void ChangeOwnershipOfPlayerItems(byte old_player, byte new_player);

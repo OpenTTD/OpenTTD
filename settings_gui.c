@@ -618,6 +618,24 @@ static int32 CheckInterval(int32 p1)
 	return InValidateDetailsWindow(0);
 }
 
+static int32 EngineRenewUpdate(int32 p1)
+{
+	DoCommandP(0, 0, _patches.autorenew, NULL, CMD_REPLACE_VEHICLE);
+	return 0;
+}
+
+static int32 EngineRenewMonthsUpdate(int32 p1)
+{
+	DoCommandP(0, 1, _patches.autorenew_months, NULL, CMD_REPLACE_VEHICLE);
+	return 0;
+}
+
+static int32 EngineRenewMoneyUpdate(int32 p1)
+{
+	DoCommandP(0, 2, _patches.autorenew_money, NULL, CMD_REPLACE_VEHICLE);
+	return 0;
+}
+
 typedef int32 PatchButtonClick(int32);
 
 typedef struct PatchEntry {
@@ -688,9 +706,9 @@ static const PatchEntry _patches_vehicles[] = {
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES, "never_expire_vehicles", &_patches.never_expire_vehicles,0,0,0, NULL},
 
 	{PE_UINT16, PF_0ISDIS | PF_PLAYERBASED, STR_CONFIG_PATCHES_LOST_TRAIN_DAYS, "lost_train_days", &_patches.lost_train_days,	180,720, 60, NULL},
-	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_AUTORENEW_VEHICLE,"autorenew", &_patches.autorenew,								0,  0,  0, NULL},
-	{PE_INT16,	PF_PLAYERBASED, STR_CONFIG_PATCHES_AUTORENEW_MONTHS, "autorenew_months", &_patches.autorenew_months,				-12, 12,  1, NULL},
-	{PE_CURRENCY, PF_PLAYERBASED, STR_CONFIG_PATCHES_AUTORENEW_MONEY,"autorenew_money", &_patches.autorenew_money,					0, 2000000, 100000, NULL},
+	{PE_BOOL,     PF_PLAYERBASED, STR_CONFIG_PATCHES_AUTORENEW_VEHICLE, "autorenew",        &_patches.autorenew,                   0, 0, 0, &EngineRenewUpdate},
+	{PE_INT16,	  PF_PLAYERBASED, STR_CONFIG_PATCHES_AUTORENEW_MONTHS,  "autorenew_months", &_patches.autorenew_months,         -12, 12, 1, &EngineRenewMonthsUpdate},
+	{PE_CURRENCY, PF_PLAYERBASED, STR_CONFIG_PATCHES_AUTORENEW_MONEY,   "autorenew_money",  &_patches.autorenew_money,  0, 2000000, 100000, &EngineRenewMoneyUpdate},
 
 	{PE_UINT16,	0, STR_CONFIG_PATCHES_MAX_TRAINS,				"max_trains", &_patches.max_trains,								0,5000, 50, NULL},
 	{PE_UINT16,	0, STR_CONFIG_PATCHES_MAX_ROADVEH,			"max_roadveh", &_patches.max_roadveh,							0,5000, 50, NULL},

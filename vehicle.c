@@ -1322,7 +1322,7 @@ static void ShowVehicleGettingOld(Vehicle *v, StringID msg)
 		return;
 
 	// Do not show getting-old message if autorenew is active
-	if (_patches.autorenew)
+	if (GetPlayer(v->owner)->engine_renew)
 		return;
 
 	SetDParam(0, _vehicle_type_names[v->type - 0x10]);
@@ -1360,32 +1360,25 @@ extern int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p
 extern int32 CmdRefitShip(int x, int y, uint32 flags, uint32 p1, uint32 p2);
 extern int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2);
 
+
+
 /** Replaces a vehicle (used to be called autorenew).
- * @param x,y unused
- * @param p1 index of vehicle being replaced
- * @param p2 various bitstuffed elements
- * - p2 = (bit  0-15) - new engine type for the vehicle (p2 & 0xFFFF)
- * - p2 = (bit 16-31) - money the player wants to have left after replacement counted in 100.000 (100K) (p2 >> 16)
+ * Must be called with _current_player set to the owner of the vehicle
+ * @param v Vehicle to replace
  */
-int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 ReplaceVehicle(Vehicle *v)
 {
-	/* makesvariables to inform about how much money the player wants to have left after replacing
-	 and which engine to replace with out of p2.
-	 the first 16 bit is the money. The last 5 digits (all 0) were removed when sent, so we add them again.
-	 This way the max is 6553 millions and it is more than the 32 bit that is stored in _patches
-	 This is a nice way to send 32 bit and only use 16 bit
-	 the last 8 bit is the engine. The 8 bits in front of the engine is free so it have room for 16 bit engine entries */
-	EngineID new_engine_type = (p2 & 0xFFFF);
-	uint32 autorefit_money = (p2 >> 16) * 100000;
-	Vehicle *v, *u, *first;
+	Player *p = GetPlayer(v->owner);
+	EngineID old_engine_type = v->engine_type;
+	EngineID new_engine_type = p->engine_replacement[old_engine_type];
+	Vehicle *u, *first;
 	int cost, build_cost, rear_engine_cost = 0;
-	EngineID old_engine_type;
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	// If replacing due to age only, use the same type :-)
+	if (new_engine_type == INVALID_ENGINE)
+		new_engine_type = old_engine_type;
 
-	v = u = GetVehicle(p1);
-
-	old_engine_type = v->engine_type;
+	u = v;
 
 	/* First we make sure that it's a valid type the user requested
 	 * check that it's an engine that is in the engine array */
@@ -1449,7 +1442,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Check if there is money for the upgrade.. if not, give a nice news-item
 	    (that is needed, because this CMD is called automaticly) */
-	if ( GetPlayer(v->owner)->money64 < (int32)(autorefit_money + build_cost + rear_engine_cost - v->value)) {
+	if ( p->money64 < (p->engine_renew_money + build_cost + rear_engine_cost - v->value)) {
 		if (( _local_player == v->owner ) && ( v->unitnumber != 0 )) {  //v->unitnumber = 0 for train cars
 			int message;
 			SetDParam(0, v->unitnumber);
@@ -1469,8 +1462,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 	cost = build_cost - v->value + rear_engine_cost;
 
-
-	if (flags & DC_EXEC) {
+	if (old_engine_type != new_engine_type) {
 		/* We do not really buy a new vehicle, we upgrade the old one */
 		const Engine* e = GetEngine(new_engine_type);
 
@@ -1615,22 +1607,27 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					v->cargo_count = v->cargo_cap;
 			}
 		}
-		InvalidateWindow(WC_REPLACE_VEHICLE, v->type);
-		ResortVehicleLists();
-		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 	}
+
+	// A replaced vehicle should be classed as new
+	v->age = 0;
+
+	InvalidateWindow(WC_REPLACE_VEHICLE, v->type);
+	ResortVehicleLists();
+	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+
 	//needs to be down here because refitting will change SET_EXPENSES_TYPE if called
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
+	SubtractMoneyFromPlayer(cost);
+	if (_current_player == _local_player)
+		ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost);
 
 	return cost;
 }
 
 void MaybeReplaceVehicle(Vehicle *v)
 {
-	uint32 new_engine_and_autoreplace_money;
-
-	if (v->owner != _local_player)
-		return;
+	Player *p = GetPlayer(v->owner);
 	// uncomment next line if you want to see what engine type just entered a depot
 	//printf("engine type: %d\n", v->engine_type);
 
@@ -1639,31 +1636,20 @@ void MaybeReplaceVehicle(Vehicle *v)
 	//  Standard is -6, meaning 6 months before his max age
 	//  It can be any value between -12 and 12.
 	//  Here it also checks if the vehicles is listed for replacement
-	if (!_patches.autorenew || v->age - v->max_age < (_patches.autorenew_months * 30)) {  //replace if engine is too old
-		if (_autoreplace_array[v->engine_type] == v->engine_type && v->type != VEH_Train) //updates to a new model
+	if (!p->engine_renew || v->age - v->max_age < (p->engine_renew_months * 30)) {  //replace if engine is too old
+		if (p->engine_replacement[v->engine_type] == INVALID_ENGINE && v->type != VEH_Train) // updates to a new model
 			return;
 	}
 	/* Now replace the vehicle */
 	_current_player = v->owner;
 
-	/* makes the variable to inform about how much money the player wants to have left after replacing
-	 and which engine to replace with
-	 the first 16 bit is the money. Since we know the last 5 digits is 0, they are thrown away.
-	 This way the max is 6553 millions and it is more than the 32 bit that is stored in _patches
-	 This is a nice way to send 32 bit and only use 16 bit
-	 the last 8 bit is the engine. The 8 bits in front of the engine is free so it have room for 16 bit engine entries */
-	new_engine_and_autoreplace_money = ((_patches.autorenew_money / 100000) << 16) + _autoreplace_array[v->engine_type];
-
-	assert(v->type == GetEngine(_autoreplace_array[v->engine_type])->type);
-
 	if ( v->type != VEH_Train ) {
-		DoCommandP(v->tile, v->index, new_engine_and_autoreplace_money, NULL, CMD_REPLACE_VEHICLE | CMD_SHOW_NO_ERROR);
+		ReplaceVehicle(v);
 	} else {
 	// checks if any of the engines in the train are either old or listed for replacement
 		do {
-			if ( v->engine_type != _autoreplace_array[v->engine_type] || (_patches.autorenew && (v->age - v->max_age) > (_patches.autorenew_months * 30))) {
-				new_engine_and_autoreplace_money = (new_engine_and_autoreplace_money & 0xFFFF0000) + _autoreplace_array[v->engine_type]; // sets the new engine replacement type
-				DoCommandP(v->tile, v->index, new_engine_and_autoreplace_money, NULL, CMD_REPLACE_VEHICLE | CMD_SHOW_NO_ERROR);
+			if (p->engine_replacement[v->engine_type] != INVALID_ENGINE || (p->engine_renew && (v->age - v->max_age) > (p->engine_renew_months * 30))) {
+				ReplaceVehicle(v);
 			}
 		} while ((v=v->next) != NULL);
 	}

@@ -122,13 +122,7 @@ void ConvertGroundTilesIntoWaterTiles(void);
 
 void InitializeGame(uint size_x, uint size_y)
 {
-	uint i;
-
 	AllocateMap(size_x, size_y);
-
-	// Initialize the autoreplace array. Needs to be cleared between each game
-	for (i = 0; i < lengthof(_autoreplace_array); i++)
-		_autoreplace_array[i] = i;
 
 	AddTypeToEngines(); // make sure all engines have a type
 

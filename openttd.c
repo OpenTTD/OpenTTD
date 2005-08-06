@@ -579,6 +579,8 @@ static void MakeNewGame(void)
 		DoStartupNewPlayer(false);
 
 		_local_player = 0;
+		_current_player = _local_player;
+		DoCommandP(0, (_patches.autorenew << 15 ) | (_patches.autorenew_months << 16) | 4, _patches.autorenew_money, NULL, CMD_REPLACE_VEHICLE);
 	}
 
 	MarkWholeScreenDirty();
@@ -651,6 +653,8 @@ static void StartScenario(void)
 	StartupDisasters();
 
 	_local_player = 0;
+	_current_player = _local_player;
+	DoCommandP(0, (_patches.autorenew << 15 ) | (_patches.autorenew_months << 16) | 4, _patches.autorenew_money, NULL, CMD_REPLACE_VEHICLE);
 
 	MarkWholeScreenDirty();
 }
@@ -1240,6 +1244,23 @@ bool AfterLoadGame(uint version)
 				SETBIT(_m[tile].m4, 3);
 			}
 		} END_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0);
+	}
+
+	if (version < 0x1000) {
+		int i;
+		FOR_ALL_PLAYERS(p) {
+			for (i = 0; i < 256; i++) {
+				p->engine_replacement[i] = INVALID_ENGINE;
+			}
+			p->engine_renew = false;
+			p->engine_renew_months = -6;
+			p->engine_renew_money = 100000;
+		}
+		// Set the human controlled player to the patch settings
+		p = GetPlayer(_local_player);
+		p->engine_renew = _patches.autorenew;
+		p->engine_renew_months = _patches.autorenew_months;
+		p->engine_renew_money = _patches.autorenew_money;
 	}
 
 	FOR_ALL_PLAYERS(p) {

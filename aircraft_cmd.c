@@ -1523,14 +1523,15 @@ static void AircraftEventHandler_EndTakeOff(Vehicle *v, const AirportFTAClass *A
 
 static void AircraftEventHandler_HeliTakeOff(Vehicle *v, const AirportFTAClass *Airport)
 {
+	Player *p = GetPlayer(v->owner);
 	v->sprite_width = v->sprite_height = 24; // ??? no idea what this is
 	v->u.air.state = FLYING;
 	// get the next position to go to, differs per airport
 	AircraftNextAirportPos_and_Order(v);
 
 	// check if the aircraft needs to be replaced or renewed and send it to a hangar if needed
-	if ((v->owner == _local_player && _autoreplace_array[v->engine_type] != v->engine_type) ||
-		(v->owner == _local_player && _patches.autorenew && v->age - v->max_age > (_patches.autorenew_months * 30))) {
+	if ((v->owner == _local_player && p->engine_replacement[v->engine_type] != v->engine_type) ||
+		(v->owner == _local_player && p->engine_renew && v->age - v->max_age > (p->engine_renew_months * 30))) {
 		_current_player = _local_player;
 		DoCommandP(v->tile, v->index, 1, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_SHOW_NO_ERROR);
 		_current_player = OWNER_NONE;
@@ -1586,13 +1587,14 @@ static void AircraftEventHandler_Flying(Vehicle *v, const AirportFTAClass *Airpo
 
 static void AircraftEventHandler_Landing(Vehicle *v, const AirportFTAClass *Airport)
 {
+	Player *p = GetPlayer(v->owner);
 	AircraftLandAirplane(v);  // maybe crash airplane
 	v->u.air.state = ENDLANDING;
 	// check if the aircraft needs to be replaced or renewed and send it to a hangar if needed
 	if (v->current_order.type != OT_GOTO_DEPOT && v->owner == _local_player) {
 		// only the vehicle owner needs to calculate the rest (locally)
-		if ((_autoreplace_array[v->engine_type] != v->engine_type) ||
-			(_patches.autorenew && v->age - v->max_age > (_patches.autorenew_months * 30))) {
+		if ((p->engine_replacement[v->engine_type] != v->engine_type) ||
+			(p->engine_renew && v->age - v->max_age > (p->engine_renew_months * 30))) {
 			// send the aircraft to the hangar at next airport (bit 17 set)
 			_current_player = _local_player;
 			DoCommandP(v->tile, v->index, 1 << 16, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_SHOW_NO_ERROR);

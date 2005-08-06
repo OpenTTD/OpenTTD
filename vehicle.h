@@ -453,6 +453,7 @@ VARDEF byte _cmd_build_rail_veh_var1;
 //VARDEF Vehicle *_vehicle_arr[8][4];
 
 #define INVALID_VEHICLE 0xFFFF
+#define INVALID_ENGINE 0xFFFF
 
 /* A lot of code calls for the invalidation of the status bar, which is widget 5.
  * Best is to have a virtual value for it when it needs to change again */

@@ -24,7 +24,7 @@ const RailtypeInfo _railtypes[RAILTYPE_END] = {
 
 		/* Compatible railtypes */
 		(1 << RAILTYPE_RAIL),
-	
+
 		/* main offset */
 		0,
 	},

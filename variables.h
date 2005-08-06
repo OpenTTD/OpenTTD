@@ -434,9 +434,6 @@ VARDEF byte _vehicle_design_names;
  * to include npf.h */
 #define NPF_TILE_LENGTH 100
 
-/* Autoreplace vehicle stuff*/
-VARDEF byte _autoreplace_array[256];
-
 /* Forking stuff */
 VARDEF bool _dedicated_forks;
 

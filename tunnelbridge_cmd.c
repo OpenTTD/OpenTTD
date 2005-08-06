@@ -33,7 +33,7 @@ extern void DrawCanalWater(TileIndex tile);
 
 const Bridge _bridge[] = {
 /*
-	   year of availablity 
+	   year of availablity
 	   |  minimum length
 	   |  |   maximum length
 	   |  |   |    price

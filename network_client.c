@@ -527,6 +527,9 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		} else {
 			// take control over an existing company
 			_local_player = _network_playas - 1;
+			_patches.autorenew = GetPlayer(_local_player)->engine_renew;
+			_patches.autorenew_months = GetPlayer(_local_player)->engine_renew_months;
+			_patches.autorenew_money = GetPlayer(_local_player)->engine_renew_money;
 			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 		}
 	}
