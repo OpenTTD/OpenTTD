@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "currency.h"
 #include "functions.h"
 #include "spritecache.h"
 #include "strings.h"
