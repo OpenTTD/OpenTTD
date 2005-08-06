@@ -217,8 +217,13 @@ ifdef DEDICATED
 WITH_SDL:=
 ifndef WIN32
 ifndef MORPHOS
+ifndef OSX
 LDFLAGS+=-lpthread
 endif
+endif
+endif
+ifdef OSX
+LDFLAGS+=-framework Cocoa
 endif
 endif
 
