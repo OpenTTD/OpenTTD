@@ -6,7 +6,7 @@
 
 #if defined(__AMIGA__) || defined(__MORPHOS__)
 Thread* OTTDCreateThread(ThreadFunc function, void* arg) { return NULL; }
-void* OTTDJoinThread(Thread*) { return NULL; }
+void* OTTDJoinThread(Thread* t) { return NULL; }
 
 
 #elif defined(__OS2__)

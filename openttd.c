@@ -302,7 +302,9 @@ static void LoadIntroGame(void)
 	if (_music_driver->is_song_playing()) ResetMusic();
 }
 
+#if defined(UNIX) && !defined(__MORPHOS__)
 extern void DedicatedFork(void);
+#endif
 extern void CheckExternalFiles(void);
 
 int ttd_main(int argc, char* argv[])
@@ -417,7 +419,7 @@ int ttd_main(int argc, char* argv[])
 	gpmi_path_append(&gpmi_path_packages, "gpmi/packages");
 #endif /* GPMI */
 
-#ifdef UNIX
+#if defined(UNIX) && !defined(__MORPHOS__)
 	// We must fork here, or we'll end up without some resources we need (like sockets)
 	if (_dedicated_forks)
 		DedicatedFork();
