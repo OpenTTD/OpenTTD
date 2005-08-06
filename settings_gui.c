@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "currency.h"
 #include "functions.h"
 #include "string.h"
 #include "strings.h" // XXX GetCurrentCurrencyRate()
@@ -22,9 +23,6 @@
 static uint32 _difficulty_click_a;
 static uint32 _difficulty_click_b;
 static byte _difficulty_timeout;
-
-extern const StringID _currency_string_list[];
-extern uint GetMaskOfAllowedCurrencies(void);
 
 static const StringID _distances_dropdown[] = {
 	STR_0139_IMPERIAL_MILES,

@@ -18,6 +18,5 @@ extern char _userstring[128];
 
 void InjectDParam(int amount);
 int32 GetParamInt32(void);
-uint GetCurrentCurrencyRate(void);
 
 #endif

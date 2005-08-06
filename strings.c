@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "currency.h"
 #include "functions.h"
 #include "string.h"
 #include "strings.h"
@@ -42,34 +43,6 @@ static char **_langpack_offs;
 static LanguagePack *_langpack;
 static uint _langtab_num[32]; // Offset into langpack offs
 static uint _langtab_start[32]; // Offset into langpack offs
-
-const StringID _currency_string_list[] = {
-	STR_CURR_GBP,
-	STR_CURR_USD,
-	STR_CURR_EUR,
-	STR_CURR_YEN,
-	STR_CURR_ATS,
-	STR_CURR_BEF,
-	STR_CURR_CHF,
-	STR_CURR_CZK,
-	STR_CURR_DEM,
-	STR_CURR_DKK,
-	STR_CURR_ESP,
-	STR_CURR_FIM,
-	STR_CURR_FRF,
-	STR_CURR_GRD,
-	STR_CURR_HUF,
-	STR_CURR_ISK,
-	STR_CURR_ITL,
-	STR_CURR_NLG,
-	STR_CURR_NOK,
-	STR_CURR_PLN,
-	STR_CURR_ROL,
-	STR_CURR_RUR,
-	STR_CURR_SEK,
-	STR_CURR_CUSTOM,
-	INVALID_STRING_ID
-};
 
 static const StringID _cargo_string_list[NUM_LANDSCAPE][NUM_CARGO] = {
 	{ /* LT_NORMAL */
@@ -370,11 +343,6 @@ static char *FormatTinyDate(char *buff, uint16 number)
 	buff += sprintf(buff, " %02i-%02i-%04i", ymd.day, ymd.month + 1, ymd.year + MAX_YEAR_BEGIN_REAL);
 
 	return buff;
-}
-
-uint GetCurrentCurrencyRate(void)
-{
-	return _currency_specs[_opt_ptr->currency].rate;
 }
 
 static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, int64 number, bool compact)

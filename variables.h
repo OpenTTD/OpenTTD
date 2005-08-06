@@ -37,21 +37,6 @@ VARDEF GameOptions _opt_newgame;
 // Pointer to one of the two _opt OR _opt_newgame structs
 VARDEF GameOptions *_opt_ptr;
 
-enum {
-	CF_NOEURO = 0,
-	CF_ISEURO = 1,
-};
-
-typedef struct {
-	uint16 rate;
-	char separator;
-	uint16 to_euro;
-	char prefix[16];
-	char suffix[16];
-} CurrencySpec;
-
-VARDEF CurrencySpec _currency_specs[24];
-
 // Current date
 VARDEF uint16 _date;
 VARDEF uint16 _date_fract;

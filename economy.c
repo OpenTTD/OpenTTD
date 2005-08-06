@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "currency.h"
 #include "functions.h"
 #include "strings.h" // XXX InjectDParam()
 #include "table/strings.h"
@@ -40,22 +41,6 @@ const ScoreInfo _score_info[] = {
 };
 
 int _score_part[MAX_PLAYERS][NUM_SCORE];
-
-
-// get a mask of the allowed currencies depending on the year
-uint GetMaskOfAllowedCurrencies(void)
-{
-	int i;
-	uint mask = 0;
-	for (i = 0; i != lengthof(_currency_specs); i++) {
-		uint16 to_euro = _currency_specs[i].to_euro;
-		if (i == 23) mask |= (1 << 23); // always allow custom currency
-		if (to_euro != CF_NOEURO && to_euro != CF_ISEURO && _cur_year >= (to_euro-MAX_YEAR_BEGIN_REAL)) continue;
-		if (_cur_year < (2000-MAX_YEAR_BEGIN_REAL) && (to_euro == CF_ISEURO)) continue;
-		mask |= (1 << i);
-	}
-	return mask;
-}
 
 void CheckSwitchToEuro(void)
 {

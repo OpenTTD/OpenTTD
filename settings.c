@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "currency.h"
 #include "functions.h"
 #include "macros.h"
 #include "screenshot.h"
@@ -9,7 +10,6 @@
 #include "spritecache.h"
 #include "string.h"
 #include "variables.h"
-#include "table/currency.h"
 #include "network.h"
 #include "settings.h"
 
