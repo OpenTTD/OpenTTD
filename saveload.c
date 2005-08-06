@@ -1245,8 +1245,6 @@ static void* SaveFileToDisk(void* arg)
 
 	tmp = _sl.buf;
 
-	SaveFileStart();
-
 	/* XXX - Setup setjmp error handler if an error occurs anywhere deep during
 	 * loading/saving execute a longjmp() and continue execution here */
 	if (setjmp(_sl.excpt)) {
@@ -1325,6 +1323,8 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 		WaitTillSaved();
 		// nonsense to do an autosave while we were still saving our game, so skip it
 		if (_do_autosave) return SL_OK;
+	} else {
+		WaitTillSaved();
 	}
 
   /* Load a TTDLX or TTDPatch game */
@@ -1390,6 +1390,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 		SlWriteFill(); // flush the save buffer
 
 		/* Write to file */
+		SaveFileStart();
 		if (_network_server ||
 				(save_thread = OTTDCreateThread(&SaveFileToDisk, NULL)) == NULL) {
 			DEBUG(misc, 1) ("cannot create savegame thread, reverting to single-threaded mode...");
