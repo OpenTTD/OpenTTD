@@ -216,7 +216,9 @@ endif
 ifdef DEDICATED
 WITH_SDL:=
 ifndef WIN32
+ifndef MORPHOS
 LDFLAGS+=-lpthread
+endif
 endif
 endif
 
