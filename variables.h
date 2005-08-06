@@ -250,7 +250,6 @@ VARDEF int _timer_counter;
 VARDEF byte _cur_year;
 VARDEF byte _cur_month;
 
-VARDEF bool _in_state_game_loop;
 VARDEF uint32 _frame_counter;
 
 VARDEF bool _is_ai_player; // current player is an AI player? - Can be removed if new AI is done

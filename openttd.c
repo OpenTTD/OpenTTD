@@ -683,8 +683,6 @@ bool SafeSaveOrLoad(const char *filename, int mode, int newgm)
 
 void SwitchMode(int new_mode)
 {
-	_in_state_game_loop = true;
-
 #ifdef ENABLE_NETWORK
 	// If we are saving something, the network stays in his current state
 	if (new_mode != SM_SAVE) {
@@ -795,8 +793,6 @@ void SwitchMode(int new_mode)
 
 	if (_switch_mode_errorstr != INVALID_STRING_ID)
 		ShowErrorMessage(INVALID_STRING_ID,_switch_mode_errorstr,0,0);
-
-	_in_state_game_loop = false;
 }
 
 
@@ -809,7 +805,6 @@ void StateGameLoop(void)
 	// dont execute the state loop during pause
 	if (_pause) return;
 
-	_in_state_game_loop = true;
 	// _frame_counter is increased somewhere else when in network-mode
 	//  Sidenote: _frame_counter is ONLY used for _savedump in non-MP-games
 	//    Should that not be deleted? If so, the next 2 lines can also be deleted
@@ -850,8 +845,6 @@ void StateGameLoop(void)
 		NewsLoop();
 		_current_player = p;
 	}
-
-	_in_state_game_loop = false;
 }
 
 static void DoAutosave(void)
