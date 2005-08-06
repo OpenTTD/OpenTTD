@@ -1036,15 +1036,15 @@ DEPS_MAGIC := $(shell mkdir -p .deps .deps/music .deps/sound .deps/video .deps/o
 
 %.o: %.c $(MAKE_CONFIG) endian_target.h table/strings.h
 	$(call cmd,c_compile)
-	@mv $(<:%.c=%.d) $(<:%.c=.deps/%.d)
+	@[ -f $(<:%.c=%.d) ] && mv $(<:%.c=%.d) $(<:%.c=.deps/%.d) || mv $(*F).d $(<:%.c=.deps/%.d)
 
 %.o: %.cpp  $(MAKE_CONFIG) endian_target.h table/strings.h
 	$(call cmd,cxx_compile)
-	@mv $(<:%.cpp=%.d) $(<:%.cpp=.deps/%.d)
+	@[ -f $(<:%.cpp=%.d) ] && mv $(<:%.cpp=%.d) $(<:%.cpp=.deps/%.d) || mv $(*F).d $(<:%.cpp=.deps/%.d)
 
 %.o: %.m  $(MAKE_CONFIG) endian_target.h table/strings.h
 	$(call cmd,objc_compile)
-	@mv $(<:%.m=%.d) $(<:%.m=.deps/%.d)
+	@[ -f $(<:%.m=%.d) ] && mv $(<:%.m=%.d) $(<:%.m=.deps/%.d) || mv $(*F).d $(<:%.m=.deps/%.d)
 
 # Silence stale header dependencies
 %.h:
