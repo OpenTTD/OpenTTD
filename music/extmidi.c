@@ -1,6 +1,5 @@
 /* $Id$ */
 
-#ifndef __BEOS__
 #ifndef __MORPHOS__
 #include "../stdafx.h"
 #include "../openttd.h"
@@ -110,4 +109,3 @@ const HalMusicDriver _extmidi_music_driver = {
 };
 
 #endif /* __MORPHOS__ */
-#endif /* __BEOS__ */

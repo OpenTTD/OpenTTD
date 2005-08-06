@@ -52,7 +52,7 @@ static const DriverDesc _music_driver_descs[] = {
 	M("win32",   "Win32 MIDI Driver",       &_win32_music_driver),
 #endif
 #ifdef UNIX
-#if !defined(__BEOS__) && !defined(__MORPHOS__) && !defined(__AMIGA__)
+#if !defined(__MORPHOS__) && !defined(__AMIGA__)
 	M("extmidi", "External MIDI Driver",    &_extmidi_music_driver),
 #endif
 #endif
