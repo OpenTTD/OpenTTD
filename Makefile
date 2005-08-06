@@ -215,7 +215,9 @@ endif
 # and add -lpthread to LDFLAGS, because SDL normally adds that...
 ifdef DEDICATED
 WITH_SDL:=
+ifndef WIN32
 LDFLAGS+=-lpthread
+endif
 endif
 
 
