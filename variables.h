@@ -271,8 +271,6 @@ VARDEF int32 _additional_cash_required;
 
 VARDEF uint32 _decode_parameters[20];
 
-VARDEF int _docommand_recursive;
-
 VARDEF uint32 _pressed_key; // Low 8 bits = ASCII, High 16 bits = keycode
 VARDEF bool _ctrl_pressed;  // Is Ctrl pressed?
 VARDEF bool _shift_pressed;  // Is Alt pressed?

@@ -1353,8 +1353,6 @@ extern void SwitchMode(int new_mode);
 static void NetworkCheckRestartMap(void)
 {
 	if (_network_restart_game_date != 0 && _cur_year + MAX_YEAR_BEGIN_REAL >= _network_restart_game_date) {
-		_docommand_recursive = 0;
-
 		DEBUG(net, 0)("Auto-restarting map. Year %d reached.", _cur_year + MAX_YEAR_BEGIN_REAL);
 
 		_random_seeds[0][0] = Random();
