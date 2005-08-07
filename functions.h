@@ -268,8 +268,6 @@ void InitializeLanguagePacks(void);
 void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize);
 int GetLanguageList(char **languages, int max);
 
-void CheckSwitchToEuro(void);
-
 void LoadFromConfig(void);
 void SaveToConfig(void);
 void CheckConfig(void);

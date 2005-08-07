@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "currency.h"
+#include "news.h"
 #include "variables.h"
 #include "table/strings.h"
 
@@ -91,4 +92,15 @@ uint GetMaskOfAllowedCurrencies(void)
 uint GetCurrentCurrencyRate(void)
 {
 	return _currency_specs[_opt_ptr->currency].rate;
+}
+
+
+void CheckSwitchToEuro(void)
+{
+	if (_currency_specs[_opt.currency].to_euro != CF_NOEURO &&
+			_currency_specs[_opt.currency].to_euro != CF_ISEURO &&
+			MAX_YEAR_BEGIN_REAL + _cur_year >= _currency_specs[_opt.currency].to_euro) {
+		_opt.currency = 2; // this is the index of euro above.
+		AddNewsItem(STR_EURO_INTRODUCE, NEWS_FLAGS(NM_NORMAL, 0, NT_ECONOMY, 0), 0, 0);
+	}
 }

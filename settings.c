@@ -990,12 +990,12 @@ const SettingDesc patch_settings[] = {
 };
 
 static const SettingDesc currency_settings[] = {
-	{"rate",			SDT_UINT16,										(void*)1,		&_currency_specs[23].rate,			NULL},
-	{"separator", SDT_STRINGQUOT | (2) << 16,		".", 				&_currency_specs[23].separator,	NULL},
-	{"to_euro",		SDT_UINT16,										(void*)0,		&_currency_specs[23].to_euro,		NULL},
-	{"prefix",		SDT_STRINGQUOT | (16) << 16,	NULL,				&_currency_specs[23].prefix,		NULL},
-	{"suffix",		SDT_STRINGQUOT | (16) << 16,	" credits",	&_currency_specs[23].suffix,		NULL},
-	{NULL,				0,														NULL,				NULL,														NULL}
+	{ "rate",      SDT_UINT16,                  (void*)1,   &_custom_currency.rate,      NULL },
+	{ "separator", SDT_STRINGQUOT | (2) << 16,  ".",        &_custom_currency.separator, NULL },
+	{ "to_euro",   SDT_UINT16,                  (void*)0,   &_custom_currency.to_euro,   NULL },
+	{ "prefix",    SDT_STRINGQUOT | (16) << 16, NULL,       &_custom_currency.prefix,    NULL },
+	{ "suffix",    SDT_STRINGQUOT | (16) << 16, " credits", &_custom_currency.suffix,    NULL },
+	{ NULL, 0, NULL, NULL, NULL }
 };
 
 typedef void SettingDescProc(IniFile *ini, const SettingDesc *desc, const void *grpname);

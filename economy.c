@@ -42,16 +42,6 @@ const ScoreInfo _score_info[] = {
 
 int _score_part[MAX_PLAYERS][NUM_SCORE];
 
-void CheckSwitchToEuro(void)
-{
-	if (_currency_specs[_opt.currency].to_euro != CF_NOEURO &&
-			_currency_specs[_opt.currency].to_euro != CF_ISEURO &&
-			_cur_year >= (_currency_specs[_opt.currency].to_euro-MAX_YEAR_BEGIN_REAL)) {
-		_opt.currency = 2; // this is the index of euro above.
-		AddNewsItem(STR_EURO_INTRODUCE, NEWS_FLAGS(NM_NORMAL,0,NT_ECONOMY,0), 0, 0);
-	}
-}
-
 void UpdatePlayerHouse(Player *p, uint score)
 {
 	byte val;
