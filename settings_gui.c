@@ -1319,7 +1319,7 @@ void DrawArrowButtons(int x, int y, int state)
 	DrawStringCentered(x+15, y+1, STR_681A, 0);
 }
 
-char _str_separator[2];
+static char _str_separator[2];
 
 static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 {
@@ -1467,7 +1467,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 				break;
 				case 1: /* Thousands seperator */
 					_custom_currency.separator = (b[0] == '\0') ? ' ' : b[0];
-					ttd_strlcpy(_str_separator, b, 16);
+					ttd_strlcpy(_str_separator, b, lengthof(_str_separator));
 				break;
 				case 2: /* Currency prefix */
 					ttd_strlcpy(_custom_currency.prefix, b, lengthof(_custom_currency.prefix));

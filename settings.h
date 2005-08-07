@@ -12,6 +12,7 @@ enum SettingDescType {
 	SDT_STRINGBUF,
 	SDT_INTLIST,
 	SDT_STRINGQUOT, // string with quotation marks around it
+	SDT_CHAR,
 
 	SDT_INT8 = 0 << 4,
 	SDT_UINT8 = 1 << 4,

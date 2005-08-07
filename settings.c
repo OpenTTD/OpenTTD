@@ -524,6 +524,7 @@ static const void *string_to_val(const SettingDesc *desc, const char *str)
 	case SDT_STRINGBUF:
 	case SDT_STRINGQUOT:
 	case SDT_INTLIST:
+	case SDT_CHAR:
 		return str;
 	}
 
@@ -589,6 +590,11 @@ static void load_setting_desc(IniFile *ini, const SettingDesc *desc, const void 
 		case SDT_STRINGQUOT:
 			if (p) ttd_strlcpy((char*)ptr, p, desc->flags >> 16);
 			break;
+
+		case SDT_CHAR:
+			*(char*)ptr = *(char*)p;
+			break;
+
 		case SDT_INTLIST: {
 			if (!load_intlist(p, ptr, desc->flags >> 16, desc->flags >> 4 & 7))
 				ShowInfoF("ini: error in array '%s'", desc->name);
@@ -712,6 +718,10 @@ static void save_setting_desc(IniFile *ini, const SettingDesc *desc, const void 
 			break;
 		case SDT_INTLIST:
 			make_intlist(buf, ptr, desc->flags >> 16, desc->flags >> 4 & 7);
+			break;
+
+		case SDT_CHAR:
+			sprintf(buf, "\"%c\"", *(char*)ptr);
 			break;
 		}
 		// the value is different, that means we have to write it to the ini
@@ -990,11 +1000,11 @@ const SettingDesc patch_settings[] = {
 };
 
 static const SettingDesc currency_settings[] = {
-	{ "rate",      SDT_UINT16,                  (void*)1,   &_custom_currency.rate,      NULL },
-	{ "separator", SDT_STRINGQUOT | (2) << 16,  ".",        &_custom_currency.separator, NULL },
-	{ "to_euro",   SDT_UINT16,                  (void*)0,   &_custom_currency.to_euro,   NULL },
-	{ "prefix",    SDT_STRINGQUOT | (16) << 16, NULL,       &_custom_currency.prefix,    NULL },
-	{ "suffix",    SDT_STRINGQUOT | (16) << 16, " credits", &_custom_currency.suffix,    NULL },
+	{ "rate",      SDT_UINT16,                                               (void*)1,   &_custom_currency.rate,      NULL },
+	{ "separator", SDT_CHAR,                                                 ".",        &_custom_currency.separator, NULL },
+	{ "to_euro",   SDT_UINT16,                                               (void*)0,   &_custom_currency.to_euro,   NULL },
+	{ "prefix",    SDT_STRINGQUOT | lengthof(_custom_currency.prefix) << 16, NULL,       &_custom_currency.prefix,    NULL },
+	{ "suffix",    SDT_STRINGQUOT | lengthof(_custom_currency.suffix) << 16, " credits", &_custom_currency.suffix,    NULL },
 	{ NULL, 0, NULL, NULL, NULL }
 };
 
