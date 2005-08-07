@@ -7,7 +7,6 @@
 #include "macros.h"
 #include "screenshot.h"
 #include "sound.h"
-#include "spritecache.h"
 #include "string.h"
 #include "variables.h"
 #include "network.h"
@@ -767,7 +766,6 @@ static const SettingDesc misc_settings[] = {
 	{"sounddriver",				SDT_STRINGBUF | (lengthof(_ini_sounddriver)<<16) | SDT_NOSAVE,NULL,			_ini_sounddriver,				NULL},
 	{"language",					SDT_STRINGBUF | lengthof(_dynlang.curr_file)<<16,							NULL,			_dynlang.curr_file,			NULL},
 	{"resolution",				SDT_UINT16 | SDT_INTLIST | lengthof(_cur_resolution) << 16,		"640,480",_cur_resolution,				NULL},
-	{"cache_sprites",			SDT_BOOL,			(void*)false, &_cache_sprites,			NULL},
 	{"screenshot_format", SDT_STRINGBUF | (lengthof(_screenshot_format_name)<<16),			NULL,			_screenshot_format_name,NULL},
 	{"savegame_format",		SDT_STRINGBUF | (lengthof(_savegame_format)<<16),							NULL,			_savegame_format,				NULL},
 	{"rightclick_emulate",SDT_BOOL,			(void*)false, &_rightclick_emulate, NULL},

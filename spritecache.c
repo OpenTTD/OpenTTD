@@ -13,7 +13,6 @@
 #include "variables.h"
 #include <ctype.h>
 
-#define SPRITECACHE_ID 0xF00F0006
 #define SPRITE_CACHE_SIZE 1024*1024
 
 
@@ -383,58 +382,6 @@ static void LoadGrfIndexed(const char *filename, const SpriteID *index_tbl, int 
 	}
 }
 
-typedef size_t CDECL fread_t(void*, size_t, size_t, FILE*);
-
-static bool HandleCachedSpriteHeaders(const char *filename, bool read)
-{
-	FILE *f;
-	fread_t *proc;
-	uint32 hdr;
-
-	if (!_cache_sprites)
-		return false;
-
-	if (read) {
-		f = fopen(filename, "rb");
-		proc = fread;
-
-		if (f == NULL)
-			return false;
-
-		proc(&hdr, sizeof(hdr), 1, f);
-		if (hdr != SPRITECACHE_ID) {
-			fclose(f);
-			return false;
-		}
-	} else {
-		f = fopen(filename, "wb");
-		proc = (fread_t*) fwrite;
-
-		if (f == NULL)
-			return false;
-
-		hdr = SPRITECACHE_ID;
-		proc(&hdr, sizeof(hdr), 1, f);
-	}
-
-	proc(_sprite_size, 1, sizeof(_sprite_size), f);
-	proc(_sprite_file_pos, 1, sizeof(_sprite_file_pos), f);
-
-#if 0
-	proc(_sprite_xsize, 1, sizeof(_sprite_xsize), f);
-	proc(_sprite_ysize, 1, sizeof(_sprite_ysize), f);
-	proc(_sprite_xoffs, 1, sizeof(_sprite_xoffs), f);
-	proc(_sprite_yoffs, 1, sizeof(_sprite_yoffs), f);
-#endif
-
-#if !defined(WANT_NEW_LRU)
-	if (read)
-		memset(_sprite_lru, 0xFF, sizeof(_sprite_lru));
-#endif
-
-	fclose(f);
-	return true;
-}
 
 #define S_FREE_MASK 1
 
@@ -822,6 +769,7 @@ void CheckExternalFiles(void)
 
 static void LoadSpriteTables(void)
 {
+	int load_index = 0;
 	uint i;
 	uint j;
 	const FileList *files; // list of grf files to be loaded. Either Windows files or DOS files
@@ -829,11 +777,6 @@ static void LoadSpriteTables(void)
 	_loading_stage = 1;
 
 	/*
-	 * Note for developers:
-	 *   Keep in mind that when you add a LoadGrfIndexed in the 'if'-section below
-	 *   that you should also add the corresponding FioOpenFile to the 'else'-section
-	 *   below.
-	 *
 	 * TODO:
 	 *   I think we can live entirely without Indexed GRFs, but I have to
 	 *   invest that further. --octo
@@ -841,83 +784,46 @@ static void LoadSpriteTables(void)
 
 	files = _use_dos_palette? &files_dos : &files_win;
 
-	// Try to load the sprites from cache
-	if (!HandleCachedSpriteHeaders(_cached_filenames[_opt.landscape], true)) {
-		// We do not have the sprites in cache yet, or cache is disabled
-		// So just load all files from disk..
+	for (i = 0; files->basic[i].filename != NULL; i++) {
+		load_index += LoadGrfFile(files->basic[i].filename, load_index, i);
+	}
 
-		int load_index = 0;
+	LoadGrfIndexed("openttd.grf", _openttd_grf_indexes, i++);
 
-		for (i = 0; files->basic[i].filename != NULL; i++) {
-			load_index += LoadGrfFile(files->basic[i].filename, load_index, (byte)i);
-		}
+	if (_sprite_page_to_load != 0) {
+		LoadGrfIndexed(
+			files->landscape[_sprite_page_to_load - 1].filename,
+			_landscape_spriteindexes[_sprite_page_to_load - 1],
+			i++
+		);
+	}
 
-		LoadGrfIndexed("openttd.grf", _openttd_grf_indexes, i++);
+	LoadGrfIndexed("trkfoundw.grf", _slopes_spriteindexes[_opt.landscape], i++);
 
-		if (_sprite_page_to_load != 0)
-			LoadGrfIndexed(
-				files->landscape[_sprite_page_to_load - 1].filename,
-				_landscape_spriteindexes[_sprite_page_to_load - 1],
-				i++
-			);
+	load_index = SPR_AUTORAIL_BASE;
+	load_index += LoadGrfFile("autorail.grf", load_index, i++);
 
-		LoadGrfIndexed("trkfoundw.grf", _slopes_spriteindexes[_opt.landscape], i++);
+	load_index = SPR_CANALS_BASE;
+	load_index += LoadGrfFile("canalsw.grf", load_index, i++);
 
-		load_index = SPR_AUTORAIL_BASE;
-		load_index += LoadGrfFile("autorail.grf", load_index, i++);
-
-		load_index = SPR_CANALS_BASE;
-		load_index += LoadGrfFile("canalsw.grf", load_index, i++);
-
-		load_index = SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT + 1;
+	load_index = SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT + 1;
 
 
-		/* Load newgrf sprites
-		 * in each loading stage, (try to) open each file specified in the config
-		 * and load information from it. */
-		_custom_sprites_base = load_index;
-		for (_loading_stage = 0; _loading_stage < 2; _loading_stage++) {
-			load_index = _custom_sprites_base;
-			for (j = 0; j != lengthof(_newgrf_files) && _newgrf_files[j]; j++) {
-				if (!FiosCheckFileExists(_newgrf_files[j]))
-					// TODO: usrerror()
-					error("NewGRF file missing: %s", _newgrf_files[j]);
-				if (_loading_stage == 0)
-					InitNewGRFFile(_newgrf_files[j], load_index);
-				load_index += LoadNewGrfFile(_newgrf_files[j], load_index, i++);
-				DEBUG(spritecache, 2) ("Currently %i sprites are loaded", load_index);
+	/* Load newgrf sprites
+	 * in each loading stage, (try to) open each file specified in the config
+	 * and load information from it. */
+	_custom_sprites_base = load_index;
+	for (_loading_stage = 0; _loading_stage < 2; _loading_stage++) {
+		load_index = _custom_sprites_base;
+		for (j = 0; j != lengthof(_newgrf_files) && _newgrf_files[j]; j++) {
+			if (!FiosCheckFileExists(_newgrf_files[j])) {
+				// TODO: usrerror()
+				error("NewGRF file missing: %s", _newgrf_files[j]);
 			}
+			if (_loading_stage == 0) InitNewGRFFile(_newgrf_files[j], load_index);
+			load_index += LoadNewGrfFile(_newgrf_files[j], load_index, i++);
+			DEBUG(spritecache, 2) ("Currently %i sprites are loaded", load_index);
 		}
-
-		// If needed, save the cache to file
-		HandleCachedSpriteHeaders(_cached_filenames[_opt.landscape], false);
-	} else {
-		// We have sprites cached. We just loaded the cached files
-		//  now we only have to open a file-pointer to all the original grf-files
-		// This is very important. Not all sprites are in the cache. So sometimes
-		//  the game needs to load the sprite from disk. When the file is not
-		//  open it can not read. So all files that are in the 'if'-section
-		//  above should also be in this 'else'-section.
-		//
-		// NOTE: the order of the files must be identical as in the section above!!
-
-		for (i = 0; files->basic[i].filename != NULL; i++)
-			FioOpenFile(i,files->basic[i].filename);
-
-		FioOpenFile(i++, "openttd.grf");
-
-		if (_sprite_page_to_load != 0)
-			FioOpenFile(i++, files->landscape[_sprite_page_to_load - 1].filename);
-
-		FioOpenFile(i++, "trkfoundw.grf");
-		FioOpenFile(i++, "canalsw.grf");
-
-		// FIXME: if a user changes his newgrf's, the cached-sprites gets
-		//  invalid. We should have some kind of check for this.
-		// The best solution for this is to delete the cached-sprites.. but how
-		//  do we detect it?
-		for (j = 0; j != lengthof(_newgrf_files) && _newgrf_files[j] != NULL; j++)
-			FioOpenFile(i++, _newgrf_files[j]);
 	}
 
 	_compact_cache_counter = 0;
