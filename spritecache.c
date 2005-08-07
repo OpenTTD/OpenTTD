@@ -19,7 +19,6 @@
 
 //#define WANT_SPRITESIZES
 #define WANT_NEW_LRU
-//#define WANT_LOCKED
 
 
 /* These are used in newgrf.c: */
@@ -38,11 +37,6 @@ static Sprite _cur_sprite;
 static void* _sprite_ptr[MAX_SPRITES];
 static uint16 _sprite_size[MAX_SPRITES];
 static uint32 _sprite_file_pos[MAX_SPRITES];
-
-// This one is probably not needed.
-#if defined(WANT_LOCKED)
-static bool _sprite_locked[MAX_SPRITES];
-#endif
 
 #if defined(WANT_NEW_LRU)
 static int16 _sprite_lru_new[MAX_SPRITES];
@@ -271,9 +265,6 @@ static bool LoadNextSprite(int load_index, byte file_index)
 #endif
 
 	_sprite_ptr[load_index] = NULL;
-#if defined(WANT_LOCKED)
-	_sprite_locked[load_index] = false;
-#endif
 
 #if defined(WANT_NEW_LRU)
 	_sprite_lru_new[load_index] = 0;
@@ -526,13 +517,6 @@ static void CompactSpriteCache(void)
 				assert(i != endof(_sprite_ptr));
 			}
 
-			#ifdef WANT_LOCKED
-			if (_sprite_locked[i]) {
-				s = next;
-				continue;
-			}
-			#endif
-
 			*i = s->data; // Adjust sprite array entry
 			// Swap this and the next block
 			temp = *s;
@@ -562,12 +546,7 @@ static void DeleteEntryFromSpriteCache(void)
 #if defined(WANT_NEW_LRU)
 	cur_lru = 0xffff;
 	for (i = 0; i != MAX_SPRITES; i++) {
-		if (_sprite_ptr[i] != 0 &&
-				_sprite_lru_new[i] < cur_lru
-#if defined(WANT_LOCKED)
-				 && !_sprite_locked[i]
-#endif
-				) {
+		if (_sprite_ptr[i] != NULL && _sprite_lru_new[i] < cur_lru) {
 			cur_lru = _sprite_lru_new[i];
 			best = i;
 		}
@@ -576,12 +555,7 @@ static void DeleteEntryFromSpriteCache(void)
 	{
 	uint16 cur_lru = 0, cur_lru_cur = 0xffff;
 	for (i = 0; i != MAX_SPRITES; i++) {
-		if (_sprite_ptr[i] == 0 ||
-#if defined(WANT_LOCKED)
-				_sprite_locked[i] ||
-#endif
-				_sprite_lru[i] < cur_lru)
-					continue;
+		if (_sprite_ptr[i] == NULL || _sprite_lru[i] < cur_lru) continue;
 
 		// Found a sprite with a higher LRU value, then remember it.
 		if (_sprite_lru[i] != cur_lru) {
