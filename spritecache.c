@@ -51,8 +51,6 @@ static uint16 _sprite_xsize[MAX_SPRITES];
 static uint8 _sprite_ysize[MAX_SPRITES];
 #endif
 
-bool _cache_sprites;
-
 typedef struct MemBlock {
 	uint32 size;
 	byte data[VARARRAY_SIZE];
@@ -349,8 +347,8 @@ static int LoadNewGrfFile(const char *filename, int load_index, int file_index)
 
 	/* Clean up. */
 	_skip_sprites = 0;
-	memset(_replace_sprites_count, 0, 16 * sizeof(*_replace_sprites_count));
-	memset(_replace_sprites_offset, 0, 16 * sizeof(*_replace_sprites_offset));
+	memset(_replace_sprites_count, 0, sizeof(_replace_sprites_count));
+	memset(_replace_sprites_offset, 0, sizeof(_replace_sprites_offset));
 
 	return i;
 }
@@ -646,13 +644,6 @@ const void *GetRawSprite(SpriteID sprite)
 
 byte _sprite_page_to_load = 0xFF;
 
-static const char * const _cached_filenames[4] = {
-	"cached_sprites.xxx",
-	"cached_sprites.xx1",
-	"cached_sprites.xx2",
-	"cached_sprites.xx3",
-};
-
 #define OPENTTD_SPRITES_COUNT 100
 static const SpriteID _openttd_grf_indexes[] = {
 	SPR_OPENTTD_BASE + 0, SPR_OPENTTD_BASE + 7, // icons etc
@@ -866,24 +857,23 @@ void GfxLoadSprites(void)
 
 const SpriteDimension *GetSpriteDimension(SpriteID sprite)
 {
-	static SpriteDimension sd_static;
-	SpriteDimension *sd = &sd_static;
+	static SpriteDimension sd;
 
 #ifdef WANT_SPRITESIZES
-	sd->xoffs = _sprite_xoffs[sprite];
-	sd->yoffs = _sprite_yoffs[sprite];
-	sd->xsize = _sprite_xsize[sprite];
-	sd->ysize = _sprite_ysize[sprite];
+	sd.xoffs = _sprite_xoffs[sprite];
+	sd.yoffs = _sprite_yoffs[sprite];
+	sd.xsize = _sprite_xsize[sprite];
+	sd.ysize = _sprite_ysize[sprite];
 #else
 	const Sprite* p = GetSprite(sprite);
 
 	/* decode sprite header */
-	sd->xoffs = p->x_offs;
-	sd->yoffs = p->y_offs;
-	sd->xsize = p->width;
-	sd->ysize = p->height;
+	sd.xoffs = p->x_offs;
+	sd.yoffs = p->y_offs;
+	sd.xsize = p->width;
+	sd.ysize = p->height;
 #endif
 
-	return sd;
+	return &sd;
 }
 
