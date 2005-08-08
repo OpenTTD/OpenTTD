@@ -1009,7 +1009,7 @@ endif
 
 .deps/%.d: %.m table/strings.h endian_target.h
 	@echo '===> Determining dependencies of $<'
-	$(Q)$(OBJC) $(CFLAGS) -M $< > $@
+	$(Q)$(CC) $(CFLAGS) -M $< > $@
 
 
 %.o: %.c $(MAKE_CONFIG)
@@ -1022,7 +1022,7 @@ endif
 
 %.o: %.m  $(MAKE_CONFIG)
 	@echo '===> Compiling $<'
-	$(Q)$(OBJC) $(CFLAGS) $(CDEFS) -c -o $@ $<
+	$(Q)$(CC) $(CFLAGS) $(CDEFS) -c -o $@ $<
 
 
 info:
