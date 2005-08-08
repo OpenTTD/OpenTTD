@@ -131,6 +131,10 @@ SOURCE=.\console_cmds.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\currency.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\debug.c
 # End Source File
 # Begin Source File
@@ -499,6 +503,10 @@ SOURCE=.\command.h
 # Begin Source File
 
 SOURCE=.\console.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\currency.h
 # End Source File
 # Begin Source File
 

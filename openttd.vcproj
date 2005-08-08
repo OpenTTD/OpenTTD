@@ -183,6 +183,9 @@
 				RelativePath=".\console_cmds.c">
 			</File>
 			<File
+				RelativePath=".\currency.c">
+			</File>
+			<File
 				RelativePath=".\debug.c">
 			</File>
 			<File
@@ -473,6 +476,9 @@
 			</File>
 			<File
 				RelativePath="console.h">
+			</File>
+			<File
+				RelativePath=".\currency.h">
 			</File>
 			<File
 				RelativePath="debug.h">
