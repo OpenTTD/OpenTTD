@@ -165,20 +165,18 @@ Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z)
 void VehiclePositionChanged(Vehicle *v)
 {
 	int img = v->cur_image;
-	const SpriteDimension *sd;
 	Point pt = RemapCoords(v->x_pos + v->x_offs, v->y_pos + v->y_offs, v->z_pos);
+	const Sprite* spr = GetSprite(img);
 
-	sd = GetSpriteDimension(img);
-
-	pt.x += sd->xoffs;
-	pt.y += sd->yoffs;
+	pt.x += spr->x_offs;
+	pt.y += spr->y_offs;
 
 	UpdateVehiclePosHash(v, pt.x, pt.y);
 
 	v->left_coord = pt.x;
 	v->top_coord = pt.y;
-	v->right_coord = pt.x + sd->xsize + 2;
-	v->bottom_coord = pt.y + sd->ysize + 2;
+	v->right_coord = pt.x + spr->width + 2;
+	v->bottom_coord = pt.y + spr->height + 2;
 }
 
 // Called after load to update coordinates

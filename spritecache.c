@@ -15,8 +15,6 @@
 
 #define SPRITE_CACHE_SIZE 1024*1024
 
-
-//#define WANT_SPRITESIZES
 #define WANT_NEW_LRU
 
 
@@ -42,13 +40,6 @@ static int16 _sprite_lru_new[MAX_SPRITES];
 #else
 static uint16 _sprite_lru[MAX_SPRITES];
 static uint16 _sprite_lru_cur[MAX_SPRITES];
-#endif
-
-#ifdef WANT_SPRITESIZES
-static int8 _sprite_xoffs[MAX_SPRITES];
-static int8 _sprite_yoffs[MAX_SPRITES];
-static uint16 _sprite_xsize[MAX_SPRITES];
-static uint8 _sprite_ysize[MAX_SPRITES];
 #endif
 
 typedef struct MemBlock {
@@ -116,14 +107,7 @@ static void ReadSpriteHeaderSkipData(int num, int load_index)
 		return;
 	}
 
-#ifdef WANT_SPRITESIZES
-	_cur_sprite.height = FioReadByte();
-	_cur_sprite.width = FioReadWord();
-	_cur_sprite.x_offs = FioReadWord();
-	_cur_sprite.y_offs = FioReadWord();
-#else
 	FioSkipBytes(7);
-#endif
 	num -= 8;
 	if (num == 0)
 		return;
@@ -252,14 +236,6 @@ static bool LoadNextSprite(int load_index, byte file_index)
 
 	_sprite_size[load_index] = size;
 	_sprite_file_pos[load_index] = file_pos;
-
-#ifdef WANT_SPRITESIZES
-	_sprite_xsize[load_index] = _cur_sprite.width;
-	_sprite_ysize[load_index] = _cur_sprite.height;
-
-	_sprite_xoffs[load_index] = _cur_sprite.x_offs;
-	_sprite_yoffs[load_index] = _cur_sprite.y_offs;
-#endif
 
 	_sprite_ptr[load_index] = NULL;
 
@@ -853,27 +829,3 @@ void GfxLoadSprites(void)
 		GfxInitPalettes();
 	}
 }
-
-
-const SpriteDimension *GetSpriteDimension(SpriteID sprite)
-{
-	static SpriteDimension sd;
-
-#ifdef WANT_SPRITESIZES
-	sd.xoffs = _sprite_xoffs[sprite];
-	sd.yoffs = _sprite_yoffs[sprite];
-	sd.xsize = _sprite_xsize[sprite];
-	sd.ysize = _sprite_ysize[sprite];
-#else
-	const Sprite* p = GetSprite(sprite);
-
-	/* decode sprite header */
-	sd.xoffs = p->x_offs;
-	sd.yoffs = p->y_offs;
-	sd.xsize = p->width;
-	sd.ysize = p->height;
-#endif
-
-	return &sd;
-}
-

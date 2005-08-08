@@ -403,12 +403,12 @@ static void AddCombinedSprite(uint32 image, int x, int y, byte z)
 {
 	const ViewportDrawer *vd = _cur_vd;
 	Point pt = RemapCoords(x, y, z);
-	const SpriteDimension *sd = GetSpriteDimension(image & SPRITE_MASK);
+	const Sprite* spr = GetSprite(image & SPRITE_MASK);
 
-	if (pt.x + sd->xoffs >= vd->dpi.left + vd->dpi.width ||
-			pt.x + sd->xoffs + sd->xsize <= vd->dpi.left ||
-			pt.y + sd->yoffs >= vd->dpi.top + vd->dpi.height ||
-			pt.y + sd->yoffs + sd->ysize <= vd->dpi.top)
+	if (pt.x + spr->x_offs >= vd->dpi.left + vd->dpi.width ||
+			pt.x + spr->x_offs + spr->width <= vd->dpi.left ||
+			pt.y + spr->y_offs >= vd->dpi.top + vd->dpi.height ||
+			pt.y + spr->y_offs + spr->height <= vd->dpi.top)
 		return;
 
 	AddChildSpriteScreen(image, pt.x - vd->parent_list[-1]->left, pt.y - vd->parent_list[-1]->top);
@@ -419,7 +419,7 @@ void AddSortableSpriteToDraw(uint32 image, int x, int y, int w, int h, byte dz, 
 {
 	ViewportDrawer *vd = _cur_vd;
 	ParentSpriteToDraw *ps;
-	const SpriteDimension *sd;
+	const Sprite* spr;
 	Point pt;
 
 	assert((image & SPRITE_MASK) < MAX_SPRITES);
@@ -462,11 +462,11 @@ void AddSortableSpriteToDraw(uint32 image, int x, int y, int w, int h, byte dz, 
 
 	pt = RemapCoords(x, y, z);
 
-	sd = GetSpriteDimension(image & SPRITE_MASK);
-	if ((ps->left = (pt.x += sd->xoffs)) >= vd->dpi.left + vd->dpi.width ||
-			(ps->right = (pt.x + sd->xsize)) <= vd->dpi.left ||
-			(ps->top = (pt.y += sd->yoffs)) >= vd->dpi.top + vd->dpi.height ||
-			(ps->bottom = (pt.y + sd->ysize)) <= vd->dpi.top) {
+	spr = GetSprite(image & SPRITE_MASK);
+	if ((ps->left   = (pt.x += spr->x_offs)) >= vd->dpi.left + vd->dpi.width ||
+			(ps->right  = (pt.x +  spr->width )) <= vd->dpi.left ||
+			(ps->top    = (pt.y += spr->y_offs)) >= vd->dpi.top + vd->dpi.height ||
+			(ps->bottom = (pt.y +  spr->height)) <= vd->dpi.top) {
 		return;
 	}
 

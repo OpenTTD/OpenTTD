@@ -12,12 +12,6 @@ typedef struct Sprite {
 	byte data[VARARRAY_SIZE];
 } Sprite;
 
-typedef struct {
-	int xoffs, yoffs;
-	int xsize, ysize;
-} SpriteDimension;
-
-const SpriteDimension *GetSpriteDimension(SpriteID sprite);
 const void *GetRawSprite(SpriteID sprite);
 
 static inline const Sprite *GetSprite(SpriteID sprite)
