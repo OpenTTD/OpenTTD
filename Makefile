@@ -453,7 +453,7 @@ endif
 # libpng config
 ifdef WITH_PNG
 CDEFS += -DWITH_PNG
-CFLAGS += $(shell $(LIBPNG-CONFIG) --cflags)
+CFLAGS += $(shell $(LIBPNG-CONFIG) --cppflags --I_opts)
 
 # seems like older libpng versions are broken and need this
 PNGCONFIG_FLAGS = --ldflags --libs
@@ -747,31 +747,6 @@ else
 	quiet = quiet_
 endif
 
-# Show the command (quiet or non-quiet version based on the assignment
-# just above) and then execute it.
-cmd = @$(if $($(quiet)cmd_$(1)),echo $($(quiet)cmd_$(1)) &&) $(cmd_$(1))
-
-
-# The build commands themselves. Note that if you omit the quiet version,
-# nothing will be shown in the non-verbose mode.
-
-quiet_cmd_compile_link = '===> Compiling and Linking $@'
-      cmd_compile_link = $(CC_HOST) $(CFLAGS_HOST) $(CDEFS) $< -o $@
-
-quiet_cmd_ttd_link = '===> Linking $@'
-      cmd_ttd_link = $(CC) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS) $(LIBS) -o $@
-
-COMPILE_PARAMS=$(CFLAGS) $(CDEFS) -MD -c $< -o $@
-
-quiet_cmd_c_compile = '===> Compiling $<'
-      cmd_c_compile = $(CC) $(COMPILE_PARAMS)
-
-quiet_cmd_cxx_compile = '===> Compiling $<'
-      cmd_cxx_compile = $(CXX) $(COMPILE_PARAMS)
-
-quiet_cmd_objc_compile = '===> Compiling $<'
-      cmd_objc_compile = $(CC) $(COMPILE_PARAMS)
-
 
 ##############################################################################
 #
@@ -799,11 +774,13 @@ endian_target.h: $(ENDIAN_CHECK)
 	$(Q)./$(ENDIAN_CHECK) $(ENDIAN_FORCE) > $@
 
 $(ENDIAN_CHECK): endian_check.c
-	$(call cmd,compile_link)
+	@echo '===> Compiling and Linking $@'
+	$(Q)$(CC_HOST) $(CFLAGS_HOST) $(CDEFS) $< -o $@
 
 
-$(TTD): table/strings.h $(OBJS) $(MAKE_CONFIG)
-	$(call cmd,ttd_link)
+$(TTD): $(OBJS) $(MAKE_CONFIG)
+	@echo '===> Linking $@'
+	$(Q)$(CC) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS) $(LIBS) -o $@
 
 $(OSX): $(TTD)
 	$(Q)rm -fr "$(OSXAPP)"
@@ -829,7 +806,8 @@ $(64_bit_warnings):
 	$(warning If you see any bugs, include in your bug report that you use a 64 bit CPU)
 
 $(STRGEN): strgen/strgen.c endian_host.h
-	$(call cmd,compile_link)
+	@echo '===> Compiling and Linking $@'
+	$(Q)$(CC_HOST) $(CFLAGS_HOST) $(CDEFS) $< -o $@
 
 table/strings.h: lang/english.txt $(STRGEN)
 	@echo '===> Generating $@'
@@ -1015,28 +993,36 @@ upgradeconf: $(MAKE_CONFIG)
 DEPS_MAGIC := $(shell mkdir -p .deps .deps/music .deps/sound .deps/video .deps/os .deps/os/macosx)
 
 # Introduce the dependencies
+ifneq ($(MAKECMDGOALS), clean)
 -include $(DEPS)
+endif
 
-# This compiles the object file as well as silently updating its dependencies
-# list at the same time. It is not an issue that they aren't around during the
-# first compilation round as we just build everything at that time anyway,
-# therefore we do not need to watch deps.
+%.o: .deps/%.d
 
-%.o: %.c $(MAKE_CONFIG) endian_target.h table/strings.h
-	$(call cmd,c_compile)
-	@[ -f $(<:%.c=%.d) ] && mv $(<:%.c=%.d) $(<:%.c=.deps/%.d) || mv $(*F).d $(<:%.c=.deps/%.d)
+.deps/%.d: %.c table/strings.h endian_target.h
+	@echo '===> Determining dependencies of $<'
+	$(Q)$(CC) $(CFLAGS) -M $< > $@
 
-%.o: %.cpp  $(MAKE_CONFIG) endian_target.h table/strings.h
-	$(call cmd,cxx_compile)
-	@[ -f $(<:%.cpp=%.d) ] && mv $(<:%.cpp=%.d) $(<:%.cpp=.deps/%.d) || mv $(*F).d $(<:%.cpp=.deps/%.d)
+.deps/%.d: %.cpp table/strings.h endian_target.h
+	@echo '===> Determining dependencies of $<'
+	$(Q)$(CXX) $(CFLAGS) -M $< > $@
 
-%.o: %.m  $(MAKE_CONFIG) endian_target.h table/strings.h
-	$(call cmd,objc_compile)
-	@[ -f $(<:%.m=%.d) ] && mv $(<:%.m=%.d) $(<:%.m=.deps/%.d) || mv $(*F).d $(<:%.m=.deps/%.d)
+.deps/%.d: %.m table/strings.h endian_target.h
+	@echo '===> Determining dependencies of $<'
+	$(Q)$(OBJC) $(CFLAGS) -M $< > $@
 
-# Silence stale header dependencies
-%.h:
-	@true
+
+%.o: %.c $(MAKE_CONFIG)
+	@echo '===> Compiling $<'
+	$(Q)$(CC) $(CFLAGS) $(CDEFS) -c -o $@ $<
+
+%.o: %.cpp  $(MAKE_CONFIG)
+	@echo '===> Compiling $<'
+	$(Q)$(CXX) $(CFLAGS) $(CDEFS) -c -o $@ $<
+
+%.o: %.m  $(MAKE_CONFIG)
+	@echo '===> Compiling $<'
+	$(Q)$(OBJC) $(CFLAGS) $(CDEFS) -c -o $@ $<
 
 
 info:
