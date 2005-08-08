@@ -495,7 +495,7 @@ STR_01E9_SHUFFLE                                                :{TINYFONT}Bland
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Programmer
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Musik Program Valg
 STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA}   "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Nummer Index
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Ryd
@@ -1746,9 +1746,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Der er et tog i tunnelen
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Der er en lastbil i tunnelen
-STR_5002                                                        :
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}En anden tunnel er i vejen
-STR_5004                                                        :
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Det er umuligt at lave en udgravning til tunnelen i den anden ende
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Det er nødvendigt at rive tunnelen ned først
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Det er nødvendigt at rive broen ned først
@@ -1756,7 +1754,6 @@ STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Kan ikke
 STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Der skal være flat land eller vand under broen
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Start og slut position skal være på linje
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Dette sted er ikke brugbart til starten af en tunnel
-STR_500C                                                        :
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_500E_SUSPENSION_STEEL                                       :Hængebro, Stål
 STR_500F_GIRDER_STEEL                                           :Bjælkebro, Stål

@@ -496,7 +496,7 @@ STR_01E9_SHUFFLE                                                :{TINYFONT}Amest
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Program
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Programare piese muzicale
 STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA}   "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Lista melodiilor
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Sterge
@@ -1744,9 +1744,7 @@ STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...se po
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Tren în tunel
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Autovehicul în tunnel
-STR_5002                                                        :
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Intersectare cu alt tunel
-STR_5004                                                        :
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Terenul de la celãlalt capãt al tunelului este imposibil de excavat
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Mai intâi trebuie demolat tunelul
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Mai intâi trebuie demolat podul
@@ -1754,7 +1752,6 @@ STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Cele dou
 STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Sub pod trebuie sã existe teren nivelat
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Cele douã capete trebuie sã se situeze în linie
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Loc nepotrivit pentru intrarea într-un tunel
-STR_500C                                                        :
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_500E_SUSPENSION_STEEL                                       :Suspensie (otel)
 STR_500F_GIRDER_STEEL                                           :Grindã (otel)

@@ -495,7 +495,7 @@ STR_01E9_SHUFFLE                                                :{TINYFONT}Sajau
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Programma
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Mu'zikas programmas izve'le
 STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA}   "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Treka indekss
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Programma - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Dze'st
@@ -1146,9 +1146,6 @@ STR_4819_FACTORY                                                :Rûpnîca
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Vilciens tunelî
-STR_5002                                                        :
-STR_5004                                                        :
-STR_500C                                                        :
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_500E_SUSPENSION_STEEL                                       :Vanšu, Terauda
 

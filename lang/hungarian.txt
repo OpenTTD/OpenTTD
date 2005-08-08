@@ -495,8 +495,8 @@ STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFON
 STR_01E9_SHUFFLE                                                :{TINYFONT}Kever
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Mûsor
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Zenei mûsor kiválasztása
-STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA}   "{STRING}"
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA}   "{STRING}"
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Számlista
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}"{STRING}" mûsora
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Törlés
@@ -1760,9 +1760,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Vonat van az alagútban
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Közúti jármû van az alagútban
-STR_5002                                                        :
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Másik alagút van az útban
-STR_5004                                                        :
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Nem lehet kiásni a földet az alagút túloldalán
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Elõbb le kell rombolnod az alagutat
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Elõbb le kell rombolnod a hidat
@@ -1770,7 +1768,6 @@ STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Nem kezd
 STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Sima föld vagy víz kell, hogy legyen a híd alatt
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}A kezdetének és a végének egy vonalban kell lennie
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Nem alkalmas a hely alagút bejáratának
-STR_500C                                                        :
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_500E_SUSPENSION_STEEL                                       :Függõ, acél
 STR_500F_GIRDER_STEEL                                           :Gerendás, acél

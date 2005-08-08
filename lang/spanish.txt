@@ -496,7 +496,7 @@ STR_01E9_SHUFFLE                                                :{TINYFONT}Mezcl
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Programa
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Selección del programa de música
 STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA}   "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Índice de pistas
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Programa - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Borrar
@@ -1758,9 +1758,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Tren en túnel
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Vehículo de carretera en túnel
-STR_5002                                                        :
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Otro túnel en el camino
-STR_5004                                                        :
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}No se puede excavar en la tierra al otro lado del túnel
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Primero debe demolerse el túnel
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Primero debe demolerse el puente
@@ -1768,7 +1766,6 @@ STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}No se pu
 STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Se requiere tierra a nivel o agua bajo el puente
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Comienzo y final deben estar en línea
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Lugar inapropiado para entrada de túnel
-STR_500C                                                        :
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_500E_SUSPENSION_STEEL                                       :Suspensión, Acero
 STR_500F_GIRDER_STEEL                                           :Tirantes, Acero

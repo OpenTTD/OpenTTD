@@ -263,8 +263,6 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (ti_start.z != ti_end.z)
 		return_cmd_error(STR_5009_LEVEL_LAND_OR_WATER_REQUIRED);
 
-	_error_message = STR_500C;
-
 
 	// Towns are not allowed to use bridges on slopes.
 	allow_on_slopes = ((!_is_ai_player || _patches.ainew_active)
@@ -503,8 +501,7 @@ static int32 DoBuildTunnel(int x, int y, int x2, int y2, uint32 flags, uint exc_
 			break;
 
 		FindLandscapeHeight(&ti, x2, y2);
-		if (ti.z <= z)
-			return_cmd_error(STR_5002);
+		if (ti.z <= z) return CMD_ERROR;
 
 		if (!_cheats.crossing_tunnels.value && !CheckTunnelInWay(ti.tile, z))
 			return CMD_ERROR;
@@ -517,8 +514,7 @@ static int32 DoBuildTunnel(int x, int y, int x2, int y2, uint32 flags, uint exc_
 	}
 
 	FindLandscapeHeight(&ti, x2, y2);
-	if (ti.z != z)
-		return_cmd_error(STR_5004);
+	if (ti.z != z) return CMD_ERROR;
 
 	if (exc_tile != 1) {
 		if ( (direction ? 6U : 3U) != ti.tileh)

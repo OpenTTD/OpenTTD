@@ -470,16 +470,16 @@ STR_01E9_SHUFFLE                                                :{TINYFONT}Karis
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Program
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Müzik Programi Seçimi
 STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA16} "{STRING}"
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA16}   "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA16} "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Parça Indeksi
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Temizle
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Kaydet
 STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Müzik parçalarinin su anki programi
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}"Tüm parçalar" programini seç
-STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}}"Eski stil müzik" programini seç
-STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}}}"Yeni stil müzik" programini seç
-STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}}}}'Özel 1' (kullanici-tanimli) programini seç
+STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}"Eski stil müzik" programini seç
+STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}"Yeni stil müzik" programini seç
+STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}'Özel 1' (kullanici-tanimli) programini seç
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}'Özel 2' (kullanici-tanimli) programini seç
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Su anki programi temizle(Sadece Özel1 veya Özel2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Müzik ayarlarini kaydet
