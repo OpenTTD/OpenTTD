@@ -290,6 +290,7 @@ STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Totale l
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Nieuw spel
 STR_0141_LOAD_GAME                                              :{BLACK}Laad spel
+STR_SINGLE_PLAYER                                               :{BLACK}Een speler
 STR_MULTIPLAYER                                                 :{BLACK}Multiplayer
 
 STR_64                                                          :64
@@ -1784,6 +1785,7 @@ STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Kan hier
 STR_5017_RAILROAD_TUNNEL                                        :Spoortunnel
 STR_5018_ROAD_TUNNEL                                            :Weg tunnel
 STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Stalen hangende spoorweg brug
+STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Stalen spoor brug
 STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Stalen cantilever spoorweg brug
 STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :Gewapend betonnen hangende spoorweg brug
 STR_501F_WOODEN_RAIL_BRIDGE                                     :Houten spoorweg brug
@@ -2368,6 +2370,12 @@ STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nieuwe s
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nieuwe monorailvoertuigen
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nieuwe maglevvoertuigen
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Bouw voertuig
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Kloon voertuig
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Hierdoor wordt een kopie gebouw van dit voertuig. Control-click deelt de orders
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Hierdoor wordt een kopie gebouw van een voertuig. Klik op deze knop en dan op een voertuig binnen of buiten het depot. Control-click deelt de orders
+STR_CLONE_TRAIN                                                 :{BLACK}Kloon Trein
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Hierdoor wordt een kopie gebouw van deze trein inclusief wagons. Control-click deelt de orders
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Hierdoor wordt een kopie gebouw van een trein inclusief wagons. Klik op deze knop en dan op een trein binnen of buiten het depot. Control-click deelt de orders
 STR_8820_RENAME                                                 :{BLACK}Hernoemen
 STR_8823_SKIP                                                   :{BLACK}Sla over
 STR_8824_DELETE                                                 :{BLACK}Verwijder
@@ -2519,6 +2527,9 @@ STR_9804_NEW_SHIPS                                              :{BLACK}Nieuwe s
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Schepen
 STR_9808_NEW_SHIPS                                              :{WHITE}Nieuwe schepen
 STR_9809_BUILD_SHIP                                             :{BLACK}Bouw schip
+STR_CLONE_SHIP                                                  :{BLACK}Kloon Schip
+STR_CLONE_SHIP_INFO                                             :{BLACK}Hierdoor wordt een kopie gebouw van dit schip. Control-click deelt de orders
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Hierdoor wordt een kopie gebouw van een schip. Klik op deze knop en dan op een schip binnen of buiten het depot. Control-click deelt de orders
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Schip moet gestopt zijn binnen een depot
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Kan schip niet verkopen...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kan schip niet kopen...
@@ -2583,6 +2594,9 @@ STR_A000_AIRPORTS                                               :{WHITE}Vliegvel
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Kan vliegveld hier niet bouwen...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Vliegtuighangar
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nieuw vliegtuig
+STR_CLONE_AIRCRAFT                                              :{BLACK}Kloon Vliegtuig
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Hierdoor wordt een kopie gebouw van dit vliegtuig. Control-click deelt de orders
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Hierdoor wordt een kopie gebouw van een vliegtuig. Klik op deze knop en dan op een vliegtuig binnen of buiten de hangar. Control-click deelt de orders
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nieuw Vliegtuig
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Bouw Vliegtuig
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kan vliegtuig niet bouwen...
