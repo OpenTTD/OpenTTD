@@ -32,7 +32,6 @@ static Sprite _cur_sprite;
 
 
 static void* _sprite_ptr[MAX_SPRITES];
-static uint16 _sprite_size[MAX_SPRITES];
 static uint32 _sprite_file_pos[MAX_SPRITES];
 
 #if defined(WANT_NEW_LRU)
@@ -49,7 +48,6 @@ typedef struct MemBlock {
 
 static uint _sprite_lru_counter;
 static MemBlock *_spritecache_ptr;
-static uint32 _spritecache_size;
 static int _compact_cache_counter;
 
 typedef struct MD5File {
@@ -133,12 +131,12 @@ static void* AllocSprite(size_t);
 
 static void* ReadSprite(SpriteID id)
 {
-	uint num = _sprite_size[id];
+	uint num;
 	byte type;
 
 	DEBUG(spritecache, 9) ("load sprite %d", id);
 
-	if (_sprite_file_pos[id] == 0) {
+	if (_sprite_file_pos[id] == 0 && id != 0) {
 		error(
 			"Tried to load non-existing sprite #%d.\n"
 			"Probable cause: Wrong/missing NewGRFs",
@@ -148,6 +146,7 @@ static void* ReadSprite(SpriteID id)
 
 	FioSeekToFile(_sprite_file_pos[id]);
 
+	num  = FioReadWord();
 	type = FioReadByte();
 	if (type == 0xFF) {
 		byte* dest = AllocSprite(num);
@@ -195,14 +194,10 @@ static void* ReadSprite(SpriteID id)
 
 static bool LoadNextSprite(int load_index, byte file_index)
 {
-	uint16 size;
-	uint32 file_pos;
+	uint32 file_pos = FioGetPos() | (file_index << 24);
+	uint16 size = FioReadWord();
 
-	size = FioReadWord();
-	if (size == 0)
-		return false;
-
-	file_pos = FioGetPos() | (file_index << 24);
+	if (size == 0) return false;
 
 	ReadSpriteHeaderSkipData(size, load_index);
 
@@ -234,7 +229,6 @@ static bool LoadNextSprite(int load_index, byte file_index)
 		}
 	}
 
-	_sprite_size[load_index] = size;
 	_sprite_file_pos[load_index] = file_pos;
 
 	_sprite_ptr[load_index] = NULL;
@@ -629,7 +623,7 @@ static const SpriteID _openttd_grf_indexes[] = {
 	SPR_OPENTTD_BASE+11, SPR_OPENTTD_BASE+57, // more icons
 	648, 648, // nordic char: æ
 	616, 616, // nordic char: Æ
-	666, 666, // nordic char: Ø
+	666, 666, // nordic char: ø
 	634, 634, // nordic char: Ø
 	SPR_OPENTTD_BASE+62, SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT, // more icons
 	0xffff,
@@ -800,7 +794,6 @@ static void GfxInitSpriteMem(void *ptr, uint32 size)
 {
 	// initialize sprite cache heap
 	_spritecache_ptr = ptr;
-	_spritecache_size = size;
 
 	// A big free block
 	_spritecache_ptr->size = (size - sizeof(MemBlock)) | S_FREE_MASK;
