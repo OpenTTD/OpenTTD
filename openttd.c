@@ -1249,11 +1249,14 @@ bool AfterLoadGame(uint version)
 			p->engine_renew_months = -6;
 			p->engine_renew_money = 100000;
 		}
-		// Set the human controlled player to the patch settings
-		p = GetPlayer(_local_player);
-		p->engine_renew = _patches.autorenew;
-		p->engine_renew_months = _patches.autorenew_months;
-		p->engine_renew_money = _patches.autorenew_money;
+		if (_local_player < MAX_PLAYERS) {
+			// Set the human controlled player to the patch settings
+			// Scenario editor do not have any companies
+			p = GetPlayer(_local_player);
+			p->engine_renew = _patches.autorenew;
+			p->engine_renew_months = _patches.autorenew_months;
+			p->engine_renew_money = _patches.autorenew_money;
+		}
 	}
 
 	FOR_ALL_PLAYERS(p) {
