@@ -156,6 +156,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Non puoi
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Non puoi ripulire l'area....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright Originale{COPYRIGHT} 1995 Chris Sawyer, Tutti i diritti riservati
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versione {REV}
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2005 The OpenTTD team
 STR_TRANSLATED_BY                                               :{BLACK}  Traduttore/i -
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -280,6 +281,7 @@ STR_OSNAME_OS2                                                  :OS/2
 STR_0139_IMPERIAL_MILES                                         :Imperiale (miglia)
 STR_013A_METRIC_KILOMETERS                                      :Metrico (kilometri)
 STR_013B_OWNED_BY                                               :{WHITE}...posseduto da {STRING}
+STR_013C_CARGO                                                  :{BLACK}Carichi
 STR_013D_INFORMATION                                            :{BLACK}Informazioni
 STR_013E_CAPACITIES                                             :{BLACK}Capienza
 STR_013E_TOTAL_CARGO                                            :{BLACK}Carico totale
@@ -684,6 +686,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Dimensi
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Mostra ultimo messaggio o un report
+STR_OFF                                                         :No
 STR_SUMMARY                                                     :Sommario
 STR_FULL                                                        :Completo
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
@@ -733,6 +736,8 @@ STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :ScreenShot Giga
 STR_02D9_ABOUT_OPENTTD                                          :Info su 'OpenTTD'
 ############ range ends	here
 
+STR_02DB_OFF                                                    :{BLACK}No
+STR_02DA_ON                                                     :{BLACK}Si
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Mostra sussidi
 STR_02DD_SUBSIDIES                                              :Sussidi
 STR_02DE_MAP_OF_WORLD                                           :Mappa del mondo
@@ -764,6 +769,7 @@ STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Selezion
 STR_02F4_AUTOSAVE                                               :{BLACK}Salvataggi automatici
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Seleziona intervallo salvataggi automatici
+STR_02F7_OFF                                                    :No
 STR_02F8_EVERY_3_MONTHS                                         :Ogni 3 mesi
 STR_02F9_EVERY_6_MONTHS                                         :Ogni 6 mesi
 STR_02FA_EVERY_12_MONTHS                                        :Ogni 12 mesi
@@ -1137,6 +1143,7 @@ STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Fonda Ru
 STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Fonda Water Supply
 STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Pianta Cotton Candy Forest
 STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Fonda Battery Farm
+STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Pozzi di Cola
 STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Fonda Plastic Fountains
 STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Costruisci Bubble Generator
 STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Fonda Toffee Quarry
@@ -1186,9 +1193,11 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Digita i
 STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clients
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clients online / clients max
+STR_NETWORK_GAME_INFO                                           :{SILVER}INFORMAZIONI PARTITA
 STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Clients:  {WHITE}{COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Lingua:  {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Ambiente:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Dimens:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versione server:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Indirizzo del server:  {WHITE}{STRING} : {NUM}
@@ -1262,6 +1271,7 @@ STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inaugur
 STR_NETWORK_VALUE                                               :{SILVER}Valore compagnia:  {WHITE}{CURRENCY64}
 STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Bilancio corrente:  {WHITE}{CURRENCY64}
 STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Entrate dell'ultimo anno:  {WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Prestazioni:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Veicoli:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_STATIONS                                            :{SILVER}Stazioni:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -1819,6 +1829,7 @@ STR_SV_STNAME_VALLEY                                            :{STRING} Valle
 STR_SV_STNAME_HEIGHTS                                           :{STRING} Altura
 STR_SV_STNAME_WOODS                                             :{STRING} Bosco
 STR_SV_STNAME_LAKESIDE                                          :{STRING} Lago
+STR_SV_STNAME_EXCHANGE                                          :{STRING1} Scambio
 STR_SV_STNAME_AIRPORT                                           :{STRING} Aereoporto
 STR_SV_STNAME_OILFIELD                                          :{STRING} Giacimento petrolifero
 STR_SV_STNAME_MINES                                             :{STRING} Miniere
@@ -1832,6 +1843,7 @@ STR_SV_STNAME_BUOY_6                                            :{STRING} Boa 6
 STR_SV_STNAME_BUOY_7                                            :{STRING} Boa 7
 STR_SV_STNAME_BUOY_8                                            :{STRING} Boa 8
 STR_SV_STNAME_BUOY_9                                            :{STRING} Boa 9
+STR_SV_STNAME_ANNEXE                                            :{STRING1} Annesso
 STR_SV_STNAME_SIDINGS                                           :{STRING} Raccordo
 STR_SV_STNAME_BRANCH                                            :{STRING} Ramo
 STR_SV_STNAME_UPPER                                             :Alta {STRING}
@@ -1870,7 +1882,7 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Quantit
 STR_6813_ECONOMY                                                :{LTBLUE}Economia: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Inversione treni: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Disastri: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL                                         :{LTBLUE}Atteggiamento delle città verso i cambiamenti nel territorio: {ORANGE}{STRING}
+STR_16816_CITY_APPROVAL                                         :{LTBLUE}Atteggiamento delle città alle modifiche: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Nessuno
@@ -1907,6 +1919,8 @@ STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 mesi dopo il 
 STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 mesi dopo il giocatore
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Alla fine della linea, e alle stazioni
 STR_6835_AT_END_OF_LINE_ONLY                                    :Solo alla fine della linea
+STR_6836_OFF                                                    :No
+STR_6837_ON                                                     :Si
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Mostra punteggi migliori
 STR_6839_PERMISSIVE                                             :Permissivo
 STR_683A_TOLERANT                                               :Tollerante
@@ -1954,8 +1968,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}Bilancio
 STR_7027_LOAN                                                   :{WHITE}Prestito
 STR_MAX_LOAN                                                    :{WHITE}Prestito Massimo:  {BLACK}{CURRENCY64}
 STR_7028                                                        :{BLACK}{CURRENCY64}
-STR_7029_BORROW                                                 :<CHECK>{BLACK}Richiedi {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :<CHECK>{BLACK}Ripaga {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}Richiedi {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Ripaga {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...il prestito massimo concesso è di {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Non puoi chiedere altro denaro...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...debito già ripagato
@@ -2353,6 +2367,12 @@ STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nuovo Ve
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nuovo  Veicolo Per Monorotaia
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nuovo Veicolo Per Maglev
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Costruisci Veicolo
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clona Veicolo
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Costruisce una copia del veicolo stradale. Premere contemporaneamente Control per condividere gli ordini
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Costruisce una copia del veicolo stradale. Cliccare su questo pulsante e poi sul veicolo stradale (dentro o fuori dal deposito) da copiare. Premere contemporaneamente Control per condividere gli ordini
+STR_CLONE_TRAIN                                                 :{BLACK}Clona Treno
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Costruisce una copia del treno, vagoni inclusi. Premere contemporaneamente Control per condividere gli ordini
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Costruisce una copia del treno, vagoni inclusi. Cliccare su questo pulsante e poi sul treno (dentro o fuori dal deposito) da copiare. Premere contemporaneamente Control per condividere gli ordini
 STR_8820_RENAME                                                 :{BLACK}Rinomina
 STR_8823_SKIP                                                   :{BLACK}Salta
 STR_8824_DELETE                                                 :{BLACK}Elimina
@@ -2504,6 +2524,9 @@ STR_9804_NEW_SHIPS                                              :{BLACK}Nuove Na
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Navi
 STR_9808_NEW_SHIPS                                              :{WHITE}Nuove Navi
 STR_9809_BUILD_SHIP                                             :{BLACK}Costruisci Nave
+STR_CLONE_SHIP                                                  :{BLACK}Clona Nave
+STR_CLONE_SHIP_INFO                                             :{BLACK}Costruisce una copia della nave. Premere contemporaneamente Control per condividere gli ordini
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Costruisce una copia della nave. Cliccare su questo pulsante e poi sulla nave (dentro o fuori dal deposito) da copiare. Premere contemporaneamente Control per condividere gli ordini
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}La nave deve essere ferma nel deposito
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Non puoi vendere la nave...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Non puoi costruire nave...
@@ -2568,6 +2591,9 @@ STR_A000_AIRPORTS                                               :{WHITE}Aeroport
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Non puoi costruire aeroporto qui...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangar
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nuovo Aereo
+STR_CLONE_AIRCRAFT                                              :{BLACK}Clona Aereo
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Costruisce una copia dell'aereo. Premere contemporaneamente Control per condividere gli ordini
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Costruisce una copia dell'aereo. Cliccare su questo pulsante e poi sull'aereo (dentro o fuori dal deposito) da copiare. Premere contemporaneamente Control per condividere gli ordini
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nuovo Aereo
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construisci Aereo
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Non puoi costruire aereo
@@ -2658,6 +2684,7 @@ STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Profitto
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Incasso Min.:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Incasso Max.:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Trasportati:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Carichi:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Denaro:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Prestito:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totale:
