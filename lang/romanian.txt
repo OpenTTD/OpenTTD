@@ -13,7 +13,7 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Necesitã teren plat
 STR_0008_WAITING                                                :{BLACK}În asteptare: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING1}
+STR_0009                                                        :{WHITE}{STRING}
 STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (plecat de la
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Acceptã: {WHITE}
