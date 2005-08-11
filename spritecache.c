@@ -78,10 +78,13 @@ static const SpriteID * const _slopes_spriteindexes[] = {
 
 static void CompactSpriteCache(void);
 
-static void ReadSpriteHeaderSkipData(int num, int load_index)
+static bool ReadSpriteHeaderSkipData(int load_index)
 {
+	uint16 num = FioReadWord();
 	byte type;
 	int deaf = 0;
+
+	if (num == 0) return false;
 
 	if (_skip_sprites) {
 		if (_skip_sprites > 0)
@@ -102,13 +105,12 @@ static void ReadSpriteHeaderSkipData(int num, int load_index)
 		} else {
 			DecodeSpecialSprite(_cur_grffile, num, load_index, _loading_stage);
 		}
-		return;
+		return true;
 	}
 
 	FioSkipBytes(7);
 	num -= 8;
-	if (num == 0)
-		return;
+	if (num == 0) return true;
 
 	if (type & 2) {
 		FioSkipBytes(num);
@@ -125,6 +127,8 @@ static void ReadSpriteHeaderSkipData(int num, int load_index)
 			}
 		}
 	}
+
+	return true;
 }
 
 static void* AllocSprite(size_t);
@@ -195,11 +199,8 @@ static void* ReadSprite(SpriteID id)
 static bool LoadNextSprite(int load_index, byte file_index)
 {
 	uint32 file_pos = FioGetPos() | (file_index << 24);
-	uint16 size = FioReadWord();
 
-	if (size == 0) return false;
-
-	ReadSpriteHeaderSkipData(size, load_index);
+	if (!ReadSpriteHeaderSkipData(load_index)) return false;
 
 	if (_replace_sprites_count[0] > 0 && _cur_sprite.info != 0xFF) {
 		int count = _replace_sprites_count[0];
@@ -245,14 +246,8 @@ static bool LoadNextSprite(int load_index, byte file_index)
 
 static void SkipSprites(uint count)
 {
-	for (; count > 0; --count)
-	{
-		uint16 size = FioReadWord();
-
-		if (size == 0)
-			return;
-
-		ReadSpriteHeaderSkipData(size, MAX_SPRITES - 1);
+	for (; count > 0; --count) {
+		if (!ReadSpriteHeaderSkipData(MAX_SPRITES - 1)) return;
 	}
 }
 
