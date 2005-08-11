@@ -999,17 +999,17 @@ endif
 
 %.o: .deps/%.d
 
-.deps/%.d: %.c table/strings.h endian_target.h
+.deps/%.d: %.c $(MAKE_CONFIG) table/strings.h endian_target.h
 	@echo '===> Determining dependencies of $<'
-	$(Q)$(CC) $(CFLAGS) -M $< > $@
+	$(Q)$(CC) $(CFLAGS) $(CDEFS) -M $< > $@
 
-.deps/%.d: %.cpp table/strings.h endian_target.h
+.deps/%.d: %.cpp $(MAKE_CONFIG) table/strings.h endian_target.h
 	@echo '===> Determining dependencies of $<'
-	$(Q)$(CXX) $(CFLAGS) -M $< > $@
+	$(Q)$(CXX) $(CFLAGS) $(CDEFS) -M $< > $@
 
-.deps/%.d: %.m table/strings.h endian_target.h
+.deps/%.d: %.m $(MAKE_CONFIG) table/strings.h endian_target.h
 	@echo '===> Determining dependencies of $<'
-	$(Q)$(CC) $(CFLAGS) -M $< > $@
+	$(Q)$(CC) $(CFLAGS) $(CDEFS) -M $< > $@
 
 
 %.o: %.c $(MAKE_CONFIG)
@@ -1029,3 +1029,4 @@ info:
 	@echo 'CFLAGS  = $(CFLAGS)'
 	@echo 'LDFLAGS = $(LDFLAGS)'
 	@echo 'LIBS    = $(LIBS)'
+	@echo 'CDEFS   = $(CDEFS)'
