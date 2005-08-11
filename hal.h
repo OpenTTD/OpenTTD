@@ -48,7 +48,6 @@ extern bool _dbg_screen_rect;
 
 // Deals with finding savegames
 typedef struct {
-	uint16 id;
 	byte type;
 	uint64 mtime;
 	char title[64];
