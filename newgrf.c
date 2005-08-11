@@ -140,7 +140,7 @@ static uint16 grf_load_word(byte **buf)
 	return val;
 }
 
-static uint16 grf_load_dword(byte **buf)
+static uint32 grf_load_dword(byte **buf)
 {
 	uint32 val;
 	byte *p = *buf;
