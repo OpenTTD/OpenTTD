@@ -82,10 +82,10 @@ typedef struct Engine {
 	uint16 duration_phase_1, duration_phase_2, duration_phase_3;
 	byte lifelength;
 	byte flags;
-	PlayerID preview_player;
+	byte preview_player;
 	byte preview_wait;
 	byte railtype;
-	PlayerID player_avail;
+	byte player_avail;
 	byte type;				// type, ie VEH_Road, VEH_Train, etc. Same as in vehicle.h
 } Engine;
 
