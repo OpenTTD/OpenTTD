@@ -1298,6 +1298,7 @@ STR_NETWORK_DISCONNECT                                          :{BLACK}Desconec
 STR_NETWORK_CHAT_QUERY_CAPTION                                  :{WHITE}Teclee el mensaje de texto a enviar
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introduce la cantidad de dinero que desea dar
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor protegido. Teclee la contraseña
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa protegida. Introduce contraseña
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Lista de clientes
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} No se han encontrado dispositivos de red o juego compilado sin ENABLE_NETWORK
@@ -1327,6 +1328,7 @@ STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :error protocolo
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :no autorizado
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :recibido paquete extraño
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :versión incorrecta
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :este nombre ya está en uso
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :contraseña de juego incorrecta
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :id de jugador incorrecto en DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :expulsado por el servidor
@@ -2365,6 +2367,12 @@ STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nuevos v
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nuevos vehículos de monorraíl
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nuevos vehículos de levitación magnética
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Contruir Vehículo
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clonar vehículo
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Esto construirá una copia del vehículo. Control-click compartirá las ordenes
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Esto construirá una copia del vehículo. Pulsa este botón y después el vehículo dentro o fuera del depósito. Control-click compartirá las ordenes
+STR_CLONE_TRAIN                                                 :{BLACK}Clonar tren
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Esto copiará el tren incluido sus vagones. Control-click compartirá las ordenes
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Esto construirá una copia del tren. Pulsa este botón y después el tren dentro o fuera del depósito. Control-click compartirá las ordenes
 STR_8820_RENAME                                                 :{BLACK}Renombrar
 STR_8823_SKIP                                                   :{BLACK}Saltarse
 STR_8824_DELETE                                                 :{BLACK}Borrar
@@ -2516,6 +2524,9 @@ STR_9804_NEW_SHIPS                                              :{BLACK}Nuevos b
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Barcos
 STR_9808_NEW_SHIPS                                              :{WHITE}Nuevos barcos
 STR_9809_BUILD_SHIP                                             :{BLACK}Construir barco
+STR_CLONE_SHIP                                                  :{BLACK}Clonar barco
+STR_CLONE_SHIP_INFO                                             :{BLACK}Esto copiará el barco. Control-click compartirá las ordenes
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Esto construirá una copia del barco. Pulsa este botón y después el barco dentro o fuera del muelle. Control-click compartirá las ordenes
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Barco debe estar detenido en astillero
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}No se puede vender barco...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}No se puede construir barco...
@@ -2580,6 +2591,9 @@ STR_A000_AIRPORTS                                               :{WHITE}Aeropuer
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}No se puede construir aeropuerto aquí...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangar de aeroplanos
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nueva aeronave
+STR_CLONE_AIRCRAFT                                              :{BLACK}Clonar aeronave
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Esto copiará la aeronave. Control-click compartirá las ordenes
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Esto construirá una copia de la aeronave. Pulsa este botón y después la aeronave dentro o fuera del hangar. Control-click compartirá las ordenes
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nuevo avilón
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construir aeronave
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}No se puede construir aeronave...
