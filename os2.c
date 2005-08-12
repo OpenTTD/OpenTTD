@@ -61,14 +61,6 @@ int compare_FiosItems(const void *a, const void *b)
 }
 
 
-static DIR *my_opendir(char *path, char *file)
-{
-	char paths[MAX_PATH];
-
-	append_path(paths, path, file);
-	return opendir(paths);
-}
-
 static void append_path(char *out, const char *path, const char *file)
 {
 	if (path[2] == '\\' && path[3] == '\0')
@@ -92,7 +84,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 		strcpy(_fios_save_path, _path.save_dir);
 	}
 
-	_fios_path = _fios_scn_path;
+	_fios_path = _fios_save_path;
 
 	// Parent directory, only if not of the type C:\.
 	if (_fios_path[3] != '\0') {
@@ -104,7 +96,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 	}
 
 	// Show subdirectories first
-	dir = my_opendir(_fios_path, "*.*");
+	dir = opendir(_fios_path);
 	if (dir != NULL) {
 		while ((dirent = readdir(dir)) != NULL) {
 			append_path(filename, _fios_path, dirent->d_name);
@@ -138,7 +130,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 	 * .SV1 Transport Tycoon Deluxe (Patch) saved game
 	 * .SV2 Transport Tycoon Deluxe (Patch) saved 2-player game
 	 */
-	dir = my_opendir(_fios_path, "*.*");
+	dir = opendir(_fios_path);
 	if (dir != NULL) {
 		while ((dirent = readdir(dir)) != NULL) {
 			char *t;
@@ -184,15 +176,13 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 		_dos_getdrive(&save);
 
 		/* get available drive letters */
-		for (disk = 1; disk < 27; ++disk)
-		{
+		for (disk = 1; disk < 27; ++disk) {
 			uint disk2;
 
 			_dos_setdrive(disk, &total);
 			_dos_getdrive(&disk2);
 
-			if (disk == disk2)
-			{
+			if (disk == disk2) {
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_DRIVE;
 				sprintf(fios->name, "%c:", 'A' + disk - 1);
@@ -233,7 +223,7 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 	}
 
 	// Show subdirectories first
-	dir = my_opendir(_fios_path, "*.*");
+	dir = opendir(_fios_path);
 	if (dir != NULL) {
 		while ((dirent = readdir(dir)) != NULL) {
 			append_path(filename, _fios_path, dirent->d_name);
@@ -250,6 +240,14 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 		closedir(dir);
 	}
 
+	{
+		/* XXX ugly global variables ... */
+		byte order = _savegame_sort_order;
+		_savegame_sort_order = 2; // sort ascending by name
+		qsort(_fios_items, _fios_count, sizeof(FiosItem), compare_FiosItems);
+		_savegame_sort_order = order;
+	}
+
 	// this is where to start sorting
 	sort_start = _fios_count;
 
@@ -258,7 +256,7 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 	 * .SV0 Transport Tycoon Deluxe (Patch) scenario
 	 * .SS0 Transport Tycoon Deluxe preset scenario
 	 */
-	dir = my_opendir(_fios_path, "*.*");
+	dir = opendir(_fios_path);
 	if (dir != NULL) {
 		while ((dirent = readdir(dir)) != NULL) {
 			char *t;
@@ -295,8 +293,7 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 	qsort(_fios_items + sort_start, _fios_count - sort_start, sizeof(FiosItem), compare_FiosItems);
 
 	// Drives
-	if (mode != SLD_NEW_GAME)
-	{
+	if (mode != SLD_NEW_GAME) {
 		unsigned save, disk, disk2, total;
 
 		/* save original drive */
@@ -304,13 +301,11 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 
 		/* get available drive letters */
 
-		for (disk = 1; disk < 27; ++disk)
-		{
+		for (disk = 1; disk < 27; ++disk) {
 			_dos_setdrive(disk, &total);
 			_dos_getdrive(&disk2);
 
-			if (disk == disk2)
-			{
+			if (disk == disk2) {
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_DRIVE;
 				sprintf(fios->name, "%c:", 'A' + disk - 1);
@@ -347,13 +342,14 @@ char *FiosBrowseTo(const FiosItem *item)
 
 		case FIOS_TYPE_PARENT:
 			s = strrchr(path, '\\');
-			if (s != NULL) *s = '\0';
+			if (s != path + 2)
+				s[0] = '\0';
+			else
+				s[1] = '\0';
 			break;
 
 		case FIOS_TYPE_DIR:
-			s = strchr(item->name, '\\');
-			if (s != NULL) *s = '\0';
-			if (path[3]!= '\0' ) strcat(path, "\\");
+			if (path[3] != '\0') strcat(path, "\\");
 			strcat(path, item->name);
 			break;
 
@@ -437,9 +433,10 @@ int GetLanguageList(char **languages, int max)
 
 	dir = opendir(_path.lang_dir);
 	if (dir != NULL) {
-		while ((dirent = readdir(dir))) {
+		while ((dirent = readdir(dir)) != NULL) {
 			char *t = strrchr(dirent->d_name, '.');
-			if (t && !strcmp(t, ".lng")) {
+
+			if (t != NULL && strcmp(t, ".lng") == 0) {
 				languages[num++] = strdup(dirent->d_name);
 				if (num == max) break;
 			}

@@ -647,6 +647,14 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 		FindClose(h);
 	}
 
+	{
+		/* XXX ugly global variables ... */
+		byte order = _savegame_sort_order;
+		_savegame_sort_order = 2; // sort ascending by name
+		qsort(_fios_items, _fios_count, sizeof(FiosItem), compare_FiosItems);
+		_savegame_sort_order = order;
+	}
+
 	// this is where to start sorting
 	sort_start = _fios_count;
 
@@ -672,7 +680,6 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 
 				*t = '\0'; // strip extension
 				ttd_strlcpy(fios->title, fd.cFileName, lengthof(fios->title));
-
 			} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO) {
 				if (t != NULL && (
 							strcasecmp(t, ".ss1") == 0 ||
@@ -754,6 +761,14 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 		FindClose(h);
 	}
 
+	{
+		/* XXX ugly global variables ... */
+		byte order = _savegame_sort_order;
+		_savegame_sort_order = 2; // sort ascending by name
+		qsort(_fios_items, _fios_count, sizeof(FiosItem), compare_FiosItems);
+		_savegame_sort_order = order;
+	}
+
 	// this is where to start sorting
 	sort_start = _fios_count;
 
@@ -776,9 +791,8 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 				fios->mtime = *(uint64*)&fd.ftLastWriteTime;
 				ttd_strlcpy(fios->name, fd.cFileName, lengthof(fios->name));
 
-				*t  = '\0'; // strip extension
+				*t = '\0'; // strip extension
 				ttd_strlcpy(fios->title, fd.cFileName, lengthof(fios->title));
-
 			} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO ||
 					mode == SLD_NEW_GAME) {
 				if (t != NULL && (
@@ -842,14 +856,14 @@ char *FiosBrowseTo(const FiosItem *item)
 
 		case FIOS_TYPE_PARENT:
 			s = strrchr(path, '\\');
-			if (s != NULL) *s = '\0';
-			if (path[2] == '\0' ) strcat(path, "\\");
+			if (s != path + 2)
+				s[0] = '\0';
+			else
+				s[1] = '\0';
 			break;
 
 		case FIOS_TYPE_DIR:
-			s = strchr(item->name, '\\');
-			if (s != NULL) *s = '\0';
-			if (path[3] != '\0' ) strcat(path, "\\");
+			if (path[3] != '\0') strcat(path, "\\");
 			strcat(path, item->name);
 			break;
 
