@@ -3,8 +3,6 @@
 #ifndef SAVELOAD_H
 #define SAVELOAD_H
 
-#include <setjmp.h>
-
 typedef enum SaveOrLoadResult {
 	SL_OK = 0, // completed successfully
 	SL_ERROR = 1, // error that was caught before internal structures were modified

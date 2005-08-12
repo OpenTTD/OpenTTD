@@ -26,6 +26,7 @@
 #include "player.h"
 #include "saveload.h"
 #include "variables.h"
+#include <setjmp.h>
 
 enum {
 	SAVEGAME_MAJOR_VERSION = 16,
