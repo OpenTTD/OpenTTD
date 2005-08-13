@@ -41,9 +41,6 @@ typedef struct {
 	byte null;
 } NullStruct;
 
-typedef void WriterProc(uint len);
-typedef uint ReaderProc(void);
-
 typedef enum SLRefType {
 	REF_ORDER       = 0,
 	REF_VEHICLE     = 1,
@@ -52,9 +49,6 @@ typedef enum SLRefType {
 	REF_VEHICLE_OLD = 4,
 	REF_ROADSTOPS   = 5
 } SLRefType;
-
-typedef uint ReferenceToIntProc(const void *obj, SLRefType rt);
-typedef void *IntToReferenceProc(uint index, SLRefType rt);
 
 
 extern byte   _sl_version;      /// the major savegame version identifier

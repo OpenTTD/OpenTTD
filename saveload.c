@@ -38,6 +38,12 @@ enum {
 byte   _sl_version;      /// the major savegame version identifier
 uint16 _sl_full_version; /// the full version of the savegame
 
+typedef void WriterProc(uint len);
+typedef uint ReaderProc(void);
+
+typedef uint ReferenceToIntProc(const void *obj, SLRefType rt);
+typedef void *IntToReferenceProc(uint index, SLRefType rt);
+
 /** The saveload struct, containing reader-writer functions, bufffer, version, etc. */
 static struct {
 	bool save;                           /// are we doing a save or a load atm. True when saving
