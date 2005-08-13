@@ -148,7 +148,9 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 			if (stat(filename, &sb) || S_ISDIR(sb.st_mode)) continue;
 
 			t = strrchr(dirent->d_name, '.');
-			if (t != NULL && strcasecmp(t, ".sav") == 0) { // OpenTTD
+			if (t == NULL) continue;
+
+			if (strcasecmp(t, ".sav") == 0) { // OpenTTD
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_FILE;
 				fios->mtime = sb.st_mtime;
@@ -157,11 +159,9 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 				*t = '\0'; // strip extension
 				ttd_strlcpy(fios->title, dirent->d_name, lengthof(fios->title));
 			} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO) {
-				if (t != NULL && (
-							strcasecmp(t, ".ss1") == 0 ||
-							strcasecmp(t, ".sv1") == 0 ||
-							strcasecmp(t, ".sv2") == 0
-						)) { // TTDLX(Patch)
+				if (strcasecmp(t, ".ss1") == 0 ||
+						strcasecmp(t, ".sv1") == 0 ||
+						strcasecmp(t, ".sv2") == 0) { // TTDLX(Patch)
 					fios = FiosAlloc();
 					fios->type = FIOS_TYPE_OLDFILE;
 					fios->mtime = sb.st_mtime;
@@ -247,7 +247,9 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 			if (stat(filename, &sb) || S_ISDIR(sb.st_mode)) continue;
 
 			t = strrchr(dirent->d_name, '.');
-			if (t != NULL && strcasecmp(t, ".scn") == 0) { // OpenTTD
+			if (t == NULL) continue;
+
+			if (strcasecmp(t, ".scn") == 0) { // OpenTTD
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_SCENARIO;
 				fios->mtime = sb.st_mtime;
@@ -257,10 +259,8 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 				ttd_strlcpy(fios->title, dirent->d_name, lengthof(fios->title));
 			} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO ||
 					mode == SLD_NEW_GAME) {
-				if (t != NULL && (
-							strcasecmp(t, ".sv0") == 0 ||
-							strcasecmp(t, ".ss0") == 0
-						)) { // TTDLX(Patch)
+				if (strcasecmp(t, ".sv0") == 0 ||
+						strcasecmp(t, ".ss0") == 0) { // TTDLX(Patch)
 					fios = FiosAlloc();
 					fios->type = FIOS_TYPE_OLD_SCENARIO;
 					fios->mtime = sb.st_mtime;
@@ -330,7 +330,7 @@ char *FiosBrowseTo(const FiosItem *item)
 StringID FiosGetDescText(const char **path, uint32 *tot)
 {
 	uint32 free = 0;
-	*path = _fios_path[0] != '\0' ? _fios_path : "/";
+	*path = _fios_path;
 
 #ifdef HAS_STATVFS
 	{

@@ -672,7 +672,9 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 			if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) continue;
 
 			t = strrchr(fd.cFileName, '.');
-			if (t != NULL && strcasecmp(t, ".sav") == 0) { // OpenTTD
+			if (t == NULL) continue;
+
+			if (strcasecmp(t, ".sav") == 0) { // OpenTTD
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_FILE;
 				fios->mtime = *(uint64*)&fd.ftLastWriteTime;
@@ -681,11 +683,9 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 				*t = '\0'; // strip extension
 				ttd_strlcpy(fios->title, fd.cFileName, lengthof(fios->title));
 			} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO) {
-				if (t != NULL && (
-							strcasecmp(t, ".ss1") == 0 ||
-							strcasecmp(t, ".sv1") == 0 ||
-							strcasecmp(t, ".sv2") == 0
-						)) { // TTDLX(Patch)
+				if (strcasecmp(t, ".ss1") == 0 ||
+						strcasecmp(t, ".sv1") == 0 ||
+						strcasecmp(t, ".sv2") == 0) { // TTDLX(Patch)
 					char buf[MAX_PATH];
 
 					fios = FiosAlloc();
@@ -785,7 +785,9 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 			if ((fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) continue;
 
 			t = strrchr(fd.cFileName, '.');
-			if (t != NULL && strcasecmp(t, ".scn") == 0) { // OpenTTD
+			if (t == NULL) continue;
+
+			if (strcasecmp(t, ".scn") == 0) { // OpenTTD
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_SCENARIO;
 				fios->mtime = *(uint64*)&fd.ftLastWriteTime;
@@ -795,10 +797,8 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 				ttd_strlcpy(fios->title, fd.cFileName, lengthof(fios->title));
 			} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO ||
 					mode == SLD_NEW_GAME) {
-				if (t != NULL && (
-							strcasecmp(t, ".sv0") == 0 ||
-							strcasecmp(t, ".ss0") == 0
-						)) { // TTDLX(Patch)
+				if (strcasecmp(t, ".sv0") == 0 ||
+						strcasecmp(t, ".ss0") == 0) { // TTDLX(Patch)
 					char buf[MAX_PATH];
 
 					fios = FiosAlloc();
