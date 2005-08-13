@@ -785,13 +785,13 @@ static void LoadSpriteTables(void)
 	_compact_cache_counter = 0;
 }
 
-static void GfxInitSpriteMem(void *ptr, uint32 size)
+static void GfxInitSpriteMem(void)
 {
 	// initialize sprite cache heap
-	_spritecache_ptr = ptr;
+	if (_spritecache_ptr == NULL) _spritecache_ptr = malloc(SPRITE_CACHE_SIZE);
 
 	// A big free block
-	_spritecache_ptr->size = (size - sizeof(MemBlock)) | S_FREE_MASK;
+	_spritecache_ptr->size = (SPRITE_CACHE_SIZE - sizeof(MemBlock)) | S_FREE_MASK;
 	// Sentinel block (identified by size == 0)
 	NextBlock(_spritecache_ptr)->size = 0;
 
@@ -801,8 +801,6 @@ static void GfxInitSpriteMem(void *ptr, uint32 size)
 
 void GfxLoadSprites(void)
 {
-	static byte *_sprite_mem;
-
 	// Need to reload the sprites only if the landscape changed
 	if (_sprite_page_to_load != _opt.landscape) {
 		_sprite_page_to_load = _opt.landscape;
@@ -810,9 +808,7 @@ void GfxLoadSprites(void)
 		// Sprite cache
 		DEBUG(spritecache, 1) ("Loading sprite set %d.", _sprite_page_to_load);
 
-		// Reuse existing memory?
-		if (_sprite_mem == NULL) _sprite_mem = malloc(SPRITE_CACHE_SIZE);
-		GfxInitSpriteMem(_sprite_mem, SPRITE_CACHE_SIZE);
+		GfxInitSpriteMem();
 		LoadSpriteTables();
 		GfxInitPalettes();
 	}
