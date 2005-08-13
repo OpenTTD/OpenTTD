@@ -1692,7 +1692,8 @@ static void SkipIf(byte *buf, int len)
 	uint8 paramsize;
 	uint8 condtype;
 	uint8 numsprites;
-	int param_val = 0, cond_val = 0;
+	uint32 param_val = 0;
+	uint32 cond_val = 0;
 	bool result;
 
 	check_length(len, 6, "SkipIf");
@@ -1730,9 +1731,16 @@ static void SkipIf(byte *buf, int len)
 		case 0x88: {  /* see if specified GRFID is active */
 			param_val = (GetFileByGRFID(cond_val) != NULL);
 		}	break;
-		case 0x8B:    /* TTDPatch version */
-			param_val = 0xFFFF;
+
+		case 0x8B: { /* TTDPatch version */
+			uint major    = 2;
+			uint minor    = 0;
+			uint revision = 10; // special case: 2.0.1 is 2.0.10
+			uint build    = 49;
+			param_val = (major << 24) | (minor << 20) | (revision << 16) | (build * 10);
 			break;
+		}
+
 		case 0x8D:    /* TTD Version, 00=DOS, 01=Windows */
 			param_val = 1;
 			break;
