@@ -602,6 +602,7 @@ C_SOURCES += engine.c
 C_SOURCES += engine_gui.c
 C_SOURCES += fileio.c
 C_SOURCES += gfx.c
+C_SOURCES += gfxinit.c
 C_SOURCES += graph_gui.c
 C_SOURCES += newgrf.c
 C_SOURCES += industry_cmd.c

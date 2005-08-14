@@ -30,7 +30,7 @@ extern int _replace_sprites_count[16];
 extern int _replace_sprites_offset[16];
 extern int _traininfo_vehicle_pitch;
 
-GRFFile *_cur_grffile;
+static GRFFile *_cur_grffile;
 GRFFile *_first_grffile;
 int _grffile_count;
 static int _cur_spriteid;

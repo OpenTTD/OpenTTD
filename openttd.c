@@ -16,6 +16,7 @@
 #include "mixer.h"
 #include "spritecache.h"
 #include "gfx.h"
+#include "gfxinit.h"
 #include "gui.h"
 #include "station.h"
 #include "vehicle.h"

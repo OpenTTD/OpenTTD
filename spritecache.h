@@ -24,7 +24,10 @@ static inline const byte *GetNonSprite(SpriteID sprite)
 	return GetRawSprite(sprite);
 }
 
-void GfxLoadSprites(void);
+void GfxInitSpriteMem(void);
 void IncreaseSpriteLRU(void);
+
+bool LoadNextSprite(int load_index, byte file_index);
+void SkipSprites(uint count);
 
 #endif

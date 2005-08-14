@@ -238,6 +238,9 @@
 				RelativePath="gfx.c">
 			</File>
 			<File
+				RelativePath="gfxinit.c">
+			</File>
+			<File
 				RelativePath="landscape.c">
 			</File>
 			<File
@@ -509,6 +512,9 @@
 			</File>
 			<File
 				RelativePath="gfx.h">
+			</File>
+			<File
+				RelativePath="gfxinit.h">
 			</File>
 			<File
 				RelativePath="gui.h">

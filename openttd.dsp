@@ -193,6 +193,10 @@ SOURCE=.\gfx.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\gfxinit.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\landscape.c
 # End Source File
 # Begin Source File
@@ -547,6 +551,10 @@ SOURCE=.\functions.h
 # Begin Source File
 
 SOURCE=.\gfx.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\gfxinit.h
 # End Source File
 # Begin Source File
 
