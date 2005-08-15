@@ -2363,6 +2363,12 @@ STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nowe poc
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nowe pociagi jednoszynowe
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nowe pociagi Maglev
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Buduj pojazd
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Klonuj pojazd
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Spowoduje zbudowanie kopii pojazdu. Control+klik spowoduje wspoldzielenie polecen
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Spowoduje zbudowanie kopii pojazdu. Kliknij na przycisk a nastepnie na pojazd wewnatrz lub na zewnatrz zajezdni. Control+klik spowoduje wspoldzielenie polecen
+STR_CLONE_TRAIN                                                 :{BLACK}Klonuj pociag
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Spowoduje wybudowanie kopii pociagu wraz z wszystkimi wagonami. Control+klik spowoduje wspoldzielenie polecen
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Spowoduje wybudowanie kopii pociagu wraz z wszystkimi wagonami. Kliknij na przycisk a nastepnie na pociag wewnatrz lub na zewnatrz zajezdni. Control+klik spowoduje wspoldzielenie polecen
 STR_8820_RENAME                                                 :{BLACK}Zmien nazwe
 STR_8823_SKIP                                                   :{BLACK}Pomin
 STR_8824_DELETE                                                 :{BLACK}Usun
@@ -2514,6 +2520,9 @@ STR_9804_NEW_SHIPS                                              :{BLACK}Nowe sta
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Statki
 STR_9808_NEW_SHIPS                                              :{WHITE}Nowe statki
 STR_9809_BUILD_SHIP                                             :{BLACK}Budowa statku
+STR_CLONE_SHIP                                                  :{BLACK}Klonuj statek
+STR_CLONE_SHIP_INFO                                             :{BLACK}Spowoduje wybudowanie kopii statku. Control+klik spowoduje wspoldzielenie polecen
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Spowoduje wybudowanie kopii statku. Kliknij na przycisk a nastepnie na statek wewnatrz lub na zewnatrz stoczni. Control+klik spowoduje wspoldzielenie polecen
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Statek musi byc zatrzymany w stoczni
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Nie mozna sprzedac statku...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Nie mozna wybudowac statku...
@@ -2578,6 +2587,9 @@ STR_A000_AIRPORTS                                               :{WHITE}Lotniska
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Nie mozna tu wybudowac lotniska...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangar
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nowy samolot
+STR_CLONE_AIRCRAFT                                              :{BLACK}Klonuj samolot
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Spowoduje wybudowanie kopii samolotu. Control+klik spowoduje wspoldzielenie polecen
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Spowoduje wybudowanie kopii samolotu. Kliknij na przycisk a nastepnie na samolot wewnatrz lub na zewnatrz hangaru. Control+klik spowoduje wspoldzielenie polecen
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nowy samolot
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Budowa samolotu
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nie mozna zbudowac samolotu...

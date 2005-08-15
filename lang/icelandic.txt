@@ -2367,6 +2367,12 @@ STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nýir les
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nýir einteingungsvagnar
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nýir segullestarvagnar
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Smíða vagn
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Afrita bifreið
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Þetta býr til aðra eins bifreið. Control smelltu til að deila áætlun
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Þetta býr til aðra bifreið sem er eins og sú sem þú velur, hvort heldur sem er innan eða utan skýlisins. Smelltu á takkann og svo á bifreiðina. Control smelltu til að deila áætlun
+STR_CLONE_TRAIN                                                 :{BLACK}Afrita lest
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Þetta býr til aðra eins lest að tengivögnunum meðtöldum. Control smelltu til að deila áætlun
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Þetta býr til aðra lest að tengivögnunum meðtöldum sem er eins og sú sem þú velur, hvort heldur sem er innan eða utan skýlisins. Smelltu á takkann og svo á lestina. Control smelltu til að deila áætlun
 STR_8820_RENAME                                                 :{BLACK}Endurnefna
 STR_8823_SKIP                                                   :{BLACK}Sleppa
 STR_8824_DELETE                                                 :{BLACK}Eyða
@@ -2518,6 +2524,9 @@ STR_9804_NEW_SHIPS                                              :{BLACK}Ný skip
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Skip
 STR_9808_NEW_SHIPS                                              :{WHITE}Ný skip
 STR_9809_BUILD_SHIP                                             :{BLACK}Smíða skip
+STR_CLONE_SHIP                                                  :{BLACK}Afrita skip
+STR_CLONE_SHIP_INFO                                             :{BLACK}Þetta býr til annað eins skip. Control smelltu til að deila áætlun
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Þetta býr til annað skip sem er eins og það sem þú velur, hvort heldur sem er innan eða utan skýlisins. Smelltu á takkann og svo á skipið. Control smelltu til að deila áætlun
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Skip verður að vera stöðvað í skýli
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Get ekki selt skip...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Get ekki smíðað skip...
@@ -2582,6 +2591,9 @@ STR_A000_AIRPORTS                                               :{WHITE}Flugvell
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Get ekki byggt flugvöll hér...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Flugskýli
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nýja flugvél
+STR_CLONE_AIRCRAFT                                              :{BLACK}Afrita flugvél
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Þetta býr til aðra eins flugvél. Control smelltu til að deila áætlun
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Þetta býr til aðra flugvél sem er eins og sú sem þú velur, hvort heldur sem er innan eða utan skýlisins. Smelltu á takkann og svo á flugvélina. Control smelltu til að deila áætlun
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Ný flugvél
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Smíða flugvél
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Get ekki smíðað flugvél...

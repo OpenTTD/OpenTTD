@@ -2367,6 +2367,12 @@ STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Uusi jun
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Uusi yksiraidejuna
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Uusi MagLev-juna
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Rakenna yksikkö
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Kloonaa ajoneuvo
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Tämä rakentaa kopion ajoneuvosta. Control-click jakaa komennot
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Tämä rakentaa kopion ajoneuvosta. Paina tätä nappia ja sen jälkeen ajoneuvoa varikon sisä- tai ulkopuolella. Control-click jakaa komennot
+STR_CLONE_TRAIN                                                 :{BLACK}Kloonaa juna
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Tämä rakentaa kopion junasta ja kaikista sen vaunuista. Control-click jakaa komennot
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Tämä rakentaa kopion junasta ja kaikista sen vaunuista. Paina tätä nappia ja sen jälkeen junaa varikon sisä- tai ulkopuolella. Control-click jakaa komennot
 STR_8820_RENAME                                                 :{BLACK}Nimeä
 STR_8823_SKIP                                                   :{BLACK}Ohita
 STR_8824_DELETE                                                 :{BLACK}Poista
@@ -2518,6 +2524,9 @@ STR_9804_NEW_SHIPS                                              :{BLACK}Uusia la
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} laivaa
 STR_9808_NEW_SHIPS                                              :{WHITE}Uusia laivoja
 STR_9809_BUILD_SHIP                                             :{BLACK}Rakenna laiva
+STR_CLONE_SHIP                                                  :{BLACK}Kloonaa laiva
+STR_CLONE_SHIP_INFO                                             :{BLACK}Tämä rakentaa kopion laivasta. Control-click jakaa komennot
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Tämä rakentaa kopion laivasta. Paina tätä nappia ja sen jälkeen laivaa telakan sisä- tai ulkopuolella. Control-click jakaa komennot
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Laivan pitää olla pysähdyksissä telakalla.
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Laivaa ei voi myydä...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Laivaa ei voi rakentaa...
@@ -2582,6 +2591,9 @@ STR_A000_AIRPORTS                                               :{WHITE}Lentoken
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Lentokenttää ei voi rakentaa...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}Lentokonehalli, {STATION}
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Uusi lentokone
+STR_CLONE_AIRCRAFT                                              :{BLACK}Kloonaa lentokone
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Tämä rakentaa kopion lentokoneesta. Control-click jakaa komennot
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Tämä rakentaa kopion lentokoneesta. Paina tätä nappia ja sen jälkeen lentokonetta lentokonehallin sisä- tai ulkopuolella. Control-click jakaa komennot
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Uusi lentokone
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Rakenna lentokone
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Lentokonetta ei voi rakentaa...

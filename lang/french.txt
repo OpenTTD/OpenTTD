@@ -2648,6 +2648,7 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Renommer
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Renommer type d'aéronef
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Impossible de renommer type d'aéronef...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Réaménager aéronef pour transporter un différent type de cargaison
+STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Ajuster)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Réaménager aéronef
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Choisir type de cargaison à transporter
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Réaménager aéronef pour transporter type de cargaison sélectionné
