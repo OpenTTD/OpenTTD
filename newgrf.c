@@ -138,6 +138,14 @@ static uint16 grf_load_word(byte **buf)
 	return val;
 }
 
+static uint16 grf_load_extended(byte** buf)
+{
+	uint16 val;
+	val = grf_load_byte(buf);
+	if (val == 0xFF) val = grf_load_word(buf);
+	return val;
+}
+
 static uint32 grf_load_dword(byte **buf)
 {
 	uint32 val;
@@ -1145,7 +1153,7 @@ static void NewSpriteSet(byte *buf, int len)
 	 * B feature       feature to define sprites for
 	 *                 0, 1, 2, 3: veh-type, 4: train stations
 	 * B num-sets      number of sprite sets
-	 * B num-ent       how many entries per sprite set
+	 * E num-ent       how many entries per sprite set
 	 *                 For vehicles, this is the number of different
 	 *                         vehicle directions in each sprite set
 	 *                         Set num-dirs=8, unless your sprites are symmetric.
@@ -1159,9 +1167,10 @@ static void NewSpriteSet(byte *buf, int len)
 	uint i;
 
 	check_length(len, 4, "NewSpriteSet");
-	feature = buf[1];
-	num_sets = buf[2];
-	num_ents = buf[3];
+	buf++;
+	feature  = grf_load_byte(&buf);
+	num_sets = grf_load_byte(&buf);
+	num_ents = grf_load_extended(&buf);
 
 	_cur_grffile->spriteset_start = _cur_spriteid;
 	_cur_grffile->spriteset_feature = feature;
@@ -1599,7 +1608,7 @@ static void VehicleNewName(byte *buf, int len)
 	 * B veh-type      see action 0
 	 * B language-id   language ID with bit 7 cleared (see below)
 	 * B num-veh       number of vehicles which are getting a new name
-	 * B offset        number of the first vehicle that gets a new name
+	 * B/W offset      number of the first vehicle that gets a new name
 	 * S data          new texts, each of them zero-terminated, after
 	 *                 which the next name begins. */
 	/* TODO: No support for changing non-vehicle text. Perhaps we shouldn't
@@ -1611,15 +1620,25 @@ static void VehicleNewName(byte *buf, int len)
 
 	uint8 feature;
 	uint8 lang;
-	uint8 id;
-	uint8 endid;
+	uint8 num;
+	uint16 id;
+	uint16 endid;
 	const char* name;
 
 	check_length(len, 6, "VehicleNewName");
-	feature = buf[1];
-	lang = buf[2];
-	id = buf[4] + _vehshifts[feature];
-	endid = id + buf[3];
+	buf++;
+	feature  = grf_load_byte(&buf);
+	lang     = grf_load_byte(&buf);
+	num      = grf_load_byte(&buf);
+	id       = (lang & 0x80) ? grf_load_word(&buf) : grf_load_byte(&buf);
+
+	if (feature > 3) {
+		DEBUG(grf, 7) ("VehicleNewName: Unsupported feature %d, skipping", feature);
+		return;
+	}
+
+	id      += _vehshifts[feature];
+	endid    = id + num;
 
 	DEBUG(grf, 6) ("VehicleNewName: About to rename engines %d..%d (feature %d) in language 0x%x.",
 	               id, endid, feature, lang);
@@ -1635,8 +1654,8 @@ static void VehicleNewName(byte *buf, int len)
 		return;
 	}
 
-	name = (const char*)(buf + 5);
-	len -= 5;
+	name = (const char*)buf;
+	len -= (lang & 0x80) ? 6 : 5;
 	for (; id < endid && len > 0; id++) {
 		int ofs = strlen(name) + 1;
 
@@ -1657,16 +1676,17 @@ static void GraphicsNew(byte *buf, int len)
 	/* <05> <graphics-type> <num-sprites> <other data...>
 	 *
 	 * B graphics-type What set of graphics the sprites define.
-	 * B num-sprites   How many sprites are in this set?
+	 * E num-sprites   How many sprites are in this set?
 	 * V other data    Graphics type specific data.  Currently unused. */
 	/* TODO */
 
 	uint8 type;
-	uint8 num;
+	uint16 num;
 
 	check_length(len, 2, "GraphicsNew");
-	type = buf[0];
-	num = buf[1];
+	buf++;
+	type = grf_load_byte(&buf);
+	num  = grf_load_extended(&buf);
 
 	grfmsg(GMS_NOTICE, "GraphicsNew: Custom graphics (type %x) sprite block of length %d (unimplemented, ignoring).\n",
 	       type, num);
