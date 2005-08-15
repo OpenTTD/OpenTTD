@@ -37,9 +37,6 @@ int _grffile_count;
 static int _cur_spriteid;
 static int _cur_stage;
 
-static int32 _paramlist[0x7f];
-static int _param_max;
-
 /* 32 * 8 = 256 flags. Apparently TTDPatch uses this many.. */
 static uint32 _ttdpatch_flags[8];
 
@@ -1766,14 +1763,14 @@ static void SkipIf(byte *buf, int len)
 		/* TODO */
 		case 0x8F:    /* Track type cost multipliers */
 		default:
-			if (param >= 0x80) {
-				/* In-game variable. */
-				grfmsg(GMS_WARN, "Unsupported in-game variable %x. Ignoring test.", param);
-			} else {
+			if (param < 0x80) {
 				/* Parameter. */
-				param_val = _paramlist[param];
+				param_val = _cur_grffile->param[param];
+			} else {
+				/* In-game variable. */
+				grfmsg(GMS_WARN, "Unsupported in-game variable 0x%02X. Ignoring test.", param);
+				return;
 			}
-			return;
 	}
 
 	DEBUG(grf, 7) ("Test condtype %d, param %x, condval %x", condtype, param_val, cond_val);
@@ -1952,10 +1949,10 @@ static void ParamSet(byte *buf, int len)
 
 	byte target;
 	byte oper;
-	uint16 src1;
-	uint16 src2;
-	uint16 data = 0;
-	int32 *dest;
+	uint32 src1;
+	uint32 src2;
+	uint32 data = 0;
+	uint32 res;
 
 	check_length(len, 5, "ParamSet");
 	buf++;
@@ -1964,8 +1961,7 @@ static void ParamSet(byte *buf, int len)
 	src1 = grf_load_byte(&buf);
 	src2 = grf_load_byte(&buf);
 
-	if (len >= 8)
-		data = grf_load_dword(&buf);
+	if (len >= 8) data = grf_load_dword(&buf);
 
 	/* You can add 80 to the operation to make it apply only if the target
 	 * is not defined yet.  In this respect, a parameter is taken to be
@@ -1974,7 +1970,7 @@ static void ParamSet(byte *buf, int len)
 	 * - it OR A PARAMETER WITH HIGHER NUMBER has been set to any value by
 	 *   an earlier action D */
 	if (oper & 0x80) {
-		if (_param_max < target)
+		if (_cur_grffile->param_end < target)
 			oper &= 0x7F;
 		else
 			return;
@@ -1988,13 +1984,13 @@ static void ParamSet(byte *buf, int len)
 	if (src1 == 0xFF) {
 		src1 = data;
 	} else {
-		src1 = _param_max >= src1 ? _paramlist[src1] : 0;
+		src1 = _cur_grffile->param_end >= src1 ? _cur_grffile->param[src1] : 0;
 	}
 
 	if (src2 == 0xFF) {
 		src2 = data;
 	} else {
-		src2 = _param_max >= src2 ? _paramlist[src2] : 0;
+		src2 = _cur_grffile->param_end >= src2 ? _cur_grffile->param[src2] : 0;
 	}
 
 	/* TODO: You can access the parameters of another GRF file by using
@@ -2003,49 +1999,70 @@ static void ParamSet(byte *buf, int len)
 	 * cannot be found, a value of 0 is used for the parameter value
 	 * instead. */
 
-	/* TODO: The target operand can also refer to the special variables
-	 * from action 7, but at the moment the only variable that is valid to
-	 * write is 8E. */
-
-	if (target == 0x8E) {
-		dest = &_traininfo_vehicle_pitch;
-	} else {
-		if (_param_max < target)
-			_param_max = target;
-		dest = &_paramlist[target];
-	}
-
-	/* FIXME: No checking for overflows. */
 	switch (oper) {
 		case 0x00:
-			*dest = src1;
+			res = src1;
 			break;
+
 		case 0x01:
-			*dest = src1 + src2;
+			res = src1 + src2;
 			break;
+
 		case 0x02:
-			*dest = src1 - src2;
+			res = src1 - src2;
 			break;
+
 		case 0x03:
-			*dest = ((uint32) src1) * ((uint32) src2);
+			res = src1 * src2;
 			break;
+
 		case 0x04:
-			*dest = ((int32) src1) * ((int32) src2);
+			res = (int32)src1 * (int32)src2;
 			break;
+
 		case 0x05:
-			if (src2 & 0x8000) /* src2 is "negative" */
-				*dest = src1 >> -((int16) src2);
+			if ((int32)src2 < 0)
+				res = src1 >> -(int32)src2;
 			else
-				*dest = src1 << src2;
+				res = src1 << src2;
 			break;
+
 		case 0x06:
-			if (src2 & 0x8000) /* src2 is "negative" */
-				*dest = ((int16) src1) >> -((int16) src2);
+			if ((int32)src2 < 0)
+				res = (int32)src1 >> -(int32)src2;
 			else
-				*dest = ((int16) src1) << src2;
+				res = (int32)src1 << src2;
 			break;
+
 		default:
 			grfmsg(GMS_ERROR, "ParamSet: Unknown operation %d, skipping.", oper);
+			return;
+	}
+
+	switch (target) {
+		case 0x8E: // Y-Offset for train sprites
+			_traininfo_vehicle_pitch = res;
+			break;
+
+		// TODO implement
+		case 0x8F: // Rail track type cost factors
+		case 0x93: // Tile refresh offset to left
+		case 0x94: // Tile refresh offset to right
+		case 0x95: // Tile refresh offset upwards
+		case 0x96: // Tile refresh offset downwards
+		case 0x97: // Snow line height
+		case 0x99: // Global ID offset
+			DEBUG(grf, 7) ("ParamSet: Skipping unimplemented target 0x%02X", target);
+			break;
+
+		default:
+			if (target < 0x80) {
+				_cur_grffile->param[target] = res;
+				if (target + 1U > _cur_grffile->param_end) _cur_grffile->param_end = target + 1;
+			} else {
+				DEBUG(grf, 7) ("ParamSet: Skipping unknown target 0x%02X", target);
+			}
+			break;
 	}
 }
 
