@@ -7,23 +7,10 @@
 #include "spritecache.h"
 #include "table/sprites.h"
 #include "fileio.h"
-#include "newgrf.h"
 
 #define SPRITE_CACHE_SIZE 1024*1024
 
 #define WANT_NEW_LRU
-
-
-/* These are used in newgrf.c: */
-
-extern int _skip_sprites; // XXX
-extern int _replace_sprites_count[16]; // XXX
-extern int _replace_sprites_offset[16]; // XXX
-
-extern const char* _cur_grffile; // XXX
-extern int _loading_stage; // XXX
-extern int _skip_specials; // XXX
-static Sprite _cur_sprite; // XXX
 
 
 static void* _sprite_ptr[MAX_SPRITES];
@@ -47,33 +34,16 @@ static int _compact_cache_counter;
 
 static void CompactSpriteCache(void);
 
-static bool ReadSpriteHeaderSkipData(int load_index)
+static bool ReadSpriteHeaderSkipData(void)
 {
 	uint16 num = FioReadWord();
 	byte type;
-	int deaf = 0;
 
 	if (num == 0) return false;
 
-	if (_skip_sprites) {
-		if (_skip_sprites > 0)
-			_skip_sprites--;
-		deaf = 1;
-	}
-
 	type = FioReadByte();
-	_cur_sprite.info = type;
 	if (type == 0xFF) {
-		/* We need to really skip only special sprites in the deaf
-		 * mode.  It won't hurt to proceed regular sprites as usual
-		 * because if no special sprite referencing to them is
-		 * processed, they themselves are never referenced and loaded
-		 * on their own. */
-		if (_skip_specials || deaf) {
-			FioSkipBytes(num);
-		} else {
-			DecodeSpecialSprite(_cur_grffile, num, load_index, _loading_stage);
-		}
+		FioSkipBytes(num);
 		return true;
 	}
 
@@ -169,35 +139,7 @@ bool LoadNextSprite(int load_index, byte file_index)
 {
 	uint32 file_pos = FioGetPos() | (file_index << 24);
 
-	if (!ReadSpriteHeaderSkipData(load_index)) return false;
-
-	if (_replace_sprites_count[0] > 0 && _cur_sprite.info != 0xFF) {
-		int count = _replace_sprites_count[0];
-		int offset = _replace_sprites_offset[0];
-
-		_replace_sprites_offset[0]++;
-		_replace_sprites_count[0]--;
-
-		if ((offset + count) <= MAX_SPRITES) {
-			load_index = offset;
-		} else {
-			DEBUG(spritecache, 1) ("Sprites to be replaced are out of range: %x+%x",
-					count, offset);
-			_replace_sprites_offset[0] = 0;
-			_replace_sprites_count[0] = 0;
-		}
-
-		if (_replace_sprites_count[0] == 0) {
-			int i;
-
-			for (i = 0; i < 15; i++) {
-				_replace_sprites_count[i] = _replace_sprites_count[i + 1];
-				_replace_sprites_offset[i] = _replace_sprites_offset[i + 1];
-			}
-			_replace_sprites_count[i] = 0;
-			_replace_sprites_offset[i] = 0;
-		}
-	}
+	if (!ReadSpriteHeaderSkipData()) return false;
 
 	_sprite_file_pos[load_index] = file_pos;
 
@@ -216,7 +158,7 @@ bool LoadNextSprite(int load_index, byte file_index)
 void SkipSprites(uint count)
 {
 	for (; count > 0; --count) {
-		if (!ReadSpriteHeaderSkipData(MAX_SPRITES - 1)) return;
+		if (!ReadSpriteHeaderSkipData()) return;
 	}
 }
 

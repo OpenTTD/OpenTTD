@@ -10,6 +10,7 @@
 #include "fileio.h"
 #include "functions.h"
 #include "engine.h"
+#include "spritecache.h"
 #include "station.h"
 #include "sprite.h"
 #include "newgrf.h"
@@ -25,9 +26,9 @@
  * served as subject to the initial testing of this codec. */
 
 
-extern int _skip_sprites;
-extern int _replace_sprites_count[16];
-extern int _replace_sprites_offset[16];
+uint16 _custom_sprites_base;
+static int _skip_sprites; // XXX
+static uint _file_index; // XXX
 extern int _traininfo_vehicle_pitch;
 
 static GRFFile *_cur_grffile;
@@ -1156,14 +1157,29 @@ static void NewSpriteSet(byte *buf, int len)
 	 *                         different sprites that make up a station */
 	/* TODO: No stations support. */
 	uint8 feature;
+	uint num_sets;
+	uint num_ents;
+	uint i;
 
 	check_length(len, 4, "NewSpriteSet");
 	feature = buf[1];
+	num_sets = buf[2];
+	num_ents = buf[3];
 
-	_cur_grffile->spriteset_start = _cur_spriteid + 1;
+	_cur_grffile->spriteset_start = _cur_spriteid;
 	_cur_grffile->spriteset_feature = feature;
-	_cur_grffile->spriteset_numsets = buf[2];
-	_cur_grffile->spriteset_numents = buf[3];
+	_cur_grffile->spriteset_numsets = num_sets;
+	_cur_grffile->spriteset_numents = num_ents;
+
+	DEBUG(grf, 7) (
+		"New sprite set at %d of type %d, "
+		"consisting of %d sets with %d views each (total %d)",
+		_cur_spriteid, feature, num_sets, num_ents, num_sets * num_ents
+	);
+
+	for (i = 0; i < num_sets * num_ents; i++) {
+		LoadNextSprite(_cur_spriteid++, _file_index);
+	}
 }
 
 /* Action 0x02 */
@@ -1790,7 +1806,7 @@ static void SkipIf(byte *buf, int len)
 	}
 
 	numsprites = grf_load_byte(&buf);
-	grfmsg(GMS_NOTICE, "Skipping %d->+%d sprites, test was true.", _cur_spriteid - _cur_grffile->sprite_offset, numsprites);
+	grfmsg(GMS_NOTICE, "Skipping %d sprites, test was true.", numsprites);
 	_skip_sprites = numsprites;
 	if (_skip_sprites == 0) {
 		/* Zero means there are no sprites to skip, so
@@ -1838,27 +1854,23 @@ static void SpriteReplace(byte *buf, int len)
 	 * B num-sprites   How many sprites are in this set
 	 * W first-sprite  First sprite number to replace */
 	uint8 num_sets;
-	int i;
+	uint i;
 
 	buf++; /* skip action byte */
 	num_sets = grf_load_byte(&buf);
 
-	if (num_sets > 16) {
-		grfmsg(GMS_ERROR, "SpriteReplace: Too many sets (%d), taking only the first 16!", num_sets);
-	}
+	for (i = 0; i < num_sets; i++) {
+		uint8 num_sprites = grf_load_byte(&buf);
+		uint16 first_sprite = grf_load_word(&buf);
+		uint j;
 
-	for (i = 0; i < 16; i++) {
-		if (i < num_sets) {
-			uint8 num_sprites = grf_load_byte(&buf);
-			uint16 first_sprite = grf_load_word(&buf);
+		grfmsg(GMS_NOTICE,
+			"SpriteReplace: [Set %d] Changing %d sprites, beginning with %d",
+			i, num_sprites, first_sprite
+		);
 
-			_replace_sprites_count[i] = num_sprites;
-			_replace_sprites_offset[i] = first_sprite;
-			grfmsg(GMS_NOTICE, "SpriteReplace: [Set %d] Changing %d sprites, beginning with %d",
-					i, num_sprites, first_sprite);
-		} else {
-			_replace_sprites_count[i] = 0;
-			_replace_sprites_offset[i] = 0;
+		for (j = 0; j < num_sprites; j++) {
+			LoadNextSprite(first_sprite + j, _file_index); // XXX
 		}
 	}
 }
@@ -2090,7 +2102,7 @@ static void InitializeGRFSpecial(void)
 	                   | (1 << 0x17); /* newstartyear */
 }
 
-void InitNewGRFFile(const char *filename, int sprite_offset)
+static void InitNewGRFFile(const char* filename, int sprite_offset)
 {
 	GRFFile *newfile;
 
@@ -2126,45 +2138,8 @@ void InitNewGRFFile(const char *filename, int sprite_offset)
 /* XXX: We consider GRF files trusted. It would be trivial to exploit OTTD by
  * a crafted invalid GRF file. We should tell that to the user somehow, or
  * better make this more robust in the future. */
-
-void DecodeSpecialSprite(const char *filename, int num, int spriteid, int stage)
+static void DecodeSpecialSprite(const char* filename, uint num, uint stage)
 {
-#define NUM_ACTIONS 0xF
-	static const SpecialSpriteHandler handlers[NUM_ACTIONS] = {
-		/* 0x0 */ VehicleChangeInfo,
-		/* 0x1 */ NewSpriteSet,
-		/* 0x2 */ NewSpriteGroup,
-		/* 0x3 */ NewVehicle_SpriteGroupMapping,
-		/* 0x4 */ VehicleNewName,
-		/* 0x5 */ GraphicsNew,
-		/* 0x6 */ CfgApply,
-		/* 0x7 */ SkipIf,
-		/* 0x8 */ GRFInfo,
-		/* 0x9 */ SkipIf,
-		/* 0xa */ SpriteReplace,
-		/* 0xb */ GRFError,
-		/* 0xc */ GRFComment,
-		/* 0xd */ ParamSet,
-		/* 0xe */ GRFInhibit,
-	};
-	static bool initialized = false;
-	byte action;
-	byte *buf = malloc(num);
-
-	if (buf == NULL) error("DecodeSpecialSprite: Could not allocate memory");
-
-	if (!initialized) {
-		InitializeGRFSpecial();
-		initialized = true;
-	}
-
-	_cur_stage = stage;
-	_cur_spriteid = spriteid;
-
-	FioReadBlock(buf, num);
-
-	action = buf[0];
-
 	/* XXX: There is a difference between staged loading in TTDPatch and
 	 * here.  In TTDPatch, for some reason actions 1 and 2 are carried out
 	 * during stage 0, whilst action 3 is carried out during stage 1 (to
@@ -2174,82 +2149,159 @@ void DecodeSpecialSprite(const char *filename, int num, int spriteid, int stage)
 	 * in an earlier stage than associating, so...  We just process actions
 	 * 1 and 2 in stage 1 now, let's hope that won't get us into problems.
 	 * --pasky */
+	uint32 action_mask = (stage == 0) ? 0x0001FF40 : 0x0001FFBF;
+	static const SpecialSpriteHandler handlers[] = {
+		/* 0x00 */ VehicleChangeInfo,
+		/* 0x01 */ NewSpriteSet,
+		/* 0x02 */ NewSpriteGroup,
+		/* 0x03 */ NewVehicle_SpriteGroupMapping,
+		/* 0x04 */ VehicleNewName,
+		/* 0x05 */ GraphicsNew,
+		/* 0x06 */ CfgApply,
+		/* 0x07 */ SkipIf,
+		/* 0x08 */ GRFInfo,
+		/* 0x09 */ SkipIf,
+		/* 0x0A */ SpriteReplace,
+		/* 0x0B */ GRFError,
+		/* 0x0C */ GRFComment,
+		/* 0x0D */ ParamSet,
+		/* 0x0E */ GRFInhibit,
+		/* 0x0F */ NULL, // TODO implement
+		/* 0x10 */ NULL  // TODO implement
+	};
 
-	if (stage == 0) {
-		switch (action) {
-			case 0x00:
-			case 0x01:
-			case 0x02:
-			case 0x03:
-			case 0x04:
-			case 0x05:
-			case 0x07:
-				/* During initialization, these actions are ignored. */
-				DEBUG (grf, 7) (
-					"DecodeSpecialSprite: Action: %x, Stage 0, Skipped", action);
-				break;
+	byte* buf = malloc(num);
+	byte action;
 
-			default:
-				if (action < NUM_ACTIONS) {
-					DEBUG (grf, 7) ("DecodeSpecialSprite: Action: %x, Stage 0", action);
- 					handlers[action](buf, num);
-				} else {
-					grfmsg(GMS_WARN,
-						"Unknown special sprite action %x, skipping.", action);
-				}
-		}
-	} else if (stage == 1) {
-		/* A .grf file is activated only if it was active when the game was
-		 * started.  If a game is loaded, only its active .grfs will be
-		 * reactivated, unless "loadallgraphics on" is used.  A .grf file is
-		 * considered active if its action 8 has been processed, i.e. its
-		 * action 8 hasn't been skipped using an action 7.
-		 *
-		 * During activation, only actions 0, 1, 2, 3, 4, 5, 7, 8, 9, 0A and 0B are
-		 * carried out.  All others are ignored, because they only need to be
-		 * processed once at initialization.  */
+	if (buf == NULL) error("DecodeSpecialSprite: Could not allocate memory");
 
-		if (_cur_grffile == NULL || strcmp(_cur_grffile->filename, filename) != 0)
-			_cur_grffile = GetFileByFilename(filename);
+	FioReadBlock(buf, num);
+	action = buf[0];
 
-		if (_cur_grffile == NULL)
-			error("File ``%s'' lost in cache.\n", filename);
-
-		if (_cur_grffile->flags & 0x0001) {
-			switch (action) {
-				case 0x00:
-				case 0x01:
-				case 0x02:
-				case 0x03:
-				case 0x04:
-				case 0x05:
-				case 0x07:
-				case 0x08:
-				case 0x09:
-				case 0x0A:
-				case 0x0B:
-					DEBUG (grf, 7) ("DecodeSpecialSprite: Action: %x, Stage 1", action);
-					handlers[action](buf, num);
-					break;
-
-				default:
-					if (action < NUM_ACTIONS) {
-						DEBUG (grf, 7) (
-							"DecodeSpecialSprite: Action: %x, Stage 1, Skipped", action);
-					} else {
-						grfmsg(GMS_WARN,
-							"Unknown special sprite action %x, skipping.", action);
-					}
-					break;
-			}
-		} else {
-			DEBUG (grf, 7) (
-				"DecodeSpecialSprite: Action: %x, Stage 1, Not activated", action);
-		}
-	} else {
-		error("Invalid stage %d", stage);
+	if (action >= lengthof(handlers)) {
+		DEBUG(grf, 7) ("Skipping unknown action 0x%02X", action);
+		free(buf);
+		return;
 	}
 
+	if (!HASBIT(action_mask, action)) {
+		DEBUG(grf, 7) ("Skipping action 0x%02X in stage %d", action, stage);
+		free(buf);
+		return;
+	}
+
+	if (handlers[action] == NULL) {
+		DEBUG(grf, 7) ("Skipping unsupported Action 0x%02X", action);
+		free(buf);
+		return;
+	}
+
+	DEBUG(grf, 7) ("Handling action 0x%02X in stage %d", action, stage);
+	handlers[action](buf, num);
 	free(buf);
-#undef NUM_ACTIONS
+}
+
+
+static void LoadNewGRFFile(const char* filename, uint file_index, uint stage)
+{
+	uint16 num;
+
+	/* A .grf file is activated only if it was active when the game was
+	 * started.  If a game is loaded, only its active .grfs will be
+	 * reactivated, unless "loadallgraphics on" is used.  A .grf file is
+	 * considered active if its action 8 has been processed, i.e. its
+	 * action 8 hasn't been skipped using an action 7.
+	 *
+	 * During activation, only actions 0, 1, 2, 3, 4, 5, 7, 8, 9, 0A and 0B are
+	 * carried out.  All others are ignored, because they only need to be
+	 * processed once at initialization.  */
+	if (stage != 0) {
+		_cur_grffile = GetFileByFilename(filename);
+		if (_cur_grffile == NULL) error("File ``%s'' lost in cache.\n", filename);
+		if (!(_cur_grffile->flags & 0x0001)) return;
+	}
+
+	FioOpenFile(file_index, filename);
+	_file_index = file_index; // XXX
+
+	DEBUG(grf, 7) ("Reading NewGRF-file '%s'", filename);
+
+	/* Skip the first sprite; we don't care about how many sprites this
+	 * does contain; newest TTDPatches and George's longvehicles don't
+	 * neither, apparently. */
+	if (FioReadWord() == 4 && FioReadByte() == 0xFF) {
+		FioReadDword();
+	} else {
+		error("Custom .grf has invalid format.");
+	}
+
+	_skip_sprites = 0; // XXX
+
+	while ((num = FioReadWord()) != 0) {
+		byte type = FioReadByte();
+
+		if (type == 0xFF) {
+			if (_skip_sprites == 0) {
+				DecodeSpecialSprite(filename, num, stage);
+				continue;
+			} else {
+				FioSkipBytes(num);
+			}
+		} else {
+			if (_skip_sprites == 0) DEBUG(grf, 7) ("Skipping unexpected sprite");
+
+			FioSkipBytes(7);
+			num -= 8;
+
+			if (type & 2) {
+				FioSkipBytes(num);
+			} else {
+				while (num > 0) {
+					int8 i = FioReadByte();
+					if (i >= 0) {
+						num -= i;
+						FioSkipBytes(i);
+					} else {
+						i = -(i >> 3);
+						num -= i;
+						FioReadByte();
+					}
+				}
+			}
+		}
+
+		if (_skip_sprites > 0) _skip_sprites--;
+	}
+}
+
+
+void LoadNewGRF(uint load_index, uint file_index)
+{
+	static bool initialized = false; // XXX yikes
+	uint stage;
+
+	if (!initialized) {
+		InitializeGRFSpecial();
+		initialized = true;
+	}
+
+	/* Load newgrf sprites
+	 * in each loading stage, (try to) open each file specified in the config
+	 * and load information from it. */
+	_custom_sprites_base = load_index;
+	for (stage = 0; stage < 2; stage++) {
+		uint j;
+
+		_cur_stage = stage;
+		_cur_spriteid = load_index;
+		for (j = 0; j != lengthof(_newgrf_files) && _newgrf_files[j] != NULL; j++) {
+			if (!FiosCheckFileExists(_newgrf_files[j])) {
+				// TODO: usrerror()
+				error("NewGRF file missing: %s", _newgrf_files[j]);
+			}
+			if (stage == 0) InitNewGRFFile(_newgrf_files[j], _cur_spriteid);
+			LoadNewGRFFile(_newgrf_files[j], file_index++, stage); // XXX different file indices in both stages?
+			DEBUG(spritecache, 2) ("Currently %i sprites are loaded", load_index);
+		}
+	}
 }

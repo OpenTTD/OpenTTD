@@ -39,9 +39,8 @@ struct GRFFile {
 extern int _grffile_count;
 extern GRFFile *_first_grffile;
 
-void InitNewGRFFile(const char *filename, int sprite_offset);
-void DecodeSpecialSprite(const char *filename, int num, int spriteid, int stage);
 
+void LoadNewGRF(uint load_index, uint file_index);
 
 #endif /* NEWGRF_H */
 

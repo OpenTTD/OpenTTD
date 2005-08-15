@@ -14,23 +14,6 @@
 #include "variables.h"
 #include <ctype.h>
 
-#define SPRITE_CACHE_SIZE 1024*1024
-
-#define WANT_NEW_LRU
-
-
-/* These are used in newgrf.c: */
-
-int _skip_sprites = 0; // XXX
-int _replace_sprites_count[16]; // XXX
-int _replace_sprites_offset[16]; // XXX
-
-const char* _cur_grffile; // XXX
-int _loading_stage; // XXX
-int _skip_specials; // XXX
-uint16 _custom_sprites_base; // XXX
-
-
 typedef struct MD5File {
 	const char * const filename;     // filename
 	const md5_byte_t hash[16]; // md5 sum of the file
@@ -58,16 +41,11 @@ static const SpriteID * const _slopes_spriteindexes[] = {
 };
 
 
-static int LoadGrfFile(const char *filename, int load_index, int file_index)
+static uint LoadGrfFile(const char* filename, uint load_index, int file_index)
 {
-	int load_index_org = load_index;
+	uint load_index_org = load_index;
 
 	FioOpenFile(file_index, filename);
-
-	/* Thou shalt use LoadNewGrfFile() if thou loadeth a GRF file that
-	 * might contain some special sprites. */
-	_skip_specials = 1;
-	_skip_sprites = 0;
 
 	DEBUG(spritecache, 2) ("Reading grf-file ``%s''", filename);
 
@@ -82,62 +60,19 @@ static int LoadGrfFile(const char *filename, int load_index, int file_index)
 	return load_index - load_index_org;
 }
 
-static int LoadNewGrfFile(const char *filename, int load_index, int file_index)
+
+static void LoadGrfIndexed(const char* filename, const SpriteID* index_tbl, int file_index)
 {
-	int i;
+	uint start;
 
 	FioOpenFile(file_index, filename);
-	_cur_grffile = filename;
-	_skip_specials = 0;
-	_skip_sprites = 0;
-
-	DEBUG(spritecache, 2) ("Reading newgrf-file ``%s'' [offset: %u]",
-			filename, load_index);
-
-	/* Skip the first sprite; we don't care about how many sprites this
-	 * does contain; newest TTDPatches and George's longvehicles don't
-	 * neither, apparently. */
-	{
-		int length;
-		byte type;
-
-		length = FioReadWord();
-		type = FioReadByte();
-
-		if (length == 4 && type == 0xFF) {
-			FioReadDword();
-		} else {
-			error("Custom .grf has invalid format.");
-		}
-	}
-
-	for (i = 0; LoadNextSprite(load_index + i, file_index); i++) {
-		if (load_index + i >= MAX_SPRITES)
-			error("Too many sprites (0x%X). Recompile with higher MAX_SPRITES value or remove some custom GRF files.",
-			      load_index + i);
-	}
-
-	/* Clean up. */
-	_skip_sprites = 0;
-	memset(_replace_sprites_count, 0, sizeof(_replace_sprites_count));
-	memset(_replace_sprites_offset, 0, sizeof(_replace_sprites_offset));
-
-	return i;
-}
-
-static void LoadGrfIndexed(const char *filename, const SpriteID *index_tbl, int file_index)
-{
-	int start;
-
-	FioOpenFile(file_index, filename);
-	_skip_specials = 1;
-	_skip_sprites = 0;
 
 	DEBUG(spritecache, 2) ("Reading indexed grf-file ``%s''", filename);
 
 	for (; (start = *index_tbl++) != 0xffff;) {
-		int end = *index_tbl++;
-		if(start == 0xfffe) { // skip sprites (amount in second var)
+		uint end = *index_tbl++;
+
+		if (start == 0xfffe) { // skip sprites (amount in second var)
 			SkipSprites(end);
 		} else { // load sprites and use indexes from start to end
 			do {
@@ -152,8 +87,6 @@ static void LoadGrfIndexed(const char *filename, const SpriteID *index_tbl, int 
 	}
 }
 
-
-static byte _sprite_page_to_load = 0xFF;
 
 #define OPENTTD_SPRITES_COUNT 100
 static const SpriteID _openttd_grf_indexes[] = {
@@ -170,7 +103,6 @@ static const SpriteID _openttd_grf_indexes[] = {
 	0xffff,
 };
 
-/* FUNCTIONS FOR CHECKING MD5 SUMS OF GRF FILES */
 
 /* Check that the supplied MD5 hash matches that stored for the supplied filename */
 static bool CheckMD5Digest(const MD5File file, md5_byte_t *digest, bool warn)
@@ -269,20 +201,14 @@ void CheckExternalFiles(void)
 	}
 }
 
+
+static byte _sprite_page_to_load = 0xFF;
+
 static void LoadSpriteTables(void)
 {
-	int load_index = 0;
+	uint load_index = 0;
 	uint i;
-	uint j;
 	const FileList *files; // list of grf files to be loaded. Either Windows files or DOS files
-
-	_loading_stage = 1;
-
-	/*
-	 * TODO:
-	 *   I think we can live entirely without Indexed GRFs, but I have to
-	 *   invest that further. --octo
-	 */
 
 	files = _use_dos_palette? &files_dos : &files_win;
 
@@ -310,23 +236,7 @@ static void LoadSpriteTables(void)
 
 	load_index = SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT + 1;
 
-
-	/* Load newgrf sprites
-	 * in each loading stage, (try to) open each file specified in the config
-	 * and load information from it. */
-	_custom_sprites_base = load_index;
-	for (_loading_stage = 0; _loading_stage < 2; _loading_stage++) {
-		load_index = _custom_sprites_base;
-		for (j = 0; j != lengthof(_newgrf_files) && _newgrf_files[j]; j++) {
-			if (!FiosCheckFileExists(_newgrf_files[j])) {
-				// TODO: usrerror()
-				error("NewGRF file missing: %s", _newgrf_files[j]);
-			}
-			if (_loading_stage == 0) InitNewGRFFile(_newgrf_files[j], load_index);
-			load_index += LoadNewGrfFile(_newgrf_files[j], load_index, i++);
-			DEBUG(spritecache, 2) ("Currently %i sprites are loaded", load_index);
-		}
-	}
+	LoadNewGRF(load_index, i);
 }
 
 
