@@ -1458,6 +1458,9 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Jernbaneovergan
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Byer
 STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
+STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
+STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Bygningen må rives først
 STR_2005                                                        :{WHITE}{TOWN}
@@ -2030,6 +2033,7 @@ STR_7069_ROUTE_SUPERVISOR                                       :Oppsynsmann
 STR_706A_DIRECTOR                                               :Direktør
 STR_706B_CHIEF_EXECUTIVE                                        :Sjefsleder
 STR_706C_CHAIRMAN                                               :Formann
+STR_706D_PRESIDENT                                              :President
 STR_706E_TYCOON                                                 :Finansfyrste
 STR_706F_BUILD_HQ                                               :{BLACK}Bygg HK
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Bygg firmaets hovedkontor / se firmaets hovedkontor
@@ -2363,6 +2367,12 @@ STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nye tog/
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nye tog/vogner for Monorail
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nye tog/vogner for Maglev
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Kjøp tog/vogn
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Klon et kjøretøy
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Dette vil skape en kopi av et kjøretøy. Control+klikk vil også sørge for delte ordrer
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Dette vil skape en kopi av et kjøretøy. Klikk denne knappen og deretter på et hvilket som helst kjøretøy. Control+Klikk vil sørge for delte ordrer
+STR_CLONE_TRAIN                                                 :{BLACK}Klon tog
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Dette vil skape en kopi av et lokomotiv inkludert alle vogner. Control+klikk vil også sørge for delte ordrer
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Dette vil skape en kopi av et lokomotiv inkludert alle vogner. Trykk denne knappen og så på et hvilket som helst tog. Control+klikk vil også sørge for delte ordrer
 STR_8820_RENAME                                                 :{BLACK}Endre navn
 STR_8823_SKIP                                                   :{BLACK}Hopp over
 STR_8824_DELETE                                                 :{BLACK}Slett
@@ -2514,6 +2524,9 @@ STR_9804_NEW_SHIPS                                              :{BLACK}Nye skip
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Skip
 STR_9808_NEW_SHIPS                                              :{WHITE}Nye skip
 STR_9809_BUILD_SHIP                                             :{BLACK}Bygg skip
+STR_CLONE_SHIP                                                  :{BLACK}Klon skip
+STR_CLONE_SHIP_INFO                                             :{BLACK}Dette vil skape en kopi av et skip. Control+klikk vil også sørge for delte ordrer
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Dette vil skape en kopi av et lokomotiv inkludert alle vogner. Trykk på denne knappen og så på et hvilket som helst skip. Control+klikk vil også sørge for delte ordrer
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Må være stoppet i depotet
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Kan ikke selge skip...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kan ikke bygge skip...
@@ -2578,6 +2591,9 @@ STR_A000_AIRPORTS                                               :{WHITE}Flyplass
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Kan ikke bygge flyplass her...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangar
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nytt fly
+STR_CLONE_AIRCRAFT                                              :{BLACK}Klon fly
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Dette vil skape en kopi av et fly. Control+klikk vil også sørge for delte ordrer
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Dette vil skape en kopi av et fly. Trykk denne knappen og så på et  hvilket som helst fly. Control+klikk vil også sørge for delte ordrer
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nytt fly
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Bygg fly
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kan ikke bygge fly...
