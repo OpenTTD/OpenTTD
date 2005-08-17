@@ -421,6 +421,7 @@ STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING}
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} paliek l'oti vecs
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} paliek l'oti vecs un ir steidzami ja'nomaina
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Zemes laukuma informa'cija
+STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Izmaksas noli'dzina's'anai: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Izmaksas noli'dzina's'anai: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :Nav
 STR_01A7_OWNER                                                  :{BLACK}I'pas'nieks: {LTBLUE}{STRING}
@@ -909,12 +910,36 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nevar da
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nevar kope't uzdevumu sarakstu...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Dali'to uzdevumu beigas - -
 
+STR_TRAIN_IS_LOST                                               :{WHITE}Vilciens {COMMA} ir pazaude'ts.
+STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Vilciena {COMMA} iena'kumi paga'jus'aja' gada' bija {CURRENCY}
+STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Eiropas naudas apvieni'ba!{}{}Eiro ir ieviests ka' vieni'ga' naudas vieni'ba ju'su valsti'!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Vilcienam {COMMA} nav pietiekos'i daudz uzdevumu
+STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Vilcienam {COMMA} ir tuks's uzdevums
+STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Vilcienam {COMMA} ir dubults uzdevums
+STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Vilcienam {COMMA} ir nepareiza stacija ta' uzdevumos
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Auto {COMMA} ir pa'ra'k maz uzdevumu
+STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Auto {COMMA} ir tuks's uzdevums
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Auto {COMMA} ir dubults uzdevums
+STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Auto {COMMA} ir nepareiza stacija ta' uzdevumos
+STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Kug'im {COMMA} ir pa'ra'k maz uzdevumu ta' saraksta'
+STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Kug'im {COMMA} ir tuks's uzdevums
+STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Kug'im {COMMA} ir dubults uzdevums
+STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Kug'im {COMMA} ir nepareizs uzdevums
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Lidmas'i'nai {COMMA} ir pa'ra'k maz uzdevumu
+STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Lidmas'i'nai {COMMA} ir tuks's uzdevums
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Lidmas'i'nai {COMMA} ir dubults uzdevums
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Lidmas'i'nai {COMMA} ir nepareiza stacija ta's uzdevumu saraksta'
 # end of order system
 
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Vilciena autoatjaunos'ana neizdeva's {COMMA} (naudas limits)
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automobil'a autoatjaunos'ana neizdeva's {COMMA} (naudas limits)
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Kug'a autoatjaunos'ana neizdeva's {COMMA} (naudas limits)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Lidmas'i'nas autoatjaunos'ana neizdeva's {COMMA} (naudas limits)
 
+STR_CONFIG_PATCHES                                              :{BLACK}Konfigure' uzlabojumus
 
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Aizliedz vilcieniem un kug'iem taisi't 90 gra'du pagriezienus: {ORANGE}{STRING} {LTBLUE} (nepiecies'ams NPF)
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Jauna' globa'la' cel'u kars'rutiza'cija (NPF, aizsta'j NTP): {ORANGE}{STRING}

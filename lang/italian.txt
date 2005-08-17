@@ -290,7 +290,7 @@ STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Carico t
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Nuovo Gioco
 STR_0141_LOAD_GAME                                              :{BLACK}Carica Gioco
-STR_SINGLE_PLAYER                                               :{BLACK}Singolo giocatore
+STR_SINGLE_PLAYER                                               :{BLACK}Giocatore singolo
 STR_MULTIPLAYER                                                 :{BLACK}Multiplayer
 
 STR_64                                                          :64
@@ -2119,7 +2119,7 @@ STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1'
 STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
 STR_8039_PASSENGER_CAR                                          :Carrozza Passeggeri
 STR_803A_MAIL_VAN                                               :Vagone Postale
-STR_803B_COAL_CAR                                               :Vagone Postale
+STR_803B_COAL_CAR                                               :Vagone Carbone
 STR_803C_OIL_TANKER                                             :Cisterna Petrolio
 STR_803D_LIVESTOCK_VAN                                          :Vano Bestiame
 STR_803E_GOODS_VAN                                              :Vano Beni
@@ -2151,7 +2151,7 @@ STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :Lev4 'Chimaera'
 STR_8058_WIZZOWOW_ROCKETEER                                     :Wizzowow Rocketeer
 STR_8059_PASSENGER_CAR                                          :Carrozza Passeggeri
 STR_805A_MAIL_VAN                                               :Vagone Postale
-STR_805B_COAL_CAR                                               :Vagone Postale
+STR_805B_COAL_CAR                                               :Vagone Carbone
 STR_805C_OIL_TANKER                                             :Cisterna Petrolio
 STR_805D_LIVESTOCK_VAN                                          :Vano Bestiame
 STR_805E_GOODS_VAN                                              :Vano Beni
@@ -2380,7 +2380,7 @@ STR_8825_NON_STOP                                               :{BLACK}Non-Stop
 STR_8826_GO_TO                                                  :{BLACK}Vai a
 STR_8827_FULL_LOAD                                              :{BLACK}Carica
 STR_8828_UNLOAD                                                 :{BLACK}Scarica
-STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Orders)
+STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordini)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fine degli Ordini - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Manutenzione
