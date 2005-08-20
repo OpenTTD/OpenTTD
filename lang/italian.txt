@@ -912,7 +912,7 @@ STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fi
 
 STR_TRAIN_IS_LOST                                               :{WHITE}Il Treno {COMMA} si è perso.
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Il profitto del treno {COMMA} per l'anno scorso è stato {CURRENCY}
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Unione Monetaria Europea!{}{}E’ stato introdotto l’euro come unica moneta per qualsiasi transazione del tuo Paese!
+STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Unione Monetaria Europea!{}{}E' stato introdotto l'euro come unica moneta per qualsiasi transazione del tuo Paese!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -928,16 +928,16 @@ STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}La nave 
 STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}La nave {COMMA} non ha alcun ordine
 STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}La nave {COMMA} ha alcuni ordini duplicati
 STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}La nave {COMMA} ha un porto non valido negli ordini
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}L’aereo {COMMA} non ha sufficienti ordini pianificati
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}L’aereo {COMMA} non ha alcun ordine
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}L’aereo {COMMA} ha alcuni ordini duplicati
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}L’aereo {COMMA} ha un aeroporto non valido negli ordini
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}L'aereo {COMMA} non ha sufficienti ordini pianificati
+STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}L'aereo {COMMA} non ha alcun ordine
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}L'aereo {COMMA} ha alcuni ordini duplicati
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}L'aereo {COMMA} ha un aeroporto non valido negli ordini
 # end of order system
 
 STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Rinnovo automatico fallito per il treno {COMMA} (limite fondi)
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Rinnovo automatico fallito per il veicolo {COMMA} (limite fondi)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Rinnovo automatico fallito per la nave {COMMA} (limite fondi)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Rinnovo automatico fallito per l’aereo {COMMA} (limite fondi)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Rinnovo automatico fallito per l'aereo {COMMA} (limite fondi)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Configura patch
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configura le patch
@@ -990,7 +990,7 @@ STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Mostra 
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Alberi invisibili (se edifici trasparenti): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Dimensione limite delle nevi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Copertura max. stazione: {ORANGE}{STRING} {RED}Attenzione: Valori alti rallentano il gioco
-STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenzione elicotteri direttamente all’eliporto: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenzione elicotteri direttamente all'eliporto: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max treni per giocatore: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max veicoli stradali per giocatore: {ORANGE}{STRING}
@@ -1049,7 +1049,7 @@ STR_TOYLAND_LANDSCAPE                                           :paesaggio 'Citt
 
 STR_CHEATS                                                      :{WHITE}Trucchi
 STR_CHEATS_TIP                                                  :{BLACK}La casella indica se hai già utilizzato questo trucco in passato
-STR_CHEATS_WARNING                                              :{BLACK}Attenzione! Stai per denunciare i tuoi avversari. Ricordati che un così grande disonore verrà ricordato per l’eternità.
+STR_CHEATS_WARNING                                              :{BLACK}Attenzione! Stai per denunciare i tuoi avversari. Ricordati che un così grande disonore verrà ricordato per l'eternità.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Aumenta soldi di {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Gioca come giocatore: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer magico (rimuove industrie e altri): {ORANGE}{STRING}
@@ -1118,7 +1118,7 @@ STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Impossib
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Impossibile convertire il tipo di rotaie...
 STR_CONVERT_RAIL_TIP                                            :{BLACK}Converti/aggiorna il tipo di rotaie
 
-STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Trascina qui la locomotiva per vendere l’intero treno
+STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Trascina qui la locomotiva per vendere l'intero treno
 
 STR_DRAG_DROP                                                   :{BLACK}Drag & Drop
 STR_STATION_DRAG_DROP                                           :{BLACK}Costruisci una stazione con il drag & drop
@@ -1135,9 +1135,9 @@ STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Costruis
 STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Fonda Fattoria
 STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Costruisci Miniera di Rame
 STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Costruisci Pozzo Petrolifero
-STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Costruisci Miniera d’Oro
+STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Costruisci Miniera d'Oro
 STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Costruisci Miniera di Diamanti
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Costruisci Miniera d’Argento
+STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Costruisci Miniera d'Argento
 STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Fonda Piantagione di Frutta
 STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Fonda Rubber Plantation
 STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Fonda Water Supply
@@ -1154,7 +1154,7 @@ STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUST
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% trasportate)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
-STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...troppo vicina ad un’altra industria.
+STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...troppo vicina ad un'altra industria.
 
 STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Riadatta il treno per trasportare un differente tipo di carico
 STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Riadatta treno
@@ -1534,7 +1534,7 @@ STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Finanzia ricost
 STR_204A_BUILD_STATUE_OF_COMPANY                                :Costruisci statua del propietario della società
 STR_204B_FUND_NEW_BUILDINGS                                     :Finanzia nuove costruzioni
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Compra l'esclusiva sui trasporti
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Corrompi l’autorità locale
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Corrompi l'autorità locale
 STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Inizia una piccola campagnia pubblicitaria per attirare più gente e merci ai tuoi servizi di trasporto.{}  Costo: {CURRENCY}
 STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Inizia una media campagnia pubblicitaria per attirare più gente e merci ai tuoi servizi di trasporto.{}  Costo: {CURRENCY}
 STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Inizia una grande campagnia pubblicitaria per attirare più gente e cargo ai tuoi servizi di trasporto.{}  Costo: {CURRENCY}
@@ -1542,7 +1542,7 @@ STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Costruisci una statua in onore della tua società.{} Costo: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Finanzia la costruzione di nuove strutture commerciali nella città.{}  Costo: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Compra 1 anno di esclusiva sui trasporti nella città. Compra 1 anno di esclusiva sui diritti di trasporto in città. L'autorità cittadina autorizzerà passeggeri e merci a usare solo le tue stazioni.{} Costo: {CURRENCY}
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Corrompi l’autorità locale per incrementare la tua valutazione con il rischio di una severa multa se scoperto.{}  Costo: {CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Corrompi l'autorità locale per incrementare la tua valutazione con il rischio di una severa multa se scoperto.{}  Costo: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Traffico nel caos a {TOWN}!{}{}La ricostruzione stradale finanziata da {COMPANY} porterà 6 mesi di disagio agli automobilisti!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -2432,7 +2432,7 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fai dive
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Aggiungi un nuovo ordine prima di quello evidenziato o aggiungilo alla fine della lista
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fai diventare l'ordine evidenziato 'forza il veicolo ad attendere il carico completo'
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fai diventare l'ordine evidenziato 'forza il veicolo a scaricare'
-STR_SERVICE_HINT                                                :{BLACK}Ignora l’ordine finché non sia necessaria la manutenzione
+STR_SERVICE_HINT                                                :{BLACK}Ignora l'ordine finché non sia necessaria la manutenzione
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nuova {STRING} ora disponibile!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Costo: {CURRENCY} Peso: {COMMA}t{}Velocità: {VELOCITY}  Potenza: {COMMA}hp{}Consumi: {CURRENCY}/anno{}Capienza: {STRING}
@@ -2567,7 +2567,7 @@ STR_982F_NAME_SHIP                                              :{BLACK}Nome Nav
 
 STR_9831_NAME_SHIP                                              :{WHITE}Nome Nave
 STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Non puoi rinominare nave...
-STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}˜I cittadini festeggiano . . .{}Prima nave arrivata a {STATION}!
+STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Prima nave arrivata a {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Posiziona boa, può essere usata come way point.
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Non puoi posizionare boa qui...
 STR_9836_RENAME                                                 :{BLACK}Rinomina
