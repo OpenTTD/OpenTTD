@@ -384,7 +384,7 @@ STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Construc
 STR_0182_BUILD_ROADS                                            :{BLACK}Construction routière
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Construction navale
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Construction aéronautique
-STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Semer des arbres, placer des panneaux etc.
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Planter des arbres
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Outil d'Inspection
 STR_0187_OPTIONS                                                :{BLACK}Options
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
@@ -617,7 +617,7 @@ STR_0261_SUGAR_MINE                                             :{BLACK}Mine de 
 STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Construire Mine de Charbon
 STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Construire Centrale Électrique
 STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Construire Scierie
-STR_0265_PLANT_FOREST                                           :{BLACK}Semer une Forêt
+STR_0265_PLANT_FOREST                                           :{BLACK}Planter une Forêt
 STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Construire une raffinerie pétrolière
 STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}La construire d'une plate-forme pétrolière ne peut se faire qu'aux bords de la carte
 STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Construire Usine
