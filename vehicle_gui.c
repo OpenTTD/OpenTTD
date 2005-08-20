@@ -841,7 +841,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				}
 
 
-				DrawString(145, (w->resize.step_height == 24 ? 77 : 87 ) + ( w->resize.step_height * w->vscroll.cap), STR_02BD, 0x10);
+				DrawString(145, (w->resize.step_height == 24 ? 67 : 77 ) + ( w->resize.step_height * w->vscroll.cap), STR_02BD, 0x10);
 
 
 				/*	now we draw the two arrays according to what we just counted */
