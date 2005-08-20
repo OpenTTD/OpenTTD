@@ -764,11 +764,11 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 
 static char *StationGetSpecialString(char *buff, int x)
 {
-	if (x & 0x01) *buff++ = '\xB4';
-	if (x & 0x02) *buff++ = '\xB5';
-	if (x & 0x04) *buff++ = '\xB6';
-	if (x & 0x08) *buff++ = '\xB7';
-	if (x & 0x10) *buff++ = '\xB8';
+	if (x & 0x01) *buff++ = '\x94';
+	if (x & 0x02) *buff++ = '\x95';
+	if (x & 0x04) *buff++ = '\x96';
+	if (x & 0x08) *buff++ = '\x97';
+	if (x & 0x10) *buff++ = '\x98';
 	*buff = '\0';
 	return buff;
 }

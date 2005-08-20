@@ -474,15 +474,14 @@ static const CmdStruct _cmd_structs[] = {
 	{"CROSS", EmitSingleByte, 0xAD, 0},
 	{"RIGHTARROW", EmitSingleByte, 0xAF, 0},
 
-	{"TRAIN", EmitSingleByte, 0xb4, 0},
-	{"LORRY", EmitSingleByte, 0xb5, 0},
-	{"BUS",   EmitSingleByte, 0xb6, 0},
-	{"PLANE", EmitSingleByte, 0xb7, 0},
-	{"SHIP",  EmitSingleByte, 0xb8, 0},
+	{"TRAIN", EmitSingleByte, 0x94, 0},
+	{"LORRY", EmitSingleByte, 0x95, 0},
+	{"BUS",   EmitSingleByte, 0x96, 0},
+	{"PLANE", EmitSingleByte, 0x97, 0},
+	{"SHIP",  EmitSingleByte, 0x98, 0},
 
-	{"SMALLUPARROW", EmitSingleByte, 0xBC, 0},
-	{"SMALLDOWNARROW", EmitSingleByte, 0xBD, 0},
-	{"THREE_FOURTH", EmitSingleByte, 0xBE, 0},
+	{"SMALLUPARROW", EmitSingleByte, 0x90, 0},
+	{"SMALLDOWNARROW", EmitSingleByte, 0x91, 0},
 };
 
 

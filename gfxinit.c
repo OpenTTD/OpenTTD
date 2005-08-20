@@ -88,22 +88,6 @@ static void LoadGrfIndexed(const char* filename, const SpriteID* index_tbl, int 
 }
 
 
-#define OPENTTD_SPRITES_COUNT 100
-static const SpriteID _openttd_grf_indexes[] = {
-	SPR_OPENTTD_BASE + 0, SPR_OPENTTD_BASE + 7, // icons etc
-	134, 134,  // euro symbol medium size
-	582, 582,  // euro symbol large size
-	358, 358,  // euro symbol tiny
-	SPR_OPENTTD_BASE+11, SPR_OPENTTD_BASE+57, // more icons
-	648, 648, // nordic char: æ
-	616, 616, // nordic char: Æ
-	666, 666, // nordic char: ø
-	634, 634, // nordic char: Ø
-	SPR_OPENTTD_BASE+62, SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT, // more icons
-	0xffff,
-};
-
-
 /* Check that the supplied MD5 hash matches that stored for the supplied filename */
 static bool CheckMD5Digest(const MD5File file, md5_byte_t *digest, bool warn)
 {
@@ -202,6 +186,125 @@ void CheckExternalFiles(void)
 }
 
 
+static const SpriteID trg1idx[] = {
+	     0,    1, // Mouse cursor, ZZZ
+/* Medium font */
+	     2,   92, // ' ' till 'z'
+	0xFFFE,   36,
+	   160,  160, // Move ¾ to the correct position
+	   130,  130, // TODO Up arrow
+	   131,  133,
+	0xFFFE,    1, // skip currency sign
+	   135,  135,
+	0xFFFE,    1,
+	   137,  137,
+	0xFFFE,    1,
+	   139,  139,
+	   140,  140, // TODO Down arrow
+	   141,  141,
+	   142,  142, // TODO Check mark
+	   143,  143, // TODO Cross
+	   144,  144,
+	   145,  145, // TODO Right arrow
+	   146,  149,
+	   118,  122, // Transport markers
+	0xFFFE,    2,
+	   157,  157,
+	   114,  115, // Small up/down arrows
+	0xFFFE,    1,
+	   161,  225,
+/* Small font */
+	   226,  316, // ' ' till 'z'
+	0xFFFE,   25,
+	   342,  346, // place holders for transport markers
+	0xFFFE,    6,
+	   384,  384, // Move ¾ to the correct position
+	   354,  354, // TODO Up arrow
+	   355,  357,
+	0xFFFE,    1, // skip currency sign
+	   359,  359,
+	0xFFFE,    1,
+	   361,  361,
+	0xFFFE,    1,
+	   363,  363,
+	   364,  364, // TODO Down arrow
+	   365,  366,
+	0xFFFE,    1,
+	   368,  368,
+	   369,  369, // TODO Right arrow
+	   370,  373,
+	0xFFFE,    7,
+	   381,  381,
+	0xFFFE,    3,
+	   385,  449,
+/* Big font */
+	   450,  540, // ' ' till 'z'
+	0xFFFE,   36,
+	   608,  608, // Move ¾ to the correct position
+	0xFFFE,    1,
+	   579,  581,
+	0xFFFE,    1,
+	   583,  583,
+	0xFFFE,    5,
+	   589,  589,
+	0xFFFE,   15,
+	   605,  605,
+	0xFFFE,    3,
+	   609,  625,
+	0xFFFE,    1,
+	   627,  632,
+	0xFFFE,    1,
+	   634,  639,
+	0xFFFE,    1,
+	   641,  657,
+	0xFFFE,    1,
+	   659,  664,
+	0xFFFE,    2,
+	   667,  671,
+	0xFFFE,    1,
+	   673,  673,
+/* Graphics */
+	   674, 4792,
+	0xFFFF
+};
+
+#define OPENTTD_SPRITES_COUNT 100
+static const SpriteID _openttd_grf_indexes[] = {
+	SPR_OPENTTD_BASE + 0, SPR_OPENTTD_BASE + 7, // icons etc
+	134, 134,  // euro symbol medium size
+	582, 582,  // euro symbol large size
+	358, 358,  // euro symbol tiny
+	SPR_OPENTTD_BASE+11, SPR_OPENTTD_BASE+57, // more icons
+	648, 648, // nordic char: æ
+	616, 616, // nordic char: Æ
+	666, 666, // nordic char: ø
+	634, 634, // nordic char: Ø
+	SPR_OPENTTD_BASE+62, SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT, // more icons
+	382, 383, // ¼ ½ tiny
+	158, 159, // ¼ ½ medium
+	606, 607, // ¼ ½ large
+	360, 360, // ¦ tiny
+	362, 362, // ¨ tiny
+	136, 136, // ¦ medium
+	138, 138, // ¨ medium
+	584, 584, // ¦ large
+	586, 586, // ¨ large
+	626, 626, // Ð large
+	658, 658, // ð large
+	374, 374, // ´ tiny
+	378, 378, // ¸ tiny
+	150, 150, // ´ medium
+	154, 154, // ¸ medium
+	598, 598, // ´ large
+	602, 602, // ¸ large
+	640, 640, // Þ large
+	672, 672, // þ large
+	380, 380, // º tiny
+	156, 156, // º medium
+	604, 604, // º large
+	0xffff,
+};
+
 static byte _sprite_page_to_load = 0xFF;
 
 static void LoadSpriteTables(void)
@@ -212,7 +315,10 @@ static void LoadSpriteTables(void)
 
 	files = _use_dos_palette? &files_dos : &files_win;
 
-	for (i = 0; files->basic[i].filename != NULL; i++) {
+	LoadGrfIndexed(files->basic[0].filename, trg1idx, 0);
+	load_index = 4793;
+
+	for (i = 1; files->basic[i].filename != NULL; i++) {
 		load_index += LoadGrfFile(files->basic[i].filename, load_index, i);
 	}
 

@@ -1627,15 +1627,15 @@ void LoadStringWidthTable(void)
 
 	// 2 equals space.
 	for (i = 2; i != 226; i++) {
-		*b++ = (i < 93 || i >= 129 || i == 98) ? GetSprite(i)->width : 0;
+		*b++ = (i < 93 || i > 113) && i != 116 && i != 117 && (i < 123 || i > 131) && (i < 151 || i > 153) && i != 155 ? GetSprite(i)->width : 0;
 	}
 
 	for (i = 226; i != 450; i++) {
-		*b++ = (i < 317 || i >= 353) ? GetSprite(i)->width + 1 : 0;
+		*b++ = (i < 317 || i >= 354) && i != 367 && (i < 375 || i > 377) && i != 379 ? GetSprite(i)->width + 1 : 0;
 	}
 
 	for (i = 450; i != 674; i++) {
-		*b++ = (i < 541 || i >= 577) ? GetSprite(i)->width + 1 : 0;
+		*b++ = (i < 541 || i >= 579) && i != 585 && i != 587 && i != 588 && (i < 590 || i > 597) && (i < 599 || i > 601) && i != 603 && i != 633 && i != 665 ? GetSprite(i)->width + 1 : 0;
 	}
 }
 
