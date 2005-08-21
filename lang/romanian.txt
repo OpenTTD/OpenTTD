@@ -1156,6 +1156,8 @@ STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUST
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...prea aproape de altã industrie
 
+STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Schimba tipul încãrcãturii cãratã de acest tren
+STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Modificã încãrcãturã
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Alege tipul de marfã transportat de tren
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Modificã trenul pentru a transporta marfa aleasã
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nu pot modifica trenul...
@@ -1167,6 +1169,7 @@ TEMP_AI_ACTIVATED                                               :{WHITE}Atentie:
 
 ############ network gui strings
 
+STR_NETWORK_MULTIPLAYER                                         :{WHITE}Multiplayer
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Numele jucãtorului:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Acesta este numele prin care te vor identifica ceilalti
@@ -1455,6 +1458,9 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Traversare la n
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Orase
 STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
+STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
+STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Mai întâi trebuie sã demolezi clãdirea
 STR_2005                                                        :{WHITE}{TOWN}
@@ -1739,7 +1745,17 @@ STR_482F_COST                                                   :{BLACK}Cost: {Y
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Acest tip de industrie nu se poate construi aici...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...pãdurile pot fi plantate doar in zonele inzãpezite
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} anuntã inchiderea iminentã!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Problemele de aprovizionare provoacã închiderea {INDUSTRY}!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Lipsa de teren împãdurit provoacã închiderea {INDUSTRY}!
+STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} mãreste productia!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}New coal seam found at {INDUSTRY}!{}Production is expected to double!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}New oil reserves found at {INDUSTRY}!{}Production is expected to double!
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Improved farming methods at {INDUSTRY} are expected to double production!
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} production down by 50%
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Insect infestation causes havoc at {INDUSTRY}!{}Production down by 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...se poate construi doar la marginea hãrtii
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} production at {INDUSTRY} increases {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} production at {INDUSTRY} decreases {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Tren în tunel
@@ -2351,6 +2367,12 @@ STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Noi vehi
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Noi vehicule monorail
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Noi vehicule maglev
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Cumpãrã vehicul
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Cloneazã vehiculul
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}This will build a copy of the road vehicle. Control-click will share the orders
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}This will build a copy of a road vehicle. Click this button and then on a road vehicle inside or outside the depot. Control-click will share the orders
+STR_CLONE_TRAIN                                                 :{BLACK}Cloneazã trenul
+STR_CLONE_TRAIN_INFO                                            :{BLACK}This will build a copy of the train including all cars. Control-click will share the orders
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}This will build a copy of a train including all cars. Click this button and then on a train inside or outside the depot. Control-click will share the orders
 STR_8820_RENAME                                                 :{BLACK}Redenumeste
 STR_8823_SKIP                                                   :{BLACK}Sãri peste
 STR_8824_DELETE                                                 :{BLACK}Sterge
@@ -2472,6 +2494,7 @@ STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Autovehi
 STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Cumpãrã un autovehicul
 STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Mutã un autovehicul aici pentru a-l vinde
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centreazã imaginea pe locatia acestei autobaze
+STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Road vehicle selection list - click on vehicle for information
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Cumpãrã autovehiculul selectat
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Un nou autovehicul disponibil!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
@@ -2501,6 +2524,8 @@ STR_9804_NEW_SHIPS                                              :{BLACK}Nave noi
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA}Nave
 STR_9808_NEW_SHIPS                                              :{WHITE}Nave noi
 STR_9809_BUILD_SHIP                                             :{BLACK}Construieste navã
+STR_CLONE_SHIP                                                  :{BLACK}Cloneazã nava
+STR_CLONE_SHIP_INFO                                             :{BLACK}This will build a copy of the ship. Control-click will share the orders
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Nava trebuie sã fie stationatã într-un santier
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Nu pot vinde nava...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Nu pot construi nava...
