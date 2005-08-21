@@ -332,7 +332,7 @@ ifdef OSX
 BASECFLAGS += -O3 -funroll-loops -fsched-interblock -falign-loops=16 -falign-jumps=16 -falign-functions=16 -falign-jumps-max-skip=15 -falign-loops-max-skip=15 -mdynamic-no-pic -mpowerpc-gpopt -force_cpusubtype_ALL
 else
 ifdef MORPHOS
-BASECFLAGS += -O2 -noixemul -fstrict-aliasing -fexpensive-optimizations
+BASECFLAGS += -I/gg/os-include -O2 -noixemul -fstrict-aliasing -fexpensive-optimizations
 BASECFLAGS += -mcpu=604 -fno-inline -mstring -mmultiple
 else
 BASECFLAGS += -O2
@@ -1002,15 +1002,15 @@ endif
 
 .deps/%.d: %.c $(MAKE_CONFIG) table/strings.h endian_target.h
 	@echo '===> Determining dependencies of $<'
-	$(Q)$(CC) $(CFLAGS) $(CDEFS) -M $< > $@
+	$(Q)$(CC) $(CFLAGS) $(CDEFS) -MM $< > $@
 
 .deps/%.d: %.cpp $(MAKE_CONFIG) table/strings.h endian_target.h
 	@echo '===> Determining dependencies of $<'
-	$(Q)$(CXX) $(CFLAGS) $(CDEFS) -M $< > $@
+	$(Q)$(CXX) $(CFLAGS) $(CDEFS) -MM $< > $@
 
 .deps/%.d: %.m $(MAKE_CONFIG) table/strings.h endian_target.h
 	@echo '===> Determining dependencies of $<'
-	$(Q)$(CC) $(CFLAGS) $(CDEFS) -M $< > $@
+	$(Q)$(CC) $(CFLAGS) $(CDEFS) -MM $< > $@
 
 
 %.o: %.c $(MAKE_CONFIG)

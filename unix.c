@@ -31,6 +31,10 @@
 #ifdef __MORPHOS__
 #include <exec/types.h>
 ULONG __stack = (1024*1024)*2; // maybe not that much is needed actually ;)
+
+// The system supplied definition of SIG_IGN does not match
+#undef SIG_IGN
+#define SIG_IGN (void (*)(int))1
 #endif /* __MORPHOS__ */
 
 #ifdef __AMIGA__
