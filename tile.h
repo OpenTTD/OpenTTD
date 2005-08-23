@@ -109,7 +109,7 @@ static inline Owner GetTileOwner(TileIndex tile)
 	assert(!IsTileType(tile, MP_VOID));
 	assert(!IsTileType(tile, MP_INDUSTRY));
 
-	return _m[tile].owner;
+	return _m[tile].m1;
 }
 
 static inline void SetTileOwner(TileIndex tile, Owner owner)
@@ -119,7 +119,7 @@ static inline void SetTileOwner(TileIndex tile, Owner owner)
 	assert(!IsTileType(tile, MP_VOID));
 	assert(!IsTileType(tile, MP_INDUSTRY));
 
-	_m[tile].owner = owner;
+	_m[tile].m1 = owner;
 }
 
 static inline bool IsTileOwner(TileIndex tile, Owner owner)

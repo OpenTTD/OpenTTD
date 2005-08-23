@@ -1008,9 +1008,9 @@ static void ConvertTownOwner(void)
 			if (IsLevelCrossing(tile) && _m[tile].m3 & 0x80)
 				_m[tile].m3 = OWNER_TOWN;
 
-			if (_m[tile].owner & 0x80) SetTileOwner(tile, OWNER_TOWN);
+			if (_m[tile].m1 & 0x80) SetTileOwner(tile, OWNER_TOWN);
 		} else if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-			if (_m[tile].owner & 0x80) SetTileOwner(tile, OWNER_TOWN);
+			if (_m[tile].m1 & 0x80) SetTileOwner(tile, OWNER_TOWN);
 		}
 	}
 }

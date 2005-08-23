@@ -382,7 +382,7 @@ void CDECL ModifyTile(TileIndex tile, uint flags, ...)
 	if (flags & (MP_MAPOWNER|MP_MAPOWNER_CURRENT)) {
 		byte x = _current_player;
 		if (flags & MP_MAPOWNER) x = va_arg(va, int);
-		_m[tile].owner = x;
+		_m[tile].m1 = x;
 	}
 
 	if (flags & MP_MAP5) {
@@ -436,7 +436,7 @@ void InitializeLandscape(void)
 	map_size = MapSize();
 	for (i = 0; i < map_size; i++) {
 		_m[i].type_height = MP_CLEAR << 4;
-		_m[i].owner       = OWNER_NONE;
+		_m[i].m1          = OWNER_NONE;
 		_m[i].m2          = 0;
 		_m[i].m3          = 0;
 		_m[i].m4          = 0;

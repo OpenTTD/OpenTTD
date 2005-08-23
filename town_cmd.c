@@ -78,7 +78,7 @@ typedef struct DrawTownTileStruct {
 
 static void TownDrawHouseLift(TileInfo *ti)
 {
-	AddChildSpriteScreen(0x5A3, 0xE, 0x3C - (_m[ti->tile].owner&0x7F));
+	AddChildSpriteScreen(0x5A3, 0xE, 0x3C - (_m[ti->tile].m1 & 0x7F));
 }
 
 typedef void TownDrawTileProc(TileInfo *ti);
@@ -173,8 +173,8 @@ static void AnimateTile_Town(TileIndex tile)
 		return;
 	}
 
-	if (!((old=_m[tile].owner)&0x80)) {
-		_m[tile].owner |= 0x80;
+	if (!((old = _m[tile].m1) & 0x80)) {
+		_m[tile].m1 |= 0x80;
 
 		do {
 			i = (Random()&7) - 1;
@@ -183,14 +183,14 @@ static void AnimateTile_Town(TileIndex tile)
 		SB(_m[tile].m5, 0, 6, i);
 	}
 
-	a = _m[tile].owner&0x7F;
+	a = _m[tile].m1 & 0x7F;
 	b = (_m[tile].m5&0x3F) * 6;
 	a += (a < b) ? 1 : -1;
-	_m[tile].owner = (_m[tile].owner&0x80)|a;
+	_m[tile].m1 = (_m[tile].m1 & 0x80) | a;
 
 	if (a == b) {
+		_m[tile].m1 &= 0x7F;
 		_m[tile].m5 &= 0x40;
-		_m[tile].owner &= 0x7F;
 		DeleteAnimatedTile(tile);
 	}
 

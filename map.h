@@ -19,7 +19,7 @@ extern uint _map_size;
 
 typedef struct Tile {
 	byte type_height;
-	byte owner;
+	byte m1;
 	uint16 m2;
 	byte m3;
 	byte m4;

@@ -164,11 +164,11 @@ static void Place_LandInfo(TileIndex tile)
 		DEBUG(misc, 0) ("TILE: %#x (%i,%i)", tile, TileX(tile), TileY(tile));
 		DEBUG(misc, 0) ("TILE: %d ", tile);
 		DEBUG(misc, 0) ("_type_height = %#x", _m[tile].type_height);
+		DEBUG(misc, 0) ("m1           = %#x", _m[tile].m1);
 		DEBUG(misc, 0) ("m2           = %#x", _m[tile].m2);
 		DEBUG(misc, 0) ("m3           = %#x", _m[tile].m3);
 		DEBUG(misc, 0) ("m4           = %#x", _m[tile].m4);
 		DEBUG(misc, 0) ("m5           = %#x", _m[tile].m5);
-		DEBUG(misc, 0) ("owner        = %#x", _m[tile].owner);
 	#endif
 }
 

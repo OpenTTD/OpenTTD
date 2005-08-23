@@ -1400,7 +1400,7 @@ static bool LoadOldMapPart1(LoadgameState *ls, int num)
 	uint i;
 
 	for (i = 0; i < OLD_MAP_SIZE; i++) {
-		_m[i].owner = ReadByte(ls);
+		_m[i].m1 = ReadByte(ls);
 	}
 	for (i = 0; i < OLD_MAP_SIZE; i++) {
 		_m[i].m2 = ReadByte(ls);

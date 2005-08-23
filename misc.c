@@ -771,7 +771,7 @@ static void Save_MAPT(void)
 	}
 }
 
-static void Load_MAPO(void)
+static void Load_MAP1(void)
 {
 	uint size = MapSize();
 	uint i;
@@ -781,11 +781,11 @@ static void Load_MAPO(void)
 		uint j;
 
 		SlArray(buf, lengthof(buf), SLE_UINT8);
-		for (j = 0; j != lengthof(buf); j++) _m[i++].owner = buf[j];
+		for (j = 0; j != lengthof(buf); j++) _m[i++].m1 = buf[j];
 	}
 }
 
-static void Save_MAPO(void)
+static void Save_MAP1(void)
 {
 	uint size = MapSize();
 	uint i;
@@ -795,7 +795,7 @@ static void Save_MAPO(void)
 		byte buf[4096];
 		uint j;
 
-		for (j = 0; j != lengthof(buf); j++) buf[j] = _m[i++].owner;
+		for (j = 0; j != lengthof(buf); j++) buf[j] = _m[i++].m1;
 		SlArray(buf, lengthof(buf), SLE_UINT8);
 	}
 }
@@ -988,7 +988,7 @@ static void Load_CHTS(void)
 const ChunkHandler _misc_chunk_handlers[] = {
 	{ 'MAPS', Save_MAPS, Load_MAPS, CH_RIFF },
 	{ 'MAPT', Save_MAPT, Load_MAPT, CH_RIFF },
-	{ 'MAPO', Save_MAPO, Load_MAPO, CH_RIFF },
+	{ 'MAPO', Save_MAP1, Load_MAP1, CH_RIFF },
 	{ 'MAP2', Save_MAP2, Load_MAP2, CH_RIFF },
 	{ 'M3LO', Save_MAP3, Load_MAP3, CH_RIFF },
 	{ 'M3HI', Save_MAP4, Load_MAP4, CH_RIFF },
