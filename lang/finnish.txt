@@ -79,41 +79,41 @@ STR_0047_COLA                                                   :Limsa
 STR_0048_COTTON_CANDY                                           :Hattara
 STR_0049_BUBBLE                                                 :Kupla
 STR_004A_TOFFEE                                                 :Toffee
-STR_004B_BATTERY                                                :Patteri
+STR_004B_BATTERY                                                :Paristo
 STR_004C_PLASTIC                                                :Muovi
 STR_004D_FIZZY_DRINK                                            :Sihijuoma
 STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA} matkustaja
-STR_0050_TON_OF_COAL                                            :{COMMA} tonni kivihiiltä
-STR_0051_BAG_OF_MAIL                                            :{COMMA} säkki postia
+STR_004F_PASSENGER                                              :{COMMA} matkustaja{P "" a}
+STR_0050_TON_OF_COAL                                            :{COMMA} tonni{P "" a} kivihiiltä
+STR_0051_BAG_OF_MAIL                                            :{COMMA} säkki{P "" ä} postia
 STR_0052_OF_OIL                                                 :{VOLUME} öljyä
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} erä karjaa
-STR_0054_CRATE_OF_GOODS                                         :{COMMA} laatikko tavaraa
-STR_0055_TON_OF_GRAIN                                           :{COMMA} tonni viljaa
-STR_0056_TON_OF_WOOD                                            :{COMMA} tonni puutavaraa
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA} tonni rautamalmia
-STR_0058_TON_OF_STEEL                                           :{COMMA} tonni terästä
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA} säkki arvotavaraa
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} tonni kuparimalmia
+STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} erä{P "" ä} karjaa
+STR_0054_CRATE_OF_GOODS                                         :{COMMA} laatikko{P "" a} tavaraa
+STR_0055_TON_OF_GRAIN                                           :{COMMA} tonni{P "" a} viljaa
+STR_0056_TON_OF_WOOD                                            :{COMMA} tonni{P "" a} puutavaraa
+STR_0057_TON_OF_IRON_ORE                                        :{COMMA} tonni{P "" a} rautamalmia
+STR_0058_TON_OF_STEEL                                           :{COMMA} tonni{P "" a} terästä
+STR_0059_BAG_OF_VALUABLES                                       :{COMMA} säkki{P "" ä} arvotavaraa
+STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} tonni{P "" a} kuparimalmia
 STR_005B_TON_OF_MAIZE                                           :{COMMA} tonni maissia
-STR_005C_TON_OF_FRUIT                                           :{COMMA} tonni hedelmiä
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} säkki timantteja
-STR_005E_TON_OF_FOOD                                            :{COMMA} tonni ruokaa
-STR_005F_TON_OF_PAPER                                           :{COMMA} tonni paperia
-STR_0060_BAG_OF_GOLD                                            :{COMMA} säkki kultaa
+STR_005C_TON_OF_FRUIT                                           :{COMMA} tonni{P "" a} hedelmiä
+STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} säkki{P "" ä} timantteja
+STR_005E_TON_OF_FOOD                                            :{COMMA} tonni{P "" a} ruokaa
+STR_005F_TON_OF_PAPER                                           :{COMMA} tonni{P "" a}  paperia
+STR_0060_BAG_OF_GOLD                                            :{COMMA} säkki{P "" ä} kultaa
 STR_0061_OF_WATER                                               :{VOLUME} vettä
-STR_0062_TON_OF_WHEAT                                           :{COMMA} tonni vehnää
+STR_0062_TON_OF_WHEAT                                           :{COMMA} tonni{P "" a} vehnää
 STR_0063_OF_RUBBER                                              :{VOLUME} kumia
-STR_0064_TON_OF_SUGAR                                           :{COMMA} tonni sokeria
-STR_0065_TOY                                                    :{COMMA} lelu
+STR_0064_TON_OF_SUGAR                                           :{COMMA} tonni{P "" a} sokeria
+STR_0065_TOY                                                    :{COMMA} lelu{P "" a}
 STR_0066_BAG_OF_CANDY                                           :{COMMA} säkki{P "" ä} karkkia
 STR_0067_OF_COLA                                                :{VOLUME} limsaa
 STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} tonni{P "" a} hattaraa
-STR_0069_BUBBLE                                                 :{COMMA} kupla
-STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonni toffeeta
-STR_006B_BATTERY                                                :{COMMA} patteri
+STR_0069_BUBBLE                                                 :{COMMA} kupla{P "" a}
+STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonni{P "" a} toffeeta
+STR_006B_BATTERY                                                :{COMMA} paristo{P "" a}
 STR_006C_OF_PLASTIC                                             :{VOLUME} muovia
-STR_006D_FIZZY_DRINK                                            :{COMMA} sihijuoma
+STR_006D_FIZZY_DRINK                                            :{COMMA} sihijuoma{P "" a}
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}MA
 STR_0090_CL                                                     :{TINYFONT}HL
@@ -236,7 +236,7 @@ STR_010E_WATER_TOWER                                            :{BLACK}{TINYFON
 STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Hakkuualue
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Hattarametsä
 STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Karkkitehdas
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Patterimaatila
+STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Paristomaatila
 STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Limsakenttä
 STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Lelukauppa
 STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Lelutehdas
@@ -267,12 +267,12 @@ STR_012D                                                        :{WHITE}{STRING}
 STR_012E_CANCEL                                                 :{BLACK}Peruuta
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Nimeä uud.
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Liian monta nimeä määritetty.
+STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Liian monta nimeä määritelty.
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Valittu nimi on jo käytössä.
 
 STR_0133_WINDOWS                                                :Windows
 STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :OSX
+STR_0135_OSX                                                    :OS X
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
@@ -300,7 +300,7 @@ STR_512                                                         :512
 STR_1024                                                        :1024
 STR_2048                                                        :2048
 STR_MAPSIZE                                                     :{BLACK}Kartan koko:
-STR_BY                                                          :{BLACK}x
+STR_BY                                                          :{BLACK}×
 STR_0148_GAME_OPTIONS                                           :{BLACK}Pelin asetukset
 
 STR_0150_SOMEONE                                                :joku{SKIP}{SKIP}
@@ -393,7 +393,7 @@ STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Huoltovä
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Sulje ikkuna.
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Ikkunan otsake - vedä tästä siirtääksesi ikkunaa.
 STR_STICKY_BUTTON                                               :{BLACK}Merkitse ikkuna tahmeaksi; 'Sulje kaikki ikkunat'-nappi ei vaikuta tahmeisiin ikkunoihin.
-STR_RESIZE_BUTTON                                               :{BLACK}Napsauta vedä muuttaaksesi tämän ikkunan kokoa.
+STR_RESIZE_BUTTON                                               :{BLACK}Napsauta ja vedä muuttaaksesi tämän ikkunan kokoa.
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Tyhjennä ruutuja rakennuksista yms.
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Madalla maakulmausta.
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Korota maakulmausta.
@@ -521,8 +521,8 @@ STR_MESSAGE_HISTORY_MENU                                        :Viestihistoria
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Näytä viimeisin viesti/uutisraportti, näytä viestiasetukset.
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Viestiasetukset
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Viestityypit:-
-STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ensimmäisen ajoneuvon saapuu pelaajan asemalle
-STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ensimmäinen ajoneuvon saapuu kilpailijan asemalle
+STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ensimmäinen ajoneuvo saapuu pelaajan asemalle
+STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ensimmäinen ajoneuvo saapuu kilpailijan asemalle
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Vahingot/onnettomuudet
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Yhtiön tiedot
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Talouden muutokset
@@ -531,7 +531,7 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}Uudet a
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Rahdin vastaanottamisen muutokset
 STR_020E_SUBSIDIES                                              :{YELLOW}Tuet
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Yleistä tietoa
-STR_MESSAGES_ALL                                                :{YELLOW}Asetukset viestityypeille (päällä/pois/tiivistelmä)
+STR_MESSAGES_ALL                                                :{YELLOW}Asetukset kaikille viestityypeille (pois/tiivistelmä/täysi)
 STR_MESSAGE_SOUND                                               :{YELLOW}Soita ääni tiivistetyn uutisviestin kohdalla
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...liian kaukana edellisestä määränpäästä
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Parhaat yhtiöt, jotka saavuttivat vuoden {NUM}{}(taso: {STRING})
@@ -605,7 +605,7 @@ STR_0255_DIAMOND_MINE                                           :{BLACK}Timantti
 STR_0256_COPPER_ORE_MINE                                        :{BLACK}Kuparikaivos
 STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Hattarametsä
 STR_0258_CANDY_FACTORY                                          :{BLACK}Karkkitehdas
-STR_0259_BATTERY_FARM                                           :{BLACK}Patterimaatila
+STR_0259_BATTERY_FARM                                           :{BLACK}Paristomaatila
 STR_025A_COLA_WELLS                                             :{BLACK}Limsakenttä
 STR_025B_TOY_SHOP                                               :{BLACK}Lelukauppa
 STR_025C_TOY_FACTORY                                            :{BLACK}Lelutehdas
@@ -640,7 +640,7 @@ STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Rakenna 
 STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Rakenna kuparikaivos.
 STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Istuta hattarametsä.
 STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Rakenna karkkitehdas.
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Rakenna patterimaatila.
+STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Rakenna paristomaatila.
 STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Rakenna limsakenttä.
 STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Rakenna karkkikauppa.
 STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Rakenna karkkitehdas.
@@ -687,7 +687,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Kaupung
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Näytä viimeisin viesti tai uutisraportti.
 STR_OFF                                                         :Pois
-STR_SUMMARY                                                     :Tiivistetty
+STR_SUMMARY                                                     :Tiivistelmä
 STR_FULL                                                        :Täysi
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Kaupunkihakemisto
@@ -731,9 +731,9 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Läpinä
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Maa-alueen tiedot
 STR_02D6                                                        :
-STR_02D7_SCREENSHOT_CTRL_S                                      :Kuvankaappaus (Ctrl-S)
-STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Valtava kuvankaap. (Ctrl-G)
-STR_02D9_ABOUT_OPENTTD                                          :Tietoja 'OpenTTD:stä'
+STR_02D7_SCREENSHOT_CTRL_S                                      :Kuvakaappaus (Ctrl-S)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Valtava kuvakaapp. (Ctrl-G)
+STR_02D9_ABOUT_OPENTTD                                          :Tietoja "OpenTTD":stä
 ############ range ends	here
 
 STR_02DB_OFF                                                    :{BLACK}pois
@@ -782,7 +782,7 @@ STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Näytä pe
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Näytä vaikeusasetukset.
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Aloita uusi peli käyttäen omaa skenaariota.
 STR_0304_QUIT                                                   :{BLACK}Sulje
-STR_0305_QUIT_OPENTTD                                           :{BLACK}Sulje 'OpenTTD'.
+STR_0305_QUIT_OPENTTD                                           :{BLACK}Sulje "OpenTTD".
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...voidaan rakentaa vain kaupunkeihin.
 STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Valitse 'lauhkea' ilmasto.
@@ -804,12 +804,12 @@ STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...voida
 STR_0319_PAUSED                                                 :{YELLOW}* *  TAUKO  *  *
 
 STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Kuvankaappaus tallennettu levyllä nimellä '{STRING}'.
-STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Kuvankaappaus epäonnistui!
+STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Kuvakaappaus epäonnistui!
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Osta maata tulevaa käyttöä varten.
 STR_032F_AUTOSAVE                                               :{RED}AUTOMAATTITALLENNUS
 STR_SAVING_GAME                                                 :{RED}*  *  TALLENNETAAN PELIÄ  *  *
-STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Tallentaminen käynnissä,{}odota, kunnes se on ohi!
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Tallentaminen käynnissä,{}odota, kunnes se päättyy!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Valitse 'Ezy Street'.
 
 STR_0335_6                                                      :{BLACK}6
@@ -840,21 +840,21 @@ STR_CURR_USD                                                    :Dollari ($)
 STR_CURR_EUR                                                    :Euro (¤)
 STR_CURR_YEN                                                    :Jeni ({YENSIGN})
 STR_CURR_ATS                                                    :Itävallan shillinki (ATS)
-STR_CURR_BEF                                                    :Belgian frankki (BEF)
-STR_CURR_CHF                                                    :Sveitsin frankki (CHF)
-STR_CURR_CZK                                                    :Tsekin kruunu (CZK)
+STR_CURR_BEF                                                    :Belgian frangi (BEF)
+STR_CURR_CHF                                                    :Sveitsin frangi (CHF)
+STR_CURR_CZK                                                    :Tsekin koruna (CZK)
 STR_CURR_DEM                                                    :Saksan markka (DEM)
 STR_CURR_DKK                                                    :Tanskan kruunu (DKK)
 STR_CURR_ESP                                                    :Peseta (ESP)
 STR_CURR_FIM                                                    :Suomen markka (FIM)
-STR_CURR_FRF                                                    :Frankki (FRF)
+STR_CURR_FRF                                                    :Frangi (FRF)
 STR_CURR_GRD                                                    :Kreikan drakma (GRD)
-STR_CURR_HUF                                                    :Unkarin forintia (HUF)
+STR_CURR_HUF                                                    :Unkarin forintti (HUF)
 STR_CURR_ISK                                                    :Islannin kruunu (ISK)
 STR_CURR_ITL                                                    :Italian liira (ITL)
 STR_CURR_NLG                                                    :Hollannin guildeni (NLG)
 STR_CURR_NOK                                                    :Norjan kruunu (NOK)
-STR_CURR_PLN                                                    :Puolan zlotya (PLN)
+STR_CURR_PLN                                                    :Puolan zloty (PLN)
 STR_CURR_ROL                                                    :Romanian leu (lei)
 STR_CURR_RUR                                                    :Venjän rupla (rur)
 STR_CURR_SEK                                                    :Ruotsin kruunu (SEK)
@@ -872,7 +872,7 @@ STR_OPTIONS_RES                                                 :{BLACK}Ruudun e
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}Valitse ruudun erottelukyky.
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Kuvankaappauksen muoto
+STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Kuvakaappauksen muoto
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Valitse kuvankaappauksen muoto.
 
@@ -912,14 +912,14 @@ STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - ja
 
 STR_TRAIN_IS_LOST                                               :{WHITE}Juna {COMMA} on eksynyt.
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Junan {COMMA} tuotto viime vuonna oli {CURRENCY}.
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}European Monetary Union, EMU!{}{}Euron on tarkoitus olla maan ainoa tarvittava valuutta jokapäiväisiin liiketapahtumiin!
+STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Euroopan unionin talous- ja rahaliitto!{}{}Euro otetaan käyttöön maan ainoaksi valuutaksi päivittäisiin liiketapahtumiin!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
 STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Junan {COMMA} aikataulussa on liian vähän pysähdyksiä.
 STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Junan {COMMA} aikataulussa on epäkelpo pysähdys.
 STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Junan {COMMA} määräyksissä on kaksi kertaa sama kohta.
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Junan {COMMA} käskyissä on laiton asema.
+STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Junan {COMMA} käskyissä on virheellinen asema.
 STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Ajoneuvon {COMMA} aikataulussa on liian vähän pysähdyksiä.
 STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Ajoneuvon {COMMA} aikataulussa on epäkelpo pysähdys.
 STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Ajoneuvon {COMMA} määräyksissä on kaksi kertaa sama kohta.
@@ -1020,7 +1020,7 @@ STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Lopetus
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Tasainen talous (enemmän pieniä muutoksia)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Osakkeiden ostaminen yhtiöistä
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Vedettäessä aseta opastimien väleiksi: {ORANGE}{STRING} ruutu(a)
-STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}Salli pbs-signaalien automaattinen sijoittaminen: {ORANGE}{STRING}
+STR_CONFIG_AUTO_PBS_PLACEMENT                                   :
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Päätyökalupalkin sijainti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :vasen
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :keskellä
@@ -1142,7 +1142,7 @@ STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Rahoita 
 STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Rahoita kumiviljelmää.
 STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Rahoita lähdettä.
 STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Rahoita hattarametsää.
-STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Rahoita patterimaatilaa.
+STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Rahoita paristomaatila.
 STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Poraa limsaa.
 STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Rahoita muovilähteitä.
 STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Rakenna kuplageneraattori.
@@ -1290,7 +1290,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Re
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Haetaan pelitiedot..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Haetaan yhtiötiedot...
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} pelaajaa jonossa
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} pelaaja{P "" a} jonossa
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kt ladattu
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Pura yhteys
@@ -1335,7 +1335,7 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :palvelin potki 
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :yritti käyttää huijausta
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :liittyi peliin
-STR_NETWORK_GIVE_MONEY                                          :antoi sinulle rahaa ({CURRENCY})
+STR_NETWORK_GIVE_MONEY                                          :antoi yhtiöllesi rahaa ({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :annoit rahaa toiselle pelaajalle ({STRING}, {CURRENCY})
 STR_NETWORK_CHAT_COMPANY                                        :[Joukkue] {STRING}:
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Joukkue] {STRING}:
@@ -1392,9 +1392,9 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Mahdoton
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Kaivuualue vahingoittaisi tunnelia.
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Merenpinta on jo saavutettu.
 STR_1004_TOO_HIGH                                               :{WHITE}Liian korkea.
-STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Ei soveliasta rautatiekiskoa.
+STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Ei kelvollista rautatietä.
 STR_1007_ALREADY_BUILT                                          :{WHITE}...se on jo rakennettu.
-STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Rautatiekisko pitää siirtää ensin.
+STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Rautatie pitää poistaa ensin.
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Rautatien rakentaminen
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Yksiraiteisen rakentaminen
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}MagLevin rakentaminen
@@ -1415,17 +1415,17 @@ STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Rakenna 
 STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Rakenna rautatieopastimia.
 STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Rakenna rautatiesilta.
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Rakenna rautatietunneli.
-STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Rautatiekiskojen ja -merkkien rakentaminen/poisto päälle/pois.
+STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Rautatien ja opastimien rakentaminen/poisto päälle/pois.
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Sillan valinta - napsauta valittua siltaa rakentaaksesi sen.
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Valitse veturitallin suunta.
-STR_1021_RAILROAD_TRACK                                         :Rautatiekisko
+STR_1021_RAILROAD_TRACK                                         :Rautatie
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Veturitalli
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...alueen omistaa toinen yhtiö.
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Rautatiekisko tavallisin opastimin
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Rautatiekisko esiopastimin
-STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Rautatiekisko poistumisopastimin
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Rautatiekisko yhdistetyin opastimin
-STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Rautatiekisko pbs-signaalein
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Rautatie tavallisin opastimin
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Rautatie esiopastimin
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Rautatie poistumisopastimin
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Rautatie yhdistetyin opastimin
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :
 
 
 
@@ -1453,7 +1453,7 @@ STR_1814_ROAD                                                   :Tie
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Tie katuvaloilla
 STR_1816_TREE_LINED_ROAD                                        :Puilla reunustettu tie
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Huoltoasema
-STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Tasoliittymä
+STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Tasoristeys
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Kaupungit
@@ -1488,7 +1488,7 @@ STR_201A_SHOPS_AND_OFFICES                                      :Kauppoja ja toi
 STR_201B_MODERN_OFFICE_BUILDING                                 :Nykyaikainen toimistorakennus
 STR_201C_WAREHOUSE                                              :Varasto
 STR_201D_OFFICE_BLOCK                                           :Toimistorakennus
-STR_201E_STADIUM                                                :Stadioni
+STR_201E_STADIUM                                                :Stadion
 STR_201F_OLD_HOUSES                                             :Vanhoja taloja
 STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Viranomaiset
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Näytä tietoja paikallisviranomaisista.
@@ -1518,7 +1518,7 @@ STR_2039_TALL_OFFICE_BLOCK                                      :Korkeata toimis
 STR_203A_SHOPS_AND_OFFICES                                      :Kauppaa ja toimistoa
 STR_203B_SHOPS_AND_OFFICES                                      :Kauppaa ja toimistoa
 STR_203C_THEATER                                                :Teatteri
-STR_203D_STADIUM                                                :Stadioni
+STR_203D_STADIUM                                                :Stadion
 STR_203E_OFFICES                                                :Toimistoa
 STR_203F_HOUSES                                                 :Taloa
 STR_2040_CINEMA                                                 :Elokuvateatteri
@@ -1546,7 +1546,7 @@ STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}{TOWN}: liikenne on kaaoksessa!{}{}{COMPANY} rahoittaa katujen kunnostuksen; autoilijoille odotettavissa kuusi kuukautta kurjuutta!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (rakennetaan)
+STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (rakennusvaiheessa)
 STR_2059_IGLOO                                                  :Iglu
 STR_205A_TEPEES                                                 :Tiipiitä
 STR_205B_TEAPOT_HOUSE                                           :Teesalonki
@@ -1612,15 +1612,15 @@ STR_303C_OUTSTANDING                                            :Loistava
 ############ range for rating ends
 
 STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
-STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}Asema {STATION} ei enää ota vastaan {STRING}.
-STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}Asema {STATION} ei enää ota vastaan {STRING} tai {STRING}.
-STR_3040_NOW_ACCEPTS                                            :{WHITE}Asema {STATION} ottaa vastaan {STRING}.
-STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}Asema {STATION} ottaa vastaan {STRING} ja {STRING}.
-STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Linta-autoaseman suunn.
+STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} ei enää ota vastaan {STRING}.
+STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} ei enää ota vastaan {STRING} tai {STRING}.
+STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} ottaa nyt vastaan {STRING}.
+STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} ottaa nyt vastaan {STRING} ja {STRING}.
+STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Linta-autoaseman suunta
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Lastauslaiturin suunta
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Linja-autoasema pitää tuhota ensin.
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Lastauslaituri pitää tuhota ensin.
-STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} asemaa
+STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} asema{P "" a}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Ei mitään -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...paikka sopimaton.
@@ -1676,7 +1676,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Lataa pe
 STR_4002_SAVE                                                   :{BLACK}Tallenna
 STR_4003_DELETE                                                 :{BLACK}Poista
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megatavua vapaana
+STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megatavu{P "" a} vapaana
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Asemaa ei voi lukea.
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Tallennus epäonnistui.
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Tiedostoa ei voi poistaa.
@@ -1720,7 +1720,7 @@ STR_481A_FARM                                                   :Maatila
 STR_481B_LUMBER_MILL                                            :Hakkuualue
 STR_481C_COTTON_CANDY_FOREST                                    :Hattarametsä
 STR_481D_CANDY_FACTORY                                          :Karkkitehdas
-STR_481E_BATTERY_FARM                                           :Patterimaatila
+STR_481E_BATTERY_FARM                                           :Paristomaatila
 STR_481F_COLA_WELLS                                             :Limsakenttä
 STR_4820_TOY_SHOP                                               :Lelukauppa
 STR_4821_TOY_FACTORY                                            :Lelutehdas
@@ -1754,8 +1754,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY}: tuotanto vähenee 50%:lla.
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}{INDUSTRY}: hyönteisparvet aiheuttavat tuhoa!{}Tuotanto vähenee 50%:lla.
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...voidaan asettaa vain kartan reunoille.
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} tuottaa {INDUSTRY} {COMMA}% entistä enemmän!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} tuottaa {INDUSTRY} {COMMA}% entistä vähemmän!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{INDUSTRY} tuottaa {STRING} {COMMA} % entistä enemmän!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{INDUSTRY} tuottaa {STRING} {COMMA}% entistä vähemmän!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Juna on tunnelissa.
@@ -2023,7 +2023,7 @@ STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Yhtiötä ei voi ostaa...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Rahtimaksutaksat
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Päivää kauttakulussa
-STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Maksu 10 yksikön (tai 10000 litran) rahdin kuljettamisesta 20 ruudun päähän.
+STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Maksu 10 yksikön (tai 10.000 litran) rahdin kuljettamisesta 20 ruudun päähän.
 STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Rahtityypin kuvaaja päälle/pois
 STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
 STR_7066_ENGINEER                                               :Insinööri
@@ -2111,7 +2111,7 @@ STR_802F_BUBBLE_VAN                                             :Kuplavaunu
 STR_8030_COLA_TANKER                                            :Limsasäiliö
 STR_8031_CANDY_VAN                                              :Karkkivaunu
 STR_8032_TOY_VAN                                                :Leluvaunu
-STR_8033_BATTERY_TRUCK                                          :Patteriteli
+STR_8033_BATTERY_TRUCK                                          :Paristoteli
 STR_8034_FIZZY_DRINK_TRUCK                                      :Sihijuomateli
 STR_8035_PLASTIC_TRUCK                                          :Muoviteli
 STR_8036_X2001_ELECTRIC                                         :'X2001' (sähkö)
@@ -2141,7 +2141,7 @@ STR_804D_BUBBLE_VAN                                             :Kuplavaunu
 STR_804E_COLA_TANKER                                            :Limsasäiliö
 STR_804F_CANDY_VAN                                              :Karkkivaunu
 STR_8050_TOY_VAN                                                :Leluvaunu
-STR_8051_BATTERY_TRUCK                                          :Patteriteli
+STR_8051_BATTERY_TRUCK                                          :Paristoteli
 STR_8052_FIZZY_DRINK_TRUCK                                      :Sihijuomateli
 STR_8053_PLASTIC_TRUCK                                          :Muoviteli
 STR_8054_LEV1_LEVIATHAN_ELECTRIC                                :Lev1 'Leviathan' (sähkö)
@@ -2173,7 +2173,7 @@ STR_806D_BUBBLE_VAN                                             :Kuplavaunu
 STR_806E_COLA_TANKER                                            :Limsasäiliö
 STR_806F_CANDY_VAN                                              :Karkkivaunu
 STR_8070_TOY_VAN                                                :Leluvaunu
-STR_8071_BATTERY_TRUCK                                          :Patteriteli
+STR_8071_BATTERY_TRUCK                                          :Paristoteli
 STR_8072_FIZZY_DRINK_TRUCK                                      :Sihijuomateli
 STR_8073_PLASTIC_TRUCK                                          :Muoviteli
 STR_8074_MPS_REGAL_BUS                                          :MPS Regal -linja-auto
@@ -2252,9 +2252,9 @@ STR_80BC_WIZZOWOW_TOY_VAN                                       :Wizzowow -lelup
 STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :MightyMover -leluauto
 STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Powernaught -leluauto
 STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Wizzowow -leluauto
-STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :MightyMover -patteriauto
-STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Powernaught -patteriauto
-STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Wizzowow -patteriauto
+STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :MightyMover-paristorekka
+STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Powernaught-paristorekka
+STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Wizzowow-paristorekka
 STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :MightyMover -sihijuoma-auto
 STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Powernaught -sihijuoma-auto
 STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Wizzowow -sihijuoma-auto

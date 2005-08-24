@@ -154,7 +154,9 @@ STR_00B2_MESSAGE                                                :{YELLOW}Sprava
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Sprava od {STRING}
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Takto sa to neda...
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Oblast sa neda vycistit...
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Povodny copyright: {COPYRIGHT} 1995 Chris Sawyer, vsetky prava vyhradene
 STR_00B7_VERSION                                                :{BLACK}OpenTTD version {REV}
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2005 team OpenTTD
 STR_TRANSLATED_BY                                               :{BLACK} Preklad - gpsoft
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -1637,6 +1639,7 @@ STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Nazvy st
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Vybrat velkost/typ letiska
 STR_3059_SMALL                                                  :{BLACK}Male
 STR_305A_LARGE                                                  :{BLACK}Velke
+STR_305AA_LARGE                                                 :{BLACK}Metropolitne letisko
 STR_305AB_LARGE                                                 :{BLACK}Medzinarodne letisko
 STR_305B_SIZE                                                   :{BLACK}Velkost
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
@@ -2364,6 +2367,12 @@ STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nove vla
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nove jednokolajove vlaky
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nove magneticke vlaky
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Vyrobit Vozidlo
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Klonovat vozidlo
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Vytvori kopiu cestneho vozidla. Stlacenim Control budu prikazy zdielane
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Vytvori kopiu cestneho vozidla. Klikni na toto tlacidlo a potom na cestne vozidlo v garazi alebo mimo neho. Stlacenim Control budu prikazy zdielane
+STR_CLONE_TRAIN                                                 :{BLACK}Klonovat vlak
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Vytvori kopiu vlaku vratane voznov. Stlacenim Control budu prikazy zdielane
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Vytvori kopiu vlaku vratane voznov. Klikni na toto tlacidlo a potom na vlak v depe alebo mimo neho. Stlacenim Control budu prikazy zdielane
 STR_8820_RENAME                                                 :{BLACK}Premenovat
 STR_8823_SKIP                                                   :{BLACK}Preskocit
 STR_8824_DELETE                                                 :{BLACK}Vynechat
@@ -2515,6 +2524,9 @@ STR_9804_NEW_SHIPS                                              :{BLACK}Nove lod
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Lode
 STR_9808_NEW_SHIPS                                              :{WHITE}Nove lode
 STR_9809_BUILD_SHIP                                             :{BLACK}Vyrobit lod
+STR_CLONE_SHIP                                                  :{BLACK}Klonovat lod
+STR_CLONE_SHIP_INFO                                             :{BLACK}Vytvori kopiu lode. Stlacenim Control budu prikazy zdielane
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Vytvori kopiu lode. Klikni na toto tlacidlo a potom na lod v depe alebo mimo neho. Stlacenim Control budu prikazy zdielane
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}lob musi byt zastavena v lodenici
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Nemozno predat lod...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}nemozno vyrobit lod...
@@ -2579,6 +2591,9 @@ STR_A000_AIRPORTS                                               :{WHITE}Letiska
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Tu sa letisko neda postavit...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangar
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nove Lietadlo
+STR_CLONE_AIRCRAFT                                              :{BLACK}Klonovat lietadlo
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Vytvori kopiu lietadla. Stlacenim Control budu prikazy zdielane
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Vytvori kopiu lietadla. Klikni na toto tlacidlo a potom na lietadlo v hangari alebo mimo neho. Stlacenim Control budu prikazy zdielane
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nove Lietadlo
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Vyrobit lietadlo
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nemozno vyrobit lietadlo...
