@@ -83,37 +83,37 @@ STR_004B_BATTERY                                                :Battery
 STR_004C_PLASTIC                                                :Plastic
 STR_004D_FIZZY_DRINK                                            :Fizzy Drink
 STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA} passenger
-STR_0050_TON_OF_COAL                                            :{COMMA} ton of coal
-STR_0051_BAG_OF_MAIL                                            :{COMMA} bag of mail
+STR_004F_PASSENGER                                              :{COMMA} passenger{P "" s}
+STR_0050_TON_OF_COAL                                            :{COMMA} ton{P "" s} of coal
+STR_0051_BAG_OF_MAIL                                            :{COMMA} bag{P "" s} of mail
 STR_0052_OF_OIL                                                 :{VOLUME} of oil
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} item of livestock
-STR_0054_CRATE_OF_GOODS                                         :{COMMA} crate of goods
-STR_0055_TON_OF_GRAIN                                           :{COMMA} ton of grain
-STR_0056_TON_OF_WOOD                                            :{COMMA} ton of wood
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA} ton of iron ore
-STR_0058_TON_OF_STEEL                                           :{COMMA} ton of steel
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA} bag of valuables
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} ton of copper ore
-STR_005B_TON_OF_MAIZE                                           :{COMMA} ton of maize
-STR_005C_TON_OF_FRUIT                                           :{COMMA} ton of fruit
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} bag of diamonds
-STR_005E_TON_OF_FOOD                                            :{COMMA} ton of food
-STR_005F_TON_OF_PAPER                                           :{COMMA} ton of paper
-STR_0060_BAG_OF_GOLD                                            :{COMMA} bag of gold
+STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} item{P "" s} of livestock
+STR_0054_CRATE_OF_GOODS                                         :{COMMA} crate{P "" s} of goods
+STR_0055_TON_OF_GRAIN                                           :{COMMA} ton{P "" s} of grain
+STR_0056_TON_OF_WOOD                                            :{COMMA} ton{P "" s} of wood
+STR_0057_TON_OF_IRON_ORE                                        :{COMMA} ton{P "" s} of iron ore
+STR_0058_TON_OF_STEEL                                           :{COMMA} ton{P "" s} of steel
+STR_0059_BAG_OF_VALUABLES                                       :{COMMA} bag{P "" s} of valuables
+STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} ton{P "" s} of copper ore
+STR_005B_TON_OF_MAIZE                                           :{COMMA} ton{P "" s} of maize
+STR_005C_TON_OF_FRUIT                                           :{COMMA} ton{P "" s} of fruit
+STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} bag{P "" s} of diamonds
+STR_005E_TON_OF_FOOD                                            :{COMMA} ton{P "" s} of food
+STR_005F_TON_OF_PAPER                                           :{COMMA} ton{P "" s} of paper
+STR_0060_BAG_OF_GOLD                                            :{COMMA} bag{P "" s} of gold
 STR_0061_OF_WATER                                               :{VOLUME} of water
-STR_0062_TON_OF_WHEAT                                           :{COMMA} ton of wheat
+STR_0062_TON_OF_WHEAT                                           :{COMMA} ton{P "" s} of wheat
 STR_0063_OF_RUBBER                                              :{VOLUME} of rubber
-STR_0064_TON_OF_SUGAR                                           :{COMMA} ton of sugar
-STR_0065_TOY                                                    :{COMMA} toy
-STR_0066_BAG_OF_CANDY                                           :{COMMA} bag of candy
+STR_0064_TON_OF_SUGAR                                           :{COMMA} ton{P "" s} of sugar
+STR_0065_TOY                                                    :{COMMA} toy{P "" s}
+STR_0066_BAG_OF_CANDY                                           :{COMMA} bag{P "" s} of candy
 STR_0067_OF_COLA                                                :{VOLUME} of cola
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} ton of cotton candy
-STR_0069_BUBBLE                                                 :{COMMA} bubble
-STR_006A_TON_OF_TOFFEE                                          :{COMMA} ton of toffee
-STR_006B_BATTERY                                                :{COMMA} battery
+STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} ton{P "" s} of cotton candy
+STR_0069_BUBBLE                                                 :{COMMA} bubble{P "" s}
+STR_006A_TON_OF_TOFFEE                                          :{COMMA} ton{P "" s} of toffee
+STR_006B_BATTERY                                                :{COMMA} batter{P y ies}
 STR_006C_OF_PLASTIC                                             :{VOLUME} of plastic
-STR_006D_FIZZY_DRINK                                            :{COMMA} fizzy drink
+STR_006D_FIZZY_DRINK                                            :{COMMA} fizzy drink{P "" s}
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
 STR_0090_CL                                                     :{TINYFONT}CL
@@ -272,7 +272,7 @@ STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Chosen n
 
 STR_0133_WINDOWS                                                :Windows
 STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :OSX
+STR_0135_OSX                                                    :OS X
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
@@ -724,6 +724,8 @@ STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SET
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Full detail
 STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Transparent buildings
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Transparent buildings
+STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Transparent station signs
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transparent station signs
 ############ range ends	here
 
 ############ range for menu	starts
@@ -853,8 +855,8 @@ STR_CURR_ITL                                                    :Italian Lira (I
 STR_CURR_NLG                                                    :Dutch Guilder (NLG)
 STR_CURR_NOK                                                    :Norwegian Krone (NOK)
 STR_CURR_PLN                                                    :Polish Zloty (PLN)
-STR_CURR_ROL                                                    :Romanian Leu (Lei)
-STR_CURR_RUR                                                    :Russian Rubel (rur)
+STR_CURR_ROL                                                    :Romanian Leu (ROL)
+STR_CURR_RUR                                                    :Russian Rubel (RUR)
 STR_CURR_SEK                                                    :Swedish Krona (SEK)
 
 STR_CURR_CUSTOM                                                 :Custom...
@@ -1018,6 +1020,7 @@ STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}End gam
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Enable smooth economy (more, smaller changes)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Allow buying shares from other companies
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}When dragging place signals every: {ORANGE}{STRING} tile(s)
+STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}Allow automatic placement of pbs signals: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Position of main toolbar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Left
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centre
@@ -1367,6 +1370,8 @@ STR_0800_COST                                                   :{TINYFONT}{RED}
 STR_0801_COST                                                   :{RED}Cost: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Income: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Income: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transfer: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Transfer: {CURRENCY}
 STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Estimated Cost: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Estimated Cost: {CURRENCY}
 STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Estimated Income: {CURRENCY}
@@ -1420,6 +1425,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Railroad track 
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Railroad track with pre-signals
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Railroad track with exit-signals
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Railroad track with combo-signals
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Railroad track with pbs-signals
 
 
 
@@ -1452,6 +1458,9 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Road/rail level
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Towns
 STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
+STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
+STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Building must be demolished first
 STR_2005                                                        :{WHITE}{TOWN}
@@ -1634,6 +1643,7 @@ STR_305AA_LARGE                                                 :{BLACK}Metropol
 STR_305AB_LARGE                                                 :{BLACK}International airport
 STR_305B_SIZE                                                   :{BLACK}Size
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION} {STATIONFEATURES}
 STR_305E_RAILROAD_STATION                                       :Railroad station
 STR_305F_AIRCRAFT_HANGAR                                        :Aircraft hangar
 STR_3060_AIRPORT                                                :Airport
@@ -2323,6 +2333,18 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Train in
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
 STR_8806_GO_TO                                                  :Go to {STATION}
+STR_8807_GO_TO_TRANSFER                                         :Go to {STATION} (Transfer and take cargo)
+STR_8808_GO_TO_UNLOAD                                           :Go to {STATION} (Unload)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Go to {STATION} (Transfer and leave empty)
+STR_880A_GO_TO_LOAD                                             :Go to {STATION} (Load)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Go to {STATION} (Transfer and wait for full load)
+STR_880C_GO_NON_STOP_TO                                         :Go non-stop to {STATION}
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :Go non-stop to {STATION} (Transfer and take cargo)
+STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Go non-stop to {STATION} (Unload)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Go non-stop to {STATION} (Transfer and leave empty)
+STR_8810_GO_NON_STOP_TO_LOAD                                    :Go non-stop to {STATION} (Load)
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Go non-stop to {STATION} (Transfer and wait for full load)
+STR_GO_TO_TRAIN_DEPOT                                           :Go to {TOWN} Train Depot
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Service at {TOWN} Train Depot
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Go non-stop to {TOWN} Train Depot
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Service non-stop at {TOWN} Train Depot
@@ -2345,6 +2367,12 @@ STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}New Rail
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}New Monorail Vehicles
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}New Maglev Vehicles
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Build Vehicle
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clone Vehicle
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}This will build a copy of the road vehicle. Control-click will share the orders
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}This will build a copy of a road vehicle. Click this button and then on a road vehicle inside or outside the depot. Control-click will share the orders
+STR_CLONE_TRAIN                                                 :{BLACK}Clone Train
+STR_CLONE_TRAIN_INFO                                            :{BLACK}This will build a copy of the train including all cars. Control-click will share the orders
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}This will build a copy of a train including all cars. Click this button and then on a train inside or outside the depot. Control-click will share the orders
 STR_8820_RENAME                                                 :{BLACK}Rename
 STR_8823_SKIP                                                   :{BLACK}Skip
 STR_8824_DELETE                                                 :{BLACK}Delete
@@ -2424,6 +2452,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Can't reverse direction of train...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Rename train vehicle type
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Can't rename train vehicle type...
+STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Make the highlighted order force the vehicle to dump cargo
+STR_886F_TRANSFER                                               :{BLACK}Transfer
 
 STR_TRAIN_STOPPING                                              :{RED}Stopping
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stopping, {VELOCITY}
@@ -2494,6 +2524,9 @@ STR_9804_NEW_SHIPS                                              :{BLACK}New Ship
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Ship{P "" s}
 STR_9808_NEW_SHIPS                                              :{WHITE}New Ships
 STR_9809_BUILD_SHIP                                             :{BLACK}Build Ship
+STR_CLONE_SHIP                                                  :{BLACK}Clone Ship
+STR_CLONE_SHIP_INFO                                             :{BLACK}This will build a copy of the ship. Control-click will share the orders
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}This will build a copy of a ship. Click this button and then on a ship inside or outside the depot. Control-click will share the orders
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Ship must be stopped in depot
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Can't sell ship...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Can't build ship...
@@ -2558,6 +2591,9 @@ STR_A000_AIRPORTS                                               :{WHITE}Airports
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Can't build airport here...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Aircraft Hangar
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}New Aircraft
+STR_CLONE_AIRCRAFT                                              :{BLACK}Clone Aircraft
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}This will build a copy of the aircraft. Control-click will share the orders
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}This will build a copy of an aircraft. Click this button and then on an aircraft inside or outside the hangar. Control-click will share the orders
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}New Aircraft
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Build Aircraft
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Can't build aircraft...
