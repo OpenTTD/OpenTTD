@@ -288,7 +288,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	switch (GetTileType(tile)) {
 		case MP_TUNNELBRIDGE:
 			if ((m5 & 0xC0) != 0xC0 || // not bridge middle part?
-					(m5 & 0x01 ? 1 : 2) != trackbit) { // wrong direction?
+					(m5 & 0x01 ? TRACK_BIT_DIAG1 : TRACK_BIT_DIAG2) != trackbit) { // wrong direction?
 				// Get detailed error message
 				return DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			}
@@ -444,7 +444,7 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if ((_m[tile].m5 & 0xF8) != 0xE0)
 				return CMD_ERROR;
 
-			if ( ((_m[tile].m5 & 1) ? 1 : 2) != trackbit )
+			if ((_m[tile].m5 & 1 ? TRACK_BIT_DIAG1 : TRACK_BIT_DIAG2) != trackbit)
 				return CMD_ERROR;
 
 			if (!(flags & DC_EXEC))
