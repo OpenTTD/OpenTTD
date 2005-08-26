@@ -166,33 +166,33 @@
 
 // This stops 90degrees curves
 static const byte _illegal_curves[6] = {
-    255, 255, // Horz and vert, don't have the effect
-    5, // upleft and upright are not valid
-    4, // downright and downleft are not valid
-    2, // downleft and upleft are not valid
-    3, // upright and downright are not valid
+	255, 255, // Horz and vert, don't have the effect
+	5, // upleft and upright are not valid
+	4, // downright and downleft are not valid
+	2, // downleft and upleft are not valid
+	3, // upright and downright are not valid
 };
 
 enum {
-    AI_STATE_STARTUP = 0,
-    AI_STATE_FIRST_TIME,
-    AI_STATE_NOTHING,
-    AI_STATE_WAKE_UP,
-    AI_STATE_LOCATE_ROUTE,
-    AI_STATE_FIND_STATION,
-    AI_STATE_FIND_PATH,
-    AI_STATE_FIND_DEPOT,
-    AI_STATE_VERIFY_ROUTE,
-    AI_STATE_BUILD_STATION,
-    AI_STATE_BUILD_PATH,
-    AI_STATE_BUILD_DEPOT,
-    AI_STATE_BUILD_VEHICLE,
-    AI_STATE_GIVE_ORDERS,
-    AI_STATE_START_VEHICLE,
-    AI_STATE_REPAY_MONEY,
+	AI_STATE_STARTUP = 0,
+	AI_STATE_FIRST_TIME,
+	AI_STATE_NOTHING,
+	AI_STATE_WAKE_UP,
+	AI_STATE_LOCATE_ROUTE,
+	AI_STATE_FIND_STATION,
+	AI_STATE_FIND_PATH,
+	AI_STATE_FIND_DEPOT,
+	AI_STATE_VERIFY_ROUTE,
+	AI_STATE_BUILD_STATION,
+	AI_STATE_BUILD_PATH,
+	AI_STATE_BUILD_DEPOT,
+	AI_STATE_BUILD_VEHICLE,
+	AI_STATE_GIVE_ORDERS,
+	AI_STATE_START_VEHICLE,
+	AI_STATE_REPAY_MONEY,
 	AI_STATE_CHECK_ALL_VEHICLES,
-    AI_STATE_ACTION_DONE,
-    AI_STATE_STOP, // Temporary function to stop the AI
+	AI_STATE_ACTION_DONE,
+	AI_STATE_STOP, // Temporary function to stop the AI
 };
 
 // Used for tbt (train/bus/truck)
@@ -212,7 +212,7 @@ enum {
 
 // Used for from_type/to_type
 enum {
-    AI_NO_TYPE = 0,
+	AI_NO_TYPE = 0,
 	AI_CITY,
 	AI_INDUSTRY,
 };
