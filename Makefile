@@ -736,16 +736,13 @@ LANGS = $(LANG_TXT:%.txt=%.lng)
 # Build commands
 #
 
-# If we are verbose, we will show commands prefixed by $(Q) (which acts as
-# @ in the non-verbose mode), and we will show the "real" cmds instead of
-# their quiet versions (which are used in the non-verbose mode).
+# If we are verbose, we will show commands prefixed by $(Q).
+# The $(Q)s get replaced by @ in non-verbose mode.
 # Inspired by the Linux kernel build system.
 ifdef VERBOSE
 	Q =
-	quiet =
 else
 	Q = @
-	quiet = quiet_
 endif
 
 
