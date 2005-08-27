@@ -2,6 +2,7 @@
 ##ownname Deutsch
 ##isocode de
 ##plural 0
+##gender m w n
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -1692,43 +1693,43 @@ STR_4010_GENERATE_RANDOM_NEW_GAME                               :Spiel nach Zufa
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} im Weg
 STR_4801                                                        :{WHITE}{INDUSTRY}
-STR_4802_COAL_MINE                                              :Kohlebergwerk
-STR_4803_POWER_STATION                                          :Kraftwerk
-STR_4804_SAWMILL                                                :Sägewerk
-STR_4805_FOREST                                                 :Wald
-STR_4806_OIL_REFINERY                                           :Ölraffinerie
-STR_4807_OIL_RIG                                                :Ölbohrinsel
-STR_4808_FACTORY                                                :Fabrik
-STR_4809_PRINTING_WORKS                                         :Druckerei
-STR_480A_STEEL_MILL                                             :Stahlwerk
-STR_480B_FARM                                                   :Bauernhof
-STR_480C_COPPER_ORE_MINE                                        :Kupfermine
-STR_480D_OIL_WELLS                                              :Ölquellen
-STR_480E_BANK                                                   :Bank
-STR_480F_FOOD_PROCESSING_PLANT                                  :Nahrungsmittelfabrik
-STR_4810_PAPER_MILL                                             :Papiermühle
-STR_4811_GOLD_MINE                                              :Goldmine
-STR_4812_BANK                                                   :Bank
-STR_4813_DIAMOND_MINE                                           :Diamantenmine
-STR_4814_IRON_ORE_MINE                                          :Eisenerzmine
-STR_4815_FRUIT_PLANTATION                                       :Fruchtplantage
-STR_4816_RUBBER_PLANTATION                                      :Kautschukplantage
-STR_4817_WATER_SUPPLY                                           :Wasserquelle
-STR_4818_WATER_TOWER                                            :Wasserturm
-STR_4819_FACTORY                                                :Fabrik
-STR_481A_FARM                                                   :Bauernhof
-STR_481B_LUMBER_MILL                                            :Holzmühle
-STR_481C_COTTON_CANDY_FOREST                                    :Zuckerwattewald
-STR_481D_CANDY_FACTORY                                          :Bonbonfabrik
-STR_481E_BATTERY_FARM                                           :Batterieplantage
-STR_481F_COLA_WELLS                                             :Colaquellen
-STR_4820_TOY_SHOP                                               :Spielwarengeschäft
-STR_4821_TOY_FACTORY                                            :Spielwarenfabrik
-STR_4822_PLASTIC_FOUNTAINS                                      :Plastikbrunnen
-STR_4823_FIZZY_DRINK_FACTORY                                    :Limonadefabrik
-STR_4824_BUBBLE_GENERATOR                                       :Luftblasengenerator
-STR_4825_TOFFEE_QUARRY                                          :Karamellgrube
-STR_4826_SUGAR_MINE                                             :Zuckermine
+STR_4802_COAL_MINE                                              :{G=n}Kohlebergwerk
+STR_4803_POWER_STATION                                          :{G=n}Kraftwerk
+STR_4804_SAWMILL                                                :{G=n}Sägewerk
+STR_4805_FOREST                                                 :{G=m}Wald
+STR_4806_OIL_REFINERY                                           :{G=w}Ölraffinerie
+STR_4807_OIL_RIG                                                :{G=w}Ölbohrinsel
+STR_4808_FACTORY                                                :{G=w}Fabrik
+STR_4809_PRINTING_WORKS                                         :{G=w}Druckerei
+STR_480A_STEEL_MILL                                             :{G=n}Stahlwerk
+STR_480B_FARM                                                   :{G=m}Bauernhof
+STR_480C_COPPER_ORE_MINE                                        :{G=w}Kupfermine
+STR_480D_OIL_WELLS                                              :{G=w}Ölquellen
+STR_480E_BANK                                                   :{G=w}Bank
+STR_480F_FOOD_PROCESSING_PLANT                                  :{G=w}Nahrungsmittelfabrik
+STR_4810_PAPER_MILL                                             :{G=w}Papiermühle
+STR_4811_GOLD_MINE                                              :{G=w}Goldmine
+STR_4812_BANK                                                   :{G=w}Bank
+STR_4813_DIAMOND_MINE                                           :{G=w}Diamantenmine
+STR_4814_IRON_ORE_MINE                                          :{G=w}Eisenerzmine
+STR_4815_FRUIT_PLANTATION                                       :{G=w}Fruchtplantage
+STR_4816_RUBBER_PLANTATION                                      :{G=w}Kautschukplantage
+STR_4817_WATER_SUPPLY                                           :{G=w}Wasserquelle
+STR_4818_WATER_TOWER                                            :{G=m}Wasserturm
+STR_4819_FACTORY                                                :{G=w}Fabrik
+STR_481A_FARM                                                   :{G=m}Bauernhof
+STR_481B_LUMBER_MILL                                            :{G=w}Holzmühle
+STR_481C_COTTON_CANDY_FOREST                                    :{G=m}Zuckerwattewald
+STR_481D_CANDY_FACTORY                                          :{G=w}Bonbonfabrik
+STR_481E_BATTERY_FARM                                           :{G=w}Batterieplantage
+STR_481F_COLA_WELLS                                             :{G=w}Colaquellen
+STR_4820_TOY_SHOP                                               :{G=n}Spielwarengeschäft
+STR_4821_TOY_FACTORY                                            :{G=w}Spielwarenfabrik
+STR_4822_PLASTIC_FOUNTAINS                                      :{G=m}Plastikbrunnen
+STR_4823_FIZZY_DRINK_FACTORY                                    :{G=w}Limonadefabrik
+STR_4824_BUBBLE_GENERATOR                                       :{G=m}Luftblasengenerator
+STR_4825_TOFFEE_QUARRY                                          :{G=w}Karamellgrube
+STR_4826_SUGAR_MINE                                             :{G=w}Zuckermine
 
 ############ range for requires	starts
 STR_4827_REQUIRES                                               :{BLACK}Benötigt: {YELLOW}{STRING}
@@ -1739,8 +1740,8 @@ STR_4829_REQUIRES                                               :{BLACK}Benötigt
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produktion im letzten Monat:
 STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% befördert)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Zentriere die Ansicht auf das Industriegebiet
-STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Neue(r/s) {STRING} wird nahe {TOWN} gebaut!
-STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Neue(r) {STRING} wird nahe {TOWN} aufgeforstet!
+STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Neue{G r "" s} {STRING} wird nahe {TOWN} gebaut!
+STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Neue{G r "" s} {STRING} wird nahe {TOWN} aufgeforstet!
 STR_482F_COST                                                   :{BLACK}Kosten: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Kann diese Industrie hier nicht bauen...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...Wald kann nur oberhalb der Schneegrenze gepflanzt werden
