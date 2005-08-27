@@ -516,17 +516,15 @@ static uint32 _owner_colors[256];
  */
 static inline uint32 GetSmallMapOwnerPixels(TileIndex tile)
 {
-	TileType t = GetTileType(tile);
+	Owner o;
 
-	if (t == MP_INDUSTRY) {
-		t = 0xff;
-	} else if (t == MP_HOUSE || IsTileOwner(tile, OWNER_TOWN)) {
-		t = 0x80;
-	} else {
-		t = GetTileOwner(tile);
+	switch (GetTileType(tile)) {
+		case MP_INDUSTRY: o = OWNER_SPECTATOR;    break;
+		case MP_HOUSE:    o = OWNER_TOWN;         break;
+		default:          o = GetTileOwner(tile); break;
 	}
 
-	return _owner_colors[t];
+	return _owner_colors[o];
 }
 
 
@@ -604,12 +602,10 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 
 	/* setup owner table */
 	if (type == 5) {
-		Player *p;
-
-		/* clear the town colors */
-		memset(&_owner_colors[128], 0xB4, 128 * sizeof(*_owner_colors));
+		const Player* p;
 
 		/* fill with some special colors */
+		_owner_colors[OWNER_TOWN] = MKCOLOR(0xB4B4B4B4);
 		_owner_colors[OWNER_NONE] = MKCOLOR(0x54545454);
 		_owner_colors[OWNER_WATER] = MKCOLOR(0xCACACACA);
 		_owner_colors[OWNER_SPECTATOR] = MKCOLOR(0x20202020); /* industry */
