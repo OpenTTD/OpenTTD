@@ -27,13 +27,21 @@ static FileEntry* _files;
 
 static void OpenBankFile(const char *filename)
 {
-	uint count, i;
-	uint32 size, tag;
-	FileEntry *fe;
+	FileEntry* fe;
+	uint count;
+	uint i;
 
 	FioOpenFile(SOUND_SLOT, filename);
-	_file_count = count = FioReadDword() >> 3;
-	fe = _files = calloc(sizeof(FileEntry), count);
+	count = FioReadDword() / 8;
+	fe = calloc(sizeof(*fe), count);
+
+	if (fe == NULL) {
+		_file_count = 0;
+		_files = NULL;
+	}
+
+	_file_count = count;
+	_files = fe;
 
 	FioSeekTo(0, SEEK_SET);
 
@@ -54,8 +62,8 @@ static void OpenBankFile(const char *filename)
 
 			// Read riff tags
 			for (;;) {
-				tag = FioReadDword();
-				size = FioReadDword();
+				uint32 tag = FioReadDword();
+				uint32 size = FioReadDword();
 
 				if (tag == ' tmf') {
 					FioReadWord(); // wFormatTag
@@ -91,14 +99,18 @@ static void OpenBankFile(const char *filename)
 
 static bool SetBankSource(MixerChannel *mc, uint bank)
 {
-	FileEntry *fe = &_files[bank];
-	int8 *mem;
+	FileEntry* fe;
+	int8* mem;
 	uint i;
 
-	if (fe->file_size == 0)
-		return false;
+	if (bank >= _file_count) return false;
+	fe = &_files[bank];
 
-	mem = malloc(fe->file_size); /* XXX unchecked malloc */
+	if (fe->file_size == 0) return false;
+
+	mem = malloc(fe->file_size);
+	if (mem == NULL) return false;
+
 	FioSeekToFile(fe->file_offset);
 	FioReadBlock(mem, fe->file_size);
 
@@ -121,15 +133,14 @@ bool SoundInitialize(const char *filename)
 // Low level sound player
 static void StartSound(uint sound, uint panning, uint volume)
 {
-	if (volume != 0) {
-		MixerChannel *mc = MxAllocateChannel(_mixer);
-		if (mc == NULL)
-			return;
-		if (SetBankSource(mc, sound)) {
-			MxSetChannelVolume(mc, volume << 8, volume << 8);
-			MxActivateChannel(mc);
-		}
-	}
+	MixerChannel* mc;
+
+	if (volume == 0) return;
+	mc = MxAllocateChannel(_mixer);
+	if (mc == NULL) return;
+	if (!SetBankSource(mc, sound)) return;
+	MxSetChannelVolume(mc, volume << 8, volume << 8);
+	MxActivateChannel(mc);
 }
 
 
@@ -149,12 +160,12 @@ static const byte _sound_base_vol[] = {
 };
 
 static const byte _sound_idx[] = {
-	2, 3, 4, 5, 6, 7, 8, 9,
+	 2,  3,  4,  5,  6,  7,  8,  9,
 	10, 11, 12, 13, 14, 15, 16, 17,
 	18, 19, 20, 21, 22, 23, 24, 25,
 	26, 27, 28, 29, 30, 31, 32, 33,
-	34, 35, 36, 37, 38, 39, 40, 0,
-	1, 41, 42, 43, 44, 45, 46, 47,
+	34, 35, 36, 37, 38, 39, 40,  0,
+	 1, 41, 42, 43, 44, 45, 46, 47,
 	48, 49, 50, 51, 52, 53, 54, 55,
 	56, 57, 58, 59, 60, 61, 62, 63,
 	64, 65, 66, 67, 68, 69, 70, 71,
@@ -163,19 +174,18 @@ static const byte _sound_idx[] = {
 
 static void SndPlayScreenCoordFx(SoundFx sound, int x, int y)
 {
-	Window *w;
-	ViewPort *vp;
-	int left;
+	const Window* w;
 
-	if (msf.effect_vol == 0)
-		return;
+	if (msf.effect_vol == 0) return;
 
 	for (w = _windows; w != _last_window; w++) {
-		if ((vp = w->viewport) != NULL &&
+		const ViewPort* vp = w->viewport;
+
+		if (vp != NULL &&
 				IS_INSIDE_1D(x, vp->virtual_left, vp->virtual_width) &&
 				IS_INSIDE_1D(y, vp->virtual_top, vp->virtual_height)) {
+			int left = ((x - vp->virtual_left) >> vp->zoom) + vp->left;
 
-			left = ((x - vp->virtual_left) >> vp->zoom) + vp->left;
 			StartSound(
 				_sound_idx[sound],
 				clamp(left / 71, 0, 8),
