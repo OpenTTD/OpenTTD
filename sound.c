@@ -38,6 +38,7 @@ static void OpenBankFile(const char *filename)
 	if (fe == NULL) {
 		_file_count = 0;
 		_files = NULL;
+		return;
 	}
 
 	_file_count = count;
