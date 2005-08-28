@@ -1006,7 +1006,7 @@ static int TranslateArgumentIdx(int argidx)
 		Fatal("invalid argidx %d", argidx);
 
 	for(i = sum = 0; i < argidx; i++) {
-		const CmdStruct *cs = _cur_pcs.cmd[i++];
+		const CmdStruct *cs = _cur_pcs.cmd[i];
 		sum += cs ? cs->consumes : 1;
 	}
 
