@@ -100,7 +100,7 @@ void CDECL NetworkTextMessage(NetworkAction action, uint16 color, bool self_send
 	char temp[1024];
 
 	va_start(va, str);
-	vsprintf(buf, str, va);
+	vsnprintf(buf, lengthof(buf), str, va);
 	va_end(va);
 
 	switch (action) {
@@ -499,7 +499,7 @@ void NetworkCloseClient(NetworkClientState *cs)
 
 		GetString(str, STR_NETWORK_ERR_CLIENT_GENERAL + errorno);
 
-		NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, client_name, str);
+		NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, client_name, "%s", str);
 
 		// Inform other clients of this... strange leaving ;)
 		FOR_ALL_CLIENTS(new_cs) {

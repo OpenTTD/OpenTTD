@@ -62,7 +62,7 @@ void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...
 	int length;
 
 	va_start(va, message);
-	vsprintf(buf, message, va);
+	vsnprintf(buf, lengthof(buf), message, va);
 	va_end(va);
 
 	/* Special color magic */

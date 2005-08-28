@@ -162,7 +162,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientState *cs, Netwo
 
 		DEBUG(net, 2)("[NET] %s made an error (%s) and his connection is closed", client_name, str);
 
-		NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, client_name, str);
+		NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, client_name, "%s", str);
 
 		FOR_ALL_CLIENTS(new_cs) {
 			if (new_cs->status > STATUS_AUTH && new_cs != cs) {
@@ -904,7 +904,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 
 	DEBUG(net, 2)("[NET] %s reported an error and is closing his connection (%s)", client_name, str);
 
-	NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, client_name, str);
+	NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, client_name, "%s", str);
 
 	FOR_ALL_CLIENTS(new_cs) {
 		if (new_cs->status > STATUS_AUTH) {
@@ -929,11 +929,11 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 		return;
 	}
 
-	NetworkRecv_string(cs, p, str, 100);
+	NetworkRecv_string(cs, p, str, lengthof(str));
 
 	NetworkGetClientName(client_name, sizeof(client_name), cs);
 
-	NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, client_name, str);
+	NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, client_name, "%s", str);
 
 	FOR_ALL_CLIENTS(new_cs) {
 		if (new_cs->status > STATUS_AUTH) {
@@ -1108,7 +1108,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_NAME)
 	if (ci != NULL) {
 		// Display change
 		if (NetworkFindName(client_name)) {
-			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, false, ci->client_name, client_name);
+			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, false, ci->client_name, "%s", client_name);
 			ttd_strlcpy(ci->client_name, client_name, sizeof(ci->client_name));
 			NetworkUpdateClientInfo(ci->client_index);
 		}

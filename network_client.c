@@ -349,7 +349,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 	if (ci != NULL) {
 		if (playas == ci->client_playas && strcmp(name, ci->client_name) != 0) {
 			// Client name changed, display the change
-			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, false, ci->client_name, name);
+			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, false, ci->client_name, "%s", name);
 		} else if (playas != ci->client_playas) {
 			// The player changed from client-player..
 			// Do not display that for now
@@ -666,7 +666,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR_QUIT)
 
 	ci = NetworkFindClientInfoFromIndex(index);
 	if (ci != NULL) {
-		NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, ci->client_name, str);
+		NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, ci->client_name, "%s", str);
 
 		// The client is gone, give the NetworkClientInfo free
 		ci->client_index = NETWORK_EMPTY_INDEX;
@@ -684,11 +684,11 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_QUIT)
 	NetworkClientInfo *ci;
 
 	index = NetworkRecv_uint16(MY_CLIENT, p);
-	NetworkRecv_string(MY_CLIENT, p, str, 100);
+	NetworkRecv_string(MY_CLIENT, p, str, lengthof(str));
 
 	ci = NetworkFindClientInfoFromIndex(index);
 	if (ci != NULL) {
-		NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, ci->client_name, str);
+		NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, ci->client_name, "%s", str);
 
 		// The client is gone, give the NetworkClientInfo free
 		ci->client_index = NETWORK_EMPTY_INDEX;

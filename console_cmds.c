@@ -1132,7 +1132,7 @@ DEF_CONSOLE_HOOK(ConProcPlayerName)
 			SEND_COMMAND(PACKET_CLIENT_SET_NAME)(_network_player_name);
 		} else {
 			if (NetworkFindName(_network_player_name)) {
-				NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, false, ci->client_name, _network_player_name);
+				NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, false, ci->client_name, "%s", _network_player_name);
 				ttd_strlcpy(ci->client_name, _network_player_name, sizeof(ci->client_name));
 				NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
 			}
