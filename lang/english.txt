@@ -2734,7 +2734,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Show all
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Show all ships which have this station on their schedule
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Replace Vehicles
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Replace Vehicles
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Replace {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start Replacing Vehicles
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop Replacing Vehicles
 STR_NOT_REPLACING                                               :{BLACK}Not replacing
