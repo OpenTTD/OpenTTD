@@ -421,9 +421,9 @@ STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING}
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} on kohta todella vanha.
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} on kohta todella vanha ja pitää pikaisesti korvata.
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Maa-aluetiedot
-STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Puhdistuksen kulu: {LTBLUE}N/A
+STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Puhdistuksen kulu: {LTBLUE}-
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Puhdistuksen kulu: {LTBLUE}{CURRENCY}
-STR_01A6_N_A                                                    :N/A
+STR_01A6_N_A                                                    :-
 STR_01A7_OWNER                                                  :{BLACK}Omistaja: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Kunta: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Ei mitään
@@ -1616,7 +1616,7 @@ STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} ei enää ota vastaan {STRING} tai {STRING}.
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} ottaa nyt vastaan {STRING}.
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} ottaa nyt vastaan {STRING} ja {STRING}.
-STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Linta-autoaseman suunta
+STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Linja-autoaseman suunta
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Lastauslaiturin suunta
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Linja-autoasema pitää tuhota ensin.
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Lastauslaituri pitää tuhota ensin.
@@ -1754,8 +1754,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY}: tuotanto vähenee 50%:lla.
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}{INDUSTRY}: hyönteisparvet aiheuttavat tuhoa!{}Tuotanto vähenee 50%:lla.
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...voidaan asettaa vain kartan reunoille.
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{INDUSTRY} tuottaa {STRING} {COMMA} % entistä enemmän!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{INDUSTRY} tuottaa {STRING} {COMMA}% entistä vähemmän!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{1:INDUSTRY} tuottaa {0:STRING} {2:COMMA} % entistä enemmän!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{1:INDUSTRY} tuottaa {0:STRING} {2:COMMA} % entistä vähemmän!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Juna on tunnelissa.
@@ -2178,103 +2178,103 @@ STR_8072_FIZZY_DRINK_TRUCK                                      :Sihijuomateli
 STR_8073_PLASTIC_TRUCK                                          :Muoviteli
 STR_8074_MPS_REGAL_BUS                                          :MPS Regal -linja-auto
 STR_8075_HEREFORD_LEOPARD_BUS                                   :Hereford Leopard -linja-auto
-STR_8076_FOSTER_BUS                                             :Foster -linja-auto
-STR_8077_FOSTER_MKII_SUPERBUS                                   :Foster MkII superlinja-auto
+STR_8076_FOSTER_BUS                                             :Foster-linja-auto
+STR_8077_FOSTER_MKII_SUPERBUS                                   :Foster MkII -superlinja-auto
 STR_8078_PLODDYPHUT_MKI_BUS                                     :Ploddyphut MkI -linja-auto
 STR_8079_PLODDYPHUT_MKII_BUS                                    :Ploddyphut MkII -linja-auto
 STR_807A_PLODDYPHUT_MKIII_BUS                                   :Ploddyphut MkIII -linja-auto
-STR_807B_BALOGH_COAL_TRUCK                                      :Balogh -hiiliauto
-STR_807C_UHL_COAL_TRUCK                                         :Uhl -hiiliauto
-STR_807D_DW_COAL_TRUCK                                          :DW -hiiliauto
-STR_807E_MPS_MAIL_TRUCK                                         :MPS -postiauto
-STR_807F_REYNARD_MAIL_TRUCK                                     :Reynard -postiauto
-STR_8080_PERRY_MAIL_TRUCK                                       :Perry -postiauto
-STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :MightyMover -postiauto
-STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Powernaught -postiauto
-STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Wizzowow -postiauto
-STR_8084_WITCOMBE_OIL_TANKER                                    :Witcombe -öljysäiliöauto
-STR_8085_FOSTER_OIL_TANKER                                      :Foster -öljysäiliöauto
-STR_8086_PERRY_OIL_TANKER                                       :Perry -öljysäiliöauto
-STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Talbott -karja-auto
-STR_8088_UHL_LIVESTOCK_VAN                                      :Uhl -karja-auto
-STR_8089_FOSTER_LIVESTOCK_VAN                                   :Foster -karja-auto
-STR_808A_BALOGH_GOODS_TRUCK                                     :Balogh -tavara-auto
-STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Craighead -tavara-auto
-STR_808C_GOSS_GOODS_TRUCK                                       :Goss -tavara-auto
-STR_808D_HEREFORD_GRAIN_TRUCK                                   :Hereford -vilja-auto
-STR_808E_THOMAS_GRAIN_TRUCK                                     :Thomas -vilja-auto
-STR_808F_GOSS_GRAIN_TRUCK                                       :Goss -vilja-auto
-STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe -tukkiauto
-STR_8091_FOSTER_WOOD_TRUCK                                      :Foster -tukkiauto
-STR_8092_MORELAND_WOOD_TRUCK                                    :Moreland -tukkiauto
-STR_8093_MPS_IRON_ORE_TRUCK                                     :MPS -rautamalmiauto
-STR_8094_UHL_IRON_ORE_TRUCK                                     :Uhl -rautamalmiauto
-STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Chippy -rautamalmiauto
-STR_8096_BALOGH_STEEL_TRUCK                                     :Balogh -teräsauto
-STR_8097_UHL_STEEL_TRUCK                                        :Uhl -teräsauto
-STR_8098_KELLING_STEEL_TRUCK                                    :Kelling -teräsauto
-STR_8099_BALOGH_ARMORED_TRUCK                                   :Balogh -panssariauto
-STR_809A_UHL_ARMORED_TRUCK                                      :Uhl -panssariauto
-STR_809B_FOSTER_ARMORED_TRUCK                                   :Foster -panssariauto
-STR_809C_FOSTER_FOOD_VAN                                        :Foster -ruoka-auto
-STR_809D_PERRY_FOOD_VAN                                         :Perry -ruoka-auto
-STR_809E_CHIPPY_FOOD_VAN                                        :Chippy -ruoka-auto
-STR_809F_UHL_PAPER_TRUCK                                        :Uhl -paperiauto
-STR_80A0_BALOGH_PAPER_TRUCK                                     :Balogh -paperiauto
-STR_80A1_MPS_PAPER_TRUCK                                        :MPS -paperiauto
-STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS -kupariauto
-STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl -kupariauto
-STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss -kupariauto
-STR_80A5_UHL_WATER_TANKER                                       :Uhl -vesisäiliöauto
-STR_80A6_BALOGH_WATER_TANKER                                    :Balogh -vesisäiliöauto
-STR_80A7_MPS_WATER_TANKER                                       :MPS -vesisäiliöauto
-STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh -hedelmäauto
-STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl -hedelmäauto
-STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling -hedelmäauto
-STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh -kumiauto
-STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl -kumiauto
-STR_80AD_RMT_RUBBER_TRUCK                                       :RMT -kumiauto
-STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :MightyMover -sokeriauto
-STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Powernaught -sokeriauto
-STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow -sokeriauto
-STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :MightyMover -kola-auto
-STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Powernaught -kola-auto
-STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Wizzowow -kola-auto
-STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :MightyMover -hattara-auto
-STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught -hattara-auto
-STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzowow -hattara-auto
-STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :MightyMover -toffeeauto
-STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Powernaught -toffeeauto
-STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Wizzowow -toffeeauto
-STR_80BA_MIGHTYMOVER_TOY_VAN                                    :MightyMover -lelupakettiauto
-STR_80BB_POWERNAUGHT_TOY_VAN                                    :Powernaught -lelupakettiauto
-STR_80BC_WIZZOWOW_TOY_VAN                                       :Wizzowow -lelupakettiauto
-STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :MightyMover -leluauto
-STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Powernaught -leluauto
-STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Wizzowow -leluauto
+STR_807B_BALOGH_COAL_TRUCK                                      :Balogh-hiilirekka
+STR_807C_UHL_COAL_TRUCK                                         :Uhl-hiilirekka
+STR_807D_DW_COAL_TRUCK                                          :DW-hiilirekka
+STR_807E_MPS_MAIL_TRUCK                                         :MPS-postirekka
+STR_807F_REYNARD_MAIL_TRUCK                                     :Reynard-postirekka
+STR_8080_PERRY_MAIL_TRUCK                                       :Perry-postirekka
+STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :MightyMover-postirekka
+STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Powernaught-postirekka
+STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Wizzowow-postirekka
+STR_8084_WITCOMBE_OIL_TANKER                                    :Witcombe-öljysäiliörekka
+STR_8085_FOSTER_OIL_TANKER                                      :Foster-öljysäiliörekka
+STR_8086_PERRY_OIL_TANKER                                       :Perry-öljysäiliörekka
+STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Talbott-karjarekka
+STR_8088_UHL_LIVESTOCK_VAN                                      :Uhl-karjarekka
+STR_8089_FOSTER_LIVESTOCK_VAN                                   :Foster-karjarekka
+STR_808A_BALOGH_GOODS_TRUCK                                     :Balogh-tavararekka
+STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Craighead-tavararekka
+STR_808C_GOSS_GOODS_TRUCK                                       :Goss-tavararekka
+STR_808D_HEREFORD_GRAIN_TRUCK                                   :Hereford-viljarekka
+STR_808E_THOMAS_GRAIN_TRUCK                                     :Thomas-viljarekka
+STR_808F_GOSS_GRAIN_TRUCK                                       :Goss-viljarekka
+STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe-tukkirekka
+STR_8091_FOSTER_WOOD_TRUCK                                      :Foster-tukkirekka
+STR_8092_MORELAND_WOOD_TRUCK                                    :Moreland-tukkirekka
+STR_8093_MPS_IRON_ORE_TRUCK                                     :MPS-rautamalmirekka
+STR_8094_UHL_IRON_ORE_TRUCK                                     :Uhl-rautamalmirekka
+STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Chippy-rautamalmirekka
+STR_8096_BALOGH_STEEL_TRUCK                                     :Balogh-teräsrekka
+STR_8097_UHL_STEEL_TRUCK                                        :Uhl-teräsrekka
+STR_8098_KELLING_STEEL_TRUCK                                    :Kelling-teräsrekka
+STR_8099_BALOGH_ARMORED_TRUCK                                   :Balogh-panssarirekka
+STR_809A_UHL_ARMORED_TRUCK                                      :Uhl-panssarirekka
+STR_809B_FOSTER_ARMORED_TRUCK                                   :Foster-panssarirekka
+STR_809C_FOSTER_FOOD_VAN                                        :Foster-ruokarekka
+STR_809D_PERRY_FOOD_VAN                                         :Perry-ruokarekka
+STR_809E_CHIPPY_FOOD_VAN                                        :Chippy-ruokarekka
+STR_809F_UHL_PAPER_TRUCK                                        :Uhl-paperirekka
+STR_80A0_BALOGH_PAPER_TRUCK                                     :Balogh-paperirekka
+STR_80A1_MPS_PAPER_TRUCK                                        :MPS-paperirekka
+STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS-kuparirekka
+STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl-kuparirekka
+STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss-kuparirekka
+STR_80A5_UHL_WATER_TANKER                                       :Uhl-vesisäiliörekka
+STR_80A6_BALOGH_WATER_TANKER                                    :Balogh-vesisäiliörekka
+STR_80A7_MPS_WATER_TANKER                                       :MPS-vesisäiliörekka
+STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh-hedelmärekka
+STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl-hedelmärekka
+STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling-hedelmärekka
+STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh-kumirekka
+STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl-kumirekka
+STR_80AD_RMT_RUBBER_TRUCK                                       :RMT-kumirekka
+STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :MightyMover-sokerirekka
+STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Powernaught-sokerirekka
+STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow-sokerirekka
+STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :MightyMover-kolarekka
+STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Powernaught-kolarekka
+STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Wizzowow-kolarekka
+STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :MightyMover-hattararekka
+STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught-hattararekka
+STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzowow-hattararekka
+STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :MightyMover-toffeerekka
+STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Powernaught-toffeerekka
+STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Wizzowow-toffeerekka
+STR_80BA_MIGHTYMOVER_TOY_VAN                                    :MightyMover-lelupakettirekka
+STR_80BB_POWERNAUGHT_TOY_VAN                                    :Powernaught-lelupakettirekka
+STR_80BC_WIZZOWOW_TOY_VAN                                       :Wizzowow-lelupakettirekka
+STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :MightyMover-lelurekka
+STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Powernaught-lelurekka
+STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Wizzowow-lelurekka
 STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :MightyMover-paristorekka
 STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Powernaught-paristorekka
 STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Wizzowow-paristorekka
-STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :MightyMover -sihijuoma-auto
-STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Powernaught -sihijuoma-auto
-STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Wizzowow -sihijuoma-auto
-STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :MightyMover -muoviauto
-STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Powernaught -muoviauto
-STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Wizzowow -muoviauto
-STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :MightyMover -kupla-auto
-STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught -kupla-auto
-STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow -kupla-auto
-STR_80CC_MPS_OIL_TANKER                                         :MPS -öljytankkeri
-STR_80CD_CS_INC_OIL_TANKER                                      :CS-Inc. -öljytankkeri
-STR_80CE_MPS_PASSENGER_FERRY                                    :MPS -matkustajalautta
-STR_80CF_FFP_PASSENGER_FERRY                                    :FFP -matkustajalautta
+STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :MightyMover-sihijuomarekka
+STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Powernaught-sihijuomarekka
+STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Wizzowow-sihijuomarekka
+STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :MightyMover-muovirekka
+STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Powernaught-muovirekka
+STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Wizzowow-muovirekka
+STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :MightyMover-kuplarekka
+STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught-kuplarekka
+STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow-kuplarekka
+STR_80CC_MPS_OIL_TANKER                                         :MPS-öljytankkeri
+STR_80CD_CS_INC_OIL_TANKER                                      :CS-Inc.-öljytankkeri
+STR_80CE_MPS_PASSENGER_FERRY                                    :MPS-matkustajalautta
+STR_80CF_FFP_PASSENGER_FERRY                                    :FFP-matkustajalautta
 STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell 300 -ilmatyynyalus
 STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug -matkustajalautta
-STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake -matkustajalautta
-STR_80D3_YATE_CARGO_SHIP                                        :Yate -rahtilaiva
-STR_80D4_BAKEWELL_CARGO_SHIP                                    :Bakewell -rahtilaiva
-STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Mightymover -rahtilaiva
-STR_80D6_POWERNAUT_CARGO_SHIP                                   :Powernaut -rahtilaiva
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake-matkustajalautta
+STR_80D3_YATE_CARGO_SHIP                                        :Yate-rahtilaiva
+STR_80D4_BAKEWELL_CARGO_SHIP                                    :Bakewell-rahtilaiva
+STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Mightymover-rahtilaiva
+STR_80D6_POWERNAUT_CARGO_SHIP                                   :Powernaut-rahtilaiva
 STR_80D7_SAMPSON_U52                                            :Sampson U52
 STR_80D8_COLEMAN_COUNT                                          :Coleman Count
 STR_80D9_FFP_DART                                               :FFP Dart
@@ -2315,21 +2315,21 @@ STR_80FB_JUGGERPLANE_M1                                         :Juggerplane M1
 STR_80FC_FLASHBANG_WIZZER                                       :Flashbang Wizzer
 STR_80FD_TRICARIO_HELICOPTER                                    :Tricario -helikopteri
 STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 -helikopteri
-STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut -helikopteri
+STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut-helikopteri
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Viesti ajoneuvovalmistajalta
 STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Olemme juuri suunnitelleet uuden {STRING} - oletteko kiinnostunut vuoden yksinoikeutetusta kokeilusta, jotta näemme, miten tuote suoriutuu, ennen kuin julkistamme sen yleiseen käyttöön?
-STR_8102_RAILROAD_LOCOMOTIVE                                    :junaveturin
+STR_8102_RAILROAD_LOCOMOTIVE                                    :veturin
 STR_8103_ROAD_VEHICLE                                           :ajoneuvon
 STR_8104_AIRCRAFT                                               :lentokoneen
 STR_8105_SHIP                                                   :laivan
-STR_8106_MONORAIL_LOCOMOTIVE                                    :yksiraiteisen junaveturin
+STR_8106_MONORAIL_LOCOMOTIVE                                    :yksiraiteisen veturin
 STR_8107_MAGLEV_LOCOMOTIVE                                      :maglev-veturin
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}: veturitalli
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Kaupungilaiset juhlivat . . .{}Ensimmäinen juna saapuu asemalle ({STATION})!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (yksityiskohdat)
-STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Juna matkalla
+STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Juna on tiellä.
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
 STR_8806_GO_TO                                                  :Asemalle {STATION}
@@ -2384,7 +2384,7 @@ STR_8829_ORDERS                                                 :{WHITE}{VEHICLE
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - aikataulun loppu - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Huolto
-STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Veturia/vaunua ei voi rakentaa...
+STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Yksikköä ei voi rakentaa...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Rakennettu: {LTBLUE}{NUM}{BLACK} Arvo: {LTBLUE}{CURRENCY}
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Arvo: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
@@ -2397,10 +2397,10 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Uutta py
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Pysähdystä ei voi poistaa...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Pysähdystä ei voi muokata...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Liikennevälinettä ei voi siirtää...
-STR_8838_N_A                                                    :N/A{SKIP}
+STR_8838_N_A                                                    :-{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Yksikköä ei voi myydä...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Reittiä paikalliselle veturitallille ei löydy.
-STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Junaa ei voi pysäyttää/laittaa liikkeelle...
+STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Junaa ei voi pysäyttää/lähettää...
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Huoltoväli: {LTBLUE}{COMMA} päivää{BLACK}   Viimeisin huolto: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Huoltoväli: {LTBLUE}{COMMA}%{BLACK}   Viime huolto: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Junat - napsauta junaa saadaksesi tietoja.
@@ -2414,7 +2414,7 @@ STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Rakenna 
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Nimeä yksikön tyyppi uudelleen.
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Valitun junan toiminnot - napsauta tässä pysäyttääksesi/lähettääksesi.
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Näytä junan aikataulu.
-STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Keskitä näykmä junan sijaintiin.
+STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Keskitä näkymä junan sijaintiin.
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Lähetä juna veturitalliin.
 STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Anna junalle lupa ohittaa punainen opastin.
 STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Käännä junan suunta.
@@ -2448,7 +2448,7 @@ STR_8863_CRASHED                                                :{RED}Kolaroitu!
 STR_8865_NAME_TRAIN                                             :{WHITE}Nimeä juna
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Junaa ei voi nimetä...
 STR_8867_NAME_TRAIN                                             :{BLACK}Nimeä juna
-STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Junakolari!{}{COMMA} kuolee törmäyksenjälkeisessä tulipallossa.
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Junakolari!{}{COMMA} kuolee törmäyksen jälkeisessä tulipallossa.
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Junan suuntaa ei voi kääntää...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Nimeä juna(vaunu)n tyyppi uudelleen.
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Juna(vaunu)n tyyppiä ei voi uudelleennimetä...
@@ -2488,7 +2488,7 @@ STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Nykyisen
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Näytä ajoneuvon aikataulu.
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Keskitä näkymä ajoneuvon sijaintiin.
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Lähetä ajoneuvo huoltoasemalle.
-STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Pakota ajoneuvo kääntämään ympäri.
+STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Pakota ajoneuvo kääntymään ympäri.
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Näytä ajoneuvon tiedot.
 STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Ajoneuvot - napsauta ajoneuvoa saadaksesi tietoja.
 STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Rakenna uusi ajoneuvo.
@@ -2526,7 +2526,7 @@ STR_9808_NEW_SHIPS                                              :{WHITE}Uusia la
 STR_9809_BUILD_SHIP                                             :{BLACK}Rakenna laiva
 STR_CLONE_SHIP                                                  :{BLACK}Kloonaa laiva
 STR_CLONE_SHIP_INFO                                             :{BLACK}Tämä rakentaa kopion laivasta. Control-click jakaa komennot
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Tämä rakentaa kopion laivasta. Paina tätä nappia ja sen jälkeen laivaa telakan sisä- tai ulkopuolella. Control-click jakaa komennot
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Tämä rakentaa kopion laivasta. Paina tätä nappia ja sen jälkeen laivaa telakan sisä- tai ulkopuolella. Control-click jakaa komennot##
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Laivan pitää olla pysähdyksissä telakalla.
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Laivaa ei voi myydä...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Laivaa ei voi rakentaa...
@@ -2592,8 +2592,8 @@ STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Lentoken
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}Lentokonehalli, {STATION}
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Uusi lentokone
 STR_CLONE_AIRCRAFT                                              :{BLACK}Kloonaa lentokone
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Tämä rakentaa kopion lentokoneesta. Control-click jakaa komennot
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Tämä rakentaa kopion lentokoneesta. Paina tätä nappia ja sen jälkeen lentokonetta lentokonehallin sisä- tai ulkopuolella. Control-click jakaa komennot
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Tämä rakentaa kopion lentokoneesta. Control-click jakaa komennot ##
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Tämä rakentaa kopion lentokoneesta. Paina tätä nappia ja sen jälkeen lentokonetta lentokonehallin sisä- tai ulkopuolella. Control-click jakaa komennot ##
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Uusi lentokone
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Rakenna lentokone
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Lentokonetta ei voi rakentaa...
@@ -2641,7 +2641,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Lentokon
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Nimeä lentokone
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen lentokone saapuu asemalle {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Lento-onnettomuus!{}{COMMA} kuolee tulipallossa asemalla {STATION}.
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Lentokoneonnettomuus!{}Lentokoneelta loppui polttoaine, {COMMA} kuolee tulipallossa!
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Lento-onnettomuus!{}Lentokoneelta loppui polttoaine, {COMMA} kuolee tulipallossa!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Nimeä
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Nimeä lentokonetyyppi uudelleen.
