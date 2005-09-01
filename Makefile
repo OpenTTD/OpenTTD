@@ -791,7 +791,7 @@ $(OSX): $(TTD)
 	$(Q)os/macosx/plistgen.sh "$(OSXAPP)" "$(REV)"
 	$(Q)cp os/macosx/track_starter "$(OSXAPP)"/Contents/MacOS
 	$(Q)ls os/macosx | grep -q "\.class" || \
-	       javac os/macosx/openttdmidi.java
+	       javac os/macosx/OpenTTDMidi.java
 	$(Q)cp os/macosx/OpenTTDMidi.class "$(OSXAPP)"/Contents/MacOS
 	$(Q)cp data/* "$(OSXAPP)"/Contents/Data/
 	$(Q)cp lang/*.lng "$(OSXAPP)"/Contents/Lang/
@@ -896,7 +896,7 @@ rev.c: FORCE
 	@echo 'const char _openttd_revision[] = "$(REV)";' >>rev.c.new
 	@# some additions for MorphOS versions tag
 	@echo '#ifdef __MORPHOS__'  >>rev.c.new
-	@echo 'const char morphos_versions_tag[] = "\\0$$VER: OpenTTD $(REV) ('${BUILDDATE}')  OpenTTD Team [MorphOS, PowerPC]";'  >>rev.c.new
+	@echo 'const char morphos_versions_tag[] = "\\0$$VER: OpenTTD $(REV) ('${BUILDDATE}') © OpenTTD Team [MorphOS, PowerPC]";'  >>rev.c.new
 	@echo '#endif' >>rev.c.new
 	@# Only update the real rev.c if it actually changed, to prevent
 	@# useless rebuilds.
