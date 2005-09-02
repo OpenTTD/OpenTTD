@@ -1,16 +1,16 @@
 /* $Id$ */
 
-#include "stdafx.h"
-#include "openttd.h"
-#include "debug.h"
-#include "functions.h"
-#include "map.h"
-#include "tile.h"
-#include "command.h"
-#include "ai_new.h"
-#include "engine.h"
-#include "station.h"
-#include "variables.h"
+#include "../../stdafx.h"
+#include "../../openttd.h"
+#include "../../debug.h"
+#include "../../functions.h"
+#include "../../map.h"
+#include "../../tile.h"
+#include "../../command.h"
+#include "trolly.h"
+#include "../../engine.h"
+#include "../../station.h"
+#include "../../variables.h"
 
 // Build HQ
 //  Params:

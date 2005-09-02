@@ -1,10 +1,10 @@
-/* $Id$ */
+/* $Id: ai_new.h 2892 2005-08-26 20:56:48Z tron $ */
 
-#ifndef AI_NEW_H
-#define AI_NEW_H
+#ifndef AI_TROLLY_H
+#define AI_TROLLY_H
 
-#include "aystar.h"
-#include "player.h"
+#include "../../aystar.h"
+#include "../../player.h"
 
 /*
  * These defines can be altered to change the behavoir of the AI
@@ -258,4 +258,4 @@ int AiNew_PickVehicle(Player *p);
 int AiNew_Build_Vehicle(Player *p, TileIndex tile, byte flag);
 int AiNew_Build_Depot(Player *p, TileIndex tile, byte direction, byte flag);
 
-#endif /* AI_NEW_H */
+#endif /* AI_TROLLY_H */

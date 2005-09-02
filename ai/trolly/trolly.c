@@ -1,37 +1,36 @@
-/* $Id$ */
+/* $Id: ai_new.c 2891 2005-08-26 20:26:34Z tron $ */
 
 /*
- * Next part is in Dutch, and only here for me, TrueLight, the maker of this new AI
+ * This AI was created as a direct reaction to the big demand for some good AIs in OTTD.
+ *   Too bad it never left alpha-stage, and it is considered dead in his current form.
+ *   By the time of writing this, we, the creator of this AI and a good friend of mine,
+ *   are designing a whole new AI-system that allows us to create AIs easier and without
+ *   all the fuzz we encountered while I was working on this AI. By the time that system
+ *   is finished, you can expect that this AI will dissapear, because it is pretty
+ *   obselete and bad programmed.
+ *
+ * In the meanwhile I wish you all much fun with this AI; if you are interested as
+ *   AI-developer in this AI, I advise you not stare too long to some code, some things in
+ *   here really are... strange ;) But in either way: enjoy :)
+ *
+ *  -- TrueLight :: 2005-09-01
  */
 
-// TODO: als iemand een vehicle stil zet op een weg waar de AI wil bouwen
-//         doet de AI helemaal niets meer
-// TODO: depot rondjes rijden stom iets dingus
-// TODO: jezelf afvragen of competitor_intelligence op niveau 2 wel meer geld moet opleverne...
-// TODO: als er iets in path komt, bouwt AI gewoon verder :(
-// TODO: mail routes
-
-// FIXME: This code is horrible. Indisputably from the style POV, at least. --pasky
-
-/*
- * End of Dutch part
- */
-
-#include "stdafx.h"
-#include "openttd.h"
-#include "debug.h"
-#include "functions.h"
-#include "table/strings.h"
-#include "map.h"
-#include "tile.h"
-#include "command.h"
-#include "ai_new.h"
-#include "town.h"
-#include "industry.h"
-#include "station.h"
-#include "engine.h"
-#include "gui.h"
-#include "depot.h"
+#include "../../stdafx.h"
+#include "../../openttd.h"
+#include "../../debug.h"
+#include "../../functions.h"
+#include "../../table/strings.h"
+#include "../../map.h"
+#include "../../tile.h"
+#include "../../command.h"
+#include "trolly.h"
+#include "../../town.h"
+#include "../../industry.h"
+#include "../../station.h"
+#include "../../engine.h"
+#include "../../gui.h"
+#include "../../depot.h"
 
 // This function is called after StartUp. It is the init of an AI
 static void AiNew_State_FirstTime(Player *p)

@@ -1,22 +1,22 @@
-/* $Id$ */
+/* $Id: ai_old.c 2701 2005-07-24 14:12:37Z tron $ */
 
-#include "stdafx.h"
-#include "openttd.h"
-#include "functions.h"
-#include "map.h"
-#include "tile.h"
-#include "player.h"
-#include "vehicle.h"
-#include "engine.h"
-#include "command.h"
-#include "town.h"
-#include "industry.h"
-#include "station.h"
-#include "pathfind.h"
-#include "economy.h"
-#include "airport.h"
-#include "depot.h"
-#include "variables.h"
+#include "../../stdafx.h"
+#include "../../openttd.h"
+#include "../../functions.h"
+#include "../../map.h"
+#include "../../tile.h"
+#include "../../player.h"
+#include "../../vehicle.h"
+#include "../../engine.h"
+#include "../../command.h"
+#include "../../town.h"
+#include "../../industry.h"
+#include "../../station.h"
+#include "../../pathfind.h"
+#include "../../economy.h"
+#include "../../airport.h"
+#include "../../depot.h"
+#include "../../variables.h"
 
 // remove some day perhaps?
 static Player *_cur_ai_player;
@@ -52,7 +52,7 @@ enum {
 };
 
 
-#include "table/ai_rail.h"
+#include "../../table/ai_rail.h"
 
 static byte GetRailTrackStatus(TileIndex tile) {
 	uint32 r = GetTileTrackStatus(tile, TRANSPORT_RAIL);

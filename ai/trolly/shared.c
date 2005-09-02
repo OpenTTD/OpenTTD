@@ -1,11 +1,11 @@
 /* $Id$ */
 
-#include "stdafx.h"
-#include "openttd.h"
-#include "debug.h"
-#include "map.h"
-#include "ai_new.h"
-#include "vehicle.h"
+#include "../../stdafx.h"
+#include "../../openttd.h"
+#include "../../debug.h"
+#include "../../map.h"
+#include "trolly.h"
+#include "../../vehicle.h"
 
 int AiNew_GetRailDirection(TileIndex tile_a, TileIndex tile_b, TileIndex tile_c)
 {

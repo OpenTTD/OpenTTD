@@ -20,7 +20,6 @@
 #include "news.h"
 #include "saveload.h"
 #include "command.h"
-#include "ai_new.h"
 #include "sound.h"
 #include "network.h"
 #include "variables.h"
@@ -565,6 +564,8 @@ void OnTick_Players(void)
 		MaybeStartNewPlayer();
 	}
 }
+
+extern void AiNewDoGameLoop(Player *p);
 
 void RunOtherPlayersLoop(void)
 {

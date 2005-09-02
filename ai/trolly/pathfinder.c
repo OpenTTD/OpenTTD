@@ -1,15 +1,15 @@
 /* $Id$ */
 
-#include "stdafx.h"
-#include "openttd.h"
-#include "debug.h"
-#include "functions.h"
-#include "map.h"
-#include "tile.h"
-#include "command.h"
-#include "ai_new.h"
-#include "depot.h"
-#include "variables.h"
+#include "../../stdafx.h"
+#include "../../openttd.h"
+#include "../../debug.h"
+#include "../../functions.h"
+#include "../../map.h"
+#include "../../tile.h"
+#include "../../command.h"
+#include "trolly.h"
+#include "../../depot.h"
+#include "../../variables.h"
 
 #define TEST_STATION_NO_DIR 0xFF
 

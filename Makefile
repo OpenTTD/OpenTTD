@@ -573,11 +573,6 @@ endif
 
 ### Sources
 
-C_SOURCES += ai_old.c
-C_SOURCES += ai_build.c
-C_SOURCES += ai_new.c
-C_SOURCES += ai_pathfinder.c
-C_SOURCES += ai_shared.c
 C_SOURCES += aircraft_cmd.c
 C_SOURCES += aircraft_gui.c
 C_SOURCES += airport.c
@@ -685,6 +680,12 @@ C_SOURCES += music/null_m.c
 C_SOURCES += sound/null_s.c
 C_SOURCES += video/dedicated_v.c
 C_SOURCES += video/null_v.c
+
+C_SOURCES += ai/default/default.c
+C_SOURCES += ai/trolly/trolly.c
+C_SOURCES += ai/trolly/build.c
+C_SOURCES += ai/trolly/pathfinder.c
+C_SOURCES += ai/trolly/shared.c
 
 CXX_SOURCES =
 
@@ -988,7 +989,7 @@ upgradeconf: $(MAKE_CONFIG)
 ### Internal build rules
 
 # This makes sure the .deps dir is always around.
-DEPS_MAGIC := $(shell mkdir -p .deps .deps/music .deps/sound .deps/video .deps/os .deps/os/macosx)
+DEPS_MAGIC := $(shell mkdir -p .deps .deps/music .deps/sound .deps/video .deps/os .deps/os/macosx .deps/ai/default .deps/ai/trolly)
 
 # Introduce the dependencies
 ifneq ($(MAKECMDGOALS), clean)
