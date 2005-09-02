@@ -1255,7 +1255,7 @@ static inline SaveOrLoadResult AbortSaveLoad(void)
 /** Update the gui accordingly when starting saving
  * and set locks on saveload. Also turn off fast-forward cause with that
  * saving takes Aaaaages */
-static inline void SaveFileStart(void)
+void SaveFileStart(void)
 {
 	_ts.ff_state = _fast_forward;
 	_fast_forward = false;
@@ -1267,7 +1267,7 @@ static inline void SaveFileStart(void)
 
 /** Update the gui accordingly when saving is done and release locks
  * on saveload */
-static inline void SaveFileDone(void)
+void SaveFileDone(void)
 {
 	_fast_forward = _ts.ff_state;
 	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE);
@@ -1276,16 +1276,25 @@ static inline void SaveFileDone(void)
 	_ts.saveinprogress = false;
 }
 
+/** Show a gui message when saving has failed */
+void SaveFileError(void)
+{
+	ShowErrorMessage(STR_4007_GAME_SAVE_FAILED, STR_NULL, 0, 0);
+	SaveFileDone();
+}
+
 /** We have written the whole game into memory, _save_pool, now find
  * and appropiate compressor and start writing to file.
  */
-static void* SaveFileToDisk(void* arg)
+static void* SaveFileToDisk(void *arg)
 {
 	const SaveLoadFormat *fmt = GetSavegameFormat(_savegame_format);
 	/* XXX - backup _sl.buf cause it is used internally by the writer
 	 * and we update it for our own purposes */
 	static byte *tmp = NULL;
 	uint32 hdr[2];
+
+	OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_START);
 
 	tmp = _sl.buf;
 
@@ -1297,9 +1306,7 @@ static void* SaveFileToDisk(void* arg)
 		_sl.excpt_uninit();
 
 		ShowInfoF("Save game failed: %s.", _sl.excpt_msg);
-		ShowErrorMessage(STR_4007_GAME_SAVE_FAILED, STR_NULL, 0, 0);
-
-		SaveFileDone();
+		OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_ERROR);
 		return NULL;
 	}
 
@@ -1334,7 +1341,7 @@ static void* SaveFileToDisk(void* arg)
 	GetSavegameFormat("memory")->uninit_write(); // clean the memorypool
 	fclose(_sl.fh);
 
-	SaveFileDone();
+	OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_DONE);
 	return NULL;
 }
 
@@ -1405,10 +1412,10 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 		if (mode == SL_LOAD) {
 			ShowInfoF("Load game failed: %s.", _sl.excpt_msg);
 			return SL_REINIT;
-		} else {
-			ShowInfoF("Save game failed: %s.", _sl.excpt_msg);
-			return SL_ERROR;
 		}
+		
+		ShowInfoF("Save game failed: %s.", _sl.excpt_msg);
+		return SL_ERROR;
 	}
 
   /* We first initialize here to avoid: "warning: variable `version' might
@@ -1434,7 +1441,6 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 		SlWriteFill(); // flush the save buffer
 
 		/* Write to file */
-		SaveFileStart();
 		if (_network_server ||
 				(save_thread = OTTDCreateThread(&SaveFileToDisk, NULL)) == NULL) {
 			DEBUG(misc, 1) ("cannot create savegame thread, reverting to single-threaded mode...");

@@ -531,8 +531,6 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 }
 
 
-#ifdef ENABLE_NETWORK
-
 // multi os compatible sleep function
 
 #ifdef __AMIGA__
@@ -571,6 +569,3 @@ void CSleep(int milliseconds)
 	}
 	#endif // __AMIGA__
 }
-
-#endif /* ENABLE_NETWORK */
-

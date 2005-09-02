@@ -207,7 +207,6 @@ VARDEF uint8 _network_autoclean_protected;   // Unprotect a company after X mont
 VARDEF uint16 _network_restart_game_date;    // If this year is reached, the server automaticly restarts
 
 NetworkGameList *NetworkQueryServer(const char* host, unsigned short port, bool game_info);
-void CSleep(int milliseconds);
 
 #endif /* ENABLE_NETWORK */
 

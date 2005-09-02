@@ -543,4 +543,15 @@ enum {
 };
 VARDEF byte _no_scroll;
 
+/** To have a concurrently running thread interface with the main program, use
+ * the OTTD_SendThreadMessage() function. Actions to perform upon the message are handled
+ * in the ProcessSentMessage() function */
+typedef enum ThreadMsgs {
+	MSG_OTTD_SAVETHREAD_START  = 1,
+	MSG_OTTD_SAVETHREAD_DONE   = 2,
+	MSG_OTTD_SAVETHREAD_ERROR  = 3,
+} ThreadMsg;
+
+void OTTD_SendThreadMessage(ThreadMsg msg);
+
 #endif /* OPENTTD_H */

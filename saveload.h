@@ -172,4 +172,7 @@ void SlSetLength(size_t length);
 void SlWriteByte(byte b);
 void SlGlobList(const SaveLoadGlobVarList *desc);
 
+void SaveFileStart(void);
+void SaveFileDone(void);
+void SaveFileError(void);
 #endif /* SAVELOAD_H */

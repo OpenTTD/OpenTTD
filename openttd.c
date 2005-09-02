@@ -542,6 +542,38 @@ int ttd_main(int argc, char* argv[])
 	return 0;
 }
 
+/** Mutex so that only one thread can communicate with the main program
+ * at any given time */
+static ThreadMsg _message = 0;
+
+static inline void OTTD_ReleaseMutex(void) {_message = 0;}
+static inline ThreadMsg OTTD_PollThreadEvent(void) {return _message;}
+
+/** Called by running thread to execute some action in the main game.
+ * It will stall as long as the mutex is not freed (handled) by the game */
+void OTTD_SendThreadMessage(ThreadMsg msg)
+{
+	while (_message != 0) CSleep(10);
+
+	_message = msg;
+}
+
+
+/** Handle the user-messages sent to us
+ * @param message message sent
+ */
+void ProcessSentMessage(ThreadMsg message)
+{
+	switch (message) {
+		case MSG_OTTD_SAVETHREAD_START: SaveFileStart(); break;
+		case MSG_OTTD_SAVETHREAD_DONE:  SaveFileDone(); break;
+		case MSG_OTTD_SAVETHREAD_ERROR: SaveFileError(); break;
+		default: NOT_REACHED();
+	}
+
+	OTTD_ReleaseMutex(); // release mutex so that other threads, messages can be handled
+}
+
 static void ShowScreenshotResult(bool b)
 {
 	if (b) {
@@ -914,6 +946,10 @@ static void HandleKeyScrolling(void)
 void GameLoop(void)
 {
 	int m;
+	ThreadMsg message;
+
+
+	if ((message = OTTD_PollThreadEvent()) != 0) ProcessSentMessage(message);
 
 	// autosave game?
 	if (_do_autosave) {
