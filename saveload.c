@@ -1283,6 +1283,8 @@ void SaveFileError(void)
 	SaveFileDone();
 }
 
+static Thread* save_thread;
+
 /** We have written the whole game into memory, _save_pool, now find
  * and appropiate compressor and start writing to file.
  */
@@ -1294,7 +1296,7 @@ static void* SaveFileToDisk(void *arg)
 	static byte *tmp = NULL;
 	uint32 hdr[2];
 
-	OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_START);
+	if (save_thread != NULL) OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_START);
 
 	tmp = _sl.buf;
 
@@ -1341,12 +1343,9 @@ static void* SaveFileToDisk(void *arg)
 	GetSavegameFormat("memory")->uninit_write(); // clean the memorypool
 	fclose(_sl.fh);
 
-	OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_DONE);
+	if (save_thread != NULL) OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_DONE);
 	return NULL;
 }
-
-
-static Thread* save_thread;
 
 void WaitTillSaved(void)
 {
@@ -1413,7 +1412,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 			ShowInfoF("Load game failed: %s.", _sl.excpt_msg);
 			return SL_REINIT;
 		}
-		
+
 		ShowInfoF("Save game failed: %s.", _sl.excpt_msg);
 		return SL_ERROR;
 	}
