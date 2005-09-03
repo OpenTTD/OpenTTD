@@ -91,23 +91,23 @@ LINK32=link.exe
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=.\ai_build.c
+SOURCE=.\ai\trolly\build.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\ai_new.c
+SOURCE=.\ai\trolly\trolly.c.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\ai_old.c
+SOURCE=.\ai\default.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\ai_pathfinder.c
+SOURCE=.\ai\trolly\pathfinder.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\ai_shared.c
+SOURCE=.\ai\trolly\shared.c
 # End Source File
 # Begin Source File
 
@@ -494,7 +494,7 @@ SOURCE=.\window.c
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
 # Begin Source File
 
-SOURCE=.\ai_new.h
+SOURCE=.\ai\trolly\trolly.h
 # End Source File
 # Begin Source File
 

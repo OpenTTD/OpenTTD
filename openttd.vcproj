@@ -162,9 +162,6 @@
 			Name="Source Files"
 			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat">
 			<File
-				RelativePath="ai_old.c">
-			</File>
-			<File
 				RelativePath=".\airport.c">
 			</File>
 			<File
@@ -890,20 +887,27 @@
 			Name="AI Files"
 			Filter="">
 			<File
-				RelativePath=".\ai_build.c">
+				RelativePath=".\ai\default\default.c">
 			</File>
-			<File
-				RelativePath=".\ai_new.c">
-			</File>
-			<File
-				RelativePath=".\ai_new.h">
-			</File>
-			<File
-				RelativePath=".\ai_pathfinder.c">
-			</File>
-			<File
-				RelativePath=".\ai_shared.c">
-			</File>
+			<Filter
+				Name="trolly"
+				Filter="">
+				<File
+					RelativePath=".\ai\trolly\build.c">
+				</File>
+				<File
+					RelativePath=".\ai\trolly\pathfinder.c">
+				</File>
+				<File
+					RelativePath=".\ai\trolly\shared.c">
+				</File>
+				<File
+					RelativePath=".\ai\trolly\trolly.c">
+				</File>
+				<File
+					RelativePath=".\ai\trolly\trolly.h">
+				</File>
+			</Filter>
 		</Filter>
 		<File
 			RelativePath="icon1.ico">

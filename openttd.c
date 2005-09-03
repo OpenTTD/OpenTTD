@@ -553,6 +553,7 @@ static inline ThreadMsg OTTD_PollThreadEvent(void) {return _message;}
  * It will stall as long as the mutex is not freed (handled) by the game */
 void OTTD_SendThreadMessage(ThreadMsg msg)
 {
+	if (_exit_game) return;
 	while (_message != 0) CSleep(10);
 
 	_message = msg;
