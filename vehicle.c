@@ -1370,6 +1370,7 @@ int32 ReplaceVehicle(Vehicle *v)
 	EngineID old_engine_type = v->engine_type;
 	EngineID new_engine_type = p->engine_replacement[old_engine_type];
 	Vehicle *u, *first;
+	Engine *e;
 	int cost, build_cost, rear_engine_cost = 0;
 
 	// If replacing due to age only, use the same type :-)
@@ -1460,27 +1461,26 @@ int32 ReplaceVehicle(Vehicle *v)
 	}
 	cost = build_cost - v->value + rear_engine_cost;
 
-	if (old_engine_type != new_engine_type) {
-		/* We do not really buy a new vehicle, we upgrade the old one */
-		const Engine* e = GetEngine(new_engine_type);
+	/* We do not really buy a new vehicle, we upgrade the old one */
+	e = GetEngine(new_engine_type);
 
-		v->reliability = e->reliability;
-		v->reliability_spd_dec = e->reliability_spd_dec;
-		v->age = 0;
+	v->reliability = e->reliability;
+	v->reliability_spd_dec = e->reliability_spd_dec;
+	v->age = 0;
 
-		v->date_of_last_service = _date;
-		v->build_year = _cur_year;
+	v->date_of_last_service = _date;
+	v->build_year = _cur_year;
 
-		v->value = build_cost;
+	v->value = build_cost;
 
-		if (v->engine_type != new_engine_type) {
-			byte sprite = v->spritenum;
-			byte cargo_type = v->cargo_type;
-			v->engine_type = new_engine_type;
-			v->max_age = e->lifelength * 366;
+	if (v->engine_type != new_engine_type) {
+		byte sprite = v->spritenum;
+		byte cargo_type = v->cargo_type;
+		v->engine_type = new_engine_type;
+		v->max_age = e->lifelength * 366;
 
-			/* Update limits of the vehicle (for when upgraded) */
-			switch (v->type) {
+		/* Update limits of the vehicle (for when upgraded) */
+		switch (v->type) {
 			case VEH_Train:
 				{
 				const RailVehicleInfo *rvi = RailVehInfo(new_engine_type);
@@ -1596,19 +1596,15 @@ int32 ReplaceVehicle(Vehicle *v)
 				break;
 				}
 			default: return CMD_ERROR;
-			}
-			// makes sure that the cargo is still valid compared to new capacity
-			if (v->cargo_count != 0) {
-				if ( v->cargo_type != cargo_type )
-					v->cargo_count = 0;
-				else if ( v->cargo_count > v->cargo_cap )
-					v->cargo_count = v->cargo_cap;
-			}
+		}
+		// makes sure that the cargo is still valid compared to new capacity
+		if (v->cargo_count != 0) {
+			if ( v->cargo_type != cargo_type )
+				v->cargo_count = 0;
+			else if ( v->cargo_count > v->cargo_cap )
+				v->cargo_count = v->cargo_cap;
 		}
 	}
-
-	// A replaced vehicle should be classed as new
-	v->age = 0;
 
 	InvalidateWindow(WC_REPLACE_VEHICLE, v->type);
 	ResortVehicleLists();
