@@ -152,8 +152,9 @@ STR_00B0_MAP                                                    :{WHITE}Mapa - {
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Opcje gry
 STR_00B2_MESSAGE                                                :{YELLOW}Wiadomosc
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Wiadomosc od {STRING}
-STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Niemozna tego zrobic....
-STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Nie mozna wyczyscic terenu....
+STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Niemozna tego zrobic...
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Nie mozna wyczyscic terenu...
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Prawa Autorskie {COPYRIGHT} 1995 Chris Sawyer, Wszelkie Prawa Zastrzezone
 STR_00B7_VERSION                                                :{BLACK}Wersja OpenTTD {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2005 Zespol OpenTTD
 STR_TRANSLATED_BY                                               :{BLACK}  Tlumacz(e) - : Tom and PolPot and Spooqy
@@ -287,10 +288,10 @@ STR_013E_TOTAL_CARGO                                            :{BLACK}Calkowit
 STR_013F_CAPACITY                                               :{BLACK}Pojemnosc: {LTBLUE}{STRING}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Calkowita pojemnosc tego pociagu:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
-STR_0140_NEW_GAME                                               :{BLACK}Nowa gra
-STR_0141_LOAD_GAME                                              :{BLACK}Zaladuj gre
-STR_SINGLE_PLAYER                                               :{BLACK}Gra jednoosobowa
-STR_MULTIPLAYER                                                 :{BLACK}Gra wieloosobowa
+STR_0140_NEW_GAME                                               :{BLACK}Nowa Gra
+STR_0141_LOAD_GAME                                              :{BLACK}Zaladuj Gre
+STR_SINGLE_PLAYER                                               :{BLACK}Gra Jednoosobowa
+STR_MULTIPLAYER                                                 :{BLACK}Gra Wieloosobowa
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -298,9 +299,9 @@ STR_256                                                         :256
 STR_512                                                         :512
 STR_1024                                                        :1024
 STR_2048                                                        :2048
-STR_MAPSIZE                                                     :{BLACK}Wielkosc mapy:
+STR_MAPSIZE                                                     :{BLACK}Rozmiar mapy:
 STR_BY                                                          :{BLACK}*
-STR_0148_GAME_OPTIONS                                           :{BLACK}Opcje gry
+STR_0148_GAME_OPTIONS                                           :{BLACK}Opcje Gry
 
 STR_0150_SOMEONE                                                :ktos{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :Mapa swiata
@@ -533,7 +534,7 @@ STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Ogolne 
 STR_MESSAGES_ALL                                                :{YELLOW}Ustawienia dla wszystkich typow wiadomosci(wla/wyl/sumarycznie)
 STR_MESSAGE_SOUND                                               :{YELLOW}Graj dzwieki przy sumarycznych wiadomosciach
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...zbyt daleko od poprzedniego celu
-STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Czolowka firm ktora osiagnela poziom {NUM}{}({STRING})
+STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Ranking firm, ktore osiagnely rok {NUM}{}({STRING})
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Tabela Ligi Firm w {NUM}
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Biznesmen
@@ -548,9 +549,9 @@ STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRI
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} osiaga status: '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} z {COMPANY} osiagnelo status '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Tworzenie scenariusza
+STR_0220_CREATE_SCENARIO                                        :{BLACK}Tworzenie Scenariusza
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
-STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Edytor scenariusza
+STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Edytor Scenariuszy
 STR_0223_LAND_GENERATION                                        :{WHITE}Generowanie ladu
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
@@ -670,7 +671,7 @@ STR_0296_QUIT                                                   :Wyjscie
 STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Zapis scenariusza, wczytnie scenariusza, wyjscie z edytora, wyjscie
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Wczytaj scenariusz
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Zapisz scenariusz
-STR_029A_PLAY_SCENARIO                                          :{BLACK}Zagraj scenariusz
+STR_029A_PLAY_SCENARIO                                          :{BLACK}Zagraj Scenariusz
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Jestes pewny ze chcesz opuscic scenariusz?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Wyjscie z edytora
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...mozna zbudowac jedynie w miastach o populacji przynajmniej 1200
@@ -728,7 +729,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transp
 ############ range ends	here
 
 ############ range for menu	starts
-STR_02D5_LAND_BLOCK_INFO                                        :Info o terenie.
+STR_02D5_LAND_BLOCK_INFO                                        :Info o terenie
 STR_02D6                                                        :
 STR_02D7_SCREENSHOT_CTRL_S                                      :Zrzut ekranu (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Gigantyczny zrzut(Ctrl-G)
@@ -753,7 +754,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Ustawia 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Waluta
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Wybor waluty
-STR_02E3_DISTANCE_UNITS                                         :{BLACK}Jednostki miary
+STR_02E3_DISTANCE_UNITS                                         :{BLACK}Jednostki odleglosci
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_02E5_DISTANCE_UNITS_SELECTION                               :{BLACK}Wybor jednostek odleglosci
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Pojazdy drogowe
@@ -815,10 +816,10 @@ STR_0335_6                                                      :{BLACK}6
 STR_0336_7                                                      :{BLACK}7
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Angielski (Oryginal)
+STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Angielskie (Oryginalne)
 STR_TOWNNAME_FRENCH                                             :Francuskie
 STR_TOWNNAME_GERMAN                                             :Niemieckie
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Angielski (Rozszezone)
+STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Angielskie (Rozszezone)
 STR_TOWNNAME_LATIN_AMERICAN                                     :Poludniowoamerykanskie
 STR_TOWNNAME_SILLY                                              :Glupie
 STR_TOWNNAME_SWEDISH                                            :Szwedzkie
@@ -875,7 +876,7 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Format z
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Wybierz format zrzutu ekranu
 
-STR_AUTOSAVE_1_MONTH                                            :Kazdego miesiaca
+STR_AUTOSAVE_1_MONTH                                            :Co 1 miesiac
 STR_AUTOSAVE_FAILED                                             :{WHITE}Blad autozapisu
 
 STR_MONTH_JAN                                                   :Styczen
@@ -902,7 +903,7 @@ STR_TONS                                                        :ton
 STR_LITERS                                                      :litrow
 STR_ITEMS                                                       :sztuk
 STR_CRATES                                                      :skrzyn
-STR_RES_OTHER                                                   :inne
+STR_RES_OTHER                                                   :Inne
 STR_NOTHING                                                     :
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nie mozna wspoldzielic polecen...
@@ -1109,7 +1110,7 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Nie mozn
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Buduj sluzy
 STR_LANDINFO_LOCK                                               :Sluza
 
-STR_BUOY_IS_IN_USE                                              :{WHITE}... boja w uzyciu!
+STR_BUOY_IS_IN_USE                                              :{WHITE}...boja w uzyciu!
 
 STR_LANDINFO_COORDS                                             :{BLACK}Pozycja: {LTBLUE}{NUM}x{NUM} ({STRING})
 
@@ -1240,7 +1241,7 @@ STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Inni gra
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Rozpocznij gre
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Uruchom nowa gre sieciowa z przypadkowa mapa lub scenariuszem
-STR_NETWORK_LOAD_GAME                                           :{BLACK}Zaladuj gre
+STR_NETWORK_LOAD_GAME                                           :{BLACK}Zaladuj Gre
 STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Przywroc wczesniej zapisana gre wieloosobowa(upewnij sie ze polaczyles sie jako odpowiedni gracz)
 
 ############ Leave those lines in this order!!
@@ -1671,11 +1672,11 @@ STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Nie m
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Zapisz gre
-STR_4001_LOAD_GAME                                              :{WHITE}Zaladuj gre
+STR_4001_LOAD_GAME                                              :{WHITE}Zaladuj Gre
 STR_4002_SAVE                                                   :{BLACK}Zapisz
 STR_4003_DELETE                                                 :{BLACK}Usun
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} MB wolnego
+STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} MB wolnego miejsca
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Nie mozna odczytac napedu
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Nie mozna zapisac gry
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Nie mozna usunac pliku
@@ -1719,6 +1720,7 @@ STR_481A_FARM                                                   :Farma
 STR_481B_LUMBER_MILL                                            :Tartak
 STR_481C_COTTON_CANDY_FOREST                                    :Las waty cukrowej
 STR_481D_CANDY_FACTORY                                          :Zaklad cukierniczy
+STR_481E_BATTERY_FARM                                           :Farma Baterii
 STR_481F_COLA_WELLS                                             :Studnia Coli
 STR_4820_TOY_SHOP                                               :Sklep z zabawkami
 STR_4821_TOY_FACTORY                                            :Fabryka zabawek
@@ -1798,8 +1800,8 @@ STR_5028_TUBULAR_ROAD_BRIDGE                                    :Cylindryczny mo
 STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Obiekt na drodze
 STR_5801_TRANSMITTER                                            :Antena
 STR_5802_LIGHTHOUSE                                             :Latarnia
-STR_5803_COMPANY_HEADQUARTERS                                   :Glowna siedziba firmy
-STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...glowna siedziba firmy na drodze
+STR_5803_COMPANY_HEADQUARTERS                                   :Siedziba firmy
+STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...siedziba firmy na drodze
 STR_5805_COMPANY_OWNED_LAND                                     :Teren w posiadaniu firmy
 STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Nie mozesz nabyc tego terenu...
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...to juz jest Twoje!
@@ -1864,12 +1866,12 @@ STR_6804_CUSTOM                                                 :{BLACK}Wlasny
 
 ############ range for difficulty settings starts
 STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Maksymalna ilosc przeciwnikow: {ORANGE}{COMMA}
-STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Przeciwnik zaczyna od: {ORANGE}{STRING}
+STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Przeciwnik zaczyna: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Ilosc miast: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Ilosc przedsiebiorstw: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maksymalna poczatkowa pozyczka: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Poczatkowy wspolczynnik wzrostu: {ORANGE}{COMMA}%
-STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Utrzymanie pojazdow: {ORANGE}{STRING}
+STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Koszt utrzymania pojazdow: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Szybkosc budowania przeciwnikow: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Poziom inteligencji przeciwnikow: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Uszkodzenia pojazdow: {ORANGE}{STRING}
@@ -1899,13 +1901,13 @@ STR_6820_LOW                                                    :Niski
 STR_6821_MEDIUM                                                 :Sredni
 STR_6822_HIGH                                                   :Wysoki
 STR_6823_NONE                                                   :Brak
-STR_6824_REDUCED                                                :Zredukowany
-STR_6825_NORMAL                                                 :Normaly
+STR_6824_REDUCED                                                :Zredukowane
+STR_6825_NORMAL                                                 :Normalne
 STR_6826_X1_5                                                   :x1.5
 STR_6827_X2                                                     :x2
 STR_6828_X3                                                     :x3
 STR_6829_X4                                                     :x4
-STR_682A_VERY_FLAT                                              :Bardzo szybko
+STR_682A_VERY_FLAT                                              :Bardzo plaski
 STR_682B_FLAT                                                   :Plaski
 STR_682C_HILLY                                                  :Pagorkowaty
 STR_682D_MOUNTAINOUS                                            :Gorski
@@ -1928,11 +1930,11 @@ STR_683B_HOSTILE                                                :Wrogie
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
 STR_7002_PLAYER                                                 :(Gracz {COMMA})
-STR_7004_NEW_FACE                                               :{BLACK}nowa twarz
-STR_7005_COLOR_SCHEME                                           :{BLACK}Schemat koloru
+STR_7004_NEW_FACE                                               :{BLACK}Nowa Twarz
+STR_7005_COLOR_SCHEME                                           :{BLACK}Schemat Koloru
 STR_7006_COLOR_SCHEME                                           :{GOLD}Schemat koloru:
 STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Nowy schemat koloru
-STR_7008_COMPANY_NAME                                           :{BLACK}Nazwa firmy
+STR_7008_COMPANY_NAME                                           :{BLACK}Nazwa Firmy
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Prezes
 STR_700A_COMPANY_NAME                                           :Nazwa firmy
 STR_700B_PRESIDENT_S_NAME                                       :Prezesa
@@ -1992,7 +1994,7 @@ STR_7042_NONE                                                   :{WHITE}Brak
 STR_7043_FACE_SELECTION                                         :{WHITE}Wybor twarzy
 STR_7044_MALE                                                   :{BLACK}Mezczyzna
 STR_7045_FEMALE                                                 :{BLACK}Kobieta
-STR_7046_NEW_FACE                                               :{BLACK}Nowa twarz
+STR_7046_NEW_FACE                                               :{BLACK}Nowa Twarz
 STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Anuluj wybor nowej twarzy
 STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Zatwierdz wybor nowej twarzy
 STR_7049_SELECT_MALE_FACES                                      :{BLACK}Wybierz meska twarz
@@ -2025,18 +2027,20 @@ STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFON
 STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Przelacznik wykresu ladunku wla/wyl
 STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
 STR_7066_ENGINEER                                               :Inzynier
-STR_7067_TRAFFIC_MANAGER                                        :Zarzadca ruchu
-STR_7068_TRANSPORT_COORDINATOR                                  :Koordynator transportu
-STR_7069_ROUTE_SUPERVISOR                                       :Kierownik drog
-STR_706A_DIRECTOR                                               :Dyrektor
+STR_7067_TRAFFIC_MANAGER                                        :Nadzorca Ruchu
+STR_7068_TRANSPORT_COORDINATOR                                  :Koordynator Transportu
+STR_7069_ROUTE_SUPERVISOR                                       :Zastepca Kierownika
+STR_706A_DIRECTOR                                               :Kierownik
+STR_706B_CHIEF_EXECUTIVE                                        :Zastepca Dyrektora
+STR_706C_CHAIRMAN                                               :Dyrektor
 STR_706D_PRESIDENT                                              :Prezes
 STR_706E_TYCOON                                                 :Magnat
-STR_706F_BUILD_HQ                                               :{BLACK}Budowa siedziby gl.
+STR_706F_BUILD_HQ                                               :{BLACK}Budowa Siedziby
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Buduj siedzibe glowna / zobacz siedzibe glowna
 STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Wybuduj siedzibe glowna w innym miejscu za cene 1% wartosci firmy
-STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Nie mozna zbudowac siedziby glownej...
+STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Nie mozna zbudowac siedziby firmy...
 STR_7072_VIEW_HQ                                                :{BLACK}Zobacz SG
-STR_RELOCATE_HQ                                                 :{BLACK}Zmien polozenie SG
+STR_RELOCATE_HQ                                                 :{BLACK}Przenies SG
 STR_COMPANY_PASSWORD                                            :{BLACK}Haslo
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Ochrona haslem twojej firmy zapobiega nieautoryzowanemu przylaczeniu sie.
 STR_SET_COMPANY_PASSWORD                                        :Ustaw haslo firmy
@@ -2705,12 +2709,12 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Nazwa pl
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Wlasna waluta
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wspolczynnik wymiany: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurs wymiany: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufiks:
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Przejscie na Euro: {ORANGE}{NUM}
-STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Przejscie  na Euro: {ORANGE}nigdy
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Przejscie na Euro: {ORANGE}Nigdy
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Podglad: {ORANGE}{CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Zmien wlasny parametr waluty
 
@@ -2730,7 +2734,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Pokazuje
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Pokazuje wszystkie statki ktore maja ta stacje w swoim rozkladzie
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Zastap pojazdy
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zastap pojazdy
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zastap {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Rozpocznij zastepowanie
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Zatrzymaj zastepowanie
 STR_NOT_REPLACING                                               :{BLACK}Brak zastapien

@@ -2734,7 +2734,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Afficher
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Afficher les navires ayant cette station dans leurs cédules
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Remplacement véhicules
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacer des Véhicules
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacer {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Commencer le remplacement
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stopper le remplacement
 STR_NOT_REPLACING                                               :{BLACK}Pas en cours de remplacement

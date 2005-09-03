@@ -2734,7 +2734,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostrar 
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar todos os navios de cujo itinerário esta estação faz parte
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Substituir Veículos
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituir Veículos
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituir {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Iniciar Substituição de Veículos
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar Substituição de Veículos
 STR_NOT_REPLACING                                               :{BLACK}Não substituindo

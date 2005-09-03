@@ -1079,9 +1079,9 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Povolit
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Pri ta¸ení umistovat signály ka¸dých(é): {ORANGE}{STRING} dilku(y)
 STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}Povolit automatické pokládání PBS signalu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Umisteni hlavní li¨ty: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Vlevo
-STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Uprostred
-STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Vpravo
+STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :vlevo
+STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :uprostred
+STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :vpravo
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Okno se prichyti k druhému, kdy¸ je blí¸ ne¸: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Okno se prichyti k druhému, kdy¸ je blí¸ ne¸: {ORANGE}vypnuto
 
@@ -2506,7 +2506,7 @@ STR_8865_NAME_TRAIN                                             :{WHITE}Pojmenov
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Nelze pojmenovat vlak...
 STR_8867_NAME_TRAIN                                             :{BLACK}Pojmenovat vlak
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Zeleznicni nestesti!{}Pri srá¸ce {COMMA} {P clovek lidé lidí} prisl{P el li lo} o ¸ivot v plamenech.
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nemohu zmenit smer vlaku...
+STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nelze obrátit vlak...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Prejmenovat typ zeleznicniho vozidla
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nemohu prejmenovat typ zeleznicniho vozidla...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}U oznaceneho prikazu vozidlo musí vylo¸it náklad
@@ -2697,8 +2697,8 @@ STR_A030_NAME_AIRCRAFT                                          :{WHITE}Prejmeno
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Nelze prejmenovat letadlo
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Prejmenovat letadlo
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První letadlo pristalo v {STATION}!
-STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Pád letadla!{}{COMMA} zahynulo v plamenech v {STATION}.
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Letecká havárie!{}Kvuli vycerpani paliva zemrelo {COMMA} lidí v ohnivém pekle!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Pád letadla!{}{COMMA} {P clovek lidé lidí} zahynul{P "" i o} v plamenech v {STATION}.
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Letecká havárie!{}Kvuli vycerpani paliva {COMMA} {P clovek lidé lidí} zemrel{P "" i o} v ohnivém pekle!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Prejmenovat
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Prejmenovat typ letadla
@@ -2722,7 +2722,7 @@ STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Za podezrelych okolností byla znicena továrna u {TOWN}!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}UFO pristalo poblí¸ {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Pokles terénu u uhelného dolu {TOWN} zpusobil velké ¨kody!
-STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Záplavy!{}Po stra¨livých záplavách je odhadem {COMMA} lidí pohresovanych nebo mrtvých!
+STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Záplavy!{}Po stra¨livých záplavách je odhadem {COMMA} {P clovek lidé lidí} pohresovan{P "" i ych} nebo mrtv{P ý í ých}!
 
 STR_BRIBE_FAILED                                                :{WHITE}Tvuj pokus o úplatek byl
 STR_BRIBE_FAILED_2                                              :{WHITE}odhalen místním vysetrovatelem.
@@ -2791,7 +2791,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Zobrazit
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Zobrazit v¨echny lode, které mají tuto stanici v jízdním radu
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Vymenovani vozidel
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vymenovani vozidel
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vymenovani {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Zapnout vymenovani
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Vypnout vymenovani
 STR_NOT_REPLACING                                               :{BLACK}(nevymenuje se)
@@ -2821,10 +2821,10 @@ STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {G
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rychlost: {GOLD}{VELOCITY}{BLACK}   Výkon: {GOLD}{COMMA} hp
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Provozní cena: {GOLD}{CURRENCY} rocne
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacita: {GOLD}{STRING} {STRING}
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Vyvinuto: {GOLD}{NUM}{BLACK} ´ivotnost: {GOLD}{COMMA} let
-STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. spolehlivost: {GOLD}{COMMA}%
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Vyvinuto: {GOLD}{NUM}{BLACK} ´ivotnost: {GOLD}{COMMA} {P rok roky let}
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. spolehlivost: {GOLD}{COMMA} %
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Hmotnost: {GOLD}{COMMA} t  ({COMMA} t)
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Rychlost: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacita: {GOLD}{COMMA} cestujících, {COMMA} baliku po¨ty
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacita: {GOLD}{COMMA} cestující{P "" "" ch}, {COMMA} bal{P ík íky iku} po¨ty
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pohanene vagony: {GOLD}+{COMMA} hp{BLACK} Hmotnost: {GOLD}+{COMMA} t

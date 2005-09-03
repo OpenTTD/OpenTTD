@@ -2734,7 +2734,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostra t
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostra tutte le navi che hanno questo porto tra gli ordini
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Rimpiazza Veicoli
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Rimpiazza Veicoli
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Rimpiazza {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Inizia Rimpiazzo Veicoli
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Finisci Rimpiazzo Veicoli
 STR_NOT_REPLACING                                               :{BLACK}Nessun rimpiazzo

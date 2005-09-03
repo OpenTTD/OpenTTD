@@ -2734,7 +2734,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Kilistáz
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Kilistázza az összes hajót, aminek a menetrendjében szerepel ez az állomás
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Jármûvek lecserélése
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Jármûcsere
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Lecserél {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Jármûcsere elkezdése
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Jármûcsere befejezése
 STR_NOT_REPLACING                                               :{BLACK}Nem cserélendõ

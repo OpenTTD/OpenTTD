@@ -1754,8 +1754,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY}: tuotanto vähenee 50%:lla.
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}{INDUSTRY}: hyönteisparvet aiheuttavat tuhoa!{}Tuotanto vähenee 50%:lla.
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...voidaan asettaa vain kartan reunoille.
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{1:INDUSTRY} tuottaa {0:STRING} {2:COMMA} % entistä enemmän!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{1:INDUSTRY} tuottaa {0:STRING} {2:COMMA} % entistä vähemmän!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} tuotanto kohteessa: {INDUSTRY} nousee {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} tuotanto kohteessa: {INDUSTRY} laskee {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Juna on tunnelissa.
@@ -2734,7 +2734,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Näytä ka
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Näytä kaikki laivat, joilla on asema aikataulussaan.
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Korvaa liikennevälineitä
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Korvaa liikennevälineitä
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Korvaa {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Aloita ajoneuvojen korvaaminen
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Lopeta ajoneuvojen korvaaminen
 STR_NOT_REPLACING                                               :{BLACK}Ei korvata

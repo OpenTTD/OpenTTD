@@ -943,6 +943,8 @@ STR_CONFIG_PATCHES                                              :{BLACK}Configur
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configurar as correcções
 STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Configurar Correcções
 
+STR_CONFIG_PATCHES_OFF                                          :Desligado
+STR_CONFIG_PATCHES_ON                                           :Ligado
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Mostrar velocidade do veículo na barra de estado: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Permitir a construção em declives e encostas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permitir dimensionamento mais realista das áreas de abrangência: {ORANGE}{STRING}
@@ -1195,6 +1197,7 @@ STR_NETWORK_GAME_INFO                                           :{SILVER}INFORMA
 STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Clientes:  {WHITE}{COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Idioma:  {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Conjunto de blocos:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Tamanho do Mapa:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versão do servidor:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Endereço do servidor:  {WHITE}{STRING} : {NUM}
@@ -1584,6 +1587,7 @@ STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Muito ju
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Demasiadas estações/locais de carga nesta cidade
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Demasiadas estações/locais de carga
 STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Demasiadas paragens de autocarro
+STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Demasiadas estações de carga
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Muito junto de uma estação/local de carga
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Precisa de demolir a estação primeiro
@@ -1654,6 +1658,7 @@ STR_3069_BUOY                                                   :Bóia
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...bóia no caminho
 STR_306B_HELIPORT                                               :{BLACK}Heliporto
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...estação muito extensa
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...estações não-uniformes desactivadas
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientação do Depósito
@@ -2362,6 +2367,12 @@ STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Novos Ve
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Novos Veículos Monocarril
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Novos Veículos Maglev
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Construir Veículo
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clonar Veículo
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Esta acção criará uma cópia do veículo. Pressione Ctrl enquanto clica, para partilhar as ordens
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Esta acção criará uma cópia de um veículo. Clique neste botão e, de seguida, num veículo que se encontre dentro ou fora do depósito. Pressione Ctrl enquanto clica para partilhar as ordens
+STR_CLONE_TRAIN                                                 :{BLACK}Clonar Combóio
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Esta acção criará uma cópia do combóio, incluindo as carruagens. Pressione Ctrl enquanto clica, para partilhar as ordens
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Esta acção criará uma cópia de um combóio, incluindo as carruagens. Clique neste botão e, de seguida, num combóio que se encontre dentro ou fora do depósito. Pressione Ctrl enquanto clica para partilhar as ordens
 STR_8820_RENAME                                                 :{BLACK}Renomear
 STR_8823_SKIP                                                   :{BLACK}Saltar
 STR_8824_DELETE                                                 :{BLACK}Eliminar
@@ -2513,6 +2524,9 @@ STR_9804_NEW_SHIPS                                              :{BLACK}Novos Ba
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Barcos
 STR_9808_NEW_SHIPS                                              :{WHITE}Novos Barcos
 STR_9809_BUILD_SHIP                                             :{BLACK}Construir Barco
+STR_CLONE_SHIP                                                  :{BLACK}Clonar Navio
+STR_CLONE_SHIP_INFO                                             :{BLACK}Esta acção criará uma cópia do navio. Pressione Ctrl enquanto clica, para partilhar as ordens
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Esta acção criará uma cópia de um navio. Clique neste botão e, de seguida, num navio que se encontre dentro ou fora do depósito. Pressione Ctrl enquanto clica para partilhar as ordens
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}O barco deverá estar parado no depósito
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Não é possível vender barco...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Não é possível construir barco...
@@ -2577,6 +2591,9 @@ STR_A000_AIRPORTS                                               :{WHITE}Aeroport
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Não é possível construir aeroporto aqui...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangar
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nova Aeronave
+STR_CLONE_AIRCRAFT                                              :{BLACK}Clonar Aeronave
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Esta acção criará uma cópia da aeronave. Pressione Ctrl enquanto clica, para partilhar as ordens
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Esta acção criará uma cópia de uma aeronave. Clique neste botão e, de seguida, numa aeronave que se encontre dentro ou fora do hangar. Pressione Ctrl enquanto clica para partilhar as ordens
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nova Aeronave
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construir Aeronave
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Não é possível construir aeronave...
@@ -2717,7 +2734,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostrar 
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar todos os navios de cujo itinerário esta estação faz parte
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Substituir Veículos
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituir Veículos
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituir {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Iniciar Substituição de Veículos
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar Substituição de Veículos
 STR_NOT_REPLACING                                               :{BLACK}Não substituindo
