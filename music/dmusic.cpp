@@ -113,20 +113,20 @@ static const char* DMusicMidiStart(const char* const* parm)
 
 static void DMusicMidiStop(void)
 {
-	/* release everything but the segment, which the performance
-	 * will release automatically (and it'll crash if it's been
-	 * released already) */
-
 	seeking = false;
 
-	loader->Release();
-	loader = NULL;
+	performance->Stop(NULL, NULL, 0, 0);
+
+	segment->SetParam(GUID_Unload, -1, 0, 0, performance);
+	segment->Release();
+	segment = NULL;
 
 	performance->CloseDown();
 	performance->Release();
 	performance = NULL;
 
-	segment = NULL;
+	loader->Release();
+	loader = NULL;
 
 	proc.CoUninitialize();
 }
