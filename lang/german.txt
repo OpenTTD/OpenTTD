@@ -2735,7 +2735,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Zeige al
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Zeige alle Schiffe, die diesen Hafen ansteuern
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Ersetze Fahrzeuge
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ersetze Fahrzeuge
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ersetze {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Fahrzeugersetzung aktivieren
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Fahrzeugersetzung deaktivieren
 STR_NOT_REPLACING                                               :{BLACK}Keine Ersetzung
