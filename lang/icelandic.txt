@@ -2734,7 +2734,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Sýna all
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Sýna öll skip sem hafa þessa stöð á áætlun
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Skipta út vögnum
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Skipta út vögnum
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Endurnýja {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Hefja skipti
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stöðva skipti
 STR_NOT_REPLACING                                               :{BLACK}Skipti ekki

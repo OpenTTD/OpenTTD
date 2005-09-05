@@ -2734,7 +2734,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Geef all
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Geef alle schepen weer die dit station in hun opdrachtenlijst hebben
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Vervang Voertuigen
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vervang Voertuigen
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vervang {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start het Vervangen
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop het Vervangen
 STR_NOT_REPLACING                                               :{BLACK}Niet aan het vervangen

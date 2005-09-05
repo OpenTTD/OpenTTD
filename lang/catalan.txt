@@ -2734,7 +2734,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostra t
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostra tots els vaixells que tinguin aquest port al seu itinerari
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Reemplaçar Vehicles
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Reemplaçar Vehicles
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substitueix {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Inici de reemplaçament de Vehicles
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Fi de reemplaçament de Vehicles
 STR_NOT_REPLACING                                               :{BLACK}No reemplaçar
