@@ -1,7 +1,7 @@
 ##name Turkish
 ##ownname Türkçe
 ##isocode tr
-##plural 0
+##plural 1
 
 ##id 0x0000
 STR_NULL                                                        :

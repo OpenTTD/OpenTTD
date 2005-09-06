@@ -1,7 +1,7 @@
 ##name Slovenian
 ##ownname Slovenscina
 ##isocode sl
-##plural 0
+##plural 8
 
 ##id 0x0000
 STR_NULL                                                        :
