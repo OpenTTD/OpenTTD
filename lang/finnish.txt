@@ -1425,7 +1425,6 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Rautatie tavall
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Rautatie esiopastimin
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Rautatie poistumisopastimin
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Rautatie yhdistetyin opastimin
-STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :
 
 
 

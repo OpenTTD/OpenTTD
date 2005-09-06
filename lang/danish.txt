@@ -156,7 +156,6 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Det kan 
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan ikke rydde området....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, Alle retigheder reserveret
 STR_00B7_VERSION                                                :{BLACK}OpenTTD version {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2005 The OpenTTD team
 STR_TRANSLATED_BY                                               :{BLACK}  Oversætter(e) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -271,7 +270,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}For mang
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Valgte navn er allerede i brug
 
 STR_0133_WINDOWS                                                :Windows
-STR_0134_UNIX                                                   :Linux
+STR_0134_UNIX                                                   :Unix
 STR_0135_OSX                                                    :OSX
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
@@ -1260,7 +1259,6 @@ STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Lav en n
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Tilskuer spil
 STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Se et spil som tilskuer
 STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Tilslut dig selskab
-STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Help manage this company
 STR_NETWORK_REFRESH                                             :{BLACK}Genopfrisk serveren
 STR_NETWORK_REFRESH_TIP                                         :{BLACK}Genopfrisk server info
 
@@ -2452,7 +2450,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Kan ikke vende retningen af toget...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Omdøb tog-/togvognstypen
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kan ikke omdøbe tog-/togvognstypen...
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Make the highlighted order force the vehicle to dump cargo
 STR_886F_TRANSFER                                               :{BLACK}Transfer
 
 STR_TRAIN_STOPPING                                              :{RED}Stopper
