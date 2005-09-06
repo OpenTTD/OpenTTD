@@ -70,19 +70,19 @@ STR_004A_TOFFEE                                                 :Toffee
 STR_004B_BATTERY                                                :Batterij
 STR_004C_PLASTIC                                                :Plestik
 STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA16} passazjier
-STR_0050_TON_OF_COAL                                            :{COMMA16} ton coal
-STR_0051_BAG_OF_MAIL                                            :{COMMA16} tassen mei post
+STR_004F_PASSENGER                                              :{COMMA} passazjier
+STR_0050_TON_OF_COAL                                            :{COMMA} ton coal
+STR_0051_BAG_OF_MAIL                                            :{COMMA} tassen mei post
 STR_0052_OF_OIL                                                 :{VOLUME} oalje
-STR_0055_TON_OF_GRAIN                                           :{COMMA16} ton graan
-STR_0056_TON_OF_WOOD                                            :{COMMA16} ton hout
-STR_0058_TON_OF_STEEL                                           :{COMMA16} ton stiel
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA16} tas kostber guod
-STR_005B_TON_OF_MAIZE                                           :{COMMA16} ton mais
-STR_005C_TON_OF_FRUIT                                           :{COMMA16} ton fruit
-STR_005E_TON_OF_FOOD                                            :{COMMA16} ton iten
-STR_005F_TON_OF_PAPER                                           :{COMMA16} ton papier
-STR_0060_BAG_OF_GOLD                                            :{COMMA16} tas goud
+STR_0055_TON_OF_GRAIN                                           :{COMMA} ton graan
+STR_0056_TON_OF_WOOD                                            :{COMMA} ton hout
+STR_0058_TON_OF_STEEL                                           :{COMMA} ton stiel
+STR_0059_BAG_OF_VALUABLES                                       :{COMMA} tas kostber guod
+STR_005B_TON_OF_MAIZE                                           :{COMMA} ton mais
+STR_005C_TON_OF_FRUIT                                           :{COMMA} ton fruit
+STR_005E_TON_OF_FOOD                                            :{COMMA} ton iten
+STR_005F_TON_OF_PAPER                                           :{COMMA} ton papier
+STR_0060_BAG_OF_GOLD                                            :{COMMA} tas goud
 STR_0061_OF_WATER                                               :{VOLUME} wetter
 STR_00B2_MESSAGE                                                :{YELLOW}Bericht
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Bericht fan {STRING}

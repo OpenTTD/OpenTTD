@@ -83,37 +83,37 @@ STR_004B_BATTERY                                                :Batareyki
 STR_004C_PLASTIC                                                :Plastik
 STR_004D_FIZZY_DRINK                                            :Shipuchie napitki
 STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA16} passajirov
-STR_0050_TON_OF_COAL                                            :{COMMA16} tonna uglya
-STR_0051_BAG_OF_MAIL                                            :{COMMA16} sumka s pochtoy
+STR_004F_PASSENGER                                              :{COMMA} passajirov
+STR_0050_TON_OF_COAL                                            :{COMMA} tonna uglya
+STR_0051_BAG_OF_MAIL                                            :{COMMA} sumka s pochtoy
 STR_0052_OF_OIL                                                 :{VOLUME} nefti
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA16} golov domashnego skota
-STR_0054_CRATE_OF_GOODS                                         :{COMMA16} korobka s tovarom
-STR_0055_TON_OF_GRAIN                                           :{COMMA16} tonna zerna
-STR_0056_TON_OF_WOOD                                            :{COMMA16} tonna dereva
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA16} tonna zheleznoy rudi
-STR_0058_TON_OF_STEEL                                           :{COMMA16} tonna stali
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA16} sumka s dragocennostyami
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA16} tonna mednoy rudi
-STR_005B_TON_OF_MAIZE                                           :{COMMA16} tonna kukuruzi
-STR_005C_TON_OF_FRUIT                                           :{COMMA16} tonna fruktov
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA16} meshok s almazami
-STR_005E_TON_OF_FOOD                                            :{COMMA16} tonna prodovolstviya
-STR_005F_TON_OF_PAPER                                           :{COMMA16} tonna bumagi
-STR_0060_BAG_OF_GOLD                                            :{COMMA16} meshok zolota
+STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} golov domashnego skota
+STR_0054_CRATE_OF_GOODS                                         :{COMMA} korobka s tovarom
+STR_0055_TON_OF_GRAIN                                           :{COMMA} tonna zerna
+STR_0056_TON_OF_WOOD                                            :{COMMA} tonna dereva
+STR_0057_TON_OF_IRON_ORE                                        :{COMMA} tonna zheleznoy rudi
+STR_0058_TON_OF_STEEL                                           :{COMMA} tonna stali
+STR_0059_BAG_OF_VALUABLES                                       :{COMMA} sumka s dragocennostyami
+STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} tonna mednoy rudi
+STR_005B_TON_OF_MAIZE                                           :{COMMA} tonna kukuruzi
+STR_005C_TON_OF_FRUIT                                           :{COMMA} tonna fruktov
+STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} meshok s almazami
+STR_005E_TON_OF_FOOD                                            :{COMMA} tonna prodovolstviya
+STR_005F_TON_OF_PAPER                                           :{COMMA} tonna bumagi
+STR_0060_BAG_OF_GOLD                                            :{COMMA} meshok zolota
 STR_0061_OF_WATER                                               :{VOLUME} vodi
-STR_0062_TON_OF_WHEAT                                           :{COMMA16} tonna pshenici
+STR_0062_TON_OF_WHEAT                                           :{COMMA} tonna pshenici
 STR_0063_OF_RUBBER                                              :{VOLUME} rezini
-STR_0064_TON_OF_SUGAR                                           :{COMMA16} tonna sahara
-STR_0065_TOY                                                    :{COMMA16} igrushka
-STR_0066_BAG_OF_CANDY                                           :{COMMA16} meshok sladostey
+STR_0064_TON_OF_SUGAR                                           :{COMMA} tonna sahara
+STR_0065_TOY                                                    :{COMMA} igrushka
+STR_0066_BAG_OF_CANDY                                           :{COMMA} meshok sladostey
 STR_0067_OF_COLA                                                :{VOLUME} koli
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA16} tonna saharnoy vati
-STR_0069_BUBBLE                                                 :{COMMA16} puzirki
-STR_006A_TON_OF_TOFFEE                                          :{COMMA16} tonna irisok
-STR_006B_BATTERY                                                :{COMMA16} batareyki
+STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} tonna saharnoy vati
+STR_0069_BUBBLE                                                 :{COMMA} puzirki
+STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonna irisok
+STR_006B_BATTERY                                                :{COMMA} batareyki
 STR_006C_OF_PLASTIC                                             :{VOLUME} plastika
-STR_006D_FIZZY_DRINK                                            :{COMMA16} shipuchie napitki
+STR_006D_FIZZY_DRINK                                            :{COMMA} shipuchie napitki
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PS
 STR_0090_CL                                                     :{TINYFONT}CL
@@ -163,8 +163,8 @@ STR_00DE_BROWN                                                  :Korichneviy
 STR_00DF_GREY                                                   :Seriy
 STR_00E0_WHITE                                                  :Beliy
 STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Slishkom mnogo transporta v igre
-STR_00E2                                                        :{BLACK}{COMMA16}
-STR_00E3                                                        :{RED}{COMMA16}
+STR_00E2                                                        :{BLACK}{COMMA}
+STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}Poziciya
 STR_00E5_CONTOURS                                               :Konturi
 STR_00E6_VEHICLES                                               :Transportnie sredstva

@@ -113,7 +113,7 @@ STR_0069_BUBBLE                                                 :{COMMA} balonck
 STR_006A_TON_OF_TOFFEE                                          :{COMMA} ton karamele
 STR_006B_BATTERY                                                :{COMMA} baterij
 STR_006C_OF_PLASTIC                                             :{VOLUME} plastike
-STR_006D_FIZZY_DRINK                                            :{COMMA16} gaziranih pijac
+STR_006D_FIZZY_DRINK                                            :{COMMA} gaziranih pijac
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}PO
 STR_0090_CL                                                     :{TINYFONT}PR
@@ -188,8 +188,8 @@ STR_00DE_BROWN                                                  :Rjava
 STR_00DF_GREY                                                   :Siva
 STR_00E0_WHITE                                                  :Bela
 STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Prevec vozil v igri
-STR_00E2                                                        :{BLACK}{COMMA16}
-STR_00E3                                                        :{RED}{COMMA16}
+STR_00E2                                                        :{BLACK}{COMMA}
+STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}Lokacija
 STR_00E5_CONTOURS                                               :Nacrt
 STR_00E6_VEHICLES                                               :Vozila
@@ -362,7 +362,7 @@ STR_016D_DEC                                                    :Dec
 ############ range for months ends
 
 STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
-STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUMU16}
+STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}Pavza
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Shrani igro, zapusti igro, izhod
@@ -409,17 +409,17 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Vkljuci/
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Profit to leto: {CURRENCY} (prejsnje leto: {CURRENCY})
 
 ############ range for service numbers starts
-STR_AGE                                                         :{COMMA16} let{P o ""} ({COMMA16})
-STR_AGE_RED                                                     :{RED}{COMMA16} let{P o ""} ({COMMA16})
+STR_AGE                                                         :{COMMA} let{P o ""} ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} let{P o ""} ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Cestno vozilo
 STR_019D_AIRCRAFT                                               :Letalo
 STR_019E_SHIP                                                   :Ladja
 STR_019F_TRAIN                                                  :Vlak
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA16} postaja staro
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA16} postaja zelo staro
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA16} postaja zelo stara in nujno rabi zamenjavo
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} postaja staro
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} postaja zelo staro
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} postaja zelo stara in nujno rabi zamenjavo
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informacije o zemlji
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Cena za ocistit: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cena za ocistit: {LTBLUE}{CURRENCY}
@@ -464,7 +464,7 @@ STR_01C9_30TH                                                   :30.
 STR_01CA_31ST                                                   :31.
 ############ range for days	ends
 
-STR_01CB                                                        :{TINYFONT}{COMMA16}
+STR_01CB                                                        :{TINYFONT}{COMMA}
 
 
 
@@ -556,7 +556,7 @@ STR_CONFIG_PATCHES_ON                                           :Vklopi
 
 
 STR_CONFIG_PATCHES_DISABLED                                     :dizejblano
-STR_CONFIG_PATCHES_INT32                                        :{INT32}
+STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 

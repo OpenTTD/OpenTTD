@@ -83,36 +83,36 @@ STR_004B_BATTERY                                                :Pil
 STR_004C_PLASTIC                                                :Plastik
 STR_004D_FIZZY_DRINK                                            :Fizzy Gazozu
 STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA16} yolcu
-STR_0050_TON_OF_COAL                                            :{COMMA16} ton kömür
-STR_0051_BAG_OF_MAIL                                            :{COMMA16} çanta posta
+STR_004F_PASSENGER                                              :{COMMA} yolcu
+STR_0050_TON_OF_COAL                                            :{COMMA} ton kömür
+STR_0051_BAG_OF_MAIL                                            :{COMMA} çanta posta
 STR_0052_OF_OIL                                                 :{VOLUME} petrol
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA16} adet hayvansal ürün
-STR_0054_CRATE_OF_GOODS                                         :{COMMA16} kasa mamül madde
-STR_0055_TON_OF_GRAIN                                           :{COMMA16} ton hububat
-STR_0056_TON_OF_WOOD                                            :{COMMA16} ton agaç
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA16} ton demir
-STR_0058_TON_OF_STEEL                                           :{COMMA16} ton çelik
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA16} çanta mücevherat
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA16} ton bakir
-STR_005B_TON_OF_MAIZE                                           :{COMMA16} ton misir
-STR_005C_TON_OF_FRUIT                                           :{COMMA16} ton meyve
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA16} çanta elmas
-STR_005E_TON_OF_FOOD                                            :{COMMA16} ton gida
-STR_005F_TON_OF_PAPER                                           :{COMMA16} ton kagit
-STR_0060_BAG_OF_GOLD                                            :{COMMA16} çanta altin
+STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} adet hayvansal ürün
+STR_0054_CRATE_OF_GOODS                                         :{COMMA} kasa mamül madde
+STR_0055_TON_OF_GRAIN                                           :{COMMA} ton hububat
+STR_0056_TON_OF_WOOD                                            :{COMMA} ton agaç
+STR_0057_TON_OF_IRON_ORE                                        :{COMMA} ton demir
+STR_0058_TON_OF_STEEL                                           :{COMMA} ton çelik
+STR_0059_BAG_OF_VALUABLES                                       :{COMMA} çanta mücevherat
+STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} ton bakir
+STR_005B_TON_OF_MAIZE                                           :{COMMA} ton misir
+STR_005C_TON_OF_FRUIT                                           :{COMMA} ton meyve
+STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} çanta elmas
+STR_005E_TON_OF_FOOD                                            :{COMMA} ton gida
+STR_005F_TON_OF_PAPER                                           :{COMMA} ton kagit
+STR_0060_BAG_OF_GOLD                                            :{COMMA} çanta altin
 STR_0061_OF_WATER                                               :{VOLUME} su
-STR_0062_TON_OF_WHEAT                                           :{COMMA16} ton bugday
-STR_0064_TON_OF_SUGAR                                           :{COMMA16} ton seker
-STR_0065_TOY                                                    :{COMMA16} oyuncak
-STR_0066_BAG_OF_CANDY                                           :{COMMA16} çanta sekerleme
+STR_0062_TON_OF_WHEAT                                           :{COMMA} ton bugday
+STR_0064_TON_OF_SUGAR                                           :{COMMA} ton seker
+STR_0065_TOY                                                    :{COMMA} oyuncak
+STR_0066_BAG_OF_CANDY                                           :{COMMA} çanta sekerleme
 STR_0067_OF_COLA                                                :{VOLUME} kola
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA16} ton pamuk helva
-STR_0069_BUBBLE                                                 :{COMMA16} köpükçük
-STR_006A_TON_OF_TOFFEE                                          :{COMMA16} ton tofita
-STR_006B_BATTERY                                                :{COMMA16} pil
+STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} ton pamuk helva
+STR_0069_BUBBLE                                                 :{COMMA} köpükçük
+STR_006A_TON_OF_TOFFEE                                          :{COMMA} ton tofita
+STR_006B_BATTERY                                                :{COMMA} pil
 STR_006C_OF_PLASTIC                                             :{VOLUME} plastik
-STR_006D_FIZZY_DRINK                                            :{COMMA16} fizzy gazozu
+STR_006D_FIZZY_DRINK                                            :{COMMA} fizzy gazozu
 STR_008E                                                        :
 STR_008F_PS                                                     :{TINYFONT}YL
 STR_0090_CL                                                     :{TINYFONT}KÖ
@@ -186,8 +186,8 @@ STR_00DE_BROWN                                                  :Kahverengi
 STR_00DF_GREY                                                   :Gri
 STR_00E0_WHITE                                                  :Beyaz
 STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Oyunda çok fazla vasita var
-STR_00E2                                                        :{BLACK}{COMMA16}
-STR_00E3                                                        :{RED}{COMMA16}
+STR_00E2                                                        :{BLACK}{COMMA}
+STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}Konum
 STR_00E5_CONTOURS                                               :Dis Hatlar
 STR_00E6_VEHICLES                                               :Vasitalar
@@ -342,7 +342,7 @@ STR_016D_DEC                                                    :Ara
 ############ range for months ends
 
 STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
-STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUMU16}
+STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}Duraklat
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Kaydet, Oyundan Çik, Çik
@@ -386,15 +386,15 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Haritada
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Bu yilki kari: {CURRENCY} (geçen sene: {CURRENCY})
 
 ############ range for service numbers starts
-STR_AGE                                                         :{COMMA16} yil ({COMMA16})
-STR_AGE_RED                                                     :{RED}{COMMA16} yil ({COMMA16})
+STR_AGE                                                         :{COMMA} yil ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} yil ({COMMA})
 ############ range for service numbers ends
 
 STR_019E_SHIP                                                   :Gemi
 STR_019F_TRAIN                                                  :Tren
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA16} yaslandi
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA16} çok yaslandi
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA16} çok yaslandi ve acilen yenilenmesi gerekli.
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} yaslandi
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} çok yaslandi
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} çok yaslandi ve acilen yenilenmesi gerekli.
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Arazi bilgileri
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Düzenleme bedeli: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Düzenleme bedeli: {LTBLUE}{CURRENCY}
@@ -438,11 +438,11 @@ STR_01C9_30TH                                                   :30.
 STR_01CA_31ST                                                   :31.
 ############ range for days	ends
 
-STR_01CB                                                        :{TINYFONT}{COMMA16}
+STR_01CB                                                        :{TINYFONT}{COMMA}
 
 STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Kabul edilen kargo: {LTBLUE}{STRING}
 
-STR_01D1_8                                                      :({COMMA8}/8 {STRING})
+STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz Jukebox
 STR_01D3_SOUND_MUSIC                                            :Ses/muzik
 STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Ses/müzik penceresini göster
@@ -461,16 +461,16 @@ STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Müzik ça
 STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Müzik çalmaya basla
 STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Müzik ve ses efektleri seviyesini ayarlamak için sürükle
 STR_01E3                                                        :{DKGREEN}{TINYFONT}--
-STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA8}
-STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA8}
+STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
+STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Parça{SETX 88}Ad
 STR_01E9_SHUFFLE                                                :{TINYFONT}Karisik
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Program
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Müzik Programi Seçimi
-STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA16} "{STRING}"
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA16} "{STRING}"
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Parça Indeksi
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Temizle
@@ -508,9 +508,9 @@ STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Genel b
 STR_MESSAGES_ALL                                                :{YELLOW}Tüm mesaj tipleri için ayarlar(kapali/özet/dolu)
 STR_MESSAGE_SOUND                                               :{YELLOW}Özet yeni mesajlar için sesli uyari
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...bir önceki mevkiden çok uzak
-STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Yüksek seviyeye ulasan firmalar {NUMU16}{}({STRING} Seviye)
-STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Firma Lig Tablosu{NUMU16}
-STR_0212                                                        :{BIGFONT}{COMMA16}.
+STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Yüksek seviyeye ulasan firmalar {NUM}{}({STRING} Seviye)
+STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Firma Lig Tablosu{NUM}
+STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Is Adami
 STR_0214_ENTREPRENEUR                                           :Büyük Yatirimci
 STR_0215_INDUSTRIALIST                                          :Sektör Öncüsü
@@ -519,10 +519,10 @@ STR_0217_MAGNATE                                                :Tekel
 STR_0218_MOGUL                                                  :Tekel Devi
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Yüzyilin Tycoon'u
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{STRING}, {STRING}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA16})
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{STRING} '{STRING}' seviyesine ulasti!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{STRING} - {STRING} '{STRING}' seviyesine ulasti!
-STR_021F                                                        :{BLUE}{COMMA16}
+STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Senaryo olustur
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Senaryo editörü
