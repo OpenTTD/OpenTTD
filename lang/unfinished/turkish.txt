@@ -440,7 +440,7 @@ STR_01CA_31ST                                                   :31.
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
-STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Kabul edilen kargo: {LTBLUE}{STRING}
+STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Kabul edilen kargo: {LTBLUE}
 
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz Jukebox
@@ -518,10 +518,10 @@ STR_0216_CAPITALIST                                             :Endüstri Devi
 STR_0217_MAGNATE                                                :Tekel
 STR_0218_MOGUL                                                  :Tekel Devi
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Yüzyilin Tycoon'u
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{STRING}, {STRING}
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYERNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{STRING} '{STRING}' seviyesine ulasti!
-STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{STRING} - {STRING} '{STRING}' seviyesine ulasti!
+STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} '{STRING}' seviyesine ulasti!
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} - {COMPANY} '{STRING}' seviyesine ulasti!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Senaryo olustur
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD

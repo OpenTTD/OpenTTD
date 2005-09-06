@@ -455,7 +455,7 @@ STR_01CA_31ST                                                   :31.
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
-STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Vastuvõetavad veosed: {LTBLUE}{STRING}
+STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Vastuvõetavad veosed: {LTBLUE}
 
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Muusikakeskus
@@ -531,10 +531,10 @@ STR_0216_CAPITALIST                                             :Kapitalist
 STR_0217_MAGNATE                                                :Magnaat
 STR_0218_MOGUL                                                  :Mogul
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Sajandi suurärimees
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{STRING}, {STRING}
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYERNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{STRING} saavtas '{STRING}' staatuse!
-STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{STRING} {STRING}'st saavutas '{STRING}' staatuse!
+STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} saavtas '{STRING}' staatuse!
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} {COMPANY}'st saavutas '{STRING}' staatuse!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Kaardi tegemine
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
@@ -674,7 +674,7 @@ STR_02B6                                                        :{STRING}  -  {S
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Näitab viimast teadet
 STR_SUMMARY                                                     :Lühike
 STR_FULL                                                        :Täielik
-STR_02BA                                                        :{SILVER}- -  {STRING}  - -
+STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Linnade nimistu
 STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Sõidukite disaini nimed
 STR_02BD                                                        :{BLACK}{STRING}
@@ -1128,9 +1128,9 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Iiriseka
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Suhkrukaevandus ehitamine
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Tööstused
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}){YELLOW} ({COMMA}% transporditud)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{TOWN} {STRING}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% transporditud)
-STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{TOWN} {STRING}
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}% transporditud)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% transporditud)
+STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...liiga lähedal mõnele teisele tööstusele
 
@@ -1432,7 +1432,7 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Raudtee ülesõit
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Linnad
-STR_TOWN_LABEL_POP                                              :{WHITE}{STRING} ({COMMA})
+STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Ehitis tuleb enne hävitada
 STR_2005                                                        :{WHITE}{TOWN}
@@ -1466,22 +1466,22 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Kohalik 
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Näitab informatsiooni kohaliku võimu kohta
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} kohalik võim
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Ettevõtete reitingud:
-STR_2024                                                        :{YELLOW}{STRING}{STRING}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsiidiumid
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Pakutavad subsiidiumid teenusepakkumise eest:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} kohast {STRING} kohta {STRING}
 STR_2028_BY                                                     :{YELLOW} (kuni {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Mitte ühtegi
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Teenused, mida juba subsideeritakse:
-STR_202C_FROM_TO                                                :{ORANGE}{STRING} kohast {STATION} kohta {STATION}{YELLOW} ({STRING}
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} kohast {STATION} kohta {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, kuni {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Pakkumine subsiidiumile lõppes:{}{}Transporditeenuse {STRING} kohast {STRING} kohta {STRING} eest ei maksta enam subsiidiumi.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsiidiumi maksmise aeg sai läbi:{}{}{STRING} kohast {STATION} kohta {STATION} eest ei maksta enam edaspidi subsiidiumit.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Transporditeenusele pakutakse subsiidiumi:{}{}{STRING} kohast {STRING} kohta {STRING}. Esimesele, kes teenust pakkuma hakkab makstakse aasta subsiidiumi!
-STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Teenusesubsiidium makstakse ettevõttele {STRING}!{}{}{STRING} kohast {STATION} kohta {STATION} teenuse eest makstakse järgmisel aastal 50% rohkem!
-STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Teenusesubsiidium makstakse ettevõttele {STRING}!{}{}{STRING} kohast {STATION} kohta {STATION} teenuse eest makstakse järgmisel aastal kahekordselt!
-STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Teenusesubsiidium makstakse ettevõttele {STRING}!{}{}{STRING} kohast {STATION} kohta {STATION} teenuse eest makstakse järgmisel aastal kolmekordselt!
-STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Teenusesubsiidium makstakse ettevõttele {STRING}!{}{}{STRING} kohast {STATION} kohta {STATION} teenuse eest makstakse järgmisel aastal neljakordselt!
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Teenusesubsiidium makstakse ettevõttele {COMPANY}!{}{}{STRING} kohast {STATION} kohta {STATION} teenuse eest makstakse järgmisel aastal 50% rohkem!
+STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Teenusesubsiidium makstakse ettevõttele {COMPANY}!{}{}{STRING} kohast {STATION} kohta {STATION} teenuse eest makstakse järgmisel aastal kahekordselt!
+STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Teenusesubsiidium makstakse ettevõttele {COMPANY}!{}{}{STRING} kohast {STATION} kohta {STATION} teenuse eest makstakse järgmisel aastal kolmekordselt!
+STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Teenusesubsiidium makstakse ettevõttele {COMPANY}!{}{}{STRING} kohast {STATION} kohta {STATION} teenuse eest makstakse järgmisel aastal neljakordselt!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} kohalik võim keelab uut lennujaama siia ehitada
 STR_2036_COTTAGES                                               :Suvila
 STR_2037_HOUSES                                                 :Majad
@@ -1515,7 +1515,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Uute ärihoonete ehitamise rahastamine selles linnas.{} Hind: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Üheks aastaks monopoolsete transpordiõiguste ostmine selles linnas. Linna võimud lubavad reisijate ja kauba veoks kasutada ainult sinu jaamasid.{} Hind: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Linnavõimudele altkäemaksu pakkumine, et tõsta ettevõtte reitingut. Vahelejäämise korral tuleb maksta trahvi.{} Hind: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Liikluskaos linnas {TOWN}!{}{}Teedeehitus programmi rahastab {STRING}, mis tekitab 6 kuud häireid maanteesõidukitele!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Liikluskaos linnas {TOWN}!{}{}Teedeehitus programmi rahastab {COMPANY}, mis tekitab 6 kuud häireid maanteesõidukitele!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (ehitamisel)
@@ -1588,7 +1588,7 @@ STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Bussijaa
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Laadimisplatsi orientatsioon.
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Enne pead pussijaama hävitama
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Enne pead laadimisplatsi hävitama
-STR_3048_STATIONS                                               :{WHITE}{STRING} - {COMMA} Jaamad
+STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Jaamad
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Puudub -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...ebasobiv koht
@@ -1642,7 +1642,7 @@ STR_4000_SAVE_GAME                                              :{WHITE}Mängu sa
 STR_4001_LOAD_GAME                                              :{WHITE}Mängu laadimine
 STR_4002_SAVE                                                   :{BLACK}Salvesta
 STR_4003_DELETE                                                 :{BLACK}Kustuta
-STR_4004                                                        :{STRING}, {DATE_LONG}
+STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabaiti vaba
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Ei suuda kettalt lugeda
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Mängu salvestamine ebaõnnestus
@@ -1658,7 +1658,7 @@ STR_4010_GENERATE_RANDOM_NEW_GAME                               :Genereeri juhus
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} on ees
-STR_4801                                                        :{WHITE}{TOWN} {STRING}
+STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :Kivisöe kaevandust
 STR_4803_POWER_STATION                                          :Elektrijaama
 STR_4804_SAWMILL                                                :Saeveskit
@@ -1711,18 +1711,18 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Hind: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Seda tüüpi tööstust ei saa siia ehitada...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...metsa saab istutada ainult ülespoole lumepiiri
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{TOWN} {STRING} teatab sulgemisest!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}{TOWN} {STRING} teatab sulgemisest varustatuse probleemide tõttu!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Lähiümbruse puude puudumine põhjustab linna {TOWN} {STRING} sulgemise!
-STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}Linnal {TOWN} {STRING} tõuseb populatsioon!
-STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Linna {TOWN} {STRING} lähedal avati uus kivisöe kiht!{}Toodang kahekordistub!
-STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Linna {TOWN} {STRING} leiti juurde nafta reserve!{}Toodang kahekordistub!
-STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Linna {TOWN} {STRING} võettis kasutusele uues põllutöövahendid! Toodang kahekordistub!
-STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{TOWN} {STRING} toodang langes 50%
-STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Putukate rünnak - {TOWN} {STRING}!{}Toodang langes 50%
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} teatab sulgemisest!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}{INDUSTRY} teatab sulgemisest varustatuse probleemide tõttu!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Lähiümbruse puude puudumine põhjustab linna {INDUSTRY} sulgemise!
+STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}Linnal {INDUSTRY} tõuseb populatsioon!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Linna {INDUSTRY} lähedal avati uus kivisöe kiht!{}Toodang kahekordistub!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Linna {INDUSTRY} leiti juurde nafta reserve!{}Toodang kahekordistub!
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Linna {INDUSTRY} võettis kasutusele uues põllutöövahendid! Toodang kahekordistub!
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} toodang langes 50%
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Putukate rünnak - {INDUSTRY}!{}Toodang langes 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...saab ainult ehitada kaardi serva
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} toodang ettevõttes {TOWN} {STRING} kasvab {COMMA}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} toodang ettevõttes {TOWN} {STRING} langeb {COMMA}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} toodang ettevõttes {INDUSTRY} kasvab {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} toodang ettevõttes {INDUSTRY} langeb {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Rong tunnelis
@@ -1778,7 +1778,7 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...see o
 ############ These strings may never get a new id, or savegames	will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
-STR_SV_UNNAMED                                                  :Nimeta{SKIP}
+STR_SV_UNNAMED                                                  :Nimeta
 STR_SV_TRAIN_NAME                                               :Rong {COMMA}
 STR_SV_ROADVEH_NAME                                             :Maantee sõiduk {COMMA}
 STR_SV_SHIP_NAME                                                :Laev {COMMA}
@@ -1895,7 +1895,7 @@ STR_683B_HOSTILE                                                :Vaenulik
 
 ##id 0x7000
 STR_7000                                                        :
-STR_7001                                                        :{WHITE}{STRING}{BLACK}{STRING}
+STR_7001                                                        :{WHITE}{COMPANY}{BLACK}{PLAYERNAME}
 STR_7002_PLAYER                                                 :(Mängija {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Uus nägu
 STR_7005_COLOR_SCHEME                                           :{BLACK}Värvivalik
@@ -1907,7 +1907,7 @@ STR_700A_COMPANY_NAME                                           :Ettevõtte nimi
 STR_700B_PRESIDENT_S_NAME                                       :Presidendi nimi
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Ei saa ettevõtte nime muuta...
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Ei saa presidendi nime muuta...
-STR_700E_FINANCES                                               :{WHITE}{STRING} finantsid{BLACK}{STRING}
+STR_700E_FINANCES                                               :{WHITE}{COMPANY} finantsid{BLACK}{PLAYERNAME}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Kulud/tulud
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Ehitamine
@@ -1926,7 +1926,7 @@ STR_701D_OTHER                                                  :{GOLD}Kõik muu
 STR_701E                                                        :{BLACK}-{CURRENCY64}
 STR_701F                                                        :{BLACK}+{CURRENCY64}
 STR_7020_TOTAL                                                  :{WHITE}Kokku:
-STR_7021                                                        :{STRING}{STRING}
+STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Sissetulekute graafik
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Opereerimiskasumi graafik
@@ -1948,7 +1948,7 @@ STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Ettevõtt
 STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Värvil vajutades valib värvi
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Raha laenamine
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Osaline laenu tagasimaksmine
-STR_7037_PRESIDENT                                              :{WHITE}{STRING}{}{GOLD}(President)
+STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(President)
 STR_7038_INAUGURATED                                            :{GOLD}Asutatud: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Sõidukid:
 STR_7042_NONE                                                   :{WHITE}Mitte ühtegi
@@ -1969,18 +1969,18 @@ STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Transpor
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Ettevõtte tegevuse reiting (maksimaalne reiting=1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Ettevõtte väärtus
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Ettevõtete edetabel
-STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{STRING} {BLACK}{STRING} '{STRING}'
-STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{STRING} {BLACK}{STRING}  '{STRING}'
+STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
+STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Ettevõttel on prbleeme!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}Ettevõte {STRING} müüakse maha ja kuulutatakse pankrot, kui tulemused peatselt ei parane!
-STR_7058_PRESIDENT                                              :{BLACK}{STRING}{}(President)
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}Ettevõte {COMPANY} müüakse maha ja kuulutatakse pankrot, kui tulemused peatselt ei parane!
+STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(President)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Ettevõtete ühinemine!
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{STRING} müüdi ettevõttele {STRING} {CURRENCY} eest!
-STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Otsime ettevõtet, kes võtaks meie firma üle.{}{}Kas soovite osta ettevõtte {STRING} {CURRENCY} eest?
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY} müüdi ettevõttele {COMPANY} {CURRENCY} eest!
+STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Otsime ettevõtet, kes võtaks meie firma üle.{}{}Kas soovite osta ettevõtte {COMPANY} {CURRENCY} eest?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Pankrot!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{STRING} suleti asutajate poolt ja kõik varad müüakse maha!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY} suleti asutajate poolt ja kõik varad müüakse maha!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Loodi uus ettevõte!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{STRING} alustas ehitustöid linna {TOWN} lähedal!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} alustas ehitustöid linna {TOWN} lähedal!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Ettevõtet ei saa osta...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Veoste hindadte graafik
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Päevi teel
@@ -2015,9 +2015,9 @@ STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Osta 25%
 STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Müü 25% ettevõtte aktsiatest
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Ei saa 25% selle ettevõtte aktsiatest osta...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Ei saa 25% selle ettevõtte aktsiatest müüa...
-STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% on ettevõtte {STRING} käes)
-STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% on ettevõtte {STRING} käes{}   {COMMA}% on ettevõtte {STRING} käes)
-STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{STRING} võeti üle ettevõtte {STRING} poolt!
+STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% on ettevõtte {COMPANY} käes)
+STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% on ettevõtte {COMPANY} käes{}   {COMMA}% on ettevõtte {COMPANY} käes)
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} võeti üle ettevõtte {COMPANY} poolt!
 STR_7080_PROTECTED                                              :{WHITE}See kompanii pole veel piisavalt vana, et aktsiaid vahetada...
 
 ##id 0x8000
