@@ -681,6 +681,8 @@ C_SOURCES += sound/null_s.c
 C_SOURCES += video/dedicated_v.c
 C_SOURCES += video/null_v.c
 
+# AI related files
+C_SOURCES += ai/ai.c
 C_SOURCES += ai/default/default.c
 C_SOURCES += ai/trolly/trolly.c
 C_SOURCES += ai/trolly/build.c

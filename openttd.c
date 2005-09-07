@@ -39,6 +39,7 @@
 #include "signs.h"
 #include "depot.h"
 #include "waypoint.h"
+#include "ai/ai.h"
 
 #include <stdarg.h>
 
@@ -50,7 +51,6 @@
 void GenerateWorld(int mode, uint size_x, uint size_y);
 void CallLandscapeTick(void);
 void IncreaseDate(void);
-void RunOtherPlayersLoop(void);
 void DoPaletteAnimations(void);
 void MusicLoop(void);
 void ResetMusic(void);
@@ -452,6 +452,9 @@ int ttd_main(int argc, char* argv[])
 	/* initialize all variables that are allocated dynamically */
 	InitializeDynamicVariables();
 
+	/* start the AI */
+	AI_Initialize();
+
 	// Sample catalogue
 	DEBUG(misc, 1) ("Loading sound effects...");
 	MxInitialize(11025);
@@ -534,6 +537,9 @@ int ttd_main(int argc, char* argv[])
 
 	/* uninitialize variables that are allocated dynamic */
 	UnInitializeDynamicVariables();
+
+	/* stop the AI */
+	AI_Uninitialize();
 
 	/* Close all and any open filehandles */
 	FioCloseAll();
@@ -870,10 +876,7 @@ void StateGameLoop(void)
 		CallVehicleTicks();
 		CallLandscapeTick();
 
-		// To bad the AI does not work in multiplayer, because states are not saved
-		//  perfectly
-		if (!_networking)
-			RunOtherPlayersLoop();
+		AI_RunGameLoop();
 
 		CallWindowTickEvent();
 		NewsLoop();

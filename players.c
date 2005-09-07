@@ -23,6 +23,7 @@
 #include "sound.h"
 #include "network.h"
 #include "variables.h"
+#include "ai/ai.h"
 
 PlayerID _current_player;
 
@@ -473,16 +474,15 @@ static Player *AllocatePlayer(void)
 Player *DoStartupNewPlayer(bool is_ai)
 {
 	Player *p;
-	int index, i;
+	int i;
 
 	p = AllocatePlayer();
-	if (p == NULL) return NULL;
-
-	index = p->index;
+	if (p == NULL)
+		return NULL;
 
 	// Make a color
 	p->player_color = GeneratePlayerColor();
-	_player_colors[index] = p->player_color;
+	_player_colors[p->index] = p->player_color;
 	p->name_1 = STR_SV_UNNAMED;
 	p->is_active = true;
 
@@ -492,7 +492,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 	p->ai.state = 5; /* AIS_WANT_NEW_ROUTE */
 	p->share_owners[0] = p->share_owners[1] = p->share_owners[2] = p->share_owners[3] = 0xFF;
 
-	p->avail_railtypes = GetPlayerRailtypes(index);
+	p->avail_railtypes = GetPlayerRailtypes(p->index);
 	p->inaugurated_year = _cur_year;
 	p->face = Random();
 
@@ -510,6 +510,9 @@ Player *DoStartupNewPlayer(bool is_ai)
 	InvalidateWindow(WC_TOOLBAR_MENU, 0);
 	InvalidateWindow(WC_CLIENT_LIST, 0);
 
+	if (is_ai && (!_networking || _network_server) && _ai.enabled)
+		AI_StartNewAI(p->index);
+
 	return p;
 }
 
@@ -526,9 +529,10 @@ static void MaybeStartNewPlayer(void)
 
 	// count number of competitors
 	n = 0;
-	for(p=_players; p!=endof(_players); p++)
+	FOR_ALL_PLAYERS(p) {
 		if (p->is_active && p->is_ai)
 			n++;
+	}
 
 	// when there's a lot of computers in game, the probability that a new one starts is lower
 	if (n < (uint)_opt.diff.max_no_competitors)
@@ -560,31 +564,10 @@ void OnTick_Players(void)
 	_cur_player_tick_index = (_cur_player_tick_index + 1) % MAX_PLAYERS;
 	if (p->name_1 != 0) GenerateCompanyName(p);
 
-	if (!_networking && _game_mode != GM_MENU && !--_next_competitor_start) {
+	/* XXX -- For now, multiplayer AIs still aren't working, WIP! */
+	//if (_ai.enabled && (!_networking || _network_server) && _game_mode != GM_MENU && !--_next_competitor_start)
+	if (_ai.enabled && !_networking && _game_mode != GM_MENU && !--_next_competitor_start)
 		MaybeStartNewPlayer();
-	}
-}
-
-extern void AiNewDoGameLoop(Player *p);
-
-void RunOtherPlayersLoop(void)
-{
-	Player *p;
-
-	_is_ai_player = true;
-
-	FOR_ALL_PLAYERS(p) {
-		if (p->is_active && p->is_ai) {
-			_current_player = p->index;
-			if (_patches.ainew_active)
-				AiNewDoGameLoop(p);
-			else
-				AiDoGameLoop(p);
-		}
-	}
-
-	_is_ai_player = false;
-	_current_player = OWNER_NONE;
 }
 
 // index is the next parameter in _decode_parameters to set up
@@ -1272,10 +1255,13 @@ static void Load_PLYR(void)
 	int index;
 	while ((index = SlIterateArray()) != -1) {
 		Player *p = GetPlayer(index);
-		p->is_ai = (index != 0);
 		SaveLoad_PLYR(p);
 		_player_colors[index] = p->player_color;
 		UpdatePlayerMoney32(p);
+
+		/* This is needed so an AI is attached to a loaded AI */
+		if (p->is_ai && (!_networking || _network_server) && _ai.enabled)
+			AI_StartNewAI(p->index);
 	}
 }
 

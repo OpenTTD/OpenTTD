@@ -215,7 +215,7 @@ typedef struct GameDifficulty {
 	int initial_interest;
 	int vehicle_costs;
 	int competitor_speed;
-	int competitor_intelligence;
+	int competitor_intelligence; // no longer in use
 	int vehicle_breakdowns;
 	int subsidy_multiplier;
 	int construction_cost;

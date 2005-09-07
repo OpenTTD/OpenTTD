@@ -2546,8 +2546,6 @@ static void StationHandleBigTick(Station *st)
 
 static inline void byte_inc_sat(byte *p) { byte b = *p + 1; if (b != 0) *p = b; }
 
-static byte _rating_boost[3] = { 0, 31, 63};
-
 static void UpdateStationRating(Station *st)
 {
 	GoodsEntry *ge;
@@ -2579,11 +2577,6 @@ static void UpdateStationRating(Station *st)
 				(rating += 10, age >= 2) ||
 				(rating += 10, age >= 1) ||
 				(rating += 13, true);
-			}
-
-			{
-				if (st->owner != OWNER_NONE && !IS_HUMAN_PLAYER(st->owner))
-							rating += _rating_boost[_opt.diff.competitor_intelligence];
 			}
 
 			if (st->owner < MAX_PLAYERS && HASBIT(st->town->statues, st->owner))

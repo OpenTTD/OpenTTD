@@ -25,6 +25,7 @@
 #include "network_data.h"
 #include "variables.h"
 #include "vehicle_gui.h"
+#include "ai/ai.h"
 
 // Score info
 const ScoreInfo _score_info[] = {
@@ -473,6 +474,9 @@ static void PlayersCheckBankrupt(Player *p)
 				ChangeOwnershipOfPlayerItems(owner, 0xFF); // 255 is no owner
 				// Register the player as not-active
 				p->is_active = false;
+
+				if (!IS_HUMAN_PLAYER(owner) && (!_networking || _network_server) && _ai.enabled)
+					AI_PlayerDied(owner);
 			}
 		}
 	}
@@ -1248,10 +1252,6 @@ static int32 DeliverGoods(int num_pieces, byte cargo_type, uint16 source, uint16
 			profit *= 4;
 		}
 	}
-
-	// Computers get 25% extra profit if they're intelligent.
-	if (_opt.diff.competitor_intelligence>=1 && !IS_HUMAN_PLAYER(_current_player))
-		profit += profit >> 2;
 
 	return profit;
 }
