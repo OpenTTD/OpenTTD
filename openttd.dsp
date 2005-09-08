@@ -91,27 +91,51 @@ LINK32=link.exe
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=.\ai\trolly\build.c
-# End Source File
-# Begin Source File
-
-SOURCE=.\ai\trolly\trolly.c.c
-# End Source File
-# Begin Source File
-
-SOURCE=.\ai\default.c
-# End Source File
-# Begin Source File
-
 SOURCE=.\ai\ai.c
+!IF  "$(CFG)" == "openttd - Win32 Release"
+# ADD CPP /Yu"../stdafx.h"
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+!ENDIF
+# End Source File
+# Begin Source File
+
+SOURCE=.\ai\trolly\build.c
+!IF  "$(CFG)" == "openttd - Win32 Release"
+# ADD CPP /Yu"../../stdafx.h"
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+!ENDIF
+# End Source File
+# Begin Source File
+
+SOURCE=.\ai\trolly\trolly.c
+!IF  "$(CFG)" == "openttd - Win32 Release"
+# ADD CPP /Yu"../../stdafx.h"
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+!ENDIF
+# End Source File
+# Begin Source File
+
+SOURCE=.\ai\default\default.c
+!IF  "$(CFG)" == "openttd - Win32 Release"
+# ADD CPP /Yu"../../stdafx.h"
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+!ENDIF
 # End Source File
 # Begin Source File
 
 SOURCE=.\ai\trolly\pathfinder.c
+!IF  "$(CFG)" == "openttd - Win32 Release"
+# ADD CPP /Yu"../../stdafx.h"
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+!ENDIF
 # End Source File
 # Begin Source File
 
 SOURCE=.\ai\trolly\shared.c
+!IF  "$(CFG)" == "openttd - Win32 Release"
+# ADD CPP /Yu"../../stdafx.h"
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+!ENDIF
 # End Source File
 # Begin Source File
 
