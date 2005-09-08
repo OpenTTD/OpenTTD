@@ -887,6 +887,12 @@
 			Name="AI Files"
 			Filter="">
 			<File
+				RelativePath=".\ai\ai.c">
+			</File>
+			<File
+				RelativePath=".\ai\ai.h">
+			</File>
+			<File
 				RelativePath=".\ai\default\default.c">
 			</File>
 			<Filter

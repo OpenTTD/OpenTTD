@@ -103,6 +103,10 @@ SOURCE=.\ai\default.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\ai\ai.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\ai\trolly\pathfinder.c
 # End Source File
 # Begin Source File
@@ -495,6 +499,10 @@ SOURCE=.\window.c
 # Begin Source File
 
 SOURCE=.\ai\trolly\trolly.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\ai\ai.h
 # End Source File
 # Begin Source File
 
