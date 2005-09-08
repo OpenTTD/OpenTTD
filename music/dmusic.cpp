@@ -115,18 +115,24 @@ static void DMusicMidiStop(void)
 {
 	seeking = false;
 
-	performance->Stop(NULL, NULL, 0, 0);
+	if (performance != NULL) performance->Stop(NULL, NULL, 0, 0);
 
-	segment->SetParam(GUID_Unload, -1, 0, 0, performance);
-	segment->Release();
-	segment = NULL;
+	if (segment != NULL) {
+		segment->SetParam(GUID_Unload, -1, 0, 0, performance);
+		segment->Release();
+		segment = NULL;
+	}
 
-	performance->CloseDown();
-	performance->Release();
-	performance = NULL;
+	if (performance != NULL) {
+		performance->CloseDown();
+		performance->Release();
+		performance = NULL;
+	}
 
-	loader->Release();
-	loader = NULL;
+	if (loader != NULL) {
+		loader->Release();
+		loader = NULL;
+	}
 
 	proc.CoUninitialize();
 }
