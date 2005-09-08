@@ -158,6 +158,12 @@ static inline void swap_tile(TileIndex *a, TileIndex *b) { TileIndex t = *a; *a 
 #define ROL(x, n) ((x) << (n) | (x) >> (sizeof(x) * 8 - (n)))
 #define ROR(x, n) ((x) >> (n) | (x) << (sizeof(x) * 8 - (n)))
 
+/**
+ * Return the smallest multiple of n equal or greater than x
+ * @note n must be a power of 2
+ */
+#define ALIGN(x, n) (((x) + (n) - 1) & ~((n) - 1))
+
 /* IS_INT_INSIDE = filter for ascii-function codes like BELL and so on [we need an special filter here later] */
 static inline bool IsValidAsciiChar(byte key)
 {

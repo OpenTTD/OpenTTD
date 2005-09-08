@@ -50,7 +50,7 @@ static void *pool_alloc(SettingsMemoryPool **pool, uint size)
 	uint pos;
 	SettingsMemoryPool *p = *pool;
 
-	size = (size + 3) & ~3; // align everything to a 32 bit boundary
+	size = ALIGN(size, 4); // align everything to a 32 bit boundary
 
 	// first check if there's memory in the next pool
 	if (p->next && p->next->pos + size <= p->next->size) {

@@ -1755,8 +1755,8 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
 void DrawDirtyBlocks(void)
 {
 	byte *b = _dirty_blocks;
-	const int w = (_screen.width + 63) & ~63;
-	const int h = (_screen.height + 7) & ~7;
+	const int w = ALIGN(_screen.width, 64);
+	const int h = ALIGN(_screen.height, 8);
 	int x;
 	int y;
 

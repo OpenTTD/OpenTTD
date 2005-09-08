@@ -536,7 +536,7 @@ static bool AllocateDibSection(int w, int h)
 		return false;
 
 	_screen.width = w;
-	_screen.pitch = (w + 3) & ~0x3;
+	_screen.pitch = ALIGN(w, 4);
 	_screen.height = h;
 
 	if (_wnd.alloced_bits) {
@@ -549,7 +549,7 @@ static bool AllocateDibSection(int w, int h)
 	bi->bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
 
 	if (_wnd.double_size) {
-		w = (w + 3) & ~0x3;
+		w = ALIGN(w, 4);
 		_wnd.alloced_bits = _wnd.buffer_bits = malloc(w * h);
 		w *= 2;
 		h *= 2;

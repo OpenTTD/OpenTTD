@@ -78,7 +78,7 @@ static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *user
 	if (f == NULL) return false;
 
 	// each scanline must be aligned on a 32bit boundary
-	padw = (w + 3) & ~3;
+	padw = ALIGN(w, 4);
 
 	// setup the file header
 	bfh.type = TO_LE16('MB');
