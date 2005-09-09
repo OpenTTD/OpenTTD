@@ -2327,6 +2327,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 	 * and load information from it. */
 	_custom_sprites_base = load_index;
 	for (stage = 0; stage < 2; stage++) {
+		uint slot = file_index;
 		uint j;
 
 		_cur_stage = stage;
@@ -2337,7 +2338,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 				error("NewGRF file missing: %s", _newgrf_files[j]);
 			}
 			if (stage == 0) InitNewGRFFile(_newgrf_files[j], _cur_spriteid);
-			LoadNewGRFFile(_newgrf_files[j], file_index++, stage); // XXX different file indices in both stages?
+			LoadNewGRFFile(_newgrf_files[j], slot++, stage);
 			DEBUG(spritecache, 2) ("Currently %i sprites are loaded", load_index);
 		}
 	}
