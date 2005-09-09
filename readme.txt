@@ -1,5 +1,5 @@
 OpenTTD README
-Last updated:    2005-05-21
+Last updated:    2005-09-09
 Release version: 0.4.1
 ------------------------------------------------------------------------
 
@@ -71,13 +71,13 @@ OpenTTD has been ported to several platforms and operating systems. It shouldn't
 be very difficult to port it to a new platform. The currently working platforms
 are:
 
-	Windows - Win32 GDI (faster) or SDL
-	Linux - SDL
-	FreeBSD - SDL
+	BeOS     - SDL
+	FreeBSD  - SDL
+	Linux    - SDL
 	Mac OS X - SDL
-	BeOS - SDL
-	MorphOS - SDL
-	OS/2 - SDL
+	MorphOS  - SDL
+	OS/2     - SDL
+	Windows  - Win32 GDI (faster) or SDL
 
 
 4.0) Running OpenTTD:
@@ -103,31 +103,32 @@ look as nice as with the Windows graphics.)
 If you want music you need to copy the gm/ folder from Windows TTD into your
 OpenTTD folder, not your data folder.
 
-You can change the data path (which contains savegames as well) in Makefile.config
-by setting DATA_DIR_PREFIX and USE_HOMEDIR.
+You can change the data path (which contains savegames as well) in
+Makefile.config by setting DATA_DIR_PREFIX and USE_HOMEDIR.
 
 
 5.0) OpenTTD features:
 ---- -----------------
 
 OpenTTD has a lot of features going beyond the original TTD emulation.
-Unfortunately, there is currently no comprehensive list of features, but there is
-a basic features list on the web, and some optional features can be
+Unfortunately, there is currently no comprehensive list of features, but there
+is a basic features list on the web, and some optional features can be
 controlled through the Configure Patches dialog. We also implement some
 features known from TTDPatch (http://www.ttdpatch.net/).
 
 Several important non-standard controls:
 
-* Use Ctrl to place presignals
+* Use Ctrl to place semaphore signals
 * Ctrl-D toggles double mode in the Windows version
-* Ingame console. More information at http://wiki.openttd.org/index.php/OpenTTDDevBlackBook
+* Ingame console. More information at
+  http://wiki.openttd.org/index.php/OpenTTDDevBlackBook
 
 
 6.0) Configuration File:
 ---- -------------------
 The configuration file for OpenTTD (openttd.cfg) is in a simple Windows-like
-.INI format. It's mostly undocumented. Almost all settings can be changed ingame by
-using the 'Configure Patches' window.
+.INI format. It's mostly undocumented. Almost all settings can be changed
+ingame by using the 'Configure Patches' window.
 
 
 7.0) Compiling:
@@ -136,11 +137,12 @@ Windows:
   You need Microsoft Visual Studio 6 or .NET. Open the project file
   and it should build automatically. In case you want to build with SDL support
   you need to add WITH_SDL to the project settings.
-  PNG (WITH_PNG) and ZLIB (WITH_ZLIB) support is enabled by default. For these to
-  work you need their development files. For best results, download the openttd-useful.zip
-  file from SourceForge under the Files tab. Put the header files into your compiler's
-  include/ directory and the library (.lib) files into the lib/ directory. For more help
-  with VS6 see docs/Readme_Windows_MSVC6.0.txt.
+  PNG (WITH_PNG) and ZLIB (WITH_ZLIB) support is enabled by default. For these
+  to work you need their development files. For best results, download the
+  openttd-useful.zip file from SourceForge under the Files tab. Put the header
+  files into your compiler's include/ directory and the library (.lib) files
+  into the lib/ directory.
+  For more help with VS6 see docs/Readme_Windows_MSVC6.0.txt.
 
   You can also build it using the Makefile with MSYS/MinGW or Cygwin/MinGW.
   Please read the Makefile for more information.
@@ -157,6 +159,8 @@ BeOS:
   Use "make".
 
 FreeBSD:
+  You need the port devel/sdl12 for a non-dedicated build.
+  graphics/png is optional for screenshots in the PNG format.
   Use "gmake".
 
 MorphOS:
@@ -172,31 +176,32 @@ OS/2:
 ---- -------------------
 See http://www.openttd.org/translating.php for up-to-date information.
 
-The use of the online Translator service, located at http://translator.openttd.org/, is
-highly encouraged. For a username/password combo you should contact the development team,
-either by mail, IRC or the forums. The system is straightforward to use, and if you have any
-problems, read the online help located there.
+The use of the online Translator service, located at
+http://translator.openttd.org/, is highly encouraged. For a username/password
+combo you should contact the development team, either by mail, IRC or the
+forums. The system is straightforward to use, and if you have any problems,
+read the online help located there.
 
-If for some reason the website is down for a longer period of time, the information below
-might be of help.
+If for some reason the website is down for a longer period of time, the
+information below might be of help.
 
 8.1) Guidelines:
 ---- -------------------
 Here are some translation guidelines which you should follow closely.
 
-    * Please contact the development team before begining the translation process!
-      This avoids double work, as someone else may have already started translating to the same language.
+    * Please contact the development team before begining the translation
+      process! This avoids double work, as someone else may have already
+      started translating to the same language.
     * Translators must use the charater set ISO 8859-15.
       Otherwise, some characters will not display correctly in the game.
-    * Currently it is not possible to translate into character sets other than Latin. Also, changing
-      the order of strings is unsupported. For instance, it is always '16 tonnes of coal' and cannot be
-      'coal existing of 16 tonnes'
+    * Currently it is not possible to translate into character sets other than
+      Latin.
 
 8.2) Translation:
 ---- -------------------
-So, now that you've notified the development team about your intention to translate
-(You did, right? Of course you did.) you can pick up english.txt (found in the SVN repository
-under /lang) and translate.
+So, now that you've notified the development team about your intention to
+translate (You did, right? Of course you did.) you can pick up english.txt
+(found in the SVN repository under /lang) and translate.
 
 You must change the first two lines of the file appropriately:
 
@@ -207,12 +212,13 @@ Note: Do not alter the following parts of the file:
 
     * String identifiers (the first word on each line)
     * Parts of the strings which are in curly braces (such as {STRING})
-    * Lines beginning with ## (such as ##id), other than the first two lines of the file
+    * Lines beginning with ## (such as ##id), other than the first two lines of
+      the file
 
 8.3) Previewing:
 ---- -------------------
-In order to view the translation in the game, you need to compile your language file
-with the strgen utility, which is now bundled with the game.
+In order to view the translation in the game, you need to compile your language
+file with the strgen utility, which is now bundled with the game.
 
 strgen is a command-line utility. It takes the language filename as parameter.
 Example:
@@ -220,33 +226,31 @@ Example:
 strgen lang/german.txt
 
 This results in compiling german.txt and produces another file named german.lng.
-Any missing strings are replaced with the English strings. Note that it looks for english.txt
-in the lang subdirectory, which is where your language file should also be.
+Any missing strings are replaced with the English strings. Note that it looks
+for english.txt in the lang subdirectory, which is where your language file
+should also be.
 
 That's all! You should now be able to select the language in the game options.
 
 9.0) Troubleshooting
 ---- ---------------
 
-To see all startup options available to you, start OpenTTD with the "./openttd -h"
-option. This might help you tweak some of the settings.
+To see all startup options available to you, start OpenTTD with the
+"./openttd -h" option. This might help you tweak some of the settings.
 
-If the game is acting strange and you feel adventorous you can try the "-d [[<name>]=[<level>]"
-flag, where the higher levels will give you more debugging output. The "name" variable can help
-you to display only some type of debugging messages. This is mostly undocumented
-so best is to look in the source code file debug.c for the various debugging types. For more
-information look at http://wiki.openttd.org/index.php/Command_line.
+If the game is acting strange and you feel adventorous you can try the
+"-d [[<name>]=[<level>]" flag, where the higher levels will give you more
+debugging output. The "name" variable can help you to display only some type of
+debugging messages. This is mostly undocumented so best is to look in the
+source code file debug.c for the various debugging types. For more information
+look at http://wiki.openttd.org/index.php/Command_line.
 
-The most frequent problem is missing data files. Don't forget to put all GRF files from TTD
-into your data/ folder including sample.cat!
+The most frequent problem is missing data files. Don't forget to put all GRF
+files from TTD into your data/ folder including sample.cat!
 
-Another, less frequent problem is the game refusing to run when you don't have a
-sound card. To solve this, force OpenTTD to run without sound/music by running it with
-the command line option: "./openttd -s null -m null". This will disable both sound
-and music.
-
-Under Windows 98 and lower it is impossible to use a dedicated server; it will fail to
-start. Perhaps this is for the better because those OS's are not known for their stability.
+Under Windows 98 and lower it is impossible to use a dedicated server; it will
+fail to start. Perhaps this is for the better because those OS's are not known
+for their stability.
 
 X.X) Credits:
 ---- --------
