@@ -144,7 +144,6 @@ uint DistanceManhattan(TileIndex, TileIndex); // also known as L1-Norm. Is the s
 uint DistanceSquare(TileIndex, TileIndex); // euclidian- or L2-Norm squared
 uint DistanceMax(TileIndex, TileIndex); // also known as L-Infinity-Norm
 uint DistanceMaxPlusManhattan(TileIndex, TileIndex); // Max + Manhattan
-uint DistanceTrack(TileIndex, TileIndex); // Returns the shortest distance one could go over tracks
 uint DistanceFromEdge(TileIndex); // shortest distance from any edge of the map
 
 

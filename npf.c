@@ -25,6 +25,29 @@ static const uint _trackdir_length[TRACKDIR_END] = {
 };
 
 /**
+ * Calculates the minimum distance traveled to get from t0 to t1 when only
+ * using tracks (ie, only making 45 degree turns). Returns the distance in the
+ * NPF scale, ie the number of full tiles multiplied by NPF_TILE_LENGTH to
+ * prevent rounding.
+ */
+uint NPFDistanceTrack(TileIndex t0, TileIndex t1)
+{
+	const uint dx = abs(TileX(t0) - TileX(t1));
+	const uint dy = abs(TileY(t0) - TileY(t1));
+
+	const uint straightTracks = 2 * min(dx, dy); /* The number of straight (not full length) tracks */
+	/* OPTIMISATION:
+	 * Original: diagTracks = max(dx, dy) - min(dx,dy);
+	 * Proof:
+	 * (dx+dy) - straightTracks  == (min + max) - straightTracks = min + max - 2 * min = max - min */
+	const uint diagTracks = dx + dy - straightTracks; /* The number of diagonal (full tile length) tracks. */
+
+	/* Don't factor out NPF_TILE_LENGTH below, this will round values and lose
+	 * precision */
+	return diagTracks * NPF_TILE_LENGTH + straightTracks * NPF_TILE_LENGTH * STRAIGHT_TRACK_LENGTH;
+}
+
+/**
  * Check if a rail track is the end of the line. Will also consider 1-way signals to be the end of a line.
  * @param tile The tile on which the current track is.
  * @param trackdir The (track)direction in which you want to look.
@@ -36,11 +59,11 @@ bool IsEndOfLine(TileIndex tile, Trackdir trackdir, RailType enginetype)
 	TileIndex dst_tile;
 	uint32 ts;
 
-	// tunnel entrance?
+	/* Can always go into a tunnel */
 	if (IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5 & 0xF0)==0 && (_m[tile].m5 & 3) == exitdir)
 		return false;
 
-	// depot
+	/* Cannot go through the back of a depot */
 	if (IsTileDepotType(tile, TRANSPORT_RAIL) && (exitdir != GetDepotDirection(tile, TRANSPORT_RAIL)))
 		return true;
 
@@ -60,8 +83,13 @@ bool IsEndOfLine(TileIndex tile, Trackdir trackdir, RailType enginetype)
 		if (GetTileOwner(tile) != GetTileOwner(dst_tile))
 			return true;
 
+		/* Prevent us from entering a depot from behind */
 		if (IsTileDepotType(dst_tile, TRANSPORT_RAIL) && (exitdir != ReverseDiagdir(GetDepotDirection(dst_tile, TRANSPORT_RAIL))))
 			return true;
+
+		/* Prevent us from falling off a slope into a tunnel exit */
+		if (IsTileType(dst_tile, MP_TUNNELBRIDGE) && (_m[dst_tile].m5 & 0xF0)==0 && (DiagDirection)(_m[dst_tile].m5 & 3) == ReverseDiagdir(exitdir))
+				return true;
 
 		/* Check for oneway signal against us */
 		if (IsTileType(dst_tile, MP_RAILWAY) && GetRailTileType(dst_tile) == RAIL_TYPE_SIGNALS) {
@@ -235,7 +263,7 @@ static int32 NPFCalcStationOrTileHeuristic(AyStar* as, AyStarNode* current, Open
 		dist = DistanceManhattan(from, to) * NPF_TILE_LENGTH;
 	else
 		/* Ships and trains can also go diagonal, so the minimum distance is shorter */
-		dist = DistanceTrack(from, to) * NPF_TILE_LENGTH;
+		dist = NPFDistanceTrack(from, to);
 
 	DEBUG(npf, 4)("Calculating H for: (%d, %d). Result: %d", TileX(current->tile), TileY(current->tile), dist);
 

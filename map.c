@@ -155,21 +155,6 @@ uint DistanceMaxPlusManhattan(TileIndex t0, TileIndex t1)
 	return dx > dy ? 2 * dx + dy : 2 * dy + dx;
 }
 
-uint DistanceTrack(TileIndex t0, TileIndex t1)
-{
-	const uint dx = abs(TileX(t0) - TileX(t1));
-	const uint dy = abs(TileY(t0) - TileY(t1));
-
-	const uint straightTracks = 2 * min(dx, dy); /* The number of straight (not full length) tracks */
-	/* OPTIMISATION:
-	 * Original: diagTracks = max(dx, dy) - min(dx,dy);
-	 * Proof:
-	 * (dx-dy) - straightTracks  == (min + max) - straightTracks = min + // max - 2 * min = max - min */
-	const uint diagTracks = dx + dy - straightTracks; /* The number of diagonal (full tile length) tracks. */
-
-	return diagTracks + straightTracks * STRAIGHT_TRACK_LENGTH;
-}
-
 uint DistanceFromEdge(TileIndex tile)
 {
 	const uint xl = TileX(tile);
