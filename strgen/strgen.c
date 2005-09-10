@@ -389,6 +389,8 @@ static const CmdStruct _cmd_structs[] = {
 	// New line
 	{"", EmitSingleByte, 10, 0, C_DONTCOUNT},
 
+	{"{", EmitSingleByte, '{', 0, C_DONTCOUNT},
+
 	// Colors
 	{"BLUE", EmitSingleByte,    15, 0},
 	{"SILVER", EmitSingleByte,  16, 0},
