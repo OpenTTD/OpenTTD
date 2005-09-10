@@ -1450,6 +1450,9 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Järnvägskorsnin
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Städer
 STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
+STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
+STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Byggnad måste rivas först
 STR_2005                                                        :{WHITE}{TOWN}
@@ -1632,6 +1635,7 @@ STR_305AA_LARGE                                                 :{BLACK}Metropol
 STR_305AB_LARGE                                                 :{BLACK}IInternationell flygplats
 STR_305B_SIZE                                                   :{BLACK}Storlek
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Järnvägsstation
 STR_305F_AIRCRAFT_HANGAR                                        :Flygplanshangar
 STR_3060_AIRPORT                                                :Flygplats

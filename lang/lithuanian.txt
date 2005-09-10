@@ -1417,6 +1417,9 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Gelezinkelio pe
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Miestai
 STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
+STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
+STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Pirmiau turi butu nugriautas pastatas
 STR_2005                                                        :{WHITE}{TOWN}
@@ -1583,6 +1586,7 @@ STR_305AA_LARGE                                                 :{BLACK}Tarpmies
 STR_305AB_LARGE                                                 :{BLACK}Tarptautinis oro uostas
 STR_305B_SIZE                                                   :{BLACK}Dydis
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Gelezinkelio stotis
 STR_305F_AIRCRAFT_HANGAR                                        :Lektuvo angaras
 STR_3060_AIRPORT                                                :Oro uostas

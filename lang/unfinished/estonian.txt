@@ -291,6 +291,13 @@ STR_0141_LOAD_GAME                                              :{BLACK}Lae mäng
 STR_SINGLE_PLAYER                                               :{BLACK}Üks mängija
 STR_MULTIPLAYER                                                 :{BLACK}Võrgumäng
 
+STR_64                                                          :64
+STR_128                                                         :128
+STR_256                                                         :256
+STR_512                                                         :512
+STR_1024                                                        :1024
+STR_2048                                                        :2048
+STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Mängu seaded
 
 STR_0150_SOMEONE                                                :keegi{SKIP}{SKIP}
@@ -1433,6 +1440,9 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Raudtee ülesõit
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Linnad
 STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
+STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
+STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Ehitis tuleb enne hävitada
 STR_2005                                                        :{WHITE}{TOWN}
@@ -1524,6 +1534,9 @@ STR_205A_TEPEES                                                 :Tipid
 STR_205B_TEAPOT_HOUSE                                           :Teepoti maja
 STR_205C_PIGGY_BANK                                             :Krossu pank
 
+STR_INDUSTRY                                                    :{INDUSTRY}
+STR_TOWN                                                        :{TOWN}
+STR_STATION                                                     :{STATION}
 
 ##id 0x2800
 STR_LANDSCAPING                                                 :Maapinna kujunuds
@@ -1611,6 +1624,7 @@ STR_305AA_LARGE                                                 :{BLACK}Suurlinn
 STR_305AB_LARGE                                                 :{BLACK}Rahvusvaheline lennujaam
 STR_305B_SIZE                                                   :{BLACK}Suurus
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Raudteejaam
 STR_305F_AIRCRAFT_HANGAR                                        :Lennuki hangaar
 STR_3060_AIRPORT                                                :Lennujaam
@@ -1928,6 +1942,7 @@ STR_701F                                                        :{BLACK}+{CURREN
 STR_7020_TOTAL                                                  :{WHITE}Kokku:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Sissetulekute graafik
+STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Opereerimiskasumi graafik
 STR_7026_BANK_BALANCE                                           :{WHITE}Kontojääk
@@ -2155,37 +2170,60 @@ STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Powernaught pos
 STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Wizzowow postiauto
 
 ##id 0x8800
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING1}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING1}
 
 
 
+STR_8816                                                        :{BLACK}-
+STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
+STR_882E                                                        :{WHITE}{VEHICLE}
+STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 
 
 
 ##id 0x9000
+STR_9002                                                        :{WHITE}{VEHICLE}
+STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 
 
 ##id 0x9800
+STR_980F                                                        :{WHITE}{VEHICLE}
+STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 
 
 ##id 0xA000
+STR_A00A                                                        :{WHITE}{VEHICLE}
+STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 
+STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 
 ##id 0xB000
 
 
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
 
 
 
+STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_LORRY                                                       :{BLACK}{LORRY}
+STR_PLANE                                                       :{BLACK}{PLANE}
+STR_SHIP                                                        :{BLACK}{SHIP}
 
 
 
 
+STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 
 ############ Lists rail types
 
 
 ############ End of list of rail types
 
+STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
