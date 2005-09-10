@@ -1643,7 +1643,7 @@ STR_305AA_LARGE                                                 :{BLACK}Hoofdste
 STR_305AB_LARGE                                                 :{BLACK}Internationaal vliegveld
 STR_305B_SIZE                                                   :{BLACK}Grootte
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
-STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION} {STATIONFEATURES}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Treinstation
 STR_305F_AIRCRAFT_HANGAR                                        :Vliegtuighangar
 STR_3060_AIRPORT                                                :Vliegveld

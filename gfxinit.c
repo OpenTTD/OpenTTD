@@ -215,9 +215,7 @@ static const SpriteID trg1idx[] = {
 	   161,  225,
 /* Small font */
 	   226,  316, // ' ' till 'z'
-	0xFFFE,   25,
-	   342,  346, // place holders for transport markers
-	0xFFFE,    6,
+	0xFFFE,   36,
 	   384,  384, // Move ¾ to the correct position
 	   322,  322, // Up arrow
 	   355,  357,

@@ -1643,7 +1643,7 @@ STR_305AA_LARGE                                                 :{BLACK}Lotnisko
 STR_305AB_LARGE                                                 :{BLACK}Lotnisko miedzynarodowe
 STR_305B_SIZE                                                   :{BLACK}Rozmiar
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
-STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION} {STATIONFEATURES}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Stacja kolejowa
 STR_305F_AIRCRAFT_HANGAR                                        :Hangar
 STR_3060_AIRPORT                                                :Lotnisko

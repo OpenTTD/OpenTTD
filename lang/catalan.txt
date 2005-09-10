@@ -1643,7 +1643,7 @@ STR_305AA_LARGE                                                 :{BLACK}Aeroport
 STR_305AB_LARGE                                                 :{BLACK}Aeroport Internacional
 STR_305B_SIZE                                                   :{BLACK}Mida
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
-STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION} {STATIONFEATURES}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Estació de Ferrocarril
 STR_305F_AIRCRAFT_HANGAR                                        :Hangar d'Aeronaus
 STR_3060_AIRPORT                                                :Aeroport

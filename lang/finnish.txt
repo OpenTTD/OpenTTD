@@ -1641,7 +1641,7 @@ STR_305AA_LARGE                                                 :{BLACK}Suurkaup
 STR_305AB_LARGE                                                 :{BLACK}Kansainvälinen lentokenttä
 STR_305B_SIZE                                                   :{BLACK}Koko
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
-STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION} {STATIONFEATURES}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Rautatieasema
 STR_305F_AIRCRAFT_HANGAR                                        :Lentokonesuoja
 STR_3060_AIRPORT                                                :Lentokenttä
