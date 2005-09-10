@@ -498,26 +498,7 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 			*buff++ = *str++;
 			*buff++ = *str++;
 			break;
-		case 0x7B: // {COMMA}
-			buff = FormatCommaNumber(buff, GetInt32(&argv));
-			break;
-		case 0x7C: // Move argument pointer
-			argv = argv_orig + (byte)*str++;
-			break;
-		case 0x7D: { // {P}
-			int32 v = argv_orig[(byte)*str++]; // contains the number that determines plural
-			int len;
-			str = ParseStringChoice(str, DeterminePluralForm(v), buff, &len);
-			buff += len;
-			break;
-		}
-		case 0x7E: // {NUM}
-			buff = FormatNoCommaNumber(buff, GetInt32(&argv));
-			break;
-		case 0x7F: // {CURRENCY}
-			buff = FormatGenericCurrency(buff, &_currency_specs[_opt_ptr->currency], GetInt32(&argv), false);
-			break;
-		// 0x80 is reserved for EURO
+
 		case 0x81: // {STRINL}
 			str += 2;
 			buff = GetStringWithArgs(buff, READ_LE_UINT16(str-2), argv);
@@ -682,6 +663,30 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 			break;
 		}
 
+		case 0x8B: // {COMMA}
+			buff = FormatCommaNumber(buff, GetInt32(&argv));
+			break;
+
+		case 0x8C: // Move argument pointer
+			argv = argv_orig + (byte)*str++;
+			break;
+
+		case 0x8D: { // {P}
+			int32 v = argv_orig[(byte)*str++]; // contains the number that determines plural
+			int len;
+			str = ParseStringChoice(str, DeterminePluralForm(v), buff, &len);
+			buff += len;
+			break;
+		}
+
+		case 0x8E: // {NUM}
+			buff = FormatNoCommaNumber(buff, GetInt32(&argv));
+			break;
+
+		case 0x8F: // {CURRENCY}
+			buff = FormatGenericCurrency(buff, &_currency_specs[_opt_ptr->currency], GetInt32(&argv), false);
+			break;
+
 		case 0x99: { // {WAYPOINT}
 			int32 temp[2];
 			Waypoint *wp = GetWaypoint(GetInt32(&argv));
@@ -749,10 +754,6 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 			break;
 		}
 
-		// case 0x88..0x98: // {COLORS}
-		// case 0xE: // {TINYFONT}
-		// case 0xF: // {BIGFONT}
-		// 0x9E is the highest number that is available.
 		default:
 			*buff++ = b;
 		}

@@ -332,7 +332,7 @@ static void EmitPlural(char *buf, int value)
 		Fatal("%s: Invalid number of plural forms. Expecting %d, found %d.", _cur_ident,
 			_plural_form_counts[_lang_pluralform], nw);
 
-	PutByte(0x7D);
+	PutByte(0x8D);
 	PutByte(TranslateArgumentIdx(argidx));
 	EmitWordList(words, nw);
 }
@@ -408,14 +408,6 @@ static const CmdStruct _cmd_structs[] = {
 	{"DKBLUE", EmitSingleByte,  30, 0},
 	{"BLACK", EmitSingleByte,   31, 0},
 
-	// 0x7B=123 is the LAST special character we may use.
-
-	// Numbers
-	{"COMMA", EmitSingleByte, 0x7B, 1}, // Number with comma
-	{"NUM", EmitSingleByte,  0x7E, 1}, // Signed number
-
-	{"CURRENCY", EmitSingleByte, 0x7F, 1},
-
 	// 0x85
 	{"CURRCOMPACT", EmitEscapedByte, 0, 1},		// compact currency (32 bits)
 	{"REV", EmitEscapedByte, 2, 0},						// openttd revision string
@@ -455,6 +447,12 @@ static const CmdStruct _cmd_structs[] = {
 	{"SKIP", EmitSingleByte, 0x86, 1},
 
 	{"STRING", EmitSingleByte, 0x88, 1, C_CASE},
+
+	// Numbers
+	{"COMMA", EmitSingleByte, 0x8B, 1}, // Number with comma
+	{"NUM",   EmitSingleByte, 0x8E, 1}, // Signed number
+
+	{"CURRENCY", EmitSingleByte, 0x8F, 1},
 
 	{"WAYPOINT", EmitSingleByte, 0x99, 1}, // waypoint name
 	{"STATION", EmitSingleByte, 0x9A, 1},
@@ -1017,7 +1015,7 @@ static int TranslateArgumentIdx(int argidx)
 
 static void PutArgidxCommand(void)
 {
-	PutByte(0x7C);
+	PutByte(0x8C);
 	PutByte(TranslateArgumentIdx(_cur_argidx));
 }
 
