@@ -82,35 +82,35 @@ STR_004B_BATTERY                                                :Patarei
 STR_004C_PLASTIC                                                :Plastmass
 STR_004D_FIZZY_DRINK                                            :Kihisev jook
 STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA} reisija
-STR_0050_TON_OF_COAL                                            :{COMMA} tonn kivisütt
-STR_0051_BAG_OF_MAIL                                            :{COMMA} postipakk
+STR_004F_PASSENGER                                              :{COMMA} reisija{P "" t}
+STR_0050_TON_OF_COAL                                            :{COMMA} tonn{P "" i} kivisütt
+STR_0051_BAG_OF_MAIL                                            :{COMMA} postipakk{P "" i}
 STR_0052_OF_OIL                                                 :{VOLUME} naftat
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} loom
-STR_0054_CRATE_OF_GOODS                                         :{COMMA} kast kaupa
-STR_0055_TON_OF_GRAIN                                           :{COMMA} tonn teravilja
-STR_0056_TON_OF_WOOD                                            :{COMMA} tonn puitu
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA} tonn rauamaaki
-STR_0058_TON_OF_STEEL                                           :{COMMA} tonn terast
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA} kotitäis väärisasju
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} tonn vasemaaki
-STR_005B_TON_OF_MAIZE                                           :{COMMA} tonn maisi
-STR_005C_TON_OF_FRUIT                                           :{COMMA} tonn puuvilju
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} kotitäis teemanteid
-STR_005E_TON_OF_FOOD                                            :{COMMA} tonn toitu
-STR_005F_TON_OF_PAPER                                           :{COMMA} tonn paberit
-STR_0060_BAG_OF_GOLD                                            :{COMMA} kotitäis kulda
+STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} loom{P "" a}
+STR_0054_CRATE_OF_GOODS                                         :{COMMA} kast{P "" i} kaupa
+STR_0055_TON_OF_GRAIN                                           :{COMMA} tonn{P "" i} teravilja
+STR_0056_TON_OF_WOOD                                            :{COMMA} tonn{P "" i} puitu
+STR_0057_TON_OF_IRON_ORE                                        :{COMMA} tonn{P "" i} rauamaaki
+STR_0058_TON_OF_STEEL                                           :{COMMA} tonn{P "" i} terast
+STR_0059_BAG_OF_VALUABLES                                       :{COMMA} kotitäi{P s t} väärisasju
+STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} tonn{P "" i} vasemaaki
+STR_005B_TON_OF_MAIZE                                           :{COMMA} tonn{P "" i} maisi
+STR_005C_TON_OF_FRUIT                                           :{COMMA} tonn{P "" i} puuvilju
+STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} kotitäi{P s t} teemante{P id ""}
+STR_005E_TON_OF_FOOD                                            :{COMMA} tonn{P "" i} toitu
+STR_005F_TON_OF_PAPER                                           :{COMMA} tonn{P "" i} paberit
+STR_0060_BAG_OF_GOLD                                            :{COMMA} kotitäi{P s t} kulda
 STR_0061_OF_WATER                                               :{VOLUME} vett
-STR_0062_TON_OF_WHEAT                                           :{COMMA} tonn nisu
+STR_0062_TON_OF_WHEAT                                           :{COMMA} tonn{P "" i} nisu
 STR_0063_OF_RUBBER                                              :{VOLUME} kautðukki
-STR_0064_TON_OF_SUGAR                                           :{COMMA} tonn suhkrut
-STR_0065_TOY                                                    :{COMMA} mänguasi
-STR_0066_BAG_OF_CANDY                                           :{COMMA} kontitäis maiustusi
+STR_0064_TON_OF_SUGAR                                           :{COMMA} tonn{P "" i} suhkrut
+STR_0065_TOY                                                    :{COMMA} mänguas{P i ja}
+STR_0066_BAG_OF_CANDY                                           :{COMMA} kontitäi{P s t} maiustusi
 STR_0067_OF_COLA                                                :{VOLUME} koolat
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} tonn suhkruvatti
-STR_0069_BUBBLE                                                 :{COMMA} mull
-STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonn iirist
-STR_006B_BATTERY                                                :{COMMA} patarei
+STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} tonn{P "" i} suhkruvatti
+STR_0069_BUBBLE                                                 :{COMMA} mull{P "" i}
+STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonn{P "" i} iirist
+STR_006B_BATTERY                                                :{COMMA} patarei{P "" d}
 STR_006C_OF_PLASTIC                                             :{VOLUME} plastmassi
 STR_006D_FIZZY_DRINK                                            :{COMMA} kihisevaid jooke
 STR_008E                                                        :
