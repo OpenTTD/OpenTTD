@@ -465,7 +465,9 @@ static const CmdStruct _cmd_structs[] = {
 
 	// 0x9E=158 is the LAST special character we may use.
 
-	{"UPARROW", EmitSingleByte, 0xA0, 0},
+	{"UPARROW", EmitSingleByte, 0x80, 0},
+
+	{"NBSP", EmitSingleByte, 0xA0, 0, C_DONTCOUNT},
 	{"POUNDSIGN", EmitSingleByte, 0xA3, 0},
 	{"YENSIGN", EmitSingleByte, 0xA5, 0},
 	{"COPYRIGHT", EmitSingleByte, 0xA9, 0},

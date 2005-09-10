@@ -155,6 +155,14 @@ bool LoadNextSprite(int load_index, byte file_index)
 	return true;
 }
 
+
+void DupSprite(SpriteID old, SpriteID new)
+{
+	_sprite_file_pos[new] = _sprite_file_pos[old];
+	_sprite_ptr[new] = NULL;
+}
+
+
 void SkipSprites(uint count)
 {
 	for (; count > 0; --count) {

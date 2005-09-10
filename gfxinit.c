@@ -192,7 +192,7 @@ static const SpriteID trg1idx[] = {
 	     2,   92, // ' ' till 'z'
 	0xFFFE,   36,
 	   160,  160, // Move ¾ to the correct position
-	   130,  130, // TODO Up arrow
+	    98,   98, // Up arrow
 	   131,  133,
 	0xFFFE,    1, // skip currency sign
 	   135,  135,
@@ -219,7 +219,7 @@ static const SpriteID trg1idx[] = {
 	   342,  346, // place holders for transport markers
 	0xFFFE,    6,
 	   384,  384, // Move ¾ to the correct position
-	   354,  354, // TODO Up arrow
+	   322,  322, // Up arrow
 	   355,  357,
 	0xFFFE,    1, // skip currency sign
 	   359,  359,
@@ -316,6 +316,9 @@ static void LoadSpriteTables(void)
 	files = _use_dos_palette? &files_dos : &files_win;
 
 	LoadGrfIndexed(files->basic[0].filename, trg1idx, 0);
+	DupSprite(  2, 130); // non-breaking space medium
+	DupSprite(226, 354); // non-breaking space tiny
+	DupSprite(450, 578); // non-breaking space large
 	load_index = 4793;
 
 	for (i = 1; files->basic[i].filename != NULL; i++) {

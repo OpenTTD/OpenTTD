@@ -41,7 +41,7 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo);
 
 // XXX doesn't really belong here, but the only
 // consumers always use it in conjunction with DoDrawString()
-#define UPARROW   "\xA0"
+#define UPARROW   "\x80"
 #define DOWNARROW "\xAA"
 
 
