@@ -581,7 +581,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 		SetVScrollCount(w, _num_industry_sort);
 
 		DrawWindowWidgets(w);
-		DoDrawString(_industry_sort_order & 1 ? "\xAA" : "\xA0", _indicator_positions[_industry_sort_order>>1], 15, 0x10);
+		DoDrawString(_industry_sort_order & 1 ? DOWNARROW : UPARROW, _indicator_positions[_industry_sort_order>>1], 15, 0x10);
 
 		p = w->vscroll.pos;
 		n = 0;

@@ -38,6 +38,13 @@ typedef struct CursorVars {
 void RedrawScreenRect(int left, int top, int right, int bottom);
 void GfxScroll(int left, int top, int width, int height, int xo, int yo);
 
+
+// XXX doesn't really belong here, but the only
+// consumers always use it in conjunction with DoDrawString()
+#define UPARROW   "\xA0"
+#define DOWNARROW "\xAA"
+
+
 int DrawStringCentered(int x, int y, StringID str, uint16 color);
 int DrawStringCenteredTruncated(int xl, int xr, int y, StringID str, uint16 color);
 int DoDrawStringCentered(int x, int y, const char *str, uint16 color);

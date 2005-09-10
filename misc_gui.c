@@ -1246,7 +1246,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		}
 
 		GfxFillRect(w->widget[6].left + 1, w->widget[6].top + 1, w->widget[6].right, w->widget[6].bottom, 0xD7);
-		DoDrawString(_savegame_sort_order & 1 ? "\xAA" : "\xA0", _savegame_sort_order <= 1 ? w->widget[3].right - 9 : w->widget[2].right - 9, 15, 0x10);
+		DoDrawString(_savegame_sort_order & 1 ? DOWNARROW : UPARROW, _savegame_sort_order <= 1 ? w->widget[3].right - 9 : w->widget[2].right - 9, 15, 0x10);
 
 		y = w->widget[6].top + 1;
 		pos = w->vscroll.pos;
@@ -1489,7 +1489,7 @@ static void SelectScenarioWndProc(Window *w, WindowEvent *e) {
 		SetVScrollCount(w, _fios_num);
 
 		DrawWindowWidgets(w);
-		DoDrawString(_savegame_sort_order & 1 ? "\xAA" : "\xA0", _savegame_sort_order <= 1 ? w->widget[4].right - 9 : w->widget[3].right - 9, 15, 0x10);
+		DoDrawString(_savegame_sort_order & 1 ? DOWNARROW : UPARROW, _savegame_sort_order <= 1 ? w->widget[4].right - 9 : w->widget[3].right - 9, 15, 0x10);
 		DrawString(4, 32, STR_4010_GENERATE_RANDOM_NEW_GAME, 9);
 
 		y = list_start;

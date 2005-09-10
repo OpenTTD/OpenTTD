@@ -274,11 +274,11 @@ void DrawWindowWidgets(Window *w)
 			// draw up/down buttons
 			clicked = !!((w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_UP);
 			DrawFrameRect(r.left, r.top, r.right, r.top + 9, wi->color, (clicked) ? FR_LOWERED : 0);
-			DoDrawString("\xA0", r.left + 2 + clicked, r.top + clicked, 0x10);
+			DoDrawString(UPARROW, r.left + 2 + clicked, r.top + clicked, 0x10);
 
 			clicked = !!(((w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_DOWN));
 			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : 0);
-			DoDrawString("\xAA", r.left + 2 + clicked, r.bottom - 9 + clicked, 0x10);
+			DoDrawString(DOWNARROW, r.left + 2 + clicked, r.bottom - 9 + clicked, 0x10);
 
 			c1 = _color_list[wi->color&0xF].window_color_1a;
 			c2 = _color_list[wi->color&0xF].window_color_2;
@@ -306,11 +306,11 @@ void DrawWindowWidgets(Window *w)
 			// draw up/down buttons
 			clicked = !!((w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_UP | WF_SCROLL2));
 			DrawFrameRect(r.left, r.top, r.right, r.top + 9, wi->color,  (clicked) ? FR_LOWERED : 0);
-			DoDrawString("\xA0", r.left + 2 + clicked, r.top + clicked, 0x10);
+			DoDrawString(UPARROW, r.left + 2 + clicked, r.top + clicked, 0x10);
 
 			clicked = !!((w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_DOWN | WF_SCROLL2));
 			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->color,  (clicked) ? FR_LOWERED : 0);
-			DoDrawString("\xAA", r.left + 2 + clicked, r.bottom - 9 + clicked, 0x10);
+			DoDrawString(DOWNARROW, r.left + 2 + clicked, r.bottom - 9 + clicked, 0x10);
 
 			c1 = _color_list[wi->color&0xF].window_color_1a;
 			c2 = _color_list[wi->color&0xF].window_color_2;

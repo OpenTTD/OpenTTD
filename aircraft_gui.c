@@ -1051,7 +1051,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 		/* draw sorting criteria string */
 		DrawString(85, 15, _vehicle_sort_listing[vl->sort_type], 0x10);
 		/* draw arrow pointing up/down for ascending/descending sorting */
-		DoDrawString(vl->flags & VL_DESC ? "\xAA" : "\xA0", 69, 15, 0x10);
+		DoDrawString(vl->flags & VL_DESC ? DOWNARROW : UPARROW, 69, 15, 0x10);
 
 		max = min(w->vscroll.pos + w->vscroll.cap, vl->list_length);
 		for (i = w->vscroll.pos; i < max; ++i) {

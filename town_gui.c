@@ -436,7 +436,7 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 		SetVScrollCount(w, _num_town_sort);
 
 		DrawWindowWidgets(w);
-		DoDrawString(_town_sort_order & 1 ? "\xAA" : "\xA0", (_town_sort_order <= 1) ? 88 : 187, 15, 0x10);
+		DoDrawString(_town_sort_order & 1 ? DOWNARROW : UPARROW, (_town_sort_order <= 1) ? 88 : 187, 15, 0x10);
 
 		{
 			Town *t;
