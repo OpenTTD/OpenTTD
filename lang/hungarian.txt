@@ -2,6 +2,7 @@
 ##ownname Magyar
 ##isocode hu
 ##plural 1
+##case t
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -20,36 +21,67 @@ STR_000C_ACCEPTS                                                :{BLACK}Elfogad:
 STR_000D_ACCEPTS                                                :{BLACK}Elfogad:{GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Utas
+STR_000F_PASSENGERS.t                                           :Utast
 STR_0010_COAL                                                   :Szén
+STR_0010_COAL.t                                                 :Szenet
 STR_0011_MAIL                                                   :Levél
+STR_0011_MAIL.t                                                 :Levelet
 STR_0012_OIL                                                    :Olaj
+STR_0012_OIL.t                                                  :Olajat
 STR_0013_LIVESTOCK                                              :Állat
+STR_0013_LIVESTOCK.t                                            :Állatot
 STR_0014_GOODS                                                  :Áru
+STR_0014_GOODS.t                                                :Árut
 STR_0015_GRAIN                                                  :Búza
+STR_0015_GRAIN.t                                                :Búzát
 STR_0016_WOOD                                                   :Fa
+STR_0016_WOOD.t                                                 :Fát
 STR_0017_IRON_ORE                                               :Vasérc
+STR_0017_IRON_ORE.t                                             :Vasércet
 STR_0018_STEEL                                                  :Acél
+STR_0018_STEEL.t                                                :Acélt
 STR_0019_VALUABLES                                              :Értéktárgyak
+STR_0019_VALUABLES.t                                            :Értéktárgyakat
 STR_001A_COPPER_ORE                                             :Rézérc
+STR_001A_COPPER_ORE.t                                           :Rézércet
 STR_001B_MAIZE                                                  :Kukorica
+STR_001B_MAIZE.t                                                :Kukoricát
 STR_001C_FRUIT                                                  :Gyümölcs
+STR_001C_FRUIT.t                                                :Gyümölcsöt
 STR_001D_DIAMONDS                                               :Gyémánt
+STR_001D_DIAMONDS.t                                             :Gyémántot
 STR_001E_FOOD                                                   :Étel
+STR_001E_FOOD.t                                                 :Ételt
 STR_001F_PAPER                                                  :Papír
+STR_001F_PAPER.t                                                :Papírt
 STR_0020_GOLD                                                   :Arany
+STR_0020_GOLD.t                                                 :Aranyat
 STR_0021_WATER                                                  :Víz
+STR_0021_WATER.t                                                :Vízet
 STR_0022_WHEAT                                                  :Búza
+STR_0022_WHEAT.t                                                :Búzát
 STR_0023_RUBBER                                                 :Gumi
+STR_0023_RUBBER.t                                               :Gumit
 STR_0024_SUGAR                                                  :Cukor
+STR_0024_SUGAR.t                                                :Cukort
 STR_0025_TOYS                                                   :Játék
+STR_0025_TOYS.t                                                 :Játékot
 STR_0026_CANDY                                                  :Cukorka
+STR_0026_CANDY.t                                                :Cukorkát
 STR_0027_COLA                                                   :Kóla
+STR_0027_COLA.t                                                 :Kólát
 STR_0028_COTTON_CANDY                                           :Vattacukor
+STR_0028_COTTON_CANDY.t                                         :Vattacukrot
 STR_0029_BUBBLES                                                :Buborék
+STR_0029_BUBBLES.t                                              :Buborékot
 STR_002A_TOFFEE                                                 :Tejkaramella
+STR_002A_TOFFEE.t                                               :Tejkaramellát
 STR_002B_BATTERIES                                              :Elem
+STR_002B_BATTERIES.t                                            :Elemet
 STR_002C_PLASTIC                                                :Mûanyag
+STR_002C_PLASTIC.t                                              :Mûanyagot
 STR_002D_FIZZY_DRINKS                                           :Szénsavas ital
+STR_002D_FIZZY_DRINKS.t                                         :Szénsavas italt
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :utas
 STR_0030_COAL                                                   :szén
@@ -213,38 +245,71 @@ STR_00F7_SHIPS                                                  :{BLACK}{TINYFON
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Repülõgép
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Szállítási útvonal
 STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}szénbánya
+STR_00FA_COAL_MINE.t                                            :{BLACK}{TINYFONT}szénbányát
 STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}erõmû
+STR_00FB_POWER_STATION.t                                        :{BLACK}{TINYFONT}erõmûvet
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}erdõ
+STR_00FC_FOREST.t                                               :{BLACK}{TINYFONT}erdõt
 STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}fûrésztelep
+STR_00FD_SAWMILL.t                                              :{BLACK}{TINYFONT}fûrésztelepet
 STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}olajfinomító
+STR_00FE_OIL_REFINERY.t                                         :{BLACK}{TINYFONT}olajfinomítót
 STR_00FF_FARM                                                   :{BLACK}{TINYFONT}farm
+STR_00FF_FARM.t                                                 :{BLACK}{TINYFONT}farmot
 STR_0100_FACTORY                                                :{BLACK}{TINYFONT}gyár
+STR_0100_FACTORY.t                                              :{BLACK}{TINYFONT}gyárat
 STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}nyomda
+STR_0101_PRINTING_WORKS.t                                       :{BLACK}{TINYFONT}nyomdát
 STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}olajkút
+STR_0102_OIL_WELLS.t                                            :{BLACK}{TINYFONT}olajkútat
 STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}vasércbánya
+STR_0103_IRON_ORE_MINE.t                                        :{BLACK}{TINYFONT}vasércbányát
 STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}acélöntõ
+STR_0104_STEEL_MILL.t                                           :{BLACK}{TINYFONT}acélöntõt
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}bank
+STR_0105_BANK.t                                                 :{BLACK}{TINYFONT}bankot
 STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}papírgyár
+STR_0106_PAPER_MILL.t                                           :{BLACK}{TINYFONT}papírgyárat
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}aranybánya
+STR_0107_GOLD_MINE.t                                            :{BLACK}{TINYFONT}aranybányát
 STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}konzervgyár
+STR_0108_FOOD_PROCESSING_PLANT.t                                :{BLACK}{TINYFONT}konzervgyárat
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}gyémántbánya
+STR_0109_DIAMOND_MINE.t                                         :{BLACK}{TINYFONT}gyémántbányát
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}rézércbánya
+STR_010A_COPPER_ORE_MINE.t                                      :{BLACK}{TINYFONT}rézércbányát
 STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}gyümölcsültetvény
+STR_010B_FRUIT_PLANTATION.t                                     :{BLACK}{TINYFONT}gyümölcsültetvényt
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}gumiültetvény
+STR_010C_RUBBER_PLANTATION.t                                    :{BLACK}{TINYFONT}gumiültetvényt
 STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}vízforrás
+STR_010D_WATER_SUPPLY.t                                         :{BLACK}{TINYFONT}vízforrást
 STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}víztorony
+STR_010E_WATER_TOWER.t                                          :{BLACK}{TINYFONT}víztornyot
 STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}favágó
+STR_010F_LUMBER_MILL.t                                          :{BLACK}{TINYFONT}favágót
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}vattacukor-erdõ
+STR_0110_COTTON_CANDY_FOREST.t                                  :{BLACK}{TINYFONT}vattacukor-erdõt
 STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}cukorkagyár
+STR_0111_CANDY_FACTORY.t                                        :{BLACK}{TINYFONT}cukorkagyárat
 STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}elemfarm
+STR_0112_BATTERY_FARM.t                                         :{BLACK}{TINYFONT}elemfarmot
 STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}kólakút
+STR_0113_COLA_WELLS.t                                           :{BLACK}{TINYFONT}kólakútat
 STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}játékbolt
+STR_0114_TOY_SHOP.t                                             :{BLACK}{TINYFONT}játékboltot
 STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}játékgyár
+STR_0115_TOY_FACTORY.t                                          :{BLACK}{TINYFONT}játékgyárat
 STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}mûanyagforrás
+STR_0116_PLASTIC_FOUNTAINS.t                                    :{BLACK}{TINYFONT}mûanyagforrást
 STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}üdítõital-gyár
+STR_0117_FIZZY_DRINK_FACTORY.t                                  :{BLACK}{TINYFONT}üdítõital-gyárat
 STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}buborékgenerátor
+STR_0118_BUBBLE_GENERATOR.t                                     :{BLACK}{TINYFONT}buborékgenerátort
 STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}tejkaramella fejtõ
+STR_0119_TOFFEE_QUARRY.t                                        :{BLACK}{TINYFONT}tejkaramella fejtõt
 STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}cukorbánya
+STR_011A_SUGAR_MINE.t                                           :{BLACK}{TINYFONT}cukorbányát
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Vasútállomás
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Teherautó-rakodóhely
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Buszmegálló
@@ -1693,42 +1758,79 @@ STR_4010_GENERATE_RANDOM_NEW_GAME                               :Véletlenszerû ú
 STR_4800_IN_THE_WAY                                             :{WHITE}...{STRING} van az útban
 STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :szénbánya
+STR_4802_COAL_MINE.t                                            :szénbányát
 STR_4803_POWER_STATION                                          :erõmû
+STR_4803_POWER_STATION.t                                        :erõmûvet
 STR_4804_SAWMILL                                                :fûrésztelep
+STR_4804_SAWMILL.t                                              :fûrésztelepet
 STR_4805_FOREST                                                 :erdõ
+STR_4805_FOREST.t                                               :erdõt
 STR_4806_OIL_REFINERY                                           :olajfinomító
+STR_4806_OIL_REFINERY.t                                         :olajfinomítót
 STR_4807_OIL_RIG                                                :olajfúró torony
+STR_4807_OIL_RIG.t                                              :olajfúró tornyot
 STR_4808_FACTORY                                                :gyár
+STR_4808_FACTORY.t                                              :gyárat
 STR_4809_PRINTING_WORKS                                         :nyomda
+STR_4809_PRINTING_WORKS.t                                       :nyomdát
 STR_480A_STEEL_MILL                                             :acélöntõ
+STR_480A_STEEL_MILL.t                                           :acélöntõt
 STR_480B_FARM                                                   :farm
+STR_480B_FARM.t                                                 :farmot
 STR_480C_COPPER_ORE_MINE                                        :rézércbánya
+STR_480C_COPPER_ORE_MINE.t                                      :rézércbányát
 STR_480D_OIL_WELLS                                              :olajkút
+STR_480D_OIL_WELLS.t                                            :olajkútat
 STR_480E_BANK                                                   :bank
+STR_480E_BANK.t                                                 :bankot
 STR_480F_FOOD_PROCESSING_PLANT                                  :konzervgyár
+STR_480F_FOOD_PROCESSING_PLANT.t                                :konzervgyárat
 STR_4810_PAPER_MILL                                             :papírgyár
+STR_4810_PAPER_MILL.t                                           :papírgyárat
 STR_4811_GOLD_MINE                                              :aranybánya
+STR_4811_GOLD_MINE.t                                            :aranybányát
 STR_4812_BANK                                                   :bank
+STR_4812_BANK.t                                                 :bankot
 STR_4813_DIAMOND_MINE                                           :gyémántbánya
+STR_4813_DIAMOND_MINE.t                                         :gyémántbányát
 STR_4814_IRON_ORE_MINE                                          :vasércbánya
+STR_4814_IRON_ORE_MINE.t                                        :vasércbányát
 STR_4815_FRUIT_PLANTATION                                       :gyümölcsültetvény
+STR_4815_FRUIT_PLANTATION.t                                     :gyümölcsültetvényt
 STR_4816_RUBBER_PLANTATION                                      :gumiültetvény
+STR_4816_RUBBER_PLANTATION.t                                    :gumiültetvényt
 STR_4817_WATER_SUPPLY                                           :vízforrás
+STR_4817_WATER_SUPPLY.t                                         :vízforrást
 STR_4818_WATER_TOWER                                            :víztorony
+STR_4818_WATER_TOWER.t                                          :víztornyot
 STR_4819_FACTORY                                                :gyár
+STR_4819_FACTORY.t                                              :gyárat
 STR_481A_FARM                                                   :farm
+STR_481A_FARM.t                                                 :farmot
 STR_481B_LUMBER_MILL                                            :favágó
+STR_481B_LUMBER_MILL.t                                          :favágót
 STR_481C_COTTON_CANDY_FOREST                                    :vattacukor-erdõ
+STR_481C_COTTON_CANDY_FOREST.t                                  :vattacukor-erdõt
 STR_481D_CANDY_FACTORY                                          :cukorkagyár
+STR_481D_CANDY_FACTORY.t                                        :cukorkagyárat
 STR_481E_BATTERY_FARM                                           :elemfarm
+STR_481E_BATTERY_FARM.t                                         :elemfarmot
 STR_481F_COLA_WELLS                                             :kólakút
+STR_481F_COLA_WELLS.t                                           :kólakútat
 STR_4820_TOY_SHOP                                               :játékbolt
+STR_4820_TOY_SHOP.t                                             :játékboltot
 STR_4821_TOY_FACTORY                                            :játékgyár
+STR_4821_TOY_FACTORY.t                                          :játékgyárat
 STR_4822_PLASTIC_FOUNTAINS                                      :mûanyagforrás
+STR_4822_PLASTIC_FOUNTAINS.t                                    :mûanyagforrást
 STR_4823_FIZZY_DRINK_FACTORY                                    :üdítõital-gyár
+STR_4823_FIZZY_DRINK_FACTORY.t                                  :üdítõital-gyárat
 STR_4824_BUBBLE_GENERATOR                                       :buborékgenerátor
+STR_4824_BUBBLE_GENERATOR.t                                     :buborékgenerátort
 STR_4825_TOFFEE_QUARRY                                          :tejkaramella fejtõ
+STR_4825_TOFFEE_QUARRY.t                                        :tejkaramella fejtõt
 STR_4826_SUGAR_MINE                                             :cukorbánya
+STR_4826_SUGAR_MINE.t                                           :cukorbányát
 
 ############ range for requires	starts
 STR_4827_REQUIRES                                               :{BLACK}Felhasznál: {YELLOW}{STRING}
@@ -1739,8 +1841,8 @@ STR_4829_REQUIRES                                               :{BLACK}Felhaszn
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Múlt havi termelés:
 STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% elszállítva)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}A fõ nézetet a gazdasági épületre állítja
-STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Új {STRING} épül {TOWN} közelében!
-STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Új {STRING} ültettek {TOWN} közelében!
+STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Új {STRING.t} építenek {TOWN} közelében!
+STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Új {STRING.t} ültettek {TOWN} közelében!
 STR_482F_COST                                                   :{BLACK}Ár: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Nem építheted ide ezt a gazdasági épületet...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...erdõ csak a hóhatár fölé ültethetõ
