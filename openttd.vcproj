@@ -36,9 +36,9 @@
 				BufferSecurityCheck="FALSE"
 				EnableFunctionLevelLinking="TRUE"
 				DefaultCharIsUnsigned="TRUE"
-				UsePrecompiledHeader="1"
-				PrecompiledHeaderThrough="stdafx.h"
-				PrecompiledHeaderFile=".\Release/openttd.pch"
+				UsePrecompiledHeader="0"
+				PrecompiledHeaderThrough=""
+				PrecompiledHeaderFile=""
 				AssemblerOutput="2"
 				AssemblerListingLocation=".\Release/"
 				ObjectFile=".\Release/"
@@ -171,7 +171,7 @@
 				RelativePath=".\callback_table.c">
 			</File>
 			<File
-				RelativePath="command.c">
+				RelativePath=".\command.c">
 			</File>
 			<File
 				RelativePath=".\console.c">
@@ -190,13 +190,6 @@
 			</File>
 			<File
 				RelativePath=".\video\dedicated_v.c">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						PrecompiledHeaderThrough="../stdafx.h"
-						PrecompiledHeaderFile=".\Release/openttd2.pch"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\depot.c">
@@ -207,9 +200,6 @@
 					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						PrecompiledHeaderThrough=""
-						PrecompiledHeaderFile=""
 						CompileAs="2"/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -223,22 +213,22 @@
 				RelativePath=".\driver.c">
 			</File>
 			<File
-				RelativePath="economy.c">
+				RelativePath=".\economy.c">
 			</File>
 			<File
-				RelativePath="engine.c">
+				RelativePath=".\engine.c">
 			</File>
 			<File
-				RelativePath="fileio.c">
+				RelativePath=".\fileio.c">
 			</File>
 			<File
-				RelativePath="gfx.c">
+				RelativePath=".\gfx.c">
 			</File>
 			<File
-				RelativePath="gfxinit.c">
+				RelativePath=".\gfxinit.c">
 			</File>
 			<File
-				RelativePath="landscape.c">
+				RelativePath=".\landscape.c">
 			</File>
 			<File
 				RelativePath=".\map.c">
@@ -250,25 +240,19 @@
 				RelativePath=".\mersenne.c">
 			</File>
 			<File
-				RelativePath="minilzo.c">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"/>
-				</FileConfiguration>
+				RelativePath=".\minilzo.c">
 			</File>
 			<File
-				RelativePath="misc.c">
+				RelativePath=".\misc.c">
 			</File>
 			<File
 				RelativePath=".\mixer.c">
 			</File>
 			<File
-				RelativePath="namegen.c">
+				RelativePath=".\namegen.c">
 			</File>
 			<File
-				RelativePath="network.c">
+				RelativePath=".\network.c">
 			</File>
 			<File
 				RelativePath=".\network_client.c">
@@ -293,45 +277,24 @@
 			</File>
 			<File
 				RelativePath=".\music\null_m.c">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						PrecompiledHeaderThrough="../stdafx.h"
-						PrecompiledHeaderFile=".\Release/openttd2.pch"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\sound\null_s.c">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						PrecompiledHeaderThrough="../stdafx.h"
-						PrecompiledHeaderFile=".\Release/openttd2.pch"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\video\null_v.c">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						PrecompiledHeaderThrough="../stdafx.h"
-						PrecompiledHeaderFile=".\Release/openttd2.pch"/>
-				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="oldloader.c">
+				RelativePath=".\oldloader.c">
 			</File>
 			<File
-				RelativePath="openttd.c">
+				RelativePath=".\openttd.c">
 			</File>
 			<File
-				RelativePath="openttd.rc">
+				RelativePath=".\openttd.rc">
 			</File>
 			<File
-				RelativePath="pathfind.c">
+				RelativePath=".\pathfind.c">
 			</File>
 			<File
 				RelativePath=".\pbs.c">
@@ -349,33 +312,19 @@
 				RelativePath=".\rail.c">
 			</File>
 			<File
-				RelativePath="saveload.c">
+				RelativePath=".\saveload.c">
 			</File>
 			<File
 				RelativePath=".\screenshot.c">
 			</File>
 			<File
-				RelativePath="sdl.c">
+				RelativePath=".\sdl.c">
 			</File>
 			<File
 				RelativePath=".\sound\sdl_s.c">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						PrecompiledHeaderThrough="../stdafx.h"
-						PrecompiledHeaderFile=".\Release/openttd2.pch"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\video\sdl_v.c">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						PrecompiledHeaderThrough="../stdafx.h"
-						PrecompiledHeaderFile=".\Release/openttd2.pch"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\settings.c">
@@ -384,25 +333,25 @@
 				RelativePath=".\signs.c">
 			</File>
 			<File
-				RelativePath="sound.c">
+				RelativePath=".\sound.c">
 			</File>
 			<File
 				RelativePath=".\sprite.c">
 			</File>
 			<File
-				RelativePath="spritecache.c">
+				RelativePath=".\spritecache.c">
 			</File>
 			<File
-				RelativePath="StdAfx.c">
+				RelativePath=".\StdAfx.c">
 			</File>
 			<File
 				RelativePath=".\string.c">
 			</File>
 			<File
-				RelativePath="strings.c">
+				RelativePath=".\strings.c">
 			</File>
 			<File
-				RelativePath="texteff.c">
+				RelativePath=".\texteff.c">
 			</File>
 			<File
 				RelativePath=".\thread.c">
@@ -411,52 +360,31 @@
 				RelativePath=".\tile.c">
 			</File>
 			<File
-				RelativePath="vehicle.c">
+				RelativePath=".\vehicle.c">
 			</File>
 			<File
-				RelativePath="viewport.c">
+				RelativePath=".\viewport.c">
 			</File>
 			<File
 				RelativePath=".\waypoint.c">
 			</File>
 			<File
-				RelativePath="widget.c">
+				RelativePath=".\widget.c">
 			</File>
 			<File
-				RelativePath="win32.c">
+				RelativePath=".\win32.c">
 			</File>
 			<File
 				RelativePath=".\music\win32_m.c">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						PrecompiledHeaderThrough="../stdafx.h"
-						PrecompiledHeaderFile=".\Release/openttd2.pch"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\sound\win32_s.c">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						PrecompiledHeaderThrough="../stdafx.h"
-						PrecompiledHeaderFile=".\Release/openttd2.pch"/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\video\win32_v.c">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						PrecompiledHeaderThrough="../stdafx.h"
-						PrecompiledHeaderFile=".\Release/openttd2.pch"/>
-				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="window.c">
+				RelativePath=".\window.c">
 			</File>
 		</Filter>
 		<Filter
@@ -472,22 +400,22 @@
 				RelativePath=".\aystar.h">
 			</File>
 			<File
-				RelativePath="command.h">
+				RelativePath=".\command.h">
 			</File>
 			<File
-				RelativePath="console.h">
+				RelativePath=".\console.h">
 			</File>
 			<File
 				RelativePath=".\currency.h">
 			</File>
 			<File
-				RelativePath="debug.h">
+				RelativePath=".\debug.h">
 			</File>
 			<File
 				RelativePath=".\video\dedicated_v.h">
 			</File>
 			<File
-				RelativePath="depot.h">
+				RelativePath=".\depot.h">
 			</File>
 			<File
 				RelativePath=".\music\dmusic.h">
@@ -496,40 +424,40 @@
 				RelativePath=".\driver.h">
 			</File>
 			<File
-				RelativePath="economy.h">
+				RelativePath=".\economy.h">
 			</File>
 			<File
-				RelativePath="engine.h">
+				RelativePath=".\engine.h">
 			</File>
 			<File
-				RelativePath="fileio.h">
+				RelativePath=".\fileio.h">
 			</File>
 			<File
-				RelativePath="functions.h">
+				RelativePath=".\functions.h">
 			</File>
 			<File
-				RelativePath="gfx.h">
+				RelativePath=".\gfx.h">
 			</File>
 			<File
-				RelativePath="gfxinit.h">
+				RelativePath=".\gfxinit.h">
 			</File>
 			<File
-				RelativePath="gui.h">
+				RelativePath=".\gui.h">
 			</File>
 			<File
-				RelativePath="hal.h">
+				RelativePath=".\hal.h">
 			</File>
 			<File
-				RelativePath="industry.h">
+				RelativePath=".\industry.h">
 			</File>
 			<File
-				RelativePath="macros.h">
+				RelativePath=".\macros.h">
 			</File>
 			<File
 				RelativePath=".\map.h">
 			</File>
 			<File
-				RelativePath="md5.h">
+				RelativePath=".\md5.h">
 			</File>
 			<File
 				RelativePath=".\mixer.h">
@@ -559,7 +487,7 @@
 				RelativePath=".\newgrf.h">
 			</File>
 			<File
-				RelativePath="news.h">
+				RelativePath=".\news.h">
 			</File>
 			<File
 				RelativePath=".\npf.h">
@@ -574,16 +502,16 @@
 				RelativePath=".\video\null_v.h">
 			</File>
 			<File
-				RelativePath="openttd.h">
+				RelativePath=".\openttd.h">
 			</File>
 			<File
-				RelativePath="pathfind.h">
+				RelativePath=".\pathfind.h">
 			</File>
 			<File
 				RelativePath=".\pbs.h">
 			</File>
 			<File
-				RelativePath="player.h">
+				RelativePath=".\player.h">
 			</File>
 			<File
 				RelativePath=".\pool.h">
@@ -595,7 +523,7 @@
 				RelativePath=".\rail.h">
 			</File>
 			<File
-				RelativePath="saveload.h">
+				RelativePath=".\saveload.h">
 			</File>
 			<File
 				RelativePath=".\screenshot.h">
@@ -610,16 +538,16 @@
 				RelativePath=".\signs.h">
 			</File>
 			<File
-				RelativePath="sound.h">
+				RelativePath=".\sound.h">
 			</File>
 			<File
 				RelativePath=".\sprite.h">
 			</File>
 			<File
-				RelativePath="station.h">
+				RelativePath=".\station.h">
 			</File>
 			<File
-				RelativePath="StdAfx.h">
+				RelativePath=".\StdAfx.h">
 			</File>
 			<File
 				RelativePath=".\string.h">
@@ -634,19 +562,19 @@
 				RelativePath=".\town.h">
 			</File>
 			<File
-				RelativePath="variables.h">
+				RelativePath=".\variables.h">
 			</File>
 			<File
-				RelativePath="vehicle.h">
+				RelativePath=".\vehicle.h">
 			</File>
 			<File
 				RelativePath=".\vehicle_gui.h">
 			</File>
 			<File
-				RelativePath="viewport.h">
+				RelativePath=".\viewport.h">
 			</File>
 			<File
-				RelativePath="waypoint.h">
+				RelativePath=".\waypoint.h">
 			</File>
 			<File
 				RelativePath=".\music\win32_m.h">
@@ -658,89 +586,89 @@
 				RelativePath=".\video\win32_v.h">
 			</File>
 			<File
-				RelativePath="window.h">
+				RelativePath=".\window.h">
 			</File>
 		</Filter>
 		<Filter
 			Name="Gui Source codes"
 			Filter="">
 			<File
-				RelativePath="aircraft_gui.c">
+				RelativePath=".\aircraft_gui.c">
 			</File>
 			<File
-				RelativePath="airport_gui.c">
+				RelativePath=".\airport_gui.c">
 			</File>
 			<File
-				RelativePath="bridge_gui.c">
+				RelativePath=".\bridge_gui.c">
 			</File>
 			<File
-				RelativePath="dock_gui.c">
+				RelativePath=".\dock_gui.c">
 			</File>
 			<File
-				RelativePath="engine_gui.c">
+				RelativePath=".\engine_gui.c">
 			</File>
 			<File
-				RelativePath="graph_gui.c">
+				RelativePath=".\graph_gui.c">
 			</File>
 			<File
-				RelativePath="industry_gui.c">
+				RelativePath=".\industry_gui.c">
 			</File>
 			<File
-				RelativePath="intro_gui.c">
+				RelativePath=".\intro_gui.c">
 			</File>
 			<File
-				RelativePath="main_gui.c">
+				RelativePath=".\main_gui.c">
 			</File>
 			<File
-				RelativePath="misc_gui.c">
+				RelativePath=".\misc_gui.c">
 			</File>
 			<File
-				RelativePath="music_gui.c">
+				RelativePath=".\music_gui.c">
 			</File>
 			<File
 				RelativePath=".\network_gui.c">
 			</File>
 			<File
-				RelativePath="news_gui.c">
+				RelativePath=".\news_gui.c">
 			</File>
 			<File
-				RelativePath="order_gui.c">
+				RelativePath=".\order_gui.c">
 			</File>
 			<File
-				RelativePath="player_gui.c">
+				RelativePath=".\player_gui.c">
 			</File>
 			<File
-				RelativePath="rail_gui.c">
+				RelativePath=".\rail_gui.c">
 			</File>
 			<File
-				RelativePath="road_gui.c">
+				RelativePath=".\road_gui.c">
 			</File>
 			<File
-				RelativePath="roadveh_gui.c">
+				RelativePath=".\roadveh_gui.c">
 			</File>
 			<File
-				RelativePath="settings_gui.c">
+				RelativePath=".\settings_gui.c">
 			</File>
 			<File
-				RelativePath="ship_gui.c">
+				RelativePath=".\ship_gui.c">
 			</File>
 			<File
-				RelativePath="smallmap_gui.c">
+				RelativePath=".\smallmap_gui.c">
 			</File>
 			<File
-				RelativePath="station_gui.c">
+				RelativePath=".\station_gui.c">
 			</File>
 			<File
-				RelativePath="subsidy_gui.c">
+				RelativePath=".\subsidy_gui.c">
 			</File>
 			<File
 				RelativePath=".\terraform_gui.c">
 			</File>
 			<File
-				RelativePath="town_gui.c">
+				RelativePath=".\town_gui.c">
 			</File>
 			<File
-				RelativePath="train_gui.c">
+				RelativePath=".\train_gui.c">
 			</File>
 			<File
 				RelativePath=".\vehicle_gui.c">
@@ -750,68 +678,68 @@
 			Name="Landscape"
 			Filter="">
 			<File
-				RelativePath="aircraft_cmd.c">
+				RelativePath=".\aircraft_cmd.c">
 			</File>
 			<File
-				RelativePath="clear_cmd.c">
+				RelativePath=".\clear_cmd.c">
 			</File>
 			<File
-				RelativePath="disaster_cmd.c">
+				RelativePath=".\disaster_cmd.c">
 			</File>
 			<File
-				RelativePath="dummy_land.c">
+				RelativePath=".\dummy_land.c">
 			</File>
 			<File
-				RelativePath="industry_cmd.c">
+				RelativePath=".\industry_cmd.c">
 			</File>
 			<File
-				RelativePath="misc_cmd.c">
+				RelativePath=".\misc_cmd.c">
 			</File>
 			<File
-				RelativePath="order_cmd.c">
+				RelativePath=".\order_cmd.c">
 			</File>
 			<File
-				RelativePath="rail_cmd.c">
+				RelativePath=".\rail_cmd.c">
 			</File>
 			<File
-				RelativePath="road_cmd.c">
+				RelativePath=".\road_cmd.c">
 			</File>
 			<File
-				RelativePath="roadveh_cmd.c">
+				RelativePath=".\roadveh_cmd.c">
 			</File>
 			<File
-				RelativePath="ship_cmd.c">
+				RelativePath=".\ship_cmd.c">
 			</File>
 			<File
-				RelativePath="station_cmd.c">
+				RelativePath=".\station_cmd.c">
 			</File>
 			<File
-				RelativePath="town_cmd.c">
+				RelativePath=".\town_cmd.c">
 			</File>
 			<File
-				RelativePath="train_cmd.c">
+				RelativePath=".\train_cmd.c">
 			</File>
 			<File
-				RelativePath="tree_cmd.c">
+				RelativePath=".\tree_cmd.c">
 			</File>
 			<File
-				RelativePath="tunnelbridge_cmd.c">
+				RelativePath=".\tunnelbridge_cmd.c">
 			</File>
 			<File
-				RelativePath="unmovable_cmd.c">
+				RelativePath=".\unmovable_cmd.c">
 			</File>
 			<File
-				RelativePath="water_cmd.c">
+				RelativePath=".\water_cmd.c">
 			</File>
 		</Filter>
 		<Filter
 			Name="Tables"
 			Filter="">
 			<File
-				RelativePath="table\ai_rail.h">
+				RelativePath=".\table\ai_rail.h">
 			</File>
 			<File
-				RelativePath="table\allstrings.h">
+				RelativePath=".\table\allstrings.h">
 			</File>
 			<File
 				RelativePath=".\table\animcursors.h">
@@ -820,67 +748,67 @@
 				RelativePath=".\table\autorail.h">
 			</File>
 			<File
-				RelativePath="table\build_industry.h">
+				RelativePath=".\table\build_industry.h">
 			</File>
 			<File
-				RelativePath="table\clear_land.h">
+				RelativePath=".\table\clear_land.h">
 			</File>
 			<File
-				RelativePath="table\engines.h">
+				RelativePath=".\table\engines.h">
 			</File>
 			<File
-				RelativePath="table\genland.h">
+				RelativePath=".\table\genland.h">
 			</File>
 			<File
-				RelativePath="table\industry_land.h">
+				RelativePath=".\table\industry_land.h">
 			</File>
 			<File
-				RelativePath="table\landscape_const.h">
+				RelativePath=".\table\landscape_const.h">
 			</File>
 			<File
-				RelativePath="table\landscape_sprite.h">
+				RelativePath=".\table\landscape_sprite.h">
 			</File>
 			<File
 				RelativePath=".\table\namegen.h">
 			</File>
 			<File
-				RelativePath="table\palettes.h">
+				RelativePath=".\table\palettes.h">
 			</File>
 			<File
-				RelativePath="table\road_land.h">
+				RelativePath=".\table\road_land.h">
 			</File>
 			<File
-				RelativePath="table\roadveh.h">
+				RelativePath=".\table\roadveh.h">
 			</File>
 			<File
 				RelativePath=".\table\sprites.h">
 			</File>
 			<File
-				RelativePath="table\station_land.h">
+				RelativePath=".\table\station_land.h">
 			</File>
 			<File
-				RelativePath="table\strings.h">
+				RelativePath=".\table\strings.h">
 			</File>
 			<File
 				RelativePath=".\table\town_land.h">
 			</File>
 			<File
-				RelativePath="table\track_land.h">
+				RelativePath=".\table\track_land.h">
 			</File>
 			<File
-				RelativePath="table\train_cmd.h">
+				RelativePath=".\table\train_cmd.h">
 			</File>
 			<File
-				RelativePath="table\tree_land.h">
+				RelativePath=".\table\tree_land.h">
 			</File>
 			<File
-				RelativePath="table\tunnel_land.h">
+				RelativePath=".\table\tunnel_land.h">
 			</File>
 			<File
-				RelativePath="table\unmovable_land.h">
+				RelativePath=".\table\unmovable_land.h">
 			</File>
 			<File
-				RelativePath="table\water_land.h">
+				RelativePath=".\table\water_land.h">
 			</File>
 		</Filter>
 		<Filter
@@ -916,13 +844,13 @@
 			</Filter>
 		</Filter>
 		<File
-			RelativePath="icon1.ico">
+			RelativePath=".\openttd.ico">
 		</File>
 		<File
-			RelativePath="mainicon.ico">
+			RelativePath=".\mainicon.ico">
 		</File>
 		<File
-			RelativePath="ReadMe.txt">
+			RelativePath=".\ReadMe.txt">
 		</File>
 	</Files>
 	<Globals>
