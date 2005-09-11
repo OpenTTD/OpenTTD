@@ -247,6 +247,32 @@ DEF_CONSOLE_CMD(ConLoad)
 	return true;
 }
 
+
+DEF_CONSOLE_CMD(ConRemove)
+{
+	const FiosItem* item;
+	const char* file;
+
+	if (argc == 0) {
+		IConsoleHelp("Remove a savegame by name or index. Usage: 'rm <file | number>'");
+		return true;
+	}
+
+	if (argc != 2) return false;
+
+	file = argv[1];
+	item = GetFiosItem(file);
+	if (item != NULL) {
+		if (!FiosDelete(item->name))
+			IConsolePrintF(_icolour_err, "%s: Failed to delete file", file);
+	} else
+		IConsolePrintF(_icolour_err, "%s: No such file or directory.", file);
+
+	FiosFreeSavegameList();
+	return true;
+}
+
+
 /* List all the files in the current dir via console */
 DEF_CONSOLE_CMD(ConListFiles)
 {
@@ -1260,6 +1286,7 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("scrollto",     ConScrollToTile);
 	IConsoleCmdRegister("alias",        ConAlias);
 	IConsoleCmdRegister("load",         ConLoad);
+	IConsoleCmdRegister("rm",           ConRemove);
 	IConsoleCmdRegister("save",         ConSave);
 	IConsoleCmdRegister("ls",           ConListFiles);
 	IConsoleCmdRegister("cd",           ConChangeDirectory);
