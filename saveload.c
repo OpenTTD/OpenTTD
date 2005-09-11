@@ -71,6 +71,7 @@ static struct {
 
 	// these 3 may be used by compressor/decompressors.
 	byte *buf;                           /// pointer to temporary memory to read/write, initialized by SaveLoadFormat->initread/write
+	byte *buf_ori;                       /// pointer to the original memory location of buf, used to free it afterwards
 	uint bufsize;                        /// the size of the temporary memory *buf
 	FILE *fh;                            /// the file from which is read or written to
 
@@ -860,13 +861,13 @@ static void WriteLZO(uint size)
 static bool InitLZO(void)
 {
 	_sl.bufsize = LZO_SIZE;
-	_sl.buf = (byte*)malloc(LZO_SIZE);
+	_sl.buf = _sl.buf_ori = (byte*)malloc(LZO_SIZE);
 	return true;
 }
 
 static void UninitLZO(void)
 {
-	free(_sl.buf);
+	free(_sl.buf_ori);
 }
 
 //*********************************************
@@ -885,13 +886,13 @@ static void WriteNoComp(uint size)
 static bool InitNoComp(void)
 {
 	_sl.bufsize = LZO_SIZE;
-	_sl.buf = (byte*)malloc(LZO_SIZE);
+	_sl.buf = _sl.buf_ori =(byte*)malloc(LZO_SIZE);
 	return true;
 }
 
 static void UninitNoComp(void)
 {
-	free(_sl.buf);
+	free(_sl.buf_ori);
 }
 
 //********************************************
@@ -969,7 +970,7 @@ static bool InitReadZlib(void)
 	if (inflateInit(&_z) != Z_OK) return false;
 
 	_sl.bufsize = 4096;
-	_sl.buf = (byte*)malloc(4096 + 4096); // also contains fread buffer
+	_sl.buf = _sl.buf_ori = (byte*)malloc(4096 + 4096); // also contains fread buffer
 	return true;
 }
 
@@ -1001,7 +1002,7 @@ static uint ReadZlib(void)
 static void UninitReadZlib(void)
 {
 	inflateEnd(&_z);
-	free(_sl.buf);
+	free(_sl.buf_ori);
 }
 
 static bool InitWriteZlib(void)
@@ -1010,7 +1011,7 @@ static bool InitWriteZlib(void)
 	if (deflateInit(&_z, 6) != Z_OK) return false;
 
 	_sl.bufsize = 4096;
-	_sl.buf = (byte*)malloc(4096); // also contains fread buffer
+	_sl.buf = _sl.buf_ori = (byte*)malloc(4096); // also contains fread buffer
 	return true;
 }
 
@@ -1045,7 +1046,7 @@ static void UninitWriteZlib(void)
 	// flush any pending output.
 	if (_sl.fh) WriteZlibLoop(&_z, NULL, 0, Z_FINISH);
 	deflateEnd(&_z);
-	free(_sl.buf);
+	free(_sl.buf_ori);
 }
 
 #endif /* WITH_ZLIB */
@@ -1291,20 +1292,14 @@ static Thread* save_thread;
 static void* SaveFileToDisk(void *arg)
 {
 	const SaveLoadFormat *fmt = GetSavegameFormat(_savegame_format);
-	/* XXX - backup _sl.buf cause it is used internally by the writer
-	 * and we update it for our own purposes */
-	static byte *tmp = NULL;
 	uint32 hdr[2];
 
 	if (arg != NULL) OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_START);
-
-	tmp = _sl.buf;
 
 	/* XXX - Setup setjmp error handler if an error occurs anywhere deep during
 	 * loading/saving execute a longjmp() and continue execution here */
 	if (setjmp(_sl.excpt)) {
 		AbortSaveLoad();
-		_sl.buf = tmp;
 		_sl.excpt_uninit();
 
 		fprintf(stderr, "Save game failed: %s.", _sl.excpt_msg);
@@ -1319,7 +1314,6 @@ static void* SaveFileToDisk(void *arg)
 	if (fwrite(hdr, sizeof(hdr), 1, _sl.fh) != 1) SlError("file write failed");
 
 	if (!fmt->init_write()) SlError("cannot initialize compressor");
-	tmp = _sl.buf; // XXX - init_write can change _sl.buf, so update it
 
 	{
 		uint i;
@@ -1335,8 +1329,6 @@ static void* SaveFileToDisk(void *arg)
 		 * as much data as it is in there */
 		_sl.buf = _ts.save->blocks[i];
 		fmt->writer(_ts.count - (i * count));
-
-		_sl.buf = tmp; // XXX - reset _sl.buf to its original value to let it continue its internal usage
 	}
 
 	fmt->uninit_write();
