@@ -1430,7 +1430,6 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 		SlSaveChunks();
 		SlWriteFill(); // flush the save buffer
 
-		/* Write to file */
 		if (_network_server ||
 					(save_thread = OTTDCreateThread(&SaveFileToDisk, (void*)"")) == NULL) {
 			DEBUG(misc, 1) ("cannot create savegame thread, reverting to single-threaded mode...");

@@ -1190,7 +1190,7 @@ int CDECL main(int argc, char* argv[])
 	int show_todo = 0;
 
 	if (argc > 1 && (!strcmp(argv[1], "-v") || !strcmp(argv[1], "--version"))) {
-		puts("$Revision: 2617 $");
+		puts("$Revision$");
 		return 0;
 	}
 
