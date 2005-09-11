@@ -1295,6 +1295,7 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("stopall",      ConStopAllVehicles);
 
 	IConsoleAliasRegister("dir",      "ls");
+	IConsoleAliasRegister("del",      "rm %+");
 	IConsoleAliasRegister("newmap",   "newgame");
 	IConsoleAliasRegister("new_map",  "newgame");
 	IConsoleAliasRegister("new_game", "newgame");
