@@ -30,7 +30,7 @@ static const uint _trackdir_length[TRACKDIR_END] = {
  * NPF scale, ie the number of full tiles multiplied by NPF_TILE_LENGTH to
  * prevent rounding.
  */
-uint NPFDistanceTrack(TileIndex t0, TileIndex t1)
+static uint NPFDistanceTrack(TileIndex t0, TileIndex t1)
 {
 	const uint dx = abs(TileX(t0) - TileX(t1));
 	const uint dy = abs(TileY(t0) - TileY(t1));
@@ -53,7 +53,7 @@ uint NPFDistanceTrack(TileIndex t0, TileIndex t1)
  * @param trackdir The (track)direction in which you want to look.
  * @param enginetype The type of the engine for which we are checking this.
  */
-bool IsEndOfLine(TileIndex tile, Trackdir trackdir, RailType enginetype)
+static bool IsEndOfLine(TileIndex tile, Trackdir trackdir, RailType enginetype)
 {
 	byte exitdir = TrackdirToExitdir(trackdir);
 	TileIndex dst_tile;
@@ -161,7 +161,7 @@ static TileIndex CalcClosestStationTile(StationID station, TileIndex tile)
 
 /* On PBS pathfinding runs, this is called before pathfinding ends (BeforeExit aystar callback), and will
  * reserve the appropriate tracks, if needed. */
-void NPFReservePBSPath(AyStar *as)
+static void NPFReservePBSPath(AyStar *as)
 {
 	NPFFoundTargetData* ftd = (NPFFoundTargetData*)as->user_path;
 	bool eol_end = false;
