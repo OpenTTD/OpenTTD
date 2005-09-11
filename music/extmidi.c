@@ -81,7 +81,7 @@ static void DoPlay(void)
 					#endif
 				}
 			}
-			exit(1);
+			_exit(1);
 		}
 
 		case -1:
