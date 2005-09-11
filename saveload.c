@@ -1296,7 +1296,7 @@ static void* SaveFileToDisk(void *arg)
 	static byte *tmp = NULL;
 	uint32 hdr[2];
 
-	if (save_thread != NULL) OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_START);
+	if (arg != NULL) OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_START);
 
 	tmp = _sl.buf;
 
@@ -1307,8 +1307,9 @@ static void* SaveFileToDisk(void *arg)
 		_sl.buf = tmp;
 		_sl.excpt_uninit();
 
-		ShowInfoF("Save game failed: %s.", _sl.excpt_msg);
-		OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_ERROR);
+		fprintf(stderr, "Save game failed: %s.", _sl.excpt_msg);
+		if (arg != NULL) OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_ERROR);
+		else SaveFileError();
 		return NULL;
 	}
 
@@ -1343,7 +1344,7 @@ static void* SaveFileToDisk(void *arg)
 	GetSavegameFormat("memory")->uninit_write(); // clean the memorypool
 	fclose(_sl.fh);
 
-	if (save_thread != NULL) OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_DONE);
+	if (arg != NULL) OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_DONE);
 	return NULL;
 }
 
@@ -1365,19 +1366,17 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 {
 	uint32 hdr[2];
 	const SaveLoadFormat *fmt;
-  uint version;
+	uint version;
 
-	/* An instance of saving is already active, so wait until it is done */
-	if (_ts.saveinprogress) {
+	/* An instance of saving is already active, so don't go saving again */
+	if (_ts.saveinprogress && mode == SL_SAVE) {
+		// if not an autosave, but a user action, show error message
 		if (!_do_autosave) ShowErrorMessage(_error_message, STR_SAVE_STILL_IN_PROGRESS, 0, 0);
-		WaitTillSaved();
-		// nonsense to do an autosave while we were still saving our game, so skip it
-		if (_do_autosave) return SL_OK;
-	} else {
-		WaitTillSaved();
+		return SL_OK;
 	}
+	WaitTillSaved();
 
-  /* Load a TTDLX or TTDPatch game */
+	/* Load a TTDLX or TTDPatch game */
 	if (mode == SL_OLD_LOAD) {
 		InitializeGame(256, 256); // set a mapsize of 256x256 for TTDPatch games or it might get confused
 		if (!LoadOldSaveGame(filename)) return SL_REINIT;
@@ -1417,8 +1416,8 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 		return SL_ERROR;
 	}
 
-  /* We first initialize here to avoid: "warning: variable `version' might
-   * be clobbered by `longjmp' or `vfork'" */
+	/* We first initialize here to avoid: "warning: variable `version' might
+	 * be clobbered by `longjmp' or `vfork'" */
 	version = 0;
 
 	/* General tactic is to first save the game to memory, then use an available writer
@@ -1441,7 +1440,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 
 		/* Write to file */
 		if (_network_server ||
-				(save_thread = OTTDCreateThread(&SaveFileToDisk, NULL)) == NULL) {
+					(save_thread = OTTDCreateThread(&SaveFileToDisk, (void*)"")) == NULL) {
 			DEBUG(misc, 1) ("cannot create savegame thread, reverting to single-threaded mode...");
 			SaveFileToDisk(NULL);
 		}
