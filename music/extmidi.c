@@ -69,17 +69,13 @@ static void DoPlay(void)
 			int d;
 
 			close(0);
-			close(1);
-			close(2);
 			d = open("/dev/null", O_RDONLY);
-			if (d != -1) {
-				if (dup2(d, 1) != -1 && dup2(d, 2) != -1) {
-					#if defined(MIDI_ARG)
-						execlp(msf.extmidi, "extmidi", MIDI_ARG, _midi.song, NULL);
-					#else
-						execlp(msf.extmidi, "extmidi", _midi.song, NULL);
-					#endif
-				}
+			if (d != -1 && dup2(d, 1) != -1 && dup2(d, 2) != -1) {
+				#if defined(MIDI_ARG)
+					execlp(msf.extmidi, "extmidi", MIDI_ARG, _midi.song, (char*)0);
+				#else
+					execlp(msf.extmidi, "extmidi", _midi.song, (char*)0);
+				#endif
 			}
 			_exit(1);
 		}
