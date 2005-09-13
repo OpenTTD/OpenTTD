@@ -1,4 +1,4 @@
-/* $Id: ai_old.c 2701 2005-07-24 14:12:37Z tron $ */
+/* $Id$ */
 
 #include "../../stdafx.h"
 #include "../../openttd.h"
@@ -191,7 +191,7 @@ static int AiChooseAircraftToBuild(int32 money, byte flag)
 			if (i>=253) continue;
 		}
 
-		ret = DoCommandByTile(0, i, 0, 0, CMD_BUILD_AIRCRAFT);
+		ret = DoCommandByTile(0, i, 0, DC_QUERY_COST, CMD_BUILD_AIRCRAFT);
 		if (!CmdFailed(ret) && ret <= money && ret >= best_veh_cost) {
 			best_veh_cost = ret;
 			best_veh_index = i;
@@ -3502,10 +3502,11 @@ static void AiStateBuildAircraftVehicles(Player *p)
 	tile = TILE_ADD(p->ai.src.use_tile, ToTileIndexDiff(ptr->tileoffs));
 
 	veh = AiChooseAircraftToBuild(p->player_money, p->ai.build_kind!=0 ? 1 : 0);
-	if (veh == -1) {
-		return;
-	}
+	if (veh == -1) return;
 
+	/* XXX - Have the AI pick the hangar terminal in an airport. Eg get airport-type
+	 * and offset to the FIRST depot because the AI picks the st->xy tile */
+	tile += ToTileIndexDiff(GetAirport(GetStation(_m[tile].m2)->airport_type)->airport_depots[0]);
 	if (CmdFailed(DoCommandByTile(tile, veh, 0, DC_EXEC, CMD_BUILD_AIRCRAFT))) return;
 	loco_id = _new_aircraft_id;
 

@@ -165,16 +165,14 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!IsEngineBuildable(p1, VEH_Aircraft)) return CMD_ERROR;
 
-	// Workaround: TODO: make AI players try to build planes in a hangar instead of just an airport tile.
-	if (!IsAircraftHangarTile(tile) && IS_HUMAN_PLAYER(_current_player)) return CMD_ERROR;
-
-	if (!IsTileOwner(tile, _current_player) && IS_HUMAN_PLAYER(_current_player)) return CMD_ERROR;
-
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
-
 	value = EstimateAircraftCost(p1);
 
+	// to just query the cost, it is not neccessary to have a valid tile (automation/AI)
 	if (flags & DC_QUERY_COST) return value;
+
+	if (!IsAircraftHangarTile(tile) || !IsTileOwner(tile, _current_player)) return CMD_ERROR;
+
+	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	avi = AircraftVehInfo(p1);
 	// allocate 2 or 3 vehicle structs, depending on type
@@ -253,23 +251,21 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		_new_aircraft_id = v->index;
 
-		// the old AI doesn't click on a tile to build airplanes, so the below code will
-		// never work. Therefore just assume the AI's planes always come from Hangar0
-		v->u.air.pos = _is_old_ai_player ? 0 : MAX_ELEMENTS;
+		v->u.air.pos = MAX_ELEMENTS;
 
-		/* When we click on hangar we know the tile (it is in var 'tile')it is on. By that we know
-			its position in the array of depots the airport has.....we can search
-			->layout for #th position of depot. Since layout must start with depots, it is simple
-		*/
+		/* When we click on hangar we know the tile it is on. By that we know
+		 * its position in the array of depots the airport has.....we can search
+		 * layout for #th position of depot. Since layout must start with a listing
+		 * of all depots, it is simple */
 		{
 			const Station* st = GetStation(_m[tile].m2);
-			const AirportFTAClass* Airport = GetAirport(st->airport_type);
+			const AirportFTAClass* apc = GetAirport(st->airport_type);
 			uint i;
 
-			for (i = 0; i < Airport->nof_depots; i++) {
-				if (st->airport_tile + ToTileIndexDiff(Airport->airport_depots[i]) == tile) {
-					assert(Airport->layout[i].heading == HANGAR);
-					v->u.air.pos = Airport->layout[i].position;
+			for (i = 0; i < apc->nof_depots; i++) {
+				if (st->airport_tile + ToTileIndexDiff(apc->airport_depots[i]) == tile) {
+					assert(apc->layout[i].heading == HANGAR);
+					v->u.air.pos = apc->layout[i].position;
 					break;
 				}
 			}
