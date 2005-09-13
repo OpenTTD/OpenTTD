@@ -1053,70 +1053,81 @@ static void VehicleChangeInfo(byte *buf, int len)
 
 	while (numprops-- && buf < bufend) {
 		uint8 prop = grf_load_byte(&buf);
+		bool ignoring = false;
 
-		if (feature == GSF_STATION)
-			// stations don't share those common properties
-			goto run_handler;
+		switch (feature) {
+			case GSF_TRAIN:
+			case GSF_ROAD:
+			case GSF_SHIP:
+			case GSF_AIRCRAFT:
+				/* Common properties for vehicles */
+				switch (prop) {
+					case 0x00: { /* Introduction date */
+						FOR_EACH_OBJECT {
+							uint16 date = grf_load_word(&buf);
 
-		switch (prop) {
-		case 0x00: { /* Introduction date */
-			FOR_EACH_OBJECT {
-				uint16 date = grf_load_word(&buf);
+							ei[i].base_intro = date;
+						}
+					}	break;
+					case 0x02: { /* Decay speed */
+						FOR_EACH_OBJECT {
+							uint8 decay = grf_load_byte(&buf);
 
-				ei[i].base_intro = date;
-			}
-		}	break;
-		case 0x02: { /* Decay speed */
-			FOR_EACH_OBJECT {
-				uint8 decay = grf_load_byte(&buf);
+							ei[i].unk2 &= 0x80;
+							ei[i].unk2 |= decay & 0x7f;
+						}
+					}	break;
+					case 0x03: { /* Vehicle life */
+						FOR_EACH_OBJECT {
+							uint8 life = grf_load_byte(&buf);
 
-				ei[i].unk2 &= 0x80;
-				ei[i].unk2 |= decay & 0x7f;
-			}
-		}	break;
-		case 0x03: { /* Vehicle life */
-			FOR_EACH_OBJECT {
-				uint8 life = grf_load_byte(&buf);
+							ei[i].lifelength = life;
+						}
+					}	break;
+					case 0x04: { /* Model life */
+						FOR_EACH_OBJECT {
+							uint8 life = grf_load_byte(&buf);
 
-				ei[i].lifelength = life;
-			}
-		}	break;
-		case 0x04: { /* Model life */
-			FOR_EACH_OBJECT {
-				uint8 life = grf_load_byte(&buf);
+							ei[i].base_life = life;
+						}
+					}	break;
+					case 0x06: { /* Climates available */
+						FOR_EACH_OBJECT {
+							uint8 climates = grf_load_byte(&buf);
 
-				ei[i].base_life = life;
-			}
-		}	break;
-		case 0x06: { /* Climates available */
-			FOR_EACH_OBJECT {
-				uint8 climates = grf_load_byte(&buf);
+							ei[i].railtype_climates &= 0xf0;
+							ei[i].railtype_climates |= climates;
+						}
+					}	break;
+					case 0x07: { /* Loading speed */
+						/* TODO */
+						/* Hyronymus explained me what does
+						 * this mean and insists on having a
+						 * credit ;-). --pasky */
+						/* TODO: This needs to be supported by
+						 * LoadUnloadVehicle() first. */
+						FOR_EACH_OBJECT {
+							grf_load_byte(&buf);
+						}
+						ignoring = true;
+						break;
+					}
 
-				ei[i].railtype_climates &= 0xf0;
-				ei[i].railtype_climates |= climates;
-			}
-		}	break;
-		case 0x07: { /* Loading speed */
-			/* TODO */
-			/* Hyronymus explained me what does
-			 * this mean and insists on having a
-			 * credit ;-). --pasky */
-			/* TODO: This needs to be supported by
-			 * LoadUnloadVehicle() first. */
-			FOR_EACH_OBJECT {
-				grf_load_byte(&buf);
-			}
-			goto ignoring;
+					default:
+						if (handler[feature](engine, numinfo, prop, &buf, bufend - buf))
+							ignoring = true;
+						break;
+				}
+				break;
+
+			default:
+				if (handler[feature](engine, numinfo, prop, &buf, bufend - buf))
+					ignoring = true;
+				break;
 		}
-		default: {
-run_handler:
-			if (handler[feature](engine, numinfo, prop, &buf, bufend - buf)) {
-ignoring:
-				grfmsg(GMS_NOTICE, "VehicleChangeInfo: Ignoring property %x (not implemented).", prop);
-			}
-			break;
-		}
-		}
+
+		if (ignoring)
+			grfmsg(GMS_NOTICE, "VehicleChangeInfo: Ignoring property %x (not implemented).", prop);
 	}
 }
 
