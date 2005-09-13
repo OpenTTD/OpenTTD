@@ -779,7 +779,7 @@ int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invali
 				b) the build_on_slopes switch is disabled
 		*/
 		if (IsSteepTileh(tileh) ||
-			(((!_patches.ainew_active && _is_ai_player) || !_patches.build_on_slopes)
+			((_is_old_ai_player || !_patches.build_on_slopes)
 			&& tileh != 0)) {
 
 			_error_message = STR_0007_FLAT_LAND_REQUIRED;
@@ -1009,7 +1009,7 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		if (st->train_tile != 0) {
 			// check if we want to expanding an already existing station?
-			if ((!_patches.ainew_active && _is_ai_player) || !_patches.join_stations)
+			if (_is_old_ai_player || !_patches.join_stations)
 				return_cmd_error(STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD);
 			if (!CanExpandRailroadStation(st, finalvalues, direction))
 				return CMD_ERROR;

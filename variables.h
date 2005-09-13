@@ -252,7 +252,7 @@ VARDEF byte _cur_month;
 
 VARDEF uint32 _frame_counter;
 
-VARDEF bool _is_ai_player; // current player is an AI player? - Can be removed if new AI is done
+VARDEF bool _is_old_ai_player; // current player is an oldAI player? (enables a lot of cheats..)
 
 VARDEF bool _do_autosave;
 VARDEF int _autosave_ctr;

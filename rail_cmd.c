@@ -247,8 +247,7 @@ static uint32 CheckRailSlope(uint tileh, TrackBits rail_bits, TrackBits existing
 				)) { // partly up
 			if (existing != 0) {
 				return 0;
-			} else if (!_patches.build_on_slopes ||
-					(_is_ai_player && !_patches.ainew_active)) {
+			} else if (!_patches.build_on_slopes || _is_old_ai_player) {
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 			} else {
 				return _price.terraform;
@@ -679,7 +678,7 @@ int32 CmdBuildTrainDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	*/
 
 	if (tileh != 0 && (
-			(!_patches.ainew_active && _is_ai_player) ||
+			_is_old_ai_player ||
 			!_patches.build_on_slopes ||
 			IsSteepTileh(tileh) ||
 			!CanBuildDepotByTileh(p2, tileh)

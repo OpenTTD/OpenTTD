@@ -265,7 +265,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 
 	// Towns are not allowed to use bridges on slopes.
-	allow_on_slopes = ((!_is_ai_player || _patches.ainew_active)
+	allow_on_slopes = (!_is_old_ai_player
 	                   && _current_player != OWNER_TOWN && _patches.build_on_slopes);
 
 	/* Try and clear the start landscape */
@@ -410,7 +410,7 @@ not_valid_below:;
 
 		bridge_len += 2;	// begin and end tiles/ramps
 
-		if (_current_player < MAX_PLAYERS && !(_is_ai_player && !_patches.ainew_active))
+		if (_current_player < MAX_PLAYERS && !_is_old_ai_player)
 			bridge_len = CalcBridgeLenCostFactor(bridge_len);
 
 		cost += ((int64)bridge_len * _price.build_bridge * b->price) >> 8;

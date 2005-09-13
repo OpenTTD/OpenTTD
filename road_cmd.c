@@ -457,7 +457,7 @@ do_clear:;
 	cost = CheckRoadSlope(ti.tileh, &pieces, existing);
 	if (CmdFailed(cost)) return_cmd_error(STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION);
 
-	if (cost && (!_patches.build_on_slopes || (!_patches.ainew_active && _is_ai_player)))
+	if (cost && (!_patches.build_on_slopes || _is_old_ai_player))
 		return CMD_ERROR;
 
 	if (!(ti.type == MP_STREET && (ti.map5 & 0xF0) == 0)) {

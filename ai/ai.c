@@ -126,8 +126,12 @@ void AI_RunTick(byte player)
 
 	if (_patches.ainew_active)
 		AiNewDoGameLoop(p);
-	else
+	else {
+		/* Enable all kind of cheats the old AI needs in order to operate correctly... */
+		_is_old_ai_player = true;
 		AiDoGameLoop(p);
+		_is_old_ai_player = false;
+	}
 }
 
 
