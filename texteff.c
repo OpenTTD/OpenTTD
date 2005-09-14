@@ -55,25 +55,21 @@ extern void memcpy_pitch(void *d, void *s, int w, int h, int spitch, int dpitch)
 // Duration is in game-days
 void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...)
 {
-	int i;
-	char buf[1024];
-	char buf2[MAX_TEXTMESSAGE_LENGTH];
+	char buf[MAX_TEXTMESSAGE_LENGTH], buf2[MAX_TEXTMESSAGE_LENGTH];
 	va_list va;
-	int length;
+	int i, length;
 
 	va_start(va, message);
 	vsnprintf(buf, lengthof(buf), message, va);
 	va_end(va);
 
 	/* Special color magic */
-	if ((color & 0xFF) == 0xC9)
-		color = 0x1CA;
+	if ((color & 0xFF) == 0xC9) color = 0x1CA;
 
 	/* Cut the message till it fits inside the chatbox */
-	length = strlen(buf) + 1;
-	snprintf(buf2, length, "%s", buf);
-	while (GetStringWidth(buf2) > _textmessage_width - 9)
-		snprintf(buf2, --length, "%s", buf);
+	snprintf(buf2, lengthof(buf2), "%s", buf); // remove any formatting
+	length = strlen(buf2);
+	while (GetStringWidth(buf2) > _textmessage_width - 9) buf2[--length] = '\0';
 
 	/* Find an empty spot and put the message there */
 	for (i = 0; i < MAX_CHAT_MESSAGES; i++) {
