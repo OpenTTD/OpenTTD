@@ -2886,53 +2886,56 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
 
 void BuildOilRig(TileIndex tile)
 {
-	Station *st;
 	int j;
+	Station *st = AllocateStation();
 
-	FOR_ALL_STATIONS(st) {
-		if (st->xy == 0) {
-			st->town = ClosestTownFromTile(tile, (uint)-1);
-			st->sign.width_1 = 0;
-			if (!GenerateStationName(st, tile, 2))
-				return;
-
-			SetTileType(tile, MP_STATION);
-			_m[tile].m5 = 0x4B;
-			SetTileOwner(tile, OWNER_NONE);
-			_m[tile].m3 = 0;
-			_m[tile].m4 = 0;
-			_m[tile].m2 = st->index;
-
-			st->owner = OWNER_NONE;
-      st->airport_flags = 0;
-			st->airport_type = AT_OILRIG;
-			st->xy = tile;
-			st->bus_stops = NULL;
-			st->truck_stops = NULL;
-			st->airport_tile = tile;
-			st->dock_tile = tile;
-			st->train_tile = 0;
-			st->had_vehicle_of_type = 0;
-			st->time_since_load = 255;
-			st->time_since_unload = 255;
-			st->delete_ctr = 0;
-			st->last_vehicle = INVALID_VEHICLE;
-			st->facilities = FACIL_AIRPORT | FACIL_DOCK;
-			st->build_date = _date;
-			for(j=0; j!=NUM_CARGO; j++) {
-				st->goods[j].waiting_acceptance = 0;
-				st->goods[j].days_since_pickup = 0;
-				st->goods[j].enroute_from = INVALID_STATION;
-				st->goods[j].rating = 175;
-				st->goods[j].last_speed = 0;
-				st->goods[j].last_age = 255;
-			}
-
-			UpdateStationVirtCoordDirty(st);
-			UpdateStationAcceptance(st, false);
-			return;
-		}
+	if (st == NULL) {
+		DEBUG(misc, 0) ("Couldn't allocate station for oilrig at %#X, reverting to oilrig only...", tile);
+		return;
 	}
+	if (!GenerateStationName(st, tile, 2)) {
+		DEBUG(misc, 0) ("Couldn't allocate station-name for oilrig at %#X, reverting to oilrig only...", tile);
+		return;
+	}
+
+	st->town = ClosestTownFromTile(tile, (uint)-1);
+	st->sign.width_1 = 0;
+
+	SetTileType(tile, MP_STATION);
+	_m[tile].m5 = 0x4B;
+	SetTileOwner(tile, OWNER_NONE);
+	_m[tile].m3 = 0;
+	_m[tile].m4 = 0;
+	_m[tile].m2 = st->index;
+
+	st->owner = OWNER_NONE;
+	st->airport_flags = 0;
+	st->airport_type = AT_OILRIG;
+	st->xy = tile;
+	st->bus_stops = NULL;
+	st->truck_stops = NULL;
+	st->airport_tile = tile;
+	st->dock_tile = tile;
+	st->train_tile = 0;
+	st->had_vehicle_of_type = 0;
+	st->time_since_load = 255;
+	st->time_since_unload = 255;
+	st->delete_ctr = 0;
+	st->last_vehicle = INVALID_VEHICLE;
+	st->facilities = FACIL_AIRPORT | FACIL_DOCK;
+	st->build_date = _date;
+
+	for (j = 0; j != NUM_CARGO; j++) {
+		st->goods[j].waiting_acceptance = 0;
+		st->goods[j].days_since_pickup = 0;
+		st->goods[j].enroute_from = INVALID_STATION;
+		st->goods[j].rating = 175;
+		st->goods[j].last_speed = 0;
+		st->goods[j].last_age = 255;
+	}
+
+	UpdateStationVirtCoordDirty(st);
+	UpdateStationAcceptance(st, false);
 }
 
 void DeleteOilRig(TileIndex tile)
