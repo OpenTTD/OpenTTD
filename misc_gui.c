@@ -66,7 +66,7 @@ static void LandInfoWndProc(Window *w, WindowEvent *e)
 		}
 		DrawStringCentered(140, 38, str, 0);
 
-		snprintf(_userstring, lengthof(_userstring), "%.4X", lid->tile);
+		snprintf(_userstring, lengthof(_userstring), "0x%.4X", lid->tile);
 		SetDParam(0, TileX(lid->tile));
 		SetDParam(1, TileY(lid->tile));
 		SetDParam(2, STR_SPEC_USERSTRING);
