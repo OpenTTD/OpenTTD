@@ -257,7 +257,6 @@ VARDEF bool _is_old_ai_player; // current player is an oldAI player? (enables a 
 VARDEF bool _do_autosave;
 VARDEF int _autosave_ctr;
 
-VARDEF PlayerID _local_player;
 VARDEF byte _display_opt;
 VARDEF byte _pause;
 VARDEF int _caret_timer;

@@ -25,8 +25,6 @@
 #include "variables.h"
 #include "ai/ai.h"
 
-PlayerID _current_player;
-
 static const SpriteID cheeks_table[4] = {
 	0x325, 0x326,
 	0x390, 0x3B0,
@@ -295,8 +293,7 @@ bool CheckTileOwnership(TileIndex tile)
 	_error_message = STR_013B_OWNED_BY;
 
 	// no need to get the name of the owner unless we're the local player (saves some time)
-	if (_current_player == _local_player)
-		GetNameOfOwner(owner, tile);
+	if (IsLocalPlayer()) GetNameOfOwner(owner, tile);
 	return false;
 }
 
@@ -690,7 +687,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			if (flags & DC_EXEC) {
 				p->engine_renew = (bool)GB(p2, 0, 1);
-				if (_current_player == _local_player) {
+				if (IsLocalPlayer()) {
 					_patches.autorenew = p->engine_renew;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}
@@ -702,7 +699,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			if (flags & DC_EXEC) {
 				p->engine_renew_months = (int16)p2;
-				if (_current_player == _local_player) {
+				if (IsLocalPlayer()) {
 					_patches.autorenew_months = p->engine_renew_months;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}
@@ -714,7 +711,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			if (flags & DC_EXEC) {
 				p->engine_renew_money = (uint32)p2;
-				if (_current_player == _local_player) {
+				if (IsLocalPlayer()) {
 					_patches.autorenew_money = p->engine_renew_money;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}
@@ -753,7 +750,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				p->engine_renew_months = (int16)GB(p1, 16, 16);
 				p->engine_renew_money = (uint32)p2;
 
-				if (_current_player == _local_player) {
+				if (IsLocalPlayer()) {
 					_patches.autorenew = p->engine_renew;
 					_patches.autorenew_months = p->engine_renew_months;
 					_patches.autorenew_money = p->engine_renew_money;

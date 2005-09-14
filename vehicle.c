@@ -1613,8 +1613,7 @@ int32 ReplaceVehicle(Vehicle *v)
 	//needs to be down here because refitting will change SET_EXPENSES_TYPE if called
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 	SubtractMoneyFromPlayer(cost);
-	if (_current_player == _local_player)
-		ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost);
+	if (IsLocalPlayer()) ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost);
 
 	return cost;
 }

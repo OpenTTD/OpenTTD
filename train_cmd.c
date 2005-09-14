@@ -1043,7 +1043,7 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 						new_f->orders = first->orders;
 						new_f->num_orders = first->num_orders;
 						first->orders = NULL; // XXX - to not to delete the orders */
-						ShowTrainViewWindow(new_f);
+						if (IsLocalPlayer()) ShowTrainViewWindow(new_f);
 					}
 				}
 			}

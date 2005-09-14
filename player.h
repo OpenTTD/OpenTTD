@@ -201,7 +201,8 @@ void AiDoGameLoop(Player *p);
 void UpdatePlayerMoney32(Player *p);
 #define FOR_ALL_PLAYERS(p) for(p=_players; p != endof(_players); p++)
 
-extern PlayerID _current_player;
+VARDEF PlayerID _local_player;
+VARDEF PlayerID _current_player;
 
 #define MAX_PLAYERS 8
 VARDEF Player _players[MAX_PLAYERS];
@@ -210,8 +211,13 @@ VARDEF byte _player_colors[MAX_PLAYERS];
 
 static inline Player* GetPlayer(uint i)
 {
-  assert(i < lengthof(_players));
-  return &_players[i];
+	assert(i < lengthof(_players));
+	return &_players[i];
+}
+
+static inline bool IsLocalPlayer(void)
+{
+	return _local_player == _current_player;
 }
 
 /** Returns the number of rail types the player can build

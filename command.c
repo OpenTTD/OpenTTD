@@ -460,7 +460,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	_docommand_recursive = 1;
 
 	// cost estimation only?
-	if (_shift_pressed && _current_player == _local_player && !(cmd & (CMD_NETWORK_COMMAND | CMD_SHOW_NO_ERROR))) {
+	if (_shift_pressed && IsLocalPlayer() && !(cmd & (CMD_NETWORK_COMMAND | CMD_SHOW_NO_ERROR))) {
 		// estimate the cost.
 		res = proc(x, y, flags, p1, p2);
 		if (CmdFailed(res)) {
@@ -525,7 +525,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 
 	SubtractMoneyFromPlayer(res2);
 
-	if (_current_player == _local_player && _game_mode != GM_EDITOR) {
+	if (IsLocalPlayer() && _game_mode != GM_EDITOR) {
 		if (res2 != 0)
 			ShowCostOrIncomeAnimation(x, y, GetSlopeZ(x, y), res2);
 		if (_additional_cash_required) {
@@ -543,7 +543,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 
 show_error:
 	// show error message if the command fails?
-	if (_current_player == _local_player && _error_message_2 != 0)
+	if (IsLocalPlayer() && _error_message_2 != 0)
 		ShowErrorMessage(_error_message, _error_message_2, x,y);
 
 callb_err:

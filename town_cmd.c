@@ -1670,8 +1670,7 @@ static void TownActionBribe(Town *t, int action)
 
 		// only show errormessage to the executing player. All errors are handled command.c
 		// but this is special, because it can only 'fail' on a DC_EXEC
-		if (!_networking || (_current_player == _local_player))
-			ShowErrorMessage(STR_BRIBE_FAILED_2, STR_BRIBE_FAILED, 0, 0);
+		if (IsLocalPlayer()) ShowErrorMessage(STR_BRIBE_FAILED_2, STR_BRIBE_FAILED, 0, 0);
 
 		/*	decrease by a lot!
 		 *	ChangeTownRating is only for stuff in demolishing. Bribe failure should

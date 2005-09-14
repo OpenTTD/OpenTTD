@@ -1472,8 +1472,7 @@ int LoadUnloadVehicle(Vehicle *v)
 			v->profit_this_year += profit;
 			SubtractMoneyFromPlayer(-profit);
 
-			if (_current_player == _local_player)
-				SndPlayVehicleFx(SND_14_CASHTILL, v);
+			if (IsLocalPlayer()) SndPlayVehicleFx(SND_14_CASHTILL, v);
 
 			ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, -profit);
 		}

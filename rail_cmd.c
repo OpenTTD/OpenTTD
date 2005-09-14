@@ -696,7 +696,7 @@ int32 CmdBuildTrainDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		if (_current_player == _local_player) _last_built_train_depot_tile = tile;
+		if (IsLocalPlayer()) _last_built_train_depot_tile = tile;
 
 		ModifyTile(tile,
 			MP_SETTYPE(MP_RAILWAY) |

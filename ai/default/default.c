@@ -3831,7 +3831,7 @@ static void AiHandleTakeover(Player *p)
 			return;
 		p->bankrupt_timeout = 0;
 		DeleteWindowById(WC_BUY_COMPANY, _current_player);
-		if (_current_player == _local_player) {
+		if (IsLocalPlayer()) {
 			AskExitToGameMenu();
 			return;
 		}
