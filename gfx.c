@@ -1974,8 +1974,6 @@ bool ChangeResInGame(int w, int h)
 	if ((_screen.width != w || _screen.height != h) && !_video_driver->change_resolution(w, h))
 		return false;
 
-	_cur_resolution[0] = w;
-	_cur_resolution[1] = h;
 	return true;
 }
 
