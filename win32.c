@@ -61,13 +61,8 @@ bool LoadLibraryList(Function proc[], const char* dll)
 }
 
 #ifdef _MSC_VER
-
 static const char *_exception_string;
-static void *_safe_esp;
-static char *_crash_msg;
-static bool _expanded;
-static bool _did_emerg_save;
-static int _ident;
+#endif
 
 void ShowOSErrorBox(const char *buf)
 {
@@ -82,6 +77,14 @@ void ShowOSErrorBox(const char *buf)
 	}
 #endif
 }
+
+#ifdef _MSC_VER
+
+static void *_safe_esp;
+static char *_crash_msg;
+static bool _expanded;
+static bool _did_emerg_save;
+static int _ident;
 
 typedef struct DebugFileInfo {
 	uint32 size;
@@ -543,15 +546,6 @@ static void Win32InitializeExceptions(void)
 	}
 
 	SetUnhandledExceptionFilter(ExceptionHandler);
-}
-#else
-/* Get rid of unused variable warnings.. ShowOSErrorBox
- * is now used twice, once in MSVC, and once in all other Win
- * compilers (cygwin, mingw, etc.) */
-void ShowOSErrorBox(const char *buf)
-{
-	MyShowCursor(true);
-	MessageBoxA(GetActiveWindow(), buf, "Error!", MB_ICONSTOP);
 }
 #endif
 
@@ -1064,6 +1058,14 @@ void ShowInfo(const char *str)
 	}
 }
 
+#ifdef __MINGW32__
+	/* _set_error_mode() constants&function (do not exist in mingw headers) */
+	#define _OUT_TO_DEFAULT      0
+	#define _OUT_TO_STDERR       1
+	#define _OUT_TO_MSGBOX       2
+	#define _REPORT_ERRMODE      3
+	int _set_error_mode(int);
+#endif
 
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	LPTSTR lpCmdLine, int nCmdShow)
@@ -1075,8 +1077,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	CreateConsole();
 #endif
 
-	// make sure we have an autosave folder - Done in DeterminePaths
-	// CreateDirectory("autosave", NULL);
+	_set_error_mode(_OUT_TO_MSGBOX); // force assertion output to messagebox
 
 	// setup random seed to something quite random
 #if defined(_MSC_VER)
