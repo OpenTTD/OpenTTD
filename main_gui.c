@@ -436,11 +436,12 @@ static void MenuClickNewspaper(int index)
 
 static void MenuClickHelp(int index)
 {
-	switch(index) {
+	switch (index) {
 	case 0: PlaceLandBlockInfo(); break;
-	case 2: _make_screenshot = 1; break;
-	case 3: _make_screenshot = 2; break;
-	case 4: ShowAboutWindow(); break;
+	case 2: IConsoleSwitch(); break;
+	case 3: _make_screenshot = 1; break;
+	case 4: _make_screenshot = 2; break;
+	case 5: ShowAboutWindow(); break;
 	}
 }
 
@@ -980,7 +981,7 @@ static void ToolbarNewspaperClick(Window *w)
 
 static void ToolbarHelpClick(Window *w)
 {
-	PopupMainToolbMenu(w, 0x1E0, 26, STR_02D5_LAND_BLOCK_INFO, 5, 0);
+	PopupMainToolbMenu(w, 0x1E0, 26, STR_02D5_LAND_BLOCK_INFO, 6, 0);
 }
 
 static void ToolbarOptionsClick(Window *w)
