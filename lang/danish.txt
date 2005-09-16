@@ -832,6 +832,7 @@ STR_TOWNNAME_AUSTRIAN                                           :Østrigske
 STR_TOWNNAME_ROMANIAN                                           :Rumænske
 STR_TOWNNAME_CZECH                                              :Tjekkiske
 STR_TOWNNAME_SWISS                                              :Schweiziske
+STR_TOWNNAME_DANISH                                             :Danske
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pund ({POUNDSIGN})

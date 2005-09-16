@@ -573,6 +573,25 @@ static byte MakeSwissTownName(char *buf, uint32 seed)
 	return 0;
 }
 
+static byte MakeDanishTownName(char *buf, uint32 seed)
+{
+	int i;
+
+	// null terminates the string for strcat
+	strcpy(buf, "");
+
+	// optional first segment
+	i = SeedChanceBias(0, lengthof(name_danish_1), seed, 50);
+	if (i >= 0)
+		strcat(buf, name_danish_1[i]);
+
+	// middle segments removed as this algorithm seems to create much more realistic names
+	strcat(buf, name_danish_2[SeedChance( 7, lengthof(name_danish_2), seed)]);
+	strcat(buf, name_danish_3[SeedChance(16, lengthof(name_danish_3), seed)]);
+
+	return 0;
+}
+
 TownNameGenerator * const _town_name_generators[] =
 {
 	MakeEnglishOriginalTownName,
@@ -592,6 +611,7 @@ TownNameGenerator * const _town_name_generators[] =
 	MakeRomanianTownName,
 	MakeCzechTownName,
 	MakeSwissTownName,
+	MakeDanishTownName,
 };
 
 // DO WE NEED THIS ANY MORE?
