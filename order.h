@@ -90,10 +90,12 @@ typedef struct Order {
 	uint16 index;         //! Index of the order, is not saved or anything, just for reference
 } Order;
 
+#define MAX_BACKUP_ORDER_COUNT 40
+
 typedef struct {
 	VehicleID clone;
 	OrderID orderindex;
-	Order order[41];
+	Order order[MAX_BACKUP_ORDER_COUNT + 1];
 	uint16 service_interval;
 	char name[32];
 } BackuppedOrders;

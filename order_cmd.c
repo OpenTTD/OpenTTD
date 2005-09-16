@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "order.h"
 #include "airport.h"
 #include "depot.h"
 #include "functions.h"
@@ -202,13 +203,25 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				default: return CMD_ERROR;
 			}
 
+			/* Order flags can be any of the following for stations:
+			 * [full-load | unload] [+ transfer] [+ non-stop]
+			 * non-stop orders (if any) are only valid for trains */
 			switch (new_order.flags) {
-				case 0:
+				case 0: /* Fallthrough */
 				case OF_FULL_LOAD:
+				case OF_FULL_LOAD | OF_TRANSFER: /* Fallthrough */
 				case OF_UNLOAD:
+				case OF_UNLOAD | OF_TRANSFER: /* Fallthrough */
+				case OF_TRANSFER:
+					break;
+
 				case OF_NON_STOP:
 				case OF_NON_STOP | OF_FULL_LOAD:
+				case OF_NON_STOP | OF_FULL_LOAD | OF_TRANSFER: /* Fallthrough */
 				case OF_NON_STOP | OF_UNLOAD:
+				case OF_NON_STOP | OF_UNLOAD | OF_TRANSFER: /* Fallthrough */
+				case OF_NON_STOP | OF_TRANSFER:
+					if (v->type != VEH_Train) return CMD_ERROR;
 					break;
 
 				default: return CMD_ERROR;
@@ -235,10 +248,8 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				if (!IsDepotIndex(new_order.station)) return CMD_ERROR;
 				dp = GetDepot(new_order.station);
 
-				if (!IsValidDepot(dp) ||
-						!CheckOwnership(GetTileOwner(dp->xy))) {
+				if (!IsValidDepot(dp) || !CheckOwnership(GetTileOwner(dp->xy)))
 					return CMD_ERROR;
-				}
 
 				switch (v->type) {
 					case VEH_Train:
@@ -257,11 +268,17 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				}
 			}
 
+			/* Order flags can be any of the following for depots:
+			 * order [+ halt] [+ non-stop]
+			 * non-stop orders (if any) are only valid for trains */
 			switch (new_order.flags) {
 				case OF_PART_OF_ORDERS:
 				case OF_PART_OF_ORDERS | OF_HALT_IN_DEPOT:
+					break;
+
 				case OF_NON_STOP | OF_PART_OF_ORDERS:
 				case OF_NON_STOP | OF_PART_OF_ORDERS | OF_HALT_IN_DEPOT:
+					if (v->type != VEH_Train) return CMD_ERROR;
 					break;
 
 				default: return CMD_ERROR;
@@ -279,9 +296,14 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			if (!CheckOwnership(GetTileOwner(wp->xy))) return CMD_ERROR;
 
+			/* Order flags can be any of the following for waypoints:
+			 * [non-stop]
+			 * non-stop orders (if any) are only valid for trains */
 			switch (new_order.flags) {
-				case 0:
+				case 0: break;
+
 				case OF_NON_STOP:
+					if (v->type != VEH_Train) return CMD_ERROR;
 					break;
 
 				default: return CMD_ERROR;
@@ -298,7 +320,7 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	/* XXX - This limit is only here because the backuppedorders can't
 	 * handle any more then this.. */
-	if (v->num_orders >= 40) return_cmd_error(STR_8832_TOO_MANY_ORDERS);
+	if (v->num_orders >= MAX_BACKUP_ORDER_COUNT) return_cmd_error(STR_8832_TOO_MANY_ORDERS);
 
 	/* For ships, make sure that the station is not too far away from the
 	 * previous destination, for human players with new pathfinding disabled */
