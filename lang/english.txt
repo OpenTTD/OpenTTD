@@ -575,6 +575,8 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...too c
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...too close to another town
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...site unsuitable
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...too many towns
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Can't build any towns
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...there is no more space on the map
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Increase size of town
 STR_023C_EXPAND                                                 :{BLACK}Expand
 STR_023D_RANDOM_TOWN                                            :{BLACK}Random Town

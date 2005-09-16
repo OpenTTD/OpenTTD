@@ -113,7 +113,7 @@ void GenerateClearTile(void);
 
 void GenerateIndustries(void);
 void GenerateUnmovables(void);
-void GenerateTowns(void);
+bool GenerateTowns(void);
 
 void StartupPlayers(void);
 void StartupDisasters(void);

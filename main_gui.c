@@ -42,7 +42,7 @@ static byte _last_built_railtype;
 extern void GenerateWorld(int mode, uint size_x, uint size_y);
 
 extern void GenerateIndustries(void);
-extern void GenerateTowns(void);
+extern bool GenerateTowns(void);
 
 void HandleOnEditTextCancel(void)
 {
@@ -1505,16 +1505,23 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 			_generating_world = true;
 			t = CreateRandomTown(20);
 			_generating_world = false;
-			if (t != NULL)
+
+			if (t == NULL) {
+				ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
+			} else
 				ScrollMainWindowToTile(t->xy);
+
 			break;
 		}
 		case 6: {/* many random towns */
 			HandleButtonClick(w, 6);
+
 			_generating_world = true;
 			_game_mode = GM_NORMAL; // little hack to avoid towns of the same size
-			GenerateTowns();
+			if (!GenerateTowns())
+					ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
 			_generating_world = false;
+
 			_game_mode = GM_EDITOR;
 			break;
 		}

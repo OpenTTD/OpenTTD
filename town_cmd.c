@@ -1107,25 +1107,29 @@ Town *CreateRandomTown(uint attempts)
 	return NULL;
 }
 
-static const byte _num_initial_towns[3] = {
-	11, 23, 46
-};
+static const byte _num_initial_towns[3] = {11, 23, 46};
 
-void GenerateTowns(void)
+bool GenerateTowns(void)
 {
 	uint num = 0;
-	uint n =
-		ScaleByMapSize(_num_initial_towns[_opt.diff.number_towns] + (Random() & 7));
+	uint n = ScaleByMapSize(_num_initial_towns[_opt.diff.number_towns] + (Random() & 7));
 
 	do {
 		if (CreateRandomTown(20) != NULL) 	//try 20 times for the first loop
 			num++;
 	} while (--n);
 
+	// give it a last try, but now more aggressive
 	if (num == 0 && CreateRandomTown(10000) == NULL) {
+		Town *t;
+		FOR_ALL_TOWNS(t) { if (IsValidTown(t)) {num = 1; break;}}
+
 		//XXX can we handle that more gracefully?
-		error("Could not generate any town");
+		if (num == 0) error("Could not generate any town");
+		return false;
 	}
+
+	return true;
 }
 
 static bool CheckBuildHouseMode(Town *t1, TileIndex tile, uint tileh, int mode)
