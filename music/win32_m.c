@@ -12,6 +12,7 @@ static struct {
 	bool playing;
 	int new_vol;
 	HANDLE wait_obj;
+	uint devid;
 	char start_song[260];
 } _midi;
 
@@ -72,7 +73,7 @@ static void MidiIntStopSong(void)
 static void MidiIntSetVolume(int vol)
 {
 	uint v = (vol * 65535 / 127);
-	midiOutSetVolume((HMIDIOUT)-1, v + (v << 16));
+	midiOutSetVolume((HMIDIOUT)_midi.devid, v + (v << 16));
 }
 
 static bool MidiIntIsSongPlaying(void)
@@ -125,7 +126,9 @@ static DWORD WINAPI MidiThread(LPVOID arg)
 
 static const char *Win32MidiStart(const char * const *parm)
 {
+	MIDIOUTCAPS midicaps;
 	DWORD threadId;
+	uint dev, nbdev;
 	char buf[16];
 
 	mciSendStringA("capability sequencer has audio", buf, lengthof(buf), 0);
@@ -133,6 +136,15 @@ static const char *Win32MidiStart(const char * const *parm)
 
 	memset(&_midi, 0, sizeof(_midi));
 	_midi.new_vol = -1;
+
+	/* Get midi device */
+	_midi.devid = MIDI_MAPPER;
+	for (dev = 0, nbdev = midiOutGetNumDevs(); dev < nbdev; dev++) {
+		if (midiOutGetDevCaps(dev, &midicaps, sizeof(midicaps)) == 0 && (midicaps.dwSupport & MIDICAPS_VOLUME)) {
+			_midi.devid = dev;
+			break;
+		}
+	}
 
 	if (CreateThread(NULL, 8192, MidiThread, 0, 0, &threadId) == NULL)
 		return "Failed to create thread";
