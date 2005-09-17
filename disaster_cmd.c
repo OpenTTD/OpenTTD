@@ -10,6 +10,7 @@
 #include "command.h"
 #include "news.h"
 #include "station.h"
+#include "waypoint.h"
 #include "town.h"
 #include "industry.h"
 #include "player.h"
@@ -24,11 +25,11 @@ static void DisasterClearSquare(TileIndex tile)
 
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
-			if (IS_HUMAN_PLAYER(GetTileOwner(tile))) DoClearSquare(tile);
+			if (IS_HUMAN_PLAYER(GetTileOwner(tile)) && !IsRailWaypoint(_m[tile].m5)) DoClearSquare(tile);
 			break;
 
 		case MP_HOUSE: {
-			byte p = _current_player;
+			PlayerID p = _current_player;
 			_current_player = OWNER_NONE;
 			DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 			_current_player = p;
