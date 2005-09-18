@@ -34,8 +34,8 @@
  */
 
 
-#ifndef __LZOCONF_H
-#define __LZOCONF_H
+#ifndef LZOCONF_H
+#define LZOCONF_H
 
 #define LZO_VERSION             0x1080
 #define LZO_VERSION_STRING      "1.08"
@@ -449,5 +449,5 @@ LZO_EXTERN(unsigned) __lzo_align_gap(const lzo_voidp _ptr, lzo_uint _size);
 } /* extern "C" */
 #endif
 
-#endif /* already included */
+#endif /* LZOCONF_H */
 

@@ -44,7 +44,7 @@ typedef struct GraphDrawer {
 
 #define INVALID_VALUE 0x80000000
 
-static void DrawGraph(GraphDrawer *gw)
+static void DrawGraph(const GraphDrawer *gw)
 {
 
 	int i,j,k;
@@ -52,7 +52,7 @@ static void DrawGraph(GraphDrawer *gw)
 	int color;
 	int right, bottom;
 	int num_x, num_dataset;
-	uint64 *row_ptr, *col_ptr;
+	const uint64 *row_ptr, *col_ptr;
 	int64 mx;
 	int adj_height;
 	uint64 y_scaling, tmp;

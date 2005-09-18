@@ -483,12 +483,12 @@ int32 CmdSellLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 #include "table/clear_land.h"
 
 
-void DrawClearLandTile(TileInfo *ti, byte set)
+void DrawClearLandTile(const TileInfo *ti, byte set)
 {
 	DrawGroundSprite(0xF54 + _tileh_to_sprite[ti->tileh] + set * 19);
 }
 
-void DrawHillyLandTile(TileInfo *ti)
+void DrawHillyLandTile(const TileInfo *ti)
 {
 	if (ti->tileh != 0) {
 		DrawGroundSprite(0xFA0 + _tileh_to_sprite[ti->tileh]);
@@ -553,7 +553,7 @@ static uint GetSlopeZ_Clear(TileInfo *ti)
 	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh) + ti->z;
 }
 
-static uint GetSlopeTileh_Clear(TileInfo *ti)
+static uint GetSlopeTileh_Clear(const TileInfo *ti)
 {
 	return ti->tileh;
 }
@@ -831,7 +831,7 @@ static void GetTileDesc_Clear(TileIndex tile, TileDesc *td)
 	td->owner = GetTileOwner(tile);
 }
 
-static void ChangeTileOwner_Clear(TileIndex tile, byte old_player, byte new_player)
+static void ChangeTileOwner_Clear(TileIndex tile, PlayerID old_player, PlayerID new_player)
 {
 	return;
 }

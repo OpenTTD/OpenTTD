@@ -1991,7 +1991,7 @@ void SortResolutions(int count)
 	qsort(_resolutions, count, sizeof(_resolutions[0]), compare_res);
 }
 
-uint16 GetDrawStringPlayerColor(byte player)
+uint16 GetDrawStringPlayerColor(PlayerID player)
 {
 	// Get the color for DrawString-subroutines which matches the color
 	//  of the player

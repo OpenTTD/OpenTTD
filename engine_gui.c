@@ -165,7 +165,7 @@ void DrawNewsNewTrainAvail(Window *w)
 	DrawTrainEngineInfo(engine, w->width >> 1, 129, w->width - 52);
 }
 
-StringID GetNewsStringNewTrainAvail(NewsItem *ni)
+StringID GetNewsStringNewTrainAvail(const NewsItem *ni)
 {
 	int engine = ni->string_id;
 	SetDParam(0, STR_8859_NEW_NOW_AVAILABLE);
@@ -205,7 +205,7 @@ void DrawNewsNewAircraftAvail(Window *w)
 	DrawAircraftEngineInfo(engine, w->width >> 1, 131, w->width - 52);
 }
 
-StringID GetNewsStringNewAircraftAvail(NewsItem *ni)
+StringID GetNewsStringNewAircraftAvail(const NewsItem *ni)
 {
 	int engine = ni->string_id;
 	SetDParam(0, STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE);
@@ -245,7 +245,7 @@ void DrawNewsNewRoadVehAvail(Window *w)
 	DrawRoadVehEngineInfo(engine, w->width >> 1, 129, w->width - 52);
 }
 
-StringID GetNewsStringNewRoadVehAvail(NewsItem *ni)
+StringID GetNewsStringNewRoadVehAvail(const NewsItem *ni)
 {
 	int engine = ni->string_id;
 	SetDParam(0, STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE);
@@ -283,7 +283,7 @@ void DrawNewsNewShipAvail(Window *w)
 	DrawShipEngineInfo(engine, w->width >> 1, 131, w->width - 52);
 }
 
-StringID GetNewsStringNewShipAvail(NewsItem *ni)
+StringID GetNewsStringNewShipAvail(const NewsItem *ni)
 {
 	int engine = ni->string_id;
 	SetDParam(0, STR_982C_NEW_SHIP_NOW_AVAILABLE);

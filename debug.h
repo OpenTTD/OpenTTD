@@ -34,4 +34,4 @@ const char *GetDebugString(void);
 void gpmi_debug_openttd(int level, char *s);
 #endif /* GPMI */
 
-#endif
+#endif /* DEBUG_H */

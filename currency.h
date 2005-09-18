@@ -26,4 +26,4 @@ uint GetMaskOfAllowedCurrencies(void);
 uint GetCurrentCurrencyRate(void);
 void CheckSwitchToEuro(void);
 
-#endif
+#endif /* CURRENCY_H */

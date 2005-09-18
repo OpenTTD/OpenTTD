@@ -17,7 +17,7 @@ static uint GetSlopeZ_Dummy(TileInfo *ti) {
 	return GetPartialZ(ti->x&0xF, ti->y&0xF, ti->tileh) + ti->z;
 }
 
-static uint GetSlopeTileh_Dummy(TileInfo *ti) {
+static uint GetSlopeTileh_Dummy(const TileInfo *ti) {
 	return ti->tileh;
 }
 
@@ -53,7 +53,7 @@ static void ClickTile_Dummy(TileIndex tile)
 	/* not used */
 }
 
-static void ChangeTileOwner_Dummy(TileIndex tile, byte old_player, byte new_player)
+static void ChangeTileOwner_Dummy(TileIndex tile, PlayerID old_player, PlayerID new_player)
 {
 	/* not used */
 }

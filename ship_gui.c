@@ -673,7 +673,7 @@ static void DrawShipDepotWindow(Window *w)
 	}
 }
 
-static int GetVehicleFromShipDepotWndPt(Window *w, int x, int y, Vehicle **veh)
+static int GetVehicleFromShipDepotWndPt(const Window *w, int x, int y, Vehicle **veh)
 {
 	uint xt,row,xm,ym;
 	TileIndex tile;
@@ -928,7 +928,7 @@ void ShowShipDepotWindow(TileIndex tile)
 }
 
 
-static void DrawSmallOrderList(Vehicle *v, int x, int y) {
+static void DrawSmallOrderList(const Vehicle *v, int x, int y) {
 	const Order *order;
 	int sel, i = 0;
 

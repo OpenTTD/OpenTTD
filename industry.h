@@ -107,4 +107,4 @@ enum {
 	IT_SUGAR_MINE = 36,
 };
 
-#endif
+#endif /* INDUSTRY_H */

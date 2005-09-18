@@ -138,7 +138,7 @@ extern MemoryPool _town_pool;
 /**
  * Check if a Town really exists.
  */
-static inline bool IsValidTown(Town* town)
+static inline bool IsValidTown(const Town* town)
 {
 	return town->xy != 0; /* XXX: Replace by INVALID_TILE someday */
 }

@@ -50,8 +50,8 @@ static inline Point RemapCoords2(int x, int y)
 
 
 /* clear_land.c */
-void DrawHillyLandTile(TileInfo *ti);
-void DrawClearLandTile(TileInfo *ti, byte set);
+void DrawHillyLandTile(const TileInfo *ti);
+void DrawClearLandTile(const TileInfo *ti, byte set);
 void DrawClearLandFence(const TileInfo *ti);
 void TileLoopClearHelper(TileIndex tile);
 
@@ -72,10 +72,10 @@ void TileLoop_Water(TileIndex tile);
 /* players.c */
 bool CheckPlayerHasMoney(int32 cost);
 void SubtractMoneyFromPlayer(int32 cost);
-void SubtractMoneyFromPlayerFract(byte player, int32 cost);
-bool CheckOwnership(byte owner);
+void SubtractMoneyFromPlayerFract(PlayerID player, int32 cost);
+bool CheckOwnership(PlayerID owner);
 bool CheckTileOwnership(TileIndex tile);
-StringID GetPlayerNameString(byte player, byte index);
+StringID GetPlayerNameString(PlayerID player, PlayerID index);
 
 /* standard */
 void ShowInfo(const char *str);
@@ -229,7 +229,7 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold);
 void ChangeTownRating(Town *t, int add, int max);
 
 uint GetRoadBitsByTile(TileIndex tile);
-int GetTownRadiusGroup(Town *t, TileIndex tile);
+int GetTownRadiusGroup(const Town *t, TileIndex tile);
 void ShowNetworkChatQueryWindow(byte desttype, byte dest);
 void ShowNetworkGiveMoneyWindow(byte player);
 void ShowNetworkNeedGamePassword(void);

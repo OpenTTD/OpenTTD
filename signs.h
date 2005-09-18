@@ -22,7 +22,7 @@ extern MemoryPool _sign_pool;
 /**
  * Check if a Sign really exists.
  */
-static inline bool IsValidSign(SignStruct* ss)
+static inline bool IsValidSign(const SignStruct* ss)
 {
 	return ss->str != 0;
 }

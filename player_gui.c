@@ -24,10 +24,11 @@
 static void DoShowPlayerFinances(int player, bool show_small, bool show_stickied);
 
 
-static void DrawPlayerEconomyStats(Player *p, byte mode)
+static void DrawPlayerEconomyStats(const Player *p, byte mode)
 {
 	int x,y,i,j,year;
-	int64 (*tbl)[13], sum,cost;
+	const int64 (*tbl)[13];
+	int64 sum, cost;
 	StringID str;
 
 	if (!(mode & 1)) { // normal sized economics window (mode&1) is minimized status
@@ -415,7 +416,7 @@ static const Widget _my_player_company_bh_widgets[] = {
 {   WIDGETS_END},
 };
 
-static void DrawPlayerVehiclesAmount(int player)
+static void DrawPlayerVehiclesAmount(PlayerID player)
 {
 	const int x = 110;
 	int y = 72;
@@ -470,7 +471,7 @@ static void DrawPlayerVehiclesAmount(int player)
 	}
 }
 
-int GetAmountOwnedBy(Player *p, byte owner)
+int GetAmountOwnedBy(const Player *p, PlayerID owner)
 {
 	return (p->share_owners[0] == owner) +
 				 (p->share_owners[1] == owner) +
@@ -478,7 +479,7 @@ int GetAmountOwnedBy(Player *p, byte owner)
 				 (p->share_owners[3] == owner);
 }
 
-static void DrawCompanyOwnerText(Player *p)
+static void DrawCompanyOwnerText(const Player *p)
 {
 	int num = -1;
 	Player *p2;

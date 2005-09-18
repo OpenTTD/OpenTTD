@@ -228,7 +228,7 @@ void SubtractMoneyFromPlayer(int32 cost)
 		SubtractMoneyFromAnyPlayer(GetPlayer(pid), cost);
 }
 
-void SubtractMoneyFromPlayerFract(byte player, int32 cost)
+void SubtractMoneyFromPlayerFract(PlayerID player, int32 cost)
 {
 	Player *p = GetPlayer(player);
 	byte m = p->player_money_fraction;
@@ -251,7 +251,7 @@ void UpdatePlayerMoney32(Player *p)
 		p->player_money = (int32)p->money64;
 }
 
-void GetNameOfOwner(byte owner, TileIndex tile)
+void GetNameOfOwner(PlayerID owner, TileIndex tile)
 {
 	SetDParam(2, owner);
 
@@ -271,7 +271,7 @@ void GetNameOfOwner(byte owner, TileIndex tile)
 }
 
 
-bool CheckOwnership(byte owner)
+bool CheckOwnership(PlayerID owner)
 {
 	assert(owner <= OWNER_WATER);
 
@@ -568,7 +568,7 @@ void OnTick_Players(void)
 }
 
 // index is the next parameter in _decode_parameters to set up
-StringID GetPlayerNameString(byte player, byte index)
+StringID GetPlayerNameString(PlayerID player, PlayerID index)
 {
 	if (IS_HUMAN_PLAYER(player) && player < MAX_PLAYERS) {
 		SetDParam(index, player+1);

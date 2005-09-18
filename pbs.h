@@ -83,4 +83,4 @@ bool PBSIsPbsSegment(uint tile, Trackdir trackdir);
  * @return True when the depot is inside a pbs block
  */
 
-#endif
+#endif /* PBS_H */

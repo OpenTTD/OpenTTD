@@ -1,7 +1,7 @@
 /* $Id$ */
 
-#ifndef NETWORK_LAN_H
-#define NETWORK_LAN_H
+#ifndef NETWORK_UDP_H
+#define NETWORK_UDP_H
 
 #ifdef ENABLE_NETWORK
 
@@ -16,4 +16,4 @@ void NetworkUDPRemoveAdvertise(void);
 
 #endif
 
-#endif /* NETWORK_LAN_H */
+#endif /* NETWORK_UDP_H */

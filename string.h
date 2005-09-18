@@ -25,4 +25,4 @@ char* strecpy(char* dst, const char* src, const char* last);
 
 char* CDECL str_fmt(const char* str, ...);
 
-#endif
+#endif /* STRING_H */

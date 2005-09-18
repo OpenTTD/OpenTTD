@@ -343,7 +343,7 @@ static uint GetSlopeZ_Trees(TileInfo *ti) {
 	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh) + ti->z;
 }
 
-static uint GetSlopeTileh_Trees(TileInfo *ti) {
+static uint GetSlopeTileh_Trees(const TileInfo *ti) {
 	return ti->tileh;
 }
 
@@ -617,7 +617,7 @@ static uint32 GetTileTrackStatus_Trees(TileIndex tile, TransportType mode)
 	return 0;
 }
 
-static void ChangeTileOwner_Trees(TileIndex tile, byte old_player, byte new_player)
+static void ChangeTileOwner_Trees(TileIndex tile, PlayerID old_player, PlayerID new_player)
 {
 	/* not used */
 }

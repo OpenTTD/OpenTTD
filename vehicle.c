@@ -556,7 +556,7 @@ bool CanRefitTo(const Vehicle *v, CargoID cid_to)
 	return true;
 }
 
-static void DoDrawVehicle(Vehicle *v)
+static void DoDrawVehicle(const Vehicle *v)
 {
 	uint32 image = v->cur_image;
 
@@ -1819,7 +1819,7 @@ void EndVehicleMove(Vehicle *v)
 }
 
 /* returns true if staying in the same tile */
-bool GetNewVehiclePos(Vehicle *v, GetNewVehiclePosResult *gp)
+bool GetNewVehiclePos(const Vehicle *v, GetNewVehiclePosResult *gp)
 {
 	static const int8 _delta_coord[16] = {
 		-1,-1,-1, 0, 1, 1, 1, 0, /* x */
@@ -1842,7 +1842,7 @@ static const byte _new_direction_table[9] = {
 	2, 3, 4,
 };
 
-byte GetDirectionTowards(Vehicle *v, int x, int y)
+byte GetDirectionTowards(const Vehicle *v, int x, int y)
 {
 	byte dirdiff, dir;
 	int i = 0;

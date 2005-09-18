@@ -936,7 +936,7 @@ static uint GetSlopeZ_Road(TileInfo *ti)
 	return z; // normal Z if no slope
 }
 
-static uint GetSlopeTileh_Road(TileInfo *ti)
+static uint GetSlopeTileh_Road(const TileInfo *ti)
 {
 	// check if it's a foundation
 	if (ti->tileh != 0) {
@@ -1166,7 +1166,7 @@ static void VehicleLeave_Road(Vehicle *v, TileIndex tile, int x, int y)
 	}
 }
 
-static void ChangeTileOwner_Road(TileIndex tile, byte old_player, byte new_player)
+static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID new_player)
 {
 	byte b;
 

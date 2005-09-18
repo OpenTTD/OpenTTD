@@ -23,4 +23,4 @@ void MxSetChannelRawSrc(MixerChannel *mc, int8 *mem, uint size, uint rate, uint 
 void MxSetChannelVolume(MixerChannel *mc, uint left, uint right);
 void MxActivateChannel(MixerChannel*);
 
-#endif
+#endif /* MIXER_H */

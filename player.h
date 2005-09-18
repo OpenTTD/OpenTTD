@@ -169,7 +169,7 @@ typedef struct Player {
 	TileIndex location_of_house;
 	TileIndex last_build_coordinate;
 
-	byte share_owners[4];
+	PlayerID share_owners[4];
 
 	byte inaugurated_year;
 	byte num_valid_stat_ent;
@@ -193,8 +193,8 @@ typedef struct Player {
 	uint32 engine_renew_money;
 } Player;
 
-void ChangeOwnershipOfPlayerItems(byte old_player, byte new_player);
-void GetNameOfOwner(byte owner, TileIndex tile);
+void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player);
+void GetNameOfOwner(PlayerID owner, TileIndex tile);
 int64 CalculateCompanyValue(Player *p);
 void InvalidatePlayerWindows(Player *p);
 void AiDoGameLoop(Player *p);
@@ -209,7 +209,7 @@ VARDEF Player _players[MAX_PLAYERS];
 // NOSAVE: can be determined from player structs
 VARDEF byte _player_colors[MAX_PLAYERS];
 
-static inline Player* GetPlayer(uint i)
+static inline Player* GetPlayer(PlayerID i)
 {
 	assert(i < lengthof(_players));
 	return &_players[i];
@@ -223,7 +223,7 @@ static inline bool IsLocalPlayer(void)
 /** Returns the number of rail types the player can build
   * @param *p Player in question
   */
-static inline int GetNumRailtypes(Player *p)
+static inline int GetNumRailtypes(const Player *p)
 {
 	int num = 0;
 	int i;
@@ -239,7 +239,7 @@ byte GetPlayerRailtypes(int p);
 
 /** Finds out if a Player has a certain railtype available
   */
-static inline bool HasRailtypeAvail(Player *p, RailType Railtype)
+static inline bool HasRailtypeAvail(const Player *p, RailType Railtype)
 {
 	return HASBIT(p->avail_railtypes, Railtype);
 }
@@ -254,7 +254,7 @@ static inline bool ValParamRailtype(uint32 rail) { return HASBIT(GetPlayer(_curr
   * @param p the player "in action"
   * @return The "best" railtype a player has available
   */
-static inline byte GetBestRailtype(Player *p)
+static inline byte GetBestRailtype(const Player *p)
 {
 	if (HasRailtypeAvail(p, RAILTYPE_MAGLEV)) return RAILTYPE_MAGLEV;
 	if (HasRailtypeAvail(p, RAILTYPE_MONO)) return RAILTYPE_MONO;

@@ -190,7 +190,7 @@ VARDEF bool _global_station_sort_dirty;
 
 void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile, int w, int h, int rad);
 void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile, int w, int h, int rad);
-uint GetStationPlatforms(Station *st, TileIndex tile);
+uint GetStationPlatforms(const Station *st, TileIndex tile);
 
 
 /* Station layout for given dimensions - it is a two-dimensional array
@@ -267,7 +267,7 @@ StationSpec *GetCustomStation(StationClass sclass, byte stid);
 /* Get sprite offset for a given custom station and station structure (may be
  * NULL if ctype is set - that means we are in a build dialog). The station
  * structure is used for variational sprite groups. */
-uint32 GetCustomStationRelocation(StationSpec *spec, Station *stat, byte ctype);
+uint32 GetCustomStationRelocation(const StationSpec *spec, const Station *st, byte ctype);
 int GetCustomStationsCount(StationClass sclass);
 
 RoadStop * GetRoadStopByTile(TileIndex tile, RoadStopType type);

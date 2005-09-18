@@ -271,4 +271,4 @@ static inline RoadVehicleInfo *RoadVehInfo(uint e)
 	return &_road_vehicle_info[e - ROAD_ENGINES_INDEX];
 }
 
-#endif
+#endif /* ENGINE_H */

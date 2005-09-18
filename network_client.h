@@ -22,4 +22,4 @@ void NetworkClient_Connected(void);
 
 #endif /* ENABLE_NETWORK */
 
-#endif // NETWORK_CLIENT_H
+#endif /* NETWORK_CLIENT_H */

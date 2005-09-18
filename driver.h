@@ -10,4 +10,4 @@ int GetDriverParamInt(const char* const* parm, const char* name, int def);
 
 void GetDriverList(char* p);
 
-#endif
+#endif /* DRIVER_H */

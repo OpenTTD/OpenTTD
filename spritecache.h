@@ -31,4 +31,4 @@ bool LoadNextSprite(int load_index, byte file_index);
 void DupSprite(SpriteID old, SpriteID new);
 void SkipSprites(uint count);
 
-#endif
+#endif /* SPRITECACHE_H */

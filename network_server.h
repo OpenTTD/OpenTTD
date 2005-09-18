@@ -22,4 +22,4 @@ void NetworkServerYearlyLoop(void);
 
 #endif /* ENABLE_NETWORK */
 
-#endif // NETWORK_SERVER_H
+#endif /* NETWORK_SERVER_H */

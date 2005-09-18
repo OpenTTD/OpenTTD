@@ -193,7 +193,7 @@ static uint GetSlopeZ_Unmovable(TileInfo *ti)
 	return GetPartialZ(ti->x&0xF, ti->y&0xF, ti->tileh) + ti->z;
 }
 
-static uint GetSlopeTileh_Unmovable(TileInfo *ti)
+static uint GetSlopeTileh_Unmovable(const TileInfo *ti)
 {
 	return 0;
 }
@@ -393,7 +393,7 @@ restart:
 	} while (--i);
 }
 
-static void ChangeTileOwner_Unmovable(TileIndex tile, byte old_player, byte new_player)
+static void ChangeTileOwner_Unmovable(TileIndex tile, PlayerID old_player, PlayerID new_player)
 {
 	if (!IsTileOwner(tile, old_player)) return;
 

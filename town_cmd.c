@@ -76,12 +76,12 @@ typedef struct DrawTownTileStruct {
 #include "table/town_land.h"
 
 
-static void TownDrawHouseLift(TileInfo *ti)
+static void TownDrawHouseLift(const TileInfo *ti)
 {
 	AddChildSpriteScreen(0x5A3, 0xE, 0x3C - (_m[ti->tile].m1 & 0x7F));
 }
 
-typedef void TownDrawTileProc(TileInfo *ti);
+typedef void TownDrawTileProc(const TileInfo *ti);
 static TownDrawTileProc * const _town_draw_tile_procs[1] = {
 	TownDrawHouseLift
 };
@@ -150,7 +150,7 @@ static uint GetSlopeZ_Town(TileInfo *ti)
 	return (uint16) z;
 }
 
-static uint GetSlopeTileh_Town(TileInfo *ti)
+static uint GetSlopeTileh_Town(const TileInfo *ti)
 {
 	return ti->tileh;
 }
@@ -400,7 +400,7 @@ static uint32 GetTileTrackStatus_Town(TileIndex tile, TransportType mode)
 	return 0;
 }
 
-static void ChangeTileOwner_Town(TileIndex tile, byte old_player, byte new_player)
+static void ChangeTileOwner_Town(TileIndex tile, PlayerID old_player, PlayerID new_player)
 {
 	/* not used */
 }
@@ -1155,7 +1155,7 @@ static bool CheckBuildHouseMode(Town *t1, TileIndex tile, uint tileh, int mode)
 	return DoCommandByTile(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR) != CMD_ERROR;
 }
 
-int GetTownRadiusGroup(Town *t, TileIndex tile)
+int GetTownRadiusGroup(const Town *t, TileIndex tile)
 {
 	uint dist;
 	int i,smallest;
@@ -1165,7 +1165,7 @@ int GetTownRadiusGroup(Town *t, TileIndex tile)
 		return 4;
 
 	smallest = 0;
-	for(i=0; i!=lengthof(t->radius); i++) {
+	for (i = 0; i != lengthof(t->radius); i++) {
 		if (dist < t->radius[i])
 			smallest = i;
 	}

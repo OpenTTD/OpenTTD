@@ -388,7 +388,7 @@ typedef struct LocksDrawTileStruct {
 
 #include "table/water_land.h"
 
-static void DrawWaterStuff(TileInfo *ti, const WaterDrawTileStruct *wdts,
+static void DrawWaterStuff(const TileInfo *ti, const WaterDrawTileStruct *wdts,
 	uint32 palette, uint base
 )
 {
@@ -451,7 +451,7 @@ static uint GetSlopeZ_Water(TileInfo *ti)
 	return GetPartialZ(ti->x&0xF, ti->y&0xF, ti->tileh) + ti->z;
 }
 
-static uint GetSlopeTileh_Water(TileInfo *ti)
+static uint GetSlopeTileh_Water(const TileInfo *ti)
 {
 	return ti->tileh;
 }
@@ -693,7 +693,7 @@ static void ClickTile_Water(TileIndex tile)
 	}
 }
 
-static void ChangeTileOwner_Water(TileIndex tile, byte old_player, byte new_player)
+static void ChangeTileOwner_Water(TileIndex tile, PlayerID old_player, PlayerID new_player)
 {
 	if (!IsTileOwner(tile, old_player)) return;
 

@@ -2407,14 +2407,14 @@ static int GetNewVehicleDirectionByTile(TileIndex new_tile, TileIndex old_tile)
 	return _new_vehicle_direction_table[offs];
 }
 
-static int GetNewVehicleDirection(Vehicle *v, int x, int y)
+static int GetNewVehicleDirection(const Vehicle *v, int x, int y)
 {
 	uint offs = (y - v->y_pos + 1) * 4 + (x - v->x_pos + 1);
 	assert(offs < 11);
 	return _new_vehicle_direction_table[offs];
 }
 
-static int GetDirectionToVehicle(Vehicle *v, int x, int y)
+static int GetDirectionToVehicle(const Vehicle *v, int x, int y)
 {
 	byte offs;
 

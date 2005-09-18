@@ -182,4 +182,4 @@ void AyStarMain_Clear(AyStar *aystar);
 void init_AyStar(AyStar* aystar, Hash_HashProc hash, uint num_buckets);
 
 
-#endif
+#endif /* AYSTAR_H */

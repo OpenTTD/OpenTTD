@@ -8,4 +8,4 @@ bool MyShowCursor(bool show);
 typedef void (*Function)(int);
 bool LoadLibraryList(Function proc[], const char* dll);
 
-#endif
+#endif /* WIN32_H */

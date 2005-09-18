@@ -1090,7 +1090,7 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return cost;
 }
 
-static bool TileBelongsToRailStation(Station *st, TileIndex tile)
+static bool TileBelongsToRailStation(const Station *st, TileIndex tile)
 {
 	return IsTileType(tile, MP_STATION) && _m[tile].m2 == st->index && _m[tile].m5 < 8;
 }
@@ -1188,7 +1188,7 @@ int32 CmdRemoveFromRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32
 }
 
 // determine the number of platforms for the station
-uint GetStationPlatforms(Station *st, TileIndex tile)
+uint GetStationPlatforms(const Station *st, TileIndex tile)
 {
 	uint t;
 	int dir,delta;
@@ -1264,14 +1264,14 @@ StationSpec *GetCustomStation(StationClass sclass, byte stid)
 	return &_station_spec[sclass][stid];
 }
 
-static RealSpriteGroup *ResolveStationSpriteGroup(SpriteGroup *spritegroup, Station *stat)
+static const RealSpriteGroup *ResolveStationSpriteGroup(const SpriteGroup *spg, const Station *st)
 {
-	switch (spritegroup->type) {
+	switch (spg->type) {
 		case SGT_REAL:
-			return &spritegroup->g.real;
+			return &spg->g.real;
 
 		case SGT_DETERMINISTIC: {
-			DeterministicSpriteGroup *dsg = &spritegroup->g.determ;
+			const DeterministicSpriteGroup *dsg = &spg->g.determ;
 			SpriteGroup *target;
 			int value = -1;
 
@@ -1280,7 +1280,7 @@ static RealSpriteGroup *ResolveStationSpriteGroup(SpriteGroup *spritegroup, Stat
 				value = GetDeterministicSpriteValue(dsg->variable);
 
 			} else {
-				if (stat == NULL) {
+				if (st == NULL) {
 					/* We are in a build dialog of something,
 					 * and we are checking for something undefined.
 					 * That means we should get the first target
@@ -1308,25 +1308,25 @@ static RealSpriteGroup *ResolveStationSpriteGroup(SpriteGroup *spritegroup, Stat
 						// Variable is 0x70 + offset in the TTD's station structure
 						switch (dsg->variable - 0x70) {
 							case 0x80:
-								value = stat->facilities;
+								value = st->facilities;
 								break;
 							case 0x81:
-								value = stat->airport_type;
+								value = st->airport_type;
 								break;
 							case 0x82:
-								value = stat->truck_stops->status;
+								value = st->truck_stops->status;
 								break;
 							case 0x83:
-								value = stat->bus_stops->status;
+								value = st->bus_stops->status;
 								break;
 							case 0x86:
-								value = stat->airport_flags & 0xFFFF;
+								value = st->airport_flags & 0xFFFF;
 								break;
 							case 0x87:
-								value = stat->airport_flags & 0xFF;
+								value = st->airport_flags & 0xFF;
 								break;
 							case 0x8A:
-								value = stat->build_date;
+								value = st->build_date;
 								break;
 						}
 					}
@@ -1334,7 +1334,7 @@ static RealSpriteGroup *ResolveStationSpriteGroup(SpriteGroup *spritegroup, Stat
 			}
 
 			target = value != -1 ? EvalDeterministicSpriteGroup(dsg, value) : dsg->default_group;
-			return ResolveStationSpriteGroup(target, stat);
+			return ResolveStationSpriteGroup(target, st);
 		}
 
 		default:
@@ -1344,18 +1344,14 @@ static RealSpriteGroup *ResolveStationSpriteGroup(SpriteGroup *spritegroup, Stat
 	}
 }
 
-uint32 GetCustomStationRelocation(StationSpec *spec, Station *stat, byte ctype)
+uint32 GetCustomStationRelocation(const StationSpec *spec, const Station *st, byte ctype)
 {
-	RealSpriteGroup *rsg;
-
-	rsg = ResolveStationSpriteGroup(&spec->spritegroup[ctype], stat);
+	const RealSpriteGroup *rsg = ResolveStationSpriteGroup(&spec->spritegroup[ctype], st);
 
 	if (rsg->sprites_per_set != 0) {
-		if (rsg->loading_count != 0) {
-			return rsg->loading[0];
-		} else if (rsg->loaded_count != 0) {
-			return rsg->loaded[0];
-		}
+		if (rsg->loading_count != 0) return rsg->loading[0];
+
+		if (rsg->loaded_count != 0) return rsg->loaded[0];
 	}
 
 	error("Custom station 0x%08x::0x%02x has no sprites associated.",
@@ -2237,7 +2233,7 @@ static uint GetSlopeZ_Station(TileInfo *ti)
 	return z;
 }
 
-static uint GetSlopeTileh_Station(TileInfo *ti)
+static uint GetSlopeTileh_Station(const TileInfo *ti)
 {
 	return 0;
 }
@@ -2952,7 +2948,7 @@ void DeleteOilRig(TileIndex tile)
 	DeleteStation(st);
 }
 
-static void ChangeTileOwner_Station(TileIndex tile, byte old_player, byte new_player)
+static void ChangeTileOwner_Station(TileIndex tile, PlayerID old_player, PlayerID new_player)
 {
 	if (!IsTileOwner(tile, old_player)) return;
 

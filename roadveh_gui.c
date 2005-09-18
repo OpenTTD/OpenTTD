@@ -597,7 +597,7 @@ static void DrawRoadDepotWindow(Window *w)
 	}
 }
 
-static int GetVehicleFromRoadDepotWndPt(Window *w, int x, int y, Vehicle **veh)
+static int GetVehicleFromRoadDepotWndPt(const Window *w, int x, int y, Vehicle **veh)
 {
 	uint xt,row,xm;
 	TileIndex tile;

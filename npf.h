@@ -121,4 +121,4 @@ static inline void NPFSetFlag(AyStarNode* node, NPFNodeFlag flag, bool value)
 		CLRBIT(node->user_data[NPF_NODE_FLAGS], flag);
 }
 
-#endif // NPF_H
+#endif /* NPF_H */

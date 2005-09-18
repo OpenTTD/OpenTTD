@@ -165,7 +165,7 @@ void InitializeVehiclesGuiList(void)
 }
 
 // draw the vehicle profit button in the vehicle list window.
-void DrawVehicleProfitButton(Vehicle *v, int x, int y)
+void DrawVehicleProfitButton(const Vehicle *v, int x, int y)
 {
 	uint32 ormod;
 

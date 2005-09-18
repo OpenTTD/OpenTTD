@@ -466,7 +466,7 @@ typedef struct GetDepotVehiclePtData {
 	Vehicle *wagon;
 } GetDepotVehiclePtData;
 
-static int GetVehicleFromTrainDepotWndPt(Window *w, int x, int y, GetDepotVehiclePtData *d)
+static int GetVehicleFromTrainDepotWndPt(const Window *w, int x, int y, GetDepotVehiclePtData *d)
 {
 	int row;
 	int skip = 0;

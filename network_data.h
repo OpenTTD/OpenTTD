@@ -231,4 +231,4 @@ unsigned long NetworkResolveHost(const char *hostname);
 
 #endif /* ENABLE_NETWORK */
 
-#endif // NETWORK_DATA_H
+#endif /* NETWORK_DATA_H */

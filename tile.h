@@ -127,4 +127,4 @@ static inline bool IsTileOwner(TileIndex tile, Owner owner)
 	return GetTileOwner(tile) == owner;
 }
 
-#endif
+#endif /* TILE_H */

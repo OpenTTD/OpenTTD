@@ -2170,7 +2170,7 @@ static const WindowDesc _toolb_scen_desc = {
 extern GetNewsStringCallbackProc * const _get_news_string_callback[];
 
 
-static bool DrawScrollingStatusText(NewsItem *ni, int pos)
+static bool DrawScrollingStatusText(const NewsItem *ni, int pos)
 {
 	char buf[512];
 	StringID str;

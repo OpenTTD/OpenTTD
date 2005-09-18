@@ -10,7 +10,7 @@
 #include "gfx.h"
 #include "viewport.h"
 
-static Point HandleScrollbarHittest(Scrollbar *sb, int top, int bottom)
+static Point HandleScrollbarHittest(const Scrollbar *sb, int top, int bottom)
 {
 	Point pt;
 	int height, count, pos, cap;
@@ -135,7 +135,7 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
  * @param  x,y Window client coordinates
  * @return A widget index, or -1 if no widget was found.
  */
-int GetWidgetFromPos(Window *w, int x, int y)
+int GetWidgetFromPos(const Window *w, int x, int y)
 {
 	const Widget *wi;
 	int index, found_index = -1;
@@ -156,7 +156,7 @@ int GetWidgetFromPos(Window *w, int x, int y)
 }
 
 
-void DrawWindowWidgets(Window *w)
+void DrawWindowWidgets(const Window *w)
 {
 	const Widget *wi;
 	DrawPixelInfo *dpi = _cur_dpi;
@@ -457,7 +457,7 @@ static const Widget _dropdown_menu_widgets[] = {
 {   WIDGETS_END},
 };
 
-static int GetDropdownItem(Window *w)
+static int GetDropdownItem(const Window *w)
 {
 	uint item;
 	int y;

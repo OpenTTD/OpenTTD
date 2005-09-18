@@ -50,4 +50,4 @@ void SdlClose(uint32 x);
 	#define SDL_CALL
 #endif
 
-#endif
+#endif /* SDL_H */

@@ -350,8 +350,8 @@ typedef struct GetNewVehiclePosResult {
 Trackdir GetVehicleTrackdir(const Vehicle* v);
 
 /* returns true if staying in the same tile */
-bool GetNewVehiclePos(Vehicle *v, GetNewVehiclePosResult *gp);
-byte GetDirectionTowards(Vehicle *v, int x, int y);
+bool GetNewVehiclePos(const Vehicle *v, GetNewVehiclePosResult *gp);
+byte GetDirectionTowards(const Vehicle *v, int x, int y);
 
 #define BEGIN_ENUM_WAGONS(v) do {
 #define END_ENUM_WAGONS(v) } while ( (v=v->next) != NULL);

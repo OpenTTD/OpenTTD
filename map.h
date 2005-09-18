@@ -177,4 +177,4 @@ static inline TileIndexDiff TileOffsByDir(uint dir)
  * This value should be sqrt(2)/2 ~ 0.7071 */
 #define STRAIGHT_TRACK_LENGTH 7071/10000
 
-#endif
+#endif /* MAP_H */

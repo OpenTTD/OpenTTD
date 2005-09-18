@@ -602,7 +602,7 @@ void DrawWindowViewport(Window *w);
 void InitWindowSystem(void);
 void UnInitWindowSystem(void);
 void ResetWindowSystem(void);
-int GetMenuItemIndex(Window *w, int x, int y);
+int GetMenuItemIndex(const Window *w, int x, int y);
 void InputLoop(void);
 void UpdateWindows(void);
 void InvalidateWidget(Window *w, byte widget_index);
@@ -615,8 +615,8 @@ void RelocateAllWindows(int neww, int newh);
 int PositionMainToolbar(Window *w);
 
 /* widget.c */
-int GetWidgetFromPos(Window *w, int x, int y);
-void DrawWindowWidgets(Window *w);
+int GetWidgetFromPos(const Window *w, int x, int y);
+void DrawWindowWidgets(const Window *w);
 void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask, bool remove_filtered_strings);
 
 void HandleButtonClick(Window *w, byte widget);

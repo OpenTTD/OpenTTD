@@ -555,11 +555,11 @@ void DrawNewsBankrupcy(Window *w)
 	}
 }
 
-StringID GetNewsStringBankrupcy(NewsItem *ni)
+StringID GetNewsStringBankrupcy(const NewsItem *ni)
 {
-	Player *p = GetPlayer(ni->string_id & 0xF);
+	const Player *p = GetPlayer(ni->string_id & 0xF);
 
-	switch(ni->string_id >> 4) {
+	switch (ni->string_id >> 4) {
 	case 1:
 		SetDParam(0, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE);
 		SetDParam(1, STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED);

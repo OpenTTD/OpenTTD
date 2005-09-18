@@ -1529,7 +1529,7 @@ void UpdateWindows(void)
 }
 
 
-int GetMenuItemIndex(Window *w, int x, int y)
+int GetMenuItemIndex(const Window *w, int x, int y)
 {
 	if ((x -= w->left) >= 0 && x < w->width && (y -= w->top + 1) >= 0) {
 		y /= 10;

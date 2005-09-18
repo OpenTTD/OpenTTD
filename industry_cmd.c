@@ -255,7 +255,7 @@ static const StringID _industry_close_strings[] = {
 };
 
 
-static void IndustryDrawTileProc1(TileInfo *ti)
+static void IndustryDrawTileProc1(const TileInfo *ti)
 {
 	const DrawIndustrySpec1Struct *d;
 	uint32 image;
@@ -275,7 +275,7 @@ static void IndustryDrawTileProc1(TileInfo *ti)
 			_drawtile_proc1_x[image-1], _drawtile_proc1_y[image-1]);
 }
 
-static void IndustryDrawTileProc2(TileInfo *ti)
+static void IndustryDrawTileProc2(const TileInfo *ti)
 {
 	int x = 0;
 
@@ -289,7 +289,7 @@ static void IndustryDrawTileProc2(TileInfo *ti)
 	AddChildSpriteScreen(0x129E, 6, 0xE);
 }
 
-static void IndustryDrawTileProc3(TileInfo *ti)
+static void IndustryDrawTileProc3(const TileInfo *ti)
 {
 	if (_m[ti->tile].m1 & 0x80) {
 		AddChildSpriteScreen(0x128B, 5,
@@ -298,7 +298,7 @@ static void IndustryDrawTileProc3(TileInfo *ti)
 	AddChildSpriteScreen(4746, 3, 67);
 }
 
-static void IndustryDrawTileProc4(TileInfo *ti)
+static void IndustryDrawTileProc4(const TileInfo *ti)
 {
 	const DrawIndustrySpec4Struct *d;
 
@@ -316,7 +316,7 @@ static void IndustryDrawTileProc4(TileInfo *ti)
 	AddChildSpriteScreen(0x126D, 0, 42);
 }
 
-static void DrawCoalPlantSparkles(TileInfo *ti)
+static void DrawCoalPlantSparkles(const TileInfo *ti)
 {
 	int image = _m[ti->tile].m1;
 	if (image & 0x80) {
@@ -330,7 +330,7 @@ static void DrawCoalPlantSparkles(TileInfo *ti)
 	}
 }
 
-typedef void IndustryDrawTileProc(TileInfo *ti);
+typedef void IndustryDrawTileProc(const TileInfo *ti);
 static IndustryDrawTileProc * const _industry_draw_tile_procs[5] = {
 	IndustryDrawTileProc1,
 	IndustryDrawTileProc2,
@@ -402,7 +402,7 @@ static uint GetSlopeZ_Industry(TileInfo *ti) {
 	return GetPartialZ(ti->x&0xF, ti->y&0xF, ti->tileh) + ti->z;
 }
 
-static uint GetSlopeTileh_Industry(TileInfo *ti) {
+static uint GetSlopeTileh_Industry(const TileInfo *ti) {
 	return 0;
 }
 
@@ -866,7 +866,7 @@ static void GetProducedCargo_Industry(TileIndex tile, byte *b)
 	b[1] = i->produced_cargo[1];
 }
 
-static void ChangeTileOwner_Industry(TileIndex tile, byte old_player, byte new_player)
+static void ChangeTileOwner_Industry(TileIndex tile, PlayerID old_player, PlayerID new_player)
 {
 	/* not used */
 }

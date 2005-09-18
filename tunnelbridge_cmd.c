@@ -956,7 +956,7 @@ static const byte _bridge_foundations[2][16] = {
 
 extern const byte _road_sloped_sprites[14];
 
-static void DrawBridgePillars(TileInfo *ti, int x, int y, int z)
+static void DrawBridgePillars(const TileInfo *ti, int x, int y, int z)
 {
 	const uint32 *b;
 	uint32 image;
@@ -1229,7 +1229,7 @@ static uint GetSlopeZ_TunnelBridge(TileInfo *ti) {
 					// make sure that the slope is not inclined foundation
 					if (IS_BYTE_INSIDE(f, 1, 15)) return z;
 
-					// change foundation type?
+					// change foundation type? XXX - should be const; accessor function!
 					if (f) ti->tileh = _inclined_tileh[f - 15];
 				}
 
@@ -1252,7 +1252,7 @@ static uint GetSlopeZ_TunnelBridge(TileInfo *ti) {
 	return GetPartialZ(ti->x&0xF, ti->y&0xF, ti->tileh) + z;
 }
 
-static uint GetSlopeTileh_TunnelBridge(TileInfo *ti) {
+static uint GetSlopeTileh_TunnelBridge(const TileInfo *ti) {
 	// not accurate, but good enough for slope graphics drawing
 	return 0;
 }
@@ -1397,7 +1397,7 @@ static uint32 GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType mode
 	return 0;
 }
 
-static void ChangeTileOwner_TunnelBridge(TileIndex tile, byte old_player, byte new_player)
+static void ChangeTileOwner_TunnelBridge(TileIndex tile, PlayerID old_player, PlayerID new_player)
 {
 	if (!IsTileOwner(tile, old_player)) return;
 

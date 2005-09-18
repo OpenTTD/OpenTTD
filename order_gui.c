@@ -186,7 +186,7 @@ static void DrawOrdersWindow(Window *w)
 	}
 }
 
-static Order GetOrderCmdFromTile(Vehicle *v, TileIndex tile)
+static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 {
 	Order order;
 	Station *st;

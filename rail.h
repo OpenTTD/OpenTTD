@@ -576,4 +576,4 @@ static inline bool IsCompatibleRail(RailType enginetype, RailType tiletype)
 	return HASBIT(GetRailTypeInfo(enginetype)->compatible_railtypes, tiletype);
 }
 
-#endif // RAIL_H
+#endif /* RAIL_H */

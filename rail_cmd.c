@@ -1209,7 +1209,7 @@ static const byte _signal_position[24] = {
 	0x1E,0xAC,0x64,0xE1,0x4A,0x10,0xEE,0xC5,0xDB,0x34,0x4D,0xB3
 };
 
-static void DrawSignalHelper(TileInfo *ti, byte condition, uint32 image_and_pos)
+static void DrawSignalHelper(const TileInfo *ti, byte condition, uint32 image_and_pos)
 {
 	bool otherside = _opt.road_side & _patches.signal_side;
 
@@ -1223,7 +1223,7 @@ static void DrawSignalHelper(TileInfo *ti, byte condition, uint32 image_and_pos)
 static uint32 _drawtile_track_palette;
 
 
-static void DrawTrackFence_NW(TileInfo *ti)
+static void DrawTrackFence_NW(const TileInfo *ti)
 {
 	uint32 image = 0x515;
 	if (ti->tileh != 0) {
@@ -1236,7 +1236,7 @@ static void DrawTrackFence_NW(TileInfo *ti)
 		ti->x, ti->y+1, 16, 1, 4, ti->z);
 }
 
-static void DrawTrackFence_SE(TileInfo *ti)
+static void DrawTrackFence_SE(const TileInfo *ti)
 {
 	uint32 image = 0x515;
 	if (ti->tileh != 0) {
@@ -1249,13 +1249,13 @@ static void DrawTrackFence_SE(TileInfo *ti)
 		ti->x, ti->y+15, 16, 1, 4, ti->z);
 }
 
-static void DrawTrackFence_NW_SE(TileInfo *ti)
+static void DrawTrackFence_NW_SE(const TileInfo *ti)
 {
 	DrawTrackFence_NW(ti);
 	DrawTrackFence_SE(ti);
 }
 
-static void DrawTrackFence_NE(TileInfo *ti)
+static void DrawTrackFence_NE(const TileInfo *ti)
 {
 	uint32 image = 0x516;
 	if (ti->tileh != 0) {
@@ -1268,7 +1268,7 @@ static void DrawTrackFence_NE(TileInfo *ti)
 		ti->x+1, ti->y, 1, 16, 4, ti->z);
 }
 
-static void DrawTrackFence_SW(TileInfo *ti)
+static void DrawTrackFence_SW(const TileInfo *ti)
 {
 	uint32 image = 0x516;
 	if (ti->tileh != 0) {
@@ -1281,13 +1281,13 @@ static void DrawTrackFence_SW(TileInfo *ti)
 		ti->x+15, ti->y, 1, 16, 4, ti->z);
 }
 
-static void DrawTrackFence_NE_SW(TileInfo *ti)
+static void DrawTrackFence_NE_SW(const TileInfo *ti)
 {
 	DrawTrackFence_NE(ti);
 	DrawTrackFence_SW(ti);
 }
 
-static void DrawTrackFence_NS_1(TileInfo *ti)
+static void DrawTrackFence_NS_1(const TileInfo *ti)
 {
 	int z = ti->z;
 	if (ti->tileh & 1)
@@ -1296,7 +1296,7 @@ static void DrawTrackFence_NS_1(TileInfo *ti)
 		ti->x + 8, ti->y + 8, 1, 1, 4, z);
 }
 
-static void DrawTrackFence_NS_2(TileInfo *ti)
+static void DrawTrackFence_NS_2(const TileInfo *ti)
 {
 	int z = ti->z;
 	if (ti->tileh & 4)
@@ -1305,7 +1305,7 @@ static void DrawTrackFence_NS_2(TileInfo *ti)
 		ti->x + 8, ti->y + 8, 1, 1, 4, z);
 }
 
-static void DrawTrackFence_WE_1(TileInfo *ti)
+static void DrawTrackFence_WE_1(const TileInfo *ti)
 {
 	int z = ti->z;
 	if (ti->tileh & 8)
@@ -1314,7 +1314,7 @@ static void DrawTrackFence_WE_1(TileInfo *ti)
 		ti->x + 8, ti->y + 8, 1, 1, 4, z);
 }
 
-static void DrawTrackFence_WE_2(TileInfo *ti)
+static void DrawTrackFence_WE_2(const TileInfo *ti)
 {
 	int z = ti->z;
 	if (ti->tileh & 2)
@@ -1323,12 +1323,12 @@ static void DrawTrackFence_WE_2(TileInfo *ti)
 		ti->x + 8, ti->y + 8, 1, 1, 4, z);
 }
 
-static void DetTrackDrawProc_Null(TileInfo *ti)
+static void DetTrackDrawProc_Null(const TileInfo *ti)
 {
 	/* nothing should be here */
 }
 
-typedef void DetailedTrackProc(TileInfo *ti);
+typedef void DetailedTrackProc(const TileInfo *ti);
 DetailedTrackProc * const _detailed_track_proc[16] = {
 	DetTrackDrawProc_Null,
 	DetTrackDrawProc_Null,
@@ -1943,7 +1943,7 @@ static uint GetSlopeZ_Track(TileInfo *ti)
 	return z;
 }
 
-static uint GetSlopeTileh_Track(TileInfo *ti)
+static uint GetSlopeTileh_Track(const TileInfo *ti)
 {
 	// check if it's a foundation
 	if (ti->tileh != 0) {
@@ -2146,7 +2146,7 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 	}
 }
 
-static void ChangeTileOwner_Track(TileIndex tile, byte old_player, byte new_player)
+static void ChangeTileOwner_Track(TileIndex tile, PlayerID old_player, PlayerID new_player)
 {
 	if (!IsTileOwner(tile, old_player)) return;
 

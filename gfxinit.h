@@ -5,4 +5,4 @@
 
 void GfxLoadSprites(void);
 
-#endif
+#endif /* GFXINIT_H */

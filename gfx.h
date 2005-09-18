@@ -64,7 +64,7 @@ void DrawStringRightAlignedTruncated(int x, int y, StringID str, uint16 color, u
 void GfxFillRect(int left, int top, int right, int bottom, int color);
 void GfxDrawLine(int left, int top, int right, int bottom, int color);
 void DrawFrameRect(int left, int top, int right, int bottom, int color, int flags);
-uint16 GetDrawStringPlayerColor(byte player);
+uint16 GetDrawStringPlayerColor(PlayerID player);
 
 int GetStringWidth(const char *str);
 void LoadStringWidthTable(void);
@@ -124,4 +124,4 @@ typedef enum StringColorFlags {
 	IS_PALETTE_COLOR = 0x100, // color value is already a real palette color index, not an index of a StringColor
 } StringColorFlags;
 
-#endif
+#endif /* GFX_H */

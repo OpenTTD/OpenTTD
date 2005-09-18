@@ -319,14 +319,14 @@ typedef void GetProducedCargoProc(TileIndex tile, byte *b);
 typedef void ClickTileProc(TileIndex tile);
 typedef void AnimateTileProc(TileIndex tile);
 typedef void TileLoopProc(TileIndex tile);
-typedef void ChangeTileOwnerProc(TileIndex tile, byte old_player, byte new_player);
+typedef void ChangeTileOwnerProc(TileIndex tile, PlayerID old_player, PlayerID new_player);
 /* Return value has bit 0x2 set, when the vehicle enters a station. Then,
  * result << 8 contains the id of the station entered. If the return value has
  * bit 0x8 set, the vehicle could not and did not enter the tile. Are there
  * other bits that can be set? */
 typedef uint32 VehicleEnterTileProc(Vehicle *v, TileIndex tile, int x, int y);
 typedef void VehicleLeaveTileProc(Vehicle *v, TileIndex tile, int x, int y);
-typedef uint GetSlopeTilehProc(TileInfo *ti);
+typedef uint GetSlopeTilehProc(const TileInfo *ti);
 
 typedef struct {
 	DrawTileProc *draw_tile_proc;

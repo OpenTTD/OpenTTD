@@ -1,22 +1,22 @@
 /* $Id$ */
 
-#if !defined(_STDAFX_H)
-#define _STDAFX_H
+#ifndef STDAFX_H
+#define STDAFX_H
 
 #if defined(_MSC_VER)
-#pragma once
+	#pragma once
 
-#define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
-#pragma warning(disable: 4100) // parameter not used
-#pragma warning(disable: 4244) // conversion
-#pragma warning(disable: 4245) // conversion
-#pragma warning(disable: 4305) // 'initializing' : truncation from 'const int ' to 'char '
-#pragma warning(disable: 4018) // warning C4018: '==' : signed/unsigned mismatch
-#pragma warning(disable: 4201) // nameless union
-#pragma warning(disable: 4514) // removed unref inline
-#pragma warning(disable: 4127) // constant conditional expression
-#pragma warning(disable: 4276) // MSVC BUG??? Complains about function body not declared when using function pointers
-#pragma warning(disable: 4761) // warning C4761: integral size mismatch in argument; conversion supplied
+	#define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
+	#pragma warning(disable: 4018) // 'expression' : signed/unsigned mismatch
+	#pragma warning(disable: 4100) // 'identifier' : unreferenced formal parameter
+	#pragma warning(disable: 4127) // conditional expression is constant
+	#pragma warning(disable: 4201) // nonstandard extension used : nameless struct/union
+	#pragma warning(disable: 4244) // 'conversion' conversion from 'type1' to 'type2', possible loss of data
+	#pragma warning(disable: 4245) // 'conversion' : conversion from 'type1' to 'type2', signed/unsigned mismatch
+	#pragma warning(disable: 4276) // 'fucntion' : no prototype provided; assumed no parameters (MSVC BUG???)
+	#pragma warning(disable: 4305) // 'identifier' : truncation from 'type1' to 'type2'
+	#pragma warning(disable: 4514) // 'function' : unreferenced inline function has been removed
+	#pragma warning(disable: 4761) // integral size mismatch in argument : conversion supplied
 #endif
 
 #include <stdio.h>
@@ -252,4 +252,4 @@ assert_compile(sizeof(uint8)	== 1);
 #define Point OTTD_AMIGA_POINT
 #endif
 
-#endif // !defined(_STDAFX_H)
+#endif /* STDAFX_H */
