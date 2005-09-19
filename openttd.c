@@ -974,7 +974,7 @@ void GameLoop(void)
 			ShowScreenshotResult(MakeScreenshot());
 			break;
 		case 2: // make large screenshot
-			ShowScreenshotResult(MakeWorldScreenshot(-(int)MapMaxX() * 32, 0, MapMaxX() * 64, MapSizeY() * 32, 0));
+			ShowScreenshotResult(MakeWorldScreenshot(-(int)MapMaxX() * TILE_PIXELS, 0, (MapMaxX() + MapMaxY()) * TILE_PIXELS, (MapMaxX() + MapMaxY()) * TILE_PIXELS >> 1, 0));
 			break;
 		}
 	}
