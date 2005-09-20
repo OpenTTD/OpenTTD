@@ -47,6 +47,7 @@ typedef enum grfspec_feature {
 	GSF_SHIP,
 	GSF_AIRCRAFT,
 	GSF_STATION,
+	GSF_CANAL,
 	GSF_BRIDGE,
 	GSF_TOWNHOUSE,
 } grfspec_feature;
@@ -1009,12 +1010,13 @@ static void VehicleChangeInfo(byte *buf, int len)
 	 * V new-info      new bytes of info (variable size; depends on properties) */
 	/* TODO: Bridges, town houses. */
 
-	static const VCI_Handler handler[7] = {
+	static const VCI_Handler handler[] = {
 		/* GSF_TRAIN */    RailVehicleChangeInfo,
 		/* GSF_ROAD */     RoadVehicleChangeInfo,
 		/* GSF_SHIP */     ShipVehicleChangeInfo,
 		/* GSF_AIRCRAFT */ AircraftVehicleChangeInfo,
 		/* GSF_STATION */  StationChangeInfo,
+		/* GSF_CANAL */    NULL,
 		/* GSF_BRIDGE */   NULL,
 		/* GSF_TOWNHOUSE */NULL,
 	};
