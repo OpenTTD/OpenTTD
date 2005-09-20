@@ -1046,10 +1046,13 @@ static void VehicleChangeInfo(byte *buf, int len)
 		return;
 	}
 
-	if (feature != GSF_STATION)
+	if (feature <= GSF_AIRCRAFT) {
+		if (engine + numinfo > _vehcounts[feature]) {
+			grfmsg(GMS_ERROR, "VehicleChangeInfo: Last engine ID %d out of bounds (max %d), skipping.", engine + numinfo, _vehcounts[feature]);
+			return;
+		}
 		ei = &_engine_info[engine + _vehshifts[feature]];
-	/* XXX - Should there not be a check to see if 'ei' is NULL
-	    when it is used in the switch below?? -- TrueLight */
+	}
 
 	buf += 5;
 
