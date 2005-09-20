@@ -1041,7 +1041,7 @@ static void VehicleChangeInfo(byte *buf, int len)
 	DEBUG(grf, 6) ("VehicleChangeInfo: Feature %d, %d properties, to apply to %d+%d",
 	               feature, numprops, engine, numinfo);
 
-	if (feature > GSF_STATION) {
+	if (feature >= lengthof(handler) || handler[feature] == NULL) {
 		grfmsg(GMS_WARN, "VehicleChangeInfo: Unsupported feature %d, skipping.", feature);
 		return;
 	}
