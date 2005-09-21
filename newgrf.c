@@ -2070,6 +2070,46 @@ static void ParamSet(byte *buf, int len)
 				res = (int32)src1 << src2;
 			break;
 
+		case 0x07: /* Bitwise AND */
+			res = src1 & src2;
+			break;
+
+		case 0x08: /* Bitwise OR */
+			res = src1 | src2;
+			break;
+
+		case 0x09: /* Unsigned division */
+			if (src2 == 0) {
+				res = src1;
+			} else {
+				res = src1 / src2;
+			}
+			break;
+
+		case 0x0A: /* Signed divison */
+			if (src2 == 0) {
+				res = src1;
+			} else {
+				res = (int32)src1 / (int32)src2;
+			}
+			break;
+
+		case 0x0B: /* Unsigned modulo */
+			if (src2 == 0) {
+				res = src1;
+			} else {
+				res = src1 % src2;
+			}
+			break;
+
+		case 0x0C: /* Signed modulo */
+			if (src2 == 0) {
+				res = src1;
+			} else {
+				res = (int32)src1 % (int32)src2;
+			}
+			break;
+
 		default:
 			grfmsg(GMS_ERROR, "ParamSet: Unknown operation %d, skipping.", oper);
 			return;
