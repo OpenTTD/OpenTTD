@@ -109,6 +109,13 @@ void DrawTrainWagonPurchaseInfo(int x, int y, EngineID engine_number)
 	SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
 	DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, 0);
 	y += 10;
+
+	/* Wagon speed limit, displayed if above zero */
+	if (rvi->max_speed > 0) {
+		SetDParam(0, rvi->max_speed * 10 >> 4);
+		DrawString(x,y, STR_PURCHASE_INFO_SPEED, 0);
+		y += 10;
+	}
 }
 
 void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
