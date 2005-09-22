@@ -31,7 +31,7 @@ struct GRFFile {
 	int spriteset_feature;
 
 	int spritegroups_count;
-	SpriteGroup *spritegroups;
+	SpriteGroup **spritegroups;
 
 	StationSpec stations[256];
 

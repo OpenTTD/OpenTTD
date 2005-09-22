@@ -1240,6 +1240,11 @@ static void NewSpriteGroup(byte *buf, int len)
 	numloaded = buf[3];
 	numloading = buf[4];
 
+	if (setid >= _cur_grffile->spritegroups_count) {
+		_cur_grffile->spritegroups_count = setid + 1;
+		_cur_grffile->spritegroups = realloc(_cur_grffile->spritegroups, _cur_grffile->spritegroups_count * sizeof(*_cur_grffile->spritegroups));
+	}
+
 	if (numloaded == 0x81 || numloaded == 0x82) {
 		DeterministicSpriteGroup *dg;
 		uint16 groupid;
@@ -1253,13 +1258,7 @@ static void NewSpriteGroup(byte *buf, int len)
 		buf += 4; len -= 4;
 		check_length(len, 6, "NewSpriteGroup 0x81/0x82");
 
-		if (setid >= _cur_grffile->spritegroups_count) {
-			_cur_grffile->spritegroups_count = setid + 1;
-			_cur_grffile->spritegroups = realloc(_cur_grffile->spritegroups, _cur_grffile->spritegroups_count * sizeof(*_cur_grffile->spritegroups));
-		}
-
-		group = &_cur_grffile->spritegroups[setid];
-		memset(group, 0, sizeof(*group));
+		group = calloc(1, sizeof(*group));
 		group->type = SGT_DETERMINISTIC;
 		dg = &group->g.determ;
 
@@ -1295,7 +1294,7 @@ static void NewSpriteGroup(byte *buf, int len)
 			} else {
 			/* XXX: If multiple surreal sets attach a surreal
 			 * set this way, we are in trouble. */
-				dg->ranges[i].group = _cur_grffile->spritegroups[groupid];
+				dg->ranges[i].group = *_cur_grffile->spritegroups[groupid];
 			}
 
 			dg->ranges[i].low = grf_load_byte(&buf);
@@ -1313,9 +1312,10 @@ static void NewSpriteGroup(byte *buf, int len)
 			return;
 		} else {
 			dg->default_group = malloc(sizeof(*dg->default_group));
-			memcpy(dg->default_group, &_cur_grffile->spritegroups[groupid], sizeof(*dg->default_group));
+			memcpy(dg->default_group, _cur_grffile->spritegroups[groupid], sizeof(*dg->default_group));
 		}
 
+		_cur_grffile->spritegroups[setid] = group;
 		return;
 
 	} else if (numloaded == 0x80 || numloaded == 0x83) {
@@ -1329,13 +1329,7 @@ static void NewSpriteGroup(byte *buf, int len)
 		len -= 4;
 		check_length(len, 6, "NewSpriteGroup 0x80/0x83");
 
-		if (setid >= _cur_grffile->spritegroups_count) {
-			_cur_grffile->spritegroups_count = setid + 1;
-			_cur_grffile->spritegroups = realloc(_cur_grffile->spritegroups, _cur_grffile->spritegroups_count * sizeof(*_cur_grffile->spritegroups));
-		}
-
-		group = &_cur_grffile->spritegroups[setid];
-		memset(group, 0, sizeof(*group));
+		group = calloc(1, sizeof(*group));
 		group->type = SGT_RANDOMIZED;
 		rg = &group->g.random;
 
@@ -1364,9 +1358,10 @@ static void NewSpriteGroup(byte *buf, int len)
 			}
 			/* XXX: If multiple surreal sets attach a surreal
 			 * set this way, we are in trouble. */
-			rg->groups[i] = _cur_grffile->spritegroups[groupid];
+			rg->groups[i] = *_cur_grffile->spritegroups[groupid];
 		}
 
+		_cur_grffile->spritegroups[setid] = group;
 		return;
 	}
 
@@ -1395,12 +1390,7 @@ static void NewSpriteGroup(byte *buf, int len)
 		numloading = 16;
 	}
 
-	if (setid >= _cur_grffile->spritegroups_count) {
-		_cur_grffile->spritegroups_count = setid + 1;
-		_cur_grffile->spritegroups = realloc(_cur_grffile->spritegroups, _cur_grffile->spritegroups_count * sizeof(*_cur_grffile->spritegroups));
-	}
-	group = &_cur_grffile->spritegroups[setid];
-	memset(group, 0, sizeof(*group));
+	group = calloc(1, sizeof(*group));
 	group->type = SGT_REAL;
 	rg = &group->g.real;
 
@@ -1424,6 +1414,8 @@ static void NewSpriteGroup(byte *buf, int len)
 		rg->loading[i] = _cur_grffile->spriteset_start + spriteset_id * _cur_grffile->spriteset_numents;
 		DEBUG(grf, 8) ("NewSpriteGroup: + rg->loading[%i] = %u (subset %u)", i, rg->loading[i], spriteset_id);
 	}
+
+	_cur_grffile->spritegroups[setid] = group;
 }
 
 /* Action 0x03 */
@@ -1494,7 +1486,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 					continue;
 				}
 
-				stat->spritegroup[1] = _cur_grffile->spritegroups[groupid];
+				stat->spritegroup[1] = *_cur_grffile->spritegroups[groupid];
 			}
 		}
 
@@ -1512,7 +1504,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 				uint8 stid = buf[3 + i];
 				StationSpec *stat = &_cur_grffile->stations[stid];
 
-				stat->spritegroup[0] = _cur_grffile->spritegroups[groupid];
+				stat->spritegroup[0] = *_cur_grffile->spritegroups[groupid];
 				stat->grfid = _cur_grffile->grfid;
 				SetCustomStation(stid, stat);
 				stat->sclass = STAT_CLASS_NONE;
@@ -1582,9 +1574,9 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 
 			if (wagover) {
 				// TODO: No multiple cargo types per vehicle yet. --pasky
-				SetWagonOverrideSprites(engine, &_cur_grffile->spritegroups[groupid], last_engines, last_engines_count);
+				SetWagonOverrideSprites(engine, _cur_grffile->spritegroups[groupid], last_engines, last_engines_count);
 			} else {
-				SetCustomEngineSprites(engine, ctype, &_cur_grffile->spritegroups[groupid]);
+				SetCustomEngineSprites(engine, ctype, _cur_grffile->spritegroups[groupid]);
 				last_engines[i] = engine;
 			}
 		}
@@ -1607,9 +1599,9 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 
 			if (wagover) {
 				// TODO: No multiple cargo types per vehicle yet. --pasky
-				SetWagonOverrideSprites(engine, &_cur_grffile->spritegroups[groupid], last_engines, last_engines_count);
+				SetWagonOverrideSprites(engine, _cur_grffile->spritegroups[groupid], last_engines, last_engines_count);
 			} else {
-				SetCustomEngineSprites(engine, GC_DEFAULT, &_cur_grffile->spritegroups[groupid]);
+				SetCustomEngineSprites(engine, GC_DEFAULT, _cur_grffile->spritegroups[groupid]);
 				last_engines[i] = engine;
 			}
 		}
