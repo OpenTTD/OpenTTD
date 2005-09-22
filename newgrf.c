@@ -1268,6 +1268,9 @@ static void NewSpriteGroup(byte *buf, int len)
 
 		dg->var_scope = numloaded == 0x82 ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
 		dg->variable = grf_load_byte(&buf);
+		/* Variables 0x60 - 0x7F include an extra parameter */
+		if (IS_BYTE_INSIDE(dg->variable, 0x60, 0x80))
+			dg->parameter = grf_load_byte(&buf);
 
 		dg->shift_num = grf_load_byte(&buf);
 		dg->and_mask = grf_load_byte(&buf);

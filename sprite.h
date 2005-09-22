@@ -70,6 +70,7 @@ typedef struct DeterministicSpriteGroup {
 	// Take this variable:
 	VarSpriteGroupScope var_scope;
 	byte variable;
+	byte parameter; ///< Used for variables between 0x60 and 0x7F inclusive.
 
 	// Do this with it:
 	byte shift_num;
