@@ -149,27 +149,9 @@ void AI_RunGameLoop(void)
 	_ai.tick++;
 
 	/* Make sure the AI follows the difficulty rule.. */
-	switch (_opt.diff.competitor_speed) {
-		case 0: // Very slow
-			if (!(_ai.tick & 8)) return;
-			break;
-
-		case 1: // Slow
-			if (!(_ai.tick & 4)) return;
-			break;
-
-		case 2: // Medium
-			if (!(_ai.tick & 2)) return;
-			break;
-
-		case 3: // Fast
-			if (!(_ai.tick & 1)) return;
-			break;
-
-		case 4: // Very fast
-		default:
-			break;
-	}
+	assert(_opt.diff.competitor_speed <= 4);
+	if ((_ai.tick & ((1 << (4 - _opt.diff.competitor_speed)) - 1)) != 0)
+		return;
 
 	/* Check for AI-client (so joining a network with an AI) */
 	if (_ai.network_client) {
