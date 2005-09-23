@@ -6,6 +6,7 @@
 #include "../command.h"
 #include "../network.h"
 #include "ai.h"
+#include "default/default.h"
 
 /**
  * Dequeues commands put in the queue via AI_PutCommandInQueue.

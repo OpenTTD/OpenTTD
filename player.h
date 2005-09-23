@@ -197,7 +197,6 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player);
 void GetNameOfOwner(PlayerID owner, TileIndex tile);
 int64 CalculateCompanyValue(Player *p);
 void InvalidatePlayerWindows(Player *p);
-void AiDoGameLoop(Player *p);
 void UpdatePlayerMoney32(Player *p);
 #define FOR_ALL_PLAYERS(p) for(p=_players; p != endof(_players); p++)
 

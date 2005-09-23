@@ -17,6 +17,7 @@
 #include "../../airport.h"
 #include "../../depot.h"
 #include "../../variables.h"
+#include "default.h"
 
 // remove some day perhaps?
 static Player *_cur_ai_player;
