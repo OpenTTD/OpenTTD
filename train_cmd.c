@@ -2746,7 +2746,7 @@ static void TrainController(Vehicle *v)
 					trackdir = TrackEnterdirToTrackdir(FIND_FIRST_BIT(chosen_track), enterdir);
 					assert(trackdir != 0xff);
 
-					if (PBSIsPbsSignal(gp.new_tile,trackdir)) {
+					if (PBSIsPbsSignal(gp.new_tile,trackdir) && PBSIsPbsSegment(gp.new_tile,trackdir)) {
 						// encountered a pbs signal, and possible a pbs block
 						DEBUG(pbs, 3) ("pbs: (%i) arrive AT signal, tile:%x  pbs_stat:%i",v->unitnumber, gp.new_tile, v->u.rail.pbs_status);
 
@@ -3184,7 +3184,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 	if  (v->u.rail.pbs_status == PBS_STAT_HAS_PATH)
 		return true;
 
-	if ((trackdir != INVALID_TRACKDIR) && (PBSIsPbsSignal(tile,trackdir)) && !(IsTileType(v->tile, MP_STATION) && (v->current_order.station == _m[v->tile].m2))) {
+	if ((trackdir != INVALID_TRACKDIR) && (PBSIsPbsSignal(tile,trackdir) && PBSIsPbsSegment(tile,trackdir)) && !(IsTileType(v->tile, MP_STATION) && (v->current_order.station == _m[v->tile].m2))) {
 		NPFFindStationOrTileData fstd;
 		NPFFoundTargetData ftd;
 
