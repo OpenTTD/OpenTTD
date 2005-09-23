@@ -125,36 +125,26 @@ static byte ReadByte(LoadgameState *ls)
 	byte. If that byte is negative, we have to repeat the next byte
 	that many times (+1). Else, we need to read that amount of bytes.
 	Works pretty good if you have many zero's behind eachother */
-	int8 new_byte;
 
-	/* Check if we are reading a chunk */
-	if (ls->chunk_size != 0) {
-		ls->total_read++;
-		ls->chunk_size--;
+	if (ls->chunk_size == 0) {
+		/* Read new chunk */
+		int8 new_byte = ReadByteFromFile(ls);
 
-		/* If we are decoding, return the decode_char */
-		if (ls->decoding)
-			return ls->decode_char;
-
-		/* Else return byte from file */
-		return ReadByteFromFile(ls);
+		if (new_byte < 0) {
+			/* Repeat next char for new_byte times */
+			ls->decoding    = true;
+			ls->decode_char = ReadByteFromFile(ls);
+			ls->chunk_size  = -new_byte + 1;
+		} else {
+			ls->decoding    = false;
+			ls->chunk_size  = new_byte + 1;
+		}
 	}
 
-	/* Read new chunk */
-	new_byte = ReadByteFromFile(ls);
+	ls->total_read++;
+	ls->chunk_size--;
 
-	if (new_byte < 0) {
-		/* Repeat next char for new_byte times */
-		ls->decoding    = true;
-		ls->decode_char = ReadByteFromFile(ls);
-		ls->chunk_size  = -new_byte + 1;
-	} else {
-		ls->decoding    = false;
-		ls->chunk_size  = new_byte + 1;
-	}
-
-	/* Call this function again to return a byte */
-	return ReadByte(ls);
+	return ls->decoding ? ls->decode_char : ReadByteFromFile(ls);
 }
 
 /**
