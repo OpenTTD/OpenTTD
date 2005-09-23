@@ -84,7 +84,6 @@ enum {
 /* If it fails, check lines above.. */
 assert_compile(sizeof(TileIndex) == 4);
 
-static LoadgameState _ls;
 static uint32 _bump_assert_value;
 static bool   _read_ttdpatch_flags;
 
@@ -1559,7 +1558,7 @@ static bool LoadOldMain(LoadgameState *ls)
 
 	DEBUG(oldloader, 4)("[OldLoader] Going to read main chunk..");
 	/* Load the biggest chunk */
-	if (!LoadChunk(&_ls, NULL, main_chunk)) {
+	if (!LoadChunk(ls, NULL, main_chunk)) {
 		DEBUG(oldloader, 0)("[OldLoader] Loading failed!");
 		return false;
 	}
@@ -1609,23 +1608,24 @@ static bool LoadOldMain(LoadgameState *ls)
 
 bool LoadOldSaveGame(const char *file)
 {
+	LoadgameState ls;
+
 	DEBUG(oldloader, 4)("[OldLoader] Trying to load an TTD(Patch) savegame");
 
-	InitLoading(&_ls);
+	InitLoading(&ls);
 
 	/* Open file */
-	_ls.file = fopen(file, "rb");
+	ls.file = fopen(file, "rb");
 
-	if (_ls.file == NULL) {
+	if (ls.file == NULL) {
 		DEBUG(oldloader, 0)("[OldLoader] Could not open file %s", file);
 		return false;
 	}
 
 	/* Load the main chunk */
-	if (!LoadOldMain(&_ls))
-		return false;
+	if (!LoadOldMain(&ls)) return false;
 
-	fclose(_ls.file);
+	fclose(ls.file);
 
 	_pause = 2;
 
