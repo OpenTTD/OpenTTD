@@ -535,6 +535,9 @@
 				RelativePath=".\video\sdl_v.h">
 			</File>
 			<File
+				RelativePath=".\settings.h">
+			</File>
+			<File
 				RelativePath=".\signs.h">
 			</File>
 			<File
@@ -844,10 +847,10 @@
 			</Filter>
 		</Filter>
 		<File
-			RelativePath=".\openttd.ico">
+			RelativePath=".\mainicon.ico">
 		</File>
 		<File
-			RelativePath=".\mainicon.ico">
+			RelativePath=".\openttd.ico">
 		</File>
 		<File
 			RelativePath=".\ReadMe.txt">

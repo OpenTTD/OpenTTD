@@ -657,10 +657,10 @@ enum {
 	PE_INT32		= 4,
 	PE_CURRENCY	= 5,
 	// selector flags
-	PF_0ISDIS				= 1 << 0,
-	PF_NOCOMMA			= 1 << 1,
-	PF_MULTISTRING	= 1 << 2,
-	PF_PLAYERBASED	= 1 << 3, // This has to match the entries that are in settings.c, patch_player_settings
+	PF_0ISDIS       = 1 << 0, // a value of zero means the feature is disabled
+	PF_NOCOMMA      = 1 << 1, // number without any thousand seperators
+	PF_MULTISTRING  = 1 << 2, // string but only a limited number of options, so don't open editobx
+	PF_PLAYERBASED  = 1 << 3, // This has to match the entries that are in settings.c, patch_player_settings
 	PF_NETWORK_ONLY = 1 << 4, // this setting only applies to network games
 };
 
@@ -1082,7 +1082,7 @@ static const PatchEntry *IConsoleGetPatch(const char *name, uint *page, uint *en
 
 /* Those 2 functions need to be here, else we have to make some stuff non-static
     and besides, it is also better to keep stuff like this at the same place */
-void IConsoleSetPatchSetting(char *name, const char *value)
+void IConsoleSetPatchSetting(const char *name, const char *value)
 {
 	const PatchEntry *pe;
 	uint page, entry;
@@ -1524,4 +1524,3 @@ void ShowCustCurrency(void)
 	DeleteWindowById(WC_CUSTOM_CURRENCY, 0);
 	w = AllocateWindowDesc(&_cust_currency_desc);
 }
-
