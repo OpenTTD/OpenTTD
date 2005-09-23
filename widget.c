@@ -442,7 +442,7 @@ draw_default:;
 
 static uint _dropdown_item_count;
 static uint32 _dropdown_disabled;
-static bool _dropdown_hide_disabled;
+static uint32 _dropdown_hidden;
 static const StringID *_dropdown_items;
 static int _dropdown_selindex;
 static byte _dropdown_button;
@@ -450,7 +450,6 @@ static WindowClass _dropdown_windowclass;
 static WindowNumber _dropdown_windownum;
 static byte _dropdown_var1;
 static byte _dropdown_var2;
-static uint32 _dropdown_disabled_items;
 
 static const Widget _dropdown_menu_widgets[] = {
 {     WWT_IMGBTN,   RESIZE_NONE,     0,     0, 0,     0, 0, 0x0, STR_NULL},
@@ -459,7 +458,7 @@ static const Widget _dropdown_menu_widgets[] = {
 
 static int GetDropdownItem(const Window *w)
 {
-	uint item;
+	byte item, counter;
 	int y;
 
 	if (GetWidgetFromPos(w, _cursor.pos.x - w->left, _cursor.pos.y - w->top) < 0)
@@ -471,8 +470,12 @@ static int GetDropdownItem(const Window *w)
 		return - 1;
 
 	item = y / 10;
-	if (item >= _dropdown_item_count || (HASBIT(_dropdown_disabled,item) && !_dropdown_disabled_items) || _dropdown_items[item] == 0)
+	if (item >= _dropdown_item_count || (HASBIT(_dropdown_disabled, item) && !HASBIT(_dropdown_hidden, item)) || _dropdown_items[item] == 0)
 		return - 1;
+
+	// Skip hidden items -- +1 for each hidden item before the clicked item.
+	for (counter = 0; item >= counter; ++counter)
+		if (HASBIT(_dropdown_hidden, counter)) item++;
 
 	return item;
 }
@@ -492,7 +495,7 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 			sel    = _dropdown_selindex;
 
 			for(i=0; _dropdown_items[i] != INVALID_STRING_ID; i++) {
-				if (HASBIT(_dropdown_disabled_items, i)) {
+				if (HASBIT(_dropdown_hidden, i)) {
 					sel--;
 					continue;
 				}
@@ -502,7 +505,7 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 					}
 					DrawString(x+2, y, _dropdown_items[i], sel==0 ? 12 : 16);
 
-					if (HASBIT(_dropdown_disabled, i) && !_dropdown_disabled_items) {
+					if (HASBIT(_dropdown_disabled, i)) {
 						GfxFillRect(x, y, x+w->width-3, y + 9, PALETTE_MODIFIER_GREYOUT |
 									_color_list[_dropdown_menu_widgets[0].color].window_color_bga);
 					}
@@ -520,12 +523,6 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 		case WE_CLICK: {
 			item = GetDropdownItem(w);
 			if (item >= 0) {
-				// make sure that item match the index of the string, that was clicked
-				// basically we just add one for each hidden item before the clicked one
-				byte counter;
-				for (counter = 0 ; item >= counter; ++counter) {
-					if (HASBIT(_dropdown_disabled_items, counter)) item++;
-				}
 				_dropdown_var1 = 4;
 				_dropdown_selindex = item;
 				SetWindowDirty(w);
@@ -577,7 +574,7 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 	}
 }
 
-void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask, bool remove_filtered_strings)
+void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask, uint32 hidden_mask)
 {
 	WindowNumber num;
 	WindowClass cls;
@@ -587,7 +584,7 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 	uint32 old_click_state = w->click_state;
 
 	_dropdown_disabled = disabled_mask;
-	_dropdown_hide_disabled = remove_filtered_strings;
+	_dropdown_hidden = hidden_mask;
 
 	cls = w->window_class;
 	num = w->window_number;
@@ -606,7 +603,6 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 		return;
 
 	_dropdown_items = strings;
-	_dropdown_item_count = i;
 	_dropdown_selindex = selected;
 
 	_dropdown_windowclass = w->window_class;
@@ -618,15 +614,16 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 
 	wi = &w->widget[button];
 
-	if ( remove_filtered_strings ) {
+	if (hidden_mask != 0) {
 		int j;
 		for(j=0; _dropdown_items[j] != INVALID_STRING_ID; j++) {
-			if ( disabled_mask & ( 1 << j )) {
-				_dropdown_item_count--;
+			if (HASBIT(hidden_mask, j)) {
 				i--;
 			}
 		}
 	}
+
+	_dropdown_item_count = i;
 
 	w2 = AllocateWindow(
 		w->left + wi[-1].left + 1,
@@ -640,7 +637,6 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 	w2->widget[0].color = wi->color;
 	w2->widget[0].right = wi->right - wi[-1].left;
 	w2->widget[0].bottom = i * 10 + 3;
-	_dropdown_disabled_items = remove_filtered_strings ? disabled_mask : 0;
 
 	w2->flags4 &= ~WF_WHITE_BORDER_MASK;
 }

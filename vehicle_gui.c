@@ -906,7 +906,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 
 			switch (e->click.widget) {
 				case 14: case 15: { /* Select sorting criteria dropdown menu */
-					ShowDropDownMenu(w, _rail_types_list, _railtype_selected_in_replace_gui, 15, ~GetPlayer(_local_player)->avail_railtypes, 1);
+					ShowDropDownMenu(w, _rail_types_list, _railtype_selected_in_replace_gui, 15, 0, ~GetPlayer(_local_player)->avail_railtypes);
 					break;
 				}
 				case 4: { /* Start replacing */
