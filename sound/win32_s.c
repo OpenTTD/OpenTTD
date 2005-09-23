@@ -36,7 +36,7 @@ static void FillHeaders(void)
 	}
 }
 
-static void CALLBACK waveOutProc(HWAVEOUT hwo, UINT uMsg, DWORD dwInstance,
+static void CALLBACK waveOutProc(HWAVEOUT hwo, UINT uMsg, DWORD_PTR dwInstance,
 	DWORD dwParam1, DWORD dwParam2)
 {
 	switch (uMsg) {
@@ -62,7 +62,7 @@ static const char *Win32SoundStart(const char* const* parm)
 	wfex.nAvgBytesPerSec = hz * 2 * 2;
 	wfex.nBlockAlign = 4;
 	wfex.wBitsPerSample = 16;
-	if (waveOutOpen(&_waveout, WAVE_MAPPER, &wfex, (DWORD)&waveOutProc, 0, CALLBACK_FUNCTION) != MMSYSERR_NOERROR)
+	if (waveOutOpen(&_waveout, WAVE_MAPPER, &wfex, (DWORD_PTR)&waveOutProc, 0, CALLBACK_FUNCTION) != MMSYSERR_NOERROR)
 		return "waveOutOpen failed";
 	PrepareHeader(&_wave_hdr[0]);
 	PrepareHeader(&_wave_hdr[1]);
