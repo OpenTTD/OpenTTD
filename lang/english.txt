@@ -1017,6 +1017,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Default
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Default service interval for ships: {ORANGE}{STRING1} days/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Default service interval for ships: {ORANGE}disabled
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Disable servicing when breakdowns set to none: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Enable wagon speed limits: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Coloured news appears in: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Starting date: {ORANGE}{STRING1}

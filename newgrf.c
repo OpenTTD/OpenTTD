@@ -2187,7 +2187,8 @@ static void InitializeGRFSpecial(void)
 
 	_ttdpatch_flags[2] = (1 << 0x0D)  /* buildonslopes */
 	                   | (1 << 0x16)  /* canals */
-	                   | (1 << 0x17); /* newstartyear */
+	                   | (1 << 0x17)  /* newstartyear */
+	                   | (_patches.wagon_speed_limits ? (1 << 0x1D) : 0); /* wagonspeedlimits */
 }
 
 static void InitNewGRFFile(const char* filename, int sprite_offset)

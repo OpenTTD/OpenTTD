@@ -115,6 +115,7 @@ typedef struct Patches {
 	bool nonuniform_stations;// allow nonuniform train stations
 	bool always_small_airport; // always allow small airports
 	bool realistic_acceleration; // realistic acceleration for trains
+	bool wagon_speed_limits; // enable wagon speed limits
 	bool forbid_90_deg; // forbid trains to make 90 deg turns
 	bool invisible_trees; // don't show trees when buildings are transparent
 	bool no_servicing_if_no_breakdowns; // dont send vehicles to depot when breakdowns are disabled

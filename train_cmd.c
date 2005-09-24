@@ -113,8 +113,9 @@ void TrainConsistChanged(Vehicle *v) {
 		}
 
 		// max speed is the minimum of the speed limits of all vehicles in the consist
-		if (rvi_u->max_speed != 0 && !UsesWagonOverride(u))
-			max_speed = min(rvi_u->max_speed, max_speed);
+		if (!(rvi_u->flags & RVI_WAGON) || _patches.wagon_speed_limits)
+			if (rvi_u->max_speed != 0 && !UsesWagonOverride(u))
+				max_speed = min(rvi_u->max_speed, max_speed);
 
 		// check the vehicle length (callback)
 		veh_len = CALLBACK_FAILED;

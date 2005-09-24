@@ -111,7 +111,7 @@ void DrawTrainWagonPurchaseInfo(int x, int y, EngineID engine_number)
 	y += 10;
 
 	/* Wagon speed limit, displayed if above zero */
-	if (rvi->max_speed > 0) {
+	if (rvi->max_speed > 0 && _patches.wagon_speed_limits) {
 		SetDParam(0, rvi->max_speed * 10 >> 4);
 		DrawString(x,y, STR_PURCHASE_INFO_SPEED, 0);
 		y += 10;

@@ -889,6 +889,7 @@ const SettingDesc patch_settings[] = {
 	{"nonuniform_stations",	SDT_BOOL,		(void*)true,	&_patches.nonuniform_stations,	NULL},
 	{"always_small_airport",SDT_BOOL,		(void*)false,	&_patches.always_small_airport,	NULL},
 	{"realistic_acceleration",SDT_BOOL, (void*)false,	&_patches.realistic_acceleration,	NULL},
+	{"wagon_speed_limits",  SDT_BOOL,   (void*)true,  &_patches.wagon_speed_limits,   NULL},
 	{"forbid_90_deg",				SDT_BOOL, 	(void*)false, &_patches.forbid_90_deg,					NULL},
 	{"improved_load",				SDT_BOOL,		(void*)false,	&_patches.improved_load,				NULL},
 
