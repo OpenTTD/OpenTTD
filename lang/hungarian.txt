@@ -640,6 +640,8 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...túl k
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...túl közel van egy másik városhoz
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...nem alkalmas rá a hely
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...túl sok a város
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Nem lehet több várost építeni
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...nincs több hely a térképen
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}A város méretének növelése
 STR_023C_EXPAND                                                 :{BLACK}Növel
 STR_023D_RANDOM_TOWN                                            :{BLACK}Véletlenszerû város
@@ -796,6 +798,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Állomá
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Terület-információ
 STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :Átváltás Konzolra
 STR_02D7_SCREENSHOT_CTRL_S                                      :Képmentés (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Óriás képmentés (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Az  'OpenTTD'-r?l
@@ -898,6 +901,7 @@ STR_TOWNNAME_AUSTRIAN                                           :Osztrák
 STR_TOWNNAME_ROMANIAN                                           :Romániai
 STR_TOWNNAME_CZECH                                              :Cseh
 STR_TOWNNAME_SWISS                                              :Svájci
+STR_TOWNNAME_DANISH                                             :Dán
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Font ({POUNDSIGN})

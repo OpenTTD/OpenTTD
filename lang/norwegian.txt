@@ -2734,7 +2734,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Vis alle
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Vis alle skip som har denne stasjonen på deres timeplan
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Bytt ut kjøretøy
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Bytt ut kjøretøy
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Erstatte {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Begynn å bytte ut kjøretøy
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Slutt å bytte ut kjøretøy
 STR_NOT_REPLACING                                               :{BLACK}Byttes ikke ut

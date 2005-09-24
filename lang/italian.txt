@@ -575,6 +575,8 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...tropp
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...troppo vicino a un'altra città
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...sito inadatto
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...troppe città
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Non puoi costruire nessuna città
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...nella mappa non c'è altro spazio
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Incrementa dimensione della città
 STR_023C_EXPAND                                                 :{BLACK}Espandi
 STR_023D_RANDOM_TOWN                                            :{BLACK}Città Casuale
@@ -833,6 +835,7 @@ STR_TOWNNAME_AUSTRIAN                                           :Austriaci
 STR_TOWNNAME_ROMANIAN                                           :Rumeni
 STR_TOWNNAME_CZECH                                              :Cechi
 STR_TOWNNAME_SWISS                                              :Svizzero
+STR_TOWNNAME_DANISH                                             :Danese
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Sterlina ({POUNDSIGN})

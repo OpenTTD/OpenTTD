@@ -575,6 +575,8 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...trop 
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...trop près d'une autre ville
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...site non convenable
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...trop de villes
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Ne peut plus bâtir de villes
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...Il n'y a plus d'emplacement sur la carte
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Augmenter la taille de la ville
 STR_023C_EXPAND                                                 :{BLACK}Agrandir
 STR_023D_RANDOM_TOWN                                            :{BLACK}Générer une ville
@@ -731,6 +733,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Nom de
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Outil d'Inspection
 STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :Inverser Console
 STR_02D7_SCREENSHOT_CTRL_S                                      :Copie d'écran (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Copie géante d'écran (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :À Propos de 'OpenTTD'
@@ -833,6 +836,7 @@ STR_TOWNNAME_AUSTRIAN                                           :Autrichiens
 STR_TOWNNAME_ROMANIAN                                           :Roumain
 STR_TOWNNAME_CZECH                                              :Tchèques
 STR_TOWNNAME_SWISS                                              :Suisse
+STR_TOWNNAME_DANISH                                             :Danois
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Livre ({POUNDSIGN})

@@ -2734,7 +2734,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Zobrazit
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Zobrazit vsetky lode, ktore maju tuto stanicu v cestovnom poriadku
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Vymena vozidiel
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vymena vozidiel
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vymena {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Zacat vymenu vozidiel
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Zastavit vymenu vozidiel
 STR_NOT_REPLACING                                               :{BLACK}Nevymiena sa

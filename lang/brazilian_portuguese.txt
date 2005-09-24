@@ -575,6 +575,8 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...muito
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...muito perto de outra cidade
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...local inadequado
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...muitas cidades
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Impossível construir qualquer cidade
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...não há espaço no mapa
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Aumentar o tamanho da cidade
 STR_023C_EXPAND                                                 :{BLACK}Expandir
 STR_023D_RANDOM_TOWN                                            :{BLACK}Cidade Aleatória
@@ -731,6 +733,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Nomes 
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Informações do terreno
 STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :Ativar/desativar console
 STR_02D7_SCREENSHOT_CTRL_S                                      :Captura de tela (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Captura gigante (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Sobre o OpenTTD...
@@ -833,6 +836,7 @@ STR_TOWNNAME_AUSTRIAN                                           :Austríaco
 STR_TOWNNAME_ROMANIAN                                           :Romeno
 STR_TOWNNAME_CZECH                                              :Checo
 STR_TOWNNAME_SWISS                                              :Suiça
+STR_TOWNNAME_DANISH                                             :Dinamarquês
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Libras ({POUNDSIGN})
@@ -950,13 +954,13 @@ STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Permiti
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permitir dimensionamento mais realista das áreas de abrangência: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permitir a remoção de mais estradas, pontes, etc. das cidades: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permitir a construção de trens muito longos: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Activar aceleração realista para trens: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Proibir trens e barcos de virar angulos de 90 graus: {ORANGE}{STRING} {LTBLUE} (requer NPF)
-STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Juntar estações ferroviárias construídas juntas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Ativar aceleração realista para trens: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Proibir trens e barcos de virar em angulos de 90 graus: {ORANGE}{STRING} {LTBLUE} (requer NPF)
+STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Unir estações ferroviárias construídas juntas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Deixar a estação quando uma das cargas estiver completa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Usar algoritmo de carregamento melhorado: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflação: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Entregar carga a uma estação só quando houver procura: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Somente entregar carga a uma estação quando houver procura: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Permitir a construção de pontes muito longas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Permitir ordens de ir para o depósito: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Permitir construção de indústrias de matérias-primas: {ORANGE}{STRING}
@@ -1051,7 +1055,7 @@ STR_CHEATS                                                      :{WHITE}Trapaças
 STR_CHEATS_TIP                                                  :{BLACK}As caixas de verificação indicam se esta trapaça já foi usada antes
 STR_CHEATS_WARNING                                              :{BLACK}Atenção! Você está prestes a trair os seus oponentes. Saiba que isto ficará registrado para sempre.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Aumentar dinheiro em {CURRENCY64}
-STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Jogar pelo jogador: {ORANGE}{COMMA}
+STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Jogar como jogador: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer mágico (destrói indústrias, etc.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Os túneis poderão cruzar-se: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Permitir construção quando em pausa: {ORANGE}{STRING}
@@ -1171,7 +1175,7 @@ TEMP_AI_ACTIVATED                                               :{WHITE}Atenção:
 
 STR_NETWORK_MULTIPLAYER                                         :{WHITE}Multi-jogador
 
-STR_NETWORK_PLAYER_NAME                                         :{BLACK}Nome do jogador:
+STR_NETWORK_PLAYER_NAME                                         :{BLACK}Nome:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Este é o nome pelo qual os outros jogadores irão te identificar
 STR_NETWORK_CONNECTION                                          :{BLACK}Conexão:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Escolha entre um jogo pela Internet ou pela rede local
@@ -1200,7 +1204,7 @@ STR_NETWORK_LANGUAGE                                            :{SILVER}Idioma:
 STR_NETWORK_TILESET                                             :{SILVER}Tileset:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Tamanho do Mapa:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versão do servidor:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Endereço do servidor:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}IP do servidor:  {WHITE}{STRING} : {NUM}
 STR_NETWORK_START_DATE                                          :{SILVER}Data de inicio:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Data atual:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Protegido por senha!
@@ -1253,16 +1257,16 @@ STR_NETWORK_LANG_FRENCH                                         :Francês
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Sala de espera de jogo multi-jogador
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Preparando para juntar:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Preparando para conectar-se:   {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Lista das companhias ativas neste jogo. Pode juntar-se a uma delas ou iniciar uma nova companhia.
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nova empresa
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Criar uma nova empresa
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Observar jogo
 STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Ver jogo como um espectador
-STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Juntar a companhia
+STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Juntar-se à companhia
 STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Auxiliar na gestão desta companhia
-STR_NETWORK_REFRESH                                             :{BLACK}Renovar servidor
-STR_NETWORK_REFRESH_TIP                                         :{BLACK}Atualizar a informação do servidor
+STR_NETWORK_REFRESH                                             :{BLACK}Atualizar dados
+STR_NETWORK_REFRESH_TIP                                         :{BLACK}Atualiza as informações sobre o servidor
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}INFORMAÇÃO DA COMPANHIA
 

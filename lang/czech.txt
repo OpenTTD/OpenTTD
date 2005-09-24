@@ -343,7 +343,7 @@ STR_013D_INFORMATION                                            :{BLACK}Informac
 STR_013E_CAPACITIES                                             :{BLACK}Kapacity
 STR_013E_TOTAL_CARGO                                            :{BLACK}Celkový náklad
 STR_013F_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{STRING}
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Celkova kapacita tohoto vlaku:
+STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Celková kapacita tohoto vlaku:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Nová hra
 STR_0141_LOAD_GAME                                              :{BLACK}Nahrát hru
@@ -632,6 +632,8 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}... moc 
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}... moc blízko k jinému mestu
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}... nepou¸itelné místo
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}... prilis mnoho mest
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Nelze vybudovat více mest
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}... na mape u¸ není místo.
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Zvetsit velikost mesta
 STR_023C_EXPAND                                                 :{BLACK}Rozsirit
 STR_023D_RANDOM_TOWN                                            :{BLACK}Náhodné mesto
@@ -788,6 +790,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Pruhle
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Informace o zemi
 STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :Zobrazit / skrýt konzoli
 STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Obrovský screenshot (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :O 'OpenTTD'
@@ -890,6 +893,7 @@ STR_TOWNNAME_AUSTRIAN                                           :Rakouská
 STR_TOWNNAME_ROMANIAN                                           :Rumunská
 STR_TOWNNAME_CZECH                                              :Ceska
 STR_TOWNNAME_SWISS                                              :¦výcarská
+STR_TOWNNAME_DANISH                                             :Dánská
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Libry ({POUNDSIGN})
@@ -1563,10 +1567,10 @@ STR_202D_UNTIL                                                  :{YELLOW}, do {D
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Nabídka dotace prepravy vypr¨ela:{}{}Dotace dopravy {STRING.news} z {STRING} do {STRING} nebude dále nabízena.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Ukonceni dotovaní dopravy:{}{}Dotace pro {STRING} z {STATION} do {STATION} ji¸ nebude dále poskytována.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Nabídka dotace:{}{}Doprava {STRING} z {STRING} do {STRING} bude jeden rok dotovana místní správou!
-STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace pridelena spolecnosti {COMPANY}.{}{}Doprava {STRING.news} z {STATION} do {STATION} bude po jeden rok vyná¨et 150 % normalní ceny.
-STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace pridelena spolecnosti {COMPANY}.{}{}Doprava {STRING.news} z {STATION} do {STATION} bude po jeden rok vyná¨et dvojnásobek normalní ceny!
-STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace pridelena spolecnosti {COMPANY}.{}{}Doprava {STRING.news} z {STATION} do {STATION} bude po jeden rok vyná¨et trojnásobek normalní ceny!
-STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace pridelena spolecnosti {COMPANY}.{}{}Doprava {STRING.news} z {STATION} do {STATION} bude po jeden rok vyná¨et ctyrnasobek normalní ceny!
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace pridelena spolecnosti {COMPANY}.{}{}Doprava {STRING.news} z {STATION} do {STATION} bude po jeden rok vyná¨et 150 % normální ceny.
+STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace pridelena spolecnosti {COMPANY}.{}{}Doprava {STRING.news} z {STATION} do {STATION} bude po jeden rok vyná¨et dvojnásobek normální ceny!
+STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace pridelena spolecnosti {COMPANY}.{}{}Doprava {STRING.news} z {STATION} do {STATION} bude po jeden rok vyná¨et trojnásobek normální ceny!
+STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace pridelena spolecnosti {COMPANY}.{}{}Doprava {STRING.news} z {STATION} do {STATION} bude po jeden rok vyná¨et ctyrnasobek normální ceny!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Místní správa mesta {TOWN} zakazuje stavbu dal¨ího letiste v tomto meste.
 STR_2036_COTTAGES                                               :Chatky
 STR_2037_HOUSES                                                 :Domy
