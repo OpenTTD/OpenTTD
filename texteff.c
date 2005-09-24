@@ -55,7 +55,7 @@ extern void memcpy_pitch(void *d, void *s, int w, int h, int spitch, int dpitch)
 // Duration is in game-days
 void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...)
 {
-	char buf[MAX_TEXTMESSAGE_LENGTH], buf2[MAX_TEXTMESSAGE_LENGTH];
+	char buf[MAX_TEXTMESSAGE_LENGTH];
 	va_list va;
 	int i, length;
 
@@ -67,15 +67,14 @@ void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...
 	if ((color & 0xFF) == 0xC9) color = 0x1CA;
 
 	/* Cut the message till it fits inside the chatbox */
-	snprintf(buf2, lengthof(buf2), "%s", buf); // remove any formatting
-	length = strlen(buf2);
-	while (GetStringWidth(buf2) > _textmessage_width - 9) buf2[--length] = '\0';
+	length = strlen(buf);
+	while (GetStringWidth(buf) > _textmessage_width - 9) buf[--length] = '\0';
 
 	/* Find an empty spot and put the message there */
 	for (i = 0; i < MAX_CHAT_MESSAGES; i++) {
 		if (_text_message_list[i].message[0] == '\0') {
 			// Empty spot
-			ttd_strlcpy(_text_message_list[i].message, buf2, sizeof(_text_message_list[i].message));
+			ttd_strlcpy(_text_message_list[i].message, buf, sizeof(_text_message_list[i].message));
 			_text_message_list[i].color = color;
 			_text_message_list[i].end_date = _date + duration;
 
@@ -86,7 +85,7 @@ void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...
 
 	// We did not found a free spot, trash the first one, and add to the end
 	memmove(&_text_message_list[0], &_text_message_list[1], sizeof(_text_message_list[0]) * (MAX_CHAT_MESSAGES - 1));
-	ttd_strlcpy(_text_message_list[MAX_CHAT_MESSAGES - 1].message, buf2, sizeof(_text_message_list[MAX_CHAT_MESSAGES - 1].message));
+	ttd_strlcpy(_text_message_list[MAX_CHAT_MESSAGES - 1].message, buf, sizeof(_text_message_list[MAX_CHAT_MESSAGES - 1].message));
 	_text_message_list[MAX_CHAT_MESSAGES - 1].color = color;
 	_text_message_list[MAX_CHAT_MESSAGES - 1].end_date = _date + duration;
 
