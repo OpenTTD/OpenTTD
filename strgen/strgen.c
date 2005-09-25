@@ -54,6 +54,7 @@ typedef struct Case {
 	struct Case *next;
 } Case;
 
+static const char* _file = "(unknown file)";
 static int _cur_line;
 static int _errors, _warnings;
 
@@ -143,7 +144,7 @@ static void CDECL Warning(const char *s, ...)
 	va_start(va, s);
 	vsprintf(buf, s, va);
 	va_end(va);
-	fprintf(stderr, "Warning:(%d): %s\n", _cur_line, buf);
+	fprintf(stderr, "%s:%d: Warning: %s\n", _file, _cur_line, buf);
 	_warnings++;
 }
 
@@ -155,7 +156,7 @@ static void CDECL Error(const char *s, ...)
 	va_start(va, s);
 	vsprintf(buf, s, va);
 	va_end(va);
-	fprintf(stderr, "Error:(%d): %s\n", _cur_line, buf);
+	fprintf(stderr, "%s:%d: Error: %s\n", _file, _cur_line, buf);
 	_errors++;
 }
 
@@ -167,7 +168,7 @@ static void NORETURN CDECL Fatal(const char *s, ...)
 	va_start(va, s);
 	vsprintf(buf, s, va);
 	va_end(va);
-	fprintf(stderr, "%d: FATAL: %s\n", _cur_line, buf);
+	fprintf(stderr, "%s:%d: FATAL: %s\n", _file, _cur_line, buf);
 	exit(1);
 }
 
@@ -846,6 +847,8 @@ static void ParseFile(const char *file, bool english)
 	FILE *in;
 	char buf[2048];
 
+	_file = file;
+
 	// For each new file we parse, reset the genders.
 	_numgenders = 0;
 	// TODO:!! We can't reset the cases. In case the translated strings
@@ -853,7 +856,7 @@ static void ParseFile(const char *file, bool english)
 
 
 	in = fopen(file, "r");
-	if (in == NULL) { Fatal("Cannot open file '%s'", file); }
+	if (in == NULL) Fatal("Cannot open file");
 	_cur_line = 1;
 	while (fgets(buf, sizeof(buf),in) != NULL) {
 		rstrip(buf);
