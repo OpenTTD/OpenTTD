@@ -57,7 +57,8 @@ void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...
 {
 	char buf[MAX_TEXTMESSAGE_LENGTH];
 	va_list va;
-	int i, length;
+	size_t length;
+	uint i;
 
 	va_start(va, message);
 	vsnprintf(buf, lengthof(buf), message, va);

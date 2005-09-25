@@ -166,7 +166,7 @@ void LoadDriver(int driver, const char *name)
 
 static const char* GetDriverParam(const char* const* parm, const char* name)
 {
-	uint len;
+	size_t len;
 
 	if (parm == NULL) return NULL;
 

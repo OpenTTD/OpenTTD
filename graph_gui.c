@@ -828,7 +828,8 @@ static void CompanyLeagueWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT: {
 		Player *p;
 		Player *plist[MAX_PLAYERS];
-		size_t pl_num, i;
+		uint pl_num;
+		uint i;
 
 		DrawWindowWidgets(w);
 

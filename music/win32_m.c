@@ -12,7 +12,7 @@ static struct {
 	bool playing;
 	int new_vol;
 	HANDLE wait_obj;
-	uint devid;
+	UINT_PTR devid;
 	char start_song[260];
 } _midi;
 
@@ -44,7 +44,7 @@ static void Win32MidiSetVolume(byte vol)
 	SetEvent(_midi.wait_obj);
 }
 
-static long CDECL MidiSendCommand(const char *cmd, ...) {
+static MCIERROR CDECL MidiSendCommand(const char *cmd, ...) {
 	va_list va;
 	char buf[512];
 
@@ -72,7 +72,7 @@ static void MidiIntStopSong(void)
 
 static void MidiIntSetVolume(int vol)
 {
-	uint v = (vol * 65535 / 127);
+	DWORD v = (vol * 65535 / 127);
 	midiOutSetVolume((HMIDIOUT)_midi.devid, v + (v << 16));
 }
 
@@ -128,7 +128,8 @@ static const char *Win32MidiStart(const char * const *parm)
 {
 	MIDIOUTCAPS midicaps;
 	DWORD threadId;
-	uint dev, nbdev;
+	UINT nbdev;
+	UINT_PTR dev;
 	char buf[16];
 
 	mciSendStringA("capability sequencer has audio", buf, lengthof(buf), 0);

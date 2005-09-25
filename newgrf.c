@@ -1668,7 +1668,7 @@ static void VehicleNewName(byte *buf, int len)
 	name = (const char*)buf;
 	len -= (lang & 0x80) ? 6 : 5;
 	for (; id < endid && len > 0; id++) {
-		int ofs = strlen(name) + 1;
+		size_t ofs = strlen(name) + 1;
 
 		if (ofs < 128) {
 			DEBUG(grf, 8) ("VehicleNewName: %d <- %s", id, name);

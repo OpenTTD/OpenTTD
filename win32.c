@@ -161,7 +161,7 @@ static char *PrintModuleInfo(char *output, HMODULE mod)
 
 	GetModuleFileName(mod, buffer, MAX_PATH);
 	GetFileInfo(&dfi, buffer);
-	output += sprintf(output, " %-20s handle: %.8X size: %d crc: %.8X date: %d-%.2d-%.2d %.2d:%.2d:%.2d\r\n",
+	output += sprintf(output, " %-20s handle: %p size: %d crc: %.8X date: %d-%.2d-%.2d %.2d:%.2d:%.2d\r\n",
 		buffer,
 		mod,
 		dfi.size,
@@ -351,7 +351,7 @@ static bool DoEmergencySave(HWND wnd)
 	return b;
 }
 
-static BOOL CALLBACK CrashDialogFunc(HWND wnd,UINT msg,WPARAM wParam,LPARAM lParam)
+static INT_PTR CALLBACK CrashDialogFunc(HWND wnd,UINT msg,WPARAM wParam,LPARAM lParam)
 {
 	switch(msg) {
 	case WM_INITDIALOG:

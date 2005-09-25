@@ -17,7 +17,7 @@
 
 static struct {
 	char song[MAX_PATH];
-	int pid;
+	pid_t pid;
 } _midi;
 
 static void DoPlay(void);
