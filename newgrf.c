@@ -2191,6 +2191,20 @@ static void InitializeGRFSpecial(void)
 	                   | (_patches.wagon_speed_limits ? (1 << 0x1D) : 0); /* wagonspeedlimits */
 }
 
+/**
+ * Reset all NewGRF loaded data
+ * TODO
+ */
+static void ResetNewGRFData(void)
+{
+	// Copy/reset original engine info data
+	memcpy(&_engine_info, &orig_engine_info, sizeof(orig_engine_info));
+	memcpy(&_rail_vehicle_info, &orig_rail_vehicle_info, sizeof(orig_rail_vehicle_info));
+	memcpy(&_ship_vehicle_info, &orig_ship_vehicle_info, sizeof(orig_ship_vehicle_info));
+	memcpy(&_aircraft_vehicle_info, &orig_aircraft_vehicle_info, sizeof(orig_aircraft_vehicle_info));
+	memcpy(&_road_vehicle_info, &orig_road_vehicle_info, sizeof(orig_road_vehicle_info));
+}
+
 static void InitNewGRFFile(const char* filename, int sprite_offset)
 {
 	GRFFile *newfile;
@@ -2373,6 +2387,8 @@ void LoadNewGRF(uint load_index, uint file_index)
 		InitializeGRFSpecial();
 		initialized = true;
 	}
+
+	ResetNewGRFData();
 
 	/* Load newgrf sprites
 	 * in each loading stage, (try to) open each file specified in the config

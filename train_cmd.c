@@ -1516,7 +1516,7 @@ int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (!CanRefitTo(v, new_cid)) continue;
 
 		if (v->cargo_cap != 0) {
-			RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
+			const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
 			uint16 amount = CALLBACK_FAILED;
 
 			if (HASBIT(rvi->callbackmask, CBM_REFIT_CAP)) {

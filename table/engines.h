@@ -25,7 +25,7 @@
   */
 #define MW(a,b,c,d,e,f) {a,b|0x80,c,d,((e)<<4)|(f)}
 
-EngineInfo _engine_info[TOTAL_NUM_ENGINES] = {
+const EngineInfo orig_engine_info[TOTAL_NUM_ENGINES] = {
 	MK(  1827,  20,  15,  30,   0,   1), /*   0 Kirby Paul Tank (Steam) */
 	MK( 12784,  20,  22,  30,   0,   6), /*   1 MJS 250 (Diesel) */
 	MK(  9497,  20,  20,  50,   0,   8), /*   2 Ploddyphut Choo-Choo */
@@ -284,7 +284,7 @@ EngineInfo _engine_info[TOTAL_NUM_ENGINES] = {
 	MK( 13575,  20,  20,  99,   0,   8), /* 255  */
 };
 
-RailVehicleInfo _rail_vehicle_info[NUM_TRAIN_ENGINES] = {
+const RailVehicleInfo orig_rail_vehicle_info[NUM_TRAIN_ENGINES] = {
 	// image_index  max_speed (kph)      running_cost_base                 callbackmask    shortened factor
 	// |  flags     |        power (hp)  |    running_cost_class           |   powered wagons power
 	// |  |    base_cost     |    weight      |    capacity                |   |   powered wagons weight
@@ -408,7 +408,7 @@ RailVehicleInfo _rail_vehicle_info[NUM_TRAIN_ENGINES] = {
 	{ 59, 2, 191,   0,       0,  18,     0,   0,  37,   CT_PLASTIC      ,  0,  0,  0,  0,  0 }, /* 115 */
 };
 
-ShipVehicleInfo _ship_vehicle_info[NUM_SHIP_ENGINES] = {
+const ShipVehicleInfo orig_ship_vehicle_info[NUM_SHIP_ENGINES] = {
 	// image_index  cargo_type     cargo_amount                 refittable
 	// |  base_cost |              |    running_cost            |
 	// |  |    max_speed           |    |    sfx                |
@@ -428,7 +428,7 @@ ShipVehicleInfo _ship_vehicle_info[NUM_SHIP_ENGINES] = {
 
 /* subtype: &1: regular aircraft (else chopper); &2: crashes easily on small airports */
 /* sfx from somewhere around SND_45_PLANE_CRASHING are toyland plane-sounds */
-AircraftVehicleInfo _aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES] = {
+const AircraftVehicleInfo orig_aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES] = {
 	// image_index         sfx                         acceleration
 	// |   base_cost       |                           |   max_speed
 	// |   |    running_cost                           |   |    mail_capacity
@@ -479,7 +479,7 @@ AircraftVehicleInfo _aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES] = {
 
 /* I hope I got the cargo types right, figuring out which is which for which
  * climate is a bitch */
-RoadVehicleInfo _road_vehicle_info[NUM_ROAD_ENGINES] = {
+const RoadVehicleInfo orig_road_vehicle_info[NUM_ROAD_ENGINES] = {
 	// image_index       sfx                                 max_speed
 	// |    base_cost    |                                   |   capacity
 	// |    |    running_cost                                |   |  cargo_type

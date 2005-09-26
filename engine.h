@@ -241,31 +241,37 @@ static inline bool IsEngineIndex(uint index)
 
 /* Access Vehicle Data */
 //#include "table/engines.h"
-extern EngineInfo _engine_info[TOTAL_NUM_ENGINES];
-extern RailVehicleInfo _rail_vehicle_info[NUM_TRAIN_ENGINES];
-extern ShipVehicleInfo _ship_vehicle_info[NUM_SHIP_ENGINES];
-extern AircraftVehicleInfo _aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES];
-extern RoadVehicleInfo _road_vehicle_info[NUM_ROAD_ENGINES];
+extern const EngineInfo orig_engine_info[TOTAL_NUM_ENGINES];
+extern const RailVehicleInfo orig_rail_vehicle_info[NUM_TRAIN_ENGINES];
+extern const ShipVehicleInfo orig_ship_vehicle_info[NUM_SHIP_ENGINES];
+extern const AircraftVehicleInfo orig_aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES];
+extern const RoadVehicleInfo orig_road_vehicle_info[NUM_ROAD_ENGINES];
 
-static inline RailVehicleInfo *RailVehInfo(uint e)
+EngineInfo _engine_info[TOTAL_NUM_ENGINES];
+RailVehicleInfo _rail_vehicle_info[NUM_TRAIN_ENGINES];
+ShipVehicleInfo _ship_vehicle_info[NUM_SHIP_ENGINES];
+AircraftVehicleInfo _aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES];
+RoadVehicleInfo _road_vehicle_info[NUM_ROAD_ENGINES];
+
+static inline const RailVehicleInfo *RailVehInfo(uint e)
 {
 	assert(e < lengthof(_rail_vehicle_info));
 	return &_rail_vehicle_info[e];
 }
 
-static inline ShipVehicleInfo *ShipVehInfo(uint e)
+static inline const ShipVehicleInfo *ShipVehInfo(uint e)
 {
 	assert(e - SHIP_ENGINES_INDEX < lengthof(_ship_vehicle_info));
 	return &_ship_vehicle_info[e - SHIP_ENGINES_INDEX];
 }
 
-static inline AircraftVehicleInfo *AircraftVehInfo(uint e)
+static inline const AircraftVehicleInfo *AircraftVehInfo(uint e)
 {
 	assert(e - AIRCRAFT_ENGINES_INDEX < lengthof(_aircraft_vehicle_info));
 	return &_aircraft_vehicle_info[e - AIRCRAFT_ENGINES_INDEX];
 }
 
-static inline RoadVehicleInfo *RoadVehInfo(uint e)
+static inline const RoadVehicleInfo *RoadVehInfo(uint e)
 {
 	assert(e - ROAD_ENGINES_INDEX < lengthof(_road_vehicle_info));
 	return &_road_vehicle_info[e - ROAD_ENGINES_INDEX];
