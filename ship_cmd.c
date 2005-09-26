@@ -39,7 +39,7 @@ void DrawShipEngine(int x, int y, int engine, uint32 image_ormod)
 			DrawSprite(sprite | image_ormod, x, y);
 			return;
 		}
-		spritenum = _engine_original_sprites[engine];
+		spritenum = orig_ship_vehicle_info[engine - SHIP_ENGINES_INDEX].image_index;
 	}
 	DrawSprite((6 + _ship_sprites[spritenum]) | image_ormod, x, y);
 }
@@ -52,7 +52,7 @@ int GetShipImage(const Vehicle *v, byte direction)
 		int sprite = GetCustomVehicleSprite(v, direction);
 
 		if (sprite) return sprite;
-		spritenum = _engine_original_sprites[v->engine_type];
+		spritenum = orig_ship_vehicle_info[v->engine_type - SHIP_ENGINES_INDEX].image_index;
 	}
 	return _ship_sprites[spritenum] + direction;
 }

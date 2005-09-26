@@ -172,7 +172,6 @@ VARDEF const uint32 _landscape_global_cargo_mask[NUM_LANDSCAPE];
 VARDEF const CargoID _local_cargo_id_ctype[NUM_GLOBAL_CID];
 
 VARDEF uint32 _engine_refit_masks[256];
-VARDEF byte _engine_original_sprites[256];
 void SetWagonOverrideSprites(byte engine, struct SpriteGroup *group, byte *train_id, int trains);
 void SetCustomEngineSprites(byte engine, byte cargo, struct SpriteGroup *group);
 // loaded is in percents, overriding_engine 0xffff is none

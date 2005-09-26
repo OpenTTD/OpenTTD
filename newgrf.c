@@ -272,8 +272,6 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT {
 				uint8 spriteid = grf_load_byte(&buf);
 
-				if (spriteid == 0xFD && rvi[i].image_index != 0xFD)
-					_engine_original_sprites[engine + i] = rvi[i].image_index;
 				rvi[i].image_index = spriteid;
 			}
 		} break;
@@ -448,11 +446,6 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				if (spriteid == 0xFF)
 					spriteid = 0xFD; // cars have different custom id in the GRF file
 
-				// This is currently not used but there's no reason
-				// in not having it here for the future.
-				if (spriteid == 0xFD && rvi[i].image_index != 0xFD)
-					_engine_original_sprites[ROAD_ENGINES_INDEX + engine + i] = rvi[i].image_index;
-
 				rvi[i].image_index = spriteid;
 			}
 		} break;
@@ -538,11 +531,6 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 				if (spriteid == 0xFF)
 					spriteid = 0xFD; // ships have different custom id in the GRF file
-
-				// This is currently not used but there's no reason
-				// in not having it here for the future.
-				if (spriteid == 0xFD && svi[i].image_index != 0xFD)
-					_engine_original_sprites[SHIP_ENGINES_INDEX + engine + i] = svi[i].image_index;
 
 				svi[i].image_index = spriteid;
 			}
@@ -645,11 +633,6 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 
 				if (spriteid == 0xFF)
 					spriteid = 0xFD; // ships have different custom id in the GRF file
-
-				// This is currently not used but there's no reason
-				// in not having it here for the future.
-				if (spriteid == 0xFD && avi[i].image_index != 0xFD)
-					_engine_original_sprites[AIRCRAFT_ENGINES_INDEX + engine + i] = avi[i].image_index;
 
 				avi[i].image_index = spriteid;
 			}

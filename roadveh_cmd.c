@@ -68,7 +68,7 @@ int GetRoadVehImage(const Vehicle *v, byte direction)
 	if (is_custom_sprite(img)) {
 		image = GetCustomVehicleSprite(v, direction);
 		if (image) return image;
-		img = _engine_original_sprites[v->engine_type];
+		img = orig_road_vehicle_info[v->engine_type - ROAD_ENGINES_INDEX].image_index;
 	}
 
 	image = direction + _roadveh_images[img];
@@ -88,7 +88,7 @@ void DrawRoadVehEngine(int x, int y, int engine, uint32 image_ormod)
 			DrawSprite(sprite | image_ormod, x, y);
 			return;
 		}
-		spritenum = _engine_original_sprites[engine];
+		spritenum = orig_road_vehicle_info[engine - ROAD_ENGINES_INDEX].image_index;
 	}
 	DrawSprite((6 + _roadveh_images[spritenum]) | image_ormod, x, y);
 }

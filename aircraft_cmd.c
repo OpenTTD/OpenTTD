@@ -97,7 +97,7 @@ int GetAircraftImage(const Vehicle *v, byte direction)
 		int sprite = GetCustomVehicleSprite(v, direction);
 
 		if (sprite) return sprite;
-		spritenum = _engine_original_sprites[v->engine_type];
+		spritenum = orig_aircraft_vehicle_info[v->engine_type - AIRCRAFT_ENGINES_INDEX].image_index;
 	}
 	return direction + _aircraft_sprite[spritenum];
 }
@@ -110,7 +110,7 @@ void DrawAircraftEngine(int x, int y, int engine, uint32 image_ormod)
 	if (is_custom_sprite(spritenum)) {
 		sprite = GetCustomVehicleIcon(engine, 6);
 		if (!sprite)
-			sprite = _engine_original_sprites[engine];
+			spritenum = orig_aircraft_vehicle_info[engine - AIRCRAFT_ENGINES_INDEX].image_index;
 	}
 
 	DrawSprite(sprite | image_ormod, x, y);
