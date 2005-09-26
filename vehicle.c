@@ -187,6 +187,14 @@ void AfterLoadVehicles(void)
 	FOR_ALL_VEHICLES(v) {
 		v->first = NULL;
 		if (v->type != 0) {
+			switch (v->type) {
+				case VEH_Train: v->cur_image = GetTrainImage(v, v->direction); break;
+				case VEH_Road: v->cur_image = GetRoadVehImage(v, v->direction); break;
+				case VEH_Ship: v->cur_image = GetShipImage(v, v->direction); break;
+				case VEH_Aircraft: v->cur_image = GetAircraftImage(v, v->direction); break;
+				default: break;
+			}
+
 			v->left_coord = INVALID_COORD;
 			VehiclePositionChanged(v);
 
