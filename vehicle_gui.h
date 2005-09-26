@@ -21,24 +21,8 @@ void SortVehicleList(struct vehiclelist_d *vl);
 int CDECL GeneralOwnerSorter(const void *a, const void *b);
 
 #define PERIODIC_RESORT_DAYS 10
-#define DEF_SORTER(yyyy) int CDECL yyyy(const void *a, const void *b)
-
-DEF_SORTER(VehicleUnsortedSorter);
-DEF_SORTER(VehicleNumberSorter);
-DEF_SORTER(VehicleNameSorter);
-DEF_SORTER(VehicleAgeSorter);
-DEF_SORTER(VehicleProfitThisYearSorter);
-DEF_SORTER(VehicleProfitLastYearSorter);
-DEF_SORTER(VehicleCargoSorter);
-DEF_SORTER(VehicleReliabilitySorter);
-DEF_SORTER(VehicleMaxSpeedSorter);
-
-typedef DEF_SORTER(VehicleSortListingTypeFunctions);
-
 #define SORT_BY_UNSORTED 0
-extern VehicleSortListingTypeFunctions * const _vehicle_sorter[];
 extern const StringID _vehicle_sort_listing[];
-extern const StringID _rail_types_list[];
 
 enum VehicleSortTypes {
 	VEHTRAIN     = 0,
