@@ -191,7 +191,14 @@ void AfterLoadVehicles(void)
 				case VEH_Train: v->cur_image = GetTrainImage(v, v->direction); break;
 				case VEH_Road: v->cur_image = GetRoadVehImage(v, v->direction); break;
 				case VEH_Ship: v->cur_image = GetShipImage(v, v->direction); break;
-				case VEH_Aircraft: v->cur_image = GetAircraftImage(v, v->direction); break;
+				case VEH_Aircraft:
+					if (v->subtype == 0 || v->subtype == 2) {
+						v->cur_image = GetAircraftImage(v, v->direction);
+						if (v->next != NULL) {
+							v->next->cur_image = v->cur_image;
+						}
+					}
+					break;
 				default: break;
 			}
 
