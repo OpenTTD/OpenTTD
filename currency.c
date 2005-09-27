@@ -89,12 +89,6 @@ uint GetMaskOfAllowedCurrencies(void)
 }
 
 
-uint GetCurrentCurrencyRate(void)
-{
-	return _currency_specs[_opt_ptr->currency].rate;
-}
-
-
 void CheckSwitchToEuro(void)
 {
 	if (_currency_specs[_opt.currency].to_euro != CF_NOEURO &&

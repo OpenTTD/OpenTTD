@@ -785,7 +785,7 @@ static int32 ReadPE(const PatchEntry*pe)
 	case PE_INT16:  return *(int16*)pe->variable;
 	case PE_UINT16: return *(uint16*)pe->variable;
 	case PE_INT32:  return *(int32*)pe->variable;
-	case PE_CURRENCY:  return (*(int32*)pe->variable) * GetCurrentCurrencyRate();
+	case PE_CURRENCY:  return (*(int32*)pe->variable) * _currency->rate;
 	default: NOT_REACHED();
 	}
 
@@ -878,8 +878,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 				DrawStringCentered(x+20, y+1, STR_681A, 0);
 
 				val = ReadPE(pe);
-				if (pe->type == PE_CURRENCY)
-					val /= GetCurrentCurrencyRate();
+				if (pe->type == PE_CURRENCY) val /= _currency->rate;
 				disabled = ((val == 0) && (pe->flags & PF_0ISDIS));
 				if (disabled) {
 					SetDParam(0, STR_CONFIG_PATCHES_DISABLED);
@@ -970,9 +969,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 				}
 				if (val != oval) {
 					// To make patch-changes network-safe
-					if (pe->type == PE_CURRENCY) {
-						val /= GetCurrentCurrencyRate();
-					}
+					if (pe->type == PE_CURRENCY) val /= _currency->rate;
 					// If an item is playerbased, we do not send it over the network (if any)
 					if (pe->flags & PF_PLAYERBASED) {
 						WritePE(pe, val);
@@ -1014,9 +1011,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			const PatchEntry *pe = &page->entries[WP(w,def_d).data_3];
 			int32 val;
 			val = atoi(e->edittext.str);
-			if (pe->type == PE_CURRENCY) {
-				val /= GetCurrentCurrencyRate();
-			}
+			if (pe->type == PE_CURRENCY) val /= _currency->rate;
 			// If an item is playerbased, we do not send it over the network (if any)
 			if (pe->flags & PF_PLAYERBASED) {
 				WritePE(pe, val);
@@ -1099,7 +1094,7 @@ void IConsoleSetPatchSetting(const char *name, const char *value)
 	sscanf(value, "%d", &val);
 
 	if (pe->type == PE_CURRENCY) // currency can be different on each client
-		val /= GetCurrentCurrencyRate();
+		val /= _currency->rate;
 
 	// If an item is playerbased, we do not send it over the network (if any)
 	if (pe->flags & PF_PLAYERBASED) {

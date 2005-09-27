@@ -83,7 +83,7 @@ void HandleOnEditText(WindowEvent *e)
 		break;
 	case 3: { /* Give money, you can only give money in excess of loan */
 		const Player *p = GetPlayer(_current_player);
-		int32 money = min(p->money64 - p->current_loan, atoi(e->edittext.str) / GetCurrentCurrencyRate());
+		int32 money = min(p->money64 - p->current_loan, atoi(e->edittext.str) / _currency->rate);
 		char msg[20];
 
 		money = clamp(money, 0, 20000000); // Clamp between 20 million and 0

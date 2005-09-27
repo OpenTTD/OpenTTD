@@ -526,7 +526,7 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 		case 0x85:
 			switch (*str++) {
 			case 0: /* {CURRCOMPACT} */
-				buff = FormatGenericCurrency(buff, &_currency_specs[_opt_ptr->currency], GetInt32(&argv), true);
+				buff = FormatGenericCurrency(buff, _currency, GetInt32(&argv), true);
 				break;
 			case 2: /* {REV} */
 				buff = strecpy(buff, _openttd_revision, NULL);
@@ -544,7 +544,7 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 			} break;
 			case 4: {/* {CURRCOMPACT64} */
 				// 64 bit compact currency-unit
-				buff = FormatGenericCurrency(buff, &_currency_specs[_opt_ptr->currency], GetInt64(&argv), true);
+				buff = FormatGenericCurrency(buff, _currency, GetInt64(&argv), true);
 				break;
 			}
 			case 5: { /* {STRING1} */
@@ -684,7 +684,7 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 			break;
 
 		case 0x8F: // {CURRENCY}
-			buff = FormatGenericCurrency(buff, &_currency_specs[_opt_ptr->currency], GetInt32(&argv), false);
+			buff = FormatGenericCurrency(buff, _currency, GetInt32(&argv), false);
 			break;
 
 		case 0x99: { // {WAYPOINT}
@@ -726,7 +726,7 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 		}
 
 		case 0x9C: { // {CURRENCY64}
-			buff = FormatGenericCurrency(buff, &_currency_specs[_opt_ptr->currency], GetInt64(&argv), false);
+			buff = FormatGenericCurrency(buff, _currency, GetInt64(&argv), false);
 			break;
 		}
 
