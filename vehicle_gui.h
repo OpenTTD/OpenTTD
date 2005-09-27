@@ -3,6 +3,7 @@
 #ifndef VEHICLE_GUI_H
 #define VEHICLE_GUI_H
 
+#include "station.h"
 #include "vehicle.h"
 
 struct vehiclelist_d;
@@ -15,7 +16,7 @@ void InitializeVehiclesGuiList(void);
 void RebuildVehicleLists(void);
 void ResortVehicleLists(void);
 
-void BuildVehicleList(struct vehiclelist_d *vl, int type, int owner, int station);
+void BuildVehicleList(struct vehiclelist_d* vl, int type, PlayerID, StationID);
 void SortVehicleList(struct vehiclelist_d *vl);
 
 int CDECL GeneralOwnerSorter(const void *a, const void *b);

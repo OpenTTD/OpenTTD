@@ -886,8 +886,8 @@ static const Widget _other_player_roadveh_widgets[] = {
 
 static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 {
-	int station = (int)w->window_number >> 16;
-	int owner = w->window_number & 0xff;
+	StationID station = GB(w->window_number, 16, 16);
+	PlayerID owner = GB(w->window_number, 0, 8);
 	vehiclelist_d *vl = &WP(w, vehiclelist_d);
 
 	switch(e->event) {
@@ -909,7 +909,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 		/* draw the widgets */
 		{
 			const Player *p = GetPlayer(owner);
-			if (station == -1) {
+			if (station == INVALID_STATION) {
 				/* Company Name -- (###) Road vehicles */
 				SetDParam(0, p->name_1);
 				SetDParam(1, p->name_2);
@@ -1079,7 +1079,7 @@ static const WindowDesc _other_player_roadveh_desc = {
 };
 
 
-void ShowPlayerRoadVehicles(int player, int station)
+void ShowPlayerRoadVehicles(PlayerID player, StationID station)
 {
 	Window *w;
 

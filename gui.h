@@ -3,6 +3,7 @@
 #ifndef GUI_H
 #define GUI_H
 
+#include "station.h"
 #include "window.h"
 
 /* main_gui.c */
@@ -38,7 +39,7 @@ void ShowBuildRailToolbar(int index, int button);
 void PlaceProc_BuyLand(TileIndex tile);
 
 /* train_gui.c */
-void ShowPlayerTrains(int player, int station);
+void ShowPlayerTrains(PlayerID player, StationID station);
 void ShowTrainViewWindow(Vehicle *v);
 void ShowTrainDetailsWindow(Vehicle *v);
 void ShowOrdersWindow(Vehicle *v);
@@ -48,17 +49,17 @@ void ShowRoadVehViewWindow(Vehicle *v);
 /* road_gui.c */
 void ShowBuildRoadToolbar(void);
 void ShowBuildRoadScenToolbar(void);
-void ShowPlayerRoadVehicles(int player, int station);
+void ShowPlayerRoadVehicles(PlayerID player, StationID station);
 
 /* dock_gui.c */
 void ShowBuildDocksToolbar(void);
-void ShowPlayerShips(int player, int station);
+void ShowPlayerShips(PlayerID player, StationID station);
 
 void ShowShipViewWindow(Vehicle *v);
 
 /* aircraft_gui.c */
 void ShowBuildAirToolbar(void);
-void ShowPlayerAircraft(int player, int station);
+void ShowPlayerAircraft(PlayerID player, StationID station);
 
 /* terraform_gui.c */
 void ShowTerraformToolbar(void);

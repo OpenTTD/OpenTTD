@@ -5,6 +5,7 @@
 #include "currency.h"
 #include "functions.h"
 #include "spritecache.h"
+#include "station.h"
 #include "strings.h"
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -306,22 +307,22 @@ static void MenuClickIndustry(int index)
 
 static void MenuClickShowTrains(int index)
 {
-	ShowPlayerTrains(index, -1);
+	ShowPlayerTrains(index, INVALID_STATION);
 }
 
 static void MenuClickShowRoad(int index)
 {
-	ShowPlayerRoadVehicles(index, -1);
+	ShowPlayerRoadVehicles(index, INVALID_STATION);
 }
 
 static void MenuClickShowShips(int index)
 {
-	ShowPlayerShips(index, -1);
+	ShowPlayerShips(index, INVALID_STATION);
 }
 
 static void MenuClickShowAir(int index)
 {
-	ShowPlayerAircraft(index, -1);
+	ShowPlayerAircraft(index, INVALID_STATION);
 }
 
 static void MenuClickBuildRail(int index)
@@ -1906,10 +1907,10 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_F10:ShowOperatingProfitGraph(); break;
 		case WKC_F11: ShowCompanyLeagueTable(); break;
 		case WKC_F12: ShowBuildIndustryWindow(); break;
-		case WKC_SHIFT | WKC_F1: ShowPlayerTrains(local, -1); break;
-		case WKC_SHIFT | WKC_F2: ShowPlayerRoadVehicles(local, -1); break;
-		case WKC_SHIFT | WKC_F3: ShowPlayerShips(local, -1); break;
-		case WKC_SHIFT | WKC_F4: ShowPlayerAircraft(local, -1); break;
+		case WKC_SHIFT | WKC_F1: ShowPlayerTrains(local, INVALID_STATION); break;
+		case WKC_SHIFT | WKC_F2: ShowPlayerRoadVehicles(local, INVALID_STATION); break;
+		case WKC_SHIFT | WKC_F3: ShowPlayerShips(local, INVALID_STATION); break;
+		case WKC_SHIFT | WKC_F4: ShowPlayerAircraft(local, INVALID_STATION); break;
 		case WKC_SHIFT | WKC_F5: ToolbarZoomInClick(w); break;
 		case WKC_SHIFT | WKC_F6: ToolbarZoomOutClick(w); break;
 		case WKC_SHIFT | WKC_F7: ShowBuildRailToolbar(_last_built_railtype,-1); break;

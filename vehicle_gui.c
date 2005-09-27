@@ -5,6 +5,7 @@
 #include "debug.h"
 #include "functions.h"
 #include "player.h"
+#include "station.h"
 #include "strings.h"
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -101,7 +102,7 @@ void ResortVehicleLists(void)
 		}
 }
 
-void BuildVehicleList(vehiclelist_d *vl, int type, int owner, int station)
+void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID station)
 {
 	int subtype = (type != VEH_Aircraft) ? TS_Front_Engine : 2;
 	int n = 0;
@@ -117,7 +118,7 @@ void BuildVehicleList(vehiclelist_d *vl, int type, int owner, int station)
 	DEBUG(misc, 1) ("Building vehicle list for player %d station %d...",
 		owner, station);
 
-	if (station != -1) {
+	if (station != INVALID_STATION) {
 		const Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
 			if (v->type == type && v->subtype <= subtype) {
