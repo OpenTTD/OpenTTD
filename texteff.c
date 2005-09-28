@@ -236,7 +236,7 @@ void AddTextEffect(StringID msg, int x, int y, uint16 duration)
 	if (_game_mode == GM_MENU)
 		return;
 
-	for (te = _text_effect_list; te->string_id != 0xFFFF; ) {
+	for (te = _text_effect_list; te->string_id != INVALID_STRING_ID; ) {
 		if (++te == endof(_text_effect_list))
 			return;
 	}
@@ -259,7 +259,7 @@ void AddTextEffect(StringID msg, int x, int y, uint16 duration)
 static void MoveTextEffect(TextEffect *te)
 {
 	if (te->duration < 8) {
-		te->string_id = 0xFFFF;
+		te->string_id = INVALID_STRING_ID;
 	} else {
 		te->duration-=8;
 		te->y--;
@@ -273,7 +273,7 @@ void MoveAllTextEffects(void)
 	TextEffect *te;
 
 	for (te = _text_effect_list; te != endof(_text_effect_list); te++ ) {
-		if (te->string_id != 0xFFFF)
+		if (te->string_id != INVALID_STRING_ID)
 			MoveTextEffect(te);
 	}
 }
@@ -283,7 +283,7 @@ void InitTextEffects(void)
 	TextEffect *te;
 
 	for (te = _text_effect_list; te != endof(_text_effect_list); te++ ) {
-		te->string_id = 0xFFFF;
+		te->string_id = INVALID_STRING_ID;
 	}
 }
 
@@ -293,7 +293,7 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 
 	if (dpi->zoom < 1) {
 		for (te = _text_effect_list; te != endof(_text_effect_list); te++ ) {
-			if (te->string_id == 0xFFFF)
+			if (te->string_id == INVALID_STRING_ID)
 				continue;
 
 			/* intersection? */
@@ -306,7 +306,7 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 		}
 	} else if (dpi->zoom == 1) {
 		for (te = _text_effect_list; te != endof(_text_effect_list); te++ ) {
-			if (te->string_id == 0xFFFF)
+			if (te->string_id == INVALID_STRING_ID)
 				continue;
 
 			/* intersection? */
