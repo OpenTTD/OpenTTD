@@ -259,7 +259,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 	return score;
 }
 
-// use 255 as new_player to delete the player.
+// use OWNER_SPECTATOR as new_player to delete the player.
 void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 {
 	PlayerID old = _current_player;
@@ -269,9 +269,9 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 		Subsidy *s;
 
 		for (s = _subsidies; s != endof(_subsidies); s++) {
-			if (s->cargo_type != 0xff && s->age >= 12) {
+			if (s->cargo_type != CT_INVALID && s->age >= 12) {
 				if (GetStation(s->to)->owner == old_player)
-					s->cargo_type = 0xff;
+					s->cargo_type = CT_INVALID;
 			}
 		}
 	}
@@ -376,13 +376,13 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 			for (i = 0; i < 4; i++) {
 				/* 'Sell' the share if this player has any */
 				if (p->share_owners[i] == _current_player)
-					p->share_owners[i] = 0xFF;
+					p->share_owners[i] = OWNER_SPECTATOR;
 			}
 		}
 		p = GetPlayer(_current_player);
 		/* Sell all the shares that people have on this company */
 		for (i = 0; i < 4; i++)
-			p->share_owners[i] = 0xFF;
+			p->share_owners[i] = OWNER_SPECTATOR;
 	}
 
 	_current_player = old;
@@ -471,7 +471,7 @@ static void PlayersCheckBankrupt(Player *p)
 
 				// Convert everything the player owns to NO_OWNER
 				p->money64 = p->player_money = 100000000;
-				ChangeOwnershipOfPlayerItems(owner, 0xFF); // 255 is no owner
+				ChangeOwnershipOfPlayerItems(owner, OWNER_SPECTATOR);
 				// Register the player as not-active
 				p->is_active = false;
 
@@ -846,10 +846,10 @@ void DeleteSubsidyWithIndustry(uint16 index)
 	Subsidy *s;
 
 	for(s=_subsidies; s != endof(_subsidies); s++) {
-		if (s->cargo_type != 0xFF && s->age < 12 &&
+		if (s->cargo_type != CT_INVALID && s->age < 12 &&
 				s->cargo_type != CT_PASSENGERS && s->cargo_type != CT_MAIL &&
 				(index == s->from || (s->cargo_type!=CT_GOODS && s->cargo_type!=CT_FOOD && index==s->to))) {
-			s->cargo_type = 0xFF;
+			s->cargo_type = CT_INVALID;
 		}
 	}
 }
@@ -860,9 +860,9 @@ void DeleteSubsidyWithStation(uint16 index)
 	bool dirty = false;
 
 	for(s=_subsidies; s != endof(_subsidies); s++) {
-		if (s->cargo_type != 0xFF && s->age >= 12 &&
+		if (s->cargo_type != CT_INVALID && s->age >= 12 &&
 				(s->from == index || s->to == index)) {
-			s->cargo_type = 0xFF;
+			s->cargo_type = CT_INVALID;
 			dirty = true;
 		}
 	}
@@ -908,7 +908,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 		return;
 
 	// Randomize cargo type
-	if (Random()&1 && i->produced_cargo[1] != 0xFF) {
+	if (Random()&1 && i->produced_cargo[1] != CT_INVALID) {
 		cargo = i->produced_cargo[1];
 		trans = i->pct_transported[1];
 		total = i->total_production[1];
@@ -921,7 +921,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 	// Quit if no production in this industry
 	//  or if the cargo type is passengers
 	//  or if the pct transported is already large enough
-	if (total == 0  || trans > 42 || cargo == 0xFF || cargo == CT_PASSENGERS)
+	if (total == 0 || trans > 42 || cargo == CT_INVALID || cargo == CT_PASSENGERS)
 		return;
 
 	fr->cargo = cargo;
@@ -960,7 +960,7 @@ static bool CheckSubsidyDuplicate(Subsidy *s)
 				ss->from == s->from &&
 				ss->to == s->to &&
 				ss->cargo_type == s->cargo_type) {
-			s->cargo_type = 0xFF;
+			s->cargo_type = CT_INVALID;
 			return true;
 		}
 	}
@@ -974,7 +974,7 @@ void RemoteSubsidyAdd(Subsidy *s_new)
 
 	// search the first free subsidy
 	for(s=_subsidies; s != endof(_subsidies); s++)
-		if (s->cargo_type == 0xFF)
+		if (s->cargo_type == CT_INVALID)
 			break;
 
 	memcpy(s,s_new,sizeof(Subsidy));
@@ -995,13 +995,13 @@ static void SubsidyMonthlyHandler(void)
 	bool modified = false;
 
 	for(s=_subsidies; s != endof(_subsidies); s++) {
-		if (s->cargo_type == 0xFF)
+		if (s->cargo_type == CT_INVALID)
 			continue;
 
 		if (s->age == 12-1) {
 			pair = SetupSubsidyDecodeParam(s, 1);
 			AddNewsItem(STR_202E_OFFER_OF_SUBSIDY_EXPIRED, NEWS_FLAGS(NM_NORMAL, NF_TILE, NT_SUBSIDIES, 0), pair.a, pair.b);
-			s->cargo_type = 0xFF;
+			s->cargo_type = CT_INVALID;
 			modified = true;
 		} else if (s->age == 2*12-1) {
 			st = GetStation(s->to);
@@ -1009,7 +1009,7 @@ static void SubsidyMonthlyHandler(void)
 				pair = SetupSubsidyDecodeParam(s, 1);
 				AddNewsItem(STR_202F_SUBSIDY_WITHDRAWN_SERVICE, NEWS_FLAGS(NM_NORMAL, NF_TILE, NT_SUBSIDIES, 0), pair.a, pair.b);
 			}
-			s->cargo_type = 0xFF;
+			s->cargo_type = CT_INVALID;
 			modified = true;
 		} else {
 			s->age++;
@@ -1020,7 +1020,7 @@ static void SubsidyMonthlyHandler(void)
 	if (CHANCE16(1,4)) {
 		// Find a free slot
 		s = _subsidies;
-		while (s->cargo_type != 0xFF) {
+		while (s->cargo_type != CT_INVALID) {
 			if (++s == endof(_subsidies))
 				goto no_add;
 		}
@@ -1072,7 +1072,7 @@ static void Save_SUBS(void)
 
 	for(i=0; i!=lengthof(_subsidies); i++) {
 		s = &_subsidies[i];
-		if (s->cargo_type != 0xFF) {
+		if (s->cargo_type != CT_INVALID) {
 			SlSetArrayIndex(i);
 			SlObject(s, _subsidies_desc);
 		}
@@ -1126,7 +1126,7 @@ static void DeliverGoodsToIndustry(TileIndex xy, byte cargo_type, int num_pieces
 	FOR_ALL_INDUSTRIES(ind) {
 		if (ind->xy != 0 && (cargo_type == ind->accepts_cargo[0] || cargo_type
 				 == ind->accepts_cargo[1] || cargo_type == ind->accepts_cargo[2]) &&
-				 ind->produced_cargo[0] != 0xFF &&
+				 ind->produced_cargo[0] != CT_INVALID &&
 				 ind->produced_cargo[0] != cargo_type &&
 				 (t = DistanceManhattan(ind->xy, xy)) < 2 * u) {
 			u = t;
@@ -1516,7 +1516,7 @@ static void DoAcquireCompany(Player *p)
 
 	value = CalculateCompanyValue(p) >> 2;
 	for(i=0; i!=4; i++) {
-		if (p->share_owners[i] != 0xFF) {
+		if (p->share_owners[i] != OWNER_SPECTATOR) {
 			owner = GetPlayer(p->share_owners[i]);
 			owner->money64 += value;
 			owner->yearly_expenses[0][EXPENSES_OTHER] += value;
@@ -1562,7 +1562,7 @@ int32 CmdBuyShareInCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		int i;
 		byte *b = p->share_owners;
 
-		while (*b != 0xFF) b++; /* share owners is guaranteed to contain at least one 0xFF */
+		while (*b != OWNER_SPECTATOR) b++; /* share owners is guaranteed to contain at least one OWNER_SPECTATOR */
 		*b = _current_player;
 
 		for (i = 0; p->share_owners[i] == _current_player;) {
@@ -1603,7 +1603,7 @@ int32 CmdSellShareInCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		byte *b = p->share_owners;
 		while (*b != _current_player) b++; /* share owners is guaranteed to contain player */
-		*b = 0xFF;
+		*b = OWNER_SPECTATOR;
 		InvalidateWindow(WC_COMPANY, (int)p1);
 	}
 	return cost;

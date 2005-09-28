@@ -496,28 +496,28 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 	// FIXME - Production & Transported sort need to be inversed...but, WTF it does not wanna!
 	// FIXME - And no simple --> "if (!(_industry_sort_order & 1)) r = -r;" hack at the bottom!!
 	case 2: { /* Sort by Production */
-		if (i->produced_cargo[0] != 0xFF && j->produced_cargo[0] != 0xFF) { // both industries produce cargo?
-				if (i->produced_cargo[1] == 0xFF) // producing one or two things?
+		if (i->produced_cargo[0] != CT_INVALID && j->produced_cargo[0] != CT_INVALID) { // both industries produce cargo?
+				if (i->produced_cargo[1] == CT_INVALID) // producing one or two things?
 					r = j->total_production[0] - i->total_production[0];
 				else
 					r = (j->total_production[0] + j->total_production[1]) / 2 - (i->total_production[0] + i->total_production[1]) / 2;
-		} else if (i->produced_cargo[0] == 0xFF && j->produced_cargo[0] == 0xFF) // none of them producing anything, let them go to the name-sorting
+		} else if (i->produced_cargo[0] == CT_INVALID && j->produced_cargo[0] == CT_INVALID) // none of them producing anything, let them go to the name-sorting
 			r = 0;
-		else if (i->produced_cargo[0] == 0xFF) // end up the non-producer industry first/last in list
+		else if (i->produced_cargo[0] == CT_INVALID) // end up the non-producer industry first/last in list
 			r = 1;
 		else
 			r = -1;
 		break;
 	}
 	case 3: /* Sort by Transported amount */
-		if (i->produced_cargo[0] != 0xFF && j->produced_cargo[0] != 0xFF) { // both industries produce cargo?
-				if (i->produced_cargo[1] == 0xFF) // producing one or two things?
+		if (i->produced_cargo[0] != CT_INVALID && j->produced_cargo[0] != CT_INVALID) { // both industries produce cargo?
+				if (i->produced_cargo[1] == CT_INVALID) // producing one or two things?
 					r = (j->pct_transported[0] * 100 >> 8) - (i->pct_transported[0] * 100 >> 8);
 				else
 					r = ((j->pct_transported[0] * 100 >> 8) + (j->pct_transported[1] * 100 >> 8)) / 2 - ((i->pct_transported[0] * 100 >> 8) + (i->pct_transported[1] * 100 >> 8)) / 2;
-		} else if (i->produced_cargo[0] == 0xFF && j->produced_cargo[0] == 0xFF) // none of them producing anything, let them go to the name-sorting
+		} else if (i->produced_cargo[0] == CT_INVALID && j->produced_cargo[0] == CT_INVALID) // none of them producing anything, let them go to the name-sorting
 			r = 0;
-		else if (i->produced_cargo[0] == 0xFF) // end up the non-producer industry first/last in list
+		else if (i->produced_cargo[0] == CT_INVALID) // end up the non-producer industry first/last in list
 			r = 1;
 		else
 			r = -1;
@@ -589,11 +589,11 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 		while (p < _num_industry_sort) {
 			i = GetIndustry(_industry_sort[p]);
 			SetDParam(0, i->index);
-			if (i->produced_cargo[0] != 0xFF) {
+			if (i->produced_cargo[0] != CT_INVALID) {
 				SetDParam(1, _cargoc.names_long[i->produced_cargo[0]]);
 				SetDParam(2, i->total_production[0]);
 
-				if (i->produced_cargo[1] != 0xFF) {
+				if (i->produced_cargo[1] != CT_INVALID) {
 					SetDParam(3, _cargoc.names_long[i->produced_cargo[1]]);
 					SetDParam(4, i->total_production[1]);
 					SetDParam(5, i->pct_transported[0] * 100 >> 8);

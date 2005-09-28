@@ -25,7 +25,7 @@ static void HandleSubsidyClick(int y)
 
 	num = 0;
 	for(s=_subsidies; s != endof(_subsidies); s++) {
-		if (s->cargo_type != 0xFF && s->age < 12) {
+		if (s->cargo_type != CT_INVALID && s->age < 12) {
 			y -= 10;
 			if (y < 0) goto handle_click;
 			num++;
@@ -41,7 +41,7 @@ static void HandleSubsidyClick(int y)
 	if (y < 0) return;
 
 	for(s=_subsidies; s != endof(_subsidies); s++) {
-		if (s->cargo_type != 0xFF && s->age >= 12) {
+		if (s->cargo_type != CT_INVALID && s->age >= 12) {
 			y -= 10;
 			if (y < 0) goto handle_click;
 		}
@@ -92,7 +92,7 @@ static void DrawSubsidiesWindow(Window *w)
 	num = 0;
 
 	for(s=_subsidies; s != endof(_subsidies); s++) {
-		if (s->cargo_type != 0xFF && s->age < 12) {
+		if (s->cargo_type != CT_INVALID && s->age < 12) {
 			SetupSubsidyDecodeParam(s, 1);
 			x2 = DrawString(x+2, y, STR_2027_FROM_TO, 0);
 
@@ -113,7 +113,7 @@ static void DrawSubsidiesWindow(Window *w)
 	num = 0;
 
 	for(s=_subsidies; s != endof(_subsidies); s++) {
-		if (s->cargo_type != 0xFF && s->age >= 12) {
+		if (s->cargo_type != CT_INVALID && s->age >= 12) {
 			SetupSubsidyDecodeParam(s, 1);
 
 			p = GetPlayer(GetStation(s->to)->owner);

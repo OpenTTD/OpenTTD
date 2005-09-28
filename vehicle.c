@@ -2233,7 +2233,7 @@ static void Load_VEHS(void)
 
 		/* Old savegames used 'last_station_visited = 0xFF', should be 0xFFFF */
 		if (_sl_version < 5 && v->last_station_visited == 0xFF)
-			v->last_station_visited = 0xFFFF;
+			v->last_station_visited = INVALID_STATION;
 
 		if (_sl_version < 5) {
 			/* Convert the current_order.type (which is a mix of type and flags, because

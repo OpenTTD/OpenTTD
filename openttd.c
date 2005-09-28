@@ -799,7 +799,7 @@ void SwitchMode(int new_mode)
 			_generating_world = true;
 			// delete all players.
 			for (i = 0; i != MAX_PLAYERS; i++) {
-				ChangeOwnershipOfPlayerItems(i, 0xff);
+				ChangeOwnershipOfPlayerItems(i, OWNER_SPECTATOR);
 				_players[i].is_active = false;
 			}
 			_generating_world = false;

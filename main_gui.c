@@ -1889,8 +1889,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_KEYPRESS: {
-		int local = _local_player;
-		if (local == 0xff) local = 0; // spectator
+		PlayerID local = (_local_player != OWNER_SPECTATOR) ? _local_player : 0;
 
 		switch(e->keypress.keycode) {
 		case WKC_F1: case WKC_PAUSE:

@@ -1172,7 +1172,7 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 
 	// road/rail crossing where the road is owned by the current player?
 	if (old_player == _m[tile].m3 && IsLevelCrossing(tile)) {
-		_m[tile].m3 = (new_player == 0xFF) ? OWNER_NONE : new_player;
+		_m[tile].m3 = (new_player == OWNER_SPECTATOR) ? OWNER_NONE : new_player;
 	}
 
 	if (!IsTileOwner(tile, old_player)) return;

@@ -1406,14 +1406,14 @@ static bool CheckIfTooCloseToIndustry(TileIndex tile, int type)
 	spec = &_industry_spec[type];
 
 	// accepting industries won't be close, not even with patch
-	if (_patches.same_industry_close && (spec->accepts_cargo[0] == 0xFF) )
+	if (_patches.same_industry_close && spec->accepts_cargo[0] == CT_INVALID)
 		return true;
 
 	FOR_ALL_INDUSTRIES(i) {
 		// check if an industry that accepts the same goods is nearby
 		if (i->xy != 0 &&
 				(DistanceMax(tile, i->xy) <= 14) &&
-				spec->accepts_cargo[0] != 0xFF &&
+				spec->accepts_cargo[0] != CT_INVALID &&
 				spec->accepts_cargo[0] == i->accepts_cargo[0] &&
 				!(_game_mode == GM_EDITOR &&
 					_patches.same_industry_close &&
@@ -1754,7 +1754,7 @@ static void UpdateIndustryStatistics(Industry *i)
 {
 	byte pct;
 
-	if (i->produced_cargo[0] != 0xFF) {
+	if (i->produced_cargo[0] != CT_INVALID) {
 		pct = 0;
 		if (i->last_mo_production[0] != 0) {
 			i->last_prod_year = _cur_year;
@@ -1769,7 +1769,7 @@ static void UpdateIndustryStatistics(Industry *i)
 		i->last_mo_transported[0] = 0;
 	}
 
-	if (i->produced_cargo[1] != 0xFF) {
+	if (i->produced_cargo[1] != CT_INVALID) {
 		pct = 0;
 		if (i->last_mo_production[1] != 0) {
 			i->last_prod_year = _cur_year;
@@ -1785,7 +1785,7 @@ static void UpdateIndustryStatistics(Industry *i)
 	}
 
 
-	if ( i->produced_cargo[0] != 0xFF || i->produced_cargo[1] != 0xFF )
+	if (i->produced_cargo[0] != CT_INVALID || i->produced_cargo[1] != CT_INVALID)
 		InvalidateWindow(WC_INDUSTRY_VIEW, i->index);
 
 	if (i->prod_level == 0)

@@ -3131,7 +3131,7 @@ static void SaveLoad_STNS(Station *st)
 
 		/* In older versions, enroute_from had 0xFF as INVALID_STATION, is now 0xFFFF */
 		if (_sl_full_version < 0x700 && st->goods[i].enroute_from == 0xFF)
-			st->goods[i].enroute_from = 0xFFFF;
+			st->goods[i].enroute_from = INVALID_STATION;
 	}
 }
 

@@ -1953,7 +1953,7 @@ void InitializeTowns(void)
 
 	memset(_subsidies, 0, sizeof(_subsidies));
 	for (s=_subsidies; s != endof(_subsidies); s++)
-		s->cargo_type = 0xFF;
+		s->cargo_type = CT_INVALID;
 
 	_cur_town_ctr = 0;
 	_cur_town_iter = 0;

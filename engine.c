@@ -761,7 +761,7 @@ static PlayerID GetBestPlayer(PlayerID pp)
 
 	do {
 		best_hist = -1;
-		best_player = -1;
+		best_player = OWNER_SPECTATOR;
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active && p->block_preview == 0 && !HASBIT(mask, p->index) &&
 					p->old_economy[0].performance_history > best_hist) {
@@ -770,7 +770,7 @@ static PlayerID GetBestPlayer(PlayerID pp)
 			}
 		}
 
-		if (best_player == (PlayerID)-1) return -1;
+		if (best_player == OWNER_SPECTATOR) return OWNER_SPECTATOR;
 
 		SETBIT(mask, best_player);
 	} while (--pp != 0);
@@ -797,7 +797,7 @@ void EnginesDailyLoop(void)
  			} else if (e->preview_player != 0xFF) {
 				PlayerID best_player = GetBestPlayer(e->preview_player);
 
-				if (best_player == (PlayerID)-1) {
+				if (best_player == OWNER_SPECTATOR) {
 					e->preview_player = 0xFF;
 					continue;
 				}
