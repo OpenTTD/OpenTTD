@@ -770,59 +770,82 @@ const byte _road_sloped_sprites[14] = {
 	0,  0
 };
 
+/**
+ * Draw ground sprite and road pieces
+ * @param ti TileInfo
+ * @param road RoadBits to draw
+ * @param ground_type Ground type
+ * @param snow Draw snow
+ * @param flat Draw foundation
+ */
+void DrawRoadBits(TileInfo *ti, byte road, byte ground_type, bool snow, bool flat)
+{
+	const DrawRoadTileStruct *drts;
+	PalSpriteID image = 0;
+
+	if (ti->tileh != 0) {
+		int foundation;
+		if (flat) {
+			foundation = ti->tileh;
+		} else {
+			foundation = GetRoadFoundation(ti->tileh, road);
+		}
+
+		if (foundation != 0)
+			DrawFoundation(ti, foundation);
+
+		// DrawFoundation() modifies ti.
+		// Default sloped sprites..
+		if (ti->tileh != 0) {
+			image = _road_sloped_sprites[ti->tileh - 1] + 0x53F;
+		}
+	}
+
+	if (image == 0)
+		image = _road_tile_sprites_1[road];
+
+	if (ground_type == 0)
+		image |= PALETTE_TO_BARE_LAND;
+
+	if (snow) {
+		image += 19;
+	} else if (ground_type > 1 && ground_type != 6) {
+		// Pavement tiles.
+		image -= 19;
+	}
+
+	DrawGroundSprite(image);
+
+	// Return if full detail is disabled, or we are zoomed fully out.
+	if (!(_display_opt & DO_FULL_DETAIL) || _cur_dpi->zoom == 2)
+		return;
+
+	if (ground_type >= 6) {
+		// Road works
+		DrawGroundSprite(0x586 + (HASBIT(road, 4) ? 0 : 1));
+		return;
+	}
+
+	// Draw extra details.
+	drts = _road_display_table[ground_type][road];
+	while ((image = drts->image) != 0) {
+		int x = ti->x | drts->subcoord_x;
+		int y = ti->y | drts->subcoord_y;
+		byte z = ti->z;
+		if (ti->tileh != 0)
+			z = GetSlopeZ(x, y);
+		AddSortableSpriteToDraw(image, x, y, 2, 2, 0x10, z);
+		drts++;
+	}
+}
+
 static void DrawTile_Road(TileInfo *ti)
 {
-	uint32 image;
+	PalSpriteID image;
 	uint16 m2;
 
 	if ( (ti->map5 & 0xF0) == 0) { // if it is a road the upper 4 bits are 0
-		const DrawRoadTileStruct *drts;
-
-		if (ti->tileh != 0) {
-			int f = GetRoadFoundation(ti->tileh, ti->map5 & 0xF);
-			if (f) DrawFoundation(ti, f);
-
-			// default sloped sprites..
-			if (ti->tileh != 0) {
-				image = _road_sloped_sprites[ti->tileh - 1] + 0x53F;
-			} else  {
-				image = _road_tile_sprites_1[ti->map5 & 0xF];
-			}
-		} else {
-			image = _road_tile_sprites_1[ti->map5 & 0xF];
-		}
-
-		m2 = GB(_m[ti->tile].m4, 4, 3);
-
-		if (m2 == 0) image |= PALETTE_TO_BARE_LAND;
-
-		if (_m[ti->tile].m4 & 0x80) {
-			image += 19;
-		} else if (m2 > 1 && m2 != 6) {
-			image -= 19; /* pavement along the road? */
-		}
-
-		DrawGroundSprite(image);
-
-		if (!(_display_opt & DO_FULL_DETAIL) || _cur_dpi->zoom == 2)
-			return;
-
-		if (m2 >= 6) {
-			// roadwork
-			DrawGroundSprite(0x586 + ((ti->map5&8)!=0 ? 0 : 1));
-			return;
-		}
-
-		drts = _road_display_table[m2][ti->map5 & 0xF];
-
-		while ((image = drts->image) != 0) {
-			int x = ti->x | drts->subcoord_x;
-			int y = ti->y | drts->subcoord_y;
-			byte z = ti->z;
-			if (ti->tileh != 0)	z = GetSlopeZ(x, y);
-			AddSortableSpriteToDraw(image, x, y, 2, 2, 0x10, z);
-			drts++;
-		}
+		DrawRoadBits(ti, GB(ti->map5, 0, 4), GB(_m[ti->tile].m4, 4, 3), HASBIT(_m[ti->tile].m4, 7), false);
 	} else if ( (ti->map5 & 0xE0) == 0) { // railroad crossing
 		int f = GetRoadFoundation(ti->tileh, ti->map5 & 0xF);
 		if (f) DrawFoundation(ti, f);
