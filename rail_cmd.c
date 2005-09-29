@@ -1366,76 +1366,100 @@ static void DrawSpecialBuilding(uint32 image, uint32 offset,
 	AddSortableSpriteToDraw(image, ti->x + x, ti->y + y, xsize, ysize, zsize, ti->z + z);
 }
 
+/**
+ * Draw ground sprite and track bits
+ * @param ti TileInfo
+ * @param track TrackBits to draw
+ * @param earth Draw as earth
+ * @param snow Draw as snow
+ * @param flat Always draw foundation
+ */
+void DrawTrackBits(TileInfo *ti, TrackBits track, bool earth, bool snow, bool flat)
+{
+	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
+	PalSpriteID image;
+	bool junction = false;
+
+	// Select the sprite to use.
+	(image = rti->base_sprites.track_y, track == TRACK_BIT_DIAG2) ||
+	(image++,                           track == TRACK_BIT_DIAG1) ||
+	(image++,                           track == TRACK_BIT_UPPER) ||
+	(image++,                           track == TRACK_BIT_LOWER) ||
+	(image++,                           track == TRACK_BIT_RIGHT) ||
+	(image++,                           track == TRACK_BIT_LEFT) ||
+	(image++,                           track == (TRACK_BIT_DIAG1 | TRACK_BIT_DIAG2)) ||
+
+	(image = rti->base_sprites.track_ns, track == (TRACK_BIT_UPPER | TRACK_BIT_LOWER)) ||
+	(image++,                            track == (TRACK_BIT_LEFT | TRACK_BIT_RIGHT)) ||
+
+	(junction = true, false) ||
+	(image = rti->base_sprites.ground, !(track & (TRACK_BIT_RIGHT | TRACK_BIT_UPPER | TRACK_BIT_DIAG1))) ||
+	(image++,                          !(track & (TRACK_BIT_LEFT | TRACK_BIT_LOWER | TRACK_BIT_DIAG1))) ||
+	(image++,                          !(track & (TRACK_BIT_LEFT | TRACK_BIT_UPPER | TRACK_BIT_DIAG2))) ||
+	(image++,                          !(track & (TRACK_BIT_RIGHT | TRACK_BIT_LOWER | TRACK_BIT_DIAG2))) ||
+	(image++, true);
+
+	if (ti->tileh != 0) {
+		int foundation;
+
+		if (flat) {
+			foundation = ti->tileh;
+		} else {
+			foundation = GetRailFoundation(ti->tileh, track);
+		}
+
+		if (foundation != 0)
+			DrawFoundation(ti, foundation);
+
+		// DrawFoundation() modifies ti.
+		// Default sloped sprites..
+		if (ti->tileh != 0)
+			image = _track_sloped_sprites[ti->tileh - 1] + rti->base_sprites.track_y;
+	}
+
+	if (earth) {
+		image = (image & SPRITE_MASK) | PALETTE_TO_BARE_LAND; // Use brown palette
+	} else if (snow) {
+		image += rti->snow_offset;
+	}
+
+	DrawGroundSprite(image);
+
+	// Draw track pieces individually for junction tiles
+	if (junction) {
+		if (track & TRACK_BIT_DIAG1) DrawGroundSprite(rti->base_sprites.single_y);
+		if (track & TRACK_BIT_DIAG2) DrawGroundSprite(rti->base_sprites.single_x);
+		if (track & TRACK_BIT_UPPER) DrawGroundSprite(rti->base_sprites.single_n);
+		if (track & TRACK_BIT_LOWER) DrawGroundSprite(rti->base_sprites.single_s);
+		if (track & TRACK_BIT_LEFT)  DrawGroundSprite(rti->base_sprites.single_w);
+		if (track & TRACK_BIT_RIGHT) DrawGroundSprite(rti->base_sprites.single_e);
+	}
+
+	if (_debug_pbs_level >= 1) {
+		byte pbs = PBSTileReserved(ti->tile) & track;
+		if (pbs & TRACK_BIT_DIAG1) DrawGroundSprite(rti->base_sprites.single_y | PALETTE_CRASH);
+		if (pbs & TRACK_BIT_DIAG2) DrawGroundSprite(rti->base_sprites.single_x | PALETTE_CRASH);
+		if (pbs & TRACK_BIT_UPPER) DrawGroundSprite(rti->base_sprites.single_n | PALETTE_CRASH);
+		if (pbs & TRACK_BIT_LOWER) DrawGroundSprite(rti->base_sprites.single_s | PALETTE_CRASH);
+		if (pbs & TRACK_BIT_LEFT)  DrawGroundSprite(rti->base_sprites.single_w | PALETTE_CRASH);
+		if (pbs & TRACK_BIT_RIGHT) DrawGroundSprite(rti->base_sprites.single_e | PALETTE_CRASH);
+	}
+}
+
 static void DrawTile_Track(TileInfo *ti)
 {
 	byte m5;
 	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
-	uint32 image;	//XXX ok why the hell is SpriteID 16 bit when all the drawing routines need 32?
+	PalSpriteID image;
 
 	_drawtile_track_palette = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)));
 
 	m5 = (byte)ti->map5;
 	if (!(m5 & RAIL_TYPE_SPECIAL)) {
-		bool special;
+		bool earth = (_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK) == RAIL_GROUND_BROWN;
+		bool snow = (_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK) == RAIL_GROUND_ICE_DESERT;
 
-		m5 &= TRACK_BIT_MASK;
-
-		special = false;
-
-		// select the sprite to use based on the map5 byte.
-		(image = rti->base_sprites.track_y, m5 == TRACK_BIT_DIAG2) ||
-		(image++,				m5 == TRACK_BIT_DIAG1) ||
-		(image++,				m5 == TRACK_BIT_UPPER) ||
-		(image++,				m5 == TRACK_BIT_LOWER) ||
-		(image++,				m5 == TRACK_BIT_RIGHT) ||
-		(image++,				m5 == TRACK_BIT_LEFT) ||
-		(image++,				m5 == (TRACK_BIT_DIAG1|TRACK_BIT_DIAG2)) ||
-
-		(image = rti->base_sprites.track_ns, m5 == (TRACK_BIT_UPPER|TRACK_BIT_LOWER)) ||
-		(image++,				m5 == (TRACK_BIT_LEFT|TRACK_BIT_RIGHT)) ||
-
-		(special=true, false) ||
-
-		(image = rti->base_sprites.ground, !(m5 & (TRACK_BIT_RIGHT|TRACK_BIT_UPPER|TRACK_BIT_DIAG1))) ||
-		(image++,				!(m5 & (TRACK_BIT_LEFT|TRACK_BIT_LOWER|TRACK_BIT_DIAG1))) ||
-		(image++,				!(m5 & (TRACK_BIT_LEFT|TRACK_BIT_UPPER|TRACK_BIT_DIAG2))) ||
-		(image++,				!(m5 & (TRACK_BIT_RIGHT|TRACK_BIT_LOWER|TRACK_BIT_DIAG2))) ||
-		(image++, true);
-
-		if (ti->tileh != 0) {
-			int f = GetRailFoundation(ti->tileh, ti->map5 & 0x3F);
-			if (f) DrawFoundation(ti, f);
-
-			// default sloped sprites..
-			if (ti->tileh != 0) image = _track_sloped_sprites[ti->tileh - 1] + rti->base_sprites.track_y;
-		}
-
-		if ((_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK) == RAIL_GROUND_BROWN) {
-			image = (image & SPRITE_MASK) | PALETTE_TO_BARE_LAND; // use a brown palette
-		 } else if ((_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK) == RAIL_GROUND_ICE_DESERT) {
-			image += rti->snow_offset;
-		}
-
-		DrawGroundSprite(image);
-
-		if (special) {
-			if (m5 & TRACK_BIT_DIAG1) DrawGroundSprite(rti->base_sprites.single_y);
-			if (m5 & TRACK_BIT_DIAG2) DrawGroundSprite(rti->base_sprites.single_x);
-			if (m5 & TRACK_BIT_UPPER) DrawGroundSprite(rti->base_sprites.single_n);
-			if (m5 & TRACK_BIT_LOWER) DrawGroundSprite(rti->base_sprites.single_s);
-			if (m5 & TRACK_BIT_LEFT)  DrawGroundSprite(rti->base_sprites.single_w);
-			if (m5 & TRACK_BIT_RIGHT) DrawGroundSprite(rti->base_sprites.single_e);
-		}
-
-		if (_debug_pbs_level >= 1) {
-			byte pbs = PBSTileReserved(ti->tile);
-			if (pbs & TRACK_BIT_DIAG1) DrawGroundSprite(rti->base_sprites.single_y | PALETTE_CRASH);
-			if (pbs & TRACK_BIT_DIAG2) DrawGroundSprite(rti->base_sprites.single_x | PALETTE_CRASH);
-			if (pbs & TRACK_BIT_UPPER) DrawGroundSprite(rti->base_sprites.single_n | PALETTE_CRASH);
-			if (pbs & TRACK_BIT_LOWER) DrawGroundSprite(rti->base_sprites.single_s | PALETTE_CRASH);
-			if (pbs & TRACK_BIT_LEFT)  DrawGroundSprite(rti->base_sprites.single_w | PALETTE_CRASH);
-			if (pbs & TRACK_BIT_RIGHT) DrawGroundSprite(rti->base_sprites.single_e | PALETTE_CRASH);
-		}
+		DrawTrackBits(ti, m5 & TRACK_BIT_MASK, earth, snow, false);
 
 		if (_display_opt & DO_FULL_DETAIL) {
 			_detailed_track_proc[_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK](ti);

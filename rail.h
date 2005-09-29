@@ -576,4 +576,6 @@ static inline bool IsCompatibleRail(RailType enginetype, RailType tiletype)
 	return HASBIT(GetRailTypeInfo(enginetype)->compatible_railtypes, tiletype);
 }
 
+void DrawTrackBits(TileInfo *ti, TrackBits track, bool earth, bool snow, bool flat);
+
 #endif /* RAIL_H */
