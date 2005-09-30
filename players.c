@@ -185,7 +185,7 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 	}
 }
 
-void InvalidatePlayerWindows(Player *p)
+void InvalidatePlayerWindows(const Player *p)
 {
 	PlayerID pid = p->index;
 
@@ -568,7 +568,7 @@ void OnTick_Players(void)
 }
 
 // index is the next parameter in _decode_parameters to set up
-StringID GetPlayerNameString(PlayerID player, PlayerID index)
+StringID GetPlayerNameString(PlayerID player, uint index)
 {
 	if (IS_HUMAN_PLAYER(player) && player < MAX_PLAYERS) {
 		SetDParam(index, player+1);

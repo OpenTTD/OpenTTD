@@ -219,7 +219,7 @@ void DrawPlayerIcon(int p, int x, int y)
 
 static void GraphLegendWndProc(Window *w, WindowEvent *e)
 {
-	Player *p;
+	const Player* p;
 
 	switch(e->event) {
 	case WE_PAINT:
@@ -291,7 +291,7 @@ static void ShowGraphLegend(void)
 
 static void SetupGraphDrawerForPlayers(GraphDrawer *gd)
 {
-	Player *p;
+	const Player* p;
 	uint excludebits = _legend_excludebits;
 	int nums;
 	int mo,yr;
@@ -325,7 +325,7 @@ static void OperatingProfitWndProc(Window *w, WindowEvent *e)
 	switch(e->event) {
 	case WE_PAINT: {
 		GraphDrawer gd;
-		Player *p;
+		const Player* p;
 		int i,j;
 		int numd;
 
@@ -399,7 +399,7 @@ static void IncomeGraphWndProc(Window *w, WindowEvent *e)
 	switch(e->event) {
 	case WE_PAINT: {
 		GraphDrawer gd;
-		Player *p;
+		const Player* p;
 		int i,j;
 		int numd;
 
@@ -472,7 +472,7 @@ static void DeliveredCargoGraphWndProc(Window *w, WindowEvent *e)
 	switch(e->event) {
 	case WE_PAINT: {
 		GraphDrawer gd;
-		Player *p;
+		const Player* p;
 		int i,j;
 		int numd;
 
@@ -545,7 +545,7 @@ static void PerformanceHistoryWndProc(Window *w, WindowEvent *e)
 	switch(e->event) {
 	case WE_PAINT: {
 		GraphDrawer gd;
-		Player *p;
+		const Player* p;
 		int i,j;
 		int numd;
 
@@ -621,7 +621,7 @@ static void CompanyValueGraphWndProc(Window *w, WindowEvent *e)
 	switch(e->event) {
 	case WE_PAINT: {
 		GraphDrawer gd;
-		Player *p;
+		const Player* p;
 		int i,j;
 		int numd;
 
@@ -826,8 +826,8 @@ static void CompanyLeagueWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-		Player *p;
-		Player *plist[MAX_PLAYERS];
+		const Player* p;
+		const Player* plist[MAX_PLAYERS];
 		uint pl_num;
 		uint i;
 

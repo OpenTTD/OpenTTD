@@ -259,7 +259,7 @@ static const WindowDesc _player_stations_desc = {
 };
 
 
-void ShowPlayerStations(int player)
+void ShowPlayerStations(PlayerID player)
 {
 	Window *w;
 

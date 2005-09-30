@@ -72,8 +72,9 @@ void UpdatePlayerHouse(Player *p, uint score)
 	MarkTileDirtyByTile(tile + TileDiffXY(1, 1));
 }
 
-int64 CalculateCompanyValue(Player *p) {
-	byte owner = p->index;
+int64 CalculateCompanyValue(const Player *p)
+{
+	PlayerID owner = p->index;
 	int64 value;
 
 	{
@@ -394,7 +395,7 @@ extern void DeletePlayerWindows(int pi);
 
 static void PlayersCheckBankrupt(Player *p)
 {
-	int owner;
+	PlayerID owner;
 	int64 val;
 
 	// If the player has money again, it does not go bankrupt

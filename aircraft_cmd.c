@@ -1518,7 +1518,7 @@ static void AircraftEventHandler_EndTakeOff(Vehicle *v, const AirportFTAClass *A
 
 static void AircraftEventHandler_HeliTakeOff(Vehicle *v, const AirportFTAClass *Airport)
 {
-	Player *p = GetPlayer(v->owner);
+	const Player* p = GetPlayer(v->owner);
 	v->sprite_width = v->sprite_height = 24; // ??? no idea what this is
 	v->u.air.state = FLYING;
 	// get the next position to go to, differs per airport
@@ -1582,7 +1582,7 @@ static void AircraftEventHandler_Flying(Vehicle *v, const AirportFTAClass *Airpo
 
 static void AircraftEventHandler_Landing(Vehicle *v, const AirportFTAClass *Airport)
 {
-	Player *p = GetPlayer(v->owner);
+	const Player* p = GetPlayer(v->owner);
 	AircraftLandAirplane(v);  // maybe crash airplane
 	v->u.air.state = ENDLANDING;
 	// check if the aircraft needs to be replaced or renewed and send it to a hangar if needed

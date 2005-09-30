@@ -1564,7 +1564,7 @@ int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 typedef struct TrainFindDepotData {
 	uint best_length;
 	TileIndex tile;
-	byte owner;
+	PlayerID owner;
 	/**
 	 * true if reversing is necesarry for the train to get to this depot This
 	 * value is unused when new depot finding and NPF are both disabled

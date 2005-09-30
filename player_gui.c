@@ -21,7 +21,7 @@
 #include "network_client.h"
 #endif
 
-static void DoShowPlayerFinances(int player, bool show_small, bool show_stickied);
+static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_stickied);
 
 
 static void DrawPlayerEconomyStats(const Player *p, byte mode)
@@ -149,13 +149,14 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-		Player *p = GetPlayer(w->window_number);
+		PlayerID player = w->window_number;
+		const Player* p = GetPlayer(player);
 
 		w->disabled_state = p->current_loan != 0 ? 0 : (1 << 7);
 
 		SetDParam(0, p->name_1);
 		SetDParam(1, p->name_2);
-		SetDParam(2, GetPlayerNameString((byte)w->window_number, 3));
+		SetDParam(2, GetPlayerNameString(player, 3));
 		SetDParam(4, 10000);
 		DrawWindowWidgets(w);
 
@@ -167,7 +168,7 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 		case 2: {/* toggle size */
 			byte mode = (byte)WP(w,def_d).data_1;
 			bool stickied = !!(w->flags4 & WF_STICKY);
-			int player = w->window_number;
+			PlayerID player = w->window_number;
 			DeleteWindow(w);
 			DoShowPlayerFinances(player, !HASBIT(mode, 0), stickied);
 		} break;
@@ -221,12 +222,12 @@ static const WindowDesc * const desc_table[2*2] = {
 	&_other_player_finances_desc,&_other_player_finances_small_desc,
 };
 
-static void DoShowPlayerFinances(int player, bool show_small, bool show_stickied)
+static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_stickied)
 {
 	Window *w;
 	int mode;
 
-	mode = ((byte)player != _local_player)*2 + show_small;
+	mode = (player != _local_player) * 2 + show_small;
 	w = AllocateWindowDescFront( desc_table[mode], player);
 	if (w) {
 		w->caption_color = w->window_number;
@@ -238,7 +239,7 @@ static void DoShowPlayerFinances(int player, bool show_small, bool show_stickied
 	}
 }
 
-void ShowPlayerFinances(int player)
+void ShowPlayerFinances(PlayerID player)
 {
 	DoShowPlayerFinances(player, false, false);
 }
@@ -247,7 +248,7 @@ static void SelectPlayerColorWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-		Player *p;
+		const Player* p;
 		uint used_colors = 0;
 		int num_free = 16;
 		int x,y,pos;
@@ -481,8 +482,8 @@ int GetAmountOwnedBy(const Player *p, PlayerID owner)
 
 static void DrawCompanyOwnerText(const Player *p)
 {
+	const Player* p2;
 	int num = -1;
-	Player *p2;
 	int amt;
 
 	FOR_ALL_PLAYERS(p2) {
@@ -506,7 +507,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-		Player *p = GetPlayer(w->window_number);
+		const Player* p = GetPlayer(w->window_number);
 		uint32 dis = 0;
 
 		if (!IsWindowOfPrototype(w, _other_player_company_widgets)) {
@@ -687,7 +688,7 @@ static const WindowDesc _other_player_company_desc = {
 	PlayerCompanyWndProc
 };
 
-void ShowPlayerCompany(int player)
+void ShowPlayerCompany(PlayerID player)
 {
 	Window *w;
 	w = AllocateWindowDescFront((byte)player == _local_player ? &_my_player_company_desc : &_other_player_company_desc,  player);

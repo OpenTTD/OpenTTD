@@ -195,8 +195,8 @@ typedef struct Player {
 
 void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player);
 void GetNameOfOwner(PlayerID owner, TileIndex tile);
-int64 CalculateCompanyValue(Player *p);
-void InvalidatePlayerWindows(Player *p);
+int64 CalculateCompanyValue(const Player* p);
+void InvalidatePlayerWindows(const Player* p);
 void UpdatePlayerMoney32(Player *p);
 #define FOR_ALL_PLAYERS(p) for(p=_players; p != endof(_players); p++)
 
@@ -260,8 +260,8 @@ static inline byte GetBestRailtype(const Player *p)
 	return RAILTYPE_RAIL;
 }
 
-#define IS_HUMAN_PLAYER(p) (!GetPlayer((byte)(p))->is_ai)
-#define IS_INTERACTIVE_PLAYER(p) (((byte)p) == _local_player)
+#define IS_HUMAN_PLAYER(p) (!GetPlayer(p)->is_ai)
+#define IS_INTERACTIVE_PLAYER(p) ((p) == _local_player)
 
 typedef struct HighScore {
 	char company[100];

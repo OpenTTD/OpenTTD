@@ -63,7 +63,7 @@ struct Station {
 	byte time_since_load;
 	byte time_since_unload;
 	byte delete_ctr;
-	byte owner;
+	PlayerID owner;
 	byte facilities;
 	byte airport_type;
 
