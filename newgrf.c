@@ -226,9 +226,10 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x09: { /* Speed */
 			FOR_EACH_OBJECT {
 				uint16 speed = grf_load_word(&buf);
+				if (speed == 0xFFFF)
+					speed = 0;
 
 				rvi[i].max_speed = speed;
-				dewagonize(speed, engine + i);
 			}
 		} break;
 		case 0x0B: { /* Power */
