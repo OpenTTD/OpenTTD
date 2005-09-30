@@ -60,7 +60,7 @@ int32 DestroyCompanyHQ(TileIndex tile, uint32 flags)
 
 /** Build or relocate the HQ. This depends if the HQ is already built or not
  * @param x,y the coordinates where the HQ will be built or relocated to
- * @param p1 relocate HQ (set to some value, usually 1 or true)
+ * @param p1 unused
  * @param p2 unused
  */
 extern int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, int *);
@@ -75,18 +75,10 @@ int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	cost = CheckFlatLandBelow(tile, 2, 2, flags, 0, NULL);
 	if (CmdFailed(cost)) return CMD_ERROR;
 
-	if (p1) { /* Moving HQ */
-		int32 ret;
-
-		if (p->location_of_house == 0) return CMD_ERROR;
-
-		ret = DestroyCompanyHQ(p->location_of_house, flags);
-
+	if (p->location_of_house != 0) { /* Moving HQ */
+		int32 ret = DestroyCompanyHQ(p->location_of_house, flags);
 		if (CmdFailed(ret)) return CMD_ERROR;
-
 		cost += ret;
-	} else { /* Building new HQ */
-		if (p->location_of_house != 0) return CMD_ERROR;
 	}
 
 	if (flags & DC_EXEC) {

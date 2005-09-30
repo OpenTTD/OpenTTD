@@ -634,9 +634,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_PLACE_OBJ: {
-		/* You cannot destroy a HQ, only relocate it. So build_HQ is called, just with different flags */
-		TileIndex tile = GetPlayer(w->window_number)->location_of_house;
-		if (DoCommandP(e->place.tile, (tile == 0) ? 0 : 1 | w->window_number, 0, NULL, CMD_BUILD_COMPANY_HQ | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS)))
+		if (DoCommandP(e->place.tile, 0, 0, NULL, CMD_BUILD_COMPANY_HQ | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS)))
 			ResetObjectToPlace();
 		break;
 	}
