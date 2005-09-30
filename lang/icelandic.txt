@@ -575,6 +575,8 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...of ná
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...of nálægt öðrum bæ
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...óhentugur staður
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...of margir bæir
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Get ekki stofnað nýja borg
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...það er ekkert laust svæði á kortinu
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Stækka bæ
 STR_023C_EXPAND                                                 :{BLACK}Stækka
 STR_023D_RANDOM_TOWN                                            :{BLACK}Handahófskenndur bær
@@ -731,6 +733,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Gegnsæ
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Landssvæðisupplýsingar
 STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :Kveikja á stjórnborði
 STR_02D7_SCREENSHOT_CTRL_S                                      :Skjámynd (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Risa skjámynd (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Um 'OpenTTD'
@@ -833,6 +836,7 @@ STR_TOWNNAME_AUSTRIAN                                           :Austurrísk
 STR_TOWNNAME_ROMANIAN                                           :Rúmensk
 STR_TOWNNAME_CZECH                                              :Tékknesk
 STR_TOWNNAME_SWISS                                              :Svissneska
+STR_TOWNNAME_DANISH                                             :Danska
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pund ({POUNDSIGN})

@@ -575,6 +575,8 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...te di
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...te dicht bij een andere stad
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...lokatie ongeschikt
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...te veel steden
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Kan geen enkele stad bouwen
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...er is geen ruimte meer op de kaart
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Vergroot stad
 STR_023C_EXPAND                                                 :{BLACK}Vergroot
 STR_023D_RANDOM_TOWN                                            :{BLACK}Willekeurige stad
@@ -731,6 +733,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transp
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Info over blok land
 STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :Toggle Console
 STR_02D7_SCREENSHOT_CTRL_S                                      :Schermprint (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Grote Schermprint (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Over OpenTTD
@@ -833,6 +836,7 @@ STR_TOWNNAME_AUSTRIAN                                           :Oostenrijks
 STR_TOWNNAME_ROMANIAN                                           :Roemeens
 STR_TOWNNAME_CZECH                                              :Tsjechisch
 STR_TOWNNAME_SWISS                                              :Zwitsers
+STR_TOWNNAME_DANISH                                             :Deens
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pond ({POUNDSIGN})
@@ -1013,6 +1017,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standaa
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Standaard reparatie interval bij schepen: {ORANGE}{STRING} dagen
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Standaard reparatie interval voor schepen: {ORANGE}uit
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Schakel onderhoud uit wanneer defecten uit staan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Zet wagon snelheidslimieten aan: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Kleurenfoto's komen in: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Beginjaar: {ORANGE}{STRING}
@@ -2762,6 +2767,7 @@ STR_TINY_BLACK                                                  :{BLACK}{TINYFON
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Gewicht: {GOLD}{COMMA}t
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Snelheid: {GOLD}{VELOCITY}{BLACK}   Kracht: {GOLD}{COMMA}pk
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Snelheid: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Onderhoudskosten: {GOLD}{CURRENCY}/jr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capaciteit: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Ontworpen: {GOLD}{NUM}{BLACK} Levensduur: {GOLD}{COMMA} jaar

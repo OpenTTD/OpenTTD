@@ -1017,6 +1017,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Entreti
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Entretien des navires tous les: {ORANGE}{STRING} jours
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Entretien des navires tous les: {ORANGE}inactif
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Désactiver les réparations quand les pannes sont inactives: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Permettre vitesse limite des Wagons: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Les journaux en couleur apparaissent en: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Date de départ: {ORANGE}{STRING}
@@ -2766,6 +2767,7 @@ STR_TINY_BLACK                                                  :{BLACK}{TINYFON
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Prix: {GOLD}{CURRENCY}{BLACK} Poids: {GOLD}{COMMA}t
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Vitesse: {GOLD}{VELOCITY}{BLACK}   Puissance: {GOLD}{COMMA} CV
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Vitesse: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Coûts d'entretien: {GOLD}{CURRENCY}/an
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacité: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Concu en: {GOLD}{NUM}{BLACK}Durée de vie: {GOLD}{COMMA} ans

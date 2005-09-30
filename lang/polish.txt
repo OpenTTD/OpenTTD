@@ -1017,6 +1017,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Domysln
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Domyslny okres miedzy serwis. dla statkow: {ORANGE}{STRING} dni
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Domyslny okres miedzy serwis. dla statkow: {ORANGE}niedostepne
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Serwis niedostepny, jesli uszkodzenia pojazdow wylaczone: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Wlacz limity predkosci wagonow: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Pojawianie sie kolorowych wiadomosci w: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Data rozpoczecia gry: {ORANGE}{STRING}
@@ -2766,6 +2767,7 @@ STR_TINY_BLACK                                                  :{BLACK}{TINYFON
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Koszt: {GOLD}{CURRENCY}{BLACK} Waga: {GOLD}{COMMA}t
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Predkosc: {GOLD}{VELOCITY}{BLACK}   Moc: {GOLD}{COMMA}KM
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Predkosc: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Koszty uzytkowania: {GOLD}{CURRENCY}/rok
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ladownosc: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Zaprojektowany: {GOLD}{NUM}{BLACK} Zywotnosc: {GOLD}{COMMA} lat

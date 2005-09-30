@@ -575,6 +575,8 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...muito
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...muito perto de outra cidade
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...sítio inadequado
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...demasiadas cidades
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Não é possível construir cidades
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...não existe mais espaço no mapa
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Aumentar o tamanho da cidade
 STR_023C_EXPAND                                                 :{BLACK}Expandir
 STR_023D_RANDOM_TOWN                                            :{BLACK}Cidade Aleatória
@@ -731,6 +733,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Sinais
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Informações do terreno
 STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :Activar Consola
 STR_02D7_SCREENSHOT_CTRL_S                                      :Captura de ecrã (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Captura gigante (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Sobre o OpenTTD...
@@ -833,6 +836,7 @@ STR_TOWNNAME_AUSTRIAN                                           :Austríaco
 STR_TOWNNAME_ROMANIAN                                           :Romeno
 STR_TOWNNAME_CZECH                                              :Checo
 STR_TOWNNAME_SWISS                                              :Suiça
+STR_TOWNNAME_DANISH                                             :Dinamarquês
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Libras ({POUNDSIGN})
@@ -1013,6 +1017,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Interva
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Intervalo de serviço predefinido para barcos: {ORANGE}{STRING} dias
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalo de serviço predefinido para barcos: {ORANGE}desactivado
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Desactivar manutenção quando as avarias estão em nenhuma: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Activar limites de velocidade para vagões: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Noticias a cores aparecem em: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Data de início: {ORANGE}{STRING}
@@ -2762,6 +2767,7 @@ STR_TINY_BLACK                                                  :{BLACK}{TINYFON
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Custo: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{COMMA}t
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocidade: {GOLD}{VELOCITY}{BLACK}   Potência: {GOLD}{COMMA}cv
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocidade: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Custo de manutenção: {GOLD}{CURRENCY}/ano
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacidade: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Concebido: {GOLD}{NUM}{BLACK} Vida útil: {GOLD}{COMMA} anos

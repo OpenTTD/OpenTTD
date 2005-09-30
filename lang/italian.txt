@@ -1016,6 +1016,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Interva
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Intervallo di servizio predefinito per le navi: {ORANGE}{STRING} giorni
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervallo di servizio predefinito per le navi: {ORANGE}disabilitato
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Disabilità servicing quando i guasti sono "nessuno": {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Abilita limite velocità vagoni: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Notizie colorate pubblicate dal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Data di inizio: {ORANGE}{STRING}
@@ -2765,6 +2766,7 @@ STR_TINY_BLACK                                                  :{BLACK}{TINYFON
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Costo: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{COMMA}t
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocità: {GOLD}{VELOCITY}{BLACK}   Potenza: {GOLD}{COMMA}CV
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocità: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Costi d'esercizio: {GOLD}{CURRENCY}/anno
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capienza: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Progettato nel: {GOLD}{NUM}{BLACK} Vita: {GOLD}{COMMA} anni

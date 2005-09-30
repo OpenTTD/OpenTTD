@@ -1082,6 +1082,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Alap sz
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Alapértelmezett szervízelés hajóknak: {ORANGE}{STRING} naponta
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Alap szervízelési idõ a hajókra: {ORANGE}kikapcsolva
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Ne legyen szervízelés ha lerobbanások sincsenek: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}A vagonok sebessége korlátozható: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Színes újságcikkek megjelenése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Játék induló dátuma: {ORANGE}{STRING}
@@ -2868,6 +2869,7 @@ STR_TINY_BLACK                                                  :{BLACK}{TINYFON
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Ár: {GOLD}{CURRENCY}{BLACK} Súly: {GOLD}{COMMA}t
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Sebesség: {GOLD}{VELOCITY}{BLACK} Telj.: {GOLD}{COMMA} lóerõ
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Sebesség: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Üzemeltetés: {GOLD}{CURRENCY}/év
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacitás: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Kifejlesztve: {GOLD}{NUM}{BLACK} Élettartam: {GOLD}{COMMA} év

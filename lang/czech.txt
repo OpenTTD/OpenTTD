@@ -2823,6 +2823,7 @@ STR_TINY_BLACK                                                  :{BLACK}{TINYFON
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Hmotnost: {GOLD}{COMMA} t
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rychlost: {GOLD}{VELOCITY}{BLACK}   Výkon: {GOLD}{COMMA} hp
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Rychlost: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Provozní cena: {GOLD}{CURRENCY} rocne
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacita: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Vyvinuto: {GOLD}{NUM}{BLACK} ´ivotnost: {GOLD}{COMMA} {P rok roky let}

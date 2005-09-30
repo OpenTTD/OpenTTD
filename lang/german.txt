@@ -576,6 +576,8 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...zu di
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...zu dicht an einer anderen Stadt
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...ungeeigneter Standort
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...zu viele Städte
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Bau von Städten unmöglich
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...es ist kein Platz mehr auf der Karte.
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Vergrößere die Stadt
 STR_023C_EXPAND                                                 :{BLACK}Ausdehnen
 STR_023D_RANDOM_TOWN                                            :{BLACK}Zufällige Stadt
@@ -834,6 +836,7 @@ STR_TOWNNAME_AUSTRIAN                                           :Österreichisch
 STR_TOWNNAME_ROMANIAN                                           :Rumänisch
 STR_TOWNNAME_CZECH                                              :Tschechisch
 STR_TOWNNAME_SWISS                                              :Schweizerisch
+STR_TOWNNAME_DANISH                                             :Dänisch
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pfund ({POUNDSIGN})

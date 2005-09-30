@@ -575,6 +575,8 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...massa
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...massa aprop d'un altre població
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...lloc inadequat
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...massa poblacions
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}No puc construir poblacions
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...no queda espai al mapa
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Incrementar la mida de la població
 STR_023C_EXPAND                                                 :{BLACK}Expandir
 STR_023D_RANDOM_TOWN                                            :{BLACK}Localitat Aleatòria
@@ -731,6 +733,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Signes
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Informació de l'àrea de terreny
 STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :Canviar a cònsola
 STR_02D7_SCREENSHOT_CTRL_S                                      :Còpia de Pantalla (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Còpia de Pantalla Gran (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Quant a 'OpenTTD'
@@ -833,6 +836,7 @@ STR_TOWNNAME_AUSTRIAN                                           :Austríac
 STR_TOWNNAME_ROMANIAN                                           :Romanès
 STR_TOWNNAME_CZECH                                              :Txec
 STR_TOWNNAME_SWISS                                              :Suís
+STR_TOWNNAME_DANISH                                             :Danès
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Lliures ({POUNDSIGN})

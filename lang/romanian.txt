@@ -575,6 +575,8 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...prea 
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...prea aproape de alt oras
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...locatie nepotrivitã
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...prea multe orase
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Nu pot construi nici un oras
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...nu mai este loc pe hartã
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Mãreste dimensiunile orasului
 STR_023C_EXPAND                                                 :{BLACK}Extinde
 STR_023D_RANDOM_TOWN                                            :{BLACK}Oras aleator
@@ -731,6 +733,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Numele
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Informatii despre teren
 STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :Consola On/Off
 STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Screenshot gigant(Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Despre 'OpenTTD'
@@ -833,6 +836,7 @@ STR_TOWNNAME_AUSTRIAN                                           :Austriece
 STR_TOWNNAME_ROMANIAN                                           :Romanesti
 STR_TOWNNAME_CZECH                                              :Cehe
 STR_TOWNNAME_SWISS                                              :Elvetian
+STR_TOWNNAME_DANISH                                             :Danezã
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Lira sterlina ({POUNDSIGN})
@@ -855,7 +859,7 @@ STR_CURR_ITL                                                    :Lirã italianã (
 STR_CURR_NLG                                                    :Gulden olandez (NLG)
 STR_CURR_NOK                                                    :Coroanã norvegianã (NOK)
 STR_CURR_PLN                                                    :Zlot (PLN)
-STR_CURR_ROL                                                    :Leul Greu Romanesc (Lei)
+STR_CURR_ROL                                                    :Leu românesc (Lei)
 STR_CURR_RUR                                                    :Rublã ruseascã (RUR)
 STR_CURR_SEK                                                    :Coroanã suedezã (SEK)
 
@@ -1013,6 +1017,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Interva
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Intervalul de service presetat pentru nave: {ORANGE}{STRING} zile
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalul de service presetat pentru nave: {ORANGE}dezactivat
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Deactivare service cand defectiunile sunt anulate: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Activeazã limite de vitezã pt. vagoane: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Stirile în culori apar în anul: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Anul de început a jocului: {ORANGE}{STRING}
@@ -1169,6 +1174,7 @@ TEMP_AI_ACTIVATED                                               :{WHITE}Atentie:
 
 ############ network gui strings
 
+STR_NETWORK_MULTIPLAYER                                         :{WHITE}Multiplayer
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Numele jucãtorului:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Acesta este numele prin care te vor identifica ceilalti
@@ -1747,7 +1753,14 @@ STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT
 STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Problemele de aprovizionare provoacã închiderea {INDUSTRY}!
 STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Lipsa de teren împãdurit provoacã închiderea {INDUSTRY}!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} mãreste productia!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Rezerve noi de cãrbune la {INDUSTRY}!{}Se asteaptã dublarea productiei!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Rezerve noi de petrol la {INDUSTRY}!{}Se asteaptã dublarea productiei!
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Noile tehnologii folosite la {INDUSTRY} vor aduce dublarea productiei!
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} scade productia cu 50%
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Insectele cauzeazã distrugeri masive la {INDUSTRY}!{}Productia scade cu 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...se poate construi doar la marginea hãrtii
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Productia de {STRING} de la {INDUSTRY} creste cu {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Productia de {STRING} de la {INDUSTRY} scade cu {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Tren în tunel
@@ -2360,7 +2373,11 @@ STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Noi vehi
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Noi vehicule maglev
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Cumpãrã vehicul
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Cloneazã vehiculul
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Acest buton va crea o copie a autovehiculului. Control+click pentru comenzi comune
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Acest buton va crea o copie a autovehiculului. Apasã acest buton, apoi fã click pe un autovehicul de pe hartã. Control+click pentru a-i da ordine comune
 STR_CLONE_TRAIN                                                 :{BLACK}Cloneazã trenul
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Acest buton va crea o copie a întregului tren. Control+click pentru comenzi comune
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Acest buton va crea o copie a întregului tren. Apasã acest buton, apoi fã click pe un tren de pe hartã. Control+click pentru a-i da ordine comune
 STR_8820_RENAME                                                 :{BLACK}Redenumeste
 STR_8823_SKIP                                                   :{BLACK}Sãri peste
 STR_8824_DELETE                                                 :{BLACK}Sterge
@@ -2482,6 +2499,7 @@ STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Autovehi
 STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Cumpãrã un autovehicul
 STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Mutã un autovehicul aici pentru a-l vinde
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centreazã imaginea pe locatia acestei autobaze
+STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Road vehicle selection list - click on vehicle for information
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Cumpãrã autovehiculul selectat
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Un nou autovehicul disponibil!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
@@ -2511,7 +2529,9 @@ STR_9804_NEW_SHIPS                                              :{BLACK}Nave noi
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA}Nave
 STR_9808_NEW_SHIPS                                              :{WHITE}Nave noi
 STR_9809_BUILD_SHIP                                             :{BLACK}Construieste navã
-STR_CLONE_SHIP                                                  :{BLACK}Cloneazã nava
+STR_CLONE_SHIP                                                  :{BLACK}Cloneaz? nava
+STR_CLONE_SHIP_INFO                                             :{BLACK}Acest buton va crea o copie a navei. Control+click pentru comenzi comune
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Acest buton va crea o copie a navei. Apasã acest buton, apoi fã click pe o nav? de pe hartã. Control+click pentru a-i da ordine comune
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Nava trebuie sã fie stationatã într-un santier
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Nu pot vinde nava...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Nu pot construi nava...
@@ -2576,6 +2596,9 @@ STR_A000_AIRPORTS                                               :{WHITE}Airoport
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Nu pot construi un aeroport aici...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangar
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Aeronavã nouã
+STR_CLONE_AIRCRAFT                                              :{BLACK}Clonare aeronavã
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Acest buton va crea o copie a aeronavei. Control+click pentru comenzi comune
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Acest buton va crea o copie a aeronavei. Apasã acest buton, apoi fã click pe o aeronav? de pe hartã. Control+click pentru a-i da ordine comune
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Aeronavã nouã
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Cumpãrã aeronavã
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nu pot cumpãra aeronava...
@@ -2716,7 +2739,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Afiseaza
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Afiseaza toate navele care opresc in aceasta statie
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Inlocuieste vehicule
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Inlocuire vehicule
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Înlocuieste {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Incepere inlocuire vehicule
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Oprire inlocuire vehicuke
 STR_NOT_REPLACING                                               :{BLACK}Neinlocuire
@@ -2744,6 +2767,7 @@ STR_TINY_BLACK                                                  :{BLACK}{TINYFON
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Greutate: {GOLD}{COMMA}t
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Viteza: {GOLD}{VELOCITY}{BLACK}   Putere: {GOLD}{COMMA}hp
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Viteza: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cost de rulare: {GOLD}{CURRENCY}/an
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacitate: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}An aparitie: {GOLD}{NUM}{BLACK} Durata de viata: {GOLD}{COMMA} years
