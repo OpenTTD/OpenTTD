@@ -1919,7 +1919,7 @@ static void GRFInfo(byte *buf, int len)
 	const char *name;
 	const char *info;
 
-	check_length(len, 9, "GRFInfo");
+	check_length(len, 8, "GRFInfo");
 	version = buf[1];
 	/* this is de facto big endian - grf_load_dword() unsuitable */
 	grfid = buf[2] << 24 | buf[3] << 16 | buf[4] << 8 | buf[5];
