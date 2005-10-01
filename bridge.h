@@ -15,8 +15,11 @@ typedef struct Bridge {
 	uint16 speed;        ///< maximum travel speed
 	PalSpriteID sprite;  ///< the sprite which is used in the GUI (possibly with a recolor sprite)
 	StringID material;   ///< the string that contains the bridge description
+	PalSpriteID **sprite_table; ///< table of sprites for drawing the bridge
+	byte flags;          ///< bit 0 set: disable drawing of far pillars.
 } Bridge;
 
-extern const Bridge _bridge[MAX_BRIDGES];
+extern const Bridge orig_bridge[MAX_BRIDGES];
+Bridge _bridge[MAX_BRIDGES];
 
 #endif /* BRIDGE_H */

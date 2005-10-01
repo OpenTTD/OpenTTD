@@ -15,6 +15,7 @@
 #include "sprite.h"
 #include "newgrf.h"
 #include "variables.h"
+#include "bridge.h"
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)
@@ -974,6 +975,82 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 	return ret;
 }
 
+static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int len)
+{
+	byte *buf = *bufp;
+	int i;
+	int ret = 0;
+
+	switch (prop) {
+		case 0x08: /* Year of availability */
+			FOR_EACH_OBJECT {
+				_bridge[brid + i].avail_year = grf_load_byte(&buf);
+			}
+			break;
+
+		case 0x09: /* Minimum length */
+			FOR_EACH_OBJECT {
+				_bridge[brid + i].min_length = grf_load_byte(&buf);
+			}
+			break;
+
+		case 0x0A: /* Maximum length */
+			FOR_EACH_OBJECT {
+				_bridge[brid + i].max_length = grf_load_byte(&buf);
+			}
+			break;
+
+		case 0x0B: /* Cost factor */
+			FOR_EACH_OBJECT {
+				_bridge[brid + i].price = grf_load_byte(&buf);
+			}
+			break;
+
+		case 0x0C: /* Maximum speed */
+			FOR_EACH_OBJECT {
+				_bridge[brid + i].speed = grf_load_word(&buf);
+			}
+			break;
+
+		case 0x0D: /* Bridge sprite tables */
+			FOR_EACH_OBJECT {
+				Bridge *bridge = &_bridge[brid + i];
+				byte tableid = grf_load_byte(&buf);
+				byte numtables = grf_load_byte(&buf);
+				byte table, sprite;
+
+				if (bridge->sprite_table == NULL) {
+					/* Allocate memory for sprite table pointers and set to NULL */
+					bridge->sprite_table = malloc(7 * sizeof(*bridge->sprite_table));
+					for (table = 0; table < 7; table++)
+						bridge->sprite_table[table] = NULL;
+				}
+
+				for (table = tableid; table < tableid + numtables; table++) {
+					assert(table < 7);
+					if (bridge->sprite_table[table] == NULL) {
+						bridge->sprite_table[table] = malloc(32 * sizeof(**bridge->sprite_table));
+					}
+
+					for (sprite = 0; sprite < 32; sprite++)
+						bridge->sprite_table[table][sprite] = grf_load_dword(&buf);
+				}
+			}
+			break;
+
+		case 0x0E: /* Flags; bit 0 - disable far pillars */
+			FOR_EACH_OBJECT {
+				_bridge[brid + i].flags = grf_load_byte(&buf);
+			}
+			break;
+
+		default:
+			ret = 1;
+	}
+
+	*bufp = buf;
+	return ret;
+}
 
 /* Action 0x00 */
 static void VehicleChangeInfo(byte *buf, int len)
@@ -1001,7 +1078,7 @@ static void VehicleChangeInfo(byte *buf, int len)
 		/* GSF_AIRCRAFT */ AircraftVehicleChangeInfo,
 		/* GSF_STATION */  StationChangeInfo,
 		/* GSF_CANAL */    NULL,
-		/* GSF_BRIDGE */   NULL,
+		/* GSF_BRIDGE */   BridgeChangeInfo,
 		/* GSF_TOWNHOUSE */NULL,
 	};
 
@@ -2181,12 +2258,28 @@ static void InitializeGRFSpecial(void)
  */
 static void ResetNewGRFData(void)
 {
+	int i;
+
 	// Copy/reset original engine info data
 	memcpy(&_engine_info, &orig_engine_info, sizeof(orig_engine_info));
 	memcpy(&_rail_vehicle_info, &orig_rail_vehicle_info, sizeof(orig_rail_vehicle_info));
 	memcpy(&_ship_vehicle_info, &orig_ship_vehicle_info, sizeof(orig_ship_vehicle_info));
 	memcpy(&_aircraft_vehicle_info, &orig_aircraft_vehicle_info, sizeof(orig_aircraft_vehicle_info));
 	memcpy(&_road_vehicle_info, &orig_road_vehicle_info, sizeof(orig_road_vehicle_info));
+
+	// Copy/reset original bridge info data
+	// First, free sprite table data
+	for (i = 0; i < MAX_BRIDGES; i++) {
+		if (_bridge[i].sprite_table != NULL) {
+			byte j;
+			for (j = 0; j < 7; j++) {
+				if (_bridge[i].sprite_table[j] != NULL)
+					free(_bridge[i].sprite_table[j]);
+			}
+			free(_bridge[i].sprite_table);
+		}
+	}
+	memcpy(&_bridge, &orig_bridge, sizeof(_bridge));
 }
 
 static void InitNewGRFFile(const char* filename, int sprite_offset)

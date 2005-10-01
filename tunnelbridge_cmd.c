@@ -31,7 +31,7 @@ extern const SpriteID _water_shore_sprites[15];
 
 extern void DrawCanalWater(TileIndex tile);
 
-const Bridge _bridge[] = {
+const Bridge orig_bridge[] = {
 /*
 	   year of availablity
 	   |  minimum length
@@ -40,19 +40,19 @@ const Bridge _bridge[] = {
 	   |  |   |    |    maximum speed
 	   |  |   |    |    |  sprite to use in GUI                string with description
 	   |  |   |    |    |  |                                   |                            */
-	{  0, 0, 16,  80,  32, 0xA24                             , STR_5012_WOODEN              },
-	{  0, 0,  2, 112,  48, 0xA26 | PALETTE_TO_STRUCT_RED     , STR_5013_CONCRETE            },
-	{ 10, 0,  5, 144,  64, 0xA25                             , STR_500F_GIRDER_STEEL        },
-	{  0, 2, 10, 168,  80, 0xA22 | PALETTE_TO_STRUCT_CONCRETE, STR_5011_SUSPENSION_CONCRETE },
-	{ 10, 3, 16, 185,  96, 0xA22                             , STR_500E_SUSPENSION_STEEL    },
-	{ 10, 3, 16, 192, 112, 0xA22 | PALETTE_TO_STRUCT_YELLOW  , STR_500E_SUSPENSION_STEEL	},
-	{ 10, 3,  7, 224, 160, 0xA23                             , STR_5010_CANTILEVER_STEEL    },
-	{ 10, 3,  8, 232, 208, 0xA23 | PALETTE_TO_STRUCT_BROWN   , STR_5010_CANTILEVER_STEEL    },
-	{ 10, 3,  9, 248, 240, 0xA23 | PALETTE_TO_STRUCT_RED     , STR_5010_CANTILEVER_STEEL    },
-	{ 10, 0,  2, 240, 256, 0xA27                             , STR_500F_GIRDER_STEEL        },
-	{ 75, 2, 16, 255, 320, 0xA28                             , STR_5014_TUBULAR_STEEL       },
-	{ 85, 2, 32, 380, 512, 0xA28 | PALETTE_TO_STRUCT_YELLOW  , STR_5014_TUBULAR_STEEL       },
-	{ 90, 2, 32, 510, 608, 0xA28 | PALETTE_TO_STRUCT_GREY    , STR_BRIDGE_TUBULAR_SILICON   }
+	{  0, 0, 16,  80,  32, 0xA24                             , STR_5012_WOODEN             , NULL, 0 },
+	{  0, 0,  2, 112,  48, 0xA26 | PALETTE_TO_STRUCT_RED     , STR_5013_CONCRETE           , NULL, 0 },
+	{ 10, 0,  5, 144,  64, 0xA25                             , STR_500F_GIRDER_STEEL       , NULL, 0 },
+	{  0, 2, 10, 168,  80, 0xA22 | PALETTE_TO_STRUCT_CONCRETE, STR_5011_SUSPENSION_CONCRETE, NULL, 0 },
+	{ 10, 3, 16, 185,  96, 0xA22                             , STR_500E_SUSPENSION_STEEL   , NULL, 0 },
+	{ 10, 3, 16, 192, 112, 0xA22 | PALETTE_TO_STRUCT_YELLOW  , STR_500E_SUSPENSION_STEEL   , NULL, 0 },
+	{ 10, 3,  7, 224, 160, 0xA23                             , STR_5010_CANTILEVER_STEEL   , NULL, 0 },
+	{ 10, 3,  8, 232, 208, 0xA23 | PALETTE_TO_STRUCT_BROWN   , STR_5010_CANTILEVER_STEEL   , NULL, 0 },
+	{ 10, 3,  9, 248, 240, 0xA23 | PALETTE_TO_STRUCT_RED     , STR_5010_CANTILEVER_STEEL   , NULL, 0 },
+	{ 10, 0,  2, 240, 256, 0xA27                             , STR_500F_GIRDER_STEEL       , NULL, 0 },
+	{ 75, 2, 16, 255, 320, 0xA28                             , STR_5014_TUBULAR_STEEL      , NULL, 0 },
+	{ 85, 2, 32, 380, 512, 0xA28 | PALETTE_TO_STRUCT_YELLOW  , STR_5014_TUBULAR_STEEL      , NULL, 0 },
+	{ 90, 2, 32, 510, 608, 0xA28 | PALETTE_TO_STRUCT_GREY    , STR_BRIDGE_TUBULAR_SILICON  , NULL, 0 }
 };
 
 // calculate the price factor for building a long bridge.
@@ -77,6 +77,17 @@ enum {
 	// no foundations (X,Y direction) (tileh's 0, 3, 6, 9, 12)
 	BRIDGE_NO_FOUNDATION = 1 << 0 | 1 << 3 | 1 << 6 | 1 << 9 | 1 << 12,
 };
+
+static inline const PalSpriteID *GetBridgeSpriteTable(int index, byte table)
+{
+	const Bridge *bridge = &_bridge[index];
+	assert(table < 7);
+	if (bridge->sprite_table == NULL || bridge->sprite_table[table] == NULL) {
+		return _bridge_sprite_table[index][table];
+	} else {
+		return bridge->sprite_table[table];
+	}
+}
 
 /**
  * Determines which piece of a bridge is contained in the current tile
@@ -1067,7 +1078,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			}
 
 			// bridge ending.
-			b = _bridge_sprite_table[GB(_m[ti->tile].m2, 4, 4)][6];
+			b = GetBridgeSpriteTable(GetBridgeType(ti->tile), 6);
 			b += (tmp&(3<<1))*4; /* actually ((tmp>>2)&3)*8 */
 			b += (tmp&1); // direction
 			if (ti->tileh == 0) b += 4; // sloped "entrance" ?
@@ -1128,7 +1139,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				DrawGroundSprite(image);
 			}
 			// get bridge sprites
-			b = _bridge_sprite_table[GB(_m[ti->tile].m2, 4, 4)][GB(_m[ti->tile].m2, 0, 4)] + tmp * 4;
+			b = GetBridgeSpriteTable(GetBridgeType(ti->tile), GetBridgePiece(ti->tile)) + tmp * 4;
 
 			z = GetBridgeHeight(ti) + 5;
 
