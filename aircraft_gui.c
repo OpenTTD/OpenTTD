@@ -128,7 +128,7 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 			int y = 15;
 			int sel = WP(w,buildtrain_d).sel_index;
 			int pos = w->vscroll.pos;
-			int engine_id = AIRCRAFT_ENGINES_INDEX;
+			EngineID engine_id = AIRCRAFT_ENGINES_INDEX;
 			int selected_id = -1;
 
 			do {

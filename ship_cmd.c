@@ -28,7 +28,7 @@ static byte GetTileShipTrackStatus(TileIndex tile)
 	return r | r >> 8;
 }
 
-void DrawShipEngine(int x, int y, int engine, uint32 image_ormod)
+void DrawShipEngine(int x, int y, EngineID engine, uint32 image_ormod)
 {
 	int spritenum = ShipVehInfo(engine)->image_index;
 
@@ -905,7 +905,7 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		v->last_station_visited = INVALID_STATION;
 		v->max_speed = svi->max_speed;
-		v->engine_type = (byte)p1;
+		v->engine_type = p1;
 
 		e = GetEngine(p1);
 		v->reliability = e->reliability;

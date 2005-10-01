@@ -364,7 +364,7 @@ int GetTrainImage(const Vehicle *v, byte direction)
 	return base;
 }
 
-void DrawTrainEngine(int x, int y, int engine, uint32 image_ormod)
+void DrawTrainEngine(int x, int y, EngineID engine, uint32 image_ormod)
 {
 	const RailVehicleInfo *rvi = RailVehInfo(engine);
 
@@ -397,7 +397,7 @@ void DrawTrainEngine(int x, int y, int engine, uint32 image_ormod)
 }
 
 
-static int32 CmdBuildRailWagon(uint engine, TileIndex tile, uint32 flags)
+static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 {
 	int32 value;
 	Vehicle *v;
@@ -642,7 +642,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			v->last_station_visited = INVALID_STATION;
 			v->dest_tile = 0;
 
-			v->engine_type = (byte)p1;
+			v->engine_type = p1;
 
 			v->reliability = e->reliability;
 			v->reliability_spd_dec = e->reliability_spd_dec;
@@ -735,7 +735,7 @@ static Vehicle *UnlinkWagon(Vehicle *v, Vehicle *first)
 static Vehicle *FindGoodVehiclePos(const Vehicle *src)
 {
 	Vehicle *dst;
-	uint16 eng = src->engine_type;
+	EngineID eng = src->engine_type;
 	TileIndex tile = src->tile;
 
 	FOR_ALL_VEHICLES(dst) {
@@ -955,7 +955,7 @@ int32 CmdStartStopTrain(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  * engine is 'started', first 'close' that before 'closing' our
  * searched engine
  */
-static Vehicle *GetRearEngine(const Vehicle *v, uint16 engine)
+static Vehicle *GetRearEngine(const Vehicle *v, EngineID engine)
 {
 	Vehicle *u;
 	int en_count = 1;
@@ -1737,7 +1737,7 @@ static void HandleLocomotiveSmokeCloud(Vehicle *v)
 	u = v;
 
 	do {
-		int engtype = v->engine_type;
+		EngineID engtype = v->engine_type;
 
 		// no smoke?
 		if (RailVehInfo(engtype)->flags & 2 ||
@@ -1783,7 +1783,7 @@ static void TrainPlayLeaveStationSound(Vehicle *v)
 		SND_0A_TRAIN_HORN
 	};
 
-	int engtype = v->engine_type;
+	EngineID engtype = v->engine_type;
 
 	switch (GetEngine(engtype)->railtype) {
 		case 0:

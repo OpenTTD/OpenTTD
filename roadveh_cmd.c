@@ -77,7 +77,7 @@ int GetRoadVehImage(const Vehicle *v, byte direction)
 	return image;
 }
 
-void DrawRoadVehEngine(int x, int y, int engine, uint32 image_ormod)
+void DrawRoadVehEngine(int x, int y, EngineID engine, uint32 image_ormod)
 {
 	int spritenum = RoadVehInfo(engine)->image_index;
 

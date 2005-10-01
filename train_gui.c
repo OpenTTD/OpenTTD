@@ -175,7 +175,7 @@ void CcCloneTrain(bool success, uint tile, uint32 p1, uint32 p2)
 static void engine_drawing_loop(int *x, int *y, int *pos, int *sel,
 	int *selected_id, byte railtype, byte show_max, bool is_engine)
 {
-	int i;
+	EngineID i;
 
 	for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
 		const Engine *e = GetEngine(i);
@@ -209,7 +209,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 		{
 			int count = 0;
 			byte railtype = WP(w,buildtrain_d).railtype;
-			int i;
+			EngineID i;
 
 			for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
 				const Engine *e = GetEngine(i);

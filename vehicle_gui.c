@@ -417,7 +417,7 @@ static int CDECL VehicleMaxSpeedSorter(const void *a, const void *b)
 static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, int *selected_id, byte railtype,
 	uint8 lines_drawn, bool is_engine, bool show_cars, bool show_outdated)
 {
-	int i;
+	EngineID i;
 	byte colour;
 
 	for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
@@ -467,7 +467,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 	int sel[2];
 	int count = 0;
 	int count2 = 0;
-	int engine_id;
+	EngineID engine_id;
 
 	sel[0] = WP(w,replaceveh_d).sel_index[0];
 	sel[1] = WP(w,replaceveh_d).sel_index[1];
@@ -643,7 +643,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 		case VEH_Road: {
 			int num = NUM_ROAD_ENGINES;
 			Engine *e = GetEngine(ROAD_ENGINES_INDEX);
-			int engine_id = ROAD_ENGINES_INDEX;
+			EngineID engine_id = ROAD_ENGINES_INDEX;
 			byte cargo;
 			EngineInfo *info;
 
@@ -679,7 +679,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 		case VEH_Ship: {
 			int num = NUM_SHIP_ENGINES;
 			Engine *e = GetEngine(SHIP_ENGINES_INDEX);
-			int engine_id = SHIP_ENGINES_INDEX;
+			EngineID engine_id = SHIP_ENGINES_INDEX;
 			byte cargo, refittable;
 			EngineInfo *info;
 
@@ -718,7 +718,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 			if ( selected_id[0] != -1 ) {
 				int num = NUM_AIRCRAFT_ENGINES;
 				Engine *e = GetEngine(AIRCRAFT_ENGINES_INDEX);
-				int engine_id = AIRCRAFT_ENGINES_INDEX;
+				EngineID engine_id = AIRCRAFT_ENGINES_INDEX;
 				byte subtype = AircraftVehInfo(selected_id[0])->subtype;
 				EngineInfo *info;
 

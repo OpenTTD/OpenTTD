@@ -15,7 +15,7 @@
 #include "variables.h"
 
 
-static StringID GetEngineCategoryName(byte engine)
+static StringID GetEngineCategoryName(EngineID engine)
 {
 	if (engine < NUM_TRAIN_ENGINES) {
 		switch (GetEngine(engine)->railtype) {
@@ -46,18 +46,18 @@ static const Widget _engine_preview_widgets[] = {
 {   WIDGETS_END},
 };
 
-typedef void DrawEngineProc(int x, int y, int engine, uint32 image_ormod);
-typedef void DrawEngineInfoProc(int x, int y, int engine, int maxw);
+typedef void DrawEngineProc(int x, int y, EngineID engine, uint32 image_ormod);
+typedef void DrawEngineInfoProc(EngineID, int x, int y, int maxw);
 
 typedef struct DrawEngineInfo {
 	DrawEngineProc *engine_proc;
 	DrawEngineInfoProc *info_proc;
 } DrawEngineInfo;
 
-static void DrawTrainEngineInfo(int engine, int x, int y, int maxw);
-static void DrawRoadVehEngineInfo(int engine, int x, int y, int maxw);
-static void DrawShipEngineInfo(int engine, int x, int y, int maxw);
-static void DrawAircraftEngineInfo(int engine, int x, int y, int maxw);
+static void DrawTrainEngineInfo(EngineID engine, int x, int y, int maxw);
+static void DrawRoadVehEngineInfo(EngineID engine, int x, int y, int maxw);
+static void DrawShipEngineInfo(EngineID engine, int x, int y, int maxw);
+static void DrawAircraftEngineInfo(EngineID engine, int x, int y, int maxw);
 
 static const DrawEngineInfo _draw_engine_list[4] = {
 	{DrawTrainEngine,DrawTrainEngineInfo},
@@ -68,31 +68,30 @@ static const DrawEngineInfo _draw_engine_list[4] = {
 
 static void EnginePreviewWndProc(Window *w, WindowEvent *e)
 {
-	byte eng;
-	int engine;
 	const DrawEngineInfo *dei;
 	int width;
 
 	switch(e->event) {
-	case WE_PAINT:
+	case WE_PAINT: {
+		EngineID engine = w->window_number;
+
 		DrawWindowWidgets(w);
-		engine = w->window_number;
 
 		SetDParam(0, GetEngineCategoryName(engine));
 		DrawStringMultiCenter(150, 44, STR_8101_WE_HAVE_JUST_DESIGNED_A, 296);
 
 		DrawStringCentered(w->width >> 1, 80, GetCustomEngineName(engine), 0x10);
 
-		eng = (byte)engine;
-		(dei = _draw_engine_list,eng < NUM_TRAIN_ENGINES) ||
-		(dei++,eng < NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES) ||
-		(dei++,eng < NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES + NUM_SHIP_ENGINES) ||
+		(dei = _draw_engine_list,engine < NUM_TRAIN_ENGINES) ||
+		(dei++,engine < NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES) ||
+		(dei++,engine < NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES + NUM_SHIP_ENGINES) ||
 		(dei++, true);
 
 		width = w->width;
 		dei->engine_proc(width >> 1, 100, engine, 0);
 		dei->info_proc(engine, width >> 1, 130, width - 52);
 		break;
+	}
 
 	case WE_CLICK:
 		switch(e->click.widget) {
@@ -115,7 +114,7 @@ static const WindowDesc _engine_preview_desc = {
 };
 
 
-void ShowEnginePreviewWindow(int engine)
+void ShowEnginePreviewWindow(EngineID engine)
 {
 	Window *w;
 
@@ -123,7 +122,7 @@ void ShowEnginePreviewWindow(int engine)
 	w->window_number = engine;
 }
 
-static void DrawTrainEngineInfo(int engine, int x, int y, int maxw)
+static void DrawTrainEngineInfo(EngineID engine, int x, int y, int maxw)
 {
 	const RailVehicleInfo *rvi = RailVehInfo(engine);
 	int cap;
@@ -147,7 +146,7 @@ static void DrawTrainEngineInfo(int engine, int x, int y, int maxw)
 
 void DrawNewsNewTrainAvail(Window *w)
 {
-	int engine;
+	EngineID engine;
 
 	DrawNewsBorder(w);
 
@@ -167,14 +166,14 @@ void DrawNewsNewTrainAvail(Window *w)
 
 StringID GetNewsStringNewTrainAvail(const NewsItem *ni)
 {
-	int engine = ni->string_id;
+	EngineID engine = ni->string_id;
 	SetDParam(0, STR_8859_NEW_NOW_AVAILABLE);
 	SetDParam(1, GetEngineCategoryName(engine));
 	SetDParam(2, GetCustomEngineName(engine));
 	return STR_02B6;
 }
 
-static void DrawAircraftEngineInfo(int engine, int x, int y, int maxw)
+static void DrawAircraftEngineInfo(EngineID engine, int x, int y, int maxw)
 {
 	const AircraftVehicleInfo *avi = AircraftVehInfo(engine);
 	SetDParam(0, (_price.aircraft_base >> 3) * avi->base_cost >> 5);
@@ -188,7 +187,7 @@ static void DrawAircraftEngineInfo(int engine, int x, int y, int maxw)
 
 void DrawNewsNewAircraftAvail(Window *w)
 {
-	int engine;
+	EngineID engine;
 
 	DrawNewsBorder(w);
 
@@ -207,13 +206,13 @@ void DrawNewsNewAircraftAvail(Window *w)
 
 StringID GetNewsStringNewAircraftAvail(const NewsItem *ni)
 {
-	int engine = ni->string_id;
+	EngineID engine = ni->string_id;
 	SetDParam(0, STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE);
 	SetDParam(1, GetCustomEngineName(engine));
 	return STR_02B6;
 }
 
-static void DrawRoadVehEngineInfo(int engine, int x, int y, int maxw)
+static void DrawRoadVehEngineInfo(EngineID engine, int x, int y, int maxw)
 {
 	const RoadVehicleInfo *rvi = RoadVehInfo(engine);
 
@@ -229,7 +228,7 @@ static void DrawRoadVehEngineInfo(int engine, int x, int y, int maxw)
 
 void DrawNewsNewRoadVehAvail(Window *w)
 {
-	int engine;
+	EngineID engine;
 
 	DrawNewsBorder(w);
 
@@ -247,13 +246,13 @@ void DrawNewsNewRoadVehAvail(Window *w)
 
 StringID GetNewsStringNewRoadVehAvail(const NewsItem *ni)
 {
-	int engine = ni->string_id;
+	EngineID engine = ni->string_id;
 	SetDParam(0, STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE);
 	SetDParam(1, GetCustomEngineName(engine));
 	return STR_02B6;
 }
 
-static void DrawShipEngineInfo(int engine, int x, int y, int maxw)
+static void DrawShipEngineInfo(EngineID engine, int x, int y, int maxw)
 {
 	const ShipVehicleInfo *svi = ShipVehInfo(engine);
 	SetDParam(0, svi->base_cost * (_price.ship_base >> 3) >> 5);
@@ -266,7 +265,7 @@ static void DrawShipEngineInfo(int engine, int x, int y, int maxw)
 
 void DrawNewsNewShipAvail(Window *w)
 {
-	int engine;
+	EngineID engine;
 
 	DrawNewsBorder(w);
 
@@ -285,7 +284,7 @@ void DrawNewsNewShipAvail(Window *w)
 
 StringID GetNewsStringNewShipAvail(const NewsItem *ni)
 {
-	int engine = ni->string_id;
+	EngineID engine = ni->string_id;
 	SetDParam(0, STR_982C_NEW_SHIP_NOW_AVAILABLE);
 	SetDParam(1, GetCustomEngineName(engine));
 	return STR_02B6;

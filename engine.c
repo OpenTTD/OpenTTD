@@ -93,7 +93,7 @@ const uint32 _default_refitmasks[NUM_VEHICLE_TYPES] = {
 };
 #undef MC
 
-void ShowEnginePreviewWindow(int engine);
+void ShowEnginePreviewWindow(EngineID engine);
 
 void DeleteCustomEngineNames(void)
 {
@@ -250,7 +250,7 @@ typedef struct WagonOverrides {
 
 static WagonOverrides _engine_wagon_overrides[TOTAL_NUM_ENGINES];
 
-void SetWagonOverrideSprites(byte engine, SpriteGroup *group, byte *train_id,
+void SetWagonOverrideSprites(EngineID engine, SpriteGroup *group, byte *train_id,
 	int trains)
 {
 	WagonOverrides *wos;
@@ -271,7 +271,7 @@ void SetWagonOverrideSprites(byte engine, SpriteGroup *group, byte *train_id,
 	memcpy(wo->train_id, train_id, trains);
 }
 
-static const SpriteGroup *GetWagonOverrideSpriteSet(byte engine, byte overriding_engine)
+static const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, byte overriding_engine)
 {
 	const WagonOverrides *wos = &_engine_wagon_overrides[engine];
 	int i;
@@ -300,7 +300,7 @@ static const SpriteGroup *GetWagonOverrideSpriteSet(byte engine, byte overriding
 // memory. --pasky)
 static SpriteGroup _engine_custom_sprites[TOTAL_NUM_ENGINES][NUM_GLOBAL_CID];
 
-void SetCustomEngineSprites(byte engine, byte cargo, SpriteGroup *group)
+void SetCustomEngineSprites(EngineID engine, byte cargo, SpriteGroup *group)
 {
 	/* FIXME: If we are replacing an override, release original SpriteGroup
 	 * to prevent leaks. But first we need to refcount the SpriteGroup.
@@ -494,7 +494,7 @@ static const SpriteGroup* ResolveVehicleSpriteGroup(const SpriteGroup *spritegro
 	}
 }
 
-static const SpriteGroup *GetVehicleSpriteGroup(byte engine, const Vehicle *v)
+static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *v)
 {
 	const SpriteGroup *group;
 	byte cargo = GC_PURCHASE;
@@ -515,7 +515,7 @@ static const SpriteGroup *GetVehicleSpriteGroup(byte engine, const Vehicle *v)
 	return group;
 }
 
-int GetCustomEngineSprite(byte engine, const Vehicle *v, byte direction)
+int GetCustomEngineSprite(EngineID engine, const Vehicle *v, byte direction)
 {
 	const SpriteGroup *group;
 	const RealSpriteGroup *rsg;
@@ -597,7 +597,7 @@ bool UsesWagonOverride(const Vehicle *v) {
  * @param vehicle The vehicle to evaluate the callback for, NULL if it doesnt exist (yet)
  * @return The value the callback returned, or CALLBACK_FAILED if it failed
  */
-uint16 GetCallBackResult(uint16 callback_info, byte engine, const Vehicle *v)
+uint16 GetCallBackResult(uint16 callback_info, EngineID engine, const Vehicle *v)
 {
 	const SpriteGroup *group;
 	byte cargo = GC_DEFAULT;
@@ -716,7 +716,7 @@ void TriggerVehicle(Vehicle *veh, VehicleTrigger trigger)
 
 static char *_engine_custom_names[TOTAL_NUM_ENGINES];
 
-void SetCustomEngineName(int engine, const char *name)
+void SetCustomEngineName(EngineID engine, const char *name)
 {
 	_engine_custom_names[engine] = strdup(name);
 }
@@ -730,7 +730,7 @@ void UnInitNewgrEngines(void)
 	}
 }
 
-StringID GetCustomEngineName(int engine)
+StringID GetCustomEngineName(EngineID engine)
 {
 	if (!_engine_custom_names[engine])
 		return _engine_name_strings[engine];
@@ -780,7 +780,7 @@ static PlayerID GetBestPlayer(PlayerID pp)
 
 void EnginesDailyLoop(void)
 {
-	uint i;
+	EngineID i;
 
 	if (_cur_year >= 130) return;
 
@@ -837,7 +837,7 @@ int32 CmdWantEnginePreview(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 // Determine if an engine type is a wagon (and not a loco)
-static bool IsWagon(byte index)
+static bool IsWagon(EngineID index)
 {
 	return index < NUM_TRAIN_ENGINES && RailVehInfo(index)->flags & RVI_WAGON;
 }
@@ -846,7 +846,7 @@ static void NewVehicleAvailable(Engine *e)
 {
 	Vehicle *v;
 	Player *p;
-	int index = e - _engines;
+	EngineID index = e - _engines;
 
 	// In case the player didn't build the vehicle during the intro period,
 	// prevent that player from getting future intro periods for a while.
@@ -892,11 +892,11 @@ static void NewVehicleAvailable(Engine *e)
 		}
 	}
 
-	if ((byte)index < NUM_TRAIN_ENGINES) {
+	if (index < NUM_TRAIN_ENGINES) {
 		AddNewsItem(index, NEWS_FLAGS(NM_CALLBACK, 0, NT_NEW_VEHICLES, DNC_TRAINAVAIL), 0, 0);
-	} else if ((byte)index < NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES) {
+	} else if (index < NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES) {
 		AddNewsItem(index, NEWS_FLAGS(NM_CALLBACK, 0, NT_NEW_VEHICLES, DNC_ROADAVAIL), 0, 0);
-	} else if ((byte)index < NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES + NUM_SHIP_ENGINES) {
+	} else if (index < NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES + NUM_SHIP_ENGINES) {
 		AddNewsItem(index, NEWS_FLAGS(NM_CALLBACK, 0, NT_NEW_VEHICLES, DNC_SHIPAVAIL), 0, 0);
 	} else {
 		AddNewsItem(index, NEWS_FLAGS(NM_CALLBACK, 0, NT_NEW_VEHICLES, DNC_AIRCRAFTAVAIL), 0, 0);

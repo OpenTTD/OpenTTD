@@ -411,7 +411,7 @@ static void DrawNewRoadVehWindow(Window *w)
 		int y = 15;
 		int sel = WP(w,buildtrain_d).sel_index;
 		int pos = w->vscroll.pos;
-		int engine_id = ROAD_ENGINES_INDEX;
+		EngineID engine_id = ROAD_ENGINES_INDEX;
 		int selected_id = -1;
 
 		do {

@@ -102,7 +102,7 @@ int GetAircraftImage(const Vehicle *v, byte direction)
 	return direction + _aircraft_sprite[spritenum];
 }
 
-void DrawAircraftEngine(int x, int y, int engine, uint32 image_ormod)
+void DrawAircraftEngine(int x, int y, EngineID engine, uint32 image_ormod)
 {
 	int spritenum = AircraftVehInfo(engine)->image_index;
 	int sprite = (6 + _aircraft_sprite[spritenum]);
@@ -237,7 +237,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		v->max_speed = avi->max_speed;
 		v->acceleration = avi->acceleration;
-		v->engine_type = (byte)p1;
+		v->engine_type = p1;
 
 		v->subtype = (avi->subtype & 1) == 0 ? 0 : 2;
 		v->value = value;

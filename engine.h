@@ -172,11 +172,11 @@ VARDEF const uint32 _landscape_global_cargo_mask[NUM_LANDSCAPE];
 VARDEF const CargoID _local_cargo_id_ctype[NUM_GLOBAL_CID];
 
 VARDEF uint32 _engine_refit_masks[256];
-void SetWagonOverrideSprites(byte engine, struct SpriteGroup *group, byte *train_id, int trains);
-void SetCustomEngineSprites(byte engine, byte cargo, struct SpriteGroup *group);
+void SetWagonOverrideSprites(EngineID engine, struct SpriteGroup *group, byte *train_id, int trains);
+void SetCustomEngineSprites(EngineID engine, byte cargo, struct SpriteGroup *group);
 // loaded is in percents, overriding_engine 0xffff is none
-int GetCustomEngineSprite(byte engine, const Vehicle *v, byte direction);
-uint16 GetCallBackResult(uint16 callback_info, byte engine, const Vehicle *v);
+int GetCustomEngineSprite(EngineID engine, const Vehicle *v, byte direction);
+uint16 GetCallBackResult(uint16 callback_info, EngineID engine, const Vehicle *v);
 bool UsesWagonOverride(const Vehicle *v);
 #define GetCustomVehicleSprite(v, direction) GetCustomEngineSprite(v->engine_type, v, direction)
 #define GetCustomVehicleIcon(et, direction) GetCustomEngineSprite(et, NULL, direction)
@@ -192,14 +192,14 @@ typedef enum VehicleTrigger {
 } VehicleTrigger;
 void TriggerVehicle(Vehicle *veh, VehicleTrigger trigger);
 
-void SetCustomEngineName(int engine, const char *name);
-StringID GetCustomEngineName(int engine);
+void SetCustomEngineName(EngineID engine, const char *name);
+StringID GetCustomEngineName(EngineID engine);
 
 
-void DrawTrainEngine(int x, int y, int engine, uint32 image_ormod);
-void DrawRoadVehEngine(int x, int y, int engine, uint32 image_ormod);
-void DrawShipEngine(int x, int y, int engine, uint32 image_ormod);
-void DrawAircraftEngine(int x, int y, int engine, uint32 image_ormod);
+void DrawTrainEngine(int x, int y, EngineID engine, uint32 image_ormod);
+void DrawRoadVehEngine(int x, int y, EngineID engine, uint32 image_ormod);
+void DrawShipEngine(int x, int y, EngineID engine, uint32 image_ormod);
+void DrawAircraftEngine(int x, int y, EngineID engine, uint32 image_ormod);
 
 void AcceptEnginePreview(Engine *e, PlayerID player);
 
@@ -225,7 +225,7 @@ enum {
 VARDEF Engine _engines[TOTAL_NUM_ENGINES];
 #define FOR_ALL_ENGINES(e) for (e = _engines; e != endof(_engines); e++)
 
-static inline Engine* GetEngine(uint i)
+static inline Engine* GetEngine(EngineID i)
 {
   assert(i < lengthof(_engines));
   return &_engines[i];
@@ -252,27 +252,27 @@ ShipVehicleInfo _ship_vehicle_info[NUM_SHIP_ENGINES];
 AircraftVehicleInfo _aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES];
 RoadVehicleInfo _road_vehicle_info[NUM_ROAD_ENGINES];
 
-static inline const RailVehicleInfo *RailVehInfo(uint e)
+static inline const RailVehicleInfo* RailVehInfo(EngineID e)
 {
 	assert(e < lengthof(_rail_vehicle_info));
 	return &_rail_vehicle_info[e];
 }
 
-static inline const ShipVehicleInfo *ShipVehInfo(uint e)
+static inline const ShipVehicleInfo* ShipVehInfo(EngineID e)
 {
-	assert(e - SHIP_ENGINES_INDEX < lengthof(_ship_vehicle_info));
+	assert(e >= SHIP_ENGINES_INDEX && e < SHIP_ENGINES_INDEX + lengthof(_ship_vehicle_info));
 	return &_ship_vehicle_info[e - SHIP_ENGINES_INDEX];
 }
 
-static inline const AircraftVehicleInfo *AircraftVehInfo(uint e)
+static inline const AircraftVehicleInfo* AircraftVehInfo(EngineID e)
 {
-	assert(e - AIRCRAFT_ENGINES_INDEX < lengthof(_aircraft_vehicle_info));
+	assert(e >= AIRCRAFT_ENGINES_INDEX && e < AIRCRAFT_ENGINES_INDEX + lengthof(_aircraft_vehicle_info));
 	return &_aircraft_vehicle_info[e - AIRCRAFT_ENGINES_INDEX];
 }
 
-static inline const RoadVehicleInfo *RoadVehInfo(uint e)
+static inline const RoadVehicleInfo* RoadVehInfo(EngineID e)
 {
-	assert(e - ROAD_ENGINES_INDEX < lengthof(_road_vehicle_info));
+	assert(e >= ROAD_ENGINES_INDEX && e < ROAD_ENGINES_INDEX + lengthof(_road_vehicle_info));
 	return &_road_vehicle_info[e - ROAD_ENGINES_INDEX];
 }
 
