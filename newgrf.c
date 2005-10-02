@@ -1027,13 +1027,19 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 				}
 
 				for (table = tableid; table < tableid + numtables; table++) {
-					assert(table < 7);
-					if (bridge->sprite_table[table] == NULL) {
-						bridge->sprite_table[table] = malloc(32 * sizeof(**bridge->sprite_table));
-					}
+					if (table < 7) {
+						if (bridge->sprite_table[table] == NULL) {
+							bridge->sprite_table[table] = malloc(32 * sizeof(**bridge->sprite_table));
+						}
 
-					for (sprite = 0; sprite < 32; sprite++)
-						bridge->sprite_table[table][sprite] = grf_load_dword(&buf);
+						for (sprite = 0; sprite < 32; sprite++)
+							bridge->sprite_table[table][sprite] = grf_load_dword(&buf);
+					} else {
+						grfmsg(GMS_WARN, "BridgeChangeInfo: Table %d >= 7, skipping.", table);
+						// Skip past invalid data.
+						for (sprite = 0; sprite < 32; sprite++)
+							grf_load_dword(&buf);
+					}
 				}
 			}
 			break;
@@ -2272,10 +2278,8 @@ static void ResetNewGRFData(void)
 	for (i = 0; i < MAX_BRIDGES; i++) {
 		if (_bridge[i].sprite_table != NULL) {
 			byte j;
-			for (j = 0; j < 7; j++) {
-				if (_bridge[i].sprite_table[j] != NULL)
-					free(_bridge[i].sprite_table[j]);
-			}
+			for (j = 0; j < 7; j++)
+				free(_bridge[i].sprite_table[j]);
 			free(_bridge[i].sprite_table);
 		}
 	}
