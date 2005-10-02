@@ -131,8 +131,8 @@ uint InteractiveRandomRange(uint max);
 
 
 // Used for profiling
-#define TIC() { extern uint32 rdtsc(void); uint32 _xxx_ = rdtsc(); static float __avg__;
-#define TOC(s) 	_xxx_ = rdtsc() - _xxx_; __avg__=__avg__*0.99+_xxx_*0.01; printf("%s: %8d %f\n", s, _xxx_,__avg__); }
+#define TIC() { extern uint32 _rdtsc(void); uint32 _xxx_ = _rdtsc(); static float __avg__;
+#define TOC(s) 	_xxx_ = _rdtsc() - _xxx_; __avg__=__avg__*0.99+_xxx_*0.01; printf("%s: %8d %f\n", s, _xxx_,__avg__); }
 
 
 void SetDate(uint date);

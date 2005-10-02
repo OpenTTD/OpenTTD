@@ -121,14 +121,25 @@
 #  define NOT_REACHED() _assume(0)
 # endif
 int CDECL snprintf(char *str, size_t size, const char *format, ...);
+#if _MSC_VER < 1400
 int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap);
+#endif
 # undef TTD_ALIGNMENT_4
 # undef TTD_ALIGNMENT_2
 # define GCC_PACK
 #endif
 
+// Needed for old PlatformSDK versions (e.g. VC6)
+#if defined(WIN32) && !defined(_WIN64) && !defined(WIN64)
+#	ifndef _W64
+#		define _W64
+#	endif
+typedef _W64 int INT_PTR, *PINT_PTR;
+typedef _W64 unsigned int UINT_PTR, *PUINT_PTR;
+#endif
+
 // Windows has always LITTLE_ENDIAN
-#if defined(WIN32) || defined(__OS2__)
+#if defined(WIN32) || defined(__OS2__) || defined(WIN64)
   #define TTD_LITTLE_ENDIAN
 #else
 // Else include endian[target/host].h, which has the endian-type, autodetected by the Makefile

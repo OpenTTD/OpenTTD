@@ -7,6 +7,11 @@
 #include "macros.h"
 #include "map.h"
 
+#if defined(_MSC_VER) && _MSC_VER >= 1400 /* VStudio 2005 is stupid! */
+/* Why the hell is that not in all MSVC headers?? */
+_CRTIMP void __cdecl _assert(void *, void *, unsigned);
+#endif
+
 uint _map_log_x;
 uint _map_size_x;
 uint _map_size_y;

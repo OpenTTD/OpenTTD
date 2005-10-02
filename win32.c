@@ -61,6 +61,11 @@ bool LoadLibraryList(Function proc[], const char* dll)
 }
 
 #ifdef _MSC_VER
+#	ifdef _M_AMD64
+void* _get_save_esp(void);
+uint64 _rdtsc(void);
+#	endif
+
 static const char *_exception_string;
 #endif
 
@@ -452,6 +457,37 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	if (_exception_string)
 		output += sprintf(output, "Reason: %s\r\n", _exception_string);
 
+#ifdef _M_AMD64
+	output += sprintf(output, "Exception %.8X at %.16IX\r\n"
+		"Registers:\r\n"
+		"RAX: %.16llX RBX: %.16llX RCX: %.16llX RDX: %.16llX\r\n"
+		"RSI: %.16llX RDI: %.16llX RBP: %.16llX RSP: %.16llX\r\n"
+		"R8:  %.16llX R9:  %.16llX R10: %.16llX R11: %.16llX\r\n"
+		"R12: %.16llX R13: %.16llX R14: %.16llX R15: %.16llX\r\n"
+		"RIP: %.16llX EFLAGS: %.8X\r\n"
+		"\r\nBytes at CS:RIP:\r\n",
+		ep->ExceptionRecord->ExceptionCode,
+		ep->ExceptionRecord->ExceptionAddress,
+		ep->ContextRecord->Rax,
+		ep->ContextRecord->Rbx,
+		ep->ContextRecord->Rcx,
+		ep->ContextRecord->Rdx,
+		ep->ContextRecord->Rsi,
+		ep->ContextRecord->Rdi,
+		ep->ContextRecord->Rbp,
+		ep->ContextRecord->Rsp,
+		ep->ContextRecord->R8,
+		ep->ContextRecord->R9,
+		ep->ContextRecord->R10,
+		ep->ContextRecord->R11,
+		ep->ContextRecord->R12,
+		ep->ContextRecord->R13,
+		ep->ContextRecord->R14,
+		ep->ContextRecord->R15,
+		ep->ContextRecord->Rip,
+		ep->ContextRecord->EFlags
+	);
+#else
 	output += sprintf(output, "Exception %.8X at %.8X\r\n"
 		"Registers:\r\n"
 		" EAX: %.8X EBX: %.8X ECX: %.8X EDX: %.8X\r\n"
@@ -471,9 +507,14 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 		ep->ContextRecord->Eip,
 		ep->ContextRecord->EFlags
 	);
+#endif
 
 	{
+#ifdef _M_AMD64
+		byte *b = (byte*)ep->ContextRecord->Rip;
+#else
 		byte *b = (byte*)ep->ContextRecord->Eip;
+#endif
 		int i;
 		for (i = 0; i != 24; i++) {
 			if (IsBadReadPtr(b, 1)) {
@@ -491,7 +532,11 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 
 	{
 		int i,j;
+#ifdef _M_AMD64
+		uint32 *b = (uint32*)ep->ContextRecord->Rsp;
+#else
 		uint32 *b = (uint32*)ep->ContextRecord->Esp;
+#endif
 		for (j = 0; j != 24; j++) {
 			for (i = 0; i != 8; i++) {
 				if (IsBadReadPtr(b,sizeof(uint32))) {
@@ -530,8 +575,13 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	CloseConsoleLogIfActive();
 
 	if (_safe_esp) {
+#ifdef _M_AMD64
+		ep->ContextRecord->Rip = (DWORD64)Handler2;
+		ep->ContextRecord->Rsp = (DWORD64)_safe_esp;
+#else
 		ep->ContextRecord->Eip = (DWORD)Handler2;
 		ep->ContextRecord->Esp = (DWORD)_safe_esp;
+#endif
 		return EXCEPTION_CONTINUE_EXECUTION;
 	}
 
@@ -541,9 +591,13 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 
 static void Win32InitializeExceptions(void)
 {
+#ifdef _M_AMD64
+	_safe_esp = _get_save_esp();
+#else
 	_asm {
 		mov _safe_esp, esp
 	}
+#endif
 
 	SetUnhandledExceptionFilter(ExceptionHandler);
 }
@@ -997,8 +1051,8 @@ static int ParseCommandLine(char *line, char **argv, int max_argc)
 }
 
 
-#if defined(_MSC_VER)
-uint32 _declspec(naked) rdtsc(void)
+#if defined(_MSC_VER) && !defined(_M_AMD64)
+uint64 _declspec(naked) _rdtsc(void)
 {
 	_asm {
 		rdtsc
@@ -1025,9 +1079,9 @@ void CreateConsole(void)
 
 	// redirect unbuffered STDIN, STDOUT, STDERR to the console
 #if !defined(__CYGWIN__)
-	*stdout = *_fdopen( _open_osfhandle((long)hand, _O_TEXT), "w" );
-	*stdin = *_fdopen(_open_osfhandle((long)GetStdHandle(STD_INPUT_HANDLE), _O_TEXT), "r" );
-	*stderr = *_fdopen(_open_osfhandle((long)GetStdHandle(STD_ERROR_HANDLE), _O_TEXT), "w" );
+	*stdout = *_fdopen( _open_osfhandle((intptr_t)hand, _O_TEXT), "w" );
+	*stdin = *_fdopen(_open_osfhandle((intptr_t)GetStdHandle(STD_INPUT_HANDLE), _O_TEXT), "r" );
+	*stderr = *_fdopen(_open_osfhandle((intptr_t)GetStdHandle(STD_ERROR_HANDLE), _O_TEXT), "w" );
 #else
 	// open_osfhandle is not in cygwin
 	*stdout = *fdopen(1, "w" );
@@ -1082,9 +1136,9 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	// setup random seed to something quite random
 #if defined(_MSC_VER)
 	{
-		uint64 seed = rdtsc();
-		_random_seeds[0][0] = GB(seed,  0, 32);
-		_random_seeds[0][1] = GB(seed, 32, 32);
+		ULARGE_INTEGER seed; seed.QuadPart = _rdtsc();
+		_random_seeds[0][0] = seed.LowPart;
+		_random_seeds[0][1] = seed.HighPart;
 	}
 #else
 	_random_seeds[0][0] = GetTickCount();
@@ -1155,6 +1209,7 @@ int CDECL snprintf(char *str, size_t size, const char *format, ...)
 	return ret;
 }
 
+#if _MSC_VER < 1400 /* Already defined in VS 2005 */
 int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap)
 {
 	int ret;
@@ -1162,6 +1217,7 @@ int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap)
 	if (ret < 0) str[size - 1] = '\0';
 	return ret;
 }
+#endif
 
 /**
  * Insert a chunk of text from the clipboard onto the textbuffer. Get TEXT clipboard

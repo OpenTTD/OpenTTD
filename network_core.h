@@ -12,10 +12,10 @@
 #ifdef ENABLE_NETWORK
 
 // Windows stuff
-#if defined(WIN32)
-#include <windows.h>
+#if defined(WIN32) || defined(WIN64)
 #include <winsock2.h>
 #include <ws2tcpip.h>
+#include <windows.h>
 
 #if !(defined(__MINGW32__) || defined(__CYGWIN__))
 	// Windows has some different names for some types..

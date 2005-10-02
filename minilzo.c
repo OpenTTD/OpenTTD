@@ -329,6 +329,13 @@ extern "C" {
 #  endif
 #endif
 #if !defined(__LZO_HAVE_PTR_T)
+#	if defined(_WIN64)
+		typedef unsigned __int64 lzo_ptr_t;
+		typedef signed __int64   lzo_sptr_r;
+#		define __LZO_HAVE_PTR_T
+#	endif
+#endif
+#if !defined(__LZO_HAVE_PTR_T)
 #  if defined(SIZEOF_CHAR_P) && defined(SIZEOF_UNSIGNED_LONG)
 #	if (SIZEOF_CHAR_P == SIZEOF_UNSIGNED_LONG)
 	   typedef unsigned long	lzo_ptr_t;

@@ -826,6 +826,9 @@
 			<File
 				RelativePath=".\ai\default\default.c">
 			</File>
+			<File
+				RelativePath=".\ai\default\default.h">
+			</File>
 			<Filter
 				Name="trolly"
 				Filter="">

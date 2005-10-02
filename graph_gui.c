@@ -824,10 +824,10 @@ static int CDECL _perf_hist_comp(const void *elem1, const void *elem2 ) {
 
 static void CompanyLeagueWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		const Player* p;
-		const Player* plist[MAX_PLAYERS];
+		Player const *plist[MAX_PLAYERS];
 		uint pl_num;
 		uint i;
 
@@ -840,7 +840,7 @@ static void CompanyLeagueWndProc(Window *w, WindowEvent *e)
 		}
 		assert(pl_num > 0);
 
-		qsort(plist, pl_num, sizeof(Player*), _perf_hist_comp);
+		qsort((void*)plist, pl_num, sizeof(Player*), _perf_hist_comp);
 
 		i = 0;
 		do {

@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-#if !defined(WIN32) || defined(__CYGWIN__)
+#if (!defined(WIN32) && !defined(WIN64)) || defined(__CYGWIN__)
 #include <unistd.h>
 #endif
 
@@ -996,7 +996,7 @@ static void WriteStringsH(const char *filename)
 		unlink("tmp.xxx");
 	} else {
 		// else rename tmp.xxx into filename
-#if defined(WIN32)
+#if defined(WIN32) || defined(WIN64)
 		unlink(filename);
 #endif
 		if (rename("tmp.xxx", filename) == -1) Fatal("rename() failed");
