@@ -575,6 +575,8 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...prili
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...prilis blizko ineho mesta
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...miesto je nepouzitelne
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...prilis vela miest
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Nie je mozne postavit viac miest
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...nie je dalsie miesto na mape
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Zvacsit velkost mesta
 STR_023C_EXPAND                                                 :{BLACK}Rozsirit
 STR_023D_RANDOM_TOWN                                            :{BLACK}Nahodne mesto
@@ -731,6 +733,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transp
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Informacie o uzemi.
 STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :Zobrazit / skryt konzolu
 STR_02D7_SCREENSHOT_CTRL_S                                      :ScreenShot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Velky ScreenShot (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :O hre 'OpenTTD'
@@ -833,6 +836,7 @@ STR_TOWNNAME_AUSTRIAN                                           :Rakuske
 STR_TOWNNAME_ROMANIAN                                           :Rumunske
 STR_TOWNNAME_CZECH                                              :Ceske
 STR_TOWNNAME_SWISS                                              :Svajciarske
+STR_TOWNNAME_DANISH                                             :Danske
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Libry ({POUNDSIGN})
@@ -1013,6 +1017,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Implici
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Implicitny servisny interval pre lode: {ORANGE}{STRING} dni/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Implicitny servisny interval pre lode: {ORANGE}vypnuty
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Vypnut servisy, ak su vypnute poruchy: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Obmedzenie rychlosti pre vagony: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Farebne novinky sa objavia v roku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Datum zaciatku hry: {ORANGE}{STRING}
@@ -2762,6 +2767,7 @@ STR_TINY_BLACK                                                  :{BLACK}{TINYFON
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Hmotnost: {GOLD}{COMMA}t
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rychlost: {GOLD}{VELOCITY}{BLACK}   Vykon: {GOLD}{COMMA}hp
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Rychlost: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cena prevadzky: {GOLD}{CURRENCY}/yr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacita: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Vyrobene: {GOLD}{NUM}{BLACK} Zivotnost: {GOLD}{COMMA} rokov

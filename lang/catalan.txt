@@ -1017,6 +1017,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Interva
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Interval de manteniment per defecte dels vaixells: {ORANGE}{STRING} díes/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Interval de manteniment per defecte dels vaixells: {ORANGE}desactivat
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Desactivar manteniment quan les averíes s'estableixen a cap: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Activa limit de velocitat per al vagó: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Les noticies en color apareixen en: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Data d'inici: {ORANGE}{STRING}
@@ -2766,6 +2767,7 @@ STR_TINY_BLACK                                                  :{BLACK}{TINYFON
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Pes: {GOLD}{COMMA}t
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocitat: {GOLD}{VELOCITY}{BLACK}   Potència: {GOLD}{COMMA}hp
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocitat: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cost d'utilització: {GOLD}{CURRENCY}/any
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacitat: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Dissenyat: {GOLD}{NUM}{BLACK} Vida: {GOLD}{COMMA} anys

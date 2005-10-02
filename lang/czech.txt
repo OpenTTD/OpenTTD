@@ -1074,6 +1074,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Základn
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Základní servisní interval pro lode: {ORANGE}{STRING} dní
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Základní servisní interval pro lode: {ORANGE}vypnuto
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Vypnout servisy, kdy¸ jsou vypnuty poruchy: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Zapnout omezení rychlosti vagonu: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Barevné noviny se objeví: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Pocatecni datum: {ORANGE}{STRING}
@@ -1615,7 +1616,7 @@ STR_205C_PIGGY_BANK                                             :Banka Prasátko
 
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
-STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
+STR_INDUSTRY_FORMAT                                             :{1:STRING} {0:TOWN}
 STR_STATION                                                     :{STATION}
 
 ##id 0x2800
@@ -1713,7 +1714,7 @@ STR_3062_BUS_STATION                                            :Autobusová zast
 STR_3063_SHIP_DOCK                                              :Dok
 STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}Zvýraznit oblast pokrytí
 STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}Nezvyraznovat oblast pokrytí
-STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Zvýraznit oblast pokrytí
+STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Zvyrazneni oblasti pokrytí
 STR_3068_DOCK                                                   :{WHITE}Pristav
 STR_3069_BUOY                                                   :Bójka
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}... bójka v ceste
@@ -1812,8 +1813,8 @@ STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nové lo¸isko uhlí nalezené v {INDUSTRY}!{}Zdvojnásobí se produkce!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nové zásoby ropy nalezené v {INDUSTRY}!{}Zdvojnásobí se produkce!
 STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Lep¨í metody pestovani {INDUSTRY} zdvojnásobí produkci!
-STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} produkce poklesla o 50 %
-STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Zamoreni skudci v {INDUSTRY}!{}Produkce poklesla o 50 %
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} produkce poklesla o 50 %.
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Zamoreni skudci v {INDUSTRY}!{}Produkce poklesla o 50 %.
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}... muze byt umisteno pouze poblí¸ okraju mapy
 STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Produkce {STRING.news} v {INDUSTRY} vzrostla o {COMMA} %!
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Produkce {STRING.news} v {INDUSTRY} poklesla o {COMMA} %!

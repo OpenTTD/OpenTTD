@@ -1017,6 +1017,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Bið mil
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Bið milli skoðana á skipum: {ORANGE}{STRING} dagar/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Bið milli skoðana á skipum: {ORANGE}óvirkt
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Hætta skoðunum þegar bilanir eru afvirktar: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Leyfa hraðatakmarkanir vagna: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Fréttir birtast í lit: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Upphafsár: {ORANGE}{STRING}
@@ -2766,6 +2767,7 @@ STR_TINY_BLACK                                                  :{BLACK}{TINYFON
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Þyngd: {GOLD}{COMMA}tonn
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hámarkshraði: {GOLD}{VELOCITY}{BLACK}   Hestöfl: {GOLD}{COMMA}
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hraði: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Rekstrarkostnaður: {GOLD}{CURRENCY} á ári
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Burðargeta: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Hönnun: {GOLD}{NUM}{BLACK} Endingartími: {GOLD}{COMMA} ár
