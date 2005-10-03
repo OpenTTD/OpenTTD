@@ -136,6 +136,16 @@ int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap);
 #	endif
 typedef _W64 int INT_PTR, *PINT_PTR;
 typedef _W64 unsigned int UINT_PTR, *PUINT_PTR;
+
+#ifndef _INTPTR_T_DEFINED
+#ifdef  _WIN64
+typedef __int64             intptr_t;
+#else
+typedef _W64 int            intptr_t;
+#endif
+#define _INTPTR_T_DEFINED
+#endif
+
 #endif
 
 // Windows has always LITTLE_ENDIAN
