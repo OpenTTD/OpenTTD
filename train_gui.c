@@ -538,7 +538,7 @@ found_it:
 	return 0;
 }
 
-static void TrainDepotMoveVehicle(Vehicle *wagon, int sel, Vehicle *head)
+static void TrainDepotMoveVehicle(Vehicle *wagon, VehicleID sel, Vehicle *head)
 {
 	Vehicle *v;
 
@@ -559,13 +559,13 @@ static void TrainDepotMoveVehicle(Vehicle *wagon, int sel, Vehicle *head)
 	if (wagon == v)
 		return;
 
-	DoCommandP(v->tile, v->index + ((wagon==NULL ? (uint32)-1 : wagon->index) << 16), _ctrl_pressed ? 1 : 0, NULL, CMD_MOVE_RAIL_VEHICLE | CMD_MSG(STR_8837_CAN_T_MOVE_VEHICLE));
+	DoCommandP(v->tile, v->index + ((wagon == NULL ? INVALID_VEHICLE : wagon->index) << 16), _ctrl_pressed ? 1 : 0, NULL, CMD_MOVE_RAIL_VEHICLE | CMD_MSG(STR_8837_CAN_T_MOVE_VEHICLE));
 }
 
 static void TrainDepotClickTrain(Window *w, int x, int y)
 {
 	GetDepotVehiclePtData gdvp;
-	int mode, sel;
+	int mode;
 	Vehicle *v;
 
 	mode = GetVehicleFromTrainDepotWndPt(w, x, y, &gdvp);
@@ -576,9 +576,10 @@ static void TrainDepotClickTrain(Window *w, int x, int y)
 	v = gdvp.wagon;
 
 	switch(mode) {
-	case 0: // start dragging of vehicle
-		sel = (int16)WP(w,traindepot_d).sel;
-		if (sel != -1) {
+	case 0: { // start dragging of vehicle
+		VehicleID sel = WP(w, traindepot_d).sel;
+
+		if (sel != INVALID_VEHICLE) {
 			WP(w,traindepot_d).sel = INVALID_VEHICLE;
 			TrainDepotMoveVehicle(v, sel, gdvp.head);
 		} else if (v != NULL) {
@@ -587,6 +588,7 @@ static void TrainDepotClickTrain(Window *w, int x, int y)
 			SetWindowDirty(w);
 		}
 		break;
+	}
 
 	case -1: // show info window
 		ShowTrainViewWindow(v);

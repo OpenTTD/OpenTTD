@@ -318,7 +318,7 @@ static void DrawStationViewWindow(Window *w)
 	StringID str;
 	uint16 station_id;
 
-	station_id = (uint16)w->window_number;
+	station_id = w->window_number;
 
 	st = GetStation(w->window_number);
 

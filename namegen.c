@@ -3,12 +3,13 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
+#include "macros.h"
 #include "namegen.h"
 #include "table/namegen.h"
 
 static inline uint32 SeedChance(int shift_by, int max, uint32 seed)
 {
-	return ((uint16)(seed >> shift_by) * max) >> 16;
+	return (GB(seed, shift_by, 16) * max) >> 16;
 }
 
 static inline uint32 SeedModChance(int shift_by, int max, uint32 seed)

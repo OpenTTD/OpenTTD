@@ -1239,8 +1239,7 @@ static void MaybeCrashAirplane(Vehicle *v)
 		prob = 0x10000 / 20;
 	}
 
-	if ((uint16)Random() > prob)
-		return;
+	if (GB(Random(), 0, 16) > prob) return;
 
 	// Crash the airplane. Remove all goods stored at the station.
 	for(i=0; i!=NUM_CARGO; i++) {

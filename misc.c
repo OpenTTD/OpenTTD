@@ -51,12 +51,12 @@ uint32 t;
 #if defined(RANDOM_DEBUG) && !defined(MERSENNE_TWISTER)
 uint DoRandomRange(uint max, int line, const char *file)
 {
-	return (uint16)DoRandom(line, file) * max >> 16;
+	return GB(DoRandom(line, file), 0, 16) * max >> 16;
 }
 #else
 uint RandomRange(uint max)
 {
-	return (uint16)Random() * max >> 16;
+	return GB(Random(), 0, 16) * max >> 16;
 }
 #endif
 
@@ -71,7 +71,7 @@ uint32 InteractiveRandom(void)
 
 uint InteractiveRandomRange(uint max)
 {
-	return (uint16)InteractiveRandom() * max >> 16;
+	return GB(InteractiveRandom(), 0, 16) * max >> 16;
 }
 
 void SetDate(uint date)

@@ -977,13 +977,13 @@ static void DoDisaster(void)
 	if (j == 0)
 		return;
 
-	_disaster_initprocs[buf[(uint16)Random() * j >> 16]]();
+	_disaster_initprocs[buf[GB(Random(), 0, 16) * j >> 16]]();
 }
 
 
 static void ResetDisasterDelay(void)
 {
-	_disaster_delay = (int)(Random() & 0x1FF) + 730;
+	_disaster_delay = GB(Random(), 0, 9) + 730;
 }
 
 void DisasterDailyLoop(void)

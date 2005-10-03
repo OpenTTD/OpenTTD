@@ -1004,7 +1004,7 @@ int8 SaveHighScoreValueNetwork(void)
 		memset(_highscore_table[LAST_HS_ITEM], 0, sizeof(_highscore_table[0]));
 
 		/* Copy over Top5 companies */
-		for (i = 0; i < lengthof(_highscore_table[LAST_HS_ITEM]) && i < (uint8)count; i++) {
+		for (i = 0; i < lengthof(_highscore_table[LAST_HS_ITEM]) && i < count; i++) {
 			char buf[sizeof(_highscore_table[0]->company)];
 
 			hs = &_highscore_table[LAST_HS_ITEM][i];
@@ -1019,7 +1019,7 @@ int8 SaveHighScoreValueNetwork(void)
 			hs->title = EndGameGetPerformanceTitleFromValue(hs->score);
 
 			// get the ranking of the local player
-			if ((*p_cur)->index == (int8)_local_player)
+			if ((*p_cur)->index == _local_player)
 				player = i;
 
 			p_cur++;

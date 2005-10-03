@@ -593,9 +593,9 @@ static void GrowTownInTile(TileIndex *tile_ptr, uint mask, int block, Town *t1)
 		// Randomize new road block numbers
 		a = block;
 		b = block ^ 2;
-		r = (uint16)Random();
+		r = GB(Random(), 0, 16);
 		if (r <= 0x4000) do {
-			a = (int)Random() & 3;
+			a = GB(Random(), 0, 2);
 		} while(a == b);
 
 		if (!IsRoadAllowedHere(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[a])), a)) {

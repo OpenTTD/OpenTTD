@@ -763,23 +763,25 @@ static Vehicle *FindGoodVehiclePos(const Vehicle *src)
  */
 int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
+	VehicleID s = GB(p1, 0, 16);
+	VehicleID d = GB(p1, 16, 16);
 	Vehicle *src, *dst, *src_head, *dst_head;
 	bool is_loco;
 
-	if (!IsVehicleIndex(p1 & 0xFFFF)) return CMD_ERROR;
+	if (!IsVehicleIndex(s)) return CMD_ERROR;
 
-	src = GetVehicle(p1 & 0xFFFF);
+	src = GetVehicle(s);
 
 	if (src->type != VEH_Train) return CMD_ERROR;
 
 	is_loco = !(RailVehInfo(src->engine_type)->flags & RVI_WAGON) && IS_FIRSTHEAD_SPRITE(src->spritenum);
 
 	// if nothing is selected as destination, try and find a matching vehicle to drag to.
-	if (((int32)p1 >> 16) == -1) {
+	if (d == INVALID_VEHICLE) {
 		dst = NULL;
 		if (!is_loco) dst = FindGoodVehiclePos(src);
 	} else {
-		dst = GetVehicle((int32)p1 >> 16);
+		dst = GetVehicle(d);
 	}
 
 	// don't move the same vehicle..
@@ -1759,14 +1761,14 @@ static void HandleLocomotiveSmokeCloud(Vehicle *v)
 
 		case 1:
 			// diesel smoke
-			if (u->cur_speed <= 40 && !IsTileDepotType(v->tile, TRANSPORT_RAIL) && !IsTunnelTile(v->tile) && (uint16)Random() <= 0x1E00) {
+			if (u->cur_speed <= 40 && !IsTileDepotType(v->tile, TRANSPORT_RAIL) && !IsTunnelTile(v->tile) && GB(Random(), 0, 16) <= 0x1E00) {
 				CreateEffectVehicleRel(v, 0, 0, 10, EV_DIESEL_SMOKE);
 			}
 			break;
 
 		case 2:
 			// blue spark
-			if ( (v->tick_counter&0x3) == 0 && !IsTileDepotType(v->tile, TRANSPORT_RAIL) && !IsTunnelTile(v->tile) && (uint16)Random() <= 0x5B0) {
+			if (GB(v->tick_counter, 0, 2) == 0 && !IsTileDepotType(v->tile, TRANSPORT_RAIL) && !IsTunnelTile(v->tile) && GB(Random(), 0, 16) <= 0x5B0) {
 				CreateEffectVehicleRel(v, 0, 0, 10, EV_ELECTRIC_SPARK);
 			}
 			break;
@@ -3016,7 +3018,7 @@ static void HandleCrashedTrain(Vehicle *v)
 		CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
 	}
 
-	if (state <= 200 && (uint16)(r=Random()) <= 0x2492) {
+	if (state <= 200 && GB(r = Random(), 0, 16) <= 0x2492) {
 		index = (r * 10 >> 16);
 
 		u = v;
@@ -3082,16 +3084,17 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 {
 	TileIndex tile;
 	uint x,y;
+	uint16 break_speed;
 	int t;
 	uint32 ts;
 	byte trackdir;
 
-	if ((uint)(t=v->breakdown_ctr) > 1) {
+	t = v->breakdown_ctr;
+	if (t > 1) {
 		v->vehstatus |= VS_TRAIN_SLOWING;
 
-		t = _breakdown_speeds[ ((~t) >> 4) & 0xF];
-		if ((uint16)t <= v->cur_speed)
-			v->cur_speed = t;
+		break_speed = _breakdown_speeds[GB(~t, 4, 4)];
+		if (break_speed < v->cur_speed) v->cur_speed = break_speed;
 	} else {
 		v->vehstatus &= ~VS_TRAIN_SLOWING;
 	}
@@ -3160,7 +3163,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 		break;
 	}
 
-	if ( (uint16)ts != 0) {
+	if (GB(ts, 0, 16) != 0) {
 		/* If we approach a rail-piece which we can't enter, don't enter it! */
 		if (x + 4 > 15 && !CheckCompatibleRail(v, tile)) {
 			v->cur_speed = 0;
@@ -3208,10 +3211,9 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 
 	// slow down
 	v->vehstatus |= VS_TRAIN_SLOWING;
-	t = _breakdown_speeds[x & 0xF];
-	if (!(v->direction&1)) t>>=1;
-	if ((uint16)t < v->cur_speed)
-		v->cur_speed = t;
+	break_speed = _breakdown_speeds[x & 0xF];
+	if (!(v->direction&1)) break_speed >>= 1;
+	if (break_speed < v->cur_speed) v->cur_speed = break_speed;
 
 	return true;
 }

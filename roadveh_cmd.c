@@ -987,7 +987,7 @@ static int PickRandomBit(uint bits)
 			num++;
 	} while (b >>= 1);
 
-	num = ((uint16)Random() * num >> 16);
+	num = GB(Random(), 0, 16) * num >> 16;
 
 	for(i=0; !((bits & 1) && ((int)--num) < 0); bits>>=1,i++);
 	return i;
@@ -1029,8 +1029,8 @@ static int RoadFindPathToDest(Vehicle *v, TileIndex tile, int enterdir)
 	{
 		uint32 r;
 		r = GetTileTrackStatus(tile, TRANSPORT_ROAD);
-		signal = (uint16)(r >> 16);
-		bitmask = (uint16)r;
+		signal  = GB(r, 16, 16);
+		bitmask = GB(r,  0, 16);
 	}
 
 	if (IsTileType(tile, MP_STREET)) {
