@@ -708,7 +708,7 @@ start_at:
 				(uint)(_m[tile].m5 & 3) != (direction ^ 2)) {
 				/* This is a tunnel tile */
 				/* We are not just driving out of the tunnel */
-				if ( (uint)(_m[tile].m5 & 3) != direction || ((_m[tile].m5>>1)&6) != tpf->tracktype)
+				if ( (uint)(_m[tile].m5 & 3) != direction || GB(_m[tile].m5, 2, 2) != tpf->tracktype)
 					/* We are not driving into the tunnel, or it
 					 * is an invalid tunnel */
 					continue;
