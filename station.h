@@ -253,7 +253,7 @@ typedef struct StationSpec {
 
 	/* Sprite offsets for renderdata->seq->image. spritegroup[0] is default
 	 * whilst spritegroup[1] is "GC_PURCHASE". */
-	SpriteGroup spritegroup[2];
+	SpriteGroup *spritegroup[2];
 } StationSpec;
 
 /* Here, @stid is local per-GRFFile station index. If spec->localidx is not yet

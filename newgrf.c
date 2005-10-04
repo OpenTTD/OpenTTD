@@ -1210,11 +1210,11 @@ static void VehicleChangeInfo(byte *buf, int len)
  * @param value The value that was used to represent this callback result
  * @return A spritegroup representing that callback result
  */
-SpriteGroup NewCallBackResult(uint16 value)
+SpriteGroup *NewCallBackResultSpriteGroup(uint16 value)
 {
-	SpriteGroup group;
+	SpriteGroup *group = calloc(1, sizeof(*group));
 
-	group.type = SGT_CALLBACK;
+	group->type = SGT_CALLBACK;
 
 	// Old style callback results have the highest byte 0xFF so signify it is a callback result
 	// New style ones only have the highest bit set (allows 15-bit results, instead of just 8)
@@ -1223,7 +1223,7 @@ SpriteGroup NewCallBackResult(uint16 value)
 	else
 		value &= ~0x8000;
 
-	group.g.callback.result = value;
+	group->g.callback.result = value;
 
 	return group;
 }
@@ -1308,8 +1308,11 @@ static void NewSpriteGroup(byte *buf, int len)
 	numloading = buf[4];
 
 	if (setid >= _cur_grffile->spritegroups_count) {
-		_cur_grffile->spritegroups_count = setid + 1;
-		_cur_grffile->spritegroups = realloc(_cur_grffile->spritegroups, _cur_grffile->spritegroups_count * sizeof(*_cur_grffile->spritegroups));
+		// Allocate memory for new sprite group references.
+		_cur_grffile->spritegroups = realloc(_cur_grffile->spritegroups, (setid + 1) * sizeof(*_cur_grffile->spritegroups));
+		// Initialise new space to NULL
+		for (; _cur_grffile->spritegroups_count < (setid + 1); _cur_grffile->spritegroups_count++)
+			_cur_grffile->spritegroups[_cur_grffile->spritegroups_count] = NULL;
 	}
 
 	if (numloaded == 0x81 || numloaded == 0x82) {
@@ -1354,8 +1357,8 @@ static void NewSpriteGroup(byte *buf, int len)
 		dg->ranges = calloc(dg->num_ranges, sizeof(*dg->ranges));
 		for (i = 0; i < dg->num_ranges; i++) {
 			groupid = grf_load_word(&buf);
-			if (groupid & 0x8000) {
-				dg->ranges[i].group = NewCallBackResult(groupid);
+			if (HASBIT(groupid, 15)) {
+				dg->ranges[i].group = NewCallBackResultSpriteGroup(groupid);
 			} else if (groupid >= _cur_grffile->spritegroups_count) {
 				/* This doesn't exist for us. */
 				grf_load_word(&buf); // skip range
@@ -1364,7 +1367,7 @@ static void NewSpriteGroup(byte *buf, int len)
 			} else {
 			/* XXX: If multiple surreal sets attach a surreal
 			 * set this way, we are in trouble. */
-				dg->ranges[i].group = *_cur_grffile->spritegroups[groupid];
+				dg->ranges[i].group = _cur_grffile->spritegroups[groupid];
 			}
 
 			dg->ranges[i].low = grf_load_byte(&buf);
@@ -1372,17 +1375,15 @@ static void NewSpriteGroup(byte *buf, int len)
 		}
 
 		groupid = grf_load_word(&buf);
-		if (groupid & 0x8000) {
-			dg->default_group = malloc(sizeof(*dg->default_group));
-			*dg->default_group = NewCallBackResult(groupid);
+		if (HASBIT(groupid, 15)) {
+			dg->default_group = NewCallBackResultSpriteGroup(groupid);
 		} else if (groupid >= _cur_grffile->spritegroups_count) {
 			/* This spritegroup stinks. */
 			free(dg->ranges), dg->ranges = NULL;
 			grfmsg(GMS_WARN, "NewSpriteGroup(%02x:0x%x): Default groupid %04x is cargo callback or unknown, ignoring spritegroup.", setid, numloaded, groupid);
 			return;
 		} else {
-			dg->default_group = malloc(sizeof(*dg->default_group));
-			memcpy(dg->default_group, _cur_grffile->spritegroups[groupid], sizeof(*dg->default_group));
+			dg->default_group = _cur_grffile->spritegroups[groupid];
 		}
 
 		_cur_grffile->spritegroups[setid] = group;
@@ -1428,7 +1429,7 @@ static void NewSpriteGroup(byte *buf, int len)
 			}
 			/* XXX: If multiple surreal sets attach a surreal
 			 * set this way, we are in trouble. */
-			rg->groups[i] = *_cur_grffile->spritegroups[groupid];
+			rg->groups[i] = _cur_grffile->spritegroups[groupid];
 		}
 
 		_cur_grffile->spritegroups[setid] = group;
@@ -1556,7 +1557,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 					continue;
 				}
 
-				stat->spritegroup[1] = *_cur_grffile->spritegroups[groupid];
+				stat->spritegroup[1] = _cur_grffile->spritegroups[groupid];
 			}
 		}
 
@@ -1574,7 +1575,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 				uint8 stid = buf[3 + i];
 				StationSpec *stat = &_cur_grffile->stations[stid];
 
-				stat->spritegroup[0] = *_cur_grffile->spritegroups[groupid];
+				stat->spritegroup[0] = _cur_grffile->spritegroups[groupid];
 				stat->grfid = _cur_grffile->grfid;
 				SetCustomStation(stid, stat);
 				stat->sclass = STAT_CLASS_NONE;

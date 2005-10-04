@@ -31,7 +31,7 @@ SpriteGroup *EvalDeterministicSpriteGroup(const DeterministicSpriteGroup *dsg, i
 		DeterministicSpriteGroupRange *range = &dsg->ranges[i];
 
 		if (range->low <= value && value <= range->high)
-			return &range->group;
+			return range->group;
 	}
 
 	return dsg->default_group;
@@ -72,7 +72,7 @@ SpriteGroup *EvalRandomizedSpriteGroup(const RandomizedSpriteGroup *rsg, byte ra
 	mask = (rsg->num_groups - 1) << rsg->lowest_randbit;
 	index = (random_bits & mask) >> rsg->lowest_randbit;
 	assert(index < rsg->num_groups);
-	return &rsg->groups[index];
+	return rsg->groups[index];
 }
 
 byte RandomizedSpriteGroupTriggeredBits(const RandomizedSpriteGroup *rsg,

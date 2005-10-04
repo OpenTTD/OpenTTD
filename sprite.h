@@ -107,7 +107,7 @@ typedef struct RandomizedSpriteGroup {
 	byte num_groups; // must be power of 2
 
 	// Take the group with appropriate index:
-	SpriteGroup *groups;
+	SpriteGroup **groups;
 } RandomizedSpriteGroup;
 
 typedef struct CallbackResultSpriteGroup {
@@ -133,7 +133,7 @@ struct SpriteGroup {
 };
 
 struct DeterministicSpriteGroupRange {
-	SpriteGroup group;
+	SpriteGroup *group;
 	byte low;
 	byte high;
 };

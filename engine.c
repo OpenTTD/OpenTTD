@@ -240,7 +240,7 @@ uint32 _engine_refit_masks[TOTAL_NUM_ENGINES];
 typedef struct WagonOverride {
 	byte *train_id;
 	int trains;
-	SpriteGroup group;
+	SpriteGroup *group;
 } WagonOverride;
 
 typedef struct WagonOverrides {
@@ -265,7 +265,7 @@ void SetWagonOverrideSprites(EngineID engine, SpriteGroup *group, byte *train_id
 	/* FIXME: If we are replacing an override, release original SpriteGroup
 	 * to prevent leaks. But first we need to refcount the SpriteGroup.
 	 * --pasky */
-	wo->group = *group;
+	wo->group = group;
 	wo->trains = trains;
 	wo->train_id = malloc(trains);
 	memcpy(wo->train_id, train_id, trains);
@@ -287,7 +287,7 @@ static const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, byte overri
 
 		for (j = 0; j < wo->trains; j++) {
 			if (wo->train_id[j] == overriding_engine)
-				return &wo->group;
+				return wo->group;
 		}
 	}
 	return NULL;
@@ -298,14 +298,14 @@ static const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, byte overri
 // (It isn't and shouldn't be like this in the GRF files since new cargo types
 // may appear in future - however it's more convenient to store it like this in
 // memory. --pasky)
-static SpriteGroup _engine_custom_sprites[TOTAL_NUM_ENGINES][NUM_GLOBAL_CID];
+static SpriteGroup *engine_custom_sprites[TOTAL_NUM_ENGINES][NUM_GLOBAL_CID];
 
 void SetCustomEngineSprites(EngineID engine, byte cargo, SpriteGroup *group)
 {
 	/* FIXME: If we are replacing an override, release original SpriteGroup
 	 * to prevent leaks. But first we need to refcount the SpriteGroup.
 	 * --pasky */
-	_engine_custom_sprites[engine][cargo] = *group;
+	engine_custom_sprites[engine][cargo] = group;
 }
 
 typedef SpriteGroup *(*resolve_callback)(const SpriteGroup *spritegroup,
@@ -314,6 +314,9 @@ typedef SpriteGroup *(*resolve_callback)(const SpriteGroup *spritegroup,
 static const SpriteGroup* ResolveVehicleSpriteGroup(const SpriteGroup *spritegroup,
 	const Vehicle *veh, uint16 callback_info, resolve_callback resolve_func)
 {
+	if (spritegroup == NULL)
+		return NULL;
+
 	//debug("spgt %d", spritegroup->type);
 	switch (spritegroup->type) {
 		case SGT_REAL:
@@ -341,7 +344,7 @@ static const SpriteGroup* ResolveVehicleSpriteGroup(const SpriteGroup *spritegro
 					 * That means we should get the first target
 					 * (NOT the default one). */
 					if (dsg->num_ranges > 0) {
-						target = &dsg->ranges[0].group;
+						target = dsg->ranges[0].group;
 					} else {
 						target = dsg->default_group;
 					}
@@ -476,7 +479,7 @@ static const SpriteGroup* ResolveVehicleSpriteGroup(const SpriteGroup *spritegro
 				/* Purchase list of something. Show the first one. */
 				assert(rsg->num_groups > 0);
 				//debug("going for %p: %d", rsg->groups[0], rsg->groups[0].type);
-				return resolve_func(&rsg->groups[0], NULL, callback_info, resolve_func);
+				return resolve_func(rsg->groups[0], NULL, callback_info, resolve_func);
 			}
 
 			if (rsg->var_scope == VSG_SCOPE_PARENT) {
@@ -504,7 +507,7 @@ static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *
 		assert(cargo != GC_INVALID);
 	}
 
-	group = &_engine_custom_sprites[engine][cargo];
+	group = engine_custom_sprites[engine][cargo];
 
 	if (v != NULL && v->type == VEH_Train) {
 		const SpriteGroup *overset = GetWagonOverrideSpriteSet(engine, v->u.rail.first_engine);
@@ -539,11 +542,14 @@ int GetCustomEngineSprite(EngineID engine, const Vehicle *v, byte direction)
 	group = GetVehicleSpriteGroup(engine, v);
 	group = ResolveVehicleSpriteGroup(group, v, 0, (resolve_callback) ResolveVehicleSpriteGroup);
 
-	if (group->type == SGT_REAL && group->g.real.sprites_per_set == 0 && cargo != GC_DEFAULT) {
+	if (group == NULL && cargo != GC_DEFAULT) {
 		// This group is empty but perhaps there'll be a default one.
-		group = ResolveVehicleSpriteGroup(&_engine_custom_sprites[engine][GC_DEFAULT], v, 0,
+		group = ResolveVehicleSpriteGroup(engine_custom_sprites[engine][GC_DEFAULT], v, 0,
 		                                (resolve_callback) ResolveVehicleSpriteGroup);
 	}
+
+	if (group == NULL)
+		return 0;
 
 	assert(group->type == SGT_REAL);
 	rsg = &group->g.real;
@@ -605,7 +611,7 @@ uint16 GetCallBackResult(uint16 callback_info, EngineID engine, const Vehicle *v
 	if (v != NULL)
 		cargo = _global_cargo_id[_opt.landscape][v->cargo_type];
 
-	group = &_engine_custom_sprites[engine][cargo];
+	group = engine_custom_sprites[engine][cargo];
 
 	if (v != NULL && v->type == VEH_Train) {
 		const SpriteGroup *overset = GetWagonOverrideSpriteSet(engine, v->u.rail.first_engine);
@@ -615,13 +621,13 @@ uint16 GetCallBackResult(uint16 callback_info, EngineID engine, const Vehicle *v
 
 	group = ResolveVehicleSpriteGroup(group, v, callback_info, (resolve_callback) ResolveVehicleSpriteGroup);
 
-	if (group->type == SGT_REAL && group->g.real.sprites_per_set == 0 && cargo != GC_DEFAULT) {
+	if (group == NULL && cargo != GC_DEFAULT) {
 		// This group is empty but perhaps there'll be a default one.
-		group = ResolveVehicleSpriteGroup(&_engine_custom_sprites[engine][GC_DEFAULT], v, callback_info,
+		group = ResolveVehicleSpriteGroup(engine_custom_sprites[engine][GC_DEFAULT], v, callback_info,
 		                                (resolve_callback) ResolveVehicleSpriteGroup);
 	}
 
-	if (group->type != SGT_CALLBACK)
+	if (group == NULL || group->type != SGT_CALLBACK)
 		return CALLBACK_FAILED;
 
 	return group->g.callback.result;
@@ -637,6 +643,9 @@ static byte _vsg_bits_to_reseed;
 static const SpriteGroup *TriggerVehicleSpriteGroup(const SpriteGroup *spritegroup,
 	Vehicle *veh, uint16 callback_info, resolve_callback resolve_func)
 {
+	if (spritegroup == NULL)
+		return NULL;
+
 	if (spritegroup->type == SGT_RANDOMIZED) {
 		_vsg_bits_to_reseed |= RandomizedSpriteGroupTriggeredBits(
 			&spritegroup->g.random,
@@ -659,11 +668,14 @@ static void DoTriggerVehicle(Vehicle *veh, VehicleTrigger trigger, byte base_ran
 	group = TriggerVehicleSpriteGroup(GetVehicleSpriteGroup(veh->engine_type, veh), veh, 0,
 	                                  (resolve_callback) TriggerVehicleSpriteGroup);
 
-	if (group->type == SGT_REAL && group->g.real.sprites_per_set == 0 && veh->cargo_type != GC_DEFAULT) {
+	if (group == NULL && veh->cargo_type != GC_DEFAULT) {
 		// This group turned out to be empty but perhaps there'll be a default one.
-		group = TriggerVehicleSpriteGroup(&_engine_custom_sprites[veh->engine_type][GC_DEFAULT], veh, 0,
+		group = TriggerVehicleSpriteGroup(engine_custom_sprites[veh->engine_type][GC_DEFAULT], veh, 0,
 		                                  (resolve_callback) TriggerVehicleSpriteGroup);
 	}
+
+	if (group == NULL)
+		return;
 
 	assert(group->type == SGT_REAL);
 	rsg = &group->g.real;

@@ -1286,7 +1286,7 @@ static const RealSpriteGroup *ResolveStationSpriteGroup(const SpriteGroup *spg, 
 					 * That means we should get the first target
 					 * (NOT the default one). */
 					if (dsg->num_ranges > 0) {
-						target = &dsg->ranges[0].group;
+						target = dsg->ranges[0].group;
 					} else {
 						target = dsg->default_group;
 					}
@@ -1346,7 +1346,7 @@ static const RealSpriteGroup *ResolveStationSpriteGroup(const SpriteGroup *spg, 
 
 uint32 GetCustomStationRelocation(const StationSpec *spec, const Station *st, byte ctype)
 {
-	const RealSpriteGroup *rsg = ResolveStationSpriteGroup(&spec->spritegroup[ctype], st);
+	const RealSpriteGroup *rsg = ResolveStationSpriteGroup(spec->spritegroup[ctype], st);
 
 	if (rsg->sprites_per_set != 0) {
 		if (rsg->loading_count != 0) return rsg->loading[0];
