@@ -1374,6 +1374,7 @@ static void NewSpriteGroup(byte *buf, int len)
 			groupid = grf_load_word(&buf);
 			if (HASBIT(groupid, 15)) {
 				dg->ranges[i].group = NewCallBackResultSpriteGroup(groupid);
+				dg->ranges[i].group->ref_count++;
 			} else if (groupid >= _cur_grffile->spritegroups_count) {
 				/* This doesn't exist for us. */
 				grf_load_word(&buf); // skip range
@@ -1383,6 +1384,7 @@ static void NewSpriteGroup(byte *buf, int len)
 			/* XXX: If multiple surreal sets attach a surreal
 			 * set this way, we are in trouble. */
 				dg->ranges[i].group = _cur_grffile->spritegroups[groupid];
+				dg->ranges[i].group->ref_count++;
 			}
 
 			dg->ranges[i].low = grf_load_byte(&buf);
@@ -1400,8 +1402,10 @@ static void NewSpriteGroup(byte *buf, int len)
 		} else {
 			dg->default_group = _cur_grffile->spritegroups[groupid];
 		}
+		dg->default_group->ref_count++;
 
 		_cur_grffile->spritegroups[setid] = group;
+		group->ref_count++;
 		return;
 
 	} else if (numloaded == 0x80 || numloaded == 0x83) {
@@ -1438,19 +1442,20 @@ static void NewSpriteGroup(byte *buf, int len)
 
 			if (HASBIT(groupid, 15)) {
 				rg->groups[i] = NewCallBackResultSpriteGroup(groupid);
+				rg->groups[i]->ref_count++;
 			} else if (groupid >= _cur_grffile->spritegroups_count) {
 				/* This doesn't exist for us. */
 				i--;
 				rg->num_groups--;
 				continue;
 			} else {
-				/* XXX: If multiple surreal sets attach a surreal
-				 * set this way, we are in trouble. */
 				rg->groups[i] = _cur_grffile->spritegroups[groupid];
+				rg->groups[i]->ref_count++;
 			}
 		}
 
 		_cur_grffile->spritegroups[setid] = group;
+		group->ref_count++;
 		return;
 	}
 
@@ -1499,6 +1504,7 @@ static void NewSpriteGroup(byte *buf, int len)
 		} else {
 			rg->loaded[i] = NewResultSpriteGroup(_cur_grffile->spriteset_start + spriteset_id * _cur_grffile->spriteset_numents, rg->sprites_per_set);
 		}
+		rg->loaded[i]->ref_count++;
 		DEBUG(grf, 8) ("NewSpriteGroup: + rg->loaded[%i]  = %u (subset %u)", i, rg->loaded[i]->g.result.result, spriteset_id);
 	}
 
@@ -1509,10 +1515,12 @@ static void NewSpriteGroup(byte *buf, int len)
 		} else {
 			rg->loading[i] = NewResultSpriteGroup(_cur_grffile->spriteset_start + spriteset_id * _cur_grffile->spriteset_numents, rg->sprites_per_set);
 		}
+		rg->loading[i]->ref_count++;
 		DEBUG(grf, 8) ("NewSpriteGroup: + rg->loading[%i] = %u (subset %u)", i, rg->loading[i]->g.result.result, spriteset_id);
 	}
 
 	_cur_grffile->spritegroups[setid] = group;
+	group->ref_count++;
 }
 
 /* Action 0x03 */
@@ -1584,6 +1592,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 				}
 
 				stat->spritegroup[1] = _cur_grffile->spritegroups[groupid];
+				stat->spritegroup[1]->ref_count++;
 			}
 		}
 
@@ -1602,6 +1611,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 				StationSpec *stat = &_cur_grffile->stations[stid];
 
 				stat->spritegroup[0] = _cur_grffile->spritegroups[groupid];
+				stat->spritegroup[0]->ref_count++;
 				stat->grfid = _cur_grffile->grfid;
 				SetCustomStation(stid, stat);
 				stat->sclass = STAT_CLASS_NONE;

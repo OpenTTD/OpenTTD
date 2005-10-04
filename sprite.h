@@ -129,6 +129,7 @@ typedef enum SpriteGroupType {
 
 struct SpriteGroup {
 	SpriteGroupType type;
+	byte ref_count;
 
 	union {
 		RealSpriteGroup real;

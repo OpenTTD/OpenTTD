@@ -266,6 +266,7 @@ void SetWagonOverrideSprites(EngineID engine, SpriteGroup *group, byte *train_id
 	 * to prevent leaks. But first we need to refcount the SpriteGroup.
 	 * --pasky */
 	wo->group = group;
+	group->ref_count++;
 	wo->trains = trains;
 	wo->train_id = malloc(trains);
 	memcpy(wo->train_id, train_id, trains);
@@ -306,6 +307,7 @@ void SetCustomEngineSprites(EngineID engine, byte cargo, SpriteGroup *group)
 	 * to prevent leaks. But first we need to refcount the SpriteGroup.
 	 * --pasky */
 	engine_custom_sprites[engine][cargo] = group;
+	group->ref_count++;
 }
 
 typedef SpriteGroup *(*resolve_callback)(const SpriteGroup *spritegroup,
