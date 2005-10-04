@@ -14,7 +14,7 @@
 Five attributes hold the information about a tile.
 These attributes are referred to as
   "<span style="font-weight: bold;">type_height</span>",
-  "<span style="font-weight: bold;">owner</span>",
+  "<span style="font-weight: bold;">m1</span>",
   "<span style="font-weight: bold;">m2</span>",
   "<span style="font-weight: bold;">m3</span>",
   "<span style="font-weight: bold;">m4</span>" and
@@ -52,7 +52,7 @@ OTTD's class-specific periodic tile processing routine is called once every +256
 <li>m5 bits 7..5: update counter, incremented on every periodic processing for tile types other than <tt>03</tt>, <tt>07</tt>, <tt>0B</tt> and <tt>10</tt> and above, on wraparound the tile is updated (for fields, the type of fields in m3 is increased, for other types the tile type in m5 is increased)
 <br>(for snow and desert, these bits are not used, tile is updated on every periodic processing)
 </li>
-<li>owner: <a href="#OwnershipInfo">owner</a> of the tile (normally <tt>10</tt>)
+<li>m1: <a href="#OwnershipInfo">owner</a> of the tile (normally <tt>10</tt>)
 </li>
 <li>m4 bits 7..5: type of hedge on the SW border of the tile (1 through 6, or 0=none); bits 4..2: same for the SE border
 </li>
@@ -112,7 +112,7 @@ m5 bit 7 clear: railway track
 <tr><td nowrap valign=top>bit 3: </td><td align=left>set = semaphore signals, clear = light signals</td></tr>
 </table></li>
 </ul></li>
-<li>owner: <a href="#OwnershipInfo">owner</a> of the track
+<li>m1: <a href="#OwnershipInfo">owner</a> of the track
 </li>
 <li>m2 bits 0..3:
 <table>
@@ -145,7 +145,7 @@ m5 bits 7 and 6 set: railway depot / checkpoints
 <br>bit 0: clear = in X direction, set = in Y direction
 <br>
 <br>
-<li>owner: <a href="#OwnershipInfo">owner</a> of the depot / checkpoint</li>
+<li>m1: <a href="#OwnershipInfo">owner</a> of the depot / checkpoint</li>
 <li>m3 bits 0..3 = <a href="#TrackType">track type</a></li>
 <li>m3 bit 4 = use custom sprite (valid only for the checkpoint)</li>
 <li>m3 bit 6 = track on this tile is reserved by pbs</li>
@@ -163,7 +163,7 @@ m5 bits 7..4 clear: road
 <tr><td nowrap valign=top>bit 2: </td><td align=left>SE piece</td></tr>
 <tr><td nowrap valign=top>bit 3: </td><td align=left>NE piece</td></tr>
 </table></li>
-<li>owner: <a href="#OwnershipInfo">owner</a> of the road</li>
+<li>m1: <a href="#OwnershipInfo">owner</a> of the road</li>
 <li>m2: Index into the array of towns, 0 for non-town roads</li>
 <li>m4 bits 0..3: counter for the roadworks</li>
 <li>m4 bits 4..6: <tt>0</tt> - on bare land, <tt>1</tt> - on grass, <tt>2</tt> - paved, <tt>3</tt> - with streetlights, <tt>5</tt> - tree-lined, <tt>6</tt> - on grass with road works, <tt>7</tt> - paved with road works</li>
@@ -174,7 +174,7 @@ m5 bit 4 set, bits 7..5 clear: level crossing
 <li>m5 bit 3: clear - road in the X direction, set - road in the Y direction (railway track always perpendicular)</li>
 <li>m5 bit 2: set if crossing lights are on</li>
 <li>m5 bit 0: set if rail track is reserved by pbs</li>
-<li>owner: <a href="#OwnershipInfo">owner</a> of the railway track</li>
+<li>m1: <a href="#OwnershipInfo">owner</a> of the railway track</li>
 <li>m2: Index into the array of towns, 0 for non-town roads</li>
 <li>m3 bits 0..7: <a href="#OwnershipInfo">owner</a> of the road</li>
 <li>m4 bits 3..0: <a href="#TrackType">track type</a></li>
@@ -184,7 +184,7 @@ m5 bit 4 set, bits 7..5 clear: level crossing
 m5 bit 5 set: road depot
 <ul>
 <li>m5 bits 3..0 - direction: exit towards: <tt>0</tt> = NE, <tt>1</tt> = SE, <tt>2</tt> = SW, <tt>3</tt> = NW</li>
-<li>owner: <a href="#OwnershipInfo">owner</a> of the depot</li>
+<li>m1: <a href="#OwnershipInfo">owner</a> of the depot</li>
 <li>m4 bit 7 set = on snow or desert (not displayed, but set internally)</li>
 </ul>
 </td></tr>
@@ -287,8 +287,8 @@ Town building
 <li>m5 bits 2..0: construction counter, for buildings under construction incremented on every periodic tile processing, on wraparound the stage of construction in m3 is increased</li>
 <li>for large office blocks (types <tt>04</tt> and <tt>05</tt>):
 <ul>
-<li>owner bits 6..0: position of the lift</li>
-<li>owner bit 7: if set the lift is moving</li>
+<li>m1 bits 6..0: position of the lift</li>
+<li>m1 bit 7: if set the lift is moving</li>
 <li>m5 bit 7: if set then m5 bits 5..0 hold the final position of the lift divided by 6 (valid values 0..6 except 1)</li>
 </ul></li>
 </ul>
@@ -320,7 +320,7 @@ Trees
 </td></tr>
 </table></li>
 <li>m2 bits 3..0: update counter, incremented on every periodic processing, on wraparound the growth status is updated (or, if it's <tt>3</tt>, a random action is taken)</li>
-<li>owner: <a href="#OwnershipInfo">owner</a> (normally <tt>10</tt>)</li>
+<li>m1: <a href="#OwnershipInfo">owner</a> (normally <tt>10</tt>)</li>
 </ul>
 </td></tr>
 
@@ -385,7 +385,7 @@ exit towards: <tt>47</tt> - NE, <tt>48</tt> - SE, <tt>49</tt> - SW, <tt>4A</tt> 
 <tr><td colspan=2></td></tr> <!-- spacer -->
 </table>
 </li>
-<li>owner: <a href="#OwnershipInfo">owner</a> of the station</li>
+<li>m1: <a href="#OwnershipInfo">owner</a> of the station</li>
 <li>m2: index into the <a href="#_StationArray">array of stations</a></li>
 <li>m3 bits 0..3: <a href="#TrackType">track type</a> for railway stations, must be 0 for all the other stations</li>
 <li>m3 bit 4 = use custom sprite (valid only railway stations FOR NOW)</li>
@@ -427,7 +427,7 @@ exit towards: <tt>47</tt> - NE, <tt>48</tt> - SE, <tt>49</tt> - SW, <tt>4A</tt> 
 </table>
 </td></tr>
 </table></li>
-<li>owner: <a href="#OwnershipInfo">owner</a> (for water and coasts normally <tt>11</tt>)</li>
+<li>m1: <a href="#OwnershipInfo">owner</a> (for water and coasts normally <tt>11</tt>)</li>
 </ul>
 </td></tr>
 
@@ -447,13 +447,13 @@ Industry tile
 <tr><td nowrap valign=top><tt>00</tt>..<tt>06</tt>&nbsp; </td><td align=left>coal mine
 <table>
 <tr><td nowrap valign=top><tt>00</tt>&nbsp; </td><td align=left>wheel tower when not animated</td></tr>
-<tr><td nowrap valign=top><tt>01</tt>&nbsp; </td><td align=left>wheel tower when animated; animation state in owner bits 5..0; owner bit 6 set = sound already generated</td></tr>
+<tr><td nowrap valign=top><tt>01</tt>&nbsp; </td><td align=left>wheel tower when animated; animation state in m1 bits 5..0; m1 bit 6 set = sound already generated</td></tr>
 </table>
 </td></tr>
 <tr><td nowrap valign=top><tt>07</tt>..<tt>0A</tt>&nbsp; </td><td align=left>power station
 <table>
 <tr><td nowrap valign=top><tt>08</tt>&nbsp; </td><td align=left>chimney</td></tr>
-<tr><td nowrap valign=top><tt>0A</tt>&nbsp; </td><td align=left>transformer; animation progress in owner bits 5..2 (valid range <tt>0</tt>..<tt>7</tt>)</td></tr>
+<tr><td nowrap valign=top><tt>0A</tt>&nbsp; </td><td align=left>transformer; animation progress in m1 bits 5..2 (valid range <tt>0</tt>..<tt>7</tt>)</td></tr>
 </table>
 </td></tr>
 <tr><td nowrap valign=top><tt>0B</tt>..<tt>0F</tt>&nbsp; </td><td align=left>sawmill</td></tr>
@@ -467,7 +467,7 @@ Industry tile
 <tr><td nowrap valign=top><tt>1D</tt>..<tt>20</tt>&nbsp; </td><td align=left>oil wells
 <table>
 <tr><td nowrap valign=top><tt>1D</tt>&nbsp; </td><td align=left>not animated</td></tr>
-<tr><td nowrap valign=top><tt>1E</tt>..<tt>20</tt>&nbsp; </td><td align=left>various stages of animation; progress of animation in owner bits 1..0</td></tr>
+<tr><td nowrap valign=top><tt>1E</tt>..<tt>20</tt>&nbsp; </td><td align=left>various stages of animation; progress of animation in m1 bits 1..0</td></tr>
 </table>
 </td></tr>
 <tr><td nowrap valign=top><tt>21</tt>..<tt>26</tt>&nbsp; </td><td align=left>farm</td></tr>
@@ -476,7 +476,7 @@ Industry tile
 <tr><td nowrap valign=top><tt>2F</tt>..<tt>33</tt>&nbsp; </td><td align=left>copper ore mine
 <table>
 <tr><td nowrap valign=top><tt>2F</tt>&nbsp; </td><td align=left>wheel tower when not animated</td></tr>
-<tr><td nowrap valign=top><tt>30</tt>&nbsp; </td><td align=left>wheel tower when animated; animation state in owner bits 5..0; owner bit 6 set = sound already generated</td></tr>
+<tr><td nowrap valign=top><tt>30</tt>&nbsp; </td><td align=left>wheel tower when animated; animation state in m1 bits 5..0; m1 bit 6 set = sound already generated</td></tr>
 <tr><td nowrap valign=top><tt>31</tt>&nbsp; </td><td align=left>chimney</td></tr>
 </table>
 </td></tr>
@@ -487,7 +487,7 @@ Industry tile
 <tr><td nowrap valign=top><tt>48</tt>..<tt>58</tt>&nbsp; </td><td align=left>gold mine
 <table>
 <tr><td nowrap valign=top><tt>4F</tt>&nbsp; </td><td align=left>wheel tower when not animated</td></tr>
-<tr><td nowrap valign=top><tt>58</tt>&nbsp; </td><td align=left>wheel tower when animated; animation state in owner bits 5..0; owner bit 6 set = sound already generated</td></tr>
+<tr><td nowrap valign=top><tt>58</tt>&nbsp; </td><td align=left>wheel tower when animated; animation state in m1 bits 5..0; m1 bit 6 set = sound already generated</td></tr>
 </table>
 </td></tr>
 <tr><td nowrap valign=top><tt>59</tt>..<tt>5A</tt>&nbsp; </td><td align=left>bank (sub-arctic or sub-tropical climate)</td></tr>
@@ -541,12 +541,12 @@ while the animation is in progress (see the <a href="#_AnimatedTilesList">array 
 </table></li>
 <li>m2: index into the <a href="#_IndustryArray">array of industries</a>
 </li>
-<li>owner bit 7: clear = under construction
+<li>m1 bit 7: clear = under construction
 <ul>
-<li>owner bits 4..2: construction counter, for buildings under construction incremented on every periodic tile processing
+<li>m1 bits 4..2: construction counter, for buildings under construction incremented on every periodic tile processing
 </li>
 </ul></li>
-<li>owner bits 1..0: stage of construction (<tt>3</tt> = completed), incremented when the construction counter wraps around
+<li>m1 bits 1..0: stage of construction (<tt>3</tt> = completed), incremented when the construction counter wraps around
 <br>the meaning is different for some animated tiles which are never under construction (types <tt>01</tt>, <tt>1E</tt>..<tt>20</tt>, <tt>30</tt>, <tt>58</tt>; see above)
 </li>
 </ul>
@@ -557,7 +557,7 @@ m5 bits 7..4 clear: tunnel entrance/exit
 <ul>
 <li>m5 bits 3..2: <tt>0</tt> - railway tunnel, <tt>1</tt> - road tunnel</li>
 <li>m5 bits 1..0 - direction: entrance towards: <tt>0</tt> = NE, <tt>1</tt> = SE, <tt>2</tt> = SW, <tt>3</tt> = NW</li>
-<li>owner: <a href="#OwnershipInfo">owner</a> of the tunnel</li>
+<li>m1: <a href="#OwnershipInfo">owner</a> of the tunnel</li>
 <li>m3 bits 3..0 = <a href="#TrackType">track type</a> for railway tunnel, must be 0 for road tunnel</li>
 <li>m4 bit 7 set = on snow or desert</li>
 <li>m4 bit 0 set = track with 'Track'number 0 is reserved by pbs</li>
@@ -569,7 +569,7 @@ m5 bit 6 clear: bridge ending
 <ul>
 <li>m5 bit 5: clear - northern, set - southern ending</li>
 <li>m3 bits 3..0 = <a href="#TrackType">type of track</a> on the bridge, must be 0 for road bridge</li>
-<li>owner: <a href="#OwnershipInfo">owner</a> of the bridge</li>
+<li>m1: <a href="#OwnershipInfo">owner</a> of the bridge</li>
 </ul>
 m5 bit 6 set: bridge middle part
 <ul>
@@ -584,7 +584,7 @@ m5 bit 5 set:
 <li>m3 bits 7..4 = <a href="#TrackType">type of track</a> on the bridge, must be 0 for road bridge</li>
 <li>m3 bits 3..0 = <a href="#TrackType">type of track</a> under the bridge, if any</li>
 <li>m2 bits 3..0: bridge piece (<tt>0</tt>..<tt>5</tt>)
-<li>owner: <a href="#OwnershipInfo">owner</a> of the land under bridge</li>
+<li>m1: <a href="#OwnershipInfo">owner</a> of the land under bridge</li>
 </ul></li>
 <li>m5 bits 2..1: <tt>0</tt> - railway bridge, <tt>1</tt> - road bridge</li>
 <li>m5 bit 0: clear - bridge in the X direction, set - bridge in the Y direction</li>
@@ -618,7 +618,7 @@ m5 bit 5 set:
 <tr><td nowrap valign=top><tt>80</tt>..<tt>93</tt>&nbsp; </td><td align=left>company headquarters (5 sets of 4 tiles each, updated quarterly depending on the company performance)</td></tr>
 </table>
 </li>
-<li>owner: <a href="#OwnershipInfo">owner</a> of the object (for lighthouses and transmitters normally <tt>10</tt>)</li>
+<li>m1: <a href="#OwnershipInfo">owner</a> of the object (for lighthouses and transmitters normally <tt>10</tt>)</li>
 </ul>
 </td></tr>
 
