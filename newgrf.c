@@ -1404,6 +1404,8 @@ static void NewSpriteGroup(byte *buf, int len)
 		}
 		dg->default_group->ref_count++;
 
+		if (_cur_grffile->spritegroups[setid] != NULL)
+			UnloadSpriteGroup(&_cur_grffile->spritegroups[setid]);
 		_cur_grffile->spritegroups[setid] = group;
 		group->ref_count++;
 		return;
@@ -1454,6 +1456,8 @@ static void NewSpriteGroup(byte *buf, int len)
 			}
 		}
 
+		if (_cur_grffile->spritegroups[setid] != NULL)
+			UnloadSpriteGroup(&_cur_grffile->spritegroups[setid]);
 		_cur_grffile->spritegroups[setid] = group;
 		group->ref_count++;
 		return;
@@ -1519,6 +1523,8 @@ static void NewSpriteGroup(byte *buf, int len)
 		DEBUG(grf, 8) ("NewSpriteGroup: + rg->loading[%i] = %u (subset %u)", i, rg->loading[i]->g.result.result, spriteset_id);
 	}
 
+	if (_cur_grffile->spritegroups[setid] != NULL)
+		UnloadSpriteGroup(&_cur_grffile->spritegroups[setid]);
 	_cur_grffile->spritegroups[setid] = group;
 	group->ref_count++;
 }
@@ -2296,6 +2302,29 @@ static void InitializeGRFSpecial(void)
 }
 
 /**
+ * Unload unused sprite groups from the specified GRF file.
+ * Called after loading each GRF file.
+ * @param file GRF file
+ */
+static void ReleaseSpriteGroups(GRFFile *file)
+{
+	int i;
+
+	// Bail out if no spritegroups were defined.
+	if (file->spritegroups == NULL)
+		return;
+
+	DEBUG(grf, 6)("ReleaseSpriteGroups: Releasing for `%s'.", file->filename);
+	for (i = 0; i < file->spritegroups_count; i++) {
+		if (file->spritegroups[i] != NULL)
+			UnloadSpriteGroup(&file->spritegroups[i]);
+	}
+	free(file->spritegroups);
+	file->spritegroups = NULL;
+	file->spritegroups_count = 0;
+}
+
+/**
  * Reset all NewGRF loaded data
  * TODO
  */
@@ -2321,6 +2350,10 @@ static void ResetNewGRFData(void)
 		}
 	}
 	memcpy(&_bridge, &orig_bridge, sizeof(_bridge));
+
+	// Unload sprite group data
+	UnloadWagonOverrides();
+	UnloadCustomEngineSprites();
 }
 
 static void InitNewGRFFile(const char* filename, int sprite_offset)
@@ -2493,6 +2526,11 @@ static void LoadNewGRFFile(const char* filename, uint file_index, uint stage)
 
 		if (_skip_sprites > 0) _skip_sprites--;
 	}
+
+	// Release our sprite group references.
+	// Any groups that are referenced elsewhere will be cleaned up later.
+	// This removes groups that aren't used. (Perhaps skipped?)
+	ReleaseSpriteGroups(_cur_grffile);
 }
 
 

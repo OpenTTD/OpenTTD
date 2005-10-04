@@ -4,6 +4,7 @@
 #include "openttd.h"
 #include "sprite.h"
 #include "variables.h"
+#include "debug.h"
 
 
 SpriteGroup *EvalDeterministicSpriteGroup(const DeterministicSpriteGroup *dsg, int value)
@@ -95,4 +96,73 @@ byte RandomizedSpriteGroupTriggeredBits(const RandomizedSpriteGroup *rsg,
 	*waiting_triggers &= ~match;
 
 	return (rsg->num_groups - 1) << rsg->lowest_randbit;
+}
+
+/**
+ * Traverse a sprite group and release its and its child's memory.
+ * A group is only released if its reference count is zero.
+ * We pass a pointer to a pointer so that the original reference can be set to NULL.
+ * @param group_ptr Pointer to sprite group reference.
+ */
+void UnloadSpriteGroup(SpriteGroup **group_ptr)
+{
+	SpriteGroup *group;
+	int i;
+
+	assert(group_ptr != NULL);
+	assert(*group_ptr != NULL);
+
+	group = *group_ptr;
+	*group_ptr = NULL; // Remove this reference.
+
+	group->ref_count--;
+	if (group->ref_count > 0) {
+		DEBUG(grf, 6)("UnloadSpriteGroup: Group at `%p' (type %d) has %d reference(s) left.", group, group->type, group->ref_count);
+		return; // Still some references left, so don't clear up.
+	}
+
+	DEBUG(grf, 6)("UnloadSpriteGroup: Releasing group at `%p'.", group);
+	switch (group->type) {
+		case SGT_REAL:
+		{
+			RealSpriteGroup *rsg = &group->g.real;
+			for (i = 0; i < rsg->loading_count; i++) {
+				UnloadSpriteGroup(&rsg->loading[i]);
+			}
+			for (i = 0; i < rsg->loaded_count; i++) {
+				UnloadSpriteGroup(&rsg->loaded[i]);
+			}
+			free(group);
+			return;
+		}
+
+		case SGT_DETERMINISTIC:
+		{
+			DeterministicSpriteGroup *dsg = &group->g.determ;
+			for (i = 0; i < group->g.determ.num_ranges; i++) {
+				UnloadSpriteGroup(&dsg->ranges[i].group);
+			}
+			UnloadSpriteGroup(&dsg->default_group);
+			free(group->g.determ.ranges);
+			free(group);
+			return;
+		}
+
+		case SGT_RANDOMIZED:
+		{
+			for (i = 0; i < group->g.random.num_groups; i++) {
+				UnloadSpriteGroup(&group->g.random.groups[i]);
+			}
+			free(group->g.random.groups);
+			free(group);
+			return;
+		}
+
+		case SGT_CALLBACK:
+		case SGT_RESULT:
+			free(group);
+			return;
+	}
+
+	DEBUG(grf, 1)("Unable to remove unknown sprite group type `0x%x'.", group->type);
 }

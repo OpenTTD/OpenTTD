@@ -294,6 +294,28 @@ static const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, byte overri
 	return NULL;
 }
 
+/**
+ * Unload all wagon override sprite groups.
+ */
+void UnloadWagonOverrides(void)
+{
+	WagonOverrides *wos;
+	WagonOverride *wo;
+	EngineID engine;
+	int i;
+
+	for (engine = 0; engine < TOTAL_NUM_ENGINES; engine++) {
+		wos = &_engine_wagon_overrides[engine];
+		for (i = 0; i < wos->overrides_count; i++) {
+			wo = &wos->overrides[i];
+			UnloadSpriteGroup(&wo->group);
+			free(wo->train_id);
+		}
+		free(wos->overrides);
+		wos->overrides_count = 0;
+		wos->overrides = NULL;
+	}
+}
 
 // 0 - 28 are cargos, 29 is default, 30 is the advert (purchase list)
 // (It isn't and shouldn't be like this in the GRF files since new cargo types
@@ -303,11 +325,30 @@ static SpriteGroup *engine_custom_sprites[TOTAL_NUM_ENGINES][NUM_GLOBAL_CID];
 
 void SetCustomEngineSprites(EngineID engine, byte cargo, SpriteGroup *group)
 {
-	/* FIXME: If we are replacing an override, release original SpriteGroup
-	 * to prevent leaks. But first we need to refcount the SpriteGroup.
-	 * --pasky */
+	if (engine_custom_sprites[engine][cargo] != NULL) {
+		DEBUG(grf, 6)("SetCustomEngineSprites: engine `%d' cargo `%d' already has group -- removing.", engine, cargo);
+		UnloadSpriteGroup(&engine_custom_sprites[engine][cargo]);
+	}
 	engine_custom_sprites[engine][cargo] = group;
 	group->ref_count++;
+}
+
+/**
+ * Unload all engine sprite groups.
+ */
+void UnloadCustomEngineSprites(void)
+{
+	EngineID engine;
+	CargoID cargo;
+
+	for (engine = 0; engine < TOTAL_NUM_ENGINES; engine++) {
+		for (cargo = 0; cargo < NUM_GLOBAL_CID; cargo++) {
+			if (engine_custom_sprites[engine][cargo] != NULL) {
+				DEBUG(grf, 6)("UnloadCustomEngineSprites: Unloading group for engine `%d' cargo `%d'.", engine, cargo);
+				UnloadSpriteGroup(&engine_custom_sprites[engine][cargo]);
+			}
+		}
+	}
 }
 
 typedef SpriteGroup *(*resolve_callback)(const SpriteGroup *spritegroup,

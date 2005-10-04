@@ -162,4 +162,6 @@ SpriteGroup *EvalRandomizedSpriteGroup(const RandomizedSpriteGroup *rsg, byte ra
  * (then they are |ed to @waiting_triggers instead). */
 byte RandomizedSpriteGroupTriggeredBits(const RandomizedSpriteGroup *rsg, byte triggers, byte *waiting_triggers);
 
+void UnloadSpriteGroup(SpriteGroup **group_ptr);
+
 #endif /* SPRITE_H */

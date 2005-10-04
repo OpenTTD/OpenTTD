@@ -276,4 +276,7 @@ static inline const RoadVehicleInfo* RoadVehInfo(EngineID e)
 	return &_road_vehicle_info[e - ROAD_ENGINES_INDEX];
 }
 
+void UnloadWagonOverrides(void);
+void UnloadCustomEngineSprites(void);
+
 #endif /* ENGINE_H */
