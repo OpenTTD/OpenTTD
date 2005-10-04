@@ -44,9 +44,9 @@ typedef struct RealSpriteGroup {
 	// of da stuff.
 
 	byte loaded_count;
-	uint16 loaded[16]; // sprite ids
+	SpriteGroup *loaded[16]; // sprite ids
 	byte loading_count;
-	uint16 loading[16]; // sprite ids
+	SpriteGroup *loading[16]; // sprite ids
 } RealSpriteGroup;
 
 /* Shared by deterministic and random groups. */
@@ -114,11 +114,17 @@ typedef struct CallbackResultSpriteGroup {
 	uint16 result;
 } CallbackResultSpriteGroup;
 
+typedef struct ResultSpriteGroup {
+	uint16 result;
+	byte sprites;
+} ResultSpriteGroup;
+
 typedef enum SpriteGroupType {
 	SGT_REAL,
 	SGT_DETERMINISTIC,
 	SGT_RANDOMIZED,
 	SGT_CALLBACK,
+	SGT_RESULT,
 } SpriteGroupType;
 
 struct SpriteGroup {
@@ -129,6 +135,7 @@ struct SpriteGroup {
 		DeterministicSpriteGroup determ;
 		RandomizedSpriteGroup random;
 		CallbackResultSpriteGroup callback;
+		ResultSpriteGroup result;
 	} g;
 };
 

@@ -1228,6 +1228,21 @@ SpriteGroup *NewCallBackResultSpriteGroup(uint16 value)
 	return group;
 }
 
+/**
+ * Creates a spritegroup representing a sprite number result.
+ * @param value The sprite number.
+ * @param sprites The number of sprites per set.
+ * @return A spritegroup representing the sprite number result.
+ */
+SpriteGroup *NewResultSpriteGroup(uint16 value, byte sprites)
+{
+	SpriteGroup *group = calloc(1, sizeof(*group));
+	group->type = SGT_RESULT;
+	group->g.result.result = value;
+	group->g.result.sprites = sprites;
+	return group;
+}
+
 /* Action 0x01 */
 static void NewSpriteSet(byte *buf, int len)
 {
@@ -1421,15 +1436,18 @@ static void NewSpriteGroup(byte *buf, int len)
 		for (i = 0; i < rg->num_groups; i++) {
 			uint16 groupid = grf_load_word(&buf);
 
-			if (groupid & 0x8000 || groupid >= _cur_grffile->spritegroups_count) {
+			if (HASBIT(groupid, 15)) {
+				rg->groups[i] = NewCallBackResultSpriteGroup(groupid);
+			} else if (groupid >= _cur_grffile->spritegroups_count) {
 				/* This doesn't exist for us. */
 				i--;
 				rg->num_groups--;
 				continue;
+			} else {
+				/* XXX: If multiple surreal sets attach a surreal
+				 * set this way, we are in trouble. */
+				rg->groups[i] = _cur_grffile->spritegroups[groupid];
 			}
-			/* XXX: If multiple surreal sets attach a surreal
-			 * set this way, we are in trouble. */
-			rg->groups[i] = _cur_grffile->spritegroups[groupid];
 		}
 
 		_cur_grffile->spritegroups[setid] = group;
@@ -1476,14 +1494,22 @@ static void NewSpriteGroup(byte *buf, int len)
 
 	for (i = 0; i < numloaded; i++) {
 		uint16 spriteset_id = grf_load_word(&loaded_ptr);
-		rg->loaded[i] = _cur_grffile->spriteset_start + spriteset_id * _cur_grffile->spriteset_numents;
-		DEBUG(grf, 8) ("NewSpriteGroup: + rg->loaded[%i]  = %u (subset %u)", i, rg->loaded[i], spriteset_id);
+		if (HASBIT(spriteset_id, 15)) {
+			rg->loaded[i] = NewCallBackResultSpriteGroup(spriteset_id);
+		} else {
+			rg->loaded[i] = NewResultSpriteGroup(_cur_grffile->spriteset_start + spriteset_id * _cur_grffile->spriteset_numents, rg->sprites_per_set);
+		}
+		DEBUG(grf, 8) ("NewSpriteGroup: + rg->loaded[%i]  = %u (subset %u)", i, rg->loaded[i]->g.result.result, spriteset_id);
 	}
 
 	for (i = 0; i < numloading; i++) {
 		uint16 spriteset_id = grf_load_word(&loading_ptr);
-		rg->loading[i] = _cur_grffile->spriteset_start + spriteset_id * _cur_grffile->spriteset_numents;
-		DEBUG(grf, 8) ("NewSpriteGroup: + rg->loading[%i] = %u (subset %u)", i, rg->loading[i], spriteset_id);
+		if (HASBIT(spriteset_id, 15)) {
+			rg->loading[i] = NewCallBackResultSpriteGroup(spriteset_id);
+		} else {
+			rg->loading[i] = NewResultSpriteGroup(_cur_grffile->spriteset_start + spriteset_id * _cur_grffile->spriteset_numents, rg->sprites_per_set);
+		}
+		DEBUG(grf, 8) ("NewSpriteGroup: + rg->loading[%i] = %u (subset %u)", i, rg->loading[i]->g.result.result, spriteset_id);
 	}
 
 	_cur_grffile->spritegroups[setid] = group;

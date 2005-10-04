@@ -580,7 +580,7 @@ int GetCustomEngineSprite(EngineID engine, const Vehicle *v, byte direction)
 			spriteset--;
 	}
 
-	r = (in_motion ? rsg->loaded[spriteset] : rsg->loading[spriteset]) + direction;
+	r = (in_motion ? rsg->loaded[spriteset]->g.result.result : rsg->loading[spriteset]->g.result.result) + direction;
 	return r;
 }
 

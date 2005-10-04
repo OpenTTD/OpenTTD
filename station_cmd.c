@@ -1349,9 +1349,9 @@ uint32 GetCustomStationRelocation(const StationSpec *spec, const Station *st, by
 	const RealSpriteGroup *rsg = ResolveStationSpriteGroup(spec->spritegroup[ctype], st);
 
 	if (rsg->sprites_per_set != 0) {
-		if (rsg->loading_count != 0) return rsg->loading[0];
+		if (rsg->loading_count != 0) return rsg->loading[0]->g.result.result;
 
-		if (rsg->loaded_count != 0) return rsg->loaded[0];
+		if (rsg->loaded_count != 0) return rsg->loaded[0]->g.result.result;
 	}
 
 	error("Custom station 0x%08x::0x%02x has no sprites associated.",
