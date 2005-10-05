@@ -1487,8 +1487,8 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->owner = owner;
 
 	r = Random();
-	i->color_map = GB(r, 8, 8);
-	i->counter = GB(r, 0, 16);
+	i->color_map = GB(r, 8, 4);
+	i->counter = GB(r, 0, 12);
 	i->cargo_waiting[0] = 0;
 	i->cargo_waiting[1] = 0;
 	i->last_mo_production[0] = 0;
