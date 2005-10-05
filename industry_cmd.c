@@ -351,7 +351,7 @@ static void DrawTile_Industry(TileInfo *ti)
 	ormod = (ind->color_map+0x307) << PALETTE_SPRITE_START;
 
 	/* Retrieve pointer to the draw industry tile struct */
-	dits = &_industry_draw_tile_data[(ti->map5 << 2) | (_m[ti->tile].m1 & 3)];
+	dits = &_industry_draw_tile_data[(ti->map5 << 2) | GB(_m[ti->tile].m1, 0, 2)];
 
 	image = dits->sprite_1;
 	if (image & PALETTE_MODIFIER_COLOR && (image & PALETTE_SPRITE_MASK) == 0)

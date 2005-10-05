@@ -144,7 +144,7 @@ static int32 DoBuildShiplift(TileIndex tile, int dir, uint32 flags)
 
 static int32 RemoveShiplift(TileIndex tile, uint32 flags)
 {
-	TileIndexDiff delta = TileOffsByDir(_m[tile].m5 & 3);
+	TileIndexDiff delta = TileOffsByDir(GB(_m[tile].m5, 0, 2));
 
 	// make sure no vehicle is on the tile.
 	if (!EnsureNoVehicle(tile) || !EnsureNoVehicle(tile + delta) || !EnsureNoVehicle(tile - delta))
@@ -500,7 +500,7 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 		switch (GetTileType(target)) {
 			case MP_RAILWAY: {
 				uint slope = GetTileSlope(target, NULL);
-				byte tracks = _m[target].m5 & 0x3F;
+				byte tracks = GB(_m[target].m5, 0, 6);
 				if (!(
 						(slope == 1 && tracks == 0x20) ||
 						(slope == 2 && tracks == 0x04) ||

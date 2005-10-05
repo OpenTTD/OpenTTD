@@ -57,15 +57,14 @@ void PBSReserveTrack(TileIndex tile, Track track) {
 				SETBIT(_m[tile].m3, 6);
 			} else {
 				// normal rail track
-				byte encrt = (_m[tile].m4 & 0xF0) >> 4; // get current encoded info (see comments at top of file)
+				byte encrt = GB(_m[tile].m4, 4, 4); // get current encoded info (see comments at top of file)
 
 				if (encrt == 0) // nothing reserved before
 					encrt = track + 1;
 				else if (encrt == (track^1) + 1) // opposite track reserved before
 					encrt |= 8;
 
-				_m[tile].m4 &= ~0xF0;
-				_m[tile].m4 |= encrt << 4;
+				SB(_m[tile].m4, 4, 4, encrt);
 			}
 			break;
 		case MP_TUNNELBRIDGE:
@@ -99,12 +98,12 @@ byte PBSTileReserved(TileIndex tile) {
 				return HASBIT(_m[tile].m5, 0) ? 2 : 1;
 			} else {
 				// normal track
-				byte res = encrt_to_reserved[(_m[tile].m4 & 0xF0) >> 4];
+				byte res = encrt_to_reserved[GB(_m[tile].m4, 4, 4)];
 				assert(res != 0xFF);
 				return res;
 			}
 		case MP_TUNNELBRIDGE:
-			return (_m[tile].m4 & 3);
+			return GB(_m[tile].m4, 0, 2);
 		case MP_STATION:
 			// check if its reserved
 			if (!HASBIT(_m[tile].m3, 6)) return 0;
@@ -131,12 +130,12 @@ uint16 PBSTileUnavail(TileIndex tile) {
 				return HASBIT(_m[tile].m3, 6) ? TRACKDIR_BIT_MASK : 0;
 			} else {
 				// normal track
-				uint16 res = encrt_to_unavail[(_m[tile].m4 & 0xF0) >> 4];
+				uint16 res = encrt_to_unavail[GB(_m[tile].m4, 4, 4)];
 				assert(res != 0xFFFF);
 				return res;
 			}
 		case MP_TUNNELBRIDGE:
-			return (_m[tile].m4 & 3) | ((_m[tile].m4 & 3) << 8);
+			return GB(_m[tile].m4, 0, 2) | (GB(_m[tile].m4, 0, 2) << 8);
 		case MP_STATION:
 			return HASBIT(_m[tile].m3, 6) ? TRACKDIR_BIT_MASK : 0;
 		case MP_STREET:
@@ -159,7 +158,7 @@ void PBSClearTrack(TileIndex tile, Track track) {
 				CLRBIT(_m[tile].m3, 6);
 			} else {
 				// normal rail track
-				byte encrt = (_m[tile].m4 & 0xF0) >> 4;
+				byte encrt = GB(_m[tile].m4, 4, 4);
 
 				if (encrt == track + 1)
 					encrt = 0;
@@ -168,8 +167,7 @@ void PBSClearTrack(TileIndex tile, Track track) {
 				else if (encrt == (track^1) + 1 + 8)
 					encrt &= 7;
 
-				_m[tile].m4 &= ~0xF0;
-				_m[tile].m4 |= encrt << 4;
+				SB(_m[tile].m4, 4, 4, encrt);
 			}
 			break;
 		case MP_TUNNELBRIDGE:
@@ -203,7 +201,9 @@ void PBSClearPath(TileIndex tile, Trackdir trackdir, TileIndex end_tile, Trackdi
 		if (tile == end_tile && TrackdirToTrack(trackdir) == TrackdirToTrack(end_trackdir))
 			return;
 
-		if (IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5 & 0xF0)==0 && (unsigned)(_m[tile].m5 & 3) == TrackdirToExitdir(trackdir)) {
+		if (IsTileType(tile, MP_TUNNELBRIDGE) &&
+				GB(_m[tile].m5, 4, 4) == 0 &&
+				GB(_m[tile].m5, 0, 2) == TrackdirToExitdir(trackdir)) {
 			// this is a tunnel
 			flotr = FindLengthOfTunnel(tile, TrackdirToExitdir(trackdir));
 

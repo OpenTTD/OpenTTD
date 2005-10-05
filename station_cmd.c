@@ -1430,11 +1430,11 @@ int32 DoConvertStationRail(TileIndex tile, uint totype, bool exec)
 	if (_m[tile].m5 >= 8) return CMD_ERROR;
 
 	// tile is already of requested type?
-	if ((_m[tile].m3 & 0xFU) == totype) return CMD_ERROR;
+	if (GB(_m[tile].m3, 0, 4) == totype) return CMD_ERROR;
 
 	if (exec) {
 		// change type.
-		_m[tile].m3 = (_m[tile].m3 & 0xF0) + totype;
+		SB(_m[tile].m3, 0, 4, totype);
 		MarkTileDirtyByTile(tile);
 	}
 
@@ -2131,7 +2131,7 @@ static void DrawTile_Station(TileInfo *ti)
 	uint32 image;
 	const DrawTileSeqStruct *dtss;
 	const DrawTileSprites *t = NULL;
-	byte railtype = _m[ti->tile].m3 & 0xF;
+	byte railtype = GB(_m[ti->tile].m3, 0, 4);
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 	SpriteID offset;
 	uint32 relocation = 0;

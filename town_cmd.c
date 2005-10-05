@@ -78,7 +78,7 @@ typedef struct DrawTownTileStruct {
 
 static void TownDrawHouseLift(const TileInfo *ti)
 {
-	AddChildSpriteScreen(0x5A3, 0xE, 0x3C - (_m[ti->tile].m1 & 0x7F));
+	AddChildSpriteScreen(0x5A3, 0xE, 0x3C - GB(_m[ti->tile].m1, 0, 7));
 }
 
 typedef void TownDrawTileProc(const TileInfo *ti);
@@ -183,10 +183,10 @@ static void AnimateTile_Town(TileIndex tile)
 		SB(_m[tile].m5, 0, 6, i);
 	}
 
-	a = _m[tile].m1 & 0x7F;
-	b = (_m[tile].m5&0x3F) * 6;
+	a = GB(_m[tile].m1, 0, 7);
+	b = GB(_m[tile].m5, 0, 6) * 6;
 	a += (a < b) ? 1 : -1;
-	_m[tile].m1 = (_m[tile].m1 & 0x80) | a;
+	SB(_m[tile].m1, 0, 7, a);
 
 	if (a == b) {
 		_m[tile].m1 &= 0x7F;
@@ -623,7 +623,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, uint mask, int block, Town *t1)
 
 		// Reached a tunnel? Then continue at the other side of it.
 		if (IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5& ~3) == 4) {
-			FindLengthOfTunnelResult flotr = FindLengthOfTunnel(tile, _m[tile].m5&3);
+			FindLengthOfTunnelResult flotr = FindLengthOfTunnel(tile, GB(_m[tile].m5, 0, 2));
 			*tile_ptr = flotr.tile;
 			return;
 		}

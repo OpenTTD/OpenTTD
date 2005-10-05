@@ -627,7 +627,7 @@ TileIndex CheckTunnelBusy(TileIndex tile, uint *length)
 		len++;
 	} while (
 		!IsTileType(tile, MP_TUNNELBRIDGE) ||
-		(_m[tile].m5 & 0xF0) != 0 ||
+		GB(_m[tile].m5, 4, 4) != 0 ||
 		(_m[tile].m5 ^ 2) != m5 ||
 		GetTileZ(tile) != z
 	);
@@ -676,8 +676,8 @@ static int32 DoClearTunnel(TileIndex tile, uint32 flags)
 	if (flags & DC_EXEC) {
 		// We first need to request the direction before calling DoClearSquare
 		//  else the direction is always 0.. dah!! ;)
-		byte tile_dir = _m[tile].m5&3;
-		byte endtile_dir = _m[endtile].m5&3;
+		byte tile_dir = GB(_m[tile].m5, 0, 2);
+		byte endtile_dir = GB(_m[endtile].m5, 0, 2);
 		DoClearSquare(tile);
 		DoClearSquare(endtile);
 		UpdateSignalsOnSegment(tile, _updsignals_tunnel_dir[tile_dir]);
@@ -690,7 +690,7 @@ static int32 DoClearTunnel(TileIndex tile, uint32 flags)
 
 static TileIndex FindEdgesOfBridge(TileIndex tile, TileIndex *endtile)
 {
-	int direction = _m[tile].m5 & 1;
+	int direction = GB(_m[tile].m5, 0, 1);
 	TileIndex start;
 
 	// find start of bridge
@@ -723,7 +723,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	direction = _m[tile].m5&1;
+	direction = GB(_m[tile].m5, 0, 1);
 
 	/* delete stuff under the middle part if there's a transport route there..? */
 	if ((_m[tile].m5 & 0xE0) == 0xE0) {
@@ -871,14 +871,14 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 		// railway tunnel
 		if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
-		if ((_m[tile].m3 & 0xFU) == totype) return CMD_ERROR;
+		if (GB(_m[tile].m3, 0, 4) == totype) return CMD_ERROR;
 
 		endtile = CheckTunnelBusy(tile, &length);
 		if (endtile == INVALID_TILE) return CMD_ERROR;
 
 		if (exec) {
-			_m[tile].m3 = (_m[tile].m3 & 0xF0) + totype;
-			_m[endtile].m3 = (_m[endtile].m3 & 0xF0) + totype;
+			SB(_m[tile].m3, 0, 4, totype);
+			SB(_m[endtile].m3, 0, 4, totype);
 			MarkTileDirtyByTile(tile);
 			MarkTileDirtyByTile(endtile);
 		}
@@ -890,10 +890,10 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 			return CMD_ERROR;
 
 		// tile is already of requested type?
-		if ((_m[tile].m3 & 0xFU) == totype) return CMD_ERROR;
+		if (GB(_m[tile].m3, 0, 4) == totype) return CMD_ERROR;
 		// change type.
 		if (exec) {
-			_m[tile].m3 = (_m[tile].m3 & 0xF0) + totype;
+			SB(_m[tile].m3, 0, 4, totype);
 			MarkTileDirtyByTile(tile);
 		}
 		return _price.build_rail >> 1;
@@ -919,19 +919,19 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 			return CMD_ERROR;
 		}
 
-		if ((_m[tile].m3 & 0xFU) == totype) return CMD_ERROR;
+		if (GB(_m[tile].m3, 0, 4) == totype) return CMD_ERROR;
 		cost = 0;
 		do {
 			if (exec) {
 				if (tile == starttile || tile == endtile) {
-					_m[tile].m3 = (_m[tile].m3 & 0xF0) + totype;
+					SB(_m[tile].m3, 0, 4, totype);
 				} else {
-					_m[tile].m3 = (_m[tile].m3 & 0x0F) + (totype << 4);
+					SB(_m[tile].m3, 4, 4, totype);
 				}
 				MarkTileDirtyByTile(tile);
 			}
 			cost += (_price.build_rail>>1);
-			tile += _m[tile].m5 & 1 ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
+			tile += GB(_m[tile].m5, 0, 1) ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
 		} while (tile <= endtile);
 
 		return cost;
@@ -947,7 +947,7 @@ static uint GetBridgeHeight(const TileInfo *ti)
 	TileIndex tile = ti->tile;
 
 	// find the end tile of the bridge.
-	delta = (_m[tile].m5 & 1) ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
+	delta = GB(_m[tile].m5, 0, 1) ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
 	do {
 		assert((_m[tile].m5 & 0xC0) == 0xC0);	// bridge and middle part
 		tile += delta;
@@ -1124,7 +1124,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				}
 
 				if (!(image&1)) {
-					const RailtypeInfo *rti = GetRailTypeInfo(_m[ti->tile].m3 & 0xF);
+					const RailtypeInfo *rti = GetRailTypeInfo(GB(_m[ti->tile].m3, 0, 4));
 					// railway
 					image = 0x3F3 + (ti->map5 & 1);
 					if (ti->tileh != 0) image = _track_sloped_sprites[ti->tileh - 1] + 0x3F3;
@@ -1316,7 +1316,7 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 
 		/* scan to the end of the bridge, that's where the owner is stored */
 		if (_m[tile].m5 & 0x40) {
-			TileIndexDiff delta = _m[tile].m5 & 1 ? TileDiffXY(0, -1) : TileDiffXY(-1, 0);
+			TileIndexDiff delta = GB(_m[tile].m5, 0, 1) ? TileDiffXY(0, -1) : TileDiffXY(-1, 0);
 
 			do tile += delta; while (_m[tile].m5 & 0x40);
 		}
@@ -1450,7 +1450,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 	int dir, vdir;
 	byte fc;
 
-	if ((_m[tile].m5 & 0xF0) == 0) {
+	if (GB(_m[tile].m5, 4, 4) == 0) {
 		z = GetSlopeZ(x, y) - v->z_pos;
 		if (myabs(z) > 2)
 			return 8;
@@ -1458,7 +1458,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 		if (v->type == VEH_Train) {
 			fc = (x&0xF)+(y<<4);
 
-			dir = _m[tile].m5 & 3;
+			dir = GB(_m[tile].m5, 0, 2);
 			vdir = v->direction >> 1;
 
 			if (v->u.rail.track != 0x40 && dir == vdir) {
@@ -1487,7 +1487,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 			}
 		} else if (v->type == VEH_Road) {
 			fc = (x&0xF)+(y<<4);
-			dir = _m[tile].m5 & 3;
+			dir = GB(_m[tile].m5, 0, 2);
 			vdir = v->direction >> 1;
 
 			// Enter tunnel?
@@ -1542,7 +1542,7 @@ TileIndex GetVehicleOutOfTunnelTile(const Vehicle *v)
 	byte z = v->z_pos;
 
 	for (tile = v->tile;; tile += delta) {
-		if (IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5 & 0xF0) == 0 &&
+		if (IsTileType(tile, MP_TUNNELBRIDGE) && GB(_m[tile].m5, 4, 4) == 0 &&
 				GetTileZ(tile) == z)
 			break;
 	}

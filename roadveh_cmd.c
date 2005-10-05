@@ -284,7 +284,7 @@ static bool EnumRoadSignalFindDepot(TileIndex tile, RoadFindDepotData *rfdd, int
 	tile += TileOffsByDir(_road_pf_directions[track]);
 
 	if (IsTileType(tile, MP_STREET) &&
-			(_m[tile].m5 & 0xF0) == 0x20 &&
+			GB(_m[tile].m5, 4, 4) == 2 &&
 			IsTileOwner(tile, rfdd->owner)) {
 
 		if (length < rfdd->best_length) {
@@ -1034,7 +1034,7 @@ static int RoadFindPathToDest(Vehicle *v, TileIndex tile, int enterdir)
 	}
 
 	if (IsTileType(tile, MP_STREET)) {
-		if ((_m[tile].m5&0xF0) == 0x20 && IsTileOwner(tile, v->owner))
+		if (GB(_m[tile].m5, 4, 4) == 2 && IsTileOwner(tile, v->owner))
 			/* Road crossing */
 			bitmask |= _road_veh_fp_ax_or[_m[tile].m5&3];
 	} else if (IsTileType(tile, MP_STATION)) {
@@ -1237,7 +1237,7 @@ static void RoadVehController(Vehicle *v)
 
 		v->cur_speed = 0;
 
-		dir = _m[v->tile].m5&3;
+		dir = GB(_m[v->tile].m5, 0, 2);
 		v->direction = dir*2+1;
 
 		rd2 = _roadveh_data_2[dir];
@@ -1286,7 +1286,7 @@ static void RoadVehController(Vehicle *v)
 		}
 
 		if (IsTileType(gp.new_tile, MP_TUNNELBRIDGE) &&
-				(_m[gp.new_tile].m5&0xF0) == 0 &&
+				GB(_m[gp.new_tile].m5, 4, 4) == 0 &&
 				(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y)&4)) {
 
 			//new_dir = RoadGetNewDirection(v, gp.x, gp.y)

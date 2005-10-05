@@ -209,7 +209,7 @@ static const int8 _get_tunlen_inc[5] = { -16, 0, 16, 0, -16 };
 /* Returns the end tile and the length of a tunnel. The length does not
  * include the starting tile (entry), it does include the end tile (exit).
  */
-FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, int direction)
+FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, uint direction)
 {
 	FindLengthOfTunnelResult flotr;
 	int x,y;
@@ -231,11 +231,12 @@ FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, int direction)
 		tile = TileVirtXY(x, y);
 
 		if (IsTileType(tile, MP_TUNNELBRIDGE) &&
-				(_m[tile].m5 & 0xF0) == 0 &&					// tunnel entrance/exit
-				//((_m[tile].m5>>2)&3) == type &&		// rail/road-tunnel <-- This is not necesary to check, right?
-				((_m[tile].m5 & 3)^2) == direction &&	// entrance towards: 0 = NE, 1 = SE, 2 = SW, 3 = NW
-				GetSlopeZ(x+8, y+8) == z)
-					break;
+				GB(_m[tile].m5, 4, 4) == 0 &&               // tunnel entrance/exit
+				// GB(_m[tile].m5, 2, 2) == type &&            // rail/road-tunnel <-- This is not necesary to check, right?
+				(GB(_m[tile].m5, 0, 2) ^ 2) == direction && // entrance towards: 0 = NE, 1 = SE, 2 = SW, 3 = NW
+				GetSlopeZ(x + 8, y + 8) == z) {
+			break;
+		}
 	}
 
 	flotr.tile = tile;
@@ -274,16 +275,18 @@ const byte _ffb_64[128] = {
 48,56,56,58,56,60,60,62,
 };
 
-static void TPFMode1(TrackPathFinder *tpf, TileIndex tile, int direction)
+static void TPFMode1(TrackPathFinder *tpf, TileIndex tile, uint direction)
 {
 	uint bits;
 	int i;
 	RememberData rd;
 	TileIndex tile_org = tile;
 
-	if (IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5 & 0xF0) == 0) {
-		if ((_m[tile].m5 & 3) != direction || ((_m[tile].m5>>2)&3) != tpf->tracktype)
+	if (IsTileType(tile, MP_TUNNELBRIDGE) && GB(_m[tile].m5, 4, 4) == 0) {
+		if (GB(_m[tile].m5, 0, 2) != direction ||
+				GB(_m[tile].m5, 2, 2) != tpf->tracktype) {
 			return;
+		}
 		tile = SkipToEndOfTunnel(tpf, tile, direction);
 	}
 	tile += TileOffsByDir(direction);
@@ -704,11 +707,11 @@ start_at:
 		// If the tile is the entry tile of a tunnel, and we're not going out of the tunnel,
 		//   need to find the exit of the tunnel.
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-			if ((_m[tile].m5 & 0xF0) == 0 &&
-				(uint)(_m[tile].m5 & 3) != (direction ^ 2)) {
+			if (GB(_m[tile].m5, 4, 4) == 0 &&
+					GB(_m[tile].m5, 0, 2) != (direction ^ 2)) {
 				/* This is a tunnel tile */
 				/* We are not just driving out of the tunnel */
-				if ( (uint)(_m[tile].m5 & 3) != direction || GB(_m[tile].m5, 2, 2) != tpf->tracktype)
+				if (GB(_m[tile].m5, 0, 2) != direction || GB(_m[tile].m5, 2, 2) != tpf->tracktype)
 					/* We are not driving into the tunnel, or it
 					 * is an invalid tunnel */
 					continue;
@@ -761,7 +764,7 @@ start_at:
 
 			// The tile has no reachable tracks, or
 			// does the tile contain more than one track?
-			if (bits == 0 || KILL_FIRST_BIT(_m[tile].m5 & 0x3F) != 0)
+			if (bits == 0 || KILL_FIRST_BIT(GB(_m[tile].m5, 0, 6)) != 0)
 				break;
 
 			// If we reach here, the tile has exactly one track, and this

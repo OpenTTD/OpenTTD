@@ -99,7 +99,7 @@ static inline bool IsTileType(TileIndex tile, TileType type)
 
 static inline bool IsTunnelTile(TileIndex tile)
 {
-	return IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5 & 0xF0) == 0;
+	return IsTileType(tile, MP_TUNNELBRIDGE) && GB(_m[tile].m5, 4, 4) == 0;
 }
 
 static inline Owner GetTileOwner(TileIndex tile)

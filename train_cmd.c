@@ -1258,8 +1258,8 @@ static void DisableTrainCrossing(TileIndex tile)
 		/* Check if there is a train on the tile itself */
 		if (VehicleFromPos(tile, &tile, TestTrainOnCrossing) == NULL) {
 			/* If light is on, switch light off */
-			if (_m[tile].m5 & 4) {
-				_m[tile].m5 &= ~4;
+			if (GB(_m[tile].m5, 2, 1) != 0) {
+				SB(_m[tile].m5, 2, 1, 0);
 				MarkTileDirtyByTile(tile);
 			}
 		}
@@ -1322,7 +1322,7 @@ TileIndex GetVehicleTileOutOfTunnel(const Vehicle *v, bool reverse)
 		return v->tile;
 
 	for (tile = v->tile;; tile += delta) {
-		if (IsTunnelTile(tile) && (_m[tile].m5 & 0x3) != (direction) && GetTileZ(tile) == v->z_pos)
+		if (IsTunnelTile(tile) && GB(_m[tile].m5, 0, 2) != direction && GetTileZ(tile) == v->z_pos)
  			break;
  	}
  	return tile;
@@ -2466,7 +2466,7 @@ static bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
 			// tracks over roads, do owner check of tracks
 			return
 				IsTileOwner(tile, v->owner) &&
-				(v->subtype != TS_Front_Engine || (_m[tile].m4 & 0xF) == v->u.rail.railtype);
+				(v->subtype != TS_Front_Engine || GB(_m[tile].m4, 0, 4) == v->u.rail.railtype);
 
 		default:
 			return true;
@@ -3173,8 +3173,8 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 		if ((ts &= (ts >> 16)) == 0) {
 			// make a rail/road crossing red
 			if (IsTileType(tile, MP_STREET) && IsLevelCrossing(tile)) {
-				if (!(_m[tile].m5 & 4)) {
-					_m[tile].m5 |= 4;
+				if (GB(_m[tile].m5, 2, 1) == 0) {
+					SB(_m[tile].m5, 2, 1, 1);
 					SndPlayVehicleFx(SND_0E_LEVEL_CROSSING, v);
 					MarkTileDirtyByTile(tile);
 				}
@@ -3319,7 +3319,7 @@ static bool ValidateTrainInDepot( uint data_a, uint data_b )
 
 void TrainEnterDepot(Vehicle *v, TileIndex tile)
 {
-	SetSignalsOnBothDir(tile, _depot_track_ind[_m[tile].m5&3]);
+	SetSignalsOnBothDir(tile, _depot_track_ind[GB(_m[tile].m5, 0, 2)]);
 
 	if (v->subtype != TS_Front_Engine)
 		v = GetFirstVehicleInChain(v);

@@ -300,8 +300,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 					if (flags & DC_EXEC) {
 						SetTileOwner(tile, _current_player);
-						_m[tile].m3 &= ~0x0F;
-						_m[tile].m3 |= p1;
+						SB(_m[tile].m3, 0, 4, p1);
 						_m[tile].m5 = (m5 & 0xC7) | 0x20; // railroad under bridge
 					}
 					break;
@@ -322,7 +321,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			}
 			if (m5 & RAIL_TYPE_SPECIAL ||
 					!IsTileOwner(tile, _current_player) ||
-					(_m[tile].m3 & 0xFU) != p1) {
+					GB(_m[tile].m3, 0, 4) != p1) {
 				// Get detailed error message
 				return DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			}
@@ -453,11 +452,7 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			_m[tile].m5 = _m[tile].m5 & 0xC7;
 			break;
 		case MP_STREET:
-			if (!(_m[tile].m5 & 0xF0))
-				return CMD_ERROR;
-
-			if (_m[tile].m5 & 0xE0)
-				return CMD_ERROR;
+			if (!IsLevelCrossing(tile)) return CMD_ERROR;
 
 			/* This is a crossing, let's check if the direction is correct */
 			if (_m[tile].m5 & 8) {
@@ -793,8 +788,7 @@ int32 CmdBuildSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				if (pre_signal) {
 					// cycle between normal -> pre -> exit -> combo -> pbs ->...
 					byte type = ((GetSignalType(tile, track) + 1) % 5);
-					_m[tile].m4 &= ~0x07;
-					_m[tile].m4 |= type ;
+					SB(_m[tile].m4, 0, 3, type);
 				} else {
 					// cycle between two-way -> one-way -> one-way -> ...
 					/* TODO: Rewrite switch into something more general */
@@ -961,9 +955,9 @@ int32 CmdRemoveSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		_m[tile].m3 &= ~SignalOnTrack(track);
 
 		/* removed last signal from tile? */
-		if ((_m[tile].m3 & 0xF0) == 0) {
-			_m[tile].m5 &= ~RAIL_TYPE_SIGNALS;
-			_m[tile].m2 &= ~0xF0;
+		if (GB(_m[tile].m3, 4, 4) == 0) {
+			SB(_m[tile].m2, 4, 4, 0);
+			SB(_m[tile].m5, 6, 2, RAIL_TYPE_NORMAL >> 6); // XXX >> because the constant is meant for direct application, not use with SB
 			CLRBIT(_m[tile].m4, 3); // remove any possible semaphores
 		}
 
@@ -997,7 +991,7 @@ static int32 DoConvertRail(TileIndex tile, uint totype, bool exec)
 
 	// change type.
 	if (exec) {
-		_m[tile].m3 = (_m[tile].m3 & 0xF0) + totype;
+		SB(_m[tile].m3, 4, 4, totype);
 		MarkTileDirtyByTile(tile);
 	}
 
@@ -1757,10 +1751,10 @@ bool SignalVehicleCheck(TileIndex tile, uint track)
 	 * is some kind of invisible black hole, and there is some special magic going
 	 * on in there. This 'workaround' can be removed once the maprewrite is done.
 	 */
-	if (GetTileType(tile)==MP_TUNNELBRIDGE && ((_m[tile].m5 & 0xF0)==0)) {
+	if (GetTileType(tile) == MP_TUNNELBRIDGE && GB(_m[tile].m5, 4, 4) == 0) {
 		// It is a tunnel we're checking, we need to do some special stuff
 		// because VehicleFromPos will not find the vihicle otherwise
-		byte direction = _m[tile].m5 & 3;
+		byte direction = GB(_m[tile].m5, 0, 2);
 		FindLengthOfTunnelResult flotr;
 		flotr = FindLengthOfTunnel(tile, direction);
 		dest.track = 1 << (direction & 1); // get the trackbit the vehicle would have if it has not entered the tunnel yet (ie is still visible)
@@ -1845,8 +1839,7 @@ static void ChangeSignalStates(SetSignalsData *ssd)
 	if (_patches.auto_pbs_placement && !(ssd->stop) && (ssd->has_pbssignal == 0xE) && !ssd->has_presignal && (ssd->presignal_exits == 0)) // 0xE means at least 2 pbs signals, and at least 1 entry and 1 exit, see comments ssd->has_pbssignal
 	for(i=0; i!=ssd->pbs_cur; i++) {
 		TileIndex tile = ssd->pbs_tile[i];
-		_m[tile].m4 &= ~0x07;
-		_m[tile].m4 |= 0x04;
+		SB(_m[tile].m4, 0, 3, SIGTYPE_PBS);
 		MarkTileDirtyByTile(tile);
 	};
 
@@ -2006,7 +1999,7 @@ static void TileLoop_Track(TileIndex tile)
 	uint16 m2;
 	byte owner;
 
-	m2 = _m[tile].m2 & 0xF;
+	m2 = GB(_m[tile].m2, 0, 4);
 
 	/* special code for alps landscape */
 	if (_opt.landscape == LT_HILLY) {
@@ -2158,7 +2151,7 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 				STR_NULL, STR_NULL
 			};
 
-			td->str = signal_type[_m[tile].m4 & 0x7];
+			td->str = signal_type[GB(_m[tile].m4, 0, 3)];
 			break;
 		}
 

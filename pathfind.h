@@ -64,7 +64,7 @@ typedef struct {
 	TileIndex tile;
 	int length;
 } FindLengthOfTunnelResult;
-FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, int direction);
+FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, uint direction);
 
 void NewTrainPathfind(TileIndex tile, TileIndex dest, byte direction, NTPEnumProc *enum_proc, void *data);
 

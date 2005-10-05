@@ -104,10 +104,10 @@ static inline DiagDirection GetDepotDirection(TileIndex tile, TransportType type
 		case TRANSPORT_RAIL:
 		case TRANSPORT_ROAD:
 			/* Rail and road store a diagonal direction in bits 0 and 1 */
-			return (DiagDirection)(_m[tile].m5 & 3);
+			return (DiagDirection)GB(_m[tile].m5, 0, 2);
 		case TRANSPORT_WATER:
 			/* Water is stubborn, it stores the directions in a different order. */
-			switch (_m[tile].m5 & 3) {
+			switch (GB(_m[tile].m5, 0, 2)) {
 				case 0: return DIAGDIR_NE;
 				case 1: return DIAGDIR_SW;
 				case 2: return DIAGDIR_NW;
