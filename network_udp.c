@@ -350,7 +350,11 @@ bool NetworkUDPListen(SOCKET *udp, uint32 host, uint16 port, bool broadcast)
 	// set nonblocking mode for socket
 	{
 		unsigned long blocking = 1;
+#ifndef BEOS_NET_SERVER
 		ioctlsocket(*udp, FIONBIO, &blocking);
+#else
+		setsockopt(*upd, SOL_SOCKET, SO_NONBLOCK, &blocking);
+#endif
 	}
 
 	sin.sin_family = AF_INET;
@@ -366,7 +370,9 @@ bool NetworkUDPListen(SOCKET *udp, uint32 host, uint16 port, bool broadcast)
 	if (broadcast) {
 		/* Enable broadcast */
 		unsigned long val = 1;
+#ifndef BEOS_NET_SERVER // will work around this, some day; maybe.
 		setsockopt(*udp, SOL_SOCKET, SO_BROADCAST, (char *) &val , sizeof(val));
+#endif
 	}
 
 	DEBUG(net, 1)("[NET][UDP] Listening on port %s:%d", inet_ntoa(*(struct in_addr *)&host), port);

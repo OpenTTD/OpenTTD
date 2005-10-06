@@ -380,12 +380,13 @@ endif
 
 ifdef BEOS
 CDEFS += -DBEOS
-LDFLAGS += -lmidi -lbe
+LDFLAGS += -lmidi -lbe -lpthread
 ifdef WITH_NETWORK
 	ifdef BEOS_NET_SERVER
 		CDEFS += -DBEOS_NET_SERVER
+		LDFLAGS += -lnet
 	else
-		# Zeta needs a few more libraries than R5
+		# BONE needs a few more libraries than R5
 		LDFLAGS += -lbind -lsocket
 	endif
 endif
