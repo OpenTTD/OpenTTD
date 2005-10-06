@@ -711,6 +711,7 @@ endif
 
 ifdef OSX
 OBJC_SOURCES += os/macosx/macos.m
+C_SOURCES    += music/qtmidi.c
 endif
 
 OBJS = $(C_SOURCES:%.c=%.o) $(CXX_SOURCES:%.cpp=%.o) $(OBJC_SOURCES:%.m=%.o)

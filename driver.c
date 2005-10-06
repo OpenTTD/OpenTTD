@@ -14,6 +14,7 @@
 #include "music/null_m.h"
 #include "music/os2_m.h"
 #include "music/win32_m.h"
+#include "music/qtmidi.h"
 
 #include "sound/null_s.h"
 #include "sound/sdl_s.h"
@@ -50,6 +51,9 @@ static const DriverDesc _music_driver_descs[] = {
 #endif
 #ifdef WIN32
 	M("win32",   "Win32 MIDI Driver",       &_win32_music_driver),
+#endif
+#ifdef __APPLE__
+	M("qt",      "QuickTime MIDI Driver",   &_qtime_music_driver),
 #endif
 #ifdef UNIX
 #if !defined(__MORPHOS__) && !defined(__AMIGA__)
