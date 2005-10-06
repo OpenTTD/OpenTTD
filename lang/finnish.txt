@@ -272,7 +272,7 @@ STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Valittu 
 
 STR_0133_WINDOWS                                                :Windows
 STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :OS X
+STR_0135_OSX                                                    :OS{NBSP}X{NBSP}
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
@@ -1017,6 +1017,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Oletush
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Oletushuoltoväli laivoille: {ORANGE}{STRING} päivää
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Oletushuoltoväli laivoille: {ORANGE}pois päältä
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Huollot pois käytöstä, kun rikkoutumiset on pois: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Ota käyttöön vaunujen nopeusrajoitukset: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Värjätyt uutiset: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Aloitusvuosi: {ORANGE}{STRING}
@@ -1044,7 +1045,7 @@ STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Muuta asetusarvo
-STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Osa allaolevista oletushuoltoväleistä ei ole yhteensopivia valitun asetuksen kanssa! 5-90% ja 30-800 päivää ovat oikein.
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Osa allaolevista oletushuoltoväleistä ei ole yhteensopivia valitun asetuksen kanssa! 5-90{NBSP}% ja 30-800 päivää ovat oikein.
 
 STR_TEMPERATE_LANDSCAPE                                         :lauhkea maasto
 STR_SUB_ARCTIC_LANDSCAPE                                        :pohjoinen maasto
@@ -1154,7 +1155,7 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Rahoita 
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Rakenna sokerikaivos.
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Teollisuusala
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}% kuljetettu)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}{NBSP}% kuljetettu)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% kuljetettu)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
@@ -1509,8 +1510,8 @@ STR_202C_FROM_TO                                                :{ORANGE}{STRING
 STR_202D_UNTIL                                                  :{YELLOW}, {DATE_SHORT} asti)
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Tuki päättynyt:{}{}{STRING} väli {STRING} - {STRING} ei sisällä enää tukia.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Tuki vedetty pois:{}{}{STRING} kuljetuspalvelu välille {STATION}-{STATION} ei ole enää tuettu.
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Tuki tarjottu:{}{}Ensimmäisen {STRING}kuljetuksen tuottaminen välille {STRING} - {STRING} tarkoittaa vuoden mittaisen tuen saamista paikallisviranomaisilta!
-STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Tuki myönnetty yhtiölle {COMPANY}!{}{}{STRING}kuljetus välillä {STATION}-{STATION} tuottaa 50% enemmän seuraavan vuoden ajan!
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Tuki tarjottu:{}{}Ensimmäinen {STRING}kuljetus välillä {STRING} - {STRING} saa vuoden mittaisen tuen paikallisviranomaisilta!
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Tuki myönnetty yhtiölle {COMPANY}!{}{}{STRING}kuljetus välillä {STATION}-{STATION} tuottaa 50{NBSP}% enemmän seuraavan vuoden ajan!
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Tuki myönnetty yhtiölle {COMPANY}!{}{}{STRING}kuljetus välillä {STATION}-{STATION} tuottaa tuplaten seuraavan vuoden ajan!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Tuki myönnetty yhtiölle {COMPANY}!{}{}{STRING}kuljetus välillä {STATION}-{STATION} tuottaa kolminkertaisesti seuraavan vuoden ajan!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Tuki myönnetty yhtiölle {COMPANY}!{}{}{STRING}kuljetus välillä {STATION}-{STATION} tuottaa nelinkertaisesti seuraavan vuoden ajan!
@@ -1615,7 +1616,7 @@ STR_303B_EXCELLENT                                              :Mainio
 STR_303C_OUTSTANDING                                            :Loistava
 ############ range for rating ends
 
-STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
+STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}{NBSP}%)
 STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} ei enää ota vastaan {STRING}.
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} ei enää ota vastaan {STRING} tai {STRING}.
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} ottaa nyt vastaan {STRING}.
@@ -1741,7 +1742,7 @@ STR_4829_REQUIRES                                               :{BLACK}Tarvitse
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Tuotto viime kuussa:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% kuljetettu)
+STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}{NBSP}% kuljetettu)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Keskitä päänäkymä teollisuuden sijaintiin.
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Uusi {STRING} rakennetaan kaupungin {TOWN} lähistölle!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Uusi {STRING} istutetaan kaupungin {TOWN} lähistölle!
@@ -1755,11 +1756,11 @@ STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}{INDUSTRY}: uusi hiilijuonne löytynyt!{}Tuotannon odotetaan kaksinkertaistuvan!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}{INDUSTRY}: uusia öljyvaroja löydetty!{}Tuotannon odotetaan kaksinkertaistuvan!
 STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}{INDUSTRY}: viljelytapoja parannettu! Tuotannon odotetaan kaksinkertaistuvan!
-STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY}: tuotanto vähenee 50%:lla.
-STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}{INDUSTRY}: hyönteisparvet aiheuttavat tuhoa!{}Tuotanto vähenee 50%:lla.
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY}: tuotanto vähenee 50{NBSP}%:lla.
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}{INDUSTRY}: hyönteisparvet aiheuttavat tuhoa!{}Tuotanto vähenee 50{NBSP}%:lla.
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...voidaan asettaa vain kartan reunoille.
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} tuotanto kohteessa: {INDUSTRY} nousee {COMMA}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} tuotanto kohteessa: {INDUSTRY} laskee {COMMA}%!
+STR_INDUSTRY_PROD_GOUP                                          ::{BLACK}{BIGFONT}{1:INDUSTRY} tuottaa {0:STRING} {2:COMMA}{NBSP}% entistä enemmän!
+STR_INDUSTRY_PROD_GODOWN                                        ::{BLACK}{BIGFONT}{1:INDUSTRY} tuottaa {0:STRING} {2:COMMA}{NBSP}% entistä vähemmän!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Juna on tunnelissa.
@@ -1874,7 +1875,7 @@ STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Vastust
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Kaupunkien määrä: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Teollisuuden määrä: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Lainan enimmäismäärä alussa: {ORANGE}{CURRENCY}
-STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Korko alussa: {ORANGE}{COMMA}%
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Korko alussa: {ORANGE}{COMMA}{NBSP}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Ajoneuvojen käyttökustannukset: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Vastustajien rakennusnopeus: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Vastustajien älykkyys: {ORANGE}{STRING}
@@ -2041,7 +2042,7 @@ STR_706D_PRESIDENT                                              :Pääjohtaja
 STR_706E_TYCOON                                                 :Pohatta
 STR_706F_BUILD_HQ                                               :{BLACK}Rakenna päämaja
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Rakenna yhtiön päärakennus / näytä yhtiön päärakennus.
-STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Rakenna yhtiön päärakennus muualle, hintana 1% yhtiön arvosta.
+STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Rakenna yhtiön päärakennus muualle, hintana 1{NBSP}% yhtiön arvosta.
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Yhtiön päärakennusta ei voi rakentaa...
 STR_7072_VIEW_HQ                                                :{BLACK}Näytä päämaja
 STR_RELOCATE_HQ                                                 :{BLACK}Sijoita päämaja
@@ -2052,14 +2053,14 @@ STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Laskukausi ohi!{}{}Kaupankäynnin käänne parempaan lisää luottamusta teollisuuteen talouden vahvistuessa!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Suuri/pieni ikkunan koko
 STR_7076_COMPANY_VALUE                                          :{GOLD}Yhtiön arvo: {WHITE}{CURRENCY64}
-STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Osta 25%:n osuus yhtiöstä
-STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Myy 25%:n osuus yhtiöstä
-STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Osta 25%:n osuus tästä yhtiöstä
-STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Myy 25%:n osuus tästä yhtiöstä
-STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Tästä yhtiöstä ei voi ostaa 25%:n osuutta...
-STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Tästä yhtiöstä ei voi myydä 25%:n osuutta...
-STR_707D_OWNED_BY                                               :{WHITE}({COMMA}%:n omistus: {COMPANY})
-STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}%:n omistus: {COMPANY}{}   {COMMA}%:n omistus {COMPANY})
+STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Osta 25{NBSP}%:n osuus yhtiöstä
+STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Myy 25{NBSP}%:n osuus yhtiöstä
+STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Osta 25{NBSP}%:n osuus tästä yhtiöstä
+STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Myy 25{NBSP}%:n osuus tästä yhtiöstä
+STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Tästä yhtiöstä ei voi ostaa 25{NBSP}%:n osuutta...
+STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Tästä yhtiöstä ei voi myydä 25{NBSP}%:n osuutta...
+STR_707D_OWNED_BY                                               :{WHITE}({COMMA}{NBSP}%:n omistus: {COMPANY})
+STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}{NBSP}%:n omistus: {COMPANY}{}   {COMMA}{NBSP}%:n omistus {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}Yhtiön {COMPANY} on ottanut haltuun {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Tällä yhtiöllä ei ole vielä osakkeita...
 
@@ -2766,6 +2767,7 @@ STR_TINY_BLACK                                                  :{BLACK}{TINYFON
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kulu: {GOLD}{CURRENCY}{BLACK} Paino: {GOLD}{COMMA}t
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Nopeus: {GOLD}{VELOCITY}{BLACK}   Teho: {GOLD}{COMMA}hv
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Nopeus: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Käyttökulu: {GOLD}{CURRENCY}/vuosi
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasiteetti: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Suunniteltu: {GOLD}{NUM}{BLACK} Elinikä: {GOLD}{COMMA} vuotta

@@ -2374,10 +2374,10 @@ STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nieuwe m
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Bouw voertuig
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Kloon voertuig
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Hierdoor wordt een kopie gebouw van dit voertuig. Control-click deelt de orders
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Hierdoor wordt een kopie gebouw van een voertuig. Klik op deze knop en dan op een voertuig binnen of buiten het depot. Control-click deelt de orders
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Hierdoor wordt een kopie gebouwd van een voertuig. Klik op deze knop en dan op een voertuig binnen of buiten het depot. Control-click deelt de orders
 STR_CLONE_TRAIN                                                 :{BLACK}Kloon Trein
 STR_CLONE_TRAIN_INFO                                            :{BLACK}Hierdoor wordt een kopie gebouw van deze trein inclusief wagons. Control-click deelt de orders
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Hierdoor wordt een kopie gebouw van een trein inclusief wagons. Klik op deze knop en dan op een trein binnen of buiten het depot. Control-click deelt de orders
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Hierdoor wordt een kopie gebouwd van een trein inclusief wagons. Klik op deze knop en dan op een trein binnen of buiten het depot. Control-click deelt de orders
 STR_8820_RENAME                                                 :{BLACK}Hernoemen
 STR_8823_SKIP                                                   :{BLACK}Sla over
 STR_8824_DELETE                                                 :{BLACK}Verwijder
@@ -2409,7 +2409,7 @@ STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Kan trei
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Reparatieinterval: {LTBLUE}{COMMA}dagen{BLACK}   Laatste reparatie: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Service interval: {LTBLUE}{COMMA}%{BLACK}   Laatste service: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Treinen - klik op een trein voor informatie
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Bouwt nieuwe treinen (treindepot nodig)
+STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Bouw nieuwe treinen (treindepot nodig)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Treinen - klik op trein voor info., sleep voertuig om toe tevoegen/verwijderen van trein
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Bouw nieuw treinonderdeel
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Sleep treinonderdeel hier om het te verkopen
@@ -2531,7 +2531,7 @@ STR_9808_NEW_SHIPS                                              :{WHITE}Nieuwe s
 STR_9809_BUILD_SHIP                                             :{BLACK}Bouw schip
 STR_CLONE_SHIP                                                  :{BLACK}Kloon Schip
 STR_CLONE_SHIP_INFO                                             :{BLACK}Hierdoor wordt een kopie gebouw van dit schip. Control-click deelt de orders
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Hierdoor wordt een kopie gebouw van een schip. Klik op deze knop en dan op een schip binnen of buiten het depot. Control-click deelt de orders
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Hierdoor wordt een kopie gebouwd van een schip. Klik op deze knop en dan op een schip binnen of buiten het depot. Control-click deelt de orders
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Schip moet gestopt zijn binnen een depot
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Kan schip niet verkopen...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kan schip niet kopen...

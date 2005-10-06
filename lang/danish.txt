@@ -156,6 +156,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Det kan 
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan ikke rydde området....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, Alle retigheder reserveret
 STR_00B7_VERSION                                                :{BLACK}OpenTTD version {REV}
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2005 The OpenTTD team
 STR_TRANSLATED_BY                                               :{BLACK}  Oversætter(e) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -574,6 +575,8 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...for t
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...for tæt på en anden by
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...ikke brugbar placering
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...for mange byer
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Kan ikke bygge nogen byer
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...der er ikke mere plads på kortet
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Forøg størrelsen af byen
 STR_023C_EXPAND                                                 :{BLACK}Udvid
 STR_023D_RANDOM_TOWN                                            :{BLACK}Tilfældig by
@@ -730,6 +733,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Gennem
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Landområde information
 STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :Tænd/Sluk konsol
 STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Kæmpe Screenshot (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Om 'OpenTTD'
@@ -1013,6 +1017,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standar
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Standard service interval for skibe: {ORANGE}{STRING} dage/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Standard service interval for skibe: {ORANGE}slået fra
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Slå service fra, når nedbrud er sat til ingen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Aktiver hastigheds begrænsning for vogne: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Farvede nyheder dukker op i: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Start dato: {ORANGE}{STRING}
@@ -1260,6 +1265,7 @@ STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Lav en n
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Tilskuer spil
 STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Se et spil som tilskuer
 STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Tilslut dig selskab
+STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Hjælp med at bestyrre dette selskab
 STR_NETWORK_REFRESH                                             :{BLACK}Genopfrisk serveren
 STR_NETWORK_REFRESH_TIP                                         :{BLACK}Genopfrisk server info
 
@@ -2451,6 +2457,7 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Kan ikke vende retningen af toget...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Omdøb tog-/togvognstypen
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kan ikke omdøbe tog-/togvognstypen...
+STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Få den valgte ordre til at tvinge køretøjet til at smide lasten
 STR_886F_TRANSFER                                               :{BLACK}Transfer
 
 STR_TRAIN_STOPPING                                              :{RED}Stopper
@@ -2760,6 +2767,7 @@ STR_TINY_BLACK                                                  :{BLACK}{TINYFON
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Pris: {GOLD}{CURRENCY}{BLACK} Vægt: {GOLD}{COMMA}t
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighed: {GOLD}{VELOCITY}{BLACK}   Styrke: {GOLD}{COMMA}hk
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hastighed: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Kørselsudgift: {GOLD}{CURRENCY}/år
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Lasteevne: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designet: {GOLD}{NUM}{BLACK} Liv: {GOLD}{COMMA} år
