@@ -23,7 +23,7 @@ CurrencySpec _currency_specs[] = {
 	{    4, '.', 2002,      "DM ",  ""     }, // deutsche mark
 	{   10, '.', CF_NOEURO, "",     " kr"  }, // danish krone
 	{  200, '.', 2002,      "Pts ", ""     }, // spanish pesetas
-	{    8, ',', 2002,      "",     " MK"  }, // finnish markka
+	{    8, ',', 2002,      "",     " mk"  }, // finnish markka
 	{   10, '.', 2002,      "FF ",  ""     }, // french francs
 	{  480, ',', 2002,      "",     "Dr."  }, // greek drachma
 	{  376, ',', 2002,      "",     " Ft"  }, // hungarian forint
