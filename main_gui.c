@@ -2349,6 +2349,13 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 			e->keypress.cont = false;
 			break;
 		}
+		
+		// check to see if Command-Q has been pressed on a Mac
+		// must be done before checking if we are at the main menu
+		if ( (e->keypress.keycode == ('Q' | WKC_CTRL)) || (e->keypress.keycode == ('Q' | WKC_META)) )
+		{
+			AskExitGame();
+		}
 
 		if (_game_mode == GM_MENU) break;
 
@@ -2366,7 +2373,6 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 		case WKC_ESC: ResetObjectToPlace(); break;
 		case WKC_DELETE: DeleteNonVitalWindows(); break;
 		case WKC_DELETE | WKC_SHIFT: DeleteAllNonVitalWindows(); break;
-		case 'Q' | WKC_CTRL: case 'Q' | WKC_META: AskExitGame(); break; // this enables command + Q on mac
 		case 'R' | WKC_CTRL: MarkWholeScreenDirty(); break;
 #if defined(_DEBUG)
 		case '0' | WKC_ALT: /* Crash the game */
