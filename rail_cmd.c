@@ -991,7 +991,7 @@ static int32 DoConvertRail(TileIndex tile, uint totype, bool exec)
 
 	// change type.
 	if (exec) {
-		SB(_m[tile].m3, 4, 4, totype);
+		SB(_m[tile].m3, 0, 4, totype);
 		MarkTileDirtyByTile(tile);
 	}
 
