@@ -52,7 +52,7 @@ static const DriverDesc _music_driver_descs[] = {
 #ifdef WIN32
 	M("win32",   "Win32 MIDI Driver",       &_win32_music_driver),
 #endif
-#ifdef __APPLE__
+#if defined(__APPLE__) && !defined(DEDICATED)
 	M("qt",      "QuickTime MIDI Driver",   &_qtime_music_driver),
 #endif
 #ifdef UNIX

@@ -404,6 +404,11 @@ LDFLAGS += -lnsl -lsocket
 endif
 endif
 
+# tell the source that we are building a dedicated server
+ifdef DEDICATED
+CDEFS += -DDEDICATED
+endif
+
 # SDL config
 ifdef WITH_SDL
 CDEFS += -DWITH_SDL
@@ -498,7 +503,9 @@ ifndef SECOND_DATA_PATH
 SECOND_DATA_PATH:="$(OSXAPP)/Contents/Data/"
 endif
 ifndef CUSTOM_LANG_DIR
+ifndef DEDICATED
 CUSTOM_LANG_DIR:="$(OSXAPP)/Contents/Lang/"
+endif
 endif
 endif
 
@@ -712,7 +719,9 @@ endif
 
 ifdef OSX
 OBJC_SOURCES += os/macosx/macos.m
+ifndef DEDICATED
 C_SOURCES    += music/qtmidi.c
+endif
 endif
 
 OBJS = $(C_SOURCES:%.c=%.o) $(CXX_SOURCES:%.cpp=%.o) $(OBJC_SOURCES:%.m=%.o)
