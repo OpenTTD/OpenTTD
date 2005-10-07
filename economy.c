@@ -1323,7 +1323,7 @@ int LoadUnloadVehicle(Vehicle *v)
 	GoodsEntry *ge;
 	int t;
 	uint count, cap;
-	byte old_player;
+	PlayerID old_player;
 	bool completely_empty = true;
 
 	assert(v->current_order.type == OT_LOADING);
@@ -1560,8 +1560,8 @@ int32 CmdBuyShareInCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	cost = CalculateCompanyValue(p) >> 2;
 	if (flags & DC_EXEC) {
+		PlayerID* b = p->share_owners;
 		int i;
-		byte *b = p->share_owners;
 
 		while (*b != OWNER_SPECTATOR) b++; /* share owners is guaranteed to contain at least one OWNER_SPECTATOR */
 		*b = _current_player;
@@ -1602,7 +1602,7 @@ int32 CmdSellShareInCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	cost = -(cost - (cost >> 7));
 
 	if (flags & DC_EXEC) {
-		byte *b = p->share_owners;
+		PlayerID* b = p->share_owners;
 		while (*b != _current_player) b++; /* share owners is guaranteed to contain player */
 		*b = OWNER_SPECTATOR;
 		InvalidateWindow(WC_COMPANY, (int)p1);

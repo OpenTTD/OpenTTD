@@ -789,7 +789,7 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 	return true;
 }
 
-static uint _current_player_id;
+static PlayerID _current_player_id;
 static uint16 _old_inaugurated_year;
 static int32 _old_yearly;
 

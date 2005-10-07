@@ -196,7 +196,7 @@ void InvalidatePlayerWindows(const Player *p)
 bool CheckPlayerHasMoney(int32 cost)
 {
 	if (cost > 0) {
-		uint pid = _current_player;
+		PlayerID pid = _current_player;
 		if (pid < MAX_PLAYERS && cost > GetPlayer(pid)->player_money) {
 			SetDParam(0, cost);
 			_error_message = STR_0003_NOT_ENOUGH_CASH_REQUIRES;
@@ -284,7 +284,7 @@ bool CheckOwnership(PlayerID owner)
 
 bool CheckTileOwnership(TileIndex tile)
 {
-	byte owner = GetTileOwner(tile);
+	PlayerID owner = GetTileOwner(tile);
 
 	assert(owner <= OWNER_WATER);
 

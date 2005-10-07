@@ -691,7 +691,7 @@ static const WindowDesc _other_player_company_desc = {
 void ShowPlayerCompany(PlayerID player)
 {
 	Window *w;
-	w = AllocateWindowDescFront((byte)player == _local_player ? &_my_player_company_desc : &_other_player_company_desc,  player);
+	w = AllocateWindowDescFront(player == _local_player ? &_my_player_company_desc : &_other_player_company_desc,  player);
 	if (w)
 		w->caption_color = w->window_number;
 }

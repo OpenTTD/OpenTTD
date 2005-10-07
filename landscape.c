@@ -380,7 +380,7 @@ void CDECL ModifyTile(TileIndex tile, uint flags, ...)
 	}
 
 	if (flags & (MP_MAPOWNER|MP_MAPOWNER_CURRENT)) {
-		byte x = _current_player;
+		PlayerID x = _current_player;
 		if (flags & MP_MAPOWNER) x = va_arg(va, int);
 		_m[tile].m1 = x;
 	}

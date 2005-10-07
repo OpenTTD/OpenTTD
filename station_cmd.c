@@ -179,13 +179,12 @@ static byte FindCatchmentRadius(Station *st)
 
 #define CHECK_STATIONS_ERR ((Station*)-1)
 
-static Station *GetStationAround(TileIndex tile, int w, int h, int closest_station)
+static Station* GetStationAround(TileIndex tile, int w, int h, StationID closest_station)
 {
 	// check around to see if there's any stations there
 	BEGIN_TILE_LOOP(tile_cur, w + 2, h + 2, tile - TileDiffXY(1, 1))
 		if (IsTileType(tile_cur, MP_STATION)) {
-			int t;
-			t = _m[tile_cur].m2;
+			StationID t = _m[tile_cur].m2;
 			{
 				Station *st = GetStation(t);
 				// you cannot take control of an oilrig!!
@@ -193,7 +192,7 @@ static Station *GetStationAround(TileIndex tile, int w, int h, int closest_stati
 					continue;
 			}
 
-			if (closest_station == -1) {
+			if (closest_station == INVALID_STATION) {
 				closest_station = t;
 			} else if (closest_station != t) {
 				_error_message = STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING;
@@ -201,7 +200,7 @@ static Station *GetStationAround(TileIndex tile, int w, int h, int closest_stati
 			}
 		}
 	END_TILE_LOOP(tile_cur, w + 2, h + 2, tile - TileDiffXY(1, 1))
-	return (closest_station == -1) ? NULL : GetStation(closest_station);
+	return (closest_station == INVALID_STATION) ? NULL : GetStation(closest_station);
 }
 
 TileIndex GetStationTileForVehicle(const Vehicle *v, const Station *st)
@@ -424,7 +423,7 @@ done:
 }
 #undef M
 
-static Station *GetClosestStationFromTile(TileIndex tile, uint threshold, byte owner)
+static Station* GetClosestStationFromTile(TileIndex tile, uint threshold, PlayerID owner)
 {
 	Station* best_station = NULL;
 	Station* st;
@@ -755,7 +754,7 @@ static int32 ClearTile_Station(TileIndex tile, byte flags);
 
 // Tries to clear the given area. Returns the cost in case of success.
 // Or an error code if it failed.
-int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, int *station)
+int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, StationID* station)
 {
 	int32 cost = 0, ret;
 
@@ -810,17 +809,17 @@ int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invali
 		}
 
 		// if station is set, then we have special handling to allow building on top of already existing stations.
-		// so station points to -1 if we can build on any station. or it points to a station if we're only allowed to build
+		// so station points to INVALID_STATION if we can build on any station. or it points to a station if we're only allowed to build
 		// on exactly that station.
 		if (station != NULL && IsTileType(tile_cur, MP_STATION)) {
 			if (_m[tile_cur].m5 >= 8) {
 				_error_message = ClearTile_Station(tile_cur, DC_AUTO); // get error message
 				return CMD_ERROR;
 			} else {
-				int st = _m[tile_cur].m2;
-				if (*station == -1)
+				StationID st = _m[tile_cur].m2;
+				if (*station == INVALID_STATION) {
 					*station = st;
-				else if (*station != st) {
+				} else if (*station != st) {
 					_error_message = STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING;
 					return CMD_ERROR;
 				}
@@ -952,7 +951,7 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	TileIndex tile_org;
 	int w_org, h_org;
 	int32 cost, ret;
-	int est;
+	StationID est;
 	int plat_len, numtracks;
 	int direction;
 	uint finalvalues[3];
@@ -986,7 +985,7 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	finalvalues[2] = h_org;
 
 	// Make sure the area below consists of clear tiles. (OR tiles belonging to a certain rail station)
-	est = -1;
+	est = INVALID_STATION;
 	// If DC_EXEC is in flag, do not want to pass it to CheckFlatLandBelow, because of a nice bug
 	//  for detail info, see: https://sourceforge.net/tracker/index.php?func=detail&aid=1029064&group_id=103924&atid=636365
 	if (CmdFailed(ret = CheckFlatLandBelow(tile_org, w_org, h_org, flags&~DC_EXEC, 5 << direction, _patches.nonuniform_stations ? &est : NULL))) return CMD_ERROR;
@@ -1190,8 +1189,9 @@ int32 CmdRemoveFromRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32
 // determine the number of platforms for the station
 uint GetStationPlatforms(const Station *st, TileIndex tile)
 {
-	uint t;
-	int dir,delta;
+	TileIndex t;
+	TileIndexDiff delta;
+	int dir;
 	int len;
 	assert(TileBelongsToRailStation(st, tile));
 
@@ -2137,7 +2137,7 @@ static void DrawTile_Station(TileInfo *ti)
 	uint32 relocation = 0;
 
 	{
-		uint owner = GetTileOwner(ti->tile);
+		PlayerID owner = GetTileOwner(ti->tile);
 		image_or_modificator = PALETTE_TO_GREY; /* NOTE: possible bug in ttd here? */
 		if (owner < MAX_PLAYERS)
 			image_or_modificator = PLAYER_SPRITE_COLOR(owner);
@@ -2680,7 +2680,7 @@ void StationMonthlyLoop(void)
 }
 
 
-void ModifyStationRatingAround(TileIndex tile, byte owner, int amount, uint radius)
+void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint radius)
 {
 	Station *st;
 	GoodsEntry *ge;

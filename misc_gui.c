@@ -583,19 +583,19 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 
 void ShowEstimatedCostOrIncome(int32 cost, int x, int y)
 {
-	int msg = STR_0805_ESTIMATED_COST;
+	StringID msg = STR_0805_ESTIMATED_COST;
 
 	if (cost < 0) {
 		cost = -cost;
 		msg = STR_0807_ESTIMATED_INCOME;
 	}
 	SetDParam(0, cost);
-	ShowErrorMessage(-1, msg, x, y);
+	ShowErrorMessage(INVALID_STRING_ID, msg, x, y);
 }
 
 void ShowCostOrIncomeAnimation(int x, int y, int z, int32 cost)
 {
-	int msg;
+	StringID msg;
 	Point pt = RemapCoords(x,y,z);
 
 	msg = STR_0801_COST;
@@ -712,7 +712,7 @@ static void DrawStationCoverageText(const AcceptedCargo accepts,
 void DrawStationCoverageAreaText(int sx, int sy, uint mask, int rad) {
 	int x = _thd.pos.x;
 	int y = _thd.pos.y;
-	uint accepts[NUM_CARGO];
+	AcceptedCargo accepts;
 	if (x != -1) {
 		GetAcceptanceAroundTiles(accepts, TileVirtXY(x, y), _thd.size.x / 16, _thd.size.y / 16 , rad);
 		DrawStationCoverageText(accepts, sx, sy, mask);

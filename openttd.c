@@ -867,7 +867,7 @@ void StateGameLoop(void)
 	} else {
 		// All these actions has to be done from OWNER_NONE
 		//  for multiplayer compatibility
-		uint p = _current_player;
+		PlayerID p = _current_player;
 		_current_player = OWNER_NONE;
 
 		AnimateAnimatedTiles();

@@ -334,7 +334,7 @@ void UpdateVehiclePosHash(Vehicle *v, int x, int y)
 	/* remove from hash table? */
 	if (old_hash != NULL) {
 		Vehicle *last = NULL;
-		int idx = *old_hash;
+		VehicleID idx = *old_hash;
 		while ((u = GetVehicle(idx)) != v) {
 			idx = u->next_hash;
 			assert(idx != INVALID_VEHICLE);
@@ -1458,7 +1458,7 @@ int32 ReplaceVehicle(Vehicle *v)
 	    (that is needed, because this CMD is called automaticly) */
 	if ( p->money64 < (int32)(p->engine_renew_money + build_cost + rear_engine_cost - v->value)) {
 		if (( _local_player == v->owner ) && ( v->unitnumber != 0 )) {  //v->unitnumber = 0 for train cars
-			int message;
+			StringID message;
 			SetDParam(0, v->unitnumber);
 			switch (v->type) {
 				case VEH_Train:    message = STR_TRAIN_AUTORENEW_FAILED;       break;

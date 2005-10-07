@@ -782,7 +782,7 @@ bool GrowTown(Town *t)
 	TileIndex tile;
 	const TileIndexDiffC *ptr;
 	TileInfo ti;
-	byte old_player;
+	PlayerID old_player;
 
 	static const TileIndexDiffC _town_coord_mod[] = {
 		{-1,  0},
@@ -1578,7 +1578,7 @@ static void TownActionRoadRebuild(Town *t, int action)
 static bool DoBuildStatueOfCompany(TileIndex tile)
 {
 	TileInfo ti;
-	byte old;
+	PlayerID old;
 	int32 r;
 
 	FindLandscapeHeightByTile(&ti, tile);

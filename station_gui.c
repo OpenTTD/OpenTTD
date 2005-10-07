@@ -112,7 +112,7 @@ static void GlobalSortStationList(void)
 	DEBUG(misc, 1) ("Resorting global station list...");
 }
 
-static void MakeSortedStationList(byte owner)
+static void MakeSortedStationList(PlayerID owner)
 {
 	SortStruct *firstelement;
 	uint32 n = 0;
@@ -137,25 +137,25 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
+		const PlayerID owner = w->window_number;
 		uint32 i;
-		const byte window_number = (byte)w->window_number;
 
 		// resort station window if stations have been added/removed
 		if (_global_station_sort_dirty)
 			GlobalSortStationList();
 
-		if (_station_sort_dirty[window_number]) { // resort in case of a station rename.
-			MakeSortedStationList(window_number);
+		if (_station_sort_dirty[owner]) { // resort in case of a station rename.
+			MakeSortedStationList(owner);
 		}
 
 		// stations are stored as a cummulative index, eg 25, 41, 43. This means
 		// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2 stations
-		i = (window_number == 0) ? 0 : _num_station_sort[window_number-1];
-		SetVScrollCount(w, _num_station_sort[window_number] - i);
+		i = (owner == 0) ? 0 : _num_station_sort[owner - 1];
+		SetVScrollCount(w, _num_station_sort[owner] - i);
 
 		/* draw widgets, with player's name in the caption */
 		{
-			Player *p = GetPlayer(window_number);
+			const Player* p = GetPlayer(owner);
 			SetDParam(0, p->name_1);
 			SetDParam(1, p->name_2);
 			SetDParam(2, w->vscroll.count);
@@ -175,12 +175,12 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			}
 
 			i += w->vscroll.pos; // offset from sorted station list of current player
-			assert(i < _num_station_sort[window_number]); // at least one station must exist
+			assert(i < _num_station_sort[owner]); // at least one station must exist
 
-			while (i < _num_station_sort[window_number]) { // do until max number of stations of owner
+			while (i < _num_station_sort[owner]) { // do until max number of stations of owner
 				st = GetStation(_station_sort[i].index);
 
-				assert(st->xy && st->owner == window_number);
+				assert(st->xy && st->owner == owner);
 
 				SetDParam(0, st->index);
 				SetDParam(1, st->facilities);
@@ -210,7 +210,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			id_v += w->vscroll.pos;
 
 			{
-				const byte owner = (byte)w->window_number;
+				const PlayerID owner = w->window_number;
 				Station *st;
 				id_v += (owner == 0) ? 0 : _num_station_sort[owner - 1]; // first element in list
 
@@ -316,11 +316,11 @@ static void DrawStationViewWindow(Window *w)
 	int x,y;
 	int pos;
 	StringID str;
-	uint16 station_id;
+	StationID station_id;
 
 	station_id = w->window_number;
 
-	st = GetStation(w->window_number);
+	st = GetStation(station_id);
 
 	num = 1;
 	for(i=0; i!=NUM_CARGO; i++) {
@@ -533,7 +533,7 @@ static const WindowDesc _station_view_desc = {
 	StationViewWndProc
 };
 
-void ShowStationViewWindow(int station)
+void ShowStationViewWindow(StationID station)
 {
 	Window *w;
 	byte color;

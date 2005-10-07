@@ -123,11 +123,11 @@ enum {
 	CA_AIR_INTER = 8,
 };
 
-void ModifyStationRatingAround(TileIndex tile, byte owner, int amount, uint radius);
+void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint radius);
 
 TileIndex GetStationTileForVehicle(const Vehicle *v, const Station *st);
 
-void ShowStationViewWindow(int station);
+void ShowStationViewWindow(StationID station);
 void UpdateAllStationVirtCoord(void);
 
 VARDEF SortStruct *_station_sort;

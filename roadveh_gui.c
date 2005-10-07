@@ -412,7 +412,7 @@ static void DrawNewRoadVehWindow(Window *w)
 		int sel = WP(w,buildtrain_d).sel_index;
 		int pos = w->vscroll.pos;
 		EngineID engine_id = ROAD_ENGINES_INDEX;
-		int selected_id = -1;
+		EngineID selected_id = INVALID_ENGINE;
 
 		do {
 			if (HASBIT(e->player_avail, _local_player)) {
@@ -427,7 +427,7 @@ static void DrawNewRoadVehWindow(Window *w)
 		} while (++engine_id, ++e,--num);
 
 		WP(w,buildtrain_d).sel_engine = selected_id;
-		if (selected_id != -1) {
+		if (selected_id != INVALID_ENGINE) {
 			DrawRoadVehPurchaseInfo(2, w->widget[4].top + 1, selected_id);
 		}
 	}
@@ -465,14 +465,14 @@ static void NewRoadVehWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case 5: { /* build */
-			int sel_eng = WP(w,buildtrain_d).sel_engine;
-			if (sel_eng != -1)
+			EngineID sel_eng = WP(w,buildtrain_d).sel_engine;
+			if (sel_eng != INVALID_ENGINE)
 				DoCommandP(w->window_number, sel_eng, 0, CcBuildRoadVeh, CMD_BUILD_ROAD_VEH | CMD_MSG(STR_9009_CAN_T_BUILD_ROAD_VEHICLE));
 		} break;
 
 		case 6: { /* rename */
-			int sel_eng = WP(w,buildtrain_d).sel_engine;
-			if (sel_eng != -1) {
+			EngineID sel_eng = WP(w,buildtrain_d).sel_engine;
+			if (sel_eng != INVALID_ENGINE) {
 				WP(w,buildtrain_d).rename_engine = sel_eng;
 				ShowQueryString(GetCustomEngineName(sel_eng),
 					STR_9036_RENAME_ROAD_VEHICLE_TYPE, 31, 160, w->window_class, w->window_number);

@@ -35,7 +35,7 @@ typedef struct Packet {
 
 typedef struct CommandPacket {
 	struct CommandPacket *next;
-	byte player;   /// player that is executing the command (PlayerID)
+	PlayerID player; /// player that is executing the command
 	uint32 cmd;    /// command being executed
 	uint32 p1;     /// parameter p1
 	uint32 p2;     /// parameter p2

@@ -1042,7 +1042,7 @@ static void ChopLumberMillTrees(Industry *i)
 			do {
 				tile = TILE_MASK(tile);
 				if (IsTileType(tile, MP_TREES)) {
-					uint old_player = _current_player;
+					PlayerID old_player = _current_player;
 					/* found a tree */
 
 					_current_player = OWNER_NONE;
@@ -1662,7 +1662,7 @@ static void PlaceInitialIndustry(byte type, int amount)
 
 	if (_opt.diff.number_industries != 0)
 	{
-		byte old_player = _current_player;
+		PlayerID old_player = _current_player;
 		_current_player = OWNER_NONE;
 		assert(num > 0);
 
@@ -1902,7 +1902,7 @@ static void ChangeIndustryProduction(Industry *i)
 void IndustryMonthlyLoop(void)
 {
 	Industry *i;
-	byte old_player = _current_player;
+	PlayerID old_player = _current_player;
 	_current_player = OWNER_NONE;
 
 	FOR_ALL_INDUSTRIES(i) {

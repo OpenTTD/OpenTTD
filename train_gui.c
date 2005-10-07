@@ -173,7 +173,7 @@ void CcCloneTrain(bool success, uint tile, uint32 p1, uint32 p2)
 }
 
 static void engine_drawing_loop(int *x, int *y, int *pos, int *sel,
-	int *selected_id, byte railtype, byte show_max, bool is_engine)
+	EngineID* selected_id, byte railtype, byte show_max, bool is_engine)
 {
 	EngineID i;
 
@@ -229,7 +229,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 			int pos = w->vscroll.pos;
 			int x = 1;
 			int y = 15;
-			int selected_id = -1;
+			EngineID selected_id = INVALID_ENGINE;
 
 			/* Ensure that custom engines which substituted wagons
 			 * are sorted correctly.
@@ -241,7 +241,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 
 			WP(w,buildtrain_d).sel_engine = selected_id;
 
-			if (selected_id != -1) {
+			if (selected_id != INVALID_ENGINE) {
 				const RailVehicleInfo *rvi = RailVehInfo(selected_id);
 
 				if (!(rvi->flags & RVI_WAGON)) {
@@ -265,14 +265,13 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 			}
 		} break;
 		case 5: {
-			int sel_eng;
-			sel_eng = WP(w,buildtrain_d).sel_engine;
-			if (sel_eng != -1)
+			EngineID sel_eng = WP(w,buildtrain_d).sel_engine;
+			if (sel_eng != INVALID_ENGINE)
 				DoCommandP(w->window_number, sel_eng, 0, (RailVehInfo(sel_eng)->flags & RVI_WAGON) ? CcBuildWagon : CcBuildLoco, CMD_BUILD_RAIL_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));
 		}	break;
 		case 6: { /* rename */
-			int sel_eng = WP(w,buildtrain_d).sel_engine;
-			if (sel_eng != -1) {
+			EngineID sel_eng = WP(w,buildtrain_d).sel_engine;
+			if (sel_eng != INVALID_ENGINE) {
 				WP(w,buildtrain_d).rename_engine = sel_eng;
 				ShowQueryString(GetCustomEngineName(sel_eng),
 					STR_886A_RENAME_TRAIN_VEHICLE_TYPE, 31, 160, w->window_class, w->window_number);

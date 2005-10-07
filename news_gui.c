@@ -373,7 +373,7 @@ static inline void SetNewsDisplayValue(byte item, byte val)
 static void ShowNewspaper(NewsItem *ni)
 {
 	Window *w;
-	int sound;
+	SoundFx sound;
 	int top;
 	ni->flags &= ~(NF_NOEXPIRE | NF_FORCE_BIG);
 	ni->duration = 555;
