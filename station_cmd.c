@@ -2952,7 +2952,7 @@ static void ChangeTileOwner_Station(TileIndex tile, PlayerID old_player, PlayerI
 {
 	if (!IsTileOwner(tile, old_player)) return;
 
-	if (new_player != 255) {
+	if (new_player != OWNER_SPECTATOR) {
 		Station *st = GetStation(_m[tile].m2);
 		SetTileOwner(tile, new_player);
 		st->owner = new_player;

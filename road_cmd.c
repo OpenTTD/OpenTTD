@@ -1196,7 +1196,7 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 
 	if (!IsTileOwner(tile, old_player)) return;
 
-	if (new_player != 255) {
+	if (new_player != OWNER_SPECTATOR) {
 		SetTileOwner(tile, new_player);
 	}	else {
 		if (GB(_m[tile].m5, 4, 4) == 0) {

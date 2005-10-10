@@ -389,7 +389,7 @@ static void ChangeTileOwner_Unmovable(TileIndex tile, PlayerID old_player, Playe
 {
 	if (!IsTileOwner(tile, old_player)) return;
 
-	if (_m[tile].m5==3 && new_player != 255) {
+	if (_m[tile].m5 == 3 && new_player != OWNER_SPECTATOR) {
 		SetTileOwner(tile, new_player);
 	} else {
 		DoClearSquare(tile);

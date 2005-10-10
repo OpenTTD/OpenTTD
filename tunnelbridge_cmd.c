@@ -1412,7 +1412,7 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, PlayerID old_player, Pl
 {
 	if (!IsTileOwner(tile, old_player)) return;
 
-	if (new_player != 255) {
+	if (new_player != OWNER_SPECTATOR) {
 		SetTileOwner(tile, new_player);
 	}	else {
 		if((_m[tile].m5 & 0xC0)==0xC0) {
