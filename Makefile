@@ -494,11 +494,8 @@ STRGEN_FLAGS=
 endif
 
 
-# MIDI setup
+# OSX path setup
 ifdef OSX
-ifndef MIDI
-MIDI:=$(OSXAPP)/Contents/MacOS/track_starter
-endif
 ifndef SECOND_DATA_PATH
 SECOND_DATA_PATH:="$(OSXAPP)/Contents/Data/"
 endif
@@ -804,8 +801,6 @@ $(OSX): $(TTD)
 	$(Q)cp os/macosx/openttd.icns "$(OSXAPP)"/Contents/Resources/openttd.icns
 	$(Q)os/macosx/plistgen.sh "$(OSXAPP)" "$(REV)"
 	$(Q)cp os/macosx/track_starter "$(OSXAPP)"/Contents/MacOS
-	$(Q)ls os/macosx | grep -q "\.class" || \
-	       javac os/macosx/OpenTTDMidi.java
 	$(Q)cp os/macosx/OpenTTDMidi.class "$(OSXAPP)"/Contents/MacOS
 	$(Q)cp data/* "$(OSXAPP)"/Contents/Data/
 	$(Q)cp lang/*.lng "$(OSXAPP)"/Contents/Lang/
