@@ -1,2 +1,0 @@
-#!/bin/bash
-exec /usr/bin/java -cp OpenTTD.app/contents/macos OpenTTDMidi "$1"
