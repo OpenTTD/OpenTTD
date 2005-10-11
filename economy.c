@@ -1364,7 +1364,8 @@ int LoadUnloadVehicle(Vehicle *v)
 
 
 				unloading_time += v->cargo_count;
-				if ((t=ge->waiting_acceptance & 0xFFF) == 0) {
+				t = GB(ge->waiting_acceptance, 0, 12);
+				if (t == 0) {
 					// No goods waiting at station
 					ge->enroute_time = v->cargo_days;
 					ge->enroute_from = v->cargo_source;
@@ -1376,7 +1377,7 @@ int LoadUnloadVehicle(Vehicle *v)
 						ge->enroute_from = v->cargo_source;
 				}
 				// Update amount of waiting cargo
-				ge->waiting_acceptance = (ge->waiting_acceptance &~0xFFF) | min(v->cargo_count + t, 0xFFF);
+				SB(ge->waiting_acceptance, 0, 12, min(v->cargo_count + t, 0xFFF));
 				ge->feeder_profit += v_profit;
 				u->profit_this_year += v_profit;
 				result |= 2;
@@ -1402,7 +1403,8 @@ int LoadUnloadVehicle(Vehicle *v)
 
 		// If there's goods waiting at the station, and the vehicle
 		//  has capacity for it, load it on the vehicle.
-		if ((count=ge->waiting_acceptance & 0xFFF) != 0 &&
+		count = GB(ge->waiting_acceptance, 0, 12);
+		if (count != 0 &&
 				(cap = v->cargo_cap - v->cargo_count) != 0) {
 			int cargoshare;
 			int feeder_profit_share;

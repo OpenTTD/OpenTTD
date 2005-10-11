@@ -711,7 +711,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 				(i == CT_PASSENGERS && !(st->facilities & (byte)~FACIL_TRUCK_STOP)))
 			amt = 0;
 
-		st->goods[i].waiting_acceptance = (st->goods[i].waiting_acceptance & ~0xF000) + (amt << 12);
+		SB(st->goods[i].waiting_acceptance, 12, 4, amt);
 	}
 
 	// Only show a message in case the acceptance was actually changed.
@@ -2590,7 +2590,7 @@ static void UpdateStationRating(Station *st)
 			}
 
 			{
-				waiting = ge->waiting_acceptance & 0xFFF;
+				waiting = GB(ge->waiting_acceptance, 0, 12);
 				(rating -= 90, waiting > 1500) ||
 				(rating += 55, waiting > 1000) ||
 				(rating += 35, waiting > 600) ||
@@ -2622,8 +2622,7 @@ static void UpdateStationRating(Station *st)
 					}
 				}
 
-				if (waiting_changed)
-					ge->waiting_acceptance = (ge->waiting_acceptance & ~0xFFF) + waiting;
+				if (waiting_changed) SB(ge->waiting_acceptance, 0, 12, waiting);
 			}
 		}
 	} while (++ge != endof(st->goods));
@@ -2701,9 +2700,9 @@ void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint 
 
 static void UpdateStationWaiting(Station *st, int type, uint amount)
 {
-	st->goods[type].waiting_acceptance =
-		(st->goods[type].waiting_acceptance & ~0xFFF) +
-			min(0xFFF, (st->goods[type].waiting_acceptance & 0xFFF) + amount);
+	SB(st->goods[type].waiting_acceptance, 0, 12,
+		min(0xFFF, GB(st->goods[type].waiting_acceptance, 0, 12) + amount)
+	);
 
 	st->goods[type].enroute_time = 0;
 	st->goods[type].enroute_from = st->index;

@@ -188,7 +188,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 				// show cargo waiting and station ratings
 				for(j=0; j!=NUM_CARGO; j++) {
-					int acc = (st->goods[j].waiting_acceptance & 0xFFF);
+					int acc = GB(st->goods[j].waiting_acceptance, 0, 12);
 					if (acc != 0) {
 						StationsWndShowStationRating(x, y, j, acc, st->goods[j].rating);
 						x += 10;
@@ -324,7 +324,7 @@ static void DrawStationViewWindow(Window *w)
 
 	num = 1;
 	for(i=0; i!=NUM_CARGO; i++) {
-		if ((st->goods[i].waiting_acceptance & 0xFFF) != 0) {
+		if (GB(st->goods[i].waiting_acceptance, 0, 12) != 0) {
 			num++;
 			if (st->goods[i].enroute_from != station_id)
 				num++;
@@ -351,8 +351,7 @@ static void DrawStationViewWindow(Window *w)
 	if (--pos < 0) {
 		str = STR_00D0_NOTHING;
 		for(i=0; i!=NUM_CARGO; i++)
-			if (st->goods[i].waiting_acceptance & 0xFFF)
-				str = STR_EMPTY;
+			if (GB(st->goods[i].waiting_acceptance, 0, 12) != 0) str = STR_EMPTY;
 		SetDParam(0, str);
 		DrawString(x, y, STR_0008_WAITING, 0);
 		y += 10;
@@ -360,7 +359,7 @@ static void DrawStationViewWindow(Window *w)
 
 	i = 0;
 	do {
-		uint waiting = (st->goods[i].waiting_acceptance & 0xFFF);
+		uint waiting = GB(st->goods[i].waiting_acceptance, 0, 12);
 		if (waiting == 0)
 			continue;
 
