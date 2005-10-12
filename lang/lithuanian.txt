@@ -93,6 +93,7 @@ STR_0055_TON_OF_GRAIN                                           :{COMMA} tonu gr
 STR_0056_TON_OF_WOOD                                            :{COMMA} tonu medienos
 STR_0057_TON_OF_IRON_ORE                                        :{COMMA} tonu gelezies rudos
 STR_0058_TON_OF_STEEL                                           :{COMMA} tonu plieno
+STR_0059_BAG_OF_VALUABLES                                       :{COMMA} brangenybiu maisu
 STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} tonu vario rudos
 STR_005B_TON_OF_MAIZE                                           :{COMMA} tonu kukuruzu
 STR_005C_TON_OF_FRUIT                                           :{COMMA} tonu vaisiu
@@ -2620,7 +2621,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Rodyti v
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Rodyti visus laivus, kuriu uzduotyse yra pamineta si stotele
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Keisti tr. priemones
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Keisti tr. priemones
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Keisti {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Pradeti keitima
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Sustabdyti keitima
 STR_NOT_REPLACING                                               :{BLACK}Nekeiciama
