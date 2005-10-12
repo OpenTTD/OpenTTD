@@ -3,6 +3,9 @@
 #ifndef ECONOMY_H
 #define ECONOMY_H
 
+void ResetPriceBaseMultipliers(void);
+void SetPriceBaseMultiplier(int price, byte factor);
+
 typedef struct {
 	// Maximum possible loan
 	int32 max_loan;

@@ -768,6 +768,33 @@ static const int32 _price_base[NUM_PRICES] = {
 	1000000, // build_industry
 };
 
+static byte price_base_multiplier[NUM_PRICES];
+
+/**
+ * Reset changes to the price base multipliers.
+ */
+void ResetPriceBaseMultipliers(void)
+{
+	int i;
+
+	// 8 means no multiplier.
+	for (i = 0; i < NUM_PRICES; i++)
+		price_base_multiplier[i] = 8;
+}
+
+/**
+ * Change a price base by the given factor.
+ * The price base is altered by factors of two, with an offset of 8.
+ * NewBaseCost = OldBaseCost * 2^(n-8)
+ * @param price Index of price base to change.
+ * @param factor Amount to change by.
+ */
+void SetPriceBaseMultiplier(int price, byte factor)
+{
+	if (price < NUM_PRICES)
+		price_base_multiplier[price] = factor;
+}
+
 void StartupEconomy(void)
 {
 	int i;
@@ -783,6 +810,11 @@ void StartupEconomy(void)
 			} else if (mod > 1) {
 				price = price * 9 >> 3;
 			}
+		}
+		if (price_base_multiplier[i] > 8) {
+			price <<= price_base_multiplier[i] - 8;
+		} else {
+			price >>= 8 - price_base_multiplier[i];
 		}
 		((int32*)&_price)[i] = price;
 		_price_frac[i] = 0;

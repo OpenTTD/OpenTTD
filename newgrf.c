@@ -16,6 +16,7 @@
 #include "newgrf.h"
 #include "variables.h"
 #include "bridge.h"
+#include "economy.h"
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)
@@ -51,6 +52,7 @@ typedef enum grfspec_feature {
 	GSF_CANAL,
 	GSF_BRIDGE,
 	GSF_TOWNHOUSE,
+	GSF_GLOBALVAR,
 } grfspec_feature;
 
 
@@ -1058,6 +1060,27 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 	return ret;
 }
 
+static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, int len)
+{
+	byte *buf = *bufp;
+	int i;
+	bool ret = false;
+
+	switch (prop) {
+		case 0x08: { /* Cost base factor */
+			FOR_EACH_OBJECT {
+				byte factor = grf_load_byte(&buf);
+
+				SetPriceBaseMultiplier(gvid + i, factor);
+			}
+		} break;
+		default:
+			ret = true;
+	}
+	*bufp = buf;
+	return ret;
+}
+
 /* Action 0x00 */
 static void VehicleChangeInfo(byte *buf, int len)
 {
@@ -1086,6 +1109,7 @@ static void VehicleChangeInfo(byte *buf, int len)
 		/* GSF_CANAL */    NULL,
 		/* GSF_BRIDGE */   BridgeChangeInfo,
 		/* GSF_TOWNHOUSE */NULL,
+		/* GSF_GLOBALVAR */GlobalVarChangeInfo,
 	};
 
 	uint8 feature;
@@ -2354,6 +2378,9 @@ static void ResetNewGRFData(void)
 	// Unload sprite group data
 	UnloadWagonOverrides();
 	UnloadCustomEngineSprites();
+
+	// Reset price base data
+	ResetPriceBaseMultipliers();
 }
 
 static void InitNewGRFFile(const char* filename, int sprite_offset)
