@@ -775,7 +775,7 @@ static byte price_base_multiplier[NUM_PRICES];
  */
 void ResetPriceBaseMultipliers(void)
 {
-	int i;
+	uint i;
 
 	// 8 means no multiplier.
 	for (i = 0; i < NUM_PRICES; i++)
@@ -789,10 +789,10 @@ void ResetPriceBaseMultipliers(void)
  * @param price Index of price base to change.
  * @param factor Amount to change by.
  */
-void SetPriceBaseMultiplier(int price, byte factor)
+void SetPriceBaseMultiplier(uint price, byte factor)
 {
-	if (price < NUM_PRICES)
-		price_base_multiplier[price] = factor;
+	assert(price < NUM_PRICES);
+	price_base_multiplier[price] = factor;
 }
 
 void StartupEconomy(void)

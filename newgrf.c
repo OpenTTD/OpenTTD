@@ -1070,8 +1070,13 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 		case 0x08: { /* Cost base factor */
 			FOR_EACH_OBJECT {
 				byte factor = grf_load_byte(&buf);
+				uint price = gvid + i;
 
-				SetPriceBaseMultiplier(gvid + i, factor);
+				if (price < NUM_PRICES) {
+					SetPriceBaseMultiplier(price, factor);
+				} else {
+					grfmsg(GMS_WARN, "GlobalVarChangeInfo: Price %d out of range, ignoring.", price);
+				}
 			}
 		} break;
 		default:
