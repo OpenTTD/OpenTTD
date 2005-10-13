@@ -2465,8 +2465,10 @@ static bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
 		case MP_STREET:
 			// tracks over roads, do owner check of tracks
 			return
-				IsTileOwner(tile, v->owner) &&
-				(v->subtype != TS_Front_Engine || GB(_m[tile].m4, 0, 4) == v->u.rail.railtype);
+				IsTileOwner(tile, v->owner) && (
+					v->subtype != TS_Front_Engine ||
+					IsCompatibleRail(v->u.rail.railtype, GB(_m[tile].m4, 0, 4))
+				);
 
 		default:
 			return true;
