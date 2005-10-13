@@ -24,7 +24,6 @@
 #include "bridge.h"
 
 #include "table/bridge_land.h"
-#include "table/tunnel_land.h"
 
 extern const byte _track_sloped_sprites[14];
 extern const SpriteID _water_shore_sprites[15];
@@ -1040,13 +1039,14 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 	// draw tunnel?
 	if ((ti->map5 & 0xF0) == 0) {
-		/* railway type */
-		image = GB(_m[ti->tile].m3, 0, 4) * 8;
+		if (GB(ti->map5, 2, 2) == 0) { /* Rail tunnel? */
+			image = GetRailTypeInfo(GB(_m[ti->tile].m3, 0, 4))->base_sprites.tunnel;
+		} else {
+			image = SPR_TUNNEL_ENTRY_REAR_ROAD;
+		}
 
-		if (ice)
-			image += 32;
+		if (ice) image += 32;
 
-		image += _draw_tunnel_table_1[GB(ti->map5, 2, 2)];
 		image += GB(ti->map5, 0, 2) * 2;
 		DrawGroundSprite(image);
 

@@ -154,6 +154,8 @@ typedef struct RailtypeInfo {
 		SpriteID single_s;     ///< single piece of rail in the southern corner
 		SpriteID single_e;     ///< single piece of rail in the eastern corner
 		SpriteID single_w;     ///< single piece of rail in the western corner
+		SpriteID crossing;     ///< level crossing, rail in X direction
+		SpriteID tunnel;       ///< tunnel sprites base
 	} base_sprites;
 
 	/** struct containing the sprites for the rail GUI. @note only sprites referred to

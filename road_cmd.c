@@ -850,10 +850,9 @@ static void DrawTile_Road(TileInfo *ti)
 		int f = GetRoadFoundation(ti->tileh, ti->map5 & 0xF);
 		if (f) DrawFoundation(ti, f);
 
-		image = 0x55B;
+		image = GetRailTypeInfo(GB(_m[ti->tile].m4, 0, 4))->base_sprites.crossing;
 
-		if ( (ti->map5 & 8) != 0)
-			image--;
+		if (GB(ti->map5, 3, 1) == 0) image++; /* direction */
 
 		if ( (ti->map5 & 4) != 0)
 			image += 2;
@@ -866,7 +865,7 @@ static void DrawTile_Road(TileInfo *ti)
 			if (m2 > 1) image += 4;
 		}
 
-		DrawGroundSprite(image + GB(_m[ti->tile].m4, 0, 4) * 12);
+		DrawGroundSprite(image);
 
 		if (_debug_pbs_level >= 1) {
 			byte pbs = PBSTileReserved(ti->tile);
