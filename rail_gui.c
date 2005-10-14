@@ -220,27 +220,27 @@ static void PlaceRail_AutoSignals(TileIndex tile)
 
 static void BuildRailClick_N(Window *w)
 {
-	HandlePlacePushButton(w, 4, _cur_railtype*4 + SPR_CURSOR_NS_TRACK, 1, PlaceRail_N);
+	HandlePlacePushButton(w, 4, GetRailTypeInfo(_cur_railtype)->cursor.rail_ns, 1, PlaceRail_N);
 }
 
 static void BuildRailClick_NE(Window *w)
 {
-	HandlePlacePushButton(w, 5, _cur_railtype*4 + SPR_CURSOR_SWNE_TRACK, 1, PlaceRail_NE);
+	HandlePlacePushButton(w, 5, GetRailTypeInfo(_cur_railtype)->cursor.rail_swne, 1, PlaceRail_NE);
 }
 
 static void BuildRailClick_E(Window *w)
 {
-	HandlePlacePushButton(w, 6, _cur_railtype*4 + SPR_CURSOR_EW_TRACK, 1, PlaceRail_E);
+	HandlePlacePushButton(w, 6, GetRailTypeInfo(_cur_railtype)->cursor.rail_ew, 1, PlaceRail_E);
 }
 
 static void BuildRailClick_NW(Window *w)
 {
-	HandlePlacePushButton(w, 7, _cur_railtype*4 + SPR_CURSOR_NWSE_TRACK, 1, PlaceRail_NW);
+	HandlePlacePushButton(w, 7, GetRailTypeInfo(_cur_railtype)->cursor.rail_nwse, 1, PlaceRail_NW);
 }
 
 static void BuildRailClick_AutoRail(Window *w)
 {
-	HandlePlacePushButton(w, 8, SPR_CURSOR_AUTORAIL + _cur_railtype, VHM_RAIL, PlaceRail_AutoRail);
+	HandlePlacePushButton(w, 8, GetRailTypeInfo(_cur_railtype)->cursor.autorail, VHM_RAIL, PlaceRail_AutoRail);
 }
 
 static void BuildRailClick_Demolish(Window *w)
@@ -248,15 +248,11 @@ static void BuildRailClick_Demolish(Window *w)
 	HandlePlacePushButton(w, 9, ANIMCURSOR_DEMOLISH, 1, PlaceProc_DemolishArea);
 }
 
-static const CursorID _depot_cursors[] = {
-	SPR_CURSOR_RAIL_DEPOT,
-	SPR_CURSOR_MONO_DEPOT,
-	SPR_CURSOR_MAGLEV_DEPOT,
-};
-
 static void BuildRailClick_Depot(Window *w)
 {
-	if (HandlePlacePushButton(w, 10, _depot_cursors[_cur_railtype], 1, PlaceRail_Depot)) ShowBuildTrainDepotPicker();
+	if (HandlePlacePushButton(w, 10, GetRailTypeInfo(_cur_railtype)->cursor.depot, 1, PlaceRail_Depot)) {
+		ShowBuildTrainDepotPicker();
+	}
 }
 
 static void BuildRailClick_Waypoint(Window *w)
@@ -284,7 +280,7 @@ static void BuildRailClick_Bridge(Window *w)
 
 static void BuildRailClick_Tunnel(Window *w)
 {
-	HandlePlacePushButton(w, 15, SPR_CURSOR_TUNNEL_RAIL + _cur_railtype, 3, PlaceRail_Tunnel);
+	HandlePlacePushButton(w, 15, GetRailTypeInfo(_cur_railtype)->cursor.tunnel, 3, PlaceRail_Tunnel);
 }
 
 static void BuildRailClick_Remove(Window *w)
@@ -310,7 +306,7 @@ static void BuildRailClick_Remove(Window *w)
 
 static void BuildRailClick_Convert(Window *w)
 {
-	HandlePlacePushButton(w, 17, SPR_CURSOR_CONVERT_RAIL + _cur_railtype * 2, 1, PlaceRail_ConvertRail);
+	HandlePlacePushButton(w, 17, GetRailTypeInfo(_cur_railtype)->cursor.convert, 1, PlaceRail_ConvertRail);
 }
 
 static void BuildRailClick_Landscaping(Window *w)

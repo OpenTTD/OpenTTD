@@ -172,6 +172,17 @@ typedef struct RailtypeInfo {
 	} gui_sprites;
 
 	struct {
+		CursorID rail_ns;
+		CursorID rail_swne;
+		CursorID rail_ew;
+		CursorID rail_nwse;
+		CursorID autorail;
+		CursorID depot;
+		CursorID tunnel;
+		CursorID convert;
+	} cursor;
+
+	struct {
 		StringID toolbar_caption;
 	} strings;
 
