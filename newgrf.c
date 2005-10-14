@@ -1404,14 +1404,10 @@ static void NewSpriteGroup(byte *buf, int len)
 			if (HASBIT(groupid, 15)) {
 				dg->ranges[i].group = NewCallBackResultSpriteGroup(groupid);
 				dg->ranges[i].group->ref_count++;
-			} else if (groupid >= _cur_grffile->spritegroups_count) {
-				/* This doesn't exist for us. */
-				grf_load_word(&buf); // skip range
-				i--; dg->num_ranges--;
-				continue;
+			} else if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
+				grfmsg(GMS_WARN, "NewSpriteGroup(%02x:0x%x): Groupid %04x does not exist, leaving empty.", setid, numloaded, groupid);
+				dg->ranges[i].group = NULL;
 			} else {
-			/* XXX: If multiple surreal sets attach a surreal
-			 * set this way, we are in trouble. */
 				dg->ranges[i].group = _cur_grffile->spritegroups[groupid];
 				dg->ranges[i].group->ref_count++;
 			}
@@ -1423,15 +1419,14 @@ static void NewSpriteGroup(byte *buf, int len)
 		groupid = grf_load_word(&buf);
 		if (HASBIT(groupid, 15)) {
 			dg->default_group = NewCallBackResultSpriteGroup(groupid);
-		} else if (groupid >= _cur_grffile->spritegroups_count) {
-			/* This spritegroup stinks. */
-			free(dg->ranges), dg->ranges = NULL;
-			grfmsg(GMS_WARN, "NewSpriteGroup(%02x:0x%x): Default groupid %04x is cargo callback or unknown, ignoring spritegroup.", setid, numloaded, groupid);
-			return;
+			dg->default_group->ref_count++;
+		} else if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
+			grfmsg(GMS_WARN, "NewSpriteGroup(%02x:0x%x): Groupid %04x does not exist, leaving empty.", setid, numloaded, groupid);
+			dg->default_group = NULL;
 		} else {
 			dg->default_group = _cur_grffile->spritegroups[groupid];
-		}
 		dg->default_group->ref_count++;
+		}
 
 		if (_cur_grffile->spritegroups[setid] != NULL)
 			UnloadSpriteGroup(&_cur_grffile->spritegroups[setid]);
@@ -1474,11 +1469,9 @@ static void NewSpriteGroup(byte *buf, int len)
 			if (HASBIT(groupid, 15)) {
 				rg->groups[i] = NewCallBackResultSpriteGroup(groupid);
 				rg->groups[i]->ref_count++;
-			} else if (groupid >= _cur_grffile->spritegroups_count) {
-				/* This doesn't exist for us. */
-				i--;
-				rg->num_groups--;
-				continue;
+			} else if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
+				grfmsg(GMS_WARN, "NewSpriteGroup(%02x:0x%x): Groupid %04x does not exist, leaving empty.", setid, numloaded, groupid);
+				rg->groups[i] = NULL;
 			} else {
 				rg->groups[i] = _cur_grffile->spritegroups[groupid];
 				rg->groups[i]->ref_count++;

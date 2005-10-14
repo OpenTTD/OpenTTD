@@ -127,10 +127,10 @@ void UnloadSpriteGroup(SpriteGroup **group_ptr)
 		{
 			RealSpriteGroup *rsg = &group->g.real;
 			for (i = 0; i < rsg->loading_count; i++) {
-				UnloadSpriteGroup(&rsg->loading[i]);
+				if (rsg->loading[i] != NULL) UnloadSpriteGroup(&rsg->loading[i]);
 			}
 			for (i = 0; i < rsg->loaded_count; i++) {
-				UnloadSpriteGroup(&rsg->loaded[i]);
+				if (rsg->loaded[i] != NULL) UnloadSpriteGroup(&rsg->loaded[i]);
 			}
 			free(group);
 			return;
@@ -140,9 +140,9 @@ void UnloadSpriteGroup(SpriteGroup **group_ptr)
 		{
 			DeterministicSpriteGroup *dsg = &group->g.determ;
 			for (i = 0; i < group->g.determ.num_ranges; i++) {
-				UnloadSpriteGroup(&dsg->ranges[i].group);
+				if (dsg->ranges[i].group != NULL) UnloadSpriteGroup(&dsg->ranges[i].group);
 			}
-			UnloadSpriteGroup(&dsg->default_group);
+			if (dsg->default_group != NULL) UnloadSpriteGroup(&dsg->default_group);
 			free(group->g.determ.ranges);
 			free(group);
 			return;
@@ -151,7 +151,7 @@ void UnloadSpriteGroup(SpriteGroup **group_ptr)
 		case SGT_RANDOMIZED:
 		{
 			for (i = 0; i < group->g.random.num_groups; i++) {
-				UnloadSpriteGroup(&group->g.random.groups[i]);
+				if (group->g.random.groups[i] != NULL) UnloadSpriteGroup(&group->g.random.groups[i]);
 			}
 			free(group->g.random.groups);
 			free(group);
