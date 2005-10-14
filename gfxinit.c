@@ -326,8 +326,6 @@ static void LoadSpriteTables(void)
 		load_index += LoadGrfFile(files->basic[i].filename, load_index, i);
 	}
 
-	LoadGrfIndexed("openttd.grf", _openttd_grf_indexes, i++);
-
 	if (_sprite_page_to_load != 0) {
 		LoadGrfIndexed(
 			files->landscape[_sprite_page_to_load - 1].filename,
@@ -336,14 +334,20 @@ static void LoadSpriteTables(void)
 		);
 	}
 
+	assert(load_index == SPR_CANALS_BASE);
+	load_index += LoadGrfFile("canalsw.grf", load_index, i++);
+
+	assert(load_index == SPR_SLOPES_BASE);
 	LoadGrfIndexed("trkfoundw.grf", _slopes_spriteindexes[_opt.landscape], i++);
 
 	load_index = SPR_AUTORAIL_BASE;
 	load_index += LoadGrfFile("autorail.grf", load_index, i++);
 
-	load_index = SPR_CANALS_BASE;
-	load_index += LoadGrfFile("canalsw.grf", load_index, i++);
+	assert(load_index == SPR_ELRAIL_BASE);
+	load_index += LoadGrfFile("elrailsw.grf", load_index, i++);
 
+	assert(load_index == SPR_OPENTTD_BASE);
+	LoadGrfIndexed("openttd.grf", _openttd_grf_indexes, i++);
 	load_index = SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT + 1;
 
 	LoadNewGRF(load_index, i);
