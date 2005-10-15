@@ -1608,8 +1608,8 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 				uint8 ctype = grf_load_byte(&bp);
 				uint16 groupid = grf_load_word(&bp);
 
-				if (groupid >= _cur_grffile->spritegroups_count) {
-					grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset %x out of range %x, skipping.",
+				if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
+					grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset %x out of range %x or empty, skipping.",
 					       groupid, _cur_grffile->spritegroups_count);
 					return;
 				}
@@ -1628,8 +1628,8 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 			byte *bp = buf + 4 + idcount + cidcount * 3;
 			uint16 groupid = grf_load_word(&bp);
 
-			if (groupid >= _cur_grffile->spritegroups_count) {
-				grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset %x out of range %x, skipping.",
+			if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
+				grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset %x out of range %x or empty, skipping.",
 				       groupid, _cur_grffile->spritegroups_count);
 				return;
 			}
@@ -1700,8 +1700,8 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 
 			DEBUG(grf, 8) ("VehicleMapSpriteGroup: * [%d] Cargo type %x, group id %x", c, ctype, groupid);
 
-			if (groupid >= _cur_grffile->spritegroups_count) {
-				grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset %x out of range %x, skipping.", groupid, _cur_grffile->spritegroups_count);
+			if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
+				grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset %x out of range %x or empty, skipping.", groupid, _cur_grffile->spritegroups_count);
 				return;
 			}
 
@@ -1727,8 +1727,8 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 			uint8 engine = buf[3 + i] + _vehshifts[feature];
 
 			// Don't tell me you don't love duplicated code!
-			if (groupid >= _cur_grffile->spritegroups_count) {
-				grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset %x out of range %x, skipping.", groupid, _cur_grffile->spritegroups_count);
+			if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
+				grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset %x out of range %x or empty, skipping.", groupid, _cur_grffile->spritegroups_count);
 				return;
 			}
 
