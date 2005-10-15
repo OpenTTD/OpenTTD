@@ -17,6 +17,7 @@
 #include "player.h"
 #include "airport.h"
 #include "vehicle_gui.h"
+#include "table/sprites.h"
 
 static bool AirportMove(Vehicle *v, const AirportFTAClass *Airport);
 static bool AirportSetBlocks(Vehicle *v, AirportFTA *current_pos, const AirportFTAClass *Airport);
@@ -116,7 +117,7 @@ void DrawAircraftEngine(int x, int y, EngineID engine, uint32 image_ormod)
 	DrawSprite(sprite | image_ormod, x, y);
 
 	if ((AircraftVehInfo(engine)->subtype & 1) == 0) {
-		DrawSprite(0xF3D, x, y-5);
+		DrawSprite(SPR_ROTOR_STOPPED, x, y - 5);
 	}
 }
 
@@ -305,7 +306,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			w->z_height = 1;
 			w->vehstatus = VS_HIDDEN | VS_UNCLICKABLE;
 			w->subtype = 6;
-			w->cur_image = 0xF3D;
+			w->cur_image = SPR_ROTOR_STOPPED;
 			VehiclePositionChanged(w);
 		}
 
@@ -672,7 +673,7 @@ static void HelicopterTickHandler(Vehicle *v)
 	if (v->current_order.type == OT_LOADING || (v->vehstatus & VS_STOPPED)) {
 		if (u->cur_speed != 0) {
 			u->cur_speed++;
-			if (u->cur_speed >= 0x80 && u->cur_image == 0xF40) {
+			if (u->cur_speed >= 0x80 && u->cur_image == SPR_ROTOR_MOVING_3) {
 				u->cur_speed = 0;
 			}
 		}
@@ -688,14 +689,13 @@ static void HelicopterTickHandler(Vehicle *v)
 	spd = u->cur_speed >> 4;
 
 	if (spd == 0) {
-		img = 0xF3D;
+		img = SPR_ROTOR_STOPPED;
 		if (u->cur_image == img)
 			return;
 	} else if (tick >= spd) {
 		u->tick_counter = 0;
 		img = u->cur_image + 1;
-		if (img > 0xF40)
-			img = 0xF3E;
+		if (img > SPR_ROTOR_MOVING_3) img = SPR_ROTOR_MOVING_1;
 	} else
 		return;
 

@@ -442,7 +442,7 @@ static void DrawTrainDepotWindow(Window *w)
 			DrawStringRightAligned(w->widget[6].right - 1, y + 4, STR_TINY_BLACK, 0);	//Draw the counter
 
 			/* Draw the pretty flag */
-			DrawSprite(v->vehstatus&VS_STOPPED ? 0xC12 : 0xC13, x+15, y);
+			DrawSprite(v->vehstatus & VS_STOPPED ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, x + 15, y);
 
 			y += 14;
 		}
@@ -984,7 +984,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 		}
 
 		/* draw the flag plus orders */
-		DrawSprite(v->vehstatus & VS_STOPPED ? 0xC12 : 0xC13, 2, w->widget[5].top + 1);
+		DrawSprite(v->vehstatus & VS_STOPPED ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, 2, w->widget[5].top + 1);
 		DrawStringCenteredTruncated(w->widget[5].left + 8, w->widget[5].right, w->widget[5].top + 1, str, 0);
 		DrawWindowViewport(w);
 	}	break;

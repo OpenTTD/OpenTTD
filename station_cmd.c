@@ -1359,7 +1359,7 @@ uint32 GetCustomStationRelocation(const StationSpec *spec, const Station *st, by
 	/* This is what gets subscribed of dtss->image in newgrf.c,
 	 * so it's probably kinda "default offset". Try to use it as
 	 * emergency measure. */
-	return 0x42D;
+	return SPR_RAIL_PLATFORM_Y_FRONT;
 }
 
 int GetCustomStationsCount(StationClass sclass)

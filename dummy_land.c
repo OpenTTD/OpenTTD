@@ -6,10 +6,11 @@
 #include "functions.h"
 #include "viewport.h"
 #include "command.h"
+#include "table/sprites.h"
 
 static void DrawTile_Dummy(TileInfo *ti)
 {
-	DrawGroundSpriteAt(0x3EC, ti->x, ti->y, ti->z);
+	DrawGroundSpriteAt(SPR_SHADOW_CELL, ti->x, ti->y, ti->z);
 }
 
 

@@ -1074,7 +1074,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				if (f) DrawFoundation(ti, f);
 
 				// default sloped sprites..
-				if (ti->tileh != 0) image = _track_sloped_sprites[ti->tileh - 1] + 0x3F3;
+				if (ti->tileh != 0) image = SPR_RAIL_TRACK_Y + _track_sloped_sprites[ti->tileh - 1];
 			}
 
 			// bridge ending.
@@ -1089,7 +1089,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			if (!ice) {
 				DrawClearLandTile(ti, 3);
 			} else {
-				DrawGroundSprite(0x11C6 + _tileh_to_sprite[ti->tileh]);
+				DrawGroundSprite(SPR_FLAT_SNOWY_TILE + _tileh_to_sprite[ti->tileh]);
 			}
 
 			// draw ramp

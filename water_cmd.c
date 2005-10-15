@@ -17,7 +17,21 @@
 #include "vehicle_gui.h"
 
 const SpriteID _water_shore_sprites[15] = {
-	0, 0xFDF, 0xFE0, 0xFE4, 0xFDE, 0, 0xFE2, 0, 0xFE1, 0xFE5, 0, 0, 0xFE3, 0, 0
+	0,
+	SPR_SHORE_TILEH_1,
+	SPR_SHORE_TILEH_2,
+	SPR_SHORE_TILEH_3,
+	SPR_SHORE_TILEH_4,
+	0,
+	SPR_SHORE_TILEH_6,
+	0,
+	SPR_SHORE_TILEH_8,
+	SPR_SHORE_TILEH_9,
+	0,
+	0,
+	SPR_SHORE_TILEH_12,
+	0,
+	0
 };
 
 
@@ -411,7 +425,7 @@ static void DrawTile_Water(TileInfo *ti)
 {
 	// draw water tile
 	if (ti->map5 == 0) {
-		DrawGroundSprite(0xFDD);
+		DrawGroundSprite(SPR_FLAT_WATER_TILE);
 		if (ti->z != 0) DrawCanalWater(ti->tile);
 		return;
 	}

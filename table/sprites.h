@@ -119,7 +119,7 @@ enum Sprites {
 	SPR_HUGEHQ_WEST_BUILD				= 2630,
 	SPR_HUGEHQ_SOUTH						= 2631,
 	SPR_STATUE_GROUND						= 1420,
-	SPR_STATUE_COMPANY					=	2623,
+	SPR_STATUE_COMPANY          = 2632,
 	SPR_BOUGHT_LAND							= 4790,
 
 	/* sprites for rail and rail stations*/

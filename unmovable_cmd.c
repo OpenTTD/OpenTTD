@@ -117,10 +117,10 @@ static void DrawTile_Unmovable(TileInfo *ti)
 		if (ti->map5 == 2) {
 
 			// statue
-			DrawGroundSprite(0x58C);
+			DrawGroundSprite(SPR_STATUE_GROUND);
 
 			image = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
-			image += 0x8A48;
+			image += PALETTE_MODIFIER_COLOR | SPR_STATUE_COMPANY;
 			if (_display_opt & DO_TRANS_BUILDINGS)
 				MAKE_TRANSPARENT(image);
 			AddSortableSpriteToDraw(image, ti->x, ti->y, 16, 16, 25, ti->z);
@@ -130,7 +130,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 			DrawClearLandTile(ti, 0);
 
 			AddSortableSpriteToDraw(
-				PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)) + 0x92B6,
+				PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)) + PALETTE_MODIFIER_COLOR + SPR_BOUGHT_LAND,
 				ti->x+8, ti->y+8,
 				1, 1,
 				10,

@@ -69,7 +69,7 @@ static void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selectio
 		ormod = PALETTE_CRASH;
 	DrawSprite(image | ormod, x+25, y+10);
 	if (v->subtype == 0)
-		DrawSprite(0xF3D, x+25, y+5);
+		DrawSprite(SPR_ROTOR_STOPPED, x + 25, y + 5);
 	if (v->index == selection) {
 		DrawFrameRect(x-1, y-1, x+58, y+21, 0xF, FR_BORDERONLY);
 	}
@@ -565,7 +565,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 		}
 
 		/* draw the flag plus orders */
-		DrawSprite(v->vehstatus & VS_STOPPED ? 0xC12 : 0xC13, 2, w->widget[5].top + 1);
+		DrawSprite(v->vehstatus & VS_STOPPED ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, 2, w->widget[5].top + 1);
 		DrawStringCenteredTruncated(w->widget[5].left + 8, w->widget[5].right, w->widget[5].top + 1, str, 0);
 		DrawWindowViewport(w);
 	} break;
@@ -690,7 +690,7 @@ static void DrawAircraftDepotWindow(Window *w)
 			SetDParam(0, v->unitnumber);
 			DrawString(x, y+2, (uint16)(v->max_age-366) >= v->age ? STR_00E2 : STR_00E3, 0);
 
-			DrawSprite( (v->vehstatus & VS_STOPPED) ? 0xC12 : 0xC13, x, y+12);
+			DrawSprite((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, x, y + 12);
 
 			if ((x+=74) == 2 + 74 * w->hscroll.cap) {
 				x = 2;

@@ -10,6 +10,7 @@
 #include "viewport.h"
 #include "command.h"
 #include "variables.h"
+#include "table/sprites.h"
 
 typedef struct TerraformerHeightMod {
 	TileIndex tile;
@@ -485,13 +486,13 @@ int32 CmdSellLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 void DrawClearLandTile(const TileInfo *ti, byte set)
 {
-	DrawGroundSprite(0xF54 + _tileh_to_sprite[ti->tileh] + set * 19);
+	DrawGroundSprite(SPR_FLAT_BARE_LAND + _tileh_to_sprite[ti->tileh] + set * 19);
 }
 
 void DrawHillyLandTile(const TileInfo *ti)
 {
 	if (ti->tileh != 0) {
-		DrawGroundSprite(0xFA0 + _tileh_to_sprite[ti->tileh]);
+		DrawGroundSprite(SPR_FLAT_ROUGH_LAND + _tileh_to_sprite[ti->tileh]);
 	} else {
 		DrawGroundSprite(_landscape_clear_sprites[GB(ti->x ^ ti->y, 4, 3)]);
 	}
@@ -529,7 +530,7 @@ static void DrawTile_Clear(TileInfo *ti)
 		break;
 
 	case 2:
-		DrawGroundSprite(0xFB7 + _tileh_to_sprite[ti->tileh]);
+		DrawGroundSprite(SPR_FLAT_ROCKY_LAND_1 + _tileh_to_sprite[ti->tileh]);
 		break;
 
 	case 3:

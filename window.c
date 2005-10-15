@@ -11,6 +11,7 @@
 #include "viewport.h"
 #include "console.h"
 #include "variables.h"
+#include "table/sprites.h"
 
 // delta between mouse cursor and upper left corner of dragged window
 static Point _drag_delta;
@@ -1430,7 +1431,8 @@ static void MouseLoop(int click, int mousewheel)
 			DEBUG(misc, 2) ("cursor: 0x%X (%d)", _cursor.sprite, _cursor.sprite);
 			if (_thd.place_mode != 0 &&
 					// query button and place sign button work in pause mode
-					!(_cursor.sprite == 0x2CF || _cursor.sprite == 0x2D2) &&
+					_cursor.sprite != SPR_CURSOR_QUERY &&
+					_cursor.sprite != SPR_CURSOR_SIGN &&
 					_pause != 0 &&
 					!_cheats.build_in_pause.value)
 						return;
