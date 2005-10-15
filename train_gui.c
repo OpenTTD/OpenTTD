@@ -181,7 +181,7 @@ static void engine_drawing_loop(int *x, int *y, int *pos, int *sel,
 		const Engine *e = GetEngine(i);
 		const RailVehicleInfo *rvi = RailVehInfo(i);
 
-		if (!IsCompatibleRail(railtype, e->railtype) || !(rvi->flags & RVI_WAGON) != is_engine ||
+		if (!IsCompatibleRail(e->railtype, railtype) || !(rvi->flags & RVI_WAGON) != is_engine ||
 				!HASBIT(e->player_avail, _local_player))
 			continue;
 
@@ -213,7 +213,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 
 			for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
 				const Engine *e = GetEngine(i);
-				if (IsCompatibleRail(railtype, e->railtype)
+				if (IsCompatibleRail(e->railtype, railtype)
 				    && HASBIT(e->player_avail, _local_player))
 					count++;
 			}
