@@ -498,6 +498,24 @@ static void NormalizeTrainVehInDepot(Vehicle *u)
 	}
 }
 
+static const byte _railveh_unk1[] = {
+	0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 1, 1, 0, 0, 0,
+	0, 0, 0, 0, 1, 0, 1, 0,
+	0, 1, 1, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 1,
+	0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0,
+};
+
 static const byte _railveh_score[] = {
 	1, 4, 7, 19, 20, 30, 31, 19,
 	20, 21, 22, 10, 11, 30, 31, 32,
@@ -571,6 +589,8 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (!IsTileDepotType(tile, TRANSPORT_RAIL)) return CMD_ERROR;
 		if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
 	}
+
+	_cmd_build_rail_veh_var1 = 0;
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
@@ -656,6 +676,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			InvalidateWindow(WC_COMPANY, v->owner);
 		}
 	}
+	_cmd_build_rail_veh_var1 = _railveh_unk1[p1];
 	_cmd_build_rail_veh_score = _railveh_score[p1];
 
 	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Train); // updates the replace Train window
