@@ -353,7 +353,7 @@ bool NetworkUDPListen(SOCKET *udp, uint32 host, uint16 port, bool broadcast)
 #ifndef BEOS_NET_SERVER
 		ioctlsocket(*udp, FIONBIO, &blocking);
 #else
-		setsockopt(*upd, SOL_SOCKET, SO_NONBLOCK, &blocking);
+		setsockopt(*udp, SOL_SOCKET, SO_NONBLOCK, &blocking, NULL);
 #endif
 	}
 
