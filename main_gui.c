@@ -39,7 +39,7 @@ static int _rename_id;
 static int _rename_what;
 
 static byte _terraform_size = 1;
-static byte _last_built_railtype;
+static RailType _last_built_railtype;
 extern void GenerateWorld(int mode, uint size_x, uint size_y);
 
 extern void GenerateIndustries(void);

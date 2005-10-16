@@ -253,7 +253,7 @@ static inline bool ValParamRailtype(uint32 rail) { return HASBIT(GetPlayer(_curr
   * @param p the player "in action"
   * @return The "best" railtype a player has available
   */
-static inline byte GetBestRailtype(const Player *p)
+static inline RailType GetBestRailtype(const Player* p)
 {
 	if (HasRailtypeAvail(p, RAILTYPE_MAGLEV)) return RAILTYPE_MAGLEV;
 	if (HasRailtypeAvail(p, RAILTYPE_MONO)) return RAILTYPE_MONO;

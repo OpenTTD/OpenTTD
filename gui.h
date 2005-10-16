@@ -35,7 +35,7 @@ void ShowMessageOptions(void);
 void ShowMessageHistory(void);
 
 /* traintoolb_gui.c */
-void ShowBuildRailToolbar(int index, int button);
+void ShowBuildRailToolbar(RailType railtype, int button);
 void PlaceProc_BuyLand(TileIndex tile);
 
 /* train_gui.c */

@@ -25,7 +25,7 @@ static uint32 _last_vehicle_idx;        // cached index to hopefully speed up na
 static bool   _internal_sort_order;     // descending/ascending
 
 static uint16 _player_num_engines[256];
-static byte _railtype_selected_in_replace_gui;
+static RailType _railtype_selected_in_replace_gui;
 
 
 typedef int CDECL VehicleSortListingTypeFunction(const void*, const void*);
@@ -414,7 +414,7 @@ static int CDECL VehicleMaxSpeedSorter(const void *a, const void *b)
 /*  if show_outdated is selected, it do not sort psudo engines properly but it draws all engines
  *	if used compined with show_cars set to false, it will work as intended. Replace window do it like that
  *  this was a big hack even before show_outdated was added. Stupid newgrf :p										*/
-static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, int *selected_id, byte railtype,
+static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, int *selected_id, RailType railtype,
 	uint8 lines_drawn, bool is_engine, bool show_cars, bool show_outdated)
 {
 	EngineID i;
@@ -462,7 +462,7 @@ static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, int *s
 
 static void SetupScrollStuffForReplaceWindow(Window *w)
 {
-	byte railtype;
+	RailType railtype;
 	int selected_id[2] = {-1,-1};
 	int sel[2];
 	int count = 0;
@@ -625,7 +625,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 
 	switch (WP(w,replaceveh_d).vehicletype) {
 		case VEH_Train: {
-			byte railtype = _railtype_selected_in_replace_gui;
+			RailType railtype = _railtype_selected_in_replace_gui;
 			DrawString(157, 99 + (14 * w->vscroll.cap), _rail_types_list[railtype], 0x10);
 			/* draw sorting criteria string */
 

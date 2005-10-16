@@ -21,7 +21,7 @@
 #include "debug.h"
 #include "variables.h"
 
-static uint _cur_railtype;
+static RailType _cur_railtype;
 static bool _remove_button_clicked;
 static byte _build_depot_direction;
 static byte _waypoint_count=1;
@@ -539,7 +539,7 @@ typedef enum {
  * @param railtype the railtype to display
  * @param w the window to modify
  */
-static void SetupRailToolbar(uint16 railtype, Window *w)
+static void SetupRailToolbar(RailType railtype, Window *w)
 {
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 
@@ -555,7 +555,7 @@ static void SetupRailToolbar(uint16 railtype, Window *w)
 	w->widget[RTW_BUILD_TUNNEL].unkA = rti->gui_sprites.build_tunnel;
 }
 
-void ShowBuildRailToolbar(int index, int button)
+void ShowBuildRailToolbar(RailType railtype, int button)
 {
 	Window *w;
 
@@ -564,9 +564,9 @@ void ShowBuildRailToolbar(int index, int button)
 	// don't recreate the window if we're clicking on a button and the window exists.
 	if (button < 0 || !(w = FindWindowById(WC_BUILD_TOOLBAR, 0)) || w->wndproc != BuildRailToolbWndProc) {
 		DeleteWindowById(WC_BUILD_TOOLBAR, 0);
-		_cur_railtype = (byte)index;
+		_cur_railtype = railtype;
 		w = AllocateWindowDesc(&_build_rail_desc);
-		SetupRailToolbar( (byte) index, w);
+		SetupRailToolbar(railtype, w);
 	}
 
 	_remove_button_clicked = false;
@@ -763,7 +763,7 @@ static void BuildTrainDepotWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-		int r;
+		RailType r;
 
 		w->click_state = (1 << 3) << _build_depot_direction;
 		DrawWindowWidgets(w);

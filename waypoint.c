@@ -360,7 +360,7 @@ extern uint16 _custom_sprites_base;
 
 
 /* Draw a waypoint */
-void DrawWaypointSprite(int x, int y, int stat_id, uint railtype)
+void DrawWaypointSprite(int x, int y, int stat_id, RailType railtype)
 {
 	StationSpec *stat;
 	uint32 relocation;

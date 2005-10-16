@@ -1584,7 +1584,7 @@ static void DrawTile_Track(TileInfo *ti)
 	}
 }
 
-void DrawTrainDepotSprite(int x, int y, int image, int railtype)
+void DrawTrainDepotSprite(int x, int y, int image, RailType railtype)
 {
 	uint32 ormod, img;
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
@@ -1611,7 +1611,7 @@ void DrawTrainDepotSprite(int x, int y, int image, int railtype)
 	}
 }
 
-void DrawDefaultWaypointSprite(int x, int y, int railtype)
+void DrawDefaultWaypointSprite(int x, int y, RailType railtype)
 {
 	const DrawTrackSeqStruct *dtss = _track_depot_layout_table[4];
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);

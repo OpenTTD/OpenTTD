@@ -2131,7 +2131,7 @@ static void DrawTile_Station(TileInfo *ti)
 	uint32 image;
 	const DrawTileSeqStruct *dtss;
 	const DrawTileSprites *t = NULL;
-	byte railtype = GB(_m[ti->tile].m3, 0, 4);
+	RailType railtype = GB(_m[ti->tile].m3, 0, 4);
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 	SpriteID offset;
 	uint32 relocation = 0;
@@ -2203,7 +2203,7 @@ static void DrawTile_Station(TileInfo *ti)
 	}
 }
 
-void StationPickerDrawSprite(int x, int y, int railtype, int image)
+void StationPickerDrawSprite(int x, int y, RailType railtype, int image)
 {
 	uint32 ormod, img;
 	const DrawTileSeqStruct *dtss;

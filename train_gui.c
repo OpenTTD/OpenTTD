@@ -173,7 +173,7 @@ void CcCloneTrain(bool success, uint tile, uint32 p1, uint32 p2)
 }
 
 static void engine_drawing_loop(int *x, int *y, int *pos, int *sel,
-	EngineID* selected_id, byte railtype, byte show_max, bool is_engine)
+	EngineID* selected_id, RailType railtype, byte show_max, bool is_engine)
 {
 	EngineID i;
 
@@ -208,7 +208,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 
 		{
 			int count = 0;
-			byte railtype = WP(w,buildtrain_d).railtype;
+			RailType railtype = WP(w,buildtrain_d).railtype;
 			EngineID i;
 
 			for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
@@ -224,7 +224,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 
 		{
-			byte railtype = WP(w,buildtrain_d).railtype;
+			RailType railtype = WP(w,buildtrain_d).railtype;
 			int sel = WP(w,buildtrain_d).sel_index;
 			int pos = w->vscroll.pos;
 			int x = 1;

@@ -193,6 +193,9 @@ void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile, int w, int 
 uint GetStationPlatforms(const Station *st, TileIndex tile);
 
 
+void StationPickerDrawSprite(int x, int y, RailType railtype, int image);
+
+
 /* Station layout for given dimensions - it is a two-dimensional array
  * where index is computed as (x * platforms) + platform. */
 typedef byte *StationLayout;
