@@ -291,7 +291,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 
 	v->max_speed = max_speed;
 
-	if (v->u.rail.railtype != 2) {
+	if (v->u.rail.railtype != RAILTYPE_MAGLEV) {
 		resistance = 13 * mass / 10;
 		resistance += 60 * num;
 		resistance += friction * mass * speed / 1000;
@@ -303,14 +303,14 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 
 	if (speed > 0) {
 		switch (v->u.rail.railtype) {
-			case 0:
-			case 1:
+			case RAILTYPE_RAIL:
+			case RAILTYPE_MONO:
 				force = power / speed; //[N]
 				force *= 22;
 				force /= 10;
 				break;
 
-			case 2:
+			case RAILTYPE_MAGLEV:
 				force = power / 25;
 				break;
 		}
@@ -321,7 +321,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 
 	if (force <= 0) force = 10000;
 
-	if (v->u.rail.railtype != 2) force = min(force, mass * 10 * 200);
+	if (v->u.rail.railtype != RAILTYPE_MAGLEV) force = min(force, mass * 10 * 200);
 
 	if (mode == AM_ACCEL) {
 		return (force - resistance) / (mass * 4);
@@ -1743,7 +1743,7 @@ static void HandleLocomotiveSmokeCloud(Vehicle *v)
 
 		// no smoke?
 		if (RailVehInfo(engtype)->flags & 2 ||
-				GetEngine(engtype)->railtype > 0 ||
+				GetEngine(engtype)->railtype > RAILTYPE_RAIL ||
 				(v->vehstatus & VS_HIDDEN) || (v->u.rail.track & 0xC0))
 			continue;
 
@@ -1788,13 +1788,15 @@ static void TrainPlayLeaveStationSound(Vehicle *v)
 	EngineID engtype = v->engine_type;
 
 	switch (GetEngine(engtype)->railtype) {
-		case 0:
+		case RAILTYPE_RAIL:
 			SndPlayVehicleFx(sfx[RailVehInfo(engtype)->engclass], v);
 			break;
-		case 1:
+
+		case RAILTYPE_MONO:
 			SndPlayVehicleFx(SND_47_MAGLEV_2, v);
 			break;
-		case 2:
+
+		case RAILTYPE_MAGLEV:
 			SndPlayVehicleFx(SND_41_MAGLEV, v);
 			break;
 	}

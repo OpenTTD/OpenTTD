@@ -19,12 +19,9 @@ static StringID GetEngineCategoryName(EngineID engine)
 {
 	if (engine < NUM_TRAIN_ENGINES) {
 		switch (GetEngine(engine)->railtype) {
-			case 0:
-				return STR_8102_RAILROAD_LOCOMOTIVE;
-			case 1:
-				return STR_8106_MONORAIL_LOCOMOTIVE;
-			case 2:
-				return STR_8107_MAGLEV_LOCOMOTIVE;
+			case RAILTYPE_RAIL:   return STR_8102_RAILROAD_LOCOMOTIVE;
+			case RAILTYPE_MONO:   return STR_8106_MONORAIL_LOCOMOTIVE;
+			case RAILTYPE_MAGLEV: return STR_8107_MAGLEV_LOCOMOTIVE;
 		}
 	}
 

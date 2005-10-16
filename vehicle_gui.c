@@ -175,7 +175,7 @@ void SortVehicleList(vehiclelist_d *vl)
 /* General Vehicle GUI based procedures that are independent of vehicle types */
 void InitializeVehiclesGuiList(void)
 {
-	_railtype_selected_in_replace_gui = 0;
+	_railtype_selected_in_replace_gui = RAILTYPE_RAIL;
 }
 
 // draw the vehicle profit button in the vehicle list window.
