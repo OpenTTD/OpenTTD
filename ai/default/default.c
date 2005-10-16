@@ -133,12 +133,16 @@ static int AiChooseTrainToBuild(byte railtype, int32 money, byte flag, TileIndex
 		const RailVehicleInfo *rvi = RailVehInfo(i);
 		const Engine* e = GetEngine(i);
 
-		if (e->railtype != railtype || rvi->flags & RVI_WAGON
-		    || !HASBIT(e->player_avail, _current_player) || e->reliability < 0x8A3D)
+		if (e->railtype != railtype ||
+				rvi->flags & RVI_WAGON ||
+				(rvi->flags & RVI_MULTIHEAD && flag & 1) ||
+				!HASBIT(e->player_avail, _current_player) ||
+				e->reliability < 0x8A3D) {
 			continue;
+		}
 
 		ret = DoCommandByTile(tile, i, 0, 0, CMD_BUILD_RAIL_VEHICLE);
-		if (!CmdFailed(ret) && (!(_cmd_build_rail_veh_var1&1) || !(flag&1)) && ret <= money &&
+		if (!CmdFailed(ret) && ret <= money &&
 				_cmd_build_rail_veh_score >= best_veh_score) {
 			best_veh_score = _cmd_build_rail_veh_score;
 			best_veh_index = i;

@@ -1000,23 +1000,6 @@ static bool CheckSubsidyDuplicate(Subsidy *s)
 	return false;
 }
 
-void RemoteSubsidyAdd(Subsidy *s_new)
-{
-	Subsidy *s;
-	Pair pair;
-
-	// search the first free subsidy
-	for(s=_subsidies; s != endof(_subsidies); s++)
-		if (s->cargo_type == CT_INVALID)
-			break;
-
-	memcpy(s,s_new,sizeof(Subsidy));
-
-	pair = SetupSubsidyDecodeParam(s, 0);
-	AddNewsItem(STR_2030_SERVICE_SUBSIDY_OFFERED, NEWS_FLAGS(NM_NORMAL, NF_TILE, NT_SUBSIDIES, 0), pair.a, pair.b);
-
-	InvalidateWindow(WC_SUBSIDIES_LIST, 0);
-}
 
 static void SubsidyMonthlyHandler(void)
 {
