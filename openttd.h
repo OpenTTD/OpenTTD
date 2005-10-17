@@ -523,6 +523,13 @@ enum SpecialStrings {
 
 typedef void PlaceProc(TileIndex tile);
 
+enum {
+	SORT_ASCENDING  = 0,
+	SORT_DESCENDING = 1,
+	SORT_BY_DATE    = 0,
+	SORT_BY_NAME    = 2
+};
+
 VARDEF byte _savegame_sort_order;
 
 #define INVALID_UINT_TILE (uint)0xFFFFFFFF

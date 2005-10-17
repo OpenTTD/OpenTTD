@@ -51,12 +51,13 @@ int compare_FiosItems(const void *a, const void *b)
 	const FiosItem *db = (const FiosItem *)b;
 	int r;
 
-	if (_savegame_sort_order < 2) // sort by date
-		r = da->mtime < db->mtime ? -1 : 1;
-	else
+	if (_savegame_sort_order & SORT_BY_NAME) {
 		r = strcasecmp(da->title, db->title);
+	} else {
+		r = da->mtime < db->mtime ? -1 : 1;
+	}
 
-	if (_savegame_sort_order & 1) r = -r;
+	if (_savegame_sort_order & SORT_DESCENDING) r = -r;
 	return r;
 }
 
@@ -116,7 +117,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 	{
 		/* XXX ugly global variables ... */
 		byte order = _savegame_sort_order;
-		_savegame_sort_order = 2; // sort ascending by name
+		_savegame_sort_order = SORT_BY_NAME | SORT_ASCENDING;
 		qsort(_fios_items, _fios_count, sizeof(FiosItem), compare_FiosItems);
 		_savegame_sort_order = order;
 	}
@@ -243,7 +244,7 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 	{
 		/* XXX ugly global variables ... */
 		byte order = _savegame_sort_order;
-		_savegame_sort_order = 2; // sort ascending by name
+		_savegame_sort_order = SORT_BY_NAME | SORT_ASCENDING;
 		qsort(_fios_items, _fios_count, sizeof(FiosItem), compare_FiosItems);
 		_savegame_sort_order = order;
 	}

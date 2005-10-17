@@ -1246,7 +1246,11 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		}
 
 		GfxFillRect(w->widget[6].left + 1, w->widget[6].top + 1, w->widget[6].right, w->widget[6].bottom, 0xD7);
-		DoDrawString(_savegame_sort_order & 1 ? DOWNARROW : UPARROW, _savegame_sort_order <= 1 ? w->widget[3].right - 9 : w->widget[2].right - 9, 15, 0x10);
+		DoDrawString(
+			_savegame_sort_order & SORT_DESCENDING ? DOWNARROW : UPARROW,
+			_savegame_sort_order & SORT_BY_NAME ? w->widget[2].right - 9 : w->widget[3].right - 9,
+			15, 16
+		);
 
 		y = w->widget[6].top + 1;
 		pos = w->vscroll.pos;
@@ -1267,13 +1271,15 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		switch(e->click.widget) {
 		case 2: /* Sort save names by name */
-			_savegame_sort_order = (_savegame_sort_order == 2) ? 3 : 2;
+			_savegame_sort_order = (_savegame_sort_order == SORT_BY_NAME) ?
+				SORT_BY_NAME | SORT_DESCENDING : SORT_BY_NAME;
 			_savegame_sort_dirty = true;
 			SetWindowDirty(w);
 			break;
 
 		case 3: /* Sort save names by date */
-			_savegame_sort_order = (_savegame_sort_order == 0) ? 1 : 0;
+			_savegame_sort_order = (_savegame_sort_order == SORT_BY_DATE) ?
+				SORT_BY_DATE | SORT_DESCENDING : SORT_BY_DATE;
 			_savegame_sort_dirty = true;
 			SetWindowDirty(w);
 			break;
@@ -1489,7 +1495,11 @@ static void SelectScenarioWndProc(Window *w, WindowEvent *e) {
 		SetVScrollCount(w, _fios_num);
 
 		DrawWindowWidgets(w);
-		DoDrawString(_savegame_sort_order & 1 ? DOWNARROW : UPARROW, _savegame_sort_order <= 1 ? w->widget[4].right - 9 : w->widget[3].right - 9, 15, 0x10);
+		DoDrawString(
+			_savegame_sort_order & SORT_DESCENDING ? DOWNARROW : UPARROW,
+			_savegame_sort_order & SORT_BY_NAME ? w->widget[3].right - 9 : w->widget[4].right - 9,
+			15, 16
+		);
 		DrawString(4, 32, STR_4010_GENERATE_RANDOM_NEW_GAME, 9);
 
 		y = list_start;
@@ -1508,13 +1518,15 @@ static void SelectScenarioWndProc(Window *w, WindowEvent *e) {
 	case WE_CLICK:
 		switch(e->click.widget) {
 		case 3: /* Sort scenario names by name */
-			_savegame_sort_order = (_savegame_sort_order == 2) ? 3 : 2;
+			_savegame_sort_order = (_savegame_sort_order == SORT_BY_NAME) ?
+				SORT_BY_NAME | SORT_DESCENDING : SORT_BY_NAME;
 			_savegame_sort_dirty = true;
 			SetWindowDirty(w);
 			break;
 
 		case 4: /* Sort scenario names by date */
-			_savegame_sort_order = (_savegame_sort_order == 0) ? 1 : 0;
+			_savegame_sort_order = (_savegame_sort_order == SORT_BY_DATE) ?
+				SORT_BY_DATE | SORT_DESCENDING : SORT_BY_DATE;
 			_savegame_sort_dirty = true;
 			SetWindowDirty(w);
 			break;
