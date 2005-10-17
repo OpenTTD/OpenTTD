@@ -671,7 +671,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 	_fios_path = _fios_save_path;
 
 	// Parent directory, only if not of the type C:\.
-	if (_fios_path[3] != '\0') {
+	if (_fios_path[2] != '\0') {
 		fios = FiosAlloc();
 		fios->type = FIOS_TYPE_PARENT;
 		fios->mtime = 0;
@@ -905,10 +905,7 @@ char *FiosBrowseTo(const FiosItem *item)
 
 		case FIOS_TYPE_PARENT:
 			s = strrchr(path, '\\');
-			if (s != path + 2)
-				s[0] = '\0';
-			else
-				s[1] = '\0';
+			s[0] = '\0';
 			break;
 
 		case FIOS_TYPE_DIR:
