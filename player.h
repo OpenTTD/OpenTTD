@@ -219,21 +219,6 @@ static inline bool IsLocalPlayer(void)
 	return _local_player == _current_player;
 }
 
-/** Returns the number of rail types the player can build
-  * @param *p Player in question
-  */
-static inline int GetNumRailtypes(const Player *p)
-{
-	int num = 0;
-	int i;
-
-	for (i = 0; i < (int)sizeof(p->avail_railtypes) * 8; i++)
-		if (HASBIT(p->avail_railtypes, i)) num++;
-
-	assert(num <= RAILTYPE_END);
-	return num;
-}
-
 byte GetPlayerRailtypes(int p);
 
 /** Finds out if a Player has a certain railtype available
