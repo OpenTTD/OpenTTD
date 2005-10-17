@@ -631,7 +631,7 @@ static HANDLE MyFindFirstFile(const char *path, const char *file, WIN32_FIND_DAT
 	HANDLE h;
 	char paths[MAX_PATH];
 
-	sprintf(paths, "%s\\%s", path, file);
+	snprintf(paths, sizeof(paths), "%s\\%s", path, file);
 	h = FindFirstFile(paths, fd);
 
 	SetErrorMode(sem); // restore previous setting
@@ -900,7 +900,7 @@ char *FiosBrowseTo(const FiosItem *item)
 
 	switch (item->type) {
 		case FIOS_TYPE_DRIVE:
-			sprintf(path, "%c:\\", item->title[0]);
+			sprintf(path, "%c:", item->title[0]);
 			break;
 
 		case FIOS_TYPE_PARENT:
