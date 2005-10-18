@@ -630,8 +630,9 @@ static HANDLE MyFindFirstFile(const char *path, const char *file, WIN32_FIND_DAT
 	UINT sem = SetErrorMode(SEM_FAILCRITICALERRORS); // disable 'no-disk' message box
 	HANDLE h;
 	char paths[MAX_PATH];
+	const char *s = strrchr(path, '\\');
 
-	snprintf(paths, sizeof(paths), "%s\\%s", path, file);
+	snprintf(paths, sizeof(paths), "%s%s%s", path, (s[1] == '\0') ? "" : "\\", file);
 	h = FindFirstFile(paths, fd);
 
 	SetErrorMode(sem); // restore previous setting
@@ -671,7 +672,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 	_fios_path = _fios_save_path;
 
 	// Parent directory, only if not of the type C:\.
-	if (_fios_path[2] != '\0') {
+	if (_fios_path[3] != '\0') {
 		fios = FiosAlloc();
 		fios->type = FIOS_TYPE_PARENT;
 		fios->mtime = 0;
@@ -900,12 +901,15 @@ char *FiosBrowseTo(const FiosItem *item)
 
 	switch (item->type) {
 		case FIOS_TYPE_DRIVE:
-			sprintf(path, "%c:", item->title[0]);
+			sprintf(path, "%c:\\", item->title[0]);
 			break;
 
 		case FIOS_TYPE_PARENT:
 			s = strrchr(path, '\\');
-			s[0] = '\0';
+			if (s != path + 2)
+				s[0] = '\0';
+			else
+				s[1] = '\0';
 			break;
 
 		case FIOS_TYPE_DIR:
