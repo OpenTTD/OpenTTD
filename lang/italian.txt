@@ -385,7 +385,7 @@ STR_0182_BUILD_ROADS                                            :{BLACK}Costruis
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Costruisci moli
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Costruisci aereoporti
 STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Pianta alberi, posiziona cartelli ecc...
-STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Info sul terreno
+STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Varie
 STR_0187_OPTIONS                                                :{BLACK}Opzioni
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
@@ -733,6 +733,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Nomi s
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Informazioni sull'area
 STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :Linea di comando
 STR_02D7_SCREENSHOT_CTRL_S                                      :ScreenShot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :ScreenShot Gigante (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Info su 'OpenTTD'
