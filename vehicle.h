@@ -447,7 +447,6 @@ VARDEF VehicleID _new_ship_id;
 VARDEF VehicleID _new_roadveh_id;
 VARDEF uint16 _aircraft_refit_capacity;
 VARDEF byte _cmd_build_rail_veh_score;
-VARDEF byte _cmd_build_rail_veh_var1;
 
 // for each player, for each vehicle type, keep a list of the vehicles.
 //VARDEF Vehicle *_vehicle_arr[8][4];
