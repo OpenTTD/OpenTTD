@@ -409,7 +409,7 @@ static int CDECL VehicleMaxSpeedSorter(const void *a, const void *b)
 
 // this define is to match engine.c, but engine.c keeps it to itself
 // ENGINE_AVAILABLE is used in ReplaceVehicleWndProc
-#define ENGINE_AVAILABLE ((e->flags & 1 && HASBIT(info->railtype_climates, _opt.landscape)) || HASBIT(e->player_avail, _local_player))
+#define ENGINE_AVAILABLE ((e->flags & 1 && HASBIT(info->climates, _opt.landscape)) || HASBIT(e->player_avail, _local_player))
 
 /*  if show_outdated is selected, it do not sort psudo engines properly but it draws all engines
  *	if used compined with show_cars set to false, it will work as intended. Replace window do it like that

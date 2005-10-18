@@ -215,8 +215,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT {
 				uint8 tracktype = grf_load_byte(&buf);
 
-				ei[i].railtype_climates &= 0xf;
-				ei[i].railtype_climates |= tracktype << 4;
+				ei[i].railtype = tracktype;
 			}
 		} break;
 		case 0x08: { /* AI passenger service */
@@ -1196,8 +1195,7 @@ static void VehicleChangeInfo(byte *buf, int len)
 						FOR_EACH_OBJECT {
 							uint8 climates = grf_load_byte(&buf);
 
-							ei[i].railtype_climates &= 0xf0;
-							ei[i].railtype_climates |= climates;
+							ei[i].climates = climates;
 						}
 					}	break;
 					case 0x07: { /* Loading speed */

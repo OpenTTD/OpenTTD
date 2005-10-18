@@ -70,7 +70,8 @@ typedef struct EngineInfo {
 	byte unk2;              ///< Carriages have the highest bit set in this one
 	byte lifelength;
 	byte base_life;
-	byte railtype_climates; ///< contains the railtype in the lower four bits, and a mask to the climates where the vehicle is available in the upper four
+	byte railtype:4;
+	byte climates:4;
 } EngineInfo;
 
 typedef struct Engine {

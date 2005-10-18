@@ -183,7 +183,7 @@ void StartupEngines(void)
 		uint32 r;
 
 		e->age = 0;
-		e->railtype = ei->railtype_climates >> 4;
+		e->railtype = ei->railtype;
 		e->flags = 0;
 		e->player_avail = 0;
 
@@ -217,7 +217,7 @@ void StartupEngines(void)
 		e->lifelength = ei->lifelength + _patches.extend_vehicle_life;
 
 		// prevent certain engines from ever appearing.
-		if (!HASBIT(ei->railtype_climates, _opt.landscape)) {
+		if (!HASBIT(ei->climates, _opt.landscape)) {
 			e->flags |= ENGINE_AVAILABLE;
 			e->player_avail = 0;
 		}
