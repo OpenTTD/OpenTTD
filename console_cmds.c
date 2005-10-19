@@ -221,7 +221,7 @@ DEF_CONSOLE_CMD(ConLoad)
 	const char *file;
 
 	if (argc == 0) {
-		IConsoleHelp("Load a game by name or index. Usage: 'load <file \\ number>'");
+		IConsoleHelp("Load a game by name or index. Usage: 'load <file | number>'");
 		return true;
 	}
 
@@ -279,7 +279,7 @@ DEF_CONSOLE_CMD(ConListFiles)
 	int i;
 
 	if (argc == 0) {
-		IConsoleHelp("List all loadable savegames and directories in the current dir via console. Usage: 'ls \\ dir'");
+		IConsoleHelp("List all loadable savegames and directories in the current dir via console. Usage: 'ls | dir'");
 		return true;
 	}
 
@@ -301,7 +301,7 @@ DEF_CONSOLE_CMD(ConChangeDirectory)
 	const char *file;
 
 	if (argc == 0) {
-		IConsoleHelp("Change the dir via console. Usage: 'cd <directory \\ number>'");
+		IConsoleHelp("Change the dir via console. Usage: 'cd <directory | number>'");
 		return true;
 	}
 
@@ -407,7 +407,7 @@ DEF_CONSOLE_CMD(ConUnBan)
 	uint i, index;
 
 	if (argc == 0) {
-		IConsoleHelp("Unban a player from a network game. Usage: 'unban <ip\\id>'");
+		IConsoleHelp("Unban a player from a network game. Usage: 'unban <ip | id>'");
 		IConsoleHelp("For a list of banned IP's, see the command 'banlist'");
 		return true;
 	}
@@ -815,7 +815,7 @@ DEF_CONSOLE_CMD(ConAlias)
 DEF_CONSOLE_CMD(ConScreenShot)
 {
 	if (argc == 0) {
-		IConsoleHelp("Create a screenshot of the game. Usage: 'screenshot [big\\no_con]'");
+		IConsoleHelp("Create a screenshot of the game. Usage: 'screenshot [big | no_con]'");
 		IConsoleHelp("'big' makes a screenshot of the whole map, 'no_con' hides the console to create the screenshot");
 		return true;
 	}
@@ -973,9 +973,9 @@ DEF_CONSOLE_CMD(ConHelp)
 	IConsolePrint( 1, " call commands with '<command> <arg2> <arg3>...'");
 	IConsolePrint( 1, " - to assign strings, or use them as arguments, enclose it within quotes");
 	IConsolePrint( 1, " like this: '<command> \"string argument with spaces\"'");
-	IConsolePrint( 1, " - use 'help <command>\\<variable>' to get specific information");
-	IConsolePrint( 1, " - scroll console output with shift + (up\\down)\\(pageup\\pagedown))");
-	IConsolePrint( 1, " - scroll console input history with the up\\down arrows");
+	IConsolePrint( 1, " - use 'help <command> | <variable>' to get specific information");
+	IConsolePrint( 1, " - scroll console output with shift + (up | down) | (pageup | pagedown))");
+	IConsolePrint( 1, " - scroll console input history with the up | down arrows");
 	IConsolePrint( 1, "");
 	return true;
 }
