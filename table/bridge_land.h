@@ -1,17 +1,33 @@
 /* $Id$ */
 
+/** @file bridge_land.h This file contains all the sprites for bridges
+  * It consists of a number of arrays.
+  * <ul><li>_bridge_sprite_table_n_m. Defines all the sprites of a bridge besides the pylons.
+  * n defines the number of the bridge type, m the number of the section. the highest m for
+  * each bridge set defines the heads.<br>
+  * Sprites for middle secionts are arranged in groups of four, the elements are:
+  * <ol><li>Element containing the track. This element is logically behind the vehicle.</li>
+  * <li>Element containing the structure that is logically between the vehicle and the camera</li>
+  * <li>Element containing the pylons.</li></ol>
+  * First group is for railway in X direction, second for railway in Y direction, two groups each follow for road, monorail and maglev<p>
+  * <br>Elements for heads are arranged in groups of eight:
+  * <ol><li>X direction, north end, flat</li>
+  * <li>Y direction, north end, flat</li>
+  * <li>X direction, south end, flat</li>
+  * <li>Y direction, south end, flat</li>
+  * <li>X direction, north end, sloped</li>
+  * <li>Y direction, north end, sloped</li>
+  * <li>X direction, south end, sloped</li>
+  * <li>Y direction, south end, sloped</li></ol>
+  * This is repeated 4 times, for rail, road, monorail, maglev</li>
+  * <li>_bridge_sprite_table_n_poles. Defines all the sprites needed for the pylons. The first 6 elements are for each
+  * bridge piece (max 5 currently) in X direction, the next 6 elements are for the bridge pieces in Y direction.
+  * The last two elements are used for cantilever bridges</li>
+  * </ul>
+  */
+
 static const SpriteID _bridge_land_below[] = {
-	0xF8D, 0xFDD,0x11C6, 0xFDD,
-};
-
-static const SpriteID _bridge_transp_below[] = {
-	0x3F3, 0x3F4, 0xF8D, 0xF8D, // without ice
-	0x40D, 0x40E, 0x11C6, 0x11C6, // with ice
-};
-
-static const SpriteID _bridge_transp_overlay[] = {
-	0, 0, 0x534, 0x535, // without ice
-	0, 0, 0x547, 0x548, // with ice
+	SPR_FLAT_GRASS_TILE, SPR_FLAT_WATER_TILE, SPR_FLAT_SNOWY_TILE, SPR_FLAT_WATER_TILE
 };
 
 static const PalSpriteID _bridge_sprite_table_2_0[] = {
