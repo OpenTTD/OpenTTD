@@ -820,17 +820,17 @@ DEF_CONSOLE_CMD(ConScreenShot)
 		return true;
 	}
 
-	if (argc < 2) {
-		_make_screenshot = 1;
-	} else {
-		if (strcmp(argv[1], "big") == 0)
+	if (argc > 3) return false;
+
+	_make_screenshot = 1;
+	if (argc > 1) {
+		if (strcmp(argv[1], "big") == 0 || (argc == 3 && strcmp(argv[2], "big") == 0))
 			_make_screenshot = 2;
 
-		if (strcmp(argv[1], "no_con") == 0) {
+		if (strcmp(argv[1], "no_con") == 0 || (argc == 3 && strcmp(argv[2], "no_con") == 0))
 			IConsoleClose();
-			_make_screenshot = 1;
-		}
 	}
+
 	return true;
 }
 
