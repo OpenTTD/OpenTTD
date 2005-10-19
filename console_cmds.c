@@ -414,7 +414,7 @@ DEF_CONSOLE_CMD(ConUnBan)
 
 	if (argc != 2) return false;
 
-	index = (strrchr(argv[1], '.') == '\0') ? atoi(argv[1]) : 0;
+	index = (strchr(argv[1], '.') == NULL) ? atoi(argv[1]) : 0;
 	index--;
 
 	for (i = 0; i < lengthof(_network_ban_list); i++) {
