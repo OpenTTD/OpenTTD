@@ -360,7 +360,7 @@ static void DrawTile_Industry(TileInfo *ti)
 	z = ti->z;
 	/* Add bricks below the industry? */
 	if (ti->tileh & 0xF) {
-		AddSortableSpriteToDraw((ti->tileh & 0xF) + 0x3DD, ti->x, ti->y, 16, 16, 7, z);
+		AddSortableSpriteToDraw(SPR_FOUNDATION_BASE + (ti->tileh & 0xF), ti->x, ti->y, 16, 16, 7, z);
 		AddChildSpriteScreen(image, 0x1F, 1);
 		z += 8;
 	} else {

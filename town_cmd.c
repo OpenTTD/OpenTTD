@@ -111,7 +111,7 @@ static void DrawTile_Town(TileInfo *ti)
 
 	/* Add bricks below the house? */
 	if (ti->tileh) {
-		AddSortableSpriteToDraw(0x3DD + ti->tileh, ti->x, ti->y, 16, 16, 7, z);
+		AddSortableSpriteToDraw(SPR_FOUNDATION_BASE + ti->tileh, ti->x, ti->y, 16, 16, 7, z);
 		AddChildSpriteScreen(dcts->sprite_1, 0x1F, 1);
 		z += 8;
 	} else {

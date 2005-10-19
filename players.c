@@ -44,7 +44,7 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 		flag |= 2;
 
 	/* draw the gradient */
-	DrawSprite( (color + 0x307) << PALETTE_SPRITE_START | PALETTE_MODIFIER_COLOR | 0x36A, x, y);
+	DrawSprite((color + 0x307) << PALETTE_SPRITE_START | PALETTE_MODIFIER_COLOR | SPR_GRADIENT, x, y);
 
 	/* draw the cheeks */
 	DrawSprite(cheeks_table[flag&3], x, y);

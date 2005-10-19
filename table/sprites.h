@@ -57,6 +57,8 @@ enum Sprites {
 
 	SPR_PIN_UP        = SPR_OPENTTD_BASE + 62,   // pin icon
 	SPR_PIN_DOWN      = SPR_OPENTTD_BASE + 63,
+	SPR_BOX_EMPTY     = SPR_OPENTTD_BASE + 66,
+	SPR_BOX_CHECKED   = SPR_OPENTTD_BASE + 67,
 	SPR_WINDOW_RESIZE = SPR_OPENTTD_BASE + 94,   // resize icon
 	// arrow icons pointing in all 4 directions
 	SPR_ARROW_DOWN    = SPR_OPENTTD_BASE + 95,
@@ -77,6 +79,9 @@ enum Sprites {
 
 	/* Manager face sprites */
 	SPR_GRADIENT = 874, // background gradient behind manager face
+
+	/* is itself no foundation sprite, because tileh 0 has no foundation */
+	SPR_FOUNDATION_BASE = 989,
 
 	/* Shadow cell */
 	SPR_SHADOW_CELL = 1004,
@@ -314,6 +319,9 @@ enum Sprites {
 	SPR_ROAD_X									= 1333,
 	SPR_ROAD_Y_SNOW							= 1351,
 	SPR_ROAD_X_SNOW							= 1352,
+
+	SPR_EXCAVATION_X = 1414,
+	SPR_EXCAVATION_Y = 1415,
 
 	/* Landscape sprites */
 	SPR_FLAT_BARE_LAND					= 3924,

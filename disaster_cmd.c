@@ -17,6 +17,7 @@
 #include "airport_movement.h"
 #include "sound.h"
 #include "variables.h"
+#include "table/sprites.h"
 
 static void DisasterClearSquare(TileIndex tile)
 {
@@ -223,9 +224,9 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 	if (++v->age == 1) {
 		CreateEffectVehicleRel(v, 0, 7, 8, EV_EXPLOSION_LARGE);
 		SndPlayVehicleFx(SND_12_EXPLOSION, v);
-		v->u.disaster.image_override = 0xF42;
+		v->u.disaster.image_override = SPR_BLIMP_CRASHING;
 	} else if (v->age == 70) {
-		v->u.disaster.image_override = 0xF43;
+		v->u.disaster.image_override = SPR_BLIMP_CRASHED;
 	} else if (v->age <= 300) {
 		if (!(v->tick_counter&7)) {
 			uint32 r = Random();
@@ -261,7 +262,7 @@ static void DisasterTick_UFO(Vehicle *v)
 	uint dist;
 	byte z;
 
-	v->u.disaster.image_override = (++v->tick_counter & 8) ? 0xF45 : 0xF44;
+	v->u.disaster.image_override = (++v->tick_counter & 8) ? SPR_UFO_SMALL_SCOUT_DARKER : SPR_UFO_SMALL_SCOUT;
 
 	if (v->current_order.station == 0) {
 // fly around randomly
@@ -351,7 +352,7 @@ static void DisasterTick_2(Vehicle *v)
 
 	v->tick_counter++;
 	v->u.disaster.image_override =
-		(v->current_order.station == 1 && v->tick_counter&4) ? 0xF4F : 0;
+		(v->current_order.station == 1 && v->tick_counter&4) ? SPR_F_15_FIRING : 0;
 
 	GetNewVehiclePos(v, &gp);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
@@ -422,7 +423,7 @@ static void DisasterTick_3(Vehicle *v)
 
 	v->tick_counter++;
 	v->u.disaster.image_override =
-		(v->current_order.station == 1 && v->tick_counter&4) ? 0xF53 : 0;
+		(v->current_order.station == 1 && v->tick_counter&4) ? SPR_AH_64A_FIRING : 0;
 
 	GetNewVehiclePos(v, &gp);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
@@ -492,8 +493,7 @@ static void DisasterTick_3b(Vehicle *v)
 	if (++v->tick_counter & 1)
 		return;
 
-	if (++v->cur_image == 0xF40 + 1)
-		v->cur_image = 0xF3E;
+	if (++v->cur_image > SPR_ROTOR_MOVING_3) v->cur_image = SPR_ROTOR_MOVING_1;
 
 	VehiclePositionChanged(v);
 	BeginVehicleMove(v);

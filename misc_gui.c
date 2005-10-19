@@ -1753,8 +1753,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 		y=45;
 
 		for(i=0; i!=lengthof(_cheats_ui); i++,ce++) {
-
-			DrawSprite((SPR_OPENTTD_BASE + ((*ce->been_used)?67:66)), x+5, y+2);
+			DrawSprite((*ce->been_used) ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, x + 5, y + 2);
 
 			if (ce->type == CE_BOOL) {
 				DrawFrameRect(x+20, y+1, x+30+9, y+9, (*(bool*)ce->variable) ? 6 : 4, (*(bool*)ce->variable) ? FR_LOWERED : 0);

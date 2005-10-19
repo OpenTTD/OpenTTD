@@ -822,7 +822,7 @@ void DrawRoadBits(TileInfo *ti, byte road, byte ground_type, bool snow, bool fla
 
 	if (ground_type >= 6) {
 		// Road works
-		DrawGroundSprite(0x586 + (HASBIT(road, 4) ? 0 : 1));
+		DrawGroundSprite(HASBIT(road, 4) ? SPR_EXCAVATION_X : SPR_EXCAVATION_Y);
 		return;
 	}
 

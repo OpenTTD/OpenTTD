@@ -215,7 +215,7 @@ void DrawFoundation(TileInfo *ti, uint f)
 
 	if (f < 15) {
 		// leveled foundation
-		if( sprite_base < SPR_SLOPES_BASE ) sprite_base = 990; // use original slope sprites
+		if (sprite_base < SPR_SLOPES_BASE) sprite_base = SPR_FOUNDATION_BASE + 1; // use original slope sprites
 
 		AddSortableSpriteToDraw(f-1 + sprite_base, ti->x, ti->y, 16, 16, 7, ti->z);
 		ti->z += 8;
@@ -226,7 +226,7 @@ void DrawFoundation(TileInfo *ti, uint f)
 		sprite_base += 14;
 
 		AddSortableSpriteToDraw(
-			HASBIT( (1<<1) | (1<<2) | (1<<4) | (1<<8), ti->tileh) ? sprite_base + (f - 15) : 	ti->tileh + 0x3DE - 1,
+			HASBIT((1<<1) | (1<<2) | (1<<4) | (1<<8), ti->tileh) ? sprite_base + (f - 15) : SPR_FOUNDATION_BASE + ti->tileh,
 			ti->x, ti->y, 1, 1, 1, ti->z
 		);
 

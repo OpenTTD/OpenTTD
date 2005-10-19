@@ -1126,13 +1126,13 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				if (!(image&1)) {
 					const RailtypeInfo *rti = GetRailTypeInfo(GB(_m[ti->tile].m3, 0, 4));
 					// railway
-					image = 0x3F3 + (ti->map5 & 1);
-					if (ti->tileh != 0) image = _track_sloped_sprites[ti->tileh - 1] + 0x3F3;
+					image = SPR_RAIL_TRACK_Y + (ti->map5 & 1);
+					if (ti->tileh != 0) image = SPR_RAIL_TRACK_Y + _track_sloped_sprites[ti->tileh - 1];
 					image += rti->total_offset;
 					if (ice) image += rti->snow_offset;
 				} else {
 					// road
-					image = 1332 + (ti->map5 & 1);
+					image = SPR_ROAD_Y + (ti->map5 & 1);
 					if (ti->tileh != 0) image = _road_sloped_sprites[ti->tileh - 1] + 0x53F;
 					if (ice) image += 19; // ice?
 				}
