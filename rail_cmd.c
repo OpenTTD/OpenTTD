@@ -1934,7 +1934,7 @@ void SetSignalsOnBothDir(TileIndex tile, byte track)
 	UpdateSignalsOnSegment(tile, _search_dir_2[track]);
 }
 
-static uint GetSlopeZ_Track(TileInfo *ti)
+static uint GetSlopeZ_Track(const TileInfo* ti)
 {
 	uint z = ti->z;
 	int th = ti->tileh;

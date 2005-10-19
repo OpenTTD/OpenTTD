@@ -549,7 +549,7 @@ static void DrawTile_Clear(TileInfo *ti)
 	DrawClearLandFence(ti);
 }
 
-static uint GetSlopeZ_Clear(TileInfo *ti)
+static uint GetSlopeZ_Clear(const TileInfo* ti)
 {
 	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh) + ti->z;
 }

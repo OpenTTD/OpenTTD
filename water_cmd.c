@@ -460,9 +460,9 @@ void DrawShipDepotSprite(int x, int y, int image)
 }
 
 
-static uint GetSlopeZ_Water(TileInfo *ti)
+static uint GetSlopeZ_Water(const TileInfo* ti)
 {
-	return GetPartialZ(ti->x&0xF, ti->y&0xF, ti->tileh) + ti->z;
+	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh) + ti->z;
 }
 
 static uint GetSlopeTileh_Water(const TileInfo *ti)

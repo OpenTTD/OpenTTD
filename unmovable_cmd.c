@@ -180,9 +180,9 @@ static void DrawTile_Unmovable(TileInfo *ti)
 	}
 }
 
-static uint GetSlopeZ_Unmovable(TileInfo *ti)
+static uint GetSlopeZ_Unmovable(const TileInfo* ti)
 {
-	return GetPartialZ(ti->x&0xF, ti->y&0xF, ti->tileh) + ti->z;
+	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh) + ti->z;
 }
 
 static uint GetSlopeTileh_Unmovable(const TileInfo *ti)

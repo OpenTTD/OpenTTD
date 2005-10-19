@@ -143,9 +143,9 @@ static void DrawTile_Town(TileInfo *ti)
 	}
 }
 
-static uint GetSlopeZ_Town(TileInfo *ti)
+static uint GetSlopeZ_Town(const TileInfo* ti)
 {
-	uint z = GetPartialZ(ti->x&0xF, ti->y&0xF, ti->tileh) + ti->z;
+	uint z = GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh) + ti->z;
 	if (ti->tileh != 0) z = (z & ~7) + 4;
 	return (uint16) z;
 }

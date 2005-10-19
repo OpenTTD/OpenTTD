@@ -1215,10 +1215,12 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 	}
 }
 
-static uint GetSlopeZ_TunnelBridge(TileInfo *ti) {
+static uint GetSlopeZ_TunnelBridge(const TileInfo* ti)
+{
 	uint z = ti->z;
 	uint x = ti->x & 0xF;
 	uint y = ti->y & 0xF;
+	uint tileh = ti->tileh;
 
 	// swap directions if Y tunnel/bridge to let the code handle the X case only.
 	if (ti->map5 & 1) uintswap(x,y);
@@ -1233,11 +1235,11 @@ static uint GetSlopeZ_TunnelBridge(TileInfo *ti) {
 		if ( ti->map5 & 0x80 ) {
 			// bridge ending?
 			if (!(ti->map5 & 0x40)) {
-				if (BRIDGE_FULL_LEVELED_FOUNDATION & (1 << ti->tileh))	// 7, 11, 13, 14
+				if (BRIDGE_FULL_LEVELED_FOUNDATION & (1 << tileh)) // 7, 11, 13, 14
 					z += 8;
 
 				// no ramp for bridge ending
-				if ((BRIDGE_PARTLY_LEVELED_FOUNDATION & (1 << ti->tileh) || BRIDGE_NO_FOUNDATION & (1 << ti->tileh)) && ti->tileh != 0) {
+				if ((BRIDGE_PARTLY_LEVELED_FOUNDATION & (1 << tileh) || BRIDGE_NO_FOUNDATION & (1 << tileh)) && tileh != 0) {
 					return z + 8;
 
 				} else if (!(ti->map5 & 0x20)) { // northern / southern ending
@@ -1251,7 +1253,7 @@ static uint GetSlopeZ_TunnelBridge(TileInfo *ti) {
 			// bridge middle part
 			} else {
 				// build on slopes?
-				if (ti->tileh) z+=8;
+				if (tileh != 0) z += 8;
 
 				// keep the same elevation because we're on the bridge?
 				if (_get_z_hint >= z + 8)
@@ -1264,12 +1266,12 @@ static uint GetSlopeZ_TunnelBridge(TileInfo *ti) {
 				// in the shared area, assume that we're below the bridge, cause otherwise the hint would've caught it.
 				// if rail or road below then it means it's possibly build on slope below the bridge.
 				if (ti->map5 & 0x20) {
-					uint f = _bridge_foundations[ti->map5&1][ti->tileh];
+					uint f = _bridge_foundations[ti->map5 & 1][tileh];
 					// make sure that the slope is not inclined foundation
 					if (IS_BYTE_INSIDE(f, 1, 15)) return z;
 
 					// change foundation type? XXX - should be const; accessor function!
-					if (f) ti->tileh = _inclined_tileh[f - 15];
+					if (f != 0) tileh = _inclined_tileh[f - 15];
 				}
 
 				// no transport route, fallback to default
@@ -1279,16 +1281,16 @@ static uint GetSlopeZ_TunnelBridge(TileInfo *ti) {
 		// if it's a bridge middle with transport route below, then we need to compensate for build on slopes
 		if ( (ti->map5 & (0x80 + 0x40 + 0x20)) == (0x80 + 0x40 + 0x20)) {
 			uint f;
-			if (ti->tileh) z += 8;
-			f = _bridge_foundations[ti->map5&1][ti->tileh];
+			if (tileh != 0) z += 8;
+			f = _bridge_foundations[ti->map5&1][tileh];
 			if (IS_BYTE_INSIDE(f, 1, 15)) return z;
-			if (f) ti->tileh = _inclined_tileh[f - 15];
+			if (f != 0) tileh = _inclined_tileh[f - 15];
 		}
 	}
 
 	// default case
 	z = ti->z;
-	return GetPartialZ(ti->x&0xF, ti->y&0xF, ti->tileh) + z;
+	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, tileh) + z;
 }
 
 static uint GetSlopeTileh_TunnelBridge(const TileInfo *ti) {
