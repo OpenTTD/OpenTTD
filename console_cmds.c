@@ -404,20 +404,24 @@ DEF_CONSOLE_CMD(ConBan)
 
 DEF_CONSOLE_CMD(ConUnBan)
 {
-	uint i;
+	uint i, index;
 
 	if (argc == 0) {
-		IConsoleHelp("Unban a player from a network game. Usage: 'unban <ip>'");
+		IConsoleHelp("Unban a player from a network game. Usage: 'unban <ip\\id>'");
+		IConsoleHelp("For a list of banned IP's, see the command 'banlist'");
 		return true;
 	}
 
 	if (argc != 2) return false;
 
+	index = (strrchr(argv[1], '.') == '\0') ? atoi(argv[1]) : 0;
+	index--;
+
 	for (i = 0; i < lengthof(_network_ban_list); i++) {
 		if (_network_ban_list[i] == NULL || _network_ban_list[i][0] == '\0')
 			continue;
 
-		if (strncmp(_network_ban_list[i], argv[1], strlen(_network_ban_list[i])) == 0) {
+		if (strncmp(_network_ban_list[i], argv[1], strlen(_network_ban_list[i])) == 0 || index == i) {
 			_network_ban_list[i][0] = '\0';
 			IConsolePrint(_icolour_def, "IP unbanned.");
 			return true;
@@ -511,8 +515,8 @@ DEF_CONSOLE_CMD(ConStatus)
 		const NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
 
 		status = (cs->status <= STATUS_ACTIVE) ? stat_str[cs->status] : "unknown";
-		IConsolePrintF(8, "Client #%d/%s  status: %s  frame-lag: %d  play-as: %d  unique-id: %s",
-			cs->index, ci->client_name, status, lag, ci->client_playas, ci->unique_id);
+		IConsolePrintF(8, "Client #%1d  name: '%s'  status: '%s'  frame-lag: %3d  company: %1d  IP: %s  unique-id: '%s'",
+			cs->index, ci->client_name, status, lag, ci->client_playas, GetPlayerIP(ci), ci->unique_id);
 	}
 
 	return true;
@@ -613,13 +617,14 @@ DEF_CONSOLE_CMD(ConNetworkClients)
 	NetworkClientInfo *ci;
 
 	if (argc == 0) {
-		IConsoleHelp("Get a list of connected clients including their ID, name, and company-id. Usage: 'clients'");
+		IConsoleHelp("Get a list of connected clients including their ID, name, company-id, and IP. Usage: 'clients'");
 		return true;
 	}
 
 	for (ci = _network_client_info; ci != &_network_client_info[MAX_CLIENT_INFO]; ci++) {
 		if (ci->client_index != NETWORK_EMPTY_INDEX) {
-			IConsolePrintF(8, "Client #%d   name: %s  play-as company: %d", ci->client_index, ci->client_name, ci->client_playas);
+			IConsolePrintF(8, "Client #%1d  name: '%s'  company: %1d  IP: %s",
+				ci->client_index, ci->client_name, ci->client_playas, GetPlayerIP(ci));
 		}
 	}
 

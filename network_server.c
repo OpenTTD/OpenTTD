@@ -762,8 +762,6 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 	}
 }
 
-static inline const char* GetPlayerIP(const NetworkClientInfo *ci) {return inet_ntoa(*(struct in_addr *)&ci->client_ip);}
-
 /** Enforce the command flags.
  * Eg a server-only command can only be executed by a server, etc.
  * @param *cp the commandpacket that is going to be checked

@@ -20,6 +20,8 @@ void NetworkServer_Tick(bool send_frame);
 void NetworkServerMonthlyLoop(void);
 void NetworkServerYearlyLoop(void);
 
+static inline const char* GetPlayerIP(const NetworkClientInfo *ci) {return inet_ntoa(*(struct in_addr *)&ci->client_ip);}
+
 #endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_SERVER_H */
