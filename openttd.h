@@ -1,4 +1,5 @@
 /* $Id$ */
+/** @file openttd.h */
 
 #ifndef OPENTTD_H
 #define OPENTTD_H
@@ -71,8 +72,8 @@ typedef byte PlayerID;
 typedef byte OrderID;
 typedef byte CargoID;
 typedef uint16 StringID;
-typedef uint32 SpriteID;
-typedef uint32 PalSpriteID;
+typedef uint32 SpriteID;    //! The number of a sprite, without mapping bits and colortables
+typedef uint32 PalSpriteID; //! The number of a sprite plus all the mapping bits and colortables
 typedef uint32 CursorID;
 typedef uint16 EngineID; //! All enginenumbers should be of this type
 typedef uint16 UnitID;   //! All unitnumber stuff is of this type (or anyway, should be)

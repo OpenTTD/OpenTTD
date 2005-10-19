@@ -41,6 +41,9 @@ const RailtypeInfo _railtypes[] = {
 
 		/* main offset */
 		0,
+
+		/* bridge offset */
+		0,
 	},
 
 	/** Monorail */
@@ -77,6 +80,9 @@ const RailtypeInfo _railtypes[] = {
 
 		/* main offset */
 		82,
+
+		/* bridge offset */
+		16,
 	},
 
 	/** Maglev */
@@ -113,6 +119,9 @@ const RailtypeInfo _railtypes[] = {
 
 		/* main offset */
 		164,
+
+		/* bridge offset */
+		24,
 	},
 };
 

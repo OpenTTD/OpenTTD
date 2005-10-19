@@ -968,8 +968,8 @@ extern const byte _road_sloped_sprites[14];
 
 static void DrawBridgePillars(const TileInfo *ti, int x, int y, int z)
 {
-	const uint32 *b;
-	uint32 image;
+	const PalSpriteID *b;
+	PalSpriteID image;
 	int piece;
 
 	b = _bridge_poles_table[GetBridgeType(ti->tile)];
@@ -1030,11 +1030,27 @@ uint GetBridgeFoundation(uint tileh, byte direction) {
 	return 0;
 }
 
+/**
+  * Draws a tunnel of bridge tile.
+  * For tunnels, this is rather simple, as you only needa draw the entrance.
+  * Bridges are a bit more complex. base_offset is where the sprite selection comes into play
+  * and it works a bit like a bitmask.<p> For bridge heads:
+  * <ul><li>Bit 0: direction</li>
+  * <li>Bit 1: northern or southern heads</li>
+  * <li>Bit 2: Set if the bridge head is sloped</li>
+  * <li>Bit 3 and more: Railtype Specific subset</li>
+  * </ul>
+  * For middle parts:
+  * <ul><li>Bits 0-1: need to be 0</li>
+  * <li>Bit 2: direction</li>
+  * <li>Bit 3 and above: Railtype Specific subset</li>
+  * </ul>
+  * Please note that in this code, "roads" are treated as railtype 1, whilst the real railtypes are 0, 2 and 3
+  */
 static void DrawTile_TunnelBridge(TileInfo *ti)
 {
 	uint32 image;
-	uint tmp;
-	const uint32 *b;
+	const PalSpriteID *b;
 	bool ice = _m[ti->tile].m4 & 0x80;
 
 	// draw tunnel?
@@ -1053,19 +1069,24 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		AddSortableSpriteToDraw(image+1, ti->x + 15, ti->y + 15, 1, 1, 8, (byte)ti->z);
 	// draw bridge?
 	} else if ((byte)ti->map5 & 0x80) {
-		// get type of track on the bridge.
-		tmp = _m[ti->tile].m3;
-		if (ti->map5 & 0x40) tmp >>= 4;
-		tmp &= 0xF;
+		RailType rt;
+		int base_offset;
 
-		// 0 = rail bridge
-		// 1 = road bridge
-		// 2 = monorail bridge
-		// 3 = maglev bridge
+		if (HASBIT(ti->map5, 1)) { /* This is a road bridge */
+			base_offset = 8;
+		} else { /* Rail bridge */
+			if (HASBIT(ti->map5, 6)) { /* The bits we need depend on the fact whether it is a bridge head or not */
+				rt = GB(_m[ti->tile].m3, 4, 3);
+			} else {
+				rt = GB(_m[ti->tile].m3, 0, 3);
+			}
 
-		// add direction and fix stuff.
-		if (tmp != 0) tmp++;
-		tmp = (ti->map5&3) + (tmp*2);
+			base_offset = GetRailTypeInfo(rt)->bridge_offset;
+			assert(base_offset != 8); /* This one is used for roads */
+		}
+
+		/* as the lower 3 bits are used for other stuff, make sure they are clear */
+		assert( (base_offset & 0x07) == 0x00);
 
 		if (!(ti->map5 & 0x40)) {	// bridge ramps
 
@@ -1077,14 +1098,14 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				if (ti->tileh != 0) image = SPR_RAIL_TRACK_Y + _track_sloped_sprites[ti->tileh - 1];
 			}
 
-			// bridge ending.
-			b = GetBridgeSpriteTable(GetBridgeType(ti->tile), 6);
-			b += (tmp&(3<<1))*4; /* actually ((tmp>>2)&3)*8 */
-			b += (tmp&1); // direction
-			if (ti->tileh == 0) b += 4; // sloped "entrance" ?
-			if (ti->map5 & 0x20) b += 2; // which side
+			/* Cope for the direction of the bridge */
+			if (HASBIT(ti->map5, 0)) base_offset++;
 
-			image = *b;
+			if (ti->map5 & 0x20) base_offset += 2; // which side
+			if (ti->tileh == 0) base_offset += 4; // sloped bridge head
+
+			/* Table number 6 always refers to the bridge heads for any bridge type */
+			image = GetBridgeSpriteTable(GetBridgeType(ti->tile), 6)[base_offset];
 
 			if (!ice) {
 				DrawClearLandTile(ti, 3);
@@ -1101,6 +1122,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			int x,y;
 
 			image = GB(ti->map5, 3, 2); // type of stuff under bridge (only defined for 0,1)
+			/** @todo So why do we even WASTE that one bit?! (map5, bit 4) */
 			assert(image <= 1);
 
 			if (!(ti->map5 & 0x20)) {
@@ -1134,16 +1156,22 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 					// road
 					image = SPR_ROAD_Y + (ti->map5 & 1);
 					if (ti->tileh != 0) image = _road_sloped_sprites[ti->tileh - 1] + 0x53F;
-					if (ice) image += 19; // ice?
+					if (ice) image += 19;
 				}
 				DrawGroundSprite(image);
 			}
+
+			/* Cope for the direction of the bridge */
+			if (HASBIT(ti->map5, 0)) base_offset += 4;
+
+			/*  base_offset needs to be 0 due to the structure of the sprite table see table/bridge_land.h */
+			assert( (base_offset & 0x03) == 0x00);
 			// get bridge sprites
-			b = GetBridgeSpriteTable(GetBridgeType(ti->tile), GetBridgePiece(ti->tile)) + tmp * 4;
+			b = GetBridgeSpriteTable(GetBridgeType(ti->tile), GetBridgePiece(ti->tile)) + base_offset;
 
 			z = GetBridgeHeight(ti) + 5;
 
-			// draw rail
+			// draw rail or road component
 			image = b[0];
 			if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 			AddSortableSpriteToDraw(image, ti->x, ti->y, (ti->map5&1)?11:16, (ti->map5&1)?16:11, 1, z);
@@ -1153,7 +1181,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			image = b[1];
 			if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 
-			// draw roof
+			// draw roof, the component of the bridge which is logically between the vehicle and the camera
 			if (ti->map5&1) {
 				x += 12;
 				if (image & SPRITE_MASK) AddSortableSpriteToDraw(image, x,y, 1, 16, 0x28, z);

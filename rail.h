@@ -201,6 +201,11 @@ typedef struct RailtypeInfo {
 	 * @note: Something more flexible might be desirable in the future.
 	 */
 	SpriteID total_offset;
+
+	/**
+	  * Bridge offset
+	  */
+	SpriteID bridge_offset;
 } RailtypeInfo;
 
 extern const RailtypeInfo _railtypes[RAILTYPE_END];
@@ -592,5 +597,5 @@ static inline bool IsCompatibleRail(RailType enginetype, RailType tiletype)
 void DrawTrackBits(TileInfo *ti, TrackBits track, bool earth, bool snow, bool flat);
 void DrawTrainDepotSprite(int x, int y, int image, RailType railtype);
 void DrawDefaultWaypointSprite(int x, int y, RailType railtype);
-
 #endif /* RAIL_H */
+
