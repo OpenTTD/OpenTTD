@@ -879,7 +879,7 @@ static void DrawTile_Road(TileInfo *ti)
 
 	} else {
 		uint32 ormod;
-		int player;
+		PlayerID player;
 		const DrawRoadSeqStruct *drss;
 
 		if (ti->tileh != 0) { DrawFoundation(ti, ti->tileh); }

@@ -603,21 +603,19 @@ void PlayersYearlyLoop(void)
 	}
 }
 
-void DeletePlayerWindows(int pi)
+void DeletePlayerWindows(PlayerID pi)
 {
 	DeleteWindowById(WC_COMPANY, pi);
 	DeleteWindowById(WC_FINANCES, pi);
 	DeleteWindowById(WC_STATION_LIST, pi);
-	/* The vehicle list windows also have station in the window_number
-	 * A stationindex of -1 means the global vehicle list */
-	DeleteWindowById(WC_TRAINS_LIST, (-1 << 16) | pi);
-	DeleteWindowById(WC_ROADVEH_LIST, (-1 << 16) | pi);
-	DeleteWindowById(WC_SHIPS_LIST, (-1 << 16) | pi);
-	DeleteWindowById(WC_AIRCRAFT_LIST, (-1 << 16) | pi);
+	DeleteWindowById(WC_TRAINS_LIST,   (INVALID_STATION << 16) | pi);
+	DeleteWindowById(WC_ROADVEH_LIST,  (INVALID_STATION << 16) | pi);
+	DeleteWindowById(WC_SHIPS_LIST,    (INVALID_STATION << 16) | pi);
+	DeleteWindowById(WC_AIRCRAFT_LIST, (INVALID_STATION << 16) | pi);
 	DeleteWindowById(WC_BUY_COMPANY, pi);
 }
 
-byte GetPlayerRailtypes(int p)
+byte GetPlayerRailtypes(PlayerID p)
 {
 	Engine *e;
 	int rt = 0;
@@ -638,7 +636,7 @@ byte GetPlayerRailtypes(int p)
 	return rt;
 }
 
-static void DeletePlayerStuff(int pi)
+static void DeletePlayerStuff(PlayerID pi)
 {
 	Player *p;
 

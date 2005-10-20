@@ -533,13 +533,11 @@ static const WindowDesc _station_view_desc = {
 void ShowStationViewWindow(StationID station)
 {
 	Window *w;
-	byte color;
 
 	w = AllocateWindowDescFront(&_station_view_desc, station);
 	if (w) {
-		color = GetStation(w->window_number)->owner;
-		if (color != 0x10)
-			w->caption_color = color;
+		PlayerID owner = GetStation(w->window_number)->owner;
+		if (owner != OWNER_NONE) w->caption_color = owner;
 		w->vscroll.cap = 5;
 	}
 }

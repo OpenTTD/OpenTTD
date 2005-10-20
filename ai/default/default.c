@@ -122,12 +122,12 @@ static void AiStateVehLoop(Player *p)
 	p->ai.state_counter = 0;
 }
 
-static int AiChooseTrainToBuild(byte railtype, int32 money, byte flag, TileIndex tile)
+static EngineID AiChooseTrainToBuild(byte railtype, int32 money, byte flag, TileIndex tile)
 {
-	int best_veh_index = -1;
+	EngineID best_veh_index = INVALID_ENGINE;
 	byte best_veh_score = 0;
 	int32 ret;
-	int i;
+	EngineID i;
 
 	for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
 		const RailVehicleInfo *rvi = RailVehInfo(i);
@@ -152,14 +152,14 @@ static int AiChooseTrainToBuild(byte railtype, int32 money, byte flag, TileIndex
 	return best_veh_index;
 }
 
-static int AiChooseRoadVehToBuild(byte cargo, int32 money, TileIndex tile)
+static EngineID AiChooseRoadVehToBuild(byte cargo, int32 money, TileIndex tile)
 {
-	int best_veh_index = -1;
+	EngineID best_veh_index = INVALID_ENGINE;
 	int32 best_veh_cost = 0;
 	int32 ret;
 
-	int i = _cargoc.ai_roadveh_start[cargo];
-	int end = i + _cargoc.ai_roadveh_count[cargo];
+	EngineID i = _cargoc.ai_roadveh_start[cargo];
+	EngineID end = i + _cargoc.ai_roadveh_count[cargo];
 	const Engine* e = GetEngine(i);
 
 	do {
@@ -176,14 +176,14 @@ static int AiChooseRoadVehToBuild(byte cargo, int32 money, TileIndex tile)
 	return best_veh_index;
 }
 
-static int AiChooseAircraftToBuild(int32 money, byte flag)
+static EngineID AiChooseAircraftToBuild(int32 money, byte flag)
 {
-	int best_veh_index = -1;
+	EngineID best_veh_index = INVALID_ENGINE;
 	int32 best_veh_cost = 0;
 	int32 ret;
 
-	int i = AIRCRAFT_ENGINES_INDEX;
-	int end = i + NUM_AIRCRAFT_ENGINES;
+	EngineID i = AIRCRAFT_ENGINES_INDEX;
+	EngineID end = i + NUM_AIRCRAFT_ENGINES;
 	const Engine* e = GetEngine(i);
 
 	do {
@@ -218,26 +218,26 @@ static int32 AiGetBasePrice(Player *p)
 }
 
 #if 0
-static int AiChooseShipToBuild(byte cargo, int32 money)
+static EngineID AiChooseShipToBuild(byte cargo, int32 money)
 {
 	// XXX: not done
-	return 0;
+	return INVALID_ENGINE;
 }
 #endif
 
-static int AiChooseRoadVehToReplaceWith(Player *p, Vehicle *v)
+static EngineID AiChooseRoadVehToReplaceWith(Player* p, Vehicle* v)
 {
 	int32 avail_money = p->player_money + v->value;
 	return AiChooseRoadVehToBuild(v->cargo_type, avail_money, v->tile);
 }
 
-static int AiChooseAircraftToReplaceWith(Player *p, Vehicle *v)
+static EngineID AiChooseAircraftToReplaceWith(Player* p, Vehicle* v)
 {
 	int32 avail_money = p->player_money + v->value;
 	return AiChooseAircraftToBuild(avail_money, v->engine_type>=253?1:0);
 }
 
-static int AiChooseTrainToReplaceWith(Player *p, Vehicle *v)
+static EngineID AiChooseTrainToReplaceWith(Player* p, Vehicle* v)
 {
 	int32 avail_money = p->player_money + v->value;
 	int num=0;
@@ -251,12 +251,12 @@ static int AiChooseTrainToReplaceWith(Player *p, Vehicle *v)
 	return AiChooseTrainToBuild(v->u.rail.railtype, avail_money, 0, v->tile);
 }
 
-static int AiChooseShipToReplaceWith(Player *p, Vehicle *v)
+static EngineID AiChooseShipToReplaceWith(Player* p, Vehicle* v)
 {
 	error("!AiChooseShipToReplaceWith");
 
 	/* maybe useless, but avoids compiler warning this way */
-	return 0;
+	return INVALID_ENGINE;
 }
 
 static void AiHandleGotoDepot(Player *p, int cmd)
@@ -289,7 +289,7 @@ static void AiHandleReplaceTrain(Player *p)
 {
 	Vehicle *v = p->ai.cur_veh;
 	BackuppedOrders orderbak[1];
-	int veh;
+	EngineID veh;
 
 	// wait until the vehicle reaches the depot.
 	if (!IsTileDepotType(v->tile, TRANSPORT_RAIL) || v->u.rail.track != 0x80 || !(v->vehstatus&VS_STOPPED)) {
@@ -298,7 +298,7 @@ static void AiHandleReplaceTrain(Player *p)
 	}
 
 	veh = AiChooseTrainToReplaceWith(p, v);
-	if (veh != -1) {
+	if (veh != INVALID_ENGINE) {
 		TileIndex tile;
 
 		BackupVehicleOrders(v, orderbak);
@@ -306,7 +306,7 @@ static void AiHandleReplaceTrain(Player *p)
 
 		if (!CmdFailed(DoCommandByTile(0, v->index, 2, DC_EXEC, CMD_SELL_RAIL_WAGON)) &&
 			  !CmdFailed(DoCommandByTile(tile, veh, 0, DC_EXEC, CMD_BUILD_RAIL_VEHICLE)) ) {
-			veh = _new_train_id;
+			VehicleID veh = _new_train_id;
 			AiRestoreVehicleOrders(GetVehicle(veh), orderbak);
 			DoCommandByTile(0, veh, 0, DC_EXEC, CMD_START_STOP_TRAIN);
 
@@ -319,7 +319,7 @@ static void AiHandleReplaceRoadVeh(Player *p)
 {
 	Vehicle *v = p->ai.cur_veh;
 	BackuppedOrders orderbak[1];
-	int veh;
+	EngineID veh;
 
 	if (!IsTileDepotType(v->tile, TRANSPORT_ROAD) || v->u.road.state != 254 || !(v->vehstatus&VS_STOPPED)) {
 		AiHandleGotoDepot(p, CMD_SEND_ROADVEH_TO_DEPOT);
@@ -327,7 +327,7 @@ static void AiHandleReplaceRoadVeh(Player *p)
 	}
 
 	veh = AiChooseRoadVehToReplaceWith(p, v);
-	if (veh != -1) {
+	if (veh != INVALID_ENGINE) {
 		TileIndex tile;
 
 		BackupVehicleOrders(v, orderbak);
@@ -335,7 +335,7 @@ static void AiHandleReplaceRoadVeh(Player *p)
 
 		if (!CmdFailed(DoCommandByTile(0, v->index, 0, DC_EXEC, CMD_SELL_ROAD_VEH)) &&
 			  !CmdFailed(DoCommandByTile(tile, veh, 0, DC_EXEC, CMD_BUILD_ROAD_VEH)) ) {
-			veh = _new_roadveh_id;
+			VehicleID veh = _new_roadveh_id;
 			AiRestoreVehicleOrders(GetVehicle(veh), orderbak);
 			DoCommandByTile(0, veh, 0, DC_EXEC, CMD_START_STOP_ROADVEH);
 
@@ -347,8 +347,8 @@ static void AiHandleReplaceRoadVeh(Player *p)
 static void AiHandleReplaceAircraft(Player *p)
 {
 	Vehicle *v = p->ai.cur_veh;
-	int veh;
 	BackuppedOrders orderbak[1];
+	EngineID veh;
 
 	if (!IsAircraftHangarTile(v->tile) && !(v->vehstatus&VS_STOPPED)) {
 		AiHandleGotoDepot(p, CMD_SEND_AIRCRAFT_TO_HANGAR);
@@ -356,7 +356,7 @@ static void AiHandleReplaceAircraft(Player *p)
 	}
 
 	veh = AiChooseAircraftToReplaceWith(p, v);
-	if (veh != -1) {
+	if (veh != INVALID_ENGINE) {
 		TileIndex tile;
 
 		BackupVehicleOrders(v, orderbak);
@@ -364,7 +364,7 @@ static void AiHandleReplaceAircraft(Player *p)
 
 		if (!CmdFailed(DoCommandByTile(0, v->index, 0, DC_EXEC, CMD_SELL_AIRCRAFT)) &&
 			  !CmdFailed(DoCommandByTile(tile, veh, 0, DC_EXEC, CMD_BUILD_AIRCRAFT)) ) {
-			veh = _new_aircraft_id;
+			VehicleID veh = _new_aircraft_id;
 			AiRestoreVehicleOrders(GetVehicle(veh), orderbak);
 			DoCommandByTile(0, veh, 0, DC_EXEC, CMD_START_STOP_AIRCRAFT);
 
@@ -378,7 +378,7 @@ static void AiHandleReplaceShip(Player *p)
 	error("!AiHandleReplaceShip");
 }
 
-typedef int CheckReplaceProc(Player *p, Vehicle *v);
+typedef EngineID CheckReplaceProc(Player* p, Vehicle* v);
 
 static CheckReplaceProc * const _veh_check_replace_proc[] = {
 	AiChooseTrainToReplaceWith,
@@ -399,7 +399,10 @@ static void AiStateCheckReplaceVehicle(Player *p)
 {
 	Vehicle *v = p->ai.cur_veh;
 
-	if (v->type == 0 || v->owner != _current_player || v->type > VEH_Ship || _veh_check_replace_proc[v->type - VEH_Train](p, v) == -1) {
+	if (v->type == 0 ||
+			v->owner != _current_player ||
+			v->type > VEH_Ship ||
+			_veh_check_replace_proc[v->type - VEH_Train](p, v) == INVALID_ENGINE) {
 		p->ai.state = AIS_VEH_LOOP;
 	} else {
 		p->ai.state_counter = 0;
@@ -1716,7 +1719,7 @@ static const byte _terraform_down_flags[] = {
 
 static void AiDoTerraformLand(TileIndex tile, int dir, int unk, int mode)
 {
-	byte old_player;
+	PlayerID old_player;
 	uint32 r;
 	uint slope;
 	uint h;
@@ -2377,7 +2380,8 @@ static void AiStateBuildRailVeh(Player *p)
 {
 	const AiDefaultBlockData *ptr;
 	TileIndex tile;
-	int i, veh;
+	EngineID veh;
+	int i;
 	int cargo;
 	int32 cost;
 	Vehicle *v;
@@ -2406,7 +2410,7 @@ static void AiStateBuildRailVeh(Player *p)
 
 	// Which locomotive to build?
 	veh = AiChooseTrainToBuild(p->ai.railtype_to_use, p->player_money, (cargo!=CT_PASSENGERS)?1:0, tile);
-	if (veh == -1) {
+	if (veh == INVALID_ENGINE) {
 handle_nocash:
 		// after a while, if AI still doesn't have cash, get out of this block by selling the wagons.
 		if (++p->ai.state_counter == 1000) {
@@ -3497,7 +3501,7 @@ static void AiStateBuildAircraftVehicles(Player *p)
 {
 	const AiDefaultBlockData *ptr;
 	TileIndex tile;
-	int veh;
+	EngineID veh;
 	int i;
 	uint loco_id;
 
@@ -3507,7 +3511,7 @@ static void AiStateBuildAircraftVehicles(Player *p)
 	tile = TILE_ADD(p->ai.src.use_tile, ToTileIndexDiff(ptr->tileoffs));
 
 	veh = AiChooseAircraftToBuild(p->player_money, p->ai.build_kind!=0 ? 1 : 0);
-	if (veh == -1) return;
+	if (veh == INVALID_ENGINE) return;
 
 	/* XXX - Have the AI pick the hangar terminal in an airport. Eg get airport-type
 	 * and offset to the FIRST depot because the AI picks the st->xy tile */

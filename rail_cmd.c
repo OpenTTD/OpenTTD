@@ -1997,7 +1997,6 @@ static void TileLoop_Track(TileIndex tile)
 	byte a2;
 	byte rail;
 	uint16 m2;
-	byte owner;
 
 	m2 = GB(_m[tile].m2, 0, 4);
 
@@ -2037,7 +2036,7 @@ static void TileLoop_Track(TileIndex tile)
 		} else if (rail == TRACK_BIT_RIGHT) {
 			a2 = RAIL_GROUND_FENCE_VERT2;
 		} else {
-			owner = GetTileOwner(tile);
+			PlayerID owner = GetTileOwner(tile);
 
 			if ( (!(rail&(TRACK_BIT_DIAG2|TRACK_BIT_UPPER|TRACK_BIT_LEFT)) && (rail&TRACK_BIT_DIAG1)) || rail==(TRACK_BIT_LOWER|TRACK_BIT_RIGHT)) {
 				if (!IsTileType(tile + TileDiffXY(0, -1), MP_RAILWAY) ||

@@ -391,8 +391,6 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 	MarkWholeScreenDirty();
 }
 
-extern void DeletePlayerWindows(int pi);
-
 static void PlayersCheckBankrupt(Player *p)
 {
 	PlayerID owner;

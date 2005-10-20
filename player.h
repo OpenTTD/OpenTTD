@@ -219,7 +219,8 @@ static inline bool IsLocalPlayer(void)
 	return _local_player == _current_player;
 }
 
-byte GetPlayerRailtypes(int p);
+void DeletePlayerWindows(PlayerID pi);
+byte GetPlayerRailtypes(PlayerID p);
 
 /** Finds out if a Player has a certain railtype available
   */
