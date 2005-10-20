@@ -311,7 +311,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT {
 				uint8 weight = grf_load_byte(&buf);
 
-				rvi[i].weight = weight;
+				SB(rvi[i].weight, 0, 8, weight);
 			}
 		} break;
 		case 0x17: { /* Cost factor */
@@ -390,13 +390,23 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				rvi[i].pow_wag_weight = wag_weight;
 			}
 		} break;
+		case 0x24: { /* High byte of vehicle weight */
+			FOR_EACH_OBJECT {
+				byte weight = grf_load_byte(&buf);
+
+				if (weight < 4) {
+					grfmsg(GMS_NOTICE, "RailVehicleChangeInfo: Nonsensical weight of %d tons, ignoring.", weight << 8);
+				} else {
+					SB(rvi[i].weight, 8, 8, weight);
+				}
+			}
+		} break;
 		/* TODO */
 		/* Fall-through for unimplemented one byte long properties. */
 		case 0x1A:	/* Sort order */
 		case 0x1C:	/* Refit cost */
 		case 0x1F:	/* Tractive effort */
 		case 0x20:	/* Air drag */
-		case 0x24:	/* High byte of vehicle weight */
 		case 0x25:	/* User-defined bit mask to set when checking veh. var. 42 */
 		case 0x26:	/* Retire vehicle early */
 			{

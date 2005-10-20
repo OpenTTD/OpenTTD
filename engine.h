@@ -14,7 +14,7 @@ typedef struct RailVehicleInfo {
 	byte base_cost;
 	uint16 max_speed;
 	uint16 power;
-	byte weight;
+	uint16 weight;
 	byte running_cost_base;
 	byte engclass; // 0: steam, 1: diesel, 2: electric
 	byte capacity;
