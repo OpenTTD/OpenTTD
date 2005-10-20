@@ -394,7 +394,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT {
 				byte weight = grf_load_byte(&buf);
 
-				if (weight < 4) {
+				if (weight > 4) {
 					grfmsg(GMS_NOTICE, "RailVehicleChangeInfo: Nonsensical weight of %d tons, ignoring.", weight << 8);
 				} else {
 					SB(rvi[i].weight, 8, 8, weight);
