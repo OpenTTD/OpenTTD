@@ -502,10 +502,8 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 
 	case WE_ON_EDIT_TEXT: {
 		if (e->edittext.str[0] != '\0') {
-			Station* st = GetStation(w->window_number);
-
 			_cmd_text = e->edittext.str;
-			DoCommandP(st->xy, w->window_number, 0, NULL,
+			DoCommandP(0, w->window_number, 0, NULL,
 				CMD_RENAME_STATION | CMD_MSG(STR_3031_CAN_T_RENAME_STATION));
 		}
 	} break;
