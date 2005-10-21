@@ -14,6 +14,7 @@
 #include "town.h"
 #include "waypoint.h"
 #include "variables.h"
+#include "pbs.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 
@@ -197,12 +198,14 @@ int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (flags & DC_EXEC) {
+		bool reserved = PBSTileReserved(tile) != 0;
 		ModifyTile(tile, MP_MAP5, RAIL_TYPE_WAYPOINT | dir);
 		if (--p1 & 0x100) { // waypoint type 0 uses default graphics
 			// custom graphics
 			_m[tile].m3 |= 16;
 			_m[tile].m4 = p1 & 0xff;
 		}
+		if (reserved) PBSReserveTrack(tile, dir);
 
 		wp->deleted = 0;
 		wp->xy = tile;
@@ -272,9 +275,11 @@ int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 		RedrawWaypointSign(wp);
 
 		if (justremove) {
+			bool reserved = PBSTileReserved(tile) != 0;
 			ModifyTile(tile, MP_MAP5, 1<<direction);
 			_m[tile].m3 &= ~16;
 			_m[tile].m4 = 0;
+			if (reserved) PBSReserveTrack(tile, direction);
 		} else {
 			DoClearSquare(tile);
 			SetSignalsOnBothDir(tile, direction);
