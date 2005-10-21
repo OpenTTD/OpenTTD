@@ -272,7 +272,7 @@ STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Nazwa je
 
 STR_0133_WINDOWS                                                :Windows
 STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :OSX
+STR_0135_OSX                                                    :OS X
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
