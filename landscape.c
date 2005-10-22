@@ -186,21 +186,21 @@ uint GetSlopeZ(int x,  int y)
 
 // direction=true:  check for foundation in east and south corner
 // direction=false: check for foundation in west and south corner
-static bool hasFoundation(TileInfo *ti, bool direction)
+static bool hasFoundation(const TileInfo* ti, bool direction)
 {
 	bool south, other; // southern corner and east/west corner
 	uint slope = _tile_type_procs[ti->type]->get_slope_tileh_proc(ti);
 	uint tileh = ti->tileh;
 
-	if(slope==0 && slope!=tileh) tileh=15;
+	if (slope == 0 && slope != tileh) tileh = 15;
 	south = (tileh & 2) != (slope & 2);
 
-	if(direction)
+	if (direction) {
 		other = (tileh & 4) != (slope & 4);
-	else
+	} else {
 		other = (tileh & 1) != (slope & 1);
+	}
 	return south || other;
-
 }
 
 void DrawFoundation(TileInfo *ti, uint f)

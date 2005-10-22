@@ -773,5 +773,3 @@ static const uint32 * const _bridge_poles_table[] = {
 	_bridge_sprite_table_11_poles,
 	_bridge_sprite_table_12_poles
 };
-
-

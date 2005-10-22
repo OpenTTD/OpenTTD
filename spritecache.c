@@ -4,6 +4,7 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
+#include "macros.h"
 #include "spritecache.h"
 #include "table/sprites.h"
 #include "fileio.h"
@@ -334,7 +335,7 @@ static void* AllocSprite(size_t mem_req)
 
 	/* Align this to an uint32 boundary. This also makes sure that the 2 least
 	 * bits are not used, so we could use those for other things. */
-	mem_req = (mem_req + sizeof(uint32) - 1) & ~(sizeof(uint32) - 1);
+	mem_req = ALIGN(mem_req, sizeof(uint32));
 
 	for (;;) {
 		MemBlock* s;

@@ -745,7 +745,8 @@ typedef struct DrawRoadSeqStruct {
 #include "table/road_land.h"
 
 
-uint GetRoadFoundation(uint tileh, uint bits) {
+uint GetRoadFoundation(uint tileh, uint bits)
+{
 	int i;
 	// normal level sloped building
 	if ((~_valid_tileh_slopes_road[1][tileh] & bits) == 0)

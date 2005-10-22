@@ -450,4 +450,3 @@ LZO_EXTERN(unsigned) __lzo_align_gap(const lzo_voidp _ptr, lzo_uint _size);
 #endif
 
 #endif /* LZOCONF_H */
-

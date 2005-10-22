@@ -915,4 +915,3 @@ void NewTrainPathfind(TileIndex tile, TileIndex dest, byte direction, NTPEnumPro
 
 	NTPEnum(&tpf, tile, direction);
 }
-

@@ -448,9 +448,10 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if (!(flags & DC_EXEC))
 				return _price.remove_rail;
 
-		SetTileOwner(tile, OWNER_NONE);
+			SetTileOwner(tile, OWNER_NONE);
 			_m[tile].m5 = _m[tile].m5 & 0xC7;
 			break;
+
 		case MP_STREET:
 			if (!IsLevelCrossing(tile)) return CMD_ERROR;
 
@@ -472,8 +473,8 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			SetTileOwner(tile, _m[tile].m3);
 			_m[tile].m2 = 0;
 			break;
-		case MP_RAILWAY:
 
+		case MP_RAILWAY:
 			if (!IsPlainRailTile(tile))
 				return CMD_ERROR;
 
@@ -502,6 +503,7 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				goto skip_mark_dirty;
 			}
 			break;
+
 		default:
 			assert(0);
 	}
@@ -673,13 +675,12 @@ int32 CmdBuildTrainDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	*/
 
 	if (tileh != 0 && (
-			_is_old_ai_player ||
-			!_patches.build_on_slopes ||
-			IsSteepTileh(tileh) ||
-			!CanBuildDepotByTileh(p2, tileh)
-		)
-	) {
-			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
+				_is_old_ai_player ||
+				!_patches.build_on_slopes ||
+				IsSteepTileh(tileh) ||
+				!CanBuildDepotByTileh(p2, tileh)
+			)) {
+		return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 	}
 
 	ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
@@ -1783,7 +1784,7 @@ bool SignalVehicleCheck(TileIndex tile, uint track)
 static void SetSignalsAfterProc(TrackPathFinder *tpf)
 {
 	SetSignalsData *ssd = tpf->userdata;
-	TrackPathFinderLink *link;
+	const TrackPathFinderLink* link;
 	uint offs;
 	uint i;
 
@@ -2125,11 +2126,11 @@ static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode)
 
 static void ClickTile_Track(TileIndex tile)
 {
-	if (IsTileDepotType(tile, TRANSPORT_RAIL))
+	if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
 		ShowTrainDepotWindow(tile);
-	else if (IsRailWaypoint(_m[tile].m5))
+	} else if (IsRailWaypoint(_m[tile].m5)) {
 		ShowRenameWaypointWindow(GetWaypointByTile(tile));
-
+	}
 }
 
 static void GetTileDesc_Track(TileIndex tile, TileDesc *td)

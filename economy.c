@@ -673,7 +673,7 @@ static void AddInflation(void)
 
 static void PlayersPayInterest(void)
 {
-	Player *p;
+	const Player* p;
 	int interest = _economy.interest_rate * 54;
 
 	FOR_ALL_PLAYERS(p) {

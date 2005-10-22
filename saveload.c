@@ -1111,11 +1111,11 @@ static uint ReferenceToInt(const void *obj, SLRefType rt)
 
 	switch (rt) {
 		case REF_VEHICLE_OLD: // Old vehicles we save as new onces
-		case REF_VEHICLE: return ((Vehicle *)obj)->index + 1;
-		case REF_STATION: return ((Station *)obj)->index + 1;
-		case REF_TOWN:    return ((Town *)obj)->index + 1;
-		case REF_ORDER:   return ((Order *)obj)->index + 1;
-		case REF_ROADSTOPS: return ((RoadStop *)obj)->index + 1;
+		case REF_VEHICLE:   return ((const  Vehicle*)obj)->index + 1;
+		case REF_STATION:   return ((const  Station*)obj)->index + 1;
+		case REF_TOWN:      return ((const     Town*)obj)->index + 1;
+		case REF_ORDER:     return ((const    Order*)obj)->index + 1;
+		case REF_ROADSTOPS: return ((const RoadStop*)obj)->index + 1;
 		default: NOT_REACHED();
 	}
 

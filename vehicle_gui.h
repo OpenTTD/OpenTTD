@@ -47,9 +47,9 @@ typedef struct Sorting {
 extern Sorting _sorting;
 
 enum {
-  PLY_WND_PRC__OFFSET_TOP_WIDGET	= 26,
-	PLY_WND_PRC__SIZE_OF_ROW_SMALL	= 26,
-  PLY_WND_PRC__SIZE_OF_ROW_BIG		= 36,
+	PLY_WND_PRC__OFFSET_TOP_WIDGET = 26,
+	PLY_WND_PRC__SIZE_OF_ROW_SMALL = 26,
+	PLY_WND_PRC__SIZE_OF_ROW_BIG   = 36,
 };
 
 void ShowReplaceVehicleWindow(byte vehicletype);

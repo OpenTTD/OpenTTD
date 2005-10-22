@@ -12,4 +12,3 @@
 extern const HalMusicDriver _qtime_music_driver;
 
 #endif /* !MUSIC_MACOSX_QUICKTIME_H */
-

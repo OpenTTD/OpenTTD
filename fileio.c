@@ -180,5 +180,3 @@ void FioOpenFile(int slot, const char *filename)
 	_fio.handles[slot] = f;
 	FioSeekToFile(slot << 24);
 }
-
-

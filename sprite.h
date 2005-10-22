@@ -19,7 +19,7 @@ typedef struct DrawTileSeqStruct {
 
 typedef struct DrawTileSprites {
 	SpriteID ground_sprite;
-	DrawTileSeqStruct const *seq;
+	const DrawTileSeqStruct* seq;
 } DrawTileSprites;
 
 // Iterate through all DrawTileSeqStructs in DrawTileSprites.

@@ -39,14 +39,14 @@ static TextMessage _text_message_list[MAX_CHAT_MESSAGES];
 TileIndex _animated_tile_list[256];
 
 
-int _textmessage_width = 0;
-bool _textmessage_dirty = true;
-bool _textmessage_visible = false;
+static int _textmessage_width = 0;
+static bool _textmessage_dirty = true;
+static bool _textmessage_visible = false;
 
-const int _textmessage_box_left = 10; // Pixels from left
-const int _textmessage_box_y = 150;  // Height of box
-const int _textmessage_box_bottom = 30; // Pixels from bottom
-const int _textmessage_box_max_width = 400; // Max width of box
+static const int _textmessage_box_left = 10; // Pixels from left
+static const int _textmessage_box_y = 150;  // Height of box
+static const int _textmessage_box_bottom = 30; // Pixels from bottom
+static const int _textmessage_box_max_width = 400; // Max width of box
 
 static Pixel _textmessage_backup[150 * 400]; // (y * max_width)
 
@@ -379,5 +379,3 @@ static void SaveLoad_ANIT(void)
 const ChunkHandler _animated_tile_chunk_handlers[] = {
 	{ 'ANIT', SaveLoad_ANIT, SaveLoad_ANIT, CH_RIFF | CH_LAST},
 };
-
-

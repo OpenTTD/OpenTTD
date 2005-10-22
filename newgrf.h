@@ -46,4 +46,3 @@ extern GRFFile *_first_grffile;
 void LoadNewGRF(uint load_index, uint file_index);
 
 #endif /* NEWGRF_H */
-

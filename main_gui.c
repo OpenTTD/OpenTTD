@@ -71,7 +71,7 @@ void HandleOnEditText(WindowEvent *e)
 		DoCommandP(0, id, 0, NULL, CMD_RENAME_SIGN | CMD_MSG(STR_280C_CAN_T_CHANGE_SIGN_NAME));
 		break;
 	case 1: /* Rename a waypoint */
-		if (*b == 0) return;
+		if (*b == '\0') return;
 		DoCommandP(0, id, 0, NULL, CMD_RENAME_WAYPOINT | CMD_MSG(STR_CANT_CHANGE_WAYPOINT_NAME));
 		break;
 #ifdef ENABLE_NETWORK
@@ -944,7 +944,7 @@ static void ToolbarZoomOutClick(Window *w)
 
 static void ToolbarBuildRailClick(Window *w)
 {
-	Player *p = GetPlayer(_local_player);
+	const Player* p = GetPlayer(_local_player);
 	Window *w2;
 	w2 = PopupMainToolbMenu(w, 457, 19, STR_1015_RAILROAD_CONSTRUCTION, RAILTYPE_END, ~p->avail_railtypes);
 	WP(w2,menu_d).sel_index = _last_built_railtype;

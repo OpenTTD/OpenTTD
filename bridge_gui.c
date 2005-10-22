@@ -68,7 +68,7 @@ static void BuildBridgeWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_CLICK:
-	 if (e->click.widget == 2) {
+		if (e->click.widget == 2) {
 			uint ind = ((int)e->click.pt.y - 14) / 22;
 			if (ind < 4 && (ind += w->vscroll.pos) < _bridgedata.count)
 				BuildBridge(w, ind);
@@ -126,14 +126,13 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, byte bridge_type)
 	errmsg = INVALID_STRING_ID;
 
 	// only query bridge building possibility once, result is the same for all bridges!
-	// returns CMD_ERROR on failure, and priCe on success
+	// returns CMD_ERROR on failure, and price on success
 	ret = DoCommandByTile(end, start, (bridge_type << 8), DC_AUTO | DC_QUERY_COST, CMD_BUILD_BRIDGE);
 
 	if (ret == CMD_ERROR) {
 		errmsg = _error_message;
-	}
-	// check which bridges can be built
-	else {
+	} else {
+		// check which bridges can be built
 		int bridge_len;			// length of the middle parts of the bridge
 		int tot_bridgedata_len;	// total length of bridge
 
@@ -144,7 +143,6 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, byte bridge_type)
 		tot_bridgedata_len = CalcBridgeLenCostFactor(tot_bridgedata_len);
 
 		for (bridge_type = 0; bridge_type != MAX_BRIDGES; bridge_type++) {	// loop for all bridgetypes
-
 			if (CheckBridge_Stuff(bridge_type, bridge_len)) {
 				const Bridge *b = &_bridge[bridge_type];
 				// bridge is accepted, add to list

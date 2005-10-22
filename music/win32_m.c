@@ -44,7 +44,8 @@ static void Win32MidiSetVolume(byte vol)
 	SetEvent(_midi.wait_obj);
 }
 
-static MCIERROR CDECL MidiSendCommand(const char *cmd, ...) {
+static MCIERROR CDECL MidiSendCommand(const char* cmd, ...)
+{
 	va_list va;
 	char buf[512];
 

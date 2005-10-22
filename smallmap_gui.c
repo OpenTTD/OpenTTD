@@ -968,9 +968,9 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 			WP(w2, vp_d).scrollpos_y =  y - (w2->viewport->virtual_height - w->viewport->virtual_height) / 2;
 		} break;
 		case 8: { /* inverse location button (move this view to same spot as main view) 'Copy Location' */
-			const Window *w2 = FindWindowById(WC_MAIN_WINDOW, 0);
-			int x = WP(w2, vp_d).scrollpos_x;
-			int y = WP(w2, vp_d).scrollpos_y;
+			const Window* w2 = FindWindowById(WC_MAIN_WINDOW, 0);
+			int x = WP(w2, const vp_d).scrollpos_x;
+			int y = WP(w2, const vp_d).scrollpos_y;
 
 			WP(w, vp_d).scrollpos_x =  x + (w2->viewport->virtual_width -  w->viewport->virtual_width) / 2;
 			WP(w, vp_d).scrollpos_y =  y + (w2->viewport->virtual_height - w->viewport->virtual_height) / 2;

@@ -256,14 +256,13 @@ do_change_service_int:
 			DeleteWindow(w);
 		break;
 
-	case WE_ON_EDIT_TEXT: {
+	case WE_ON_EDIT_TEXT:
 		if (e->edittext.str[0] != '\0') {
 			_cmd_text = e->edittext.str;
 			DoCommandP(0, w->window_number, 0, NULL,
 				CMD_NAME_VEHICLE | CMD_MSG(STR_9832_CAN_T_NAME_SHIP));
 		}
-	} break;
-
+		break;
 	}
 }
 
@@ -406,13 +405,13 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 
-	case WE_ON_EDIT_TEXT: {
+	case WE_ON_EDIT_TEXT:
 		if (e->edittext.str[0] != '\0') {
 			_cmd_text = e->edittext.str;
 			DoCommandP(0, WP(w, buildtrain_d).rename_engine, 0, NULL,
 				CMD_RENAME_ENGINE | CMD_MSG(STR_9839_CAN_T_RENAME_SHIP_TYPE));
 		}
-	} break;
+		break;
 
 	case WE_RESIZE:
 		w->vscroll.cap += e->sizing.diff.y / 24;

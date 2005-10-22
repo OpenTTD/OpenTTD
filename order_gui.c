@@ -18,9 +18,9 @@
 #include "depot.h"
 #include "waypoint.h"
 
-static int OrderGetSel(Window *w)
+static int OrderGetSel(const Window* w)
 {
-	Vehicle *v = GetVehicle(w->window_number);
+	const Vehicle* v = GetVehicle(w->window_number);
 	int num = WP(w,order_d).sel;
 
 	if (num < 0 || num > v->num_orders)
@@ -113,7 +113,6 @@ static void DrawOrdersWindow(Window *w)
 		SETBIT(w->disabled_state, 8);	/* full load */
 		SETBIT(w->disabled_state, 9);	/* unload */
 		SETBIT(w->disabled_state, 10); /* transfer */
-
 	}
 
 	SetDParam(0, v->string_id);

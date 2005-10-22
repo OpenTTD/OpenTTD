@@ -72,4 +72,3 @@ uint32 RandomMT(void)
 void SeedMT(uint32 seed) {}
 
 #endif /* MERSENNE_TWISTER */
-

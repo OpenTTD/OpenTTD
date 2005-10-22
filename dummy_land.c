@@ -19,7 +19,8 @@ static uint GetSlopeZ_Dummy(const TileInfo* ti)
 	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh) + ti->z;
 }
 
-static uint GetSlopeTileh_Dummy(const TileInfo *ti) {
+static uint GetSlopeTileh_Dummy(const TileInfo* ti)
+{
 	return ti->tileh;
 }
 
@@ -81,4 +82,3 @@ const TileTypeProcs _tile_type_dummy_procs = {
 	NULL,											/* vehicle_leave_tile_proc */
 	GetSlopeTileh_Dummy,			/* get_slope_tileh_proc */
 };
-

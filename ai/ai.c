@@ -118,7 +118,7 @@ int32 AI_DoCommand(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 /**
  * Run 1 tick of the AI. Don't overdo it, keep it realistic.
  */
-void AI_RunTick(byte player)
+static void AI_RunTick(byte player)
 {
 	extern void AiNewDoGameLoop(Player *p);
 

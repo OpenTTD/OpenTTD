@@ -1001,4 +1001,3 @@ void StartupDisasters(void)
 {
 	ResetDisasterDelay();
 }
-

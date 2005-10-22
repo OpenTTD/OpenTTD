@@ -143,4 +143,3 @@ RailType GetTileRailType(TileIndex tile, Trackdir trackdir)
 	}
 	return type;
 }
-

@@ -690,7 +690,6 @@ static const PatchEntry _patches_construction[] = {
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_SMALL_AIRPORTS,		"always_small_airport", &_patches.always_small_airport,			0,  0,  0, NULL},
 	{PE_UINT8,	PF_PLAYERBASED, STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY, "drag_signals_density", &_patches.drag_signals_density, 1, 20,  1, NULL},
 	{PE_BOOL,		0, STR_CONFIG_AUTO_PBS_PLACEMENT, "auto_pbs_placement", &_patches.auto_pbs_placement, 1, 20,  1, NULL},
-
 };
 
 static const PatchEntry _patches_vehicles[] = {
@@ -734,7 +733,6 @@ static const PatchEntry _patches_stations[] = {
 	{PE_UINT8,	0, STR_CONFIG_PATCHES_STATION_SPREAD,		"station_spread", &_patches.station_spread,						4, 64,  1, &InvalidateStationBuildWindow},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_SERVICEATHELIPAD, "service_at_helipad", &_patches.serviceathelipad,					0,  0,  0, NULL},
 	{PE_BOOL, 0, STR_CONFIG_PATCHES_CATCHMENT, "modified_catchment", &_patches.modified_catchment, 0, 0, 0, NULL},
-
 };
 
 static const PatchEntry _patches_economy[] = {

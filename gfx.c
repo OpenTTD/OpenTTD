@@ -115,7 +115,7 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 
 void GfxFillRect(int left, int top, int right, int bottom, int color)
 {
-	DrawPixelInfo *dpi = _cur_dpi;
+	const DrawPixelInfo* dpi = _cur_dpi;
 	Pixel *dst;
 	const int otop = top;
 	const int oleft = left;
@@ -167,7 +167,7 @@ void GfxFillRect(int left, int top, int right, int bottom, int color)
 
 static void GfxSetPixel(int x, int y, int color)
 {
-	DrawPixelInfo *dpi = _cur_dpi;
+	const DrawPixelInfo* dpi = _cur_dpi;
 	if ((x-=dpi->left) < 0 || x>=dpi->width || (y-=dpi->top)<0 || y>=dpi->height)
 		return;
 	dpi->dst_ptr[y * dpi->pitch + x] = color;
@@ -426,7 +426,7 @@ static uint32 FormatStringLinebreaks(char *str, int maxw)
 		}
 
 		num++;
-		str[-1] = 0;
+		str[-1] = '\0';
 	}
 }
 
@@ -1361,7 +1361,7 @@ typedef void (*BlitZoomFunc)(BlitterParams *bp);
 
 static void GfxMainBlitter(const Sprite* sprite, int x, int y, int mode)
 {
-	DrawPixelInfo *dpi = _cur_dpi;
+	const DrawPixelInfo* dpi = _cur_dpi;
 	int start_x, start_y;
 	byte info;
 	BlitterParams bp;
@@ -1871,7 +1871,7 @@ void MarkWholeScreenDirty(void)
 	SetDirtyBlocks(0, 0, _screen.width, _screen.height);
 }
 
-bool FillDrawPixelInfo(DrawPixelInfo *n, DrawPixelInfo *o, int left, int top, int width, int height)
+bool FillDrawPixelInfo(DrawPixelInfo* n, const DrawPixelInfo* o, int left, int top, int width, int height)
 {
 	int t;
 

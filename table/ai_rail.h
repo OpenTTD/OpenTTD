@@ -478,5 +478,3 @@ static const AiDefaultBlockData * const _airport_default_block_data[] = {
 	_airportdata_ai_1, // country airport
 	NULL
 };
-
-

@@ -105,7 +105,7 @@ typedef void OnButtonClick(Window *w);
 static OnButtonClick * const _build_docks_button_proc[] = {
 	BuildDocksClick_Canal,
 	BuildDocksClick_Lock,
-	0,
+	NULL,
 	BuildDocksClick_Demolish,
 	BuildDocksClick_Depot,
 	BuildDocksClick_Dock,
@@ -120,9 +120,9 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 		break;
 
-	case WE_CLICK: {
+	case WE_CLICK:
 		if (e->click.widget - 3 >= 0 && e->click.widget != 5) _build_docks_button_proc[e->click.widget - 3](w);
-	} break;
+		break;
 
 	case WE_KEYPRESS: {
 		switch(e->keypress.keycode) {

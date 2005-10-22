@@ -124,4 +124,3 @@ const RailtypeInfo _railtypes[] = {
 		24,
 	},
 };
-

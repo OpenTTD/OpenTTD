@@ -225,7 +225,7 @@ md_continue_here:;
 }
 
 
-static void ParseResolution(int res[2], char *s)
+static void ParseResolution(int res[2], const char* s)
 {
 	char *t = strchr(s, 'x');
 	if (t == NULL) {

@@ -375,5 +375,3 @@ const HalMusicDriver _qtime_music_driver = {
 	SongIsPlaying,
 	SetVolume,
 };
-
-

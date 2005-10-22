@@ -486,7 +486,7 @@ static char *MakeScreenshotName(const char *ext)
 	if (_game_mode == GM_EDITOR || _local_player == OWNER_SPECTATOR) {
 		sprintf(_screenshot_name, "screenshot");
 	} else {
-		Player *p = &_players[_local_player];
+		const Player* p = GetPlayer(_local_player);
 		SetDParam(0, p->name_1);
 		SetDParam(1, p->name_2);
 		SetDParam(2, _date);

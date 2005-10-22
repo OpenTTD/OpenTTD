@@ -487,13 +487,13 @@ static void NewRoadVehWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 
-	case WE_ON_EDIT_TEXT: {
+	case WE_ON_EDIT_TEXT:
 		if (e->edittext.str[0] != '\0') {
 			_cmd_text = e->edittext.str;
 			DoCommandP(0, WP(w, buildtrain_d).rename_engine, 0, NULL,
 				CMD_RENAME_ENGINE | CMD_MSG(STR_9037_CAN_T_RENAME_ROAD_VEHICLE));
 		}
-	} break;
+		break;
 
 	case WE_RESIZE: {
 		if (e->sizing.diff.y == 0)

@@ -3222,4 +3222,3 @@ const ChunkHandler _station_chunk_handlers[] = {
 	{ 'STNS', Save_STNS,      Load_STNS,      CH_ARRAY },
 	{ 'ROAD', Save_ROADSTOP,  Load_ROADSTOP,  CH_ARRAY | CH_LAST},
 };
-

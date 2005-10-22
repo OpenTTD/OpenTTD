@@ -29,8 +29,6 @@ typedef struct Tile {
 
 extern Tile* _m;
 
-void InitMap(uint log_x, uint log_y);
-
 void AllocateMap(uint size_x, uint size_y);
 
 // binary logarithm of the map size, try to avoid using this one

@@ -39,7 +39,6 @@ void AllocateMap(uint size_x, uint size_y)
 	_map_size = size_x * size_y;
 	_map_tile_mask = _map_size - 1;
 
-	// free/malloc uses less memory than realloc.
 	free(_m);
 	_m = malloc(_map_size * sizeof(*_m));
 
@@ -111,9 +110,8 @@ uint ScaleByMapSize1D(uint n)
 //  the result will be tile + TileDiffXY(addx, addy)
 uint TileAddWrap(TileIndex tile, int addx, int addy)
 {
-	uint x, y;
-	x = TileX(tile) + addx;
-	y = TileY(tile) + addy;
+	uint x = TileX(tile) + addx;
+	uint y = TileY(tile) + addy;
 
 	// Are we about to wrap?
 	if (x < MapMaxX() && y < MapMaxY())
@@ -170,4 +168,3 @@ uint DistanceFromEdge(TileIndex tile)
 	const uint minh = xh < yh ? xh : yh;
 	return minl < minh ? minl : minh;
 }
-

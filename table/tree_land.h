@@ -221,4 +221,3 @@ static const PalSpriteID _tree_layout_sprite[164+(79-48+1)][4] = {
 };
 
 #endif /* TREE_LAND_H */
-

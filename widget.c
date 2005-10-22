@@ -159,7 +159,7 @@ int GetWidgetFromPos(const Window *w, int x, int y)
 void DrawWindowWidgets(const Window *w)
 {
 	const Widget *wi;
-	DrawPixelInfo *dpi = _cur_dpi;
+	const DrawPixelInfo* dpi = _cur_dpi;
 	Rect r;
 	uint32 cur_click, cur_disabled, cur_hidden;
 

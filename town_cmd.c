@@ -1561,7 +1561,7 @@ static void TownActionAdvertise(Town *t, int action)
 
 static void TownActionRoadRebuild(Town *t, int action)
 {
-	Player *p;
+	const Player* p;
 
 	t->road_build_months = 6;
 

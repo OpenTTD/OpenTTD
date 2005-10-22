@@ -165,4 +165,3 @@ static const SpriteID _slopes_spriteindexes_3[] = {
  SPR_SLOPES_BASE, SPR_SLOPES_BASE+73,
  0xffff,
 };
-

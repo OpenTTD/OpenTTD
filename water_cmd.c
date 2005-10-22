@@ -744,4 +744,3 @@ const TileTypeProcs _tile_type_water_procs = {
 	NULL,											/* vehicle_leave_tile_proc */
 	GetSlopeTileh_Water,			/* get_slope_tileh_proc */
 };
-

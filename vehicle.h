@@ -305,7 +305,6 @@ bool UpdateSignalsOnSegment(TileIndex tile, byte direction);
 void SetSignalsOnBothDir(TileIndex tile, byte track);
 
 Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y);
-//uint GetVehicleWeight(Vehicle *v);
 
 void DecreaseVehicleValue(Vehicle *v);
 void CheckVehicleBreakdown(Vehicle *v);
@@ -395,9 +394,7 @@ static inline bool IsValidVehicle(const Vehicle *v)
  */
 static inline bool IsVehicleIndex(uint index)
 {
-	if (index < GetVehiclePoolSize()) return true;
-
-	return false;
+	return index < GetVehiclePoolSize();
 }
 
 /* Returns order 'index' of a vehicle or NULL when it doesn't exists */
@@ -447,9 +444,6 @@ VARDEF VehicleID _new_ship_id;
 VARDEF VehicleID _new_roadveh_id;
 VARDEF uint16 _aircraft_refit_capacity;
 VARDEF byte _cmd_build_rail_veh_score;
-
-// for each player, for each vehicle type, keep a list of the vehicles.
-//VARDEF Vehicle *_vehicle_arr[8][4];
 
 #define INVALID_VEHICLE 0xFFFF
 #define INVALID_ENGINE 0xFFFF

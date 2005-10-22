@@ -60,4 +60,3 @@ static const SpriteID _clear_land_sprites_3[8] = {
 	0x11B3,
 	0x11C6,
 };
-

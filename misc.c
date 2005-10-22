@@ -4,6 +4,7 @@
 #include "openttd.h"
 #include "currency.h"
 #include "functions.h"
+#include "news.h"
 #include "player.h"
 #include "string.h"
 #include "table/strings.h"
@@ -19,7 +20,6 @@
 #include "variables.h"
 
 extern void StartupEconomy(void);
-extern void InitNewsItemStructs(void);
 
 char _name_array[512][32];
 

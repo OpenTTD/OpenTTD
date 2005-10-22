@@ -1283,13 +1283,13 @@ do_change_service_int:
 			DeleteWindow(w);
 		break;
 
-	case WE_ON_EDIT_TEXT: {
+	case WE_ON_EDIT_TEXT:
 		if (e->edittext.str[0] != '\0') {
 			_cmd_text = e->edittext.str;
 			DoCommandP(0, w->window_number, 0, NULL,
 				CMD_NAME_VEHICLE | CMD_MSG(STR_8866_CAN_T_NAME_TRAIN));
 		}
-	} break;
+		break;
 	}
 }
 

@@ -43,10 +43,10 @@ typedef enum RailTileSubtypes {
 
 typedef enum SignalTypes {
 	/* Stored in m4[0..1] for MP_RAILWAY */
-  SIGTYPE_NORMAL  = 0,        // normal signal
-  SIGTYPE_ENTRY   = 1,        // presignal block entry
-  SIGTYPE_EXIT    = 2,        // presignal block exit
-  SIGTYPE_COMBO   = 3,        // presignal inter-block
+	SIGTYPE_NORMAL  = 0,        // normal signal
+	SIGTYPE_ENTRY   = 1,        // presignal block entry
+	SIGTYPE_EXIT    = 2,        // presignal block exit
+	SIGTYPE_COMBO   = 3,        // presignal inter-block
 	SIGTYPE_PBS     = 4,        // pbs signal
 	SIGTYPE_END,
 	SIGTYPE_MASK    = 7,
@@ -68,66 +68,66 @@ enum {
 /** These are used to specify a single track. Can be translated to a trackbit
  * with TrackToTrackbit */
 typedef enum Tracks {
-  TRACK_DIAG1 = 0,
-  TRACK_DIAG2 = 1,
-  TRACK_UPPER = 2,
-  TRACK_LOWER = 3,
-  TRACK_LEFT  = 4,
-  TRACK_RIGHT = 5,
-  TRACK_END,
-  INVALID_TRACK = 0xFF,
+	TRACK_DIAG1 = 0,
+	TRACK_DIAG2 = 1,
+	TRACK_UPPER = 2,
+	TRACK_LOWER = 3,
+	TRACK_LEFT  = 4,
+	TRACK_RIGHT = 5,
+	TRACK_END,
+	INVALID_TRACK = 0xFF,
 } Track;
 
 /** These are the bitfield variants of the above */
 typedef enum TrackBits {
-  TRACK_BIT_DIAG1 = 1,  // 0
-  TRACK_BIT_DIAG2 = 2,  // 1
-  TRACK_BIT_UPPER = 4,  // 2
-  TRACK_BIT_LOWER = 8,  // 3
-  TRACK_BIT_LEFT  = 16, // 4
-  TRACK_BIT_RIGHT = 32, // 5
+	TRACK_BIT_DIAG1 = 1,  // 0
+	TRACK_BIT_DIAG2 = 2,  // 1
+	TRACK_BIT_UPPER = 4,  // 2
+	TRACK_BIT_LOWER = 8,  // 3
+	TRACK_BIT_LEFT  = 16, // 4
+	TRACK_BIT_RIGHT = 32, // 5
 	TRACK_BIT_MASK  = 0x3F,
 } TrackBits;
 
 /** These are a combination of tracks and directions. Values are 0-5 in one
 direction (corresponding to the Track enum) and 8-13 in the other direction. */
 typedef enum Trackdirs {
-  TRACKDIR_DIAG1_NE = 0,
-  TRACKDIR_DIAG2_SE = 1,
-  TRACKDIR_UPPER_E  = 2,
-  TRACKDIR_LOWER_E  = 3,
-  TRACKDIR_LEFT_S   = 4,
-  TRACKDIR_RIGHT_S  = 5,
+	TRACKDIR_DIAG1_NE = 0,
+	TRACKDIR_DIAG2_SE = 1,
+	TRACKDIR_UPPER_E  = 2,
+	TRACKDIR_LOWER_E  = 3,
+	TRACKDIR_LEFT_S   = 4,
+	TRACKDIR_RIGHT_S  = 5,
 	/* Note the two missing values here. This enables trackdir -> track
 	 * conversion by doing (trackdir & 7) */
-  TRACKDIR_DIAG1_SW = 8,
-  TRACKDIR_DIAG2_NW = 9,
-  TRACKDIR_UPPER_W  = 10,
-  TRACKDIR_LOWER_W  = 11,
-  TRACKDIR_LEFT_N   = 12,
-  TRACKDIR_RIGHT_N  = 13,
-  TRACKDIR_END,
-  INVALID_TRACKDIR  = 0xFF,
+	TRACKDIR_DIAG1_SW = 8,
+	TRACKDIR_DIAG2_NW = 9,
+	TRACKDIR_UPPER_W  = 10,
+	TRACKDIR_LOWER_W  = 11,
+	TRACKDIR_LEFT_N   = 12,
+	TRACKDIR_RIGHT_N  = 13,
+	TRACKDIR_END,
+	INVALID_TRACKDIR  = 0xFF,
 } Trackdir;
 
 /** These are a combination of tracks and directions. Values are 0-5 in one
 direction (corresponding to the Track enum) and 8-13 in the other direction. */
 typedef enum TrackdirBits {
-  TRACKDIR_BIT_DIAG1_NE = 0x1,
-  TRACKDIR_BIT_DIAG2_SE = 0x2,
-  TRACKDIR_BIT_UPPER_E  = 0x4,
-  TRACKDIR_BIT_LOWER_E  = 0x8,
-  TRACKDIR_BIT_LEFT_S   = 0x10,
-  TRACKDIR_BIT_RIGHT_S  = 0x20,
+	TRACKDIR_BIT_DIAG1_NE = 0x1,
+	TRACKDIR_BIT_DIAG2_SE = 0x2,
+	TRACKDIR_BIT_UPPER_E  = 0x4,
+	TRACKDIR_BIT_LOWER_E  = 0x8,
+	TRACKDIR_BIT_LEFT_S   = 0x10,
+	TRACKDIR_BIT_RIGHT_S  = 0x20,
 	/* Again, note the two missing values here. This enables trackdir -> track conversion by doing (trackdir & 0xFF) */
-  TRACKDIR_BIT_DIAG1_SW = 0x0100,
-  TRACKDIR_BIT_DIAG2_NW = 0x0200,
-  TRACKDIR_BIT_UPPER_W  = 0x0400,
-  TRACKDIR_BIT_LOWER_W  = 0x0800,
-  TRACKDIR_BIT_LEFT_N   = 0x1000,
-  TRACKDIR_BIT_RIGHT_N  = 0x2000,
+	TRACKDIR_BIT_DIAG1_SW = 0x0100,
+	TRACKDIR_BIT_DIAG2_NW = 0x0200,
+	TRACKDIR_BIT_UPPER_W  = 0x0400,
+	TRACKDIR_BIT_LOWER_W  = 0x0800,
+	TRACKDIR_BIT_LEFT_N   = 0x1000,
+	TRACKDIR_BIT_RIGHT_N  = 0x2000,
 	TRACKDIR_BIT_MASK			= 0x3F3F,
-  INVALID_TRACKDIR_BIT  = 0xFFFF,
+	INVALID_TRACKDIR_BIT  = 0xFFFF,
 } TrackdirBits;
 
 /** These are states in which a signal can be. Currently these are only two, so
@@ -270,7 +270,7 @@ static inline byte SignalOnTrack(Track track) {
 static inline RailTileType GetRailTileType(TileIndex tile)
 {
 	assert(IsTileType(tile, MP_RAILWAY));
-	return (_m[tile].m5 & RAIL_TILE_TYPE_MASK);
+	return _m[tile].m5 & RAIL_TILE_TYPE_MASK;
 }
 
 /**
@@ -598,4 +598,3 @@ void DrawTrackBits(TileInfo *ti, TrackBits track, bool earth, bool snow, bool fl
 void DrawTrainDepotSprite(int x, int y, int image, RailType railtype);
 void DrawDefaultWaypointSprite(int x, int y, RailType railtype);
 #endif /* RAIL_H */
-

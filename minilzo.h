@@ -99,4 +99,3 @@ lzo1x_decompress_safe   ( const lzo_byte *src, lzo_uint  src_len,
 #endif
 
 #endif /* MINILZO_H */
-

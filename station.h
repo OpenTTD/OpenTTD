@@ -315,7 +315,8 @@ static inline bool IsBuoy(const Station* st)
 	return st->had_vehicle_of_type & HVOT_BUOY; /* XXX: We should really ditch this ugly coding and switch to something sane... */
 }
 
-static inline bool IsBuoyTile(TileIndex tile) {
+static inline bool IsBuoyTile(TileIndex tile)
+{
 	return IsTileType(tile, MP_STATION) && _m[tile].m5 == 0x52;
 }
 

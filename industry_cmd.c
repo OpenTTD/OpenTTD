@@ -403,7 +403,8 @@ static uint GetSlopeZ_Industry(const TileInfo* ti)
 	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh) + ti->z;
 }
 
-static uint GetSlopeTileh_Industry(const TileInfo *ti) {
+static uint GetSlopeTileh_Industry(const TileInfo* ti)
+{
 	return 0;
 }
 
@@ -1008,7 +1009,7 @@ static void PlantFarmField(TileIndex tile)
 	SetupFarmFieldFence(tile + TileDiffXY(0, size_y - 1), size_x, type, 0);
 }
 
-static void MaybePlantFarmField(Industry *i)
+static void MaybePlantFarmField(const Industry* i)
 {
 	TileIndex tile;
 
@@ -1402,7 +1403,7 @@ do_clear:
 
 static bool CheckIfTooCloseToIndustry(TileIndex tile, int type)
 {
-	Industry *i;
+	const Industry* i;
 	const IndustrySpec *spec;
 	spec = &_industry_spec[type];
 
@@ -2022,4 +2023,3 @@ static void Load_INDY(void)
 const ChunkHandler _industry_chunk_handlers[] = {
 	{ 'INDY', Save_INDY, Load_INDY, CH_ARRAY | CH_LAST},
 };
-

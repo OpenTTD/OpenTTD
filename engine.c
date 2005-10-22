@@ -632,7 +632,8 @@ int GetCustomEngineSprite(EngineID engine, const Vehicle *v, byte direction)
  * @param v The wagon to check
  * @return true if it is using an override, false otherwise
  */
-bool UsesWagonOverride(const Vehicle *v) {
+bool UsesWagonOverride(const Vehicle* v)
+{
 	assert(v->type == VEH_Train);
 	return GetWagonOverrideSpriteSet(v->engine_type, v->u.rail.first_engine) != NULL;
 }

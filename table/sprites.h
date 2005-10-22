@@ -37,7 +37,7 @@
 
 
 enum Sprites {
-	SPR_SELECT_TILE	 = 752,
+	SPR_SELECT_TILE  = 752,
 	SPR_DOT          = 774, // corner marker for lower/raise land
 	SPR_DOT_SMALL    = 4078,
 	SPR_WHITE_POINT  = 4079,
@@ -48,10 +48,10 @@ enum Sprites {
 	SPR_ASCII_SPACE_BIG   = 450,
 
 	/* Extra graphic spritenumbers */
-	SPR_CANALS_BASE		= 5382,
-	SPR_SLOPES_BASE		= SPR_CANALS_BASE + 70,
-	SPR_AUTORAIL_BASE		= SPR_SLOPES_BASE + 78,
-	SPR_OPENTTD_BASE	= SPR_AUTORAIL_BASE + 55, // can be lowered once autorail.grf is finalized
+	SPR_CANALS_BASE   = 5382,
+	SPR_SLOPES_BASE   = SPR_CANALS_BASE + 70,
+	SPR_AUTORAIL_BASE = SPR_SLOPES_BASE + 78,
+	SPR_OPENTTD_BASE  = SPR_AUTORAIL_BASE + 55, // can be lowered once autorail.grf is finalized
 
 	SPR_BLOT = SPR_OPENTTD_BASE + 32, // colored circle (mainly used as vehicle profit marker and for sever compatibility)
 
@@ -87,7 +87,7 @@ enum Sprites {
 	SPR_SHADOW_CELL = 1004,
 
 	/* Sliced view shadow cells */
-	/* Maybe we have differen ones in the future */
+	/* Maybe we have different ones in the future */
 	SPR_MAX_SLICE = SPR_OPENTTD_BASE + 71,
 	SPR_MIN_SLICE = SPR_OPENTTD_BASE + 71,
 
@@ -133,11 +133,11 @@ enum Sprites {
 	SPR_MGLV_SNOW_OFFSET             = 26,
 
 	SPR_RAIL_SINGLE_Y           = 1005,
-  SPR_RAIL_SINGLE_X           = 1006,
-  SPR_RAIL_SINGLE_NORTH       = 1007,
-  SPR_RAIL_SINGLE_SOUTH       = 1008,
-  SPR_RAIL_SINGLE_EAST        = 1009,
-  SPR_RAIL_SINGLE_WEST        = 1010,
+	SPR_RAIL_SINGLE_X           = 1006,
+	SPR_RAIL_SINGLE_NORTH       = 1007,
+	SPR_RAIL_SINGLE_SOUTH       = 1008,
+	SPR_RAIL_SINGLE_EAST        = 1009,
+	SPR_RAIL_SINGLE_WEST        = 1010,
 	SPR_RAIL_TRACK_Y						= 1011,
 	SPR_RAIL_TRACK_X						= 1012,
 	SPR_RAIL_TRACK_BASE         = 1018,
@@ -169,23 +169,23 @@ enum Sprites {
 	SPR_RAIL_ROOF_GLASS_X_TILE_B			= 1085,	//second half of the roof glass
 	SPR_RAIL_ROOF_GLASS_Y_TILE_B			= 1086,
 	SPR_MONO_SINGLE_Y                 = 1087,
-  SPR_MONO_SINGLE_X                 = 1088,
-  SPR_MONO_SINGLE_NORTH             = 1089,
-  SPR_MONO_SINGLE_SOUTH             = 1090,
-  SPR_MONO_SINGLE_EAST              = 1091,
-  SPR_MONO_SINGLE_WEST              = 1092,
+	SPR_MONO_SINGLE_X                 = 1088,
+	SPR_MONO_SINGLE_NORTH             = 1089,
+	SPR_MONO_SINGLE_SOUTH             = 1090,
+	SPR_MONO_SINGLE_EAST              = 1091,
+	SPR_MONO_SINGLE_WEST              = 1092,
 	SPR_MONO_TRACK_Y                  = 1093,
 	SPR_MONO_TRACK_BASE               = 1100,
-  SPR_MONO_TRACK_N_S                = 1117,
+	SPR_MONO_TRACK_N_S                = 1117,
 	SPR_MGLV_SINGLE_Y                 = 1169,
-  SPR_MGLV_SINGLE_X                 = 1170,
-  SPR_MGLV_SINGLE_NORTH             = 1171,
-  SPR_MGLV_SINGLE_SOUTH             = 1172,
-  SPR_MGLV_SINGLE_EAST              = 1173,
-  SPR_MGLV_SINGLE_WEST              = 1174,
+	SPR_MGLV_SINGLE_X                 = 1170,
+	SPR_MGLV_SINGLE_NORTH             = 1171,
+	SPR_MGLV_SINGLE_SOUTH             = 1172,
+	SPR_MGLV_SINGLE_EAST              = 1173,
+	SPR_MGLV_SINGLE_WEST              = 1174,
 	SPR_MGLV_TRACK_Y                  = 1175,
 	SPR_MGLV_TRACK_BASE               = 1182,
-  SPR_MGLV_TRACK_N_S                = 1199,
+	SPR_MGLV_TRACK_N_S                = 1199,
 	SPR_WAYPOINT_X_1						= SPR_OPENTTD_BASE + 18,
 	SPR_WAYPOINT_X_2						= SPR_OPENTTD_BASE + 19,
 	SPR_WAYPOINT_Y_1						= SPR_OPENTTD_BASE + 20,
@@ -425,7 +425,7 @@ enum Sprites {
 	SPR_CROSSING_OFF_X_MONO   = 1382,
 	SPR_CROSSING_OFF_X_MAGLEV = 1394,
 
-		/* bridge type sprites */
+	/* bridge type sprites */
 
 	/* Wooden bridge (type 0) */
 	SPR_BTWDN_RAIL_Y_REAR				= 2545,

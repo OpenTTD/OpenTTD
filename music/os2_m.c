@@ -75,4 +75,3 @@ const HalMusicDriver _os2_music_driver = {
 	OS2MidiIsSongPlaying,
 	OS2MidiSetVolume,
 };
-

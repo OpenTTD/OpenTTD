@@ -1263,4 +1263,3 @@ static void Load_PLYR(void)
 const ChunkHandler _player_chunk_handlers[] = {
 	{ 'PLYR', Save_PLYR, Load_PLYR, CH_ARRAY | CH_LAST},
 };
-
