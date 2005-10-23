@@ -798,7 +798,7 @@ static Vehicle *RoadVehFindCloseTo(Vehicle *v, int x, int y, byte dir)
 
 static void RoadVehArrivesAt(Vehicle *v, Station *st)
 {
-	if (v->engine_type < 123) {
+	if (v->cargo_type == CT_PASSENGERS) {
 		/* Check if station was ever visited before */
 		if (!(st->had_vehicle_of_type & HVOT_BUS)) {
 			uint32 flags;
