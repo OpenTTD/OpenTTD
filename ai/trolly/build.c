@@ -229,7 +229,7 @@ int AiNew_PickVehicle(Player *p)
 		count = _cargoc.ai_roadveh_count[p->ainew.cargo];
 
 		// Let's check it backwards.. we simply want to best engine available..
-		for (i=start+count-1;i>=start;i--) {
+		for (i = start + count - 1; i >= start; i--) {
 			// Is it availiable?
 			// Also, check if the reliability of the vehicle is above the AI_VEHICLE_MIN_RELIABILTY
 			if (!HASBIT(GetEngine(i)->player_avail, _current_player) || GetEngine(i)->reliability * 100 < AI_VEHICLE_MIN_RELIABILTY << 16) continue;
@@ -238,7 +238,7 @@ int AiNew_PickVehicle(Player *p)
 			if (!CmdFailed(ret)) break;
 		}
 		// We did not find a vehicle :(
-		if (CmdFailed(ret)) { return -1; }
+		if (CmdFailed(ret)) return -1;
 		return i;
 	}
 }

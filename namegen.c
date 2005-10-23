@@ -642,7 +642,7 @@ uint32 GetOldTownName(uint32 townnameparts, byte old_town_name_type)
 			/*	NUM_SILLY_1	-	lower 16 bits
 			*	NUM_SILLY_2	-	upper 16 bits without leading 1 (first 8 bytes)
 			*	1000 0000 2222 2222 0000 0000 1111 1111 */
-			return FIXNUM(townnameparts, lengthof(name_silly_1), 0) | FIXNUM(((townnameparts >> 16)&0xFF), lengthof(name_silly_2), 16);
+			return FIXNUM(townnameparts, lengthof(name_silly_1), 0) | FIXNUM(GB(townnameparts, 16, 8), lengthof(name_silly_2), 16);
 	}
 	return 0;
 }

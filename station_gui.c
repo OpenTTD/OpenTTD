@@ -264,7 +264,7 @@ void ShowPlayerStations(PlayerID player)
 	Window *w;
 
 	w = AllocateWindowDescFront(&_player_stations_desc, player);
-	if (w) {
+	if (w != NULL) {
 		w->caption_color = (byte)w->window_number;
 		w->vscroll.cap = 12;
 		w->resize.step_height = 10;
@@ -500,13 +500,13 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 
-	case WE_ON_EDIT_TEXT: {
+	case WE_ON_EDIT_TEXT:
 		if (e->edittext.str[0] != '\0') {
 			_cmd_text = e->edittext.str;
 			DoCommandP(0, w->window_number, 0, NULL,
 				CMD_RENAME_STATION | CMD_MSG(STR_3031_CAN_T_RENAME_STATION));
 		}
-	} break;
+		break;
 
 	case WE_DESTROY: {
 		WindowNumber wno =
@@ -535,7 +535,7 @@ void ShowStationViewWindow(StationID station)
 	Window *w;
 
 	w = AllocateWindowDescFront(&_station_view_desc, station);
-	if (w) {
+	if (w != NULL) {
 		PlayerID owner = GetStation(w->window_number)->owner;
 		if (owner != OWNER_NONE) w->caption_color = owner;
 		w->vscroll.cap = 5;

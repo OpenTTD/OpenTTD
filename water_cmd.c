@@ -324,14 +324,15 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 		return RemoveShiplift(tile + ToTileIndexDiff(_shiplift_tomiddle_offs[m5 & 0xF]), flags);
 	} else {
 		// ship depot
-		if (flags & DC_AUTO)
-			return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
+		if (flags & DC_AUTO) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
 
-		if (m5 == 0x80 || m5 == 0x82) {}
-		else if (m5 == 0x81) { tile -= TileDiffXY(1, 0); }
-		else if (m5 == 0x83) { tile -= TileDiffXY(0, 1); }
-		else
-			return CMD_ERROR;
+		switch (m5) {
+			case 0x80: break;
+			case 0x81: tile -= TileDiffXY(1, 0); break;
+			case 0x82: break;
+			case 0x83: tile -= TileDiffXY(0, 1); break;
+			default:   return CMD_ERROR;
+		}
 
 		return RemoveShipDepot(tile,flags);
 	}
@@ -580,7 +581,6 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 
 static void FloodVehicle(Vehicle *v)
 {
-	Vehicle *u;
 	if (!(v->vehstatus & VS_CRASHED)) {
 		uint16 pass = 0;
 
@@ -592,9 +592,9 @@ static void FloodVehicle(Vehicle *v)
 			v->vehstatus |= VS_CRASHED;
 			v->u.road.crashed_ctr = 2000;	// max 2220, disappear pretty fast
 			RebuildVehicleLists();
-		}
+		} else if (v->type == VEH_Train) {
+			Vehicle* u;
 
-		else if (v->type == VEH_Train) {
 			v = GetFirstVehicleInChain(v);
 			u = v;
 			if (v->subtype == TS_Front_Engine) pass = 4; // driver
@@ -608,8 +608,9 @@ static void FloodVehicle(Vehicle *v)
 			v = u;
 			v->u.rail.crash_anim_pos = 4000; // max 4440, disappear pretty fast
 			RebuildVehicleLists();
-		} else
+		} else {
 			return;
+		}
 
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
@@ -619,8 +620,8 @@ static void FloodVehicle(Vehicle *v)
 			NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ACCIDENT, 0),
 			v->index,
 			0);
-	CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE); // show cool destruction effects
-	SndPlayVehicleFx(SND_12_EXPLOSION, v); // create sound
+		CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
+		SndPlayVehicleFx(SND_12_EXPLOSION, v);
 	}
 }
 

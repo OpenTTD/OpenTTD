@@ -300,7 +300,7 @@ static Depot *FindClosestRoadDepot(Vehicle *v)
 	TileIndex tile = v->tile;
 	int i;
 
-	if (v->u.road.state == 255) { tile = GetVehicleOutOfTunnelTile(v); }
+	if (v->u.road.state == 255) tile = GetVehicleOutOfTunnelTile(v);
 
 	if (_patches.new_pathfinding_all) {
 		NPFFoundTargetData ftd;
@@ -1034,13 +1034,14 @@ static int RoadFindPathToDest(Vehicle *v, TileIndex tile, int enterdir)
 	}
 
 	if (IsTileType(tile, MP_STREET)) {
-		if (GB(_m[tile].m5, 4, 4) == 2 && IsTileOwner(tile, v->owner))
-			/* Road crossing */
-			bitmask |= _road_veh_fp_ax_or[_m[tile].m5&3];
+		if (GB(_m[tile].m5, 4, 4) == 2 && IsTileOwner(tile, v->owner)) {
+			/* Road depot */
+			bitmask |= _road_veh_fp_ax_or[GB(_m[tile].m5, 0, 2)];
+		}
 	} else if (IsTileType(tile, MP_STATION)) {
 		if (IsTileOwner(tile, OWNER_NONE) || IsTileOwner(tile, v->owner)) {
 			/* Our station */
-			Station *st = GetStation(_m[tile].m2);
+			const Station* st = GetStation(_m[tile].m2);
 			byte val = _m[tile].m5;
 			if (v->cargo_type != CT_PASSENGERS) {
 				if (IS_BYTE_INSIDE(val, 0x43, 0x47) && (_patches.roadveh_queue || st->truck_stops->status&3))

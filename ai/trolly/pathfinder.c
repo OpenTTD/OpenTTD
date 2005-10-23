@@ -506,9 +506,5 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 		}
 	}
 
-	// Res should never be below zero.. if so, make it zero!
-	if (res < 0) { res = 0; }
-
-	// Return our value
-	return res;
+	return (res < 0) ? 0 : res;
 }

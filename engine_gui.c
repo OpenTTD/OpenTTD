@@ -122,7 +122,6 @@ void ShowEnginePreviewWindow(EngineID engine)
 static void DrawTrainEngineInfo(EngineID engine, int x, int y, int maxw)
 {
 	const RailVehicleInfo *rvi = RailVehInfo(engine);
-	int cap;
 	uint multihead = (rvi->flags & RVI_MULTIHEAD) ? 1 : 0;
 
 	SetDParam(0, (_price.build_railvehicle >> 3) * rvi->base_cost >> 5);
@@ -132,11 +131,11 @@ static void DrawTrainEngineInfo(EngineID engine, int x, int y, int maxw)
 
 	SetDParam(4, rvi->running_cost_base * _price.running_rail[rvi->engclass] >> 8 << multihead);
 
-	cap = rvi->capacity;
-	SetDParam(5, STR_8838_N_A);
-	if (cap != 0) {
-		SetDParam(6, cap << multihead);
+	if (rvi->capacity != 0) {
 		SetDParam(5, _cargoc.names_long[rvi->cargo_type]);
+		SetDParam(6, rvi->capacity << multihead);
+	} else {
+		SetDParam(5, STR_8838_N_A);
 	}
 	DrawStringMultiCenter(x, y, STR_885B_COST_WEIGHT_T_SPEED_POWER, maxw);
 }

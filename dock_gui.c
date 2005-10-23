@@ -124,8 +124,8 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 		if (e->click.widget - 3 >= 0 && e->click.widget != 5) _build_docks_button_proc[e->click.widget - 3](w);
 		break;
 
-	case WE_KEYPRESS: {
-		switch(e->keypress.keycode) {
+	case WE_KEYPRESS:
+		switch (e->keypress.keycode) {
 			case '1': BuildDocksClick_Canal(w); break;
 			case '2': BuildDocksClick_Lock(w); break;
 			case '3': BuildDocksClick_Demolish(w); break;
@@ -133,10 +133,9 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 			case '5': BuildDocksClick_Dock(w); break;
 			case '6': BuildDocksClick_Buoy(w); break;
 			case 'l': BuildDocksClick_Landscaping(w); break;
-			default:
-				return;
+			default:  return;
 		}
-	} break;
+		break;
 
 	case WE_PLACE_OBJ:
 		_place_proc(e->place.tile);
@@ -151,8 +150,9 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 		if (e->click.pt.x != -1) {
 			if ((e->place.userdata & 0xF) == VPM_X_AND_Y) { // dragged actions
 				GUIPlaceProcDragXY(e);
-			} else if(e->place.userdata == VPM_X_OR_Y)
+			} else if (e->place.userdata == VPM_X_OR_Y) {
 				DoCommandP(e->place.tile, e->place.starttile, 0, CcBuildCanal, CMD_BUILD_CANAL | CMD_AUTO | CMD_MSG(STR_CANT_BUILD_CANALS));
+			}
 		}
 		break;
 
@@ -161,10 +161,10 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 		SetWindowDirty(w);
 
 		w = FindWindowById(WC_BUILD_STATION, 0);
-		if (w != NULL) WP(w,def_d).close=true;
+		if (w != NULL) WP(w,def_d).close = true;
 
 		w = FindWindowById(WC_BUILD_DEPOT, 0);
-		if (w != NULL) WP(w,def_d).close=true;
+		if (w != NULL) WP(w,def_d).close = true;
 		break;
 
 	case WE_PLACE_PRESIZE: {
@@ -298,7 +298,7 @@ static void UpdateDocksDirection(void)
 
 static void BuildDocksDepotWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT:
 		w->click_state = (1<<3) << _ship_depot_direction;
 		DrawWindowWidgets(w);
@@ -310,7 +310,7 @@ static void BuildDocksDepotWndProc(Window *w, WindowEvent *e)
 		return;
 
 	case WE_CLICK: {
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 3:
 		case 4:
 			_ship_depot_direction = e->click.widget - 3;

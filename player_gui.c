@@ -228,8 +228,8 @@ static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_sti
 	int mode;
 
 	mode = (player != _local_player) * 2 + show_small;
-	w = AllocateWindowDescFront( desc_table[mode], player);
-	if (w) {
+	w = AllocateWindowDescFront(desc_table[mode], player);
+	if (w != NULL) {
 		w->caption_color = w->window_number;
 		WP(w,def_d).data_1 = mode;
 		if (show_stickied) {
@@ -484,28 +484,26 @@ static void DrawCompanyOwnerText(const Player *p)
 {
 	const Player* p2;
 	int num = -1;
-	int amt;
 
 	FOR_ALL_PLAYERS(p2) {
-		if ((amt=GetAmountOwnedBy(p, p2->index)) != 0) {
+		uint amt = GetAmountOwnedBy(p, p2->index);
+		if (amt != 0) {
 			num++;
 
-			SetDParam(num*3+0, amt*25);
-			SetDParam(num*3+1, p2->name_1);
-			SetDParam(num*3+2, p2->name_2);
+			SetDParam(num * 3 + 0, amt * 25);
+			SetDParam(num * 3 + 1, p2->name_1);
+			SetDParam(num * 3 + 2, p2->name_2);
 
-			if (num != 0)
-				break;
+			if (num != 0) break;
 		}
 	}
 
-	if (num >= 0)
-		DrawString(120, 124, STR_707D_OWNED_BY+num, 0);
+	if (num >= 0) DrawString(120, 124, STR_707D_OWNED_BY + num, 0);
 }
 
 static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		const Player* p = GetPlayer(w->window_number);
 		uint32 dis = 0;
@@ -562,10 +560,10 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 3: { /* select face */
 			Window *wf = AllocateWindowDescFront(&_select_player_face_desc, w->window_number);
-			if (wf) {
+			if (wf != NULL) {
 				wf->caption_color = w->window_number;
 				WP(wf,facesel_d).face = GetPlayer(wf->window_number)->face;
 				WP(wf,facesel_d).gender = 0;
@@ -574,15 +572,15 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 
 		case 4: {/* change color */
 			Window *wf = AllocateWindowDescFront(&_select_player_color_desc,w->window_number);
-			if (wf) {
+			if (wf != NULL) {
 				wf->caption_color = wf->window_number;
 				wf->vscroll.cap = 8;
 			}
 		} break;
 
 		case 5: {/* change president name */
-			Player *p = GetPlayer(w->window_number);
-			WP(w,def_d).byte_1 = 0;
+			const Player* p = GetPlayer(w->window_number);
+			WP(w, def_d).byte_1 = 0;
 			SetDParam(0, p->president_name_2);
 			ShowQueryString(p->president_name_1, STR_700B_PRESIDENT_S_NAME, 31, 94, w->window_class, w->window_number);
 		} break;
@@ -649,8 +647,8 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 	case WE_ON_EDIT_TEXT: {
 		char *b = e->edittext.str;
 
-		if (*b == 0 && WP(w,def_d).byte_1 != 2) // empty string is allowed for password
-			return;
+		// empty string is allowed for password
+		if (*b == '\0' && WP(w,def_d).byte_1 != 2) return;
 
 		_cmd_text = b;
 		switch (WP(w,def_d).byte_1) {
@@ -662,7 +660,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 			break;
 		#ifdef ENABLE_NETWORK
 		case 2: /* Change company password */
-			if (*b == 0) *b = '*'; // empty password is a '*' because of console argument
+			if (*b == '\0') *b = '*'; // empty password is a '*' because of console argument
 			NetworkChangeCompanyPassword(1, &b);
 		#endif
 		}
@@ -673,8 +671,8 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 
 
 static const WindowDesc _my_player_company_desc = {
-	-1,-1, 360, 170,
-	WC_COMPANY,0,
+	-1, -1, 360, 170,
+	WC_COMPANY, 0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_my_player_company_widgets,
 	PlayerCompanyWndProc

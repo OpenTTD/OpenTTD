@@ -261,7 +261,7 @@ static void MoveTextEffect(TextEffect *te)
 	if (te->duration < 8) {
 		te->string_id = INVALID_STRING_ID;
 	} else {
-		te->duration-=8;
+		te->duration -= 8;
 		te->y--;
 		te->bottom--;
 	}
@@ -272,9 +272,8 @@ void MoveAllTextEffects(void)
 {
 	TextEffect *te;
 
-	for (te = _text_effect_list; te != endof(_text_effect_list); te++ ) {
-		if (te->string_id != INVALID_STRING_ID)
-			MoveTextEffect(te);
+	for (te = _text_effect_list; te != endof(_text_effect_list); te++) {
+		if (te->string_id != INVALID_STRING_ID) MoveTextEffect(te);
 	}
 }
 
@@ -282,7 +281,7 @@ void InitTextEffects(void)
 {
 	TextEffect *te;
 
-	for (te = _text_effect_list; te != endof(_text_effect_list); te++ ) {
+	for (te = _text_effect_list; te != endof(_text_effect_list); te++) {
 		te->string_id = INVALID_STRING_ID;
 	}
 }
@@ -292,7 +291,7 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 	TextEffect *te;
 
 	if (dpi->zoom < 1) {
-		for (te = _text_effect_list; te != endof(_text_effect_list); te++ ) {
+		for (te = _text_effect_list; te != endof(_text_effect_list); te++) {
 			if (te->string_id == INVALID_STRING_ID)
 				continue;
 
@@ -305,7 +304,7 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 			AddStringToDraw(te->x, te->y, te->string_id, te->params_1, te->params_2, 0);
 		}
 	} else if (dpi->zoom == 1) {
-		for (te = _text_effect_list; te != endof(_text_effect_list); te++ ) {
+		for (te = _text_effect_list; te != endof(_text_effect_list); te++) {
 			if (te->string_id == INVALID_STRING_ID)
 				continue;
 
@@ -323,12 +322,12 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 
 void DeleteAnimatedTile(TileIndex tile)
 {
-	TileIndex *ti;
+	TileIndex* ti;
 
-	for(ti=_animated_tile_list; ti!=endof(_animated_tile_list); ti++) {
+	for (ti = _animated_tile_list; ti != endof(_animated_tile_list); ti++) {
 		if (tile == *ti) {
 			/* remove the hole */
-			memmove(ti, ti+1, endof(_animated_tile_list) - 1 - ti);
+			memmove(ti, ti + 1, endof(_animated_tile_list) - 1 - ti);
 			/* and clear last item */
 			endof(_animated_tile_list)[-1] = 0;
 			MarkTileDirtyByTile(tile);
@@ -339,9 +338,9 @@ void DeleteAnimatedTile(TileIndex tile)
 
 bool AddAnimatedTile(TileIndex tile)
 {
-	TileIndex *ti;
+	TileIndex* ti;
 
-	for(ti=_animated_tile_list; ti!=endof(_animated_tile_list); ti++) {
+	for (ti = _animated_tile_list; ti != endof(_animated_tile_list); ti++) {
 		if (tile == *ti || *ti == 0) {
 			*ti = tile;
 			MarkTileDirtyByTile(tile);
@@ -354,11 +353,10 @@ bool AddAnimatedTile(TileIndex tile)
 
 void AnimateAnimatedTiles(void)
 {
-	TileIndex *ti;
-	TileIndex tile;
+	const TileIndex* ti;
 
-	for(ti=_animated_tile_list; ti!=endof(_animated_tile_list) && (tile=*ti) != 0; ti++) {
-		AnimateTile(tile);
+	for (ti = _animated_tile_list; ti != endof(_animated_tile_list) && *ti != 0; ti++) {
+		AnimateTile(*ti);
 	}
 }
 
@@ -371,8 +369,9 @@ static void SaveLoad_ANIT(void)
 {
 	if (_sl_version < 6) {
 		SlArray(_animated_tile_list, lengthof(_animated_tile_list), SLE_FILE_U16 | SLE_VAR_U32);
-	} else
+	} else {
 		SlArray(_animated_tile_list, lengthof(_animated_tile_list), SLE_UINT32);
+	}
 }
 
 

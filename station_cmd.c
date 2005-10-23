@@ -72,7 +72,7 @@ const byte _airport_size_y[] = {3, 6, 1, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
 void ShowAircraftDepotWindow(TileIndex tile);
 extern void UpdateAirplanesOnNewStation(Station *st);
 
-static void MarkStationDirty(Station *st)
+static void MarkStationDirty(const Station* st)
 {
 	if (st->sign.width_1 != 0) {
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, 1);
@@ -121,16 +121,16 @@ RoadStop * GetRoadStopByTile(TileIndex tile, RoadStopType type)
 
 uint GetNumRoadStops(const Station *st, RoadStopType type)
 {
-	int num = 0;
+	uint num = 0;
 	const RoadStop *rs;
 
 	assert(st != NULL);
-	for ( rs = GetPrimaryRoadStop(st, type); rs != NULL; num++, rs = rs->next);
+	for (rs = GetPrimaryRoadStop(st, type); rs != NULL; rs = rs->next) num++;
 
 	return num;
 }
 
-RoadStop *AllocateRoadStop( void )
+RoadStop *AllocateRoadStop(void)
 {
 	RoadStop *rs;
 
@@ -138,7 +138,7 @@ RoadStop *AllocateRoadStop( void )
 		if (!rs->used) {
 			uint index = rs->index;
 
-			memset(rs, 0, sizeof(RoadStop));
+			memset(rs, 0, sizeof(*rs));
 			rs->index = index;
 
 			return rs;
@@ -211,15 +211,9 @@ TileIndex GetStationTileForVehicle(const Vehicle *v, const Station *st)
 		case VEH_Ship:			return st->dock_tile;
 		case VEH_Road:
 			if (v->cargo_type == CT_PASSENGERS) {
-				if (st->bus_stops != NULL)
-					return st->bus_stops->xy;
-				else
-					return 0;
+				return (st->bus_stops != NULL) ? st->bus_stops->xy : 0;
 			} else {
-				if (st->truck_stops != NULL)
-					return st->truck_stops->xy;
-				else
-					return 0;
+				return (st->truck_stops != NULL) ? st->truck_stops->xy : 0;
 			}
 		default:
 			assert(false);
@@ -249,7 +243,7 @@ static bool CheckStationSpreadOut(Station *st, TileIndex tile, int w, int h)
 		}
 	}
 
-	if (y2-y1 >= _patches.station_spread || x2-x1 >= _patches.station_spread) {
+	if (y2 - y1 >= _patches.station_spread || x2 - x1 >= _patches.station_spread) {
 		_error_message = STR_306C_STATION_TOO_SPREAD_OUT;
 		return false;
 	}
@@ -519,8 +513,8 @@ static uint GetAcceptanceMask(const Station *st)
 static void ShowRejectOrAcceptNews(const Station *st, uint32 items, StringID msg)
 {
 	if (items) {
-		SetDParam(2, items >> 16);
-		SetDParam(1, items & 0xFFFF);
+		SetDParam(2, GB(items, 16, 16));
+		SetDParam(1, GB(items,  0, 16));
 		SetDParam(0, st->index);
 		AddNewsItem(msg + ((items >> 16)?1:0), NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_TILE, NT_ACCEPTANCE, 0), st->xy, 0);
 	}
@@ -1645,8 +1639,8 @@ static const byte _airport_map5_tiles_country[] = {
 
 // City Airport (large)
 static const byte _airport_map5_tiles_town[] = {
-	31, 9, 33, 9, 9, 32,
-	27, 36, 29, 34, 8, 10,
+	31,  9, 33,  9,  9, 32,
+	27, 36, 29, 34,  8, 10,
 	30, 11, 35, 13, 20, 21,
 	51, 12, 14, 17, 19, 28,
 	38, 13, 15, 16, 18, 39,
@@ -1655,23 +1649,23 @@ static const byte _airport_map5_tiles_town[] = {
 
 // Metropolitain Airport (large) - 2 runways
 static const byte _airport_map5_tiles_metropolitan[] = {
-	31, 9, 33, 9, 9, 32,
-	27, 36, 29, 34, 8, 10,
-	30, 11, 35, 13, 20, 21,
- 102,  8,  8,  8,  8, 28,
-	83, 84, 84, 84, 84, 83,
-	26, 23, 23, 23, 23, 26
+	 31,  9, 33,  9,  9, 32,
+	 27, 36, 29, 34,  8, 10,
+	 30, 11, 35, 13, 20, 21,
+	102,  8,  8,  8,  8, 28,
+	 83, 84, 84, 84, 84, 83,
+	 26, 23, 23, 23, 23, 26
 };
 
 // International Airport (large) - 2 runways
 static const byte _airport_map5_tiles_international[] = {
-  88, 89, 89, 89, 89, 89, 88,
- 	51,  8,  8,  8,  8,  8, 32,
-	30,  8, 11, 27, 11,  8, 10,
+  88, 89, 89, 89, 89, 89,  88,
+ 	51,  8,  8,  8,  8,  8,  32,
+	30,  8, 11, 27, 11,  8,  10,
 	32,  8, 11, 27, 11,  8, 114,
 	87,  8, 11, 85, 11,  8, 114,
-	87,  8,  8,  8,  8,  8, 90,
-	26, 23, 23, 23, 23, 23, 26
+	87,  8,  8,  8,  8,  8,  90,
+	26, 23, 23, 23, 23, 23,  26
 };
 
 // Heliport
@@ -1795,16 +1789,17 @@ int32 CmdBuildAirport(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				1. airport is upgraded
 				2. airport is added to existing station (unfortunately unavoideable)
 		*/
-		if (airport_upgrade) {UpdateAirplanesOnNewStation(st);}
+		if (airport_upgrade) UpdateAirplanesOnNewStation(st);
 
 		{
 			const byte *b = _airport_map5_tiles[p1];
-BEGIN_TILE_LOOP(tile_cur,w,h,tile)
+
+			BEGIN_TILE_LOOP(tile_cur,w,h,tile) {
 				ModifyTile(tile_cur,
 					MP_SETTYPE(MP_STATION) | MP_MAPOWNER_CURRENT |
 					MP_MAP2 | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR | MP_MAP5,
 					st->index, *b++);
-END_TILE_LOOP(tile_cur,w,h,tile)
+			} END_TILE_LOOP(tile_cur,w,h,tile)
 		}
 
 		UpdateStationVirtCoordDirty(st);
@@ -2227,10 +2222,7 @@ void StationPickerDrawSprite(int x, int y, RailType railtype, int image)
 
 static uint GetSlopeZ_Station(const TileInfo* ti)
 {
-	uint z = ti->z;
-	if (ti->tileh != 0)
-		z += 8;
-	return z;
+	return (ti->tileh != 0) ? ti->z + 8 : ti->z;
 }
 
 static uint GetSlopeTileh_Station(const TileInfo *ti)
@@ -2682,14 +2674,15 @@ void StationMonthlyLoop(void)
 void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint radius)
 {
 	Station *st;
-	GoodsEntry *ge;
-	int i;
 
 	FOR_ALL_STATIONS(st) {
 		if (st->xy != 0 && st->owner == owner &&
 				DistanceManhattan(tile, st->xy) <= radius) {
-			ge = st->goods;
-			for(i=0; i!=NUM_CARGO; i++,ge++) {
+			uint i;
+
+			for (i = 0; i != NUM_CARGO; i++) {
+				GoodsEntry* ge = &st->goods[i];
+
 				if (ge->enroute_from != INVALID_STATION) {
 					ge->rating = clamp(ge->rating + amount, 0, 255);
 				}
@@ -3191,7 +3184,7 @@ static void Load_STNS(void)
 		_station_tick_ctr = 0;
 }
 
-static void Save_ROADSTOP( void )
+static void Save_ROADSTOP(void)
 {
 	RoadStop *rs;
 
@@ -3203,7 +3196,7 @@ static void Save_ROADSTOP( void )
 	}
 }
 
-static void Load_ROADSTOP( void )
+static void Load_ROADSTOP(void)
 {
 	int index;
 

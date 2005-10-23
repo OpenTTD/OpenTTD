@@ -1219,7 +1219,7 @@ static void NewgrfWndProc(Window *w, WindowEvent *e)
 		case 3: { // select a grf file
 			int y = (e->click.pt.y - NEWGRF_WND_PROC_OFFSET_TOP_WIDGET) / NEWGRF_WND_PROC_ROWSIZE;
 
-			if (y >= w->vscroll.cap) { return;} // click out of bounds
+			if (y >= w->vscroll.cap) return; // click out of bounds
 
 			y += w->vscroll.pos;
 

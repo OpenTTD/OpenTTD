@@ -455,7 +455,7 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 
 				y += 10;
 				i++;
-				if (++n == w->vscroll.cap) { break;} // max number of towns in 1 window
+				if (++n == w->vscroll.cap) break; // max number of towns in 1 window
 			}
 			SetDParam(0, GetWorldPopulation());
 			DrawString(3, w->height - 12 + 2, STR_TOWN_POPULATION, 0);
@@ -479,11 +479,11 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 		case 5: { /* Click on Town Matrix */
 			uint16 id_v = (e->click.pt.y - 28) / 10;
 
-			if (id_v >= w->vscroll.cap) { return;} // click out of bounds
+			if (id_v >= w->vscroll.cap) return; // click out of bounds
 
 			id_v += w->vscroll.pos;
 
-			if (id_v >= _num_town_sort) { return;} // click out of town bounds
+			if (id_v >= _num_town_sort) return; // click out of town bounds
 
 			{
 				Town *t = GetTown(_town_sort[id_v]);

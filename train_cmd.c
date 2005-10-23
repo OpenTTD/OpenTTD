@@ -1080,14 +1080,17 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				tmp = v->next;
 
 				if (RailVehInfo(v->engine_type)->flags & RVI_MULTIHEAD) {
-					/* Always delete newly encountered front-engines */
 					if (IS_FIRSTHEAD_SPRITE(v->spritenum)) {
+						/* Always delete newly encountered front-engines */
 						enf_count--;
-					/* If we have more rear engines than front engines, then that means
-					* that this rear-engine does not belong to any front-engine; delete */
-					} else if (enr_count > enf_count) { enr_count--;}
-					/* Otherwise leave it alone */
-					else continue;
+					} else if (enr_count > enf_count) {
+						/* More rear engines than front engines means this rear-engine does
+						 * not belong to any front-engine; delete */
+						enr_count--;
+					} else {
+						/* Otherwise leave it alone */
+						continue;
+					}
 				}
 
 				cost -= v->value;
@@ -1180,8 +1183,8 @@ static void ReverseTrainSwapVeh(Vehicle *v, int l, int r)
 	Vehicle *a, *b;
 
 	/* locate vehicles to swap */
-	for(a=v; l!=0; l--) { a = a->next; }
-	for(b=v; r!=0; r--) { b = b->next; }
+	for (a = v; l != 0; l--) a = a->next;
+	for (b = v; r != 0; r--) b = b->next;
 
 	if (a != b) {
 		/* swap the hidden bits */
@@ -1586,7 +1589,7 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 		return tfdd;
 	}
 
-	if (v->u.rail.track == 0x40) { tile = GetVehicleOutOfTunnelTile(v); }
+	if (v->u.rail.track == 0x40) tile = GetVehicleOutOfTunnelTile(v);
 
 	if (_patches.new_pathfinding_all) {
 		NPFFoundTargetData ftd;
@@ -1756,7 +1759,7 @@ static void HandleLocomotiveSmokeCloud(Vehicle *v)
 
 }
 
-static void TrainPlayLeaveStationSound(Vehicle *v)
+static void TrainPlayLeaveStationSound(const Vehicle* v)
 {
 	static const SoundFx sfx[] = {
 		SND_04_TRAIN,
@@ -2157,8 +2160,10 @@ static bool ProcessTrainOrder(Vehicle *v)
 	}
 
 	// check if we've reached a non-stop station while TTDPatch nonstop is enabled..
-	if (_patches.new_nonstop && v->current_order.flags & OF_NON_STOP &&
-		v->current_order.station == _m[v->tile].m2 && IsTileType(v->tile, MP_STATION) ) {
+	if (_patches.new_nonstop &&
+			v->current_order.flags & OF_NON_STOP &&
+			IsTileType(v->tile, MP_STATION) &&
+			v->current_order.station == _m[v->tile].m2) {
 		v->cur_order_index++;
 	}
 
@@ -2456,9 +2461,10 @@ static bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
 	}
 
 	return
-		IsTileOwner(tile, v->owner) &&
-		(v->subtype != TS_Front_Engine ||
-		IsCompatibleRail(v->u.rail.railtype, GetRailType(tile)));
+		IsTileOwner(tile, v->owner) && (
+			v->subtype != TS_Front_Engine ||
+			IsCompatibleRail(v->u.rail.railtype, GetRailType(tile))
+		);
 }
 
 typedef struct {
@@ -2559,9 +2565,9 @@ static void SetVehicleCrashed(Vehicle *v)
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, u->index, STATUS_BAR);
 }
 
-static int CountPassengersInTrain(const Vehicle *v)
+static uint CountPassengersInTrain(const Vehicle* v)
 {
-	int num = 0;
+	uint num = 0;
 	BEGIN_ENUM_WAGONS(v)
 		if (v->cargo_type == CT_PASSENGERS) num += v->cargo_count;
 	END_ENUM_WAGONS(v)
@@ -3046,8 +3052,7 @@ static void HandleBrokenTrain(Vehicle *v)
 
 		if (!(v->vehstatus & VS_HIDDEN)) {
 			Vehicle *u = CreateEffectVehicleRel(v, 4, 4, 5, EV_BREAKDOWN_SMOKE);
-			if (u)
-				u->u.special.unk0 = v->breakdown_delay * 2;
+			if (u != NULL) u->u.special.unk0 = v->breakdown_delay * 2;
 		}
 	}
 

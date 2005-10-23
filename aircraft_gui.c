@@ -1063,10 +1063,11 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 			DrawVehicleProfitButton(v, x, y + 13);
 
 			SetDParam(0, v->unitnumber);
-			if (IsAircraftHangarTile(v->tile) && (v->vehstatus & VS_HIDDEN))
+			if (IsAircraftHangarTile(v->tile) && (v->vehstatus & VS_HIDDEN)) {
 				str = STR_021F;
-			else
+			} else {
 				str = v->age > v->max_age - 366 ? STR_00E3 : STR_00E2;
+			}
 			DrawString(x, y + 2, str, 0);
 
 			SetDParam(0, v->profit_this_year);
@@ -1100,7 +1101,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 		case 7: { /* Matrix to show vehicles */
 			uint32 id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / PLY_WND_PRC__SIZE_OF_ROW_BIG;
 
-			if (id_v >= w->vscroll.cap) { return;} // click out of bounds
+			if (id_v >= w->vscroll.cap) return; // click out of bounds
 
 			id_v += w->vscroll.pos;
 

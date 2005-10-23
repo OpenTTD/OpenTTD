@@ -1077,7 +1077,7 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 		case 7: { /* Matrix to show vehicles */
 			uint32 id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / PLY_WND_PRC__SIZE_OF_ROW_BIG;
 
-			if (id_v >= w->vscroll.cap) { return;} // click out of bounds
+			if (id_v >= w->vscroll.cap) return; // click out of bounds
 
 			id_v += w->vscroll.pos;
 

@@ -23,10 +23,7 @@ static int OrderGetSel(const Window* w)
 	const Vehicle* v = GetVehicle(w->window_number);
 	int num = WP(w,order_d).sel;
 
-	if (num < 0 || num > v->num_orders)
-		return v->num_orders;
-
-	return num;
+	return (num >= 0 && num < v->num_orders) ? num : v->num_orders;
 }
 
 static StringID StationOrderStrings[] = {
@@ -91,6 +88,7 @@ static void DrawOrdersWindow(Window *w)
 		switch (order->type) {
 			case OT_GOTO_STATION:
 				break;
+
 			case OT_GOTO_DEPOT:
 				SETBIT(w->disabled_state, 9);	/* unload */
 				SETBIT(w->disabled_state, 10); /* transfer */
@@ -188,7 +186,6 @@ static void DrawOrdersWindow(Window *w)
 static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 {
 	Order order;
-	Station *st;
 	int st_index;
 
 	// check depot first
@@ -255,7 +252,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	}
 
 	if (IsTileType(tile, MP_STATION)) {
-		st = GetStation(st_index = _m[tile].m2);
+		const Station* st = GetStation(st_index = _m[tile].m2);
 
 		if (st->owner == _current_player || st->owner == OWNER_NONE) {
 			byte facil;
@@ -279,20 +276,18 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	return order;
 }
 
-static bool HandleOrderVehClick(Vehicle *v, Vehicle *u, Window *w)
+static bool HandleOrderVehClick(const Vehicle* v, const Vehicle* u, Window* w)
 {
-	if (u->type != v->type)
-		return false;
+	if (u->type != v->type) return false;
 
 	if (u->type == VEH_Train && u->subtype != TS_Front_Engine) {
 		u = GetFirstVehicleInChain(u);
-		if (u->subtype != TS_Front_Engine)
-			return false;
+		if (u->subtype != TS_Front_Engine) return false;
 	}
 
 	// v is vehicle getting orders. Only copy/clone orders if vehicle doesn't have any orders yet
 	// obviously if you press CTRL on a non-empty orders vehicle you know what you are doing
-	if (v->num_orders != 0 && _ctrl_pressed == 0) {return false;}
+	if (v->num_orders != 0 && _ctrl_pressed == 0) return false;
 
 	if (DoCommandP(v->tile, v->index | (u->index << 16), _ctrl_pressed ? 0 : 1, NULL,
 		_ctrl_pressed ? CMD_CLONE_ORDER | CMD_MSG(STR_CANT_SHARE_ORDER_LIST) : CMD_CLONE_ORDER | CMD_MSG(STR_CANT_COPY_ORDER_LIST))) {
@@ -303,27 +298,25 @@ static bool HandleOrderVehClick(Vehicle *v, Vehicle *u, Window *w)
 	return true;
 }
 
-static void OrdersPlaceObj(Vehicle *v, TileIndex tile, Window *w)
+static void OrdersPlaceObj(const Vehicle* v, TileIndex tile, Window* w)
 {
 	Order cmd;
-	Vehicle *u;
+	const Vehicle* u;
 
 	// check if we're clicking on a vehicle first.. clone orders in that case.
 	u = CheckMouseOverVehicle();
-	if (u && HandleOrderVehClick(v, u, w))
-		return;
+	if (u != NULL && HandleOrderVehClick(v, u, w)) return;
 
 	cmd = GetOrderCmdFromTile(v, tile);
 	if (cmd.type == OT_NOTHING) return;
 
 	if (DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), PackOrder(&cmd), NULL, CMD_INSERT_ORDER | CMD_MSG(STR_8833_CAN_T_INSERT_NEW_ORDER))) {
-		if (WP(w,order_d).sel != -1)
-			WP(w,order_d).sel++;
+		if (WP(w,order_d).sel != -1) WP(w,order_d).sel++;
 		ResetObjectToPlace();
 	}
 }
 
-static void OrderClick_Goto(Window *w, Vehicle *v)
+static void OrderClick_Goto(Window* w, const Vehicle* v)
 {
 	InvalidateWidget(w, 7);
 	TOGGLEBIT(w->click_state, 7);
@@ -335,39 +328,39 @@ static void OrderClick_Goto(Window *w, Vehicle *v)
 	}
 }
 
-static void OrderClick_FullLoad(Window *w, Vehicle *v)
+static void OrderClick_FullLoad(Window* w, const Vehicle* v)
 {
 	DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), OFB_FULL_LOAD, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
-static void OrderClick_Unload(Window *w, Vehicle *v)
+static void OrderClick_Unload(Window* w, const Vehicle* v)
 {
 	DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), OFB_UNLOAD,    NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
-static void OrderClick_Nonstop(Window *w, Vehicle *v)
+static void OrderClick_Nonstop(Window* w, const Vehicle* v)
 {
 	DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), OFB_NON_STOP,  NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
-static void OrderClick_Transfer(Window *w, Vehicle *v)
+static void OrderClick_Transfer(Window* w, const Vehicle* v)
 {
 	DoCommandP(v->tile, v->index + (OrderGetSel(w) <<  16), OFB_TRANSFER, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
-static void OrderClick_Skip(Window *w, Vehicle *v)
+static void OrderClick_Skip(Window* w, const Vehicle* v)
 {
 	DoCommandP(v->tile, v->index, 0, NULL, CMD_SKIP_ORDER);
 }
 
-static void OrderClick_Delete(Window *w, Vehicle *v)
+static void OrderClick_Delete(Window* w, const Vehicle* v)
 {
 	DoCommandP(v->tile, v->index, OrderGetSel(w), NULL, CMD_DELETE_ORDER | CMD_MSG(STR_8834_CAN_T_DELETE_THIS_ORDER));
 }
 
-typedef void OnButtonClick(Window *w, Vehicle *v);
+typedef void OnButtonClick(Window* w, const Vehicle* v);
 
-static OnButtonClick * const _order_button_proc[] = {
+static OnButtonClick* const _order_button_proc[] = {
 	OrderClick_Skip,
 	OrderClick_Delete,
 	OrderClick_Nonstop,
@@ -388,7 +381,7 @@ static const uint16 _order_keycodes[] = {
 
 static void OrdersWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT:
 		DrawOrdersWindow(w);
 		break;
@@ -502,7 +495,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 
 	// check if a vehicle in a depot was clicked..
 	case WE_MOUSELOOP: {
-		Vehicle *v = _place_clicked_vehicle;
+		const Vehicle* v = _place_clicked_vehicle;
 		/*
 		 * Check if we clicked on a vehicle
 		 * and if the GOTO button of this window is pressed
@@ -599,7 +592,7 @@ static const WindowDesc _other_orders_desc = {
 	OrdersWndProc
 };
 
-void ShowOrdersWindow(Vehicle *v)
+void ShowOrdersWindow(const Vehicle* v)
 {
 	Window *w;
 	VehicleID veh = v->index;
@@ -610,9 +603,10 @@ void ShowOrdersWindow(Vehicle *v)
 	_alloc_wnd_parent_num = veh;
 
 	if (v->owner != _local_player) {
-		w = AllocateWindowDesc( &_other_orders_desc);
-	} else
-		w = AllocateWindowDesc( (v->type == VEH_Train) ? &_orders_train_desc : &_orders_desc);
+		w = AllocateWindowDesc(&_other_orders_desc);
+	} else {
+		w = AllocateWindowDesc((v->type == VEH_Train) ? &_orders_train_desc : &_orders_desc);
+	}
 
 	if (w != NULL) {
 		w->window_number = veh;

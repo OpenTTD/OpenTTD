@@ -719,10 +719,10 @@ void DrawStationCoverageAreaText(int sx, int sy, uint mask, int rad) {
 	}
 }
 
-void CheckRedrawStationCoverage(Window *w)
+void CheckRedrawStationCoverage(const Window* w)
 {
-	if (_thd.dirty&1) {
-		_thd.dirty&=~1;
+	if (_thd.dirty & 1) {
+		_thd.dirty &= ~1;
 		SetWindowDirty(w);
 	}
 }
@@ -734,15 +734,15 @@ void UnclickSomeWindowButtons(Window *w, uint32 mask)
 	int i = 0;
 	w->click_state ^= x;
 	do {
-		if (x&1) InvalidateWidget(w,i);
-	} while(i++,x>>=1);
+		if (x & 1) InvalidateWidget(w, i);
+	} while (i++, x >>= 1);
 }
 
 
 void UnclickWindowButtons(Window *w)
 {
 	bool sticky = false;
-	if (w->desc_flags & WDF_STICKY_BUTTON && HASBIT(w->click_state, 2))	sticky = true;
+	if (w->desc_flags & WDF_STICKY_BUTTON && HASBIT(w->click_state, 2)) sticky = true;
 
 	UnclickSomeWindowButtons(w, (uint32)-1);
 
@@ -1164,10 +1164,17 @@ void BuildFileList(void)
 {
 	_fios_path_changed = true;
 	FiosFreeSavegameList();
-	if (_saveload_mode == SLD_NEW_GAME || _saveload_mode == SLD_LOAD_SCENARIO || _saveload_mode == SLD_SAVE_SCENARIO) {
-		_fios_list = FiosGetScenarioList(&_fios_num, _saveload_mode);
-	} else
-		_fios_list = FiosGetSavegameList(&_fios_num, _saveload_mode);
+	switch (_saveload_mode) {
+		case SLD_NEW_GAME:
+		case SLD_LOAD_SCENARIO:
+		case SLD_SAVE_SCENARIO:
+			_fios_list = FiosGetScenarioList(&_fios_num, _saveload_mode);
+			break;
+
+		default:
+			_fios_list = FiosGetSavegameList(&_fios_num, _saveload_mode);
+			break;
+	}
 }
 
 static void DrawFiosTexts(uint maxw)
@@ -1258,9 +1265,8 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 			item = _fios_list + pos;
 			DoDrawStringTruncated(item->title, 4, y, _fios_colors[item->type], w->width - 18);
 			pos++;
-			y+=10;
-			if (y >= w->vscroll.cap*10+w->widget[6].top+1)
-				break;
+			y += 10;
+			if (y >= w->vscroll.cap * 10 + w->widget[6].top + 1) break;
 		}
 
 		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
@@ -1506,11 +1512,10 @@ static void SelectScenarioWndProc(Window *w, WindowEvent *e) {
 		pos = w->vscroll.pos;
 		while (pos < _fios_num) {
 			item = _fios_list + pos;
-			DoDrawString(item->title, 4, y, _fios_colors[item->type] );
+			DoDrawString(item->title, 4, y, _fios_colors[item->type]);
 			pos++;
-			y+=10;
-			if (y >= w->vscroll.cap*10+list_start)
-				break;
+			y += 10;
+			if (y >= w->vscroll.cap * 10 + list_start) break;
 		}
 	}
 		break;
@@ -1544,7 +1549,8 @@ static void SelectScenarioWndProc(Window *w, WindowEvent *e) {
 
 				file = _fios_list + y;
 
-				if ((name = FiosBrowseTo(file)) != NULL) {
+				name = FiosBrowseTo(file);
+				if (name != NULL) {
 					SetFiosType(file->type);
 					strcpy(_file_to_saveload.name, name);
 					DeleteWindow(w);
@@ -1571,14 +1577,19 @@ static void SelectScenarioWndProc(Window *w, WindowEvent *e) {
 void SetFiosType(const byte fiostype)
 {
 	switch (fiostype) {
-	case FIOS_TYPE_FILE: case FIOS_TYPE_SCENARIO:
-		_file_to_saveload.mode = SL_LOAD;
-		break;
-	case FIOS_TYPE_OLDFILE: case FIOS_TYPE_OLD_SCENARIO:
-		_file_to_saveload.mode = SL_OLD_LOAD;
-		break;
-	default:
-		_file_to_saveload.mode = SL_INVALID;
+		case FIOS_TYPE_FILE:
+		case FIOS_TYPE_SCENARIO:
+			_file_to_saveload.mode = SL_LOAD;
+			break;
+
+		case FIOS_TYPE_OLDFILE:
+		case FIOS_TYPE_OLD_SCENARIO:
+			_file_to_saveload.mode = SL_OLD_LOAD;
+			break;
+
+		default:
+			_file_to_saveload.mode = SL_INVALID;
+			break;
 	}
 }
 
@@ -1878,6 +1889,5 @@ void ShowCheatWindow(void)
 	DeleteWindowById(WC_CHEATS, 0);
 	w = AllocateWindowDesc(&_cheats_desc);
 
-	if (w)
-		SetWindowDirty(w);
+	if (w != NULL) SetWindowDirty(w);
 }

@@ -983,12 +983,10 @@ typedef int32 DoConvertRailProc(TileIndex tile, uint totype, bool exec);
 
 static int32 DoConvertRail(TileIndex tile, uint totype, bool exec)
 {
-	if (!CheckTileOwnership(tile) || !EnsureNoVehicle(tile))
-		return CMD_ERROR;
+	if (!CheckTileOwnership(tile) || !EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	// tile is already of requested type?
-	if ( GetRailType(tile) == totype)
-		return CMD_ERROR;
+	if (GetRailType(tile) == totype) return CMD_ERROR;
 
 	// change type.
 	if (exec) {
@@ -1031,20 +1029,26 @@ int32 CmdConvertRail(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	for (x = sx; x <= ex; x += TILE_SIZE) {
 		for (y = sy; y <= ey; y += TILE_SIZE) {
 			TileIndex tile = TileVirtXY(x, y);
-			DoConvertRailProc *proc;
+			DoConvertRailProc* proc;
 
-			if (IsTileType(tile, MP_RAILWAY)) proc = DoConvertRail;
-			else if (IsTileType(tile, MP_STATION)) proc = DoConvertStationRail;
-			else if (IsTileType(tile, MP_STREET)) proc = DoConvertStreetRail;
-			else if (IsTileType(tile, MP_TUNNELBRIDGE)) proc = DoConvertTunnelBridgeRail;
-			else continue;
+			switch (GetTileType(tile)) {
+				case MP_RAILWAY:      proc = DoConvertRail;             break;
+				case MP_STATION:      proc = DoConvertStationRail;      break;
+				case MP_STREET:       proc = DoConvertStreetRail;       break;
+				case MP_TUNNELBRIDGE: proc = DoConvertTunnelBridgeRail; break;
+				default: continue;
+			}
 
 			ret = proc(tile, p2, false);
 			if (CmdFailed(ret)) continue;
 			cost += ret;
 
 			if (flags & DC_EXEC) {
-				if ( (money -= ret) < 0) { _additional_cash_required = ret; return cost - ret; }
+				money -= ret;
+				if (money < 0) {
+					_additional_cash_required = ret;
+					return cost - ret;
+				}
 				proc(tile, p2, true);
 			}
 		}
@@ -1062,7 +1066,7 @@ static int32 RemoveTrainDepot(TileIndex tile, uint32 flags)
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		int track = TrackdirToTrack(DiagdirToDiagTrackdir(GetDepotDirection(tile, TRANSPORT_RAIL)));
+		Track track = TrackdirToTrack(DiagdirToDiagTrackdir(GetDepotDirection(tile, TRANSPORT_RAIL)));
 
 		DoDeleteDepot(tile);
 		SetSignalsOnBothDir(tile, track);
@@ -1349,15 +1353,13 @@ DetailedTrackProc * const _detailed_track_proc[16] = {
 };
 
 static void DrawSpecialBuilding(uint32 image, uint32 offset,
-                                TileInfo *ti,
+                                const TileInfo* ti,
                                 byte x, byte y, byte z,
                                 byte xsize, byte ysize, byte zsize)
 {
-	if (image & PALETTE_MODIFIER_COLOR)
-		image |= _drawtile_track_palette;
+	if (image & PALETTE_MODIFIER_COLOR) image |= _drawtile_track_palette;
 	image += offset;
-	if (_display_opt & DO_TRANS_BUILDINGS) // show transparent depots
-		MAKE_TRANSPARENT(image);
+	if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 	AddSortableSpriteToDraw(image, ti->x + x, ti->y + y, xsize, ysize, zsize, ti->z + z);
 }
 
@@ -1511,7 +1513,7 @@ static void DrawTile_Track(TileInfo *ti)
 			 * complains about it. If not, we'll remove this check. (Matthijs). */
 			 assert(0);
 
-		if (ti->tileh != 0) { DrawFoundation(ti, ti->tileh); }
+		if (ti->tileh != 0) DrawFoundation(ti, ti->tileh);
 
 		if (IsRailWaypoint(m5) && HASBIT(_m[ti->tile].m3, 4)) {
 			// look for customization
@@ -1558,10 +1560,11 @@ static void DrawTile_Track(TileInfo *ti)
 		// (don't adjust for arctic depots, because snow in depots looks weird)
 		// type >= 4 means waypoints
 		if ((_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK) == RAIL_GROUND_ICE_DESERT && (_opt.landscape == LT_DESERT || type >= 4)) {
-			if (image != SPR_FLAT_GRASS_TILE)
+			if (image != SPR_FLAT_GRASS_TILE) {
 				image += rti->snow_offset; // tile with tracks
-			else
+			} else {
 				image = SPR_FLAT_SNOWY_TILE; // flat ground
+			}
 		}
 
 		DrawGroundSprite(image);
@@ -1576,11 +1579,10 @@ static void DrawTile_Track(TileInfo *ti)
 			if (pbs & TRACK_BIT_RIGHT) DrawGroundSprite(rti->base_sprites.single_e | PALETTE_CRASH);
 		}
 
-		while ((image = drss->image) != 0) {
-			DrawSpecialBuilding(image, type < 4 ? rti->total_offset : 0, ti,
+		for (; drss->image != 0; drss++) {
+			DrawSpecialBuilding(drss->image, type < 4 ? rti->total_offset : 0, ti,
 			                    drss->subcoord_x, drss->subcoord_y, 0,
 			                    drss->width, drss->height, 0x17);
-			drss++;
 		}
 	}
 }
@@ -1595,8 +1597,8 @@ void DrawTrainDepotSprite(int x, int y, int image, RailType railtype)
 
 	dtss = _track_depot_layout_table[image];
 
-	x+=33;
-	y+=17;
+	x += 33;
+	y += 17;
 
 	img = dtss++->image;
 	/* @note This is kind of an ugly hack, as the PALETTE_MODIFIER_COLOR indicates
@@ -1703,8 +1705,9 @@ static bool SetSignalsEnumProc(TileIndex tile, SetSignalsData *ssd, int track, u
 			}
 
 			return true;
-		} else if (IsTileDepotType(tile, TRANSPORT_RAIL))
+		} else if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
 			return true; // don't look further if the tile is a depot
+		}
 	}
 	return false;
 }
@@ -1717,25 +1720,23 @@ typedef struct SignalVehicleCheckStruct {
 
 static void *SignalVehicleCheckProc(Vehicle *v, void *data)
 {
-	SignalVehicleCheckStruct *dest = data;
+	const SignalVehicleCheckStruct* dest = data;
 	TileIndex tile;
 
-	if (v->type != VEH_Train)
-		return NULL;
+	if (v->type != VEH_Train) return NULL;
 
 	/* Find the tile outside the tunnel, for signalling */
-	if (v->u.rail.track == 0x40)
+	if (v->u.rail.track == 0x40) {
 		tile = GetVehicleOutOfTunnelTile(v);
-	else
+	} else {
 		tile = v->tile;
+	}
 
 	/* Wrong tile, or no train? Not a match */
-	if (tile != dest->tile)
-		return NULL;
+	if (tile != dest->tile) return NULL;
 
 	/* Are we on the same piece of track? */
-	if (dest->track & (v->u.rail.track + (v->u.rail.track<<8)))
-		return v;
+	if (dest->track & (v->u.rail.track + (v->u.rail.track << 8))) return v;
 
 	return NULL;
 }
@@ -1752,7 +1753,7 @@ bool SignalVehicleCheck(TileIndex tile, uint track)
 	 * is some kind of invisible black hole, and there is some special magic going
 	 * on in there. This 'workaround' can be removed once the maprewrite is done.
 	 */
-	if (GetTileType(tile) == MP_TUNNELBRIDGE && GB(_m[tile].m5, 4, 4) == 0) {
+	if (IsTileType(tile, MP_TUNNELBRIDGE) && GB(_m[tile].m5, 4, 4) == 0) {
 		// It is a tunnel we're checking, we need to do some special stuff
 		// because VehicleFromPos will not find the vihicle otherwise
 		byte direction = GB(_m[tile].m5, 0, 2);
@@ -1838,14 +1839,14 @@ static void ChangeSignalStates(SetSignalsData *ssd)
 
 	// convert the block to pbs, if needed
 	if (_patches.auto_pbs_placement && !(ssd->stop) && (ssd->has_pbssignal == 0xE) && !ssd->has_presignal && (ssd->presignal_exits == 0)) // 0xE means at least 2 pbs signals, and at least 1 entry and 1 exit, see comments ssd->has_pbssignal
-	for(i=0; i!=ssd->pbs_cur; i++) {
+	for (i = 0; i != ssd->pbs_cur; i++) {
 		TileIndex tile = ssd->pbs_tile[i];
 		SB(_m[tile].m4, 0, 3, SIGTYPE_PBS);
 		MarkTileDirtyByTile(tile);
 	};
 
 	// then mark the signals in the segment accordingly
-	for(i=0; i!=ssd->cur; i++) {
+	for (i = 0; i != ssd->cur; i++) {
 		TileIndex tile = ssd->tile[i];
 		byte bit = _signals_table[ssd->bit[i]];
 		uint16 m2 = _m[tile].m2;
@@ -1900,7 +1901,7 @@ bool UpdateSignalsOnSegment(TileIndex tile, byte direction)
 	int result = -1;
 
 	ssd.cur_stack = 0;
-	direction>>=1;
+	direction >>= 1;
 
 	for(;;) {
 		// go through one segment and update all signals pointing into that segment.
@@ -2107,8 +2108,8 @@ static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode)
 			 * direction), we pretend them to be green. (So if
 			 * signals are only one way, the other way will
 			 * implicitely become `red' */
-			if ((a & 0xC0) == 0) { b |= 0xC0; }
-			if ((a & 0x30) == 0) { b |= 0x30; }
+			if ((a & 0xC0) == 0) b |= 0xC0;
+			if ((a & 0x30) == 0) b |= 0x30;
 
 			if ( (b & 0x80) == 0)	ret |= 0x10070000;
 			if ( (b & 0x40) == 0)	ret |= 0x7100000;

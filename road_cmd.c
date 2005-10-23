@@ -460,7 +460,7 @@ do_clear:;
 	if (cost && (!_patches.build_on_slopes || _is_old_ai_player))
 		return CMD_ERROR;
 
-	if (!(ti.type == MP_STREET && (ti.map5 & 0xF0) == 0)) {
+	if (ti.type != MP_STREET || (ti.map5 & 0xF0) != 0) {
 		cost += DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	} else {
 		// Don't put the pieces that already exist
@@ -483,7 +483,7 @@ do_clear:;
 			SetTileOwner(tile, _current_player);
 		}
 
-		_m[tile].m5 |= (byte)pieces;
+		_m[tile].m5 |= pieces;
 
 		MarkTileDirtyByTile(tile);
 	}
@@ -554,8 +554,9 @@ int32 CmdBuildLongRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		ret = DoCommandByTile(tile, bits, 0, flags, CMD_BUILD_ROAD);
 		if (CmdFailed(ret)) {
 			if (_error_message != STR_1007_ALREADY_BUILT) return CMD_ERROR;
-		} else
+		} else {
 			cost += ret;
+		}
 
 		if (tile == end_tile) break;
 
@@ -642,24 +643,21 @@ int32 CmdBuildRoadDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	tile = ti.tile;
 
-	if (!EnsureNoVehicle(tile))
-		return CMD_ERROR;
+	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
-	if ((ti.tileh != 0) && (
-			!_patches.build_on_slopes ||
-			IsSteepTileh(ti.tileh) ||
-			!CanBuildDepotByTileh(p1, ti.tileh)
-		)
-	) {
-			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
+	if (ti.tileh != 0 && (
+				!_patches.build_on_slopes ||
+				IsSteepTileh(ti.tileh) ||
+				!CanBuildDepotByTileh(p1, ti.tileh)
+			)) {
+		return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 	}
 
 	cost = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(cost)) return CMD_ERROR;
 
 	dep = AllocateDepot();
-	if (dep == NULL)
-		return CMD_ERROR;
+	if (dep == NULL) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		if (IsLocalPlayer()) _last_built_road_depot_tile = tile;

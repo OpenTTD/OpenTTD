@@ -351,8 +351,8 @@ static const SoundFx _news_sounds[] = {
  */
 static inline byte GetNewsDisplayValue(byte item)
 {
-	assert(item < 10 && ((_news_display_opt >> (item * 2)) & 0x3) <= 2);
-	return (_news_display_opt >> (item * 2)) & 0x3;
+	assert(item < 10 && GB(_news_display_opt, item * 2, 2) <= 2);
+	return GB(_news_display_opt, item * 2, 2);
 }
 
 /** Set the value of an item in the news-display settings. This is
@@ -363,10 +363,7 @@ static inline byte GetNewsDisplayValue(byte item)
 static inline void SetNewsDisplayValue(byte item, byte val)
 {
 	assert(item < 10 && val <= 2);
-	item *= 2;
-	CLRBIT(_news_display_opt, item);
-	CLRBIT(_news_display_opt, item + 1);
-	_news_display_opt |= val << item;
+	SB(_news_display_opt, item * 2, 2, val);
 }
 
 // open up an own newspaper window for the news item
@@ -530,15 +527,12 @@ static void ShowNewsMessage(byte i)
 
 void ShowLastNewsMessage(void)
 {
-	if (_forced_news == INVALID_NEWS)
+	if (_forced_news == INVALID_NEWS) {
 		ShowNewsMessage(_current_news);
-	else if (_forced_news != 0)
+	} else if (_forced_news != 0) {
 		ShowNewsMessage(_forced_news - 1);
-	else {
-		if (_total_news != MAX_NEWS)
-			ShowNewsMessage(_latest_news);
-		else
-			ShowNewsMessage(MAX_NEWS - 1);
+	} else {
+		ShowNewsMessage(_total_news != MAX_NEWS ? _latest_news : MAX_NEWS - 1);
 	}
 }
 
@@ -619,7 +613,6 @@ static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 			DrawNewsString(82, y, 12, ni, w->width - 95);
 			y += 12;
 		}
-
 		break;
 	}
 
@@ -630,8 +623,7 @@ static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 			byte p, q;
 
 			#if 0 // === DEBUG code only
-			for (p = 0; p < _total_news; p++)
-			{
+			for (p = 0; p < _total_news; p++) {
 				NewsItem *ni;
 				byte buffer[256];
 				ni = &_news_items[p];

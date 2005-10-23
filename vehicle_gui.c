@@ -145,13 +145,13 @@ void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID sta
 		}
 	}
 
-	vl->sort_list = realloc(vl->sort_list, n * sizeof(vl->sort_list[0]));
-	if (n!=0 && vl->sort_list == NULL)
+	free(vl->sort_list);
+	vl->sort_list = malloc(n * sizeof(vl->sort_list[0]));
+	if (n != 0 && vl->sort_list == NULL)
 		error("Could not allocate memory for the vehicle-sorting-list");
 	vl->list_length = n;
 
-	for (i = 0; i < n; ++i)
-		vl->sort_list[i] = _vehicle_sort[i];
+	for (i = 0; i < n; ++i) vl->sort_list[i] = _vehicle_sort[i];
 
 	vl->flags &= ~VL_REBUILD;
 	vl->flags |= VL_RESORT;
@@ -340,26 +340,22 @@ static int CDECL VehicleProfitLastYearSorter(const void *a, const void *b)
 
 static int CDECL VehicleCargoSorter(const void *a, const void *b)
 {
-	const Vehicle *va = GetVehicle((*(const SortStruct*)a).index);
-	const Vehicle *vb = GetVehicle((*(const SortStruct*)b).index);
-	const Vehicle *v;
+	const Vehicle* va = GetVehicle(((const SortStruct*)a)->index);
+	const Vehicle* vb = GetVehicle(((const SortStruct*)b)->index);
+	const Vehicle* v;
+	AcceptedCargo cargoa;
+	AcceptedCargo cargob;
 	int r = 0;
 	int i;
-	uint _cargo_counta[NUM_CARGO];
-	uint _cargo_countb[NUM_CARGO];
-	memset(_cargo_counta, 0, sizeof(_cargo_counta));
-	memset(_cargo_countb, 0, sizeof(_cargo_countb));
 
-	for (v = va; v != NULL; v = v->next)
-		_cargo_counta[v->cargo_type] += v->cargo_cap;
-
-	for (v = vb; v != NULL; v = v->next)
-		_cargo_countb[v->cargo_type] += v->cargo_cap;
+	memset(cargoa, 0, sizeof(cargoa));
+	memset(cargob, 0, sizeof(cargob));
+	for (v = va; v != NULL; v = v->next) cargoa[v->cargo_type] += v->cargo_cap;
+	for (v = vb; v != NULL; v = v->next) cargob[v->cargo_type] += v->cargo_cap;
 
 	for (i = 0; i < NUM_CARGO; i++) {
-		r = _cargo_counta[i] - _cargo_countb[i];
-		if (r != 0)
-			break;
+		r = cargoa[i] - cargob[i];
+		if (r != 0) break;
 	}
 
 	VEHICLEUNITNUMBERSORTER(r, va, vb);
@@ -1058,7 +1054,7 @@ void ShowReplaceVehicleWindow(byte vehicletype)
 {
 	Window *w;
 
-	DeleteWindowById(WC_REPLACE_VEHICLE, vehicletype );
+	DeleteWindowById(WC_REPLACE_VEHICLE, vehicletype);
 
 	switch (vehicletype) {
 		case VEH_Train:
@@ -1071,7 +1067,8 @@ void ShowReplaceVehicleWindow(byte vehicletype)
 			w->vscroll.cap  = 8;
 			w->resize.step_height = 14;
 			break;
-		case VEH_Ship: case VEH_Aircraft:
+		case VEH_Ship:
+		case VEH_Aircraft:
 			w = AllocateWindowDescFront(&_replace_ship_aircraft_vehicle_desc, vehicletype);
 			w->vscroll.cap  = 4;
 			w->resize.step_height = 24;

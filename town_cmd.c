@@ -1657,9 +1657,7 @@ static void TownActionBuyRights(Town *t, int action)
 static void TownActionBribe(Town *t, int action)
 {
 	if (!RandomRange(15)) {
-		GoodsEntry *ge;
 		Station *st;
-		int i, rating;
 
 		// set as unwanted for 6 months
 		t->unwanted[_current_player] = 6;
@@ -1667,8 +1665,9 @@ static void TownActionBribe(Town *t, int action)
 		// set all close by station ratings to 0
 		FOR_ALL_STATIONS(st) {
 			if (st->town == t && st->owner == _current_player) {
-				for (i=0, ge = st->goods; i != NUM_CARGO; i++, ge++)
-					ge->rating = 0;
+				uint i;
+
+				for (i = 0; i != NUM_CARGO; i++) st->goods[i].rating = 0;
 			}
 		}
 
@@ -1680,9 +1679,9 @@ static void TownActionBribe(Town *t, int action)
 		 *	ChangeTownRating is only for stuff in demolishing. Bribe failure should
 		 *	be independent of any cheat settings
 		 */
-		rating = t->ratings[_current_player];
-		if (rating > -50)
+		if (t->ratings[_current_player] > RATING_BRIBE_DOWN_TO) {
 			t->ratings[_current_player] = RATING_BRIBE_DOWN_TO;
+		}
 	} else {
 		ChangeTownRating(t, RATING_BRIBE_UP_STEP, RATING_BRIBE_MAXIMUM);
 	}

@@ -1496,8 +1496,7 @@ int32 ReplaceVehicle(Vehicle *v)
 
 		/* Update limits of the vehicle (for when upgraded) */
 		switch (v->type) {
-			case VEH_Train:
-				{
+			case VEH_Train: {
 				const RailVehicleInfo *rvi = RailVehInfo(new_engine_type);
 				const RailVehicleInfo *rvi2 = RailVehInfo(old_engine_type);
 				byte capacity = rvi2->capacity;
@@ -1507,10 +1506,10 @@ int32 ReplaceVehicle(Vehicle *v)
 				/* rvi->image_index is the new sprite for the engine. Adding +1 makes the engine head the other way
 				if it is a multiheaded engine (rear engine)
 				(rvi->flags & RVI_MULTIHEAD && sprite - rvi2->image_index) is true if the engine is heading the other way, otherwise 0*/
-				v->spritenum = rvi->image_index + (( rvi->flags & RVI_MULTIHEAD && sprite - rvi2->image_index) ? 1 : 0);
+				v->spritenum = rvi->image_index + ((rvi->flags & RVI_MULTIHEAD && sprite - rvi2->image_index) ? 1 : 0);
 
 				// turn the last engine in a multiheaded train if needed
-				if ( v->next == NULL && v->u.rail.first_engine != INVALID_VEHICLE && rvi->flags & RVI_MULTIHEAD && v->spritenum == rvi->image_index )
+				if (v->next == NULL && v->u.rail.first_engine != INVALID_VEHICLE && rvi->flags & RVI_MULTIHEAD && v->spritenum == rvi->image_index)
 					v->spritenum++;
 
 				v->cargo_type = rvi->cargo_type;
@@ -1561,9 +1560,9 @@ int32 ReplaceVehicle(Vehicle *v)
 				InvalidateWindowClasses(WC_TRAINS_LIST);
 				UpdateTrainAcceleration(first);
 				break;
-				}
-			case VEH_Road:
-				{
+			}
+
+			case VEH_Road: {
 				const RoadVehicleInfo *rvi = RoadVehInfo(new_engine_type);
 
 				v->spritenum = rvi->image_index;
@@ -1572,9 +1571,9 @@ int32 ReplaceVehicle(Vehicle *v)
 				v->max_speed = rvi->max_speed;
 				InvalidateWindowClasses(WC_ROADVEH_LIST);
 				break;
-				}
-			case VEH_Ship:
-				{
+			}
+
+			case VEH_Ship: {
 				const ShipVehicleInfo *svi = ShipVehInfo(new_engine_type);
 
 				v->spritenum = svi->image_index;
@@ -1588,9 +1587,9 @@ int32 ReplaceVehicle(Vehicle *v)
 					CmdRefitShip(v->x_pos, v->y_pos, DC_EXEC, v->index , cargo_type + 0x0100 );
 				InvalidateWindowClasses(WC_SHIPS_LIST);
 				break;
-				}
-			case VEH_Aircraft:
-				{
+			}
+
+			case VEH_Aircraft: {
 				const AircraftVehicleInfo *avi = AircraftVehInfo(new_engine_type);
 				Vehicle *u;
 
@@ -1609,7 +1608,8 @@ int32 ReplaceVehicle(Vehicle *v)
 					}
 				InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 				break;
-				}
+			}
+
 			default: return CMD_ERROR;
 		}
 		// makes sure that the cargo is still valid compared to new capacity
@@ -2231,7 +2231,7 @@ static void Load_VEHS(void)
 		v = GetVehicle(index);
 		SlObject(v, _veh_descs[SlReadByte()]);
 
-		/* Old savegames used 'last_station_visited = 0xFF', should be 0xFFFF */
+		/* Old savegames used 'last_station_visited = 0xFF' */
 		if (_sl_version < 5 && v->last_station_visited == 0xFF)
 			v->last_station_visited = INVALID_STATION;
 

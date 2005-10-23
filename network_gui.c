@@ -151,7 +151,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 
 				cur_item = cur_item->next;
 				y += NET_PRC__SIZE_OF_ROW;
-				if (++n == w->vscroll.cap) { break;} // max number of games in the window
+				if (++n == w->vscroll.cap) break; // max number of games in the window
 			}
 		}
 
@@ -242,7 +242,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		case 9: { /* Matrix to show networkgames */
 			uint32 id_v = (e->click.pt.y - NET_PRC__OFFSET_TOP_WIDGET) / NET_PRC__SIZE_OF_ROW;
 
-			if (id_v >= w->vscroll.cap) { return;} // click out of bounds
+			if (id_v >= w->vscroll.cap) return; // click out of bounds
 			id_v += w->vscroll.pos;
 
 			{

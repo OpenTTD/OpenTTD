@@ -1011,14 +1011,11 @@ static void PlantFarmField(TileIndex tile)
 
 static void MaybePlantFarmField(const Industry* i)
 {
-	TileIndex tile;
-
-	if (CHANCE16(1,8)) {
-		int x = (i->width>>1) + Random() % 31 - 16;
-		int y = (i->height>>1) + Random() % 31 - 16;
-		tile = TileAddWrap(i->xy, x, y);
-		if (tile != INVALID_TILE)
-			PlantFarmField(tile);
+	if (CHANCE16(1, 8)) {
+		int x = i->width  / 2 + Random() % 31 - 16;
+		int y = i->height / 2 + Random() % 31 - 16;
+		TileIndex tile = TileAddWrap(i->xy, x, y);
+		if (tile != INVALID_TILE) PlantFarmField(tile);
 	}
 }
 
@@ -1237,10 +1234,7 @@ static bool CheckNewIndustry_Lumbermill(TileIndex tile, int type)
 
 static bool CheckNewIndustry_BubbleGen(TileIndex tile, int type)
 {
-	if (GetTileZ(tile) > 32) {
-		return false;
-	}
-	return true;
+	return GetTileZ(tile) <= 32;
 }
 
 typedef bool CheckNewIndustryProc(TileIndex tile, int type);
@@ -1454,10 +1448,7 @@ static Industry *AllocateIndustry(void)
 	}
 
 	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_industry_pool))
-		return AllocateIndustry();
-
-	return NULL;
+	return AddBlockToPool(&_industry_pool) ? AllocateIndustry() : NULL;
 }
 
 static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const IndustryTileTable *it, Town *t, byte owner)

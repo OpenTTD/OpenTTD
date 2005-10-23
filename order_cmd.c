@@ -851,25 +851,23 @@ int32 CmdRestoreOrderIndex(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  */
 bool CheckOrders(uint data_a, uint data_b)
 {
-	Vehicle *v = GetVehicle(data_a);
+	const Vehicle* v = GetVehicle(data_a);
+
 	/* Does the user wants us to check things? */
-	if (_patches.order_review_system == 0)
-		return false;
+	if (_patches.order_review_system == 0) return false;
 
 	/* Do nothing for crashed vehicles */
-	if(v->vehstatus & VS_CRASHED)
-		return false;
+	if (v->vehstatus & VS_CRASHED) return false;
 
 	/* Do nothing for stopped vehicles if setting is '1' */
-	if ( (_patches.order_review_system == 1) && (v->vehstatus & VS_STOPPED) )
+	if (_patches.order_review_system == 1 && v->vehstatus & VS_STOPPED)
 		return false;
 
 	/* do nothing we we're not the first vehicle in a share-chain */
-	if (v->next_shared != NULL)
-		return false;
+	if (v->next_shared != NULL) return false;
 
 	/* Only check every 20 days, so that we don't flood the message log */
-	if ( (v->owner == _local_player) && (v->day_counter % 20 == 0) ) {
+	if (v->owner == _local_player && v->day_counter % 20 == 0) {
 		int n_st, problem_type = -1;
 		const Order *order;
 		const Station *st;
@@ -930,7 +928,7 @@ bool CheckOrders(uint data_a, uint data_b)
 			return true;
 		}
 
-		message = (STR_TRAIN_HAS_TOO_FEW_ORDERS) + (((v->type) - VEH_Train) << 2) + problem_type;
+		message = STR_TRAIN_HAS_TOO_FEW_ORDERS + ((v->type - VEH_Train) << 2) + problem_type;
 		/*DEBUG(misc, 3) ("Checkorder mode 0: Triggered News Item for %d", v->index);*/
 
 		SetDParam(0, v->unitnumber);

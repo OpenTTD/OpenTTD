@@ -258,15 +258,9 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				uint32 base = grf_load_dword(&buf);
 
 				switch (base) {
-				case 0x4C30:
-					rvi[i].engclass = 0;
-					break;
-				case 0x4C36:
-					rvi[i].engclass = 1;
-					break;
-				case 0x4C3C:
-					rvi[i].engclass = 2;
-					break;
+					case 0x4C30: rvi[i].engclass = 0; break;
+					case 0x4C36: rvi[i].engclass = 1; break;
+					case 0x4C3C: rvi[i].engclass = 2; break;
 				}
 				dewagonize(base, engine + i);
 			}

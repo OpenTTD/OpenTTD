@@ -1,17 +1,18 @@
-/* $Id: ai_new.c 2891 2005-08-26 20:26:34Z tron $ */
+/* $Id$ */
 
 /*
- * This AI was created as a direct reaction to the big demand for some good AIs in OTTD.
- *   Too bad it never left alpha-stage, and it is considered dead in his current form.
- *   By the time of writing this, we, the creator of this AI and a good friend of mine,
- *   are designing a whole new AI-system that allows us to create AIs easier and without
- *   all the fuzz we encountered while I was working on this AI. By the time that system
- *   is finished, you can expect that this AI will dissapear, because it is pretty
- *   obselete and bad programmed.
+ * This AI was created as a direct reaction to the big demand for some good AIs
+ * in OTTD. Too bad it never left alpha-stage, and it is considered dead in its
+ * current form.
+ * By the time of writing this, we, the creator of this AI and a good friend of
+ * mine, are designing a whole new AI-system that allows us to create AIs
+ * easier and without all the fuzz we encountered while I was working on this
+ * AI. By the time that system is finished, you can expect that this AI will
+ * dissapear, because it is pretty obselete and bad programmed.
  *
- * In the meanwhile I wish you all much fun with this AI; if you are interested as
- *   AI-developer in this AI, I advise you not stare too long to some code, some things in
- *   here really are... strange ;) But in either way: enjoy :)
+ * Meanwhile I wish you all much fun with this AI; if you are interested as
+ * AI-developer in this AI, I advise you not stare too long to some code, some
+ * things in here really are... strange ;) But in either way: enjoy :)
  *
  *  -- TrueLight :: 2005-09-01
  */

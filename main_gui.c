@@ -152,7 +152,7 @@ typedef void ToolbarButtonProc(Window *w);
 
 static void ToolbarPauseClick(Window *w)
 {
-	if (_networking && !_network_server) { return;} // only server can pause the game
+	if (_networking && !_network_server) return; // only server can pause the game
 
 	if (DoCommandP(0, _pause ? 0 : 1, 0, NULL, CMD_PAUSE))
 		SndPlayFx(SND_15_BEEP);
@@ -913,8 +913,10 @@ bool DoZoomInOutWindow(int how, Window *w)
 		// update the toolbar button too
 		CLRBIT(wt->disabled_state, button);
 		CLRBIT(wt->disabled_state, button + 1);
-		if (vp->zoom == 0) SETBIT(wt->disabled_state, button);
-		else if (vp->zoom == 2) SETBIT(wt->disabled_state, button + 1);
+		switch (vp->zoom) {
+			case 0: SETBIT(wt->disabled_state, button); break;
+			case 2: SETBIT(wt->disabled_state, button + 1); break;
+		}
 		SetWindowDirty(wt);
 	}
 

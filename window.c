@@ -214,11 +214,9 @@ void CallWindowEventNP(Window *w, int event)
 	w->wndproc(w, &e);
 }
 
-void SetWindowDirty(Window *w)
+void SetWindowDirty(const Window* w)
 {
-	if (w == NULL)
-		return;
-
+	if (w == NULL) return;
 	SetDirtyBlocks(w->left, w->top, w->left + w->width, w->top + w->height);
 }
 
@@ -1402,10 +1400,16 @@ static void MouseLoop(int click, int mousewheel)
 				y -= vp->top;
 				//here allows scrolling in both x and y axis
 #define scrollspeed 3
-				if (x-15<0) { WP(w,vp_d).scrollpos_x += (x-15) * scrollspeed << vp->zoom; }
-				else if (15-(vp->width-x) > 0) { WP(w,vp_d).scrollpos_x += (15-(vp->width-x))*scrollspeed << vp->zoom; }
-				if (y-15<0) { WP(w,vp_d).scrollpos_y += (y-15)*scrollspeed << vp->zoom; }
-				else if (15-(vp->height-y) > 0) { WP(w,vp_d).scrollpos_y += (15-(vp->height-y))*scrollspeed << vp->zoom; }
+				if (x - 15 < 0) {
+					WP(w, vp_d).scrollpos_x += (x - 15) * scrollspeed << vp->zoom;
+				} else if (15 - (vp->width - x) > 0) {
+					WP(w, vp_d).scrollpos_x += (15 - (vp->width - x)) * scrollspeed << vp->zoom;
+				}
+				if (y - 15 < 0) {
+					WP(w, vp_d).scrollpos_y += (y - 15) * scrollspeed << vp->zoom;
+				} else if (15 - (vp->height - y) > 0) {
+					WP(w,vp_d).scrollpos_y += (15 - (vp->height - y)) * scrollspeed << vp->zoom;
+				}
 #undef scrollspeed
 			}
 		}
@@ -1434,8 +1438,9 @@ static void MouseLoop(int click, int mousewheel)
 					_cursor.sprite != SPR_CURSOR_QUERY &&
 					_cursor.sprite != SPR_CURSOR_SIGN &&
 					_pause != 0 &&
-					!_cheats.build_in_pause.value)
-						return;
+					!_cheats.build_in_pause.value) {
+				return;
+			}
 
 			if (_thd.place_mode == 0) {
 				HandleViewportClicked(vp, x, y);

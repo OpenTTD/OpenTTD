@@ -42,7 +42,7 @@ void PlaceProc_BuyLand(TileIndex tile);
 void ShowPlayerTrains(PlayerID player, StationID station);
 void ShowTrainViewWindow(Vehicle *v);
 void ShowTrainDetailsWindow(Vehicle *v);
-void ShowOrdersWindow(Vehicle *v);
+void ShowOrdersWindow(const Vehicle* v);
 
 void ShowRoadVehViewWindow(Vehicle *v);
 
@@ -95,7 +95,7 @@ void ShowEstimatedCostOrIncome(int32 cost, int x, int y);
 void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y);
 
 void DrawStationCoverageAreaText(int sx, int sy, uint mask,int rad);
-void CheckRedrawStationCoverage(Window *w);
+void CheckRedrawStationCoverage(const Window* w);
 
 void ShowSmallMap(void);
 void ShowExtraViewPortWindow(void);

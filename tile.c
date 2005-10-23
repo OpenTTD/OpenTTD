@@ -41,10 +41,10 @@ uint GetTileSlope(TileIndex tile, uint *h)
 	if (min >= d) min = d;
 
 	r = 0;
-	if ((a -= min) != 0) { r += (--a << 4) + 8; }
-	if ((c -= min) != 0) { r += (--c << 4) + 4; }
-	if ((d -= min) != 0) { r += (--d << 4) + 2; }
-	if ((b -= min) != 0) { r += (--b << 4) + 1; }
+	if ((a -= min) != 0) r += (--a << 4) + 8;
+	if ((c -= min) != 0) r += (--c << 4) + 4;
+	if ((d -= min) != 0) r += (--d << 4) + 2;
+	if ((b -= min) != 0) r += (--b << 4) + 1;
 
 	if (h != NULL)
 		*h = min * 8;
