@@ -309,7 +309,7 @@ Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y);
 void DecreaseVehicleValue(Vehicle *v);
 void CheckVehicleBreakdown(Vehicle *v);
 void AgeVehicle(Vehicle *v);
-void MaybeReplaceVehicle(Vehicle *v);
+Vehicle * MaybeReplaceVehicle(Vehicle *v);
 
 void BeginVehicleMove(Vehicle *v);
 void EndVehicleMove(Vehicle *v);

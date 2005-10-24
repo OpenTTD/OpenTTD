@@ -551,7 +551,8 @@ void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u, bool building)
 /** Build a railroad vehicle.
  * @param x,y tile coordinates (depot) where rail-vehicle is built
  * @param p1 engine type id
- * @param p2 build only one engine, even if it is a dualheaded engine. It also prevents any free cars from being added to the train
+ * @param p2 bit 0 build only one engine, even if it is a dualheaded engine.
+          p2 bit 1 prevents any free cars from being added to the train
  */
 int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -647,7 +648,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			TrainConsistChanged(v);
 			UpdateTrainAcceleration(v);
 
-			if (!HASBIT(p2,0)) {	// do not move the cars if HASBIT(p2,0) is set
+			if (!HASBIT(p2, 1)) {	// check if the cars should be added to the new vehicle
 				NormalizeTrainVehInDepot(v);
 			}
 
@@ -3319,7 +3320,7 @@ void TrainEnterDepot(Vehicle *v, TileIndex tile)
 	v->load_unload_time_rem = 0;
 	v->cur_speed = 0;
 
-	MaybeReplaceVehicle(v);
+	v = MaybeReplaceVehicle(v);
 
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
 

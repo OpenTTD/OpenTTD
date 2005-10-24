@@ -2351,7 +2351,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 			e->keypress.cont = false;
 			break;
 		}
-		
+
 		// check to see if Command-Q has been pressed on a Mac
 		// must be done before checking if we are at the main menu
 		if ( (e->keypress.keycode == ('Q' | WKC_CTRL)) || (e->keypress.keycode == ('Q' | WKC_META)) )

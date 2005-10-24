@@ -27,6 +27,44 @@
 #define INVALID_COORD (-0x8000)
 #define GEN_HASH(x,y) (((x & 0x1F80)>>7) + ((y & 0xFC0)))
 
+/*
+ *	These command macros are used to call vehicle type specific commands with non type specific commands
+ *	it should be used like: DoCommandP(x, y, p1, p2, flags, CMD_STARTSTOP_VEH(v->type))
+ *	that line will start/stop a vehicle nomatter what type it is
+ *	VEH_Train is used as an offset because the vehicle type values doesn't start with 0
+ */
+
+#define CMD_BUILD_VEH(x)		   _veh_build_proc_table[ x - VEH_Train]
+#define CMD_SELL_VEH(x)				_veh_sell_proc_table[ x - VEH_Train]
+#define CMD_STARTSTOP_VEH(x)  _veh_start_stop_proc_table[ x - VEH_Train]
+#define CMD_REFIT_VEH(x)		   _veh_refit_proc_table[ x - VEH_Train]
+
+static uint32 const _veh_build_proc_table[] = {
+	CMD_BUILD_RAIL_VEHICLE,
+	CMD_BUILD_ROAD_VEH,
+	CMD_BUILD_SHIP,
+	CMD_BUILD_AIRCRAFT,
+};
+static uint32 const _veh_sell_proc_table[] = {
+	CMD_SELL_RAIL_WAGON,
+	CMD_SELL_ROAD_VEH,
+	CMD_SELL_SHIP,
+	CMD_SELL_AIRCRAFT,
+};
+static uint32 const _veh_start_stop_proc_table[] = {
+	CMD_START_STOP_TRAIN,
+	CMD_START_STOP_ROADVEH,
+	CMD_START_STOP_SHIP,
+	CMD_START_STOP_AIRCRAFT,
+};
+static uint32 const _veh_refit_proc_table[] = {
+	CMD_REFIT_RAIL_VEHICLE,
+	0,	// road vehicles can't be refitted
+	CMD_REFIT_SHIP,
+	CMD_REFIT_AIRCRAFT,
+};
+
+
 enum {
 	/* Max vehicles: 64000 (512 * 125) */
 	VEHICLES_POOL_BLOCK_SIZE_BITS = 9,       /* In bits, so (1 << 9) == 512 */
@@ -1373,297 +1411,6 @@ extern int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p
 extern int32 CmdRefitShip(int x, int y, uint32 flags, uint32 p1, uint32 p2);
 extern int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2);
 
-
-
-/** Replaces a vehicle (used to be called autorenew).
- * Must be called with _current_player set to the owner of the vehicle
- * @param v Vehicle to replace
- */
-int32 ReplaceVehicle(Vehicle *v)
-{
-	Player *p = GetPlayer(v->owner);
-	EngineID old_engine_type = v->engine_type;
-	EngineID new_engine_type = p->engine_replacement[old_engine_type];
-	Vehicle *u, *first;
-	Engine *e;
-	int cost, build_cost, rear_engine_cost = 0;
-
-	// If replacing due to age only, use the same type :-)
-	if (new_engine_type == INVALID_ENGINE)
-		new_engine_type = old_engine_type;
-
-	u = v;
-
-	/* First we make sure that it's a valid type the user requested
-	 * check that it's an engine that is in the engine array */
-	if (!IsEngineIndex(new_engine_type)) return CMD_ERROR;
-
-	// check that the new vehicle type is the same as the original one
-	if (v->type != GetEngine(new_engine_type)->type) return CMD_ERROR;
-
-	// check that it's the vehicle's owner that requested the replace
-	if (!CheckOwnership(v->owner)) return CMD_ERROR;
-
-	// makes sure that we do not replace a plane with a helicopter or vise versa
-	if (v->type == VEH_Aircraft) {
-		if (HASBIT(AircraftVehInfo(old_engine_type)->subtype, 0) != HASBIT(AircraftVehInfo(new_engine_type)->subtype, 0)) return CMD_ERROR;
-	}
-
-	// makes sure that the player can actually buy the new engine. Renewing is still allowed to outdated engines
-	if (!HASBIT(GetEngine(new_engine_type)->player_avail, v->owner) && old_engine_type != new_engine_type) return CMD_ERROR;
-
-	switch (v->type) {
-		case VEH_Train:    build_cost = EstimateTrainCost(RailVehInfo(new_engine_type)); break;
-		case VEH_Road:     build_cost = EstimateRoadVehCost(new_engine_type);            break;
-		case VEH_Ship:     build_cost = EstimateShipCost(new_engine_type);               break;
-		case VEH_Aircraft: build_cost = EstimateAircraftCost(new_engine_type);           break;
-		default: return CMD_ERROR;
-	}
-
-	/* In a rare situation, when 2 clients are connected to 1 company and have the same
-	    settings, a vehicle can be replaced twice.. check if this is the situation here */
-	if (old_engine_type == new_engine_type && v->age == 0) return CMD_ERROR;
-
-	if ( v->type == VEH_Train ) {
-		first = GetFirstVehicleInChain(v);
-		u = GetLastVehicleInChain(v);
-		if ( RailVehInfo(new_engine_type)->flags & RVI_MULTIHEAD )
-			build_cost = build_cost >> 1;   //multiheaded engines have EstimateTrainCost() for both engines
-
-		if ( old_engine_type != new_engine_type ) {
-
-			// prevent that the rear engine can get replaced to something else than the front engine
-			if ( v->u.rail.first_engine != INVALID_VEHICLE && RailVehInfo(old_engine_type)->flags & RVI_MULTIHEAD && RailVehInfo(old_engine_type)->flags ) {
-				if ( first->engine_type != new_engine_type ) return CMD_ERROR;
-			}
-
-			// checks if the engine is the first one
-			if ( v->u.rail.first_engine == INVALID_VEHICLE ) {
-				if ( RailVehInfo(new_engine_type)->flags & RVI_MULTIHEAD ) {
-					if ( u->engine_type == old_engine_type && v->next != NULL) {
-						rear_engine_cost = build_cost - u->value;
-					} else {
-						rear_engine_cost = build_cost;
-					}
-				} else {
-					if ( u->engine_type == old_engine_type && RailVehInfo(old_engine_type)->flags & RVI_MULTIHEAD) {
-						if (v->next != NULL) rear_engine_cost = -(int32)u->value;
-					}
-				}
-			 }
-		}
-	}
-
-	/* Check if there is money for the upgrade.. if not, give a nice news-item
-	    (that is needed, because this CMD is called automaticly) */
-	if ( p->money64 < (int32)(p->engine_renew_money + build_cost + rear_engine_cost - v->value)) {
-		if (( _local_player == v->owner ) && ( v->unitnumber != 0 )) {  //v->unitnumber = 0 for train cars
-			StringID message;
-			SetDParam(0, v->unitnumber);
-			switch (v->type) {
-				case VEH_Train:    message = STR_TRAIN_AUTORENEW_FAILED;       break;
-				case VEH_Road:     message = STR_ROADVEHICLE_AUTORENEW_FAILED; break;
-				case VEH_Ship:     message = STR_SHIP_AUTORENEW_FAILED;        break;
-				case VEH_Aircraft: message = STR_AIRCRAFT_AUTORENEW_FAILED;    break;
-				// This should never happen
-				default: message = 0; break;
-			}
-
-			AddNewsItem(message, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0), v->index, 0);
-		}
-
-		return CMD_ERROR;
-	}
-	cost = build_cost - v->value + rear_engine_cost;
-
-	/* We do not really buy a new vehicle, we upgrade the old one */
-	e = GetEngine(new_engine_type);
-
-	v->reliability = e->reliability;
-	v->reliability_spd_dec = e->reliability_spd_dec;
-	v->age = 0;
-
-	v->date_of_last_service = _date;
-	v->build_year = _cur_year;
-
-	v->value = build_cost;
-
-	if (v->engine_type != new_engine_type) {
-		byte sprite = v->spritenum;
-		byte cargo_type = v->cargo_type;
-		v->engine_type = new_engine_type;
-		v->max_age = e->lifelength * 366;
-
-		/* Update limits of the vehicle (for when upgraded) */
-		switch (v->type) {
-			case VEH_Train: {
-				const RailVehicleInfo *rvi = RailVehInfo(new_engine_type);
-				const RailVehicleInfo *rvi2 = RailVehInfo(old_engine_type);
-				byte capacity = rvi2->capacity;
-				Vehicle *first = GetFirstVehicleInChain(v);
-
-				//if (v->owner == _local_player) InvalidateWindowClasses(WC_TRAINS_LIST);
-				/* rvi->image_index is the new sprite for the engine. Adding +1 makes the engine head the other way
-				if it is a multiheaded engine (rear engine)
-				(rvi->flags & RVI_MULTIHEAD && sprite - rvi2->image_index) is true if the engine is heading the other way, otherwise 0*/
-				v->spritenum = rvi->image_index + ((rvi->flags & RVI_MULTIHEAD && sprite - rvi2->image_index) ? 1 : 0);
-
-				// turn the last engine in a multiheaded train if needed
-				if (v->next == NULL && v->u.rail.first_engine != INVALID_VEHICLE && rvi->flags & RVI_MULTIHEAD && v->spritenum == rvi->image_index)
-					v->spritenum++;
-
-				v->cargo_type = rvi->cargo_type;
-				v->cargo_cap = rvi->capacity;
-				v->max_speed = rvi->max_speed;
-
-				v->u.rail.railtype = e->railtype;
-
-				// 0x0100 means that we skip the check for being stopped inside the depot
-				// since we do not stop it for autorefitting
-				if (v->cargo_type != cargo_type && capacity) {
-					// BUG: somehow v->index is not transfered properly
-					//CmdRefitRailVehicle(v->x_pos, v->y_pos, DC_EXEC, v->index , cargo_type + 0x0100 );
-					v->cargo_type = cargo_type; // workaround, but it do not check the refit table
-				} else {
-					v->cargo_type = rvi->cargo_type;
-				}
-#if 0
-// we disable this because they can crash the game. They will be fixed at a later date
-				if ( rvi2->flags & RVI_MULTIHEAD && !(rvi->flags & RVI_MULTIHEAD) &&  v->index == first->index) {
-					if (old_engine_type == u->engine_type ) {
-						Vehicle *w;
-
-						u = GetLastVehicleInChain(v);
-						w = GetPrevVehicleInChain(u);
-						w->next = NULL;
-						DeleteVehicle(u);
-					}
-				}
-
-				if ( rvi->flags & RVI_MULTIHEAD && rvi2->flags & RVI_MULTIHEAD &&  v->index == first->index ) {
-					CmdReplaceVehicle(x, y, flags, u->index, p2);
-				}
-
-				if ( rvi->flags & RVI_MULTIHEAD && !(rvi2->flags & RVI_MULTIHEAD) &&  v->index == first->index ) {
-					if ( old_engine_type != u->engine_type ) {
-						Vehicle *w;
-						if ( (w=AllocateVehicle()) != NULL ) {
-							AddRearEngineToMultiheadedTrain(v,w, false);
-							u->next = w;
-						}
-					}
-				}
-#endif
-
-				// recalculate changed train values
-				TrainConsistChanged(first);
-				InvalidateWindowClasses(WC_TRAINS_LIST);
-				UpdateTrainAcceleration(first);
-				break;
-			}
-
-			case VEH_Road: {
-				const RoadVehicleInfo *rvi = RoadVehInfo(new_engine_type);
-
-				v->spritenum = rvi->image_index;
-				v->cargo_type = rvi->cargo_type;
-				v->cargo_cap = rvi->capacity;
-				v->max_speed = rvi->max_speed;
-				InvalidateWindowClasses(WC_ROADVEH_LIST);
-				break;
-			}
-
-			case VEH_Ship: {
-				const ShipVehicleInfo *svi = ShipVehInfo(new_engine_type);
-
-				v->spritenum = svi->image_index;
-				v->cargo_type = svi->cargo_type;
-				v->cargo_cap = svi->capacity;
-				v->max_speed = svi->max_speed;
-
-				// 0x0100 means that we skip the check for being stopped inside the depot
-				// since we do not stop it for autorefitting
-				if (v->cargo_type != cargo_type)
-					CmdRefitShip(v->x_pos, v->y_pos, DC_EXEC, v->index , cargo_type + 0x0100 );
-				InvalidateWindowClasses(WC_SHIPS_LIST);
-				break;
-			}
-
-			case VEH_Aircraft: {
-				const AircraftVehicleInfo *avi = AircraftVehInfo(new_engine_type);
-				Vehicle *u;
-
-				v->max_speed = avi->max_speed;
-				v->acceleration = avi->acceleration;
-				v->spritenum = avi->image_index;
-
-					if ( cargo_type == CT_PASSENGERS ) {
-						v->cargo_cap = avi->passenger_capacity;
-						u = v->next;
-						u->cargo_cap = avi->mail_capacity;
-					} else {
-						// 0x0100 means that we skip the check for being stopped inside the hangar
-						// since we do not stop it for autorefitting
-						CmdRefitAircraft(v->x_pos, v->y_pos, DC_EXEC, v->index , cargo_type + 0x0100 );
-					}
-				InvalidateWindowClasses(WC_AIRCRAFT_LIST);
-				break;
-			}
-
-			default: return CMD_ERROR;
-		}
-		// makes sure that the cargo is still valid compared to new capacity
-		if (v->cargo_count != 0) {
-			if ( v->cargo_type != cargo_type )
-				v->cargo_count = 0;
-			else if ( v->cargo_count > v->cargo_cap )
-				v->cargo_count = v->cargo_cap;
-		}
-	}
-
-	InvalidateWindow(WC_REPLACE_VEHICLE, v->type);
-	ResortVehicleLists();
-	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-
-	//needs to be down here because refitting will change SET_EXPENSES_TYPE if called
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
-	SubtractMoneyFromPlayer(cost);
-	if (IsLocalPlayer()) ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost);
-
-	return cost;
-}
-
-void MaybeReplaceVehicle(Vehicle *v)
-{
-	Player *p = GetPlayer(v->owner);
-	// uncomment next line if you want to see what engine type just entered a depot
-	//printf("engine type: %d\n", v->engine_type);
-
-	// A vehicle is autorenewed when it it gets the amount of months
-	//  give by _patches.autorenew_months away for his max age.
-	//  Standard is -6, meaning 6 months before his max age
-	//  It can be any value between -12 and 12.
-	//  Here it also checks if the vehicles is listed for replacement
-	if (!p->engine_renew || v->age - v->max_age < (p->engine_renew_months * 30)) {  //replace if engine is too old
-		if (p->engine_replacement[v->engine_type] == INVALID_ENGINE && v->type != VEH_Train) // updates to a new model
-			return;
-	}
-	/* Now replace the vehicle */
-	_current_player = v->owner;
-
-	if ( v->type != VEH_Train ) {
-		ReplaceVehicle(v);
-	} else {
-	// checks if any of the engines in the train are either old or listed for replacement
-		do {
-			if (p->engine_replacement[v->engine_type] != INVALID_ENGINE || (p->engine_renew && (v->age - v->max_age) > (p->engine_renew_months * 30))) {
-				ReplaceVehicle(v);
-			}
-		} while ((v=v->next) != NULL);
-	}
-	_current_player = OWNER_NONE;
-}
-
 int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 veh1_veh2, uint32 mode);
 int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2);
 int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2);
@@ -1671,10 +1418,9 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2);
 int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2);
 int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2);
 
-
 typedef int32 VehBuildProc(int x, int y, uint32 flags, uint32 p1, uint32 p2);
 
-static VehBuildProc * const _veh_build_proc_table[] = {
+static VehBuildProc * const _veh_build_cmd_table[] = {
 	CmdBuildRailVehicle,
 	CmdBuildRoadVeh,
 	CmdBuildShip,
@@ -1724,9 +1470,9 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		default: return CMD_ERROR;
 	}
 
-	proc = _veh_build_proc_table[v->type - VEH_Train];
+	proc = _veh_build_cmd_table[v->type - VEH_Train];
 	new_id = _new_vehicle_id_proc_table[v->type - VEH_Train];
-	total_cost = proc(x, y, flags, v->engine_type, 1);
+	total_cost = proc(x, y, flags, v->engine_type, 3);
 	if (total_cost == CMD_ERROR)
 		return CMD_ERROR;
 
@@ -1744,7 +1490,7 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		// now we handle the cars
 		v = v->next;
 		while (v != NULL) {
-			cost = proc(x, y, flags, v->engine_type, 1);
+			cost = proc(x, y, flags, v->engine_type, 3);
 			if (cost == CMD_ERROR)
 				return CMD_ERROR;
 			total_cost += cost;
@@ -1777,6 +1523,170 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			DoCommandByTile(wfront->tile, wfront->index, needs_refitting, DC_EXEC, refit_command);
 	}
 	return total_cost;
+}
+
+/* Replaces a vehicle (used to be called autorenew)
+ * This function is only called from MaybeReplaceVehicle(), which is the next one
+ * Must be called with _current_player set to the owner of the vehicle
+ * @param w Vehicle to replace
+ * @param flags is the flags to use when calling DoCommand(). Mainly DC_EXEC counts
+ *	  return value is cost of the replacement or CMD_ERROR
+ */
+static int32 ReplaceVehicle(Vehicle **w, byte flags)
+{
+	int32 cost;
+	const Vehicle *old_v = *w;
+	const Player *p = GetPlayer(old_v->owner);
+	EngineID new_engine_type;
+	const UnitID cached_unitnumber = old_v->unitnumber;
+	bool new_front = false;
+	Vehicle *new_v = NULL;
+
+	new_engine_type = p->engine_replacement[old_v->engine_type] == INVALID_ENGINE ? old_v->engine_type: p->engine_replacement[old_v->engine_type];
+
+	cost = DoCommand(old_v->x_pos, old_v->y_pos, new_engine_type, 2, flags, CMD_BUILD_VEH(old_v->type));
+
+	//check if the new engine is buildable
+	if (CmdFailed(cost)) return cost;
+
+	if (flags & DC_EXEC) {
+		new_v = GetVehicle(*_new_vehicle_id_proc_table[old_v->type - VEH_Train]);
+		*w = new_v;
+
+		/* refit if needed */
+		if (new_v->type != VEH_Road) { // road vehicles can't be refitted
+			if (old_v->cargo_type != new_v->cargo_type && old_v->cargo_cap != 0 && new_v->cargo_cap != 0) {// some train engines do not have cargo capacity
+				DoCommand(0, 0, new_v->index, old_v->cargo_type, DC_EXEC, CMD_REFIT_VEH(new_v->type));
+			}
+		}
+
+		/* move the cargo to the new vehicle */
+		if (old_v->cargo_type == new_v->cargo_type && old_v->cargo_count != 0) {
+			// move the cargo to the new vehicle
+			new_v->cargo_count = min(old_v->cargo_count, new_v->cargo_cap);
+			new_v->cargo_source = old_v->cargo_source;
+
+			// copy the age of the cargo
+			new_v->cargo_days = old_v->cargo_days;
+			new_v->day_counter = old_v->day_counter;
+			new_v->tick_counter = old_v->tick_counter;
+		}
+
+		if (old_v->type == VEH_Train && old_v->u.rail.first_engine != INVALID_VEHICLE) {
+			/* this is a railcar. We need to move the car into the train
+			 * We add the new engine after the old one instead of replacing it. It will give the same result anyway when we
+			 * sell the old engine in a moment
+			 */
+			DoCommand(0, 0, (old_v->index << 16) | new_v->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+		} else {
+			// copy/clone the orders
+			DoCommand(0, 0, (old_v->index << 16) | new_v->index, IsOrderListShared(old_v) ? CO_SHARE : CO_COPY, DC_EXEC, CMD_CLONE_ORDER);
+			new_v->cur_order_index = old_v->cur_order_index;
+			ChangeVehicleViewWindow(old_v, new_v);
+			new_front = true;
+
+			new_v->current_order = old_v->current_order;
+			if (old_v->type == VEH_Train){
+				// move the entire train to the new engine, including the old engine. It will be sold in a moment anyway
+				DoCommand(0, 0, (new_v->index << 16) | old_v->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+			}
+		}
+	}
+
+	// sell the engine/ find out how much you get for the old engine
+	cost += DoCommand(0, 0, old_v->index, 0, flags, CMD_SELL_VEH(old_v->type));
+
+	if (new_front) {
+		// now we assign the old unitnumber to the new vehicle
+		new_v->unitnumber = cached_unitnumber;
+	}
+
+	return cost;
+}
+
+/** replaces a vehicle if it's set for autoreplace or is too old(used to be called autorenew)
+* @param v The vehicle to replace
+*	if the vehicle is a train, v needs to be the front engine
+*	return value is a pointer to the new vehicle, which is the same as the argument if nothing happened
+*/
+Vehicle * MaybeReplaceVehicle(Vehicle *v)
+{
+	Vehicle *w;
+	const Player *p = GetPlayer(v->owner);
+	byte flags = 0;
+	int32 cost = 0, temp_cost = 0;
+
+	_current_player = v->owner;
+
+	assert(v->type == VEH_Train || v->type == VEH_Road || v->type == VEH_Ship || v->type == VEH_Aircraft);
+
+	DoCommand(0, 0, v->index, 0, DC_EXEC, CMD_STARTSTOP_VEH(v->type));
+
+	while (true) {
+		w = v;
+		do {
+			// check if the vehicle should be replaced
+			if (!p->engine_renew || w->age - w->max_age < (p->engine_renew_months * 30)		//replace if engine is too old
+				|| (w->max_age == 0)) {														// rail cars got a max age of 0
+				if (p->engine_replacement[w->engine_type] == INVALID_ENGINE)				// updates to a new model
+					continue;
+			}
+
+			/* if we are looking at the rear end of a multiheaded locomotive, skip it */
+			if (w->type == VEH_Train) {
+				const RailVehicleInfo *rvi = RailVehInfo(w->engine_type);
+				if (rvi->flags & RVI_MULTIHEAD && rvi->image_index == w->spritenum - 1)
+					continue;
+			}
+
+			/* Now replace the vehicle */
+			temp_cost = ReplaceVehicle(&w, flags);
+
+			if (flags & DC_EXEC && !(w->type == VEH_Train && w->u.rail.first_engine != INVALID_VEHICLE)){
+				// now we bought a new engine and sold the old one. We need to fix the pointers in order to avoid pointing to the old one
+				// for trains: these pointers should point to the front engine and not the cars
+				v = w;
+			}
+
+			if (CmdFailed(temp_cost))
+				break;
+
+			cost += temp_cost;
+		} while (w->type == VEH_Train && (w=w->next) != NULL);
+
+		if (!(flags & DC_EXEC) && (CmdFailed(temp_cost) || p->money64 < (int32)(cost + p->engine_renew_money) || cost == 0)) {
+			if (p->money64 < (int32)(cost + p->engine_renew_money) && ( _local_player == v->owner )) {
+				StringID message;
+				SetDParam(0, v->unitnumber);
+				switch (v->type) {
+					case VEH_Train:    message = STR_TRAIN_AUTORENEW_FAILED;       break;
+					case VEH_Road:     message = STR_ROADVEHICLE_AUTORENEW_FAILED; break;
+					case VEH_Ship:     message = STR_SHIP_AUTORENEW_FAILED;        break;
+					case VEH_Aircraft: message = STR_AIRCRAFT_AUTORENEW_FAILED;    break;
+						// This should never happen
+					default: NOT_REACHED(); message = 0; break;
+				}
+
+				AddNewsItem(message, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0), v->index, 0);
+			}
+			DoCommand(0, 0, v->index, 0, DC_EXEC, CMD_STARTSTOP_VEH(v->type));	//we start the vehicle again
+			return v;
+		}
+
+		if (flags & DC_EXEC) {
+			break;	// we are done replacing since the loop ran once with DC_EXEC
+		}
+		// now we redo the loop, but this time we actually do stuff since we know that we can do it
+		flags |= DC_EXEC;
+	}
+
+	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
+	SubtractMoneyFromPlayer(cost);
+	if (IsLocalPlayer()) ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost);
+
+	DoCommand(0, 0, v->index, 0, DC_EXEC, CMD_STARTSTOP_VEH(v->type));	//we start the vehicle again
+	_current_player = OWNER_NONE;
+	return v;
 }
 
 

@@ -1307,7 +1307,7 @@ static void AircraftEnterHangar(Vehicle *v)
 	ServiceAircraft(v);
 	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 
-	MaybeReplaceVehicle(v);
+	v = MaybeReplaceVehicle(v);
 
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
 
