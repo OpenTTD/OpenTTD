@@ -1099,7 +1099,7 @@ void ChangeVehicleViewWindow(const Vehicle *from_v, const Vehicle *to_v)
 
 	if (w != NULL) {
 		w->window_number = to_v->index;
-		WP(w, vp_d).follow_vehicle = (VehicleID)(w->window_number & 0xFFFF);
+		WP(w, vp_d).follow_vehicle = to_v->index;	// tell the viewport to follow the new vehicle
 		SetWindowDirty(w);
 
 		w = FindWindowById(WC_VEHICLE_ORDERS, from_v->index);
