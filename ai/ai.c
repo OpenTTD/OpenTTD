@@ -77,7 +77,7 @@ void AI_PutCommandInQueue(byte player, uint tile, uint32 p1, uint32 p2, uint pro
  */
 int32 AI_DoCommand(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 {
-	byte old_lp;
+	PlayerID old_lp;
 	int32 res = 0;
 
 	/* If you enable DC_EXEC with DC_QUERY_COST you are a really strange
@@ -118,7 +118,7 @@ int32 AI_DoCommand(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 /**
  * Run 1 tick of the AI. Don't overdo it, keep it realistic.
  */
-static void AI_RunTick(byte player)
+static void AI_RunTick(PlayerID player)
 {
 	extern void AiNewDoGameLoop(Player *p);
 
@@ -181,7 +181,7 @@ void AI_RunGameLoop(void)
 /**
  * A new AI sees the day of light. You can do here what ever you think is needed.
  */
-void AI_StartNewAI(byte player)
+void AI_StartNewAI(PlayerID player)
 {
 	/* Called if a new AI is booted */
 	_ai_player[player].active = true;
@@ -190,7 +190,7 @@ void AI_StartNewAI(byte player)
 /**
  * This AI player died. Give it some chance to make a final puf.
  */
-void AI_PlayerDied(byte player)
+void AI_PlayerDied(PlayerID player)
 {
 	/* Called if this AI died */
 	_ai_player[player].active = false;

@@ -3183,14 +3183,15 @@ static void AiStateBuildRoadVehicles(Player *p)
 	const AiDefaultBlockData *ptr;
 	TileIndex tile;
 	uint loco_id;
-	int veh, i;
+	EngineID veh;
+	int i;
 
 	ptr = _road_default_block_data[p->ai.src.cur_building_rule]->data;
 	for(;ptr->mode != 0;ptr++) {}
 	tile = TILE_ADD(p->ai.src.use_tile, ToTileIndexDiff(ptr->tileoffs));
 
 	veh = AiChooseRoadVehToBuild(p->ai.cargo_type, p->player_money, tile);
-	if (veh == -1) {
+	if (veh == INVALID_ENGINE) {
 		p->ai.state = AIS_0;
 		return;
 	}

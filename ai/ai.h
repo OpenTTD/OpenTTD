@@ -37,8 +37,8 @@ VARDEF AIStruct _ai;
 VARDEF AIPlayer _ai_player[MAX_PLAYERS];
 
 // ai.c
-void AI_StartNewAI(byte player);
-void AI_PlayerDied(byte player);
+void AI_StartNewAI(PlayerID player);
+void AI_PlayerDied(PlayerID player);
 void AI_RunGameLoop(void);
 void AI_Initialize(void);
 void AI_Uninitialize(void);
