@@ -617,20 +617,18 @@ void DeletePlayerWindows(PlayerID pi)
 
 byte GetPlayerRailtypes(PlayerID p)
 {
-	Engine *e;
-	int rt = 0;
-	int i;
+	byte rt = 0;
+	uint i;
 
-	for(e = _engines, i = 0; i != lengthof(_engines); e++, i++) {
-		if (!HASBIT(e->player_avail, p))
-			continue;
+	for (i = 0; i != TOTAL_NUM_ENGINES; i++) {
+		const Engine* e = GetEngine(i);
 
-		/* Skip all wagons */
-		if ((i >= 27 && i < 54) || (i >= 57 && i < 84) || (i >= 89 && i < 116))
-			continue;
-
-		assert(e->railtype < RAILTYPE_END);
-		SETBIT(rt, e->railtype);
+		if (e->type == VEH_Train &&
+				HASBIT(e->player_avail, p) &&
+				!(RailVehInfo(i)->flags & RVI_WAGON)) {
+			assert(e->railtype < RAILTYPE_END);
+			SETBIT(rt, e->railtype);
+		}
 	}
 
 	return rt;
