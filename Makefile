@@ -494,16 +494,22 @@ STRGEN_FLAGS=
 endif
 
 
-# OSX path setup
+# OSX specific setup
 ifdef OSX
-ifndef SECOND_DATA_PATH
-SECOND_DATA_PATH:="$(OSXAPP)/Contents/Data/"
-endif
-ifndef CUSTOM_LANG_DIR
-ifndef DEDICATED
-CUSTOM_LANG_DIR:="$(OSXAPP)/Contents/Lang/"
-endif
-endif
+	ifndef DEDICATED
+		LIBS += -framework QuickTime
+	endif
+
+	# OSX path setup
+	ifndef SECOND_DATA_PATH
+		SECOND_DATA_PATH:="$(OSXAPP)/Contents/Data/"
+	endif
+
+	ifndef CUSTOM_LANG_DIR
+		ifndef DEDICATED
+		CUSTOM_LANG_DIR:="$(OSXAPP)/Contents/Lang/"
+		endif
+	endif
 endif
 
 ifdef MIDI
