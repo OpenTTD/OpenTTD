@@ -821,13 +821,22 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 					}
 				}
 
-				if ( selected_id[0] == selected_id[1] || p->engine_replacement[selected_id[0]] == selected_id[1]
-					|| selected_id[0] == -1 || selected_id[1] == -1 )
+				// Disable the "Start Replacing" button if:
+				//    Either list is empty
+				// or Both lists have the same vehicle selected
+				// or The right list (new replacement) has the existing replacement vehicle selected
+				if (selected_id[0] == -1 || selected_id[1] == -1 ||
+						selected_id[0] == selected_id[1] ||
+						p->engine_replacement[selected_id[0]] == selected_id[1])
 					SETBIT(w->disabled_state, 4);
 				else
 					CLRBIT(w->disabled_state, 4);
 
-				if (p->engine_replacement[selected_id[0]] == INVALID_ENGINE || selected_id[0] == -1)
+				// Disable the "Stop Replacing" button if:
+				//    The left list (existing vehicle) is empty
+				// or The selected vehicle has no replacement set up
+				if (selected_id[0] == -1 ||
+						p->engine_replacement[selected_id[0]] == INVALID_ENGINE)
 					SETBIT(w->disabled_state, 6);
 				else
 					CLRBIT(w->disabled_state, 6);
