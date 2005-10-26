@@ -281,9 +281,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT: {
 		const Industry *i;
 		StringID str;
-		// in editor, use bulldoze to destroy industry
-		// Destroy Industry button costing money removed per request of dominik
-		//w->disabled_state = (_patches.extra_dynamite && !_networking && _game_mode != GM_EDITOR) ? 0 : (1 << 6);
+
 		i = GetIndustry(w->window_number);
 		SetDParam(0, w->window_number);
 		DrawWindowWidgets(w);
@@ -429,8 +427,6 @@ static const Widget _industry_view_widgets[] = {
 {     WWT_IMGBTN,   RESIZE_NONE,     9,     0,   259,   106,   147, 0x0,				STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,     9,     0,   129,   148,   159, STR_00E4_LOCATION,	STR_482C_CENTER_THE_MAIN_VIEW_ON},
 {     WWT_IMGBTN,   RESIZE_NONE,     9,   130,   259,   148,   159, 0x0,				STR_NULL},
-// Destroy Industry button costing money removed per request of dominik
-//{ WWT_PUSHTXTBTN,   RESIZE_NONE,     9,   130,   259,   148,   159, STR_INDUSTRYDIR_DESTROY, STR_482C_DESTROY_INDUSTRY},
 {   WIDGETS_END},
 };
 

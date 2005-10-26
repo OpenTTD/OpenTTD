@@ -467,16 +467,11 @@ typedef struct {
 	uint best_length;
 } PathFindShip;
 
-//extern void dbg_store_path();
-
 static bool ShipTrackFollower(TileIndex tile, PathFindShip *pfs, int track, uint length, byte *state)
 {
 	// Found dest?
 	if (tile == pfs->dest_coords) {
 		pfs->best_bird_dist = 0;
-
-//		if (length < pfs->best_length)
-//			dbg_store_path();
 
 		pfs->best_length = minu(pfs->best_length, length);
 		return true;

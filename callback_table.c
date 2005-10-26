@@ -26,7 +26,6 @@ CommandCallback CcBuildCanal;
 CommandCallback CcPlaySound10;
 CommandCallback CcPlaceSign;
 CommandCallback CcTerraform;
-//CommandCallback CcDemolish;
 CommandCallback CcBuildTown;
 
 /* rail_gui.c */
