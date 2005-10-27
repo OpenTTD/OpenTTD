@@ -1655,7 +1655,7 @@ Vehicle * MaybeReplaceVehicle(Vehicle *v)
 		} while (w->type == VEH_Train && (w=w->next) != NULL);
 
 		if (!(flags & DC_EXEC) && (CmdFailed(temp_cost) || p->money64 < (int32)(cost + p->engine_renew_money) || cost == 0)) {
-			if (p->money64 < (int32)(cost + p->engine_renew_money) && ( _local_player == v->owner )) {
+			if (p->money64 < (int32)(cost + p->engine_renew_money) && ( _local_player == v->owner ) && cost != 0) {
 				StringID message;
 				SetDParam(0, v->unitnumber);
 				switch (v->type) {
