@@ -312,7 +312,9 @@ char *FiosBrowseTo(const FiosItem *item)
 			break;
 
 		case FIOS_TYPE_DIRECT:
-			sprintf(path, "%s\\", item->name);
+			sprintf(path, "%s/", item->name);
+			s = strrchr(path, '/');
+			if (s[1] == '\0') s[0] = '\0'; // strip trailing slash
 			break;
 
 		case FIOS_TYPE_FILE:
