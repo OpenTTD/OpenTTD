@@ -163,13 +163,11 @@ void CcBuildLoco(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 void CcCloneTrain(bool success, uint tile, uint32 p1, uint32 p2)
 {
-	Vehicle *v;
+	if (success) {
+		const Vehicle* v = GetVehicle(_new_aircraft_id);
 
-	if (!success)
-		return;
-
-	v = GetVehicle(_new_train_id);
-	ShowTrainViewWindow(v);
+		ShowTrainViewWindow(v);
+	}
 }
 
 static void engine_drawing_loop(int *x, int *y, int *pos, int *sel,
@@ -604,40 +602,29 @@ static void TrainDepotClickTrain(Window *w, int x, int y)
  * @param *v is the original vehicle to clone
  * @param *w is the window of the depot where the clone is build
  */
-static bool HandleCloneVehClick(Vehicle *v, Window *w)
+static void HandleCloneVehClick(const Vehicle* v, const Window* w)
 {
-
-	if (!v){
-		return false;
-	}
+	if (v == NULL || v->type != VEH_Train) return;
 
 	// for train vehicles: subtype 0 for locs and not zero for others
-	if (v->type == VEH_Train && v->subtype != 0) {
+	if (v->subtype != TS_Front_Engine) {
 		v = GetFirstVehicleInChain(v);
-		if (v->subtype != 0) // This happens when clicking on a train in depot with no loc attached
-			return false;
-	}else{
-		if (v->type != VEH_Train) {
-			// it's not a train, Do Nothing
-			return false;
-		}
+		// Do nothing when clicking on a train in depot with no loc attached
+		if (v->subtype != TS_Front_Engine) return;
 	}
 
-    DoCommandP(w->window_number, v->index, _ctrl_pressed ? 1 : 0, CcCloneTrain, CMD_CLONE_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));
+	DoCommandP(w->window_number, v->index, _ctrl_pressed ? 1 : 0, CcCloneTrain,
+		CMD_CLONE_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE)
+	);
 
 	ResetObjectToPlace();
-
-	return true;
 }
 
-static void ClonePlaceObj(uint tile, Window *w)
+static void ClonePlaceObj(TileIndex tile, const Window* w)
 {
-	Vehicle *v;
+	Vehicle* v = CheckMouseOverVehicle();
 
-
-	v = CheckMouseOverVehicle();
-	if (v && HandleCloneVehClick(v, w))
-		return;
+	if (v != NULL) HandleCloneVehClick(v, w);
 }
 
 static void TrainDepotWndProc(Window *w, WindowEvent *e)
@@ -686,11 +673,12 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 
 	// check if a vehicle in a depot was clicked..
 	case WE_MOUSELOOP: {
-		Vehicle *v = _place_clicked_vehicle;
-	// since OTTD checks all open depot windows, we will make sure that it triggers the one with a clicked clone button
+		const Vehicle* v = _place_clicked_vehicle;
+
+		// since OTTD checks all open depot windows, we will make sure that it triggers the one with a clicked clone button
 		if (v != NULL && HASBIT(w->click_state, 9)) {
 			_place_clicked_vehicle = NULL;
-			HandleCloneVehClick( v, w);
+			HandleCloneVehClick(v, w);
 		}
 	} break;
 
@@ -907,6 +895,8 @@ static const Widget _train_view_widgets[] = {
 { WIDGETS_END }
 };
 
+static void ShowTrainDetailsWindow(const Vehicle* v);
+
 static void TrainViewWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -1063,12 +1053,11 @@ static const WindowDesc _train_view_desc = {
 	TrainViewWndProc
 };
 
-void ShowTrainViewWindow(Vehicle *v)
+void ShowTrainViewWindow(const Vehicle* v)
 {
-	Window *w;
+	Window* w = AllocateWindowDescFront(&_train_view_desc,v->index);
 
-	w = AllocateWindowDescFront(&_train_view_desc,v->index);
-	if (w) {
+	if (w != NULL) {
 		w->caption_color = v->owner;
 		AssignWindowViewport(w, 3, 17, 0xE2, 0x66, w->window_number | (1 << 31), 0);
 	}
@@ -1320,7 +1309,7 @@ static const WindowDesc _train_details_desc = {
 };
 
 
-void ShowTrainDetailsWindow(Vehicle *v)
+static void ShowTrainDetailsWindow(const Vehicle* v)
 {
 	Window *w;
 	VehicleID veh = v->index;

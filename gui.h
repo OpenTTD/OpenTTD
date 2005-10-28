@@ -40,11 +40,10 @@ void PlaceProc_BuyLand(TileIndex tile);
 
 /* train_gui.c */
 void ShowPlayerTrains(PlayerID player, StationID station);
-void ShowTrainViewWindow(Vehicle *v);
-void ShowTrainDetailsWindow(Vehicle *v);
+void ShowTrainViewWindow(const Vehicle *v);
 void ShowOrdersWindow(const Vehicle* v);
 
-void ShowRoadVehViewWindow(Vehicle *v);
+void ShowRoadVehViewWindow(const Vehicle* v);
 
 /* road_gui.c */
 void ShowBuildRoadToolbar(void);
@@ -55,7 +54,7 @@ void ShowPlayerRoadVehicles(PlayerID player, StationID station);
 void ShowBuildDocksToolbar(void);
 void ShowPlayerShips(PlayerID player, StationID station);
 
-void ShowShipViewWindow(Vehicle *v);
+void ShowShipViewWindow(const Vehicle* v);
 
 /* aircraft_gui.c */
 void ShowBuildAirToolbar(void);

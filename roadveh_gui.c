@@ -211,7 +211,7 @@ static const WindowDesc _roadveh_details_desc = {
 	RoadVehDetailsWndProc
 };
 
-static void ShowRoadVehDetailsWindow(Vehicle *v)
+static void ShowRoadVehDetailsWindow(const Vehicle* v)
 {
 	Window *w;
 	VehicleID veh = v->index;
@@ -225,12 +225,11 @@ static void ShowRoadVehDetailsWindow(Vehicle *v)
 
 void CcCloneRoadVeh(bool success, uint tile, uint32 p1, uint32 p2)
 {
-	Vehicle *v;
+	if (success) {
+		const Vehicle* v = GetVehicle(_new_aircraft_id);
 
-	if (!success) return;
-
-	v = GetVehicle(_new_roadveh_id);
-	ShowRoadVehViewWindow(v);
+		ShowRoadVehViewWindow(v);
+	}
 }
 
 static void RoadVehViewWndProc(Window *w, WindowEvent *e)
@@ -290,9 +289,9 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK: {
-		Vehicle *v = GetVehicle(w->window_number);
+		const Vehicle* v = GetVehicle(w->window_number);
 
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 5: /* start stop */
 			DoCommandP(v->tile, v->index, 0, NULL, CMD_START_STOP_ROADVEH | CMD_MSG(STR_9015_CAN_T_STOP_START_ROAD_VEHICLE));
 			break;
@@ -313,8 +312,6 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 			break;
 		case 11: {
 			/* clone vehicle */
-			Vehicle *v;
-			v = GetVehicle(w->window_number);
 			DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, CcCloneRoadVeh, CMD_CLONE_VEHICLE | CMD_MSG(STR_9009_CAN_T_BUILD_ROAD_VEHICLE));
 			} break;
 		}
@@ -372,12 +369,11 @@ static const WindowDesc _roadveh_view_desc = {
 	RoadVehViewWndProc,
 };
 
-void ShowRoadVehViewWindow(Vehicle *v)
+void ShowRoadVehViewWindow(const Vehicle* v)
 {
-	Window *w;
+	Window* w = AllocateWindowDescFront(&_roadveh_view_desc, v->index);
 
-	w = AllocateWindowDescFront(&_roadveh_view_desc, v->index);
-	if (w) {
+	if (w != NULL) {
 		w->caption_color = v->owner;
 		AssignWindowViewport(w, 3, 17, 0xE2, 0x54, w->window_number | (1 << 31), 0);
 	}
@@ -667,34 +663,22 @@ static void RoadDepotClickVeh(Window *w, int x, int y)
  * @param *v is the original vehicle to clone
  * @param *w is the window of the depot where the clone is build
  */
-static bool HandleCloneVehClick(Vehicle *v, Window *w)
+static void HandleCloneVehClick(const Vehicle* v, const Window* w)
 {
+	if (v == NULL || v->type != VEH_Road) return;
 
-	if (!v){
-		return false;
-	}
-
-	if (v->type != VEH_Road) {
-		// it's not a road vehicle, do nothing
-		return false;
-	}
-
-
-    DoCommandP(w->window_number, v->index, _ctrl_pressed ? 1 : 0,CcCloneRoadVeh,CMD_CLONE_VEHICLE | CMD_MSG(STR_9009_CAN_T_BUILD_ROAD_VEHICLE));
+	DoCommandP(w->window_number, v->index, _ctrl_pressed ? 1 : 0, CcCloneRoadVeh,
+		CMD_CLONE_VEHICLE | CMD_MSG(STR_9009_CAN_T_BUILD_ROAD_VEHICLE)
+	);
 
 	ResetObjectToPlace();
-
-	return true;
 }
 
-static void ClonePlaceObj(uint tile, Window *w)
+static void ClonePlaceObj(TileIndex tile, const Window* w)
 {
-	Vehicle *v;
+	const Vehicle* v = CheckMouseOverVehicle();
 
-
-	v = CheckMouseOverVehicle();
-	if (v && HandleCloneVehClick(v, w))
-		return;
+	if (v != NULL) HandleCloneVehClick(v, w);
 }
 
 static void RoadDepotWndProc(Window *w, WindowEvent *e)
@@ -734,7 +718,7 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 		}
 	} break;
 
-		case WE_PLACE_OBJ: {
+	case WE_PLACE_OBJ: {
 		ClonePlaceObj(e->place.tile, w);
 	} break;
 
@@ -745,11 +729,12 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 
 	// check if a vehicle in a depot was clicked..
 	case WE_MOUSELOOP: {
-		Vehicle *v = _place_clicked_vehicle;
-	// since OTTD checks all open depot windows, we will make sure that it triggers the one with a clicked clone button
+		const Vehicle* v = _place_clicked_vehicle;
+
+		// since OTTD checks all open depot windows, we will make sure that it triggers the one with a clicked clone button
 		if (v != NULL && HASBIT(w->click_state, 8)) {
 			_place_clicked_vehicle = NULL;
-			HandleCloneVehClick( v, w);
+			HandleCloneVehClick(v, w);
 		}
 	} break;
 

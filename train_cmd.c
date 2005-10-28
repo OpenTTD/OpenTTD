@@ -4,6 +4,7 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
+#include "gui.h"
 #include "table/strings.h"
 #include "map.h"
 #include "tile.h"
@@ -27,7 +28,6 @@
 
 static bool TrainCheckIfLineEnds(Vehicle *v);
 static void TrainController(Vehicle *v);
-extern void ShowTrainViewWindow(Vehicle *v);
 
 static const byte _vehicle_initial_x_fract[4] = {10,8,4,8};
 static const byte _vehicle_initial_y_fract[4] = {8,4,8,10};
