@@ -917,6 +917,10 @@ char *FiosBrowseTo(const FiosItem *item)
 			strcat(path, item->name);
 			break;
 
+		case FIOS_TYPE_DIRECT:
+			sprintf(path, "%s\\", item->name);
+			break;
+
 		case FIOS_TYPE_FILE:
 		case FIOS_TYPE_OLDFILE:
 		case FIOS_TYPE_SCENARIO:
@@ -1177,7 +1181,7 @@ void DeterminePaths(void)
 	_path.personal_dir = _path.game_data_dir = cfg = malloc(MAX_PATH);
 	GetCurrentDirectory(MAX_PATH - 1, cfg);
 
-
+	cfg[0] = toupper(cfg[0]);
 	s = strchr(cfg, 0);
 	if (s[-1] != '\\') strcpy(s, "\\");
 

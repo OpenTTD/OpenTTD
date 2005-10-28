@@ -303,6 +303,7 @@ static const SpriteID _openttd_grf_indexes[] = {
 	317, 320, // { | } ~ tiny
 	 93,  96, // { | } ~ medium
 	541, 544, // { | } ~ large
+	SPR_OPENTTD_BASE+138, SPR_OPENTTD_BASE+138, // icon
 	0xffff,
 };
 

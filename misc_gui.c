@@ -1104,7 +1104,8 @@ static const Widget _load_dialog_1_widgets[] = {
 {     WWT_IMGBTN,  RESIZE_RIGHT,    14,     0,   256,    26,    47, 0x0,								STR_NULL},
 {     WWT_IMGBTN,     RESIZE_RB,    14,     0,   256,    48,   293, 0x0,								STR_NULL},
 {          WWT_6,     RESIZE_RB,    14,     2,   243,    50,   291, 0x0,								STR_400A_LIST_OF_DRIVES_DIRECTORIES},
-{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   245,   256,    48,   281, 0x0,								STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHIMGBTN,     RESIZE_LR,    14,   245,   256,    48,    59, SPR_HOUSE_ICON,			STR_SAVELOAD_HOME_BUTTON},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   245,   256,    60,   281, 0x0,								STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   245,   256,   282,   293, 0x0,								STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
@@ -1117,7 +1118,8 @@ static const Widget _load_dialog_2_widgets[] = {
 {     WWT_IMGBTN,  RESIZE_RIGHT,    14,     0,   256,    26,    47, 0x0,										STR_NULL},
 {     WWT_IMGBTN,     RESIZE_RB,    14,     0,   256,    48,   293, 0x0,										STR_NULL},
 {          WWT_6,     RESIZE_RB,    14,     2,   243,    50,   291, 0x0,										STR_400A_LIST_OF_DRIVES_DIRECTORIES},
-{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   245,   256,    48,   281, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHIMGBTN,     RESIZE_LR,    14,   245,   256,    48,    59, SPR_HOUSE_ICON,					STR_SAVELOAD_HOME_BUTTON},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   245,   256,    60,   281, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   245,   256,   282,   293, 0x0,										STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
@@ -1130,7 +1132,8 @@ static const Widget _save_dialog_widgets[] = {
 {     WWT_IMGBTN,  RESIZE_RIGHT,    14,     0,   256,    26,    47, 0x0,								STR_NULL},
 {     WWT_IMGBTN,     RESIZE_RB,    14,     0,   256,    48,   291, 0x0,								STR_NULL},
 {          WWT_6,     RESIZE_RB,    14,     2,   243,    50,   290, 0x0,								STR_400A_LIST_OF_DRIVES_DIRECTORIES},
-{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   245,   256,    48,   291, 0x0,								STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHIMGBTN,     RESIZE_LR,    14,   245,   256,    48,    59, SPR_HOUSE_ICON,			STR_SAVELOAD_HOME_BUTTON},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   245,   256,    60,   291, 0x0,								STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {     WWT_IMGBTN,    RESIZE_RTB,    14,     0,   256,   292,   307, 0x0,								STR_NULL},
 {     WWT_IMGBTN,    RESIZE_RTB,    14,     2,   254,   294,   305, 0x0,								STR_400B_CURRENTLY_SELECTED_NAME},
 { WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   127,   308,   319, STR_4003_DELETE,		STR_400C_DELETE_THE_CURRENTLY_SELECTED},
@@ -1147,7 +1150,8 @@ static const Widget _save_dialog_scen_widgets[] = {
 {     WWT_IMGBTN,  RESIZE_RIGHT,    14,     0,   256,    26,    47, 0x0,										STR_NULL},
 {     WWT_IMGBTN,     RESIZE_RB,    14,     0,   256,    48,   291, 0x0,										STR_NULL},
 {          WWT_6,     RESIZE_RB,    14,     2,   243,    50,   290, 0x0,										STR_400A_LIST_OF_DRIVES_DIRECTORIES},
-{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   245,   256,    48,   291, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHIMGBTN,     RESIZE_LR,    14,   245,   256,    48,    59, SPR_HOUSE_ICON,					STR_SAVELOAD_HOME_BUTTON},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   245,   256,    60,   291, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {     WWT_IMGBTN,    RESIZE_RTB,    14,     0,   256,   292,   307, 0x0,										STR_NULL},
 {     WWT_IMGBTN,    RESIZE_RTB,    14,     2,   254,   294,   305, 0x0,										STR_400B_CURRENTLY_SELECTED_NAME},
 { WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   127,   308,   319, STR_4003_DELETE,				STR_400C_DELETE_THE_CURRENTLY_SELECTED},
@@ -1238,7 +1242,24 @@ extern void StartupEngines(void);
 
 static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	static FiosItem o_dir;
+
+	switch (e->event) {
+	case WE_CREATE: { /* Set up OPENTTD button */
+		o_dir.type = FIOS_TYPE_DIRECT;
+		switch (_saveload_mode) {
+			case SLD_SAVE_GAME: case SLD_LOAD_GAME:
+				ttd_strlcpy(&o_dir.name[0], _path.save_dir, sizeof(o_dir.name));
+				break;
+			case SLD_SAVE_SCENARIO: case SLD_LOAD_SCENARIO:
+				ttd_strlcpy(&o_dir.name[0], _path.scenario_dir, sizeof(o_dir.name));
+				break;
+			default:
+				ttd_strlcpy(&o_dir.name[0], _path.personal_dir, sizeof(o_dir.name));
+		}
+		break;
+		}
+
 	case WE_PAINT: {
 		int y,pos;
 		const FiosItem *item;
@@ -1270,12 +1291,12 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		}
 
 		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
-			DrawEditBox(w, 9);
+			DrawEditBox(w, 10);
 		}
 		break;
 	}
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 2: /* Sort save names by name */
 			_savegame_sort_order = (_savegame_sort_order == SORT_BY_NAME) ?
 				SORT_BY_NAME | SORT_DESCENDING : SORT_BY_NAME;
@@ -1313,7 +1334,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 					// SLD_SAVE_GAME, SLD_SAVE_SCENARIO copy clicked name to editbox
 					ttd_strlcpy(WP(w, querystr_d).text.buf, file->name, WP(w, querystr_d).text.maxlength);
 					UpdateTextBufferSize(&WP(w, querystr_d).text);
-					InvalidateWidget(w, 9);
+					InvalidateWidget(w, 10);
 				}
 			} else {
 				// Changed directory, need repaint.
@@ -1322,12 +1343,18 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 		}
-		case 10: case 11: /* Delete, Save game */
+		case 7: /* OpenTTD 'button', jumps to OpenTTD directory */
+			FiosBrowseTo(&o_dir);
+			SetWindowDirty(w);
+			BuildFileList();
+			break;
+
+		case 11: case 12: /* Delete, Save game */
 			break;
 		}
 		break;
 	case WE_MOUSELOOP:
-		HandleEditBox(w, 9);
+		HandleEditBox(w, 10);
 		break;
 	case WE_KEYPRESS:
 		if (e->keypress.keycode == WKC_ESC) {
@@ -1336,12 +1363,12 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		}
 
 		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
-			if (HandleEditBoxKey(w, 9, e) == 1) /* Press Enter */
-					HandleButtonClick(w, 11);
+			if (HandleEditBoxKey(w, 10, e) == 1) /* Press Enter */
+					HandleButtonClick(w, 12);
 		}
 		break;
 	case WE_TIMEOUT:
-		if (HASBIT(w->click_state, 10)) { /* Delete button clicked */
+		if (HASBIT(w->click_state, 11)) { /* Delete button clicked */
 			if (!FiosDelete(WP(w,querystr_d).text.buf)) {
 				ShowErrorMessage(INVALID_STRING_ID, STR_4008_UNABLE_TO_DELETE_FILE, 0, 0);
 			}
@@ -1351,7 +1378,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 				GenerateFileName(); /* Reset file name to current date */
 				UpdateTextBufferSize(&WP(w, querystr_d).text);
 			}
-		} else if (HASBIT(w->click_state, 11)) { /* Save button clicked */
+		} else if (HASBIT(w->click_state, 12)) { /* Save button clicked */
 			_switch_mode = SM_SAVE;
 			FiosMakeSavegameName(_file_to_saveload.name, WP(w,querystr_d).text.buf);
 
@@ -1374,11 +1401,11 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		w->widget[3].left  += diff;
 		w->widget[3].right += e->sizing.diff.x;
 
-		/* Same for widget 10 and 11 in save-dialog */
+		/* Same for widget 11 and 12 in save-dialog */
 		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
-			w->widget[10].right += diff;
-			w->widget[11].left  += diff;
-			w->widget[11].right += e->sizing.diff.x;
+			w->widget[11].right += diff;
+			w->widget[12].left  += diff;
+			w->widget[12].right += e->sizing.diff.x;
 		}
 
 		w->vscroll.cap += e->sizing.diff.y / 10;

@@ -354,6 +354,10 @@ char *FiosBrowseTo(const FiosItem *item)
 			strcat(path, item->name);
 			break;
 
+		case FIOS_TYPE_DIRECT:
+			sprintf(path, "%s\\", item->name);
+			break;
+
 		case FIOS_TYPE_FILE:
 		case FIOS_TYPE_OLDFILE:
 		case FIOS_TYPE_SCENARIO:
