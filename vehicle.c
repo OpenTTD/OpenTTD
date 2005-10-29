@@ -1403,13 +1403,6 @@ void AgeVehicle(Vehicle *v)
 	}
 }
 
-static VehicleID * _new_vehicle_id_proc_table[] = {
-	&_new_train_id,
-	&_new_roadveh_id,
-	&_new_ship_id,
-	&_new_aircraft_id,
-};
-
 /** Clone a vehicle. If it is a train, it will clone all the cars too
 * @param x,y depot where the cloned vehicle is build
 * @param p1 the original vehicle's index
@@ -1420,7 +1413,7 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v_front, *v;
 	Vehicle *w_front, *w, *w_rear;
 	int cost, total_cost = 0;
-	VehicleID *new_id;
+//	VehicleID *new_id;
 
 	if (!IsVehicleIndex(p1))
 		return CMD_ERROR;
@@ -1444,8 +1437,6 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (v->type == VEH_Train && v->subtype != TS_Front_Engine) return CMD_ERROR;
 
-	new_id = _new_vehicle_id_proc_table[v->type - VEH_Train];
-
 	do {
 		cost = DoCommand(x, y, v->engine_type, 3, flags, CMD_BUILD_VEH(v->type));
 
@@ -1454,11 +1445,7 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		total_cost += cost;
 
 		if (flags & DC_EXEC) {
-			if (v->type == VEH_Train && RailVehInfo(v->engine_type)->flags & RVI_WAGON) {
-				w = GetVehicle(_new_wagon_id);
-			} else {
-				w = GetVehicle(*new_id);
-			}
+			w= GetVehicle(_new_vehicle_id);
 
 			if (v->type != VEH_Road) { // road vehicles can't be refitted
 				if (v->cargo_type != w->cargo_type) {
@@ -1468,7 +1455,6 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			if (v->type == VEH_Train && v->subtype != TS_Front_Engine) {
 				// this s a train car
-
 				// add this unit to the end of the train
 				DoCommand(x, y, (w_rear->index << 16) | w->index, 1, flags, CMD_MOVE_RAIL_VEHICLE);
 			} else {
@@ -1521,8 +1507,8 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 	if (CmdFailed(cost)) return cost;
 
 	if (flags & DC_EXEC) {
-		new_v = GetVehicle(*_new_vehicle_id_proc_table[old_v->type - VEH_Train]);
-		*w = new_v;
+		new_v = GetVehicle(_new_vehicle_id);
+		*w = new_v;	//we changed the vehicle, so MaybeReplaceVehicle needs to work on the new one. Now we tell it what the new one is
 
 		/* refit if needed */
 		if (new_v->type != VEH_Road) { // road vehicles can't be refitted

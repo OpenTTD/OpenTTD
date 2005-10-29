@@ -907,6 +907,7 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->reliability_spd_dec = e->reliability_spd_dec;
 		v->max_age = e->lifelength * 366;
 		_new_ship_id = v->index;
+		_new_vehicle_id = v->index;
 
 		v->string_id = STR_SV_SHIP_NAME;
 		v->u.ship.state = 0x80;

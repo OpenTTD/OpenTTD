@@ -471,6 +471,7 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 			v->cur_image = 0xAC2;
 
 			_new_wagon_id = v->index;
+			_new_vehicle_id = v->index;
 
 			VehiclePositionChanged(v);
 			TrainConsistChanged(GetFirstVehicleInChain(v));
@@ -632,6 +633,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			v->string_id = STR_SV_TRAIN_NAME;
 			v->u.rail.railtype = e->railtype;
 			_new_train_id = v->index;
+			_new_vehicle_id = v->index;
 
 			v->service_interval = _patches.servint_trains;
 			v->date_of_last_service = _date;
