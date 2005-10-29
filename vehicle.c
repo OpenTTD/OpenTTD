@@ -1403,30 +1403,6 @@ void AgeVehicle(Vehicle *v)
 	}
 }
 
-extern int32 EstimateTrainCost(const RailVehicleInfo *rvi);
-extern int32 EstimateRoadVehCost(EngineID engine_type);
-extern int32 EstimateShipCost(EngineID engine_type);
-extern int32 EstimateAircraftCost(EngineID engine_type);
-extern int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2);
-extern int32 CmdRefitShip(int x, int y, uint32 flags, uint32 p1, uint32 p2);
-extern int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2);
-
-int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 veh1_veh2, uint32 mode);
-int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2);
-int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2);
-int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2);
-int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2);
-int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2);
-
-typedef int32 VehBuildProc(int x, int y, uint32 flags, uint32 p1, uint32 p2);
-
-static VehBuildProc * const _veh_build_cmd_table[] = {
-	CmdBuildRailVehicle,
-	CmdBuildRoadVeh,
-	CmdBuildShip,
-	CmdBuildAircraft,
-};
-
 static VehicleID * _new_vehicle_id_proc_table[] = {
 	&_new_train_id,
 	&_new_roadveh_id,
@@ -1435,92 +1411,87 @@ static VehicleID * _new_vehicle_id_proc_table[] = {
 };
 
 /** Clone a vehicle. If it is a train, it will clone all the cars too
-  * @param x,y unused
-  * @param p1 the original vehicle's index
-  * @param p2 1 = shared orders, else copied orders
-  */
+* @param x,y depot where the cloned vehicle is build
+* @param p1 the original vehicle's index
+* @param p2 1 = shared orders, else copied orders
+*/
 int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle *vfront, *v;
-	Vehicle *wfront, *w1, *w2;
-	int cost, total_cost;
-	VehBuildProc *proc;
+	Vehicle *v_front, *v;
+	Vehicle *w_front, *w, *w_rear;
+	int cost, total_cost = 0;
 	VehicleID *new_id;
-	uint refit_command = 0;
-	byte needs_refitting = 255;
 
 	if (!IsVehicleIndex(p1))
 		return CMD_ERROR;
 	v = GetVehicle(p1);
-	wfront = v;
-	w1 = v;
-	vfront = v;
+	v_front = v;
+	w = NULL;
+	w_front = NULL;
+	w_rear = NULL;
+
+
+	/*
+	 * v_front is the front engine in the original vehicle
+	 * v is the car/vehicle of the original vehicle, that is currently being copied
+	 * w_front is the front engine of the cloned vehicle
+	 * w is the car/vehicle currently being cloned
+	 * w_rear is the rear end of the cloned train. It's used to add more cars and is only used by trains
+	 */
 
 	if (!CheckOwnership(v->owner))
 		return CMD_ERROR;
 
 	if (v->type == VEH_Train && v->subtype != TS_Front_Engine) return CMD_ERROR;
 
-	//no need to check if it is a depot since the build command do that
-	switch (v->type) {
-		case VEH_Train:		refit_command = CMD_REFIT_RAIL_VEHICLE; break;
-		case VEH_Road:		break;
-		case VEH_Ship:		refit_command = CMD_REFIT_SHIP; break;
-		case VEH_Aircraft:	refit_command = CMD_REFIT_AIRCRAFT; break;
-		default: return CMD_ERROR;
-	}
-
-	proc = _veh_build_cmd_table[v->type - VEH_Train];
 	new_id = _new_vehicle_id_proc_table[v->type - VEH_Train];
-	total_cost = proc(x, y, flags, v->engine_type, 3);
-	if (total_cost == CMD_ERROR)
-		return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
-		wfront = GetVehicle(*new_id);
-		w1 = wfront;
-		CmdCloneOrder(x, y, flags, (v->index << 16) | w1->index, p2 & 1 ? CO_SHARE : CO_COPY);
+	do {
+		cost = DoCommand(x, y, v->engine_type, 3, flags, CMD_BUILD_VEH(v->type));
 
-		if (wfront->cargo_type != v->cargo_type) {
-			//a refit is needed
-			needs_refitting = v->cargo_type;
-		}
-	}
-	if (v->type == VEH_Train) {
-		// now we handle the cars
-		v = v->next;
-		while (v != NULL) {
-			cost = proc(x, y, flags, v->engine_type, 3);
-			if (cost == CMD_ERROR)
-				return CMD_ERROR;
-			total_cost += cost;
+		if (CmdFailed(cost)) return cost;
 
-			if (flags & DC_EXEC) {
-				// add this unit to the end of the train
-				w2 = GetVehicle(RailVehInfo(v->engine_type)->flags & RVI_WAGON ? _new_wagon_id : _new_train_id);
-				CmdMoveRailVehicle(x, y, flags, (w1->index << 16) | w2->index, 0);
-				w1 = w2;
-			}
-			v = v->next;
-		}
+		total_cost += cost;
 
 		if (flags & DC_EXEC) {
-			_new_train_id = wfront->index;
-			v = vfront;
-			w1 = wfront;
-			while (w1 != NULL && v != NULL) {
-				w1->spritenum = v->spritenum; // makes sure that multiheaded engines are facing the correct way
-				if (w1->cargo_type != v->cargo_type)	// checks if a refit is needed
-					needs_refitting = v->cargo_type;
-				w1 = w1->next;
-				v = v->next;
+			if (v->type == VEH_Train && RailVehInfo(v->engine_type)->flags & RVI_WAGON) {
+				w = GetVehicle(_new_wagon_id);
+			} else {
+				w = GetVehicle(*new_id);
 			}
 
+			if (v->type != VEH_Road) { // road vehicles can't be refitted
+				if (v->cargo_type != w->cargo_type) {
+					DoCommand(x, y, w->index, v->cargo_type, flags, CMD_REFIT_VEH(v->type));
+				}
+			}
+
+			if (v->type == VEH_Train && v->subtype != TS_Front_Engine) {
+				// this s a train car
+
+				// add this unit to the end of the train
+				DoCommand(x, y, (w_rear->index << 16) | w->index, 1, flags, CMD_MOVE_RAIL_VEHICLE);
+			} else {
+				// this is a front engine or not a train. It need orders
+				w_front = w;
+				DoCommand(x, y, (v->index << 16) | w->index, p2 & 1 ? CO_SHARE : CO_COPY, flags, CMD_CLONE_ORDER);
+			}
+			w_rear = w;	// trains needs to know the last car in the train, so they can add more in next loop
 		}
-	}
-	if (flags & DC_EXEC && needs_refitting != 255 && vfront->type != VEH_Road) {	// right now we do not refit road vehicles
-		if (DoCommandByTile(wfront->tile, wfront->index, needs_refitting, 0, refit_command) != CMD_ERROR)
-			DoCommandByTile(wfront->tile, wfront->index, needs_refitting, DC_EXEC, refit_command);
+	} while (v->type == VEH_Train && (v=v->next) != NULL);
+
+	if (flags & DC_EXEC) {
+		v = v_front;
+		w = w_front;
+		if (v->type == VEH_Train) {
+			_new_train_id = w_front->index;  // _new_train_id needs to be the front engine due to the callback function
+
+			while (w != NULL && v != NULL) { // checking both just in case something went wrong
+				w->spritenum = v->spritenum; // makes sure that multiheaded engines are facing the correct way
+				w = w->next;
+				v = v->next;
+			}
+		}
 	}
 	return total_cost;
 }
