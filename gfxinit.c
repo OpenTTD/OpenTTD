@@ -266,7 +266,12 @@ static const SpriteID trg1idx[] = {
 	0xFFFF
 };
 
-#define OPENTTD_SPRITES_COUNT 100
+/* NOTE: When adding a normal sprite, increase OPENTTD_SPRITES_COUNT with the
+ * amount of sprites and add them to the end of the list, with the index of
+ * the old sprite-count offset from SPR_OPENTTD_BASE. With this there is no
+ * correspondence of any kind with the ID's in the grf file, but results in
+ * a maximum use of sprite slots. */
+#define OPENTTD_SPRITES_COUNT 101
 static const SpriteID _openttd_grf_indexes[] = {
 	SPR_OPENTTD_BASE + 0, SPR_OPENTTD_BASE + 7, // icons etc
 	134, 134,  // euro symbol medium size
@@ -277,7 +282,7 @@ static const SpriteID _openttd_grf_indexes[] = {
 	616, 616, // nordic char: Æ
 	666, 666, // nordic char: ø
 	634, 634, // nordic char: Ø
-	SPR_OPENTTD_BASE+62, SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT, // more icons
+	SPR_OPENTTD_BASE+62, SPR_OPENTTD_BASE + 100, // more icons
 	382, 383, // ¼ ½ tiny
 	158, 159, // ¼ ½ medium
 	606, 607, // ¼ ½ large
@@ -303,7 +308,7 @@ static const SpriteID _openttd_grf_indexes[] = {
 	317, 320, // { | } ~ tiny
 	 93,  96, // { | } ~ medium
 	541, 544, // { | } ~ large
-	SPR_OPENTTD_BASE+138, SPR_OPENTTD_BASE+138, // icon
+	SPR_OPENTTD_BASE + 101, SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT, // icon (HOUSE)
 	0xffff,
 };
 
