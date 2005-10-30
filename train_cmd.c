@@ -364,6 +364,8 @@ int GetTrainImage(const Vehicle *v, byte direction)
 	return base;
 }
 
+extern int _traininfo_vehicle_pitch;
+
 void DrawTrainEngine(int x, int y, EngineID engine, uint32 image_ormod)
 {
 	const RailVehicleInfo *rvi = RailVehInfo(engine);
@@ -373,7 +375,11 @@ void DrawTrainEngine(int x, int y, EngineID engine, uint32 image_ormod)
 
 	if (is_custom_sprite(img)) {
 		image = GetCustomVehicleIcon(engine, 6);
-		if (image == 0) img = orig_rail_vehicle_info[engine].image_index;
+		if (image == 0) {
+			img = orig_rail_vehicle_info[engine].image_index;
+		} else {
+			y += _traininfo_vehicle_pitch;
+		}
 	}
 	if (image == 0) {
 		image = (6 & _engine_sprite_and[img]) + _engine_sprite_base[img];

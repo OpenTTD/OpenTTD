@@ -188,7 +188,7 @@ static void engine_drawing_loop(int *x, int *y, int *pos, int *sel,
 
 		if (IS_INT_INSIDE(--*pos, -show_max, 0)) {
 			DrawString(*x + 59, *y + 2, GetCustomEngineName(i), *sel == 0 ? 0xC : 0x10);
-			DrawTrainEngine(*x + 29, *y + 6 + _traininfo_vehicle_pitch, i,
+			DrawTrainEngine(*x + 29, *y + 6, i,
 				SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
 			*y += 14;
 		}
@@ -358,7 +358,7 @@ static void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, 
 			if (x + width + 4 <= max_x) {
 				if (v->vehstatus & VS_CRASHED)
 					ormod = PALETTE_CRASH;
-				DrawSprite(image | ormod, x + 14, y + 6 + _traininfo_vehicle_pitch);
+				DrawSprite(image | ormod, x + 14, y + 6 + (is_custom_sprite(RailVehInfo(v->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
 				if (v->index == selection)
 					DrawFrameRect(x - 1, y - 1, x + width + 4, y + 12, 15, FR_BORDERONLY);
 			}
@@ -1409,8 +1409,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 
 			assert(v->type == VEH_Train && v->owner == owner);
 
-			DrawTrainImage(
-				v, x + 21, y + 6 + _traininfo_vehicle_pitch, w->hscroll.cap, 0, INVALID_VEHICLE);
+			DrawTrainImage(v, x + 21, y + 6, w->hscroll.cap, 0, INVALID_VEHICLE);
 			DrawVehicleProfitButton(v, x, y + 13);
 
 			SetDParam(0, v->unitnumber);
