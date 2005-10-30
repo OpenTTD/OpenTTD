@@ -54,6 +54,7 @@ typedef struct Case {
 	struct Case *next;
 } Case;
 
+static bool _masterlang;
 static const char* _file = "(unknown file)";
 static int _cur_line;
 static int _errors, _warnings;
@@ -64,6 +65,7 @@ typedef struct LangString {
 	char *translated;				// Translated text
 	uint16 hash_next;				// next hash entry
 	uint16 index;
+	int line;               // line of string in source-file
 	Case *english_case;			// cases for english
 	Case *translated_case;	// cases for foreign
 } LangString;
@@ -320,18 +322,29 @@ static void EmitPlural(char *buf, int value)
 		argidx--;
 
 	// Parse each string
-	for(nw=0; nw<5; nw++) {
+	for (nw = 0; nw < 5; nw++) {
 		words[nw] = ParseWord(&buf);
 		if (!words[nw])
 			break;
 	}
 
 	if (nw == 0)
-		Fatal("No plural words");
+		Fatal("%s: No plural words", _cur_ident);
 
 	if (_plural_form_counts[_lang_pluralform] != nw)
-		Fatal("%s: Invalid number of plural forms. Expecting %d, found %d.", _cur_ident,
-			_plural_form_counts[_lang_pluralform], nw);
+		if (_masterlang) {
+			Fatal("%s: Invalid number of plural forms. Expecting %d, found %d.", _cur_ident,
+				_plural_form_counts[_lang_pluralform], nw);
+		} else {
+			Warning("'%s' is untranslated. Tweaking english string to allow compilation for plural forms", _cur_ident);
+			if (nw > _plural_form_counts[_lang_pluralform]) {
+				nw = _plural_form_counts[_lang_pluralform];
+			} else {
+				for(; nw < _plural_form_counts[_lang_pluralform]; nw++) {
+					words[nw] = words[nw - 1];
+				}
+			}
+		}
 
 	PutByte(0x8D);
 	PutByte(TranslateArgumentIdx(argidx));
@@ -787,6 +800,7 @@ static void HandleString(char *str, bool master)
 			_strings[_next_string_id] = ent;
 			ent->index = _next_string_id++;
 			ent->name = strdup(str);
+			ent->line = _cur_line;
 
 			HashAdd(str, ent);
 		}
@@ -1120,6 +1134,7 @@ static void WriteLangfile(const char *filename, int show_todo)
 			}
 
 			_cur_ident = ls->name;
+			_cur_line = ls->line;
 
 			// Produce a message if a string doesn't have a translation.
 			if (show_todo && ls->translated == NULL) {
@@ -1209,6 +1224,7 @@ int CDECL main(int argc, char* argv[])
 
 
 	if (argc == 1) {
+		_masterlang = true;
 		// parse master file
 		ParseFile("lang/english.txt", true);
 		MakeHashOfStrings();
@@ -1220,6 +1236,7 @@ int CDECL main(int argc, char* argv[])
 		WriteStringsH("table/strings.h");
 
 	} else if (argc == 2) {
+		_masterlang = false;
 		ParseFile("lang/english.txt", true);
 		MakeHashOfStrings();
 		ParseFile(argv[1], false);
