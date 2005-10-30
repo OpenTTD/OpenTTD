@@ -550,6 +550,7 @@ int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		u = v->next;
 		mail = (new_cid != CT_PASSENGERS) ? 0 : avi->mail_capacity;
 		u->cargo_cap = mail;
+		v->cargo_count = u->cargo_count = 0;
 		v->cargo_type = new_cid;
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 	}

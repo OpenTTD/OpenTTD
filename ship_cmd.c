@@ -1092,6 +1092,7 @@ int32 CmdRefitShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (flags & DC_EXEC) {
+		v->cargo_count = 0;
 		v->cargo_type = new_cid;
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 	}
