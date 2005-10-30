@@ -497,15 +497,12 @@ int32 CmdChangeAircraftServiceInt(int x, int y, uint32 flags, uint32 p1, uint32 
  * @param p1 vehicle ID of the aircraft to refit
  * @param p2 various bitstuffed elements
  * - p2 = (bit 0-7) - the new cargo type to refit to (p2 & 0xFF)
- * - p2 = (bit 8)   - skip check for stopped in hangar, used by autoreplace (p2 & 0x100)
- * @todo p2 bit8 check <b>NEEDS TO GO</b>
  */
 int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	int pass, mail;
 	int32 cost;
-	bool SkipStoppedInHangerCheck = !!HASBIT(p2, 8); // XXX - needs to go, yes?
 	CargoID new_cid = p2 & 0xFF; //gets the cargo number
 	const AircraftVehicleInfo *avi;
 
@@ -514,7 +511,7 @@ int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	v = GetVehicle(p1);
 
 	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner)) return CMD_ERROR;
-	if (!SkipStoppedInHangerCheck && !CheckStoppedInHangar(v)) return_cmd_error(STR_A01B_AIRCRAFT_MUST_BE_STOPPED);
+	if (!CheckStoppedInHangar(v)) return_cmd_error(STR_A01B_AIRCRAFT_MUST_BE_STOPPED);
 
 	avi = AircraftVehInfo(v->engine_type);
 
@@ -553,10 +550,6 @@ int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		u = v->next;
 		mail = (new_cid != CT_PASSENGERS) ? 0 : avi->mail_capacity;
 		u->cargo_cap = mail;
-		//autorefitted planes wants to keep the cargo
-		//it will be checked if the cargo is valid in CmdReplaceVehicle
-		if (!(SkipStoppedInHangerCheck))
-			v->cargo_count = u->cargo_count = 0;
 		v->cargo_type = new_cid;
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 	}

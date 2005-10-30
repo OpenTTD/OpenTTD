@@ -1063,25 +1063,22 @@ int32 CmdChangeShipServiceInt(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 vehicle ID of the ship to refit
  * @param p2 various bitstuffed elements
  * - p2 = (bit 0-7) - the new cargo type to refit to (p2 & 0xFF)
- * - p2 = (bit 8)   - skip check for stopped in depot, used by autoreplace (p2 & 0x100)
- * @todo p2 bit8 check <b>NEEDS TO GO</b>
  */
 int32 CmdRefitShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	int32 cost;
 	CargoID new_cid = p2 & 0xFF; //gets the cargo number
-	bool SkipStoppedInDepotCheck = !!HASBIT(p2, 8); // XXX - needs to go, yes?
 
 	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
 	if (v->type != VEH_Ship || !CheckOwnership(v->owner)) return CMD_ERROR;
-	if (!SkipStoppedInDepotCheck) {
-		if (!IsTileDepotType(v->tile, TRANSPORT_WATER) || !(v->vehstatus&VS_STOPPED) || v->u.ship.state != 0x80)
+
+	if (!IsTileDepotType(v->tile, TRANSPORT_WATER) || !(v->vehstatus&VS_STOPPED) || v->u.ship.state != 0x80)
 			return_cmd_error(STR_980B_SHIP_MUST_BE_STOPPED_IN);
-	}
+
 
 	/* Check cargo */
 	if (!ShipVehInfo(v->engine_type)->refittable) return CMD_ERROR;
@@ -1095,10 +1092,6 @@ int32 CmdRefitShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (flags & DC_EXEC) {
-		//autorefitted ships wants to keep the cargo
-		//it will be checked if the cargo is valid in CmdRenewVehicle
-		if (!(SkipStoppedInDepotCheck))
-			v->cargo_count = 0;
 		v->cargo_type = new_cid;
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 	}
