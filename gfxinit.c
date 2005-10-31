@@ -273,16 +273,16 @@ static const SpriteID trg1idx[] = {
  * a maximum use of sprite slots. */
 #define OPENTTD_SPRITES_COUNT 101
 static const SpriteID _openttd_grf_indexes[] = {
-	SPR_OPENTTD_BASE + 0, SPR_OPENTTD_BASE + 7, // icons etc
+	SPR_IMG_AUTORAIL, SPR_CURSOR_WAYPOINT, // icons etc
 	134, 134,  // euro symbol medium size
 	582, 582,  // euro symbol large size
 	358, 358,  // euro symbol tiny
-	SPR_OPENTTD_BASE+11, SPR_OPENTTD_BASE+57, // more icons
+	SPR_CURSOR_CANAL, SPR_IMG_FASTFORWARD, // more icons
 	648, 648, // nordic char: æ
 	616, 616, // nordic char: Æ
 	666, 666, // nordic char: ø
 	634, 634, // nordic char: Ø
-	SPR_OPENTTD_BASE+62, SPR_OPENTTD_BASE + 100, // more icons
+	SPR_PIN_UP, SPR_CURSOR_CLONE, // more icons
 	382, 383, // ¼ ½ tiny
 	158, 159, // ¼ ½ medium
 	606, 607, // ¼ ½ large
@@ -308,7 +308,7 @@ static const SpriteID _openttd_grf_indexes[] = {
 	317, 320, // { | } ~ tiny
 	 93,  96, // { | } ~ medium
 	541, 544, // { | } ~ large
-	SPR_OPENTTD_BASE + 101, SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT, // icon (HOUSE)
+	SPR_HOUSE_ICON, SPR_HOUSE_ICON,
 	0xffff,
 };
 

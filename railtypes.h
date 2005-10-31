@@ -17,7 +17,11 @@ const RailtypeInfo _railtypes[] = {
 
 		/* GUI sprites */
 		{ 0x4E3, 0x4E4, 0x4E5, 0x4E6,
-			SPR_OPENTTD_BASE + 0, 0x50E, 0x97E, SPR_OPENTTD_BASE + 25 },
+			SPR_IMG_AUTORAIL,
+			SPR_IMG_DEPOT_RAIL,
+			SPR_IMG_TUNNEL_RAIL,
+			SPR_IMG_CONVERT_RAIL
+		},
 
 		{
 			SPR_CURSOR_NS_TRACK,
@@ -56,7 +60,11 @@ const RailtypeInfo _railtypes[] = {
 
 		/* GUI sprites */
 		{ 0x4E7, 0x4E8, 0x4E9, 0x4EA,
-			SPR_OPENTTD_BASE + 1, SPR_OPENTTD_BASE + 12, 0x97F, SPR_OPENTTD_BASE + 27 },
+			SPR_IMG_AUTOMONO,
+			SPR_IMG_DEPOT_MONO,
+			SPR_IMG_TUNNEL_MONO,
+			SPR_IMG_CONVERT_MONO
+		},
 
 		{
 			SPR_CURSOR_NS_MONO,
@@ -95,7 +103,11 @@ const RailtypeInfo _railtypes[] = {
 
 		/* GUI sprites */
 		{ 0x4EB, 0x4EC, 0x4EE, 0x4ED,
-			SPR_OPENTTD_BASE + 2, SPR_OPENTTD_BASE + 13, 0x980, SPR_OPENTTD_BASE + 29 },
+			SPR_IMG_AUTOMAGLEV,
+			SPR_IMG_DEPOT_MAGLEV,
+			SPR_IMG_TUNNEL_MAGLEV,
+			SPR_IMG_CONVERT_MAGLEV
+		},
 
 		{
 			SPR_CURSOR_NS_MAGLEV,

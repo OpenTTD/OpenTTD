@@ -1962,7 +1962,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 
 static const Widget _toolb_normal_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,    21,     0,    21, 0x2D6, STR_0171_PAUSE_GAME},
-{      WWT_PANEL,   RESIZE_NONE,    14,    22,    43,     0,    21, SPR_OPENTTD_BASE + 57, STR_FAST_FORWARD},
+{      WWT_PANEL,   RESIZE_NONE,    14,    22,    43,     0,    21, SPR_IMG_FASTFORWARD, STR_FAST_FORWARD},
 {      WWT_PANEL,   RESIZE_NONE,    14,    44,    65,     0,    21, 0x2EF, STR_0187_OPTIONS},
 {    WWT_PANEL_2,   RESIZE_NONE,    14,    66,    87,     0,    21, 0x2D4, STR_0172_SAVE_GAME_ABANDON_GAME},
 
@@ -2016,7 +2016,7 @@ static const WindowDesc _toolb_intro_desc = {
 
 static const Widget _toolb_scen_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,    21,     0,    21, 0x2D6,				STR_0171_PAUSE_GAME},
-{      WWT_PANEL,   RESIZE_NONE,    14,    22,    43,     0,    21, SPR_OPENTTD_BASE + 57,	STR_FAST_FORWARD},
+{      WWT_PANEL,   RESIZE_NONE,    14,    22,    43,     0,    21, SPR_IMG_FASTFORWARD, STR_FAST_FORWARD},
 {      WWT_PANEL,   RESIZE_NONE,    14,    44,    65,     0,    21, 0x2EF,				STR_0187_OPTIONS},
 {    WWT_PANEL_2,   RESIZE_NONE,    14,    66,    87,     0,    21, 0x2D4,				STR_0297_SAVE_SCENARIO_LOAD_SCENARIO},
 
