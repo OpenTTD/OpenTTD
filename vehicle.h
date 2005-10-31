@@ -153,6 +153,7 @@ struct Vehicle {
 
 	Vehicle *next;		// next
 	Vehicle *first;   // NOSAVE: pointer to the first vehicle in the chain
+	Vehicle *depot_list;	//NOSAVE: linked list to tell what vehicles entered a depot during the last tick. Used by autoreplace
 
 	StringID string_id; // Displayed string
 
@@ -164,6 +165,7 @@ struct Vehicle {
 
 	int32 x_pos;			// coordinates
 	int32 y_pos;
+
 	byte z_pos;
 	byte direction;		// facing
 
@@ -240,6 +242,8 @@ struct Vehicle {
 	int32 profit_last_year;
 	uint32 value;
 
+
+
 	union {
 		VehicleRail rail;
 		VehicleAir air;
@@ -309,7 +313,7 @@ Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y);
 void DecreaseVehicleValue(Vehicle *v);
 void CheckVehicleBreakdown(Vehicle *v);
 void AgeVehicle(Vehicle *v);
-Vehicle * MaybeReplaceVehicle(Vehicle *v);
+void VehicleEnteredDepotThisTick(Vehicle *v);
 
 void BeginVehicleMove(Vehicle *v);
 void EndVehicleMove(Vehicle *v);

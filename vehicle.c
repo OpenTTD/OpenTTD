@@ -264,6 +264,7 @@ static Vehicle *InitializeVehicle(Vehicle *v)
 	v->string_id = 0;
 	v->next_shared = NULL;
 	v->prev_shared = NULL;
+	v->depot_list  = NULL;
 	/* random_bits is used to pick out a random sprite for vehicles
 	    which are technical the same (newgrf stuff).
 	   Because RandomRange() results in desyncs, and because it does
@@ -515,6 +516,24 @@ void Ship_Tick(Vehicle *v);
 void Train_Tick(Vehicle *v);
 static void EffectVehicle_Tick(Vehicle *v);
 void DisasterVehicle_Tick(Vehicle *v);
+static void MaybeReplaceVehicle(Vehicle *v);
+
+// head of the linked list to tell what vehicles that visited a depot in a tick
+Vehicle *_first_veh_in_depot_list;
+
+/** Adds a vehicle to the list of vehicles, that visited a depot this tick
+* @param *v vehicle to add
+*/
+void VehicleEnteredDepotThisTick(Vehicle *v)
+{
+	if (_first_veh_in_depot_list == NULL) {
+		_first_veh_in_depot_list = v;
+	} else {
+		Vehicle *w = _first_veh_in_depot_list;
+		while (w->depot_list != NULL) w = w->depot_list;
+		w->depot_list = v;
+	}
+}
 
 VehicleTickProc *_vehicle_tick_procs[] = {
 	Train_Tick,
@@ -529,9 +548,21 @@ void CallVehicleTicks(void)
 {
 	Vehicle *v;
 
+	_first_veh_in_depot_list = NULL;	// now we are sure it's initialized at the start of each tick
+
 	FOR_ALL_VEHICLES(v) {
-		if (v->type != 0)
+		if (v->type != 0) {
 			_vehicle_tick_procs[v->type - 0x10](v);
+		}
+	}
+
+	// now we handle all the vehicles that entered a depot this tick
+	v = _first_veh_in_depot_list;
+	while (v != NULL) {
+		Vehicle *w = v->depot_list;
+		v->depot_list = NULL;	// it should always be NULL at the end of each tick
+		MaybeReplaceVehicle(v);
+		v = w;
 	}
 }
 
@@ -1566,18 +1597,21 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 *	if the vehicle is a train, v needs to be the front engine
 *	return value is a pointer to the new vehicle, which is the same as the argument if nothing happened
 */
-Vehicle * MaybeReplaceVehicle(Vehicle *v)
+static void MaybeReplaceVehicle(Vehicle *v)
 {
 	Vehicle *w;
 	const Player *p = GetPlayer(v->owner);
 	byte flags = 0;
 	int32 cost = 0, temp_cost = 0;
+	bool stopped = false;
 
 	_current_player = v->owner;
 
 	assert(v->type == VEH_Train || v->type == VEH_Road || v->type == VEH_Ship || v->type == VEH_Aircraft);
-
-	DoCommand(0, 0, v->index, 0, DC_EXEC, CMD_STARTSTOP_VEH(v->type));
+	if (!(v->vehstatus&VS_STOPPED)) {
+		stopped = true;	// we stop the vehicle to do this, so we have to remember to start it again when we are done
+		DoCommand(0, 0, v->index, 0, DC_EXEC, CMD_STARTSTOP_VEH(v->type));
+	}
 
 	while (true) {
 		w = v;
@@ -1626,8 +1660,9 @@ Vehicle * MaybeReplaceVehicle(Vehicle *v)
 
 				AddNewsItem(message, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0), v->index, 0);
 			}
-			DoCommand(0, 0, v->index, 0, DC_EXEC, CMD_STARTSTOP_VEH(v->type));	//we start the vehicle again
-			return v;
+			if (stopped)
+				DoCommand(0, 0, v->index, 0, DC_EXEC, CMD_STARTSTOP_VEH(v->type));	//we start the vehicle again
+			return;
 		}
 
 		if (flags & DC_EXEC) {
@@ -1641,9 +1676,9 @@ Vehicle * MaybeReplaceVehicle(Vehicle *v)
 	SubtractMoneyFromPlayer(cost);
 	if (IsLocalPlayer()) ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost);
 
-	DoCommand(0, 0, v->index, 0, DC_EXEC, CMD_STARTSTOP_VEH(v->type));	//we start the vehicle again
+	if (stopped)
+		DoCommand(0, 0, v->index, 0, DC_EXEC, CMD_STARTSTOP_VEH(v->type));	//we start the vehicle again
 	_current_player = OWNER_NONE;
-	return v;
 }
 
 

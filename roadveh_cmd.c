@@ -1522,8 +1522,6 @@ void RoadVehEnterDepot(Vehicle *v)
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
-	v = MaybeReplaceVehicle(v);
-
 	VehicleServiceInDepot(v);
 
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);

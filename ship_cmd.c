@@ -414,8 +414,6 @@ static void ShipEnterDepot(Vehicle *v)
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
-	v = MaybeReplaceVehicle(v);
-
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
 
 	if (v->current_order.type == OT_GOTO_DEPOT) {

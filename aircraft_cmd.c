@@ -1302,8 +1302,6 @@ static void AircraftEnterHangar(Vehicle *v)
 	ServiceAircraft(v);
 	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 
-	v = MaybeReplaceVehicle(v);
-
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
 
 	if (v->current_order.type == OT_GOTO_DEPOT) {

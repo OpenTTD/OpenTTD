@@ -3328,8 +3328,6 @@ void TrainEnterDepot(Vehicle *v, TileIndex tile)
 	v->load_unload_time_rem = 0;
 	v->cur_speed = 0;
 
-	v = MaybeReplaceVehicle(v);
-
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
 
 	if (v->current_order.type == OT_GOTO_DEPOT) {
