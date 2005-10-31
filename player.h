@@ -5,6 +5,7 @@
 
 #include "aystar.h"
 #include "rail.h"
+#include "engine.h"
 
 typedef struct PlayerEconomyEntry {
 	int32 income;
@@ -187,7 +188,7 @@ typedef struct Player {
 	int64 yearly_expenses[3][13];
 	PlayerEconomyEntry cur_economy;
 	PlayerEconomyEntry old_economy[24];
-	EngineID engine_replacement[256];
+	EngineID engine_replacement[TOTAL_NUM_ENGINES];
 	bool engine_renew;
 	int16 engine_renew_months;
 	uint32 engine_renew_money;
