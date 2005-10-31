@@ -255,13 +255,6 @@ endif
 # MorphOS needs builddate
 BUILDDATE=`date +%d.%m.%y`
 
-# AMD64 needs a little more settings to work
-ifeq ($(shell uname -m), x86_64)
-endwarnings:=endwarnings
-64_bit_warnings:=64_bit_warnings
-BASECFLAGS += -m64
-endif
-
 # Check if there is a windres override
 ifndef WINDRES
 WINDRES = windres
@@ -778,7 +771,7 @@ OSX_MIDI_PLAYER_FILE:=os/macos/OpenTTDMidi.class
 endif
 
 
-all: endian_target.h endian_host.h $(UPDATECONFIG) $(LANGS) $(TTD) $(OSX) $(endwarnings)
+all: endian_target.h endian_host.h $(UPDATECONFIG) $(LANGS) $(TTD) $(OSX)
 
 endian_host.h: $(ENDIAN_CHECK)
 	@echo '===> Testing endianness for host'
@@ -809,12 +802,6 @@ $(OSX): $(TTD)
 	$(Q)cp data/* "$(OSXAPP)"/Contents/Data/
 	$(Q)cp lang/*.lng "$(OSXAPP)"/Contents/Lang/
 	$(Q)cp $(TTD) "$(OSXAPP)"/Contents/MacOS/$(TTD)
-
-$(endwarnings): $(64_bit_warnings)
-
-$(64_bit_warnings):
-	$(warning 64 bit CPUs will get some 64 bit specific bugs!)
-	$(warning If you see any bugs, include in your bug report that you use a 64 bit CPU)
 
 $(STRGEN): strgen/strgen.c endian_host.h
 	@echo '===> Compiling and Linking $@'
@@ -982,7 +969,7 @@ endif
 love:
 	@echo "YES! I thought you would never ask. We will have a great time. You can keep me turned on all night"
 
-.PHONY: clean all $(OSX) install $(64_bit_warnings) $(endwarnings) love
+.PHONY: clean all $(OSX) install love
 
 
 ### Automatic configuration
