@@ -1283,7 +1283,7 @@ bool AfterLoadGame(uint version)
 	if (version < 0x1000) {
 		int i;
 		FOR_ALL_PLAYERS(p) {
-			for (i = 0; i < 256; i++) {
+			for (i = 0; i < TOTAL_NUM_ENGINES; i++) {
 				p->engine_replacement[i] = INVALID_ENGINE;
 			}
 			p->engine_renew = false;

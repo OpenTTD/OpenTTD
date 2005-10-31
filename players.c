@@ -494,7 +494,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 	p->face = Random();
 
 	/* Engine renewal settings */
-	for (i = 0; i < 256; i++)
+	for (i = 0; i < TOTAL_NUM_ENGINES; i++)
 		p->engine_replacement[i] = INVALID_ENGINE;
 
 	p->engine_renew = false;
