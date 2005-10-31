@@ -1571,6 +1571,8 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 			DoCommand(0, 0, (old_v->index << 16) | new_v->index, IsOrderListShared(old_v) ? CO_SHARE : CO_COPY, DC_EXEC, CMD_CLONE_ORDER);
 			new_v->cur_order_index = old_v->cur_order_index;
 			ChangeVehicleViewWindow(old_v, new_v);
+			new_v->profit_this_year = old_v->profit_this_year;
+			new_v->profit_last_year = old_v->profit_last_year;
 			new_front = true;
 
 			new_v->current_order = old_v->current_order;
