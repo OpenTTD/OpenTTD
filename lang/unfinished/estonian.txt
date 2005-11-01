@@ -818,13 +818,13 @@ STR_TOWNNAME_NORWEGIAN                                          :Norra
 STR_TOWNNAME_HUNGARIAN                                          :Ungari
 STR_TOWNNAME_AUSTRIAN                                           :Austria
 STR_TOWNNAME_ROMANIAN                                           :Rumeenia
-STR_TOWNNAME_CZECH                                              :Tšehhi
-STR_TOWNNAME_SWISS                                              :Šveitsi
+STR_TOWNNAME_CZECH                                              :T¨ehhi
+STR_TOWNNAME_SWISS                                              :¦veitsi
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Naelad ({POUNDSIGN})
 STR_CURR_USD                                                    :Dollarid ($)
-STR_CURR_EUR                                                    :Euro (€)
+STR_CURR_EUR                                                    :Euro (¤)
 STR_CURR_YEN                                                    :Jeen ({YENSIGN})
 STR_CURR_ATS                                                    :Austria ðilling (ATS)
 STR_CURR_BEF                                                    :Belgia frank (BEF)
@@ -2003,7 +2003,7 @@ STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFON
 STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Lülita veose graafik sisse/välja
 STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
 STR_7066_ENGINEER                                               :Insener
-STR_7067_TRAFFIC_MANAGER                                        :Liiklusmänežer
+STR_7067_TRAFFIC_MANAGER                                        :Liiklusmäne¸er
 STR_7068_TRANSPORT_COORDINATOR                                  :Transpordi juht
 STR_7069_ROUTE_SUPERVISOR                                       :Marsuruudi inspektor
 STR_706A_DIRECTOR                                               :Direktor

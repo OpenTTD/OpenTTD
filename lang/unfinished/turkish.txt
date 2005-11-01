@@ -31,7 +31,6 @@ STR_0017_IRON_ORE                                               :Demir
 STR_0018_STEEL                                                  :Çelik
 STR_0019_VALUABLES                                              :Mücevherat
 STR_001A_COPPER_ORE                                             :Bakir
-STR_001B_MAIZE                                                  :Maize
 STR_001C_FRUIT                                                  :Meyve
 STR_001D_DIAMONDS                                               :Elmas
 STR_001E_FOOD                                                   :Gida
@@ -63,7 +62,6 @@ STR_0037_IRON_ORE                                               :Demir
 STR_0038_STEEL                                                  :Çelik
 STR_0039_VALUABLES                                              :Mücevherat
 STR_003A_COPPER_ORE                                             :Bakir
-STR_003B_MAIZE                                                  :Maize
 STR_003C_FRUIT                                                  :Meyve
 STR_003D_DIAMOND                                                :Elmas
 STR_003E_FOOD                                                   :Gida
@@ -398,7 +396,6 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING}
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Arazi bilgileri
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Düzenleme bedeli: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Düzenleme bedeli: {LTBLUE}{CURRENCY}
-STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Sahibi: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Yerel yönetim: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Yok

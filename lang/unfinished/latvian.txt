@@ -210,11 +210,11 @@ STR_00F4_500M                                                   :{BLACK}{TINYFON
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Vilcieni
 STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Cel'u transporta li'dzekl'i
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Kug'i
-STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Lidmaši'na
+STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Lidma¨i'na
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Transporta mars'ruti
 STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Ogl'u raktuve
 STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Elektrostacija
-STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Mežs
+STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Me¸s
 STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Koku za'g'e'tava
 STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Naftas apstra'des stacija
 STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Ferma
@@ -1136,7 +1136,7 @@ STR_201E_STADIUM                                                :Stadions
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidijas
 STR_202A_NONE                                                   :{ORANGE}Neviens
-STR_2036_COTTAGES                                               :Kotedži
+STR_2036_COTTAGES                                               :Koted¸i
 STR_203D_STADIUM                                                :Stadions
 STR_203F_HOUSES                                                 :Mâjas
 STR_2040_CINEMA                                                 :Coca-Cola Plaza
@@ -1185,7 +1185,7 @@ STR_4004                                                        :{COMPANY}, {DAT
 ##id 0x4800
 STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4804_SAWMILL                                                :Gateris
-STR_4805_FOREST                                                 :Mežs
+STR_4805_FOREST                                                 :Me¸s
 STR_480B_FARM                                                   :Ferma
 STR_4812_BANK                                                   :Banka
 STR_4819_FACTORY                                                :Rûpnîca
@@ -1197,7 +1197,7 @@ STR_4819_FACTORY                                                :Rûpnîca
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Vilciens tunelî
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
-STR_500E_SUSPENSION_STEEL                                       :Vanšu, Terauda
+STR_500E_SUSPENSION_STEEL                                       :Van¨u, Terauda
 
 ##id 0x5800
 STR_5803_COMPANY_HEADQUARTERS                                   :Firmas Ofiss
@@ -1210,7 +1210,7 @@ STR_SV_EMPTY                                                    :
 STR_SV_TRAIN_NAME                                               :Vilciens {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
-STR_SV_STNAME_FOREST                                            :{STRING} Mežs
+STR_SV_STNAME_FOREST                                            :{STRING} Me¸s
 
 ############ end of	savegame specific region!
 
@@ -1252,8 +1252,8 @@ STR_MAX_LOAN                                                    :{WHITE}Maksmala
 STR_7028                                                        :{BLACK}{CURRENCY64}
 STR_INSUFFICIENT_FUNDS                                          :{WHITE}Naudu, kas ir bankas aizn'e'mums, nevar dot prom...
 STR_7042_NONE                                                   :{WHITE}Neviens
-STR_7044_MALE                                                   :{BLACK}Viriešu
-STR_7045_FEMALE                                                 :{BLACK}Sieviešu
+STR_7044_MALE                                                   :{BLACK}Virie¨u
+STR_7045_FEMALE                                                 :{BLACK}Sievie¨u
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankrots!
@@ -1310,11 +1310,11 @@ STR_807A_PLODDYPHUT_MKIII_BUS                                   :Ploddyphut MkII
 STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe Koku Vedçjs
 STR_809A_UHL_ARMORED_TRUCK                                      :Uhl Brûòotais Auto
 STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow Cukura Auto
-STR_80CE_MPS_PASSENGER_FERRY                                    :MPS Pasažieru Pramis
-STR_80CF_FFP_PASSENGER_FERRY                                    :FFP Pasažieru Pramis
+STR_80CE_MPS_PASSENGER_FERRY                                    :MPS Pasa¸ieru Pramis
+STR_80CF_FFP_PASSENGER_FERRY                                    :FFP Pasa¸ieru Pramis
 STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell 300 Hovercraft
-STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug Pasažieru Pramis
-STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake Pasažieru Pramis
+STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug Pasa¸ieru Pramis
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake Pasa¸ieru Pramis
 STR_80D7_SAMPSON_U52                                            :Sampson U52
 STR_80D8_COLEMAN_COUNT                                          :Coleman Count
 STR_80D9_FFP_DART                                               :FFP Dart
@@ -1376,7 +1376,7 @@ STR_GO_TO_TRAIN_DEPOT                                           :Uz {TOWN} Vilci
 
 
 
-STR_8812_EMPTY                                                  :{LTBLUE}Tukšs
+STR_8812_EMPTY                                                  :{LTBLUE}Tuk¨s
 STR_8816                                                        :{BLACK}-
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Serviss

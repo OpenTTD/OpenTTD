@@ -11,15 +11,11 @@ STR_EMPTY                                                       :
 STR_0009                                                        :{WHITE}{STRING}
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000E                                                        :
-STR_000F_PASSENGERS                                             :Passengers
-STR_0010_COAL                                                   :Coal
 STR_0011_MAIL                                                   :Post
 STR_0012_OIL                                                    :Oalje
-STR_0013_LIVESTOCK                                              :Livestock
 STR_0014_GOODS                                                  :Guod
 STR_0015_GRAIN                                                  :Graan
 STR_0016_WOOD                                                   :Hout
-STR_0017_IRON_ORE                                               :Iron Ore
 STR_0018_STEEL                                                  :Stiel
 STR_0019_VALUABLES                                              :Kostbere spullen
 STR_001A_COPPER_ORE                                             :Koper erts
@@ -43,7 +39,6 @@ STR_002B_BATTERIES                                              :Batterijen
 STR_002C_PLASTIC                                                :Plestik
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :Passazjier
-STR_0030_COAL                                                   :Coal
 STR_0031_MAIL                                                   :Post
 STR_0032_OIL                                                    :Oalje
 STR_0033_LIVESTOCK                                              :Fee
