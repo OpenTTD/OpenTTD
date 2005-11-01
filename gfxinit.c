@@ -271,7 +271,7 @@ static const SpriteID trg1idx[] = {
  * the old sprite-count offset from SPR_OPENTTD_BASE. With this there is no
  * correspondence of any kind with the ID's in the grf file, but results in
  * a maximum use of sprite slots. */
-#define OPENTTD_SPRITES_COUNT 101
+#define OPENTTD_SPRITES_COUNT 95
 static const SpriteID _openttd_grf_indexes[] = {
 	SPR_IMG_AUTORAIL, SPR_CURSOR_WAYPOINT, // icons etc
 	134, 134,  // euro symbol medium size
@@ -351,7 +351,7 @@ static void LoadSpriteTables(void)
 
 	assert(load_index == SPR_OPENTTD_BASE);
 	LoadGrfIndexed("openttd.grf", _openttd_grf_indexes, i++);
-	load_index = SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT + 1;
+	load_index = SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT;
 
 	LoadNewGRF(load_index, i);
 }

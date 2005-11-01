@@ -53,30 +53,30 @@ enum Sprites {
 	SPR_AUTORAIL_BASE = SPR_SLOPES_BASE + 78,
 	SPR_OPENTTD_BASE  = SPR_AUTORAIL_BASE + 55, // can be lowered once autorail.grf is finalized
 
-	SPR_BLOT = SPR_OPENTTD_BASE + 32, // colored circle (mainly used as vehicle profit marker and for sever compatibility)
+	SPR_BLOT = SPR_OPENTTD_BASE + 29, // colored circle (mainly used as vehicle profit marker and for sever compatibility)
 
-	SPR_PIN_UP        = SPR_OPENTTD_BASE + 62,   // pin icon
-	SPR_PIN_DOWN      = SPR_OPENTTD_BASE + 63,
-	SPR_BOX_EMPTY     = SPR_OPENTTD_BASE + 66,
-	SPR_BOX_CHECKED   = SPR_OPENTTD_BASE + 67,
-	SPR_WINDOW_RESIZE = SPR_OPENTTD_BASE + 94,   // resize icon
-	SPR_HOUSE_ICON    = SPR_OPENTTD_BASE + 101,
+	SPR_PIN_UP        = SPR_OPENTTD_BASE + 55,   // pin icon
+	SPR_PIN_DOWN      = SPR_OPENTTD_BASE + 56,
+	SPR_BOX_EMPTY     = SPR_OPENTTD_BASE + 59,
+	SPR_BOX_CHECKED   = SPR_OPENTTD_BASE + 60,
+	SPR_WINDOW_RESIZE = SPR_OPENTTD_BASE + 87,   // resize icon
+	SPR_HOUSE_ICON    = SPR_OPENTTD_BASE + 94,
 	// arrow icons pointing in all 4 directions
-	SPR_ARROW_DOWN    = SPR_OPENTTD_BASE + 95,
-	SPR_ARROW_UP      = SPR_OPENTTD_BASE + 96,
-	SPR_ARROW_LEFT    = SPR_OPENTTD_BASE + 97,
-	SPR_ARROW_RIGHT   = SPR_OPENTTD_BASE + 98,
+	SPR_ARROW_DOWN    = SPR_OPENTTD_BASE + 88,
+	SPR_ARROW_UP      = SPR_OPENTTD_BASE + 89,
+	SPR_ARROW_LEFT    = SPR_OPENTTD_BASE + 90,
+	SPR_ARROW_RIGHT   = SPR_OPENTTD_BASE + 91,
 
 	/* Clone vehicles stuff */
-	SPR_CLONE_AIRCRAFT = SPR_OPENTTD_BASE + 99,
-	SPR_CLONE_ROADVEH = SPR_OPENTTD_BASE + 99,
-	SPR_CLONE_TRAIN = SPR_OPENTTD_BASE + 99,
-	SPR_CLONE_SHIP = SPR_OPENTTD_BASE + 99,
+	SPR_CLONE_AIRCRAFT = SPR_OPENTTD_BASE + 92,
+	SPR_CLONE_ROADVEH  = SPR_OPENTTD_BASE + 92,
+	SPR_CLONE_SHIP     = SPR_OPENTTD_BASE + 92,
+	SPR_CLONE_TRAIN    = SPR_OPENTTD_BASE + 92,
 
 	/* Network GUI sprites */
-	SPR_SQUARE = SPR_OPENTTD_BASE + 23,     // colored square (used for newgrf compatibility)
-	SPR_LOCK = SPR_OPENTTD_BASE + 22,       // lock icon (for password protected servers)
-	SPR_FLAGS_BASE = SPR_OPENTTD_BASE + 90, // start of the flags block (in same order as enum NetworkLanguage)
+	SPR_SQUARE = SPR_OPENTTD_BASE + 20,     // colored square (used for newgrf compatibility)
+	SPR_LOCK = SPR_OPENTTD_BASE + 19,       // lock icon (for password protected servers)
+	SPR_FLAGS_BASE = SPR_OPENTTD_BASE + 83, // start of the flags block (in same order as enum NetworkLanguage)
 
 	/* Manager face sprites */
 	SPR_GRADIENT = 874, // background gradient behind manager face
@@ -89,8 +89,8 @@ enum Sprites {
 
 	/* Sliced view shadow cells */
 	/* Maybe we have different ones in the future */
-	SPR_MAX_SLICE = SPR_OPENTTD_BASE + 71,
-	SPR_MIN_SLICE = SPR_OPENTTD_BASE + 71,
+	SPR_MAX_SLICE = SPR_OPENTTD_BASE + 64,
+	SPR_MIN_SLICE = SPR_OPENTTD_BASE + 64,
 
 	/* Unmovables spritenumbers */
 	SPR_UNMOVABLE_TRANSMITTER 	= 2601,
@@ -187,10 +187,10 @@ enum Sprites {
 	SPR_MGLV_TRACK_Y                  = 1175,
 	SPR_MGLV_TRACK_BASE               = 1182,
 	SPR_MGLV_TRACK_N_S                = 1199,
-	SPR_WAYPOINT_X_1						= SPR_OPENTTD_BASE + 18,
-	SPR_WAYPOINT_X_2						= SPR_OPENTTD_BASE + 19,
-	SPR_WAYPOINT_Y_1						= SPR_OPENTTD_BASE + 20,
-	SPR_WAYPOINT_Y_2						= SPR_OPENTTD_BASE + 21,
+	SPR_WAYPOINT_X_1						= SPR_OPENTTD_BASE + 15,
+	SPR_WAYPOINT_X_2						= SPR_OPENTTD_BASE + 16,
+	SPR_WAYPOINT_Y_1						= SPR_OPENTTD_BASE + 17,
+	SPR_WAYPOINT_Y_2						= SPR_OPENTTD_BASE + 18,
 	OFFSET_TILEH_IMPOSSIBLE			= 0,
 	OFFSET_TILEH_1							= 14,
 	OFFSET_TILEH_2							= 15,
@@ -266,7 +266,7 @@ enum Sprites {
 	SPR_AIRPORT_RADAR_A							= 2689,
 	SPR_AIRPORT_RADAR_B							= 2690,
 	SPR_AIRPORT_RADAR_C							= 2691,
-	SPR_AIRPORT_HELIPAD							= SPR_OPENTTD_BASE + 31,
+	SPR_AIRPORT_HELIPAD							= SPR_OPENTTD_BASE + 28,
 
 	/* Road Stops */
 	/* Road stops have a ground tile and 3 buildings, one on each side
@@ -427,7 +427,7 @@ enum Sprites {
 	SPR_CROSSING_OFF_X_MAGLEV = 1394,
 
 	/* bridge type sprites */
-	SPR_PILLARS_BASE = SPR_OPENTTD_BASE + 33,
+	SPR_PILLARS_BASE = SPR_OPENTTD_BASE + 30,
 
 	/* Wooden bridge (type 0) */
 	SPR_BTWDN_RAIL_Y_REAR				= 2545,
@@ -737,12 +737,12 @@ enum Sprites {
 	SPR_IMG_ROCKS           = 4084,
 	SPR_IMG_LIGHTHOUSE_DESERT = 4085, // XXX - is Desert image on the desert-climate
 	SPR_IMG_TRANSMITTER     = 4086,
-	SPR_IMG_LEVEL_LAND      = SPR_OPENTTD_BASE + 68,
-	SPR_IMG_BUILD_CANAL     = SPR_OPENTTD_BASE + 65,
+	SPR_IMG_LEVEL_LAND      = SPR_OPENTTD_BASE + 61,
+	SPR_IMG_BUILD_CANAL     = SPR_OPENTTD_BASE + 58,
 	SPR_IMG_BUILD_LOCK      = SPR_CANALS_BASE + 69,
-	SPR_IMG_PLACE_SIGN      = SPR_OPENTTD_BASE + 70,
+	SPR_IMG_PLACE_SIGN      = SPR_OPENTTD_BASE + 63,
 	SPR_IMG_PAUSE           = 726,
-	SPR_IMG_FASTFORWARD     = SPR_OPENTTD_BASE + 57,
+	SPR_IMG_FASTFORWARD     = SPR_OPENTTD_BASE + 54,
 	SPR_IMG_SETTINGS        = 751,
 	SPR_IMG_SAVE            = 724,
 	SPR_IMG_SMALLMAP        = 708,
@@ -778,8 +778,8 @@ enum Sprites {
 	/* OPEN TRANSPORT TYCOON in gamescreen */
 	SPR_OTTD_O                = 4842,
 	SPR_OTTD_P                = 4841,
-	SPR_OTTD_E                = SPR_OPENTTD_BASE + 16,
-	SPR_OTTD_D                = SPR_OPENTTD_BASE + 17,
+	SPR_OTTD_E                = SPR_OPENTTD_BASE + 13,
+	SPR_OTTD_D                = SPR_OPENTTD_BASE + 14,
 	SPR_OTTD_N                = 4839,
 	SPR_OTTD_T                = 4836,
 	SPR_OTTD_R                = 4837,
@@ -902,16 +902,16 @@ enum Sprites {
 	SPR_IMG_WAYPOINT = SPR_OPENTTD_BASE + 3,
 
 	SPR_IMG_DEPOT_RAIL   = 1294,
-	SPR_IMG_DEPOT_MONO   = SPR_OPENTTD_BASE + 12,
-	SPR_IMG_DEPOT_MAGLEV = SPR_OPENTTD_BASE + 13,
+	SPR_IMG_DEPOT_MONO   = SPR_OPENTTD_BASE + 9,
+	SPR_IMG_DEPOT_MAGLEV = SPR_OPENTTD_BASE + 10,
 
 	SPR_IMG_TUNNEL_RAIL   = 2430,
 	SPR_IMG_TUNNEL_MONO   = 2431,
 	SPR_IMG_TUNNEL_MAGLEV = 2432,
 
-	SPR_IMG_CONVERT_RAIL   = SPR_OPENTTD_BASE + 25,
-	SPR_IMG_CONVERT_MONO   = SPR_OPENTTD_BASE + 27,
-	SPR_IMG_CONVERT_MAGLEV = SPR_OPENTTD_BASE + 29
+	SPR_IMG_CONVERT_RAIL   = SPR_OPENTTD_BASE + 22,
+	SPR_IMG_CONVERT_MONO   = SPR_OPENTTD_BASE + 24,
+	SPR_IMG_CONVERT_MAGLEV = SPR_OPENTTD_BASE + 26
 };
 
 /** Cursor sprite numbers */
@@ -928,7 +928,7 @@ typedef enum CursorSprites {
 
 	SPR_CURSOR_TREE           = 2010,
 	SPR_CURSOR_BUY_LAND       = 4792,
-	SPR_CURSOR_LEVEL_LAND     = SPR_OPENTTD_BASE + 69,
+	SPR_CURSOR_LEVEL_LAND     = SPR_OPENTTD_BASE + 62,
 
 	SPR_CURSOR_TOWN           = 4080,
 	SPR_CURSOR_INDUSTRY       = 4081,
@@ -941,8 +941,8 @@ typedef enum CursorSprites {
 
 	/* dock cursors */
 	SPR_CURSOR_DOCK           = 3668,
-	SPR_CURSOR_CANAL          = SPR_OPENTTD_BASE + 11,
-	SPR_CURSOR_LOCK           = SPR_OPENTTD_BASE + 64,
+	SPR_CURSOR_CANAL          = SPR_OPENTTD_BASE + 8,
+	SPR_CURSOR_LOCK           = SPR_OPENTTD_BASE + 57,
 
 	/* shared road & rail cursors */
 	SPR_CURSOR_BRIDGE         = 2593,
@@ -975,12 +975,12 @@ typedef enum CursorSprites {
 	SPR_CURSOR_AUTOMAGLEV     = SPR_OPENTTD_BASE + 6,
 
 	SPR_CURSOR_WAYPOINT       = SPR_OPENTTD_BASE + 7,
-	SPR_CURSOR_MONO_DEPOT     = SPR_OPENTTD_BASE + 14,
-	SPR_CURSOR_MAGLEV_DEPOT   = SPR_OPENTTD_BASE + 15,
+	SPR_CURSOR_MONO_DEPOT     = SPR_OPENTTD_BASE + 11,
+	SPR_CURSOR_MAGLEV_DEPOT   = SPR_OPENTTD_BASE + 12,
 
-	SPR_CURSOR_CONVERT_RAIL   = SPR_OPENTTD_BASE + 26,
-	SPR_CURSOR_CONVERT_MONO   = SPR_OPENTTD_BASE + 28,
-	SPR_CURSOR_CONVERT_MAGLEV = SPR_OPENTTD_BASE + 30,
+	SPR_CURSOR_CONVERT_RAIL   = SPR_OPENTTD_BASE + 23,
+	SPR_CURSOR_CONVERT_MONO   = SPR_OPENTTD_BASE + 25,
+	SPR_CURSOR_CONVERT_MAGLEV = SPR_OPENTTD_BASE + 27,
 
 	/* road cursors */
 	SPR_CURSOR_ROAD_NESW      = 1311,
@@ -991,7 +991,7 @@ typedef enum CursorSprites {
 	SPR_CURSOR_TRUCK_STATION  = 2726,
 	SPR_CURSOR_ROAD_TUNNEL    = 2433,
 
-	SPR_CURSOR_CLONE = SPR_OPENTTD_BASE + 100,
+	SPR_CURSOR_CLONE = SPR_OPENTTD_BASE + 93,
 } CursorSprite;
 
 /// Animation macro in table/animcursors.h (_animcursors[])
