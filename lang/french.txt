@@ -2,6 +2,7 @@
 ##ownname Français
 ##isocode fr
 ##plural 2
+##gender m m2 f
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -1697,43 +1698,43 @@ STR_4010_GENERATE_RANDOM_NEW_GAME                               :Générer une par
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} présente
 STR_4801                                                        :{WHITE}{INDUSTRY}
-STR_4802_COAL_MINE                                              :Mine de charbon
-STR_4803_POWER_STATION                                          :Centrale électrique
-STR_4804_SAWMILL                                                :Scierie
-STR_4805_FOREST                                                 :Forêt
-STR_4806_OIL_REFINERY                                           :Raffinerie pétrolière
-STR_4807_OIL_RIG                                                :Plate-forme pétrolière
-STR_4808_FACTORY                                                :Usine
-STR_4809_PRINTING_WORKS                                         :Imprimerie
-STR_480A_STEEL_MILL                                             :Aciérie
-STR_480B_FARM                                                   :Ferme
-STR_480C_COPPER_ORE_MINE                                        :Mine de cuivre
-STR_480D_OIL_WELLS                                              :Puits de pétrole
-STR_480E_BANK                                                   :Banque
-STR_480F_FOOD_PROCESSING_PLANT                                  :Usine alimentaire
-STR_4810_PAPER_MILL                                             :Usine papetière
-STR_4811_GOLD_MINE                                              :Mine d'or
-STR_4812_BANK                                                   :Banque
-STR_4813_DIAMOND_MINE                                           :Mine de diamants
-STR_4814_IRON_ORE_MINE                                          :Mine de fer
-STR_4815_FRUIT_PLANTATION                                       :Plantation de fruits
-STR_4816_RUBBER_PLANTATION                                      :Plantation de caoutchouc
-STR_4817_WATER_SUPPLY                                           :Réservoir d'eau
-STR_4818_WATER_TOWER                                            :Château d'eau
-STR_4819_FACTORY                                                :Usine
-STR_481A_FARM                                                   :Ferme
-STR_481B_LUMBER_MILL                                            :Scierie
-STR_481C_COTTON_CANDY_FOREST                                    :Forêt de Barbe à Papa
-STR_481D_CANDY_FACTORY                                          :Usine de Sucreries
-STR_481E_BATTERY_FARM                                           :Ferme de Batteries
-STR_481F_COLA_WELLS                                             :Puits de Cola
-STR_4820_TOY_SHOP                                               :Boutique de Jouets
-STR_4821_TOY_FACTORY                                            :Usine de Jouets
-STR_4822_PLASTIC_FOUNTAINS                                      :Fontaines de plastique
-STR_4823_FIZZY_DRINK_FACTORY                                    :Usine de Boissons Gazeuses
-STR_4824_BUBBLE_GENERATOR                                       :Générateur de Bulles
-STR_4825_TOFFEE_QUARRY                                          :Carrière de caramel
-STR_4826_SUGAR_MINE                                             :Mine de sucre
+STR_4802_COAL_MINE                                              :{G=f}Mine de charbon
+STR_4803_POWER_STATION                                          :{G=f}Centrale électrique
+STR_4804_SAWMILL                                                :{G=f}Scierie
+STR_4805_FOREST                                                 :{G=f}Forêt
+STR_4806_OIL_REFINERY                                           :{G=f}Raffinerie pétrolière
+STR_4807_OIL_RIG                                                :{G=f}Plate-forme pétrolière
+STR_4808_FACTORY                                                :{G=f}Usine
+STR_4809_PRINTING_WORKS                                         :{G=f}Imprimerie
+STR_480A_STEEL_MILL                                             :{G=f}Aciérie
+STR_480B_FARM                                                   :{G=f}Ferme
+STR_480C_COPPER_ORE_MINE                                        :{G=f}Mine de cuivre
+STR_480D_OIL_WELLS                                              :{G=m}Puits de pétrole
+STR_480E_BANK                                                   :{G=f}Banque
+STR_480F_FOOD_PROCESSING_PLANT                                  :{G=f}Usine alimentaire
+STR_4810_PAPER_MILL                                             :{G=f}Usine papetière
+STR_4811_GOLD_MINE                                              :{G=f}Mine d'or
+STR_4812_BANK                                                   :{G=f}Banque
+STR_4813_DIAMOND_MINE                                           :{G=f}Mine de diamants
+STR_4814_IRON_ORE_MINE                                          :{G=f}Mine de fer
+STR_4815_FRUIT_PLANTATION                                       :{G=f}Plantation de fruits
+STR_4816_RUBBER_PLANTATION                                      :{G=f}Plantation de caoutchouc
+STR_4817_WATER_SUPPLY                                           :{G=m}Réservoir d'eau
+STR_4818_WATER_TOWER                                            :{G=m}Château d'eau
+STR_4819_FACTORY                                                :{G=f}Usine
+STR_481A_FARM                                                   :{G=f}Ferme
+STR_481B_LUMBER_MILL                                            :{G=f}Scierie
+STR_481C_COTTON_CANDY_FOREST                                    :{G=f}Forêt de Barbe à Papa
+STR_481D_CANDY_FACTORY                                          :{G=f}Usine de Sucreries
+STR_481E_BATTERY_FARM                                           :{G=f}Ferme de Batteries
+STR_481F_COLA_WELLS                                             :{G=m}Puits de Cola
+STR_4820_TOY_SHOP                                               :{G=f}Boutique de Jouets
+STR_4821_TOY_FACTORY                                            :{G=f}Usine de Jouets
+STR_4822_PLASTIC_FOUNTAINS                                      :{G=f}Fontaines de plastique
+STR_4823_FIZZY_DRINK_FACTORY                                    :{G=f}Usine de Boissons Gazeuses
+STR_4824_BUBBLE_GENERATOR                                       :{G=m}Générateur de Bulles
+STR_4825_TOFFEE_QUARRY                                          :{G=f}Carrière de caramel
+STR_4826_SUGAR_MINE                                             :{G=f}Mine de sucre
 
 ############ range for requires	starts
 STR_4827_REQUIRES                                               :{BLACK}Nécessite: {YELLOW}{STRING}
@@ -1744,8 +1745,8 @@ STR_4829_REQUIRES                                               :{BLACK}Nécessit
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Production le mois dernier:
 STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% transporté)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrer la vue sur l'industrie
-STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Un(e) nouveau(elle) {STRING} en construction près de {TOWN}!
-STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Un(e) nouveau(elle) {STRING} s'implante près de {TOWN}!
+STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Un{G "" "" e} nouv{G eau el elle} {STRING} en construction près de {TOWN}!
+STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Un{G "" "" e} nouv{G eau el elle} {STRING} s'implante près de {TOWN}!
 STR_482F_COST                                                   :{BLACK}Prix: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Impossible de construire cette industrie ici...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...les forêts ne peuvent pas être plantées sur de la neige
@@ -2323,12 +2324,12 @@ STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Hélicop
 STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Hélicoptère
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Communiqué du fabriquant d'engins
 STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Nous venons juste d'inventer: {STRING} - Voulez vous l'exclusivité de ce véhicule pendant un an, afin que nous puissions le tester avant sa mise sur le marché ?
-STR_8102_RAILROAD_LOCOMOTIVE                                    :locomotive
-STR_8103_ROAD_VEHICLE                                           :véhicule
-STR_8104_AIRCRAFT                                               :aéronef
-STR_8105_SHIP                                                   :navire
-STR_8106_MONORAIL_LOCOMOTIVE                                    :locomotive monorail
-STR_8107_MAGLEV_LOCOMOTIVE                                      :locomotive magnétique
+STR_8102_RAILROAD_LOCOMOTIVE                                    :{G=f}locomotive
+STR_8103_ROAD_VEHICLE                                           :{G=m}véhicule
+STR_8104_AIRCRAFT                                               :{G=m2}aéronef
+STR_8105_SHIP                                                   :{G=m}navire
+STR_8106_MONORAIL_LOCOMOTIVE                                    :{G=f}locomotive monorail
+STR_8107_MAGLEV_LOCOMOTIVE                                      :{G=f}locomotive magnétique
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Dépôt ferroviaire
@@ -2438,7 +2439,7 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Insérer 
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Forcer le véhicule à attendre un chargement complet pour l'ordre sélectionné
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Forcer le véhicule à attendre un déchargement complet pour l'ordre sélectionné
 STR_SERVICE_HINT                                                :{BLACK}Sauter cet ordre tant qu'aucun entretien n'est requis
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nouveau(elle) {STRING} disponible!
+STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nouv{G eau el elle} {STRING} disponible!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Prix: {CURRENCY} Poids: {COMMA}t{}Vitesse: {VELOCITY}  Puissance: {COMMA}ch{}Coût d'entretien: {CURRENCY}/an{}Capacité: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}En panne
