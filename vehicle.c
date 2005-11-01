@@ -526,6 +526,18 @@ Vehicle *_first_veh_in_depot_list;
 */
 void VehicleEnteredDepotThisTick(Vehicle *v)
 {
+	// we need to set v->leave_depot_instantly as we have no control of it's contents at this time
+	if (!HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
+		// the vehicle do not plan on stopping in the depot, so we stop it to ensure that it will not reserve the path
+		// out of the depot before we might autoreplace it to a different engine. The new engine would not own the reserved path
+		// we store that we stopped the vehicle, so autoreplace can start it again
+		v->vehstatus |= VS_STOPPED;
+		v->leave_depot_instantly = true;
+	} else {
+		// we keep the vehicle in the depot
+		v->leave_depot_instantly = false;
+	}
+
 	if (_first_veh_in_depot_list == NULL) {
 		_first_veh_in_depot_list = v;
 	} else {
@@ -1610,9 +1622,11 @@ static void MaybeReplaceVehicle(Vehicle *v)
 	_current_player = v->owner;
 
 	assert(v->type == VEH_Train || v->type == VEH_Road || v->type == VEH_Ship || v->type == VEH_Aircraft);
-	if (!(v->vehstatus&VS_STOPPED)) {
-		stopped = true;	// we stop the vehicle to do this, so we have to remember to start it again when we are done
-		DoCommand(0, 0, v->index, 0, DC_EXEC, CMD_STARTSTOP_VEH(v->type));
+
+	if (v->leave_depot_instantly) {
+		// we stopped the vehicle to do this, so we have to remember to start it again when we are done
+		// we need to store this info as the engine might be replaced and lose this info
+		stopped = true;
 	}
 
 	while (true) {
@@ -1663,7 +1677,7 @@ static void MaybeReplaceVehicle(Vehicle *v)
 				AddNewsItem(message, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0), v->index, 0);
 			}
 			if (stopped)
-				DoCommand(0, 0, v->index, 0, DC_EXEC, CMD_STARTSTOP_VEH(v->type));	//we start the vehicle again
+				v->vehstatus &= ~VS_STOPPED; //we start the vehicle again
 			return;
 		}
 
@@ -1679,7 +1693,7 @@ static void MaybeReplaceVehicle(Vehicle *v)
 	if (IsLocalPlayer()) ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost);
 
 	if (stopped)
-		DoCommand(0, 0, v->index, 0, DC_EXEC, CMD_STARTSTOP_VEH(v->type));	//we start the vehicle again
+		v->vehstatus &= ~VS_STOPPED; //we start the vehicle again
 	_current_player = OWNER_NONE;
 }
 

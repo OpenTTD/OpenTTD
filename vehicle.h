@@ -166,6 +166,7 @@ struct Vehicle {
 	int32 x_pos;			// coordinates
 	int32 y_pos;
 
+	bool leave_depot_instantly;	// NOSAVE: stores if the vehicle needs to leave the depot it just entered. Used by autoreplace
 	byte z_pos;
 	byte direction;		// facing
 
