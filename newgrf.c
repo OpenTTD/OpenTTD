@@ -1920,7 +1920,7 @@ static void SkipIf(byte *buf, int len)
 		}
 
 		case 0x8D:    /* TTD Version, 00=DOS, 01=Windows */
-			param_val = 1;
+			param_val = !_use_dos_palette;
 			break;
 		case 0x8E:
 			param_val = _traininfo_vehicle_pitch;
