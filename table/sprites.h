@@ -1102,14 +1102,13 @@ enum PaletteSprites {
  	//sets color to bare land stuff, for rail and road (and crossings)
 	PALETTE_TO_BARE_LAND 				= PALETTE_RECOLOR_SPRITE(0x317),
 	//XXX is 318-31A really not used?
-	//XXX FIXME I dunno yet what this is
-	PALETTE_31B 								= PALETTE_RECOLOR_SPRITE(0x31B),
+	PALETTE_TO_STRUCT_BLUE      = PALETTE_RECOLOR_SPRITE(0x31B),
 	//structure color to something brownish (for the cantilever bridges for example)
 	PALETTE_TO_STRUCT_BROWN 		= PALETTE_RECOLOR_SPRITE(0x31C),
-	PALETTE_31D 								= PALETTE_RECOLOR_SPRITE(0x31D), //XXX FIXME Don't know this either
+	PALETTE_TO_STRUCT_WHITE     = PALETTE_RECOLOR_SPRITE(0x31D),
 	//sets bridge or structure to red, little concrete one and cantilever use this one for example
 	PALETTE_TO_STRUCT_RED 			= PALETTE_RECOLOR_SPRITE(0x31E),
-	//XXX 31F
+	PALETTE_TO_STRUCT_GREEN     = PALETTE_RECOLOR_SPRITE(0x31F),
 	PALETTE_TO_STRUCT_CONCRETE 	= PALETTE_RECOLOR_SPRITE(0x320),  //Sets the suspension bridge to concrete, also other strucutures use it
 	PALETTE_TO_STRUCT_YELLOW 		= PALETTE_RECOLOR_SPRITE(0x321),    //Sets the bridge color to yellow (suspension and tubular)
 	PALETTE_TO_TRANSPARENT 			= 0x322 << PALETTE_SPRITE_START | PALETTE_MODIFIER_TRANSPARENT,	//This sets the sprite to transparent
