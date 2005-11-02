@@ -54,7 +54,7 @@ typedef struct Case {
 	struct Case *next;
 } Case;
 
-static bool _masterlang;
+static bool _translated;
 static const char* _file = "(unknown file)";
 static int _cur_line;
 static int _errors, _warnings;
@@ -332,7 +332,7 @@ static void EmitPlural(char *buf, int value)
 		Fatal("%s: No plural words", _cur_ident);
 
 	if (_plural_form_counts[_lang_pluralform] != nw)
-		if (_masterlang) {
+		if (_translated) {
 			Fatal("%s: Invalid number of plural forms. Expecting %d, found %d.", _cur_ident,
 				_plural_form_counts[_lang_pluralform], nw);
 		} else {
@@ -1157,6 +1157,8 @@ static void WriteLangfile(const char *filename, int show_todo)
 				cmdp = ls->english;
 			}
 
+			_translated = !(cmdp == ls->english);
+
 			if (casep) {
 				Case *c;
 				int num;
@@ -1224,7 +1226,6 @@ int CDECL main(int argc, char* argv[])
 
 
 	if (argc == 1) {
-		_masterlang = true;
 		// parse master file
 		ParseFile("lang/english.txt", true);
 		MakeHashOfStrings();
@@ -1236,7 +1237,6 @@ int CDECL main(int argc, char* argv[])
 		WriteStringsH("table/strings.h");
 
 	} else if (argc == 2) {
-		_masterlang = false;
 		ParseFile("lang/english.txt", true);
 		MakeHashOfStrings();
 		ParseFile(argv[1], false);
