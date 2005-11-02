@@ -54,6 +54,7 @@ typedef struct Case {
 	struct Case *next;
 } Case;
 
+static bool _masterlang;
 static bool _translated;
 static const char* _file = "(unknown file)";
 static int _cur_line;
@@ -1157,7 +1158,7 @@ static void WriteLangfile(const char *filename, int show_todo)
 				cmdp = ls->english;
 			}
 
-			_translated = !(cmdp == ls->english);
+			_translated = _masterlang || (cmdp != ls->english);
 
 			if (casep) {
 				Case *c;
@@ -1226,6 +1227,7 @@ int CDECL main(int argc, char* argv[])
 
 
 	if (argc == 1) {
+		_masterlang = true;
 		// parse master file
 		ParseFile("lang/english.txt", true);
 		MakeHashOfStrings();
@@ -1237,6 +1239,7 @@ int CDECL main(int argc, char* argv[])
 		WriteStringsH("table/strings.h");
 
 	} else if (argc == 2) {
+		_masterlang = false;
 		ParseFile("lang/english.txt", true);
 		MakeHashOfStrings();
 		ParseFile(argv[1], false);
