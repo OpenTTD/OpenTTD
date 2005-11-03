@@ -718,12 +718,6 @@ static void DoTriggerVehicle(Vehicle *veh, VehicleTrigger trigger, byte base_ran
 		                                  (resolve_callback) TriggerVehicleSpriteGroup);
 	}
 
-	if (trigger == VEHICLE_TRIGGER_DEPOT) {
-		// store that the vehicle entered a depot this tick
-		// it needs to be before all possible return statements;
-		VehicleEnteredDepotThisTick(veh);
-	}
-
 	if (group == NULL)
 		return;
 
@@ -773,6 +767,11 @@ static void DoTriggerVehicle(Vehicle *veh, VehicleTrigger trigger, byte base_ran
 
 void TriggerVehicle(Vehicle *veh, VehicleTrigger trigger)
 {
+	if (trigger == VEHICLE_TRIGGER_DEPOT) {
+		// store that the vehicle entered a depot this tick
+		VehicleEnteredDepotThisTick(veh);
+	}
+
 	DoTriggerVehicle(veh, trigger, 0, true);
 }
 
