@@ -1681,6 +1681,7 @@ static void MaybeReplaceVehicle(Vehicle *v)
 			}
 			if (stopped)
 				v->vehstatus &= ~VS_STOPPED; //we start the vehicle again
+			_current_player = OWNER_NONE;
 			return;
 		}
 
@@ -1691,8 +1692,6 @@ static void MaybeReplaceVehicle(Vehicle *v)
 		flags |= DC_EXEC;
 	}
 
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
-	SubtractMoneyFromPlayer(cost);
 	if (IsLocalPlayer()) ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost);
 
 	if (stopped)
