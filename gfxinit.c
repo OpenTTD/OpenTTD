@@ -24,6 +24,11 @@ typedef struct FileList {
 	const MD5File landscape[3]; // landscape specific grf files
 } FileList;
 
+enum {
+	SKIP = 0xFFFE,
+	END  = 0xFFFF
+};
+
 #include "table/files.h"
 #include "table/landscape_sprite.h"
 
@@ -69,10 +74,10 @@ static void LoadGrfIndexed(const char* filename, const SpriteID* index_tbl, int 
 
 	DEBUG(spritecache, 2) ("Reading indexed grf-file ``%s''", filename);
 
-	for (; (start = *index_tbl++) != 0xffff;) {
+	while ((start = *index_tbl++) != END) {
 		uint end = *index_tbl++;
 
-		if (start == 0xfffe) { // skip sprites (amount in second var)
+		if (start == SKIP) { // skip sprites (amount in second var)
 			SkipSprites(end);
 		} else { // load sprites and use indexes from start to end
 			do {
@@ -187,83 +192,83 @@ void CheckExternalFiles(void)
 
 
 static const SpriteID trg1idx[] = {
-	     0,    1, // Mouse cursor, ZZZ
+	   0,    1, // Mouse cursor, ZZZ
 /* Medium font */
-	     2,   92, // ' ' till 'z'
-	0xFFFE,   36,
-	   160,  160, // Move ¾ to the correct position
-	    98,   98, // Up arrow
-	   131,  133,
-	0xFFFE,    1, // skip currency sign
-	   135,  135,
-	0xFFFE,    1,
-	   137,  137,
-	0xFFFE,    1,
-	   139,  139,
-	   140,  140, // TODO Down arrow
-	   141,  141,
-	   142,  142, // TODO Check mark
-	   143,  143, // TODO Cross
-	   144,  144,
-	   145,  145, // TODO Right arrow
-	   146,  149,
-	   118,  122, // Transport markers
-	0xFFFE,    2,
-	   157,  157,
-	   114,  115, // Small up/down arrows
-	0xFFFE,    1,
-	   161,  225,
+	   2,   92, // ' ' till 'z'
+	SKIP,   36,
+	 160,  160, // Move ¾ to the correct position
+	  98,   98, // Up arrow
+	 131,  133,
+	SKIP,    1, // skip currency sign
+	 135,  135,
+	SKIP,    1,
+	 137,  137,
+	SKIP,    1,
+	 139,  139,
+	 140,  140, // TODO Down arrow
+	 141,  141,
+	 142,  142, // TODO Check mark
+	 143,  143, // TODO Cross
+	 144,  144,
+	 145,  145, // TODO Right arrow
+	 146,  149,
+	 118,  122, // Transport markers
+	SKIP,    2,
+	 157,  157,
+	 114,  115, // Small up/down arrows
+	SKIP,    1,
+	 161,  225,
 /* Small font */
-	   226,  316, // ' ' till 'z'
-	0xFFFE,   36,
-	   384,  384, // Move ¾ to the correct position
-	   322,  322, // Up arrow
-	   355,  357,
-	0xFFFE,    1, // skip currency sign
-	   359,  359,
-	0xFFFE,    1,
-	   361,  361,
-	0xFFFE,    1,
-	   363,  363,
-	   364,  364, // TODO Down arrow
-	   365,  366,
-	0xFFFE,    1,
-	   368,  368,
-	   369,  369, // TODO Right arrow
-	   370,  373,
-	0xFFFE,    7,
-	   381,  381,
-	0xFFFE,    3,
-	   385,  449,
+	 226,  316, // ' ' till 'z'
+	SKIP,   36,
+	 384,  384, // Move ¾ to the correct position
+	 322,  322, // Up arrow
+	 355,  357,
+	SKIP,    1, // skip currency sign
+	 359,  359,
+	SKIP,    1,
+	 361,  361,
+	SKIP,    1,
+	 363,  363,
+	 364,  364, // TODO Down arrow
+	 365,  366,
+	SKIP,    1,
+	 368,  368,
+	 369,  369, // TODO Right arrow
+	 370,  373,
+	SKIP,    7,
+	 381,  381,
+	SKIP,    3,
+	 385,  449,
 /* Big font */
-	   450,  540, // ' ' till 'z'
-	0xFFFE,   36,
-	   608,  608, // Move ¾ to the correct position
-	0xFFFE,    1,
-	   579,  581,
-	0xFFFE,    1,
-	   583,  583,
-	0xFFFE,    5,
-	   589,  589,
-	0xFFFE,   15,
-	   605,  605,
-	0xFFFE,    3,
-	   609,  625,
-	0xFFFE,    1,
-	   627,  632,
-	0xFFFE,    1,
-	   634,  639,
-	0xFFFE,    1,
-	   641,  657,
-	0xFFFE,    1,
-	   659,  664,
-	0xFFFE,    2,
-	   667,  671,
-	0xFFFE,    1,
-	   673,  673,
+	 450,  540, // ' ' till 'z'
+	SKIP,   36,
+	 608,  608, // Move ¾ to the correct position
+	SKIP,    1,
+	 579,  581,
+	SKIP,    1,
+	 583,  583,
+	SKIP,    5,
+	 589,  589,
+	SKIP,   15,
+	 605,  605,
+	SKIP,    3,
+	 609,  625,
+	SKIP,    1,
+	 627,  632,
+	SKIP,    1,
+	 634,  639,
+	SKIP,    1,
+	 641,  657,
+	SKIP,    1,
+	 659,  664,
+	SKIP,    2,
+	 667,  671,
+	SKIP,    1,
+	 673,  673,
 /* Graphics */
-	   674, 4792,
-	0xFFFF
+	 674, 4792,
+	END
 };
 
 /* NOTE: When adding a normal sprite, increase OPENTTD_SPRITES_COUNT with the
@@ -309,7 +314,7 @@ static const SpriteID _openttd_grf_indexes[] = {
 	 93,  96, // { | } ~ medium
 	541, 544, // { | } ~ large
 	SPR_HOUSE_ICON, SPR_HOUSE_ICON,
-	0xffff,
+	END
 };
 
 static byte _sprite_page_to_load = 0xFF;

@@ -23,7 +23,7 @@ static const SpriteID _landscape_spriteindexes_1[] = {
  0x818,  0x81D,
  0x3DE,  0x3EB,
 0x1212, 0x1212,
-0xffff,
+END
 };
 
 static const SpriteID _landscape_spriteindexes_2[] = {
@@ -60,7 +60,7 @@ static const SpriteID _landscape_spriteindexes_2[] = {
  0xFF5,  0xFF5,
  0xFF8,  0xFF8,
 0x1212, 0x1212,
-0xffff,
+END
 };
 
 static const SpriteID _landscape_spriteindexes_3[] = {
@@ -130,38 +130,38 @@ static const SpriteID _landscape_spriteindexes_3[] = {
  0x514,  0x514,
  0x511,  0x511,
  0x322,  0x322,
- 0xffff,
+END
 };
 
 
 /* Slope graphics indexes temperate climate
 Skip first 3 sprites and only load the proper set */
 static const SpriteID _slopes_spriteindexes_0[] = {
- 0xfffe,  3,
- SPR_SLOPES_BASE, SPR_SLOPES_BASE+73,
- 0xffff,
+	SKIP, 3,
+	SPR_SLOPES_BASE, SPR_SLOPES_BASE + 73,
+	END
 };
 
 /* Slope graphics indexes arctic climate
 Skip first 79 sprites and only load the proper set */
 static const SpriteID _slopes_spriteindexes_1[] = {
- 0xfffe,  79,
- SPR_SLOPES_BASE, SPR_SLOPES_BASE+73,
- 0xffff,
+	SKIP, 79,
+	SPR_SLOPES_BASE, SPR_SLOPES_BASE + 73,
+	END
 };
 
 /* Slope graphics indexes tropical climate
 Skip first 155 sprites and only load the proper set */
 static const SpriteID _slopes_spriteindexes_2[] = {
- 0xfffe,  155,
- SPR_SLOPES_BASE, SPR_SLOPES_BASE+73,
- 0xffff,
+	SKIP, 155,
+	SPR_SLOPES_BASE, SPR_SLOPES_BASE + 73,
+	END
 };
 
 /* Slope graphics indexes toyland climate
 Skip first 231 sprites and only load the proper set */
 static const SpriteID _slopes_spriteindexes_3[] = {
- 0xfffe,  231,
- SPR_SLOPES_BASE, SPR_SLOPES_BASE+73,
- 0xffff,
+	SKIP, 231,
+	SPR_SLOPES_BASE, SPR_SLOPES_BASE + 73,
+	END
 };
