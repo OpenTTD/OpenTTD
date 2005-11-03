@@ -1463,13 +1463,12 @@ int LoadUnloadVehicle(Vehicle *v)
 		ShowFeederIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, v_profit_total);
 
 	if (v->type == VEH_Train) {
-		int num = - (int)GetStationPlatforms(st, v->tile) * 2;
-		do num++; while ( (v=v->next) != NULL);
-		if (num > 0) {
-			unloading_time <<=1;
-			unloading_time += num * unloading_time;
+		// Each platform tile is worth 2 rail vehicles.
+		int overhang = v->u.rail.cached_total_length - GetStationPlatforms(st, v->tile) * 16;
+		if (overhang > 0) {
+			unloading_time <<= 1;
+			unloading_time += (overhang * unloading_time) / 8;
 		}
-		v = u;
 	}
 
 	v->load_unload_time_rem = unloading_time;

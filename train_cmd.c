@@ -83,6 +83,7 @@ void TrainConsistChanged(Vehicle *v) {
 
 	rvi_v = RailVehInfo(v->engine_type);
 	first_engine = (v->subtype == TS_Front_Engine) ? v->engine_type : INVALID_VEHICLE;
+	v->u.rail.cached_total_length = 0;
 
 	for (u = v; u != NULL; u = u->next) {
 		const RailVehicleInfo *rvi_u = RailVehInfo(u->engine_type);
@@ -125,6 +126,7 @@ void TrainConsistChanged(Vehicle *v) {
 			veh_len = rvi_u->shorten_factor;
 		veh_len = clamp(veh_len, 0, u->next == NULL ? 7 : 5); // the clamp on vehicles not the last in chain is stricter, as too short wagons can break the 'follow next vehicle' code
 		u->u.rail.cached_veh_length = 8 - veh_len;
+		v->u.rail.cached_total_length += u->u.rail.cached_veh_length;
 
 	};
 
