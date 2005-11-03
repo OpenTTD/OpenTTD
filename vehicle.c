@@ -1616,7 +1616,7 @@ static void MaybeReplaceVehicle(Vehicle *v)
 	Vehicle *w;
 	const Player *p = GetPlayer(v->owner);
 	byte flags = 0;
-	int32 cost = 0, temp_cost = 0;
+	int32 cost, temp_cost = 0;
 	bool stopped = false;
 
 	_current_player = v->owner;
@@ -1632,6 +1632,7 @@ static void MaybeReplaceVehicle(Vehicle *v)
 	}
 
 	while (true) {
+		cost = 0;
 		w = v;
 		do {
 			// check if the vehicle should be replaced
