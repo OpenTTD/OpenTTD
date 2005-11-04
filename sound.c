@@ -23,6 +23,8 @@ static uint _file_count;
 static FileEntry* _files;
 
 #define SOUND_SLOT 31
+// Number of levels of panning per side
+#define PANNING_LEVELS 16
 
 
 static void OpenBankFile(const char *filename)
@@ -132,15 +134,20 @@ bool SoundInitialize(const char *filename)
 }
 
 // Low level sound player
-static void StartSound(uint sound, uint panning, uint volume)
+static void StartSound(uint sound, int panning, uint volume)
 {
 	MixerChannel* mc;
+	uint left_vol, right_vol;
 
 	if (volume == 0) return;
 	mc = MxAllocateChannel(_mixer);
 	if (mc == NULL) return;
 	if (!SetBankSource(mc, sound)) return;
-	MxSetChannelVolume(mc, volume << 8, volume << 8);
+
+	panning = clamp(panning, -PANNING_LEVELS, PANNING_LEVELS);
+	left_vol = (volume * PANNING_LEVELS) - (volume * panning);
+	right_vol = (volume * PANNING_LEVELS) + (volume * panning);
+	MxSetChannelVolume(mc, left_vol * 128 / PANNING_LEVELS, right_vol * 128 / PANNING_LEVELS);
 	MxActivateChannel(mc);
 }
 
@@ -185,11 +192,11 @@ static void SndPlayScreenCoordFx(SoundFx sound, int x, int y)
 		if (vp != NULL &&
 				IS_INSIDE_1D(x, vp->virtual_left, vp->virtual_width) &&
 				IS_INSIDE_1D(y, vp->virtual_top, vp->virtual_height)) {
-			int left = ((x - vp->virtual_left) >> vp->zoom) + vp->left;
+			int left = (x - vp->virtual_left);
 
 			StartSound(
 				_sound_idx[sound],
-				clamp(left / 71, 0, 8),
+				left / (vp->virtual_width / ((PANNING_LEVELS << 1) + 1)) - PANNING_LEVELS,
 				(_sound_base_vol[sound] * msf.effect_vol * _vol_factor_by_zoom[vp->zoom]) >> 15
 			);
 			return;
@@ -219,7 +226,7 @@ void SndPlayFx(SoundFx sound)
 {
 	StartSound(
 		_sound_idx[sound],
-		4,
+		0,
 		(_sound_base_vol[sound] * msf.effect_vol) >> 7
 	);
 }
