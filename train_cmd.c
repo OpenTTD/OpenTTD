@@ -95,18 +95,32 @@ void TrainConsistChanged(Vehicle *v) {
 		// power is the sum of the powers of all engines and powered wagons in the consist
 		power += rvi_u->power;
 
+		if (rvi_u->visual_effect != 0) {
+			u->u.rail.cached_vis_effect = rvi_u->visual_effect;
+		} else {
+			if (rvi_u->flags & RVI_WAGON) {
+				// Wagons have no effect by default
+				u->u.rail.cached_vis_effect = 0x40;
+			} else if (rvi_u->engclass == 0) {
+				// Steam is offset by -4 units
+				u->u.rail.cached_vis_effect = 4;
+			} else {
+				// Diesel fumes and sparks come from the centre
+				u->u.rail.cached_vis_effect = 8;
+			}
+		}
+
 		// check if its a powered wagon
 		CLRBIT(u->u.rail.flags, VRF_POWEREDWAGON);
 		if ((rvi_v->pow_wag_power != 0) && (rvi_u->flags & RVI_WAGON) && UsesWagonOverride(u)) {
-			uint16 callback = CALLBACK_FAILED;
+			if (HASBIT(rvi_u->callbackmask, CBM_WAGON_POWER)) {
+				uint16 callback = GetCallBackResult(CBID_WAGON_POWER,  u->engine_type, u);
 
-			if (HASBIT(rvi_u->callbackmask, CBM_WAGON_POWER))
-				callback = GetCallBackResult(CBID_WAGON_POWER,  u->engine_type, u);
+				if (callback != CALLBACK_FAILED)
+					u->u.rail.cached_vis_effect = callback;
+			}
 
-			if (callback == CALLBACK_FAILED)
-				callback = rvi_u->visual_effect;
-
-			if (callback < 0x40) {
+			if (u->u.rail.cached_vis_effect < 0x40) {
 				/* wagon is powered */
 				SETBIT(u->u.rail.flags, VRF_POWEREDWAGON); // cache 'powered' status
 				power += rvi_v->pow_wag_power;
@@ -1717,9 +1731,8 @@ void OnTick_Train(void)
 	_age_cargo_skip_counter = (_age_cargo_skip_counter == 0) ? 184 : (_age_cargo_skip_counter - 1);
 }
 
-static const int8 _vehicle_smoke_pos[16] = {
-	-4, -4, -4, 0, 4, 4, 4, 0,
-	-4,  0,  4, 4, 4, 0,-4,-4,
+static const int8 _vehicle_smoke_pos[8] = {
+	1, 1, 1, 0, -1, -1, -1, 0
 };
 
 static void HandleLocomotiveSmokeCloud(Vehicle *v)
@@ -1733,22 +1746,33 @@ static void HandleLocomotiveSmokeCloud(Vehicle *v)
 
 	do {
 		EngineID engtype = v->engine_type;
+		int effect_offset = GB(v->u.rail.cached_vis_effect, 0, 4) - 8;
+		byte effect_type = GB(v->u.rail.cached_vis_effect, 4, 2);
+		bool disable_effect = HASBIT(v->u.rail.cached_vis_effect, 6);
+		int x, y;
 
 		// no smoke?
-		if (RailVehInfo(engtype)->flags & 2 ||
+		if ((RailVehInfo(engtype)->flags & RVI_WAGON && effect_type == 0) ||
+				disable_effect ||
 				GetEngine(engtype)->railtype > RAILTYPE_RAIL ||
 				(v->vehstatus & VS_HIDDEN) || (v->u.rail.track & 0xC0))
 			continue;
 
-		switch (RailVehInfo(engtype)->engclass) {
+		if (effect_type == 0) {
+			// Use default effect type for engine class.
+			effect_type = RailVehInfo(engtype)->engclass;
+		} else {
+			effect_type--;
+		}
+
+		x = _vehicle_smoke_pos[v->direction] * effect_offset;
+		y = _vehicle_smoke_pos[(v->direction + 2) % 8] * effect_offset;
+
+		switch (effect_type) {
 		case 0:
 			// steam smoke.
 			if ( (v->tick_counter&0xF) == 0 && !IsTileDepotType(v->tile, TRANSPORT_RAIL) && !IsTunnelTile(v->tile)) {
-				CreateEffectVehicleRel(v,
-					(_vehicle_smoke_pos[v->direction]),
-					(_vehicle_smoke_pos[v->direction+8]),
-					10,
-					EV_STEAM_SMOKE);
+				CreateEffectVehicleRel(v, x, y, 10, EV_STEAM_SMOKE);
 			}
 			break;
 

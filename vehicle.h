@@ -62,6 +62,14 @@ typedef struct VehicleRail {
 	// cached values, recalculated when the cargo on a train changes (in addition to the conditions above)
 	uint16 cached_weight;     // total weight of the consist.
 	uint16 cached_veh_weight; // weight of the vehicle.
+	/**
+	 * Position/type of visual effect.
+	 * bit 0 - 3 = position of effect relative to vehicle. (0 = front, 8 = centre, 15 = rear)
+	 * bit 4 - 5 = type of effect. (0 = default for engine class, 1 = steam, 2 = diesel, 3 = electric)
+	 * bit     6 = disable visual effect.
+	 * bit     7 = disable powered wagons.
+	 */
+	byte cached_vis_effect;
 
 	// NOSAVE: for wagon override - id of the first engine in train
 	// 0xffff == not in train
