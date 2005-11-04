@@ -527,7 +527,7 @@ Vehicle *_first_veh_in_depot_list;
 void VehicleEnteredDepotThisTick(Vehicle *v)
 {
 	// we need to set v->leave_depot_instantly as we have no control of it's contents at this time
-	if (HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT) && !HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS)) {
+	if (HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT) && !HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS) && v->current_order.type == OT_GOTO_DEPOT) {
 		// we keep the vehicle in the depot since the user ordered it to stay
 		v->leave_depot_instantly = false;
 	} else {
