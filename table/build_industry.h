@@ -1190,78 +1190,140 @@ static const byte * const _industry_create_table[4] = {
 };
 
 
-static const int8 _industry_map5_accepts_1[] = {
-	-1, -1, -1, 0, -1, -1, -1, -1,
-	0, -1, -1, 0, 0, 0, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, 0,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, 0, 0, -1, -1, -1, -1, 6,
-	6, 6, 6, -1, -1, -1, -1, -1,
-	-1, -1, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 6, 6, 6, 6,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, 8, 8, 8, 8, -1, -1, -1,
-	-1, -1, -1, 8, 8, 8, 8, -1,
-	-1, -1, -1, -1, -1, -1, 4, 4,
-	4, 4, 4, 4, -1, -1, -1, -1,
-	-1, -1, -1, -1, 9, 9, 9, 9,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1,
+#define PAS CT_PASSENGERS
+
+#define COL CT_COAL
+#define RUB CT_RUBBER
+#define SUG CT_SUGAR
+
+#define MAL CT_MAIL
+
+#define OIL CT_OIL
+#define TOY CT_TOYS
+
+#define LIV CT_LIVESTOCK // Fruit too
+#define BAT CT_BATTERIES
+
+#define GRA CT_GRAIN
+#define WHT CT_WHEAT // Maize too
+#define TOF CT_TOFFEE
+
+#define WOD CT_WOOD
+#define CLA CT_COLA
+
+#define IRN CT_IRON_ORE
+#define COP CT_COPPER_ORE
+#define CCY CT_COTTON_CANDY
+
+#define STL CT_STEEL
+#define PAP CT_PAPER
+#define WAT CT_WATER
+#define BBL CT_BUBBLES
+
+#define VAL CT_VALUABLES
+#define GLD CT_GOLD // Diamonds too
+#define PLC CT_PLASTIC
+
+#define INV CT_INVALID
+
+static const CargoID _industry_map5_accepts_1[] = {
+	INV, INV, INV, PAS, INV, INV, INV, INV,
+	PAS, INV, INV, PAS, PAS, PAS, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, PAS,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, PAS, PAS, INV, INV, INV, INV, GRA,
+	GRA, GRA, GRA, INV, INV, INV, INV, INV,
+	INV, INV, PAS, PAS, PAS, PAS, PAS, PAS,
+	PAS, PAS, PAS, PAS, WHT, WHT, WHT, WHT,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, COP, COP, COP, COP, INV, INV, INV,
+	INV, INV, INV, CCY, CCY, CCY, CCY, INV,
+	INV, INV, INV, INV, INV, INV, BAT, BAT,
+	BAT, BAT, BAT, BAT, INV, INV, INV, INV,
+	INV, INV, INV, INV, BBL, BBL, BBL, BBL,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV
 };
 
 
-static const int8 _industry_map5_accepts_2[] = {
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, 9,
-	9, 9, 9, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, 7, 7, 7, 7, -1, -1, -1,
-	-1, -1, -1, 6, 6, 6, 6, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1,
+static const CargoID _industry_map5_accepts_2[] = {
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, STL,
+	STL, STL, STL, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, WOD, WOD, WOD, WOD, INV, INV, INV,
+	INV, INV, INV, TOF, TOF, TOF, TOF, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV
 };
 
-static const int8 _industry_map5_accepts_3[] = {
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	1, -1, -1, -1, -1, 7, -1, -1,
-	-1, -1, -1, -1, 3, -1, -1, -1,
-	0, 2, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, 4,
-	4, 4, 4, 9, 9, 9, 9, -1,
-	-1, -1, -1, -1, 8, 8, 8, 8,
-	8, 8, 10, 10, 4, 4, 4, 4,
-	7, 7, 7, 7, 7, 7, 7, 7,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, 10, 10, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	9, 1, 1, 1, 1, -1, -1, -1,
-	-1, -1, -1, 1, 1, 1, 1, -1,
-	-1, -1, 3, 3, 3, 3, 10, 10,
-	10, 10, 10, 10, -1, -1, -1, -1,
-	-1, -1, -1, -1, 7, 7, 7, 7,
-	-1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1,
+static const CargoID _industry_map5_accepts_3[] = {
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	COL, INV, INV, INV, INV, WOD, INV, INV,
+	INV, INV, INV, INV, OIL, INV, INV, INV,
+	PAS, MAL, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, LIV,
+	LIV, LIV, LIV, PAP, PAP, PAP, PAP, INV,
+	INV, INV, INV, INV, IRN, IRN, IRN, IRN,
+	IRN, IRN, VAL, VAL, LIV, LIV, LIV, LIV,
+	WOD, WOD, WOD, WOD, WOD, WOD, WOD, WOD,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, GLD, GLD, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	WAT, RUB, RUB, RUB, RUB, INV, INV, INV,
+	INV, INV, INV, SUG, SUG, SUG, SUG, INV,
+	INV, INV, TOY, TOY, TOY, TOY, PLC, PLC,
+	PLC, PLC, PLC, PLC, INV, INV, INV, INV,
+	INV, INV, INV, INV, CLA, CLA, CLA, CLA,
+	INV, INV, INV, INV, INV, INV, INV, INV,
+	INV, INV, INV, INV, INV, INV, INV
 };
+
+#undef PAS
+#undef COL
+#undef RUB
+#undef SUG
+#undef MAL
+#undef OIL
+#undef TOY
+#undef LIV
+#undef BAT
+#undef GRA
+#undef WHT
+#undef TOF
+#undef WOD
+#undef CLA
+#undef IRN
+#undef COP
+#undef CCY
+#undef STL
+#undef PAP
+#undef WAT
+#undef BBL
+#undef VAL
+#undef GLD
+#undef PLC
+#undef INV

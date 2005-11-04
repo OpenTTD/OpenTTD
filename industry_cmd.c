@@ -411,16 +411,16 @@ static uint GetSlopeTileh_Industry(const TileInfo* ti)
 static void GetAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
 {
 	int m5 = _m[tile].m5;
-	int a;
+	CargoID a;
 
 	a = _industry_map5_accepts_1[m5];
-	if (a >= 0) ac[a] = (a == 0) ? 1 : 8;
+	if (a != CT_INVALID) ac[a] = (a == 0) ? 1 : 8;
 
 	a = _industry_map5_accepts_2[m5];
-	if (a >= 0) ac[a] = 8;
+	if (a != CT_INVALID) ac[a] = 8;
 
 	a = _industry_map5_accepts_3[m5];
-	if (a >= 0) ac[a] = 8;
+	if (a != CT_INVALID) ac[a] = 8;
 }
 
 static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
