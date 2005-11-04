@@ -23,7 +23,8 @@ void HandleButtonClick(Window *w, byte widget)
 	InvalidateWidget(w, widget);
 }
 
-void DispatchLeftClickEvent(Window *w, int x, int y) {
+static void DispatchLeftClickEvent(Window* w, int x, int y)
+{
 	WindowEvent e;
 	const Widget *wi;
 
@@ -83,7 +84,8 @@ void DispatchLeftClickEvent(Window *w, int x, int y) {
 	w->wndproc(w, &e);
 }
 
-void DispatchRightClickEvent(Window *w, int x, int y) {
+static void DispatchRightClickEvent(Window* w, int x, int y)
+{
 	WindowEvent e;
 
 	/* default tooltips handler? */
@@ -110,7 +112,7 @@ void DispatchRightClickEvent(Window *w, int x, int y) {
  * @param widget the widget where the scrollwheel was used
  * @param wheel scroll up or down
  */
-void DispatchMouseWheelEvent(Window *w, int widget, int wheel)
+static void DispatchMouseWheelEvent(Window* w, int widget, int wheel)
 {
 	const Widget *wi1, *wi2;
 	Scrollbar *sb;
@@ -373,7 +375,7 @@ static Window *ForceFindDeletableWindow(void)
 	}
 }
 
-bool IsWindowOfPrototype(Window *w, const Widget *widget)
+bool IsWindowOfPrototype(const Window* w, const Widget* widget)
 {
 	return (w->original_widget == widget);
 }
@@ -872,6 +874,9 @@ static bool HandleMouseOver(void)
 	return true;
 }
 
+
+static bool _dragging_window;
+
 static bool HandleWindowDragging(void)
 {
 	Window *w;
@@ -1291,7 +1296,7 @@ static Window *MaybeBringWindowToFront(Window *w)
  * @param wparam Specifies additional message-specific information
  * @param lparam Specifies additional message-specific information
  */
-void SendWindowMessageW(Window *w, uint msg, uint wparam, uint lparam)
+static void SendWindowMessageW(Window* w, uint msg, uint wparam, uint lparam)
 {
 	WindowEvent e;
 
@@ -1557,7 +1562,7 @@ void InvalidateWindow(byte cls, WindowNumber number)
 	}
 }
 
-void InvalidateWidget(Window *w, byte widget_index)
+void InvalidateWidget(const Window* w, byte widget_index)
 {
 	const Widget *wi = &w->widget[widget_index];
 

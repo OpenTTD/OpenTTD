@@ -5,8 +5,6 @@
 
 typedef union WindowEvent WindowEvent;
 
-//typedef void WindowProc(Window *w, int event, int wparam, long lparam);
-
 typedef void WindowProc(Window *w, WindowEvent *e);
 
 /* How the resize system works:
@@ -210,10 +208,6 @@ enum WindowKeyCodes {
 	// 0-9 are mapped to 48-57
 	// A-Z are mapped to 65-90
 	// a-z are mapped to 97-122
-
-
-	//WKC_UNKNOWN = 0xFF,
-
 };
 
 typedef struct WindowDesc {
@@ -250,7 +244,7 @@ typedef struct Textbuf {
 	uint16 caretxoffs;          /* the current position of the caret in pixels */
 } Textbuf;
 
-typedef struct {
+typedef struct querystr_d {
 	StringID caption;
 	WindowClass wnd_class;
 	WindowNumber wnd_num;
@@ -259,18 +253,18 @@ typedef struct {
 } querystr_d;
 
 #define WP(ptr,str) (*(str*)(ptr)->custom)
-// querystr_d is the bigest struct that comes in w->custom
+// querystr_d is the largest struct that comes in w->custom
 //  because 64-bit systems use 64-bit pointers, it is bigger on a 64-bit system
 //  than on a 32-bit system. Therefore, the size is calculated from querystr_d
 //  instead of a hardcoded number.
 // if any struct becomes bigger the querystr_d, it should be replaced.
 #define WINDOW_CUSTOM_SIZE sizeof(querystr_d)
 
-typedef struct {
+typedef struct Scrollbar {
 	uint16 count, cap, pos;
 } Scrollbar;
 
-typedef struct {
+typedef struct ResizeInfo {
 	uint width; /* Minimum width and height */
 	uint height;
 
@@ -278,7 +272,7 @@ typedef struct {
 	uint step_height;
 } ResizeInfo;
 
-typedef struct {
+typedef struct Message {
 		int msg;
 		int wparam;
 		int lparam;
@@ -302,7 +296,6 @@ struct Window {
 	ViewPort *viewport;
 	const Widget *original_widget;
  	Widget *widget;
-	//const WindowDesc *desc;
 	uint32 desc_flags;
 
 	Message message;
@@ -323,7 +316,7 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(menu_d));
 typedef struct {
 	int16 data_1, data_2, data_3;
 	int16 data_4, data_5;
-	bool close; /* scrollpos_y */
+	bool close;
 	byte byte_1;
 } def_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(def_d));
@@ -334,13 +327,13 @@ typedef struct {
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(void_d));
 
 typedef struct {
-	uint16 base; /* follow_vehicle */
-	uint16 count;/* scrollpos_x */
+	uint16 base;
+	uint16 count;
 } tree_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(tree_d));
 
 typedef struct {
-	byte refresh_counter; /* follow_vehicle */
+	byte refresh_counter;
 } plstations_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(plstations_d));
 
@@ -544,17 +537,11 @@ enum WindowFlags {
 	WF_SCROLL2 = 1 << 13,
 };
 
-
-void DispatchLeftClickEvent(Window *w, int x, int y);
-void DispatchRightClickEvent(Window *w, int x, int y);
-void DispatchMouseWheelEvent(Window *w, int widget, int wheel);
-
 /* window.c */
 void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom);
 void CallWindowEventNP(Window *w, int event);
 void CallWindowTickEvent(void);
 void SetWindowDirty(const Window* w);
-void SendWindowMessageW(Window *w, uint msg, uint wparam, uint lparam);
 void SendWindowMessage(WindowClass wnd_class, WindowNumber wnd_num, uint msg, uint wparam, uint lparam);
 
 Window *FindWindowById(WindowClass cls, WindowNumber number);
@@ -565,10 +552,8 @@ Window *StartWindowDrag(Window *w);
 Window *StartWindowSizing(Window *w);
 Window *FindWindowFromPt(int x, int y);
 
-bool IsWindowOfPrototype(Window *w, const Widget *widget);
+bool IsWindowOfPrototype(const Window* w, const Widget* widget);
 void AssignWidgetToWindow(Window *w, const Widget *widget);
-/* Use this function to save the current widget to be the global default */
-void MakeWindowWidgetDefault(Window *w);
 Window *AllocateWindow(
 							int x,
 							int y,
@@ -605,7 +590,7 @@ void ResetWindowSystem(void);
 int GetMenuItemIndex(const Window *w, int x, int y);
 void InputLoop(void);
 void UpdateWindows(void);
-void InvalidateWidget(Window *w, byte widget_index);
+void InvalidateWidget(const Window* w, byte widget_index);
 
 void GuiShowTooltips(StringID string_id);
 
@@ -643,16 +628,11 @@ VARDEF int _alloc_wnd_parent_num;
 
 VARDEF int _scrollbar_start_pos;
 VARDEF int _scrollbar_size;
-VARDEF bool _demo_mode;
 VARDEF byte _scroller_click_timeout;
 
-VARDEF bool _dragging_window;
 VARDEF bool _scrolling_scrollbar;
 VARDEF bool _scrolling_viewport;
 VARDEF bool _popup_menu_active;
-//VARDEF bool _dragdrop_active;
-
-VARDEF Point _fix_mouse_at;
 
 VARDEF byte _special_mouse_mode;
 enum SpecialMouseMode {
