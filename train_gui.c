@@ -345,29 +345,38 @@ static void ShowBuildTrainWindow(TileIndex tile)
 	}
 }
 
+/**
+ * Get the number of pixels for the given wagon length.
+ * @param len Length measured in 1/8ths of a standard wagon.
+ * @return Number of pixels across.
+ */
+static int WagonLengthToPixels(int len) {
+	return (len * 29) / 8;
+}
+
 static void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, VehicleID selection)
 {
-	int max_x = x + count * 29;
+	int dx = 0;
+	count *= 8;
 
 	do {
 		if (--skip < 0) {
 			int image = GetTrainImage(v, 6);
 			uint32 ormod = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner));
-			int width = v->u.rail.cached_veh_length * 3;
+			int width = v->u.rail.cached_veh_length;
 
-			if (x + width + 4 <= max_x) {
+			if (dx + width <= count) {
 				if (v->vehstatus & VS_CRASHED)
 					ormod = PALETTE_CRASH;
-				DrawSprite(image | ormod, x + 14, y + 6 + (is_custom_sprite(RailVehInfo(v->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
+				DrawSprite(image | ormod, x + 14 + WagonLengthToPixels(dx), y + 6 + (is_custom_sprite(RailVehInfo(v->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
 				if (v->index == selection)
-					DrawFrameRect(x - 1, y - 1, x + width + 4, y + 12, 15, FR_BORDERONLY);
+					DrawFrameRect(x - 1 + WagonLengthToPixels(dx), y - 1, x + WagonLengthToPixels(dx + width) - 1, y + 12, 15, FR_BORDERONLY);
 			}
-			x += width + 5;
+			dx += width;
 		}
 
-		if (!(v = v->next))
-			break;
-	} while (x < max_x);
+		v = v->next;
+	} while (dx < count && v != NULL);
 }
 
 static void DrawTrainDepotWindow(Window *w)
@@ -385,7 +394,7 @@ static void DrawTrainDepotWindow(Window *w)
 
 	/* determine amount of items for scroller */
 	num = 0;
-	hnum = 1;
+	hnum = 8;
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Train &&
 			  (v->subtype == TS_Front_Engine || v->subtype == TS_Free_Car) &&
@@ -394,10 +403,7 @@ static void DrawTrainDepotWindow(Window *w)
 			num++;
 			// determine number of items in the X direction.
 			if (v->subtype == TS_Front_Engine) {
-				i = 0;
-				u = v;
-				do i++; while ((u = u->next) != NULL);
-				if (i > hnum) hnum = i;
+				hnum = max(hnum, v->u.rail.cached_total_length);
 			}
 		}
 	}
@@ -406,7 +412,7 @@ static void DrawTrainDepotWindow(Window *w)
 	num++;
 
 	SetVScrollCount(w, num);
-	SetHScrollCount(w, hnum);
+	SetHScrollCount(w, (hnum + 7) / 8);
 
 	/* locate the depot struct */
 	depot = GetDepotByTile(tile);
@@ -429,14 +435,8 @@ static void DrawTrainDepotWindow(Window *w)
 			SetDParam(0, v->unitnumber);
 			DrawString(x, y, (v->max_age - 366 < v->age) ? STR_00E3 : STR_00E2, 0);
 
-			/*Draw the train counter */
-			i = 0;
-			u = v;
-			do {
-				i += u->u.rail.cached_veh_length + 1;
-			} while ( (u=u->next) != NULL);			//Determine length of train
-
-			SetDParam(0, (i + 8) / 9);			//Set the counter
+			// Number of wagons relative to a standard length wagon (rounded up)
+			SetDParam(0, (v->u.rail.cached_total_length + 7) / 8);
 			DrawStringRightAligned(w->widget[6].right - 1, y + 4, STR_TINY_BLACK, 0);	//Draw the counter
 
 			/* Draw the pretty flag */
@@ -525,7 +525,7 @@ found_it:
 	while (skip--) v = v->next;
 
 	/* find the vehicle in this row that was clicked */
-	while ((x -= v->u.rail.cached_veh_length * 3 + 5) >= 0) {
+	while ((x -= WagonLengthToPixels(v->u.rail.cached_veh_length)) >= 0) {
 		v = v->next;
 		if (v == NULL) break;
 	}
