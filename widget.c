@@ -86,26 +86,22 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 	}
 	if (pos <= mi+9) {
 		// Pressing the upper button?
-		if (!_demo_mode) {
-			w->flags4 |= WF_SCROLL_UP;
-			if (_scroller_click_timeout == 0) {
-				_scroller_click_timeout = 6;
-				if (sb->pos != 0) sb->pos--;
-			}
-			_left_button_clicked = false;
+		w->flags4 |= WF_SCROLL_UP;
+		if (_scroller_click_timeout == 0) {
+			_scroller_click_timeout = 6;
+			if (sb->pos != 0) sb->pos--;
 		}
+		_left_button_clicked = false;
 	} else if (pos >= ma-10) {
 		// Pressing the lower button?
-		if (!_demo_mode) {
-			w->flags4 |= WF_SCROLL_DOWN;
+		w->flags4 |= WF_SCROLL_DOWN;
 
-			if (_scroller_click_timeout == 0) {
-				_scroller_click_timeout = 6;
-				if ((byte)(sb->pos + sb->cap) < sb->count)
-					sb->pos++;
-			}
-			_left_button_clicked = false;
+		if (_scroller_click_timeout == 0) {
+			_scroller_click_timeout = 6;
+			if ((byte)(sb->pos + sb->cap) < sb->count)
+				sb->pos++;
 		}
+		_left_button_clicked = false;
 	} else {
 		//
 		Point pt = HandleScrollbarHittest(sb, mi, ma);
