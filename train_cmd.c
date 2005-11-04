@@ -961,7 +961,7 @@ int32 CmdStartStopTrain(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  * engine is 'started', first 'close' that before 'closing' our
  * searched engine
  */
-static Vehicle *GetRearEngine(const Vehicle *v, EngineID engine)
+Vehicle *GetRearEngine(const Vehicle *v, EngineID engine)
 {
 	Vehicle *u;
 	int en_count = 1;

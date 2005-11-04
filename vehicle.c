@@ -1446,6 +1446,32 @@ void AgeVehicle(Vehicle *v)
 	}
 }
 
+/*
+ * This function returns the next vehicle in an engine that consists of more than one vehicle
+ * This is planes, multiheaded train engines and so on. It's NOT whole trains as it is only the engines, that are linked together
+ */
+static Vehicle *GetNextEnginePart(Vehicle *v)
+{
+	switch (v->type) {
+		case VEH_Train:
+		{
+			const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
+			if (rvi->flags & RVI_MULTIHEAD)
+				return GetRearEngine(v, v->engine_type);
+		}
+			break;
+		case VEH_Aircraft:
+			return v->next;
+			break;
+		case VEH_Road:
+		case VEH_Ship:
+			break;
+		default: NOT_REACHED();
+	}
+	return NULL;
+}
+
+
 /** Clone a vehicle. If it is a train, it will clone all the cars too
 * @param x,y depot where the cloned vehicle is build
 * @param p1 the original vehicle's index
@@ -1525,6 +1551,37 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return total_cost;
 }
 
+/*
+ * move the cargo from one engine to another if possible
+ */
+static void MoveVehicleCargo(Vehicle *dest, Vehicle *source)
+{
+	Vehicle *v = dest;
+	int units_moved;
+
+	do {
+		do {
+			if (source->cargo_type != dest->cargo_type)
+				continue;	// cargo not compatible
+
+			if (dest->cargo_count == dest->cargo_cap)
+				continue;	// the destination vehicle is already full
+
+			units_moved = min(source->cargo_count, dest->cargo_cap - dest->cargo_count);
+			source->cargo_count -= units_moved;
+			dest->cargo_count   += units_moved;
+			dest->cargo_source   = source->cargo_source;
+
+			// copy the age of the cargo
+			dest->cargo_days   = source->cargo_days;
+			dest->day_counter  = source->day_counter;
+			dest->tick_counter = source->tick_counter;
+
+		} while (source->cargo_count > 0 && (dest = GetNextEnginePart(dest)) != NULL);
+		dest = v;
+	} while ((source = GetNextEnginePart(source)) != NULL);
+}
+
 /* Replaces a vehicle (used to be called autorenew)
  * This function is only called from MaybeReplaceVehicle(), which is the next one
  * Must be called with _current_player set to the owner of the vehicle
@@ -1535,7 +1592,7 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 static int32 ReplaceVehicle(Vehicle **w, byte flags)
 {
 	int32 cost;
-	const Vehicle *old_v = *w;
+	Vehicle *old_v = *w;
 	const Player *p = GetPlayer(old_v->owner);
 	EngineID new_engine_type;
 	const UnitID cached_unitnumber = old_v->unitnumber;
@@ -1560,17 +1617,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 			}
 		}
 
-		/* move the cargo to the new vehicle */
-		if (old_v->cargo_type == new_v->cargo_type && old_v->cargo_count != 0) {
-			// move the cargo to the new vehicle
-			new_v->cargo_count = min(old_v->cargo_count, new_v->cargo_cap);
-			new_v->cargo_source = old_v->cargo_source;
-
-			// copy the age of the cargo
-			new_v->cargo_days = old_v->cargo_days;
-			new_v->day_counter = old_v->day_counter;
-			new_v->tick_counter = old_v->tick_counter;
-		}
+		MoveVehicleCargo(new_v, old_v);
 
 		if (old_v->type == VEH_Train && old_v->u.rail.first_engine != INVALID_VEHICLE) {
 			/* this is a railcar. We need to move the car into the train
