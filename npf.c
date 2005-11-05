@@ -417,12 +417,12 @@ static int32 NPFRoadPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 				cost = NPFTunnelCost(current);
 				break;
 			}
-			/* Fall through if above if is false, it is a bridge
-			 * then. We treat that as ordinary road */
+			cost = NPF_TILE_LENGTH;
+			break;
 		case MP_STREET:
 			cost = NPF_TILE_LENGTH;
 			/* Increase the cost for level crossings */
-			if ((_m[tile].m5 & 0xF0) == 0x10)
+			if (IsLevelCrossing(tile))
 				cost += _patches.npf_crossing_penalty;
 			break;
 		default:
