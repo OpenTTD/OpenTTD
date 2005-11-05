@@ -205,7 +205,11 @@ int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			_m[tile].m3 |= 16;
 			_m[tile].m4 = p1 & 0xff;
 		}
-		if (reserved) PBSReserveTrack(tile, dir);
+		if (reserved) {
+			PBSReserveTrack(tile, dir);
+		} else {
+			PBSClearTrack(tile, dir);
+		}
 
 		wp->deleted = 0;
 		wp->xy = tile;
@@ -279,7 +283,11 @@ int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 			ModifyTile(tile, MP_MAP5, 1<<direction);
 			_m[tile].m3 &= ~16;
 			_m[tile].m4 = 0;
-			if (reserved) PBSReserveTrack(tile, direction);
+			if (reserved) {
+				PBSReserveTrack(tile, direction);
+			} else {
+				PBSClearTrack(tile, direction);
+			}
 		} else {
 			DoClearSquare(tile);
 			SetSignalsOnBothDir(tile, direction);
