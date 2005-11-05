@@ -297,49 +297,64 @@ Vehicle *ForceAllocateSpecialVehicle(void)
 	return NULL;
 }
 
-Vehicle *AllocateVehicle(void)
+/*
+ * finds a free vehicle in the memory or allocates a new one
+ * returns a pointer to the first free vehicle or NULL if all vehicles are in use
+ * *skip_vehicles is an offset to where in the array we should begin looking
+ * this is to avoid looping though the same vehicles more than once after we learned that they are not free
+ * this feature is used by AllocateVehicles() since it need to allocate more than one and when
+ * another block is added to _vehicle_pool, since we only do that when we know it's already full
+ */
+static Vehicle *AllocateSingleVehicle(VehicleID *skip_vehicles)
 {
 	/* See note by ForceAllocateSpecialVehicle() why we skip the
 	 * first blocks */
 	Vehicle *v;
+	const int offset = (1 << VEHICLES_POOL_BLOCK_SIZE_BITS) * BLOCKS_FOR_SPECIAL_VEHICLES;
 
-	FOR_ALL_VEHICLES_FROM(v, (1 << _vehicle_pool.block_size_bits) * BLOCKS_FOR_SPECIAL_VEHICLES) {
-		if (v->type == 0)
-			return InitializeVehicle(v);
+	if (*skip_vehicles < (_vehicle_pool.total_items - offset)) {	// make sure the offset in the array is not larger than the array itself
+		FOR_ALL_VEHICLES_FROM(v, offset + *skip_vehicles) {
+			(*skip_vehicles)++;
+			if (v->type == 0)
+				return InitializeVehicle(v);
+		}
 	}
 
 	/* Check if we can add a block to the pool */
 	if (AddBlockToPool(&_vehicle_pool))
-		return AllocateVehicle();
+		return AllocateSingleVehicle(skip_vehicles);
 
 	return NULL;
 }
 
+Vehicle *AllocateVehicle(void)
+{
+	VehicleID counter = 0;
+	return AllocateSingleVehicle(&counter);
+}
+
 /** Allocates a lot of vehicles and frees them again
-* @param vl pointer to an array of vehicles that can store all the vehicles in the test
-* @param num number of vehicles to test for
+* @param vl pointer to an array of vehicles to get allocated. Can be NULL if the vehicles aren't needed (makes it test only)
+* @param num number of vehicles to allocate room for
 *	returns true if there is room to allocate all the vehicles
 */
 bool AllocateVehicles(Vehicle **vl, int num)
 {
 	int i;
 	Vehicle *v;
-	bool success = true;
+	VehicleID counter = 0;
 
 	for(i = 0; i != num; i++) {
-		vl[i] = v = AllocateVehicle();
+		v = AllocateSingleVehicle(&counter);
 		if (v == NULL) {
-			success = false;
-			break;
+			return false;
 		}
-		v->type = 1;
+		if (vl != NULL) {
+			vl[i] = v;
+		}
 	}
 
-	while (--i >= 0) {
-		vl[i]->type = 0;
-	}
-
-	return success;
+	return true;
 }
 
 
@@ -1550,13 +1565,8 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			veh_counter++;
 		} while ((v = v->next) != NULL);
 
-		{
-			Vehicle **vl = malloc(sizeof(Vehicle*) * veh_counter);	// some platforms do not support Vehicle *vl[veh_counter]
-			bool can_allocate_vehicles = AllocateVehicles(vl, veh_counter);
-			free(vl);
-			if (!can_allocate_vehicles) {
-				return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
-			}
+		if (!AllocateVehicles(NULL, veh_counter)) {
+			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 		}
 	}
 
