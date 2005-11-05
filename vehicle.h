@@ -274,6 +274,7 @@ typedef void *VehicleFromPosProc(Vehicle *v, void *data);
 
 void VehicleServiceInDepot(Vehicle *v);
 Vehicle *AllocateVehicle(void);
+bool AllocateVehicles(Vehicle **vl, int num);
 Vehicle *ForceAllocateVehicle(void);
 Vehicle *ForceAllocateSpecialVehicle(void);
 void UpdateVehiclePosHash(Vehicle *v, int x, int y);

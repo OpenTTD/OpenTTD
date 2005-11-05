@@ -121,29 +121,6 @@ void DrawAircraftEngine(int x, int y, EngineID engine, uint32 image_ormod)
 	}
 }
 
-/* Allocate many vehicles */
-static bool AllocateVehicles(Vehicle **vl, int num)
-{
-	int i;
-	Vehicle *v;
-	bool success = true;
-
-	for(i=0; i!=num; i++) {
-		vl[i] = v = AllocateVehicle();
-		if (v == NULL) {
-			success = false;
-			break;
-		}
-		v->type = 1;
-	}
-
-	while (--i >= 0) {
-		vl[i]->type = 0;
-	}
-
-	return success;
-}
-
 int32 EstimateAircraftCost(EngineID engine_type)
 {
 	return AircraftVehInfo(engine_type)->base_cost * (_price.aircraft_base>>3)>>5;

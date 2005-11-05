@@ -315,6 +315,34 @@ Vehicle *AllocateVehicle(void)
 	return NULL;
 }
 
+/** Allocates a lot of vehicles and frees them again
+* @param vl pointer to an array of vehicles that can store all the vehicles in the test
+* @param num number of vehicles to test for
+*	returns true if there is room to allocate all the vehicles
+*/
+bool AllocateVehicles(Vehicle **vl, int num)
+{
+	int i;
+	Vehicle *v;
+	bool success = true;
+
+	for(i = 0; i != num; i++) {
+		vl[i] = v = AllocateVehicle();
+		if (v == NULL) {
+			success = false;
+			break;
+		}
+		v->type = 1;
+	}
+
+	while (--i >= 0) {
+		vl[i]->type = 0;
+	}
+
+	return success;
+}
+
+
 void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 {
 	int x,y,x2,y2;
@@ -1482,7 +1510,6 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v_front, *v;
 	Vehicle *w_front, *w, *w_rear;
 	int cost, total_cost = 0;
-//	VehicleID *new_id;
 
 	if (!IsVehicleIndex(p1))
 		return CMD_ERROR;
@@ -1505,6 +1532,25 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 
 	if (v->type == VEH_Train && v->subtype != TS_Front_Engine) return CMD_ERROR;
+
+	// check that we can allocate enough vehicles
+	if (!(flags & DC_EXEC)) {
+		int veh_counter = 0;
+		do {
+			veh_counter++;
+		} while ((v = v->next) != NULL);
+
+		{
+			Vehicle **vl = malloc(sizeof(Vehicle*) * veh_counter);	// some platforms do not support Vehicle *vl[veh_counter]
+			bool can_allocate_vehicles = AllocateVehicles(vl, veh_counter);
+			free(vl);
+			if (!can_allocate_vehicles) {
+				return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
+			}
+		}
+	}
+
+	v = v_front;
 
 	do {
 		cost = DoCommand(x, y, v->engine_type, 3, flags, CMD_BUILD_VEH(v->type));
