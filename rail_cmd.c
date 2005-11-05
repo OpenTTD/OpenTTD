@@ -587,8 +587,9 @@ static int32 CmdRailTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 p2
 	Track track = (Track)GB(p2, 4, 3);
 	Trackdir trackdir;
 	byte mode = HASBIT(p2, 7);
+	RailType railtype = (RailType)GB(p2, 0, 4);
 
-	if (!ValParamRailtype(p2 & 0x3) || !ValParamTrackOrientation(track)) return CMD_ERROR;
+	if (!ValParamRailtype(railtype) || !ValParamTrackOrientation(track)) return CMD_ERROR;
 	if (p1 > MapSize()) return CMD_ERROR;
 	trackdir = TrackToTrackdir(track);
 
@@ -603,7 +604,7 @@ static int32 CmdRailTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 p2
 	if (flags & DC_EXEC) SndPlayTileFx(SND_20_SPLAT_2, TileVirtXY(x, y));
 
 	for(;;) {
-		ret = DoCommand(x, y, p2 & 0x3, TrackdirToTrack(trackdir), flags, (mode == 0) ? CMD_BUILD_SINGLE_RAIL : CMD_REMOVE_SINGLE_RAIL);
+		ret = DoCommand(x, y, railtype, TrackdirToTrack(trackdir), flags, (mode == 0) ? CMD_BUILD_SINGLE_RAIL : CMD_REMOVE_SINGLE_RAIL);
 
 		if (CmdFailed(ret)) {
 			if ((_error_message != STR_1007_ALREADY_BUILT) && (mode == 0))
