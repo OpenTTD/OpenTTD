@@ -375,6 +375,8 @@ static const SpriteGroup* ResolveVehicleSpriteGroup(const SpriteGroup *spritegro
 			if (dsg->variable == 0x0C) {
 				/* Callback ID */
 				value = callback_info & 0xFF;
+			} else if (dsg->variable == 0x10) {
+				value = (callback_info >> 8) & 0xFF;
 			} else if ((dsg->variable >> 6) == 0) {
 				/* General property */
 				value = GetDeterministicSpriteValue(dsg->variable);

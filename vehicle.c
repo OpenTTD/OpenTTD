@@ -519,20 +519,28 @@ int CountVehiclesInChain(Vehicle *v)
 
 void DeleteVehicle(Vehicle *v)
 {
-	DeleteName(v->string_id);
-	v->type = 0;
-	UpdateVehiclePosHash(v, INVALID_COORD, 0);
-	v->next_hash = INVALID_VEHICLE;
+	Vehicle *u;
+	bool has_artic_part = false;
 
-	if (v->orders != NULL)
-		DeleteVehicleOrders(v);
+	do {
+		u = v->next;
+		has_artic_part = EngineHasArticPart(v);
+		DeleteName(v->string_id);
+		v->type = 0;
+		UpdateVehiclePosHash(v, INVALID_COORD, 0);
+		v->next_hash = INVALID_VEHICLE;
+
+		if (v->orders != NULL)
+			DeleteVehicleOrders(v);
+		v = u;
+	} while (v != NULL && has_artic_part);
 }
 
 void DeleteVehicleChain(Vehicle *v)
 {
 	do {
 		Vehicle *u = v;
-		v = v->next;
+		v = GetNextVehicle(v);
 		DeleteVehicle(u);
 	} while (v != NULL);
 }
@@ -1486,6 +1494,8 @@ static Vehicle *GetNextEnginePart(Vehicle *v)
 			const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
 			if (rvi->flags & RVI_MULTIHEAD)
 				return GetRearEngine(v, v->engine_type);
+			if (v->next != NULL && v->next->subtype == TS_Artic_Part)
+				return v->next;
 		}
 			break;
 		case VEH_Aircraft:
@@ -1579,7 +1589,7 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			}
 			w_rear = w;	// trains needs to know the last car in the train, so they can add more in next loop
 		}
-	} while (v->type == VEH_Train && (v=v->next) != NULL);
+	} while (v->type == VEH_Train && (v = GetNextVehicle(v)) != NULL);
 
 	if (flags & DC_EXEC) {
 		v = v_front;
@@ -1755,7 +1765,7 @@ static void MaybeReplaceVehicle(Vehicle *v)
 				break;
 
 			cost += temp_cost;
-		} while (w->type == VEH_Train && (w=w->next) != NULL);
+		} while (w->type == VEH_Train && (w = GetNextVehicle(w)) != NULL);
 
 		if (!(flags & DC_EXEC) && (CmdFailed(temp_cost) || p->money64 < (int32)(cost + p->engine_renew_money) || cost == 0)) {
 			if (p->money64 < (int32)(cost + p->engine_renew_money) && ( _local_player == v->owner ) && cost != 0) {

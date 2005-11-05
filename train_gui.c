@@ -530,6 +530,9 @@ found_it:
 		if (v == NULL) break;
 	}
 
+	// if an articulated part was selected, find its parent
+	while (v != NULL && v->subtype == TS_Artic_Part) v = GetPrevVehicleInChain(v);
+
 	d->wagon = v;
 
 	return 0;
@@ -1136,7 +1139,7 @@ static void DrawTrainDetailsWindow(Window *w)
 			tot_cargo[u->cargo_type][0] += u->cargo_count;
 			tot_cargo[u->cargo_type][1] += u->cargo_cap;
 		}
-	} while ( (u = u->next) != NULL);
+	} while ((u = GetNextVehicle(u)) != NULL);
 
 	/*	set scroll-amount seperately from counting, as to not
 			compute num double for more carriages of the same type
@@ -1197,11 +1200,17 @@ static void DrawTrainDetailsWindow(Window *w)
 	if (det_tab != 3) {
 		for(;;) {
 			if (--sel < 0 && sel >= -6) {
-				DrawTrainImage(v, x, y, 1, 0, INVALID_VEHICLE);
-				_train_details_drawer_proc[WP(w,traindetails_d).tab](v, x + 30, y + 2);
+				int dx = 0;
+				u = v;
+				do {
+					DrawTrainImage(u, x + WagonLengthToPixels(dx), y, 1, 0, INVALID_VEHICLE);
+					dx += u->u.rail.cached_veh_length;
+					u = u->next;
+				} while (u != NULL && u->subtype == TS_Artic_Part);
+				_train_details_drawer_proc[WP(w,traindetails_d).tab](v, x + WagonLengthToPixels(dx) + 2, y + 2);
 				y += 14;
 			}
-			if ( (v=v->next) == NULL)
+			if ((v = GetNextVehicle(v)) == NULL)
 				return;
 		}
 	}

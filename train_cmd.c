@@ -46,12 +46,17 @@ void TrainCargoChanged(Vehicle *v) {
 		const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
 		uint16 vweight = 0;
 
-		// vehicle weight is the sum of the weight of the vehicle and the weight of its cargo
-		vweight += rvi->weight;
 		vweight += (_cargoc.weights[u->cargo_type] * u->cargo_count) / 16;
-		// powered wagons have extra weight added
-		if (HASBIT(u->u.rail.flags, VRF_POWEREDWAGON))
-			vweight += RailVehInfo(v->engine_type)->pow_wag_weight;
+
+		// Vehicle weight is not added for articulated parts.
+		if (u->subtype != TS_Artic_Part) {
+			// vehicle weight is the sum of the weight of the vehicle and the weight of its cargo
+			vweight += rvi->weight;
+
+			// powered wagons have extra weight added
+			if (HASBIT(u->u.rail.flags, VRF_POWEREDWAGON))
+				vweight += RailVehInfo(v->engine_type)->pow_wag_weight;
+		}
 
 		// consist weight is the sum of the weight of all vehicles in the consist
 		weight += vweight;
@@ -92,14 +97,11 @@ void TrainConsistChanged(Vehicle *v) {
 		// update the 'first engine'
 		u->u.rail.first_engine = (v == u) ? INVALID_VEHICLE : first_engine;
 
-		// power is the sum of the powers of all engines and powered wagons in the consist
-		power += rvi_u->power;
-
 		if (rvi_u->visual_effect != 0) {
 			u->u.rail.cached_vis_effect = rvi_u->visual_effect;
 		} else {
-			if (rvi_u->flags & RVI_WAGON) {
-				// Wagons have no effect by default
+			if (rvi_u->flags & RVI_WAGON || u->subtype == TS_Artic_Part) {
+				// Wagons and articulated parts have no effect by default
 				u->u.rail.cached_vis_effect = 0x40;
 			} else if (rvi_u->engclass == 0) {
 				// Steam is offset by -4 units
@@ -110,27 +112,32 @@ void TrainConsistChanged(Vehicle *v) {
 			}
 		}
 
-		// check if its a powered wagon
-		CLRBIT(u->u.rail.flags, VRF_POWEREDWAGON);
-		if ((rvi_v->pow_wag_power != 0) && (rvi_u->flags & RVI_WAGON) && UsesWagonOverride(u)) {
-			if (HASBIT(rvi_u->callbackmask, CBM_WAGON_POWER)) {
-				uint16 callback = GetCallBackResult(CBID_WAGON_POWER,  u->engine_type, u);
+		if (u->subtype != TS_Artic_Part) {
+			// power is the sum of the powers of all engines and powered wagons in the consist
+			power += rvi_u->power;
 
-				if (callback != CALLBACK_FAILED)
-					u->u.rail.cached_vis_effect = callback;
+			// check if its a powered wagon
+			CLRBIT(u->u.rail.flags, VRF_POWEREDWAGON);
+			if ((rvi_v->pow_wag_power != 0) && (rvi_u->flags & RVI_WAGON) && UsesWagonOverride(u)) {
+				if (HASBIT(rvi_u->callbackmask, CBM_WAGON_POWER)) {
+					uint16 callback = GetCallBackResult(CBID_WAGON_POWER,  u->engine_type, u);
+
+					if (callback != CALLBACK_FAILED)
+						u->u.rail.cached_vis_effect = callback;
+				}
+
+				if (u->u.rail.cached_vis_effect < 0x40) {
+					/* wagon is powered */
+					SETBIT(u->u.rail.flags, VRF_POWEREDWAGON); // cache 'powered' status
+					power += rvi_v->pow_wag_power;
+				}
 			}
 
-			if (u->u.rail.cached_vis_effect < 0x40) {
-				/* wagon is powered */
-				SETBIT(u->u.rail.flags, VRF_POWEREDWAGON); // cache 'powered' status
-				power += rvi_v->pow_wag_power;
-			}
+			// max speed is the minimum of the speed limits of all vehicles in the consist
+			if (!(rvi_u->flags & RVI_WAGON) || _patches.wagon_speed_limits)
+				if (rvi_u->max_speed != 0 && !UsesWagonOverride(u))
+					max_speed = min(rvi_u->max_speed, max_speed);
 		}
-
-		// max speed is the minimum of the speed limits of all vehicles in the consist
-		if (!(rvi_u->flags & RVI_WAGON) || _patches.wagon_speed_limits)
-			if (rvi_u->max_speed != 0 && !UsesWagonOverride(u))
-				max_speed = min(rvi_u->max_speed, max_speed);
 
 		// check the vehicle length (callback)
 		veh_len = CALLBACK_FAILED;
@@ -418,6 +425,78 @@ void DrawTrainEngine(int x, int y, EngineID engine, uint32 image_ormod)
 	DrawSprite(image | image_ormod, x, y);
 }
 
+static uint CountArticulatedParts(const RailVehicleInfo *rvi, EngineID engine_type)
+{
+	uint16 callback;
+	uint i;
+
+	if (!HASBIT(rvi->callbackmask, CBM_ARTIC_ENGINE))
+		return 0;
+
+	for (i = 1; i < 10; i++) {
+		callback = GetCallBackResult(CBID_ARTIC_ENGINE + (i << 8), engine_type, NULL);
+		if (callback == CALLBACK_FAILED || callback == 0xFF)
+			break;
+	}
+
+	return i;
+}
+
+static void AddArticulatedParts(const RailVehicleInfo *rvi, Vehicle **vl)
+{
+	const RailVehicleInfo *rvi_artic;
+	EngineID engine_type;
+	Vehicle *v = vl[0];
+	Vehicle *u = v;
+	uint16 callback;
+	bool flip_image;
+	uint i;
+
+	if (!HASBIT(rvi->callbackmask, CBM_ARTIC_ENGINE))
+		return;
+
+	for (i = 1; i < 10; i++) {
+		callback = GetCallBackResult(CBID_ARTIC_ENGINE + (i << 8), v->engine_type, NULL);
+		if (callback == CALLBACK_FAILED || callback == 0xFF)
+			return;
+
+		u->next = vl[i];
+		u = u->next;
+
+		engine_type = GB(callback, 0, 6);
+		flip_image = HASBIT(callback, 7);
+		rvi_artic = RailVehInfo(engine_type);
+
+		// get common values from first engine
+		u->direction = v->direction;
+		u->owner = v->owner;
+		u->tile = v->tile;
+		u->x_pos = v->x_pos;
+		u->y_pos = v->y_pos;
+		u->z_pos = v->z_pos;
+		u->z_height = v->z_height;
+		u->u.rail.track = v->u.rail.track;
+		u->u.rail.railtype = v->u.rail.railtype;
+		u->build_year = v->build_year;
+		u->vehstatus = v->vehstatus & ~VS_STOPPED;
+		u->u.rail.first_engine = v->engine_type;
+
+		// get more settings from rail vehicle info
+		u->spritenum = rvi_artic->image_index;
+		if (flip_image) u->spritenum++;
+		u->cargo_type = rvi_artic->cargo_type;
+		u->cargo_cap = rvi_artic->capacity;
+		u->max_speed = 0;
+		u->max_age = 0;
+		u->engine_type = engine_type;
+		u->value = 0;
+		u->type = VEH_Train;
+		u->subtype = TS_Artic_Part;
+		u->cur_image = 0xAC2;
+
+		VehiclePositionChanged(u);
+	}
+}
 
 static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 {
@@ -426,24 +505,27 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 	const RailVehicleInfo *rvi;
 	const Engine *e;
 	int x,y;
+	uint num_vehicles;
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	rvi = RailVehInfo(engine);
 	value = (rvi->base_cost * _price.build_railwagon) >> 8;
 
-	if (!(flags & DC_QUERY_COST)) {
-		_error_message = STR_00E1_TOO_MANY_VEHICLES_IN_GAME;
+	num_vehicles = 1 + CountArticulatedParts(rvi, engine);
 
-		v = AllocateVehicle();
-		if (v == NULL)
-			return CMD_ERROR;
+	if (!(flags & DC_QUERY_COST)) {
+		Vehicle *vl[num_vehicles];
+
+		if (!AllocateVehicles(vl, num_vehicles))
+			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 		if (flags & DC_EXEC) {
 			byte img = rvi->image_index;
 			Vehicle *u, *w;
 			uint dir;
 
+			v = vl[0];
 			v->spritenum = img;
 
 			u = NULL;
@@ -491,6 +573,8 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 			v->build_year = _cur_year;
 			v->type = VEH_Train;
 			v->cur_image = 0xAC2;
+
+			AddArticulatedParts(rvi, vl);
 
 			_new_wagon_id = v->index;
 			_new_vehicle_id = v->index;
@@ -581,10 +665,11 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	const RailVehicleInfo *rvi;
 	int value;
-	Vehicle *v, *u;
+	Vehicle *v;
 	UnitID unit_num;
 	Engine *e;
 	TileIndex tile = TileVirtXY(x, y);
+	uint num_vehicles;
 
 	/* Check if the engine-type is valid (for the player) */
 	if (!IsEngineBuildable(p1, VEH_Train)) return CMD_ERROR;
@@ -612,11 +697,15 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (rvi->flags&RVI_MULTIHEAD && HASBIT(p2,0))
 		value /= 2;
 
+	num_vehicles = (rvi->flags & RVI_MULTIHEAD && HASBIT(p2, 0)) ? 2 : 1;
+	num_vehicles += CountArticulatedParts(rvi, p1);
 
 	if (!(flags & DC_QUERY_COST)) {
-		v = AllocateVehicle();
-		if (v == NULL || IsOrderPoolFull())
+		Vehicle *vl[num_vehicles];
+		if (!AllocateVehicles(vl, num_vehicles) || IsOrderPoolFull())
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
+
+		v = vl[0];
 
 		unit_num = GetFreeUnitNumber(VEH_Train);
 		if (unit_num > _patches.max_trains)
@@ -665,8 +754,10 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			VehiclePositionChanged(v);
 
-			if (rvi->flags&RVI_MULTIHEAD && (u = AllocateVehicle()) != NULL && !HASBIT(p2,0)) {
-					AddRearEngineToMultiheadedTrain(v, u, true);
+			if (rvi->flags & RVI_MULTIHEAD && !HASBIT(p2, 0)) {
+				AddRearEngineToMultiheadedTrain(vl[0], vl[1], true);
+			} else {
+				AddArticulatedParts(rvi, vl);
 			}
 
 			TrainConsistChanged(v);
@@ -716,23 +807,27 @@ int CheckTrainStoppedInDepot(const Vehicle *v)
 	return count;
 }
 
-// unlink a rail wagon from the linked list.
-// returns the new value of first
+/**
+ * Unlink a rail wagon from the consist.
+ * @param v Vehicle to remove.
+ * @param first The first vehicle of the consist.
+ * @return The first vehicle of the consist.
+ */
 static Vehicle *UnlinkWagon(Vehicle *v, Vehicle *first)
 {
 	Vehicle *u;
 
 	// unlinking the first vehicle of the chain?
 	if (v == first) {
-		v = v->next;
+		v = GetNextVehicle(v);
 		if (v == NULL) return NULL;
 
 		v->subtype = TS_Free_Car;
 		return v;
 	}
 
-	for (u = first; u->next != v; u = u->next) {}
-	u->next = v->next;
+	for (u = first; GetNextVehicle(u) != v; u = GetNextVehicle(u)) {}
+	GetLastEnginePart(u)->next = GetNextVehicle(v);
 	return first;
 }
 
@@ -788,6 +883,12 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		dst = GetVehicle(d);
 	}
 
+	// if an articulated part is being handled, deal with its parent vehicle
+	while (src->subtype == TS_Artic_Part) src = GetPrevVehicleInChain(src);
+	if (dst != NULL) {
+		while (dst->subtype == TS_Artic_Part) dst = GetPrevVehicleInChain(dst);
+	}
+
 	// don't move the same vehicle..
 	if (src == dst) return 0;
 
@@ -798,7 +899,11 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	/* locate the head of the two chains */
 	src_head = GetFirstVehicleInChain(src);
 	dst_head = NULL;
-	if (dst != NULL) dst_head = GetFirstVehicleInChain(dst);
+	if (dst != NULL) {
+		dst_head = GetFirstVehicleInChain(dst);
+		// Now deal with articulated part of destination wagon
+		dst = GetLastEnginePart(dst);
+	}
 
 	/* clear the ->first cache */
 	{
@@ -852,8 +957,8 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			// unlink ALL wagons
 			if (src != src_head) {
 				Vehicle *v = src_head;
-				while (v->next != src) v=v->next;
-				v->next = NULL;
+				while (GetNextVehicle(v) != src) v = GetNextVehicle(v);
+				GetLastEnginePart(v)->next = NULL;
 			} else {
 				src_head = NULL;
 			}
@@ -863,7 +968,7 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				dst_head = NULL;
 			// unlink single wagon from linked list
 			src_head = UnlinkWagon(src, src_head);
-			src->next = NULL;
+			GetLastEnginePart(src)->next = NULL;
 		}
 
 		if (dst == NULL) {
@@ -893,8 +998,8 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			{
 				Vehicle *v;
 
-				for (v = src; v->next != NULL; v = v->next) {};
-				v->next = dst->next;
+				for (v = src; GetNextVehicle(v) != NULL; v = GetNextVehicle(v));
+				GetLastEnginePart(v)->next = dst->next;
 			}
 			dst->next = src;
 		}
@@ -999,6 +1104,7 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
+	while (v->subtype == TS_Artic_Part) v = GetPrevVehicleInChain(v);
 	first = GetFirstVehicleInChain(v);
 
 	// make sure the vehicle is stopped in the depot
@@ -1032,7 +1138,7 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			/* 2. We are selling the first engine, some special action might be required
 				* here, so take attention */
 			if ((flags & DC_EXEC) && v == first) {
-				Vehicle *new_f = first->next;
+				Vehicle *new_f = GetNextVehicle(first);
 
 				/* 2.1 If the first wagon is sold, update the first-> pointers to NULL */
 				for (tmp = first; tmp != NULL; tmp = tmp->next) tmp->first = NULL;
@@ -1082,7 +1188,7 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				* engines to its train anyways */
 				if (p2 == 2 && ori_subtype == TS_Front_Engine) {
 					for (v = first; v != NULL; v = tmp) {
-						tmp = v->next;
+						tmp = GetNextVehicle(v);
 						DoCommandByTile(v->tile, v->index | INVALID_VEHICLE << 16, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 					}
 				}
@@ -1093,7 +1199,7 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			* to be able to deduce which ones go with which ones */
 			int enf_count = 0;
 			int enr_count = 0;
-			for (tmp = first; tmp != NULL; tmp = tmp->next) {
+			for (tmp = first; tmp != NULL; tmp = GetNextVehicle(tmp)) {
 				if (RailVehInfo(tmp->engine_type)->flags & RVI_MULTIHEAD)
 					(IS_FIRSTHEAD_SPRITE(tmp->spritenum)) ? enf_count++ : enr_count++;
 			}
@@ -1102,7 +1208,7 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			* If we encounter a matching rear-engine to a front-engine
 			* earlier in the chain (before deletion), leave it alone */
 			for (; v != NULL; v = tmp) {
-				tmp = v->next;
+				tmp = GetNextVehicle(v);
 
 				if (RailVehInfo(v->engine_type)->flags & RVI_MULTIHEAD) {
 					if (IS_FIRSTHEAD_SPRITE(v->spritenum)) {

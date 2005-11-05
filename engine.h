@@ -153,6 +153,8 @@ enum CallbackID {
 	// Refit capacity, the passed vehicle needs to have its ->cargo_type set to
 	// the cargo we are refitting to, returns the new cargo capacity
 	CBID_REFIT_CAP = 0x15,
+
+	CBID_ARTIC_ENGINE = 0x16,
 };
 
 // bit positions for rvi->callbackmask, indicates which callbacks are used by an engine
@@ -161,6 +163,7 @@ enum CallbackMask {
 	CBM_WAGON_POWER = 0,
 	CBM_VEH_LENGTH = 1,
 	CBM_REFIT_CAP = 3,
+	CBM_ARTIC_ENGINE = 4,
 };
 
 enum {
