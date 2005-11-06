@@ -953,6 +953,9 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	/* do it? */
 	if (flags & DC_EXEC) {
+		Vehicle *new_front = GetNextVehicle(src);	//used if next in line should make a train on it's own
+		bool make_new_front = src->subtype == TS_Front_Engine;
+
 		if (HASBIT(p2, 0)) {
 			// unlink ALL wagons
 			if (src != src_head) {
@@ -1002,6 +1005,15 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				GetLastEnginePart(v)->next = dst->next;
 			}
 			dst->next = src;
+		}
+
+		/* If there is an engine behind first_engine we moved away, it should become new first_engine
+		 * To do this, CmdMoveRailVehicle must be called once more
+		 * since we set p2 to a condition that makes the statement false, we can't loop forever with this one */
+		if (make_new_front && new_front != NULL && !(HASBIT(p2, 0))) {
+			if (!(RailVehInfo(new_front->engine_type)->flags & RVI_WAGON)) {
+				CmdMoveRailVehicle(x, y, flags, new_front->index | (INVALID_VEHICLE << 16), 1);
+			}
 		}
 
 		if (src_head) {
