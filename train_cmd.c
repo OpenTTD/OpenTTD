@@ -439,7 +439,7 @@ static uint CountArticulatedParts(const RailVehicleInfo *rvi, EngineID engine_ty
 			break;
 	}
 
-	return i;
+	return i - 1;
 }
 
 static void AddArticulatedParts(const RailVehicleInfo *rvi, Vehicle **vl)
@@ -463,7 +463,7 @@ static void AddArticulatedParts(const RailVehicleInfo *rvi, Vehicle **vl)
 		u->next = vl[i];
 		u = u->next;
 
-		engine_type = GB(callback, 0, 6);
+		engine_type = GB(callback, 0, 7);
 		flip_image = HASBIT(callback, 7);
 		rvi_artic = RailVehInfo(engine_type);
 
