@@ -72,6 +72,7 @@ typedef struct EngineInfo {
 	byte base_life;
 	byte railtype:4;
 	byte climates:4;
+	uint32 refit_mask;
 } EngineInfo;
 
 typedef struct Engine {
@@ -174,8 +175,8 @@ VARDEF const uint32 _default_refitmasks[NUM_VEHICLE_TYPES];
 VARDEF const CargoID _global_cargo_id[NUM_LANDSCAPE][NUM_CARGO];
 VARDEF const uint32 _landscape_global_cargo_mask[NUM_LANDSCAPE];
 VARDEF const CargoID _local_cargo_id_ctype[NUM_GLOBAL_CID];
+VARDEF const uint32 cargo_classes[16];
 
-VARDEF uint32 _engine_refit_masks[256];
 void SetWagonOverrideSprites(EngineID engine, struct SpriteGroup *group, byte *train_id, int trains);
 void SetCustomEngineSprites(EngineID engine, byte cargo, struct SpriteGroup *group);
 // loaded is in percents, overriding_engine 0xffff is none

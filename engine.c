@@ -58,10 +58,10 @@ const CargoID _local_cargo_id_ctype[NUM_GLOBAL_CID] = {
 const uint32 _landscape_global_cargo_mask[NUM_LANDSCAPE] =
 { /* LT_NORMAL: temperate */
 	MC(GC_PASSENGERS)|MC(GC_COAL)|MC(GC_MAIL)|MC(GC_OIL)|MC(GC_LIVESTOCK)|MC(GC_GOODS)|MC(GC_GRAIN)|MC(GC_WOOD)|
-	MC(GC_IRON_ORE)|MC(GC_STEEL)|MC(GC_VALUABLES)|MC(GC_FOOD)|MC(GC_UNDEFINED),
+	MC(GC_IRON_ORE)|MC(GC_STEEL)|MC(GC_VALUABLES),
 	/* LT_HILLY: arctic */
 	MC(GC_PASSENGERS)|MC(GC_COAL)|MC(GC_MAIL)|MC(GC_OIL)|MC(GC_LIVESTOCK)|MC(GC_GOODS)|
-	MC(GC_GRAIN)|MC(GC_WOOD)|MC(GC_VALUABLES)|MC(GC_PAPER)|MC(GC_FOOD)|MC(GC_UNDEFINED),
+	MC(GC_GRAIN)|MC(GC_WOOD)|MC(GC_VALUABLES)|MC(GC_PAPER)|MC(GC_FOOD),
 	/* LT_DESERT: rainforest/desert */
 	MC(GC_PASSENGERS)|MC(GC_MAIL)|MC(GC_OIL)|MC(GC_GOODS)|MC(GC_GRAIN)|MC(GC_WOOD)|
 	MC(GC_VALUABLES)|MC(GC_FOOD)|MC(GC_FRUIT)|MC(GC_COPPER_ORE)|MC(GC_WATER)|MC(GC_RUBBER),
@@ -90,6 +90,21 @@ const uint32 _default_refitmasks[NUM_VEHICLE_TYPES] = {
 	MC(GC_BATTERIES)|MC(GC_CANDY)|MC(GC_TOFFEE)|MC(GC_COLA)|MC(GC_COTTON_CANDY)|MC(GC_BUBBLES)|MC(GC_PLASTIC)|MC(GC_FIZZY_DRINKS),
 	/* Special/Disaster */
 	0,0
+};
+
+/**
+ * Bitmask of classes for cargo types.
+ */
+const uint32 cargo_classes[16] = {
+	/* Passengers */ MC(GC_PASSENGERS),
+	/* Mail       */ MC(GC_MAIL),
+	/* Express    */ MC(GC_GOODS)|MC(GC_FOOD)|MC(GC_CANDY),
+	/* Armoured   */ MC(GC_VALUABLES),
+	/* Bulk       */ MC(GC_COAL)|MC(GC_GRAIN)|MC(GC_IRON_ORE)|MC(GC_COPPER_ORE)|MC(GC_FRUIT)|MC(GC_SUGAR)|MC(GC_TOFFEE)|MC(GC_COTTON_CANDY),
+	/* Piece      */ MC(GC_LIVESTOCK)|MC(GC_WOOD)|MC(GC_STEEL)|MC(GC_PAPER)|MC(GC_TOYS)|MC(GC_BATTERIES)|MC(GC_BUBBLES)|MC(GC_FIZZY_DRINKS),
+	/* Liquids    */ MC(GC_OIL)|MC(GC_WATER)|MC(GC_RUBBER)|MC(GC_COLA)|MC(GC_PLASTIC),
+	/* Chilled    */ MC(GC_FOOD)|MC(GC_FRUIT),
+	/* Undefined  */ 0, 0, 0, 0, 0, 0, 0, 0
 };
 #undef MC
 
@@ -231,9 +246,6 @@ void StartupEngines(void)
 
 	AdjustAvailAircraft();
 }
-
-uint32 _engine_refit_masks[TOTAL_NUM_ENGINES];
-
 
 // TODO: We don't support cargo-specific wagon overrides. Pretty exotic... ;-) --pasky
 

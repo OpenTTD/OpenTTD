@@ -226,17 +226,9 @@ CargoID DrawVehicleRefitWindow(const Vehicle *v, int sel)
 		cmask = 0;
 		u = v;
 		do {
-			if (_engine_refit_masks[u->engine_type] != 0) { // newgrf custom refit mask
-				cmask |= _engine_refit_masks[u->engine_type];
-			} else if (u->cargo_cap != 0) {
-				// rail wagons cant be refitted by default
-				if (v->type != VEH_Train || !(RailVehInfo(u->engine_type)->flags & RVI_WAGON))
-					cmask |= _default_refitmasks[v->type - VEH_Train];
-			}
+			cmask |= _engine_info[u->engine_type].refit_mask;
 			u = u->next;
 		} while (v->type == VEH_Train && u != NULL);
-
-		cmask &= _landscape_global_cargo_mask[_opt_ptr->landscape];
 
 		/* Check which cargo has been selected from the refit window and draw list */
 		for (cid = 0; cmask != 0; cmask >>= 1, cid++) {

@@ -689,18 +689,7 @@ bool CanFillVehicle(Vehicle *v)
 bool CanRefitTo(const Vehicle *v, CargoID cid_to)
 {
 	CargoID cid = _global_cargo_id[_opt_ptr->landscape][cid_to];
-
-	if (cid == GC_INVALID) return false;
-
-	if (_engine_refit_masks[v->engine_type]) {
-		if (!HASBIT(_engine_refit_masks[v->engine_type], cid)) return false;
-	} else {
-		/* If we are talking about normal vehicles (no newgrf), you can only refit engines */
-		if (v->type == VEH_Train && (RailVehInfo(v->engine_type)->flags & RVI_WAGON)) return false;
-		if (!HASBIT(_default_refitmasks[v->type - VEH_Train], cid)) return false;
-	}
-
-	return true;
+	return HASBIT(_engine_info[v->engine_type].refit_mask, cid) != 0;
 }
 
 static void DoDrawVehicle(const Vehicle *v)

@@ -72,6 +72,8 @@ static const int _vehshifts[4] = {
 	/* GSF_AIRCRAFT */ AIRCRAFT_ENGINES_INDEX,
 };
 
+static uint16 cargo_allowed[TOTAL_NUM_ENGINES];
+static uint16 cargo_disallowed[TOTAL_NUM_ENGINES];
 
 /* Debugging messages policy:
  *
@@ -352,7 +354,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT {
 				uint32 refit_mask = grf_load_dword(&buf);
 
-				_engine_refit_masks[engine + i] = refit_mask;
+				_engine_info[engine + i].refit_mask = refit_mask;
 			}
 		} break;
 		case 0x1E: { /* Callback */
@@ -393,6 +395,16 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				} else {
 					SB(rvi[i].weight, 8, 8, weight);
 				}
+			}
+		} break;
+		case 0x28: { /* Cargo classes allowed */
+			FOR_EACH_OBJECT {
+				cargo_allowed[engine + i] = grf_load_word(&buf);
+			}
+		} break;
+		case 0x29: { /* Cargo classes disallowed */
+			FOR_EACH_OBJECT {
+				cargo_disallowed[engine + i] = grf_load_word(&buf);
 			}
 		} break;
 		/* TODO */
@@ -499,7 +511,17 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT {
 				uint32 refit_mask = grf_load_dword(&buf);
 
-				_engine_refit_masks[ROAD_ENGINES_INDEX + engine + i] = refit_mask;
+				_engine_info[ROAD_ENGINES_INDEX + engine + i].refit_mask = refit_mask;
+			}
+		} break;
+		case 0x1D: { /* Cargo classes allowed */
+			FOR_EACH_OBJECT {
+				cargo_allowed[ROAD_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
+			}
+		} break;
+		case 0x1E: { /* Cargo classes disallowed */
+			FOR_EACH_OBJECT {
+				cargo_disallowed[ROAD_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
 			}
 		} break;
 		case 0x17:      /* Callback */
@@ -507,6 +529,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x19:      /* Air drag */
 		case 0x1A:      /* Refit cost */
 		case 0x1B:      /* Retire vehicle early */
+		case 0x1C:      /* Miscellaneous flags */
 			{
 			/* TODO */
 			FOR_EACH_OBJECT {
@@ -602,14 +625,25 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT {
 				uint32 refit_mask = grf_load_dword(&buf);
 
-				_engine_refit_masks[SHIP_ENGINES_INDEX + engine + i] = refit_mask;
+				_engine_info[SHIP_ENGINES_INDEX + engine + i].refit_mask = refit_mask;
 			}
 		}	break;
+		case 0x18: { /* Cargo classes allowed */
+			FOR_EACH_OBJECT {
+				cargo_allowed[SHIP_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
+			}
+		} break;
+		case 0x19: { /* Cargo classes disallowed */
+			FOR_EACH_OBJECT {
+				cargo_disallowed[SHIP_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
+			}
+		} break;
 		case 0x12: /* Callback */
 		case 0x13: /* Refit cost */
 		case 0x14: /* Ocean speed fraction */
 		case 0x15: /* Canal speed fraction */
 		case 0x16: /* Retire vehicle early */
+		case 0x17: /* Miscellaneous flags */
 		{
 			/* TODO */
 			FOR_EACH_OBJECT {
@@ -711,12 +745,23 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 			FOR_EACH_OBJECT {
 				uint32 refit_mask = grf_load_dword(&buf);
 
-				_engine_refit_masks[AIRCRAFT_ENGINES_INDEX + engine + i] = refit_mask;
+				_engine_info[AIRCRAFT_ENGINES_INDEX + engine + i].refit_mask = refit_mask;
 			}
 		}	break;
+		case 0x18: { /* Cargo classes allowed */
+			FOR_EACH_OBJECT {
+				cargo_allowed[AIRCRAFT_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
+			}
+		} break;
+		case 0x19: { /* Cargo classes disallowed */
+			FOR_EACH_OBJECT {
+				cargo_disallowed[AIRCRAFT_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
+			}
+		} break;
 		case 0x14: /* Callback */
 		case 0x15: /* Refit cost */
 		case 0x16: /* Retire vehicle early */
+		case 0x17: /* Miscellaneous flags */
 		{
 			/* TODO */
 			FOR_EACH_OBJECT {
@@ -2375,6 +2420,10 @@ static void ResetNewGRFData(void)
 	}
 	memcpy(&_bridge, &orig_bridge, sizeof(_bridge));
 
+	// Reset refit/cargo class data
+	memset(&cargo_allowed, 0, sizeof(cargo_allowed));
+	memset(&cargo_disallowed, 0, sizeof(cargo_disallowed));
+
 	// Unload sprite group data
 	UnloadWagonOverrides();
 	UnloadCustomEngineSprites();
@@ -2412,6 +2461,35 @@ static void InitNewGRFFile(const char* filename, int sprite_offset)
 	}
 }
 
+/**
+ * Precalculate refit masks from cargo classes for all vehicles.
+ */
+static void CalculateRefitMasks(void)
+{
+	EngineID engine;
+
+	for (engine = 0; engine < TOTAL_NUM_ENGINES; engine++) {
+		uint32 mask = 0;
+		uint32 not_mask = 0;
+		uint32 xor_mask = _engine_info[engine].refit_mask;
+		byte i;
+
+		if (cargo_allowed[engine] != 0) {
+			// Build up the list of cargo types from the set cargo classes.
+			for (i = 0; i < lengthof(cargo_classes); i++) {
+				if (HASBIT(cargo_allowed[engine], i))
+					mask |= cargo_classes[i];
+				if (HASBIT(cargo_disallowed[engine], i))
+					not_mask |= cargo_classes[i];
+			}
+		} else {
+			// Don't apply default refit mask to wagons or engines with no capacity
+			if (xor_mask == 0 && !(GetEngine(engine)->type == VEH_Train && (RailVehInfo(engine)->capacity == 0 || RailVehInfo(engine)->flags & RVI_WAGON)))
+				xor_mask = _default_refitmasks[GetEngine(engine)->type - VEH_Train];
+		}
+		_engine_info[engine].refit_mask = ((mask & ~not_mask) ^ xor_mask) & _landscape_global_cargo_mask[_opt.landscape];
+	}
+}
 
 /* Here we perform initial decoding of some special sprites (as are they
  * described at http://www.ttdpatch.net/src/newgrf.txt, but this is only a very
@@ -2593,4 +2671,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 			DEBUG(spritecache, 2) ("Currently %i sprites are loaded", load_index);
 		}
 	}
+
+	// Pre-calculate all refit masks after loading GRF files
+	CalculateRefitMasks();
 }
