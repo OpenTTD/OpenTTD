@@ -697,7 +697,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (rvi->flags&RVI_MULTIHEAD && HASBIT(p2,0))
 		value /= 2;
 
-	num_vehicles = (rvi->flags & RVI_MULTIHEAD && HASBIT(p2, 0)) ? 2 : 1;
+	num_vehicles = (rvi->flags & RVI_MULTIHEAD && !HASBIT(p2, 0)) ? 2 : 1;
 	num_vehicles += CountArticulatedParts(rvi, p1);
 
 	if (!(flags & DC_QUERY_COST)) {
