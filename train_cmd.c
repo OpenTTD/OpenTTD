@@ -515,7 +515,7 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 	num_vehicles = 1 + CountArticulatedParts(rvi, engine);
 
 	if (!(flags & DC_QUERY_COST)) {
-		Vehicle *vl[num_vehicles];
+		Vehicle *vl[11]; // Allow for wagon and upto 10 artic parts.
 
 		if (!AllocateVehicles(vl, num_vehicles))
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
@@ -701,7 +701,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	num_vehicles += CountArticulatedParts(rvi, p1);
 
 	if (!(flags & DC_QUERY_COST)) {
-		Vehicle *vl[num_vehicles];
+		Vehicle *vl[12]; // Allow for upto 10 artic parts and dual-heads
 		if (!AllocateVehicles(vl, num_vehicles) || IsOrderPoolFull())
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
