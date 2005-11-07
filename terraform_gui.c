@@ -62,6 +62,33 @@ static void GenerateDesertArea(TileIndex end, TileIndex start)
 	_generating_world = false;
 }
 
+/** Scenario editor command that generates desert areas */
+static void GenerateRockyArea(TileIndex end, TileIndex start)
+{
+	int size_x, size_y;
+	bool success = false;
+	int sx = TileX(start);
+	int sy = TileY(start);
+	int ex = TileX(end);
+	int ey = TileY(end);
+
+	if (_game_mode != GM_EDITOR) return;
+
+	if (ex < sx) intswap(ex, sx);
+	if (ey < sy) intswap(ey, sy);
+	size_x = (ex - sx) + 1;
+	size_y = (ey - sy) + 1;
+
+	BEGIN_TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
+		if (IsTileType(tile, MP_CLEAR) || IsTileType(tile, MP_TREES)) {
+			ModifyTile(tile, MP_SETTYPE(MP_CLEAR) | MP_MAP5, (_m[tile].m5 & ~0x1C) | 0xB);
+			success = true;
+		}
+	} END_TILE_LOOP(tile, size_x, size_y, 0);
+
+	if (success) SndPlayTileFx(SND_1F_SPLAT, end);
+}
+
 /**
  * A central place to handle all X_AND_Y dragged GUI functions.
  * @param we @WindowEvent variable holding in its higher bits (excluding the lower
@@ -81,6 +108,9 @@ bool GUIPlaceProcDragXY(const WindowEvent *we)
 		break;
 	case GUI_PlaceProc_LevelArea >> 4:
 		DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_LEVEL_LAND | CMD_AUTO);
+		break;
+	case GUI_PlaceProc_RockyArea >> 4:
+		GenerateRockyArea(end_tile, start_tile);
 		break;
 	case GUI_PlaceProc_DesertArea >> 4:
 		GenerateDesertArea(end_tile, start_tile);

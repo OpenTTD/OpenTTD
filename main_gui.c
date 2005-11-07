@@ -1211,11 +1211,7 @@ static void PlaceProc_LowerBigLand(TileIndex tile)
 
 static void PlaceProc_RockyArea(TileIndex tile)
 {
-	if (!IsTileType(tile, MP_CLEAR) && !IsTileType(tile, MP_TREES))
-		return;
-
-	ModifyTile(tile, MP_SETTYPE(MP_CLEAR) | MP_MAP5, (_m[tile].m5 & ~0x1C) | 0xB);
-	SndPlayTileFx(SND_1F_SPLAT, tile);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y | GUI_PlaceProc_RockyArea);
 }
 
 static void PlaceProc_LightHouse(TileIndex tile)

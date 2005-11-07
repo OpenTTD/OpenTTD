@@ -74,7 +74,8 @@ enum { // max 32 - 4 = 28 types
 	GUI_PlaceProc_LevelArea       = 1 << 4,
 	GUI_PlaceProc_DesertArea      = 2 << 4,
 	GUI_PlaceProc_WaterArea       = 3 << 4,
-	GUI_PlaceProc_ConvertRailArea = 4 << 4
+	GUI_PlaceProc_ConvertRailArea = 4 << 4,
+	GUI_PlaceProc_RockyArea       = 5 << 4,
 };
 
 /* misc_gui.c */
