@@ -252,8 +252,8 @@ static inline RailType GetBestRailtype(const Player* p)
 
 typedef struct HighScore {
 	char company[100];
-	StringID title;
-	uint16 score;
+	StringID title; // NO_SAVE, has troubles with changing string-numbers.
+	uint16 score;   // do NOT change type, will break hs.dat
 } HighScore;
 
 VARDEF HighScore _highscore_table[5][5]; // 4 difficulty-settings (+ network); top 5

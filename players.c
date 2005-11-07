@@ -897,7 +897,7 @@ int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-static const StringID _endgame_performance_titles[16] = {
+static const StringID _endgame_perf_titles[16] = {
 	STR_0213_BUSINESSMAN,
 	STR_0213_BUSINESSMAN,
 	STR_0213_BUSINESSMAN,
@@ -918,7 +918,10 @@ static const StringID _endgame_performance_titles[16] = {
 
 StringID EndGameGetPerformanceTitleFromValue(uint value)
 {
-	return _endgame_performance_titles[minu(value, 1000) >> 6];
+	value = minu(value, 1000) >> 6;
+	if (value >= lengthof(_endgame_perf_titles)) value = lengthof(_endgame_perf_titles);
+
+	return _endgame_perf_titles[value];
 }
 
 /* Return true if any cheat has been used, false otherwise */
@@ -1029,7 +1032,7 @@ int8 SaveHighScoreValueNetwork(void)
 /* Save HighScore table to file */
 void SaveToHighScore(void)
 {
-	FILE *fp = fopen(_highscore_file, "w");
+	FILE *fp = fopen(_highscore_file, "wb");
 
 	if (fp != NULL) {
 		uint i;
@@ -1043,7 +1046,7 @@ void SaveToHighScore(void)
 				fwrite(&length, sizeof(length), 1, fp); // write away string length
 				fwrite(hs->company, length, 1, fp);
 				fwrite(&hs->score, sizeof(hs->score), 1, fp);
-				fwrite(&hs->title, sizeof(hs->title), 1, fp);
+				fwrite("", 2, 1, fp); /* XXX - placeholder for hs->title, not saved anymore; compatibility */
 			}
 		}
 		fclose(fp);
@@ -1053,7 +1056,7 @@ void SaveToHighScore(void)
 /* Initialize the highscore table to 0 and if any file exists, load in values */
 void LoadFromHighScore(void)
 {
-	FILE *fp = fopen(_highscore_file, "r");
+	FILE *fp = fopen(_highscore_file, "rb");
 
 	memset(_highscore_table, 0, sizeof(_highscore_table));
 
@@ -1068,7 +1071,8 @@ void LoadFromHighScore(void)
 
 				fread(hs->company, 1, length, fp);
 				fread(&hs->score, sizeof(hs->score), 1, fp);
-				fread(&hs->title, sizeof(hs->title), 1, fp);
+				fseek(fp, 2, SEEK_CUR); /* XXX - placeholder for hs->title, not saved anymore; compatibility */
+				hs->title = EndGameGetPerformanceTitleFromValue(hs->score);
 			}
 		}
 		fclose(fp);
