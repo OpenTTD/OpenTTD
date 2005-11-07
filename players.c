@@ -919,7 +919,7 @@ static const StringID _endgame_perf_titles[16] = {
 StringID EndGameGetPerformanceTitleFromValue(uint value)
 {
 	value = minu(value, 1000) >> 6;
-	if (value >= lengthof(_endgame_perf_titles)) value = lengthof(_endgame_perf_titles);
+	if (value >= lengthof(_endgame_perf_titles)) value = lengthof(_endgame_perf_titles) - 1;
 
 	return _endgame_perf_titles[value];
 }
