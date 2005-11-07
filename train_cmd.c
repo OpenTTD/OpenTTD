@@ -1876,6 +1876,10 @@ static void HandleLocomotiveSmokeCloud(Vehicle *v)
 				(v->vehstatus & VS_HIDDEN) || (v->u.rail.track & 0xC0))
 			continue;
 
+		// No smoke in depots or tunnels
+		if (IsTileDepotType(v->tile, TRANSPORT_RAIL) || IsTunnelTile(v->tile))
+			continue;
+
 		if (effect_type == 0) {
 			// Use default effect type for engine class.
 			effect_type = RailVehInfo(engtype)->engclass;
@@ -1889,21 +1893,21 @@ static void HandleLocomotiveSmokeCloud(Vehicle *v)
 		switch (effect_type) {
 		case 0:
 			// steam smoke.
-			if ( (v->tick_counter&0xF) == 0 && !IsTileDepotType(v->tile, TRANSPORT_RAIL) && !IsTunnelTile(v->tile)) {
+			if (GB(v->tick_counter, 0, 4) == 0) {
 				CreateEffectVehicleRel(v, x, y, 10, EV_STEAM_SMOKE);
 			}
 			break;
 
 		case 1:
 			// diesel smoke
-			if (u->cur_speed <= 40 && !IsTileDepotType(v->tile, TRANSPORT_RAIL) && !IsTunnelTile(v->tile) && GB(Random(), 0, 16) <= 0x1E00) {
+			if (u->cur_speed <= 40 && GB(Random(), 0, 16) <= 0x1E00) {
 				CreateEffectVehicleRel(v, 0, 0, 10, EV_DIESEL_SMOKE);
 			}
 			break;
 
 		case 2:
 			// blue spark
-			if (GB(v->tick_counter, 0, 2) == 0 && !IsTileDepotType(v->tile, TRANSPORT_RAIL) && !IsTunnelTile(v->tile) && GB(Random(), 0, 16) <= 0x5B0) {
+			if (GB(v->tick_counter, 0, 2) == 0 && GB(Random(), 0, 16) <= 0x5B0) {
 				CreateEffectVehicleRel(v, 0, 0, 10, EV_ELECTRIC_SPARK);
 			}
 			break;
