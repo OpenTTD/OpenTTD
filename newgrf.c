@@ -1970,6 +1970,9 @@ static void SkipIf(byte *buf, int len)
 		case 0x8E:
 			param_val = _traininfo_vehicle_pitch;
 			break;
+		case 0x9D:    /* TTD Platform, 00=TTDPatch, 01=OpenTTD */
+			param_val = 1;
+			break;
 		/* TODO */
 		case 0x8F:    /* Track type cost multipliers */
 		default:
