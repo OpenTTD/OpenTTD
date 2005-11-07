@@ -190,6 +190,7 @@ typedef struct Player {
 	PlayerEconomyEntry old_economy[24];
 	EngineID engine_replacement[TOTAL_NUM_ENGINES];
 	bool engine_renew;
+	bool renew_keep_length;
 	int16 engine_renew_months;
 	uint32 engine_renew_money;
 } Player;

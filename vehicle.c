@@ -1693,6 +1693,8 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 			if (old_v->type == VEH_Train){
 				// move the entire train to the new engine, including the old engine. It will be sold in a moment anyway
 				DoCommand(0, 0, (new_v->index << 16) | old_v->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+				new_v->u.rail.shortest_platform[0] = old_v->u.rail.shortest_platform[0];
+				new_v->u.rail.shortest_platform[1] = old_v->u.rail.shortest_platform[1];
 			}
 		}
 	}
@@ -1720,6 +1722,7 @@ static void MaybeReplaceVehicle(Vehicle *v)
 	byte flags = 0;
 	int32 cost, temp_cost = 0;
 	bool stopped = false;
+	bool train_fits_in_station = false;
 
 	_current_player = v->owner;
 
@@ -1731,6 +1734,11 @@ static void MaybeReplaceVehicle(Vehicle *v)
 		// we stopped the vehicle to do this, so we have to remember to start it again when we are done
 		// we need to store this info as the engine might be replaced and lose this info
 		stopped = true;
+	}
+
+	if (v->type == VEH_Train && v->u.rail.shortest_platform[0]*16 <= v->u.rail.cached_total_length && GetPlayer(v->owner)->renew_keep_length) {
+		// the train is not too long for the stations it visits. We should try to keep it that way if we change anything
+		train_fits_in_station = true;
 	}
 
 	while (true) {
@@ -1792,6 +1800,27 @@ static void MaybeReplaceVehicle(Vehicle *v)
 		}
 		// now we redo the loop, but this time we actually do stuff since we know that we can do it
 		flags |= DC_EXEC;
+	}
+
+	if (train_fits_in_station) {
+		// the train fitted in the stations it got in it's orders, so we should make sure that it still do
+		Vehicle *temp;
+		w = v;
+		while (v->u.rail.shortest_platform[0]*16 < v->u.rail.cached_total_length) {
+			// the train is too long. We will remove cars one by one from the start of the train until it's short enough
+			while (w != NULL && !(RailVehInfo(w->engine_type)->flags&RVI_WAGON) ) {
+				w = GetNextVehicle(w);
+			}
+			if (w == NULL) {
+				// we failed to make the train short enough
+				SetDParam(0, v->unitnumber);
+				AddNewsItem(STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0), v->index, 0);
+				break;
+			}
+			temp = w;
+			w = GetNextVehicle(w);
+			cost += DoCommand(0, 0, temp->index, 0, flags, CMD_SELL_VEH(temp->type));
+		}
 	}
 
 	if (IsLocalPlayer()) ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost);
@@ -2085,8 +2114,10 @@ static const SaveLoad _train_desc[] = {
 	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,pbs_status), SLE_UINT8, 2, 255),
 	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,pbs_end_tile), SLE_UINT32, 2, 255),
 	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,pbs_end_trackdir), SLE_UINT8, 2, 255),
-	// reserve extra space in savegame here. (currently 7 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 7, 2, 255),
+	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,shortest_platform[0]), SLE_UINT8, 2, 255),	// added with 16.1, but was blank since 2
+	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,shortest_platform[1]), SLE_UINT8, 2, 255),	// added with 16.1, but was blank since 2
+	// reserve extra space in savegame here. (currently 5 bytes)
+	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 5, 2, 255),
 
 	SLE_END()
 };

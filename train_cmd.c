@@ -752,6 +752,9 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			v->type = VEH_Train;
 			v->cur_image = 0xAC2;
 
+			v->u.rail.shortest_platform[0] = 255;
+			v->u.rail.shortest_platform[1] = 0;
+
 			VehiclePositionChanged(v);
 
 			if (rvi->flags & RVI_MULTIHEAD && !HASBIT(p2, 0)) {
@@ -2348,6 +2351,27 @@ static bool ProcessTrainOrder(Vehicle *v)
 	v->current_order = *order;
 
 	v->dest_tile = 0;
+
+	// store the station length if no shorter station was visited this order round
+	if (v->cur_order_index == 0) {
+		if (v->u.rail.shortest_platform[1] != 0 && v->u.rail.shortest_platform[1] != 255) {
+			// we went though a whole round of orders without interruptions, so we store the length of the shortest station
+			v->u.rail.shortest_platform[0] = v->u.rail.shortest_platform[1];
+		}
+		// all platforms are shorter than 255, so now we can find the shortest in the next order round. They might have changed size
+		v->u.rail.shortest_platform[1] = 255;
+	}
+
+	if (v->last_station_visited != INVALID_STATION) {
+		Station *st = GetStation(v->last_station_visited);
+		if (TileBelongsToRailStation(st, v->tile)) {
+			byte length = GetStationPlatforms(st, v->tile);
+
+			if (length < v->u.rail.shortest_platform[1]) {
+				v->u.rail.shortest_platform[1] = length;
+			}
+		}
+	}
 
 	result = false;
 	switch (order->type) {

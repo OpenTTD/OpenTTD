@@ -497,6 +497,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 	for (i = 0; i < TOTAL_NUM_ENGINES; i++)
 		p->engine_replacement[i] = INVALID_ENGINE;
 
+	p->renew_keep_length = false;
 	p->engine_renew = false;
 	p->engine_renew_months = -6;
 	p->engine_renew_money = 100000;
@@ -654,6 +655,7 @@ static void DeletePlayerStuff(PlayerID pi)
  * - p1 = 2 - change auto renew money
  * - p1 = 3 - change auto renew array
  * - p1 = 4 - change bool, months & money all together
+ * - p1 = 5 - change renew_keep_length
  * @param p2 value to set
  * if p1 = 0, then:
  * - p2 = enable engine renewal
@@ -668,6 +670,8 @@ static void DeletePlayerStuff(PlayerID pi)
  * - p1 bit     15 = enable engine renewal
  * - p1 bits 16-31 = months left before engine expires to replace it
  * - p2 bits  0-31 = minimum amount of money available
+ * if p1 = 5, then
+ * - p2 = enable renew_keep_length
  */
 int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -754,8 +758,19 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				}
 			}
 			break;
-	}
+		case 5:
+			if (p->renew_keep_length == (bool)GB(p2, 0, 1))
+				return CMD_ERROR;
 
+			if (flags & DC_EXEC) {
+				p->renew_keep_length = (bool)GB(p2, 0, 1);
+				if (IsLocalPlayer()) {
+					InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Train);
+				}
+			}
+		break;
+
+	}
 	return 0;
 }
 
@@ -1131,9 +1146,11 @@ static const SaveLoad _player_desc[] = {
 	SLE_CONDVAR(Player,engine_renew,         SLE_UINT8,      16, 255),
 	SLE_CONDVAR(Player,engine_renew_months,  SLE_INT16,      16, 255),
 	SLE_CONDVAR(Player,engine_renew_money,  SLE_UINT32,      16, 255),
+	SLE_CONDVAR(Player,renew_keep_length,    SLE_UINT8,       2, 255),	// added with 16.1, but was blank since 2
 
-	// reserve extra space in savegame here. (currently 64 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U64 | SLE_VAR_NULL, 8, 2, 255),
+	// reserve extra space in savegame here. (currently 63 bytes)
+	SLE_CONDARR(NullStruct,null,SLE_FILE_U8  | SLE_VAR_NULL, 7, 2, 255),
+	SLE_CONDARR(NullStruct,null,SLE_FILE_U64 | SLE_VAR_NULL, 7, 2, 255),
 
 	SLE_END()
 };

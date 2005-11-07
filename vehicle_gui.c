@@ -748,10 +748,10 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 {
 	static const StringID _vehicle_type_names[4] = {STR_019F_TRAIN, STR_019C_ROAD_VEHICLE, STR_019E_SHIP,STR_019D_AIRCRAFT};
+	const Player *p = GetPlayer(_local_player);
 
 	switch (e->event) {
 		case WE_PAINT: {
-				const Player *p = GetPlayer(_local_player);
 				int pos = w->vscroll.pos;
 				int selected_id[2] = {-1,-1};
 				int x = 1;
@@ -839,6 +839,12 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 
 				// now the actual drawing of the window itself takes place
 				SetDParam(0, _vehicle_type_names[WP(w, replaceveh_d).vehicletype - VEH_Train]);
+
+				if (WP(w, replaceveh_d).vehicletype == VEH_Train) {
+					// set on/off for renew_keep_length
+					SetDParam(1, p->renew_keep_length ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
+				}
+
 				DrawWindowWidgets(w);
 
 				// sets up the string for the vehicle that is being replaced to
@@ -925,6 +931,9 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 					ShowDropDownMenu(w, _rail_types_list, _railtype_selected_in_replace_gui, 15, 0, ~GetPlayer(_local_player)->avail_railtypes);
 					break;
 				}
+				case 17: { /* toggle renew_keep_length */
+					DoCommandP(0, 5, p->renew_keep_length ? 0 : 1, NULL, CMD_REPLACE_VEHICLE);
+				} break;
 				case 4: { /* Start replacing */
 					EngineID veh_from = WP(w, replaceveh_d).sel_engine[0];
 					EngineID veh_to = WP(w, replaceveh_d).sel_engine[1];
@@ -991,7 +1000,7 @@ static const Widget _replace_rail_vehicle_widgets[] = {
 {      WWT_PANEL,     RESIZE_TB,    14,   154,   277,   210,   221, STR_NULL,       STR_REPLACE_HELP_RAILTYPE},
 {   WWT_CLOSEBOX,     RESIZE_TB,    14,   278,   289,   210,   221, STR_0225,       STR_REPLACE_HELP_RAILTYPE},
 {      WWT_PANEL,     RESIZE_TB,    14,   290,   305,   210,   221, STR_NULL,       STR_NULL},
-{      WWT_PANEL,     RESIZE_TB,    14,   317,   455,   198,   209, STR_NULL,       STR_NULL},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   317,   455,   198,   209, STR_REPLACE_REMOVE_WAGON,       STR_REPLACE_REMOVE_WAGON_HELP},
 // end of train specific stuff
 {  WWT_RESIZEBOX,     RESIZE_TB,    14,   444,   455,   210,   221, STR_NULL,       STR_RESIZE_BUTTON},
 {   WIDGETS_END},

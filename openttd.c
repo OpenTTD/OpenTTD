@@ -1300,6 +1300,23 @@ bool AfterLoadGame(uint version)
 		}
 	}
 
+	/* In version 16.1 of the savegame, trains became aware of station lengths
+		need to initialized to the invalid state
+		players needs to set renew_keep_length too */
+	if (version < 0x1001) {
+		Vehicle *v;
+		FOR_ALL_PLAYERS(p) {
+			p->renew_keep_length = false;
+		}
+
+		FOR_ALL_VEHICLES(v) {
+			if (v->type == VEH_Train) {
+				v->u.rail.shortest_platform[0] = 255;
+				v->u.rail.shortest_platform[1] = 0;
+			}
+		}
+	}
+
 	FOR_ALL_PLAYERS(p) {
 		p->avail_railtypes = GetPlayerRailtypes(p->index);
 	}

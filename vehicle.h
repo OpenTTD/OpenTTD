@@ -85,6 +85,14 @@ typedef struct VehicleRail {
 	byte pbs_status;
 	TileIndex pbs_end_tile;
 	Trackdir pbs_end_trackdir;
+
+	/**
+	  * stuff to figure out how long a train should be. Used by autoreplace
+	  * first byte holds the length of the shortest station. Updated each time order 0 is reached
+	  * last byte is the shortest station reached this round though the orders. It can be invalidated by
+	  *   skip station and alike by setting it to 0. That way we will ensure that a complete loop is used to find the shortest station
+	  */
+	byte shortest_platform[2];
 } VehicleRail;
 
 enum {
@@ -177,7 +185,6 @@ struct Vehicle {
 	int32 x_pos;			// coordinates
 	int32 y_pos;
 
-	bool leave_depot_instantly;	// NOSAVE: stores if the vehicle needs to leave the depot it just entered. Used by autoreplace
 	byte z_pos;
 	byte direction;		// facing
 
@@ -247,6 +254,8 @@ struct Vehicle {
 	byte breakdowns_since_last_service;
 	byte breakdown_chance;
 	byte build_year;
+
+	bool leave_depot_instantly;	// NOSAVE: stores if the vehicle needs to leave the depot it just entered. Used by autoreplace
 
 	uint16 load_unload_time_rem;
 

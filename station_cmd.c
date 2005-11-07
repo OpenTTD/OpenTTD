@@ -1083,11 +1083,6 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return cost;
 }
 
-static bool TileBelongsToRailStation(const Station *st, TileIndex tile)
-{
-	return IsTileType(tile, MP_STATION) && _m[tile].m2 == st->index && _m[tile].m5 < 8;
-}
-
 static void MakeRailwayStationAreaSmaller(Station *st)
 {
 	uint w = st->trainst_w;

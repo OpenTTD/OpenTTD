@@ -388,6 +388,7 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			}
 			/* Update any possible open window of the vehicle */
 			InvalidateVehicleOrder(u);
+			if (u->type == VEH_Train) u->u.rail.shortest_platform[1] = 0; // we changed the orders so we invalidate the station length collector
 
 			u = u->next_shared;
 		}
@@ -520,6 +521,7 @@ int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (v->current_order.type == OT_LOADING && HASBIT(v->current_order.flags, OFB_NON_STOP))
 			v->current_order.flags = 0;
 
+		if (v->type == VEH_Train) v->u.rail.shortest_platform[1] = 0; // we changed the orders so we invalidate the station length collector
 		InvalidateVehicleOrder(v);
 	}
 
@@ -663,6 +665,7 @@ int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				InvalidateVehicleOrder(src);
 
 				RebuildVehicleLists();
+				if (dst->type == VEH_Train) dst->u.rail.shortest_platform[1] = 0; // we changed the orders so we invalidate the station length collector
 			}
 		} break;
 
@@ -722,6 +725,7 @@ int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				InvalidateVehicleOrder(dst);
 
 				RebuildVehicleLists();
+				if (dst->type == VEH_Train) dst->u.rail.shortest_platform[1] = 0; // we changed the orders so we invalidate the station length collector
 			}
 		} break;
 

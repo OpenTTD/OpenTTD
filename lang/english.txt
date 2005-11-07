@@ -943,6 +943,7 @@ STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autorene
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autorenew failed on road vehicle {COMMA} (money limit)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autorenew failed on ship {COMMA} (money limit)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autorenew failed on aircraft {COMMA} (money limit)
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT							:{WHITE}Train {COMMA} is too long after replacement
 
 STR_CONFIG_PATCHES                                              :{BLACK}Configure Patches
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configure the patches
@@ -2752,6 +2753,8 @@ STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Press to
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Choose the railtype you want to replace engines for
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Displays which engine the left selected engine is being replaced with, if any
 STR_REPLACE_HELP                                                :{BLACK}This allows you to replace one engine type with another type, when trains of the original type enter a depot
+STR_REPLACE_REMOVE_WAGON										:{BLACK}Wagon removal: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP									:{BLACK}Setting this to "On" will make autoreplace remove wagons from trains to make them keep their length if they exceed length of the shortest station in their orders.{}It will remove as many wagons as needed starting from the front
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Sign List - {COMMA} Sign{P "" s}
