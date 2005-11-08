@@ -773,11 +773,12 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			InvalidateWindow(WC_VEHICLE_DEPOT, tile);
 			RebuildVehicleLists();
 			InvalidateWindow(WC_COMPANY, v->owner);
+			if (IsLocalPlayer()) {
+				InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Train); // updates the replace Train window
+			}
 		}
 	}
 	_cmd_build_rail_veh_score = _railveh_score[p1];
-
-	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Train); // updates the replace Train window
 
 	return value;
 }
@@ -1128,6 +1129,8 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		if (v == first && first->subtype == TS_Front_Engine) {
 			DeleteWindowById(WC_VEHICLE_VIEW, first->index);
+		}
+		if (IsLocalPlayer() && (p1 == 1 || !(RailVehInfo(v->engine_type)->flags & RVI_WAGON))) {
 			InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Train);
 		}
 		InvalidateWindow(WC_VEHICLE_DEPOT, first->tile);

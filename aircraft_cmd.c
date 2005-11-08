@@ -291,7 +291,8 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		RebuildVehicleLists();
 		InvalidateWindow(WC_COMPANY, v->owner);
-		InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Aircraft); //updates the replace Aircraft window
+		if (IsLocalPlayer())
+			InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Aircraft); //updates the replace Aircraft window
 	}
 
 	return value;
@@ -348,7 +349,8 @@ int32 CmdSellAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		// Invalidate depot
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		DoDeleteAircraft(v);
-		InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Aircraft); // updates the replace Aircraft window
+		if (IsLocalPlayer())
+			InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Aircraft); // updates the replace Aircraft window
 	}
 
 	return -(int32)v->value;
