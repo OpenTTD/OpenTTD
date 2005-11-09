@@ -127,7 +127,7 @@ bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, int mode, Pla
 	if (w->disabled_state & mask)
 		return false;
 
-	if (!_no_button_sound) SndPlayFx(SND_15_BEEP);
+	SndPlayFx(SND_15_BEEP);
 	SetWindowDirty(w);
 
 	if (w->click_state & mask) {
