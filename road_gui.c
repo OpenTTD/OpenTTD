@@ -281,6 +281,10 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e) {
 		VpSetPresizeRange(tile, _build_tunnel_endtile==0?tile:_build_tunnel_endtile);
 		break;
 	}
+
+	case WE_DESTROY:
+		if (_patches.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
+		break;
 	}
 }
 
@@ -315,6 +319,7 @@ void ShowBuildRoadToolbar(void)
 	if (_current_player == OWNER_SPECTATOR) return;
 	DeleteWindowById(WC_BUILD_TOOLBAR, 0);
 	AllocateWindowDesc(&_build_road_desc);
+	if (_patches.link_terraform_toolbar) ShowTerraformToolbar();
 }
 
 static const Widget _build_road_scen_widgets[] = {

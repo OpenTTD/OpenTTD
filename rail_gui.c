@@ -480,6 +480,10 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 		DoCommandByTile(tile, 0, 0, DC_AUTO, CMD_BUILD_TUNNEL);
 		VpSetPresizeRange(tile, _build_tunnel_endtile==0?tile:_build_tunnel_endtile);
 	} break;
+
+	case WE_DESTROY:
+		if (_patches.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
+		break;
 	}
 }
 
@@ -571,6 +575,7 @@ void ShowBuildRailToolbar(RailType railtype, int button)
 
 	_remove_button_clicked = false;
 	if (w != NULL && button >= 0) _build_railroad_button_proc[button](w);
+	if (_patches.link_terraform_toolbar) ShowTerraformToolbar();
 }
 
 /* TODO: For custom stations, respect their allowed platforms/lengths bitmasks!

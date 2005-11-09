@@ -119,6 +119,7 @@ typedef struct Patches {
 	bool forbid_90_deg; // forbid trains to make 90 deg turns
 	bool invisible_trees; // don't show trees when buildings are transparent
 	bool no_servicing_if_no_breakdowns; // dont send vehicles to depot when breakdowns are disabled
+	bool link_terraform_toolbar; // display terraform toolbar when displaying rail, road, water and airport toolbars
 
 	uint8 toolbar_pos;			// position of toolbars, 0=left, 1=center, 2=right
 	uint8 window_snap_radius; // Windows snap at each other if closer than this

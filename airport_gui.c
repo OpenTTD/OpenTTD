@@ -107,6 +107,10 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 		if (w != 0)
 			WP(w,def_d).close = true;
 		break;
+
+	case WE_DESTROY:
+		if (_patches.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
+		break;
 	}
 }
 
@@ -134,6 +138,7 @@ void ShowBuildAirToolbar(void)
 	if (_current_player == OWNER_SPECTATOR) return;
 	DeleteWindowById(WC_BUILD_TOOLBAR, 0);
 	AllocateWindowDescFront(&_air_toolbar_desc, 0);
+	if (_patches.link_terraform_toolbar) ShowTerraformToolbar();
 }
 
 static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)

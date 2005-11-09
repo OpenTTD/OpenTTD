@@ -679,6 +679,8 @@ static const PatchEntry _patches_ui[] = {
 
 	{PE_INT32, 0, STR_CONFIG_PATCHES_MAP_X, "map_x", &_patches.map_x, 6, 11, 1, NULL},
 	{PE_INT32, 0, STR_CONFIG_PATCHES_MAP_Y, "map_y", &_patches.map_y, 6, 11, 1, NULL},
+
+	{PE_BOOL,   PF_PLAYERBASED, STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR, "link_terraform_toolbar", &_patches.link_terraform_toolbar, 0, 1, 1, NULL},
 };
 
 static const PatchEntry _patches_construction[] = {

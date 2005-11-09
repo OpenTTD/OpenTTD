@@ -853,6 +853,7 @@ static const SettingDesc patch_player_settings[] = {
 	{"autorenew_money",			SDT_INT32,	(void*)100000,&_patches.autorenew_money,			NULL},
 
 	{"population_in_label",	SDT_BOOL,		(void*)true,	&_patches.population_in_label,	NULL},
+	{"link_terraform_toolbar",       SDT_BOOL,   (void*)false, &_patches.link_terraform_toolbar,       NULL},
 
 	{NULL,									0,					NULL,					NULL,																						NULL}
 };
