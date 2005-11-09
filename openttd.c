@@ -1277,6 +1277,9 @@ bool AfterLoadGame(uint version)
 				CLRBIT(_m[tile].m4, 2);
 				SETBIT(_m[tile].m4, 3);
 			}
+			// Clear possible junk data in PBS bits.
+			if (IsTileType(tile, MP_RAILWAY) && !HASBIT(_m[tile].m5, 7))
+				SB(_m[tile].m4, 4, 4, 0);
 		} END_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0);
 	}
 
