@@ -272,11 +272,11 @@ typedef struct ResizeInfo {
 	uint step_height;
 } ResizeInfo;
 
-typedef struct Message {
+typedef struct WindowMessage {
 		int msg;
 		int wparam;
 		int lparam;
-} Message;
+} WindowMessage;
 
 struct Window {
 	uint16 flags4;
@@ -298,7 +298,7 @@ struct Window {
  	Widget *widget;
 	uint32 desc_flags;
 
-	Message message;
+	WindowMessage message;
 	byte custom[WINDOW_CUSTOM_SIZE];
 };
 
