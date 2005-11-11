@@ -1518,12 +1518,12 @@ static void DrawTile_Track(TileInfo *ti)
 
 		if (IsRailWaypoint(m5) && HASBIT(_m[ti->tile].m3, 4)) {
 			// look for customization
-			StationSpec *stat = GetCustomStation(STAT_CLASS_WAYP, _m[ti->tile].m4);
+			const StationSpec *stat = GetCustomStation(STAT_CLASS_WAYP, _m[ti->tile].m4);
 
-			if (stat) {
+			if (stat != NULL) {
 				DrawTileSeqStruct const *seq;
 				// emulate station tile - open with building
-				DrawTileSprites *cust = &stat->renderdata[2 + (m5 & 0x1)];
+				const DrawTileSprites *cust = &stat->renderdata[2 + (m5 & 0x1)];
 				uint32 relocation = GetCustomStationRelocation(stat, ComposeWaypointStation(ti->tile), 0);
 
 				/* We don't touch the 0x8000 bit. In all this

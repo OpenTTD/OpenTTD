@@ -869,13 +869,13 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 			FOR_EACH_OBJECT {
 				StationSpec *stat = &_cur_grffile->stations[stid + i];
 				byte srcid = grf_load_byte(&buf);
-				StationSpec *srcstat = &_cur_grffile->stations[srcid];
+				const StationSpec *srcstat = &_cur_grffile->stations[srcid];
 				int t;
 
 				stat->tiles = srcstat->tiles;
 				for (t = 0; t < stat->tiles; t++) {
 					DrawTileSprites *dts = &stat->renderdata[t];
-					DrawTileSprites *sdts = &srcstat->renderdata[t];
+					const DrawTileSprites *sdts = &srcstat->renderdata[t];
 					DrawTileSeqStruct const *sdtss = sdts->seq;
 					int seq_count = 0;
 

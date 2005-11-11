@@ -375,9 +375,9 @@ extern uint16 _custom_sprites_base;
 /* Draw a waypoint */
 void DrawWaypointSprite(int x, int y, int stat_id, RailType railtype)
 {
-	StationSpec *stat;
+	const StationSpec *stat;
 	uint32 relocation;
-	DrawTileSprites *cust;
+	const DrawTileSprites *cust;
 	DrawTileSeqStruct const *seq;
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 	uint32 ormod, img;

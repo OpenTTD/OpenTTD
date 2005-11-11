@@ -903,7 +903,7 @@ static inline byte *CreateMulti(byte *layout, int n, byte b)
 }
 
 // stolen from TTDPatch
-static void GetStationLayout(byte *layout, int numtracks, int plat_len, StationSpec *spec)
+static void GetStationLayout(byte *layout, int numtracks, int plat_len, const StationSpec *spec)
 {
 	if (spec != NULL && spec->lengths >= plat_len &&
 			spec->platforms[plat_len - 1] >= numtracks &&
@@ -1033,7 +1033,7 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		TileIndexDiff tile_delta;
 		byte *layout_ptr;
 		StationID station_index = st->index;
-		StationSpec *statspec;
+		const StationSpec *statspec;
 
 		// Now really clear the land below the station
 		// It should never return CMD_ERROR.. but you never know ;)
@@ -2139,7 +2139,7 @@ static void DrawTile_Station(TileInfo *ti)
 
 	if (_m[ti->tile].m3 & 0x10) {
 		// look for customization
-		StationSpec *statspec = GetCustomStation(STAT_CLASS_DFLT, _m[ti->tile].m4);
+		const StationSpec *statspec = GetCustomStation(STAT_CLASS_DFLT, _m[ti->tile].m4);
 
 		//debug("Cust-o-mized %p", statspec);
 
