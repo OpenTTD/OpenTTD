@@ -2344,26 +2344,38 @@ static void InitializeGRFSpecial(void)
 {
 	/* FIXME: We should rather reflect reality in _ttdpatch_flags[]. */
 
-	_ttdpatch_flags[0] = (1 << 0x1B); /* multihead */
-	_ttdpatch_flags[1] = (1 << 0x08)  /* mammothtrains */
-	                   | (1 << 0x0B)  /* subsidiaries */
+	_ttdpatch_flags[0] = (_patches.always_small_airport ? (1 << 0x0C) : 0)  /* keepsmallairport */
+	                   | (1 << 0x0E)  /* largestations */
+	                   | (_patches.longbridges ? (1 << 0x0F) : 0)           /* longbridges */
+	                   | (1 << 0x12)  /* presignals */
+	                   | (1 << 0x13)  /* extpresignals */
+	                   | (_patches.never_expire_vehicles ? (1 << 0x16) : 0) /* enginespersist */
+	                   | (1 << 0x1B); /* multihead */
+	_ttdpatch_flags[1] = (_patches.mammoth_trains ? (1 << 0x08) : 0)        /* mammothtrains */
+	                   | (1 << 0x09)  /* trainrefit */
 	                   | (1 << 0x14)  /* bridgespeedlimits */
 	                   | (1 << 0x16)  /* eternalgame */
 	                   | (1 << 0x17)  /* newtrains */
 	                   | (1 << 0x18)  /* newrvs */
 	                   | (1 << 0x19)  /* newships */
 	                   | (1 << 0x1A)  /* newplanes */
-			               | (1 << 0x1B); /* signalsontrafficside */
+	                   | (_patches.signal_side ? (1 << 0x1B) : 0);          /* signalsontrafficside */
 	                   /* Uncomment following if you want to fool the GRF file.
 	                    * Some GRF files will refuse to load without this
 	                    * but you can still squeeze something from them even
 	                    * without the support - i.e. USSet. --pasky */
 			               //| (1 << 0x1C); /* electrifiedrailway */
 
-	_ttdpatch_flags[2] = (1 << 0x0D)  /* buildonslopes */
+	_ttdpatch_flags[2] = (_patches.build_on_slopes ? (1 << 0x0D) : 0)       /* buildonslopes */
+	                   | (_patches.build_on_slopes ? (1 << 0x15) : 0)       /* buildoncoasts */
 	                   | (1 << 0x16)  /* canals */
 	                   | (1 << 0x17)  /* newstartyear */
-	                   | (_patches.wagon_speed_limits ? (1 << 0x1D) : 0); /* wagonspeedlimits */
+	                   | (1 << 0x1A)  /* newbridges */
+	                   | (_patches.wagon_speed_limits ? (1 << 0x1D) : 0);   /* wagonspeedlimits */
+	_ttdpatch_flags[3] = (1 << 0x03)  /* pathbasedsignalling */
+	                   | (1 << 0x0C)  /* enhancemultiplayer */
+	                   | (1 << 0x0E)  /* irregularstations */
+	                   | (1 << 0x10); /* autoreplace */
 }
 
 /**
