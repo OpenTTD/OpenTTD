@@ -8,6 +8,7 @@
 #include "sprite.h"
 #include "tile.h"
 #include "vehicle.h"
+#include "station_newgrf.h"
 
 typedef struct GoodsEntry {
 	uint16 waiting_acceptance;
@@ -195,83 +196,10 @@ uint GetStationPlatforms(const Station *st, TileIndex tile);
 
 void StationPickerDrawSprite(int x, int y, RailType railtype, int image);
 
-
-/* Station layout for given dimensions - it is a two-dimensional array
- * where index is computed as (x * platforms) + platform. */
-typedef byte *StationLayout;
-
-typedef enum StationClass {
-	STAT_CLASS_NONE, // unused station slot or so
-	STAT_CLASS_DFLT, // default station class
-	STAT_CLASS_WAYP, // waypoints
-
-	/* TODO: When we actually support custom classes, they are
-	 * going to be allocated dynamically (with some classid->sclass
-	 * mapping, there's a TTDPatch limit on 16 custom classes in
-	 * the whole game at the same time) with base at
-	 * STAT_CLASS_CUSTOM. --pasky */
-	STAT_CLASS_CUSTOM, // some custom class
-} StationClass;
-
-typedef struct StationSpec {
-	uint32 grfid;
-	int localidx; // per-GRFFile station index + 1; SetCustomStation() takes care of this
-
-	StationClass sclass;
-
-	/* Bitmask of platform numbers/lengths available for the station.  Bits
-	 * 0..6 correspond to 1..7, while bit 7 corresponds to >7 platforms or
-	 * lenght. */
-	byte allowed_platforms;
-	byte allowed_lengths;
-
-	/* Custom sprites */
-	byte tiles;
-	/* 00 = plain platform
-	 * 02 = platform with building
-	 * 04 = platform with roof, left side
-	 * 06 = platform with roof, right side
-	 *
-	 * These numbers are used for stations in NE-SW direction, or these
-	 * numbers plus one for stations in the NW-SE direction.  */
-	DrawTileSprites renderdata[8];
-
-	/* Custom layouts */
-	/* The layout array is organized like [lenghts][platforms], both being
-	 * dynamic arrays, the field itself is length*platforms array containing
-	 * indexes to @renderdata (only even numbers allowed) for the given
-	 * station tile. */
-	/* @lengths is length of the @platforms and @layouts arrays, that is
-	 * number of maximal length for which the layout is defined (since
-	 * arrays are indexed from 0, the length itself is at [length - 1]). */
-	byte lengths;
-	/* @platforms is array of number of platforms defined for each length.
-	 * Zero means no platforms defined. */
-	byte *platforms;
-	/* @layout is @layouts-sized array of @platforms-sized arrays,
-	 * containing pointers to length*platforms-sized arrays or NULL if
-	 * default OTTD station layout should be used for stations of these
-	 * dimensions. */
-	StationLayout **layouts;
-
-	/* Sprite offsets for renderdata->seq->image. spritegroup[0] is default
-	 * whilst spritegroup[1] is "GC_PURCHASE". */
-	SpriteGroup *spritegroup[2];
-} StationSpec;
-
-/* Here, @stid is local per-GRFFile station index. If spec->localidx is not yet
- * set, it gets new dynamically allocated global index and spec->localidx is
- * set to @stid, otherwise we take it as that we are replacing it and try to
- * search for it first (that isn't much fast but we do it only very seldom). */
-void SetCustomStation(byte stid, StationSpec *spec);
-/* Here, @stid is global station index (in continous range 0..GetCustomStationsCount())
- * (lookup is therefore very fast as we do this very frequently). */
-StationSpec *GetCustomStation(StationClass sclass, byte stid);
 /* Get sprite offset for a given custom station and station structure (may be
  * NULL if ctype is set - that means we are in a build dialog). The station
  * structure is used for variational sprite groups. */
 uint32 GetCustomStationRelocation(const StationSpec *spec, const Station *st, byte ctype);
-int GetCustomStationsCount(StationClass sclass);
 
 RoadStop * GetRoadStopByTile(TileIndex tile, RoadStopType type);
 static inline int GetRoadStopType(TileIndex tile)

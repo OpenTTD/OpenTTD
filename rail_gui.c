@@ -127,7 +127,7 @@ static void PlaceRail_Depot(TileIndex tile)
 static void PlaceRail_Waypoint(TileIndex tile)
 {
 	if (!_remove_button_clicked) {
-		DoCommandP(tile, (_waypoint_count > 0) ? (0x100 + _cur_waypoint_type) : 0, 0, CcPlaySound1E, CMD_BUILD_TRAIN_WAYPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_WAYPOINT));
+		DoCommandP(tile, _cur_waypoint_type, 0, CcPlaySound1E, CMD_BUILD_TRAIN_WAYPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_WAYPOINT));
 	} else {
 		DoCommandP(tile, 0, 0, CcPlaySound1E, CMD_REMOVE_TRAIN_WAYPOINT | CMD_MSG(STR_CANT_REMOVE_TRAIN_WAYPOINT));
 	}
@@ -257,9 +257,9 @@ static void BuildRailClick_Depot(Window *w)
 
 static void BuildRailClick_Waypoint(Window *w)
 {
-	_waypoint_count = GetCustomStationsCount(STAT_CLASS_WAYP);
+	_waypoint_count = GetNumCustomStations(STAT_CLASS_WAYP);
 	if (HandlePlacePushButton(w, 11, SPR_CURSOR_WAYPOINT, 1, PlaceRail_Waypoint)
-	    && _waypoint_count > 0)
+			&& _waypoint_count > 1)
 		ShowBuildWaypointPicker();
 }
 
@@ -829,14 +829,14 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT: {
+		int i;
 		w->click_state = (1 << 3) << (_cur_waypoint_type - w->hscroll.pos);
 		DrawWindowWidgets(w);
 
-		if(w->hscroll.pos + 0 <= _waypoint_count) DrawWaypointSprite(2,   25, w->hscroll.pos + 0, _cur_railtype);
-		if(w->hscroll.pos + 1 <= _waypoint_count) DrawWaypointSprite(70,  25, w->hscroll.pos + 1, _cur_railtype);
-		if(w->hscroll.pos + 2 <= _waypoint_count) DrawWaypointSprite(138, 25, w->hscroll.pos + 2, _cur_railtype);
-		if(w->hscroll.pos + 3 <= _waypoint_count) DrawWaypointSprite(206, 25, w->hscroll.pos + 3, _cur_railtype);
-		if(w->hscroll.pos + 4 <= _waypoint_count) DrawWaypointSprite(274, 25, w->hscroll.pos + 4, _cur_railtype);
+		for (i = 0; i < 5; i++)
+			if(w->hscroll.pos + i < _waypoint_count)
+				DrawWaypointSprite(2 + i * 68, 25, w->hscroll.pos + i, _cur_railtype);
+
 		break;
 	}
 	case WE_CLICK: {
@@ -889,7 +889,7 @@ static void ShowBuildWaypointPicker(void)
 {
 	Window *w = AllocateWindowDesc(&_build_waypoint_desc);
 	w->hscroll.cap = 5;
-	w->hscroll.count = _waypoint_count + 1;
+	w->hscroll.count = _waypoint_count;
 }
 
 

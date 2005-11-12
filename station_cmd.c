@@ -1199,60 +1199,6 @@ uint GetStationPlatforms(const Station *st, TileIndex tile)
 	return len - 1;
 }
 
-
-/* TODO: Custom classes! */
-/* Indexed by class, just STAT_CLASS_DFLT and STAT_CLASS_WAYP supported. */
-static int _statspec_highest_id[2] = {-1, -1};
-static StationSpec _station_spec[2][256];
-
-void SetCustomStation(byte local_stid, StationSpec *spec)
-{
-	StationClass sclass;
-	int stid = -1;
-
-	assert(spec->sclass == STAT_CLASS_DFLT || spec->sclass == STAT_CLASS_WAYP);
-	sclass = spec->sclass - 1;
-
-	if (spec->localidx != 0) {
-		/* Already allocated, try to resolve to global stid */
-		int i;
-
-		for (i = 0; i <= _statspec_highest_id[sclass]; i++) {
-			if (_station_spec[sclass][i].grfid == spec->grfid &&
-					_station_spec[sclass][i].localidx == local_stid + 1) {
-				stid = i;
-				/* FIXME: Release original SpriteGroup to
-				 * prevent leaks. But first we need to
-				 * refcount the SpriteGroup. --pasky */
-				break;
-			}
-		}
-	}
-
-	if (stid == -1) {
-		/* Allocate new one. */
-		if (_statspec_highest_id[sclass] >= 255) {
-			error("Too many custom stations allocated.");
-			return;
-		}
-		stid = ++_statspec_highest_id[sclass];
-		spec->localidx = local_stid + 1;
-	}
-
-	//debug("Registering station #%d of class %d", stid, sclass);
-	memcpy(&_station_spec[sclass][stid], spec, sizeof(*spec));
-}
-
-StationSpec *GetCustomStation(StationClass sclass, byte stid)
-{
-	assert(sclass == STAT_CLASS_DFLT || sclass == STAT_CLASS_WAYP);
-	sclass--;
-	//debug("Asking for station #%d of class %d", stid, sclass);
-	if (stid > _statspec_highest_id[sclass])
-		return NULL;
-	return &_station_spec[sclass][stid];
-}
-
 static const RealSpriteGroup *ResolveStationSpriteGroup(const SpriteGroup *spg, const Station *st)
 {
 	switch (spg->type) {
@@ -1350,14 +1296,6 @@ uint32 GetCustomStationRelocation(const StationSpec *spec, const Station *st, by
 	 * emergency measure. */
 	return SPR_RAIL_PLATFORM_Y_FRONT;
 }
-
-int GetCustomStationsCount(StationClass sclass)
-{
-	assert(sclass == STAT_CLASS_DFLT || sclass == STAT_CLASS_WAYP);
-	sclass--;
-	return _statspec_highest_id[sclass] + 1;
-}
-
 
 static int32 RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 {

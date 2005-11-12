@@ -16,6 +16,7 @@ struct Waypoint {
 	ViewportSign sign;
 	uint16 build_date;
 	byte stat_id;
+	uint32 grfid;
 	byte deleted;          // this is a delete counter. when it reaches 0, the waypoint struct is deleted.
 };
 

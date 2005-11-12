@@ -800,22 +800,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 				classid |= *(buf++) << 8;
 				classid |= *(buf++);
 
-				switch (classid) {
-					case 'DFLT':
-						stat->sclass = STAT_CLASS_DFLT;
-						break;
-					case 'WAYP':
-						stat->sclass = STAT_CLASS_WAYP;
-						break;
-					default:
-						/* TODO: No support for custom
-						 * classes for now, so stuff
-						 * everything to the single
-						 * default one. --pasky */
-						stat->sclass = STAT_CLASS_DFLT;
-						//stat->sclass = STAT_CLASS_CUSTOM;
-						break;
-				}
+				stat->sclass = AllocateStationClass(classid);
 			}
 			break;
 		}
@@ -825,22 +810,26 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 				StationSpec *stat = &_cur_grffile->stations[stid + i];
 				int t;
 
-				stat->tiles = grf_load_byte(&buf);
+				stat->tiles = grf_load_extended(&buf);
+				stat->renderdata = calloc(stat->tiles, sizeof(*stat->renderdata));
 				for (t = 0; t < stat->tiles; t++) {
 					DrawTileSprites *dts = &stat->renderdata[t];
 					int seq_count = 0;
+					PalSpriteID ground_sprite;
 
-					if (t >= 8) {
-						grfmsg(GMS_WARN, "StationChangeInfo: Sprite %d>=8, skipping.", t);
-						grf_load_dword(&buf); // at least something
-						continue;
-					}
-
-					dts->ground_sprite = grf_load_dword(&buf);
-					if (!dts->ground_sprite) {
+					ground_sprite = grf_load_dword(&buf);
+					if (ground_sprite == 0) {
 						static const DrawTileSeqStruct empty = {0x80, 0, 0, 0, 0, 0, 0};
 						dts->seq = &empty;
 						continue;
+					}
+
+					if (HASBIT(ground_sprite, 31)) {
+						// Bit 31 indicates that we should use a custom sprite.
+						dts->ground_sprite = GB(ground_sprite, 0, 15) - 0x42D;
+						dts->ground_sprite += _cur_grffile->first_spriteset;
+					} else {
+						dts->ground_sprite = ground_sprite;
 					}
 
 					dts->seq = NULL;
@@ -873,6 +862,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 				int t;
 
 				stat->tiles = srcstat->tiles;
+				stat->renderdata = calloc(stat->tiles, sizeof(*stat->renderdata));
 				for (t = 0; t < stat->tiles; t++) {
 					DrawTileSprites *dts = &stat->renderdata[t];
 					const DrawTileSprites *sdts = &srcstat->renderdata[t];
@@ -1548,6 +1538,9 @@ static void NewSpriteGroup(byte *buf, int len)
 	loaded_ptr = buf;
 	loading_ptr = buf + 2 * numloaded;
 
+	if (_cur_grffile->first_spriteset == 0)
+		_cur_grffile->first_spriteset = _cur_grffile->spriteset_start;
+
 	if (numloaded > 16) {
 		grfmsg(GMS_WARN, "NewSpriteGroup: More than 16 sprites in group %x, skipping the rest.", setid);
 		numloaded = 16;
@@ -1688,8 +1681,8 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 				stat->spritegroup[0] = _cur_grffile->spritegroups[groupid];
 				stat->spritegroup[0]->ref_count++;
 				stat->grfid = _cur_grffile->grfid;
-				SetCustomStation(stid, stat);
-				stat->sclass = STAT_CLASS_NONE;
+				stat->localidx = stid;
+				SetCustomStation(stat);
 			}
 		}
 		return;
@@ -2396,6 +2389,28 @@ static void ReleaseSpriteGroups(GRFFile *file)
 	file->spritegroups_count = 0;
 }
 
+static void ResetCustomStations(void)
+{
+	GRFFile *file;
+	int i;
+	CargoID c;
+
+	for (file = _first_grffile; file != NULL; file = file->next) {
+		for (i = 0; i < 256; i++) {
+			if (file->stations[i].grfid != file->grfid)
+				continue;
+
+			// TODO: Release renderdata, platforms and layouts
+
+			// Release this stations sprite groups.
+			for (c = 0; c < NUM_GLOBAL_CID; c++) {
+				if (file->stations[i].spritegroup[c] != NULL)
+					UnloadSpriteGroup(&file->stations[i].spritegroup[c]);
+			}
+		}
+	}
+}
+
 /**
  * Reset all NewGRF loaded data
  * TODO
@@ -2433,6 +2448,10 @@ static void ResetNewGRFData(void)
 
 	// Reset price base data
 	ResetPriceBaseMultipliers();
+
+	// Reset station classes
+	ResetStationClasses();
+	ResetCustomStations();
 }
 
 static void InitNewGRFFile(const char* filename, int sprite_offset)

@@ -659,6 +659,7 @@ C_SOURCES += sprite.c
 C_SOURCES += spritecache.c
 C_SOURCES += station_cmd.c
 C_SOURCES += station_gui.c
+C_SOURCES += station_newgrf.c
 C_SOURCES += string.c
 C_SOURCES += strings.c
 C_SOURCES += subsidy_gui.c

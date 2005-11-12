@@ -154,7 +154,7 @@ static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile)
 /** Convert existing rail to waypoint. Eg build a waypoint station over
  * piece of rail
  * @param x,y coordinates where waypoint will be built
- * @param p1 graphics for waypoint type, bit 8 signifies custom waypoint gfx (& 0x100)
+ * @param p1 graphics for waypoint type, 0 indicates standard graphics
  * @param p2 unused
  *
  * @todo When checking for the tile slope,
@@ -170,7 +170,7 @@ int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	/* if custom gfx are used, make sure it is within bounds */
-	if (p1 > 0x100 + (uint)GetCustomStationsCount(STAT_CLASS_WAYP)) return CMD_ERROR;
+	if (p1 >= GetNumCustomStations(STAT_CLASS_WAYP)) return CMD_ERROR;
 
 	if (!IsTileType(tile, MP_RAILWAY) || ((dir = 0, _m[tile].m5 != 1) && (dir = 1, _m[tile].m5 != 2)))
 		return_cmd_error(STR_1005_NO_SUITABLE_RAILROAD_TRACK);
@@ -200,10 +200,10 @@ int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		bool reserved = PBSTileReserved(tile) != 0;
 		ModifyTile(tile, MP_MAP5, RAIL_TYPE_WAYPOINT | dir);
-		if (--p1 & 0x100) { // waypoint type 0 uses default graphics
+		if (p1 > 0) { // waypoint type 0 uses default graphics
 			// custom graphics
 			_m[tile].m3 |= 16;
-			_m[tile].m4 = p1 & 0xff;
+			_m[tile].m4 = (p1 - 1) & 0xff;
 		}
 		if (reserved) {
 			PBSReserveTrack(tile, dir);
@@ -387,14 +387,14 @@ void DrawWaypointSprite(int x, int y, int stat_id, RailType railtype)
 	x += 33;
 	y += 17;
 
-	/* draw default waypoint graphics of ID 0 */
-	if (stat_id == 0) {
+	stat = GetCustomStation(STAT_CLASS_WAYP, stat_id);
+	if (stat == NULL) {
+		// stat is NULL for default waypoints and when waypoint graphics are
+		// not loaded.
 		DrawDefaultWaypointSprite(x, y, railtype);
 		return;
 	}
 
-	stat = GetCustomStation(STAT_CLASS_WAYP, stat_id - 1);
-	assert(stat);
 	relocation = GetCustomStationRelocation(stat, NULL, 1);
 	// emulate station tile - open with building
 	// add 1 to get the other direction
