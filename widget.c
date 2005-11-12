@@ -437,8 +437,6 @@ draw_default:;
 }
 
 static uint _dropdown_item_count;
-static uint32 _dropdown_disabled;
-static uint32 _dropdown_hidden;
 static const StringID *_dropdown_items;
 static int _dropdown_selindex;
 static byte _dropdown_button;
@@ -466,12 +464,12 @@ static int GetDropdownItem(const Window *w)
 		return - 1;
 
 	item = y / 10;
-	if (item >= _dropdown_item_count || (HASBIT(_dropdown_disabled, item) && !HASBIT(_dropdown_hidden, item)) || _dropdown_items[item] == 0)
+	if (item >= _dropdown_item_count || (HASBIT(w->disabled_state, item) && !HASBIT(w->hidden_state, item)) || _dropdown_items[item] == 0)
 		return - 1;
 
 	// Skip hidden items -- +1 for each hidden item before the clicked item.
 	for (counter = 0; item >= counter; ++counter)
-		if (HASBIT(_dropdown_hidden, counter)) item++;
+		if (HASBIT(w->hidden_state, counter)) item++;
 
 	return item;
 }
@@ -491,7 +489,7 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 			sel    = _dropdown_selindex;
 
 			for(i=0; _dropdown_items[i] != INVALID_STRING_ID; i++) {
-				if (HASBIT(_dropdown_hidden, i)) {
+				if (HASBIT(w->hidden_state, i)) {
 					sel--;
 					continue;
 				}
@@ -501,7 +499,7 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 					}
 					DrawString(x+2, y, _dropdown_items[i], sel==0 ? 12 : 16);
 
-					if (HASBIT(_dropdown_disabled, i)) {
+					if (HASBIT(w->disabled_state, i)) {
 						GfxFillRect(x, y, x+w->width-3, y + 9, PALETTE_MODIFIER_GREYOUT |
 									_color_list[_dropdown_menu_widgets[0].color].window_color_bga);
 					}
@@ -579,9 +577,6 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 	Window *w2;
 	uint32 old_click_state = w->click_state;
 
-	_dropdown_disabled = disabled_mask;
-	_dropdown_hidden = hidden_mask;
-
 	cls = w->window_class;
 	num = w->window_number;
 	DeleteWindowById(WC_DROPDOWN_MENU, 0);
@@ -635,4 +630,7 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 	w2->widget[0].bottom = i * 10 + 3;
 
 	w2->flags4 &= ~WF_WHITE_BORDER_MASK;
+
+	w2->disabled_state = disabled_mask;
+	w2->hidden_state = hidden_mask;
 }
