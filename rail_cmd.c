@@ -1518,7 +1518,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 		if (IsRailWaypoint(m5) && HASBIT(_m[ti->tile].m3, 4)) {
 			// look for customization
-			const StationSpec *stat = GetCustomStation(STAT_CLASS_WAYP, _m[ti->tile].m4);
+			const StationSpec *stat = GetCustomStation(STAT_CLASS_WAYP, _m[ti->tile].m4 + 1);
 
 			if (stat != NULL) {
 				DrawTileSeqStruct const *seq;
