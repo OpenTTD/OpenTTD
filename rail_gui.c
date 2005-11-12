@@ -833,9 +833,10 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 		w->click_state = (1 << 3) << (_cur_waypoint_type - w->hscroll.pos);
 		DrawWindowWidgets(w);
 
-		for (i = 0; i < 5; i++)
-			if(w->hscroll.pos + i < _waypoint_count)
+		for (i = 0; i < 5; i++) {
+			if (w->hscroll.pos + i < _waypoint_count)
 				DrawWaypointSprite(2 + i * 68, 25, w->hscroll.pos + i, _cur_railtype);
+		}
 
 		break;
 	}

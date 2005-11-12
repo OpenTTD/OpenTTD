@@ -2392,13 +2392,12 @@ static void ReleaseSpriteGroups(GRFFile *file)
 static void ResetCustomStations(void)
 {
 	GRFFile *file;
-	int i;
+	uint i;
 	CargoID c;
 
 	for (file = _first_grffile; file != NULL; file = file->next) {
-		for (i = 0; i < 256; i++) {
-			if (file->stations[i].grfid != file->grfid)
-				continue;
+		for (i = 0; i < lengthof(file->stations); i++) {
+			if (file->stations[i].grfid != file->grfid) continue;
 
 			// TODO: Release renderdata, platforms and layouts
 
