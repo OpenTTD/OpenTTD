@@ -1958,7 +1958,8 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 			return false;
 
 	if (v->u.rail.force_proceed == 0) {
-		byte trackdir = GetVehicleTrackdir(v);
+		Trackdir trackdir = GetVehicleTrackdir(v);
+
 		if (++v->load_unload_time_rem < 37) {
 			InvalidateWindowClasses(WC_TRAINS_LIST);
 			return true;

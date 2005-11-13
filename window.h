@@ -56,7 +56,7 @@ typedef struct Widget {
 	byte color;
 	uint16 left, right, top, bottom;
 	uint16 unkA;
-	uint16 tooltips;
+	StringID tooltips;
 } Widget;
 
 enum FrameFlags {

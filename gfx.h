@@ -68,8 +68,8 @@ uint16 GetDrawStringPlayerColor(PlayerID player);
 
 int GetStringWidth(const char *str);
 void LoadStringWidthTable(void);
-void DrawStringMultiCenter(int x, int y, uint16 str, int maxw);
-void DrawStringMultiLine(int x, int y, uint16 str, int maxw);
+void DrawStringMultiCenter(int x, int y, StringID str, int maxw);
+void DrawStringMultiLine(int x, int y, StringID str, int maxw);
 void DrawDirtyBlocks(void);
 void SetDirtyBlocks(int left, int top, int right, int bottom);
 void MarkWholeScreenDirty(void);

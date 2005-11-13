@@ -240,7 +240,7 @@ struct Vehicle {
 	int32 top_coord;
 	int32 right_coord;
 	int32 bottom_coord;
-	uint16 next_hash;
+	VehicleID next_hash;
 
 	// Related to age and service time
 	uint16 age;				// Age in days

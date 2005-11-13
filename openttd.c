@@ -789,9 +789,9 @@ void SwitchMode(int new_mode)
 	}
 
 	case SM_LOAD_SCENARIO: { /* Load scenario from scenario editor */
-		int i;
-
 		if (SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_EDITOR)) {
+			PlayerID i;
+
 			_opt_ptr = &_opt;
 
 			_local_player = OWNER_NONE;
@@ -1283,8 +1283,9 @@ bool AfterLoadGame(uint version)
 	}
 
 	if (version < 0x1000) {
-		int i;
 		FOR_ALL_PLAYERS(p) {
+			EngineID i;
+
 			for (i = 0; i < TOTAL_NUM_ENGINES; i++) {
 				p->engine_replacement[i] = INVALID_ENGINE;
 			}

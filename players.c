@@ -619,7 +619,7 @@ void DeletePlayerWindows(PlayerID pi)
 byte GetPlayerRailtypes(PlayerID p)
 {
 	byte rt = 0;
-	uint i;
+	EngineID i;
 
 	for (i = 0; i != TOTAL_NUM_ENGINES; i++) {
 		const Engine* e = GetEngine(i);

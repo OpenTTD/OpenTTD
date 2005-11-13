@@ -430,7 +430,7 @@ static uint32 FormatStringLinebreaks(char *str, int maxw)
 	}
 }
 
-void DrawStringMultiCenter(int x, int y, uint16 str, int maxw)
+void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 {
 	char buffer[512];
 	uint32 tmp;
@@ -476,7 +476,7 @@ void DrawStringMultiCenter(int x, int y, uint16 str, int maxw)
 	}
 }
 
-void DrawStringMultiLine(int x, int y, uint16 str, int maxw)
+void DrawStringMultiLine(int x, int y, StringID str, int maxw)
 {
 	char buffer[512];
 	uint32 tmp;
