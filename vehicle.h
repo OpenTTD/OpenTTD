@@ -293,7 +293,7 @@ void AfterLoadVehicles(void);
 Vehicle *GetLastVehicleInChain(Vehicle *v);
 Vehicle *GetPrevVehicleInChain(const Vehicle *v);
 Vehicle *GetFirstVehicleInChain(const Vehicle *v);
-int CountVehiclesInChain(Vehicle *v);
+uint CountVehiclesInChain(const Vehicle* v);
 void DeleteVehicle(Vehicle *v);
 void DeleteVehicleChain(Vehicle *v);
 void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
@@ -323,7 +323,7 @@ Vehicle *CreateEffectVehicleRel(const Vehicle *v, int x, int y, int z, EffectVeh
 
 uint32 VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y);
 
-void VehicleInTheWayErrMsg(Vehicle *v);
+void VehicleInTheWayErrMsg(const Vehicle* v);
 Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z);
 TileIndex GetVehicleOutOfTunnelTile(const Vehicle *v);
 

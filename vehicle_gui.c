@@ -490,9 +490,9 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 		}
 		case VEH_Road: {
 			int num = NUM_ROAD_ENGINES;
-			Engine *e = GetEngine(ROAD_ENGINES_INDEX);
+			const Engine* e = GetEngine(ROAD_ENGINES_INDEX);
 			byte cargo;
-			EngineInfo *info;
+			const EngineInfo* info;
 			engine_id = ROAD_ENGINES_INDEX;
 
 			do {
@@ -523,9 +523,9 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 
 		case VEH_Ship: {
 			int num = NUM_SHIP_ENGINES;
-			Engine *e = GetEngine(SHIP_ENGINES_INDEX);
+			const Engine* e = GetEngine(SHIP_ENGINES_INDEX);
 			byte cargo, refittable;
-			EngineInfo *info;
+			const EngineInfo* info;
 			engine_id = SHIP_ENGINES_INDEX;
 
 			do {
@@ -560,8 +560,8 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 		case VEH_Aircraft:{
 			int num = NUM_AIRCRAFT_ENGINES;
 			byte subtype;
-			Engine *e = GetEngine(AIRCRAFT_ENGINES_INDEX);
-			EngineInfo *info;
+			const Engine* e = GetEngine(AIRCRAFT_ENGINES_INDEX);
+			const EngineInfo* info;
 			engine_id = AIRCRAFT_ENGINES_INDEX;
 
 			do {
@@ -635,10 +635,10 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 
 		case VEH_Road: {
 			int num = NUM_ROAD_ENGINES;
-			Engine *e = GetEngine(ROAD_ENGINES_INDEX);
+			const Engine* e = GetEngine(ROAD_ENGINES_INDEX);
 			EngineID engine_id = ROAD_ENGINES_INDEX;
 			byte cargo;
-			EngineInfo *info;
+			const EngineInfo* info;
 
 			if ( selected_id[0] >= ROAD_ENGINES_INDEX && selected_id[0] <= SHIP_ENGINES_INDEX ) {
 				cargo = RoadVehInfo(selected_id[0])->cargo_type;
@@ -671,10 +671,10 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 
 		case VEH_Ship: {
 			int num = NUM_SHIP_ENGINES;
-			Engine *e = GetEngine(SHIP_ENGINES_INDEX);
+			const Engine* e = GetEngine(SHIP_ENGINES_INDEX);
 			EngineID engine_id = SHIP_ENGINES_INDEX;
 			byte cargo, refittable;
-			EngineInfo *info;
+			const EngineInfo* info;
 
 			if ( selected_id[0] != -1 ) {
 				cargo = ShipVehInfo(selected_id[0])->cargo_type;
@@ -710,10 +710,10 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 		case VEH_Aircraft: {
 			if ( selected_id[0] != -1 ) {
 				int num = NUM_AIRCRAFT_ENGINES;
-				Engine *e = GetEngine(AIRCRAFT_ENGINES_INDEX);
+				const Engine* e = GetEngine(AIRCRAFT_ENGINES_INDEX);
 				EngineID engine_id = AIRCRAFT_ENGINES_INDEX;
 				byte subtype = AircraftVehInfo(selected_id[0])->subtype;
-				EngineInfo *info;
+				const EngineInfo* info;
 
 				do {
 					info = &_engine_info[engine_id];

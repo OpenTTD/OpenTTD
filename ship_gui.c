@@ -28,7 +28,7 @@ void DrawShipPurchaseInfo(int x, int y, EngineID engine_number)
 {
 	YearMonthDay ymd;
 	const ShipVehicleInfo *svi = ShipVehInfo(engine_number);
-	Engine *e;
+	const Engine* e;
 
 	/* Purchase cost - Max speed */
 	SetDParam(0, svi->base_cost * (_price.ship_base>>3)>>5);
@@ -301,7 +301,7 @@ static void ShowShipDetailsWindow(const Vehicle* v)
 
 void CcBuildShip(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
-	Vehicle *v;
+	const Vehicle* v;
 	if (!success) return;
 
 	v = GetVehicle(_new_ship_id);
@@ -755,7 +755,7 @@ static void HandleCloneVehClick(const Vehicle* v, const Window* w)
 
 static void ClonePlaceObj(TileIndex tile, const Window* w)
 {
-	Vehicle* v = CheckMouseOverVehicle();
+	const Vehicle* v = CheckMouseOverVehicle();
 
 	if (v != NULL) HandleCloneVehClick(v, w);
 }

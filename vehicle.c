@@ -39,25 +39,25 @@
 #define CMD_STARTSTOP_VEH(x)  _veh_start_stop_proc_table[ x - VEH_Train]
 #define CMD_REFIT_VEH(x)		   _veh_refit_proc_table[ x - VEH_Train]
 
-static uint32 const _veh_build_proc_table[] = {
+static const uint32 _veh_build_proc_table[] = {
 	CMD_BUILD_RAIL_VEHICLE,
 	CMD_BUILD_ROAD_VEH,
 	CMD_BUILD_SHIP,
 	CMD_BUILD_AIRCRAFT,
 };
-static uint32 const _veh_sell_proc_table[] = {
+static const uint32 _veh_sell_proc_table[] = {
 	CMD_SELL_RAIL_WAGON,
 	CMD_SELL_ROAD_VEH,
 	CMD_SELL_SHIP,
 	CMD_SELL_AIRCRAFT,
 };
-static uint32 const _veh_start_stop_proc_table[] = {
+static const uint32 _veh_start_stop_proc_table[] = {
 	CMD_START_STOP_TRAIN,
 	CMD_START_STOP_ROADVEH,
 	CMD_START_STOP_SHIP,
 	CMD_START_STOP_AIRCRAFT,
 };
-static uint32 const _veh_refit_proc_table[] = {
+static const uint32 _veh_refit_proc_table[] = {
 	CMD_REFIT_RAIL_VEHICLE,
 	0,	// road vehicles can't be refitted
 	CMD_REFIT_SHIP,
@@ -107,7 +107,7 @@ bool VehicleNeedsService(const Vehicle *v)
 		(v->date_of_last_service + v->service_interval < _date);
 }
 
-void VehicleInTheWayErrMsg(Vehicle *v)
+void VehicleInTheWayErrMsg(const Vehicle* v)
 {
 	StringID id;
 
@@ -525,7 +525,7 @@ Vehicle *GetFirstVehicleInChain(const Vehicle *v)
 	return (Vehicle*)v;
 }
 
-int CountVehiclesInChain(Vehicle *v)
+uint CountVehiclesInChain(const Vehicle* v)
 {
 	int count = 0;
 	do count++; while ( (v=v->next) != NULL);
@@ -570,7 +570,7 @@ void DisasterVehicle_Tick(Vehicle *v);
 static void MaybeReplaceVehicle(Vehicle *v);
 
 // head of the linked list to tell what vehicles that visited a depot in a tick
-Vehicle *_first_veh_in_depot_list;
+static Vehicle* _first_veh_in_depot_list;
 
 /** Adds a vehicle to the list of vehicles, that visited a depot this tick
 * @param *v vehicle to add

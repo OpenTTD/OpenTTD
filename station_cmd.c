@@ -2082,7 +2082,7 @@ static void DrawTile_Station(TileInfo *ti)
 		//debug("Cust-o-mized %p", statspec);
 
 		if (statspec != NULL) {
-			Station *st = GetStation(_m[ti->tile].m2);
+			const Station* st = GetStation(_m[ti->tile].m2);
 
 			relocation = GetCustomStationRelocation(statspec, st, 0);
 			//debug("Relocation %d", relocation);
@@ -2197,7 +2197,7 @@ static uint32 GetTileTrackStatus_Station(TileIndex tile, TransportType mode)
 	switch (mode) {
 		case TRANSPORT_RAIL:
 			if (i < 8) {
-				const byte tile_track_status_rail[8] = { 1, 2, 1, 2, 1, 2, 1, 2 };
+				static const byte tile_track_status_rail[] = { 1, 2, 1, 2, 1, 2, 1, 2 };
 				j = tile_track_status_rail[i];
 			}
 			j += (j << 8);

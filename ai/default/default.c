@@ -1905,7 +1905,8 @@ static const byte _dir_table_1[] = {3, 9, 12, 6};
 static const byte _dir_table_2[] = {12, 6, 3, 9};
 
 
-static bool AiIsTileBanned(Player *p, TileIndex tile, byte val) {
+static bool AiIsTileBanned(const Player* p, TileIndex tile, byte val)
+{
 	int i;
 
 	for(i=0; i!=p->ai.banned_tile_count; i++)

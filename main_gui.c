@@ -566,9 +566,9 @@ static const Widget _player_menu_widgets[] = {
 
 static int GetPlayerIndexFromMenu(int index)
 {
-	Player *p;
-
 	if (index >= 0) {
+		const Player* p;
+
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active) {
 				if (--index < 0)
@@ -582,7 +582,7 @@ static int GetPlayerIndexFromMenu(int index)
 static void UpdatePlayerMenuHeight(Window *w)
 {
 	int num = 0;
-	Player *p;
+	const Player* p;
 
 	FOR_ALL_PLAYERS(p) {
 		if (p->is_active)
@@ -822,7 +822,7 @@ static void ToolbarIndustryClick(Window *w)
 
 static void ToolbarTrainClick(Window *w)
 {
-	Vehicle *v;
+	const Vehicle* v;
 	int dis = -1;
 	FOR_ALL_VEHICLES(v)
 		if (v->type == VEH_Train && v->subtype == TS_Front_Engine) CLRBIT(dis, v->owner);
@@ -831,7 +831,7 @@ static void ToolbarTrainClick(Window *w)
 
 static void ToolbarRoadClick(Window *w)
 {
-	Vehicle *v;
+	const Vehicle* v;
 	int dis = -1;
 	FOR_ALL_VEHICLES(v)
 		if (v->type == VEH_Road) CLRBIT(dis, v->owner);
@@ -840,7 +840,7 @@ static void ToolbarRoadClick(Window *w)
 
 static void ToolbarShipClick(Window *w)
 {
-	Vehicle *v;
+	const Vehicle* v;
 	int dis = -1;
 	FOR_ALL_VEHICLES(v)
 		if (v->type == VEH_Ship) CLRBIT(dis, v->owner);
@@ -849,7 +849,7 @@ static void ToolbarShipClick(Window *w)
 
 static void ToolbarAirClick(Window *w)
 {
-	Vehicle *v;
+	const Vehicle* v;
 	int dis = -1;
 	FOR_ALL_VEHICLES(v)
 		if (v->type == VEH_Aircraft) CLRBIT(dis, v->owner);
@@ -1651,11 +1651,11 @@ static const Widget _scenedit_industry_candy_widgets[] = {
 {   WIDGETS_END},
 };
 
-int _industry_type_to_place;
 
 static bool AnyTownExists(void)
 {
-	Town *t;
+	const Town* t;
+
 	FOR_ALL_TOWNS(t) {
 		if (t->xy)
 			return true;
@@ -1697,6 +1697,7 @@ static const byte _industry_type_list[4][16] = {
 	{26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36},
 };
 
+static int _industry_type_to_place;
 bool _ignore_restrictions;
 
 static void ScenEditIndustryWndProc(Window *w, WindowEvent *e)

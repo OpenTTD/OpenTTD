@@ -702,10 +702,9 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 		} break;
 
 		case 0x9A: { // {STATION}
-			Station *st;
+			const Station* st = GetStation(GetInt32(&argv));
 			int32 temp[2];
 
-			st = GetStation(GetInt32(&argv));
 			if (st->xy == 0) { // station doesn't exist anymore
 				buff = GetStringWithArgs(buff, STR_UNKNOWN_DESTINATION, NULL);
 				break;
@@ -716,10 +715,10 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 			break;
 		}
 		case 0x9B: { // {TOWN}
-			Town *t;
+			const Town* t = GetTown(GetInt32(&argv));
 			int32 temp[1];
-			t = GetTown(GetInt32(&argv));
 			assert(t->xy);
+
 			temp[0] = t->townnameparts;
 			buff = GetStringWithArgs(buff, t->townnametype, temp);
 			break;

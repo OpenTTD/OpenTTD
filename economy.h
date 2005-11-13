@@ -60,7 +60,7 @@ void UpdatePlayerHouse(Player *p, uint score);
 
 
 VARDEF Subsidy _subsidies[MAX_PLAYERS];
-Pair SetupSubsidyDecodeParam(Subsidy *s, bool mode);
+Pair SetupSubsidyDecodeParam(const Subsidy* s, bool mode);
 void DeleteSubsidyWithIndustry(uint16 index);
 void DeleteSubsidyWithStation(uint16 index);
 

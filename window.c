@@ -158,7 +158,7 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
 
 void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom)
 {
-	Window *v = w;
+	const Window* v = w;
 	int x;
 
 	while (++v != _last_window) {
@@ -1574,7 +1574,7 @@ void InvalidateWidget(const Window* w, byte widget_index)
 
 void InvalidateWindowWidget(byte cls, WindowNumber number, byte widget_index)
 {
-	Window *w;
+	const Window* w;
 
 	for(w=_windows; w!=_last_window; w++) {
 		if (w->window_class==cls && w->window_number==number) {
@@ -1585,7 +1585,7 @@ void InvalidateWindowWidget(byte cls, WindowNumber number, byte widget_index)
 
 void InvalidateWindowClasses(byte cls)
 {
-	Window *w;
+	const Window* w;
 	for(w=_windows; w!=_last_window; w++) {
 		if (w->window_class==cls)
 			SetWindowDirty(w);

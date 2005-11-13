@@ -188,9 +188,10 @@ enum AccelType {
 	AM_BRAKE
 };
 
-static bool TrainShouldStop(Vehicle *v, TileIndex tile)
+static bool TrainShouldStop(const Vehicle* v, TileIndex tile)
 {
-	Order *o = &v->current_order;
+	const Order* o = &v->current_order;
+
 	assert(v->type == VEH_Train);
 	assert(IsTileType(v->tile, MP_STATION));
 	//When does a train drive through a station
@@ -590,9 +591,9 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 }
 
 // Move all free vehicles in the depot to the train
-static void NormalizeTrainVehInDepot(Vehicle *u)
+static void NormalizeTrainVehInDepot(const Vehicle* u)
 {
-	Vehicle *v;
+	const Vehicle* v;
 
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Train && v->subtype == TS_Free_Car &&
@@ -624,7 +625,7 @@ static const byte _railveh_score[] = {
 };
 
 
-int32 EstimateTrainCost(const RailVehicleInfo *rvi)
+static int32 EstimateTrainCost(const RailVehicleInfo* rvi)
 {
 	return (rvi->base_cost * (_price.build_railvehicle >> 3)) >> 5;
 }
@@ -1443,7 +1444,7 @@ static void AdvanceWagons(Vehicle *v, bool before)
 	}
 }
 
-TileIndex GetVehicleTileOutOfTunnel(const Vehicle *v, bool reverse)
+static TileIndex GetVehicleTileOutOfTunnel(const Vehicle* v, bool reverse)
 {
 	TileIndex tile;
 	byte direction = (!reverse) ? DirToDiagdir(v->direction) : ReverseDiagdir(v->direction >> 1);
@@ -1859,9 +1860,9 @@ static const int8 _vehicle_smoke_pos[8] = {
 	1, 1, 1, 0, -1, -1, -1, 0
 };
 
-static void HandleLocomotiveSmokeCloud(Vehicle *v)
+static void HandleLocomotiveSmokeCloud(const Vehicle* v)
 {
-	Vehicle *u;
+	const Vehicle* u;
 
 	if (v->vehstatus & VS_TRAIN_SLOWING || v->load_unload_time_rem != 0 || v->cur_speed < 2)
 		return;
@@ -2054,7 +2055,7 @@ static bool NtpCallbFindStation(TileIndex tile, TrainTrackFollowerData *ttfd, in
 	}
 }
 
-static void FillWithStationData(TrainTrackFollowerData *fd, Vehicle *v)
+static void FillWithStationData(TrainTrackFollowerData* fd, const Vehicle* v)
 {
         fd->dest_coords = v->dest_tile;
         if (v->current_order.type == OT_GOTO_STATION)
@@ -3535,7 +3536,7 @@ void TrainEnterDepot(Vehicle *v, TileIndex tile)
 
 static void CheckIfTrainNeedsService(Vehicle *v)
 {
-	Depot *depot;
+	const Depot* depot;
 	TrainFindDepotData tfdd;
 
 	if (PBSTileReserved(v->tile) & v->u.rail.track)

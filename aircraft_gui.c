@@ -77,10 +77,9 @@ static void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selectio
 
 void CcBuildAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
-	Vehicle *v;
-
 	if (success) {
-		v = GetVehicle(_new_aircraft_id);
+		const Vehicle* v = GetVehicle(_new_aircraft_id);
+
 		if (v->tile == _backup_orders_tile) {
 			_backup_orders_tile = 0;
 			RestoreVehicleOrders(v, _backup_orders_data);
@@ -508,7 +507,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-		Vehicle *v = GetVehicle(w->window_number);
+		const Vehicle* v = GetVehicle(w->window_number);
 		uint32 disabled = 1<<8;
 		StringID str;
 

@@ -57,10 +57,10 @@ int GetShipImage(const Vehicle *v, byte direction)
 	return _ship_sprites[spritenum] + direction;
 }
 
-static Depot *FindClosestShipDepot(Vehicle *v)
+static const Depot* FindClosestShipDepot(const Vehicle* v)
 {
-	Depot *depot;
-	Depot *best_depot = NULL;
+	const Depot* depot;
+	const Depot* best_depot = NULL;
 	uint dist;
 	uint best_dist = (uint)-1;
 	TileIndex tile;
@@ -91,7 +91,7 @@ static Depot *FindClosestShipDepot(Vehicle *v)
 
 static void CheckIfShipNeedsService(Vehicle *v)
 {
-	Depot *depot;
+	const Depot* depot;
 
 	if (_patches.servint_ships == 0)
 		return;
@@ -442,7 +442,7 @@ static void ShipEnterDepot(Vehicle *v)
 	InvalidateWindowClasses(WC_SHIPS_LIST);
 }
 
-static void ShipArrivesAt(Vehicle *v, Station *st)
+static void ShipArrivesAt(const Vehicle* v, Station* st)
 {
 	/* Check if station was ever visited before */
 	if (!(st->had_vehicle_of_type & HVOT_SHIP)) {

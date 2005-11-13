@@ -107,7 +107,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 
 		{
 			int y;
-			Player *p;
+			const Player* p;
 			int r;
 			StringID str;
 
@@ -402,7 +402,7 @@ static int CDECL TownPopSorter(const void *a, const void *b)
 
 static void MakeSortedTownList(void)
 {
-	Town *t;
+	const Town* t;
 	int n = 0;
 
 	/* Create array for sorting */
@@ -439,7 +439,7 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 		DoDrawString(_town_sort_order & 1 ? DOWNARROW : UPARROW, (_town_sort_order <= 1) ? 88 : 187, 15, 0x10);
 
 		{
-			Town *t;
+			const Town* t;
 			int n = 0;
 			uint16 i = w->vscroll.pos;
 			int y = 28;
@@ -486,7 +486,7 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 			if (id_v >= _num_town_sort) return; // click out of town bounds
 
 			{
-				Town *t = GetTown(_town_sort[id_v]);
+				const Town* t = GetTown(_town_sort[id_v]);
 				assert(t->xy);
 
 				ScrollMainWindowToTile(t->xy);

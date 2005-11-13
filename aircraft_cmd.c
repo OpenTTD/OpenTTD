@@ -544,7 +544,7 @@ void HandleClickOnAircraft(Vehicle *v)
 
 static void CheckIfAircraftNeedsService(Vehicle *v)
 {
-	Station *st;
+	const Station* st;
 
 	if (_patches.servint_aircraft == 0)
 		return;
@@ -1269,7 +1269,7 @@ static void AircraftEntersTerminal(Vehicle *v)
 
 static bool ValidateAircraftInHangar( uint data_a, uint data_b )
 {
-	Vehicle *v = GetVehicle(data_a);
+	const Vehicle* v = GetVehicle(data_a);
 
 	return (IsAircraftHangarTile(v->tile) && (v->vehstatus & VS_STOPPED));
 }
@@ -1324,7 +1324,7 @@ static void AircraftLandAirplane(Vehicle *v)
 // set the right pos when heading to other airports after takeoff
 static void AircraftNextAirportPos_and_Order(Vehicle *v)
 {
-	Station *st;
+	const Station* st;
 	const AirportFTAClass *Airport;
 
 	if (v->current_order.type == OT_GOTO_STATION ||
@@ -1634,7 +1634,7 @@ static AircraftStateHandler * const _aircraft_state_handlers[] = {
 	AircraftEventHandler_HeliEndLanding,// HELIENDLANDING = 18
 };
 
-static void AirportClearBlock(Vehicle *v, const AirportFTAClass *Airport)
+static void AirportClearBlock(const Vehicle* v, const AirportFTAClass* Airport)
 {
 	Station *st;
 	// we have left the previous block, and entered the new one. Free the previous block
@@ -1706,16 +1706,14 @@ static bool AirportMove(Vehicle *v, const AirportFTAClass *Airport)
 // returns true if the road ahead is busy, eg. you must wait before proceeding
 static bool AirportHasBlock(Vehicle *v, AirportFTA *current_pos, const AirportFTAClass *Airport)
 {
-	Station *st;
-	uint32 airport_flags;
-	AirportFTA *next, *reference;
-	reference = &Airport->layout[v->u.air.pos];
-	next = &Airport->layout[current_pos->next_position];
+	const AirportFTA* reference = &Airport->layout[v->u.air.pos];
+	const AirportFTA* next = &Airport->layout[current_pos->next_position];
 
 	// same block, then of course we can move
 	if (Airport->layout[current_pos->position].block != next->block) {
-		airport_flags = next->block;
-		st = GetStation(v->u.air.targetairport);
+		const Station* st = GetStation(v->u.air.targetairport);
+		uint32 airport_flags = next->block;
+
 		// check additional possible extra blocks
 		if (current_pos != reference && current_pos->block != NOTHING_block) {
 			airport_flags |= current_pos->block;

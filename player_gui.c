@@ -421,7 +421,7 @@ static void DrawPlayerVehiclesAmount(PlayerID player)
 {
 	const int x = 110;
 	int y = 72;
-	Vehicle *v;
+	const Vehicle* v;
 	uint train,road,air,ship;
 
 	DrawString(x, y, STR_7039_VEHICLES, 0);

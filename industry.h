@@ -9,7 +9,7 @@ struct Industry {
 	TileIndex xy;
 	byte width; /* swapped order of w/h with town */
 	byte height;
-	Town *town;
+	const Town* town;
 	byte produced_cargo[2];
 	uint16 cargo_waiting[2];
 	byte production_rate[2];

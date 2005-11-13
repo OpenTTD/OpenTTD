@@ -825,7 +825,7 @@ void StartupEconomy(void)
 	_economy.fluct = GB(Random(), 0, 8) + 168;
 }
 
-Pair SetupSubsidyDecodeParam(Subsidy *s, bool mode)
+Pair SetupSubsidyDecodeParam(const Subsidy* s, bool mode)
 {
 	TileIndex tile;
 	TileIndex tile2;
@@ -983,7 +983,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 
 static bool CheckSubsidyDuplicate(Subsidy *s)
 {
-	Subsidy *ss;
+	const Subsidy* ss;
 
 	for(ss=_subsidies; ss != endof(_subsidies); ss++) {
 		if (s != ss &&

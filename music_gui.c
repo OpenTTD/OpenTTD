@@ -206,9 +206,9 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
+		const byte* p;
 		uint i;
 		int y;
-		byte *p;
 
 		w->disabled_state = (msf.playlist  <= 3) ? (1 << 11) : 0;
 		w->click_state |= 0x18;

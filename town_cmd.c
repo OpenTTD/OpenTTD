@@ -201,7 +201,7 @@ static void UpdateTownRadius(Town *t);
 
 static bool IsCloseToTown(TileIndex tile, uint dist)
 {
-	Town *t;
+	const Town* t;
 
 	FOR_ALL_TOWNS(t) {
 		if (t->xy != 0 && DistanceManhattan(tile, t->xy) < dist)
@@ -245,7 +245,8 @@ static void ChangePopulation(Town *t, int mod)
 uint32 GetWorldPopulation(void)
 {
 	uint32 pop;
-	Town *t;
+	const Town* t;
+
 	pop = 0;
 	FOR_ALL_TOWNS(t) {
 			pop += t->population;

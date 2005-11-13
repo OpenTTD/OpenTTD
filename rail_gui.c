@@ -27,7 +27,7 @@ static byte _build_depot_direction;
 static byte _waypoint_count=1;
 static byte _cur_waypoint_type;
 
-struct {
+static struct {
 	byte orientation;
 	byte numtracks;
 	byte platlength;

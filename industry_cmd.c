@@ -38,8 +38,8 @@ void IndustryPoolNewBlock(uint start_item)
 /* Initialize the industry-pool */
 MemoryPool _industry_pool = { "Industry", INDUSTRY_POOL_MAX_BLOCKS, INDUSTRY_POOL_BLOCK_SIZE_BITS, sizeof(Industry), &IndustryPoolNewBlock, 0, 0, NULL };
 
-byte _industry_sound_ctr;
-TileIndex _industry_sound_tile;
+static byte _industry_sound_ctr;
+static TileIndex _industry_sound_tile;
 
 void ShowIndustryViewWindow(int industry);
 void BuildOilRig(TileIndex tile);
@@ -341,7 +341,7 @@ static IndustryDrawTileProc * const _industry_draw_tile_procs[5] = {
 
 static void DrawTile_Industry(TileInfo *ti)
 {
-	Industry *ind;
+	const Industry* ind;
 	const DrawIndustryTileStruct *dits;
 	byte z;
 	uint32 image, ormod;
@@ -425,7 +425,7 @@ static void GetAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
 
 static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
 {
-	Industry *i = GetIndustry(_m[tile].m2);
+	const Industry* i = GetIndustry(_m[tile].m2);
 
 	td->owner = i->owner;
 	td->str = STR_4802_COAL_MINE + i->type;
@@ -863,7 +863,8 @@ static uint32 GetTileTrackStatus_Industry(TileIndex tile, TransportType mode)
 
 static void GetProducedCargo_Industry(TileIndex tile, byte *b)
 {
-	Industry *i = GetIndustry(_m[tile].m2);
+	const Industry* i = GetIndustry(_m[tile].m2);
+
 	b[0] = i->produced_cargo[0];
 	b[1] = i->produced_cargo[1];
 }
@@ -1262,10 +1263,10 @@ static bool CheckSuitableIndustryPos(TileIndex tile)
 	return true;
 }
 
-static Town *CheckMultipleIndustryInTown(TileIndex tile, int type)
+static const Town* CheckMultipleIndustryInTown(TileIndex tile, int type)
 {
-	Town *t;
-	Industry *i;
+	const Town* t;
+	const Industry* i;
 
 	t = ClosestTownFromTile(tile, (uint)-1);
 
@@ -1309,7 +1310,7 @@ static const byte _industry_map5_bits[] = {
 	16, 16, 16, 16, 16, 16, 16,
 };
 
-static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable *it, int type, Town *t)
+static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable* it, int type, const Town* t)
 {
 	TileInfo ti;
 
@@ -1451,7 +1452,7 @@ static Industry *AllocateIndustry(void)
 	return AddBlockToPool(&_industry_pool) ? AllocateIndustry() : NULL;
 }
 
-static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const IndustryTileTable *it, Town *t, byte owner)
+static void DoCreateNewIndustry(Industry* i, TileIndex tile, int type, const IndustryTileTable* it, const Town* t, byte owner)
 {
 	const IndustrySpec *spec;
 	uint32 r;
@@ -1547,7 +1548,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
  */
 int32 CmdBuildIndustry(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	Town *t;
+	const Town* t;
 	Industry *i;
 	TileIndex tile = TileVirtXY(x, y);
 	int num;
@@ -1601,7 +1602,7 @@ int32 CmdBuildIndustry(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 Industry *CreateNewIndustry(TileIndex tile, int type)
 {
-	Town *t;
+	const Town* t;
 	const IndustryTileTable *it;
 	Industry *i;
 

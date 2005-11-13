@@ -168,7 +168,7 @@ static inline Order UnpackOrder(uint32 packed)
 
 /* Functions */
 void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *order);
-void RestoreVehicleOrders(Vehicle *v, BackuppedOrders *order);
+void RestoreVehicleOrders(const Vehicle* v, const BackuppedOrders* order);
 void DeleteDestinationFromVehicleOrder(Order dest);
 void InvalidateVehicleOrder(const Vehicle *v);
 bool VehicleHasDepotOrders(const Vehicle *v);
@@ -176,7 +176,7 @@ bool CheckOrders(uint data_a, uint data_b);
 void DeleteVehicleOrders(Vehicle *v);
 bool IsOrderListShared(const Vehicle *v);
 void AssignOrder(Order *order, Order data);
-bool CheckForValidOrders(Vehicle *v);
+bool CheckForValidOrders(const Vehicle* v);
 
 Order UnpackVersion4Order(uint16 packed);
 Order UnpackOldOrder(uint16 packed);

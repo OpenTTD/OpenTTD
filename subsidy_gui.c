@@ -16,7 +16,7 @@
 
 static void HandleSubsidyClick(int y)
 {
-	Subsidy *s;
+	const Subsidy* s;
 	int num,offs;
 	TileIndex xy;
 
@@ -74,12 +74,11 @@ handle_click:
 	}
 }
 
-static void DrawSubsidiesWindow(Window *w)
+static void DrawSubsidiesWindow(const Window* w)
 {
 	YearMonthDay ymd;
-	Subsidy *s;
+	const Subsidy* s;
 	int x,xt,y,num,x2;
-	Player *p;
 
 	DrawWindowWidgets(w);
 
@@ -114,6 +113,8 @@ static void DrawSubsidiesWindow(Window *w)
 
 	for(s=_subsidies; s != endof(_subsidies); s++) {
 		if (s->cargo_type != CT_INVALID && s->age >= 12) {
+			const Player* p;
+
 			SetupSubsidyDecodeParam(s, 1);
 
 			p = GetPlayer(GetStation(s->to)->owner);

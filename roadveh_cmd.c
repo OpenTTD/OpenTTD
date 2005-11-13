@@ -799,7 +799,7 @@ static Vehicle *RoadVehFindCloseTo(Vehicle *v, int x, int y, byte dir)
 	return u;
 }
 
-static void RoadVehArrivesAt(Vehicle *v, Station *st)
+static void RoadVehArrivesAt(const Vehicle* v, Station* st)
 {
 	if (v->cargo_type == CT_PASSENGERS) {
 		/* Check if station was ever visited before */

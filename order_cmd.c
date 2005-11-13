@@ -785,7 +785,7 @@ void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *bak)
  * Restore vehicle orders that are backupped via BackupVehicleOrders
  *
  */
-void RestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
+void RestoreVehicleOrders(const Vehicle* v, const BackuppedOrders* bak)
 {
 	uint i;
 
@@ -1100,7 +1100,7 @@ bool IsOrderListShared(const Vehicle *v)
  * @return false if there are no valid orders
  *
  */
-bool CheckForValidOrders(Vehicle *v)
+bool CheckForValidOrders(const Vehicle* v)
 {
 	const Order *order;
 

@@ -79,8 +79,9 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		_selected_field = 3;
 		_selected_item = NULL;
 		break;
+
 	case WE_PAINT: {
-		NetworkGameList *sel = _selected_item;
+		const NetworkGameList* sel = _selected_item;
 
 		w->disabled_state = 0;
 
@@ -891,9 +892,10 @@ static WindowDesc _client_list_desc = {
 };
 
 // Finds the Xth client-info that is active
-static NetworkClientInfo *NetworkFindClientInfo(byte client_no)
+static const NetworkClientInfo* NetworkFindClientInfo(byte client_no)
 {
-	NetworkClientInfo *ci;
+	const NetworkClientInfo* ci;
+
 	for (ci = _network_client_info; ci != &_network_client_info[MAX_CLIENT_INFO]; ci++) {
 		// Skip non-active items
 		if (ci->client_index == NETWORK_EMPTY_INDEX) continue;
@@ -1012,7 +1014,7 @@ static uint ClientListPopupHeigth(void) {
 static Window *PopupClientList(Window *w, int client_no, int x, int y)
 {
 	int i, h;
-	NetworkClientInfo *ci;
+	const NetworkClientInfo* ci;
 	DeleteWindowById(WC_TOOLBAR_MENU, 0);
 
 	// Clean the current actions

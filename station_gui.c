@@ -164,10 +164,8 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 		{
 			byte p = 0;
-			Station *st;
-			int x,xb = 2;
+			int xb = 2;
 			int y = 16; // offset from top of widget
-			int j;
 
 			if (w->vscroll.count == 0) { // player has no stations
 				DrawString(xb, y, STR_304A_NONE, 0);
@@ -178,7 +176,9 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			assert(i < _num_station_sort[owner]); // at least one station must exist
 
 			while (i < _num_station_sort[owner]) { // do until max number of stations of owner
-				st = GetStation(_station_sort[i].index);
+				const Station* st = GetStation(_station_sort[i].index);
+				uint j;
+				int x;
 
 				assert(st->xy && st->owner == owner);
 
@@ -211,7 +211,8 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 			{
 				const PlayerID owner = w->window_number;
-				Station *st;
+				const Station* st;
+
 				id_v += (owner == 0) ? 0 : _num_station_sort[owner - 1]; // first element in list
 
 				if (id_v >= _num_station_sort[owner]) { return;} // click out of station bound
@@ -310,17 +311,13 @@ static const Widget _station_view_widgets[] = {
 
 static void DrawStationViewWindow(Window *w)
 {
-	Station *st;
-	int i;
-	int num;
+	StationID station_id = w->window_number;
+	const Station* st = GetStation(station_id);
+	uint i;
+	uint num;
 	int x,y;
 	int pos;
 	StringID str;
-	StationID station_id;
-
-	station_id = w->window_number;
-
-	st = GetStation(station_id);
 
 	num = 1;
 	for(i=0; i!=NUM_CARGO; i++) {

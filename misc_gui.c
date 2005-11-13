@@ -29,7 +29,7 @@
 static bool _fios_path_changed;
 static bool _savegame_sort_dirty;
 
-bool _query_string_active;
+static bool _query_string_active;
 
 typedef struct LandInfoData {
 	Town *town;
@@ -41,10 +41,9 @@ typedef struct LandInfoData {
 
 static void LandInfoWndProc(Window *w, WindowEvent *e)
 {
-	LandInfoData *lid;
-	StringID str;
-
 	if (e->event == WE_PAINT) {
+		const LandInfoData* lid;
+		StringID str;
 		int i;
 
 		DrawWindowWidgets(w);
@@ -883,7 +882,8 @@ bool MoveTextBufferPos(Textbuf *tb, int navmode)
  */
 void UpdateTextBufferSize(Textbuf *tb)
 {
-	char *buf;
+	const char* buf;
+
 	tb->length = 0;
 	tb->width = 0;
 
