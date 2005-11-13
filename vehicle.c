@@ -109,14 +109,12 @@ bool VehicleNeedsService(const Vehicle *v)
 
 void VehicleInTheWayErrMsg(const Vehicle* v)
 {
-	StringID id;
-
-	(id = STR_8803_TRAIN_IN_THE_WAY,v->type == VEH_Train) ||
-	(id = STR_9000_ROAD_VEHICLE_IN_THE_WAY,v->type == VEH_Road) ||
-	(id = STR_A015_AIRCRAFT_IN_THE_WAY,v->type == VEH_Aircraft) ||
-		(id = STR_980E_SHIP_IN_THE_WAY, true);
-
-	_error_message = id;
+	switch (v->type) {
+		case VEH_Train:    _error_message = STR_8803_TRAIN_IN_THE_WAY;        break;
+		case VEH_Road:     _error_message = STR_9000_ROAD_VEHICLE_IN_THE_WAY; break;
+		case VEH_Aircraft: _error_message = STR_A015_AIRCRAFT_IN_THE_WAY;     break;
+		default:           _error_message = STR_980E_SHIP_IN_THE_WAY;         break;
+	}
 }
 
 static void *EnsureNoVehicleProc(Vehicle *v, void *data)

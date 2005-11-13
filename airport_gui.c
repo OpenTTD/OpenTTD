@@ -80,8 +80,7 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 			case '1': BuildAirClick_Airport(w); break;
 			case '2': BuildAirClick_Demolish(w); break;
 			case 'l': BuildAirClick_Landscaping(w); break;
-			default:
-				return;
+			default: return;
 		}
 	} break;
 
@@ -167,16 +166,16 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 		w->click_state = ((1<<3) << sel) | ((1<<8) << _station_show_coverage);
 		SetTileSelectSize(_airport_size_x[sel],_airport_size_y[sel]);
 
-     if (_patches.modified_catchment) {
-       switch (sel) {
-         case AT_OILRIG: rad = CA_AIR_OILPAD; break;
-         case AT_HELIPORT: rad = CA_AIR_HELIPORT; break;
-         case AT_SMALL:    rad = CA_AIR_SMALL; break;
-         case AT_LARGE:    rad = CA_AIR_LARGE; break;
-         case AT_METROPOLITAN: rad = CA_AIR_METRO; break;
-         case AT_INTERNATIONAL: rad = CA_AIR_INTER; break;
-       }
-		 }
+		if (_patches.modified_catchment) {
+			switch (sel) {
+				case AT_OILRIG:        rad = CA_AIR_OILPAD;   break;
+				case AT_HELIPORT:      rad = CA_AIR_HELIPORT; break;
+				case AT_SMALL:         rad = CA_AIR_SMALL;    break;
+				case AT_LARGE:         rad = CA_AIR_LARGE;    break;
+				case AT_METROPOLITAN:  rad = CA_AIR_METRO;    break;
+				case AT_INTERNATIONAL: rad = CA_AIR_INTER;    break;
+			}
+		}
 
 		if (_station_show_coverage)	SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 

@@ -142,10 +142,7 @@ static void Place_LandInfo(TileIndex tile)
 	lid.tile = tile;
 	lid.town = ClosestTownFromTile(tile, _patches.dist_local_authority);
 
-	if (_local_player >= MAX_PLAYERS)
-		p = GetPlayer(0);
-	else
-		p = GetPlayer(_local_player);
+	p = GetPlayer(_local_player < MAX_PLAYERS ? _local_player : 0);
 
 	old_money = p->money64;
 	p->money64 = p->player_money = 0x7fffffff;
@@ -1199,22 +1196,21 @@ static void DrawFiosTexts(uint maxw)
 
 static void MakeSortedSaveGameList(void)
 {
+	uint sort_start = 0;
+	uint sort_end = 0;
+	uint s_amount;
+	int i;
+
 	/*	Directories are always above the files (FIOS_TYPE_DIR)
 	 *	Drives (A:\ (windows only) are always under the files (FIOS_TYPE_DRIVE)
 	 *	Only sort savegames/scenarios, not directories
 	 */
-
-	int i, sort_start, sort_end, s_amount;
-	i = sort_start = sort_end = 0;
-
-	while (i < _fios_num) {
-		if (_fios_list[i].type == FIOS_TYPE_DIR || _fios_list[i].type == FIOS_TYPE_PARENT)
-			sort_start++;
-
-		if (_fios_list[i].type == FIOS_TYPE_DRIVE)
-			sort_end++;
-
-		i++;
+	for (i = 0; i < _fios_num; i++) {
+		switch (_fios_list[i].type) {
+			case FIOS_TYPE_DIR:    sort_start++; break;
+			case FIOS_TYPE_PARENT: sort_start++; break;
+			case FIOS_TYPE_DRIVE:  sort_end++;   break;
+		}
 	}
 
 	s_amount = _fios_num - sort_start - sort_end;
@@ -1224,13 +1220,9 @@ static void MakeSortedSaveGameList(void)
 
 static void GenerateFileName(void)
 {
-	const Player *p;
 	/* Check if we are not a specatator who wants to generate a name..
 	    Let's use the name of player #0 for now. */
-	if (_local_player < MAX_PLAYERS)
-		p = GetPlayer(_local_player);
-	else
-		p = GetPlayer(0);
+	const Player* p = GetPlayer(_local_player < MAX_PLAYERS ? _local_player : 0);
 
 	SetDParam(0, p->name_1);
 	SetDParam(1, p->name_2);
@@ -1464,12 +1456,8 @@ void ShowSaveLoadDialog(int mode)
 	SETBIT(_no_scroll, SCROLL_SAVE);
 
 	switch (mode) {
-	case SLD_SAVE_GAME:
-		GenerateFileName();
-		break;
-	case SLD_SAVE_SCENARIO:
-		strcpy(_edit_str_buf, "UNNAMED");
-		break;
+		case SLD_SAVE_GAME:     GenerateFileName(); break;
+		case SLD_SAVE_SCENARIO: strcpy(_edit_str_buf, "UNNAMED"); break;
 	}
 
 	w = AllocateWindowDesc(_saveload_dialogs[mode]);
@@ -1716,18 +1704,17 @@ typedef struct CheatEntry {
 	uint16 step;   // step for spinbox
 } CheatEntry;
 
-static int32 ReadCE(const CheatEntry*ce)
+static int32 ReadCE(const CheatEntry* ce)
 {
-	switch(ce->type) {
-	case CE_BOOL:   return *(bool*)ce->variable;
-	case CE_UINT8:  return *(uint8*)ce->variable;
-	case CE_INT16:  return *(int16*)ce->variable;
-	case CE_UINT16: return *(uint16*)ce->variable;
-	case CE_INT32:  return *(int32*)ce->variable;
-	case CE_BYTE:   return *(byte*)ce->variable;
-	case CE_CLICK:  return 0;
-	default:
-		NOT_REACHED();
+	switch (ce->type) {
+		case CE_BOOL:   return *(bool*  )ce->variable;
+		case CE_UINT8:  return *(uint8* )ce->variable;
+		case CE_INT16:  return *(int16* )ce->variable;
+		case CE_UINT16: return *(uint16*)ce->variable;
+		case CE_INT32:  return *(int32* )ce->variable;
+		case CE_BYTE:   return *(byte*  )ce->variable;
+		case CE_CLICK:  return 0;
+		default: NOT_REACHED();
 	}
 
 	/* useless, but avoids compiler warning this way */
@@ -1736,16 +1723,15 @@ static int32 ReadCE(const CheatEntry*ce)
 
 static void WriteCE(const CheatEntry *ce, int32 val)
 {
-	switch(ce->type) {
-	case CE_BOOL: *(bool*)ce->variable = (bool)val; break;
-	case CE_BYTE: *(byte*)ce->variable = (byte)val; break;
-	case CE_UINT8: *(uint8*)ce->variable = (uint8)val; break;
-	case CE_INT16: *(int16*)ce->variable = (int16)val; break;
-	case CE_UINT16: *(uint16*)ce->variable = (uint16)val; break;
-	case CE_INT32: *(int32*)ce->variable = val; break;
-	case CE_CLICK: break;
-	default:
-		NOT_REACHED();
+	switch (ce->type) {
+		case CE_BOOL:   *(bool*  )ce->variable = (bool  )val; break;
+		case CE_BYTE:   *(byte*  )ce->variable = (byte  )val; break;
+		case CE_UINT8:  *(uint8* )ce->variable = (uint8 )val; break;
+		case CE_INT16:  *(int16* )ce->variable = (int16 )val; break;
+		case CE_UINT16: *(uint16*)ce->variable = (uint16)val; break;
+		case CE_INT32:  *(int32* )ce->variable = val;         break;
+		case CE_CLICK: break;
+		default: NOT_REACHED();
 	}
 }
 

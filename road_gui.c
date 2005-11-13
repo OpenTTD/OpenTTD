@@ -202,19 +202,18 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e) {
 	}	break;
 
 	case WE_KEYPRESS:
-		switch(e->keypress.keycode) {
-		case '1': BuildRoadClick_NE(w); break;
-		case '2': BuildRoadClick_NW(w); break;
-		case '3': BuildRoadClick_Demolish(w); break;
-		case '4': BuildRoadClick_Depot(w); break;
-		case '5': BuildRoadClick_BusStation(w); break;
-		case '6': BuildRoadClick_TruckStation(w); break;
-		case 'B': BuildRoadClick_Bridge(w); break;
-		case 'T': BuildRoadClick_Tunnel(w); break;
-		case 'R': BuildRoadClick_Remove(w); break;
-		case 'L': BuildRoadClick_Landscaping(w); break;
-		default:
-			return;
+		switch (e->keypress.keycode) {
+			case '1': BuildRoadClick_NE(w);           break;
+			case '2': BuildRoadClick_NW(w);           break;
+			case '3': BuildRoadClick_Demolish(w);     break;
+			case '4': BuildRoadClick_Depot(w);        break;
+			case '5': BuildRoadClick_BusStation(w);   break;
+			case '6': BuildRoadClick_TruckStation(w); break;
+			case 'B': BuildRoadClick_Bridge(w);       break;
+			case 'T': BuildRoadClick_Tunnel(w);       break;
+			case 'R': BuildRoadClick_Remove(w);       break;
+			case 'L': BuildRoadClick_Landscaping(w);  break;
+			default: return;
 		}
 		MarkTileDirty(_thd.pos.x, _thd.pos.y); // redraw tile selection
 		e->keypress.cont = false;

@@ -1462,10 +1462,10 @@ static void MouseLoop(int click, int mousewheel)
 		if (mousewheel)
 			DispatchMouseWheelEvent(w, GetWidgetFromPos(w, x - w->left, y - w->top), mousewheel);
 
-		if (click == 1)
-			DispatchLeftClickEvent(w, x - w->left, y - w->top);
-		else if (click == 2)
-			DispatchRightClickEvent(w, x - w->left, y - w->top);
+		switch (click) {
+			case 1: DispatchLeftClickEvent(w, x - w->left, y - w->top);  break;
+			case 2: DispatchRightClickEvent(w, x - w->left, y - w->top); break;
+		}
 	}
 }
 

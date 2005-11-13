@@ -99,10 +99,9 @@ static void InitializeRoadStop(RoadStop *road_stop, RoadStop *previous, TileInde
 RoadStop * GetPrimaryRoadStop(const Station *st, RoadStopType type)
 {
 	switch (type) {
-		case RS_BUS: return st->bus_stops;
+		case RS_BUS:   return st->bus_stops;
 		case RS_TRUCK: return st->truck_stops;
-		default:
-			NOT_REACHED();
+		default: NOT_REACHED();
 	}
 
 	return NULL;
@@ -677,11 +676,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 		MergePoint(&rect, cur_rs->xy);
 	}
 
-	if (_patches.modified_catchment) {
-		rad = FindCatchmentRadius(st);
-	} else {
-		rad = 4;
-	}
+	rad = (_patches.modified_catchment) ? FindCatchmentRadius(st) : 4;
 
 	// And retrieve the acceptance.
 	if (rect.max_x >= rect.min_x) {
@@ -1242,27 +1237,13 @@ static const RealSpriteGroup *ResolveStationSpriteGroup(const SpriteGroup *spg, 
 						// TTDPatch runs on little-endian arch;
 						// Variable is 0x70 + offset in the TTD's station structure
 						switch (dsg->variable - 0x70) {
-							case 0x80:
-								value = st->facilities;
-								break;
-							case 0x81:
-								value = st->airport_type;
-								break;
-							case 0x82:
-								value = st->truck_stops->status;
-								break;
-							case 0x83:
-								value = st->bus_stops->status;
-								break;
-							case 0x86:
-								value = st->airport_flags & 0xFFFF;
-								break;
-							case 0x87:
-								value = st->airport_flags & 0xFF;
-								break;
-							case 0x8A:
-								value = st->build_date;
-								break;
+							case 0x80: value = st->facilities;             break;
+							case 0x81: value = st->airport_type;           break;
+							case 0x82: value = st->truck_stops->status;    break;
+							case 0x83: value = st->bus_stops->status;      break;
+							case 0x86: value = st->airport_flags & 0xFFFF; break;
+							case 0x87: value = st->airport_flags & 0xFF;   break;
+							case 0x8A: value = st->build_date;             break;
 						}
 					}
 				}

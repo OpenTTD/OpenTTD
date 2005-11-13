@@ -107,8 +107,8 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 
 	case WE_DROPDOWN_SELECT: /* Mapsize selection */
 		switch (e->dropdown.button) {
-		case 11: _patches.map_x = e->dropdown.index + 6; break;
-		case 13: _patches.map_y = e->dropdown.index + 6; break;
+			case 11: _patches.map_x = e->dropdown.index + 6; break;
+			case 13: _patches.map_y = e->dropdown.index + 6; break;
 		}
 		SetWindowDirty(w);
 		break;
@@ -177,18 +177,19 @@ static void AskAbandonGameWndProc(Window *w, WindowEvent *e) {
 		return;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
-		case 3:
-			DeleteWindow(w);
-			break;
-		case 4:
-			_exit_game = true;
-			break;
+		switch (e->click.widget) {
+			case 3: DeleteWindow(w);   break;
+			case 4: _exit_game = true; break;
 		}
 		break;
+
 	case WE_KEYPRESS: /* Exit game on pressing 'Enter' */
-		if (e->keypress.keycode == WKC_RETURN || e->keypress.keycode == WKC_NUM_ENTER)
-			_exit_game = true;
+		switch (e->keypress.keycode) {
+			case WKC_RETURN:
+			case WKC_NUM_ENTER:
+				_exit_game = true;
+				break;
+		}
 		break;
 	}
 }

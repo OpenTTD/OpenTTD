@@ -2003,21 +2003,20 @@ static void TileLoop_Track(TileIndex tile)
 
 	m2 = GB(_m[tile].m2, 0, 4);
 
-	/* special code for alps landscape */
-	if (_opt.landscape == LT_HILLY) {
-		/* convert into snow? */
-		if (GetTileZ(tile) > _opt.snow_line) {
-			a2 = RAIL_GROUND_ICE_DESERT;
-			goto modify_me;
-		}
+	switch (_opt.landscape) {
+		case LT_HILLY:
+			if (GetTileZ(tile) > _opt.snow_line) { /* convert into snow? */
+				a2 = RAIL_GROUND_ICE_DESERT;
+				goto modify_me;
+			}
+			break;
 
-	/* special code for desert landscape */
-	} else if (_opt.landscape == LT_DESERT) {
-		/* convert into desert? */
-		if (GetMapExtraBits(tile) == 1) {
-			a2 = RAIL_GROUND_ICE_DESERT;
-			goto modify_me;
-		}
+		case LT_DESERT:
+			if (GetMapExtraBits(tile) == 1) { /* convert into desert? */
+				a2 = RAIL_GROUND_ICE_DESERT;
+				goto modify_me;
+			}
+			break;
 	}
 
 	// Don't continue tile loop for depots

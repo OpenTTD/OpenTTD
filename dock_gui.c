@@ -230,11 +230,8 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 			return;
 		w->click_state = (1<<3) << _station_show_coverage;
 		DrawWindowWidgets(w);
-		if (_patches.modified_catchment) {
-			rad = CA_DOCK;
-		} else {
-			rad = 4;
-		}
+
+		rad = (_patches.modified_catchment) ? CA_DOCK : 4;
 
 		if (_station_show_coverage)	SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 		else SetTileSelectBigSize(0, 0, 0, 0);

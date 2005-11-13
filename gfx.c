@@ -434,7 +434,7 @@ void DrawStringMultiCenter(int x, int y, uint16 str, int maxw)
 {
 	char buffer[512];
 	uint32 tmp;
-	int num, w, mt, t;
+	int num, w, mt;
 	const char *src;
 	byte c;
 
@@ -442,12 +442,11 @@ void DrawStringMultiCenter(int x, int y, uint16 str, int maxw)
 
 	tmp = FormatStringLinebreaks(buffer, maxw);
 	num = (uint16)tmp;
-	t = tmp >> 16;
 
-	mt = 10;
-	if (t != 0) {
-		mt = 6;
-		if (t != 244) mt = 18;
+	switch (GB(tmp, 16, 16)) {
+		case   0: mt = 10; break;
+		case 244: mt =  6; break;
+		default:  mt = 18; break;
 	}
 
 	y -= (mt >> 1) * num;
@@ -481,7 +480,7 @@ void DrawStringMultiLine(int x, int y, uint16 str, int maxw)
 {
 	char buffer[512];
 	uint32 tmp;
-	int num, w, mt, t;
+	int num, w, mt;
 	const char *src;
 	byte c;
 
@@ -489,11 +488,11 @@ void DrawStringMultiLine(int x, int y, uint16 str, int maxw)
 
 	tmp = FormatStringLinebreaks(buffer, maxw);
 	num = (uint16)tmp;
-	t = tmp >> 16;
-	mt = 10;
-	if (t != 0) {
-		mt = 6;
-		if (t != 244) mt = 18;
+
+	switch (GB(tmp, 16, 16)) {
+		case   0: mt = 10; break;
+		case 244: mt =  6; break;
+		default:  mt = 18; break;
 	}
 
 	src = buffer;

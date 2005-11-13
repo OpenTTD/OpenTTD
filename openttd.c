@@ -707,12 +707,11 @@ bool SafeSaveOrLoad(const char *filename, int mode, int newgm)
 	_game_mode = newgm;
 	r = SaveOrLoad(filename, mode);
 	if (r == SL_REINIT) {
-		if (ogm == GM_MENU)
-			LoadIntroGame();
-		else if (ogm == GM_EDITOR)
-			MakeNewEditorWorld();
-		else
-			MakeNewGame();
+		switch (ogm) {
+			case GM_MENU:   LoadIntroGame();      break;
+			case GM_EDITOR: MakeNewEditorWorld(); break;
+			default:        MakeNewGame();        break;
+		}
 		return false;
 	} else if (r != SL_OK) {
 		_game_mode = ogm;

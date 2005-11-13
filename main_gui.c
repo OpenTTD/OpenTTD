@@ -169,64 +169,49 @@ typedef void MenuClickedProc(int index);
 
 static void MenuClickSettings(int index)
 {
-	switch(index) {
-	case 0: ShowGameOptions(); return;
-	case 1: ShowGameDifficulty(); return;
-	case 2: ShowPatchesSelection(); return;
-	case 3: ShowNewgrf(); return;
+	switch (index) {
+		case 0: ShowGameOptions();      return;
+		case 1: ShowGameDifficulty();   return;
+		case 2: ShowPatchesSelection(); return;
+		case 3: ShowNewgrf();           return;
 
-	case 5: _display_opt ^= DO_SHOW_TOWN_NAMES; MarkWholeScreenDirty(); return;
-	case 6: _display_opt ^= DO_SHOW_STATION_NAMES; MarkWholeScreenDirty(); return;
-	case 7: _display_opt ^= DO_SHOW_SIGNS; MarkWholeScreenDirty(); return;
-	case 8: _display_opt ^= DO_WAYPOINTS; MarkWholeScreenDirty(); return;
-	case 9: _display_opt ^= DO_FULL_ANIMATION; MarkWholeScreenDirty(); return;
-	case 10: _display_opt ^= DO_FULL_DETAIL; MarkWholeScreenDirty(); return;
-	case 11: _display_opt ^= DO_TRANS_BUILDINGS; MarkWholeScreenDirty(); return;
-	case 12: _display_opt ^= DO_TRANS_SIGNS; MarkWholeScreenDirty(); return;
+		case  5: _display_opt ^= DO_SHOW_TOWN_NAMES;    break;
+		case  6: _display_opt ^= DO_SHOW_STATION_NAMES; break;
+		case  7: _display_opt ^= DO_SHOW_SIGNS;         break;
+		case  8: _display_opt ^= DO_WAYPOINTS;          break;
+		case  9: _display_opt ^= DO_FULL_ANIMATION;     break;
+		case 10: _display_opt ^= DO_FULL_DETAIL;        break;
+		case 11: _display_opt ^= DO_TRANS_BUILDINGS;    break;
+		case 12: _display_opt ^= DO_TRANS_SIGNS;        break;
 	}
+	MarkWholeScreenDirty();
 }
 
 static void MenuClickSaveLoad(int index)
 {
 	if (_game_mode == GM_EDITOR) {
-		switch(index) {
-		case 0:
-			ShowSaveLoadDialog(SLD_SAVE_SCENARIO);
-			break;
-		case 1:
-			ShowSaveLoadDialog(SLD_LOAD_SCENARIO);
-			break;
-		case 2:
-			AskExitToGameMenu();
-			break;
-		case 4:
-			AskExitGame();
-			break;
+		switch (index) {
+			case 0: ShowSaveLoadDialog(SLD_SAVE_SCENARIO); break;
+			case 1: ShowSaveLoadDialog(SLD_LOAD_SCENARIO); break;
+			case 2: AskExitToGameMenu();                   break;
+			case 4: AskExitGame();                         break;
 		}
 	} else {
-		switch(index) {
-		case 0:
-			ShowSaveLoadDialog(SLD_SAVE_GAME);
-			break;
-		case 1:
-			ShowSaveLoadDialog(SLD_LOAD_GAME);
-			break;
-		case 2:
-			AskExitToGameMenu();
-			break;
-		case 3:
-			AskExitGame();
-			break;
+		switch (index) {
+			case 0: ShowSaveLoadDialog(SLD_SAVE_GAME); break;
+			case 1: ShowSaveLoadDialog(SLD_LOAD_GAME); break;
+			case 2: AskExitToGameMenu();               break;
+			case 3: AskExitGame();                     break;
 		}
 	}
 }
 
 static void MenuClickMap(int index)
 {
-	switch(index) {
-	case 0: ShowSmallMap(); break;
-	case 1: ShowExtraViewPortWindow(); break;
-	case 2: ShowSignList(); break;
+	switch (index) {
+		case 0: ShowSmallMap();            break;
+		case 1: ShowExtraViewPortWindow(); break;
+		case 2: ShowSignList();            break;
 	}
 }
 
@@ -237,11 +222,11 @@ static void MenuClickTown(int index)
 
 static void MenuClickScenMap(int index)
 {
-	switch(index) {
-	case 0: ShowSmallMap(); break;
-	case 1: ShowExtraViewPortWindow(); break;
-	case 2: ShowSignList(); break;
-	case 3: ShowTownDirectory(); break;
+	switch (index) {
+		case 0: ShowSmallMap();            break;
+		case 1: ShowExtraViewPortWindow(); break;
+		case 2: ShowSignList();            break;
+		case 3: ShowTownDirectory();       break;
 	}
 }
 
@@ -279,29 +264,29 @@ static void MenuClickCompany(int index)
 
 static void MenuClickGraphs(int index)
 {
-	switch(index) {
-	case 0: ShowOperatingProfitGraph(); return;
-	case 1: ShowIncomeGraph(); return;
-	case 2: ShowDeliveredCargoGraph(); return;
-	case 3: ShowPerformanceHistoryGraph(); return;
-	case 4: ShowCompanyValueGraph(); return;
-	case 5: ShowCargoPaymentRates(); return;
+	switch (index) {
+		case 0: ShowOperatingProfitGraph();    break;
+		case 1: ShowIncomeGraph();             break;
+		case 2: ShowDeliveredCargoGraph();     break;
+		case 3: ShowPerformanceHistoryGraph(); break;
+		case 4: ShowCompanyValueGraph();       break;
+		case 5: ShowCargoPaymentRates();       break;
 	}
 }
 
 static void MenuClickLeague(int index)
 {
-	switch(index) {
-	case 0: ShowCompanyLeagueTable(); return;
-	case 1: ShowPerformanceRatingDetail(); return;
+	switch (index) {
+		case 0: ShowCompanyLeagueTable();      break;
+		case 1: ShowPerformanceRatingDetail(); break;
 	}
 }
 
 static void MenuClickIndustry(int index)
 {
-	switch(index) {
-	case 0: ShowIndustryDirectory(); break;
-	case 1: ShowBuildIndustryWindow(); break;
+	switch (index) {
+		case 0: ShowIndustryDirectory();   break;
+		case 1: ShowBuildIndustryWindow(); break;
 	}
 }
 
@@ -414,10 +399,10 @@ static void SelectSignTool(void)
 
 static void MenuClickForest(int index)
 {
-	switch(index) {
-	case 0: ShowTerraformToolbar(); break;
-	case 1: ShowBuildTreesToolbar(); break;
-	case 2: SelectSignTool(); break;
+	switch (index) {
+		case 0: ShowTerraformToolbar();  break;
+		case 1: ShowBuildTreesToolbar(); break;
+		case 2: SelectSignTool();        break;
 	}
 }
 
@@ -428,21 +413,21 @@ static void MenuClickMusicWindow(int index)
 
 static void MenuClickNewspaper(int index)
 {
-	switch(index) {
-	case 0: ShowLastNewsMessage(); break;
-	case 1: ShowMessageOptions(); break;
-	case 2: ShowMessageHistory(); break;
+	switch (index) {
+		case 0: ShowLastNewsMessage(); break;
+		case 1: ShowMessageOptions();  break;
+		case 2: ShowMessageHistory();  break;
 	}
 }
 
 static void MenuClickHelp(int index)
 {
 	switch (index) {
-	case 0: PlaceLandBlockInfo(); break;
-	case 2: IConsoleSwitch(); break;
-	case 3: _make_screenshot = 1; break;
-	case 4: _make_screenshot = 2; break;
-	case 5: ShowAboutWindow(); break;
+		case 0: PlaceLandBlockInfo(); break;
+		case 2: IConsoleSwitch();     break;
+		case 3: _make_screenshot = 1; break;
+		case 4: _make_screenshot = 2; break;
+		case 5: ShowAboutWindow();    break;
 	}
 }
 
@@ -863,10 +848,10 @@ bool DoZoomInOutWindow(int how, Window *w)
 	ViewPort *vp;
 	int button;
 
-	switch(_game_mode) {
-	case GM_EDITOR: button = 9; break;
-	case GM_NORMAL: button = 17; break;
-	default: return false;
+	switch (_game_mode) {
+		case GM_EDITOR: button = 9;  break;
+		case GM_NORMAL: button = 17; break;
+		default: return false;
 	}
 
 	assert(w);

@@ -793,40 +793,28 @@ static int32 ReadPE(const PatchEntry*pe)
 	return 0;
 }
 
-static void WritePE(const PatchEntry *pe, int32 val)
+static void WritePE(const PatchEntry* p, int32 v)
 {
-	if ((pe->flags & PF_0ISDIS) && val <= 0) {
-		switch (pe->type) {
-			case PE_BOOL: case PE_UINT8:
-				*(bool*)pe->variable = 0;
-				break;
-			case PE_INT16: case PE_UINT16:
-				*(int16*)pe->variable = 0;
-				break;
-			case PE_CURRENCY: case PE_INT32:
-				*(int32*)pe->variable = 0;
-				break;
+	if ((p->flags & PF_0ISDIS) && v <= 0) {
+		switch (p->type) {
+			case PE_BOOL:     *(bool*  )p->variable = false; break;
+			case PE_UINT8:    *(uint8* )p->variable = 0;     break;
+			case PE_INT16:    *(int16* )p->variable = 0;     break;
+			case PE_UINT16:   *(uint16*)p->variable = 0;     break;
+			case PE_CURRENCY: *(int32* )p->variable = 0;     break;
+			case PE_INT32:    *(int32* )p->variable = 0;     break;
 		}
 		return;
 	}
 
 	// "clamp" 'disabled' value to smallest type
-	switch (pe->type) {
-		case PE_BOOL:
-			*(bool*)pe->variable = (bool)val;
-			break;
-		case PE_UINT8:
-			*(uint8*)pe->variable = (uint8)clamp((uint8)val, (uint8)pe->min, (uint8)pe->max);
-			break;
-		case PE_INT16:
-			*(int16*)pe->variable = (int16)clamp((int16)val, (int16)pe->min, (int16)pe->max);
-			break;
-		case PE_UINT16:
-			*(uint16*)pe->variable = (uint16)clamp((uint16)val, (uint16)pe->min, (uint16)pe->max);
-			break;
-		case PE_CURRENCY: case PE_INT32:
-			*(int32*)pe->variable = (int32)clamp((int32)val, (int32)pe->min, (int32)pe->max);
-			break;
+	switch (p->type) {
+		case PE_BOOL:     *(bool*  )p->variable = (v != 0); break;
+		case PE_UINT8:    *(uint8* )p->variable = clamp(v, p->min, p->max); break;
+		case PE_INT16:    *(int16* )p->variable = clamp(v, p->min, p->max); break;
+		case PE_UINT16:   *(uint16*)p->variable = clamp(v, p->min, p->max); break;
+		case PE_CURRENCY: *(int32* )p->variable = clamp(v, p->min, p->max); break;
+		case PE_INT32:    *(int32* )p->variable = clamp(v, p->min, p->max); break;
 		default: NOT_REACHED();
 	}
 }

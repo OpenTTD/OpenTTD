@@ -127,37 +127,39 @@ static void DrawOrdersWindow(Window *w)
 		if (i - w->vscroll.pos < w->vscroll.cap) {
 			SetDParam(1, 6);
 
-			if (order->type == OT_GOTO_STATION) {
-				SetDParam(1, StationOrderStrings[order->flags]);
-				SetDParam(2, order->station);
-			} else if (order->type == OT_GOTO_DEPOT) {
-				StringID s = STR_NULL;
-
-				if (v->type == VEH_Aircraft) {
-					s = STR_GO_TO_AIRPORT_HANGAR;
+			switch (order->type) {
+				case OT_GOTO_STATION:
+					SetDParam(1, StationOrderStrings[order->flags]);
 					SetDParam(2, order->station);
-				} else {
-					SetDParam(2, GetDepot(order->station)->town_index);
+					break;
 
-					switch (v->type) {
-						case VEH_Train: s = STR_GO_TO_TRAIN_DEPOT;   break;
-						case VEH_Road:  s = STR_9038_GO_TO_ROADVEH_DEPOT; break;
-						case VEH_Ship:  s = STR_GO_TO_SHIP_DEPOT;         break;
-						default:
-						break;
+				case OT_GOTO_DEPOT: {
+					StringID s = STR_NULL;
+
+					if (v->type == VEH_Aircraft) {
+						s = STR_GO_TO_AIRPORT_HANGAR;
+						SetDParam(2, order->station);
+					} else {
+						SetDParam(2, GetDepot(order->station)->town_index);
+
+						switch (v->type) {
+							case VEH_Train: s = (order->flags & OF_NON_STOP) ? STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT : STR_GO_TO_TRAIN_DEPOT; break;
+							case VEH_Road:  s = STR_9038_GO_TO_ROADVEH_DEPOT; break;
+							case VEH_Ship:  s = STR_GO_TO_SHIP_DEPOT; break;
+							default: break;
+						}
 					}
 
-					if (v->type == VEH_Train && order->flags & OF_NON_STOP) s += 2;
+					if (order->flags & OF_FULL_LOAD) s++; /* service at */
+
 					SetDParam(1, s);
+					break;
 				}
 
-				if (order->flags & OF_FULL_LOAD)
-					s++; /* service at */
-
-				SetDParam(1, s);
-			} else if (order->type == OT_GOTO_WAYPOINT) {
-				SetDParam(1, (order->flags & OF_NON_STOP) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
-				SetDParam(2, order->station);
+				case OT_GOTO_WAYPOINT:
+					SetDParam(1, (order->flags & OF_NON_STOP) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
+					SetDParam(2, order->station);
+					break;
 			}
 
 			color = (i == WP(w,order_d).sel) ? 0xC : 0x10;

@@ -422,24 +422,21 @@ static void DrawPlayerVehiclesAmount(PlayerID player)
 	const int x = 110;
 	int y = 72;
 	const Vehicle* v;
-	uint train,road,air,ship;
+	uint train = 0;
+	uint road  = 0;
+	uint air   = 0;
+	uint ship  = 0;
 
 	DrawString(x, y, STR_7039_VEHICLES, 0);
 
-	train = road = air = ship = 0;
-
 	FOR_ALL_VEHICLES(v) {
 		if (v->owner == player) {
-			if (v->type == VEH_Train) {
-				if (v->subtype == TS_Front_Engine)
-					train++;
-			} else if (v->type == VEH_Road) {
-				road++;
-			} else if (v->type == VEH_Aircraft) {
-				if (v->subtype <= 2)
-					air++;
-			} else if (v->type == VEH_Ship) {
-				ship++;
+			switch (v->type) {
+				case VEH_Train:    if (v->subtype == TS_Front_Engine) train++; break;
+				case VEH_Road:     road++; break;
+				case VEH_Aircraft: if (v->subtype <= 2) air++; break;
+				case VEH_Ship:     ship++; break;
+				default: break;
 			}
 		}
 	}
