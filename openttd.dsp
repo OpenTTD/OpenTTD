@@ -413,6 +413,10 @@ SOURCE=.\spritecache.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\station_newgrf.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\StdAfx.c
 
 !IF  "$(CFG)" == "openttd - Win32 Release"
@@ -687,6 +691,10 @@ SOURCE=.\sound.h
 # Begin Source File
 
 SOURCE=.\station.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\station_newgrf.h
 # End Source File
 # Begin Source File
 

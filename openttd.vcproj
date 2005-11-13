@@ -342,6 +342,9 @@
 				RelativePath=".\spritecache.c">
 			</File>
 			<File
+				RelativePath=".\station_newgrf.c">
+			</File>
+			<File
 				RelativePath=".\StdAfx.c">
 			</File>
 			<File
@@ -548,6 +551,9 @@
 			</File>
 			<File
 				RelativePath=".\station.h">
+			</File>
+			<File
+				RelativePath=".\station_newgrf.h">
 			</File>
 			<File
 				RelativePath=".\StdAfx.h">
