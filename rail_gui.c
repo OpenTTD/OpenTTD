@@ -285,18 +285,16 @@ static void BuildRailClick_Tunnel(Window *w)
 
 static void BuildRailClick_Remove(Window *w)
 {
-	if (w->disabled_state & (1<<16))
-		return;
+	if (HASBIT(w->disabled_state, 16)) return;
 	SetWindowDirty(w);
 	SndPlayFx(SND_15_BEEP);
 
-	w->click_state ^= (1 << 16);
-	_remove_button_clicked = (w->click_state & (1 << 16)) != 0;
-	SetSelectionRed((w->click_state & (1 << 16)) != 0);
+	TOGGLEBIT(w->click_state, 16);
+	_remove_button_clicked = HASBIT(w->click_state, 16) != 0;
+	SetSelectionRed(HASBIT(w->click_state, 16) != 0);
 
 	// handle station builder
-	if( w->click_state & (1 << 16) )
-	{
+	if (HASBIT(w->click_state, 16)) {
 		if(_remove_button_clicked)
 			SetTileSelectSize(1, 1);
 		else

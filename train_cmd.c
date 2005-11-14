@@ -1623,10 +1623,10 @@ int32 CmdForceTrainProceed(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  */
 int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
+	CargoID new_cid = GB(p2, 0, 8);
 	Vehicle *v;
 	int32 cost;
 	uint num;
-	CargoID new_cid = p2 & 0xFF; //gets the cargo number
 
 	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
@@ -3173,7 +3173,7 @@ static void ChangeTrainDirRandomly(Vehicle *v)
 	do {
 		//I need to buffer the train direction
 		if (!(v->u.rail.track & 0x40))
-			v->direction = (v->direction + _random_dir_change[Random()&3]) & 7;
+			v->direction = (v->direction + _random_dir_change[GB(Random(), 0, 2)]) & 7;
 		if (!(v->vehstatus & VS_HIDDEN)) {
 			BeginVehicleMove(v);
 			UpdateTrainDeltaXY(v, v->direction);

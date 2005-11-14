@@ -97,7 +97,7 @@ static void DrawTile_Town(TileInfo *ti)
 	{
 		/* this "randomizes" on the (up to) 4 variants of a building */
 		byte gfx   = _m[ti->tile].m4;
-		byte stage = _m[ti->tile].m3 >> 6;
+		byte stage = GB(_m[ti->tile].m3, 6, 2);
 		uint variant;
 		variant  = ti->x >> 4;
 		variant ^= ti->x >> 6;
@@ -635,7 +635,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, uint mask, int block, Town *t1)
 
 		// Possibly extend the road in a direction.
 		// Randomize a direction and if it has a road, bail out.
-		i = (int)Random() & 3;
+		i = GB(Random(), 0, 2);
 		if (HASBIT(mask, i))
 			return;
 

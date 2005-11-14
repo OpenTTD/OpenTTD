@@ -1232,7 +1232,7 @@ static void BubbleTick(Vehicle *v)
 			return;
 		}
 		if (v->u.special.unk2 != 0) {
-			v->spritenum = (InteractiveRandom() & 3) + 1;
+			v->spritenum = GB(InteractiveRandom(), 0, 2) + 1;
 		} else {
 			v->spritenum = 6;
 		}

@@ -222,8 +222,8 @@ static inline bool IsCompatibleTrainStationTile(TileIndex tile, TileIndex ref)
 	assert(IsTrainStationTile(ref));
 	return
 		IsTrainStationTile(tile) &&
-		(_m[tile].m3 & 0x0F) == (_m[ref].m3 & 0x0F) && // same rail type?
-		(_m[tile].m5 & 0x01) == (_m[ref].m5 & 0x01); // same direction?
+		GB(_m[tile].m3, 0, 4) == GB(_m[ref].m3, 0, 4) && // same rail type?
+		GB(_m[tile].m5, 0, 1) == GB(_m[ref].m5, 0, 1);   // same direction?
 }
 
 static inline bool IsRoadStationTile(TileIndex tile) {

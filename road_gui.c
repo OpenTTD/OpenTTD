@@ -159,12 +159,11 @@ static void BuildRoadClick_Tunnel(Window *w)
 
 static void BuildRoadClick_Remove(Window *w)
 {
-	if (w->disabled_state & (1<<11))
-		return;
+	if (HASBIT(w->disabled_state, 11)) return;
 	SetWindowDirty(w);
 	SndPlayFx(SND_15_BEEP);
-	w->click_state ^= (1 << 11);
-	SetSelectionRed((w->click_state & (1 << 11)) != 0);
+	TOGGLEBIT(w->click_state, 11);
+	SetSelectionRed(HASBIT(w->click_state, 11) != 0);
 }
 
 static void BuildRoadClick_Landscaping(Window *w)

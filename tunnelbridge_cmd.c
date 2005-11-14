@@ -813,7 +813,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 					static const uint16 _new_data_table[] = {0x1002, 0x1001, 0x2005, 0x200A, 0, 0, 0, 0};
 					new_data = _new_data_table[((m5 & 0x18) >> 2) | (m5&1)];
 				}	else {
-					if (!(m5 & 0x18)) goto clear_it;
+					if (GB(m5, 3, 2) == 0) goto clear_it;
 					new_data = (GetTileSlope(c, NULL) == 0) ? 0x6000 : 0x6001;
 				}
 
@@ -1398,14 +1398,14 @@ static uint32 GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType mode
 
 	if ((m5 & 0xF0) == 0) {
 		/* This is a tunnel */
-		if (((m5 & 0xCU) >> 2) == mode) {
+		if (GB(m5, 2, 2) == mode) {
 			/* Tranport in the tunnel is compatible */
 			return m5&1 ? 0x202 : 0x101;
 		}
 	} else if (m5 & 0x80) {
 		/* This is a bridge */
 		result = 0;
-		if (((m5 & 0x6U) >> 1) == mode) {
+		if (GB(m5, 1, 2) == mode) {
 			/* Transport over the bridge is compatible */
 			result = m5&1 ? 0x202 : 0x101;
 		}
@@ -1421,7 +1421,7 @@ static uint32 GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType mode
 						return result;
 			} else {
 				/* Transport underneath */
-				if ((m5 & 0x18U) >> 3 != mode)
+				if (GB(m5, 3, 2) != mode)
 					/* Incompatible transport underneath */
 					return result;
 			}

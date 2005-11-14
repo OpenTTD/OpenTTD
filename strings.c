@@ -161,9 +161,7 @@ char *GetStringWithArgs(char *buffr, uint string, const int32 *argv)
 	uint index = GB(string,  0, 11);
 	uint tab   = GB(string, 11,  5);
 
-	if (!(string & 0xFFFF)) {
-		error("!invalid string id 0 in GetString");
-	}
+	if (GB(string, 0, 16) == 0) error("!invalid string id 0 in GetString");
 
 	switch (tab) {
 		case 4:
@@ -196,7 +194,7 @@ char *GetStringWithArgs(char *buffr, uint string, const int32 *argv)
 			"Probably because an old version of the .lng file.\n", string
 		);
 
-	return FormatString(buffr, GetStringPtr(string&0xFFFF), argv, string >> 24);
+	return FormatString(buffr, GetStringPtr(GB(string, 0, 16)), argv, GB(string, 24, 8));
 }
 
 char *GetString(char *buffr, StringID string)

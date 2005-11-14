@@ -197,15 +197,15 @@ static const uint16 * const _legend_table[] = {
 	static inline void WRITE_PIXELS(Pixel* d, uint32 val)
 	{
 #	if defined(TTD_BIG_ENDIAN)
-		d[0] = (byte)(val >> 24);
-		d[1] = (byte)(val >> 16);
-		d[2] = (byte)(val >> 8);
-		d[3] = (byte)(val >> 0);
+		d[0] = GB(val, 24, 8);
+		d[1] = GB(val, 16, 8);
+		d[2] = GB(val,  8, 8);
+		d[3] = GB(val,  0, 8);
 #	elif defined(TTD_LITTLE_ENDIAN)
-		d[0] = (byte)(val >> 0);
-		d[1] = (byte)(val >> 8);
-		d[2] = (byte)(val >> 16);
-		d[3] = (byte)(val >> 24);
+		d[0] = GB(val,  0, 8);
+		d[1] = GB(val,  8, 8);
+		d[2] = GB(val, 16, 8);
+		d[3] = GB(val, 24, 8);
 #	endif
 	}
 
@@ -213,15 +213,15 @@ static const uint16 * const _legend_table[] = {
 	static inline void WRITE_PIXELS_OR(Pixel* d, uint32 val)
 	{
 #	if defined(TTD_BIG_ENDIAN)
-		d[0] |= (byte)(val >> 24);
-		d[1] |= (byte)(val >> 16);
-		d[2] |= (byte)(val >> 8);
-		d[3] |= (byte)(val >> 0);
+		d[0] |= GB(val, 24, 8);
+		d[1] |= GB(val, 16, 8);
+		d[2] |= GB(val,  8, 8);
+		d[3] |= GB(val,  0, 8);
 #	elif defined(TTD_LITTLE_ENDIAN)
-		d[0] |= (byte)(val >> 0);
-		d[1] |= (byte)(val >> 8);
-		d[2] |= (byte)(val >> 16);
-		d[3] |= (byte)(val >> 24);
+		d[0] |= GB(val,  0, 8);
+		d[1] |= GB(val,  8, 8);
+		d[2] |= GB(val, 16, 8);
+		d[3] |= GB(val, 24, 8);
 #	endif
 	}
 #else

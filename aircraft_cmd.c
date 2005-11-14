@@ -475,14 +475,14 @@ int32 CmdChangeAircraftServiceInt(int x, int y, uint32 flags, uint32 p1, uint32 
  * @param x,y unused
  * @param p1 vehicle ID of the aircraft to refit
  * @param p2 various bitstuffed elements
- * - p2 = (bit 0-7) - the new cargo type to refit to (p2 & 0xFF)
+ * - p2 = (bit 0-7) - the new cargo type to refit to
  */
 int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	int pass, mail;
 	int32 cost;
-	CargoID new_cid = p2 & 0xFF; //gets the cargo number
+	CargoID new_cid = GB(p2, 0, 8);
 	const AircraftVehicleInfo *avi;
 
 	if (!IsVehicleIndex(p1)) return CMD_ERROR;

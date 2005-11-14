@@ -1086,9 +1086,9 @@ static void AiWantPassengerRoute(Player *p)
 
 static void AiWantTrainRoute(Player *p)
 {
-	uint16 r;
+	uint16 r = GB(Random(), 0, 16);
+
 	p->ai.railtype_to_use = GetBestRailtype(p);
-	r = (uint16)Random();
 
 	if (r > 0xD000) {
 		AiWantLongIndustryRoute(p);
@@ -1349,7 +1349,7 @@ static void AiWantPassengerRouteInsideTown(Player *p)
 
 static void AiWantRoadRoute(Player *p)
 {
-	uint16 r = (uint16)Random();
+	uint16 r = GB(Random(), 0, 16);
 
 	if (r > 0x4000) {
 		AiWantLongRoadIndustryRoute(p);

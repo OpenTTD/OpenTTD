@@ -772,14 +772,14 @@ void GenerateClearTile(void)
 	TileIndex tile;
 
 	/* add hills */
-	i = ScaleByMapSize((Random() & 0x3FF) + 0x400);
+	i = ScaleByMapSize(GB(Random(), 0, 10) + 0x400);
 	do {
 		tile = RandomTile();
 		if (IsTileType(tile, MP_CLEAR)) SB(_m[tile].m5, 2, 2, 1);
 	} while (--i);
 
 	/* add grey squares */
-	i = ScaleByMapSize((Random() & 0x7F) + 0x80);
+	i = ScaleByMapSize(GB(Random(), 0, 7) + 0x80);
 	do {
 		uint32 r = Random();
 		tile = RandomTileSeed(r);
@@ -791,7 +791,7 @@ void GenerateClearTile(void)
 				SB(_m[tile].m5, 2, 2, 2);
 				do {
 					if (--j == 0) goto get_out;
-					tile_new = tile + TileOffsByDir(Random() & 3);
+					tile_new = tile + TileOffsByDir(GB(Random(), 0, 2));
 				} while (!IsTileType(tile_new, MP_CLEAR));
 				tile = tile_new;
 			}

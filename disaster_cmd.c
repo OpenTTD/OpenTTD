@@ -920,7 +920,7 @@ static void Disaster7_Init(void)
 
 				{
 					TileIndex tile = i->xy;
-					TileIndexDiff step = TileOffsByDir(Random() & 3);
+					TileIndexDiff step = TileOffsByDir(GB(Random(), 0, 2));
 
 					int count = 30;
 					do {

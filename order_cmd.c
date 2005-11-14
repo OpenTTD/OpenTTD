@@ -830,8 +830,8 @@ void RestoreVehicleOrders(const Vehicle* v, const BackuppedOrders* bak)
 int32 CmdRestoreOrderIndex(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
-	OrderID cur_ord = p2 & 0xFFFF;
-	uint16 serv_int = p2 >> 16;
+	OrderID cur_ord = GB(p2,  0, 16);
+	uint16 serv_int = GB(p2, 16, 16);
 
 	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 

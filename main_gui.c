@@ -979,14 +979,14 @@ static void ToolbarOptionsClick(Window *w)
 	w = PopupMainToolbMenu(w,  43, 2, STR_02C3_GAME_OPTIONS, 13, 0);
 
 	x = (uint16)-1;
-	if (_display_opt & DO_SHOW_TOWN_NAMES) x &= ~(1<<5);
-	if (_display_opt & DO_SHOW_STATION_NAMES) x &= ~(1<<6);
-	if (_display_opt & DO_SHOW_SIGNS) x &= ~(1<<7);
-	if (_display_opt & DO_WAYPOINTS) x &= ~(1<<8);
-	if (_display_opt & DO_FULL_ANIMATION) x &= ~(1<<9);
-	if (_display_opt & DO_FULL_DETAIL) x &= ~(1<<10);
-	if (_display_opt & DO_TRANS_BUILDINGS) x &= ~(1<<11);
-	if (_display_opt & DO_TRANS_SIGNS) x &= ~(1<<12);
+	if (_display_opt & DO_SHOW_TOWN_NAMES)    CLRBIT(x,  5);
+	if (_display_opt & DO_SHOW_STATION_NAMES) CLRBIT(x,  6);
+	if (_display_opt & DO_SHOW_SIGNS)         CLRBIT(x,  7);
+	if (_display_opt & DO_WAYPOINTS)          CLRBIT(x,  8);
+	if (_display_opt & DO_FULL_ANIMATION)     CLRBIT(x,  9);
+	if (_display_opt & DO_FULL_DETAIL)        CLRBIT(x, 10);
+	if (_display_opt & DO_TRANS_BUILDINGS)    CLRBIT(x, 11);
+	if (_display_opt & DO_TRANS_SIGNS)        CLRBIT(x, 12);
 	WP(w,menu_d).checked_items = x;
 }
 

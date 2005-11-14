@@ -781,7 +781,8 @@ static void AiNew_State_FindDepot(Player *p)
 	// To make the depot stand in the middle of the route, we start from the center..
 	// But first we walk through the route see if we can find a depot that is ours
 	//  this keeps things nice ;)
-	int g, i, j, r;
+	int g, i, r;
+	uint j;
 	TileIndex tile;
 	assert(p->ainew.state == AI_STATE_FIND_DEPOT);
 
@@ -796,7 +797,7 @@ static void AiNew_State_FindDepot(Player *p)
 					// We found a depot, is it ours? (TELL ME!!!)
 					if (IsTileOwner(tile + TileOffsByDir(j), _current_player)) {
 						// Now, is it pointing to the right direction.........
-						if ((_m[tile + TileOffsByDir(j)].m5 & 3) == (j ^ 2)) {
+						if (GB(_m[tile + TileOffsByDir(j)].m5, 0, 2) == (j ^ 2)) {
 							// Yeah!!!
 							p->ainew.depot_tile = tile + TileOffsByDir(j);
 							p->ainew.depot_direction = j ^ 2; // Reverse direction

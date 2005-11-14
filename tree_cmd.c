@@ -214,7 +214,7 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 
 						treetype = p1;
 						if (treetype == -1) {
-							treetype = GetRandomTreeType(tile, Random() >> 24);
+							treetype = GetRandomTreeType(tile, GB(Random(), 24, 8));
 							if (treetype == -1) treetype = 27;
 						}
 
@@ -488,7 +488,7 @@ static void TileLoop_Trees(TileIndex tile)
 		if (_opt.landscape == LT_DESERT && _m[tile].m3 != 0x1B && GetMapExtraBits(tile) == 1) {
 			m5++; /* start destructing */
 		} else {
-			switch(Random() & 0x7) {
+			switch (GB(Random(), 0, 3)) {
 			case 0: /* start destructing */
 				m5++;
 				break;
@@ -567,7 +567,7 @@ void OnTick_Trees(void)
 			(r = Random(), tile = RandomTileSeed(r), GetMapExtraBits(tile) == 2) &&
 			IsTileType(tile, MP_CLEAR) &&
 			(m = _m[tile].m5 & 0x1C, m <= 4) &&
-			(tree = GetRandomTreeType(tile, r >> 24)) >= 0) {
+			(tree = GetRandomTreeType(tile, GB(r, 24, 8))) >= 0) {
 
 		ModifyTile(tile,
 			MP_SETTYPE(MP_TREES) |
@@ -587,7 +587,7 @@ void OnTick_Trees(void)
 	tile = TILE_MASK(r);
 	if (IsTileType(tile, MP_CLEAR) &&
 			(m = _m[tile].m5 & 0x1C, m == 0 || m == 4 || m == 0x10) &&
-			(tree = GetRandomTreeType(tile, r >> 24)) >= 0) {
+			(tree = GetRandomTreeType(tile, GB(r, 24, 8))) >= 0) {
 		int m2;
 
 		if (m == 0) {

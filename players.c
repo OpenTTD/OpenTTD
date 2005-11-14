@@ -155,12 +155,12 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 		uint val = GB(face, 20, 8);
 
 		if (!(flag&1)) {
-			DrawSprite(0x36B + ((val&3)*3>>2), x, y);
-			DrawSprite(0x36E + ((val>>2)&3), x, y);
-			DrawSprite(0x372 + ((val>>4)*6>>4), x, y);
+			DrawSprite(0x36B + (GB(val, 0, 2) * 3 >> 2), x, y);
+			DrawSprite(0x36E + (GB(val, 2, 2) * 4 >> 2), x, y);
+			DrawSprite(0x372 + (GB(val, 4, 4) * 6 >> 4), x, y);
 		} else {
-			DrawSprite(0x378 + ((val&3)*3>>2), x, y);
-			DrawSprite(0x37B + ((val>>2)&3), x, y);
+			DrawSprite(0x378 + (GB(val, 0, 2) * 3 >> 2), x, y);
+			DrawSprite(0x37B + (GB(val, 2, 2) * 4 >> 2), x, y);
 
 			val >>= 4;
 			if (val < 3) {

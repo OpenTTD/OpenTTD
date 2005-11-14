@@ -441,7 +441,7 @@ void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 	GetString(buffer, str);
 
 	tmp = FormatStringLinebreaks(buffer, maxw);
-	num = (uint16)tmp;
+	num = GB(tmp, 0, 16);
 
 	switch (GB(tmp, 16, 16)) {
 		case   0: mt = 10; break;
@@ -487,7 +487,7 @@ void DrawStringMultiLine(int x, int y, StringID str, int maxw)
 	GetString(buffer, str);
 
 	tmp = FormatStringLinebreaks(buffer, maxw);
-	num = (uint16)tmp;
+	num = GB(tmp, 0, 16);
 
 	switch (GB(tmp, 16, 16)) {
 		case   0: mt = 10; break;

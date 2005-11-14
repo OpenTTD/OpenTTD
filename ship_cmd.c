@@ -356,8 +356,8 @@ static void CheckShipLeaveDepot(Vehicle *v)
 	} else {
 		return;
 	}
-	v->direction = (byte)m;
-	v->u.ship.state = (byte)(m >> 8);
+	v->direction    = GB(m, 0, 8);
+	v->u.ship.state = GB(m, 8, 8);
 	v->vehstatus &= ~VS_HIDDEN;
 
 	v->cur_speed = 0;
