@@ -27,8 +27,7 @@ static Point HandleScrollbarHittest(const Scrollbar *sb, int top, int bottom)
 	if (count != 0) top += height * pos / count;
 
 	if (cap > count) cap = count;
-	if (count != 0)
-		bottom -= (count - pos - cap) * height / count;
+	if (count != 0) bottom -= (count - pos - cap) * height / count;
 
 	pt.x = top;
 	pt.y = bottom - 1;
@@ -139,12 +138,11 @@ int GetWidgetFromPos(const Window *w, int x, int y)
 	// Go through the widgets and check if we find the widget that the coordinate is
 	// inside.
 	for (index = 0,wi = w->widget; wi->type != WWT_LAST; index++, wi++) {
-		if (wi->type == WWT_EMPTY || wi->type == WWT_FRAME)
-			continue;
+		if (wi->type == WWT_EMPTY || wi->type == WWT_FRAME) continue;
 
 		if (x >= wi->left && x <= wi->right && y >= wi->top &&  y <= wi->bottom &&
 				!HASBIT(w->hidden_state,index)) {
-				found_index = index;
+			found_index = index;
 		}
 	}
 
@@ -169,11 +167,12 @@ void DrawWindowWidgets(const Window *w)
 		bool clicked = (cur_click & 1);
 
 		if (dpi->left > (r.right=/*w->left + */wi->right) ||
-		    dpi->left + dpi->width <= (r.left=wi->left/* + w->left*/) ||
+				dpi->left + dpi->width <= (r.left=wi->left/* + w->left*/) ||
 				dpi->top > (r.bottom=/*w->top +*/ wi->bottom) ||
 				dpi->top + dpi->height <= (r.top = /*w->top +*/ wi->top) ||
-				(cur_hidden&1))
-					continue;
+				cur_hidden & 1) {
+			continue;
+		}
 
 		switch (wi->type & WWT_MASK) {
 		case WWT_PANEL: /* WWT_IMGBTN */
@@ -182,8 +181,10 @@ void DrawWindowWidgets(const Window *w)
 
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : 0);
 
-			if ((img = wi->unkA) != 0) { // has an image
-				if ((wi->type & WWT_MASK) == WWT_PANEL_2 && clicked) img++; // show diff image when clicked
+			img = wi->unkA;
+			if (img != 0) { // has an image
+				// show diff image when clicked
+				if ((wi->type & WWT_MASK) == WWT_PANEL_2 && clicked) img++;
 
 				DrawSprite(img, r.left + 1 + clicked, r.top + 1 + clicked);
 			}
@@ -210,9 +211,8 @@ void DrawWindowWidgets(const Window *w)
 			StringID str;
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, FR_LOWERED | FR_DARKENED);
 
-			if ((str = wi->unkA) != 0) {
-				DrawString(r.left+2, r.top+1, str, 0);
-			}
+			str = wi->unkA;
+			if (str != 0) DrawString(r.left + 2, r.top + 1, str, 0);
 			goto draw_default;
 		}
 
@@ -229,30 +229,30 @@ void DrawWindowWidgets(const Window *w)
 			d = (wi->unkA >> 8);
 			amt2 = (wi->bottom - wi->top + 1) / d;
 
-			color = _color_list[wi->color&0xF].window_color_bgb;
+			color = _color_list[wi->color & 0xF].window_color_bgb;
 
 			x = r.left;
-			for(ctr=c; --ctr; ) {
+			for (ctr = c; ctr > 0; ctr--) {
 				x += amt1;
-				GfxFillRect(x, r.top+1, x, r.bottom-1, color);
+				GfxFillRect(x, r.top + 1, x, r.bottom - 1, color);
 			}
 
 			x = r.top;
-			for(ctr=d; --ctr; ) {
+			for (ctr = d; ctr > 0; ctr--) {
 				x += amt2;
-				GfxFillRect(r.left+1, x, r.right-1, x, color);
+				GfxFillRect(r.left + 1, x, r.right - 1, x, color);
 			}
 
 			color = _color_list[wi->color&0xF].window_color_1b;
 
-			x = r.left-1;
-			for(ctr=c; --ctr; ) {
+			x = r.left - 1;
+			for (ctr = c; ctr > 0; ctr--) {
 				x += amt1;
-				GfxFillRect(x, r.top+1, x, r.bottom-1, color);
+				GfxFillRect(x, r.top + 1, x, r.bottom - 1, color);
 			}
 
-			x = r.top-1;
-			for(ctr=d; --ctr; ) {
+			x = r.top - 1;
+			for (ctr = d; ctr > 0; ctr--) {
 				x += amt2;
 				GfxFillRect(r.left+1, x, r.right-1, x, color);
 			}
@@ -365,9 +365,7 @@ void DrawWindowWidgets(const Window *w)
 			int c1,c2;
 			int x2 = r.left; // by default the left side is the left side of the widget
 
-			if (wi->unkA != 0) {
-				x2 = DrawString(r.left+6, r.top, wi->unkA, 0);
-			}
+			if (wi->unkA != 0) x2 = DrawString(r.left + 6, r.top, wi->unkA, 0);
 
 			c1 = _color_list[wi->color].window_color_1a;
 			c2 = _color_list[wi->color].window_color_2;
@@ -485,20 +483,20 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 					continue;
 				}
 				if (WP(w,dropdown_d).items[i] != 0) {
-					if (sel == 0) {
-						GfxFillRect(x+1, y, x+w->width-4, y + 9, 0);
-					}
-					DrawString(x+2, y, WP(w,dropdown_d).items[i], sel==0 ? 12 : 16);
+					if (sel == 0) GfxFillRect(x + 1, y, x + w->width - 4, y + 9, 0);
+					DrawString(x + 2, y, WP(w,dropdown_d).items[i], sel == 0 ? 12 : 16);
 
 					if (HASBIT(w->disabled_state, i)) {
-						GfxFillRect(x, y, x+w->width-3, y + 9, PALETTE_MODIFIER_GREYOUT |
-									_color_list[_dropdown_menu_widgets[0].color].window_color_bga);
+						GfxFillRect(x, y, x + w->width - 3, y + 9,
+							PALETTE_MODIFIER_GREYOUT | _color_list[_dropdown_menu_widgets[0].color].window_color_bga
+						);
 					}
 				} else {
-					int color_1 = _color_list[_dropdown_menu_widgets[0].color].window_color_1a;
-					int color_2 = _color_list[_dropdown_menu_widgets[0].color].window_color_2;
-					GfxFillRect(x+1, y+3, x+w->width-5, y+3, color_1);
-					GfxFillRect(x+1, y+4, x+w->width-5, y+4, color_2);
+					int c1 = _color_list[_dropdown_menu_widgets[0].color].window_color_1a;
+					int c2 = _color_list[_dropdown_menu_widgets[0].color].window_color_2;
+
+					GfxFillRect(x + 1, y + 3, x + w->width - 5, y + 3, c1);
+					GfxFillRect(x + 1, y + 4, x + w->width - 5, y + 4, c2);
 				}
 				y += 10;
 				sel--;
@@ -536,12 +534,10 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 
 				if (!_left_button_clicked) {
 					WP(w,dropdown_d).drag_mode = false;
-					if (item < 0)
-						return;
+					if (item < 0) return;
 					WP(w,dropdown_d).click_delay = 2;
 				} else {
-					if (item < 0)
-						return;
+					if (item < 0) return;
 				}
 
 				WP(w,dropdown_d).selected_index = item;
@@ -573,25 +569,22 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 	DeleteWindowById(WC_DROPDOWN_MENU, 0);
 	w = FindWindowById(cls, num);
 
-	if (HASBIT(old_click_state, button))
-		return;
+	if (HASBIT(old_click_state, button)) return;
 
 	SETBIT(w->click_state, button);
 
 	InvalidateWidget(w, button);
 
-	for (i = 0; strings[i] != INVALID_STRING_ID; i++);
-	if (i == 0)
-		return;
+	for (i = 0; strings[i] != INVALID_STRING_ID; i++) {}
+	if (i == 0) return;
 
 	wi = &w->widget[button];
 
 	if (hidden_mask != 0) {
-		int j;
+		uint j;
+
 		for (j = 0; strings[j] != INVALID_STRING_ID; j++) {
-			if (HASBIT(hidden_mask, j)) {
-				i--;
-			}
+			if (HASBIT(hidden_mask, j)) i--;
 		}
 	}
 

@@ -63,16 +63,20 @@ static StringID *BuildDynamicDropdown(StringID base, int num)
 static int GetCurRes(void)
 {
 	int i;
-	for(i = 0; i != _num_resolutions; i++)
+
+	for (i = 0; i != _num_resolutions; i++) {
 		if (_resolutions[i][0] == _screen.width &&
-				_resolutions[i][1] == _screen.height)
+				_resolutions[i][1] == _screen.height) {
 			break;
+		}
+	}
 	return i;
 }
 
 static inline bool RoadVehiclesAreBuilt(void)
 {
-	const Vehicle *v;
+	const Vehicle* v;
+
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Road) return true;
 	}
@@ -551,30 +555,23 @@ void ShowGameDifficulty(void)
 // virtual PositionMainToolbar function, calls the right one.
 static int32 v_PositionMainToolbar(int32 p1)
 {
-	if (_game_mode != GM_MENU)
-		PositionMainToolbar(NULL);
-
+	if (_game_mode != GM_MENU) PositionMainToolbar(NULL);
 	return 0;
 }
 
 static int32 AiNew_PatchActive_Warning(int32 p1)
 {
-  if (p1 == 1)
-    ShowErrorMessage(-1, TEMP_AI_ACTIVATED, 0, 0);
-
-  return 0;
+	if (p1 == 1) ShowErrorMessage(-1, TEMP_AI_ACTIVATED, 0, 0);
+	return 0;
 }
 
 static int32 PopulationInLabelActive(int32 p1)
 {
-	Town *t;
+	Town* t;
 
 	FOR_ALL_TOWNS(t) {
-		if (t->xy) {
-			UpdateTownVirtCoord(t);
-		}
+		if (t->xy != 0) UpdateTownVirtCoord(t);
 	}
-
 	return 0;
 }
 
@@ -639,14 +636,14 @@ static int32 EngineRenewMoneyUpdate(int32 p1)
 typedef int32 PatchButtonClick(int32);
 
 typedef struct PatchEntry {
-  byte type;                    // type of selector
-  byte flags;                   // selector flags
-  StringID str;                 // string with descriptive text
-  char console_name[40];        // the name this patch has in console
-  void *variable;               // pointer to the variable
-  int32 min, max;               // range for spinbox setting
-  uint32 step;                  // step for spinbox
-  PatchButtonClick *click_proc; // callback procedure
+	byte type;                    // type of selector
+	byte flags;                   // selector flags
+	StringID str;                 // string with descriptive text
+	char console_name[40];        // the name this patch has in console
+	void* variable;               // pointer to the variable
+	int32 min, max;               // range for spinbox setting
+	uint32 step;                  // step for spinbox
+	PatchButtonClick* click_proc; // callback procedure
 } PatchEntry;
 
 enum {
@@ -821,7 +818,6 @@ static void WritePE(const PatchEntry* p, int32 v)
 
 static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 {
-	uint i;
 	switch (e->event) {
 	case WE_PAINT: {
 		int x,y;
@@ -829,6 +825,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 		const PatchPage *page;
 		uint clk;
 		int32 val;
+		uint i;
 
 		w->click_state = 1 << (WP(w,def_d).data_1 + 4);
 
@@ -1116,8 +1113,9 @@ void IConsoleGetPatchSetting(const char *name)
 
 	if (pe->type == PE_BOOL) {
 		snprintf(value, sizeof(value), (ReadPE(pe) == 1) ? "on" : "off");
-	} else
+	} else {
 		snprintf(value, sizeof(value), "%d", ReadPE(pe));
+	}
 
 	IConsolePrintF(_icolour_warn, "Current value for '%s' is: '%s'", name, value);
 }
@@ -1175,9 +1173,9 @@ static void NewgrfWndProc(Window *w, WindowEvent *e)
 		// draw list of all grf files
 		while (c != NULL) {
 			if (i >= w->vscroll.pos) { // draw files according to scrollbar position
-				bool h = (_sel_grffile==c);
+				bool h = (_sel_grffile == c);
 				// show highlighted item with a different background and highlighted text
-				if(h) GfxFillRect(1, y + 1, 267, y + 12, 156);
+				if (h) GfxFillRect(1, y + 1, 267, y + 12, 156);
 				// XXX - will be grf name later
 				DoDrawString(c->filename, 25, y + 2, h ? 0xC : 0x10);
 				DrawSprite(SPRITE_PALETTE(SPR_SQUARE | PALETTE_TO_RED), 5, y + 2);
@@ -1448,23 +1446,27 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 					val = atoi(b);
 					val = clamp(val, 1, 5000);
 					_custom_currency.rate = val;
-				break;
+					break;
+
 				case 1: /* Thousands seperator */
 					_custom_currency.separator = (b[0] == '\0') ? ' ' : b[0];
 					ttd_strlcpy(_str_separator, b, lengthof(_str_separator));
-				break;
+					break;
+
 				case 2: /* Currency prefix */
 					ttd_strlcpy(_custom_currency.prefix, b, lengthof(_custom_currency.prefix));
-				break;
+					break;
+
 				case 3: /* Currency suffix */
 					ttd_strlcpy(_custom_currency.suffix, b, lengthof(_custom_currency.suffix));
-				break;
+					break;
+
 				case 4: /* Year to switch to euro */
 					val = atoi(b);
 					val = clamp(val, 1999, MAX_YEAR_END_REAL);
 					if (val == 1999) val = 0;
 					_custom_currency.to_euro = val;
-				break;
+					break;
 			}
 		MarkWholeScreenDirty();
 
@@ -1500,11 +1502,9 @@ static const WindowDesc _cust_currency_desc = {
 
 void ShowCustCurrency(void)
 {
-	Window *w;
-
 	_str_separator[0] = _custom_currency.separator;
 	_str_separator[1] = '\0';
 
 	DeleteWindowById(WC_CUSTOM_CURRENCY, 0);
-	w = AllocateWindowDesc(&_cust_currency_desc);
+	AllocateWindowDesc(&_cust_currency_desc);
 }

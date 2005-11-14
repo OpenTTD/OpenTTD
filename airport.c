@@ -376,7 +376,7 @@ uint32 GetValidAirports(void)
 
 	// 1980-1-1 is --> 21915
 	// 1990-1-1 is --> 25568
-	if (_date >= 21915) {SETBIT(bytemask, 3);}	// metropilitan airport 1980
-	if (_date >= 25568) {SETBIT(bytemask, 4);}	// international airport 1990
+	if (_date >= 21915) SETBIT(bytemask, 3); // metropilitan airport 1980
+	if (_date >= 25568) SETBIT(bytemask, 4); // international airport 1990
 	return bytemask;
 }

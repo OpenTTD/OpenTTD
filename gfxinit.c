@@ -145,7 +145,7 @@ static bool FileMD5(const MD5File file, bool warn)
 		fclose(f);
 
 		md5_finish(&filemd5state, digest);
-	  return CheckMD5Digest(file, digest, warn);
+		return CheckMD5Digest(file, digest, warn);
 	} else { // file not found
 		return false;
 	}
@@ -321,11 +321,9 @@ static byte _sprite_page_to_load = 0xFF;
 
 static void LoadSpriteTables(void)
 {
-	uint load_index = 0;
+	const FileList* files = _use_dos_palette ? &files_dos : &files_win;
+	uint load_index;
 	uint i;
-	const FileList *files; // list of grf files to be loaded. Either Windows files or DOS files
-
-	files = _use_dos_palette? &files_dos : &files_win;
 
 	LoadGrfIndexed(files->basic[0].filename, trg1idx, 0);
 	DupSprite(  2, 130); // non-breaking space medium

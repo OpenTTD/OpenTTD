@@ -1257,7 +1257,7 @@ static void NetworkGenerateUniqueId(void)
 
 	/* Generate the MD5 hash */
 	md5_init(&state);
-	md5_append(&state, coding_string, strlen(coding_string));
+	md5_append(&state, (const md5_byte_t*)coding_string, strlen(coding_string));
 	md5_finish(&state, digest);
 
 	for (di = 0; di < 16; ++di)

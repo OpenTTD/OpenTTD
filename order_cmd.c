@@ -29,8 +29,7 @@ static void OrderPoolNewBlock(uint start_item)
 {
 	Order *order;
 
-	FOR_ALL_ORDERS_FROM(order, start_item)
-		order->index = start_item++;
+	FOR_ALL_ORDERS_FROM(order, start_item) order->index = start_item++;
 }
 
 /* Initialize the order-pool */
@@ -117,7 +116,7 @@ static Order *AllocateOrder(void)
 		if (order->type == OT_NOTHING) {
 			uint index = order->index;
 
-			memset(order, 0, sizeof(Order));
+			memset(order, 0, sizeof(*order));
 			order->index = index;
 			order->next = NULL;
 
@@ -126,8 +125,7 @@ static Order *AllocateOrder(void)
 	}
 
 	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_order_pool))
-		return AllocateOrder();
+	if (AddBlockToPool(&_order_pool)) return AllocateOrder();
 
 	return NULL;
 }
@@ -207,19 +205,19 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			 * [full-load | unload] [+ transfer] [+ non-stop]
 			 * non-stop orders (if any) are only valid for trains */
 			switch (new_order.flags) {
-				case 0: /* Fallthrough */
+				case 0:
 				case OF_FULL_LOAD:
-				case OF_FULL_LOAD | OF_TRANSFER: /* Fallthrough */
+				case OF_FULL_LOAD | OF_TRANSFER:
 				case OF_UNLOAD:
-				case OF_UNLOAD | OF_TRANSFER: /* Fallthrough */
+				case OF_UNLOAD | OF_TRANSFER:
 				case OF_TRANSFER:
 					break;
 
 				case OF_NON_STOP:
 				case OF_NON_STOP | OF_FULL_LOAD:
-				case OF_NON_STOP | OF_FULL_LOAD | OF_TRANSFER: /* Fallthrough */
+				case OF_NON_STOP | OF_FULL_LOAD | OF_TRANSFER:
 				case OF_NON_STOP | OF_UNLOAD:
-				case OF_NON_STOP | OF_UNLOAD | OF_TRANSFER: /* Fallthrough */
+				case OF_NON_STOP | OF_UNLOAD | OF_TRANSFER:
 				case OF_NON_STOP | OF_TRANSFER:
 					if (v->type != VEH_Train) return CMD_ERROR;
 					break;
@@ -407,9 +405,7 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 static int32 DecloneOrder(Vehicle *dst, uint32 flags)
 {
 	if (flags & DC_EXEC) {
-		/* Delete orders from vehicle */
 		DeleteVehicleOrders(dst);
-
 		InvalidateVehicleOrder(dst);
 		RebuildVehicleLists();
 	}
@@ -568,8 +564,7 @@ int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		switch (p2) {
 		case OFB_FULL_LOAD:
 			TOGGLEBIT(order->flags, OFB_FULL_LOAD);
-			if (order->type != OT_GOTO_DEPOT)
-				CLRBIT(order->flags, OFB_UNLOAD);
+			if (order->type != OT_GOTO_DEPOT) CLRBIT(order->flags, OFB_UNLOAD);
 			break;
 		case OFB_UNLOAD:
 			TOGGLEBIT(order->flags, OFB_UNLOAD);
@@ -750,7 +745,7 @@ void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *bak)
 
 	/* Safe custom string, if any */
 	if ((v->string_id & 0xF800) != 0x7800) {
-		bak->name[0] = 0;
+		bak->name[0] = '\0';
 	} else {
 		GetName(v->string_id & 0x7FF, bak->name);
 	}
@@ -899,8 +894,7 @@ bool CheckOrders(uint data_a, uint data_b)
 				n_st++;
 				st = GetStation(order->station);
 				required_tile = GetStationTileForVehicle(v, st);
-				if (!required_tile)
-					problem_type = 3;
+				if (required_tile == 0) problem_type = 3;
 			}
 		}
 
@@ -912,8 +906,7 @@ bool CheckOrders(uint data_a, uint data_b)
 			problem_type = 2;
 
 		/* Do we only have 1 station in our order list? */
-		if ((n_st < 2) && (problem_type == -1))
-			problem_type = 0;
+		if (n_st < 2 && problem_type == -1) problem_type = 0;
 
 		/* We don't have a problem */
 		if (problem_type < 0) {
@@ -1104,9 +1097,7 @@ bool CheckForValidOrders(const Vehicle* v)
 {
 	const Order *order;
 
-	FOR_VEHICLE_ORDERS(v, order)
-		if (order->type != OT_DUMMY)
-			return true;
+	FOR_VEHICLE_ORDERS(v, order) if (order->type != OT_DUMMY) return true;
 
 	return false;
 }

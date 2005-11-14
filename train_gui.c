@@ -150,8 +150,7 @@ void CcBuildLoco(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	const Vehicle* v;
 
-	if (!success)
-		return;
+	if (!success) return;
 
 	v = GetVehicle(_new_train_id);
 	if (tile == _backup_orders_tile) {
@@ -163,11 +162,7 @@ void CcBuildLoco(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 void CcCloneTrain(bool success, uint tile, uint32 p1, uint32 p2)
 {
-	if (success) {
-		const Vehicle* v = GetVehicle(_new_train_id);
-
-		ShowTrainViewWindow(v);
-	}
+	if (success) ShowTrainViewWindow(GetVehicle(_new_train_id));
 }
 
 static void engine_drawing_loop(int *x, int *y, int *pos, int *sel,

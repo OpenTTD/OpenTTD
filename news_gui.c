@@ -376,8 +376,7 @@ static void ShowNewspaper(NewsItem *ni)
 	ni->duration = 555;
 
 	sound = _news_sounds[ni->type];
-	if (sound != 0)
-		SndPlayFx(sound);
+	if (sound != 0) SndPlayFx(sound);
 
 	top = _screen.height;
 	switch (ni->display_mode) {
@@ -422,8 +421,7 @@ static void ShowTicker(const NewsItem *ni)
 
 	_statusbar_news_item = *ni;
 	w = FindWindowById(WC_STATUS_BAR, 0);
-	if (w != NULL)
-		WP(w, def_d).data_1 = 360;
+	if (w != NULL) WP(w, def_d).data_1 = 360;
 }
 
 
@@ -441,8 +439,7 @@ static bool ReadyForNextItem(void)
 	// Ticker message
 	// Check if the status bar message is still being displayed?
 	w = FindWindowById(WC_STATUS_BAR, 0);
-	if (w != NULL && WP(w, def_d).data_1 > -1280)
-		return false;
+	if (w != NULL && WP(w, const def_d).data_1 > -1280) return false;
 
 	// Newspaper message
 	// Wait until duration reaches 0
@@ -468,31 +465,33 @@ static void MoveToNexItem(void)
 		ni = &_news_items[_current_news];
 
 		// check the date, don't show too old items
-		if (_date - _news_items_age[ni->type] > ni->date)
-			return;
+		if (_date - _news_items_age[ni->type] > ni->date) return;
 
 		// execute the validation function to see if this item is still valid
-		if ( ni->isValid != NULL && !ni->isValid(ni->data_a, ni->data_b) )
-			return;
+		if (ni->isValid != NULL && !ni->isValid(ni->data_a, ni->data_b)) return;
 
-  	switch (GetNewsDisplayValue(ni->type)) {
-  	case 0: { /* Off - show nothing only a small reminder in the status bar */
-  		Window *w = FindWindowById(WC_STATUS_BAR, 0);
+		switch (GetNewsDisplayValue(ni->type)) {
+		case 0: { /* Off - show nothing only a small reminder in the status bar */
+			Window* w = FindWindowById(WC_STATUS_BAR, 0);
+
 			if (w != NULL) {
 				WP(w, def_d).data_2 = 91;
 				SetWindowDirty(w);
 			}
-  	} break;
-  	case 1: /* Summary - show ticker, but if forced big, cascade to full */
-  		if (!(ni->flags & NF_FORCE_BIG)) {
-  			ShowTicker(ni);
-  			break;
-  		}
-  		/* Fallthrough */
-  	case 2: /* Full - show newspaper*/
-  		ShowNewspaper(ni);
-  		break;
-  	}
+			break;
+		}
+
+		case 1: /* Summary - show ticker, but if forced big, cascade to full */
+			if (!(ni->flags & NF_FORCE_BIG)) {
+				ShowTicker(ni);
+				break;
+			}
+			/* Fallthrough */
+
+		case 2: /* Full - show newspaper*/
+			ShowNewspaper(ni);
+			break;
+		}
 	}
 }
 
@@ -501,8 +500,7 @@ void NewsLoop(void)
 	// no news item yet
 	if (_total_news == 0) return;
 
-	if (ReadyForNextItem())
-		MoveToNexItem();
+	if (ReadyForNextItem()) MoveToNexItem();
 }
 
 /* Do a forced show of a specific message */
@@ -541,13 +539,13 @@ void ShowLastNewsMessage(void)
 recent news. Returns INVALID_NEWS if end of queue reached. */
 static byte getNews(byte i)
 {
-	if (i >= _total_news)
-		return INVALID_NEWS;
+	if (i >= _total_news) return INVALID_NEWS;
 
-	if (_latest_news < i)
+	if (_latest_news < i) {
 		i = _latest_news + MAX_NEWS - i;
-	else
+	} else {
 		i = _latest_news - i;
+	}
 
 	i %= MAX_NEWS;
 	return i;
@@ -636,10 +634,11 @@ static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 			p = y + w->vscroll.pos;
 			if (p > _total_news - 1) break;
 
-			if (_latest_news >= p)
+			if (_latest_news >= p) {
 				q = _latest_news - p;
-			else
+			} else {
 				q = _latest_news + MAX_NEWS - p;
+			}
 			ShowNewsMessage(q);
 
 			break;

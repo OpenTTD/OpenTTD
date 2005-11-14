@@ -45,7 +45,8 @@ uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t)
 	uint buttons = 0;
 
 	if (pid != OWNER_SPECTATOR) {
-		int i;
+		uint i;
+
 		// bribe option enabled?
 		if (_patches.bribe) {
 			// if unwanted, disable everything.
@@ -81,11 +82,12 @@ uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t)
 static int GetNthSetBit(uint32 bits, int n)
 {
 	int i = 0;
+
 	if (n >= 0) {
 		do {
-			if (bits&1 && --n < 0) return i;
+			if (bits & 1 && --n < 0) return i;
 			i++;
-		} while (bits>>=1);
+		} while (bits >>= 1);
 	}
 	return -1;
 }
@@ -119,7 +121,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 			// Draw list of players
 			y = 25;
 			FOR_ALL_PLAYERS(p) {
-				if (p->is_active && (HASBIT(t->have_ratings, p->index) || t->exclusivity==p->index)) {
+				if (p->is_active && (HASBIT(t->have_ratings, p->index) || t->exclusivity == p->index)) {
 					DrawPlayerIcon(p->index, 2, y);
 
 					SetDParam(0, p->name_1);
@@ -138,10 +140,10 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 
 					SetDParam(4, str);
 					if (t->exclusivity == p->index) // red icon for player with exclusive rights
-						DrawSprite((SPR_BLOT) | PALETTE_TO_RED, 18, y);
+						DrawSprite(SPR_BLOT | PALETTE_TO_RED, 18, y);
 
 					DrawString(28, y, STR_2024, 0);
-					y+=10;
+					y += 10;
 				}
 			}
 		}
@@ -153,11 +155,10 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 
 			if (--pos < 0) {
 				DrawString(2, y, STR_2045_ACTIONS_AVAILABLE, 0);
-				y+=10;
+				y += 10;
 			}
-			for(i=0; buttons; i++,buttons>>=1) {
-				if (pos <= -5)
-					break;
+			for (i = 0; buttons; i++, buttons >>= 1) {
+				if (pos <= -5) break;
 
 				if (buttons&1 && --pos < 0) {
 					DrawString(3, y, STR_2046_SMALL_ADVERTISING_CAMPAIGN + i, 6);
@@ -167,8 +168,9 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 		}
 
 		{
-			int i;
-			if ((i=WP(w,def_d).data_1) != -1) {
+			int i = WP(w,def_d).data_1;
+
+			if (i != -1) {
 				SetDParam(1, (_price.build_industry >> 8) * _town_action_costs[i]);
 				SetDParam(0, STR_2046_SMALL_ADVERTISING_CAMPAIGN + i);
 				DrawStringMultiLine(2, 159, STR_204D_INITIATE_A_SMALL_LOCAL + i, 313);
@@ -182,8 +184,8 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 		case 3: { /* listbox */
 			const Town *t = GetTown(w->window_number);
 			int y = (e->click.pt.y - 0x6B) / 10;
-			if (!IS_INT_INSIDE(y, 0, 5))
-				return;
+
+			if (!IS_INT_INSIDE(y, 0, 5)) return;
 
 			y = GetNthSetBit(GetMaskOfTownActions(NULL, _local_player, t), y + w->vscroll.pos - 1);
 			if (y >= 0) {
@@ -216,10 +218,9 @@ static const WindowDesc _town_authority_desc = {
 
 static void ShowTownAuthorityWindow(uint town)
 {
-	Window *w;
+	Window* w = AllocateWindowDescFront(&_town_authority_desc, town);
 
-	w = AllocateWindowDescFront(&_town_authority_desc, town);
-	if (w) {
+	if (w != NULL) {
 		w->vscroll.cap = 5;
 		WP(w,def_d).data_1 = -1;
 	}
@@ -229,7 +230,7 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 {
 	Town *t = GetTown(w->window_number);
 
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT:
 		// disable renaming town in network games if you are not the server
 		if (_networking && !_network_server) SETBIT(w->disabled_state, 8);
@@ -239,37 +240,41 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 
 		SetDParam(0, t->population);
 		SetDParam(1, t->num_houses);
-		DrawString(2,107,STR_2006_POPULATION,0);
+		DrawString(2, 107, STR_2006_POPULATION, 0);
 
 		SetDParam(0, t->act_pass);
 		SetDParam(1, t->max_pass);
-		DrawString(2,117,STR_200D_PASSENGERS_LAST_MONTH_MAX,0);
+		DrawString(2, 117, STR_200D_PASSENGERS_LAST_MONTH_MAX, 0);
 
 		SetDParam(0, t->act_mail);
 		SetDParam(1, t->max_mail);
-		DrawString(2,127,STR_200E_MAIL_LAST_MONTH_MAX,0);
+		DrawString(2, 127, STR_200E_MAIL_LAST_MONTH_MAX, 0);
 
 		DrawWindowViewport(w);
 		break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
-		case 6: /* scroll to location */
-			ScrollMainWindowToTile(t->xy);
-			break;
-		case 7: /* town authority */
-			ShowTownAuthorityWindow(w->window_number);
-			break;
-		case 8: /* rename */
-			SetDParam(0, w->window_number);
-			ShowQueryString(STR_TOWN, STR_2007_RENAME_TOWN, 31, 130, w->window_class, w->window_number);
-			break;
-		case 9: /* expand town */
-			ExpandTown(t);
-			break;
-		case 10: /* delete town */
-			DeleteTown(t);
-			break;
+		switch (e->click.widget) {
+			case 6: /* scroll to location */
+				ScrollMainWindowToTile(t->xy);
+				break;
+
+			case 7: /* town authority */
+				ShowTownAuthorityWindow(w->window_number);
+				break;
+
+			case 8: /* rename */
+				SetDParam(0, w->window_number);
+				ShowQueryString(STR_TOWN, STR_2007_RENAME_TOWN, 31, 130, w->window_class, w->window_number);
+				break;
+
+			case 9: /* expand town */
+				ExpandTown(t);
+				break;
+
+			case 10: /* delete town */
+				DeleteTown(t);
+				break;
 		}
 		break;
 
@@ -331,7 +336,6 @@ static const WindowDesc _town_view_scen_desc = {
 void ShowTownViewWindow(uint town)
 {
 	Window *w;
-	Town *t;
 
 	if (_game_mode != GM_EDITOR) {
 		w = AllocateWindowDescFront(&_town_view_desc, town);
@@ -339,10 +343,9 @@ void ShowTownViewWindow(uint town)
 		w = AllocateWindowDescFront(&_town_view_scen_desc, town);
 	}
 
-	if (w) {
+	if (w != NULL) {
 		w->flags4 |= WF_DISABLE_VP_SCROLL;
-		t = GetTown(w->window_number);
-		AssignWindowViewport(w, 3, 17, 0xFE, 0x56, t->xy, 1);
+		AssignWindowViewport(w, 3, 17, 0xFE, 0x56, GetTown(town)->xy, 1);
 	}
 }
 
@@ -403,16 +406,16 @@ static int CDECL TownPopSorter(const void *a, const void *b)
 static void MakeSortedTownList(void)
 {
 	const Town* t;
-	int n = 0;
+	uint n = 0;
 
 	/* Create array for sorting */
 	_town_sort = realloc(_town_sort, GetTownPoolSize() * sizeof(_town_sort[0]));
 	if (_town_sort == NULL)
 		error("Could not allocate memory for the town-sorting-list");
 
-	FOR_ALL_TOWNS(t)
-		if (t->xy)
-			_town_sort[n++] = t->index;
+	FOR_ALL_TOWNS(t) {
+		if (t->xy != 0) _town_sort[n++] = t->index;
+	}
 
 	_num_town_sort = n;
 
@@ -425,9 +428,8 @@ static void MakeSortedTownList(void)
 
 static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
-
 		if (_town_sort_dirty) {
 			_town_sort_dirty = false;
 			MakeSortedTownList();
@@ -516,10 +518,9 @@ static const WindowDesc _town_directory_desc = {
 
 void ShowTownDirectory(void)
 {
-	Window *w;
+	Window* w = AllocateWindowDescFront(&_town_directory_desc, 0);
 
-	w = AllocateWindowDescFront(&_town_directory_desc, 0);
-	if (w) {
+	if (w != NULL) {
 		w->vscroll.cap = 16;
 		w->resize.step_height = 10;
 		w->resize.height = w->height - 10 * 6; // minimum of 10 items in the list, each item 10 high

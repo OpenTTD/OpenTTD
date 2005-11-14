@@ -685,10 +685,10 @@ static const WindowDesc _other_player_company_desc = {
 
 void ShowPlayerCompany(PlayerID player)
 {
-	Window *w;
-	w = AllocateWindowDescFront(player == _local_player ? &_my_player_company_desc : &_other_player_company_desc,  player);
-	if (w)
-		w->caption_color = w->window_number;
+	Window* w;
+
+	w = AllocateWindowDescFront(player == _local_player ? &_my_player_company_desc : &_other_player_company_desc, player);
+	if (w != NULL) w->caption_color = w->window_number;
 }
 
 
@@ -881,7 +881,7 @@ void ShowHighscoreTable(int difficulty, int8 ranking)
 	if (!_networking) DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
 
 	/* Close all always on-top windows to get a clean screen */
-	if (_game_mode != GM_MENU) 	HideVitalWindows();
+	if (_game_mode != GM_MENU) HideVitalWindows();
 
 	DeleteWindowByClass(WC_HIGHSCORE);
 	w = AllocateWindowDesc(&_highscore_desc);

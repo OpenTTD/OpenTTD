@@ -80,8 +80,7 @@ static void VehiclePoolNewBlock(uint start_item)
 {
 	Vehicle *v;
 
-	FOR_ALL_VEHICLES_FROM(v, start_item)
-		v->index = start_item++;
+	FOR_ALL_VEHICLES_FROM(v, start_item) v->index = start_item++;
 }
 
 /* Initialize the vehicle-pool */
@@ -230,9 +229,7 @@ void AfterLoadVehicles(void)
 				case VEH_Aircraft:
 					if (v->subtype == 0 || v->subtype == 2) {
 						v->cur_image = GetAircraftImage(v, v->direction);
-						if (v->next != NULL) {
-							v->next->cur_image = v->cur_image;
-						}
+						if (v->next != NULL) v->next->cur_image = v->cur_image;
 					}
 					break;
 				default: break;
@@ -325,11 +322,13 @@ static Vehicle *AllocateSingleVehicle(VehicleID *skip_vehicles)
 	return NULL;
 }
 
+
 Vehicle *AllocateVehicle(void)
 {
 	VehicleID counter = 0;
 	return AllocateSingleVehicle(&counter);
 }
+
 
 /** Allocates a lot of vehicles and frees them again
 * @param vl pointer to an array of vehicles to get allocated. Can be NULL if the vehicles aren't needed (makes it test only)
@@ -359,7 +358,6 @@ bool AllocateVehicles(Vehicle **vl, int num)
 void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 {
 	int x,y,x2,y2;
-	VehicleID veh;
 	Point pt = RemapCoords(TileX(tile) * 16, TileY(tile) * 16, 0);
 
 	x2 = ((pt.x + 104) & 0x1F80) >> 7;
@@ -368,16 +366,16 @@ void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 	y2 = ((pt.y + 56) & 0xFC0);
 	y  = ((pt.y - 294) & 0xFC0);
 
-	for(;;) {
+	for (;;) {
 		int xb = x;
-		for(;;) {
-			veh = _vehicle_position_hash[ (x+y)&0xFFFF ];
+		for (;;) {
+			VehicleID veh = _vehicle_position_hash[(x + y) & 0xFFFF];
 			while (veh != INVALID_VEHICLE) {
 				Vehicle *v = GetVehicle(veh);
 				void *a;
 
-				if ((a = proc(v, data)) != NULL)
-					return a;
+				a = proc(v, data);
+				if (a != NULL) return a;
 				veh = v->next_hash;
 			}
 
@@ -408,8 +406,7 @@ void UpdateVehiclePosHash(Vehicle *v, int x, int y)
 	new_hash = (x == INVALID_COORD) ? NULL : &_vehicle_position_hash[GEN_HASH(x,y)];
 	old_hash = (old_x == INVALID_COORD) ? NULL : &_vehicle_position_hash[GEN_HASH(old_x, old_y)];
 
-	if (old_hash == new_hash)
-		return;
+	if (old_hash == new_hash) return;
 
 	/* remove from hash table? */
 	if (old_hash != NULL) {
@@ -421,10 +418,11 @@ void UpdateVehiclePosHash(Vehicle *v, int x, int y)
 			last = u;
 		}
 
-		if (last == NULL)
+		if (last == NULL) {
 			*old_hash = v->next_hash;
-		else
+		} else {
 			last->next_hash = v->next_hash;
+		}
 	}
 
 	/* insert into hash table? */
@@ -525,8 +523,8 @@ Vehicle *GetFirstVehicleInChain(const Vehicle *v)
 
 uint CountVehiclesInChain(const Vehicle* v)
 {
-	int count = 0;
-	do count++; while ( (v=v->next) != NULL);
+	uint count = 0;
+	do count++; while ((v = v->next) != NULL);
 	return count;
 }
 
@@ -719,7 +717,7 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 	for(;;) {
 		xb = x;
 		for(;;) {
-			veh = _vehicle_position_hash[ (x+y)&0xFFFF ];
+			veh = _vehicle_position_hash[(x + y) & 0xFFFF];
 			while (veh != INVALID_VEHICLE) {
 				v = GetVehicle(veh);
 
@@ -1411,9 +1409,10 @@ void CheckVehicleBreakdown(Vehicle *v)
 	if ((rel_old >> 8) != (rel >> 8))
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
-	if (v->breakdown_ctr != 0 || (v->vehstatus & VS_STOPPED) != 0 ||
-			v->cur_speed < 5 || _game_mode == GM_MENU)
-				return;
+	if (v->breakdown_ctr != 0 || v->vehstatus & VS_STOPPED ||
+			v->cur_speed < 5 || _game_mode == GM_MENU) {
+		return;
+	}
 
 	r = Random();
 
@@ -1427,8 +1426,7 @@ void CheckVehicleBreakdown(Vehicle *v)
 	if (v->type == VEH_Ship) rel += 0x6666;
 
 	/* disabled breakdowns? */
-	if (_opt.diff.vehicle_breakdowns < 1)
-		return;
+	if (_opt.diff.vehicle_breakdowns < 1) return;
 
 	/* reduced breakdowns? */
 	if (_opt.diff.vehicle_breakdowns == 1) rel += 0x6666;
@@ -1450,12 +1448,10 @@ static const StringID _vehicle_type_names[4] = {
 
 static void ShowVehicleGettingOld(Vehicle *v, StringID msg)
 {
-	if (v->owner != _local_player)
-		return;
+	if (v->owner != _local_player) return;
 
 	// Do not show getting-old message if autorenew is active
-	if (GetPlayer(v->owner)->engine_renew)
-		return;
+	if (GetPlayer(v->owner)->engine_renew) return;
 
 	SetDParam(0, _vehicle_type_names[v->type - 0x10]);
 	SetDParam(1, v->unitnumber);
@@ -1492,20 +1488,19 @@ static Vehicle *GetNextEnginePart(Vehicle *v)
 {
 	switch (v->type) {
 		case VEH_Train:
-		{
-			const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
-			if (rvi->flags & RVI_MULTIHEAD)
+			if (RailVehInfo(v->engine_type)->flags & RVI_MULTIHEAD) {
 				return GetRearEngine(v, v->engine_type);
-			if (v->next != NULL && v->next->subtype == TS_Artic_Part)
-				return v->next;
-		}
+			}
+			if (v->next != NULL && v->next->subtype == TS_Artic_Part) return v->next;
 			break;
+
 		case VEH_Aircraft:
 			return v->next;
-			break;
+
 		case VEH_Road:
 		case VEH_Ship:
 			break;
+
 		default: NOT_REACHED();
 	}
 	return NULL;
@@ -1523,8 +1518,7 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *w_front, *w, *w_rear;
 	int cost, total_cost = 0;
 
-	if (!IsVehicleIndex(p1))
-		return CMD_ERROR;
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 	v = GetVehicle(p1);
 	v_front = v;
 	w = NULL;
@@ -1540,8 +1534,7 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	 * w_rear is the rear end of the cloned train. It's used to add more cars and is only used by trains
 	 */
 
-	if (!CheckOwnership(v->owner))
-		return CMD_ERROR;
+	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (v->type == VEH_Train && v->subtype != TS_Front_Engine) return CMD_ERROR;
 
@@ -1567,7 +1560,7 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		total_cost += cost;
 
 		if (flags & DC_EXEC) {
-			w= GetVehicle(_new_vehicle_id);
+			w = GetVehicle(_new_vehicle_id);
 
 			if (v->type != VEH_Road) { // road vehicles can't be refitted
 				if (v->cargo_type != w->cargo_type) {
@@ -1636,11 +1629,11 @@ static void MoveVehicleCargo(Vehicle *dest, Vehicle *source)
 }
 
 /* Replaces a vehicle (used to be called autorenew)
- * This function is only called from MaybeReplaceVehicle(), which is the next one
+ * This function is only called from MaybeReplaceVehicle()
  * Must be called with _current_player set to the owner of the vehicle
  * @param w Vehicle to replace
  * @param flags is the flags to use when calling DoCommand(). Mainly DC_EXEC counts
- *	  return value is cost of the replacement or CMD_ERROR
+ * @return value is cost of the replacement or CMD_ERROR
  */
 static int32 ReplaceVehicle(Vehicle **w, byte flags)
 {
@@ -1652,11 +1645,9 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 	bool new_front = false;
 	Vehicle *new_v = NULL;
 
-	new_engine_type = p->engine_replacement[old_v->engine_type] == INVALID_ENGINE ? old_v->engine_type: p->engine_replacement[old_v->engine_type];
+	new_engine_type = p->engine_replacement[old_v->engine_type] == INVALID_ENGINE ? old_v->engine_type : p->engine_replacement[old_v->engine_type];
 
 	cost = DoCommand(old_v->x_pos, old_v->y_pos, new_engine_type, 2, flags, CMD_BUILD_VEH(old_v->type));
-
-	//check if the new engine is buildable
 	if (CmdFailed(cost)) return cost;
 
 	if (flags & DC_EXEC) {
@@ -1708,11 +1699,12 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 	return cost;
 }
 
-/** replaces a vehicle if it's set for autoreplace or is too old(used to be called autorenew)
-* @param v The vehicle to replace
-*	if the vehicle is a train, v needs to be the front engine
-*	return value is a pointer to the new vehicle, which is the same as the argument if nothing happened
-*/
+/** replaces a vehicle if it's set for autoreplace or is too old
+ * (used to be called autorenew)
+ * @param v The vehicle to replace
+ *	if the vehicle is a train, v needs to be the front engine
+ *	return value is a pointer to the new vehicle, which is the same as the argument if nothing happened
+ */
 static void MaybeReplaceVehicle(Vehicle *v)
 {
 	Vehicle *w;
@@ -1739,14 +1731,15 @@ static void MaybeReplaceVehicle(Vehicle *v)
 		train_fits_in_station = true;
 	}
 
-	while (true) {
+	for (;;) {
 		cost = 0;
 		w = v;
 		do {
 			// check if the vehicle should be replaced
-			if (!p->engine_renew || w->age - w->max_age < (p->engine_renew_months * 30)		//replace if engine is too old
-				|| (w->max_age == 0)) {														// rail cars got a max age of 0
-				if (p->engine_replacement[w->engine_type] == INVALID_ENGINE)				// updates to a new model
+			if (!p->engine_renew ||
+					w->age - w->max_age < (p->engine_renew_months * 30) || // replace if engine is too old
+					w->max_age == 0) { // rail cars got a max age of 0
+				if (p->engine_replacement[w->engine_type] == INVALID_ENGINE) // updates to a new model
 					continue;
 			}
 
@@ -1760,14 +1753,16 @@ static void MaybeReplaceVehicle(Vehicle *v)
 			/* Now replace the vehicle */
 			temp_cost = ReplaceVehicle(&w, flags);
 
-			if (flags & DC_EXEC && !(w->type == VEH_Train && w->u.rail.first_engine != INVALID_VEHICLE)){
-				// now we bought a new engine and sold the old one. We need to fix the pointers in order to avoid pointing to the old one
-				// for trains: these pointers should point to the front engine and not the cars
+			if (flags & DC_EXEC &&
+					(w->type != VEH_Train || w->u.rail.first_engine == INVALID_VEHICLE)) {
+				/* now we bought a new engine and sold the old one. We need to fix the
+				 * pointers in order to avoid pointing to the old one for trains: these
+				 * pointers should point to the front engine and not the cars
+				 */
 				v = w;
 			}
 
-			if (CmdFailed(temp_cost))
-				break;
+			if (CmdFailed(temp_cost)) break;
 
 			cost += temp_cost;
 		} while (w->type == VEH_Train && (w = GetNextVehicle(w)) != NULL);
@@ -1787,8 +1782,7 @@ static void MaybeReplaceVehicle(Vehicle *v)
 
 				AddNewsItem(message, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0), v->index, 0);
 			}
-			if (stopped)
-				v->vehstatus &= ~VS_STOPPED; //we start the vehicle again
+			if (stopped) v->vehstatus &= ~VS_STOPPED;
 			_current_player = OWNER_NONE;
 			return;
 		}
@@ -1823,8 +1817,7 @@ static void MaybeReplaceVehicle(Vehicle *v)
 
 	if (IsLocalPlayer()) ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost);
 
-	if (stopped)
-		v->vehstatus &= ~VS_STOPPED; //we start the vehicle again
+	if (stopped) v->vehstatus &= ~VS_STOPPED;
 	_current_player = OWNER_NONE;
 }
 

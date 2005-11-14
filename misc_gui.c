@@ -86,7 +86,10 @@ static void LandInfoWndProc(Window *w, WindowEvent *e)
 			for (i = 0; i < NUM_CARGO; ++i) {
 				if (lid->ac[i] > 0) {
 					// Add a comma between each item.
-					if (found) { *p++ = ','; *p++ = ' '; }
+					if (found) {
+						*p++ = ',';
+						*p++ = ' ';
+					}
 					found = true;
 
 					// If the accepted value is less than 8, show it in 1/8:ths
@@ -101,8 +104,7 @@ static void LandInfoWndProc(Window *w, WindowEvent *e)
 				}
 			}
 
-			if (found)
-				DrawStringMultiCenter(140, 76, BindCString(buf), 276);
+			if (found) DrawStringMultiCenter(140, 76, BindCString(buf), 276);
 		}
 
 		if (lid->td.build_date != 0) {
@@ -221,7 +223,7 @@ static const char *credits[] = {
 
 static void AboutWindowProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_CREATE: /* Set up window counter and start position of scroller */
 		WP(w, scroller_d).counter = 0;
 		WP(w, scroller_d).height = w->height - 40;
@@ -292,7 +294,7 @@ static const uint32 _tree_sprites[] = {
 
 static void BuildTreesWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		int x,y;
 		int i, count;
@@ -308,24 +310,24 @@ static void BuildTreesWndProc(Window *w, WindowEvent *e)
 			DrawSprite(_tree_sprites[i], x, y);
 			x += 35;
 			if (!(++i & 3)) {
-				x -= 35*4;
+				x -= 35 * 4;
 				y += 47;
 			}
 		} while (--count);
 	} break;
 
 	case WE_CLICK: {
-		int wid;
+		int wid = e->click.widget;
 
-		switch(wid=e->click.widget) {
+		switch (wid) {
 		case 0:
 			ResetObjectToPlace();
-			return;
+			break;
+
 		case 3: case 4: case 5: case 6:
 		case 7: case 8: case 9: case 10:
 		case 11:case 12: case 13: case 14:
-			if ( (uint)(wid-3) >= (uint)WP(w,tree_d).count)
-				return;
+			if (wid - 3 >= WP(w,tree_d).count) break;
 
 			if (HandlePlacePushButton(w, wid, SPR_CURSOR_TREE, 1, NULL))
 				_tree_to_plant = WP(w,tree_d).base + wid - 3;
@@ -462,7 +464,7 @@ static const Widget _errmsg_face_widgets[] = {
 
 static void ErrmsgWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT:
 		COPY_IN_DPARAM(0, _errmsg_decode_params, lengthof(_errmsg_decode_params));
 		DrawWindowWidgets(w);
@@ -498,18 +500,17 @@ static void ErrmsgWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_MOUSELOOP:
-		if (_right_button_down)
-			DeleteWindow(w);
+		if (_right_button_down) DeleteWindow(w);
 		break;
+
 	case WE_4:
-		if (!--_errmsg_duration)
-			DeleteWindow(w);
+		if (--_errmsg_duration == 0) DeleteWindow(w);
 		break;
-	case WE_DESTROY: {
+
+	case WE_DESTROY:
 		SetRedErrorSquare(0);
 		_switch_mode_errorstr = INVALID_STRING_ID;
 		break;
-		}
 
 	case WE_KEYPRESS:
 		if (e->keypress.keycode == WKC_SPACE) {
@@ -619,18 +620,16 @@ static const Widget _tooltips_widgets[] = {
 
 static void TooltipsWndProc(Window *w, WindowEvent *e)
 {
+	switch (e->event) {
+		case WE_PAINT:
+			GfxFillRect(0, 0, w->width - 1, w->height - 1, 0);
+			GfxFillRect(1, 1, w->width - 2, w->height - 2, 0x44);
+			DrawStringMultiCenter((w->width >> 1), (w->height >> 1) - 5, WP(w,tooltips_d).string_id, 197);
+			break;
 
-	switch(e->event) {
-	case WE_PAINT: {
-		GfxFillRect(0, 0, w->width - 1, w->height - 1, 0);
-		GfxFillRect(1, 1, w->width - 2, w->height - 2, 0x44);
-		DrawStringMultiCenter((w->width>>1), (w->height>>1)-5, WP(w,tooltips_d).string_id, 197);
-		break;
-	}
-	case WE_MOUSELOOP:
-		if (!_right_button_down)
-			DeleteWindow(w);
-		break;
+		case WE_MOUSELOOP:
+			if (!_right_button_down) DeleteWindow(w);
+			break;
 	}
 }
 
@@ -641,8 +640,7 @@ void GuiShowTooltips(StringID string_id)
 	int right,bottom;
 	int x,y;
 
-	if (string_id == 0)
-		return;
+	if (string_id == 0) return;
 
 	w = FindWindowById(WC_TOOLTIPS, 0);
 	if (w != NULL) {
@@ -941,8 +939,7 @@ bool HandleCaret(Textbuf *tb)
 
 void HandleEditBox(Window *w, int wid)
 {
-	if (HandleCaret(&WP(w, querystr_d).text))
-		InvalidateWidget(w, wid);
+	if (HandleCaret(&WP(w, querystr_d).text)) InvalidateWidget(w, wid);
 }
 
 void DrawEditBox(Window *w, int wid)
@@ -1012,7 +1009,7 @@ press_ok:;
 	} break;
 
 	case WE_KEYPRESS: {
-		switch(HandleEditBoxKey(w, 5, e)) {
+		switch (HandleEditBoxKey(w, 5, e)) {
 		case 1: // Return
 			goto press_ok;
 		case 2: // Escape
@@ -1240,12 +1237,16 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 	case WE_CREATE: { /* Set up OPENTTD button */
 		o_dir.type = FIOS_TYPE_DIRECT;
 		switch (_saveload_mode) {
-			case SLD_SAVE_GAME: case SLD_LOAD_GAME:
+			case SLD_SAVE_GAME:
+			case SLD_LOAD_GAME:
 				ttd_strlcpy(&o_dir.name[0], _path.save_dir, sizeof(o_dir.name));
 				break;
-			case SLD_SAVE_SCENARIO: case SLD_LOAD_SCENARIO:
+
+			case SLD_SAVE_SCENARIO:
+			case SLD_LOAD_SCENARIO:
 				ttd_strlcpy(&o_dir.name[0], _path.scenario_dir, sizeof(o_dir.name));
 				break;
+
 			default:
 				ttd_strlcpy(&o_dir.name[0], _path.personal_dir, sizeof(o_dir.name));
 		}
@@ -1308,12 +1309,12 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 			char *name;
 			const FiosItem *file;
 
-			if (y < 0 || (y += w->vscroll.pos) >= w->vscroll.count)
-				return;
+			if (y < 0 || (y += w->vscroll.pos) >= w->vscroll.count) return;
 
 			file = _fios_list + y;
 
-			if ((name = FiosBrowseTo(file)) != NULL) {
+			name = FiosBrowseTo(file);
+			if (name != NULL) {
 				if (_saveload_mode == SLD_LOAD_GAME || _saveload_mode == SLD_LOAD_SCENARIO) {
 					_switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_SCENARIO : SM_LOAD;
 
@@ -1474,8 +1475,9 @@ void ShowSaveLoadDialog(int mode)
 
 	// pause is only used in single-player, non-editor mode, non-menu mode. It
 	// will be unpaused in the WE_DESTROY event handler.
-	if(_game_mode != GM_MENU && !_networking && _game_mode != GM_EDITOR)
+	if (_game_mode != GM_MENU && !_networking && _game_mode != GM_EDITOR) {
 		DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
+	}
 
 	BuildFileList();
 
@@ -1500,9 +1502,11 @@ static const Widget _select_scenario_widgets[] = {
 {   WIDGETS_END},
 };
 
-static void SelectScenarioWndProc(Window *w, WindowEvent *e) {
+static void SelectScenarioWndProc(Window* w, WindowEvent* e)
+{
 	const int list_start = 45;
-	switch(e->event) {
+
+	switch (e->event) {
 	case WE_PAINT:
 	{
 		int y,pos;
@@ -1642,8 +1646,8 @@ static int32 ClickMoneyCheat(int32 p1, int32 p2)
 // p1 player to set to, p2 is -1 or +1 (down/up)
 static int32 ClickChangePlayerCheat(int32 p1, int32 p2)
 {
-	while(p1 >= 0 && p1 < MAX_PLAYERS) {
-		if (_players[p1].is_active)	{
+	while (p1 >= 0 && p1 < MAX_PLAYERS) {
+		if (_players[p1].is_active) {
 			_local_player = p1;
 			MarkWholeScreenDirty();
 			return _local_player;
@@ -1657,8 +1661,8 @@ static int32 ClickChangePlayerCheat(int32 p1, int32 p2)
 // p1 -1 or +1 (down/up)
 static int32 ClickChangeClimateCheat(int32 p1, int32 p2)
 {
-	if(p1==-1) p1 = 3;
-	if(p1==4) p1 = 0;
+	if (p1 == -1) p1 = 3;
+	if (p1 ==  4) p1 = 0;
 	_opt.landscape = p1;
 	GfxLoadSprites();
 	MarkWholeScreenDirty();
@@ -1673,7 +1677,7 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 	YearMonthDay ymd;
 	ConvertDayToYMD(&ymd, _date);
 
-	if((ymd.year==0 && p2==-1) || (ymd.year==170 && p2==1)) return _cur_year;
+	if ((ymd.year == 0 && p2 == -1) || (ymd.year == 170 && p2 == 1)) return _cur_year;
 
 	SetDate(ConvertYMDToDay(_cur_year + p2, ymd.month, ymd.day));
 	EnginesMonthlyLoop();
@@ -1761,11 +1765,9 @@ extern void DrawPlayerIcon(int p, int x, int y);
 
 static void CheatsWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		int clk = WP(w,def_d).data_1;
-		const CheatEntry *ce = &_cheats_ui[0];
-		int32 val;
 		int x, y;
 		int i;
 
@@ -1773,53 +1775,55 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 
 		DrawStringMultiCenter(200, 25, STR_CHEATS_WARNING, 350);
 
-		x=0;
-		y=45;
+		x = 0;
+		y = 45;
 
-		for(i=0; i!=lengthof(_cheats_ui); i++,ce++) {
+		for (i = 0; i != lengthof(_cheats_ui); i++) {
+			const CheatEntry* ce = &_cheats_ui[i];
+
 			DrawSprite((*ce->been_used) ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, x + 5, y + 2);
 
 			if (ce->type == CE_BOOL) {
-				DrawFrameRect(x+20, y+1, x+30+9, y+9, (*(bool*)ce->variable) ? 6 : 4, (*(bool*)ce->variable) ? FR_LOWERED : 0);
+				DrawFrameRect(x + 20, y + 1, x + 30 + 9, y + 9, (*(bool*)ce->variable) ? 6 : 4, (*(bool*)ce->variable) ? FR_LOWERED : 0);
 				SetDParam(0, *(bool*)ce->variable ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
-
 			}	else if (ce->type == CE_CLICK) {
-				DrawFrameRect(x+20, y+1, x+30+9, y+9, 0, (WP(w,def_d).data_1 == i*2+1) ? FR_LOWERED : 0);
-				if (i == 0)
-					SetDParam64(0, (int64) 10000000);
-				else
+				DrawFrameRect(x + 20, y + 1, x + 30 + 9, y + 9, 0, (WP(w,def_d).data_1 == i * 2 + 1) ? FR_LOWERED : 0);
+				if (i == 0) {
+					SetDParam64(0, 10000000);
+				} else {
 					SetDParam(0, false);
-
+				}
 			} else {
-				DrawFrameRect(x+20, y+1, x+20+9, y+9, 3, clk == i*2+1 ? FR_LOWERED : 0);
-				DrawFrameRect(x+30, y+1, x+30+9, y+9, 3, clk == i*2+2 ? FR_LOWERED : 0);
-				DrawStringCentered(x+25, y+1, STR_6819, 0);
-				DrawStringCentered(x+35, y+1, STR_681A, 0);
+				int32 val;
+
+				DrawFrameRect(x + 20, y + 1, x + 20 + 9, y + 9, 3, clk == i * 2 + 1 ? FR_LOWERED : 0);
+				DrawFrameRect(x + 30, y + 1, x + 30 + 9, y + 9, 3, clk == i * 2 + 2 ? FR_LOWERED : 0);
+				DrawStringCentered(x + 25, y + 1, STR_6819, 0);
+				DrawStringCentered(x + 35, y + 1, STR_681A, 0);
 
 				val = ReadCE(ce);
 
 				// set correct string for switch climate cheat
-				if(ce->str==STR_CHEAT_SWITCH_CLIMATE)
-					val += STR_TEMPERATE_LANDSCAPE;
+				if (ce->str == STR_CHEAT_SWITCH_CLIMATE) val += STR_TEMPERATE_LANDSCAPE;
 
 				SetDParam(0, val);
 
 				// display date for change date cheat
-				if(ce->str==STR_CHEAT_CHANGE_DATE)
-					SetDParam(0, _date);
+				if (ce->str == STR_CHEAT_CHANGE_DATE) SetDParam(0, _date);
 
 				// draw colored flag for change player cheat
-				if(ce->str==STR_CHEAT_CHANGE_PLAYER)
-					DrawPlayerIcon(_current_player, 156, y+2);
-
+				if (ce->str == STR_CHEAT_CHANGE_PLAYER) {
+					DrawPlayerIcon(_current_player, 156, y + 2);
+				}
 			}
 
-		DrawString(50, y+1, ce->str, 0);
+			DrawString(50, y + 1, ce->str, 0);
 
-		y+=12;
+			y += 12;
 		}
 		break;
 	}
+
 	case WE_CLICK: {
 			const CheatEntry *ce;
 			uint btn = (e->click.pt.y - 46) / 12;
@@ -1827,19 +1831,17 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 			uint x = e->click.pt.x;
 
 			// not clicking a button?
-			if(!IS_INT_INSIDE(x, 20, 40) || btn>=lengthof(_cheats_ui))
-				break;
+			if (!IS_INT_INSIDE(x, 20, 40) || btn >= lengthof(_cheats_ui)) break;
 
 			ce = &_cheats_ui[btn];
 			oval = val = ReadCE(ce);
 
 			*ce->been_used = true;
 
-			switch(ce->type) {
+			switch (ce->type) {
 				case CE_BOOL:	{
 					val ^= 1;
-					if (ce->click_proc != NULL)
-						ce->click_proc(val, 0);
+					if (ce->click_proc != NULL) ce->click_proc(val, 0);
 					break;
 				}
 
@@ -1861,11 +1863,11 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 					}
 
 					// take whatever the function returns
-					val = ce->click_proc(val, (x>=30) ? 1 : -1);
+					val = ce->click_proc(val, (x >= 30) ? 1 : -1);
 
-					if (val != oval)
-						WP(w,def_d).data_1 = btn * 2 + 1 + ((x>=30) ? 1 : 0);
-
+					if (val != oval) {
+						WP(w,def_d).data_1 = btn * 2 + 1 + ((x >= 30) ? 1 : 0);
+					}
 					break;
 				}
 			}
@@ -1886,6 +1888,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 		break;
 	}
 }
+
 static const WindowDesc _cheats_desc = {
 	240, 22, 400, 160,
 	WC_CHEATS,0,

@@ -166,7 +166,7 @@ struct WorldSprite {
 
 struct Vehicle {
 	byte type;	// type, ie roadven,train,ship,aircraft,special
-	byte subtype;     // subtype (Filled with values from EffectVehicles or TrainSubTypes)(Filled with values from EffectVehicles or TrainSubTypes)
+	byte subtype;     // subtype (Filled with values from EffectVehicles or TrainSubTypes)
 
 	VehicleID index;	// NOSAVE: Index in vehicle array
 
@@ -184,7 +184,6 @@ struct Vehicle {
 
 	int32 x_pos;			// coordinates
 	int32 y_pos;
-
 	byte z_pos;
 	byte direction;		// facing
 
@@ -262,8 +261,6 @@ struct Vehicle {
 	int32 profit_this_year;
 	int32 profit_last_year;
 	uint32 value;
-
-
 
 	union {
 		VehicleRail rail;

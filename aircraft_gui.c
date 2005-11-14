@@ -65,13 +65,11 @@ static void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selectio
 {
 	int image = GetAircraftImage(v, 6);
 	uint32 ormod = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner));
-	if (v->vehstatus & VS_CRASHED)
-		ormod = PALETTE_CRASH;
-	DrawSprite(image | ormod, x+25, y+10);
-	if (v->subtype == 0)
-		DrawSprite(SPR_ROTOR_STOPPED, x + 25, y + 5);
+	if (v->vehstatus & VS_CRASHED) ormod = PALETTE_CRASH;
+	DrawSprite(image | ormod, x + 25, y + 10);
+	if (v->subtype == 0) DrawSprite(SPR_ROTOR_STOPPED, x + 25, y + 5);
 	if (v->index == selection) {
-		DrawFrameRect(x-1, y-1, x+58, y+21, 0xF, FR_BORDERONLY);
+		DrawFrameRect(x - 1, y - 1, x + 58, y + 21, 0xF, FR_BORDERONLY);
 	}
 }
 
@@ -90,20 +88,14 @@ void CcBuildAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 void CcCloneAircraft(bool success, uint tile, uint32 p1, uint32 p2)
 {
-	if (success) {
-		const Vehicle* v = GetVehicle(_new_aircraft_id);
-
-		ShowAircraftViewWindow(v);
-	}
+	if (success) ShowAircraftViewWindow(GetVehicle(_new_aircraft_id));
 }
 
 static void NewAircraftWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
-
+	switch (e->event) {
 	case WE_PAINT: {
-		if (w->window_number == 0)
-			SETBIT(w->disabled_state, 5);
+		if (w->window_number == 0) SETBIT(w->disabled_state, 5);
 
 		{
 			int count = 0;
@@ -111,8 +103,7 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 			const Engine* e = GetEngine(AIRCRAFT_ENGINES_INDEX);
 
 			do {
-				if (HASBIT(e->player_avail, _local_player))
-					count++;
+				if (HASBIT(e->player_avail, _local_player)) count++;
 			} while (++e,--num);
 			SetVScrollCount(w, count);
 		}
@@ -508,7 +499,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 	switch(e->event) {
 	case WE_PAINT: {
 		const Vehicle* v = GetVehicle(w->window_number);
-		uint32 disabled = 1<<8;
+		uint32 disabled = 1 << 8;
 		StringID str;
 
 		{
@@ -520,8 +511,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 						disabled = 0;
 		}
 
-		if (v->owner != _local_player)
-			disabled |= 1<<8 | 1<<7;
+		if (v->owner != _local_player) disabled |= 1 << 8 | 1 << 7;
 		w->disabled_state = disabled;
 
 		/* draw widgets & caption */
@@ -555,8 +545,9 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 				if (v->num_orders == 0) {
 					str = STR_NO_ORDERS + _patches.vehicle_speed;
 					SetDParam(0, v->cur_speed * 8);
-				} else
+				} else {
 					str = STR_EMPTY;
+				}
 				break;
 			}
 		}
@@ -656,9 +647,12 @@ static void DrawAircraftDepotWindow(Window *w)
 	/* determine amount of items for scroller */
 	num = 0;
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Aircraft && v->subtype <= 2 && v->vehstatus&VS_HIDDEN &&
-				v->tile == tile)
-					num++;
+		if (v->type == VEH_Aircraft &&
+				v->subtype <= 2 &&
+				v->vehstatus & VS_HIDDEN &&
+				v->tile == tile) {
+			num++;
+		}
 	}
 	SetVScrollCount(w, (num + w->hscroll.cap - 1) / w->hscroll.cap);
 
@@ -729,9 +723,12 @@ static void AircraftDepotClickAircraft(Window *w, int x, int y)
 	int mode = GetVehicleFromAircraftDepotWndPt(w, x, y, &v);
 
 	// share / copy orders
-	if (_thd.place_mode && mode <= 0) { _place_clicked_vehicle = v; return; }
+	if (_thd.place_mode && mode <= 0) {
+		_place_clicked_vehicle = v;
+		return;
+	}
 
-	switch(mode) {
+	switch (mode) {
 	case 1:
 		return;
 
@@ -789,30 +786,31 @@ static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch(e->click.widget) {
-		case 5: /* click aircraft */
-			AircraftDepotClickAircraft(w, e->click.pt.x, e->click.pt.y);
-			break;
-		case 7: /* show build aircraft window */
-			ResetObjectToPlace();
-			ShowBuildAircraftWindow(w->window_number);
-			break;
+			case 5: /* click aircraft */
+				AircraftDepotClickAircraft(w, e->click.pt.x, e->click.pt.y);
+				break;
 
-		case 8: /* clone button */
-			InvalidateWidget(w, 8);
-			TOGGLEBIT(w->click_state, 8);
-
-			if (HASBIT(w->click_state, 8)) {
-				_place_clicked_vehicle = NULL;
-				SetObjectToPlaceWnd(SPR_CURSOR_CLONE, VHM_RECT, w);
-			} else {
+			case 7: /* show build aircraft window */
 				ResetObjectToPlace();
-			}
-			break;
+				ShowBuildAircraftWindow(w->window_number);
+				break;
 
-		case 9: /* scroll to tile */
-			ResetObjectToPlace();
-			ScrollMainWindowToTile(w->window_number);
-			break;
+			case 8: /* clone button */
+				InvalidateWidget(w, 8);
+				TOGGLEBIT(w->click_state, 8);
+
+				if (HASBIT(w->click_state, 8)) {
+					_place_clicked_vehicle = NULL;
+					SetObjectToPlaceWnd(SPR_CURSOR_CLONE, VHM_RECT, w);
+				} else {
+					ResetObjectToPlace();
+				}
+				break;
+
+			case 9: /* scroll to tile */
+				ResetObjectToPlace();
+				ScrollMainWindowToTile(w->window_number);
+				break;
 		}
 		break;
 
@@ -920,7 +918,7 @@ void ShowAircraftDepotWindow(TileIndex tile)
 	Window *w;
 
 	w = AllocateWindowDescFront(&_aircraft_depot_desc, tile);
-	if (w) {
+	if (w != NULL) {
 		w->caption_color = GetTileOwner(tile);
 		w->vscroll.cap = 2;
 		w->hscroll.cap = 4;
@@ -950,8 +948,7 @@ static void DrawSmallOrderList(const Vehicle *v, int x, int y) {
 			DrawString(x, y, STR_A036, 0);
 
 			y += 6;
-			if (++i == 4)
-				break;
+			if (++i == 4) break;
 		}
 	}
 }
@@ -1008,8 +1005,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 		SetVScrollCount(w, vl->list_length);
 
 		// disable 'Sort By' tooltip on Unsorted sorting criteria
-		if (vl->sort_type == SORT_BY_UNSORTED)
-			w->disabled_state |= (1 << 3);
+		if (vl->sort_type == SORT_BY_UNSORTED) w->disabled_state |= (1 << 3);
 
 		/* draw the widgets */
 		{
@@ -1137,8 +1133,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 			_sorting.aircraft.criteria = vl->sort_type;
 
 			// enable 'Sort By' if a sorter criteria is chosen
-			if (vl->sort_type != SORT_BY_UNSORTED)
-				CLRBIT(w->disabled_state, 3);
+			if (vl->sort_type != SORT_BY_UNSORTED) CLRBIT(w->disabled_state, 3);
 		}
 		SetWindowDirty(w);
 		break;
@@ -1198,7 +1193,7 @@ void ShowPlayerAircraft(PlayerID player, StationID station)
 		w = AllocateWindowDescFront(&_other_player_aircraft_desc, (station << 16) | player);
 	}
 
-	if (w) {
+	if (w != NULL) {
 		w->caption_color = w->window_number;
 		w->vscroll.cap = 4;
 		w->widget[7].unkA = (w->vscroll.cap << 8) + 1;

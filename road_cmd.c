@@ -377,7 +377,7 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (ti.type == MP_STREET) {
 		if (!(ti.map5 & 0xF0)) {
-			if ( (pieces & (byte)(ti.map5)) == (pieces))
+			if ((pieces & (byte)ti.map5) == pieces)
 				return_cmd_error(STR_1007_ALREADY_BUILT);
 			existing = ti.map5;
 		} else {
@@ -680,12 +680,9 @@ static int32 RemoveRoadDepot(TileIndex tile, uint32 flags)
 	if (!CheckTileOwnership(tile) && _current_player != OWNER_WATER)
 		return CMD_ERROR;
 
-	if (!EnsureNoVehicle(tile))
-		return CMD_ERROR;
+	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
-	if (flags & DC_EXEC) {
-		DoDeleteDepot(tile);
-	}
+	if (flags & DC_EXEC) DoDeleteDepot(tile);
 
 	return _price.remove_road_depot;
 }
@@ -790,21 +787,16 @@ void DrawRoadBits(TileInfo *ti, byte road, byte ground_type, bool snow, bool fla
 			foundation = GetRoadFoundation(ti->tileh, road);
 		}
 
-		if (foundation != 0)
-			DrawFoundation(ti, foundation);
+		if (foundation != 0) DrawFoundation(ti, foundation);
 
 		// DrawFoundation() modifies ti.
 		// Default sloped sprites..
-		if (ti->tileh != 0) {
-			image = _road_sloped_sprites[ti->tileh - 1] + 0x53F;
-		}
+		if (ti->tileh != 0) image = _road_sloped_sprites[ti->tileh - 1] + 0x53F;
 	}
 
-	if (image == 0)
-		image = _road_tile_sprites_1[road];
+	if (image == 0) image = _road_tile_sprites_1[road];
 
-	if (ground_type == 0)
-		image |= PALETTE_TO_BARE_LAND;
+	if (ground_type == 0) image |= PALETTE_TO_BARE_LAND;
 
 	if (snow) {
 		image += 19;
@@ -816,8 +808,7 @@ void DrawRoadBits(TileInfo *ti, byte road, byte ground_type, bool snow, bool fla
 	DrawGroundSprite(image);
 
 	// Return if full detail is disabled, or we are zoomed fully out.
-	if (!(_display_opt & DO_FULL_DETAIL) || _cur_dpi->zoom == 2)
-		return;
+	if (!(_display_opt & DO_FULL_DETAIL) || _cur_dpi->zoom == 2) return;
 
 	if (ground_type >= 6) {
 		// Road works
@@ -831,8 +822,7 @@ void DrawRoadBits(TileInfo *ti, byte road, byte ground_type, bool snow, bool fla
 		int x = ti->x | drts->subcoord_x;
 		int y = ti->y | drts->subcoord_y;
 		byte z = ti->z;
-		if (ti->tileh != 0)
-			z = GetSlopeZ(x, y);
+		if (ti->tileh != 0) z = GetSlopeZ(x, y);
 		AddSortableSpriteToDraw(image, x, y, 2, 2, 0x10, z);
 		drts++;
 	}
@@ -915,8 +905,8 @@ void DrawRoadDepotSprite(int x, int y, int image)
 
 	dtss = _road_display_datas[image];
 
-	x+=33;
-	y+=17;
+	x += 33;
+	y += 17;
 
 	DrawSprite(dtss++->image, x, y);
 
@@ -924,8 +914,7 @@ void DrawRoadDepotSprite(int x, int y, int image)
 		Point pt = RemapCoords(dtss->subcoord_x, dtss->subcoord_y, 0);
 
 		image = dtss->image;
-		if (image & PALETTE_MODIFIER_COLOR)
-			image |= ormod;
+		if (image & PALETTE_MODIFIER_COLOR) image |= ormod;
 
 		DrawSprite(image, x + pt.x, y + pt.y);
 	}
@@ -986,9 +975,7 @@ static void GetAcceptedCargo_Road(TileIndex tile, AcceptedCargo ac)
 
 static void AnimateTile_Road(TileIndex tile)
 {
-	if (IsLevelCrossing(tile)) {
-		MarkTileDirtyByTile(tile);
-	}
+	if (IsLevelCrossing(tile)) MarkTileDirtyByTile(tile);
 }
 
 static const byte _town_road_types[5][2] = {

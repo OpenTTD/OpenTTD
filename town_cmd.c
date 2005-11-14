@@ -120,9 +120,9 @@ static void DrawTile_Town(TileInfo *ti)
 	}
 
 	/* Add a house on top of the ground? */
-	if ((image = dcts->sprite_2) != 0) {
-		if (_display_opt & DO_TRANS_BUILDINGS)
-			MAKE_TRANSPARENT(image);
+	image = dcts->sprite_2;
+	if (image != 0) {
+		if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 
 		AddSortableSpriteToDraw(image,
 			ti->x + dcts->subtile_x,
@@ -132,14 +132,13 @@ static void DrawTile_Town(TileInfo *ti)
 			dcts->dz,
 			z);
 
-		if (_display_opt & DO_TRANS_BUILDINGS)
-			return;
+		if (_display_opt & DO_TRANS_BUILDINGS) return;
 	}
 
 	{
-		int proc;
-		if ((proc=dcts->proc-1) >= 0 )
-			_town_draw_tile_procs[proc](ti);
+		int proc = dcts->proc - 1;
+
+		if (proc >= 0) _town_draw_tile_procs[proc](ti);
 	}
 }
 
@@ -158,11 +157,9 @@ static uint GetSlopeTileh_Town(const TileInfo *ti)
 static void AnimateTile_Town(TileIndex tile)
 {
 	int old;
-	int i;
 	int a,b;
 
-	if (_tick_counter & 3)
-		return;
+	if (_tick_counter & 3) return;
 
 	// If the house is not one with a lift anymore, then stop this animating.
 	// Not exactly sure when this happens, but probably when a house changes.
@@ -174,11 +171,13 @@ static void AnimateTile_Town(TileIndex tile)
 	}
 
 	if (!((old = _m[tile].m1) & 0x80)) {
+		int i;
+
 		_m[tile].m1 |= 0x80;
 
 		do {
-			i = (Random()&7) - 1;
-		} while (i < 0 || i == 1 || i*6==old);
+			i = (Random() & 7) - 1;
+		} while (i < 0 || i == 1 || i * 6 == old);
 
 		SB(_m[tile].m5, 0, 6, i);
 	}
@@ -204,8 +203,7 @@ static bool IsCloseToTown(TileIndex tile, uint dist)
 	const Town* t;
 
 	FOR_ALL_TOWNS(t) {
-		if (t->xy != 0 && DistanceManhattan(tile, t->xy) < dist)
-			return true;
+		if (t->xy != 0 && DistanceManhattan(tile, t->xy) < dist) return true;
 	}
 	return false;
 }
@@ -248,9 +246,7 @@ uint32 GetWorldPopulation(void)
 	const Town* t;
 
 	pop = 0;
-	FOR_ALL_TOWNS(t) {
-			pop += t->population;
-	}
+	FOR_ALL_TOWNS(t) pop += t->population;
 	return pop;
 }
 
@@ -265,7 +261,7 @@ static void MakeSingleHouseBigger(TileIndex tile)
 
 	_m[tile].m3 = _m[tile].m3 + 0x40;
 
-	if ( (_m[tile].m3 & 0xC0) == 0xC0) {
+	if ((_m[tile].m3 & 0xC0) == 0xC0) {
 		ChangePopulation(GetTown(_m[tile].m2), _housetype_population[_m[tile].m4]);
 	}
 	MarkTileDirtyByTile(tile);
@@ -294,9 +290,9 @@ static void TileLoop_Town(TileIndex tile)
 	house = _m[tile].m4;
 	if (_housetype_extra_flags[house] & 0x20 &&
 			!(_m[tile].m5 & 0x80) &&
-			CHANCE16(1,2) &&
+			CHANCE16(1, 2) &&
 			AddAnimatedTile(tile)) {
-		_m[tile].m5 = (_m[tile].m5 & 0x40)|0x80;
+		_m[tile].m5 = (_m[tile].m5 & 0x40) | 0x80;
 	}
 
 	t = GetTown(_m[tile].m2);
@@ -323,7 +319,7 @@ static void TileLoop_Town(TileIndex tile)
 		t->new_act_mail += moved;
 	}
 
-	if (_house_more_flags[house]&8 && (t->flags12&1) && --t->time_until_rebuild == 0) {
+	if (_house_more_flags[house] & 8 && (t->flags12 & 1) && --t->time_until_rebuild == 0) {
 		t->time_until_rebuild = GB(r, 16, 6) + 130;
 
 		_current_player = OWNER_TOWN;
@@ -376,12 +372,12 @@ static int32 ClearTile_Town(TileIndex tile, byte flags)
 
 static void GetAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
 {
-	int type = _m[tile].m4;
+	byte type = _m[tile].m4;
 
 	ac[CT_PASSENGERS] = _housetype_cargo_passengers[type];
-	ac[CT_MAIL] = _housetype_cargo_mail[type];
-	ac[CT_GOODS] = _housetype_cargo_goods[type];
-	ac[CT_FOOD] = _housetype_cargo_food[type];
+	ac[CT_MAIL]       = _housetype_cargo_mail[type];
+	ac[CT_GOODS]      = _housetype_cargo_goods[type];
+	ac[CT_FOOD]       = _housetype_cargo_food[type];
 }
 
 static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
@@ -439,8 +435,7 @@ static void TownTickHandler(Town *t)
 
 void OnTick_Town(void)
 {
-	if (_game_mode == GM_EDITOR)
-		return;
+	if (_game_mode == GM_EDITOR) return;
 
 	/* Make sure each town's tickhandler invocation frequency is about the
 	 * same - TOWN_GROWTH_FREQUENCY - independent on the number of towns. */
@@ -455,21 +450,21 @@ void OnTick_Town(void)
 
 		t = GetTown(i);
 
-		if (t->xy != 0)
-			TownTickHandler(t);
+		if (t->xy != 0) TownTickHandler(t);
 	}
 }
 
 static byte GetTownRoadMask(TileIndex tile)
 {
 	byte b = GetRoadBitsByTile(tile);
-	byte r=0;
-	if (b&1) r|=10;
-	if (b&2) r|=5;
-	if (b&4) r|=9;
-	if (b&8) r|=6;
-	if (b&16) r|=3;
-	if (b&32) r|=12;
+	byte r = 0;
+
+	if (b & 0x01) r |= 10;
+	if (b & 0x02) r |=  5;
+	if (b & 0x04) r |=  9;
+	if (b & 0x08) r |=  6;
+	if (b & 0x10) r |=  3;
+	if (b & 0x20) r |= 12;
 	return r;
 }
 
@@ -482,7 +477,7 @@ static bool IsRoadAllowedHere(TileIndex tile, int dir)
 	//  land at the edges. This is not ok.
 	TILE_ASSERT(tile);
 
-	for(;;) {
+	for (;;) {
 		// Check if there already is a road at this point?
 		if (GetRoadBitsByTile(tile) == 0) {
 			// No, try to build one in the direction.
@@ -513,24 +508,22 @@ no_slope:
 		if ((k = (dir&1)?0xC:0x9) != slope && (k^0xF) != slope) {
 			uint32 r = Random();
 
-			if (CHANCE16I(1,8, r) && !_generating_world) {
+			if (CHANCE16I(1, 8, r) && !_generating_world) {
 				int32 res;
 
-				if (CHANCE16I(1,16,r))
+				if (CHANCE16I(1, 16, r)) {
 					res = DoCommandByTile(tile, slope, 0, DC_EXEC | DC_AUTO | DC_NO_WATER,
 					                      CMD_TERRAFORM_LAND);
-				else
+				} else {
 					res = DoCommandByTile(tile, slope^0xF, 1, DC_EXEC | DC_AUTO | DC_NO_WATER,
 					                      CMD_TERRAFORM_LAND);
+				}
 				if (res == CMD_ERROR && CHANCE16I(1,3,r))
 					// We can consider building on the slope, though.
 					goto no_slope;
 			}
 			return false;
 		}
-
-		/* Can somebody explain for what this is needed? :s */
-		// tile = TILE_ADD(tile, _roadblock_tileadd[dir]);
 		return true;
 	}
 }
@@ -556,8 +549,7 @@ static void LevelTownLand(TileIndex tile)
 
 	// Don't terraform if land is plain or if there's a house there.
 	FindLandscapeHeightByTile(&ti, tile);
-	if (ti.tileh == 0 || ti.type == MP_HOUSE)
-		return;
+	if (ti.tileh == 0 || ti.type == MP_HOUSE) return;
 
 	// First try up, then down
 	if (!TerraformTownTile(tile, ~ti.tileh & 0xF, 1)) {
@@ -587,8 +579,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, uint mask, int block, Town *t1)
 		LevelTownLand(tile);
 
 		// Is a road allowed here?
-		if (!IsRoadAllowedHere(tile, block))
-			return;
+		if (!IsRoadAllowedHere(tile, block)) return;
 
 		// Randomize new road block numbers
 		a = block;
@@ -602,8 +593,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, uint mask, int block, Town *t1)
 		if (!IsRoadAllowedHere(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[a])), a)) {
 			// A road is not allowed to continue the randomized road,
 			//   return if the road we're trying to build is curved.
-			if ( a != (b^2))
-				return;
+			if (a != (b ^ 2)) return;
 
 			// Return if neither side of the new road is a house
 			if (!IsTileType(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[a + 1])), MP_HOUSE) &&
@@ -619,7 +609,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, uint mask, int block, Town *t1)
 		// Continue building on a partial road.
 		// Always OK.
 		_grow_town_result = 0;
-		rcmd = 1 << (block^2);
+		rcmd = 1 << (block ^ 2);
 	} else {
 
 		// Reached a tunnel? Then continue at the other side of it.
@@ -630,25 +620,22 @@ static void GrowTownInTile(TileIndex *tile_ptr, uint mask, int block, Town *t1)
 		}
 
 		// For any other kind of tunnel/bridge, bail out.
-		if (IsTileType(tile, MP_TUNNELBRIDGE))
-			return;
+		if (IsTileType(tile, MP_TUNNELBRIDGE)) return;
 
 		// Possibly extend the road in a direction.
 		// Randomize a direction and if it has a road, bail out.
 		i = GB(Random(), 0, 2);
-		if (HASBIT(mask, i))
-			return;
+		if (HASBIT(mask, i)) return;
 
 		// This is the tile we will reach if we extend to this direction.
 		tmptile = TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[i]));
 
 		// Don't do it if it reaches to water.
-		if (IS_WATER_TILE(tmptile))
-			return;
+		if (IS_WATER_TILE(tmptile)) return;
 
 		// Build a house at the edge. 60% chance or
 		//  always ok if no road allowed.
-		if (!IsRoadAllowedHere(tmptile, i) || CHANCE16(6,10)) {
+		if (!IsRoadAllowedHere(tmptile, i) || CHANCE16(6, 10)) {
 			// But not if there already is a house there.
 			if (!IsTileType(tmptile, MP_HOUSE)) {
 				// Level the land if possible
@@ -656,8 +643,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, uint mask, int block, Town *t1)
 
 				// And build a house.
 				// Set result to -1 if we managed to build it.
-				if (BuildTownHouse(t1, tmptile))
-					_grow_town_result = -1;
+				if (BuildTownHouse(t1, tmptile)) _grow_town_result = -1;
 			}
 			return;
 		}
@@ -669,8 +655,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, uint mask, int block, Town *t1)
 	FindLandscapeHeightByTile(&ti, tile);
 
 	// Return if a water tile
-	if (ti.type == MP_WATER && ti.map5==0)
-		return;
+	if (ti.type == MP_WATER && ti.map5 == 0) return;
 
 	// Determine direction of slope,
 	//  and build a road if not a special slope.
@@ -823,7 +808,7 @@ bool GrowTown(Town *t)
 		FindLandscapeHeightByTile(&ti, tile);
 
 		// Only work with plain land that not already has a house with map5=0
-		if (ti.tileh == 0 && !(ti.type==MP_HOUSE && ti.map5==0)) {
+		if (ti.tileh == 0 && (ti.type != MP_HOUSE || ti.map5 != 0)) {
 			if (DoCommandByTile(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR) != CMD_ERROR) {
 				DoCommandByTile(tile, GenRandomRoadBits(), t->index, DC_EXEC | DC_AUTO, CMD_BUILD_ROAD);
 				_current_player = old_player;
@@ -906,8 +891,7 @@ restart:
 		GetString(buf1, townnametype);
 
 		// Check size and width
-		if (strlen(buf1) >= 31 || GetStringWidth(buf1) > 130)
-			continue;
+		if (strlen(buf1) >= 31 || GetStringWidth(buf1) > 130) continue;
 
 		FOR_ALL_TOWNS(t2) {
 			if (t2->xy != 0) {
@@ -916,8 +900,7 @@ restart:
 				SetDParam(0, t2->index);
 				GetString(buf2, STR_TOWN);
 				if (strcmp(buf1, buf2) == 0) {
-					if (tries-- < 0)
-						return false;
+					if (tries-- < 0) return false;
 					goto restart;
 				}
 			}
@@ -1583,8 +1566,7 @@ static bool DoBuildStatueOfCompany(TileIndex tile)
 	int32 r;
 
 	FindLandscapeHeightByTile(&ti, tile);
-	if (ti.tileh != 0)
-		return false;
+	if (ti.tileh != 0) return false;
 
 	if (ti.type != MP_HOUSE && ti.type != MP_CLEAR && ti.type != MP_TREES)
 		return false;
@@ -1634,8 +1616,7 @@ static void TownActionBuildStatue(Town *t, int action)
 	SETBIT(t->statues, _current_player);
 
 	for (p = _statue_tiles; p != endof(_statue_tiles); ++p) {
-		if (DoBuildStatueOfCompany(tile))
-			return;
+		if (DoBuildStatueOfCompany(tile)) return;
 		tile = TILE_ADD(tile, ToTileIndexDiff(*p));
 	}
 }
@@ -1873,8 +1854,11 @@ void ChangeTownRating(Town *t, int add, int max)
 	int rating;
 
 	//	if magic_bulldozer cheat is active, town doesn't penaltize for removing stuff
-	if (t == NULL || _current_player >= MAX_PLAYERS || (_cheats.magic_bulldozer.value && add < 0)	)
+	if (t == NULL ||
+			_current_player >= MAX_PLAYERS ||
+			(_cheats.magic_bulldozer.value && add < 0)) {
 		return;
+	}
 
 	SETBIT(t->have_ratings, _current_player);
 

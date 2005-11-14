@@ -24,7 +24,7 @@
 static RailType _cur_railtype;
 static bool _remove_button_clicked;
 static byte _build_depot_direction;
-static byte _waypoint_count=1;
+static byte _waypoint_count = 1;
 static byte _cur_waypoint_type;
 
 static struct {
@@ -40,8 +40,6 @@ static void ShowBuildTrainDepotPicker(void);
 static void ShowBuildWaypointPicker(void);
 static void ShowStationBuilder(void);
 
-typedef void OnButtonClick(Window *w);
-
 void CcPlaySound1E(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) SndPlayTileFx(SND_20_SPLAT_2, tile);
@@ -53,7 +51,7 @@ static void GenericPlaceRail(TileIndex tile, int cmd)
 		_remove_button_clicked ?
 		CMD_REMOVE_SINGLE_RAIL | CMD_MSG(STR_1012_CAN_T_REMOVE_RAILROAD_TRACK) | CMD_AUTO | CMD_NO_WATER :
 		CMD_BUILD_SINGLE_RAIL | CMD_MSG(STR_1011_CAN_T_BUILD_RAILROAD_TRACK) | CMD_AUTO | CMD_NO_WATER
-		);
+	);
 }
 
 static void PlaceRail_N(TileIndex tile)
@@ -159,7 +157,7 @@ static void PlaceRail_Station(TileIndex tile)
 static void GenericPlaceSignals(TileIndex tile)
 {
 	uint trackstat;
-	int i;
+	uint i;
 
 	trackstat = (byte)GetTileTrackStatus(tile, TRANSPORT_RAIL);
 
@@ -171,7 +169,9 @@ static void GenericPlaceSignals(TileIndex tile)
 
 	// Lookup the bit index
 	i = 0;
-	if (trackstat != 0) {	while (!(trackstat & 1)) { i++; trackstat >>= 1; }}
+	if (trackstat != 0) {
+		for (; !(trackstat & 1); trackstat >>= 1) i++;
+	}
 
 	if (!_remove_button_clicked) {
 		DoCommandP(tile, i + (_ctrl_pressed ? 8 : 0), 0, CcPlaySound1E,
@@ -258,9 +258,10 @@ static void BuildRailClick_Depot(Window *w)
 static void BuildRailClick_Waypoint(Window *w)
 {
 	_waypoint_count = GetNumCustomStations(STAT_CLASS_WAYP);
-	if (HandlePlacePushButton(w, 11, SPR_CURSOR_WAYPOINT, 1, PlaceRail_Waypoint)
-			&& _waypoint_count > 1)
+	if (HandlePlacePushButton(w, 11, SPR_CURSOR_WAYPOINT, 1, PlaceRail_Waypoint) &&
+			_waypoint_count > 1) {
 		ShowBuildWaypointPicker();
+	}
 }
 
 static void BuildRailClick_Station(Window *w)
@@ -295,10 +296,11 @@ static void BuildRailClick_Remove(Window *w)
 
 	// handle station builder
 	if (HASBIT(w->click_state, 16)) {
-		if(_remove_button_clicked)
+		if (_remove_button_clicked) {
 			SetTileSelectSize(1, 1);
-		else
+		} else {
 			BringWindowToFrontById(WC_BUILD_STATION, 0);
+		}
 	}
 }
 
@@ -346,12 +348,19 @@ static void HandleAutoSignalPlacement(void)
 
 	// _patches.drag_signals_density is given as a parameter such that each user in a network
 	// game can specify his/her own signal density
-	DoCommandP(TileVirtXY(thd->selstart.x, thd->selstart.y), TileVirtXY(thd->selend.x, thd->selend.y),
-	(_ctrl_pressed ? 1 << 3 : 0) | (trackstat << 4) | (_patches.drag_signals_density << 24),
-	CcPlaySound1E,
-	(_remove_button_clicked ?	CMD_REMOVE_SIGNAL_TRACK | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM) :
-	                          CMD_BUILD_SIGNAL_TRACK  | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1010_CAN_T_BUILD_SIGNALS_HERE) ) );
+	DoCommandP(
+		TileVirtXY(thd->selstart.x, thd->selstart.y),
+		TileVirtXY(thd->selend.x, thd->selend.y),
+		(_ctrl_pressed ? 1 << 3 : 0) | (trackstat << 4) | (_patches.drag_signals_density << 24),
+		CcPlaySound1E,
+		_remove_button_clicked ?
+			CMD_REMOVE_SIGNAL_TRACK | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM) :
+			CMD_BUILD_SIGNAL_TRACK  | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1010_CAN_T_BUILD_SIGNALS_HERE)
+	);
 }
+
+
+typedef void OnButtonClick(Window *w);
 
 static OnButtonClick * const _build_railroad_button_proc[] = {
 	BuildRailClick_N,
@@ -390,11 +399,9 @@ static const uint16 _rail_keycodes[] = {
 };
 
 
-
-
 static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT:
 		w->disabled_state &= ~(1 << 16);
 		if (!(w->click_state & ((1<<4)|(1<<5)|(1<<6)|(1<<7)|(1<<8)|(1<<11)|(1<<12)|(1<<13)))) {
@@ -412,9 +419,9 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 	break;
 
 	case WE_KEYPRESS: {
-		int i;
+		uint i;
 
-		for(i=0; i!=lengthof(_rail_keycodes); i++) {
+		for (i = 0; i != lengthof(_rail_keycodes); i++) {
 			if (e->keypress.keycode == _rail_keycodes[i]) {
 				e->keypress.cont = false;
 				_remove_button_clicked = false;
@@ -467,16 +474,16 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 		SetWindowDirty(w);
 
 		w = FindWindowById(WC_BUILD_STATION, 0);
-		if (w != NULL) WP(w,def_d).close=true;
+		if (w != NULL) WP(w,def_d).close = true;
 		w = FindWindowById(WC_BUILD_DEPOT, 0);
-		if (w != NULL) WP(w,def_d).close=true;
+		if (w != NULL) WP(w,def_d).close = true;
 		break;
 
 	case WE_PLACE_PRESIZE: {
 		TileIndex tile = e->place.tile;
 
 		DoCommandByTile(tile, 0, 0, DC_AUTO, CMD_BUILD_TUNNEL);
-		VpSetPresizeRange(tile, _build_tunnel_endtile==0?tile:_build_tunnel_endtile);
+		VpSetPresizeRange(tile, _build_tunnel_endtile == 0 ? tile : _build_tunnel_endtile);
 	} break;
 
 	case WE_DESTROY:
@@ -541,7 +548,7 @@ typedef enum {
  * @param railtype the railtype to display
  * @param w the window to modify
  */
-static void SetupRailToolbar(RailType railtype, Window *w)
+static void SetupRailToolbar(RailType railtype, Window* w)
 {
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 
@@ -703,17 +710,16 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		}
 	} break;
 
-	case WE_MOUSELOOP: {
+	case WE_MOUSELOOP:
 		if (WP(w,def_d).close) {
 			DeleteWindow(w);
 			return;
 		}
 		CheckRedrawStationCoverage(w);
-		} break;
+		break;
 
 	case WE_DESTROY:
-		if (!WP(w,def_d).close)
-			ResetObjectToPlace();
+		if (!WP(w,def_d).close) ResetObjectToPlace();
 		break;
 	}
 }
@@ -772,28 +778,30 @@ static void BuildTrainDepotWndProc(Window *w, WindowEvent *e)
 		r = _cur_railtype;
 		DrawTrainDepotSprite(70, 17, 0, r);
 		DrawTrainDepotSprite(70, 69, 1, r);
-		DrawTrainDepotSprite(2, 69, 2, r);
-		DrawTrainDepotSprite(2, 17, 3, r);
+		DrawTrainDepotSprite( 2, 69, 2, r);
+		DrawTrainDepotSprite( 2, 17, 3, r);
 		break;
 		}
-	case WE_CLICK: {
-		switch(e->click.widget) {
-		case 3: case 4: case 5: case 6:
-			_build_depot_direction = e->click.widget - 3;
-			SndPlayFx(SND_15_BEEP);
-			SetWindowDirty(w);
-			break;
+
+	case WE_CLICK:
+		switch (e->click.widget) {
+			case 3:
+			case 4:
+			case 5:
+			case 6:
+				_build_depot_direction = e->click.widget - 3;
+				SndPlayFx(SND_15_BEEP);
+				SetWindowDirty(w);
+				break;
 		}
-	} break;
+		break;
 
 	case WE_MOUSELOOP:
-		if (WP(w,def_d).close)
-			DeleteWindow(w);
+		if (WP(w,def_d).close) DeleteWindow(w);
 		return;
 
 	case WE_DESTROY:
-		if (!WP(w,def_d).close)
-			ResetObjectToPlace();
+		if (!WP(w,def_d).close) ResetObjectToPlace();
 		break;
 	}
 }
@@ -827,15 +835,16 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT: {
-		int i;
+		uint i;
+
 		w->click_state = (1 << 3) << (_cur_waypoint_type - w->hscroll.pos);
 		DrawWindowWidgets(w);
 
 		for (i = 0; i < 5; i++) {
-			if (w->hscroll.pos + i < _waypoint_count)
+			if (w->hscroll.pos + i < _waypoint_count) {
 				DrawWaypointSprite(2 + i * 68, 25, w->hscroll.pos + i, _cur_railtype);
+			}
 		}
-
 		break;
 	}
 	case WE_CLICK: {
@@ -850,13 +859,11 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_MOUSELOOP:
-		if (WP(w,def_d).close)
-			DeleteWindow(w);
+		if (WP(w,def_d).close) DeleteWindow(w);
 		break;
 
 	case WE_DESTROY:
-		if (!WP(w,def_d).close)
-			ResetObjectToPlace();
+		if (!WP(w,def_d).close) ResetObjectToPlace();
 		break;
 	}
 }

@@ -22,34 +22,33 @@ static void StationsWndShowStationRating(int x, int y, int type, uint acceptance
 	int color = _rating_colors[type];
 	uint w;
 
-	if (acceptance > 575)
-		acceptance = 575;
+	if (acceptance > 575) acceptance = 575;
 
-	acceptance = (acceptance + 7) >> 3;
+	acceptance = (acceptance + 7) / 8;
 
 	/* draw cargo */
-	if ( (w=acceptance>>3) != 0) {
-		GfxFillRect(x, y, x+w-1, y+6, color);
+	w = acceptance / 8;
+	if (w != 0) {
+		GfxFillRect(x, y, x + w - 1, y + 6, color);
 		x += w;
 	}
 
-	if ( (w=acceptance&7) != 0) {
-		if (w==7) w--;
-		GfxFillRect(x, y+(w-1), x, y+6, color);
+	w = acceptance % 8;
+	if (w != 0) {
+		if (w == 7) w--;
+		GfxFillRect(x, y + (w - 1), x, y + 6, color);
 	}
 
-	x -= (acceptance>>3);
+	x -= acceptance / 8;
 
-	DrawString(x+1, y, _cargoc.names_short[type], 0x10);
+	DrawString(x + 1, y, _cargoc.names_short[type], 0x10);
 
 	/* draw green/red ratings bar */
-	GfxFillRect(x+1, y+8, x+7, y+8, 0xB8);
+	GfxFillRect(x + 1, y + 8, x + 7, y + 8, 0xB8);
 
-	rating = (rating >> 5);
+	rating >>= 5;
 
-	if (rating != 0) {
-		GfxFillRect(x+1, y+8, x+rating, y+8, 0xD0);
-	}
+	if (rating != 0) GfxFillRect(x + 1, y + 8, x + rating, y + 8, 0xD0);
 }
 
 static uint16 _num_station_sort[MAX_PLAYERS];
@@ -67,7 +66,7 @@ static int CDECL StationNameSorter(const void *a, const void *b)
 	argv[0] = cmp1->index;
 	GetStringWithArgs(buf1, STR_STATION, argv);
 
-	if ( cmp2->index != _last_station_idx) {
+	if (cmp2->index != _last_station_idx) {
 		_last_station_idx = cmp2->index;
 		argv[0] = cmp2->index;
 		GetStringWithArgs(_bufcache, STR_STATION, argv);
@@ -91,7 +90,7 @@ static void GlobalSortStationList(void)
 		error("Could not allocate memory for the station-sorting-list");
 
 	FOR_ALL_STATIONS(st) {
-		if(st->xy && st->owner != OWNER_NONE) {
+		if (st->xy != 0 && st->owner != OWNER_NONE) {
 			_station_sort[n].index = st->index;
 			_station_sort[n++].owner = st->owner;
 			_num_station_sort[st->owner]++; // add number of stations of player
@@ -101,7 +100,9 @@ static void GlobalSortStationList(void)
 	// create cumulative station-ownership
 	// stations are stored as a cummulative index, eg 25, 41, 43. This means
 	// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2
-	for (i = &_num_station_sort[1]; i != endof(_num_station_sort); i++) {*i += *(i-1);}
+	for (i = &_num_station_sort[1]; i != endof(_num_station_sort); i++) {
+		*i += *(i - 1);
+	}
 
 	qsort(_station_sort, n, sizeof(_station_sort[0]), GeneralOwnerSorter); // sort by owner
 
@@ -135,18 +136,14 @@ static void MakeSortedStationList(PlayerID owner)
 
 static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		const PlayerID owner = w->window_number;
 		uint32 i;
 
 		// resort station window if stations have been added/removed
-		if (_global_station_sort_dirty)
-			GlobalSortStationList();
-
-		if (_station_sort_dirty[owner]) { // resort in case of a station rename.
-			MakeSortedStationList(owner);
-		}
+		if (_global_station_sort_dirty) GlobalSortStationList();
+		if (_station_sort_dirty[owner]) MakeSortedStationList(owner);
 
 		// stations are stored as a cummulative index, eg 25, 41, 43. This means
 		// Player0: 25; Player1: (41-25) 16; Player2: (43-41) 2 stations
@@ -187,8 +184,9 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 				x = DrawString(xb, y, STR_3049_0, 0) + 5;
 
 				// show cargo waiting and station ratings
-				for(j=0; j!=NUM_CARGO; j++) {
-					int acc = GB(st->goods[j].waiting_acceptance, 0, 12);
+				for (j = 0; j != NUM_CARGO; j++) {
+					uint acc = GB(st->goods[j].waiting_acceptance, 0, 12);
+
 					if (acc != 0) {
 						StationsWndShowStationRating(x, y, j, acc, st->goods[j].rating);
 						x += 10;
@@ -196,16 +194,16 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 				}
 				y += 10;
 				i++; // next station
-				if (++p == w->vscroll.cap) { break;} // max number of stations in 1 window
+				if (++p == w->vscroll.cap) break; // max number of stations in 1 window
 			}
 		}
 	} break;
 	case WE_CLICK: {
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 3: {
 			uint32 id_v = (e->click.pt.y - 15) / 10;
 
-			if (id_v >= w->vscroll.cap) { return;} // click out of bounds
+			if (id_v >= w->vscroll.cap) return; // click out of bounds
 
 			id_v += w->vscroll.pos;
 
@@ -215,7 +213,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 				id_v += (owner == 0) ? 0 : _num_station_sort[owner - 1]; // first element in list
 
-				if (id_v >= _num_station_sort[owner]) { return;} // click out of station bound
+				if (id_v >= _num_station_sort[owner]) return; // click out of station bound
 
 				st = GetStation(_station_sort[id_v].index);
 
@@ -229,7 +227,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 	case WE_4:
 		WP(w,plstations_d).refresh_counter++;
-		if (WP(w,plstations_d).refresh_counter==5) {
+		if (WP(w,plstations_d).refresh_counter == 5) {
 			WP(w,plstations_d).refresh_counter = 0;
 			SetWindowDirty(w);
 		}
@@ -320,11 +318,10 @@ static void DrawStationViewWindow(Window *w)
 	StringID str;
 
 	num = 1;
-	for(i=0; i!=NUM_CARGO; i++) {
+	for (i = 0; i != NUM_CARGO; i++) {
 		if (GB(st->goods[i].waiting_acceptance, 0, 12) != 0) {
 			num++;
-			if (st->goods[i].enroute_from != station_id)
-				num++;
+			if (st->goods[i].enroute_from != station_id) num++;
 		}
 	}
 	SetVScrollCount(w, num);
@@ -347,8 +344,9 @@ static void DrawStationViewWindow(Window *w)
 
 	if (--pos < 0) {
 		str = STR_00D0_NOTHING;
-		for(i=0; i!=NUM_CARGO; i++)
+		for (i = 0; i != NUM_CARGO; i++) {
 			if (GB(st->goods[i].waiting_acceptance, 0, 12) != 0) str = STR_EMPTY;
+		}
 		SetDParam(0, str);
 		DrawString(x, y, STR_0008_WAITING, 0);
 		y += 10;
@@ -357,8 +355,7 @@ static void DrawStationViewWindow(Window *w)
 	i = 0;
 	do {
 		uint waiting = GB(st->goods[i].waiting_acceptance, 0, 12);
-		if (waiting == 0)
-			continue;
+		if (waiting == 0) continue;
 
 		num = (waiting + 5) / 10;
 		if (num != 0) {
@@ -417,11 +414,10 @@ static void DrawStationViewWindow(Window *w)
 
 		DrawStringMultiLine(2, 67, STR_SPEC_USERSTRING, 245);
 	} else {
-
 		DrawString(2, 67, STR_3034_LOCAL_RATING_OF_TRANSPORT, 0);
 
 		y = 77;
-		for(i=0; i!=NUM_CARGO; i++) {
+		for (i = 0; i != NUM_CARGO; i++) {
 			if (st->goods[i].enroute_from != INVALID_STATION) {
 				SetDParam(0, _cargoc.names_s[i]);
 				SetDParam(2, st->goods[i].rating * 101 >> 8);
@@ -436,13 +432,13 @@ static void DrawStationViewWindow(Window *w)
 
 static void StationViewWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT:
 		DrawStationViewWindow(w);
 		break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 7:
 			ScrollMainWindowToTile(GetStation(w->window_number)->xy);
 			break;

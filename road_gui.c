@@ -171,7 +171,7 @@ static void BuildRoadClick_Landscaping(Window *w)
 	ShowTerraformToolbar();
 }
 
-static OnButtonClick * const _build_road_button_proc[] = {
+static OnButtonClick* const _build_road_button_proc[] = {
 	BuildRoadClick_NE,
 	BuildRoadClick_NW,
 	BuildRoadClick_Demolish,
@@ -184,8 +184,9 @@ static OnButtonClick * const _build_road_button_proc[] = {
 	BuildRoadClick_Landscaping,
 };
 
-static void BuildRoadToolbWndProc(Window *w, WindowEvent *e) {
-	switch(e->event) {
+static void BuildRoadToolbWndProc(Window* w, WindowEvent* e)
+{
+	switch (e->event) {
 	case WE_PAINT:
 		w->disabled_state &= ~(1 << 11);
 		if (!(w->click_state & ((1<<3)|(1<<4)))) {
@@ -196,8 +197,7 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e) {
 		break;
 
 	case WE_CLICK: {
-		if (e->click.widget >= 3)
-			_build_road_button_proc[e->click.widget - 3](w);
+		if (e->click.widget >= 3) _build_road_button_proc[e->click.widget - 3](w);
 	}	break;
 
 	case WE_KEYPRESS:
@@ -228,11 +228,11 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e) {
 		SetWindowDirty(w);
 
 		w = FindWindowById(WC_BUS_STATION, 0);
-		if (w != NULL) WP(w,def_d).close=true;
+		if (w != NULL) WP(w,def_d).close = true;
 		w = FindWindowById(WC_TRUCK_STATION, 0);
-		if (w != NULL) WP(w,def_d).close=true;
+		if (w != NULL) WP(w,def_d).close = true;
 		w = FindWindowById(WC_BUILD_DEPOT, 0);
-		if (w != NULL) WP(w,def_d).close=true;
+		if (w != NULL) WP(w,def_d).close = true;
 		break;
 
 	case WE_PLACE_DRAG: {
@@ -351,16 +351,17 @@ void ShowBuildRoadScenToolbar(void)
 	AllocateWindowDescFront(&_build_road_scen_desc, 0);
 }
 
-static void BuildRoadDepotWndProc(Window *w, WindowEvent *e) {
-	switch(e->event) {
+static void BuildRoadDepotWndProc(Window* w, WindowEvent* e)
+{
+	switch (e->event) {
 	case WE_PAINT:
 		w->click_state = (1<<3) << _road_depot_orientation;
 		DrawWindowWidgets(w);
 
 		DrawRoadDepotSprite(70, 17, 0);
 		DrawRoadDepotSprite(70, 69, 1);
-		DrawRoadDepotSprite(2, 69, 2);
-		DrawRoadDepotSprite(2, 17, 3);
+		DrawRoadDepotSprite( 2, 69, 2);
+		DrawRoadDepotSprite( 2, 17, 3);
 		break;
 
 	case WE_CLICK: {
@@ -374,13 +375,11 @@ static void BuildRoadDepotWndProc(Window *w, WindowEvent *e) {
 	}	break;
 
 	case WE_MOUSELOOP:
-		if (WP(w,def_d).close)
-			DeleteWindow(w);
+		if (WP(w,def_d).close) DeleteWindow(w);
 		break;
 
 	case WE_DESTROY:
-		if (!WP(w,def_d).close)
-			ResetObjectToPlace();
+		if (!WP(w,def_d).close) ResetObjectToPlace();
 		break;
 	}
 }
@@ -466,8 +465,7 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_DESTROY:
-		if (!WP(w,def_d).close)
-			ResetObjectToPlace();
+		if (!WP(w,def_d).close) ResetObjectToPlace();
 		break;
 	}
 }

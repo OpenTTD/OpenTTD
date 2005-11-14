@@ -105,9 +105,9 @@ void ResortVehicleLists(void)
 
 void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID station)
 {
-	int subtype = (type != VEH_Aircraft) ? TS_Front_Engine : 2;
-	int n = 0;
-	int i;
+	uint subtype = (type != VEH_Aircraft) ? TS_Front_Engine : 2;
+	uint n = 0;
+	uint i;
 
 	if (!(vl->flags & VL_REBUILD)) return;
 
@@ -185,14 +185,15 @@ void DrawVehicleProfitButton(const Vehicle *v, int x, int y)
 	uint32 ormod;
 
 	// draw profit-based colored icons
-	if(v->age <= 365 * 2)
+	if (v->age <= 365 * 2) {
 		ormod = PALETTE_TO_GREY;
-	else if(v->profit_last_year < 0)
+	} else if (v->profit_last_year < 0) {
 		ormod = PALETTE_TO_RED;
-	else if(v->profit_last_year < 10000)
+	} else if (v->profit_last_year < 10000) {
 		ormod = PALETTE_TO_YELLOW;
-	else
+	} else {
 		ormod = PALETTE_TO_GREEN;
+	}
 	DrawSprite(SPR_BLOT | ormod, x, y);
 }
 
@@ -282,7 +283,7 @@ static int CDECL VehicleNameSorter(const void *a, const void *b)
 		GetString(buf1, STR_JUST_STRING);
 	}
 
-	if ( cmp2->index != _last_vehicle_idx) {
+	if (cmp2->index != _last_vehicle_idx) {
 		_last_vehicle_idx = cmp2->index;
 		_bufcache[0] = '\0';
 		if (vb->string_id != _internal_name_sorter_id) {
@@ -415,9 +416,9 @@ static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, int *s
 		const RailVehicleInfo *rvi = RailVehInfo(i);
 		const EngineInfo *info = &_engine_info[i];
 
-		if (p->engine_replacement[i] == INVALID_ENGINE && _player_num_engines[i] == 0 && show_outdated ) continue;
+		if (p->engine_replacement[i] == INVALID_ENGINE && _player_num_engines[i] == 0 && show_outdated) continue;
 
-		if ( rvi->power == 0 && !(show_cars) )   // disables display of cars (works since they do not have power)
+		if (rvi->power == 0 && !show_cars)   // disables display of cars (works since they do not have power)
 			continue;
 
 		if (*sel == 0) *selected_id = i;
@@ -473,14 +474,14 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 				const Engine *e = GetEngine(engine_id);
 				const EngineInfo *info = &_engine_info[engine_id];
 
-				if (ENGINE_AVAILABLE && RailVehInfo(engine_id)->power && e->railtype == railtype ) {
+				if (ENGINE_AVAILABLE && RailVehInfo(engine_id)->power && e->railtype == railtype) {
 					if (_player_num_engines[engine_id] > 0 || p->engine_replacement[engine_id] != INVALID_ENGINE) {
-						if (sel[0]==0)  selected_id[0] = engine_id;
+						if (sel[0] == 0) selected_id[0] = engine_id;
 						count++;
 						sel[0]--;
 					}
 					if (HASBIT(e->player_avail, _local_player)) {
-						if (sel[1]==0)  selected_id[1] = engine_id;
+						if (sel[1] == 0) selected_id[1] = engine_id;
 						count2++;
 						sel[1]--;
 					}
@@ -498,22 +499,22 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 			do {
 				info = &_engine_info[engine_id];
 				if (_player_num_engines[engine_id] > 0 || p->engine_replacement[engine_id] != INVALID_ENGINE) {
-					if (sel[0]==0)  selected_id[0] = engine_id;
+					if (sel[0] == 0) selected_id[0] = engine_id;
 					count++;
 					sel[0]--;
 				}
 			} while (++engine_id,++e,--num);
 
-			if ( selected_id[0] != -1 ) {   // only draw right array if we have anything in the left one
+			if (selected_id[0] != -1) { // only draw right array if we have anything in the left one
 				num = NUM_ROAD_ENGINES;
 				engine_id = ROAD_ENGINES_INDEX;
 				e = GetEngine(ROAD_ENGINES_INDEX);
 				cargo = RoadVehInfo(selected_id[0])->cargo_type;
 
 				do {
-					if ( cargo == RoadVehInfo(engine_id)->cargo_type && HASBIT(e->player_avail, _local_player)) {
+					if (cargo == RoadVehInfo(engine_id)->cargo_type && HASBIT(e->player_avail, _local_player)) {
 						count2++;
-						if (sel[1]==0)  selected_id[1] = engine_id;
+						if (sel[1] == 0) selected_id[1] = engine_id;
 						sel[1]--;
 					}
 				} while (++engine_id,++e,--num);
@@ -531,13 +532,13 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 			do {
 				info = &_engine_info[engine_id];
 				if (_player_num_engines[engine_id] > 0 || p->engine_replacement[engine_id] != INVALID_ENGINE) {
-					if ( sel[0] == 0 )  selected_id[0] = engine_id;
+					if (sel[0] == 0) selected_id[0] = engine_id;
 					count++;
 					sel[0]--;
 				}
 			} while (++engine_id,++e,--num);
 
-			if ( selected_id[0] != -1 ) {
+			if (selected_id[0] != -1) {
 				num = NUM_SHIP_ENGINES;
 				e = GetEngine(SHIP_ENGINES_INDEX);
 				engine_id = SHIP_ENGINES_INDEX;
@@ -545,10 +546,9 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 				refittable = ShipVehInfo(selected_id[0])->refittable;
 
 				do {
-					if (HASBIT(e->player_avail, _local_player)
-					&& ( cargo == ShipVehInfo(engine_id)->cargo_type || refittable & ShipVehInfo(engine_id)->refittable)) {
-
-						if ( sel[1]==0)  selected_id[1] = engine_id;
+					if (HASBIT(e->player_avail, _local_player) &&
+							(cargo == ShipVehInfo(engine_id)->cargo_type || refittable & ShipVehInfo(engine_id)->refittable)) {
+						if (sel[1] == 0) selected_id[1] = engine_id;
 						sel[1]--;
 						count2++;
 					}
@@ -568,12 +568,12 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 				info = &_engine_info[engine_id];
 				if (_player_num_engines[engine_id] > 0 || p->engine_replacement[engine_id] != INVALID_ENGINE) {
 					count++;
-					if (sel[0]==0)  selected_id[0] = engine_id;
+					if (sel[0] == 0) selected_id[0] = engine_id;
 					sel[0]--;
 				}
 			} while (++engine_id,++e,--num);
 
-			if ( selected_id[0] != -1 ) {
+			if (selected_id[0] != -1) {
 				num = NUM_AIRCRAFT_ENGINES;
 				e = GetEngine(AIRCRAFT_ENGINES_INDEX);
 				subtype = AircraftVehInfo(selected_id[0])->subtype;
@@ -582,7 +582,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 					if (HASBIT(e->player_avail, _local_player)) {
 						if (HASBIT(subtype, 0) == HASBIT(AircraftVehInfo(engine_id)->subtype, 0)) {
 							count2++;
-							if (sel[1]==0)  selected_id[1] = engine_id;
+							if (sel[1] == 0) selected_id[1] = engine_id;
 							sel[1]--;
 						}
 					}
@@ -640,7 +640,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 			byte cargo;
 			const EngineInfo* info;
 
-			if ( selected_id[0] >= ROAD_ENGINES_INDEX && selected_id[0] <= SHIP_ENGINES_INDEX ) {
+			if (selected_id[0] >= ROAD_ENGINES_INDEX && selected_id[0] < SHIP_ENGINES_INDEX) {
 				cargo = RoadVehInfo(selected_id[0])->cargo_type;
 
 				do {
@@ -656,7 +656,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 					sel[0]--;
 					}
 
-					if ( RoadVehInfo(engine_id)->cargo_type == cargo && HASBIT(e->player_avail, _local_player) ) {
+					if (RoadVehInfo(engine_id)->cargo_type == cargo && HASBIT(e->player_avail, _local_player)) {
 						if (IS_INT_INSIDE(--pos2, -w->vscroll.cap, 0) && RoadVehInfo(engine_id)->cargo_type == cargo) {
 							DrawString(x2+59, y2+2, GetCustomEngineName(engine_id), sel[1]==0 ? 0xC : 0x10);
 							DrawRoadVehEngine(x2+29, y2+6, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
@@ -676,7 +676,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 			byte cargo, refittable;
 			const EngineInfo* info;
 
-			if ( selected_id[0] != -1 ) {
+			if (selected_id[0] != -1) {
 				cargo = ShipVehInfo(selected_id[0])->cargo_type;
 				refittable = ShipVehInfo(selected_id[0])->refittable;
 
@@ -708,7 +708,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 		}   //end of ship
 
 		case VEH_Aircraft: {
-			if ( selected_id[0] != -1 ) {
+			if (selected_id[0] != -1) {
 				int num = NUM_AIRCRAFT_ENGINES;
 				const Engine* e = GetEngine(AIRCRAFT_ENGINES_INDEX);
 				EngineID engine_id = AIRCRAFT_ENGINES_INDEX;
@@ -718,7 +718,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 				do {
 					info = &_engine_info[engine_id];
 					if (_player_num_engines[engine_id] > 0 || p->engine_replacement[engine_id] != INVALID_ENGINE) {
-						if (sel[0]==0) selected_id[0] = engine_id;
+						if (sel[0] == 0) selected_id[0] = engine_id;
 						if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
 							DrawString(x+62, y+7, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
 							DrawAircraftEngine(x+29, y+10, engine_id, _player_num_engines[engine_id] > 0 ? SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)) : PALETTE_CRASH);
@@ -728,9 +728,9 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 						}
 						sel[0]--;
 					}
-					if ( (HASBIT(subtype, 0) == HASBIT(AircraftVehInfo(engine_id)->subtype, 0))
-						&& HASBIT(e->player_avail, _local_player) ) {
-						if (sel[1]==0) selected_id[1] = engine_id;
+					if (HASBIT(subtype, 0) == HASBIT(AircraftVehInfo(engine_id)->subtype, 0) &&
+							HASBIT(e->player_avail, _local_player)) {
+						if (sel[1] == 0) selected_id[1] = engine_id;
 						if (IS_INT_INSIDE(--pos2, -w->vscroll.cap, 0)) {
 							DrawString(x2+62, y2+7, GetCustomEngineName(engine_id), sel[1]==0 ? 0xC : 0x10);
 							DrawAircraftEngine(x2+29, y2+10, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
@@ -743,11 +743,17 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 			break;
 		}   // end of aircraft
 	}
-
 }
+
+
 static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 {
-	static const StringID _vehicle_type_names[4] = {STR_019F_TRAIN, STR_019C_ROAD_VEHICLE, STR_019E_SHIP,STR_019D_AIRCRAFT};
+	static const StringID _vehicle_type_names[] = {
+		STR_019F_TRAIN,
+		STR_019C_ROAD_VEHICLE,
+		STR_019E_SHIP,
+		STR_019D_AIRCRAFT
+	};
 	const Player *p = GetPlayer(_local_player);
 
 	switch (e->event) {
@@ -771,11 +777,11 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 						_player_num_engines[i] = 0;
 					}
 					FOR_ALL_VEHICLES(vehicle) {
-						if ( vehicle->owner == _local_player ) {
+						if (vehicle->owner == _local_player) {
 							if (vehicle->type == VEH_Aircraft && vehicle->subtype > 2) continue;
 
 							// do not count the vehicles, that contains only 0 in all var
-							if (vehicle->engine_type == 0 && vehicle->spritenum == 0 ) continue;
+							if (vehicle->engine_type == 0 && vehicle->spritenum == 0) continue;
 
 							if (vehicle->type != GetEngine(vehicle->engine_type)->type) continue;
 
@@ -791,7 +797,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 
 			// sets the selected left item to the top one if it's greater than the number of vehicles in the left side
 
-				if ( WP(w,replaceveh_d).count[0] <= sel[0] ) {
+				if (WP(w,replaceveh_d).count[0] <= sel[0]) {
 					if (WP(w,replaceveh_d).count[0]) {
 						sel[0] = 0;
 						WP(w,replaceveh_d).sel_index[0] = 0;
@@ -804,7 +810,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 					}
 				}
 
-				if ( WP(w,replaceveh_d).count[1] <= sel[1] ) {
+				if (WP(w,replaceveh_d).count[1] <= sel[1]) {
 					if (WP(w,replaceveh_d).count[1]) {
 						sel[1] = 0;
 						WP(w,replaceveh_d).sel_index[1] = 0;
@@ -821,21 +827,24 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				//    Either list is empty
 				// or Both lists have the same vehicle selected
 				// or The right list (new replacement) has the existing replacement vehicle selected
-				if (selected_id[0] == -1 || selected_id[1] == -1 ||
+				if (selected_id[0] == -1 ||
+						selected_id[1] == -1 ||
 						selected_id[0] == selected_id[1] ||
-						p->engine_replacement[selected_id[0]] == selected_id[1])
+						p->engine_replacement[selected_id[0]] == selected_id[1]) {
 					SETBIT(w->disabled_state, 4);
-				else
+				} else {
 					CLRBIT(w->disabled_state, 4);
+				}
 
 				// Disable the "Stop Replacing" button if:
 				//    The left list (existing vehicle) is empty
 				// or The selected vehicle has no replacement set up
 				if (selected_id[0] == -1 ||
-						p->engine_replacement[selected_id[0]] == INVALID_ENGINE)
+						p->engine_replacement[selected_id[0]] == INVALID_ENGINE) {
 					SETBIT(w->disabled_state, 6);
-				else
+				} else {
 					CLRBIT(w->disabled_state, 6);
+				}
 
 				// now the actual drawing of the window itself takes place
 				SetDParam(0, _vehicle_type_names[WP(w, replaceveh_d).vehicletype - VEH_Train]);
@@ -848,18 +857,17 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				DrawWindowWidgets(w);
 
 				// sets up the string for the vehicle that is being replaced to
-				if ( selected_id[0] != -1 ) {
-					if (p->engine_replacement[selected_id[0]] == INVALID_ENGINE)
+				if (selected_id[0] != -1) {
+					if (p->engine_replacement[selected_id[0]] == INVALID_ENGINE) {
 						SetDParam(0, STR_NOT_REPLACING);
-					else
+					} else {
 						SetDParam(0, GetCustomEngineName(p->engine_replacement[selected_id[0]]));
+					}
 				} else {
 					SetDParam(0, STR_NOT_REPLACING_VEHICLE_SELECTED);
 				}
 
-
-				DrawString(145, (w->resize.step_height == 24 ? 67 : 87 ) + ( w->resize.step_height * w->vscroll.cap), STR_02BD, 0x10);
-
+				DrawString(145, (w->resize.step_height == 24 ? 67 : 87) + w->resize.step_height * w->vscroll.cap, STR_02BD, 0x10);
 
 				/*	now we draw the two arrays according to what we just counted */
 				DrawEngineArrayInReplaceWindow(w, x, y, x2, y2, pos, pos2, sel[0], sel[1], selected_id[0], selected_id[1]);
@@ -872,9 +880,8 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 						byte i = 0;
 						int offset = 0;
 
-						for ( i = 0 ; i < 2 ; i++) {
-							if ( i )
-							offset = 228;
+						for (i = 0 ; i < 2 ; i++) {
+							if (i > 0) offset = 228;
 							if (selected_id[i] != -1) {
 								if (!(RailVehInfo(selected_id[i])->flags & RVI_WAGON)) {
 									/* it's an engine */
@@ -1101,37 +1108,34 @@ void InitializeGUI(void)
 }
 
 /** Assigns an already open vehicle window to a new vehicle.
-* Assigns an already open vehicle window to a new vehicle. If the vehicle got any sub window open (orders and so on) it will change owner too
-* @param *from_v the current owner of the window
-* @param *to_v the new owner of the window
-*/
+ * Assigns an already open vehicle window to a new vehicle. If the vehicle got
+ * any sub window open (orders and so on) it will change owner too.
+ * @param *from_v the current owner of the window
+ * @param *to_v the new owner of the window
+ */
 void ChangeVehicleViewWindow(const Vehicle *from_v, const Vehicle *to_v)
 {
 	Window *w;
 
 	w = FindWindowById(WC_VEHICLE_VIEW, from_v->index);
-
 	if (w != NULL) {
 		w->window_number = to_v->index;
-		WP(w, vp_d).follow_vehicle = to_v->index;	// tell the viewport to follow the new vehicle
+		WP(w, vp_d).follow_vehicle = to_v->index;
 		SetWindowDirty(w);
 
 		w = FindWindowById(WC_VEHICLE_ORDERS, from_v->index);
-
 		if (w != NULL) {
 			w->window_number = to_v->index;
 			SetWindowDirty(w);
 		}
 
 		w = FindWindowById(WC_VEHICLE_REFIT, from_v->index);
-
 		if (w != NULL) {
 			w->window_number = to_v->index;
 			SetWindowDirty(w);
 		}
 
 		w = FindWindowById(WC_VEHICLE_DETAILS, from_v->index);
-
 		if (w != NULL) {
 			w->window_number = to_v->index;
 			SetWindowDirty(w);

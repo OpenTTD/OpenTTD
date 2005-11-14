@@ -146,13 +146,13 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
 	DrawPixelInfo bk;
 	_cur_dpi = &bk;
 
-	for(w=_windows; w!=_last_window; w++) {
+	for (w = _windows; w != _last_window; w++) {
 		if (right > w->left &&
 				bottom > w->top &&
 				left < w->left + w->width &&
 				top < w->top + w->height) {
-				DrawOverlappedWindow(w, left, top, right, bottom);
-			}
+			DrawOverlappedWindow(w, left, top, right, bottom);
+		}
 	}
 }
 
@@ -166,7 +166,6 @@ void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom)
 				bottom > v->top &&
 				left < v->left + v->width &&
 				top < v->top + v->height) {
-
 			if (left < (x=v->left)) {
 				DrawOverlappedWindow(w, left, top, x, bottom);
 				DrawOverlappedWindow(w, x, top, right, bottom);
@@ -230,8 +229,7 @@ void DeleteWindow(Window *w)
 	Window *v;
 	int count;
 
-	if (w == NULL)
-		return;
+	if (w == NULL) return;
 
 	if (_thd.place_mode != 0 && _thd.window_class == w->window_class && _thd.window_number == w->window_number) {
 		ResetObjectToPlace();
@@ -264,11 +262,8 @@ Window *FindWindowById(WindowClass cls, WindowNumber number)
 {
 	Window *w;
 
-	for(w=_windows; w!=_last_window; w++) {
-		if (w->window_class == cls &&
-			  w->window_number == number) {
-			return w;
-		}
+	for (w = _windows; w != _last_window; w++) {
+		if (w->window_class == cls && w->window_number == number) return w;
 	}
 
 	return NULL;
@@ -282,12 +277,14 @@ void DeleteWindowById(WindowClass cls, WindowNumber number)
 void DeleteWindowByClass(WindowClass cls)
 {
 	Window *w;
+
 	for (w = _windows; w != _last_window;) {
 		if (w->window_class == cls) {
 			DeleteWindow(w);
 			w = _windows;
-		} else
+		} else {
 			w++;
+		}
 	}
 }
 
@@ -323,12 +320,10 @@ Window *BringWindowToFront(Window *w)
 
 	v = _last_window;
 	do {
-		if (--v < _windows)
-			return w;
+		if (--v < _windows) return w;
 	} while (IsVitalWindow(v));
 
-	if (w == v)
-		return w;
+	if (w == v) return w;
 
 	assert(w < v);
 
@@ -351,9 +346,11 @@ Window *BringWindowToFront(Window *w)
 static Window *FindDeletableWindow(void)
 {
 	Window *w;
+
 	for (w = _windows; w < endof(_windows); w++) {
-		if (w->window_class != WC_MAIN_WINDOW && !IsVitalWindow(w) && !(w->flags4 & WF_STICKY) )
-				return w;
+		if (w->window_class != WC_MAIN_WINDOW && !IsVitalWindow(w) && !(w->flags4 & WF_STICKY)) {
+			return w;
+		}
 	}
 	return NULL;
 }
@@ -367,11 +364,10 @@ static Window *FindDeletableWindow(void)
 static Window *ForceFindDeletableWindow(void)
 {
 	Window *w;
+
 	for (w = _windows;; w++) {
 		assert(w < _last_window);
-
-		if (w->window_class != WC_MAIN_WINDOW && !IsVitalWindow(w))
-				return w;
+		if (w->window_class != WC_MAIN_WINDOW && !IsVitalWindow(w)) return w;
 	}
 }
 
@@ -386,17 +382,16 @@ void AssignWidgetToWindow(Window *w, const Widget *widget)
 	w->original_widget = widget;
 
 	if (widget != NULL) {
-		const Widget *wi = widget;
 		uint index = 1;
-		while (wi->type != WWT_LAST) {
-			wi++;
-			index++;
-		}
+		const Widget* wi;
 
-		w->widget = realloc(w->widget, sizeof(Widget) * index);
-		memcpy(w->widget, widget, sizeof(Widget) * index);
-	} else
+		for (wi = widget; wi->type != WWT_LAST; wi++) index++;
+
+		w->widget = realloc(w->widget, sizeof(*w->widget) * index);
+		memcpy(w->widget, widget, sizeof(*w->widget) * index);
+	} else {
 		w->widget = NULL;
+	}
 }
 
 /** Open a new window. If there is no space for a new window, close an open
@@ -422,8 +417,7 @@ Window *AllocateWindow(
 	if (w >= endof(_windows)) {
 		w = FindDeletableWindow();
 
-		if (w == NULL) // no window found, force it!
-			w = ForceFindDeletableWindow();
+		if (w == NULL) w = ForceFindDeletableWindow();
 
 		DeleteWindow(w);
 		w = _last_window;
@@ -503,10 +497,9 @@ Window *AllocateWindowAutoPlace2(
 	}
 
 	x = w->left;
-	if (x > _screen.width - width)
-		x = (_screen.width - width) - 20;
+	if (x > _screen.width - width) x = _screen.width - width - 20;
 
-	return AllocateWindow(x+10,w->top+10,width,height,proc,cls,widget);
+	return AllocateWindow(x + 10, w->top + 10, width, height, proc, cls, widget);
 }
 
 
@@ -531,15 +524,15 @@ static bool IsGoodAutoPlace1(int left, int top)
 		return false;
 
 	// Make sure it is not obscured by any window.
-	for(w=_windows; w!=_last_window; w++) {
-		if (w->window_class == WC_MAIN_WINDOW)
-			continue;
+	for (w = _windows; w != _last_window; w++) {
+		if (w->window_class == WC_MAIN_WINDOW) continue;
 
 		if (right > w->left &&
-		    w->left + w->width > left &&
+				w->left + w->width > left &&
 				bottom > w->top &&
-				w->top + w->height > top)
-					return false;
+				w->top + w->height > top) {
+			return false;
+		}
 	}
 
 	return true;
@@ -561,15 +554,15 @@ static bool IsGoodAutoPlace2(int left, int top)
 		return false;
 
 	// Make sure it is not obscured by any window.
-	for(w=_windows; w!=_last_window; w++) {
-		if (w->window_class == WC_MAIN_WINDOW)
-			continue;
+	for (w = _windows; w != _last_window; w++) {
+		if (w->window_class == WC_MAIN_WINDOW) continue;
 
 		if (left + width > w->left &&
-		    w->left + w->width > left &&
+				w->left + w->width > left &&
 				top + height > w->top &&
-				w->top + w->height > top)
-					return false;
+				w->top + w->height > top) {
+			return false;
+		}
 	}
 
 	return true;
@@ -585,9 +578,8 @@ static Point GetAutoPlacePosition(int width, int height)
 
 	if (IsGoodAutoPlace1(0, 24)) goto ok_pos;
 
-	for(w=_windows; w!=_last_window; w++) {
-		if (w->window_class == WC_MAIN_WINDOW)
-			continue;
+	for (w = _windows; w != _last_window; w++) {
+		if (w->window_class == WC_MAIN_WINDOW) continue;
 
 		if (IsGoodAutoPlace1(w->left+w->width+2,w->top)) goto ok_pos;
 		if (IsGoodAutoPlace1(w->left-   width-2,w->top)) goto ok_pos;
@@ -599,9 +591,8 @@ static Point GetAutoPlacePosition(int width, int height)
 		if (IsGoodAutoPlace1(w->left+w->width-width,w->top-   height-2)) goto ok_pos;
 	}
 
-	for(w=_windows; w!=_last_window; w++) {
-		if (w->window_class == WC_MAIN_WINDOW)
-			continue;
+	for (w = _windows; w != _last_window; w++) {
+		if (w->window_class == WC_MAIN_WINDOW) continue;
 
 		if (IsGoodAutoPlace2(w->left+w->width+2,w->top)) goto ok_pos;
 		if (IsGoodAutoPlace2(w->left-   width-2,w->top)) goto ok_pos;
@@ -613,7 +604,7 @@ static Point GetAutoPlacePosition(int width, int height)
 		int left=0,top=24;
 
 restart:;
-		for(w=_windows; w!=_last_window; w++) {
+		for (w = _windows; w != _last_window; w++) {
 			if (w->left == left && w->top == top) {
 				left += 5;
 				top += 5;
@@ -647,8 +638,7 @@ Window *AllocateWindowDescFront(const WindowDesc *desc, int value)
 {
 	Window *w;
 
-	if (BringWindowToFrontById(desc->cls, value))
-		return NULL;
+	if (BringWindowToFrontById(desc->cls, value)) return NULL;
 	w = AllocateWindowDesc(desc);
 	w->window_number = value;
 	return w;
@@ -696,11 +686,12 @@ Window *FindWindowFromPt(int x, int y)
 {
 	Window *w;
 
-	for(w=_last_window; w != _windows;) {
+	for (w = _last_window; w != _windows;) {
 		--w;
 		if (IS_INSIDE_1D(x, w->left, w->width) &&
-		    IS_INSIDE_1D(y, w->top, w->height))
-					return w;
+				IS_INSIDE_1D(y, w->top, w->height)) {
+			return w;
+		}
 	}
 
 	return NULL;
@@ -755,8 +746,7 @@ static void DecreaseWindowCounters(void)
 
 		if (w->flags4&WF_TIMEOUT_MASK && !(--w->flags4&WF_TIMEOUT_MASK)) {
 			CallWindowEventNP(w, WE_TIMEOUT);
-			if (w->desc_flags & WDF_UNCLICK_BUTTONS)
-				UnclickWindowButtons(w);
+			if (w->desc_flags & WDF_UNCLICK_BUTTONS) UnclickWindowButtons(w);
 		}
 	}
 }
@@ -771,11 +761,10 @@ static void HandlePlacePresize(void)
 	Window *w;
 	WindowEvent e;
 
-	if (_special_mouse_mode != WSM_PRESIZE)
-		return;
+	if (_special_mouse_mode != WSM_PRESIZE) return;
 
-	if ((w = GetCallbackWnd()) == NULL)
-		return;
+	w = GetCallbackWnd();
+	if (w == NULL) return;
 
 	e.place.pt = GetTileBelowCursor();
 	if (e.place.pt.x == -1) {
@@ -792,17 +781,15 @@ static bool HandleDragDrop(void)
 	Window *w;
 	WindowEvent e;
 
-	if (_special_mouse_mode != WSM_DRAGDROP)
-		return true;
+	if (_special_mouse_mode != WSM_DRAGDROP) return true;
 
-	if (_left_button_down)
-		return false;
+	if (_left_button_down) return false;
 
 	w = GetCallbackWnd();
 
 	ResetObjectToPlace();
 
-	if (w) {
+	if (w != NULL) {
 		// send an event in client coordinates.
 		e.event = WE_DRAGDROP;
 		e.dragdrop.pt.x = _cursor.pos.x - w->left;
@@ -818,8 +805,7 @@ static bool HandlePopupMenu(void)
 	Window *w;
 	WindowEvent e;
 
-	if (!_popup_menu_active)
-		return true;
+	if (!_popup_menu_active) return true;
 
 	w = FindWindowById(WC_TOOLBAR_MENU, 0);
 	if (w == NULL) {
@@ -850,16 +836,15 @@ static bool HandleMouseOver(void)
 	w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 
 	// We changed window, put a MOUSEOVER event to the last window
-	if (last_w && last_w != w) {
+	if (last_w != NULL && last_w != w) {
 		e.event = WE_MOUSEOVER;
 		e.mouseover.pt.x = -1;
 		e.mouseover.pt.y = -1;
-		if (last_w->wndproc)
-			last_w->wndproc(last_w, &e);
+		if (last_w->wndproc) last_w->wndproc(last_w, &e);
 	}
 	last_w = w;
 
-	if (w) {
+	if (w != NULL) {
 		// send an event in client coordinates.
 		e.event = WE_MOUSEOVER;
 		e.mouseover.pt.x = _cursor.pos.x - w->left;
@@ -881,8 +866,7 @@ static bool HandleWindowDragging(void)
 {
 	Window *w;
 	// Get out immediately if no window is being dragged at all.
-	if (!_dragging_window)
-		return true;
+	if (!_dragging_window) return true;
 
 	// Otherwise find the window...
 	for (w = _windows; w != _last_window; w++) {
@@ -998,12 +982,13 @@ static bool HandleWindowDragging(void)
 					} else {
 						if (nx + t->left > v->left - 13 &&
 								nx + t->right < v_right + 13) {
-							if (w->top >= v_bottom)
+							if (w->top >= v_bottom) {
 								ny = v_bottom;
-							else if (w->left < nx)
+							} else if (w->left < nx) {
 								nx = v->left - 13 - t->left;
-							else
+							} else {
 								nx = v_right + 13 - t->right;
+							}
 						}
 					}
 				}
@@ -1033,11 +1018,9 @@ static bool HandleWindowDragging(void)
 			y = _cursor.pos.y - _drag_delta.y;
 
 			/* X and Y has to go by step.. calculate it */
-			if (w->resize.step_width > 1)
-				x = x - (x % (int)w->resize.step_width);
+			if (w->resize.step_width > 1) x = x - (x % w->resize.step_width);
 
-			if (w->resize.step_height > 1)
-				y = y - (y % (int)w->resize.step_height);
+			if (w->resize.step_height > 1) y = y - (y % w->resize.step_height);
 
 			/* Check if we don't go below the minimum set size */
 			if ((int)w->width + x < (int)w->resize.width)
@@ -1046,8 +1029,7 @@ static bool HandleWindowDragging(void)
 				y = w->resize.height - w->height;
 
 			/* Window already on size */
-			if (x == 0 && y == 0)
-				return false;
+			if (x == 0 && y == 0) return false;
 
 			/* Now find the new cursor pos.. this is NOT _cursor, because
 			    we move in steps. */
@@ -1087,10 +1069,8 @@ static bool HandleWindowDragging(void)
 				}
 
 				/* We resized at least 1 widget, so let's rezise the window totally */
-				if (resize_width)
-					w->width  = x + w->width;
-				if (resize_height)
-					w->height = y + w->height;
+				if (resize_width)  w->width  = x + w->width;
+				if (resize_height) w->height = y + w->height;
 			}
 
 			e.event = WE_RESIZE;
@@ -1145,11 +1125,10 @@ static bool HandleScrollbarScrolling(void)
 	Scrollbar *sb;
 
 	// Get out quickly if no item is being scrolled
-	if (!_scrolling_scrollbar)
-		return true;
+	if (!_scrolling_scrollbar) return true;
 
 	// Find the scrolling window
-	for(w=_windows; w != _last_window; w++) {
+	for (w = _windows; w != _last_window; w++) {
 		if (w->flags4 & WF_SCROLL_MIDDLE) {
 			// Abort if no button is clicked any more.
 			if (!_left_button_down) {
@@ -1189,8 +1168,7 @@ static bool HandleViewportScroll(void)
 	ViewPort *vp;
 	int dx,dy, x, y, sub;
 
-	if (!_scrolling_viewport)
-		return true;
+	if (!_scrolling_viewport) return true;
 
 	if (!_right_button_down) {
 stop_capt:;
@@ -1249,10 +1227,22 @@ stop_capt:;
 		hy = (w->widget[4].bottom - w->widget[4].top ) / 2;
 		hvx = hx * -4 + hy * 8;
 		hvy = hx *  4 + hy * 8;
-		if (x < -hvx) { x = -hvx; sub = 0; }
-		if (x > (int)MapMaxX() * 16 - hvx) { x = MapMaxX() * 16 - hvx; sub = 0; }
-		if (y < -hvy) { y = -hvy; sub = 0; }
-		if (y > (int)MapMaxY() * 16 - hvy) { y = MapMaxY() * 16 - hvy; sub = 0; }
+		if (x < -hvx) {
+			x = -hvx;
+			sub = 0;
+		}
+		if (x > (int)MapMaxX() * 16 - hvx) {
+			x = MapMaxX() * 16 - hvx;
+			sub = 0;
+		}
+		if (y < -hvy) {
+			y = -hvy;
+			sub = 0;
+		}
+		if (y > (int)MapMaxY() * 16 - hvy) {
+			y = MapMaxY() * 16 - hvy;
+			sub = 0;
+		}
 
 		WP(w,smallmap_d).scroll_x = x;
 		WP(w,smallmap_d).scroll_y = y;
@@ -1269,20 +1259,27 @@ static Window *MaybeBringWindowToFront(Window *w)
 {
 	Window *u;
 
-	if (w->window_class == WC_MAIN_WINDOW || IsVitalWindow(w) ||
-			w->window_class == WC_TOOLTIPS    || w->window_class == WC_DROPDOWN_MENU)
-				return w;
+	if (w->window_class == WC_MAIN_WINDOW ||
+			IsVitalWindow(w) ||
+			w->window_class == WC_TOOLTIPS ||
+			w->window_class == WC_DROPDOWN_MENU) {
+		return w;
+	}
 
 	for (u = w; ++u != _last_window;) {
-		if (u->window_class == WC_MAIN_WINDOW || IsVitalWindow(u) ||
-			  u->window_class == WC_TOOLTIPS    || u->window_class == WC_DROPDOWN_MENU)
-				continue;
+		if (u->window_class == WC_MAIN_WINDOW ||
+				IsVitalWindow(u) ||
+				u->window_class == WC_TOOLTIPS ||
+				u->window_class == WC_DROPDOWN_MENU) {
+			continue;
+		}
 
 		if (w->left + w->width <= u->left ||
 				u->left + u->width <= w->left ||
 				w->top  + w->height <= u->top ||
-				u->top + u->height <= w->top)
-					continue;
+				u->top + u->height <= w->top) {
+			continue;
+		}
 
 		return BringWindowToFront(w);
 	}
@@ -1337,18 +1334,26 @@ static void HandleKeypress(uint32 key)
 	we.keypress.cont = true;
 
 	// check if we have a query string window open before allowing hotkeys
-	if(FindWindowById(WC_QUERY_STRING, 0)!=NULL || FindWindowById(WC_SEND_NETWORK_MSG, 0)!=NULL || FindWindowById(WC_CONSOLE, 0)!=NULL || FindWindowById(WC_SAVELOAD, 0)!=NULL)
+	if (FindWindowById(WC_QUERY_STRING,     0) != NULL ||
+			FindWindowById(WC_SEND_NETWORK_MSG, 0) != NULL ||
+			FindWindowById(WC_CONSOLE,          0) != NULL ||
+			FindWindowById(WC_SAVELOAD,         0) != NULL) {
 		query_open = true;
+	}
 
 	// Call the event, start with the uppermost window.
-	for(w=_last_window; w != _windows;) {
+	for (w = _last_window; w != _windows;) {
 		--w;
 		// if a query window is open, only call the event for certain window types
-		if(query_open && w->window_class!=WC_QUERY_STRING && w->window_class!=WC_SEND_NETWORK_MSG && w->window_class!=WC_CONSOLE && w->window_class!=WC_SAVELOAD)
+		if (query_open &&
+				w->window_class != WC_QUERY_STRING &&
+				w->window_class != WC_SEND_NETWORK_MSG &&
+				w->window_class != WC_CONSOLE &&
+				w->window_class != WC_SAVELOAD) {
 			continue;
+		}
 		w->wndproc(w, &we);
-		if (!we.keypress.cont)
-			break;
+		if (!we.keypress.cont) break;
 	}
 
 	if (we.keypress.cont) {
@@ -1370,26 +1375,13 @@ static void MouseLoop(int click, int mousewheel)
 	DecreaseWindowCounters();
 	HandlePlacePresize();
 	UpdateTileSelection();
-	if (!VpHandlePlaceSizingDrag())
-		return;
-
-	if (!HandleDragDrop())
-		return;
-
-	if (!HandlePopupMenu())
-		return;
-
-	if (!HandleWindowDragging())
-		return;
-
-	if (!HandleScrollbarScrolling())
-		return;
-
-	if (!HandleViewportScroll())
-		return;
-
-	if (!HandleMouseOver())
-		return;
+	if (!VpHandlePlaceSizingDrag())  return;
+	if (!HandleDragDrop())           return;
+	if (!HandlePopupMenu())          return;
+	if (!HandleWindowDragging())     return;
+	if (!HandleScrollbarScrolling()) return;
+	if (!HandleViewportScroll())     return;
+	if (!HandleMouseOver())          return;
 
 	x = _cursor.pos.x;
 	y = _cursor.pos.y;
@@ -1422,17 +1414,18 @@ static void MouseLoop(int click, int mousewheel)
 	}
 
 	w = FindWindowFromPt(x, y);
-	if (w == NULL)
-		return;
+	if (w == NULL) return;
 	w = MaybeBringWindowToFront(w);
 	vp = IsPtInWindowViewport(w, x, y);
 	if (vp != NULL) {
-		if (_game_mode == GM_MENU)
-			return;
+		if (_game_mode == GM_MENU) return;
 
 		// only allow zooming in-out in main window, or in viewports
-		if ( mousewheel && !(w->flags4 & WF_DISABLE_VP_SCROLL) &&
-			   (w->window_class == WC_MAIN_WINDOW || w->window_class == WC_EXTRA_VIEW_PORT) ) {
+		if (mousewheel &&
+				!(w->flags4 & WF_DISABLE_VP_SCROLL) && (
+					w->window_class == WC_MAIN_WINDOW ||
+					w->window_class == WC_EXTRA_VIEW_PORT
+				)) {
 			ZoomInOrOutToCursorWindow(mousewheel < 0,w);
 		}
 
@@ -1509,9 +1502,9 @@ void UpdateWindows(void)
 	Window *w;
 	int t;
 
-
-	if ((t=_we4_timer+1) >= 100) {
-		for(w = _last_window; w != _windows;) {
+	t = _we4_timer + 1;
+	if (t >= 100) {
+		for (w = _last_window; w != _windows;) {
 			w--;
 			CallWindowEventNP(w, WE_4);
 		}
@@ -1519,7 +1512,7 @@ void UpdateWindows(void)
 	}
 	_we4_timer = t;
 
-	for(w = _last_window; w != _windows;) {
+	for (w = _last_window; w != _windows;) {
 		w--;
 		if (w->flags4 & WF_WHITE_BORDER_MASK) {
 			w->flags4 -= WF_WHITE_BORDER_ONE;
@@ -1531,9 +1524,8 @@ void UpdateWindows(void)
 
 	DrawDirtyBlocks();
 
-	for(w = _windows; w!=_last_window; w++) {
-		if (w->viewport != NULL)
-			UpdateViewportPosition(w);
+	for (w = _windows; w != _last_window; w++) {
+		if (w->viewport != NULL) UpdateViewportPosition(w);
 	}
 	DrawTextMessage();
 	// Redraw mouse cursor in case it was hidden
@@ -1546,8 +1538,10 @@ int GetMenuItemIndex(const Window *w, int x, int y)
 	if ((x -= w->left) >= 0 && x < w->width && (y -= w->top + 1) >= 0) {
 		y /= 10;
 
-		if (y < WP(w,menu_d).item_count && !HASBIT(WP(w,menu_d).disabled_items, y))
+		if (y < WP(w, const menu_d).item_count &&
+				!HASBIT(WP(w, const menu_d).disabled_items, y)) {
 			return y;
+		}
 	}
 	return -1;
 }
@@ -1556,9 +1550,8 @@ void InvalidateWindow(byte cls, WindowNumber number)
 {
 	Window *w;
 
-	for(w=_windows; w!=_last_window; w++) {
-		if (w->window_class==cls && w->window_number==number)
-			SetWindowDirty(w);
+	for (w = _windows; w != _last_window; w++) {
+		if (w->window_class == cls && w->window_number == number) SetWindowDirty(w);
 	}
 }
 
@@ -1576,8 +1569,8 @@ void InvalidateWindowWidget(byte cls, WindowNumber number, byte widget_index)
 {
 	const Window* w;
 
-	for(w=_windows; w!=_last_window; w++) {
-		if (w->window_class==cls && w->window_number==number) {
+	for (w = _windows; w != _last_window; w++) {
+		if (w->window_class == cls && w->window_number == number) {
 			InvalidateWidget(w, widget_index);
 		}
 	}
@@ -1586,9 +1579,9 @@ void InvalidateWindowWidget(byte cls, WindowNumber number, byte widget_index)
 void InvalidateWindowClasses(byte cls)
 {
 	const Window* w;
-	for(w=_windows; w!=_last_window; w++) {
-		if (w->window_class==cls)
-			SetWindowDirty(w);
+
+	for (w = _windows; w != _last_window; w++) {
+		if (w->window_class == cls) SetWindowDirty(w);
 	}
 }
 
@@ -1596,7 +1589,8 @@ void InvalidateWindowClasses(byte cls)
 void CallWindowTickEvent(void)
 {
 	Window *w;
-	for(w=_last_window; w != _windows;) {
+
+	for (w = _last_window; w != _windows;) {
 		--w;
 		CallWindowEventNP(w, WE_TICK);
 	}
@@ -1605,7 +1599,8 @@ void CallWindowTickEvent(void)
 void DeleteNonVitalWindows(void)
 {
 	Window *w;
-	for(w=_windows; w!=_last_window;) {
+
+	for (w = _windows; w != _last_window;) {
 		if (w->window_class != WC_MAIN_WINDOW &&
 				w->window_class != WC_SELECT_GAME &&
 				w->window_class != WC_MAIN_TOOLBAR &&
@@ -1629,6 +1624,7 @@ void DeleteNonVitalWindows(void)
 void DeleteAllNonVitalWindows(void)
 {
 	Window *w;
+
 	// Delete every window except for stickied ones
 	DeleteNonVitalWindows();
 	// Delete all sticked windows
@@ -1668,7 +1664,7 @@ void RelocateAllWindows(int neww, int newh)
 {
 	Window *w;
 
-	for(w=_windows; w!= _last_window ;w++) {
+	for (w = _windows; w != _last_window; w++) {
 		int left, top;
 
 		if (w->window_class == WC_MAIN_WINDOW) {
@@ -1704,7 +1700,7 @@ void RelocateAllWindows(int neww, int newh)
 			if (top + (w->height>>1) >= newh) top = newh - w->height;
 		}
 
-		if (w->viewport) {
+		if (w->viewport != NULL) {
 			w->viewport->left += left - w->left;
 			w->viewport->top += top - w->top;
 		}

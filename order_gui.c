@@ -472,13 +472,15 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_RCLICK: {
-		Vehicle *v = GetVehicle(w->window_number);
-		int sel = OrderGetSel(w);
- 		if (e->click.widget != 8) break;
-		if (sel == v->num_orders || GetVehicleOrder(v, sel)->type != OT_GOTO_DEPOT)
+		Vehicle* v = GetVehicle(w->window_number);
+		int s = OrderGetSel(w);
+
+		if (e->click.widget != 8) break;
+		if (s == v->num_orders || GetVehicleOrder(v, s)->type != OT_GOTO_DEPOT) {
 			GuiShowTooltips(STR_8857_MAKE_THE_HIGHLIGHTED_ORDER);
-		else
+		} else {
 			GuiShowTooltips(STR_SERVICE_HINT);
+		}
 	} break;
 
 	case WE_4: {

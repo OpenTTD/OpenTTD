@@ -502,12 +502,12 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 	TileIndex target = TILE_ADD(tile, ToTileIndexDiff(offs[0]));
 
 	// type of this tile mustn't be water already.
-	if (IsTileType(target, MP_WATER))
-		return;
+	if (IsTileType(target, MP_WATER)) return;
 
 	if (TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[1]))) != 0 ||
-			TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[2]))) != 0)
+			TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[2]))) != 0) {
 		return;
+	}
 
 	if (TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[3]))) != 0 ||
 			TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[4]))) != 0) {
@@ -639,8 +639,9 @@ void TileLoop_Water(TileIndex tile)
 
 	if (IS_INT_INSIDE(TileX(tile), 1, MapSizeX() - 3 + 1) &&
 			IS_INT_INSIDE(TileY(tile), 1, MapSizeY() - 3 + 1)) {
-		for(i=0; i!=4; i++)
+		for (i = 0; i != lengthof(_tile_loop_offs_array); i++) {
 			TileLoopWaterHelper(tile, _tile_loop_offs_array[i]);
+		}
 	}
 	// _current_player can be changed by TileLoopWaterHelper.. reset it back
 	//   here
@@ -650,15 +651,17 @@ void TileLoop_Water(TileIndex tile)
 	if (TileX(tile) == 0 && IS_INT_INSIDE(TileY(tile), 1, MapSizeY() - 3 + 1)) //NE
 		TileLoopWaterHelper(tile, _tile_loop_offs_array[2]);
 
-	if (TileX(tile) == (MapSizeX() - 2) && IS_INT_INSIDE(TileY(tile), 1, MapSizeY() - 3 + 1)) //SW
+	if (TileX(tile) == MapSizeX() - 2 && IS_INT_INSIDE(TileY(tile), 1, MapSizeY() - 3 + 1)) { //SW
 		TileLoopWaterHelper(tile, _tile_loop_offs_array[0]);
+	}
 
-	if (TileY(tile) == 0 && IS_INT_INSIDE(TileX(tile), 1, MapSizeX() - 3 + 1)) //NW
+	if (TileY(tile) == 0 && IS_INT_INSIDE(TileX(tile), 1, MapSizeX() - 3 + 1)) { //NW
 		TileLoopWaterHelper(tile, _tile_loop_offs_array[1]);
+	}
 
-	if (TileY(tile) == (MapSizeY() - 2) && IS_INT_INSIDE(TileX(tile), 1, MapSizeX() - 3 + 1)) //SE
+	if (TileY(tile) == MapSizeY() - 2 && IS_INT_INSIDE(TileX(tile), 1, MapSizeX() - 3 + 1)) { //SE
 		TileLoopWaterHelper(tile, _tile_loop_offs_array[3]);
-
+	}
 }
 
 

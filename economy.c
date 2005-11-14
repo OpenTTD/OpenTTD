@@ -72,7 +72,7 @@ void UpdatePlayerHouse(Player *p, uint score)
 	MarkTileDirtyByTile(tile + TileDiffXY(1, 1));
 }
 
-int64 CalculateCompanyValue(const Player *p)
+int64 CalculateCompanyValue(const Player* p)
 {
 	PlayerID owner = p->index;
 	int64 value;
@@ -647,8 +647,8 @@ static void AddInflation(void)
 	int i;
 	int32 inf = _economy.infl_amount * 54;
 
-	for(i=0; i!=NUM_PRICES; i++) {
-		AddSingleInflation( (int32*)&_price + i, _price_frac + i, inf );
+	for (i = 0; i != NUM_PRICES; i++) {
+		AddSingleInflation((int32*)&_price + i, _price_frac + i, inf);
 	}
 
 	_economy.max_loan_unround += BIGMULUS(_economy.max_loan_unround, inf, 16);
@@ -657,7 +657,7 @@ static void AddInflation(void)
 		_economy.max_loan += 50000;
 
 	inf = _economy.infl_amount_pr * 54;
-	for(i=0; i!=NUM_CARGO; i++) {
+	for (i = 0; i != NUM_CARGO; i++) {
 		AddSingleInflation(
 			(int32*)_cargo_payment_rates + i,
 			_cargo_payment_rates_frac + i,
@@ -677,8 +677,7 @@ static void PlayersPayInterest(void)
 	int interest = _economy.interest_rate * 54;
 
 	FOR_ALL_PLAYERS(p) {
-		if (!p->is_active)
-			continue;
+		if (!p->is_active) continue;
 
 		_current_player = p->index;
 		SET_EXPENSES_TYPE(EXPENSES_LOAN_INT);
@@ -692,8 +691,7 @@ static void PlayersPayInterest(void)
 
 static void HandleEconomyFluctuations(void)
 {
-	if (_opt.diff.economy == 0)
-		return;
+	if (_opt.diff.economy == 0) return;
 
 	if (--_economy.fluct == 0) {
 		_economy.fluct = - (int)(Random()&3);
@@ -985,9 +983,8 @@ static bool CheckSubsidyDuplicate(Subsidy *s)
 {
 	const Subsidy* ss;
 
-	for(ss=_subsidies; ss != endof(_subsidies); ss++) {
+	for (ss = _subsidies; ss != endof(_subsidies); ss++) {
 		if (s != ss &&
-//				ss->age < 12 &&
 				ss->from == s->from &&
 				ss->to == s->to &&
 				ss->cargo_type == s->cargo_type) {
@@ -1333,7 +1330,6 @@ int LoadUnloadVehicle(Vehicle *v)
 	int result = 0;
 	uint16 last_visited;
 	Station *st;
-	GoodsEntry *ge;
 	int t;
 	uint count, cap;
 	PlayerID old_player;
@@ -1349,13 +1345,15 @@ int LoadUnloadVehicle(Vehicle *v)
 	st = GetStation(last_visited = v->last_station_visited);
 
 	for (; v != NULL; v = v->next) {
+		GoodsEntry* ge;
+
 		if (v->cargo_cap == 0) continue;
 
 		ge = &st->goods[v->cargo_type];
 
 		/* unload? */
 		if (v->cargo_count != 0) {
-			if ( v->cargo_source != last_visited && ge->waiting_acceptance & 0x8000 && !(u->current_order.flags & OF_TRANSFER) ) {
+			if (v->cargo_source != last_visited && ge->waiting_acceptance & 0x8000 && !(u->current_order.flags & OF_TRANSFER)) {
 				// deliver goods to the station
 				st->time_since_unload = 0;
 
@@ -1363,7 +1361,7 @@ int LoadUnloadVehicle(Vehicle *v)
 				profit += DeliverGoods(v->cargo_count, v->cargo_type, v->cargo_source, last_visited, v->cargo_days);
 				result |= 1;
 				v->cargo_count = 0;
-			} else if (u->current_order.flags & ( OF_UNLOAD | OF_TRANSFER) ) {
+			} else if (u->current_order.flags & (OF_UNLOAD | OF_TRANSFER)) {
 				/* unload goods and let it wait at the station */
 				st->time_since_unload = 0;
 

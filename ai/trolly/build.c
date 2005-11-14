@@ -250,8 +250,7 @@ int AiNew_Build_Vehicle(Player *p, TileIndex tile, byte flag)
 	int i = AiNew_PickVehicle(p);
 	if (i == -1) return CMD_ERROR;
 
-	if (p->ainew.tbt == AI_TRAIN)
-	return CMD_ERROR;
+	if (p->ainew.tbt == AI_TRAIN) return CMD_ERROR;
 
 	return DoCommandByTile(tile, i, 0, flag, CMD_BUILD_ROAD_VEH);
 }

@@ -209,24 +209,23 @@ static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT:
 		DrawWindowWidgets(w);
 		break;
+
 	case WE_CLICK:
-		if (e->click.widget >= 4) {
-			_terraform_button_proc[e->click.widget - 4](w);
-		}
+		if (e->click.widget >= 4) _terraform_button_proc[e->click.widget - 4](w);
 		break;
 
-	case WE_KEYPRESS:
-	{
-		int i;
+	case WE_KEYPRESS: {
+		uint i;
 
-		for(i=0; i!=lengthof(_terraform_keycodes); i++)
+		for (i = 0; i != lengthof(_terraform_keycodes); i++) {
 			if (e->keypress.keycode == _terraform_keycodes[i]) {
 				e->keypress.cont = false;
 				_terraform_button_proc[i](w);
 				break;
 			}
-	}
+		}
 		break;
+	}
 
 	case WE_PLACE_OBJ:
 		_place_proc(e->place.tile);

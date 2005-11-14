@@ -66,10 +66,10 @@ static void DrawShipImage(const Vehicle *v, int x, int y, VehicleID selection)
 {
 	int image = GetShipImage(v, 6);
 	uint32 ormod = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner));
-	DrawSprite(image | ormod, x+32, y+10);
+	DrawSprite(image | ormod, x + 32, y + 10);
 
 	if (v->index == selection) {
-		DrawFrameRect(x-5, y-1, x+67, y+21, 15, FR_BORDERONLY);
+		DrawFrameRect(x - 5, y - 1, x + 67, y + 21, 15, FR_BORDERONLY);
 	}
 }
 
@@ -100,7 +100,7 @@ static void ShipRefitWndProc(Window *w, WindowEvent *e)
 	}	break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 2: { /* listbox */
 			int y = e->click.pt.y - 25;
 			if (y >= 0) {
@@ -291,6 +291,7 @@ static void ShowShipDetailsWindow(const Vehicle* v)
 {
 	Window *w;
 	VehicleID veh = v->index;
+
 	DeleteWindowById(WC_VEHICLE_ORDERS, veh);
 	DeleteWindowById(WC_VEHICLE_DETAILS, veh);
 	_alloc_wnd_parent_num = veh;
@@ -314,19 +315,14 @@ void CcBuildShip(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 void CcCloneShip(bool success, uint tile, uint32 p1, uint32 p2)
 {
-	if (success) {
-		const Vehicle* v = GetVehicle(_new_ship_id);
-
-		ShowShipViewWindow(v);
-	}
+	if (success) ShowShipViewWindow(GetVehicle(_new_ship_id));
 }
 
 static void NewShipWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT:
-		if (w->window_number == 0)
-			w->disabled_state = 1 << 5;
+		if (w->window_number == 0) w->disabled_state = 1 << 5;
 
 		// Setup scroll count
 		{
@@ -335,8 +331,7 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 			const Engine* e = GetEngine(SHIP_ENGINES_INDEX);
 
 			do {
-				if (HASBIT(e->player_avail, _local_player))
-					count++;
+				if (HASBIT(e->player_avail, _local_player)) count++;
 			} while (++e,--num);
 			SetVScrollCount(w, count);
 		}
@@ -760,8 +755,9 @@ static void ClonePlaceObj(TileIndex tile, const Window* w)
 	if (v != NULL) HandleCloneVehClick(v, w);
 }
 
-static void ShipDepotWndProc(Window *w, WindowEvent *e) {
-	switch(e->event) {
+static void ShipDepotWndProc(Window* w, WindowEvent* e)
+{
+	switch (e->event) {
 	case WE_PAINT:
 		DrawShipDepotWindow(w);
 		break;
@@ -896,10 +892,9 @@ static const WindowDesc _ship_depot_desc = {
 
 void ShowShipDepotWindow(TileIndex tile)
 {
-	Window *w;
+	Window* w = AllocateWindowDescFront(&_ship_depot_desc,tile);
 
-	w = AllocateWindowDescFront(&_ship_depot_desc,tile);
-	if (w) {
+	if (w != NULL) {
 		w->caption_color = GetTileOwner(w->window_number);
 		w->vscroll.cap = 2;
 		w->hscroll.cap = 3;
@@ -911,7 +906,8 @@ void ShowShipDepotWindow(TileIndex tile)
 }
 
 
-static void DrawSmallOrderList(const Vehicle *v, int x, int y) {
+static void DrawSmallOrderList(const Vehicle* v, int x, int y)
+{
 	const Order *order;
 	int sel, i = 0;
 
@@ -920,7 +916,7 @@ static void DrawSmallOrderList(const Vehicle *v, int x, int y) {
 	FOR_VEHICLE_ORDERS(v, order) {
 		if (sel == 0) {
 			_stringwidth_base = 0xE0;
-			DoDrawString( "\xAF", x-6, y, 16);
+			DoDrawString("\xAF", x - 6, y, 16);
 			_stringwidth_base = 0;
 		}
 		sel--;
@@ -931,8 +927,7 @@ static void DrawSmallOrderList(const Vehicle *v, int x, int y) {
 				DrawString(x, y, STR_A036, 0);
 
 				y += 6;
-				if (++i == 4)
-					break;
+				if (++i == 4) break;
 			}
 		}
 	}
@@ -1081,9 +1076,7 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 		case 9: { /* Build new Vehicle */
 			TileIndex tile;
 
-			if (!IsWindowOfPrototype(w, _player_ships_widgets))
-				break;
-
+			if (!IsWindowOfPrototype(w, _player_ships_widgets)) break;
 
 			tile = _last_built_ship_depot_tile;
 			do {
@@ -1100,8 +1093,7 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case 10: {
-			if (!IsWindowOfPrototype(w, _player_ships_widgets))
-				break;
+			if (!IsWindowOfPrototype(w, _player_ships_widgets)) break;
 
 			ShowReplaceVehicleWindow(VEH_Ship);
 			break;
@@ -1173,12 +1165,12 @@ void ShowPlayerShips(PlayerID player, StationID station)
 {
 	Window *w;
 
-	if ( player == _local_player) {
+	if (player == _local_player) {
 		w = AllocateWindowDescFront(&_player_ships_desc, (station << 16) | player);
 	} else  {
 		w = AllocateWindowDescFront(&_other_player_ships_desc, (station << 16) | player);
 	}
-	if (w) {
+	if (w != NULL) {
 		w->caption_color = w->window_number;
 		w->vscroll.cap = 4;
 		w->widget[7].unkA = (w->vscroll.cap << 8) + 1;

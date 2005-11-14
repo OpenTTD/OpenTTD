@@ -95,9 +95,11 @@ void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...
 
 void InitTextMessage(void)
 {
-	int i;
-	for (i = 0; i < MAX_CHAT_MESSAGES; i++)
+	uint i;
+
+	for (i = 0; i < MAX_CHAT_MESSAGES; i++) {
 		_text_message_list[i].message[0] = '\0';
+	}
 
 	_textmessage_width = _textmessage_box_max_width;
 }
@@ -142,10 +144,10 @@ void UndrawTextMessage(void)
 // Check if a message is expired every day
 void TextMessageDailyLoop(void)
 {
-	int i;
+	uint i;
+
 	for (i = 0; i < MAX_CHAT_MESSAGES; i++) {
-		if (_text_message_list[i].message[0] == '\0')
-			continue;
+		if (_text_message_list[i].message[0] == '\0') continue;
 
 		if (_date > _text_message_list[i].end_date) {
 			/* Move the remaining messages over the current message */
@@ -168,8 +170,7 @@ void DrawTextMessage(void)
 	int i, j;
 	bool has_message;
 
-	if (!_textmessage_dirty)
-		return;
+	if (!_textmessage_dirty) return;
 
 	// First undraw if needed
 	UndrawTextMessage();
@@ -180,13 +181,11 @@ void DrawTextMessage(void)
 	/* Check if we have anything to draw at all */
 	has_message = false;
 	for ( i = 0; i < MAX_CHAT_MESSAGES; i++) {
-		if (_text_message_list[i].message[0] == '\0')
-			break;
+		if (_text_message_list[i].message[0] == '\0') break;
 
 		has_message = true;
 	}
-	if (!has_message)
-		return;
+	if (!has_message) return;
 
 	// Make a copy of the screen as it is before painting (for undraw)
 	memcpy_pitch(
@@ -200,8 +199,7 @@ void DrawTextMessage(void)
 	j = 0;
 	// Paint the messages
 	for (i = MAX_CHAT_MESSAGES - 1; i >= 0; i--) {
-		if (_text_message_list[i].message[0] == '\0')
-			continue;
+		if (_text_message_list[i].message[0] == '\0') continue;
 
 		j++;
 		GfxFillRect(_textmessage_box_left, _screen.height-_textmessage_box_bottom-j*13-2, _textmessage_box_left+_textmessage_width - 1, _screen.height-_textmessage_box_bottom-j*13+10, /* black, but with some alpha */ 0x322 | USE_COLORTABLE);
@@ -237,8 +235,7 @@ void AddTextEffect(StringID msg, int x, int y, uint16 duration)
 		return;
 
 	for (te = _text_effect_list; te->string_id != INVALID_STRING_ID; ) {
-		if (++te == endof(_text_effect_list))
-			return;
+		if (++te == endof(_text_effect_list)) return;
 	}
 
 	te->string_id = msg;

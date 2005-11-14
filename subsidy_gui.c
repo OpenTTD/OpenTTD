@@ -17,14 +17,14 @@
 static void HandleSubsidyClick(int y)
 {
 	const Subsidy* s;
-	int num,offs;
+	uint num;
+	int offs;
 	TileIndex xy;
 
-	if (y < 0)
-		return;
+	if (y < 0) return;
 
 	num = 0;
-	for(s=_subsidies; s != endof(_subsidies); s++) {
+	for (s = _subsidies; s != endof(_subsidies); s++) {
 		if (s->cargo_type != CT_INVALID && s->age < 12) {
 			y -= 10;
 			if (y < 0) goto handle_click;
@@ -40,7 +40,7 @@ static void HandleSubsidyClick(int y)
 	y -= 11;
 	if (y < 0) return;
 
-	for(s=_subsidies; s != endof(_subsidies); s++) {
+	for (s = _subsidies; s != endof(_subsidies); s++) {
 		if (s->cargo_type != CT_INVALID && s->age >= 12) {
 			y -= 10;
 			if (y < 0) goto handle_click;
@@ -78,7 +78,9 @@ static void DrawSubsidiesWindow(const Window* w)
 {
 	YearMonthDay ymd;
 	const Subsidy* s;
-	int x,xt,y,num,x2;
+	uint num;
+	int x;
+	int y;
 
 	DrawWindowWidgets(w);
 
@@ -90,10 +92,12 @@ static void DrawSubsidiesWindow(const Window* w)
 	y += 10;
 	num = 0;
 
-	for(s=_subsidies; s != endof(_subsidies); s++) {
+	for (s = _subsidies; s != endof(_subsidies); s++) {
 		if (s->cargo_type != CT_INVALID && s->age < 12) {
+			int x2;
+
 			SetupSubsidyDecodeParam(s, 1);
-			x2 = DrawString(x+2, y, STR_2027_FROM_TO, 0);
+			x2 = DrawString(x + 2, y, STR_2027_FROM_TO, 0);
 
 			SetDParam(0, _date - ymd.day + 384 - s->age * 32);
 			DrawString(x2, y, STR_2028_BY, 0);
@@ -103,17 +107,18 @@ static void DrawSubsidiesWindow(const Window* w)
 	}
 
 	if (num == 0) {
-		DrawString(x+2, y, STR_202A_NONE, 0);
+		DrawString(x + 2, y, STR_202A_NONE, 0);
 		y += 10;
 	}
 
-	DrawString(x, y+1, STR_202B_SERVICES_ALREADY_SUBSIDISED, 0);
+	DrawString(x, y + 1, STR_202B_SERVICES_ALREADY_SUBSIDISED, 0);
 	y += 10;
 	num = 0;
 
-	for(s=_subsidies; s != endof(_subsidies); s++) {
+	for (s = _subsidies; s != endof(_subsidies); s++) {
 		if (s->cargo_type != CT_INVALID && s->age >= 12) {
 			const Player* p;
+			int xt;
 
 			SetupSubsidyDecodeParam(s, 1);
 
@@ -121,7 +126,7 @@ static void DrawSubsidiesWindow(const Window* w)
 			SetDParam(3, p->name_1);
 			SetDParam(4, p->name_2);
 
-			xt = DrawString(x+2, y, STR_202C_FROM_TO, 0);
+			xt = DrawString(x + 2, y, STR_202C_FROM_TO, 0);
 
 			SetDParam(0, _date - ymd.day + 768 - s->age * 32);
 			DrawString(xt, y, STR_202D_UNTIL, 0);
@@ -130,21 +135,19 @@ static void DrawSubsidiesWindow(const Window* w)
 		}
 	}
 
-	if (num == 0) {
-		DrawString(x+2, y, STR_202A_NONE, 0);
-	}
+	if (num == 0) DrawString(x + 2, y, STR_202A_NONE, 0);
 }
 
 static void SubsidiesListWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
-	case WE_PAINT: DrawSubsidiesWindow(w); break;
-	case WE_CLICK: {
-		switch(e->click.widget) {
-		case 2: HandleSubsidyClick(e->click.pt.y - 25); break;
-		}
-	}
-	break;
+	switch (e->event) {
+		case WE_PAINT: DrawSubsidiesWindow(w); break;
+
+		case WE_CLICK:
+			switch (e->click.widget) {
+				case 2: HandleSubsidyClick(e->click.pt.y - 25); break;
+			}
+		break;
 	}
 }
 

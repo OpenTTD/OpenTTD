@@ -37,13 +37,11 @@ static int TerraformAllowTileProcess(TerraformerState *ts, TileIndex tile)
 	TileIndex *t;
 	int count;
 
-	if (TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY())
-		return -1;
+	if (TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY()) return -1;
 
 	t = ts->tile_table;
-	for(count = ts->tile_table_count; count != 0; count--,t++) {
-		if (*t == tile)
-			return 0;
+	for (count = ts->tile_table_count; count != 0; count--, t++) {
+		if (*t == tile) return 0;
 	}
 
 	return 1;
@@ -54,9 +52,8 @@ static int TerraformGetHeightOfTile(TerraformerState *ts, TileIndex tile)
 	TerraformerHeightMod *mod = ts->modheight;
 	int count;
 
-	for(count = ts->modheight_count; count != 0; count--, mod++) {
-		if (mod->tile == tile)
-			return mod->height;
+	for (count = ts->modheight_count; count != 0; count--, mod++) {
+		if (mod->tile == tile) return mod->height;
 	}
 
 	return TileHeight(tile);
@@ -69,12 +66,10 @@ static void TerraformAddDirtyTile(TerraformerState *ts, TileIndex tile)
 
 	count = ts->tile_table_count;
 
-	if (count >= 625)
-		return;
+	if (count >= 625) return;
 
 	for(t = ts->tile_table; count != 0; count--,t++) {
-		if (*t == tile)
-			return;
+		if (*t == tile) return;
 	}
 
 	ts->tile_table[ts->tile_table_count++] = tile;
@@ -116,8 +111,7 @@ static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
 
 		// If we have a single diagonal track there, the other side of
 		// tile can be terraformed.
-		if ((_m[tile].m5&~0x40) == _railway_modes[mode])
-			return 0;
+		if ((_m[tile].m5 & ~0x40) == _railway_modes[mode]) return 0;
 	}
 
 	ret = DoCommandByTile(tile, 0,0, ts->flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
@@ -129,8 +123,7 @@ static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
 
 	ts->cost += ret;
 
-	if (ts->tile_table_count >= 625)
-		return -1;
+	if (ts->tile_table_count >= 625) return -1;
 	ts->tile_table[ts->tile_table_count++] = tile;
 
 	return 0;
@@ -151,12 +144,10 @@ static bool TerraformTileHeight(TerraformerState *ts, TileIndex tile, int height
 
 	_error_message = STR_1004_TOO_HIGH;
 
-	if (height > 0xF)
-		return false;
+	if (height > 15) return false;
 
 	nh = TerraformGetHeightOfTile(ts, tile);
-	if (nh < 0 || height == nh)
-		return false;
+	if (nh < 0 || height == nh) return false;
 
 	if (TerraformProc(ts, tile, 0) < 0) return false;
 	if (TerraformProc(ts, tile + TileDiffXY( 0, -1), 1) < 0) return false;
@@ -166,7 +157,7 @@ static bool TerraformTileHeight(TerraformerState *ts, TileIndex tile, int height
 	mod = ts->modheight;
 	count = ts->modheight_count;
 
-	for(;;) {
+	for (;;) {
 		if (count == 0) {
 			if (ts->modheight_count >= 576)
 				return false;
@@ -280,8 +271,9 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			t = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 1));
 			if (t <= z) z = t;
 
-			if (!CheckTunnelInWay(tile, z*8))
+			if (!CheckTunnelInWay(tile, z * 8)) {
 				return_cmd_error(STR_1002_EXCAVATION_WOULD_DAMAGE);
+			}
 		}
 	}
 
@@ -505,8 +497,7 @@ void DrawClearLandFence(const TileInfo *ti)
 
 	if (ti->tileh & 2) {
 		z += 8;
-		if (ti->tileh == 0x17)
-			z += 8;
+		if (ti->tileh == 0x17) z += 8;
 	}
 
 	if (GB(m4, 5, 3) != 0) {
@@ -697,8 +688,7 @@ static void TileLoopClearAlps(TileIndex tile)
 
 static void TileLoopClearDesert(TileIndex tile)
 {
- 	if ( (_m[tile].m5 & 0x1C) == 0x14)
-		return;
+ 	if ((_m[tile].m5 & 0x1C) == 0x14) return;
 
 	if (GetMapExtraBits(tile) == 1) {
 		_m[tile].m5 = 0x17;
@@ -727,12 +717,10 @@ static void TileLoop_Clear(TileIndex tile)
 	}
 
 	m5 = _m[tile].m5;
-	if ( (m5 & 0x1C) == 0x10 || (m5 & 0x1C) == 0x14)
-		return;
+	if ((m5 & 0x1C) == 0x10 || (m5 & 0x1C) == 0x14) return;
 
-	if ( (m5 & 0x1C) != 0xC) {
-		if ( (m5 & 3) == 3)
-			return;
+	if ((m5 & 0x1C) != 0xC) {
+		if ((m5 & 3) == 3) return;
 
 		if (_game_mode != GM_EDITOR) {
 			m5 += 0x20;

@@ -47,7 +47,7 @@ extern bool GenerateTowns(void);
 
 void HandleOnEditTextCancel(void)
 {
-	switch(_rename_what) {
+	switch (_rename_what) {
 #ifdef ENABLE_NETWORK
 	case 4:
 		NetworkDisconnect();
@@ -119,13 +119,11 @@ void HandleOnEditText(WindowEvent *e)
 
  * @return true if the button is clicked, false if it's unclicked
  */
-
 bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, int mode, PlaceProc *placeproc)
 {
 	uint32 mask = 1 << widget;
 
-	if (w->disabled_state & mask)
-		return false;
+	if (w->disabled_state & mask) return false;
 
 	SndPlayFx(SND_15_BEEP);
 	SetWindowDirty(w);
@@ -148,14 +146,11 @@ void CcPlaySound10(bool success, TileIndex tile, uint32 p1, uint32 p2)
 }
 
 
-typedef void ToolbarButtonProc(Window *w);
-
 static void ToolbarPauseClick(Window *w)
 {
 	if (_networking && !_network_server) return; // only server can pause the game
 
-	if (DoCommandP(0, _pause ? 0 : 1, 0, NULL, CMD_PAUSE))
-		SndPlayFx(SND_15_BEEP);
+	if (DoCommandP(0, _pause ? 0 : 1, 0, NULL, CMD_PAUSE)) SndPlayFx(SND_15_BEEP);
 }
 
 static void ToolbarFastForwardClick(Window *w)
@@ -163,8 +158,6 @@ static void ToolbarFastForwardClick(Window *w)
 	_fast_forward ^= true;
 	SndPlayFx(SND_15_BEEP);
 }
-
-typedef void MenuClickedProc(int index);
 
 
 static void MenuClickSettings(int index)
@@ -389,9 +382,9 @@ void ShowRenameWaypointWindow(const Waypoint *wp)
 
 static void SelectSignTool(void)
 {
-	if (_cursor.sprite == SPR_CURSOR_SIGN)
+	if (_cursor.sprite == SPR_CURSOR_SIGN) {
 		ResetObjectToPlace();
-	else {
+	} else {
 		SetObjectToPlace(SPR_CURSOR_SIGN, 1, 1, 0);
 		_place_proc = PlaceProc_Sign;
 	}
@@ -431,6 +424,9 @@ static void MenuClickHelp(int index)
 	}
 }
 
+
+typedef void MenuClickedProc(int index);
+
 static MenuClickedProc * const _menu_clicked_procs[] = {
 	NULL, /* 0 */
 	NULL, /* 1 */
@@ -463,7 +459,7 @@ static MenuClickedProc * const _menu_clicked_procs[] = {
 
 static void MenuWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		int count,sel;
 		int x,y;
@@ -519,16 +515,15 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 		action_id = WP(w,menu_d).action_id;
 		DeleteWindow(w);
 
-		if (index >= 0)
-			_menu_clicked_procs[action_id](index);
+		if (index >= 0) _menu_clicked_procs[action_id](index);
 
 		break;
 		}
+
 	case WE_POPUPMENU_OVER: {
 		int index = GetMenuItemIndex(w, e->popupmenu.pt.x, e->popupmenu.pt.y);
 
-		if (index == -1 || index == WP(w,menu_d).sel_index)
-			return;
+		if (index == -1 || index == WP(w,menu_d).sel_index) return;
 
 		WP(w,menu_d).sel_index = index;
 		SetWindowDirty(w);
@@ -555,10 +550,7 @@ static int GetPlayerIndexFromMenu(int index)
 		const Player* p;
 
 		FOR_ALL_PLAYERS(p) {
-			if (p->is_active) {
-				if (--index < 0)
-					return p->index;
-			}
+			if (p->is_active && --index < 0) return p->index;
 		}
 	}
 	return -1;
@@ -566,19 +558,15 @@ static int GetPlayerIndexFromMenu(int index)
 
 static void UpdatePlayerMenuHeight(Window *w)
 {
-	int num = 0;
+	uint num = 0;
 	const Player* p;
 
 	FOR_ALL_PLAYERS(p) {
-		if (p->is_active)
-			num++;
+		if (p->is_active) num++;
 	}
 
-	// Increase one to fit in PlayerList in the menu when
-	//  in network
-	if (_networking && WP(w,menu_d).main_button == 9) {
-		num++;
-	}
+	// Increase one to fit in PlayerList in the menu when in network
+	if (_networking && WP(w,menu_d).main_button == 9) num++;
 
 	if (WP(w,menu_d).item_count != num) {
 		WP(w,menu_d).item_count = num;
@@ -594,7 +582,7 @@ extern void DrawPlayerIcon(int p, int x, int y);
 
 static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		int x,y;
 		byte sel, color;
@@ -657,10 +645,10 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 		// We have a new entry at the top of the list of menu 9 when networking
 		//  so keep that in count
 		if (_networking && WP(w,menu_d).main_button == 9) {
-			if (index > 0)
-			 index = GetPlayerIndexFromMenu(index - 1) + 1;
-		} else
+			if (index > 0) index = GetPlayerIndexFromMenu(index - 1) + 1;
+		} else {
 			index = GetPlayerIndexFromMenu(index);
+		}
 
 		if (index < 0) {
 			Window *w2 = FindWindowById(WC_MAIN_TOOLBAR,0);
@@ -684,13 +672,12 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 		// We have a new entry at the top of the list of menu 9 when networking
 		//  so keep that in count
 		if (_networking && WP(w,menu_d).main_button == 9) {
-			if (index > 0)
-			 index = GetPlayerIndexFromMenu(index - 1) + 1;
-		} else
+			if (index > 0) index = GetPlayerIndexFromMenu(index - 1) + 1;
+		} else {
 			index = GetPlayerIndexFromMenu(index);
+		}
 
-		if (index == -1 || index == WP(w,menu_d).sel_index)
-			return;
+		if (index == -1 || index == WP(w,menu_d).sel_index) return;
 
 		WP(w,menu_d).sel_index = index;
 		SetWindowDirty(w);
@@ -740,11 +727,12 @@ static Window *PopupMainPlayerToolbMenu(Window *w, int x, int main_button, int g
 	WP(w,menu_d).item_count = 0;
 	WP(w,menu_d).sel_index = (_local_player != OWNER_SPECTATOR) ? _local_player : GetPlayerIndexFromMenu(0);
 	if (_networking && main_button == 9) {
-		if (_local_player != OWNER_SPECTATOR)
+		if (_local_player != OWNER_SPECTATOR) {
 			WP(w,menu_d).sel_index++;
-		else
+		} else {
 			/* Select client list by default for spectators */
 			WP(w,menu_d).sel_index = 0;
+		}
 	}
 	WP(w,menu_d).action_id = main_button;
 	WP(w,menu_d).main_button = main_button;
@@ -809,8 +797,10 @@ static void ToolbarTrainClick(Window *w)
 {
 	const Vehicle* v;
 	int dis = -1;
-	FOR_ALL_VEHICLES(v)
+
+	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Train && v->subtype == TS_Front_Engine) CLRBIT(dis, v->owner);
+	}
 	PopupMainPlayerToolbMenu(w, 310, 13, dis);
 }
 
@@ -818,8 +808,10 @@ static void ToolbarRoadClick(Window *w)
 {
 	const Vehicle* v;
 	int dis = -1;
-	FOR_ALL_VEHICLES(v)
+
+	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Road) CLRBIT(dis, v->owner);
+	}
 	PopupMainPlayerToolbMenu(w, 332, 14, dis);
 }
 
@@ -827,8 +819,10 @@ static void ToolbarShipClick(Window *w)
 {
 	const Vehicle* v;
 	int dis = -1;
-	FOR_ALL_VEHICLES(v)
+
+	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Ship) CLRBIT(dis, v->owner);
+	}
 	PopupMainPlayerToolbMenu(w, 354, 15, dis);
 }
 
@@ -836,8 +830,10 @@ static void ToolbarAirClick(Window *w)
 {
 	const Vehicle* v;
 	int dis = -1;
-	FOR_ALL_VEHICLES(v)
+
+	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Aircraft) CLRBIT(dis, v->owner);
+	}
 	PopupMainPlayerToolbMenu(w, 376, 16, dis);
 }
 
@@ -882,15 +878,17 @@ bool DoZoomInOutWindow(int how, Window *w)
 
 	// routine to disable/enable the zoom buttons. Didn't know where to place these otherwise
 	{
-		Window *wt = NULL;
+		Window* wt = NULL;
+
 		switch (w->window_class) {
-		case WC_MAIN_WINDOW:
-			wt = FindWindowById(WC_MAIN_TOOLBAR, 0);
-			break;
-		case WC_EXTRA_VIEW_PORT:
-			wt = FindWindowById(WC_EXTRA_VIEW_PORT, w->window_number);
-			button = 5;
-			break;
+			case WC_MAIN_WINDOW:
+				wt = FindWindowById(WC_MAIN_TOOLBAR, 0);
+				break;
+
+			case WC_EXTRA_VIEW_PORT:
+				wt = FindWindowById(WC_EXTRA_VIEW_PORT, w->window_number);
+				button = 5;
+				break;
 		}
 
 		assert(wt);
@@ -1003,8 +1001,7 @@ static void ToolbarScenDateBackward(Window *w)
 		HandleButtonClick(w, 6);
 		InvalidateWidget(w, 5);
 
-		if (_date > MinDate)
-			SetDate(ConvertYMDToDay(_cur_year - 1, 0, 1));
+		if (_date > MinDate) SetDate(ConvertYMDToDay(_cur_year - 1, 0, 1));
 	}
 	_left_button_clicked = false;
 }
@@ -1016,8 +1013,7 @@ static void ToolbarScenDateForward(Window *w)
 		HandleButtonClick(w, 7);
 		InvalidateWidget(w, 5);
 
-		if (_date < MaxDate)
-			SetDate(ConvertYMDToDay(_cur_year + 1, 0, 1));
+		if (_date < MaxDate) SetDate(ConvertYMDToDay(_cur_year + 1, 0, 1));
 	}
 	_left_button_clicked = false;
 }
@@ -1070,7 +1066,7 @@ static void ResetLandscape(void)
 	_random_seeds[0][0] = InteractiveRandom();
 	_random_seeds[0][1] = InteractiveRandom();
 
-	GenerateWorld(1, 1<<_patches.map_x, 1<<_patches.map_y);
+	GenerateWorld(1, 1 << _patches.map_x, 1 << _patches.map_y);
 	MarkWholeScreenDirty();
 }
 
@@ -1088,13 +1084,17 @@ static void AskResetLandscapeWndProc(Window *w, WindowEvent *e)
 {
 	uint mode = w->window_number;
 
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT:
 		DrawWindowWidgets(w);
-		DrawStringMultiCenter(90, 38, mode?STR_022D_ARE_YOU_SURE_YOU_WANT_TO:STR_GENERATE_RANDOM_LANDSCAPE , 168);
+		DrawStringMultiCenter(
+			90, 38,
+			mode ? STR_022D_ARE_YOU_SURE_YOU_WANT_TO : STR_GENERATE_RANDOM_LANDSCAPE,
+			168
+		);
 		break;
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 3:
 			DeleteWindow(w);
 			break;
@@ -1110,7 +1110,6 @@ static void AskResetLandscapeWndProc(Window *w, WindowEvent *e)
 				SndPlayFx(SND_15_BEEP);
 				_switch_mode = SM_GENRANDLAND;
 			}
-
 			break;
 		}
 		break;
@@ -1358,7 +1357,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_KEYPRESS: {
-		int i;
+		uint i;
 
 		for (i = 0; i != lengthof(_editor_terraform_keycodes); i++) {
 			if (e->keypress.keycode == _editor_terraform_keycodes[i]) {
@@ -1471,7 +1470,7 @@ static const Widget _scen_edit_town_gen_widgets[] = {
 
 static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT:
 		w->click_state = (w->click_state & ~(1<<7 | 1<<8 | 1<<9) ) | (1 << (_new_town_size + 7));
 		DrawWindowWidgets(w);
@@ -1493,8 +1492,9 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 
 			if (t == NULL) {
 				ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
-			} else
+			} else {
 				ScrollMainWindowToTile(t->xy);
+			}
 
 			break;
 		}
@@ -1503,8 +1503,9 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 
 			_generating_world = true;
 			_game_mode = GM_NORMAL; // little hack to avoid towns of the same size
-			if (!GenerateTowns())
-					ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
+			if (!GenerateTowns()) {
+				ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
+			}
 			_generating_world = false;
 
 			_game_mode = GM_EDITOR;
@@ -1642,8 +1643,7 @@ static bool AnyTownExists(void)
 	const Town* t;
 
 	FOR_ALL_TOWNS(t) {
-		if (t->xy)
-			return true;
+		if (t->xy != 0) return true;
 	}
 	return false;
 }
@@ -1695,13 +1695,13 @@ static void ScenEditIndustryWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK:
-		if ((button=e->click.widget) == 3) {
+		if (e->click.widget == 3) {
 			HandleButtonClick(w, 3);
 
-		if (!AnyTownExists()) {
-			ShowErrorMessage(STR_0286_MUST_BUILD_TOWN_FIRST, STR_CAN_T_GENERATE_INDUSTRIES, 0, 0);
-			return;
-		}
+			if (!AnyTownExists()) {
+				ShowErrorMessage(STR_0286_MUST_BUILD_TOWN_FIRST, STR_CAN_T_GENERATE_INDUSTRIES, 0, 0);
+				return;
+			}
 
 			_generating_world = true;
 			GenerateIndustries();
@@ -1729,7 +1729,7 @@ static void ScenEditIndustryWndProc(Window *w, WindowEvent *e)
 		_ignore_restrictions = true;
 		if (!TryBuildIndustry(e->place.tile,type)) {
 			SetDParam(0, type + STR_4802_COAL_MINE);
-			ShowErrorMessage(_error_message, STR_0285_CAN_T_BUILD_HERE,e->place.pt.x, e->place.pt.y);
+			ShowErrorMessage(_error_message, STR_0285_CAN_T_BUILD_HERE, e->place.pt.x, e->place.pt.y);
 		}
 		_ignore_restrictions = false;
 		_generating_world = false;
@@ -1817,6 +1817,9 @@ static void ToolbarBtn_NULL(Window *w)
 {
 }
 
+
+typedef void ToolbarButtonProc(Window *w);
+
 static ToolbarButtonProc* const _toolbar_button_procs[] = {
 	ToolbarPauseClick,
 	ToolbarFastForwardClick,
@@ -1875,7 +1878,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 	case WE_KEYPRESS: {
 		PlayerID local = (_local_player != OWNER_SPECTATOR) ? _local_player : 0;
 
-		switch(e->keypress.keycode) {
+		switch (e->keypress.keycode) {
 		case WKC_F1: case WKC_PAUSE:
 			ToolbarPauseClick(w);
 			break;
@@ -1924,7 +1927,6 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 	case WE_ON_EDIT_TEXT: HandleOnEditText(e); break;
 
 	case WE_MOUSELOOP:
-
 		if (((w->click_state) & 1) != (uint)!!_pause) {
 			w->click_state ^= (1 << 0);
 			SetWindowDirty(w);
@@ -2068,14 +2070,16 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 	switch(e->event) {
 	case WE_PAINT:
 		/* XXX look for better place for these */
-		if (_date <= MinDate)
+		if (_date <= MinDate) {
 			SETBIT(w->disabled_state, 6);
-		else
+		} else {
 			CLRBIT(w->disabled_state, 6);
-		if (_date >= MaxDate)
+		}
+		if (_date >= MaxDate) {
 			SETBIT(w->disabled_state, 7);
-		else
+		} else {
 			CLRBIT(w->disabled_state, 7);
+		}
 
 		// Draw brown-red toolbar bg.
 		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB2);
@@ -2093,8 +2097,7 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK: {
-		if (_game_mode == GM_MENU)
-			return;
+		if (_game_mode == GM_MENU) return;
 		_scen_toolbar_button_procs[e->click.widget](w);
 	} break;
 
@@ -2111,8 +2114,8 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_F9: ToolbarScenPlaceSign(w); break;
 		case WKC_F10: ShowMusicWindow(); break;
 		case WKC_F11: PlaceLandBlockInfo(); break;
-		case WKC_CTRL  | 'S': _make_screenshot = 1; break;
-		case WKC_CTRL  | 'G': _make_screenshot = 2; break;
+		case WKC_CTRL | 'S': _make_screenshot = 1; break;
+		case WKC_CTRL | 'G': _make_screenshot = 2; break;
 		case 'L': ShowEditorTerraformToolBar(); break;
 		} break;
 	}	break;
@@ -2176,20 +2179,19 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int pos)
 	s = buf;
 	d = buffer;
 
-	for(;;s++) {
-		if (*s == 0) {
-			*d = 0;
+	for (;; s++) {
+		if (*s == '\0') {
+			*d = '\0';
 			break;
 		} else if (*s == 0x0D) {
 			d[0] = d[1] = d[2] = d[3] = ' ';
-			d+=4;
+			d += 4;
 		} else if ((byte)*s >= ' ' && ((byte)*s < 0x88 || (byte)*s >= 0x99)) {
 			*d++ = *s;
 		}
 	}
 
-	if (!FillDrawPixelInfo(&tmp_dpi, NULL, 141, 1, 358, 11))
-		return true;
+	if (!FillDrawPixelInfo(&tmp_dpi, NULL, 141, 1, 358, 11)) return true;
 
 	old_dpi = _cur_dpi;
 	_cur_dpi = &tmp_dpi;
@@ -2208,7 +2210,9 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 
 		DrawWindowWidgets(w);
 		SetDParam(0, _date);
-		DrawStringCentered(70, 1, ((_pause||_patches.status_long_date)?STR_00AF:STR_00AE), 0);
+		DrawStringCentered(
+			70, 1, (_pause || _patches.status_long_date) ? STR_00AF : STR_00AE, 0
+		);
 
 		if (p != NULL) {
 			// Draw player money
@@ -2228,7 +2232,7 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 			if (!DrawScrollingStatusText(&_statusbar_news_item, WP(w,def_d).data_1))
 				WP(w,def_d).data_1 = -1280;
 		} else {
-			if (p) {
+			if (p != NULL) {
 				// This is the default text
 				SetDParam(0, p->name_1);
 				SetDParam(1, p->name_2);
@@ -2334,65 +2338,64 @@ static void MainWindowWndProc(Window *w, WindowEvent *e) {
 			break;
 		}
 
-		// check to see if Command-Q has been pressed on a Mac
-		// must be done before checking if we are at the main menu
-		if ( (e->keypress.keycode == ('Q' | WKC_CTRL)) || (e->keypress.keycode == ('Q' | WKC_META)) )
-		{
-			AskExitGame();
+		switch (e->keypress.keycode) {
+			case 'Q' | WKC_CTRL:
+			case 'Q' | WKC_META:
+				AskExitGame();
+				break;
 		}
 
 		if (_game_mode == GM_MENU) break;
 
 		switch (e->keypress.keycode) {
-		case 'C': case 'Z': {
-			Point pt = GetTileBelowCursor();
-			if (pt.x != -1) {
-				ScrollMainWindowTo(pt.x, pt.y);
-				if (e->keypress.keycode == 'Z')
-					MaxZoomIn();
+			case 'C':
+			case 'Z': {
+				Point pt = GetTileBelowCursor();
+				if (pt.x != -1) {
+					ScrollMainWindowTo(pt.x, pt.y);
+					if (e->keypress.keycode == 'Z') MaxZoomIn();
+				}
+				break;
 			}
-			break;
-		}
 
-		case WKC_ESC: ResetObjectToPlace(); break;
-		case WKC_DELETE: DeleteNonVitalWindows(); break;
-		case WKC_DELETE | WKC_SHIFT: DeleteAllNonVitalWindows(); break;
-		case 'R' | WKC_CTRL: MarkWholeScreenDirty(); break;
+			case WKC_ESC: ResetObjectToPlace(); break;
+			case WKC_DELETE: DeleteNonVitalWindows(); break;
+			case WKC_DELETE | WKC_SHIFT: DeleteAllNonVitalWindows(); break;
+			case 'R' | WKC_CTRL: MarkWholeScreenDirty(); break;
+
 #if defined(_DEBUG)
-		case '0' | WKC_ALT: /* Crash the game */
-			*(byte*)0 = 0;
-			break;
-		case '1' | WKC_ALT: /* Gimme money */
-			/* Server can not cheat in advertise mode either! */
-		#ifdef ENABLE_NETWORK
-			if (!_networking || !_network_server || !_network_advertise)
-		#endif
-				DoCommandP(0, -10000000, 0, NULL, CMD_MONEY_CHEAT);
-			break;
-		case '2' | WKC_ALT: /* Update the coordinates of all station signs */
-			UpdateAllStationVirtCoord();
-			break;
-		case '3' | WKC_ALT:
-		case '4' | WKC_ALT:
-			break;
+			case '0' | WKC_ALT: /* Crash the game */
+				*(byte*)0 = 0;
+				break;
+
+			case '1' | WKC_ALT: /* Gimme money */
+				/* Server can not cheat in advertise mode either! */
+#ifdef ENABLE_NETWORK
+				if (!_networking || !_network_server || !_network_advertise)
+#endif
+					DoCommandP(0, -10000000, 0, NULL, CMD_MONEY_CHEAT);
+				break;
+
+			case '2' | WKC_ALT: /* Update the coordinates of all station signs */
+				UpdateAllStationVirtCoord();
+				break;
 #endif
 
-		case 'X':
-			_display_opt ^= DO_TRANS_BUILDINGS;
-			MarkWholeScreenDirty();
-			break;
+			case 'X':
+				_display_opt ^= DO_TRANS_BUILDINGS;
+				MarkWholeScreenDirty();
+				break;
 
 #ifdef ENABLE_NETWORK
-		case WKC_RETURN: case 'T' | WKC_SHIFT:
-			if (_networking) ShowNetworkChatQueryWindow(DESTTYPE_BROADCAST, 0);
-			break;
+			case WKC_RETURN: case 'T' | WKC_SHIFT:
+				if (_networking) ShowNetworkChatQueryWindow(DESTTYPE_BROADCAST, 0);
+				break;
 #endif
 
-		default: return;
+			default: return;
 		}
 		e->keypress.cont = false;
 		break;
-
 	}
 }
 
@@ -2402,11 +2405,11 @@ extern void ShowJoinStatusWindowAfterJoin(void);
 
 void SetupColorsAndInitialWindow(void)
 {
-	int i;
+	uint i;
 	Window *w;
 	int width,height;
 
-	for(i=0; i!=16; i++) {
+	for (i = 0; i != 16; i++) {
 		const byte* b = GetNonSprite(0x307 + i);
 
 		assert(b);
@@ -2417,7 +2420,7 @@ void SetupColorsAndInitialWindow(void)
 	height = _screen.height;
 
 	// XXX: these are not done
-	switch(_game_mode) {
+	switch (_game_mode) {
 	case GM_MENU:
 		w = AllocateWindow(0, 0, width, height, MainWindowWndProc, WC_MAIN_WINDOW, NULL);
 		AssignWindowViewport(w, 0, 0, width, height, TileXY(32, 32), 0);

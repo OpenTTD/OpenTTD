@@ -883,8 +883,7 @@ void EnginesDailyLoop(void)
 				} else {
 					e->flags |= ENGINE_PREVIEWING;
 					e->preview_wait = 20;
-					if (IS_INTERACTIVE_PLAYER(best_player))
-						ShowEnginePreviewWindow(i);
+					if (IS_INTERACTIVE_PLAYER(best_player)) ShowEnginePreviewWindow(i);
 				}
 			}
 		}
@@ -925,12 +924,11 @@ static void NewVehicleAvailable(Engine *e)
 
 	// In case the player didn't build the vehicle during the intro period,
 	// prevent that player from getting future intro periods for a while.
-	if (e->flags&ENGINE_INTRODUCING) {
+	if (e->flags & ENGINE_INTRODUCING) {
 		FOR_ALL_PLAYERS(p) {
 			uint block_preview = p->block_preview;
 
-			if (!HASBIT(e->player_avail,p->index))
-				continue;
+			if (!HASBIT(e->player_avail, p->index)) continue;
 
 			/* We assume the user did NOT build it.. prove me wrong ;) */
 			p->block_preview = 20;
@@ -956,8 +954,7 @@ static void NewVehicleAvailable(Engine *e)
 	e->player_avail = (byte)-1;
 
 	// Do not introduce new rail wagons
-	if (IsWagon(index))
-		return;
+	if (IsWagon(index)) return;
 
 	// make maglev / monorail available
 	FOR_ALL_PLAYERS(p) {

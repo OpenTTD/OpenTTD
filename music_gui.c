@@ -20,11 +20,11 @@ static byte _cur_playlist[33];
 
 
 static byte _playlist_all[] = {
-	1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,0,
+	1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 0
 };
 
 static byte _playlist_old_style[] = {
-	1, 8, 2, 9, 14, 15, 19, 13, 0,
+	1, 8, 2, 9, 14, 15, 19, 13, 0
 };
 
 static byte _playlist_new_style[] = {
@@ -45,7 +45,7 @@ static byte * const _playlists[] = {
 };
 
 // Map the order of the song names to the numbers of the midi filenames
-static const int midi_idx[] = {
+static const byte midi_idx[] = {
 	 0, // Tycoon DELUXE Theme
 	 2, // Easy Driver
 	 3, // Little Red Diesel
@@ -78,8 +78,7 @@ static void SkipToPrevSong(void)
 	byte t;
 
 	// empty playlist
-	if (b[0] == 0)
-		return;
+	if (b[0] == 0) return;
 
 	// find the end
 	do p++; while (p[0] != 0);
@@ -97,10 +96,12 @@ static void SkipToPrevSong(void)
 
 static void SkipToNextSong(void)
 {
-	byte *b = _cur_playlist, t;
+	byte* b = _cur_playlist;
+	byte t;
 
-	if ((t=b[0]) != 0) {
-		while (b[1]) {
+	t = b[0];
+	if (t != 0) {
+		while (b[1] != 0) {
 			b[0] = b[1];
 			b++;
 		}
@@ -165,8 +166,7 @@ static void PlayPlaylistSong(void)
 {
 	if (_cur_playlist[0] == 0) {
 		SelectSongToPlay();
-		if (_cur_playlist[0] == 0)
-			return;
+		if (_cur_playlist[0] == 0) return;
 	}
 	_music_wnd_cursong = _cur_playlist[0];
 	DoPlaySong();
@@ -189,16 +189,16 @@ void MusicLoop(void)
 		PlayPlaylistSong();
 	}
 
-	if (_song_is_active == false)
-		return;
+	if (_song_is_active == false) return;
 
 	if (!_music_driver->is_song_playing()) {
 		if (_game_mode != GM_MENU) {
 			StopMusic();
 			SkipToNextSong();
 			PlayPlaylistSong();
-		} else
+		} else {
 			ResetMusic();
+		}
 	}
 }
 
@@ -229,18 +229,18 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 			DrawString(4, 23+(i-1)*6, (i < 10) ? STR_01EC_0 : STR_01ED, 0);
 		}
 
-		for(i=0; i!=6; i++) {
-			DrawStringCentered(216, 45 + i*8, STR_01D5_ALL + i, (i==msf.playlist) ? 0xC : 0x10);
+		for (i = 0; i != 6; i++) {
+			DrawStringCentered(216, 45 + i * 8, STR_01D5_ALL + i, (i == msf.playlist) ? 0xC : 0x10);
 		}
 
 		DrawStringCentered(216, 45+8*6+16, STR_01F0_CLEAR, 0);
 		DrawStringCentered(216, 45+8*6+16*2, STR_01F1_SAVE, 0);
 
 		y = 23;
-		for(p = _playlists[msf.playlist],i=0; (i=*p) != 0; p++) {
+		for (p = _playlists[msf.playlist], i = 0; (i = *p) != 0; p++) {
 			SetDParam(0, i);
-			SetDParam(2, i);
 			SetDParam(1, SPECSTR_SONGNAME);
+			SetDParam(2, i);
 			DrawString(252, y, (i < 10) ? STR_01EC_0 : STR_01ED, 0);
 			y += 6;
 		}
@@ -248,19 +248,20 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 3: { /* add to playlist */
 			int y = (e->click.pt.y - 23) / 6;
-			int i;
+			uint i;
 			byte *p;
+
 			if (msf.playlist < 4) return;
-			if ((uint)y >= NUM_SONGS_AVAILABLE) return;
+			if (!IS_INT_INSIDE(y, 0, NUM_SONGS_AVAILABLE)) return;
 
 			p = _playlists[msf.playlist];
-			for(i=0; i!=32; i++) {
+			for (i = 0; i != 32; i++) {
 				if (p[i] == 0) {
-					p[i] = (byte)(y + 1);
-					p[i+1] = 0;
+					p[i] = y + 1;
+					p[i + 1] = 0;
 					SetWindowDirty(w);
 					SelectSongToPlay();
 					break;
@@ -323,7 +324,7 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 {
 	switch(e->event) {
 	case WE_PAINT: {
-		int i,num;
+		uint i;
 		StringID str;
 
 		w->click_state |= 0x280;
@@ -331,8 +332,7 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 
 		GfxFillRect(187, 16, 200, 33, 0);
 
-		num = 8;
-		for (i=0; i!=num; i++) {
+		for (i = 0; i != 8; i++) {
 			int color = 0xD0;
 			if (i > 4) {
 				color = 0xBF;
@@ -340,17 +340,16 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 					color = 0xB8;
 				}
 			}
-			GfxFillRect(187, 33 - i*2, 200, 33 - i*2, color);
+			GfxFillRect(187, 33 - i * 2, 200, 33 - i * 2, color);
 		}
 
 		GfxFillRect(60, 46, 239, 52, 0);
 
-		str = STR_01E3;
-		if (_song_is_active != 0 && _music_wnd_cursong != 0) {
-			str = STR_01E4_0;
+		if (_song_is_active == 0 || _music_wnd_cursong == 0) {
+			str = STR_01E3;
+		} else {
 			SetDParam(0, _music_wnd_cursong);
-			if (_music_wnd_cursong >= 10)
-				str = STR_01E5;
+			str = (_music_wnd_cursong < 10) ? STR_01E4_0 : STR_01E5;
 		}
 		DrawString(62, 46, str, 0);
 
@@ -365,8 +364,8 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 
 		DrawString(60, 38, STR_01E8_TRACK_XTITLE, 0);
 
-		for(i=0; i!=6; i++) {
-			DrawStringCentered(25+i*50, 59, STR_01D5_ALL+i, msf.playlist == i ? 0xC : 0x10);
+		for (i = 0; i != 6; i++) {
+			DrawStringCentered(25 + i * 50, 59, STR_01D5_ALL + i, msf.playlist == i ? 0xC : 0x10);
 		}
 
 		DrawStringCentered(31, 43, STR_01E9_SHUFFLE, (msf.shuffle ? 0xC : 0x10));

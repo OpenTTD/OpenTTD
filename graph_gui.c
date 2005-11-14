@@ -224,15 +224,13 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 	switch(e->event) {
 	case WE_PAINT:
 		FOR_ALL_PLAYERS(p) {
-			if (!p->is_active)
-				SETBIT(_legend_excludebits, p->index);
+			if (!p->is_active) SETBIT(_legend_excludebits, p->index);
 		}
-		w->click_state = ((~_legend_excludebits) << 3);
+		w->click_state = (~_legend_excludebits) << 3;
 		DrawWindowWidgets(w);
 
 		FOR_ALL_PLAYERS(p) {
-			if (!p->is_active)
-				continue;
+			if (!p->is_active) continue;
 
 			DrawPlayerIcon(p->index, 4, 18+p->index*12);
 
@@ -245,7 +243,7 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		if (IS_INT_INSIDE(e->click.widget, 3, 11)) {
-			_legend_excludebits ^= (1 << (e->click.widget-3));
+			_legend_excludebits ^= (1 << (e->click.widget - 3));
 			SetWindowDirty(w);
 			InvalidateWindow(WC_INCOME_GRAPH, 0);
 			InvalidateWindow(WC_OPERATING_PROFIT, 0);

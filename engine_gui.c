@@ -65,12 +65,11 @@ static const DrawEngineInfo _draw_engine_list[4] = {
 
 static void EnginePreviewWndProc(Window *w, WindowEvent *e)
 {
-	const DrawEngineInfo *dei;
-	int width;
-
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		EngineID engine = w->window_number;
+		const DrawEngineInfo* dei;
+		int width;
 
 		DrawWindowWidgets(w);
 
@@ -91,12 +90,15 @@ static void EnginePreviewWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_CLICK:
-		switch(e->click.widget) {
-		case 3: DeleteWindow(w); break;
-		case 4:
-			DoCommandP(0, w->window_number, 0, NULL, CMD_WANT_ENGINE_PREVIEW);
-			DeleteWindow(w);
-			break;
+		switch (e->click.widget) {
+			case 3:
+				DeleteWindow(w);
+				break;
+
+			case 4:
+				DoCommandP(0, w->window_number, 0, NULL, CMD_WANT_ENGINE_PREVIEW);
+				DeleteWindow(w);
+				break;
 		}
 		break;
 	}

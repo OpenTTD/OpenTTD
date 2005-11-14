@@ -188,11 +188,12 @@ char *GetStringWithArgs(char *buffr, uint string, const int32 *argv)
 			return FormatString(buffr, _userstring, NULL, 0);
 	}
 
-	if (index >= _langtab_num[tab])
+	if (index >= _langtab_num[tab]) {
 		error(
 			"!String 0x%X is invalid. "
 			"Probably because an old version of the .lng file.\n", string
 		);
+	}
 
 	return FormatString(buffr, GetStringPtr(GB(string, 0, 16)), argv, GB(string, 24, 8));
 }
@@ -317,7 +318,7 @@ static char *FormatYmdString(char *buff, uint16 number)
 	memcpy(buff, GetStringPtr(STR_0162_JAN + ymd.month), 4);
 	buff[3] = ' ';
 
-	return FormatNoCommaNumber(buff+4, ymd.year + MAX_YEAR_BEGIN_REAL);
+	return FormatNoCommaNumber(buff + 4, ymd.year + MAX_YEAR_BEGIN_REAL);
 }
 
 static char *FormatMonthAndYear(char *buff, uint16 number)
@@ -615,8 +616,7 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 				byte *s = (byte*)GetStringPtr(argv_orig[(byte)*str++]); // contains the string that determines gender.
 				int len;
 				int gender = 0;
-				if (s && s[0] == 0x87)
-					gender = s[1];
+				if (s != NULL && s[0] == 0x87) gender = s[1];
 				str = ParseStringChoice(str, gender, buff, &len);
 				buff += len;
 				break;
@@ -715,7 +715,8 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 		case 0x9B: { // {TOWN}
 			const Town* t = GetTown(GetInt32(&argv));
 			int32 temp[1];
-			assert(t->xy);
+
+			assert(t->xy != 0);
 
 			temp[0] = t->townnameparts;
 			buff = GetStringWithArgs(buff, t->townnametype, temp);
@@ -728,7 +729,7 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 		}
 
 		case 0x9D: { // {SETCASE}
-		             // This is a pseudo command, it's outputted when someone does {STRING.ack}
+			// This is a pseudo command, it's outputted when someone does {STRING.ack}
 			// The modifier is added to all subsequent GetStringWithArgs that accept the modifier.
 			modifier = (byte)*str++ << 24;
 			break;

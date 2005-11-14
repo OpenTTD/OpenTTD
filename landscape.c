@@ -208,16 +208,16 @@ void DrawFoundation(TileInfo *ti, uint f)
 	uint32 sprite_base = SPR_SLOPES_BASE-14;
 
 	TileInfo ti2;
-	FindLandscapeHeight(&ti2, ti->x, ti->y-1);
-	if(hasFoundation( &ti2, true )) sprite_base += 22;		// foundation in NW direction
-	FindLandscapeHeight(&ti2, ti->x-1, ti->y);
-	if(hasFoundation( &ti2, false )) sprite_base += 22*2;	// foundation in NE direction
+	FindLandscapeHeight(&ti2, ti->x, ti->y - 1);
+	if (hasFoundation(&ti2, true)) sprite_base += 22;		// foundation in NW direction
+	FindLandscapeHeight(&ti2, ti->x - 1, ti->y);
+	if (hasFoundation(&ti2, false)) sprite_base += 22 * 2;	// foundation in NE direction
 
 	if (f < 15) {
 		// leveled foundation
 		if (sprite_base < SPR_SLOPES_BASE) sprite_base = SPR_FOUNDATION_BASE + 1; // use original slope sprites
 
-		AddSortableSpriteToDraw(f-1 + sprite_base, ti->x, ti->y, 16, 16, 7, ti->z);
+		AddSortableSpriteToDraw(f - 1 + sprite_base, ti->x, ti->y, 16, 16, 7, ti->z);
 		ti->z += 8;
 		ti->tileh = 0;
 		OffsetGroundSprite(31, 1);

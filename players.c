@@ -135,17 +135,17 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 	/* draw the hair */
 	{
 		uint val = GB(face, 16, 4);
-		if (!(flag&2)) {
-			if (!(flag&1)) {
-				DrawSprite(0x382 + (val*9>>4), x, y);
+		if (flag & 2) {
+			if (flag & 1) {
+				DrawSprite(0x3D9 + (val * 5 >> 4), x, y);
 			} else {
-				DrawSprite(0x38B + (val*5>>4), x, y);
+				DrawSprite(0x3D4 + (val * 5 >> 4), x, y);
 			}
 		} else {
-			if (!(flag&1)) {
-				DrawSprite(0x3D4 + (val*5>>4), x, y);
+			if (flag & 1) {
+				DrawSprite(0x38B + (val * 5 >> 4), x, y);
 			} else {
-				DrawSprite(0x3D9 + (val*5>>4), x, y);
+				DrawSprite(0x382 + (val * 9 >> 4), x, y);
 			}
 		}
 	}
@@ -163,9 +163,7 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 			DrawSprite(0x37B + (GB(val, 2, 2) * 4 >> 2), x, y);
 
 			val >>= 4;
-			if (val < 3) {
-				DrawSprite((flag&2 ? 0x3D1 : 0x37F) + val, x, y);
-			}
+			if (val < 3) DrawSprite((flag & 2 ? 0x3D1 : 0x37F) + val, x, y);
 		}
 	}
 
@@ -173,14 +171,10 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 	{
 		uint val = GB(face, 28, 3);
 
-		if (!(flag&2)) {
-			if (val<=1) {
-				DrawSprite(0x347 + val, x, y);
-			}
+		if (flag & 2) {
+			if (val <= 1) DrawSprite(0x3AE + val, x, y);
 		} else {
-			if (val<=1) {
-				DrawSprite(0x3AE + val, x, y);
-			}
+			if (val <= 1) DrawSprite(0x347 + val, x, y);
 		}
 	}
 }

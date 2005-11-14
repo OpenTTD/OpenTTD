@@ -76,12 +76,11 @@ void SetDebugString(const char *s)
 		v = strtoul(s, &end, 0);
 		s = end;
 
-		for (i = debug_level; i != endof(debug_level); ++i)
-			*i->level = v;
+		for (i = debug_level; i != endof(debug_level); ++i) *i->level = v;
 	}
 
 	// individual levels
-	for(;;) {
+	for (;;) {
 		const DebugLevel *i;
 		int *p;
 
@@ -103,9 +102,9 @@ void SetDebugString(const char *s)
 		if (*s == '=') s++;
 		v = strtoul(s, &end, 0);
 		s = end;
-		if (p != NULL)
+		if (p != NULL) {
 			*p = v;
-		else {
+		} else {
 			ShowInfoF("Unknown debug level '%.*s'", s - t, t);
 			return;
 		}

@@ -151,7 +151,7 @@ void InitializeAnimatedTiles(void);
 
 /* tunnelbridge_cmd.c */
 bool CheckTunnelInWay(TileIndex tile, int z);
-bool CheckBridge_Stuff(byte bridge_type, int bridge_len);
+bool CheckBridge_Stuff(byte bridge_type, uint bridge_len);
 uint32 GetBridgeLength(TileIndex begin, TileIndex end);
 int CalcBridgeLenCostFactor(int x);
 

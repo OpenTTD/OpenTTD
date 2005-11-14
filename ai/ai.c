@@ -125,9 +125,9 @@ static void AI_RunTick(PlayerID player)
 	Player *p = GetPlayer(player);
 	_current_player = player;
 
-	if (_patches.ainew_active)
+	if (_patches.ainew_active) {
 		AiNewDoGameLoop(p);
-	else {
+	} else {
 		/* Enable all kind of cheats the old AI needs in order to operate correctly... */
 		_is_old_ai_player = true;
 		AiDoGameLoop(p);
@@ -143,8 +143,7 @@ static void AI_RunTick(PlayerID player)
 void AI_RunGameLoop(void)
 {
 	/* Don't do anything if ai is disabled */
-	if (!_ai.enabled)
-		return;
+	if (!_ai.enabled) return;
 
 	/* New tick */
 	_ai.tick++;
@@ -212,11 +211,9 @@ void AI_Initialize(void)
  */
 void AI_Uninitialize(void)
 {
-	Player *p;
+	Player* p;
 
 	FOR_ALL_PLAYERS(p) {
-		if (p->is_active && p->is_ai) {
-			AI_PlayerDied(p->index);
-		}
+		if (p->is_active && p->is_ai) AI_PlayerDied(p->index);
 	}
 }

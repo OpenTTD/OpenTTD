@@ -51,7 +51,7 @@ enum Sprites {
 	SPR_CANALS_BASE   = 5382,
 	SPR_SLOPES_BASE   = SPR_CANALS_BASE + 70,
 	SPR_AUTORAIL_BASE = SPR_SLOPES_BASE + 78,
-	SPR_OPENTTD_BASE  = SPR_AUTORAIL_BASE + 55, // can be lowered once autorail.grf is finalized
+	SPR_OPENTTD_BASE  = SPR_AUTORAIL_BASE + 55,
 
 	SPR_BLOT = SPR_OPENTTD_BASE + 29, // colored circle (mainly used as vehicle profit marker and for sever compatibility)
 
@@ -963,7 +963,6 @@ typedef enum CursorSprites {
 	SPR_CURSOR_EW_MAGLEV      = 1273,
 	SPR_CURSOR_NWSE_MAGLEV    = 1274,
 
-	SPR_CURSOR_RAIL_DEPOT     = 1296,
 	SPR_CURSOR_RAIL_STATION   = 1300,
 
 	SPR_CURSOR_TUNNEL_RAIL    = 2434,
@@ -975,6 +974,8 @@ typedef enum CursorSprites {
 	SPR_CURSOR_AUTOMAGLEV     = SPR_OPENTTD_BASE + 6,
 
 	SPR_CURSOR_WAYPOINT       = SPR_OPENTTD_BASE + 7,
+
+	SPR_CURSOR_RAIL_DEPOT     = 1296,
 	SPR_CURSOR_MONO_DEPOT     = SPR_OPENTTD_BASE + 11,
 	SPR_CURSOR_MAGLEV_DEPOT   = SPR_OPENTTD_BASE + 12,
 
@@ -1004,15 +1005,15 @@ enum AnimCursors {
 };
 
 /**
-  * Bitmask setup. For the graphics system, 32 bits are used to define
-  * the sprite to be displayed. This variable contains various information:<p>
-	* <ul><li> SPRITE_WIDTH is the number of bits used for the actual sprite to be displayed.
-  * This always starts at bit 0.</li>
-  * <li> TRANSPARENT_BIT is the bit number which toggles sprite transparency</li>
-  * <li> RECOLOR_BIT toggles the recoloring system</li>
-  * <li> PALETTE_SPRITE_WIDTH and PALETTE_SPRITE_START determine the position and number of
-  * bits used for the recoloring process. For transparency, it must be 0x322.</li>
-  */
+ * Bitmask setup. For the graphics system, 32 bits are used to define
+ * the sprite to be displayed. This variable contains various information:<p>
+ * <ul><li> SPRITE_WIDTH is the number of bits used for the actual sprite to be displayed.
+ * This always starts at bit 0.</li>
+ * <li> TRANSPARENT_BIT is the bit number which toggles sprite transparency</li>
+ * <li> RECOLOR_BIT toggles the recoloring system</li>
+ * <li> PALETTE_SPRITE_WIDTH and PALETTE_SPRITE_START determine the position and number of
+ * bits used for the recoloring process. For transparency, it must be 0x322.</li>
+ */
 enum SpriteSetup {
 	TRANSPARENT_BIT = 31,       ///< toggles transparency in the sprite
 	RECOLOR_BIT = 15,           ///< toggles recoloring in the sprite
@@ -1022,13 +1023,13 @@ enum SpriteSetup {
 };
 
 /**
-	these masks change the colors of the palette for a sprite.
-	Apart from this bit, a sprite number is needed to define
-  the palette used for recoloring. This palette is stored
-	in the bits marked by PALETTE_SPRITE_MASK.
-  @note Do not modify this enum. Alter SpriteSetup instead
-  @see SpriteSetup
-*/
+ * these masks change the colors of the palette for a sprite.
+ * Apart from this bit, a sprite number is needed to define
+ * the palette used for recoloring. This palette is stored
+ * in the bits marked by PALETTE_SPRITE_MASK.
+ * @note Do not modify this enum. Alter SpriteSetup instead
+ * @see SpriteSetup
+ */
 enum Modifiers {
 	///when a sprite is to be displayed transparently, this bit needs to be set.
 	PALETTE_MODIFIER_TRANSPARENT 	= 1 << TRANSPARENT_BIT,

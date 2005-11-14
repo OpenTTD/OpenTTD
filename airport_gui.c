@@ -65,7 +65,7 @@ static OnButtonClick * const _build_air_button_proc[] = {
 
 static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT:
 		DrawWindowWidgets(w);
 		break;
@@ -156,9 +156,9 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 		if (!HASBIT(avail_airports, 0) && sel == AT_SMALL) sel = AT_LARGE;
 		if (!HASBIT(avail_airports, 1) && sel == AT_LARGE) sel = AT_SMALL;
 
-		/* 'Country Airport' starts at widget 3, and if its bit is set, it is available,
-		 * so take its opposite value to set the disabled_state. There are only 5 available
-		 * airports, so XOr with 0x1F (1 1111) */
+		/* 'Country Airport' starts at widget 3, and if its bit is set, it is
+		 * available, so take its opposite value to set the disabled_state. There
+		 * are only 5 available airports, so XOR with 0x1F (1 1111) */
 		w->disabled_state = (avail_airports ^ 0x1F) << 3;
 
 		_selected_airport_type = sel;
@@ -177,7 +177,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 			}
 		}
 
-		if (_station_show_coverage)	SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
+		if (_station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 
 		DrawWindowWidgets(w);
     // strings such as 'Size' and 'Coverage Area'
@@ -188,7 +188,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_CLICK: {
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 3: case 4: case 5: case 6: case 7:
 			_selected_airport_type = e->click.widget - 3;
 			SndPlayFx(SND_15_BEEP);
@@ -212,8 +212,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_DESTROY:
-		if (!WP(w,def_d).close)
-			ResetObjectToPlace();
+		if (!WP(w,def_d).close) ResetObjectToPlace();
 		break;
 	}
 }

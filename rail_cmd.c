@@ -224,7 +224,7 @@ uint GetRailFoundation(uint tileh, uint bits)
 	return 0;
 }
 
-//
+
 static uint32 CheckRailSlope(uint tileh, TrackBits rail_bits, TrackBits existing, TileIndex tile)
 {
 	// never allow building on top of steep tiles
@@ -689,8 +689,7 @@ int32 CmdBuildTrainDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	cost = ret;
 
 	d = AllocateDepot();
-	if (d == NULL)
-		return CMD_ERROR;
+	if (d == NULL) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		if (IsLocalPlayer()) _last_built_train_depot_tile = tile;
@@ -820,10 +819,11 @@ int32 CmdBuildSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			_m[tile].m3 &= ~SignalOnTrack(track);
 			_m[tile].m3 |= p2 & SignalOnTrack(track);
 			// convert between signal<->semaphores when dragging
-			if (semaphore)
+			if (semaphore) {
 				SETBIT(_m[tile].m4, 3);
-			else
+			} else {
 				CLRBIT(_m[tile].m4, 3);
+			}
 		}
 
 		MarkTileDirtyByTile(tile);
@@ -859,8 +859,7 @@ static int32 CmdSignalTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 
 	if (p1 > MapSize()) return CMD_ERROR;
 	if (signal_density == 0 || signal_density > 20) return CMD_ERROR;
 
-	if (!IsTileType(tile, MP_RAILWAY))
-		return CMD_ERROR;
+	if (!IsTileType(tile, MP_RAILWAY)) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -1290,8 +1289,7 @@ static void DrawTrackFence_NE_SW(const TileInfo *ti)
 static void DrawTrackFence_NS_1(const TileInfo *ti)
 {
 	int z = ti->z;
-	if (ti->tileh & 1)
-		z += 8;
+	if (ti->tileh & 1) z += 8;
 	AddSortableSpriteToDraw(0x517 | _drawtile_track_palette,
 		ti->x + 8, ti->y + 8, 1, 1, 4, z);
 }
@@ -1299,8 +1297,7 @@ static void DrawTrackFence_NS_1(const TileInfo *ti)
 static void DrawTrackFence_NS_2(const TileInfo *ti)
 {
 	int z = ti->z;
-	if (ti->tileh & 4)
-		z += 8;
+	if (ti->tileh & 4) z += 8;
 	AddSortableSpriteToDraw(0x517 | _drawtile_track_palette,
 		ti->x + 8, ti->y + 8, 1, 1, 4, z);
 }
@@ -1308,8 +1305,7 @@ static void DrawTrackFence_NS_2(const TileInfo *ti)
 static void DrawTrackFence_WE_1(const TileInfo *ti)
 {
 	int z = ti->z;
-	if (ti->tileh & 8)
-		z += 8;
+	if (ti->tileh & 8) z += 8;
 	AddSortableSpriteToDraw(0x518 | _drawtile_track_palette,
 		ti->x + 8, ti->y + 8, 1, 1, 4, z);
 }
@@ -1317,8 +1313,7 @@ static void DrawTrackFence_WE_1(const TileInfo *ti)
 static void DrawTrackFence_WE_2(const TileInfo *ti)
 {
 	int z = ti->z;
-	if (ti->tileh & 2)
-		z += 8;
+	if (ti->tileh & 2) z += 8;
 	AddSortableSpriteToDraw(0x518 | _drawtile_track_palette,
 		ti->x + 8, ti->y + 8, 1, 1, 4, z);
 }
@@ -1795,8 +1790,7 @@ static void SetSignalsAfterProc(TrackPathFinder *tpf)
 	/* Go through all the PF tiles */
 	for (i = 0; i < lengthof(tpf->hash_head); i++) {
 		/* Empty hash item */
-		if (tpf->hash_head[i] == 0)
-			continue;
+		if (tpf->hash_head[i] == 0) continue;
 
 		/* If 0x8000 is not set, there is only 1 item */
 		if (!(tpf->hash_head[i] & 0x8000)) {
@@ -1917,8 +1911,7 @@ bool UpdateSignalsOnSegment(TileIndex tile, byte direction)
 		if (result < 0) result = ssd.stop;
 
 		// if any exit signals were changed, we need to keep going to modify the stuff behind those.
-		if(!ssd.cur_stack)
-			break;
+		if (ssd.cur_stack == 0) break;
 
 		// one or more exit signals were changed, so we need to update another segment too.
 		tile = ssd.next_tile[--ssd.cur_stack];
@@ -2020,8 +2013,7 @@ static void TileLoop_Track(TileIndex tile)
 	}
 
 	// Don't continue tile loop for depots
-	if (_m[tile].m5 & RAIL_TYPE_SPECIAL)
-		return;
+	if (_m[tile].m5 & RAIL_TYPE_SPECIAL) return;
 
 	a2 = RAIL_GROUND_GREEN;
 
@@ -2085,8 +2077,7 @@ static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode)
 	uint16 b;
 	uint32 ret;
 
-	if (mode != TRANSPORT_RAIL)
-		return 0;
+	if (mode != TRANSPORT_RAIL) return 0;
 
 	m5 = _m[tile].m5;
 
@@ -2111,10 +2102,10 @@ static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode)
 			if ((a & 0xC0) == 0) b |= 0xC0;
 			if ((a & 0x30) == 0) b |= 0x30;
 
-			if ( (b & 0x80) == 0)	ret |= 0x10070000;
-			if ( (b & 0x40) == 0)	ret |= 0x7100000;
-			if ( (b & 0x20) == 0)	ret |= 0x20080000;
-			if ( (b & 0x10) == 0)	ret |= 0x8200000;
+			if ((b & 0x80) == 0) ret |= 0x10070000;
+			if ((b & 0x40) == 0) ret |= 0x07100000;
+			if ((b & 0x20) == 0) ret |= 0x20080000;
+			if ((b & 0x10) == 0) ret |= 0x08200000;
 		}
 	} else if (m5 & 0x40) {
 		static const byte _train_spec_tracks[6] = {1,2,1,2,1,2};
@@ -2193,8 +2184,7 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 	int length;
 
 	// this routine applies only to trains in depot tiles
-	if (v->type != VEH_Train || !IsTileDepotType(tile, TRANSPORT_RAIL))
-		return 0;
+	if (v->type != VEH_Train || !IsTileDepotType(tile, TRANSPORT_RAIL)) return 0;
 
 	/* depot direction */
 	dir = GetDepotDirection(tile, TRANSPORT_RAIL);

@@ -35,7 +35,7 @@ void DrawShipEngine(int x, int y, EngineID engine, uint32 image_ormod)
 	if (is_custom_sprite(spritenum)) {
 		int sprite = GetCustomVehicleIcon(engine, 6);
 
-		if (sprite) {
+		if (sprite != 0) {
 			DrawSprite(sprite | image_ormod, x, y);
 			return;
 		}
@@ -51,7 +51,7 @@ int GetShipImage(const Vehicle *v, byte direction)
 	if (is_custom_sprite(spritenum)) {
 		int sprite = GetCustomVehicleSprite(v, direction);
 
-		if (sprite) return sprite;
+		if (sprite != 0) return sprite;
 		spritenum = orig_ship_vehicle_info[v->engine_type - SHIP_ENGINES_INDEX].image_index;
 	}
 	return _ship_sprites[spritenum] + direction;
@@ -70,10 +70,11 @@ static const Depot* FindClosestShipDepot(const Vehicle* v)
 		NPFFoundTargetData ftd;
 		byte trackdir = GetVehicleTrackdir(v);
 		ftd = NPFRouteToDepotTrialError(v->tile, trackdir, TRANSPORT_WATER, v->owner, INVALID_RAILTYPE);
-		if (ftd.best_bird_dist == 0)
+		if (ftd.best_bird_dist == 0) {
 			best_depot = GetDepotByTile(ftd.node.tile); /* Found target */
-		else
+		} else {
 			best_depot = NULL; /* Did not find target */
+		}
 	} else {
 		FOR_ALL_DEPOTS(depot) {
 			tile = depot->xy;
@@ -93,21 +94,15 @@ static void CheckIfShipNeedsService(Vehicle *v)
 {
 	const Depot* depot;
 
-	if (_patches.servint_ships == 0)
-		return;
-
-	if (!VehicleNeedsService(v))
-		return;
-
-	if (v->vehstatus & VS_STOPPED)
-		return;
+	if (_patches.servint_ships == 0) return;
+	if (!VehicleNeedsService(v))     return;
+	if (v->vehstatus & VS_STOPPED)   return;
 
 	if (v->current_order.type == OT_GOTO_DEPOT &&
 			v->current_order.flags & OF_HALT_IN_DEPOT)
 		return;
 
-	if (_patches.gotodepot && VehicleHasDepotOrders(v))
-		return;
+	if (_patches.gotodepot && VehicleHasDepotOrders(v)) return;
 
 	depot = FindClosestShipDepot(v);
 
@@ -140,10 +135,7 @@ void OnNewDay_Ship(Vehicle *v)
 
 	CheckOrders(v->index, OC_INIT);
 
-	if (v->vehstatus & VS_STOPPED)
-		return;
-
-
+	if (v->vehstatus & VS_STOPPED) return;
 
 	cost = ShipVehInfo(v->engine_type)->running_cost * _price.ship_running / 364;
 	v->profit_this_year -= cost >> 8;
@@ -173,8 +165,7 @@ static void HandleBrokenShip(Vehicle *v)
 
 		if (!(v->vehstatus & VS_HIDDEN)) {
 			Vehicle *u = CreateEffectVehicleRel(v, 4, 4, 5, EV_BREAKDOWN_SMOKE);
-			if (u)
-				u->u.special.unk0 = v->breakdown_delay * 2;
+			if (u != NULL) u->u.special.unk0 = v->breakdown_delay * 2;
 		}
 	}
 
@@ -268,15 +259,11 @@ static void ProcessShipOrder(Vehicle *v)
 
 static void HandleShipLoading(Vehicle *v)
 {
-	if (v->current_order.type == OT_NOTHING)
-		return;
+	if (v->current_order.type == OT_NOTHING) return;
 
 	if (v->current_order.type != OT_DUMMY) {
-		if (v->current_order.type != OT_LOADING)
-			return;
-
-		if (--v->load_unload_time_rem)
-			return;
+		if (v->current_order.type != OT_LOADING) return;
+		if (--v->load_unload_time_rem) return;
 
 		if (v->current_order.flags & OF_FULL_LOAD && CanFillVehicle(v)) {
 			SET_EXPENSES_TYPE(EXPENSES_SHIP_INC);
@@ -292,8 +279,7 @@ static void HandleShipLoading(Vehicle *v)
 			Order b = v->current_order;
 			v->current_order.type = OT_LEAVESTATION;
 			v->current_order.flags = 0;
-			if (!(b.flags & OF_NON_STOP))
-				return;
+			if (!(b.flags & OF_NON_STOP)) return;
 		}
 	}
 
@@ -341,8 +327,7 @@ static void CheckShipLeaveDepot(Vehicle *v)
 	int d;
 	uint m;
 
-	if (v->u.ship.state != 0x80)
-		return;
+	if (v->u.ship.state != 0x80) return;
 
 	tile = v->tile;
 	d = (_m[tile].m5&2) ? 1 : 0;
@@ -383,15 +368,10 @@ static bool ShipAccelerate(Vehicle *v)
 	}
 
 	// Decrease somewhat when turning
-	if (!(v->direction&1)) {
-		spd = spd * 3 >> 2;
-	}
+	if (!(v->direction & 1)) spd = spd * 3 / 4;
 
-	if (spd == 0)
-		return false;
-
-	if ((byte)++spd == 0)
-		return true;
+	if (spd == 0) return false;
+	if ((byte)++spd == 0) return true;
 
 	v->progress = (t = v->progress) - (byte)spd;
 
@@ -447,7 +427,9 @@ static void ShipArrivesAt(const Vehicle* v, Station* st)
 	/* Check if station was ever visited before */
 	if (!(st->had_vehicle_of_type & HVOT_SHIP)) {
 		uint32 flags;
+
 		st->had_vehicle_of_type |= HVOT_SHIP;
+
 		SetDParam(0, st->index);
 		flags = (v->owner == _local_player) ? NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_PLAYER, 0) : NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_OTHER, 0);
 		AddNewsItem(
@@ -564,14 +546,15 @@ static int ChooseShipTrack(Vehicle *v, TileIndex tile, int enterdir, uint tracks
 
 		ftd = NPFRouteToStationOrTile(src_tile, trackdir, &fstd, TRANSPORT_WATER, v->owner, INVALID_RAILTYPE, PBS_MODE_NONE);
 
-		if (ftd.best_trackdir != 0xff)
+		if (ftd.best_trackdir != 0xff) {
 			/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
 			the direction we need to take to get there, if ftd.best_bird_dist is not 0,
 			we did not find our target, but ftd.best_trackdir contains the direction leading
 			to the tile closest to our target. */
 			return ftd.best_trackdir & 7; /* TODO: Wrapper function? */
-		else
+		} else {
 			return -1; /* Already at target, reverse? */
+		}
 	} else {
 		uint b;
 		uint tot_dist, dist;
@@ -676,19 +659,16 @@ static void ShipController(Vehicle *v)
 		v->breakdown_ctr--;
 	}
 
-	if (v->vehstatus & VS_STOPPED)
-		return;
+	if (v->vehstatus & VS_STOPPED) return;
 
 	ProcessShipOrder(v);
 	HandleShipLoading(v);
 
-	if (v->current_order.type == OT_LOADING)
-		return;
+	if (v->current_order.type == OT_LOADING) return;
 
 	CheckShipLeaveDepot(v);
 
-	if (!ShipAccelerate(v))
-		return;
+	if (!ShipAccelerate(v)) return;
 
 	BeginVehicleMove(v);
 
@@ -811,10 +791,8 @@ reverse_direction:
 
 static void AgeShipCargo(Vehicle *v)
 {
-	if (_age_cargo_skip_counter != 0)
-		return;
-	if (v->cargo_days != 255)
-		v->cargo_days++;
+	if (_age_cargo_skip_counter != 0) return;
+	if (v->cargo_days != 255) v->cargo_days++;
 }
 
 void Ship_Tick(Vehicle *v)

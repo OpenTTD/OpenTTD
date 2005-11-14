@@ -306,8 +306,7 @@ static void DrawTile_Trees(TileInfo *ti)
 		i = (ti->map5 >> 6) + 1;
 		do {
 			uint32 image = s[0] + (--i == 0 ? GB(ti->map5, 0, 3) : 3);
-			if (_display_opt & DO_TRANS_BUILDINGS)
-				MAKE_TRANSPARENT(image);
+			if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 			te[i].image = image;
 			te[i].x = d[0];
 			te[i].y = d[1];

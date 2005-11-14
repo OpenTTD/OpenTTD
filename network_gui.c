@@ -62,11 +62,10 @@ static FiosItem *_selected_map = NULL; // to highlight slected map
 // called when a new server is found on the network
 void UpdateNetworkGameWindow(bool unselect)
 {
-	Window *w;
-	w = FindWindowById(WC_NETWORK_WINDOW, 0);
+	Window* w = FindWindowById(WC_NETWORK_WINDOW, 0);
+
 	if (w != NULL) {
-		if (unselect)
-			_selected_item = NULL;
+		if (unselect) _selected_item = NULL;
 		w->vscroll.count = _network_game_count;
 		SetWindowDirty(w);
 	}
@@ -123,8 +122,8 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 
 			while (cur_item != NULL) {
 				bool compatible =
-					!strncmp(cur_item->info.server_revision, _openttd_revision, NETWORK_REVISION_LENGTH - 1) ||
-					!strncmp(cur_item->info.server_revision, NOREV_STRING, sizeof(cur_item->info.server_revision));
+					strncmp(cur_item->info.server_revision, _openttd_revision, NETWORK_REVISION_LENGTH - 1) == 0 ||
+					strncmp(cur_item->info.server_revision, NOREV_STRING, sizeof(cur_item->info.server_revision) == 0);
 
 				if (cur_item == sel)
 					GfxFillRect(11, y - 2, 218, y + 9, 10); // show highlighted item with a different colour
@@ -138,10 +137,8 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 
 				// only draw icons if the server is online
 				if (cur_item->online) {
-
 					// draw a lock if the server is password protected.
-					if(cur_item->info.use_password)
-						DrawSprite(SPR_LOCK, 186, y-1);
+					if (cur_item->info.use_password) DrawSprite(SPR_LOCK, 186, y - 1);
 
 					// draw red or green icon, depending on compatibility with server.
 					DrawSprite(SPR_BLOT | (compatible ? PALETTE_TO_GREEN : PALETTE_TO_RED), 195, y);
@@ -180,43 +177,43 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			SetDParam(0, sel->info.clients_on);
 			SetDParam(1, sel->info.clients_max);
 			DrawString(260, y, STR_NETWORK_CLIENTS, 2); // clients on the server / maximum slots
-			y+=10;
+			y += 10;
 
 			if (sel->info.server_lang < NETWORK_NUM_LANGUAGES) {
-				SetDParam(0, STR_NETWORK_LANG_ANY+sel->info.server_lang);
+				SetDParam(0, STR_NETWORK_LANG_ANY + sel->info.server_lang);
 				DrawString(260, y, STR_NETWORK_LANGUAGE, 2); // server language
 			}
-			y+=10;
+			y += 10;
 
 			if (sel->info.map_set < NUM_LANDSCAPE ) {
-				SetDParam(0, STR_TEMPERATE_LANDSCAPE+sel->info.map_set);
+				SetDParam(0, STR_TEMPERATE_LANDSCAPE + sel->info.map_set);
 				DrawString(260, y, STR_NETWORK_TILESET, 2); // tileset
 			}
-			y+=10;
+			y += 10;
 
 			SetDParam(0, sel->info.map_width);
 			SetDParam(1, sel->info.map_height);
 			DrawString(260, y, STR_NETWORK_MAP_SIZE, 2); // map size
-			y+=10;
+			y += 10;
 
 			SetDParamStr(0, sel->info.server_revision);
 			DrawString(260, y, STR_NETWORK_SERVER_VERSION, 2); // server version
-			y+=10;
+			y += 10;
 
 			SetDParamStr(0, sel->info.hostname);
 			SetDParam(1, sel->port);
 			DrawString(260, y, STR_NETWORK_SERVER_ADDRESS, 2); // server address
-			y+=10;
+			y += 10;
 
 			SetDParam(0, sel->info.start_date);
 			DrawString(260, y, STR_NETWORK_START_DATE, 2); // start date
-			y+=10;
+			y += 10;
 
 			SetDParam(0, sel->info.game_date);
 			DrawString(260, y, STR_NETWORK_CURRENT_DATE, 2); // current date
-			y+=10;
+			y += 10;
 
-			y+=2;
+			y += 2;
 
 			if (strncmp(sel->info.server_revision, _openttd_revision, NETWORK_REVISION_LENGTH - 1) != 0) {
 				if (strncmp(sel->info.server_revision, NOREV_STRING, sizeof(sel->info.server_revision)) != 0)
@@ -224,10 +221,11 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			} else if (sel->info.clients_on == sel->info.clients_max) {
 				// Show: server full, when clients_on == clients_max
 				DrawStringMultiCenter(365, y, STR_NETWORK_SERVER_FULL, 2); // server full
-			} else if (sel->info.use_password)
+			} else if (sel->info.use_password) {
 				DrawStringMultiCenter(365, y, STR_NETWORK_PASSWORD, 2); // password warning
+			}
 
-			y+=10;
+			y += 10;
 		}
 	}	break;
 
@@ -306,9 +304,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_MOUSELOOP:
-		if (_selected_field == 3)
-			HandleEditBox(w, 3);
-
+		if (_selected_field == 3) HandleEditBox(w, 3);
 		break;
 
 	case WE_KEYPRESS:
@@ -331,10 +327,11 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		if (HandleEditBoxKey(w, 3, e) == 1) break; // enter pressed
 
 		// The name is only allowed when it starts with a letter!
-		if (_edit_str_buf[0] != '\0' && _edit_str_buf[0] != ' ')
+		if (_edit_str_buf[0] != '\0' && _edit_str_buf[0] != ' ') {
 			ttd_strlcpy(_network_player_name, _edit_str_buf, lengthof(_network_player_name));
-		else
+		} else {
 			ttd_strlcpy(_network_player_name, "Player", lengthof(_network_player_name));
+		}
 
 		break;
 
@@ -396,7 +393,7 @@ void ShowNetworkGameWindow(void)
 	if (_first_time_show_network_game_window) {
 		_first_time_show_network_game_window = false;
 		// add all servers from the config file to our list
-		for (i=0; i != lengthof(_network_host_list); i++) {
+		for (i = 0; i != lengthof(_network_host_list); i++) {
 			if (_network_host_list[i] == NULL) break;
 			NetworkAddServer(_network_host_list[i]);
 		}
@@ -489,18 +486,22 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		_selected_field = e->click.widget;
-		switch(e->click.widget) {
-		case 0: case 15: /* Close 'X' | Cancel button */
+		switch (e->click.widget) {
+		case 0: /* Close 'X' */
+		case 15: /* Cancel button */
 			ShowNetworkGameWindow();
 			break;
-		case 4: { /* Set password button */
+
+		case 4: /* Set password button */
 			ShowQueryString(BindCString(_network_server_password),
 				STR_NETWORK_SET_PASSWORD, 20, 250, w->window_class, w->window_number);
-			} break;
+			break;
+
 		case 5: { /* Select map */
 			int y = (e->click.pt.y - NSSWND_START) / NSSWND_ROWSIZE;
-			if ((y += w->vscroll.pos) >= w->vscroll.count)
-				return;
+
+			y += w->vscroll.pos;
+			if (y >= w->vscroll.count) return;
 
 			_selected_map = (y == 0) ? NULL : _fios_list + y - 1;
 			SetWindowDirty(w);
@@ -561,18 +562,15 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_MOUSELOOP:
-		if (_selected_field == 3)
-			HandleEditBox(w, 3);
+		if (_selected_field == 3) HandleEditBox(w, 3);
 		break;
 
 	case WE_KEYPRESS:
-		if (_selected_field == 3)
-			HandleEditBoxKey(w, 3, e);
+		if (_selected_field == 3) HandleEditBoxKey(w, 3, e);
 		break;
 
 	case WE_ON_EDIT_TEXT: {
-		const char *b = e->edittext.str;
-		ttd_strlcpy(_network_server_password, b, sizeof(_network_server_password));
+		ttd_strlcpy(_network_server_password, e->edittext.str, lengthof(_network_server_password));
 		_network_game_info.use_password = (_network_server_password[0] != '\0');
 		SetWindowDirty(w);
 	} break;
@@ -636,12 +634,12 @@ static void ShowNetworkStartServerWindow(void)
 static byte NetworkLobbyFindCompanyIndex(byte pos)
 {
 	byte i;
+
 	/* Scroll through all _network_player_info and get the 'pos' item
 	    that is not empty */
 	for (i = 0; i < MAX_PLAYERS; i++) {
 		if (_network_player_info[i].company_name[0] != '\0') {
-			if (pos-- == 0)
-				return i;
+			if (pos-- == 0) return i;
 		}
 	}
 
@@ -650,7 +648,7 @@ static byte NetworkLobbyFindCompanyIndex(byte pos)
 
 static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		int y = NET_PRC__OFFSET_TOP_WIDGET_COMPANY, pos;
 
@@ -678,7 +676,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 				GfxFillRect(11, y - 1, 154, y + 10, 155); // show highlighted item with a different colour
 
 			DoDrawString(_network_player_info[index].company_name, 13, y, 2);
-			if(_network_player_info[index].use_password != 0)
+			if (_network_player_info[index].use_password != 0)
 				DrawSprite(SPR_LOCK, 135, y);
 
 			/* If the company's income was positive puts a green dot else a red dot */
@@ -688,8 +686,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 
 			pos++;
 			y += NET_PRC__SIZE_OF_ROW_COMPANY;
-			if (pos >= w->vscroll.cap)
-				break;
+			if (pos >= w->vscroll.cap) break;
 		}
 
 		// draw info about selected company
@@ -1087,7 +1084,7 @@ static Window *PopupClientList(Window *w, int client_no, int x, int y)
 // Main handle for the popup
 static void ClientListPopupWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		int i, y, sel;
 		byte colour;
@@ -1141,7 +1138,7 @@ static void ClientListPopupWndProc(Window *w, WindowEvent *e)
 // Main handle for clientlist
 static void ClientListWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		NetworkClientInfo *ci;
 		int y, i = 0;
@@ -1166,8 +1163,9 @@ static void ClientListWndProc(Window *w, WindowEvent *e)
 
 			if (ci->client_index == NETWORK_SERVER_INDEX) {
 				DrawString(4, y, STR_NETWORK_SERVER, colour);
-			} else
+			} else {
 				DrawString(4, y, STR_NETWORK_CLIENT, colour);
+			}
 
 			// Filter out spectators
 			if (ci->client_playas > 0 && ci->client_playas <= MAX_PLAYERS)
@@ -1220,15 +1218,14 @@ static void ClientListWndProc(Window *w, WindowEvent *e)
 void ShowClientList(void)
 {
 	Window *w = AllocateWindowDescFront(&_client_list_desc, 0);
-	if (w)
-		w->window_number = 0;
+	if (w != NULL) w->window_number = 0;
 }
 
 extern void SwitchMode(int new_mode);
 
 static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		uint8 progress; // used for progress bar
 		DrawWindowWidgets(w);
@@ -1258,13 +1255,14 @@ static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
 	}	break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
-		case 0: case 3: /* Close 'X' | Disconnect button */
-			NetworkDisconnect();
-			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
-			SwitchMode(SM_MENU);
-			ShowNetworkGameWindow();
-			break;
+		switch (e->click.widget) {
+			case 0: /* Close 'X' */
+			case 3: /* Disconnect button */
+				NetworkDisconnect();
+				DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
+				SwitchMode(SM_MENU);
+				ShowNetworkGameWindow();
+				break;
 		}
 		break;
 
@@ -1311,6 +1309,7 @@ void ShowJoinStatusWindowAfterJoin(void)
 static void ChatWindowWndProc(Window *w, WindowEvent *e)
 {
 	static bool closed = false;
+
 	switch (e->event) {
 	case WE_CREATE:
 		SendWindowMessage(WC_NEWS_WINDOW, 0, WE_CREATE, w->height, 0);
@@ -1324,7 +1323,7 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 3: DeleteWindow(w); break; // Cancel
 		case 2: // Send
 press_ok:;

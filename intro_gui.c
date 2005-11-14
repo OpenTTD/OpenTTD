@@ -154,8 +154,9 @@ static const Widget _ask_abandon_game_widgets[] = {
 {  WIDGETS_END },
 };
 
-static void AskAbandonGameWndProc(Window *w, WindowEvent *e) {
-	switch(e->event) {
+static void AskAbandonGameWndProc(Window* w, WindowEvent* e)
+{
+	switch (e->event) {
 	case WE_PAINT:
 		DrawWindowWidgets(w);
 #if defined(_WIN32)
@@ -173,7 +174,7 @@ static void AskAbandonGameWndProc(Window *w, WindowEvent *e) {
 #else
 		SetDParam(0, STR_0134_UNIX);
 #endif
-		DrawStringMultiCenter(0x5A, 0x26, STR_00CA_ARE_YOU_SURE_YOU_WANT_TO, 178);
+		DrawStringMultiCenter(90, 38, STR_00CA_ARE_YOU_SURE_YOU_WANT_TO, 178);
 		return;
 
 	case WE_CLICK:
@@ -217,32 +218,29 @@ static const Widget _ask_quit_game_widgets[] = {
 {  WIDGETS_END },
 };
 
-static void AskQuitGameWndProc(Window *w, WindowEvent *e) {
-	switch(e->event) {
-	case WE_PAINT:
-		DrawWindowWidgets(w);
-		DrawStringMultiCenter(0x5A, 0x26,
-			_game_mode != GM_EDITOR ? STR_0160_ARE_YOU_SURE_YOU_WANT_TO :
-				STR_029B_ARE_YOU_SURE_YOU_WANT_TO,
-			178);
-		return;
-
-	case WE_CLICK:
-		switch(e->click.widget) {
-		case 3:
-			DeleteWindow(w);
+static void AskQuitGameWndProc(Window* w, WindowEvent* e)
+{
+	switch (e->event) {
+		case WE_PAINT:
+			DrawWindowWidgets(w);
+			DrawStringMultiCenter(
+				90, 38,
+				_game_mode != GM_EDITOR ?
+					STR_0160_ARE_YOU_SURE_YOU_WANT_TO : STR_029B_ARE_YOU_SURE_YOU_WANT_TO,
+				178
+			);
 			break;
-		case 4:
-			_switch_mode = SM_MENU;
+
+		case WE_CLICK:
+			switch (e->click.widget) {
+				case 3: DeleteWindow(w);        break;
+				case 4: _switch_mode = SM_MENU; break;
+			}
 			break;
-		}
-		break;
 
-	case WE_KEYPRESS: /* Return to main menu on pressing 'Enter' */
-		if (e->keypress.keycode == WKC_RETURN)
-			_switch_mode = SM_MENU;
-		break;
-
+		case WE_KEYPRESS: /* Return to main menu on pressing 'Enter' */
+			if (e->keypress.keycode == WKC_RETURN) _switch_mode = SM_MENU;
+			break;
 	}
 }
 

@@ -21,8 +21,7 @@
 
 static void DisasterClearSquare(TileIndex tile)
 {
-	if (!EnsureNoVehicle(tile))
-		return;
+	if (!EnsureNoVehicle(tile)) return;
 
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
@@ -352,7 +351,7 @@ static void DisasterTick_2(Vehicle *v)
 
 	v->tick_counter++;
 	v->u.disaster.image_override =
-		(v->current_order.station == 1 && v->tick_counter&4) ? SPR_F_15_FIRING : 0;
+		(v->current_order.station == 1 && v->tick_counter & 4) ? SPR_F_15_FIRING : 0;
 
 	GetNewVehiclePos(v, &gp);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
@@ -423,7 +422,7 @@ static void DisasterTick_3(Vehicle *v)
 
 	v->tick_counter++;
 	v->u.disaster.image_override =
-		(v->current_order.station == 1 && v->tick_counter&4) ? SPR_AH_64A_FIRING : 0;
+		(v->current_order.station == 1 && v->tick_counter & 4) ? SPR_AH_64A_FIRING : 0;
 
 	GetNewVehiclePos(v, &gp);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
@@ -843,8 +842,7 @@ static void Disaster4_Init(void)
 	Vehicle *v = ForceAllocateSpecialVehicle(), *u;
 	int x,y;
 
-	if (v == NULL)
-		return;
+	if (v == NULL) return;
 
 	x = TileX(Random()) * 16 + 8;
 
@@ -870,8 +868,7 @@ static void Disaster5_Init(void)
 	byte dir;
 	uint32 r;
 
-	if (v == NULL)
-		return;
+	if (v == NULL) return;
 
 	r = Random();
 	x = TileX(r) * 16 + 8;
@@ -891,8 +888,7 @@ static void Disaster6_Init(void)
 	byte dir;
 	uint32 r;
 
-	if (v == NULL)
-		return;
+	if (v == NULL) return;
 
 	r = Random();
 	x = TileX(r) * 16 + 8;
@@ -964,18 +960,17 @@ static const DisasterYears _dis_years[8] = {
 
 static void DoDisaster(void)
 {
-	byte buf[8];
+	byte buf[lengthof(_dis_years)];
 	byte year = _cur_year;
-	int i,j;
+	uint i;
+	uint j;
 
-	for(i=j=0; i!=lengthof(_dis_years); i++) {
-		if (year >= _dis_years[i].min &&
-				year < _dis_years[i].max)
-					buf[j++] = i;
+	j = 0;
+	for (i = 0; i != lengthof(_dis_years); i++) {
+		if (year >= _dis_years[i].min && year < _dis_years[i].max) buf[j++] = i;
 	}
 
-	if (j == 0)
-		return;
+	if (j == 0) return;
 
 	_disaster_initprocs[buf[RandomRange(j)]]();
 }
@@ -988,13 +983,11 @@ static void ResetDisasterDelay(void)
 
 void DisasterDailyLoop(void)
 {
-	if (--_disaster_delay != 0)
-		return;
+	if (--_disaster_delay != 0) return;
 
 	ResetDisasterDelay();
 
-	if (_opt.diff.disasters != 0)
-		DoDisaster();
+	if (_opt.diff.disasters != 0) DoDisaster();
 }
 
 void StartupDisasters(void)

@@ -1994,7 +1994,6 @@ uint16 GetDrawStringPlayerColor(PlayerID player)
 {
 	// Get the color for DrawString-subroutines which matches the color
 	//  of the player
-	if (player == OWNER_SPECTATOR || player == OWNER_SPECTATOR - 1)
-			return 1;
+	if (player == OWNER_SPECTATOR || player == OWNER_SPECTATOR - 1) return 1;
 	return (_color_list[_player_colors[player]].window_color_1b) | IS_PALETTE_COLOR;
 }

@@ -222,35 +222,39 @@ void ShowBuildDocksToolbar(void)
 
 static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 {
-	int rad;
-
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
-		if (WP(w,def_d).close)
-			return;
+		int rad;
+
+		if (WP(w,def_d).close) return;
 		w->click_state = (1<<3) << _station_show_coverage;
 		DrawWindowWidgets(w);
 
 		rad = (_patches.modified_catchment) ? CA_DOCK : 4;
 
-		if (_station_show_coverage)	SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
-		else SetTileSelectBigSize(0, 0, 0, 0);
+		if (_station_show_coverage) {
+			SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
+		} else {
+			SetTileSelectBigSize(0, 0, 0, 0);
+		}
 
 		DrawStringCentered(74, 17, STR_3066_COVERAGE_AREA_HIGHLIGHT, 0);
 		DrawStationCoverageAreaText(4, 50, (uint)-1, rad);
-	} break;
+		break;
+	}
 
-	case WE_CLICK: {
-		switch(e->click.widget) {
-		case 3: case 4:
-			_station_show_coverage = e->click.widget - 3;
-			SndPlayFx(SND_15_BEEP);
-			SetWindowDirty(w);
-			break;
+	case WE_CLICK:
+		switch (e->click.widget) {
+			case 3:
+			case 4:
+				_station_show_coverage = e->click.widget - 3;
+				SndPlayFx(SND_15_BEEP);
+				SetWindowDirty(w);
+				break;
 		}
-	} break;
+		break;
 
-	case WE_MOUSELOOP: {
+	case WE_MOUSELOOP:
 		if (WP(w,def_d).close) {
 			DeleteWindow(w);
 			return;
@@ -258,11 +262,9 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 
 		CheckRedrawStationCoverage(w);
 		break;
-	}
 
 	case WE_DESTROY:
-		if (!WP(w,def_d).close)
-			ResetObjectToPlace();
+		if (!WP(w,def_d).close) ResetObjectToPlace();
 		break;
 	}
 }
@@ -324,13 +326,11 @@ static void BuildDocksDepotWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_MOUSELOOP:
-		if (WP(w,def_d).close)
-			DeleteWindow(w);
+		if (WP(w,def_d).close) DeleteWindow(w);
 		break;
 
 	case WE_DESTROY:
-		if (!WP(w,def_d).close)
-			ResetObjectToPlace();
+		if (!WP(w,def_d).close) ResetObjectToPlace();
 		break;
 	}
 }

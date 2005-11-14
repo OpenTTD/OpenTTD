@@ -69,16 +69,17 @@ bool _dbg_screen_rect;
  * caused by the user, i.e. missing files or fatal configuration errors.
  * Post-0.4.0 since Celestar doesn't want this in SVN before. --pasky */
 
-void CDECL error(const char *s, ...) {
+void CDECL error(const char* s, ...)
+{
 	va_list va;
 	char buf[512];
+
 	va_start(va, s);
 	vsprintf(buf, s, va);
 	va_end(va);
 
 	ShowOSErrorBox(buf);
-	if (_video_driver)
-		_video_driver->stop();
+	if (_video_driver != NULL) _video_driver->stop();
 
 	assert(0);
 	exit(1);
@@ -102,8 +103,7 @@ void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
 	size_t len;
 
 	in = fopen(filename, "rb");
-	if (in == NULL)
-		return NULL;
+	if (in == NULL) return NULL;
 
 	fseek(in, 0, SEEK_END);
 	len = ftell(in);
@@ -178,12 +178,12 @@ static int MyGetOpt(MyGetOptData *md)
 {
 	char *s,*r,*t;
 
-	if ((s=md->cont) != NULL)
+	s = md->cont;
+	if (s != NULL)
 		goto md_continue_here;
 
-	while(true) {
-		if (--md->numleft < 0)
-			return -1;
+	for (;;) {
+		if (--md->numleft < 0) return -1;
 
 		s = *md->argv++;
 		if (*s == '-') {
@@ -347,9 +347,9 @@ int ttd_main(int argc, char* argv[])
 		case 's': ttd_strlcpy(sounddriver, mgo.opt, sizeof(sounddriver)); break;
 		case 'v': ttd_strlcpy(videodriver, mgo.opt, sizeof(videodriver)); break;
 		case 'D': {
-				sprintf(musicdriver,"null");
-				sprintf(sounddriver,"null");
-				sprintf(videodriver,"dedicated");
+				strcpy(musicdriver, "null");
+				strcpy(sounddriver, "null");
+				strcpy(videodriver, "dedicated");
 				dedicated = true;
 			} break;
 		case 'f': {
@@ -364,23 +364,18 @@ int ttd_main(int argc, char* argv[])
 					network_conn = NULL;
 			} break;
 		case 'r': ParseResolution(resolution, mgo.opt); break;
-		case 'l': {
-				language = mgo.opt;
-			} break;
-		case 't': {
-				startdate = atoi(mgo.opt);
-			} break;
+		case 'l': language = mgo.opt; break;
+		case 't': startdate = atoi(mgo.opt); break;
 		case 'd': {
 #if defined(WIN32)
 				CreateConsole();
 #endif
-				if (mgo.opt)
-					SetDebugString(mgo.opt);
+				if (mgo.opt != NULL) SetDebugString(mgo.opt);
 			} break;
 		case 'e': _switch_mode = SM_EDITOR; break;
 		case 'i': _use_dos_palette = true; break;
 		case 'g':
-			if (mgo.opt) {
+			if (mgo.opt != NULL) {
 				strcpy(_file_to_saveload.name, mgo.opt);
 				_switch_mode = SM_LOAD;
 			} else
@@ -598,7 +593,7 @@ static void MakeNewGame(void)
 
 	// Copy in game options
 	_opt_ptr = &_opt;
-	memcpy(_opt_ptr, &_opt_newgame, sizeof(GameOptions));
+	memcpy(_opt_ptr, &_opt_newgame, sizeof(*_opt_ptr));
 
 	GfxLoadSprites();
 
@@ -643,7 +638,7 @@ static void MakeNewEditorWorld(void)
 	SetupColorsAndInitialWindow();
 
 	// Startup the game system
-	GenerateWorld(1, 1<<_patches.map_x, 1<<_patches.map_y);
+	GenerateWorld(1, 1 << _patches.map_x, 1 << _patches.map_y);
 
 	_local_player = OWNER_NONE;
 	MarkWholeScreenDirty();
@@ -716,8 +711,9 @@ bool SafeSaveOrLoad(const char *filename, int mode, int newgm)
 	} else if (r != SL_OK) {
 		_game_mode = ogm;
 		return false;
-	} else
+	} else {
 		return true;
+	}
 }
 
 void SwitchMode(int new_mode)
@@ -804,9 +800,9 @@ void SwitchMode(int new_mode)
 			_generating_world = false;
 			// delete all stations owned by a player
 			DeleteAllPlayerStations();
-		} else
+		} else {
 			ShowErrorMessage(INVALID_STRING_ID, STR_4009_GAME_LOAD_FAILED, 0, 0);
-
+		}
 		break;
 	}
 
@@ -816,10 +812,11 @@ void SwitchMode(int new_mode)
 		break;
 
 	case SM_SAVE: /* Save game */
-		if (SaveOrLoad(_file_to_saveload.name, SL_SAVE) != SL_OK)
+		if (SaveOrLoad(_file_to_saveload.name, SL_SAVE) != SL_OK) {
 			ShowErrorMessage(INVALID_STRING_ID, STR_4007_GAME_SAVE_FAILED, 0, 0);
-		else
+		} else {
 			DeleteWindowById(WC_SAVELOAD, 0);
+		}
 		break;
 
 	case SM_GENRANDLAND: /* Generate random land within scenario editor */
@@ -847,8 +844,7 @@ void StateGameLoop(void)
 	// _frame_counter is increased somewhere else when in network-mode
 	//  Sidenote: _frame_counter is ONLY used for _savedump in non-MP-games
 	//    Should that not be deleted? If so, the next 2 lines can also be deleted
-	if (!_networking)
-		_frame_counter++;
+	if (!_networking) _frame_counter++;
 
 	if (_savedump_path[0] && (uint)_frame_counter >= _savedump_first && (uint)(_frame_counter -_savedump_first) % _savedump_freq == 0 ) {
 		char buf[100];
@@ -951,7 +947,6 @@ void GameLoop(void)
 	int m;
 	ThreadMsg message;
 
-
 	if ((message = OTTD_PollThreadEvent()) != 0) ProcessSentMessage(message);
 
 	// autosave game?
@@ -987,13 +982,14 @@ void GameLoop(void)
 	IncreaseSpriteLRU();
 	InteractiveRandom();
 
-	if (_scroller_click_timeout > 3)
+	if (_scroller_click_timeout > 3) {
 		_scroller_click_timeout -= 3;
-	else
+	} else {
 		_scroller_click_timeout = 0;
+	}
 
 	_caret_timer += 3;
-	_timer_counter+=8;
+	_timer_counter += 8;
 	CursorTick();
 
 #ifdef ENABLE_NETWORK
@@ -1016,11 +1012,9 @@ void GameLoop(void)
 	StateGameLoop();
 #endif /* ENABLE_NETWORK */
 
-	if (!_pause && _display_opt&DO_FULL_ANIMATION)
-		DoPaletteAnimations();
+	if (!_pause && _display_opt & DO_FULL_ANIMATION) DoPaletteAnimations();
 
-	if (!_pause || _cheats.build_in_pause.value)
-		MoveAllTextEffects();
+	if (!_pause || _cheats.build_in_pause.value) MoveAllTextEffects();
 
 	InputLoop();
 
@@ -1044,8 +1038,7 @@ static void ConvertTownOwner(void)
 
 	for (tile = 0; tile != MapSize(); tile++) {
 		if (IsTileType(tile, MP_STREET)) {
-			if (IsLevelCrossing(tile) && _m[tile].m3 & 0x80)
-				_m[tile].m3 = OWNER_TOWN;
+			if (IsLevelCrossing(tile) && _m[tile].m3 & 0x80) _m[tile].m3 = OWNER_TOWN;
 
 			if (_m[tile].m1 & 0x80) SetTileOwner(tile, OWNER_TOWN);
 		} else if (IsTileType(tile, MP_TUNNELBRIDGE)) {
@@ -1057,20 +1050,20 @@ static void ConvertTownOwner(void)
 // before savegame version 4, the name of the company determined if it existed
 static void CheckIsPlayerActive(void)
 {
-	Player *p;
+	Player* p;
+
 	FOR_ALL_PLAYERS(p) {
-		if (p->name_1 != 0) {
-			p->is_active = true;
-		}
+		if (p->name_1 != 0) p->is_active = true;
 	}
 }
 
 // since savegame version 4.1, exclusive transport rights are stored at towns
 static void UpdateExclusiveRights(void)
 {
-	Town *t;
-	FOR_ALL_TOWNS(t) if (t->xy != 0) {
-		t->exclusivity=(byte)-1;
+	Town* t;
+
+	FOR_ALL_TOWNS(t) {
+		if (t->xy != 0) t->exclusivity = (byte)-1;
 	}
 
 	/* FIXME old exclusive rights status is not being imported (stored in s->blocked_months_obsolete)
@@ -1113,9 +1106,8 @@ static void UpdateVoidTiles(void)
 static void UpdateSignOwner(void)
 {
 	SignStruct *ss;
-	FOR_ALL_SIGNS(ss) {
-		ss->owner = OWNER_NONE; // no owner
-	}
+
+	FOR_ALL_SIGNS(ss) ss->owner = OWNER_NONE;
 }
 
 extern void UpdateOldAircraft( void );
@@ -1128,24 +1120,16 @@ bool AfterLoadGame(uint version)
 	Player *p;
 
 	// in version 2.1 of the savegame, town owner was unified.
-	if (version <= 0x200) {
-		ConvertTownOwner();
-	}
+	if (version <= 0x200) ConvertTownOwner();
 
 	// from version 4.1 of the savegame, exclusive rights are stored at towns
-	if (version <= 0x400) {
-		UpdateExclusiveRights();
-	}
+	if (version <= 0x400) UpdateExclusiveRights();
 
 	// from version 4.2 of the savegame, currencies are in a different order
-	if (version <= 0x401) {
-		UpdateCurrencies();
-	}
+	if (version <= 0x401) UpdateCurrencies();
 
 	// from version 6.0 of the savegame, signs have an "owner"
-	if (version <= 0x600) {
-		UpdateSignOwner();
-	}
+	if (version <= 0x600) UpdateSignOwner();
 
 	/* In old version there seems to be a problem that water is owned by
 	    OWNER_NONE, not OWNER_WATER.. I can't replicate it for the current
@@ -1178,15 +1162,12 @@ bool AfterLoadGame(uint version)
 	AfterLoadVehicles();
 
 	// Update all waypoints
-	if (version < 0x0C00)
-		FixOldWaypoints();
+	if (version < 0x0C00) FixOldWaypoints();
 
 	UpdateAllWaypointSigns();
 
 	// in version 2.2 of the savegame, we have new airports
-	if (version <= 0x201) {
-		UpdateOldAircraft();
-	}
+	if (version <= 0x201) UpdateOldAircraft();
 
 	UpdateAllStationVirtCoord();
 
@@ -1195,8 +1176,7 @@ bool AfterLoadGame(uint version)
 	UpdateAllSignVirtCoords();
 
 	// make sure there is a town in the game
-	if (_game_mode == GM_NORMAL && !ClosestTownFromTile(0, (uint)-1))
-	{
+	if (_game_mode == GM_NORMAL && !ClosestTownFromTile(0, (uint)-1)) {
 		_error_message = STR_NO_TOWN_IN_SCENARIO;
 		return false;
 	}
@@ -1215,16 +1195,12 @@ bool AfterLoadGame(uint version)
 	vp->virtual_width = vp->width << vp->zoom;
 	vp->virtual_height = vp->height << vp->zoom;
 
-
 	// in version 4.0 of the savegame, is_active was introduced to determine
 	// if a player does exist, rather then checking name_1
-	if (version <= 0x400) {
-		CheckIsPlayerActive();
-	}
+	if (version <= 0x400) CheckIsPlayerActive();
 
 	// the void tiles on the southern border used to belong to a wrong class.
-	if (version <= 0x402)
-		UpdateVoidTiles();
+	if (version <= 0x402) UpdateVoidTiles();
 
 	// If Load Scenario / New (Scenario) Game is used,
 	//  a player does not exist yet. So create one here.
@@ -1237,9 +1213,7 @@ bool AfterLoadGame(uint version)
 	MarkWholeScreenDirty();
 
 	//In 5.1, Oilrigs have been moved (again)
-	if (version <= 0x500) {
-		UpdateOilRig();
-	}
+	if (version <= 0x500) UpdateOilRig();
 
 	if (version <= 0x600) {
 		BEGIN_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0) {
@@ -1265,9 +1239,7 @@ bool AfterLoadGame(uint version)
 
 	if (version < 0x900) {
 		Town *t;
-		FOR_ALL_TOWNS(t) {
-			UpdateTownMaxPass(t);
-		}
+		FOR_ALL_TOWNS(t) UpdateTownMaxPass(t);
 	}
 
 	if (version < 0xF00) {
@@ -1320,9 +1292,7 @@ bool AfterLoadGame(uint version)
 		}
 	}
 
-	FOR_ALL_PLAYERS(p) {
-		p->avail_railtypes = GetPlayerRailtypes(p->index);
-	}
+	FOR_ALL_PLAYERS(p) p->avail_railtypes = GetPlayerRailtypes(p->index);
 
 	return true;
 }

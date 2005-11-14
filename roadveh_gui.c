@@ -65,12 +65,11 @@ static void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection
 {
 	int image = GetRoadVehImage(v, 6);
 	uint32 ormod = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner));
-	if (v->vehstatus & VS_CRASHED)
-		ormod = PALETTE_CRASH;
-	DrawSprite(image | ormod, x+14, y+6);
+	if (v->vehstatus & VS_CRASHED) ormod = PALETTE_CRASH;
+	DrawSprite(image | ormod, x + 14, y + 6);
 
 	if (v->index == selection) {
-		DrawFrameRect(x-1, y-1, x+28, y+12, 15, FR_BORDERONLY);
+		DrawFrameRect(x - 1, y - 1, x + 28, y + 12, 15, FR_BORDERONLY);
 	}
 }
 
@@ -215,6 +214,7 @@ static void ShowRoadVehDetailsWindow(const Vehicle* v)
 {
 	Window *w;
 	VehicleID veh = v->index;
+
 	DeleteWindowById(WC_VEHICLE_ORDERS, veh);
 	DeleteWindowById(WC_VEHICLE_DETAILS, veh);
 	_alloc_wnd_parent_num = veh;
@@ -225,11 +225,7 @@ static void ShowRoadVehDetailsWindow(const Vehicle* v)
 
 void CcCloneRoadVeh(bool success, uint tile, uint32 p1, uint32 p2)
 {
-	if (success) {
-		const Vehicle* v = GetVehicle(_new_roadveh_id);
-
-		ShowRoadVehViewWindow(v);
-	}
+	if (success) ShowRoadVehViewWindow(GetVehicle(_new_roadveh_id));
 }
 
 static void RoadVehViewWndProc(Window *w, WindowEvent *e)
@@ -445,7 +441,7 @@ void CcBuildRoadVeh(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void NewRoadVehWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT:
 		DrawNewRoadVehWindow(w);
 		break;
@@ -1073,7 +1069,7 @@ void ShowPlayerRoadVehicles(PlayerID player, StationID station)
 	} else  {
 		w = AllocateWindowDescFront(&_other_player_roadveh_desc, (station << 16) | player);
 	}
-	if (w) {
+	if (w != NULL) {
 		w->caption_color = player;
 		w->vscroll.cap = 7; // maximum number of vehicles shown
 		w->widget[7].unkA = (w->vscroll.cap << 8) + 1;

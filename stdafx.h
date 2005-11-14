@@ -198,21 +198,21 @@ typedef unsigned char byte;
   static inline uint16 TO_LE16(uint16 x) { return BSWAP16(x); }
   static inline uint32 FROM_LE32(uint32 x) { return BSWAP32(x); }
   static inline uint16 FROM_LE16(uint16 x) { return BSWAP16(x); }
-# define TO_BE32(x) x
-# define TO_BE16(x) x
-# define FROM_BE32(x) x
-# define FROM_BE16(x) x
-# define TO_BE32X(x) x
+# define TO_BE32(x) (x)
+# define TO_BE16(x) (x)
+# define FROM_BE32(x) (x)
+# define FROM_BE16(x) (x)
+# define TO_BE32X(x) (x)
 #else
   static inline uint32 TO_BE32(uint32 x) { return BSWAP32(x); }
   static inline uint16 TO_BE16(uint16 x) { return BSWAP16(x); }
   static inline uint32 FROM_BE32(uint32 x) { return BSWAP32(x); }
   static inline uint16 FROM_BE16(uint16 x) { return BSWAP16(x); }
-# define TO_LE32(x) x
-# define TO_LE16(x) x
+# define TO_LE32(x) (x)
+# define TO_LE16(x) (x)
 # define TO_BE32X(x) BSWAP32(x)
-# define FROM_LE32(x) x
-# define FROM_LE16(x) x
+# define FROM_LE32(x) (x)
+# define FROM_LE16(x) (x)
 #endif /* TTD_BIG_ENDIAN */
 
 #if !defined(GAME_DATA_DIR)
@@ -241,7 +241,7 @@ typedef unsigned char byte;
 
 assert_compile(sizeof(uint32) == 4);
 assert_compile(sizeof(uint16) == 2);
-assert_compile(sizeof(uint8)	== 1);
+assert_compile(sizeof(uint8)  == 1);
 
 #define lengthof(x) (sizeof(x)/sizeof(x[0]))
 #define endof(x) (&x[lengthof(x)])
