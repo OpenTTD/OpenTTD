@@ -436,15 +436,6 @@ draw_default:;
 
 }
 
-static uint _dropdown_item_count;
-static const StringID *_dropdown_items;
-static int _dropdown_selindex;
-static byte _dropdown_button;
-static WindowClass _dropdown_windowclass;
-static WindowNumber _dropdown_windownum;
-static byte _dropdown_var1;
-static byte _dropdown_var2;
-
 static const Widget _dropdown_menu_widgets[] = {
 {     WWT_IMGBTN,   RESIZE_NONE,     0,     0, 0,     0, 0, 0x0, STR_NULL},
 {   WIDGETS_END},
@@ -464,7 +455,7 @@ static int GetDropdownItem(const Window *w)
 		return - 1;
 
 	item = y / 10;
-	if (item >= _dropdown_item_count || (HASBIT(w->disabled_state, item) && !HASBIT(w->hidden_state, item)) || _dropdown_items[item] == 0)
+	if (item >= WP(w,dropdown_d).num_items || (HASBIT(w->disabled_state, item) && !HASBIT(w->hidden_state, item)) || WP(w,dropdown_d).items[item] == 0)
 		return - 1;
 
 	// Skip hidden items -- +1 for each hidden item before the clicked item.
@@ -486,18 +477,18 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 
 			x = 1;
 			y = 2;
-			sel    = _dropdown_selindex;
+			sel    = WP(w,dropdown_d).selected_index;
 
-			for(i=0; _dropdown_items[i] != INVALID_STRING_ID; i++) {
+			for (i = 0; WP(w,dropdown_d).items[i] != INVALID_STRING_ID; i++) {
 				if (HASBIT(w->hidden_state, i)) {
 					sel--;
 					continue;
 				}
-				if (_dropdown_items[i] != 0) {
+				if (WP(w,dropdown_d).items[i] != 0) {
 					if (sel == 0) {
 						GfxFillRect(x+1, y, x+w->width-4, y + 9, 0);
 					}
-					DrawString(x+2, y, _dropdown_items[i], sel==0 ? 12 : 16);
+					DrawString(x+2, y, WP(w,dropdown_d).items[i], sel==0 ? 12 : 16);
 
 					if (HASBIT(w->disabled_state, i)) {
 						GfxFillRect(x, y, x+w->width-3, y + 9, PALETTE_MODIFIER_GREYOUT |
@@ -517,52 +508,52 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 		case WE_CLICK: {
 			item = GetDropdownItem(w);
 			if (item >= 0) {
-				_dropdown_var1 = 4;
-				_dropdown_selindex = item;
+				WP(w,dropdown_d).click_delay = 4;
+				WP(w,dropdown_d).selected_index = item;
 				SetWindowDirty(w);
 			}
 		} break;
 
 		case WE_MOUSELOOP: {
-			Window *w2 = FindWindowById(_dropdown_windowclass, _dropdown_windownum);
+			Window *w2 = FindWindowById(WP(w,dropdown_d).parent_wnd_class, WP(w,dropdown_d).parent_wnd_num);
 			if (w2 == NULL) {
 				DeleteWindow(w);
 				return;
 			}
 
-			if (_dropdown_var1 != 0 && --_dropdown_var1 == 0) {
+			if (WP(w,dropdown_d).click_delay != 0 && --WP(w,dropdown_d).click_delay == 0) {
 				WindowEvent e;
 				e.event = WE_DROPDOWN_SELECT;
-				e.dropdown.button = _dropdown_button;
-				e.dropdown.index = _dropdown_selindex;
+				e.dropdown.button = WP(w,dropdown_d).parent_button;
+				e.dropdown.index = WP(w,dropdown_d).selected_index;
 				w2->wndproc(w2, &e);
 				DeleteWindow(w);
 				return;
 			}
 
-			if (_dropdown_var2 != 0) {
+			if (WP(w,dropdown_d).drag_mode) {
 				item = GetDropdownItem(w);
 
 				if (!_left_button_clicked) {
-					_dropdown_var2 = 0;
+					WP(w,dropdown_d).drag_mode = false;
 					if (item < 0)
 						return;
-					_dropdown_var1 = 2;
+					WP(w,dropdown_d).click_delay = 2;
 				} else {
 					if (item < 0)
 						return;
 				}
 
-				_dropdown_selindex = item;
+				WP(w,dropdown_d).selected_index = item;
 				SetWindowDirty(w);
 			}
 		} break;
 
 		case WE_DESTROY: {
-			Window *w2 = FindWindowById(_dropdown_windowclass, _dropdown_windownum);
+			Window *w2 = FindWindowById(WP(w,dropdown_d).parent_wnd_class, WP(w,dropdown_d).parent_wnd_num);
 			if (w2 != NULL) {
-				CLRBIT(w2->click_state, _dropdown_button);
-				InvalidateWidget(w2, _dropdown_button);
+				CLRBIT(w2->click_state, WP(w,dropdown_d).parent_button);
+				InvalidateWidget(w2, WP(w,dropdown_d).parent_button);
 			}
 		} break;
 	}
@@ -589,32 +580,20 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 
 	InvalidateWidget(w, button);
 
-	for(i=0;strings[i] != INVALID_STRING_ID;i++);
+	for (i = 0; strings[i] != INVALID_STRING_ID; i++);
 	if (i == 0)
 		return;
-
-	_dropdown_items = strings;
-	_dropdown_selindex = selected;
-
-	_dropdown_windowclass = w->window_class;
-	_dropdown_windownum = w->window_number;
-	_dropdown_button = button;
-
-	_dropdown_var1 = 0;
-	_dropdown_var2 = 1;
 
 	wi = &w->widget[button];
 
 	if (hidden_mask != 0) {
 		int j;
-		for(j=0; _dropdown_items[j] != INVALID_STRING_ID; j++) {
+		for (j = 0; strings[j] != INVALID_STRING_ID; j++) {
 			if (HASBIT(hidden_mask, j)) {
 				i--;
 			}
 		}
 	}
-
-	_dropdown_item_count = i;
 
 	w2 = AllocateWindow(
 		w->left + wi[-1].left + 1,
@@ -633,4 +612,15 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 
 	w2->disabled_state = disabled_mask;
 	w2->hidden_state = hidden_mask;
+
+	WP(w2,dropdown_d).parent_wnd_class = w->window_class;
+	WP(w2,dropdown_d).parent_wnd_num = w->window_number;
+	WP(w2,dropdown_d).parent_button = button;
+
+	WP(w2,dropdown_d).num_items = i;
+	WP(w2,dropdown_d).selected_index = selected;
+	WP(w2,dropdown_d).items = strings;
+
+	WP(w2,dropdown_d).click_delay = 0;
+	WP(w2,dropdown_d).drag_mode = true;
 }

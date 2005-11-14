@@ -452,6 +452,18 @@ typedef struct message_d {
 } message_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(message_d));
 
+typedef struct dropdown_d {
+	WindowClass parent_wnd_class;
+	WindowNumber parent_wnd_num;
+	byte parent_button;
+	byte num_items;
+	byte selected_index;
+	const StringID *items;
+	byte click_delay;
+	bool drag_mode;
+} dropdown_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(dropdown_d));
+
 enum WindowEvents {
 	WE_CLICK = 0,
 	WE_PAINT = 1,
