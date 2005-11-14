@@ -2533,7 +2533,7 @@ void OnTick_Station(void)
 	if (st->xy != 0) StationHandleBigTick(st);
 
 	FOR_ALL_STATIONS(st) {
-		if (st->xy != INVALID_TILE) StationHandleSmallTick(st);
+		if (st->xy != 0) StationHandleSmallTick(st);
 	}
 }
 
