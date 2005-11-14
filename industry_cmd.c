@@ -1571,11 +1571,16 @@ int32 CmdBuildIndustry(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	spec = &_industry_spec[p1];
-	/* If the patch for non-raw-material industries is not on, you cannot build raw-material industries.
+	/* If the patch for raw-material industries is not on, you cannot build raw-material industries.
 	 * Raw material industries are industries that do not accept cargo (at least for now)
-	 * Exclude industry 25, which is the lumber mill (only "raw" industry that can be built)*/
-	if (!_patches.build_rawmaterial_ind && spec->accepts_cargo[0] == 255 &&
-		  spec->accepts_cargo[1] == 255 && spec->accepts_cargo[2] == 255 && p1 != 25) return CMD_ERROR;
+	 * Exclude the lumber mill (only "raw" industry that can be built) */
+	if (!_patches.build_rawmaterial_ind &&
+			spec->accepts_cargo[0] == CT_INVALID &&
+			spec->accepts_cargo[1] == CT_INVALID &&
+			spec->accepts_cargo[2] == CT_INVALID &&
+			p1 != IT_LUMBER_MILL) {
+		return CMD_ERROR;
+	}
 
 	if (!_check_new_industry_procs[spec->check_proc](tile, p1)) return CMD_ERROR;
 
@@ -1631,7 +1636,7 @@ Industry *CreateNewIndustry(TileIndex tile, int type)
 	if ( (i = AllocateIndustry()) == NULL)
 		return NULL;
 
-	DoCreateNewIndustry(i, tile, type, it, t, 0x10);
+	DoCreateNewIndustry(i, tile, type, it, t, OWNER_NONE);
 
 	return i;
 }
@@ -1697,7 +1702,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 			break;
 
 		default: /* INDUSTRY_PRODUCTION */
-			for (j = 0; j < 2 && i->produced_cargo[j] != 255; j++){
+			for (j = 0; j < 2 && i->produced_cargo[j] != CT_INVALID; j++){
 				uint32 r = Random();
 				int old, new, percent;
 				int mag;

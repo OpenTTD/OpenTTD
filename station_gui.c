@@ -392,7 +392,7 @@ static void DrawStationViewWindow(Window *w)
 				y += 10;
 			}
 		}
-	} while (pos > -5 && ++i != 12);
+	} while (pos > -5 && ++i != NUM_CARGO);
 
 	if (IsWindowOfPrototype(w, _station_view_widgets)) {
 		char *b = _userstring;
