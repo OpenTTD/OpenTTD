@@ -977,7 +977,7 @@ static void DoDisaster(void)
 	if (j == 0)
 		return;
 
-	_disaster_initprocs[buf[GB(Random(), 0, 16) * j >> 16]]();
+	_disaster_initprocs[buf[RandomRange(j)]]();
 }
 
 

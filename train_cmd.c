@@ -1907,20 +1907,19 @@ static void HandleLocomotiveSmokeCloud(const Vehicle* v)
 
 		case 1:
 			// diesel smoke
-			if (u->cur_speed <= 40 && GB(Random(), 0, 16) <= 0x1E00) {
+			if (u->cur_speed <= 40 && CHANCE16(15, 128)) {
 				CreateEffectVehicleRel(v, 0, 0, 10, EV_DIESEL_SMOKE);
 			}
 			break;
 
 		case 2:
 			// blue spark
-			if (GB(v->tick_counter, 0, 2) == 0 && GB(Random(), 0, 16) <= 0x5B0) {
+			if (GB(v->tick_counter, 0, 2) == 0 && CHANCE16(1, 45)) {
 				CreateEffectVehicleRel(v, 0, 0, 10, EV_ELECTRIC_SPARK);
 			}
 			break;
 		}
-	} while ( (v = v->next) != NULL );
-
+	} while ((v = v->next) != NULL);
 }
 
 static void TrainPlayLeaveStationSound(const Vehicle* v)
@@ -3193,7 +3192,7 @@ static void HandleCrashedTrain(Vehicle *v)
 		CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
 	}
 
-	if (state <= 200 && GB(r = Random(), 0, 16) <= 0x2492) {
+	if (state <= 200 && CHANCE16R(1, 7, r)) {
 		index = (r * 10 >> 16);
 
 		u = v;

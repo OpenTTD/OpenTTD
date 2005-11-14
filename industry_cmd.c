@@ -937,7 +937,7 @@ static void SetupFarmFieldFence(TileIndex tile, int size, byte type, int directi
 		if (IsTileType(tile, MP_CLEAR) || IsTileType(tile, MP_TREES)) {
 
 			or = type;
-			if (or == 1 && GB(Random(), 0, 16) <= 9362) or = 2;
+			if (or == 1 && CHANCE16(1, 7)) or = 2;
 
 			or <<= 2;
 			and = (byte)~0x1C;
@@ -1620,7 +1620,7 @@ Industry *CreateNewIndustry(TileIndex tile, int type)
 		return NULL;
 
 	/* pick a random layout */
-	it = spec->table[(spec->num_table * GB(Random(), 0, 16)) >> 16];
+	it = spec->table[RandomRange(spec->num_table)];;
 
 	if (!CheckIfIndustryTilesAreFree(tile, it, type, t))
 		return NULL;
@@ -1810,7 +1810,7 @@ static void MaybeNewIndustry(uint32 r)
 
 	j = 2000;
 	for(;;) {
-		i = CreateNewIndustry(TILE_MASK(Random()), type);
+		i = CreateNewIndustry(RandomTile(), type);
 		if (i != NULL)
 			break;
 		if (--j == 0)

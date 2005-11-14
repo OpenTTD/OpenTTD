@@ -990,7 +990,7 @@ static int PickRandomBit(uint bits)
 			num++;
 	} while (b >>= 1);
 
-	num = GB(Random(), 0, 16) * num >> 16;
+	num = RandomRange(num);
 
 	for(i=0; !((bits & 1) && ((int)--num) < 0); bits>>=1,i++);
 	return i;
