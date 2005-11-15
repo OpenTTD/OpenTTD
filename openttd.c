@@ -61,8 +61,6 @@ extern void SetDifficultyLevel(int mode, GameOptions *gm_opt);
 extern void DoStartupNewPlayer(bool is_ai);
 extern void ShowOSErrorBox(const char *buf);
 
-bool LoadSavegame(const char *filename);
-
 bool _dbg_screen_rect;
 
 /* TODO: usrerror() for errors which are not of an internal nature but
@@ -306,7 +304,6 @@ static void LoadIntroGame(void)
 #if defined(UNIX) && !defined(__MORPHOS__)
 extern void DedicatedFork(void);
 #endif
-extern void CheckExternalFiles(void);
 
 int ttd_main(int argc, char* argv[])
 {
