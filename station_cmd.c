@@ -3016,8 +3016,8 @@ static void Load_STNS(void)
 
 		// this means it's an oldstyle savegame without support for nonuniform stations
 		if (st->train_tile != 0 && st->trainst_h == 0) {
-			int w = st->trainst_w >> 4;
-			int h = st->trainst_w & 0xF;
+			int w = GB(st->trainst_w, 4, 4);
+			int h = GB(st->trainst_w, 0, 4);
 
 			if (_m[st->train_tile].m5 & 1) intswap(w, h);
 			st->trainst_w = w;

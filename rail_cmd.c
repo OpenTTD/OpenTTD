@@ -2064,8 +2064,8 @@ static void TileLoop_Track(TileIndex tile)
 
 modify_me:;
 	/* tile changed? */
-	if ( m2 != a2) {
-		_m[tile].m2 = (_m[tile].m2 & ~RAIL_MAP2LO_GROUND_MASK) | a2;
+	if (m2 != a2) {
+		SB(_m[tile].m2, 0, 4, a2);
 		MarkTileDirtyByTile(tile);
 	}
 }

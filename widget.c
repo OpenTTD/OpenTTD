@@ -223,10 +223,10 @@ void DrawWindowWidgets(const Window *w)
 
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : 0);
 
-			c = (wi->unkA&0xFF);
+			c = GB(wi->unkA, 0, 8);
 			amt1 = (wi->right - wi->left + 1) / c;
 
-			d = (wi->unkA >> 8);
+			d = GB(wi->unkA, 8, 8);
 			amt2 = (wi->bottom - wi->top + 1) / d;
 
 			color = _color_list[wi->color & 0xF].window_color_bgb;

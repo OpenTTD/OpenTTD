@@ -342,7 +342,7 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 			SetWindowDirty(w);
 			break;
 		case 7:
-			WP(w,facesel_d).face = (InteractiveRandom() & 0x7FFFFFFF) + (WP(w,facesel_d).gender << 31);
+			WP(w,facesel_d).face = (WP(w,facesel_d).gender << 31) + GB(InteractiveRandom(), 0, 31);
 			SetWindowDirty(w);
 			break;
 		}

@@ -666,7 +666,7 @@ static void DisasterTick_5_and_6(Vehicle *v)
 		return;
 	}
 
-	v->direction = (v->direction + ((Random()&1)?2:-2))&7;
+	v->direction = (v->direction + (GB(Random(), 0, 1) ? 2 : -2)) & 7;
 }
 
 
@@ -902,9 +902,9 @@ static void Disaster6_Init(void)
 
 static void Disaster7_Init(void)
 {
+	int index = GB(Random(), 0, 4);
 	Industry *i;
 	int maxloop = 15;
-	int index = Random() & 0xF;
 
 	do {
 		FOR_ALL_INDUSTRIES(i) {

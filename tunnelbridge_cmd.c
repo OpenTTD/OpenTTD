@@ -964,7 +964,7 @@ static void DrawBridgePillars(const TileInfo *ti, int x, int y, int z)
 	// Draw first piece
 	// (necessary for cantilever bridges)
 
-	image = b[12 + (ti->map5&0x01)];
+	image = b[12 + GB(ti->map5, 0, 1)];
 	piece = GetBridgePiece(ti->tile);
 
 	if (image != 0 && piece != 0) {
@@ -972,7 +972,7 @@ static void DrawBridgePillars(const TileInfo *ti, int x, int y, int z)
 		DrawGroundSpriteAt(image, x, y, z);
 	}
 
-	image = b[(ti->map5&0x01)*6 + piece];
+	image = b[GB(ti->map5, 0, 1) * 6 + piece];
 
 	if (image != 0) {
 		int back_height, front_height, i=z;
