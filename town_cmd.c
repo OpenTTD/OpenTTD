@@ -518,9 +518,10 @@ no_slope:
 					res = DoCommandByTile(tile, slope^0xF, 1, DC_EXEC | DC_AUTO | DC_NO_WATER,
 					                      CMD_TERRAFORM_LAND);
 				}
-				if (res == CMD_ERROR && CHANCE16I(1,3,r))
+				if (CmdFailed(res) && CHANCE16I(1, 3, r)) {
 					// We can consider building on the slope, though.
 					goto no_slope;
+				}
 			}
 			return false;
 		}
@@ -535,8 +536,7 @@ static bool TerraformTownTile(TileIndex tile, int edges, int dir)
 	TILE_ASSERT(tile);
 
 	r = DoCommandByTile(tile, edges, dir, DC_AUTO | DC_NO_WATER, CMD_TERRAFORM_LAND);
-	if (r == CMD_ERROR || r >= 126*16)
-		return false;
+	if (CmdFailed(r) || r >= 126 * 16) return false;
 	DoCommandByTile(tile, edges, dir, DC_AUTO | DC_NO_WATER | DC_EXEC, CMD_TERRAFORM_LAND);
 	return true;
 }
@@ -1577,8 +1577,7 @@ static bool DoBuildStatueOfCompany(TileIndex tile)
 	r = DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 	_current_player = old;
 
-	if (r == CMD_ERROR)
-		return false;
+	if (CmdFailed(r)) return false;
 
 	ModifyTile(tile, MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5,
 		2 /* map5 */
