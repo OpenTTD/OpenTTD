@@ -42,7 +42,7 @@ Packet *NetworkSend_Init(PacketType type)
 void NetworkSend_uint8(Packet *packet, uint8 data)
 {
 	assert(packet->size < sizeof(packet->buffer) - sizeof(data));
-	packet->buffer[packet->size++] = data & 0xFF;
+	packet->buffer[packet->size++] = data;
 }
 
 void NetworkSend_uint16(Packet *packet, uint16 data)

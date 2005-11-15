@@ -888,7 +888,7 @@ static void DoAutosave(void)
 		SetDParam(0, p->name_1);
 		SetDParam(1, p->name_2);
 		SetDParam(2, _date);
-		s = (char*)GetString(buf + strlen(_path.autosave_dir) + strlen(PATHSEP), STR_4004);
+		s = GetString(buf + strlen(_path.autosave_dir) + strlen(PATHSEP), STR_4004);
 		strcpy(s, ".sav");
 	} else { /* Save a maximum of 15 autosaves */
 		int n = _autosave_ctr;

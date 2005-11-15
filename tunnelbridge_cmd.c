@@ -1056,7 +1056,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		AddSortableSpriteToDraw(image+1, ti->x + 15, ti->y + 15, 1, 1, 8, (byte)ti->z);
 	// draw bridge?
-	} else if ((byte)ti->map5 & 0x80) {
+	} else if (ti->map5 & 0x80) {
 		RailType rt;
 		int base_offset;
 

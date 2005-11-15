@@ -321,7 +321,7 @@ static void DrawTile_Trees(TileInfo *ti)
 
 			i = (ti->map5 >> 6) + 1;
 			do {
-				if (te[--i].image != 0 && (byte)(te[i].x + te[i].y) < min) {
+				if (te[--i].image != 0 && te[i].x + te[i].y < min) {
 					min = te[i].x + te[i].y;
 					tep = &te[i];
 				}
