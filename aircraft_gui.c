@@ -502,13 +502,8 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 		uint32 disabled = 1 << 8;
 		StringID str;
 
-		{
-			TileIndex tile = v->tile;
-
-			if (IsTileType(tile, MP_STATION) &&
-					(_m[tile].m5 == 32 || _m[tile].m5 == 65) &&
-					v->vehstatus&VS_STOPPED)
-						disabled = 0;
+		if (v->vehstatus & VS_STOPPED && IsAircraftHangarTile(v->tile)) {
+			disabled = 0;
 		}
 
 		if (v->owner != _local_player) disabled |= 1 << 8 | 1 << 7;
