@@ -1765,8 +1765,7 @@ static void AiStateBuildDefaultRailBlocks(Player *p)
 	}
 
 	// do the following 8 times
-	i = 8;
-	do {
+	for (i = 0; i < 8; i++) {
 		// check if we can build the default track
 		aib = &p->ai.src;
 		j = p->ai.num_build_rec;
@@ -1808,7 +1807,7 @@ static void AiStateBuildDefaultRailBlocks(Player *p)
 				assert(r != CMD_ERROR);
 			}
 		} while (++aib,--j);
-	} while (--i);
+	}
 
 	// check if we're done with all of them
 	aib = &p->ai.src;

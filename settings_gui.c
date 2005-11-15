@@ -1277,13 +1277,10 @@ void ShowNewgrf(void)
 
 	{ // little helper function to calculate _grffile_count
 	  // should be REMOVED once _grffile_count is calculated at loading
-		const GRFFile* c = _first_grffile;
+		const GRFFile* c;
 
 		_grffile_count = 0;
-		while (c != NULL) {
-			_grffile_count++;
-			c = c->next;
-		}
+		for (c = _first_grffile; c != NULL; c = c->next) _grffile_count++;
 	}
 
 	w->vscroll.cap = 12;

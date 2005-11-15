@@ -904,9 +904,9 @@ static void Disaster7_Init(void)
 {
 	int index = GB(Random(), 0, 4);
 	Industry *i;
-	int maxloop = 15;
+	uint m;
 
-	do {
+	for (m = 0; m < 15; m++) {
 		FOR_ALL_INDUSTRIES(i) {
 			if (i->xy != 0 && i->type == IT_COAL_MINE && --index < 0) {
 
@@ -917,17 +917,17 @@ static void Disaster7_Init(void)
 				{
 					TileIndex tile = i->xy;
 					TileIndexDiff step = TileOffsByDir(GB(Random(), 0, 2));
+					uint n;
 
-					int count = 30;
-					do {
+					for (n = 0; n < 30; i++) {
 						DisasterClearSquare(tile);
 						tile = TILE_MASK(tile + step);
-					} while (--count);
+					}
 				}
 				return;
 			}
 		}
-	} while (--maxloop != 0);
+	}
 }
 
 static DisasterInitProc * const _disaster_initprocs[] = {
