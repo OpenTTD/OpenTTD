@@ -1970,10 +1970,9 @@ void SetAnimatedMouseCursor(const CursorID *table)
 
 bool ChangeResInGame(int w, int h)
 {
-	if ((_screen.width != w || _screen.height != h) && !_video_driver->change_resolution(w, h))
-		return false;
-
-	return true;
+	return
+		(_screen.width == w && _screen.height == h) ||
+		_video_driver->change_resolution(w, h);
 }
 
 void ToggleFullScreen(bool fs) {_video_driver->toggle_fullscreen(fs);}

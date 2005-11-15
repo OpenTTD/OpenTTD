@@ -1225,12 +1225,7 @@ static uint32 _drawtile_track_palette;
 static void DrawTrackFence_NW(const TileInfo *ti)
 {
 	uint32 image = 0x515;
-	if (ti->tileh != 0) {
-		image = 0x519;
-		if (!(ti->tileh & 2)) {
-			image = 0x51B;
-		}
-	}
+	if (ti->tileh != 0) image = (ti->tileh & 2) ? 0x519 : 0x51B;
 	AddSortableSpriteToDraw(image | _drawtile_track_palette,
 		ti->x, ti->y+1, 16, 1, 4, ti->z);
 }
@@ -1238,12 +1233,7 @@ static void DrawTrackFence_NW(const TileInfo *ti)
 static void DrawTrackFence_SE(const TileInfo *ti)
 {
 	uint32 image = 0x515;
-	if (ti->tileh != 0) {
-		image = 0x519;
-		if (!(ti->tileh & 2)) {
-			image = 0x51B;
-		}
-	}
+	if (ti->tileh != 0) image = (ti->tileh & 2) ? 0x519 : 0x51B;
 	AddSortableSpriteToDraw(image | _drawtile_track_palette,
 		ti->x, ti->y+15, 16, 1, 4, ti->z);
 }
@@ -1257,12 +1247,7 @@ static void DrawTrackFence_NW_SE(const TileInfo *ti)
 static void DrawTrackFence_NE(const TileInfo *ti)
 {
 	uint32 image = 0x516;
-	if (ti->tileh != 0) {
-		image = 0x51A;
-		if (!(ti->tileh & 2)) {
-			image = 0x51C;
-		}
-	}
+	if (ti->tileh != 0) image = (ti->tileh & 2) ? 0x51A : 0x51C;
 	AddSortableSpriteToDraw(image | _drawtile_track_palette,
 		ti->x+1, ti->y, 1, 16, 4, ti->z);
 }
@@ -1270,12 +1255,7 @@ static void DrawTrackFence_NE(const TileInfo *ti)
 static void DrawTrackFence_SW(const TileInfo *ti)
 {
 	uint32 image = 0x516;
-	if (ti->tileh != 0) {
-		image = 0x51A;
-		if (!(ti->tileh & 2)) {
-			image = 0x51C;
-		}
-	}
+	if (ti->tileh != 0) image = (ti->tileh & 2) ? 0x51A : 0x51C;
 	AddSortableSpriteToDraw(image | _drawtile_track_palette,
 		ti->x+15, ti->y, 1, 16, 4, ti->z);
 }

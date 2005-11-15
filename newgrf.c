@@ -2572,24 +2572,14 @@ static void DecodeSpecialSprite(const char* filename, uint num, uint stage)
 
 	if (action >= lengthof(handlers)) {
 		DEBUG(grf, 7) ("Skipping unknown action 0x%02X", action);
-		free(buf);
-		return;
-	}
-
-	if (!HASBIT(action_mask, action)) {
+	} else if (!HASBIT(action_mask, action)) {
 		DEBUG(grf, 7) ("Skipping action 0x%02X in stage %d", action, stage);
-		free(buf);
-		return;
-	}
-
-	if (handlers[action] == NULL) {
+	} else if (handlers[action] == NULL) {
 		DEBUG(grf, 7) ("Skipping unsupported Action 0x%02X", action);
-		free(buf);
-		return;
+	} else {
+		DEBUG(grf, 7) ("Handling action 0x%02X in stage %d", action, stage);
+		handlers[action](buf, num);
 	}
-
-	DEBUG(grf, 7) ("Handling action 0x%02X in stage %d", action, stage);
-	handlers[action](buf, num);
 	free(buf);
 }
 

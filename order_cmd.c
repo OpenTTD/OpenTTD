@@ -1077,13 +1077,7 @@ void DeleteVehicleOrders(Vehicle *v)
  */
 bool IsOrderListShared(const Vehicle *v)
 {
-	if (v->next_shared != NULL)
-		return true;
-
-	if (v->prev_shared != NULL)
-		return true;
-
-	return false;
+	return v->next_shared != NULL || v->prev_shared != NULL;
 }
 
 /**

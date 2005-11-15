@@ -309,12 +309,11 @@ static const Command _command_proc_table[] = {
 /* This function range-checks a cmd, and checks if the cmd is not NULL */
 bool IsValidCommand(uint cmd)
 {
-	cmd = cmd & 0xFF;
+	cmd &= 0xFF;
 
-	if (cmd >= lengthof(_command_proc_table) || _command_proc_table[cmd].proc == NULL)
-		return false;
-
-	return true;
+	return
+		cmd < lengthof(_command_proc_table) &&
+		_command_proc_table[cmd].proc != NULL;
 }
 
 byte GetCommandFlags(uint cmd) {return _command_proc_table[cmd & 0xFF].flags;}
