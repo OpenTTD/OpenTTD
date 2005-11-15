@@ -1020,11 +1020,11 @@ void GameLoop(void)
 
 void BeforeSaveGame(void)
 {
-	Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+	const Window* w = FindWindowById(WC_MAIN_WINDOW, 0);
 
 	if (w != NULL) {
-		_saved_scrollpos_x = WP(w,vp_d).scrollpos_x;
-		_saved_scrollpos_y = WP(w,vp_d).scrollpos_y;
+		_saved_scrollpos_x = WP(w, const vp_d).scrollpos_x;
+		_saved_scrollpos_y = WP(w, const vp_d).scrollpos_y;
 		_saved_scrollpos_zoom = w->viewport->zoom;
 	}
 }

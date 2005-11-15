@@ -613,7 +613,7 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 			}
 
 			case 13: { // {G 0 Der Die Das}
-				byte *s = (byte*)GetStringPtr(argv_orig[(byte)*str++]); // contains the string that determines gender.
+				const byte* s = (const byte*)GetStringPtr(argv_orig[(byte)*str++]); // contains the string that determines gender.
 				int len;
 				int gender = 0;
 				if (s != NULL && s[0] == 0x87) gender = s[1];

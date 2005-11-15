@@ -1548,7 +1548,7 @@ int GetMenuItemIndex(const Window *w, int x, int y)
 
 void InvalidateWindow(byte cls, WindowNumber number)
 {
-	Window *w;
+	const Window* w;
 
 	for (w = _windows; w != _last_window; w++) {
 		if (w->window_class == cls && w->window_number == number) SetWindowDirty(w);

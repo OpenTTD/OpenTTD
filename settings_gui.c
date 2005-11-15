@@ -1277,7 +1277,7 @@ void ShowNewgrf(void)
 
 	{ // little helper function to calculate _grffile_count
 	  // should be REMOVED once _grffile_count is calculated at loading
-		GRFFile *c = _first_grffile;
+		const GRFFile* c = _first_grffile;
 
 		_grffile_count = 0;
 		while (c != NULL) {

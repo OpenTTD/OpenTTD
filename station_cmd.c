@@ -151,9 +151,9 @@ RoadStop *AllocateRoadStop(void)
 
 /* Calculate the radius of the station. Basicly it is the biggest
     radius that is available within the station */
-static byte FindCatchmentRadius(Station *st)
+static uint FindCatchmentRadius(const Station* st)
 {
-	byte ret = 0;
+	uint ret = 0;
 
 	if (st->bus_stops != NULL)   ret = max(ret, CA_BUS);
 	if (st->truck_stops != NULL) ret = max(ret, CA_TRUCK);

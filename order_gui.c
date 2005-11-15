@@ -472,7 +472,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_RCLICK: {
-		Vehicle* v = GetVehicle(w->window_number);
+		const Vehicle* v = GetVehicle(w->window_number);
 		int s = OrderGetSel(w);
 
 		if (e->click.widget != 8) break;

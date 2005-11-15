@@ -2413,7 +2413,7 @@ void SetupColorsAndInitialWindow(void)
 		const byte* b = GetNonSprite(0x307 + i);
 
 		assert(b);
-		_color_list[i] = *(ColorList*)(b + 0xC6);
+		_color_list[i] = *(const ColorList*)(b + 0xC6);
 	}
 
 	width = _screen.width;

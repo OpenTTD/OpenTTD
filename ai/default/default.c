@@ -1852,7 +1852,7 @@ static bool AiEnumFollowTrack(TileIndex tile, AiRailPathFindData *a, int track, 
 	return false;
 }
 
-static bool AiDoFollowTrack(Player *p)
+static bool AiDoFollowTrack(const Player* p)
 {
 	AiRailPathFindData arpfd;
 
@@ -3194,7 +3194,7 @@ static void AiStateBuildRoadVehicles(Player *p)
 	loco_id = _new_roadveh_id;
 
 	for (i = 0; p->ai.order_list_blocks[i] != 0xFF; i++) {
-		AiBuildRec* aib = &p->ai.src + p->ai.order_list_blocks[i];
+		const AiBuildRec* aib = &p->ai.src + p->ai.order_list_blocks[i];
 		bool is_pass = (
 			p->ai.cargo_type == CT_PASSENGERS ||
 			p->ai.cargo_type == CT_MAIL ||
