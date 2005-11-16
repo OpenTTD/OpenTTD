@@ -813,48 +813,44 @@ static inline StringID GetPerformanceTitleFromValue(uint value)
 	return _performance_titles[minu(value, 1000) >> 6];
 }
 
-static int CDECL _perf_hist_comp(const void *elem1, const void *elem2 ) {
-	const Player *p1 = *(const Player* const *)elem1;
-	const Player *p2 = *(const Player* const *)elem2;
-	int32 v = p2->old_economy[1].performance_history - p1->old_economy[1].performance_history;
-	return (v!=0) | (v >> (sizeof(int32)*8-1));
+static int CDECL PerfHistComp(const void* elem1, const void* elem2)
+{
+	const Player* p1 = *(const Player* const*)elem1;
+	const Player* p2 = *(const Player* const*)elem2;
+
+	return p2->old_economy[1].performance_history - p1->old_economy[1].performance_history;
 }
 
 static void CompanyLeagueWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		const Player* p;
-		Player const *plist[MAX_PLAYERS];
-		uint pl_num;
-		uint i;
+		case WE_PAINT: {
+			const Player* plist[MAX_PLAYERS];
+			const Player* p;
+			uint pl_num;
+			uint i;
 
-		DrawWindowWidgets(w);
+			DrawWindowWidgets(w);
 
-		pl_num=0;
-		FOR_ALL_PLAYERS(p) {
-			if (p->is_active)
-				plist[pl_num++] = p;
+			pl_num = 0;
+			FOR_ALL_PLAYERS(p) if (p->is_active) plist[pl_num++] = p;
+
+			qsort(plist, pl_num, sizeof(*plist), PerfHistComp);
+
+			for (i = 0; i != pl_num; i++) {
+				p = plist[i];
+				SetDParam(0, i + STR_01AC_1ST);
+				SetDParam(1, p->name_1);
+				SetDParam(2, p->name_2);
+				SetDParam(3, GetPlayerNameString(p->index, 4));
+				SetDParam(5, GetPerformanceTitleFromValue(p->old_economy[1].performance_history));
+
+				DrawString(2, 15 + i * 10, i == 0 ? STR_7054 : STR_7055, 0);
+				DrawPlayerIcon(p->index, 27, 16 + i * 10);
+			}
+
+			break;
 		}
-		assert(pl_num > 0);
-
-		qsort((void*)plist, pl_num, sizeof(Player*), _perf_hist_comp);
-
-		i = 0;
-		do {
-			SetDParam(0, i + STR_01AC_1ST);
-			p = plist[i];
-			SetDParam(1, p->name_1);
-			SetDParam(2, p->name_2);
-			SetDParam(3, GetPlayerNameString(p->index, 4));
-			SetDParam(5, GetPerformanceTitleFromValue(p->old_economy[1].performance_history));
-
-			DrawString(2, 15 + i * 10, i == 0 ? STR_7054 : STR_7055, 0);
-			DrawPlayerIcon(p->index, 27, 16 + i * 10);
-		} while (++i != pl_num);
-
-		break;
-	}
 	}
 }
 
