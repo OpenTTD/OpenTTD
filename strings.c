@@ -780,7 +780,7 @@ static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed)
 	return buff;
 }
 
-static const char * const _silly_company_names[] = {
+static const char* const _silly_company_names[] = {
 	"Bloggs Brothers",
 	"Tiny Transport Ltd.",
 	"Express Travel",
@@ -793,10 +793,10 @@ static const char * const _silly_company_names[] = {
 	"Lightning International",
 	"Pannik & Loozit Ltd.",
 	"Inter-City Transport",
-	"Getout & Pushit Ltd.",
+	"Getout & Pushit Ltd."
 };
 
-static const char * const _surname_list[] = {
+static const char* const _surname_list[] = {
 	"Adams",
 	"Allan",
 	"Baker",
@@ -825,7 +825,10 @@ static const char * const _surname_list[] = {
 	"Quigley",
 	"Sharkey",
 	"Thomson",
-	"Watkins",
+	"Watkins"
+};
+
+static const char* const _silly_surname_list[] = {
 	"Grumpy",
 	"Dozy",
 	"Speedy",
@@ -837,7 +840,7 @@ static const char * const _surname_list[] = {
 	"Fishy",
 	"Swindle",
 	"Sneaky",
-	"Nutkins",
+	"Nutkins"
 };
 
 static const char _initial_name_letters[] = {
@@ -847,16 +850,18 @@ static const char _initial_name_letters[] = {
 
 static char *GenAndCoName(char *buff, uint32 arg)
 {
-	uint base,num;
+	const char* const* base;
+	uint num;
 
-	base = 0;
-	num = 29;
 	if (_opt_ptr->landscape == LT_CANDY) {
-		base = num;
-		num = 12;
+		base = _silly_surname_list;
+		num  = lengthof(_silly_surname_list);
+	} else {
+		base = _surname_list;
+		num  = lengthof(_surname_list);
 	}
 
-	buff = strecpy(buff, _surname_list[base + (num * GB(arg, 16, 8) >> 8)], NULL);
+	buff = strecpy(buff, base[num * GB(arg, 16, 8) >> 8], NULL);
 	buff = strecpy(buff, " & Co.", NULL);
 
 	return buff;
@@ -864,7 +869,9 @@ static char *GenAndCoName(char *buff, uint32 arg)
 
 static char *GenPresidentName(char *buff, uint32 x)
 {
-	uint i, base, num;
+	const char* const* base;
+	uint num;
+	uint i;
 
 	buff[0] = _initial_name_letters[sizeof(_initial_name_letters) * GB(x, 0, 8) >> 8];
 	buff[1] = '.';
@@ -879,14 +886,15 @@ static char *GenPresidentName(char *buff, uint32 x)
 		buff += 3;
 	}
 
-	base = 0;
-	num = 29;
 	if (_opt_ptr->landscape == LT_CANDY) {
-		base = num;
-		num = 12;
+		base = _silly_surname_list;
+		num  = lengthof(_silly_surname_list);
+	} else {
+		base = _surname_list;
+		num  = lengthof(_surname_list);
 	}
 
-	buff = strecpy(buff, _surname_list[base + (num * GB(x, 16, 8) >> 8)], NULL);
+	buff = strecpy(buff, base[num * GB(x, 16, 8) >> 8], NULL);
 
 	return buff;
 }
