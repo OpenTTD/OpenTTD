@@ -355,6 +355,8 @@ bool AllocateVehicles(Vehicle **vl, int num)
 }
 
 
+static VehicleID _vehicle_position_hash[0x1000];
+
 void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 {
 	int x,y,x2,y2;
