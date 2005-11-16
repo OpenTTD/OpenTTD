@@ -246,7 +246,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	if (IsTileType(tile, MP_RAILWAY) &&
 			v->type == VEH_Train &&
 			IsTileOwner(tile, _local_player) &&
-			(_m[tile].m5 & 0xFE) == 0xC4) {
+			IsRailWaypoint(tile)) {
 		order.type = OT_GOTO_WAYPOINT;
 		order.flags = 0;
 		order.station = GetWaypointByTile(tile)->index;

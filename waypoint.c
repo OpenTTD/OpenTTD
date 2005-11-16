@@ -261,7 +261,7 @@ int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 	Waypoint *wp;
 
 	/* Make sure it's a waypoint */
-	if (!IsTileType(tile, MP_RAILWAY) || !IsRailWaypoint(_m[tile].m5))
+	if (!IsTileType(tile, MP_RAILWAY) || !IsRailWaypoint(tile))
 		return CMD_ERROR;
 
 	if (!CheckTileOwnership(tile) && !(_current_player == OWNER_WATER))

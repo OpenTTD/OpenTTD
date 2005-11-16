@@ -1491,7 +1491,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 		if (ti->tileh != 0) DrawFoundation(ti, ti->tileh);
 
-		if (IsRailWaypoint(m5) && HASBIT(_m[ti->tile].m3, 4)) {
+		if (IsRailWaypoint(ti->tile) && HASBIT(_m[ti->tile].m3, 4)) {
 			// look for customization
 			const StationSpec *stat = GetCustomStation(STAT_CLASS_WAYP, _m[ti->tile].m4 + 1);
 
@@ -2100,7 +2100,7 @@ static void ClickTile_Track(TileIndex tile)
 {
 	if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
 		ShowTrainDepotWindow(tile);
-	} else if (IsRailWaypoint(_m[tile].m5)) {
+	} else if (IsRailWaypoint(tile)) {
 		ShowRenameWaypointWindow(GetWaypointByTile(tile));
 	}
 }

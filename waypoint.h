@@ -51,9 +51,9 @@ static inline bool IsWaypointIndex(uint index)
 #define FOR_ALL_WAYPOINTS_FROM(wp, start) for (wp = GetWaypoint(start); wp != NULL; wp = (wp->index + 1 < GetWaypointPoolSize()) ? GetWaypoint(wp->index + 1) : NULL)
 #define FOR_ALL_WAYPOINTS(wp) FOR_ALL_WAYPOINTS_FROM(wp, 0)
 
-static inline bool IsRailWaypoint(byte m5)
+static inline bool IsRailWaypoint(TileIndex tile)
 {
-	return (m5 & 0xFC) == 0xC4;
+	return (_m[tile].m5 & 0xFC) == 0xC4;
 }
 
 int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove);

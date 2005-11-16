@@ -25,7 +25,7 @@ static void DisasterClearSquare(TileIndex tile)
 
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
-			if (IS_HUMAN_PLAYER(GetTileOwner(tile)) && !IsRailWaypoint(_m[tile].m5)) DoClearSquare(tile);
+			if (IS_HUMAN_PLAYER(GetTileOwner(tile)) && !IsRailWaypoint(tile)) DoClearSquare(tile);
 			break;
 
 		case MP_HOUSE: {

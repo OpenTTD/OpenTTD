@@ -10,6 +10,7 @@
 #include "npf.h"
 #include "pathfind.h"
 #include "depot.h"
+#include "waypoint.h"
 
 /** @file pbs.c Path-Based-Signalling implementation file
  *  @see pbs.h */
@@ -52,7 +53,7 @@ void PBSReserveTrack(TileIndex tile, Track track) {
 	assert(track <= 5);
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
-			if ((_m[tile].m5 & ~1) == 0xC4) {
+			if (IsRailWaypoint(tile)) {
 				// waypoint
 				SETBIT(_m[tile].m3, 6);
 			} else {
@@ -90,7 +91,7 @@ byte PBSTileReserved(TileIndex tile) {
 	assert(IsValidTile(tile));
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
-			if ((_m[tile].m5 & ~1) == 0xC4) {
+			if (IsRailWaypoint(tile)) {
 				// waypoint
 				// check if its reserved
 				if (!HASBIT(_m[tile].m3, 6)) return 0;
@@ -125,7 +126,7 @@ uint16 PBSTileUnavail(TileIndex tile) {
 	assert(IsValidTile(tile));
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
-			if ((_m[tile].m5 & ~1) == 0xC4) {
+			if (IsRailWaypoint(tile)) {
 				// waypoint
 				return HASBIT(_m[tile].m3, 6) ? TRACKDIR_BIT_MASK : 0;
 			} else {
@@ -153,7 +154,7 @@ void PBSClearTrack(TileIndex tile, Track track) {
 	assert(track <= 5);
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
-			if ((_m[tile].m5 & ~1) == 0xC4) {
+			if (IsRailWaypoint(tile)) {
 				// waypoint
 				CLRBIT(_m[tile].m3, 6);
 			} else {
