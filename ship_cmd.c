@@ -801,10 +801,6 @@ void Ship_Tick(Vehicle *v)
 	ShipController(v);
 }
 
-void HandleClickOnShip(Vehicle *v)
-{
-	ShowShipViewWindow(v);
-}
 
 void ShipsYearlyLoop(void)
 {

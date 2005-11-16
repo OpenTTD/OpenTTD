@@ -690,10 +690,6 @@ void DisasterVehicle_Tick(Vehicle *v)
 	_disastervehicle_tick_procs[v->subtype](v);
 }
 
-void HandleClickOnDisasterVeh(Vehicle *v)
-{
-	// not used
-}
 
 void OnNewDay_DisasterVehicle(Vehicle *v)
 {

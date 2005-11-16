@@ -3630,11 +3630,6 @@ void TrainsYearlyLoop(void)
 	}
 }
 
-void HandleClickOnTrain(Vehicle *v)
-{
-	if (v->subtype != TS_Front_Engine) v = GetFirstVehicleInChain(v);
-	ShowTrainViewWindow(v);
-}
 
 void InitializeTrains(void)
 {

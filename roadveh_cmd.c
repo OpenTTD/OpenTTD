@@ -1733,10 +1733,6 @@ void OnNewDay_RoadVeh(Vehicle *v)
 	InvalidateWindowClasses(WC_ROADVEH_LIST);
 }
 
-void HandleClickOnRoadVeh(Vehicle *v)
-{
-	ShowRoadVehViewWindow(v);
-}
 
 void RoadVehiclesYearlyLoop(void)
 {

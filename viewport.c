@@ -4,6 +4,7 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
+#include "gui.h"
 #include "spritecache.h"
 #include "strings.h"
 #include "table/sprites.h"
@@ -1696,25 +1697,28 @@ static void CheckClickOnLandscape(const ViewPort *vp, int x, int y)
 	if (pt.x != -1) ClickTile(TileVirtXY(pt.x, pt.y));
 }
 
-void HandleClickOnTrain(Vehicle *v);
-void HandleClickOnRoadVeh(Vehicle *v);
-void HandleClickOnAircraft(Vehicle *v);
-void HandleClickOnShip(Vehicle *v);
-static void HandleClickOnSpecialVeh(Vehicle *v) {}
-void HandleClickOnDisasterVeh(Vehicle *v);
-typedef void OnVehicleClickProc(Vehicle *v);
-static OnVehicleClickProc * const _on_vehicle_click_proc[6] = {
-	HandleClickOnTrain,
-	HandleClickOnRoadVeh,
-	HandleClickOnShip,
-	HandleClickOnAircraft,
-	HandleClickOnSpecialVeh,
-	HandleClickOnDisasterVeh,
+
+static void SafeShowTrainViewWindow(const Vehicle* v)
+{
+  if (v->subtype != TS_Front_Engine) v = GetFirstVehicleInChain(v);
+  ShowTrainViewWindow(v);
+}
+
+static void Nop(const Vehicle* v) {}
+
+typedef void OnVehicleClickProc(const Vehicle* v);
+static OnVehicleClickProc* const _on_vehicle_click_proc[] = {
+	SafeShowTrainViewWindow,
+	ShowRoadVehViewWindow,
+	ShowShipViewWindow,
+	ShowAircraftViewWindow,
+	Nop, // Special vehicles
+	Nop  // Disaster vehicles
 };
 
 void HandleViewportClicked(const ViewPort *vp, int x, int y)
 {
-	Vehicle* v;
+	const Vehicle* v;
 
 	if (CheckClickOnTown(vp, x, y)) return;
 	if (CheckClickOnStation(vp, x, y)) return;

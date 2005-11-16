@@ -538,10 +538,6 @@ int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return cost;
 }
 
-void HandleClickOnAircraft(Vehicle *v)
-{
-	ShowAircraftViewWindow(v);
-}
 
 static void CheckIfAircraftNeedsService(Vehicle *v)
 {
