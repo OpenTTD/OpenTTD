@@ -48,8 +48,10 @@ typedef struct DrawIndustryTileStruct {
 	uint32 sprite_1;
 	uint32 sprite_2;
 
-	byte subtile_xy;
-	byte width_height;
+	byte subtile_x:4;
+	byte subtile_y:4;
+	byte width:4;
+	byte height:4;
 	byte dz;
 	byte proc;
 } DrawIndustryTileStruct;
@@ -377,10 +379,10 @@ static void DrawTile_Industry(TileInfo *ti)
 		if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 
 		AddSortableSpriteToDraw(image,
-			ti->x | (dits->subtile_xy>>4),
-			ti->y | (dits->subtile_xy&0xF),
-			(dits->width_height>>4)+1,
-			(dits->width_height&0xF)+1,
+			ti->x + dits->subtile_x,
+			ti->y + dits->subtile_y,
+			dits->width  + 1,
+			dits->height + 1,
 			dits->dz,
 			z);
 
