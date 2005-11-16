@@ -1970,23 +1970,23 @@ static void AnimateTile_Track(TileIndex tile)
 
 static void TileLoop_Track(TileIndex tile)
 {
-	byte a2;
-	byte rail;
-	uint16 m2;
+	byte old_ground;
+	byte new_ground;
+	TrackBits rail;
 
-	m2 = GB(_m[tile].m2, 0, 4);
+	old_ground = GB(_m[tile].m2, 0, 4);
 
 	switch (_opt.landscape) {
 		case LT_HILLY:
 			if (GetTileZ(tile) > _opt.snow_line) { /* convert into snow? */
-				a2 = RAIL_GROUND_ICE_DESERT;
+				new_ground = RAIL_GROUND_ICE_DESERT;
 				goto modify_me;
 			}
 			break;
 
 		case LT_DESERT:
 			if (GetMapExtraBits(tile) == 1) { /* convert into desert? */
-				a2 = RAIL_GROUND_ICE_DESERT;
+				new_ground = RAIL_GROUND_ICE_DESERT;
 				goto modify_me;
 			}
 			break;
@@ -1995,20 +1995,20 @@ static void TileLoop_Track(TileIndex tile)
 	// Don't continue tile loop for depots
 	if (_m[tile].m5 & RAIL_TYPE_SPECIAL) return;
 
-	a2 = RAIL_GROUND_GREEN;
+	new_ground = RAIL_GROUND_GREEN;
 
-	if (m2 != RAIL_GROUND_BROWN) { /* wait until bottom is green */
+	if (old_ground != RAIL_GROUND_BROWN) { /* wait until bottom is green */
 		/* determine direction of fence */
 		rail = _m[tile].m5 & TRACK_BIT_MASK;
 
 		if (rail == TRACK_BIT_UPPER) {
-			a2 = RAIL_GROUND_FENCE_HORIZ1;
+			new_ground = RAIL_GROUND_FENCE_HORIZ1;
 		} else if (rail == TRACK_BIT_LOWER) {
-			a2 = RAIL_GROUND_FENCE_HORIZ2;
+			new_ground = RAIL_GROUND_FENCE_HORIZ2;
 		} else if (rail == TRACK_BIT_LEFT) {
-			a2 = RAIL_GROUND_FENCE_VERT1;
+			new_ground = RAIL_GROUND_FENCE_VERT1;
 		} else if (rail == TRACK_BIT_RIGHT) {
-			a2 = RAIL_GROUND_FENCE_VERT2;
+			new_ground = RAIL_GROUND_FENCE_VERT2;
 		} else {
 			PlayerID owner = GetTileOwner(tile);
 
@@ -2016,36 +2016,36 @@ static void TileLoop_Track(TileIndex tile)
 				if (!IsTileType(tile + TileDiffXY(0, -1), MP_RAILWAY) ||
 						!IsTileOwner(tile + TileDiffXY(0, -1), owner) ||
 						(_m[tile + TileDiffXY(0, -1)].m5 == TRACK_BIT_UPPER || _m[tile + TileDiffXY(0, -1)].m5 == TRACK_BIT_LEFT))
-							a2 = RAIL_GROUND_FENCE_NW;
+							new_ground = RAIL_GROUND_FENCE_NW;
 			}
 
 			if ( (!(rail&(TRACK_BIT_DIAG2|TRACK_BIT_LOWER|TRACK_BIT_RIGHT)) && (rail&TRACK_BIT_DIAG1)) || rail==(TRACK_BIT_UPPER|TRACK_BIT_LEFT)) {
 				if (!IsTileType(tile + TileDiffXY(0, 1), MP_RAILWAY) ||
 						!IsTileOwner(tile + TileDiffXY(0, 1), owner) ||
 						(_m[tile + TileDiffXY(0, 1)].m5 == TRACK_BIT_LOWER || _m[tile + TileDiffXY(0, 1)].m5 == TRACK_BIT_RIGHT))
-							a2 = (a2 == RAIL_GROUND_FENCE_NW) ? RAIL_GROUND_FENCE_SENW : RAIL_GROUND_FENCE_SE;
+							new_ground = (new_ground == RAIL_GROUND_FENCE_NW) ? RAIL_GROUND_FENCE_SENW : RAIL_GROUND_FENCE_SE;
 			}
 
 			if ( (!(rail&(TRACK_BIT_DIAG1|TRACK_BIT_UPPER|TRACK_BIT_RIGHT)) && (rail&TRACK_BIT_DIAG2)) || rail==(TRACK_BIT_LOWER|TRACK_BIT_LEFT)) {
 				if (!IsTileType(tile + TileDiffXY(-1, 0), MP_RAILWAY) ||
 						!IsTileOwner(tile + TileDiffXY(-1, 0), owner) ||
 						(_m[tile + TileDiffXY(-1, 0)].m5 == TRACK_BIT_UPPER || _m[tile + TileDiffXY(-1, 0)].m5 == TRACK_BIT_RIGHT))
-							a2 = RAIL_GROUND_FENCE_NE;
+							new_ground = RAIL_GROUND_FENCE_NE;
 			}
 
 			if ( (!(rail&(TRACK_BIT_DIAG1|TRACK_BIT_LOWER|TRACK_BIT_LEFT)) && (rail&TRACK_BIT_DIAG2)) || rail==(TRACK_BIT_UPPER|TRACK_BIT_RIGHT)) {
 				if (!IsTileType(tile + TileDiffXY(1, 0), MP_RAILWAY) ||
 						!IsTileOwner(tile + TileDiffXY(1, 0), owner) ||
 						(_m[tile + TileDiffXY(1, 0)].m5 == TRACK_BIT_LOWER || _m[tile + TileDiffXY(1, 0)].m5 == TRACK_BIT_LEFT))
-							a2 = (a2 == RAIL_GROUND_FENCE_NE) ? RAIL_GROUND_FENCE_NESW : RAIL_GROUND_FENCE_SW;
+							new_ground = (new_ground == RAIL_GROUND_FENCE_NE) ? RAIL_GROUND_FENCE_NESW : RAIL_GROUND_FENCE_SW;
 			}
 		}
 	}
 
 modify_me:;
 	/* tile changed? */
-	if (m2 != a2) {
-		SB(_m[tile].m2, 0, 4, a2);
+	if (old_ground != new_ground) {
+		SB(_m[tile].m2, 0, 4, new_ground);
 		MarkTileDirtyByTile(tile);
 	}
 }
