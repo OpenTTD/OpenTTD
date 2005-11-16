@@ -251,7 +251,7 @@ static void DrawTile_Trees(TileInfo *ti)
 {
 	uint16 m2;
 	const uint32 *s;
-	const byte *d;
+	const TreePos* d;
 	byte z;
 
 	m2 = _m[ti->tile].m2;
@@ -308,10 +308,10 @@ static void DrawTile_Trees(TileInfo *ti)
 			uint32 image = s[0] + (--i == 0 ? GB(ti->map5, 0, 3) : 3);
 			if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 			te[i].image = image;
-			te[i].x = d[0];
-			te[i].y = d[1];
+			te[i].x = d->x;
+			te[i].y = d->y;
 			s++;
-			d += 2;
+			d++;
 		} while (i);
 
 		/* draw them in a sorted way */

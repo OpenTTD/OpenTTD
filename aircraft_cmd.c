@@ -1026,13 +1026,23 @@ static void HandleBrokenAircraft(Vehicle *v)
 	}
 }
 
-static const int8 _aircraft_smoke_xy[16] = {
-	5,6,5,0,-5,-6,-5,0, /* x coordinates */
-	5,0,-5,-6,-5,0,5,6, /* y coordinate */
-};
 
 static void HandleAircraftSmoke(Vehicle *v)
 {
+	static const struct {
+		int8 x;
+		int8 y;
+	} smoke_pos[] = {
+		{  5,  5 },
+		{  6,  0 },
+		{  5, -5 },
+		{  0, -6 },
+		{ -5, -5 },
+		{ -6,  0 },
+		{ -5,  5 },
+		{  0,  6 }
+	};
+
 	if (!(v->vehstatus & VS_AIRCRAFT_BROKEN)) return;
 
 	if (v->cur_speed < 10) {
@@ -1043,8 +1053,8 @@ static void HandleAircraftSmoke(Vehicle *v)
 
 	if ((v->tick_counter & 0x1F) == 0) {
 		CreateEffectVehicleRel(v,
-			_aircraft_smoke_xy[v->direction],
-			_aircraft_smoke_xy[v->direction + 8],
+			smoke_pos[v->direction].x,
+			smoke_pos[v->direction].y,
 			2,
 			EV_SMOKE
 		);

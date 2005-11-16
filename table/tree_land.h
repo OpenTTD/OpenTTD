@@ -13,11 +13,16 @@ static const SpriteID _tree_sprites_1[4] = {
 static const byte _tree_base_by_landscape[4] = {0, 12, 20, 32};
 static const byte _tree_count_by_landscape[4] = {12, 8, 12, 9};
 
-static const byte _tree_layout_xy[4][8] = {
-{9, 3, 1, 8, 0, 0, 8, 9},
-{4, 4, 9, 1, 6, 9, 0, 9},
-{9, 1, 0, 9, 6, 6, 3, 0},
-{3, 9, 8, 2, 9, 9, 1, 5},
+typedef struct TreePos {
+	uint8 x;
+	uint8 y;
+} TreePos;
+
+static const TreePos _tree_layout_xy[][4] = {
+	{ { 9, 3 }, { 1, 8 }, { 0, 0 }, { 8, 9 } },
+	{ { 4, 4 }, { 9, 1 }, { 6, 9 }, { 0, 9 } },
+	{ { 9, 1 }, { 0, 9 }, { 6, 6 }, { 3, 0 } },
+	{ { 3, 9 }, { 8, 2 }, { 9, 9 }, { 1, 5 } }
 };
 
 static const PalSpriteID _tree_layout_sprite[164+(79-48+1)][4] = {
