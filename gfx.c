@@ -1481,23 +1481,6 @@ static void GfxMainBlitter(const Sprite* sprite, int x, int y, int mode)
 	}
 }
 
-#if 0
-static void GfxScalePalette(int pal, byte scaling)
-{
-	const Colour* src;
-	uint i;
-
-	GfxInitPalettes();
-
-	src = GET_PALETTE(pal);
-	for (i = 0; i < lengthof(_cur_palette); i++) {
-		_cur_palette[i].r = src[i].r * scaling >> 8;
-		_cur_palette[i].g = src[i].g * scaling >> 8;
-		_cur_palette[i].b = src[i].b * scaling >> 8;
-	}
-}
-#endif
-
 void DoPaletteAnimations(void);
 
 void GfxInitPalettes(void)

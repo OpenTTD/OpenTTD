@@ -141,28 +141,6 @@ typedef struct VehicleShip {
 	byte state;
 } VehicleShip;
 
-// not used ATM
-struct WorldSprite {
-	struct WorldSprite *next;			// next sprite in hash chain
-	uint16 image;			// sprite number for this vehicle
-
-	// screen coordinates
-	int16 left, top, right, bottom;
-
-	// world coordinates
-	int16 x;
-	int16 y;
-	byte z;
-
-	int8 x_offs;			// x offset for vehicle sprite
-	int8 y_offs;			// y offset for vehicle sprite
-
-	byte width;				// width of vehicle sprite
-	byte height;			// height of vehicle sprite
-	byte depth;				// depth of vehicle sprite
-
-	byte flags;				// draw flags
-};
 
 struct Vehicle {
 	byte type;	// type, ie roadven,train,ship,aircraft,special
