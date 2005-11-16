@@ -2170,25 +2170,26 @@ static uint32 GetTileTrackStatus_Station(TileIndex tile, TransportType mode)
 	return j;
 }
 
+
 static void TileLoop_Station(TileIndex tile)
 {
-  //FIXME -- GetTileTrackStatus_Station -> animated stationtiles
-  // hardcoded.....not good
-  // 0x27 - large big airport (39)
-  // 0x66 - radar metropolitan airport (102)
-  // 0x5A - radar international airport (90)
-  // 0x3A - flag small airport (58)
-	if (_m[tile].m5 == 39 || _m[tile].m5 == 58 || _m[tile].m5 == 90 || _m[tile].m5 == 102)
-		AddAnimatedTile(tile);
+	// FIXME -- GetTileTrackStatus_Station -> animated stationtiles
+	// hardcoded.....not good
+	switch (_m[tile].m5) {
+		case 0x27: // large big airport
+		case 0x3A: // flag small airport
+		case 0x5A: // radar international airport
+		case 0x66: // radar metropolitan airport
+			AddAnimatedTile(tile);
+			break;
 
-	// treat a bouy tile as water.
-	else if (_m[tile].m5 == 0x52)
-		TileLoop_Water(tile);
+		case 0x4B: // oilrig (station part)
+		case 0x52: // bouy
+			TileLoop_Water(tile);
+			break;
 
-	// treat a oilrig (the station part) as water
-	else if (_m[tile].m5 == 0x4B)
-		TileLoop_Water(tile);
-
+		default: break;
+	}
 }
 
 
