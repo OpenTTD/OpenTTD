@@ -193,7 +193,7 @@ static bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 				uint32 res = 0;
 
 				/* Reading from the file: bit 16 to 23 have the FILE */
-				switch (((chunk->type >> 16) & 0xFF) << 16) {
+				switch (GB(chunk->type, 16, 8) << 16) {
 					case OC_FILE_I8:
 						res = ReadByte(ls);
 						res = (int8)res;
@@ -234,7 +234,7 @@ static bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 				assert(base_ptr != NULL || chunk->ptr != NULL);
 
 				/* Writing to the var: bit 8 till 15 have the VAR */
-				switch (((chunk->type >> 8) & 0xFF) << 8) {
+				switch (GB(chunk->type, 8, 8) << 8) {
 					case OC_VAR_I8:
 						/* Write the data */
 						if (chunk->ptr != NULL) {

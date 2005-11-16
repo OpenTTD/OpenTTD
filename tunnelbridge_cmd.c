@@ -430,7 +430,10 @@ static bool DoCheckTunnelInWay(TileIndex tile, uint z, uint dir)
 		FindLandscapeHeightByTile(&ti, tile);
 	} while (z < ti.z);
 
-	if (z == ti.z && ti.type == MP_TUNNELBRIDGE && (ti.map5&0xF0) == 0 && (ti.map5&3) == dir) {
+	if (z == ti.z &&
+			ti.type == MP_TUNNELBRIDGE &&
+			GB(ti.map5, 4, 4) == 0 &&
+			GB(ti.map5, 0, 2) == dir) {
 		_error_message = STR_5003_ANOTHER_TUNNEL_IN_THE_WAY;
 		return false;
 	}

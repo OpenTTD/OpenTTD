@@ -85,8 +85,8 @@ static void PlaceExtraDepotRail(TileIndex tile, uint16 extra)
 {
 	byte b = _m[tile].m5;
 
-	if (b & 0xC0 || !(b & (extra >> 8)))
-		return;
+	if (GB(b, 6, 2) != RAIL_TYPE_NORMAL >> 6) return;
+	if (!(b & (extra >> 8))) return;
 
 	DoCommandP(tile, _cur_railtype, extra & 0xFF, NULL, CMD_BUILD_SINGLE_RAIL | CMD_AUTO | CMD_NO_WATER);
 }

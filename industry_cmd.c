@@ -561,8 +561,8 @@ static void AnimateTile_Industry(TileIndex tile)
 	case 10:
 		if ((_tick_counter & 3) == 0) {
 			m = _m[tile].m1;
-			if ((m & (31<<2)) == (6 << 2)) {
-				_m[tile].m1 = m&~(31<<2);
+			if (GB(m, 2, 5) == 6) {
+				SB(_m[tile].m1, 2, 5, 0);
 				DeleteAnimatedTile(tile);
 			} else {
 				_m[tile].m1 = m + (1<<2);
@@ -614,7 +614,7 @@ static void AnimateTile_Industry(TileIndex tile)
 				_m[tile].m5 = 29;
 				DeleteAnimatedTile(tile);
 			} else {
-				_m[tile].m1 = (_m[tile].m1 & ~3) | m;
+				SB(_m[tile].m1, 0, 2, m);
 				_m[tile].m5 = n;
 				MarkTileDirtyByTile(tile);
 			}

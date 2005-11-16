@@ -5,6 +5,13 @@
 
 #include "map.h"
 
+/// Fetch n bits starting at bit s from x
+#define GB(x, s, n) (((x) >> (s)) & ((1U << (n)) - 1))
+/// Set n bits starting at bit s in x to d
+#define SB(x, s, n, d) ((x) = ((x) & ~(((1U << (n)) - 1) << (s))) | ((d) << (s)))
+/// Add i to the n bits starting at bit s in x
+#define AB(x, s, n, i) ((x) = ((x) & ~(((1U << (n)) - 1) << (s))) | (((x) + ((i) << (s))) & (((1U << (n)) - 1) << (s))))
+
 #ifdef min
 #undef min
 #endif
@@ -86,20 +93,20 @@ static inline int FindFirstBit2x64(int value)
 
 Faster ( or at least cleaner ) implementation below?
 */
-	if ( (byte) value == 0) {
-		return FIND_FIRST_BIT((value >> 8) & 0x3F) + 8;
+	if (GB(value, 0, 8) == 0) {
+		return FIND_FIRST_BIT(GB(value, 8, 6)) + 8;
 	} else {
-		return FIND_FIRST_BIT(value & 0x3F);
+		return FIND_FIRST_BIT(GB(value, 0, 6));
 	}
 
 }
 
 static inline int KillFirstBit2x64(int value)
 {
-	if ( (byte) value == 0) {
-		return KILL_FIRST_BIT((value >> 8) & 0x3F) << 8;
+	if (GB(value, 0, 8) == 0) {
+		return KILL_FIRST_BIT(GB(value, 8, 6)) << 8;
 	} else {
-		return value & (KILL_FIRST_BIT(value & 0x3F)|0x3F00);
+		return value & (KILL_FIRST_BIT(GB(value, 0, 6)) | 0x3F00);
 	}
 }
 
@@ -143,13 +150,6 @@ static inline void swap_tile(TileIndex *a, TileIndex *b) { TileIndex t = *a; *a 
 		return ((const byte*)b)[0] + (((const byte*)b)[1] << 8);
 	}
 #endif
-
-/// Fetch n bits starting at bit s from x
-#define GB(x, s, n) (((x) >> (s)) & ((1U << (n)) - 1))
-/// Set n bits starting at bit s in x to d
-#define SB(x, s, n, d) ((x) = ((x) & ~(((1U << (n)) - 1) << (s))) | ((d) << (s)))
-/// Add i to the n bits starting at bit s in x
-#define AB(x, s, n, i) ((x) = ((x) & ~(((1U << (n)) - 1) << (s))) | (((x) + ((i) << (s))) & (((1U << (n)) - 1) << (s))))
 
 /**
  * ROtate x Left/Right by n (must be >= 0)
