@@ -13,6 +13,10 @@
 #include "hal.h"
 #include "variables.h"
 
+#ifdef _DEBUG
+bool _dbg_screen_rect;
+#endif
+
 Colour _cur_palette[256];
 
 static void GfxMainBlitter(const Sprite *sprite, int x, int y, int mode);

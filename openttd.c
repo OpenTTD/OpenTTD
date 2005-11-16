@@ -61,8 +61,6 @@ extern void SetDifficultyLevel(int mode, GameOptions *gm_opt);
 extern void DoStartupNewPlayer(bool is_ai);
 extern void ShowOSErrorBox(const char *buf);
 
-bool _dbg_screen_rect;
-
 /* TODO: usrerror() for errors which are not of an internal nature but
  * caused by the user, i.e. missing files or fatal configuration errors.
  * Post-0.4.0 since Celestar doesn't want this in SVN before. --pasky */

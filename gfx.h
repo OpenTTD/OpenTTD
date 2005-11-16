@@ -124,4 +124,8 @@ typedef enum StringColorFlags {
 	IS_PALETTE_COLOR = 0x100, // color value is already a real palette color index, not an index of a StringColor
 } StringColorFlags;
 
+#ifdef _DEBUG
+extern bool _dbg_screen_rect;
+#endif
+
 #endif /* GFX_H */

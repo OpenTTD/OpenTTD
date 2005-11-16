@@ -43,7 +43,6 @@ enum DriverType {
 };
 
 extern void GameLoop(void);
-extern bool _dbg_screen_rect;
 
 
 // Deals with finding savegames
