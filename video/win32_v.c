@@ -734,7 +734,9 @@ static void Win32GdiMainLoop(void)
 			next_tick += 30;
 			_ctrl_pressed = _wnd.has_focus && GetAsyncKeyState(VK_CONTROL)<0;
 			_shift_pressed = _wnd.has_focus && GetAsyncKeyState(VK_SHIFT)<0;
+#ifdef _DEBUG
 			_dbg_screen_rect = _wnd.has_focus && GetAsyncKeyState(VK_CAPITAL)<0;
+#endif _DEBUG
 
 			// determine which directional keys are down
 			if (_wnd.has_focus) {
