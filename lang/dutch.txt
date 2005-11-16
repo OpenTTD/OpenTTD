@@ -839,10 +839,10 @@ STR_TOWNNAME_SWISS                                              :Zwitsers
 STR_TOWNNAME_DANISH                                             :Deens
 ############ end of	townname region
 
-STR_CURR_GBP                                                    :Pond ({POUNDSIGN})
+STR_CURR_GBP                                                    :Pond (£)
 STR_CURR_USD                                                    :Dollar ($)
 STR_CURR_EUR                                                    :Euro (¤)
-STR_CURR_YEN                                                    :Yen ({YENSIGN})
+STR_CURR_YEN                                                    :Yen (¥)
 STR_CURR_ATS                                                    :Australische Shilling (ATS)
 STR_CURR_BEF                                                    :Belgische Franken (BEF)
 STR_CURR_CHF                                                    :Zwitserse Franken (CHF)
@@ -2714,7 +2714,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Bestands
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Aangepaste valuta
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wisselkoers: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wisselkoers: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Scheidingsteken:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Voorvoegsel:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Achtervoegsel:

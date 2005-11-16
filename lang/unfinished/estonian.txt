@@ -822,10 +822,10 @@ STR_TOWNNAME_CZECH                                              :T¨ehhi
 STR_TOWNNAME_SWISS                                              :¦veitsi
 ############ end of	townname region
 
-STR_CURR_GBP                                                    :Naelad ({POUNDSIGN})
+STR_CURR_GBP                                                    :Naelad (£)
 STR_CURR_USD                                                    :Dollarid ($)
 STR_CURR_EUR                                                    :Euro (¤)
-STR_CURR_YEN                                                    :Jeen ({YENSIGN})
+STR_CURR_YEN                                                    :Jeen (¥)
 STR_CURR_ATS                                                    :Austria ðilling (ATS)
 STR_CURR_BEF                                                    :Belgia frank (BEF)
 STR_CURR_CHF                                                    :Sveitði frank (CHF)

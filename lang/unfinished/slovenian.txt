@@ -488,10 +488,10 @@ STR_01CB                                                        :{TINYFONT}{COMM
 ############ start of townname region
 ############ end of	townname region
 
-STR_CURR_GBP                                                    :Funt ({POUNDSIGN})
+STR_CURR_GBP                                                    :Funt (£)
 STR_CURR_USD                                                    :Dolar ($)
 STR_CURR_EUR                                                    :Euro (¤)
-STR_CURR_YEN                                                    :Jen ({YENSIGN})
+STR_CURR_YEN                                                    :Jen (¥)
 STR_CURR_ATS                                                    :Avstrijski Siling (ATS)
 STR_CURR_BEF                                                    :Belgijski Frank (BEF)
 STR_CURR_CHF                                                    :Svicarski Frank (CHF)

@@ -896,10 +896,10 @@ STR_TOWNNAME_SWISS                                              :¦výcarská
 STR_TOWNNAME_DANISH                                             :Dánská
 ############ end of	townname region
 
-STR_CURR_GBP                                                    :Libry ({POUNDSIGN})
+STR_CURR_GBP                                                    :Libry (£)
 STR_CURR_USD                                                    :Dolary ($)
 STR_CURR_EUR                                                    :Eura (¤)
-STR_CURR_YEN                                                    :Japonské jeny ({YENSIGN})
+STR_CURR_YEN                                                    :Japonské jeny (¥)
 STR_CURR_ATS                                                    :Rakouské ¨ilinky (ATS)
 STR_CURR_BEF                                                    :Belgické franky (BEF)
 STR_CURR_CHF                                                    :¦výcarské franky (CHF)
@@ -2771,7 +2771,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Jméno so
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vlastní mena
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz meny: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz meny: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Oddelovac:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Predpona:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Pripona:

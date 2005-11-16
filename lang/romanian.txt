@@ -839,10 +839,10 @@ STR_TOWNNAME_SWISS                                              :Elvetian
 STR_TOWNNAME_DANISH                                             :Danezã
 ############ end of	townname region
 
-STR_CURR_GBP                                                    :Lira sterlina ({POUNDSIGN})
+STR_CURR_GBP                                                    :Lira sterlina (£)
 STR_CURR_USD                                                    :Dolar ($)
 STR_CURR_EUR                                                    :Euro (¤)
-STR_CURR_YEN                                                    :Yen japonez ({YENSIGN})
+STR_CURR_YEN                                                    :Yen japonez (¥)
 STR_CURR_ATS                                                    :Siling austriac (ATS)
 STR_CURR_BEF                                                    :Franc belgian (BEF)
 STR_CURR_CHF                                                    :Franc elvetian (CHF)
@@ -2714,7 +2714,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Nume fis
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moneda proprie
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Curs de schimb: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Curs de schimb: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufix:

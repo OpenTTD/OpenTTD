@@ -839,10 +839,10 @@ STR_TOWNNAME_SWISS                                              :Svissneska
 STR_TOWNNAME_DANISH                                             :Danska
 ############ end of	townname region
 
-STR_CURR_GBP                                                    :Pund ({POUNDSIGN})
+STR_CURR_GBP                                                    :Pund (£)
 STR_CURR_USD                                                    :Bandaríkjadalir ($)
 STR_CURR_EUR                                                    :Evra (¤)
-STR_CURR_YEN                                                    :Jen ({YENSIGN})
+STR_CURR_YEN                                                    :Jen (¥)
 STR_CURR_ATS                                                    :Austurrískur skildingur (ATS)
 STR_CURR_BEF                                                    :Belgískur Franki (BEF)
 STR_CURR_CHF                                                    :Svissneskur Franki (CHF)
@@ -2714,7 +2714,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Skráarna
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF einkenni:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Sérvalinn gjaldeyrir
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Gengi: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Gengi: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Aðskilnaðarmerki:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Forskeyti:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Viðskeyti:

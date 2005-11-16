@@ -839,10 +839,10 @@ STR_TOWNNAME_SWISS                                              :S'veices
 STR_TOWNNAME_DANISH                                             :Da'n'u
 ############ end of	townname region
 
-STR_CURR_GBP                                                    :Ma'rcin'as ({POUNDSIGN})
+STR_CURR_GBP                                                    :Ma'rcin'as (£)
 STR_CURR_USD                                                    :Dola'ri ($)
 STR_CURR_EUR                                                    :Eiro (¤)
-STR_CURR_YEN                                                    :Jenas ({YENSIGN})
+STR_CURR_YEN                                                    :Jenas (¥)
 STR_CURR_ATS                                                    :Austrijas s'ilin'i (ATS)
 STR_CURR_BEF                                                    :Bel'g'ijas franki (BEF)
 STR_CURR_CHF                                                    :S'veices franki (CHF)

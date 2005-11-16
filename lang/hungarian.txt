@@ -904,10 +904,10 @@ STR_TOWNNAME_SWISS                                              :Svájci
 STR_TOWNNAME_DANISH                                             :Dán
 ############ end of	townname region
 
-STR_CURR_GBP                                                    :Font ({POUNDSIGN})
+STR_CURR_GBP                                                    :Font (£)
 STR_CURR_USD                                                    :Dollár ($)
 STR_CURR_EUR                                                    :Euró (¤)
-STR_CURR_YEN                                                    :Ken ({YENSIGN})
+STR_CURR_YEN                                                    :Ken (¥)
 STR_CURR_ATS                                                    :Osztrák Shilling (ATS)
 STR_CURR_BEF                                                    :Belga Frank (BEF)
 STR_CURR_CHF                                                    :Svájci Frank (CHF)
@@ -2816,7 +2816,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Fájlnév:
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Saját pénznem
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Értékarány: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Értékarány: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Elválasztó:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Elõtag:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Elõtag:

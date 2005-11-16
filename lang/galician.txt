@@ -825,10 +825,10 @@ STR_TOWNNAME_CZECH                                              :Checo
 STR_TOWNNAME_SWISS                                              :Suízo
 ############ end of	townname region
 
-STR_CURR_GBP                                                    :Libras ({POUNDSIGN})
+STR_CURR_GBP                                                    :Libras (£)
 STR_CURR_USD                                                    :Dólares ($)
 STR_CURR_EUR                                                    :Euro (¤)
-STR_CURR_YEN                                                    :Yen ({YENSIGN})
+STR_CURR_YEN                                                    :Yen (¥)
 STR_CURR_ATS                                                    :Chelín Austríaco (ATS)
 STR_CURR_BEF                                                    :Franco Belga (BEF)
 STR_CURR_CHF                                                    :Franco Suizo (CHF)
@@ -2656,7 +2656,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Ficheiro
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda persoalizada
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de cambio: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de cambio: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefixo:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufixo:

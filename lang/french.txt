@@ -840,10 +840,10 @@ STR_TOWNNAME_SWISS                                              :Suisse
 STR_TOWNNAME_DANISH                                             :Danois
 ############ end of	townname region
 
-STR_CURR_GBP                                                    :Livre ({POUNDSIGN})
+STR_CURR_GBP                                                    :Livre (£)
 STR_CURR_USD                                                    :Dollar ($)
 STR_CURR_EUR                                                    :Euro (¤)
-STR_CURR_YEN                                                    :Yen ({YENSIGN})
+STR_CURR_YEN                                                    :Yen (¥)
 STR_CURR_ATS                                                    :Shiling Australien (ATS)
 STR_CURR_BEF                                                    :Franc Belge (BEF)
 STR_CURR_CHF                                                    :Franc Suisse (CHF)
@@ -2715,7 +2715,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Nom de f
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Devise personnalisée
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taux de change : {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taux de change : {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Séparateur :
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Préfixe :
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffixe :

@@ -810,10 +810,10 @@ STR_TOWNNAME_ROMANIAN                                           :Romanca
 STR_TOWNNAME_CZECH                                              :Çekçe
 ############ end of	townname region
 
-STR_CURR_GBP                                                    :Sterlin ({POUNDSIGN})
+STR_CURR_GBP                                                    :Sterlin (£)
 STR_CURR_USD                                                    :Dolars ($)
 STR_CURR_EUR                                                    :Euro (¤)
-STR_CURR_YEN                                                    :Yen ({YENSIGN})
+STR_CURR_YEN                                                    :Yen (¥)
 STR_CURR_ATS                                                    :Avusturya Silini (ATS)
 STR_CURR_BEF                                                    :Belcika Frangi (BEF)
 STR_CURR_CZK                                                    :Çek Koruna (CZK)
@@ -2618,7 +2618,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Dosya ad
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Özel Para Birimi
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Çarpan: {ORANGE}{CURRENCY} = {POUNDSIGN} {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Çarpan: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Ayraç:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Önek:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sonek:
