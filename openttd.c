@@ -1287,6 +1287,43 @@ bool AfterLoadGame(uint version)
 		}
 	}
 
+	/* In version 17, ground type is moved from m2 to m4 for depots and
+	 * waypoints to make way for storing the index in m2. The custom graphics
+	 * id which was stored in m4 is now saved as a grf/id reference in the
+	 * waypoint struct. */
+	if (version < 0x1100) {
+		Waypoint *wp;
+
+		FOR_ALL_WAYPOINTS(wp) {
+			if (wp->xy != 0 && wp->deleted == 0) {
+				const StationSpec *spec = NULL;
+
+				if (HASBIT(_m[wp->xy].m3, 4))
+					spec = GetCustomStation(STAT_CLASS_WAYP, _m[wp->xy].m4 + 1);
+
+				if (spec != NULL) {
+					wp->stat_id = _m[wp->xy].m4 + 1;
+					wp->grfid = spec->grfid;
+					wp->localidx = spec->localidx;
+				} else {
+					// No custom graphics set, so set to default.
+					wp->stat_id = 0;
+					wp->grfid = 0;
+					wp->localidx = 0;
+				}
+
+				// Move ground type bits from m2 to m4.
+				_m[wp->xy].m4 = GB(_m[wp->xy].m2, 0, 4);
+				// Store waypoint index in the tile.
+				_m[wp->xy].m2 = wp->index;
+			}
+		}
+	} else {
+		/* As of version 17, we recalculate the custom graphic ID of waypoints
+		 * from the GRF ID / station index. */
+		UpdateAllWaypointCustomGraphics();
+	}
+
 	FOR_ALL_PLAYERS(p) p->avail_railtypes = GetPlayerRailtypes(p->index);
 
 	return true;

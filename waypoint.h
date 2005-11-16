@@ -6,18 +6,21 @@
 #include "pool.h"
 
 struct Waypoint {
-	TileIndex xy;
-	uint16 index;
+	TileIndex xy;      ///< Tile of waypoint
+	uint16 index;      ///< Index of waypoint
 
-	uint16 town_index;
-	byte town_cn;          // The Nth waypoint for this town (consecutive number)
-	StringID string;       // If this is zero, town + town_cn is used for naming
+	uint16 town_index; ///< Town associated with the waypoint
+	byte town_cn;      ///< The Nth waypoint for this town (consecutive number)
+	StringID string;   ///< If this is zero (i.e. no custom name), town + town_cn is used for naming
 
-	ViewportSign sign;
-	uint16 build_date;
-	byte stat_id;
-	uint32 grfid;
-	byte deleted;          // this is a delete counter. when it reaches 0, the waypoint struct is deleted.
+	ViewportSign sign; ///< Dimensions of sign (not saved)
+	uint16 build_date; ///< Date of construction
+
+	byte stat_id;      ///< ID of waypoint within the waypoint class (not saved)
+	uint32 grfid;      ///< ID of GRF file
+	byte localidx;     ///< Index of station within GRF file
+
+	byte deleted;      ///< Delete counter. If greater than 0 then it is decremented until it reaches 0; the waypoint is then is deleted.
 };
 
 enum {
@@ -56,13 +59,24 @@ static inline bool IsRailWaypoint(TileIndex tile)
 	return (_m[tile].m5 & 0xFC) == 0xC4;
 }
 
+/**
+ * Fetch a waypoint by tile
+ * @param tile Tile of waypoint
+ * @return Waypoint
+ */
+static inline Waypoint *GetWaypointByTile(TileIndex tile)
+{
+	assert(IsTileType(tile, MP_RAILWAY) && IsRailWaypoint(tile));
+	return GetWaypoint(_m[tile].m2);
+}
+
 int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove);
 Station *ComposeWaypointStation(TileIndex tile);
-Waypoint *GetWaypointByTile(TileIndex tile);
 void ShowRenameWaypointWindow(const Waypoint *cp);
 void DrawWaypointSprite(int x, int y, int image, RailType railtype);
 void UpdateWaypointSign(Waypoint *cp);
 void FixOldWaypoints(void);
 void UpdateAllWaypointSigns(void);
+void UpdateAllWaypointCustomGraphics(void);
 
 #endif /* WAYPOINT_H */

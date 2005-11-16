@@ -1493,7 +1493,8 @@ static void DrawTile_Track(TileInfo *ti)
 
 		if (IsRailWaypoint(ti->tile) && HASBIT(_m[ti->tile].m3, 4)) {
 			// look for customization
-			const StationSpec *stat = GetCustomStation(STAT_CLASS_WAYP, _m[ti->tile].m4 + 1);
+			byte stat_id = GetWaypointByTile(ti->tile)->stat_id;
+			const StationSpec *stat = GetCustomStation(STAT_CLASS_WAYP, stat_id);
 
 			if (stat != NULL) {
 				DrawTileSeqStruct const *seq;
@@ -1535,7 +1536,7 @@ static void DrawTile_Track(TileInfo *ti)
 		// adjust ground tile for desert
 		// (don't adjust for arctic depots, because snow in depots looks weird)
 		// type >= 4 means waypoints
-		if ((_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK) == RAIL_GROUND_ICE_DESERT && (_opt.landscape == LT_DESERT || type >= 4)) {
+		if ((_m[ti->tile].m4 & RAIL_MAP2LO_GROUND_MASK) == RAIL_GROUND_ICE_DESERT && (_opt.landscape == LT_DESERT || type >= 4)) {
 			if (image != SPR_FLAT_GRASS_TILE) {
 				image += rti->snow_offset; // tile with tracks
 			} else {
@@ -1974,7 +1975,7 @@ static void TileLoop_Track(TileIndex tile)
 	byte new_ground;
 	TrackBits rail;
 
-	old_ground = GB(_m[tile].m2, 0, 4);
+	old_ground = _m[tile].m5 & RAIL_TYPE_SPECIAL ? GB(_m[tile].m4, 0, 4) : GB(_m[tile].m2, 0, 4);
 
 	switch (_opt.landscape) {
 		case LT_HILLY:
@@ -2045,7 +2046,11 @@ static void TileLoop_Track(TileIndex tile)
 modify_me:;
 	/* tile changed? */
 	if (old_ground != new_ground) {
-		SB(_m[tile].m2, 0, 4, new_ground);
+		if (_m[tile].m5 & RAIL_TYPE_SPECIAL) {
+			SB(_m[tile].m4, 0, 4, new_ground);
+		} else {
+			SB(_m[tile].m2, 0, 4, new_ground);
+		}
 		MarkTileDirtyByTile(tile);
 	}
 }

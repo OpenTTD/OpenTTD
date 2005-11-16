@@ -63,19 +63,6 @@ Waypoint *AllocateWaypoint(void)
 	return NULL;
 }
 
-/* Fetch a waypoint by tile */
-Waypoint *GetWaypointByTile(TileIndex tile)
-{
-	Waypoint *wp;
-
-	FOR_ALL_WAYPOINTS(wp) {
-		if (wp->xy == tile)
-			return wp;
-	}
-
-	return NULL;
-}
-
 /* Update the sign for the waypoint */
 void UpdateWaypointSign(Waypoint *wp)
 {
@@ -151,6 +138,29 @@ static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile)
 	return best;
 }
 
+/**
+ * Update waypoint graphics id against saved GRFID/localidx.
+ * This is to ensure the chosen graphics are correct if GRF files are changed.
+ */
+void UpdateAllWaypointCustomGraphics(void)
+{
+	Waypoint *wp;
+
+	FOR_ALL_WAYPOINTS(wp) {
+		uint i;
+
+		if (wp->grfid == 0) continue;
+
+		for (i = 0; i < GetNumCustomStations(STAT_CLASS_WAYP); i++) {
+			const StationSpec *spec = GetCustomStation(STAT_CLASS_WAYP, i);
+			if (spec != NULL && spec->grfid == wp->grfid && spec->localidx == wp->localidx) {
+				wp->stat_id = i;
+				break;
+			}
+		}
+	}
+}
+
 /** Convert existing rail to waypoint. Eg build a waypoint station over
  * piece of rail
  * @param x,y coordinates where waypoint will be built
@@ -198,13 +208,26 @@ int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (flags & DC_EXEC) {
+		const StationSpec *spec = NULL;
 		bool reserved = PBSTileReserved(tile) != 0;
-		ModifyTile(tile, MP_MAP5, RAIL_TYPE_WAYPOINT | dir);
-		if (p1 > 0) { // waypoint type 0 uses default graphics
-			// custom graphics
-			_m[tile].m3 |= 16;
-			_m[tile].m4 = (p1 - 1) & 0xff;
+		ModifyTile(tile, MP_MAP2 | MP_MAP5, wp->index, RAIL_TYPE_WAYPOINT | dir);
+
+		if (GB(p1, 0, 8) < GetNumCustomStations(STAT_CLASS_WAYP))
+			spec = GetCustomStation(STAT_CLASS_WAYP, GB(p1, 0, 8));
+
+		if (spec != NULL) {
+			SETBIT(_m[tile].m3, 4);
+			wp->stat_id = GB(p1, 0, 8);
+			wp->grfid = spec->grfid;
+			wp->localidx = spec->localidx;
+		} else {
+			// Specified custom graphics do not exist, so use default.
+			CLRBIT(_m[tile].m3, 4);
+			wp->stat_id = 0;
+			wp->grfid = 0;
+			wp->localidx = 0;
 		}
+
 		if (reserved) {
 			PBSReserveTrack(tile, dir);
 		} else {
@@ -280,8 +303,8 @@ int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 
 		if (justremove) {
 			bool reserved = PBSTileReserved(tile) != 0;
-			ModifyTile(tile, MP_MAP5, 1<<direction);
-			_m[tile].m3 &= ~16;
+			ModifyTile(tile, MP_MAP2_CLEAR | MP_MAP5, 1<<direction);
+			CLRBIT(_m[tile].m3, 4);
 			_m[tile].m4 = 0;
 			if (reserved) {
 				PBSReserveTrack(tile, direction);
@@ -446,8 +469,9 @@ static const SaveLoad _waypoint_desc[] = {
 	SLE_VAR(Waypoint, string, SLE_UINT16),
 	SLE_VAR(Waypoint, deleted, SLE_UINT8),
 
-	SLE_CONDVAR(Waypoint, build_date, SLE_UINT16, 3, 255),
-	SLE_CONDVAR(Waypoint, stat_id, SLE_UINT8, 3, 255),
+	SLE_CONDVAR(Waypoint, build_date, SLE_UINT16,  3, 255),
+	SLE_CONDVAR(Waypoint, localidx,   SLE_UINT8,   3, 255),
+	SLE_CONDVAR(Waypoint, grfid,      SLE_UINT32, 17, 255),
 
 	SLE_END()
 };
