@@ -1200,11 +1200,9 @@ static void PlaceProc_RockyArea(TileIndex tile)
 
 static void PlaceProc_LightHouse(TileIndex tile)
 {
-	TileInfo ti;
-
-	FindLandscapeHeightByTile(&ti, tile);
-	if (!IsTileType(tile, MP_CLEAR) || IsSteepTileh(ti.tileh))
+	if (!IsTileType(tile, MP_CLEAR) || IsSteepTileh(GetTileSlope(tile, NULL))) {
 		return;
+	}
 
 	ModifyTile(tile, MP_SETTYPE(MP_UNMOVABLE) | MP_MAP5, 1);
 	SndPlayTileFx(SND_1F_SPLAT, tile);
@@ -1212,11 +1210,9 @@ static void PlaceProc_LightHouse(TileIndex tile)
 
 static void PlaceProc_Transmitter(TileIndex tile)
 {
-	TileInfo ti;
-
-	FindLandscapeHeightByTile(&ti, tile);
-	if (!IsTileType(tile, MP_CLEAR) || IsSteepTileh(ti.tileh))
+	if (!IsTileType(tile, MP_CLEAR) || IsSteepTileh(GetTileSlope(tile, NULL))) {
 		return;
+	}
 
 	ModifyTile(tile, MP_SETTYPE(MP_UNMOVABLE) | MP_MAP5, 0);
 	SndPlayTileFx(SND_1F_SPLAT, tile);

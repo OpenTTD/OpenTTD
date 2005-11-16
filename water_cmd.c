@@ -39,9 +39,10 @@ static void FloodVehicle(Vehicle *v);
 
 static bool IsClearWaterTile(TileIndex tile)
 {
-	TileInfo ti;
-	FindLandscapeHeightByTile(&ti, tile);
-	return (ti.type == MP_WATER && ti.tileh == 0 && ti.map5 == 0);
+	return
+		IsTileType(tile, MP_WATER) &&
+		_m[tile].m5 == 0 &&
+		GetTileSlope(tile, NULL) == 0;
 }
 
 /** Build a ship depot.
