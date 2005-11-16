@@ -1491,7 +1491,7 @@ static Vehicle *GetNextEnginePart(Vehicle *v)
 	switch (v->type) {
 		case VEH_Train:
 			if (RailVehInfo(v->engine_type)->flags & RVI_MULTIHEAD) {
-				return GetRearEngine(v, v->engine_type);
+				return GetRearEngine(v);
 			}
 			if (v->next != NULL && v->next->subtype == TS_Artic_Part) return v->next;
 			break;

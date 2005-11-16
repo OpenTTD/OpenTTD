@@ -1080,13 +1080,13 @@ int32 CmdStartStopTrain(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  * engine is 'started', first 'close' that before 'closing' our
  * searched engine
  */
-Vehicle *GetRearEngine(const Vehicle *v, EngineID engine)
+Vehicle* GetRearEngine(const Vehicle* v)
 {
 	Vehicle *u;
 	int en_count = 1;
 
 	for (u = v->next; u != NULL; u = u->next) {
-		if (u->engine_type == engine) { // find matching engine
+		if (u->engine_type == v->engine_type) { // find matching engine
 			en_count += (IS_FIRSTHEAD_SPRITE(u->spritenum)) ? +1 : -1;
 
 			if (en_count == 0) return (Vehicle *)u;
@@ -1142,7 +1142,7 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			/* 1. Delete the engine, if it is dualheaded also delete the matching
 			* rear engine of the loco (from the point of deletion onwards) */
-			Vehicle *rear = (RailVehInfo(v->engine_type)->flags & RVI_MULTIHEAD) ? GetRearEngine(v, v->engine_type) : NULL;
+			Vehicle* rear = (RailVehInfo(v->engine_type)->flags & RVI_MULTIHEAD) ? GetRearEngine(v) : NULL;
 			if (rear != NULL) {
 				cost -= v->value;
 				if (flags & DC_EXEC) {

@@ -311,7 +311,7 @@ void DecreaseVehicleValue(Vehicle *v);
 void CheckVehicleBreakdown(Vehicle *v);
 void AgeVehicle(Vehicle *v);
 void VehicleEnteredDepotThisTick(Vehicle *v);
-Vehicle *GetRearEngine(const Vehicle *v, EngineID engine);
+Vehicle* GetRearEngine(const Vehicle* v);
 
 void BeginVehicleMove(Vehicle *v);
 void EndVehicleMove(Vehicle *v);
