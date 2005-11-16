@@ -52,8 +52,9 @@ uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t)
 			// if unwanted, disable everything.
 			if (t->unwanted[pid]) {
 				avail_buttons = 0;
-			} else if (t->ratings[pid] < 600)
-				SETBIT(avail_buttons, 7); // only bribe if less than excellent
+			} else if (t->ratings[pid] < RATING_BRIBE_MAXIMUM) {
+				SETBIT(avail_buttons, 7); // Allow bribing
+			}
 		}
 
 		// Things worth more than this are not shown
