@@ -941,21 +941,21 @@ static DisasterInitProc * const _disaster_initprocs[] = {
 	Disaster7_Init,
 };
 
-typedef struct {
-	byte min,max;
-} DisasterYears;
-
-#define MK(a,b) {a-20,b-20}
-static const DisasterYears _dis_years[8] = {
-	MK(30,55),
-	MK(40,70),
-	MK(60,90),
-	MK(70,100),
-	MK(100,200),
-	MK(40,65),
-	MK(75,110),
-	MK(50,85),
+#define MK(a, b) { (a) - MAX_YEAR_BEGIN_REAL, (b) - MAX_YEAR_BEGIN_REAL }
+static const struct {
+	byte min;
+	byte max;
+} _dis_years[] = {
+	MK(1930, 1955),
+	MK(1940, 1970),
+	MK(1960, 1990),
+	MK(1970, 2000),
+	MK(2000, 2100),
+	MK(1940, 1965),
+	MK(1975, 2010),
+	MK(1950, 1985)
 };
+#undef MK
 
 
 static void DoDisaster(void)
