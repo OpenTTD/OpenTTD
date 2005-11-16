@@ -123,7 +123,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			while (cur_item != NULL) {
 				bool compatible =
 					strncmp(cur_item->info.server_revision, _openttd_revision, NETWORK_REVISION_LENGTH - 1) == 0 ||
-					strncmp(cur_item->info.server_revision, NOREV_STRING, sizeof(cur_item->info.server_revision) == 0);
+					strncmp(cur_item->info.server_revision, NOREV_STRING, sizeof(cur_item->info.server_revision)) == 0;
 
 				if (cur_item == sel)
 					GfxFillRect(11, y - 2, 218, y + 9, 10); // show highlighted item with a different colour
