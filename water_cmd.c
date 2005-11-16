@@ -47,7 +47,7 @@ static bool IsClearWaterTile(TileIndex tile)
 
 /** Build a ship depot.
  * @param x,y tile coordinates where ship depot is built
- * @param p1 depot direction (0 through 3), where 0 is NW, 1 is NE, etc.
+ * @param p1 depot direction (0 == X or 1 == Y)
  * @param p2 unused
  */
 int32 CmdBuildShipDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
@@ -59,7 +59,7 @@ int32 CmdBuildShipDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	if (p1 > 3) return CMD_ERROR;
+	if (p1 > 1) return CMD_ERROR;
 
 	tile = TileVirtXY(x, y);
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
