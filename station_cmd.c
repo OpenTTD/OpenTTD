@@ -2284,34 +2284,30 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 			}
 		}
 	} else if (v->type == VEH_Road) {
-		if (v->u.road.state < 16 && (v->u.road.state&4)==0 && v->u.road.frame==0) {
-			byte m5 = _m[tile].m5;
-			byte *b, bb,state;
-
-			if (IS_BYTE_INSIDE(m5, 0x43, 0x4B)) {
+		if (v->u.road.state < 16 && !HASBIT(v->u.road.state, 2) && v->u.road.frame == 0) {
+			if (IS_BYTE_INSIDE(_m[tile].m5, 0x43, 0x4B)) {
+				/* Attempt to allocate a parking bay in a road stop */
 				RoadStop *rs = GetRoadStopByTile(tile, GetRoadStopType(tile));
-				b = &rs->status;
 
-				bb = *b;
+				/* rs->status bits 0 and 1 describe current the two parking spots.
+				 * 0 means occupied, 1 means free. */
 
-				/* bb bits 1..0 describe current the two parking spots.
-				0 means occupied, 1 means free. */
-
-				// Station busy?
-				if (bb & 0x80 || (bb&3) == 0)
+				// Check if station is busy or if there are no free bays.
+				if (HASBIT(rs->status, 7) || GB(rs->status, 0, 2) == 0)
 					return 8;
 
-				state = v->u.road.state + 32;
-				if (bb & 1) {
-					bb &= ~1;
+				v->u.road.state += 32;
+
+				// if the first bay is free, allocate that, else the second bay must be free.
+				if (HASBIT(rs->status, 0)) {
+					CLRBIT(rs->status, 0);
 				} else {
-					bb &= ~2;
-					state += 2;
+					CLRBIT(rs->status, 1);
+					v->u.road.state += 2;
 				}
 
-				bb |= 0x80;
-				*b = bb;
-				v->u.road.state = state;
+				// mark the station as busy
+				SETBIT(rs->status, 7);
 			}
 		}
 	}

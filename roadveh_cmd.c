@@ -463,21 +463,13 @@ static void UpdateRoadVehDeltaXY(Vehicle *v)
 
 static void ClearCrashedStation(Vehicle *v)
 {
-	TileIndex tile = v->tile;
-	byte *b, bb;
-
-	RoadStop *rs = GetRoadStopByTile(tile, GetRoadStopType(tile));
-	b = &rs->status;
-
-	bb = *b;
+	RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
 
 	// mark station as not busy
-	bb &= ~0x80;
+	CLRBIT(rs->status, 7);
 
 	// free parking bay
-	bb |= (v->u.road.state&0x02)?2:1;
-
-	*b = bb;
+	SETBIT(rs->status, HASBIT(v->u.road.state, 1) ? 1 : 0);
 }
 
 static void RoadVehDelete(Vehicle *v)
