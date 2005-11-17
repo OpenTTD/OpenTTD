@@ -58,6 +58,9 @@
 # WITH_DIRECTMUSIC: enable DirectMusic MIDI support
 # WITH_NETWORK: enable networking
 # DEDICATED: allows compilation on UNIX without SDL. Useful for dedicated servers
+# MAX_NUM_AUTOSAVES: sets the number of autosaves the games will make before starting
+#		to overwrite the old ones. If not set, the game will use 16.
+#		NOTE: assign a number, not a string of a number
 #
 # Paths:
 # INSTALL: If not set, the game uses the directory of the binary to
@@ -118,7 +121,7 @@
 
 # Makefile version tag
 # it checks if the version tag in Makefile.config is the same and force update outdated config files
-MAKEFILE_VERSION:=7
+MAKEFILE_VERSION:=8
 
 # CONFIG_WRITER has to be found even for manual configuration
 CONFIG_WRITER=makefiledir/Makefile.config_writer
@@ -510,6 +513,10 @@ CDEFS += -DEXTERNAL_PLAYER=\"$(MIDI)\"
 ifdef MIDI_ARG
 CDEFS += -DMIDI_ARG=\"$(MIDI_ARG)\"
 endif
+endif
+
+ifdef MAX_NUM_AUTOSAVES
+CDEFS += -DMAX_NUM_AUTOSAVES=$(MAX_NUM_AUTOSAVES)
 endif
 
 ifdef WITH_NETWORK

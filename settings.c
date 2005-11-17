@@ -818,6 +818,11 @@ static const SettingDesc gameopt_settings[] = {
   {NULL,          0,                          NULL,     NULL,                     NULL}
 };
 
+#if !defined(MAX_NUM_AUTOSAVES)
+// no custom default max number of autosaves have been set in the makefile, so we will set the default max to 16
+#define MAX_NUM_AUTOSAVES 16
+#endif
+
 // The player-based settings (are not send over the network)
 // Not everything can just be added to this list. For example, service_interval
 //  can not be done, because every client assigns the service_interval value to the
@@ -841,6 +846,7 @@ static const SettingDesc patch_player_settings[] = {
 	{"toolbar_pos",					SDT_UINT8,	(void*)0,			&_patches.toolbar_pos,					NULL},
 	{"keep_all_autosave",		SDT_BOOL,		(void*)false, &_patches.keep_all_autosave,		NULL},
 	{"autosave_on_exit",		SDT_BOOL,		(void*)false, &_patches.autosave_on_exit,			NULL},
+	{"max_autosave_num",			SDT_UINT8, (void*)MAX_NUM_AUTOSAVES,		&_patches.max_num_autosaves,			NULL},
 
 	{"bridge_pillars",			SDT_BOOL,		(void*)true,	&_patches.bridge_pillars,				NULL},
 	{"invisible_trees",			SDT_BOOL,		(void*)false, &_patches.invisible_trees,			NULL},

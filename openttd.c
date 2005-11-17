@@ -888,10 +888,14 @@ static void DoAutosave(void)
 		SetDParam(2, _date);
 		s = GetString(buf + strlen(_path.autosave_dir) + strlen(PATHSEP), STR_4004);
 		strcpy(s, ".sav");
-	} else { /* Save a maximum of 15 autosaves */
-		int n = _autosave_ctr;
-		_autosave_ctr = (_autosave_ctr + 1) & 15;
-		sprintf(buf, "%s%sautosave%d.sav", _path.autosave_dir, PATHSEP, n);
+	} else { /* generate a savegame name and number according to _patches.max_num_autosaves */
+		sprintf(buf, "%s%sautosave%d.sav", _path.autosave_dir, PATHSEP, _autosave_ctr);
+
+		_autosave_ctr++;
+		if (_autosave_ctr >= _patches.max_num_autosaves) {
+			// we reached the limit for numbers of autosaves. We will start over
+			_autosave_ctr = 0;
+		}
 	}
 
 	DEBUG(misc, 2) ("Autosaving to %s", buf);
