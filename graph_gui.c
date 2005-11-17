@@ -835,7 +835,7 @@ static void CompanyLeagueWndProc(Window *w, WindowEvent *e)
 			pl_num = 0;
 			FOR_ALL_PLAYERS(p) if (p->is_active) plist[pl_num++] = p;
 
-			qsort(plist, pl_num, sizeof(*plist), PerfHistComp);
+			qsort((void*)plist, pl_num, sizeof(*plist), PerfHistComp);
 
 			for (i = 0; i != pl_num; i++) {
 				p = plist[i];
