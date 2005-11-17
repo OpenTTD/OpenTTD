@@ -915,7 +915,7 @@ static void Disaster7_Init(void)
 					TileIndexDiff step = TileOffsByDir(GB(Random(), 0, 2));
 					uint n;
 
-					for (n = 0; n < 30; i++) {
+					for (n = 0; n < 30; n++) {
 						DisasterClearSquare(tile);
 						tile = TILE_MASK(tile + step);
 					}
