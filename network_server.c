@@ -5,6 +5,7 @@
 #include "string.h"
 #include "strings.h"
 #include "network_data.h"
+#include "train.h"
 
 #ifdef ENABLE_NETWORK
 
@@ -1271,7 +1272,7 @@ void NetworkPopulateCompanyInfo(void)
 		if (v->owner < MAX_PLAYERS)
 			switch (v->type) {
 				case VEH_Train:
-					if (v->subtype == TS_Front_Engine)
+					if (IsFrontEngine(v))
 						_network_player_info[v->owner].num_vehicle[0]++;
 					break;
 				case VEH_Road:

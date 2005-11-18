@@ -15,6 +15,7 @@
 #include "economy.h"
 #include "network.h"
 #include "variables.h"
+#include "train.h"
 
 #ifdef ENABLE_NETWORK
 #include "network_data.h"
@@ -432,7 +433,7 @@ static void DrawPlayerVehiclesAmount(PlayerID player)
 	FOR_ALL_VEHICLES(v) {
 		if (v->owner == player) {
 			switch (v->type) {
-				case VEH_Train:    if (v->subtype == TS_Front_Engine) train++; break;
+				case VEH_Train:    if (IsFrontEngine(v)) train++; break;
 				case VEH_Road:     road++; break;
 				case VEH_Aircraft: if (v->subtype <= 2) air++; break;
 				case VEH_Ship:     ship++; break;

@@ -26,6 +26,7 @@
 #include "sprite.h"
 #include "depot.h"
 #include "pbs.h"
+#include "train.h"
 
 enum {
 	/* Max stations: 64000 (64 * 1000) */
@@ -2255,7 +2256,7 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 	byte dir;
 
 	if (v->type == VEH_Train) {
-		if (IS_BYTE_INSIDE(_m[tile].m5, 0, 8) && v->subtype == TS_Front_Engine &&
+		if (IS_BYTE_INSIDE(_m[tile].m5, 0, 8) && IsFrontEngine(v) &&
 				!IsCompatibleTrainStationTile(tile + TileOffsByDir(v->direction >> 1), tile)) {
 
 			station_id = _m[tile].m2;

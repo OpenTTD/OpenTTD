@@ -23,6 +23,7 @@
 #include "station.h"
 #include "gui.h"
 #include "rail.h"
+#include "train.h"
 
 #define INVALID_COORD (-0x8000)
 #define GEN_HASH(x,y) (((x & 0x1F80)>>7) + ((y & 0xFC0)))
@@ -238,7 +239,7 @@ void AfterLoadVehicles(void)
 			v->left_coord = INVALID_COORD;
 			VehiclePositionChanged(v);
 
-			if (v->type == VEH_Train && (v->subtype == TS_Front_Engine || v->subtype == TS_Free_Car))
+			if (v->type == VEH_Train && (IsFrontEngine(v) || IsFreeWagon(v)))
 				TrainConsistChanged(v);
 		}
 	}
@@ -503,7 +504,7 @@ Vehicle *GetFirstVehicleInChain(const Vehicle *v)
 	assert(v != NULL);
 
 	if (v->first != NULL) {
-		if (v->first->subtype == TS_Front_Engine) return v->first;
+		if (IsFrontEngine(v->first)) return v->first;
 
 		DEBUG(misc, 0) ("v->first cache faulty. We shouldn't be here, rebuilding cache!");
 	}
@@ -517,7 +518,7 @@ Vehicle *GetFirstVehicleInChain(const Vehicle *v)
 	while ((u = GetPrevVehicleInChain_bruteforce(v)) != NULL) v = u;
 
 	/* Set the first pointer of all vehicles in that chain to the first wagon */
-	if (v->subtype == TS_Front_Engine)
+	if (IsFrontEngine(v))
 		for (u = (Vehicle *)v; u != NULL; u = u->next) u->first = (Vehicle *)v;
 
 	return (Vehicle*)v;
@@ -1490,10 +1491,13 @@ static Vehicle *GetNextEnginePart(Vehicle *v)
 {
 	switch (v->type) {
 		case VEH_Train:
-			if (RailVehInfo(v->engine_type)->flags & RVI_MULTIHEAD) {
-				return GetRearEngine(v);
+			if (IsMultiheaded(v)) {
+				if (!IsTrainEngine(v))
+					return v->u.rail.other_multiheaded_part;
+				else
+					return NULL;
 			}
-			if (v->next != NULL && v->next->subtype == TS_Artic_Part) return v->next;
+			if (v->next != NULL && IsArticulatedPart(v->next)) return v->next;
 			break;
 
 		case VEH_Aircraft:
@@ -1538,7 +1542,7 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
-	if (v->type == VEH_Train && v->subtype != TS_Front_Engine) return CMD_ERROR;
+	if (v->type == VEH_Train && !IsFrontEngine(v)) return CMD_ERROR;
 
 	// check that we can allocate enough vehicles
 	if (!(flags & DC_EXEC)) {
@@ -1555,7 +1559,13 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	v = v_front;
 
 	do {
-		cost = DoCommand(x, y, v->engine_type, 3, flags, CMD_BUILD_VEH(v->type));
+
+		if (IsMultiheaded(v) && !IsTrainEngine(v)) {
+			/* we build the rear ends of multiheaded trains with the front ones */
+			continue;
+		}
+
+		cost = DoCommand(x, y, v->engine_type, 2, flags, CMD_BUILD_VEH(v->type));
 
 		if (CmdFailed(cost)) return cost;
 
@@ -1570,7 +1580,7 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				}
 			}
 
-			if (v->type == VEH_Train && v->subtype != TS_Front_Engine) {
+			if (v->type == VEH_Train && !IsFrontEngine(v)) {
 				// this s a train car
 				// add this unit to the end of the train
 				DoCommand(x, y, (w_rear->index << 16) | w->index, 1, flags, CMD_MOVE_RAIL_VEHICLE);
@@ -1583,18 +1593,9 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		}
 	} while (v->type == VEH_Train && (v = GetNextVehicle(v)) != NULL);
 
-	if (flags & DC_EXEC) {
-		v = v_front;
-		w = w_front;
-		if (v->type == VEH_Train) {
-			_new_train_id = w_front->index;  // _new_train_id needs to be the front engine due to the callback function
-
-			while (w != NULL && v != NULL) { // checking both just in case something went wrong
-				w->spritenum = v->spritenum; // makes sure that multiheaded engines are facing the correct way
-				w = w->next;
-				v = v->next;
-			}
-		}
+	if (flags & DC_EXEC && v_front->type == VEH_Train) {
+		// _new_train_id needs to be the front engine due to the callback function
+		_new_train_id = w_front->index;
 	}
 	return total_cost;
 }
@@ -1665,12 +1666,12 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 
 		MoveVehicleCargo(new_v, old_v);
 
-		if (old_v->type == VEH_Train && old_v->u.rail.first_engine != INVALID_VEHICLE) {
+		if (old_v->type == VEH_Train && !IsFrontEngine(old_v)) {
 			/* this is a railcar. We need to move the car into the train
 			 * We add the new engine after the old one instead of replacing it. It will give the same result anyway when we
 			 * sell the old engine in a moment
 			 */
-			DoCommand(0, 0, (old_v->index << 16) | new_v->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+			DoCommand(0, 0, (GetPrevVehicleInChain(old_v)->index << 16) | new_v->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 		} else {
 			// copy/clone the orders
 			DoCommand(0, 0, (old_v->index << 16) | new_v->index, IsOrderListShared(old_v) ? CO_SHARE : CO_COPY, DC_EXEC, CMD_CLONE_ORDER);
@@ -1737,18 +1738,16 @@ static void MaybeReplaceVehicle(Vehicle *v)
 		cost = 0;
 		w = v;
 		do {
+			if (w->type == VEH_Train && IsMultiheaded(w) && !IsTrainEngine(w)) {
+				/* we build the rear ends of multiheaded trains with the front ones */
+				continue;
+			}
+
 			// check if the vehicle should be replaced
 			if (!p->engine_renew ||
 					w->age - w->max_age < (p->engine_renew_months * 30) || // replace if engine is too old
 					w->max_age == 0) { // rail cars got a max age of 0
 				if (p->engine_replacement[w->engine_type] == INVALID_ENGINE) // updates to a new model
-					continue;
-			}
-
-			/* if we are looking at the rear end of a multiheaded locomotive, skip it */
-			if (w->type == VEH_Train) {
-				const RailVehicleInfo *rvi = RailVehInfo(w->engine_type);
-				if (rvi->flags & RVI_MULTIHEAD && rvi->image_index == w->spritenum - 1)
 					continue;
 			}
 
@@ -2109,8 +2108,9 @@ static const SaveLoad _train_desc[] = {
 	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,pbs_end_trackdir), SLE_UINT8, 2, 255),
 	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,shortest_platform[0]), SLE_UINT8, 2, 255),	// added with 16.1, but was blank since 2
 	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,shortest_platform[1]), SLE_UINT8, 2, 255),	// added with 16.1, but was blank since 2
-	// reserve extra space in savegame here. (currently 5 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 5, 2, 255),
+	SLE_CONDREFX(offsetof(Vehicle,u)+offsetof(VehicleRail,other_multiheaded_part), REF_VEHICLE, 2, 255),	// added with 17.1, but was blank since 2
+	// reserve extra space in savegame here. (currently 3 bytes)
+	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 3, 2, 255),
 
 	SLE_END()
 };
@@ -2262,6 +2262,105 @@ static void Save_VEHS(void)
 	}
 }
 
+/*
+ *  Converts all trains to the new subtype format introduced in savegame 16.2
+ *  It also links multiheaded engines or make them forget they are multiheaded if no suitable partner is found
+ */
+static inline void ConvertOldMultiheadToNew(void)
+{
+	Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		if (v->type == VEH_Train) {
+			v->u.rail.other_multiheaded_part = NULL;
+			SETBIT(v->subtype, 7);	// indicates that it's the old format and needs to be converted in the next loop
+		}
+	}
+
+	FOR_ALL_VEHICLES(v) {
+		if (v->type == VEH_Train) {
+			if (HASBIT(v->subtype, 7) && ((v->subtype & ~0x80) == 0 || (v->subtype & ~0x80) == 4)) {
+				Vehicle *u = v;
+
+				BEGIN_ENUM_WAGONS(u)
+					const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
+				CLRBIT(u->subtype, 7);
+				switch (u->subtype) {
+					case 0:	/* TS_Front_Engine */
+						if (rvi->flags & RVI_MULTIHEAD) {
+							SetMultiheaded(u);
+						}
+						SetFrontEngine(u);
+						SetTrainEngine(u);
+						break;
+					case 1:	/* TS_Artic_Part */
+						u->subtype = 0;
+						SetArticulatedPart(u);
+						break;
+					case 2:	/* TS_Not_First */
+						u->subtype = 0;
+						if (rvi->flags & RVI_WAGON) {
+							// normal wagon
+							SetTrainWagon(u);
+							break;
+						}
+							if (rvi->flags & RVI_MULTIHEAD && rvi->image_index == u->spritenum - 1) {
+								// rear end of a multiheaded engine
+								SetMultiheaded(u);
+								break;
+							}
+							if (rvi->flags & RVI_MULTIHEAD) {
+								SetMultiheaded(u);
+							}
+							SetTrainEngine(u);
+						break;
+					case 4:	/* TS_Free_Car */
+						u->subtype = 0;
+						SetTrainWagon(u);
+						SetFreeWagon(u);
+						break;
+					default: NOT_REACHED(); break;
+				}
+				END_ENUM_WAGONS(u)
+					u = v;
+				BEGIN_ENUM_WAGONS(u)
+					const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
+
+				if (u->u.rail.other_multiheaded_part != NULL) continue;
+
+				if (rvi->flags & RVI_MULTIHEAD) {
+					if (!IsTrainEngine(u)) {
+						/* we got a rear car without a front car. We will convert it to a front one */
+						SetTrainEngine(u);
+						u->spritenum--;
+					}
+
+					{
+						Vehicle *w;
+
+						for(w = u->next; w != NULL && (w->engine_type != u->engine_type || w->u.rail.other_multiheaded_part != NULL); w = GetNextVehicle(w));
+						if (w != NULL) {
+							/* we found a car to partner with this engine. Now we will make sure it face the right way */
+							if (IsTrainEngine(w)) {
+								ClearTrainEngine(w);
+								w->spritenum++;
+							}
+						}
+
+						if (w != NULL) {
+							w->u.rail.other_multiheaded_part = u;
+							u->u.rail.other_multiheaded_part = w;
+						} else {
+							/* we got a front car and no rear cars. We will fake this one for forget that it should have been multiheaded */
+							ClearMultiheaded(u);
+						}
+					}
+				}
+				END_ENUM_WAGONS(u)
+			}
+		}
+	}
+}
+
 // Will be called when vehicles need to be loaded.
 static void Load_VEHS(void)
 {
@@ -2310,6 +2409,11 @@ static void Load_VEHS(void)
 				}
 			}
 		}
+	}
+
+	/* Connect front and rear engines of multiheaded trains and converts subtype to the new format */
+	if (_sl_full_version < 0x1101) {
+		ConvertOldMultiheadToNew();
 	}
 }
 

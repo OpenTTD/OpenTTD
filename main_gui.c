@@ -26,6 +26,7 @@
 #include "signs.h"
 #include "waypoint.h"
 #include "variables.h"
+#include "train.h"
 
 #include "network_data.h"
 #include "network_client.h"
@@ -799,7 +800,7 @@ static void ToolbarTrainClick(Window *w)
 	int dis = -1;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train && v->subtype == TS_Front_Engine) CLRBIT(dis, v->owner);
+		if (v->type == VEH_Train && IsFrontEngine(v)) CLRBIT(dis, v->owner);
 	}
 	PopupMainPlayerToolbMenu(w, 310, 13, dis);
 }

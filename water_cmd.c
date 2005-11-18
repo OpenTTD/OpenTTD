@@ -15,6 +15,7 @@
 #include "sound.h"
 #include "depot.h"
 #include "vehicle_gui.h"
+#include "train.h"
 
 const SpriteID _water_shore_sprites[15] = {
 	0,
@@ -598,7 +599,7 @@ static void FloodVehicle(Vehicle *v)
 
 			v = GetFirstVehicleInChain(v);
 			u = v;
-			if (v->subtype == TS_Front_Engine) pass = 4; // driver
+			if (IsFrontEngine(v)) pass = 4; // driver
 
 			// crash all wagons, and count passangers
 			BEGIN_ENUM_WAGONS(v)

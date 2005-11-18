@@ -27,14 +27,6 @@ enum VehStatus {
 	VS_CRASHED = 0x80,
 };
 
-// 1 and 3 do not appear to be used
-typedef enum TrainSubtypes {
-	TS_Front_Engine = 0, // Leading engine of a train
-	TS_Artic_Part = 1,   // Articulated part of an engine
-	TS_Not_First = 2,    // Wagon or additional engine
-	TS_Free_Car = 4,     // First in a wagon chain (in depot)
-} TrainSubtype;
-
 /* Effect vehicle types */
 typedef enum EffectVehicle {
 	EV_CHIMNEY_SMOKE   = 0,
@@ -93,6 +85,9 @@ typedef struct VehicleRail {
 	  *   skip station and alike by setting it to 0. That way we will ensure that a complete loop is used to find the shortest station
 	  */
 	byte shortest_platform[2];
+
+	// Link between the two ends of a multiheaded engine
+	Vehicle *other_multiheaded_part;
 } VehicleRail;
 
 enum {
@@ -311,7 +306,6 @@ void DecreaseVehicleValue(Vehicle *v);
 void CheckVehicleBreakdown(Vehicle *v);
 void AgeVehicle(Vehicle *v);
 void VehicleEnteredDepotThisTick(Vehicle *v);
-Vehicle* GetRearEngine(const Vehicle* v);
 
 void BeginVehicleMove(Vehicle *v);
 void EndVehicleMove(Vehicle *v);
@@ -397,41 +391,6 @@ static inline bool IsValidVehicle(const Vehicle *v)
 static inline bool IsVehicleIndex(uint index)
 {
 	return index < GetVehiclePoolSize();
-}
-
-/**
- * Get the next real (non-articulated part) vehicle in the consist.
- * @param v Vehicle.
- * @return Next vehicle in the consist.
- */
-static inline Vehicle *GetNextVehicle(const Vehicle *v)
-{
-	Vehicle *u = v->next;
-	while (u != NULL && u->subtype == TS_Artic_Part) {
-		u = u->next;
-	}
-	return u;
-}
-
-/**
- * Check if an engine has an articulated part.
- * @param v Vehicle.
- * @return True if the engine has an articulated part.
- */
-static inline bool EngineHasArticPart(const Vehicle *v)
-{
-	return (v->next != NULL && v->next->subtype == TS_Artic_Part);
-}
-
-/**
- * Get the last part of a multi-part engine.
- * @param v Vehicle.
- * @return Last part of the engine.
- */
-static inline Vehicle *GetLastEnginePart(Vehicle *v)
-{
-	while (EngineHasArticPart(v)) v = v->next;
-	return v;
 }
 
 /* Returns order 'index' of a vehicle or NULL when it doesn't exists */

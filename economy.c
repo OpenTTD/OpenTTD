@@ -26,6 +26,7 @@
 #include "variables.h"
 #include "vehicle_gui.h"
 #include "ai/ai.h"
+#include "train.h"
 
 // Score info
 const ScoreInfo _score_info[] = {
@@ -129,7 +130,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 		FOR_ALL_VEHICLES(v) {
 			if (v->owner != owner)
 				continue;
-			if ((v->type == VEH_Train && v->subtype == TS_Front_Engine) ||
+			if ((v->type == VEH_Train && IsFrontEngine(v)) ||
 					v->type == VEH_Road ||
 					(v->type == VEH_Aircraft && v->subtype<=2) ||
 					v->type == VEH_Ship) {
@@ -313,7 +314,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 			if (v->owner == new_player) {
 				switch (v->type) {
 					case VEH_Train:
-						if (v->subtype == TS_Front_Engine) num_train++;
+						if (IsFrontEngine(v)) num_train++;
 						break;
 					case VEH_Road:
 						num_road++;
@@ -338,7 +339,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 					DeleteVehicle(v);
 				} else {
 					v->owner = new_player;
-					if (v->type == VEH_Train && v->subtype == TS_Front_Engine)
+					if (v->type == VEH_Train && IsFrontEngine(v))
 						v->unitnumber = ++num_train;
 					else if (v->type == VEH_Road)
 						v->unitnumber = ++num_road;
@@ -1289,7 +1290,7 @@ static bool LoadWait(const Vehicle *v, const Vehicle *u) {
 	}
 
 	FOR_ALL_VEHICLES(x) {
-		if ((x->type != VEH_Train || x->subtype == TS_Front_Engine) && // for all locs
+		if ((x->type != VEH_Train || IsFrontEngine(x)) && // for all locs
 				u->last_station_visited == x->last_station_visited && // at the same station
 				!(x->vehstatus & VS_STOPPED) && // not stopped
 				x->current_order.type == OT_LOADING && // loading

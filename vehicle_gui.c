@@ -18,6 +18,7 @@
 #include "variables.h"
 #include "vehicle_gui.h"
 #include "viewport.h"
+#include "train.h"
 
 Sorting _sorting;
 
@@ -105,7 +106,7 @@ void ResortVehicleLists(void)
 
 void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID station)
 {
-	uint subtype = (type != VEH_Aircraft) ? TS_Front_Engine : 2;
+	uint subtype = (type != VEH_Aircraft) ? Train_Front : 2;
 	uint n = 0;
 	uint i;
 
@@ -122,7 +123,9 @@ void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID sta
 	if (station != INVALID_STATION) {
 		const Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
-			if (v->type == type && v->subtype <= subtype) {
+			if (v->type == type && (
+				(type == VEH_Train && IsFrontEngine(v)) ||
+				(type != VEH_Train && v->subtype <= subtype))) {
 				const Order *order;
 
 				FOR_VEHICLE_ORDERS(v, order) {
@@ -138,7 +141,9 @@ void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID sta
 	} else {
 		const Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
-			if (v->type == type && v->subtype <= subtype && v->owner == owner) {
+			if (v->type == type && v->owner == owner && (
+				(type == VEH_Train && IsFrontEngine(v)) ||
+				(type != VEH_Train && v->subtype <= subtype))) {
 				_vehicle_sort[n].index = v->index;
 				_vehicle_sort[n].owner = v->owner;
 				++n;

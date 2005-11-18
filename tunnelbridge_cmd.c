@@ -22,6 +22,7 @@
 #include "debug.h"
 #include "variables.h"
 #include "bridge.h"
+#include "train.h"
 
 #include "table/bridge_land.h"
 
@@ -1479,7 +1480,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 			vdir = v->direction >> 1;
 
 			if (v->u.rail.track != 0x40 && dir == vdir) {
-				if (v->subtype == TS_Front_Engine && fc == _tunnel_fractcoord_1[dir]) {
+				if (IsFrontEngine(v) && fc == _tunnel_fractcoord_1[dir]) {
 					if (v->spritenum < 4)
 						SndPlayVehicleFx(SND_05_TRAIN_THROUGH_TUNNEL, v);
 					return 0;
@@ -1534,7 +1535,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 			}
 		}
 	} else if (_m[tile].m5 & 0x80) {
-		if (v->type == VEH_Road || (v->type == VEH_Train && v->subtype == TS_Front_Engine)) {
+		if (v->type == VEH_Road || (v->type == VEH_Train && IsFrontEngine(v))) {
 			uint h;
 
 			if (GetTileSlope(tile, &h) != 0)

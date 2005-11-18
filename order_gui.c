@@ -17,6 +17,7 @@
 #include "viewport.h"
 #include "depot.h"
 #include "waypoint.h"
+#include "train.h"
 
 static int OrderGetSel(const Window* w)
 {
@@ -282,9 +283,9 @@ static bool HandleOrderVehClick(const Vehicle* v, const Vehicle* u, Window* w)
 {
 	if (u->type != v->type) return false;
 
-	if (u->type == VEH_Train && u->subtype != TS_Front_Engine) {
+	if (u->type == VEH_Train && !IsFrontEngine(u)) {
 		u = GetFirstVehicleInChain(u);
-		if (u->subtype != TS_Front_Engine) return false;
+		if (!IsFrontEngine(u)) return false;
 	}
 
 	// v is vehicle getting orders. Only copy/clone orders if vehicle doesn't have any orders yet

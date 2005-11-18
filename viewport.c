@@ -19,6 +19,7 @@
 #include "signs.h"
 #include "waypoint.h"
 #include "variables.h"
+#include "train.h"
 
 #define VIEWPORT_DRAW_MEM (65536 * 2)
 
@@ -1700,7 +1701,7 @@ static void CheckClickOnLandscape(const ViewPort *vp, int x, int y)
 
 static void SafeShowTrainViewWindow(const Vehicle* v)
 {
-  if (v->subtype != TS_Front_Engine) v = GetFirstVehicleInChain(v);
+  if (!IsFrontEngine(v)) v = GetFirstVehicleInChain(v);
   ShowTrainViewWindow(v);
 }
 
