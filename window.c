@@ -1017,10 +1017,12 @@ static bool HandleWindowDragging(void)
 			x = _cursor.pos.x - _drag_delta.x;
 			y = _cursor.pos.y - _drag_delta.y;
 
-			/* X and Y has to go by step.. calculate it */
-			if (w->resize.step_width > 1) x = x - (x % w->resize.step_width);
+			/* X and Y has to go by step.. calculate it.
+			 * The cast to int is necessary else x/y are implicitly casted to
+			 * unsigned int, which won't work. */
+			if (w->resize.step_width > 1) x -= x % (int)w->resize.step_width;
 
-			if (w->resize.step_height > 1) y = y - (y % w->resize.step_height);
+			if (w->resize.step_height > 1) y -= y % (int)w->resize.step_height;
 
 			/* Check if we don't go below the minimum set size */
 			if ((int)w->width + x < (int)w->resize.width)
