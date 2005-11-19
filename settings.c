@@ -842,6 +842,7 @@ static const SettingDesc patch_player_settings[] = {
 	{"status_long_date",		SDT_BOOL,		(void*)true,	&_patches.status_long_date,			NULL},
 	{"show_finances",				SDT_BOOL,		(void*)true,	&_patches.show_finances,				NULL},
 	{"autoscroll",					SDT_BOOL,		(void*)false,	&_patches.autoscroll,						NULL},
+	{"reverse_scroll",      SDT_BOOL,   (void*)false, &_patches.reverse_scroll,       NULL},
 	{"errmsg_duration",			SDT_UINT8,	(void*)5,			&_patches.errmsg_duration,			NULL},
 	{"toolbar_pos",					SDT_UINT8,	(void*)0,			&_patches.toolbar_pos,					NULL},
 	{"keep_all_autosave",		SDT_BOOL,		(void*)false, &_patches.keep_all_autosave,		NULL},

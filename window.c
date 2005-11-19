@@ -1182,13 +1182,22 @@ stop_capt:;
 	w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 	if (w == NULL) goto stop_capt;
 
+	if (_patches.reverse_scroll) {
+		dx = -_cursor.delta.x;
+		dy = -_cursor.delta.y;
+	} else {
+		dx = _cursor.delta.x;
+		dy = _cursor.delta.y;
+	}
+
 	if (w->window_class != WC_SMALLMAP) {
 		vp = IsPtInWindowViewport(w, _cursor.pos.x, _cursor.pos.y);
 		if (vp == NULL)
 			goto stop_capt;
 
-		WP(w,vp_d).scrollpos_x += _cursor.delta.x << vp->zoom;
-		WP(w,vp_d).scrollpos_y += _cursor.delta.y << vp->zoom;
+		WP(w,vp_d).scrollpos_x += dx << vp->zoom;
+		WP(w,vp_d).scrollpos_y += dy << vp->zoom;
+
 		_cursor.delta.x = _cursor.delta.y = 0;
 		return false;
 	} else {
@@ -1199,9 +1208,6 @@ stop_capt:;
 		int hvy;
 
 		_cursor.fix_at = true;
-
-		dx = _cursor.delta.x;
-		dy = _cursor.delta.y;
 
 		x = WP(w,smallmap_d).scroll_x;
 		y = WP(w,smallmap_d).scroll_y;

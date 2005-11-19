@@ -120,6 +120,7 @@ typedef struct Patches {
 	bool invisible_trees; // don't show trees when buildings are transparent
 	bool no_servicing_if_no_breakdowns; // dont send vehicles to depot when breakdowns are disabled
 	bool link_terraform_toolbar; // display terraform toolbar when displaying rail, road, water and airport toolbars
+	bool reverse_scroll; // Right-Click-Scrolling scrolls in the opposite direction
 
 	uint8 toolbar_pos;			// position of toolbars, 0=left, 1=center, 2=right
 	uint8 window_snap_radius; // Windows snap at each other if closer than this

@@ -666,6 +666,7 @@ static const PatchEntry _patches_ui[] = {
 	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_LONGDATE,				"long_date",				&_patches.status_long_date,					0,  0,  0, NULL},
 	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_SHOWFINANCES,		"show_finances",		&_patches.show_finances,						0,  0,  0, NULL},
 	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_AUTOSCROLL,			"autoscroll",				&_patches.autoscroll,								0,  0,  0, NULL},
+	{PE_BOOL,   PF_PLAYERBASED, STR_CONFIG_PATCHES_REVERSE_SCROLLING, "reverse_scroll", &_patches.reverse_scroll, 0, 0, 0, NULL },
 
 	{PE_UINT8,	PF_PLAYERBASED, STR_CONFIG_PATCHES_ERRMSG_DURATION,	"errmsg_duration",	&_patches.errmsg_duration,					0, 20,  1, NULL},
 
