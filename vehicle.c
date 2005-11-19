@@ -1565,7 +1565,7 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			continue;
 		}
 
-		cost = DoCommand(x, y, v->engine_type, 2, flags, CMD_BUILD_VEH(v->type));
+		cost = DoCommand(x, y, v->engine_type, 1, flags, CMD_BUILD_VEH(v->type));
 
 		if (CmdFailed(cost)) return cost;
 
@@ -1650,7 +1650,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 
 	new_engine_type = p->engine_replacement[old_v->engine_type] == INVALID_ENGINE ? old_v->engine_type : p->engine_replacement[old_v->engine_type];
 
-	cost = DoCommand(old_v->x_pos, old_v->y_pos, new_engine_type, 2, flags, CMD_BUILD_VEH(old_v->type));
+	cost = DoCommand(old_v->x_pos, old_v->y_pos, new_engine_type, 1, flags, CMD_BUILD_VEH(old_v->type));
 	if (CmdFailed(cost)) return cost;
 
 	if (flags & DC_EXEC) {

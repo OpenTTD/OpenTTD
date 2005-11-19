@@ -658,8 +658,7 @@ void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u, bool building)
 /** Build a railroad vehicle.
  * @param x,y tile coordinates (depot) where rail-vehicle is built
  * @param p1 engine type id
- * @param p2 bit 0 build only one engine, even if it is a dualheaded engine.
-          p2 bit 1 prevents any free cars from being added to the train
+ * @param p2 bit 0 prevents any free cars from being added to the train
  */
 int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -693,11 +692,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	value = EstimateTrainCost(rvi);
 
-	//make sure we only pay for half a dualheaded engine if we only requested half of it
-	if (rvi->flags&RVI_MULTIHEAD && HASBIT(p2,0))
-		value /= 2;
-
-	num_vehicles = (rvi->flags & RVI_MULTIHEAD && !HASBIT(p2, 0)) ? 2 : 1;
+	num_vehicles = (rvi->flags & RVI_MULTIHEAD) ? 2 : 1;
 	num_vehicles += CountArticulatedParts(rvi, p1);
 
 	if (!(flags & DC_QUERY_COST)) {
@@ -761,7 +756,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			VehiclePositionChanged(v);
 
-			if (rvi->flags & RVI_MULTIHEAD && !HASBIT(p2, 0)) {
+			if (rvi->flags & RVI_MULTIHEAD) {
 				SetMultiheaded(v);
 				AddRearEngineToMultiheadedTrain(vl[0], vl[1], true);
 				/* Now we need to link the front and rear engines together
@@ -777,7 +772,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			TrainConsistChanged(v);
 			UpdateTrainAcceleration(v);
 
-			if (!HASBIT(p2, 1)) {	// check if the cars should be added to the new vehicle
+			if (!HASBIT(p2, 0)) {	// check if the cars should be added to the new vehicle
 				NormalizeTrainVehInDepot(v);
 			}
 
