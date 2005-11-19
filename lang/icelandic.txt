@@ -706,8 +706,8 @@ STR_02C3_GAME_OPTIONS                                           :Leikjastillinga
 STR_02C4_GAME_OPTIONS                                           :Leikjastillingar
 STR_02C5_DIFFICULTY_SETTINGS                                    :Erfiðleikastig
 STR_02C6_DIFFICULTY_SETTINGS                                    :Erfiðleikastig
-STR_02C7_CONFIG_PATCHES                                         :Auka stillingar
-STR_02C8_CONFIG_PATCHES                                         :Auka stillingar
+STR_02C7_CONFIG_PATCHES                                         :Viðbætur
+STR_02C8_CONFIG_PATCHES                                         :Viðbætur
 STR_NEWGRF_SETTINGS                                             :Nýgrf stillingar
 STR_NEWGRF_SETTINGS2                                            :Nýgrf stillingar
 STR_GAMEOPTMENU_0A                                              :
@@ -835,8 +835,8 @@ STR_TOWNNAME_HUNGARIAN                                          :Ungversk
 STR_TOWNNAME_AUSTRIAN                                           :Austurrísk
 STR_TOWNNAME_ROMANIAN                                           :Rúmensk
 STR_TOWNNAME_CZECH                                              :Tékknesk
-STR_TOWNNAME_SWISS                                              :Svissneska
-STR_TOWNNAME_DANISH                                             :Danska
+STR_TOWNNAME_SWISS                                              :Svissnesk
+STR_TOWNNAME_DANISH                                             :Dönsk
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pund (£)
@@ -943,9 +943,9 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Sjálfvir
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Sjálfvirk uppfæring skips {COMMA} mistókst (takmarkað fjármagn)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Sjálfvirk uppfæring flugvélar {COMMA} mistókst (takmarkað fjármagn)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Auka stillingar
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Auka stillingar
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Auka stillingar
+STR_CONFIG_PATCHES                                              :{BLACK}Viðbætur
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Viðbætur
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Viðbætur
 
 STR_CONFIG_PATCHES_OFF                                          :Nei
 STR_CONFIG_PATCHES_ON                                           :Já

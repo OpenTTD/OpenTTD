@@ -156,6 +156,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Non pode
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Non podes limpar esta área....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright Orixinal {COPYRIGHT} 1995 Chris Sawyer, Tódolos dereitos reservados
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versión {REV}
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2005 O Equipo de OpenTTD
 STR_TRANSLATED_BY                                               :{BLACK}  Traductor(es) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -531,6 +532,7 @@ STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Cambios
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsidios
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Información xeral
 STR_MESSAGES_ALL                                                :{YELLOW}Configuración para tódolos tipos de mesaxes (off/sumario/completo)
+STR_MESSAGE_SOUND                                               :{YELLOW}Reproducir son para mensaxes de noticias resumidas
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...Demasiado lonxe do destino anterior
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Mellores compañías que chegaron ó {NUM}{}(Nivel {STRING})
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Táboa da Liga de Compañías en {NUM}
@@ -573,6 +575,8 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...demas
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...demasiado cerca doutra cidade
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...emprazamento inadecuado
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...hai demasiadas cidades
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Non se pode construír cidades
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...non queda máis espacio no mapa
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Incrementa-lo tamaño da cidade
 STR_023C_EXPAND                                                 :{BLACK}Expandir
 STR_023D_RANDOM_TOWN                                            :{BLACK}Cidade aleatoria
@@ -658,6 +662,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Colocar 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Colocar faro
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Colocar transmisor
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definir área de deserto
+STR_CREATE_LAKE                                                 :{BLACK}Definir área de auga.{}Inundará os arredores se está a nivel do mar
 STR_0290_DELETE                                                 :{BLACK}Borrar
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Borrar completamente esta cidade
 STR_0292_SAVE_SCENARIO                                          :Grabar Escenario
@@ -721,11 +726,14 @@ STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SET
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Detalle completo
 STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Edificios transparentes
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Edificios transparentes
+STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Sinais de estación transparentes
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Sinais de estación transparentes
 ############ range ends	here
 
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Información de área de terreo
 STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :Des/Activar Consola
 STR_02D7_SCREENSHOT_CTRL_S                                      :Captura de Pantalla (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Capt.Pant. Xigante (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Acerca de 'OpenTTD'
@@ -823,6 +831,7 @@ STR_TOWNNAME_AUSTRIAN                                           :Austríaco
 STR_TOWNNAME_ROMANIAN                                           :Rumano
 STR_TOWNNAME_CZECH                                              :Checo
 STR_TOWNNAME_SWISS                                              :Suízo
+STR_TOWNNAME_DANISH                                             :Danés
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Libras (£)
@@ -1009,10 +1018,12 @@ STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Termina
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Habilita-la economía "suave"(máis cambios, pero máis pequenos)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permiti-la compra de accións por outras compañías
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Cando se arrastre, colocar siniais cada: {ORANGE}{STRING} cadrado(s)
+STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}Permiti-lo emprazamento automático de sinais pbs: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posición da barra de ferramentas principal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Esquerda
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centro
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Dereita
+STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Radio de captura da fiestra: {ORANGE}{STRING1} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radio de agarre da fiestra: {ORANGE}desactivado
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interface
@@ -1295,6 +1306,7 @@ STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Non se 
 STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Non se pode arrinca-lo servidor
 STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Non se pode conectar
 STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Conexión #{NUM} fora de tempo
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Produciuse un erro de protocolo e pechouse a conexión
 STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} A revisión deste cliente no e igual ca revisión do servidor.
 STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Contrasinal errónea
 STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} O servidor está cheo
@@ -1409,6 +1421,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Vía de ferrocar
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Vía de ferrocarril con pre-sinais
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :vía de ferrocarril con sinais de saída
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Via de ferrocarril con sinais combinados
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Vía de ferrocarril con sinais pbs
 
 
 
@@ -1729,7 +1742,10 @@ STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Non se p
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...o bosqur só se pode plantar sobre a liña de neve
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}¡{INDUSTRY} anuncia o seu peche inminente!
 STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}¡Problemas de suministro en {INDUSTRY} provocan o seu peche inminente!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}¡A falta de árbores provoca que {INDUSTRY} anuncie o peche inminente!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}¡{INDUSTRY} incrementa a súa producción!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}¡Nova veta de carbón atopada en {INDUSTRY}!{}¡Espérase que a producción dóbrese!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}¡Novas reservas de petróleo atopadas en {INDUSTRY}!{}¡Espérase que a producción dóbrese!
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} baixa a producción nun 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...só se pode emprazar cerca dos bordes do mapa
 STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}¡A producción de {STRING} en {INDUSTRY} sube un {COMMA}%!
@@ -2332,6 +2348,11 @@ STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Novos Ve
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Novos Vehículos de Monorraíl
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Novos Vehículos de Maglev
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Construír Vehículo
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Esto construíra unha copia do vehículo. CTRL+Click compartirá as ordes
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Esto construíra unha copia do vehículo. Pincha neste botón e despois nun vehículo dentro ou fora do depósito. CTRL+Click compartirá as ordes
+STR_CLONE_TRAIN                                                 :{BLACK}Clonar Tren
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Esto construirá unha copia do tren incluídos os vagóns. CTRL+Click compartirá as ordes
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Esto construirá unha copia do tren incluídos os vagóns. Pincha neste botón e despois nun tren dentro ou fora do depósito. CTRL+Click compartirá as ordes
 STR_8820_RENAME                                                 :{BLACK}Renomear
 STR_8823_SKIP                                                   :{BLACK}Saltar
 STR_8824_DELETE                                                 :{BLACK}Borrar
@@ -2411,6 +2432,7 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}No se pode cambia-lo sentido do tren...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Renomea-lo tipo de vehículo de ferrocarril
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Non se pode renome-lo tipo de vehículo de ferrocarril...
+STR_886F_TRANSFER                                               :{BLACK}Transferir
 
 STR_TRAIN_STOPPING                                              :{RED}Parando
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parando, {VELOCITY}
@@ -2481,6 +2503,9 @@ STR_9804_NEW_SHIPS                                              :{BLACK}Novos Ba
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Barcos
 STR_9808_NEW_SHIPS                                              :{WHITE}Novos Barcos
 STR_9809_BUILD_SHIP                                             :{BLACK}Construír Barco
+STR_CLONE_SHIP                                                  :{BLACK}Clonar Barco
+STR_CLONE_SHIP_INFO                                             :{BLACK}Esto construíra unha copia do barco. CTRL+Click compartirá as ordes
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Esto construíra unha copia do barco. Pincha neste botón e despois nun barco dentro ou fora do depósito. CTRL+Click compartirá as ordes
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}O barco debe estar parado no depósito
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}No se pode vende-lo barco...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Non se construí-lo barco...
@@ -2681,7 +2706,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostrar 
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar tódolos barcos que teñen esta estación nas súas ordes
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Reemplazar Vehículos
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Reemplazar vehículos
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Reemplazar {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Comezar a Reemplazar Vehículos
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar de Reemplazar Vehículos
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Non hai vehículos seleccionados
@@ -2702,5 +2727,13 @@ STR_TINY_BLACK                                                  :{BLACK}{TINYFON
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{COMMA}t
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocidade: {GOLD}{VELOCITY}{BLACK}  Potencia: {GOLD}{COMMA}cv
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocidade: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Mantemento: {GOLD}{CURRENCY}/ano
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacidade: {GOLD}{STRING1} {STRING}
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Deseñado: {GOLD}{NUM}{BLACK} Vida: {GOLD}{COMMA} anos
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilidade Max.: {GOLD}{COMMA}%
+STR_PURCHASE_INFO_COST                                          :{BLACK}Coste: {GOLD}{CURRENCY}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{COMMA}t  ({COMMA}t)
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Velocidade: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidade: {GOLD}{COMMA} pasaxeiros, {COMMA} sacos de correo
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagóns tractores: {GOLD}+{COMMA}cv{BLACK} Peso: {GOLD}+{COMMA}t

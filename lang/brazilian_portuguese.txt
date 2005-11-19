@@ -394,6 +394,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Fechar j
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Título da janela - arraste para mover a janela
 STR_STICKY_BUTTON                                               :{BLACK}Marcar esta janela para não fechar pela tecla 'Fechar Todas as Janelas'
 STR_RESIZE_BUTTON                                               :{BLACK}Clique e arraste para redimensionar a janela
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Clique aqui para selecionar o diretório padrão de jogos salvos
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Demolir edifícios, etc. num quadrado de terreno
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Baixar um canto do terreno
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Levantar um canto do terreno
@@ -942,6 +943,7 @@ STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}A auto-r
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}A auto-renovação do veículo de estrada {COMMA} falhou (limite de dinheiro)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}A auto-renovação do barco {COMMA} falhou (limite de dinheiro)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}A auto-renovação da aeronave {COMMA} falhou (limite de dinheiro)
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}O trem {COMMA} ficará muito longo após a reposição
 
 STR_CONFIG_PATCHES                                              :{BLACK}Configurar Correções
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configurar as correções
@@ -995,6 +997,7 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Árvores
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altitude da linha de neve: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Tamanho máx. de estações: {ORANGE}{STRING} {RED}Valores altos tornam o jogo lento!
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenção automática de helicópteros em heliportos: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar ferramentas de terreno às ferramentas de ferrovia/rodovia/hidrovia/aeroportos: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máximo de trens por jogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máximo de veículos de estrada por jogador: {ORANGE}{STRING}
@@ -2751,6 +2754,8 @@ STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Pression
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Seleccione o tipo de carril para o qual deseja efectuar a substituição dos motores
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Exibe o tipo de motor que substituirá o que está seleccionado à esquerda, se algum
 STR_REPLACE_HELP                                                :{BLACK}Permite a substiuição de um tipo de motor por outro, quando comboios do tipo original entram num depósito
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Remoção de vagões: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ativar essa opção fará com que a auto-reposição remova vagões dos trens, para que eles tenham o comprimento da menor estação em sua rota{}Ela removerá quantos vagões forem necessários, começando pelo da frente
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de sinais - {COMMA} Sinais

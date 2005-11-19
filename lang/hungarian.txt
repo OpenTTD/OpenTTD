@@ -459,6 +459,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Az ablak
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Az ablak címsora - húzd ezt a mozgatáshoz
 STR_STICKY_BUTTON                                               :{BLACK}Ez az ablak akkor se legyen becsukható ha az összes ablakot bezárjuk (Delete gomb)
 STR_RESIZE_BUTTON                                               :{BLACK}Fogd és húzd hogy átméretezd az ablakot
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kattints ide a jelenlegi mentési/töltési könyvtárra való ugráshoz
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Tárgyak lerombolása egy mezõrõl
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Egy pont lesüllyesztése
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Egy pont megemelése
@@ -907,7 +908,7 @@ STR_TOWNNAME_DANISH                                             :Dán
 STR_CURR_GBP                                                    :Font (£)
 STR_CURR_USD                                                    :Dollár ($)
 STR_CURR_EUR                                                    :Euró (¤)
-STR_CURR_YEN                                                    :Ken (¥)
+STR_CURR_YEN                                                    :Yen ({YENSIGN})
 STR_CURR_ATS                                                    :Osztrák Shilling (ATS)
 STR_CURR_BEF                                                    :Belga Frank (BEF)
 STR_CURR_CHF                                                    :Svájci Frank (CHF)
@@ -1007,6 +1008,7 @@ STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autorene
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autorenew sikertelen a(z) {COMMA}. közúti jármûvön (pénzlimit)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autorenew sikertelen a(z) {COMMA}. hajón (pénzlimit)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autorenew sikertelen a(z) {COMMA}. repülõn (pénzlimit)
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{COMMA} vonat túl hosszú lett csere után
 
 STR_CONFIG_PATCHES                                              :{BLACK}Foltok beállítása
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Foltok beállítása
@@ -2853,6 +2855,7 @@ STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Nyomd me
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Válaszd ki a cserélendõ vasúttípust
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Megmutatja, hogy melyik bal oldali mozdonyt akarod kicserélni
 STR_REPLACE_HELP                                                :{BLACK}Ez az opció lehetõve teszi, hogy kiválassz mozdonytípust és lecseréld másfajtára. Ez aztán automatikusan fog megtörténni, amikor a jármû karbantartásra a depóba megy
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon levétel: {ORANGE}{SKIP}{STRING}
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Feliratok listája ({COMMA} db)

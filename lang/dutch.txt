@@ -394,6 +394,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Sluit ve
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Vensternaam - sleep om venster te verplaatsen
 STR_STICKY_BUTTON                                               :{BLACK}Markeer dit venster als niet-verwijderbaar door de 'Sluit Alle Vensters' knop
 STR_RESIZE_BUTTON                                               :{BLACK}Klik en sleep om dit venster van grootte te veranderen
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik hier om naar de standaard bewaar/laad directorie te gaan
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Sloop gebouwen etc. op een stuk land
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Verlaag een hoek van het land
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Verhoog een hoek van het land
@@ -942,6 +943,7 @@ STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Automati
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automatisch vernieuwen mislukt bij voertuig {COMMA} (onvoldoende geld)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatisch vernieuwen mislukt bij schip {COMMA} (onvoldoende geld)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatisch vernieuwen mislukt bij vliegtuig {COMMA} (onvoldoende geld)
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Trein {COMMA} is te lang na het vervangen
 
 STR_CONFIG_PATCHES                                              :{BLACK}Kies Patches
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Kies welke patches je wilt gebruiken
@@ -995,6 +997,7 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Onzicht
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Sneeuwhoogte: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maximale stationsomvang: {ORANGE}{STRING} {RED}Pas op: Hoge waarde vertraagt spel
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopters automatisch repareren op helipads: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Open de landschap werkbalk tegelijk met de trein/weg/water/vliegveld werkbalk: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximaal aantal treinen per speler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximaal aantal wegvoertuigen per speler: {ORANGE}{STRING}
@@ -2751,6 +2754,8 @@ STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Klik op 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selecteer een railtype waar je locomotieven voor wil selecteren
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dit geeft weer waarmee de aan de linkerkant geselecteerde locomotief mee vervangen wordt
 STR_REPLACE_HELP                                                :{BLACK}Deze optie stelt je in staat om een type locomotief te selecteren en die te vervangen door een andere. Dit zal automatisch gebeuren zodra de voertuigen een depot inrijden
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagons verwijderen: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Deze optie "Aan" zetten zorgt ervoor dat de autoreplace functie wagons van je trein afhaalt zodat ze in je korste station passen in hun orders lijst,{}waarbij wordt begonnen bij de eerste wagons
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Bordjes lijst - {COMMA} Bordjes

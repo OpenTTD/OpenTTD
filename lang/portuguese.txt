@@ -394,6 +394,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Fechar j
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Título da janela - arraste isto para mover a janela
 STR_STICKY_BUTTON                                               :{BLACK}Marcar esta janela como não-encerrável pela tecla 'Fechar Todas as Janelas'
 STR_RESIZE_BUTTON                                               :{BLACK}Clique e arraste para reajustar janela
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Carregue aqui para saltar para a directoria de gravação/carregamento por defeito
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Demolir edifícios, etc. num quadrado de terreno
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Baixar um canto do terreno
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Levantar um canto do terreno

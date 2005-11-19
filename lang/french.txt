@@ -395,6 +395,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Fermer l
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Titre de fenêtre - Faire Glisser pour déplacer la fenêtre
 STR_STICKY_BUTTON                                               :{BLACK}Marquer cette fenêtre comme ineffaçable pour la touche 'Fermer toutes les fenêtres'
 STR_RESIZE_BUTTON                                               :{BLACK}Cliquer et faire glisse pour redimensionner la fenêtre
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Clicker ici pour passer au répertoire par défaut courant de charge/sauvegarde
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Démolir les constructions sur un carré de terrain
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Abaisser le terrain
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Élever le terrain
@@ -943,6 +944,7 @@ STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Le renou
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Le renouvellement automatique a échoué sur Véhicule {COMMA} (limite d'argent)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Le renouvellement automatique a échoué sur Navire {COMMA} (limite d'argent)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Le renouvellement automatique a échoué sur Aéronef {COMMA} (limite d'argent)
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Train {COMMA} est trop long après remplacement
 
 STR_CONFIG_PATCHES                                              :{BLACK}Options Avancées
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configurer les options avancées
@@ -996,6 +998,7 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Arbres 
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altitude d'enneigement: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Etendue max. des stations: {ORANGE}{STRING} {RED}Attention: Valeur élevée = jeu lent
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Entretenir automatiquement les hélicoptères à l'heliport: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Relier la barre d'outils Paysage avec celle des rails/routes/eau et aéroport: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nombre de trains max. par joueur: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Nombre de véhicules routiers max. par joueur: {ORANGE}{STRING}
@@ -2752,6 +2755,8 @@ STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Appuyer 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Choisir un type de rail pour le remplacement de locomotives
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Ceci affiche par quelle locomotive celle qui est sélectionnée à gauche sera remplacée
 STR_REPLACE_HELP                                                :{BLACK}Cette caractéristique permet de choisir un type de locomotive et de le remplacer par un autre. Ceci sera fait automatiquement quand le véhicule rentre dans un dépôt
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retrait de wagon: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Activer ce paramètre permettra à l'autoremplacement de retirer des wagons d'un trains, ajustant ainsi sa longueur sur la plus courte station cédulée, advenant le cas d'une longueur excédentaire.{}Autant de wagons que requis seront retirés du train, en commencant par celui de tête.
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste des panneaux - {COMMA} panneau{P "" x}

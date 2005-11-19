@@ -394,6 +394,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Zamkniec
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Tytul okienka - przeciagnij to by ruszyc oknem
 STR_STICKY_BUTTON                                               :{BLACK}Zaznacza to okno jako niezamykalne dla funkcji 'Zamknij wszystkie okna'
 STR_RESIZE_BUTTON                                               :{BLACK}Kliknij i przeciagnij by zmienic rozmiar okna
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kliknij tutaj aby przejsc do domyslnego katalogu
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Niszczenie budynkow itp. w danym kwadracie terenu
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Obnizenie naroznika terenu
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Wywyzszenie naroznika terenu
@@ -942,6 +943,7 @@ STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Blad aut
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Blad autoodnowienia samochodu {COMMA} (brak pieniedzy)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Blad autoodnowienia statku {COMMA} (brak pieniedzy)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Blad autoodnowienia samolotu {COMMA} (brak pieniedzy)
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Pociag {COMMA} jest za dlugi po zamianie
 
 STR_CONFIG_PATCHES                                              :{BLACK}Konfiguracja Patcha
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Konfiguracja Patcha
@@ -2714,7 +2716,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Nazwa pl
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Wlasna waluta
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurs wymiany: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wspolczynnik wymiany: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufiks:
@@ -2751,6 +2753,8 @@ STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Wcisnij 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wybierz dla jakiego typu szyn chcesz zastapic pojazdy
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Wyswietla typ pojazdu na jaki bedzie zastapiony  pojazd zaznaczony po lewej stronie
 STR_REPLACE_HELP                                                :{BLACK}Ta funkcja pozwala wybrac typ pojazdu i zastapic go innym. Bedzie sie to odbywac w momencie gdy pociag zjedzie do zajezdni
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Usuniecie pojazdu: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ustawienie na  "Wla" spowoduje ze tryb autowymiany usunie wagony z pociagu  by utrzymac jego dlugosc jaka jest potrzebna do najkrotszej stacji w swoim rozkladzie.{}Usuniete beda wagony poczawszy od poczatku pociagu
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista tablic - {COMMA} Tablice

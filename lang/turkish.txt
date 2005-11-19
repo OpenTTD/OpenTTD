@@ -34,7 +34,7 @@ STR_001A_COPPER_ORE                                             :Bakir
 STR_001B_MAIZE                                                  :Misir
 STR_001C_FRUIT                                                  :Meyve
 STR_001D_DIAMONDS                                               :Elmas
-STR_001E_FOOD                                                   :Yemek
+STR_001E_FOOD                                                   :Yiyecek
 STR_001F_PAPER                                                  :Kagit
 STR_0020_GOLD                                                   :Altin
 STR_0021_WATER                                                  :Su
@@ -63,10 +63,10 @@ STR_0037_IRON_ORE                                               :Demir
 STR_0038_STEEL                                                  :Çelik
 STR_0039_VALUABLES                                              :Mücevher
 STR_003A_COPPER_ORE                                             :Bakir
-STR_003B_MAIZE                                                  :Mýsýr
+STR_003B_MAIZE                                                  :Misir
 STR_003C_FRUIT                                                  :Meyve
 STR_003D_DIAMOND                                                :Elmas
-STR_003E_FOOD                                                   :Yemek
+STR_003E_FOOD                                                   :Yiyecek
 STR_003F_PAPER                                                  :Kagit
 STR_0040_GOLD                                                   :Altin
 STR_0041_WATER                                                  :Su
@@ -98,7 +98,7 @@ STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} ton bak
 STR_005B_TON_OF_MAIZE                                           :{COMMA} ton misir
 STR_005C_TON_OF_FRUIT                                           :{COMMA} ton meyve
 STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} canta elmas
-STR_005E_TON_OF_FOOD                                            :{COMMA} ton yemek
+STR_005E_TON_OF_FOOD                                            :{COMMA} ton yiyecek
 STR_005F_TON_OF_PAPER                                           :{COMMA} ton kagit
 STR_0060_BAG_OF_GOLD                                            :{COMMA} çanta altin
 STR_0061_OF_WATER                                               :{VOLUME} su
@@ -119,16 +119,33 @@ STR_008F_PS                                                     :{TINYFONT}YL
 STR_0090_CL                                                     :{TINYFONT}KÖ
 STR_0091_ML                                                     :{TINYFONT}PO
 STR_0092_OL                                                     :{TINYFONT}PE
+STR_0093_LV                                                     :{TINYFONT}HV
+STR_0094_GD                                                     :{TINYFONT}ES
+STR_0095_GR                                                     :{TINYFONT}TH
+STR_0096_WD                                                     :{TINYFONT}OD
+STR_0097_OR                                                     :{TINYFONT}DM
 STR_0098_ST                                                     :{TINYFONT}ÇE
 STR_0099_VL                                                     :{TINYFONT}MÜ
+STR_009A_CO                                                     :{TINYFONT}BK
+STR_009B_MZ                                                     :{TINYFONT}MS
+STR_009C_FT                                                     :{TINYFONT}MV
+STR_009D_DM                                                     :{TINYFONT}EL
+STR_009E_FD                                                     :{TINYFONT}YE
 STR_009F_PR                                                     :{TINYFONT}KA
+STR_00A0_GD                                                     :{TINYFONT}ES
 STR_00A1_WR                                                     :{TINYFONT}SU
 STR_00A2_WH                                                     :{TINYFONT}UN
+STR_00A3_RB                                                     :{TINYFONT}LA
+STR_00A4_SG                                                     :{TINYFONT}SK
 STR_00A5_TY                                                     :{TINYFONT}OY
+STR_00A6_SW                                                     :{TINYFONT}TA
 STR_00A7_CL                                                     :{TINYFONT}KO
 STR_00A8_CF                                                     :{TINYFONT}PH
+STR_00A9_BU                                                     :{TINYFONT}BA
+STR_00AA_TF                                                     :{TINYFONT}PH
 STR_00AB_BA                                                     :{TINYFONT}PI
 STR_00AC_PL                                                     :{TINYFONT}PL
+STR_00AD_FZ                                                     :{TINYFONT}iç
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Harita - {STRING}
@@ -209,7 +226,7 @@ STR_0104_STEEL_MILL                                             :{BLACK}{TINYFON
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}Banka
 STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Kagit Fabrikasi
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Altin Madeni
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Konserve Fabrikasi
+STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Yemek Fabrikasi
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Elmas Madeni
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Bakir Madeni
 STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Meyve Agaçlari
@@ -377,6 +394,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Pencerey
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Pencere basligi - pencereyi götürmek için sürükle
 STR_STICKY_BUTTON                                               :{BLACK}'Tüm pencereleri kapat' tusuyla kapanmasin
 STR_RESIZE_BUTTON                                               :{BLACK}Pencereyi boyutlandirmak için tiklayip sürükle
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Su anki varsayilan kayit/yükleme dizinine gitmek için tiklayin
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Bir karedeki binalari vb. yik
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Bir köseyi alçalt
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Bir köseyi yükselt
@@ -558,6 +576,8 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...harit
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...baska bir sehre çok yakin
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...yer uygun degil
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...çok fazla sehir var
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Sehir kurulamaz
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...haritada bos yer yok
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Sehrin boyutunu büyült
 STR_023C_EXPAND                                                 :{BLACK}Genislet
 STR_023D_RANDOM_TOWN                                            :{BLACK}Rastgele Sehir
@@ -660,7 +680,7 @@ STR_029C_QUIT_EDITOR                                            :{WHITE}Editörde
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...nüfusu en az 1200 olan sehirlere yapilabilir
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Baslama yilini düsür
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Baslama yilini arttir
-STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...köprünün uçlarý karada olmali
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...köprünün uçlari karada olmali
 STR_02A1_SMALL                                                  :{BLACK}Küçük
 STR_02A2_MEDIUM                                                 :{BLACK}Orta
 STR_02A3_LARGE                                                  :{BLACK}Büyük
@@ -707,11 +727,14 @@ STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SET
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Tam detay
 STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Transparan binalar
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Transparan binalar
+STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Transparan istasyon tabelalari
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transparan istasyon tabelalari
 ############ range ends	here
 
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Arazi bilgisi
 STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :Konsola Geç
 STR_02D7_SCREENSHOT_CTRL_S                                      :Ekran Görüntüsü (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Dev Ekran Görüntüsü (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :'OpenTTD' Hakkinda
@@ -789,6 +812,8 @@ STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Ekran gö
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Gelecek için arazi al
 STR_032F_AUTOSAVE                                               :{RED}OTOKAYDET
+STR_SAVING_GAME                                                 :{RED}*  *  KAYDEDiYOR  *  *
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Kayit islemi sürüyor,{}lütfen bitene kadar bekleyin!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}'Ezy Sokagi stili muzik' programini seç
 
 STR_0335_6                                                      :{BLACK}6
@@ -804,10 +829,15 @@ STR_TOWNNAME_SILLY                                              :Saçma ingilizce
 STR_TOWNNAME_SWEDISH                                            :isveççe
 STR_TOWNNAME_DUTCH                                              :Hollandaca
 STR_TOWNNAME_FINNISH                                            :Fince
+STR_TOWNNAME_POLISH                                             :Polonca
 STR_TOWNNAME_SLOVAKISH                                          :Slovakça
 STR_TOWNNAME_NORWEGIAN                                          :Norveççe
+STR_TOWNNAME_HUNGARIAN                                          :Macarca
+STR_TOWNNAME_AUSTRIAN                                           :Avusturyaca
 STR_TOWNNAME_ROMANIAN                                           :Romanca
 STR_TOWNNAME_CZECH                                              :Çekçe
+STR_TOWNNAME_SWISS                                              :isviçrece
+STR_TOWNNAME_DANISH                                             :Danimarkaca
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Sterlin (£)
@@ -816,14 +846,23 @@ STR_CURR_EUR                                                    :Euro (¤)
 STR_CURR_YEN                                                    :Yen (¥)
 STR_CURR_ATS                                                    :Avusturya Silini (ATS)
 STR_CURR_BEF                                                    :Belcika Frangi (BEF)
+STR_CURR_CHF                                                    :isviçre Frangi (CHF)
 STR_CURR_CZK                                                    :Çek Koruna (CZK)
 STR_CURR_DEM                                                    :Alman marki (DEM)
+STR_CURR_DKK                                                    :Danimarka Kronu (DKK)
 STR_CURR_ESP                                                    :Peseta (ESP)
 STR_CURR_FIM                                                    :Fin Markka (FIM)
 STR_CURR_FRF                                                    :Frank (FRF)
 STR_CURR_GRD                                                    :Yunan Drachma (GRD)
+STR_CURR_HUF                                                    :Macar Forinti (HUF)
+STR_CURR_ISK                                                    :Iceland Kronasi (ISK)
+STR_CURR_ITL                                                    :italyan Lirasi (ITL)
+STR_CURR_NLG                                                    :Hollanda Guilder (NLG)
 STR_CURR_NOK                                                    :Norweç Krone (NOK)
+STR_CURR_PLN                                                    :Polon Zilotu (PLN)
+STR_CURR_ROL                                                    :Romanya Leusu (ROL)
 STR_CURR_RUR                                                    :Rus Rublesi (RUR)
+STR_CURR_SEK                                                    :isveç Kronasi (SEK)
 
 STR_CURR_CUSTOM                                                 :Özel...
 
@@ -886,10 +925,10 @@ STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Train {C
 STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Train {COMMA} geçersiz bir talimat almis
 STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Train {COMMA} cifte talimat almis
 STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Train {COMMA} talimatlarinda geçersiz bir istasyon adi var
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Road Vehicle {COMMA} çok az talimat almis
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Road Vehicle {COMMA} geçersiz bir talimat almis
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Road Vehicle {COMMA} cifte talimat almis
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Road Vehicle {COMMA} talimatlarinda geçersiz bir istasyon adi var
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Araba {COMMA} çok az talimat almis
+STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Araba {COMMA} geçersiz bir talimat almis
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Araba {COMMA} cifte talimat almis
+STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Araba {COMMA} talimatlarinda geçersiz bir istasyon adi var
 STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Ship {COMMA} çok az talimat almis
 STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Ship {COMMA} geçersiz bir talimat almis
 STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Ship {COMMA} cifte talimat almis
@@ -900,10 +939,11 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Aircraft
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Aircraft {COMMA} talimatlarinda geçersiz bir istasyon adi var
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Su tren yenilenemedi: {COMMA} (para siniri)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Su tasit yenilenemedi: {COMMA} (para siniri)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Su gemi yenilenemedi: {COMMA} (para siniri)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Su ucak yenilenemedi: {COMMA} (para siniri)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Su tren yenilenemedi: {COMMA} (para yetmedi)
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Su tasit yenilenemedi: {COMMA} (para yetmedi)
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Su gemi yenilenemedi: {COMMA} (para yetmedi)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Su ucak yenilenemedi: {COMMA} (para yetmedi)
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Tren {COMMA} degistirildikten sonra uzadi
 
 STR_CONFIG_PATCHES                                              :{BLACK}Yamalari Düzenle
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Yamalari Düzenle
@@ -918,7 +958,7 @@ STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Sehrin 
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Çok uzun trenlere izin ver: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Gerçekçi tren hizlanmasi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Tren ve gemilerin 90 derece dönmesini yasakla: {ORANGE}{STRING} {LTBLUE} (requires NPF)
-STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Yanyana yapýlan tren istasyonlarini birlestir: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Yanyana yapilan tren istasyonlarini birlestir: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}'tam doldur' etkinse istasyonu tam dolunca terket: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Gelistirilmis yukleme algoritmasi kullan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Enflasyon: {ORANGE}{STRING}
@@ -935,6 +975,7 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatc
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Karayolu tasitlari kuyruga girsin (içiçe geçerek): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Fare sinirdayken pencere etkin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Belediye rüsveti izinli: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Özel istasyonlar: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Yeni evrensel yol bulma (NPF, NTP üzerinde): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Küçük havalimani her zaman etkin: {ORANGE}{STRING}
@@ -956,6 +997,7 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Görünme
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Kar kalinligi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}istasyon genisleme siniri: {ORANGE}{STRING} {RED}Uyari: Yüksek degerler oyunu yavaslatir
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopterler helipadlerde otomatik servise girsin: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Arazi araç çubugunu ray/yol/su/havalimani araç çubuklarina ekle: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Her oyuncu için en fazla tren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Her oyuncu için en fazla araba: {ORANGE}{STRING}
@@ -978,6 +1020,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Uçaklar
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Gemiler için varsayilan servis gecikmesi: {ORANGE}{STRING} gün/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Gemiler için varsayilan servis gecikmesi: {ORANGE}kapali
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Bozulmalar kapaliysa sevisler kapali olsun: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Vagonlarin yavaslatmasi izinli: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Renkli gazete su senede çiksin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Baslangiç tarihi: {ORANGE}{STRING}
@@ -985,6 +1028,7 @@ STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Bitis t
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Yüzeysel ekonomi (daha çok ve küçük çapta degisiklikler)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Diger sirketlerin hisseleri alinabilsin
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Sürüklerken her: {ORANGE}{STRING} karede bir sinyal koy
+STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}pbs sinyallerini otomatik yerlestir: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Ana araç çubugu pozisyonu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Sol
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Orta
@@ -1012,7 +1056,7 @@ STR_SUB_TROPICAL_LANDSCAPE                                      :Tropik iklim
 STR_TOYLAND_LANDSCAPE                                           :Oyun bahçesi
 
 STR_CHEATS                                                      :{WHITE}Hileler
-STR_CHEATS_TIP                                                  :{BLACK}Onay kutularý bu hileyi daha önce kullanip kullanmadigini bildirir.
+STR_CHEATS_TIP                                                  :{BLACK}Onay kutulari bu hileyi daha önce kullanip kullanmadigini bildirir.
 STR_CHEATS_WARNING                                              :{BLACK}Uyari! Rakiplerine ihanet etmek üzeresin. Böyle bir davranisi sonsuza dek unutmayacaklarini akilda tut.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Parayi {CURRENCY64} kadar arttir
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Oyuncunun yerine gecme: {ORANGE}{COMMA}
@@ -1114,6 +1158,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Bonbon M
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Seker Madeni Kur
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Fabrikalar
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING1}){YELLOW} (%{COMMA} tasindi)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING1}/{STRING1}){YELLOW} (%{COMMA}/%{COMMA} tasindi)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...baska bir fabrikaya çok yakin
@@ -1127,7 +1173,7 @@ STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Servis 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Üretimi degistir
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Yeni yapay zekaya hos geldiniz, henüz devam etmekte olan bir is. Mutlaka sorunlar yasayacaksiniz. ilginç bir sey görürseniz fotosunu foruma göndermeyi unutmayin. Hadi iyi oyunlar!
-TEMP_AI_ACTIVATED                                               :{WHITE}Uyari: Yeni yapay zeka henüz alfa sürümünde! Su an sadece kamyonlar ve otobüsler çalýsabilir!
+TEMP_AI_ACTIVATED                                               :{WHITE}Uyari: Yeni yapay zeka henüz alfa sürümünde! Su an sadece kamyonlar ve otobüsler çalisabilir!
 
 ############ network gui strings
 
@@ -1226,6 +1272,7 @@ STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Sirket y
 STR_NETWORK_REFRESH                                             :{BLACK}Sunucuyu tazele
 STR_NETWORK_REFRESH_TIP                                         :{BLACK}Sunucu bilgisini tazele
 
+STR_NETWORK_COMPANY_INFO                                        :{SILVER}SiRKET BiLGiSi
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Sirket adi:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Kurulus:  {WHITE}{NUM}
@@ -1310,6 +1357,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Sunucu 
 STR_NETWORK_SERVER                                              :Sunucu
 STR_NETWORK_CLIENT                                              :istemci
 
+STR_NETWORK_CLIENTLIST_NONE                                     :(yok)
 STR_NETWORK_CLIENTLIST_KICK                                     :At
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Para ver
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Herkesle konus
@@ -1330,6 +1378,8 @@ STR_0800_COST                                                   :{TINYFONT}{RED}
 STR_0801_COST                                                   :{RED}Gider: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Gelir: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Gelir: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Gönder: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Gönder: {CURRENCY}
 STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Beklenen Fiyat: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Beklenen Gider: {CURRENCY}
 STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Beklenen Gelir: {CURRENCY}
@@ -1383,6 +1433,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Normal sinyalli
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ön-sinayalli ray
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Çikis-sinyalli ray
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :ön+çikis-sinyalli ray
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :pbs-sinyalli ray
 
 
 
@@ -1415,6 +1466,9 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Hemzemin geçit
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Sehirler
 STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
+STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
+STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Önce bina yikilmali
 STR_2005                                                        :{WHITE}{TOWN}
@@ -1506,6 +1560,11 @@ STR_205A_TEPEES                                                 :Çadir
 STR_205B_TEAPOT_HOUSE                                           :Çaydanlik ev
 STR_205C_PIGGY_BANK                                             :Domuz bankasi
 
+STR_INDUSTRY                                                    :{INDUSTRY}
+STR_TOWN                                                        :{TOWN}
+STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
+STR_STATION                                                     :{STATION}
+
 ##id 0x2800
 STR_LANDSCAPING                                                 :Arazi
 STR_2800_PLANT_TREES                                            :Agaç dik
@@ -1592,6 +1651,7 @@ STR_305AA_LARGE                                                 :{BLACK}Sehirler
 STR_305AB_LARGE                                                 :{BLACK}Uluslararasi
 STR_305B_SIZE                                                   :{BLACK}Boyut
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Tren istasyonu
 STR_305F_AIRCRAFT_HANGAR                                        :Hangar
 STR_3060_AIRPORT                                                :Havalimani
@@ -1609,6 +1669,9 @@ STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...istas
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...özel istasyon ayari kapali
 
 ##id 0x3800
+STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Tershane Yönü
+STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...suya yapilmali
+STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Buraya tershane yapilamaz...
 STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}imalathane yönünü seç
 STR_3804_WATER                                                  :Su
 STR_3805_COAST_OR_RIVERBANK                                     :Sahil veya göl kenari
@@ -1779,6 +1842,15 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Havali
 STR_SV_STNAME_OILFIELD                                          :{STRING} Kuyusu
 STR_SV_STNAME_MINES                                             :{STRING} Madeni
 STR_SV_STNAME_DOCKS                                             :{STRING} iskelesi
+STR_SV_STNAME_BUOY_1                                            :{STRING1} Samandira 1
+STR_SV_STNAME_BUOY_2                                            :{STRING1} Samandira 2
+STR_SV_STNAME_BUOY_3                                            :{STRING1} Samandira 3
+STR_SV_STNAME_BUOY_4                                            :{STRING1} Samandira 4
+STR_SV_STNAME_BUOY_5                                            :{STRING1} Samandira 5
+STR_SV_STNAME_BUOY_6                                            :{STRING1} Samandira 6
+STR_SV_STNAME_BUOY_7                                            :{STRING1} Samandira 7
+STR_SV_STNAME_BUOY_8                                            :{STRING1} Samandira 8
+STR_SV_STNAME_BUOY_9                                            :{STRING1} Samandira 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} Eklemesi
 STR_SV_STNAME_SIDINGS                                           :{STRING} Kenari
 STR_SV_STNAME_BRANCH                                            :{STRING} Kolu
@@ -1865,6 +1937,7 @@ STR_683B_HOSTILE                                                :Kati
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
+STR_7002_PLAYER                                                 :(Oyuncu {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Yeni Surat
 STR_7005_COLOR_SCHEME                                           :{BLACK}Renk
 STR_7006_COLOR_SCHEME                                           :{GOLD}Renk:
@@ -1896,6 +1969,7 @@ STR_701F                                                        :{BLACK}+{CURREN
 STR_7020_TOTAL                                                  :{WHITE}Toplam:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Gelir Grafigi
+STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Çalistirma Geliri Grafigi
 STR_7026_BANK_BALANCE                                           :{WHITE}Banka Hesabi
@@ -1920,6 +1994,10 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Krediyi 
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Manager)
 STR_7038_INAUGURATED                                            :{GOLD}Kurulus: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Araçlar:
+STR_TRAINS                                                      :{WHITE}{COMMA} tren
+STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} araba
+STR_AIRCRAFT                                                    :{WHITE}{COMMA} uçak
+STR_SHIPS                                                       :{WHITE}{COMMA} gemi
 STR_7042_NONE                                                   :{WHITE}Yok
 STR_7043_FACE_SELECTION                                         :{WHITE}Surat Seçimi
 STR_7044_MALE                                                   :{BLACK}Erkek
@@ -2058,7 +2136,7 @@ STR_8040_WOOD_TRUCK                                             :Odun Vagonu
 STR_8041_IRON_ORE_HOPPER                                        :Demir Vagonu
 STR_8042_STEEL_TRUCK                                            :Çelik Vagonu
 STR_8043_ARMORED_VAN                                            :Zirhli Vagon
-STR_8044_FOOD_VAN                                               :Yemek Vagonu
+STR_8044_FOOD_VAN                                               :Yiyecek Vagonu
 STR_8045_PAPER_TRUCK                                            :Kagit Vagonu
 STR_8046_COPPER_ORE_HOPPER                                      :Bakir Vagonu
 STR_8047_WATER_TANKER                                           :Su Tankeri
@@ -2090,7 +2168,7 @@ STR_8060_WOOD_TRUCK                                             :Odun Vagonu
 STR_8061_IRON_ORE_HOPPER                                        :Demir Vagonu
 STR_8062_STEEL_TRUCK                                            :Çelik Vagonu
 STR_8063_ARMORED_VAN                                            :Zirhli Vagon
-STR_8064_FOOD_VAN                                               :Yemek Vagonu
+STR_8064_FOOD_VAN                                               :Yiyecek Vagonu
 STR_8065_PAPER_TRUCK                                            :Kagit Vagonu
 STR_8066_COPPER_ORE_HOPPER                                      :Bakir Vagonu
 STR_8067_WATER_TANKER                                           :Su Tankeri
@@ -2146,9 +2224,9 @@ STR_8098_KELLING_STEEL_TRUCK                                    :Kelling Çelik K
 STR_8099_BALOGH_ARMORED_TRUCK                                   :Balogh Zirhli Araç
 STR_809A_UHL_ARMORED_TRUCK                                      :Uhl Zirhli Araç
 STR_809B_FOSTER_ARMORED_TRUCK                                   :Foster Zirhli Araç
-STR_809C_FOSTER_FOOD_VAN                                        :Foster Yemek Arabasi
-STR_809D_PERRY_FOOD_VAN                                         :Perry Yemek Arabasi
-STR_809E_CHIPPY_FOOD_VAN                                        :Chippy Yemek Arabasi
+STR_809C_FOSTER_FOOD_VAN                                        :Foster Yiyecek Arabasi
+STR_809D_PERRY_FOOD_VAN                                         :Perry Yiyecek Arabasi
+STR_809E_CHIPPY_FOOD_VAN                                        :Chippy Yiyecek Arabasi
 STR_809F_UHL_PAPER_TRUCK                                        :Uhl Kagit Kamyonu
 STR_80A0_BALOGH_PAPER_TRUCK                                     :Balogh Kagit Kamyonu
 STR_80A1_MPS_PAPER_TRUCK                                        :MPS Kagit Kamyonu
@@ -2263,11 +2341,18 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Yolda tr
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
 STR_8806_GO_TO                                                  :Git: {STATION}
+STR_8807_GO_TO_TRANSFER                                         :Aktar: {STATION} (Kargoyu al)
 STR_8808_GO_TO_UNLOAD                                           :Git: {STATION} (Bosalt)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Aktar: {STATION} (Bos dön)
 STR_880A_GO_TO_LOAD                                             :Git: {STATION} (Doldur)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Aktar: {STATION} (Tam doldur)
 STR_880C_GO_NON_STOP_TO                                         :Durmadan git: {STATION}
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :Durmadan aktar: {STATION} (Kargoyu al)
 STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Durmadan git: {STATION} (Bosalt)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Durmadan aktar: {STATION} (Bos dön)
 STR_8810_GO_NON_STOP_TO_LOAD                                    :Durmadan git: {STATION} (Doldur)
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Durmadan aktar: {STATION} (Tam doldur)
+STR_GO_TO_TRAIN_DEPOT                                           :Git: {TOWN} Tren Gari
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Bakima git: {TOWN} Tren Gari
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Durmadan git: {TOWN} Tren Gari
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Durmadan bakima git: {TOWN} Tren Gari
@@ -2290,6 +2375,12 @@ STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Yeni Tre
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Yeni Monoray
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Yeni Maglev
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Satin Al
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Arabayi kopyala
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Arabanin bir kopyasini yapar. CTRL-tiklama talimatlari paylastirir
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Arabanin bir kopyasini yapar. Önce bu dügmeye sonra da garin içindeki veya disindaki bir araca tiklayin. CTRL-tiklama talimatlari paylastirir
+STR_CLONE_TRAIN                                                 :{BLACK}Treni kopyala
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Tüm vagonlarla birlikte treni kopyalar. CTRL-tiklama talimatlari paylastirir
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Tüm vagonlarla birlikte treni kopyalar. Önce bu dügmeye sonra da garin içindeki veya disindaki bir araca tiklayin. CTRL-tiklama talimatlari paylastirir
 STR_8820_RENAME                                                 :{BLACK}Yeni isim
 STR_8823_SKIP                                                   :{BLACK}Atla
 STR_8824_DELETE                                                 :{BLACK}Sil
@@ -2369,6 +2460,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Tren çevrilemez...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Tren yeniden adlandirilamaz
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Tren yeniden adlandirilamaz...
+STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili talimatta araci kargoyu bosaltmaya zorla
+STR_886F_TRANSFER                                               :{BLACK}Aktar
 
 STR_TRAIN_STOPPING                                              :{RED}Frenliyor
 STR_TRAIN_STOPPING_VEL                                          :{RED}Frenliyor, {VELOCITY}
@@ -2439,6 +2532,9 @@ STR_9804_NEW_SHIPS                                              :{BLACK}Yeni gem
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Gemi
 STR_9808_NEW_SHIPS                                              :{WHITE}Yeni gemi
 STR_9809_BUILD_SHIP                                             :{BLACK}Gemi yap
+STR_CLONE_SHIP                                                  :{BLACK}Gemiyi kopyala
+STR_CLONE_SHIP_INFO                                             :{BLACK}Geminin bir kopyasini olusturur. CTRL-tiklama talimatlari paylastirir
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Geminin bir kopyasini olusturur. Önce bu dügmeye sonra da tershanenin içindeki veya disindaki bir gemiye tiklayin. CTRL-tiklama talimatlari paylastirir
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Gemi tershanede durdurulmali
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Gemi satilamaz...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Yemi yapilamaz...
@@ -2471,7 +2567,7 @@ STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Geminin 
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Geminin talimatlarini göster
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Gemiyi göster
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Tershaneye gönder
-STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Gemi detaylarýný göster
+STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Gemi detaylarini göster
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Yeni gemi üretildi!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Fiyati: {CURRENCY} Mak. Hiz: {VELOCITY}{}Kapasite: {STRING}{}Bakim: {CURRENCY}/sene
@@ -2503,6 +2599,9 @@ STR_A000_AIRPORTS                                               :{WHITE}Havalima
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Buraya havalimani yapilamaz...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangari
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Yeni Uçak
+STR_CLONE_AIRCRAFT                                              :{BLACK}Uçagi kopyala
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Uçagin bir kopyasini olusturur. CTRL-tiklama talimatlari paylastirir
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Uçagin bir kopyasini olusturur. Önce bu dügmeye sonra da hangarin içindeki veya disindaki bir uçaga tiklayin. CTRL-tiklama talimatlari paylastirir
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Yeni Uçak
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Uçak Yap
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Uçak alinamaz...
@@ -2655,6 +2754,8 @@ STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Degistir
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Lokomatiflerini degistirecegin ray türünü seç
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Soldaki degistiriliyorsa neyle degistirildigini göster
 STR_REPLACE_HELP                                                :{BLACK}Tren gara girdiginde seçilen türle degistirilir
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon kaldirma: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Bu ayari "açik" yaparsaniz araçlari degistirme isleminde eger trenin talimatlarindaki duraklardan birine sigmayacak kadar uzuyorsa tren uzunlugu korunacaktir.{}Fazla vagonlar önden baslayarak satilacaktir
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Tabela Listesi - {COMMA} Tabela
@@ -2668,3 +2769,16 @@ STR_MAGLEV_VEHICLES                                             :Maglev Araçlari
 ############ End of list of rail types
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
+
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Fiyat: {GOLD}{CURRENCY}{BLACK} Agirlik: {GOLD}{COMMA}t
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hiz: {GOLD}{VELOCITY}{BLACK}   Güç: {GOLD}{COMMA}bg
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hiz: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Bakim: {GOLD}{CURRENCY}/sene
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasite: {GOLD}{STRING1} {STRING}
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Yapim yili: {GOLD}{NUM}{BLACK} Ömür: {GOLD}{COMMA} sene
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Mak. Güvenilirlik: {GOLD}%{COMMA}
+STR_PURCHASE_INFO_COST                                          :{BLACK}Fiyat: {GOLD}{CURRENCY}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Agirlik: {GOLD}{COMMA}t  ({COMMA}t)
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Fiyat: {GOLD}{CURRENCY}{BLACK} Hiz: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasite: {GOLD}{COMMA} yolcu, {COMMA} çanta posta
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Güç Veren Vagonlar: {GOLD}+{COMMA}bg{BLACK} Agirlik: {GOLD}+{COMMA}t

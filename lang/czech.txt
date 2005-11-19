@@ -451,6 +451,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Zavrit o
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Titulek okna - tahej pro posun okna
 STR_STICKY_BUTTON                                               :{BLACK}Oznacit toto okno, aby se nedalo zavrit klávesou 'Zavrit v¨echna okna'
 STR_RESIZE_BUTTON                                               :{BLACK}Pro zmenu velikosti okna tady uchop a táhni
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kliknutím sem se presunete do soucasneho výchozího ukládacího adresare
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Demolice budov, atd.
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Sní¸it roh zeme
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Zvý¨it roh zeme
@@ -999,6 +1000,7 @@ STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Obnovení
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Obnovení silnicniho vozidla {COMMA} selhalo (financni limit)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Obnovení lodi {COMMA} selhalo (financni limit)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Obnovení letadla {COMMA} selhalo (financni limit)
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Vlak {COMMA} je po vymene moc dlouhý
 
 STR_CONFIG_PATCHES                                              :{BLACK}Nastavit patche
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Nastavit patche
@@ -1052,6 +1054,7 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Nevidit
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Vý¨ka snehove cary: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Nejvetsi rozsah stanice: {ORANGE}{STRING} {RED}Pozor: Vysoké nastavení zpomalí hru
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Údr¸ba helikoptér na heliportech: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Otevírat li&#168;tu na úpravy terénu s li&#168;tami na výstavbu tratí/silnic atd.: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vlaku na hrace: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximum silnicnich vozidel na hrace: {ORANGE}{STRING}
@@ -2808,6 +2811,8 @@ STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Zmackni 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vyber typ kolejí, pro které chce¨ vybírat lokomotivy na vymenu
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Tady je zobrazeno, za jakou lokomotivu se ta v levém seznamu vymenuje
 STR_REPLACE_HELP                                                :{BLACK}Tato mo¸nost hry ti umoznuje vybrat typ lokomotivy, který nechá vymenit za jiný. To se bude automaticky provadet, kdy¸ lokomotiva zajede do depa.
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odebírání vagonu: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Nastavením na "zapnuto" zacne funkce automatického vymenovani odstranovat vagony z vlaku, kdyby se neve¨ly do nejkrat¨í stanice ve svém jízdním radu.{}Bude od zacatku vlaku odstranovat tolik vagonu, kolik potrebuje.
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam popisku - {COMMA} popis{P ek ky ku}
