@@ -1483,36 +1483,6 @@ void AgeVehicle(Vehicle *v)
 	}
 }
 
-/*
- * This function returns the next vehicle in an engine that consists of more than one vehicle
- * This is planes, multiheaded train engines and so on. It's NOT whole trains as it is only the engines, that are linked together
- */
-static Vehicle *GetNextEnginePart(Vehicle *v)
-{
-	switch (v->type) {
-		case VEH_Train:
-			if (IsMultiheaded(v)) {
-				if (!IsTrainEngine(v))
-					return v->u.rail.other_multiheaded_part;
-				else
-					return NULL;
-			}
-			if (v->next != NULL && IsArticulatedPart(v->next)) return v->next;
-			break;
-
-		case VEH_Aircraft:
-			return v->next;
-
-		case VEH_Road:
-		case VEH_Ship:
-			break;
-
-		default: NOT_REACHED();
-	}
-	return NULL;
-}
-
-
 /** Clone a vehicle. If it is a train, it will clone all the cars too
 * @param x,y depot where the cloned vehicle is build
 * @param p1 the original vehicle's index
@@ -1626,9 +1596,9 @@ static void MoveVehicleCargo(Vehicle *dest, Vehicle *source)
 			dest->day_counter  = source->day_counter;
 			dest->tick_counter = source->tick_counter;
 
-		} while (source->cargo_count > 0 && (dest = GetNextEnginePart(dest)) != NULL);
+		} while (source->cargo_count > 0 && (dest = dest->next) != NULL);
 		dest = v;
-	} while ((source = GetNextEnginePart(source)) != NULL);
+	} while ((source = source->next) != NULL);
 }
 
 /* Replaces a vehicle (used to be called autorenew)
@@ -1664,7 +1634,6 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 			}
 		}
 
-		MoveVehicleCargo(new_v, old_v);
 
 		if (old_v->type == VEH_Train && !IsFrontEngine(old_v)) {
 			/* this is a railcar. We need to move the car into the train
@@ -1672,6 +1641,8 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 			 * sell the old engine in a moment
 			 */
 			DoCommand(0, 0, (GetPrevVehicleInChain(old_v)->index << 16) | new_v->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+			/* Now we move the old one out of the train */
+			DoCommand(0, 0, (INVALID_VEHICLE << 16) | old_v->index, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 		} else {
 			// copy/clone the orders
 			DoCommand(0, 0, (old_v->index << 16) | new_v->index, IsOrderListShared(old_v) ? CO_SHARE : CO_COPY, DC_EXEC, CMD_CLONE_ORDER);
@@ -1684,11 +1655,13 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 			new_v->current_order = old_v->current_order;
 			if (old_v->type == VEH_Train){
 				// move the entire train to the new engine, including the old engine. It will be sold in a moment anyway
-				DoCommand(0, 0, (new_v->index << 16) | old_v->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+				DoCommand(0, 0, (new_v->index << 16) | GetNextVehicle(old_v)->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 				new_v->u.rail.shortest_platform[0] = old_v->u.rail.shortest_platform[0];
 				new_v->u.rail.shortest_platform[1] = old_v->u.rail.shortest_platform[1];
 			}
 		}
+		/* We are done setting up the new vehicle. Now we move the cargo from the old one to the new one */
+		MoveVehicleCargo(new_v->type == VEH_Train ? GetFirstVehicleInChain(new_v) : new_v, old_v);
 	}
 
 	// sell the engine/ find out how much you get for the old engine
@@ -1812,6 +1785,8 @@ static void MaybeReplaceVehicle(Vehicle *v)
 			}
 			temp = w;
 			w = GetNextVehicle(w);
+			DoCommand(0, 0, (INVALID_VEHICLE << 16) | temp->index, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+			MoveVehicleCargo(v, temp);
 			cost += DoCommand(0, 0, temp->index, 0, flags, CMD_SELL_VEH(temp->type));
 		}
 	}
