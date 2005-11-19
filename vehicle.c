@@ -1655,7 +1655,9 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 			new_v->current_order = old_v->current_order;
 			if (old_v->type == VEH_Train){
 				// move the entire train to the new engine, including the old engine. It will be sold in a moment anyway
-				DoCommand(0, 0, (new_v->index << 16) | GetNextVehicle(old_v)->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+				if (GetNextVehicle(old_v) != NULL) {
+					DoCommand(0, 0, (new_v->index << 16) | GetNextVehicle(old_v)->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+				}
 				new_v->u.rail.shortest_platform[0] = old_v->u.rail.shortest_platform[0];
 				new_v->u.rail.shortest_platform[1] = old_v->u.rail.shortest_platform[1];
 			}
