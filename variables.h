@@ -176,6 +176,7 @@ typedef struct Patches {
 
 	byte drag_signals_density; // many signals density
 	bool ainew_active;  // Is the new AI active?
+	bool ai_in_multiplayer; // Do we allow AIs in multiplayer
 
 	/*
 	 * New Path Finding

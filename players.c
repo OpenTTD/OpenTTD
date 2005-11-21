@@ -528,12 +528,13 @@ static void MaybeStartNewPlayer(void)
 
 	// when there's a lot of computers in game, the probability that a new one starts is lower
 	if (n < (uint)_opt.diff.max_no_competitors)
-		if (n < (!_network_server ? RandomRange(_opt.diff.max_no_competitors + 2) : InteractiveRandomRange(_opt.diff.max_no_competitors + 2)) )
-		DoStartupNewPlayer(true);
+		if (n < (_network_server ? InteractiveRandomRange(_opt.diff.max_no_competitors + 2) : RandomRange(_opt.diff.max_no_competitors + 2)) )
+			/* Send a command to all clients to start  up a new AI. Works fine for Multiplayer and Singleplayer */
+			DoCommandP(0, 1, 0, NULL, CMD_PLAYER_CTRL);
 
 	// The next AI starts like the difficulty setting said, with +2 month max
 	_next_competitor_start = _opt.diff.competitor_start_time * 90 * DAY_TICKS + 1;
-	_next_competitor_start += (!_network_server) ? RandomRange(60 * DAY_TICKS) : InteractiveRandomRange(60 * DAY_TICKS);
+	_next_competitor_start += _network_server ? InteractiveRandomRange(60 * DAY_TICKS) : RandomRange(60 * DAY_TICKS);
 }
 
 void InitializePlayers(void)
@@ -556,9 +557,7 @@ void OnTick_Players(void)
 	_cur_player_tick_index = (_cur_player_tick_index + 1) % MAX_PLAYERS;
 	if (p->name_1 != 0) GenerateCompanyName(p);
 
-	/* XXX -- For now, multiplayer AIs still aren't working, WIP! */
-	//if (_ai.enabled && (!_networking || _network_server) && _game_mode != GM_MENU && !--_next_competitor_start)
-	if (_ai.enabled && !_networking && _game_mode != GM_MENU && !--_next_competitor_start)
+	if (AI_AllowNewAI() && _game_mode != GM_MENU && !--_next_competitor_start)
 		MaybeStartNewPlayer();
 }
 

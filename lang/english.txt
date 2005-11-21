@@ -1011,6 +1011,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Disable
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Disable ships for computer: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Enable new AI (alpha): {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Allow AIs in multiplayer (experimental): {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Default service interval for trains: {ORANGE}{STRING1} days/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Default service interval for trains: {ORANGE}disabled
@@ -1175,6 +1176,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Change p
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Welcome to this new AI, a work in progress. You should expect problems. When you happen take a screenshot and post it in the forum. Enjoy!
 TEMP_AI_ACTIVATED                                               :{WHITE}Warning: this new AI is still alpha! Currently, only trucks and busses work!
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Warning: this function is still experimental. Please report any problems with it to truelight@openttd.org.
 
 ############ network gui strings
 

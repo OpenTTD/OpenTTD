@@ -145,6 +145,14 @@ void AI_RunGameLoop(void)
 	/* Don't do anything if ai is disabled */
 	if (!_ai.enabled) return;
 
+	/* Don't do anything if we are a network-client
+	 *  (too bad when a client joins, he thinks the AIs are real, so it wants to control
+	 *   them.. this avoids that, while loading a network game in singleplayer, does make
+	 *   the AIs to continue ;))
+	 */
+	if (_networking && !_network_server && !_ai.network_client)
+		return;
+
 	/* New tick */
 	_ai.tick++;
 

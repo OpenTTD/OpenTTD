@@ -10,6 +10,7 @@
 #include "trolly.h"
 #include "../../depot.h"
 #include "../../variables.h"
+#include "../ai.h"
 
 #define TEST_STATION_NO_DIR 0xFF
 
@@ -271,7 +272,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 				if (PathFinderInfo->rail_or_road) {
 					// Rail check
 					dir = AiNew_GetRailDirection(current->path.parent->node.tile, ctile, atile);
-					ret = DoCommandByTile(ctile, 0, dir, DC_AUTO | DC_NO_WATER, CMD_BUILD_SINGLE_RAIL);
+					ret = AI_DoCommand(ctile, 0, dir, DC_AUTO | DC_NO_WATER, CMD_BUILD_SINGLE_RAIL);
 					if (CmdFailed(ret)) continue;
 #ifdef AI_PATHFINDER_NO_90DEGREES_TURN
 					if (current->path.parent->parent != NULL) {
@@ -301,7 +302,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 					}
 					// Only destruct things if it is MP_CLEAR of MP_TREES
 					if (dir != 0) {
-						ret = DoCommandByTile(ctile, dir, 0, DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD);
+						ret = AI_DoCommand(ctile, dir, 0, DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD);
 						if (CmdFailed(ret)) continue;
 					}
 				}
@@ -340,7 +341,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 				if (TILES_BETWEEN(new_tile, PathFinderInfo->end_tile_tl, PathFinderInfo->end_tile_br)) break;
 
 				// Try building the bridge..
-				ret = DoCommandByTile(tile, new_tile, (0 << 8) + (MAX_BRIDGES / 2), DC_AUTO, CMD_BUILD_BRIDGE);
+				ret = AI_DoCommand(tile, new_tile, (0 << 8) + (MAX_BRIDGES / 2), DC_AUTO, CMD_BUILD_BRIDGE);
 				if (CmdFailed(ret)) continue;
 				// We can build a bridge here.. add him to the neighbours
 				aystar->neighbours[aystar->num_neighbours].tile = new_tile;
@@ -359,7 +360,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 				(dir == 2 && ti.tileh == 3) ||
 				(dir == 3 && ti.tileh == 9)) {
 			// Now simply check if a tunnel can be build
-			ret = DoCommandByTile(tile, (PathFinderInfo->rail_or_road?0:0x200), 0, DC_AUTO, CMD_BUILD_TUNNEL);
+			ret = AI_DoCommand(tile, (PathFinderInfo->rail_or_road?0:0x200), 0, DC_AUTO, CMD_BUILD_TUNNEL);
 			FindLandscapeHeightByTile(&ti, _build_tunnel_endtile);
 			if (!CmdFailed(ret) && (ti.tileh == 3 || ti.tileh == 6 || ti.tileh == 9 || ti.tileh == 12)) {
 				aystar->neighbours[aystar->num_neighbours].tile = _build_tunnel_endtile;

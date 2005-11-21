@@ -2,6 +2,7 @@
 #define AI_H
 
 #include "../functions.h"
+#include "../network.h"
 
 /* How DoCommands look like for an AI */
 typedef struct AICommand {
@@ -43,6 +44,37 @@ void AI_RunGameLoop(void);
 void AI_Initialize(void);
 void AI_Uninitialize(void);
 int32 AI_DoCommand(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc);
+
+/** Is it allowed to start a new AI.
+ * This function checks some boundries to see if we should launch a new AI.
+ * @return True if we can start a new AI.
+ */
+static inline bool AI_AllowNewAI(void)
+{
+	/* If disabled, no AI */
+	if (!_ai.enabled)
+		return false;
+
+	/* If in network, but no server, no AI */
+	if (_networking && !_network_server)
+		return false;
+
+	/* If in network, and server, possible AI */
+	if (_networking && _network_server) {
+		/* Do we want AIs in multiplayer? */
+		if (!_patches.ai_in_multiplayer)
+			return false;
+
+		/* Only the NewAI is allowed... sadly enough the old AI just doesn't support this
+		 *  system, because all commands are delayed by at least 1 tick, which causes
+		 *  a big problem, because it uses variables that are only set AFTER the command
+		 *  is really executed... */
+		if (!_patches.ainew_active)
+			return false;
+	}
+
+	return true;
+}
 
 #define AI_CHANCE16(a,b)    ((uint16)     AI_Random()  <= (uint16)((65536 * a) / b))
 #define AI_CHANCE16R(a,b,r) ((uint16)(r = AI_Random()) <= (uint16)((65536 * a) / b))

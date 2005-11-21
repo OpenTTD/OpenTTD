@@ -341,10 +341,6 @@ int32 DoCommand(int x, int y, uint32 p1, uint32 p2, uint32 flags, uint procc)
 
 	if (_docommand_recursive == 0) {
 		_error_message = INVALID_STRING_ID;
-		// update last build coord of player
-		if ( (x|y) != 0 && _current_player < MAX_PLAYERS) {
-			GetPlayer(_current_player)->last_build_coordinate = TileVirtXY(x, y);
-		}
 	}
 
 	_docommand_recursive++;

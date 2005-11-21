@@ -32,6 +32,7 @@
 #include "../../engine.h"
 #include "../../gui.h"
 #include "../../depot.h"
+#include "../ai.h"
 
 // This function is called after StartUp. It is the init of an AI
 static void AiNew_State_FirstTime(Player *p)
@@ -78,7 +79,7 @@ static void AiNew_State_Nothing(Player *p)
 {
 	assert(p->ainew.state == AI_STATE_NOTHING);
 	// If we are done idling, start over again
-	if (p->ainew.idle == 0) p->ainew.idle = RandomRange(DAY_TICKS * 2) + DAY_TICKS;
+	if (p->ainew.idle == 0) p->ainew.idle = AI_RandomRange(DAY_TICKS * 2) + DAY_TICKS;
 	if (--p->ainew.idle == 0) {
 		// We are done idling.. what you say? Let's do something!
 		// I mean.. the next tick ;)
@@ -102,7 +103,7 @@ static void AiNew_State_WakeUp(Player *p)
 		// We have no HQ yet, build one on a random place
 		// Random till we found a place for it!
 		// TODO: this should not be on a random place..
-		AiNew_Build_CompanyHQ(p, Random() % MapSize());
+		AiNew_Build_CompanyHQ(p, AI_Random() % MapSize());
 		// Enough for now, but we want to come back here the next time
 		//  so we do not change any status
 		return;
@@ -112,7 +113,7 @@ static void AiNew_State_WakeUp(Player *p)
 
 	// Let's pick an action!
 	if (p->ainew.action == AI_ACTION_NONE) {
-		c = Random() & 0xFF;
+		c = AI_Random() & 0xFF;
 		if (p->current_loan > 0 &&
 				p->old_economy[1].income > AI_MINIMUM_INCOME_FOR_LOAN &&
 				c < 10) {
@@ -222,9 +223,9 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type)
 
 		// Check if the rating in a city is high enough
 		//  If not, take a chance if we want to continue
-		if (t->ratings[_current_player] < 0 && CHANCE16(1,4)) return false;
+		if (t->ratings[_current_player] < 0 && AI_CHANCE16(1,4)) return false;
 
-		if (t->max_pass - t->act_pass < AI_CHECKCITY_NEEDED_CARGO && !CHANCE16(1,AI_CHECKCITY_CITY_CHANCE)) return false;
+		if (t->max_pass - t->act_pass < AI_CHECKCITY_NEEDED_CARGO && !AI_CHANCE16(1,AI_CHECKCITY_CITY_CHANCE)) return false;
 
 		// Check if we have build a station in this town the last 6 months
 		//  else we don't do it. This is done, because stat updates can be slow
@@ -259,7 +260,7 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type)
 				// The rating is high.. second station...
 				//  a little chance that we still continue
 				//  But if there are 3 stations of this size, we never go on...
-				if (j == 2 && CHANCE16(1, AI_CHECKCITY_CARGO_RATING_CHANCE)) continue;
+				if (j == 2 && AI_CHANCE16(1, AI_CHECKCITY_CARGO_RATING_CHANCE)) continue;
 				// We don't like this station :(
 				return false;
 			}
@@ -279,7 +280,7 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type)
 		int count = 0;
 		int j = 0;
 
-		if (i->town != NULL && i->town->ratings[_current_player] < 0 && CHANCE16(1,4)) return false;
+		if (i->town != NULL && i->town->ratings[_current_player] < 0 && AI_CHANCE16(1,4)) return false;
 
 		// No limits on delevering stations!
 		//  Or for industry that does not give anything yet
@@ -319,7 +320,7 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type)
 				j++;
 				// The rating is high.. a little chance that we still continue
 				//  But if there are 2 stations of this size, we never go on...
-				if (j == 1 && CHANCE16(1, AI_CHECKCITY_CARGO_RATING_CHANCE)) continue;
+				if (j == 1 && AI_CHANCE16(1, AI_CHECKCITY_CARGO_RATING_CHANCE)) continue;
 				// We don't like this station :(
 				return false;
 			}
@@ -384,9 +385,9 @@ static void AiNew_State_LocateRoute(Player *p)
 		if (p->ainew.temp == -1) {
 			// First, we pick a random spot to search from
 			if (p->ainew.from_type == AI_CITY)
-				p->ainew.temp = RandomRange(_total_towns);
+				p->ainew.temp = AI_RandomRange(_total_towns);
 			else
-				p->ainew.temp = RandomRange(_total_industries);
+				p->ainew.temp = AI_RandomRange(_total_industries);
 		}
 
 		if (!AiNew_Check_City_or_Industry(p, p->ainew.temp, p->ainew.from_type)) {
@@ -419,9 +420,9 @@ static void AiNew_State_LocateRoute(Player *p)
 	if (p->ainew.temp == -1) {
 		// First, we pick a random spot to search to
 		if (p->ainew.to_type == AI_CITY)
-			p->ainew.temp = RandomRange(_total_towns);
+			p->ainew.temp = AI_RandomRange(_total_towns);
 		else
-			p->ainew.temp = RandomRange(_total_industries);
+			p->ainew.temp = AI_RandomRange(_total_industries);
 	}
 
 	// The same city is not allowed
@@ -993,7 +994,7 @@ static void AiNew_State_BuildStation(Player *p)
 		p->ainew.state = AI_STATE_NOTHING;
 		// If the first station _was_ build, destroy it
 		if (p->ainew.temp != 0)
-			DoCommandByTile(p->ainew.from_tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+			AI_DoCommand(p->ainew.from_tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 		return;
 	}
 	p->ainew.temp++;
@@ -1050,38 +1051,38 @@ static void AiNew_State_BuildPath(Player *p)
 					dir3 = p->ainew.to_direction;
 				}
 
-				ret = DoCommandByTile(tile, _roadbits_by_dir[dir1], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+				ret = AI_DoCommand(tile, _roadbits_by_dir[dir1], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 				if (!CmdFailed(ret)) {
 					dir1 = TileOffsByDir(dir1);
 					if (IsTileType(tile + dir1, MP_CLEAR) || IsTileType(tile + dir1, MP_TREES)) {
-						ret = DoCommandByTile(tile+dir1, AiNew_GetRoadDirection(tile, tile+dir1, tile+dir1+dir1), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+						ret = AI_DoCommand(tile+dir1, AiNew_GetRoadDirection(tile, tile+dir1, tile+dir1+dir1), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 						if (!CmdFailed(ret)) {
 							if (IsTileType(tile + dir1 + dir1, MP_CLEAR) || IsTileType(tile + dir1 + dir1, MP_TREES))
-								DoCommandByTile(tile+dir1+dir1, AiNew_GetRoadDirection(tile+dir1, tile+dir1+dir1, tile+dir1+dir1+dir1), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+								AI_DoCommand(tile+dir1+dir1, AiNew_GetRoadDirection(tile+dir1, tile+dir1+dir1, tile+dir1+dir1+dir1), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 						}
 					}
 				}
 
-				ret = DoCommandByTile(tile, _roadbits_by_dir[dir2], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+				ret = AI_DoCommand(tile, _roadbits_by_dir[dir2], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 				if (!CmdFailed(ret)) {
 					dir2 = TileOffsByDir(dir2);
 					if (IsTileType(tile + dir2, MP_CLEAR) || IsTileType(tile + dir2, MP_TREES)) {
-						ret = DoCommandByTile(tile+dir2, AiNew_GetRoadDirection(tile, tile+dir2, tile+dir2+dir2), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+						ret = AI_DoCommand(tile+dir2, AiNew_GetRoadDirection(tile, tile+dir2, tile+dir2+dir2), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 						if (!CmdFailed(ret)) {
 							if (IsTileType(tile + dir2 + dir2, MP_CLEAR) || IsTileType(tile + dir2 + dir2, MP_TREES))
-								DoCommandByTile(tile+dir2+dir2, AiNew_GetRoadDirection(tile+dir2, tile+dir2+dir2, tile+dir2+dir2+dir2), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+								AI_DoCommand(tile+dir2+dir2, AiNew_GetRoadDirection(tile+dir2, tile+dir2+dir2, tile+dir2+dir2+dir2), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 						}
 					}
 				}
 
-				ret = DoCommandByTile(tile, _roadbits_by_dir[dir3^2], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+				ret = AI_DoCommand(tile, _roadbits_by_dir[dir3^2], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 				if (!CmdFailed(ret)) {
 					dir3 = TileOffsByDir(dir3);
 					if (IsTileType(tile + dir3, MP_CLEAR) || IsTileType(tile + dir3, MP_TREES)) {
-						ret = DoCommandByTile(tile+dir3, AiNew_GetRoadDirection(tile, tile+dir3, tile+dir3+dir3), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+						ret = AI_DoCommand(tile+dir3, AiNew_GetRoadDirection(tile, tile+dir3, tile+dir3+dir3), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 						if (!CmdFailed(ret)) {
 							if (IsTileType(tile + dir3 + dir3, MP_CLEAR) || IsTileType(tile + dir3 + dir3, MP_TREES))
-								DoCommandByTile(tile+dir3+dir3, AiNew_GetRoadDirection(tile+dir3, tile+dir3+dir3, tile+dir3+dir3+dir3), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+								AI_DoCommand(tile+dir3+dir3, AiNew_GetRoadDirection(tile+dir3, tile+dir3+dir3, tile+dir3+dir3+dir3), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 						}
 					}
 				}
@@ -1125,7 +1126,7 @@ static void AiNew_State_BuildDepot(Player *p)
 	}
 
 	p->ainew.state = AI_STATE_BUILD_VEHICLE;
-	p->ainew.idle = 1;
+	p->ainew.idle = 10;
 	p->ainew.veh_main_id = (VehicleID)-1;
 }
 
@@ -1160,11 +1161,6 @@ static void AiNew_State_BuildVehicle(Player *p)
 	p->ainew.cur_veh++;
 	// Decrease the total counter
 	p->ainew.amount_veh--;
-	// Get the new ID
-	if (p->ainew.tbt == AI_TRAIN) {
-	} else {
-		p->ainew.veh_id = _new_roadveh_id;
-	}
 	// Go give some orders!
 	p->ainew.state = AI_STATE_GIVE_ORDERS;
 }
@@ -1178,44 +1174,51 @@ static void AiNew_State_GiveOrders(Player *p)
 
 	assert(p->ainew.state == AI_STATE_GIVE_ORDERS);
 
-	if (p->ainew.veh_main_id != (VehicleID)-1) {
-		DoCommandByTile(0, p->ainew.veh_id + (p->ainew.veh_main_id << 16), 0, DC_EXEC, CMD_CLONE_ORDER);
+	// Get the new ID
+	/* XXX -- Because this AI isn't using any event-system, this is VERY dangerous!
+	 *  There is no way telling if the vehicle is already bought (or delayed by the
+	 *  network), and if bought, if not an other vehicle is bought in between.. in
+	 *  other words, there is absolutely no way knowing if this id is the true
+	 *  id.. soon this will all change, but for now, we needed something to test
+	 *  on ;) -- TrueLight -- 21-11-2005 */
+	if (p->ainew.tbt == AI_TRAIN) {
+	} else {
+		p->ainew.veh_id = _new_roadveh_id;
+	}
 
-		// Skip the first order if it is a second vehicle
-		//  This to make vehicles go different ways..
-		if (p->ainew.veh_id & 1)
-			DoCommandByTile(0, p->ainew.veh_id, 0, DC_EXEC, CMD_SKIP_ORDER);
+	if (p->ainew.veh_main_id != (VehicleID)-1) {
+		AI_DoCommand(0, p->ainew.veh_id + (p->ainew.veh_main_id << 16), 0, DC_EXEC, CMD_CLONE_ORDER);
+
 		p->ainew.state = AI_STATE_START_VEHICLE;
 		return;
 	} else {
 		p->ainew.veh_main_id = p->ainew.veh_id;
 	}
 
-	// When more than 1 vehicle, we send them to different directions
+	// Very handy for AI, goto depot.. but yeah, it needs to be activated ;)
+	if (_patches.gotodepot) {
+		idx = 0;
+		order.type = OT_GOTO_DEPOT;
+		order.flags = OF_UNLOAD;
+		order.station = GetDepotByTile(p->ainew.depot_tile)->index;
+		AI_DoCommand(0, p->ainew.veh_id + (idx << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
+	}
+
+	idx = 0;
+	order.type = OT_GOTO_STATION;
+	order.flags = 0;
+	order.station = _m[p->ainew.to_tile].m2;
+	if (p->ainew.tbt == AI_TRUCK && p->ainew.to_deliver)
+		order.flags |= OF_FULL_LOAD;
+	AI_DoCommand(0, p->ainew.veh_id + (idx << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
+
 	idx = 0;
 	order.type = OT_GOTO_STATION;
 	order.flags = 0;
 	order.station = _m[p->ainew.from_tile].m2;
 	if (p->ainew.tbt == AI_TRUCK && p->ainew.from_deliver)
 		order.flags |= OF_FULL_LOAD;
-	DoCommandByTile(0, p->ainew.veh_id + (idx << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
-
-	idx = 1;
-	order.type = OT_GOTO_STATION;
-	order.flags = 0;
-	order.station = _m[p->ainew.to_tile].m2;
-	if (p->ainew.tbt == AI_TRUCK && p->ainew.to_deliver)
-		order.flags |= OF_FULL_LOAD;
-	DoCommandByTile(0, p->ainew.veh_id + (idx << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
-
-	// Very handy for AI, goto depot.. but yeah, it needs to be activated ;)
-	if (_patches.gotodepot) {
-		idx = 2;
-		order.type = OT_GOTO_DEPOT;
-		order.flags = OF_UNLOAD;
-		order.station = GetDepotByTile(p->ainew.depot_tile)->index;
-		DoCommandByTile(0, p->ainew.veh_id + (idx << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
-	}
+	AI_DoCommand(0, p->ainew.veh_id + (idx << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
 
 	// Start the engines!
 	p->ainew.state = AI_STATE_START_VEHICLE;
@@ -1227,9 +1230,15 @@ static void AiNew_State_StartVehicle(Player *p)
 {
 	assert(p->ainew.state == AI_STATE_START_VEHICLE);
 
+	// Skip the first order if it is a second vehicle
+	//  This to make vehicles go different ways..
+	if (p->ainew.cur_veh & 1)
+		AI_DoCommand(0, p->ainew.veh_id, 0, DC_EXEC, CMD_SKIP_ORDER);
+
 	// 3, 2, 1... go! (give START_STOP command ;))
-	DoCommandByTile(0, p->ainew.veh_id, 0, DC_EXEC, CMD_START_STOP_ROADVEH);
+	AI_DoCommand(0, p->ainew.veh_id, 0, DC_EXEC, CMD_START_STOP_ROADVEH);
 	// Try to build an other vehicle (that function will stop building when needed)
+	p->ainew.idle  = 10;
 	p->ainew.state = AI_STATE_BUILD_VEHICLE;
 }
 
@@ -1239,7 +1248,7 @@ static void AiNew_State_RepayMoney(Player *p)
 {
 	int i;
 	for (i=0;i<AI_LOAN_REPAY;i++)
-		DoCommandByTile(0, 0, 0, DC_EXEC, CMD_DECREASE_LOAN);
+		AI_DoCommand(0, 0, 0, DC_EXEC, CMD_DECREASE_LOAN);
 	p->ainew.state = AI_STATE_ACTION_DONE;
 }
 
@@ -1268,7 +1277,7 @@ static void AiNew_CheckVehicle(Player *p, Vehicle *v)
 				if (v->type == VEH_Road && IsTileDepotType(v->tile, TRANSPORT_ROAD) &&
 						(v->vehstatus&VS_STOPPED)) {
 					// We are at the depot, sell the vehicle
-					DoCommandByTile(0, v->index, 0, DC_EXEC, CMD_SELL_ROAD_VEH);
+					AI_DoCommand(0, v->index, 0, DC_EXEC, CMD_SELL_ROAD_VEH);
 				}
 				return;
 			}
@@ -1277,7 +1286,7 @@ static void AiNew_CheckVehicle(Player *p, Vehicle *v)
 			{
 				int ret = 0;
 				if (v->type == VEH_Road)
-					ret = DoCommandByTile(0, v->index, 0, DC_EXEC, CMD_SEND_ROADVEH_TO_DEPOT);
+					ret = AI_DoCommand(0, v->index, 0, DC_EXEC, CMD_SEND_ROADVEH_TO_DEPOT);
 				// This means we can not find a depot :s
 				//				if (CmdFailed(ret))
 			}

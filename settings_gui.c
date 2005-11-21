@@ -565,6 +565,12 @@ static int32 AiNew_PatchActive_Warning(int32 p1)
 	return 0;
 }
 
+static int32 Ai_In_Multiplayer_Warning(int32 p1)
+{
+	if (p1 == 1) ShowErrorMessage(-1, TEMP_AI_MULTIPLAYER, 0, 0);
+	return 0;
+}
+
 static int32 PopulationInLabelActive(int32 p1)
 {
 	Town* t;
@@ -753,6 +759,7 @@ static const PatchEntry _patches_economy[] = {
 
 static const PatchEntry _patches_ai[] = {
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_AINEW_ACTIVE, "ainew_active", &_patches.ainew_active, 0, 1, 1, &AiNew_PatchActive_Warning},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER, "ai_in_multiplayer", &_patches.ai_in_multiplayer, 0, 1, 1, &Ai_In_Multiplayer_Warning},
 
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_AI_BUILDS_TRAINS, "ai_disable_veh_train", &_patches.ai_disable_veh_train,			0,  0,  0, NULL},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH,"ai_disable_veh_roadveh",&_patches.ai_disable_veh_roadveh,		0,  0,  0, NULL},

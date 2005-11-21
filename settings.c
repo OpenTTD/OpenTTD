@@ -942,6 +942,7 @@ const SettingDesc patch_settings[] = {
 	{"wait_twoway_signal",	SDT_UINT8,	(void*)41,		&_patches.wait_twoway_signal,		NULL},
 
 	{"ainew_active",				SDT_BOOL,		(void*)false, &_patches.ainew_active,					NULL},
+	{"ai_in_multiplayer",		SDT_BOOL,		(void*)false, &_patches.ai_in_multiplayer,		NULL},
 
 	{"map_x", SDT_UINT32, (void*)8, &_patches.map_x, NULL},
 	{"map_y", SDT_UINT32, (void*)8, &_patches.map_y, NULL},
