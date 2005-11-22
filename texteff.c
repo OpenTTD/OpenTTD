@@ -364,7 +364,8 @@ void InitializeAnimatedTiles(void)
 
 static void SaveLoad_ANIT(void)
 {
-	if (_sl_version < 6) {
+	// In pre version 6, we has 16bit per tile, now we have 32bit per tile, convert it ;)
+	if (CheckSavegameVersion(6)) {
 		SlArray(_animated_tile_list, lengthof(_animated_tile_list), SLE_FILE_U16 | SLE_VAR_U32);
 	} else {
 		SlArray(_animated_tile_list, lengthof(_animated_tile_list), SLE_UINT32);

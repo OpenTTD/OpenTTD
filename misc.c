@@ -811,7 +811,7 @@ static void Load_MAP2(void)
 
 		SlArray(buf, lengthof(buf),
 			/* In those versions the m2 was 8 bits */
-			_sl_version < 5 ? SLE_FILE_U8 | SLE_VAR_U16 : SLE_UINT16
+			CheckSavegameVersion(5) ? SLE_FILE_U8 | SLE_VAR_U16 : SLE_UINT16
 		);
 		for (j = 0; j != lengthof(buf); j++) _m[i++].m2 = buf[j];
 	}

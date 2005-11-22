@@ -1130,22 +1130,22 @@ bool AfterLoadGame(uint version)
 	Player *p;
 
 	// in version 2.1 of the savegame, town owner was unified.
-	if (version <= 0x200) ConvertTownOwner();
+	if (CheckSavegameVersionOldStyle(2, 1)) ConvertTownOwner();
 
 	// from version 4.1 of the savegame, exclusive rights are stored at towns
-	if (version <= 0x400) UpdateExclusiveRights();
+	if (CheckSavegameVersionOldStyle(4, 1)) UpdateExclusiveRights();
 
 	// from version 4.2 of the savegame, currencies are in a different order
-	if (version <= 0x401) UpdateCurrencies();
+	if (CheckSavegameVersionOldStyle(4, 2)) UpdateCurrencies();
 
-	// from version 6.0 of the savegame, signs have an "owner"
-	if (version <= 0x600) UpdateSignOwner();
+	// from version 6.1 of the savegame, signs have an "owner"
+	if (CheckSavegameVersionOldStyle(6, 1)) UpdateSignOwner();
 
 	/* In old version there seems to be a problem that water is owned by
 	    OWNER_NONE, not OWNER_WATER.. I can't replicate it for the current
-	    (0x402) version, so I just check when versions are older, and then
+	    (4.3) version, so I just check when versions are older, and then
 	    walk through the whole map.. */
-	if (version <= 0x402) {
+	if (CheckSavegameVersionOldStyle(4, 3)) {
 		TileIndex tile = TileXY(0, 0);
 		uint w = MapSizeX();
 		uint h = MapSizeY();
@@ -1172,12 +1172,12 @@ bool AfterLoadGame(uint version)
 	AfterLoadVehicles();
 
 	// Update all waypoints
-	if (version < 0x0C00) FixOldWaypoints();
+	if (CheckSavegameVersion(12)) FixOldWaypoints();
 
 	UpdateAllWaypointSigns();
 
 	// in version 2.2 of the savegame, we have new airports
-	if (version <= 0x201) UpdateOldAircraft();
+	if (CheckSavegameVersionOldStyle(2, 2)) UpdateOldAircraft();
 
 	UpdateAllStationVirtCoord();
 
@@ -1205,12 +1205,12 @@ bool AfterLoadGame(uint version)
 	vp->virtual_width = vp->width << vp->zoom;
 	vp->virtual_height = vp->height << vp->zoom;
 
-	// in version 4.0 of the savegame, is_active was introduced to determine
+	// in version 4.1 of the savegame, is_active was introduced to determine
 	// if a player does exist, rather then checking name_1
-	if (version <= 0x400) CheckIsPlayerActive();
+	if (CheckSavegameVersionOldStyle(4, 1)) CheckIsPlayerActive();
 
-	// the void tiles on the southern border used to belong to a wrong class.
-	if (version <= 0x402) UpdateVoidTiles();
+	// the void tiles on the southern border used to belong to a wrong class (pre 4.3).
+	if (CheckSavegameVersionOldStyle(4, 3)) UpdateVoidTiles();
 
 	// If Load Scenario / New (Scenario) Game is used,
 	//  a player does not exist yet. So create one here.
@@ -1222,10 +1222,13 @@ bool AfterLoadGame(uint version)
 	DoZoomInOutWindow(ZOOM_NONE, w); // update button status
 	MarkWholeScreenDirty();
 
-	//In 5.1, Oilrigs have been moved (again)
-	if (version <= 0x500) UpdateOilRig();
+	// In 5.1, Oilrigs have been moved (again)
+	if (CheckSavegameVersionOldStyle(5, 1)) UpdateOilRig();
 
-	if (version <= 0x600) {
+	/* In version 6.1 we put the town index in the map-array. To do this, we need
+	 *  to use m2 (16bit big), so we need to clean m2, and that is where this is
+	 *  all about ;) */
+	if (CheckSavegameVersionOldStyle(6, 1)) {
 		BEGIN_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0) {
 			if (IsTileType(tile, MP_HOUSE)) {
 				_m[tile].m4 = _m[tile].m2;
@@ -1247,12 +1250,16 @@ bool AfterLoadGame(uint version)
 		} END_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0);
 	}
 
-	if (version < 0x900) {
+	/* From version 9.0, we update the max passengers of a town (was sometimes negative
+	 *  before that. */
+	if (CheckSavegameVersion(9)) {
 		Town *t;
 		FOR_ALL_TOWNS(t) UpdateTownMaxPass(t);
 	}
 
-	if (version < 0xF00) {
+	/* From version 15.0, we moved a semaphore bit from bit 2 to bit 3 in m4, making
+	 *  room for PBS. While doing that, clean some blocks that should be empty, for PBS. */
+	if (CheckSavegameVersion(15)) {
 		BEGIN_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0) {
 			if (IsTileType(tile, MP_RAILWAY) && HasSignals(tile) && HASBIT(_m[tile].m4, 2)) {
 				CLRBIT(_m[tile].m4, 2);
@@ -1264,7 +1271,9 @@ bool AfterLoadGame(uint version)
 		} END_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0);
 	}
 
-	if (version < 0x1000) {
+	/* From version 16.0, we included autorenew on engines, which are now saved, but
+	 *  of course, we do need to initialize them for older savegames. */
+	if (CheckSavegameVersion(16)) {
 		FOR_ALL_PLAYERS(p) {
 			EngineID i;
 
@@ -1288,7 +1297,7 @@ bool AfterLoadGame(uint version)
 	/* In version 16.1 of the savegame, trains became aware of station lengths
 		need to initialized to the invalid state
 		players needs to set renew_keep_length too */
-	if (version < 0x1001) {
+	if (CheckSavegameVersionOldStyle(16, 1)) {
 		Vehicle *v;
 		FOR_ALL_PLAYERS(p) {
 			p->renew_keep_length = false;
@@ -1306,7 +1315,7 @@ bool AfterLoadGame(uint version)
 	 * waypoints to make way for storing the index in m2. The custom graphics
 	 * id which was stored in m4 is now saved as a grf/id reference in the
 	 * waypoint struct. */
-	if (version < 0x1100) {
+	if (CheckSavegameVersion(17)) {
 		Waypoint *wp;
 
 		FOR_ALL_WAYPOINTS(wp) {

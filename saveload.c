@@ -29,14 +29,12 @@
 #include <setjmp.h>
 
 enum {
-	SAVEGAME_MAJOR_VERSION = 17,
-	SAVEGAME_MINOR_VERSION = 1,
+	SAVEGAME_VERSION = 18,
 
-	SAVEGAME_LOADABLE_VERSION = (SAVEGAME_MAJOR_VERSION << 8) + SAVEGAME_MINOR_VERSION
 };
 
-byte   _sl_version;      /// the major savegame version identifier
-uint16 _sl_full_version; /// the full version of the savegame
+uint16 _sl_version;       /// the major savegame version identifier
+byte   _sl_minor_version; /// the minor savegame version, DO NOT USE!
 
 typedef void WriterProc(uint len);
 typedef uint ReaderProc(void);
@@ -1136,7 +1134,7 @@ static void *IntToReference(uint index, SLRefType rt)
 {
 	/* After version 4.3 REF_VEHICLE_OLD is saved as REF_VEHICLE,
 	 * and should be loaded like that */
-	if (rt == REF_VEHICLE_OLD && _sl_full_version >= ((4 << 8) | 4))
+	if (rt == REF_VEHICLE_OLD && !CheckSavegameVersionOldStyle(4, 4))
 		rt = REF_VEHICLE;
 
 	/* No need to look up NULL pointers, just return immediately */
@@ -1312,7 +1310,7 @@ static void* SaveFileToDisk(void *arg)
 
 	/* We have written our stuff to memory, now write it to file! */
 	hdr[0] = fmt->tag;
-	hdr[1] = TO_BE32((SAVEGAME_MAJOR_VERSION << 16) + (SAVEGAME_MINOR_VERSION << 8));
+	hdr[1] = TO_BE32(SAVEGAME_VERSION << 16);
 	if (fwrite(hdr, sizeof(hdr), 1, _sl.fh) != 1) SlError("file write failed");
 
 	if (!fmt->init_write()) SlError("cannot initialize compressor");
@@ -1426,7 +1424,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 			return AbortSaveLoad();
 		}
 
-		_sl_version = SAVEGAME_MAJOR_VERSION;
+		_sl_version = SAVEGAME_VERSION;
 
 		BeforeSaveGame();
 		SlSaveChunks();
@@ -1453,23 +1451,27 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 				DEBUG(misc, 0) ("Unknown savegame type, trying to load it as the buggy format.");
 				rewind(_sl.fh);
 				_sl_version = version = 0;
-				_sl_full_version = 0;
+				_sl_minor_version = 0;
 				fmt = _saveload_formats + 1; // LZO
 				break;
 			}
 
 			if (fmt->tag == hdr[0]) {
 				// check version number
-				version = TO_BE32(hdr[1]) >> 8;
+				_sl_version = version = TO_BE32(hdr[1]) >> 16;
+				/* Minor is not used anymore from version 18.0, but it is still needed
+				 *  in versions before that (4 cases) which can't be removed easy.
+				 *  Therefor it is loaded, but never saved (or, it saves a 0 in any scenario).
+				 *  So never EVER use this minor version again. -- TrueLight -- 22-11-2005 */
+				_sl_minor_version = (TO_BE32(hdr[1]) >> 8) & 0xFF;
+
+				DEBUG(misc, 1)("[Savegame] Loading savegame version %d\n", _sl_version);
 
 				/* Is the version higher than the current? */
-				if (version > SAVEGAME_LOADABLE_VERSION) {
+				if (_sl_version > SAVEGAME_VERSION) {
 					DEBUG(misc, 0) ("Savegame version invalid.");
 					return AbortSaveLoad();
 				}
-
-				_sl_version = (version >> 8);
-				_sl_full_version = version;
 				break;
 			}
 		}

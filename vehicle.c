@@ -2354,10 +2354,10 @@ static void Load_VEHS(void)
 		SlObject(v, _veh_descs[SlReadByte()]);
 
 		/* Old savegames used 'last_station_visited = 0xFF' */
-		if (_sl_version < 5 && v->last_station_visited == 0xFF)
+		if (CheckSavegameVersion(5) && v->last_station_visited == 0xFF)
 			v->last_station_visited = INVALID_STATION;
 
-		if (_sl_version < 5) {
+		if (CheckSavegameVersion(5)) {
 			/* Convert the current_order.type (which is a mix of type and flags, because
 			    in those versions, they both were 4 bits big) to type and flags */
 			v->current_order.flags = (v->current_order.type & 0xF0) >> 4;
@@ -2366,7 +2366,7 @@ static void Load_VEHS(void)
 	}
 
 	/* Check for shared order-lists (we now use pointers for that) */
-	if (_sl_full_version < 0x502) {
+	if (CheckSavegameVersionOldStyle(5, 2)) {
 		FOR_ALL_VEHICLES(v) {
 			Vehicle *u;
 
@@ -2389,7 +2389,7 @@ static void Load_VEHS(void)
 	}
 
 	/* Connect front and rear engines of multiheaded trains and converts subtype to the new format */
-	if (_sl_full_version < 0x1101) {
+	if (CheckSavegameVersionOldStyle(17, 1)) {
 		ConvertOldMultiheadToNew();
 	}
 }

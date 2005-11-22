@@ -2982,7 +2982,7 @@ static void SaveLoad_STNS(Station *st)
 		SlObject(&st->goods[i], _goods_desc);
 
 		/* In older versions, enroute_from had 0xFF as INVALID_STATION, is now 0xFFFF */
-		if (_sl_full_version < 0x700 && st->goods[i].enroute_from == 0xFF) {
+		if (CheckSavegameVersion(7) && st->goods[i].enroute_from == 0xFF) {
 			st->goods[i].enroute_from = INVALID_STATION;
 		}
 	}
@@ -3022,8 +3022,9 @@ static void Load_STNS(void)
 			st->trainst_h = h;
 		}
 
-		if (_sl_full_version < 0x600) {
-			/* Convert old bus and truck tile to new-ones */
+		/* In older versions, we had just 1 tile for a bus/lorry, now we have more..
+		 *  convert, if needed */
+		if (CheckSavegameVersion(6)) {
 			if (st->bus_tile_obsolete != 0) {
 				st->bus_stops = AllocateRoadStop();
 				if (st->bus_stops == NULL)

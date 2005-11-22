@@ -26,8 +26,8 @@ typedef void AutolengthProc(void *arg);
 typedef struct SaveLoadGlobVarList {
 	void *address;
 	byte conv;
-	byte from_version;
-	byte to_version;
+	uint16 from_version;
+	uint16 to_version;
 } SaveLoadGlobVarList;
 
 typedef struct {
@@ -51,8 +51,8 @@ typedef enum SLRefType {
 } SLRefType;
 
 
-extern byte   _sl_version;      /// the major savegame version identifier
-extern uint16 _sl_full_version; /// the full version of the savegame
+extern uint16 _sl_version;       /// the major savegame version identifier
+extern byte   _sl_minor_version; /// the minor savegame version, DO NOT USE!
 
 
 enum {
@@ -160,6 +160,20 @@ typedef struct SaveLoad {
 
 /* End marker */
 #define SLE_END() {SL_END, 0, 0, 0, 0, 0}
+
+/** Checks if the savegame is below major.minor.
+ */
+static inline bool CheckSavegameVersionOldStyle(uint16 major, byte minor)
+{
+	return (_sl_version < major) || (_sl_version == major && _sl_minor_version < minor);
+}
+
+/** Checks if the savegame is below version.
+ */
+static inline bool CheckSavegameVersion(uint16 version)
+{
+	return _sl_version < version;
+}
 
 void SlSetArrayIndex(uint index);
 int SlIterateArray(void);
