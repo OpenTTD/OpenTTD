@@ -453,6 +453,8 @@ typedef struct message_d {
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(message_d));
 
 typedef struct dropdown_d {
+	uint32 disabled_state;
+	uint32 hidden_state;
 	WindowClass parent_wnd_class;
 	WindowNumber parent_wnd_num;
 	byte parent_button;

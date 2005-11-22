@@ -453,12 +453,12 @@ static int GetDropdownItem(const Window *w)
 		return - 1;
 
 	item = y / 10;
-	if (item >= WP(w,dropdown_d).num_items || (HASBIT(w->disabled_state, item) && !HASBIT(w->hidden_state, item)) || WP(w,dropdown_d).items[item] == 0)
+	if (item >= WP(w,dropdown_d).num_items || (HASBIT(WP(w,dropdown_d).disabled_state, item) && !HASBIT(WP(w,dropdown_d).hidden_state, item)) || WP(w,dropdown_d).items[item] == 0)
 		return - 1;
 
 	// Skip hidden items -- +1 for each hidden item before the clicked item.
 	for (counter = 0; item >= counter; ++counter)
-		if (HASBIT(w->hidden_state, counter)) item++;
+		if (HASBIT(WP(w,dropdown_d).hidden_state, counter)) item++;
 
 	return item;
 }
@@ -478,7 +478,7 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 			sel    = WP(w,dropdown_d).selected_index;
 
 			for (i = 0; WP(w,dropdown_d).items[i] != INVALID_STRING_ID; i++) {
-				if (HASBIT(w->hidden_state, i)) {
+				if (HASBIT(WP(w,dropdown_d).hidden_state, i)) {
 					sel--;
 					continue;
 				}
@@ -486,7 +486,7 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 					if (sel == 0) GfxFillRect(x + 1, y, x + w->width - 4, y + 9, 0);
 					DrawString(x + 2, y, WP(w,dropdown_d).items[i], sel == 0 ? 12 : 16);
 
-					if (HASBIT(w->disabled_state, i)) {
+					if (HASBIT(WP(w,dropdown_d).disabled_state, i)) {
 						GfxFillRect(x, y, x + w->width - 3, y + 9,
 							PALETTE_MODIFIER_GREYOUT | _color_list[_dropdown_menu_widgets[0].color].window_color_bga
 						);
@@ -603,8 +603,8 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 
 	w2->flags4 &= ~WF_WHITE_BORDER_MASK;
 
-	w2->disabled_state = disabled_mask;
-	w2->hidden_state = hidden_mask;
+	WP(w2,dropdown_d).disabled_state = disabled_mask;
+	WP(w2,dropdown_d).hidden_state = hidden_mask;
 
 	WP(w2,dropdown_d).parent_wnd_class = w->window_class;
 	WP(w2,dropdown_d).parent_wnd_num = w->window_number;
