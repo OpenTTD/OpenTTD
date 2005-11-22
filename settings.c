@@ -11,6 +11,9 @@
 #include "variables.h"
 #include "network.h"
 #include "settings.h"
+#ifdef GPMI
+#include "ai/ai.h"
+#endif /* GPMI */
 
 typedef struct IniFile IniFile;
 typedef struct IniItem IniItem;
@@ -943,6 +946,9 @@ const SettingDesc patch_settings[] = {
 
 	{"ainew_active",				SDT_BOOL,		(void*)false, &_patches.ainew_active,					NULL},
 	{"ai_in_multiplayer",		SDT_BOOL,		(void*)false, &_patches.ai_in_multiplayer,		NULL},
+#ifdef GPMI
+	{"ai_gpmi",							SDT_BOOL,		(void*)true,	&_ai.gpmi,											NULL},
+#endif /* GPMI */
 
 	{"map_x", SDT_UINT32, (void*)8, &_patches.map_x, NULL},
 	{"map_y", SDT_UINT32, (void*)8, &_patches.map_y, NULL},

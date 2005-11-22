@@ -5,6 +5,7 @@
 #include "../variables.h"
 #include "../command.h"
 #include "../network.h"
+#include "../debug.h"
 #include "ai.h"
 #include "default/default.h"
 
@@ -120,18 +121,28 @@ int32 AI_DoCommand(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
  */
 static void AI_RunTick(PlayerID player)
 {
-	extern void AiNewDoGameLoop(Player *p);
-
-	Player *p = GetPlayer(player);
 	_current_player = player;
 
-	if (_patches.ainew_active) {
-		AiNewDoGameLoop(p);
-	} else {
-		/* Enable all kind of cheats the old AI needs in order to operate correctly... */
-		_is_old_ai_player = true;
-		AiDoGameLoop(p);
-		_is_old_ai_player = false;
+#ifdef GPMI
+	if (_ai.gpmi) {
+		gpmi_call_RunTick(_ai_player[player].module, _frame_counter);
+		return;
+	}
+#endif /* GPMI */
+
+	{
+		extern void AiNewDoGameLoop(Player *p);
+
+		Player *p = GetPlayer(player);
+
+		if (_patches.ainew_active) {
+			AiNewDoGameLoop(p);
+		} else {
+			/* Enable all kind of cheats the old AI needs in order to operate correctly... */
+			_is_old_ai_player = true;
+			AiDoGameLoop(p);
+			_is_old_ai_player = false;
+		}
 	}
 }
 
@@ -171,10 +182,7 @@ void AI_RunGameLoop(void)
 		Player *p;
 
 		FOR_ALL_PLAYERS(p) {
-			if (p->is_active && p->is_ai) {
-				/* This should always be true, else something went wrong... */
-				assert(_ai_player[p->index].active);
-
+			if (p->is_active && p->is_ai && _ai_player[p->index].active) {
 				/* Run the script */
 				AI_DequeueCommands(p->index);
 				AI_RunTick(p->index);
@@ -190,6 +198,21 @@ void AI_RunGameLoop(void)
  */
 void AI_StartNewAI(PlayerID player)
 {
+#ifdef GPMI
+	char library[80];
+	char params[80];
+
+	/* XXX -- Todo, make a nice assign for library and params from a nice GUI :) */
+	snprintf(library, sizeof(library), "php");
+	snprintf(params,  sizeof(params),  "daeb");
+
+	_ai_player[player].module = gpmi_mod_load(library, params);
+	if (_ai_player[player].module == NULL) {
+		DEBUG(ai, 0)("[AI] Failed to load AI, aborting..");
+		return;
+	}
+#endif /* GPMI */
+
 	/* Called if a new AI is booted */
 	_ai_player[player].active = true;
 }
@@ -204,6 +227,10 @@ void AI_PlayerDied(PlayerID player)
 
 	/* Called if this AI died */
 	_ai_player[player].active = false;
+
+#ifdef GPMI
+	gpmi_mod_unload(_ai_player[player].module);
+#endif /* GPMI */
 }
 
 /**
@@ -211,14 +238,20 @@ void AI_PlayerDied(PlayerID player)
  */
 void AI_Initialize(void)
 {
-	bool ai_network_client = _ai.network_client;
+	bool tmp_ai_network_client = _ai.network_client;
+#ifdef GPMI
+	bool tmp_ai_gpmi = _ai.gpmi;
+#endif /* GPMI */
 
 	memset(&_ai, 0, sizeof(_ai));
 	memset(&_ai_player, 0, sizeof(_ai_player));
 
-	_ai.network_client = ai_network_client;
+	_ai.network_client = tmp_ai_network_client;
 	_ai.network_playas = OWNER_SPECTATOR;
 	_ai.enabled = true;
+#ifdef GPMI
+	_ai.gpmi = tmp_ai_gpmi;
+#endif /* GPMI */
 }
 
 /**
@@ -229,6 +262,6 @@ void AI_Uninitialize(void)
 	Player* p;
 
 	FOR_ALL_PLAYERS(p) {
-		if (p->is_active && p->is_ai) AI_PlayerDied(p->index);
+		if (p->is_active && p->is_ai && _ai_player[p->index].active) AI_PlayerDied(p->index);
 	}
 }

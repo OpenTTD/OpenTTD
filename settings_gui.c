@@ -19,6 +19,9 @@
 #include "console.h"
 #include "town.h"
 #include "variables.h"
+#ifdef GPMI
+#include "ai/ai.h"
+#endif /* GPMI */
 
 static uint32 _difficulty_click_a;
 static uint32 _difficulty_click_b;
@@ -760,6 +763,9 @@ static const PatchEntry _patches_economy[] = {
 static const PatchEntry _patches_ai[] = {
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_AINEW_ACTIVE, "ainew_active", &_patches.ainew_active, 0, 1, 1, &AiNew_PatchActive_Warning},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER, "ai_in_multiplayer", &_patches.ai_in_multiplayer, 0, 1, 1, &Ai_In_Multiplayer_Warning},
+#ifdef GPMI
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_AI_GPMI, "ai_gpmi", &_ai.gpmi, 0, 1, 1, NULL},
+#endif /* GPMI */
 
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_AI_BUILDS_TRAINS, "ai_disable_veh_train", &_patches.ai_disable_veh_train,			0,  0,  0, NULL},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH,"ai_disable_veh_roadveh",&_patches.ai_disable_veh_roadveh,		0,  0,  0, NULL},

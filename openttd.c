@@ -408,12 +408,15 @@ int ttd_main(int argc, char* argv[])
 	/* Set the debug proc */
 	gpmi_debug_proc = &gpmi_debug_openttd;
 
+	/* Set the script-path (GPMI doesn't support multiple paths, yet!) */
+	gpmi_path_scripts = strdup("ai/scripts");
+
 	/* Initialize GPMI */
 	gpmi_init();
 
 	/* Add our paths so we can find our own packages */
-	gpmi_path_append(&gpmi_path_modules, "gpmi/modules");
-	gpmi_path_append(&gpmi_path_packages, "gpmi/packages");
+	gpmi_path_append(&gpmi_path_modules,  "ai/modules");
+	gpmi_path_append(&gpmi_path_packages, "ai/packages");
 #endif /* GPMI */
 
 #if defined(UNIX) && !defined(__MORPHOS__)

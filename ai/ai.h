@@ -3,6 +3,9 @@
 
 #include "../functions.h"
 #include "../network.h"
+#ifdef GPMI
+#include <gpmi.h>
+#endif /* GPMI */
 
 /* How DoCommands look like for an AI */
 typedef struct AICommand {
@@ -21,6 +24,9 @@ typedef struct AIPlayer {
 	bool active;            //! Is this AI active?
 	AICommand *queue;       //! The commands that he has in his queue
 	AICommand *queue_tail;  //! The tail of this queue
+#ifdef GPMI
+	gpmi_module *module;    //! The link to the GPMI module
+#endif /* GPMI */
 } AIPlayer;
 
 /* The struct to keep some data about the AI in general */
@@ -32,6 +38,10 @@ typedef struct AIStruct {
 	/* For network-clients (a OpenTTD client who acts as an AI connected to a server) */
 	bool network_client;    //! Are we a network_client?
 	uint8 network_playas;   //! The current network player we are connected as
+
+#ifdef GPMI
+	bool gpmi;              //! True if we want GPMI AIs
+#endif /* GPMI */
 } AIStruct;
 
 VARDEF AIStruct _ai;
