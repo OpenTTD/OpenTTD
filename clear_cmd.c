@@ -86,7 +86,7 @@ static void TerraformAddDirtyTileAround(TerraformerState *ts, TileIndex tile)
 static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
 {
 	int r;
-	int32 ret;
+	bool skip_clear = false;
 
 	assert(tile < MapSize());
 
@@ -111,17 +111,19 @@ static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
 
 		// If we have a single diagonal track there, the other side of
 		// tile can be terraformed.
-		if ((_m[tile].m5 & ~0x40) == _railway_modes[mode]) return 0;
+		if ((_m[tile].m5 & ~0x40) == _railway_modes[mode]) skip_clear = true;
 	}
 
-	ret = DoCommandByTile(tile, 0,0, ts->flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
+	if (!skip_clear) {
+		int32 ret = DoCommandByTile(tile, 0,0, ts->flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
 
-	if (ret == CMD_ERROR) {
-		_terraform_err_tile = tile;
-		return -1;
+		if (CmdFailed(ret)) {
+			_terraform_err_tile = tile;
+			return -1;
+		}
+
+		ts->cost += ret;
 	}
-
-	ts->cost += ret;
 
 	if (ts->tile_table_count >= 625) return -1;
 	ts->tile_table[ts->tile_table_count++] = tile;
