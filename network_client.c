@@ -19,6 +19,7 @@
 #include "settings.h"
 #include "console.h"
 #include "variables.h"
+#include "ai/ai.h"
 
 
 // This file handles all the client-commands
@@ -342,8 +343,17 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 		return NETWORK_RECV_STATUS_CONN_LOST;
 
 	/* Do we receive a change of data? Most likely we changed playas */
-	if (index == _network_own_client_index)
+	if (index == _network_own_client_index) {
 		_network_playas = playas;
+
+		/* Are we a ai-network-client? */
+		if (_ai.network_client) {
+			if (_ai.network_playas == OWNER_SPECTATOR)
+				AI_StartNewAI(playas - 1);
+
+			_ai.network_playas = playas - 1;
+		}
+	}
 
 	ci = NetworkFindClientInfoFromIndex(index);
 	if (ci != NULL) {
@@ -531,6 +541,17 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 			_patches.autorenew_months = GetPlayer(_local_player)->engine_renew_months;
 			_patches.autorenew_money = GetPlayer(_local_player)->engine_renew_money;
 			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
+		}
+
+		/* Check if we are an ai-network-client, and if so, disable GUI */
+		if (_ai.network_client) {
+			_ai.network_playas = _local_player;
+			_local_player      = OWNER_SPECTATOR;
+
+			if (_ai.network_playas != OWNER_SPECTATOR) {
+				/* If we didn't join the game as a spectator, activate the AI */
+				AI_StartNewAI(_ai.network_playas);
+			}
 		}
 	}
 

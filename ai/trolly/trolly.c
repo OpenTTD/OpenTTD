@@ -44,7 +44,7 @@ static void AiNew_State_FirstTime(Player *p)
 	assert(p->ainew.state == AI_STATE_FIRST_TIME);
 	// We first have to init some things
 
-	if (_current_player == 1) {
+	if (_current_player == 1 || _ai.network_client) {
 		ShowErrorMessage(-1, TEMP_AI_IN_PROGRESS, 0, 0);
 	}
 
@@ -1347,9 +1347,6 @@ static void AiNew_OnTick(Player *p)
 
 void AiNewDoGameLoop(Player *p)
 {
-	// If it is a human player, it is not an AI, so bubye!
-	if (IS_HUMAN_PLAYER(_current_player)) return;
-
 	if (p->ainew.state == AI_STATE_STARTUP) {
 		// The AI just got alive!
 		p->ainew.state = AI_STATE_FIRST_TIME;
@@ -1361,29 +1358,6 @@ void AiNewDoGameLoop(Player *p)
 
 	// We keep a ticker. We use it for competitor_speed
 	p->ainew.tick++;
-
-	// See what the speed is
-	switch (_opt.diff.competitor_speed) {
-		case 0: // Very slow
-			if (!(p->ainew.tick&8)) return;
-			break;
-
-		case 1: // Slow
-			if (!(p->ainew.tick&4)) return;
-			break;
-
-		case 2:
-			if (!(p->ainew.tick&2)) return;
-			break;
-
-		case 3:
-			if (!(p->ainew.tick&1)) return;
-			break;
-
-		case 4: // Very fast
-		default: // Cool, a new speed setting.. ;) VERY fast ;)
-			break;
-	}
 
 	// If we come here, we can do a tick.. do so!
 	AiNew_OnTick(p);

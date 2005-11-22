@@ -3938,24 +3938,6 @@ void AiDoGameLoop(Player *p)
 	AiAdjustLoan(p);
 	AiBuildCompanyHQ(p);
 
-	if (_opt.diff.competitor_speed == 4) {
-		/* ultraspeed */
-		_ai_actions[p->ai.state](p);
-		if (p->bankrupt_asked != 0)
-			return;
-	} else if (_opt.diff.competitor_speed != 3) {
-		p->ai.tick++;
-		if (!(p->ai.tick&1))
-			return;
-		if (_opt.diff.competitor_speed != 2) {
-			if (!(p->ai.tick&2))
-				return;
-			if (_opt.diff.competitor_speed == 0) {
-				if (!(p->ai.tick&4))
-					return;
-			}
-		}
-	}
 #if 0
 	{
 		static byte old_state = 99;

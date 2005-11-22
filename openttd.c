@@ -330,9 +330,9 @@ int ttd_main(int argc, char* argv[])
 	//   a ':' behind it means: it need a param (e.g.: -m<driver>)
 	//   a '::' behind it means: it can optional have a param (e.g.: -d<debug>)
 	#if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
-		optformat = "m:s:v:hDfn::l:eit:d::r:g::G:p:c:";
+		optformat = "bm:s:v:hDfn::l:eit:d::r:g::G:p:c:";
 	#else
-		optformat = "m:s:v:hDn::l:eit:d::r:g::G:p:c:"; // no fork option
+		optformat = "bm:s:v:hDn::l:eit:d::r:g::G:p:c:"; // no fork option
 	#endif
 
 	MyGetOptInit(&mgo, argc-1, argv+1, optformat);
@@ -358,6 +358,7 @@ int ttd_main(int argc, char* argv[])
 				else
 					network_conn = NULL;
 			} break;
+		case 'b': _ai.network_client = true; break;
 		case 'r': ParseResolution(resolution, mgo.opt); break;
 		case 'l': language = mgo.opt; break;
 		case 't': startdate = atoi(mgo.opt); break;
@@ -395,12 +396,17 @@ int ttd_main(int argc, char* argv[])
 		}
 	}
 
+	if (_ai.network_client && !network) {
+		_ai.network_client = false;
+		DEBUG(ai, 0)("[AI] Can't enable network-AI, because '-n' is not used\n");
+	}
+
 	DeterminePaths();
 	CheckExternalFiles();
 
 #ifdef GPMI
 	/* Set the debug proc */
-	gpmi_debug_proc    = &gpmi_debug_openttd;
+	gpmi_debug_proc = &gpmi_debug_openttd;
 
 	/* Initialize GPMI */
 	gpmi_init();
@@ -530,6 +536,11 @@ int ttd_main(int argc, char* argv[])
 
 	/* stop the AI */
 	AI_Uninitialize();
+
+#ifdef GPMI
+	/* Uninitialize GPMI */
+	gpmi_uninit();
+#endif /* GPMI */
 
 	/* Close all and any open filehandles */
 	FioCloseAll();

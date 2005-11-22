@@ -806,10 +806,20 @@ int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 #endif /* ENABLE_NETWORK */
 
 		if (p != NULL) {
-			if (_local_player == OWNER_SPECTATOR) {
+			if (_local_player == OWNER_SPECTATOR && (!_ai.network_client || _ai.network_playas == OWNER_SPECTATOR)) {
 				/* Check if we do not want to be a spectator in network */
-				if (!_networking ||  (_network_server && !_network_dedicated) || _network_playas != OWNER_SPECTATOR) {
-					_local_player = p->index;
+				if (!_networking || (_network_server && !_network_dedicated) || _network_playas != OWNER_SPECTATOR || _ai.network_client) {
+					if (_ai.network_client) {
+						/* As ai-network-client, we have our own rulez (disable GUI and stuff) */
+						_ai.network_playas = p->index;
+						_local_player      = OWNER_SPECTATOR;
+						if (_ai.network_playas != OWNER_SPECTATOR) {
+							/* If we didn't join the game as a spectator, activate the AI */
+							AI_StartNewAI(_ai.network_playas);
+						}
+					} else {
+						_local_player = p->index;
+					}
 					MarkWholeScreenDirty();
 				}
 			} else if (p->index == _local_player) {

@@ -87,7 +87,7 @@ int32 AI_DoCommand(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 	/* First, do a test-run to see if we can do this */
 	res = DoCommandByTile(tile, p1, p2, flags & ~DC_EXEC, procc);
 	/* The command failed, or you didn't want to execute, or you are quering, return */
-	if ((res & CMD_ERROR) || !(flags & DC_EXEC) || (flags & DC_QUERY_COST))
+	if ((CmdFailed(res)) || !(flags & DC_EXEC) || (flags & DC_QUERY_COST))
 		return res;
 
 	/* If we did a DC_EXEC, and the command did not return an error, execute it
@@ -162,10 +162,10 @@ void AI_RunGameLoop(void)
 		return;
 
 	/* Check for AI-client (so joining a network with an AI) */
-	if (_ai.network_client) {
+	if (_ai.network_client && _ai_player[_ai.network_playas].active) {
 		/* Run the script */
-		AI_DequeueCommands(_ai.network_player);
-		AI_RunTick(_ai.network_player);
+		AI_DequeueCommands(_ai.network_playas);
+		AI_RunTick(_ai.network_playas);
 	} else if (!_networking || _network_server) {
 		/* Check if we want to run AIs (server or SP only) */
 		Player *p;
@@ -199,6 +199,9 @@ void AI_StartNewAI(PlayerID player)
  */
 void AI_PlayerDied(PlayerID player)
 {
+	if (_ai.network_client && _ai.network_playas == player)
+		_ai.network_playas = OWNER_SPECTATOR;
+
 	/* Called if this AI died */
 	_ai_player[player].active = false;
 }
@@ -208,9 +211,13 @@ void AI_PlayerDied(PlayerID player)
  */
 void AI_Initialize(void)
 {
+	bool ai_network_client = _ai.network_client;
+
 	memset(&_ai, 0, sizeof(_ai));
 	memset(&_ai_player, 0, sizeof(_ai_player));
 
+	_ai.network_client = ai_network_client;
+	_ai.network_playas = OWNER_SPECTATOR;
 	_ai.enabled = true;
 }
 
