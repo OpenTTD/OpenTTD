@@ -9,6 +9,11 @@
 #include "ai.h"
 #include "default/default.h"
 
+/* Here we define the events */
+#define DEF_EVENTS
+#include "ai_event.h"
+#undef DEF_EVENTS
+
 /**
  * Dequeues commands put in the queue via AI_PutCommandInQueue.
  */

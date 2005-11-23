@@ -17,6 +17,7 @@
 #include "depot.h"
 #include "pbs.h"
 #include "debug.h"
+#include "ai/ai_event.h"
 
 /* When true, GetTrackStatus for roads will treat roads under reconstruction
  * as normal roads instead of impassable. This is used when detecting whether
@@ -671,6 +672,8 @@ int32 CmdBuildRoadDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			(p1 | 0x20) /* map5 */
 		);
 
+		ai_event(_current_player, ottd_Event_BuildDepot, dep->index, tile);
+		ai_event(_current_player, ottd_Event_BuildRoadDepot, dep->index, tile);
 	}
 	return cost + _price.build_road_depot;
 }
@@ -1156,6 +1159,10 @@ static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 		if (v->type == VEH_Road && v->u.road.frame == 11) {
 			if (_roadveh_enter_depot_unk0[GB(_m[tile].m5, 0, 2)] == v->u.road.state) {
 				RoadVehEnterDepot(v);
+
+				ai_event(v->owner, ottd_Event_VehicleEnterDepot, v->index, tile);
+				ai_event(v->owner, ottd_Event_RoadVehicleEnterDepot, v->index, tile);
+
 				return 4;
 			}
 		}

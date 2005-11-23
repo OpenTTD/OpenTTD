@@ -27,6 +27,7 @@
 #include "depot.h"
 #include "pbs.h"
 #include "train.h"
+#include "ai/ai_event.h"
 
 enum {
 	/* Max stations: 64000 (64 * 1000) */
@@ -1463,6 +1464,9 @@ int32 CmdBuildRoadStop(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
 		InvalidateWindow(WC_STATION_LIST, st->owner);
+
+		ai_event(_current_player, ottd_Event_BuildStation, st->index, tile);
+		ai_event(_current_player, ottd_Event_BuildRoadStation, st->index, tile);
 	}
 	return cost;
 }
