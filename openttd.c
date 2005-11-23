@@ -45,7 +45,7 @@
 
 #ifdef GPMI
 #include <gpmi.h>
-#include <gpmi/packages/paths.h>
+#include <gpmi_pkg/paths.h>
 #endif /* GPMI */
 
 void GenerateWorld(int mode, uint size_x, uint size_y);
