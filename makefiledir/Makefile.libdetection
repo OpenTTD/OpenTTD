@@ -23,8 +23,6 @@ ifeq ($(shell uname), Darwin)
 OSX:=1
 # OSX uses the unix setup too
 UNIX:=1
-# OSX generally uses static since so few computers actually have all the libs installed in unix style
-STATIC:=1
 endif
 
 # Automatically recognize if building on MorphOS

@@ -73,6 +73,9 @@
 # do `make install', the game won't be able to find it's files (so you should
 # also define all the following paths before building).
 #
+# OSX specific paths are set in os/macosx/Makefile
+# MAKEMOVEABLE moves the dynamic libs into the bundle to make the app independent from end user's libs (OSX only)
+#
 # So, the following paths should be defined if INSTALL is defined.
 # None of these paths have to end with /
 # PREFIX:	Normally /usr/local
@@ -193,14 +196,6 @@ ifndef SKIP_STATIC_CHECK
 $(error Static is only known to work on MorphOS and MacOSX!!! --- Check Makefile.config for more info and howto bypass this check)
 endif
 endif
-endif
-endif
-endif
-
-ifdef RELEASE
-ifdef OSX
-ifndef STATIC
-$(error do not make dynamically linked releases. Most users can't use those)
 endif
 endif
 endif
@@ -492,6 +487,9 @@ endif
 
 # OSX specific setup
 ifdef OSX
+	# ensure that changing libpathnames will not overwrite anything in the binary
+	LDFLAGS += -headerpad_max_install_names
+
 	ifndef DEDICATED
 		LIBS += -framework QuickTime
 	endif
@@ -798,18 +796,9 @@ $(TTD): $(OBJS) $(MAKE_CONFIG)
 	@echo '===> Linking $@'
 	$(Q)$(CC) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS) $(LIBS) -o $@
 
-$(OSX): $(TTD)
-	$(Q)rm -fr "$(OSXAPP)"
-	$(Q)mkdir -p "$(OSXAPP)"/Contents/MacOS
-	$(Q)mkdir -p "$(OSXAPP)"/Contents/Resources
-	$(Q)mkdir -p "$(OSXAPP)"/Contents/Data
-	$(Q)mkdir -p "$(OSXAPP)"/Contents/Lang
-	$(Q)echo "APPL????" > "$(OSXAPP)"/Contents/PkgInfo
-	$(Q)cp os/macosx/openttd.icns "$(OSXAPP)"/Contents/Resources/openttd.icns
-	$(Q)os/macosx/plistgen.sh "$(OSXAPP)" "$(REV)"
-	$(Q)cp data/* "$(OSXAPP)"/Contents/Data/
-	$(Q)cp lang/*.lng "$(OSXAPP)"/Contents/Lang/
-	$(Q)cp $(TTD) "$(OSXAPP)"/Contents/MacOS/$(TTD)
+ifdef OSX
+-include os/macosx/Makefile
+endif
 
 $(STRGEN): strgen/strgen.c endian_host.h
 	@echo '===> Compiling and Linking $@'
@@ -860,43 +849,6 @@ release: all
 	@echo "Release archive can be found in RAM:t/ now."
 
 .PHONY: release
-endif
-
-ifdef OSX
-release: all
-	$(Q)mkdir -p "OpenTTD $(RELEASE)"
-	$(Q)mkdir -p "OpenTTD $(RELEASE)"/docs
-	$(Q)mkdir -p "OpenTTD $(RELEASE)"/scenario
-	$(Q)cp -R $(OSXAPP) "OpenTTD $(RELEASE)"/
-	$(Q)cp docs/OSX_where_did_the_package_go.txt "OpenTTD $(RELEASE)"/Where\ did\ the\ package\ go.txt
-	$(Q)cp readme.txt "OpenTTD $(RELEASE)"/docs/
-	$(Q)cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD $(RELEASE)"/docs/readme\ if\ crashed\ on\ OSX.txt
-	$(Q)cp docs/console.txt "OpenTTD $(RELEASE)"/docs/
-	$(Q)cp COPYING "OpenTTD $(RELEASE)"/docs/
-	$(Q)cp changelog.txt "OpenTTD $(RELEASE)"/docs/
-	$(Q)cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD $(RELEASE)"/docs/
-	$(Q)cp os/macosx/*.webloc "OpenTTD $(RELEASE)"
-	$(Q)cp known-bugs.txt "OpenTTD $(RELEASE)"/known-bugs.txt
-	$(Q)cp scenario/* "OpenTTD $(RELEASE)"/scenario/
-	$(Q)/usr/bin/hdiutil create -ov -format UDZO -srcfolder "OpenTTD $(RELEASE)" openttd-"$(RELEASE)"-osx.dmg
-	$(Q)rm -fr "OpenTTD $(RELEASE)"
-
-nightly_build: all
-	$(Q)mkdir -p "OpenTTD_nightly_$(DATE)"
-	$(Q)mkdir -p "OpenTTD_nightly_$(DATE)"/docs
-	$(Q)cp -R $(OSXAPP) "OpenTTD_nightly_$(DATE)"/
-	$(Q)cp docs/OSX_where_did_the_package_go.txt "OpenTTD_nightly_$(DATE)"/Where\ did\ the\ package\ go.txt
-	$(Q)cp readme.txt "OpenTTD_nightly_$(DATE)"/docs/
-	$(Q)cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD_nightly_$(DATE)"/docs/readme\ if\ crashed\ on\ OSX.txt
-	$(Q)cp docs/console.txt "OpenTTD_nightly_$(DATE)"/docs/
-	$(Q)cp COPYING "OpenTTD_nightly_$(DATE)"/docs/
-	$(Q)cp revisionlog.txt "OpenTTD_nightly_$(DATE)"/revisionlog.txt
-	$(Q)cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD_nightly_$(DATE)"/docs/
-	$(Q)cp os/macosx/*.webloc "OpenTTD_nightly_$(DATE)"/
-	$(Q)/usr/bin/hdiutil create -ov -format UDZO -srcfolder "OpenTTD_nightly_$(DATE)" openttd-nightly-"$(DATE)".dmg
-	$(Q)rm -fr "OpenTTD_nightly_$(DATE)"
-
-.PHONY: release nightly_build
 endif
 
 rev.c: FORCE
