@@ -263,4 +263,10 @@ void LoadFromHighScore(void);
 int8 SaveHighScoreValue(const Player *p);
 int8 SaveHighScoreValueNetwork(void);
 
+void InitialiseEngineReplacement(Player *p);
+EngineID EngineReplacement(const Player *p, EngineID engine);
+bool EngineHasReplacement(const Player *p, EngineID engine);
+int32 AddEngineReplacement(Player *p, EngineID old_engine, EngineID new_engine, uint32 flags);
+int32 RemoveEngineReplacement(Player *p, EngineID engine, uint32 flags);
+
 #endif /* PLAYER_H */

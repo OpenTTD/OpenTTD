@@ -465,7 +465,6 @@ static Player *AllocatePlayer(void)
 Player *DoStartupNewPlayer(bool is_ai)
 {
 	Player *p;
-	int i;
 
 	p = AllocatePlayer();
 	if (p == NULL)
@@ -488,9 +487,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 	p->face = Random();
 
 	/* Engine renewal settings */
-	for (i = 0; i < TOTAL_NUM_ENGINES; i++)
-		p->engine_replacement[i] = INVALID_ENGINE;
-
+	InitialiseEngineReplacement(p);
 	p->renew_keep_length = false;
 	p->engine_renew = false;
 	p->engine_renew_months = -6;
@@ -731,10 +728,10 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				// make sure that the player can actually buy the new engine
 				if (!HASBIT(GetEngine(new_engine_type)->player_avail, _current_player))
 					return CMD_ERROR;
-			}
 
-			if (flags & DC_EXEC) {
-				p->engine_replacement[old_engine_type] = new_engine_type;
+				return AddEngineReplacement(p, old_engine_type, new_engine_type, flags);
+			} else {
+				return RemoveEngineReplacement(p, old_engine_type, flags);
 			}
 		} break;
 		case 4:
@@ -1098,6 +1095,63 @@ void LoadFromHighScore(void)
 
 	/* Initialize end of game variable (when to show highscore chart) */
 	 _patches.ending_date = 2051;
+}
+
+void InitialiseEngineReplacement(Player *p)
+{
+	EngineID engine;
+
+	for (engine = 0; engine < TOTAL_NUM_ENGINES; engine++)
+		p->engine_replacement[engine] = INVALID_ENGINE;
+}
+
+/**
+ * Retrieve the engine replacement for the given player and original engine type.
+ * @param p Player.
+ * @param engine Engine type.
+ * @return Assigned replacement engine.
+ */
+EngineID EngineReplacement(const Player *p, EngineID engine)
+{
+	return p->engine_replacement[engine];
+}
+
+/**
+ * Check if an engine has a replacement set up.
+ * @param p Player.
+ * @param engine Engine type.
+ * @return True if there is a replacement for the original engine type.
+ */
+bool EngineHasReplacement(const Player *p, EngineID engine)
+{
+	return EngineReplacement(p, engine) != INVALID_ENGINE;
+}
+
+/**
+ * Add an engine replacement for the player.
+ * @param p Player.
+ * @param old_engine The original engine type.
+ * @param new_engine The replacement engine type.
+ * @param flags The calling command flags.
+ * @return 0 on success, CMD_ERROR on failure.
+ */
+int32 AddEngineReplacement(Player *p, EngineID old_engine, EngineID new_engine, uint32 flags)
+{
+	if (flags & DC_EXEC) p->engine_replacement[old_engine] = new_engine;
+	return 0;
+}
+
+/**
+ * Remove an engine replacement for the player.
+ * @param p Player.
+ * @param engine The original engine type.
+ * @param flags The calling command flags.
+ * @return 0 on success, CMD_ERROR on failure.
+ */
+int32 RemoveEngineReplacement(Player *p, EngineID engine, uint32 flags)
+{
+	if (flags & DC_EXEC) p->engine_replacement[engine] = INVALID_ENGINE;
+	return 0;
 }
 
 // Save/load of players

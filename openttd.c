@@ -1277,11 +1277,7 @@ bool AfterLoadGame(uint version)
 	 *  of course, we do need to initialize them for older savegames. */
 	if (CheckSavegameVersion(16)) {
 		FOR_ALL_PLAYERS(p) {
-			EngineID i;
-
-			for (i = 0; i < TOTAL_NUM_ENGINES; i++) {
-				p->engine_replacement[i] = INVALID_ENGINE;
-			}
+			InitialiseEngineReplacement(p);
 			p->engine_renew = false;
 			p->engine_renew_months = -6;
 			p->engine_renew_money = 100000;
