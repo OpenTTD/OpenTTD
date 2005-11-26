@@ -39,9 +39,7 @@ typedef struct AIStruct {
 	bool network_client;    //! Are we a network_client?
 	uint8 network_playas;   //! The current network player we are connected as
 
-#ifdef GPMI
 	bool gpmi;              //! True if we want GPMI AIs
-#endif /* GPMI */
 } AIStruct;
 
 VARDEF AIStruct _ai;

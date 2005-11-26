@@ -244,9 +244,7 @@ void AI_PlayerDied(PlayerID player)
 void AI_Initialize(void)
 {
 	bool tmp_ai_network_client = _ai.network_client;
-#ifdef GPMI
 	bool tmp_ai_gpmi = _ai.gpmi;
-#endif /* GPMI */
 
 	memset(&_ai, 0, sizeof(_ai));
 	memset(&_ai_player, 0, sizeof(_ai_player));
@@ -254,9 +252,7 @@ void AI_Initialize(void)
 	_ai.network_client = tmp_ai_network_client;
 	_ai.network_playas = OWNER_SPECTATOR;
 	_ai.enabled = true;
-#ifdef GPMI
 	_ai.gpmi = tmp_ai_gpmi;
-#endif /* GPMI */
 }
 
 /**
