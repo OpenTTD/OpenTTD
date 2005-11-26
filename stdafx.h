@@ -142,6 +142,14 @@
 # undef TTD_ALIGNMENT_4
 # undef TTD_ALIGNMENT_2
 # define GCC_PACK
+
+// This is needed to zlib uses the stdcall calling convention on visual studio, also used with libpng (VS6 warning)
+# if defined(WITH_ZLIB) || defined(WITH_PNG)
+#  ifndef ZLIB_WINAPI
+#   define ZLIB_WINAPI
+#  endif
+# endif
+
 #endif /* defined(_MSC_VER) */
 
 

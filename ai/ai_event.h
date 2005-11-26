@@ -20,9 +20,9 @@
  *  Ugly, I know, but it works! */
 
 #	ifdef DEF_EVENTS
-	void empty_function(PlayerID player, int event, ...) {}
+	void CDECL empty_function(PlayerID player, int event, ...) {}
 #	else
-	extern void empty_function(PlayerID player, int event, ...);
+	extern void CDECL empty_function(PlayerID player, int event, ...);
 #	endif
 #	define ai_event empty_function
 
