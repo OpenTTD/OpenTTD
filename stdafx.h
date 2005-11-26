@@ -3,21 +3,6 @@
 #ifndef STDAFX_H
 #define STDAFX_H
 
-#if defined(_MSC_VER)
-# pragma once
-# define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
-# pragma warning(disable: 4018) // 'expression' : signed/unsigned mismatch
-# pragma warning(disable: 4100) // 'identifier' : unreferenced formal parameter
-# pragma warning(disable: 4127) // conditional expression is constant
-# pragma warning(disable: 4201) // nonstandard extension used : nameless struct/union
-# pragma warning(disable: 4244) // 'conversion' conversion from 'type1' to 'type2', possible loss of data
-# pragma warning(disable: 4245) // 'conversion' : conversion from 'type1' to 'type2', signed/unsigned mismatch
-# pragma warning(disable: 4276) // 'fucntion' : no prototype provided; assumed no parameters (MSVC BUG???)
-# pragma warning(disable: 4305) // 'identifier' : truncation from 'type1' to 'type2'
-# pragma warning(disable: 4514) // 'function' : unreferenced inline function has been removed
-# pragma warning(disable: 4761) // integral size mismatch in argument : conversion supplied
-#endif /* _MSC_VER */
-
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -108,6 +93,15 @@
 
 // Stuff for MSVC
 #if defined(_MSC_VER)
+# pragma once
+# define WIN32_LEAN_AND_MEAN     // Exclude rarely-used stuff from Windows headers
+# pragma warning(disable: 4244)  // 'conversion' conversion from 'type1' to 'type2', possible loss of data
+# pragma warning(disable: 4761)  // integral size mismatch in argument : conversion supplied
+# if _MSC_VER < 1300             // MSVC 6 borkdness
+#  pragma warning(disable: 4018) // 'expression' : signed/unsigned mismatch
+#  pragma warning(disable: 4305) // 'identifier' : truncation from 'type1' to 'type2'
+# endif /* _MSC_VER < 1300 */
+
 # include <malloc.h> // alloca()
 # define NORETURN __declspec(noreturn)
 # define FORCEINLINE __forceinline
