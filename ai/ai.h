@@ -77,7 +77,7 @@ static inline bool AI_AllowNewAI(void)
 		 *  system, because all commands are delayed by at least 1 tick, which causes
 		 *  a big problem, because it uses variables that are only set AFTER the command
 		 *  is really executed... */
-		if (!_patches.ainew_active)
+		if (!_patches.ainew_active && !_ai.gpmi)
 			return false;
 	}
 
