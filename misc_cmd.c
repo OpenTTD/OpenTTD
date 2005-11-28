@@ -13,6 +13,7 @@
 #include "economy.h"
 #include "network.h"
 #include "variables.h"
+#include "ai/ai.h"
 
 /** Change the player's face.
  * @param x,y unused
@@ -75,7 +76,7 @@ int32 CmdIncreaseLoan(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		/* Loan the maximum amount or not? */
-		int32 loan = (p2) ? _economy.max_loan - p->current_loan : IS_HUMAN_PLAYER(_current_player) ? 10000 : 50000;
+		int32 loan = (p2) ? _economy.max_loan - p->current_loan : (IS_HUMAN_PLAYER(_current_player) || _patches.ainew_active || _ai.gpmi) ? 10000 : 50000;
 
 		p->money64 += loan;
 		p->current_loan += loan;
@@ -109,7 +110,7 @@ int32 CmdDecreaseLoan(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		loan = max(loan, 10000);
 		loan -= loan % 10000;
 	} else {
-		loan = (_patches.ainew_active) ? min(loan, 10000) : min(loan, IS_HUMAN_PLAYER(_current_player) ? 10000 : 50000);
+		loan = min(loan, (IS_HUMAN_PLAYER(_current_player) || _patches.ainew_active || _ai.gpmi) ? 10000 : 50000);
 	}
 
 	if (p->player_money < loan) {
