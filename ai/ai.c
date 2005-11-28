@@ -198,23 +198,75 @@ void AI_RunGameLoop(void)
 	_current_player = OWNER_NONE;
 }
 
+#ifdef GPMI
+
+void (*ottd_GetNextAIData)(char **library, char **param);
+
+void AI_ShutdownAIControl(bool with_error)
+{
+	if (_ai.gpmi_mod != NULL)
+		gpmi_mod_unload(_ai.gpmi_mod);
+	if (_ai.gpmi_pkg != NULL)
+		gpmi_pkg_unload(_ai.gpmi_pkg);
+
+	if (with_error) {
+		DEBUG(ai, 0)("[AI] Failed to load AI Control, switching back to built-in AIs..");
+		_ai.gpmi = false;
+	}
+}
+
+void AI_LoadAIControl(void)
+{
+	/* Load module */
+	_ai.gpmi_mod = gpmi_mod_load("ottd_ai_control_mod", NULL);
+	if (_ai.gpmi_mod == NULL) {
+		AI_ShutdownAIControl(true);
+		return;
+	}
+
+	/* Load package */
+	if (gpmi_pkg_load("ottd_ai_control_pkg", 0, NULL, NULL, &_ai.gpmi_pkg)) {
+		AI_ShutdownAIControl(true);
+		return;
+	}
+
+	/* Now link all the functions */
+	{
+		ottd_GetNextAIData = gpmi_pkg_resolve(_ai.gpmi_pkg, "ottd_GetNextAIData");
+
+		if (ottd_GetNextAIData == NULL)
+			AI_ShutdownAIControl(true);
+	}
+}
+#endif /* GPMI */
+
 /**
  * A new AI sees the day of light. You can do here what ever you think is needed.
  */
 void AI_StartNewAI(PlayerID player)
 {
 #ifdef GPMI
-	char library[80];
-	char params[80];
+	/* Keep this in a different IF, because the function can turn _ai.gpmi off!! */
+	if (_ai.gpmi && _ai.gpmi_mod == NULL)
+		AI_LoadAIControl();
 
-	/* XXX -- Todo, make a nice assign for library and params from a nice GUI :) */
-	snprintf(library, sizeof(library), "php");
-	snprintf(params,  sizeof(params),  "daeb");
+	if (_ai.gpmi) {
+		char *library = NULL;
+		char *params = NULL;
 
-	_ai_player[player].module = gpmi_mod_load(library, params);
-	if (_ai_player[player].module == NULL) {
-		DEBUG(ai, 0)("[AI] Failed to load AI, aborting..");
-		return;
+		ottd_GetNextAIData(&library, &params);
+
+		if (library != NULL) {
+			_ai_player[player].module = gpmi_mod_load(library, params);
+			free(library);
+		}
+		if (params != NULL)
+			free(params);
+
+		if (_ai_player[player].module == NULL) {
+			DEBUG(ai, 0)("[AI] Failed to load AI, aborting..");
+			return;
+		}
 	}
 #endif /* GPMI */
 
@@ -234,7 +286,8 @@ void AI_PlayerDied(PlayerID player)
 	_ai_player[player].active = false;
 
 #ifdef GPMI
-	gpmi_mod_unload(_ai_player[player].module);
+	if (_ai_player[player].module != NULL)
+		gpmi_mod_unload(_ai_player[player].module);
 #endif /* GPMI */
 }
 
@@ -265,4 +318,8 @@ void AI_Uninitialize(void)
 	FOR_ALL_PLAYERS(p) {
 		if (p->is_active && p->is_ai && _ai_player[p->index].active) AI_PlayerDied(p->index);
 	}
+
+#ifdef GPMI
+	AI_ShutdownAIControl(false);
+#endif /* GPMI */
 }

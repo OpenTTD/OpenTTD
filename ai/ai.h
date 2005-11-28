@@ -40,6 +40,10 @@ typedef struct AIStruct {
 	uint8 network_playas;   //! The current network player we are connected as
 
 	bool gpmi;              //! True if we want GPMI AIs
+#ifdef GPMI
+	gpmi_module *gpmi_mod;  //! The module controller for GPMI based AIs (Event-handling)
+	gpmi_package *gpmi_pkg; //! The package controller for GPMI based AIs (Functions)
+#endif /* GPMI */
 } AIStruct;
 
 VARDEF AIStruct _ai;
