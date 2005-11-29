@@ -235,7 +235,6 @@ static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_sti
 		WP(w,def_d).data_1 = mode;
 		if (show_stickied) {
 			w->flags4 |= WF_STICKY;
-			w->click_state ^= (1 << 3);
 		}
 	}
 }

@@ -394,6 +394,8 @@ void DrawWindowWidgets(const Window *w)
 
 		case WWT_STICKYBOX: {
 			assert(r.right - r.left == 11); // XXX - to ensure the same sizes are used everywhere!
+
+			clicked = !!(w->flags4 & WF_STICKY);
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : 0);
 			DrawSprite((clicked) ? SPR_PIN_UP : SPR_PIN_DOWN, r.left + 2 + clicked, r.top + 3 + clicked);
 			break;

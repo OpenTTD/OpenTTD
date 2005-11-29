@@ -74,7 +74,6 @@ static void DispatchLeftClickEvent(Window* w, int x, int y)
 		}
 
 		if (w->desc_flags & WDF_STICKY_BUTTON && wi->type == WWT_STICKYBOX) {
-			TOGGLEBIT(w->click_state, e.click.widget);
 			w->flags4 ^= WF_STICKY;
 			InvalidateWidget(w, e.click.widget);
 			return;
