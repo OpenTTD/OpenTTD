@@ -273,7 +273,7 @@ Vehicle *FindVehicleOnTileZ(TileIndex tile, byte z);
 void InitializeTrains(void);
 
 bool CanFillVehicle(Vehicle *v);
-bool CanRefitTo(const Vehicle *v, CargoID cid_to);
+bool CanRefitTo(EngineID engine_type, CargoID cid_to);
 
 void ViewportAddVehicles(DrawPixelInfo *dpi);
 

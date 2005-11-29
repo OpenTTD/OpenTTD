@@ -1717,7 +1717,7 @@ int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		/* XXX: We also refit all the attached wagons en-masse if they
 		 * can be refitted. This is how TTDPatch does it.  TODO: Have
 		 * some nice [Refit] button near each wagon. --pasky */
-		if (!CanRefitTo(v, new_cid)) continue;
+		if (!CanRefitTo(v->engine_type, new_cid)) continue;
 
 		if (v->cargo_cap != 0) {
 			const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);

@@ -496,7 +496,7 @@ int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	avi = AircraftVehInfo(v->engine_type);
 
 	/* Check cargo */
-	if (new_cid > NUM_CARGO || !CanRefitTo(v, new_cid)) return CMD_ERROR;
+	if (new_cid > NUM_CARGO || !CanRefitTo(v->engine_type, new_cid)) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_RUN);
 

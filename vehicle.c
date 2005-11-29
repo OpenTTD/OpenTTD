@@ -680,15 +680,15 @@ bool CanFillVehicle(Vehicle *v)
 	return false;
 }
 
-/** Check if a given vehicle (type) can be refitted to a given cargo
- * @param *v vehicle to check
+/** Check if a given engine type can be refitted to a given cargo
+ * @param engine_type Engine type to check
  * @param cid_to check refit to this cargo-type
  * @return true if it is possible, false otherwise
  */
-bool CanRefitTo(const Vehicle *v, CargoID cid_to)
+bool CanRefitTo(EngineID engine_type, CargoID cid_to)
 {
 	CargoID cid = _global_cargo_id[_opt_ptr->landscape][cid_to];
-	return HASBIT(_engine_info[v->engine_type].refit_mask, cid) != 0;
+	return HASBIT(_engine_info[engine_type].refit_mask, cid) != 0;
 }
 
 static void DoDrawVehicle(const Vehicle *v)
