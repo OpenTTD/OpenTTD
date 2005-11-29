@@ -316,6 +316,9 @@ int ttd_main(int argc, char* argv[])
 	uint startdate = -1;
 	bool dedicated;
 
+#ifdef GPMI
+	_ai.gpmi_param[0] = 0;
+#endif /* GPMI */
 	musicdriver[0] = sounddriver[0] = videodriver[0] = 0;
 
 	_game_mode = GM_MENU;
@@ -330,9 +333,9 @@ int ttd_main(int argc, char* argv[])
 	//   a ':' behind it means: it need a param (e.g.: -m<driver>)
 	//   a '::' behind it means: it can optional have a param (e.g.: -d<debug>)
 	#if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
-		optformat = "bm:s:v:hDfn::l:eit:d::r:g::G:p:c:";
+		optformat = "a:bm:s:v:hDfn::l:eit:d::r:g::G:p:c:";
 	#else
-		optformat = "bm:s:v:hDn::l:eit:d::r:g::G:p:c:"; // no fork option
+		optformat = "a:bm:s:v:hDn::l:eit:d::r:g::G:p:c:"; // no fork option
 	#endif
 
 	MyGetOptInit(&mgo, argc-1, argv+1, optformat);
@@ -358,6 +361,11 @@ int ttd_main(int argc, char* argv[])
 				else
 					network_conn = NULL;
 			} break;
+#ifdef GPMI
+		case 'a': ttd_strlcpy(_ai.gpmi_param, mgo.opt, sizeof(_ai.gpmi_param)); break;
+#else
+		case 'a': DEBUG(misc, 0)("The -a option only works if GPMI is compiled with OpenTTD."); break;
+#endif /* GPMI */
 		case 'b': _ai.network_client = true; break;
 		case 'r': ParseResolution(resolution, mgo.opt); break;
 		case 'l': language = mgo.opt; break;

@@ -43,6 +43,7 @@ typedef struct AIStruct {
 #ifdef GPMI
 	gpmi_module *gpmi_mod;  //! The module controller for GPMI based AIs (Event-handling)
 	gpmi_package *gpmi_pkg; //! The package controller for GPMI based AIs (Functions)
+	char gpmi_param[128];   //! The params given to the gpmi_mod
 #endif /* GPMI */
 } AIStruct;
 

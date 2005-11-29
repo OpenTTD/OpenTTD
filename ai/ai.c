@@ -8,6 +8,7 @@
 #include "../debug.h"
 #include "ai.h"
 #include "default/default.h"
+#include "../string.h"
 
 /* Here we define the events */
 #define DEF_EVENTS
@@ -200,8 +201,6 @@ void AI_RunGameLoop(void)
 
 #ifdef GPMI
 
-void (*ottd_GetNextAIData)(char **library, char **param);
-
 void AI_ShutdownAIControl(bool with_error)
 {
 	if (_ai.gpmi_mod != NULL)
@@ -214,6 +213,9 @@ void AI_ShutdownAIControl(bool with_error)
 		_ai.gpmi = false;
 	}
 }
+
+void (*ottd_GetNextAIData)(char **library, char **param);
+void (*ottd_SetAIParam)(char *param);
 
 void AI_LoadAIControl(void)
 {
@@ -233,10 +235,13 @@ void AI_LoadAIControl(void)
 	/* Now link all the functions */
 	{
 		ottd_GetNextAIData = gpmi_pkg_resolve(_ai.gpmi_pkg, "ottd_GetNextAIData");
+		ottd_SetAIParam = gpmi_pkg_resolve(_ai.gpmi_pkg, "ottd_SetAIParam");
 
-		if (ottd_GetNextAIData == NULL)
+		if (ottd_GetNextAIData == NULL || ottd_SetAIParam == NULL)
 			AI_ShutdownAIControl(true);
 	}
+
+	ottd_SetAIParam(_ai.gpmi_param);
 }
 #endif /* GPMI */
 
@@ -298,6 +303,9 @@ void AI_Initialize(void)
 {
 	bool tmp_ai_network_client = _ai.network_client;
 	bool tmp_ai_gpmi = _ai.gpmi;
+#ifdef GPMI
+	char *tmp_ai_gpmi_param = strdup(_ai.gpmi_param);
+#endif /* GPMI */
 
 	memset(&_ai, 0, sizeof(_ai));
 	memset(&_ai_player, 0, sizeof(_ai_player));
@@ -306,6 +314,10 @@ void AI_Initialize(void)
 	_ai.network_playas = OWNER_SPECTATOR;
 	_ai.enabled = true;
 	_ai.gpmi = tmp_ai_gpmi;
+#ifdef GPMI
+	ttd_strlcpy(_ai.gpmi_param, tmp_ai_gpmi_param, sizeof(_ai.gpmi_param));
+	free(tmp_ai_gpmi_param);
+#endif /* GPMI */
 }
 
 /**
