@@ -346,8 +346,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 	if (index == _network_own_client_index) {
 		_network_playas = playas;
 
-		/* Are we a ai-network-client? */
-		if (_ai.network_client) {
+		/* Are we a ai-network-client? Are we not joining as a SPECTATOR (playas == 0, means SPECTATOR) */
+		if (_ai.network_client && playas != 0) {
 			if (_ai.network_playas == OWNER_SPECTATOR)
 				AI_StartNewAI(playas - 1);
 

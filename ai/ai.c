@@ -250,6 +250,8 @@ void AI_LoadAIControl(void)
  */
 void AI_StartNewAI(PlayerID player)
 {
+	assert(player < MAX_PLAYERS);
+
 #ifdef GPMI
 	/* Keep this in a different IF, because the function can turn _ai.gpmi off!! */
 	if (_ai.gpmi && _ai.gpmi_mod == NULL)
