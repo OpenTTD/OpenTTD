@@ -111,7 +111,10 @@ static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
 
 		// If we have a single diagonal track there, the other side of
 		// tile can be terraformed.
-		if ((_m[tile].m5 & ~0x40) == _railway_modes[mode]) skip_clear = true;
+		if ((_m[tile].m5 & ~0x40) == _railway_modes[mode]) {
+			if (ts->direction == 1) return 0;
+			skip_clear = true;
+		}
 	}
 
 	if (!skip_clear) {
