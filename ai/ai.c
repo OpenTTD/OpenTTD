@@ -309,6 +309,9 @@ void AI_Initialize(void)
 	char *tmp_ai_gpmi_param = strdup(_ai.gpmi_param);
 #endif /* GPMI */
 
+	/* First, make sure all AIs are DEAD! */
+	AI_Uninitialize();
+
 	memset(&_ai, 0, sizeof(_ai));
 	memset(&_ai_player, 0, sizeof(_ai_player));
 

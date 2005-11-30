@@ -18,6 +18,7 @@
 #include "engine.h"
 #include "vehicle_gui.h"
 #include "variables.h"
+#include "ai/ai.h"
 
 extern void StartupEconomy(void);
 
@@ -167,6 +168,7 @@ void InitializeGame(uint size_x, uint size_y)
 	InitializeTrains();
 	InitializeNPF();
 
+	AI_Initialize();
 	InitializePlayers();
 	InitializeCheats();
 
