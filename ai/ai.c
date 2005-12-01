@@ -243,6 +243,15 @@ void AI_LoadAIControl(void)
 
 	ottd_SetAIParam(_ai.gpmi_param);
 }
+
+/**
+ * Dump an entry of the GPMI error stack (callback routine). This helps the user to trace errors back to their roots.
+ */
+void AI_PrintErrorStack(gpmi_err_stack_t *entry, char *string)
+{
+	DEBUG(ai, 0)(string);
+}
+
 #endif /* GPMI */
 
 /**
@@ -262,6 +271,7 @@ void AI_StartNewAI(PlayerID player)
 		char *params = NULL;
 
 		ottd_GetNextAIData(&library, &params);
+		gpmi_error_stack_enable = 1;
 
 		if (library != NULL) {
 			_ai_player[player].module = gpmi_mod_load(library, params);
@@ -271,9 +281,12 @@ void AI_StartNewAI(PlayerID player)
 			free(params);
 
 		if (_ai_player[player].module == NULL) {
-			DEBUG(ai, 0)("[AI] Failed to load AI, aborting..");
+			DEBUG(ai, 0)("[AI] Failed to load AI, aborting. GPMI error stack:");
+			gpmi_err_stack_process_str(AI_PrintErrorStack);
 			return;
 		}
+		gpmi_error_stack_enable = 0;
+
 	}
 #endif /* GPMI */
 
