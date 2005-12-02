@@ -17,6 +17,7 @@
 #include "saveload.h"
 #include "sprite.h"
 #include "variables.h"
+#include "train.h"
 
 enum {
 	ENGINE_AVAILABLE = 1,
@@ -363,6 +364,14 @@ void UnloadCustomEngineSprites(void)
 	}
 }
 
+static int MapOldSubType(const Vehicle *v)
+{
+	if (v->type != VEH_Train) return v->subtype;
+	if (IsTrainEngine(v)) return 0;
+	if (IsFreeWagon(v)) return 4;
+	return 2;
+}
+
 typedef SpriteGroup *(*resolve_callback)(const SpriteGroup *spritegroup,
 	const Vehicle *veh, uint16 callback_info, void *resolve_func); /* XXX data pointer used as function pointer */
 
@@ -442,7 +451,7 @@ static const SpriteGroup* ResolveVehicleSpriteGroup(const SpriteGroup *spritegro
 					switch (dsg->variable - 0x80) {
 #define veh_prop(id_, value_) case (id_): value = (value_); break
 						veh_prop(0x00, veh->type);
-						veh_prop(0x01, veh->subtype);
+						veh_prop(0x01, MapOldSubType(veh));
 						veh_prop(0x04, veh->index);
 						veh_prop(0x05, veh->index & 0xFF);
 						/* XXX? Is THIS right? */
