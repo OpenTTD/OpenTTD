@@ -614,7 +614,7 @@ static bool IsPartOfAutoLine(int px, int py)
 }
 
 // [direction][side]
-static const int AutorailType[6][2] = {
+static const int _AutorailType[6][2] = {
 	{ HT_DIR_X,  HT_DIR_X },
 	{ HT_DIR_Y,  HT_DIR_Y },
 	{ HT_DIR_HU, HT_DIR_HL },
@@ -661,7 +661,7 @@ static void DrawTileSelection(const TileInfo *ti)
 			// autorail highlight piece under cursor
 			uint type = _thd.drawstyle & 0xF;
 			assert(type <= 5);
-			image = SPR_AUTORAIL_BASE + AutorailTilehSprite[ti->tileh][AutorailType[type][0]];
+			image = SPR_AUTORAIL_BASE + _AutorailTilehSprite[ti->tileh][_AutorailType[type][0]];
 
 			if (_thd.make_square_red) image |= PALETTE_SEL_TILE_RED;
 			DrawSelectionSprite(image, ti);
@@ -680,7 +680,7 @@ static void DrawTileSelection(const TileInfo *ti)
 				side = myabs(diffx - diffy);
 			}
 
-			image = SPR_AUTORAIL_BASE + AutorailTilehSprite[ti->tileh][AutorailType[dir][side]];
+			image = SPR_AUTORAIL_BASE + _AutorailTilehSprite[ti->tileh][_AutorailType[dir][side]];
 
 			if (_thd.make_square_red) image |= PALETTE_SEL_TILE_RED;
 			DrawSelectionSprite(image, ti);
@@ -1843,7 +1843,7 @@ void SetTileSelectBigSize(int ox, int oy, int sx, int sy)
 /* returns the best autorail highlight type from map coordinates */
 static byte GetAutorailHT(int x, int y)
 {
-	return HT_RAIL | AutorailPiece[x & 0xF][y & 0xF];
+	return HT_RAIL | _AutorailPiece[x & 0xF][y & 0xF];
 }
 
 // called regular to update tile highlighting in all cases

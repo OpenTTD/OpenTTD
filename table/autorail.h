@@ -13,7 +13,7 @@
 
 // table maps each of the six rail directions and tileh combinations to a sprite
 // invalid entries are required to make sure that this array can be quickly accessed
-const int AutorailTilehSprite[31][6] = {
+const int _AutorailTilehSprite[31][6] = {
 // type   0        1        2        3        4        5
 	{       0,       8,      16,      25,      34,      42 }, // tileh = 0
 	{       5,      13, RED(22), RED(31),      35,      42 }, // tileh = 1
@@ -25,7 +25,7 @@ const int AutorailTilehSprite[31][6] = {
 	{       1,       9,      17,      26,      35,      43 }, // tileh = 7
 	{       2,      13,      17,      25, RED(40), RED(48) }, // tileh = 8
 	{       1,      13,      17, RED(32),      35, RED(48) }, // tileh = 9
-	{       2,       9,      17,      26,      35,      43 }, // tileh = 10
+	{       1,       9,      17,      26,      35,      43 }, // tileh = 10
 	{       1,       9,      17,      26,      35,      43 }, // tileh = 11
 	{       2,       9,      17, RED(29), RED(40),      43 }, // tileh = 12
 	{       1,       9,      17,      26,      35,      43 }, // tileh = 13
@@ -52,7 +52,7 @@ const int AutorailTilehSprite[31][6] = {
 
 // maps each pixel of a tile (16x16) to a selection type
 // (0,0) is the top corner, (16,16) the bottom corner
-const byte AutorailPiece[16][16] = {
+const byte _AutorailPiece[16][16] = {
 	{ 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5 },
 	{ 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5 },
 	{ 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5 },
