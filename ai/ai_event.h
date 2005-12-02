@@ -53,6 +53,8 @@ DEF_EVENTS int ottd_Event_VehicleEnterDepot						INITIAL_SET; // (vehicle_index,
 DEF_EVENTS int ottd_Event_RoadVehicleEnterDepot				INITIAL_SET; // (vehicle_index, depot_tile)
 
 DEF_EVENTS int ottd_Event_GiveOrder										INITIAL_SET; // (vehicle_index)
+
+DEF_EVENTS int ottd_Event_BuildRoad										INITIAL_SET; // (road_tile, road_pieces)
 /* ----------------- End of list ------------------ */
 
 #endif /* AI_EVENT */

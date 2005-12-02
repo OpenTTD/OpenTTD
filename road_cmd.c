@@ -487,6 +487,8 @@ do_clear:;
 		_m[tile].m5 |= pieces;
 
 		MarkTileDirtyByTile(tile);
+
+		ai_event(_current_player, ottd_Event_BuildRoad, tile, pieces);
 	}
 	return cost;
 }
