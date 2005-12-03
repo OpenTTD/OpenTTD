@@ -73,9 +73,6 @@
 # do `make install', the game won't be able to find it's files (so you should
 # also define all the following paths before building).
 #
-# OSX specific paths are set in os/macosx/Makefile
-# MAKEMOVEABLE moves the dynamic libs into the bundle to make the app independent from end user's libs (OSX only)
-#
 # So, the following paths should be defined if INSTALL is defined.
 # None of these paths have to end with /
 # PREFIX:	Normally /usr/local
@@ -197,6 +194,14 @@ $(error Static is only known to work on MorphOS and MacOSX!!! --- Check Makefile
 endif
 endif
 endif
+endif
+endif
+
+ifdef OSX
+ifdef RELEASE
+# all OSX releases needs to be static
+# end users don't tend to have the dynamic libs installed
+$(warning Compiling a dynamic release. It should be static unless you really know what you are doing!!!)
 endif
 endif
 
