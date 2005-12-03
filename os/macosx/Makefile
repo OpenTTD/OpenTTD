@@ -39,7 +39,7 @@ endif
 
 # build the bundle. OSX wants to keep apps in bundles, so we will give it one
 # the good thing about bundles is that you can keep extra files in them, so we keep lng files and a data dir in it
-build_OSX_bundle:
+build_OSX_bundle: $(TTD)
 	$(Q)rm -fr "$(OSXAPP)"
 	$(Q)mkdir -p "$(OSXAPP)"/Contents/MacOS
 	$(Q)mkdir -p "$(OSXAPP)"/Contents/Resources
