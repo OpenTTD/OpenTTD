@@ -796,11 +796,14 @@ endif
 ifdef OSX
 # needs to be before all
 OSX:=OSX
--include os/macosx/Makefile
 endif
 
 
 all: endian_target.h endian_host.h $(UPDATECONFIG) $(LANGS) $(TTD) $(OSX)
+
+ifdef OSX
+-include os/macosx/Makefile
+endif
 
 endian_host.h: $(ENDIAN_CHECK)
 	@echo '===> Testing endianness for host'

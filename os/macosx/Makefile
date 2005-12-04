@@ -2,12 +2,6 @@
 # This makefile is not a standalone makefile, but is called from the general one
 # it contains targets specific to MacOS X
 
-ifdef UNIVERSAL_OTHER_HALF
-# don't call anything in this file if it is building the 2nd half of an universal binary
-# all that needs to be done will be done with the first call
-OSX:=
-else
-
 ifdef BUILD_UNIVERSAL_BINARY
 BUILD_UNIVERSAL_BINARY:=build_universal_binary
 endif
@@ -30,6 +24,13 @@ ifndef LDFLAGS_UNI
 	LDFLAGS_UNI:= -Wl,-syslibroot,/Developer/SDKs/MacOSX10.4u.sdk
 endif
 
+ifdef UNIVERSAL_OTHER_HALF
+# if UNIVERSAL_OTHER_HALF is defined, we know that the original makefile call will build the bundle
+BUILD_OSX_BUNDLE:=
+else
+BUILD_OSX_BUNDLE:=build_OSX_bundle
+endif
+
 # building an universal binary
 # since we can only compile for PPC or x86 at any one time, we compile one and then
 # we make clean and compile the other one. In the end we use lipo to join them together
@@ -46,10 +47,12 @@ $(BUILD_UNIVERSAL_BINARY): $(TTD)
 	$(Q)lipo temp_binary_dir/$(TTD)_a temp_binary_dir/$(TTD)_b -create -output $(TTD)
 	$(Q)rm -rf temp_binary_dir
 
+
+
 # build the bundle. OSX wants to keep apps in bundles, so we will give it one
 # the good thing about bundles is that you can keep extra files in them, so we keep lng files and a data dir in it
 
-build_OSX_bundle: $(TTD) $(BUILD_UNIVERSAL_BINARY)
+$(BUILD_OSX_BUNDLE): $(TTD) $(BUILD_UNIVERSAL_BINARY)
 	$(Q)rm -fr "$(OSXAPP)"
 	$(Q)mkdir -p "$(OSXAPP)"/Contents/MacOS
 	$(Q)mkdir -p "$(OSXAPP)"/Contents/Resources
@@ -81,8 +84,6 @@ release: all
 	$(Q)/usr/bin/hdiutil create -ov -format UDZO -srcfolder "OpenTTD $(RELEASE)" openttd-"$(RELEASE)"-osx.dmg
 	$(Q)rm -fr "OpenTTD $(RELEASE)"
 
-$(OSX): $(TTD) build_OSX_bundle
+$(OSX): $(TTD) $(BUILD_OSX_BUNDLE)
 
-.PHONY: release build_OSX_bundle $(BUILD_UNIVERSAL_BINARY)
-
-endif
+.PHONY: release $(BUILD_OSX_BUNDLE) $(BUILD_UNIVERSAL_BINARY)
