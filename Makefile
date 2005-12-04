@@ -106,6 +106,8 @@
 #
 # Special for crosscompiling there are some commands available:
 #
+# BUILD_UNIVERSAL_BINARY: builds a universal binary for OSX. Make sure you got both PPC and x86 libs
+#
 # ENDIAN_FORCE: forces the endian-check to give a certain result. Can be either BE or LE.
 # WINDRES: the location of your windres
 # CC_HOST: the gcc of your localhost if you are making a target that produces incompatible executables
@@ -163,6 +165,18 @@ endif
 ifndef SDL-CONFIG
 	UPDATECONFIG:=upgradeconf
 	CONFIG_INCLUDED:=
+endif
+
+ifdef UNIVERSAL_OTHER_HALF
+	ifndef CC_HOST
+	# we are crosscompiling, so we should remember what compiler we should use for strgen
+		CC_HOST = $(CC)
+	endif
+	CC_TARGET = $(CC_UNI)
+	CFLAGS = $(CFLAGS_UNI)
+	LDFLAGS = $(LDFLAGS_UNI)
+	SDL-CONFIG = $(SDL-CONFIG_UNI)
+	LIBPNG-CONFIG = $(LIBPNG-CONFIG_UNI)
 endif
 
 # this is used if there aren't any Makefile.config
@@ -325,7 +339,7 @@ endif
 
 ifdef OSX
 # these compilerflags makes the app run as fast as possible without making the app unstable. It works on G3 or newer
-BASECFLAGS += -O3 -funroll-loops -fsched-interblock -falign-loops=16 -falign-jumps=16 -falign-functions=16 -falign-jumps-max-skip=15 -falign-loops-max-skip=15 -mdynamic-no-pic -mpowerpc-gpopt -force_cpusubtype_ALL
+BASECFLAGS += -O3 -funroll-loops -fsched-interblock -falign-loops=16 -falign-jumps=16 -falign-functions=16 -falign-jumps-max-skip=15 -falign-loops-max-skip=15 -mdynamic-no-pic
 else
 ifdef MORPHOS
 BASECFLAGS += -I/gg/os-include -O2 -noixemul -fstrict-aliasing -fexpensive-optimizations
@@ -587,6 +601,9 @@ endif
 
 ### Sources
 
+# clean up C_SOURCES first. Needed since building universal binaries on OSX calls the makefile recursively (just one time)
+C_SOURCES:=
+
 C_SOURCES += aircraft_cmd.c
 C_SOURCES += aircraft_gui.c
 C_SOURCES += airport.c
@@ -777,8 +794,9 @@ endif
 
 
 ifdef OSX
+# needs to be before all
 OSX:=OSX
-OSX_MIDI_PLAYER_FILE:=os/macos/OpenTTDMidi.class
+-include os/macosx/Makefile
 endif
 
 
@@ -800,10 +818,6 @@ $(ENDIAN_CHECK): endian_check.c
 $(TTD): $(OBJS) $(MAKE_CONFIG)
 	@echo '===> Linking $@'
 	$(Q)$(CC) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS) $(LIBS) -o $@
-
-ifdef OSX
--include os/macosx/Makefile
-endif
 
 $(STRGEN): strgen/strgen.c endian_host.h
 	@echo '===> Compiling and Linking $@'

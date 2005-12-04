@@ -2,10 +2,54 @@
 # This makefile is not a standalone makefile, but is called from the general one
 # it contains targets specific to MacOS X
 
+ifdef UNIVERSAL_OTHER_HALF
+# don't call anything in this file if it is building the 2nd half of an universal binary
+# all that needs to be done will be done with the first call
+OSX:=
+else
+
+ifdef BUILD_UNIVERSAL_BINARY
+BUILD_UNIVERSAL_BINARY:=build_universal_binary
+endif
+
+# setting the default vars for making universal binaries
+# this can be overwritten in Makefile.config
+# default values are for PPC host and commends are for x86 hosts (so you know what to put in)
+# the absolute path is the one Apple uses in Xcode 2.1
+ifndef CC_UNI
+	# powerpc-apple-darwin8-gcc-4.0.0
+	CC_UNI:=i686-apple-darwin8-gcc-4.0.0
+endif
+
+ifndef CFLAGS_UNI
+	# -arch ppc
+	CFLAGS_UNI:= -isysroot /Developer/SDKs/MacOSX10.4u.sdk -arch i386
+endif
+
+ifndef LDFLAGS_UNI
+	LDFLAGS_UNI:= -Wl,-syslibroot,/Developer/SDKs/MacOSX10.4u.sdk
+endif
+
+# building an universal binary
+# since we can only compile for PPC or x86 at any one time, we compile one and then
+# we make clean and compile the other one. In the end we use lipo to join them together
+# when this is done, we can continue with the targets from the first run, which is build_OSX_bundle
+
+$(BUILD_UNIVERSAL_BINARY): $(TTD)
+	$(Q)mkdir -p temp_binary_dir
+	$(Q)cp $(TTD) temp_binary_dir/$(TTD)_a
+	@echo '===> Cleaning up to build for the other architecture'
+	$(Q)make clean
+	$(Q)make UNIVERSAL_OTHER_HALF:=1
+	$(Q)cp $(TTD) temp_binary_dir/$(TTD)_b
+	@echo '===> Joining binaries into one universal one'
+	$(Q)lipo temp_binary_dir/$(TTD)_a temp_binary_dir/$(TTD)_b -create -output $(TTD)
+	$(Q)rm -rf temp_binary_dir
 
 # build the bundle. OSX wants to keep apps in bundles, so we will give it one
 # the good thing about bundles is that you can keep extra files in them, so we keep lng files and a data dir in it
-build_OSX_bundle: $(TTD)
+
+build_OSX_bundle: $(TTD) $(BUILD_UNIVERSAL_BINARY)
 	$(Q)rm -fr "$(OSXAPP)"
 	$(Q)mkdir -p "$(OSXAPP)"/Contents/MacOS
 	$(Q)mkdir -p "$(OSXAPP)"/Contents/Resources
@@ -39,4 +83,6 @@ release: all
 
 $(OSX): $(TTD) build_OSX_bundle
 
-.PHONY: release build_OSX_bundle
+.PHONY: release build_OSX_bundle $(BUILD_UNIVERSAL_BINARY)
+
+endif

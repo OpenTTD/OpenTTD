@@ -92,6 +92,14 @@ $(MAKE_CONFIG):
 	$(call CONFIG_LINE,MINGW:=$(MINGW))
 	$(call CONFIG_LINE,)
 
+	$(call CONFIG_LINE,\# Universal binary setup)
+	$(call CONFIG_LINE,\# use these settings for the CPU type, that is not covered by the other settings)
+	$(call CONFIG_LINE,CC_UNI:=$(CC_UNI))
+	$(call CONFIG_LINE,CFLAGS_UNI:=$(CFLAGS_UNI))
+	$(call CONFIG_LINE,LDFLAGS_UNI:=$(LDFLAGS_UNI))
+	$(call CONFIG_LINE,SDL-CONFIG_UNI:=$(SDL-CONFIG_UNI))
+	$(call CONFIG_LINE,LIBPNG-CONFIG_UNI:=$(LIBPNG-CONFIG_UNI))
+
 	$(call CONFIG_LINE,\# For cross-compiling)
 	$(call CONFIG_LINE,CC_TARGET:=$(CC_TARGET))
 	$(call CONFIG_LINE,CC_HOST:=$(CC_HOST))

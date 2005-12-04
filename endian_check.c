@@ -11,22 +11,39 @@
 //  care of the real writing to the file.
 
 int main (int argc, char *argv[]) {
-  unsigned char EndianTest[2] = { 1, 0 };
-  int force_BE = 0, force_LE = 0;
+	unsigned char EndianTest[2] = { 1, 0 };
+	int force_BE = 0, force_LE = 0;
 
-  if (argc > 1 && strcmp(argv[1], "BE") == 0)
-    force_BE = 1;
-  if (argc > 1 && strcmp(argv[1], "LE") == 0)
-    force_LE = 1;
+	if (argc > 1 && strcmp(argv[1], "BE") == 0)
+		force_BE = 1;
+	if (argc > 1 && strcmp(argv[1], "LE") == 0)
+		force_LE = 1;
 
-  printf("#ifndef ENDIAN_H\n#define ENDIAN_H\n");
+	printf("#ifndef ENDIAN_H\n#define ENDIAN_H\n");
 
-  if ( (*(short *) EndianTest == 1 && force_BE != 1) || force_LE == 1)
-    printf("#define TTD_LITTLE_ENDIAN\n");
-  else
-    printf("#define TTD_BIG_ENDIAN\n");
+	if (force_LE == 1) {
+		printf("#define TTD_LITTLE_ENDIAN\n");
+	} else {
+		if (force_BE == 1) {
+			printf("#define TTD_BIG_ENDIAN\n");
+		} else {
+#ifdef __APPLE__
+			// adding support for universal binaries on OSX
+			// Universal binaries supports both PPC and x86
+			printf("#ifdef __BIG_ENDIAN__\n");
+			printf("#define TTD_BIG_ENDIAN\n");
+			printf("#else\n");
+			printf("#define TTD_LITTLE_ENDIAN\n");
+			printf("#endif\n");
+#else
+			if ( *(short *) EndianTest == 1 )
+				printf("#define TTD_LITTLE_ENDIAN\n");
+			else
+				printf("#define TTD_BIG_ENDIAN\n");
+#endif
+		}
+	}
+	printf("#endif\n");
 
-  printf("#endif\n");
-
-  return 0;
+	return 0;
 }
