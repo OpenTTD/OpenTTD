@@ -9,9 +9,9 @@
 /* This is how we call events (with safety-check) to GPMI */
 /* XXX -- This macro (vararg macro) isn't supported on old GCCs, but GPMI
  *         is using them too, so it isn't a real problem, yet */
-#	define ai_event(player, params...) \
+#	define ai_event(player, event, params...) \
 		if (player < MAX_PLAYERS && _ai_player[player].module != NULL) \
-			gpmi_event(_ai_player[player].module, params)
+			gpmi_event(_ai_player[player].module, event, params)
 
 #else
 /* If GPMI isn't loaded, don't do a thing with the events (for now at least)
@@ -40,6 +40,9 @@
 #endif /* DEF_EVENTS */
 
 /* ------------ All available events -------------- */
+DEF_EVENTS int ottd_Event_CommandFailed								INITIAL_SET; // (tile, unique_id)
+DEF_EVENTS int ottd_Event_CommandSucceeded						INITIAL_SET; // (tile, unique_id)
+
 DEF_EVENTS int ottd_Event_BuildStation								INITIAL_SET; // (station_index, station_tile)
 DEF_EVENTS int ottd_Event_BuildRoadStation						INITIAL_SET; // (station_index, station_tile)
 

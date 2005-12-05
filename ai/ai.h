@@ -57,6 +57,8 @@ void AI_RunGameLoop(void);
 void AI_Initialize(void);
 void AI_Uninitialize(void);
 int32 AI_DoCommand(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc);
+int32 AI_DoCommandChecked(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc);
+void AI_CommandResult(uint32 cmd, uint32 p1, uint32 p2, TileIndex tile, bool failed);
 
 /** Is it allowed to start a new AI.
  * This function checks some boundries to see if we should launch a new AI.

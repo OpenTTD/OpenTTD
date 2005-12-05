@@ -15,6 +15,13 @@
 #include "ai_event.h"
 #undef DEF_EVENTS
 
+/* Here we keep track of all commands that are called via AI_DoCommandChecked,
+ *  in special we save the unique_id here. Now this id is given back
+ *  when the command fails or succeeds and is detected as added in this storage. */
+static AICommand *command_uid[MAX_PLAYERS];
+static AICommand *command_uid_tail[MAX_PLAYERS];
+static uint uids[MAX_PLAYERS];
+
 /**
  * Dequeues commands put in the queue via AI_PutCommandInQueue.
  */
@@ -120,6 +127,72 @@ int32 AI_DoCommand(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 	_local_player = old_lp;
 
 	return res;
+}
+
+int32 AI_DoCommandChecked(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
+{
+	AICommand *new;
+	uint unique_id = uids[_current_player]++;
+	int32 res;
+
+	res = AI_DoCommand(tile, p1, p2, flags & ~DC_EXEC, procc);
+	if (CmdFailed(res))
+		return -1;
+
+	/* Save the command and his things, together with the unique_id */
+	new = malloc(sizeof(AICommand));
+	new->tile  = tile;
+	new->p1    = p1;
+	new->p2    = p2;
+	new->procc = procc;
+	new->next  = NULL;
+	new->dp[0] = unique_id;
+
+	/* Add it to the back of the list */
+	if (command_uid_tail[_current_player] == NULL)
+		command_uid_tail[_current_player] = new;
+	else
+		command_uid_tail[_current_player]->next = new;
+
+	if (command_uid[_current_player] == NULL)
+		command_uid[_current_player] = new;
+
+	AI_DoCommand(tile, p1, p2, flags, procc);
+	return unique_id;
+}
+
+/**
+ * A command is executed for real, and is giving us his result (failed yes/no). Inform the AI with it via
+ *  an event.Z
+ */
+void AI_CommandResult(uint32 cmd, uint32 p1, uint32 p2, TileIndex tile, bool succeeded)
+{
+	AICommand *command = command_uid[_current_player];
+
+	if (command == NULL)
+		return;
+
+	if (command->procc != (cmd & 0xFF) || command->p1 != p1 || command->p2 != p2 || command->tile != tile) {
+		/* If we come here, we see a command that isn't at top in our list. This is okay, if the command isn't
+		 *  anywhere else in our list, else we have a big problem.. so check for that. If it isn't in our list,
+		 *  it is okay, else, drop the game.
+		 * Why do we have a big problem in the case it is in our list? Simply, we have a command sooner in
+		 *  our list that wasn't triggered to be failed or succeeded, so it is sitting there without an
+		 *  event, so the script will never know if it succeeded yes/no, so it can hang.. this is VERY bad
+		 *  and should never ever happen. */
+		while (command != NULL && (command->procc != (cmd & 0xFF) || command->p1 != p1 || command->p2 != p2 || command->tile != tile)) {
+			command = command->next;
+		}
+		assert(command == NULL);
+		return;
+	}
+
+	command_uid[_current_player] = command_uid[_current_player]->next;
+	if (command_uid[_current_player] == NULL)
+		command_uid_tail[_current_player] = NULL;
+
+	ai_event(_current_player, succeeded ? ottd_Event_CommandSucceeded : ottd_Event_CommandFailed, tile, command->dp[0]);
+	free(command);
 }
 
 /**
@@ -249,7 +322,7 @@ void AI_LoadAIControl(void)
  */
 void AI_PrintErrorStack(gpmi_err_stack_t *entry, char *string)
 {
-	DEBUG(ai, 0)(string);
+	DEBUG(ai, 0)("%s", string);
 }
 
 #endif /* GPMI */
@@ -305,6 +378,17 @@ void AI_PlayerDied(PlayerID player)
 	/* Called if this AI died */
 	_ai_player[player].active = false;
 
+	if (command_uid[player] != NULL) {
+		while (command_uid[player] != NULL) {
+			AICommand *command = command_uid[player];
+			command_uid[player] = command->next;
+			free(command);
+		}
+
+		command_uid[player] = NULL;
+		command_uid_tail[player] = NULL;
+	}
+
 #ifdef GPMI
 	if (_ai_player[player].module != NULL)
 		gpmi_mod_unload(_ai_player[player].module);
@@ -326,7 +410,10 @@ void AI_Initialize(void)
 	AI_Uninitialize();
 
 	memset(&_ai, 0, sizeof(_ai));
-	memset(&_ai_player, 0, sizeof(_ai_player));
+	memset(_ai_player, 0, sizeof(_ai_player));
+	memset(uids, 0, sizeof(uids));
+	memset(command_uid, 0, sizeof(command_uid));
+	memset(command_uid_tail, 0, sizeof(command_uid_tail));
 
 	_ai.network_client = tmp_ai_network_client;
 	_ai.network_playas = OWNER_SPECTATOR;
