@@ -1617,6 +1617,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 	const UnitID cached_unitnumber = old_v->unitnumber;
 	bool new_front = false;
 	Vehicle *new_v = NULL;
+	char vehicle_name[32];
 
 	new_engine_type = EngineReplacement(p, old_v->engine_type);
 	if (new_engine_type == INVALID_ENGINE) new_engine_type = old_v->engine_type;
@@ -1665,6 +1666,13 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 		}
 		/* We are done setting up the new vehicle. Now we move the cargo from the old one to the new one */
 		MoveVehicleCargo(new_v->type == VEH_Train ? GetFirstVehicleInChain(new_v) : new_v, old_v);
+
+		// Get the name of the old vehicle if it has a custom name.
+		if ((old_v->string_id & 0xF800) != 0x7800) {
+			vehicle_name[0] = '\0';
+		} else {
+			GetName(old_v->string_id & 0x7FF, vehicle_name);
+		}
 	}
 
 	// sell the engine/ find out how much you get for the old engine
@@ -1673,6 +1681,12 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 	if (new_front) {
 		// now we assign the old unitnumber to the new vehicle
 		new_v->unitnumber = cached_unitnumber;
+	}
+
+	// Transfer the name of the old vehicle.
+	if ((flags & DC_EXEC) && vehicle_name[0] != '\0') {
+		_cmd_text = vehicle_name;
+		DoCommand(0, 0, new_v->index, 0, DC_EXEC, CMD_NAME_VEHICLE);
 	}
 
 	return cost;
