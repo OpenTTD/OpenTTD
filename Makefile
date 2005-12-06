@@ -108,7 +108,10 @@
 #
 # BUILD_UNIVERSAL_BINARY: builds a universal binary for OSX. Make sure you got both PPC and x86 libs
 #
-# ENDIAN_FORCE: forces the endian-check to give a certain result. Can be either BE or LE.
+# ENDIAN_FORCE: forces the endian-check to give a certain result. Can be BE, LE or PREPROCESSOR.
+#	PREPROCESSOR is always used on all OSX targets and will make the preprocessor pick the right endian.
+#	this means that you don't have to think about endianess when compiling for OSX.
+#	Very useful for universal binaries and crosscompilers. Not sure if it works on non OSX targets
 # WINDRES: the location of your windres
 # CC_HOST: the gcc of your localhost if you are making a target that produces incompatible executables
 # CFLAGS_HOST: cflags used for CC_HOST. Make it something if you are getting errors when you try to compi
@@ -519,6 +522,9 @@ endif
 
 # OSX specific setup
 ifdef OSX
+	# set the endian flag for OSX, that can't fail
+	ENDIAN_FORCE:=PREPROCESSOR
+
 	# ensure that changing libpathnames will not overwrite anything in the binary
 	LDFLAGS += -headerpad_max_install_names
 

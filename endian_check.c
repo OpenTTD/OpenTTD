@@ -12,12 +12,14 @@
 
 int main (int argc, char *argv[]) {
 	unsigned char EndianTest[2] = { 1, 0 };
-	int force_BE = 0, force_LE = 0;
+	int force_BE = 0, force_LE = 0, force_PREPROCESSOR = 0;
 
 	if (argc > 1 && strcmp(argv[1], "BE") == 0)
 		force_BE = 1;
 	if (argc > 1 && strcmp(argv[1], "LE") == 0)
 		force_LE = 1;
+	if (argc > 1 && strcmp(argv[1], "PREPROCESSOR") == 0)
+		force_PREPROCESSOR = 1;
 
 	printf("#ifndef ENDIAN_H\n#define ENDIAN_H\n");
 
@@ -27,20 +29,21 @@ int main (int argc, char *argv[]) {
 		if (force_BE == 1) {
 			printf("#define TTD_BIG_ENDIAN\n");
 		} else {
-#ifdef __APPLE__
-			// adding support for universal binaries on OSX
-			// Universal binaries supports both PPC and x86
-			printf("#ifdef __BIG_ENDIAN__\n");
-			printf("#define TTD_BIG_ENDIAN\n");
-			printf("#else\n");
-			printf("#define TTD_LITTLE_ENDIAN\n");
-			printf("#endif\n");
-#else
-			if ( *(short *) EndianTest == 1 )
-				printf("#define TTD_LITTLE_ENDIAN\n");
-			else
+			if (force_PREPROCESSOR == 1) {
+				// adding support for universal binaries on OSX
+				// Universal binaries supports both PPC and x86
+				// If a compiler for OSX gets this setting, it will always pick the correct endian and no test is needed
+				printf("#ifdef __BIG_ENDIAN__\n");
 				printf("#define TTD_BIG_ENDIAN\n");
-#endif
+				printf("#else\n");
+				printf("#define TTD_LITTLE_ENDIAN\n");
+				printf("#endif\n");
+			} else {
+				if ( *(short *) EndianTest == 1 )
+					printf("#define TTD_LITTLE_ENDIAN\n");
+				else
+					printf("#define TTD_BIG_ENDIAN\n");
+			}
 		}
 	}
 	printf("#endif\n");
