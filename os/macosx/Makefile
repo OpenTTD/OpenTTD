@@ -7,26 +7,8 @@ BUILD_UNIVERSAL_BINARY:=build_universal_binary
 COPY_x86_SDL_LIB:=$(Q)cp $(x86_SDL_LIB) $(OSXAPP)/Contents/lib/libSDL-x86.dylib
 endif
 
-# setting the default vars for making universal binaries
-# this can be overwritten in Makefile.config
-# default values are for PPC host and commends are for x86 hosts (so you know what to put in)
-# the absolute path is the one Apple uses in Xcode 2.1
-ifndef CC_UNI
-	# powerpc-apple-darwin8-gcc-4.0.0
-	CC_UNI:=i686-apple-darwin8-gcc-4.0.0
-endif
-
-ifndef CFLAGS_UNI
-	# -arch ppc
-	CFLAGS_UNI:= -isysroot /Developer/SDKs/MacOSX10.4u.sdk -arch i386
-endif
-
-ifndef LDFLAGS_UNI
-	LDFLAGS_UNI:= -Wl,-syslibroot,/Developer/SDKs/MacOSX10.4u.sdk
-endif
-
-ifdef UNIVERSAL_OTHER_HALF
-# if UNIVERSAL_OTHER_HALF is defined, we know that the original makefile call will build the bundle
+ifdef UNIVERSAL_x86_PART
+# the bundle is build by the PPC compile when making universal binaries
 BUILD_OSX_BUNDLE:=
 else
 BUILD_OSX_BUNDLE:=build_OSX_bundle
@@ -40,12 +22,11 @@ endif
 $(BUILD_UNIVERSAL_BINARY): $(TTD)
 	$(Q)mkdir -p temp_binary_dir
 	$(Q)cp $(TTD) temp_binary_dir/$(TTD)_a
-	@echo '===> Cleaning up to build for the other architecture'
-	$(Q)make clean
-	$(Q)make UNIVERSAL_OTHER_HALF:=1
+	$(Q)rm -rf $(TTD) $(OBJS) # delete all .o files so we can compile for a new endian
+	$(Q)make UNIVERSAL_x86_PART:=1
 	$(Q)install_name_tool -change $(x86_SDL_LIB) @executable_path/../lib/libSDL-x86.dylib $(TTD)
 	$(Q)cp $(TTD) temp_binary_dir/$(TTD)_b
-	@echo '===> Joining binaries into one universal one'
+	@echo '===> Joining the PPC and x86 binaries into one universal one'
 	$(Q)lipo temp_binary_dir/$(TTD)_a temp_binary_dir/$(TTD)_b -create -output $(TTD)
 	$(Q)rm -rf temp_binary_dir
 
@@ -53,6 +34,7 @@ $(BUILD_UNIVERSAL_BINARY): $(TTD)
 # the good thing about bundles is that you can keep extra files in them, so we keep lng files and a data dir in it
 
 $(BUILD_OSX_BUNDLE): $(TTD) $(BUILD_UNIVERSAL_BINARY)
+	@echo '===> Building application bundle'
 	$(Q)rm -fr "$(OSXAPP)"
 	$(Q)mkdir -p "$(OSXAPP)"/Contents/MacOS
 	$(Q)mkdir -p "$(OSXAPP)"/Contents/Resources

@@ -170,19 +170,6 @@ ifndef SDL-CONFIG
 	CONFIG_INCLUDED:=
 endif
 
-ifdef UNIVERSAL_OTHER_HALF
-	ifndef CC_HOST
-	# we are crosscompiling, so we should remember what compiler we should use for strgen
-		CC_HOST = $(CC)
-	endif
-	CC_TARGET = $(CC_UNI)
-	CFLAGS = $(CFLAGS_UNI)
-	LDFLAGS = $(LDFLAGS_UNI)
-	SDL-CONFIG = $(SDL-CONFIG_UNI)
-	LIBPNG-CONFIG = $(LIBPNG-CONFIG_UNI)
-	LIBS:=
-endif
-
 # this is used if there aren't any Makefile.config
 ifndef CONFIG_INCLUDED
 # sets network on by default if there aren't any config file
@@ -203,6 +190,10 @@ ifdef SUPRESS_LANG_ERRORS
 LANG_ERRORS =  >/dev/null 2>&1
 endif
 
+ifdef OSX
+-include os/MacOSX/Makefile.setup
+endif
+
 ifdef STATIC
 ifndef WIN32
 ifndef OSX
@@ -212,14 +203,6 @@ $(error Static is only known to work on MorphOS and MacOSX!!! --- Check Makefile
 endif
 endif
 endif
-endif
-endif
-
-ifdef OSX
-ifdef RELEASE
-# all OSX releases needs to be static
-# end users don't tend to have the dynamic libs installed
-$(warning Compiling a dynamic release. It should be static unless you really know what you are doing!!!)
 endif
 endif
 

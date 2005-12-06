@@ -1,0 +1,102 @@
+# $Id: Makefile 3214 2005-11-17 19:43:37Z bjarni $
+# This makefile is not a standalone makefile, but is called from the general one
+# it contains code specific to MacOS X
+
+ifdef RELEASE
+ifndef STATIC
+# all OSX releases needs to be static
+# end users don't tend to have the dynamic libs installed
+$(warning Compiling a dynamic release. It should be static unless you really know what you are doing!!!)
+endif
+endif
+
+ifdef RELEASE
+ifndef BUILD_UNIVERSAL_BINARY
+$(warning Compiling a release build, that is not a universal binary)
+endif
+endif
+
+ifdef RELEASE
+ifdef DEBUG
+$(warning Compiling a release build, that is a debug build)
+endif
+endif
+
+# setup flags if none are defined
+ifndef UNIVERSAL_CFLAGS
+	UNIVERSAL_CFLAGS:= -isysroot /Developer/SDKs/MacOSX10.4u.sdk
+endif
+ifndef UNIVERSAL_LDFLAGS
+	UNIVERSAL_LDFLAGS:= -Wl,-syslibroot,/Developer/SDKs/MacOSX10.4u.sdk
+endif
+ifndef PPC_CC
+	PPC_CC:=powerpc-apple-darwin8-gcc-4.0.0
+endif
+ifndef x86_CC
+	x86_CC:=i686-apple-darwin8-gcc-4.0.0
+endif
+ifdef WITH_PNG
+	ifndef LIBPNG_PPC_CONFIG
+		LIBPNG_PPC_CONFIG:=$(LIBPNG-CONFIG)
+	endif
+	ifndef LIBPNG_x86_CONFIG
+		LIBPNG_x86_CONFIG:=$(LIBPNG-CONFIG)
+	endif
+endif
+ifdef WITH_SDL
+	ifndef SDL_PPC_CONFIG
+		SDL_PPC_CONFIG:=$(SDL-CONFIG)
+	endif
+	ifndef SDL_x86_CONFIG
+		SDL_x86_CONFIG:=$(SDL-CONFIG)
+	endif
+endif
+
+ifdef BUILD_UNIVERSAL_BINARY
+	CFLAGS:= $(UNIVERSAL_CFLAGS)
+	LDFLAGS:= $(UNIVERSAL_LDFLAGS)
+
+	# set up config files
+	ifndef SKIP_LIB_TEST
+		ifdef WITH_PNG
+			TEST:=$(shell lipo -info `$(LIBPNG_PPC_CONFIG) --prefix`/lib/libpng.a | xargs -n 1 | grep "ppc"))
+			ifndef TEST
+$(error no PPC libpng found)
+			endif
+			TEST:=$(shell lipo -info `$(LIBPNG_x86_CONFIG) --prefix`/lib/libpng.a | xargs -n 1 | grep "i386"))
+			ifndef TEST
+$(error no x86 libpng found)
+			endif
+		endif
+
+		ifdef WITH_SDL
+			ifdef STATIC
+				ifndef x86_SDL_LIB
+$(error static universal build without a defined x86 SDL lib)
+				endif
+			endif
+			TEST:=$(shell lipo -info `$(SDL_PPC_CONFIG) --prefix`/lib/libSDL.a | xargs -n 1 | grep "ppc"))
+			ifndef TEST
+$(error no PPC SDL lib found)
+			endif
+			TEST:=$(shell lipo -info `$(SDL_x86_CONFIG) --prefix`/lib/libSDL.a | xargs -n 1 | grep "i386"))
+			ifndef TEST
+$(error no x86 SDL lib found)
+			endif
+		endif
+	endif
+
+	ifdef UNIVERSAL_x86_PART
+		CFLAGS += -arch i386
+		LIBPNG-CONFIG:=$(LIBPNG_x86_CONFIG)
+		SDL-CONFIG:=$(SDL_x86_CONFIG)
+		CC_TARGET:=$(x86_CC)
+		# clear the cached list of PPC libs
+		LIBS:=
+	else
+		CFLAGS += -arch ppc
+		LIBPNG-CONFIG:=$(LIBPNG_PPC_CONFIG)
+		SDL-CONFIG:=$(SDL_PPC_CONFIG)
+		CC_TARGET:=$(PPC_CC)
+	endif
+endif
