@@ -7,25 +7,14 @@
 #	include "ai.h"
 
 /* This is how we call events (with safety-check) to GPMI */
-/* XXX -- This macro (vararg macro) isn't supported on old GCCs, but GPMI
- *         is using them too, so it isn't a real problem, yet */
-#	define ai_event(player, event, params...) \
-		if (player < MAX_PLAYERS && _ai_player[player].module != NULL) \
-			gpmi_event(_ai_player[player].module, event, params)
+#	define ai_event(player, event, ...) \
+		if ((player) < MAX_PLAYERS && _ai_player[(player)].module != NULL) \
+			gpmi_event(_ai_player[(player)].module, (event), ##__VA_ARGS__)
 
-#else
-/* If GPMI isn't loaded, don't do a thing with the events (for now at least)
- *  Because old GCCs don't support vararg macros, and OTTD does support those
- *  GCCs, we need something tricky to ignore the events... and this is the solution :)
- *  Ugly, I know, but it works! */
+#else /* GPMI */
 
-#	ifdef DEF_EVENTS
-	void CDECL empty_function(PlayerID player, int event, ...) {}
-#	else
-	extern void CDECL empty_function(PlayerID player, int event, ...);
-#	endif
-#	define ai_event empty_function
-
+/* If GPMI isn't loaded, don't do a thing with the events (for now at least) */
+#	define ai_event(...)
 #endif /* GPMI */
 
 /* To make our life a bit easier; you now only have to define new
