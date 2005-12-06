@@ -177,6 +177,7 @@ ifdef UNIVERSAL_OTHER_HALF
 	LDFLAGS = $(LDFLAGS_UNI)
 	SDL-CONFIG = $(SDL-CONFIG_UNI)
 	LIBPNG-CONFIG = $(LIBPNG-CONFIG_UNI)
+	LIBS:=
 endif
 
 # this is used if there aren't any Makefile.config
@@ -419,6 +420,15 @@ ifdef DEDICATED
 CDEFS += -DDEDICATED
 endif
 
+ifdef OSX
+ifdef STATIC
+ifdef UNIVERSAL_OTHER_HALF
+	STATIC:=
+	DYNAMIC_SDL_IN_STATIC:=1
+endif
+endif
+endif
+
 # SDL config
 ifdef WITH_SDL
 CDEFS += -DWITH_SDL
@@ -430,6 +440,9 @@ LIBS += $(shell $(SDL-CONFIG) --libs)
 endif
 endif
 
+ifdef DYNAMIC_SDL_IN_STATIC
+STATIC:=1
+endif
 
 # zlib config
 ifdef WITH_ZLIB

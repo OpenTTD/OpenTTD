@@ -4,6 +4,7 @@
 
 ifdef BUILD_UNIVERSAL_BINARY
 BUILD_UNIVERSAL_BINARY:=build_universal_binary
+COPY_x86_SDL_LIB:=$(Q)cp $(x86_SDL_LIB) $(OSXAPP)/Contents/lib/libSDL-x86.dylib
 endif
 
 # setting the default vars for making universal binaries
@@ -42,12 +43,11 @@ $(BUILD_UNIVERSAL_BINARY): $(TTD)
 	@echo '===> Cleaning up to build for the other architecture'
 	$(Q)make clean
 	$(Q)make UNIVERSAL_OTHER_HALF:=1
+	$(Q)install_name_tool -change $(x86_SDL_LIB) @executable_path/../lib/libSDL-x86.dylib $(TTD)
 	$(Q)cp $(TTD) temp_binary_dir/$(TTD)_b
 	@echo '===> Joining binaries into one universal one'
 	$(Q)lipo temp_binary_dir/$(TTD)_a temp_binary_dir/$(TTD)_b -create -output $(TTD)
 	$(Q)rm -rf temp_binary_dir
-
-
 
 # build the bundle. OSX wants to keep apps in bundles, so we will give it one
 # the good thing about bundles is that you can keep extra files in them, so we keep lng files and a data dir in it
@@ -58,12 +58,14 @@ $(BUILD_OSX_BUNDLE): $(TTD) $(BUILD_UNIVERSAL_BINARY)
 	$(Q)mkdir -p "$(OSXAPP)"/Contents/Resources
 	$(Q)mkdir -p "$(OSXAPP)"/Contents/Data
 	$(Q)mkdir -p "$(OSXAPP)"/Contents/Lang
+	$(Q)mkdir -p "$(OSXAPP)"/Contents/lib
 	$(Q)echo "APPL????" > "$(OSXAPP)"/Contents/PkgInfo
 	$(Q)cp os/macosx/openttd.icns "$(OSXAPP)"/Contents/Resources/openttd.icns
 	$(Q)os/macosx/plistgen.sh "$(OSXAPP)" "$(REV)"
 	$(Q)cp data/* "$(OSXAPP)"/Contents/Data/
 	$(Q)cp lang/*.lng "$(OSXAPP)"/Contents/Lang/
 	$(Q)cp $(TTD) "$(OSXAPP)"/Contents/MacOS/$(TTD)
+	$(COPY_x86_SDL_LIB)
 
 # make the release disk image. Should only be used with releases and is a good and fast way to make sure to remember all the needed files
 release: all
