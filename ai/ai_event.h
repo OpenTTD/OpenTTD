@@ -7,12 +7,20 @@
 #	include "ai.h"
 
 /* This is how we call events (with safety-check) to GPMI */
+/* XXX -- This macro works only for some compilers (all GCCs for example).
+ *   Some compilers on the other hand (MSCV!!) doesn't support variadic macros
+ *   causing this to fail. There is no known solution. If you know any, please
+ *   tell us ASAP! */
 #	define ai_event(player, event, ...) \
 		if ((player) < MAX_PLAYERS && _ai_player[(player)].module != NULL) \
 			gpmi_event(_ai_player[(player)].module, (event), ##__VA_ARGS__)
 
 #else /* GPMI */
 
+/* XXX -- Some compilers (like MSVC :() doesn't support variadic macros,
+ *   which means we have to go to a lot of trouble to get the ai_event() ignored
+ *   in case GPMI is disabled... KILL KILL KILL!
+ */
 #	ifdef DEF_EVENTS
 	void CDECL empty_function(PlayerID player, int event, ...) {}
 #	else
