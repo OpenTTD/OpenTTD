@@ -13,8 +13,12 @@
 
 #else /* GPMI */
 
-/* If GPMI isn't loaded, don't do a thing with the events (for now at least) */
-#	define ai_event(...)
+#	ifdef DEF_EVENTS
+	void CDECL empty_function(PlayerID player, int event, ...) {}
+#	else
+	extern void CDECL empty_function(PlayerID player, int event, ...);
+#	endif
+#	define ai_event empty_function
 #endif /* GPMI */
 
 /* To make our life a bit easier; you now only have to define new
