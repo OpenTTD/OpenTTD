@@ -351,7 +351,7 @@ static const Widget _network_game_window_widgets[] = {
 {     WWT_IMGBTN,   RESIZE_NONE,   BGC,    90,   231,    22,    33, 0x0,													STR_NETWORK_ENTER_NAME_TIP},
 
 {          WWT_6,   RESIZE_NONE,   BGC,    90,   231,    42,    53, STR_NETWORK_COMBO1,					STR_NETWORK_CONNECTION_TIP},
-{   WWT_CLOSEBOX,   RESIZE_NONE,   BGC,   220,   230,    43,    52, STR_0225,										STR_NETWORK_CONNECTION_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,   BGC,   220,   230,    43,    52, STR_0225,										STR_NETWORK_CONNECTION_TIP},
 
 {     WWT_IMGBTN,   RESIZE_NONE,   BTC,    10,   130,    62,    73, 0x0,													STR_NETWORK_GAME_NAME_TIP },
 {     WWT_IMGBTN,   RESIZE_NONE,   BTC,   131,   180,    62,    73, 0x0,													STR_NETWORK_CLIENTS_CAPTION_TIP },
@@ -589,13 +589,13 @@ static const Widget _network_start_server_window_widgets[] = {
 {  WWT_SCROLLBAR,   RESIZE_NONE,   BGC,   260,   271,    63,   171, 0x0,														STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
 {          WWT_6,   RESIZE_NONE,   BGC,   280,   410,    77,    88, STR_NETWORK_COMBO1,						STR_NETWORK_CONNECTION_TIP},
-{   WWT_CLOSEBOX,   RESIZE_NONE,   BGC,   399,   409,    78,    87, STR_0225,											STR_NETWORK_CONNECTION_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,   BGC,   399,   409,    78,    87, STR_0225,											STR_NETWORK_CONNECTION_TIP},
 
 {          WWT_6,   RESIZE_NONE,   BGC,   280,   410,   109,   120, STR_NETWORK_COMBO2,						STR_NETWORK_NUMBER_OF_CLIENTS_TIP},
-{   WWT_CLOSEBOX,   RESIZE_NONE,   BGC,   399,   409,   110,   119, STR_0225,											STR_NETWORK_NUMBER_OF_CLIENTS_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,   BGC,   399,   409,   110,   119, STR_0225,											STR_NETWORK_NUMBER_OF_CLIENTS_TIP},
 
 {          WWT_6,   RESIZE_NONE,   BGC,   280,   410,   141,   152, STR_NETWORK_COMBO3,						STR_NETWORK_LANGUAGE_TIP},
-{   WWT_CLOSEBOX,   RESIZE_NONE,   BGC,   399,   409,   142,   151, STR_0225,											STR_NETWORK_LANGUAGE_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,   BGC,   399,   409,   142,   151, STR_0225,											STR_NETWORK_LANGUAGE_TIP},
 
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    40,   140,   180,   191, STR_NETWORK_START_GAME,				STR_NETWORK_START_GAME_TIP},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   150,   250,   180,   191, STR_NETWORK_LOAD_GAME,					STR_NETWORK_LOAD_GAME_TIP},
@@ -868,7 +868,7 @@ enum {
 };
 
 static const Widget _client_list_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   249,     0,    13, STR_NETWORK_CLIENT_LIST,  STR_018C_WINDOW_TITLE_DRAG_THIS},
 
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   249,    14,    14 + CLNWND_ROWSIZE + 1, 0x0, STR_NULL},
@@ -1270,7 +1270,7 @@ static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _network_join_status_window_widget[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   249,     0,    13, STR_NETWORK_CONNECTING, STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   249,    14,    84, 0x0,STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    75,   175,    69,    80, STR_NETWORK_DISCONNECT, STR_NULL},

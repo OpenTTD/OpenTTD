@@ -19,7 +19,7 @@
 #include "variables.h"
 
 static const Widget _smallmap_widgets[] = {
-{   WWT_TEXTBTN,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
+{  WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
 {   WWT_CAPTION,  RESIZE_RIGHT,    13,    11,   433,     0,    13, STR_00B0_MAP,            STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_STICKYBOX,     RESIZE_LR,    13,   434,   445,     0,    13, 0x0,                     STR_STICKY_BUTTON},
 {    WWT_IMGBTN,     RESIZE_RB,    13,     0,   445,    14,   257, 0x0,                     STR_NULL},

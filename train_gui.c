@@ -847,7 +847,7 @@ static void RailVehicleRefitWndProc(Window *w, WindowEvent *e)
 
 
 static const Widget _rail_vehicle_refit_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   239,     0,    13, STR_983B_REFIT,				STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,    14,   135, 0x0,										STR_RAIL_SELECT_TYPE_OF_CARGO_FOR},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,   136,   157, 0x0,										STR_NULL},
@@ -1337,7 +1337,7 @@ static const Widget _player_trains_widgets[] = {
 {  WWT_STICKYBOX,     RESIZE_LR,    14,   313,   324,     0,    13, 0x0,										STR_STICKY_BUTTON},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, SRT_SORT_BY,						STR_SORT_ORDER_TIP},
 {      WWT_PANEL,   RESIZE_NONE,    14,    81,   232,    14,    25, 0x0,										STR_SORT_CRITERIA_TIP},
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,   233,   243,    14,    25, STR_0225,							STR_SORT_CRITERIA_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   233,   243,    14,    25, STR_0225,							STR_SORT_CRITERIA_TIP},
 {      WWT_PANEL,  RESIZE_RIGHT,    14,   244,   324,    14,    25, 0x0,										STR_NULL},
 {     WWT_MATRIX,     RESIZE_RB,    14,     0,   312,    26,   207, 0x701,									STR_883D_TRAINS_CLICK_ON_TRAIN_FOR},
 {  WWT_SCROLLBAR,    RESIZE_LRB,    14,   313,   324,    26,   207, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
@@ -1354,7 +1354,7 @@ static const Widget _other_player_trains_widgets[] = {
 {  WWT_STICKYBOX,     RESIZE_LR,    14,   313,   324,     0,    13, 0x0,										STR_STICKY_BUTTON},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, SRT_SORT_BY,						STR_SORT_ORDER_TIP},
 {      WWT_PANEL,   RESIZE_NONE,    14,    81,   232,    14,    25, 0x0,										STR_SORT_CRITERIA_TIP},
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,   233,   243,    14,    25, STR_0225,							STR_SORT_CRITERIA_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   233,   243,    14,    25, STR_0225,							STR_SORT_CRITERIA_TIP},
 {      WWT_PANEL,  RESIZE_RIGHT,    14,   244,   324,    14,    25, 0x0,										STR_NULL},
 {     WWT_MATRIX,     RESIZE_RB,    14,     0,   312,    26,   207, 0x701,									STR_883D_TRAINS_CLICK_ON_TRAIN_FOR},
 {  WWT_SCROLLBAR,    RESIZE_LRB,    14,   313,   324,    26,   207, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},

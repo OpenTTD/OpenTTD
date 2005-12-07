@@ -574,7 +574,7 @@ static const WindowDesc _orders_desc = {
 };
 
 static const Widget _other_orders_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_RIGHT,   14,    11,   331,     0,    13, STR_A00B_ORDERS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 {      WWT_PANEL,   RESIZE_RB,      14,     0,   319,    14,    75, 0x0,							STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
 {  WWT_SCROLLBAR,   RESIZE_LRB,     14,   320,   331,    14,    75, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},

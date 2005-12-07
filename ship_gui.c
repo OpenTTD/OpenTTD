@@ -122,7 +122,7 @@ static void ShipRefitWndProc(Window *w, WindowEvent *e)
 
 
 static const Widget _ship_refit_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,						STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,						STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   239,     0,    13, STR_983B_REFIT,			STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,    14,   135, 0x0,									STR_983D_SELECT_TYPE_OF_CARGO_FOR},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,   136,   157, 0x0,									STR_NULL},
@@ -268,7 +268,7 @@ do_change_service_int:
 
 
 static const Widget _ship_details_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   364,     0,    13, STR_9811_DETAILS,STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   365,   404,     0,    13, STR_01AA_NAME,		STR_982F_NAME_SHIP},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   404,    14,    55, 0x0,							STR_NULL},
@@ -417,7 +417,7 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _new_ship_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,						STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,						STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   254,     0,    13, STR_9808_NEW_SHIPS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   242,    14,   109, 0x401,								STR_9825_SHIP_SELECTION_LIST_CLICK},
 {  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   243,   254,    14,   109, 0x0,									STR_0190_SCROLL_BAR_SCROLLS_LIST},
@@ -579,7 +579,7 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 }
 
 static const Widget _ship_view_widgets[] = {
-{ WWT_TEXTBTN,    RESIZE_NONE,  14,   0,  10,   0,  13, STR_00C5, STR_018B_CLOSE_WINDOW},
+{ WWT_CLOSEBOX,   RESIZE_NONE,  14,   0,  10,   0,  13, STR_00C5, STR_018B_CLOSE_WINDOW},
 { WWT_CAPTION,    RESIZE_RIGHT, 14,  11, 237,   0,  13, STR_980F, STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_STICKYBOX,  RESIZE_LR,    14, 238, 249,   0,  13, 0x0,      STR_STICKY_BUTTON},
 { WWT_IMGBTN,     RESIZE_RB,    14,   0, 231,  14, 103, 0x0,      STR_NULL},
@@ -866,7 +866,7 @@ static void ShipDepotWndProc(Window* w, WindowEvent* e)
 }
 
 static const Widget _ship_depot_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   292,     0,    13, STR_9803_SHIP_DEPOT,		STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,     RESIZE_LR,    14,   293,   304,     0,    13, 0x0,										STR_STICKY_BUTTON},
 {      WWT_PANEL,    RESIZE_LRB,    14,   270,   292,    14,    13, 0x0,										STR_NULL},
@@ -940,7 +940,7 @@ static const Widget _player_ships_widgets[] = {
 {  WWT_STICKYBOX,     RESIZE_LR,    14,   248,   259,     0,    13, 0x0,                   STR_STICKY_BUTTON},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, SRT_SORT_BY,						STR_SORT_ORDER_TIP},
 {      WWT_PANEL,   RESIZE_NONE,    14,    81,   235,    14,    25, 0x0,										STR_SORT_CRITERIA_TIP},
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,   236,   247,    14,    25, STR_0225,							STR_SORT_CRITERIA_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   236,   247,    14,    25, STR_0225,							STR_SORT_CRITERIA_TIP},
 {      WWT_PANEL,  RESIZE_RIGHT,    14,   248,   259,    14,    25, 0x0,										STR_NULL},
 {     WWT_MATRIX,     RESIZE_RB,    14,     0,   248,    26,   169, 0x401,									STR_9823_SHIPS_CLICK_ON_SHIP_FOR},
 {  WWT_SCROLLBAR,    RESIZE_LRB,    14,   248,   259,    26,   169, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
@@ -957,7 +957,7 @@ static const Widget _other_player_ships_widgets[] = {
 {  WWT_STICKYBOX,     RESIZE_LR,    14,   248,   259,     0,    13, 0x0,                   STR_STICKY_BUTTON},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, SRT_SORT_BY,						STR_SORT_ORDER_TIP},
 {      WWT_PANEL,   RESIZE_NONE,    14,    81,   235,    14,    25, 0x0,										STR_SORT_CRITERIA_TIP},
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,   236,   247,    14,    25, STR_0225,							STR_SORT_CRITERIA_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   236,   247,    14,    25, STR_0225,							STR_SORT_CRITERIA_TIP},
 {      WWT_PANEL,  RESIZE_RIGHT,    14,   248,   259,    14,    25, 0x0,										STR_NULL},
 {     WWT_MATRIX,     RESIZE_RB,    14,     0,   247,    26,   169, 0x401,									STR_9823_SHIPS_CLICK_ON_SHIP_FOR},
 {  WWT_SCROLLBAR,    RESIZE_LRB,    14,   248,   259,    26,   169, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},

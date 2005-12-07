@@ -18,7 +18,7 @@
 #include "variables.h"
 
 static const Widget _town_authority_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    13,    11,   316,     0,    13, STR_2022_LOCAL_AUTHORITY, STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_IMGBTN,   RESIZE_NONE,    13,     0,   316,    14,   105, 0x0,							STR_NULL},
 {     WWT_IMGBTN,   RESIZE_NONE,    13,     0,   306,   106,   157, 0x0,							STR_2043_LIST_OF_THINGS_TO_DO_AT},
@@ -291,7 +291,7 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 
 
 static const Widget _town_view_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    13,    11,   247,     0,    13, STR_2005, STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,   RESIZE_NONE,    13,   248,   259,     0,    13, 0x0,      STR_STICKY_BUTTON},
 {     WWT_IMGBTN,   RESIZE_NONE,    13,     0,   259,    14,   105, 0x0,      STR_NULL},
@@ -312,7 +312,7 @@ static const WindowDesc _town_view_desc = {
 };
 
 static const Widget _town_view_scen_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    13,    11,   172,     0,    13, STR_2005,					STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,   RESIZE_NONE,    13,   248,   259,     0,    13, 0x0,               STR_STICKY_BUTTON},
 {     WWT_IMGBTN,   RESIZE_NONE,    13,     0,   259,    14,   105, 0x0,								STR_NULL},
@@ -351,7 +351,7 @@ void ShowTownViewWindow(uint town)
 }
 
 static const Widget _town_directory_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    13,    11,   195,     0,    13, STR_2000_TOWNS,					STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,   RESIZE_NONE,    13,   196,   207,     0,    13, 0x0,										STR_STICKY_BUTTON},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    13,     0,    98,    14,    25, STR_SORT_BY_NAME,				STR_SORT_ORDER_TIP},

@@ -1072,7 +1072,7 @@ static void ResetLandscape(void)
 }
 
 static const Widget _ask_reset_landscape_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,     4,     0,    10,     0,    13, STR_00C5,									STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     4,     0,    10,     0,    13, STR_00C5,									STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     4,    11,   179,     0,    13, STR_022C_RESET_LANDSCAPE,	STR_NULL},
 {     WWT_IMGBTN,   RESIZE_NONE,     4,     0,   179,    14,    91, 0x0,												STR_NULL},
 {    WWT_TEXTBTN,   RESIZE_NONE,    12,    25,    84,    72,    83, STR_00C9_NO,								STR_NULL},
@@ -1230,7 +1230,7 @@ static void PlaceProc_WaterArea(TileIndex tile)
 }
 
 static const Widget _scen_edit_land_gen_widgets[] = {
-{   WWT_TEXTBTN,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                  STR_018B_CLOSE_WINDOW},
+{  WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                  STR_018B_CLOSE_WINDOW},
 {   WWT_CAPTION,   RESIZE_NONE,     7,    11,   169,     0,    13, STR_0223_LAND_GENERATION,  STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_STICKYBOX,   RESIZE_NONE,     7,   170,   181,     0,    13, STR_NULL,                  STR_STICKY_BUTTON},
 {    WWT_IMGBTN,   RESIZE_NONE,     7,     0,   181,    14,   101, STR_NULL,                  STR_NULL},
@@ -1452,7 +1452,7 @@ static void PlaceProc_Town(TileIndex tile)
 
 
 static const Widget _scen_edit_town_gen_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     7,    11,   147,     0,    13, STR_0233_TOWN_GENERATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,   RESIZE_NONE,     7,   148,   159,     0,    13, 0x0,                      STR_STICKY_BUTTON},
 {     WWT_IMGBTN,   RESIZE_NONE,     7,     0,   159,    14,    81, 0x0,                      STR_NULL},
@@ -1547,7 +1547,7 @@ static void ToolbarScenGenTown(Window *w)
 
 
 static const Widget _scenedit_industry_normal_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,								STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     7,    11,   169,     0,    13, STR_023F_INDUSTRY_GENERATION,	STR_NULL},
 {     WWT_IMGBTN,   RESIZE_NONE,     7,     0,   169,    14,   224, 0x0,											STR_NULL},
 
@@ -1570,7 +1570,7 @@ static const Widget _scenedit_industry_normal_widgets[] = {
 
 
 static const Widget _scenedit_industry_hilly_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,								STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     7,    11,   169,     0,    13, STR_023F_INDUSTRY_GENERATION,	STR_NULL},
 {     WWT_IMGBTN,   RESIZE_NONE,     7,     0,   169,    14,   224, 0x0,											STR_NULL},
 
@@ -1591,7 +1591,7 @@ static const Widget _scenedit_industry_hilly_widgets[] = {
 };
 
 static const Widget _scenedit_industry_desert_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,									STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,									STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     7,    11,   169,     0,    13, STR_023F_INDUSTRY_GENERATION,		STR_NULL},
 {     WWT_IMGBTN,   RESIZE_NONE,     7,     0,   169,    14,   224, 0x0,												STR_NULL},
 
@@ -1614,7 +1614,7 @@ static const Widget _scenedit_industry_desert_widgets[] = {
 };
 
 static const Widget _scenedit_industry_candy_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,										STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,										STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     7,    11,   169,     0,    13, STR_023F_INDUSTRY_GENERATION,STR_NULL},
 {     WWT_IMGBTN,   RESIZE_NONE,     7,     0,   169,    14,   224, 0x0,													STR_NULL},
 

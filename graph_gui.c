@@ -256,7 +256,7 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _graph_legend_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   249,     0,    13, STR_704E_KEY_TO_COMPANY_GRAPHS, STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   249,    14,   113, 0x0,STR_NULL},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     2,   247,    16,    27, 0x0,STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
@@ -364,7 +364,7 @@ static void OperatingProfitWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _operating_profit_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,												STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,												STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   525,     0,    13, STR_7025_OPERATING_PROFIT_GRAPH, STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   526,   575,     0,    13, STR_704C_KEY,										STR_704D_SHOW_KEY_TO_GRAPHS},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   575,    14,   173, 0x0,															STR_NULL},
@@ -439,7 +439,7 @@ static void IncomeGraphWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _income_graph_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   525,     0,    13, STR_7022_INCOME_GRAPH, STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   526,   575,     0,    13, STR_704C_KEY,					STR_704D_SHOW_KEY_TO_GRAPHS},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   575,    14,   141, 0x0,										STR_NULL},
@@ -512,7 +512,7 @@ static void DeliveredCargoGraphWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _delivered_cargo_graph_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,													STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,													STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   525,     0,    13, STR_7050_UNITS_OF_CARGO_DELIVERED, STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   526,   575,     0,    13, STR_704C_KEY,											STR_704D_SHOW_KEY_TO_GRAPHS},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   575,    14,   141, 0x0,																STR_NULL},
@@ -587,7 +587,7 @@ static void PerformanceHistoryWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _performance_history_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,															STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,															STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   475,     0,    13, STR_7051_COMPANY_PERFORMANCE_RATINGS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   526,   575,     0,    13, STR_704C_KEY,													STR_704D_SHOW_KEY_TO_GRAPHS},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   476,   525,     0,    13, STR_PERFORMANCE_DETAIL_KEY,						STR_704D_SHOW_KEY_TO_GRAPHS},
@@ -661,7 +661,7 @@ static void CompanyValueGraphWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _company_value_graph_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   525,     0,    13, STR_7052_COMPANY_VALUES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   526,   575,     0,    13, STR_704C_KEY,						STR_704D_SHOW_KEY_TO_GRAPHS},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   575,    14,   237, 0x0,											STR_NULL},
@@ -856,7 +856,7 @@ static void CompanyLeagueWndProc(Window *w, WindowEvent *e)
 
 
 static const Widget _company_league_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,											STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,											STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   399,     0,    13, STR_7053_COMPANY_LEAGUE_TABLE,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   399,    14,    96, 0x0,														STR_NULL},
 {   WIDGETS_END},
@@ -1056,7 +1056,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _performance_rating_detail_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   298,     0,    13, STR_PERFORMANCE_DETAIL,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   298,    14,    27, 0x0,											STR_NULL},
 

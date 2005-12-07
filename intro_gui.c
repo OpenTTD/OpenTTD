@@ -29,9 +29,9 @@ static const Widget _select_game_widgets[] = {
 {    WWT_PANEL_2, RESIZE_NONE, 12, 250, 326,  59, 113, 0x1318,                 STR_0311_SELECT_TOYLAND_LANDSCAPE},
 
 {      WWT_PANEL, RESIZE_NONE, 12, 219, 254, 120, 131, STR_NULL,               STR_NULL},
-{   WWT_CLOSEBOX, RESIZE_NONE, 12, 255, 266, 120, 131, STR_0225,               STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 255, 266, 120, 131, STR_0225,               STR_NULL},
 {      WWT_PANEL, RESIZE_NONE, 12, 279, 314, 120, 131, STR_NULL,               STR_NULL},
-{   WWT_CLOSEBOX, RESIZE_NONE, 12, 315, 326, 120, 131, STR_0225,               STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 315, 326, 120, 131, STR_0225,               STR_NULL},
 
 { WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167, 138, 149, STR_SINGLE_PLAYER,      STR_02FF_SELECT_SINGLE_PLAYER_GAME},
 { WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325, 138, 149, STR_MULTIPLAYER,        STR_0300_SELECT_MULTIPLAYER_GAME},
@@ -146,7 +146,7 @@ void StartScenarioEditor(uint32 rnd1, uint32 rnd2)
 }
 
 static const Widget _ask_abandon_game_widgets[] = {
-{  WWT_TEXTBTN, RESIZE_NONE,  4,   0,  10,   0,  13, STR_00C5,      STR_NULL},
+{ WWT_CLOSEBOX, RESIZE_NONE,  4,   0,  10,   0,  13, STR_00C5,      STR_018B_CLOSE_WINDOW},
 {  WWT_CAPTION, RESIZE_NONE,  4,  11, 179,   0,  13, STR_00C7_QUIT, STR_NULL},
 {   WWT_IMGBTN, RESIZE_NONE,  4,   0, 179,  14,  91, 0x0,           STR_NULL},
 {  WWT_TEXTBTN, RESIZE_NONE, 12,  25,  84,  72,  83, STR_00C9_NO,   STR_NULL},
@@ -210,7 +210,7 @@ void AskExitGame(void)
 
 
 static const Widget _ask_quit_game_widgets[] = {
-{  WWT_TEXTBTN, RESIZE_NONE,  4,   0,  10,   0,  13, STR_00C5,           STR_NULL},
+{ WWT_CLOSEBOX, RESIZE_NONE,  4,   0,  10,   0,  13, STR_00C5,           STR_018B_CLOSE_WINDOW},
 {  WWT_CAPTION, RESIZE_NONE,  4,  11, 179,   0,  13, STR_0161_QUIT_GAME, STR_NULL},
 {   WWT_IMGBTN, RESIZE_NONE,  4,   0, 179,  14,  91, 0x0,                STR_NULL},
 {  WWT_TEXTBTN, RESIZE_NONE, 12,  25,  84,  72,  83, STR_00C9_NO,        STR_NULL},

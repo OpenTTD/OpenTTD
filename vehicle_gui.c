@@ -1010,7 +1010,7 @@ static const Widget _replace_rail_vehicle_widgets[] = {
 {      WWT_PANEL,     RESIZE_TB,    14,     0,   138,   198,   209, STR_NULL,       STR_NULL},
 {      WWT_PANEL,     RESIZE_TB,    14,   139,   153,   210,   221, STR_NULL,       STR_NULL},
 {      WWT_PANEL,     RESIZE_TB,    14,   154,   277,   210,   221, STR_NULL,       STR_REPLACE_HELP_RAILTYPE},
-{   WWT_CLOSEBOX,     RESIZE_TB,    14,   278,   289,   210,   221, STR_0225,       STR_REPLACE_HELP_RAILTYPE},
+{    WWT_TEXTBTN,     RESIZE_TB,    14,   278,   289,   210,   221, STR_0225,       STR_REPLACE_HELP_RAILTYPE},
 {      WWT_PANEL,     RESIZE_TB,    14,   290,   305,   210,   221, STR_NULL,       STR_NULL},
 { WWT_PUSHTXTBTN,     RESIZE_TB,    14,   317,   455,   198,   209, STR_REPLACE_REMOVE_WAGON,       STR_REPLACE_REMOVE_WAGON_HELP},
 // end of train specific stuff

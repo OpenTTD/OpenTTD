@@ -115,7 +115,7 @@ static void LandInfoWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _land_info_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   279,     0,    13, STR_01A3_LAND_AREA_INFORMATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   279,    14,    92, 0x0,				STR_NULL},
 {    WIDGETS_END},
@@ -261,7 +261,7 @@ static void AboutWindowProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _about_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,					STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   419,     0,    13, STR_015B_OPENTTD,	STR_NULL},
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,   419,    14,   271, 0x0,								STR_NULL},
 {      WWT_FRAME,   RESIZE_NONE,    14,     5,   414,    40,   245, STR_NULL,					STR_NULL},
@@ -391,7 +391,7 @@ static const Widget _build_trees_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,    14,    37,    70,   110,   155, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
 {      WWT_PANEL,   RESIZE_NONE,    14,    72,   105,   110,   155, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
 {      WWT_PANEL,   RESIZE_NONE,    14,   107,   140,   110,   155, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{		WWT_CLOSEBOX,   RESIZE_NONE,    14,   2,   140,   157,   168, STR_TREES_RANDOM_TYPE, STR_TREES_RANDOM_TYPE_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   2,   140,   157,   168, STR_TREES_RANDOM_TYPE, STR_TREES_RANDOM_TYPE_TIP},
 {    WIDGETS_END},
 };
 
@@ -419,8 +419,8 @@ static const Widget _build_trees_scen_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,    14,    37,    70,   110,   155, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
 {      WWT_PANEL,   RESIZE_NONE,    14,    72,   105,   110,   155, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
 {      WWT_PANEL,   RESIZE_NONE,    14,   107,   140,   110,   155, 0x0,							STR_280D_SELECT_TREE_TYPE_TO_PLANT},
-{		WWT_CLOSEBOX,   RESIZE_NONE,    14,		 2,   140,   157,   168, STR_TREES_RANDOM_TYPE,	STR_TREES_RANDOM_TYPE_TIP},
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     2,   140,   170,   181, STR_028A_RANDOM_TREES,	STR_028B_PLANT_TREES_RANDOMLY_OVER},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   140,   157,   168, STR_TREES_RANDOM_TYPE,	STR_TREES_RANDOM_TYPE_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   140,   170,   181, STR_028A_RANDOM_TREES,	STR_028B_PLANT_TREES_RANDOMLY_OVER},
 {    WIDGETS_END},
 };
 
@@ -449,14 +449,14 @@ static uint _errmsg_duration;
 
 
 static const Widget _errmsg_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     4,     0,    10,     0,    13, STR_00C5,					STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     4,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     4,    11,   239,     0,    13, STR_00B2_MESSAGE,	STR_NULL},
 {      WWT_PANEL,   RESIZE_NONE,     4,     0,   239,    14,    45, 0x0,								STR_NULL},
 {    WIDGETS_END},
 };
 
 static const Widget _errmsg_face_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     4,     0,    10,     0,    13, STR_00C5,							STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     4,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     4,    11,   333,     0,    13, STR_00B3_MESSAGE_FROM,	STR_NULL},
 {      WWT_PANEL,   RESIZE_NONE,     4,     0,   333,    14,   136, 0x0,										STR_NULL},
 {   WIDGETS_END},
@@ -1030,7 +1030,7 @@ press_ok:;
 }
 
 static const Widget _query_string_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   259,     0,    13, STR_012D,				STR_NULL},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   259,    14,    29, 0x0,							STR_NULL},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,   129,    30,    41, STR_012E_CANCEL,	STR_NULL},
@@ -1086,7 +1086,7 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 }
 
 static const Widget _load_dialog_1_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,						STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,						STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   256,     0,    13, STR_4001_LOAD_GAME,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   127,    14,    25, STR_SORT_BY_NAME,		STR_SORT_ORDER_TIP},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   128,   256,    14,    25, STR_SORT_BY_DATE,		STR_SORT_ORDER_TIP},
@@ -1100,7 +1100,7 @@ static const Widget _load_dialog_1_widgets[] = {
 };
 
 static const Widget _load_dialog_2_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   256,     0,    13, STR_0298_LOAD_SCENARIO,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   127,    14,    25, STR_SORT_BY_NAME,				STR_SORT_ORDER_TIP},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   128,   256,    14,    25, STR_SORT_BY_DATE,				STR_SORT_ORDER_TIP},
@@ -1114,7 +1114,7 @@ static const Widget _load_dialog_2_widgets[] = {
 };
 
 static const Widget _save_dialog_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,						STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,						STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   256,     0,    13, STR_4000_SAVE_GAME,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   127,    14,    25, STR_SORT_BY_NAME,		STR_SORT_ORDER_TIP},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   128,   256,    14,    25, STR_SORT_BY_DATE,		STR_SORT_ORDER_TIP},
@@ -1132,7 +1132,7 @@ static const Widget _save_dialog_widgets[] = {
 };
 
 static const Widget _save_dialog_scen_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   256,     0,    13, STR_0299_SAVE_SCENARIO, STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   127,    14,    25, STR_SORT_BY_NAME,				STR_SORT_ORDER_TIP},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   128,   256,    14,    25, STR_SORT_BY_DATE,				STR_SORT_ORDER_TIP},
@@ -1485,7 +1485,7 @@ void RedrawAutosave(void)
 }
 
 static const Widget _select_scenario_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,						STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,						STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,  RESIZE_RIGHT,     7,    11,   256,     0,    13, STR_400E_SELECT_NEW_GAME_TYPE, STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_IMGBTN,  RESIZE_RIGHT,     7,     0,   256,    14,    25, 0x0,								STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,     7,     0,   127,    14,    25, STR_SORT_BY_NAME,		STR_SORT_ORDER_TIP},

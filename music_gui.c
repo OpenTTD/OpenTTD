@@ -291,7 +291,7 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _music_track_selection_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   431,     0,    13, STR_01EB_MUSIC_PROGRAM_SELECTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   431,    14,   217, 0x0,			STR_NULL},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     2,   181,    22,   215, 0x0,			STR_01FA_CLICK_ON_MUSIC_TRACK_TO},
@@ -460,7 +460,7 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _music_window_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,	STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   299,     0,    13, STR_01D2_JAZZ_JUKEBOX, STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_PUSHIMGBTN,   RESIZE_NONE,    14,     0,    21,    14,    35, 0x2C5,			STR_01DE_SKIP_TO_PREVIOUS_TRACK},
 { WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    22,    43,    14,    35, 0x2C6,			STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION},

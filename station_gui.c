@@ -272,7 +272,7 @@ void ShowPlayerStations(PlayerID player)
 }
 
 static const Widget _station_view_expanded_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   236,     0,    13, STR_300A_0,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,   RESIZE_NONE,    14,   237,   248,     0,    13, 0x0,         STR_STICKY_BUTTON},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   236,    14,    65, 0x0,					STR_NULL},
@@ -290,7 +290,7 @@ static const Widget _station_view_expanded_widgets[] = {
 };
 
 static const Widget _station_view_widgets[] = {
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   236,     0,    13, STR_300A_0,	STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,   RESIZE_NONE,    14,   237,   248,     0,    13, 0x0,         STR_STICKY_BUTTON},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   236,    14,    65, 0x0,					STR_NULL},
