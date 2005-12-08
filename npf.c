@@ -596,11 +596,6 @@ static int32 NPFFindStationOrTile(AyStar* as, OpenListNode *current)
 	AyStarNode *node = &current->path.node;
 	TileIndex tile = node->tile;
 
-	if (tile == 0x4611c) {
-		tile++;
-		tile--;
-	}
-
 	/* If GetNeighbours said we could get here, we assume the station type
 	 * is correct */
 	if (
