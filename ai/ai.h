@@ -3,6 +3,7 @@
 
 #include "../functions.h"
 #include "../network.h"
+#include "../player.h"
 #ifdef GPMI
 #include <gpmi.h>
 #endif /* GPMI */

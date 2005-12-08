@@ -114,11 +114,13 @@ int32 AI_DoCommand(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 	old_lp = _local_player;
 	_local_player = _current_player;
 
+#ifdef ENABLE_NETWORK
 	/* Send the command */
 	if (_networking)
 		/* Network is easy, send it to his handler */
 		NetworkSend_Command(tile, p1, p2, procc, NULL);
 	else
+#endif
 		/* If we execute BuildCommands directly in SP, we have a big problem with events
 		 *  so we need to delay is for 1 tick */
 		AI_PutCommandInQueue(_current_player, tile, p1, p2, procc);
