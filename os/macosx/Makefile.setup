@@ -11,8 +11,15 @@ endif
 endif
 
 ifdef RELEASE
-ifndef BUILD_UNIVERSAL_BINARY
+ifndef FAT_BINARY
 $(warning Compiling a release build, that is not a universal binary)
+endif
+endif
+
+ifdef FAT_BINARY
+ifndef STATIC
+$(warning Compiling a universal binary, that is not static. Adding static flag)
+STATIC:=1
 endif
 endif
 
@@ -23,14 +30,20 @@ endif
 endif
 
 # setup flags if none are defined
-ifndef UNIVERSAL_CFLAGS
-	UNIVERSAL_CFLAGS:= -isysroot /Developer/SDKs/MacOSX10.4u.sdk
+ifndef CFLAGS_PPC
+	CFLAGS_PPC:= -isysroot /Developer/SDKs/MacOSX10.3.9.sdk
 endif
-ifndef UNIVERSAL_LDFLAGS
-	UNIVERSAL_LDFLAGS:= -Wl,-syslibroot,/Developer/SDKs/MacOSX10.4u.sdk
+ifndef LDFLAGS_PPC
+	LDFLAGS_PPC:= -Wl,-syslibroot,/Developer/SDKs/MacOSX10.3.9.sdk
 endif
 ifndef PPC_CC
 	PPC_CC:=powerpc-apple-darwin8-gcc-4.0.0
+endif
+ifndef CFLAGS_x86
+	CFLAGS_x86:= -isysroot /Developer/SDKs/MacOSX10.4u.sdk
+endif
+ifndef LDFLAGS_x86
+	LDFLAGS_x86:= -Wl,-syslibroot,/Developer/SDKs/MacOSX10.4u.sdk
 endif
 ifndef x86_CC
 	x86_CC:=i686-apple-darwin8-gcc-4.0.0
@@ -50,12 +63,12 @@ ifdef WITH_SDL
 	ifndef SDL_x86_CONFIG
 		SDL_x86_CONFIG:=$(SDL-CONFIG)
 	endif
+	ifndef x86_SDL_LIB
+		x86_SDL_LIB:=$(shell echo "`$(SDL_x86_CONFIG) --prefix`/lib/libSDL-1.2.0.dylib")
+	endif
 endif
 
-ifdef BUILD_UNIVERSAL_BINARY
-	CFLAGS:= $(UNIVERSAL_CFLAGS)
-	LDFLAGS:= $(UNIVERSAL_LDFLAGS)
-
+ifdef FAT_BINARY
 	# set up config files
 	ifndef SKIP_LIB_TEST
 		ifdef WITH_PNG
@@ -87,16 +100,18 @@ $(error no x86 SDL lib found)
 	endif
 
 	ifdef UNIVERSAL_x86_PART
-		CFLAGS += -arch i386
 		LIBPNG-CONFIG:=$(LIBPNG_x86_CONFIG)
 		SDL-CONFIG:=$(SDL_x86_CONFIG)
 		CC_TARGET:=$(x86_CC)
 		# clear the cached list of PPC libs
 		LIBS:=
+		CFLAGS:= $(CFLAGS_x86) -arch i386
+		LDFLAGS:= $(LDFLAGS_x86)
 	else
-		CFLAGS += -arch ppc
 		LIBPNG-CONFIG:=$(LIBPNG_PPC_CONFIG)
 		SDL-CONFIG:=$(SDL_PPC_CONFIG)
 		CC_TARGET:=$(PPC_CC)
+		CFLAGS:= $(CFLAGS_PPC) -arch ppc
+		LDFLAGS:= $(LDFLAGS_PPC)
 	endif
 endif

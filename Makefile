@@ -106,7 +106,7 @@
 #
 # Special for crosscompiling there are some commands available:
 #
-# BUILD_UNIVERSAL_BINARY: builds a universal binary for OSX. Make sure you got both PPC and x86 libs
+# FAT_BINARY: builds a universal binary for OSX. Make sure you got both PPC and x86 libs
 #
 # ENDIAN_FORCE: forces the endian-check to give a certain result. Can be BE, LE or PREPROCESSOR.
 #	PREPROCESSOR is always used on all OSX targets and will make the preprocessor pick the right endian.
@@ -508,8 +508,12 @@ ifdef OSX
 	# set the endian flag for OSX, that can't fail
 	ENDIAN_FORCE:=PREPROCESSOR
 
-	# ensure that changing libpathnames will not overwrite anything in the binary
-	LDFLAGS += -headerpad_max_install_names
+	ifdef UNIVERSAL_x86_PART
+		ifdef WITH_SDL
+			# ensure that changing libpathnames will not overwrite anything in the binary
+			LDFLAGS += -headerpad_max_install_names
+		endif
+	endif
 
 	ifndef DEDICATED
 		LIBS += -framework QuickTime
