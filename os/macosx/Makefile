@@ -4,7 +4,7 @@
 
 ifdef FAT_BINARY
 FAT_BINARY:=build_universal_binary
-COPY_x86_SDL_LIB:=$(Q)cp $(x86_SDL_LIB) $(OSXAPP)/Contents/lib/libSDL-x86.dylib
+POST_BUNDLE_BUILDING:=$(Q)cp $(x86_SDL_LIB) $(OSXAPP)/Contents/lib/libSDL-x86.dylib
 endif
 
 ifdef UNIVERSAL_x86_PART
@@ -13,6 +13,17 @@ BUILD_OSX_BUNDLE:=
 else
 BUILD_OSX_BUNDLE:=build_OSX_bundle
 endif
+
+ifdef JAGUAR
+JAGUAR:=jaguar
+POST_BUNDLE_BUILDING:=$(Q)cp /usr/lib/libmx.A.dylib $(OSXAPP)/Contents/lib/libmx.A.dylib
+endif
+
+# MacOS X got some issues in OpenTTD, so we got a workaround target to solve them
+# only network support will not be fixed this way, so we will have a binary without network support
+
+$(JAGUAR):
+	$(Q)install_name_tool -change /usr/lib/libmx.A.dylib @executable_path/../lib/libmx.A.dylib $(TTD)
 
 # building an universal binary
 # since we can only compile for PPC or x86 at any one time, we compile one and then
@@ -33,7 +44,7 @@ $(FAT_BINARY): $(TTD)
 # build the bundle. OSX wants to keep apps in bundles, so we will give it one
 # the good thing about bundles is that you can keep extra files in them, so we keep lng files and a data dir in it
 
-$(BUILD_OSX_BUNDLE): $(TTD) $(FAT_BINARY)
+$(BUILD_OSX_BUNDLE): $(TTD) $(FAT_BINARY) $(JAGUAR)
 	@echo '===> Building application bundle'
 	$(Q)rm -fr "$(OSXAPP)"
 	$(Q)mkdir -p "$(OSXAPP)"/Contents/MacOS
@@ -47,7 +58,7 @@ $(BUILD_OSX_BUNDLE): $(TTD) $(FAT_BINARY)
 	$(Q)cp data/* "$(OSXAPP)"/Contents/Data/
 	$(Q)cp lang/*.lng "$(OSXAPP)"/Contents/Lang/
 	$(Q)cp $(TTD) "$(OSXAPP)"/Contents/MacOS/$(TTD)
-	$(COPY_x86_SDL_LIB)
+	$(POST_BUNDLE_BUILDING)
 
 # make the release disk image. Should only be used with releases and is a good and fast way to make sure to remember all the needed files
 release: all
@@ -70,4 +81,4 @@ release: all
 
 $(OSX): $(TTD) $(BUILD_OSX_BUNDLE)
 
-.PHONY: release $(BUILD_OSX_BUNDLE) $(FAT_BINARY)
+.PHONY: release $(BUILD_OSX_BUNDLE) $(FAT_BINARY) $(JAGUAR)

@@ -29,15 +29,28 @@ $(warning Compiling a release build, that is a debug build)
 endif
 endif
 
+ifdef JAGUAR
+ifdef FAT_BINARY
+$(error FAT_BINARY and JAGUAR can't be used at the same time)
+endif
+endif
+
 # setup flags if none are defined
+ifndef CFLAGS_JAGUAR
+	CFLAGS_JAGUAR:= -isysroot /Developer/SDKs/MacOSX10.2.8.sdk
+endif
+ifndef LDFLAGS_JAGUAR
+	LDFLAGS_JAGUAR:= -Wl,-syslibroot,/Developer/SDKs/MacOSX10.2.8.sdk
+endif
+
+ifndef PPC_CC
+	PPC_CC:=powerpc-apple-darwin8-gcc-4.0.0
+endif
 ifndef CFLAGS_PPC
 	CFLAGS_PPC:= -isysroot /Developer/SDKs/MacOSX10.3.9.sdk
 endif
 ifndef LDFLAGS_PPC
 	LDFLAGS_PPC:= -Wl,-syslibroot,/Developer/SDKs/MacOSX10.3.9.sdk
-endif
-ifndef PPC_CC
-	PPC_CC:=powerpc-apple-darwin8-gcc-4.0.0
 endif
 ifndef CFLAGS_x86
 	CFLAGS_x86:= -isysroot /Developer/SDKs/MacOSX10.4u.sdk
@@ -114,4 +127,13 @@ $(error no x86 SDL lib found)
 		CFLAGS:= $(CFLAGS_PPC) -arch ppc
 		LDFLAGS:= $(LDFLAGS_PPC)
 	endif
+endif
+
+ifdef JAGUAR
+	CFLAGS:=$(CFLAGS_JAGUAR)
+	LDFLAGS:=$(LDFLAGS_JAGUAR)
+	# network support is broken is jaguar (OSX 10.2)
+	WITH_NETWORK:=
+	# crosscompiling for jaguar should always be static
+	STATIC:=1
 endif

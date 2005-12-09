@@ -116,6 +116,11 @@ $(MAKE_CONFIG):
 	$(call CONFIG_LINE,LDFLAGS_x86:=$(LDFLAGS_x86))
 	$(call CONFIG_LINE,)
 
+	$(call CONFIG_LINE,\# For OSX 10.2 support)
+	$(call CONFIG_LINE,CFLAGS_JAGUAR:=$(CFLAGS_JAGUAR))
+	$(call CONFIG_LINE,LDFLAGS_JAGUAR:=$(LDFLAGS_JAGUAR))
+	$(call CONFIG_LINE,)
+
 	$(call CONFIG_LINE,\# For cross-compiling)
 	$(call CONFIG_LINE,CC_TARGET:=$(CC_TARGET))
 	$(call CONFIG_LINE,CC_HOST:=$(CC_HOST))
