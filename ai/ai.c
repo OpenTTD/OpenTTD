@@ -134,12 +134,16 @@ int32 AI_DoCommand(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 int32 AI_DoCommandChecked(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 {
 	AICommand *new;
-	uint unique_id = uids[_current_player]++;
+	uint unique_id = uids[_current_player];
 	int32 res;
 
 	res = DoCommandByTile(tile, p1, p2, flags & ~DC_EXEC, procc);
 	if (CmdFailed(res))
 		return CMD_ERROR;
+	if (!(flags & DC_EXEC))
+		return res;
+
+	uids[_current_player]++;
 
 	/* Save the command and his things, together with the unique_id */
 	new = malloc(sizeof(AICommand));
