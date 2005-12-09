@@ -153,8 +153,10 @@ int32 AI_DoCommandChecked(uint tile, uint32 p1, uint32 p2, uint32 flags, uint pr
 	/* Add it to the back of the list */
 	if (command_uid_tail[_current_player] == NULL)
 		command_uid_tail[_current_player] = new;
-	else
+	else {
 		command_uid_tail[_current_player]->next = new;
+		command_uid_tail[_current_player] = new;
+	}
 
 	if (command_uid[_current_player] == NULL)
 		command_uid[_current_player] = new;
