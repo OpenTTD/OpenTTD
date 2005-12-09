@@ -518,6 +518,7 @@ ifdef OSX
 	ifdef JAGUAR
 		# ensure that changing libpathnames will not overwrite anything in the binary
 		LDFLAGS += -headerpad_max_install_names
+		CFLAGS += -DJAGUAR_CROSSCOMPILE
 	endif
 
 	ifndef DEDICATED
@@ -753,7 +754,9 @@ C_SOURCES += music/extmidi.c
 endif
 
 ifdef OSX
+ifndef JAGUAR
 OBJC_SOURCES += os/macosx/macos.m
+endif
 ifndef DEDICATED
 C_SOURCES    += music/qtmidi.c
 endif

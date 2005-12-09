@@ -136,4 +136,6 @@ ifdef JAGUAR
 	WITH_NETWORK:=
 	# crosscompiling for jaguar should always be static
 	STATIC:=1
+	# libpng appears to break it too
+	WITH_PNG:=
 endif

@@ -9,7 +9,7 @@
 
 // MacOS X will use an NSAlert to display failed assertaions since they're lost unless running from a terminal
 // strgen always runs from terminal and don't need a window for asserts
-#if !defined(__APPLE__) || defined(STRGEN)
+#if !defined(__APPLE__) || defined(STRGEN) || defined(JAGUAR_CROSSCOMPILE)
 # include <assert.h>
 #else
 # include "os/macosx/macos.h"
