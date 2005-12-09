@@ -107,7 +107,6 @@
 # Special for crosscompiling there are some commands available:
 #
 # FAT_BINARY: builds a universal binary for OSX. Make sure you got both PPC and x86 libs
-# JAGUAR: Make the binary suited for MacOS X 10.2 (codenamed jaguar). It will not include network support
 #
 # ENDIAN_FORCE: forces the endian-check to give a certain result. Can be BE, LE or PREPROCESSOR.
 #	PREPROCESSOR is always used on all OSX targets and will make the preprocessor pick the right endian.
@@ -515,11 +514,6 @@ ifdef OSX
 			LDFLAGS += -headerpad_max_install_names
 		endif
 	endif
-	ifdef JAGUAR
-		# ensure that changing libpathnames will not overwrite anything in the binary
-		LDFLAGS += -headerpad_max_install_names
-		CFLAGS += -DJAGUAR_CROSSCOMPILE
-	endif
 
 	ifndef DEDICATED
 		LIBS += -framework QuickTime
@@ -754,9 +748,7 @@ C_SOURCES += music/extmidi.c
 endif
 
 ifdef OSX
-ifndef JAGUAR
 OBJC_SOURCES += os/macosx/macos.m
-endif
 ifndef DEDICATED
 C_SOURCES    += music/qtmidi.c
 endif
