@@ -137,7 +137,7 @@ int32 AI_DoCommandChecked(uint tile, uint32 p1, uint32 p2, uint32 flags, uint pr
 	uint unique_id = uids[_current_player]++;
 	int32 res;
 
-	res = AI_DoCommand(tile, p1, p2, flags & ~DC_EXEC, procc);
+	res = DoCommandByTile(tile, p1, p2, flags & ~DC_EXEC, procc);
 	if (CmdFailed(res))
 		return CMD_ERROR;
 
