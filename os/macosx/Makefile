@@ -45,6 +45,7 @@ $(BUILD_OSX_BUNDLE): $(TTD) $(FAT_BINARY)
 	$(Q)cp os/macosx/openttd.icns "$(OSXAPP)"/Contents/Resources/openttd.icns
 	$(Q)os/macosx/plistgen.sh "$(OSXAPP)" "$(REV)"
 	$(Q)cp data/* "$(OSXAPP)"/Contents/Data/
+	$(Q)cp os/macosx/splash.png "$(OSXAPP)"/Contents/Data/
 	$(Q)cp lang/*.lng "$(OSXAPP)"/Contents/Lang/
 	$(Q)cp $(TTD) "$(OSXAPP)"/Contents/MacOS/$(TTD)
 	$(COPY_x86_SDL_LIB)

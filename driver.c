@@ -18,11 +18,13 @@
 
 #include "sound/null_s.h"
 #include "sound/sdl_s.h"
+#include "sound/cocoa_s.h"
 #include "sound/win32_s.h"
 
 #include "video/dedicated_v.h"
 #include "video/null_v.h"
 #include "video/sdl_v.h"
+#include "video/cocoa_v.h"
 #include "video/win32_v.h"
 
 typedef struct DriverDesc {
@@ -71,6 +73,9 @@ static const DriverDesc _sound_driver_descs[] = {
 #ifdef WITH_SDL
 	M("sdl",   "SDL Sound Driver",     &_sdl_sound_driver),
 #endif
+#ifdef WITH_COCOA
+	M("cocoa", "Cocoa Sound Driver",   &_cocoa_sound_driver),
+#endif
 	M("null",  "Null Sound Driver",    &_null_sound_driver),
 	M(NULL, NULL, NULL)
 };
@@ -81,6 +86,9 @@ static const DriverDesc _video_driver_descs[] = {
 #endif
 #ifdef WITH_SDL
 	M("sdl",        "SDL Video Driver",       &_sdl_video_driver),
+#endif
+#ifdef WITH_COCOA
+	M("cocoa",      "Cocoa Video Driver",       &_cocoa_video_driver),
 #endif
 	M("null",       "Null Video Driver",      &_null_video_driver),
 #ifdef ENABLE_NETWORK

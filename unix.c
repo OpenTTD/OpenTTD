@@ -444,8 +444,26 @@ void ShowOSErrorBox(const char *buf)
 #endif
 }
 
+#ifdef WITH_COCOA
+void cocoaSetWorkingDirectory(void);
+void cocoaSetupAutoreleasePool(void);
+void cocoaReleaseAutoreleasePool(void);
+#endif
+
 int CDECL main(int argc, char* argv[])
 {
+	int ret;
+
+#ifdef WITH_COCOA
+	cocoaSetupAutoreleasePool();
+    /* This is passed if we are launched by double-clicking */
+	if(argc >= 2 && strncmp (argv[1], "-psn", 4) == 0) {
+		argv[1] = NULL;
+		argc = 1;
+		cocoaSetWorkingDirectory();
+	}
+#endif
+
 	// change the working directory to enable doubleclicking in UIs
 #if defined(__BEOS__) || defined(__linux__)
 	ChangeWorkingDirectory(argv[0]);
@@ -456,7 +474,13 @@ int CDECL main(int argc, char* argv[])
 
 	signal(SIGPIPE, SIG_IGN);
 
-	return ttd_main(argc, argv);
+	ret = ttd_main(argc, argv);
+
+#ifdef WITH_COCOA
+	cocoaReleaseAutoreleasePool();
+#endif
+
+	return ret;
 }
 
 void DeterminePaths(void)

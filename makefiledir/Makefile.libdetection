@@ -93,6 +93,14 @@ endif
 endif
 endif
 
+ifdef OSX
+# we prefer to use cocoa drivers rather than SDL drivers
+# if you really want SDL drivers, you can always modify Makefile.config
+WITH_COCOA:=1
+WITH_SDL:=
+endif
+
+
 # workaround
 # cygwin have problems with libpng, so we will just disable it for now until the problem is solved
 ifdef CYGWIN

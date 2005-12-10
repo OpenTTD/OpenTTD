@@ -15,12 +15,12 @@ void ShowMacDialog ( const char *title, const char *message, const char *buttonL
 
 void ShowMacAssertDialog ( const char *function, const char *file, const int line, const char *expression )
 {
-	const char *buffer = 
+	const char *buffer =
 			[[NSString stringWithFormat:@"An assertion has failed and OpenTTD must quit.\n%s in %s (line %d)\n\"%s\"\n\nYou should report this error the OpenTTD developers if you think you found a bug.",
 			function, file, line, expression] cStringUsingEncoding:NSASCIIStringEncoding];
 	NSLog(@"%s", buffer);
 	ShowMacDialog( "Assertion Failed", buffer, "Quit" );
-	
+
 	// abort so that a debugger has a chance to notice
 	abort();
 }

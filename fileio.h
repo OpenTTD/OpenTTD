@@ -10,6 +10,7 @@ byte FioReadByte(void);
 uint16 FioReadWord(void);
 uint32 FioReadDword(void);
 void FioCloseAll(void);
+FILE *FioFOpenFile(const char *filename);
 void FioOpenFile(int slot, const char *filename);
 void FioReadBlock(void *ptr, uint size);
 void FioSkipBytes(int n);

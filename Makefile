@@ -43,6 +43,7 @@
 # WITH_ZLIB: savegames using zlib
 # WITH_PNG: screenshots using PNG
 # WITH_SDL: SDL video driver support
+# WITH_COCOA: Cocoa video driver support
 #
 # Summary of other defines:
 # MANUAL_CONFIG: do not use Makefile.config, config options set manually
@@ -206,11 +207,20 @@ endif
 endif
 endif
 
+ifdef WITH_COCOA
+ifdef WITH_SDL
+$(error You can not use both the SDL video driver and the Cocoa video driver at the same time)
+endif
+ifdef DEDICATED
+$(error You can not use the Cocoa video driver in a dedicated server)
+endif
+else
 # Force SDL on UNIX platforms
 ifndef WITH_SDL
 ifdef UNIX
 ifndef DEDICATED
 $(error You need to have SDL installed in order to run OpenTTD on UNIX. Use DEDICATED if you want to compile a CLI based server)
+endif
 endif
 endif
 endif
@@ -502,7 +512,6 @@ else
 STRGEN_FLAGS=
 endif
 
-
 # OSX specific setup
 ifdef OSX
 	# set the endian flag for OSX, that can't fail
@@ -517,6 +526,11 @@ ifdef OSX
 
 	ifndef DEDICATED
 		LIBS += -framework QuickTime
+	endif
+
+	ifdef WITH_COCOA
+		CDEFS += -DWITH_COCOA
+		LIBS += -F/System/Library/Frameworks -framework Cocoa -framework Carbon -framework AudioUnit
 	endif
 
 	# OSX path setup
@@ -744,10 +758,15 @@ else
 endif
 
 ifdef OSX
-  SRCS += os/macosx/macos.m
-  ifndef DEDICATED
-    SRCS += music/qtmidi.c
-  endif
+	SRCS += os/macosx/macos.m
+	ifndef DEDICATED
+		SRCS += music/qtmidi.c
+	endif
+	ifdef WITH_COCOA
+		SRCS += video/cocoa_v.m
+		SRCS += sound/cocoa_s.c
+		SRCS += os/macosx/splash.c
+	endif
 endif
 
 ifdef BEOS
