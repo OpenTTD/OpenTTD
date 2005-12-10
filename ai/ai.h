@@ -15,7 +15,8 @@ typedef struct AICommand {
 	uint32 p2;
 	uint32 procc;
 
-	uint32 dp[20];
+	char *text;
+	uint uid;
 
 	struct AICommand *next;
 } AICommand;

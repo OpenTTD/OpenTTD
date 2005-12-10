@@ -45,11 +45,14 @@ void AI_DequeueCommands(byte player)
 		_current_player = player;
 
 		/* Copy the DP back in place */
-		memcpy(_decode_parameters, com->dp, sizeof(com->dp));
+		_cmd_text = com->text;
 		DoCommandP(com->tile, com->p1, com->p2, NULL, com->procc);
+		_cmd_text = NULL;
 
 		/* Free item */
 		entry_com = com->next;
+		if (com->text != NULL)
+			free(com->text);
 		free(com);
 	}
 }
@@ -81,9 +84,13 @@ void AI_PutCommandInQueue(byte player, uint tile, uint32 p1, uint32 p2, uint pro
 	com->p2    = p2;
 	com->procc = procc;
 	com->next  = NULL;
+	com->text  = NULL;
 
-	/* Copy the decode_parameters */
-	memcpy(com->dp, _decode_parameters, sizeof(com->dp));
+	/* Copy the cmd_text, if needed */
+	if (_cmd_text != NULL) {
+		com->text = strdup(_cmd_text);
+		_cmd_text = NULL;
+	}
 }
 
 /**
@@ -93,16 +100,28 @@ int32 AI_DoCommand(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 {
 	PlayerID old_lp;
 	int32 res = 0;
+	char *cmdtext = NULL;
 
 	/* If you enable DC_EXEC with DC_QUERY_COST you are a really strange
 	 *   person.. should we check for those funny jokes?
 	 */
 
+	/* The test already free _cmd_text in most cases, so let's backup the string, else we have a problem ;) */
+	if (_cmd_text != NULL)
+		cmdtext = strdup(_cmd_text);
+
 	/* First, do a test-run to see if we can do this */
 	res = DoCommandByTile(tile, p1, p2, flags & ~DC_EXEC, procc);
 	/* The command failed, or you didn't want to execute, or you are quering, return */
-	if ((CmdFailed(res)) || !(flags & DC_EXEC) || (flags & DC_QUERY_COST))
+	if ((CmdFailed(res)) || !(flags & DC_EXEC) || (flags & DC_QUERY_COST)) {
+		if (cmdtext != NULL)
+			free(cmdtext);
 		return res;
+	}
+
+	/* Recover _cmd_text */
+	if (cmdtext != NULL)
+		_cmd_text = cmdtext;
 
 	/* If we did a DC_EXEC, and the command did not return an error, execute it
 	    over the network */
@@ -128,6 +147,10 @@ int32 AI_DoCommand(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 	/* Set _local_player back */
 	_local_player = old_lp;
 
+	/* Free the temp _cmd_text var */
+	if (cmdtext != NULL)
+		free(cmdtext);
+
 	return res;
 }
 
@@ -152,7 +175,7 @@ int32 AI_DoCommandChecked(uint tile, uint32 p1, uint32 p2, uint32 flags, uint pr
 	new->p2    = p2;
 	new->procc = procc;
 	new->next  = NULL;
-	new->dp[0] = unique_id;
+	new->uid   = unique_id;
 
 	/* Add it to the back of the list */
 	if (command_uid_tail[_current_player] == NULL)
@@ -199,7 +222,7 @@ void AI_CommandResult(uint32 cmd, uint32 p1, uint32 p2, TileIndex tile, bool suc
 	if (command_uid[_current_player] == NULL)
 		command_uid_tail[_current_player] = NULL;
 
-	ai_event(_current_player, succeeded ? ottd_Event_CommandSucceeded : ottd_Event_CommandFailed, tile, command->dp[0]);
+	ai_event(_current_player, succeeded ? ottd_Event_CommandSucceeded : ottd_Event_CommandFailed, tile, command->uid);
 	free(command);
 }
 
