@@ -27,9 +27,11 @@ extern void ShowMenuBar(void);
 extern void HideMenuBar(void);
 
 /* Disables a warning. This is needed since the method exists but has been dropped from the header, supposedly as of 10.4. */
+#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4)
 @interface NSApplication(NSAppleMenu)
 - (void)setAppleMenu:(NSMenu *)menu;
 @end
+#endif
 
 
 /* Name conflict */
@@ -1180,7 +1182,7 @@ static const char *QZ_SetVideoWindowed (uint width, uint height) {
 			return "Could not create the Cocoa window";
 
 		snprintf(caption, sizeof(caption), "OpenTTD %s", _openttd_revision);
-		nsscaption = [ [ NSString alloc ] initWithCString:caption encoding:NSASCIIStringEncoding ];
+		nsscaption = [ [ NSString alloc ] initWithCString:caption ];
 		[ _cocoa_video_data.window setTitle:nsscaption ];
 		[ _cocoa_video_data.window setMiniwindowTitle:nsscaption ];
 		[ nsscaption release ];

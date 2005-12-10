@@ -26,7 +26,6 @@
  */
 #include "../stdafx.h"
 #include "../openttd.h"
-#include "../debug.h"
 #include "qtmidi.h"
 
 /*
@@ -52,6 +51,8 @@
 #include <unistd.h>
 #include <fcntl.h>
 
+// we need to include debug.h after CoreServices because defining DEBUG will break CoreServices in OSX 10.2
+#include "../debug.h"
 
 
 enum {

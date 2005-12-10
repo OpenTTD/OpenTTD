@@ -31,10 +31,10 @@ endif
 
 # setup flags if none are defined
 ifndef CFLAGS_PPC
-	CFLAGS_PPC:= -isysroot /Developer/SDKs/MacOSX10.3.9.sdk
+	CFLAGS_PPC:= -isysroot /Developer/SDKs/MacOSX10.2.8.sdk
 endif
 ifndef LDFLAGS_PPC
-	LDFLAGS_PPC:= -Wl,-syslibroot,/Developer/SDKs/MacOSX10.3.9.sdk
+	LDFLAGS_PPC:= -Wl,-syslibroot,/Developer/SDKs/MacOSX10.2.8.sdk
 endif
 ifndef PPC_CC
 	PPC_CC:=powerpc-apple-darwin8-gcc-4.0.0
@@ -105,6 +105,7 @@ $(error no x86 SDL lib found)
 		CC_TARGET:=$(x86_CC)
 		# clear the cached list of PPC libs
 		LIBS:=
+		OBJS:=
 		CFLAGS:= $(CFLAGS_x86) -arch i386
 		LDFLAGS:= $(LDFLAGS_x86)
 	else
