@@ -47,7 +47,6 @@ void AI_DequeueCommands(byte player)
 		/* Copy the DP back in place */
 		_cmd_text = com->text;
 		DoCommandP(com->tile, com->p1, com->p2, NULL, com->procc);
-		_cmd_text = NULL;
 
 		/* Free item */
 		entry_com = com->next;
