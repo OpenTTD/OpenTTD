@@ -608,167 +608,162 @@ endif
 ### Sources
 
 # clean up C_SOURCES first. Needed since building universal binaries on OSX calls the makefile recursively (just one time)
-C_SOURCES:=
+SRCS :=
 
-C_SOURCES += aircraft_cmd.c
-C_SOURCES += aircraft_gui.c
-C_SOURCES += airport.c
-C_SOURCES += airport_gui.c
-C_SOURCES += aystar.c
-C_SOURCES += bridge_gui.c
-C_SOURCES += callback_table.c
-C_SOURCES += clear_cmd.c
-C_SOURCES += command.c
-C_SOURCES += console.c
-C_SOURCES += console_cmds.c
-C_SOURCES += currency.c
-C_SOURCES += debug.c
-C_SOURCES += dedicated.c
-C_SOURCES += depot.c
-C_SOURCES += disaster_cmd.c
-C_SOURCES += dock_gui.c
-C_SOURCES += driver.c
-C_SOURCES += dummy_land.c
-C_SOURCES += economy.c
-C_SOURCES += engine.c
-C_SOURCES += engine_gui.c
-C_SOURCES += fileio.c
-C_SOURCES += gfx.c
-C_SOURCES += gfxinit.c
-C_SOURCES += graph_gui.c
-C_SOURCES += newgrf.c
-C_SOURCES += industry_cmd.c
-C_SOURCES += industry_gui.c
-C_SOURCES += intro_gui.c
-C_SOURCES += landscape.c
-C_SOURCES += main_gui.c
-C_SOURCES += map.c
-C_SOURCES += md5.c
-C_SOURCES += mersenne.c
-C_SOURCES += minilzo.c
-C_SOURCES += misc.c
-C_SOURCES += misc_cmd.c
-C_SOURCES += misc_gui.c
-C_SOURCES += mixer.c
-C_SOURCES += music_gui.c
-C_SOURCES += namegen.c
-C_SOURCES += network.c
-C_SOURCES += network_client.c
-C_SOURCES += network_data.c
-C_SOURCES += network_gamelist.c
-C_SOURCES += network_gui.c
-C_SOURCES += network_server.c
-C_SOURCES += network_udp.c
-C_SOURCES += news_gui.c
-C_SOURCES += npf.c
-C_SOURCES += oldloader.c
-C_SOURCES += order_cmd.c
-C_SOURCES += order_gui.c
-C_SOURCES += openttd.c
-C_SOURCES += pathfind.c
-C_SOURCES += pbs.c
-C_SOURCES += player_gui.c
-C_SOURCES += players.c
-C_SOURCES += pool.c
-C_SOURCES += queue.c
-C_SOURCES += rail.c
-C_SOURCES += rail_cmd.c
-C_SOURCES += rail_gui.c
-C_SOURCES += rev.c
-C_SOURCES += road_cmd.c
-C_SOURCES += road_gui.c
-C_SOURCES += roadveh_cmd.c
-C_SOURCES += roadveh_gui.c
-C_SOURCES += saveload.c
-C_SOURCES += screenshot.c
-C_SOURCES += settings.c
-C_SOURCES += settings_gui.c
-C_SOURCES += ship_cmd.c
-C_SOURCES += ship_gui.c
-C_SOURCES += signs.c
-C_SOURCES += smallmap_gui.c
-C_SOURCES += sound.c
-C_SOURCES += sprite.c
-C_SOURCES += spritecache.c
-C_SOURCES += station_cmd.c
-C_SOURCES += station_gui.c
-C_SOURCES += station_newgrf.c
-C_SOURCES += string.c
-C_SOURCES += strings.c
-C_SOURCES += subsidy_gui.c
-C_SOURCES += terraform_gui.c
-C_SOURCES += texteff.c
-C_SOURCES += thread.c
-C_SOURCES += tile.c
-C_SOURCES += town_cmd.c
-C_SOURCES += town_gui.c
-C_SOURCES += train_cmd.c
-C_SOURCES += train_gui.c
-C_SOURCES += tree_cmd.c
-C_SOURCES += tunnelbridge_cmd.c
-C_SOURCES += unmovable_cmd.c
-C_SOURCES += vehicle.c
-C_SOURCES += vehicle_gui.c
-C_SOURCES += viewport.c
-C_SOURCES += water_cmd.c
-C_SOURCES += waypoint.c
-C_SOURCES += widget.c
-C_SOURCES += window.c
-C_SOURCES += music/null_m.c
-C_SOURCES += sound/null_s.c
-C_SOURCES += video/dedicated_v.c
-C_SOURCES += video/null_v.c
+SRCS += aircraft_cmd.c
+SRCS += aircraft_gui.c
+SRCS += airport.c
+SRCS += airport_gui.c
+SRCS += aystar.c
+SRCS += bridge_gui.c
+SRCS += callback_table.c
+SRCS += clear_cmd.c
+SRCS += command.c
+SRCS += console.c
+SRCS += console_cmds.c
+SRCS += currency.c
+SRCS += debug.c
+SRCS += dedicated.c
+SRCS += depot.c
+SRCS += disaster_cmd.c
+SRCS += dock_gui.c
+SRCS += driver.c
+SRCS += dummy_land.c
+SRCS += economy.c
+SRCS += engine.c
+SRCS += engine_gui.c
+SRCS += fileio.c
+SRCS += gfx.c
+SRCS += gfxinit.c
+SRCS += graph_gui.c
+SRCS += industry_cmd.c
+SRCS += industry_gui.c
+SRCS += intro_gui.c
+SRCS += landscape.c
+SRCS += main_gui.c
+SRCS += map.c
+SRCS += md5.c
+SRCS += mersenne.c
+SRCS += minilzo.c
+SRCS += misc.c
+SRCS += misc_cmd.c
+SRCS += misc_gui.c
+SRCS += mixer.c
+SRCS += music_gui.c
+SRCS += namegen.c
+SRCS += network.c
+SRCS += network_client.c
+SRCS += network_data.c
+SRCS += network_gamelist.c
+SRCS += network_gui.c
+SRCS += network_server.c
+SRCS += network_udp.c
+SRCS += newgrf.c
+SRCS += news_gui.c
+SRCS += npf.c
+SRCS += oldloader.c
+SRCS += openttd.c
+SRCS += order_cmd.c
+SRCS += order_gui.c
+SRCS += pathfind.c
+SRCS += pbs.c
+SRCS += player_gui.c
+SRCS += players.c
+SRCS += pool.c
+SRCS += queue.c
+SRCS += rail.c
+SRCS += rail_cmd.c
+SRCS += rail_gui.c
+SRCS += rev.c
+SRCS += road_cmd.c
+SRCS += road_gui.c
+SRCS += roadveh_cmd.c
+SRCS += roadveh_gui.c
+SRCS += saveload.c
+SRCS += screenshot.c
+SRCS += settings.c
+SRCS += settings_gui.c
+SRCS += ship_cmd.c
+SRCS += ship_gui.c
+SRCS += signs.c
+SRCS += smallmap_gui.c
+SRCS += sound.c
+SRCS += sprite.c
+SRCS += spritecache.c
+SRCS += station_cmd.c
+SRCS += station_gui.c
+SRCS += station_newgrf.c
+SRCS += string.c
+SRCS += strings.c
+SRCS += subsidy_gui.c
+SRCS += terraform_gui.c
+SRCS += texteff.c
+SRCS += thread.c
+SRCS += tile.c
+SRCS += town_cmd.c
+SRCS += town_gui.c
+SRCS += train_cmd.c
+SRCS += train_gui.c
+SRCS += tree_cmd.c
+SRCS += tunnelbridge_cmd.c
+SRCS += unmovable_cmd.c
+SRCS += vehicle.c
+SRCS += vehicle_gui.c
+SRCS += viewport.c
+SRCS += water_cmd.c
+SRCS += waypoint.c
+SRCS += widget.c
+SRCS += window.c
+SRCS += music/null_m.c
+SRCS += sound/null_s.c
+SRCS += video/dedicated_v.c
+SRCS += video/null_v.c
 
 # AI related files
-C_SOURCES += ai/ai.c
-C_SOURCES += ai/default/default.c
-C_SOURCES += ai/trolly/trolly.c
-C_SOURCES += ai/trolly/build.c
-C_SOURCES += ai/trolly/pathfinder.c
-C_SOURCES += ai/trolly/shared.c
-
-CXX_SOURCES =
-
-OBJC_SOURCES =
+SRCS += ai/ai.c
+SRCS += ai/default/default.c
+SRCS += ai/trolly/build.c
+SRCS += ai/trolly/pathfinder.c
+SRCS += ai/trolly/shared.c
+SRCS += ai/trolly/trolly.c
 
 ifdef WITH_SDL
-C_SOURCES += sdl.c
-C_SOURCES += sound/sdl_s.c
-C_SOURCES += video/sdl_v.c
+  SRCS += sdl.c
+  SRCS += sound/sdl_s.c
+  SRCS += video/sdl_v.c
 endif
 
 ifdef WIN32
-C_SOURCES += win32.c
-C_SOURCES += music/win32_m.c
-C_SOURCES += sound/win32_s.c
-C_SOURCES += video/win32_v.c
+  SRCS += win32.c
+  SRCS += music/win32_m.c
+  SRCS += sound/win32_s.c
+  SRCS += video/win32_v.c
 else
-C_SOURCES += unix.c
-C_SOURCES += music/extmidi.c
+  SRCS += unix.c
+  SRCS += music/extmidi.c
 endif
 
 ifdef OSX
-OBJC_SOURCES += os/macosx/macos.m
-ifndef DEDICATED
-C_SOURCES    += music/qtmidi.c
+  SRCS += os/macosx/macos.m
+  ifndef DEDICATED
+    SRCS += music/qtmidi.c
+  endif
 endif
-endif
-
-OBJS = $(C_SOURCES:%.c=%.o) $(CXX_SOURCES:%.cpp=%.o) $(OBJC_SOURCES:%.m=%.o)
 
 ifdef BEOS
-CXX_SOURCES += music/bemidi.cpp
+  SRCS += music/bemidi.cpp
 endif
 
 ifdef WIN32
-# Resource file
-OBJS += winres.o
+  # Resource file
+  OBJS += winres.o
 endif
 
 ifdef WITH_DIRECTMUSIC
-CXX_SOURCES += music/dmusic.cpp
+  SRCS += music/dmusic.cpp
 endif
 
+OBJS += $(filter %.o, $(SRCS:%.cpp=%.o) $(SRCS:%.m=%.o) $(SRCS:%.c=%.o) $(SRCS:%.rc=%.o))
 DEPS = $(OBJS:%.o=.deps/%.d)
 
 LANG_TXT = $(filter-out %.unfinished.txt,$(wildcard lang/*.txt))
