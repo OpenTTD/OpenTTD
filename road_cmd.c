@@ -712,8 +712,7 @@ static int32 ClearTile_Road(TileIndex tile, byte flags)
 			return_cmd_error(STR_1801_MUST_REMOVE_ROAD_FIRST);
 
 		ret = DoCommandByTile(tile, (m5&8)?5:10, 0, flags, CMD_REMOVE_ROAD);
-		if (ret == CMD_ERROR)
-			return CMD_ERROR;
+		if (CmdFailed(ret)) return CMD_ERROR;
 
 		if (flags & DC_EXEC) {
 			DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);

@@ -136,17 +136,17 @@ static int32 DoBuildShiplift(TileIndex tile, int dir, uint32 flags)
 
 	// middle tile
 	ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (ret == CMD_ERROR) return CMD_ERROR;
+	if (CmdFailed(ret)) return CMD_ERROR;
 
 	delta = TileOffsByDir(dir);
 	// lower tile
 	ret = DoCommandByTile(tile - delta, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (ret == CMD_ERROR) return CMD_ERROR;
+	if (CmdFailed(ret)) return CMD_ERROR;
 	if (GetTileSlope(tile - delta, NULL)) return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 	// upper tile
 	ret = DoCommandByTile(tile + delta, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (ret == CMD_ERROR) return CMD_ERROR;
+	if (CmdFailed(ret)) return CMD_ERROR;
 	if (GetTileSlope(tile + delta, NULL)) return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 	if (flags & DC_EXEC) {
@@ -530,7 +530,7 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 			case MP_CLEAR:
 			case MP_TREES:
 				_current_player = OWNER_WATER;
-				if (DoCommandByTile(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR) != CMD_ERROR) {
+				if (!CmdFailed(DoCommandByTile(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
 					ModifyTile(
 						target,
 						MP_SETTYPE(MP_WATER) | MP_MAPOWNER | MP_MAP5 | MP_MAP2_CLEAR |
@@ -569,7 +569,7 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 			if (v != NULL) FloodVehicle(v);
 		}
 
-		if (DoCommandByTile(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR) != CMD_ERROR) {
+		if (!CmdFailed(DoCommandByTile(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
 			ModifyTile(
 				target,
 				MP_SETTYPE(MP_WATER) | MP_MAPOWNER | MP_MAP5 | MP_MAP2_CLEAR |

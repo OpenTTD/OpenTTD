@@ -810,7 +810,7 @@ int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invali
 			}
 		} else {
 			ret = DoCommandByTile(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-			if (ret == CMD_ERROR) return CMD_ERROR;
+			if (CmdFailed(ret)) return CMD_ERROR;
 			cost += ret;
 		}
 	END_TILE_LOOP(tile_cur, w, h, tile)
@@ -1390,7 +1390,7 @@ int32 CmdBuildRoadStop(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 
 	cost = CheckFlatLandBelow(tile, 1, 1, flags, 1 << p1, NULL);
-	if (cost == CMD_ERROR) return CMD_ERROR;
+	if (CmdFailed(cost)) return CMD_ERROR;
 
 	st = GetStationAround(tile, 1, 1, -1);
 	if (st == CHECK_STATIONS_ERR) return CMD_ERROR;

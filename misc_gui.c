@@ -59,7 +59,7 @@ static void LandInfoWndProc(Window *w, WindowEvent *e)
 		DrawStringCentered(140, 27, STR_01A7_OWNER, 0);
 
 		str = STR_01A4_COST_TO_CLEAR_N_A;
-		if (lid->costclear != CMD_ERROR) {
+		if (!CmdFailed(lid->costclear)) {
 			SetDParam(0, lid->costclear);
 			str = STR_01A5_COST_TO_CLEAR;
 		}

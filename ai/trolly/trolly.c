@@ -659,7 +659,7 @@ static void AiNew_State_FindStation(Player *p)
 					if (accepts[p->ainew.cargo] >> 3 == 0) continue;
 					// See if we can build the station
 					r = AiNew_Build_Station(p, p->ainew.tbt, new_tile, 0, 0, 0, DC_QUERY_COST);
-					if (r == CMD_ERROR) continue;
+					if (CmdFailed(r)) continue;
 					// We can build it, so add it to found_spot
 					found_spot[i] = new_tile;
 					found_best[i++] = accepts[p->ainew.cargo];
@@ -846,7 +846,7 @@ static void AiNew_State_FindDepot(Player *p)
 				if (ti.tileh != 0) continue;
 				// Check if everything went okay..
 				r = AiNew_Build_Depot(p, tile + TileOffsByDir(j), j ^ 2, 0);
-				if (r == CMD_ERROR) continue;
+				if (CmdFailed(r)) continue;
 				// Found a spot!
 				p->ainew.new_cost += r;
 				p->ainew.depot_tile = tile + TileOffsByDir(j);
@@ -989,7 +989,7 @@ static void AiNew_State_BuildStation(Player *p)
 			res = AiNew_Build_Station(p, p->ainew.tbt, p->ainew.to_tile, 0, 0, p->ainew.to_direction, DC_EXEC);
 		p->ainew.state = AI_STATE_BUILD_PATH;
 	}
-	if (res == CMD_ERROR) {
+	if (CmdFailed(res)) {
 		DEBUG(ai,0)("[AiNew - BuildStation] Strange but true... station can not be build!");
 		p->ainew.state = AI_STATE_NOTHING;
 		// If the first station _was_ build, destroy it
@@ -1119,7 +1119,7 @@ static void AiNew_State_BuildDepot(Player *p)
 		return;
 
 	res = AiNew_Build_Depot(p, p->ainew.depot_tile, p->ainew.depot_direction, DC_EXEC);
-	if (res == CMD_ERROR) {
+	if (CmdFailed(res)) {
 		DEBUG(ai,0)("[AiNew - BuildDepot] Strange but true... depot can not be build!");
 		p->ainew.state = AI_STATE_NOTHING;
 		return;
@@ -1152,7 +1152,7 @@ static void AiNew_State_BuildVehicle(Player *p)
 
 	// Build the vehicle
 	res = AiNew_Build_Vehicle(p, p->ainew.depot_tile, DC_EXEC);
-	if (res == CMD_ERROR) {
+	if (CmdFailed(res)) {
 		// This happens when the AI can't build any more vehicles!
 		p->ainew.state = AI_STATE_NOTHING;
 		return;

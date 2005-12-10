@@ -1099,12 +1099,12 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 		case RAIL_TYPE_SIGNALS:
 			if (_m[tile].m3 & _signals_table_both[0]) {
 				ret = DoCommandByTile(tile, 0, 0, flags, CMD_REMOVE_SIGNALS);
-				if (ret == CMD_ERROR) return CMD_ERROR;
+				if (CmdFailed(ret)) return CMD_ERROR;
 				cost += ret;
 			}
 			if (_m[tile].m3 & _signals_table_both[3]) {
 				ret = DoCommandByTile(tile, 3, 0, flags, CMD_REMOVE_SIGNALS);
-				if (ret == CMD_ERROR) return CMD_ERROR;
+				if (CmdFailed(ret)) return CMD_ERROR;
 				cost += ret;
 			}
 
@@ -1121,7 +1121,7 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 			for (i = 0; m5 != 0; i++, m5 >>= 1) {
 				if (m5 & 1) {
 					ret = DoCommandByTile(tile, 0, i, flags, CMD_REMOVE_SINGLE_RAIL);
-					if (ret == CMD_ERROR) return CMD_ERROR;
+					if (CmdFailed(ret)) return CMD_ERROR;
 					cost += ret;
 				}
 			}

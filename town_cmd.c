@@ -483,8 +483,8 @@ static bool IsRoadAllowedHere(TileIndex tile, int dir)
 			// No, try to build one in the direction.
 			// if that fails clear the land, and if that fails exit.
 			// This is to make sure that we can build a road here later.
-			if (DoCommandByTile(tile, (dir&1)?0xA:0x5, 0, DC_AUTO, CMD_BUILD_ROAD) == CMD_ERROR &&
-					DoCommandByTile(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR) == CMD_ERROR)
+			if (CmdFailed(DoCommandByTile(tile, (dir&1)?0xA:0x5, 0, DC_AUTO, CMD_BUILD_ROAD)) &&
+					CmdFailed(DoCommandByTile(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR)))
 				return false;
 		}
 
@@ -664,7 +664,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, uint mask, int block, Town *t1)
 			(i++,ti.tileh != 12) &&
 			(i++,ti.tileh != 6)) {
 build_road_and_exit:
-		if (DoCommandByTile(tile, rcmd, t1->index, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD) != CMD_ERROR)
+		if (!CmdFailed(DoCommandByTile(tile, rcmd, t1->index, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD)))
 			_grow_town_result = -1;
 		return;
 	}
@@ -690,7 +690,7 @@ build_road_and_exit:
 		do {
 			byte bridge_type = RandomRange(MAX_BRIDGES - 1);
 			if (CheckBridge_Stuff(bridge_type, bridge_len)) {
-				if (DoCommandByTile(tile, tmptile, 0x8000 + bridge_type, DC_EXEC | DC_AUTO, CMD_BUILD_BRIDGE) != CMD_ERROR)
+				if (!CmdFailed(DoCommandByTile(tile, tmptile, 0x8000 + bridge_type, DC_EXEC | DC_AUTO, CMD_BUILD_BRIDGE)))
 					_grow_town_result = -1;
 
 				// obviously, if building any bridge would fail, there is no need to try other bridge-types
@@ -809,7 +809,7 @@ bool GrowTown(Town *t)
 
 		// Only work with plain land that not already has a house with map5=0
 		if (ti.tileh == 0 && (ti.type != MP_HOUSE || ti.map5 != 0)) {
-			if (DoCommandByTile(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR) != CMD_ERROR) {
+			if (!CmdFailed(DoCommandByTile(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR))) {
 				DoCommandByTile(tile, GenRandomRoadBits(), t->index, DC_EXEC | DC_AUTO, CMD_BUILD_ROAD);
 				_current_player = old_player;
 				return true;
@@ -1136,7 +1136,7 @@ static bool CheckBuildHouseMode(Town *t1, TileIndex tile, uint tileh, int mode)
 	if (b)
 		return false;
 
-	return DoCommandByTile(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR) != CMD_ERROR;
+	return !CmdFailed(DoCommandByTile(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR));
 }
 
 int GetTownRadiusGroup(const Town *t, TileIndex tile)
@@ -1174,7 +1174,7 @@ static bool CheckFree2x2Area(Town *t1, TileIndex tile)
 		if (GetTileSlope(tile, NULL))
 			return false;
 
-		if (DoCommandByTile(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER | DC_FORCETEST, CMD_LANDSCAPE_CLEAR) == CMD_ERROR)
+		if (CmdFailed(DoCommandByTile(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER | DC_FORCETEST, CMD_LANDSCAPE_CLEAR)))
 			return false;
 	}
 
@@ -1361,7 +1361,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 	if (GetTileSlope(tile, NULL) & 0x10) return false;
 
 	r = DoCommandByTile(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR);
-	if (r == CMD_ERROR) return false;
+	if (CmdFailed(r)) return false;
 
 	DoBuildTownHouse(t, tile);
 	return true;

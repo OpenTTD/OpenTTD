@@ -1677,7 +1677,7 @@ static int AiBuildDefaultRailTrack(TileIndex tile, byte p0, byte p1, byte p2, by
 		if (p->p0 == p0 && p->p1 == p1 && p->p2 == p2 && p->p3 == p3 &&
 				(p->dir == 0xFF || p->dir == dir || ((p->dir - 1) & 3) == dir)) {
 			*cost = AiDoBuildDefaultRailTrack(tile, p->data, DC_NO_TOWN_RATING);
-			if (*cost != CMD_ERROR && AiCheckTrackResources(tile, p->data, cargo))
+			if (!CmdFailed(*cost) && AiCheckTrackResources(tile, p->data, cargo))
 				return i;
 		}
 	}
@@ -1804,7 +1804,7 @@ static void AiStateBuildDefaultRailBlocks(Player *p)
 					_default_rail_track_data[rule]->data,
 					DC_EXEC | DC_NO_TOWN_RATING
 				);
-				assert(r != CMD_ERROR);
+				assert(!CmdFailed(r));
 			}
 		} while (++aib,--j);
 	}
@@ -2529,7 +2529,7 @@ static int AiFindBestDefaultRoadBlock(TileIndex tile, byte direction, byte cargo
 	for(i=0; (p = _road_default_block_data[i]) != NULL; i++) {
 		if (p->dir == direction) {
 			*cost = AiDoBuildDefaultRoadBlock(tile, p->data, 0);
-			if (*cost != CMD_ERROR && AiCheckRoadResources(tile, p->data, cargo))
+			if (!CmdFailed(*cost) && AiCheckRoadResources(tile, p->data, cargo))
 				return i;
 		}
 	}
@@ -2690,7 +2690,7 @@ static void AiStateBuildDefaultRoadBlocks(Player *p)
 					_road_default_block_data[rule]->data,
 					DC_EXEC | DC_NO_TOWN_RATING
 				);
-				assert(r != CMD_ERROR);
+				assert(!CmdFailed(r));
 			}
 		} while (++aib,--j);
 	} while (--i);
@@ -3392,7 +3392,7 @@ static int AiFindBestDefaultAirportBlock(TileIndex tile, byte cargo, byte heli, 
 			continue;
 
 		*cost = AiDoBuildDefaultAirportBlock(tile, p, 0);
-		if (*cost != CMD_ERROR && AiCheckAirportResources(tile, p, cargo))
+		if (!CmdFailed(*cost) && AiCheckAirportResources(tile, p, cargo))
 			return i;
 	}
 	return -1;
@@ -3463,7 +3463,7 @@ static void AiStateBuildDefaultAirportBlocks(Player *p)
 					_airport_default_block_data[rule],
 					DC_EXEC | DC_NO_TOWN_RATING
 				);
-				assert(r != CMD_ERROR);
+				assert(!CmdFailed(r));
 			}
 		} while (++aib,--j);
 	} while (--i);

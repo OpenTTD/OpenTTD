@@ -1354,7 +1354,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable*
 					}
 				} else {
 do_clear:
-					if (DoCommandByTile(cur_tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR) == CMD_ERROR)
+					if (CmdFailed(DoCommandByTile(cur_tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR)))
 						return false;
 				}
 			}

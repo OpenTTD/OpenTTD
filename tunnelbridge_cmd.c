@@ -279,7 +279,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	// true - bridge-start-tile, false - bridge-end-tile
 	terraformcost = CheckBridgeSlope(direction, ti_start.tileh, true);
-	if (terraformcost == CMD_ERROR || (terraformcost && !allow_on_slopes))
+	if (CmdFailed(terraformcost) || (terraformcost && !allow_on_slopes))
 		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 	cost += terraformcost;
 
@@ -291,7 +291,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	// false - end tile slope check
 	terraformcost = CheckBridgeSlope(direction, ti_end.tileh, false);
-	if (terraformcost == CMD_ERROR || (terraformcost && !allow_on_slopes))
+	if (CmdFailed(terraformcost) || (terraformcost && !allow_on_slopes))
 		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 	cost += terraformcost;
 
