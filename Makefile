@@ -774,8 +774,7 @@ ifdef BEOS
 endif
 
 ifdef WIN32
-  # Resource file
-  OBJS += winres.o
+  SRCS += ottdres.rc
 endif
 
 ifdef WITH_DIRECTMUSIC
@@ -853,10 +852,6 @@ table/strings.h: lang/english.txt $(STRGEN)
 lang/%.lng: lang/%.txt $(STRGEN) lang/english.txt
 	@echo '===> Compiling language $(*F)'
 	$(Q)$(STRGEN) $(STRGEN_FLAGS) $< $(LANG_ERRORS) || rm -f $@
-
-winres.o: openttd.rc
-	@echo '===> Compiling resource $<'
-	$(Q)$(WINDRES) -o $@ $<
 
 ifdef MORPHOS
 release: all
@@ -1023,6 +1018,10 @@ endif
 %.o: %.m  $(MAKE_CONFIG)
 	@echo '===> Compiling $<'
 	$(Q)$(CC) $(CFLAGS) $(CDEFS) -c -o $@ $<
+
+%.o: %.rc
+	@echo '===> Compiling resource $<'
+	$(Q)$(WINDRES) -o $@ $<
 
 
 info:

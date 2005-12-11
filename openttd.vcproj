@@ -291,7 +291,7 @@
 				RelativePath=".\openttd.c">
 			</File>
 			<File
-				RelativePath=".\openttd.rc">
+				RelativePath=".\ottdres.rc">
 			</File>
 			<File
 				RelativePath=".\pathfind.c">

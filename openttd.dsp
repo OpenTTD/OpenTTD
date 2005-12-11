@@ -327,7 +327,7 @@ SOURCE=.\openttd.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\openttd.rc
+SOURCE=.\ottdres.rc
 # End Source File
 # Begin Source File
 
