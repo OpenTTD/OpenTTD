@@ -453,25 +453,25 @@ static const DrawTileSeqStruct _station_display_datas_82[] = {
 };
 
 // end of runway
-const DrawTileSeqStruct _station_display_datas_083[] = {
+static const DrawTileSeqStruct _station_display_datas_083[] = {
 	TILE_SEQ_END()
 };
 
 // runway tiles
-const DrawTileSeqStruct _station_display_datas_084[] = {
+static const DrawTileSeqStruct _station_display_datas_084[] = {
 	TILE_SEQ_END()
 };
 
 // control tower with concrete underground and no fence
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_085[] = {
+static const DrawTileSeqStruct _station_display_datas_085[] = {
 	{ 3,  3,  0, 10, 10, 60, 0xA5B | PALETTE_MODIFIER_COLOR },  // control tower
 	TILE_SEQ_END()
 };
 
 // new airportdepot, facing west
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_086[] = {
+static const DrawTileSeqStruct _station_display_datas_086[] = {
 	{ 14, 0,  0,  2, 16, 28, 0xA61 | PALETTE_MODIFIER_COLOR },
 	{ 0, 0,  0,  2, 16, 28, 0xA62 },
 	TILE_SEQ_END()
@@ -479,19 +479,19 @@ const DrawTileSeqStruct _station_display_datas_086[] = {
 
 // asphalt tile with fences in north
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_087[] = {
+static const DrawTileSeqStruct _station_display_datas_087[] = {
 	{ 0,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
 };
 
 // end of runway
-const DrawTileSeqStruct _station_display_datas_088[] = {
+static const DrawTileSeqStruct _station_display_datas_088[] = {
 	{ 0,  0,  0, 16,  1,  6, 0xA68 | PALETTE_MODIFIER_COLOR }, // fences
 	TILE_SEQ_END()
 };
 
 // runway tiles
-const DrawTileSeqStruct _station_display_datas_089[] = {
+static const DrawTileSeqStruct _station_display_datas_089[] = {
 	{ 0,  0,  0, 16,  1,  6, 0xA68 | PALETTE_MODIFIER_COLOR }, // fences
 	TILE_SEQ_END()
 };
@@ -499,84 +499,84 @@ const DrawTileSeqStruct _station_display_datas_089[] = {
 // turning radar with concrete underground fences on south -- needs 12 tiles
 // concrete underground
 //BEGIN
-const DrawTileSeqStruct _station_display_datas_090[] = {
+static const DrawTileSeqStruct _station_display_datas_090[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA78 },   // turning radar
 	{ 15,  0,  0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },  //fences
 	TILE_SEQ_END()
 };
 
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_091[] = {
+static const DrawTileSeqStruct _station_display_datas_091[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA79 },
 	{ 15,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
 };
 
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_092[] = {
+static const DrawTileSeqStruct _station_display_datas_092[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA7A },
 	{ 15,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
 };
 
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_093[] = {
+static const DrawTileSeqStruct _station_display_datas_093[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA7B },
 	{ 15,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
 };
 
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_094[] = {
+static const DrawTileSeqStruct _station_display_datas_094[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA7C },
 	{ 15,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
 };
 
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_095[] = {
+static const DrawTileSeqStruct _station_display_datas_095[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA7D },
 	{ 15,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
 };
 
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_096[] = {
+static const DrawTileSeqStruct _station_display_datas_096[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA7E },
 	{ 15,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
 };
 
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_097[] = {
+static const DrawTileSeqStruct _station_display_datas_097[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA7F },
 	{ 15,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
 };
 
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_098[] = {
+static const DrawTileSeqStruct _station_display_datas_098[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA80 },
 	{ 15,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
 };
 
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_099[] = {
+static const DrawTileSeqStruct _station_display_datas_099[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA81 },
 	{ 15,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
 };
 
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_0100[] = {
+static const DrawTileSeqStruct _station_display_datas_0100[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA82 },
 	{ 15,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
 };
 
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_0101[] = {
+static const DrawTileSeqStruct _station_display_datas_0101[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA83 },
 	{ 15,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
@@ -586,84 +586,84 @@ const DrawTileSeqStruct _station_display_datas_0101[] = {
 // turning radar with concrete underground fences on north -- needs 12 tiles
 // concrete underground
 //BEGIN
-const DrawTileSeqStruct _station_display_datas_0102[] = {
+static const DrawTileSeqStruct _station_display_datas_0102[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA78 },   // turning radar
 	{ 0,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
 };
 
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_0103[] = {
+static const DrawTileSeqStruct _station_display_datas_0103[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA79 },
 	{ 0,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
 };
 
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_0104[] = {
+static const DrawTileSeqStruct _station_display_datas_0104[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA7A },
 	{ 0,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
 };
 
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_0105[] = {
+static const DrawTileSeqStruct _station_display_datas_0105[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA7B },
 	{ 0,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
 };
 
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_0106[] = {
+static const DrawTileSeqStruct _station_display_datas_0106[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA7C },
 	{ 0,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
 };
 
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_0107[] = {
+static const DrawTileSeqStruct _station_display_datas_0107[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA7D },
 	{ 0,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
 };
 
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_0108[] = {
+static const DrawTileSeqStruct _station_display_datas_0108[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA7E },
 	{ 0,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
 };
 
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_0109[] = {
+static const DrawTileSeqStruct _station_display_datas_0109[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA7F },
 	{ 0,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
 };
 
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_0110[] = {
+static const DrawTileSeqStruct _station_display_datas_0110[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA80 },
 	{ 0,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
 };
 
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_0111[] = {
+static const DrawTileSeqStruct _station_display_datas_0111[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA81 },
 	{ 0,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
 };
 
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_0112[] = {
+static const DrawTileSeqStruct _station_display_datas_0112[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA82 },
 	{ 0,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
 };
 
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_0113[] = {
+static const DrawTileSeqStruct _station_display_datas_0113[] = {
 	{ 7,  7,  0,  2,  2,  8, 0xA83 },
 	{ 0,  0, 0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },
 	TILE_SEQ_END()
@@ -672,7 +672,7 @@ const DrawTileSeqStruct _station_display_datas_0113[] = {
 
 // helipad for international airport
 // concrete underground
-const DrawTileSeqStruct _station_display_datas_0114[] = {
+static const DrawTileSeqStruct _station_display_datas_0114[] = {
 	{ 10,  6, 0,  0, 0,  0, SPR_AIRPORT_HELIPAD },
 	{ 15,  0,  0,  1, 16,  6, 0xA67 | PALETTE_MODIFIER_COLOR },	// fences bottom
 	TILE_SEQ_END()
