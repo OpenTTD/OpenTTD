@@ -1093,8 +1093,8 @@ static const Widget _load_dialog_1_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   128,   256,    14,    25, STR_SORT_BY_DATE,		STR_SORT_ORDER_TIP},
 {     WWT_IMGBTN,  RESIZE_RIGHT,    14,     0,   256,    26,    47, 0x0,								STR_NULL},
 {     WWT_IMGBTN,     RESIZE_RB,    14,     0,   256,    48,   293, 0x0,								STR_NULL},
-{          WWT_6,     RESIZE_RB,    14,     2,   243,    50,   291, 0x0,								STR_400A_LIST_OF_DRIVES_DIRECTORIES},
 { WWT_PUSHIMGBTN,     RESIZE_LR,    14,   245,   256,    48,    59, SPR_HOUSE_ICON,			STR_SAVELOAD_HOME_BUTTON},
+{          WWT_6,     RESIZE_RB,    14,     2,   243,    50,   291, 0x0,								STR_400A_LIST_OF_DRIVES_DIRECTORIES},
 {  WWT_SCROLLBAR,    RESIZE_LRB,    14,   245,   256,    60,   281, 0x0,								STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   245,   256,   282,   293, 0x0,								STR_RESIZE_BUTTON},
 {   WIDGETS_END},
@@ -1107,8 +1107,8 @@ static const Widget _load_dialog_2_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   128,   256,    14,    25, STR_SORT_BY_DATE,				STR_SORT_ORDER_TIP},
 {     WWT_IMGBTN,  RESIZE_RIGHT,    14,     0,   256,    26,    47, 0x0,										STR_NULL},
 {     WWT_IMGBTN,     RESIZE_RB,    14,     0,   256,    48,   293, 0x0,										STR_NULL},
-{          WWT_6,     RESIZE_RB,    14,     2,   243,    50,   291, 0x0,										STR_400A_LIST_OF_DRIVES_DIRECTORIES},
 { WWT_PUSHIMGBTN,     RESIZE_LR,    14,   245,   256,    48,    59, SPR_HOUSE_ICON,					STR_SAVELOAD_HOME_BUTTON},
+{          WWT_6,     RESIZE_RB,    14,     2,   243,    50,   291, 0x0,										STR_400A_LIST_OF_DRIVES_DIRECTORIES},
 {  WWT_SCROLLBAR,    RESIZE_LRB,    14,   245,   256,    60,   281, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   245,   256,   282,   293, 0x0,										STR_RESIZE_BUTTON},
 {   WIDGETS_END},
@@ -1121,8 +1121,8 @@ static const Widget _save_dialog_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   128,   256,    14,    25, STR_SORT_BY_DATE,		STR_SORT_ORDER_TIP},
 {     WWT_IMGBTN,  RESIZE_RIGHT,    14,     0,   256,    26,    47, 0x0,								STR_NULL},
 {     WWT_IMGBTN,     RESIZE_RB,    14,     0,   256,    48,   291, 0x0,								STR_NULL},
-{          WWT_6,     RESIZE_RB,    14,     2,   243,    50,   290, 0x0,								STR_400A_LIST_OF_DRIVES_DIRECTORIES},
 { WWT_PUSHIMGBTN,     RESIZE_LR,    14,   245,   256,    48,    59, SPR_HOUSE_ICON,			STR_SAVELOAD_HOME_BUTTON},
+{          WWT_6,     RESIZE_RB,    14,     2,   243,    50,   290, 0x0,								STR_400A_LIST_OF_DRIVES_DIRECTORIES},
 {  WWT_SCROLLBAR,    RESIZE_LRB,    14,   245,   256,    60,   291, 0x0,								STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {     WWT_IMGBTN,    RESIZE_RTB,    14,     0,   256,   292,   307, 0x0,								STR_NULL},
 {     WWT_IMGBTN,    RESIZE_RTB,    14,     2,   254,   294,   305, 0x0,								STR_400B_CURRENTLY_SELECTED_NAME},
@@ -1139,8 +1139,8 @@ static const Widget _save_dialog_scen_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   128,   256,    14,    25, STR_SORT_BY_DATE,				STR_SORT_ORDER_TIP},
 {     WWT_IMGBTN,  RESIZE_RIGHT,    14,     0,   256,    26,    47, 0x0,										STR_NULL},
 {     WWT_IMGBTN,     RESIZE_RB,    14,     0,   256,    48,   291, 0x0,										STR_NULL},
-{          WWT_6,     RESIZE_RB,    14,     2,   243,    50,   290, 0x0,										STR_400A_LIST_OF_DRIVES_DIRECTORIES},
 { WWT_PUSHIMGBTN,     RESIZE_LR,    14,   245,   256,    48,    59, SPR_HOUSE_ICON,					STR_SAVELOAD_HOME_BUTTON},
+{          WWT_6,     RESIZE_RB,    14,     2,   243,    50,   290, 0x0,										STR_400A_LIST_OF_DRIVES_DIRECTORIES},
 {  WWT_SCROLLBAR,    RESIZE_LRB,    14,   245,   256,    60,   291, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {     WWT_IMGBTN,    RESIZE_RTB,    14,     0,   256,   292,   307, 0x0,										STR_NULL},
 {     WWT_IMGBTN,    RESIZE_RTB,    14,     2,   254,   294,   305, 0x0,										STR_400B_CURRENTLY_SELECTED_NAME},
@@ -1262,21 +1262,21 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 			MakeSortedSaveGameList();
 		}
 
-		GfxFillRect(w->widget[6].left + 1, w->widget[6].top + 1, w->widget[6].right, w->widget[6].bottom, 0xD7);
+		GfxFillRect(w->widget[7].left + 1, w->widget[7].top + 1, w->widget[7].right, w->widget[7].bottom, 0xD7);
 		DoDrawString(
 			_savegame_sort_order & SORT_DESCENDING ? DOWNARROW : UPARROW,
 			_savegame_sort_order & SORT_BY_NAME ? w->widget[2].right - 9 : w->widget[3].right - 9,
 			15, 16
 		);
 
-		y = w->widget[6].top + 1;
+		y = w->widget[7].top + 1;
 		pos = w->vscroll.pos;
 		while (pos < _fios_num) {
 			item = _fios_list + pos;
 			DoDrawStringTruncated(item->title, 4, y, _fios_colors[item->type], w->width - 18);
 			pos++;
 			y += 10;
-			if (y >= w->vscroll.cap * 10 + w->widget[6].top + 1) break;
+			if (y >= w->vscroll.cap * 10 + w->widget[7].top + 1) break;
 		}
 
 		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
@@ -1300,8 +1300,14 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 			SetWindowDirty(w);
 			break;
 
-		case 6: { /* Click the listbox */
-			int y = (e->click.pt.y - w->widget[6].top - 1) / 10;
+		case 6: /* OpenTTD 'button', jumps to OpenTTD directory */
+			FiosBrowseTo(&o_dir);
+			SetWindowDirty(w);
+			BuildFileList();
+			break;
+
+		case 7: { /* Click the listbox */
+			int y = (e->click.pt.y - w->widget[e->click.widget].top - 1) / 10;
 			char *name;
 			const FiosItem *file;
 
@@ -1332,11 +1338,6 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 		}
-		case 7: /* OpenTTD 'button', jumps to OpenTTD directory */
-			FiosBrowseTo(&o_dir);
-			SetWindowDirty(w);
-			BuildFileList();
-			break;
 
 		case 11: case 12: /* Delete, Save game */
 			break;
@@ -1462,7 +1463,7 @@ void ShowSaveLoadDialog(int mode)
 	w->resize.step_width = 2;
 	w->resize.step_height = 10;
 	w->resize.height = w->height - 14 * 10; // Minimum of 10 items
-	SETBIT(w->click_state, 6);
+	SETBIT(w->click_state, 7);
 	WP(w,querystr_d).text.caret = false;
 	WP(w,querystr_d).text.maxlength = lengthof(_edit_str_buf) - 1;
 	WP(w,querystr_d).text.maxwidth = 240;
