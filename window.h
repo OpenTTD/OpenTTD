@@ -353,7 +353,7 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(buildtrain_d));
 typedef struct {
 	byte vehicletype;
 	byte sel_index[2];
-	int16 sel_engine[2];
+	EngineID sel_engine[2];
 	uint16 count[2];
 } replaceveh_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(replaceveh_d));
