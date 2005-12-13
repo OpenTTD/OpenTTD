@@ -831,10 +831,12 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				// Disable the "Start Replacing" button if:
 				//    Either list is empty
 				// or Both lists have the same vehicle selected
+				// or The selected replacement engine has a replacement (to prevent loops)
 				// or The right list (new replacement) has the existing replacement vehicle selected
 				if (selected_id[0] == INVALID_ENGINE ||
 						selected_id[1] == INVALID_ENGINE ||
 						selected_id[0] == selected_id[1] ||
+						EngineReplacement(p, selected_id[1]) != INVALID_ENGINE ||
 						EngineReplacement(p, selected_id[0]) == selected_id[1]) {
 					SETBIT(w->disabled_state, 4);
 				} else {
