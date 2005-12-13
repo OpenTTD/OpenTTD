@@ -193,6 +193,7 @@ static const char *credits[] = {
 	"  Tamás Faragó (Darkvater) - Lead coder",
 	"  Kerekes Miham (MiHaMiX) - Translator system, and Nightlies host",
 	"  Owen Rudge (orudge) - Forum- and masterserver host, OS/2 port",
+	"  Peter Nelson (peter1138) - Spiritual descendant from newgrf gods",
 	"  Christoph Mallon (Tron) - Programmer, code correctness police",
 	"  Patric Stout (TrueLight) - Coder, network guru, SVN- and website host",
 	"",

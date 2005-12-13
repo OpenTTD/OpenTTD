@@ -96,8 +96,8 @@ trgir.grf
 trgtr.grf
 
 (Alternatively you can use the TTD GRF files from the DOS version: TRG1.GRF,
-TRGC.GRF, TRGH.GRF, TRGI.GRF, TRGT.GRF. A few minor graphical glitches with 
-the DOS graphics remain. E.g. the autorail button in the rail toolbar doesn't 
+TRGC.GRF, TRGH.GRF, TRGI.GRF, TRGT.GRF. A few minor graphical glitches with
+the DOS graphics remain. E.g. the autorail button in the rail toolbar doesn't
 look as nice as with the Windows graphics.)
 
 If you want music you need to copy the gm/ folder from Windows TTD into your
@@ -260,6 +260,7 @@ The OpenTTD team (in alphabetical order):
   Tamás Faragó (Darkvater)       - Lead programmer
   Kerekes Miham (MiHaMiX)        - Maintainer of translator service, and host of nightlies
   Owen Rudge (orudge)            - Contributor, forum host, master server host, OS/2 port
+  Peter Nelson (peter1138)       - NewGRF support wizard, OpenTTD addict
   Christoph Mallon (Tron)        - Programmer, code correctness police
   Patric Stout (TrueLight)       - Programmer, network guru, SVN-repository and website host
 
