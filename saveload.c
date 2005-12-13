@@ -1356,7 +1356,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 	/* An instance of saving is already active, so don't go saving again */
 	if (_ts.saveinprogress && mode == SL_SAVE) {
 		// if not an autosave, but a user action, show error message
-		if (!_do_autosave) ShowErrorMessage(_error_message, STR_SAVE_STILL_IN_PROGRESS, 0, 0);
+		if (!_do_autosave) ShowErrorMessage(INVALID_STRING_ID, STR_SAVE_STILL_IN_PROGRESS, 0, 0);
 		return SL_OK;
 	}
 	WaitTillSaved();

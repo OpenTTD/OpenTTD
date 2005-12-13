@@ -88,11 +88,11 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 		case 15:
 #ifdef ENABLE_NETWORK
 			if (!_network_available) {
-				ShowErrorMessage(-1, STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
+				ShowErrorMessage(INVALID_STRING_ID, STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
 			} else
 				ShowNetworkGameWindow();
 #else
-			ShowErrorMessage(-1 ,STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
+			ShowErrorMessage(INVALID_STRING_ID ,STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
 #endif
 			break;
 		case 16: ShowGameOptions(); break;

@@ -562,13 +562,13 @@ static int32 v_PositionMainToolbar(int32 p1)
 
 static int32 AiNew_PatchActive_Warning(int32 p1)
 {
-	if (p1 == 1) ShowErrorMessage(-1, TEMP_AI_ACTIVATED, 0, 0);
+	if (p1 == 1) ShowErrorMessage(INVALID_STRING_ID, TEMP_AI_ACTIVATED, 0, 0);
 	return 0;
 }
 
 static int32 Ai_In_Multiplayer_Warning(int32 p1)
 {
-	if (p1 == 1) ShowErrorMessage(-1, TEMP_AI_MULTIPLAYER, 0, 0);
+	if (p1 == 1) ShowErrorMessage(INVALID_STRING_ID, TEMP_AI_MULTIPLAYER, 0, 0);
 	return 0;
 }
 
@@ -617,7 +617,7 @@ static int32 CheckInterval(int32 p1)
 	}
 
 	if (!warning)
-		ShowErrorMessage(-1, STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE, 0, 0);
+		ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE, 0, 0);
 
 	return InValidateDetailsWindow(0);
 }

@@ -676,7 +676,7 @@ static void StartScenario(void)
 	// invalid type
 	if (_file_to_saveload.mode == SL_INVALID) {
 		printf("Savegame is obsolete or invalid format: %s\n", _file_to_saveload.name);
-		ShowErrorMessage(_error_message, STR_4009_GAME_LOAD_FAILED, 0, 0);
+		ShowErrorMessage(INVALID_STRING_ID, STR_4009_GAME_LOAD_FAILED, 0, 0);
 		_game_mode = GM_MENU;
 		return;
 	}
@@ -692,7 +692,7 @@ static void StartScenario(void)
 	// Load game
 	if (SaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode) != SL_OK) {
 		LoadIntroGame();
-		ShowErrorMessage(_error_message, STR_4009_GAME_LOAD_FAILED, 0, 0);
+		ShowErrorMessage(INVALID_STRING_ID, STR_4009_GAME_LOAD_FAILED, 0, 0);
 	}
 
 	_opt_ptr = &_opt;
@@ -788,7 +788,7 @@ void SwitchMode(int new_mode)
 
 		if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL)) {
 			LoadIntroGame();
-			ShowErrorMessage(_error_message, STR_4009_GAME_LOAD_FAILED, 0, 0);
+			ShowErrorMessage(INVALID_STRING_ID, STR_4009_GAME_LOAD_FAILED, 0, 0);
 		} else {
 			_local_player = 0;
 			DoCommandP(0, 0, 0, NULL, CMD_PAUSE); // decrease pause counter (was increased from opening load dialog)

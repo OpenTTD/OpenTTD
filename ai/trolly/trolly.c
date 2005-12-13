@@ -45,7 +45,7 @@ static void AiNew_State_FirstTime(Player *p)
 	// We first have to init some things
 
 	if (_current_player == 1 || _ai.network_client) {
-		ShowErrorMessage(-1, TEMP_AI_IN_PROGRESS, 0, 0);
+		ShowErrorMessage(INVALID_STRING_ID, TEMP_AI_IN_PROGRESS, 0, 0);
 	}
 
 	// The PathFinder (AyStar)

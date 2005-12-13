@@ -340,9 +340,7 @@ int32 DoCommand(int x, int y, uint32 p1, uint32 p2, uint32 flags, uint procc)
 
 	proc = _command_proc_table[procc].proc;
 
-	if (_docommand_recursive == 0) {
-		_error_message = INVALID_STRING_ID;
-	}
+	if (_docommand_recursive == 0) _error_message = INVALID_STRING_ID;
 
 	_docommand_recursive++;
 
