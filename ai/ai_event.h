@@ -13,7 +13,7 @@
  *   tell us ASAP! */
 #	define ai_event(player, event, ...) \
 		if ((player) < MAX_PLAYERS && _ai_player[(player)].module != NULL) \
-			gpmi_event(_ai_player[(player)].module, (event), ##__VA_ARGS__)
+			gpmi_event(_ai_player[(player)].module, (event), _ai_current_uid, ##__VA_ARGS__)
 
 #else /* GPMI */
 

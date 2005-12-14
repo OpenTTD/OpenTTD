@@ -51,6 +51,8 @@ typedef struct AIStruct {
 
 VARDEF AIStruct _ai;
 VARDEF AIPlayer _ai_player[MAX_PLAYERS];
+VARDEF uint _ai_current_uid; //! Keeps track of the current UID, if any (0 means none)
+VARDEF TileIndex _ai_current_tile; //! Keeps track of the current Tile.
 
 // ai.c
 void AI_StartNewAI(PlayerID player);
@@ -60,7 +62,8 @@ void AI_Initialize(void);
 void AI_Uninitialize(void);
 int32 AI_DoCommand(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc);
 int32 AI_DoCommandChecked(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc);
-void AI_CommandResult(uint32 cmd, uint32 p1, uint32 p2, TileIndex tile, bool failed);
+void AI_GetCommandUID(uint32 cmd, uint32 p1, uint32 p2, TileIndex tile);
+void AI_CommandResult(bool failed);
 
 /** Is it allowed to start a new AI.
  * This function checks some boundries to see if we should launch a new AI.

@@ -156,7 +156,7 @@ int32 AI_DoCommand(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 int32 AI_DoCommandChecked(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 {
 	AICommand *new;
-	uint unique_id = uids[_current_player];
+	uint unique_id = uids[_current_player] + 1; // + 1, because 0 is reserved
 	int32 res;
 
 	res = DoCommandByTile(tile, p1, p2, flags & ~DC_EXEC, procc);
@@ -192,12 +192,15 @@ int32 AI_DoCommandChecked(uint tile, uint32 p1, uint32 p2, uint32 flags, uint pr
 }
 
 /**
- * A command is executed for real, and is giving us his result (failed yes/no). Inform the AI with it via
- *  an event.Z
+ * Find the right UID for this command.
  */
-void AI_CommandResult(uint32 cmd, uint32 p1, uint32 p2, TileIndex tile, bool succeeded)
+void AI_GetCommandUID(uint32 cmd, uint32 p1, uint32 p2, TileIndex tile)
 {
 	AICommand *command = command_uid[_current_player];
+
+	/* Reset to 0, meaning no UID. Then we start detecting if we have an UID for this command */
+	_ai_current_uid  = 0;
+	_ai_current_tile = INVALID_TILE;
 
 	if (command == NULL)
 		return;
@@ -217,12 +220,27 @@ void AI_CommandResult(uint32 cmd, uint32 p1, uint32 p2, TileIndex tile, bool suc
 		return;
 	}
 
+	/* Remove this command from the list */
 	command_uid[_current_player] = command_uid[_current_player]->next;
 	if (command_uid[_current_player] == NULL)
 		command_uid_tail[_current_player] = NULL;
 
-	ai_event(_current_player, succeeded ? ottd_Event_CommandSucceeded : ottd_Event_CommandFailed, tile, command->uid);
+	/* Broadcast our current UID and tile */
+	_ai_current_uid  = command->uid;
+	_ai_current_tile = tile;
 	free(command);
+}
+
+/**
+ * A command is executed for real, and is giving us his result (failed yes/no). Inform the AI with it via
+ *  an event.
+ */
+void AI_CommandResult(bool succeeded)
+{
+	if (_ai_current_uid == 0)
+		return;
+
+	ai_event(_current_player, succeeded ? ottd_Event_CommandSucceeded : ottd_Event_CommandFailed, _ai_current_tile);
 }
 
 /**
