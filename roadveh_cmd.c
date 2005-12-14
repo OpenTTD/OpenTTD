@@ -197,8 +197,8 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (IsLocalPlayer())
 			InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Road); // updates the replace Road window
 
-		ai_event(_current_player, ottd_Event_BuildVehicle, v->index, tile);
-		ai_event(_current_player, ottd_Event_BuildRoadVehicle, v->index, tile);
+		ai_event(_current_player, ttai_Event_BuildVehicle, v->index, tile);
+		ai_event(_current_player, ttai_Event_BuildRoadVehicle, v->index, tile);
 	}
 
 	return cost;

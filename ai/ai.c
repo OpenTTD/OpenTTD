@@ -240,7 +240,7 @@ void AI_CommandResult(bool succeeded)
 	if (_ai_current_uid == 0)
 		return;
 
-	ai_event(_current_player, succeeded ? ottd_Event_CommandSucceeded : ottd_Event_CommandFailed, _ai_current_tile);
+	ai_event(_current_player, succeeded ? ttai_Event_CommandSucceeded : ttai_Event_CommandFailed, _ai_current_tile);
 }
 
 /**
@@ -335,34 +335,34 @@ void AI_ShutdownAIControl(bool with_error)
 	}
 }
 
-void (*ottd_GetNextAIData)(char **library, char **param);
-void (*ottd_SetAIParam)(char *param);
+void (*ttai_GetNextAIData)(char **library, char **param);
+void (*ttai_SetAIParam)(char *param);
 
 void AI_LoadAIControl(void)
 {
 	/* Load module */
-	_ai.gpmi_mod = gpmi_mod_load("ottd_ai_control_mod", NULL);
+	_ai.gpmi_mod = gpmi_mod_load("ttai_control_mod", NULL);
 	if (_ai.gpmi_mod == NULL) {
 		AI_ShutdownAIControl(true);
 		return;
 	}
 
 	/* Load package */
-	if (gpmi_pkg_load("ottd_ai_control_pkg", 0, NULL, NULL, &_ai.gpmi_pkg)) {
+	if (gpmi_pkg_load("ttai_control_pkg", 0, NULL, NULL, &_ai.gpmi_pkg)) {
 		AI_ShutdownAIControl(true);
 		return;
 	}
 
 	/* Now link all the functions */
 	{
-		ottd_GetNextAIData = gpmi_pkg_resolve(_ai.gpmi_pkg, "ottd_GetNextAIData");
-		ottd_SetAIParam = gpmi_pkg_resolve(_ai.gpmi_pkg, "ottd_SetAIParam");
+		ttai_GetNextAIData = gpmi_pkg_resolve(_ai.gpmi_pkg, "ttai_GetNextAIData");
+		ttai_SetAIParam = gpmi_pkg_resolve(_ai.gpmi_pkg, "ttai_SetAIParam");
 
-		if (ottd_GetNextAIData == NULL || ottd_SetAIParam == NULL)
+		if (ttai_GetNextAIData == NULL || ttai_SetAIParam == NULL)
 			AI_ShutdownAIControl(true);
 	}
 
-	ottd_SetAIParam(_ai.gpmi_param);
+	ttai_SetAIParam(_ai.gpmi_param);
 }
 
 /**
@@ -391,7 +391,7 @@ void AI_StartNewAI(PlayerID player)
 		char *library = NULL;
 		char *params = NULL;
 
-		ottd_GetNextAIData(&library, &params);
+		ttai_GetNextAIData(&library, &params);
 		gpmi_error_stack_enable = 1;
 
 		if (library != NULL) {

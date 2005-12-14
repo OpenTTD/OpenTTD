@@ -488,7 +488,7 @@ do_clear:;
 
 		MarkTileDirtyByTile(tile);
 
-		ai_event(_current_player, ottd_Event_BuildRoad, tile, pieces);
+		ai_event(_current_player, ttai_Event_BuildRoad, tile, pieces);
 	}
 	return cost;
 }
@@ -674,8 +674,8 @@ int32 CmdBuildRoadDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			(p1 | 0x20) /* map5 */
 		);
 
-		ai_event(_current_player, ottd_Event_BuildDepot, dep->index, tile);
-		ai_event(_current_player, ottd_Event_BuildRoadDepot, dep->index, tile);
+		ai_event(_current_player, ttai_Event_BuildDepot, dep->index, tile);
+		ai_event(_current_player, ttai_Event_BuildRoadDepot, dep->index, tile);
 	}
 	return cost + _price.build_road_depot;
 }
@@ -1161,8 +1161,8 @@ static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 			if (_roadveh_enter_depot_unk0[GB(_m[tile].m5, 0, 2)] == v->u.road.state) {
 				RoadVehEnterDepot(v);
 
-				ai_event(v->owner, ottd_Event_VehicleEnterDepot, v->index, tile);
-				ai_event(v->owner, ottd_Event_RoadVehicleEnterDepot, v->index, tile);
+				ai_event(v->owner, ttai_Event_VehicleEnterDepot, v->index, tile);
+				ai_event(v->owner, ttai_Event_RoadVehicleEnterDepot, v->index, tile);
 
 				return 4;
 			}

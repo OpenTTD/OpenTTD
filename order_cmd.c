@@ -395,7 +395,7 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		/* Make sure to rebuild the whole list */
 		RebuildVehicleLists();
 
-		ai_event(_current_player, ottd_Event_GiveOrder, v->index);
+		ai_event(_current_player, ttai_Event_GiveOrder, v->index);
 	}
 
 	return 0;

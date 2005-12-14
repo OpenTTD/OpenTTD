@@ -31,7 +31,7 @@
 
 /* To make our life a bit easier; you now only have to define new
  *  events here, and automaticly they work in OpenTTD without including
- *  the ottd_event package. Just because of some lovely macro-shit ;) */
+ *  the ttai_event package. Just because of some lovely macro-shit ;) */
 #ifdef DEF_EVENTS
 #	define DEF_EVENTS
 #	define INITIAL_SET = -1
@@ -41,24 +41,24 @@
 #endif /* DEF_EVENTS */
 
 /* ------------ All available events -------------- */
-DEF_EVENTS int ottd_Event_CommandFailed								INITIAL_SET; // (tile, unique_id)
-DEF_EVENTS int ottd_Event_CommandSucceeded						INITIAL_SET; // (tile, unique_id)
+DEF_EVENTS int ttai_Event_CommandFailed								INITIAL_SET; // (tile, unique_id)
+DEF_EVENTS int ttai_Event_CommandSucceeded						INITIAL_SET; // (tile, unique_id)
 
-DEF_EVENTS int ottd_Event_BuildStation								INITIAL_SET; // (station_index, station_tile)
-DEF_EVENTS int ottd_Event_BuildRoadStation						INITIAL_SET; // (station_index, station_tile)
+DEF_EVENTS int ttai_Event_BuildStation								INITIAL_SET; // (station_index, station_tile)
+DEF_EVENTS int ttai_Event_BuildRoadStation						INITIAL_SET; // (station_index, station_tile)
 
-DEF_EVENTS int ottd_Event_BuildDepot									INITIAL_SET; // (depot_index, depot_tile)
-DEF_EVENTS int ottd_Event_BuildRoadDepot							INITIAL_SET; // (depot_index, depot_tile)
+DEF_EVENTS int ttai_Event_BuildDepot									INITIAL_SET; // (depot_index, depot_tile)
+DEF_EVENTS int ttai_Event_BuildRoadDepot							INITIAL_SET; // (depot_index, depot_tile)
 
-DEF_EVENTS int ottd_Event_BuildVehicle								INITIAL_SET; // (vehicle_index, depot_tile)
-DEF_EVENTS int ottd_Event_BuildRoadVehicle						INITIAL_SET; // (vehicle_index, depot_tile)
+DEF_EVENTS int ttai_Event_BuildVehicle								INITIAL_SET; // (vehicle_index, depot_tile)
+DEF_EVENTS int ttai_Event_BuildRoadVehicle						INITIAL_SET; // (vehicle_index, depot_tile)
 
-DEF_EVENTS int ottd_Event_VehicleEnterDepot						INITIAL_SET; // (vehicle_index, depot_tile)
-DEF_EVENTS int ottd_Event_RoadVehicleEnterDepot				INITIAL_SET; // (vehicle_index, depot_tile)
+DEF_EVENTS int ttai_Event_VehicleEnterDepot						INITIAL_SET; // (vehicle_index, depot_tile)
+DEF_EVENTS int ttai_Event_RoadVehicleEnterDepot				INITIAL_SET; // (vehicle_index, depot_tile)
 
-DEF_EVENTS int ottd_Event_GiveOrder										INITIAL_SET; // (vehicle_index)
+DEF_EVENTS int ttai_Event_GiveOrder										INITIAL_SET; // (vehicle_index)
 
-DEF_EVENTS int ottd_Event_BuildRoad										INITIAL_SET; // (road_tile, road_pieces)
+DEF_EVENTS int ttai_Event_BuildRoad										INITIAL_SET; // (road_tile, road_pieces)
 /* ----------------- End of list ------------------ */
 
 #endif /* AI_EVENT */
