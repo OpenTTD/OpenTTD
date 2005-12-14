@@ -191,7 +191,7 @@ void DrawWindowWidgets(const Window *w)
 			goto draw_default;
 		}
 
-		case WWT_CLOSEBOX: /* WWT_TEXTBTN */
+		case WWT_TEXTBTN: /* WWT_TEXTBTN */
 		case WWT_4: {
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : 0);
 			}
@@ -407,6 +407,14 @@ void DrawWindowWidgets(const Window *w)
 			clicked = !!(w->flags4 & WF_SIZING);
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : 0);
 			DrawSprite(SPR_WINDOW_RESIZE, r.left + 3 + clicked, r.top + 3 + clicked);
+			break;
+		}
+
+		case WWT_CLOSEBOX: {
+			assert(r.right - r.left == 10); // ensure the same sizes are used everywhere
+
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, 0);
+			DrawString(r.left + 2, r.top + 2, STR_00C5, 0);
 			break;
 		}
 

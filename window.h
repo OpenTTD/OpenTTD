@@ -509,7 +509,6 @@ enum WindowWidgetTypes {
 	WWT_PANEL_2 = 2,					/* button with diff image when clicked */
 
 	WWT_TEXTBTN = 3,					/* button with text */
-	WWT_CLOSEBOX = WWT_TEXTBTN,
 	WWT_4 = 4,								/* button with diff text when clicked */
 	WWT_5 = 5,								/* label */
 	WWT_6 = 6,								/* combo box text area */
@@ -522,7 +521,8 @@ enum WindowWidgetTypes {
 	WWT_STICKYBOX = 12,
 	WWT_SCROLL2BAR = 13,				/* 2nd vertical scrollbar*/
 	WWT_RESIZEBOX = 14,
-	WWT_LAST = 15,						/* Last Item. use WIDGETS_END to fill up padding!! */
+	WWT_CLOSEBOX = 15,
+	WWT_LAST = 16,						/* Last Item. use WIDGETS_END to fill up padding!! */
 
 	WWT_MASK = 31,
 
