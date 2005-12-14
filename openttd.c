@@ -133,7 +133,6 @@ static void showhelp(void)
 		"  -h                  = Display this help text\n"
 		"  -t date             = Set starting date\n"
 		"  -d [[fac=]lvl[,...]]= Debug mode\n"
-		"  -l lng              = Select Language\n"
 		"  -e                  = Start Editor\n"
 		"  -g [savegame]       = Start new/save game immediately\n"
 		"  -G seed             = Set random seed\n"
@@ -309,7 +308,6 @@ int ttd_main(int argc, char* argv[])
 	int i;
 	bool network = false;
 	char *network_conn = NULL;
-	char *language = NULL;
 	const char *optformat;
 	char musicdriver[16], sounddriver[16], videodriver[16];
 	int resolution[2] = {0,0};
@@ -333,9 +331,9 @@ int ttd_main(int argc, char* argv[])
 	//   a ':' behind it means: it need a param (e.g.: -m<driver>)
 	//   a '::' behind it means: it can optional have a param (e.g.: -d<debug>)
 	#if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
-		optformat = "a:bm:s:v:hDfn::l:eit:d::r:g::G:p:c:";
+		optformat = "a:bm:s:v:hDfn::eit:d::r:g::G:p:c:";
 	#else
-		optformat = "a:bm:s:v:hDn::l:eit:d::r:g::G:p:c:"; // no fork option
+		optformat = "a:bm:s:v:hDn::eit:d::r:g::G:p:c:"; // no fork option
 	#endif
 
 	MyGetOptInit(&mgo, argc-1, argv+1, optformat);
@@ -368,7 +366,6 @@ int ttd_main(int argc, char* argv[])
 #endif /* GPMI */
 		case 'b': _ai.network_client = true; break;
 		case 'r': ParseResolution(resolution, mgo.opt); break;
-		case 'l': language = mgo.opt; break;
 		case 't': startdate = atoi(mgo.opt); break;
 		case 'd': {
 #if defined(WIN32)
