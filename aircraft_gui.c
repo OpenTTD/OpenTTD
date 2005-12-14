@@ -833,7 +833,7 @@ static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 		DeleteWindowById(WC_BUILD_VEHICLE, w->window_number);
 		break;
 
-	case WE_DRAGDROP: {
+	case WE_DRAGDROP:
 		switch(e->click.widget) {
 		case 5: {
 			Vehicle *v;
@@ -871,8 +871,6 @@ static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 			SetWindowDirty(w);
 		}
 		break;
-	}
-	break;
 
 	case WE_RESIZE:
 		w->vscroll.cap += e->sizing.diff.y / 24;

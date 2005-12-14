@@ -2090,7 +2090,7 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 		_scen_toolbar_button_procs[e->click.widget](w);
 	} break;
 
-	case WE_KEYPRESS: {
+	case WE_KEYPRESS:
 		switch (e->keypress.keycode) {
 		case WKC_F1: ToolbarPauseClick(w); break;
 		case WKC_F2: ShowGameOptions(); break;
@@ -2106,8 +2106,8 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_CTRL | 'S': _make_screenshot = 1; break;
 		case WKC_CTRL | 'G': _make_screenshot = 2; break;
 		case 'L': ShowEditorTerraformToolBar(); break;
-		} break;
-	}	break;
+		}
+		break;
 
 	case WE_PLACE_OBJ: {
 		_place_proc(e->place.tile);

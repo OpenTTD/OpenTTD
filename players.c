@@ -733,7 +733,8 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			} else {
 				return RemoveEngineReplacement(p, old_engine_type, flags);
 			}
-		} break;
+		}
+
 		case 4:
 			if (flags & DC_EXEC) {
 				p->engine_renew = (bool)GB(p1, 15, 1);
