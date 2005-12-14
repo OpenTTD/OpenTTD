@@ -2159,7 +2159,7 @@ static const byte _search_directions[6][4] = {
 };
 
 static const byte _pick_track_table[6] = {1, 3, 2, 2, 0, 0};
-#if PF_BENCHMARK
+#ifdef PF_BENCHMARK
 #if !defined(_MSC_VER)
 unsigned int _rdtsc()
 {
@@ -2188,7 +2188,7 @@ static byte ChooseTrainTrack(Vehicle *v, TileIndex tile, int enterdir, TrackdirB
 {
 	TrainTrackFollowerData fd;
 	uint best_track;
-#if PF_BENCHMARK
+#ifdef PF_BENCHMARK
 	int time = _rdtsc();
 	static float f;
 #endif
@@ -2259,7 +2259,7 @@ static byte ChooseTrainTrack(Vehicle *v, TileIndex tile, int enterdir, TrackdirB
 		}
 	}
 
-#if PF_BENCHMARK
+#ifdef PF_BENCHMARK
 	time = _rdtsc() - time;
 	f = f * 0.99 + 0.01 * time;
 	printf("PF time = %d %f\n", time, f);
