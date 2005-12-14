@@ -390,10 +390,16 @@ void AI_StartNewAI(PlayerID player)
 	if (_ai.gpmi) {
 		char *library = NULL;
 		char *params = NULL;
+		int old_cp = _current_player;
 
+		/* Switch to new player, so we can execute stuff */
+		_current_player = player;
+
+		/* Get the library and param to load */
 		ttai_GetNextAIData(&library, &params);
 		gpmi_error_stack_enable = 1;
 
+		/* Load the module */
 		if (library != NULL) {
 			_ai_player[player].module = gpmi_mod_load(library, params);
 			free(library);
@@ -401,6 +407,7 @@ void AI_StartNewAI(PlayerID player)
 		if (params != NULL)
 			free(params);
 
+		/* Check for errors */
 		if (_ai_player[player].module == NULL) {
 			DEBUG(ai, 0)("[AI] Failed to load AI, aborting. GPMI error stack:");
 			gpmi_err_stack_process_str(AI_PrintErrorStack);
@@ -408,6 +415,8 @@ void AI_StartNewAI(PlayerID player)
 		}
 		gpmi_error_stack_enable = 0;
 
+		/* Switch back to last player */
+		_current_player = old_cp;
 	}
 #endif /* GPMI */
 
