@@ -1093,7 +1093,7 @@ static void UpdateExclusiveRights(void)
 	*/
 }
 
-const byte convert_currency[] = {
+static const byte convert_currency[] = {
 	 0,  1, 12,  8,  3,
 	10, 14, 19,  4,  5,
 	 9, 11, 13,  6, 17,
