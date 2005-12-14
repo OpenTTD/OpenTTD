@@ -41,7 +41,7 @@ static void WaypointPoolNewBlock(uint start_item)
 MemoryPool _waypoint_pool = { "Waypoints", WAYPOINT_POOL_MAX_BLOCKS, WAYPOINT_POOL_BLOCK_SIZE_BITS, sizeof(Waypoint), &WaypointPoolNewBlock, 0, 0, NULL };
 
 /* Create a new waypoint */
-Waypoint *AllocateWaypoint(void)
+static Waypoint* AllocateWaypoint(void)
 {
 	Waypoint *wp;
 
@@ -72,7 +72,7 @@ void UpdateWaypointSign(Waypoint *wp)
 }
 
 /* Redraw the sign of a waypoint */
-void RedrawWaypointSign(Waypoint *wp)
+static void RedrawWaypointSign(const Waypoint* wp)
 {
 	MarkAllViewportsDirty(
 		wp->sign.left - 6,
@@ -93,7 +93,7 @@ void UpdateAllWaypointSigns(void)
 }
 
 /* Set the default name for a waypoint */
-void MakeDefaultWaypointName(Waypoint *wp)
+static void MakeDefaultWaypointName(Waypoint* wp)
 {
 	Waypoint *local_wp;
 	bool used_waypoint[MAX_WAYPOINTS_PER_TOWN];

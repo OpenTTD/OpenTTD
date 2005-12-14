@@ -25,7 +25,7 @@ static uint uids[MAX_PLAYERS];
 /**
  * Dequeues commands put in the queue via AI_PutCommandInQueue.
  */
-void AI_DequeueCommands(byte player)
+static void AI_DequeueCommands(byte player)
 {
 	AICommand *com, *entry_com;
 

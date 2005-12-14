@@ -36,7 +36,7 @@ static const byte _state_dir_table[4] = { 0x20, 8, 0x10, 4 };
  * the consist changes.
  * @param v First vehicle of the consist.
  */
-void TrainCargoChanged(Vehicle* v)
+static void TrainCargoChanged(Vehicle* v)
 {
 	Vehicle *u;
 	uint16 weight = 0;

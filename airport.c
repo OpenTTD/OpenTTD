@@ -8,11 +8,12 @@
 #include "macros.h"
 #include "variables.h"
 
-AirportFTAClass *CountryAirport;
-AirportFTAClass *CityAirport;
-AirportFTAClass *Heliport, *Oilrig;
-AirportFTAClass *MetropolitanAirport;
-AirportFTAClass *InternationalAirport;
+static AirportFTAClass* CountryAirport;
+static AirportFTAClass* CityAirport;
+static AirportFTAClass* Oilrig;
+static AirportFTAClass* Heliport;
+static AirportFTAClass* MetropolitanAirport;
+static AirportFTAClass* InternationalAirport;
 
 static void AirportFTAClass_Constructor(AirportFTAClass *Airport,
 																				const byte *terminals, const byte *helipads,

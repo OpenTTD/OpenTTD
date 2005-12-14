@@ -455,7 +455,7 @@ static uint32 _old_town_index;
 static uint16 _old_string_id;
 static uint16 _old_string_id_2;
 
-void ReadTTDPatchFlags(void)
+static void ReadTTDPatchFlags(void)
 {
 	int i;
 

@@ -1343,7 +1343,7 @@ int32 DoConvertStationRail(TileIndex tile, uint totype, bool exec)
 	return _price.build_rail >> 1;
 }
 
-void FindRoadStationSpot(bool truck_station, Station *st, RoadStop ***currstop, RoadStop **prev)
+static void FindRoadStationSpot(bool truck_station, Station* st, RoadStop*** currstop, RoadStop** prev)
 {
 	RoadStop **primary_stop;
 

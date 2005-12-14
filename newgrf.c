@@ -1276,7 +1276,7 @@ static void VehicleChangeInfo(byte *buf, int len)
  * @param value The value that was used to represent this callback result
  * @return A spritegroup representing that callback result
  */
-SpriteGroup *NewCallBackResultSpriteGroup(uint16 value)
+static SpriteGroup* NewCallBackResultSpriteGroup(uint16 value)
 {
 	SpriteGroup *group = calloc(1, sizeof(*group));
 
@@ -1300,7 +1300,7 @@ SpriteGroup *NewCallBackResultSpriteGroup(uint16 value)
  * @param sprites The number of sprites per set.
  * @return A spritegroup representing the sprite number result.
  */
-SpriteGroup *NewResultSpriteGroup(uint16 value, byte sprites)
+static SpriteGroup* NewResultSpriteGroup(uint16 value, byte sprites)
 {
 	SpriteGroup *group = calloc(1, sizeof(*group));
 	group->type = SGT_RESULT;

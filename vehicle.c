@@ -597,7 +597,7 @@ void VehicleEnteredDepotThisTick(Vehicle *v)
 	}
 }
 
-VehicleTickProc *_vehicle_tick_procs[] = {
+static VehicleTickProc* _vehicle_tick_procs[] = {
 	Train_Tick,
 	RoadVeh_Tick,
 	Ship_Tick,

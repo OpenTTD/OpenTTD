@@ -1304,7 +1304,7 @@ static void DetTrackDrawProc_Null(const TileInfo *ti)
 }
 
 typedef void DetailedTrackProc(const TileInfo *ti);
-DetailedTrackProc * const _detailed_track_proc[16] = {
+static DetailedTrackProc* const _detailed_track_proc[] = {
 	DetTrackDrawProc_Null,
 	DetTrackDrawProc_Null,
 
@@ -1719,7 +1719,7 @@ static void *SignalVehicleCheckProc(Vehicle *v, void *data)
 }
 
 /* Special check for SetSignalsAfterProc, to see if there is a vehicle on this tile */
-bool SignalVehicleCheck(TileIndex tile, uint track)
+static bool SignalVehicleCheck(TileIndex tile, uint track)
 {
 	SignalVehicleCheckStruct dest;
 

@@ -121,7 +121,7 @@ void DrawAircraftEngine(int x, int y, EngineID engine, uint32 image_ormod)
 	}
 }
 
-int32 EstimateAircraftCost(EngineID engine_type)
+static int32 EstimateAircraftCost(EngineID engine_type)
 {
 	return AircraftVehInfo(engine_type)->base_cost * (_price.aircraft_base>>3)>>5;
 }

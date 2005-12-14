@@ -504,7 +504,8 @@ void delete_Hash(Hash* h, bool free_values) {
 		free(h);
 }
 
-void stat_Hash(Hash* h)
+#ifdef HASH_STATS
+static void stat_Hash(Hash* h)
 {
 	uint used_buckets = 0;
 	uint max_collision = 0;
@@ -546,6 +547,7 @@ void stat_Hash(Hash* h)
 		}
 	printf ("}\n");
 }
+#endif
 
 void clear_Hash(Hash* h, bool free_values)
 {
