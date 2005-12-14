@@ -694,7 +694,6 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 		if (_selected_company_item != -1) { // if a company is selected...
 			// show company info
 			const uint x = 183;
-			uint xm;
 			y = 65;
 
 			SetDParamStr(0, _network_player_info[_selected_company_item].company_name);
@@ -738,7 +737,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 			y += 10;
 
 			SetDParamStr(0, _network_player_info[_selected_company_item].players);
-			xm = DrawString(x, y, STR_NETWORK_PLAYERS, 2); // players
+			DrawString(x, y, STR_NETWORK_PLAYERS, 2); // players
 			y += 10;
 		}
 	}	break;

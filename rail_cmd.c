@@ -410,7 +410,6 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Track track = (Track)p2;
 	TrackBits trackbit;
-	uint tileh;
 	TileIndex tile;
 	byte m5;
 	int32 cost = _price.remove_rail;
@@ -421,7 +420,6 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	tile = TileVirtXY(x, y);
-	tileh = GetTileSlope(tile, NULL);
 
 	if (!IsTileType(tile, MP_TUNNELBRIDGE) && !IsTileType(tile, MP_STREET) && !IsTileType(tile, MP_RAILWAY))
 		return CMD_ERROR;
@@ -726,7 +724,6 @@ int32 CmdBuildSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	bool semaphore;
 	bool pre_signal;
 	Track track = (Track)(p1 & 0x7);
-	byte m5;
 	int32 cost;
 
 	// Same bit, used in different contexts
@@ -737,8 +734,6 @@ int32 CmdBuildSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Protect against invalid signal copying */
 	if (p2 != 0 && (p2 & SignalOnTrack(track)) == 0) return CMD_ERROR;
-
-	m5 = _m[tile].m5;
 
 	/* You can only build signals on plain rail tiles, and the selected track must exist */
 	if (!IsPlainRailTile(tile) || !HasTrack(tile, track)) return CMD_ERROR;

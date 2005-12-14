@@ -498,11 +498,9 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 			int num = NUM_ROAD_ENGINES;
 			const Engine* e = GetEngine(ROAD_ENGINES_INDEX);
 			byte cargo;
-			const EngineInfo* info;
 			engine_id = ROAD_ENGINES_INDEX;
 
 			do {
-				info = &_engine_info[engine_id];
 				if (_player_num_engines[engine_id] > 0 || EngineHasReplacement(p, engine_id)) {
 					if (sel[0] == 0) selected_id[0] = engine_id;
 					count++;
@@ -531,11 +529,9 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 			int num = NUM_SHIP_ENGINES;
 			const Engine* e = GetEngine(SHIP_ENGINES_INDEX);
 			byte cargo, refittable;
-			const EngineInfo* info;
 			engine_id = SHIP_ENGINES_INDEX;
 
 			do {
-				info = &_engine_info[engine_id];
 				if (_player_num_engines[engine_id] > 0 || EngineHasReplacement(p, engine_id)) {
 					if (sel[0] == 0) selected_id[0] = engine_id;
 					count++;
@@ -566,11 +562,9 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 			int num = NUM_AIRCRAFT_ENGINES;
 			byte subtype;
 			const Engine* e = GetEngine(AIRCRAFT_ENGINES_INDEX);
-			const EngineInfo* info;
 			engine_id = AIRCRAFT_ENGINES_INDEX;
 
 			do {
-				info = &_engine_info[engine_id];
 				if (_player_num_engines[engine_id] > 0 || EngineHasReplacement(p, engine_id)) {
 					count++;
 					if (sel[0] == 0) selected_id[0] = engine_id;
@@ -643,13 +637,11 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 			const Engine* e = GetEngine(ROAD_ENGINES_INDEX);
 			EngineID engine_id = ROAD_ENGINES_INDEX;
 			byte cargo;
-			const EngineInfo* info;
 
 			if (selected_id[0] >= ROAD_ENGINES_INDEX && selected_id[0] < SHIP_ENGINES_INDEX) {
 				cargo = RoadVehInfo(selected_id[0])->cargo_type;
 
 				do {
-					info = &_engine_info[engine_id];
 					if (_player_num_engines[engine_id] > 0 || EngineHasReplacement(p, engine_id)) {
 						if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
 							DrawString(x+59, y+2, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
@@ -679,14 +671,12 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 			const Engine* e = GetEngine(SHIP_ENGINES_INDEX);
 			EngineID engine_id = SHIP_ENGINES_INDEX;
 			byte cargo, refittable;
-			const EngineInfo* info;
 
 			if (selected_id[0] != INVALID_ENGINE) {
 				cargo = ShipVehInfo(selected_id[0])->cargo_type;
 				refittable = ShipVehInfo(selected_id[0])->refittable;
 
 				do {
-					info = &_engine_info[engine_id];
 					if (_player_num_engines[engine_id] > 0 || EngineHasReplacement(p, engine_id)) {
 						if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
 							DrawString(x+75, y+7, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
@@ -718,10 +708,8 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 				const Engine* e = GetEngine(AIRCRAFT_ENGINES_INDEX);
 				EngineID engine_id = AIRCRAFT_ENGINES_INDEX;
 				byte subtype = AircraftVehInfo(selected_id[0])->subtype;
-				const EngineInfo* info;
 
 				do {
-					info = &_engine_info[engine_id];
 					if (_player_num_engines[engine_id] > 0 || EngineHasReplacement(p, engine_id)) {
 						if (sel[0] == 0) selected_id[0] = engine_id;
 						if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {

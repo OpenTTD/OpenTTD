@@ -484,7 +484,7 @@ void DrawStringMultiLine(int x, int y, StringID str, int maxw)
 {
 	char buffer[512];
 	uint32 tmp;
-	int num, w, mt;
+	int num, mt;
 	const char *src;
 	byte c;
 
@@ -502,7 +502,6 @@ void DrawStringMultiLine(int x, int y, StringID str, int maxw)
 	src = buffer;
 
 	for(;;) {
-		w = GetStringWidth(src);
 		DoDrawString(src, x, y, 0xFE);
 		_stringwidth_base = _stringwidth_out;
 

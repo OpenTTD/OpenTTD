@@ -1986,14 +1986,6 @@ static const WindowDesc _toolb_normal_desc = {
 	MainToolbarWndProc
 };
 
-static const WindowDesc _toolb_intro_desc = {
-	0, -22, 640, 22,
-	WC_MAIN_TOOLBAR,0,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET,
-	_toolb_normal_widgets,
-	MainToolbarWndProc
-};
-
 
 static const Widget _toolb_scen_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,    21,     0,    21, 0x2D6,				STR_0171_PAUSE_GAME},

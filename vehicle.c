@@ -37,7 +37,6 @@
 
 #define CMD_BUILD_VEH(x)		   _veh_build_proc_table[ x - VEH_Train]
 #define CMD_SELL_VEH(x)				_veh_sell_proc_table[ x - VEH_Train]
-#define CMD_STARTSTOP_VEH(x)  _veh_start_stop_proc_table[ x - VEH_Train]
 #define CMD_REFIT_VEH(x)		   _veh_refit_proc_table[ x - VEH_Train]
 
 static const uint32 _veh_build_proc_table[] = {
@@ -52,12 +51,7 @@ static const uint32 _veh_sell_proc_table[] = {
 	CMD_SELL_SHIP,
 	CMD_SELL_AIRCRAFT,
 };
-static const uint32 _veh_start_stop_proc_table[] = {
-	CMD_START_STOP_TRAIN,
-	CMD_START_STOP_ROADVEH,
-	CMD_START_STOP_SHIP,
-	CMD_START_STOP_AIRCRAFT,
-};
+
 static const uint32 _veh_refit_proc_table[] = {
 	CMD_REFIT_RAIL_VEHICLE,
 	0,	// road vehicles can't be refitted

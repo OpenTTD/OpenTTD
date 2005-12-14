@@ -562,13 +562,10 @@ static void AiFindRandomIndustryRoute(FoundRoute *fr)
 
 static void AiFindRandomPassengerRoute(FoundRoute *fr)
 {
-	uint32 r;
 	Town *source, *dest;
 
 	// initially error
 	fr->distance = -1;
-
-	r = Random();
 
 	fr->from = source = AiFindRandomTown();
 	if (source == NULL || source->population < 400)
@@ -2964,8 +2961,6 @@ static void AiBuildRoadRecursive(AiRoadFinder *arf, TileIndex tile, int dir)
 	arf->depth--;
 }
 
-int sw;
-
 
 static void AiBuildRoadConstruct(Player *p)
 {
@@ -3122,7 +3117,6 @@ static void AiStateBuildRoad(Player *p)
 		swap_byte(&p->ai.start_dir_a, &p->ai.start_dir_b);
 		swap_byte(&p->ai.cur_dir_a, &p->ai.cur_dir_b);
 
-		sw ^= 1;
 		return;
 	}
 

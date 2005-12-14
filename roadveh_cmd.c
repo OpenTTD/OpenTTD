@@ -664,12 +664,10 @@ static void ProcessRoadVehOrder(Vehicle *v)
 
 		{
 			uint mindist = 0xFFFFFFFF;
-			int num;
 			RoadStopType type;
 			RoadStop *rs;
 
 			type = (v->cargo_type == CT_PASSENGERS) ? RS_BUS : RS_TRUCK;
-			num = GetNumRoadStops(st, type);
 			rs = GetPrimaryRoadStop(st, type);
 
 			if (rs == NULL) {

@@ -23,7 +23,6 @@ static void ShowTruckStationPicker(void);
 static void ShowRoadDepotPicker(void);
 
 static bool _remove_button_clicked;
-static bool _build_road_flag;
 
 static byte _place_road_flag;
 
@@ -111,13 +110,11 @@ typedef void OnButtonClick(Window *w);
 
 static void BuildRoadClick_NE(Window *w)
 {
-	_build_road_flag = 0;
 	HandlePlacePushButton(w, 3, SPR_CURSOR_ROAD_NESW, 1, PlaceRoad_NE);
 }
 
 static void BuildRoadClick_NW(Window *w)
 {
-	_build_road_flag = 0;
 	HandlePlacePushButton(w, 4, SPR_CURSOR_ROAD_NWSE, 1, PlaceRoad_NW);
 }
 
@@ -147,13 +144,11 @@ static void BuildRoadClick_TruckStation(Window *w)
 
 static void BuildRoadClick_Bridge(Window *w)
 {
-	_build_road_flag = 0;
 	HandlePlacePushButton(w, 9, SPR_CURSOR_BRIDGE, 1, PlaceRoad_Bridge);
 }
 
 static void BuildRoadClick_Tunnel(Window *w)
 {
-	_build_road_flag = 0;
 	HandlePlacePushButton(w, 10, SPR_CURSOR_ROAD_TUNNEL, 3, PlaceRoad_Tunnel);
 }
 

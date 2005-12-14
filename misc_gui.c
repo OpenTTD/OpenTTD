@@ -29,7 +29,6 @@
 static bool _fios_path_changed;
 static bool _savegame_sort_dirty;
 
-static bool _query_string_active;
 
 typedef struct LandInfoData {
 	Town *town;
@@ -1024,7 +1023,6 @@ press_ok:;
 				parent->wndproc(parent, &e);
 			}
 		}
-		_query_string_active = false;
 		CLRBIT(_no_scroll, SCROLL_EDIT);
 		break;
 	}
@@ -1082,8 +1080,6 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 	WP(w, querystr_d).text.maxwidth = maxwidth;
 	WP(w, querystr_d).text.buf = _edit_str_buf;
 	UpdateTextBufferSize(&WP(w, querystr_d).text);
-
-	_query_string_active = true;
 }
 
 static const Widget _load_dialog_1_widgets[] = {
@@ -1380,7 +1376,6 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		// pause is only used in single-player, non-editor mode, non menu mode
 		if(!_networking && (_game_mode != GM_EDITOR) && (_game_mode != GM_MENU))
 			DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
-		_query_string_active = false;
 		FiosFreeSavegameList();
 		CLRBIT(_no_scroll, SCROLL_SAVE);
 		break;
