@@ -19,6 +19,12 @@
 #include "variables.h"
 #include "train.h"
 
+EngineInfo _engine_info[TOTAL_NUM_ENGINES];
+RailVehicleInfo _rail_vehicle_info[NUM_TRAIN_ENGINES];
+ShipVehicleInfo _ship_vehicle_info[NUM_SHIP_ENGINES];
+AircraftVehicleInfo _aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES];
+RoadVehicleInfo _road_vehicle_info[NUM_ROAD_ENGINES];
+
 enum {
 	ENGINE_AVAILABLE = 1,
 	ENGINE_INTRODUCING = 2,

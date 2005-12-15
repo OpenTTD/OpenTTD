@@ -20,6 +20,6 @@ typedef struct Bridge {
 } Bridge;
 
 extern const Bridge orig_bridge[MAX_BRIDGES];
-Bridge _bridge[MAX_BRIDGES];
+extern Bridge _bridge[MAX_BRIDGES];
 
 #endif /* BRIDGE_H */

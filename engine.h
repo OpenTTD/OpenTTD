@@ -251,11 +251,11 @@ extern const ShipVehicleInfo orig_ship_vehicle_info[NUM_SHIP_ENGINES];
 extern const AircraftVehicleInfo orig_aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES];
 extern const RoadVehicleInfo orig_road_vehicle_info[NUM_ROAD_ENGINES];
 
-EngineInfo _engine_info[TOTAL_NUM_ENGINES];
-RailVehicleInfo _rail_vehicle_info[NUM_TRAIN_ENGINES];
-ShipVehicleInfo _ship_vehicle_info[NUM_SHIP_ENGINES];
-AircraftVehicleInfo _aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES];
-RoadVehicleInfo _road_vehicle_info[NUM_ROAD_ENGINES];
+extern EngineInfo _engine_info[TOTAL_NUM_ENGINES];
+extern RailVehicleInfo _rail_vehicle_info[NUM_TRAIN_ENGINES];
+extern ShipVehicleInfo _ship_vehicle_info[NUM_SHIP_ENGINES];
+extern AircraftVehicleInfo _aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES];
+extern RoadVehicleInfo _road_vehicle_info[NUM_ROAD_ENGINES];
 
 static inline const RailVehicleInfo* RailVehInfo(EngineID e)
 {

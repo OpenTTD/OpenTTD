@@ -55,6 +55,9 @@ const Bridge orig_bridge[] = {
 	{ 90, 2, 32, 510, 608, 0xA28 | PALETTE_TO_STRUCT_GREY    , STR_BRIDGE_TUBULAR_SILICON  , NULL, 0 }
 };
 
+Bridge _bridge[MAX_BRIDGES];
+
+
 // calculate the price factor for building a long bridge.
 // basically the cost delta is 1,1, 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5, 6,6,6,6,6,6,  7,7,7,7,7,7,7,  8,8,8,8,8,8,8,8,
 int CalcBridgeLenCostFactor(int x)
