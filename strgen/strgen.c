@@ -332,7 +332,7 @@ static void EmitPlural(char *buf, int value)
 	if (nw == 0)
 		Fatal("%s: No plural words", _cur_ident);
 
-	if (_plural_form_counts[_lang_pluralform] != nw)
+	if (_plural_form_counts[_lang_pluralform] != nw) {
 		if (_translated) {
 			Fatal("%s: Invalid number of plural forms. Expecting %d, found %d.", _cur_ident,
 				_plural_form_counts[_lang_pluralform], nw);
@@ -346,6 +346,7 @@ static void EmitPlural(char *buf, int value)
 				}
 			}
 		}
+	}
 
 	PutByte(0x8D);
 	PutByte(TranslateArgumentIdx(argidx));
@@ -394,12 +395,12 @@ static void EmitGender(char *buf, int value)
 
 static const CmdStruct _cmd_structs[] = {
 	// Update position
-	{"SETX", EmitSetX, 1, 0},
-	{"SETXY", EmitSetXY, 2, 0},
+	{"SETX",  EmitSetX,  1, 0, 0},
+	{"SETXY", EmitSetXY, 2, 0, 0},
 
 	// Font size
-	{"TINYFONT", EmitSingleByte, 8, 0},
-	{"BIGFONT", EmitSingleByte, 9, 0},
+	{"TINYFONT", EmitSingleByte, 8, 0, 0},
+	{"BIGFONT",  EmitSingleByte, 9, 0, 0},
 
 	// New line
 	{"", EmitSingleByte, 10, 0, C_DONTCOUNT},
@@ -407,37 +408,37 @@ static const CmdStruct _cmd_structs[] = {
 	{"{", EmitSingleByte, '{', 0, C_DONTCOUNT},
 
 	// Colors
-	{"BLUE", EmitSingleByte,    15, 0},
-	{"SILVER", EmitSingleByte,  16, 0},
-	{"GOLD", EmitSingleByte,    17, 0},
-	{"RED", EmitSingleByte,     18, 0},
-	{"PURPLE", EmitSingleByte,  19, 0},
-	{"LTBROWN", EmitSingleByte, 20, 0},
-	{"ORANGE", EmitSingleByte,  21, 0},
-	{"GREEN", EmitSingleByte,   22, 0},
-	{"YELLOW", EmitSingleByte,  23, 0},
-	{"DKGREEN", EmitSingleByte, 24, 0},
-	{"CREAM", EmitSingleByte,   25, 0},
-	{"BROWN", EmitSingleByte,   26, 0},
-	{"WHITE", EmitSingleByte,   27, 0},
-	{"LTBLUE", EmitSingleByte,  28, 0},
-	{"GRAY", EmitSingleByte,    29, 0},
-	{"DKBLUE", EmitSingleByte,  30, 0},
-	{"BLACK", EmitSingleByte,   31, 0},
+	{"BLUE",    EmitSingleByte, 15, 0, 0},
+	{"SILVER",  EmitSingleByte, 16, 0, 0},
+	{"GOLD",    EmitSingleByte, 17, 0, 0},
+	{"RED",     EmitSingleByte, 18, 0, 0},
+	{"PURPLE",  EmitSingleByte, 19, 0, 0},
+	{"LTBROWN", EmitSingleByte, 20, 0, 0},
+	{"ORANGE",  EmitSingleByte, 21, 0, 0},
+	{"GREEN",   EmitSingleByte, 22, 0, 0},
+	{"YELLOW",  EmitSingleByte, 23, 0, 0},
+	{"DKGREEN", EmitSingleByte, 24, 0, 0},
+	{"CREAM",   EmitSingleByte, 25, 0, 0},
+	{"BROWN",   EmitSingleByte, 26, 0, 0},
+	{"WHITE",   EmitSingleByte, 27, 0, 0},
+	{"LTBLUE",  EmitSingleByte, 28, 0, 0},
+	{"GRAY",    EmitSingleByte, 29, 0, 0},
+	{"DKBLUE",  EmitSingleByte, 30, 0, 0},
+	{"BLACK",   EmitSingleByte, 31, 0, 0},
 
 	// 0x85
-	{"CURRCOMPACT", EmitEscapedByte, 0, 1},		// compact currency (32 bits)
-	{"REV", EmitEscapedByte, 2, 0},						// openttd revision string
-	{"SHORTCARGO", EmitEscapedByte, 3, 2},		// short cargo description, only ### tons, or ### litres
-	{"CURRCOMPACT64", EmitEscapedByte, 4, 2},	// compact currency 64 bits
+	{"CURRCOMPACT",   EmitEscapedByte, 0, 1, 0}, // compact currency (32 bits)
+	{"REV",           EmitEscapedByte, 2, 0, 0}, // openttd revision string
+	{"SHORTCARGO",    EmitEscapedByte, 3, 2, 0}, // short cargo description, only ### tons, or ### litres
+	{"CURRCOMPACT64", EmitEscapedByte, 4, 2, 0}, // compact currency 64 bits
 
-	{"COMPANY", EmitEscapedByte, 5, 1},				// company string. This is actually a {STRING1}
+	{"COMPANY", EmitEscapedByte, 5, 1, 0},				// company string. This is actually a {STRING1}
 																						// The first string includes the second string.
 
-	{"PLAYERNAME", EmitEscapedByte, 5, 1},		// playername string. This is actually a {STRING1}
+	{"PLAYERNAME", EmitEscapedByte, 5, 1, 0},		// playername string. This is actually a {STRING1}
 																						// The first string includes the second string.
 
-	{"VEHICLE", EmitEscapedByte, 5, 1},		// playername string. This is actually a {STRING1}
+	{"VEHICLE", EmitEscapedByte, 5, 1, 0},		// playername string. This is actually a {STRING1}
 																						// The first string includes the second string.
 
 
@@ -447,58 +448,58 @@ static const CmdStruct _cmd_structs[] = {
 	{"STRING4", EmitEscapedByte, 8, 4, C_CASE},				// included string that consumes FOUR arguments
 	{"STRING5", EmitEscapedByte, 9, 5, C_CASE},				// included string that consumes FIVE arguments
 
-	{"STATIONFEATURES", EmitEscapedByte, 10, 1},				// station features string, icons of the features
-	{"INDUSTRY", EmitEscapedByte, 11, 1},			// industry, takes an industry #
-	{"VOLUME", EmitEscapedByte, 12, 1},
-	{"DATE_TINY", EmitEscapedByte, 14, 1},
-	{"CARGO", EmitEscapedByte, 15, 2},
+	{"STATIONFEATURES", EmitEscapedByte, 10, 1, 0}, // station features string, icons of the features
+	{"INDUSTRY",        EmitEscapedByte, 11, 1, 0}, // industry, takes an industry #
+	{"VOLUME",          EmitEscapedByte, 12, 1, 0},
+	{"DATE_TINY",       EmitEscapedByte, 14, 1, 0},
+	{"CARGO",           EmitEscapedByte, 15, 2, 0},
 
 	{"P", EmitPlural, 0, 0, C_DONTCOUNT},					// plural specifier
 	{"G", EmitGender, 0, 0, C_DONTCOUNT},					// gender specifier
 
-	{"DATE_LONG", EmitSingleByte, 0x82, 1},
-	{"DATE_SHORT", EmitSingleByte, 0x83, 1},
+	{"DATE_LONG",  EmitSingleByte, 0x82, 1, 0},
+	{"DATE_SHORT", EmitSingleByte, 0x83, 1, 0},
 
-	{"VELOCITY", EmitSingleByte, 0x84, 1},
+	{"VELOCITY", EmitSingleByte, 0x84, 1, 0},
 
-	{"SKIP", EmitSingleByte, 0x86, 1},
+	{"SKIP", EmitSingleByte, 0x86, 1, 0},
 
 	{"STRING", EmitSingleByte, 0x88, 1, C_CASE},
 
 	// Numbers
-	{"COMMA", EmitSingleByte, 0x8B, 1}, // Number with comma
-	{"NUM",   EmitSingleByte, 0x8E, 1}, // Signed number
+	{"COMMA", EmitSingleByte, 0x8B, 1, 0}, // Number with comma
+	{"NUM",   EmitSingleByte, 0x8E, 1, 0}, // Signed number
 
-	{"CURRENCY", EmitSingleByte, 0x8F, 1},
+	{"CURRENCY", EmitSingleByte, 0x8F, 1, 0},
 
-	{"WAYPOINT", EmitSingleByte, 0x99, 1}, // waypoint name
-	{"STATION", EmitSingleByte, 0x9A, 1},
-	{"TOWN", EmitSingleByte, 0x9B, 1},
-	{"CURRENCY64", EmitSingleByte, 0x9C, 2},
+	{"WAYPOINT",   EmitSingleByte, 0x99, 1, 0}, // waypoint name
+	{"STATION",    EmitSingleByte, 0x9A, 1, 0},
+	{"TOWN",       EmitSingleByte, 0x9B, 1, 0},
+	{"CURRENCY64", EmitSingleByte, 0x9C, 2, 0},
 	// 0x9D is used for the pseudo command SETCASE
 	// 0x9E is used for case switching
 
 	// 0x9E=158 is the LAST special character we may use.
 
-	{"UPARROW", EmitSingleByte, 0x80, 0},
+	{"UPARROW", EmitSingleByte, 0x80, 0, 0},
 
-	{"NBSP", EmitSingleByte, 0xA0, 0, C_DONTCOUNT},
-	{"POUNDSIGN", EmitSingleByte, 0xA3, 0},
-	{"YENSIGN", EmitSingleByte, 0xA5, 0},
-	{"COPYRIGHT", EmitSingleByte, 0xA9, 0},
-	{"DOWNARROW", EmitSingleByte, 0xAA, 0},
-	{"CHECKMARK", EmitSingleByte, 0xAC, 0},
-	{"CROSS", EmitSingleByte, 0xAD, 0},
-	{"RIGHTARROW", EmitSingleByte, 0xAF, 0},
+	{"NBSP",       EmitSingleByte, 0xA0, 0, C_DONTCOUNT},
+	{"POUNDSIGN",  EmitSingleByte, 0xA3, 0, 0},
+	{"YENSIGN",    EmitSingleByte, 0xA5, 0, 0},
+	{"COPYRIGHT",  EmitSingleByte, 0xA9, 0, 0},
+	{"DOWNARROW",  EmitSingleByte, 0xAA, 0, 0},
+	{"CHECKMARK",  EmitSingleByte, 0xAC, 0, 0},
+	{"CROSS",      EmitSingleByte, 0xAD, 0, 0},
+	{"RIGHTARROW", EmitSingleByte, 0xAF, 0, 0},
 
-	{"TRAIN", EmitSingleByte, 0x94, 0},
-	{"LORRY", EmitSingleByte, 0x95, 0},
-	{"BUS",   EmitSingleByte, 0x96, 0},
-	{"PLANE", EmitSingleByte, 0x97, 0},
-	{"SHIP",  EmitSingleByte, 0x98, 0},
+	{"TRAIN", EmitSingleByte, 0x94, 0, 0},
+	{"LORRY", EmitSingleByte, 0x95, 0, 0},
+	{"BUS",   EmitSingleByte, 0x96, 0, 0},
+	{"PLANE", EmitSingleByte, 0x97, 0, 0},
+	{"SHIP",  EmitSingleByte, 0x98, 0, 0},
 
-	{"SMALLUPARROW", EmitSingleByte, 0x90, 0},
-	{"SMALLDOWNARROW", EmitSingleByte, 0x91, 0},
+	{"SMALLUPARROW",   EmitSingleByte, 0x90, 0, 0},
+	{"SMALLDOWNARROW", EmitSingleByte, 0x91, 0, 0}
 };
 
 
@@ -529,7 +530,6 @@ static const CmdStruct *ParseCommandString(const char **str, char *param, int *a
 {
 	const char *s = *str, *start;
 	const CmdStruct *cmd;
-	int plen = 0;
 	byte c;
 
 	*argno = -1;
@@ -893,7 +893,7 @@ static uint32 MyHashStr(uint32 hash, const char *s)
 
 
 // make a hash of the file to get a unique "version number"
-static void MakeHashOfStrings()
+static void MakeHashOfStrings(void)
 {
 	uint32 hash = 0;
 	LangString *ls;
