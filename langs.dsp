@@ -198,13 +198,7 @@ InputPath=.\lang\italian.txt
 
 # Begin Source File
 SOURCE=.\lang\lithuanian.txt
-# Begin Custom Build
-InputPath=.\lang\lithuanian.txt
-
-"lang\lithuanian.lng" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	strgen\debug\strgen.exe lang\lithuanian.txt
-
-# End Custom Build
+# PROP Exclude_From_Build 1
 # End Source File
 
 # Begin Source File
