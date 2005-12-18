@@ -40,7 +40,6 @@ struct GRFFile {
 	uint param_end; /// one more than the highest set parameter
 };
 
-extern int _grffile_count;
 extern GRFFile *_first_grffile;
 
 

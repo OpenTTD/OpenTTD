@@ -35,7 +35,6 @@ extern int _traininfo_vehicle_pitch;
 
 static GRFFile *_cur_grffile;
 GRFFile *_first_grffile;
-int _grffile_count;
 static int _cur_spriteid;
 static int _cur_stage;
 

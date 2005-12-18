@@ -1221,7 +1221,7 @@ static void NewgrfWndProc(Window *w, WindowEvent *e)
 
 			y += w->vscroll.pos;
 
-			if (y >= _grffile_count) return;
+			if (y >= w->vscroll.count) return;
 
 			_sel_grffile = _first_grffile;
 			// get selected grf-file
@@ -1281,20 +1281,18 @@ static const WindowDesc _newgrf_desc = {
 
 void ShowNewgrf(void)
 {
+	const GRFFile* c;
 	Window *w;
+	uint count;
+
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
 	w = AllocateWindowDesc(&_newgrf_desc);
 
-	{ // little helper function to calculate _grffile_count
-	  // should be REMOVED once _grffile_count is calculated at loading
-		const GRFFile* c;
-
-		_grffile_count = 0;
-		for (c = _first_grffile; c != NULL; c = c->next) _grffile_count++;
-	}
+	count = 0;
+	for (c = _first_grffile; c != NULL; c = c->next) count++;
 
 	w->vscroll.cap = 12;
-	w->vscroll.count = _grffile_count;
+	w->vscroll.count = count;
 	w->vscroll.pos = 0;
 	w->disabled_state = (1 << 5) | (1 << 6) | (1 << 7);
 }
