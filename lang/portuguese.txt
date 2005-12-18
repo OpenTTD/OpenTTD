@@ -943,6 +943,7 @@ STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}A auto-r
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}A auto-renovação do veículo de estrada {COMMA} falhou (limite de dinheiro)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}A auto-renovação do barco {COMMA} falhou (limite de dinheiro)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}A auto-renovação da aeronave {COMMA} falhou (limite de dinheiro)
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE} Combóio {COMMA} ficou demasiado longo após substituição
 
 STR_CONFIG_PATCHES                                              :{BLACK}Configurar Correcções
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configurar as correcções
@@ -996,6 +997,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Árvores
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altura da linha de neve: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Tamanho máx. de estações: {ORANGE}{STRING} {RED}Valores altos tornam o jogo lento!
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenção automática de helicópteros em heliportos: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar barra de ferramentas de paisagem às barras de ferramentas de carris/estradas/vias aquáticas/aeroportos: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Ao deslizar com o rato, mover a vista na direcção oposta: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máximo de comboios por jogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máximo de veículos de estrada por jogador: {ORANGE}{STRING}
@@ -1008,6 +1011,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Desacti
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Desactivar barcos para o computador: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Activar nova IA (alpha): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permitir IA em modo multi-jogador (experimental): {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Intervalo de serviço predefinido para comboios: {ORANGE}{STRING} dias
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalo de serviço predefinido para comboios: {ORANGE}desactivado
@@ -1172,6 +1176,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Modifica
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Bem-vindo à nova IA, ainda em desenvolvimento. Pode encontrar problemas. Neste caso faça uma captura de ecrã e coloque-a no fórum. Divirta-se!
 TEMP_AI_ACTIVATED                                               :{WHITE}Atenção: esta nova IA está ainda em versão alpha! Actualmente, só funcionam camiões e autocarros!
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Atenção: esta funcionalidade é experimental. Por favor reporte os problemas que detectar para truelight@openttd.org.
 
 ############ network gui strings
 
@@ -2403,6 +2408,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Não é po
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Não é possível eliminar esta ordem...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Não é possível modificar esta ordem...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Não é possível mover veículo...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}A locomotiva traseira seguirá sempre a sua parceira frontal
 STR_8838_N_A                                                    :N/D{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Não é possível vender veículo ferroviário...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Não é possível encontrar rota para o depósito local
@@ -2752,6 +2758,8 @@ STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Pression
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Seleccione o tipo de carril para o qual deseja efectuar a substituição dos motores
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Exibe o tipo de motor que substituirá o que está seleccionado à esquerda, se algum
 STR_REPLACE_HELP                                                :{BLACK}Permite a substiuição de um tipo de motor por outro, quando comboios do tipo original entram num depósito
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Remover vagões: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ligar esta opção fará com que a funcionalidade de substituição automática remova vagões aos comboios, obrigando-os a manter o seu comprimento igual ao da menor estação presente nas ordens.{}Serão removidos tantos vagões quantos necessários, a começar pela frente.
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de sinais - {COMMA} Sinais

@@ -395,6 +395,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Fenster 
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Titelleiste verschieben um das Fenster zu bewegen
 STR_STICKY_BUTTON                                               :{BLACK}Fenster wird nicht durch
 STR_RESIZE_BUTTON                                               :{BLACK}Klicken und Ziehen zum Größe ändern
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Hier klicken, um zum Standard-Spielstands-Verzeichnis zu gehen
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Gebäude usw. auf einem Planquadrat abreißen
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Land absenken
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Land anheben
@@ -943,6 +944,7 @@ STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Zug {COM
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Fahrzeug {COMMA} kann nicht erneuert werden (Geld fehlt)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Schiff {COMMA} kann nicht erneuert werden (Geld fehlt)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Flugzeug {COMMA} kann nicht erneuert werden (Geld fehlt)
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Zug {COMMA} nach Ersetzung zu lang
 
 STR_CONFIG_PATCHES                                              :{BLACK}Einstellungen der Patches
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Einstellungen der Patches
@@ -996,6 +998,7 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Unsicht
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Höhe der Schneegrenze: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maximale Stationsgröße: {ORANGE}{STRING} {RED}Achtung: Große Werte verlangsamen das Spiel
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Hubschrauber auf Helipads automatisch warten: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Landschaftsbau-Toolbar an Eisenbahn/Straßen/Hafen/Flughafen-Toolbar binden: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Beim Verschieben mit der Maus die Ansicht in die Gegenrichtung verschieben: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximale Anzahl der Züge pro Spieler: {ORANGE}{STRING}
@@ -1009,6 +1012,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Flugzeu
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Schiffe für den Computer abschalten: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Aktiviere neue KI (alpha): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Erlaube KI im Mehrspielermodus (experimentell): {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Vorgegebener Wartungsintervall für Züge: {ORANGE}{STRING} Tage
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Vorgegebener Wartungsintervall für Züge: {ORANGE}abgeschaltet
@@ -1173,6 +1177,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Produkti
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Willkommen bei der neuen KI. Erwarte Fehler. Falls du einen findest, mache einen Screenshot und berichte im Forum. Viel Spaß!
 TEMP_AI_ACTIVATED                                               :{WHITE}Achtung: Die neue KI ist noch im Alpha-Stadium. Derzeit funktionieren nur Straßenfahrzeuge.
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Warnung: Diese Funktion ist noch experimentell. Bitte melde jedwede Probleme damit an truelight@openttd.org.
 
 ############ network gui strings
 
@@ -2404,6 +2409,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Kann kei
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Kann den Auftrag nicht löschen...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kann den Auftrag nicht bearbeiten...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kann das Fahrzeug nicht bewegen...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Hintere Lokomotive folgt immer der vorderen Lok
 STR_8838_N_A                                                    :k.A.{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Kann Schienenfahrzeug nicht verkaufen...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Kann keinen weg zum Depot finden
@@ -2753,6 +2759,8 @@ STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Drücke d
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wähle einen Schienentyp für den Loks ersetzt werden sollen
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Hier wird angezeigt, gegen welches Fahrzeug das auf der linken Seite gewählte ersetzt wird
 STR_REPLACE_HELP                                                :{BLACK}Dieses Feature ermöglicht es, einen Fahrzeugtyp auszuwählen und ihn durch einen anderen ersetzen zu lassen. Dies geschieht automatisch, wenn das Fahrzeug regulär das Depot besucht.
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Waggon-Entfernung: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Diesen Schalter auf "An" schalten bewirkt das Entfernen von Waggons aus dem Zug, damit er nie länger wird als der kürzeste Bahnsteig im Fahrplan.{}Die Waggons werden am Anfang des Zuges entfernt, bis die Länge ausreichend ist.
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Schilderliste - {COMMA} Schild{P "" er}

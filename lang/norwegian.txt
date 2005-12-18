@@ -394,6 +394,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Lukk vin
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Vindustittel - dra her for å flytte vindu
 STR_STICKY_BUTTON                                               :{BLACK}Beskytt dette vinduet mot 'Lukk alle vinduer'-knappen
 STR_RESIZE_BUTTON                                               :{BLACK}Klikk og dra for å endre størrelsen på vinduet
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klikk her for å komme til standardmappen for lagring og lasting
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Riv bygninger o.l.
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Senk et hjørne av et landstykke
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Hev et hjørne av et landstykke
@@ -942,6 +943,7 @@ STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autoforn
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autoforny feilet på kjøretøy {COMMA} (money limit)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autoforny feilet på skip {COMMA} (money limit)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autoforny feilet på fly {COMMA} (money limit)
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Toget {COMMA} er for langt etter erstatting
 
 STR_CONFIG_PATCHES                                              :{BLACK}Patchinnstillinger
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Endre patchinnstillinger
@@ -995,6 +997,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Usynlig
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Snøhøyde: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks stasjonspedning: {ORANGE}{STRING} {RED}Advarsel: Høy instilling gir treger spill
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Utfør service på helikopter automatisk på helikopterlandingsteder: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Koble landskap verktøylinjen til tog/vei/vann/flyplass verktøylinjene: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Ved rulling med musen, flytt synsvinkelen i den motsatte retning: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks antall tog per spiller: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks antall kjøretøy per spiller: {ORANGE}{STRING}
@@ -2402,6 +2406,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Kan ikke
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Kan ikke slette denne ordren...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kan ikke endre denne ordren...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kan ikke flytte kjøretøy...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}The rear engine will always follow its front counterpart
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Kan ikke selge jernbanekjøretøy...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Kan ikke finne en togstall i nærheten
@@ -2751,6 +2756,8 @@ STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Klikk de
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Velg jernbanetypen du vil velge lokomotiv fra
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dette viser hvilket lokomotiv som overtar for det valgte lokomotivet på venstresiden
 STR_REPLACE_HELP                                                :{BLACK}Dette verktøyet lar deg bytte ut en type lokomotiv med en annen. Dette blir gjort neste gang lokomotivet er innom et depot.
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vognfjerning: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ved å sette denne til "På" gjør du slik at auto-erstatt fjerner vogner fra tog slik at de beholder lengden hvis det er lenger enn den korteste stasjonen på ruten sin.{}Det vil fjerne så mange stasjoner som nødvending, og starter fra fronten jobber seg bakover
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltliste - {COMMA} Skilt

@@ -394,6 +394,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Chiudi f
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Nome finestra - trascinala per muovere la finestra
 STR_STICKY_BUTTON                                               :{BLACK} Marca questa finestra come inchiudibile con il tasto 'Chiudi TUTTE le finestre'
 STR_RESIZE_BUTTON                                               :{BLACK}Clicca e trascina per ridimensionare la finestra
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Clicca qui per saltare alla cartella salva/carica di default
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Demolisci edifici ecc... su una casella del terreno
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Abbassa un angolo del terreno
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Alza un angolo del terreno
@@ -942,6 +943,7 @@ STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Rinnovo 
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Rinnovo automatico fallito per il veicolo {COMMA} (limite fondi)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Rinnovo automatico fallito per la nave {COMMA} (limite fondi)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Rinnovo automatico fallito per l'aereo {COMMA} (limite fondi)
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Il treno {COMMA} dopo la sostituzione è diventato troppo lungo
 
 STR_CONFIG_PATCHES                                              :{BLACK}Configura patch
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configura le patch
@@ -995,6 +997,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Alberi 
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Dimensione limite delle nevi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Copertura max. stazione: {ORANGE}{STRING} {RED}Attenzione: Valori alti rallentano il gioco
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenzione elicotteri direttamente all'eliporto: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Apri strumenti modellazione terreno assieme a quelli di costruzione: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Scorri mappa nella direzione opposta a quella del mouse: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max treni per giocatore: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max veicoli stradali per giocatore: {ORANGE}{STRING}
@@ -1007,6 +1011,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Disabil
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Disabilita navi: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Abilita la nuova IA (alpha): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permetti AI in multiplayer (sperimentale): {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Intervallo di servizio predefinito per i treni: {ORANGE}{STRING} giorni
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervallo di servizio predefinito per i treni: {ORANGE}disabilitato
@@ -1171,6 +1176,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambia p
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Benvenuto nella nuova IA, in sviluppo. Puoi aspettarti dei problemi. Quando succede, fai uno screenshot e invialo sul forum. Divertiti!
 TEMP_AI_ACTIVATED                                               :{WHITE}Attenzione: la nuova IA è ancora in alpha! Solo i Camion e i Bus funzionano, per ora!
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Attenzione: questa funzione è sperimentale. Siete pregati di segnalare i relativi probemi a: truelight@openttd.org.
 
 ############ network gui strings
 
@@ -2402,6 +2408,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Non puoi
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Non puoi cancellare quest'ordine...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Non puoi modificare quest'ordine...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Non puoi spostare il veicolo...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}La locomotiva di coda seguirà sempre quella di testa
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Non puoi vendere veicolo ferroviario...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Non riesce a trovare il deposito locale
@@ -2751,6 +2758,8 @@ STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Premi pe
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Seleziona il tipo di ferrovia per la quale vuoi rimpiazzare i locomotori
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra con quale locomotore verrà rimpiazzato il tipo selezionato a sinistra, se alcuno
 STR_REPLACE_HELP                                                :{BLACK}Permette di rimpiazzare un locomotere con uno di un'altro tipo, quando il treno entra in un deposito
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Rimuovi vagoni: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Impostando "SI", quando viene eseguita la sostituzione automatica dei treni verranno rimossi i vagoni fino a raggiungere la lunghezza necessaria al treno per entrare nella stazione più corta presente nella lista ordini. I vagoni verranno rimossi partendo dalla testa del treno.
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista dei Cartelli - {COMMA} Cartelli

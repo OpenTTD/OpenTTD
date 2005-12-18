@@ -394,6 +394,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Zavriet 
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Nadpis okna - potiahni pre posun okna
 STR_STICKY_BUTTON                                               :{BLACK}Oznacit toto okno, aby sa nedalo zatvorit klavesou 'Zavri vsetky okna'
 STR_RESIZE_BUTTON                                               :{BLACK}Uchop a tahaj pre zmenu velkosti okna
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kliknutim sem sa presuniete do sucasneho vychodzieho adresara pre ukladanie
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Zburanie budov, cistenie terenu
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Znizit roh terenu
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Zvysit roh terenu
@@ -942,6 +943,7 @@ STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Zlyhalo 
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Zlyhalo obnovenie automobilu {COMMA} (finacny limit)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Zlyhalo obnovenie lode {COMMA} (financny limit)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Zlyhalo obnovenie lietadla {COMMA} (finacny limit)
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Vlak {COMMA} je po vymene prilis dlhy
 
 STR_CONFIG_PATCHES                                              :{BLACK}Konfigurovat Zaplaty
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Konfigurovat Zaplaty
@@ -995,6 +997,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Nevidit
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Uroven ciary snehu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max. pokrytie stanice: {ORANGE}{STRING} {RED}Pozor: Vysoke hodnoty spomaluju hru
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automaticke opravy vrtulnikov v heliporte: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Otvarat listu na upravu terenu s listou na vystavbu zeleznic, ciest, atd.: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Pri posuvani mapy mysou posuvaj do opacnym smerom: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximalny pocet vlakov hraca: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximalny pocet automobilov hraca: {ORANGE}{STRING}
@@ -1007,6 +1011,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Zakazat
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Zakazat lode pre pocitac: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Povolit nove AI (alpha verzia): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Povolit AI v multiplayeri (experimentalne): {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Implicitny servisny interval pre vlaky: {ORANGE}{STRING} dni
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Implicitny servisny interval pre vlaky: {ORANGE}vypnuty
@@ -1171,6 +1176,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmenit p
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Vitajte v novom AI. Mozete ocakavat problemy. Ak by nejake nastali urobte screenshot a poslite ho na forum.
 TEMP_AI_ACTIVATED                                               :{WHITE}Varovanie: toto nove AI je iba alpha verzia! Momentalne iba automobily funguju!
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Varovanie: tato funkcia je stale experimentalna. Prosim ohlaste akekolvek problemy na truelight@openttd.org.
 
 ############ network gui strings
 
@@ -2751,6 +2757,8 @@ STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Stlac to
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vyber typ kolajnic, pre ktore chces vymienat lokomotivy
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Tu sa zobrazuje, za ktoru lokomotiva sa lokomotiva v lavom zozname zamenuje
 STR_REPLACE_HELP                                                :{BLACK}Umoznuje vybrat typ lokomotivy, ktory automaticky sa zameni za iny typ, ak vlaky s takouto lokomotivou sa zastavia v depe
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstranenie vagonu: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Pri nastaveni na "On" odstani vagony z vlakov, aby sa vosli do najkratsej stanice zo stanic v jeho prikazoch.{}Odstrani to pozadovany pocet vagonov, pocinajuc prvym
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zoznam popisov - {COMMA} popisov

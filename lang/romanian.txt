@@ -394,6 +394,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Închide 
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Titlul ferestrei - trage de aici pentru a muta fereastra
 STR_STICKY_BUTTON                                               :{BLACK}Mark this window as undeletable for the 'Close All Windows' key
 STR_RESIZE_BUTTON                                               :{BLACK}Click&drag pentru a schimba marimea ferestrei
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Click aici pentru a ajunge la directorul predefinit pentru salvari
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Demoleazã clãdiri, strãzi, etc. pe un pãtrat de teren
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Scade altitudinea unui vârf de teren
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Mãreste altitudinea unui vârf de teren
@@ -942,6 +943,7 @@ STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Înnoirea
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Înnoirea autovehiculului {COMMA} a esuat (fonduri limitate)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Înnoirea navei {COMMA} a esuat (fonduri limitate)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Înnoirea aeronavei {COMMA} a esuat (fonduri limitate)
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Trenul {COMMA} este prea lung dupa inlocuire
 
 STR_CONFIG_PATCHES                                              :{BLACK}Configurare patch
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configureazã patch-urile OpenTTD
@@ -995,6 +997,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Ascunde
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altitudinea de înzãpezire: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Mãrimea maximã a statiilor: {ORANGE}{STRING} {RED}(valorile mari încetinesc jocul!)
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Service automat pentru elicoptere la helipaduri: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Conecteaza bara de instrumente pentru peisaj cu cea de constructii feroviare/auto/aeriane: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Cand faci scroll cu mouse-ul muta ecranul in directia opusã: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nr. max. de trenuri pentru un jucãtor: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Nr. max. de autovehicule pentru un jucãtor: {ORANGE}{STRING}
@@ -2402,6 +2406,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Nu pot a
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Nu pot sterge aceastã comandã...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nu pot modifica aceastã comandã...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nu pot muta vehiculul...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Al doilea vagon+motor va avea mereu aceeasi destinatie ca si primul
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Nu pot vinde vehiculul...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Nu pot gãsi un drum spre un depou local
@@ -2751,6 +2756,8 @@ STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Apasa ac
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Alege un tip de cale ferata pentru care sa selectezi vehiculele
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Afiseaza cu ce model vor fi inlocuite vehiculele din stanga
 STR_REPLACE_HELP                                                :{BLACK}Aceasta functie iti permite sa selectezi un model de vehicul si sa-l inlocuiesti cu altul. Schimbarea se va efectua automat la intrarea vehiculului intr-un depou.
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retragere vagoane: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Prin comutarea acestui buton autoinlocuirea va sterge vagoane din componenta unui tren pentru a nu depasi marimea celei mai mici statii de pe traseu.{}Vor fi sterse toate vagoanele necesare incepand de la locomotiva
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de semne - {COMMA} Semne

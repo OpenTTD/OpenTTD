@@ -957,7 +957,7 @@ STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Daha ge
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Sehrin yollarini, köprülerini yikma izinli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Çok uzun trenlere izin ver: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Gerçekçi tren hizlanmasi: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Tren ve gemilerin 90 derece dönmesini yasakla: {ORANGE}{STRING} {LTBLUE} (requires NPF)
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Tren ve gemilerin 90 derece dönmesini yasakla: {ORANGE}{STRING} {LTBLUE} (NPF gerektirir)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Yanyana yapilan tren istasyonlarini birlestir: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}'tam doldur' etkinse istasyonu tam dolunca terket: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Gelistirilmis yukleme algoritmasi kullan: {ORANGE}{STRING}
@@ -997,7 +997,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Görünme
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Kar kalinligi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}istasyon genisleme siniri: {ORANGE}{STRING} {RED}Uyari: Yüksek degerler oyunu yavaslatir
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopterler helipadlerde otomatik servise girsin: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Arazi araç çubugunu ray/yol/su/havalimani araç çubuklarina ekle: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Arazi araç çubugunu diger araç çubuklarina bagla: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Fareyle kaydirma hareketini ters çevir: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Her oyuncu için en fazla tren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Her oyuncu için en fazla araba: {ORANGE}{STRING}
@@ -1010,6 +1011,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Bilgisa
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Bilgisayar gemi kullanmasin: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Yeni yapay zeka etkin (alfa): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Çok oyunculuda yapay zeka olsun (denemede): {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Trenler için varsayilan servis gecikmesi: {ORANGE}{STRING} gün/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Trenler için varsayilan servis gecikmesi: {ORANGE}kapali
@@ -1174,6 +1176,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Üretimi 
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Yeni yapay zekaya hos geldiniz, henüz devam etmekte olan bir is. Mutlaka sorunlar yasayacaksiniz. ilginç bir sey görürseniz fotosunu foruma göndermeyi unutmayin. Hadi iyi oyunlar!
 TEMP_AI_ACTIVATED                                               :{WHITE}Uyari: Yeni yapay zeka henüz alfa sürümünde! Su an sadece kamyonlar ve otobüsler çalisabilir!
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Uyari: Bu özellik henüz deneme asamasindadir. Lütfen ilgili sorunlarinizi truelight@openttd.org adresine bildirin.
 
 ############ network gui strings
 
@@ -2405,6 +2408,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Yeni tal
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Bu talimat silinemez...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Bu talimat degistirilemez...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Araç hareket edemiyor...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Arkadaki lokomotif daime önündekini takip edecek
 STR_8838_N_A                                                    :yok{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Tren satilamaz...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Yakindaki bir gara gidecek yol yok

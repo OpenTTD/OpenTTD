@@ -394,6 +394,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Tancar f
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Títol de finestra - arrosega aixó per moure la finestra
 STR_STICKY_BUTTON                                               :{BLACK}Marca aquesta finestra com a no eliminable per a la clau 'Tancar totes les Finestres'
 STR_RESIZE_BUTTON                                               :{BLACK}Prem i arrosega per canviar el tamany de la finestra
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Prem aqui per anar a l'actual directori de desar/carregar per defecte
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Demolició d'edificis etc. en un quadre de terreny
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Rebaixar una cantonada del terreny
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Elevar una cantonada del terreny
@@ -942,6 +943,7 @@ STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autoreno
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autorenovació ha fallat al vehicle rodat {COMMA} (límit de diners)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autorenovació ha fallat al vaixell {COMMA} (límit de diners)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autorenovació ha fallat a l'aeronau {COMMA} (límit de diners)
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}El tren {COMMA} és massa llarg després del canvi
 
 STR_CONFIG_PATCHES                                              :{BLACK}Configurar Pegats
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configurar els pegats
@@ -995,6 +997,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Arbres 
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Alçada de la cota de neu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max extensió de estacions: {ORANGE}{STRING}{RED}Avís: Un valor alt enlenteix el joc
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manteniment dels helicopters als heliports automàticament: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Enllaça la barra d'eines del paisatge a les barres d'eines de víes/carreteres/aigua/aeroports {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}En desplaçar la pantalla amb el ratolí mou la vista en la direcció contrària: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trens per jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max vehicles rodats per jugador: {ORANGE}{STRING}
@@ -2402,6 +2406,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}No es po
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}No es pot esborrar aquesta ordre...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}No es pot modificar aquesta ordre...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}No es pot moure el vehicle...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}La màqina trasera sempre ha de seguir la seva parella davantera
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}No es pot vendre el vehicle...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Incapaç de trobar el camí a la cotxera local
@@ -2751,6 +2756,8 @@ STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Prem per
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Tria el tipus de via pel que vols reemplaçar motors
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mosyta quin motor dels seleccionats a l'esquerra es reemplaça, si hi ha
 STR_REPLACE_HELP                                                :{BLACK}Et permet reemplaçar un tipus de motor amb un altre, quan els trens del tipus original entrin a cotxeres
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Treure vagons: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Establint aixó a "On" farà que l'automodificació tregui vagons dels trens per evitar que excedeixi la seva llargària de la de l'estació més curta que es trobi a les seves ordres.{}Es treuràn tants vagons com es necessiti començant per davant
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Llista de senyals - {COMMA} Senyals

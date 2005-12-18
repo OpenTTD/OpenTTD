@@ -997,6 +997,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Niewido
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Wysokosc granicy wiecznych sniegow: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks. wielkosc stacji: {ORANGE}{STRING} {RED}Uwaga: Duze wartosci spowalniaja gre
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Serwisuj helikoptery na lotniskach automatycznie: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Przylacz  pasek narzedzi do edycji krajobrazu do paska narzedzi srodkow transportu: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Przewijaj obraz myszka w przeciwnym kierunku: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks. liczba pociagow na gracza: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks. liczba samochodow na gracza: {ORANGE}{STRING}
@@ -1009,6 +1011,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Samolot
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Statki niedostepne dla komputera: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Dostepne nowe AI (alpha): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Pozwol na AI w grze wieloosobowej (testowe): {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Domyslny okres miedzy serwis. dla pociagow: {ORANGE}{STRING} dni
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Domyslny okres miedzy serwis. dla pociagow: {ORANGE}niedostepne
@@ -1173,6 +1176,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmiana p
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Witamy w nowym AI. Mozesz oczekiwac problemow. Gdy to sie stanie, wykonaj zrzut ekranu i wyslij go na forum. Powodzenia!
 TEMP_AI_ACTIVATED                                               :{WHITE}Ostrzenie: nowe AI jest ciagle w wersji alpha! Obecnie dziala tylko dla samochodow!
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Uwaga: Ta funkcja jest ciagle w fazie testow. Prosze zglaszac wszelkie problemy pod adres truelight@openttd.org.
 
 ############ network gui strings
 
@@ -2404,6 +2408,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Nie mozn
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Nie mozna usunac tego polecenia...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nie mozna zmodyfikowac tego polecenia...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nie mozna ruszyc pojazdem...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Tylny silnik zawsze porusza sie w tym samym kierunku co przedni
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Nie mozna sprzedac lokomotywy...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Nie mozna znalezc drogi do zajezdni.

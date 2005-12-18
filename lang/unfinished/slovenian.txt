@@ -394,6 +394,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Zapri ok
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Naslov okna - dragaj to, da premaknes okno
 STR_STICKY_BUTTON                                               :{BLACK}Oznaci to okno za nezapirljivo z 'Zapri vsa okna' tipko
 STR_RESIZE_BUTTON                                               :{BLACK}Klikni in dragaj to, da zmanjsas okno
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klikni tukaj za skok na mapo shrani/nalo&#184;i
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Podri zgradbe idr. na kvadratu zemlje
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Znizaj rob zemlje
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Zvisaj rob zemlje
@@ -466,7 +467,56 @@ STR_01CA_31ST                                                   :31.
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
+STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Tovor sprejet: {LTBLUE}
 
+STR_01D1_8                                                      :({COMMA}/8 {STRING})
+STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz Jukebox
+STR_01D3_SOUND_MUSIC                                            :Zvok/glasba
+STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Poka&#184;i okno za zvok/glasbo
+STR_01D5_ALL                                                    :{TINYFONT}Vsi
+STR_01D6_OLD_STYLE                                              :{TINYFONT}Star stil
+STR_01D7_NEW_STYLE                                              :{TINYFONT}Novi stil
+STR_01D8_EZY_STREET                                             :{TINYFONT}Ezy Street
+STR_01D9_CUSTOM_1                                               :{TINYFONT}Po meri 1
+STR_01DA_CUSTOM_2                                               :{TINYFONT}Po meri 2
+STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFONT}Glasnost glasbe
+STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFONT}Glasnost zvokov
+STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAX
+STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Presko?i na prej&#168;nji komad v izboru
+STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Presko?i na naslednji komad v izboru
+STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Ustavi glasbo
+STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Predvajaj glasbo
+STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Povleci drsnike za nastavitev glasnosti glasbe in zvokov
+STR_01E3                                                        :{DKGREEN}{TINYFONT}--
+STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
+STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
+STR_01E6                                                        :{DKGREEN}{TINYFONT}------
+STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING1}"
+STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Komad{SETX 88}Title
+STR_01E9_SHUFFLE                                                :{TINYFONT}Naklju?no
+STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Program
+STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Izbor glasbenega programa
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING1}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING1}"
+STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Spisek komadov
+STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
+STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Zbri&#168;i
+STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Shrani
+STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Trenutni program glasbe
+STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Izberi glasbeni program 'vsi komadi'
+STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Izberi glasbeni program 'stari stil'
+STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Izberi glasbeni program 'novi stil'
+STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Izberi glasbeni program 'po meri 1'
+STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Izberi glasbeni program 'po meri 2'
+STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Zbri&#168;i trenuten glasbeni program (samo po meri 1 in 2)
+STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Shrani glasbene nastavitve
+STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klikni na komad za ga dodati trenutni program (samo po meri 1 in 2)
+STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Vklopi/izklopi naklju?ni program
+STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Poka&#184;i okno z izborom glasbe
+STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Klikni na servis za centrirat pogled na industrijo/mesto
+STR_01FE_DIFFICULTY                                             :{BLACK}Te&#184;avnost ({STRING})
+STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
+STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Zadnje sporo?ilo/novica
 
 
 ############ range for menu	starts

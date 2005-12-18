@@ -394,6 +394,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Luk vind
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Vindue title - træk her for at flytte vindue
 STR_STICKY_BUTTON                                               :{BLACK}Marker dette vindue som ulukkeligt af 'Luk ALLE vinduer' tasten
 STR_RESIZE_BUTTON                                               :{BLACK}Klik og træk for at ændre vinduets størrelse
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Click her for at hoppe til det nuværende standard gemme/hente bibliotek
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}nedriver bygning osv. på et stykke land
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Sænk et hjørne af landet
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Hæv et hjørne af landet
@@ -942,6 +943,7 @@ STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Automati
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automatisk fornyelse mislykkedes på lastbil {COMMA} (ikke penge nok)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatisk fornyelse mislykkedes på skib {COMMA} (ikke penge nok)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatisk fornyelse mislykkedes på fly {COMMA} (ikke penge nok)
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Tog {COMMA} er for langt efter udskiftning
 
 STR_CONFIG_PATCHES                                              :{BLACK}Indstil Patches
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Indstil Patchesne
@@ -995,6 +997,7 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Usynlig
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Snelinjehøjden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max station udbreddelse: {ORANGE}{STRING} {RED}Advarsel: Høj værdi gør spillet langsomt
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatisk service på helikopterlandingspladser: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landskabs værktøjsbaren til skinne/vej/vand/lufthavn værktøjsbaren: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks antal tog per spiller: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks antal lastbiler per spiller: {ORANGE}{STRING}
@@ -2402,6 +2405,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Kan ikke
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Kan ikke slette denne ordre...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kan ikke ændre denne ordre...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kan ikke flytte køretøjet...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Det bagerste lokomotiv vil altid følge den forand
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Kan ikke sælge jernbanekøretøjet...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Kan ikke finde en route til et lokalt depot
@@ -2751,6 +2755,8 @@ STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Tryk for
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vælg den skinnetype, hvor du vil udskifte lokomotiver
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Viser hvilket køretøj at det valgte køretøj til venstre bliver udskiftet med, hvis det bliver udskiftet
 STR_REPLACE_HELP                                                :{BLACK}Dette giver dig mulighed for at udskifte en køretøjstype med en anden, når et køretøj af den oprindelige type kører i depot
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Fjern vogn: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ved at sætte dette til "Til" vil få autoreplace til at fjerne vogne fra tog for at få dem til at beholde deres længde hvis de overskrider længden af den korteste station i deres ordre{}Det vil fjerne så mange vogne som der er behov for, startende med de forreste
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste of skilte - {COMMA} Skilte

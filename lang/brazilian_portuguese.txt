@@ -998,6 +998,7 @@ STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altitud
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Tamanho máx. de estações: {ORANGE}{STRING} {RED}Valores altos tornam o jogo lento!
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenção automática de helicópteros em heliportos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar ferramentas de terreno às ferramentas de ferrovia/rodovia/hidrovia/aeroportos: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Rolar a tela no sentido oposto ao movimento do mouse: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máximo de trens por jogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máximo de veículos de estrada por jogador: {ORANGE}{STRING}
@@ -1010,6 +1011,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Desativ
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Desativar barcos para o computador: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Ativar nova IA (alpha): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permitir AI em modo multiplayer (experimental): {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Intervalo de serviço predefinido para trens: {ORANGE}{STRING} dias
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalo de serviço predefinido para trens: {ORANGE}desativado
@@ -1174,6 +1176,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Modifica
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Bem-vindo à nova IA, ainda em desenvolvimento. Pode encontrar problemas. Neste caso faça uma captura de tela e coloque-a no fórum. Divirta-se!
 TEMP_AI_ACTIVATED                                               :{WHITE}Atenção: esta nova IA está ainda em versão alpha! Atualmente, só funcionam caminhões e ônibus!
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Atenção: esta função ainda é experimental. Por favor reporte quaisquer problemas nela para truelight@openttd.org.
 
 ############ network gui strings
 
@@ -2405,6 +2408,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Não é po
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Não é possível eliminar esta ordem...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Não é possível modificar esta ordem...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Não é possível mover veículo...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}A locomotiva traseira sempre deve seguir sua complementar frontal
 STR_8838_N_A                                                    :N/D{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Não é possível vender veículo ferroviário...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Não é possível encontrar rota para o depósito local
