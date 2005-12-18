@@ -10,7 +10,6 @@
 #include "player.h"
 #include "network.h"
 #include "variables.h"
-#include "ai/ai.h"
 
 const char* _cmd_text = NULL;
 
@@ -403,8 +402,6 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	int x = TileX(tile) * 16;
 	int y = TileY(tile) * 16;
 
-	AI_GetCommandUID(cmd, p1, p2, tile);
-
 	/* Do not even think about executing out-of-bounds tile-commands */
 	if (tile > MapSize()) {
 		_cmd_text = NULL;
@@ -477,16 +474,10 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 		res = proc(x,y, flags, p1, p2);
 		if (CmdFailed(res)) {
 			if (res & 0xFFFF) _error_message = res & 0xFFFF;
-			/* Trigger an event special for the AI, so it knows the build has failed
-			 *  Because the commands are always delayed, this is the only way. */
-			AI_CommandResult(false);
 			goto show_error;
 		}
 		// no money? Only check if notest is off
-		if (!notest && res != 0 && !CheckPlayerHasMoney(res)) {
-			AI_CommandResult(false);
-			goto show_error;
-		}
+		if (!notest && res != 0 && !CheckPlayerHasMoney(res)) goto show_error;
 	}
 
 #ifdef ENABLE_NETWORK
@@ -521,12 +512,9 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	} else {
 		if (CmdFailed(res2)) {
 			if (res2 & 0xFFFF) _error_message = res2 & 0xFFFF;
-			AI_CommandResult(false);
 			goto show_error;
 		}
 	}
-
-	AI_CommandResult(true);
 
 	SubtractMoneyFromPlayer(res2);
 

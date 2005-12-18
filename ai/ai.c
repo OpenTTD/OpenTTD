@@ -5,22 +5,8 @@
 #include "../variables.h"
 #include "../command.h"
 #include "../network.h"
-#include "../debug.h"
 #include "ai.h"
 #include "default/default.h"
-#include "../string.h"
-
-/* Here we define the events */
-#define DEF_EVENTS
-#include "ai_event.h"
-#undef DEF_EVENTS
-
-/* Here we keep track of all commands that are called via AI_DoCommandChecked,
- *  in special we save the unique_id here. Now this id is given back
- *  when the command fails or succeeds and is detected as added in this storage. */
-static AICommand *command_uid[MAX_PLAYERS];
-static AICommand *command_uid_tail[MAX_PLAYERS];
-static uint uids[MAX_PLAYERS];
 
 /**
  * Dequeues commands put in the queue via AI_PutCommandInQueue.
@@ -153,123 +139,23 @@ int32 AI_DoCommand(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 	return res;
 }
 
-int32 AI_DoCommandChecked(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
-{
-	AICommand *new;
-	uint unique_id = uids[_current_player] + 1; // + 1, because 0 is reserved
-	int32 res;
-
-	res = DoCommandByTile(tile, p1, p2, flags & ~DC_EXEC, procc);
-	if (CmdFailed(res))
-		return CMD_ERROR;
-	if (!(flags & DC_EXEC))
-		return res;
-
-	uids[_current_player]++;
-
-	/* Save the command and his things, together with the unique_id */
-	new = malloc(sizeof(AICommand));
-	new->tile  = tile;
-	new->p1    = p1;
-	new->p2    = p2;
-	new->procc = procc;
-	new->next  = NULL;
-	new->uid   = unique_id;
-
-	/* Add it to the back of the list */
-	if (command_uid_tail[_current_player] == NULL)
-		command_uid_tail[_current_player] = new;
-	else {
-		command_uid_tail[_current_player]->next = new;
-		command_uid_tail[_current_player] = new;
-	}
-
-	if (command_uid[_current_player] == NULL)
-		command_uid[_current_player] = new;
-
-	AI_DoCommand(tile, p1, p2, flags, procc);
-	return unique_id;
-}
-
-/**
- * Find the right UID for this command.
- */
-void AI_GetCommandUID(uint32 cmd, uint32 p1, uint32 p2, TileIndex tile)
-{
-	AICommand *command = command_uid[_current_player];
-
-	/* Reset to 0, meaning no UID. Then we start detecting if we have an UID for this command */
-	_ai_current_uid  = 0;
-	_ai_current_tile = INVALID_TILE;
-
-	if (command == NULL)
-		return;
-
-	if (command->procc != (cmd & 0xFF) || command->p1 != p1 || command->p2 != p2 || command->tile != tile) {
-		/* If we come here, we see a command that isn't at top in our list. This is okay, if the command isn't
-		 *  anywhere else in our list, else we have a big problem.. so check for that. If it isn't in our list,
-		 *  it is okay, else, drop the game.
-		 * Why do we have a big problem in the case it is in our list? Simply, we have a command sooner in
-		 *  our list that wasn't triggered to be failed or succeeded, so it is sitting there without an
-		 *  event, so the script will never know if it succeeded yes/no, so it can hang.. this is VERY bad
-		 *  and should never ever happen. */
-		while (command != NULL && (command->procc != (cmd & 0xFF) || command->p1 != p1 || command->p2 != p2 || command->tile != tile)) {
-			command = command->next;
-		}
-		assert(command == NULL);
-		return;
-	}
-
-	/* Remove this command from the list */
-	command_uid[_current_player] = command_uid[_current_player]->next;
-	if (command_uid[_current_player] == NULL)
-		command_uid_tail[_current_player] = NULL;
-
-	/* Broadcast our current UID and tile */
-	_ai_current_uid  = command->uid;
-	_ai_current_tile = tile;
-	free(command);
-}
-
-/**
- * A command is executed for real, and is giving us his result (failed yes/no). Inform the AI with it via
- *  an event.
- */
-void AI_CommandResult(bool succeeded)
-{
-	if (_ai_current_uid == 0)
-		return;
-
-	ai_event(_current_player, succeeded ? ttai_Event_CommandSucceeded : ttai_Event_CommandFailed, _ai_current_tile);
-}
-
 /**
  * Run 1 tick of the AI. Don't overdo it, keep it realistic.
  */
 static void AI_RunTick(PlayerID player)
 {
+	extern void AiNewDoGameLoop(Player *p);
+
+	Player *p = GetPlayer(player);
 	_current_player = player;
 
-#ifdef GPMI
-	if (_ai.gpmi) {
-		gpmi_call_RunTick(_ai_player[player].module, _frame_counter);
-		return;
-	}
-#endif /* GPMI */
-
-	{
-		extern void AiNewDoGameLoop(Player *p);
-
-		Player *p = GetPlayer(player);
-
-		if (_patches.ainew_active) {
-			AiNewDoGameLoop(p);
-		} else {
-			/* Enable all kind of cheats the old AI needs in order to operate correctly... */
-			_is_old_ai_player = true;
-			AiDoGameLoop(p);
-			_is_old_ai_player = false;
-		}
+	if (_patches.ainew_active) {
+		AiNewDoGameLoop(p);
+	} else {
+		/* Enable all kind of cheats the old AI needs in order to operate correctly... */
+		_is_old_ai_player = true;
+		AiDoGameLoop(p);
+		_is_old_ai_player = false;
 	}
 }
 
@@ -309,7 +195,10 @@ void AI_RunGameLoop(void)
 		Player *p;
 
 		FOR_ALL_PLAYERS(p) {
-			if (p->is_active && p->is_ai && _ai_player[p->index].active) {
+			if (p->is_active && p->is_ai) {
+				/* This should always be true, else something went wrong... */
+				assert(_ai_player[p->index].active);
+
 				/* Run the script */
 				AI_DequeueCommands(p->index);
 				AI_RunTick(p->index);
@@ -320,105 +209,12 @@ void AI_RunGameLoop(void)
 	_current_player = OWNER_NONE;
 }
 
-#ifdef GPMI
-
-void AI_ShutdownAIControl(bool with_error)
-{
-	if (_ai.gpmi_mod != NULL)
-		gpmi_mod_unload(_ai.gpmi_mod);
-	if (_ai.gpmi_pkg != NULL)
-		gpmi_pkg_unload(_ai.gpmi_pkg);
-
-	if (with_error) {
-		DEBUG(ai, 0)("[AI] Failed to load AI Control, switching back to built-in AIs..");
-		_ai.gpmi = false;
-	}
-}
-
-void (*ttai_GetNextAIData)(char **library, char **param);
-void (*ttai_SetAIParam)(char *param);
-
-void AI_LoadAIControl(void)
-{
-	/* Load module */
-	_ai.gpmi_mod = gpmi_mod_load("ttai_control_mod", NULL);
-	if (_ai.gpmi_mod == NULL) {
-		AI_ShutdownAIControl(true);
-		return;
-	}
-
-	/* Load package */
-	if (gpmi_pkg_load("ttai_control_pkg", 0, NULL, NULL, &_ai.gpmi_pkg)) {
-		AI_ShutdownAIControl(true);
-		return;
-	}
-
-	/* Now link all the functions */
-	{
-		ttai_GetNextAIData = gpmi_pkg_resolve(_ai.gpmi_pkg, "ttai_GetNextAIData");
-		ttai_SetAIParam = gpmi_pkg_resolve(_ai.gpmi_pkg, "ttai_SetAIParam");
-
-		if (ttai_GetNextAIData == NULL || ttai_SetAIParam == NULL)
-			AI_ShutdownAIControl(true);
-	}
-
-	ttai_SetAIParam(_ai.gpmi_param);
-}
-
-/**
- * Dump an entry of the GPMI error stack (callback routine). This helps the user to trace errors back to their roots.
- */
-void AI_PrintErrorStack(gpmi_err_stack_t *entry, char *string)
-{
-	DEBUG(ai, 0)("%s", string);
-}
-
-#endif /* GPMI */
-
 /**
  * A new AI sees the day of light. You can do here what ever you think is needed.
  */
 void AI_StartNewAI(PlayerID player)
 {
 	assert(player < MAX_PLAYERS);
-
-#ifdef GPMI
-	/* Keep this in a different IF, because the function can turn _ai.gpmi off!! */
-	if (_ai.gpmi && _ai.gpmi_mod == NULL)
-		AI_LoadAIControl();
-
-	if (_ai.gpmi) {
-		char *library = NULL;
-		char *params = NULL;
-		int old_cp = _current_player;
-
-		/* Switch to new player, so we can execute stuff */
-		_current_player = player;
-
-		/* Get the library and param to load */
-		ttai_GetNextAIData(&library, &params);
-		gpmi_error_stack_enable = 1;
-
-		/* Load the module */
-		if (library != NULL) {
-			_ai_player[player].module = gpmi_mod_load(library, params);
-			free(library);
-		}
-		if (params != NULL)
-			free(params);
-
-		/* Check for errors */
-		if (_ai_player[player].module == NULL) {
-			DEBUG(ai, 0)("[AI] Failed to load AI, aborting. GPMI error stack:");
-			gpmi_err_stack_process_str(AI_PrintErrorStack);
-			return;
-		}
-		gpmi_error_stack_enable = 0;
-
-		/* Switch back to last player */
-		_current_player = old_cp;
-	}
-#endif /* GPMI */
 
 	/* Called if a new AI is booted */
 	_ai_player[player].active = true;
@@ -434,22 +230,6 @@ void AI_PlayerDied(PlayerID player)
 
 	/* Called if this AI died */
 	_ai_player[player].active = false;
-
-	if (command_uid[player] != NULL) {
-		while (command_uid[player] != NULL) {
-			AICommand *command = command_uid[player];
-			command_uid[player] = command->next;
-			free(command);
-		}
-
-		command_uid[player] = NULL;
-		command_uid_tail[player] = NULL;
-	}
-
-#ifdef GPMI
-	if (_ai_player[player].module != NULL)
-		gpmi_mod_unload(_ai_player[player].module);
-#endif /* GPMI */
 }
 
 /**
@@ -457,29 +237,17 @@ void AI_PlayerDied(PlayerID player)
  */
 void AI_Initialize(void)
 {
-	bool tmp_ai_network_client = _ai.network_client;
-	bool tmp_ai_gpmi = _ai.gpmi;
-#ifdef GPMI
-	char *tmp_ai_gpmi_param = strdup(_ai.gpmi_param);
-#endif /* GPMI */
+	bool ai_network_client = _ai.network_client;
 
 	/* First, make sure all AIs are DEAD! */
 	AI_Uninitialize();
 
 	memset(&_ai, 0, sizeof(_ai));
-	memset(_ai_player, 0, sizeof(_ai_player));
-	memset(uids, 0, sizeof(uids));
-	memset(command_uid, 0, sizeof(command_uid));
-	memset(command_uid_tail, 0, sizeof(command_uid_tail));
+	memset(&_ai_player, 0, sizeof(_ai_player));
 
-	_ai.network_client = tmp_ai_network_client;
+	_ai.network_client = ai_network_client;
 	_ai.network_playas = OWNER_SPECTATOR;
 	_ai.enabled = true;
-	_ai.gpmi = tmp_ai_gpmi;
-#ifdef GPMI
-	ttd_strlcpy(_ai.gpmi_param, tmp_ai_gpmi_param, sizeof(_ai.gpmi_param));
-	free(tmp_ai_gpmi_param);
-#endif /* GPMI */
 }
 
 /**
@@ -490,10 +258,6 @@ void AI_Uninitialize(void)
 	Player* p;
 
 	FOR_ALL_PLAYERS(p) {
-		if (p->is_active && p->is_ai && _ai_player[p->index].active) AI_PlayerDied(p->index);
+		if (p->is_active && p->is_ai) AI_PlayerDied(p->index);
 	}
-
-#ifdef GPMI
-	AI_ShutdownAIControl(false);
-#endif /* GPMI */
 }

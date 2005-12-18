@@ -15,7 +15,6 @@
 #include "news.h"
 #include "saveload.h"
 #include "vehicle_gui.h"
-#include "ai/ai_event.h"
 
 enum {
 	/* Max orders: 64000 (64 * 1000) */
@@ -394,8 +393,6 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		/* Make sure to rebuild the whole list */
 		RebuildVehicleLists();
-
-		ai_event(_current_player, ttai_Event_GiveOrder, v->index);
 	}
 
 	return 0;

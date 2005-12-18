@@ -4,9 +4,6 @@
 #include "../functions.h"
 #include "../network.h"
 #include "../player.h"
-#ifdef GPMI
-#include <gpmi.h>
-#endif /* GPMI */
 
 /* How DoCommands look like for an AI */
 typedef struct AICommand {
@@ -26,9 +23,6 @@ typedef struct AIPlayer {
 	bool active;            //! Is this AI active?
 	AICommand *queue;       //! The commands that he has in his queue
 	AICommand *queue_tail;  //! The tail of this queue
-#ifdef GPMI
-	gpmi_module *module;    //! The link to the GPMI module
-#endif /* GPMI */
 } AIPlayer;
 
 /* The struct to keep some data about the AI in general */
@@ -40,19 +34,10 @@ typedef struct AIStruct {
 	/* For network-clients (a OpenTTD client who acts as an AI connected to a server) */
 	bool network_client;    //! Are we a network_client?
 	uint8 network_playas;   //! The current network player we are connected as
-
-	bool gpmi;              //! True if we want GPMI AIs
-#ifdef GPMI
-	gpmi_module *gpmi_mod;  //! The module controller for GPMI based AIs (Event-handling)
-	gpmi_package *gpmi_pkg; //! The package controller for GPMI based AIs (Functions)
-	char gpmi_param[128];   //! The params given to the gpmi_mod
-#endif /* GPMI */
 } AIStruct;
 
 VARDEF AIStruct _ai;
 VARDEF AIPlayer _ai_player[MAX_PLAYERS];
-VARDEF uint _ai_current_uid; //! Keeps track of the current UID, if any (0 means none)
-VARDEF TileIndex _ai_current_tile; //! Keeps track of the current Tile.
 
 // ai.c
 void AI_StartNewAI(PlayerID player);
@@ -61,9 +46,6 @@ void AI_RunGameLoop(void);
 void AI_Initialize(void);
 void AI_Uninitialize(void);
 int32 AI_DoCommand(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc);
-int32 AI_DoCommandChecked(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc);
-void AI_GetCommandUID(uint32 cmd, uint32 p1, uint32 p2, TileIndex tile);
-void AI_CommandResult(bool failed);
 
 /** Is it allowed to start a new AI.
  * This function checks some boundries to see if we should launch a new AI.
@@ -89,7 +71,7 @@ static inline bool AI_AllowNewAI(void)
 		 *  system, because all commands are delayed by at least 1 tick, which causes
 		 *  a big problem, because it uses variables that are only set AFTER the command
 		 *  is really executed... */
-		if (!_patches.ainew_active && !_ai.gpmi)
+		if (!_patches.ainew_active)
 			return false;
 	}
 

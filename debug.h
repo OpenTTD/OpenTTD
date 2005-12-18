@@ -19,9 +19,6 @@
 	extern int _debug_oldloader_level;
 	extern int _debug_pbs_level;
 	extern int _debug_ntp_level;
-#ifdef GPMI
-	extern int _debug_gpmi_level;
-#endif /* GPMI */
 	extern int _debug_npf_level;
 #endif
 
@@ -29,9 +26,5 @@ void CDECL debug(const char *s, ...);
 
 void SetDebugString(const char *s);
 const char *GetDebugString(void);
-
-#ifdef GPMI
-void gpmi_debug_openttd(int level, char *s);
-#endif /* GPMI */
 
 #endif /* DEBUG_H */

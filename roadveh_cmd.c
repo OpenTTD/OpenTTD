@@ -18,7 +18,6 @@
 #include "sound.h"
 #include "depot.h"
 #include "vehicle_gui.h"
-#include "ai/ai_event.h"
 
 void ShowRoadVehViewWindow(Vehicle *v);
 
@@ -196,9 +195,6 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		InvalidateWindow(WC_COMPANY, v->owner);
 		if (IsLocalPlayer())
 			InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Road); // updates the replace Road window
-
-		ai_event(_current_player, ttai_Event_BuildVehicle, v->index, tile);
-		ai_event(_current_player, ttai_Event_BuildRoadVehicle, v->index, tile);
 	}
 
 	return cost;
