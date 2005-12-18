@@ -377,6 +377,10 @@ error:
 	// if toplevel, subtract the money.
 	if (--_docommand_recursive == 0) {
 		SubtractMoneyFromPlayer(res);
+		// XXX - Old AI hack which doesn't use DoCommandDP; update last build coord of player
+		if ( (x|y) != 0 && _current_player < MAX_PLAYERS) {
+			GetPlayer(_current_player)->last_build_coordinate = TileVirtXY(x, y);
+		}
 	}
 
 	_cmd_text = NULL;
