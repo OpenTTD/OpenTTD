@@ -811,7 +811,7 @@ void SetCustomEngineName(EngineID engine, const char *name)
 	_engine_custom_names[engine] = strdup(name);
 }
 
-void UnInitNewgrEngines(void)
+void UnloadCustomEngineNames(void)
 {
 	char **i;
 	for (i = _engine_custom_names; i != endof(_engine_custom_names); i++) {

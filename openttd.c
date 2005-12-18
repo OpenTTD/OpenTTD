@@ -255,7 +255,6 @@ static void UnInitializeDynamicVariables(void)
 static void UnInitializeGame(void)
 {
 	UnInitWindowSystem();
-	UnInitNewgrEngines();
 
 	free(_config_file);
 }

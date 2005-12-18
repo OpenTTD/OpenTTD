@@ -2455,6 +2455,7 @@ static void ResetNewGRFData(void)
 	// Unload sprite group data
 	UnloadWagonOverrides();
 	UnloadCustomEngineSprites();
+	UnloadCustomEngineNames();
 
 	// Reset price base data
 	ResetPriceBaseMultipliers();

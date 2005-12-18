@@ -212,7 +212,6 @@ void LoadCustomEngineNames(void);
 void DeleteCustomEngineNames(void);
 
 bool IsEngineBuildable(uint engine, byte type);
-void UnInitNewgrEngines(void);
 
 enum {
 	NUM_NORMAL_RAIL_ENGINES = 54,
@@ -283,5 +282,6 @@ static inline const RoadVehicleInfo* RoadVehInfo(EngineID e)
 
 void UnloadWagonOverrides(void);
 void UnloadCustomEngineSprites(void);
+void UnloadCustomEngineNames(void);
 
 #endif /* ENGINE_H */
