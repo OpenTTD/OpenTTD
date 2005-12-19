@@ -652,6 +652,11 @@ static const char *Win32GdiStart(const char * const *parm)
 static void Win32GdiStop(void)
 {
 	if (_wnd.fullscreen) ChangeDisplaySettings(NULL, 0);
+	if (_double_size) {
+		_cur_resolution[0] *= 2;
+		_cur_resolution[1] *= 2;
+	}
+
 	MyShowCursor(true);
 	DeleteObject(_wnd.gdi_palette);
 	DeleteObject(_wnd.dib_sect);
