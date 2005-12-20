@@ -567,7 +567,10 @@ static int32 AiNew_PatchActive_Warning(int32 p1)
 
 static int32 Ai_In_Multiplayer_Warning(int32 p1)
 {
-	if (p1 == 1) ShowErrorMessage(INVALID_STRING_ID, TEMP_AI_MULTIPLAYER, 0, 0);
+	if (p1 == 1) {
+		ShowErrorMessage(INVALID_STRING_ID, TEMP_AI_MULTIPLAYER, 0, 0);
+		_patches.ainew_active = true;
+	}
 	return 0;
 }
 
