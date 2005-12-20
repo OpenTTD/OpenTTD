@@ -764,7 +764,7 @@ start_at:
 
 			// The tile has no reachable tracks, or
 			// does the tile contain more than one track?
-			if (bits == 0 || KILL_FIRST_BIT(GB(_m[tile].m5, 0, 6)) != 0)
+			if (bits == 0 || KILL_FIRST_BIT(bits) != 0)
 				break;
 
 			// If we reach here, the tile has exactly one track, and this
@@ -859,6 +859,8 @@ start_at:
 			estimation = DistanceMoo(tile, tpf->dest);
 
 		si.depth++;
+		if (si.depth == 0)
+			continue; /* We overflowed our depth. No more searching in this direction. */
 		si.tile = tile;
 		do {
 			si.track = _new_track[FIND_FIRST_BIT(bits)][direction];
