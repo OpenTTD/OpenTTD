@@ -179,16 +179,12 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			DrawString(260, y, STR_NETWORK_CLIENTS, 2); // clients on the server / maximum slots
 			y += 10;
 
-			if (sel->info.server_lang < NETWORK_NUM_LANGUAGES) {
-				SetDParam(0, STR_NETWORK_LANG_ANY + sel->info.server_lang);
-				DrawString(260, y, STR_NETWORK_LANGUAGE, 2); // server language
-			}
+			SetDParam(0, STR_NETWORK_LANG_ANY + sel->info.server_lang);
+			DrawString(260, y, STR_NETWORK_LANGUAGE, 2); // server language
 			y += 10;
 
-			if (sel->info.map_set < NUM_LANDSCAPE ) {
-				SetDParam(0, STR_TEMPERATE_LANDSCAPE + sel->info.map_set);
-				DrawString(260, y, STR_NETWORK_TILESET, 2); // tileset
-			}
+			SetDParam(0, STR_TEMPERATE_LANDSCAPE + sel->info.map_set);
+			DrawString(260, y, STR_NETWORK_TILESET, 2); // tileset
 			y += 10;
 
 			SetDParam(0, sel->info.map_width);
@@ -231,7 +227,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		_selected_field = e->click.widget;
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 0: case 14: /* Close 'X' | Cancel button */
 			DeleteWindowById(WC_NETWORK_WINDOW, 0);
 			break;

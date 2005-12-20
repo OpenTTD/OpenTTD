@@ -119,6 +119,12 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE)
 		item->info.map_set       = NetworkRecv_uint8(&_udp_cs, p);
 		item->info.dedicated     = NetworkRecv_uint8(&_udp_cs, p);
 
+		str_validate(item->info.server_name);
+		str_validate(item->info.server_revision);
+		str_validate(item->info.map_name);
+		if (item->info.server_lang >= NETWORK_NUM_LANGUAGES) item->info.server_lang = 0;
+		if (item->info.map_set >= NUM_LANDSCAPE ) item->info.map_set = 0;
+
 		if (item->info.hostname[0] == '\0')
 			snprintf(item->info.hostname, sizeof(item->info.hostname), "%s", inet_ntoa(client_addr->sin_addr));
 	}

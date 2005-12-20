@@ -57,3 +57,9 @@ char* CDECL str_fmt(const char* str, ...)
 	if (p != NULL) memcpy(p, buf, len + 1);
 	return p;
 }
+
+void str_validate(char *str)
+{
+	for (; *str != '\0'; str++)
+		if (!IsValidAsciiChar(*str)) *str = '?';
+}

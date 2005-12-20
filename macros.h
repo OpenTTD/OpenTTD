@@ -164,14 +164,4 @@ static inline void swap_tile(TileIndex *a, TileIndex *b) { TileIndex t = *a; *a 
  */
 #define ALIGN(x, n) (((x) + (n) - 1) & ~((n) - 1))
 
-/* IS_INT_INSIDE = filter for ascii-function codes like BELL and so on [we need an special filter here later] */
-static inline bool IsValidAsciiChar(byte key)
-{
-	// XXX This filter stops certain crashes, but may be too restrictive.
-	return IS_INT_INSIDE(key, ' ', 127) ||
-		(IS_INT_INSIDE(key, 160, 256) &&
-		key != 0xAA && key != 0xAC && key != 0xAD && key != 0xAF &&
-		key != 0xB5 && key != 0xB6 && key != 0xB7 && key != 0xB9);
-}
-
 #endif /* MACROS_H */

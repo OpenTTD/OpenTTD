@@ -25,4 +25,20 @@ char* strecpy(char* dst, const char* src, const char* last);
 
 char* CDECL str_fmt(const char* str, ...);
 
+/** Scans the string for valid characters and if it finds invalid ones,
+ * replaces them with a question mark '?' */
+void str_validate(char *str);
+
+/** Only allow valid ascii-function codes. Filter special codes like BELL and
+ * so on [we need a special filter here later]
+ * @param key character to be checked
+ * @return true or false depending if the character is printable/valid or not */
+static inline bool IsValidAsciiChar(byte key)
+{
+	// XXX This filter stops certain crashes, but may be too restrictive.
+	return (key >= ' ' && key < 127) || (key >= 160 &&
+		key != 0xAA && key != 0xAC && key != 0xAD && key != 0xAF &&
+		key != 0xB5 && key != 0xB6 && key != 0xB7 && key != 0xB9);
+}
+
 #endif /* STRING_H */
