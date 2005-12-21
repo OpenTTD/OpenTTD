@@ -585,6 +585,13 @@ static bool NtpVisit(NewTrackPathFinder *tpf, TileIndex tile, uint dir, uint len
 	return true;
 }
 
+/**
+ * Checks if the shortest path to the given tile/dir so far is still the given
+ * length.
+ * @return true if the length is still the same
+ * @pre    The given tile/dir combination should be present in the hash, by a
+ *         previous call to NtpVisit().
+ */
 static bool NtpCheck(NewTrackPathFinder *tpf, TileIndex tile, uint dir, uint length)
 {
 	uint hash,head,offs;
@@ -666,7 +673,9 @@ static const byte _length_of_track[16] = {
 
 static void NTPEnum(NewTrackPathFinder *tpf, TileIndex tile, uint direction)
 {
-	uint bits, tile_org, track;
+	TrackBits bits, allbits;
+	uint track;
+	TileIndex tile_org;
 	StackedItem si;
 	FindLengthOfTunnelResult flotr;
 	int estimation;
@@ -745,8 +754,7 @@ start_at:
 				bits = (bits | (bits >> 8)) & 0x3F;
 
 				// Check that the tile contains exactly one track
-				if (bits == 0 || KILL_FIRST_BIT(bits) != 0)
-					break;
+				if (bits == 0 || KILL_FIRST_BIT(bits) != 0) break;
 
 				///////////////////
 				// If we reach here, the tile has exactly one track.
@@ -759,16 +767,18 @@ start_at:
 				goto callback_and_continue;
 			}
 
-			// Regular rail tile, determine which tracks exist.
-			bits = _m[tile].m5 & _bits_mask[direction];
+			/* Regular rail tile, determine which tracks exist. */
+			allbits = _m[tile].m5 & TRACK_BIT_MASK;
+			/* Which tracks are reachable? */
+			bits = allbits & DiagdirReachesTracks(direction);
 
-			// The tile has no reachable tracks, or
-			// does the tile contain more than one track?
-			if (bits == 0 || KILL_FIRST_BIT(bits) != 0)
-				break;
+			/* The tile has no reachable tracks => End of rail segment
+			 * or Intersection => End of rail segment. We check this agains all the
+			 * bits, not just reachable ones, to prevent infinite loops. */
+			if (bits == 0 || TracksOverlap(allbits)) break;
 
-			// If we reach here, the tile has exactly one track, and this
-			// track is reachable.
+			/* If we reach here, the tile has exactly one track, and this
+			 track is reachable => Rail segment continues */
 
 			track = _new_track[FIND_FIRST_BIT(bits)][direction];
 			assert(track != 0xff);
@@ -788,7 +798,7 @@ start_at:
 
 				m3 = _m[tile].m3;
 				if (!(m3 & SignalAlongTrackdir(track))) {
-					// if one way signal not pointing towards us, stop going in this direction.
+					// if one way signal not pointing towards us, stop going in this direction => End of rail segment.
 					if (m3 & SignalAgainstTrackdir(track)) {
 						bits = 0;
 						break;
@@ -800,7 +810,7 @@ start_at:
 					// reached a red signal.
 					if (m3 & SignalAgainstTrackdir(track)) {
 						// two way red signal. unless we passed another green signal on the way,
-						// stop going in this direction.
+						// stop going in this direction => End of rail segment.
 						// this is to prevent us from going into a full platform.
 						if (!(si.state&1)) {
 							bits = 0;
@@ -819,7 +829,7 @@ start_at:
 				}
 
 				if (tpf->enum_proc(tile, tpf->userdata, si.first_track, si.cur_length))
-					return;
+					return; /* Don't process this tile any further */
 			}
 
 			// continue with the next track
@@ -864,6 +874,7 @@ start_at:
 		si.tile = tile;
 		do {
 			si.track = _new_track[FIND_FIRST_BIT(bits)][direction];
+			assert(si.track != 0xFF);
 			si.priority = si.cur_length + estimation;
 
 			// out of stack items, bail out?

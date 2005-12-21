@@ -341,25 +341,35 @@ static inline Trackdir ReverseTrackdir(Trackdir trackdir) {
 	return _reverse_trackdir[trackdir];
 }
 
-/*
+/**
  * Maps a Track to the corresponding TrackBits value
  */
 static inline TrackBits TrackToTrackBits(Track track) { return (TrackBits)(1 << track); }
 
-/* Returns the Track that a given Trackdir represents */
+/**
+ * Returns the Track that a given Trackdir represents
+ */
 static inline Track TrackdirToTrack(Trackdir trackdir) { return (Track)(trackdir & 0x7); }
 
-/* Returns a Trackdir for the given Track. Since every Track corresponds to
+/**
+ * Returns a Trackdir for the given Track. Since every Track corresponds to
  * two Trackdirs, we choose the one which points between NE and S.
  * Note that the actual implementation is quite futile, but this might change
  * in the future.
  */
 static inline Trackdir TrackToTrackdir(Track track) { return (Trackdir)track; }
 
-/* Returns a TrackdirBit mask that contains the two TrackdirBits that
+/**
+ * Returns a TrackdirBit mask that contains the two TrackdirBits that
  * correspond with the given Track (one for each direction).
  */
 static inline TrackdirBits TrackToTrackdirBits(Track track) { Trackdir td = TrackToTrackdir(track); return TrackdirToTrackdirBits(td) | TrackdirToTrackdirBits(ReverseTrackdir(td));}
+
+/**
+ * Discards all directional information from the given TrackdirBits. Any
+ * Track which is present in either direction will be present in the result.
+ */
+static inline TrackBits TrackdirBitsToTrackBits(TrackdirBits bits) { return bits | (bits >> 8); }
 
 /**
  * Maps a trackdir to the trackdir that you will end up on if you go straight
@@ -424,14 +434,28 @@ static inline Trackdir DiagdirToDiagTrackdir(DiagDirection diagdir) {
 	return _dir_to_diag_trackdir[diagdir];
 }
 
+extern const TrackdirBits _exitdir_reaches_trackdirs[DIAGDIR_END];
+
+/**
+ * Returns all trackdirs that can be reached when entering a tile from a given
+ * (diagonal) direction. This will obviously include 90 degree turns, since no
+ * information is available about the exact angle of entering */
+static inline TrackdirBits DiagdirReachesTrackdirs(DiagDirection diagdir) { return _exitdir_reaches_trackdirs[diagdir]; }
+
+/**
+ * Returns all tracks that can be reached when entering a tile from a given
+ * (diagonal) direction. This will obviously include 90 degree turns, since no
+ * information is available about the exact angle of entering */
+static inline TrackBits DiagdirReachesTracks(DiagDirection diagdir) { return TrackdirBitsToTrackBits(DiagdirReachesTrackdirs(diagdir)); }
+
 /**
  * Maps a trackdir to the trackdirs that can be reached from it (ie, when
- * entering the next tile. This
+ * entering the next tile. This will include 90 degree turns!
  */
-extern const TrackdirBits _exitdir_reaches_trackdirs[DIAGDIR_END];
+static inline TrackdirBits TrackdirReachesTrackdirs(Trackdir trackdir) { return _exitdir_reaches_trackdirs[TrackdirToExitdir(trackdir)]; }
 /* Note that there is no direct table for this function (there used to be),
  * but it uses two simpeler tables to achieve the result */
-static inline TrackdirBits TrackdirReachesTrackdirs(Trackdir trackdir) { return _exitdir_reaches_trackdirs[TrackdirToExitdir(trackdir)]; }
+
 
 /**
  * Maps a trackdir to all trackdirs that make 90 deg turns with it.
@@ -592,6 +616,26 @@ static inline const RailtypeInfo *GetRailTypeInfo(RailType railtype)
 static inline bool IsCompatibleRail(RailType enginetype, RailType tiletype)
 {
 	return HASBIT(GetRailTypeInfo(enginetype)->compatible_railtypes, tiletype);
+}
+
+/**
+ * Checks if the given tracks overlap, ie form a crossing. Basically this
+ * means when there is more than one track on the tile, exept when there are
+ * two parallel tracks.
+ * @param  bits The tracks present.
+ * @return Whether the tracks present overlap in any way.
+ */
+static inline bool TracksOverlap(TrackBits bits)
+{
+  /* With no, or only one track, there is no overlap */
+  if (bits == 0 || KILL_FIRST_BIT(bits) == 0)
+    return false;
+  /* We know that there are at least two tracks present. When there are more
+   * than 2 tracks, they will surely overlap. When there are two, they will
+   * always overlap unless they are lower & upper or right & left. */
+  if ((bits == (TRACK_BIT_UPPER|TRACK_BIT_LOWER)) || (bits == (TRACK_BIT_LEFT | TRACK_BIT_RIGHT)))
+    return false;
+  return true;
 }
 
 void DrawTrackBits(TileInfo *ti, TrackBits track, bool earth, bool snow, bool flat);
