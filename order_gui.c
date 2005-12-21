@@ -218,7 +218,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			if (v->type != VEH_Aircraft) break;
 			if (IsAircraftHangarTile(tile) && IsTileOwner(tile, _local_player)) {
 				order.type = OT_GOTO_DEPOT;
-				order.flags = OF_PART_OF_ORDERS | OF_NON_STOP;	//XXX - whats the nonstop stuff doing here?
+				order.flags = OF_PART_OF_ORDERS;
 				order.station = _m[tile].m2;
 				return order;
 			}
