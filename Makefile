@@ -226,19 +226,21 @@ endif
 endif
 
 # remove the dependancy for sdl if DEDICALTED is used
-# and add -lpthread to LDFLAGS, because SDL normally adds that...
 ifdef DEDICATED
-WITH_SDL:=
+	WITH_SDL:=
+endif
+
+# add -lpthread to LDFLAGS
 ifndef WIN32
-ifndef MORPHOS
-ifndef OSX
-LDFLAGS+=-lpthread
+	ifndef MORPHOS
+		ifndef OSX
+			LDFLAGS+=-lpthread
+		endif
+	endif
 endif
-endif
-endif
+
 ifdef OSX
-LDFLAGS+=-framework Cocoa
-endif
+	LDFLAGS+=-framework Cocoa
 endif
 
 
