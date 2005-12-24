@@ -13,7 +13,6 @@ $(MAKE_CONFIG):
 
 	$(call CONFIG_LINE,\# User setup flags)
 	$(call CONFIG_LINE,\# Translator: adds TODO to any untranslated strings)
-	$(call CONFIG_LINE,\# Display_Warnings: when off it hides some warnings while compiling)
 	$(call CONFIG_LINE,\# MIDI: sets path to midi player)
 	$(call CONFIG_LINE,\# MIDI_ARG: sets an argument which is used when calling the midi player. Default off)
 	$(call CONFIG_LINE,\# SUPRESS_LANG_ERRORS: supresses output about missing and mismatched strings)
@@ -22,7 +21,6 @@ $(MAKE_CONFIG):
 	$(call CONFIG_LINE,\# MAX_NUM_AUTOSAVES: sets the max number of autosaves the game keeps before overwriting old ones)
 	$(call CONFIG_LINE,STATIC:=$(STATIC))
 	$(call CONFIG_LINE,TRANSLATOR:=$(TRANSLATOR))
-	$(call CONFIG_LINE,DISPLAY_WARNINGS:=$(DISPLAY_WARNINGS))
 	$(call CONFIG_LINE,DEBUG:=$(DEBUG))
 	$(call CONFIG_LINE,PROFILE:=$(PROFILE))
 	$(call CONFIG_LINE,MIDI:=$(MIDI))
