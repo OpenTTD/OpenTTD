@@ -212,8 +212,8 @@ enum WindowKeyCodes {
 
 typedef struct WindowDesc {
 	int16 left, top, width, height;
-	byte cls;
-	byte parent_cls;
+	WindowClass cls;
+	WindowClass parent_cls;
 	uint32 flags;
 	const Widget *widgets;
 	WindowProc *proc;

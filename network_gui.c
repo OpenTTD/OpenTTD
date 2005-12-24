@@ -1397,7 +1397,7 @@ static const WindowDesc _chat_window_desc = {
 	ChatWindowWndProc
 };
 
-void ShowChatWindow(StringID str, StringID caption, int maxlen, int maxwidth, byte window_class, uint16 window_number)
+void ShowChatWindow(StringID str, StringID caption, int maxlen, int maxwidth, WindowClass window_class, WindowNumber window_number)
 {
 	Window *w;
 

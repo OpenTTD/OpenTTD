@@ -191,9 +191,9 @@ uint ConvertIntDate(uint date);
 /* misc functions */
 void MarkTileDirty(int x, int y);
 void MarkTileDirtyByTile(TileIndex tile);
-void InvalidateWindow(byte cls, WindowNumber number);
-void InvalidateWindowWidget(byte cls, WindowNumber number, byte widget_index);
-void InvalidateWindowClasses(byte cls);
+void InvalidateWindow(WindowClass cls, WindowNumber number);
+void InvalidateWindowWidget(WindowClass cls, WindowNumber number, byte widget_index);
+void InvalidateWindowClasses(WindowClass cls);
 void DeleteWindowById(WindowClass cls, WindowNumber number);
 void DeleteWindowByClass(WindowClass cls);
 

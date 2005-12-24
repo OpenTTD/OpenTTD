@@ -1553,7 +1553,7 @@ int GetMenuItemIndex(const Window *w, int x, int y)
 	return -1;
 }
 
-void InvalidateWindow(byte cls, WindowNumber number)
+void InvalidateWindow(WindowClass cls, WindowNumber number)
 {
 	const Window* w;
 
@@ -1572,7 +1572,7 @@ void InvalidateWidget(const Window* w, byte widget_index)
 	SetDirtyBlocks(w->left + wi->left, w->top + wi->top, w->left + wi->right + 1, w->top + wi->bottom + 1);
 }
 
-void InvalidateWindowWidget(byte cls, WindowNumber number, byte widget_index)
+void InvalidateWindowWidget(WindowClass cls, WindowNumber number, byte widget_index)
 {
 	const Window* w;
 
@@ -1583,7 +1583,7 @@ void InvalidateWindowWidget(byte cls, WindowNumber number, byte widget_index)
 	}
 }
 
-void InvalidateWindowClasses(byte cls)
+void InvalidateWindowClasses(WindowClass cls)
 {
 	const Window* w;
 
