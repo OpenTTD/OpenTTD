@@ -10,7 +10,6 @@
 #include "window.h"
 #include "gui.h"
 #include "viewport.h"
-#include "gfx.h"
 #include "sound.h"
 #include "command.h"
 #include "vehicle.h"

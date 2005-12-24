@@ -43,7 +43,7 @@ enum {
 #define DEF_UDP_RECEIVE_COMMAND(type) void NetworkPacketReceive_ ## type ## _command(Packet *p, struct sockaddr_in *client_addr)
 void NetworkSendUDP_Packet(SOCKET udp, Packet *p, struct sockaddr_in *recv);
 
-NetworkClientState _udp_cs;
+static NetworkClientState _udp_cs;
 
 DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER)
 {

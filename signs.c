@@ -10,6 +10,8 @@
 #include "command.h"
 #include "variables.h"
 
+static SignStruct *_new_sign_struct;
+
 enum {
 	/* Max signs: 64000 (4 * 16000) */
 	SIGN_POOL_BLOCK_SIZE_BITS = 2,       /* In bits, so (1 << 2) == 4 */

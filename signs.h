@@ -51,8 +51,6 @@ static inline bool IsSignIndex(uint index)
 #define FOR_ALL_SIGNS_FROM(ss, start) for (ss = GetSign(start); ss != NULL; ss = (ss->index + 1 < GetSignPoolSize()) ? GetSign(ss->index + 1) : NULL)
 #define FOR_ALL_SIGNS(ss) FOR_ALL_SIGNS_FROM(ss, 0)
 
-VARDEF SignStruct *_new_sign_struct;
-
 VARDEF bool _sign_sort_dirty;
 VARDEF uint16 *_sign_sort;
 
