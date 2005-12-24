@@ -6,11 +6,8 @@
 #include "functions.h"
 #include "window.h"
 #include "gui.h"
-#include "viewport.h"
 #include "gfx.h"
 #include "player.h"
-#include "command.h"
-#include "console.h"
 #include "network.h"
 #include "variables.h"
 

@@ -9,7 +9,6 @@
 #include "gfx.h"
 #include "viewport.h"
 #include "player.h"
-#include "gui.h"
 #include "screenshot.h"
 #include "variables.h"
 

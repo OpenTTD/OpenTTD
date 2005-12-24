@@ -10,7 +10,6 @@
 #include "../gfx.h"
 #include "../network.h"
 #include "../window.h"
-#include "../command.h"
 #include "../console.h"
 #include "../variables.h"
 #include "dedicated_v.h"

@@ -12,7 +12,6 @@
 #include "station.h"
 #include "news.h"
 #include "engine.h"
-#include "gui.h"
 #include "player.h"
 #include "sound.h"
 #include "npf.h"

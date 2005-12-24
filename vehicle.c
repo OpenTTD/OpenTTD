@@ -21,7 +21,6 @@
 #include "vehicle_gui.h"
 #include "depot.h"
 #include "station.h"
-#include "gui.h"
 #include "rail.h"
 #include "train.h"
 

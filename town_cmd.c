@@ -20,7 +20,6 @@
 #include "saveload.h"
 #include "economy.h"
 #include "gui.h"
-#include "network.h"
 #include "variables.h"
 
 enum {

@@ -7,7 +7,6 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "window.h"
-#include "gui.h"
 #include "viewport.h"
 #include "gfx.h"
 #include "news.h"

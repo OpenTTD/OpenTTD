@@ -10,7 +10,6 @@
 #include "player.h"
 #include "variables.h"
 #include "string.h"
-#include "hal.h"
 #include <stdarg.h>
 #include <string.h>
 #include "console.h"
