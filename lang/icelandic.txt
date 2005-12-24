@@ -1017,7 +1017,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Bið mil
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Bið milli skoðana á skipum: {ORANGE}{STRING} dagar/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Bið milli skoðana á skipum: {ORANGE}óvirkt
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Hætta skoðunum þegar bilanir eru afvirktar: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Leyfa hraðatakmarkanir vagna: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Leyfa hraðatakmarkanir vagna: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Fréttir birtast í lit: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Upphafsár: {ORANGE}{STRING}

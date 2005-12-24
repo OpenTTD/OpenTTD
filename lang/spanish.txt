@@ -997,8 +997,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Árboles
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altura de la línea de nieve: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Expansión máxima de est.: {ORANGE}{STRING} {RED}Atención: Valores altos relantizan
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Mantener los helicópteros en helipuertos automáticamente: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Enlaza la caja de herramientas de paisaje a la barra de rail/carretera/agua/aeropuerto: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Cuando se hace scroll con el ratón la vista se mueve en dirección opuesta: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Enlaza la caja de herramientas de paisaje a la barra de rail/carretera/agua/aeropuerto: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Cuando se hace scroll con el ratón la vista se mueve en dirección opuesta: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máx trenes por jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máx vehículos de carretera por jugador: {ORANGE}{STRING}
@@ -1021,7 +1021,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Interva
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Intervalo de despacho por defecto para barcos: {ORANGE}{STRING} días
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalo de despacho por defecto para barcos: {ORANGE}no
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Desactivar servicio cuando las averías están desactivadas: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Activar límites de velocidad en vagones: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Activar límites de velocidad en vagones: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Noticias en color aparecen en: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Fecha de inicio: {ORANGE}{STRING}

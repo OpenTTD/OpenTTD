@@ -13,7 +13,7 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Zemei ja'bu't plakanai
 STR_0008_WAITING                                                :{BLACK}Gaidam: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING1}
+STR_0009                                                        :{WHITE}{STRING}
 STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (cel'a' no
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Pien'em: {WHITE}
@@ -951,51 +951,51 @@ STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Konfigur
 
 STR_CONFIG_PATCHES_OFF                                          :Ne'
 STR_CONFIG_PATCHES_ON                                           :Ja'
-STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Ra'di't auto a'trumu statusa  josla': {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Atl'aut celt uz neli'dzenas zemes un krastiem: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Atl'aut rea'listiskus katc'ementa apgabalus: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Atl'aut pilse'tai piederos'u cel'u un tiltu nojauks'anu: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Atl'aut l'oti garu vilcienu cels'anu: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Atl'aut rea'lu vilcienu pa'atrina'jumu: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Ra'di't auto a'trumu statusa  josla': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Atl'aut celt uz neli'dzenas zemes un krastiem: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Atl'aut rea'listiskus katc'ementa apgabalus: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Atl'aut pilse'tai piederos'u cel'u un tiltu nojauks'anu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Atl'aut l'oti garu vilcienu cels'anu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Atl'aut rea'lu vilcienu pa'atrina'jumu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Aizliedz vilcieniem un kug'iem taisi't 90 gra'du pagriezienus: {ORANGE}{STRING} {LTBLUE} (nepiecies'ams NPF)
-STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Savienot vilciena stacijas kas celtas blakus: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Izbraukt no stacijas ja jebkura krava ir uzpildi'ta un "pilna krava" ir iesle'gta: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Lietot uzlabotu uzla'de's'anas algoritmu: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Infla'cija: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Transporte't kravu uz staciju tikai tad ja ir pieprasijums: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Atl'aut l'oti garu tiltu cels'anu: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Atl'aut "iet uz depo" komandu: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Atl'aut materea'lu raz'os'anas industrijas: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Atl'aut vaira'kas li'dzi'gas industrijas vienai pilse'tai: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Viena veida industrijas var tikt celtas tuvu viena no otras: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Vienme'r ra'di't garu datumu statusa josla': {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Ra'di't signa'lus brauks'anas puse': {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Ra'di't finanses gada beiga's: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch savietojams nekave'jos'ais apstra'da'jums: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Automobi'l'u rindas (ar kvantu efektiem): {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Bi'di't logu kad pele ir ta' mala': {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Atl'aut viete'jo varas iesta'z'u piekukul'os'anu: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ne-uniformas stacijas: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Savienot vilciena stacijas kas celtas blakus: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Izbraukt no stacijas ja jebkura krava ir uzpildi'ta un "pilna krava" ir iesle'gta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Lietot uzlabotu uzla'de's'anas algoritmu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Infla'cija: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Transporte't kravu uz staciju tikai tad ja ir pieprasijums: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Atl'aut l'oti garu tiltu cels'anu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Atl'aut "iet uz depo" komandu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Atl'aut materea'lu raz'os'anas industrijas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Atl'aut vaira'kas li'dzi'gas industrijas vienai pilse'tai: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Viena veida industrijas var tikt celtas tuvu viena no otras: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Vienme'r ra'di't garu datumu statusa josla': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Ra'di't signa'lus brauks'anas puse': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Ra'di't finanses gada beiga's: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch savietojams nekave'jos'ais apstra'da'jums: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Automobi'l'u rindas (ar kvantu efektiem): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Bi'di't logu kad pele ir ta' mala': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Atl'aut viete'jo varas iesta'z'u piekukul'os'anu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ne-uniformas stacijas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Jauna' globa'la' cel'u kars'rutiza'cija (NPF, aizsta'j NTP): {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Vienme'r atl'aut mazas lidostas: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Vienme'r atl'aut mazas lidostas: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Vilciens tiek zaude'ts ja nav progresa: {ORANGE}{STRING1} dienas
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Vilciens tiek zaude'ts ja nav progresa: {ORANGE}{STRING} dienas
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Vilciens tiek zaude'ts ja nav progresa: {ORANGE} atsle'gts
-STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Pa'rskati't transporta uzdevumus: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Pa'rskati't transporta uzdevumus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :Ne'
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :Ja', izn'emot transporta li'dzekl'us kas apsta'dina'ti
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :visus vecos transporta li'dzekl'us
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Bri'dina't ja vilciena iena'kums kl'u'st negati'vs: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Transporta li'dzekl'i nekad nemirst: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Bri'dina't ja vilciena iena'kums kl'u'st negati'vs: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Transporta li'dzekl'i nekad nemirst: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automa'tiski atjaunot transporta li'dzekli kad tas kl'u'st vecs
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Automa'tiski atjaunot transporta li'dzekli {ORANGE}{STRING1}{LTBLUE} me'nes'us pirms/pe'c maksima'la' vecuma
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Automa'tiski atjaunot minima'lo naudu kas nepiecies'ama atjaunos'anai: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Kl'u'das zin'ojuma ilgums: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Automa'tiski atjaunot transporta li'dzekli {ORANGE}{STRING}{LTBLUE} me'nes'us pirms/pe'c maksima'la' vecuma
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Automa'tiski atjaunot minima'lo naudu kas nepiecies'ama atjaunos'anai: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Kl'u'das zin'ojuma ilgums: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Râdît pilsçtas iedzîvotâju skaitu pie pilsçtas nosaukuma: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Neredzami koki (ar caurspi'di'ga'm celtne'm): {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Sniega li'nijas augstums: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maksima'lais staciju izkaisijums: {ORANGE}{STRING1} {RED}Uzmani'bu: augsts li'menis pale'lina spe'li
+STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Neredzami koki (ar caurspi'di'ga'm celtne'm): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Sniega li'nijas augstums: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maksima'lais staciju izkaisijums: {ORANGE}{STRING} {RED}Uzmani'bu: augsts li'menis pale'lina spe'li
 
 
 

@@ -1084,7 +1084,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Alap sz
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Alapértelmezett szervízelés hajóknak: {ORANGE}{STRING} naponta
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Alap szervízelési idõ a hajókra: {ORANGE}kikapcsolva
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Ne legyen szervízelés ha lerobbanások sincsenek: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}A vagonok sebessége korlátozható: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}A vagonok sebessége korlátozható: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Színes újságcikkek megjelenése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Játék induló dátuma: {ORANGE}{STRING}

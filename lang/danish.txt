@@ -997,7 +997,7 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Usynlig
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Snelinjehøjden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max station udbreddelse: {ORANGE}{STRING} {RED}Advarsel: Høj værdi gør spillet langsomt
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatisk service på helikopterlandingspladser: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landskabs værktøjsbaren til skinne/vej/vand/lufthavn værktøjsbaren: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landskabs værktøjsbaren til skinne/vej/vand/lufthavn værktøjsbaren: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks antal tog per spiller: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks antal lastbiler per spiller: {ORANGE}{STRING}
@@ -1020,7 +1020,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standar
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Standard service interval for skibe: {ORANGE}{STRING} dage/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Standard service interval for skibe: {ORANGE}slået fra
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Slå service fra, når nedbrud er sat til ingen: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Aktiver hastigheds begrænsning for vogne: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Aktiver hastigheds begrænsning for vogne: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Farvede nyheder dukker op i: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Start dato: {ORANGE}{STRING}
@@ -1028,7 +1028,7 @@ STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Afslut 
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Aktiver rolig økonomi (flere små ændringer)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Tillad at købe aktier i andre selskaber
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ved trækning placer signal hvert: {ORANGE}{STRING} felt
-STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}Tillad automatisk opsætning af pbs signaler: {ORANGE}{STRING1}
+STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}Tillad automatisk opsætning af pbs signaler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Placering af værktøjslinie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Venstre
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Center

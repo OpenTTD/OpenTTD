@@ -1054,7 +1054,7 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Nevidit
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Vý¨ka snehove cary: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Nejvetsi rozsah stanice: {ORANGE}{STRING} {RED}Pozor: Vysoké nastavení zpomalí hru
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Údr¸ba helikoptér na heliportech: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Otevírat li&#168;tu na úpravy terénu s li&#168;tami na výstavbu tratí/silnic atd.: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Otevírat li¨tu na úpravy terénu s li¨tami na výstavbu tratí/silnic atd.: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vlaku na hrace: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximum silnicnich vozidel na hrace: {ORANGE}{STRING}
@@ -1077,7 +1077,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Základn
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Základní servisní interval pro lode: {ORANGE}{STRING} dní
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Základní servisní interval pro lode: {ORANGE}vypnuto
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Vypnout servisy, kdy¸ jsou vypnuty poruchy: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Zapnout omezení rychlosti vagonu: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Zapnout omezení rychlosti vagonu: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Barevné noviny se objeví: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Pocatecni datum: {ORANGE}{STRING}

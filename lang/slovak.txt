@@ -997,8 +997,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Nevidit
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Uroven ciary snehu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max. pokrytie stanice: {ORANGE}{STRING} {RED}Pozor: Vysoke hodnoty spomaluju hru
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automaticke opravy vrtulnikov v heliporte: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Otvarat listu na upravu terenu s listou na vystavbu zeleznic, ciest, atd.: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Pri posuvani mapy mysou posuvaj do opacnym smerom: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Otvarat listu na upravu terenu s listou na vystavbu zeleznic, ciest, atd.: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Pri posuvani mapy mysou posuvaj do opacnym smerom: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximalny pocet vlakov hraca: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximalny pocet automobilov hraca: {ORANGE}{STRING}
@@ -1011,7 +1011,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Zakazat
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Zakazat lode pre pocitac: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Povolit nove AI (alpha verzia): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Povolit AI v multiplayeri (experimentalne): {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Povolit AI v multiplayeri (experimentalne): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Implicitny servisny interval pre vlaky: {ORANGE}{STRING} dni
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Implicitny servisny interval pre vlaky: {ORANGE}vypnuty
@@ -1022,7 +1022,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Implici
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Implicitny servisny interval pre lode: {ORANGE}{STRING} dni/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Implicitny servisny interval pre lode: {ORANGE}vypnuty
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Vypnut servisy, ak su vypnute poruchy: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Obmedzenie rychlosti pre vagony: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Obmedzenie rychlosti pre vagony: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Farebne novinky sa objavia v roku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Datum zaciatku hry: {ORANGE}{STRING}

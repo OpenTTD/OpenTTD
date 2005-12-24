@@ -997,8 +997,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Arbres 
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Alçada de la cota de neu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max extensió de estacions: {ORANGE}{STRING}{RED}Avís: Un valor alt enlenteix el joc
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manteniment dels helicopters als heliports automàticament: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Enllaça la barra d'eines del paisatge a les barres d'eines de víes/carreteres/aigua/aeroports {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}En desplaçar la pantalla amb el ratolí mou la vista en la direcció contrària: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Enllaça la barra d'eines del paisatge a les barres d'eines de víes/carreteres/aigua/aeroports {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}En desplaçar la pantalla amb el ratolí mou la vista en la direcció contrària: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trens per jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max vehicles rodats per jugador: {ORANGE}{STRING}
@@ -1021,7 +1021,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Interva
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Interval de manteniment per defecte dels vaixells: {ORANGE}{STRING} díes/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Interval de manteniment per defecte dels vaixells: {ORANGE}desactivat
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Desactivar manteniment quan les averíes s'estableixen a cap: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Activa limit de velocitat per al vagó: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Activa limit de velocitat per al vagó: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Les noticies en color apareixen en: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Data d'inici: {ORANGE}{STRING}

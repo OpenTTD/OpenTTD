@@ -997,8 +997,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Onzicht
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Sneeuwhoogte: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maximale stationsomvang: {ORANGE}{STRING} {RED}Pas op: Hoge waarde vertraagt spel
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopters automatisch repareren op helipads: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Open de landschap werkbalk tegelijk met de trein/weg/water/vliegveld werkbalk: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Als er gescrolld word met de muis, beweeg in tegengesteld richting: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Open de landschap werkbalk tegelijk met de trein/weg/water/vliegveld werkbalk: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Als er gescrolld word met de muis, beweeg in tegengesteld richting: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximaal aantal treinen per speler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximaal aantal wegvoertuigen per speler: {ORANGE}{STRING}
@@ -1011,7 +1011,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Vliegtu
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Schepen voor de computer uitschakelen: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Nieuwe AI inschakelen (alpha): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Sta AI's toe in multiplayer (experimenteel): {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Sta AI's toe in multiplayer (experimenteel): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Standaard reparatie interval bij treinen: {ORANGE}{STRING} dagen
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standaard reparatie interval voor treinen: {ORANGE}uit
@@ -1022,7 +1022,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standaa
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Standaard reparatie interval bij schepen: {ORANGE}{STRING} dagen
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Standaard reparatie interval voor schepen: {ORANGE}uit
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Schakel onderhoud uit wanneer defecten uit staan: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Zet wagon snelheidslimieten aan: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Zet wagon snelheidslimieten aan: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Kleurenfoto's komen in: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Beginjaar: {ORANGE}{STRING}
@@ -2408,7 +2408,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Kan nieu
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Kan deze order niet verwijderen...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kan deze order niet aanpassen...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kan voertuig niet verplaatsen...
-STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE} De achterste locomotief zal altijd het voorste deel volgen
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}De achterste locomotief zal altijd het voorste deel volgen
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Kan treinonderdeel niet verkopen
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Kan geen route naar lokale depot vinden

@@ -14,7 +14,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Maa peab olema tasane
 STR_0008_WAITING                                                :{BLACK}Ootel: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING1}{YELLOW}  (tulnud jaamast
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (tulnud jaamast
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Võtab vastu: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Võtab vastu: {GOLD}
@@ -689,7 +689,6 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Linna s
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Näitab viimast teadet
-STR_OFF                                                         :Off
 STR_SUMMARY                                                     :Lühike
 STR_FULL                                                        :Täielik
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
@@ -997,8 +996,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Nähtama
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Lumepiiri kõrgus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maksmimaalne jaama ala: {ORANGE}{STRING} {RED}Hoiatus: Kõrged seaded aeglustavad mängu
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Kopteri jaamades helikopterite automaatne teenindus: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Lingi maastiku riba raudtee/tee/vee/lennujaama tööriistaribaga: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Kui kerid hiirega liiguta vaade vastassuunda: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Lingi maastiku riba raudtee/tee/vee/lennujaama tööriistaribaga: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Kui kerid hiirega liiguta vaade vastassuunda: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maksimaalne rongide arv mängija kohta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maksimaalne maanteesõidukite arv mängija kohta: {ORANGE}{STRING}
@@ -1011,7 +1010,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Arvuti 
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Arvuti ei tohi laevasid kasutada: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Lülita uus TI (AI) sisse (alfa): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Luba Arvutiti online mängus (TESTIL!): {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Luba Arvutiti online mängus (TESTIL!): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Vaikimisi hooldusintervall rongidele: {ORANGE}{STRING} päeva
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Vaikimisi teenindusvahemik rongidel: {ORANGE}välja lülitatud
@@ -1022,7 +1021,6 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Vaikimi
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Vaikimisi hooldusintervall laevadele: {ORANGE}{STRING} päeva
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Vaikimisi teenindusvahemik laevadele: {ORANGE}välja lülitatud
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Peata hooldus, kui purunemine on keelatud: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Enable wagon speed limits: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Värvilised uudised ilmuvad aastast {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Alustamise aeg: {ORANGE}{STRING}
@@ -1030,7 +1028,7 @@ STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Mäng lõ
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Luba sujuv majandus (väiksemad muutused)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Luba teiste ettevõtete aktsiate ostmine
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Venitades paigutatud signaaltulede tihedus: {ORANGE}{STRING} ühik(ut)
-STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}Luba automaatset pbs signaalide panemist: {ORANGE}{STRING1}
+STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}Luba automaatset pbs signaalide panemist: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Tööriistariba asukoht: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Vasakul
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Keskel
@@ -2339,10 +2337,9 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :maglevi vedur
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Rongi depot
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab. . .{}Esimene rong saabus {STATION}i!
-STR_8802_DETAILS                                                :{WHITE}{STRING1} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Rong on ees
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING1}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING1}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
 STR_8806_GO_TO                                                  :Mine {STATION}
 STR_8807_GO_TO_TRANSFER                                         :Mine {STATION} (Vea ja võta laadung)
 STR_8808_GO_TO_UNLOAD                                           :Mine {STATION} (Laadi maha)
@@ -2447,9 +2444,9 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Sunni va
 STR_SERVICE_HINT                                                :{BLACK}Jäta see käsk vahele kui just pole vaja teenindust
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Uus {STRING} on nüüd olemas!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Maksumus: {CURRENCY} Kaal: {COMMA}t{}Kiirus: {VELOCITY}  Võimsus: {COMMA}hj{}Kulu: {CURRENCY}/aastas{}Mahutus: {STRING1}
+STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Maksumus: {CURRENCY} Kaal: {COMMA}t{}Kiirus: {VELOCITY}  Võimsus: {COMMA}hj{}Kulu: {CURRENCY}/aastas{}Mahutus: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Läks katki
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vanus: {LTBLUE}{STRING2}{BLACK}   Kulud: {LTBLUE}{CURRENCY}/aastas
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vanus: {LTBLUE}{STRING}{BLACK}   Kulud: {LTBLUE}{CURRENCY}/aastas
 STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Kaal: {LTBLUE}{COMMA}t  {BLACK}Energia: {LTBLUE}{COMMA}hj{BLACK} Maks. Kiirus: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Kasum sel aastal: {LTBLUE}{CURRENCY}  (eelmisel aastal: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Töötamisusaldus: {LTBLUE}{COMMA}%  {BLACK}Katki minekuid eelmisest hooldusest: {LTBLUE}{COMMA}
@@ -2480,12 +2477,12 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Uued maa
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Ehita sõidukeid
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Ei saa ehitada maanteesõidukit...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detailid)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Vanus: {LTBLUE}{STRING2}{BLACK}   Hoolduskulu: {LTBLUE}{CURRENCY}/Aastas
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Vanus: {LTBLUE}{STRING}{BLACK}   Hoolduskulu: {LTBLUE}{CURRENCY}/Aastas
 STR_900E_MAX_SPEED                                              :{BLACK}Maksimaalne Kiirus: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Kasum sel aastal: {LTBLUE}{CURRENCY}  (viimasel aastal: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Vastupidavus: {LTBLUE}{COMMA}%  {BLACK}Katkiminekuid viimasest hooldusest: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Ehitatud: {LTBLUE}{NUM}{BLACK} Väärtus: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Mahtuvus: {LTBLUE}{STRING1}
+STR_9012_CAPACITY                                               :{BLACK}Mahtuvus: {LTBLUE}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...peab olema garaaþis
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Ei saa müüa maanteeveokit...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Ei saa peatada/startida maanteeveokit...
@@ -2510,7 +2507,7 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Maantees
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Ehita valitud maanteesõidukile
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Uus maanteesõiduk on nüüd olemas!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Maksumus: {CURRENCY}{}Kiirus: {VELOCITY}{}Hoolduskulud: {CURRENCY}/aastas{}Mahutuvus: {STRING1}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Maksumus: {CURRENCY}{}Kiirus: {VELOCITY}{}Hoolduskulud: {CURRENCY}/aastas{}Mahutuvus: {STRING}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nimeta ümber maanteeveokit
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Ei saa nimetada ümber maanteeveokit..
@@ -2545,12 +2542,12 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Ei saa e
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Laev on ees
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detailid)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Vanus: {LTBLUE}{STRING2}{BLACK}   Hoolduskulu: {LTBLUE}{CURRENCY}/aastas
+STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Vanus: {LTBLUE}{STRING}{BLACK}   Hoolduskulu: {LTBLUE}{CURRENCY}/aastas
 STR_9813_MAX_SPEED                                              :{BLACK}Maksimuum kiirus: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Kasum sel aastal: {LTBLUE}{CURRENCY}  (viimasel: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Vastupidavus: {LTBLUE}{COMMA}%  {BLACK}Katki minemisi viimasest hooldusest: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Ehitati: {LTBLUE}{NUM}{BLACK} Väärtus: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Mahutavus: {LTBLUE}{STRING1}
+STR_9817_CAPACITY                                               :{BLACK}Mahutavus: {LTBLUE}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Ei saa peatada/startida laeva...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Ei saa saata laeva paadikuuri...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ei leia kohaliku paadikuuri

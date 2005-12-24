@@ -975,7 +975,7 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatc
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Karayolu tasitlari kuyruga girsin (içiçe geçerek): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Fare sinirdayken pencere etkin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Belediye rüsveti izinli: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Özel istasyonlar: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Özel istasyonlar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Yeni evrensel yol bulma (NPF, NTP üzerinde): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Küçük havalimani her zaman etkin: {ORANGE}{STRING}
@@ -997,8 +997,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Görünme
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Kar kalinligi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}istasyon genisleme siniri: {ORANGE}{STRING} {RED}Uyari: Yüksek degerler oyunu yavaslatir
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopterler helipadlerde otomatik servise girsin: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Arazi araç çubugunu diger araç çubuklarina bagla: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Fareyle kaydirma hareketini ters çevir: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Arazi araç çubugunu diger araç çubuklarina bagla: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Fareyle kaydirma hareketini ters çevir: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Her oyuncu için en fazla tren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Her oyuncu için en fazla araba: {ORANGE}{STRING}
@@ -1011,7 +1011,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Bilgisa
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Bilgisayar gemi kullanmasin: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Yeni yapay zeka etkin (alfa): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Çok oyunculuda yapay zeka olsun (denemede): {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Çok oyunculuda yapay zeka olsun (denemede): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Trenler için varsayilan servis gecikmesi: {ORANGE}{STRING} gün/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Trenler için varsayilan servis gecikmesi: {ORANGE}kapali
@@ -1022,7 +1022,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Uçaklar
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Gemiler için varsayilan servis gecikmesi: {ORANGE}{STRING} gün/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Gemiler için varsayilan servis gecikmesi: {ORANGE}kapali
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Bozulmalar kapaliysa sevisler kapali olsun: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Vagonlarin yavaslatmasi izinli: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Vagonlarin yavaslatmasi izinli: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Renkli gazete su senede çiksin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Baslangiç tarihi: {ORANGE}{STRING}
@@ -1030,7 +1030,7 @@ STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Bitis t
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Yüzeysel ekonomi (daha çok ve küçük çapta degisiklikler)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Diger sirketlerin hisseleri alinabilsin
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Sürüklerken her: {ORANGE}{STRING} karede bir sinyal koy
-STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}pbs sinyallerini otomatik yerlestir: {ORANGE}{STRING1}
+STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}pbs sinyallerini otomatik yerlestir: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Ana araç çubugu pozisyonu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Sol
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Orta
@@ -1160,8 +1160,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Bonbon M
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Seker Madeni Kur
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Fabrikalar
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING1}){YELLOW} (%{COMMA} tasindi)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING1}/{STRING1}){YELLOW} (%{COMMA}/%{COMMA} tasindi)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} (%{COMMA} tasindi)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} (%{COMMA}/%{COMMA} tasindi)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...baska bir fabrikaya çok yakin
@@ -1845,15 +1845,15 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Havali
 STR_SV_STNAME_OILFIELD                                          :{STRING} Kuyusu
 STR_SV_STNAME_MINES                                             :{STRING} Madeni
 STR_SV_STNAME_DOCKS                                             :{STRING} iskelesi
-STR_SV_STNAME_BUOY_1                                            :{STRING1} Samandira 1
-STR_SV_STNAME_BUOY_2                                            :{STRING1} Samandira 2
-STR_SV_STNAME_BUOY_3                                            :{STRING1} Samandira 3
-STR_SV_STNAME_BUOY_4                                            :{STRING1} Samandira 4
-STR_SV_STNAME_BUOY_5                                            :{STRING1} Samandira 5
-STR_SV_STNAME_BUOY_6                                            :{STRING1} Samandira 6
-STR_SV_STNAME_BUOY_7                                            :{STRING1} Samandira 7
-STR_SV_STNAME_BUOY_8                                            :{STRING1} Samandira 8
-STR_SV_STNAME_BUOY_9                                            :{STRING1} Samandira 9
+STR_SV_STNAME_BUOY_1                                            :{STRING} Samandira 1
+STR_SV_STNAME_BUOY_2                                            :{STRING} Samandira 2
+STR_SV_STNAME_BUOY_3                                            :{STRING} Samandira 3
+STR_SV_STNAME_BUOY_4                                            :{STRING} Samandira 4
+STR_SV_STNAME_BUOY_5                                            :{STRING} Samandira 5
+STR_SV_STNAME_BUOY_6                                            :{STRING} Samandira 6
+STR_SV_STNAME_BUOY_7                                            :{STRING} Samandira 7
+STR_SV_STNAME_BUOY_8                                            :{STRING} Samandira 8
+STR_SV_STNAME_BUOY_9                                            :{STRING} Samandira 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} Eklemesi
 STR_SV_STNAME_SIDINGS                                           :{STRING} Kenari
 STR_SV_STNAME_BRANCH                                            :{STRING} Kolu
@@ -2778,7 +2778,7 @@ STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Fiyat: {
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hiz: {GOLD}{VELOCITY}{BLACK}   Güç: {GOLD}{COMMA}bg
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hiz: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Bakim: {GOLD}{CURRENCY}/sene
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasite: {GOLD}{STRING1} {STRING}
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasite: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Yapim yili: {GOLD}{NUM}{BLACK} Ömür: {GOLD}{COMMA} sene
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Mak. Güvenilirlik: {GOLD}%{COMMA}
 STR_PURCHASE_INFO_COST                                          :{BLACK}Fiyat: {GOLD}{CURRENCY}

@@ -997,8 +997,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Usynlig
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Snøhøyde: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks stasjonspedning: {ORANGE}{STRING} {RED}Advarsel: Høy instilling gir treger spill
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Utfør service på helikopter automatisk på helikopterlandingsteder: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Koble landskap verktøylinjen til tog/vei/vann/flyplass verktøylinjene: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Ved rulling med musen, flytt synsvinkelen i den motsatte retning: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Koble landskap verktøylinjen til tog/vei/vann/flyplass verktøylinjene: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Ved rulling med musen, flytt synsvinkelen i den motsatte retning: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks antall tog per spiller: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks antall kjøretøy per spiller: {ORANGE}{STRING}
@@ -1021,7 +1021,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standar
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Standard serviceintervall for båter: {ORANGE}{STRING} dager
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Standard serviceintervall for skip: {ORANGE}deaktivert
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Deaktiver service når havarier er slått av: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Aktiver fartsgrenser for vogner: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Aktiver fartsgrenser for vogner: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Farge i avisen kommer i: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Start spillet i år: {ORANGE}{STRING}
@@ -2406,7 +2406,6 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Kan ikke
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Kan ikke slette denne ordren...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kan ikke endre denne ordren...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kan ikke flytte kjøretøy...
-STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}The rear engine will always follow its front counterpart
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Kan ikke selge jernbanekjøretøy...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Kan ikke finne en togstall i nærheten

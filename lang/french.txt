@@ -998,8 +998,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Arbres 
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altitude d'enneigement: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Etendue max. des stations: {ORANGE}{STRING} {RED}Attention: Valeur élevée = jeu lent
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Entretenir automatiquement les hélicoptères à l'heliport: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Relier la barre d'outils Paysage avec celle des rails/routes/eau et aéroport: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Lors d'un défilement avec souris, déplacer la vue dans la direction opposée: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Relier la barre d'outils Paysage avec celle des rails/routes/eau et aéroport: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Lors d'un défilement avec souris, déplacer la vue dans la direction opposée: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nombre de trains max. par joueur: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Nombre de véhicules routiers max. par joueur: {ORANGE}{STRING}
@@ -1012,7 +1012,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Désacti
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Désactiver les navires pour l'ordinateur: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Activer la nouvelle IA (alpha): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permettre les IA en multi-joueurs (expérimental): {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permettre les IA en multi-joueurs (expérimental): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Entretien des trains tous les: {ORANGE}{STRING} jours
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Entretien des trains tous les: {ORANGE}inactif
@@ -1023,7 +1023,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Entreti
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Entretien des navires tous les: {ORANGE}{STRING} jours
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Entretien des navires tous les: {ORANGE}inactif
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Désactiver les réparations quand les pannes sont inactives: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Permettre vitesse limite des Wagons: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Permettre vitesse limite des Wagons: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Les journaux en couleur apparaissent en: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Date de départ: {ORANGE}{STRING}

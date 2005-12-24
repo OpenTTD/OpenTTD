@@ -997,8 +997,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Ascunde
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altitudinea de înzãpezire: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Mãrimea maximã a statiilor: {ORANGE}{STRING} {RED}(valorile mari încetinesc jocul!)
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Service automat pentru elicoptere la helipaduri: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Conecteaza bara de instrumente pentru peisaj cu cea de constructii feroviare/auto/aeriane: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Cand faci scroll cu mouse-ul muta ecranul in directia opusã: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Conecteaza bara de instrumente pentru peisaj cu cea de constructii feroviare/auto/aeriane: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Cand faci scroll cu mouse-ul muta ecranul in directia opusã: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nr. max. de trenuri pentru un jucãtor: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Nr. max. de autovehicule pentru un jucãtor: {ORANGE}{STRING}
@@ -1021,7 +1021,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Interva
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Intervalul de service presetat pentru nave: {ORANGE}{STRING} zile
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalul de service presetat pentru nave: {ORANGE}dezactivat
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Deactivare service cand defectiunile sunt anulate: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Activeazã limite de vitezã pt. vagoane: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Activeazã limite de vitezã pt. vagoane: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Stirile în culori apar în anul: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Anul de început a jocului: {ORANGE}{STRING}

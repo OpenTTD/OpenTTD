@@ -997,8 +997,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Árvores
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altitude da linha de neve: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Tamanho máx. de estações: {ORANGE}{STRING} {RED}Valores altos tornam o jogo lento!
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenção automática de helicópteros em heliportos: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar ferramentas de terreno às ferramentas de ferrovia/rodovia/hidrovia/aeroportos: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Rolar a tela no sentido oposto ao movimento do mouse: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar ferramentas de terreno às ferramentas de ferrovia/rodovia/hidrovia/aeroportos: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Rolar a tela no sentido oposto ao movimento do mouse: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máximo de trens por jogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máximo de veículos de estrada por jogador: {ORANGE}{STRING}
@@ -1011,7 +1011,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Desativ
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Desativar barcos para o computador: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Ativar nova IA (alpha): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permitir AI em modo multiplayer (experimental): {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permitir AI em modo multiplayer (experimental): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Intervalo de serviço predefinido para trens: {ORANGE}{STRING} dias
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalo de serviço predefinido para trens: {ORANGE}desativado
@@ -1022,7 +1022,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Interva
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Intervalo de serviço predefinido para barcos: {ORANGE}{STRING} dias
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalo de serviço predefinido para barcos: {ORANGE}desactivado
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Desativar manutenção quando as avarias estão desativadas: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Ativar limite de velocidade dos vagões: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Ativar limite de velocidade dos vagões: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Noticias coloridas aparecem em: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Data de início: {ORANGE}{STRING}

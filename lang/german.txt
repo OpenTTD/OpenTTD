@@ -998,7 +998,7 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Unsicht
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Höhe der Schneegrenze: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maximale Stationsgröße: {ORANGE}{STRING} {RED}Achtung: Große Werte verlangsamen das Spiel
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Hubschrauber auf Helipads automatisch warten: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Landschaftsbau-Toolbar an Eisenbahn/Straßen/Hafen/Flughafen-Toolbar binden: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Landschaftsbau-Toolbar an Eisenbahn/Straßen/Hafen/Flughafen-Toolbar binden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Beim Verschieben mit der Maus die Ansicht in die Gegenrichtung verschieben: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximale Anzahl der Züge pro Spieler: {ORANGE}{STRING}
@@ -1012,7 +1012,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Flugzeu
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Schiffe für den Computer abschalten: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Aktiviere neue KI (alpha): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Erlaube KI im Mehrspielermodus (experimentell): {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Erlaube KI im Mehrspielermodus (experimentell): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Vorgegebener Wartungsintervall für Züge: {ORANGE}{STRING} Tage
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Vorgegebener Wartungsintervall für Züge: {ORANGE}abgeschaltet
@@ -1023,7 +1023,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Vorgege
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Vorgegebener Wartungsintervall für Schiffe: {ORANGE}{STRING} Tage
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Vorgegebener Wartungsintervall für Schiffe: {ORANGE}abgeschaltet
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Wartung deaktivieren, wenn Pannen abgeschaltet: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Aktiviere Waggon Höchstgeschwindigkeit: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Aktiviere Waggon Höchstgeschwindigkeit: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Farbige Nachrichten erscheinen ab: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Startdatum: {ORANGE}{STRING}
