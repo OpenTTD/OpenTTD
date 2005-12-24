@@ -206,7 +206,7 @@ void CcPlaceSign(bool success, TileIndex tile, uint32 p1, uint32 p2)
  */
 void PlaceProc_Sign(TileIndex tile)
 {
-	DoCommandP(tile, _current_player, 0, CcPlaceSign, CMD_PLACE_SIGN | CMD_MSG(STR_2809_CAN_T_PLACE_SIGN_HERE));
+	DoCommandP(tile, 0, 0, CcPlaceSign, CMD_PLACE_SIGN | CMD_MSG(STR_2809_CAN_T_PLACE_SIGN_HERE));
 }
 
 /**
