@@ -8,16 +8,9 @@
 #define VARDEF extern
 #endif
 
-// use this on non static functions
-#define PUBLIC
-
 typedef struct Rect {
 	int left,top,right,bottom;
 } Rect;
-
-typedef struct SmallPoint {
-	int16 x,y;
-} SmallPoint;
 
 typedef struct Point {
 	int x,y;
@@ -125,9 +118,6 @@ typedef struct TileInfo {
 	uint z;
 } TileInfo;
 
-enum {
-	NG_EDGE = 1,
-};
 
 /* Display Options */
 enum {
@@ -531,7 +521,6 @@ enum {
 
 VARDEF byte _savegame_sort_order;
 
-#define INVALID_UINT_TILE (uint)0xFFFFFFFF
 #define INVALID_STRING_ID 0xFFFF
 
 enum {

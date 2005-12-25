@@ -15,7 +15,6 @@ extern uint _map_size;
 
 #define TILE_MASK(x) ((x) & _map_tile_mask)
 #define TILE_ASSERT(x) assert(TILE_MASK(x) == (x));
-#define RANDOM_TILE(r) TILE_MASK(r)
 
 typedef struct Tile {
 	byte type_height;

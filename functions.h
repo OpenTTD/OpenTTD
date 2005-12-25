@@ -3,11 +3,6 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-/* vehicle.c */
-
-/* window.c */
-
-
 /* landscape.c */
 void FindLandscapeHeight(TileInfo *ti, uint x, uint y);
 void FindLandscapeHeightByTile(TileInfo *ti, TileIndex tile);
