@@ -978,26 +978,31 @@ upgradeconf: $(MAKE_CONFIG)
 ### Internal build rules
 
 # This makes sure the .deps dir is always around.
-DEPS_MAGIC := $(shell mkdir -p .deps .deps/music .deps/sound .deps/video .deps/os .deps/os/macosx .deps/ai/default .deps/ai/trolly)
+DEPS_MAGIC := $(shell mkdir -p $(sort $(dir $(DEPS))))
+
+depend:
+	@true # The include handles this automagically
 
 # Introduce the dependencies
-ifneq ($(MAKECMDGOALS), clean)
+ifeq ($(findstring $(MAKECMDGOALS), clean info),)
 -include $(DEPS)
 endif
 
-%.o: .deps/%.d
+# Silence stale header dependency errors
+%.h:
+	@true
 
 .deps/%.d: %.c $(MAKE_CONFIG) table/strings.h endian_target.h
-	@echo '===> Determining dependencies of $<'
-	$(Q)$(CC) $(CFLAGS) $(CDEFS) -MM $< > $@
+	@echo '===> DEP $<'
+	$(Q)$(CC) $(CFLAGS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:.deps/%.d=%.o):#' > $@
 
 .deps/%.d: %.cpp $(MAKE_CONFIG) table/strings.h endian_target.h
-	@echo '===> Determining dependencies of $<'
-	$(Q)$(CXX) $(CFLAGS) $(CDEFS) -MM $< > $@
+	@echo '===> DEP $<'
+	$(Q)$(CXX) $(CXXFLAGS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:.deps/%.d=%.o):#' > $@
 
 .deps/%.d: %.m $(MAKE_CONFIG) table/strings.h endian_target.h
-	@echo '===> Determining dependencies of $<'
-	$(Q)$(CC) $(CFLAGS) $(CDEFS) -MM $< > $@
+	@echo '===> DEP $<'
+	$(Q)$(CC) $(OBJCFLAGS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:.deps/%.d=%.o):#' > $@
 
 
 %.o: %.c $(MAKE_CONFIG)
