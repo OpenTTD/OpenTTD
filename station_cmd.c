@@ -606,14 +606,14 @@ void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile,
 	}
 }
 
-typedef struct Rectangle {
+typedef struct ottd_Rectangle {
 	uint min_x;
 	uint min_y;
 	uint max_x;
 	uint max_y;
-} Rectangle;
+} ottd_Rectangle;
 
-static void MergePoint(Rectangle* rect, TileIndex tile)
+static void MergePoint(ottd_Rectangle* rect, TileIndex tile)
 {
 	uint x = TileX(tile);
 	uint y = TileY(tile);
@@ -631,7 +631,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	uint old_acc, new_acc;
 	const RoadStop *cur_rs;
 	int i;
-	Rectangle rect;
+	ottd_Rectangle rect;
 	int rad;
 	AcceptedCargo accepts;
 
