@@ -615,7 +615,7 @@ byte GetPlayerRailtypes(PlayerID p)
 		const Engine* e = GetEngine(i);
 
 		if (e->type == VEH_Train &&
-				HASBIT(e->player_avail, p) &&
+				(HASBIT(e->player_avail, p) || e->intro_date <= _date) &&
 				!(RailVehInfo(i)->flags & RVI_WAGON)) {
 			assert(e->railtype < RAILTYPE_END);
 			SETBIT(rt, e->railtype);
