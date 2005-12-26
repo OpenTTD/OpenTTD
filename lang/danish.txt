@@ -156,7 +156,6 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Det kan 
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan ikke rydde området....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, Alle retigheder reserveret
 STR_00B7_VERSION                                                :{BLACK}OpenTTD version {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2005 The OpenTTD team
 STR_TRANSLATED_BY                                               :{BLACK}  Oversætter(e) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -531,7 +530,6 @@ STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Rådgivn
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nye køretøjer
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Ændring i accepteret last
 STR_020E_SUBSIDIES                                              :{YELLOW}Special aftaler
-STR_020F_GENERAL_INFORMATION                                    :{YELLOW}General information
 STR_MESSAGES_ALL                                                :{YELLOW}Opsætning for all beskeder (on/off/refereret)
 STR_MESSAGE_SOUND                                               :{YELLOW}Afspil lyd for refererede nyheder
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...for langt fra forrige destination
@@ -773,7 +771,6 @@ STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Vælg byn
 STR_02F4_AUTOSAVE                                               :{BLACK}Autogem
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Vælg interval imellem automatisk gemning
-STR_02F7_OFF                                                    :Off
 STR_02F8_EVERY_3_MONTHS                                         :Hver 3. måned
 STR_02F9_EVERY_6_MONTHS                                         :Hver 6. måned
 STR_02FA_EVERY_12_MONTHS                                        :Hver 12. måned

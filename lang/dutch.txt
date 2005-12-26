@@ -493,7 +493,6 @@ STR_01E5                                                        :{DKGREEN}{TINYF
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Nummer{SETX 88}Titel
-STR_01E9_SHUFFLE                                                :{TINYFONT}Shuffle
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Programma
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Muziekprogrammakeuze
 STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
@@ -734,7 +733,6 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transp
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Info over blok land
 STR_02D6                                                        :
-STR_CONSOLE_SETTING                                             :Toggle Console
 STR_02D7_SCREENSHOT_CTRL_S                                      :Schermprint (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Grote Schermprint (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Over OpenTTD
@@ -2409,7 +2407,6 @@ STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Kan deze
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kan deze order niet aanpassen...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kan voertuig niet verplaatsen...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}De achterste locomotief zal altijd het voorste deel volgen
-STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Kan treinonderdeel niet verkopen
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Kan geen route naar lokale depot vinden
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Kan trein niet starten of stoppen...

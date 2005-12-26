@@ -90,7 +90,6 @@ STR_0052_OF_OIL                                                 :{VOLUME} nafte
 STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} glav zivine
 STR_0054_CRATE_OF_GOODS                                         :{COMMA} gajb tovora
 STR_0055_TON_OF_GRAIN                                           :{COMMA} ton zita
-STR_0056_TON_OF_WOOD                                            :{COMMA} tonne of wood
 STR_0057_TON_OF_IRON_ORE                                        :{COMMA} ton zelezove rude
 STR_0058_TON_OF_STEEL                                           :{COMMA} ton jekla
 STR_0059_BAG_OF_VALUABLES                                       :{COMMA} vrec dragocenosti

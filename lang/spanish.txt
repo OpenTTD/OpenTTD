@@ -1706,7 +1706,6 @@ STR_4803_POWER_STATION                                          :Central Eléctri
 STR_4804_SAWMILL                                                :Aserradero
 STR_4805_FOREST                                                 :Bosque
 STR_4806_OIL_REFINERY                                           :Refinería
-STR_4807_OIL_RIG                                                :Oil Rig
 STR_4808_FACTORY                                                :Fábrica
 STR_4809_PRINTING_WORKS                                         :Imprenta
 STR_480A_STEEL_MILL                                             :Acería

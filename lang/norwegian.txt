@@ -734,7 +734,6 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Gjenno
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Informasjon om felt.
 STR_02D6                                                        :
-STR_CONSOLE_SETTING                                             :Toggle Console
 STR_02D7_SCREENSHOT_CTRL_S                                      :Skjermdump (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Stor skjermdump (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Om 'OpenTTD'
@@ -864,7 +863,6 @@ STR_CURR_ROL                                                    :Rumensk Leu (Le
 STR_CURR_RUR                                                    :Russisk Rubel (rur)
 STR_CURR_SEK                                                    :Söta Brors Krona (SEK)
 
-STR_CURR_CUSTOM                                                 :Custom...
 
 STR_OPTIONS_LANG                                                :{BLACK}Språk
 STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
