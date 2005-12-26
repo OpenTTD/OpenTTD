@@ -356,7 +356,7 @@ STR_0167_JUN                                                    :Jun
 STR_0168_JUL                                                    :Jul
 STR_0169_AUG                                                    :Aug
 STR_016A_SEP                                                    :Sep
-STR_016B_OCT                                                    :Oct
+STR_016B_OCT                                                    :Okt
 STR_016C_NOV                                                    :Nov
 STR_016D_DEC                                                    :Dec
 ############ range for months ends
@@ -1496,7 +1496,7 @@ STR_201A_SHOPS_AND_OFFICES                                      :Forretninger og
 STR_201B_MODERN_OFFICE_BUILDING                                 :Moderne kontorbygning
 STR_201C_WAREHOUSE                                              :Varehus
 STR_201D_OFFICE_BLOCK                                           :Kontorbygning
-STR_201E_STADIUM                                                :Stadium
+STR_201E_STADIUM                                                :Stadion
 STR_201F_OLD_HOUSES                                             :Gamle huse
 STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Lokale myndigheder
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Vis information omkring de lokale myndigheder
@@ -1526,7 +1526,7 @@ STR_2039_TALL_OFFICE_BLOCK                                      :Høj kontorbygni
 STR_203A_SHOPS_AND_OFFICES                                      :Forretninger og kontorer
 STR_203B_SHOPS_AND_OFFICES                                      :Forretninger og kontorer
 STR_203C_THEATER                                                :Teater
-STR_203D_STADIUM                                                :Stadium
+STR_203D_STADIUM                                                :Stadion
 STR_203E_OFFICES                                                :Kontorer
 STR_203F_HOUSES                                                 :Huse
 STR_2040_CINEMA                                                 :Biograf
@@ -2041,7 +2041,7 @@ STR_7069_ROUTE_SUPERVISOR                                       :Routesuperviser
 STR_706A_DIRECTOR                                               :Direktør
 STR_706B_CHIEF_EXECUTIVE                                        :Administrende Direktør
 STR_706C_CHAIRMAN                                               :Formand
-STR_706D_PRESIDENT                                              :President
+STR_706D_PRESIDENT                                              :Præsident
 STR_706E_TYCOON                                                 :Matador
 STR_706F_BUILD_HQ                                               :{BLACK}Byg HK
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Byg firmaets hovedkvarter / centrer over hovedkvarteret

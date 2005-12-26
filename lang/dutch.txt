@@ -539,11 +539,11 @@ STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Bedrijfswedstrijdtabel in {NUM}
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Zakenman
-STR_0214_ENTREPRENEUR                                           :Entrepreneur
-STR_0215_INDUSTRIALIST                                          :Industrialist
+STR_0214_ENTREPRENEUR                                           :Ondernemer
+STR_0215_INDUSTRIALIST                                          :Fabrikant
 STR_0216_CAPITALIST                                             :Kapitalist
 STR_0217_MAGNATE                                                :Magnaat
-STR_0218_MOGUL                                                  :Mogul
+STR_0218_MOGUL                                                  :Mogol
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Tycoon van de Eeuw
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYERNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
