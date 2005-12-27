@@ -249,7 +249,7 @@ static void AircraftRefitWndProc(Window *w, WindowEvent *e)
 				SetDParam(2, cost);
 				SetDParam(0, _cargoc.names_long[WP(w,refit_d).cargo]);
 				SetDParam(1, _aircraft_refit_capacity);
-				DrawString(1, 137, STR_A041_NEW_CAPACITY_COST_OF_REFIT, 0);
+				DrawString(1, 147, STR_A041_NEW_CAPACITY_COST_OF_REFIT, 0);
 			}
 		}
 	}	break;
@@ -278,14 +278,14 @@ static void AircraftRefitWndProc(Window *w, WindowEvent *e)
 static const Widget _aircraft_refit_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   239,     0,    13, STR_A03C_REFIT,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,    14,   135, 0x0,							STR_A03E_SELECT_TYPE_OF_CARGO_FOR},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,   136,   157, 0x0,							STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   239,   158,   169, STR_A03D_REFIT_AIRCRAFT, STR_A03F_REFIT_AIRCRAFT_TO_CARRY},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,    14,   145, 0x0,							STR_A03E_SELECT_TYPE_OF_CARGO_FOR},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,   146,   167, 0x0,							STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   239,   168,   179, STR_A03D_REFIT_AIRCRAFT, STR_A03F_REFIT_AIRCRAFT_TO_CARRY},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _aircraft_refit_desc = {
-	-1,-1, 240, 170,
+	-1,-1, 240, 180,
 	WC_VEHICLE_REFIT,WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_aircraft_refit_widgets,
