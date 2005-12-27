@@ -284,6 +284,7 @@ static void BinaryHeap_Free(Queue* q, bool free_values)
 			break;
 		free(q->data.binaryheap.elements[i]);
 	}
+	free(q->data.binaryheap.elements);
 	if (q->freeq)
 		free(q);
 }
