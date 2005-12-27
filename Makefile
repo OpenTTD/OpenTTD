@@ -994,15 +994,15 @@ endif
 
 .deps/%.d: %.c $(MAKE_CONFIG) table/strings.h endian_target.h
 	@echo '===> DEP $<'
-	$(Q)$(CC) $(CFLAGS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:.deps/%.d=%.o):#' > $@
+	$(Q)$(CC) $(CFLAGS) $(CDEFS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:.deps/%.d=%.o):#' > $@
 
 .deps/%.d: %.cpp $(MAKE_CONFIG) table/strings.h endian_target.h
 	@echo '===> DEP $<'
-	$(Q)$(CXX) $(CXXFLAGS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:.deps/%.d=%.o):#' > $@
+	$(Q)$(CXX) $(CXXFLAGS) $(CDEFS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:.deps/%.d=%.o):#' > $@
 
 .deps/%.d: %.m $(MAKE_CONFIG) table/strings.h endian_target.h
 	@echo '===> DEP $<'
-	$(Q)$(CC) $(OBJCFLAGS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:.deps/%.d=%.o):#' > $@
+	$(Q)$(CC) $(OBJCFLAGS) $(CDEFS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:.deps/%.d=%.o):#' > $@
 
 
 %.o: %.c $(MAKE_CONFIG)
