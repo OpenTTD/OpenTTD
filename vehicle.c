@@ -254,14 +254,17 @@ static Vehicle *InitializeVehicle(Vehicle *v)
 	v->next_shared = NULL;
 	v->prev_shared = NULL;
 	v->depot_list  = NULL;
-	/* random_bits is used to pick out a random sprite for vehicles
-	    which are technical the same (newgrf stuff).
-	   Because RandomRange() results in desyncs, and because it does
-	    not really matter that one client has other visual vehicles than
-	    the other, it can be InteractiveRandomRange() without any problem
-	*/
-	v->random_bits = InteractiveRandomRange(256);
+	v->random_bits = 0;
 	return v;
+}
+
+/**
+ * Get a value for a vehicle's random_bits.
+ * @return A random value from 0 to 255.
+ */
+byte VehicleRandomBits(void)
+{
+	return GB(Random(), 0, 8);
 }
 
 Vehicle *ForceAllocateSpecialVehicle(void)

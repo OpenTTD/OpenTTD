@@ -888,6 +888,7 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->build_year = _cur_year;
 		v->cur_image = 0x0E5E;
 		v->type = VEH_Ship;
+		v->random_bits = VehicleRandomBits();
 
 		VehiclePositionChanged(v);
 

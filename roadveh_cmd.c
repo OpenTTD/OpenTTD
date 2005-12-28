@@ -187,6 +187,7 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		v->type = VEH_Road;
 		v->cur_image = 0xC15;
+		v->random_bits = VehicleRandomBits();
 
 		VehiclePositionChanged(v);
 

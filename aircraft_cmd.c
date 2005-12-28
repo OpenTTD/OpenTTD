@@ -265,6 +265,9 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		v->cur_image = u->cur_image = 0xEA0;
 
+		v->random_bits = VehicleRandomBits();
+		u->random_bits = VehicleRandomBits();
+
 		VehiclePositionChanged(v);
 		VehiclePositionChanged(u);
 
@@ -286,6 +289,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			w->vehstatus = VS_HIDDEN | VS_UNCLICKABLE;
 			w->subtype = 6;
 			w->cur_image = SPR_ROTOR_STOPPED;
+			w->random_bits = VehicleRandomBits();
 			VehiclePositionChanged(w);
 		}
 
