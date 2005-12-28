@@ -232,13 +232,13 @@ void DrawWindowWidgets(const Window *w)
 			color = _color_list[wi->color & 0xF].window_color_bgb;
 
 			x = r.left;
-			for (ctr = c; ctr > 0; ctr--) {
+			for (ctr = c; ctr > 1; ctr--) {
 				x += amt1;
 				GfxFillRect(x, r.top + 1, x, r.bottom - 1, color);
 			}
 
 			x = r.top;
-			for (ctr = d; ctr > 0; ctr--) {
+			for (ctr = d; ctr > 1; ctr--) {
 				x += amt2;
 				GfxFillRect(r.left + 1, x, r.right - 1, x, color);
 			}
@@ -246,13 +246,13 @@ void DrawWindowWidgets(const Window *w)
 			color = _color_list[wi->color&0xF].window_color_1b;
 
 			x = r.left - 1;
-			for (ctr = c; ctr > 0; ctr--) {
+			for (ctr = c; ctr > 1; ctr--) {
 				x += amt1;
 				GfxFillRect(x, r.top + 1, x, r.bottom - 1, color);
 			}
 
 			x = r.top - 1;
-			for (ctr = d; ctr > 0; ctr--) {
+			for (ctr = d; ctr > 1; ctr--) {
 				x += amt2;
 				GfxFillRect(r.left+1, x, r.right-1, x, color);
 			}
