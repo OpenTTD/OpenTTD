@@ -747,10 +747,10 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 		STR_019E_SHIP,
 		STR_019D_AIRCRAFT
 	};
-	const Player *p = GetPlayer(_local_player);
 
 	switch (e->event) {
 		case WE_PAINT: {
+				const Player *p = GetPlayer(_local_player);
 				int pos = w->vscroll.pos;
 				EngineID selected_id[2] = { INVALID_ENGINE, INVALID_ENGINE };
 				int x = 1;
@@ -934,7 +934,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 					break;
 				}
 				case 17: { /* toggle renew_keep_length */
-					DoCommandP(0, 5, p->renew_keep_length ? 0 : 1, NULL, CMD_REPLACE_VEHICLE);
+					DoCommandP(0, 5, GetPlayer(_local_player)->renew_keep_length ? 0 : 1, NULL, CMD_REPLACE_VEHICLE);
 				} break;
 				case 4: { /* Start replacing */
 					EngineID veh_from = WP(w, replaceveh_d).sel_engine[0];

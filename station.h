@@ -248,11 +248,6 @@ static inline bool IsBuoyTile(TileIndex tile)
 	return IsTileType(tile, MP_STATION) && _m[tile].m5 == 0x52;
 }
 
-static inline bool TileBelongsToRailStation(const Station *st, TileIndex tile)
-{
-	return IsTileType(tile, MP_STATION) && _m[tile].m2 == st->index && _m[tile].m5 < 8;
-}
-
 /* Get's the direction the station exit points towards. Ie, returns 0 for a
  * station with the exit NE. */
 static inline byte GetRoadStationDir(TileIndex tile)

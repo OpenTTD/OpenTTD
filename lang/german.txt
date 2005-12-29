@@ -2760,7 +2760,6 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wähle ei
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Hier wird angezeigt, gegen welches Fahrzeug das auf der linken Seite gewählte ersetzt wird
 STR_REPLACE_HELP                                                :{BLACK}Dieses Feature ermöglicht es, einen Fahrzeugtyp auszuwählen und ihn durch einen anderen ersetzen zu lassen. Dies geschieht automatisch, wenn das Fahrzeug regulär das Depot besucht.
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Waggon-Entfernung: {ORANGE}{SKIP}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Diesen Schalter auf "An" schalten bewirkt das Entfernen von Waggons aus dem Zug, damit er nie länger wird als der kürzeste Bahnsteig im Fahrplan.{}Die Waggons werden am Anfang des Zuges entfernt, bis die Länge ausreichend ist.
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Schilderliste - {COMMA} Schild{P "" er}

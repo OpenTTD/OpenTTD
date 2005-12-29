@@ -2756,7 +2756,6 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selectee
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dit geeft weer waarmee de aan de linkerkant geselecteerde locomotief mee vervangen wordt
 STR_REPLACE_HELP                                                :{BLACK}Deze optie stelt je in staat om een type locomotief te selecteren en die te vervangen door een andere. Dit zal automatisch gebeuren zodra de voertuigen een depot inrijden
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagons verwijderen: {ORANGE}{SKIP}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Deze optie "Aan" zetten zorgt ervoor dat de autoreplace functie wagons van je trein afhaalt zodat ze in je korste station passen in hun orders lijst,{}waarbij wordt begonnen bij de eerste wagons
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Bordjes lijst - {COMMA} Bordjes

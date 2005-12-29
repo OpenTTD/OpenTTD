@@ -2754,7 +2754,6 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Velg jer
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dette viser hvilket lokomotiv som overtar for det valgte lokomotivet på venstresiden
 STR_REPLACE_HELP                                                :{BLACK}Dette verktøyet lar deg bytte ut en type lokomotiv med en annen. Dette blir gjort neste gang lokomotivet er innom et depot.
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vognfjerning: {ORANGE}{SKIP}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ved å sette denne til "På" gjør du slik at auto-erstatt fjerner vogner fra tog slik at de beholder lengden hvis det er lenger enn den korteste stasjonen på ruten sin.{}Det vil fjerne så mange stasjoner som nødvending, og starter fra fronten jobber seg bakover
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltliste - {COMMA} Skilt

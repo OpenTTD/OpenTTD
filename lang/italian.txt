@@ -2758,7 +2758,6 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selezion
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra con quale locomotore verrà rimpiazzato il tipo selezionato a sinistra, se alcuno
 STR_REPLACE_HELP                                                :{BLACK}Permette di rimpiazzare un locomotere con uno di un'altro tipo, quando il treno entra in un deposito
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Rimuovi vagoni: {ORANGE}{SKIP}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Impostando "SI", quando viene eseguita la sostituzione automatica dei treni verranno rimossi i vagoni fino a raggiungere la lunghezza necessaria al treno per entrare nella stazione più corta presente nella lista ordini. I vagoni verranno rimossi partendo dalla testa del treno.
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista dei Cartelli - {COMMA} Cartelli

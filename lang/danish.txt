@@ -2753,7 +2753,6 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vælg den
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Viser hvilket køretøj at det valgte køretøj til venstre bliver udskiftet med, hvis det bliver udskiftet
 STR_REPLACE_HELP                                                :{BLACK}Dette giver dig mulighed for at udskifte en køretøjstype med en anden, når et køretøj af den oprindelige type kører i depot
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Fjern vogn: {ORANGE}{SKIP}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ved at sætte dette til "Til" vil få autoreplace til at fjerne vogne fra tog for at få dem til at beholde deres længde hvis de overskrider længden af den korteste station i deres ordre{}Det vil fjerne så mange vogne som der er behov for, startende med de forreste
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste of skilte - {COMMA} Skilte

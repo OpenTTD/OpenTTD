@@ -2757,7 +2757,6 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Tria el 
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mosyta quin motor dels seleccionats a l'esquerra es reemplaça, si hi ha
 STR_REPLACE_HELP                                                :{BLACK}Et permet reemplaçar un tipus de motor amb un altre, quan els trens del tipus original entrin a cotxeres
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Treure vagons: {ORANGE}{SKIP}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Establint aixó a "On" farà que l'automodificació tregui vagons dels trens per evitar que excedeixi la seva llargària de la de l'estació més curta que es trobi a les seves ordres.{}Es treuràn tants vagons com es necessiti començant per davant
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Llista de senyals - {COMMA} Senyals

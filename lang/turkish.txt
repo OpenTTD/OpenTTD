@@ -2759,7 +2759,6 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Lokomati
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Soldaki degistiriliyorsa neyle degistirildigini göster
 STR_REPLACE_HELP                                                :{BLACK}Tren gara girdiginde seçilen türle degistirilir
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon kaldirma: {ORANGE}{SKIP}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Bu ayari "açik" yaparsaniz araçlari degistirme isleminde eger trenin talimatlarindaki duraklardan birine sigmayacak kadar uzuyorsa tren uzunlugu korunacaktir.{}Fazla vagonlar önden baslayarak satilacaktir
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Tabela Listesi - {COMMA} Tabela

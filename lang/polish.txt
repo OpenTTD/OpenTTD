@@ -2759,7 +2759,6 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wybierz 
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Wyswietla typ pojazdu na jaki bedzie zastapiony  pojazd zaznaczony po lewej stronie
 STR_REPLACE_HELP                                                :{BLACK}Ta funkcja pozwala wybrac typ pojazdu i zastapic go innym. Bedzie sie to odbywac w momencie gdy pociag zjedzie do zajezdni
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Usuniecie pojazdu: {ORANGE}{SKIP}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ustawienie na  "Wla" spowoduje ze tryb autowymiany usunie wagony z pociagu  by utrzymac jego dlugosc jaka jest potrzebna do najkrotszej stacji w swoim rozkladzie.{}Usuniete beda wagony poczawszy od poczatku pociagu
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista tablic - {COMMA} Tablice

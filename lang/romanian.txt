@@ -2756,7 +2756,6 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Alege un
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Afiseaza cu ce model vor fi inlocuite vehiculele din stanga
 STR_REPLACE_HELP                                                :{BLACK}Aceasta functie iti permite sa selectezi un model de vehicul si sa-l inlocuiesti cu altul. Schimbarea se va efectua automat la intrarea vehiculului intr-un depou.
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retragere vagoane: {ORANGE}{SKIP}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Prin comutarea acestui buton autoinlocuirea va sterge vagoane din componenta unui tren pentru a nu depasi marimea celei mai mici statii de pe traseu.{}Vor fi sterse toate vagoanele necesare incepand de la locomotiva
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de semne - {COMMA} Semne

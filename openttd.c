@@ -1263,20 +1263,12 @@ bool AfterLoadGame(uint version)
 		}
 	}
 
-	/* In version 16.1 of the savegame, trains became aware of station lengths
-		need to initialized to the invalid state
-		players needs to set renew_keep_length too */
+	/* In version 16.1 of the savegame a player can decide if trains, which get
+	 * replaced, shall keep their old length. In all prior versions, just default
+	 * to false */
 	if (CheckSavegameVersionOldStyle(16, 1)) {
-		Vehicle *v;
 		FOR_ALL_PLAYERS(p) {
 			p->renew_keep_length = false;
-		}
-
-		FOR_ALL_VEHICLES(v) {
-			if (v->type == VEH_Train) {
-				v->u.rail.shortest_platform[0] = 255;
-				v->u.rail.shortest_platform[1] = 0;
-			}
 		}
 	}
 

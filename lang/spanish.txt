@@ -2756,7 +2756,6 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Seleccio
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Muestra que locomotora será reemplazada
 STR_REPLACE_HELP                                                :{BLACK}Esta función permite seleccionar un tipo de locomotora y reemplazarla por otra. El cambio se realizará cuando el vehículo llegue al depósito
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Quitar vagón: {ORANGE}{SKIP}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Activar esta opción permite eliminar los vagones necesarios para que los trenes entren en las estaciones más cortas que estén marcadas en sus ordenes. Se eliminarán los vagones necesarios empezando por delante
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de señales - {COMMA} Señales

@@ -2812,7 +2812,6 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vyber ty
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Tady je zobrazeno, za jakou lokomotivu se ta v levém seznamu vymenuje
 STR_REPLACE_HELP                                                :{BLACK}Tato mo¸nost hry ti umoznuje vybrat typ lokomotivy, který nechá vymenit za jiný. To se bude automaticky provadet, kdy¸ lokomotiva zajede do depa.
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odebírání vagonu: {ORANGE}{SKIP}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Nastavením na "zapnuto" zacne funkce automatického vymenovani odstranovat vagony z vlaku, kdyby se neve¨ly do nejkrat¨í stanice ve svém jízdním radu.{}Bude od zacatku vlaku odstranovat tolik vagonu, kolik potrebuje.
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam popisku - {COMMA} popis{P ek ky ku}

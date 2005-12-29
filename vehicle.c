@@ -1656,8 +1656,6 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 				if (GetNextVehicle(old_v) != NULL) {
 					DoCommand(0, 0, (new_v->index << 16) | GetNextVehicle(old_v)->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 				}
-				new_v->u.rail.shortest_platform[0] = old_v->u.rail.shortest_platform[0];
-				new_v->u.rail.shortest_platform[1] = old_v->u.rail.shortest_platform[1];
 			}
 		}
 		/* We are done setting up the new vehicle. Now we move the cargo from the old one to the new one */
@@ -1701,7 +1699,10 @@ static void MaybeReplaceVehicle(Vehicle *v)
 	byte flags = 0;
 	int32 cost, temp_cost = 0;
 	bool stopped = false;
-	bool train_fits_in_station = false;
+
+	/* Remember the length in case we need to trim train later on
+	 * If it's not a train, the value is unused */
+	uint16 old_total_length = (v->type == VEH_Train) ? v->u.rail.cached_total_length : -1;
 
 	_current_player = v->owner;
 
@@ -1713,11 +1714,6 @@ static void MaybeReplaceVehicle(Vehicle *v)
 		// we stopped the vehicle to do this, so we have to remember to start it again when we are done
 		// we need to store this info as the engine might be replaced and lose this info
 		stopped = true;
-	}
-
-	if (v->type == VEH_Train && v->u.rail.shortest_platform[0]*16 <= v->u.rail.cached_total_length && GetPlayer(v->owner)->renew_keep_length) {
-		// the train is not too long for the stations it visits. We should try to keep it that way if we change anything
-		train_fits_in_station = true;
 	}
 
 	for (;;) {
@@ -1781,11 +1777,12 @@ static void MaybeReplaceVehicle(Vehicle *v)
 		flags |= DC_EXEC;
 	}
 
-	if (train_fits_in_station) {
-		// the train fitted in the stations it got in it's orders, so we should make sure that it still do
+	/* If setting is on to try not to exceed the old length of the train with the replacement */
+	if (v->type == VEH_Train && p->renew_keep_length) {
 		Vehicle *temp;
 		w = v;
-		while (v->u.rail.shortest_platform[0]*16 < v->u.rail.cached_total_length) {
+
+		while (v->u.rail.cached_total_length > old_total_length) {
 			// the train is too long. We will remove cars one by one from the start of the train until it's short enough
 			while (w != NULL && !(RailVehInfo(w->engine_type)->flags&RVI_WAGON) ) {
 				w = GetNextVehicle(w);
@@ -2094,8 +2091,9 @@ static const SaveLoad _train_desc[] = {
 	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,pbs_status), SLE_UINT8, 2, 255),
 	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,pbs_end_tile), SLE_UINT32, 2, 255),
 	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,pbs_end_trackdir), SLE_UINT8, 2, 255),
-	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,shortest_platform[0]), SLE_UINT8, 2, 255),	// added with 16.1, but was blank since 2
-	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,shortest_platform[1]), SLE_UINT8, 2, 255),	// added with 16.1, but was blank since 2
+
+	SLE_CONDARR(NullStruct, null, SLE_FILE_U8 | SLE_VAR_NULL, 2, 2, 255),
+
 	SLE_CONDREFX(offsetof(Vehicle,u)+offsetof(VehicleRail,other_multiheaded_part), REF_VEHICLE, 2, 255),	// added with 17.1, but was blank since 2
 	// reserve extra space in savegame here. (currently 3 bytes)
 	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 3, 2, 255),

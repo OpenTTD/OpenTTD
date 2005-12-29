@@ -2760,7 +2760,6 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Choisir 
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Ceci affiche par quelle locomotive celle qui est sélectionnée à gauche sera remplacée
 STR_REPLACE_HELP                                                :{BLACK}Cette caractéristique permet de choisir un type de locomotive et de le remplacer par un autre. Ceci sera fait automatiquement quand le véhicule rentre dans un dépôt
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retrait de wagon: {ORANGE}{SKIP}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Activer ce paramètre permettra à l'autoremplacement de retirer des wagons d'un trains, ajustant ainsi sa longueur sur la plus courte station cédulée, advenant le cas d'une longueur excédentaire.{}Autant de wagons que requis seront retirés du train, en commencant par celui de tête.
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste des panneaux - {COMMA} panneau{P "" x}
