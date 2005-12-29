@@ -1233,7 +1233,7 @@ static const SaveLoadFormat *GetSavegameFormat(const char *s)
 
 // actual loader/saver function
 void InitializeGame(uint size_x, uint size_y);
-extern bool AfterLoadGame(uint version);
+extern bool AfterLoadGame(void);
 extern void BeforeSaveGame(void);
 extern bool LoadOldSaveGame(const char *file);
 
@@ -1365,7 +1365,8 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 	if (mode == SL_OLD_LOAD) {
 		InitializeGame(256, 256); // set a mapsize of 256x256 for TTDPatch games or it might get confused
 		if (!LoadOldSaveGame(filename)) return SL_REINIT;
-		AfterLoadGame(0);
+		_sl_version = 0;
+		AfterLoadGame();
 		return SL_OK;
 	}
 
@@ -1494,7 +1495,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 
 		/* After loading fix up savegame for any internal changes that
 		* might've occured since then. If it fails, load back the old game */
-		if (!AfterLoadGame(version)) return SL_REINIT;
+		if (!AfterLoadGame()) return SL_REINIT;
 	}
 
 	return SL_OK;

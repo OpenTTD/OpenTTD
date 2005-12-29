@@ -1096,7 +1096,7 @@ static void UpdateSignOwner(void)
 extern void UpdateOldAircraft( void );
 extern void UpdateOilRig( void );
 
-bool AfterLoadGame(uint version)
+bool AfterLoadGame(void)
 {
 	Window *w;
 	ViewPort *vp;
