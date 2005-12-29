@@ -328,7 +328,7 @@ STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Er du s
 STR_0161_QUIT_GAME                                              :{WHITE}Avslutt spill
 STR_SORT_ORDER_TIP                                              :{BLACK}Velg sorteringsrekkefølge (synkende/stigende)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Velg sorteringskriterier
-SRT_SORT_BY                                                     :{BLACK}Sorter etter
+STR_SORT_BY                                                     :{BLACK}Sorter etter
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Innbyggertall
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Produksjon

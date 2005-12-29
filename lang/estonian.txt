@@ -328,7 +328,7 @@ STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Oled sa
 STR_0161_QUIT_GAME                                              :{WHITE}Mängust lahkumine
 STR_SORT_ORDER_TIP                                              :{BLACK}Sorteerimise järjekorra valimine (kahanev/kasvav)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Sorteerimistingimuse valimine
-SRT_SORT_BY                                                     :{BLACK}Sorteeri:
+STR_SORT_BY                                                     :{BLACK}Sorteeri:
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Populatsioon
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Toodang

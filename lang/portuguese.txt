@@ -328,7 +328,7 @@ STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Tem a c
 STR_0161_QUIT_GAME                                              :{WHITE}Abandonar jogo
 STR_SORT_ORDER_TIP                                              :{BLACK}Seleccione forma de ordenação (descendente/ascendente)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Seleccione critério de ordenação
-SRT_SORT_BY                                                     :{BLACK}Ordenar por
+STR_SORT_BY                                                     :{BLACK}Ordenar por
 
 STR_SORT_BY_POPULATION                                          :{BLACK}População
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Produção

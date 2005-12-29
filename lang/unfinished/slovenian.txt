@@ -327,7 +327,7 @@ STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Ali ste
 STR_0161_QUIT_GAME                                              :{WHITE}Zapusti igro
 STR_SORT_ORDER_TIP                                              :{BLACK}Izberi nacin sortiranja (padajoce/narascujoce)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Izberi kriterij za sortiranje
-SRT_SORT_BY                                                     :{BLACK}Sortiraj po
+STR_SORT_BY                                                     :{BLACK}Sortiraj po
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Populacija
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Produkcija

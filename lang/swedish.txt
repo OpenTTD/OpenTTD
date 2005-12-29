@@ -328,7 +328,7 @@ STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Vill du
 STR_0161_QUIT_GAME                                              :{WHITE}Avsluta spelet
 STR_SORT_ORDER_TIP                                              :{BLACK}Välj sorteringsordning (fallande/stigande)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Välj sortering
-SRT_SORT_BY                                                     :{BLACK}Sortera efter
+STR_SORT_BY                                                     :{BLACK}Sortera efter
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Befolkning
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Produktion

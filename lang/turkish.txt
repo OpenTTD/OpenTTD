@@ -328,7 +328,7 @@ STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Oyunu b
 STR_0161_QUIT_GAME                                              :{WHITE}Oyunu Bitir
 STR_SORT_ORDER_TIP                                              :{BLACK}Siralama türü seçin (azalan/artan)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Siralama kriteri seçin
-SRT_SORT_BY                                                     :{BLACK}Sirala
+STR_SORT_BY                                                     :{BLACK}Sirala
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Nüfus
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Üretim

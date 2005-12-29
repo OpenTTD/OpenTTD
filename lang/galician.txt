@@ -328,7 +328,7 @@ STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}¿Está s
 STR_0161_QUIT_GAME                                              :{WHITE}Saír ó menú principal
 STR_SORT_ORDER_TIP                                              :{BLACK}Selecciona o modo de ordeamento(descendente/ascendente)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Selecciona o criterio de orde
-SRT_SORT_BY                                                     :{BLACK}Ordear por
+STR_SORT_BY                                                     :{BLACK}Ordear por
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Poboación
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Producción

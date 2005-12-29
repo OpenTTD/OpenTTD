@@ -393,7 +393,7 @@ STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Biztosa
 STR_0161_QUIT_GAME                                              :{WHITE}Kilépés a játékból
 STR_SORT_ORDER_TIP                                              :{BLACK}Csökkenõ/növekvõ sorbarendezés
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Sorbarendezési kritérium
-SRT_SORT_BY                                                     :{BLACK}Rendezés
+STR_SORT_BY                                                     :{BLACK}Rendezés
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Lakosság
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Termelés

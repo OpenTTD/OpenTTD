@@ -327,7 +327,7 @@ STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Sei sic
 STR_0161_QUIT_GAME                                              :{WHITE}Abbandona partita
 STR_SORT_ORDER_TIP                                              :{BLACK}Seleziona ordinamento (discendente/ascendente)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Seleziona il criterio d'ordinamento
-SRT_SORT_BY                                                     :{BLACK}Ordina per
+STR_SORT_BY                                                     :{BLACK}Ordina per
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Popolazione
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Produzione

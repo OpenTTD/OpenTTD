@@ -324,7 +324,7 @@ STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Ar tu t
 STR_0161_QUIT_GAME                                              :{WHITE}Nutraukti zaidima
 STR_SORT_ORDER_TIP                                              :{BLACK}Pasirink rikiavimo tvarka (mazejimo/didejimo)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Pasirink rikiavimo kriteriju
-SRT_SORT_BY                                                     :{BLACK}Rikiuoti pagal
+STR_SORT_BY                                                     :{BLACK}Rikiuoti pagal
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Populiacija
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Produkcija

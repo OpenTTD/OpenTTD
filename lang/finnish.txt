@@ -328,7 +328,7 @@ STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Lopetet
 STR_0161_QUIT_GAME                                              :{WHITE}Lopeta peli
 STR_SORT_ORDER_TIP                                              :{BLACK}Valitse järjestys (laskeva/nouseva).
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Valitse järjestyskriteeri.
-SRT_SORT_BY                                                     :{BLACK}Lajittele
+STR_SORT_BY                                                     :{BLACK}Lajittele
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Asukasluku
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Tuotto

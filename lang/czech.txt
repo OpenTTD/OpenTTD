@@ -385,7 +385,7 @@ STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Opravdu
 STR_0161_QUIT_GAME                                              :{WHITE}Konec hry
 STR_SORT_ORDER_TIP                                              :{BLACK}Vyber zpusob razeni (sestupne/vzestupne)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Vyber, podle ceho se má tridit
-SRT_SORT_BY                                                     :{BLACK}Radit podle
+STR_SORT_BY                                                     :{BLACK}Radit podle
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Populace
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Prudukce

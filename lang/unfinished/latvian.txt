@@ -328,7 +328,7 @@ STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Vai tu 
 STR_0161_QUIT_GAME                                              :{WHITE}Pamest spe'li
 STR_SORT_ORDER_TIP                                              :{BLACK}Izve'le'ties saka'rtojumu (dilstos's/augos's)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Izve'le'ties sorte's'anas krite'riju
-SRT_SORT_BY                                                     :{BLACK}Saka'rtot pe'c
+STR_SORT_BY                                                     :{BLACK}Saka'rtot pe'c
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Iedzi'vota'ju skaita
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Produkcijas

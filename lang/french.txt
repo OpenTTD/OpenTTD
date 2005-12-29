@@ -329,7 +329,7 @@ STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Êtes vo
 STR_0161_QUIT_GAME                                              :{WHITE}Abandonner
 STR_SORT_ORDER_TIP                                              :{BLACK}Choisir l'ordre de tri croissant/décroissant
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Choisir le critère de tri
-SRT_SORT_BY                                                     :{BLACK}Trier par
+STR_SORT_BY                                                     :{BLACK}Trier par
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Population
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Production

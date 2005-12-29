@@ -328,7 +328,7 @@ STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Esti si
 STR_0161_QUIT_GAME                                              :{WHITE}Iesire din joc
 STR_SORT_ORDER_TIP                                              :{BLACK}Alegeti ordinea de sortare ascendenta/descendenta
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Alegeti criteriul de sortare
-SRT_SORT_BY                                                     :{BLACK}Ordoneaza dupa
+STR_SORT_BY                                                     :{BLACK}Ordoneaza dupa
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Populatia
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Productie

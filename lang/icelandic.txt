@@ -328,7 +328,7 @@ STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Ertu vi
 STR_0161_QUIT_GAME                                              :{WHITE}Hætta leik
 STR_SORT_ORDER_TIP                                              :{BLACK}Velja uppröðun (minnkandi/stækkandi)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Velja uppröðun
-SRT_SORT_BY                                                     :{BLACK}Flokka eftir
+STR_SORT_BY                                                     :{BLACK}Flokka eftir
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Fólksfjöldi
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Framleiðsla
