@@ -544,7 +544,7 @@ STR_0214_ENTREPRENEUR                                           :Entrepreneur
 STR_0215_INDUSTRIALIST                                          :Industriel
 STR_0216_CAPITALIST                                             :Capitaliste
 STR_0217_MAGNATE                                                :Magnat
-STR_0218_MOGUL                                                  :Mogul
+STR_0218_MOGUL                                                  :Grand ponte
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Tycoon du Siècle
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYERNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
@@ -1995,7 +1995,7 @@ STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Change l
 STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Cliquer pour choisir une couleur
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Augmenter le prêt
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Rembourser une partie du prêt
-STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(President)
+STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Président)
 STR_7038_INAUGURATED                                            :{GOLD}Inauguré en: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Véhicules:
 STR_TRAINS                                                      :{WHITE}{COMMA} train{P "" s}
@@ -2045,7 +2045,7 @@ STR_7069_ROUTE_SUPERVISOR                                       :Superviseur de 
 STR_706A_DIRECTOR                                               :Directeur
 STR_706B_CHIEF_EXECUTIVE                                        :Directeur Général
 STR_706C_CHAIRMAN                                               :Vice-président
-STR_706D_PRESIDENT                                              :President
+STR_706D_PRESIDENT                                              :Président
 STR_706E_TYCOON                                                 :Tycoon
 STR_706F_BUILD_HQ                                               :{BLACK}Const. siège
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Contruire/voir le Siège Social
