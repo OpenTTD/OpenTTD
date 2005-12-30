@@ -1611,10 +1611,6 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 }
 
-int dist_compare(const void *a, const void *b)
-{
-	return ( *(const uint32 *)a) - ( *(const uint32 *) b);
-}
 
 void OnNewDay_RoadVeh(Vehicle *v)
 {
