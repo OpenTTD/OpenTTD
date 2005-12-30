@@ -332,7 +332,7 @@ int32 DoCommand(int x, int y, uint32 p1, uint32 p2, uint32 flags, uint procc)
 	CommandProc *proc;
 
 	/* Do not even think about executing out-of-bounds tile-commands */
-	if (TileVirtXY(x, y) > MapSize()) {
+	if (TileVirtXY(x, y) >= MapSize()) {
 		_cmd_text = NULL;
 		return CMD_ERROR;
 	}
