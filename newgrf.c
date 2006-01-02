@@ -2463,6 +2463,9 @@ static void ResetNewGRFData(void)
 	// Reset station classes
 	ResetStationClasses();
 	ResetCustomStations();
+
+	// Add engine type to engine data. This is needed for the refit precalculation.
+	AddTypeToEngines();
 }
 
 static void InitNewGRFFile(const char* filename, int sprite_offset)
