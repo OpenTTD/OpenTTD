@@ -940,14 +940,12 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 					EngineID veh_from = WP(w, replaceveh_d).sel_engine[0];
 					EngineID veh_to = WP(w, replaceveh_d).sel_engine[1];
 					DoCommandP(0, 3, veh_from + (veh_to << 16), NULL, CMD_REPLACE_VEHICLE);
-					SetWindowDirty(w);
 					break;
 				}
 
 				case 6: { /* Stop replacing */
 					EngineID veh_from = WP(w, replaceveh_d).sel_engine[0];
 					DoCommandP(0, 3, veh_from + (INVALID_ENGINE << 16), NULL, CMD_REPLACE_VEHICLE);
-					SetWindowDirty(w);
 					break;
 				}
 

@@ -710,6 +710,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		case 3: {
 			EngineID old_engine_type = GB(p2, 0, 16);
 			EngineID new_engine_type = GB(p2, 16, 16);
+			int32 cost;
 
 			if (new_engine_type != INVALID_ENGINE) {
 				/* First we make sure that it's a valid type the user requested
@@ -729,10 +730,14 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				if (!HASBIT(GetEngine(new_engine_type)->player_avail, _current_player))
 					return CMD_ERROR;
 
-				return AddEngineReplacement(p, old_engine_type, new_engine_type, flags);
+				cost = AddEngineReplacement(p, old_engine_type, new_engine_type, flags);
 			} else {
-				return RemoveEngineReplacement(p, old_engine_type, flags);
+				cost = RemoveEngineReplacement(p, old_engine_type, flags);
 			}
+
+			if (IsLocalPlayer()) InvalidateWindow(WC_REPLACE_VEHICLE, GetEngine(old_engine_type)->type);
+
+			return cost;
 		}
 
 		case 4:
