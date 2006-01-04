@@ -1508,7 +1508,7 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
-	if (v->type == VEH_Train && !IsFrontEngine(v)) return CMD_ERROR;
+	if (v->type == VEH_Train && (!IsFrontEngine(v) || v->u.rail.crash_anim_pos >= 4400)) return CMD_ERROR;
 
 	// check that we can allocate enough vehicles
 	if (!(flags & DC_EXEC)) {
