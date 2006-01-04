@@ -1135,6 +1135,10 @@ bool AfterLoadGame(void)
 	// Load the sprites
 	GfxLoadSprites();
 
+	/* Connect front and rear engines of multiheaded trains and converts
+	 * subtype to the new format */
+	if (CheckSavegameVersionOldStyle(17, 1)) ConvertOldMultiheadToNew();
+
 	// Update current year
 	SetDate(_date);
 

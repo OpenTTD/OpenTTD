@@ -15,6 +15,8 @@
 #include "signs.h"
 #include "debug.h"
 #include "depot.h"
+#include "network.h"
+#include "ai/ai.h"
 
 enum {
 	HEADER_SIZE = 49,
@@ -1064,6 +1066,9 @@ static bool LoadOldPlayer(LoadgameState *ls, int num)
 	 * is NULL and the function will crash. To fix this, just change the state
 	 * to some harmless state, like 'loop vehicle'; 1 */
 	if (!IS_HUMAN_PLAYER(num) && p->ai.state == 20) p->ai.state = 1;
+
+	if (p->is_ai && (!_networking || _network_server) && _ai.enabled)
+		AI_StartNewAI(p->index);
 
 	return true;
 }

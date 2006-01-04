@@ -2252,7 +2252,7 @@ static void Save_VEHS(void)
  *  Converts all trains to the new subtype format introduced in savegame 16.2
  *  It also links multiheaded engines or make them forget they are multiheaded if no suitable partner is found
  */
-static inline void ConvertOldMultiheadToNew(void)
+void ConvertOldMultiheadToNew(void)
 {
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
@@ -2395,11 +2395,6 @@ static void Load_VEHS(void)
 				}
 			}
 		}
-	}
-
-	/* Connect front and rear engines of multiheaded trains and converts subtype to the new format */
-	if (CheckSavegameVersionOldStyle(17, 1)) {
-		ConvertOldMultiheadToNew();
 	}
 }
 
