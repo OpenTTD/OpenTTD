@@ -478,29 +478,6 @@ Window *AllocateWindow(
 	return w;
 }
 
-Window *AllocateWindowAutoPlace2(
-	WindowClass exist_class,
-	WindowNumber exist_num,
-	int width,
-	int height,
-	WindowProc *proc,
-	WindowClass cls,
-	const Widget *widget)
-{
-	Window *w;
-	int x;
-
-	w = FindWindowById(exist_class, exist_num);
-	if (w == NULL || w->left >= (_screen.width-20) || w->left <= -60 || w->top >= (_screen.height-20)) {
-		return AllocateWindowAutoPlace(width,height,proc,cls,widget);
-	}
-
-	x = w->left;
-	if (x > _screen.width - width) x = _screen.width - width - 20;
-
-	return AllocateWindow(x + 10, w->top + 10, width, height, proc, cls, widget);
-}
-
 
 typedef struct SizeRect {
 	int left,top,width,height;
@@ -622,16 +599,6 @@ ok_pos:;
 	return pt;
 }
 
-Window *AllocateWindowAutoPlace(
-	int width,
-	int height,
-	WindowProc *proc,
-	WindowClass cls,
-	const Widget *widget) {
-
-	Point pt = GetAutoPlacePosition(width, height);
-	return AllocateWindow(pt.x, pt.y, width, height, proc, cls, widget);
-}
 
 Window *AllocateWindowDescFront(const WindowDesc *desc, int value)
 {

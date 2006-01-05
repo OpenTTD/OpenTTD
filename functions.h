@@ -197,7 +197,6 @@ void SetObjectToPlace(CursorID icon, byte mode, WindowClass window_class, Window
 
 void ResetObjectToPlace(void);
 
-bool ScrollWindowToTile(TileIndex tile, Window * w);
 bool ScrollWindowTo(int x, int y, Window * w);
 
 bool ScrollMainWindowToTile(TileIndex tile);

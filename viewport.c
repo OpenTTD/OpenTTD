@@ -1792,13 +1792,6 @@ bool ScrollWindowTo(int x , int y, Window* w)
 	return true;
 }
 
-/* scrolls the viewport in a window to a given tile */
-bool ScrollWindowToTile(TileIndex tile, Window* w)
-{
-	return ScrollWindowTo(TileX(tile) * 16 + 8, TileY(tile) * 16 + 8, w);
-}
-
-
 
 bool ScrollMainWindowTo(int x, int y)
 {

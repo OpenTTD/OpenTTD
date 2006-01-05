@@ -580,22 +580,6 @@ Window *AllocateWindow(
 Window *AllocateWindowDesc(const WindowDesc *desc);
 Window *AllocateWindowDescFront(const WindowDesc *desc, int value);
 
-Window *AllocateWindowAutoPlace(
-	int width,
-	int height,
-	WindowProc *proc,
-	WindowClass cls,
-	const Widget *widget);
-
-Window *AllocateWindowAutoPlace2(
-	WindowClass exist_class,
-	WindowNumber exist_num,
-	int width,
-	int height,
-	WindowProc *proc,
-	WindowClass cls,
-	const Widget *widget);
-
 void DrawWindowViewport(Window *w);
 
 void InitWindowSystem(void);
