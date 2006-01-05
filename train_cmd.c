@@ -354,7 +354,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 	}
 }
 
-void UpdateTrainAcceleration(Vehicle *v)
+static void UpdateTrainAcceleration(Vehicle* v)
 {
 	uint power = 0;
 	uint weight = 0;
@@ -630,7 +630,7 @@ static int32 EstimateTrainCost(const RailVehicleInfo* rvi)
 	return (rvi->base_cost * (_price.build_railvehicle >> 3)) >> 5;
 }
 
-void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u, bool building)
+static void AddRearEngineToMultiheadedTrain(Vehicle* v, Vehicle* u, bool building)
 {
 	u->direction = v->direction;
 	u->owner = v->owner;

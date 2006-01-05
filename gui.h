@@ -17,7 +17,6 @@ void ShowGameOptions(void);
 void ShowGameDifficulty(void);
 void ShowPatchesSelection(void);
 void ShowNewgrf(void);
-void ShowCustCurrency(void);
 
 /* graph_gui.c */
 void ShowOperatingProfitGraph(void);
@@ -64,8 +63,6 @@ void ShowPlayerAircraft(PlayerID player, StationID station);
 void ShowTerraformToolbar(void);
 
 void PlaceProc_DemolishArea(TileIndex tile);
-void PlaceProc_LowerLand(TileIndex tile);
-void PlaceProc_RaiseLand(TileIndex tile);
 void PlaceProc_LevelLand(TileIndex tile);
 bool GUIPlaceProcDragXY(const WindowEvent *we);
 

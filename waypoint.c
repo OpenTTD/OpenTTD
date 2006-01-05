@@ -64,7 +64,7 @@ static Waypoint* AllocateWaypoint(void)
 }
 
 /* Update the sign for the waypoint */
-void UpdateWaypointSign(Waypoint *wp)
+static void UpdateWaypointSign(Waypoint* wp)
 {
 	Point pt = RemapCoords2(TileX(wp->xy) * 16, TileY(wp->xy) * 16);
 	SetDParam(0, wp->index);

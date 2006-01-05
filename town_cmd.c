@@ -415,6 +415,9 @@ static const TileIndexDiffC _roadblock_tileadd[] = {
 	{ 0,  1}
 };
 
+
+static bool GrowTown(Town *t);
+
 static void TownTickHandler(Town *t)
 {
 	if (t->flags12&1) {
@@ -762,7 +765,7 @@ static int GenRandomRoadBits(void)
 
 // Grow the town
 // Returns true if a house was built, or no if the build failed.
-bool GrowTown(Town *t)
+static bool GrowTown(Town *t)
 {
 	TileIndex tile;
 	const TileIndexDiffC *ptr;

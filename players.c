@@ -637,6 +637,10 @@ static void DeletePlayerStuff(PlayerID pi)
 	p->president_name_1 = 0;
 }
 
+
+static int32 AddEngineReplacement(Player* p, EngineID old_engine, EngineID new_engine, uint32 flags);
+static int32 RemoveEngineReplacement(Player* p, EngineID engine, uint32 flags);
+
 /** Change engine renewal parameters
  * @param x,y unused
  * @param p1 bits 0-3 command
@@ -1141,7 +1145,7 @@ bool EngineHasReplacement(const Player *p, EngineID engine)
  * @param flags The calling command flags.
  * @return 0 on success, CMD_ERROR on failure.
  */
-int32 AddEngineReplacement(Player *p, EngineID old_engine, EngineID new_engine, uint32 flags)
+static int32 AddEngineReplacement(Player* p, EngineID old_engine, EngineID new_engine, uint32 flags)
 {
 	if (flags & DC_EXEC) p->engine_replacement[old_engine] = new_engine;
 	return 0;
@@ -1154,7 +1158,7 @@ int32 AddEngineReplacement(Player *p, EngineID old_engine, EngineID new_engine, 
  * @param flags The calling command flags.
  * @return 0 on success, CMD_ERROR on failure.
  */
-int32 RemoveEngineReplacement(Player *p, EngineID engine, uint32 flags)
+static int32 RemoveEngineReplacement(Player* p, EngineID engine, uint32 flags)
 {
 	if (flags & DC_EXEC) p->engine_replacement[engine] = INVALID_ENGINE;
 	return 0;

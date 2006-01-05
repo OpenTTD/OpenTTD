@@ -207,7 +207,6 @@ static inline int GetRoadStopType(TileIndex tile)
 	return (_m[tile].m5 < 0x47) ? RS_TRUCK : RS_BUS;
 }
 
-uint GetNumRoadStops(const Station *st, RoadStopType type);
 RoadStop * GetPrimaryRoadStop(const Station *st, RoadStopType type);
 RoadStop * AllocateRoadStop( void );
 void ClearSlot(Vehicle *v, RoadStop *rs);

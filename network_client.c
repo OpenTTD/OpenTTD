@@ -32,7 +32,7 @@ extern const char _openttd_revision[];
 
 static uint32 last_ack_frame;
 
-void NetworkRecvPatchSettings(NetworkClientState *cs, Packet *p);
+static void NetworkRecvPatchSettings(NetworkClientState* cs, Packet* p);
 
 // **********
 // Sending functions
@@ -823,7 +823,7 @@ extern const SettingDesc patch_settings[];
 // This is a TEMPORARY solution to get the patch-settings
 //  to the client. When the patch-settings are saved in the savegame
 //  this should be removed!!
-void NetworkRecvPatchSettings(NetworkClientState *cs, Packet *p)
+static void NetworkRecvPatchSettings(NetworkClientState* cs, Packet* p)
 {
 	const SettingDesc *item;
 

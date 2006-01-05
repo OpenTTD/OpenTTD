@@ -24,9 +24,10 @@
 
 // This file handles all the server-commands
 
-void NetworkHandleCommandQueue(NetworkClientState *cs);
+static void NetworkHandleCommandQueue(NetworkClientState* cs);
+static void NetworkSendPatchSettings(NetworkClientState* cs);
+
 void NetworkPopulateCompanyInfo(void);
-void NetworkSendPatchSettings(NetworkClientState *cs);
 
 // Is the network enabled?
 
@@ -1190,7 +1191,7 @@ extern const SettingDesc patch_settings[];
 // This is a TEMPORARY solution to get the patch-settings
 //  to the client. When the patch-settings are saved in the savegame
 //  this should be removed!!
-void NetworkSendPatchSettings(NetworkClientState *cs)
+static void NetworkSendPatchSettings(NetworkClientState* cs)
 {
 	const SettingDesc *item;
 	Packet *p = NetworkSend_Init(PACKET_SERVER_MAP);
@@ -1484,7 +1485,8 @@ bool NetworkServer_ReadPackets(NetworkClientState *cs)
 }
 
 // Handle the local command-queue
-void NetworkHandleCommandQueue(NetworkClientState *cs) {
+static void NetworkHandleCommandQueue(NetworkClientState* cs)
+{
 	CommandPacket *cp;
 
 	while ( (cp = cs->command_queue) != NULL) {

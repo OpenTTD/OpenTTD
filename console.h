@@ -123,10 +123,6 @@ void IConsoleSwitch(void);
 void IConsoleClose(void);
 void IConsoleOpen(void);
 
-// ** console cmd buffer ** //
-void IConsoleHistoryAdd(const char *cmd);
-void IConsoleHistoryNavigate(signed char direction);
-
 // ** console output ** //
 void IConsolePrint(uint16 color_code, const char *string);
 void CDECL IConsolePrintF(uint16 color_code, const char *s, ...);
@@ -150,7 +146,6 @@ void IConsoleVarPrintSetValue(const IConsoleVar *var);
 // *** Parser *** //
 void IConsoleCmdExec(const char *cmdstr);
 void IConsoleVarExec(const IConsoleVar *var, byte tokencount, char *token[]);
-void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char *tokens[]);
 
 // ** console std lib (register ingame commands/aliases/variables) ** //
 void IConsoleStdLibRegister(void);

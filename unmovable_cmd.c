@@ -23,7 +23,7 @@
  * @param tile tile coordinates where HQ is located to destroy
  * @param flags docommand flags of calling function
  */
-int32 DestroyCompanyHQ(TileIndex tile, uint32 flags)
+static int32 DestroyCompanyHQ(TileIndex tile, uint32 flags)
 {
 	Player *p;
 

@@ -178,7 +178,6 @@ bool IsOrderListShared(const Vehicle *v);
 void AssignOrder(Order *order, Order data);
 bool CheckForValidOrders(const Vehicle* v);
 
-Order UnpackVersion4Order(uint16 packed);
 Order UnpackOldOrder(uint16 packed);
 
 #endif /* ORDER_H */

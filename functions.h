@@ -216,7 +216,6 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold);
 void ChangeTownRating(Town *t, int add, int max);
 
 uint GetRoadBitsByTile(TileIndex tile);
-void DrawRoadBits(TileInfo *ti, byte road, byte ground_type, bool snow, bool flat);
 int GetTownRadiusGroup(const Town *t, TileIndex tile);
 void ShowNetworkChatQueryWindow(byte desttype, byte dest);
 void ShowNetworkGiveMoneyWindow(byte player);

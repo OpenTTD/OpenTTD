@@ -27,7 +27,7 @@ enum {
 /**
  * Called if a new block is added to the industry-pool
  */
-void IndustryPoolNewBlock(uint start_item)
+static void IndustryPoolNewBlock(uint start_item)
 {
 	Industry *i;
 

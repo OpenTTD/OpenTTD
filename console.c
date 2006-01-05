@@ -58,6 +58,10 @@ static void IConsoleClearCommand(void)
 
 static inline void IConsoleResetHistoryPos(void) {_iconsole_historypos = ICON_HISTORY_SIZE - 1;}
 
+
+static void IConsoleHistoryAdd(const char* cmd);
+static void IConsoleHistoryNavigate(int direction);
+
 // ** console window ** //
 static void IConsoleWndProc(Window* w, WindowEvent* e)
 {
@@ -322,7 +326,7 @@ void IConsoleOpen(void)  {if (_iconsole_mode == ICONSOLE_CLOSED) IConsoleSwitch(
  * scroll, etc. Put it to the beginning as it is the latest text
  * @param cmd Text to be entered into the 'history'
  */
-void IConsoleHistoryAdd(const char *cmd)
+static void IConsoleHistoryAdd(const char* cmd)
 {
 	free(_iconsole_history[ICON_HISTORY_SIZE - 1]);
 
@@ -335,7 +339,7 @@ void IConsoleHistoryAdd(const char *cmd)
  * Navigate Up/Down in the history of typed commands
  * @param direction Go further back in history (+1), go to recently typed commands (-1)
  */
-void IConsoleHistoryNavigate(signed char direction)
+static void IConsoleHistoryNavigate(int direction)
 {
 	int i = _iconsole_historypos + direction;
 
@@ -687,7 +691,7 @@ static inline int IConsoleCopyInParams(char *dst, const char *src, uint bufpos)
  * @param tokencount the number of parameters passed
  * @param *tokens are the parameters given to the original command (0 is the first param)
  */
-void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char *tokens[ICON_TOKEN_COUNT])
+static void IConsoleAliasExec(const IConsoleAlias* alias, byte tokencount, char* tokens[ICON_TOKEN_COUNT])
 {
 	const char *cmdptr;
 	char *aliases[ICON_MAX_ALIAS_LINES], aliasstream[ICON_MAX_STREAMSIZE];

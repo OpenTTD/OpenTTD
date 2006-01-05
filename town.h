@@ -83,7 +83,6 @@ void InitializeTown(void);
 void ShowTownViewWindow(uint town);
 void DeleteTown(Town *t);
 void ExpandTown(Town *t);
-bool GrowTown(Town *t);
 Town *CreateRandomTown(uint attempts);
 
 enum {

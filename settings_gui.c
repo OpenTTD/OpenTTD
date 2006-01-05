@@ -83,6 +83,9 @@ static inline bool RoadVehiclesAreBuilt(void)
 	return false;
 }
 
+
+static void ShowCustCurrency(void);
+
 static void GameOptionsWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -1506,7 +1509,7 @@ static const WindowDesc _cust_currency_desc = {
 	CustCurrencyWndProc,
 };
 
-void ShowCustCurrency(void)
+static void ShowCustCurrency(void)
 {
 	_str_separator[0] = _custom_currency.separator;
 	_str_separator[1] = '\0';

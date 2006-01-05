@@ -249,7 +249,6 @@ Vehicle *AllocateVehicle(void);
 bool AllocateVehicles(Vehicle **vl, int num);
 Vehicle *ForceAllocateVehicle(void);
 Vehicle *ForceAllocateSpecialVehicle(void);
-void UpdateVehiclePosHash(Vehicle *v, int x, int y);
 void VehiclePositionChanged(Vehicle *v);
 void AfterLoadVehicles(void);
 Vehicle *GetLastVehicleInChain(Vehicle *v);
@@ -271,8 +270,6 @@ bool CanRefitTo(EngineID engine_type, CargoID cid_to);
 void ViewportAddVehicles(DrawPixelInfo *dpi);
 
 void TrainEnterDepot(Vehicle *v, TileIndex tile);
-
-void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u, bool building) ;
 
 /* train_cmd.h */
 int GetTrainImage(const Vehicle *v, byte direction);
@@ -311,7 +308,6 @@ UnitID GetFreeUnitNumber(byte type);
 int LoadUnloadVehicle(Vehicle *v);
 
 void TrainConsistChanged(Vehicle *v);
-void UpdateTrainAcceleration(Vehicle *v);
 int32 GetTrainRunningCost(const Vehicle *v);
 
 int CheckTrainStoppedInDepot(const Vehicle *v);

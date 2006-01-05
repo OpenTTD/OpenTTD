@@ -41,7 +41,7 @@ enum {
 };
 
 #define DEF_UDP_RECEIVE_COMMAND(type) void NetworkPacketReceive_ ## type ## _command(Packet *p, struct sockaddr_in *client_addr)
-void NetworkSendUDP_Packet(SOCKET udp, Packet *p, struct sockaddr_in *recv);
+static void NetworkSendUDP_Packet(SOCKET udp, Packet* p, struct sockaddr_in* recv);
 
 static NetworkClientState _udp_cs;
 
@@ -303,7 +303,7 @@ static NetworkUDPPacket* const _network_udp_packet[] = {
 assert_compile(lengthof(_network_udp_packet) == PACKET_UDP_END);
 
 
-void NetworkHandleUDPPacket(Packet *p, struct sockaddr_in *client_addr)
+static void NetworkHandleUDPPacket(Packet* p, struct sockaddr_in* client_addr)
 {
 	byte type;
 
@@ -322,7 +322,7 @@ void NetworkHandleUDPPacket(Packet *p, struct sockaddr_in *client_addr)
 
 
 // Send a packet over UDP
-void NetworkSendUDP_Packet(SOCKET udp, Packet *p, struct sockaddr_in *recv)
+static void NetworkSendUDP_Packet(SOCKET udp, Packet* p, struct sockaddr_in* recv)
 {
 	int res;
 
@@ -451,7 +451,7 @@ void NetworkUDPReceive(SOCKET udp)
 }
 
 // Broadcast to all ips
-void NetworkUDPBroadCast(SOCKET udp)
+static void NetworkUDPBroadCast(SOCKET udp)
 {
 	int i;
 	struct sockaddr_in out_addr;

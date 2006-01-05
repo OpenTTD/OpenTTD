@@ -377,7 +377,7 @@ static bool ShipAccelerate(Vehicle *v)
 	return (t < v->progress);
 }
 
-int32 EstimateShipCost(EngineID engine_type)
+static int32 EstimateShipCost(EngineID engine_type)
 {
 	return ShipVehInfo(engine_type)->base_cost * (_price.ship_base>>3)>>5;
 }

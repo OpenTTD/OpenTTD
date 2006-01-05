@@ -191,6 +191,9 @@ Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z)
 	return NULL;
 }
 
+
+static void UpdateVehiclePosHash(Vehicle* v, int x, int y);
+
 void VehiclePositionChanged(Vehicle *v)
 {
 	int img = v->cur_image;
@@ -395,7 +398,7 @@ void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 
 
 
-void UpdateVehiclePosHash(Vehicle *v, int x, int y)
+static void UpdateVehiclePosHash(Vehicle* v, int x, int y)
 {
 	VehicleID *old_hash, *new_hash;
 	int old_x = v->left_coord;

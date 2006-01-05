@@ -206,8 +206,6 @@ void DrawRoadVehEngine(int x, int y, EngineID engine, uint32 image_ormod);
 void DrawShipEngine(int x, int y, EngineID engine, uint32 image_ormod);
 void DrawAircraftEngine(int x, int y, EngineID engine, uint32 image_ormod);
 
-void AcceptEnginePreview(Engine *e, PlayerID player);
-
 void LoadCustomEngineNames(void);
 void DeleteCustomEngineNames(void);
 

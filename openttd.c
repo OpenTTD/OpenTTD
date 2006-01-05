@@ -544,7 +544,7 @@ void OTTD_SendThreadMessage(ThreadMsg msg)
 /** Handle the user-messages sent to us
  * @param message message sent
  */
-void ProcessSentMessage(ThreadMsg message)
+static void ProcessSentMessage(ThreadMsg message)
 {
 	switch (message) {
 		case MSG_OTTD_SAVETHREAD_START: SaveFileStart(); break;

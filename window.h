@@ -552,7 +552,6 @@ enum WindowFlags {
 };
 
 /* window.c */
-void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom);
 void CallWindowEventNP(Window *w, int event);
 void CallWindowTickEvent(void);
 void SetWindowDirty(const Window* w);
@@ -561,9 +560,6 @@ void SendWindowMessage(WindowClass wnd_class, WindowNumber wnd_num, uint msg, ui
 Window *FindWindowById(WindowClass cls, WindowNumber number);
 void DeleteWindow(Window *w);
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number);
-Window *BringWindowToFront(Window *w);
-Window *StartWindowDrag(Window *w);
-Window *StartWindowSizing(Window *w);
 Window *FindWindowFromPt(int x, int y);
 
 bool IsWindowOfPrototype(const Window* w, const Widget* widget);

@@ -638,7 +638,6 @@ static inline bool TracksOverlap(TrackBits bits)
   return true;
 }
 
-void DrawTrackBits(TileInfo *ti, TrackBits track, bool earth, bool snow, bool flat);
 void DrawTrainDepotSprite(int x, int y, int image, RailType railtype);
 void DrawDefaultWaypointSprite(int x, int y, RailType railtype);
 #endif /* RAIL_H */

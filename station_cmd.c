@@ -118,7 +118,7 @@ RoadStop* GetRoadStopByTile(TileIndex tile, RoadStopType type)
 	return rs;
 }
 
-uint GetNumRoadStops(const Station *st, RoadStopType type)
+static uint GetNumRoadStops(const Station* st, RoadStopType type)
 {
 	uint num = 0;
 	const RoadStop *rs;

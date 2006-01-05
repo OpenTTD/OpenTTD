@@ -46,7 +46,7 @@ static void AI_DequeueCommands(byte player)
  * Needed for SP; we need to delay DoCommand with 1 tick, because else events
  *  will make infinite loops (AIScript).
  */
-void AI_PutCommandInQueue(byte player, uint tile, uint32 p1, uint32 p2, uint procc)
+static void AI_PutCommandInQueue(byte player, uint tile, uint32 p1, uint32 p2, uint procc)
 {
 	AICommand *com;
 

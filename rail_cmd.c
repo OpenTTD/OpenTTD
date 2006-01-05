@@ -1342,7 +1342,7 @@ static void DrawSpecialBuilding(uint32 image, uint32 offset,
  * @param snow Draw as snow
  * @param flat Always draw foundation
  */
-void DrawTrackBits(TileInfo *ti, TrackBits track, bool earth, bool snow, bool flat)
+static void DrawTrackBits(TileInfo* ti, TrackBits track, bool earth, bool snow, bool flat)
 {
 	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 	PalSpriteID image;

@@ -773,7 +773,7 @@ const byte _road_sloped_sprites[14] = {
  * @param snow Draw snow
  * @param flat Draw foundation
  */
-void DrawRoadBits(TileInfo *ti, byte road, byte ground_type, bool snow, bool flat)
+static void DrawRoadBits(TileInfo *ti, byte road, byte ground_type, bool snow, bool flat)
 {
 	const DrawRoadTileStruct *drts;
 	PalSpriteID image = 0;

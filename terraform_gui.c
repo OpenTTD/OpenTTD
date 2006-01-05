@@ -141,12 +141,12 @@ void PlaceProc_DemolishArea(TileIndex tile)
 	VpStartPlaceSizing(tile, VPM_X_AND_Y | GUI_PlaceProc_DemolishArea);
 }
 
-void PlaceProc_RaiseLand(TileIndex tile)
+static void PlaceProc_RaiseLand(TileIndex tile)
 {
 	GenericRaiseLowerLand(tile, 1);
 }
 
-void PlaceProc_LowerLand(TileIndex tile)
+static void PlaceProc_LowerLand(TileIndex tile)
 {
 	GenericRaiseLowerLand(tile, 0);
 }

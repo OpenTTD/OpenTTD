@@ -829,7 +829,7 @@ StringID GetCustomEngineName(EngineID engine)
 }
 
 
-void AcceptEnginePreview(Engine *e, PlayerID player)
+static void AcceptEnginePreview(Engine *e, PlayerID player)
 {
 	Player *p = GetPlayer(player);
 

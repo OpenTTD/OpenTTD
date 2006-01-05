@@ -93,7 +93,7 @@ void DrawRoadVehEngine(int x, int y, EngineID engine, uint32 image_ormod)
 	DrawSprite((6 + _roadveh_images[spritenum]) | image_ormod, x, y);
 }
 
-int32 EstimateRoadVehCost(EngineID engine_type)
+static int32 EstimateRoadVehCost(EngineID engine_type)
 {
 	return ((_price.roadveh_base >> 3) * RoadVehInfo(engine_type)->base_cost) >> 5;
 }

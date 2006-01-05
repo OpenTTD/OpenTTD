@@ -216,7 +216,7 @@ static void DoSetViewportPosition(Window *w, int left, int top, int width, int h
 	}
 }
 
-void SetViewportPosition(Window *w, int x, int y)
+static void SetViewportPosition(Window* w, int x, int y)
 {
 	ViewPort *vp = w->viewport;
 	int old_left = vp->virtual_left;
@@ -1939,7 +1939,7 @@ void VpSetPresizeRange(uint from, uint to)
 	_thd.next_drawstyle = HT_RECT;
 }
 
-void VpStartPreSizing(void)
+static void VpStartPreSizing(void)
 {
 	_thd.selend.x = -1;
 	_special_mouse_mode = WSM_PRESIZE;

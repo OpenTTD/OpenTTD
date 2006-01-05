@@ -63,7 +63,7 @@ Order UnpackOldOrder(uint16 packed)
  * Unpacks a order from savegames with version 4 and lower
  *
  */
-Order UnpackVersion4Order(uint16 packed)
+static Order UnpackVersion4Order(uint16 packed)
 {
 	Order order;
 	order.type    = GB(packed, 0, 4);

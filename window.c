@@ -23,6 +23,10 @@ void HandleButtonClick(Window *w, byte widget)
 	InvalidateWidget(w, widget);
 }
 
+
+static Window* StartWindowDrag(Window* w);
+static Window* StartWindowSizing(Window* w);
+
 static void DispatchLeftClickEvent(Window* w, int x, int y)
 {
 	WindowEvent e;
@@ -139,6 +143,8 @@ static void DispatchMouseWheelEvent(Window* w, int widget, int wheel)
 }
 
 
+static void DrawOverlappedWindow(Window* w, int left, int top, int right, int bottom);
+
 void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
 {
 	Window *w;
@@ -155,7 +161,7 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
 	}
 }
 
-void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom)
+static void DrawOverlappedWindow(Window* w, int left, int top, int right, int bottom)
 {
 	const Window* v = w;
 	int x;
@@ -287,6 +293,9 @@ void DeleteWindowByClass(WindowClass cls)
 	}
 }
 
+
+static Window* BringWindowToFront(Window* w);
+
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number)
 {
 	Window *w = FindWindowById(cls, number);
@@ -312,7 +321,7 @@ static inline bool IsVitalWindow(const Window *w)
  * - New window, Chatbar (only if open)
  * @param w window that is put into the foreground
  */
-Window *BringWindowToFront(Window *w)
+static Window* BringWindowToFront(Window* w)
 {
 	Window *v;
 	Window temp;
@@ -1057,7 +1066,7 @@ static bool HandleWindowDragging(void)
 	return false;
 }
 
-Window *StartWindowDrag(Window *w)
+static Window* StartWindowDrag(Window* w)
 {
 	w->flags4 |= WF_DRAGGING;
 	_dragging_window = true;
@@ -1070,7 +1079,7 @@ Window *StartWindowDrag(Window *w)
 	return w;
 }
 
-Window *StartWindowSizing(Window *w)
+static Window* StartWindowSizing(Window* w)
 {
 	w->flags4 |= WF_SIZING;
 	_dragging_window = true;
