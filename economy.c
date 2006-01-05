@@ -1450,7 +1450,7 @@ int LoadUnloadVehicle(Vehicle *v)
 			st->time_since_load = 0;
 
 			// And record the source of the cargo, and the days in travel.
-			v->cargo_source = st->index;	//changed this for feeder systems
+			v->cargo_source = ge->enroute_from;
 			v->cargo_days = ge->enroute_time;
 			result |= 2;
 			st->last_vehicle = v->index;
