@@ -231,7 +231,6 @@ static void InitializeDynamicVariables(void)
 {
 	/* Dynamic stuff needs to be initialized somewhere... */
 	_station_sort  = NULL;
-	_vehicle_sort  = NULL;
 	_town_sort     = NULL;
 	_industry_sort = NULL;
 }
@@ -247,7 +246,6 @@ static void UnInitializeDynamicVariables(void)
 	CleanPool(&_order_pool);
 
 	free(_station_sort);
-	free(_vehicle_sort);
 	free(_town_sort);
 	free(_industry_sort);
 }

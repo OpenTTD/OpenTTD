@@ -106,15 +106,15 @@ void ResortVehicleLists(void)
 
 void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID station)
 {
+	SortStruct* sort_list;
 	uint subtype = (type != VEH_Aircraft) ? Train_Front : 2;
 	uint n = 0;
 	uint i;
 
 	if (!(vl->flags & VL_REBUILD)) return;
 
-	/* Create array for sorting */
-	_vehicle_sort = realloc(_vehicle_sort, GetVehiclePoolSize() * sizeof(_vehicle_sort[0]));
-	if (_vehicle_sort == NULL)
+	sort_list = malloc(GetVehiclePoolSize() * sizeof(sort_list[0]));
+	if (sort_list == NULL)
 		error("Could not allocate memory for the vehicle-sorting-list");
 
 	DEBUG(misc, 1) ("Building vehicle list for player %d station %d...",
@@ -130,8 +130,8 @@ void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID sta
 
 				FOR_VEHICLE_ORDERS(v, order) {
 					if (order->type == OT_GOTO_STATION && order->station == station) {
-						_vehicle_sort[n].index = v->index;
-						_vehicle_sort[n].owner = v->owner;
+						sort_list[n].index = v->index;
+						sort_list[n].owner = v->owner;
 						++n;
 						break;
 					}
@@ -144,8 +144,8 @@ void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID sta
 			if (v->type == type && v->owner == owner && (
 				(type == VEH_Train && IsFrontEngine(v)) ||
 				(type != VEH_Train && v->subtype <= subtype))) {
-				_vehicle_sort[n].index = v->index;
-				_vehicle_sort[n].owner = v->owner;
+				sort_list[n].index = v->index;
+				sort_list[n].owner = v->owner;
 				++n;
 			}
 		}
@@ -157,7 +157,8 @@ void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID sta
 		error("Could not allocate memory for the vehicle-sorting-list");
 	vl->list_length = n;
 
-	for (i = 0; i < n; ++i) vl->sort_list[i] = _vehicle_sort[i];
+	for (i = 0; i < n; ++i) vl->sort_list[i] = sort_list[i];
+	free(sort_list);
 
 	vl->flags &= ~VL_REBUILD;
 	vl->flags |= VL_RESORT;

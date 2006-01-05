@@ -341,9 +341,6 @@ byte GetDirectionTowards(const Vehicle *v, int x, int y);
 #define BEGIN_ENUM_WAGONS(v) do {
 #define END_ENUM_WAGONS(v) } while ( (v=v->next) != NULL);
 
-/* vehicle.c */
-VARDEF SortStruct *_vehicle_sort;
-
 extern MemoryPool _vehicle_pool;
 
 /**
