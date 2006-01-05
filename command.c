@@ -77,7 +77,7 @@ DEF_COMMAND(CmdModifyOrder);
 DEF_COMMAND(CmdSkipOrder);
 DEF_COMMAND(CmdDeleteOrder);
 DEF_COMMAND(CmdInsertOrder);
-DEF_COMMAND(CmdChangeTrainServiceInt);
+DEF_COMMAND(CmdChangeServiceInt);
 DEF_COMMAND(CmdRestoreOrderIndex);
 
 DEF_COMMAND(CmdBuildIndustry);
@@ -103,7 +103,6 @@ DEF_COMMAND(CmdSellAircraft);
 DEF_COMMAND(CmdStartStopAircraft);
 DEF_COMMAND(CmdBuildAircraft);
 DEF_COMMAND(CmdSendAircraftToHangar);
-DEF_COMMAND(CmdChangeAircraftServiceInt);
 DEF_COMMAND(CmdRefitAircraft);
 
 DEF_COMMAND(CmdPlaceSign);
@@ -114,7 +113,6 @@ DEF_COMMAND(CmdStartStopRoadVeh);
 DEF_COMMAND(CmdSellRoadVeh);
 DEF_COMMAND(CmdSendRoadVehToDepot);
 DEF_COMMAND(CmdTurnRoadVeh);
-DEF_COMMAND(CmdChangeRoadVehServiceInt);
 
 DEF_COMMAND(CmdPause);
 
@@ -136,7 +134,6 @@ DEF_COMMAND(CmdStartStopShip);
 DEF_COMMAND(CmdSellShip);
 DEF_COMMAND(CmdBuildShip);
 DEF_COMMAND(CmdSendShipToDepot);
-DEF_COMMAND(CmdChangeShipServiceInt);
 DEF_COMMAND(CmdRefitShip);
 
 DEF_COMMAND(CmdCloneOrder);
@@ -212,7 +209,7 @@ static const Command _command_proc_table[] = {
 	{CmdDeleteOrder,                         0}, /*  44 */
 	{CmdInsertOrder,                         0}, /*  45 */
 
-	{CmdChangeTrainServiceInt,               0}, /*  46 */
+	{CmdChangeServiceInt,                    0}, /*  46 */
 
 	{CmdBuildIndustry,                       0}, /*  47 */
 	{CmdBuildCompanyHQ,                      0}, /*  48 */
@@ -237,7 +234,7 @@ static const Command _command_proc_table[] = {
 
 	{CmdBuildAircraft,                       0}, /*  61 */
 	{CmdSendAircraftToHangar,                0}, /*  62 */
-	{CmdChangeAircraftServiceInt,            0}, /*  63 */
+	{NULL,                                   0}, /*  63 */
 	{CmdRefitAircraft,                       0}, /*  64 */
 
 	{CmdPlaceSign,                           0}, /*  65 */
@@ -248,7 +245,7 @@ static const Command _command_proc_table[] = {
 	{CmdSellRoadVeh,                         0}, /*  69 */
 	{CmdSendRoadVehToDepot,                  0}, /*  70 */
 	{CmdTurnRoadVeh,                         0}, /*  71 */
-	{CmdChangeRoadVehServiceInt,             0}, /*  72 */
+	{NULL,                                   0}, /*  72 */
 
 	{CmdPause,                      CMD_SERVER}, /*  73 */
 
@@ -271,7 +268,7 @@ static const Command _command_proc_table[] = {
 	{CmdSellShip,                            0}, /*  87 */
 	{CmdBuildShip,                           0}, /*  88 */
 	{CmdSendShipToDepot,                     0}, /*  89 */
-	{CmdChangeShipServiceInt,                0}, /*  90 */
+	{NULL,                                   0}, /*  90 */
 	{CmdRefitShip,                           0}, /*  91 */
 
 	{NULL,                                   0}, /*  92 */

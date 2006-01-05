@@ -311,7 +311,7 @@ static void AiHandleReplaceTrain(Player *p)
 			AiRestoreVehicleOrders(GetVehicle(veh), orderbak);
 			DoCommandByTile(0, veh, 0, DC_EXEC, CMD_START_STOP_TRAIN);
 
-			DoCommandByTile(0, veh, _ai_service_interval, DC_EXEC, CMD_CHANGE_TRAIN_SERVICE_INT);
+			DoCommandByTile(0, veh, _ai_service_interval, DC_EXEC, CMD_CHANGE_SERVICE_INT);
 		}
 	}
 }
@@ -340,7 +340,7 @@ static void AiHandleReplaceRoadVeh(Player *p)
 			AiRestoreVehicleOrders(GetVehicle(veh), orderbak);
 			DoCommandByTile(0, veh, 0, DC_EXEC, CMD_START_STOP_ROADVEH);
 
-			DoCommandByTile(0, veh, _ai_service_interval, DC_EXEC, CMD_CHANGE_TRAIN_SERVICE_INT);
+			DoCommandByTile(0, veh, _ai_service_interval, DC_EXEC, CMD_CHANGE_SERVICE_INT);
 		}
 	}
 }
@@ -369,7 +369,7 @@ static void AiHandleReplaceAircraft(Player *p)
 			AiRestoreVehicleOrders(GetVehicle(veh), orderbak);
 			DoCommandByTile(0, veh, 0, DC_EXEC, CMD_START_STOP_AIRCRAFT);
 
-			DoCommandByTile(0, veh, _ai_service_interval, DC_EXEC, CMD_CHANGE_TRAIN_SERVICE_INT);
+			DoCommandByTile(0, veh, _ai_service_interval, DC_EXEC, CMD_CHANGE_SERVICE_INT);
 		}
 	}
 }
@@ -2450,7 +2450,7 @@ handle_nocash:
 
 	DoCommandByTile(0, loco_id, 0, DC_EXEC, CMD_START_STOP_TRAIN);
 
-	DoCommandByTile(0, loco_id, _ai_service_interval, DC_EXEC, CMD_CHANGE_TRAIN_SERVICE_INT);
+	DoCommandByTile(0, loco_id, _ai_service_interval, DC_EXEC, CMD_CHANGE_SERVICE_INT);
 
 	if (p->ai.num_want_fullload != 0)
 		p->ai.num_want_fullload--;
@@ -3207,7 +3207,7 @@ static void AiStateBuildRoadVehicles(Player *p)
 	}
 
 	DoCommandByTile(0, loco_id, 0, DC_EXEC, CMD_START_STOP_ROADVEH);
-	DoCommandByTile(0, loco_id, _ai_service_interval, DC_EXEC, CMD_CHANGE_TRAIN_SERVICE_INT);
+	DoCommandByTile(0, loco_id, _ai_service_interval, DC_EXEC, CMD_CHANGE_SERVICE_INT);
 
 	if (p->ai.num_want_fullload != 0) p->ai.num_want_fullload--;
 	if (--p->ai.num_loco_to_build == 0) p->ai.state = AIS_0;
@@ -3521,7 +3521,7 @@ static void AiStateBuildAircraftVehicles(Player *p)
 
 	DoCommandByTile(0, loco_id, 0, DC_EXEC, CMD_START_STOP_AIRCRAFT);
 
-	DoCommandByTile(0, loco_id, _ai_service_interval, DC_EXEC, CMD_CHANGE_TRAIN_SERVICE_INT);
+	DoCommandByTile(0, loco_id, _ai_service_interval, DC_EXEC, CMD_CHANGE_SERVICE_INT);
 
 	if (p->ai.num_want_fullload != 0)
 		p->ai.num_want_fullload--;

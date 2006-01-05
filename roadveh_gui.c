@@ -169,7 +169,7 @@ do_change_service_int:
 			mod = GetServiceIntervalClamped(mod + v->service_interval);
 			if (mod == v->service_interval) return;
 
-			DoCommandP(v->tile, v->index, mod, NULL, CMD_CHANGE_ROADVEH_SERVICE_INT | CMD_MSG(STR_018A_CAN_T_CHANGE_SERVICING));
+			DoCommandP(v->tile, v->index, mod, NULL, CMD_CHANGE_SERVICE_INT | CMD_MSG(STR_018A_CAN_T_CHANGE_SERVICING));
 			break;
 		}
 	} break;
