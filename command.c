@@ -404,7 +404,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	int y = TileY(tile) * 16;
 
 	/* Do not even think about executing out-of-bounds tile-commands */
-	if (tile > MapSize()) {
+	if (tile >= MapSize()) {
 		_cmd_text = NULL;
 		return false;
 	}
