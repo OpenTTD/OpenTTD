@@ -175,7 +175,8 @@ static struct CocoaVideoData {
 	uint32 palette32[256];
 } _cocoa_video_data;
 
-
+static bool _cocoa_video_started = false;
+static bool _cocoa_video_dialog = false;
 
 
 
@@ -1872,7 +1873,7 @@ void QZ_HideMouse (void) {
 /* Called when the internal event loop has just started running */
 - (void) applicationDidFinishLaunching: (NSNotification *) note
 {
-    /* Hand off to main application code */
+	/* Hand off to main application code */
 	QZ_GameLoop();
 
 	/* We're done, thank you for playing */
@@ -2007,10 +2008,15 @@ static void CocoaVideoStop(void)
 {
 	DEBUG(driver, 1)("cocoa_v: CocoaVideoStop");
 
+	if(!_cocoa_video_started)
+		return;
+
 	if(_cocoa_video_data.isset)
 		QZ_UnsetVideoMode();
 
 	[_ottd_main release];
+
+	_cocoa_video_started = false;
 }
 
 static const char *CocoaVideoStart(const char * const *parm)
@@ -2019,7 +2025,17 @@ static const char *CocoaVideoStart(const char * const *parm)
 
 	DEBUG(driver, 1)("cocoa_v: CocoaVideoStart");
 
+	if(_cocoa_video_started)
+		return "Already started";
+	_cocoa_video_started = true;
+
+	memset(&_cocoa_video_data, 0, sizeof(_cocoa_video_data));
+
 	setupApplication();
+
+	/* Don't create a window or enter fullscreen if we're just going to show a dialog. */
+	if(_cocoa_video_dialog)
+		return NULL;
 
 	QZ_VideoInit();
 
@@ -2084,6 +2100,31 @@ const HalVideoDriver _cocoa_video_driver = {
 	CocoaVideoChangeRes,
 	CocoaVideoFullScreen,
 };
+
+
+
+
+/* This is needed since sometimes assert is called before the videodriver is initialized */
+void CocoaDialog ( const char *title, const char *message, const char *buttonLabel )
+{
+	bool wasstarted;
+
+	_cocoa_video_dialog = true;
+
+	wasstarted = _cocoa_video_started;
+	if(!_cocoa_video_started && CocoaVideoStart(NULL) != NULL) {
+		fprintf(stderr, "%s: %s\n", title, message);
+		return;
+	}
+
+
+	NSRunAlertPanel([NSString stringWithCString: title], [NSString stringWithCString: message], [NSString stringWithCString: buttonLabel], nil, nil);
+
+	if(!wasstarted)
+		CocoaVideoStop();
+
+	_cocoa_video_dialog = false;
+}
 
 
 /* This is needed since OS X applications are started with the working dir set to / when double-clicked */

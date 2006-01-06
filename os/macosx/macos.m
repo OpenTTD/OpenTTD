@@ -8,10 +8,32 @@
  * To insure that the crosscompiler still works, let him try any changes before they are committed
  */
 
+
+#ifdef WITH_SDL
+
 void ShowMacDialog ( const char *title, const char *message, const char *buttonLabel )
 {
 	NSRunAlertPanel([NSString stringWithCString: title], [NSString stringWithCString: message], [NSString stringWithCString: buttonLabel], nil, nil);
 }
+
+#elif defined WITH_COCOA
+
+void CocoaDialog ( const char *title, const char *message, const char *buttonLabel );
+
+void ShowMacDialog ( const char *title, const char *message, const char *buttonLabel )
+{
+	CocoaDialog(title, message, buttonLabel);
+}
+
+
+#else
+
+void ShowMacDialog ( const char *title, const char *message, const char *buttonLabel )
+{
+	fprintf(stderr, "%s: %s\n", title, message);
+}
+
+#endif
 
 void ShowMacAssertDialog ( const char *function, const char *file, const int line, const char *expression )
 {
