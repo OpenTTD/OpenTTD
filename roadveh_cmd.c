@@ -1243,7 +1243,14 @@ static void RoadVehController(Vehicle *v)
 
 	if (v->u.road.overtaking != 0)  {
 		if (++v->u.road.overtaking_ctr >= 35)
-			v->u.road.overtaking = 0;
+			/* If overtaking just aborts at a random moment, we can have a out-of-bound problem,
+			 *  if the vehicle started a corner. To protect that, only allow an abort of
+			 *  overtake if we are on straight road, which are the 8 states below */
+			if (v->u.road.state == 0  || v->u.road.state == 1  ||
+					v->u.road.state == 8  || v->u.road.state == 9  ||
+					v->u.road.state == 16 || v->u.road.state == 17 ||
+					v->u.road.state == 24 || v->u.road.state == 25)
+				v->u.road.overtaking = 0;
 	}
 
 	BeginVehicleMove(v);
@@ -1279,7 +1286,6 @@ static void RoadVehController(Vehicle *v)
 	if (rd.x & 0x80) {
 		TileIndex tile = v->tile + TileOffsByDir(rd.x & 3);
 		int dir = RoadFindPathToDest(v, tile, rd.x&3);
-		int tmp;
 		uint32 r;
 		byte newdir;
 		const RoadDriveEntry *rdp;
@@ -1295,10 +1301,7 @@ again:
 			tile = v->tile;
 		}
 
-		tmp = (dir+(_opt.road_side<<4))^v->u.road.overtaking;
-		rdp = _road_drive_data[tmp];
-
-		tmp &= ~0x10;
+		rdp = _road_drive_data[(dir + (_opt.road_side << 4)) ^ v->u.road.overtaking];
 
 		x = TileX(tile) * 16 + rdp[0].x;
 		y = TileY(tile) * 16 + rdp[0].y;
@@ -1317,7 +1320,7 @@ again:
 		}
 
 		if (IS_BYTE_INSIDE(v->u.road.state, 0x20, 0x30) && IsTileType(v->tile, MP_STATION)) {
-			if ((tmp&7) >= 6) { v->cur_speed = 0; return; }
+			if ((dir & 7) >= 6) { v->cur_speed = 0; return; }
 			if (IS_BYTE_INSIDE(_m[v->tile].m5, 0x43, 0x4B)) {
 				RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
 				byte *b = &rs->status;
@@ -1330,7 +1333,7 @@ again:
 
 		if (!(r & 4)) {
 			v->tile = tile;
-			v->u.road.state = (byte)tmp;
+			v->u.road.state = (byte)dir;
 			v->u.road.frame = 0;
 		}
 		if (newdir != v->direction) {
