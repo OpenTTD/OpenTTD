@@ -958,6 +958,8 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (dst->next == NULL) {
 			/* It's the last one, so we will add the wagon just before the rear engine */
 			dst = GetPrevVehicleInChain(dst);
+			/* Now if the vehicle we want to link to is the vehicle itself, drop out */
+			if (dst == src) return CMD_ERROR;
 			// if dst is NULL, it means that dst got a rear multiheaded engine as first engine. We can't use that
 			if (dst == NULL) return CMD_ERROR;
 		} else {
