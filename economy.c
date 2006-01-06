@@ -124,25 +124,31 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 /* Count vehicles */
 	{
 		Vehicle *v;
-		int32 min_profit = _score_info[SCORE_MIN_PROFIT].needed;
+		int32 min_profit = 0;
+		bool min_profit_first = true;
 		uint num = 0;
 
 		FOR_ALL_VEHICLES(v) {
 			if (v->owner != owner)
 				continue;
 			if ((v->type == VEH_Train && IsFrontEngine(v)) ||
-					v->type == VEH_Road ||
-					(v->type == VEH_Aircraft && v->subtype<=2) ||
-					v->type == VEH_Ship) {
+					 v->type == VEH_Road ||
+					(v->type == VEH_Aircraft && v->subtype <= 2) ||
+					 v->type == VEH_Ship) {
 				num++;
 				if (v->age > 730) {
-					if (min_profit > v->profit_last_year)
+					/* Find the vehicle with the lowest amount of profit */
+					if (min_profit_first == true) {
+						min_profit = v->profit_last_year;
+						min_profit_first = false;
+					} else if (min_profit > v->profit_last_year)
 						min_profit = v->profit_last_year;
 				}
 			}
 		}
 
 		_score_part[owner][SCORE_VEHICLES] = num;
+		/* Don't allow negative min_profit to show */
 		if (min_profit > 0)
 			_score_part[owner][SCORE_MIN_PROFIT] = min_profit;
 	}
