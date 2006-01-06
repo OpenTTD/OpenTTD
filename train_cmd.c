@@ -991,19 +991,28 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (IsMultiheaded(src) && !IsTrainEngine(src)) return_cmd_error(STR_REAR_ENGINE_FOLLOW_FRONT_ERROR);
 
-	/* check if all vehicles in the source train are stopped inside a depot */
-	if (CheckTrainStoppedInDepot(src_head) < 0) return CMD_ERROR;
+	{
+		int r, num = 0;
 
-	/* check if all the vehicles in the dest train are stopped,
-	 * and that the length of the dest train is no longer than XXX vehicles */
-	if (dst_head != NULL) {
-		int num = CheckTrainStoppedInDepot(dst_head);
-		if (num < 0) return CMD_ERROR;
+		r = CheckTrainStoppedInDepot(src_head);
+		/* check if all vehicles in the source train are stopped inside a depot */
+		if (r < 0) return CMD_ERROR;
 
+		num += r;
+
+		/* check if all the vehicles in the dest train are stopped */
+		if (dst_head != NULL) {
+			r = CheckTrainStoppedInDepot(dst_head);
+			if (r < 0) return CMD_ERROR;
+
+			num += r;
+
+			assert(dst_head->tile == src_head->tile);
+		}
+
+		/* Check that the length of the dest train is no longer than XXX vehicles */
 		if (num > (_patches.mammoth_trains ? 100 : 9) && IsFrontEngine(dst_head))
 			return_cmd_error(STR_8819_TRAIN_TOO_LONG);
-
-		assert(dst_head->tile == src_head->tile);
 	}
 
 	// when moving all wagons, we can't have the same src_head and dst_head
