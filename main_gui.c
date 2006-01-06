@@ -1067,7 +1067,7 @@ static void ResetLandscape(void)
 	_random_seeds[0][0] = InteractiveRandom();
 	_random_seeds[0][1] = InteractiveRandom();
 
-	GenerateWorld(1, 1 << _patches.map_x, 1 << _patches.map_y);
+	GenerateWorld(GW_EMPTY, 1 << _patches.map_x, 1 << _patches.map_y);
 	MarkWholeScreenDirty();
 }
 

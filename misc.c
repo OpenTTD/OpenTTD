@@ -122,7 +122,7 @@ void GenerateTrees(void);
 
 void ConvertGroundTilesIntoWaterTiles(void);
 
-void InitializeGame(uint size_x, uint size_y)
+void InitializeGame(int mode, uint size_x, uint size_y)
 {
 	AllocateMap(size_x, size_y);
 
@@ -136,7 +136,7 @@ void InitializeGame(uint size_x, uint size_y)
 	_date_fract = 0;
 	_cur_tileloop_tile = 0;
 
-	{
+	if ((mode & IG_DATE_RESET) == IG_DATE_RESET) {
 		uint starting = ConvertIntDate(_patches.starting_date);
 		if ( starting == (uint)-1) starting = 10958;
 		SetDate(starting);
@@ -189,14 +189,14 @@ void GenerateWorld(int mode, uint size_x, uint size_y)
 	_current_player = OWNER_NONE;
 
 	_generating_world = true;
-	InitializeGame(size_x, size_y);
+	InitializeGame(mode == GW_RANDOM ? 0 : IG_DATE_RESET, size_x, size_y);
 	SetObjectToPlace(SPR_CURSOR_ZZZ, 0, 0, 0);
 
 	// Must start economy early because of the costs.
 	StartupEconomy();
 
 	// Don't generate landscape items when in the scenario editor.
-	if (mode == 1) {
+	if (mode == GW_EMPTY) {
 		// empty world in scenario editor
 		ConvertGroundTilesIntoWaterTiles();
 	} else {
@@ -204,7 +204,7 @@ void GenerateWorld(int mode, uint size_x, uint size_y)
 		GenerateClearTile();
 
 		// only generate towns, tree and industries in newgame mode.
-		if (mode == 0) {
+		if (mode == GW_NEWGAME) {
 			GenerateTowns();
 			GenerateTrees();
 			GenerateIndustries();
@@ -219,7 +219,7 @@ void GenerateWorld(int mode, uint size_x, uint size_y)
 	_generating_world = false;
 
 	// No need to run the tile loop in the scenario editor.
-	if (mode != 1) {
+	if (mode != GW_EMPTY) {
 		for(i=0x500; i!=0; i--)
 			RunTileLoop();
 	}

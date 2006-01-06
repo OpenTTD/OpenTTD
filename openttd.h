@@ -93,6 +93,21 @@ enum SwitchModes {
 	SM_START_SCENARIO = 10,
 };
 
+
+/* Modes for GenerateWorld */
+enum GenerateWorldModes {
+	GW_NEWGAME  = 0,    /* Generate a map for a new game */
+	GW_EMPTY    = 1,    /* Generate an empty map (sea-level) */
+	GW_RANDOM   = 2,    /* Generate a random map for SE */
+};
+
+/* Modes for InitializeGame, those are _bits_! */
+enum InitializeGameModes {
+	IG_NONE       = 0,  /* Don't do anything special */
+	IG_DATE_RESET = 1,  /* Reset the date when initializing a game */
+};
+
+
 typedef enum TransportTypes {
 	/* These constants are for now linked to the representation of bridges
 	 * and tunnels, so they can be used by GetTileTrackStatus_TunnelBridge

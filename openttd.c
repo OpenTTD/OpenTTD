@@ -279,7 +279,7 @@ static void LoadIntroGame(void)
 		sprintf(filename, "%sopntitle.dat",  _path.second_data_dir);
 		if (SaveOrLoad(filename, SL_LOAD) != SL_OK)
 #endif
-			GenerateWorld(1, 64, 64); // if failed loading, make empty world.
+			GenerateWorld(GW_EMPTY, 64, 64); // if failed loading, make empty world.
 	}
 
 	_pause = 0;
@@ -461,7 +461,7 @@ int ttd_main(int argc, char* argv[])
 	InitializeGUI();
 	IConsoleCmdExec("exec scripts/autoexec.scr 0");
 
-	GenerateWorld(1, 64, 64); // Make the viewport initialization happy
+	GenerateWorld(GW_EMPTY, 64, 64); // Make the viewport initialization happy
 
 #ifdef ENABLE_NETWORK
 	if ((network) && (_network_available)) {
@@ -582,7 +582,7 @@ static void MakeNewGame(void)
 	SetupColorsAndInitialWindow();
 
 	// Randomize world
-	GenerateWorld(0, 1<<_patches.map_x, 1<<_patches.map_y);
+	GenerateWorld(GW_NEWGAME, 1<<_patches.map_x, 1<<_patches.map_y);
 
 	// In a dedicated server, the server does not play
 	if (_network_dedicated) {
@@ -616,7 +616,7 @@ static void MakeNewEditorWorld(void)
 	SetupColorsAndInitialWindow();
 
 	// Startup the game system
-	GenerateWorld(1, 1 << _patches.map_x, 1 << _patches.map_y);
+	GenerateWorld(GW_EMPTY, 1 << _patches.map_x, 1 << _patches.map_y);
 
 	_local_player = OWNER_NONE;
 	MarkWholeScreenDirty();
@@ -797,7 +797,7 @@ void SwitchMode(int new_mode)
 		break;
 
 	case SM_GENRANDLAND: /* Generate random land within scenario editor */
-		GenerateWorld(2, 1<<_patches.map_x, 1<<_patches.map_y);
+		GenerateWorld(GW_RANDOM, 1<<_patches.map_x, 1<<_patches.map_y);
 		// XXX: set date
 		_local_player = OWNER_NONE;
 		MarkWholeScreenDirty();
