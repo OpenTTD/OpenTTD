@@ -385,22 +385,6 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return cost + _price.build_rail;
 }
 
-static const byte _signals_table[] = {
-	0x40, 0x40, 0x40, 0x10, 0x80, 0x20, 0, 0, // direction 1
-	0x80, 0x80, 0x80, 0x20, 0x40, 0x10, 0, 0  // direction 2
-};
-
-static const byte _signals_table_other[] = {
-	0x80, 0x80, 0x80, 0x20, 0x40, 0x10, 0, 0, // direction 1
-	0x40, 0x40, 0x40, 0x10, 0x80, 0x20, 0, 0  // direction 2
-};
-
-static const byte _signals_table_both[] = {
-	0xC0, 0xC0, 0xC0, 0x30, 0xC0, 0x30, 0, 0,	// both directions combined
-	0xC0, 0xC0, 0xC0, 0x30, 0xC0, 0x30, 0, 0
-};
-
-
 /** Remove a single piece of track
  * @param x,y coordinates for removal of track
  * @param p1 unused
@@ -1091,14 +1075,15 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 	cost = 0;
 
 	switch (GetRailTileType(tile)) {
+		/* XXX: Why the fuck do we remove these thow signals first? */
 		case RAIL_TYPE_SIGNALS:
-			if (_m[tile].m3 & _signals_table_both[0]) {
-				ret = DoCommandByTile(tile, 0, 0, flags, CMD_REMOVE_SIGNALS);
+			if(HasSignalOnTrack(tile, TRACK_DIAG1)) {
+				ret = DoCommandByTile(tile, TRACK_DIAG1, 0, flags, CMD_REMOVE_SIGNALS);
 				if (CmdFailed(ret)) return CMD_ERROR;
 				cost += ret;
 			}
-			if (_m[tile].m3 & _signals_table_both[3]) {
-				ret = DoCommandByTile(tile, 3, 0, flags, CMD_REMOVE_SIGNALS);
+			if(HasSignalOnTrack(tile, TRACK_LOWER)) {
+				ret = DoCommandByTile(tile, TRACK_LOWER, 0, flags, CMD_REMOVE_SIGNALS);
 				if (CmdFailed(ret)) return CMD_ERROR;
 				cost += ret;
 			}
@@ -1638,7 +1623,7 @@ static bool SetSignalsEnumProc(TileIndex tile, SetSignalsData *ssd, int track, u
 	// the tile has signals?
 	if (IsTileType(tile, MP_RAILWAY)) {
 		if (HasSignalOnTrack(tile, TrackdirToTrack(track))) {
-			if ((_m[tile].m3 & _signals_table[track]) != 0) {
+			if (HasSignalOnTrackdir(tile, ReverseTrackdir(track))) {
 				// yes, add the signal to the list of signals
 				if (ssd->cur != NUM_SSD_ENTRY) {
 					ssd->tile[ssd->cur] = tile; // remember the tile index
@@ -1646,8 +1631,8 @@ static bool SetSignalsEnumProc(TileIndex tile, SetSignalsData *ssd, int track, u
 					ssd->cur++;
 				}
 
-			if (PBSIsPbsSignal(tile, ReverseTrackdir(track)))
-				SETBIT(ssd->has_pbssignal, 2);
+				if (PBSIsPbsSignal(tile, ReverseTrackdir(track)))
+					SETBIT(ssd->has_pbssignal, 2);
 
 				// remember if this block has a presignal.
 				ssd->has_presignal |= (_m[tile].m4&1);
@@ -1660,16 +1645,14 @@ static bool SetSignalsEnumProc(TileIndex tile, SetSignalsData *ssd, int track, u
 				ssd->has_pbssignal |= num;
 			}
 
-			if ((_m[tile].m3 & _signals_table_both[track]) != 0) {
-				ssd->pbs_tile[ssd->pbs_cur] = tile; // remember the tile index
-				ssd->pbs_cur++;
-			}
+			ssd->pbs_tile[ssd->pbs_cur] = tile; // remember the tile index
+			ssd->pbs_cur++;
 
-			if (_m[tile].m3&_signals_table_other[track]) {
+			if (HasSignalOnTrackdir(tile, track)) {
 				if (_m[tile].m4&2) {
 					// this is an exit signal that points out from the segment
 					ssd->presignal_exits++;
-					if ((_m[tile].m2&_signals_table_other[track]) != 0)
+					if (GetSignalState(tile, track) != SIGNAL_STATE_RED)
 						ssd->presignal_exits_free++;
 				}
 				if (PBSIsPbsSignal(tile, track))
@@ -1819,7 +1802,7 @@ static void ChangeSignalStates(SetSignalsData *ssd)
 	// then mark the signals in the segment accordingly
 	for (i = 0; i != ssd->cur; i++) {
 		TileIndex tile = ssd->tile[i];
-		byte bit = _signals_table[ssd->bit[i]];
+		byte bit = SignalAgainstTrackdir(ssd->bit[i]);
 		uint16 m2 = _m[tile].m2;
 
 		// presignals don't turn green if there is at least one presignal exit and none are free
@@ -1827,9 +1810,9 @@ static void ChangeSignalStates(SetSignalsData *ssd)
 			int ex = ssd->presignal_exits, exfree = ssd->presignal_exits_free;
 
 			// subtract for dual combo signals so they don't count themselves
-			if (_m[tile].m4&2 && _m[tile].m3&_signals_table_other[ssd->bit[i]]) {
+			if (_m[tile].m4&2 && HasSignalOnTrackdir(tile, ssd->bit[i])) {
 				ex--;
-				if ((_m[tile].m2&_signals_table_other[ssd->bit[i]]) != 0) exfree--;
+				if (GetSignalState(tile, ssd->bit[i]) != SIGNAL_STATE_RED) exfree--;
 			}
 
 			// if we have exits and none are free, make red.
