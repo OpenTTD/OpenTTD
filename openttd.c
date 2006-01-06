@@ -115,11 +115,21 @@ void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
 	return mem;
 }
 
+extern const char _openttd_revision[];
+
 static void showhelp(void)
 {
 	char buf[4096], *p;
+	int size, pos;
 
-	p = strecpy(buf,
+	p    = buf;
+	size = sizeof(buf);
+
+	pos = snprintf(p, size, "OpenTTD %s\n", _openttd_revision);
+	p += pos; size -= pos;
+	pos = snprintf(p, size,
+		"\n"
+		"\n"
 		"Command line options:\n"
 		"  -v drv              = Set video driver (see below)\n"
 		"  -s drv              = Set sound driver (see below)\n"
@@ -136,13 +146,14 @@ static void showhelp(void)
 		#if !defined(__MORPHOS__) && !defined(__AMIGA__)
 		"  -f                  = Fork into the background (dedicated only)\n"
 		#endif
-		"  -i                  = Force to use the DOS palette (use this if you see a lot of pink)\n"
-		"  -p #player          = Player as #player (deprecated) (network only)\n"
-		"  -c config_file      = Use 'config_file' instead of 'openttd.cfg'\n",
-		lastof(buf)
+		"  -i                  = Force to use the DOS palette\n"
+		"                          (use this if you see a lot of pink)\n"
+		"  -c config_file      = Use 'config_file' instead of 'openttd.cfg'\n"
+		"\n"
 	);
+	p += pos; size -= pos;
 
-	GetDriverList(p);
+	size = GetDriverList(p, size);
 
 	ShowInfo(buf);
 }

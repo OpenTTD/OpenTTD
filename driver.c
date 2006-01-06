@@ -206,16 +206,23 @@ int GetDriverParamInt(const char* const* parm, const char* name, int def)
 }
 
 
-void GetDriverList(char* p)
+int GetDriverList(char* p, int size)
 {
 	const DriverClass* dc;
+	int pos;
 
 	for (dc = _driver_classes; dc != endof(_driver_classes); dc++) {
 		const DriverDesc* dd;
 
-		p += sprintf(p, "List of %s drivers:\n", dc->name);
+		pos = snprintf(p, size, "List of %s drivers:\n", dc->name);
+		p += pos; size -= pos;
 		for (dd = dc->descs; dd->name != NULL; dd++) {
-			p += sprintf(p, "%10s: %s\n", dd->name, dd->longname);
+			pos = snprintf(p, size, "%10s: %s\n", dd->name, dd->longname);
+			p += pos; size -= pos;
 		}
+		pos = snprintf(p, size, "\n");
+		p += pos; size -= pos;
 	}
+
+	return size;
 }

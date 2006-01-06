@@ -8,6 +8,6 @@ void LoadDriver(int driver, const char *name);
 bool GetDriverParamBool(const char* const* parm, const char* name);
 int GetDriverParamInt(const char* const* parm, const char* name, int def);
 
-void GetDriverList(char* p);
+int GetDriverList(char* p, int size);
 
 #endif /* DRIVER_H */
