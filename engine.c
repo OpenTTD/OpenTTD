@@ -608,7 +608,12 @@ int GetCustomEngineSprite(EngineID engine, const Vehicle *v, byte direction)
 
 		if (capacity == 0) capacity = 1;
 		loaded = (v->cargo_count * 100) / capacity;
-		in_motion = (v->cur_speed != 0);
+
+		if (v->type == VEH_Train) {
+			in_motion = GetFirstVehicleInChain(v)->current_order.type != OT_LOADING;
+		} else {
+			in_motion = v->current_order.type != OT_LOADING;
+		}
 	}
 
 	group = GetVehicleSpriteGroup(engine, v);

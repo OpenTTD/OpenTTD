@@ -2563,10 +2563,10 @@ static void TrainEnterStation(Vehicle *v, StationID station)
 	SET_EXPENSES_TYPE(EXPENSES_TRAIN_INC);
 	if (LoadUnloadVehicle(v) != 0) {
 		InvalidateWindow(WC_TRAINS_LIST, v->owner);
-		MarkTrainDirty(v);
 		TrainCargoChanged(v);
 		UpdateTrainAcceleration(v);
 	}
+	MarkTrainDirty(v);
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 }
 
