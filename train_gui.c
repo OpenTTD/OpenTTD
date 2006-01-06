@@ -1188,12 +1188,12 @@ static void DrawTrainDetailsWindow(Window *w)
 	SetDParam(1, v->date_of_last_service);
 	DrawString(x + 11, 141, _patches.servint_ispercent?STR_SERVICING_INTERVAL_PERCENT:STR_883C_SERVICING_INTERVAL_DAYS, 0);
 
-	x = 1;
 	y = 57;
 	sel = w->vscroll.pos;
 
 	// draw the first 3 details tabs
 	if (det_tab != 3) {
+		x = 1;
 		for(;;) {
 			if (--sel < 0 && sel >= -6) {
 				int dx = 0;
@@ -1221,7 +1221,7 @@ static void DrawTrainDetailsWindow(Window *w)
 				SetDParam(1, tot_cargo[i][0]);	// {CARGO} #2
 				SetDParam(2, i);								// {SHORTCARGO} #1
 				SetDParam(3, tot_cargo[i][1]);	// {SHORTCARGO} #2
-				DrawString(x, y, STR_013F_TOTAL_CAPACITY, 0);
+				DrawString(x, y + 2, STR_013F_TOTAL_CAPACITY, 0);
 			}
 		} while (++i != NUM_CARGO);
 	}
