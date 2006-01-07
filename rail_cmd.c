@@ -1951,7 +1951,6 @@ static void TileLoop_Track(TileIndex tile)
 {
 	byte old_ground;
 	byte new_ground;
-	TrackBits rail;
 
 	old_ground = _m[tile].m5 & RAIL_TYPE_SPECIAL ? GB(_m[tile].m4, 0, 4) : GB(_m[tile].m2, 0, 4);
 
@@ -1978,45 +1977,75 @@ static void TileLoop_Track(TileIndex tile)
 
 	if (old_ground != RAIL_GROUND_BROWN) { /* wait until bottom is green */
 		/* determine direction of fence */
-		rail = _m[tile].m5 & TRACK_BIT_MASK;
+		TrackBits rail = _m[tile].m5 & TRACK_BIT_MASK;
 
-		if (rail == TRACK_BIT_UPPER) {
-			new_ground = RAIL_GROUND_FENCE_HORIZ1;
-		} else if (rail == TRACK_BIT_LOWER) {
-			new_ground = RAIL_GROUND_FENCE_HORIZ2;
-		} else if (rail == TRACK_BIT_LEFT) {
-			new_ground = RAIL_GROUND_FENCE_VERT1;
-		} else if (rail == TRACK_BIT_RIGHT) {
-			new_ground = RAIL_GROUND_FENCE_VERT2;
-		} else {
-			PlayerID owner = GetTileOwner(tile);
+		switch (rail) {
+			case TRACK_BIT_UPPER: new_ground = RAIL_GROUND_FENCE_HORIZ1; break;
+			case TRACK_BIT_LOWER: new_ground = RAIL_GROUND_FENCE_HORIZ2; break;
+			case TRACK_BIT_LEFT:  new_ground = RAIL_GROUND_FENCE_VERT1;  break;
+			case TRACK_BIT_RIGHT: new_ground = RAIL_GROUND_FENCE_VERT2;  break;
 
-			if ( (!(rail&(TRACK_BIT_DIAG2|TRACK_BIT_UPPER|TRACK_BIT_LEFT)) && (rail&TRACK_BIT_DIAG1)) || rail==(TRACK_BIT_LOWER|TRACK_BIT_RIGHT)) {
-				if (!IsTileType(tile + TileDiffXY(0, -1), MP_RAILWAY) ||
-						!IsTileOwner(tile + TileDiffXY(0, -1), owner) ||
-						(_m[tile + TileDiffXY(0, -1)].m5 == TRACK_BIT_UPPER || _m[tile + TileDiffXY(0, -1)].m5 == TRACK_BIT_LEFT))
-							new_ground = RAIL_GROUND_FENCE_NW;
-			}
+			default: {
+				PlayerID owner = GetTileOwner(tile);
 
-			if ( (!(rail&(TRACK_BIT_DIAG2|TRACK_BIT_LOWER|TRACK_BIT_RIGHT)) && (rail&TRACK_BIT_DIAG1)) || rail==(TRACK_BIT_UPPER|TRACK_BIT_LEFT)) {
-				if (!IsTileType(tile + TileDiffXY(0, 1), MP_RAILWAY) ||
-						!IsTileOwner(tile + TileDiffXY(0, 1), owner) ||
-						(_m[tile + TileDiffXY(0, 1)].m5 == TRACK_BIT_LOWER || _m[tile + TileDiffXY(0, 1)].m5 == TRACK_BIT_RIGHT))
-							new_ground = (new_ground == RAIL_GROUND_FENCE_NW) ? RAIL_GROUND_FENCE_SENW : RAIL_GROUND_FENCE_SE;
-			}
+				if (rail == (TRACK_BIT_LOWER | TRACK_BIT_RIGHT) || (
+							!(rail & (TRACK_BIT_DIAG2 | TRACK_BIT_UPPER | TRACK_BIT_LEFT)) &&
+							(rail & TRACK_BIT_DIAG1)
+						)) {
+					TileIndex n = tile + TileDiffXY(0, -1);
 
-			if ( (!(rail&(TRACK_BIT_DIAG1|TRACK_BIT_UPPER|TRACK_BIT_RIGHT)) && (rail&TRACK_BIT_DIAG2)) || rail==(TRACK_BIT_LOWER|TRACK_BIT_LEFT)) {
-				if (!IsTileType(tile + TileDiffXY(-1, 0), MP_RAILWAY) ||
-						!IsTileOwner(tile + TileDiffXY(-1, 0), owner) ||
-						(_m[tile + TileDiffXY(-1, 0)].m5 == TRACK_BIT_UPPER || _m[tile + TileDiffXY(-1, 0)].m5 == TRACK_BIT_RIGHT))
-							new_ground = RAIL_GROUND_FENCE_NE;
-			}
+					if (!IsTileType(n, MP_RAILWAY) ||
+							!IsTileOwner(n, owner) ||
+							_m[n].m5 == TRACK_BIT_UPPER ||
+							_m[n].m5 == TRACK_BIT_LEFT) {
+						new_ground = RAIL_GROUND_FENCE_NW;
+					}
+				}
 
-			if ( (!(rail&(TRACK_BIT_DIAG1|TRACK_BIT_LOWER|TRACK_BIT_LEFT)) && (rail&TRACK_BIT_DIAG2)) || rail==(TRACK_BIT_UPPER|TRACK_BIT_RIGHT)) {
-				if (!IsTileType(tile + TileDiffXY(1, 0), MP_RAILWAY) ||
-						!IsTileOwner(tile + TileDiffXY(1, 0), owner) ||
-						(_m[tile + TileDiffXY(1, 0)].m5 == TRACK_BIT_LOWER || _m[tile + TileDiffXY(1, 0)].m5 == TRACK_BIT_LEFT))
-							new_ground = (new_ground == RAIL_GROUND_FENCE_NE) ? RAIL_GROUND_FENCE_NESW : RAIL_GROUND_FENCE_SW;
+				if (rail == (TRACK_BIT_UPPER | TRACK_BIT_LEFT) || (
+							!(rail & (TRACK_BIT_DIAG2 | TRACK_BIT_LOWER | TRACK_BIT_RIGHT)) &&
+							(rail & TRACK_BIT_DIAG1)
+						)) {
+					TileIndex n = tile + TileDiffXY(0, 1);
+
+					if (!IsTileType(n, MP_RAILWAY) ||
+							!IsTileOwner(n, owner) ||
+							_m[n].m5 == TRACK_BIT_LOWER ||
+							_m[n].m5 == TRACK_BIT_RIGHT) {
+						new_ground = (new_ground == RAIL_GROUND_FENCE_NW) ?
+							RAIL_GROUND_FENCE_SENW : RAIL_GROUND_FENCE_SE;
+					}
+				}
+
+				if (rail == (TRACK_BIT_LOWER | TRACK_BIT_LEFT) || (
+							!(rail & (TRACK_BIT_DIAG1 | TRACK_BIT_UPPER | TRACK_BIT_RIGHT)) &&
+							(rail & TRACK_BIT_DIAG2)
+						)) {
+					TileIndex n = tile + TileDiffXY(-1, 0);
+
+					if (!IsTileType(n, MP_RAILWAY) ||
+							!IsTileOwner(n, owner) ||
+							_m[n].m5 == TRACK_BIT_UPPER ||
+							_m[n].m5 == TRACK_BIT_RIGHT) {
+						new_ground = RAIL_GROUND_FENCE_NE;
+					}
+				}
+
+				if (rail == (TRACK_BIT_UPPER | TRACK_BIT_RIGHT) || (
+							!(rail & (TRACK_BIT_DIAG1 | TRACK_BIT_LOWER | TRACK_BIT_LEFT)) &&
+							(rail & TRACK_BIT_DIAG2)
+						)) {
+					TileIndex n = tile + TileDiffXY(1, 0);
+
+					if (!IsTileType(n, MP_RAILWAY) ||
+							!IsTileOwner(n, owner) ||
+							_m[n].m5 == TRACK_BIT_LOWER ||
+							_m[n].m5 == TRACK_BIT_LEFT) {
+						new_ground = (new_ground == RAIL_GROUND_FENCE_NE) ?
+							RAIL_GROUND_FENCE_NESW : RAIL_GROUND_FENCE_SW;
+					}
+				}
+				break;
 			}
 		}
 	}
