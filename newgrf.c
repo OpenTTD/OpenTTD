@@ -333,8 +333,13 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			ret = true;
 		} break;
 		case 0x19: { /* Engine traction type */
-			/* TODO: What do the individual numbers mean?
-			 * XXX: And in what base are they, in fact? --pasky */
+			/* What do the individual numbers mean?
+			 * 0x00 .. 0x07: Steam
+			 * 0x08 .. 0x27: Diesel
+			 * 0x28 .. 0x31: Electric
+			 * 0x32 .. 0x37: Monorail
+			 * 0x38 .. 0x41: Maglev
+			 */
 			FOR_EACH_OBJECT {
 				uint8 traction = grf_load_byte(&buf);
 				int engclass;
@@ -343,7 +348,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 					engclass = 0;
 				else if (traction <= 0x27)
 					engclass = 1;
-				else if (traction <= 0x31)
+				else if (traction <= 0x41)
 					engclass = 2;
 				else
 					break;
