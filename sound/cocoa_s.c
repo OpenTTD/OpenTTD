@@ -65,7 +65,8 @@ static const char *CocoaSoundStart(const char * const *parm)
 
 	requestedDesc.mBitsPerChannel = 16;
 	requestedDesc.mFormatFlags |= kLinearPCMFormatFlagIsSignedInteger;
-#if 1		// Big endian?
+
+#ifdef TTD_BIG_ENDIAN
 	requestedDesc.mFormatFlags |= kLinearPCMFormatFlagIsBigEndian;
 #endif
 
