@@ -1996,8 +1996,8 @@ static void TileLoop_Track(TileIndex tile)
 
 					if (!IsTileType(n, MP_RAILWAY) ||
 							!IsTileOwner(n, owner) ||
-							_m[n].m5 == TRACK_BIT_UPPER ||
-							_m[n].m5 == TRACK_BIT_LEFT) {
+							(_m[n].m5 & TRACK_BIT_MASK) == TRACK_BIT_UPPER ||
+							(_m[n].m5 & TRACK_BIT_MASK) == TRACK_BIT_LEFT) {
 						new_ground = RAIL_GROUND_FENCE_NW;
 					}
 				}
@@ -2010,8 +2010,8 @@ static void TileLoop_Track(TileIndex tile)
 
 					if (!IsTileType(n, MP_RAILWAY) ||
 							!IsTileOwner(n, owner) ||
-							_m[n].m5 == TRACK_BIT_LOWER ||
-							_m[n].m5 == TRACK_BIT_RIGHT) {
+							(_m[n].m5 & TRACK_BIT_MASK) == TRACK_BIT_LOWER ||
+							(_m[n].m5 & TRACK_BIT_MASK) == TRACK_BIT_RIGHT) {
 						new_ground = (new_ground == RAIL_GROUND_FENCE_NW) ?
 							RAIL_GROUND_FENCE_SENW : RAIL_GROUND_FENCE_SE;
 					}
@@ -2025,8 +2025,8 @@ static void TileLoop_Track(TileIndex tile)
 
 					if (!IsTileType(n, MP_RAILWAY) ||
 							!IsTileOwner(n, owner) ||
-							_m[n].m5 == TRACK_BIT_UPPER ||
-							_m[n].m5 == TRACK_BIT_RIGHT) {
+							(_m[n].m5 & TRACK_BIT_MASK) == TRACK_BIT_UPPER ||
+							(_m[n].m5 & TRACK_BIT_MASK) == TRACK_BIT_RIGHT) {
 						new_ground = RAIL_GROUND_FENCE_NE;
 					}
 				}
@@ -2039,8 +2039,8 @@ static void TileLoop_Track(TileIndex tile)
 
 					if (!IsTileType(n, MP_RAILWAY) ||
 							!IsTileOwner(n, owner) ||
-							_m[n].m5 == TRACK_BIT_LOWER ||
-							_m[n].m5 == TRACK_BIT_LEFT) {
+							(_m[n].m5 & TRACK_BIT_MASK) == TRACK_BIT_LOWER ||
+							(_m[n].m5 & TRACK_BIT_MASK) == TRACK_BIT_LEFT) {
 						new_ground = (new_ground == RAIL_GROUND_FENCE_NE) ?
 							RAIL_GROUND_FENCE_NESW : RAIL_GROUND_FENCE_SW;
 					}
