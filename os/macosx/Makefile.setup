@@ -68,6 +68,14 @@ ifdef WITH_SDL
 	endif
 endif
 
+ifdef JAGUAR
+	LIBPNG-CONFIG:=$(LIBPNG_PPC_CONFIG)
+	SDL-CONFIG:=$(SDL_PPC_CONFIG)
+	CC_TARGET:=$(PPC_CC)
+	CFLAGS:= $(CFLAGS_PPC) -arch ppc
+	LDFLAGS:= $(LDFLAGS_PPC)
+endif
+
 ifdef FAT_BINARY
 	# set up config files
 	ifndef SKIP_LIB_TEST

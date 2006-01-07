@@ -107,7 +107,10 @@
 #
 # Special for crosscompiling there are some commands available:
 #
-# FAT_BINARY: builds a universal binary for OSX. Make sure you got both PPC and x86 libs
+# FAT_BINARY: builds a universal binary for OSX. Make sure you got both PPC and x86 libs. Only works with GCC 4 or newer
+#
+# JAGUAR: Crosscompiling for OSX 1.2.8 (codenamed Jaguar). Only works if OSX is defined too. Only works with GCC 4 or newer
+#	This can be changed to any PPC version of OSX by changing the ppc flags in Makefile.config
 #
 # ENDIAN_FORCE: forces the endian-check to give a certain result. Can be BE, LE or PREPROCESSOR.
 #	PREPROCESSOR is always used on all OSX targets and will make the preprocessor pick the right endian.
