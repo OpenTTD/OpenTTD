@@ -120,14 +120,11 @@ extern const char _openttd_revision[];
 static void showhelp(void)
 {
 	char buf[4096], *p;
-	int size, pos;
 
 	p    = buf;
-	size = sizeof(buf);
 
-	pos = snprintf(p, size, "OpenTTD %s\n", _openttd_revision);
-	p += pos; size -= pos;
-	pos = snprintf(p, size,
+	p += sprintf(p, "OpenTTD %s\n", _openttd_revision);
+	p += sprintf(p,
 		"\n"
 		"\n"
 		"Command line options:\n"
@@ -151,9 +148,8 @@ static void showhelp(void)
 		"  -c config_file      = Use 'config_file' instead of 'openttd.cfg'\n"
 		"\n"
 	);
-	p += pos; size -= pos;
 
-	size = GetDriverList(p, size);
+	p = GetDriverList(p);
 
 	ShowInfo(buf);
 }
