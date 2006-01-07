@@ -48,7 +48,7 @@ void DrawTrainEnginePurchaseInfo(int x, int y, EngineID engine_number)
 	y += 10;
 
 	/* Running cost */
-	SetDParam(0, (rvi->running_cost_base * _price.running_rail[rvi->engclass] >> 8) << multihead);
+	SetDParam(0, (rvi->running_cost_base * _price.running_rail[rvi->running_cost_class] >> 8) << multihead);
 	DrawString(x,y, STR_PURCHASE_INFO_RUNNINGCOST, 0);
 	y += 10;
 

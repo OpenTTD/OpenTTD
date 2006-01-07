@@ -3601,9 +3601,9 @@ int32 GetTrainRunningCost(const Vehicle *v)
 
 	do {
 		const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
-		if (rvi->running_cost_base)
-			cost += rvi->running_cost_base * _price.running_rail[rvi->engclass];
-	} while ( (v=v->next) != NULL );
+		if (rvi->running_cost_base > 0)
+			cost += rvi->running_cost_base * _price.running_rail[rvi->running_cost_class];
+	} while ((v = v->next) != NULL);
 
 	return cost;
 }
