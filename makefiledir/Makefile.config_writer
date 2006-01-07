@@ -72,13 +72,6 @@ $(MAKE_CONFIG):
 	$(call CONFIG_LINE,WITH_COCOA:=$(WITH_COCOA))
 	$(call CONFIG_LINE,)
 
-	$(call CONFIG_LINE,\# Lib paths for OSX. Read os/MacOSX/Makefile for more info)
-	$(call CONFIG_LINE,OSX_LIB_PATH:=$(OSX_LIB_PATH))
-	$(call CONFIG_LINE,OSX_LOCAL_LIB_PATH:=$(OSX_LOCAL_LIB_PATH))
-	$(call CONFIG_LINE,OSX_CHANGE_LIB_PATH:=$(OSX_CHANGE_LIB_PATH))
-	$(call CONFIG_LINE,x86_SDL_LIB:=$(x86_SDL_LIB))
-	$(call CONFIG_LINE,)
-
 	$(call CONFIG_LINE,\# OS flags)
 	$(call CONFIG_LINE,WIN32:=$(WIN32))
 	$(call CONFIG_LINE,UNIX:=$(UNIX))

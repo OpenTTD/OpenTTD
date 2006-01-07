@@ -89,22 +89,6 @@ $(error no PPC libpng found)
 $(error no x86 libpng found)
 			endif
 		endif
-
-		ifdef WITH_SDL
-			ifdef STATIC
-				ifndef x86_SDL_LIB
-$(error static universal build without a defined x86 SDL lib)
-				endif
-			endif
-			TEST:=$(shell lipo -info `$(SDL_PPC_CONFIG) --prefix`/lib/libSDL.a | xargs -n 1 | grep "ppc"))
-			ifndef TEST
-$(error no PPC SDL lib found)
-			endif
-			TEST:=$(shell lipo -info `$(SDL_x86_CONFIG) --prefix`/lib/libSDL.a | xargs -n 1 | grep "i386"))
-			ifndef TEST
-$(error no x86 SDL lib found)
-			endif
-		endif
 	endif
 
 	ifdef UNIVERSAL_x86_PART

@@ -4,7 +4,6 @@
 
 ifdef FAT_BINARY
 FAT_BINARY:=build_universal_binary
-COPY_x86_SDL_LIB:=$(Q)cp $(x86_SDL_LIB) $(OSXAPP)/Contents/lib/libSDL-x86.dylib
 endif
 
 ifdef UNIVERSAL_x86_PART
@@ -24,7 +23,6 @@ $(FAT_BINARY): $(TTD)
 	$(Q)cp $(TTD) temp_binary_dir/$(TTD)_a
 	$(Q)rm -rf $(TTD) $(OBJS) # delete all .o files so we can compile for a new endian
 	$(Q)make UNIVERSAL_x86_PART:=1
-	$(Q)install_name_tool -change $(x86_SDL_LIB) @executable_path/../lib/libSDL-x86.dylib $(TTD)
 	$(Q)cp $(TTD) temp_binary_dir/$(TTD)_b
 	@echo '===> Joining the PPC and x86 binaries into one universal one'
 	$(Q)lipo temp_binary_dir/$(TTD)_a temp_binary_dir/$(TTD)_b -create -output $(TTD)
@@ -40,7 +38,6 @@ $(BUILD_OSX_BUNDLE): $(TTD) $(FAT_BINARY)
 	$(Q)mkdir -p "$(OSXAPP)"/Contents/Resources
 	$(Q)mkdir -p "$(OSXAPP)"/Contents/Data
 	$(Q)mkdir -p "$(OSXAPP)"/Contents/Lang
-	$(Q)mkdir -p "$(OSXAPP)"/Contents/lib
 	$(Q)echo "APPL????" > "$(OSXAPP)"/Contents/PkgInfo
 	$(Q)cp os/macosx/openttd.icns "$(OSXAPP)"/Contents/Resources/openttd.icns
 	$(Q)os/macosx/plistgen.sh "$(OSXAPP)" "$(REV)"
@@ -48,7 +45,6 @@ $(BUILD_OSX_BUNDLE): $(TTD) $(FAT_BINARY)
 	$(Q)cp os/macosx/splash.png "$(OSXAPP)"/Contents/Data/
 	$(Q)cp lang/*.lng "$(OSXAPP)"/Contents/Lang/
 	$(Q)cp $(TTD) "$(OSXAPP)"/Contents/MacOS/$(TTD)
-	$(COPY_x86_SDL_LIB)
 
 # make the release disk image. Should only be used with releases and is a good and fast way to make sure to remember all the needed files
 release: all
