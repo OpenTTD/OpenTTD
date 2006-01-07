@@ -250,6 +250,9 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT {
 				uint8 runcostfact = grf_load_byte(&buf);
 
+				if (rvi[i].flags & RVI_MULTIHEAD)
+					runcostfact /= 2;
+
 				rvi[i].running_cost_base = runcostfact;
 				dewagonize(runcostfact, engine + i);
 			}
@@ -278,12 +281,18 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				uint8 dual = grf_load_byte(&buf);
 
 				if (dual != 0) {
-					if (!(rvi[i].flags & RVI_MULTIHEAD)) // adjust power if needed
+					if (!(rvi[i].flags & RVI_MULTIHEAD)) {
+						// adjust power and running cost if needed
 						rvi[i].power /= 2;
+						rvi[i].running_cost_base /= 2;
+					}
 					rvi[i].flags |= RVI_MULTIHEAD;
 				} else {
-					if (rvi[i].flags & RVI_MULTIHEAD) // adjust power if needed
+					if (rvi[i].flags & RVI_MULTIHEAD) {
+						// adjust power and running cost if needed
 						rvi[i].power *= 2;
+						rvi[i].running_cost_base /= 2;
+					}
 					rvi[i].flags &= ~RVI_MULTIHEAD;
 				}
 			}
