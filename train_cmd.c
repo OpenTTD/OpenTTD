@@ -1005,7 +1005,9 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			r = CheckTrainStoppedInDepot(dst_head);
 			if (r < 0) return CMD_ERROR;
 
-			num += r;
+			/* If we move in the same vehicle, it is okay */
+			if (dst_head != src_head)
+				num += r;
 
 			assert(dst_head->tile == src_head->tile);
 		}
