@@ -1654,10 +1654,17 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 			new_front = true;
 
 			new_v->current_order = old_v->current_order;
-			if (old_v->type == VEH_Train){
-				// move the entire train to the new engine, including the old engine. It will be sold in a moment anyway
-				if (GetNextVehicle(old_v) != NULL) {
-					DoCommand(0, 0, (new_v->index << 16) | GetNextVehicle(old_v)->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+			if (old_v->type == VEH_Train && GetNextVehicle(old_v) != NULL){
+				Vehicle *temp_v = GetNextVehicle(old_v);
+
+				// move the entire train to the new engine, excluding the old engine
+				if (IsMultiheaded(old_v) && temp_v == old_v->u.rail.other_multiheaded_part) {
+					// we got front and rear of a multiheaded engine right after each other. We should work with the next in line instead
+					temp_v = GetNextVehicle(temp_v);
+				}
+
+				if (temp_v != NULL) {
+					DoCommand(0, 0, (new_v->index << 16) | temp_v->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 				}
 			}
 		}
