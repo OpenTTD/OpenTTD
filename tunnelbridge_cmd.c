@@ -204,6 +204,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	uint i;
 	int32 cost, terraformcost, ret;
 	bool allow_on_slopes;
+	bool reserved = false;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -351,6 +352,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				if (ti.map5 != 1) goto not_valid_below;
 			}
 			m5 = 0xE0;
+			reserved = PBSTileReserved(ti.tile) != 0;
 		} else if (ti.type == MP_STREET) {
 			if (direction == 0) {
 				if (ti.map5 != 5) goto not_valid_below;
@@ -399,6 +401,16 @@ not_valid_below:;
 
 			_m[ti.tile].m2 = (bridge_type << 4) | m5;
 			SB(_m[ti.tile].m3, 4, 4, railtype);
+
+			if (ti.type == MP_RAILWAY) {
+				// Set or clear PBS reservation status. direction here is of
+				// the bridge, not the track below.
+				if (reserved) {
+					PBSReserveTrack(ti.tile, direction ? TRACK_DIAG1 : TRACK_DIAG2);
+				} else {
+					PBSClearTrack(ti.tile, direction ? TRACK_DIAG1 : TRACK_DIAG2);
+				}
+			}
 
 			MarkTileDirtyByTile(ti.tile);
 		}
