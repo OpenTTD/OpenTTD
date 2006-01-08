@@ -807,7 +807,10 @@ int CheckTrainStoppedInDepot(const Vehicle *v)
 
 	count = 0;
 	for (; v != NULL; v = v->next) {
-		count++;
+		/* This count is used by the depot code to determine the number of engines
+		 * in the consist. Exclude articulated parts so that autoreplacing to
+		 * engines with more articulated parts that before works correctly. */
+		if (!IsArticulatedPart(v)) count++;
 		if (v->u.rail.track != 0x80 || v->tile != tile ||
 				(IsFrontEngine(v) && !(v->vehstatus & VS_STOPPED))) {
 			_error_message = STR_881A_TRAINS_CAN_ONLY_BE_ALTERED;
@@ -998,7 +1001,19 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		/* check if all vehicles in the source train are stopped inside a depot */
 		if (r < 0) return CMD_ERROR;
 
-		num += r;
+		if (HASBIT(p2, 0)) {
+			/* If moving the rest of the train, exclude wagons before the
+			 * selected one. */
+
+			Vehicle *u;
+			for (u = src_head; u != src && u != NULL; u = GetNextVehicle(u))
+				r--;
+
+			num += r;
+		} else {
+			// If moving only one vehicle, just count that.
+			num++;
+		}
 
 		/* check if all the vehicles in the dest train are stopped */
 		if (dst_head != NULL) {
