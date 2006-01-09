@@ -27,7 +27,8 @@ extern const HalVideoDriver _cocoa_video_driver;
 #define QZ_SCROLLOCK    0x6B
 #define QZ_PAUSE		0x71
 #define QZ_POWER		0x7F
-#define QZ_BACKQUOTE	0x32
+#define QZ_BACKQUOTE		0x0A
+#define QZ_BACKQUOTE2		0x32
 #define QZ_1			0x12
 #define QZ_2			0x13
 #define QZ_3			0x14
