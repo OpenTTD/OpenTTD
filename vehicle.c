@@ -1618,7 +1618,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 	Vehicle *new_v = NULL;
 	char vehicle_name[32];
 
-	new_engine_type = EngineReplacement(p, old_v->engine_type);
+	new_engine_type = EngineReplacementForPlayer(p, old_v->engine_type);
 	if (new_engine_type == INVALID_ENGINE) new_engine_type = old_v->engine_type;
 
 	cost = DoCommand(old_v->x_pos, old_v->y_pos, new_engine_type, 1, flags, CMD_BUILD_VEH(old_v->type));
@@ -1739,7 +1739,7 @@ static void MaybeReplaceVehicle(Vehicle *v)
 			if (!p->engine_renew ||
 					w->age - w->max_age < (p->engine_renew_months * 30) || // replace if engine is too old
 					w->max_age == 0) { // rail cars got a max age of 0
-				if (!EngineHasReplacement(p, w->engine_type)) // updates to a new model
+				if (!EngineHasReplacementForPlayer(p, w->engine_type)) // updates to a new model
 					continue;
 			}
 

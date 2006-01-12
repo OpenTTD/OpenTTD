@@ -422,7 +422,7 @@ static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, Engine
 		const RailVehicleInfo *rvi = RailVehInfo(i);
 		const EngineInfo *info = &_engine_info[i];
 
-		if (!EngineHasReplacement(p, i) && _player_num_engines[i] == 0 && show_outdated) continue;
+		if (!EngineHasReplacementForPlayer(p, i) && _player_num_engines[i] == 0 && show_outdated) continue;
 
 		if (rvi->power == 0 && !show_cars)   // disables display of cars (works since they do not have power)
 			continue;
@@ -481,7 +481,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 				const EngineInfo *info = &_engine_info[engine_id];
 
 				if (ENGINE_AVAILABLE && RailVehInfo(engine_id)->power && e->railtype == railtype) {
-					if (_player_num_engines[engine_id] > 0 || EngineHasReplacement(p, engine_id)) {
+					if (_player_num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
 						if (sel[0] == 0) selected_id[0] = engine_id;
 						count++;
 						sel[0]--;
@@ -502,7 +502,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 			engine_id = ROAD_ENGINES_INDEX;
 
 			do {
-				if (_player_num_engines[engine_id] > 0 || EngineHasReplacement(p, engine_id)) {
+				if (_player_num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
 					if (sel[0] == 0) selected_id[0] = engine_id;
 					count++;
 					sel[0]--;
@@ -533,7 +533,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 			engine_id = SHIP_ENGINES_INDEX;
 
 			do {
-				if (_player_num_engines[engine_id] > 0 || EngineHasReplacement(p, engine_id)) {
+				if (_player_num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
 					if (sel[0] == 0) selected_id[0] = engine_id;
 					count++;
 					sel[0]--;
@@ -566,7 +566,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 			engine_id = AIRCRAFT_ENGINES_INDEX;
 
 			do {
-				if (_player_num_engines[engine_id] > 0 || EngineHasReplacement(p, engine_id)) {
+				if (_player_num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
 					count++;
 					if (sel[0] == 0) selected_id[0] = engine_id;
 					sel[0]--;
@@ -643,7 +643,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 				cargo = RoadVehInfo(selected_id[0])->cargo_type;
 
 				do {
-					if (_player_num_engines[engine_id] > 0 || EngineHasReplacement(p, engine_id)) {
+					if (_player_num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
 						if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
 							DrawString(x+59, y+2, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
 							DrawRoadVehEngine(x+29, y+6, engine_id, _player_num_engines[engine_id] > 0 ? SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)) : PALETTE_CRASH);
@@ -678,7 +678,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 				refittable = ShipVehInfo(selected_id[0])->refittable;
 
 				do {
-					if (_player_num_engines[engine_id] > 0 || EngineHasReplacement(p, engine_id)) {
+					if (_player_num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
 						if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
 							DrawString(x+75, y+7, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
 							DrawShipEngine(x+35, y+10, engine_id, _player_num_engines[engine_id] > 0 ? SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)) : PALETTE_CRASH);
@@ -711,7 +711,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 				byte subtype = AircraftVehInfo(selected_id[0])->subtype;
 
 				do {
-					if (_player_num_engines[engine_id] > 0 || EngineHasReplacement(p, engine_id)) {
+					if (_player_num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
 						if (sel[0] == 0) selected_id[0] = engine_id;
 						if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
 							DrawString(x+62, y+7, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
@@ -825,8 +825,8 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				if (selected_id[0] == INVALID_ENGINE ||
 						selected_id[1] == INVALID_ENGINE ||
 						selected_id[0] == selected_id[1] ||
-						EngineReplacement(p, selected_id[1]) != INVALID_ENGINE ||
-						EngineReplacement(p, selected_id[0]) == selected_id[1]) {
+						EngineReplacementForPlayer(p, selected_id[1]) != INVALID_ENGINE ||
+						EngineReplacementForPlayer(p, selected_id[0]) == selected_id[1]) {
 					SETBIT(w->disabled_state, 4);
 				} else {
 					CLRBIT(w->disabled_state, 4);
@@ -836,7 +836,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				//    The left list (existing vehicle) is empty
 				// or The selected vehicle has no replacement set up
 				if (selected_id[0] == INVALID_ENGINE ||
-						!EngineHasReplacement(p, selected_id[0])) {
+						!EngineHasReplacementForPlayer(p, selected_id[0])) {
 					SETBIT(w->disabled_state, 6);
 				} else {
 					CLRBIT(w->disabled_state, 6);
@@ -854,10 +854,10 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 
 				// sets up the string for the vehicle that is being replaced to
 				if (selected_id[0] != INVALID_ENGINE) {
-					if (!EngineHasReplacement(p, selected_id[0])) {
+					if (!EngineHasReplacementForPlayer(p, selected_id[0])) {
 						SetDParam(0, STR_NOT_REPLACING);
 					} else {
-						SetDParam(0, GetCustomEngineName(EngineReplacement(p, selected_id[0])));
+						SetDParam(0, GetCustomEngineName(EngineReplacementForPlayer(p, selected_id[0])));
 					}
 				} else {
 					SetDParam(0, STR_NOT_REPLACING_VEHICLE_SELECTED);

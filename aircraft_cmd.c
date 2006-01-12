@@ -1450,7 +1450,7 @@ static void AircraftEventHandler_HeliTakeOff(Vehicle *v, const AirportFTAClass *
 
 	// check if the aircraft needs to be replaced or renewed and send it to a hangar if needed
 	if (v->owner == _local_player && (
-				EngineHasReplacement(p, v->engine_type) ||
+				EngineHasReplacementForPlayer(p, v->engine_type) ||
 				(p->engine_renew && v->age - v->max_age > p->engine_renew_months * 30)
 			)) {
 		_current_player = _local_player;
@@ -1514,7 +1514,7 @@ static void AircraftEventHandler_Landing(Vehicle *v, const AirportFTAClass *Airp
 	// check if the aircraft needs to be replaced or renewed and send it to a hangar if needed
 	if (v->current_order.type != OT_GOTO_DEPOT && v->owner == _local_player) {
 		// only the vehicle owner needs to calculate the rest (locally)
-		if (EngineHasReplacement(p, v->engine_type) ||
+		if (EngineHasReplacementForPlayer(p, v->engine_type) ||
 			(p->engine_renew && v->age - v->max_age > (p->engine_renew_months * 30))) {
 			// send the aircraft to the hangar at next airport (bit 17 set)
 			_current_player = _local_player;

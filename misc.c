@@ -89,6 +89,7 @@ void SetDate(uint date)
 void InitializeVehicles(void);
 void InitializeWaypoints(void);
 void InitializeDepot(void);
+void InitializeEngines(void);
 void InitializeOrders(void);
 void InitializeClearLand(void);
 void InitializeRail(void);
@@ -142,6 +143,7 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 		SetDate(starting);
 	}
 
+	InitializeEngines();
 	InitializeVehicles();
 	InitializeWaypoints();
 	InitializeDepot();

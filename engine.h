@@ -7,6 +7,7 @@
   */
 
 #include "sprite.h"
+#include "pool.h"
 
 typedef struct RailVehicleInfo {
 	byte image_index;
@@ -100,6 +101,10 @@ enum {
 
 enum {
 	NUM_VEHICLE_TYPES = 6
+};
+
+enum {
+	INVALID_ENGINE = 0xFFFF,
 };
 
 void AddTypeToEngines(void);
@@ -282,5 +287,81 @@ static inline const RoadVehicleInfo* RoadVehInfo(EngineID e)
 void UnloadWagonOverrides(void);
 void UnloadCustomEngineSprites(void);
 void UnloadCustomEngineNames(void);
+
+/************************************************************************
+ * Engine Replacement stuff
+ ************************************************************************/
+
+/**
+ * Struct to store engine replacements. DO NOT USE outside of engine.c. Is
+ * placed here so the only exception to this rule, the saveload code, can use
+ * it.
+ */
+struct EngineRenew {
+	uint16 index;
+	EngineID from;
+	EngineID to;
+	struct EngineRenew *next;
+};
+
+typedef struct EngineRenew EngineRenew;
+
+/**
+ * Memory pool for engine renew elements. DO NOT USE outside of engine.c. Is
+ * placed here so the only exception to this rule, the saveload code, can use
+ * it.
+ */
+extern MemoryPool _engine_renew_pool;
+
+/**
+ * DO NOT USE outside of engine.c. Is
+ * placed here so the only exception to this rule, the saveload code, can use
+ * it.
+ */
+static inline EngineRenew *GetEngineRenew(uint16 index)
+{
+	return (EngineRenew*)GetItemFromPool(&_engine_renew_pool, index);
+}
+
+
+/**
+ * A list to group EngineRenew directives together (such as per-player).
+ */
+typedef EngineRenew* EngineRenewList;
+
+/**
+ * Remove all engine replacement settings for the player.
+ * @param  er The renewlist for a given player.
+ * @return The new renewlist for the player.
+ */
+void RemoveAllEngineReplacement(EngineRenewList* erl);
+
+/**
+ * Retrieve the engine replacement in a given renewlist for an original engine type.
+ * @param  erl The renewlist to search in.
+ * @param  engine Engine type to be replaced.
+ * @return The engine type to replace with, or INVALID_ENGINE if no
+ * replacement is in the list.
+ */
+EngineID EngineReplacement(EngineRenewList erl, EngineID engine);
+
+/**
+ * Add an engine replacement to the given renewlist.
+ * @param erl The renewlist to add to.
+ * @param old_engine The original engine type.
+ * @param new_engine The replacement engine type.
+ * @param flags The calling command flags.
+ * @return 0 on success, CMD_ERROR on failure.
+ */
+int32 AddEngineReplacement(EngineRenewList* erl, EngineID old_engine, EngineID new_engine, uint32 flags);
+
+/**
+ * Remove an engine replacement from a given renewlist.
+ * @param erl The renewlist from which to remove the replacement
+ * @param engine The original engine type.
+ * @param flags The calling command flags.
+ * @return 0 on success, CMD_ERROR on failure.
+ */
+int32 RemoveEngineReplacement(EngineRenewList* erl, EngineID engine, uint32 flags);
 
 #endif /* ENGINE_H */

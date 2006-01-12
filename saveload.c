@@ -29,7 +29,7 @@
 #include <setjmp.h>
 
 enum {
-	SAVEGAME_VERSION = 18,
+	SAVEGAME_VERSION = 19,
 
 };
 
@@ -1051,6 +1051,7 @@ static void UninitWriteZlib(void)
 // these define the chunks
 extern const ChunkHandler _misc_chunk_handlers[];
 extern const ChunkHandler _player_chunk_handlers[];
+extern const ChunkHandler _engine_chunk_handlers[];
 extern const ChunkHandler _veh_chunk_handlers[];
 extern const ChunkHandler _waypoint_chunk_handlers[];
 extern const ChunkHandler _depot_chunk_handlers[];
@@ -1059,7 +1060,6 @@ extern const ChunkHandler _town_chunk_handlers[];
 extern const ChunkHandler _sign_chunk_handlers[];
 extern const ChunkHandler _station_chunk_handlers[];
 extern const ChunkHandler _industry_chunk_handlers[];
-extern const ChunkHandler _engine_chunk_handlers[];
 extern const ChunkHandler _economy_chunk_handlers[];
 extern const ChunkHandler _animated_tile_chunk_handlers[];
 
@@ -1107,6 +1107,7 @@ static uint ReferenceToInt(const void *obj, SLRefType rt)
 		case REF_TOWN:      return ((const     Town*)obj)->index + 1;
 		case REF_ORDER:     return ((const    Order*)obj)->index + 1;
 		case REF_ROADSTOPS: return ((const RoadStop*)obj)->index + 1;
+		case REF_ENGINE_RENEWS: return ((const EngineRenew*)obj)->index + 1;
 		default: NOT_REACHED();
 	}
 
@@ -1161,6 +1162,11 @@ static void *IntToReference(uint index, SLRefType rt)
 			if (!AddBlockIfNeeded(&_roadstop_pool, index))
 				error("RoadStops: failed loading savegame: too many RoadStops");
 			return GetRoadStop(index);
+		}
+		case REF_ENGINE_RENEWS: {
+			if (!AddBlockIfNeeded(&_engine_renew_pool, index))
+				error("EngineRenews: failed loading savegame: too many EngineRenews");
+			return GetEngineRenew(index);
 		}
 
 		case REF_VEHICLE_OLD: {

@@ -23,6 +23,7 @@
 #include "sound.h"
 #include "network.h"
 #include "variables.h"
+#include "engine.h"
 #include "ai/ai.h"
 
 static const SpriteID cheeks_table[4] = {
@@ -487,7 +488,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 	p->face = Random();
 
 	/* Engine renewal settings */
-	InitialiseEngineReplacement(p);
+	p->engine_renew_list = NULL;
 	p->renew_keep_length = false;
 	p->engine_renew = false;
 	p->engine_renew_months = -6;
@@ -637,10 +638,6 @@ static void DeletePlayerStuff(PlayerID pi)
 	p->president_name_1 = 0;
 }
 
-
-static int32 AddEngineReplacement(Player* p, EngineID old_engine, EngineID new_engine, uint32 flags);
-static int32 RemoveEngineReplacement(Player* p, EngineID engine, uint32 flags);
-
 /** Change engine renewal parameters
  * @param x,y unused
  * @param p1 bits 0-3 command
@@ -734,9 +731,9 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				if (!HASBIT(GetEngine(new_engine_type)->player_avail, _current_player))
 					return CMD_ERROR;
 
-				cost = AddEngineReplacement(p, old_engine_type, new_engine_type, flags);
+				cost = AddEngineReplacementForPlayer(p, old_engine_type, new_engine_type, flags);
 			} else {
-				cost = RemoveEngineReplacement(p, old_engine_type, flags);
+				cost = RemoveEngineReplacementForPlayer(p, old_engine_type, flags);
 			}
 
 			if (IsLocalPlayer()) InvalidateWindow(WC_REPLACE_VEHICLE, GetEngine(old_engine_type)->type);
@@ -903,6 +900,8 @@ int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			p->money64 = p->player_money = 100000000; // XXX - wtf?
 			p->is_active = false;
 		}
+		RemoveAllEngineReplacementForPlayer(p);
+
 	} break;
 
 	case 3: { /* Merge a company (#1) into another company (#2), elimination company #1 */
@@ -1107,63 +1106,6 @@ void LoadFromHighScore(void)
 	 _patches.ending_date = 2051;
 }
 
-void InitialiseEngineReplacement(Player *p)
-{
-	EngineID engine;
-
-	for (engine = 0; engine < TOTAL_NUM_ENGINES; engine++)
-		p->engine_replacement[engine] = INVALID_ENGINE;
-}
-
-/**
- * Retrieve the engine replacement for the given player and original engine type.
- * @param p Player.
- * @param engine Engine type.
- * @return Assigned replacement engine.
- */
-EngineID EngineReplacement(const Player *p, EngineID engine)
-{
-	return p->engine_replacement[engine];
-}
-
-/**
- * Check if an engine has a replacement set up.
- * @param p Player.
- * @param engine Engine type.
- * @return True if there is a replacement for the original engine type.
- */
-bool EngineHasReplacement(const Player *p, EngineID engine)
-{
-	return EngineReplacement(p, engine) != INVALID_ENGINE;
-}
-
-/**
- * Add an engine replacement for the player.
- * @param p Player.
- * @param old_engine The original engine type.
- * @param new_engine The replacement engine type.
- * @param flags The calling command flags.
- * @return 0 on success, CMD_ERROR on failure.
- */
-static int32 AddEngineReplacement(Player* p, EngineID old_engine, EngineID new_engine, uint32 flags)
-{
-	if (flags & DC_EXEC) p->engine_replacement[old_engine] = new_engine;
-	return 0;
-}
-
-/**
- * Remove an engine replacement for the player.
- * @param p Player.
- * @param engine The original engine type.
- * @param flags The calling command flags.
- * @return 0 on success, CMD_ERROR on failure.
- */
-static int32 RemoveEngineReplacement(Player* p, EngineID engine, uint32 flags)
-{
-	if (flags & DC_EXEC) p->engine_replacement[engine] = INVALID_ENGINE;
-	return 0;
-}
-
 // Save/load of players
 static const SaveLoad _player_desc[] = {
 	SLE_VAR(Player,name_2,					SLE_UINT32),
@@ -1209,7 +1151,8 @@ static const SaveLoad _player_desc[] = {
 	SLE_CONDVAR(Player,is_active,	SLE_UINT8, 4, 255),
 
 	// Engine renewal settings
-	SLE_CONDARR(Player,engine_replacement,  SLE_UINT16, 256, 16, 255),
+	SLE_CONDARR(NullStruct,null,SLE_FILE_U16 | SLE_VAR_NULL, 256, 16, 18),
+	SLE_CONDREF(Player,engine_renew_list, REF_ENGINE_RENEWS, 19, 255),
 	SLE_CONDVAR(Player,engine_renew,         SLE_UINT8,      16, 255),
 	SLE_CONDVAR(Player,engine_renew_months,  SLE_INT16,      16, 255),
 	SLE_CONDVAR(Player,engine_renew_money,  SLE_UINT32,      16, 255),

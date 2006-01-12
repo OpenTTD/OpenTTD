@@ -427,7 +427,6 @@ VARDEF uint16 _aircraft_refit_capacity;
 VARDEF byte _cmd_build_rail_veh_score;
 
 #define INVALID_VEHICLE 0xFFFF
-#define INVALID_ENGINE 0xFFFF
 
 /* A lot of code calls for the invalidation of the status bar, which is widget 5.
  * Best is to have a virtual value for it when it needs to change again */

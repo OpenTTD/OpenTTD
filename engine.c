@@ -1051,6 +1051,195 @@ int32 CmdRenameEngine(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 
+/*
+ * returns true if an engine is valid, of the specified type, and buildable by
+ * the current player, false otherwise
+ *
+ * engine = index of the engine to check
+ * type   = the type the engine should be of (VEH_xxx)
+ */
+bool IsEngineBuildable(uint engine, byte type)
+{
+	const Engine *e;
+
+	// check if it's an engine that is in the engine array
+	if (!IsEngineIndex(engine)) return false;
+
+	e = GetEngine(engine);
+
+	// check if it's an engine of specified type
+	if (e->type != type) return false;
+
+	// check if it's available
+	if (!HASBIT(e->player_avail, _current_player)) return false;
+
+	return true;
+}
+
+/************************************************************************
+ * Engine Replacement stuff
+ ************************************************************************/
+
+static void EngineRenewPoolNewBlock(uint start_item); /* Forward declare for initializer of _engine_renew_pool */
+enum {
+	ENGINE_RENEW_POOL_BLOCK_SIZE_BITS = 3,
+	ENGINE_RENEW_POOL_MAX_BLOCKS      = 8000,
+};
+
+MemoryPool _engine_renew_pool = { "EngineRe", ENGINE_RENEW_POOL_MAX_BLOCKS, ENGINE_RENEW_POOL_BLOCK_SIZE_BITS, sizeof(EngineRenew), &EngineRenewPoolNewBlock, 0, 0, NULL };
+
+static inline uint16 GetEngineRenewPoolSize(void)
+{
+	return _engine_renew_pool.total_items;
+}
+
+#define FOR_ALL_ENGINE_RENEWS_FROM(er, start) for (er = GetEngineRenew(start); er != NULL; er = (er->index + 1 < GetEngineRenewPoolSize()) ? GetEngineRenew(er->index + 1) : NULL)
+#define FOR_ALL_ENGINE_RENEWS(er) FOR_ALL_ENGINE_RENEWS_FROM(er, 0)
+
+static void EngineRenewPoolNewBlock(uint start_item)
+{
+	EngineRenew *er;
+
+	FOR_ALL_ENGINE_RENEWS_FROM(er, start_item) {
+		er->index = start_item++;
+		er->from = INVALID_ENGINE;
+	}
+}
+
+
+static EngineRenew *AllocateEngineRenew(void)
+{
+	EngineRenew *er;
+
+	FOR_ALL_ENGINE_RENEWS(er) {
+		if (er->from == INVALID_ENGINE) {
+			er->to = INVALID_ENGINE;
+			er->next = NULL;
+			return er;
+		}
+	}
+
+	/* Check if we can add a block to the pool */
+	if (AddBlockToPool(&_engine_renew_pool)) return AllocateEngineRenew();
+
+	return NULL;
+}
+
+/**
+ * Retrieves the EngineRenew that specifies the replacement of the given
+ * engine type from the given renewlist */
+static EngineRenew *GetEngineReplacement(EngineRenewList erl, EngineID engine)
+{
+	EngineRenew* er = (EngineRenew*)erl; /* Fetch first element */
+	while (er) {
+		if (er->from == engine) return er;
+		er = er->next;
+	}
+	return NULL;
+}
+
+void RemoveAllEngineReplacement(EngineRenewList* erl)
+{
+	EngineRenew* er = (EngineRenew*)(*erl); /* Fetch first element */
+	while (er) {
+		er->from = INVALID_ENGINE; /* "Deallocate" all elements */
+		er = er->next;
+	}
+	*erl = NULL; /* Empty list */
+}
+
+EngineID EngineReplacement(EngineRenewList erl, EngineID engine)
+{
+	const EngineRenew *er = GetEngineReplacement(erl, engine);
+	return er == NULL ? INVALID_ENGINE : er->to;
+}
+
+int32 AddEngineReplacement(EngineRenewList* erl, EngineID old_engine, EngineID new_engine, uint32 flags)
+{
+	EngineRenew *er;
+
+	// Check if the old vehicle is already in the list
+	er = GetEngineReplacement(*erl, old_engine);
+	if (er != NULL) {
+		if (flags & DC_EXEC) er->to = new_engine;
+		return 0;
+	}
+
+	er = AllocateEngineRenew();
+	if (er == NULL) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		er->from = old_engine;
+		er->to = new_engine;
+		er->next = (EngineRenew*)(*erl); /* Resolve the first element in the list */
+
+		*erl = (EngineRenewList)er; /* Insert before the first element */
+	}
+
+	return 0;
+}
+
+int32 RemoveEngineReplacement(EngineRenewList* erl, EngineID engine, uint32 flags)
+{
+	EngineRenew* er = (EngineRenew*)(*erl); /* Start at the first element */
+	EngineRenew* prev = NULL;
+
+	while (er)
+	{
+		if (er->from == engine) {
+			if (flags & DC_EXEC) {
+				if (prev == NULL) { /* First element */
+					(*erl) = (EngineRenewList)er->next; /* The second becomes the new first element */
+				} else {
+					prev->next = er->next; /* Cut this element out */
+				}
+				er->from = INVALID_ENGINE; /* Deallocate */
+			}
+			return 0;
+		}
+		prev = er;
+		er = er->next; /* Look at next element */
+	}
+
+	return CMD_ERROR; /* Not found? */
+}
+
+static const SaveLoad _engine_renew_desc[] = {
+	SLE_VAR(EngineRenew, from, SLE_UINT16),
+	SLE_VAR(EngineRenew, to,   SLE_UINT16),
+
+	SLE_REF(EngineRenew, next, REF_ENGINE_RENEWS),
+
+	SLE_END()
+};
+
+static void Save_ERNW(void)
+{
+	EngineRenew *er;
+
+	FOR_ALL_ENGINE_RENEWS(er) {
+		if (er->from != INVALID_ENGINE) {
+			SlSetArrayIndex(er->index);
+			SlObject(er, _engine_renew_desc);
+		}
+	}
+}
+
+static void Load_ERNW(void)
+{
+	int index;
+
+	while ((index = SlIterateArray()) != -1) {
+		EngineRenew *er;
+
+		if (!AddBlockIfNeeded(&_engine_renew_pool, index))
+			error("EngineRenews: failed loading savegame: too many EngineRenews");
+
+		er = GetEngineRenew(index);
+		SlObject(er, _engine_renew_desc);
+	}
+}
+
 static const SaveLoad _engine_desc[] = {
 	SLE_VAR(Engine,intro_date,						SLE_UINT16),
 	SLE_VAR(Engine,age,										SLE_UINT16),
@@ -1100,32 +1289,14 @@ static void LoadSave_ENGS(void)
 }
 
 const ChunkHandler _engine_chunk_handlers[] = {
-	{ 'ENGN', Save_ENGN, Load_ENGN, CH_ARRAY},
-	{ 'ENGS', LoadSave_ENGS, LoadSave_ENGS, CH_RIFF | CH_LAST},
+	{ 'ENGN', Save_ENGN,     Load_ENGN,     CH_ARRAY          },
+	{ 'ENGS', LoadSave_ENGS, LoadSave_ENGS, CH_RIFF           },
+	{ 'ERNW', Save_ERNW,     Load_ERNW,     CH_ARRAY | CH_LAST},
 };
 
-
-/*
- * returns true if an engine is valid, of the specified type, and buildable by
- * the current player, false otherwise
- *
- * engine = index of the engine to check
- * type   = the type the engine should be of (VEH_xxx)
- */
-bool IsEngineBuildable(uint engine, byte type)
+void InitializeEngines(void)
 {
-	const Engine *e;
-
-	// check if it's an engine that is in the engine array
-	if (!IsEngineIndex(engine)) return false;
-
-	e = GetEngine(engine);
-
-	// check if it's an engine of specified type
-	if (e->type != type) return false;
-
-	// check if it's available
-	if (!HASBIT(e->player_avail, _current_player)) return false;
-
-	return true;
+	/* Clean the engine renew pool and create 1 block in it */
+	CleanPool(&_engine_renew_pool);
+	AddBlockToPool(&_engine_renew_pool);
 }

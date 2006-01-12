@@ -1257,7 +1257,7 @@ bool AfterLoadGame(void)
 	 *  of course, we do need to initialize them for older savegames. */
 	if (CheckSavegameVersion(16)) {
 		FOR_ALL_PLAYERS(p) {
-			InitialiseEngineReplacement(p);
+			p->engine_renew_list = NULL;
 			p->engine_renew = false;
 			p->engine_renew_months = -6;
 			p->engine_renew_money = 100000;

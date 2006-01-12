@@ -47,7 +47,8 @@ typedef enum SLRefType {
 	REF_STATION     = 2,
 	REF_TOWN        = 3,
 	REF_VEHICLE_OLD = 4,
-	REF_ROADSTOPS   = 5
+	REF_ROADSTOPS   = 5,
+	REF_ENGINE_RENEWS = 6,
 } SLRefType;
 
 
