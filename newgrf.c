@@ -308,7 +308,11 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT {
 				uint8 ctype = grf_load_byte(&buf);
 
-				rvi[i].cargo_type = ctype;
+				if (ctype < NUM_CARGO) {
+					rvi[i].cargo_type = ctype;
+				} else {
+					grfmsg(GMS_NOTICE, "RailVehicleChangeInfo: Invalid cargo type %d, ignoring.", ctype);
+				}
 			}
 		} break;
 		case 0x16: { /* Weight */
@@ -492,7 +496,11 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT {
 				uint8 cargo = grf_load_byte(&buf);
 
-				rvi[i].cargo_type = cargo;
+				if (cargo < NUM_CARGO) {
+					rvi[i].cargo_type = cargo;
+				} else {
+					grfmsg(GMS_NOTICE, "RoadVehicleChangeInfo: Invalid cargo type %d, ignoring.", cargo);
+				}
 			}
 		} break;
 		case 0x11: { /* Cost factor */
@@ -610,7 +618,11 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				// assume otherwise.
 				cargo = local_cargo_id_ctype[cargo];
 #endif
-				svi[i].cargo_type = cargo;
+				if (cargo < NUM_CARGO) {
+					svi[i].cargo_type = cargo;
+				} else {
+					grfmsg(GMS_NOTICE, "ShipVehicleChangeInfo: Invalid cargo type %d, ignoring.", cargo);
+				}
 			}
 		}	break;
 		case 0x0D: {	/* Cargo capacity */
