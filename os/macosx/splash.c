@@ -1,3 +1,4 @@
+/* $Id$ */
 
 #include "../../stdafx.h"
 #include "../../openttd.h"
