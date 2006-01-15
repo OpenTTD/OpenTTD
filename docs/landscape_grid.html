@@ -28,7 +28,8 @@ the array so you can quickly see what is used and what is not.
   <li><span style="font-weight: bold;">type_height</span> - 8 bits in size, stores tile height (lower 4 bits) and tile class (upper 4 bits)</li>
   <li><span style="font-weight: bold;">m1</span> - 8 bits in size, used to identify the owner of that tile (eg piece of rail, bridge, etc.)</li>
   <li><span style="font-weight: bold;">m2</span> - 16 bits in size, used to identify the index of the given tile (object) in the (object-)array</li>
-  <li><span style="font-weight: bold;">m3/m4</span> - 16 bits in size, which is split up into m3 and m4 is used for general storage</li>
+  <li><span style="font-weight: bold;">m3</span> - 8 bits in size, is used for general storage</li>
+  <li><span style="font-weight: bold;">m4</span> - 8 bits in size, is used for general storage</li>
   <li><span style="font-weight: bold;">m5</span> - 8 bits in size, is used for general storage</li>
 </ul>
 
@@ -37,17 +38,19 @@ the array so you can quickly see what is used and what is not.
   <tbody>
     <tr>
       <th style="white-space: nowrap; text-align: left;">class</th>
-      <th style="white-space: nowrap; text-align: center;">m1[L1] (8)</th>
-      <th style="white-space: nowrap; text-align: center;">m2[L2] (16)</th>
-      <th style="white-space: nowrap; text-align: center;">m3/m4[L3] (16)</th>
-      <th style="white-space: nowrap; text-align: center;">type_height[L4] (8)</th>
-      <th style="white-space: nowrap; text-align: center;">m5[L5] (8)</th>
+      <th style="white-space: nowrap; text-align: center;">m1 (8)</th>
+      <th style="white-space: nowrap; text-align: center;">m2 (16)</th>
+      <th style="white-space: nowrap; text-align: center;">m3 (8)</th>
+      <th style="white-space: nowrap; text-align: center;">m4 (8)</th>
+      <th style="white-space: nowrap; text-align: center;">type_height (8)</th>
+      <th style="white-space: nowrap; text-align: center;">m5 (8)</th>
     </tr>
     <tr>
       <td style="white-space: nowrap; text-align: left;">bits</td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">0123 4567 </span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">0123 4567 0123 4567 </span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">0123 4567 0123 4567 </span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style7">0123 4567</span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style7">0123 4567 0123 4567</span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style7">0123 4567</span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style7">0123 4567</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">0123 4567</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">0123 4567</span></td>
     </tr>
@@ -55,17 +58,17 @@ the array so you can quickly see what is used and what is not.
       <td style="white-space: nowrap; text-align: left;">(0) ground</td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style8">OOOO OOOO OOOO OOOO</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX <span class="freebits">OOOO OO</span>XX XXXX</span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX <span class="freebits">OOOO</span></span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style7"><span class="freebits">OO</span>XX XXXX</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX X<span class="freebits">O</span>XX</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap; text-align: left;">(1) rail</td>
       <td style="white-space: nowrap; text-align: center;"><span class="style9">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX <span class="freebits">OOOO OOOO</span><br>
-      </span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX XXXX XXXX</span><br>
-      </span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX <span class="freebits">OOOO OOOO</span></span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX<br>
       </span></td>
@@ -78,7 +81,8 @@ the array so you can quickly see what is used and what is not.
       </td>
       <td style="text-align: center;"><span class="style7">-inherit-</span></td>
       <td style="text-align: center;"><span class="style8">OOOO OOOO OOOO OOOO</span></td>
-      <td style="text-align: center;"><span class="style7">XXXX X<span class="freebits">OOO</span> XXXX XXXX</span></td>
+      <td style="text-align: center;"><span class="style7">XXXX X<span class="freebits">OOO</span></span></td>
+      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="text-align: center;"><span class="style7">-inherit-</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXX<span class="freebits">O OO</span>XX</span></td>
     </tr>
@@ -86,7 +90,8 @@ the array so you can quickly see what is used and what is not.
       <td style="white-space: nowrap; text-align: left;">(2) road</td>
       <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="text-align: center;"><span class="style9">XXXX XXXX XXXX XXXX</span></td>
-      <td style="text-align: center;"><span class="style8">OOOO OOOO</span><span class="style7"> XXXX XXXX</span></td>
+      <td style="text-align: center;"><span class="style8">OOOO OOOO</span></td>
+      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
     </tr>
@@ -98,7 +103,8 @@ the array so you can quickly see what is used and what is not.
       </td>
       <td style="text-align: center;"><span class="style7">-inherit-</span></td>
       <td style="text-align: center;"><span class="style9">XXXX XXXX XXXX XXXX</span></td>
-      <td style="text-align: center;"><span class="style7">XXXX XXXX XXXX XXXX</span></td>
+      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
+      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="text-align: center;"><span class="style7">-inherit-</span></td>
       <td style="text-align: center;"><span class="style8">OO</span><span class="style7">XX XXXX</span></td>
     </tr>
@@ -110,17 +116,17 @@ the array so you can quickly see what is used and what is not.
       </td>
       <td style="text-align: center;"><span class="style7">-inherit-</span></td>
       <td style="text-align: center;"><span class="style8">OOOO OOOO OOOO OOOO</span></td>
-      <td style="text-align: center;"><span class="style8">OOOO OOOO OOOO OOO</span><span class="style7">X</span></td>
+      <td style="text-align: center;"><span class="style8">OOOO OOOO</span></td>
+      <td style="text-align: center;"><span class="style8">OOOO OOO</span><span class="style7">X</span></td>
       <td style="text-align: center;"><span class="style7">-inherit-</span></td>
       <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap; text-align: left;">(3) town</td>
       <td style="white-space: nowrap; text-align: center;"><span class="style9">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX XXXX XXXX<br>
-      </span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7"><span class="freebits">OOOO OO</span>XX XXXX XXXX<br>
-      </span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX XXXX XXXX</span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style7"><span class="freebits">OOOO OO</span>XX</span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XX<span class="freebits">O</span>X</span></td>
     </tr>
@@ -128,7 +134,8 @@ the array so you can quickly see what is used and what is not.
       <td style="white-space: nowrap; text-align: left;">(4) trees</td>
       <td style="white-space: nowrap; text-align: center;"><span class="style9">XXXX XXXX</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XX<span class="freebits">OO OOOO OOOO</span></span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX <span class="freebits">OO</span>XX XXXX</span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style7"><span class="freebits">OO</span>XX XXXX</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXX<span class="freebits">O OO</span>XX</span></td>
     </tr>
@@ -136,7 +143,8 @@ the array so you can quickly see what is used and what is not.
       <td style="white-space: nowrap; text-align: left;">(5) station</td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX X<span class="freebits">OOO</span> XXXX XXXX</span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX X<span class="freebits">OOO</span></span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
     </tr>
@@ -144,7 +152,8 @@ the array so you can quickly see what is used and what is not.
       <td style="white-space: nowrap; text-align: left;">(6) water</td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style8">OOOO OOOO OOOO OOOO</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style8">OOOO OOOO OOOO OOOO</span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style8">OOOO OOOO</span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style8">OOOO OOOO</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
     </tr>
@@ -152,7 +161,8 @@ the array so you can quickly see what is used and what is not.
       <td style="white-space: nowrap; text-align: left;">(8) industry</td>
       <td style="white-space: nowrap; text-align: center;"><span class="style9">XXXX X</span><span class="style8">OO</span><span class="style9">X</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style8">OOOO OOOO OOOO OOOO</span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style8">OOOO OOOO</span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style8">OOOO OOOO</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
     </tr>
@@ -164,7 +174,8 @@ the array so you can quickly see what is used and what is not.
       </td>
       <td style="text-align: center;"><span class="style7">-inherit-</span></td>
       <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style7">XXXX XXXX <span class="freebits">OOOO OOOO</span></span></td>
+      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
+      <td style="text-align: center;"><span class="style8">OOOO OOOO</span></td>
       <td style="text-align: center;"><span class="style7">-inherit-</span></td>
       <td style="text-align: center;"><span class="style7">-inherit-</span></td>
     </tr>
@@ -176,7 +187,8 @@ the array so you can quickly see what is used and what is not.
       </td>
       <td style="text-align: center;"><span class="style7">-inherit-</span></td>
       <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style7">XXXX XXXX XXXX XXXX</span></td>
+      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
+      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="text-align: center;"><span class="style7">-inherit-</span></td>
       <td style="text-align: center;"><span class="style7">-inherit-</span></td>
     </tr>
@@ -191,6 +203,7 @@ the array so you can quickly see what is used and what is not.
       <td style="text-align: center;"><span class="style7">-inherit-</span></td>
       <td style="text-align: center;"><span class="style7">-inherit-</span></td>
       <td style="text-align: center;"><span class="style7">-inherit-</span></td>
+      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
     </tr>
     <tr>
       <td>
@@ -198,6 +211,7 @@ the array so you can quickly see what is used and what is not.
         <li style="white-space: nowrap; text-align: left;">oil wells</li>
       </ul>
       </td>
+      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
       <td style="text-align: center;"><span class="style7">-inherit-</span></td>
       <td style="text-align: center;"><span class="style7">-inherit-</span></td>
       <td style="text-align: center;"><span class="style7">-inherit-</span></td>
@@ -215,12 +229,14 @@ the array so you can quickly see what is used and what is not.
       <td style="text-align: center;"><span class="style7">-inherit-</span></td>
       <td style="text-align: center;"><span class="style7">-inherit-</span></td>
       <td style="text-align: center;"><span class="style7">-inherit-</span></td>
+      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap; text-align: left;">(9) tunnel</td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style8">OOOO OOOO OOOO OOOO</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX <span class="freebits">OOOO OOOO OOO</span>X</span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX <span class="freebits">OOOO</span></span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style7"><span class="freebits">OOOO OOO</span>X</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
     </tr>
@@ -232,7 +248,8 @@ the array so you can quickly see what is used and what is not.
       </td>
       <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="text-align: center;"><span class="style9">XXXX XXXX</span> <span class="style8">OOOO OOOO</span></td>
-      <td style="text-align: center;"><span class="style7">XXXX XXXX <span class="freebits">OOOO OOO</span>X</span></td>
+      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
+      <td style="text-align: center;"><span class="style7"><span class="freebits">OOOO OOO</span>X</span></td>
       <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
     </tr>
@@ -240,7 +257,8 @@ the array so you can quickly see what is used and what is not.
       <td style="white-space: nowrap; text-align: left;">(10) various (HQ)</td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style8">OOOO OOOO OOOO OOOO</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style8">OOOO OOOO OOOO OOOO</span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style8">OOOO OOOO</span></td>
+      <td style="white-space: nowrap; text-align: center;"><span class="style8">OOOO OOOO</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
       <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
     </tr>
