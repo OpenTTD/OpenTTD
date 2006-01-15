@@ -5,11 +5,13 @@
   <meta name="Description" content="Structure of OpenTTD (OTTD) landscape arrays #2">
   <title>OpenTTD Landscape Internals - #2</title>
   <style type="text/css">
-    .freebits { background-color: rgb(30, 178, 54);}
-    .abuse { background-color: rgb(255, 58, 31);}
-.style7 {font-family: "Courier New", Courier, mono}
-.style8 {background-color: rgb(30, 178, 54); font-family: "Courier New", Courier, mono; }
-.style9 {background-color: rgb(255, 58, 31); font-family: "Courier New", Courier, mono; }
+    span.abuse { font-family: "Courier New", Courier, mono; background-color: rgb(255, 58, 31); }
+    span.free  { font-family: "Courier New", Courier, mono; background-color: rgb(30, 178, 54); }
+    span.used  { font-family: "Courier New", Courier, mono; }
+    td.bits    { white-space: nowrap; text-align: center; font-family: "Courier New", Courier, mono; }
+    td.caption { white-space: nowrap; text-align: left; }
+    td li      { white-space: nowrap; text-align: left; }
+    th         { white-space: nowrap; text-align: center; }
   </style>
 </head>
 <body style="direction: ltr;">
@@ -18,9 +20,9 @@
 This can be seen in the <a href="landscape.html">Landscape</a> document. This page tries to give an overview of used and free bits of
 the array so you can quickly see what is used and what is not.
 <ul>
-  <li><span style="font-weight: bold;"><span class="freebits">O</span></span> - bit is free</li>
-  <li><span style="font-weight: bold;">X</span> - bit is used</li>
-  <li><span style="font-weight: bold;"><span class="abuse">&nbsp;&nbsp;&nbsp;</span></span> - bit of attribute is abused for different purposes</li>
+  <li><span style="font-weight: bold;"><span class="free">O</span></span> - bit is free</li>
+  <li><span style="font-weight: bold;"><span class="used">X</span></span> - bit is used</li>
+  <li><span style="font-weight: bold;"><span class="abuse">&nbsp;</span></span> - bit of attribute is abused for different purposes</li>
   <li><b>NOTE: </b>counting the bits starts with bit0 in the most left position (eg. a bit screwed LE format; BIT by BIT) </li>
 </ul>
 <p>
@@ -37,230 +39,229 @@ the array so you can quickly see what is used and what is not.
  cellspacing="2" width="100%">
   <tbody>
     <tr>
-      <th style="white-space: nowrap; text-align: left;">class</th>
-      <th style="white-space: nowrap; text-align: center;">m1 (8)</th>
-      <th style="white-space: nowrap; text-align: center;">m2 (16)</th>
-      <th style="white-space: nowrap; text-align: center;">m3 (8)</th>
-      <th style="white-space: nowrap; text-align: center;">m4 (8)</th>
-      <th style="white-space: nowrap; text-align: center;">type_height (8)</th>
-      <th style="white-space: nowrap; text-align: center;">m5 (8)</th>
+      <th>class</th>
+      <th>m1 (8)</th>
+      <th>m2 (16)</th>
+      <th>m3 (8)</th>
+      <th>m4 (8)</th>
+      <th>type_height (8)</th>
+      <th>m5 (8)</th>
     </tr>
     <tr>
-      <td style="white-space: nowrap; text-align: left;">bits</td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">0123 4567</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">0123 4567 0123 4567</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">0123 4567</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">0123 4567</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">0123 4567</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">0123 4567</span></td>
+      <td class="caption">bits</td>
+      <td class="bits">0123 4567</td>
+      <td class="bits">0123 4567 0123 4567</td>
+      <td class="bits">0123 4567</td>
+      <td class="bits">0123 4567</td>
+      <td class="bits">0123 4567</td>
+      <td class="bits">0123 4567</td>
     </tr>
     <tr>
-      <td style="white-space: nowrap; text-align: left;">(0) ground</td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style8">OOOO OOOO OOOO OOOO</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX <span class="freebits">OOOO</span></span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7"><span class="freebits">OO</span>XX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX X<span class="freebits">O</span>XX</span></td>
+      <td class="caption">(0) ground</td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits"><span class="free">OOOO OOOO OOOO OOOO</span></td>
+      <td class="bits">XXXX <span class="free">OOOO</span></td>
+      <td class="bits"><span class="free">OO</span>XX XXXX</td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits">XXXX X<span class="free">O</span>XX</td>
     </tr>
     <tr>
-      <td style="white-space: nowrap; text-align: left;">(1) rail</td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style9">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX <span class="freebits">OOOO OOOO</span></span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX<br>
-      </span></td>
-    </tr>
-    <tr>
-      <td>
-      <ul>
-        <li style="white-space: nowrap; text-align: left;">depot/checkpoint</li>
-      </ul>
-      </td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style8">OOOO OOOO OOOO OOOO</span></td>
-      <td style="text-align: center;"><span class="style7">XXXX X<span class="freebits">OOO</span></span></td>
-      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXX<span class="freebits">O OO</span>XX</span></td>
-    </tr>
-    <tr>
-      <td style="white-space: nowrap; text-align: left;">(2) road</td>
-      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="text-align: center;"><span class="style9">XXXX XXXX XXXX XXXX</span></td>
-      <td style="text-align: center;"><span class="style8">OOOO OOOO</span></td>
-      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
+      <td class="caption">(1) rail</td>
+      <td class="bits"><span class="abuse">XXXX XXXX</span></td>
+      <td class="bits">XXXX XXXX <span class="free">OOOO OOOO</span></td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits">XXXX XXXX</td>
     </tr>
     <tr>
       <td>
       <ul>
-        <li style="white-space: nowrap; text-align: left;">level crossing</li>
+        <li>depot/checkpoint</li>
       </ul>
       </td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style9">XXXX XXXX XXXX XXXX</span></td>
-      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style8">OO</span><span class="style7">XX XXXX</span></td>
+      <td class="bits">-inherit-</td>
+      <td class="bits"><span class="free">OOOO OOOO OOOO OOOO</span></td>
+      <td class="bits">XXXX X<span class="free">OOO</span></td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">XXX<span class="free">O OO</span>XX</td>
+    </tr>
+    <tr>
+      <td class="caption">(2) road</td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits"><span class="abuse">XXXX XXXX XXXX XXXX</span></td>
+      <td class="bits"><span class="free">OOOO OOOO</span></td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits">XXXX XXXX</td>
     </tr>
     <tr>
       <td>
       <ul>
-        <li style="white-space: nowrap; text-align: left;">road depot</li>
+        <li>level crossing</li>
       </ul>
       </td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style8">OOOO OOOO OOOO OOOO</span></td>
-      <td style="text-align: center;"><span class="style8">OOOO OOOO</span></td>
-      <td style="text-align: center;"><span class="style8">OOOO OOO</span><span class="style7">X</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
-    </tr>
-    <tr>
-      <td style="white-space: nowrap; text-align: left;">(3) town</td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style9">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7"><span class="freebits">OOOO OO</span>XX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XX<span class="freebits">O</span>X</span></td>
-    </tr>
-    <tr>
-      <td style="white-space: nowrap; text-align: left;">(4) trees</td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style9">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XX<span class="freebits">OO OOOO OOOO</span></span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7"><span class="freebits">OO</span>XX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXX<span class="freebits">O OO</span>XX</span></td>
-    </tr>
-    <tr>
-      <td style="white-space: nowrap; text-align: left;">(5) station</td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX X<span class="freebits">OOO</span></span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
-    </tr>
-    <tr>
-      <td style="white-space: nowrap; text-align: left;">(6) water</td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style8">OOOO OOOO OOOO OOOO</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style8">OOOO OOOO</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style8">OOOO OOOO</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
-    </tr>
-    <tr>
-      <td style="white-space: nowrap; text-align: left;">(8) industry</td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style9">XXXX X</span><span class="style8">OO</span><span class="style9">X</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style8">OOOO OOOO</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style8">OOOO OOOO</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
+      <td class="bits">-inherit-</td>
+      <td class="bits"><span class="abuse">XXXX XXXX XXXX XXXX</span></td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits">-inherit-</td>
+      <td class="bits"><span class="free">OO</span>XX XXXX</td>
     </tr>
     <tr>
       <td>
       <ul>
-        <li style="white-space: nowrap; text-align: left;">bubble/sugar/toffee</li>
+        <li>road depot</li>
       </ul>
       </td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="text-align: center;"><span class="style8">OOOO OOOO</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
+      <td class="bits">-inherit-</td>
+      <td class="bits"><span class="free">OOOO OOOO OOOO OOOO</span></td>
+      <td class="bits"><span class="free">OOOO OOOO</span></td>
+      <td class="bits"><span class="free">OOOO OOO</span>X</td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">XXXX XXXX</td>
+    </tr>
+    <tr>
+      <td class="caption">(3) town</td>
+      <td class="bits"><span class="abuse">XXXX XXXX</span></td>
+      <td class="bits">XXXX XXXX XXXX XXXX</td>
+      <td class="bits"><span class="free">OOOO OO</span>XX</td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits">XXXX XX<span class="free">O</span>X</td>
+    </tr>
+    <tr>
+      <td class="caption">(4) trees</td>
+      <td class="bits"><span class="abuse">XXXX XXXX</span></td>
+      <td class="bits">XXXX XX<span class="free">OO OOOO OOOO</span></td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits"><span class="free">OO</span>XX XXXX</td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits">XXX<span class="free">O OO</span>XX</td>
+    </tr>
+    <tr>
+      <td class="caption">(5) station</td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits">XXXX XXXX XXXX XXXX</td>
+      <td class="bits">XXXX X<span class="free">OOO</span></td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits">XXXX XXXX</td>
+    </tr>
+    <tr>
+      <td class="caption">(6) water</td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits"><span class="free">OOOO OOOO OOOO OOOO</span></td>
+      <td class="bits"><span class="free">OOOO OOOO</span></td>
+      <td class="bits"><span class="free">OOOO OOOO</span></td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits">XXXX XXXX</td>
+    </tr>
+    <tr>
+      <td class="caption">(8) industry</td>
+      <td class="bits"><span class="abuse">XXXX X</span><span class="free">OO</span><span class="abuse">X</span></td>
+      <td class="bits">XXXX XXXX XXXX XXXX</td>
+      <td class="bits"><span class="free">OOOO OOOO</span></td>
+      <td class="bits"><span class="free">OOOO OOOO</span></td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits">XXXX XXXX</td>
     </tr>
     <tr>
       <td>
       <ul>
-        <li style="white-space: nowrap; text-align: left;">toy factory</li>
+        <li>bubble/sugar/toffee</li>
       </ul>
       </td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits"><span class="free">OOOO OOOO</span></td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">-inherit-</td>
     </tr>
     <tr>
       <td>
       <ul>
-        <li style="white-space: nowrap; text-align: left;">gold/copper/coal</li>
+        <li>toy factory</li>
       </ul>
       </td>
-      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">-inherit-</td>
     </tr>
     <tr>
       <td>
       <ul>
-        <li style="white-space: nowrap; text-align: left;">oil wells</li>
+        <li>gold/copper/coal</li>
       </ul>
       </td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">-inherit-</td>
     </tr>
     <tr>
       <td>
       <ul>
-        <li style="white-space: nowrap; text-align: left;">power station</li>
+        <li>oil wells</li>
       </ul>
       </td>
-      <td style="text-align: center;"><span class="style7">XXXX XX<span class="freebits">O</span>X</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-      <td style="text-align: center;"><span class="style7">-inherit-</span></td>
-    </tr>
-    <tr>
-      <td style="white-space: nowrap; text-align: left;">(9) tunnel</td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style8">OOOO OOOO OOOO OOOO</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX <span class="freebits">OOOO</span></span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7"><span class="freebits">OOOO OOO</span>X</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">-inherit-</td>
     </tr>
     <tr>
       <td>
       <ul>
-        <li style="white-space: nowrap; text-align: left;">bridge</li>
+        <li>power station</li>
       </ul>
       </td>
-      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="text-align: center;"><span class="style9">XXXX XXXX</span> <span class="style8">OOOO OOOO</span></td>
-      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="text-align: center;"><span class="style7"><span class="freebits">OOOO OOO</span>X</span></td>
-      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="text-align: center;"><span class="style7">XXXX XXXX</span></td>
+      <td class="bits">XXXX XX<span class="free">O</span>X</td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">-inherit-</td>
     </tr>
     <tr>
-      <td style="white-space: nowrap; text-align: left;">(10) various (HQ)</td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style8">OOOO OOOO OOOO OOOO</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style8">OOOO OOOO</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style8">OOOO OOOO</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
-      <td style="white-space: nowrap; text-align: center;"><span class="style7">XXXX XXXX</span></td>
+      <td class="caption">(9) tunnel</td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits"><span class="free">OOOO OOOO OOOO OOOO</span></td>
+      <td class="bits">XXXX <span class="free">OOOO</span></td>
+      <td class="bits"><span class="free">OOOO OOO</span>X</td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits">XXXX XXXX</td>
+    </tr>
+    <tr>
+      <td>
+      <ul>
+        <li>bridge</li>
+      </ul>
+      </td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits"><span class="abuse">XXXX XXXX</span> <span class="free">OOOO OOOO</span></td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits"><span class="free">OOOO OOO</span>X</td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits">XXXX XXXX</td>
+    </tr>
+    <tr>
+      <td class="caption">(10) various (HQ)</td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits"><span class="free">OOOO OOOO OOOO OOOO</span></td>
+      <td class="bits"><span class="free">OOOO OOOO</span></td>
+      <td class="bits"><span class="free">OOOO OOOO</span></td>
+      <td class="bits">XXXX XXXX</td>
+      <td class="bits">XXXX XXXX</td>
     </tr>
   </tbody>
 </table>
