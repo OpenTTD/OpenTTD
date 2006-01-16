@@ -34,11 +34,10 @@ the array so you can quickly see what is used and what is not.
   <li><span style="font-weight: bold;">m5</span> - 8 bits in size, is used for general storage</li>
 </ul>
 
-<table style="text-align: left;" border="1" cellpadding="2"
- cellspacing="2" width="100%">
+<table align=center border="1" cellpadding="2" cellspacing="2">
   <tbody>
     <tr>
-      <th>class</th>
+      <th colspan=2>class</th>
       <th>m1 (8)</th>
       <th>m2 (16)</th>
       <th>m3 (8)</th>
@@ -47,7 +46,7 @@ the array so you can quickly see what is used and what is not.
       <th>m5 (8)</th>
     </tr>
     <tr>
-      <td class="caption">bits</td>
+      <td colspan=2 class="caption">bits</td>
       <td class="bits">7654 3210</td>
       <td class="bits">FEDC BA98 7654 3210</td>
       <td class="bits">7654 3210</td>
@@ -56,17 +55,19 @@ the array so you can quickly see what is used and what is not.
       <td class="bits">7654 3210</td>
     </tr>
     <tr>
-      <td class="caption">(0) ground</td>
+      <td>0</td>
+      <td class="caption">ground</td>
       <td class="bits">XXXX XXXX</td>
       <td class="bits"><span class="free">OOOO OOOO OOOO OOOO</span></td>
       <td class="bits"><span class="free">OOOO</span> XXXX</td>
       <td class="bits">XXXX XX<span class="free">OO</span></td>
       <td class="bits">XXXX XXXX</td>
-      <td class="bits">XX<span class="free">O</span>X XXXX</td>
+      <td class="bits">XXXX XXXX</td>
     </tr>
     <tr>
-      <td class="caption">(1) rail</td>
-      <td class="bits"><span class="abuse">XXXX XXXX</span></td>
+      <td rowspan=3>1</td>
+      <td class="caption">rail</td>
+      <td class="bits">XXXX XXXX</td>
       <td class="bits"><span class="free">OOOO OOOO</span> XXXX XXXX</td>
       <td class="bits">XXXX XXXX</td>
       <td class="bits">XXXX XXXX</td>
@@ -74,46 +75,44 @@ the array so you can quickly see what is used and what is not.
       <td class="bits">XXXX XXXX</td>
     </tr>
     <tr>
-      <td>
-      <ul>
-        <li>depot/checkpoint</li>
-      </ul>
-      </td>
+      <td class="caption">depot</td>
       <td class="bits">-inherit-</td>
       <td class="bits"><span class="free">OOOO OOOO OOOO OOOO</span></td>
-      <td class="bits"><span class="free">OOO</span>X XXXX</td>
-      <td class="bits">XXXX XXXX</td>
+      <td class="bits"><span class="free">O</span>X<span class="free">OO</span> XXXX</td>
+      <td class="bits"><span class="free">OOOO</span> XXXX</td>
       <td class="bits">-inherit-</td>
       <td class="bits">XX<span class="free">OO O</span>XXX</td>
     </tr>
     <tr>
-      <td class="caption">(2) road</td>
+      <td class="caption">waypoint</td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">XXXX XXXX XXXX XXXX</td>
+      <td class="bits"><span class="free">O</span>X<span class="free">O</span>X XXXX</td>
+      <td class="bits"><span class="free">OOOO</span> XXXX</td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">XX<span class="free">OO O</span>XXX</td>
+    </tr>
+    <tr>
+      <td rowspan=3>2</td>
+      <td class="caption">road</td>
       <td class="bits">XXXX XXXX</td>
-      <td class="bits"><span class="abuse">XXXX XXXX XXXX XXXX</span></td>
+      <td class="bits">XXXX XXXX XXXX XXXX</td>
       <td class="bits"><span class="free">OOOO OOOO</span></td>
       <td class="bits">XXXX XXXX</td>
       <td class="bits">XXXX XXXX</td>
       <td class="bits">XXXX XXXX</td>
     </tr>
     <tr>
-      <td>
-      <ul>
-        <li>level crossing</li>
-      </ul>
-      </td>
+      <td class="caption">level crossing</td>
       <td class="bits">-inherit-</td>
-      <td class="bits"><span class="abuse">XXXX XXXX XXXX XXXX</span></td>
+      <td class="bits">-inherit-</td>
       <td class="bits">XXXX XXXX</td>
       <td class="bits">XXXX XXXX</td>
       <td class="bits">-inherit-</td>
-      <td class="bits">XXXX XX<span class="free">OO</span></td>
+      <td class="bits">XXXX XX<span class="free">O</span>X</td>
     </tr>
     <tr>
-      <td>
-      <ul>
-        <li>road depot</li>
-      </ul>
-      </td>
+      <td class="caption">road depot</td>
       <td class="bits">-inherit-</td>
       <td class="bits"><span class="free">OOOO OOOO OOOO OOOO</span></td>
       <td class="bits"><span class="free">OOOO OOOO</span></td>
@@ -122,7 +121,8 @@ the array so you can quickly see what is used and what is not.
       <td class="bits">XXXX XXXX</td>
     </tr>
     <tr>
-      <td class="caption">(3) town</td>
+      <td>3</td>
+      <td class="caption">town</td>
       <td class="bits"><span class="abuse">XXXX XXXX</span></td>
       <td class="bits">XXXX XXXX XXXX XXXX</td>
       <td class="bits">XX<span class="free">OO OOOO</span></td>
@@ -131,8 +131,9 @@ the array so you can quickly see what is used and what is not.
       <td class="bits">X<span class="free">O</span>XX XXXX</td>
     </tr>
     <tr>
-      <td class="caption">(4) trees</td>
-      <td class="bits"><span class="abuse">XXXX XXXX</span></td>
+      <td>4</td>
+      <td class="caption">trees</td>
+      <td class="bits">XXXX XXXX</td>
       <td class="bits"><span class="free">OOOO OOOO OO</span>XX XXXX</td>
       <td class="bits">XXXX XXXX</td>
       <td class="bits">XXXX XX<span class="free">OO</span></td>
@@ -140,16 +141,18 @@ the array so you can quickly see what is used and what is not.
       <td class="bits">XX<span class="free">OO O</span>XXX</td>
     </tr>
     <tr>
-      <td class="caption">(5) station</td>
+      <td>5</td>
+      <td class="caption">station</td>
       <td class="bits">XXXX XXXX</td>
       <td class="bits">XXXX XXXX XXXX XXXX</td>
-      <td class="bits"><span class="free">OOO</span>X XXXX</td>
+      <td class="bits"><span class="free">O</span>X<span class="free">O</span>X XXXX</td>
       <td class="bits">XXXX XXXX</td>
       <td class="bits">XXXX XXXX</td>
       <td class="bits">XXXX XXXX</td>
     </tr>
     <tr>
-      <td class="caption">(6) water</td>
+      <td>6</td>
+      <td class="caption">water</td>
       <td class="bits">XXXX XXXX</td>
       <td class="bits"><span class="free">OOOO OOOO OOOO OOOO</span></td>
       <td class="bits"><span class="free">OOOO OOOO</span></td>
@@ -158,7 +161,8 @@ the array so you can quickly see what is used and what is not.
       <td class="bits">XXXX XXXX</td>
     </tr>
     <tr>
-      <td class="caption">(8) industry</td>
+      <td rowspan=6>8</td>
+      <td class="caption">industry</td>
       <td class="bits"><span class="abuse">X</span><span class="free">OO</span><span class="abuse">X XXXX</span></td>
       <td class="bits">XXXX XXXX XXXX XXXX</td>
       <td class="bits"><span class="free">OOOO OOOO</span></td>
@@ -167,12 +171,8 @@ the array so you can quickly see what is used and what is not.
       <td class="bits">XXXX XXXX</td>
     </tr>
     <tr>
-      <td>
-      <ul>
-        <li>bubble/sugar/toffee</li>
-      </ul>
-      </td>
-      <td class="bits">-inherit-</td>
+      <td>bubble/sugar/toffee</td>
+      <td class="bits"><span class="abuse">X</span><span class="free">OOO OOOO</span></td>
       <td class="bits">-inherit-</td>
       <td class="bits">XXXX XXXX</td>
       <td class="bits"><span class="free">OOOO OOOO</span></td>
@@ -180,12 +180,8 @@ the array so you can quickly see what is used and what is not.
       <td class="bits">-inherit-</td>
     </tr>
     <tr>
-      <td>
-      <ul>
-        <li>toy factory</li>
-      </ul>
-      </td>
-      <td class="bits">-inherit-</td>
+      <td>toy factory</td>
+      <td class="bits"><span class="abuse">X</span><span class="free">OOO OOOO</span></td>
       <td class="bits">-inherit-</td>
       <td class="bits">XXXX XXXX</td>
       <td class="bits">XXXX XXXX</td>
@@ -193,12 +189,8 @@ the array so you can quickly see what is used and what is not.
       <td class="bits">-inherit-</td>
     </tr>
     <tr>
-      <td>
-      <ul>
-        <li>gold/copper/coal</li>
-      </ul>
-      </td>
-      <td class="bits">XXXX XXXX</td>
+      <td>gold/copper/coal</td>
+      <td class="bits"><span class="abuse">XX</span><span class="free">OO OO</span><span class="abuse">XX</span></td>
       <td class="bits">-inherit-</td>
       <td class="bits">-inherit-</td>
       <td class="bits">-inherit-</td>
@@ -206,25 +198,8 @@ the array so you can quickly see what is used and what is not.
       <td class="bits">-inherit-</td>
     </tr>
     <tr>
-      <td>
-      <ul>
-        <li>oil wells</li>
-      </ul>
-      </td>
-      <td class="bits">-inherit-</td>
-      <td class="bits">-inherit-</td>
-      <td class="bits">-inherit-</td>
-      <td class="bits">-inherit-</td>
-      <td class="bits">-inherit-</td>
-      <td class="bits">-inherit-</td>
-    </tr>
-    <tr>
-      <td>
-      <ul>
-        <li>power station</li>
-      </ul>
-      </td>
-      <td class="bits">X<span class="free">O</span>XX XXXX</td>
+      <td>oil wells</td>
+      <td class="bits"><span class="abuse">X</span><span class="free">OOO OO</span><span class="abuse">XX</span></td>
       <td class="bits">-inherit-</td>
       <td class="bits">-inherit-</td>
       <td class="bits">-inherit-</td>
@@ -232,29 +207,36 @@ the array so you can quickly see what is used and what is not.
       <td class="bits">-inherit-</td>
     </tr>
     <tr>
-      <td class="caption">(9) tunnel</td>
+      <td>power station</td>
+      <td class="bits"><span class="abuse">X</span><span class="free">O</span><span class="abuse">XX XX</span><span class="free">OO</span></td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">-inherit-</td>
+      <td class="bits">-inherit-</td>
+    </tr>
+    <tr>
+      <td rowspan=2>9</td>
+      <td class="caption">tunnel</td>
       <td class="bits">XXXX XXXX</td>
       <td class="bits"><span class="free">OOOO OOOO OOOO OOOO</span></td>
       <td class="bits"><span class="free">OOOO</span> XXXX</td>
-      <td class="bits">X<span class="free">OOO OOOO</span></td>
+      <td class="bits">X<span class="free">OOO OO</span>XX</td>
       <td class="bits">XXXX XXXX</td>
       <td class="bits">XXXX XXXX</td>
     </tr>
     <tr>
-      <td>
-      <ul>
-        <li>bridge</li>
-      </ul>
-      </td>
+      <td>bridge</td>
       <td class="bits">XXXX XXXX</td>
       <td class="bits"><span class="free">OOOO OOOO</span> <span class="abuse">XXXX XXXX</span></td>
       <td class="bits">XXXX XXXX</td>
-      <td class="bits">X<span class="free">OOO OOOO</span></td>
+      <td class="bits">X<span class="free">OOO OO</span>XX</td>
       <td class="bits">XXXX XXXX</td>
       <td class="bits">XXXX XXXX</td>
     </tr>
     <tr>
-      <td class="caption">(10) various (HQ)</td>
+      <td>A</td>
+      <td class="caption">various (HQ)</td>
       <td class="bits">XXXX XXXX</td>
       <td class="bits"><span class="free">OOOO OOOO OOOO OOOO</span></td>
       <td class="bits"><span class="free">OOOO OOOO</span></td>
