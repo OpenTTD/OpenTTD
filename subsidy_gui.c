@@ -144,23 +144,24 @@ static void SubsidiesListWndProc(Window *w, WindowEvent *e)
 
 		case WE_CLICK:
 			switch (e->click.widget) {
-				case 2: HandleSubsidyClick(e->click.pt.y - 25); break;
+				case 3: HandleSubsidyClick(e->click.pt.y - 25); break;
 			}
 		break;
 	}
 }
 
 static const Widget _subsidies_list_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    13,    11,   629,     0,    13, STR_2025_SUBSIDIES, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    13,     0,   629,    14,   126, 0x0, STR_01FD_CLICK_ON_SERVICE_TO_CENTER},
+{   WWT_CLOSEBOX,   RESIZE_NONE, 13,   0,  10,   0,  13, STR_00C5,           STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE, 13,  11, 617,   0,  13, STR_2025_SUBSIDIES, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE, 13, 618, 629,   0,  13, STR_NULL,           STR_STICKY_BUTTON},
+{      WWT_PANEL,   RESIZE_NONE, 13,   0, 629,  14, 126, STR_NULL,           STR_01FD_CLICK_ON_SERVICE_TO_CENTER},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _subsidies_list_desc = {
 	-1, -1, 630, 127,
 	WC_SUBSIDIES_LIST,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_subsidies_list_widgets,
 	SubsidiesListWndProc
 };
