@@ -827,7 +827,7 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	TileIndex tile = TileVirtXY(x, y);
 	Engine *e;
 
-	if (!IsEngineBuildable(p1, VEH_Ship)) return CMD_ERROR;
+	if (!IsEngineBuildable(p1, VEH_Ship)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 

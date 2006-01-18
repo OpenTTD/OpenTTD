@@ -2760,6 +2760,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Displays
 STR_REPLACE_HELP                                                :{BLACK}This allows you to replace one engine type with another type, when trains of the original type enter a depot
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagon removal: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Make autoreplace keep the length of a train the same by removing wagons (starting at the front), if replacing the engine would make the train longer.
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Engine is not buildable
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Sign List - {COMMA} Sign{P "" s}

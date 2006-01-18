@@ -141,7 +141,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	const AircraftVehicleInfo *avi;
 	Engine *e;
 
-	if (!IsEngineBuildable(p1, VEH_Aircraft)) return CMD_ERROR;
+	if (!IsEngineBuildable(p1, VEH_Aircraft)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
 
 	value = EstimateAircraftCost(p1);
 
