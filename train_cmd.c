@@ -3700,3 +3700,155 @@ void InitializeTrains(void)
 {
 	_age_cargo_skip_counter = 1;
 }
+
+/*
+ * Link front and rear multiheaded engines to each other
+ * This is done when loading a savegame
+ */
+void ConnectMultiheadedTrains(void)
+{
+	Vehicle *v;
+
+	FOR_ALL_VEHICLES(v) {
+		if (v->type == VEH_Train) {
+			v->u.rail.other_multiheaded_part = NULL;
+		}
+	}
+
+	FOR_ALL_VEHICLES(v) {
+		if (v->type == VEH_Train && IsFrontEngine(v)) {
+			Vehicle *u = v;
+
+			BEGIN_ENUM_WAGONS(u) {
+				if (u->u.rail.other_multiheaded_part != NULL) continue; // we already linked this one
+
+				if (IsMultiheaded(u)) {
+					if (!IsTrainEngine(u)) {
+						/* we got a rear car without a front car. We will convert it to a front one */
+						SetTrainEngine(u);
+						u->spritenum--;
+					}
+
+					{
+						Vehicle *w;
+
+						for(w = u->next; w != NULL && (w->engine_type != u->engine_type || w->u.rail.other_multiheaded_part != NULL); w = GetNextVehicle(w));
+						if (w != NULL) {
+							/* we found a car to partner with this engine. Now we will make sure it face the right way */
+							if (IsTrainEngine(w)) {
+								ClearTrainEngine(w);
+								w->spritenum++;
+							}
+						}
+
+						if (w != NULL) {
+							w->u.rail.other_multiheaded_part = u;
+							u->u.rail.other_multiheaded_part = w;
+						} else {
+							/* we got a front car and no rear cars. We will fake this one for forget that it should have been multiheaded */
+							ClearMultiheaded(u);
+						}
+					}
+				}
+			} END_ENUM_WAGONS(u)
+		}
+	}
+}
+
+/*
+ *  Converts all trains to the new subtype format introduced in savegame 16.2
+ *  It also links multiheaded engines or make them forget they are multiheaded if no suitable partner is found
+ */
+void ConvertOldMultiheadToNew(void)
+{
+	Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		if (v->type == VEH_Train) {
+			SETBIT(v->subtype, 7);	// indicates that it's the old format and needs to be converted in the next loop
+		}
+	}
+
+	FOR_ALL_VEHICLES(v) {
+		if (v->type == VEH_Train) {
+			if (HASBIT(v->subtype, 7) && ((v->subtype & ~0x80) == 0 || (v->subtype & ~0x80) == 4)) {
+				Vehicle *u = v;
+
+				BEGIN_ENUM_WAGONS(u)
+					const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
+				CLRBIT(u->subtype, 7);
+				switch (u->subtype) {
+					case 0:	/* TS_Front_Engine */
+						if (rvi->flags & RVI_MULTIHEAD) {
+							SetMultiheaded(u);
+						}
+						SetFrontEngine(u);
+						SetTrainEngine(u);
+						break;
+					case 1:	/* TS_Artic_Part */
+						u->subtype = 0;
+						SetArticulatedPart(u);
+						break;
+					case 2:	/* TS_Not_First */
+						u->subtype = 0;
+						if (rvi->flags & RVI_WAGON) {
+							// normal wagon
+							SetTrainWagon(u);
+							break;
+						}
+							if (rvi->flags & RVI_MULTIHEAD && rvi->image_index == u->spritenum - 1) {
+								// rear end of a multiheaded engine
+								SetMultiheaded(u);
+								break;
+							}
+							if (rvi->flags & RVI_MULTIHEAD) {
+								SetMultiheaded(u);
+							}
+							SetTrainEngine(u);
+						break;
+					case 4:	/* TS_Free_Car */
+						u->subtype = 0;
+						SetTrainWagon(u);
+						SetFreeWagon(u);
+						break;
+					default: NOT_REACHED(); break;
+				}
+				END_ENUM_WAGONS(u)
+					u = v;
+				BEGIN_ENUM_WAGONS(u)
+					const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
+
+				if (u->u.rail.other_multiheaded_part != NULL) continue;
+
+				if (rvi->flags & RVI_MULTIHEAD) {
+					if (!IsTrainEngine(u)) {
+						/* we got a rear car without a front car. We will convert it to a front one */
+						SetTrainEngine(u);
+						u->spritenum--;
+					}
+
+					{
+						Vehicle *w;
+
+						for(w = u->next; w != NULL && (w->engine_type != u->engine_type || w->u.rail.other_multiheaded_part != NULL); w = GetNextVehicle(w));
+						if (w != NULL) {
+							/* we found a car to partner with this engine. Now we will make sure it face the right way */
+							if (IsTrainEngine(w)) {
+								ClearTrainEngine(w);
+								w->spritenum++;
+							}
+						}
+
+						if (w != NULL) {
+							w->u.rail.other_multiheaded_part = u;
+							u->u.rail.other_multiheaded_part = w;
+						} else {
+							/* we got a front car and no rear cars. We will fake this one for forget that it should have been multiheaded */
+							ClearMultiheaded(u);
+						}
+					}
+				}
+				END_ENUM_WAGONS(u)
+			}
+		}
+	}
+}

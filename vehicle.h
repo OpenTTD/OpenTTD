@@ -313,7 +313,6 @@ int32 GetTrainRunningCost(const Vehicle *v);
 int CheckTrainStoppedInDepot(const Vehicle *v);
 
 bool VehicleNeedsService(const Vehicle *v);
-void ConvertOldMultiheadToNew(void);
 
 typedef struct GetNewVehiclePosResult {
 	int x,y;

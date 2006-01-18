@@ -29,7 +29,7 @@
 #include <setjmp.h>
 
 enum {
-	SAVEGAME_VERSION = 19,
+	SAVEGAME_VERSION = 20,
 
 };
 

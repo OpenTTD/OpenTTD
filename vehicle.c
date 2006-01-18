@@ -2128,7 +2128,7 @@ static const SaveLoad _train_desc[] = {
 
 	SLE_CONDARR(NullStruct, null, SLE_FILE_U8 | SLE_VAR_NULL, 2, 2, 255),
 
-	SLE_CONDREFX(offsetof(Vehicle,u)+offsetof(VehicleRail,other_multiheaded_part), REF_VEHICLE, 2, 255),	// added with 17.1, but was blank since 2
+	SLE_CONDREFX(offsetof(Vehicle,u)+offsetof(VehicleRail,other_multiheaded_part), REF_VEHICLE, 2, 19),	// added with 17.1, but was blank since 2. Removed in 20
 	// reserve extra space in savegame here. (currently 3 bytes)
 	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 3, 2, 255),
 
@@ -2278,105 +2278,6 @@ static void Save_VEHS(void)
 		if (v->type != 0) {
 			SlSetArrayIndex(v->index);
 			SlObject(v, _veh_descs[v->type - 0x10]);
-		}
-	}
-}
-
-/*
- *  Converts all trains to the new subtype format introduced in savegame 16.2
- *  It also links multiheaded engines or make them forget they are multiheaded if no suitable partner is found
- */
-void ConvertOldMultiheadToNew(void)
-{
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train) {
-			v->u.rail.other_multiheaded_part = NULL;
-			SETBIT(v->subtype, 7);	// indicates that it's the old format and needs to be converted in the next loop
-		}
-	}
-
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train) {
-			if (HASBIT(v->subtype, 7) && ((v->subtype & ~0x80) == 0 || (v->subtype & ~0x80) == 4)) {
-				Vehicle *u = v;
-
-				BEGIN_ENUM_WAGONS(u)
-					const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
-				CLRBIT(u->subtype, 7);
-				switch (u->subtype) {
-					case 0:	/* TS_Front_Engine */
-						if (rvi->flags & RVI_MULTIHEAD) {
-							SetMultiheaded(u);
-						}
-						SetFrontEngine(u);
-						SetTrainEngine(u);
-						break;
-					case 1:	/* TS_Artic_Part */
-						u->subtype = 0;
-						SetArticulatedPart(u);
-						break;
-					case 2:	/* TS_Not_First */
-						u->subtype = 0;
-						if (rvi->flags & RVI_WAGON) {
-							// normal wagon
-							SetTrainWagon(u);
-							break;
-						}
-							if (rvi->flags & RVI_MULTIHEAD && rvi->image_index == u->spritenum - 1) {
-								// rear end of a multiheaded engine
-								SetMultiheaded(u);
-								break;
-							}
-							if (rvi->flags & RVI_MULTIHEAD) {
-								SetMultiheaded(u);
-							}
-							SetTrainEngine(u);
-						break;
-					case 4:	/* TS_Free_Car */
-						u->subtype = 0;
-						SetTrainWagon(u);
-						SetFreeWagon(u);
-						break;
-					default: NOT_REACHED(); break;
-				}
-				END_ENUM_WAGONS(u)
-					u = v;
-				BEGIN_ENUM_WAGONS(u)
-					const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
-
-				if (u->u.rail.other_multiheaded_part != NULL) continue;
-
-				if (rvi->flags & RVI_MULTIHEAD) {
-					if (!IsTrainEngine(u)) {
-						/* we got a rear car without a front car. We will convert it to a front one */
-						SetTrainEngine(u);
-						u->spritenum--;
-					}
-
-					{
-						Vehicle *w;
-
-						for(w = u->next; w != NULL && (w->engine_type != u->engine_type || w->u.rail.other_multiheaded_part != NULL); w = GetNextVehicle(w));
-						if (w != NULL) {
-							/* we found a car to partner with this engine. Now we will make sure it face the right way */
-							if (IsTrainEngine(w)) {
-								ClearTrainEngine(w);
-								w->spritenum++;
-							}
-						}
-
-						if (w != NULL) {
-							w->u.rail.other_multiheaded_part = u;
-							u->u.rail.other_multiheaded_part = w;
-						} else {
-							/* we got a front car and no rear cars. We will fake this one for forget that it should have been multiheaded */
-							ClearMultiheaded(u);
-						}
-					}
-				}
-				END_ENUM_WAGONS(u)
-			}
 		}
 	}
 }

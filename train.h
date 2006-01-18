@@ -205,4 +205,7 @@ static inline Vehicle *GetLastEnginePart(Vehicle *v)
 	return v;
 }
 
+void ConvertOldMultiheadToNew(void);
+void ConnectMultiheadedTrains(void);
+
 #endif /* TRAIN_H */
