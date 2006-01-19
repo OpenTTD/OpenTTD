@@ -82,7 +82,8 @@ void SetDate(uint date)
 	_cur_year = ymd.year;
 	_cur_month = ymd.month;
 #ifdef ENABLE_NETWORK
-	_network_last_advertise_date = 0;
+	_network_last_advertise_frame = 0;
+	_network_need_advertise = true;
 #endif /* ENABLE_NETWORK */
 }
 

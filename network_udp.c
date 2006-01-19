@@ -35,9 +35,9 @@ typedef enum {
 } PacketUDPType;
 
 enum {
-	ADVERTISE_NORMAL_INTERVAL = 450,	// interval between advertising in days
-	ADVERTISE_RETRY_INTERVAL = 5,			// readvertise when no response after this amount of days
-	ADVERTISE_RETRY_TIMES = 3					// give up readvertising after this much failed retries
+	ADVERTISE_NORMAL_INTERVAL = 30000, // interval between advertising in ticks (15 minutes)
+	ADVERTISE_RETRY_INTERVAL = 300,    // readvertise when no response after this many ticks (9 seconds)
+	ADVERTISE_RETRY_TIMES = 3          // give up readvertising after this much failed retries
 };
 
 #define DEF_UDP_RECEIVE_COMMAND(type) void NetworkPacketReceive_ ## type ## _command(Packet *p, struct sockaddr_in *client_addr)
@@ -611,18 +611,23 @@ void NetworkUDPAdvertise(void)
 		if (!NetworkUDPListen(&_udp_master_socket, _network_server_bind_ip, 0, false))
 			return;
 
-	/* Only send once in the 450 game-days (about 15 minutes) */
-	if (_network_advertise_retries == 0) {
-		if ( (_network_last_advertise_date + ADVERTISE_NORMAL_INTERVAL) > _date)
-			return;
+	if (_network_need_advertise) {
+		_network_need_advertise = false;
 		_network_advertise_retries = ADVERTISE_RETRY_TIMES;
+	} else {
+		/* Only send once every ADVERTISE_NORMAL_INTERVAL ticks */
+		if (_network_advertise_retries == 0) {
+			if ((_network_last_advertise_frame + ADVERTISE_NORMAL_INTERVAL) > _frame_counter)
+				return;
+			_network_advertise_retries = ADVERTISE_RETRY_TIMES;
+		}
+
+		if ((_network_last_advertise_frame + ADVERTISE_RETRY_INTERVAL) > _frame_counter)
+			return;
 	}
 
-	if ( (_network_last_advertise_date + ADVERTISE_RETRY_INTERVAL) > _date)
-		return;
-
 	_network_advertise_retries--;
-	_network_last_advertise_date = _date;
+	_network_last_advertise_frame = _frame_counter;
 
 	/* Find somewhere to send */
 	out_addr.sin_family = AF_INET;

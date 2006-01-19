@@ -983,7 +983,8 @@ bool NetworkServerStart(void)
 	if (_network_dedicated) IConsoleCmdExec("exec scripts/on_dedicated.scr 0");
 
 	/* Try to register us to the master server */
-	_network_last_advertise_date = 0;
+	_network_last_advertise_frame = 0;
+	_network_need_advertise = true;
 	NetworkUDPAdvertise();
 	return true;
 }
@@ -1321,7 +1322,8 @@ void NetworkStartUp(void)
     // Network is available
 	_network_available = true;
 	_network_dedicated = false;
-	_network_last_advertise_date = 0;
+	_network_last_advertise_frame = 0;
+	_network_need_advertise = true;
 	_network_advertise_retries = 0;
 
 	/* Load the ip from the openttd.cfg */
