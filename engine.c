@@ -210,7 +210,7 @@ void StartupEngines(void)
 		e->player_avail = 0;
 
 		r = Random();
-		e->intro_date = GB(r, 0, 9) + ei->base_intro;
+		e->intro_date = ei->base_intro == 0 ? 0 : GB(r, 0, 9) + ei->base_intro;
 		if (e->intro_date <= _date) {
 			e->age = (_date - e->intro_date) >> 5;
 			e->player_avail = (byte)-1;
