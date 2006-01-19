@@ -156,7 +156,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Yapilama
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Burasi temizlenemez....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Orjinal kopyalama hakki {COPYRIGHT} 1995 Chris Sawyer, Her Hakki Saklidir
 STR_00B7_VERSION                                                :{BLACK}OpenTTD sürümü {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2005 OpenTTD takimi
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 OpenTTD takimi
 STR_TRANSLATED_BY                                               :{BLACK}  Çevirenler -
 
 STR_00C5                                                        :{BLACK}{CROSS}
