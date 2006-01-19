@@ -374,9 +374,9 @@ DEF_CONSOLE_CMD(ConBan)
 
 	if (strchr(argv[1], '.') == NULL) {
 		index = atoi(argv[1]);
-		ci = NetworkFindClientFromIndex(index);
+		ci = NetworkFindClientInfoFromIndex(index);
 	} else {
-		ci = NetworkFindClientFromIP(argv[1]);
+		ci = NetworkFindClientInfoFromIP(argv[1]);
 		index = (ci == NULL) ? 0 : ci->client_index;
 	}
 
@@ -386,7 +386,7 @@ DEF_CONSOLE_CMD(ConBan)
 	}
 
 	if (index == 0) {
-		IConsoleError("Invalid Client-ID");
+		IConsoleError("Invalid client");
 		return true;
 	}
 
@@ -402,7 +402,7 @@ DEF_CONSOLE_CMD(ConBan)
 
 		SEND_COMMAND(PACKET_SERVER_ERROR)(NetworkFindClientStateFromIndex(index), NETWORK_ERROR_KICKED);
 	} else
-		IConsoleError("Client-ID not found");
+		IConsoleError("Client not found");
 
 	return true;
 }
@@ -542,9 +542,9 @@ DEF_CONSOLE_CMD(ConKick)
 
 	if (strchr(argv[1], '.') == NULL) {
 		index = atoi(argv[1]);
-		ci = NetworkFindClientFromIndex(index);
+		ci = NetworkFindClientInfoFromIndex(index);
 	} else {
-		ci = NetworkFindClientFromIP(argv[1]);
+		ci = NetworkFindClientInfoFromIP(argv[1]);
 		index = (ci == NULL) ? 0 : ci->client_index;
 	}
 
@@ -554,14 +554,14 @@ DEF_CONSOLE_CMD(ConKick)
 	}
 
 	if (index == 0) {
-		IConsoleError("Invalid client-id");
+		IConsoleError("Invalid client");
 		return true;
 	}
 
 	if (ci != NULL) {
 		SEND_COMMAND(PACKET_SERVER_ERROR)(NetworkFindClientStateFromIndex(index), NETWORK_ERROR_KICKED);
 	} else
-		IConsoleError("Client-id not found");
+		IConsoleError("Client not found");
 
 	return true;
 }
