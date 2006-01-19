@@ -65,6 +65,21 @@ NetworkClientInfo *NetworkFindClientInfoFromIndex(uint16 client_index)
 	return NULL;
 }
 
+/** Return the CI for a given IP
+ * @param ip IP of the client we are looking for. This must be in string-format
+ * @return return a pointer to the corresponding NetworkClientInfo struct or NULL on failure */
+NetworkClientInfo *NetworkFindClientInfoFromIP(const char *ip)
+{
+	NetworkClientInfo *ci;
+	uint32 ip_number = inet_addr(ip);
+
+	for (ci = _network_client_info; ci != &_network_client_info[MAX_CLIENT_INFO]; ci++) {
+		if (ci->client_ip == ip_number) return ci;
+	}
+
+	return NULL;
+}
+
 // Function that looks up the CS for a given client-index
 NetworkClientState *NetworkFindClientStateFromIndex(uint16 client_index)
 {

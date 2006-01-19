@@ -365,25 +365,30 @@ DEF_CONSOLE_CMD(ConBan)
 	uint32 index;
 
 	if (argc == 0) {
-		IConsoleHelp("Ban a player from a network game. Usage: 'ban <client-id>'");
+		IConsoleHelp("Ban a player from a network game. Usage: 'ban <ip | client-id>'");
 		IConsoleHelp("For client-id's, see the command 'clients'");
 		return true;
 	}
 
 	if (argc != 2) return false;
 
-	index = atoi(argv[1]);
+	if (strchr(argv[1], '.') == NULL) {
+		index = atoi(argv[1]);
+		ci = NetworkFindClientFromIndex(index);
+	} else {
+		ci = NetworkFindClientFromIP(argv[1]);
+		index = (ci == NULL) ? 0 : ci->client_index;
+	}
 
 	if (index == NETWORK_SERVER_INDEX) {
 		IConsolePrint(_icolour_def, "Silly boy, you can not ban yourself!");
 		return true;
 	}
+
 	if (index == 0) {
 		IConsoleError("Invalid Client-ID");
 		return true;
 	}
-
-	ci = NetworkFindClientInfoFromIndex(index);
 
 	if (ci != NULL) {
 		uint i;
@@ -407,7 +412,7 @@ DEF_CONSOLE_CMD(ConUnBan)
 	uint i, index;
 
 	if (argc == 0) {
-		IConsoleHelp("Unban a player from a network game. Usage: 'unban <ip | id>'");
+		IConsoleHelp("Unban a player from a network game. Usage: 'unban <ip | client-id>'");
 		IConsoleHelp("For a list of banned IP's, see the command 'banlist'");
 		return true;
 	}
@@ -528,24 +533,30 @@ DEF_CONSOLE_CMD(ConKick)
 	uint32 index;
 
 	if (argc == 0) {
-		IConsoleHelp("Kick a player from a network game. Usage: 'kick <client-id>'");
+		IConsoleHelp("Kick a player from a network game. Usage: 'kick <ip | client-id>'");
 		IConsoleHelp("For client-id's, see the command 'clients'");
 		return true;
 	}
 
 	if (argc != 2) return false;
 
-	index = atoi(argv[1]);
+	if (strchr(argv[1], '.') == NULL) {
+		index = atoi(argv[1]);
+		ci = NetworkFindClientFromIndex(index);
+	} else {
+		ci = NetworkFindClientFromIP(argv[1]);
+		index = (ci == NULL) ? 0 : ci->client_index;
+	}
+
 	if (index == NETWORK_SERVER_INDEX) {
 		IConsolePrint(_icolour_def, "Silly boy, you can not kick yourself!");
 		return true;
 	}
+
 	if (index == 0) {
 		IConsoleError("Invalid client-id");
 		return true;
 	}
-
-	ci = NetworkFindClientInfoFromIndex(index);
 
 	if (ci != NULL) {
 		SEND_COMMAND(PACKET_SERVER_ERROR)(NetworkFindClientStateFromIndex(index), NETWORK_ERROR_KICKED);

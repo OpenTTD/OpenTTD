@@ -226,6 +226,7 @@ void NetworkGetClientName(char *clientname, size_t size, const NetworkClientStat
 uint NetworkCalculateLag(const NetworkClientState *cs);
 byte NetworkGetCurrentLanguageIndex(void);
 NetworkClientInfo *NetworkFindClientInfoFromIndex(uint16 client_index);
+NetworkClientInfo *NetworkFindClientInfoFromIP(const char *ip);
 NetworkClientState *NetworkFindClientStateFromIndex(uint16 client_index);
 unsigned long NetworkResolveHost(const char *hostname);
 
