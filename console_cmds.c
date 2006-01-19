@@ -1117,8 +1117,10 @@ DEF_CONSOLE_HOOK(ConHookServerPW)
 	if (strncmp(_network_server_password, "*", NETWORK_PASSWORD_LENGTH) == 0) {
 		_network_server_password[0] = '\0';
 		_network_game_info.use_password = 0;
-	} else
+	} else {
+		ttd_strlcpy(_network_game_info.server_password, _network_server_password, sizeof(_network_server_password));
 		_network_game_info.use_password = 1;
+	}
 
 	return true;
 }
