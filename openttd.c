@@ -814,6 +814,10 @@ void SwitchMode(int new_mode)
 
 	if (_switch_mode_errorstr != INVALID_STRING_ID)
 		ShowErrorMessage(INVALID_STRING_ID,_switch_mode_errorstr,0,0);
+
+	// Reset the TileHighlightData as it may be out of bounds if
+	// the new map is smaller than the old map.
+	memset(&_thd, 0, sizeof(_thd));
 }
 
 
