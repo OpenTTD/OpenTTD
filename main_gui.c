@@ -791,7 +791,8 @@ static void ToolbarLeagueClick(Window *w)
 
 static void ToolbarIndustryClick(Window *w)
 {
-	PopupMainToolbMenu(w, 280, 12, STR_INDUSTRY_DIR, 2, 0);
+	int dis = _current_player == OWNER_SPECTATOR ? 2 : 0;
+	PopupMainToolbMenu(w, 280, 12, STR_INDUSTRY_DIR, 2, dis);
 }
 
 static void ToolbarTrainClick(Window *w)
