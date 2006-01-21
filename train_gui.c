@@ -905,17 +905,21 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 
 		v = GetVehicle(w->window_number);
 
-		w->disabled_state = (v->owner == _local_player) ? 0 : 0x380;
+		if (v->owner != _local_player) {
+			w->disabled_state = 0x3380;
+		} else {
+			w->disabled_state = 0;
 
-		SETBIT(w->disabled_state, 12);
+			SETBIT(w->disabled_state, 12);
 
-		/* See if any vehicle can be refitted */
-		for ( u = v; u != NULL; u = u->next) {
-			if (_engine_info[u->engine_type].refit_mask != 0 ||
-						 (!(RailVehInfo(v->engine_type)->flags & RVI_WAGON) && v->cargo_cap != 0)) {
-				CLRBIT(w->disabled_state, 12);
-				/* We have a refittable carriage, bail out */
-				break;
+			/* See if any vehicle can be refitted */
+			for (u = v; u != NULL; u = u->next) {
+				if (_engine_info[u->engine_type].refit_mask != 0 ||
+						(!(RailVehInfo(v->engine_type)->flags & RVI_WAGON) && v->cargo_cap != 0)) {
+					CLRBIT(w->disabled_state, 12);
+					/* We have a refittable carriage, bail out */
+					break;
+				}
 			}
 		}
 
