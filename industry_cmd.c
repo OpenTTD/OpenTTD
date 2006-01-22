@@ -1170,7 +1170,8 @@ static bool CheckNewIndustry_Oil(TileIndex tile, int type)
 {
 	if (_game_mode == GM_EDITOR && _ignore_restrictions) return true;
 	if (_game_mode == GM_EDITOR && type != IT_OIL_RIG)   return true;
-	if (DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < 16)   return true;
+	if ((type != IT_OIL_RIG || TileHeight(tile) == 0) &&
+			DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < 16)   return true;
 
 	_error_message = STR_483B_CAN_ONLY_BE_POSITIONED;
 	return false;
