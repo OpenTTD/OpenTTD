@@ -128,8 +128,8 @@ static void *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 {
 	const TileInfo *ti = data;
 
-	if (v->tile != ti->tile || v->z_pos != ti->z || v->type == VEH_Disaster)
-		return NULL;
+	if (v->tile != ti->tile || v->type == VEH_Disaster) return NULL;
+	if (v->z_pos != ti->z && abs(ti->z - v->z_pos) >= 8) return NULL;
 
 	VehicleInTheWayErrMsg(v);
 	return v;
@@ -151,8 +151,8 @@ bool EnsureNoVehicleZ(TileIndex tile, byte z)
 {
 	TileInfo ti;
 
-	FindLandscapeHeightByTile(&ti, tile);
-	ti.z = z + Correct_Z(ti.tileh);
+	ti.tile = tile;
+	ti.z = z + GetCorrectTileHeight(tile);
 
 	return VehicleFromPos(tile, &ti, EnsureNoVehicleProcZ) == NULL;
 }
