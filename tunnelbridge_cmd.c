@@ -685,12 +685,15 @@ static int32 DoClearTunnel(TileIndex tile, uint32 flags)
 		//  else the direction is always 0.. dah!! ;)
 		byte tile_dir = GB(_m[tile].m5, 0, 2);
 		byte endtile_dir = GB(_m[endtile].m5, 0, 2);
+
+		// Adjust the town's player rating. Do this before removing the tile owner info.
+		if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR)
+			ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM);
+
 		DoClearSquare(tile);
 		DoClearSquare(endtile);
 		UpdateSignalsOnSegment(tile, _updsignals_tunnel_dir[tile_dir]);
 		UpdateSignalsOnSegment(endtile, _updsignals_tunnel_dir[endtile_dir]);
-		if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR)
-			ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM);
 	}
 	return _price.clear_tunnel * (length + 1);
 }
