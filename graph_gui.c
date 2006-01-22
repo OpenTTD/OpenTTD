@@ -856,16 +856,17 @@ static void CompanyLeagueWndProc(Window *w, WindowEvent *e)
 
 
 static const Widget _company_league_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,											STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   399,     0,    13, STR_7053_COMPANY_LEAGUE_TABLE,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   399,    14,    96, 0x0,														STR_NULL},
+{   WWT_CLOSEBOX, RESIZE_NONE, 14,   0,  10,  0, 13, STR_00C5,                      STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION, RESIZE_NONE, 14,  11, 387,  0, 13, STR_7053_COMPANY_LEAGUE_TABLE, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX, RESIZE_NONE, 14, 388, 399,  0, 13, STR_NULL,                      STR_STICKY_BUTTON},
+{     WWT_IMGBTN, RESIZE_NONE, 14,   0, 399, 14, 96, 0x0,                           STR_NULL},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _company_league_desc = {
 	-1, -1, 400, 97,
 	WC_COMPANY_LEAGUE,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_company_league_widgets,
 	CompanyLeagueWndProc
 };
