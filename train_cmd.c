@@ -3294,7 +3294,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 	TileIndex tile;
 	uint x,y;
 	uint16 break_speed;
-	int t;
+	DiagDirection t;
 	uint32 ts;
 	byte trackdir;
 
@@ -3368,8 +3368,11 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 	}
 
 	if (GB(ts, 0, 16) != 0) {
-		/* If we approach a rail-piece which we can't enter, don't enter it! */
-		if (x + 4 > 15 && !CheckCompatibleRail(v, tile)) {
+		/* If we approach a rail-piece which we can't enter, or the back of a depot, don't enter it! */
+		if (x + 4 > 15 &&
+				(!CheckCompatibleRail(v, tile) ||
+				(IsTileDepotType(tile, TRANSPORT_RAIL) &&
+				GetDepotDirection(tile, TRANSPORT_RAIL) == t))) {
 			v->cur_speed = 0;
 			ReverseTrainDirection(v);
 			return false;
