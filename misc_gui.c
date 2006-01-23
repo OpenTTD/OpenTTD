@@ -704,11 +704,10 @@ static void DrawStationCoverageText(const AcceptedCargo accepts,
 }
 
 void DrawStationCoverageAreaText(int sx, int sy, uint mask, int rad) {
-	int x = _thd.pos.x;
-	int y = _thd.pos.y;
+	TileIndex tile = TileVirtXY(_thd.pos.x, _thd.pos.y);
 	AcceptedCargo accepts;
-	if (x != -1) {
-		GetAcceptanceAroundTiles(accepts, TileVirtXY(x, y), _thd.size.x / 16, _thd.size.y / 16 , rad);
+	if (tile < MapSize()) {
+		GetAcceptanceAroundTiles(accepts, tile, _thd.size.x / 16, _thd.size.y / 16 , rad);
 		DrawStationCoverageText(accepts, sx, sy, mask);
 	}
 }
