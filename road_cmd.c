@@ -811,7 +811,7 @@ static void DrawRoadBits(TileInfo *ti, byte road, byte ground_type, bool snow, b
 
 	if (ground_type >= 6) {
 		// Road works
-		DrawGroundSprite(HASBIT(road, 4) ? SPR_EXCAVATION_X : SPR_EXCAVATION_Y);
+		DrawGroundSprite(HASBIT(road, 3) ? SPR_EXCAVATION_X : SPR_EXCAVATION_Y);
 		return;
 	}
 
