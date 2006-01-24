@@ -209,8 +209,11 @@ void StartupEngines(void)
 		e->flags = 0;
 		e->player_avail = 0;
 
+		// The magic value of 729 days below comes from the NewGRF spec. If the
+		// base intro date is before 1922 then the random number of days is not
+		// added.
 		r = Random();
-		e->intro_date = ei->base_intro == 0 ? 0 : GB(r, 0, 9) + ei->base_intro;
+		e->intro_date = ei->base_intro <= 729 ? ei->base_intro : GB(r, 0, 9) + ei->base_intro;
 		if (e->intro_date <= _date) {
 			e->age = (_date - e->intro_date) >> 5;
 			e->player_avail = (byte)-1;
