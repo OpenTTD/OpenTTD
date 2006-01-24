@@ -375,7 +375,7 @@ static void NPFMarkTile(TileIndex tile)
 				break;
 			case MP_STREET:
 				if (!IsTileDepotType(tile, TRANSPORT_ROAD)) {
-					SB(_m[tile].m2, 4, 3, 0);
+					SB(_m[tile].m4, 4, 3, 0);
 					MarkTileDirtyByTile(tile);
 				}
 				break;
