@@ -255,7 +255,6 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 					runcostfact /= 2;
 
 				rvi[i].running_cost_base = runcostfact;
-				dewagonize(runcostfact, engine + i);
 			}
 		} break;
 		case 0x0E: { /* Running cost base */
@@ -267,7 +266,6 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 					case 0x4C36: rvi[i].running_cost_class = 1; break;
 					case 0x4C3C: rvi[i].running_cost_class = 2; break;
 				}
-				dewagonize(base, engine + i);
 			}
 		} break;
 		case 0x12: { /* Sprite ID */
