@@ -994,46 +994,52 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (IsMultiheaded(src) && !IsTrainEngine(src)) return_cmd_error(STR_REAR_ENGINE_FOLLOW_FRONT_ERROR);
 
-	{
-		int r, num = 0;
-
-		r = CheckTrainStoppedInDepot(src_head);
-		/* check if all vehicles in the source train are stopped inside a depot */
-		if (r < 0) return CMD_ERROR;
-
-		if (HASBIT(p2, 0)) {
-			/* If moving the rest of the train, exclude wagons before the
-			 * selected one. */
-
-			Vehicle *u;
-			for (u = src_head; u != src && u != NULL; u = GetNextVehicle(u))
-				r--;
-
-			num += r;
-		} else {
-			// If moving only one vehicle, just count that.
-			num++;
-		}
-
-		/* check if all the vehicles in the dest train are stopped */
-		if (dst_head != NULL) {
-			r = CheckTrainStoppedInDepot(dst_head);
-			if (r < 0) return CMD_ERROR;
-
-			/* If we move in the same vehicle, it is okay */
-			if (dst_head != src_head)
-				num += r;
-
-			assert(dst_head->tile == src_head->tile);
-		}
-
-		/* Check that the length of the dest train is no longer than XXX vehicles */
-		if (num > (_patches.mammoth_trains ? 100 : 9) && IsFrontEngine(dst_head))
-			return_cmd_error(STR_8819_TRAIN_TOO_LONG);
-	}
-
 	// when moving all wagons, we can't have the same src_head and dst_head
 	if (HASBIT(p2, 0) && src_head == dst_head) return 0;
+
+	{
+		int src_len = 0;
+		int max_len = _patches.mammoth_trains ? 100 : 9;
+
+		// check if all vehicles in the source train are stopped inside a depot.
+		src_len = CheckTrainStoppedInDepot(src_head);
+		if (src_len < 0) return CMD_ERROR;
+
+		// check the destination row if the source and destination aren't the same.
+		if (src_head != dst_head) {
+			int dst_len = 0;
+
+			if (dst_head != NULL) {
+				// check if all vehicles in the dest train are stopped.
+				dst_len = CheckTrainStoppedInDepot(dst_head);
+				if (dst_len < 0) return CMD_ERROR;
+
+				assert(dst_head->tile == src_head->tile);
+			}
+
+			// We are moving between rows, so only count the wagons from the source
+			// row that are being moved.
+			if (HASBIT(p2, 0)) {
+				const Vehicle *u;
+				for (u = src_head; u != src && u != NULL; u = GetNextVehicle(u))
+					src_len--;
+			} else {
+				// If moving only one vehicle, just count that.
+				src_len = 1;
+			}
+
+			if (src_len + dst_len > max_len) {
+				// Abort if we're adding too many wagons to a train.
+				if (dst_head != NULL && IsFrontEngine(dst_head)) return_cmd_error(STR_8819_TRAIN_TOO_LONG);
+				// Abort if we're making a train on a new row.
+				if (dst_head == NULL && IsTrainEngine(src)) return_cmd_error(STR_8819_TRAIN_TOO_LONG);
+			}
+		} else {
+			// Abort if we're creating a new train on an existing row.
+			if (src_len > max_len && src == src_head && IsTrainEngine(GetNextVehicle(src_head)))
+				return_cmd_error(STR_8819_TRAIN_TOO_LONG);
+		}
+	}
 
 	// moving a loco to a new line?, then we need to assign a unitnumber.
 	if (dst == NULL && !IsFrontEngine(src) && IsTrainEngine(src)) {
