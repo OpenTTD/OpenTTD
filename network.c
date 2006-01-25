@@ -833,7 +833,7 @@ NetworkGameList *NetworkQueryServer(const char* host, unsigned short port, bool 
 }
 
 /* Validates an address entered as a string and adds the server to
- * the list. If you use this functions, the games will be marked
+ * the list. If you use this function, the games will be marked
  * as manually added. */
 void NetworkAddServer(const char *b)
 {
@@ -1343,7 +1343,7 @@ void NetworkStartUp(void)
 
 	memset(&_network_game_info, 0, sizeof(_network_game_info));
 	_network_game_info.clients_max = 10; // XXX - hardcoded, string limiation -- TrueLight
-	_network_game_info.companies_max = MAX_PLAYERS;
+	_network_game_info.companies_max = MAX_PLAYERS; // 8
 	_network_game_info.spectators_max = _network_game_info.clients_max;
 
 	// Let's load the network in windows

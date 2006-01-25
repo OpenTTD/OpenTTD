@@ -93,6 +93,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER)
 
 DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE)
 {
+	extern const char _openttd_revision[];
 	NetworkGameList *item;
 	byte game_info_version;
 
@@ -102,15 +103,14 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE)
 
 	game_info_version = NetworkRecv_uint8(&_udp_cs, p);
 
-	if (_udp_cs.quited)
-		return;
+	if (_udp_cs.quited) return;
 
 	DEBUG(net, 6)("[NET][UDP] Server response from %s:%d", inet_ntoa(client_addr->sin_addr),ntohs(client_addr->sin_port));
 
 	// Find next item
 	item = NetworkGameListAddItem(inet_addr(inet_ntoa(client_addr->sin_addr)), ntohs(client_addr->sin_port));
 
-	/* Please observe the order. In the order in which packets are sent
+	/* Please observer the order. In the order in which packets are sent
 	 * they are to be received */
 	switch (game_info_version) {
 		case 2:
@@ -142,6 +142,12 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE)
 
 			if (item->info.hostname[0] == '\0')
 				snprintf(item->info.hostname, sizeof(item->info.hostname), "%s", inet_ntoa(client_addr->sin_addr));
+
+			/* Check if we are allowed on this server based on the revision-match */
+			item->info.compatible = (
+			strncmp(item->info.server_revision, _openttd_revision, NETWORK_REVISION_LENGTH) == 0 ||
+			strncmp(item->info.server_revision, NOREV_STRING, NETWORK_REVISION_LENGTH) == 0) ? true : false;
+
 			break;
 	}
 

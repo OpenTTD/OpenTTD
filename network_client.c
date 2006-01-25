@@ -301,8 +301,6 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 		if (current >= MAX_PLAYERS)
 			return NETWORK_RECV_STATUS_CLOSE_QUERY;
 
-		_network_lobby_company_count++;
-
 		NetworkRecv_string(MY_CLIENT, p, _network_player_info[current].company_name, sizeof(_network_player_info[current].company_name));
 		_network_player_info[current].inaugurated_year = NetworkRecv_uint8(MY_CLIENT, p);
 		_network_player_info[current].company_value = NetworkRecv_uint64(MY_CLIENT, p);

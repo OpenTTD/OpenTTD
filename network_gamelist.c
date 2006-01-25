@@ -15,34 +15,23 @@ extern void UpdateNetworkGameWindow(bool unselect);
 
 NetworkGameList *NetworkGameListAddItem(uint32 ip, uint16 port)
 {
-	NetworkGameList *item;
+	NetworkGameList *item, *prev_item;
 
-	item = _network_game_list;
-	if (item != NULL) {
-		while (item->next != NULL) {
-			if (item->ip == ip && item->port == port)
-				return item;
-			item = item->next;
-		}
-
-		if (item->ip == ip && item->port == port)
-			return item;
-
-		item->next = malloc(sizeof(*item));
-		item = item->next;
-	} else {
-		item = malloc(sizeof(*item));
-		_network_game_list = item;
+	prev_item = NULL;
+	for (item = _network_game_list; item != NULL; item = item->next) {
+		if (item->ip == ip && item->port == port) return item;
+		prev_item = item;
 	}
 
-	DEBUG(net, 4) ("[NET][GameList] Added server to list");
-
+	item = malloc(sizeof(*item));
 	memset(item, 0, sizeof(*item));
-
 	item->next = NULL;
 	item->ip = ip;
 	item->port = port;
-	_network_game_count++;
+
+	if (prev_item == NULL) {_network_game_list = item;}
+	else {prev_item->next = item;}
+	DEBUG(net, 4) ("[NET][GameList] Added server to list");
 
 	UpdateNetworkGameWindow(false);
 
@@ -51,28 +40,20 @@ NetworkGameList *NetworkGameListAddItem(uint32 ip, uint16 port)
 
 void NetworkGameListRemoveItem(NetworkGameList *remove)
 {
-	NetworkGameList *item;
+	NetworkGameList *item, *prev_item;
 
-	item = _network_game_list;
+	prev_item = NULL;
+	for (item = _network_game_list; item != NULL; item = item->next) {
+		if (remove == item) {
+			if (prev_item == NULL) {_network_game_list = remove->next;}
+			else {prev_item->next = remove->next;}
 
-	// examine head of the list
-	if ( remove == _network_game_list ) {
-		_network_game_list = remove->next;
-		free(remove);
-		DEBUG(net, 4) ("[NET][GameList] Removed server from list");
-		return;
-	}
-
-	// examine each item
-	while ( item->next != NULL ) {
-		if ( item->next == remove )
-		{
-			item->next = remove->next;
 			free(remove);
 			DEBUG(net, 4) ("[NET][GameList] Removed server from list");
+			UpdateNetworkGameWindow(false);
 			return;
 		}
-		item = item->next;
+		prev_item = item;
 	}
 }
 

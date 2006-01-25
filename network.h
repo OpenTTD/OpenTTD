@@ -66,6 +66,7 @@ typedef struct NetworkGameInfo {
 	char server_revision[NETWORK_REVISION_LENGTH];  // The SVN version number the server is using (e.g.: 'r304')
 	                                                //  It even shows a SVN version in release-version, so
 	                                                //  it is easy to compare if a server is of the correct version
+	bool compatible;                                // Can we connect to this server or not? (based on server_revision)
 	byte server_lang;                               // Language of the server (we should make a nice table for this)
 	byte use_password;                              // Is set to != 0 if it uses a password
 	char server_password[NETWORK_PASSWORD_LENGTH];  // On the server: the game password, on the client: != "" if server has password
@@ -157,9 +158,6 @@ VARDEF uint32 _last_sync_frame; // Used in the server to store the last time a s
 
 // networking settings
 VARDEF uint32 _network_ip_list[MAX_INTERFACES + 1]; // Network IPs
-VARDEF uint16 _network_game_count;
-
-VARDEF uint16 _network_lobby_company_count;
 
 VARDEF uint _network_server_port;
 /* We use bind_ip and bind_ip_host, where bind_ip_host is the readable form of
