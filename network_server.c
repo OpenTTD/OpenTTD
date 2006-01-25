@@ -615,7 +615,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	// join another company does not affect these values
 	switch (playas) {
 		case 0: /* New company */
-			if (_network_game_info.companies_max >= _network_game_info.companies_on) {
+			if (_network_game_info.companies_on >= _network_game_info.companies_max) {
 				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_FULL);
 				return;
 			}
