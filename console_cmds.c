@@ -1352,6 +1352,10 @@ void IConsoleStdLibRegister(void)
 
 	/* networking variables and functions */
 #ifdef ENABLE_NETWORK
+	/* Network hooks; only active in network */
+	IConsoleCmdHookAdd ("stopall",      ICONSOLE_HOOK_ACCESS, ConHookNoNetwork);
+	IConsoleCmdHookAdd ("resetengines", ICONSOLE_HOOK_ACCESS, ConHookNoNetwork);
+
 	/*** Networking commands ***/
 	IConsoleCmdRegister("say",             ConSay);
 	IConsoleCmdHookAdd("say",              ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
@@ -1359,30 +1363,32 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdHookAdd("say_player",       ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
 	IConsoleCmdRegister("say_client",      ConSayClient);
 	IConsoleCmdHookAdd("say_client",       ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
-	IConsoleCmdRegister("kick",            ConKick);
-	IConsoleCmdHookAdd("kick",             ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-	IConsoleCmdRegister("reset_company",   ConResetCompany);
-	IConsoleCmdHookAdd("reset_company",    ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-	IConsoleAliasRegister("clean_company", "reset_company %A");
+
 	IConsoleCmdRegister("connect",         ConNetworkConnect);
-	IConsoleAliasRegister("join",          "connect %A");
 	IConsoleCmdHookAdd("connect",          ICONSOLE_HOOK_ACCESS, ConHookClientOnly);
+	IConsoleAliasRegister("join",          "connect %A");
 	IConsoleCmdRegister("clients",         ConNetworkClients);
 	IConsoleCmdHookAdd("clients",          ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
 	IConsoleCmdRegister("status",          ConStatus);
 	IConsoleCmdHookAdd("status",           ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-	IConsoleCmdHookAdd("resetengines",     ICONSOLE_HOOK_ACCESS, ConHookNoNetwork);
-	IConsoleCmdHookAdd("stopall",          ICONSOLE_HOOK_ACCESS, ConHookNoNetwork);
-
+	IConsoleCmdRegister("server_info",     ConServerInfo);
+	IConsoleCmdHookAdd("server_info",      ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleAliasRegister("info",          "server_info");
 	IConsoleCmdRegister("rcon",            ConRcon);
 	IConsoleCmdHookAdd("rcon",             ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
 
+	IConsoleCmdRegister("reset_company",   ConResetCompany);
+	IConsoleCmdHookAdd("reset_company",    ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleAliasRegister("clean_company", "reset_company %A");
+	IConsoleCmdRegister("kick",            ConKick);
+	IConsoleCmdHookAdd("kick",             ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleCmdRegister("ban",             ConBan);
 	IConsoleCmdHookAdd("ban",              ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleCmdRegister("unban",           ConUnBan);
 	IConsoleCmdHookAdd("unban",            ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleCmdRegister("banlist",         ConBanList);
 	IConsoleCmdHookAdd("banlist",          ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+
 	IConsoleCmdRegister("pause",           ConPauseGame);
 	IConsoleCmdHookAdd("pause",            ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleCmdRegister("unpause",         ConUnPauseGame);
@@ -1401,12 +1407,10 @@ void IConsoleStdLibRegister(void)
 	IConsoleVarHookAdd("server_pw",              ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleVarHookAdd("server_pw",              ICONSOLE_HOOK_POST_ACTION, ConHookServerPW);
 	IConsoleAliasRegister("server_password",     "server_pw %+");
-
 	IConsoleVarStringRegister("rcon_pw",         &_network_rcon_password, sizeof(_network_rcon_password), "Set the rcon-password to change server behaviour. Use '*' to disable rcon");
 	IConsoleVarHookAdd("rcon_pw",                ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleVarHookAdd("rcon_pw",                ICONSOLE_HOOK_POST_ACTION, ConHookRconPW);
 	IConsoleAliasRegister("rcon_password",       "rcon_pw %+");
-
 	IConsoleVarStringRegister("company_pw",      NULL, 0, "Set a password for your company, so no one without the correct password can join. Use '*' to clear the password");
 	IConsoleVarHookAdd("company_pw",             ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
 	IConsoleVarProcAdd("company_pw",             NetworkChangeCompanyPassword);
@@ -1415,21 +1419,16 @@ void IConsoleStdLibRegister(void)
 	IConsoleVarStringRegister("name",            &_network_player_name, sizeof(_network_player_name), "Set your name for multiplayer");
 	IConsoleVarHookAdd("name",                   ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
 	IConsoleVarHookAdd("name",                   ICONSOLE_HOOK_POST_ACTION, ConProcPlayerName);
-
 	IConsoleVarStringRegister("server_name",     &_network_server_name, sizeof(_network_server_name), "Set the name of the server for multiplayer");
 	IConsoleVarHookAdd("server_name",            ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleVarHookAdd("server_name",            ICONSOLE_HOOK_POST_ACTION, ConHookServerName);
 
 	IConsoleVarRegister("server_port",           &_network_server_port, ICONSOLE_VAR_UINT32, "Set the server port. Changes take effect the next time you start a server");
-
 	IConsoleVarRegister("server_ip",             &_network_server_bind_ip, ICONSOLE_VAR_UINT32, "Set the IP the server binds to. Changes take effect the next time you start a server. Use 'all' to bind to any IP.");
 	IConsoleVarProcAdd("server_ip",              ConProcServerIP);
 	IConsoleAliasRegister("server_bind_ip",      "server_ip %+");
 	IConsoleAliasRegister("server_ip_bind",      "server_ip %+");
 	IConsoleAliasRegister("server_bind",         "server_ip %+");
-
-	IConsoleVarRegister("max_join_time",         &_network_max_join_time, ICONSOLE_VAR_UINT16, "Set the maximum amount of time (ticks) a client is allowed to join. Default value: 500");
-
 	IConsoleVarRegister("server_advertise",      &_network_advertise, ICONSOLE_VAR_BOOLEAN, "Set if the server will advertise to the master server and show up there");
 	IConsoleVarHookAdd("server_advertise",       ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleVarHookAdd("server_advertise",       ICONSOLE_HOOK_POST_ACTION, ConHookServerAdvertise);
@@ -1441,18 +1440,18 @@ void IConsoleStdLibRegister(void)
 	IConsoleVarHookAdd("max_companies",          ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleVarRegister("max_spectators",        &_network_game_info.spectators_max, ICONSOLE_VAR_BYTE, "Control the maximum amount of active spectators during runtime. Default value: 9");
 	IConsoleVarHookAdd("max_spectators",         ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+
+	IConsoleVarRegister("max_join_time",         &_network_max_join_time, ICONSOLE_VAR_UINT16, "Set the maximum amount of time (ticks) a client is allowed to join. Default value: 500");
+
 	IConsoleVarRegister("pause_on_join",         &_network_pause_on_join, ICONSOLE_VAR_BOOLEAN, "Set if the server should pause gameplay while a client is joining. This might help slow users");
 	IConsoleVarHookAdd("pause_on_join",          ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 
 	IConsoleVarRegister("autoclean_companies",   &_network_autoclean_companies, ICONSOLE_VAR_BOOLEAN, "Automatically shut down inactive companies to free them up for other players. Customize with 'autoclean_(un)protected'");
 	IConsoleVarHookAdd("autoclean_companies",    ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-
 	IConsoleVarRegister("autoclean_protected",   &_network_autoclean_protected, ICONSOLE_VAR_BYTE, "Automatically remove the password from an inactive company after the given amount of months");
 	IConsoleVarHookAdd("autoclean_protected",    ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-
 	IConsoleVarRegister("autoclean_unprotected", &_network_autoclean_unprotected, ICONSOLE_VAR_BYTE, "Automatically shut down inactive companies after the given amount of months");
 	IConsoleVarHookAdd("autoclean_unprotected",  ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-
 	IConsoleVarRegister("restart_game_date",     &_network_restart_game_date, ICONSOLE_VAR_UINT16, "Auto-restart the server when Jan 1st of the set year is reached. Use '0' to disable this");
 	IConsoleVarHookAdd("restart_game_date",      ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 
