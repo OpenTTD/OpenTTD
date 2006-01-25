@@ -395,20 +395,30 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR)
 {
 	NetworkErrorCode error = NetworkRecv_uint8(MY_CLIENT, p);
 
-	if (error == NETWORK_ERROR_NOT_AUTHORIZED || error == NETWORK_ERROR_NOT_EXPECTED ||
-			error == NETWORK_ERROR_PLAYER_MISMATCH) {
-		// We made an error in the protocol, and our connection is closed.... :(
-		_switch_mode_errorstr = STR_NETWORK_ERR_SERVER_ERROR;
-	} else if (error == NETWORK_ERROR_WRONG_REVISION) {
-		// Wrong revision :(
-		_switch_mode_errorstr = STR_NETWORK_ERR_WRONG_REVISION;
-	} else if (error == NETWORK_ERROR_WRONG_PASSWORD) {
-		// Wrong password
-		_switch_mode_errorstr = STR_NETWORK_ERR_WRONG_PASSWORD;
-	} else if (error == NETWORK_ERROR_KICKED) {
-		_switch_mode_errorstr = STR_NETWORK_ERR_KICKED;
-	} else if (error == NETWORK_ERROR_CHEATER) {
-		_switch_mode_errorstr = STR_NETWORK_ERR_CHEATER;
+	switch (error) {
+		/* We made an error in the protocol, and our connection is closed.... */
+		case NETWORK_ERROR_NOT_AUTHORIZED:
+		case NETWORK_ERROR_NOT_EXPECTED:
+		case NETWORK_ERROR_PLAYER_MISMATCH:
+			_switch_mode_errorstr = STR_NETWORK_ERR_SERVER_ERROR;
+			break;
+		case NETWORK_ERROR_FULL:
+			_switch_mode_errorstr = STR_NETWORK_ERR_SERVER_FULL;
+			break;
+		case NETWORK_ERROR_WRONG_REVISION:
+			_switch_mode_errorstr = STR_NETWORK_ERR_WRONG_REVISION;
+			break;
+		case NETWORK_ERROR_WRONG_PASSWORD:
+			_switch_mode_errorstr = STR_NETWORK_ERR_WRONG_PASSWORD;
+			break;
+		case NETWORK_ERROR_KICKED:
+			_switch_mode_errorstr = STR_NETWORK_ERR_KICKED;
+			break;
+		case NETWORK_ERROR_CHEATER:
+			_switch_mode_errorstr = STR_NETWORK_ERR_CHEATER;
+			break;
+		default:
+			_switch_mode_errorstr = STR_NETWORK_ERR_LOSTCONNECTION;
 	}
 
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);

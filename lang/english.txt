@@ -1201,12 +1201,12 @@ STR_NETWORK_ADD_SERVER                                          :{BLACK}Add serv
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Adds a server to the list which will always be checked for running games.
 STR_NETWORK_ENTER_IP                                            :{BLACK}Enter the address of the host
 
-STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
+STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clients
-STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clients online / clients max
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clients online / clients max{}Companies online / companies max
 STR_NETWORK_GAME_INFO                                           :{SILVER}GAME INFO
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Clients:  {WHITE}{COMMA} / {COMMA}
+STR_NETWORK_CLIENTS                                             :{SILVER}Clients:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Language:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Tileset:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Map size:  {WHITE}{COMMA}x{COMMA}
@@ -1230,7 +1230,7 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Set pass
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Protect your game with a password if you don't want it to be publicly accessible
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Select a map:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Which map do you want to play?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maximum allowed clients:
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Max clients:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Choose the maximum number of clients. Not all slots need to be filled
 STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
@@ -1238,18 +1238,26 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (advertise)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_CLIENTS                                           :2 clients
-STR_NETWORK_3_CLIENTS                                           :3 clients
-STR_NETWORK_4_CLIENTS                                           :4 clients
-STR_NETWORK_5_CLIENTS                                           :5 clients
-STR_NETWORK_6_CLIENTS                                           :6 clients
-STR_NETWORK_7_CLIENTS                                           :7 clients
-STR_NETWORK_8_CLIENTS                                           :8 clients
-STR_NETWORK_9_CLIENTS                                           :9 clients
-STR_NETWORK_10_CLIENTS                                          :10 clients
+STR_NETWORK_0_CLIENTS                                           :0 players
+STR_NETWORK_1_CLIENTS                                           :1 player
+STR_NETWORK_2_CLIENTS                                           :2 players
+STR_NETWORK_3_CLIENTS                                           :3 players
+STR_NETWORK_4_CLIENTS                                           :4 players
+STR_NETWORK_5_CLIENTS                                           :5 players
+STR_NETWORK_6_CLIENTS                                           :6 players
+STR_NETWORK_7_CLIENTS                                           :7 players
+STR_NETWORK_8_CLIENTS                                           :8 players
+STR_NETWORK_9_CLIENTS                                           :9 players
+STR_NETWORK_10_CLIENTS                                          :10 players
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max companies:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limit the server to a certain amount of companies
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max spectators:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limit the server to a certain amount of spectators
+STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Language spoken:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Other players will know which language is spoken on the server
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Start Game
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Start a new network game from a random map, or scenario
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Load Game
@@ -1336,14 +1344,15 @@ STR_NETWORK_ERR_CLIENT_DESYNC                                   :desync error
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :could not load map
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :connection lost
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protocol error
-STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :Not Authorised
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :not authorized
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :received strange packet
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :wrong revision
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :name already in use
-STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :wrong game-password
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :wrong password
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :wrong player-id in DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :kicked by server
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :was trying to use a cheat
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server full
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :has joined the game
 STR_NETWORK_GIVE_MONEY                                          :gave your company some money ({CURRENCY})

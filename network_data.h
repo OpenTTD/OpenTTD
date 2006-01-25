@@ -18,7 +18,7 @@
 #define NETWORK_EMPTY_INDEX 0
 
 // What version of game-info do we use?
-#define NETWORK_GAME_INFO_VERSION 1
+#define NETWORK_GAME_INFO_VERSION 2
 // What version of company info is this?
 #define NETWORK_COMPANY_INFO_VERSION 3
 // What version of master-server-protocol do we use?
@@ -92,6 +92,7 @@ typedef enum {
 	NETWORK_ERROR_PLAYER_MISMATCH, // Happens in CLIENT_COMMAND
 	NETWORK_ERROR_KICKED,
 	NETWORK_ERROR_CHEATER,
+	NETWORK_ERROR_FULL,
 } NetworkErrorCode;
 
 // Actions that can be used for NetworkTextMessage

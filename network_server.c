@@ -156,13 +156,13 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientState *cs, Netwo
 	NetworkSend_uint8(p, error);
 	NetworkSend_Packet(p, cs);
 
+	GetString(str, STR_NETWORK_ERR_CLIENT_GENERAL + error);
+
 	// Only send when the current client was in game
 	if (cs->status > STATUS_AUTH) {
 		NetworkGetClientName(client_name, sizeof(client_name), cs);
 
-		GetString(str, STR_NETWORK_ERR_CLIENT_GENERAL + error);
-
-		DEBUG(net, 2)("[NET] %s made an error (%s) and his connection is closed", client_name, str);
+		DEBUG(net, 2) ("[NET] '%s' made an error and has been disconnected. Reason: %s", client_name, str);
 
 		NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, client_name, "%s", str);
 
@@ -177,7 +177,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientState *cs, Netwo
 			}
 		}
 	} else {
-		DEBUG(net, 2)("[NET] Clientno %d has made an error and his connection is closed", cs->index);
+		DEBUG(net, 2) ("[NET] Client %d made an error and has been disconnected. Reason: %s", cs->index, str);
 	}
 
 	cs->quited = true;
@@ -213,14 +213,16 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 	//
 
 	Packet *p;
-	NetworkClientState *new_cs;
+	const NetworkClientState *new_cs;
+	const NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
 
 	// Invalid packet when status is AUTH or higher
-	if (cs->status >= STATUS_AUTH)
-		return;
+	if (cs->status >= STATUS_AUTH) return;
 
 	cs->status = STATUS_AUTH;
 	_network_game_info.clients_on++;
+	/* increment spectator; defer company addition for when player is actually created */
+	if (ci->client_playas == OWNER_SPECTATOR) _network_game_info.spectators_on++;
 
 	p = NetworkSend_Init(PACKET_SERVER_WELCOME);
 	NetworkSend_uint16(p, cs->index);
@@ -585,11 +587,9 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	char name[NETWORK_NAME_LENGTH];
 	char unique_id[NETWORK_NAME_LENGTH];
 	NetworkClientInfo *ci;
-	char test_name[NETWORK_NAME_LENGTH];
 	byte playas;
 	NetworkLanguage client_lang;
 	char client_revision[NETWORK_REVISION_LENGTH];
-
 
 	NetworkRecv_string(cs, p, client_revision, sizeof(client_revision));
 
@@ -610,18 +610,28 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	client_lang = NetworkRecv_uint8(cs, p);
 	NetworkRecv_string(cs, p, unique_id, sizeof(unique_id));
 
-	if (cs->quited)
-		return;
+	if (cs->quited) return;
 
-	// Check if someone else already has that name
-	snprintf(test_name, sizeof(test_name), "%s", name);
-
-	if (test_name[0] == '\0') {
-		// We need a valid name.. make it Player
-		snprintf(test_name, sizeof(test_name), "Player");
+	// join another company does not affect these values
+	switch (playas) {
+		case 0: /* New company */
+			if (_network_game_info.companies_max >= _network_game_info.companies_on) {
+				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_FULL);
+				return;
+			}
+			break;
+		case OWNER_SPECTATOR: /* Spectator */
+			if (_network_game_info.spectators_on >= _network_game_info.spectators_max) {
+				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_FULL);
+				return;
+			}
+			break;
 	}
 
-	if (!NetworkFindName(test_name)) {
+	// We need a valid name.. make it Player
+	if (name[0] == '\0') snprintf(name, sizeof(name), "Player");
+
+	if (!NetworkFindName(name)) { // Change name if duplicate
 		// We could not create a name for this player
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NAME_IN_USE);
 		return;
@@ -629,7 +639,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 
 	ci = DEREF_CLIENT_INFO(cs);
 
-	snprintf(ci->client_name, sizeof(ci->client_name), "%s", test_name);
+	snprintf(ci->client_name, sizeof(ci->client_name), "%s", name);
 	snprintf(ci->unique_id, sizeof(ci->unique_id), "%s", unique_id);
 	ci->client_playas = playas;
 	ci->client_lang = client_lang;

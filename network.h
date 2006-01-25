@@ -61,25 +61,28 @@ enum {
 //  some fields will be empty on the client (like game_password) by default
 //  and only filled with data a player enters.
 typedef struct NetworkGameInfo {
-	char server_name[NETWORK_NAME_LENGTH];					// Server name
-	char hostname[NETWORK_HOSTNAME_LENGTH];					// Hostname of the server (if any)
-	char server_revision[NETWORK_REVISION_LENGTH];	// The SVN version number the server is using (e.g.: 'r304')
-																									//  It even shows a SVN version in release-version, so
-																									//  it is easy to compare if a server is of the correct version
-	byte server_lang;																// Language of the server (we should make a nice table for this)
-	byte use_password;															// Is set to != 0 if it uses a password
-	char server_password[NETWORK_PASSWORD_LENGTH];	// On the server: the game password, on the client: != "" if server has password
-	byte clients_max;																// Max clients allowed on server
-	byte clients_on;																// Current count of clients on server
-	byte spectators_on;															// How many spectators do we have?
-	uint16 game_date;																// Current date
-	uint16 start_date;															// When the game started
-	char map_name[NETWORK_NAME_LENGTH];							// Map which is played ["random" for a randomized map]
-	uint16 map_width;																// Map width
-	uint16 map_height;															// Map height
-	byte map_set;																		// Graphical set
-	bool dedicated;																	// Is this a dedicated server?
-	char rcon_password[NETWORK_PASSWORD_LENGTH];		// RCon password for the server. "" if rcon is disabled
+	char server_name[NETWORK_NAME_LENGTH];          // Server name
+	char hostname[NETWORK_HOSTNAME_LENGTH];         // Hostname of the server (if any)
+	char server_revision[NETWORK_REVISION_LENGTH];  // The SVN version number the server is using (e.g.: 'r304')
+	                                                //  It even shows a SVN version in release-version, so
+	                                                //  it is easy to compare if a server is of the correct version
+	byte server_lang;                               // Language of the server (we should make a nice table for this)
+	byte use_password;                              // Is set to != 0 if it uses a password
+	char server_password[NETWORK_PASSWORD_LENGTH];  // On the server: the game password, on the client: != "" if server has password
+	byte clients_max;                               // Max clients allowed on server
+	byte clients_on;                                // Current count of clients on server
+	byte companies_max;                             // Max companies allowed on server
+	byte companies_on;                              // How many started companies do we have
+	byte spectators_max;                            // Max spectators allowed on server
+	byte spectators_on;                             // How many spectators do we have?
+	uint16 game_date;                               // Current date
+	uint16 start_date;                              // When the game started
+	char map_name[NETWORK_NAME_LENGTH];             // Map which is played ["random" for a randomized map]
+	uint16 map_width;                               // Map width
+	uint16 map_height;                              // Map height
+	byte map_set;                                   // Graphical set
+	bool dedicated;                                 // Is this a dedicated server?
+	char rcon_password[NETWORK_PASSWORD_LENGTH];    // RCon password for the server. "" if rcon is disabled
 } NetworkGameInfo;
 
 typedef struct NetworkPlayerInfo {

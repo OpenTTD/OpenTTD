@@ -381,7 +381,7 @@ DEF_CONSOLE_CMD(ConBan)
 	}
 
 	if (index == NETWORK_SERVER_INDEX) {
-		IConsolePrint(_icolour_def, "Silly boy, you can not ban yourself!");
+		IConsoleError("Silly boy, you can not ban yourself!");
 		return true;
 	}
 
@@ -511,7 +511,7 @@ DEF_CONSOLE_CMD(ConStatus)
 	const NetworkClientState *cs;
 
 	if (argc == 0) {
-		IConsoleHelp("List the status of all clients connected to the server: Usage 'status'");
+		IConsoleHelp("List the status of all clients connected to the server. Usage 'status'");
 		return true;
 	}
 
@@ -522,6 +522,35 @@ DEF_CONSOLE_CMD(ConStatus)
 		status = (cs->status <= STATUS_ACTIVE) ? stat_str[cs->status] : "unknown";
 		IConsolePrintF(8, "Client #%1d  name: '%s'  status: '%s'  frame-lag: %3d  company: %1d  IP: %s  unique-id: '%s'",
 			cs->index, ci->client_name, status, lag, ci->client_playas, GetPlayerIP(ci), ci->unique_id);
+	}
+
+	return true;
+}
+
+DEF_CONSOLE_CMD(ConServerInfo)
+{
+	const NetworkGameInfo *gi;
+
+	if (argc == 0) {
+		IConsoleHelp("List current and maximum client/player limits. Usage 'server_info'");
+		IConsoleHelp("You can change these values by setting the variables 'max_clients', 'max_companies' and 'max_spectators'");
+		return true;
+	}
+
+	gi = &_network_game_info;
+	IConsolePrintF(_icolour_def, "Current/maximum clients:    %2d/%2d", gi->clients_on, gi->clients_max);
+	IConsolePrintF(_icolour_def, "Current/maximum companies:  %2d/%2d", gi->companies_on, gi->companies_max);
+	IConsolePrintF(_icolour_def, "Current/maximum spectators: %2d/%2d", gi->spectators_on, gi->spectators_max);
+
+	return true;
+}
+
+DEF_CONSOLE_HOOK(ConHookValidateMaxClientsCount) {
+	/* XXX - hardcoded, string limiation -- TrueLight
+	 * XXX - also see network.c:NetworkStartup ~1343 */
+	if (_network_game_info.clients_max > 10) {
+		_network_game_info.clients_max = 10;
+		IConsoleError("Maximum clients is 10, truncating.");
 	}
 
 	return true;
@@ -549,7 +578,7 @@ DEF_CONSOLE_CMD(ConKick)
 	}
 
 	if (index == NETWORK_SERVER_INDEX) {
-		IConsolePrint(_icolour_def, "Silly boy, you can not kick yourself!");
+		IConsoleError("Silly boy, you can not kick yourself!");
 		return true;
 	}
 
@@ -1405,6 +1434,13 @@ void IConsoleStdLibRegister(void)
 	IConsoleVarHookAdd("server_advertise",       ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleVarHookAdd("server_advertise",       ICONSOLE_HOOK_POST_ACTION, ConHookServerAdvertise);
 
+	IConsoleVarRegister("max_clients",           &_network_game_info.clients_max, ICONSOLE_VAR_BYTE, "Control the maximum amount of connected players during runtime. Default value: 10");
+	IConsoleVarHookAdd("max_clients",            ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleVarHookAdd("max_clients",            ICONSOLE_HOOK_POST_ACTION, ConHookValidateMaxClientsCount);
+	IConsoleVarRegister("max_companies",         &_network_game_info.companies_max, ICONSOLE_VAR_BYTE, "Control the maximum amount of active companies during runtime. Default value: 8");
+	IConsoleVarHookAdd("max_companies",          ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleVarRegister("max_spectators",        &_network_game_info.spectators_max, ICONSOLE_VAR_BYTE, "Control the maximum amount of active spectators during runtime. Default value: 9");
+	IConsoleVarHookAdd("max_spectators",         ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleVarRegister("pause_on_join",         &_network_pause_on_join, ICONSOLE_VAR_BOOLEAN, "Set if the server should pause gameplay while a client is joining. This might help slow users");
 	IConsoleVarHookAdd("pause_on_join",          ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 

@@ -554,8 +554,11 @@ void NetworkCloseClient(NetworkClientState *cs)
 
 	if (_network_server) {
 		// We just lost one client :(
-		if (cs->status > STATUS_INACTIVE)
+		if (cs->status > STATUS_INACTIVE) {
 			_network_game_info.clients_on--;
+			if (DEREF_CLIENT_INFO(cs)->client_playas == OWNER_SPECTATOR)
+				_network_game_info.spectators_on--;
+		}
 		_network_clients_connected--;
 
 		while ((cs + 1) != DEREF_CLIENT(MAX_CLIENTS) && (cs + 1)->socket != INVALID_SOCKET) {
@@ -784,9 +787,8 @@ static void NetworkInitialize(void)
 	}
 
 	// Clean the client_info memory
-	memset(_network_client_info, 0, sizeof(_network_client_info));
-	memset(_network_player_info, 0, sizeof(_network_player_info));
-	_network_lobby_company_count = 0;
+	memset(&_network_client_info, 0, sizeof(_network_client_info));
+	memset(&_network_player_info, 0, sizeof(_network_player_info));
 
 	_sync_frame = 0;
 	_network_first_time = true;
@@ -914,16 +916,21 @@ static void NetworkInitGameInfo(void)
 	if (_network_game_info.server_name[0] == '\0')
 		snprintf(_network_game_info.server_name, sizeof(_network_game_info.server_name), "Unnamed Server");
 
+	ttd_strlcpy(_network_game_info.server_revision, _openttd_revision, sizeof(_network_game_info.server_revision));
+
 	// The server is a client too ;)
 	if (_network_dedicated) {
 		_network_game_info.clients_on = 0;
+		_network_game_info.companies_on = 0;
 		_network_game_info.dedicated = true;
 	} else {
 		_network_game_info.clients_on = 1;
+		_network_game_info.companies_on = 1;
 		_network_game_info.dedicated = false;
 	}
-	ttd_strlcpy(_network_game_info.server_revision, _openttd_revision, sizeof(_network_game_info.server_revision));
+
 	_network_game_info.spectators_on = 0;
+
 	_network_game_info.game_date = _date;
 	_network_game_info.start_date = ConvertIntDate(_patches.starting_date);
 	_network_game_info.map_width = MapSizeX();
@@ -1332,14 +1339,12 @@ void NetworkStartUp(void)
 	snprintf(_network_server_bind_ip_host, sizeof(_network_server_bind_ip_host), "%s", inet_ntoa(*(struct in_addr *)&_network_server_bind_ip));
 
 	/* Generate an unique id when there is none yet */
-	if (_network_unique_id[0] == '\0')
-		NetworkGenerateUniqueId();
+	if (_network_unique_id[0] == '\0') NetworkGenerateUniqueId();
 
 	memset(&_network_game_info, 0, sizeof(_network_game_info));
-
-	/* XXX - Hard number here, because the strings can currently handle no more
-	    than 10 clients -- TrueLight */
-	_network_game_info.clients_max = 10;
+	_network_game_info.clients_max = 10; // XXX - hardcoded, string limiation -- TrueLight
+	_network_game_info.companies_max = MAX_PLAYERS;
+	_network_game_info.spectators_max = _network_game_info.clients_max;
 
 	// Let's load the network in windows
 	#if defined(WIN32)

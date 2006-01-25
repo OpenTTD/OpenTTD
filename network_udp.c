@@ -61,6 +61,13 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER)
 	_network_game_info.map_set = _opt.landscape;
 
 	NetworkSend_uint8 (packet, NETWORK_GAME_INFO_VERSION);
+
+	/* NETWORK_GAME_INFO_VERSION = 2 */
+	NetworkSend_uint8 (packet, _network_game_info.companies_max);
+	NetworkSend_uint8 (packet, _network_game_info.companies_on);
+	NetworkSend_uint8 (packet, _network_game_info.spectators_max);
+
+	/* NETWORK_GAME_INFO_VERSION = 1 */
 	NetworkSend_string(packet, _network_game_info.server_name);
 	NetworkSend_string(packet, _network_game_info.server_revision);
 	NetworkSend_uint8 (packet, _network_game_info.server_lang);
@@ -103,30 +110,39 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE)
 	// Find next item
 	item = NetworkGameListAddItem(inet_addr(inet_ntoa(client_addr->sin_addr)), ntohs(client_addr->sin_port));
 
-	if (game_info_version == 1) {
-		NetworkRecv_string(&_udp_cs, p, item->info.server_name, sizeof(item->info.server_name));
-		NetworkRecv_string(&_udp_cs, p, item->info.server_revision, sizeof(item->info.server_revision));
-		item->info.server_lang   = NetworkRecv_uint8(&_udp_cs, p);
-		item->info.use_password  = NetworkRecv_uint8(&_udp_cs, p);
-		item->info.clients_max   = NetworkRecv_uint8(&_udp_cs, p);
-		item->info.clients_on    = NetworkRecv_uint8(&_udp_cs, p);
-		item->info.spectators_on = NetworkRecv_uint8(&_udp_cs, p);
-		item->info.game_date     = NetworkRecv_uint16(&_udp_cs, p);
-		item->info.start_date    = NetworkRecv_uint16(&_udp_cs, p);
-		NetworkRecv_string(&_udp_cs, p, item->info.map_name, sizeof(item->info.map_name));
-		item->info.map_width     = NetworkRecv_uint16(&_udp_cs, p);
-		item->info.map_height    = NetworkRecv_uint16(&_udp_cs, p);
-		item->info.map_set       = NetworkRecv_uint8(&_udp_cs, p);
-		item->info.dedicated     = NetworkRecv_uint8(&_udp_cs, p);
+	/* Please observe the order. In the order in which packets are sent
+	 * they are to be received */
+	switch (game_info_version) {
+		case 2:
+			item->info.companies_max = NetworkRecv_uint8(&_udp_cs, p);
+			item->info.companies_on = NetworkRecv_uint8(&_udp_cs, p);
+			item->info.spectators_max = NetworkRecv_uint8(&_udp_cs, p);
+			/* Fallthrough */
+		case 1:
+			NetworkRecv_string(&_udp_cs, p, item->info.server_name, sizeof(item->info.server_name));
+			NetworkRecv_string(&_udp_cs, p, item->info.server_revision, sizeof(item->info.server_revision));
+			item->info.server_lang   = NetworkRecv_uint8(&_udp_cs, p);
+			item->info.use_password  = NetworkRecv_uint8(&_udp_cs, p);
+			item->info.clients_max   = NetworkRecv_uint8(&_udp_cs, p);
+			item->info.clients_on    = NetworkRecv_uint8(&_udp_cs, p);
+			item->info.spectators_on = NetworkRecv_uint8(&_udp_cs, p);
+			item->info.game_date     = NetworkRecv_uint16(&_udp_cs, p);
+			item->info.start_date    = NetworkRecv_uint16(&_udp_cs, p);
+			NetworkRecv_string(&_udp_cs, p, item->info.map_name, sizeof(item->info.map_name));
+			item->info.map_width     = NetworkRecv_uint16(&_udp_cs, p);
+			item->info.map_height    = NetworkRecv_uint16(&_udp_cs, p);
+			item->info.map_set       = NetworkRecv_uint8(&_udp_cs, p);
+			item->info.dedicated     = NetworkRecv_uint8(&_udp_cs, p);
 
-		str_validate(item->info.server_name);
-		str_validate(item->info.server_revision);
-		str_validate(item->info.map_name);
-		if (item->info.server_lang >= NETWORK_NUM_LANGUAGES) item->info.server_lang = 0;
-		if (item->info.map_set >= NUM_LANDSCAPE ) item->info.map_set = 0;
+			str_validate(item->info.server_name);
+			str_validate(item->info.server_revision);
+			str_validate(item->info.map_name);
+			if (item->info.server_lang >= NETWORK_NUM_LANGUAGES) item->info.server_lang = 0;
+			if (item->info.map_set >= NUM_LANDSCAPE ) item->info.map_set = 0;
 
-		if (item->info.hostname[0] == '\0')
-			snprintf(item->info.hostname, sizeof(item->info.hostname), "%s", inet_ntoa(client_addr->sin_addr));
+			if (item->info.hostname[0] == '\0')
+				snprintf(item->info.hostname, sizeof(item->info.hostname), "%s", inet_ntoa(client_addr->sin_addr));
+			break;
 	}
 
 	item->online = true;
