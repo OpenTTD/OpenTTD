@@ -112,15 +112,8 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			SETBIT(w->disabled_state, 16); // Server offline, join button disabled
 		} else if (sel->info.clients_on >= sel->info.clients_max) {
 			SETBIT(w->disabled_state, 16); // Server full, join button disabled
-		} else if (sel->info.companies_on >= sel->info.companies_max &&
-			         sel->info.spectators_on >= sel->info.spectators_max) {
-			SETBIT(w->disabled_state, 16);
-		} else if (sel->info.companies_on >= sel->info.companies_max &&
-			         sel->info.spectators_on >= sel->info.spectators_max) {
-			SETBIT(w->disabled_state, 17);
-
-			// revisions don't match, check if server has no revision; then allow connection
 		} else if (!sel->info.compatible) {
+			// revisions don't match, check if server has no revision; then allow connection
 			SETBIT(w->disabled_state, 16); // Revision mismatch, join button disabled
 		}
 
@@ -300,7 +293,6 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			break;
 		case 16: /* Join Game */
 			if (_selected_item != NULL) {
-				memcpy(&_network_game_info, &_selected_item->info, sizeof(NetworkGameInfo));
 				snprintf(_network_last_host, sizeof(_network_last_host), "%s", inet_ntoa(*(struct in_addr *)&_selected_item->ip));
 				_network_last_port = _selected_item->port;
 				ShowNetworkLobbyWindow();
@@ -668,7 +660,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_PAINT: {
-		const NetworkGameInfo *gi = &_network_game_info;
+		const NetworkGameInfo *gi = &_selected_item->info;
 		int y = NET_PRC__OFFSET_TOP_WIDGET_COMPANY, pos;
 
 		w->disabled_state = (_selected_company_item == -1) ? 1 << 7 : 0;
@@ -681,7 +673,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 
 		DrawWindowWidgets(w);
 
-		SetDParamStr(0, _selected_item->info.server_name);
+		SetDParamStr(0, gi->server_name);
 		DrawString(10, 22, STR_NETWORK_PREPARE_TO_JOIN, 2);
 
 		// draw company list
@@ -776,7 +768,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 				return;
 			}
 			_selected_company_item += w->vscroll.pos;
-			if (_selected_company_item >= _network_game_info.companies_on) {
+			if (_selected_company_item >= _selected_item->info.companies_on) {
 				_selected_company_item = -1;
 				SetWindowDirty(w);
 				return;
@@ -801,9 +793,14 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 			NetworkClientConnectGame(_network_last_host, _network_last_port);
 			break;
 		case 10: /* Refresh */
-			NetworkQueryServer(_network_last_host, _network_last_port, false);
+			NetworkUDPQueryServer(_network_last_host, _network_last_port);     // general data
+			NetworkQueryServer(_network_last_host, _network_last_port, false); // company info
 			break;
 		}	break;
+
+	case WE_MESSAGE:
+		SetWindowDirty(w);
+		break;
 	}
 }
 
