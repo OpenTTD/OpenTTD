@@ -604,13 +604,6 @@ static void Win32InitializeExceptions(void)
 }
 #endif
 
-#ifndef __MINGW32__
-static inline int strcasecmp(const char* s1, const char* s2)
-{
-	return stricmp(s1, s2);
-}
-#endif
-
 static char *_fios_path;
 static char *_fios_save_path;
 static char *_fios_scn_path;

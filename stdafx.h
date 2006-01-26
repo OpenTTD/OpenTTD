@@ -144,6 +144,7 @@
 #  endif
 # endif
 
+# define strcasecmp stricmp
 #endif /* defined(_MSC_VER) */
 
 

@@ -115,7 +115,7 @@ static int CDECL NGameNameSorter(const void *a, const void *b)
 {
 	const NetworkGameList *cmp1 = *(const NetworkGameList**)a;
 	const NetworkGameList *cmp2 = *(const NetworkGameList**)b;
-	int r = stricmp(cmp1->info.server_name, cmp2->info.server_name);
+	int r = strcasecmp(cmp1->info.server_name, cmp2->info.server_name);
 
 	return (_internal_sort_order & 1) ? -r : r;
 }
