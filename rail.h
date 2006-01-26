@@ -80,13 +80,13 @@ typedef enum Tracks {
 
 /** These are the bitfield variants of the above */
 typedef enum TrackBits {
-	TRACK_BIT_DIAG1 = 1,  // 0
-	TRACK_BIT_DIAG2 = 2,  // 1
-	TRACK_BIT_UPPER = 4,  // 2
-	TRACK_BIT_LOWER = 8,  // 3
-	TRACK_BIT_LEFT  = 16, // 4
-	TRACK_BIT_RIGHT = 32, // 5
-	TRACK_BIT_MASK  = 0x3F,
+	TRACK_BIT_DIAG1 = 1U,    // 0
+	TRACK_BIT_DIAG2 = 2U,    // 1
+	TRACK_BIT_UPPER = 4U,    // 2
+	TRACK_BIT_LOWER = 8U,    // 3
+	TRACK_BIT_LEFT  = 16U,   // 4
+	TRACK_BIT_RIGHT = 32U,   // 5
+	TRACK_BIT_MASK  = 0x3FU,
 } TrackBits;
 
 /** These are a combination of tracks and directions. Values are 0-5 in one
