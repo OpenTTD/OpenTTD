@@ -792,8 +792,8 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 			NetworkClientConnectGame(_network_last_host, _network_last_port);
 			break;
 		case 10: /* Refresh */
-			NetworkUDPQueryServer(_network_last_host, _network_last_port);     // general data
 			NetworkQueryServer(_network_last_host, _network_last_port, false); // company info
+			NetworkUDPQueryServer(_network_last_host, _network_last_port);     // general data
 			break;
 		}	break;
 
