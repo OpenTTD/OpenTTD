@@ -26,11 +26,24 @@
 #define BGC 5
 #define BTC 15
 #define MAX_QUERYSTR_LEN 64
+
+typedef struct network_d {
+	byte company;
+	byte field;
+	NetworkGameList *server;
+	FiosItem *map;
+} network_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(network_d));
+
+typedef struct network_q_d {
+	network_d n;
+	querystr_d q;
+} network_q_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(network_q_d));
+
 static char _edit_str_buf[MAX_QUERYSTR_LEN*2];
 static void ShowNetworkStartServerWindow(void);
-static void ShowNetworkLobbyWindow(void);
-
-static byte _selected_field;
+static void ShowNetworkLobbyWindow(NetworkGameList *ngl);
 
 static const StringID _connection_types_dropdown[] = {
 	STR_NETWORK_LAN_INTERNET,
@@ -69,16 +82,9 @@ static const StringID _language_dropdown[] = {
 
 enum {
 	NET_PRC__OFFSET_TOP_WIDGET          = 54,
-	NET_PRC__OFFSET_TOP_WIDGET_COMPANY  = 42,
+	NET_PRC__OFFSET_TOP_WIDGET_COMPANY  = 52,
 	NET_PRC__SIZE_OF_ROW                = 14,
-	NET_PRC__SIZE_OF_ROW_COMPANY        = 12,
 };
-
-/* Used in both NetworkWindow and NetworkLobby to mark the currently selected server */
-static NetworkGameList *_selected_item = NULL;
-static int8 _selected_company_item = -1;
-
-static FiosItem *_selected_map = NULL; // to highlight slected map
 
 // called when a new server is found on the network
 void UpdateNetworkGameWindow(bool unselect)
@@ -86,22 +92,24 @@ void UpdateNetworkGameWindow(bool unselect)
 	Window* w = FindWindowById(WC_NETWORK_WINDOW, 0);
 
 	if (w != NULL) {
-		if (unselect) _selected_item = NULL;
+		if (unselect) WP(w, network_q_d).n.server = NULL;
 		SendWindowMessage(WC_NETWORK_WINDOW, 0, true, 0, 0);
 	}
 }
 
-/* uses WP(w, querystr_d) */
+/* uses network_q_d (network_d and querystr_d) WP macro */
 static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 {
+	network_d *nd = &WP(w, network_q_d).n;
+
 	switch (e->event) {
 	case WE_CREATE: /* focus input box */
-		_selected_field = 3;
-		_selected_item = NULL;
+		nd->field = 3;
+		nd->server = NULL;
 		break;
 
 	case WE_PAINT: {
-		const NetworkGameList *sel = _selected_item;
+		const NetworkGameList *sel = nd->server;
 
 		w->disabled_state = 0;
 
@@ -120,7 +128,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		SetDParam(7, _lan_internet_types_dropdown[_network_lan_internet]);
 		DrawWindowWidgets(w);
 
-		DrawEditBox(w, 3);
+		DrawEditBox(w, &WP(w, network_q_d).q, 3);
 
 		DrawString(9, 23, STR_NETWORK_CONNECTION, 2);
 		DrawString(210, 23, STR_NETWORK_PLAYER_NAME, 2);
@@ -243,7 +251,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 	}	break;
 
 	case WE_CLICK:
-		_selected_field = e->click.widget;
+		nd->field = e->click.widget;
 		switch (e->click.widget) {
 		case 0: case 14: /* Close 'X' | Cancel button */
 			DeleteWindowById(WC_NETWORK_WINDOW, 0);
@@ -252,24 +260,16 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			ShowDropDownMenu(w, _lan_internet_types_dropdown, _network_lan_internet, 5, 0, 0); // do it for widget 5
 			break;
 		case 9: { /* Matrix to show networkgames */
+			NetworkGameList *cur_item;
 			uint32 id_v = (e->click.pt.y - NET_PRC__OFFSET_TOP_WIDGET) / NET_PRC__SIZE_OF_ROW;
 
 			if (id_v >= w->vscroll.cap) return; // click out of bounds
 			id_v += w->vscroll.pos;
 
-			{
-				NetworkGameList *cur_item = _network_game_list;
-				for (; id_v > 0 && cur_item != NULL; id_v--)
-					cur_item = cur_item->next;
+			cur_item = _network_game_list;
+			for (; id_v > 0 && cur_item != NULL; id_v--) cur_item = cur_item->next;
 
-				if (cur_item == NULL) {
-					// click out of vehicle bounds
-					_selected_item = NULL;
-					SetWindowDirty(w);
-					return;
-				}
-				_selected_item = cur_item;
-			}
+			nd->server = cur_item;
 			SetWindowDirty(w);
 		} break;
 		case 11: /* Find server automatically */
@@ -291,15 +291,15 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			ShowNetworkStartServerWindow();
 			break;
 		case 16: /* Join Game */
-			if (_selected_item != NULL) {
-				snprintf(_network_last_host, sizeof(_network_last_host), "%s", inet_ntoa(*(struct in_addr *)&_selected_item->ip));
-				_network_last_port = _selected_item->port;
-				ShowNetworkLobbyWindow();
+			if (nd->server != NULL) {
+				snprintf(_network_last_host, sizeof(_network_last_host), "%s", inet_ntoa(*(struct in_addr *)&nd->server->ip));
+				_network_last_port = nd->server->port;
+				ShowNetworkLobbyWindow(nd->server);
 			}
 			break;
 		case 17: // Refresh
-			if (_selected_item != NULL) {
-				NetworkQueryServer(_selected_item->info.hostname, _selected_item->port, true);
+			if (nd->server != NULL) {
+				NetworkQueryServer(nd->server->info.hostname, nd->server->port, true);
 			}
 			break;
 
@@ -316,7 +316,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_MOUSELOOP:
-		if (_selected_field == 3) HandleEditBox(w, 3);
+		if (nd->field == 3) HandleEditBox(w, &WP(w, network_q_d).q, 3);
 		break;
 
 	case WE_MESSAGE: {
@@ -330,18 +330,18 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 	}	break;
 
 	case WE_KEYPRESS:
-		if (_selected_field != 3) {
-			if (_selected_item != NULL) {
+		if (nd->field != 3) {
+			if (nd->server != NULL) {
 				if (e->keypress.keycode == WKC_DELETE) { /* Press 'delete' to remove servers */
-					NetworkGameListRemoveItem(_selected_item);
+					NetworkGameListRemoveItem(nd->server);
 					NetworkRebuildHostList();
-					_selected_item = NULL;
+					nd->server = NULL;
 				}
 			}
 			break;
 		}
 
-		if (HandleEditBoxKey(w, 3, e) == 1) break; // enter pressed
+		if (HandleEditBoxKey(w, &WP(w, network_q_d).q, 3, e) == 1) break; // enter pressed
 
 		// The name is only allowed when it starts with a letter!
 		if (_edit_str_buf[0] != '\0' && _edit_str_buf[0] != ' ') {
@@ -404,6 +404,7 @@ void ShowNetworkGameWindow(void)
 {
 	static bool _first_time_show_network_game_window = true;
 	Window *w;
+	querystr_d *querystr;
 	DeleteWindowById(WC_NETWORK_WINDOW, 0);
 
 	/* Only show once */
@@ -418,16 +419,19 @@ void ShowNetworkGameWindow(void)
 	}
 
 	w = AllocateWindowDesc(&_network_game_window_desc);
-	ttd_strlcpy(_edit_str_buf, _network_player_name, MAX_QUERYSTR_LEN);
-	w->vscroll.cap = 12;
+	if (w != NULL) {
+		querystr = &WP(w, network_q_d).q;
+		ttd_strlcpy(_edit_str_buf, _network_player_name, MAX_QUERYSTR_LEN);
+		w->vscroll.cap = 12;
 
-	WP(w, querystr_d).text.caret = true;
-	WP(w, querystr_d).text.maxlength = MAX_QUERYSTR_LEN - 1;
-	WP(w, querystr_d).text.maxwidth = 120;
-	WP(w, querystr_d).text.buf = _edit_str_buf;
-	UpdateTextBufferSize(&WP(w, querystr_d).text);
+		querystr->text.caret = true;
+		querystr->text.maxlength = MAX_QUERYSTR_LEN - 1;
+		querystr->text.maxwidth = 120;
+		querystr->text.buf = _edit_str_buf;
+		UpdateTextBufferSize(&querystr->text);
 
-	UpdateNetworkGameWindow(true);
+		UpdateNetworkGameWindow(true);
+	}
 }
 
 enum {
@@ -435,11 +439,14 @@ enum {
 	NSSWND_ROWSIZE = 12
 };
 
+/* uses network_q_d (network_d and querystr_d) WP macro */
 static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 {
+	network_d *nd = &WP(w, network_q_d).n;
+
 	switch (e->event) {
 	case WE_CREATE: /* focus input box */
-		_selected_field = 3;
+		nd->field = 3;
 		_network_game_info.use_password = (_network_server_password[0] != '\0');
 		break;
 
@@ -455,7 +462,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 
 		GfxFillRect(11, 63, 258, 215, 0xD7);
-		DrawEditBox(w, 3);
+		DrawEditBox(w, &WP(w, network_q_d).q, 3);
 
 		DrawString(10, 22, STR_NETWORK_NEW_GAME_NAME, 2);
 
@@ -473,7 +480,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		pos = w->vscroll.pos;
 		while (pos < _fios_num + 1) {
 			item = _fios_list + pos - 1;
-			if (item == _selected_map || (pos == 0 && _selected_map == NULL))
+			if (item == nd->map || (pos == 0 && nd->map == NULL))
 				GfxFillRect(11, y - 1, 258, y + 10, 155); // show highlighted item with a different colour
 
 			if (pos == 0) DrawString(14, y, STR_4010_GENERATE_RANDOM_NEW_GAME, 9);
@@ -486,7 +493,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 	}	break;
 
 	case WE_CLICK:
-		_selected_field = e->click.widget;
+		nd->field = e->click.widget;
 		switch (e->click.widget) {
 		case 0: /* Close 'X' */
 		case 19: /* Cancel button */
@@ -504,7 +511,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			y += w->vscroll.pos;
 			if (y >= w->vscroll.count) return;
 
-			_selected_map = (y == 0) ? NULL : _fios_list + y - 1;
+			nd->map = (y == 0) ? NULL : _fios_list + y - 1;
 			SetWindowDirty(w);
 			} break;
 		case 7: case 8: /* Connection type */
@@ -524,16 +531,15 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			break;
 		case 17: /* Start game */
 			_is_network_server = true;
-			ttd_strlcpy(_network_server_name, WP(w, querystr_d).text.buf, sizeof(_network_server_name));
-			UpdateTextBufferSize(&WP(w, querystr_d).text);
-			if (_selected_map == NULL) { // start random new game
+
+			if (nd->map == NULL) { // start random new game
 				GenRandomNewGame(Random(), InteractiveRandom());
 			} else { // load a scenario
-				char *name = FiosBrowseTo(_selected_map);
+				char *name = FiosBrowseTo(nd->map);
 				if (name != NULL) {
-					SetFiosType(_selected_map->type);
+					SetFiosType(nd->map->type);
 					ttd_strlcpy(_file_to_saveload.name, name, sizeof(_file_to_saveload.name));
-					ttd_strlcpy(_file_to_saveload.title, _selected_map->title, sizeof(_file_to_saveload.title));
+					ttd_strlcpy(_file_to_saveload.title, nd->map->title, sizeof(_file_to_saveload.title));
 
 					DeleteWindow(w);
 					StartScenarioEditor(Random(), InteractiveRandom());
@@ -542,8 +548,6 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			break;
 		case 18: /* Load game */
 			_is_network_server = true;
-			ttd_strlcpy(_network_server_name, WP(w, querystr_d).text.buf, sizeof(_network_server_name));
-			UpdateTextBufferSize(&WP(w, querystr_d).text);
 			/* XXX - WC_NETWORK_WINDOW should stay, but if it stays, it gets
 			 * copied all the elements of 'load game' and upon closing that, it segfaults */
 			DeleteWindowById(WC_NETWORK_WINDOW, 0);
@@ -565,11 +569,16 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_MOUSELOOP:
-		if (_selected_field == 3) HandleEditBox(w, 3);
+		if (nd->field == 3) HandleEditBox(w, &WP(w, network_q_d).q, 3);
 		break;
 
 	case WE_KEYPRESS:
-		if (_selected_field == 3) HandleEditBoxKey(w, 3, e);
+		if (nd->field == 3) {
+			if (HandleEditBoxKey(w, &WP(w, network_q_d).q, 3, e) == 1) break; // enter pressed
+
+			ttd_strlcpy(_network_server_name, WP(w, network_q_d).q.text.buf, sizeof(_network_server_name));
+			UpdateTextBufferSize(&WP(w, network_q_d).q.text);
+		}
 		break;
 
 	case WE_ON_EDIT_TEXT: {
@@ -629,11 +638,11 @@ static void ShowNetworkStartServerWindow(void)
 	w->vscroll.cap = 9;
 	w->vscroll.count = _fios_num+1;
 
-	WP(w, querystr_d).text.caret = true;
-	WP(w, querystr_d).text.maxlength = MAX_QUERYSTR_LEN - 1;
-	WP(w, querystr_d).text.maxwidth = 160;
-	WP(w, querystr_d).text.buf = _edit_str_buf;
-	UpdateTextBufferSize(&WP(w, querystr_d).text);
+	WP(w, network_q_d).q.text.caret = true;
+	WP(w, network_q_d).q.text.maxlength = MAX_QUERYSTR_LEN - 1;
+	WP(w, network_q_d).q.text.maxwidth = 160;
+	WP(w, network_q_d).q.text.buf = _edit_str_buf;
+	UpdateTextBufferSize(&WP(w, network_q_d).q.text);
 }
 
 static byte NetworkLobbyFindCompanyIndex(byte pos)
@@ -651,19 +660,23 @@ static byte NetworkLobbyFindCompanyIndex(byte pos)
 	return 0;
 }
 
+/* uses network_d WP macro */
 static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 {
+	network_d *nd = &WP(w, network_d);
+
 	switch (e->event) {
 	case WE_CREATE:
-		_selected_company_item = -1;
+		nd->company = (byte)-1;
 		break;
 
 	case WE_PAINT: {
-		const NetworkGameInfo *gi = &_selected_item->info;
+		const NetworkGameInfo *gi = &nd->server->info;
 		int y = NET_PRC__OFFSET_TOP_WIDGET_COMPANY, pos;
 
-		w->disabled_state = (_selected_company_item == -1) ? 1 << 7 : 0;
+		w->disabled_state = 0;
 
+		if (nd->company == (byte)-1) SETBIT(w->disabled_state, 7);
 		if (gi->companies_on == gi->companies_max) SETBIT(w->disabled_state, 8);
 		if (gi->spectators_on == gi->spectators_max) SETBIT(w->disabled_state, 9);
 		/* You can not join a server as spectator when it has no companies active..
@@ -675,111 +688,103 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 		SetDParamStr(0, gi->server_name);
 		DrawString(10, 22, STR_NETWORK_PREPARE_TO_JOIN, 2);
 
-		// draw company list
-		GfxFillRect(11, 41, 154, 165, 0xD7);
+		/* Draw company list */
 		pos = w->vscroll.pos;
 		while (pos < gi->companies_on) {
-			byte index = NetworkLobbyFindCompanyIndex(pos);
+			byte company = NetworkLobbyFindCompanyIndex(pos);
 			bool income = false;
-			if (_selected_company_item == index)
-				GfxFillRect(11, y - 1, 154, y + 10, 155); // show highlighted item with a different colour
+			if (nd->company == company)
+				GfxFillRect(11, y - 1, 154, y + 10, 10); // show highlighted item with a different colour
 
-			DoDrawStringTruncated(_network_player_info[index].company_name, 13, y, 2, 135 - 13);
-			if (_network_player_info[index].use_password != 0)
-				DrawSprite(SPR_LOCK, 135, y);
+			DoDrawStringTruncated(_network_player_info[company].company_name, 13, y, 16, 135 - 13);
+			if (_network_player_info[company].use_password != 0) DrawSprite(SPR_LOCK, 135, y);
 
 			/* If the company's income was positive puts a green dot else a red dot */
-			if ((_network_player_info[index].income) >= 0)
-				income = true;
+			if (_network_player_info[company].income >= 0) income = true;
 			DrawSprite(SPR_BLOT | (income ? PALETTE_TO_GREEN : PALETTE_TO_RED), 145, y);
 
 			pos++;
-			y += NET_PRC__SIZE_OF_ROW_COMPANY;
+			y += NET_PRC__SIZE_OF_ROW;
 			if (pos >= w->vscroll.cap) break;
 		}
 
-		// draw info about selected company
-		DrawStringMultiCenter(290, 48, STR_NETWORK_COMPANY_INFO, 0);
-		if (_selected_company_item != -1) { // if a company is selected...
-			// show company info
+		/* Draw info about selected company when it is selected in the left window */
+		GfxFillRect(174, 39, 403, 75, 157);
+		DrawStringMultiCenter(290, 50, STR_NETWORK_COMPANY_INFO, 0);
+		if (nd->company != (byte)-1) {
 			const uint x = 183;
 			const uint trunc_width = w->widget[6].right - x;
-			y = 65;
+			y = 80;
 
-			SetDParamStr(0, _network_player_info[_selected_company_item].company_name);
+			SetDParam(0, nd->server->info.clients_on);
+			SetDParam(1, nd->server->info.clients_max);
+			SetDParam(2, nd->server->info.companies_on);
+			SetDParam(3, nd->server->info.companies_max);
+			DrawString(x, y, STR_NETWORK_CLIENTS, 2);
+			y += 10;
+
+			SetDParamStr(0, _network_player_info[nd->company].company_name);
 			DrawStringTruncated(x, y, STR_NETWORK_COMPANY_NAME, 2, trunc_width);
 			y += 10;
 
-			SetDParam(0, _network_player_info[_selected_company_item].inaugurated_year + MAX_YEAR_BEGIN_REAL);
+			SetDParam(0, _network_player_info[nd->company].inaugurated_year + MAX_YEAR_BEGIN_REAL);
 			DrawString(x, y, STR_NETWORK_INAUGURATION_YEAR, 2); // inauguration year
 			y += 10;
 
-			SetDParam64(0, _network_player_info[_selected_company_item].company_value);
+			SetDParam64(0, _network_player_info[nd->company].company_value);
 			DrawString(x, y, STR_NETWORK_VALUE, 2); // company value
 			y += 10;
 
-			SetDParam64(0, _network_player_info[_selected_company_item].money);
+			SetDParam64(0, _network_player_info[nd->company].money);
 			DrawString(x, y, STR_NETWORK_CURRENT_BALANCE, 2); // current balance
 			y += 10;
 
-			SetDParam64(0, _network_player_info[_selected_company_item].income);
+			SetDParam64(0, _network_player_info[nd->company].income);
 			DrawString(x, y, STR_NETWORK_LAST_YEARS_INCOME, 2); // last year's income
 			y += 10;
 
-			SetDParam(0, _network_player_info[_selected_company_item].performance);
+			SetDParam(0, _network_player_info[nd->company].performance);
 			DrawString(x, y, STR_NETWORK_PERFORMANCE, 2); // performance
 			y += 10;
 
-			SetDParam(0, _network_player_info[_selected_company_item].num_vehicle[0]);
-			SetDParam(1, _network_player_info[_selected_company_item].num_vehicle[1]);
-			SetDParam(2, _network_player_info[_selected_company_item].num_vehicle[2]);
-			SetDParam(3, _network_player_info[_selected_company_item].num_vehicle[3]);
-			SetDParam(4, _network_player_info[_selected_company_item].num_vehicle[4]);
+			SetDParam(0, _network_player_info[nd->company].num_vehicle[0]);
+			SetDParam(1, _network_player_info[nd->company].num_vehicle[1]);
+			SetDParam(2, _network_player_info[nd->company].num_vehicle[2]);
+			SetDParam(3, _network_player_info[nd->company].num_vehicle[3]);
+			SetDParam(4, _network_player_info[nd->company].num_vehicle[4]);
 			DrawString(x, y, STR_NETWORK_VEHICLES, 2); // vehicles
 			y += 10;
 
-			SetDParam(0, _network_player_info[_selected_company_item].num_station[0]);
-			SetDParam(1, _network_player_info[_selected_company_item].num_station[1]);
-			SetDParam(2, _network_player_info[_selected_company_item].num_station[2]);
-			SetDParam(3, _network_player_info[_selected_company_item].num_station[3]);
-			SetDParam(4, _network_player_info[_selected_company_item].num_station[4]);
+			SetDParam(0, _network_player_info[nd->company].num_station[0]);
+			SetDParam(1, _network_player_info[nd->company].num_station[1]);
+			SetDParam(2, _network_player_info[nd->company].num_station[2]);
+			SetDParam(3, _network_player_info[nd->company].num_station[3]);
+			SetDParam(4, _network_player_info[nd->company].num_station[4]);
 			DrawString(x, y, STR_NETWORK_STATIONS, 2); // stations
 			y += 10;
 
-			SetDParamStr(0, _network_player_info[_selected_company_item].players);
+			SetDParamStr(0, _network_player_info[nd->company].players);
 			DrawStringTruncated(x, y, STR_NETWORK_PLAYERS, 2, trunc_width); // players
-			y += 10;
 		}
 	}	break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 0: case 11: /* Close 'X' | Cancel button */
 			ShowNetworkGameWindow();
 			break;
-		case 3: /* Company list */
-			_selected_company_item = (e->click.pt.y - NET_PRC__OFFSET_TOP_WIDGET_COMPANY) / NET_PRC__SIZE_OF_ROW_COMPANY;
+		case 4: { /* Company list */
+			uint32 id_v = (e->click.pt.y - NET_PRC__OFFSET_TOP_WIDGET_COMPANY) / NET_PRC__SIZE_OF_ROW;
 
-			if (_selected_company_item >= w->vscroll.cap) {
-				// click out of bounds
-				_selected_company_item = -1;
-				SetWindowDirty(w);
-				return;
-			}
-			_selected_company_item += w->vscroll.pos;
-			if (_selected_company_item >= _selected_item->info.companies_on) {
-				_selected_company_item = -1;
-				SetWindowDirty(w);
-				return;
-			}
+			if (id_v >= w->vscroll.cap) return;
 
-			_selected_company_item = NetworkLobbyFindCompanyIndex(_selected_company_item);
-
+			id_v += w->vscroll.pos;
+			nd->company = (id_v >= nd->server->info.companies_on) ? (byte)-1 : NetworkLobbyFindCompanyIndex(id_v);
 			SetWindowDirty(w);
-			break;
+		}	break;
 		case 7: /* Join company */
-			if (_selected_company_item != -1) {
-				_network_playas = _selected_company_item + 1;
+			if (nd->company != (byte)-1) {
+				_network_playas = nd->company + 1;
 				NetworkClientConnectGame(_network_last_host, _network_last_port);
 			}
 			break;
@@ -804,30 +809,30 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _network_lobby_window_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,   BGC,     0,    10,     0,    13, STR_00C5,									STR_018B_CLOSE_WINDOW },
-{    WWT_CAPTION,   RESIZE_NONE,   BGC,    11,   419,     0,    13, STR_NETWORK_GAME_LOBBY,		STR_NULL},
-{     WWT_IMGBTN,   RESIZE_NONE,   BGC,     0,   419,    14,   209, 0x0,												STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,   BGC,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW },
+{    WWT_CAPTION,   RESIZE_NONE,   BGC,    11,   419,     0,    13, STR_NETWORK_GAME_LOBBY,   STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,   BGC,     0,   419,    14,   234, STR_NULL,                 STR_NULL},
 
 // company list
-{          WWT_6,   RESIZE_NONE,   BGC,    10,   167,    40,   166, 0x0,												STR_NETWORK_COMPANY_LIST_TIP},
-{  WWT_SCROLLBAR,   RESIZE_NONE,   BGC,   155,   166,    41,   165, 0x1,												STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,   RESIZE_NONE,   BTC,    10,   155,    38,    49, STR_NULL,                 STR_NULL},
+{     WWT_MATRIX,   RESIZE_NONE,   BGC,    10,   155,    50,   190, (10 << 8) + 1,            STR_NETWORK_COMPANY_LIST_TIP},
+{  WWT_SCROLLBAR,   RESIZE_NONE,   BGC,   156,   167,    38,   190, STR_NULL,                 STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
 // company/player info
-{     WWT_IMGBTN,   RESIZE_NONE,   BGC,   173,   404,    38,   166, 0x0,					STR_NULL},
-{          WWT_6,   RESIZE_NONE,   BGC,   174,   403,    39,   165, 0x0,					STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,   BGC,   173,   404,    38,   190, STR_NULL,                 STR_NULL},
 
 // buttons
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    10,   151,   175,   186, STR_NETWORK_JOIN_COMPANY,	STR_NETWORK_JOIN_COMPANY_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    10,   151,   190,   201, STR_NETWORK_NEW_COMPANY,		STR_NETWORK_NEW_COMPANY_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   158,   268,   175,   186, STR_NETWORK_SPECTATE_GAME,	STR_NETWORK_SPECTATE_GAME_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   158,   268,   190,   201, STR_NETWORK_REFRESH,				STR_NETWORK_REFRESH_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   278,   388,   175,   186, STR_012E_CANCEL,						STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    10,   151,   200,   211, STR_NETWORK_JOIN_COMPANY, STR_NETWORK_JOIN_COMPANY_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    10,   151,   215,   226, STR_NETWORK_NEW_COMPANY,  STR_NETWORK_NEW_COMPANY_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   158,   268,   200,   211, STR_NETWORK_SPECTATE_GAME,STR_NETWORK_SPECTATE_GAME_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   158,   268,   215,   226, STR_NETWORK_REFRESH,      STR_NETWORK_REFRESH_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   278,   388,   200,   211, STR_012E_CANCEL,          STR_NULL},
 
 {   WIDGETS_END},
 };
 
 static const WindowDesc _network_lobby_window_desc = {
-	WDP_CENTER, WDP_CENTER, 420, 210,
+	WDP_CENTER, WDP_CENTER, 420, 235,
 	WC_NETWORK_WINDOW,0,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_network_lobby_window_widgets,
@@ -835,7 +840,7 @@ static const WindowDesc _network_lobby_window_desc = {
 };
 
 
-static void ShowNetworkLobbyWindow(void)
+static void ShowNetworkLobbyWindow(NetworkGameList *ngl)
 {
 	Window *w;
 	DeleteWindowById(WC_NETWORK_WINDOW, 0);
@@ -843,13 +848,12 @@ static void ShowNetworkLobbyWindow(void)
 	NetworkQueryServer(_network_last_host, _network_last_port, false);
 
 	w = AllocateWindowDesc(&_network_lobby_window_desc);
-	strcpy(_edit_str_buf, "");
-	w->vscroll.pos = 0;
-	w->vscroll.cap = 8;
+	if (w != NULL) {
+		WP(w, network_q_d).n.server = ngl;
+		strcpy(_edit_str_buf, "");
+		w->vscroll.cap = 10;
+	}
 }
-
-
-
 
 // The window below gives information about the connected clients
 //  and also makes able to give money to them, kick them (if server)
@@ -1090,7 +1094,8 @@ static Window *PopupClientList(Window *w, int client_no, int x, int y)
 	return w;
 }
 
-// Main handle for the popup
+/** Main handle for the client popup list
+ * uses menu_d WP macro */
 static void ClientListPopupWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -1315,6 +1320,7 @@ void ShowJoinStatusWindowAfterJoin(void)
 
 #define MAX_QUERYSTR_LEN 64
 
+/* uses querystr_d WP macro */
 static void ChatWindowWndProc(Window *w, WindowEvent *e)
 {
 	static bool closed = false;
@@ -1328,7 +1334,7 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 
 	case WE_PAINT:
 		DrawWindowWidgets(w);
-		DrawEditBox(w, 1);
+		DrawEditBox(w, &WP(w, querystr_d), 1);
 		break;
 
 	case WE_CLICK:
@@ -1366,11 +1372,11 @@ press_ok:;
 			DeleteWindow(w);
 			return;
 		}
-		HandleEditBox(w, 1);
+		HandleEditBox(w, &WP(w, querystr_d), 1);
 	} break;
 
 	case WE_KEYPRESS: {
-		switch(HandleEditBoxKey(w, 1, e)) {
+		switch (HandleEditBoxKey(w, &WP(w, querystr_d), 1, e)) {
 		case 1: // Return
 			goto press_ok;
 		case 2: // Escape

@@ -103,9 +103,9 @@ void SetHScrollCount(Window *w, int num);
 void ShowCheatWindow(void);
 void AskForNewGameToStart(void);
 
-void DrawEditBox(Window *w, int wid);
-void HandleEditBox(Window *w, int wid);
-int HandleEditBoxKey(Window *w, int wid, WindowEvent *we);
+void DrawEditBox(Window *w, querystr_d *string, int wid);
+void HandleEditBox(Window *w, querystr_d *string, int wid);
+int HandleEditBoxKey(Window *w, querystr_d *string, int wid, WindowEvent *we);
 bool HandleCaret(Textbuf *tb);
 
 void DeleteTextBufferAll(Textbuf *tb);

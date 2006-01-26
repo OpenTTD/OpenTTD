@@ -258,7 +258,7 @@ typedef struct querystr_d {
 //  than on a 32-bit system. Therefore, the size is calculated from querystr_d
 //  instead of a hardcoded number.
 // if any struct becomes bigger the querystr_d, it should be replaced.
-#define WINDOW_CUSTOM_SIZE sizeof(querystr_d)
+#define WINDOW_CUSTOM_SIZE sizeof(querystr_d) * 2
 
 typedef struct Scrollbar {
 	uint16 count, cap, pos;

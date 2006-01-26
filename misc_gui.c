@@ -885,7 +885,7 @@ void UpdateTextBufferSize(Textbuf *tb)
 	tb->caretxoffs = tb->width;
 }
 
-int HandleEditBoxKey(Window *w, int wid, WindowEvent *we)
+int HandleEditBoxKey(Window *w, querystr_d *string, int wid, WindowEvent *we)
 {
 	we->keypress.cont = false;
 
@@ -893,24 +893,24 @@ int HandleEditBoxKey(Window *w, int wid, WindowEvent *we)
 	case WKC_ESC: return 2;
 	case WKC_RETURN: case WKC_NUM_ENTER: return 1;
 	case (WKC_CTRL | 'V'):
-		if (InsertTextBufferClipboard(&WP(w, querystr_d).text))
+		if (InsertTextBufferClipboard(&string->text))
 			InvalidateWidget(w, wid);
 		break;
 	case (WKC_CTRL | 'U'):
-		DeleteTextBufferAll(&WP(w, querystr_d).text);
+		DeleteTextBufferAll(&string->text);
 		InvalidateWidget(w, wid);
 		break;
 	case WKC_BACKSPACE: case WKC_DELETE:
-		if (DeleteTextBufferChar(&WP(w, querystr_d).text, we->keypress.keycode))
+		if (DeleteTextBufferChar(&string->text, we->keypress.keycode))
 			InvalidateWidget(w, wid);
 		break;
 	case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
-		if (MoveTextBufferPos(&WP(w, querystr_d).text, we->keypress.keycode))
+		if (MoveTextBufferPos(&string->text, we->keypress.keycode))
 			InvalidateWidget(w, wid);
   	break;
 	default:
 		if (IsValidAsciiChar(we->keypress.ascii)) {
-			if (InsertTextBufferChar(&WP(w, querystr_d).text, we->keypress.ascii))
+			if (InsertTextBufferChar(&string->text, we->keypress.ascii))
 				InvalidateWidget(w, wid);
 		} else // key wasn't caught
 			we->keypress.cont = true;
@@ -931,20 +931,19 @@ bool HandleCaret(Textbuf *tb)
 	return false;
 }
 
-void HandleEditBox(Window *w, int wid)
+void HandleEditBox(Window *w, querystr_d *string, int wid)
 {
-	if (HandleCaret(&WP(w, querystr_d).text)) InvalidateWidget(w, wid);
+	if (HandleCaret(&string->text)) InvalidateWidget(w, wid);
 }
 
-void DrawEditBox(Window *w, int wid)
+void DrawEditBox(Window *w, querystr_d *string, int wid)
 {
 	const Widget *wi = w->widget + wid;
-	const Textbuf *tb = &WP(w,querystr_d).text;
+	const Textbuf *tb = &string->text;
 
 	GfxFillRect(wi->left+1, wi->top+1, wi->right-1, wi->bottom-1, 215);
 	DoDrawString(tb->buf, wi->left+2, wi->top+1, 8);
-	if (tb->caret)
-		DoDrawString("_", wi->left + 2 + tb->caretxoffs, wi->top + 1, 12);
+	if (tb->caret) DoDrawString("_", wi->left + 2 + tb->caretxoffs, wi->top + 1, 12);
 }
 
 static void QueryStringWndProc(Window *w, WindowEvent *e)
@@ -960,7 +959,7 @@ static void QueryStringWndProc(Window *w, WindowEvent *e)
 		SetDParam(0, WP(w,querystr_d).caption);
 		DrawWindowWidgets(w);
 
-		DrawEditBox(w, 5);
+		DrawEditBox(w, &WP(w,querystr_d), 5);
 		break;
 
 	case WE_CLICK:
@@ -999,11 +998,11 @@ press_ok:;
 			DeleteWindow(w);
 			return;
 		}
-		HandleEditBox(w, 5);
+		HandleEditBox(w, &WP(w, querystr_d), 5);
 	} break;
 
 	case WE_KEYPRESS: {
-		switch (HandleEditBoxKey(w, 5, e)) {
+		switch (HandleEditBoxKey(w, &WP(w, querystr_d), 5, e)) {
 		case 1: // Return
 			goto press_ok;
 		case 2: // Escape
@@ -1275,7 +1274,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		}
 
 		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
-			DrawEditBox(w, 10);
+			DrawEditBox(w, &WP(w,querystr_d), 10);
 		}
 		break;
 	}
@@ -1339,7 +1338,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 	case WE_MOUSELOOP:
-		HandleEditBox(w, 10);
+		HandleEditBox(w, &WP(w, querystr_d), 10);
 		break;
 	case WE_KEYPRESS:
 		if (e->keypress.keycode == WKC_ESC) {
@@ -1348,7 +1347,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		}
 
 		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
-			if (HandleEditBoxKey(w, 10, e) == 1) /* Press Enter */
+			if (HandleEditBoxKey(w, &WP(w, querystr_d), 10, e) == 1) /* Press Enter */
 					HandleButtonClick(w, 12);
 		}
 		break;
