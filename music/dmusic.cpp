@@ -118,7 +118,7 @@ static void DMusicMidiStop(void)
 	if (performance != NULL) performance->Stop(NULL, NULL, 0, 0);
 
 	if (segment != NULL) {
-		segment->SetParam(GUID_Unload, -1, 0, 0, performance);
+		segment->SetParam(GUID_Unload, 0xFFFFFFFF, 0, 0, performance);
 		segment->Release();
 		segment = NULL;
 	}
