@@ -174,6 +174,10 @@ static void AnimateTile_Town(TileIndex tile)
 
 		_m[tile].m1 |= 0x80;
 
+		/** Building has 6 floors, number 0 .. 6, where 1 is illegal.
+		 *  This is due to the fact that the first floor is, in the graphics,
+		 *  the height of 2 'normal' floors.
+		 *  Furthermore, there are 6 lift positions from floor N (incl) to floor N + 1 (excl) */
 		do {
 			i = (Random() & 7) - 1;
 		} while (i < 0 || i == 1 || i * 6 == old);

@@ -290,7 +290,7 @@ Town building
 <ul>
 <li>m1 bits 6..0: position of the lift</li>
 <li>m1 bit 7: if set the lift is moving</li>
-<li>m5 bit 7: if set then m5 bits 5..0 hold the final position of the lift divided by 6 (valid values 0..6 except 1)</li>
+<li>m5 bit 7: if set then m5 bits 5..0 hold the destination floor of the lift, which could be 0..6, except 1, so the building has 6 effective floors. This due to the fact that the first floor is 2 'normal' floors high. One 'normal' floor has a height of 6 lift positions.</li>
 </ul></li>
 </ul>
 </td></tr>
