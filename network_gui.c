@@ -74,10 +74,9 @@ enum {
 	NET_PRC__SIZE_OF_ROW_COMPANY        = 12,
 };
 
+/* Used in both NetworkWindow and NetworkLobby to mark the currently selected server */
 static NetworkGameList *_selected_item = NULL;
 static int8 _selected_company_item = -1;
-
-extern const char _openttd_revision[];
 
 static FiosItem *_selected_map = NULL; // to highlight slected map
 
@@ -409,11 +408,11 @@ void ShowNetworkGameWindow(void)
 
 	/* Only show once */
 	if (_first_time_show_network_game_window) {
-		const char* const *srv;
+		char* const *srv;
 
 		_first_time_show_network_game_window = false;
 		// add all servers from the config file to our list
-		for (srv = _network_host_list; srv != endof(_network_host_list) && *srv != NULL; srv++) {
+		for (srv = &_network_host_list[0]; srv != endof(_network_host_list) && *srv != NULL; srv++) {
 			NetworkAddServer(*srv);
 		}
 	}

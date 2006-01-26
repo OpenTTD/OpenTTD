@@ -12,7 +12,11 @@
 
 extern void UpdateNetworkGameWindow(bool unselect);
 
-
+/** Add a new item to the linked gamelist. If the IP and Port match
+ * return the existing item instead of adding it again
+ * @param ip the IP-address (inet_addr) of the to-be added item
+ * @param port the port the server is running on
+ * @return a point to the newly added or already existing item */
 NetworkGameList *NetworkGameListAddItem(uint32 ip, uint16 port)
 {
 	NetworkGameList *item, *prev_item;
@@ -38,6 +42,8 @@ NetworkGameList *NetworkGameListAddItem(uint32 ip, uint16 port)
 	return item;
 }
 
+/** Remove an item from the gamelist linked list
+ * @param remove pointer to the item to be removed */
 void NetworkGameListRemoveItem(NetworkGameList *remove)
 {
 	NetworkGameList *item, *prev_item;
