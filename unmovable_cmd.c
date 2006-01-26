@@ -117,7 +117,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 		if (ti->map5 == 2) {
 
 			// statue
-			DrawGroundSprite(SPR_STATUE_GROUND);
+			DrawGroundSprite(SPR_CONCRETE_GROUND);
 
 			image = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
 			image += PALETTE_MODIFIER_COLOR | SPR_STATUE_COMPANY;
