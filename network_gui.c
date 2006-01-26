@@ -28,18 +28,28 @@
 #define MAX_QUERYSTR_LEN 64
 
 typedef struct network_d {
-	byte company;
-	byte field;
-	NetworkGameList *server;
-	FiosItem *map;
+	byte company;            // select company in network lobby
+	byte field;              // select text-field in start-server and game-listing
+	NetworkGameList *server; // selected server in lobby and game-listing
+	FiosItem *map;           // selected map in start-server
 } network_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(network_d));
 
-typedef struct network_q_d {
-	network_d n;
-	querystr_d q;
-} network_q_d;
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(network_q_d));
+typedef struct network_ql_d {
+	network_d n;                 // see above; general stuff
+	querystr_d q;                // text-input in start-server and game-listing
+	NetworkGameList **sort_list; // list of games (sorted)
+	list_d l;                    // accompanying list-administration
+} network_ql_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(network_ql_d));
+
+typedef struct NetworkGameSorting {
+	bool order;    // Ascending / Descending
+	byte criteria; // Sorted by name/clients/connectivity
+} NetworkGameSorting;
+
+/* Global to remember sorting after window has been closed */
+static NetworkGameSorting _ng_sorting;
 
 static char _edit_str_buf[MAX_QUERYSTR_LEN*2];
 static void ShowNetworkStartServerWindow(void);
@@ -92,24 +102,136 @@ void UpdateNetworkGameWindow(bool unselect)
 	Window* w = FindWindowById(WC_NETWORK_WINDOW, 0);
 
 	if (w != NULL) {
-		if (unselect) WP(w, network_q_d).n.server = NULL;
+		if (unselect) WP(w, network_ql_d).n.server = NULL;
 		SendWindowMessage(WC_NETWORK_WINDOW, 0, true, 0, 0);
 	}
 }
 
-/* uses network_q_d (network_d and querystr_d) WP macro */
+static bool _internal_sort_order; // Used for Qsort order-flipping
+typedef int CDECL NGameNameSortFunction(const void*, const void*);
+
+/** Qsort function to sort by name. */
+static int CDECL NGameNameSorter(const void *a, const void *b)
+{
+	const NetworkGameList *cmp1 = *(const NetworkGameList**)a;
+	const NetworkGameList *cmp2 = *(const NetworkGameList**)b;
+	int r = stricmp(cmp1->info.server_name, cmp2->info.server_name);
+
+	return (_internal_sort_order & 1) ? -r : r;
+}
+
+/** Qsort function to sort by the amount of clients online on a
+ * server. If the two servers have the same amount, the one with the
+ * higher maximum is preferred. */
+static int CDECL NGameClientSorter(const void *a, const void *b)
+{
+	const NetworkGameList *cmp1 = *(const NetworkGameList**)a;
+	const NetworkGameList *cmp2 = *(const NetworkGameList**)b;
+	/* Reverse as per default we are interested in most-clients first */
+	int r = cmp2->info.clients_on - cmp1->info.clients_on;
+
+	if (r == 0) r = cmp1->info.clients_max - cmp2->info.clients_max;
+
+	return (_internal_sort_order & 1) ? -r : r;
+}
+
+/** Qsort function to sort by joinability. If both servers are the
+ * same, prefer the non-passworded server first. */
+static int CDECL NGameAllowedSorter(const void *a, const void *b)
+{
+	const NetworkGameList *cmp1 = *(const NetworkGameList**)a;
+	const NetworkGameList *cmp2 = *(const NetworkGameList**)b;
+	/* Reverse default as we are interested in compatible clients first */
+	int r = cmp2->info.compatible - cmp1->info.compatible;
+
+	if (r == 0) r = cmp1->info.use_password - cmp2->info.use_password;
+
+	return (_internal_sort_order & 1) ? -r : r;
+}
+
+static NGameNameSortFunction* const _ngame_sorter[] = {
+	&NGameNameSorter,
+	&NGameClientSorter,
+	&NGameAllowedSorter
+};
+
+/** (Re)build the network game list as its amount has changed because
+ * an item has been added or deleted for example
+ * @param ngl list_d struct that contains all necessary information for sorting */
+static void BuildNetworkGameList(network_ql_d *nqld)
+{
+	NetworkGameList *ngl_temp;
+	uint n = 0;
+
+	if (!(nqld->l.flags & VL_REBUILD)) return;
+
+	/* Count the number of games in the list */
+	for (ngl_temp = _network_game_list; ngl_temp != NULL; ngl_temp = ngl_temp->next) n++;
+	if (n == 0) return;
+
+	/* Create temporary array of games to use for listing */
+	free(nqld->sort_list);
+	nqld->sort_list = malloc(n * sizeof(nqld->sort_list[0]));
+	if (nqld->sort_list == NULL) error("Could not allocate memory for the network-game-sorting-list");
+	nqld->l.list_length = n;
+
+	for (n = 0, ngl_temp = _network_game_list; ngl_temp != NULL; ngl_temp = ngl_temp->next) {
+		nqld->sort_list[n++] = ngl_temp;
+	}
+
+	/* Force resort */
+	nqld->l.flags &= ~VL_REBUILD;
+	nqld->l.flags |= VL_RESORT;
+}
+
+static void SortNetworkGameList(network_ql_d *nqld)
+{
+	NetworkGameList *item;
+	uint i;
+
+	if (!(nqld->l.flags & VL_RESORT)) return;
+
+	_internal_sort_order = nqld->l.flags & VL_DESC;
+	qsort(nqld->sort_list, nqld->l.list_length, sizeof(nqld->sort_list[0]), _ngame_sorter[nqld->l.sort_type]);
+
+	/* After sorting ngl->sort_list contains the sorted items. Put these back
+	 * into the original list. Basically nothing has changed, we are only
+	 * shuffling the ->next pointers */
+	_network_game_list = nqld->sort_list[0];
+	for (item = _network_game_list, i = 1; i != nqld->l.list_length; i++) {
+		item->next = nqld->sort_list[i];
+		item = item->next;
+	}
+	item->next = NULL;
+
+	nqld->l.flags &= ~VL_RESORT;
+}
+
+/* Uses network_ql_d (network_d, querystr_d and list_d) WP macro */
 static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 {
-	network_d *nd = &WP(w, network_q_d).n;
+	network_d *nd = &WP(w, network_ql_d).n;
+	list_d *ld = &WP(w, network_ql_d).l;
 
 	switch (e->event) {
-	case WE_CREATE: /* focus input box */
+	case WE_CREATE: /* Focus input box */
 		nd->field = 3;
 		nd->server = NULL;
+
+		WP(w, network_ql_d).sort_list = NULL;
+		ld->flags = VL_REBUILD | (_ng_sorting.order << (VL_DESC - 1));
+		ld->sort_type = _ng_sorting.criteria;
 		break;
 
 	case WE_PAINT: {
 		const NetworkGameList *sel = nd->server;
+		const char *arrow = (ld->flags & VL_DESC) ? DOWNARROW : UPARROW;
+
+		if (ld->flags & VL_REBUILD) {
+			BuildNetworkGameList(&WP(w, network_ql_d));
+			SetVScrollCount(w, ld->list_length);
+		}
+		if (ld->flags & VL_RESORT) SortNetworkGameList(&WP(w, network_ql_d));
 
 		w->disabled_state = 0;
 
@@ -128,10 +250,17 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		SetDParam(7, _lan_internet_types_dropdown[_network_lan_internet]);
 		DrawWindowWidgets(w);
 
-		DrawEditBox(w, &WP(w, network_q_d).q, 3);
+		DrawEditBox(w, &WP(w, network_ql_d).q, 3);
 
 		DrawString(9, 23, STR_NETWORK_CONNECTION, 2);
 		DrawString(210, 23, STR_NETWORK_PLAYER_NAME, 2);
+
+		/* Sort based on widgets: name, clients, compatibility */
+		switch (ld->sort_type) {
+			case 6 - 6: DoDrawString(arrow, w->widget[6].right - 10, 42, 0x10); break;
+			case 7 - 6: DoDrawString(arrow, w->widget[7].right - 10, 42, 0x10); break;
+			case 8 - 6: DoDrawString(arrow, w->widget[8].right - 10, 42, 0x10); break;
+		}
 
 		{ // draw list of games
 			uint16 y = NET_PRC__OFFSET_TOP_WIDGET + 3;
@@ -259,6 +388,17 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		case 4: case 5:
 			ShowDropDownMenu(w, _lan_internet_types_dropdown, _network_lan_internet, 5, 0, 0); // do it for widget 5
 			break;
+		case 6: /* Sort by name */
+		case 7: /* Sort by connected clients */
+		case 8: /* Connectivity (green dot) */
+			if (ld->sort_type == e->click.widget - 6) ld->flags ^= VL_DESC;
+			ld->flags |= VL_RESORT;
+			ld->sort_type = e->click.widget - 6;
+
+			_ng_sorting.order = !!(ld->flags & VL_DESC);
+			_ng_sorting.criteria = ld->sort_type;
+			SetWindowDirty(w);
+			break;
 		case 9: { /* Matrix to show networkgames */
 			NetworkGameList *cur_item;
 			uint32 id_v = (e->click.pt.y - NET_PRC__OFFSET_TOP_WIDGET) / NET_PRC__SIZE_OF_ROW;
@@ -298,9 +438,8 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 		case 17: // Refresh
-			if (nd->server != NULL) {
+			if (nd->server != NULL)
 				NetworkQueryServer(nd->server->info.hostname, nd->server->port, true);
-			}
 			break;
 
 	}	break;
@@ -316,18 +455,13 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_MOUSELOOP:
-		if (nd->field == 3) HandleEditBox(w, &WP(w, network_q_d).q, 3);
+		if (nd->field == 3) HandleEditBox(w, &WP(w, network_ql_d).q, 3);
 		break;
 
-	case WE_MESSAGE: {
-		const NetworkGameList *nglist;
-		w->vscroll.count = 0;
-		/* Game-count has changed, update scroll-count, scrollbar, and resort */
-		for (nglist = _network_game_list; nglist != NULL; nglist = nglist->next) w->vscroll.count++;
-		if (w->vscroll.count >= w->vscroll.cap && w->vscroll.pos > w->vscroll.count - w->vscroll.cap) w->vscroll.pos--;
-
+	case WE_MESSAGE:
+		ld->flags |= VL_REBUILD;
 		SetWindowDirty(w);
-	}	break;
+		break;
 
 	case WE_KEYPRESS:
 		if (nd->field != 3) {
@@ -341,7 +475,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 
-		if (HandleEditBoxKey(w, &WP(w, network_q_d).q, 3, e) == 1) break; // enter pressed
+		if (HandleEditBoxKey(w, &WP(w, network_ql_d).q, 3, e) == 1) break; // enter pressed
 
 		// The name is only allowed when it starts with a letter!
 		if (_edit_str_buf[0] != '\0' && _edit_str_buf[0] != ' ') {
@@ -355,6 +489,10 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 	case WE_ON_EDIT_TEXT:
 		NetworkAddServer(e->edittext.str);
 		NetworkRebuildHostList();
+		break;
+
+	case WE_DESTROY: /* Nicely clean up the sort-list */
+		free(WP(w, network_ql_d).sort_list);
 		break;
 	}
 }
@@ -420,7 +558,7 @@ void ShowNetworkGameWindow(void)
 
 	w = AllocateWindowDesc(&_network_game_window_desc);
 	if (w != NULL) {
-		querystr = &WP(w, network_q_d).q;
+		querystr = &WP(w, network_ql_d).q;
 		ttd_strlcpy(_edit_str_buf, _network_player_name, MAX_QUERYSTR_LEN);
 		w->vscroll.cap = 12;
 
@@ -439,10 +577,10 @@ enum {
 	NSSWND_ROWSIZE = 12
 };
 
-/* uses network_q_d (network_d and querystr_d) WP macro */
+/* Uses network_ql_d (network_d, querystr_d and list_d) WP macro */
 static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 {
-	network_d *nd = &WP(w, network_q_d).n;
+	network_d *nd = &WP(w, network_ql_d).n;
 
 	switch (e->event) {
 	case WE_CREATE: /* focus input box */
@@ -462,7 +600,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 
 		GfxFillRect(11, 63, 258, 215, 0xD7);
-		DrawEditBox(w, &WP(w, network_q_d).q, 3);
+		DrawEditBox(w, &WP(w, network_ql_d).q, 3);
 
 		DrawString(10, 22, STR_NETWORK_NEW_GAME_NAME, 2);
 
@@ -569,15 +707,15 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_MOUSELOOP:
-		if (nd->field == 3) HandleEditBox(w, &WP(w, network_q_d).q, 3);
+		if (nd->field == 3) HandleEditBox(w, &WP(w, network_ql_d).q, 3);
 		break;
 
 	case WE_KEYPRESS:
 		if (nd->field == 3) {
-			if (HandleEditBoxKey(w, &WP(w, network_q_d).q, 3, e) == 1) break; // enter pressed
+			if (HandleEditBoxKey(w, &WP(w, network_ql_d).q, 3, e) == 1) break; // enter pressed
 
-			ttd_strlcpy(_network_server_name, WP(w, network_q_d).q.text.buf, sizeof(_network_server_name));
-			UpdateTextBufferSize(&WP(w, network_q_d).q.text);
+			ttd_strlcpy(_network_server_name, WP(w, network_ql_d).q.text.buf, sizeof(_network_server_name));
+			UpdateTextBufferSize(&WP(w, network_ql_d).q.text);
 		}
 		break;
 
@@ -638,11 +776,11 @@ static void ShowNetworkStartServerWindow(void)
 	w->vscroll.cap = 9;
 	w->vscroll.count = _fios_num+1;
 
-	WP(w, network_q_d).q.text.caret = true;
-	WP(w, network_q_d).q.text.maxlength = MAX_QUERYSTR_LEN - 1;
-	WP(w, network_q_d).q.text.maxwidth = 160;
-	WP(w, network_q_d).q.text.buf = _edit_str_buf;
-	UpdateTextBufferSize(&WP(w, network_q_d).q.text);
+	WP(w, network_ql_d).q.text.caret = true;
+	WP(w, network_ql_d).q.text.maxlength = MAX_QUERYSTR_LEN - 1;
+	WP(w, network_ql_d).q.text.maxwidth = 160;
+	WP(w, network_ql_d).q.text.buf = _edit_str_buf;
+	UpdateTextBufferSize(&WP(w, network_ql_d).q.text);
 }
 
 static byte NetworkLobbyFindCompanyIndex(byte pos)
@@ -839,7 +977,8 @@ static const WindowDesc _network_lobby_window_desc = {
 	NetworkLobbyWindowWndProc,
 };
 
-
+/* Show the networklobbywindow with the selected server
+ * @param ngl Selected game pointer which is passed to the new window */
 static void ShowNetworkLobbyWindow(NetworkGameList *ngl)
 {
 	Window *w;
@@ -849,7 +988,7 @@ static void ShowNetworkLobbyWindow(NetworkGameList *ngl)
 
 	w = AllocateWindowDesc(&_network_lobby_window_desc);
 	if (w != NULL) {
-		WP(w, network_q_d).n.server = ngl;
+		WP(w, network_ql_d).n.server = ngl;
 		strcpy(_edit_str_buf, "");
 		w->vscroll.cap = 10;
 	}

@@ -431,9 +431,9 @@ typedef struct {
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(scroller_d));
 
 typedef enum VehicleListFlags {
-	VL_DESC    = 0x01,
-	VL_RESORT  = 0x02,
-	VL_REBUILD = 0x04
+	VL_DESC    = 0x01,  // sort descending or ascending
+	VL_RESORT  = 0x02,  // instruct the code to resort the list in the next loop
+	VL_REBUILD = 0x04   // create sort-listing to use for qsort and friends
 } VehicleListFlags;
 
 typedef struct vehiclelist_d {
@@ -444,6 +444,14 @@ typedef struct vehiclelist_d {
 	uint16 resort_timer;
 } vehiclelist_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vehiclelist_d));
+
+typedef struct list_d {
+	uint16 list_length;    // length of the list being sorted
+	byte sort_type;        // what criteria to sort on
+	VehicleListFlags flags;// used to control sorting/resorting/etc.
+	uint16 resort_timer;   // resort list after a given amount of ticks if set
+} list_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(list_d));
 
 typedef struct message_d {
 	int msg;
