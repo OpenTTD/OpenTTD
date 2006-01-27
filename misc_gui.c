@@ -157,16 +157,20 @@ static void Place_LandInfo(TileIndex tile)
 	GetAcceptedCargo(tile, lid.ac);
 	GetTileDesc(tile, &lid.td);
 
-	#if defined(_DEBUG)
-		DEBUG(misc, 0) ("TILE: %#x (%i,%i)", tile, TileX(tile), TileY(tile));
-		DEBUG(misc, 0) ("TILE: %d ", tile);
-		DEBUG(misc, 0) ("_type_height = %#x", _m[tile].type_height);
-		DEBUG(misc, 0) ("m1           = %#x", _m[tile].m1);
-		DEBUG(misc, 0) ("m2           = %#x", _m[tile].m2);
-		DEBUG(misc, 0) ("m3           = %#x", _m[tile].m3);
-		DEBUG(misc, 0) ("m4           = %#x", _m[tile].m4);
-		DEBUG(misc, 0) ("m5           = %#x", _m[tile].m5);
-	#endif
+		#if defined(_DEBUG)
+		# define LANDINFOD_LEVEL 0
+		#else
+		# define LANDINFOD_LEVEL 1
+		#endif
+		DEBUG(misc, LANDINFOD_LEVEL) ("TILE: %#x (%i,%i)", tile, TileX(tile), TileY(tile));
+		DEBUG(misc, LANDINFOD_LEVEL) ("type_height  = %#x", _m[tile].type_height);
+		DEBUG(misc, LANDINFOD_LEVEL) ("m1           = %#x", _m[tile].m1);
+		DEBUG(misc, LANDINFOD_LEVEL) ("m2           = %#x", _m[tile].m2);
+		DEBUG(misc, LANDINFOD_LEVEL) ("m3           = %#x", _m[tile].m3);
+		DEBUG(misc, LANDINFOD_LEVEL) ("m4           = %#x", _m[tile].m4);
+		DEBUG(misc, LANDINFOD_LEVEL) ("m5           = %#x", _m[tile].m5);
+		DEBUG(misc, LANDINFOD_LEVEL) ("extra        = %#x", _m[tile].extra);
+		#undef LANDINFOD_LEVEL
 }
 
 void PlaceLandBlockInfo(void)
