@@ -40,7 +40,7 @@ typedef struct DriverClass {
 } DriverClass;
 
 
-#define M(x, y, z) { x, y, (const HalCommonDriver*)z }
+#define M(x, y, z) { x, y, (const HalCommonDriver *)(void *)z }
 static const DriverDesc _music_driver_descs[] = {
 #ifdef __BEOS__
 	M("bemidi",  "BeOS MIDI Driver",        &_bemidi_music_driver),
@@ -99,7 +99,7 @@ static const DriverDesc _video_driver_descs[] = {
 #undef M
 
 
-#define M(x, y, z) { x, y, (const HalCommonDriver**)z }
+#define M(x, y, z) { x, y, (const HalCommonDriver **)(void *)z }
 static const DriverClass _driver_classes[] = {
 	M(_video_driver_descs, "video", &_video_driver),
 	M(_sound_driver_descs, "sound", &_sound_driver),
