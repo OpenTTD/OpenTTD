@@ -22,7 +22,7 @@ static const Widget _smallmap_widgets[] = {
 {  WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
 {   WWT_CAPTION,  RESIZE_RIGHT,    13,    11,   433,     0,    13, STR_00B0_MAP,            STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_STICKYBOX,     RESIZE_LR,    13,   434,   445,     0,    13, 0x0,                     STR_STICKY_BUTTON},
-{    WWT_IMGBTN,     RESIZE_RB,    13,     0,   445,    14,   257, 0x0,                     STR_NULL},
+{     WWT_PANEL,     RESIZE_RB,    13,     0,   445,    14,   257, 0x0,                     STR_NULL},
 {         WWT_6,     RESIZE_RB,    13,     2,   443,    16,   255, 0x0,                     STR_NULL},
 {    WWT_IMGBTN,   RESIZE_LRTB,    13,   380,   401,   258,   279, SPR_IMG_SHOW_COUNTOURS,  STR_0191_SHOW_LAND_CONTOURS_ON_MAP},
 {    WWT_IMGBTN,   RESIZE_LRTB,    13,   402,   423,   258,   279, SPR_IMG_SHOW_VEHICLES,   STR_0192_SHOW_VEHICLES_ON_MAP},
@@ -809,7 +809,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 		/* draw the legend */
 		tbl = _legend_table[(_smallmap_type != 2) ? _smallmap_type : (_opt.landscape + IND_OFFS)];
 		x = 4;
-		y_org = w->height - 43 - 11;
+		y_org = w->height - 44 - 11;
 		y = y_org;
 		while (true) {
 			GfxFillRect(x, y+1, x+8, y + 5, 0);
