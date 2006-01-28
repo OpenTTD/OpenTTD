@@ -64,7 +64,7 @@ static const char *LoadSdlDLL(void)
 {
 	if (sdl_proc.SDL_Init != NULL)
 		return NULL;
-	if (!LoadLibraryList((Function*)&sdl_proc, sdl_files))
+	if (!LoadLibraryList((Function *)(void *)&sdl_proc, sdl_files))
 		return "Unable to load sdl.dll";
 	return NULL;
 }
