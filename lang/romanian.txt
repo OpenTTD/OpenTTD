@@ -1199,12 +1199,12 @@ STR_NETWORK_ADD_SERVER                                          :{BLACK}Adauga u
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Adauga un server pe lista care va fi verificata pentru jocuri active
 STR_NETWORK_ENTER_IP                                            :{BLACK}Introdu IP-ul serverului
 
-STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
+STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clienti
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clienti online / Nr. max. clienti
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO JOC
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Clienti:  {WHITE}{COMMA} / {COMMA}
+STR_NETWORK_CLIENTS                                             :{SILVER}Clienti:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Limba:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Tileset:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Marimea hartii:  {WHITE}{COMMA}x{COMMA}
@@ -1245,9 +1245,11 @@ STR_NETWORK_7_CLIENTS                                           :7 clienti
 STR_NETWORK_8_CLIENTS                                           :8 clienti
 STR_NETWORK_9_CLIENTS                                           :9 clienti
 STR_NETWORK_10_CLIENTS                                          :10 clienti
+STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Limba vorbita:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Ceilalti jucatori vor sti in ce limba se discuta per server.
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Începe jocul
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Incepe un joc nou in retea cu o harta aleatoare sau intr-un scenariu
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Incarca joc

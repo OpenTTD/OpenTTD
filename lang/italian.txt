@@ -1200,12 +1200,12 @@ STR_NETWORK_ADD_SERVER                                          :{BLACK}Aggiungi
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Aggiungi un server alla lista che verrà sempre controllata per giochi attivi.
 STR_NETWORK_ENTER_IP                                            :{BLACK}Digita indirizzo IP del server
 
-STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
+STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clients
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clients online / clients max
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFORMAZIONI PARTITA
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Clients:  {WHITE}{COMMA} / {COMMA}
+STR_NETWORK_CLIENTS                                             :{SILVER}Clients:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Lingua:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Ambiente:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Dimens:  {WHITE}{COMMA}x{COMMA}
@@ -1237,18 +1237,22 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (avvisa)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_CLIENTS                                           :2 clients
-STR_NETWORK_3_CLIENTS                                           :3 clients
-STR_NETWORK_4_CLIENTS                                           :4 clients
-STR_NETWORK_5_CLIENTS                                           :5 clients
-STR_NETWORK_6_CLIENTS                                           :6 clients
-STR_NETWORK_7_CLIENTS                                           :7 clients
-STR_NETWORK_8_CLIENTS                                           :8 clients
-STR_NETWORK_9_CLIENTS                                           :9 clients
-STR_NETWORK_10_CLIENTS                                          :10 clients
+STR_NETWORK_0_CLIENTS                                           :0 giocatore
+STR_NETWORK_1_CLIENTS                                           :1 giocatore
+STR_NETWORK_2_CLIENTS                                           :2 giocatori
+STR_NETWORK_3_CLIENTS                                           :3 giocatori
+STR_NETWORK_4_CLIENTS                                           :4 giocatori
+STR_NETWORK_5_CLIENTS                                           :5 giocatori
+STR_NETWORK_6_CLIENTS                                           :6 giocatori
+STR_NETWORK_7_CLIENTS                                           :7 giocatori
+STR_NETWORK_8_CLIENTS                                           :8 giocatori
+STR_NETWORK_9_CLIENTS                                           :9 giocatori
+STR_NETWORK_10_CLIENTS                                          :10 giocatori
+STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Lingua parlata:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Gli altri giocatori sapranno quale lingua viene parlata sul server
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Avvia gioco
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Inizia una nuova partita in rete partendo da una mappa random o da uno scenario
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Carica Gioco

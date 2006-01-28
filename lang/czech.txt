@@ -1255,12 +1255,12 @@ STR_NETWORK_ADD_SERVER                                          :{BLACK}Pridat s
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Prida server do seznamu, ve kterém se budou hledat bezici hry.
 STR_NETWORK_ENTER_IP                                            :{BLACK}Vlo¸ IP adresu serveru
 
-STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
+STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Hracu
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Hracu online / maximalne
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO O HRE
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Klientu:  {WHITE}{COMMA} / {COMMA}
+STR_NETWORK_CLIENTS                                             :{SILVER}Klientu:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Jazyk:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Prostredi:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Velikost mapy:  {WHITE}{COMMA}x{COMMA}
@@ -1301,9 +1301,11 @@ STR_NETWORK_7_CLIENTS                                           :7 hracu
 STR_NETWORK_8_CLIENTS                                           :8 hracu
 STR_NETWORK_9_CLIENTS                                           :9 hracu
 STR_NETWORK_10_CLIENTS                                          :10 hracu
+STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Jazyk ve hre:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Aby ostatní hraci vedeli, jakým jazykem se bude ve hre mluvit.
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Zacit hru
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Hru po síti zacit s náhodnou mapou nebo se scenariem
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Nahrát hru

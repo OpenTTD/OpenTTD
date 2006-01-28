@@ -1199,12 +1199,12 @@ STR_NETWORK_ADD_SERVER                                          :{BLACK}Voeg ser
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Voegt een server toe aan de lijst die altijd gecontroleerd zal worden op draaiende spellen.
 STR_NETWORK_ENTER_IP                                            :{BLACK}IP adres van de server invoeren
 
-STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
+STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Spelers
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Spelers online / spelers maximaal
 STR_NETWORK_GAME_INFO                                           :{SILVER}SPEL INFORMATIE
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Spelers:  {WHITE}{COMMA} / {COMMA}
+STR_NETWORK_CLIENTS                                             :{SILVER}Spelers:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Taal:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Klimaat:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Kaartgrootte:  {WHITE}{COMMA}x{COMMA}
@@ -1236,6 +1236,8 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (adverteren)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_0_CLIENTS                                           :0 spelers
+STR_NETWORK_1_CLIENTS                                           :1 speler
 STR_NETWORK_2_CLIENTS                                           :2 spelers
 STR_NETWORK_3_CLIENTS                                           :3 spelers
 STR_NETWORK_4_CLIENTS                                           :4 spelers
@@ -1245,9 +1247,11 @@ STR_NETWORK_7_CLIENTS                                           :7 spelers
 STR_NETWORK_8_CLIENTS                                           :8 spelers
 STR_NETWORK_9_CLIENTS                                           :9 spelers
 STR_NETWORK_10_CLIENTS                                          :10 spelers
+STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Gesproken taal:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Andere spelers zullen weten welke taal er wordt gesproken op de server.
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Start spel
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Start een nieuw netwerkspel van een willekeurige kaart, of scenario
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Laad spel

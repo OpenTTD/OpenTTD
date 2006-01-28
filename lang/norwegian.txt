@@ -1197,12 +1197,12 @@ STR_NETWORK_ADD_SERVER                                          :{BLACK}Legg til
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Legger til en tjener i listen over tjenere som alltid vil bli skjekket for aktive spill.
 STR_NETWORK_ENTER_IP                                            :{BLACK}Skriv inn IP adressen til serveren
 
-STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
+STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klienter
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klienter på nett / Maks. antall klienter
 STR_NETWORK_GAME_INFO                                           :{SILVER}SPILLOVERSIKT
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Klienter:  {WHITE}{COMMA} / {COMMA}
+STR_NETWORK_CLIENTS                                             :{SILVER}Klienter:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Språk:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Brikkesett:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Kartstørrelse:  {WHITE}{COMMA}x{COMMA}
@@ -1243,9 +1243,11 @@ STR_NETWORK_7_CLIENTS                                           :7 klienter
 STR_NETWORK_8_CLIENTS                                           :8 klienter
 STR_NETWORK_9_CLIENTS                                           :9 klienter
 STR_NETWORK_10_CLIENTS                                          :10 klienter
+STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Språk snakket på tjeneren:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Andre spiller skal kunne vite hvilket språk man snakker på denne tjeneren.
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Start Spill
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Start et nytt nettverksspill fra en tilfeldig bane, eller scenario
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Last Spill

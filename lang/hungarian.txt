@@ -1262,12 +1262,12 @@ STR_NETWORK_ADD_SERVER                                          :{BLACK}Szerver 
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Hozzáadja a szervert a listához, így késõbb gyorsabban tudsz hozzá csatlakozni
 STR_NETWORK_ENTER_IP                                            :{BLACK}Írd be a szerver IP címét
 
-STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
+STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Kliens
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Kliens online / kliens max
 STR_NETWORK_GAME_INFO                                           :{SILVER}JÁTÉK INFÓ
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Kliens:  {WHITE}{COMMA} / {COMMA}
+STR_NETWORK_CLIENTS                                             :{SILVER}Kliens:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Nyelv:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Tájtípus:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}A pálya nagysága:  {WHITE}{COMMA}x{COMMA}
@@ -1299,18 +1299,22 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :Hálózat / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (reklámoz)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_CLIENTS                                           :2 kliens
-STR_NETWORK_3_CLIENTS                                           :3 kliens
-STR_NETWORK_4_CLIENTS                                           :4 kliens
-STR_NETWORK_5_CLIENTS                                           :5 kliens
-STR_NETWORK_6_CLIENTS                                           :6 kliens
-STR_NETWORK_7_CLIENTS                                           :7 kliens
-STR_NETWORK_8_CLIENTS                                           :8 kliens
-STR_NETWORK_9_CLIENTS                                           :9 kliens
-STR_NETWORK_10_CLIENTS                                          :10 kliens
+STR_NETWORK_0_CLIENTS                                           :0 játékos
+STR_NETWORK_1_CLIENTS                                           :1 játékos
+STR_NETWORK_2_CLIENTS                                           :2 játékos
+STR_NETWORK_3_CLIENTS                                           :3 játékos
+STR_NETWORK_4_CLIENTS                                           :4 játékos
+STR_NETWORK_5_CLIENTS                                           :5 játékos
+STR_NETWORK_6_CLIENTS                                           :6 játékos
+STR_NETWORK_7_CLIENTS                                           :7 játékos
+STR_NETWORK_8_CLIENTS                                           :8 játékos
+STR_NETWORK_9_CLIENTS                                           :9 játékos
+STR_NETWORK_10_CLIENTS                                          :10 játékos
+STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Beszélt nyelv:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}A többi játékos megtudhatja milyen nyelven beszélnek a szerveren.
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Játék elindítása
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Új hálózati játék kezdése véletlen térképpel vagy misszióval
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Játék betöltése

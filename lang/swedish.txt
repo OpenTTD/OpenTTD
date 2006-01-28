@@ -1185,12 +1185,12 @@ STR_NETWORK_ADD_SERVER                                          :{BLACK}Lägg til
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Lägg till en server till listan som alltid kommer kontrolleras för aktiva spel.
 STR_NETWORK_ENTER_IP                                            :{BLACK}IP-adressen till servern
 
-STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
+STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klienter
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klienter online / Klienter max
 STR_NETWORK_GAME_INFO                                           :{SILVER}SPELINFO
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Klienter:  {WHITE}{COMMA} / {COMMA}
+STR_NETWORK_CLIENTS                                             :{SILVER}Klienter:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Språk:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Klimat:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Kartstorlek:  {WHITE}{COMMA}x{COMMA}
@@ -1222,18 +1222,22 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (publik)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_CLIENTS                                           :2 klienter
-STR_NETWORK_3_CLIENTS                                           :3 klienter
-STR_NETWORK_4_CLIENTS                                           :4 klienter
-STR_NETWORK_5_CLIENTS                                           :5 klienter
-STR_NETWORK_6_CLIENTS                                           :6 klienter
-STR_NETWORK_7_CLIENTS                                           :7 klienter
-STR_NETWORK_8_CLIENTS                                           :8 klienter
-STR_NETWORK_9_CLIENTS                                           :9 klienter
-STR_NETWORK_10_CLIENTS                                          :10 klienter
+STR_NETWORK_0_CLIENTS                                           :0 spelare
+STR_NETWORK_1_CLIENTS                                           :1 spelare
+STR_NETWORK_2_CLIENTS                                           :2 spelare
+STR_NETWORK_3_CLIENTS                                           :3 spelare
+STR_NETWORK_4_CLIENTS                                           :4 spelare
+STR_NETWORK_5_CLIENTS                                           :5 spelare
+STR_NETWORK_6_CLIENTS                                           :6 spelare
+STR_NETWORK_7_CLIENTS                                           :7 spelare
+STR_NETWORK_8_CLIENTS                                           :8 spelare
+STR_NETWORK_9_CLIENTS                                           :9 spelare
+STR_NETWORK_10_CLIENTS                                          :10 spelare
+STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Språk som talas:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Andra spelare kommer vara medvetna vilket språk som talas på servern.
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Starta spelet
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Starta ett nytt spel med en slumpmässig karta eller från ett scenario
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Ladda spel
@@ -2700,7 +2704,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Visa all
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Visa alla skepp där denna station finns med i rutten
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Byt ut fordon
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Byt ut fordon
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Byt ut {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Börja byta ut fordon
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Sluta byta ut fordon
 STR_NOT_REPLACING                                               :{BLACK}Byter inte ut

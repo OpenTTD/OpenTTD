@@ -1195,12 +1195,12 @@ STR_NETWORK_ADD_SERVER                                          :{BLACK}Tilføj s
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Tilføj en server til listen, som altid vil blive checket for om den kører et spil
 STR_NETWORK_ENTER_IP                                            :{BLACK}Skriv adressen på en server
 
-STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
+STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klienter
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klienter online / max klienter
 STR_NETWORK_GAME_INFO                                           :{SILVER}SPIL INFO
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Klienter:  {WHITE}{COMMA} / {COMMA}
+STR_NETWORK_CLIENTS                                             :{SILVER}Klienter:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Sprog:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Klima:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Størrelse:  {WHITE}{COMMA}x{COMMA}
@@ -1241,9 +1241,11 @@ STR_NETWORK_7_CLIENTS                                           :7 klienter
 STR_NETWORK_8_CLIENTS                                           :8 klienter
 STR_NETWORK_9_CLIENTS                                           :9 klienter
 STR_NETWORK_10_CLIENTS                                          :10 klienter
+STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Talt sprog:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Andre spillere vil vide hvilket sprog, der bliver talt på serveren
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Start spillet
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Start et nyt netværksspil med et tilfældigt kort eller et scenarie
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Hent et spil

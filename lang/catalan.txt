@@ -1199,12 +1199,12 @@ STR_NETWORK_ADD_SERVER                                          :{BLACK}Afegir s
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Afegeix un servidor a la llista que sempre es comprovarà per a jocs iniciats.
 STR_NETWORK_ENTER_IP                                            :{BLACK}Entra l'adreça IP del servidor
 
-STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
+STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clients
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clients en línia / clients màxim
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFORMACIÓ DEL JOC
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Clients:  {WHITE}{COMMA} / {COMMA}
+STR_NETWORK_CLIENTS                                             :{SILVER}Clients:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Idioma:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Grup de cel.les:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Tamany del mapa:  {WHITE}{COMMA}x{COMMA}
@@ -1245,9 +1245,11 @@ STR_NETWORK_7_CLIENTS                                           :7 clients
 STR_NETWORK_8_CLIENTS                                           :8 clients
 STR_NETWORK_9_CLIENTS                                           :9 clients
 STR_NETWORK_10_CLIENTS                                          :10 clients
+STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma parlat:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Els altres jugadors sabràn quin idioma es parla en aquest servidor.
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Iniciar Joc
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Iniciar un nou joc de xarxa des de un mapa aleatori, o escenari
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Carregar Joc

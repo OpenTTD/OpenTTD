@@ -1201,12 +1201,12 @@ STR_NETWORK_ADD_SERVER                                          :{BLACK}Adiciona
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Adiciona um servidor à lista que será sempre verificada se existem jogos ocorrendo.
 STR_NETWORK_ENTER_IP                                            :{BLACK}Introduza o endereço IP do servidor
 
-STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
+STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clientes
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clientes ligados / max. clientes
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFORMAÇÃO DE JOGO
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Clientes:  {WHITE}{COMMA} / {COMMA}
+STR_NETWORK_CLIENTS                                             :{SILVER}Clientes:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Idioma:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Tileset:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Tamanho do Mapa:  {WHITE}{COMMA}x{COMMA}
@@ -1247,9 +1247,11 @@ STR_NETWORK_7_CLIENTS                                           :7 clientes
 STR_NETWORK_8_CLIENTS                                           :8 clientes
 STR_NETWORK_9_CLIENTS                                           :9 clientes
 STR_NETWORK_10_CLIENTS                                          :10 clientes
+STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma falado:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Outros jogadores saberão o idioma utilizado no servidor.
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Iniciar Jogo
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Iniciar um novo jogo em rede
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Abrir Jogo

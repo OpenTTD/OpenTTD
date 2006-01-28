@@ -1195,12 +1195,12 @@ STR_NETWORK_ADD_SERVER                                          :{BLACK}Bæta við
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Bætir þjóni við listann sem mun alltaf sýna leiki í spilun
 STR_NETWORK_ENTER_IP                                            :{BLACK}Sláðu inn IP tölu þjónsins
 
-STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
+STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Notendur
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Tengdir notendur / hámarksfjöldi notenda
 STR_NETWORK_GAME_INFO                                           :{SILVER}UPPLÝSINGAR UM LEIK
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Notendur:  {WHITE}{COMMA} / {COMMA}
+STR_NETWORK_CLIENTS                                             :{SILVER}Notendur:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Tungumál:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Landslag:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Stærð:  {WHITE}{COMMA}x{COMMA}
@@ -1241,9 +1241,11 @@ STR_NETWORK_7_CLIENTS                                           :7 notendur
 STR_NETWORK_8_CLIENTS                                           :8 notendur
 STR_NETWORK_9_CLIENTS                                           :9 notendur
 STR_NETWORK_10_CLIENTS                                          :10 notendur
+STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Tungumál:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Aðrir notendur munu vita hvaða tungumál er talað á þjóninum
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Hefja leik
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Hefja nýjan netleik í sérvöldu korti eða landslagi af handahófi
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Hlaða leik
