@@ -253,12 +253,10 @@ typedef struct querystr_d {
 } querystr_d;
 
 #define WP(ptr,str) (*(str*)(ptr)->custom)
-// querystr_d is the largest struct that comes in w->custom
-//  because 64-bit systems use 64-bit pointers, it is bigger on a 64-bit system
-//  than on a 32-bit system. Therefore, the size is calculated from querystr_d
-//  instead of a hardcoded number.
-// if any struct becomes bigger the querystr_d, it should be replaced.
-#define WINDOW_CUSTOM_SIZE sizeof(querystr_d) * 2
+/* You cannot 100% reliably calculate the biggest custom struct as
+ * the number of pointers in it and alignment will have a huge impact.
+ * 88 is the largest window-size for 64-bit machines currently */
+#define WINDOW_CUSTOM_SIZE 88
 
 typedef struct Scrollbar {
 	uint16 count, cap, pos;
