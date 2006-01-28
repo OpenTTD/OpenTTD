@@ -1215,14 +1215,27 @@ int CDECL main(int argc, char* argv[])
 		return 0;
 	}
 
-	if (argc > 1 && !strcmp(argv[1], "-t")) {
+	if (argc > 1 && (!strcmp(argv[1], "-t") || !strcmp(argv[1], "--todo"))) {
 		show_todo = 1;
 		argc--, argv++;
 	}
 
-	if (argc > 1 && !strcmp(argv[1], "-w")) {
+	if (argc > 1 && (!strcmp(argv[1], "-w") || !strcmp(argv[1], "--warning"))) {
 		show_todo = 2;
 		argc--, argv++;
+	}
+
+	if (argc > 1 && (!strcmp(argv[1], "-h") ||
+		  !strcmp(argv[1], "--help") || !strcmp(argv[1], "-?"))) {
+		puts("strgen - $Revision$");
+		puts(" -v | --version    print version information and exit");
+		puts(" -h | -? | --help  print this help message and exit");
+		puts(" -t | --todo       replace any untranslated strings with '<TODO>'");
+		puts(" -w | --warning    print a warning for any untranslated strings");
+		puts(" Run without parameters strgen will search for lang/english.txt and");
+		puts(" parse it. Passing an argument, strgen will translate that language file");
+		puts(" with lang/english.txt as a reference.");
+		return 0;
 	}
 
 
