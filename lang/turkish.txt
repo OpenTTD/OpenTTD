@@ -1201,12 +1201,12 @@ STR_NETWORK_ADD_SERVER                                          :{BLACK}Sunucu e
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Her zaman çalisan oyunlarina bakabilmek için bir sunucu ekle.
 STR_NETWORK_ENTER_IP                                            :{BLACK}Sunucunun ip'sini ve portunu girin
 
-STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
+STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Oyuncular
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Bagli oyuncular / en fazla oyuncu
 STR_NETWORK_GAME_INFO                                           :{SILVER}OYUN BiLGiSi
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Oyuncular:  {WHITE}{COMMA} / {COMMA}
+STR_NETWORK_CLIENTS                                             :{SILVER}Oyuncular:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Dil:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Set:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Harita boyutu:  {WHITE}{COMMA}x{COMMA}
