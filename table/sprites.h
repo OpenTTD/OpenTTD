@@ -51,7 +51,7 @@ enum Sprites {
 	SPR_CANALS_BASE   = 5382,
 	SPR_SLOPES_BASE   = SPR_CANALS_BASE + 70,
 	SPR_AUTORAIL_BASE = SPR_SLOPES_BASE + 78,
-	SPR_OPENTTD_BASE  = SPR_AUTORAIL_BASE + 55, // can be lowered once autorail.grf is finalized
+	SPR_OPENTTD_BASE  = SPR_AUTORAIL_BASE + 55,
 
 	SPR_BLOT = SPR_OPENTTD_BASE + 29, // colored circle (mainly used as vehicle profit marker and for sever compatibility)
 
@@ -579,7 +579,7 @@ enum Sprites {
 
 	/* cantilever bridges */
 	/* They have three different kinds of tiles:
-	 * END(ing), MID(dle), BEG(gining) */
+	 * END(ing), MID(dle), BEG(ginning) */
 	SPR_BTCAN_RAIL_X_BEG          = 2507,
 	SPR_BTCAN_RAIL_X_MID          = 2508,
 	SPR_BTCAN_RAIL_X_END          = 2509,
@@ -1016,7 +1016,6 @@ typedef enum CursorSprites {
 	SPR_CURSOR_EW_MAGLEV      = 1273,
 	SPR_CURSOR_NWSE_MAGLEV    = 1274,
 
-	SPR_CURSOR_RAIL_DEPOT     = 1296,
 	SPR_CURSOR_RAIL_STATION   = 1300,
 
 	SPR_CURSOR_TUNNEL_RAIL    = 2434,
@@ -1028,6 +1027,7 @@ typedef enum CursorSprites {
 	SPR_CURSOR_AUTOMAGLEV     = SPR_OPENTTD_BASE + 6,
 
 	SPR_CURSOR_WAYPOINT       = SPR_OPENTTD_BASE + 7,
+	SPR_CURSOR_RAIL_DEPOT     = 1296,
 	SPR_CURSOR_MONO_DEPOT     = SPR_OPENTTD_BASE + 11,
 	SPR_CURSOR_MAGLEV_DEPOT   = SPR_OPENTTD_BASE + 12,
 
@@ -1172,7 +1172,7 @@ enum PaletteSprites {
 	PALETTE_59E                 = PALETTE_RECOLOR_SPRITE(0x59E),
 	PALETTE_59F                 = PALETTE_RECOLOR_SPRITE(0x59F),
 };
-/* #undef PALETTE_RECOLOR_SPRITE commented because needed in newgrf.c*/
+#undef PALETTE_RECOLOR_SPRITE
 
 #define MAKE_TRANSPARENT(img) (img = (img & SPRITE_MASK) | PALETTE_TO_TRANSPARENT)
 
