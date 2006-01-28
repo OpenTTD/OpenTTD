@@ -83,6 +83,8 @@
 #		share/games/openttd. (Will be prefixed with $PREFIX) Note that scenarios
 #		are only put here if USE_HOMEDIR is true, otherwise they are placed in
 #		PERSONAL_DIR/scenario
+# ICON_DIR:   The location of the openttd icon. (Will be prefixed with
+# 	$PREFIX).
 # PERSONAL_DIR:	The directory where openttd.cfg and the save folder will be
 #		stored. You cannot use ~ here, define USE_HOMEDIR for that.
 # USE_HOMEDIR:	If this variable is set, PERSONAL_DIR will be prefixed with
@@ -570,10 +572,12 @@ ifdef INSTALL
 # the prefix is not prepended in the makefile config
 BINARY_DIR_PREFIXED:=$(PREFIX)/$(BINARY_DIR)
 DATA_DIR_PREFIXED:=$(PREFIX)/$(DATA_DIR)
+ICON_DIR_PREFIXED:=$(PREFIX)/$(ICON_DIR)
 # We use _INSTALL vars here, these vars are the locations where the files will
 # be installed
 DATA_DIR_INSTALL=$(DEST_DIR)/$(DATA_DIR_PREFIXED)
 BINARY_DIR_INSTALL=$(DEST_DIR)/$(BINARY_DIR_PREFIXED)
+ICON_DIR_INSTALL=$(DEST_DIR)/$(ICON_DIR_PREFIXED)
 # Let the code know where to find stuff
 ifdef DATA_DIR_PREFIXED
 CDEFS += -DGAME_DATA_DIR=\"$(DATA_DIR_PREFIXED)/\"
@@ -922,8 +926,8 @@ endif
 	install -m 644 lang/*.lng $(DATA_DIR_INSTALL)/lang
 	install -m 644 data/*.grf $(DATA_DIR_INSTALL)/data
 	install -m 644 data/opntitle.dat $(DATA_DIR_INSTALL)/data
-	install -m 644 media/openttd.64.png $(DATA_DIR_INSTALL)
-	install -m 644 media/openttd.32.xpm $(DATA_DIR_INSTALL)
+	install -m 644 media/openttd.64.png $(ICON_DIR_INSTALL)
+	install -m 644 media/openttd.32.xpm $(ICON_DIR_INSTALL)
 ifndef USE_HOMEDIR
 	cp scenario/* $(PERSONAL_DIR)/scenario/
 else
