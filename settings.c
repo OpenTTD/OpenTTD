@@ -491,7 +491,7 @@ static void make_manyofmany(char *buf, const char *many, uint32 x)
 
 static const void *string_to_val(const SettingDesc *desc, const char *str)
 {
-	uint32 val;
+	unsigned long val;
 	char *end;
 
 	switch(desc->flags & 0xF) {
@@ -500,14 +500,14 @@ static const void *string_to_val(const SettingDesc *desc, const char *str)
 		if (*end != 0) ShowInfoF("ini: trailing characters at end of setting '%s'", desc->name);
 		return (void*)val;
 	case SDT_ONEOFMANY: {
-		int r = lookup_oneofmany((const char*)desc->b, str, -1);
+		long r = lookup_oneofmany((const char*)desc->b, str, -1);
 		if (r != -1) return (void*)r;
 		ShowInfoF("ini: invalid value '%s' for '%s'", str, desc->name);
 		return 0;
 	}
 	case SDT_MANYOFMANY: {
-		uint32 r = lookup_manyofmany(desc->b, str);
-		if (r != (uint32)-1) return (void*)r;
+		unsigned long r = lookup_manyofmany(desc->b, str);
+		if (r != (unsigned long)-1) return (void*)r;
 		ShowInfoF("ini: invalid value '%s' for '%s'", str, desc->name);
 		return 0;
 	}
@@ -567,15 +567,15 @@ static void load_setting_desc(IniFile *ini, const SettingDesc *desc, const void 
 			switch(desc->flags >> 4 & 7) {
 			case SDT_INT8 >> 4:
 			case SDT_UINT8 >> 4:
-				*(byte*)ptr = (byte)(uint)p;
+				*(byte*)ptr = (byte)(unsigned long)p;
 				break;
 			case SDT_INT16 >> 4:
 			case SDT_UINT16 >> 4:
-				*(uint16*)ptr = (uint16)(uint)p;
+				*(uint16*)ptr = (uint16)(unsigned long)p;
 				break;
 			case SDT_INT32 >> 4:
 			case SDT_UINT32 >> 4:
-				*(uint32*)ptr = (uint32)p;
+				*(uint32*)ptr = (uint32)(unsigned long)p;
 				break;
 			default:
 				NOT_REACHED();
@@ -648,17 +648,17 @@ static void save_setting_desc(IniFile *ini, const SettingDesc *desc, const void 
 				switch(desc->flags >> 4 & 7) {
 				case SDT_INT8 >> 4:
 				case SDT_UINT8 >> 4:
-					if (*(byte*)ptr == (byte)(uint)p)
+					if (*(byte*)ptr == (byte)(unsigned long)p)
 						continue;
 					break;
 				case SDT_INT16 >> 4:
 				case SDT_UINT16 >> 4:
-					if (*(uint16*)ptr == (uint16)(uint)p)
+					if (*(uint16*)ptr == (uint16)(unsigned long)p)
 						continue;
 					break;
 				case SDT_INT32 >> 4:
 				case SDT_UINT32 >> 4:
-					if (*(uint32*)ptr == (uint32)p)
+					if (*(uint32*)ptr == (uint32)(unsigned long)p)
 						continue;
 					break;
 				default:
