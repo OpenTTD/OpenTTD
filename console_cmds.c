@@ -362,22 +362,29 @@ DEF_CONSOLE_CMD(ConClearBuffer)
 DEF_CONSOLE_CMD(ConBan)
 {
 	NetworkClientInfo *ci;
+	const char *banip = NULL;
 	uint32 index;
 
 	if (argc == 0) {
 		IConsoleHelp("Ban a player from a network game. Usage: 'ban <ip | client-id>'");
 		IConsoleHelp("For client-id's, see the command 'clients'");
+		IConsoleHelp("If the client is no longer online, you can still ban his/her IP");
 		return true;
 	}
 
 	if (argc != 2) return false;
 
-	if (strchr(argv[1], '.') == NULL) {
+	if (strchr(argv[1], '.') == NULL) { // banning with ID
 		index = atoi(argv[1]);
 		ci = NetworkFindClientInfoFromIndex(index);
-	} else {
+	} else { // banning IP
 		ci = NetworkFindClientInfoFromIP(argv[1]);
-		index = (ci == NULL) ? 0 : ci->client_index;
+		if (ci == NULL) {
+			banip = argv[1];
+			index = (uint32)-1;
+		} else {
+			index = ci->client_index;
+		}
 	}
 
 	if (index == NETWORK_SERVER_INDEX) {
@@ -385,24 +392,25 @@ DEF_CONSOLE_CMD(ConBan)
 		return true;
 	}
 
-	if (index == 0) {
+	if (index == 0 || (ci == NULL && index != (uint32)-1)) {
 		IConsoleError("Invalid client");
 		return true;
 	}
 
 	if (ci != NULL) {
-		uint i;
-		/* Add user to ban-list */
-		for (i = 0; i < lengthof(_network_ban_list); i++) {
-			if (_network_ban_list[i] == NULL || _network_ban_list[i][0] == '\0') {
-				_network_ban_list[i] = strdup(inet_ntoa(*(struct in_addr *)&ci->client_ip));
-				break;
-			}
-		}
-
+		banip = inet_ntoa(*(struct in_addr *)&ci->client_ip);
 		SEND_COMMAND(PACKET_SERVER_ERROR)(NetworkFindClientStateFromIndex(index), NETWORK_ERROR_KICKED);
+		IConsolePrint(_icolour_def, "Client banned");
 	} else
-		IConsoleError("Client not found");
+		IConsolePrint(_icolour_def, "Client not online, banned IP");
+
+	/* Add user to ban-list */
+	for (index = 0; index < lengthof(_network_ban_list); index++) {
+		if (_network_ban_list[index] == NULL) {
+			_network_ban_list[index] = strdup(banip);
+			break;
+		}
+	}
 
 	return true;
 }
@@ -423,11 +431,11 @@ DEF_CONSOLE_CMD(ConUnBan)
 	index--;
 
 	for (i = 0; i < lengthof(_network_ban_list); i++) {
-		if (_network_ban_list[i] == NULL || _network_ban_list[i][0] == '\0')
-			continue;
+		if (_network_ban_list[i] == NULL) continue;
 
 		if (strncmp(_network_ban_list[i], argv[1], strlen(_network_ban_list[i])) == 0 || index == i) {
-			_network_ban_list[i][0] = '\0';
+			free(_network_ban_list[i]);
+			_network_ban_list[i] = NULL;
 			IConsolePrint(_icolour_def, "IP unbanned.");
 			return true;
 		}
@@ -449,10 +457,8 @@ DEF_CONSOLE_CMD(ConBanList)
 	IConsolePrint(_icolour_def, "Banlist: ");
 
 	for (i = 0; i < lengthof(_network_ban_list); i++) {
-		if (_network_ban_list[i] == NULL || _network_ban_list[i][0] == '\0')
-			continue;
-
-		IConsolePrintF(_icolour_def, "  %d) %s", i + 1, _network_ban_list[i]);
+		if (_network_ban_list[i] != NULL)
+			IConsolePrintF(_icolour_def, "  %d) %s", i + 1, _network_ban_list[i]);
 	}
 
 	return true;

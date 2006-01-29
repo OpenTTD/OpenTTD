@@ -1068,7 +1068,7 @@ static void ClientList_Ban(byte client_no)
 	uint32 ip = NetworkFindClientInfo(client_no)->client_ip;
 
 	for (i = 0; i < lengthof(_network_ban_list); i++) {
-		if (_network_ban_list[i] == NULL || _network_ban_list[i][0] == '\0') {
+		if (_network_ban_list[i] == NULL) {
 			_network_ban_list[i] = strdup(inet_ntoa(*(struct in_addr *)&ip));
 			break;
 		}
