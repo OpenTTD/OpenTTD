@@ -131,6 +131,7 @@ static int CDECL NGameClientSorter(const void *a, const void *b)
 	int r = cmp2->info.clients_on - cmp1->info.clients_on;
 
 	if (r == 0) r = cmp1->info.clients_max - cmp2->info.clients_max;
+	if (r == 0) r = strcasecmp(cmp1->info.server_name, cmp2->info.server_name);
 
 	return (_internal_sort_order & 1) ? -r : r;
 }
@@ -145,6 +146,7 @@ static int CDECL NGameAllowedSorter(const void *a, const void *b)
 	int r = cmp2->info.compatible - cmp1->info.compatible;
 
 	if (r == 0) r = cmp1->info.use_password - cmp2->info.use_password;
+	if (r == 0) r = strcasecmp(cmp1->info.server_name, cmp2->info.server_name);
 
 	return (_internal_sort_order & 1) ? -r : r;
 }
@@ -540,20 +542,23 @@ static const WindowDesc _network_game_window_desc = {
 
 void ShowNetworkGameWindow(void)
 {
-	static bool _first_time_show_network_game_window = true;
+	static bool first = true;
 	Window *w;
 	querystr_d *querystr;
 	DeleteWindowById(WC_NETWORK_WINDOW, 0);
 
 	/* Only show once */
-	if (_first_time_show_network_game_window) {
+	if (first) {
 		char* const *srv;
 
-		_first_time_show_network_game_window = false;
+		first = false;
 		// add all servers from the config file to our list
 		for (srv = &_network_host_list[0]; srv != endof(_network_host_list) && *srv != NULL; srv++) {
 			NetworkAddServer(*srv);
 		}
+
+		_ng_sorting.criteria = 2; // sort default by collectivity (green-dots on top)
+		_ng_sorting.order = 0;    // sort ascending by default
 	}
 
 	w = AllocateWindowDesc(&_network_game_window_desc);
