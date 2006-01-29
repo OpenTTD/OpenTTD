@@ -500,8 +500,6 @@ static void TileLoop_Trees(TileIndex tile)
 				/* fall through */
 
 			case 2: { /* add a neighbouring tree */
-				byte m3 = _m[tile].m3;
-
 				tile += ToTileIndexDiff(_tileloop_trees_dir[Random() & 7]);
 
 				if (!IsTileType(tile, MP_CLEAR)) return;
@@ -515,7 +513,6 @@ static void TileLoop_Trees(TileIndex tile)
 					_m[tile].m2 = 0;
 				}
 
-				_m[tile].m3 = m3;
 				_m[tile].m4 = 0;
 				SetTileType(tile, MP_TREES);
 
