@@ -42,7 +42,7 @@ typedef enum RailTileSubtypes {
 } RailTileSubtype;
 
 typedef enum SignalTypes {
-	/* Stored in m4[0..1] for MP_RAILWAY */
+	/* Stored in m4[0..2] for MP_RAILWAY */
 	SIGTYPE_NORMAL  = 0,        // normal signal
 	SIGTYPE_ENTRY   = 1,        // presignal block entry
 	SIGTYPE_EXIT    = 2,        // presignal block exit

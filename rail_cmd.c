@@ -757,7 +757,7 @@ int32 CmdBuildSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			_m[tile].m5 |= RAIL_TYPE_SIGNALS; // change into signals
 			_m[tile].m2 |= 0xF0;              // all signals are on
 			_m[tile].m3 &= ~0xF0;          // no signals built by default
-			_m[tile].m4 = semaphore ? 0x08 : 0;
+			_m[tile].m4 = semaphore ? SIG_SEMAPHORE_MASK : 0;
 		}
 
 		if (p2 == 0) {
@@ -767,7 +767,7 @@ int32 CmdBuildSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			} else {
 				if (pre_signal) {
 					// cycle between normal -> pre -> exit -> combo -> pbs ->...
-					byte type = ((GetSignalType(tile, track) + 1) % 5);
+					byte type = (GetSignalType(tile, track) + 1) % SIGTYPE_END;
 					SB(_m[tile].m4, 0, 3, type);
 				} else {
 					// cycle between two-way -> one-way -> one-way -> ...
