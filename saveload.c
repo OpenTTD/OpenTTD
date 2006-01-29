@@ -1290,7 +1290,7 @@ static Thread* save_thread;
  */
 static void* SaveFileToDisk(void *arg)
 {
-	const SaveLoadFormat *fmt = GetSavegameFormat(_savegame_format);
+	const SaveLoadFormat *fmt;
 	uint32 hdr[2];
 
 	if (arg != NULL) OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_START);
@@ -1306,6 +1306,8 @@ static void* SaveFileToDisk(void *arg)
 		else SaveFileError();
 		return NULL;
 	}
+
+	fmt = GetSavegameFormat(_savegame_format);
 
 	/* We have written our stuff to memory, now write it to file! */
 	hdr[0] = fmt->tag;
