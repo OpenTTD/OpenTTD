@@ -984,7 +984,7 @@ endif
 
 .deps/%.d: %.cpp $(MAKE_CONFIG) table/strings.h endian_target.h
 	@echo '===> DEP $<'
-	$(Q)$(CXX) $(CXXFLAGS) $(CDEFS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:.deps/%.d=%.o):#' > $@
+	$(Q)$(CXX) $(CFLAGS) $(CDEFS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:.deps/%.d=%.o):#' > $@
 
 .deps/%.d: %.m $(MAKE_CONFIG) table/strings.h endian_target.h
 	@echo '===> DEP $<'
