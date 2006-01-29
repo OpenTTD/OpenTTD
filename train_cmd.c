@@ -3618,41 +3618,6 @@ void ConvertOldMultiheadToNew(void)
 					default: NOT_REACHED(); break;
 				}
 				END_ENUM_WAGONS(u)
-					u = v;
-				BEGIN_ENUM_WAGONS(u)
-					const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
-
-				if (u->u.rail.other_multiheaded_part != NULL) continue;
-
-				if (rvi->flags & RVI_MULTIHEAD) {
-					if (!IsTrainEngine(u)) {
-						/* we got a rear car without a front car. We will convert it to a front one */
-						SetTrainEngine(u);
-						u->spritenum--;
-					}
-
-					{
-						Vehicle *w;
-
-						for(w = u->next; w != NULL && (w->engine_type != u->engine_type || w->u.rail.other_multiheaded_part != NULL); w = GetNextVehicle(w));
-						if (w != NULL) {
-							/* we found a car to partner with this engine. Now we will make sure it face the right way */
-							if (IsTrainEngine(w)) {
-								ClearTrainEngine(w);
-								w->spritenum++;
-							}
-						}
-
-						if (w != NULL) {
-							w->u.rail.other_multiheaded_part = u;
-							u->u.rail.other_multiheaded_part = w;
-						} else {
-							/* we got a front car and no rear cars. We will fake this one for forget that it should have been multiheaded */
-							ClearMultiheaded(u);
-						}
-					}
-				}
-				END_ENUM_WAGONS(u)
 			}
 		}
 	}

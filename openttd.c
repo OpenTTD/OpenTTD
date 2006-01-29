@@ -1150,9 +1150,8 @@ bool AfterLoadGame(void)
 	 * subtype to the new format */
 	if (CheckSavegameVersionOldStyle(17, 1)) ConvertOldMultiheadToNew();
 
-	/* Connect front and rear engines of multiheaded trains
-		since this info were no longer saved in savegame version 20 */
-	if (!CheckSavegameVersion(20)) ConnectMultiheadedTrains();
+	/* Connect front and rear engines of multiheaded trains */
+	ConnectMultiheadedTrains();
 
 	// Update current year
 	SetDate(_date);
