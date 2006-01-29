@@ -1,5 +1,3 @@
-/* $Id: ai_new.h 2892 2005-08-26 20:56:48Z tron $ */
-
 #ifndef AI_TROLLY_H
 #define AI_TROLLY_H
 
