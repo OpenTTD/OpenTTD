@@ -998,7 +998,7 @@ STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Snow li
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max station spread: {ORANGE}{STRING1} {RED}Warning: High setting slows game
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Service helicopters at helipads automatically: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landscape toolbar to rail/road/water/airport toolbars: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}When scrolling with the mouse move the view in the opposite direction: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Reverse scroll direction: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trains per player: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max road vehicles per player: {ORANGE}{STRING1}
