@@ -305,10 +305,10 @@ static bool ini_save(const char *filename, IniFile *ini)
 	f = fopen(filename, "w");
 	if (f == NULL) return false;
 
-	for(group = ini->group; group; group = group->next) {
+	for (group = ini->group; group != NULL; group = group->next) {
 		if (group->comment) fputs(group->comment, f);
 		fprintf(f, "[%s]\n", group->name);
-		for(item = group->item; item; item = item->next) {
+		for (item = group->item; item != NULL; item = item->next) {
 			if (item->comment) fputs(item->comment, f);
 			if(group->type==IGT_LIST)
 				fprintf(f, "%s\n", item->value ? item->value : "");
@@ -1057,8 +1057,9 @@ static void SaveList(IniFile *ini, const char *grpname, char **list, int len)
 	int i;
 	bool first = true;
 
-	if (!group)
-		return;
+	if (group == NULL) return;
+	group->item = NULL;
+
 	for (i = 0; i != len; i++) {
 		if (list[i] == NULL || list[i][0] == '\0') continue;
 
