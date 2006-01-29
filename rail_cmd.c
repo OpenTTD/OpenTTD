@@ -18,9 +18,7 @@
 #include "station.h"
 #include "sprite.h"
 #include "depot.h"
-#include "pbs.h"
 #include "waypoint.h"
-#include "npf.h"
 #include "rail.h"
 #include "railtypes.h" // include table for railtypes
 
@@ -474,10 +472,6 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			/* We remove the trackbit here. */
 			_m[tile].m5 &= ~trackbit;
 
-			/* Unreserve track for PBS */
-			if (PBSTileReserved(tile) & trackbit)
-				PBSClearTrack(tile, track);
-
 			if (GetTrackBits(tile)  == 0) {
 				/* The tile has no tracks left, it is no longer a rail tile */
 				DoClearSquare(tile);
@@ -766,9 +760,9 @@ int32 CmdBuildSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				_m[tile].m3 |= SignalOnTrack(track);
 			} else {
 				if (pre_signal) {
-					// cycle between normal -> pre -> exit -> combo -> pbs ->...
+					// cycle between normal -> pre -> exit -> combo -> ...
 					byte type = (GetSignalType(tile, track) + 1) % SIGTYPE_END;
-					SB(_m[tile].m4, 0, 3, type);
+					SB(_m[tile].m4, 0, 2, type);
 				} else {
 					// cycle between two-way -> one-way -> one-way -> ...
 					/* TODO: Rewrite switch into something more general */
@@ -799,9 +793,9 @@ int32 CmdBuildSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			_m[tile].m3 |= p2 & SignalOnTrack(track);
 			// convert between signal<->semaphores when dragging
 			if (semaphore) {
-				SETBIT(_m[tile].m4, 3);
+				SETBIT(_m[tile].m4, 2);
 			} else {
-				CLRBIT(_m[tile].m4, 3);
+				CLRBIT(_m[tile].m4, 2);
 			}
 		}
 
@@ -938,7 +932,7 @@ int32 CmdRemoveSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (GB(_m[tile].m3, 4, 4) == 0) {
 			SB(_m[tile].m2, 4, 4, 0);
 			SB(_m[tile].m5, 6, 2, RAIL_TYPE_NORMAL >> 6); // XXX >> because the constant is meant for direct application, not use with SB
-			CLRBIT(_m[tile].m4, 3); // remove any possible semaphores
+			CLRBIT(_m[tile].m4, 2); // remove any possible semaphores
 		}
 
 		SetSignalsOnBothDir(tile, track);
@@ -1130,17 +1124,11 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 #include "table/track_land.h"
 
 // used for presignals
-static const SpriteID _signal_base_sprites[32] = {
+static const SpriteID _signal_base_sprites[16] = {
 	0x4FB,
 	0x1323,
 	0x1333,
 	0x1343,
-
-	// pbs signals
-	0x1393,
-	0x13A3,  // not used (yet?)
-	0x13B3,  // not used (yet?)
-	0x13C3,  // not used (yet?)
 
 	// semaphores
 	0x1353,
@@ -1148,36 +1136,17 @@ static const SpriteID _signal_base_sprites[32] = {
 	0x1373,
 	0x1383,
 
-	// pbs semaphores
-	0x13D3,
-	0x13E3,  // not used (yet?)
-	0x13F3,  // not used (yet?)
-	0x1403,  // not used (yet?)
-
-
 	// mirrored versions
 	0x4FB,
 	0x1323,
 	0x1333,
 	0x1343,
 
-	// pbs signals
-	0x1393,
-	0x13A3,  // not used (yet?)
-	0x13B3,  // not used (yet?)
-	0x13C3,  // not used (yet?)
-
 	// semaphores
 	0x1446,
 	0x1456,
 	0x1466,
 	0x1476,
-
-	// pbs semaphores
-	0x14C6,
-	0x14D6,  // not used (yet?)
-	0x14E6,  // not used (yet?)
-	0x14F6,  // not used (yet?)
 };
 
 // used to determine the side of the road for the signal
@@ -1195,7 +1164,7 @@ static void DrawSignalHelper(const TileInfo *ti, byte condition, uint32 image_an
 	uint v = _signal_position[(image_and_pos & 0xF) + (otherside ? 12 : 0)];
 	uint x = ti->x | (v&0xF);
 	uint y = ti->y | (v>>4);
-	uint sprite = _signal_base_sprites[(_m[ti->tile].m4 & 0xF) + (otherside ? 0x10 : 0)] + (image_and_pos>>4) + ((condition != 0) ? 1 : 0);
+	uint sprite = _signal_base_sprites[(_m[ti->tile].m4 & 0x7) + (otherside ? 8 : 0)] + (image_and_pos>>4) + ((condition != 0) ? 1 : 0);
 	AddSortableSpriteToDraw(sprite, x, y, 1, 1, 10, GetSlopeZ(x,y));
 }
 
@@ -1387,16 +1356,6 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track, bool earth, bool snow, 
 		if (track & TRACK_BIT_LEFT)  DrawGroundSprite(rti->base_sprites.single_w);
 		if (track & TRACK_BIT_RIGHT) DrawGroundSprite(rti->base_sprites.single_e);
 	}
-
-	if (_debug_pbs_level >= 1) {
-		byte pbs = PBSTileReserved(ti->tile) & track;
-		if (pbs & TRACK_BIT_DIAG1) DrawGroundSprite(rti->base_sprites.single_y | PALETTE_CRASH);
-		if (pbs & TRACK_BIT_DIAG2) DrawGroundSprite(rti->base_sprites.single_x | PALETTE_CRASH);
-		if (pbs & TRACK_BIT_UPPER) DrawGroundSprite(rti->base_sprites.single_n | PALETTE_CRASH);
-		if (pbs & TRACK_BIT_LOWER) DrawGroundSprite(rti->base_sprites.single_s | PALETTE_CRASH);
-		if (pbs & TRACK_BIT_LEFT)  DrawGroundSprite(rti->base_sprites.single_w | PALETTE_CRASH);
-		if (pbs & TRACK_BIT_RIGHT) DrawGroundSprite(rti->base_sprites.single_e | PALETTE_CRASH);
-	}
 }
 
 static void DrawTile_Track(TileInfo *ti)
@@ -1526,16 +1485,6 @@ static void DrawTile_Track(TileInfo *ti)
 
 		DrawGroundSprite(image);
 
-		if (_debug_pbs_level >= 1) {
-			byte pbs = PBSTileReserved(ti->tile);
-			if (pbs & TRACK_BIT_DIAG1) DrawGroundSprite(rti->base_sprites.single_y | PALETTE_CRASH);
-			if (pbs & TRACK_BIT_DIAG2) DrawGroundSprite(rti->base_sprites.single_x | PALETTE_CRASH);
-			if (pbs & TRACK_BIT_UPPER) DrawGroundSprite(rti->base_sprites.single_n | PALETTE_CRASH);
-			if (pbs & TRACK_BIT_LOWER) DrawGroundSprite(rti->base_sprites.single_s | PALETTE_CRASH);
-			if (pbs & TRACK_BIT_LEFT)  DrawGroundSprite(rti->base_sprites.single_w | PALETTE_CRASH);
-			if (pbs & TRACK_BIT_RIGHT) DrawGroundSprite(rti->base_sprites.single_e | PALETTE_CRASH);
-		}
-
 		for (; drss->image != 0; drss++) {
 			DrawSpecialBuilding(drss->image, type < 4 ? rti->total_offset : 0, ti,
 			                    drss->subcoord_x, drss->subcoord_y, 0,
@@ -1595,11 +1544,6 @@ typedef struct SetSignalsData {
 	bool stop;
 	bool has_presignal;
 
-	bool has_pbssignal;
-		// lowest 2 bits = amount of pbs signals in the block, clamped at 2
-		// bit 2 = there is a pbs entry signal in this block
-		// bit 3 = there is a pbs exit signal in this block
-
 	// presignal info
 	int presignal_exits;
 	int presignal_exits_free;
@@ -1607,10 +1551,6 @@ typedef struct SetSignalsData {
 	// these are used to keep track of the signals that change.
 	byte bit[NUM_SSD_ENTRY];
 	TileIndex tile[NUM_SSD_ENTRY];
-
-	int pbs_cur;
-	// these are used to keep track of all signals in the block
-	TileIndex pbs_tile[NUM_SSD_ENTRY];
 
 	// these are used to keep track of the stack that modifies presignals recursively
 	TileIndex next_tile[NUM_SSD_STACK];
@@ -1631,32 +1571,15 @@ static bool SetSignalsEnumProc(TileIndex tile, SetSignalsData *ssd, int track, u
 					ssd->cur++;
 				}
 
-				if (PBSIsPbsSignal(tile, ReverseTrackdir(track)))
-					SETBIT(ssd->has_pbssignal, 2);
-
 				// remember if this block has a presignal.
 				ssd->has_presignal |= (_m[tile].m4&1);
 			}
 
-			if (PBSIsPbsSignal(tile, ReverseTrackdir(track)) || PBSIsPbsSignal(tile, track)) {
-				byte num = ssd->has_pbssignal & 3;
-				num = clamp(num + 1, 0, 2);
-				ssd->has_pbssignal &= ~3;
-				ssd->has_pbssignal |= num;
-			}
-
-			ssd->pbs_tile[ssd->pbs_cur] = tile; // remember the tile index
-			ssd->pbs_cur++;
-
-			if (HasSignalOnTrackdir(tile, track)) {
-				if (_m[tile].m4&2) {
-					// this is an exit signal that points out from the segment
-					ssd->presignal_exits++;
-					if (GetSignalState(tile, track) != SIGNAL_STATE_RED)
-						ssd->presignal_exits_free++;
-				}
-				if (PBSIsPbsSignal(tile, track))
-					SETBIT(ssd->has_pbssignal, 3);
+			if (HasSignalOnTrackdir(tile, track) && (_m[tile].m4 & 2)) {
+				// this is an exit signal that points out from the segment
+				ssd->presignal_exits++;
+				if (GetSignalState(tile, track) != SIGNAL_STATE_RED)
+					ssd->presignal_exits_free++;
 			}
 
 			return true;
@@ -1791,14 +1714,6 @@ static void ChangeSignalStates(SetSignalsData *ssd)
 	//   there is at least one green exit signal OR
 	//   there are no exit signals in the segment
 
-	// convert the block to pbs, if needed
-	if (_patches.auto_pbs_placement && !(ssd->stop) && (ssd->has_pbssignal == 0xE) && !ssd->has_presignal && (ssd->presignal_exits == 0)) // 0xE means at least 2 pbs signals, and at least 1 entry and 1 exit, see comments ssd->has_pbssignal
-	for (i = 0; i != ssd->pbs_cur; i++) {
-		TileIndex tile = ssd->pbs_tile[i];
-		SB(_m[tile].m4, 0, 3, SIGTYPE_PBS);
-		MarkTileDirtyByTile(tile);
-	};
-
 	// then mark the signals in the segment accordingly
 	for (i = 0; i != ssd->cur; i++) {
 		TileIndex tile = ssd->tile[i];
@@ -1859,9 +1774,8 @@ bool UpdateSignalsOnSegment(TileIndex tile, byte direction)
 
 	for(;;) {
 		// go through one segment and update all signals pointing into that segment.
-		ssd.cur = ssd.pbs_cur = ssd.presignal_exits = ssd.presignal_exits_free = 0;
+		ssd.cur = ssd.presignal_exits = ssd.presignal_exits_free = 0;
 		ssd.has_presignal = false;
-		ssd.has_pbssignal = false;
 
 		FollowTrack(tile, 0xC000 | TRANSPORT_RAIL, direction, (TPFEnumProc*)SetSignalsEnumProc, SetSignalsAfterProc, &ssd);
 		ChangeSignalStates(&ssd);
@@ -2126,16 +2040,14 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 			break;
 
 		case RAIL_TYPE_SIGNALS: {
-			const StringID signal_type[7] = {
+			const StringID signal_type[] = {
 				STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS,
 				STR_RAILROAD_TRACK_WITH_PRESIGNALS,
 				STR_RAILROAD_TRACK_WITH_EXITSIGNALS,
-				STR_RAILROAD_TRACK_WITH_COMBOSIGNALS,
-				STR_RAILROAD_TRACK_WITH_PBSSIGNALS,
-				STR_NULL, STR_NULL
+				STR_RAILROAD_TRACK_WITH_COMBOSIGNALS
 			};
 
-			td->str = signal_type[GB(_m[tile].m4, 0, 3)];
+			td->str = signal_type[GB(_m[tile].m4, 0, 2)];
 			break;
 		}
 
@@ -2199,8 +2111,6 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 	} else if (_fractcoords_enter[dir] == fract_coord) {
 		if (_enter_directions[dir] == v->direction) {
 			/* enter the depot */
-			if (v->next == NULL)
-				PBSClearTrack(v->tile, FIND_FIRST_BIT(v->u.rail.track));
 			v->u.rail.track = 0x80,
 			v->vehstatus |= VS_HIDDEN; /* hide it */
 			v->direction ^= 4;

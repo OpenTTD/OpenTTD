@@ -297,9 +297,6 @@
 				RelativePath=".\pathfind.c">
 			</File>
 			<File
-				RelativePath=".\pbs.c">
-			</File>
-			<File
 				RelativePath="players.c">
 			</File>
 			<File
@@ -509,9 +506,6 @@
 			</File>
 			<File
 				RelativePath=".\pathfind.h">
-			</File>
-			<File
-				RelativePath=".\pbs.h">
 			</File>
 			<File
 				RelativePath=".\player.h">

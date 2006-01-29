@@ -14,7 +14,6 @@
 #include "town.h"
 #include "waypoint.h"
 #include "variables.h"
-#include "pbs.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 
@@ -209,7 +208,6 @@ int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		const StationSpec *spec = NULL;
-		bool reserved = PBSTileReserved(tile) != 0;
 		ModifyTile(tile, MP_MAP2 | MP_MAP5, wp->index, RAIL_TYPE_WAYPOINT | dir);
 
 		if (GB(p1, 0, 8) < GetNumCustomStations(STAT_CLASS_WAYP))
@@ -226,12 +224,6 @@ int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			wp->stat_id = 0;
 			wp->grfid = 0;
 			wp->localidx = 0;
-		}
-
-		if (reserved) {
-			PBSReserveTrack(tile, dir);
-		} else {
-			PBSClearTrack(tile, dir);
 		}
 
 		wp->deleted = 0;
@@ -302,15 +294,9 @@ int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 		RedrawWaypointSign(wp);
 
 		if (justremove) {
-			bool reserved = PBSTileReserved(tile) != 0;
 			ModifyTile(tile, MP_MAP2_CLEAR | MP_MAP5, 1<<direction);
 			CLRBIT(_m[tile].m3, 4);
 			_m[tile].m4 = 0;
-			if (reserved) {
-				PBSReserveTrack(tile, direction);
-			} else {
-				PBSClearTrack(tile, direction);
-			}
 		} else {
 			DoClearSquare(tile);
 			SetSignalsOnBothDir(tile, direction);

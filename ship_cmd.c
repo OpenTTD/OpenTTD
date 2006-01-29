@@ -543,7 +543,7 @@ static int ChooseShipTrack(Vehicle *v, TileIndex tile, int enterdir, uint tracks
 
 		NPFFillWithOrderData(&fstd, v);
 
-		ftd = NPFRouteToStationOrTile(src_tile, trackdir, &fstd, TRANSPORT_WATER, v->owner, INVALID_RAILTYPE, PBS_MODE_NONE);
+		ftd = NPFRouteToStationOrTile(src_tile, trackdir, &fstd, TRANSPORT_WATER, v->owner, INVALID_RAILTYPE);
 
 		if (ftd.best_trackdir != 0xff) {
 			/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains

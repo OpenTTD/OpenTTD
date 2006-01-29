@@ -42,14 +42,13 @@ typedef enum RailTileSubtypes {
 } RailTileSubtype;
 
 typedef enum SignalTypes {
-	/* Stored in m4[0..2] for MP_RAILWAY */
+	/* Stored in m4[0..1] for MP_RAILWAY */
 	SIGTYPE_NORMAL  = 0,        // normal signal
 	SIGTYPE_ENTRY   = 1,        // presignal block entry
 	SIGTYPE_EXIT    = 2,        // presignal block exit
 	SIGTYPE_COMBO   = 3,        // presignal inter-block
-	SIGTYPE_PBS     = 4,        // pbs signal
 	SIGTYPE_END,
-	SIGTYPE_MASK    = 7,
+	SIGTYPE_MASK    = 3,
 } SignalType;
 
 typedef enum RailTypes {
@@ -62,7 +61,7 @@ typedef enum RailTypes {
 } RailType;
 
 enum {
-	SIG_SEMAPHORE_MASK = 1 << 3,
+	SIG_SEMAPHORE_MASK = 1 << 2,
 };
 
 /** These are used to specify a single track. Can be translated to a trackbit

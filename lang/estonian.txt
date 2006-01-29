@@ -1028,7 +1028,6 @@ STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Mäng lõ
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Luba sujuv majandus (väiksemad muutused)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Luba teiste ettevõtete aktsiate ostmine
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Venitades paigutatud signaaltulede tihedus: {ORANGE}{STRING} ühik(ut)
-STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}Luba automaatset pbs signaalide panemist: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Tööriistariba asukoht: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Vasakul
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Keskel
@@ -1434,7 +1433,6 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Raudtee tavalis
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Raudtee eel-signaalidega
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Raudtee väljumis-signaalidega
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Raudtee kombo-signaalidega
-STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Raudtee koos pbs signaalidega
 
 
 

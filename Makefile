@@ -660,7 +660,6 @@ SRCS += openttd.c
 SRCS += order_cmd.c
 SRCS += order_gui.c
 SRCS += pathfind.c
-SRCS += pbs.c
 SRCS += player_gui.c
 SRCS += players.c
 SRCS += pool.c

@@ -25,7 +25,6 @@
 #include "airport.h"
 #include "sprite.h"
 #include "depot.h"
-#include "pbs.h"
 #include "train.h"
 
 enum {
@@ -2071,16 +2070,6 @@ static void DrawTile_Station(TileInfo *ti)
 	// station_land array has been increased from 82 elements to 114
 	// but this is something else. If AI builds station with 114 it looks all weird
 	DrawGroundSprite(image);
-
-	if (_debug_pbs_level >= 1) {
-		byte pbs = PBSTileReserved(ti->tile);
-		if (pbs & TRACK_BIT_DIAG1) DrawGroundSprite(rti->base_sprites.single_y | PALETTE_CRASH);
-		if (pbs & TRACK_BIT_DIAG2) DrawGroundSprite(rti->base_sprites.single_x | PALETTE_CRASH);
-		if (pbs & TRACK_BIT_UPPER) DrawGroundSprite(rti->base_sprites.single_n | PALETTE_CRASH);
-		if (pbs & TRACK_BIT_LOWER) DrawGroundSprite(rti->base_sprites.single_s | PALETTE_CRASH);
-		if (pbs & TRACK_BIT_LEFT)  DrawGroundSprite(rti->base_sprites.single_w | PALETTE_CRASH);
-		if (pbs & TRACK_BIT_RIGHT) DrawGroundSprite(rti->base_sprites.single_e | PALETTE_CRASH);
-	}
 
 	foreach_draw_tile_seq(dtss, t->seq) {
 		image = dtss->image + relocation;

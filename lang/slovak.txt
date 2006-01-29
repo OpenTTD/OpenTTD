@@ -1030,7 +1030,6 @@ STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Ukoncit
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Mierne zmeny ekonomiky (viac mensich zmien)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Povolit nakup akcii od ostatnych spolocnosti
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Pri tahani umiestnit semafory kazdych(e): {ORANGE}{STRING} dlazdic(e)
-STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}Automaticke umiestnenie semaforov pbs: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Pozicia hlavneho menu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Na lavo
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :V strede
@@ -1438,7 +1437,6 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Zeleznicne kola
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Zeleznicne kolaje z pre-signami
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Zeleznicne kolaje z exit-signalmi
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Zeleznicne kolaje z combo-signalmi
-STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Kolajnice so semaformi pbs
 
 
 

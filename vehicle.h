@@ -74,10 +74,6 @@ typedef struct VehicleRail {
 
 	byte flags;
 
-	byte pbs_status;
-	TileIndex pbs_end_tile;
-	Trackdir pbs_end_trackdir;
-
 	// Link between the two ends of a multiheaded engine
 	Vehicle *other_multiheaded_part;
 } VehicleRail;

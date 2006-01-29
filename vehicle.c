@@ -2122,11 +2122,8 @@ static const SaveLoad _train_desc[] = {
 	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,flags), SLE_UINT8, 2, 255),
 	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,days_since_order_progr), SLE_UINT16, 2, 255),
 
-	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,pbs_status), SLE_UINT8, 2, 255),
-	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,pbs_end_tile), SLE_UINT32, 2, 255),
-	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,pbs_end_trackdir), SLE_UINT8, 2, 255),
-
-	SLE_CONDARR(NullStruct, null, SLE_FILE_U8 | SLE_VAR_NULL, 2, 2, 255),
+	// reserve extra space in savegame here. (currently 8 bytes)
+	SLE_CONDARR(NullStruct, null, SLE_FILE_U8 | SLE_VAR_NULL, 8, 2, 255),
 
 	SLE_CONDREFX(offsetof(Vehicle,u)+offsetof(VehicleRail,other_multiheaded_part), REF_VEHICLE, 2, 19),	// added with 17.1, but was blank since 2. Removed in 20
 	// reserve extra space in savegame here. (currently 3 bytes)

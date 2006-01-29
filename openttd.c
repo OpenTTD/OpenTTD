@@ -1249,20 +1249,6 @@ bool AfterLoadGame(void)
 		FOR_ALL_TOWNS(t) UpdateTownMaxPass(t);
 	}
 
-	/* From version 15.0, we moved a semaphore bit from bit 2 to bit 3 in m4, making
-	 *  room for PBS. While doing that, clean some blocks that should be empty, for PBS. */
-	if (CheckSavegameVersion(15)) {
-		BEGIN_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0) {
-			if (IsTileType(tile, MP_RAILWAY) && HasSignals(tile) && HASBIT(_m[tile].m4, 2)) {
-				CLRBIT(_m[tile].m4, 2);
-				SETBIT(_m[tile].m4, 3);
-			}
-			// Clear possible junk data in PBS bits.
-			if (IsTileType(tile, MP_RAILWAY) && !HASBIT(_m[tile].m5, 7))
-				SB(_m[tile].m4, 4, 4, 0);
-		} END_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0);
-	}
-
 	/* From version 16.0, we included autorenew on engines, which are now saved, but
 	 *  of course, we do need to initialize them for older savegames. */
 	if (CheckSavegameVersion(16)) {
@@ -1326,6 +1312,37 @@ bool AfterLoadGame(void)
 		/* As of version 17, we recalculate the custom graphic ID of waypoints
 		 * from the GRF ID / station index. */
 		UpdateAllWaypointCustomGraphics();
+	}
+
+	/* From version 15, we moved a semaphore bit from bit 2 to bit 3 in m4, making
+	 *  room for PBS. Now in version 21 move it back :P. */
+	if (CheckSavegameVersion(21) && !CheckSavegameVersion(15)) {
+		BEGIN_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0) {
+			if (IsTileType(tile, MP_RAILWAY)) {
+				// Clear PBS signals, move back sempahore bit to 2
+				if (HasSignals(tile)) {
+					// convert PBS signals to combo-signals
+					if (HASBIT(_m[tile].m4, 2)) SB(_m[tile].m4, 0, 2, 3);
+
+					SB(_m[tile].m4, 2, 2, HASBIT(_m[tile].m4, 3));
+					CLRBIT(_m[tile].m4, 3);
+				}
+
+				// Clear PBS reservation on track
+				if (!IsTileDepotType(tile, TRANSPORT_RAIL))
+					SB(_m[tile].m4, 4, 4, 0);
+				else
+					CLRBIT(_m[tile].m3, 6);
+			}
+
+			// Clear PBS reservation on crossing
+			if (IsTileType(tile, MP_STREET) && IsLevelCrossing(tile))
+				CLRBIT(_m[tile].m5, 0);
+
+			// Clear PBS reservation on station
+			if (IsTileType(tile, MP_STATION) && IsLevelCrossing(tile))
+				CLRBIT(_m[tile].m3, 6);
+		} END_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0);
 	}
 
 	FOR_ALL_PLAYERS(p) p->avail_railtypes = GetPlayerRailtypes(p->index);

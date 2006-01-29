@@ -335,10 +335,6 @@ SOURCE=.\pathfind.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\pbs.c
-# End Source File
-# Begin Source File
-
 SOURCE=.\players.c
 # End Source File
 # Begin Source File
@@ -647,10 +643,6 @@ SOURCE=.\openttd.h
 # Begin Source File
 
 SOURCE=.\pathfind.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\pbs.h
 # End Source File
 # Begin Source File
 

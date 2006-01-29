@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "aystar.h"
 #include "vehicle.h"
-#include "pbs.h"
 #include "tile.h"
 #include "variables.h"
 
@@ -39,7 +38,6 @@ enum { /* Indices into AyStar.userdata[] */
 	NPF_TYPE = 0, /* Contains a TransportTypes value */
 	NPF_OWNER, /* Contains an Owner value */
 	NPF_RAILTYPE, /* Contains the RailType value of the engine when NPF_TYPE == TRANSPORT_RAIL. Unused otherwise. */
-	NPF_PBS_MODE, /* Contains the pbs mode, see pbs.h */
 };
 
 enum { /* Indices into AyStarNode.userdata[] */
@@ -51,11 +49,6 @@ typedef enum { /* Flags for AyStarNode.userdata[NPF_NODE_FLAGS]. Use NPFGetBit()
 	NPF_FLAG_SEEN_SIGNAL, /* Used to mark that a signal was seen on the way, for rail only */
 	NPF_FLAG_REVERSE, /* Used to mark that this node was reached from the second start node, if applicable */
 	NPF_FLAG_LAST_SIGNAL_RED, /* Used to mark that the last signal on this path was red */
-	NPF_FLAG_PBS_EXIT, /* Used to mark tracks inside a pbs block, for rail only, for the end node, this is set when the path found goes through a pbs block */
-	NPF_FLAG_PBS_BLOCKED, /* Used to mark that this path crosses another pbs path */
-	NPF_FLAG_PBS_RED, /* Used to mark that this path goes through a red exit-pbs signal */
-	NPF_FLAG_PBS_CHOICE, /* Used to mark that the train has had a choice on this path */
-	NPF_FLAG_PBS_TARGET_SEEN, /* Used to mark that a target tile has been passed on this path */
 } NPFNodeFlag;
 
 typedef struct NPFFoundTargetData { /* Meant to be stored in AyStar.userpath */
@@ -63,7 +56,6 @@ typedef struct NPFFoundTargetData { /* Meant to be stored in AyStar.userpath */
 	uint best_path_dist; /* The shortest path. Is (uint)-1 if no path is found */
 	Trackdir best_trackdir; /* The trackdir that leads to the shortest path/closest birds dist */
 	AyStarNode node; /* The node within the target the search led us to */
-	PathNode path;
 } NPFFoundTargetData;
 
 /* These functions below are _not_ re-entrant, in favor of speed! */
@@ -71,12 +63,11 @@ typedef struct NPFFoundTargetData { /* Meant to be stored in AyStar.userpath */
 /* Will search from the given tile and direction, for a route to the given
  * station for the given transport type. See the declaration of
  * NPFFoundTargetData above for the meaning of the result. */
-NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, NPFFindStationOrTileData* target, TransportType type, Owner owner, RailType railtype, byte pbs_mode);
-
+NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, NPFFindStationOrTileData* target, TransportType type, Owner owner, RailType railtype);
 /* Will search as above, but with two start nodes, the second being the
  * reverse. Look at the NPF_FLAG_REVERSE flag in the result node to see which
  * direction was taken (NPFGetBit(result.node, NPF_FLAG_REVERSE)) */
-NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, Trackdir trackdir1, TileIndex tile2, Trackdir trackdir2, NPFFindStationOrTileData* target, TransportType type, Owner owner, RailType railtype, byte pbs_mode);
+NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, Trackdir trackdir1, TileIndex tile2, Trackdir trackdir2, NPFFindStationOrTileData* target, TransportType type, Owner owner, RailType railtype);
 
 /* Will search a route to the closest depot. */
 

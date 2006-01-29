@@ -1027,7 +1027,6 @@ STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Spillet
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Jevn økonomi (Flere, mindre endringer)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Tillat kjøping av aksjer i andre selskaper
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ved opptrekking plasser signal hver: {ORANGE}{STRING} rute(r)
-STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}Tillat automatisk plassering av pbs signal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posisjon av hovedverktøylinje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Venstre
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Sentrert
@@ -1434,7 +1433,6 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Jernbanespor me
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Jernbanespor med for-signaler
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Jernbanespor med forlat-signaler
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Jernbanespor med kombinerte signaler
-STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Jernbane med PBS-signaler
 
 
 

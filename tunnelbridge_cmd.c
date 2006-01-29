@@ -18,8 +18,6 @@
 #include "player.h"
 #include "town.h"
 #include "sound.h"
-#include "pbs.h"
-#include "debug.h"
 #include "variables.h"
 #include "bridge.h"
 #include "train.h"
@@ -204,7 +202,6 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	uint i;
 	int32 cost, terraformcost, ret;
 	bool allow_on_slopes;
-	bool reserved = false;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -352,7 +349,6 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				if (ti.map5 != 1) goto not_valid_below;
 			}
 			m5 = 0xE0;
-			reserved = PBSTileReserved(ti.tile) != 0;
 		} else if (ti.type == MP_STREET) {
 			if (direction == 0) {
 				if (ti.map5 != 5) goto not_valid_below;
@@ -401,16 +397,6 @@ not_valid_below:;
 
 			_m[ti.tile].m2 = (bridge_type << 4) | m5;
 			SB(_m[ti.tile].m3, 4, 4, railtype);
-
-			if (ti.type == MP_RAILWAY) {
-				// Set or clear PBS reservation status. direction here is of
-				// the bridge, not the track below.
-				if (reserved) {
-					PBSReserveTrack(ti.tile, direction ? TRACK_DIAG1 : TRACK_DIAG2);
-				} else {
-					PBSClearTrack(ti.tile, direction ? TRACK_DIAG1 : TRACK_DIAG2);
-				}
-			}
 
 			MarkTileDirtyByTile(ti.tile);
 		}
@@ -807,7 +793,6 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 		byte m5;
 		uint c = tile;
 		uint16 new_data;
-		byte pbs;
 
 		//checks if the owner is town then decrease town rating by RATING_TUNNEL_BRIDGE_DOWN_STEP until
 		// you have a "Poor" (0) town rating
@@ -816,7 +801,6 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 
 		do {
 			m5 = _m[c].m5;
-			pbs = PBSTileReserved(c);
 
 			if (m5 & 0x40) {
 				if (m5 & 0x20) {
@@ -831,8 +815,6 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 				_m[c].m5 = (byte)new_data;
 				_m[c].m2 = 0;
 				_m[c].m4 &= 0x0F;
-				if (direction ? HASBIT(pbs,0) : HASBIT(pbs,1))
-					PBSReserveTrack(c, direction ? 0 : 1);
 
 				MarkTileDirtyByTile(c);
 
@@ -1212,16 +1194,6 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			}
 		}
 	}
-
-	if (_debug_pbs_level >= 1) {
-		byte pbs = PBSTileReserved(ti->tile);
-		if (pbs & TRACK_BIT_DIAG1) DrawGroundSprite(0x3ED | PALETTE_CRASH);
-		if (pbs & TRACK_BIT_DIAG2) DrawGroundSprite(0x3EE | PALETTE_CRASH);
-		if (pbs & TRACK_BIT_UPPER) DrawGroundSprite(0x3EF | PALETTE_CRASH);
-		if (pbs & TRACK_BIT_LOWER) DrawGroundSprite(0x3F0 | PALETTE_CRASH);
-		if (pbs & TRACK_BIT_LEFT)  DrawGroundSprite(0x3F2 | PALETTE_CRASH);
-		if (pbs & TRACK_BIT_RIGHT) DrawGroundSprite(0x3F1 | PALETTE_CRASH);
-	}
 }
 
 static uint GetSlopeZ_TunnelBridge(const TileInfo* ti)
@@ -1504,8 +1476,6 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 					return 0;
 				}
 				if (fc == _tunnel_fractcoord_2[dir]) {
-					if (v->next == NULL)
-						PBSClearTrack(v->tile, FIND_FIRST_BIT(v->u.rail.track));
 					v->tile = tile;
 					v->u.rail.track = 0x40;
 					v->vehstatus |= VS_HIDDEN;

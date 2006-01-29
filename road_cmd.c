@@ -15,8 +15,6 @@
 #include "gfx.h"
 #include "sound.h"
 #include "depot.h"
-#include "pbs.h"
-#include "debug.h"
 
 /* When true, GetTrackStatus for roads will treat roads under reconstruction
  * as normal roads instead of impassable. This is used when detecting whether
@@ -251,7 +249,6 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			cost = _price.remove_road * 2;
 			if (flags & DC_EXEC) {
-				byte pbs_track = PBSTileReserved(tile);
 				ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
 
 				ModifyTile(tile,
@@ -260,8 +257,6 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					_m[tile].m4 & 0xF, /* map3_lo */
 					c											/* map5 */
 				);
-				if (pbs_track != 0)
-					PBSReserveTrack(tile, FIND_FIRST_BIT(pbs_track));
 			}
 			return cost;
 		} else
@@ -404,7 +399,6 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			goto do_clear;
 
 		if (flags & DC_EXEC) {
-			byte pbs_track = PBSTileReserved(tile);
 			ModifyTile(tile,
 				MP_SETTYPE(MP_STREET) |
 				MP_MAP2 | MP_MAP3LO | MP_MAP3HI | MP_MAP5,
@@ -413,8 +407,6 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				_m[tile].m3 & 0xF, /* map3_hi */
 				m5 /* map5 */
 			);
-			if (pbs_track != 0)
-				PBSReserveTrack(tile, FIND_FIRST_BIT(pbs_track));
 		}
 		return _price.build_road * 2;
 	} else if (ti.type == MP_TUNNELBRIDGE) {
@@ -854,17 +846,6 @@ static void DrawTile_Road(TileInfo *ti)
 		}
 
 		DrawGroundSprite(image);
-
-		if (_debug_pbs_level >= 1) {
-			byte pbs = PBSTileReserved(ti->tile);
-			if (pbs & TRACK_BIT_DIAG1) DrawGroundSprite(0x3ED | PALETTE_CRASH);
-			if (pbs & TRACK_BIT_DIAG2) DrawGroundSprite(0x3EE | PALETTE_CRASH);
-			if (pbs & TRACK_BIT_UPPER) DrawGroundSprite(0x3EF | PALETTE_CRASH);
-			if (pbs & TRACK_BIT_LOWER) DrawGroundSprite(0x3F0 | PALETTE_CRASH);
-			if (pbs & TRACK_BIT_LEFT)  DrawGroundSprite(0x3F2 | PALETTE_CRASH);
-			if (pbs & TRACK_BIT_RIGHT) DrawGroundSprite(0x3F1 | PALETTE_CRASH);
-		}
-
 	} else {
 		uint32 ormod;
 		PlayerID player;

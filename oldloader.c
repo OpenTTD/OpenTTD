@@ -1574,7 +1574,7 @@ static bool LoadOldMain(LoadgameState *ls)
 	for (i = 0; i < OLD_MAP_SIZE; i ++) {
 		if (IsTileType(i, MP_RAILWAY)) {
 			/* We save presignals different from TTDPatch, convert them */
-			if ((_m[i].m5 & 0xC0) == 0x40) {
+			if (GB(_m[i].m5, 6, 2) == 1) {
 				/* This byte is always zero in TTD for this type of tile */
 				if (_m[i].m4) /* Convert the presignals to our own format */
 					_m[i].m4 = (_m[i].m4 >> 1) & 7;

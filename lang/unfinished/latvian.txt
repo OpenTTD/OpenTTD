@@ -1004,7 +1004,6 @@ STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Aizlied
 
 STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Nobeidz spe'li: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Atïauj akciju pirkðanu no citâm kompânijâm
-STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}Atl'aut automatisko novietojumu PBS signa'lus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Pa kreisi
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centrâ
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Pa labi
@@ -1121,7 +1120,6 @@ STR_080A_ROCKS                                                  :Akmeòi
 
 ##id 0x1000
 STR_1021_RAILROAD_TRACK                                         :Dzelzceïa ceïs
-STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Dzelzcel's' ar pbs signa'liem
 
 
 

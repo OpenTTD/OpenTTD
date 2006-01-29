@@ -1018,7 +1018,6 @@ STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Termina
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Habilita-la economía "suave"(máis cambios, pero máis pequenos)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permiti-la compra de accións por outras compañías
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Cando se arrastre, colocar siniais cada: {ORANGE}{STRING} cadrado(s)
-STR_CONFIG_AUTO_PBS_PLACEMENT                                   :{LTBLUE}Permiti-lo emprazamento automático de sinais pbs: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posición da barra de ferramentas principal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Esquerda
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centro
@@ -1423,7 +1422,6 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Vía de ferrocar
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Vía de ferrocarril con pre-sinais
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :vía de ferrocarril con sinais de saída
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Via de ferrocarril con sinais combinados
-STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Vía de ferrocarril con sinais pbs
 
 
 
