@@ -191,8 +191,6 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	Order order;
 	int st_index;
 
-	order.station = INVALID_STATION;
-
 	// check depot first
 	if (_patches.gotodepot) {
 		switch (GetTileType(tile)) {
@@ -278,6 +276,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	// not found
 	order.type = OT_NOTHING;
 	order.flags = 0;
+	order.station = INVALID_STATION;
 	return order;
 }
 
