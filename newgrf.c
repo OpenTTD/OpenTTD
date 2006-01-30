@@ -436,6 +436,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x20:	/* Air drag */
 		case 0x25:	/* User-defined bit mask to set when checking veh. var. 42 */
 		case 0x26:	/* Retire vehicle early */
+		case 0x27:	/* Miscellaneous flags */
 			{
 			/* TODO */
 			FOR_EACH_OBJECT {
