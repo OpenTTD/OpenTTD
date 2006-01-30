@@ -2710,13 +2710,9 @@ static void LoadNewGRFFile(const char* filename, uint file_index, uint stage)
 
 void LoadNewGRF(uint load_index, uint file_index)
 {
-	static bool initialized = false; // XXX yikes
 	uint stage;
 
-	if (!initialized) {
-		InitializeGRFSpecial();
-		initialized = true;
-	}
+	InitializeGRFSpecial();
 
 	ResetNewGRFData();
 
