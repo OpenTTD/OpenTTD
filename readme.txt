@@ -152,8 +152,10 @@ Unix:
   Note that you need SDL-devel 1.2.5 (or higher) to compile OpenTTD.
   (see also docs/Readme_Mandrake_Linux.txt)
 
-MacOS:
+MacOSX:
   Use "make".
+	This will give you a binary for your CPU type (PPC/Intel)
+	To make an universal binary type "make FAT_BINARY:=1"
 
 BeOS:
   Use "make".
