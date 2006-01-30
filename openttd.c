@@ -1339,7 +1339,7 @@ bool AfterLoadGame(void)
 				CLRBIT(_m[tile].m5, 0);
 
 			// Clear PBS reservation on station
-			if (IsTileType(tile, MP_STATION) && IsLevelCrossing(tile))
+			if (IsTileType(tile, MP_STATION))
 				CLRBIT(_m[tile].m3, 6);
 		} END_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0);
 	}
