@@ -566,7 +566,7 @@ static int32 CmdRailTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 p2
 	RailType railtype = (RailType)GB(p2, 0, 4);
 
 	if (!ValParamRailtype(railtype) || !ValParamTrackOrientation(track)) return CMD_ERROR;
-	if (p1 > MapSize()) return CMD_ERROR;
+	if (p1 >= MapSize()) return CMD_ERROR;
 	trackdir = TrackToTrackdir(track);
 
 	/* unpack end point */
@@ -829,7 +829,7 @@ static int32 CmdSignalTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 
 	byte semaphores = (HASBIT(p2, 3)) ? 8 : 0;
 	byte signal_density = (p2 >> 24);
 
-	if (p1 > MapSize()) return CMD_ERROR;
+	if (p1 >= MapSize()) return CMD_ERROR;
 	if (signal_density == 0 || signal_density > 20) return CMD_ERROR;
 
 	if (!IsTileType(tile, MP_RAILWAY)) return CMD_ERROR;
@@ -988,7 +988,7 @@ int32 CmdConvertRail(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	if (!ValParamRailtype(p2)) return CMD_ERROR;
-	if (p1 > MapSize()) return CMD_ERROR;
+	if (p1 >= MapSize()) return CMD_ERROR;
 
 	// make sure sx,sy are smaller than ex,ey
 	sx = TileX(p1) * TILE_SIZE;

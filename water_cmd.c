@@ -215,7 +215,7 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int size_x, size_y;
 	int sx, sy;
 
-	if (p1 > MapSize()) return CMD_ERROR;
+	if (p1 >= MapSize()) return CMD_ERROR;
 
 	sx = TileX(p1);
 	sy = TileY(p1);

@@ -307,7 +307,7 @@ int32 CmdClearArea(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	int x,y;
 	bool success = false;
 
-	if (p1 > MapSize()) return CMD_ERROR;
+	if (p1 >= MapSize()) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 

@@ -518,7 +518,7 @@ int32 CmdBuildLongRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	if (p1 > MapSize()) return CMD_ERROR;
+	if (p1 >= MapSize()) return CMD_ERROR;
 
 	start_tile = p1;
 	end_tile = TileVirtXY(x, y);
@@ -573,7 +573,7 @@ int32 CmdRemoveLongRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	if (p1 > MapSize()) return CMD_ERROR;
+	if (p1 >= MapSize()) return CMD_ERROR;
 
 	start_tile = p1;
 	end_tile = TileVirtXY(x, y);

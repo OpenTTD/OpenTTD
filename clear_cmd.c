@@ -233,7 +233,7 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	tile = TileVirtXY(x, y);
 
 	/* Make an extra check for map-bounds cause we add tiles to the originating tile */
-	if (tile + TileDiffXY(1, 1) > MapSize()) return CMD_ERROR;
+	if (tile + TileDiffXY(1, 1) >= MapSize()) return CMD_ERROR;
 
 	if (p1 & 1) {
 		if (!TerraformTileHeight(&ts, tile + TileDiffXY(1, 0),
@@ -332,7 +332,7 @@ int32 CmdLevelLand(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	TileIndex tile;
 	int32 ret, cost, money;
 
-	if (p1 > MapSize()) return CMD_ERROR;
+	if (p1 >= MapSize()) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 

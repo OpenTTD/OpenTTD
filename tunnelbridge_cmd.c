@@ -209,7 +209,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	bridge_type = GB(p2, 0, 8);
 	railtype    = GB(p2, 8, 8);
 
-	if (p1 > MapSize()) return CMD_ERROR;
+	if (p1 >= MapSize()) return CMD_ERROR;
 
 	// type of bridge
 	if (HASBIT(railtype, 7)) { // bit 15 of original p2 param
