@@ -1237,17 +1237,17 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (advertise)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_CLIENTS                                           :0 players
-STR_NETWORK_1_CLIENTS                                           :1 player
-STR_NETWORK_2_CLIENTS                                           :2 players
-STR_NETWORK_3_CLIENTS                                           :3 players
-STR_NETWORK_4_CLIENTS                                           :4 players
-STR_NETWORK_5_CLIENTS                                           :5 players
-STR_NETWORK_6_CLIENTS                                           :6 players
-STR_NETWORK_7_CLIENTS                                           :7 players
-STR_NETWORK_8_CLIENTS                                           :8 players
-STR_NETWORK_9_CLIENTS                                           :9 players
-STR_NETWORK_10_CLIENTS                                          :10 players
+STR_NETWORK_0_PLAYERS                                           :0 players
+STR_NETWORK_1_PLAYERS                                           :1 player
+STR_NETWORK_2_PLAYERS                                           :2 players
+STR_NETWORK_3_PLAYERS                                           :3 players
+STR_NETWORK_4_PLAYERS                                           :4 players
+STR_NETWORK_5_PLAYERS                                           :5 players
+STR_NETWORK_6_PLAYERS                                           :6 players
+STR_NETWORK_7_PLAYERS                                           :7 players
+STR_NETWORK_8_PLAYERS                                           :8 players
+STR_NETWORK_9_PLAYERS                                           :9 players
+STR_NETWORK_10_PLAYERS                                          :10 players
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max companies:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limit the server to a certain amount of companies
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}

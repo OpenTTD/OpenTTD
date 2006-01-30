@@ -802,7 +802,7 @@ STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Átváltás Konzolra
 STR_02D7_SCREENSHOT_CTRL_S                                      :Képmentés (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Óriás képmentés (Ctrl-G)
-STR_02D9_ABOUT_OPENTTD                                          :Az  'OpenTTD'-r?l
+STR_02D9_ABOUT_OPENTTD                                          :Az  'OpenTTD'-rõl
 ############ range ends	here
 
 STR_02DB_OFF                                                    :{BLACK}Ki
@@ -1062,6 +1062,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Láthata
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Hóhatár magassága: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Állomások legnagyobb kiterjedése: {ORANGE}{STRING} {RED}Figyelem: magas érték lelassítja a játékot
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopterek automatikus javítása a helikopter-leszállókon: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Tájrendezõ eszköztár megnyitása a közúti/vasúti/vízi/légi eszköztárakkal: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Egeres mozgáskor a táj a másik irányba mozdul el: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vonat játékosonként: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximum közúti jármû játékosonként: {ORANGE}{STRING}
@@ -1074,6 +1076,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Repülõg
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Hajók tiltása a gépi ellenfeleknek: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Új gépi ellenfél (csak buszt épít): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Számítógépes ellenfelek a hálózati játékokban (béta): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Alapértelmezett szervízelés vonatoknak: {ORANGE}{STRING} naponta
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Alap szervízelési idõ a vonatokra: {ORANGE}kikapcsolva
@@ -1237,6 +1240,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Termelés
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Üdv, ez itt az új, fejlesztés alatt álló MI. Elõfordulhatnak gondok, problémák. Ha belefutsz egybe, kérlek készíts képernyõmentést küld be a fórumra. Jó játékot!
 TEMP_AI_ACTIVATED                                               :{WHITE}Figyelem: az új MI fejlesztés alatt áll! Jelenleg csak a teherautók és a buszok mûködnek!
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Figyelem: ez a funckió még béta állapotú. A hibajelentéseket küldd légyszi a truelight@openttd.org címre.
 
 ############ network gui strings
 
@@ -1266,7 +1270,7 @@ STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Kliens
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Kliens online / kliens max
 STR_NETWORK_GAME_INFO                                           :{SILVER}JÁTÉK INFÓ
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Kliens:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_CLIENTS                                             :{SILVER}Játékos:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Nyelv:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Tájtípus:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}A pálya nagysága:  {WHITE}{COMMA}x{COMMA}
@@ -1279,7 +1283,7 @@ STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SZERVER
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SZERVER TELE
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERZIÓ ELTÉRÉS
 
-STR_NETWORK_JOIN_GAME                                           :{BLACK}Csatlakozás a játékhoz
+STR_NETWORK_JOIN_GAME                                           :{BLACK}Csatlakozás
 
 
 STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Új játékot kezd
@@ -1298,21 +1302,25 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :Hálózat / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (reklámoz)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_CLIENTS                                           :0 játékos
-STR_NETWORK_1_CLIENTS                                           :1 játékos
-STR_NETWORK_2_CLIENTS                                           :2 játékos
-STR_NETWORK_3_CLIENTS                                           :3 játékos
-STR_NETWORK_4_CLIENTS                                           :4 játékos
-STR_NETWORK_5_CLIENTS                                           :5 játékos
-STR_NETWORK_6_CLIENTS                                           :6 játékos
-STR_NETWORK_7_CLIENTS                                           :7 játékos
-STR_NETWORK_8_CLIENTS                                           :8 játékos
-STR_NETWORK_9_CLIENTS                                           :9 játékos
-STR_NETWORK_10_CLIENTS                                          :10 játékos
+STR_NETWORK_0_PLAYERS                                           :0 játékos
+STR_NETWORK_1_PLAYERS                                           :1 játékos
+STR_NETWORK_2_PLAYERS                                           :2 játékos
+STR_NETWORK_3_PLAYERS                                           :3 játékos
+STR_NETWORK_4_PLAYERS                                           :4 játékos
+STR_NETWORK_5_PLAYERS                                           :5 játékos
+STR_NETWORK_6_PLAYERS                                           :6 játékos
+STR_NETWORK_7_PLAYERS                                           :7 játékos
+STR_NETWORK_8_PLAYERS                                           :8 játékos
+STR_NETWORK_9_PLAYERS                                           :9 játékos
+STR_NETWORK_10_PLAYERS                                          :10 játékos
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max cégszám:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}A cégek maximális száma
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max megfigyelõ:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}A megfigyelõk maximális száma
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Beszélt nyelv:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}A többi játékos megtudhatja milyen nyelven beszélnek a szerveren.
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Játék elindítása
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Új hálózati játék kezdése véletlen térképpel vagy misszióval
@@ -1408,6 +1416,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :rossz játék-jel
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :rossz játékos-id a DoCommand-ban
 STR_NETWORK_ERR_CLIENT_KICKED                                   :a szerver kirúgott
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :csalni próbált
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :a szerver megtelt
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :belépett a játékba
 STR_NETWORK_GIVE_MONEY                                          :adott egy kis pénzt ({CURRENCY})
@@ -2478,9 +2487,9 @@ STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Új vasút
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Új egysínû jármûvek
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Új MagLev jármûvek
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Megvesz
-STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Járm? másolása
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Ide kattintva ezen járm? másolatát készítheted el. Control+kattintás esetén a menetrendet is megosztja
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Ide kattintve elkészítheted egy közúti járm? másolatát. Kattints ide, majd a másolandó járm?re. Control+kattintás esetén a menetrendet is megosztod
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Jármû másolása
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Ide kattintva ezen jármû másolatát készítheted el. Control+kattintás esetén a menetrendet is megosztja
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Ide kattintve elkészítheted egy közúti jármû másolatát. Kattints ide, majd a másolandó jármûre. Control+kattintás esetén a menetrendet is megosztod
 STR_CLONE_TRAIN                                                 :{BLACK}Vonat másolása
 STR_CLONE_TRAIN_INFO                                            :{BLACK}Ide kattintva a teljes vonat másolatát készítheted el. Control+kattintás esetén a menetrendet is megosztod
 STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Ide kattintva egy teljes vonat másolatát készítheted el. Kattints ide majd a másolandó vonatra. Control+kattintás esetén a menetrendet is megoszthatod
@@ -2508,6 +2517,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Nem adha
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Nem törölheted ezt a célpontot...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nem módosíthatod ezt a célpontot...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nem mozgathatod a jármûvet...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}A mozdony elsõ felének mindig elöl kell lennie
 STR_8838_N_A                                                    :Nincs{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Nem adhatod el a vasúti jármûvet...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Nem találok utat a helyi jármûtelepre
@@ -2702,9 +2712,9 @@ STR_A000_AIRPORTS                                               :{WHITE}Repterek
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Nem építhetsz ide repülõteret...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} hangárja
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Új repülõgépek
-STR_CLONE_AIRCRAFT                                              :{BLACK}Repül?gép másolása
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Ezzel a repül?gép másolatát készítheted el. Control+kattintás esetén a menetrendet is megoszthatod.
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Ide kattintva egy repül?gép másolatát készítheted el. Kattints ide majd a másolandó repül?gépre. Control+kattintás esetén a menetrendet is megoszthatod.
+STR_CLONE_AIRCRAFT                                              :{BLACK}Repülõgép másolása
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Ezzel a repülõgép másolatát készítheted el. Control+kattintás esetén a menetrendet is megoszthatod.
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Ide kattintva egy repülõgép másolatát készítheted el. Kattints ide majd a másolandó repülõgépre. Control+kattintás esetén a menetrendet is megoszthatod.
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Új repülõgépek
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Megvesz
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nem veheted meg a repülõgépet...
@@ -2858,6 +2868,8 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Válaszd 
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Megmutatja, hogy melyik bal oldali mozdonyt akarod kicserélni
 STR_REPLACE_HELP                                                :{BLACK}Ez az opció lehetõve teszi, hogy kiválassz mozdonytípust és lecseréld másfajtára. Ez aztán automatikusan fog megtörténni, amikor a jármû karbantartásra a depóba megy
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon törlés: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Az automata cserénél a szerelvény hosszának a megtartása kocsik lekapcsolásával (elõröl kezdve), ha a csere után a mozdony hosszabb.
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}A mozdony így nem építhetõ meg
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Feliratok listája ({COMMA} db)

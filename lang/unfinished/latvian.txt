@@ -1074,7 +1074,7 @@ STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internets
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internets
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_CLIENTS                                           :2 clienti
+STR_NETWORK_2_PLAYERS                                           :2 clienti
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Sakt spçli
 

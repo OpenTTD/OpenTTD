@@ -1067,6 +1067,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Zakázat
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Zakázat pocitaci lode: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Nová umela inteligence (AI) (alpha verze): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Povolit AIs v sitove hre (experimentální): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Základní servisní interval pro vlaky: {ORANGE}{STRING} dní
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Základní servisní interval pro vlaky: {ORANGE}vypnuto
@@ -1230,6 +1231,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmenit p
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Predstavujeme ti novou umelou inteligenci (pracovní). Není jeste OK, tak¸e s ní jsou jeste problémy. Kdykoli muzes, udelej screenshot a prispej s ním do fóra. At se ti líbí!
 TEMP_AI_ACTIVATED                                               :{WHITE}Pozor: tato nová umela inteligence je jeste v alpha verzi (= nebyla moc testována)! Zatím umí pracovat jen se silnicnimi vozidly!
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Varování: tato funkce je stále experimentální. Prosím posílejte jakékoli problémy na truelight@openttd.org.
 
 ############ network gui strings
 
@@ -1291,19 +1293,10 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (oznámit)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_CLIENTS                                           :2 hraci
-STR_NETWORK_3_CLIENTS                                           :3 hraci
-STR_NETWORK_4_CLIENTS                                           :4 hraci
-STR_NETWORK_5_CLIENTS                                           :5 hracu
-STR_NETWORK_6_CLIENTS                                           :6 hracu
-STR_NETWORK_7_CLIENTS                                           :7 hracu
-STR_NETWORK_8_CLIENTS                                           :8 hracu
-STR_NETWORK_9_CLIENTS                                           :9 hracu
-STR_NETWORK_10_CLIENTS                                          :10 hracu
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Jazyk ve hre:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Aby ostatní hraci vedeli, jakým jazykem se bude ve hre mluvit.
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Zacit hru
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Hru po síti zacit s náhodnou mapou nebo se scenariem
@@ -2462,6 +2455,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Nemohu p
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Nemohu tento prikaz smazat...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nemohu tento prikaz zmenit...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nemohu presunout vozidlo...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Zadní stroj bude vzdy doprovázet svuj protejsek vepredu
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Nemohu prodat vagon nebo lokomotivu...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Nemohu najít cestu do místního depa...
@@ -2812,6 +2806,8 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vyber ty
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Tady je zobrazeno, za jakou lokomotivu se ta v levém seznamu vymenuje
 STR_REPLACE_HELP                                                :{BLACK}Tato mo¸nost hry ti umoznuje vybrat typ lokomotivy, který nechá vymenit za jiný. To se bude automaticky provadet, kdy¸ lokomotiva zajede do depa.
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odebírání vagonu: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkce automatického vylep¨ování vlaku muze udr¸ovat stejnou délku vlaku odstranovanim vagonu (od zacatku vlaku), pokud by vylep¨ení ma¨iny by vlak prodlou¸ilo.
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Stroj nelze postavit
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam popisku - {COMMA} popis{P ek ky ku}

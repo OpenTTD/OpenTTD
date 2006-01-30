@@ -1194,15 +1194,6 @@ STR_NETWORK_INTERNET                                            :Internetas
 STR_NETWORK_LAN_INTERNET                                        :Vietinis tinklas/ Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internetas (reklamuotis metaserveryje)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_CLIENTS                                           :2 klientai
-STR_NETWORK_3_CLIENTS                                           :3 klientai
-STR_NETWORK_4_CLIENTS                                           :4 klientai
-STR_NETWORK_5_CLIENTS                                           :5 klientai
-STR_NETWORK_6_CLIENTS                                           :6 klientai
-STR_NETWORK_7_CLIENTS                                           :7 klientai
-STR_NETWORK_8_CLIENTS                                           :8 klientai
-STR_NETWORK_9_CLIENTS                                           :9 zaidejai
-STR_NETWORK_10_CLIENTS                                          :10 zaideju
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Kalba:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Kiti zaidejai zinos kokia kalba kalbama serveryje
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}

@@ -1011,6 +1011,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Dezacti
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Dezactiveazã navele pentru jucãtorii PC: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Foloseste noul AI (versiune alfa): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permite AI în multiplayer (experimental): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Intervalul de service presetat pentru trenuri: {ORANGE}{STRING} zile
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalul de service presetat pentru trenuri: {ORANGE}dezactivat
@@ -1174,6 +1175,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Schimba 
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Salut! Sunt noul algoritm AI, încã în teste. Dacã apar probleme, salveazã un screenshot si pune-l pe forum. Baftã!
 TEMP_AI_ACTIVATED                                               :{WHITE}Atentie: algoritmul AI este în stadiul alfa! Momentan este valabil doar pentru autovehicule!
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Atentie: aceastã functiune este încã experimentalã. Vã rugãm sã raportati orice problemã la adresa truelight@openttd.org
 
 ############ network gui strings
 
@@ -1235,19 +1237,10 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (fa reclama)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_CLIENTS                                           :2 clienti
-STR_NETWORK_3_CLIENTS                                           :3 clienti
-STR_NETWORK_4_CLIENTS                                           :4 clienti
-STR_NETWORK_5_CLIENTS                                           :5 clienti
-STR_NETWORK_6_CLIENTS                                           :6 clienti
-STR_NETWORK_7_CLIENTS                                           :7 clienti
-STR_NETWORK_8_CLIENTS                                           :8 clienti
-STR_NETWORK_9_CLIENTS                                           :9 clienti
-STR_NETWORK_10_CLIENTS                                          :10 clienti
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Limba vorbita:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Ceilalti jucatori vor sti in ce limba se discuta per server.
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Începe jocul
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Incepe un joc nou in retea cu o harta aleatoare sau intr-un scenariu

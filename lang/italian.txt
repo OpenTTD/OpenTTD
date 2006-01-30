@@ -156,6 +156,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Non puoi
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Non puoi ripulire l'area....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright Originale{COPYRIGHT} 1995 Chris Sawyer, Tutti i diritti riservati
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versione {REV}
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 Il OpenTTD team
 STR_TRANSLATED_BY                                               :{BLACK}  Traduttore/i -
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -1236,21 +1237,25 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (avvisa)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_CLIENTS                                           :0 giocatore
-STR_NETWORK_1_CLIENTS                                           :1 giocatore
-STR_NETWORK_2_CLIENTS                                           :2 giocatori
-STR_NETWORK_3_CLIENTS                                           :3 giocatori
-STR_NETWORK_4_CLIENTS                                           :4 giocatori
-STR_NETWORK_5_CLIENTS                                           :5 giocatori
-STR_NETWORK_6_CLIENTS                                           :6 giocatori
-STR_NETWORK_7_CLIENTS                                           :7 giocatori
-STR_NETWORK_8_CLIENTS                                           :8 giocatori
-STR_NETWORK_9_CLIENTS                                           :9 giocatori
-STR_NETWORK_10_CLIENTS                                          :10 giocatori
+STR_NETWORK_0_PLAYERS                                           :0 giocatore
+STR_NETWORK_1_PLAYERS                                           :1 giocatore
+STR_NETWORK_2_PLAYERS                                           :2 giocatori
+STR_NETWORK_3_PLAYERS                                           :3 giocatori
+STR_NETWORK_4_PLAYERS                                           :4 giocatori
+STR_NETWORK_5_PLAYERS                                           :5 giocatori
+STR_NETWORK_6_PLAYERS                                           :6 giocatori
+STR_NETWORK_7_PLAYERS                                           :7 giocatori
+STR_NETWORK_8_PLAYERS                                           :8 giocatori
+STR_NETWORK_9_PLAYERS                                           :9 giocatori
+STR_NETWORK_10_PLAYERS                                          :10 giocatori
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Massimo ditte:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limitare il server ad un certo numero di ditte
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Massimo spettatori:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limitare il server ad un certo numero di spettatori
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Lingua parlata:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Gli altri giocatori sapranno quale lingua viene parlata sul server
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Avvia gioco
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Inizia una nuova partita in rete partendo da una mappa random o da uno scenario
@@ -1346,6 +1351,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :game-password e
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :player-id errato in DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :Espulso dal server
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :ha provato a usare un trucco
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server pieno
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :è entrato nel gioco
 STR_NETWORK_GIVE_MONEY                                          :ha donato alla tua compagnia del denaro ({CURRENCY})
@@ -2760,6 +2766,8 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selezion
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra con quale locomotore verrà rimpiazzato il tipo selezionato a sinistra, se alcuno
 STR_REPLACE_HELP                                                :{BLACK}Permette di rimpiazzare un locomotere con uno di un'altro tipo, quando il treno entra in un deposito
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Rimuovi vagoni: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Autosostituzione deve mantenere uguale la lunghezza del treno, rimuovendo vagoni (iniziando davanti), se la sostituzione del treno lo farebbe piu lungo.
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomotiva non e costruibile
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista dei Cartelli - {COMMA} Cartelli

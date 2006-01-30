@@ -394,6 +394,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Loka glu
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Titill glugga - dragðu þetta til að færa gluggann
 STR_STICKY_BUTTON                                               :{BLACK}Merkja þennan glugga sem ólokanlegan fyrir
 STR_RESIZE_BUTTON                                               :{BLACK}Ýttu og dragðu til að breyta stærð gluggans
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Smelltu hér til að opna möppu fyrir vistaða leiki
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Eyða byggingum o.s.frv. á lóðarreiti
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Lækka horn af landssvæði
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Lyfta horni af landssvæði
@@ -942,6 +943,7 @@ STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Sjálfvir
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Sjálfvirk uppfæring bifreiðar {COMMA} mistókst (takmarkað fjármagn)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Sjálfvirk uppfæring skips {COMMA} mistókst (takmarkað fjármagn)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Sjálfvirk uppfæring flugvélar {COMMA} mistókst (takmarkað fjármagn)
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Lest {COMMA} er of löng eftir endurnýjun
 
 STR_CONFIG_PATCHES                                              :{BLACK}Viðbætur
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Viðbætur
@@ -995,6 +997,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Ósýnile
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Hæð snjólínu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Dreyfing stöðva mest: {ORANGE}{STRING} {RED}Ath.: Há stilling hægir á leiknum
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Skoða þyrlur sjálfvirkt á þyrlupalli: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Opna landmótunarglugga samhliða lestar-, vegar-, hafnar- og flugvallarframkvæmdarglugga: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Færa sjónarhorn í öfuga átt miðað við mús: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Lestir á leikmann mest: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Bifreiðir á leikmann mest: {ORANGE}{STRING}
@@ -1007,6 +1011,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Útiloka
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Útiloka skip fyrir tölvu: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Virkja nýja gervigreind (alfa): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Leyfa gervigreind í fjölspilunarleik (á tilraunastigi): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Bið milli skoðana á lestum: {ORANGE}{STRING} dagar/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Bið milli skoðana á lestum: {ORANGE}óvirkt
@@ -1170,6 +1175,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Breyta f
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Velkomin/n í nýju gervigreindina, verk í vinnslu. Þú mátt búast við vandamálum, og þegar þau koma upp skaltu taktu skjámynd þegar og senda á spjallborðið. Njóttu!
 TEMP_AI_ACTIVATED                                               :{WHITE}Ath.: nýja gervigreindin er ennþá alfa! Í augnablikinu virka aðeins vörubílar og strætisvagnar!
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Viðvörun: þessi eiginleiki er á tilraunastigi. Vinsamlegast tilkynnið vandamál tengd honum til truelight@openttd.org.
 
 ############ network gui strings
 
@@ -1231,19 +1237,10 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :Staðarnet / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (auglýsa)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_CLIENTS                                           :2 notendur
-STR_NETWORK_3_CLIENTS                                           :3 notendur
-STR_NETWORK_4_CLIENTS                                           :4 notendur
-STR_NETWORK_5_CLIENTS                                           :5 notendur
-STR_NETWORK_6_CLIENTS                                           :6 notendur
-STR_NETWORK_7_CLIENTS                                           :7 notendur
-STR_NETWORK_8_CLIENTS                                           :8 notendur
-STR_NETWORK_9_CLIENTS                                           :9 notendur
-STR_NETWORK_10_CLIENTS                                          :10 notendur
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Tungumál:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Aðrir notendur munu vita hvaða tungumál er talað á þjóninum
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Hefja leik
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Hefja nýjan netleik í sérvöldu korti eða landslagi af handahófi
@@ -2751,6 +2748,7 @@ STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Smelltu 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Veldu hvernig lestir þú skipta út
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Sýnir hvaða vagn kemur í stað þess sem valinn er vinstra megin
 STR_REPLACE_HELP                                                :{BLACK}Þetta gerir þér kleift að skipta út öllum vögum af einni tegund með annarri, þegar þeir fara í lestarskýli
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Selja lestarvagna: {ORANGE}{SKIP}{STRING}
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Merkjalisti - {COMMA} merki

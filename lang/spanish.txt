@@ -1011,6 +1011,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Desacti
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Desactivar barcos para el ordenador: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Activar nueva IA (alpha): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permitir IA en multijugador (experimental): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Intervalo de despacho por defecto para trenes: {ORANGE}{STRING} días
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalo de despacho por defecto para trenes: {ORANGE}no
@@ -1174,6 +1175,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambiar 
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Bienvenido a esta nueva IA, en progreso. Puede esperar problemas. Cuando los encuentres, haz una captura de pantalla y envíala al foro. Disfruta!
 TEMP_AI_ACTIVATED                                               :{WHITE}Atención: esta nueva IA está en fase alpha! Actualmente, solo los camiones y autobuses funcionan!
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Atención: esta función es todavía experimental. Comunique cualquier problema a truelight@openttd.org.
 
 ############ network gui strings
 
@@ -1235,19 +1237,10 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (anuncio)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_CLIENTS                                           :2 clientes
-STR_NETWORK_3_CLIENTS                                           :3 clientes
-STR_NETWORK_4_CLIENTS                                           :4 clientes
-STR_NETWORK_5_CLIENTS                                           :5 clientes
-STR_NETWORK_6_CLIENTS                                           :6 clientes
-STR_NETWORK_7_CLIENTS                                           :7 clientes
-STR_NETWORK_8_CLIENTS                                           :8 clientes
-STR_NETWORK_9_CLIENTS                                           :9 clientes
-STR_NETWORK_10_CLIENTS                                          :10 clientes
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma hablado:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Otros jugadores sabrán cual es el idioma hablado en este servidor.
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Empezar Juego
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Empezar un nuevo juego en red desde un mapa al azar o escenario
@@ -1706,6 +1699,7 @@ STR_4803_POWER_STATION                                          :Central Eléctri
 STR_4804_SAWMILL                                                :Aserradero
 STR_4805_FOREST                                                 :Bosque
 STR_4806_OIL_REFINERY                                           :Refinería
+STR_4807_OIL_RIG                                                :Torre Petrolera
 STR_4808_FACTORY                                                :Fábrica
 STR_4809_PRINTING_WORKS                                         :Imprenta
 STR_480A_STEEL_MILL                                             :Acería
@@ -2756,6 +2750,7 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Seleccio
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Muestra que locomotora será reemplazada
 STR_REPLACE_HELP                                                :{BLACK}Esta función permite seleccionar un tipo de locomotora y reemplazarla por otra. El cambio se realizará cuando el vehículo llegue al depósito
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Quitar vagón: {ORANGE}{SKIP}{STRING}
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}No es posible construir este motor
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de señales - {COMMA} Señales

@@ -156,6 +156,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Det kan 
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan ikke rydde området....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, Alle retigheder reserveret
 STR_00B7_VERSION                                                :{BLACK}OpenTTD version {REV}
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 OpenTTD teamet
 STR_TRANSLATED_BY                                               :{BLACK}  Oversætter(e) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -530,6 +531,7 @@ STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Rådgivn
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nye køretøjer
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Ændring i accepteret last
 STR_020E_SUBSIDIES                                              :{YELLOW}Special aftaler
+STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Generel information
 STR_MESSAGES_ALL                                                :{YELLOW}Opsætning for all beskeder (on/off/refereret)
 STR_MESSAGE_SOUND                                               :{YELLOW}Afspil lyd for refererede nyheder
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...for langt fra forrige destination
@@ -771,6 +773,7 @@ STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Vælg byn
 STR_02F4_AUTOSAVE                                               :{BLACK}Autogem
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Vælg interval imellem automatisk gemning
+STR_02F7_OFF                                                    :Fra
 STR_02F8_EVERY_3_MONTHS                                         :Hver 3. måned
 STR_02F9_EVERY_6_MONTHS                                         :Hver 6. måned
 STR_02FA_EVERY_12_MONTHS                                        :Hver 12. måned
@@ -995,6 +998,7 @@ STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Snelinj
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max station udbreddelse: {ORANGE}{STRING} {RED}Advarsel: Høj værdi gør spillet langsomt
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatisk service på helikopterlandingspladser: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landskabs værktøjsbaren til skinne/vej/vand/lufthavn værktøjsbaren: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Når der scrolles med musen, flyt viewet i den modsatte retning: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks antal tog per spiller: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks antal lastbiler per spiller: {ORANGE}{STRING}
@@ -1007,6 +1011,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Deaktiv
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Deaktiver skibe for computeren: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Slå den nye kunstige intelligents til (alpha): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Tillad AI i multiplayer (experimentiel): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Standard service interval for tog: {ORANGE}{STRING} dage/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard service interval for tog: {ORANGE}slået fra
@@ -1170,6 +1175,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Skift pr
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Velkommen til den nye kunstige intelligents, der er under udarbejdelse. Du kan forvente problemer. Når det sker, så lav et screenshot og sæt det på forummet
 TEMP_AI_ACTIVATED                                               :{WHITE}Advarsel: den nye kunstige intelligents er i et tidligt stadie! Lige nu virker den kun med busser og lastbiler!
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Advarsel: denne funktion er stadig experimential. Rapporter venligst problemer til truelight@openttd.org.
 
 ############ network gui strings
 
@@ -1231,19 +1237,25 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (bekendtgør spillet)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_CLIENTS                                           :2 klienter
-STR_NETWORK_3_CLIENTS                                           :3 klienter
-STR_NETWORK_4_CLIENTS                                           :4 klienter
-STR_NETWORK_5_CLIENTS                                           :5 klienter
-STR_NETWORK_6_CLIENTS                                           :6 klienter
-STR_NETWORK_7_CLIENTS                                           :7 klienter
-STR_NETWORK_8_CLIENTS                                           :8 klienter
-STR_NETWORK_9_CLIENTS                                           :9 klienter
-STR_NETWORK_10_CLIENTS                                          :10 klienter
+STR_NETWORK_0_PLAYERS                                           :0 spillere
+STR_NETWORK_1_PLAYERS                                           :1 spiller
+STR_NETWORK_2_PLAYERS                                           :2 spillere
+STR_NETWORK_3_PLAYERS                                           :3 spillere
+STR_NETWORK_4_PLAYERS                                           :4 spillere
+STR_NETWORK_5_PLAYERS                                           :5 spillere
+STR_NETWORK_6_PLAYERS                                           :6 spillere
+STR_NETWORK_7_PLAYERS                                           :7 spillere
+STR_NETWORK_8_PLAYERS                                           :8 spillere
+STR_NETWORK_9_PLAYERS                                           :9 spillere
+STR_NETWORK_10_PLAYERS                                          :10 spillere
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max firmaer:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Begræns serveren to et bestemt antal firmaer
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max spectators:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Begræns serveren til et bestemt antal tilskurere
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Talt sprog:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Andre spillere vil vide hvilket sprog, der bliver talt på serveren
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Start spillet
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Start et nyt netværksspil med et tilfældigt kort eller et scenarie
@@ -1339,6 +1351,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :forkert spil pa
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :forkert player-id i DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :smidt ud af serveren
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :prøvede at snyde
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :serveren er fuld
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :har tilsluttet sig spillet
 STR_NETWORK_GIVE_MONEY                                          :gav din virksomhed nogle penge ({CURRENCY})
@@ -2402,7 +2415,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Kan ikke
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Kan ikke slette denne ordre...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kan ikke ændre denne ordre...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kan ikke flytte køretøjet...
-STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Det bagerste lokomotiv vil altid følge den forand
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Det bagerste lokomotiv vil altid følge dets forende
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Kan ikke sælge jernbanekøretøjet...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Kan ikke finde en route til et lokalt depot
@@ -2753,6 +2766,8 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vælg den
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Viser hvilket køretøj at det valgte køretøj til venstre bliver udskiftet med, hvis det bliver udskiftet
 STR_REPLACE_HELP                                                :{BLACK}Dette giver dig mulighed for at udskifte en køretøjstype med en anden, når et køretøj af den oprindelige type kører i depot
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Fjern vogn: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Få autoudskift til at bevare længden af tog ved at fjerne vogne (startende fra fronten), hvis autoudskiftningen gør toget længere.
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Køretøjet kan ikke bygges
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste of skilte - {COMMA} Skilte

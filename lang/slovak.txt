@@ -1237,19 +1237,16 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (oznamit)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_CLIENTS                                           :2 klienti
-STR_NETWORK_3_CLIENTS                                           :3 klienti
-STR_NETWORK_4_CLIENTS                                           :4 klienti
-STR_NETWORK_5_CLIENTS                                           :5 klientov
-STR_NETWORK_6_CLIENTS                                           :6 klientov
-STR_NETWORK_7_CLIENTS                                           :7 klientov
-STR_NETWORK_8_CLIENTS                                           :8 klientov
-STR_NETWORK_9_CLIENTS                                           :9 klientov
-STR_NETWORK_10_CLIENTS                                          :10 klientov
+STR_NETWORK_0_PLAYERS                                           :0 hracov
+STR_NETWORK_1_PLAYERS                                           :1 hrac
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max. pocet spolocnosti:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Obmedzi maximalny pocet spolocnosti na serveri
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max. pocet divakov:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Omedzi maximalny pocet divakov na serveri
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Jazyk hracov:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Aby ostatni hraci vedeli, akym jazykom sa bude hovorit na serveri.
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Spustit hru
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Zacat sietovu hru z nahodnej mapy alebo scenaria
@@ -1345,6 +1342,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :chybne heslo
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :chybne id hraca v DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :vyhodeny zo servera
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :sa pokusal cheatovat
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server je plny
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :vstupil do hry
 STR_NETWORK_GIVE_MONEY                                          :ti dal nejake peniaze ({CURRENCY})

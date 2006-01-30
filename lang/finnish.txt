@@ -1231,19 +1231,10 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :Lähiverkko/Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (mainosta)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_CLIENTS                                           :2 pelaajaa
-STR_NETWORK_3_CLIENTS                                           :3 pelaajaa
-STR_NETWORK_4_CLIENTS                                           :4 pelaajaa
-STR_NETWORK_5_CLIENTS                                           :5 pelaajaa
-STR_NETWORK_6_CLIENTS                                           :6 pelaajaa
-STR_NETWORK_7_CLIENTS                                           :7 pelaajaa
-STR_NETWORK_8_CLIENTS                                           :8 pelaajaa
-STR_NETWORK_9_CLIENTS                                           :9 pelaajaa
-STR_NETWORK_10_CLIENTS                                          :10 pelaajaa
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Puhuttu kieli:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Toiset pelaajat tietävät tästä, mitä kieltä palvelimella puhutaan.
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Aloita peli
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Aloita uusi verkkopeli skenaariolla tai satunnaisella kartalla.

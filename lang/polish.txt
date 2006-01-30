@@ -328,7 +328,7 @@ STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Jestes 
 STR_0161_QUIT_GAME                                              :{WHITE}Wyjscie
 STR_SORT_ORDER_TIP                                              :{BLACK}Wybierz porzadek sortowania (malejaco/rosnaco)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Wybierz kryterium sortowania
-STR_SORT_BY                                                     :{BLACK}Sortowanie
+STR_SORT_BY                                                     :{BLACK}Sortuj wg
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Populacja
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Produkcja
@@ -1237,19 +1237,25 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (zaawansowane)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_CLIENTS                                           :2 klientow
-STR_NETWORK_3_CLIENTS                                           :3 klientow
-STR_NETWORK_4_CLIENTS                                           :4 klientow
-STR_NETWORK_5_CLIENTS                                           :5 klientow
-STR_NETWORK_6_CLIENTS                                           :6 klientow
-STR_NETWORK_7_CLIENTS                                           :7 klientow
-STR_NETWORK_8_CLIENTS                                           :8 klientow
-STR_NETWORK_9_CLIENTS                                           :9 klientow
-STR_NETWORK_10_CLIENTS                                          :10 klientow
+STR_NETWORK_0_PLAYERS                                           :0 graczy
+STR_NETWORK_1_PLAYERS                                           :1 gracz
+STR_NETWORK_2_PLAYERS                                           :2 graczy
+STR_NETWORK_3_PLAYERS                                           :3 graczy
+STR_NETWORK_4_PLAYERS                                           :4 graczy
+STR_NETWORK_5_PLAYERS                                           :5 graczy
+STR_NETWORK_6_PLAYERS                                           :6 graczy
+STR_NETWORK_7_PLAYERS                                           :7 graczy
+STR_NETWORK_8_PLAYERS                                           :8 graczy
+STR_NETWORK_9_PLAYERS                                           :9 graczy
+STR_NETWORK_10_PLAYERS                                          :10 graczy
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maksymalna ilosc firm:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Ogranicz serwer do okreslonej ilosci firm
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maksymalna ilosc widzow:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Ogranicz serwer do okreslonej ilosci widzow
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Uzywany jezyk w grze:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Inni gracze beda poinformowani jaki jezyk jest uzywany na serwerze.
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Rozpocznij gre
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Uruchom nowa gre sieciowa z przypadkowa mapa lub scenariuszem
@@ -1345,6 +1351,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :zle haslo gry
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :bledne id gracza w DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :wyrzucony przez serwer
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :probowal uzyc ulatwien
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :serwer jest pelny
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :przylaczyl sie do gry
 STR_NETWORK_GIVE_MONEY                                          :dal Ci troche pieniedzy ({CURRENCY})
@@ -2408,7 +2415,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Nie mozn
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Nie mozna usunac tego polecenia...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nie mozna zmodyfikowac tego polecenia...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nie mozna ruszyc pojazdem...
-STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Tylny silnik zawsze porusza sie w tym samym kierunku co przedni
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Tylna lokomotywa zawsze porusza sie razem z przednia
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Nie mozna sprzedac lokomotywy...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Nie mozna znalezc drogi do zajezdni.
@@ -2759,6 +2766,8 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wybierz 
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Wyswietla typ pojazdu na jaki bedzie zastapiony  pojazd zaznaczony po lewej stronie
 STR_REPLACE_HELP                                                :{BLACK}Ta funkcja pozwala wybrac typ pojazdu i zastapic go innym. Bedzie sie to odbywac w momencie gdy pociag zjedzie do zajezdni
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Usuniecie pojazdu: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Autowymiana zachowuje dlugosc pociagu poprzez usuwanie wagonow (poczawszy od poczatku), jesli wymiana lokomotywy spowoduje wydluzenie pociagu.
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotywa nie moze byc zbodowana
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista tablic - {COMMA} Tablice

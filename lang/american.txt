@@ -394,6 +394,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Close wi
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Window title - drag this to move window
 STR_STICKY_BUTTON                                               :{BLACK}Mark this window as undeletable for the 'Close All Windows' key
 STR_RESIZE_BUTTON                                               :{BLACK}Click and drag to resize this window
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Click here to jump to the current default save/load directory
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Demolish buildings etc. on a square of land
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Lower a corner of land
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Raise a corner of land
@@ -575,6 +576,8 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...too c
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...too close to another town
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...site unsuitable
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...too many towns
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Can't build any towns
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...there is no more space on the map
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Increase size of town
 STR_023C_EXPAND                                                 :{BLACK}Expand
 STR_023D_RANDOM_TOWN                                            :{BLACK}Random Town
@@ -731,6 +734,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transp
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Land area information
 STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :Toggle Console
 STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Giant Screenshot (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :About 'OpenTTD'
@@ -833,6 +837,7 @@ STR_TOWNNAME_AUSTRIAN                                           :Austrian
 STR_TOWNNAME_ROMANIAN                                           :Romanian
 STR_TOWNNAME_CZECH                                              :Czech
 STR_TOWNNAME_SWISS                                              :Swiss
+STR_TOWNNAME_DANISH                                             :Danish
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pounds (£)
@@ -938,6 +943,7 @@ STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autorene
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autorenew failed on road vehicle {COMMA} (money limit)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autorenew failed on ship {COMMA} (money limit)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autorenew failed on aircraft {COMMA} (money limit)
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Train {COMMA} is too long after replacement
 
 STR_CONFIG_PATCHES                                              :{BLACK}Configure Patches
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configure the patches
@@ -991,6 +997,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Invisib
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Snow line height: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max station spread: {ORANGE}{STRING} {RED}Warning: High setting slows game
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Service helicopters at helipads automatically: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landscape toolbar to rail/road/water/airport toolbars: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Reverse scroll direction: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trains per player: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max road vehicles per player: {ORANGE}{STRING}
@@ -1003,6 +1011,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Disable
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Disable ships for computer: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Enable new AI (alpha): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Allow AIs in multiplayer (experimental): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Default service interval for trains: {ORANGE}{STRING} days
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Default service interval for trains: {ORANGE}disabled
@@ -1013,6 +1022,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Default
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Default service interval for ships: {ORANGE}{STRING} days
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Default service interval for ships: {ORANGE}disabled
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Disable servicing when breakdowns set to none: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Enable wagon speed limits: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Colored news appears in: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Starting date: {ORANGE}{STRING}
@@ -1165,6 +1175,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Change p
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Welcome to this new AI, in progress. You can expect problems. When you do, make a screenshot and post it at the forum. Enjoy!
 TEMP_AI_ACTIVATED                                               :{WHITE}Warning: this new AI is still alpha! Currently, only trucks and busses work!
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Warning: implementation is still experimental (using new AI). Please report any problems to truelight@openttd.org.
 
 ############ network gui strings
 
@@ -1226,21 +1237,25 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (advertise)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_CLIENTS                                           :0 players
-STR_NETWORK_1_CLIENTS                                           :1 player
-STR_NETWORK_2_CLIENTS                                           :2 players
-STR_NETWORK_3_CLIENTS                                           :3 players
-STR_NETWORK_4_CLIENTS                                           :4 players
-STR_NETWORK_5_CLIENTS                                           :5 players
-STR_NETWORK_6_CLIENTS                                           :6 players
-STR_NETWORK_7_CLIENTS                                           :7 players
-STR_NETWORK_8_CLIENTS                                           :8 players
-STR_NETWORK_9_CLIENTS                                           :9 players
-STR_NETWORK_10_CLIENTS                                          :10 players
+STR_NETWORK_0_PLAYERS                                           :0 players
+STR_NETWORK_1_PLAYERS                                           :1 player
+STR_NETWORK_2_PLAYERS                                           :2 players
+STR_NETWORK_3_PLAYERS                                           :3 players
+STR_NETWORK_4_PLAYERS                                           :4 players
+STR_NETWORK_5_PLAYERS                                           :5 players
+STR_NETWORK_6_PLAYERS                                           :6 players
+STR_NETWORK_7_PLAYERS                                           :7 players
+STR_NETWORK_8_PLAYERS                                           :8 players
+STR_NETWORK_9_PLAYERS                                           :9 players
+STR_NETWORK_10_PLAYERS                                          :10 players
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max companies:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limit the server to a certain amount of companies
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max spectators:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limit the server to a certain amount of spectators
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Language spoken:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Other players will know which language is spoken on the server.
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Start Game
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Start a new network game from a random map, or scenario
@@ -1336,6 +1351,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :wrong game-pass
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :wrong player-id in DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :kicked by server
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :was trying to use a cheat
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server full
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :has joined the game
 STR_NETWORK_GIVE_MONEY                                          :gave you some money ({CURRENCY})
@@ -2399,6 +2415,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Can't in
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Can't delete this order...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Can't modify this order...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Can't move vehicle...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}The rear engine will always follow its front counterpart
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Can't sell railroad vehicle...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Unable to find route to local depot
@@ -2748,6 +2765,9 @@ STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Press to
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Choose the railtype you want to replace engines for
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Displays which engine the left selected engine is being replaced with, if any
 STR_REPLACE_HELP                                                :{BLACK}This allows you to replace one engine type with another type, when trains of the original type enter a depot
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagon removal: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Make autoreplace keep the length of a train the same by removing wagons (starting at the front), if replacing the engine would make the train longer.
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Engine is not buildable
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Sign List - {COMMA} Sign{P "" s}
@@ -2764,6 +2784,7 @@ STR_TINY_BLACK                                                  :{BLACK}{TINYFON
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Weight: {GOLD}{COMMA}t
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Speed: {GOLD}{VELOCITY}{BLACK}   Power: {GOLD}{COMMA}hp
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Speed: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Running Cost: {GOLD}{CURRENCY}/yr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacity: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designed: {GOLD}{NUM}{BLACK} Life: {GOLD}{COMMA} years

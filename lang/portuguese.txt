@@ -1237,19 +1237,10 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :Rede Local / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (divulgar)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_CLIENTS                                           :2 clientes
-STR_NETWORK_3_CLIENTS                                           :3 clientes
-STR_NETWORK_4_CLIENTS                                           :4 clientes
-STR_NETWORK_5_CLIENTS                                           :5 clientes
-STR_NETWORK_6_CLIENTS                                           :6 clientes
-STR_NETWORK_7_CLIENTS                                           :7 clientes
-STR_NETWORK_8_CLIENTS                                           :8 clientes
-STR_NETWORK_9_CLIENTS                                           :9 clientes
-STR_NETWORK_10_CLIENTS                                          :10 clientes
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma falado:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Outros jogadores ficarão a conhecer o idioma utilizado no servidor.
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Iniciar Jogo
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Iniciar um novo jogo em rede de um mapa aleatório, ou cenário

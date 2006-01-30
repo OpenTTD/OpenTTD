@@ -1230,7 +1230,7 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Passwort
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Vergebe ein Passwort, um zu verhindern, dass unbefugte Leute beitreten können
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Karte auswählen:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Welche Karte möchtest du spielen?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Max. Anzahl an Teilnehmern:
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Max. Teilnehmeranzahl:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Wählt die max. Anzahl an Teilnehmern aus. Nicht alle Slots müssen belegt werden.
 STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
@@ -1238,21 +1238,25 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (ankündigen)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_CLIENTS                                           :0 Spieler
-STR_NETWORK_1_CLIENTS                                           :1 Spieler
-STR_NETWORK_2_CLIENTS                                           :2 Spieler
-STR_NETWORK_3_CLIENTS                                           :3 Spieler
-STR_NETWORK_4_CLIENTS                                           :4 Spieler
-STR_NETWORK_5_CLIENTS                                           :5 Spieler
-STR_NETWORK_6_CLIENTS                                           :6 Spieler
-STR_NETWORK_7_CLIENTS                                           :7 Spieler
-STR_NETWORK_8_CLIENTS                                           :8 Spieler
-STR_NETWORK_9_CLIENTS                                           :9 Spieler
-STR_NETWORK_10_CLIENTS                                          :10 Spieler
+STR_NETWORK_0_PLAYERS                                           :0 Spieler
+STR_NETWORK_1_PLAYERS                                           :1 Spieler
+STR_NETWORK_2_PLAYERS                                           :2 Spieler
+STR_NETWORK_3_PLAYERS                                           :3 Spieler
+STR_NETWORK_4_PLAYERS                                           :4 Spieler
+STR_NETWORK_5_PLAYERS                                           :5 Spieler
+STR_NETWORK_6_PLAYERS                                           :6 Spieler
+STR_NETWORK_7_PLAYERS                                           :7 Spieler
+STR_NETWORK_8_PLAYERS                                           :8 Spieler
+STR_NETWORK_9_PLAYERS                                           :9 Spieler
+STR_NETWORK_10_PLAYERS                                          :10 Spieler
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max. Firmenanzahl:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Begrenzt den Server auf eine gewisse Anzahl an Firmen
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max. Beobachteranzahl:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Begrenzt den Server auf eine gewisse Anzahl an Beobachter
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Gesprochene Sprachen:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Damit andere Spieler wissen, welche Sprache auf diesem Server gesprochen wird.
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Spiel beginnen
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Startet ein neues Mehrspielerspiel auf einer Zufallskarte oder einem Szenario
@@ -1348,6 +1352,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :Falsches Spiel-
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :Falsche-SpielerID in DoCommand (Verarbeitungsfehler)
 STR_NETWORK_ERR_CLIENT_KICKED                                   :gekickt
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :versuchte einen Cheat zu nutzen
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :Server voll
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :hat das Spiel betreten
 STR_NETWORK_GIVE_MONEY                                          :gab dir etwas Geld ({CURRENCY})
@@ -2762,6 +2767,8 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wähle ei
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Hier wird angezeigt, gegen welches Fahrzeug das auf der linken Seite gewählte ersetzt wird
 STR_REPLACE_HELP                                                :{BLACK}Dieses Feature ermöglicht es, einen Fahrzeugtyp auszuwählen und ihn durch einen anderen ersetzen zu lassen. Dies geschieht automatisch, wenn das Fahrzeug regulär das Depot besucht.
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Waggon-Entfernung: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Zwinge das automatische Ersetzen die Länge eines Zuges beizubehalten, indem (vorne beginnend) Waggons entfernt werden, falls das Ersetzen der Lokomotive den Zug verlängern würde.
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotive ist nicht baubar
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Schilderliste - {COMMA} Schild{P "" er}

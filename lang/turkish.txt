@@ -1205,7 +1205,7 @@ STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Oyuncula
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Bagli oyuncular / en fazla oyuncu
 STR_NETWORK_GAME_INFO                                           :{SILVER}OYUN BiLGiSi
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Oyuncular:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_CLIENTS                                             :{SILVER}istemciler:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Dil:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Set:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Harita boyutu:  {WHITE}{COMMA}x{COMMA}
@@ -1237,18 +1237,26 @@ STR_NETWORK_INTERNET                                            :internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :internet (reklam vererek)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_CLIENTS                                           :2 oyuncu
-STR_NETWORK_3_CLIENTS                                           :3 oyuncu
-STR_NETWORK_4_CLIENTS                                           :4 oyuncu
-STR_NETWORK_5_CLIENTS                                           :5 oyuncu
-STR_NETWORK_6_CLIENTS                                           :6 oyuncu
-STR_NETWORK_7_CLIENTS                                           :7 oyuncu
-STR_NETWORK_8_CLIENTS                                           :8 oyuncu
-STR_NETWORK_9_CLIENTS                                           :9 oyuncu
-STR_NETWORK_10_CLIENTS                                          :10 oyuncu
+STR_NETWORK_0_PLAYERS                                           :0 oyuncu
+STR_NETWORK_1_PLAYERS                                           :1 oyuncu
+STR_NETWORK_2_PLAYERS                                           :2 oyuncu
+STR_NETWORK_3_PLAYERS                                           :3 oyuncu
+STR_NETWORK_4_PLAYERS                                           :4 oyuncu
+STR_NETWORK_5_PLAYERS                                           :5 oyuncu
+STR_NETWORK_6_PLAYERS                                           :6 oyuncu
+STR_NETWORK_7_PLAYERS                                           :7 oyuncu
+STR_NETWORK_8_PLAYERS                                           :8 oyuncu
+STR_NETWORK_9_PLAYERS                                           :9 oyuncu
+STR_NETWORK_10_PLAYERS                                          :10 oyuncu
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}En fazla sirket:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Sunucudaki sirket sayisini sinirla
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}En fazla izleyici:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Sunucudaki izleyici sayisini sinirla
+STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Konusulan dil:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Diger oyuncular sunucuda hangi dilin konusulacagini bilecek
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Oyunu Baslat
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Rastgele harita ya da senaryoda network oyunu aç
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Oyun Yukle
@@ -1343,6 +1351,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :yanlis oyun-par
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :DoCommand'da yanlis oyuncu bilgisi
 STR_NETWORK_ERR_CLIENT_KICKED                                   :sunucu tarafindan atildi
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :hile yapmaya çalisti
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :sunucu dolu
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :oyuna katildi
 STR_NETWORK_GIVE_MONEY                                          :sana para verdi ({CURRENCY})
@@ -2757,6 +2766,8 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Lokomati
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Soldaki degistiriliyorsa neyle degistirildigini göster
 STR_REPLACE_HELP                                                :{BLACK}Tren gara girdiginde seçilen türle degistirilir
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon kaldirma: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Otomatik yenilemede tren boyutunun artmasi gerekiyorsa vagonlari kaldir(en önden baslayarak yeterli sayida vagon silinir).
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotif alinamaz
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Tabela Listesi - {COMMA} Tabela

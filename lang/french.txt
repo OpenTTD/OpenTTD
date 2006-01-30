@@ -1238,19 +1238,25 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (publier)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_2_CLIENTS                                           :2 clients
-STR_NETWORK_3_CLIENTS                                           :3 clients
-STR_NETWORK_4_CLIENTS                                           :4 clients
-STR_NETWORK_5_CLIENTS                                           :5 clients
-STR_NETWORK_6_CLIENTS                                           :6 clients
-STR_NETWORK_7_CLIENTS                                           :7 clients
-STR_NETWORK_8_CLIENTS                                           :8 clients
-STR_NETWORK_9_CLIENTS                                           :9 clients
-STR_NETWORK_10_CLIENTS                                          :10 clients
+STR_NETWORK_0_PLAYERS                                           :0 joueur
+STR_NETWORK_1_PLAYERS                                           :1 joueur
+STR_NETWORK_2_PLAYERS                                           :2 joueurs
+STR_NETWORK_3_PLAYERS                                           :3 joueurs
+STR_NETWORK_4_PLAYERS                                           :4 joueurs
+STR_NETWORK_5_PLAYERS                                           :5 joueurs
+STR_NETWORK_6_PLAYERS                                           :6 joueurs
+STR_NETWORK_7_PLAYERS                                           :7 joueurs
+STR_NETWORK_8_PLAYERS                                           :8 joueurs
+STR_NETWORK_9_PLAYERS                                           :9 joueurs
+STR_NETWORK_10_PLAYERS                                          :10 joueurs
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max compagnies:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limiter le nombre de compagnies sur le serveur
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max spectateurs:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limiter le nombre de spectateurs sur le serveur
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Langue parlée :
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Les autres joueurs sauront quelle langue est parlée sur ce serveur.
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Démarrer la partie
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Démarrer une nouvelle partie réseau à partir d'une carte aléatoire ou d'un scénario
@@ -1346,6 +1352,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :mot de passe de
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :mauvais player-id dans DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :jeté par le serveur
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :a tenté de tricher
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :serveur complet
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :a rejoint la partie
 STR_NETWORK_GIVE_MONEY                                          :vous a donné un peu d'argent ({CURRENCY})
@@ -2760,6 +2767,8 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Choisir 
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Ceci affiche par quelle locomotive celle qui est sélectionnée à gauche sera remplacée
 STR_REPLACE_HELP                                                :{BLACK}Cette caractéristique permet de choisir un type de locomotive et de le remplacer par un autre. Ceci sera fait automatiquement quand le véhicule rentre dans un dépôt
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retrait de wagon: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Faire que la longueur du train reste la même en retirant des wagons (depuis la tête du train), si le remplacement du véhicule allonge le train.
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Ce véhicule ne peut pas être construit
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste des panneaux - {COMMA} panneau{P "" x}

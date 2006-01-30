@@ -493,6 +493,7 @@ STR_01E5                                                        :{DKGREEN}{TINYF
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Nummer{SETX 88}Titel
+STR_01E9_SHUFFLE                                                :{TINYFONT}Shuffle
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Programma
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Muziekprogrammakeuze
 STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
@@ -733,6 +734,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transp
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Info over blok land
 STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :Schakel Konsole aan/uit
 STR_02D7_SCREENSHOT_CTRL_S                                      :Schermprint (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Grote Schermprint (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Over OpenTTD
@@ -1235,21 +1237,25 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (adverteren)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_CLIENTS                                           :0 spelers
-STR_NETWORK_1_CLIENTS                                           :1 speler
-STR_NETWORK_2_CLIENTS                                           :2 spelers
-STR_NETWORK_3_CLIENTS                                           :3 spelers
-STR_NETWORK_4_CLIENTS                                           :4 spelers
-STR_NETWORK_5_CLIENTS                                           :5 spelers
-STR_NETWORK_6_CLIENTS                                           :6 spelers
-STR_NETWORK_7_CLIENTS                                           :7 spelers
-STR_NETWORK_8_CLIENTS                                           :8 spelers
-STR_NETWORK_9_CLIENTS                                           :9 spelers
-STR_NETWORK_10_CLIENTS                                          :10 spelers
+STR_NETWORK_0_PLAYERS                                           :0 spelers
+STR_NETWORK_1_PLAYERS                                           :1 speler
+STR_NETWORK_2_PLAYERS                                           :2 spelers
+STR_NETWORK_3_PLAYERS                                           :3 spelers
+STR_NETWORK_4_PLAYERS                                           :4 spelers
+STR_NETWORK_5_PLAYERS                                           :5 spelers
+STR_NETWORK_6_PLAYERS                                           :6 spelers
+STR_NETWORK_7_PLAYERS                                           :7 spelers
+STR_NETWORK_8_PLAYERS                                           :8 spelers
+STR_NETWORK_9_PLAYERS                                           :9 spelers
+STR_NETWORK_10_PLAYERS                                          :10 spelers
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max bedrijven:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Beperk de server tot een bepaald aantal bedrijven
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max toeschouwers:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Beperk de server tot een bepaald aantal toeschouwers
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Gesproken taal:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Andere spelers zullen weten welke taal er wordt gesproken op de server.
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Start spel
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Start een nieuw netwerkspel van een willekeurige kaart, of scenario
@@ -1345,6 +1351,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :fout spel-wacht
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :fout speler-nummer in DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :geschopt door server
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :probeerde vals te spelen
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server is vol
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :heeft zich bij het spel gevoegd
 STR_NETWORK_GIVE_MONEY                                          :heeft je geld gegeven ({CURRENCY})
@@ -2409,6 +2416,7 @@ STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Kan deze
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kan deze order niet aanpassen...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kan voertuig niet verplaatsen...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}De achterste locomotief zal altijd het voorste deel volgen
+STR_8838_N_A                                                    :NVT.{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Kan treinonderdeel niet verkopen
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Kan geen route naar lokale depot vinden
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Kan trein niet starten of stoppen...
@@ -2758,6 +2766,8 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selectee
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dit geeft weer waarmee de aan de linkerkant geselecteerde locomotief mee vervangen wordt
 STR_REPLACE_HELP                                                :{BLACK}Deze optie stelt je in staat om een type locomotief te selecteren en die te vervangen door een andere. Dit zal automatisch gebeuren zodra de voertuigen een depot inrijden
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagons verwijderen: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}De te vervangen trein behoudt zijn lengte door wagons weg te halen (startend aan de voorkant), als het vervangen de trein langer zou maken
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomotief kan niet gebouwd worden
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Bordjes lijst - {COMMA} Bordjes

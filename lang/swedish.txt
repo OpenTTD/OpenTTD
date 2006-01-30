@@ -1222,21 +1222,21 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (publik)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_CLIENTS                                           :0 spelare
-STR_NETWORK_1_CLIENTS                                           :1 spelare
-STR_NETWORK_2_CLIENTS                                           :2 spelare
-STR_NETWORK_3_CLIENTS                                           :3 spelare
-STR_NETWORK_4_CLIENTS                                           :4 spelare
-STR_NETWORK_5_CLIENTS                                           :5 spelare
-STR_NETWORK_6_CLIENTS                                           :6 spelare
-STR_NETWORK_7_CLIENTS                                           :7 spelare
-STR_NETWORK_8_CLIENTS                                           :8 spelare
-STR_NETWORK_9_CLIENTS                                           :9 spelare
-STR_NETWORK_10_CLIENTS                                          :10 spelare
+STR_NETWORK_0_PLAYERS                                           :0 spelare
+STR_NETWORK_1_PLAYERS                                           :1 spelare
+STR_NETWORK_2_PLAYERS                                           :2 spelare
+STR_NETWORK_3_PLAYERS                                           :3 spelare
+STR_NETWORK_4_PLAYERS                                           :4 spelare
+STR_NETWORK_5_PLAYERS                                           :5 spelare
+STR_NETWORK_6_PLAYERS                                           :6 spelare
+STR_NETWORK_7_PLAYERS                                           :7 spelare
+STR_NETWORK_8_PLAYERS                                           :8 spelare
+STR_NETWORK_9_PLAYERS                                           :9 spelare
+STR_NETWORK_10_PLAYERS                                          :10 spelare
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Språk som talas:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Andra spelare kommer vara medvetna vilket språk som talas på servern.
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Starta spelet
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Starta ett nytt spel med en slumpmässig karta eller från ett scenario
