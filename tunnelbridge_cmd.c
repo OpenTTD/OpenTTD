@@ -830,7 +830,11 @@ clear_it:;
 
 	}
 
-	return ((((endtile - tile) >> (direction?8:0))&0xFF)+1) * _price.clear_bridge;
+	if (direction) {
+		return (TileY(endtile) - TileY(tile) + 1) * _price.clear_bridge;
+	} else {
+		return (TileX(endtile) - TileX(tile) + 1) * _price.clear_bridge;
+	}
 }
 
 static int32 ClearTile_TunnelBridge(TileIndex tile, byte flags)
