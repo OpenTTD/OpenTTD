@@ -71,13 +71,13 @@ OpenTTD has been ported to several platforms and operating systems. It shouldn't
 be very difficult to port it to a new platform. The currently working platforms
 are:
 
-	BeOS     - SDL
-	FreeBSD  - SDL
-	Linux    - SDL
-	Mac OS X - SDL
-	MorphOS  - SDL
-	OS/2     - SDL
-	Windows  - Win32 GDI (faster) or SDL
+	BeOS                 - SDL
+	FreeBSD              - SDL
+	Linux                - SDL
+	MacOS X (universal) - Cocoa video and sound drivers (SDL works too, but not 100% and not as a universal binary)
+	MorphOS              - SDL
+	OS/2                 - SDL
+	Windows              - Win32 GDI (faster) or SDL
 
 
 4.0) Running OpenTTD:
@@ -152,8 +152,8 @@ Unix:
   Note that you need SDL-devel 1.2.5 (or higher) to compile OpenTTD.
   (see also docs/Readme_Mandrake_Linux.txt)
 
-MacOSX:
-  Use "make".
+MacOS X:
+  Use "make" or Xcode (which will then call make for you)
 	This will give you a binary for your CPU type (PPC/Intel)
 	To make an universal binary type "make FAT_BINARY:=1"
 
