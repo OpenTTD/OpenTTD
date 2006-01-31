@@ -129,7 +129,7 @@ static void *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 	const TileInfo *ti = data;
 
 	if (v->tile != ti->tile || v->type == VEH_Disaster) return NULL;
-	if (!IS_INT_INSIDE(ti->z - v->z_pos, 0, 8)) return NULL;
+	if (!IS_INT_INSIDE(ti->z - v->z_pos, 0, 8 + 1)) return NULL;
 
 	VehicleInTheWayErrMsg(v);
 	return v;
