@@ -11,48 +11,83 @@ go to: http://www.tt-forums.net/viewtopic.php?t=9576
 Of course if you have more knowledge about any of these bugs, have more
 specifics, we welcome you to report them. React to the given bug indicated
 by the number below on http://sourceforge.net/tracker/?group_id=103924&atid=636365
+or http://bugs.openttd.org.
 If the the bug report is closed, it has been fixed, which then can be verified
 in the latest SVN version.
 
-Bugs for 0.4.0.1
+Bugs for 0.4.5
+------------------------------------------------------------------------
+URL: http://bugs.openttd.org
+
+-20	Saving files when run from gdb
+-45	NORETURN wrongly declared for gcc
+-46	Some if, for, switch and while have no space before (
+-47	rating calculation and cargo loading priority
+-9	[MorphOS] write to NULL when going to device root in filerequester
+-8	[MorphOS] game crashes if no TCP/IP stack is loaded
+
 ------------------------------------------------------------------------
 URL: http://sourceforge.net/tracker/?atid=636365&group_id=103924&func=browse
 
--		"Broken" autoreplace for dual-headed trains
--1203319	Pre-signal exits not working when one way signal
+-1417453	Makefile and Variables issue
+-1415782	crash in string code with openbsd/zaurus
+-1397638	Economics bug?
+-1395628	Trackpad panning/scrolling broken
+-1394799	Dual headed engines disagreement
+-1393415	NPF & one-way sigs
+-1393411	"Void Order" reporting.
+-1390260	Mis-reporting of Plane Crash
+-1389999	Child windows not sticking
+-1389986	Shares problem (nightly 3330)
+-1380497	problems with competitors during multiplayer
+-1372772	Train gets lost between two stations
+-1366446	different names for patches
+-1362784	Incorrect vehicule profit calcul with inflation on
+-1299162	Music volume too low
+-1288024	Strange string on OTTD initial screen
+-1250094	Towns Shrink when center tile is built on
+-1244842	Multiplayer interface bug (0.4.0.1)
+-1212267	station visited twice when servicing
+-1211764	AI companies behave weird on the stock market
+-1208170	Duplicate station names can be created
 -1197116	Some stations are cargo-less
 -1188897	Station with cargo enroute_from INVALID_STATION
--1186802	Company value problem (loans)
 -1181888	Invaild Station Order => Crash
 -1174829	Waypoint / Orders Bug
 -1168820	Some mouse and keyboard events are lost
 -1167810	Cargo payment after deleting stations (st->xy = 0)
 -1157244	Can't save game if name contains german umlauts
--1144510	Make install tries to install scenarios to the wrong place
 -1116638	"More, but smaller changes" deficiency
 -1106356	re-offered prototypes
--1099233	production down before it's working
 -1085486	Subsidies: Only count when station is in right suburb
--992677		BeOS MIDI does not initialise on newer BeOS releases
 
-Minor Bugs for 0.4.0.1
+Minor Bugs for 0.4.5
 ------------------------------------------------------------------------
 URL: http://sourceforge.net/tracker/?atid=669662&group_id=103924&func=browse
 
+-1412033	autoreplace not possible on monorail/maglev trains
+-1412031	fast forward scrolling is also fast forward :)
+-1395489	Nightly 3358 Linux Driver warnings
+-1394316	Multistop traffic jam
+-1394231	Autorenew glitch on helicopters
+-1387424	overtake insolvent company is to cheap
+-1382782	Loan interest calculated 'wrong'
+-1372891	Performance loss with NTP & NPF
+-1342383	Last built rail type not cleared when starting new game
+-1296259	Autosave override for multiplayer games
+-1254226	giant screenshot crashes multiplayer
+-1242753	Town population minus 10
+-1236320	Bug in main menu allows moving screen
 -1201284	permanent hilight in a depot
--1197258	Window Z-order locked when exiting openttd
--1193882	problems with dualhead engins in DB Set XL (v0.81)
 -1193870	keep the date counter running
 -1185852	Scrollbars get arbitrarily small
 -1184634	Replace vehicles window bug
 -1183253	Incorrect Load vs Loading Sprites
 -1183251	Hangar sprite does not update when refit.
--1179933	autorail removal does not go completely red.
 -1160732	little bug with transparency
 -1153937	Game wont run from a start menu shortcut
 -1117731	Editor-StartingDate
 -1114237	Wrong autoreplace hint
--1112784	detailed sound options
 -1108046	game freezes
 -1106889	Chat Interface enhancements
 -1104358	train lost message - history
@@ -62,13 +97,9 @@ URL: http://sourceforge.net/tracker/?atid=669662&group_id=103924&func=browse
 -1034310	color mauve in diagrams
 -1030661	It's possible to build a tunnel under oil wells
 -1009171	Canals and locks at sea level cause flooding
--993516		Canal + bouy -> wrong graphics.
--987891		Large UFO destruction bug
--987884		farm fences
--987883		Aircraft landing/taking off
--987880		company league table updating
--985924		aircraft taxi speed
--980276		Overflow in factory directory
--976824		transmitter base
--941694		Clipping problems stations/vehicles on slopes
--936997		Stationname too long to fit in trainwindow bug
+-0993516	Canal + bouy -> wrong graphics.
+-0987891	Large UFO destruction bug
+-0987883	Aircraft landing/taking off
+-0987880	company league table updating
+-0985924	aircraft taxi speed
+-0941694	Clipping problems stations/vehicles on slopes
