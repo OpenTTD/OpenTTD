@@ -989,7 +989,8 @@ static void ShowNetworkLobbyWindow(NetworkGameList *ngl)
 	Window *w;
 	DeleteWindowById(WC_NETWORK_WINDOW, 0);
 
-	NetworkQueryServer(_network_last_host, _network_last_port, false);
+	NetworkQueryServer(_network_last_host, _network_last_port, false); // company info
+	NetworkUDPQueryServer(_network_last_host, _network_last_port);     // general data
 
 	w = AllocateWindowDesc(&_network_lobby_window_desc);
 	if (w != NULL) {
