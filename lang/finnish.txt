@@ -82,70 +82,70 @@ STR_004A_TOFFEE                                                 :Toffee
 STR_004B_BATTERY                                                :Paristo
 STR_004C_PLASTIC                                                :Muovi
 STR_004D_FIZZY_DRINK                                            :Sihijuoma
-STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA} matkustaja{P "" a}
-STR_0050_TON_OF_COAL                                            :{COMMA} tonni{P "" a} kivihiiltä
-STR_0051_BAG_OF_MAIL                                            :{COMMA} säkki{P "" ä} postia
-STR_0052_OF_OIL                                                 :{VOLUME} öljyä
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} erä{P "" ä} karjaa
-STR_0054_CRATE_OF_GOODS                                         :{COMMA} laatikko{P "" a} tavaraa
-STR_0055_TON_OF_GRAIN                                           :{COMMA} tonni{P "" a} viljaa
-STR_0056_TON_OF_WOOD                                            :{COMMA} tonni{P "" a} puutavaraa
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA} tonni{P "" a} rautamalmia
-STR_0058_TON_OF_STEEL                                           :{COMMA} tonni{P "" a} terästä
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA} säkki{P "" ä} arvotavaraa
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} tonni{P "" a} kuparimalmia
-STR_005B_TON_OF_MAIZE                                           :{COMMA} tonni maissia
-STR_005C_TON_OF_FRUIT                                           :{COMMA} tonni{P "" a} hedelmiä
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} säkki{P "" ä} timantteja
-STR_005E_TON_OF_FOOD                                            :{COMMA} tonni{P "" a} ruokaa
-STR_005F_TON_OF_PAPER                                           :{COMMA} tonni{P "" a}  paperia
-STR_0060_BAG_OF_GOLD                                            :{COMMA} säkki{P "" ä} kultaa
-STR_0061_OF_WATER                                               :{VOLUME} vettä
-STR_0062_TON_OF_WHEAT                                           :{COMMA} tonni{P "" a} vehnää
-STR_0063_OF_RUBBER                                              :{VOLUME} kumia
-STR_0064_TON_OF_SUGAR                                           :{COMMA} tonni{P "" a} sokeria
-STR_0065_TOY                                                    :{COMMA} lelu{P "" a}
-STR_0066_BAG_OF_CANDY                                           :{COMMA} säkki{P "" ä} karkkia
-STR_0067_OF_COLA                                                :{VOLUME} limsaa
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} tonni{P "" a} hattaraa
-STR_0069_BUBBLE                                                 :{COMMA} kupla{P "" a}
-STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonni{P "" a} toffeeta
-STR_006B_BATTERY                                                :{COMMA} paristo{P "" a}
-STR_006C_OF_PLASTIC                                             :{VOLUME} muovia
-STR_006D_FIZZY_DRINK                                            :{COMMA} sihijuoma{P "" a}
-STR_008E                                                        :
-STR_008F_PS                                                     :{TINYFONT}MA
-STR_0090_CL                                                     :{TINYFONT}HL
-STR_0091_ML                                                     :{TINYFONT}SP
-STR_0092_OL                                                     :{TINYFONT}ÖL
-STR_0093_LV                                                     :{TINYFONT}KA
-STR_0094_GD                                                     :{TINYFONT}TA
-STR_0095_GR                                                     :{TINYFONT}VL
-STR_0096_WD                                                     :{TINYFONT}PT
-STR_0097_OR                                                     :{TINYFONT}RM
-STR_0098_ST                                                     :{TINYFONT}TR
-STR_0099_VL                                                     :{TINYFONT}AT
-STR_009A_CO                                                     :{TINYFONT}KM
-STR_009B_MZ                                                     :{TINYFONT}MS
-STR_009C_FT                                                     :{TINYFONT}HE
-STR_009D_DM                                                     :{TINYFONT}TI
-STR_009E_FD                                                     :{TINYFONT}RU
-STR_009F_PR                                                     :{TINYFONT}PA
-STR_00A0_GD                                                     :{TINYFONT}KU
-STR_00A1_WR                                                     :{TINYFONT}VS
-STR_00A2_WH                                                     :{TINYFONT}VH
-STR_00A3_RB                                                     :{TINYFONT}KI
-STR_00A4_SG                                                     :{TINYFONT}SK
-STR_00A5_TY                                                     :{TINYFONT}LL
-STR_00A6_SW                                                     :{TINYFONT}KR
-STR_00A7_CL                                                     :{TINYFONT}LM
-STR_00A8_CF                                                     :{TINYFONT}HT
-STR_00A9_BU                                                     :{TINYFONT}KP
-STR_00AA_TF                                                     :{TINYFONT}TF
-STR_00AB_BA                                                     :{TINYFONT}PT
-STR_00AC_PL                                                     :{TINYFONT}MV
-STR_00AD_FZ                                                     :{TINYFONT}SJ
+STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_PASSENGERS                                         :{COMMA} matkustaja{P "" a}
+STR_QUANTITY_COAL                                               :{COMMA} tonni{P "" a} kivihiiltä
+STR_QUANTITY_MAIL                                               :{COMMA} säkki{P "" ä} postia
+STR_QUANTITY_OIL                                                :{VOLUME} öljyä
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} erä{P "" ä} karjaa
+STR_QUANTITY_GOODS                                              :{COMMA} laatikko{P "" a} tavaraa
+STR_QUANTITY_GRAIN                                              :{COMMA} tonni{P "" a} viljaa
+STR_QUANTITY_WOOD                                               :{COMMA} tonni{P "" a} puutavaraa
+STR_QUANTITY_IRON_ORE                                           :{COMMA} tonni{P "" a} rautamalmia
+STR_QUANTITY_STEEL                                              :{COMMA} tonni{P "" a} terästä
+STR_QUANTITY_VALUABLES                                          :{COMMA} säkki{P "" ä} arvotavaraa
+STR_QUANTITY_COPPER_ORE                                         :{COMMA} tonni{P "" a} kuparimalmia
+STR_QUANTITY_MAIZE                                              :{COMMA} tonni maissia
+STR_QUANTITY_FRUIT                                              :{COMMA} tonni{P "" a} hedelmiä
+STR_QUANTITY_DIAMONDS                                           :{COMMA} säkki{P "" ä} timantteja
+STR_QUANTITY_FOOD                                               :{COMMA} tonni{P "" a} ruokaa
+STR_QUANTITY_PAPER                                              :{COMMA} tonni{P "" a}  paperia
+STR_QUANTITY_GOLD                                               :{COMMA} säkki{P "" ä} kultaa
+STR_QUANTITY_WATER                                              :{VOLUME} vettä
+STR_QUANTITY_WHEAT                                              :{COMMA} tonni{P "" a} vehnää
+STR_QUANTITY_RUBBER                                             :{VOLUME} kumia
+STR_QUANTITY_SUGAR                                              :{COMMA} tonni{P "" a} sokeria
+STR_QUANTITY_TOYS                                               :{COMMA} lelu{P "" a}
+STR_QUANTITY_SWEETS                                             :{COMMA} säkki{P "" ä} karkkia
+STR_QUANTITY_COLA                                               :{VOLUME} limsaa
+STR_QUANTITY_CANDYFLOSS                                         :{COMMA} tonni{P "" a} hattaraa
+STR_QUANTITY_BUBBLES                                            :{COMMA} kupla{P "" a}
+STR_QUANTITY_TOFFEE                                             :{COMMA} tonni{P "" a} toffeeta
+STR_QUANTITY_BATTERIES                                          :{COMMA} paristo{P "" a}
+STR_QUANTITY_PLASTIC                                            :{VOLUME} muovia
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} sihijuoma{P "" a}
+STR_ABBREV_NOTHING                                              :
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}MA
+STR_ABBREV_COAL                                                 :{TINYFONT}HL
+STR_ABBREV_MAIL                                                 :{TINYFONT}SP
+STR_ABBREV_OIL                                                  :{TINYFONT}ÖL
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}KA
+STR_ABBREV_GOODS                                                :{TINYFONT}TA
+STR_ABBREV_GRAIN                                                :{TINYFONT}VL
+STR_ABBREV_WOOD                                                 :{TINYFONT}PT
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}RM
+STR_ABBREV_STEEL                                                :{TINYFONT}TR
+STR_ABBREV_VALUABLES                                            :{TINYFONT}AT
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}KM
+STR_ABBREV_MAIZE                                                :{TINYFONT}MS
+STR_ABBREV_FRUIT                                                :{TINYFONT}HE
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}TI
+STR_ABBREV_FOOD                                                 :{TINYFONT}RU
+STR_ABBREV_PAPER                                                :{TINYFONT}PA
+STR_ABBREV_GOLD                                                 :{TINYFONT}KU
+STR_ABBREV_WATER                                                :{TINYFONT}VS
+STR_ABBREV_WHEAT                                                :{TINYFONT}VH
+STR_ABBREV_RUBBER                                               :{TINYFONT}KI
+STR_ABBREV_SUGAR                                                :{TINYFONT}SK
+STR_ABBREV_TOYS                                                 :{TINYFONT}LL
+STR_ABBREV_SWEETS                                               :{TINYFONT}KR
+STR_ABBREV_COLA                                                 :{TINYFONT}LM
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}HT
+STR_ABBREV_BUBBLES                                              :{TINYFONT}KP
+STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
+STR_ABBREV_BATTERIES                                            :{TINYFONT}PT
+STR_ABBREV_PLASTIC                                              :{TINYFONT}MV
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}SJ
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Kartta - {STRING}

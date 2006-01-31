@@ -82,46 +82,46 @@ STR_004A_TOFFEE                                                 :Iriska
 STR_004B_BATTERY                                                :Batareyki
 STR_004C_PLASTIC                                                :Plastik
 STR_004D_FIZZY_DRINK                                            :Shipuchie napitki
-STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA} passajirov
-STR_0050_TON_OF_COAL                                            :{COMMA} tonna uglya
-STR_0051_BAG_OF_MAIL                                            :{COMMA} sumka s pochtoy
-STR_0052_OF_OIL                                                 :{VOLUME} nefti
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} golov domashnego skota
-STR_0054_CRATE_OF_GOODS                                         :{COMMA} korobka s tovarom
-STR_0055_TON_OF_GRAIN                                           :{COMMA} tonna zerna
-STR_0056_TON_OF_WOOD                                            :{COMMA} tonna dereva
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA} tonna zheleznoy rudi
-STR_0058_TON_OF_STEEL                                           :{COMMA} tonna stali
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA} sumka s dragocennostyami
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} tonna mednoy rudi
-STR_005B_TON_OF_MAIZE                                           :{COMMA} tonna kukuruzi
-STR_005C_TON_OF_FRUIT                                           :{COMMA} tonna fruktov
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} meshok s almazami
-STR_005E_TON_OF_FOOD                                            :{COMMA} tonna prodovolstviya
-STR_005F_TON_OF_PAPER                                           :{COMMA} tonna bumagi
-STR_0060_BAG_OF_GOLD                                            :{COMMA} meshok zolota
-STR_0061_OF_WATER                                               :{VOLUME} vodi
-STR_0062_TON_OF_WHEAT                                           :{COMMA} tonna pshenici
-STR_0063_OF_RUBBER                                              :{VOLUME} rezini
-STR_0064_TON_OF_SUGAR                                           :{COMMA} tonna sahara
-STR_0065_TOY                                                    :{COMMA} igrushka
-STR_0066_BAG_OF_CANDY                                           :{COMMA} meshok sladostey
-STR_0067_OF_COLA                                                :{VOLUME} koli
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} tonna saharnoy vati
-STR_0069_BUBBLE                                                 :{COMMA} puzirki
-STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonna irisok
-STR_006B_BATTERY                                                :{COMMA} batareyki
-STR_006C_OF_PLASTIC                                             :{VOLUME} plastika
-STR_006D_FIZZY_DRINK                                            :{COMMA} shipuchie napitki
-STR_008E                                                        :
-STR_008F_PS                                                     :{TINYFONT}PS
-STR_0090_CL                                                     :{TINYFONT}CL
-STR_0091_ML                                                     :{TINYFONT}ML
-STR_0092_OL                                                     :{TINYFONT}OL
-STR_0093_LV                                                     :{TINYFONT}LV
-STR_0094_GD                                                     :{TINYFONT}GD
-STR_0095_GR                                                     :{TINYFONT}GR
+STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_PASSENGERS                                         :{COMMA} passajirov
+STR_QUANTITY_COAL                                               :{COMMA} tonna uglya
+STR_QUANTITY_MAIL                                               :{COMMA} sumka s pochtoy
+STR_QUANTITY_OIL                                                :{VOLUME} nefti
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} golov domashnego skota
+STR_QUANTITY_GOODS                                              :{COMMA} korobka s tovarom
+STR_QUANTITY_GRAIN                                              :{COMMA} tonna zerna
+STR_QUANTITY_WOOD                                               :{COMMA} tonna dereva
+STR_QUANTITY_IRON_ORE                                           :{COMMA} tonna zheleznoy rudi
+STR_QUANTITY_STEEL                                              :{COMMA} tonna stali
+STR_QUANTITY_VALUABLES                                          :{COMMA} sumka s dragocennostyami
+STR_QUANTITY_COPPER_ORE                                         :{COMMA} tonna mednoy rudi
+STR_QUANTITY_MAIZE                                              :{COMMA} tonna kukuruzi
+STR_QUANTITY_FRUIT                                              :{COMMA} tonna fruktov
+STR_QUANTITY_DIAMONDS                                           :{COMMA} meshok s almazami
+STR_QUANTITY_FOOD                                               :{COMMA} tonna prodovolstviya
+STR_QUANTITY_PAPER                                              :{COMMA} tonna bumagi
+STR_QUANTITY_GOLD                                               :{COMMA} meshok zolota
+STR_QUANTITY_WATER                                              :{VOLUME} vodi
+STR_QUANTITY_WHEAT                                              :{COMMA} tonna pshenici
+STR_QUANTITY_RUBBER                                             :{VOLUME} rezini
+STR_QUANTITY_SUGAR                                              :{COMMA} tonna sahara
+STR_QUANTITY_TOYS                                               :{COMMA} igrushka
+STR_QUANTITY_SWEETS                                             :{COMMA} meshok sladostey
+STR_QUANTITY_COLA                                               :{VOLUME} koli
+STR_QUANTITY_CANDYFLOSS                                         :{COMMA} tonna saharnoy vati
+STR_QUANTITY_BUBBLES                                            :{COMMA} puzirki
+STR_QUANTITY_TOFFEE                                             :{COMMA} tonna irisok
+STR_QUANTITY_BATTERIES                                          :{COMMA} batareyki
+STR_QUANTITY_PLASTIC                                            :{VOLUME} plastika
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} shipuchie napitki
+STR_ABBREV_NOTHING                                              :
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
+STR_ABBREV_COAL                                                 :{TINYFONT}CL
+STR_ABBREV_MAIL                                                 :{TINYFONT}ML
+STR_ABBREV_OIL                                                  :{TINYFONT}OL
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}LV
+STR_ABBREV_GOODS                                                :{TINYFONT}GD
+STR_ABBREV_GRAIN                                                :{TINYFONT}GR
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Karta - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Igrovie Opcii

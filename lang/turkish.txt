@@ -82,70 +82,70 @@ STR_004A_TOFFEE                                                 :Bonbon
 STR_004B_BATTERY                                                :Pil
 STR_004C_PLASTIC                                                :Plastik
 STR_004D_FIZZY_DRINK                                            :içecek
-STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA} yolcu
-STR_0050_TON_OF_COAL                                            :{COMMA} ton kömür
-STR_0051_BAG_OF_MAIL                                            :{COMMA} çanta posta
-STR_0052_OF_OIL                                                 :{VOLUME} petrol
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} tane hayvan
-STR_0054_CRATE_OF_GOODS                                         :{COMMA} kasa esya
-STR_0055_TON_OF_GRAIN                                           :{COMMA} ton tahil
-STR_0056_TON_OF_WOOD                                            :{COMMA} ton odun
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA} ton demir
-STR_0058_TON_OF_STEEL                                           :{COMMA} ton çelik
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA} çanta mücevher
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} ton bakir
-STR_005B_TON_OF_MAIZE                                           :{COMMA} ton misir
-STR_005C_TON_OF_FRUIT                                           :{COMMA} ton meyve
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} canta elmas
-STR_005E_TON_OF_FOOD                                            :{COMMA} ton yiyecek
-STR_005F_TON_OF_PAPER                                           :{COMMA} ton kagit
-STR_0060_BAG_OF_GOLD                                            :{COMMA} çanta altin
-STR_0061_OF_WATER                                               :{VOLUME} su
-STR_0062_TON_OF_WHEAT                                           :{COMMA} ton un
-STR_0063_OF_RUBBER                                              :{VOLUME} lastik
-STR_0064_TON_OF_SUGAR                                           :{COMMA} ton seker
-STR_0065_TOY                                                    :{COMMA} oyuncak
-STR_0066_BAG_OF_CANDY                                           :{COMMA} canta tatli
-STR_0067_OF_COLA                                                :{VOLUME} kola
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} ton pamukhelva
-STR_0069_BUBBLE                                                 :{COMMA} balon
-STR_006A_TON_OF_TOFFEE                                          :{COMMA} ton bonbon
-STR_006B_BATTERY                                                :{COMMA} pil
-STR_006C_OF_PLASTIC                                             :{VOLUME} plastik
-STR_006D_FIZZY_DRINK                                            :{COMMA} içecek
-STR_008E                                                        :
-STR_008F_PS                                                     :{TINYFONT}YL
-STR_0090_CL                                                     :{TINYFONT}KÖ
-STR_0091_ML                                                     :{TINYFONT}PO
-STR_0092_OL                                                     :{TINYFONT}PE
-STR_0093_LV                                                     :{TINYFONT}HV
-STR_0094_GD                                                     :{TINYFONT}ES
-STR_0095_GR                                                     :{TINYFONT}TH
-STR_0096_WD                                                     :{TINYFONT}OD
-STR_0097_OR                                                     :{TINYFONT}DM
-STR_0098_ST                                                     :{TINYFONT}ÇE
-STR_0099_VL                                                     :{TINYFONT}MÜ
-STR_009A_CO                                                     :{TINYFONT}BK
-STR_009B_MZ                                                     :{TINYFONT}MS
-STR_009C_FT                                                     :{TINYFONT}MV
-STR_009D_DM                                                     :{TINYFONT}EL
-STR_009E_FD                                                     :{TINYFONT}YE
-STR_009F_PR                                                     :{TINYFONT}KA
-STR_00A0_GD                                                     :{TINYFONT}ES
-STR_00A1_WR                                                     :{TINYFONT}SU
-STR_00A2_WH                                                     :{TINYFONT}UN
-STR_00A3_RB                                                     :{TINYFONT}LA
-STR_00A4_SG                                                     :{TINYFONT}SK
-STR_00A5_TY                                                     :{TINYFONT}OY
-STR_00A6_SW                                                     :{TINYFONT}TA
-STR_00A7_CL                                                     :{TINYFONT}KO
-STR_00A8_CF                                                     :{TINYFONT}PH
-STR_00A9_BU                                                     :{TINYFONT}BA
-STR_00AA_TF                                                     :{TINYFONT}PH
-STR_00AB_BA                                                     :{TINYFONT}PI
-STR_00AC_PL                                                     :{TINYFONT}PL
-STR_00AD_FZ                                                     :{TINYFONT}iç
+STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_PASSENGERS                                         :{COMMA} yolcu
+STR_QUANTITY_COAL                                               :{COMMA} ton kömür
+STR_QUANTITY_MAIL                                               :{COMMA} çanta posta
+STR_QUANTITY_OIL                                                :{VOLUME} petrol
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} tane hayvan
+STR_QUANTITY_GOODS                                              :{COMMA} kasa esya
+STR_QUANTITY_GRAIN                                              :{COMMA} ton tahil
+STR_QUANTITY_WOOD                                               :{COMMA} ton odun
+STR_QUANTITY_IRON_ORE                                           :{COMMA} ton demir
+STR_QUANTITY_STEEL                                              :{COMMA} ton çelik
+STR_QUANTITY_VALUABLES                                          :{COMMA} çanta mücevher
+STR_QUANTITY_COPPER_ORE                                         :{COMMA} ton bakir
+STR_QUANTITY_MAIZE                                              :{COMMA} ton misir
+STR_QUANTITY_FRUIT                                              :{COMMA} ton meyve
+STR_QUANTITY_DIAMONDS                                           :{COMMA} canta elmas
+STR_QUANTITY_FOOD                                               :{COMMA} ton yiyecek
+STR_QUANTITY_PAPER                                              :{COMMA} ton kagit
+STR_QUANTITY_GOLD                                               :{COMMA} çanta altin
+STR_QUANTITY_WATER                                              :{VOLUME} su
+STR_QUANTITY_WHEAT                                              :{COMMA} ton un
+STR_QUANTITY_RUBBER                                             :{VOLUME} lastik
+STR_QUANTITY_SUGAR                                              :{COMMA} ton seker
+STR_QUANTITY_TOYS                                               :{COMMA} oyuncak
+STR_QUANTITY_SWEETS                                             :{COMMA} canta tatli
+STR_QUANTITY_COLA                                               :{VOLUME} kola
+STR_QUANTITY_CANDYFLOSS                                         :{COMMA} ton pamukhelva
+STR_QUANTITY_BUBBLES                                            :{COMMA} balon
+STR_QUANTITY_TOFFEE                                             :{COMMA} ton bonbon
+STR_QUANTITY_BATTERIES                                          :{COMMA} pil
+STR_QUANTITY_PLASTIC                                            :{VOLUME} plastik
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} içecek
+STR_ABBREV_NOTHING                                              :
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}YL
+STR_ABBREV_COAL                                                 :{TINYFONT}KÖ
+STR_ABBREV_MAIL                                                 :{TINYFONT}PO
+STR_ABBREV_OIL                                                  :{TINYFONT}PE
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}HV
+STR_ABBREV_GOODS                                                :{TINYFONT}ES
+STR_ABBREV_GRAIN                                                :{TINYFONT}TH
+STR_ABBREV_WOOD                                                 :{TINYFONT}OD
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}DM
+STR_ABBREV_STEEL                                                :{TINYFONT}ÇE
+STR_ABBREV_VALUABLES                                            :{TINYFONT}MÜ
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}BK
+STR_ABBREV_MAIZE                                                :{TINYFONT}MS
+STR_ABBREV_FRUIT                                                :{TINYFONT}MV
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}EL
+STR_ABBREV_FOOD                                                 :{TINYFONT}YE
+STR_ABBREV_PAPER                                                :{TINYFONT}KA
+STR_ABBREV_GOLD                                                 :{TINYFONT}ES
+STR_ABBREV_WATER                                                :{TINYFONT}SU
+STR_ABBREV_WHEAT                                                :{TINYFONT}UN
+STR_ABBREV_RUBBER                                               :{TINYFONT}LA
+STR_ABBREV_SUGAR                                                :{TINYFONT}SK
+STR_ABBREV_TOYS                                                 :{TINYFONT}OY
+STR_ABBREV_SWEETS                                               :{TINYFONT}TA
+STR_ABBREV_COLA                                                 :{TINYFONT}KO
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}PH
+STR_ABBREV_BUBBLES                                              :{TINYFONT}BA
+STR_ABBREV_TOFFEE                                               :{TINYFONT}PH
+STR_ABBREV_BATTERIES                                            :{TINYFONT}PI
+STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}iç
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Harita - {STRING}

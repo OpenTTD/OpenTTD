@@ -82,69 +82,69 @@ STR_004A_TOFFEE                                                 :karamela
 STR_004B_BATTERY                                                :baterija
 STR_004C_PLASTIC                                                :plastika
 STR_004D_FIZZY_DRINK                                            :gazirana pijaca
-STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA} potnikov
-STR_0050_TON_OF_COAL                                            :{COMMA} ton premoga
-STR_0051_BAG_OF_MAIL                                            :{COMMA} vrec poste
-STR_0052_OF_OIL                                                 :{VOLUME} nafte
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} glav zivine
-STR_0054_CRATE_OF_GOODS                                         :{COMMA} gajb tovora
-STR_0055_TON_OF_GRAIN                                           :{COMMA} ton zita
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA} ton zelezove rude
-STR_0058_TON_OF_STEEL                                           :{COMMA} ton jekla
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA} vrec dragocenosti
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} ton bakrove rude
-STR_005B_TON_OF_MAIZE                                           :{COMMA} ton koruze
-STR_005C_TON_OF_FRUIT                                           :{COMMA} ton sadja
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} vrec diamantov
-STR_005E_TON_OF_FOOD                                            :{COMMA} ton hrane
-STR_005F_TON_OF_PAPER                                           :{COMMA} ton papirja
-STR_0060_BAG_OF_GOLD                                            :{COMMA} vrec zlata
-STR_0061_OF_WATER                                               :{VOLUME} vode
-STR_0062_TON_OF_WHEAT                                           :{COMMA} ton psenice
-STR_0063_OF_RUBBER                                              :{VOLUME} gume
-STR_0064_TON_OF_SUGAR                                           :{COMMA} ton sladkorja
-STR_0065_TOY                                                    :{COMMA} igrac
-STR_0066_BAG_OF_CANDY                                           :{COMMA} vrec bombonov
-STR_0067_OF_COLA                                                :{VOLUME} cockte
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} ton sladkorne pene
-STR_0069_BUBBLE                                                 :{COMMA} balonckov
-STR_006A_TON_OF_TOFFEE                                          :{COMMA} ton karamele
-STR_006B_BATTERY                                                :{COMMA} baterij
-STR_006C_OF_PLASTIC                                             :{VOLUME} plastike
-STR_006D_FIZZY_DRINK                                            :{COMMA} gaziranih pijac
-STR_008E                                                        :
-STR_008F_PS                                                     :{TINYFONT}PO
-STR_0090_CL                                                     :{TINYFONT}PR
-STR_0091_ML                                                     :{TINYFONT}PS
-STR_0092_OL                                                     :{TINYFONT}NF
-STR_0093_LV                                                     :{TINYFONT}ZV
-STR_0094_GD                                                     :{TINYFONT}TO
-STR_0095_GR                                                     :{TINYFONT}ZT
-STR_0096_WD                                                     :{TINYFONT}LS
-STR_0097_OR                                                     :{TINYFONT}ZZ
-STR_0098_ST                                                     :{TINYFONT}JK
-STR_0099_VL                                                     :{TINYFONT}DR
-STR_009A_CO                                                     :{TINYFONT}BK
-STR_009B_MZ                                                     :{TINYFONT}KZ
-STR_009C_FT                                                     :{TINYFONT}SJ
-STR_009D_DM                                                     :{TINYFONT}DM
-STR_009E_FD                                                     :{TINYFONT}HR
-STR_009F_PR                                                     :{TINYFONT}PR
-STR_00A0_GD                                                     :{TINYFONT}ZL
-STR_00A1_WR                                                     :{TINYFONT}VO
-STR_00A2_WH                                                     :{TINYFONT}PN
-STR_00A3_RB                                                     :{TINYFONT}GU
-STR_00A4_SG                                                     :{TINYFONT}SK
-STR_00A5_TY                                                     :{TINYFONT}IG
-STR_00A6_SW                                                     :{TINYFONT}BB
-STR_00A7_CL                                                     :{TINYFONT}CL
-STR_00A8_CF                                                     :{TINYFONT}SP
-STR_00A9_BU                                                     :{TINYFONT}BL
-STR_00AA_TF                                                     :{TINYFONT}KA
-STR_00AB_BA                                                     :{TINYFONT}BA
-STR_00AC_PL                                                     :{TINYFONT}PL
-STR_00AD_FZ                                                     :{TINYFONT}GP
+STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_PASSENGERS                                         :{COMMA} potnikov
+STR_QUANTITY_COAL                                               :{COMMA} ton premoga
+STR_QUANTITY_MAIL                                               :{COMMA} vrec poste
+STR_QUANTITY_OIL                                                :{VOLUME} nafte
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} glav zivine
+STR_QUANTITY_GOODS                                              :{COMMA} gajb tovora
+STR_QUANTITY_GRAIN                                              :{COMMA} ton zita
+STR_QUANTITY_IRON_ORE                                           :{COMMA} ton zelezove rude
+STR_QUANTITY_STEEL                                              :{COMMA} ton jekla
+STR_QUANTITY_VALUABLES                                          :{COMMA} vrec dragocenosti
+STR_QUANTITY_COPPER_ORE                                         :{COMMA} ton bakrove rude
+STR_QUANTITY_MAIZE                                              :{COMMA} ton koruze
+STR_QUANTITY_FRUIT                                              :{COMMA} ton sadja
+STR_QUANTITY_DIAMONDS                                           :{COMMA} vrec diamantov
+STR_QUANTITY_FOOD                                               :{COMMA} ton hrane
+STR_QUANTITY_PAPER                                              :{COMMA} ton papirja
+STR_QUANTITY_GOLD                                               :{COMMA} vrec zlata
+STR_QUANTITY_WATER                                              :{VOLUME} vode
+STR_QUANTITY_WHEAT                                              :{COMMA} ton psenice
+STR_QUANTITY_RUBBER                                             :{VOLUME} gume
+STR_QUANTITY_SUGAR                                              :{COMMA} ton sladkorja
+STR_QUANTITY_TOYS                                               :{COMMA} igrac
+STR_QUANTITY_SWEETS                                             :{COMMA} vrec bombonov
+STR_QUANTITY_COLA                                               :{VOLUME} cockte
+STR_QUANTITY_CANDYFLOSS                                         :{COMMA} ton sladkorne pene
+STR_QUANTITY_BUBBLES                                            :{COMMA} balonckov
+STR_QUANTITY_TOFFEE                                             :{COMMA} ton karamele
+STR_QUANTITY_BATTERIES                                          :{COMMA} baterij
+STR_QUANTITY_PLASTIC                                            :{VOLUME} plastike
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} gaziranih pijac
+STR_ABBREV_NOTHING                                              :
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}PO
+STR_ABBREV_COAL                                                 :{TINYFONT}PR
+STR_ABBREV_MAIL                                                 :{TINYFONT}PS
+STR_ABBREV_OIL                                                  :{TINYFONT}NF
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}ZV
+STR_ABBREV_GOODS                                                :{TINYFONT}TO
+STR_ABBREV_GRAIN                                                :{TINYFONT}ZT
+STR_ABBREV_WOOD                                                 :{TINYFONT}LS
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}ZZ
+STR_ABBREV_STEEL                                                :{TINYFONT}JK
+STR_ABBREV_VALUABLES                                            :{TINYFONT}DR
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}BK
+STR_ABBREV_MAIZE                                                :{TINYFONT}KZ
+STR_ABBREV_FRUIT                                                :{TINYFONT}SJ
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
+STR_ABBREV_FOOD                                                 :{TINYFONT}HR
+STR_ABBREV_PAPER                                                :{TINYFONT}PR
+STR_ABBREV_GOLD                                                 :{TINYFONT}ZL
+STR_ABBREV_WATER                                                :{TINYFONT}VO
+STR_ABBREV_WHEAT                                                :{TINYFONT}PN
+STR_ABBREV_RUBBER                                               :{TINYFONT}GU
+STR_ABBREV_SUGAR                                                :{TINYFONT}SK
+STR_ABBREV_TOYS                                                 :{TINYFONT}IG
+STR_ABBREV_SWEETS                                               :{TINYFONT}BB
+STR_ABBREV_COLA                                                 :{TINYFONT}CL
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}SP
+STR_ABBREV_BUBBLES                                              :{TINYFONT}BL
+STR_ABBREV_TOFFEE                                               :{TINYFONT}KA
+STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
+STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}GP
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Mapa - {STRING}

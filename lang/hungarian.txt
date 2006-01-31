@@ -114,70 +114,70 @@ STR_004A_TOFFEE                                                 :tejkaramella
 STR_004B_BATTERY                                                :elem
 STR_004C_PLASTIC                                                :mûanyag
 STR_004D_FIZZY_DRINK                                            :szénsavas ital
-STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA} utas
-STR_0050_TON_OF_COAL                                            :{COMMA} tonna szén
-STR_0051_BAG_OF_MAIL                                            :{COMMA} csomag levél
-STR_0052_OF_OIL                                                 :{VOLUME} olaj
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} állat
-STR_0054_CRATE_OF_GOODS                                         :{COMMA} láda áru
-STR_0055_TON_OF_GRAIN                                           :{COMMA} tonna búza
-STR_0056_TON_OF_WOOD                                            :{COMMA} tonna fa
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA} tonna vasérc
-STR_0058_TON_OF_STEEL                                           :{COMMA} tonna acél
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA} csomag értéktárgy
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} tonna rézérc
-STR_005B_TON_OF_MAIZE                                           :{COMMA} tonna kukorica
-STR_005C_TON_OF_FRUIT                                           :{COMMA} tonna gyümölcs
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} zsák gyémánt
-STR_005E_TON_OF_FOOD                                            :{COMMA} tonna étel
-STR_005F_TON_OF_PAPER                                           :{COMMA} tonna papír
-STR_0060_BAG_OF_GOLD                                            :{COMMA} zsák arany
-STR_0061_OF_WATER                                               :{VOLUME} víz
-STR_0062_TON_OF_WHEAT                                           :{COMMA} tonna búza
-STR_0063_OF_RUBBER                                              :{VOLUME} gumi
-STR_0064_TON_OF_SUGAR                                           :{COMMA} tonna cukor
-STR_0065_TOY                                                    :{COMMA} játék
-STR_0066_BAG_OF_CANDY                                           :{COMMA} zsák cukorka
-STR_0067_OF_COLA                                                :{VOLUME} kóla
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} tonna vattacukor
-STR_0069_BUBBLE                                                 :{COMMA} buborék
-STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonna tejkaramella
-STR_006B_BATTERY                                                :{COMMA} elem
-STR_006C_OF_PLASTIC                                             :{VOLUME} mûanyag
-STR_006D_FIZZY_DRINK                                            :{COMMA} szénsavas ital
-STR_008E                                                        :
-STR_008F_PS                                                     :{TINYFONT}UT
-STR_0090_CL                                                     :{TINYFONT}SZ
-STR_0091_ML                                                     :{TINYFONT}LV
-STR_0092_OL                                                     :{TINYFONT}OL
-STR_0093_LV                                                     :{TINYFONT}ÁL
-STR_0094_GD                                                     :{TINYFONT}ÁR
-STR_0095_GR                                                     :{TINYFONT}BZ
-STR_0096_WD                                                     :{TINYFONT}FA
-STR_0097_OR                                                     :{TINYFONT}VÉ
-STR_0098_ST                                                     :{TINYFONT}AC
-STR_0099_VL                                                     :{TINYFONT}ÉP
-STR_009A_CO                                                     :{TINYFONT}RÉ
-STR_009B_MZ                                                     :{TINYFONT}KU
-STR_009C_FT                                                     :{TINYFONT}GÜ
-STR_009D_DM                                                     :{TINYFONT}GM
-STR_009E_FD                                                     :{TINYFONT}ÉT
-STR_009F_PR                                                     :{TINYFONT}PR
-STR_00A0_GD                                                     :{TINYFONT}AR
-STR_00A1_WR                                                     :{TINYFONT}VZ
-STR_00A2_WH                                                     :{TINYFONT}BZ
-STR_00A3_RB                                                     :{TINYFONT}GM
-STR_00A4_SG                                                     :{TINYFONT}CU
-STR_00A5_TY                                                     :{TINYFONT}JT
-STR_00A6_SW                                                     :{TINYFONT}CK
-STR_00A7_CL                                                     :{TINYFONT}KL
-STR_00A8_CF                                                     :{TINYFONT}VC
-STR_00A9_BU                                                     :{TINYFONT}BB
-STR_00AA_TF                                                     :{TINYFONT}TK
-STR_00AB_BA                                                     :{TINYFONT}EL
-STR_00AC_PL                                                     :{TINYFONT}MA
-STR_00AD_FZ                                                     :{TINYFONT}SS
+STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_PASSENGERS                                         :{COMMA} utas
+STR_QUANTITY_COAL                                               :{COMMA} tonna szén
+STR_QUANTITY_MAIL                                               :{COMMA} csomag levél
+STR_QUANTITY_OIL                                                :{VOLUME} olaj
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} állat
+STR_QUANTITY_GOODS                                              :{COMMA} láda áru
+STR_QUANTITY_GRAIN                                              :{COMMA} tonna búza
+STR_QUANTITY_WOOD                                               :{COMMA} tonna fa
+STR_QUANTITY_IRON_ORE                                           :{COMMA} tonna vasérc
+STR_QUANTITY_STEEL                                              :{COMMA} tonna acél
+STR_QUANTITY_VALUABLES                                          :{COMMA} csomag értéktárgy
+STR_QUANTITY_COPPER_ORE                                         :{COMMA} tonna rézérc
+STR_QUANTITY_MAIZE                                              :{COMMA} tonna kukorica
+STR_QUANTITY_FRUIT                                              :{COMMA} tonna gyümölcs
+STR_QUANTITY_DIAMONDS                                           :{COMMA} zsák gyémánt
+STR_QUANTITY_FOOD                                               :{COMMA} tonna étel
+STR_QUANTITY_PAPER                                              :{COMMA} tonna papír
+STR_QUANTITY_GOLD                                               :{COMMA} zsák arany
+STR_QUANTITY_WATER                                              :{VOLUME} víz
+STR_QUANTITY_WHEAT                                              :{COMMA} tonna búza
+STR_QUANTITY_RUBBER                                             :{VOLUME} gumi
+STR_QUANTITY_SUGAR                                              :{COMMA} tonna cukor
+STR_QUANTITY_TOYS                                               :{COMMA} játék
+STR_QUANTITY_SWEETS                                             :{COMMA} zsák cukorka
+STR_QUANTITY_COLA                                               :{VOLUME} kóla
+STR_QUANTITY_CANDYFLOSS                                         :{COMMA} tonna vattacukor
+STR_QUANTITY_BUBBLES                                            :{COMMA} buborék
+STR_QUANTITY_TOFFEE                                             :{COMMA} tonna tejkaramella
+STR_QUANTITY_BATTERIES                                          :{COMMA} elem
+STR_QUANTITY_PLASTIC                                            :{VOLUME} mûanyag
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} szénsavas ital
+STR_ABBREV_NOTHING                                              :
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}UT
+STR_ABBREV_COAL                                                 :{TINYFONT}SZ
+STR_ABBREV_MAIL                                                 :{TINYFONT}LV
+STR_ABBREV_OIL                                                  :{TINYFONT}OL
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}ÁL
+STR_ABBREV_GOODS                                                :{TINYFONT}ÁR
+STR_ABBREV_GRAIN                                                :{TINYFONT}BZ
+STR_ABBREV_WOOD                                                 :{TINYFONT}FA
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}VÉ
+STR_ABBREV_STEEL                                                :{TINYFONT}AC
+STR_ABBREV_VALUABLES                                            :{TINYFONT}ÉP
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}RÉ
+STR_ABBREV_MAIZE                                                :{TINYFONT}KU
+STR_ABBREV_FRUIT                                                :{TINYFONT}GÜ
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}GM
+STR_ABBREV_FOOD                                                 :{TINYFONT}ÉT
+STR_ABBREV_PAPER                                                :{TINYFONT}PR
+STR_ABBREV_GOLD                                                 :{TINYFONT}AR
+STR_ABBREV_WATER                                                :{TINYFONT}VZ
+STR_ABBREV_WHEAT                                                :{TINYFONT}BZ
+STR_ABBREV_RUBBER                                               :{TINYFONT}GM
+STR_ABBREV_SUGAR                                                :{TINYFONT}CU
+STR_ABBREV_TOYS                                                 :{TINYFONT}JT
+STR_ABBREV_SWEETS                                               :{TINYFONT}CK
+STR_ABBREV_COLA                                                 :{TINYFONT}KL
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}VC
+STR_ABBREV_BUBBLES                                              :{TINYFONT}BB
+STR_ABBREV_TOFFEE                                               :{TINYFONT}TK
+STR_ABBREV_BATTERIES                                            :{TINYFONT}EL
+STR_ABBREV_PLASTIC                                              :{TINYFONT}MA
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}SS
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Térkép - {STRING}

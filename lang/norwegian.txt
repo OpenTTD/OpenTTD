@@ -82,70 +82,70 @@ STR_004A_TOFFEE                                                 :Karamell
 STR_004B_BATTERY                                                :Batteri
 STR_004C_PLASTIC                                                :Plastikk
 STR_004D_FIZZY_DRINK                                            :Brus
-STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA} passasjer
-STR_0050_TON_OF_COAL                                            :{COMMA} tonn kull
-STR_0051_BAG_OF_MAIL                                            :{COMMA} postsekk
-STR_0052_OF_OIL                                                 :{VOLUME} olje
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} enhet buskap
-STR_0054_CRATE_OF_GOODS                                         :{COMMA} kasse gods
-STR_0055_TON_OF_GRAIN                                           :{COMMA} tonn korn
-STR_0056_TON_OF_WOOD                                            :{COMMA} tonn tømmer
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA} tonn jernmalm
-STR_0058_TON_OF_STEEL                                           :{COMMA} tonn stål
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA} sekk med verdisaker
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} tonn kobbermalm
-STR_005B_TON_OF_MAIZE                                           :{COMMA} tonn mais
-STR_005C_TON_OF_FRUIT                                           :{COMMA} tonn frukt
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} sekk med diamanter
-STR_005E_TON_OF_FOOD                                            :{COMMA} tonn mat
-STR_005F_TON_OF_PAPER                                           :{COMMA} tonn papir
-STR_0060_BAG_OF_GOLD                                            :{COMMA} sekk med gull
-STR_0061_OF_WATER                                               :{VOLUME} vann
-STR_0062_TON_OF_WHEAT                                           :{COMMA} tonn hvete
-STR_0063_OF_RUBBER                                              :{VOLUME} gummi
-STR_0064_TON_OF_SUGAR                                           :{COMMA} tonn sukker
-STR_0065_TOY                                                    :{COMMA} leke
-STR_0066_BAG_OF_CANDY                                           :{COMMA} sekk med søtsaker
-STR_0067_OF_COLA                                                :{VOLUME} cola
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} tonn sukkerspinn
-STR_0069_BUBBLE                                                 :{COMMA} boble
-STR_006A_TON_OF_TOFFEE                                          :{COMMA} tonn karamell
-STR_006B_BATTERY                                                :{COMMA} batteri
-STR_006C_OF_PLASTIC                                             :{VOLUME} plastikk
-STR_006D_FIZZY_DRINK                                            :{COMMA} brus
-STR_008E                                                        :
-STR_008F_PS                                                     :{TINYFONT}PS
-STR_0090_CL                                                     :{TINYFONT}KL
-STR_0091_ML                                                     :{TINYFONT}PT
-STR_0092_OL                                                     :{TINYFONT}OL
-STR_0093_LV                                                     :{TINYFONT}BS
-STR_0094_GD                                                     :{TINYFONT}GD
-STR_0095_GR                                                     :{TINYFONT}KN
-STR_0096_WD                                                     :{TINYFONT}VD
-STR_0097_OR                                                     :{TINYFONT}JM
-STR_0098_ST                                                     :{TINYFONT}ST
-STR_0099_VL                                                     :{TINYFONT}VS
-STR_009A_CO                                                     :{TINYFONT}KM
-STR_009B_MZ                                                     :{TINYFONT}MS
-STR_009C_FT                                                     :{TINYFONT}FT
-STR_009D_DM                                                     :{TINYFONT}DM
-STR_009E_FD                                                     :{TINYFONT}MT
-STR_009F_PR                                                     :{TINYFONT}PR
-STR_00A0_GD                                                     :{TINYFONT}GL
-STR_00A1_WR                                                     :{TINYFONT}VN
-STR_00A2_WH                                                     :{TINYFONT}HV
-STR_00A3_RB                                                     :{TINYFONT}GM
-STR_00A4_SG                                                     :{TINYFONT}SK
-STR_00A5_TY                                                     :{TINYFONT}LT
-STR_00A6_SW                                                     :{TINYFONT}SS
-STR_00A7_CL                                                     :{TINYFONT}CL
-STR_00A8_CF                                                     :{TINYFONT}SP
-STR_00A9_BU                                                     :{TINYFONT}BO
-STR_00AA_TF                                                     :{TINYFONT}KM
-STR_00AB_BA                                                     :{TINYFONT}BA
-STR_00AC_PL                                                     :{TINYFONT}PL
-STR_00AD_FZ                                                     :{TINYFONT}MV
+STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_PASSENGERS                                         :{COMMA} passasjer
+STR_QUANTITY_COAL                                               :{COMMA} tonn kull
+STR_QUANTITY_MAIL                                               :{COMMA} postsekk
+STR_QUANTITY_OIL                                                :{VOLUME} olje
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} enhet buskap
+STR_QUANTITY_GOODS                                              :{COMMA} kasse gods
+STR_QUANTITY_GRAIN                                              :{COMMA} tonn korn
+STR_QUANTITY_WOOD                                               :{COMMA} tonn tømmer
+STR_QUANTITY_IRON_ORE                                           :{COMMA} tonn jernmalm
+STR_QUANTITY_STEEL                                              :{COMMA} tonn stål
+STR_QUANTITY_VALUABLES                                          :{COMMA} sekk med verdisaker
+STR_QUANTITY_COPPER_ORE                                         :{COMMA} tonn kobbermalm
+STR_QUANTITY_MAIZE                                              :{COMMA} tonn mais
+STR_QUANTITY_FRUIT                                              :{COMMA} tonn frukt
+STR_QUANTITY_DIAMONDS                                           :{COMMA} sekk med diamanter
+STR_QUANTITY_FOOD                                               :{COMMA} tonn mat
+STR_QUANTITY_PAPER                                              :{COMMA} tonn papir
+STR_QUANTITY_GOLD                                               :{COMMA} sekk med gull
+STR_QUANTITY_WATER                                              :{VOLUME} vann
+STR_QUANTITY_WHEAT                                              :{COMMA} tonn hvete
+STR_QUANTITY_RUBBER                                             :{VOLUME} gummi
+STR_QUANTITY_SUGAR                                              :{COMMA} tonn sukker
+STR_QUANTITY_TOYS                                               :{COMMA} leke
+STR_QUANTITY_SWEETS                                             :{COMMA} sekk med søtsaker
+STR_QUANTITY_COLA                                               :{VOLUME} cola
+STR_QUANTITY_CANDYFLOSS                                         :{COMMA} tonn sukkerspinn
+STR_QUANTITY_BUBBLES                                            :{COMMA} boble
+STR_QUANTITY_TOFFEE                                             :{COMMA} tonn karamell
+STR_QUANTITY_BATTERIES                                          :{COMMA} batteri
+STR_QUANTITY_PLASTIC                                            :{VOLUME} plastikk
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} brus
+STR_ABBREV_NOTHING                                              :
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
+STR_ABBREV_COAL                                                 :{TINYFONT}KL
+STR_ABBREV_MAIL                                                 :{TINYFONT}PT
+STR_ABBREV_OIL                                                  :{TINYFONT}OL
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}BS
+STR_ABBREV_GOODS                                                :{TINYFONT}GD
+STR_ABBREV_GRAIN                                                :{TINYFONT}KN
+STR_ABBREV_WOOD                                                 :{TINYFONT}VD
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}JM
+STR_ABBREV_STEEL                                                :{TINYFONT}ST
+STR_ABBREV_VALUABLES                                            :{TINYFONT}VS
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}KM
+STR_ABBREV_MAIZE                                                :{TINYFONT}MS
+STR_ABBREV_FRUIT                                                :{TINYFONT}FT
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
+STR_ABBREV_FOOD                                                 :{TINYFONT}MT
+STR_ABBREV_PAPER                                                :{TINYFONT}PR
+STR_ABBREV_GOLD                                                 :{TINYFONT}GL
+STR_ABBREV_WATER                                                :{TINYFONT}VN
+STR_ABBREV_WHEAT                                                :{TINYFONT}HV
+STR_ABBREV_RUBBER                                               :{TINYFONT}GM
+STR_ABBREV_SUGAR                                                :{TINYFONT}SK
+STR_ABBREV_TOYS                                                 :{TINYFONT}LT
+STR_ABBREV_SWEETS                                               :{TINYFONT}SS
+STR_ABBREV_COLA                                                 :{TINYFONT}CL
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}SP
+STR_ABBREV_BUBBLES                                              :{TINYFONT}BO
+STR_ABBREV_TOFFEE                                               :{TINYFONT}KM
+STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
+STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}MV
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Kart - {STRING}

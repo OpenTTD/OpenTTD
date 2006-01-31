@@ -83,70 +83,70 @@ STR_004A_TOFFEE                                                 :Karamell
 STR_004B_BATTERY                                                :Batterie
 STR_004C_PLASTIC                                                :Plastik
 STR_004D_FIZZY_DRINK                                            :Limonade
-STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA} Passagier{P "" e}
-STR_0050_TON_OF_COAL                                            :{COMMA} Tonne{P "" n} Kohle
-STR_0051_BAG_OF_MAIL                                            :{COMMA} Posts{P ack äcke}
-STR_0052_OF_OIL                                                 :{VOLUME} Öl
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} Stück Vieh
-STR_0054_CRATE_OF_GOODS                                         :{COMMA} Warenkiste{P "" n}
-STR_0055_TON_OF_GRAIN                                           :{COMMA} Tonne{P "" n} Getreide
-STR_0056_TON_OF_WOOD                                            :{COMMA} Tonne{P "" n} Holz
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA} Tonne{P "" n} Eisenerz
-STR_0058_TON_OF_STEEL                                           :{COMMA} Tonne{P "" n} Stahl
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA} {P Sack Säcke} mit Wertsachen
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} Tonne{P "" n} Kupfererz
-STR_005B_TON_OF_MAIZE                                           :{COMMA} Tonne{P "" n} Mais
-STR_005C_TON_OF_FRUIT                                           :{COMMA} Tonne{P "" n} Früchte
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} {P Sack Säcke} mit Diamanten
-STR_005E_TON_OF_FOOD                                            :{COMMA} Tonne{P "" n} Nahrungsmittel
-STR_005F_TON_OF_PAPER                                           :{COMMA} Tonne{P "" n} Papier
-STR_0060_BAG_OF_GOLD                                            :{COMMA} {P Sack Säcke} mit Gold
-STR_0061_OF_WATER                                               :{VOLUME} Wasser
-STR_0062_TON_OF_WHEAT                                           :{COMMA} Tonne{P "" n} Weizen
-STR_0063_OF_RUBBER                                              :{VOLUME} Kautschuk
-STR_0064_TON_OF_SUGAR                                           :{COMMA} Tonne{P "" n} Zucker
-STR_0065_TOY                                                    :{COMMA} Spielzeug{P "" e}
-STR_0066_BAG_OF_CANDY                                           :{COMMA} {P Sack Säcke} mit Bonbons
-STR_0067_OF_COLA                                                :{VOLUME} Cola
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} Tonne{P "" n} Zuckerwatte
-STR_0069_BUBBLE                                                 :{COMMA} Luftblase{P "" n}
-STR_006A_TON_OF_TOFFEE                                          :{COMMA} Tonne{P "" n} Karamell
-STR_006B_BATTERY                                                :{COMMA} Batterie{P "" n}
-STR_006C_OF_PLASTIC                                             :{VOLUME} Plastik
-STR_006D_FIZZY_DRINK                                            :{COMMA} Limonade{P "" n}
-STR_008E                                                        :
-STR_008F_PS                                                     :{TINYFONT}PS
-STR_0090_CL                                                     :{TINYFONT}KL
-STR_0091_ML                                                     :{TINYFONT}PO
-STR_0092_OL                                                     :{TINYFONT}ÖL
-STR_0093_LV                                                     :{TINYFONT}VI
-STR_0094_GD                                                     :{TINYFONT}WK
-STR_0095_GR                                                     :{TINYFONT}GT
-STR_0096_WD                                                     :{TINYFONT}HO
-STR_0097_OR                                                     :{TINYFONT}EE
-STR_0098_ST                                                     :{TINYFONT}ST
-STR_0099_VL                                                     :{TINYFONT}WE
-STR_009A_CO                                                     :{TINYFONT}KU
-STR_009B_MZ                                                     :{TINYFONT}MA
-STR_009C_FT                                                     :{TINYFONT}FR
-STR_009D_DM                                                     :{TINYFONT}DI
-STR_009E_FD                                                     :{TINYFONT}NM
-STR_009F_PR                                                     :{TINYFONT}PA
-STR_00A0_GD                                                     :{TINYFONT}GD
-STR_00A1_WR                                                     :{TINYFONT}WA
-STR_00A2_WH                                                     :{TINYFONT}WZ
-STR_00A3_RB                                                     :{TINYFONT}KA
-STR_00A4_SG                                                     :{TINYFONT}ZU
-STR_00A5_TY                                                     :{TINYFONT}SP
-STR_00A6_SW                                                     :{TINYFONT}BO
-STR_00A7_CL                                                     :{TINYFONT}CO
-STR_00A8_CF                                                     :{TINYFONT}ZW
-STR_00A9_BU                                                     :{TINYFONT}LB
-STR_00AA_TF                                                     :{TINYFONT}KM
-STR_00AB_BA                                                     :{TINYFONT}BA
-STR_00AC_PL                                                     :{TINYFONT}PL
-STR_00AD_FZ                                                     :{TINYFONT}LI
+STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_PASSENGERS                                         :{COMMA} Passagier{P "" e}
+STR_QUANTITY_COAL                                               :{COMMA} Tonne{P "" n} Kohle
+STR_QUANTITY_MAIL                                               :{COMMA} Posts{P ack äcke}
+STR_QUANTITY_OIL                                                :{VOLUME} Öl
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} Stück Vieh
+STR_QUANTITY_GOODS                                              :{COMMA} Warenkiste{P "" n}
+STR_QUANTITY_GRAIN                                              :{COMMA} Tonne{P "" n} Getreide
+STR_QUANTITY_WOOD                                               :{COMMA} Tonne{P "" n} Holz
+STR_QUANTITY_IRON_ORE                                           :{COMMA} Tonne{P "" n} Eisenerz
+STR_QUANTITY_STEEL                                              :{COMMA} Tonne{P "" n} Stahl
+STR_QUANTITY_VALUABLES                                          :{COMMA} {P Sack Säcke} mit Wertsachen
+STR_QUANTITY_COPPER_ORE                                         :{COMMA} Tonne{P "" n} Kupfererz
+STR_QUANTITY_MAIZE                                              :{COMMA} Tonne{P "" n} Mais
+STR_QUANTITY_FRUIT                                              :{COMMA} Tonne{P "" n} Früchte
+STR_QUANTITY_DIAMONDS                                           :{COMMA} {P Sack Säcke} mit Diamanten
+STR_QUANTITY_FOOD                                               :{COMMA} Tonne{P "" n} Nahrungsmittel
+STR_QUANTITY_PAPER                                              :{COMMA} Tonne{P "" n} Papier
+STR_QUANTITY_GOLD                                               :{COMMA} {P Sack Säcke} mit Gold
+STR_QUANTITY_WATER                                              :{VOLUME} Wasser
+STR_QUANTITY_WHEAT                                              :{COMMA} Tonne{P "" n} Weizen
+STR_QUANTITY_RUBBER                                             :{VOLUME} Kautschuk
+STR_QUANTITY_SUGAR                                              :{COMMA} Tonne{P "" n} Zucker
+STR_QUANTITY_TOYS                                               :{COMMA} Spielzeug{P "" e}
+STR_QUANTITY_SWEETS                                             :{COMMA} {P Sack Säcke} mit Bonbons
+STR_QUANTITY_COLA                                               :{VOLUME} Cola
+STR_QUANTITY_CANDYFLOSS                                         :{COMMA} Tonne{P "" n} Zuckerwatte
+STR_QUANTITY_BUBBLES                                            :{COMMA} Luftblase{P "" n}
+STR_QUANTITY_TOFFEE                                             :{COMMA} Tonne{P "" n} Karamell
+STR_QUANTITY_BATTERIES                                          :{COMMA} Batterie{P "" n}
+STR_QUANTITY_PLASTIC                                            :{VOLUME} Plastik
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} Limonade{P "" n}
+STR_ABBREV_NOTHING                                              :
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
+STR_ABBREV_COAL                                                 :{TINYFONT}KL
+STR_ABBREV_MAIL                                                 :{TINYFONT}PO
+STR_ABBREV_OIL                                                  :{TINYFONT}ÖL
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}VI
+STR_ABBREV_GOODS                                                :{TINYFONT}WK
+STR_ABBREV_GRAIN                                                :{TINYFONT}GT
+STR_ABBREV_WOOD                                                 :{TINYFONT}HO
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}EE
+STR_ABBREV_STEEL                                                :{TINYFONT}ST
+STR_ABBREV_VALUABLES                                            :{TINYFONT}WE
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}KU
+STR_ABBREV_MAIZE                                                :{TINYFONT}MA
+STR_ABBREV_FRUIT                                                :{TINYFONT}FR
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}DI
+STR_ABBREV_FOOD                                                 :{TINYFONT}NM
+STR_ABBREV_PAPER                                                :{TINYFONT}PA
+STR_ABBREV_GOLD                                                 :{TINYFONT}GD
+STR_ABBREV_WATER                                                :{TINYFONT}WA
+STR_ABBREV_WHEAT                                                :{TINYFONT}WZ
+STR_ABBREV_RUBBER                                               :{TINYFONT}KA
+STR_ABBREV_SUGAR                                                :{TINYFONT}ZU
+STR_ABBREV_TOYS                                                 :{TINYFONT}SP
+STR_ABBREV_SWEETS                                               :{TINYFONT}BO
+STR_ABBREV_COLA                                                 :{TINYFONT}CO
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}ZW
+STR_ABBREV_BUBBLES                                              :{TINYFONT}LB
+STR_ABBREV_TOFFEE                                               :{TINYFONT}KM
+STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
+STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}LI
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Karte - {STRING}

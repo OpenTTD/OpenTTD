@@ -82,70 +82,70 @@ STR_004A_TOFFEE                                                 :Toffee
 STR_004B_BATTERY                                                :Batería
 STR_004C_PLASTIC                                                :Plástico
 STR_004D_FIZZY_DRINK                                            :Bebida Gaseosa
-STR_004E                                                        :
-STR_004F_PASSENGER                                              :{COMMA} pasaxeiro
-STR_0050_TON_OF_COAL                                            :{COMMA} ton. de carbón
-STR_0051_BAG_OF_MAIL                                            :{COMMA} saco de correo
-STR_0052_OF_OIL                                                 :{VOLUME} de petróleo
-STR_0053_ITEM_OF_LIVESTOCK                                      :{COMMA} item de gando
-STR_0054_CRATE_OF_GOODS                                         :{COMMA} caixón de mercadorías
-STR_0055_TON_OF_GRAIN                                           :{COMMA} ton. de gran
-STR_0056_TON_OF_WOOD                                            :{COMMA} ton. de madeira
-STR_0057_TON_OF_IRON_ORE                                        :{COMMA} ton. de hematita
-STR_0058_TON_OF_STEEL                                           :{COMMA} ton. de aceiro
-STR_0059_BAG_OF_VALUABLES                                       :{COMMA} saco de valores
-STR_005A_TON_OF_COPPER_ORE                                      :{COMMA} ton. de mineral de cobre
-STR_005B_TON_OF_MAIZE                                           :{COMMA} ton. de millo
-STR_005C_TON_OF_FRUIT                                           :{COMMA} ton. de froita
-STR_005D_BAG_OF_DIAMONDS                                        :{COMMA} saco de diamantes
-STR_005E_TON_OF_FOOD                                            :{COMMA} ton. de comida
-STR_005F_TON_OF_PAPER                                           :{COMMA} ton. de papel
-STR_0060_BAG_OF_GOLD                                            :{COMMA} saco de ouro
-STR_0061_OF_WATER                                               :{VOLUME} de auga
-STR_0062_TON_OF_WHEAT                                           :{COMMA} ton. de trigo
-STR_0063_OF_RUBBER                                              :{VOLUME} de caucho
-STR_0064_TON_OF_SUGAR                                           :{COMMA} ton. de azucre
-STR_0065_TOY                                                    :{COMMA} xoguete
-STR_0066_BAG_OF_CANDY                                           :{COMMA} saco de caramelo
-STR_0067_OF_COLA                                                :{VOLUME} de cola
-STR_0068_TON_OF_COTTON_CANDY                                    :{COMMA} ton. de algodón de azucre
-STR_0069_BUBBLE                                                 :{COMMA} burbulla
-STR_006A_TON_OF_TOFFEE                                          :{COMMA} ton. de toffee
-STR_006B_BATTERY                                                :{COMMA} batería
-STR_006C_OF_PLASTIC                                             :{VOLUME} de plástico
-STR_006D_FIZZY_DRINK                                            :{COMMA} bebida gaseosa
-STR_008E                                                        :
-STR_008F_PS                                                     :{TINYFONT}PS
-STR_0090_CL                                                     :{TINYFONT}CL
-STR_0091_ML                                                     :{TINYFONT}ML
-STR_0092_OL                                                     :{TINYFONT}OL
-STR_0093_LV                                                     :{TINYFONT}LV
-STR_0094_GD                                                     :{TINYFONT}GD
-STR_0095_GR                                                     :{TINYFONT}GR
-STR_0096_WD                                                     :{TINYFONT}WD
-STR_0097_OR                                                     :{TINYFONT}OR
-STR_0098_ST                                                     :{TINYFONT}ST
-STR_0099_VL                                                     :{TINYFONT}VL
-STR_009A_CO                                                     :{TINYFONT}CO
-STR_009B_MZ                                                     :{TINYFONT}MZ
-STR_009C_FT                                                     :{TINYFONT}FT
-STR_009D_DM                                                     :{TINYFONT}DM
-STR_009E_FD                                                     :{TINYFONT}FD
-STR_009F_PR                                                     :{TINYFONT}PR
-STR_00A0_GD                                                     :{TINYFONT}GD
-STR_00A1_WR                                                     :{TINYFONT}WR
-STR_00A2_WH                                                     :{TINYFONT}WH
-STR_00A3_RB                                                     :{TINYFONT}RB
-STR_00A4_SG                                                     :{TINYFONT}SG
-STR_00A5_TY                                                     :{TINYFONT}TY
-STR_00A6_SW                                                     :{TINYFONT}SW
-STR_00A7_CL                                                     :{TINYFONT}CL
-STR_00A8_CF                                                     :{TINYFONT}CF
-STR_00A9_BU                                                     :{TINYFONT}BU
-STR_00AA_TF                                                     :{TINYFONT}TF
-STR_00AB_BA                                                     :{TINYFONT}BA
-STR_00AC_PL                                                     :{TINYFONT}PL
-STR_00AD_FZ                                                     :{TINYFONT}FZ
+STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_PASSENGERS                                         :{COMMA} pasaxeiro
+STR_QUANTITY_COAL                                               :{COMMA} ton. de carbón
+STR_QUANTITY_MAIL                                               :{COMMA} saco de correo
+STR_QUANTITY_OIL                                                :{VOLUME} de petróleo
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} item de gando
+STR_QUANTITY_GOODS                                              :{COMMA} caixón de mercadorías
+STR_QUANTITY_GRAIN                                              :{COMMA} ton. de gran
+STR_QUANTITY_WOOD                                               :{COMMA} ton. de madeira
+STR_QUANTITY_IRON_ORE                                           :{COMMA} ton. de hematita
+STR_QUANTITY_STEEL                                              :{COMMA} ton. de aceiro
+STR_QUANTITY_VALUABLES                                          :{COMMA} saco de valores
+STR_QUANTITY_COPPER_ORE                                         :{COMMA} ton. de mineral de cobre
+STR_QUANTITY_MAIZE                                              :{COMMA} ton. de millo
+STR_QUANTITY_FRUIT                                              :{COMMA} ton. de froita
+STR_QUANTITY_DIAMONDS                                           :{COMMA} saco de diamantes
+STR_QUANTITY_FOOD                                               :{COMMA} ton. de comida
+STR_QUANTITY_PAPER                                              :{COMMA} ton. de papel
+STR_QUANTITY_GOLD                                               :{COMMA} saco de ouro
+STR_QUANTITY_WATER                                              :{VOLUME} de auga
+STR_QUANTITY_WHEAT                                              :{COMMA} ton. de trigo
+STR_QUANTITY_RUBBER                                             :{VOLUME} de caucho
+STR_QUANTITY_SUGAR                                              :{COMMA} ton. de azucre
+STR_QUANTITY_TOYS                                               :{COMMA} xoguete
+STR_QUANTITY_SWEETS                                             :{COMMA} saco de caramelo
+STR_QUANTITY_COLA                                               :{VOLUME} de cola
+STR_QUANTITY_CANDYFLOSS                                         :{COMMA} ton. de algodón de azucre
+STR_QUANTITY_BUBBLES                                            :{COMMA} burbulla
+STR_QUANTITY_TOFFEE                                             :{COMMA} ton. de toffee
+STR_QUANTITY_BATTERIES                                          :{COMMA} batería
+STR_QUANTITY_PLASTIC                                            :{VOLUME} de plástico
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} bebida gaseosa
+STR_ABBREV_NOTHING                                              :
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
+STR_ABBREV_COAL                                                 :{TINYFONT}CL
+STR_ABBREV_MAIL                                                 :{TINYFONT}ML
+STR_ABBREV_OIL                                                  :{TINYFONT}OL
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}LV
+STR_ABBREV_GOODS                                                :{TINYFONT}GD
+STR_ABBREV_GRAIN                                                :{TINYFONT}GR
+STR_ABBREV_WOOD                                                 :{TINYFONT}WD
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}OR
+STR_ABBREV_STEEL                                                :{TINYFONT}ST
+STR_ABBREV_VALUABLES                                            :{TINYFONT}VL
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}CO
+STR_ABBREV_MAIZE                                                :{TINYFONT}MZ
+STR_ABBREV_FRUIT                                                :{TINYFONT}FT
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
+STR_ABBREV_FOOD                                                 :{TINYFONT}FD
+STR_ABBREV_PAPER                                                :{TINYFONT}PR
+STR_ABBREV_GOLD                                                 :{TINYFONT}GD
+STR_ABBREV_WATER                                                :{TINYFONT}WR
+STR_ABBREV_WHEAT                                                :{TINYFONT}WH
+STR_ABBREV_RUBBER                                               :{TINYFONT}RB
+STR_ABBREV_SUGAR                                                :{TINYFONT}SG
+STR_ABBREV_TOYS                                                 :{TINYFONT}TY
+STR_ABBREV_SWEETS                                               :{TINYFONT}SW
+STR_ABBREV_COLA                                                 :{TINYFONT}CL
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}CF
+STR_ABBREV_BUBBLES                                              :{TINYFONT}BU
+STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
+STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
+STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Mapa - {STRING}
