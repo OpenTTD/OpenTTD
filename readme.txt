@@ -1,6 +1,6 @@
 OpenTTD README
-Last updated:    2005-09-09
-Release version: 0.4.1
+Last updated:    2006-01-31
+Release version: 0.4.5
 ------------------------------------------------------------------------
 
 
@@ -74,7 +74,7 @@ are:
 	BeOS                 - SDL
 	FreeBSD              - SDL
 	Linux                - SDL
-	MacOS X (universal) - Cocoa video and sound drivers (SDL works too, but not 100% and not as a universal binary)
+	MacOS X (universal)  - Cocoa video and sound drivers (SDL works too, but not 100% and not as a universal binary)
 	MorphOS              - SDL
 	OS/2                 - SDL
 	Windows              - Win32 GDI (faster) or SDL

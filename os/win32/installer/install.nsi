@@ -1,8 +1,8 @@
 ; Define your application name
 !define APPNAME "OpenTTD"
-!define APPNAMEANDVERSION "OpenTTD 0.4.0.1"
-!define APPVERSION "0.4.0.1"
-!define INSTALLERVERSION 16 ;NEED TO UPDATE THIS FOR EVERY RELEASE!!!
+!define APPNAMEANDVERSION "OpenTTD 0.4.5.0"
+!define APPVERSION "0.4.5.0"
+!define INSTALLERVERSION 17 ;NEED TO UPDATE THIS FOR EVERY RELEASE!!!
 !define MUI_ICON "..\..\..\openttd.ico"
 !define MUI_UNICON "..\..\..\openttd.ico"
 !define MUI_WELCOMEFINISHPAGE_BITMAP "welcome.bmp"
@@ -238,7 +238,7 @@ Section Uninstall
 
 	; Data files
 	Delete "$INSTDIR\data\opntitle.dat"
-	Delete "$INSTDIR\data\signalsw.grf"
+	Delete "$INSTDIR\data\nsignalsw.grf"
 	Delete "$INSTDIR\data\openttd.grf"
 	Delete "$INSTDIR\data\canalsw.grf"
 	Delete "$INSTDIR\data\trkfoundw.grf"
