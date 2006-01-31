@@ -267,11 +267,7 @@ ENDIAN_CHECK=endian_check$(EXE)
 STRGEN=strgen/strgen$(EXE)
 OSXAPP="OpenTTD.app"
 
-ifdef RELEASE
-REV:=$(RELEASE)
-else
-REV := $(shell if test -d .svn; then svnversion . | awk '{ print "r"$$0 }'; fi)
-endif
+REV := 0.4.5
 
 # MorphOS needs builddate
 BUILDDATE=`date +%d.%m.%y`
