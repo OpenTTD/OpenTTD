@@ -1194,7 +1194,6 @@ STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Spillets
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Sprog, server version, osv.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Klik på et spil fra listen for at vælge det
 
-STR_NETWORK_FIND_SERVER                                         :{BLACK}Find server
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Søg netværket for en server
 STR_NETWORK_ADD_SERVER                                          :{BLACK}Tilføj server
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Tilføj en server til listen, som altid vil blive checket for om den kører et spil
@@ -1251,7 +1250,6 @@ STR_NETWORK_10_PLAYERS                                          :10 spillere
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max firmaer:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Begræns serveren to et bestemt antal firmaer
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max spectators:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Begræns serveren til et bestemt antal tilskurere
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Talt sprog:

@@ -309,14 +309,14 @@ STR_0152_TOWN_DIRECTORY                                         :Kaupunkihakemis
 STR_0153_SUBSIDIES                                              :Tuet
 
 ############ range for menu	starts
-STR_0154_OPERATING_PROFIT_GRAPH                                 :Tuoton kuvaaja
+STR_0154_OPERATING_PROFIT_GRAPH                                 :Käyttökatekuvaaja
 STR_0155_INCOME_GRAPH                                           :Ansiotulon kuvaaja
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Kuljetetun rahdin kuvaaja
-STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Suorituskyvyn historiakuvaaja
+STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Suoritehistoriakuvaaja
 STR_0158_COMPANY_VALUE_GRAPH                                    :Yhtiön arvon kuvaaja
 STR_0159_CARGO_PAYMENT_RATES                                    :Rahtimaksutaksat
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Yhtiökilpataulukko
-STR_PERFORMANCE_DETAIL_MENU                                     :Suoritustehoarvio
+STR_PERFORMANCE_DETAIL_MENU                                     :Suoritearviointi
 ############ range for menu	ends
 
 STR_015B_OPENTTD                                                :{WHITE}Tietoja OpenTTD:stä
@@ -394,6 +394,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Sulje ik
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Ikkunan otsake - vedä tästä siirtääksesi ikkunaa.
 STR_STICKY_BUTTON                                               :{BLACK}Merkitse ikkuna tahmeaksi; 'Sulje kaikki ikkunat'-nappi ei vaikuta tahmeisiin ikkunoihin.
 STR_RESIZE_BUTTON                                               :{BLACK}Napsauta ja vedä muuttaaksesi tämän ikkunan kokoa.
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Siirry tallennusten oletuskansioon napsauttamalla tätä
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Tyhjennä ruutuja rakennuksista yms.
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Madalla maakulmausta.
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Korota maakulmausta.
@@ -995,6 +996,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Näkymät
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Lumirajan korkeus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Suurin aseman levittäytyminen: {ORANGE}{STRING} {RED}Huom: korkea asetus hidastaa peliä
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Huolla helikopterit helikopterialustoilla automaattisesti: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Kiinnitä maastonmuokkauspalkki rakentamistyökalupalkkeihin: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Käänteinen vierityssuunta: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Junia/pelaajaa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Ajoneuvoja/pelaajaa: {ORANGE}{STRING}
@@ -1007,6 +1010,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Tietoko
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Tietokoneella ei ole laivoja: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Ota käyttöön uusi AI (alpha): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Salli tekoälyt moninpelissä (kokeellinen): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Oletushuoltoväli junille: {ORANGE}{STRING} päivää
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Oletushuoltoväli junille: {ORANGE}pois päältä
@@ -1170,6 +1174,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Aloita t
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Tervetuloa käyttämään uutta tekoälyä (kehitysversio). Ongelmia voi esiintyä, ja kun sellainen tulee vastaan, ota kuvankaappaus ja lähetä se keskustelualueelle. Pidä hauskaa!
 TEMP_AI_ACTIVATED                                               :{WHITE}Varoitus: uusi tekoäly on vielä alpha-koodia! Tällä hetkellä vain rekat ja linja-autot toimivat!
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Varoitus: toteutus on edelleen kokeellinen (käyttää uutta tekoälyä). Ongelmailmoitukset: truelight@openttd.org.
 
 ############ network gui strings
 
@@ -1178,7 +1183,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Moninpel
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Pelaajan nimi
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Pelaajat tunnistetaan ja erotetaan toisistaan nimien avulla.
 STR_NETWORK_CONNECTION                                          :{BLACK}Yhteys:
-STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Valitse Internet-peli tai paikaillisverkkopeli.
+STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Valitse Internet-peli tai paikallisverkkopeli
 
 STR_NETWORK_START_SERVER                                        :{BLACK}Käynnistä palvelin
 STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Käynnistä oma palvelin.
@@ -1231,7 +1236,22 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :Lähiverkko/Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (mainosta)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_0_PLAYERS                                           :0 pelaajaa
+STR_NETWORK_1_PLAYERS                                           :1 pelaaja
+STR_NETWORK_2_PLAYERS                                           :2 pelaajaa
+STR_NETWORK_3_PLAYERS                                           :3 pelaajaa
+STR_NETWORK_4_PLAYERS                                           :4 pelaajaa
+STR_NETWORK_5_PLAYERS                                           :5 pelaajaa
+STR_NETWORK_6_PLAYERS                                           :6 pelaajaa
+STR_NETWORK_7_PLAYERS                                           :7 pelaajaa
+STR_NETWORK_8_PLAYERS                                           :8 pelaajaa
+STR_NETWORK_9_PLAYERS                                           :9 pelaajaa
+STR_NETWORK_10_PLAYERS                                          :10 pelaajaa
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Yhtiöiden enimmäismäärä:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Rajoita yhtiöiden määrää palvelimella
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Katsojien enimmäismäärä:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Rajoita katsojien määrää palvelimella
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Puhuttu kieli:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Toiset pelaajat tietävät tästä, mitä kieltä palvelimella puhutaan.
@@ -1268,7 +1288,7 @@ STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Peruste
 STR_NETWORK_VALUE                                               :{SILVER}Yhtiön arvo:  {WHITE}{CURRENCY64}
 STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Nykyinen kate:  {WHITE}{CURRENCY64}
 STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Viime vuoden tulot:  {WHITE}{CURRENCY64}
-STR_NETWORK_PERFORMANCE                                         :{SILVER}Suorituskyky:  {WHITE}{NUM}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Suorite:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Liikenneväl.:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_STATIONS                                            :{SILVER}Asemat:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -1330,6 +1350,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :väärä pelisalas
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :väärä player-id DoCommand:ssa
 STR_NETWORK_ERR_CLIENT_KICKED                                   :palvelin potki pihalle
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :yritti käyttää huijausta
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :palvelin täynnä
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :liittyi peliin
 STR_NETWORK_GIVE_MONEY                                          :antoi yhtiöllesi rahaa ({CURRENCY})
@@ -1959,7 +1980,7 @@ STR_7021                                                        :{COMPANY}{PLAYE
 STR_7022_INCOME_GRAPH                                           :{WHITE}Tulokuvaaja
 STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
-STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Tuottokuvaaja
+STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Käyttökatekuvaaja
 STR_7026_BANK_BALANCE                                           :{WHITE}Tilin saldo
 STR_7027_LOAN                                                   :{WHITE}Laina
 STR_MAX_LOAN                                                    :{WHITE}Laina enimmillään:  {BLACK}{CURRENCY64}
@@ -2001,7 +2022,7 @@ STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Näytä ku
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Selite yhtiön kuvaajiin
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Napsauta tässä laittaaksesi yhtiön merkinnän graafissa päälle/pois.
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Rahtia kuljetettu (yksikköä)
-STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Yhtiön suorituskykyarvio (enimmäisarvio=1000)
+STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Yhtiön suoritearvio (enimmäisarvio=1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Yhtiöiden arvot
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Yhtiökilpataulukko
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
@@ -2393,6 +2414,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Uutta py
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Pysähdystä ei voi poistaa...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Pysähdystä ei voi muokata...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Liikennevälinettä ei voi siirtää...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Moottorivaunun takaosa seuraa aina etuosaansa
 STR_8838_N_A                                                    :-{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Yksikköä ei voi myydä...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Reittiä paikalliselle veturitallille ei löydy.
@@ -2667,7 +2689,7 @@ STR_BRIBE_FAILED                                                :{WHITE}Yleinen 
 STR_BRIBE_FAILED_2                                              :{WHITE}lahjontayrityksesi.
 STR_BUILD_DATE                                                  :{BLACK}Rakennettu: {LTBLUE}{DATE_LONG}
 
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Yksityiskohtainen suoritustehoarvio
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Yksityiskohtainen suoritearvio
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Yksityiskohta
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
@@ -2742,6 +2764,9 @@ STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Napsauta
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Valitse rautatietyyppi, jolle veturikorvaukset tehdään.
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Näyttää, millä vasemmalta valittu veturi korvataan, jos millään.
 STR_REPLACE_HELP                                                :{BLACK}Tällä voit korvata yhden veturityypin toisella, kun alkuperäisen tyypin junat menevät varikolle.
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vaunun poisto: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automaattikorvaus pitäköön junan vakiopituisena poistamalla vaunuja (edestä) jos veturi pidentäisi junaa.
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Veturi ei ole rakennettavissa
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Kylttilista - {COMMA} kylttiä
