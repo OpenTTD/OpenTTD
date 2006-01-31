@@ -778,7 +778,7 @@ static void ShowNetworkStartServerWindow(void)
 
 	_saveload_mode = SLD_NEW_GAME;
 	BuildFileList();
-	w->vscroll.cap = 9;
+	w->vscroll.cap = 12;
 	w->vscroll.count = _fios_num+1;
 
 	WP(w, network_ql_d).q.text.caret = true;
@@ -820,8 +820,8 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 		w->disabled_state = 0;
 
 		if (nd->company == (byte)-1) SETBIT(w->disabled_state, 7);
-		if (gi->companies_on == gi->companies_max) SETBIT(w->disabled_state, 8);
-		if (gi->spectators_on == gi->spectators_max) SETBIT(w->disabled_state, 9);
+		if (gi->companies_on >= gi->companies_max) SETBIT(w->disabled_state, 8);
+		if (gi->spectators_on >= gi->spectators_max) SETBIT(w->disabled_state, 9);
 		/* You can not join a server as spectator when it has no companies active..
 		 * it causes some nasty crashes */
 		if (gi->companies_on == 0) SETBIT(w->disabled_state, 9);
