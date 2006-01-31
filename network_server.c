@@ -74,12 +74,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 	Player *player;
 	Packet *p;
 
-	byte active = 0;
-
-	FOR_ALL_PLAYERS(player) {
-		if (player->is_active)
-			active++;
-	}
+	byte active = ActivePlayerCount();
 
 	if (active == 0) {
 		Packet *p = NetworkSend_Init(PACKET_SERVER_COMPANY_INFO);
@@ -214,15 +209,12 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 
 	Packet *p;
 	const NetworkClientState *new_cs;
-	const NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
 
 	// Invalid packet when status is AUTH or higher
 	if (cs->status >= STATUS_AUTH) return;
 
 	cs->status = STATUS_AUTH;
 	_network_game_info.clients_on++;
-	/* increment spectator; defer company addition for when player is actually created */
-	if (ci->client_playas == OWNER_SPECTATOR) _network_game_info.spectators_on++;
 
 	p = NetworkSend_Init(PACKET_SERVER_WELCOME);
 	NetworkSend_uint16(p, cs->index);
@@ -615,13 +607,13 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	// join another company does not affect these values
 	switch (playas) {
 		case 0: /* New company */
-			if (_network_game_info.companies_on >= _network_game_info.companies_max) {
+			if (ActivePlayerCount() >= _network_game_info.companies_max) {
 				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_FULL);
 				return;
 			}
 			break;
 		case OWNER_SPECTATOR: /* Spectator */
-			if (_network_game_info.spectators_on >= _network_game_info.spectators_max) {
+			if (NetworkSpectatorCount() >= _network_game_info.spectators_max) {
 				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_FULL);
 				return;
 			}

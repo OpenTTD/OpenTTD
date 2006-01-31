@@ -762,13 +762,8 @@ void SwitchMode(int new_mode)
 			_local_player = 0;
 			DoCommandP(0, 0, 0, NULL, CMD_PAUSE); // decrease pause counter (was increased from opening load dialog)
 #ifdef ENABLE_NETWORK
-			if (_network_server) {
-				/* If we have loaded a game we need to correctly update the company-count */
-				const Player *p;
-				_network_game_info.companies_on = 0;
-				FOR_ALL_PLAYERS(p) {if (p->is_active) _network_game_info.companies_on++;}
+			if (_network_server)
 				snprintf(_network_game_info.map_name, NETWORK_NAME_LENGTH, "%s (Loaded game)", _file_to_saveload.title);
-			}
 #endif /* ENABLE_NETWORK */
 		}
 		break;

@@ -103,6 +103,18 @@ void NetworkGetClientName(char *client_name, size_t size, const NetworkClientSta
 		snprintf(client_name, size, "%s", ci->client_name);
 }
 
+byte NetworkSpectatorCount(void)
+{
+	const NetworkClientState *cs;
+	byte count = 0;
+
+	FOR_ALL_CLIENTS(cs) {
+		if (DEREF_CLIENT_INFO(cs)->client_playas == OWNER_SPECTATOR) count++;
+	}
+
+	return count;
+}
+
 // This puts a text-message to the console, or in the future, the chat-box,
 //  (to keep it all a bit more general)
 // If 'self_send' is true, this is the client who is sending the message
@@ -554,11 +566,7 @@ void NetworkCloseClient(NetworkClientState *cs)
 
 	if (_network_server) {
 		// We just lost one client :(
-		if (cs->status > STATUS_INACTIVE) {
-			_network_game_info.clients_on--;
-			if (DEREF_CLIENT_INFO(cs)->client_playas == OWNER_SPECTATOR)
-				_network_game_info.spectators_on--;
-		}
+		if (cs->status > STATUS_INACTIVE) _network_game_info.clients_on--;
 		_network_clients_connected--;
 
 		while ((cs + 1) != DEREF_CLIENT(MAX_CLIENTS) && (cs + 1)->socket != INVALID_SOCKET) {

@@ -64,7 +64,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER)
 
 	/* NETWORK_GAME_INFO_VERSION = 2 */
 	NetworkSend_uint8 (packet, _network_game_info.companies_max);
-	NetworkSend_uint8 (packet, _network_game_info.companies_on);
+	NetworkSend_uint8 (packet, ActivePlayerCount());
 	NetworkSend_uint8 (packet, _network_game_info.spectators_max);
 
 	/* NETWORK_GAME_INFO_VERSION = 1 */
@@ -74,7 +74,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER)
 	NetworkSend_uint8 (packet, _network_game_info.use_password);
 	NetworkSend_uint8 (packet, _network_game_info.clients_max);
 	NetworkSend_uint8 (packet, _network_game_info.clients_on);
-	NetworkSend_uint8 (packet, _network_game_info.spectators_on);
+	NetworkSend_uint8 (packet, NetworkSpectatorCount());
 	NetworkSend_uint16(packet, _network_game_info.game_date);
 	NetworkSend_uint16(packet, _network_game_info.start_date);
 	NetworkSend_string(packet, _network_game_info.map_name);
@@ -162,7 +162,6 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 	NetworkClientInfo *ci;
 	Packet *packet;
 	Player *player;
-	byte active = 0;
 	byte current = 0;
 	int i;
 
@@ -172,14 +171,9 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 
 	packet = NetworkSend_Init(PACKET_UDP_SERVER_DETAIL_INFO);
 
-	FOR_ALL_PLAYERS(player) {
-		if (player->is_active)
-			active++;
-	}
-
 	/* Send the amount of active companies */
 	NetworkSend_uint8 (packet, NETWORK_COMPANY_INFO_VERSION);
-	NetworkSend_uint8 (packet, active);
+	NetworkSend_uint8 (packet, ActivePlayerCount());
 
 	/* Fetch the latest version of everything */
 	NetworkPopulateCompanyInfo();

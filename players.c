@@ -180,6 +180,18 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 	}
 }
 
+byte ActivePlayerCount(void)
+{
+	const Player *p;
+	byte count = 0;
+
+	FOR_ALL_PLAYERS(p) {
+		if (p->is_active) count++;
+	}
+
+	return count;
+}
+
 void InvalidatePlayerWindows(const Player *p)
 {
 	PlayerID pid = p->index;
@@ -857,7 +869,6 @@ int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					_local_player = ci->client_playas - 1;
 					NetworkSend_Command(0, 0, 0, CMD_CHANGE_PRESIDENT_NAME, NULL);
 					_local_player = player_backup;
-					_network_game_info.companies_on++;
 				}
 			}
 		} else if (_network_server) { // Creating player failed, defer client to spectator
@@ -865,7 +876,6 @@ int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				* in network_server.c:838, function DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND) */
 			NetworkClientInfo *ci = &_network_client_info[pid];
 			ci->client_playas = OWNER_SPECTATOR;
-			_network_game_info.spectators_on++;
 			NetworkUpdateClientInfo(ci->client_index);
 		}
 #else
@@ -904,9 +914,6 @@ int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			p->is_active = false;
 		}
 		RemoveAllEngineReplacementForPlayer(p);
-#ifdef ENABLE_NETWORK
-		_network_game_info.companies_on--;
-#endif /* ENABLE_NETWORK */
 
 	} break;
 

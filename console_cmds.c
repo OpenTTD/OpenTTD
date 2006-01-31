@@ -545,8 +545,8 @@ DEF_CONSOLE_CMD(ConServerInfo)
 
 	gi = &_network_game_info;
 	IConsolePrintF(_icolour_def, "Current/maximum clients:    %2d/%2d", gi->clients_on, gi->clients_max);
-	IConsolePrintF(_icolour_def, "Current/maximum companies:  %2d/%2d", gi->companies_on, gi->companies_max);
-	IConsolePrintF(_icolour_def, "Current/maximum spectators: %2d/%2d", gi->spectators_on, gi->spectators_max);
+	IConsolePrintF(_icolour_def, "Current/maximum companies:  %2d/%2d", ActivePlayerCount(), gi->companies_max);
+	IConsolePrintF(_icolour_def, "Current/maximum spectators: %2d/%2d", NetworkSpectatorCount(), gi->spectators_max);
 
 	return true;
 }

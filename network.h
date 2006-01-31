@@ -73,9 +73,9 @@ typedef struct NetworkGameInfo {
 	byte clients_max;                               // Max clients allowed on server
 	byte clients_on;                                // Current count of clients on server
 	byte companies_max;                             // Max companies allowed on server
-	byte companies_on;                              // How many started companies do we have
+	byte companies_on;                              // How many started companies do we have (XXX - disabled for server atm, use ActivePlayerCount())
 	byte spectators_max;                            // Max spectators allowed on server
-	byte spectators_on;                             // How many spectators do we have?
+	byte spectators_on;                             // How many spectators do we have? (XXX - disabled for server atm, use NetworkSpectatorCount())
 	uint16 game_date;                               // Current date
 	uint16 start_date;                              // When the game started
 	char map_name[NETWORK_NAME_LENGTH];             // Map which is played ["random" for a randomized map]
@@ -209,6 +209,8 @@ VARDEF uint8 _network_autoclean_protected;   // Unprotect a company after X mont
 VARDEF uint16 _network_restart_game_date;    // If this year is reached, the server automaticly restarts
 
 NetworkGameList *NetworkQueryServer(const char* host, unsigned short port, bool game_info);
+
+byte NetworkSpectatorCount(void);
 
 #endif /* ENABLE_NETWORK */
 
