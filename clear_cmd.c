@@ -556,7 +556,7 @@ void TileLoopClearHelper(TileIndex tile)
 	byte neighbour;
 	TileIndex dirty = INVALID_TILE;
 
-	self = (IsTileType(tile, MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, 1, 0), CL_FIELDS));
+	self = (IsTileType(tile, MP_CLEAR) && IsClearGround(tile, CL_FIELDS));
 
 	neighbour = (IsTileType(TILE_ADDXY(tile, 1, 0), MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, 1, 0), CL_FIELDS));
 	if (GB(_m[tile].m4, 5, 3) == 0) {
