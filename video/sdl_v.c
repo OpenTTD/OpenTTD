@@ -140,7 +140,7 @@ static int GetAvailableVideoMode(int *w, int *h)
 
 	// is the wanted mode among the available modes?
 	for (i = 0; i != _num_resolutions; i++) {
-		if(*w == _resolutions[i][0] && *h == _resolutions[i][1])
+		if (*w == _resolutions[i][0] && *h == _resolutions[i][1])
 			return 1;
 	}
 
@@ -348,7 +348,7 @@ static int PollEvent(void)
 	case SDL_QUIT:
 		// do not ask to quit on the main screen
 		if (_game_mode != GM_MENU) {
-			if(_patches.autosave_on_exit) {
+			if (_patches.autosave_on_exit) {
 				DoExitSave();
 				return 0;
 			} else

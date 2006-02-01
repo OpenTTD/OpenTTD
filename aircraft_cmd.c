@@ -1836,7 +1836,7 @@ static bool AirportFindFreeHelipad(Vehicle *v, const AirportFTAClass *Airport)
 					//at what terminal does the group start?
 					//that means, sum up all terminals of
 					//groups with lower number
-					for(i = 1; i < target_group; i++)
+					for (i = 1; i < target_group; i++)
 						group_start += Airport->helipads[i];
 
 					group_end = group_start + Airport->helipads[target_group];

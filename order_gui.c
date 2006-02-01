@@ -392,7 +392,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK: {
 		Vehicle *v = GetVehicle(w->window_number);
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 2: { /* orders list */
 			int sel;
 			sel = (e->click.pt.y - 15) / 10;
@@ -460,7 +460,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		Vehicle *v = GetVehicle(w->window_number);
 		uint i;
 
-		for(i = 0; i < lengthof(_order_keycodes); i++) {
+		for (i = 0; i < lengthof(_order_keycodes); i++) {
 			if (e->keypress.keycode == _order_keycodes[i]) {
 				e->keypress.cont = false;
 				//see if the button is disabled

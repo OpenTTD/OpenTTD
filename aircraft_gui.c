@@ -141,7 +141,7 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 2: { /* listbox */
 			uint i = (e->click.pt.y - 14) / 24;
 			if (i < w->vscroll.cap) {
@@ -255,7 +255,7 @@ static void AircraftRefitWndProc(Window *w, WindowEvent *e)
 	}	break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 2: { /* listbox */
 			int y = e->click.pt.y - 25;
 			if (y >= 0) {
@@ -496,7 +496,7 @@ bool CheckStoppedInHangar(const Vehicle* v); /* XXX extern function declaration 
 
 static void AircraftViewWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		const Vehicle* v = GetVehicle(w->window_number);
 		uint32 disabled = 1 << 8;
@@ -774,13 +774,13 @@ static void ClonePlaceObj(TileIndex tile, const Window* w)
 
 static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT:
 		DrawAircraftDepotWindow(w);
 		break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 			case 5: /* click aircraft */
 				AircraftDepotClickAircraft(w, e->click.pt.x, e->click.pt.y);
 				break;
@@ -834,7 +834,7 @@ static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_DRAGDROP:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 5: {
 			Vehicle *v;
 			VehicleID sel = WP(w,traindepot_d).sel;
@@ -985,7 +985,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 	PlayerID owner = GB(w->window_number, 0, 8);
 	vehiclelist_d *vl = &WP(w, vehiclelist_d);
 
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		int x = 2;
 		int y = PLY_WND_PRC__OFFSET_TOP_WIDGET;
@@ -1056,7 +1056,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 		}	break;
 
 	case WE_CLICK: {
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 3: /* Flip sorting method ascending/descending */
 			vl->flags ^= VL_DESC;
 			vl->flags |= VL_RESORT;
@@ -1103,7 +1103,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 				}
 
 				tile = TILE_MASK(tile + 1);
-			} while(tile != _last_built_aircraft_depot_tile);
+			} while (tile != _last_built_aircraft_depot_tile);
 
 			ShowBuildAircraftWindow(0);
 		} break;

@@ -35,7 +35,7 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 	if (!(mode & 1)) { // normal sized economics window (mode&1) is minimized status
 		/* draw categories */
 		DrawStringCenterUnderline(61, 15, STR_700F_EXPENDITURE_INCOME, 0);
-		for(i=0; i!=13; i++)
+		for (i = 0; i != 13; i++)
 			DrawString(2, 27 + i*10, STR_7011_CONSTRUCTION + i, 0);
 		DrawStringRightAligned(111, 27 + 10*13 + 2, STR_7020_TOTAL, 0);
 
@@ -49,7 +49,7 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 				SetDParam(0, year + 1920);
 				DrawStringCenterUnderline(x-17, 15, STR_7010, 0);
 				sum = 0;
-				for(i=0; i!=13; i++) {
+				for (i = 0; i != 13; i++) {
 					/* draw one row in the price column */
 					cost = (*tbl)[i];
 					if (cost != 0) {
@@ -148,7 +148,7 @@ static const Widget _player_finances_small_widgets[] = {
 
 static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		PlayerID player = w->window_number;
 		const Player* p = GetPlayer(player);
@@ -165,7 +165,7 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 2: {/* toggle size */
 			byte mode = (byte)WP(w,def_d).data_1;
 			bool stickied = !!(w->flags4 & WF_STICKY);
@@ -246,7 +246,7 @@ void ShowPlayerFinances(PlayerID player)
 
 static void SelectPlayerColorWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		const Player* p;
 		uint used_colors = 0;
@@ -268,7 +268,7 @@ static void SelectPlayerColorWndProc(Window *w, WindowEvent *e)
 		y = 17;
 		pos = w->vscroll.pos;
 
-		for(i=0; i!=16; i++) {
+		for (i = 0; i != 16; i++) {
 			if (!(used_colors & 1) && --pos < 0 && pos >= -8) {
 				DrawString(x + 30, y, STR_00D1_DARK_BLUE + i, 2);
 				DrawSprite((i << 16) + 0x3078C1A, x + 14, y + 4);
@@ -289,7 +289,7 @@ static void SelectPlayerColorWndProc(Window *w, WindowEvent *e)
 			item += w->vscroll.pos;
 			used_colors = WP(w,def_d).data_1;
 
-			for(i=0; i!=16; i++) {
+			for (i = 0; i != 16; i++) {
 				if (!(used_colors & 1) && --item < 0) {
 					DoCommandP(0, 0, i, NULL, CMD_SET_PLAYER_COLOR);
 					DeleteWindow(w);
@@ -320,7 +320,7 @@ static const WindowDesc _select_player_color_desc = {
 
 static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		Player *p;
 		w->click_state = (w->click_state & ~(1<<5|1<<6)) | ((1<<5) << WP(w,facesel_d).gender);
@@ -330,7 +330,7 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 3: DeleteWindow(w); break;
 		case 4: /* ok click */
 			DoCommandP(0, 0, WP(w,facesel_d).face, NULL, CMD_SET_PLAYER_FACE);
@@ -695,7 +695,7 @@ void ShowPlayerCompany(PlayerID player)
 
 static void BuyCompanyWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		Player *p = GetPlayer(w->window_number);
 		SetDParam(0, p->name_1);
@@ -712,7 +712,7 @@ static void BuyCompanyWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 3:
 			DeleteWindow(w);
 			break;

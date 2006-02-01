@@ -25,7 +25,7 @@ void SeedMT(uint32 seed)
     register uint32 x = (seed | 1U) & 0xFFFFFFFFU, *s = _mt_state;
     register int    j;
 
-    for(_mt_left=0, *s++=x, j=N; --j;
+    for (_mt_left=0, *s++=x, j=N; --j;
         *s++ = (x*=69069U) & 0xFFFFFFFFU);
  }
 
@@ -35,15 +35,15 @@ static uint32 ReloadMT(void)
     register uint32 *p0=_mt_state, *p2=_mt_state+2, *pM=_mt_state+M, s0, s1;
     register int    j;
 
-    if(_mt_left < -1)
+    if (_mt_left < -1)
         SeedMT(4357U);
 
     _mt_left=N-1, _mt_next=_mt_state+1;
 
-    for(s0=_mt_state[0], s1=_mt_state[1], j=N-M+1; --j; s0=s1, s1=*p2++)
+    for (s0=_mt_state[0], s1=_mt_state[1], j=N-M+1; --j; s0=s1, s1=*p2++)
         *p0++ = *pM++ ^ (mixBits(s0, s1) >> 1) ^ (loBit(s1) ? K : 0U);
 
-    for(pM=_mt_state, j=M; --j; s0=s1, s1=*p2++)
+    for (pM=_mt_state, j=M; --j; s0=s1, s1=*p2++)
         *p0++ = *pM++ ^ (mixBits(s0, s1) >> 1) ^ (loBit(s1) ? K : 0U);
 
     s1=_mt_state[0], *p0 = *pM ^ (mixBits(s0, s1) >> 1) ^ (loBit(s1) ? K : 0U);
@@ -58,7 +58,7 @@ uint32 RandomMT(void)
 {
 	uint32 y;
 
-	if(--_mt_left < 0)
+	if (--_mt_left < 0)
 		return ReloadMT();
 
 	y  = *_mt_next++;

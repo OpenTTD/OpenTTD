@@ -209,7 +209,7 @@ static void NPFMarkTile(TileIndex tile)
 	return;
 #else
 	if (_debug_npf_level >= 1)
-		switch(GetTileType(tile)) {
+		switch (GetTileType(tile)) {
 			case MP_RAILWAY:
 				/* DEBUG: mark visited tiles by mowing the grass under them
 				 * ;-) */

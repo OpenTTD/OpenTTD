@@ -894,11 +894,11 @@ static void NormaliseTrainConsist(Vehicle *v)
 
 	assert(IsFrontEngine(v));
 
-	for(; v != NULL; v = GetNextVehicle(v)) {
+	for (; v != NULL; v = GetNextVehicle(v)) {
 		if (!IsMultiheaded(v) || !IsTrainEngine(v)) continue;
 
 		/* make sure that there are no free cars before next engine */
-		for(u = v; u->next != NULL && !IsTrainEngine(u->next); u = u->next);
+		for (u = v; u->next != NULL && !IsTrainEngine(u->next); u = u->next);
 
 		if (u == v->u.rail.other_multiheaded_part) continue;
 		AddWagonToConsist(v->u.rail.other_multiheaded_part, u);
@@ -974,7 +974,7 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		/* we need to make sure that we didn't place it between a pair of multiheaded engines */
 		Vehicle *u, *engine = NULL;
 
-		for(u = dst_head; u != NULL; u = u->next) {
+		for (u = dst_head; u != NULL; u = u->next) {
 			if (IsTrainEngine(u) && IsMultiheaded(u) && u->u.rail.other_multiheaded_part != NULL) {
 				engine = u;
 			}
@@ -2214,7 +2214,7 @@ static bool CheckReverseTrain(Vehicle *v)
 				reverse_best = false;
 		}
 	} else {
-		while(true) {
+		for (;;) {
 			fd.best_bird_dist = (uint)-1;
 			fd.best_track_dist = (uint)-1;
 
@@ -3536,7 +3536,7 @@ void ConnectMultiheadedTrains(void)
 					{
 						Vehicle *w;
 
-						for(w = u->next; w != NULL && (w->engine_type != u->engine_type || w->u.rail.other_multiheaded_part != NULL); w = GetNextVehicle(w));
+						for (w = u->next; w != NULL && (w->engine_type != u->engine_type || w->u.rail.other_multiheaded_part != NULL); w = GetNextVehicle(w));
 						if (w != NULL) {
 							/* we found a car to partner with this engine. Now we will make sure it face the right way */
 							if (IsTrainEngine(w)) {

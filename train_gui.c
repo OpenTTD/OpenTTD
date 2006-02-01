@@ -194,7 +194,7 @@ static void engine_drawing_loop(int *x, int *y, int *pos, int *sel,
 
 static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT:
 
 		if (w->window_number == 0)
@@ -250,7 +250,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 	break;
 
 	case WE_CLICK: {
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 2: {
 			uint i = (e->click.pt.y - 14) / 14;
 			if (i < w->vscroll.cap) {
@@ -570,7 +570,7 @@ static void TrainDepotClickTrain(Window *w, int x, int y)
 
 	v = gdvp.wagon;
 
-	switch(mode) {
+	switch (mode) {
 	case 0: { // start dragging of vehicle
 		VehicleID sel = WP(w, traindepot_d).sel;
 
@@ -627,13 +627,13 @@ static void ClonePlaceObj(TileIndex tile, const Window* w)
 
 static void TrainDepotWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT:
 		DrawTrainDepotWindow(w);
 		break;
 
 	case WE_CLICK: {
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 8:
 			ResetObjectToPlace();
 			ShowBuildTrainWindow(w->window_number);
@@ -686,7 +686,7 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_DRAGDROP: {
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 4: case 5: {
 			Vehicle *v;
 			int sell_cmd;
@@ -824,7 +824,7 @@ static void RailVehicleRefitWndProc(Window *w, WindowEvent *e)
 	}	break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 2: { /* listbox */
 			int y = e->click.pt.y - 25;
 			if (y >= 0) {
@@ -985,7 +985,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 		int wid = e->click.widget;
 		Vehicle *v = GetVehicle(w->window_number);
 
-		switch(wid) {
+		switch (wid) {
 		case 5: /* start/stop train */
 			DoCommandP(v->tile, v->index, 0, NULL, CMD_START_STOP_TRAIN | CMD_MSG(STR_883B_CAN_T_STOP_START_TRAIN));
 			break;
@@ -1197,7 +1197,7 @@ static void DrawTrainDetailsWindow(Window *w)
 	// draw the first 3 details tabs
 	if (det_tab != 3) {
 		x = 1;
-		for(;;) {
+		for (;;) {
 			if (--sel < 0 && sel >= -6) {
 				int dx = 0;
 				u = v;
@@ -1372,7 +1372,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 	PlayerID owner = GB(w->window_number, 0, 8);
 	vehiclelist_d *vl = &WP(w, vehiclelist_d);
 
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		int x = 2;
 		int y = PLY_WND_PRC__OFFSET_TOP_WIDGET;
@@ -1442,7 +1442,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_CLICK: {
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 3: /* Flip sorting method ascending/descending */
 			vl->flags ^= VL_DESC;
 			vl->flags |= VL_RESORT;
@@ -1490,7 +1490,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 				}
 
 				tile = TILE_MASK(tile + 1);
-			} while(tile != _last_built_train_depot_tile);
+			} while (tile != _last_built_train_depot_tile);
 
 			ShowBuildTrainWindow(0);
 		} break;

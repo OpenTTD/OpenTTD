@@ -505,12 +505,12 @@ static void AnimateTile_Industry(TileIndex tile)
 {
 	byte m,n;
 
-	switch(_m[tile].m5) {
+	switch (_m[tile].m5) {
 	case 174:
 		if ((_tick_counter & 1) == 0) {
 			m = _m[tile].m3 + 1;
 
-			switch(m & 7) {
+			switch (m & 7) {
 			case 2:	SndPlayTileFx(SND_2D_RIP_2, tile); break;
 			case 6: SndPlayTileFx(SND_29_RIP, tile); break;
 			}
@@ -685,7 +685,7 @@ static void MakeIndustryTileBigger(TileIndex tile, byte size)
 	if (!(_m[tile].m1 & 0x80))
 		return;
 
-	switch(_m[tile].m5) {
+	switch (_m[tile].m5) {
 	case 8:
 		MakeIndustryTileBiggerCase8(tile);
 		break;

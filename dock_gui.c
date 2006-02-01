@@ -115,7 +115,7 @@ static OnButtonClick * const _build_docks_button_proc[] = {
 
 static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT:
 		DrawWindowWidgets(w);
 		break;

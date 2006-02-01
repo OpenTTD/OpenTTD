@@ -40,7 +40,7 @@ static void BuildBridge(Window *w, int i)
 
 static void BuildBridgeWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		uint i;
 

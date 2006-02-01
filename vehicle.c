@@ -341,7 +341,7 @@ bool AllocateVehicles(Vehicle **vl, int num)
 	Vehicle *v;
 	VehicleID counter = 0;
 
-	for(i = 0; i != num; i++) {
+	for (i = 0; i != num; i++) {
 		v = AllocateSingleVehicle(&counter);
 		if (v == NULL) {
 			return false;
@@ -715,9 +715,9 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 	y  = ((dpi->top - 70) & 0xFC0);
 	y2 = ((dpi->top + dpi->height) & 0xFC0);
 
-	for(;;) {
+	for (;;) {
 		xb = x;
-		for(;;) {
+		for (;;) {
 			veh = _vehicle_position_hash[(x + y) & 0xFFFF];
 			while (veh != INVALID_VEHICLE) {
 				v = GetVehicle(veh);
@@ -1945,8 +1945,7 @@ Trackdir GetVehicleTrackdir(const Vehicle* v)
 {
 	if (v->vehstatus & VS_CRASHED) return 0xFF;
 
-	switch(v->type)
-	{
+	switch (v->type) {
 		case VEH_Train:
 			if (v->u.rail.track == 0x80) /* We'll assume the train is facing outwards */
 				return DiagdirToDiagTrackdir(GetDepotDirection(v->tile, TRANSPORT_RAIL)); /* Train in depot */

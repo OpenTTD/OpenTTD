@@ -447,7 +447,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 	}	break;
 
 	case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
-		switch(e->dropdown.button) {
+		switch (e->dropdown.button) {
 			case 5:
 				_network_lan_internet = e->dropdown.index;
 				break;
@@ -700,7 +700,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
-		switch(e->dropdown.button) {
+		switch (e->dropdown.button) {
 			case  8: _network_advertise = (e->dropdown.index != 0); break;
 			case 10: _network_game_info.clients_max = e->dropdown.index; break;
 			case 12: _network_game_info.companies_max = e->dropdown.index; break;

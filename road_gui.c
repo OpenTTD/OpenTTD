@@ -405,7 +405,7 @@ static void ShowRoadDepotPicker(void)
 
 static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		int image;
 

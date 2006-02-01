@@ -571,7 +571,7 @@ void DebugMarkTile(TileIndex tile) {
 void DebugClearMarkedTiles()
 {
 	uint size = MapSize(), i;
-	for(i=0; i!=size; i++) {
+	for (i = 0; i != size; i++) {
 		if (_m[i].extra & 0x80) {
 			_m[i].extra &= ~0x80;
 			MarkTileDirtyByTile(i);
@@ -598,7 +598,7 @@ static bool IsPartOfAutoLine(int px, int py)
 	px -= _thd.selstart.x;
 	py -= _thd.selstart.y;
 
-	switch(_thd.drawstyle) {
+	switch (_thd.drawstyle) {
 	case HT_LINE | HT_DIR_X:  return py == 0; // x direction
 	case HT_LINE | HT_DIR_Y:  return px == 0; // y direction
 	case HT_LINE | HT_DIR_HU: return px == -py || px == -py - 16; // horizontal upper
@@ -1954,7 +1954,7 @@ static byte Check2x1AutoRail(int mode)
 	int fxmy = _tile_fract_coords.x - _tile_fract_coords.y;
 	int sxmy = (_thd.selend.x & 0xF) - (_thd.selend.y & 0xF);
 
-	switch(mode) {
+	switch (mode) {
 	case 0: // end piece is lower right
 		if (fxpy >= 20 && sxpy <= 12) { /*SwapSelection(); DoRailroadTrack(0); */return 3; }
 		if (fxmy < -3 && sxmy > 3) {/* DoRailroadTrack(0); */return 5; }

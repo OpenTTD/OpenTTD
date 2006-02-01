@@ -2706,7 +2706,7 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
 	st2 = st1 = NULL;
 	best_rating = best_rating2 = 0;
 
-	for( i = 0; i != 8 && around[i] != INVALID_STATION; i++) {
+	for (i = 0; i != 8 && around[i] != INVALID_STATION; i++) {
 		if (around_ptr[i]->goods[type].rating >= best_rating) {
 			best_rating2 = best_rating;
 			st2 = st1;

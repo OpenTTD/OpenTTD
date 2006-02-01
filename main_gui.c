@@ -1687,7 +1687,7 @@ static void ScenEditIndustryWndProc(Window *w, WindowEvent *e)
 {
 	int button;
 
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT:
 		DrawWindowWidgets(w);
 		break;
@@ -1850,7 +1850,7 @@ static ToolbarButtonProc* const _toolbar_button_procs[] = {
 
 static void MainToolbarWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 
 		// Draw brown-red toolbar bg.
@@ -2057,7 +2057,7 @@ static ToolbarButtonProc* const _scen_toolbar_button_procs[] = {
 
 static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT:
 		/* XXX look for better place for these */
 		if (_date <= MinDate) {
@@ -2286,7 +2286,7 @@ extern void UpdateAllStationVirtCoord(void);
 static void MainWindowWndProc(Window *w, WindowEvent *e) {
 	int off_x;
 
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT:
 		DrawWindowViewport(w);
 		if (_game_mode == GM_MENU) {

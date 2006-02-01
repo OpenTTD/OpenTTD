@@ -141,7 +141,7 @@ static void GetFileInfo(DebugFileInfo *dfi, const char *filename)
 		file = CreateFile(filename, GENERIC_READ, FILE_SHARE_READ, NULL,
 			OPEN_EXISTING, 0, 0);
 		if (file != INVALID_HANDLE_VALUE) {
-			while(true) {
+			for (;;) {
 				if (ReadFile(file, buffer, sizeof(buffer), &numread, NULL) == 0 ||
 						numread == 0)
 					break;
@@ -359,7 +359,7 @@ static bool DoEmergencySave(HWND wnd)
 
 static INT_PTR CALLBACK CrashDialogFunc(HWND wnd,UINT msg,WPARAM wParam,LPARAM lParam)
 {
-	switch(msg) {
+	switch (msg) {
 	case WM_INITDIALOG:
 		SetDlgItemText(wnd, 10, _crash_desc);
 		SetDlgItemText(wnd, 11, _crash_msg);
@@ -367,7 +367,7 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd,UINT msg,WPARAM wParam,LPARAM l
 		SetWndSize(wnd, -1);
 		return TRUE;
 	case WM_COMMAND:
-		switch(wParam) {
+		switch (wParam) {
 		case 12: // Close
 			ExitProcess(0);
 		case 13: { // Emergency save

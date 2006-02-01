@@ -237,7 +237,7 @@ static void NetworkClientError(byte res, NetworkClientState *cs) {
 		return;
 	}
 
-	switch(res) {
+	switch (res) {
 		case NETWORK_RECV_STATUS_DESYNC: errorno = NETWORK_ERROR_DESYNC; break;
 		case NETWORK_RECV_STATUS_SAVEGAME: errorno = NETWORK_ERROR_SAVEGAME_FAILED; break;
 		default: errorno = NETWORK_ERROR_GENERAL;
@@ -1168,7 +1168,7 @@ static void NetworkHandleLocalQueue(void)
 	// Just a safety check, to be removed in the future.
 	// Make sure that no older command appears towards the end of the queue
 	// In that case we missed executing it. This will never happen.
-	for(cp = _local_command_queue; cp; cp = cp->next) {
+	for (cp = _local_command_queue; cp; cp = cp->next) {
 		assert(_frame_counter < cp->frame);
 	}
 

@@ -141,7 +141,7 @@ void CcStation(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void PlaceRail_Station(TileIndex tile)
 {
-	if(_remove_button_clicked)
+	if (_remove_button_clicked)
 		DoCommandP(tile, 0, 0, CcPlaySound1E, CMD_REMOVE_FROM_RAILROAD_STATION | CMD_MSG(STR_CANT_REMOVE_PART_OF_STATION));
 	else if (_railstation.dragdrop) {
 		VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED);
@@ -631,7 +631,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			int x = _railstation.numtracks;
 			int y = _railstation.platlength;
 			if (_railstation.orientation == 0) intswap(x,y);
-			if(!_remove_button_clicked)
+			if (!_remove_button_clicked)
 				SetTileSelectSize(x, y);
 		}
 
@@ -768,7 +768,7 @@ static void ShowStationBuilder(void)
 
 static void BuildTrainDepotWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		RailType r;
 

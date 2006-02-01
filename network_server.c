@@ -1474,7 +1474,7 @@ bool NetworkServer_ReadPackets(NetworkClientState *cs)
 {
 	Packet *p;
 	NetworkRecvStatus res;
-	while((p = NetworkRecv_Packet(cs, &res)) != NULL) {
+	while ((p = NetworkRecv_Packet(cs, &res)) != NULL) {
 		byte type = NetworkRecv_uint8(cs, p);
 		if (type < PACKET_END && _network_server_packet[type] != NULL && !cs->quited)
 			_network_server_packet[type](cs, p);

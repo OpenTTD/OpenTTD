@@ -48,7 +48,7 @@ static void DispatchLeftClickEvent(Window* w, int x, int y)
 
 		if (wi->type & 0xE0) {
 			/* special widget handling for buttons*/
-			switch(wi->type) {
+			switch (wi->type) {
 			case WWT_IMGBTN  | WWB_PUSHBUTTON: /* WWT_PUSHIMGBTN */
 			case WWT_TEXTBTN | WWB_PUSHBUTTON: /* WWT_PUSHTXTBTN */
 				HandleButtonClick(w, e.click.widget);

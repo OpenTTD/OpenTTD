@@ -461,7 +461,7 @@ int CDECL main(int argc, char* argv[])
 #ifdef WITH_COCOA
 	cocoaSetupAutoreleasePool();
     /* This is passed if we are launched by double-clicking */
-	if(argc >= 2 && strncmp (argv[1], "-psn", 4) == 0) {
+	if (argc >= 2 && strncmp (argv[1], "-psn", 4) == 0) {
 		argv[1] = NULL;
 		argc = 1;
 		cocoaSetWorkingDirectory();

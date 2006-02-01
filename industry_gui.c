@@ -332,7 +332,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK: {
 		Industry *i;
 
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 5: {
 			int line;
 			int x;
@@ -550,7 +550,7 @@ static void MakeSortedIndustryList(void)
 		error("Could not allocate memory for the industry-sorting-list");
 
 	FOR_ALL_INDUSTRIES(i) {
-		if(i->xy)
+		if (i->xy)
 			_industry_sort[n++] = i->index;
 	}
 	_num_industry_sort = n;
@@ -610,7 +610,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 3: {
 			_industry_sort_order = _industry_sort_order==0 ? 1 : 0;
 			_industry_sort_dirty = true;

@@ -466,7 +466,7 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 3: { /* Sort by Name ascending/descending */
 			_town_sort_order = (_town_sort_order == 0) ? 1 : 0;
 			_town_sort_dirty = true;

@@ -185,7 +185,7 @@ static void TPFMode2(TrackPathFinder *tpf, TileIndex tile, int direction)
 
 		// Change direction 4 times only
 		if ((byte)i != tpf->rd.pft_var6) {
-			if(++tpf->rd.depth > 4) {
+			if (++tpf->rd.depth > 4) {
 				tpf->rd = rd;
 				return;
 			}
@@ -222,7 +222,7 @@ FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, uint direction)
 
 	z = GetSlopeZ(x+8, y+8);
 
-	for(;;) {
+	for (;;) {
 		flotr.length++;
 
 		x += _get_tunlen_inc[direction];
@@ -609,7 +609,7 @@ static bool NtpCheck(NewTrackPathFinder *tpf, TileIndex tile, uint dir, uint len
 
 	// else it's a linked list of many tiles
 	offs = tpf->hash_tile[hash];
-	for(;;) {
+	for (;;) {
 		link = NTP_GET_LINK_PTR(tpf, offs);
 		if (tile == link->tile && (uint)(link->typelength & 0x3) == dir) {
 			assert( (uint)(link->typelength >> 2) <= length);
@@ -690,7 +690,7 @@ static void NTPEnum(NewTrackPathFinder *tpf, TileIndex tile, uint direction)
 	si.first_track = 0xFF;
 	goto start_at;
 
-	for(;;) {
+	for (;;) {
 		// Get the next item to search from from the priority queue
 		do {
 			if (tpf->nstack == 0)
@@ -734,7 +734,7 @@ start_at:
 		// This is a special loop used to go through
 		// a rail net and find the first intersection
 		tile_org = tile;
-		for(;;) {
+		for (;;) {
 			assert(direction <= 3);
 			tile += TileOffsByDir(direction);
 

@@ -177,7 +177,7 @@ static IniFile *ini_load(const char *filename)
 	while (fgets(buffer, sizeof(buffer), in)) {
 
 		// trim whitespace from the left side
-		for(s=buffer; s[0] == ' ' || s[0] == '\t'; s++);
+		for (s = buffer; s[0] == ' ' || s[0] == '\t'; s++);
 
 		// trim whitespace from right side.
 		e = s + strlen(s);
@@ -216,7 +216,7 @@ static IniFile *ini_load(const char *filename)
 			}
 		} else if (group) {
 			// find end of keyname
-			for(t=s; *t != 0 && *t != '=' && *t != '\t' && *t != ' '; t++) {}
+			for (t=s; *t != 0 && *t != '=' && *t != '\t' && *t != ' '; t++) {}
 
 			// it's an item in an existing group
 			item = ini_item_alloc(group, s, t-s);
@@ -226,7 +226,7 @@ static IniFile *ini_load(const char *filename)
 			}
 
 			// for list items, the name and value are the same:
-			if( group->type == IGT_LIST ) {
+			if (group->type == IGT_LIST) {
 				item->value = item->name;
 				continue;
 			}
@@ -236,10 +236,10 @@ static IniFile *ini_load(const char *filename)
 
 
 			// remove starting quotation marks
-			if(*t=='\"') t++;
+			if (*t == '\"') t++;
 			// remove ending quotation marks
 			e = t + strlen(t);
-			if(e>t && e[-1] =='\"') e--;
+			if (e > t && e[-1] =='\"') e--;
 			*e = 0;
 
 			item->value = pool_strdup(&ini->pool, t, e - t);
@@ -268,7 +268,7 @@ static IniGroup *ini_getgroup(IniFile *ini, const char *name, int len)
 	if (len == -1) len = strlen(name);
 
 	// does it exist already?
-	for(group = ini->group; group; group = group->next)
+	for (group = ini->group; group; group = group->next)
 		if (!memcmp(group->name, name, len) && group->name[len] == 0)
 			return group;
 
@@ -284,7 +284,7 @@ static IniItem *ini_getitem(IniGroup *group, const char *name, bool create)
 	IniItem *item;
 	uint len = strlen(name);
 
-	for(item = group->item; item; item = item->next)
+	for (item = group->item; item; item = item->next)
 		if (!strcmp(item->name, name))
 			return item;
 
@@ -310,7 +310,7 @@ static bool ini_save(const char *filename, IniFile *ini)
 		fprintf(f, "[%s]\n", group->name);
 		for (item = group->item; item != NULL; item = item->next) {
 			if (item->comment) fputs(item->comment, f);
-			if(group->type==IGT_LIST)
+			if (group->type == IGT_LIST)
 				fprintf(f, "%s\n", item->value ? item->value : "");
 			else
 				fprintf(f, "%s = %s\n", item->name, item->value ? item->value : "");
@@ -339,7 +339,7 @@ static int lookup_oneofmany(const char *many, const char *one, int onelen)
 		return strtoul(one, NULL, 0);
 
 	idx = 0;
-	for(;;) {
+	for (;;) {
 		// find end of item
 		s = many;
 		while (*s != '|' && *s != 0) s++;
@@ -356,7 +356,7 @@ static uint32 lookup_manyofmany(const char *many, const char *str)
 	int r;
 	uint32 res = 0;
 
-	for(;;) {
+	for (;;) {
 		// skip "whitespace"
 		while (*str == ' ' || *str == '\t' || *str == '|') str++;
 		if (*str == 0) break;
@@ -379,7 +379,7 @@ static int parse_intlist(const char *p, int *items, int maxitems)
 	int n = 0, v;
 	char *end;
 
-	for(;;) {
+	for (;;) {
 		v = strtol(p, &end, 0);
 		if (p == end || n == maxitems) return -1;
 		p = end;
@@ -406,18 +406,18 @@ static bool load_intlist(const char *str, void *array, int nelems, int type)
 			return false;
 	}
 
-	switch(type) {
+	switch (type) {
 	case SDT_INT8 >> 4:
 	case SDT_UINT8 >> 4:
-		for(i=0; i!=nitems; i++) ((byte*)array)[i] = items[i];
+		for (i = 0; i != nitems; i++) ((byte*)array)[i] = items[i];
 		break;
 	case SDT_INT16 >> 4:
 	case SDT_UINT16 >> 4:
-		for(i=0; i!=nitems; i++) ((uint16*)array)[i] = items[i];
+		for (i = 0; i != nitems; i++) ((uint16*)array)[i] = items[i];
 		break;
 	case SDT_INT32 >> 4:
 	case SDT_UINT32 >> 4:
-		for(i=0; i!=nitems; i++) ((uint32*)array)[i] = items[i];
+		for (i = 0; i != nitems; i++) ((uint32*)array)[i] = items[i];
 		break;
 	default:
 		NOT_REACHED();
@@ -430,8 +430,9 @@ static void make_intlist(char *buf, void *array, int nelems, int type)
 {
 	int i, v = 0;
 	byte *p = (byte*)array;
-	for(i=0; i!=nelems; i++) {
-		switch(type) {
+
+	for (i = 0; i != nelems; i++) {
+		switch (type) {
 		case SDT_INT8 >> 4: v = *(int8*)p; p += 1; break;
 		case SDT_UINT8 >> 4:v = *(byte*)p; p += 1; break;
 		case SDT_INT16 >> 4:v = *(int16*)p; p += 2; break;
@@ -494,7 +495,7 @@ static const void *string_to_val(const SettingDesc *desc, const char *str)
 	unsigned long val;
 	char *end;
 
-	switch(desc->flags & 0xF) {
+	switch (desc->flags & 0xF) {
 	case SDT_INTX:
 		val = strtoul(str, &end, 0);
 		if (*end != 0) ShowInfoF("ini: trailing characters at end of setting '%s'", desc->name);
@@ -558,13 +559,13 @@ static void load_setting_desc(IniFile *ini, const SettingDesc *desc, const void 
 		// get ptr to array
 		ptr = desc->ptr;
 
-		switch(desc->flags & 0xF) {
+		switch (desc->flags & 0xF) {
 		// all these are stored in the same way
 		case SDT_INTX:
 		case SDT_ONEOFMANY:
 		case SDT_MANYOFMANY:
 		case SDT_BOOLX:
-			switch(desc->flags >> 4 & 7) {
+			switch (desc->flags >> 4 & 7) {
 			case SDT_INT8 >> 4:
 			case SDT_UINT8 >> 4:
 				*(byte*)ptr = (byte)(unsigned long)p;
@@ -640,12 +641,12 @@ static void save_setting_desc(IniFile *ini, const SettingDesc *desc, const void 
 			// check if the value is the same as the old value
 			p = string_to_val(desc, item->value);
 
-			switch(desc->flags & 0xF) {
+			switch (desc->flags & 0xF) {
 			case SDT_INTX:
 			case SDT_ONEOFMANY:
 			case SDT_MANYOFMANY:
 			case SDT_BOOLX:
-				switch(desc->flags >> 4 & 7) {
+				switch (desc->flags >> 4 & 7) {
 				case SDT_INT8 >> 4:
 				case SDT_UINT8 >> 4:
 					if (*(byte*)ptr == (byte)(unsigned long)p)
@@ -674,12 +675,12 @@ static void save_setting_desc(IniFile *ini, const SettingDesc *desc, const void 
 			}
 		}
 
-		switch(desc->flags & 0xF) {
+		switch (desc->flags & 0xF) {
 		case SDT_INTX:
 		case SDT_ONEOFMANY:
 		case SDT_MANYOFMANY:
 		case SDT_BOOLX:
-			switch(desc->flags >> 4 & 7) {
+			switch (desc->flags >> 4 & 7) {
 			case SDT_INT8 >> 4: i = *(int8*)ptr; break;
 			case SDT_UINT8 >> 4:i = *(byte*)ptr; break;
 			case SDT_INT16 >> 4:i = *(int16*)ptr; break;
@@ -689,7 +690,7 @@ static void save_setting_desc(IniFile *ini, const SettingDesc *desc, const void 
 			default:
 				NOT_REACHED();
 			}
-			switch(desc->flags & 0xF) {
+			switch (desc->flags & 0xF) {
 			case SDT_INTX:
 				sprintf(buf, "%u", i);
 				break;

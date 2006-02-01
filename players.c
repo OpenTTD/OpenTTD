@@ -376,8 +376,7 @@ static byte GeneratePlayerColor(void)
 	Player *p;
 
 	// Initialize array
-	for(i=0; i!=16; i++)
-		colors[i] = i;
+	for (i = 0; i != 16; i++) colors[i] = i;
 
 	// And randomize it
 	n = 100;
@@ -389,9 +388,9 @@ static byte GeneratePlayerColor(void)
 	// Bubble sort it according to the values in table 1
 	i = 16;
 	do {
-		for(j=0; j!=15; j++) {
-			if (_color_sort[colors[j]] < _color_sort[colors[j+1]]) {
-				COLOR_SWAP(j,j+1);
+		for (j = 0; j != 15; j++) {
+			if (_color_sort[colors[j]] < _color_sort[colors[j + 1]]) {
+				COLOR_SWAP(j, j + 1);
 			}
 		}
 	} while (--i);
@@ -399,12 +398,12 @@ static byte GeneratePlayerColor(void)
 	// Move the colors that look similar to each player's color to the side
 	FOR_ALL_PLAYERS(p) if (p->is_active) {
 		pcolor = p->player_color;
-		for(i=0; i!=16; i++) if (colors[i] == pcolor) {
+		for (i=0; i!=16; i++) if (colors[i] == pcolor) {
 			colors[i] = 0xFF;
 
 			t2 = _color_similar_1[pcolor];
 			if (t2 == 0xFF) break;
-			for(i=0; i!=15; i++) {
+			for (i=0; i!=15; i++) {
 				if (colors[i] == t2) {
 					do COLOR_SWAP(i,i+1); while (++i != 15);
 					break;
@@ -413,9 +412,9 @@ static byte GeneratePlayerColor(void)
 
 			t2 = _color_similar_2[pcolor];
 			if (t2 == 0xFF) break;
-			for(i=0; i!=15; i++) {
+			for (i = 0; i != 15; i++) {
 				if (colors[i] == t2) {
-					do COLOR_SWAP(i,i+1); while (++i != 15);
+					do COLOR_SWAP(i, i + 1); while (++i != 15);
 					break;
 				}
 			}
@@ -425,7 +424,7 @@ static byte GeneratePlayerColor(void)
 
 	// Return the first available color
 	i = 0;
-	for(;;) {
+	for (;;) {
 		if (colors[i] != 0xFF)
 			return colors[i];
 		i++;
@@ -437,7 +436,7 @@ static void GeneratePresidentName(Player *p)
 	Player *pp;
 	char buffer[100], buffer2[40];
 
-	for(;;) {
+	for (;;) {
 restart:;
 
 		p->president_name_2 = Random();
@@ -551,7 +550,7 @@ void InitializePlayers(void)
 {
 	int i;
 	memset(_players, 0, sizeof(_players));
-	for(i = 0; i != MAX_PLAYERS; i++)
+	for (i = 0; i != MAX_PLAYERS; i++)
 		_players[i].index=i;
 	_cur_player_tick_index = 0;
 }
@@ -729,7 +728,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if (new_engine_type != INVALID_ENGINE) {
 				/* First we make sure that it's a valid type the user requested
 				 * check that it's an engine that is in the engine array */
-				if(!IsEngineIndex(new_engine_type))
+				if (!IsEngineIndex(new_engine_type))
 					return CMD_ERROR;
 
 				// check that the new vehicle type is the same as the original one
@@ -1253,7 +1252,8 @@ static const SaveLoad _player_ai_build_rec_desc[] = {
 	SLE_END()
 };
 
-static void SaveLoad_PLYR(Player *p) {
+static void SaveLoad_PLYR(Player* p)
+{
 	int i;
 
 	SlObject(p, _player_desc);
@@ -1261,7 +1261,7 @@ static void SaveLoad_PLYR(Player *p) {
 	// Write AI?
 	if (!IS_HUMAN_PLAYER(p->index)) {
 		SlObject(&p->ai, _player_ai_desc);
-		for(i=0; i!=p->ai.num_build_rec; i++)
+		for (i = 0; i != p->ai.num_build_rec; i++)
 			SlObject(&p->ai.src + i, _player_ai_build_rec_desc);
 	}
 
@@ -1271,7 +1271,7 @@ static void SaveLoad_PLYR(Player *p) {
 	// Write old economy entries.
 	{
 		PlayerEconomyEntry *pe;
-		for(i=p->num_valid_stat_ent,pe=p->old_economy; i!=0; i--,pe++)
+		for (i = p->num_valid_stat_ent, pe = p->old_economy; i != 0; i--, pe++)
 			SlObject(pe, _player_economy_desc);
 	}
 }

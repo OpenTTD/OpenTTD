@@ -709,7 +709,7 @@ static void Win32GdiMainLoop(void)
 
 	_wnd.running = true;
 
-	while(true) {
+	for (;;) {
 		while (PeekMessage(&mesg, NULL, 0, 0, PM_REMOVE)) {
 			InteractiveRandom(); // randomness
 			TranslateMessage(&mesg);

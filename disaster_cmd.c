@@ -620,7 +620,7 @@ static void DisasterTick_4b(Vehicle *v)
 
 		DeleteDisasterVeh(u);
 
-		for(i=0; i!=80; i++) {
+		for (i = 0; i != 80; i++) {
 			uint32 r = Random();
 			CreateEffectVehicleAbove(
 				GB(r, 0, 6) + v->x_pos - 32,

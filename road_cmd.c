@@ -222,8 +222,8 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			t2 = c;
 			cost = 0;
 			do {
-				if (t2&1) cost += _price.remove_road;
-			} while(t2>>=1);
+				if (t2 & 1) cost += _price.remove_road;
+			} while (t2 >>= 1);
 
 			if (flags & DC_EXEC) {
 				ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
@@ -386,7 +386,7 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (IsSteepTileh(ti.tileh)) // very steep tile
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
-		if(!_valid_tileh_slopes_road[2][ti.tileh]) // prevent certain slopes
+		if (!_valid_tileh_slopes_road[2][ti.tileh]) // prevent certain slopes
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 		if (ti.map5 == 2) {
@@ -890,7 +890,7 @@ void DrawRoadDepotSprite(int x, int y, int image)
 
 	DrawSprite(dtss++->image, x, y);
 
-	for(; dtss->image != 0; dtss++) {
+	for (; dtss->image != 0; dtss++) {
 		Point pt = RemapCoords(dtss->subcoord_x, dtss->subcoord_y, 0);
 
 		image = dtss->image;

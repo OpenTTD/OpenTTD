@@ -402,11 +402,11 @@ static uint32 FormatStringLinebreaks(char *str, int maxw)
 	char *last_space;
 	byte c;
 
-	for(;;) {
+	for (;;) {
 		w = 0;
 		last_space = NULL;
 
-		for(;;) {
+		for (;;) {
 			c = *str++;
 			if (c == ASCII_LETTERSTART) last_space = str;
 
@@ -457,12 +457,12 @@ void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 
 	src = buffer;
 
-	for(;;) {
+	for (;;) {
 		w = GetStringWidth(src);
 		DoDrawString(src, x - (w>>1), y, 0xFE);
 		_stringwidth_base = _stringwidth_out;
 
-		for(;;) {
+		for (;;) {
 			c = *src++;
 			if (c == 0) {
 				y += mt;
@@ -501,11 +501,11 @@ void DrawStringMultiLine(int x, int y, StringID str, int maxw)
 
 	src = buffer;
 
-	for(;;) {
+	for (;;) {
 		DoDrawString(src, x, y, 0xFE);
 		_stringwidth_base = _stringwidth_out;
 
-		for(;;) {
+		for (;;) {
 			c = *src++;
 			if (c == 0) {
 				y += mt;
@@ -608,13 +608,13 @@ switch_color:;
 check_bounds:
 	if (y + 19 <= dpi->top || dpi->top + dpi->height <= y) {
 skip_char:;
-		for(;;) {
+		for (;;) {
 			c = *string++;
 			if (c < ASCII_LETTERSTART) goto skip_cont;
 		}
 	}
 
-	for(;;) {
+	for (;;) {
 		c = *string++;
 skip_cont:;
 		if (c == 0) {
@@ -1106,7 +1106,7 @@ static void GfxBlitTileZoomOut(BlitterParams *bp)
 
 	if (bp->mode & 1) {
 		src_o += READ_LE_UINT16(src_o + bp->start_y * 2);
-		for(;;) {
+		for (;;) {
 			do {
 				done = src_o[0];
 				num = done & 0x7F;
@@ -1175,7 +1175,7 @@ static void GfxBlitTileZoomOut(BlitterParams *bp)
 		}
 	} else if (bp->mode & 2) {
 		src_o += READ_LE_UINT16(src_o + bp->start_y * 2);
-		for(;;) {
+		for (;;) {
 			do {
 				done = src_o[0];
 				num = done & 0x7F;
@@ -1240,7 +1240,7 @@ static void GfxBlitTileZoomOut(BlitterParams *bp)
 		}
 	} else {
 		src_o += READ_LE_UINT16(src_o + bp->start_y * 2);
-		for(;;) {
+		for (;;) {
 			do {
 				done = src_o[0];
 				num = done & 0x7F;

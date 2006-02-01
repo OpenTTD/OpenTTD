@@ -84,7 +84,7 @@ uint GetPartialZ(int x, int y, int corners)
 {
 	int z = 0;
 
-	switch(corners) {
+	switch (corners) {
 	case 1:
 		if (x - y >= 0)
 			z = (x - y) >> 1;

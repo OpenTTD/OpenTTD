@@ -68,7 +68,7 @@ static void TerraformAddDirtyTile(TerraformerState *ts, TileIndex tile)
 
 	if (count >= 625) return;
 
-	for(t = ts->tile_table; count != 0; count--,t++) {
+	for (t = ts->tile_table; count != 0; count--,t++) {
 		if (*t == tile) return;
 	}
 
@@ -190,7 +190,7 @@ static bool TerraformTileHeight(TerraformerState *ts, TileIndex tile, int height
 			{ 0, -2}
 		};
 
-		for(ttm = _terraform_tilepos; ttm != endof(_terraform_tilepos); ttm++) {
+		for (ttm = _terraform_tilepos; ttm != endof(_terraform_tilepos); ttm++) {
 			tile += ToTileIndexDiff(*ttm);
 
 			r = TerraformGetHeightOfTile(ts, tile);

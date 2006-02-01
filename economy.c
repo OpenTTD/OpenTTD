@@ -505,7 +505,7 @@ void DrawNewsBankrupcy(Window *w)
 
 	DrawStringMultiCenter(49, 148, STR_7058_PRESIDENT, 94);
 
-	switch(WP(w,news_d).ni->string_id >> 4) {
+	switch (WP(w,news_d).ni->string_id >> 4) {
 	case 1:
 		DrawStringCentered(w->width>>1, 1, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE, 0);
 
@@ -806,7 +806,7 @@ void StartupEconomy(void)
 
 	assert(sizeof(_price) == NUM_PRICES * sizeof(int32));
 
-	for(i=0; i!=NUM_PRICES; i++) {
+	for (i = 0; i != NUM_PRICES; i++) {
 		int32 price = _price_base[i];
 		if (_price_category[i] != 0) {
 			uint mod = _price_category[i] == 1 ? _opt.diff.vehicle_costs : _opt.diff.construction_cost;
@@ -883,7 +883,7 @@ void DeleteSubsidyWithIndustry(uint16 index)
 {
 	Subsidy *s;
 
-	for(s=_subsidies; s != endof(_subsidies); s++) {
+	for (s = _subsidies; s != endof(_subsidies); s++) {
 		if (s->cargo_type != CT_INVALID && s->age < 12 &&
 				s->cargo_type != CT_PASSENGERS && s->cargo_type != CT_MAIL &&
 				(index == s->from || (s->cargo_type!=CT_GOODS && s->cargo_type!=CT_FOOD && index==s->to))) {
@@ -897,7 +897,7 @@ void DeleteSubsidyWithStation(uint16 index)
 	Subsidy *s;
 	bool dirty = false;
 
-	for(s=_subsidies; s != endof(_subsidies); s++) {
+	for (s = _subsidies; s != endof(_subsidies); s++) {
 		if (s->cargo_type != CT_INVALID && s->age >= 12 &&
 				(s->from == index || s->to == index)) {
 			s->cargo_type = CT_INVALID;
@@ -1014,9 +1014,8 @@ static void SubsidyMonthlyHandler(void)
 	FoundRoute fr;
 	bool modified = false;
 
-	for(s=_subsidies; s != endof(_subsidies); s++) {
-		if (s->cargo_type == CT_INVALID)
-			continue;
+	for (s = _subsidies; s != endof(_subsidies); s++) {
+		if (s->cargo_type == CT_INVALID) continue;
 
 		if (s->age == 12-1) {
 			pair = SetupSubsidyDecodeParam(s, 1);
@@ -1090,7 +1089,7 @@ static void Save_SUBS(void)
 	int i;
 	Subsidy *s;
 
-	for(i=0; i!=lengthof(_subsidies); i++) {
+	for (i = 0; i != lengthof(_subsidies); i++) {
 		s = &_subsidies[i];
 		if (s->cargo_type != CT_INVALID) {
 			SlSetArrayIndex(i);
@@ -1537,7 +1536,7 @@ static void DoAcquireCompany(Player *p)
 	}
 
 	value = CalculateCompanyValue(p) >> 2;
-	for(i=0; i!=4; i++) {
+	for (i = 0; i != 4; i++) {
 		if (p->share_owners[i] != OWNER_SPECTATOR) {
 			owner = GetPlayer(p->share_owners[i]);
 			owner->money64 += value;

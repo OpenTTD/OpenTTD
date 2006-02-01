@@ -120,9 +120,9 @@ static inline int KillFirstBit2x64(int value)
 #define CHANCE16I(a,b,v) ((uint16)(v) <= (uint16)((65536 * a) / b))
 
 
-#define for_each_bit(_i,_b)										\
-	for(_i=0; _b!=0; _i++,_b>>=1)								\
-		if (_b&1)
+#define for_each_bit(_i, _b)            \
+	for (_i = 0; _b != 0; _i++, _b >>= 1) \
+		if (_b & 1)
 
 #define abs myabs
 

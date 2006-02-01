@@ -593,7 +593,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, uint mask, int block, Town *t1)
 		if (CHANCE16(1, 4)) {
 			do {
 				a = GB(Random(), 0, 2);
-			} while(a == b);
+			} while (a == b);
 		}
 
 		if (!IsRoadAllowedHere(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[a])), a)) {
@@ -702,7 +702,7 @@ build_road_and_exit:
 				// obviously, if building any bridge would fail, there is no need to try other bridge-types
 				return;
 			}
-		} while(--j != 0);
+		} while (--j != 0);
 	}
 }
 #undef IS_WATER_TILE
@@ -889,7 +889,7 @@ static bool CreateTownName(uint32 *townnameparts)
 
 	assert(townnameparts);
 
-	for(;;) {
+	for (;;) {
 restart:
 		r = Random();
 
@@ -956,7 +956,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts)
 	t->act_food = 0;
 	t->act_water = 0;
 
-	for(i = 0; i != MAX_PLAYERS; i++)
+	for (i = 0; i != MAX_PLAYERS; i++)
 		t->ratings[i] = 500;
 
 	t->have_ratings = 0;
@@ -1170,11 +1170,10 @@ static bool CheckFree2x2Area(Town *t1, TileIndex tile)
 		{1 - 1, 1 - 0}
 	};
 
-	for(i=0; i!=4; i++) {
+	for (i = 0; i != 4; i++) {
 		tile += ToTileIndexDiff(_tile_add[i]);
 
-		if (GetTileSlope(tile, NULL))
-			return false;
+		if (GetTileSlope(tile, NULL)) return false;
 
 		if (CmdFailed(DoCommandByTile(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER | DC_FORCETEST, CMD_LANDSCAPE_CLEAR)))
 			return false;
@@ -1214,12 +1213,12 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 		int num = 0;
 
 		// Generate a list of all possible houses that can be built.
-		for(i=0; i!=lengthof(_housetype_flags); i++) {
+		for (i=0; i!=lengthof(_housetype_flags); i++) {
 			if ((~_housetype_flags[i] & bitmask) == 0)
 				houses[num++] = (byte)i;
 		}
 
-		for(;;) {
+		for (;;) {
 			house = houses[RandomRange(num)];
 
 			if (_cur_year < _housetype_years[house].min || _cur_year > _housetype_years[house].max)
@@ -1919,7 +1918,7 @@ void TownsMonthlyLoop(void)
 			t->road_build_months--;
 
 		if (t->exclusive_counter != 0)
-			if(--t->exclusive_counter==0)
+			if (--t->exclusive_counter == 0)
 				t->exclusivity = (byte)-1;
 
 		UpdateTownGrowRate(t);

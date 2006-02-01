@@ -321,7 +321,7 @@ static Depot *FindClosestRoadDepot(Vehicle *v)
 		rfdd.best_length = (uint)-1;
 
 		/* search in all directions */
-		for(i=0; i!=4; i++)
+		for (i = 0; i != 4; i++)
 			FollowTrack(tile, 0x2000 | TRANSPORT_ROAD, i, (TPFEnumProc*)EnumRoadSignalFindDepot, NULL, &rfdd);
 
 		if (rfdd.best_length == (uint)-1)

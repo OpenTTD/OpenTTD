@@ -221,7 +221,7 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 {
 	const Player* p;
 
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT:
 		FOR_ALL_PLAYERS(p) {
 			if (!p->is_active) SETBIT(_legend_excludebits, p->index);
@@ -320,7 +320,7 @@ static void SetupGraphDrawerForPlayers(GraphDrawer *gd)
 
 static void OperatingProfitWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		GraphDrawer gd;
 		const Player* p;
@@ -344,7 +344,7 @@ static void OperatingProfitWndProc(Window *w, WindowEvent *e)
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active) {
 				gd.colors[numd] = _color_list[p->player_color].window_color_bgb;
-				for(j=gd.num_on_x_axis,i=0; --j >= 0;) {
+				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
 					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)(p->old_economy[j].income + p->old_economy[j].expenses);
 					i++;
 				}
@@ -394,7 +394,7 @@ void ShowOperatingProfitGraph(void)
 
 static void IncomeGraphWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		GraphDrawer gd;
 		const Player* p;
@@ -417,7 +417,7 @@ static void IncomeGraphWndProc(Window *w, WindowEvent *e)
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active) {
 				gd.colors[numd] = _color_list[p->player_color].window_color_bgb;
-				for(j=gd.num_on_x_axis,i=0; --j >= 0;) {
+				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
 					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)p->old_economy[j].income;
 					i++;
 				}
@@ -467,7 +467,7 @@ void ShowIncomeGraph(void)
 
 static void DeliveredCargoGraphWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		GraphDrawer gd;
 		const Player* p;
@@ -490,7 +490,7 @@ static void DeliveredCargoGraphWndProc(Window *w, WindowEvent *e)
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active) {
 				gd.colors[numd] = _color_list[p->player_color].window_color_bgb;
-				for(j=gd.num_on_x_axis,i=0; --j >= 0;) {
+				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
 					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)p->old_economy[j].delivered_cargo;
 					i++;
 				}
@@ -540,7 +540,7 @@ void ShowDeliveredCargoGraph(void)
 
 static void PerformanceHistoryWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		GraphDrawer gd;
 		const Player* p;
@@ -563,7 +563,7 @@ static void PerformanceHistoryWndProc(Window *w, WindowEvent *e)
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active) {
 				gd.colors[numd] = _color_list[p->player_color].window_color_bgb;
-				for(j=gd.num_on_x_axis,i=0; --j >= 0;) {
+				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
 					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)p->old_economy[j].performance_history;
 					i++;
 				}
@@ -616,7 +616,7 @@ void ShowPerformanceHistoryGraph(void)
 
 static void CompanyValueGraphWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		GraphDrawer gd;
 		const Player* p;
@@ -639,7 +639,7 @@ static void CompanyValueGraphWndProc(Window *w, WindowEvent *e)
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active) {
 				gd.colors[numd] = _color_list[p->player_color].window_color_bgb;
-				for(j=gd.num_on_x_axis,i=0; --j >= 0;) {
+				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
 					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)p->old_economy[j].company_value;
 					i++;
 				}
@@ -691,7 +691,7 @@ static const byte _cargo_legend_colors[12] = {152, 32, 15, 174, 208, 194, 191, 8
 
 static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		int i, j, x, y;
 		GraphDrawer gd;
@@ -703,7 +703,7 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 		x = 495;
 		y = 25;
 
-		for(i=0; i!=NUM_CARGO; i++) {
+		for (i = 0; i != NUM_CARGO; i++) {
 			GfxFillRect(x, y, x+8, y+5, 0);
 			GfxFillRect(x+1, y+1, x+7, y+4, _cargo_legend_colors[i]);
 			SetDParam(0, _cargoc.names_s[i]);
@@ -726,10 +726,10 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 		gd.unk61A = 10;
 		gd.unk61C = 10;
 
-		for(i=0; i!=NUM_CARGO; i++) {
+		for (i = 0; i != NUM_CARGO; i++) {
 			gd.colors[i] = _cargo_legend_colors[i];
-			for(j=0; j!=20; j++) {
-				gd.cost[i][j] = (uint64)GetTransportedGoodsIncome(10, 20, j*6+6,i);
+			for (j = 0; j != 20; j++) {
+				gd.cost[i][j] = (uint64)GetTransportedGoodsIncome(10, 20, j * 6 + 6, i);
 			}
 		}
 
@@ -740,7 +740,7 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK: {
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 3: case 4: case 5: case 6:
 		case 7: case 8: case 9: case 10:
 		case 11: case 12: case 13: case 14:
@@ -882,7 +882,7 @@ void ShowCompanyLeagueTable(void)
 
 static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		int val, needed, score, i;
 		byte owner, x;
@@ -1134,7 +1134,7 @@ static void GlobalSortSignList(void)
 		error("Could not allocate memory for the sign-sorting-list");
 
 	FOR_ALL_SIGNS(ss) {
-		if(ss->str != STR_NULL) {
+		if (ss->str != STR_NULL) {
 			_sign_sort[n++] = ss->index;
 			_num_sign_sort++;
 		}

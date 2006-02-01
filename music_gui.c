@@ -203,7 +203,7 @@ void MusicLoop(void)
 
 static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		const byte* p;
 		uint i;
@@ -321,7 +321,7 @@ static void ShowMusicTrackSelection(void)
 
 static void MusicWindowWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		uint i;
 		StringID str;
@@ -393,7 +393,7 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 2: // skip to prev
 			if (!_song_is_active)
 				return;

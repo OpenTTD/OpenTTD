@@ -223,8 +223,7 @@ void GenerateWorld(int mode, uint size_x, uint size_y)
 
 	// No need to run the tile loop in the scenario editor.
 	if (mode != GW_EMPTY) {
-		for(i=0x500; i!=0; i--)
-			RunTileLoop();
+		for (i = 0x500; i != 0; i--) RunTileLoop();
 	}
 
 	ResetObjectToPlace();
@@ -980,7 +979,7 @@ static void Load_CHTS(void)
 	Cheat* cht = (Cheat*) &_cheats;
 
 	uint count = SlGetFieldLength()/2;
-	for(; count; count--, cht++)
+	for (; count; count--, cht++)
 	{
 		cht->been_used = (byte)SlReadByte();
 		cht->value = (byte)SlReadByte();

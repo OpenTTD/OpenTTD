@@ -693,7 +693,7 @@ static TileIndex FindEdgesOfBridge(TileIndex tile, TileIndex *endtile)
 	TileIndex start;
 
 	// find start of bridge
-	for(;;) {
+	for (;;) {
 		if (IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5 & 0xE0) == 0x80)
 			break;
 		tile += direction ? TileDiffXY(0, -1) : TileDiffXY(-1, 0);
@@ -702,7 +702,7 @@ static TileIndex FindEdgesOfBridge(TileIndex tile, TileIndex *endtile)
 	start = tile;
 
 	// find end of bridge
-	for(;;) {
+	for (;;) {
 		if (IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5 & 0xE0) == 0xA0)
 			break;
 		tile += direction ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
@@ -1007,9 +1007,15 @@ static void DrawBridgePillars(const TileInfo *ti, int x, int y, int z)
 			if (!(ti->tileh & p[3])) back_height += 8;
 		}
 
-		for(; z>=front_height || z>=back_height; z=z-8) {
-			if (z>=front_height) AddSortableSpriteToDraw(image, x,y, p[4], p[5], 0x28, z); // front facing pillar
-			if (z>=back_height && z<i-8) AddSortableSpriteToDraw(image, x - p[6], y - p[7], p[4], p[5], 0x28, z); // back facing pillar
+		for (; z >= front_height || z >= back_height; z = z - 8) {
+			if (z >= front_height) {
+				// front facing pillar
+				AddSortableSpriteToDraw(image, x,y, p[4], p[5], 0x28, z);
+			}
+			if (z >= back_height && z < i - 8) {
+				// back facing pillar
+				AddSortableSpriteToDraw(image, x - p[6], y - p[7], p[4], p[5], 0x28, z);
+			}
 		}
 	}
 }

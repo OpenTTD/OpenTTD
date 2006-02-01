@@ -899,7 +899,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 3: {
 			int x,y;
 			uint btn;
@@ -926,7 +926,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			if (x < 21) { // clicked on the icon on the left side. Either scroller or bool on/off
 				int32 val = ReadPE(pe), oval = val;
 
-				switch(pe->type) {
+				switch (pe->type) {
 				case PE_BOOL:
 					val ^= 1;
 					break;
@@ -1216,7 +1216,7 @@ static void NewgrfWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 3: { // select a grf file
 			int y = (e->click.pt.y - NEWGRF_WND_PROC_OFFSET_TOP_WIDGET) / NEWGRF_WND_PROC_ROWSIZE;
 

@@ -402,7 +402,7 @@ static int DeterminePluralForm(int32 n)
 	// The absolute value determines plurality
 	if (n < 0) n = -n;
 
-	switch(_langpack->plural_form) {
+	switch (_langpack->plural_form) {
 	// Two forms, singular used for one only
 	// Used in:
 	//   Danish, Dutch, English, German, Norwegian, Swedish, Estonian, Finnish,
@@ -466,7 +466,8 @@ static const char *ParseStringChoice(const char *b, uint form, char *dst, int *d
 	//<NUM> {Length of each string} {each string}
 	uint n = (byte)*b++;
 	uint pos,i, mylen=0,mypos=0;
-	for(i=pos=0; i!=n; i++) {
+
+	for (i = pos = 0; i != n; i++) {
 		uint len = (byte)*b++;
 		if (i == form) {
 			mypos = pos;

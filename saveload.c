@@ -778,11 +778,9 @@ static const ChunkHandler *SlFindChunkHandler(uint32 id)
 	const ChunkHandler *ch;
 	const ChunkHandler *const *chsc;
 	for (chsc = _sl.chs; (ch=*chsc++) != NULL;) {
-		while(true) {
-			if (ch->id == id)
-				return ch;
-			if (ch->flags & CH_LAST)
-				break;
+		for (;;) {
+			if (ch->id == id) return ch;
+			if (ch->flags & CH_LAST) break;
 			ch++;
 		}
 	}

@@ -315,7 +315,7 @@ static void DrawTile_Trees(TileInfo *ti)
 		} while (i);
 
 		/* draw them in a sorted way */
-		for(;;) {
+		for (;;) {
 			byte min = 0xFF;
 			TreeListEnt *tep = NULL;
 

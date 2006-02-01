@@ -646,7 +646,7 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 	x = - dx - 4;
 	y = 0;
 
-	for(;;) {
+	for (;;) {
 		uint32 mask;
 		int reps;
 		int t;

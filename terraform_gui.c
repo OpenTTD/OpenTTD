@@ -205,7 +205,7 @@ static OnButtonClick * const _terraform_button_proc[] = {
 
 static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT:
 		DrawWindowWidgets(w);
 		break;

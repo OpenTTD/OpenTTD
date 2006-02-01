@@ -655,7 +655,7 @@ static void AiWantLongIndustryRoute(Player *p)
 	FoundRoute fr;
 
 	i = 60;
-	for(;;) {
+	for (;;) {
 		// look for one from the subsidy list
 		AiFindSubsidyIndustryRoute(&fr);
 		if (IS_INT_INSIDE(fr.distance, 60, 90+1))
@@ -761,7 +761,7 @@ static void AiWantMediumIndustryRoute(Player *p)
 	FoundRoute fr;
 
 	i = 60;
-	for(;;) {
+	for (;;) {
 
 		// look for one from the subsidy list
 		AiFindSubsidyIndustryRoute(&fr);
@@ -833,7 +833,7 @@ static void AiWantShortIndustryRoute(Player *p)
 	FoundRoute fr;
 
 	i = 60;
-	for(;;) {
+	for (;;) {
 
 		// look for one from the subsidy list
 		AiFindSubsidyIndustryRoute(&fr);
@@ -905,7 +905,7 @@ static void AiWantMailRoute(Player *p)
 	FoundRoute fr;
 
 	i = 60;
-	for(;;) {
+	for (;;) {
 
 		// look for one from the subsidy list
 		AiFindSubsidyPassengerRoute(&fr);
@@ -1010,7 +1010,7 @@ static void AiWantPassengerRoute(Player *p)
 	FoundRoute fr;
 
 	i = 60;
-	for(;;) {
+	for (;;) {
 
 		// look for one from the subsidy list
 		AiFindSubsidyPassengerRoute(&fr);
@@ -1102,7 +1102,7 @@ static void AiWantLongRoadIndustryRoute(Player *p)
 	FoundRoute fr;
 
 	i = 60;
-	for(;;) {
+	for (;;) {
 
 		// look for one from the subsidy list
 		AiFindSubsidyIndustryRoute(&fr);
@@ -1162,7 +1162,7 @@ static void AiWantMediumRoadIndustryRoute(Player *p)
 	FoundRoute fr;
 
 	i = 60;
-	for(;;) {
+	for (;;) {
 
 		// look for one from the subsidy list
 		AiFindSubsidyIndustryRoute(&fr);
@@ -1222,7 +1222,7 @@ static void AiWantLongRoadPassengerRoute(Player *p)
 	FoundRoute fr;
 
 	i = 60;
-	for(;;) {
+	for (;;) {
 
 		// look for one from the subsidy list
 		AiFindSubsidyPassengerRoute(&fr);
@@ -1285,7 +1285,7 @@ static void AiWantPassengerRouteInsideTown(Player *p)
 	Town *t;
 
 	i = 60;
-	for(;;) {
+	for (;;) {
 		// Find a town big enough
 		t = AiFindRandomTown();
 		if (t != NULL && t->population >= 700)
@@ -1357,7 +1357,7 @@ static void AiWantPassengerAircraftRoute(Player *p)
 	int i;
 
 	i = 60;
-	for(;;) {
+	for (;;) {
 
 		// look for one from the subsidy list
 		AiFindSubsidyPassengerRoute(&fr);
@@ -1416,7 +1416,7 @@ static void AiWantOilRigAircraftRoute(Player *p)
 	Industry *in;
 
 	i = 60;
-	for(;;) {
+	for (;;) {
 		// Find a town
 		t = AiFindRandomTown();
 		if (t != NULL) {
@@ -1498,7 +1498,7 @@ static void AiStateWantNewRoute(Player *p)
 	}
 
 	i = 200;
-	for(;;) {
+	for (;;) {
 		r = (uint16)Random();
 
 		if (_patches.ai_disable_veh_train && _patches.ai_disable_veh_roadveh &&
@@ -1536,7 +1536,7 @@ static bool AiCheckTrackResources(TileIndex tile, const AiDefaultBlockData *p, b
 	uint values[NUM_CARGO];
 	int rad;
 
-	for(;p->mode != 4;p++) if (p->mode == 1) {
+	for (;p->mode != 4;p++) if (p->mode == 1) {
 		TileIndex tile2 = TILE_ADD(tile, ToTileIndexDiff(p->tileoffs));
 		uint w;
 		uint h;
@@ -1576,7 +1576,7 @@ static int32 AiDoBuildDefaultRailTrack(TileIndex tile, const AiDefaultBlockData 
 	int rating = 0;
 	int i,j,k;
 
-	for(;;) {
+	for (;;) {
 		// This will seldomly overflow for valid reasons. Mask it to be on the safe side.
 		uint c = TILE_MASK(tile + ToTileIndexDiff(p->tileoffs));
 
@@ -1965,7 +1965,7 @@ static inline void AiCheckBuildRailBridgeHere(AiRailFinder *arf, TileIndex tile,
 		tile_new = tile;
 		// Allow bridges directly over bottom tiles
 		flag = arf->ti.z == 0;
-		for(;;) {
+		for (;;) {
 			if ((TileIndexDiff)tile_new < -TileOffsByDir(dir2)) return; // Wraping around map, no bridge possible!
 			tile_new = TILE_MASK(tile_new + TileOffsByDir(dir2));
 			FindLandscapeHeightByTile(&arf->ti, tile_new);
@@ -2118,7 +2118,7 @@ static void AiBuildRailConstruct(Player *p)
 	// Didn't find anything to build?
 	if (arf.best_ptr == NULL) {
 		// Terraform some
-		for(i=0; i!=5; i++)
+		for (i=0; i!=5; i++)
 			AiDoTerraformLand(p->ai.cur_tile_a, p->ai.cur_dir_a, 3, 0);
 
 		if (++p->ai.state_counter == 21) {
@@ -2169,7 +2169,7 @@ static void AiBuildRailConstruct(Player *p)
 	}
 
 	if (arf.best_tile != 0) {
-		for(i=0; i!=2; i++)
+		for (i=0; i!=2; i++)
 			AiDoTerraformLand(arf.best_tile, arf.best_dir, 3, 0);
 	}
 }
@@ -2274,7 +2274,7 @@ static void AiBuildRail(Player *p)
 	} else if (p->ai.state_mode == 2) {
 
 		// Terraform some and then try building again.
-		for(i=0; i!=4; i++)
+		for (i=0; i!=4; i++)
 			AiDoTerraformLand(p->ai.cur_tile_a, p->ai.cur_dir_a, 3, 0);
 
 		if (++p->ai.state_counter == 4) {
@@ -2314,7 +2314,7 @@ static void AiStateBuildRail(Player *p)
 	num = p->ai.num_build_rec;
 	aib = &p->ai.src;
 
-	for(;;) {
+	for (;;) {
 		cmd = aib->buildcmd_a;
 		aib->buildcmd_a = 255;
 		if (cmd != 255) break;
@@ -2382,7 +2382,7 @@ static void AiStateBuildRailVeh(Player *p)
 	tile = TILE_ADD(p->ai.src.use_tile, ToTileIndexDiff(ptr->tileoffs));
 
 	cargo = p->ai.cargo_type;
-	for(i=0;;) {
+	for (i=0;;) {
 		if (p->ai.wagon_list[i] == INVALID_VEHICLE) {
 			veh = _cargoc.ai_railwagon[p->ai.railtype_to_use][cargo];
 			cost = DoCommandByTile(tile, veh, 0, DC_EXEC, CMD_BUILD_RAIL_VEHICLE);
@@ -2403,7 +2403,7 @@ static void AiStateBuildRailVeh(Player *p)
 handle_nocash:
 		// after a while, if AI still doesn't have cash, get out of this block by selling the wagons.
 		if (++p->ai.state_counter == 1000) {
-			for(i=0; p->ai.wagon_list[i] != INVALID_VEHICLE; i++) {
+			for (i=0; p->ai.wagon_list[i] != INVALID_VEHICLE; i++) {
 				cost = DoCommandByTile(tile, p->ai.wagon_list[i], 0, DC_EXEC, CMD_SELL_RAIL_WAGON);
 				assert(!CmdFailed(cost));
 			}
@@ -2426,11 +2426,11 @@ handle_nocash:
 	}
 
 	// Move the wagons onto the train
-	for(i=0; p->ai.wagon_list[i] != INVALID_VEHICLE; i++) {
+	for (i=0; p->ai.wagon_list[i] != INVALID_VEHICLE; i++) {
 		DoCommandByTile(tile, p->ai.wagon_list[i] | (loco_id << 16), 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 	}
 
-	for(i=0; p->ai.order_list_blocks[i] != 0xFF; i++) {
+	for (i=0; p->ai.order_list_blocks[i] != 0xFF; i++) {
 		AiBuildRec *aib = (&p->ai.src) + p->ai.order_list_blocks[i];
 		bool is_pass = (p->ai.cargo_type == CT_PASSENGERS ||
 							p->ai.cargo_type == CT_MAIL ||
@@ -2495,7 +2495,7 @@ static bool AiCheckRoadResources(TileIndex tile, const AiDefaultBlockData *p, by
 		rad = 4;
 	}
 
-	for(;;p++) {
+	for (;;p++) {
 		if (p->mode == 4) {
 			return true;
 		} else if (p->mode == 1) {
@@ -2523,7 +2523,7 @@ static int AiFindBestDefaultRoadBlock(TileIndex tile, byte direction, byte cargo
 
 	_want_road_truck_station = (cargo & 0x7F) != CT_PASSENGERS;
 
-	for(i=0; (p = _road_default_block_data[i]) != NULL; i++) {
+	for (i=0; (p = _road_default_block_data[i]) != NULL; i++) {
 		if (p->dir == direction) {
 			*cost = AiDoBuildDefaultRoadBlock(tile, p->data, 0);
 			if (!CmdFailed(*cost) && AiCheckRoadResources(tile, p->data, cargo))
@@ -2542,7 +2542,7 @@ static int32 AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBlockData 
 	int rating = 0;
 	int roadflag = 0;
 
-	for(;p->mode != 4;p++) {
+	for (;p->mode != 4;p++) {
 		uint c = TILE_MASK(tile + ToTileIndexDiff(p->tileoffs));
 
 		_cleared_town = NULL;
@@ -2855,7 +2855,7 @@ static inline void AiCheckBuildRoadBridgeHere(AiRoadFinder *arf, TileIndex tile,
 		tile_new = tile;
 		// Allow bridges directly over bottom tiles
 		flag = arf->ti.z == 0;
-		for(;;) {
+		for (;;) {
 			if ((TileIndexDiff)tile_new < -TileOffsByDir(dir2)) return; // Wraping around map, no bridge possible!
 			tile_new = TILE_MASK(tile_new + TileOffsByDir(dir2));
 			FindLandscapeHeightByTile(&arf->ti, tile_new);
@@ -2999,7 +2999,7 @@ static void AiBuildRoadConstruct(Player *p)
 	if (arf.best_ptr == NULL) {
 		// Terraform some
 do_some_terraform:
-		for(i=0; i!=5; i++)
+		for (i=0; i!=5; i++)
 			AiDoTerraformLand(p->ai.cur_tile_a, p->ai.cur_dir_a, 3, 0);
 
 		if (++p->ai.state_counter == 21) {
@@ -3025,7 +3025,7 @@ do_some_terraform:
 				unnecessary to check for worse bridge (i=0), since AI will always build that.
 				AI is so fucked up that fixing this small thing will probably not solve a thing
 		*/
-		for(i = 10; i != 0; i--) {
+		for (i = 10; i != 0; i--) {
 			if (CheckBridge_Stuff(i, bridge_len)) {
 				int32 cost = DoCommandByTile(tile, p->ai.cur_tile_a, i + (0x80 << 8), DC_AUTO, CMD_BUILD_BRIDGE);
 				if (!CmdFailed(cost) && cost < (p->player_money >> 5))
@@ -3054,7 +3054,7 @@ do_some_terraform:
 	}
 
 	if (arf.best_tile != 0) {
-		for(i=0; i!=2; i++)
+		for (i=0; i!=2; i++)
 			AiDoTerraformLand(arf.best_tile, arf.best_dir, 3, 0);
 	}
 }
@@ -3074,7 +3074,7 @@ static void AiBuildRoad(Player *p)
 	} else if (p->ai.state_mode == 2) {
 
 		// Terraform some and then try building again.
-		for(i=0; i!=4; i++)
+		for (i=0; i!=4; i++)
 			AiDoTerraformLand(p->ai.cur_tile_a, p->ai.cur_dir_a, 3, 0);
 
 		if (++p->ai.state_counter == 4) {
@@ -3124,7 +3124,7 @@ static void AiStateBuildRoad(Player *p)
 	num = p->ai.num_build_rec;
 	aib = &p->ai.src;
 
-	for(;;) {
+	for (;;) {
 		cmd = aib->buildcmd_a;
 		aib->buildcmd_a = 255;
 		if (cmd != 255) break;
@@ -3173,7 +3173,7 @@ static void AiStateBuildRoadVehicles(Player *p)
 	int i;
 
 	ptr = _road_default_block_data[p->ai.src.cur_building_rule]->data;
-	for(;ptr->mode != 0;ptr++) {}
+	for (;ptr->mode != 0;ptr++) {}
 	tile = TILE_ADD(p->ai.src.use_tile, ToTileIndexDiff(ptr->tileoffs));
 
 	veh = AiChooseRoadVehToBuild(p->ai.cargo_type, p->player_money, tile);
@@ -3336,7 +3336,7 @@ static int32 AiDoBuildDefaultAirportBlock(TileIndex tile, const AiDefaultBlockDa
 {
 	int32 total_cost = 0, ret;
 
-	for(;p->mode == 0;p++) {
+	for (;p->mode == 0;p++) {
 		if (!HASBIT(_avail_aircraft, p->attr))
 			return CMD_ERROR;
 		ret = DoCommandByTile(TILE_MASK(tile + ToTileIndexDiff(p->tileoffs)), p->attr,0,flag | DC_AUTO | DC_NO_WATER,CMD_BUILD_AIRPORT);
@@ -3359,7 +3359,7 @@ static bool AiCheckAirportResources(TileIndex tile, const AiDefaultBlockData *p,
 		rad = 4;
 	}
 
-	for(;p->mode==0;p++) {
+	for (;p->mode==0;p++) {
 		TileIndex tile2 = TILE_ADD(tile, ToTileIndexDiff(p->tileoffs));
 
 		w = _airport_size_x[p->attr];
@@ -3379,7 +3379,7 @@ static int AiFindBestDefaultAirportBlock(TileIndex tile, byte cargo, byte heli, 
 {
 	int i;
 	const AiDefaultBlockData *p;
-	for(i=0; (p = _airport_default_block_data[i]) != NULL; i++) {
+	for (i=0; (p = _airport_default_block_data[i]) != NULL; i++) {
 		// If we are doing a helicopter service, avoid building
 		// airports where they can't land.
 		if (heli && GetAirport(p->attr)->acc_planes == AIRCRAFT_ONLY)
@@ -3490,7 +3490,7 @@ static void AiStateBuildAircraftVehicles(Player *p)
 	uint loco_id;
 
 	ptr = _airport_default_block_data[p->ai.src.cur_building_rule];
-	for(;ptr->mode!=0;ptr++) {}
+	for (;ptr->mode!=0;ptr++) {}
 
 	tile = TILE_ADD(p->ai.src.use_tile, ToTileIndexDiff(ptr->tileoffs));
 
@@ -3503,7 +3503,7 @@ static void AiStateBuildAircraftVehicles(Player *p)
 	if (CmdFailed(DoCommandByTile(tile, veh, 0, DC_EXEC, CMD_BUILD_AIRCRAFT))) return;
 	loco_id = _new_aircraft_id;
 
-	for(i=0; p->ai.order_list_blocks[i] != 0xFF; i++) {
+	for (i=0; p->ai.order_list_blocks[i] != 0xFF; i++) {
 		AiBuildRec *aib = (&p->ai.src) + p->ai.order_list_blocks[i];
 		bool is_pass = (p->ai.cargo_type == CT_PASSENGERS || p->ai.cargo_type == CT_MAIL);
 		Order order;

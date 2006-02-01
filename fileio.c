@@ -59,7 +59,7 @@ byte FioReadByte(void)
 
 void FioSkipBytes(int n)
 {
-	for(;;) {
+	for (;;) {
 		int m = min(_fio.buffer_end - _fio.buffer, n);
 		_fio.buffer += m;
 		n -= m;
@@ -117,7 +117,7 @@ bool FiosCheckFileExists(const char *filename)
 	if (f == NULL) {
 		char *s;
 		// Make lower case and try again
-		for(s=buf + strlen(_path.data_dir) - 1; *s != 0; s++)
+		for (s = buf + strlen(_path.data_dir) - 1; *s != 0; s++)
 			*s = tolower(*s);
 		f = fopen(buf, "rb");
 
@@ -125,7 +125,7 @@ bool FiosCheckFileExists(const char *filename)
 	// tries in the 2nd data directory
 		if (f == NULL) {
 			sprintf(buf, "%s%s", _path.second_data_dir, filename);
-			for(s=buf + strlen(_path.second_data_dir) - 1; *s != 0; s++)
+			for (s = buf + strlen(_path.second_data_dir) - 1; *s != 0; s++)
 			*s = tolower(*s);
 		f = fopen(buf, "rb");
 		}
@@ -153,7 +153,7 @@ FILE *FioFOpenFile(const char *filename)
 	if (f == NULL) {
 		char *s;
 		// Make lower case and try again
-		for(s=buf + strlen(_path.data_dir) - 1; *s != 0; s++)
+		for (s = buf + strlen(_path.data_dir) - 1; *s != 0; s++)
 			*s = tolower(*s);
 		f = fopen(buf, "rb");
 
@@ -161,7 +161,7 @@ FILE *FioFOpenFile(const char *filename)
 		// tries in the 2nd data directory
 		if (f == NULL) {
 			sprintf(buf, "%s%s", _path.second_data_dir, filename);
-			for(s=buf + strlen(_path.second_data_dir) - 1; *s != 0; s++)
+			for (s = buf + strlen(_path.second_data_dir) - 1; *s != 0; s++)
 				*s = tolower(*s);
 			f = fopen(buf, "rb");
 		}
@@ -184,7 +184,7 @@ void FioOpenFile(int slot, const char *filename)
 	if (f == NULL) {
 		char *s;
 		// Make lower case and try again
-		for(s=buf + strlen(_path.data_dir) - 1; *s != 0; s++)
+		for (s = buf + strlen(_path.data_dir) - 1; *s != 0; s++)
 			*s = tolower(*s);
 		f = fopen(buf, "rb");
 
@@ -192,7 +192,7 @@ void FioOpenFile(int slot, const char *filename)
 	// tries in the 2nd data directory
 		if (f == NULL) {
 			sprintf(buf, "%s%s", _path.second_data_dir, filename);
-			for(s=buf + strlen(_path.second_data_dir) - 1; *s != 0; s++)
+			for (s = buf + strlen(_path.second_data_dir) - 1; *s != 0; s++)
 			*s = tolower(*s);
 		f = fopen(buf, "rb");
 		}

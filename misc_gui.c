@@ -548,7 +548,7 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 
 		if ( (x|y) != 0) {
 			pt = RemapCoords2(x, y);
-			for(w=_windows; w->window_class != WC_MAIN_WINDOW; w++) {}
+			for (w = _windows; w->window_class != WC_MAIN_WINDOW; w++) {}
 			vp = w->viewport;
 
 			// move x pos to opposite corner
@@ -567,7 +567,7 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 	} else {
 		if ( (x|y) != 0) {
 			pt = RemapCoords2(x, y);
-			for(w=_windows; w->window_class != WC_MAIN_WINDOW; w++) {}
+			for (w = _windows; w->window_class != WC_MAIN_WINDOW; w++) {}
 			vp = w->viewport;
 			pt.x = clamp(((pt.x - vp->virtual_left) >> vp->zoom) + vp->left - (334/2), 0, _screen.width - 334);
 			pt.y = clamp(((pt.y - vp->virtual_top) >> vp->zoom) + vp->top - (137/2), 22, _screen.height - 137);
@@ -967,7 +967,7 @@ static void QueryStringWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 3: DeleteWindow(w); break;
 		case 4:
 press_ok:;
@@ -1376,8 +1376,9 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		break;
 	case WE_DESTROY:
 		// pause is only used in single-player, non-editor mode, non menu mode
-		if(!_networking && (_game_mode != GM_EDITOR) && (_game_mode != GM_MENU))
+		if (!_networking && _game_mode != GM_EDITOR && _game_mode != GM_MENU) {
 			DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
+		}
 		FiosFreeSavegameList();
 		CLRBIT(_no_scroll, SCROLL_SAVE);
 		break;
@@ -1534,7 +1535,7 @@ static void SelectScenarioWndProc(Window* w, WindowEvent* e)
 		break;
 
 	case WE_CLICK:
-		switch(e->click.widget) {
+		switch (e->click.widget) {
 		case 3: /* Sort scenario names by name */
 			_savegame_sort_order = (_savegame_sort_order == SORT_BY_NAME) ?
 				SORT_BY_NAME | SORT_DESCENDING : SORT_BY_NAME;

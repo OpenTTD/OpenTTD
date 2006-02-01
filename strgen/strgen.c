@@ -116,7 +116,7 @@ static int _cur_argidx;
 static uint HashStr(const char *s)
 {
 	uint hash = 0;
-	for(; *s; s++)
+	for (; *s; s++)
 		hash = ((hash << 3) | (hash >> 29)) ^ *s;
 	return hash % HASH_SIZE;
 }
@@ -270,7 +270,7 @@ char *ParseWord(char **buf)
 	if (*s == '"') {
 		r = ++s;
 		// parse until next " or NUL
-		for(;;) {
+		for (;;) {
 			if (*s == 0)
 				break;
 			if (*s == '"') {
@@ -282,7 +282,7 @@ char *ParseWord(char **buf)
 	} else {
 		// proceed until whitespace or NUL
 		r = s;
-		for(;;) {
+		for (;;) {
 			if (*s == 0)
 				break;
 			if (*s == ' ' || *s == '\t') {
@@ -304,10 +304,9 @@ static void EmitWordList(char **words, int nw)
 	int i,j;
 
 	PutByte(nw);
-	for(i=0; i<nw; i++)
-		PutByte(strlen(words[i]));
-	for(i=0; i<nw; i++) {
-		for(j=0; words[i][j]; j++)
+	for (i = 0; i < nw; i++) PutByte(strlen(words[i]));
+	for (i = 0; i < nw; i++) {
+		for (j = 0; words[i][j]; j++)
 			PutByte(words[i][j]);
 	}
 }
@@ -341,7 +340,7 @@ static void EmitPlural(char *buf, int value)
 			if (nw > _plural_form_counts[_lang_pluralform]) {
 				nw = _plural_form_counts[_lang_pluralform];
 			} else {
-				for(; nw < _plural_form_counts[_lang_pluralform]; nw++) {
+				for (; nw < _plural_form_counts[_lang_pluralform]; nw++) {
 					words[nw] = words[nw - 1];
 				}
 			}
@@ -364,9 +363,8 @@ static void EmitGender(char *buf, int value)
 		buf++;
 
 		// This is a {G=DER} command
-		for(nw=0; ;nw++) {
-			if (nw >= 8)
-				Fatal("G argument '%s' invalid", buf);
+		for (nw = 0; ; nw++) {
+			if (nw >= 8) Fatal("G argument '%s' invalid", buf);
 			if (!strcmp(buf, _genders[nw]))
 				break;
 		}
@@ -379,7 +377,7 @@ static void EmitGender(char *buf, int value)
 		// If no relative number exists, default to +0
 		if (!ParseRelNum(&buf, &argidx)) {}
 
-		for(nw=0; nw<8; nw++) {
+		for (nw = 0; nw < 8; nw++) {
 			words[nw] = ParseWord(&buf);
 			if (!words[nw])
 				break;
@@ -507,7 +505,7 @@ static const CmdStruct *FindCmd(const char *s, int len)
 {
 	int i;
 	const CmdStruct *cs = _cmd_structs;
-	for(i=0; i != lengthof(_cmd_structs); i++, cs++) {
+	for (i=0; i != lengthof(_cmd_structs); i++, cs++) {
 		if (!strncmp(cs->cmd, s, len) && cs->cmd[len] == '\0')
 			return cs;
 	}
@@ -517,7 +515,7 @@ static const CmdStruct *FindCmd(const char *s, int len)
 static int ResolveCaseName(const char *str, int len)
 {
 	int i;
-	for(i=0; i<MAX_NUM_CASES; i++)
+	for (i = 0; i < MAX_NUM_CASES; i++)
 		if (!memcmp(_cases[i], str, len) && _cases[i][len] == 0)
 			return i + 1;
 	Fatal("Invalid case-name '%s'", str);
@@ -536,7 +534,7 @@ static const CmdStruct *ParseCommandString(const char **str, char *param, int *a
 	*casei = -1;
 
 	// Scan to the next command, exit if there's no next command.
-	for(; *s != '{'; s++) {
+	for (; *s != '{'; s++) {
 		if (*s == '\0')
 			return NULL;
 	}
@@ -583,7 +581,7 @@ static const CmdStruct *ParseCommandString(const char **str, char *param, int *a
 		if (c == '=') s--;
 		// copy params
 		start = s;
-		for(;;) {
+		for (;;) {
 			c = *s++;
 			if (c == '}') break;
 			if (c == '\0') {
@@ -619,7 +617,7 @@ static void HandlePragma(char *str)
 			Fatal("Invalid pluralform %d", _lang_pluralform);
 	} else if (!memcmp(str, "gender ", 7)) {
 		char *buf = str + 7, *s;
-		for(;;) {
+		for (;;) {
 			s = ParseWord(&buf);
 			if (!s) break;
 			if (_numgenders >= MAX_NUM_GENDER) Fatal("Too many genders, max %d", MAX_NUM_GENDER);
@@ -628,7 +626,7 @@ static void HandlePragma(char *str)
 		}
 	} else if (!memcmp(str, "case ", 5)) {
 		char *buf = str + 5, *s;
-		for(;;) {
+		for (;;) {
 			s = ParseWord(&buf);
 			if (!s) break;
 			if (_numcases >= MAX_NUM_CASES) Fatal("Too many cases, max %d", MAX_NUM_CASES);
@@ -650,7 +648,7 @@ static void ExtractCommandString(ParsedCommandStruct *p, char *s, bool warnings)
 
 	memset(p, 0, sizeof(*p));
 
-	for(;;) {
+	for (;;) {
 		// read until next command from a.
 		ar = ParseCommandString((const char **)&s, param, &argno, &casei);
 		if (ar == NULL)
@@ -710,10 +708,10 @@ static bool CheckCommandsMatch(char *a, char *b, const char *name)
 		result = false;
 	}
 
-	for(i = 0; i < templ.np; i++) {
+	for (i = 0; i < templ.np; i++) {
 		// see if we find it in lang, and zero it out
 		bool found = false;
-		for(j = 0; j < lang.np; j++) {
+		for (j = 0; j < lang.np; j++) {
 			if (templ.pairs[i].a == lang.pairs[j].a &&
 					!strcmp(templ.pairs[i].v, lang.pairs[j].v)) {
 				// it was found in both. zero it out from lang so we don't find it again
@@ -731,7 +729,7 @@ static bool CheckCommandsMatch(char *a, char *b, const char *name)
 
 	// if we reach here, all non consumer commands match up.
 	// Check if the non consumer commands match up also.
-	for(i = 0; i < lengthof(templ.cmd); i++) {
+	for (i = 0; i < lengthof(templ.cmd); i++) {
 		if (TranslateCmdForCompare(templ.cmd[i]) != TranslateCmdForCompare(lang.cmd[i])) {
 			Warning("%s: Param idx #%d '%s' doesn't match with template command '%s'", name, i,
 				!lang.cmd[i] ? "<empty>" : lang.cmd[i]->cmd,
@@ -767,7 +765,7 @@ static void HandleString(char *str, bool master)
 
 	// Trim spaces.
 	// After this str points to the command name, and s points to the command contents
-	for(t = s; t > str && (t[-1]==' ' || t[-1]=='\t'); t--);
+	for (t = s; t > str && (t[-1] ==' ' || t[-1] == '\t'); t--);
 	*t = 0;
 	s++;
 
@@ -884,7 +882,7 @@ static void ParseFile(const char *file, bool english)
 
 static uint32 MyHashStr(uint32 hash, const char *s)
 {
-	for(; *s; s++) {
+	for (; *s; s++) {
 		hash = ((hash << 3) | (hash >> 29)) ^ *s;
 		if (hash & 1) hash = (hash>>1) ^ 0xDEADBEEF; else hash >>= 1;
 	}
@@ -904,7 +902,7 @@ static void MakeHashOfStrings(void)
 	int argno;
 	int casei;
 
-	for(i = 0; i != 65536; i++) {
+	for (i = 0; i != 65536; i++) {
 		if ((ls=_strings[i]) != NULL) {
 			s = ls->name;
 			hash ^= i * 0x717239;
@@ -929,7 +927,7 @@ static int CountInUse(int grp)
 {
 	int i;
 
-	for(i = 0x800; --i >= 0;) {
+	for (i = 0x800; --i >= 0;) {
 		if (_strings[(grp<<11)+i] != NULL)
 			break;
 	}
@@ -983,7 +981,7 @@ static void WriteStringsH(const char *filename)
 
 	lastgrp = 0;
 
-	for(i = 0; i != 65536; i++) {
+	for (i = 0; i != 65536; i++) {
 		if (_strings[i]) {
 			if (lastgrp != (i >> 11)) {
 				lastgrp = (i >> 11);
@@ -1025,7 +1023,7 @@ static int TranslateArgumentIdx(int argidx)
 	if (argidx < 0 || argidx >= lengthof(_cur_pcs.cmd))
 		Fatal("invalid argidx %d", argidx);
 
-	for(i = sum = 0; i < argidx; i++) {
+	for (i = sum = 0; i < argidx; i++) {
 		const CmdStruct *cs = _cur_pcs.cmd[i];
 		sum += cs ? cs->consumes : 1;
 	}
@@ -1105,7 +1103,7 @@ static void WriteLangfile(const char *filename, int show_todo)
 	if (f == NULL) Fatal("can't open %s", filename);
 
 	memset(&hdr, 0, sizeof(hdr));
-	for(i = 0; i != 32; i++) {
+	for (i = 0; i != 32; i++) {
 		int n = CountInUse(i);
 		in_use[i] = n;
 		hdr.offsets[i] = TO_LE16(n);
@@ -1121,8 +1119,8 @@ static void WriteLangfile(const char *filename, int show_todo)
 
 	fwrite(&hdr, sizeof(hdr), 1, f);
 
-	for(i = 0; i != 32; i++) {
-		for(j = 0; j != in_use[i]; j++) {
+	for (i = 0; i != 32; i++) {
+		for (j = 0; j != in_use[i]; j++) {
 			LangString *ls = _strings[(i<<11)+j];
 
 			Case *casep;
@@ -1143,7 +1141,7 @@ static void WriteLangfile(const char *filename, int show_todo)
 					Warning("'%s' is untranslated", ls->name);
 				} else {
 					const char *s = "<TODO> ";
-					while(*s) PutByte(*s++);
+					while (*s) PutByte(*s++);
 				}
 			}
 
@@ -1169,11 +1167,11 @@ static void WriteLangfile(const char *filename, int show_todo)
 				// Each LEN is printed using 2 bytes in big endian order.
 				PutByte(0x9E);
 				// Count the number of cases
-				for(num=0,c=casep; c; c=c->next) num++;
+				for (num = 0, c = casep; c; c = c->next) num++;
 				PutByte(num);
 
 				// Write each case
-				for(c=casep; c; c=c->next) {
+				for (c = casep; c; c = c->next) {
 					int pos;
 					PutByte(c->caseidx);
 					// Make some space for the 16-bit length

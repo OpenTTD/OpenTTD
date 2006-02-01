@@ -422,7 +422,7 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsTileType(tile, MP_TUNNELBRIDGE) && !EnsureNoVehicle(tile))
 		return CMD_ERROR;
 
-	switch(GetTileType(tile))
+	switch (GetTileType(tile))
 	{
 		case MP_TUNNELBRIDGE:
 			if (!EnsureNoVehicleZ(tile, TilePixelHeight(tile)))
@@ -592,7 +592,7 @@ static int32 CmdRailTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 p2
 
 	if (flags & DC_EXEC) SndPlayTileFx(SND_20_SPLAT_2, TileVirtXY(x, y));
 
-	for(;;) {
+	for (;;) {
 		ret = DoCommand(x, y, railtype, TrackdirToTrack(trackdir), flags, (mode == 0) ? CMD_BUILD_SINGLE_RAIL : CMD_REMOVE_SINGLE_RAIL);
 
 		if (CmdFailed(ret)) {

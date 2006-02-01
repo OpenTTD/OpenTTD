@@ -477,7 +477,7 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 {
 	int item;
 
-	switch(e->event) {
+	switch (e->event) {
 		case WE_PAINT: {
 			int x,y,i,sel;
 
