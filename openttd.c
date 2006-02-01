@@ -377,12 +377,6 @@ int ttd_main(int argc, char* argv[])
 		case 'G':
 			_random_seeds[0][0] = atoi(mgo.opt);
 			break;
-		case 'p': {
-			int i = atoi(mgo.opt);
-			// Play as an other player in network games
-			if (IS_INT_INSIDE(i, 1, MAX_PLAYERS)) _network_playas = i;
-			break;
-		}
 		case 'c':
 			_config_file = strdup(mgo.opt);
 			break;
