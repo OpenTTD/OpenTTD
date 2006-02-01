@@ -944,7 +944,7 @@ static int PickRandomBit(uint bits)
 
 	num = RandomRange(num);
 
-	for (i = 0; !((bits & 1) && ((int)--num) < 0); bits >> = 1, i++);
+	for (i = 0; !((bits & 1) && ((int)--num) < 0); bits >>= 1, i++);
 	return i;
 }
 
