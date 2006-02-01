@@ -178,16 +178,15 @@ static bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 
 					case OC_CHUNK:
 						/* Call function, with 'i' as parameter to tell which item we
-						are going to read */
-						if (!chunk->proc(ls, i))
-							return false;
+						 * are going to read */
+						if (!chunk->proc(ls, i)) return false;
 						break;
 
 					case OC_ASSERT:
 						DEBUG(oldloader, 4)("[OldLoader] Assert point: %x / %x", ls->total_read, chunk->offset + _bump_assert_value);
-						if (ls->total_read != chunk->offset + _bump_assert_value)
+						if (ls->total_read != chunk->offset + _bump_assert_value) {
 							ls->failed = true;
-
+						}
 						break;
 
 				}
@@ -345,8 +344,7 @@ static void FixOldTowns(void)
 
 	/* Convert town-names if needed */
 	FOR_ALL_TOWNS(town) {
-		if (town->xy == 0)
-			continue;
+		if (town->xy == 0) continue;
 
 		if (IS_INT_INSIDE(town->townnametype, 0x20C1, 0x20C3)) {
 			town->townnametype = SPECSTR_TOWNNAME_ENGLISH + _opt.town_name;
@@ -393,26 +391,22 @@ static void FixOldStations(void)
 static void FixOldVehicles(void)
 {
 	/* Check for shared orders, and link them correctly */
-	{
-		Vehicle *v;
+	Vehicle* v;
 
-		FOR_ALL_VEHICLES(v) {
-			Vehicle *u;
+	FOR_ALL_VEHICLES(v) {
+		Vehicle* u;
 
-			if (v->type == 0)
-				continue;
+		if (v->type == 0) continue;
 
-			FOR_ALL_VEHICLES_FROM(u, v->index + 1) {
-				if (u->type == 0)
-					continue;
+		FOR_ALL_VEHICLES_FROM(u, v->index + 1) {
+			if (u->type == 0) continue;
 
-					/* If a vehicle has the same orders, add the link to eachother
-				in both vehicles */
-				if (v->orders == u->orders) {
-					v->next_shared = u;
-					u->prev_shared = v;
-					break;
-				}
+			/* If a vehicle has the same orders, add the link to eachother
+			 * in both vehicles */
+			if (v->orders == u->orders) {
+				v->next_shared = u;
+				u->prev_shared = v;
+				break;
 			}
 		}
 	}
@@ -461,8 +455,7 @@ static void ReadTTDPatchFlags(void)
 {
 	int i;
 
-	if (_read_ttdpatch_flags)
-		return;
+	if (_read_ttdpatch_flags) return;
 
 	_read_ttdpatch_flags = true;
 
@@ -470,8 +463,7 @@ static void ReadTTDPatchFlags(void)
 	_old_vehicle_multipler = _old_map3[0];
 	/* Somehow.... there was an error in some savegames, so 0 becomes 1
 	and 1 becomes 2. The rest of the values are okay */
-	if (_old_vehicle_multipler < 2)
-		_old_vehicle_multipler++;
+	if (_old_vehicle_multipler < 2) _old_vehicle_multipler++;
 
 	/* TTDPatch incraeses the Vehicle-part in the middle of the game,
 	so if the multipler is anything else but 1, the assert fails..
@@ -1025,6 +1017,7 @@ static const OldChunks player_chunk[] = {
 
 	OCL_END()
 };
+
 static bool LoadOldPlayer(LoadgameState *ls, int num)
 {
 	Player *p = GetPlayer(num);
@@ -1340,8 +1333,7 @@ static const OldChunks engine_chunk[] = {
 };
 static bool LoadOldEngine(LoadgameState *ls, int num)
 {
-	if (!LoadChunk(ls, GetEngine(num), engine_chunk))
-		return false;
+	if (!LoadChunk(ls, GetEngine(num), engine_chunk)) return false;
 
 	/* Make sure wagons are marked as do-not-age */
 	if ((num >= 27 && num < 54) || (num >= 57 && num < 84) || (num >= 89 && num < 116))

@@ -497,7 +497,9 @@ static inline bool IsDiagonalTrackdir(Trackdir trackdir) { return IsDiagonalTrac
 static inline bool HasSignalOnTrack(TileIndex tile, Track track)
 {
 	assert(IsValidTrack(track));
-	return ((GetRailTileType(tile) == RAIL_TYPE_SIGNALS) && ((_m[tile].m3 & SignalOnTrack(track)) != 0));
+	return
+		GetRailTileType(tile) == RAIL_TYPE_SIGNALS &&
+		(_m[tile].m3 & SignalOnTrack(track)) != 0;
 }
 
 /**
@@ -510,7 +512,9 @@ static inline bool HasSignalOnTrack(TileIndex tile, Track track)
 static inline bool HasSignalOnTrackdir(TileIndex tile, Trackdir trackdir)
 {
 	assert (IsValidTrackdir(trackdir));
-	return (GetRailTileType(tile) == RAIL_TYPE_SIGNALS) && (_m[tile].m3 & SignalAlongTrackdir(trackdir));
+	return
+		GetRailTileType(tile) == RAIL_TYPE_SIGNALS &&
+		_m[tile].m3 & SignalAlongTrackdir(trackdir);
 }
 
 /**
@@ -523,7 +527,8 @@ static inline SignalState GetSignalState(TileIndex tile, Trackdir trackdir)
 {
 	assert(IsValidTrackdir(trackdir));
 	assert(HasSignalOnTrack(tile, TrackdirToTrack(trackdir)));
-	return ((_m[tile].m2 & SignalAlongTrackdir(trackdir))?SIGNAL_STATE_GREEN:SIGNAL_STATE_RED);
+	return _m[tile].m2 & SignalAlongTrackdir(trackdir) ?
+		SIGNAL_STATE_GREEN : SIGNAL_STATE_RED;
 }
 
 /**
@@ -552,7 +557,7 @@ static inline SignalType GetSignalType(TileIndex tile, Track track)
 static inline bool HasSemaphores(TileIndex tile, Track track)
 {
 	assert(IsValidTrack(track));
-	return (_m[tile].m4 & SIG_SEMAPHORE_MASK);
+	return _m[tile].m4 & SIG_SEMAPHORE_MASK;
 }
 
 /**
@@ -580,8 +585,7 @@ static inline bool IsLevelCrossing(TileIndex tile)
 static inline TransportType GetCrossingTransportType(TileIndex tile, Track track)
 {
 	/* XXX: Nicer way to write this? */
-	switch(track)
-	{
+	switch (track) {
 		/* When map5 bit 3 is set, the road runs in the y direction (DIAG2) */
 		case TRACK_DIAG1:
 			return (HASBIT(_m[tile].m5, 3) ? TRANSPORT_RAIL : TRANSPORT_ROAD);
@@ -627,8 +631,7 @@ static inline bool IsCompatibleRail(RailType enginetype, RailType tiletype)
 static inline bool TracksOverlap(TrackBits bits)
 {
   /* With no, or only one track, there is no overlap */
-  if (bits == 0 || KILL_FIRST_BIT(bits) == 0)
-    return false;
+  if (bits == 0 || KILL_FIRST_BIT(bits) == 0) return false;
   /* We know that there are at least two tracks present. When there are more
    * than 2 tracks, they will surely overlap. When there are two, they will
    * always overlap unless they are lower & upper or right & left. */

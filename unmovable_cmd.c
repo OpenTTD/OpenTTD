@@ -336,8 +336,7 @@ void GenerateUnmovables(void)
 	int dir;
 	uint h;
 
-	if (_opt.landscape == LT_CANDY)
-		return;
+	if (_opt.landscape == LT_CANDY) return;
 
 	/* add radio tower */
 	i = ScaleByMapSize(1000);
@@ -345,18 +344,15 @@ void GenerateUnmovables(void)
 	do {
 		tile = RandomTile();
 		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h >= 32) {
-			if(!checkRadioTowerNearby(tile))
-				continue;
+			if (!checkRadioTowerNearby(tile)) continue;
 			SetTileType(tile, MP_UNMOVABLE);
 			_m[tile].m5 = 0;
 			SetTileOwner(tile, OWNER_NONE);
-			if (--j == 0)
-				break;
+			if (--j == 0) break;
 		}
 	} while (--i);
 
-	if (_opt.landscape == LT_DESERT)
-		return;
+	if (_opt.landscape == LT_DESERT) return;
 
 	/* add lighthouses */
 	i = ScaleByMapSize1D((Random() & 3) + 7);
@@ -372,8 +368,7 @@ restart:
 			(dir == 3) ? TileXY(r, MapMaxY()) : 0;  // bottom
 		j = 20;
 		do {
-			if (--j == 0)
-				goto restart;
+			if (--j == 0) goto restart;
 			tile = TILE_MASK(tile + ToTileIndexDiff(_tile_add[dir]));
 		} while (!(IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h <= 16));
 

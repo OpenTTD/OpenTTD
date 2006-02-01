@@ -983,10 +983,11 @@ StringID RemapOldStringID(StringID s)
 		case 0xA02F: return STR_SV_AIRCRAFT_NAME;
 
 		default:
-			if (IS_INT_INSIDE(s, 0x300F, 0x3030))
+			if (IS_INT_INSIDE(s, 0x300F, 0x3030)) {
 				return s - 0x300F + STR_SV_STNAME;
-			else
+			} else {
 				return s;
+			}
 	}
 }
 

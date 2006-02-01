@@ -922,13 +922,12 @@ void EnginesDailyLoop(void)
 int32 CmdWantEnginePreview(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	Engine *e;
-	if (!IsEngineIndex(p1)) return CMD_ERROR;
 
+	if (!IsEngineIndex(p1)) return CMD_ERROR;
 	e = GetEngine(p1);
 	if (GetBestPlayer(e->preview_player) != _current_player) return CMD_ERROR;
 
-	if (flags & DC_EXEC)
-		AcceptEnginePreview(e, _current_player);
+	if (flags & DC_EXEC) AcceptEnginePreview(e, _current_player);
 
 	return 0;
 }

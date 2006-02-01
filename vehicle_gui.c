@@ -114,8 +114,9 @@ void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID sta
 	if (!(vl->flags & VL_REBUILD)) return;
 
 	sort_list = malloc(GetVehiclePoolSize() * sizeof(sort_list[0]));
-	if (sort_list == NULL)
+	if (sort_list == NULL) {
 		error("Could not allocate memory for the vehicle-sorting-list");
+	}
 
 	DEBUG(misc, 1) ("Building vehicle list for player %d station %d...",
 		owner, station);
@@ -124,8 +125,9 @@ void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID sta
 		const Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
 			if (v->type == type && (
-				(type == VEH_Train && IsFrontEngine(v)) ||
-				(type != VEH_Train && v->subtype <= subtype))) {
+						(type == VEH_Train && IsFrontEngine(v)) ||
+						(type != VEH_Train && v->subtype <= subtype)
+					)) {
 				const Order *order;
 
 				FOR_VEHICLE_ORDERS(v, order) {
@@ -142,8 +144,9 @@ void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID sta
 		const Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
 			if (v->type == type && v->owner == owner && (
-				(type == VEH_Train && IsFrontEngine(v)) ||
-				(type != VEH_Train && v->subtype <= subtype))) {
+						(type == VEH_Train && IsFrontEngine(v)) ||
+						(type != VEH_Train && v->subtype <= subtype)
+					)) {
 				sort_list[n].index = v->index;
 				sort_list[n].owner = v->owner;
 				++n;
@@ -153,8 +156,9 @@ void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID sta
 
 	free(vl->sort_list);
 	vl->sort_list = malloc(n * sizeof(vl->sort_list[0]));
-	if (n != 0 && vl->sort_list == NULL)
+	if (n != 0 && vl->sort_list == NULL) {
 		error("Could not allocate memory for the vehicle-sorting-list");
+	}
 	vl->list_length = n;
 
 	for (i = 0; i < n; ++i) vl->sort_list[i] = sort_list[i];

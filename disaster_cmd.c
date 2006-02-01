@@ -246,7 +246,6 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 			IsTileType(tile, MP_STATION) &&
 			IS_BYTE_INSIDE(_m[tile].m5, 8, 0x43) &&
 			IS_HUMAN_PLAYER(GetTileOwner(tile))) {
-
 		st = GetStation(_m[tile].m2);
 		SETBITS(st->airport_flags, RUNWAY_IN_block);
 	}
@@ -905,7 +904,6 @@ static void Disaster7_Init(void)
 	for (m = 0; m < 15; m++) {
 		FOR_ALL_INDUSTRIES(i) {
 			if (i->xy != 0 && i->type == IT_COAL_MINE && --index < 0) {
-
 				SetDParam(0, i->town->index);
 				AddNewsItem(STR_B005_COAL_MINE_SUBSIDENCE_LEAVES,
 					NEWS_FLAGS(NM_THIN,NF_VIEWPORT|NF_TILE,NT_ACCIDENT,0), i->xy + TileDiffXY(1, 1), 0);

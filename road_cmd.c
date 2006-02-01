@@ -39,14 +39,14 @@ static bool HasTileRoadAt(TileIndex tile, int i)
 			b = (b&8)?5:10;
 		} else if ((b & 0xF0) == 0x20) {
 			return (~b & 3) == i;
-		} else
+		} else {
 			return false;
+		}
 		break;
 
 	case MP_STATION:
 		b = _m[tile].m5;
-		if (!IS_BYTE_INSIDE(b, 0x43, 0x43+8))
-			return false;
+		if (!IS_BYTE_INSIDE(b, 0x43, 0x43 + 8)) return false;
 		return ((~(b - 0x43) & 3) == i);
 
 	case MP_TUNNELBRIDGE:

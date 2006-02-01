@@ -650,8 +650,7 @@ int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				/* Link this vehicle in the shared-list */
 				dst->next_shared = src->next_shared;
 				dst->prev_shared = src;
-				if (src->next_shared != NULL)
-					src->next_shared->prev_shared = dst;
+				if (src->next_shared != NULL) src->next_shared->prev_shared = dst;
 				src->next_shared = dst;
 
 				InvalidateVehicleOrder(dst);

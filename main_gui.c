@@ -2214,9 +2214,9 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 		if (w->message.msg) { // true when saving is active
 			DrawStringCentered(320, 1, STR_SAVING_GAME, 0);
 		} else if (_do_autosave) {
-			DrawStringCentered(320, 1,	STR_032F_AUTOSAVE, 0);
+			DrawStringCentered(320, 1, STR_032F_AUTOSAVE, 0);
 		} else if (_pause) {
-			DrawStringCentered(320, 1,	STR_0319_PAUSED, 0);
+			DrawStringCentered(320, 1, STR_0319_PAUSED, 0);
 		} else if (WP(w,def_d).data_1 > -1280 && FindWindowById(WC_NEWS_WINDOW,0) == NULL && _statusbar_news_item.string_id != 0) {
 			// Draw the scrolling news text
 			if (!DrawScrollingStatusText(&_statusbar_news_item, WP(w,def_d).data_1))
@@ -2226,7 +2226,7 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 				// This is the default text
 				SetDParam(0, p->name_1);
 				SetDParam(1, p->name_2);
-				DrawStringCentered(320, 1,	STR_02BA, 0);
+				DrawStringCentered(320, 1, STR_02BA, 0);
 			}
 		}
 

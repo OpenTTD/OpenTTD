@@ -26,7 +26,7 @@ extern void DrawArrowButtons(int x, int y, int state);
 
 static void BuildIndustryWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT:
 		DrawWindowWidgets(w);
 		if (_thd.place_mode == 1 && _thd.window_class == WC_BUILD_INDUSTRY) {
@@ -278,7 +278,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 	// WP(w,vp2_d).data_2 is for the clickline
 	// WP(w,vp2_d).data_3 is for the click pos (left or right)
 
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		const Industry *i;
 		StringID str;
@@ -319,8 +319,9 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 				SetDParam(2, i->pct_transported[1] * 100 >> 8);
 				DrawString(4 + (NEED_ALTERB ? 30 : 0), 137, STR_482B_TRANSPORTED, 0);
 				// Let's put out those buttons..
-				if (NEED_ALTERB)
-				    DrawArrowButtons(5, 137, (WP(w,vp2_d).data_2 == 2 ? WP(w,vp2_d).data_3 : 0));
+				if (NEED_ALTERB) {
+					DrawArrowButtons(5, 137, (WP(w,vp2_d).data_2 == 2 ? WP(w,vp2_d).data_3 : 0));
+				}
 			}
 		}
 
@@ -563,7 +564,7 @@ static void MakeSortedIndustryList(void)
 
 static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 {
-	switch(e->event) {
+	switch (e->event) {
 	case WE_PAINT: {
 		int n;
 		uint p;
@@ -604,8 +605,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 				DrawString(4, 28+n*10, STR_INDUSTRYDIR_ITEM_NOPROD, 0);
 			}
 			p++;
-			if (++n == w->vscroll.cap)
-				break;
+			if (++n == w->vscroll.cap) break;
 		}
 	} break;
 
@@ -670,7 +670,6 @@ static const WindowDesc _industry_directory_desc = {
 	_industry_directory_widgets,
 	IndustryDirectoryWndProc
 };
-
 
 
 void ShowIndustryDirectory(void)

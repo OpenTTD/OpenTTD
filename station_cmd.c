@@ -1210,7 +1210,6 @@ static const RealSpriteGroup *ResolveStationSpriteGroup(const SpriteGroup *spg, 
 			if ((dsg->variable >> 6) == 0) {
 				/* General property */
 				value = GetDeterministicSpriteValue(dsg->variable);
-
 			} else {
 				if (st == NULL) {
 					/* We are in a build dialog of something,
@@ -1268,7 +1267,6 @@ uint32 GetCustomStationRelocation(const StationSpec *spec, const Station *st, by
 
 	if (rsg->sprites_per_set != 0) {
 		if (rsg->loading_count != 0) return rsg->loading[0]->g.result.result;
-
 		if (rsg->loaded_count != 0) return rsg->loaded[0]->g.result.result;
 	}
 
@@ -1414,18 +1412,20 @@ int32 CmdBuildRoadStop(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	//give us a road stop in the list, and check if something went wrong
 	road_stop = AllocateRoadStop();
-	if (road_stop == NULL)
-		return_cmd_error( (type) ? STR_3008B_TOO_MANY_TRUCK_STOPS : STR_3008A_TOO_MANY_BUS_STOPS);
+	if (road_stop == NULL) {
+		return_cmd_error(type ? STR_3008B_TOO_MANY_TRUCK_STOPS : STR_3008A_TOO_MANY_BUS_STOPS);
+	}
 
-	if ( st != NULL && (GetNumRoadStops(st, RS_BUS) + GetNumRoadStops(st, RS_TRUCK) >= ROAD_STOP_LIMIT))
-		return_cmd_error( (type) ? STR_3008B_TOO_MANY_TRUCK_STOPS : STR_3008A_TOO_MANY_BUS_STOPS);
+	if (st != NULL && GetNumRoadStops(st, RS_BUS) + GetNumRoadStops(st, RS_TRUCK) >= ROAD_STOP_LIMIT) {
+		return_cmd_error(type ? STR_3008B_TOO_MANY_TRUCK_STOPS : STR_3008A_TOO_MANY_BUS_STOPS);
+	}
 
 	if (st != NULL) {
-		if (st->owner != OWNER_NONE && st->owner != _current_player)
+		if (st->owner != OWNER_NONE && st->owner != _current_player) {
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
+		}
 
-		if (!CheckStationSpreadOut(st, tile, 1, 1))
-			return CMD_ERROR;
+		if (!CheckStationSpreadOut(st, tile, 1, 1)) return CMD_ERROR;
 
 		FindRoadStationSpot(type, st, &currstop, &prev);
 	} else {
@@ -1438,8 +1438,9 @@ int32 CmdBuildRoadStop(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		FindRoadStationSpot(type, st, &currstop, &prev);
 
-		if (_current_player < MAX_PLAYERS && flags&DC_EXEC)
+		if (_current_player < MAX_PLAYERS && flags & DC_EXEC) {
 			SETBIT(t->have_ratings, _current_player);
+		}
 
 		st->sign.width_1 = 0;
 
@@ -1486,8 +1487,9 @@ static int32 RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 	RoadStop *cur_stop;
 	bool is_truck = _m[tile].m5 < 0x47;
 
-	if (_current_player != OWNER_WATER && !CheckOwnership(st->owner))
+	if (_current_player != OWNER_WATER && !CheckOwnership(st->owner)) {
 		return CMD_ERROR;
+	}
 
 	if (is_truck) { // truck stop
 		primary_stop = &st->truck_stops;
@@ -1499,8 +1501,7 @@ static int32 RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 
 	assert(cur_stop != NULL);
 
-	if (!EnsureNoVehicle(tile))
-		return CMD_ERROR;
+	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		uint i;
@@ -1671,8 +1672,7 @@ int32 CmdBuildAirport(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (!GenerateStationName(st, tile, (p1 == AT_HELIPORT) ? 5 : 1))
 			return CMD_ERROR;
 
-		if (flags & DC_EXEC)
-			StationInitialize(st, tile);
+		if (flags & DC_EXEC) StationInitialize(st, tile);
 	}
 
 	cost += _price.build_airport * w * h;

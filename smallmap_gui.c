@@ -491,10 +491,11 @@ static inline uint32 GetSmallMapVegetationPixels(TileIndex tile)
 			break;
 
 		case MP_TREES:
-			if ((_m[tile].m2 & 0x30) == 0x20)
+			if ((_m[tile].m2 & 0x30) == 0x20) {
 				bits = (_opt.landscape == LT_HILLY) ? MKCOLOR(0x98575798) : MKCOLOR(0xC25757C2);
-			else
+			} else {
 				bits = MKCOLOR(0x54575754);
+			}
 			break;
 
 		default:
@@ -561,14 +562,14 @@ static inline uint32 dup_byte32(byte b) {
 
 static void DrawVertMapIndicator(int x, int y, int x2, int y2)
 {
-	GfxFillRect(x, y, x2, y + 3, 69);
-	GfxFillRect(x, y2 - 3, x2, y2, 69);
+	GfxFillRect(x, y,      x2, y + 3, 69);
+	GfxFillRect(x, y2 - 3, x2, y2,    69);
 }
 
 static void DrawHorizMapIndicator(int x, int y, int x2, int y2)
 {
-	GfxFillRect(x, y, x + 3, y2, 69);
-	GfxFillRect(x2 - 3, y, x2, y2, 69);
+	GfxFillRect(x,      y, x + 3, y2, 69);
+	GfxFillRect(x2 - 3, y, x2,    y2, 69);
 }
 
 /**
@@ -612,9 +613,10 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 
 		/* now fill with the player colors */
 		FOR_ALL_PLAYERS(p) {
-			if (p->is_active)
+			if (p->is_active) {
 				_owner_colors[p->index] =
 					dup_byte32(GetNonSprite(775 + p->player_color)[0xCB]); // XXX - magic pixel
+			}
 		}
 	}
 
@@ -661,8 +663,7 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 		/* distance from right edge */
 		t = dpi->width - x;
 		if (t < 4) {
-			if (t <= 0)
-				break; /* exit loop */
+			if (t <= 0) break; /* exit loop */
 			/* mask to use at the right edge */
 			mask &= _smallmap_mask_right[t - 1];
 		}
@@ -718,13 +719,11 @@ skip_column:
 				if (x < 0) {
 					// if x+1 is 0, that means we're on the very left edge,
 					//  and should thus only draw a single pixel
-					if (++x != 0)
-						continue;
+					if (++x != 0) continue;
 					skip = true;
 				} else if (x >= dpi->width - 1) {
 					// Check if we're at the very right edge, and if so draw only a single pixel
-					if (x != dpi->width - 1)
-						continue;
+					if (x != dpi->width - 1) continue;
 					skip = true;
 				}
 
@@ -734,8 +733,7 @@ skip_column:
 
 				// And draw either one or two pixels depending on clipping
 				ptr[0] = color;
-				if (!skip)
-					ptr[1] = color;
+				if (!skip) ptr[1] = color;
 			}
 		}
 	}
@@ -811,10 +809,10 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 		x = 4;
 		y_org = w->height - 44 - 11;
 		y = y_org;
-		while (true) {
-			GfxFillRect(x, y+1, x+8, y + 5, 0);
-			GfxFillRect(x+1, y+2, x+7, y + 4, (byte)tbl[0]);
-			DrawString(x+11, y, tbl[1], 0);
+		for (;;) {
+			GfxFillRect(x,     y + 1, x + 8, y + 5, 0);
+			GfxFillRect(x + 1, y + 2, x + 7, y + 4, (byte)tbl[0]);
+			DrawString(x + 11, y, tbl[1], 0);
 
 			tbl += 2;
 			y += 6;
@@ -873,8 +871,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 
 	case WE_RCLICK:
 		if (e->click.widget == 4) {
-			if (_scrolling_viewport)
-				return;
+			if (_scrolling_viewport) return;
 			_scrolling_viewport = true;
 			_cursor.delta.x = 0;
 			_cursor.delta.y = 0;
@@ -883,8 +880,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 
 	case WE_MOUSELOOP:
 		/* update the window every now and then */
-		if ((++w->vscroll.pos & 0x1F) == 0)
-			SetWindowDirty(w);
+		if ((++w->vscroll.pos & 0x1F) == 0) SetWindowDirty(w);
 		break;
 	}
 }
@@ -911,10 +907,10 @@ void ShowSmallMap(void)
 
 		vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
 
-		x =  (((vp->virtual_width - (220*32)) / 2) + vp->virtual_left) / 4;
-		y = ((((vp->virtual_height- (120*32)) / 2) + vp->virtual_top ) / 2) - 32;
-		WP(w,smallmap_d).scroll_x = (y-x) & ~0xF;
-		WP(w,smallmap_d).scroll_y = (x+y) & ~0xF;
+		x = ((vp->virtual_width  - 220 * 32) / 2 + vp->virtual_left) / 4;
+		y = ((vp->virtual_height - 120 * 32) / 2 + vp->virtual_top ) / 2 - 32;
+		WP(w,smallmap_d).scroll_x = (y - x) & ~0xF;
+		WP(w,smallmap_d).scroll_y = (x + y) & ~0xF;
 		WP(w,smallmap_d).subscroll = 0;
 	}
 }

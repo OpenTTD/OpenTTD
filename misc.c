@@ -140,7 +140,7 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 
 	if ((mode & IG_DATE_RESET) == IG_DATE_RESET) {
 		uint starting = ConvertIntDate(_patches.starting_date);
-		if ( starting == (uint)-1) starting = 10958;
+		if (starting == (uint)-1) starting = 10958;
 		SetDate(starting);
 	}
 
@@ -377,10 +377,11 @@ uint ConvertIntDate(uint date)
 		day = date % 100; date /= 100;
 		month = date % 100 - 1;
 		year = date / 100 - 1920;
-	} else if (IS_INT_INSIDE(date, 2091, 65536))
+	} else if (IS_INT_INSIDE(date, 2091, 65536)) {
 		return date;
-	else
+	} else {
 		return (uint)-1;
+	}
 
 	// invalid ranges?
 	if (month >= 12 || !IS_INT_INSIDE(day, 1, 31+1)) return (uint)-1;
@@ -419,7 +420,7 @@ void InitializeLandscapeVariables(bool only_constants)
 	memcpy(_cargoc.ai_roadveh_start, lpd->road_veh_by_cargo_start,sizeof(lpd->road_veh_by_cargo_start));
 	memcpy(_cargoc.ai_roadveh_count, lpd->road_veh_by_cargo_count,sizeof(lpd->road_veh_by_cargo_count));
 
-	for(i=0; i!=NUM_CARGO; i++) {
+	for (i = 0; i != NUM_CARGO; i++) {
 		_cargoc.sprites[i] = lpd->sprites[i];
 
 		str = lpd->names[i];
@@ -490,9 +491,9 @@ static void RunVehicleDayProc(uint daytick)
 	uint i, total = _vehicle_pool.total_items;
 
 	for (i = daytick; i < total; i += DAY_TICKS) {
-		Vehicle *v = GetVehicle(i);
-		if (v->type != 0)
-			_on_new_vehicle_day_proc[v->type - 0x10](v);
+		Vehicle* v = GetVehicle(i);
+
+		if (v->type != 0) _on_new_vehicle_day_proc[v->type - 0x10](v);
 	}
 }
 
@@ -511,8 +512,7 @@ void IncreaseDate(void)
 	_tick_counter++;
 
 	_date_fract++;
-	if (_date_fract < DAY_TICKS)
-		return;
+	if (_date_fract < DAY_TICKS) return;
 	_date_fract = 0;
 
 	/* yeah, increse day counter and call various daily loops */
@@ -547,8 +547,7 @@ void IncreaseDate(void)
 		IndustryMonthlyLoop();
 		StationMonthlyLoop();
 #ifdef ENABLE_NETWORK
-		if (_network_server)
-			NetworkServerMonthlyLoop();
+		if (_network_server) NetworkServerMonthlyLoop();
 #endif /* ENABLE_NETWORK */
 	}
 
@@ -565,8 +564,7 @@ void IncreaseDate(void)
 	AircraftYearlyLoop();
 	ShipsYearlyLoop();
 #ifdef ENABLE_NETWORK
-	if (_network_server)
-		NetworkServerYearlyLoop();
+	if (_network_server) NetworkServerYearlyLoop();
 #endif /* ENABLE_NETWORK */
 
 	/* check if we reached end of the game (31 dec 2050) */
@@ -574,7 +572,8 @@ void IncreaseDate(void)
 			ShowEndGameChart();
 	/* check if we reached 2090 (MAX_YEAR_END_REAL), that's the maximum year. */
 	} else if (_cur_year == (MAX_YEAR_END + 1)) {
-		Vehicle *v;
+		Vehicle* v;
+
 		_cur_year = MAX_YEAR_END;
 		_date = 62093;
 		FOR_ALL_VEHICLES(v) {
@@ -586,8 +585,7 @@ void IncreaseDate(void)
 		InitTextMessage();
 	}
 
-	if (_patches.auto_euro)
-		CheckSwitchToEuro();
+	if (_patches.auto_euro) CheckSwitchToEuro();
 
 	/* XXX: check if year 2050 was reached */
 }
@@ -970,8 +968,8 @@ static void Save_CHTS(void)
 	Cheat* cht = (Cheat*) &_cheats;
 	Cheat* cht_last = &cht[count];
 
-	SlSetLength(count*2);
-	for(; cht != cht_last; cht++) {
+	SlSetLength(count * 2);
+	for (; cht != cht_last; cht++) {
 		SlWriteByte(cht->been_used);
 		SlWriteByte(cht->value);
 	}

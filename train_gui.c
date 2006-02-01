@@ -475,8 +475,7 @@ static int GetVehicleFromTrainDepotWndPt(const Window *w, int x, int y, GetDepot
 	x = x - 23;
 
 	row = (y - 14) / 14;
-	if ( (uint) row >= w->vscroll.cap)
-		return 1; /* means err */
+	if ((uint)row >= w->vscroll.cap) return 1; /* means err */
 
 	row += w->vscroll.pos;
 
@@ -487,8 +486,8 @@ static int GetVehicleFromTrainDepotWndPt(const Window *w, int x, int y, GetDepot
 				v->tile == w->window_number &&
 				v->u.rail.track == 0x80 &&
 				--row < 0) {
-					skip = w->hscroll.pos;
-					goto found_it;
+			skip = w->hscroll.pos;
+			goto found_it;
 		}
 	}
 
@@ -500,8 +499,9 @@ static int GetVehicleFromTrainDepotWndPt(const Window *w, int x, int y, GetDepot
 				IsFreeWagon(v) &&
 				v->tile == w->window_number &&
 				v->u.rail.track == 0x80 &&
-				--row < 0)
-					goto found_it;
+				--row < 0) {
+			goto found_it;
+		}
 	}
 
 	d->head = NULL;
@@ -514,8 +514,7 @@ found_it:
 	d->head = d->wagon = v;
 
 	/* either pressed the flag or the number, but only when it's a loco */
-	if (x < 0 && IsFrontEngine(v))
-		return (x >= -10) ? -2 : -1;
+	if (x < 0 && IsFrontEngine(v)) return (x >= -10) ? -2 : -1;
 
 	// skip vehicles that are scrolled off the left side
 	while (skip--) v = v->next;
@@ -1483,7 +1482,8 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 
 			tile = _last_built_train_depot_tile;
 			do {
-				if (IsTileDepotType(tile, TRANSPORT_RAIL) && IsTileOwner(tile, _local_player)) {
+				if (IsTileDepotType(tile, TRANSPORT_RAIL) &&
+						IsTileOwner(tile, _local_player)) {
 					ShowTrainDepotWindow(tile);
 					ShowBuildTrainWindow(tile);
 					return;

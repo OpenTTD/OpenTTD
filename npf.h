@@ -64,6 +64,7 @@ typedef struct NPFFoundTargetData { /* Meant to be stored in AyStar.userpath */
  * station for the given transport type. See the declaration of
  * NPFFoundTargetData above for the meaning of the result. */
 NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, NPFFindStationOrTileData* target, TransportType type, Owner owner, RailType railtype);
+
 /* Will search as above, but with two start nodes, the second being the
  * reverse. Look at the NPF_FLAG_REVERSE flag in the result node to see which
  * direction was taken (NPFGetBit(result.node, NPF_FLAG_REVERSE)) */

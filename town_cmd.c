@@ -1070,8 +1070,7 @@ Town *CreateRandomTown(uint attempts)
 	do {
 		// Generate a tile index not too close from the edge
 		tile = RandomTile();
-		if (DistanceFromEdge(tile) < 20)
-			continue;
+		if (DistanceFromEdge(tile) < 20) continue;
 
 		// Make sure the tile is plain
 		FindLandscapeHeightByTile(&ti, tile);
@@ -1079,17 +1078,14 @@ Town *CreateRandomTown(uint attempts)
 			continue;
 
 		// Check not too close to a town
-		if (IsCloseToTown(tile, 20))
-			continue;
+		if (IsCloseToTown(tile, 20)) continue;
 
 		// Get a unique name for the town.
-		if (!CreateTownName(&townnameparts))
-			break;
+		if (!CreateTownName(&townnameparts)) break;
 
 		// Allocate a town struct
 		t = AllocateTown();
-		if (t == NULL)
-			break;
+		if (t == NULL) break;
 
 		DoCreateTown(t, tile, townnameparts);
 		return t;
@@ -1247,36 +1243,36 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 					break;
 			}
 
-			if (t->flags12 & oneof)
-				continue;
+			if (t->flags12 & oneof) continue;
 
 			// Make sure there is no slope?
-			if (_housetype_extra_flags[house]&0x12 && slope)
-				continue;
+			if (_housetype_extra_flags[house] & 0x12 && slope) continue;
 
-			if (_housetype_extra_flags[house]&0x10) {
+			if (_housetype_extra_flags[house] & 0x10) {
 				if (CheckFree2x2Area(t, tile) ||
 						CheckFree2x2Area(t, (tile += TileDiffXY(-1,  0))) ||
 						CheckFree2x2Area(t, (tile += TileDiffXY( 0, -1))) ||
-						CheckFree2x2Area(t, (tile += TileDiffXY( 1,  0))))
+						CheckFree2x2Area(t, (tile += TileDiffXY( 1,  0)))) {
 					break;
-				tile += TileDiffXY(0,1);
-			} else if (_housetype_extra_flags[house]&4) {
+				}
+				tile += TileDiffXY(0, 1);
+			} else if (_housetype_extra_flags[house] & 4) {
 				if (CheckBuildHouseMode(t, tile + TileDiffXY(1, 0), slope, 0)) break;
 
 				if (CheckBuildHouseMode(t, tile + TileDiffXY(-1, 0), slope, 1)) {
 					tile += TileDiffXY(-1, 0);
 					break;
 				}
-			} else if (_housetype_extra_flags[house]&8) {
+			} else if (_housetype_extra_flags[house] & 8) {
 				if (CheckBuildHouseMode(t, tile + TileDiffXY(0, 1), slope, 2)) break;
 
 				if (CheckBuildHouseMode(t, tile + TileDiffXY(0, -1), slope, 3)) {
 					tile += TileDiffXY(0, -1);
 					break;
 				}
-			} else
+			} else {
 				break;
+			}
 		}
 	}
 

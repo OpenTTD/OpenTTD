@@ -397,7 +397,6 @@ void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 }
 
 
-
 static void UpdateVehiclePosHash(Vehicle* v, int x, int y)
 {
 	VehicleID *old_hash, *new_hash;

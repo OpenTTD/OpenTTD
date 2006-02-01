@@ -216,10 +216,19 @@ uint GetRailFoundation(uint tileh, uint bits)
 	if ((~_valid_tileh_slopes[1][tileh] & bits) == 0)
 		return tileh;
 
-	if ( ((i=0, tileh == 1) || (i+=2, tileh == 2) || (i+=2, tileh == 4) || (i+=2, tileh == 8)) && (bits == TRACK_BIT_DIAG1 || (i++, bits == TRACK_BIT_DIAG2)))
+	if ((
+				(i  = 0, tileh == 1) ||
+				(i += 2, tileh == 2) ||
+				(i += 2, tileh == 4) ||
+				(i += 2, tileh == 8)
+			) && (
+				bits == TRACK_BIT_DIAG1 ||
+				(i++, bits == TRACK_BIT_DIAG2)
+			)) {
 		return i + 15;
-
-	return 0;
+	} else {
+		return 0;
+	}
 }
 
 
@@ -526,8 +535,12 @@ static int32 ValidateAutoDrag(Trackdir *trackdir, int x, int y, int ex, int ey)
 	}
 
 	// validate the direction
-	while (((trdx <= 0) && (dx > 0)) || ((trdx >= 0) && (dx < 0)) ||
-	       ((trdy <= 0) && (dy > 0)) || ((trdy >= 0) && (dy < 0))) {
+	while (
+		(trdx <= 0 && dx > 0) ||
+		(trdx >= 0 && dx < 0) ||
+		(trdy <= 0 && dy > 0) ||
+		(trdy >= 0 && dy < 0)
+	) {
 		if (!HASBIT(*trackdir, 3)) { // first direction is invalid, try the other
 			SETBIT(*trackdir, 3); // reverse the direction
 			trdx = -trdx;
@@ -541,7 +554,7 @@ static int32 ValidateAutoDrag(Trackdir *trackdir, int x, int y, int ex, int ey)
 	if (!IsDiagonalTrackdir(*trackdir)) {
 		trdx = _railbit.xinc[*trackdir];
 		trdy = _railbit.yinc[*trackdir];
-		if ((abs(dx) != abs(dy)) && (abs(dx) + abs(trdy) != abs(dy) + abs(trdx)))
+		if (abs(dx) != abs(dy) && abs(dx) + abs(trdy) != abs(dy) + abs(trdx))
 			return CMD_ERROR;
 	}
 
@@ -680,8 +693,7 @@ int32 CmdBuildTrainDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		d->xy = tile;
 		d->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
-		SetSignalsOnBothDir(tile, (p2&1) ? 2 : 1);
-
+		SetSignalsOnBothDir(tile, (p2 & 1) ? 2 : 1);
 	}
 
 	return cost + _price.build_train_depot;
@@ -892,7 +904,7 @@ static int32 CmdSignalTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 
 		if (!IsDiagonalTrackdir(trackdir)) trackdir ^= 1;
 	}
 
-	return (error) ? CMD_ERROR : total_cost;
+	return error ? CMD_ERROR : total_cost;
 }
 
 /** Build signals on a stretch of track.
@@ -1071,12 +1083,12 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 	switch (GetRailTileType(tile)) {
 		/* XXX: Why the fuck do we remove these thow signals first? */
 		case RAIL_TYPE_SIGNALS:
-			if(HasSignalOnTrack(tile, TRACK_DIAG1)) {
+			if (HasSignalOnTrack(tile, TRACK_DIAG1)) {
 				ret = DoCommandByTile(tile, TRACK_DIAG1, 0, flags, CMD_REMOVE_SIGNALS);
 				if (CmdFailed(ret)) return CMD_ERROR;
 				cost += ret;
 			}
-			if(HasSignalOnTrack(tile, TRACK_LOWER)) {
+			if (HasSignalOnTrack(tile, TRACK_LOWER)) {
 				ret = DoCommandByTile(tile, TRACK_LOWER, 0, flags, CMD_REMOVE_SIGNALS);
 				if (CmdFailed(ret)) return CMD_ERROR;
 				cost += ret;
@@ -1152,9 +1164,9 @@ static const SpriteID _signal_base_sprites[16] = {
 // used to determine the side of the road for the signal
 static const byte _signal_position[24] = {
 	/* original: left side position */
-	0x58,0x1E,0xE1,0xB9,0x01,0xA3,0x4B,0xEE,0x3B,0xD4,0x43,0xBD,
+	0x58, 0x1E, 0xE1, 0xB9, 0x01, 0xA3, 0x4B, 0xEE, 0x3B, 0xD4, 0x43, 0xBD,
 	/* patch: ride side position */
-	0x1E,0xAC,0x64,0xE1,0x4A,0x10,0xEE,0xC5,0xDB,0x34,0x4D,0xB3
+	0x1E, 0xAC, 0x64, 0xE1, 0x4A, 0x10, 0xEE, 0xC5, 0xDB, 0x34, 0x4D, 0xB3
 };
 
 static void DrawSignalHelper(const TileInfo *ti, byte condition, uint32 image_and_pos)
@@ -1176,7 +1188,7 @@ static void DrawTrackFence_NW(const TileInfo *ti)
 	uint32 image = 0x515;
 	if (ti->tileh != 0) image = (ti->tileh & 2) ? 0x519 : 0x51B;
 	AddSortableSpriteToDraw(image | _drawtile_track_palette,
-		ti->x, ti->y+1, 16, 1, 4, ti->z);
+		ti->x, ti->y + 1, 16, 1, 4, ti->z);
 }
 
 static void DrawTrackFence_SE(const TileInfo *ti)
@@ -1184,7 +1196,7 @@ static void DrawTrackFence_SE(const TileInfo *ti)
 	uint32 image = 0x515;
 	if (ti->tileh != 0) image = (ti->tileh & 2) ? 0x519 : 0x51B;
 	AddSortableSpriteToDraw(image | _drawtile_track_palette,
-		ti->x, ti->y+15, 16, 1, 4, ti->z);
+		ti->x, ti->y + 15, 16, 1, 4, ti->z);
 }
 
 static void DrawTrackFence_NW_SE(const TileInfo *ti)
@@ -1198,7 +1210,7 @@ static void DrawTrackFence_NE(const TileInfo *ti)
 	uint32 image = 0x516;
 	if (ti->tileh != 0) image = (ti->tileh & 2) ? 0x51A : 0x51C;
 	AddSortableSpriteToDraw(image | _drawtile_track_palette,
-		ti->x+1, ti->y, 1, 16, 4, ti->z);
+		ti->x + 1, ti->y, 1, 16, 4, ti->z);
 }
 
 static void DrawTrackFence_SW(const TileInfo *ti)
@@ -1206,7 +1218,7 @@ static void DrawTrackFence_SW(const TileInfo *ti)
 	uint32 image = 0x516;
 	if (ti->tileh != 0) image = (ti->tileh & 2) ? 0x51A : 0x51C;
 	AddSortableSpriteToDraw(image | _drawtile_track_palette,
-		ti->x+15, ti->y, 1, 16, 4, ti->z);
+		ti->x + 15, ti->y, 1, 16, 4, ti->z);
 }
 
 static void DrawTrackFence_NE_SW(const TileInfo *ti)
@@ -1277,10 +1289,11 @@ static DetailedTrackProc* const _detailed_track_proc[] = {
 	DetTrackDrawProc_Null,
 };
 
-static void DrawSpecialBuilding(uint32 image, uint32 offset,
-                                const TileInfo* ti,
-                                byte x, byte y, byte z,
-                                byte xsize, byte ysize, byte zsize)
+static void DrawSpecialBuilding(
+	uint32 image, uint32 offset,
+	const TileInfo* ti,
+	byte x, byte y, byte z,
+	byte xsize, byte ysize, byte zsize)
 {
 	if (image & PALETTE_MODIFIER_COLOR) image |= _drawtile_track_palette;
 	image += offset;
@@ -1475,7 +1488,8 @@ static void DrawTile_Track(TileInfo *ti)
 		// adjust ground tile for desert
 		// (don't adjust for arctic depots, because snow in depots looks weird)
 		// type >= 4 means waypoints
-		if ((_m[ti->tile].m4 & RAIL_MAP2LO_GROUND_MASK) == RAIL_GROUND_ICE_DESERT && (_opt.landscape == LT_DESERT || type >= 4)) {
+		if ((_m[ti->tile].m4 & RAIL_MAP2LO_GROUND_MASK) == RAIL_GROUND_ICE_DESERT &&
+				(_opt.landscape == LT_DESERT || type >= 4)) {
 			if (image != SPR_FLAT_GRASS_TILE) {
 				image += rti->snow_offset; // tile with tracks
 			} else {
@@ -1486,9 +1500,11 @@ static void DrawTile_Track(TileInfo *ti)
 		DrawGroundSprite(image);
 
 		for (; drss->image != 0; drss++) {
-			DrawSpecialBuilding(drss->image, type < 4 ? rti->total_offset : 0, ti,
-			                    drss->subcoord_x, drss->subcoord_y, 0,
-			                    drss->width, drss->height, 0x17);
+			DrawSpecialBuilding(
+				drss->image, type < 4 ? rti->total_offset : 0, ti,
+				drss->subcoord_x, drss->subcoord_y, 0,
+				drss->width, drss->height, 0x17
+			);
 		}
 	}
 }
@@ -1693,7 +1709,7 @@ static void SetSignalsAfterProc(TrackPathFinder *tpf)
 					return;
 				}
 				/* Goto the next item */
-			} while ((offs=link->next) != 0xFFFF);
+			} while ((offs = link->next) != 0xFFFF);
 		}
 	}
 }
@@ -1725,7 +1741,7 @@ static void ChangeSignalStates(SetSignalsData *ssd)
 			int ex = ssd->presignal_exits, exfree = ssd->presignal_exits_free;
 
 			// subtract for dual combo signals so they don't count themselves
-			if (_m[tile].m4&2 && HasSignalOnTrackdir(tile, ssd->bit[i])) {
+			if (_m[tile].m4 & 2 && HasSignalOnTrackdir(tile, ssd->bit[i])) {
 				ex--;
 				if (GetSignalState(tile, ssd->bit[i]) != SIGNAL_STATE_RED) exfree--;
 			}
@@ -1738,16 +1754,14 @@ static void ChangeSignalStates(SetSignalsData *ssd)
 		if (ssd->stop) {
 make_red:
 			// turn red
-			if ( (bit&m2) == 0 )
-				continue;
+			if ((bit & m2) == 0) continue;
 		} else {
 			// turn green
-			if ( (bit&m2) != 0 )
-				continue;
+			if ((bit & m2) != 0) continue;
 		}
 
 		/* Update signals on the other side of this exit-combo signal; it changed. */
-		if (_m[tile].m4 & 2 ) {
+		if (_m[tile].m4 & 2) {
 			if (ssd->cur_stack != NUM_SSD_STACK) {
 				ssd->next_tile[ssd->cur_stack] = tile;
 				ssd->next_dir[ssd->cur_stack] = _dir_from_track[ssd->bit[i]];
@@ -1772,7 +1786,7 @@ bool UpdateSignalsOnSegment(TileIndex tile, byte direction)
 	ssd.cur_stack = 0;
 	direction >>= 1;
 
-	for(;;) {
+	for (;;) {
 		// go through one segment and update all signals pointing into that segment.
 		ssd.cur = ssd.presignal_exits = ssd.presignal_exits_free = 0;
 		ssd.has_presignal = false;
@@ -1812,6 +1826,7 @@ static uint GetSlopeZ_Track(const TileInfo* ti)
 	if (ti->tileh != 0) {
 		if ((ti->map5 & 0x80) == 0) {
 			uint f = GetRailFoundation(ti->tileh, ti->map5 & 0x3F);
+
 			if (f != 0) {
 				if (f < 15) {
 					// leveled foundation
@@ -1824,7 +1839,7 @@ static uint GetSlopeZ_Track(const TileInfo* ti)
 			// depot or waypoint
 			return z + 8;
 		}
-		return GetPartialZ(ti->x&0xF, ti->y&0xF, th) + z;
+		return GetPartialZ(ti->x & 0xF, ti->y & 0xF, th) + z;
 	}
 	return z;
 }
@@ -2123,7 +2138,7 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 	} else if (fract_coord_leave == fract_coord) {
 		if (_leave_directions[dir] == v->direction) {
 			/* leave the depot? */
-			if ((v=v->next) != NULL) {
+			if ((v = v->next) != NULL) {
 				v->vehstatus &= ~VS_HIDDEN;
 				v->u.rail.track = _depot_track_mask[dir];
 				assert(v->u.rail.track);

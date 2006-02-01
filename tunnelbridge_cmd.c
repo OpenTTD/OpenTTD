@@ -247,12 +247,15 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!CheckBridge_Stuff(bridge_type, bridge_len)) return_cmd_error(STR_5015_CAN_T_BUILD_BRIDGE_HERE);
 
 	/* retrieve landscape height and ensure it's on land */
-	if (
-		((FindLandscapeHeight(&ti_end, sx, sy),
-			ti_end.type == MP_WATER) && ti_end.map5 == 0) ||
-		((FindLandscapeHeight(&ti_start, x, y),
-			ti_start.type == MP_WATER) && ti_start.map5 == 0))
+	if ((
+				FindLandscapeHeight(&ti_end, sx, sy),
+				ti_end.type == MP_WATER && ti_end.map5 == 0
+			) || (
+				FindLandscapeHeight(&ti_start, x, y),
+				ti_start.type == MP_WATER && ti_start.map5 == 0
+			)) {
 		return_cmd_error(STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH);
+	}
 
 	if (BRIDGE_FULL_LEVELED_FOUNDATION & (1 << ti_start.tileh)) {
 		ti_start.z += 8;
@@ -1464,11 +1467,10 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 
 	if (GB(_m[tile].m5, 4, 4) == 0) {
 		z = GetSlopeZ(x, y) - v->z_pos;
-		if (myabs(z) > 2)
-			return 8;
+		if (myabs(z) > 2) return 8;
 
 		if (v->type == VEH_Train) {
-			fc = (x&0xF)+(y<<4);
+			fc = (x & 0xF) + (y << 4);
 
 			dir = GB(_m[tile].m5, 0, 2);
 			vdir = v->direction >> 1;
@@ -1496,7 +1498,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 				return 4;
 			}
 		} else if (v->type == VEH_Road) {
-			fc = (x&0xF)+(y<<4);
+			fc = (x & 0xF) + (y << 4);
 			dir = GB(_m[tile].m5, 0, 2);
 			vdir = v->direction >> 1;
 
@@ -1504,7 +1506,6 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 			if (v->u.road.state != 0xFF && dir == vdir) {
 				if (fc == _tunnel_fractcoord_4[dir] ||
 						fc == _tunnel_fractcoord_5[dir]) {
-
 					v->tile = tile;
 					v->u.road.state = 0xFF;
 					v->vehstatus |= VS_HIDDEN;
@@ -1514,10 +1515,11 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 				}
 			}
 
-			if (dir == (vdir^2) && (
-				/* We're at the tunnel exit ?? */
-					fc == _tunnel_fractcoord_6[dir] ||
-					fc == _tunnel_fractcoord_7[dir]) &&
+			if (dir == (vdir ^ 2) && (
+						/* We're at the tunnel exit ?? */
+						fc == _tunnel_fractcoord_6[dir] ||
+						fc == _tunnel_fractcoord_7[dir]
+					) &&
 					z == 0) {
 				v->tile = tile;
 				v->u.road.state = _road_exit_tunnel_state[dir];

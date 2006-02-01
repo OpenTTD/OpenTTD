@@ -335,7 +335,7 @@ int ttd_main(int argc, char* argv[])
 
 	MyGetOptInit(&mgo, argc-1, argv+1, optformat);
 	while ((i = MyGetOpt(&mgo)) != -1) {
-		switch(i) {
+		switch (i) {
 		case 'm': ttd_strlcpy(musicdriver, mgo.opt, sizeof(musicdriver)); break;
 		case 's': ttd_strlcpy(sounddriver, mgo.opt, sizeof(sounddriver)); break;
 		case 'v': ttd_strlcpy(videodriver, mgo.opt, sizeof(videodriver)); break;
@@ -412,8 +412,7 @@ int ttd_main(int argc, char* argv[])
 	if (resolution[0]) { _cur_resolution[0] = resolution[0]; _cur_resolution[1] = resolution[1]; }
 	if (startdate != (uint)-1) _patches.starting_date = startdate;
 
-	if (_dedicated_forks && !dedicated)
-		_dedicated_forks = false;
+	if (_dedicated_forks && !dedicated) _dedicated_forks = false;
 
 	// enumerate language files
 	InitializeLanguagePacks();
@@ -455,8 +454,7 @@ int ttd_main(int argc, char* argv[])
 	_opt_ptr = &_opt_newgame;
 
 	/* XXX - ugly hack, if diff_level is 9, it means we got no setting from the config file */
-	if (_opt_newgame.diff_level == 9)
-		SetDifficultyLevel(0, &_opt_newgame);
+	if (_opt_newgame.diff_level == 9) SetDifficultyLevel(0, &_opt_newgame);
 
 	// initialize the ingame console
 	IConsoleInit();
@@ -466,7 +464,7 @@ int ttd_main(int argc, char* argv[])
 	GenerateWorld(GW_EMPTY, 64, 64); // Make the viewport initialization happy
 
 #ifdef ENABLE_NETWORK
-	if ((network) && (_network_available)) {
+	if (network && _network_available) {
 		if (network_conn != NULL) {
 			const char *port = NULL;
 			const char *player = NULL;
@@ -732,17 +730,19 @@ void SwitchMode(int new_mode)
 
 	case SM_NEWGAME: /* New Game --> 'Random game' */
 #ifdef ENABLE_NETWORK
-		if (_network_server)
+		if (_network_server) {
 			snprintf(_network_game_info.map_name, NETWORK_NAME_LENGTH, "Random Map");
+		}
 #endif /* ENABLE_NETWORK */
 		MakeNewGame();
 		break;
 
 	case SM_START_SCENARIO: /* New Game --> Choose one of the preset scenarios */
-		#ifdef ENABLE_NETWORK
-			if (_network_server)
-				snprintf(_network_game_info.map_name, NETWORK_NAME_LENGTH, "%s (Loaded scenario)", _file_to_saveload.title);
-		#endif /* ENABLE_NETWORK */
+#ifdef ENABLE_NETWORK
+		if (_network_server) {
+			snprintf(_network_game_info.map_name, NETWORK_NAME_LENGTH, "%s (Loaded scenario)", _file_to_saveload.title);
+		}
+#endif /* ENABLE_NETWORK */
 		StartScenario();
 		break;
 
@@ -756,8 +756,9 @@ void SwitchMode(int new_mode)
 			_local_player = 0;
 			DoCommandP(0, 0, 0, NULL, CMD_PAUSE); // decrease pause counter (was increased from opening load dialog)
 #ifdef ENABLE_NETWORK
-			if (_network_server)
+			if (_network_server) {
 				snprintf(_network_game_info.map_name, NETWORK_NAME_LENGTH, "%s (Loaded game)", _file_to_saveload.title);
+			}
 #endif /* ENABLE_NETWORK */
 		}
 		break;
@@ -785,7 +786,6 @@ void SwitchMode(int new_mode)
 		break;
 	}
 
-
 	case SM_MENU: /* Switch to game intro menu */
 		LoadIntroGame();
 		break;
@@ -799,15 +799,16 @@ void SwitchMode(int new_mode)
 		break;
 
 	case SM_GENRANDLAND: /* Generate random land within scenario editor */
-		GenerateWorld(GW_RANDOM, 1<<_patches.map_x, 1<<_patches.map_y);
+		GenerateWorld(GW_RANDOM, 1 << _patches.map_x, 1 << _patches.map_y);
 		// XXX: set date
 		_local_player = OWNER_NONE;
 		MarkWholeScreenDirty();
 		break;
 	}
 
-	if (_switch_mode_errorstr != INVALID_STRING_ID)
-		ShowErrorMessage(INVALID_STRING_ID,_switch_mode_errorstr,0,0);
+	if (_switch_mode_errorstr != INVALID_STRING_ID) {
+		ShowErrorMessage(INVALID_STRING_ID, _switch_mode_errorstr, 0, 0);
+	}
 }
 
 

@@ -778,7 +778,7 @@ void GenerateClearTile(void)
 		tile = RandomTileSeed(r);
 		if (IsTileType(tile, MP_CLEAR)) {
 			uint j = GB(r, 16, 4) + 5;
-			for(;;) {
+			for (;;) {
 				TileIndex tile_new;
 
 				SB(_m[tile].m5, 2, 2, 2);

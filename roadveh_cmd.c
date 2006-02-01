@@ -499,7 +499,7 @@ static void RoadVehIsCrashed(Vehicle *v)
 	if (v->u.road.crashed_ctr == 2) {
 		CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
 	} else if (v->u.road.crashed_ctr <= 45) {
-		if ((v->tick_counter&7)==0)
+		if ((v->tick_counter & 7) == 0)
 			RoadVehSetRandomDirection(v);
 	} else if (v->u.road.crashed_ctr >= 2220) {
 		RoadVehDelete(v);
@@ -526,11 +526,10 @@ static void RoadVehCrash(Vehicle *v)
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 
 	pass = 1;
-	if (v->cargo_type == 0)
-		pass += v->cargo_count;
+	if (v->cargo_type == 0) pass += v->cargo_count;
 	v->cargo_count = 0;
-	SetDParam(0, pass);
 
+	SetDParam(0, pass);
 	AddNewsItem(
 		(pass == 1) ?
 			STR_9031_ROAD_VEHICLE_CRASH_DRIVER : STR_9032_ROAD_VEHICLE_CRASH_DIE,
@@ -546,14 +545,11 @@ static void RoadVehCheckTrainCrash(Vehicle *v)
 {
 	TileIndex tile;
 
-	if (v->u.road.state == 255)
-		return;
+	if (v->u.road.state == 255) return;
 
 	tile = v->tile;
 
-	// Make sure it's a road/rail crossing
-	if (!IsTileType(tile, MP_STREET) || !IsLevelCrossing(tile))
-		return;
+	if (!IsTileType(tile, MP_STREET) || !IsLevelCrossing(tile)) return;
 
 	if (VehicleFromPos(tile, v, (VehicleFromPosProc*)EnumCheckRoadVehCrashTrain) != NULL)
 		RoadVehCrash(v);
@@ -621,11 +617,11 @@ static void ProcessRoadVehOrder(Vehicle *v)
 
 	if (order->type    == v->current_order.type &&
 			order->flags   == v->current_order.flags &&
-			order->station == v->current_order.station)
+			order->station == v->current_order.station) {
 		return;
+	}
 
 	v->current_order = *order;
-
 	v->dest_tile = 0;
 
 	if (order->type == OT_GOTO_STATION) {
@@ -799,7 +795,7 @@ static void RoadVehArrivesAt(const Vehicle* v, Station* st)
 
 static bool RoadVehAccelerate(Vehicle *v)
 {
-	uint spd = v->cur_speed + 1 + ((v->u.road.overtaking != 0)?1:0);
+	uint spd = v->cur_speed + 1 + (v->u.road.overtaking != 0 ? 1 : 0);
 	byte t;
 
 	// Clamp
@@ -808,19 +804,17 @@ static bool RoadVehAccelerate(Vehicle *v)
 	//updates statusbar only if speed have changed to save CPU time
 	if (spd != v->cur_speed) {
 		v->cur_speed = spd;
-		if (_patches.vehicle_speed)
+		if (_patches.vehicle_speed) {
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+		}
 	}
 
 	// Decrease somewhat when turning
-	if (!(v->direction&1))
-		spd = spd * 3 >> 2;
+	if (!(v->direction & 1)) spd = spd * 3 >> 2;
 
-	if (spd == 0)
-		return false;
+	if (spd == 0) return false;
 
-	if ((byte)++spd == 0)
-		return true;
+	if ((byte)++spd == 0) return true;
 
 	v->progress = (t = v->progress) - (byte)spd;
 
@@ -890,9 +884,10 @@ static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
 	od.u = u;
 
 	if (u->max_speed >= v->max_speed &&
-			!(u->vehstatus&VS_STOPPED) &&
-			u->cur_speed != 0)
-				return;
+			!(u->vehstatus & VS_STOPPED) &&
+			u->cur_speed != 0) {
+		return;
+	}
 
 	if (v->direction != u->direction || !(v->direction&1))
 		return;
@@ -901,30 +896,23 @@ static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
 		return;
 
 	tt = GetTileTrackStatus(v->tile, TRANSPORT_ROAD) & 0x3F;
-	if ((tt & 3) == 0)
-		return;
-	if ((tt & 0x3C) != 0)
-		return;
+	if ((tt & 3) == 0) return;
+	if ((tt & 0x3C) != 0) return;
 
-	if (tt == 3) {
-		tt = (v->direction&2)?2:1;
-	}
+	if (tt == 3) tt = (v->direction & 2) ? 2 : 1;
 	od.tilebits = tt;
 
 	od.tile = v->tile;
-	if (FindRoadVehToOvertake(&od))
-		return;
+	if (FindRoadVehToOvertake(&od)) return;
 
 	od.tile = v->tile + TileOffsByDir(v->direction >> 1);
-	if (FindRoadVehToOvertake(&od))
-		return;
+	if (FindRoadVehToOvertake(&od)) return;
 
 	if (od.u->cur_speed == 0 || od.u->vehstatus&VS_STOPPED) {
 		v->u.road.overtaking_ctr = 0x11;
 		v->u.road.overtaking = 0x10;
 	} else {
-//		if (FindRoadVehToOvertake(&od))
-//			return;
+//		if (FindRoadVehToOvertake(&od)) return;
 		v->u.road.overtaking_ctr = 0;
 		v->u.road.overtaking = 0x10;
 	}
@@ -951,8 +939,7 @@ static int PickRandomBit(uint bits)
 	uint i;
 
 	do {
-		if (b & 1)
-			num++;
+		if (b & 1) num++;
 	} while (b >>= 1);
 
 	num = RandomRange(num);
@@ -1189,15 +1176,12 @@ static void RoadVehController(Vehicle *v)
 		v->breakdown_ctr--;
 	}
 
-	// exit if vehicle is stopped
-	if (v->vehstatus & VS_STOPPED)
-		return;
+	if (v->vehstatus & VS_STOPPED) return;
 
 	ProcessRoadVehOrder(v);
 	HandleRoadVehLoading(v);
 
-	if (v->current_order.type == OT_LOADING)
-		return;
+	if (v->current_order.type == OT_LOADING) return;
 
 	if (v->u.road.state == 254) {
 		int dir;
@@ -1215,8 +1199,7 @@ static void RoadVehController(Vehicle *v)
 		x = TileX(v->tile) * 16 + (rdp[6].x & 0xF);
 		y = TileY(v->tile) * 16 + (rdp[6].y & 0xF);
 
-		if (RoadVehFindCloseTo(v,x,y,v->direction))
-			return;
+		if (RoadVehFindCloseTo(v,x,y,v->direction)) return;
 
 		VehicleServiceInDepot(v);
 
@@ -1236,8 +1219,7 @@ static void RoadVehController(Vehicle *v)
 		return;
 	}
 
-	if (!RoadVehAccelerate(v))
-		return;
+	if (!RoadVehAccelerate(v)) return;
 
 	if (v->u.road.overtaking != 0)  {
 		if (++v->u.road.overtaking_ctr >= 35)
@@ -1612,8 +1594,9 @@ void OnNewDay_RoadVeh(Vehicle *v)
 		st = GetStation(v->current_order.station);
 
 		//Current slot has expired
-		if ( (v->u.road.slot_age++ <= 0) && (v->u.road.slot != NULL))
+		if (v->u.road.slot_age++ <= 0 && v->u.road.slot != NULL) {
 			ClearSlot(v, v->u.road.slot);
+		}
 
 		//We do not have a slot, so make one
 		if (v->u.road.slot == NULL) {
@@ -1624,7 +1607,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 
 		//first we need to find out how far our stations are away.
 			DEBUG(ms, 2) ("Multistop: Attempting to obtain a slot for vehicle %d at station %d (0x%x)", v->unitnumber, st->index, st->xy);
-			for(; rs != NULL; rs = rs->next) {
+			for (; rs != NULL; rs = rs->next) {
 				// Only consider those with at least a free slot.
 				if (!(rs->slot[0] == INVALID_SLOT || rs->slot[1] == INVALID_SLOT))
 					continue;
@@ -1635,23 +1618,19 @@ void OnNewDay_RoadVeh(Vehicle *v)
 
 				// Check if the station is located BEHIND the vehicle..
 				// In that case, add penalty.
-				switch(v->direction) {
-				case 1: // going north east,x position decreasing
-					if (v->x_pos <= (int32)TileX(rs->xy) * 16 + 15)
-						dist += 6;
-					break;
-				case 3: // Going south east, y position increasing
-					if (v->y_pos >= (int32)TileY(rs->xy) * 16)
-						dist += 6;
-					break;
-				case 5: // Going south west, x position increasing
-					if (v->x_pos >= (int32)TileX(rs->xy) * 16)
-						dist += 6;
-					break;
-				case 7: // Going north west, y position decrasing.
-					if (v->y_pos <= (int32)TileY(rs->xy) * 16 + 15)
-						dist += 6;
-					break;
+				switch (v->direction) {
+					case 1: // going north east,x position decreasing
+						if (v->x_pos <= (int32)TileX(rs->xy) * 16 + 15) dist += 6;
+						break;
+					case 3: // Going south east, y position increasing
+						if (v->y_pos >= (int32)TileY(rs->xy) * 16) dist += 6;
+						break;
+					case 5: // Going south west, x position increasing
+						if (v->x_pos >= (int32)TileX(rs->xy) * 16) dist += 6;
+						break;
+					case 7: // Going north west, y position decrasing.
+						if (v->y_pos <= (int32)TileY(rs->xy) * 16 + 15) dist += 6;
+						break;
 				}
 
 				// Remember the one with the shortest distance

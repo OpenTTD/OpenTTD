@@ -1551,6 +1551,7 @@ static void AdvanceWagons(Vehicle *v, bool before)
 	}
 }
 
+
 static void ReverseTrainDirection(Vehicle *v)
 {
 	int l = 0, r = -1;
@@ -1558,7 +1559,6 @@ static void ReverseTrainDirection(Vehicle *v)
 
 	if (IsTileDepotType(v->tile, TRANSPORT_RAIL))
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-
 
 	/* Check if we were approaching a rail/road-crossing */
 	{
@@ -2013,12 +2013,11 @@ typedef struct TrainTrackFollowerData {
 static bool NtpCallbFindStation(TileIndex tile, TrainTrackFollowerData *ttfd, int track, uint length)
 {
 	// heading for nowhere?
-	if (ttfd->dest_coords == 0)
-		return false;
+	if (ttfd->dest_coords == 0) return false;
 
 	// did we reach the final station?
 	if ((ttfd->station_index == INVALID_STATION && tile == ttfd->dest_coords) ||
-		(IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_m[tile].m5, 0, 8) && _m[tile].m2 == ttfd->station_index)) {
+			(IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_m[tile].m5, 0, 8) && _m[tile].m2 == ttfd->station_index)) {
 		/* We do not check for dest_coords if we have a station_index,
 		 * because in that case the dest_coords are just an
 		 * approximation of where the station is */

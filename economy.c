@@ -337,7 +337,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 		}
 
 		FOR_ALL_VEHICLES(v) {
-			if (v->owner == old_player && IS_BYTE_INSIDE(v->type, VEH_Train, VEH_Aircraft+1) ) {
+			if (v->owner == old_player && IS_BYTE_INSIDE(v->type, VEH_Train, VEH_Aircraft + 1)) {
 				if (new_player == OWNER_SPECTATOR) {
 					DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 					DeleteWindowById(WC_VEHICLE_DETAILS, v->index);
@@ -1169,26 +1169,25 @@ static bool CheckSubsidised(Station *from, Station *to, byte cargo_type)
 	Player *p;
 
 	// check if there is an already existing subsidy that applies to us
-	for(s=_subsidies; s != endof(_subsidies); s++) {
+	for (s = _subsidies; s != endof(_subsidies); s++) {
 		if (s->cargo_type == cargo_type &&
 				s->age >= 12 &&
 				s->from == from->index &&
-				s->to == to->index)
+				s->to == to->index) {
 			return true;
+		}
 	}
 
 	/* check if there's a new subsidy that applies.. */
-	for(s=_subsidies; s != endof(_subsidies); s++) {
+	for (s = _subsidies; s != endof(_subsidies); s++) {
 		if (s->cargo_type == cargo_type && s->age < 12) {
-
 			/* Check distance from source */
 			if (cargo_type == CT_PASSENGERS || cargo_type == CT_MAIL) {
 				xy = GetTown(s->from)->xy;
 			} else {
 				xy = (GetIndustry(s->from))->xy;
 			}
-			if (DistanceMax(xy, from->xy) > 9)
-				continue;
+			if (DistanceMax(xy, from->xy) > 9) continue;
 
 			/* Check distance from dest */
 			if (cargo_type == CT_PASSENGERS || cargo_type == CT_MAIL || cargo_type == CT_GOODS || cargo_type == CT_FOOD) {
@@ -1196,9 +1195,7 @@ static bool CheckSubsidised(Station *from, Station *to, byte cargo_type)
 			} else {
 				xy = (GetIndustry(s->to))->xy;
 			}
-
-			if (DistanceMax(xy, to->xy) > 9)
-				continue;
+			if (DistanceMax(xy, to->xy) > 9) continue;
 
 			/* Found a subsidy, change the values to indicate that it's in use */
 			s->age = 12;
@@ -1215,7 +1212,8 @@ static bool CheckSubsidised(Station *from, Station *to, byte cargo_type)
 			AddNewsItem(
 				STR_2031_SERVICE_SUBSIDY_AWARDED + _opt.diff.subsidy_multiplier,
 				NEWS_FLAGS(NM_NORMAL, NF_TILE, NT_SUBSIDIES, 0),
-				pair.a, pair.b);
+				pair.a, pair.b
+			);
 
 			InvalidateWindow(WC_SUBSIDIES_LIST, 0);
 			return true;
@@ -1281,7 +1279,8 @@ static int32 DeliverGoods(int num_pieces, byte cargo_type, uint16 source, uint16
  * already loading the same cargo type
  * v = vehicle to load, u = GetFirstInChain(v)
  */
-static bool LoadWait(const Vehicle *v, const Vehicle *u) {
+static bool LoadWait(const Vehicle* v, const Vehicle* u)
+{
 	const Vehicle *w;
 	const Vehicle *x;
 	bool has_any_cargo = false;
@@ -1291,8 +1290,9 @@ static bool LoadWait(const Vehicle *v, const Vehicle *u) {
 	for (w = u; w != NULL; w = w->next) {
 		if (w->cargo_count != 0) {
 			if (v->cargo_type == w->cargo_type &&
-					u->last_station_visited == w->cargo_source)
+					u->last_station_visited == w->cargo_source) {
 				return false;
+			}
 			has_any_cargo = true;
 		}
 	}
@@ -1308,13 +1308,15 @@ static bool LoadWait(const Vehicle *v, const Vehicle *u) {
 			bool other_has_same_type = false;
 
 			for (w = x; w != NULL; w = w->next) {
-				if (w->cargo_count < w->cargo_cap && v->cargo_type == w->cargo_type)
+				if (w->cargo_count < w->cargo_cap && v->cargo_type == w->cargo_type) {
 					has_space_for_same_type = true;
+				}
 
 				if (w->cargo_count != 0) {
 					if (v->cargo_type == w->cargo_type &&
-							u->last_station_visited == w->cargo_source)
+							u->last_station_visited == w->cargo_source) {
 						other_has_same_type = true;
+					}
 					other_has_any_cargo = true;
 				}
 			}
@@ -1375,13 +1377,12 @@ int LoadUnloadVehicle(Vehicle *v)
 				st->time_since_unload = 0;
 
 				v_profit = GetTransportedGoodsIncome(
-						v->cargo_count,
-						DistanceManhattan(GetStation(v->cargo_source)->xy, GetStation(last_visited)->xy),
-						v->cargo_days,
-						v->cargo_type) * 3 / 2;
+					v->cargo_count,
+					DistanceManhattan(GetStation(v->cargo_source)->xy, GetStation(last_visited)->xy),
+					v->cargo_days,
+					v->cargo_type) * 3 / 2;
 
 				v_profit_total += v_profit;
-
 
 				unloading_time += v->cargo_count;
 				t = GB(ge->waiting_acceptance, 0, 12);
@@ -1404,8 +1405,7 @@ int LoadUnloadVehicle(Vehicle *v)
 				v->cargo_count = 0;
 			}
 
-			if (v->cargo_count != 0)
-				completely_empty = false;
+			if (v->cargo_count != 0) completely_empty = false;
 		}
 
 		/* don't pick up goods that we unloaded */
@@ -1466,8 +1466,9 @@ int LoadUnloadVehicle(Vehicle *v)
 
 	v = u;
 
-	if (v_profit_total > 0)
+	if (v_profit_total > 0) {
 		ShowFeederIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, v_profit_total);
+	}
 
 	if (v->type == VEH_Train) {
 		// Each platform tile is worth 2 rail vehicles.
@@ -1487,8 +1488,7 @@ int LoadUnloadVehicle(Vehicle *v)
 	if (result != 0) {
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
-		if (result & 2)
-			InvalidateWindow(WC_STATION_VIEW, last_visited);
+		if (result & 2) InvalidateWindow(WC_STATION_VIEW, last_visited);
 
 		if (profit != 0) {
 			v->profit_this_year += profit;

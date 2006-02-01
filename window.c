@@ -1371,11 +1371,10 @@ static void MouseLoop(int click, int mousewheel)
 	x = _cursor.pos.x;
 	y = _cursor.pos.y;
 
-
 	if (click == 0 && mousewheel == 0) {
 		if (_patches.autoscroll && _game_mode != GM_MENU) {
 			w = FindWindowFromPt(x, y);
-			if (w == NULL || w->flags4 & WF_DISABLE_VP_SCROLL ) return;
+			if (w == NULL || w->flags4 & WF_DISABLE_VP_SCROLL) return;
 			vp = IsPtInWindowViewport(w, x, y);
 			if (vp) {
 				x -= vp->left;

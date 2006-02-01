@@ -105,16 +105,12 @@ static int32 RemoveShipDepot(TileIndex tile, uint32 flags)
 {
 	TileIndex tile2;
 
-	if (!CheckTileOwnership(tile))
-		return CMD_ERROR;
-
-	if (!EnsureNoVehicle(tile))
-		return CMD_ERROR;
+	if (!CheckTileOwnership(tile)) return CMD_ERROR;
+	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	tile2 = tile + ((_m[tile].m5 & 2) ? TileDiffXY(0, 1) : TileDiffXY(1, 0));
 
-	if (!EnsureNoVehicle(tile2))
-		return CMD_ERROR;
+	if (!EnsureNoVehicle(tile2)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		/* Kill the depot */
@@ -286,8 +282,7 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 			return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
 
 		// Make sure no vehicle is on the tile
-		if (!EnsureNoVehicle(tile))
-			return CMD_ERROR;
+		if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
 		// Make sure it's not an edge tile.
 		if (!(IS_INT_INSIDE(TileX(tile), 1, MapMaxX() - 1) &&
@@ -295,8 +290,7 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 			return_cmd_error(STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP);
 
 		if (m5 == 0) {
-			if (flags & DC_EXEC)
-				DoClearSquare(tile);
+			if (flags & DC_EXEC) DoClearSquare(tile);
 			return _price.clear_water;
 		} else if (m5 == 1) {
 			slope = GetTileSlope(tile,NULL);
@@ -336,7 +330,7 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 			default:   return CMD_ERROR;
 		}
 
-		return RemoveShipDepot(tile,flags);
+		return RemoveShipDepot(tile, flags);
 	}
 }
 
@@ -480,16 +474,17 @@ static void GetAcceptedCargo_Water(TileIndex tile, AcceptedCargo ac)
 
 static void GetTileDesc_Water(TileIndex tile, TileDesc *td)
 {
-	if (_m[tile].m5 == 0 && TilePixelHeight(tile) == 0)
+	if (_m[tile].m5 == 0 && TilePixelHeight(tile) == 0) {
 		td->str = STR_3804_WATER;
-	else if (_m[tile].m5 == 0)
+	} else if (_m[tile].m5 == 0) {
 		td->str = STR_LANDINFO_CANAL;
-	else if (_m[tile].m5 == 1)
+	} else if (_m[tile].m5 == 1) {
 		td->str = STR_3805_COAST_OR_RIVERBANK;
-	else if ((_m[tile].m5&0xF0) == 0x10)
+	} else if ((_m[tile].m5 & 0xF0) == 0x10) {
 		td->str = STR_LANDINFO_LOCK;
-	else
+	} else {
 		td->str = STR_3806_SHIP_DEPOT;
+	}
 
 	td->owner = GetTileOwner(tile);
 }
@@ -554,8 +549,7 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 	} else {
 		if (IsTileType(target, MP_TUNNELBRIDGE)) {
 			byte m5 = _m[target].m5;
-			if ((m5 & 0xF8) == 0xC8 || (m5 & 0xF8) == 0xF0)
-				return;
+			if ((m5 & 0xF8) == 0xC8 || (m5 & 0xF8) == 0xF0) return;
 
 			if ((m5 & 0xC0) == 0xC0) {
 				ModifyTile(target, MP_MAPOWNER | MP_MAP5, OWNER_WATER, (m5 & ~0x38) | 0x8);
@@ -650,8 +644,9 @@ void TileLoop_Water(TileIndex tile)
 	_current_player = OWNER_NONE;
 
 	// edges
-	if (TileX(tile) == 0 && IS_INT_INSIDE(TileY(tile), 1, MapSizeY() - 3 + 1)) //NE
+	if (TileX(tile) == 0 && IS_INT_INSIDE(TileY(tile), 1, MapSizeY() - 3 + 1)) { //NE
 		TileLoopWaterHelper(tile, _tile_loop_offs_array[2]);
+	}
 
 	if (TileX(tile) == MapSizeX() - 2 && IS_INT_INSIDE(TileY(tile), 1, MapSizeY() - 3 + 1)) { //SW
 		TileLoopWaterHelper(tile, _tile_loop_offs_array[0]);
@@ -675,29 +670,26 @@ static uint32 GetTileTrackStatus_Water(TileIndex tile, TransportType mode)
 	uint m5;
 	uint b;
 
-	if (mode != TRANSPORT_WATER)
-		return 0;
+	if (mode != TRANSPORT_WATER) return 0;
 
 	m5 = _m[tile].m5;
-	if (m5 == 0)
-		return 0x3F3F;
+	if (m5 == 0) return 0x3F3F;
 
 	if (m5 == 1) {
-		b = _coast_tracks[GetTileSlope(tile, NULL)&0xF];
-		return b + (b<<8);
+		b = _coast_tracks[GetTileSlope(tile, NULL) & 0xF];
+		return b + (b << 8);
 	}
 
-	if ( (m5 & 0x10) == 0x10) {
+	if ((m5 & 0x10) == 0x10) {
 		//
 		b = _shiplift_tracks[m5 & 0xF];
-		return b + (b<<8);
+		return b + (b << 8);
 	}
 
-	if (!(m5 & 0x80))
-		return 0;
+	if (!(m5 & 0x80)) return 0;
 
 	b = _shipdepot_tracks[m5 & 0x7F];
-	return b + (b<<8);
+	return b + (b << 8);
 }
 
 extern void ShowShipDepotWindow(TileIndex tile);

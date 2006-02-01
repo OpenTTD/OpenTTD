@@ -175,7 +175,7 @@ uint GetPartialZ(int x, int y, int corners)
 	return z;
 }
 
-uint GetSlopeZ(int x,  int y)
+uint GetSlopeZ(int x, int y)
 {
 	TileInfo ti;
 
@@ -487,8 +487,7 @@ static void GenerateTerrain(int type, int flag)
 	y = (r >> MapLogX()) & MapMaxY();
 
 
-	if (x < 2 || y < 2)
-		return;
+	if (x < 2 || y < 2) return;
 
 	direction = GB(r, 22, 2);
 	if (direction & 1) {
@@ -524,11 +523,8 @@ static void GenerateTerrain(int type, int flag)
 		}
 	}
 
-	if (x + w >= MapMaxX() - 1)
-		return;
-
-	if (y + h >= MapMaxY() - 1)
-		return;
+	if (x + w >= MapMaxX() - 1) return;
+	if (y + h >= MapMaxY() - 1) return;
 
 	tile = &_m[TileXY(x, y)];
 
