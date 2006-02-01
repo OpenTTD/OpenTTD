@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "clear.h"
 #include "table/strings.h"
 #include "functions.h"
 #include "map.h"
@@ -413,42 +414,26 @@ int32 CmdPurchaseLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 static int32 ClearTile_Clear(TileIndex tile, byte flags)
 {
-	static const int32 null = 0;
 	static const int32* clear_price_table[] = {
-		&null,
-		&_price.clear_1,
-		&_price.clear_1,
 		&_price.clear_1,
 		&_price.purchase_land,
-		&_price.purchase_land,
-		&_price.purchase_land,
-		&_price.purchase_land,
-		&_price.clear_2,
-		&_price.clear_2,
-		&_price.clear_2,
 		&_price.clear_2,
 		&_price.clear_3,
-		&_price.clear_3,
-		&_price.clear_3,
-		&_price.clear_3,
 		&_price.purchase_land,
 		&_price.purchase_land,
-		&_price.purchase_land,
-		&_price.purchase_land,
-		&_price.purchase_land,
-		&_price.purchase_land,
-		&_price.purchase_land,
-		&_price.purchase_land,
-		&_price.clear_2,
-		&_price.clear_2,
-		&_price.clear_2,
-		&_price.clear_2,
+		&_price.clear_2, // XXX unused?
 	};
-	const int32 *price = clear_price_table[GB(_m[tile].m5, 0, 5)];
+	int32 price;
+
+	if (IsClearGround(tile, CL_GRASS) && GetClearDensity(tile) == 0) {
+		price = 0;
+	} else {
+		price = *clear_price_table[GetClearGround(tile)];
+	}
 
 	if (flags & DC_EXEC) DoClearSquare(tile);
 
-	return *price;
+	return price;
 }
 
 /** Sell a land area. Actually you only sell one tile, so
@@ -517,29 +502,29 @@ void DrawClearLandFence(const TileInfo *ti)
 static void DrawTile_Clear(TileInfo *ti)
 {
 	switch (GB(ti->map5, 2, 3)) {
-	case 0:
-		DrawClearLandTile(ti, GB(ti->map5, 0, 2));
-		break;
+		case CL_GRASS:
+			DrawClearLandTile(ti, GB(ti->map5, 0, 2));
+			break;
 
-	case 1:
-		DrawHillyLandTile(ti);
-		break;
+		case CL_ROUGH:
+			DrawHillyLandTile(ti);
+			break;
 
-	case 2:
-		DrawGroundSprite(SPR_FLAT_ROCKY_LAND_1 + _tileh_to_sprite[ti->tileh]);
-		break;
+		case CL_ROCKS:
+			DrawGroundSprite(SPR_FLAT_ROCKY_LAND_1 + _tileh_to_sprite[ti->tileh]);
+			break;
 
-	case 3:
-		DrawGroundSprite(_clear_land_sprites_1[GB(_m[ti->tile].m3, 0, 4)] + _tileh_to_sprite[ti->tileh]);
-		break;
+		case CL_FIELDS:
+			DrawGroundSprite(_clear_land_sprites_1[GB(_m[ti->tile].m3, 0, 4)] + _tileh_to_sprite[ti->tileh]);
+			break;
 
-	case 4:
-		DrawGroundSprite(_clear_land_sprites_2[GB(ti->map5, 0, 2)] + _tileh_to_sprite[ti->tileh]);
-		break;
+		case CL_SNOW:
+			DrawGroundSprite(_clear_land_sprites_2[GB(ti->map5, 0, 2)] + _tileh_to_sprite[ti->tileh]);
+			break;
 
-	case 5:
-		DrawGroundSprite(_clear_land_sprites_3[GB(ti->map5, 0, 2)] + _tileh_to_sprite[ti->tileh]);
-		break;
+		case CL_DESERT:
+			DrawGroundSprite(_clear_land_sprites_3[GB(ti->map5, 0, 2)] + _tileh_to_sprite[ti->tileh]);
+			break;
 	}
 
 	DrawClearLandFence(ti);
@@ -571,26 +556,9 @@ void TileLoopClearHelper(TileIndex tile)
 	byte neighbour;
 	TileIndex dirty = INVALID_TILE;
 
-	switch (GetTileType(tile)) {
-		case MP_CLEAR:
-			self = (GB(_m[tile].m5, 0, 5) == 15);
-			break;
+	self = (IsTileType(tile, MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, 1, 0), CL_FIELDS));
 
-		default:
-			self = 0;
-			break;
-	}
-
-	switch (GetTileType(TILE_ADDXY(tile, 1, 0))) {
-		case MP_CLEAR:
-			neighbour = (GB(_m[TILE_ADDXY(tile, 1, 0)].m5, 0, 5) == 15);
-			break;
-
-		default:
-			neighbour = 0;
-			break;
-	}
-
+	neighbour = (IsTileType(TILE_ADDXY(tile, 1, 0), MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, 1, 0), CL_FIELDS));
 	if (GB(_m[tile].m4, 5, 3) == 0) {
 		if (self != neighbour) {
 			SB(_m[tile].m4, 5, 3, 3);
@@ -603,16 +571,7 @@ void TileLoopClearHelper(TileIndex tile)
 		}
 	}
 
-	switch (GetTileType(TILE_ADDXY(tile, 0, 1))) {
-		case MP_CLEAR:
-			neighbour = (GB(_m[TILE_ADDXY(tile, 0, 1)].m5, 0, 5) == 15);
-			break;
-
-		default:
-			neighbour = 0;
-			break;
-	}
-
+	neighbour = (IsTileType(TILE_ADDXY(tile, 0, 1), MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, 0, 1), CL_FIELDS));
 	if (GB(_m[tile].m4, 2, 3) == 0) {
 		if (self != neighbour) {
 			SB(_m[tile].m4, 2, 3, 3);
@@ -632,78 +591,44 @@ void TileLoopClearHelper(TileIndex tile)
 /* convert into snowy tiles */
 static void TileLoopClearAlps(TileIndex tile)
 {
-	int k;
-	byte m5,tmp;
-
 	/* distance from snow line, in steps of 8 */
-	k = GetTileZ(tile) - _opt.snow_line;
+	int k = GetTileZ(tile) - _opt.snow_line;
 
-	m5 = _m[tile].m5 & 0x1C;
-	tmp = _m[tile].m5 & 3;
-
-	if (k < -8) {
-		/* snow_m2_down */
-		if (m5 != 0x10)
-			return;
-		if (tmp == 0)
-			m5 = 3;
-	} else if (k == -8) {
-		/* snow_m1 */
-		if (m5 != 0x10) {
-			m5 = 0x10;
-		} else if (tmp != 0) {
-			m5 = (tmp - 1) + 0x10;
-		} else
-			return;
-	} else if (k < 8) {
-		/* snow_0 */
-		if (m5 != 0x10) {
-			m5 = 0x10;
-		} else if (tmp != 1) {
-			m5 = 1;
-			if (tmp != 0)
-				m5 = tmp - 1;
-			m5 += 0x10;
-		} else
-			return;
-	} else if (k == 8) {
-		/* snow_p1 */
-		if (m5 != 0x10) {
-			m5 = 0x10;
-		} else if (tmp != 2) {
-			m5 = 2;
-			if (tmp <= 2)
-				m5 = tmp + 1;
-			m5 += 0x10;
-		} else
-			return;
+	if (k < -8) { // well below the snow line
+		if (!IsClearGround(tile, CL_SNOW)) return;
+		if (GetClearDensity(tile) == 0) SetClearGroundDensity(tile, CL_GRASS, 3);
 	} else {
-		/* snow_p2_up */
-		if (m5 != 0x10) {
-			m5 = 0x10;
-		} else if (tmp != 3) {
-			m5 = tmp + 1 + 0x10;
-		} else
-			return;
+		if (!IsClearGround(tile, CL_SNOW)) {
+			SetClearGroundDensity(tile, CL_SNOW, 0);
+		} else {
+			uint density = min((uint)(k + 8) / 8, 3);
+
+			if (GetClearDensity(tile) < density) {
+				AddClearDensity(tile, 1);
+			} else if (GetClearDensity(tile) > density) {
+				AddClearDensity(tile, -1);
+			} else {
+				return;
+			}
+		}
 	}
 
-	_m[tile].m5 = m5;
 	MarkTileDirtyByTile(tile);
 }
 
 static void TileLoopClearDesert(TileIndex tile)
 {
- 	if ((_m[tile].m5 & 0x1C) == 0x14) return;
+	if (IsClearGround(tile, CL_DESERT)) return;
 
 	if (GetMapExtraBits(tile) == 1) {
-		_m[tile].m5 = 0x17;
+		SetClearGroundDensity(tile, CL_DESERT, 3);
 	} else {
 		if (GetMapExtraBits(tile + TileDiffXY( 1,  0)) != 1 &&
 				GetMapExtraBits(tile + TileDiffXY(-1,  0)) != 1 &&
 				GetMapExtraBits(tile + TileDiffXY( 0,  1)) != 1 &&
 				GetMapExtraBits(tile + TileDiffXY( 0, -1)) != 1)
 			return;
-		_m[tile].m5 = 0x15;
+		SetClearGroundDensity(tile, CL_DESERT, 1);
 	}
 
 	MarkTileDirtyByTile(tile);
@@ -711,8 +636,6 @@ static void TileLoopClearDesert(TileIndex tile)
 
 static void TileLoop_Clear(TileIndex tile)
 {
-	byte m5,m3;
-
 	TileLoopClearHelper(tile);
 
 	if (_opt.landscape == LT_DESERT) {
@@ -721,41 +644,45 @@ static void TileLoop_Clear(TileIndex tile)
 		TileLoopClearAlps(tile);
 	}
 
-	m5 = _m[tile].m5;
-	if ((m5 & 0x1C) == 0x10 || (m5 & 0x1C) == 0x14) return;
+	switch (GetClearGround(tile)) {
+		case CL_GRASS:
+			if (GetClearDensity(tile) == 3) return;
 
-	if ((m5 & 0x1C) != 0xC) {
-		if ((m5 & 3) == 3) return;
-
-		if (_game_mode != GM_EDITOR) {
-			m5 += 0x20;
-			if (m5 >= 0x20) {
-				// Didn't overflow
-				_m[tile].m5 = m5;
-				return;
+			if (_game_mode != GM_EDITOR) {
+				if (GetClearCounter(tile) < 7) {
+					AddClearCounter(tile, 1);
+					return;
+				} else {
+					SetClearCounter(tile, 0);
+					AddClearDensity(tile, 1);
+				}
+			} else {
+				SetClearGroundDensity(tile, GB(Random(), 0, 8) > 21 ? CL_GRASS : CL_ROUGH, 3);
 			}
-			/* did overflow, so continue */
-		} else {
-			m5 = (GB(Random(), 0, 8) > 21) ? 2 : 6;
+			break;
+
+		case CL_FIELDS: {
+			uint field_type;
+
+			if (_game_mode == GM_EDITOR) return;
+
+			if (GetClearCounter(tile) < 7) {
+				AddClearCounter(tile, 1);
+				return;
+			} else {
+				SetClearCounter(tile, 0);
+			}
+
+			field_type = GB(_m[tile].m3, 0, 4);
+			field_type = (field_type < 8) ? field_type + 1 : 0;
+			SB(_m[tile].m3, 0, 4, field_type);
+			break;
 		}
-		m5++;
-	} else if (_game_mode != GM_EDITOR) {
-		/* handle farm field */
-		m5 += 0x20;
-		if (m5 >= 0x20) {
-			// Didn't overflow
-			_m[tile].m5 = m5;
+
+		default:
 			return;
-		}
-		/* overflowed */
-		m3 = _m[tile].m3 + 1;
-		assert( (m3 & 0xF) != 0);
-		if ( (m3 & 0xF) >= 9) /* NOTE: will not work properly if m3&0xF == 0xF */
-			m3 &= ~0xF;
-		_m[tile].m3 = m3;
 	}
 
-	_m[tile].m5 = m5;
 	MarkTileDirtyByTile(tile);
 }
 
@@ -768,7 +695,7 @@ void GenerateClearTile(void)
 	i = ScaleByMapSize(GB(Random(), 0, 10) + 0x400);
 	do {
 		tile = RandomTile();
-		if (IsTileType(tile, MP_CLEAR)) SB(_m[tile].m5, 2, 2, 1);
+		if (IsTileType(tile, MP_CLEAR)) SetClearGroundDensity(tile, CL_ROUGH, 3);
 	} while (--i);
 
 	/* add grey squares */
@@ -781,7 +708,7 @@ void GenerateClearTile(void)
 			for (;;) {
 				TileIndex tile_new;
 
-				SB(_m[tile].m5, 2, 2, 2);
+				SetClearGroundDensity(tile, CL_ROCKS, 3);
 				do {
 					if (--j == 0) goto get_out;
 					tile_new = tile + TileOffsByDir(GB(Random(), 0, 2));
@@ -804,24 +731,21 @@ static uint32 GetTileTrackStatus_Clear(TileIndex tile, TransportType mode)
 }
 
 static const StringID _clear_land_str[] = {
+	STR_080D_GRASS,
 	STR_080B_ROUGH_LAND,
 	STR_080A_ROCKS,
 	STR_080E_FIELDS,
 	STR_080F_SNOW_COVERED_LAND,
-	STR_0810_DESERT,
-	0,
-	0,
-	STR_080C_BARE_LAND,
-	STR_080D_GRASS,
-	STR_080D_GRASS,
-	STR_080D_GRASS,
+	STR_0810_DESERT
 };
 
 static void GetTileDesc_Clear(TileIndex tile, TileDesc *td)
 {
-	uint i = GB(_m[tile].m5, 2, 3);
-	if (i == 0) i = GB(_m[tile].m5, 0, 2) + 8;
-	td->str = _clear_land_str[i - 1];
+	if (IsClearGround(tile, CL_GRASS) && GetClearDensity(tile) == 0) {
+		td->str = STR_080C_BARE_LAND;
+	} else {
+		td->str = _clear_land_str[GetClearGround(tile)];
+	}
 	td->owner = GetTileOwner(tile);
 }
 

@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "clear.h"
 #include "functions.h"
 #include "map.h"
 #include "player.h"
@@ -237,12 +238,13 @@ void DrawFoundation(TileInfo *ti, uint f)
 
 void DoClearSquare(TileIndex tile)
 {
-	ModifyTile(tile,
-		MP_SETTYPE(MP_CLEAR) |
-		MP_MAP2_CLEAR | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR | MP_MAPOWNER | MP_MAP5,
-		OWNER_NONE, /* map_owner */
-		_generating_world ? 3 : 0 /* map5 */
-	);
+	SetTileType(tile, MP_CLEAR);
+	SetTileOwner(tile, OWNER_NONE);
+	_m[tile].m2 = 0;
+	_m[tile].m3 = 0;
+	_m[tile].m4 = 0;
+	SetClearGroundDensity(tile, CL_GRASS, _generating_world ? 3 : 0);
+	MarkTileDirtyByTile(tile);
 }
 
 uint32 GetTileTrackStatus(TileIndex tile, TransportType mode)
@@ -615,7 +617,7 @@ static void CreateDesertOrRainForest(void)
 		for (data = _make_desert_or_rainforest_data;
 				data != endof(_make_desert_or_rainforest_data); ++data) {
 			TileIndex t = TILE_MASK(tile + ToTileIndexDiff(*data));
-			if (IsTileType(t, MP_CLEAR) && (_m[t].m5 & 0x1c) == 0x14) break;
+			if (IsTileType(t, MP_CLEAR) && IsClearGround(t, CL_DESERT)) break;
 		}
 		if (data == endof(_make_desert_or_rainforest_data))
 			SetMapExtraBits(tile, 2);

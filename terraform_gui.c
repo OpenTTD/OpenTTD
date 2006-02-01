@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "clear.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "functions.h"
@@ -81,7 +82,9 @@ static void GenerateRockyArea(TileIndex end, TileIndex start)
 
 	BEGIN_TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
 		if (IsTileType(tile, MP_CLEAR) || IsTileType(tile, MP_TREES)) {
-			ModifyTile(tile, MP_SETTYPE(MP_CLEAR) | MP_MAP5, (_m[tile].m5 & ~0x1C) | 0xB);
+			SetTileType(tile, MP_CLEAR);
+			SetClearGroundDensity(tile, CL_ROCKS, 3);
+			MarkTileDirtyByTile(tile);
 			success = true;
 		}
 	} END_TILE_LOOP(tile, size_x, size_y, 0);

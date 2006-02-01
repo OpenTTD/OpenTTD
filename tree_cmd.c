@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "clear.h"
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "table/tree_land.h"
@@ -73,10 +74,10 @@ static void DoPlaceMoreTrees(TileIndex tile)
 		uint dist = myabs(x) + myabs(y);
 		TileIndex cur_tile = TILE_MASK(tile + TileDiffXY(x, y));
 
-		/* Only on tiles within 13 squares from tile,
-		    on clear tiles, and NOT on farm-tiles or rocks */
-		if (dist <= 13 && IsTileType(cur_tile, MP_CLEAR) &&
-			 (_m[cur_tile].m5 & 0x1F) != 0x0F && (_m[cur_tile].m5 & 0x1C) != 8) {
+		if (dist <= 13 &&
+				IsTileType(cur_tile, MP_CLEAR) &&
+				!IsClearGround(cur_tile, CL_FIELDS) &&
+				!IsClearGround(cur_tile, CL_ROCKS)) {
 			PlaceTree(cur_tile, r, dist <= 6 ? 0xC0 : 0);
 		}
 	}
@@ -98,8 +99,9 @@ void PlaceTreesRandomly(void)
 	do {
 		uint32 r = Random();
 		TileIndex tile = RandomTileSeed(r);
-		/* Only on clear tiles, and NOT on farm-tiles or rocks */
-		if (IsTileType(tile, MP_CLEAR) && (_m[tile].m5 & 0x1F) != 0x0F && (_m[tile].m5 & 0x1C) != 8) {
+		if (IsTileType(tile, MP_CLEAR) &&
+				!IsClearGround(tile, CL_FIELDS) &&
+				!IsClearGround(tile, CL_ROCKS)) {
 			PlaceTree(tile, r, 0);
 		}
 	} while (--i);
@@ -182,11 +184,11 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 						continue;
 					}
 
-					// it's expensive to clear farmland
-					if ((_m[tile].m5 & 0x1F) == 0xF)
-						cost += _price.clear_3;
-					else if ((_m[tile].m5 & 0x1C) == 8)
-						cost += _price.clear_2;
+					switch (GetClearGround(tile)) {
+						case CL_FIELDS: cost += _price.clear_3; break;
+						case CL_ROCKS:  cost += _price.clear_2; break;
+						default: break;
+					}
 
 					if (flags & DC_EXEC) {
 						int treetype;
@@ -198,18 +200,10 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 								ChangeTownRating(t, RATING_TREE_UP_STEP, RATING_TREE_MAXIMUM);
 						}
 
-						switch (_m[tile].m5 & 0x1C) {
-							case 0x04:
-								m2 = 16;
-								break;
-
-							case 0x10:
-								m2 = ((_m[tile].m5 & 3) << 6) | 0x20;
-								break;
-
-							default:
-								m2 = 0;
-								break;
+						switch (GetClearGround(tile)) {
+							case CL_ROUGH: m2 = 16; break;
+							case CL_SNOW:  m2 = GetClearDensity(tile) << 6 | 0x20; break;
+							default:       m2 = 0; break;
 						}
 
 						treetype = p1;
@@ -456,7 +450,6 @@ static void TileLoopTreesAlps(TileIndex tile)
 static void TileLoop_Trees(TileIndex tile)
 {
 	byte m5;
-	uint16 m2;
 
 	static const TileIndexDiffC _tileloop_trees_dir[] = {
 		{-1, -1},
@@ -504,13 +497,15 @@ static void TileLoop_Trees(TileIndex tile)
 
 				if (!IsTileType(tile, MP_CLEAR)) return;
 
-				if ( (_m[tile].m5 & 0x1C) == 4) {
-					_m[tile].m2 = 0x10;
-				} else if ((_m[tile].m5 & 0x1C) == 16) {
-					_m[tile].m2 = ((_m[tile].m5 & 3) << 6) | 0x20;
-				} else {
-					if ((_m[tile].m5 & 0x1F) != 3) return;
-					_m[tile].m2 = 0;
+				switch (GetClearGround(tile)) {
+					case CL_GRASS:
+						if (GetClearDensity(tile) != 3) return;
+						_m[tile].m2 = 0;
+						break;
+
+					case CL_ROUGH: _m[tile].m2 = 0x10; break;
+					case CL_SNOW:  _m[tile].m2 = GetClearDensity(tile) << 6 | 0x20; break;
+					default: return;
 				}
 
 				_m[tile].m4 = 0;
@@ -532,15 +527,14 @@ static void TileLoop_Trees(TileIndex tile)
 		} else {
 			/* just one tree, change type into MP_CLEAR */
 			SetTileType(tile, MP_CLEAR);
-
-			m5 = 3;
-			m2 = _m[tile].m2;
-			if ((m2 & 0x30) != 0) { // on snow/desert or rough land
-				m5 = (m2 >> 6) | 0x10;
-				if ((m2 & 0x30) != 0x20) // if not on snow/desert, then on rough land
-					m5 = 7;
-			}
 			SetTileOwner(tile, OWNER_NONE);
+			switch (_m[tile].m2 & 0x30) {
+				case 0x00: SetClearGroundDensity(tile, CL_GRASS, 3); break;
+				case 0x10: SetClearGroundDensity(tile, CL_ROUGH, 3); break;
+				default:   SetClearGroundDensity(tile, CL_SNOW, GB(_m[tile].m2, 6, 2)); break;
+			}
+			MarkTileDirtyByTile(tile);
+			return;
 		}
 	} else {
 		/* in the middle of a transition, change to next */
@@ -555,20 +549,20 @@ void OnTick_Trees(void)
 {
 	uint32 r;
 	TileIndex tile;
-	byte m;
+	ClearGround ct;
 	int tree;
 
 	/* place a tree at a random rainforest spot */
 	if (_opt.landscape == LT_DESERT &&
 			(r = Random(), tile = RandomTileSeed(r), GetMapExtraBits(tile) == 2) &&
 			IsTileType(tile, MP_CLEAR) &&
-			(m = _m[tile].m5 & 0x1C, m <= 4) &&
+			(ct = GetClearGround(tile), ct == CL_GRASS || ct == CL_ROUGH) &&
 			(tree = GetRandomTreeType(tile, GB(r, 24, 8))) >= 0) {
 
 		ModifyTile(tile,
 			MP_SETTYPE(MP_TREES) |
 			MP_MAP2 | MP_MAP3LO | MP_MAP3HI | MP_MAP5,
-			(m == 4 ? 0x10 : 0),
+			(ct == CL_ROUGH ? 0x10 : 0),
 			tree,
 			_m[tile].m4 & ~3,
 			0
@@ -582,16 +576,14 @@ void OnTick_Trees(void)
 	r = Random();
 	tile = TILE_MASK(r);
 	if (IsTileType(tile, MP_CLEAR) &&
-			(m = _m[tile].m5 & 0x1C, m == 0 || m == 4 || m == 0x10) &&
+			(ct = GetClearGround(tile), ct == CL_GRASS || ct == CL_ROUGH || ct == CL_SNOW) &&
 			(tree = GetRandomTreeType(tile, GB(r, 24, 8))) >= 0) {
 		int m2;
 
-		if (m == 0) {
-			m2 = 0;
-		} else if (m == 4) {
-			m2 = 0x10;
-		} else {
-			m2 = ((_m[tile].m5 & 3) << 6) | 0x20;
+		switch (ct) {
+			case CL_GRASS: m2 = 0;
+			case CL_ROUGH: m2 = 0x10;
+			default:       m2 = (GetClearDensity(tile) << 6) | 0x20;
 		}
 
 		ModifyTile(tile,

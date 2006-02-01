@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "clear.h"
 #include "functions.h"
 #include "spritecache.h"
 #include "table/strings.h"
@@ -458,12 +459,8 @@ static inline uint32 GetSmallMapRoutesPixels(TileIndex tile)
 }
 
 
-static const uint32 _vegetation_clear_bits[4 + 7] = {
-	MKCOLOR(0x37373737), ///< bare land
-	MKCOLOR(0x37373737), ///< 1/3 grass
-	MKCOLOR(0x37373737), ///< 2/3 grass
+static const uint32 _vegetation_clear_bits[] = {
 	MKCOLOR(0x54545454), ///< full grass
-
 	MKCOLOR(0x52525252), ///< rough land
 	MKCOLOR(0x0A0A0A0A), ///< rocks
 	MKCOLOR(0x25252525), ///< fields
@@ -476,14 +473,15 @@ static const uint32 _vegetation_clear_bits[4 + 7] = {
 static inline uint32 GetSmallMapVegetationPixels(TileIndex tile)
 {
 	TileType t = GetEffectiveTileType(tile);
-	int i;
 	uint32 bits;
 
 	switch (t) {
 		case MP_CLEAR:
-			i = (_m[tile].m5 & 0x1F) - 4;
-			if (i >= 0) i >>= 2;
-			bits = _vegetation_clear_bits[i + 4];
+			if (IsClearGround(tile, CL_GRASS) && GetClearDensity(tile) < 3) {
+				bits = MKCOLOR(0x37373737);
+			} else {
+				bits = _vegetation_clear_bits[GetClearGround(tile)];
+			}
 			break;
 
 		case MP_INDUSTRY:
