@@ -915,6 +915,7 @@ endif
 	install -d $(DATA_DIR_INSTALL)/lang \
 	           $(DATA_DIR_INSTALL)/data \
 	           $(DATA_DIR_INSTALL)/gm \
+						 $(ICON_DIR_INSTALL) \
 	           $(BINARY_DIR_INSTALL)
 ifndef USE_HOMEDIR
 	mkdir -p $(PERSONAL_DIR)/scenario
