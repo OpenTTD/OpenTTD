@@ -328,9 +328,9 @@ int ttd_main(int argc, char* argv[])
 	//   a ':' behind it means: it need a param (e.g.: -m<driver>)
 	//   a '::' behind it means: it can optional have a param (e.g.: -d<debug>)
 	#if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
-		optformat = "bm:s:v:hDfn::eit:d::r:g::G:p:c:";
+		optformat = "bm:s:v:hDfn::eit:d::r:g::G:c:";
 	#else
-		optformat = "bm:s:v:hDn::eit:d::r:g::G:p:c:"; // no fork option
+		optformat = "bm:s:v:hDn::eit:d::r:g::G:c:"; // no fork option
 	#endif
 
 	MyGetOptInit(&mgo, argc-1, argv+1, optformat);
