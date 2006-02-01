@@ -182,7 +182,7 @@ static bool InsSort_Push(Queue* q, void* item, int priority)
 		q->data.inssort.first = newnode;
 	} else {
 		InsSortNode* node = q->data.inssort.first;
-		while( node != NULL ) {
+		while (node != NULL) {
 			if (node->next == NULL || node->next->priority >= priority) {
 				newnode->next = node->next;
 				node->next = newnode;

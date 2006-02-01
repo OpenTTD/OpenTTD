@@ -87,13 +87,13 @@ void DisplaySplashImage(void)
 	bit_depth        = png_get_bit_depth(png_ptr, info_ptr);
 	color_type       = png_get_color_type(png_ptr, info_ptr);
 
-	if(color_type != PNG_COLOR_TYPE_PALETTE || bit_depth != 8) {
+	if (color_type != PNG_COLOR_TYPE_PALETTE || bit_depth != 8) {
 		png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
 		fclose(f);
 		return;
 	}
 
-	if(!png_get_valid(png_ptr, info_ptr, PNG_INFO_PLTE)) {
+	if (!png_get_valid(png_ptr, info_ptr, PNG_INFO_PLTE)) {
 		png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
 		fclose(f);
 		return;
@@ -105,14 +105,12 @@ void DisplaySplashImage(void)
 
 	memset(_screen.dst_ptr, 0xff, _screen.pitch * _screen.height);
 
-	if(width > (uint) _screen.width)
-		width = _screen.width;
-	if(height > (uint) _screen.height)
-		height = _screen.height;
+	if (width > (uint) _screen.width) width = _screen.width;
+	if (height > (uint) _screen.height) height = _screen.height;
 
 	xoff = (_screen.width - width) / 2;
 	yoff = (_screen.height - height) / 2;
-	for(y = 0; y < height; y++) {
+	for (y = 0; y < height; y++) {
 		src = row_pointers[y];
 		dst = ((uint8 *) _screen.dst_ptr) + (yoff + y) * _screen.pitch + xoff;
 

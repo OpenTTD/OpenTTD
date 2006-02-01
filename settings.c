@@ -130,10 +130,11 @@ static IniGroup *ini_group_alloc(IniFile *ini, const char *grpt, int len)
 	IniGroup *grp = pool_alloc(&ini->pool, sizeof(IniGroup));
 	grp->ini = ini;
 	grp->name = pool_strdup(&ini->pool, grpt, len);
-	if(!strcmp(grp->name, "newgrf") || !strcmp(grp->name, "servers") || !strcmp(grp->name, "bans") )
+	if (!strcmp(grp->name, "newgrf") || !strcmp(grp->name, "servers") || !strcmp(grp->name, "bans")) {
 		grp->type = IGT_LIST;
-	else
+	} else {
 		grp->type = IGT_VARIABLES;
+	}
 	grp->next = NULL;
 	grp->item = NULL;
 	grp->comment = NULL;

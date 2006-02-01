@@ -1,19 +1,19 @@
 /* $Id$ */
 
-/******************************************************************************************
- *                             Cocoa sound driver                                         *
- * Known things left to do:                                                               *
- * - Might need to do endian checking for it to work on both ppc and x86                  *
- ******************************************************************************************/
+/*****************************************************************************
+ *                             Cocoa sound driver                            *
+ * Known things left to do:                                                  *
+ * - Might need to do endian checking for it to work on both ppc and x86     *
+ *****************************************************************************/
 
 #ifdef WITH_COCOA
 
 #include <AudioUnit/AudioUnit.h>
 
 /* Name conflict */
-#define Rect		OTTDRect
-#define Point		OTTDPoint
-#define WindowClass	OTTDWindowClass
+#define Rect        OTTDRect
+#define Point       OTTDPoint
+#define WindowClass OTTDWindowClass
 /* Defined in stdbool.h */
 #ifndef __cplusplus
 # ifndef __BEOS__
@@ -40,7 +40,7 @@
 static AudioUnit _outputAudioUnit;
 
 /* The CoreAudio callback */
-static OSStatus audioCallback (void *inRefCon,  AudioUnitRenderActionFlags inActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, AudioBuffer *ioData)
+static OSStatus audioCallback(void *inRefCon, AudioUnitRenderActionFlags inActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, AudioBuffer *ioData)
 {
 	MxMixSamples(_mixer, ioData->mData, ioData->mDataByteSize / 4);
 
@@ -87,24 +87,24 @@ static const char *CocoaSoundStart(const char * const *parm)
 		return "cocoa_s: Failed to start CoreAudio: FindNextComponent returned NULL";
 
 	/* Open & initialize the default output audio unit */
-	if(OpenAComponent(comp, &_outputAudioUnit) != noErr)
+	if (OpenAComponent(comp, &_outputAudioUnit) != noErr)
 		return "cocoa_s: Failed to start CoreAudio: OpenAComponent";
 
-	if(AudioUnitInitialize(_outputAudioUnit) != noErr)
+	if (AudioUnitInitialize(_outputAudioUnit) != noErr)
 		return "cocoa_s: Failed to start CoreAudio: AudioUnitInitialize";
 
 	/* Set the input format of the audio unit. */
-	if(AudioUnitSetProperty(_outputAudioUnit, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Input, 0, &requestedDesc, sizeof (requestedDesc)) != noErr)
-		return "cocoa_s: Failed to start CoreAudio:  AudioUnitSetProperty (kAudioUnitProperty_StreamFormat)";
+	if (AudioUnitSetProperty(_outputAudioUnit, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Input, 0, &requestedDesc, sizeof(requestedDesc)) != noErr)
+		return "cocoa_s: Failed to start CoreAudio: AudioUnitSetProperty (kAudioUnitProperty_StreamFormat)";
 
 	/* Set the audio callback */
 	callback.inputProc = audioCallback;
 	callback.inputProcRefCon = NULL;
-	if(AudioUnitSetProperty(_outputAudioUnit,  kAudioUnitProperty_SetInputCallback,  kAudioUnitScope_Input,  0, &callback,  sizeof(callback)) != noErr)
+	if (AudioUnitSetProperty(_outputAudioUnit, kAudioUnitProperty_SetInputCallback, kAudioUnitScope_Input, 0, &callback, sizeof(callback)) != noErr)
 		return "cocoa_s: Failed to start CoreAudio: AudioUnitSetProperty (kAudioUnitProperty_SetInputCallback)";
 
 	/* Finally, start processing of the audio unit */
-	if(AudioOutputUnitStart (_outputAudioUnit) != noErr)
+	if (AudioOutputUnitStart(_outputAudioUnit) != noErr)
 		return "cocoa_s: Failed to start CoreAudio: AudioOutputUnitStart";
 
 	/* We're running! */
@@ -127,7 +127,7 @@ static void CocoaSoundStop(void)
 	/* Remove the input callback */
 	callback.inputProc = 0;
 	callback.inputProcRefCon = 0;
-	if(AudioUnitSetProperty(_outputAudioUnit, kAudioUnitProperty_SetInputCallback, kAudioUnitScope_Input, 0, &callback, sizeof(callback)) != noErr) {
+	if (AudioUnitSetProperty(_outputAudioUnit, kAudioUnitProperty_SetInputCallback, kAudioUnitScope_Input, 0, &callback, sizeof(callback)) != noErr) {
 		DEBUG(driver, 1)("cocoa_s: Core_CloseAudio: AudioUnitSetProperty (kAudioUnitProperty_SetInputCallback) failed");
 		return;
 	}
