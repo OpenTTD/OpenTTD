@@ -581,9 +581,9 @@ void OnTick_Trees(void)
 		int m2;
 
 		switch (ct) {
-			case CL_GRASS: m2 = 0;
-			case CL_ROUGH: m2 = 0x10;
-			default:       m2 = (GetClearDensity(tile) << 6) | 0x20;
+			case CL_GRASS: m2 = 0; break;
+			case CL_ROUGH: m2 = 0x10; break;
+			default:       m2 = (GetClearDensity(tile) << 6) | 0x20; break;
 		}
 
 		ModifyTile(tile,

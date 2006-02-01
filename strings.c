@@ -500,8 +500,8 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 			break;
 
 		case 0x81: // {STRINL}
+			buff = GetStringWithArgs(buff, READ_LE_UINT16(str), argv);
 			str += 2;
-			buff = GetStringWithArgs(buff, READ_LE_UINT16(str-2), argv);
 			break;
 		case 0x82: // {DATE_LONG}
 			buff = FormatYmdString(buff, GetInt32(&argv));
