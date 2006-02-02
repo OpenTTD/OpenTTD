@@ -1189,7 +1189,7 @@ static void DrawTrainDetailsWindow(Window *w)
 
 	SetDParam(0, v->service_interval);
 	SetDParam(1, v->date_of_last_service);
-	DrawString(x + 11, 141, _patches.servint_ispercent?STR_SERVICING_INTERVAL_PERCENT:STR_883C_SERVICING_INTERVAL_DAYS, 0);
+	DrawString(x + 11, 57 + (w->vscroll.cap * 14), _patches.servint_ispercent ? STR_SERVICING_INTERVAL_PERCENT : STR_883C_SERVICING_INTERVAL_DAYS, 0);
 
 	y = 57;
 	sel = w->vscroll.pos;
@@ -1198,7 +1198,7 @@ static void DrawTrainDetailsWindow(Window *w)
 	if (det_tab != 3) {
 		x = 1;
 		for (;;) {
-			if (--sel < 0 && sel >= -6) {
+			if (--sel < 0 && sel >= -w->vscroll.cap) {
 				int dx = 0;
 				u = v;
 				do {
@@ -1212,12 +1212,11 @@ static void DrawTrainDetailsWindow(Window *w)
 			if ((v = GetNextVehicle(v)) == NULL)
 				return;
 		}
-	}
-	else {	// draw total cargo tab
-		i = 0;
+	} else {
+		// draw total cargo tab
 		DrawString(x, y + 2, STR_013F_TOTAL_CAPACITY_TEXT, 0);
-		do {
-			if (tot_cargo[i][1] > 0 && --sel < 0 && sel >= -5) {
+		for (i = 0; i != NUM_CARGO; i++) {
+			if (tot_cargo[i][1] > 0 && --sel < 0 && sel > -w->vscroll.cap) {
 				y += 14;
 				// STR_013F_TOTAL_CAPACITY			:{LTBLUE}- {CARGO} ({SHORTCARGO})
 				SetDParam(0, i);								// {CARGO} #1
@@ -1226,7 +1225,7 @@ static void DrawTrainDetailsWindow(Window *w)
 				SetDParam(3, tot_cargo[i][1]);	// {SHORTCARGO} #2
 				DrawString(x, y + 2, STR_013F_TOTAL_CAPACITY, 0);
 			}
-		} while (++i != NUM_CARGO);
+		}
 	}
 }
 
@@ -1287,23 +1286,32 @@ do_change_service_int:
 				CMD_NAME_VEHICLE | CMD_MSG(STR_8866_CAN_T_NAME_TRAIN));
 		}
 		break;
+
+	case WE_RESIZE:
+		if (e->sizing.diff.y == 0)
+			break;
+
+		w->vscroll.cap += e->sizing.diff.y / 14;
+		w->widget[4].unkA = (w->vscroll.cap << 8) + 1;
+		break;
 	}
 }
 
 static const Widget _train_details_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   329,     0,    13, STR_8802_DETAILS,STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   330,   369,     0,    13, STR_01AA_NAME,		STR_8867_NAME_TRAIN},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   369,    14,    55, 0x0,							STR_NULL},
-{     WWT_MATRIX,   RESIZE_NONE,    14,     0,   357,    56,   139, 0x601,						STR_NULL},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   358,   369,    56,   139, 0x0,							STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,   140,   145, STR_0188,				STR_884D_INCREASE_SERVICING_INTERVAL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,   146,   151, STR_0189,				STR_884E_DECREASE_SERVICING_INTERVAL},
-{      WWT_PANEL,   RESIZE_NONE,    14,    11,   369,   140,   151, 0x0,							STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    92,   152,   163, STR_013C_CARGO,	STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    93,   184,   152,   163, STR_013D_INFORMATION,	STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   185,   277,   152,   163, STR_013E_CAPACITIES,		STR_8851_SHOW_CAPACITIES_OF_EACH},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   278,   369,   152,   163, STR_013E_TOTAL_CARGO,	STR_8852_SHOW_TOTAL_CARGO},
+{   WWT_CLOSEBOX, RESIZE_NONE,   14,   0,  10,   0,  13, STR_00C5,             STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION, RESIZE_NONE,   14,  11, 329,   0,  13, STR_8802_DETAILS,     STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN, RESIZE_NONE,   14, 330, 369,   0,  13, STR_01AA_NAME,        STR_8867_NAME_TRAIN},
+{      WWT_PANEL, RESIZE_NONE,   14,   0, 369,  14,  55, 0x0,                  STR_NULL},
+{     WWT_MATRIX, RESIZE_BOTTOM, 14,   0, 357,  56, 139, 0x601,                STR_NULL},
+{  WWT_SCROLLBAR, RESIZE_BOTTOM, 14, 358, 369,  56, 139, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN, RESIZE_TB,     14,   0,  10, 140, 145, STR_0188,             STR_884D_INCREASE_SERVICING_INTERVAL},
+{ WWT_PUSHTXTBTN, RESIZE_TB,     14,   0,  10, 146, 151, STR_0189,             STR_884E_DECREASE_SERVICING_INTERVAL},
+{      WWT_PANEL, RESIZE_TB,     14,  11, 369, 140, 151, 0x0,                  STR_NULL},
+{ WWT_PUSHTXTBTN, RESIZE_TB,     14,   0,  89, 152, 163, STR_013C_CARGO,       STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED},
+{ WWT_PUSHTXTBTN, RESIZE_TB,     14,  90, 178, 152, 163, STR_013D_INFORMATION, STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES},
+{ WWT_PUSHTXTBTN, RESIZE_TB,     14, 179, 268, 152, 163, STR_013E_CAPACITIES,  STR_8851_SHOW_CAPACITIES_OF_EACH},
+{ WWT_PUSHTXTBTN, RESIZE_TB,     14, 269, 357, 152, 163, STR_013E_TOTAL_CARGO, STR_8852_SHOW_TOTAL_CARGO},
+{  WWT_RESIZEBOX, RESIZE_TB,     14, 358, 369, 152, 163, 0x0,                  STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -1311,7 +1319,7 @@ static const Widget _train_details_widgets[] = {
 static const WindowDesc _train_details_desc = {
 	-1,-1, 370, 164,
 	WC_VEHICLE_DETAILS,WC_VEHICLE_VIEW,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_train_details_widgets,
 	TrainDetailsWndProc
 };
@@ -1331,6 +1339,11 @@ static void ShowTrainDetailsWindow(const Vehicle* v)
 	w->window_number = veh;
 	w->caption_color = v->owner;
 	w->vscroll.cap = 6;
+	w->widget[4].unkA = (w->vscroll.cap << 8) + 1;
+
+	w->resize.step_height = 14;
+	w->resize.height = w->height - 14 * 2; /* Minimum of 4 wagons in the display */
+
 	WP(w,traindetails_d).tab = 0;
 }
 
