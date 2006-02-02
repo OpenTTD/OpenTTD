@@ -2575,7 +2575,7 @@ static void CalculateRefitMasks(void)
 /* XXX: We consider GRF files trusted. It would be trivial to exploit OTTD by
  * a crafted invalid GRF file. We should tell that to the user somehow, or
  * better make this more robust in the future. */
-static void DecodeSpecialSprite(const char* filename, uint num, uint stage)
+static void DecodeSpecialSprite(uint num, uint stage)
 {
 	/* XXX: There is a difference between staged loading in TTDPatch and
 	 * here.  In TTDPatch, for some reason actions 1 and 2 are carried out
@@ -2671,7 +2671,7 @@ static void LoadNewGRFFile(const char* filename, uint file_index, uint stage)
 
 		if (type == 0xFF) {
 			if (_skip_sprites == 0) {
-				DecodeSpecialSprite(filename, num, stage);
+				DecodeSpecialSprite(num, stage);
 				continue;
 			} else {
 				FioSkipBytes(num);

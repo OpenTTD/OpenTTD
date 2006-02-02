@@ -204,7 +204,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	} else if (ti.type == MP_STREET) {
 		// check if you're allowed to remove the street owned by a town
 		// removal allowance depends on difficulty setting
-		if (!CheckforTownRating(tile, flags, t, ROAD_REMOVE)) return CMD_ERROR;
+		if (!CheckforTownRating(flags, t, ROAD_REMOVE)) return CMD_ERROR;
 
 		// XXX - change cascading ifs to switch when doing rewrite
 		if ((ti.map5 & 0xF0) == 0) { // normal road

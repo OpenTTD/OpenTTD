@@ -748,7 +748,7 @@ static void HandleCloneVehClick(const Vehicle* v, const Window* w)
 	ResetObjectToPlace();
 }
 
-static void ClonePlaceObj(TileIndex tile, const Window* w)
+static void ClonePlaceObj(const Window* w)
 {
 	const Vehicle* v = CheckMouseOverVehicle();
 
@@ -793,7 +793,7 @@ static void ShipDepotWndProc(Window* w, WindowEvent* e)
 		break;
 
 	case WE_PLACE_OBJ: {
-		ClonePlaceObj(w->window_number, w);
+		ClonePlaceObj(w);
 	} break;
 
 	case WE_ABORT_PLACE_OBJ: {

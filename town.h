@@ -128,7 +128,7 @@ enum {
 	RATING_BRIBE_DOWN_TO = -50 					// XXX SHOULD BE SOMETHING LOWER?
 };
 
-bool CheckforTownRating(TileIndex tile, uint32 flags, Town *t, byte type);
+bool CheckforTownRating(uint32 flags, Town *t, byte type);
 
 VARDEF uint16 *_town_sort;
 

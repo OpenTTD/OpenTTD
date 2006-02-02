@@ -663,7 +663,7 @@ static int32 DoClearTunnel(TileIndex tile, uint32 flags)
 	// check if you're allowed to remove the tunnel owned by a town
 	// removal allowal depends on difficulty settings
 	if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR) {
-		if (!CheckforTownRating(tile, flags, t, TUNNELBRIDGE_REMOVE)) {
+		if (!CheckforTownRating(flags, t, TUNNELBRIDGE_REMOVE)) {
 			SetDParam(0, t->index);
 			return_cmd_error(STR_2009_LOCAL_AUTHORITY_REFUSES);
 		}
@@ -788,8 +788,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 	// check if you're allowed to remove the bridge owned by a town.
 	// removal allowal depends on difficulty settings
 	if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR) {
-		if (!CheckforTownRating(tile, flags, t, TUNNELBRIDGE_REMOVE))
-			return CMD_ERROR;
+		if (!CheckforTownRating(flags, t, TUNNELBRIDGE_REMOVE)) return CMD_ERROR;
 	}
 
 	if (flags & DC_EXEC) {

@@ -445,11 +445,13 @@ static const byte _conv_lengths[] = {1, 1, 2, 2, 4, 4, 8, 8, 2};
 
 /**
  * Return the size in bytes of a certain type of normal/atomic variable
- * @param var The variable the size is being asked of (NOTICE: unused)
  * @param conv @VarType type of variable that is used for calculating the size
  * @return Return the size of this type in byes
  */
-static inline size_t SlCalcConvLen(const void *var, VarType conv) {return _conv_lengths[conv & 0xF];}
+static inline size_t SlCalcConvLen(VarType conv)
+{
+	return _conv_lengths[conv & 0xF];
+}
 
 /**
  * Return the size in bytes of a reference (pointer)
@@ -458,11 +460,13 @@ static inline size_t SlCalcRefLen(void) {return 2;}
 
 /**
  * Return the size in bytes of a certain type of atomic array
- * @param array The variable the size is being asked of (NOTICE: unused)
  * @param length The length of the array counted in elements
  * @param conv @VarType type of the variable that is used in calculating the size
  */
-static inline size_t SlCalcArrayLen(const void *array, uint length, VarType conv) {return _conv_lengths[conv & 0xF] * length;}
+static inline size_t SlCalcArrayLen(uint length, VarType conv)
+{
+	return _conv_lengths[conv & 0xF] * length;
+}
 
 /**
  * Save/Load an array.
@@ -476,7 +480,7 @@ void SlArray(void *array, uint length, VarType conv)
 
 	// Automatically calculate the length?
 	if (_sl.need_length != NL_NONE) {
-		SlSetLength(SlCalcArrayLen(array, length, conv));
+		SlSetLength(SlCalcArrayLen(length, conv));
 		// Determine length only?
 		if (_sl.need_length == NL_CALCLENGTH)
 			return;
@@ -509,10 +513,9 @@ void SlArray(void *array, uint length, VarType conv)
 
 /**
  * Calculate the size of an object.
- * @param object Object that needs its length calculated
  * @param sld The @SaveLoad description of the object so we know how to manipulate it
  */
-static size_t SlCalcObjLength(void *object, const SaveLoad *sld)
+static size_t SlCalcObjLength(const SaveLoad *sld)
 {
 	size_t length = 0;
 
@@ -527,17 +530,17 @@ static size_t SlCalcObjLength(void *object, const SaveLoad *sld)
 
 			switch (sld->cmd) {
 			case SL_VAR: case SL_CONDVAR: /* Normal Variable */
-				length += SlCalcConvLen(NULL, sld->type); break;
+				length += SlCalcConvLen(sld->type); break;
 			case SL_REF: case SL_CONDREF:  /* Reference variable */
 				length += SlCalcRefLen(); break;
 			case SL_ARR: case SL_CONDARR: /* Array */
-				length += SlCalcArrayLen(NULL, sld->length, sld->type); break;
+				length += SlCalcArrayLen(sld->length, sld->type); break;
 			default: NOT_REACHED();
 			}
 		} else if (sld->cmd == SL_WRITEBYTE) {
 			length++; // a byte is logically of size 1
 		} else if (sld->cmd == SL_INCLUDE) {
-			length += SlCalcObjLength(NULL, _sl.includes[sld->version_from]);
+			length += SlCalcObjLength(_sl.includes[sld->version_from]);
 		} else
 			assert(sld->cmd == SL_END);
 	}
@@ -553,7 +556,7 @@ void SlObject(void *object, const SaveLoad *sld)
 {
 	// Automatically calculate the length?
 	if (_sl.need_length != NL_NONE) {
-		SlSetLength(SlCalcObjLength(object, sld));
+		SlSetLength(SlCalcObjLength(sld));
 		if (_sl.need_length == NL_CALCLENGTH)
 			return;
 	}
@@ -615,7 +618,7 @@ static size_t SlCalcGlobListLength(const SaveLoadGlobVarList *desc)
 	for (; desc->address != NULL; desc++) {
 		// Of course the global variable must exist in the sought savegame version
 		if (_sl_version >= desc->from_version && _sl_version <= desc->to_version)
-			length += SlCalcConvLen(NULL, desc->conv);
+			length += SlCalcConvLen(desc->conv);
 	}
 	return length;
 }

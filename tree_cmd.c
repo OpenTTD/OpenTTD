@@ -36,7 +36,7 @@ static int GetRandomTreeType(TileIndex tile, uint seed)
 	}
 }
 
-static void PlaceTree(TileIndex tile, uint32 r, byte m5_or)
+static void PlaceTree(TileIndex tile, uint32 r)
 {
 	int tree = GetRandomTreeType(tile, GB(r, 24, 8));
 	byte m5;
@@ -78,7 +78,7 @@ static void DoPlaceMoreTrees(TileIndex tile)
 				IsTileType(cur_tile, MP_CLEAR) &&
 				!IsClearGround(cur_tile, CL_FIELDS) &&
 				!IsClearGround(cur_tile, CL_ROCKS)) {
-			PlaceTree(cur_tile, r, dist <= 6 ? 0xC0 : 0);
+			PlaceTree(cur_tile, r);
 		}
 	}
 }
@@ -102,7 +102,7 @@ void PlaceTreesRandomly(void)
 		if (IsTileType(tile, MP_CLEAR) &&
 				!IsClearGround(tile, CL_FIELDS) &&
 				!IsClearGround(tile, CL_ROCKS)) {
-			PlaceTree(tile, r, 0);
+			PlaceTree(tile, r);
 		}
 	} while (--i);
 
@@ -114,7 +114,7 @@ void PlaceTreesRandomly(void)
 			uint32 r = Random();
 			TileIndex tile = RandomTileSeed(r);
 			if (IsTileType(tile, MP_CLEAR) && GetMapExtraBits(tile) == 2) {
-				PlaceTree(tile, r, 0);
+				PlaceTree(tile, r);
 			}
 		} while (--i);
 	}

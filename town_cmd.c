@@ -1118,7 +1118,7 @@ bool GenerateTowns(void)
 	return true;
 }
 
-static bool CheckBuildHouseMode(Town *t1, TileIndex tile, uint tileh, int mode)
+static bool CheckBuildHouseMode(TileIndex tile, uint tileh, int mode)
 {
 	int b;
 	uint slope;
@@ -1159,7 +1159,7 @@ int GetTownRadiusGroup(const Town *t, TileIndex tile)
 	return smallest;
 }
 
-static bool CheckFree2x2Area(Town *t1, TileIndex tile)
+static bool CheckFree2x2Area(TileIndex tile)
 {
 	int i;
 
@@ -1248,24 +1248,24 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 			if (_housetype_extra_flags[house] & 0x12 && slope) continue;
 
 			if (_housetype_extra_flags[house] & 0x10) {
-				if (CheckFree2x2Area(t, tile) ||
-						CheckFree2x2Area(t, (tile += TileDiffXY(-1,  0))) ||
-						CheckFree2x2Area(t, (tile += TileDiffXY( 0, -1))) ||
-						CheckFree2x2Area(t, (tile += TileDiffXY( 1,  0)))) {
+				if (CheckFree2x2Area(tile) ||
+						CheckFree2x2Area(tile += TileDiffXY(-1,  0)) ||
+						CheckFree2x2Area(tile += TileDiffXY( 0, -1)) ||
+						CheckFree2x2Area(tile += TileDiffXY( 1,  0))) {
 					break;
 				}
 				tile += TileDiffXY(0, 1);
 			} else if (_housetype_extra_flags[house] & 4) {
-				if (CheckBuildHouseMode(t, tile + TileDiffXY(1, 0), slope, 0)) break;
+				if (CheckBuildHouseMode(tile + TileDiffXY(1, 0), slope, 0)) break;
 
-				if (CheckBuildHouseMode(t, tile + TileDiffXY(-1, 0), slope, 1)) {
+				if (CheckBuildHouseMode(tile + TileDiffXY(-1, 0), slope, 1)) {
 					tile += TileDiffXY(-1, 0);
 					break;
 				}
 			} else if (_housetype_extra_flags[house] & 8) {
-				if (CheckBuildHouseMode(t, tile + TileDiffXY(0, 1), slope, 2)) break;
+				if (CheckBuildHouseMode(tile + TileDiffXY(0, 1), slope, 2)) break;
 
-				if (CheckBuildHouseMode(t, tile + TileDiffXY(0, -1), slope, 3)) {
+				if (CheckBuildHouseMode(tile + TileDiffXY(0, -1), slope, 3)) {
 					tile += TileDiffXY(0, -1);
 					break;
 				}
@@ -1886,7 +1886,7 @@ static const int _default_rating_settings [3][3] = {
 	{ 96, 384, 768},	// Hostile
 };
 
-bool CheckforTownRating(TileIndex tile, uint32 flags, Town *t, byte type)
+bool CheckforTownRating(uint32 flags, Town *t, byte type)
 {
 	int modemod;
 
