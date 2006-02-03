@@ -74,4 +74,9 @@ uint GetNumCustomStations(StationClassID sclass);
 void SetCustomStation(StationSpec *spec);
 const StationSpec *GetCustomStation(StationClassID sclass, uint station);
 
+/* Get sprite offset for a given custom station and station structure (may be
+ * NULL if ctype is set - that means we are in a build dialog). The station
+ * structure is used for variational sprite groups. */
+uint32 GetCustomStationRelocation(const StationSpec *spec, const Station *st, byte ctype);
+
 #endif /* NEWGRF_STATION_H */
