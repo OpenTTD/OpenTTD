@@ -18,6 +18,7 @@
 #include "airport.h"
 #include "vehicle_gui.h"
 #include "table/sprites.h"
+#include "newgrf_engine.h"
 
 static bool AirportMove(Vehicle *v, const AirportFTAClass *Airport);
 static bool AirportSetBlocks(Vehicle *v, AirportFTA *current_pos, const AirportFTAClass *Airport);

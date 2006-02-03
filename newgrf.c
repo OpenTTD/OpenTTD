@@ -17,6 +17,7 @@
 #include "variables.h"
 #include "bridge.h"
 #include "economy.h"
+#include "newgrf_engine.h"
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)

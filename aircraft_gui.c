@@ -19,6 +19,7 @@
 #include "player.h"
 #include "depot.h"
 #include "vehicle_gui.h"
+#include "newgrf_engine.h"
 
 /**
  * Draw the purchase info details of an aircraft at a given location.

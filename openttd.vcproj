@@ -273,6 +273,9 @@
 				RelativePath=".\newgrf.c">
 			</File>
 			<File
+				RelativePath=".\newgrf_engine.c">
+			</File>
+			<File
 				RelativePath=".\npf.c">
 			</File>
 			<File
@@ -485,6 +488,9 @@
 			</File>
 			<File
 				RelativePath=".\newgrf.h">
+			</File>
+			<File
+				RelativePath=".\newgrf_engine.h">
 			</File>
 			<File
 				RelativePath=".\news.h">

@@ -18,6 +18,7 @@
 #include "engine.h"
 #include "depot.h"
 #include "vehicle_gui.h"
+#include "newgrf_engine.h"
 
 /**
  * Draw the purchase info details of a ship at a given location.

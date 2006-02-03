@@ -276,6 +276,10 @@ SOURCE=.\newgrf.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\newgrf_engine.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\npf.c
 # End Source File
 # Begin Source File
@@ -615,6 +619,14 @@ SOURCE=.\md5.h
 # Begin Source File
 
 SOURCE=.\network.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\newgrf.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\newgrf_engine.h
 # End Source File
 # Begin Source File
 

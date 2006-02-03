@@ -653,6 +653,7 @@ SRCS += network_gui.c
 SRCS += network_server.c
 SRCS += network_udp.c
 SRCS += newgrf.c
+SRCS += newgrf_engine.c
 SRCS += news_gui.c
 SRCS += npf.c
 SRCS += oldloader.c

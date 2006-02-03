@@ -27,6 +27,7 @@
 #include "vehicle_gui.h"
 #include "ai/ai.h"
 #include "train.h"
+#include "newgrf_engine.h"
 
 // Score info
 const ScoreInfo _score_info[] = {

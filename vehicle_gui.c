@@ -19,6 +19,7 @@
 #include "vehicle_gui.h"
 #include "viewport.h"
 #include "train.h"
+#include "newgrf_engine.h"
 
 Sorting _sorting;
 

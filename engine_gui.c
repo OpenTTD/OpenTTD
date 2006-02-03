@@ -13,6 +13,7 @@
 #include "command.h"
 #include "news.h"
 #include "variables.h"
+#include "newgrf_engine.h"
 
 
 static StringID GetEngineCategoryName(EngineID engine)

@@ -19,6 +19,7 @@
 #include "vehicle_gui.h"
 #include "depot.h"
 #include "train.h"
+#include "newgrf_engine.h"
 
 int _traininfo_vehicle_pitch = 0;
 

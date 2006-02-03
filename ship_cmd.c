@@ -17,6 +17,7 @@
 #include "npf.h"
 #include "depot.h"
 #include "vehicle_gui.h"
+#include "newgrf_engine.h"
 
 static const uint16 _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
 static const byte _ship_sometracks[4] = {0x19, 0x16, 0x25, 0x2A};
