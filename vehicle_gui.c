@@ -42,6 +42,8 @@ static VehicleSortListingTypeFunction VehicleProfitLastYearSorter;
 static VehicleSortListingTypeFunction VehicleCargoSorter;
 static VehicleSortListingTypeFunction VehicleReliabilitySorter;
 static VehicleSortListingTypeFunction VehicleMaxSpeedSorter;
+static VehicleSortListingTypeFunction VehicleModelSorter;
+static VehicleSortListingTypeFunction VehicleValueSorter;
 
 static VehicleSortListingTypeFunction* const _vehicle_sorter[] = {
 	&VehicleUnsortedSorter,
@@ -52,7 +54,9 @@ static VehicleSortListingTypeFunction* const _vehicle_sorter[] = {
 	&VehicleProfitLastYearSorter,
 	&VehicleCargoSorter,
 	&VehicleReliabilitySorter,
-	&VehicleMaxSpeedSorter
+	&VehicleMaxSpeedSorter,
+	&VehicleModelSorter,
+	&VehicleValueSorter,
 };
 
 const StringID _vehicle_sort_listing[] = {
@@ -65,6 +69,8 @@ const StringID _vehicle_sort_listing[] = {
 	STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE,
 	STR_SORT_BY_RELIABILITY,
 	STR_SORT_BY_MAX_SPEED,
+	STR_SORT_BY_MODEL,
+	STR_SORT_BY_VALUE,
 	INVALID_STRING_ID
 };
 
@@ -402,6 +408,35 @@ static int CDECL VehicleMaxSpeedSorter(const void *a, const void *b)
 	} else {
 		r = va->max_speed - vb->max_speed;
 	}
+
+	VEHICLEUNITNUMBERSORTER(r, va, vb);
+
+	return (_internal_sort_order & 1) ? -r : r;
+}
+
+static int CDECL VehicleModelSorter(const void *a, const void *b)
+{
+	const Vehicle *va = GetVehicle((*(const SortStruct*)a).index);
+	const Vehicle *vb = GetVehicle((*(const SortStruct*)b).index);
+	int r = va->engine_type - vb->engine_type;
+
+	VEHICLEUNITNUMBERSORTER(r, va, vb);
+
+	return (_internal_sort_order & 1) ? -r : r;
+}
+
+static int CDECL VehicleValueSorter(const void *a, const void *b)
+{
+	const Vehicle *va = GetVehicle((*(const SortStruct*)a).index);
+	const Vehicle *vb = GetVehicle((*(const SortStruct*)b).index);
+	const Vehicle *u;
+	int valuea = 0, valueb = 0;
+	int r;
+
+	for (u = va; u != NULL; u = u->next) valuea += u->value;
+	for (u = vb; u != NULL; u = u->next) valueb += u->value;
+
+	r = valuea - valueb;
 
 	VEHICLEUNITNUMBERSORTER(r, va, vb);
 

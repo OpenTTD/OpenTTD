@@ -345,6 +345,8 @@ STR_SORT_BY_AGE                                                 :Age
 STR_SORT_BY_RELIABILITY                                         :Reliability
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Total capacity per cargo type
 STR_SORT_BY_MAX_SPEED                                           :Maximum speed
+STR_SORT_BY_MODEL                                               :Model
+STR_SORT_BY_VALUE                                               :Value
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
