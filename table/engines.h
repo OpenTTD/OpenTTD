@@ -449,6 +449,9 @@ const RailVehicleInfo orig_rail_vehicle_info[NUM_TRAIN_ENGINES] = {
 	RVI( 58, W, 193,   0,       0,  18,     0, 0, 32, CT_FIZZY_DRINKS ), /* 114 */
 	RVI( 59, W, 191,   0,       0,  18,     0, 0, 37, CT_PLASTIC      ), /* 115 */
 };
+#undef E
+#undef D
+#undef S
 #undef W
 #undef M
 #undef RVI
@@ -548,6 +551,9 @@ const AircraftVehicleInfo orig_aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES] = {
 	AVI( 19, 17,  77, H, SND_09_JET,                     20,  40, 20,  55 ), /* 39 */
 	AVI( 25, 15,  80, H, SND_09_JET,                     20,  25, 10,  40 ), /* 40 */
 };
+#undef J
+#undef P
+#undef H
 #undef AVI
 
 /** Writes the properties of a road vehicle into the RoadVehicleInfo struct.
