@@ -307,298 +307,354 @@ const EngineInfo orig_engine_info[] = {
 #undef M
 #undef R
 
+/** Writes the properties of a rail vehicle into the RailVehicleInfo struct.
+ * @see RailVehicleInfo
+ * @param a image_index
+ * @param b flags
+ * @param c base_cost
+ * @param d max_speed (kph)
+ * @param e power (hp)
+ * @arapm f weight
+ * @param g running_cost_base
+ * @param h running_cost_class / engclass
+ * @param i capacity
+ * @param j cargo_type
+ */
+#define RVI(a, b, c, d, e, f, g, h, i, j) { a, b, c, d, e, f, g, h, h, i, j, 0, 0, 0, 0, 0 }
 #define M RVI_MULTIHEAD
 #define W RVI_WAGON
+#define S 0
+#define D 1
+#define E 2
 const RailVehicleInfo orig_rail_vehicle_info[NUM_TRAIN_ENGINES] = {
-	// image_index  max_speed (kph)      running_cost_base                 callbackmask    shortened factor
-	// |  flags     |        power (hp)  |  running_cost_class             |   powered wagons power
-	// |  |    base_cost     |    weight |  |  engclass                    |   |   powered wagons weight
-	// |  |    |    |        |    |      |  |  |   capacity                |   |   |   visual effects
-	// |  |    |    |        |    |      |  |  |   |    cargo_type         |   |   |   |   |
-	{  2, 0,   7,  64,     300,  47,    50, 0, 0,  0,   0               ,  0,  0,  0,  0,  0 }, /*   0 */
-	{ 19, 0,   8,  80,     600,  65,    65, 1, 1,  0,   0               ,  0,  0,  0,  0,  0 }, /*   1 */
-	{  2, 0,  10,  72,     400,  85,    90, 0, 0,  0,   0               ,  0,  0,  0,  0,  0 }, /*   2 */
-	{  0, 0,  15,  96,     900, 130,   130, 0, 0,  0,   0               ,  0,  0,  0,  0,  0 }, /*   3 */
-	{  1, 0,  19, 112,    1000, 140,   145, 0, 0,  0,   0               ,  0,  0,  0,  0,  0 }, /*   4 */
-	{ 12, 0,  16, 120,    1400,  95,   125, 1, 1,  0,   0               ,  0,  0,  0,  0,  0 }, /*   5 */
-	{ 14, 0,  20, 152,    2000, 120,   135, 1, 1,  0,   0               ,  0,  0,  0,  0,  0 }, /*   6 */
-	{  3, 0,  14,  88,    1100, 145,   130, 0, 0,  0,   0               ,  0,  0,  0,  0,  0 }, /*   7 */
-	{  0, 0,  13, 112,    1000, 131,   120, 0, 0,  0,   0               ,  0,  0,  0,  0,  0 }, /*   8 */
-	{  1, 0,  19, 128,    1200, 162,   140, 0, 0,  0,   0               ,  0,  0,  0,  0,  0 }, /*   9 */
-	{  0, 0,  22, 144,    1600, 170,   130, 0, 0,  0,   0               ,  0,  0,  0,  0,  0 }, /*  10 */
-	{  8, M,  11, 112,   600/2,32/2,  85/2, 1, 1, 38,   CT_PASSENGERS   ,  0,  0,  0,  0,  0 }, /*  11 */
-	{ 10, M,  14, 120,   700/2,38/2,  70/2, 1, 1, 40,   CT_PASSENGERS   ,  0,  0,  0,  0,  0 }, /*  12 */
-	{  4, 0,  15, 128,    1250,  72,    95, 1, 1,  0,   0               ,  0,  0,  0,  0,  0 }, /*  13 */
-	{  5, 0,  17, 144,    1750, 101,   120, 1, 1,  0,   0               ,  0,  0,  0,  0,  0 }, /*  14 */
-	{  4, 0,  18, 160,    2580, 112,   140, 1, 1,  0,   0               ,  0,  0,  0,  0,  0 }, /*  15 */
-	{ 14, 0,  23,  96,    4000, 150,   135, 1, 1,  0,   0               ,  0,  0,  0,  0,  0 }, /*  16 */
-	{ 12, 0,  16, 112,    2400, 120,   105, 1, 1,  0,   0               ,  0,  0,  0,  0,  0 }, /*  17 */
-	{ 13, 0,  30, 112,    6600, 207,   155, 1, 1,  0,   0               ,  0,  0,  0,  0,  0 }, /*  18 */
-	{ 15, 0,  18, 104,    1500, 110,   105, 1, 1,  0,   0               ,  0,  0,  0,  0,  0 }, /*  19 */
-	{ 16, M,  35, 160,  3500/2,95/2, 205/2, 1, 1,  0,   0               ,  0,  0,  0,  0,  0 }, /*  20 */
-	{ 18, 0,  21, 104,    2200, 120,   145, 1, 1,  0,   0               ,  0,  0,  0,  0,  0 }, /*  21 */
-	{  6, M,  20, 200,  4500/2,70/2, 190/2, 1, 1,  4,   CT_MAIL         ,  0,  0,  0,  0,  0 }, /*  22 */
-	{ 20, 0,  26, 160,    3600,  84,   180, 2, 2,  0,   0               ,  0,  0,  0,  0,  0 }, /*  23 */
-	{ 20, 0,  30, 176,    5000,  82,   205, 2, 2,  0,   0               ,  0,  0,  0,  0,  0 }, /*  24 */
-	{ 21, M,  40, 240,  7000/2,90/2, 240/2, 2, 2,  0,   0               ,  0,  0,  0,  0,  0 }, /*  25 */
-	{ 23, M,  43, 264,  8000/2,95/2, 250/2, 2, 2,  0,   0               ,  0,  0,  0,  0,  0 }, /*  26 */
-	{ 33, W, 247,   0,       0,  25,     0, 0, 0, 40,   CT_PASSENGERS   ,  0,  0,  0,  0,  0 }, /*  27 */
-	{ 35, W, 228,   0,       0,  21,     0, 0, 0, 30,   CT_MAIL         ,  0,  0,  0,  0,  0 }, /*  28 */
-	{ 34, W, 176,   0,       0,  18,     0, 0, 0, 30,   CT_COAL         ,  0,  0,  0,  0,  0 }, /*  29 */
-	{ 36, W, 200,   0,       0,  24,     0, 0, 0, 30,   CT_OIL          ,  0,  0,  0,  0,  0 }, /*  30 */
-	{ 37, W, 192,   0,       0,  20,     0, 0, 0, 25,   CT_LIVESTOCK    ,  0,  0,  0,  0,  0 }, /*  31 */
-	{ 38, W, 190,   0,       0,  21,     0, 0, 0, 25,   CT_GOODS        ,  0,  0,  0,  0,  0 }, /*  32 */
-	{ 39, W, 182,   0,       0,  19,     0, 0, 0, 30,   CT_GRAIN        ,  0,  0,  0,  0,  0 }, /*  33 */
-	{ 40, W, 181,   0,       0,  16,     0, 0, 0, 30,   CT_WOOD         ,  0,  0,  0,  0,  0 }, /*  34 */
-	{ 41, W, 179,   0,       0,  19,     0, 0, 0, 30,   CT_IRON_ORE     ,  0,  0,  0,  0,  0 }, /*  35 */
-	{ 42, W, 196,   0,       0,  18,     0, 0, 0, 20,   CT_STEEL        ,  0,  0,  0,  0,  0 }, /*  36 */
-	{ 43, W, 255,   0,       0,  30,     0, 0, 0, 20,   CT_VALUABLES    ,  0,  0,  0,  0,  0 }, /*  37 */
-	{ 44, W, 191,   0,       0,  22,     0, 0, 0, 25,   CT_FOOD         ,  0,  0,  0,  0,  0 }, /*  38 */
-	{ 45, W, 196,   0,       0,  18,     0, 0, 0, 20,   CT_PAPER        ,  0,  0,  0,  0,  0 }, /*  39 */
-	{ 46, W, 179,   0,       0,  19,     0, 0, 0, 30,   CT_COPPER_ORE   ,  0,  0,  0,  0,  0 }, /*  40 */
-	{ 47, W, 199,   0,       0,  25,     0, 0, 0, 25,   CT_WATER        ,  0,  0,  0,  0,  0 }, /*  41 */
-	{ 48, W, 182,   0,       0,  18,     0, 0, 0, 25,   CT_FRUIT        ,  0,  0,  0,  0,  0 }, /*  42 */
-	{ 49, W, 185,   0,       0,  19,     0, 0, 0, 21,   CT_RUBBER       ,  0,  0,  0,  0,  0 }, /*  43 */
-	{ 50, W, 176,   0,       0,  19,     0, 0, 0, 30,   CT_SUGAR        ,  0,  0,  0,  0,  0 }, /*  44 */
-	{ 51, W, 178,   0,       0,  20,     0, 0, 0, 30,   CT_COTTON_CANDY ,  0,  0,  0,  0,  0 }, /*  45 */
-	{ 52, W, 192,   0,       0,  20,     0, 0, 0, 30,   CT_TOFFEE       ,  0,  0,  0,  0,  0 }, /*  46 */
-	{ 53, W, 190,   0,       0,  21,     0, 0, 0, 20,   CT_BUBBLES      ,  0,  0,  0,  0,  0 }, /*  47 */
-	{ 54, W, 182,   0,       0,  24,     0, 0, 0, 25,   CT_COLA         ,  0,  0,  0,  0,  0 }, /*  48 */
-	{ 55, W, 181,   0,       0,  21,     0, 0, 0, 25,   CT_CANDY        ,  0,  0,  0,  0,  0 }, /*  49 */
-	{ 56, W, 183,   0,       0,  21,     0, 0, 0, 20,   CT_TOYS         ,  0,  0,  0,  0,  0 }, /*  50 */
-	{ 57, W, 196,   0,       0,  18,     0, 0, 0, 22,   CT_BATTERIES    ,  0,  0,  0,  0,  0 }, /*  51 */
-	{ 58, W, 193,   0,       0,  18,     0, 0, 0, 25,   CT_FIZZY_DRINKS ,  0,  0,  0,  0,  0 }, /*  52 */
-	{ 59, W, 191,   0,       0,  18,     0, 0, 0, 30,   CT_PLASTIC      ,  0,  0,  0,  0,  0 }, /*  53 */
-	{ 25, 0,  52, 304,    9000,  95,   230, 2, 2,  0,   0               ,  0,  0,  0,  0,  0 }, /*  54 */
-	{ 26, M,  60, 336, 10000/2,85/2, 240/2, 2, 2, 25,   CT_PASSENGERS   ,  0,  0,  0,  0,  0 }, /*  55 */
-	{ 26, 0,  53, 320,    5000,  95,   230, 2, 2,  0,   0               ,  0,  0,  0,  0,  0 }, /*  56 */
-	{ 60, W, 247,   0,       0,  25,     0, 0, 0, 45,   CT_PASSENGERS   ,  0,  0,  0,  0,  0 }, /*  57 */
-	{ 62, W, 228,   0,       0,  21,     0, 0, 0, 35,   CT_MAIL         ,  0,  0,  0,  0,  0 }, /*  58 */
-	{ 61, W, 176,   0,       0,  18,     0, 0, 0, 35,   CT_COAL         ,  0,  0,  0,  0,  0 }, /*  59 */
-	{ 63, W, 200,   0,       0,  24,     0, 0, 0, 35,   CT_OIL          ,  0,  0,  0,  0,  0 }, /*  60 */
-	{ 64, W, 192,   0,       0,  20,     0, 0, 0, 30,   CT_LIVESTOCK    ,  0,  0,  0,  0,  0 }, /*  61 */
-	{ 65, W, 190,   0,       0,  21,     0, 0, 0, 30,   CT_GOODS        ,  0,  0,  0,  0,  0 }, /*  62 */
-	{ 66, W, 182,   0,       0,  19,     0, 0, 0, 35,   CT_GRAIN        ,  0,  0,  0,  0,  0 }, /*  63 */
-	{ 67, W, 181,   0,       0,  16,     0, 0, 0, 35,   CT_WOOD         ,  0,  0,  0,  0,  0 }, /*  64 */
-	{ 68, W, 179,   0,       0,  19,     0, 0, 0, 35,   CT_IRON_ORE     ,  0,  0,  0,  0,  0 }, /*  65 */
-	{ 69, W, 196,   0,       0,  18,     0, 0, 0, 25,   CT_STEEL        ,  0,  0,  0,  0,  0 }, /*  66 */
-	{ 70, W, 255,   0,       0,  30,     0, 0, 0, 25,   CT_VALUABLES    ,  0,  0,  0,  0,  0 }, /*  67 */
-	{ 71, W, 191,   0,       0,  22,     0, 0, 0, 30,   CT_FOOD         ,  0,  0,  0,  0,  0 }, /*  68 */
-	{ 72, W, 196,   0,       0,  18,     0, 0, 0, 25,   CT_PAPER        ,  0,  0,  0,  0,  0 }, /*  69 */
-	{ 73, W, 179,   0,       0,  19,     0, 0, 0, 35,   CT_COPPER_ORE   ,  0,  0,  0,  0,  0 }, /*  70 */
-	{ 47, W, 199,   0,       0,  25,     0, 0, 0, 30,   CT_WATER        ,  0,  0,  0,  0,  0 }, /*  71 */
-	{ 48, W, 182,   0,       0,  18,     0, 0, 0, 30,   CT_FRUIT        ,  0,  0,  0,  0,  0 }, /*  72 */
-	{ 49, W, 185,   0,       0,  19,     0, 0, 0, 26,   CT_RUBBER       ,  0,  0,  0,  0,  0 }, /*  73 */
-	{ 50, W, 176,   0,       0,  19,     0, 0, 0, 35,   CT_SUGAR        ,  0,  0,  0,  0,  0 }, /*  74 */
-	{ 51, W, 178,   0,       0,  20,     0, 0, 0, 35,   CT_COTTON_CANDY ,  0,  0,  0,  0,  0 }, /*  75 */
-	{ 52, W, 192,   0,       0,  20,     0, 0, 0, 35,   CT_TOFFEE       ,  0,  0,  0,  0,  0 }, /*  76 */
-	{ 53, W, 190,   0,       0,  21,     0, 0, 0, 25,   CT_BUBBLES      ,  0,  0,  0,  0,  0 }, /*  77 */
-	{ 54, W, 182,   0,       0,  24,     0, 0, 0, 30,   CT_COLA         ,  0,  0,  0,  0,  0 }, /*  78 */
-	{ 55, W, 181,   0,       0,  21,     0, 0, 0, 30,   CT_CANDY        ,  0,  0,  0,  0,  0 }, /*  79 */
-	{ 56, W, 183,   0,       0,  21,     0, 0, 0, 25,   CT_TOYS         ,  0,  0,  0,  0,  0 }, /*  80 */
-	{ 57, W, 196,   0,       0,  18,     0, 0, 0, 27,   CT_BATTERIES    ,  0,  0,  0,  0,  0 }, /*  81 */
-	{ 58, W, 193,   0,       0,  18,     0, 0, 0, 30,   CT_FIZZY_DRINKS ,  0,  0,  0,  0,  0 }, /*  82 */
-	{ 59, W, 191,   0,       0,  18,     0, 0, 0, 35,   CT_PLASTIC      ,  0,  0,  0,  0,  0 }, /*  83 */
-	{ 28, 0,  70, 400,   10000, 105,   250, 2, 2,  0,   0               ,  0,  0,  0,  0,  0 }, /*  84 */
-	{ 29, 0,  74, 448,   12000, 120,   253, 2, 2,  0,   0               ,  0,  0,  0,  0,  0 }, /*  85 */
-	{ 30, 0,  82, 480,   15000, 130,   254, 2, 2,  0,   0               ,  0,  0,  0,  0,  0 }, /*  86 */
-	{ 31, M,  95, 640, 20000/2,150/2,255/2, 2, 2,  0,   0               ,  0,  0,  0,  0,  0 }, /*  87 */
-	{ 28, 0,  70, 480,   10000, 120,   250, 2, 2,  0,   0               ,  0,  0,  0,  0,  0 }, /*  88 */
-	{ 60, W, 247,   0,       0,  25,     0, 0, 0, 47,   CT_PASSENGERS   ,  0,  0,  0,  0,  0 }, /*  89 */
-	{ 62, W, 228,   0,       0,  21,     0, 0, 0, 37,   CT_MAIL         ,  0,  0,  0,  0,  0 }, /*  90 */
-	{ 61, W, 176,   0,       0,  18,     0, 0, 0, 37,   CT_COAL         ,  0,  0,  0,  0,  0 }, /*  91 */
-	{ 63, W, 200,   0,       0,  24,     0, 0, 0, 37,   CT_OIL          ,  0,  0,  0,  0,  0 }, /*  92 */
-	{ 64, W, 192,   0,       0,  20,     0, 0, 0, 32,   CT_LIVESTOCK    ,  0,  0,  0,  0,  0 }, /*  93 */
-	{ 65, W, 190,   0,       0,  21,     0, 0, 0, 32,   CT_GOODS        ,  0,  0,  0,  0,  0 }, /*  94 */
-	{ 66, W, 182,   0,       0,  19,     0, 0, 0, 37,   CT_GRAIN        ,  0,  0,  0,  0,  0 }, /*  95 */
-	{ 67, W, 181,   0,       0,  16,     0, 0, 0, 37,   CT_WOOD         ,  0,  0,  0,  0,  0 }, /*  96 */
-	{ 68, W, 179,   0,       0,  19,     0, 0, 0, 37,   CT_IRON_ORE     ,  0,  0,  0,  0,  0 }, /*  97 */
-	{ 69, W, 196,   0,       0,  18,     0, 0, 0, 27,   CT_STEEL        ,  0,  0,  0,  0,  0 }, /*  98 */
-	{ 70, W, 255,   0,       0,  30,     0, 0, 0, 27,   CT_VALUABLES    ,  0,  0,  0,  0,  0 }, /*  99 */
-	{ 71, W, 191,   0,       0,  22,     0, 0, 0, 32,   CT_FOOD         ,  0,  0,  0,  0,  0 }, /* 100 */
-	{ 72, W, 196,   0,       0,  18,     0, 0, 0, 27,   CT_PAPER        ,  0,  0,  0,  0,  0 }, /* 101 */
-	{ 73, W, 179,   0,       0,  19,     0, 0, 0, 37,   CT_COPPER_ORE   ,  0,  0,  0,  0,  0 }, /* 102 */
-	{ 47, W, 199,   0,       0,  25,     0, 0, 0, 32,   CT_WATER        ,  0,  0,  0,  0,  0 }, /* 103 */
-	{ 48, W, 182,   0,       0,  18,     0, 0, 0, 32,   CT_FRUIT        ,  0,  0,  0,  0,  0 }, /* 104 */
-	{ 49, W, 185,   0,       0,  19,     0, 0, 0, 28,   CT_RUBBER       ,  0,  0,  0,  0,  0 }, /* 105 */
-	{ 50, W, 176,   0,       0,  19,     0, 0, 0, 37,   CT_SUGAR        ,  0,  0,  0,  0,  0 }, /* 106 */
-	{ 51, W, 178,   0,       0,  20,     0, 0, 0, 37,   CT_COTTON_CANDY ,  0,  0,  0,  0,  0 }, /* 107 */
-	{ 52, W, 192,   0,       0,  20,     0, 0, 0, 37,   CT_TOFFEE       ,  0,  0,  0,  0,  0 }, /* 108 */
-	{ 53, W, 190,   0,       0,  21,     0, 0, 0, 27,   CT_BUBBLES      ,  0,  0,  0,  0,  0 }, /* 109 */
-	{ 54, W, 182,   0,       0,  24,     0, 0, 0, 32,   CT_COLA         ,  0,  0,  0,  0,  0 }, /* 110 */
-	{ 55, W, 181,   0,       0,  21,     0, 0, 0, 32,   CT_CANDY        ,  0,  0,  0,  0,  0 }, /* 111 */
-	{ 56, W, 183,   0,       0,  21,     0, 0, 0, 27,   CT_TOYS         ,  0,  0,  0,  0,  0 }, /* 112 */
-	{ 57, W, 196,   0,       0,  18,     0, 0, 0, 29,   CT_BATTERIES    ,  0,  0,  0,  0,  0 }, /* 113 */
-	{ 58, W, 193,   0,       0,  18,     0, 0, 0, 32,   CT_FIZZY_DRINKS ,  0,  0,  0,  0,  0 }, /* 114 */
-	{ 59, W, 191,   0,       0,  18,     0, 0, 0, 37,   CT_PLASTIC      ,  0,  0,  0,  0,  0 }, /* 115 */
+	//    image_index  max_speed (kph)      running_cost_base
+	//    |  flags     |        power (hp)  |  running_cost_class & engclass
+	//    |  |    base_cost     |    weight |  |   capacity
+	//    |  |    |    |        |    |      |  |   |  cargo_type
+	//    |  |    |    |        |    |      |  |   |  |
+	RVI(  2, 0,   7,  64,     300,  47,    50, S,  0, 0               ), /*   0 */
+	RVI( 19, 0,   8,  80,     600,  65,    65, D,  0, 0               ), /*   1 */
+	RVI(  2, 0,  10,  72,     400,  85,    90, S,  0, 0               ), /*   2 */
+	RVI(  0, 0,  15,  96,     900, 130,   130, S,  0, 0               ), /*   3 */
+	RVI(  1, 0,  19, 112,    1000, 140,   145, S,  0, 0               ), /*   4 */
+	RVI( 12, 0,  16, 120,    1400,  95,   125, D,  0, 0               ), /*   5 */
+	RVI( 14, 0,  20, 152,    2000, 120,   135, D,  0, 0               ), /*   6 */
+	RVI(  3, 0,  14,  88,    1100, 145,   130, S,  0, 0               ), /*   7 */
+	RVI(  0, 0,  13, 112,    1000, 131,   120, S,  0, 0               ), /*   8 */
+	RVI(  1, 0,  19, 128,    1200, 162,   140, S,  0, 0               ), /*   9 */
+	RVI(  0, 0,  22, 144,    1600, 170,   130, S,  0, 0               ), /*  10 */
+	RVI(  8, M,  11, 112,   600/2,32/2,  85/2, D, 38, CT_PASSENGERS   ), /*  11 */
+	RVI( 10, M,  14, 120,   700/2,38/2,  70/2, D, 40, CT_PASSENGERS   ), /*  12 */
+	RVI(  4, 0,  15, 128,    1250,  72,    95, D,  0, 0               ), /*  13 */
+	RVI(  5, 0,  17, 144,    1750, 101,   120, D,  0, 0               ), /*  14 */
+	RVI(  4, 0,  18, 160,    2580, 112,   140, D,  0, 0               ), /*  15 */
+	RVI( 14, 0,  23,  96,    4000, 150,   135, D,  0, 0               ), /*  16 */
+	RVI( 12, 0,  16, 112,    2400, 120,   105, D,  0, 0               ), /*  17 */
+	RVI( 13, 0,  30, 112,    6600, 207,   155, D,  0, 0               ), /*  18 */
+	RVI( 15, 0,  18, 104,    1500, 110,   105, D,  0, 0               ), /*  19 */
+	RVI( 16, M,  35, 160,  3500/2,95/2, 205/2, D,  0, 0               ), /*  20 */
+	RVI( 18, 0,  21, 104,    2200, 120,   145, D,  0, 0               ), /*  21 */
+	RVI(  6, M,  20, 200,  4500/2,70/2, 190/2, D,  4, CT_MAIL         ), /*  22 */
+	RVI( 20, 0,  26, 160,    3600,  84,   180, E,  0, 0               ), /*  23 */
+	RVI( 20, 0,  30, 176,    5000,  82,   205, E,  0, 0               ), /*  24 */
+	RVI( 21, M,  40, 240,  7000/2,90/2, 240/2, E,  0, 0               ), /*  25 */
+	RVI( 23, M,  43, 264,  8000/2,95/2, 250/2, E,  0, 0               ), /*  26 */
+	RVI( 33, W, 247,   0,       0,  25,     0, 0, 40, CT_PASSENGERS   ), /*  27 */
+	RVI( 35, W, 228,   0,       0,  21,     0, 0, 30, CT_MAIL         ), /*  28 */
+	RVI( 34, W, 176,   0,       0,  18,     0, 0, 30, CT_COAL         ), /*  29 */
+	RVI( 36, W, 200,   0,       0,  24,     0, 0, 30, CT_OIL          ), /*  30 */
+	RVI( 37, W, 192,   0,       0,  20,     0, 0, 25, CT_LIVESTOCK    ), /*  31 */
+	RVI( 38, W, 190,   0,       0,  21,     0, 0, 25, CT_GOODS        ), /*  32 */
+	RVI( 39, W, 182,   0,       0,  19,     0, 0, 30, CT_GRAIN        ), /*  33 */
+	RVI( 40, W, 181,   0,       0,  16,     0, 0, 30, CT_WOOD         ), /*  34 */
+	RVI( 41, W, 179,   0,       0,  19,     0, 0, 30, CT_IRON_ORE     ), /*  35 */
+	RVI( 42, W, 196,   0,       0,  18,     0, 0, 20, CT_STEEL        ), /*  36 */
+	RVI( 43, W, 255,   0,       0,  30,     0, 0, 20, CT_VALUABLES    ), /*  37 */
+	RVI( 44, W, 191,   0,       0,  22,     0, 0, 25, CT_FOOD         ), /*  38 */
+	RVI( 45, W, 196,   0,       0,  18,     0, 0, 20, CT_PAPER        ), /*  39 */
+	RVI( 46, W, 179,   0,       0,  19,     0, 0, 30, CT_COPPER_ORE   ), /*  40 */
+	RVI( 47, W, 199,   0,       0,  25,     0, 0, 25, CT_WATER        ), /*  41 */
+	RVI( 48, W, 182,   0,       0,  18,     0, 0, 25, CT_FRUIT        ), /*  42 */
+	RVI( 49, W, 185,   0,       0,  19,     0, 0, 21, CT_RUBBER       ), /*  43 */
+	RVI( 50, W, 176,   0,       0,  19,     0, 0, 30, CT_SUGAR        ), /*  44 */
+	RVI( 51, W, 178,   0,       0,  20,     0, 0, 30, CT_COTTON_CANDY ), /*  45 */
+	RVI( 52, W, 192,   0,       0,  20,     0, 0, 30, CT_TOFFEE       ), /*  46 */
+	RVI( 53, W, 190,   0,       0,  21,     0, 0, 20, CT_BUBBLES      ), /*  47 */
+	RVI( 54, W, 182,   0,       0,  24,     0, 0, 25, CT_COLA         ), /*  48 */
+	RVI( 55, W, 181,   0,       0,  21,     0, 0, 25, CT_CANDY        ), /*  49 */
+	RVI( 56, W, 183,   0,       0,  21,     0, 0, 20, CT_TOYS         ), /*  50 */
+	RVI( 57, W, 196,   0,       0,  18,     0, 0, 22, CT_BATTERIES    ), /*  51 */
+	RVI( 58, W, 193,   0,       0,  18,     0, 0, 25, CT_FIZZY_DRINKS ), /*  52 */
+	RVI( 59, W, 191,   0,       0,  18,     0, 0, 30, CT_PLASTIC      ), /*  53 */
+	RVI( 25, 0,  52, 304,    9000,  95,   230, E,  0, 0               ), /*  54 */
+	RVI( 26, M,  60, 336, 10000/2,85/2, 240/2, E, 25, CT_PASSENGERS   ), /*  55 */
+	RVI( 26, 0,  53, 320,    5000,  95,   230, E,  0, 0               ), /*  56 */
+	RVI( 60, W, 247,   0,       0,  25,     0, 0, 45, CT_PASSENGERS   ), /*  57 */
+	RVI( 62, W, 228,   0,       0,  21,     0, 0, 35, CT_MAIL         ), /*  58 */
+	RVI( 61, W, 176,   0,       0,  18,     0, 0, 35, CT_COAL         ), /*  59 */
+	RVI( 63, W, 200,   0,       0,  24,     0, 0, 35, CT_OIL          ), /*  60 */
+	RVI( 64, W, 192,   0,       0,  20,     0, 0, 30, CT_LIVESTOCK    ), /*  61 */
+	RVI( 65, W, 190,   0,       0,  21,     0, 0, 30, CT_GOODS        ), /*  62 */
+	RVI( 66, W, 182,   0,       0,  19,     0, 0, 35, CT_GRAIN        ), /*  63 */
+	RVI( 67, W, 181,   0,       0,  16,     0, 0, 35, CT_WOOD         ), /*  64 */
+	RVI( 68, W, 179,   0,       0,  19,     0, 0, 35, CT_IRON_ORE     ), /*  65 */
+	RVI( 69, W, 196,   0,       0,  18,     0, 0, 25, CT_STEEL        ), /*  66 */
+	RVI( 70, W, 255,   0,       0,  30,     0, 0, 25, CT_VALUABLES    ), /*  67 */
+	RVI( 71, W, 191,   0,       0,  22,     0, 0, 30, CT_FOOD         ), /*  68 */
+	RVI( 72, W, 196,   0,       0,  18,     0, 0, 25, CT_PAPER        ), /*  69 */
+	RVI( 73, W, 179,   0,       0,  19,     0, 0, 35, CT_COPPER_ORE   ), /*  70 */
+	RVI( 47, W, 199,   0,       0,  25,     0, 0, 30, CT_WATER        ), /*  71 */
+	RVI( 48, W, 182,   0,       0,  18,     0, 0, 30, CT_FRUIT        ), /*  72 */
+	RVI( 49, W, 185,   0,       0,  19,     0, 0, 26, CT_RUBBER       ), /*  73 */
+	RVI( 50, W, 176,   0,       0,  19,     0, 0, 35, CT_SUGAR        ), /*  74 */
+	RVI( 51, W, 178,   0,       0,  20,     0, 0, 35, CT_COTTON_CANDY ), /*  75 */
+	RVI( 52, W, 192,   0,       0,  20,     0, 0, 35, CT_TOFFEE       ), /*  76 */
+	RVI( 53, W, 190,   0,       0,  21,     0, 0, 25, CT_BUBBLES      ), /*  77 */
+	RVI( 54, W, 182,   0,       0,  24,     0, 0, 30, CT_COLA         ), /*  78 */
+	RVI( 55, W, 181,   0,       0,  21,     0, 0, 30, CT_CANDY        ), /*  79 */
+	RVI( 56, W, 183,   0,       0,  21,     0, 0, 25, CT_TOYS         ), /*  80 */
+	RVI( 57, W, 196,   0,       0,  18,     0, 0, 27, CT_BATTERIES    ), /*  81 */
+	RVI( 58, W, 193,   0,       0,  18,     0, 0, 30, CT_FIZZY_DRINKS ), /*  82 */
+	RVI( 59, W, 191,   0,       0,  18,     0, 0, 35, CT_PLASTIC      ), /*  83 */
+	RVI( 28, 0,  70, 400,   10000, 105,   250, E,  0, 0               ), /*  84 */
+	RVI( 29, 0,  74, 448,   12000, 120,   253, E,  0, 0               ), /*  85 */
+	RVI( 30, 0,  82, 480,   15000, 130,   254, E,  0, 0               ), /*  86 */
+	RVI( 31, M,  95, 640, 20000/2,150/2,255/2, E,  0, 0               ), /*  87 */
+	RVI( 28, 0,  70, 480,   10000, 120,   250, E,  0, 0               ), /*  88 */
+	RVI( 60, W, 247,   0,       0,  25,     0, 0, 47, CT_PASSENGERS   ), /*  89 */
+	RVI( 62, W, 228,   0,       0,  21,     0, 0, 37, CT_MAIL         ), /*  90 */
+	RVI( 61, W, 176,   0,       0,  18,     0, 0, 37, CT_COAL         ), /*  91 */
+	RVI( 63, W, 200,   0,       0,  24,     0, 0, 37, CT_OIL          ), /*  92 */
+	RVI( 64, W, 192,   0,       0,  20,     0, 0, 32, CT_LIVESTOCK    ), /*  93 */
+	RVI( 65, W, 190,   0,       0,  21,     0, 0, 32, CT_GOODS        ), /*  94 */
+	RVI( 66, W, 182,   0,       0,  19,     0, 0, 37, CT_GRAIN        ), /*  95 */
+	RVI( 67, W, 181,   0,       0,  16,     0, 0, 37, CT_WOOD         ), /*  96 */
+	RVI( 68, W, 179,   0,       0,  19,     0, 0, 37, CT_IRON_ORE     ), /*  97 */
+	RVI( 69, W, 196,   0,       0,  18,     0, 0, 27, CT_STEEL        ), /*  98 */
+	RVI( 70, W, 255,   0,       0,  30,     0, 0, 27, CT_VALUABLES    ), /*  99 */
+	RVI( 71, W, 191,   0,       0,  22,     0, 0, 32, CT_FOOD         ), /* 100 */
+	RVI( 72, W, 196,   0,       0,  18,     0, 0, 27, CT_PAPER        ), /* 101 */
+	RVI( 73, W, 179,   0,       0,  19,     0, 0, 37, CT_COPPER_ORE   ), /* 102 */
+	RVI( 47, W, 199,   0,       0,  25,     0, 0, 32, CT_WATER        ), /* 103 */
+	RVI( 48, W, 182,   0,       0,  18,     0, 0, 32, CT_FRUIT        ), /* 104 */
+	RVI( 49, W, 185,   0,       0,  19,     0, 0, 28, CT_RUBBER       ), /* 105 */
+	RVI( 50, W, 176,   0,       0,  19,     0, 0, 37, CT_SUGAR        ), /* 106 */
+	RVI( 51, W, 178,   0,       0,  20,     0, 0, 37, CT_COTTON_CANDY ), /* 107 */
+	RVI( 52, W, 192,   0,       0,  20,     0, 0, 37, CT_TOFFEE       ), /* 108 */
+	RVI( 53, W, 190,   0,       0,  21,     0, 0, 27, CT_BUBBLES      ), /* 109 */
+	RVI( 54, W, 182,   0,       0,  24,     0, 0, 32, CT_COLA         ), /* 110 */
+	RVI( 55, W, 181,   0,       0,  21,     0, 0, 32, CT_CANDY        ), /* 111 */
+	RVI( 56, W, 183,   0,       0,  21,     0, 0, 27, CT_TOYS         ), /* 112 */
+	RVI( 57, W, 196,   0,       0,  18,     0, 0, 29, CT_BATTERIES    ), /* 113 */
+	RVI( 58, W, 193,   0,       0,  18,     0, 0, 32, CT_FIZZY_DRINKS ), /* 114 */
+	RVI( 59, W, 191,   0,       0,  18,     0, 0, 37, CT_PLASTIC      ), /* 115 */
 };
 #undef W
 #undef M
+#undef RVI
 
+/** Writes the properties of a ship into the ShipVehicleInfo struct.
+ * @see ShipVehicleInfo
+ * @param a image_index
+ * @param b base_cost
+ * @param c max_speed
+ * @param d cargo_type
+ * @param e cargo_amount
+ * @param f running_cost
+ * @param g sound effect
+ * @param h refittable
+ */
+#define SVI(a, b, c, d, e, f, g, h) { a, b, c, d, e, f, g, h }
 const ShipVehicleInfo orig_ship_vehicle_info[NUM_SHIP_ENGINES] = {
-	// image_index  cargo_type     cargo_amount                 refittable
-	// |  base_cost |              |    running_cost            |
-	// |  |    max_speed           |    |    sfx                |
-	// |  |    |    |              |    |    |                  |
-	{  1, 160, 48,  CT_OIL,        220, 140, SND_06_SHIP_HORN,  0 }, /*  0 */
-	{  1, 176, 80,  CT_OIL,        350, 125, SND_06_SHIP_HORN,  0 }, /*  1 */
-	{  2, 96,  64,  CT_PASSENGERS, 100, 90,  SND_07_FERRY_HORN, 0 }, /*  2 */
-	{  2, 112, 128, CT_PASSENGERS, 130, 80,  SND_07_FERRY_HORN, 0 }, /*  3 */
-	{  3, 148, 224, CT_PASSENGERS, 100, 190, SND_07_FERRY_HORN, 0 }, /*  4 */
-	{  2, 96,  64,  CT_PASSENGERS, 100, 90,  SND_07_FERRY_HORN, 0 }, /*  5 */
-	{  2, 112, 128, CT_PASSENGERS, 130, 80,  SND_07_FERRY_HORN, 0 }, /*  6 */
-	{  0, 128, 48,  CT_GOODS,      160, 150, SND_06_SHIP_HORN,  1 }, /*  7 */
-	{  0, 144, 80,  CT_GOODS,      190, 113, SND_06_SHIP_HORN,  1 }, /*  8 */
-	{  0, 128, 48,  CT_GOODS,      160, 150, SND_06_SHIP_HORN,  1 }, /*  9 */
-	{  0, 144, 80,  CT_GOODS,      190, 113, SND_06_SHIP_HORN,  1 }, /* 10 */
+	//   image_index  cargo_type     cargo_amount                 refittable
+	//   |    base_cost |              |    running_cost          |
+	//   |    |    max_speed           |    |  sfx                |
+	//   |    |    |    |              |    |  |                  |
+	SVI( 1, 160,  48, CT_OIL,        220, 140, SND_06_SHIP_HORN,  0 ), /*  0 */
+	SVI( 1, 176,  80, CT_OIL,        350, 125, SND_06_SHIP_HORN,  0 ), /*  1 */
+	SVI( 2,  96,  64, CT_PASSENGERS, 100,  90, SND_07_FERRY_HORN, 0 ), /*  2 */
+	SVI( 2, 112, 128, CT_PASSENGERS, 130,  80, SND_07_FERRY_HORN, 0 ), /*  3 */
+	SVI( 3, 148, 224, CT_PASSENGERS, 100, 190, SND_07_FERRY_HORN, 0 ), /*  4 */
+	SVI( 2,  96,  64, CT_PASSENGERS, 100,  90, SND_07_FERRY_HORN, 0 ), /*  5 */
+	SVI( 2, 112, 128, CT_PASSENGERS, 130,  80, SND_07_FERRY_HORN, 0 ), /*  6 */
+	SVI( 0, 128,  48, CT_GOODS,      160, 150, SND_06_SHIP_HORN,  1 ), /*  7 */
+	SVI( 0, 144,  80, CT_GOODS,      190, 113, SND_06_SHIP_HORN,  1 ), /*  8 */
+	SVI( 0, 128,  48, CT_GOODS,      160, 150, SND_06_SHIP_HORN,  1 ), /*  9 */
+	SVI( 0, 144,  80, CT_GOODS,      190, 113, SND_06_SHIP_HORN,  1 ), /* 10 */
 };
+#undef SVI
 
-/* subtype: &1: regular aircraft (else chopper); &2: crashes easily on small airports */
-/* sfx from somewhere around SND_45_PLANE_CRASHING are toyland plane-sounds */
+/** Writes the properties of an aircraft into the AircraftVehicleInfo struct.
+ * @see AircraftVehicleInfo
+ * @param a image_index
+ * @param b base_cost
+ * @param c running_Cost
+ * @param d subtype (bit 0 - plane, bit 1 - large plane)
+ * @param e sound effect
+ * @param f acceleration
+ * @param g max_speed
+ * @param h mail_capacity
+ * @param i passenger_capacity
+ */
+#define AVI(a, b, c, d, e, f, g, h, i) { a, b, c, d, e, f, g, h, i }
+#define H 0
+#define P 1
+#define J 3
 const AircraftVehicleInfo orig_aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES] = {
-	// image_index         sfx                         acceleration
-	// |   base_cost       |                           |   max_speed
-	// |   |    running_cost                           |   |    mail_capacity
-	// |   |    |  subtype |                           |   |    |    passenger_capacity
-	// |   |    |  |       |                           |   |    |    |
-	{  1, 14,  85, 1, SND_08_PLANE_TAKE_OFF,          18,  37,  4,  25 }, /*  0 */
-	{  0, 15, 100, 1, SND_08_PLANE_TAKE_OFF,          20,  37,  8,  65 }, /*  1 */
-	{  2, 16, 130, 3, SND_09_JET,                     35,  74, 10,  90 }, /*  2 */
-	{  8, 75, 250, 3, SND_3B_JET_OVERHEAD,            50, 181, 20, 100 }, /*  3 */
-	{  5, 15,  98, 1, SND_08_PLANE_TAKE_OFF,          20,  37,  6,  30 }, /*  4 */
-	{  6, 18, 240, 3, SND_09_JET,                     40,  74, 30, 200 }, /*  5 */
-	{  2, 17, 150, 1, SND_09_JET,                     35,  74, 15, 100 }, /*  6 */
-	{  2, 18, 245, 3, SND_09_JET,                     40,  74, 30, 150 }, /*  7 */
-	{  3, 19, 192, 3, SND_09_JET,                     40,  74, 40, 220 }, /*  8 */
-	{  3, 20, 190, 3, SND_09_JET,                     40,  74, 25, 230 }, /*  9 */
-	{  2, 16, 135, 3, SND_09_JET,                     35,  74, 10,  95 }, /* 10 */
-	{  2, 18, 240, 3, SND_09_JET,                     40,  74, 35, 170 }, /* 11 */
-	{  4, 17, 155, 3, SND_09_JET,                     40,  74, 15, 110 }, /* 12 */
-	{  7, 30, 253, 3, SND_3D_ANOTHER_JET_OVERHEAD,    40,  74, 50, 300 }, /* 13 */
-	{  4, 18, 210, 3, SND_09_JET,                     40,  74, 25, 200 }, /* 14 */
-	{  4, 19, 220, 3, SND_09_JET,                     40,  74, 25, 240 }, /* 15 */
-	{  4, 27, 230, 3, SND_09_JET,                     40,  74, 40, 260 }, /* 16 */
-	{  3, 25, 225, 3, SND_09_JET,                     40,  74, 35, 240 }, /* 17 */
-	{  4, 20, 235, 3, SND_09_JET,                     40,  74, 30, 260 }, /* 18 */
-	{  4, 19, 220, 3, SND_09_JET,                     40,  74, 25, 210 }, /* 19 */
-	{  4, 18, 170, 3, SND_09_JET,                     40,  74, 20, 160 }, /* 20 */
-	{  4, 26, 210, 3, SND_09_JET,                     40,  74, 20, 220 }, /* 21 */
-	{  6, 16, 125, 1, SND_09_JET,                     50,  74, 10,  80 }, /* 22 */
-	{  2, 17, 145, 1, SND_09_JET,                     40,  74, 10,  85 }, /* 23 */
-	{ 11, 16, 130, 3, SND_09_JET,                     40,  74, 10,  75 }, /* 24 */
-	{ 10, 16, 149, 3, SND_09_JET,                     40,  74, 10,  85 }, /* 25 */
-	{ 15, 17, 170, 3, SND_09_JET,                     40,  74, 18,  65 }, /* 26 */
-	{ 12, 18, 210, 3, SND_09_JET,                     40,  74, 25, 110 }, /* 27 */
-	{ 13, 20, 230, 3, SND_09_JET,                     40,  74, 60, 180 }, /* 28 */
-	{ 14, 21, 220, 3, SND_09_JET,                     40,  74, 65, 150 }, /* 29 */
-	{ 16, 19, 160, 3, SND_09_JET,                     40, 181, 45,  85 }, /* 30 */
-	{ 17, 24, 248, 3, SND_3D_ANOTHER_JET_OVERHEAD,    40,  74, 80, 400 }, /* 31 */
-	{ 18, 80, 251, 3, SND_3B_JET_OVERHEAD,            50, 181, 45, 130 }, /* 32 */
-	{ 20, 13,  85, 1, SND_45_PLANE_CRASHING,          18,  37,  5,  25 }, /* 33 */
-	{ 21, 18, 100, 1, SND_46_PLANE_ENGINE_SPUTTERING, 20,  37,  9,  60 }, /* 34 */
-	{ 22, 25, 140, 1, SND_09_JET,                     40,  74, 12,  90 }, /* 35 */
-	{ 23, 32, 220, 3, SND_3D_ANOTHER_JET_OVERHEAD,    40,  74, 40, 200 }, /* 36 */
-	{ 24, 80, 255, 3, SND_3B_JET_OVERHEAD,            50, 181, 30, 100 }, /* 37 */
-	{  9, 15,  81, 0, SND_09_JET,                     20,  25, 15,  40 }, /* 38 */
-	{ 19, 17,  77, 0, SND_09_JET,                     20,  40, 20,  55 }, /* 39 */
-	{ 25, 15,  80, 0, SND_09_JET,                     20,  25, 10,  40 }, /* 40 */
+	//    image_index         sfx                         acceleration
+	//    |   base_cost       |                           |   max_speed
+	//    |   |    running_cost                           |   |    mail_capacity
+	//    |   |    |  subtype |                           |   |    |    passenger_capacity
+	//    |   |    |  |       |                           |   |    |    |
+	AVI(  1, 14,  85, P, SND_08_PLANE_TAKE_OFF,          18,  37,  4,  25 ), /*  0 */
+	AVI(  0, 15, 100, P, SND_08_PLANE_TAKE_OFF,          20,  37,  8,  65 ), /*  1 */
+	AVI(  2, 16, 130, J, SND_09_JET,                     35,  74, 10,  90 ), /*  2 */
+	AVI(  8, 75, 250, J, SND_3B_JET_OVERHEAD,            50, 181, 20, 100 ), /*  3 */
+	AVI(  5, 15,  98, P, SND_08_PLANE_TAKE_OFF,          20,  37,  6,  30 ), /*  4 */
+	AVI(  6, 18, 240, J, SND_09_JET,                     40,  74, 30, 200 ), /*  5 */
+	AVI(  2, 17, 150, P, SND_09_JET,                     35,  74, 15, 100 ), /*  6 */
+	AVI(  2, 18, 245, J, SND_09_JET,                     40,  74, 30, 150 ), /*  7 */
+	AVI(  3, 19, 192, J, SND_09_JET,                     40,  74, 40, 220 ), /*  8 */
+	AVI(  3, 20, 190, J, SND_09_JET,                     40,  74, 25, 230 ), /*  9 */
+	AVI(  2, 16, 135, J, SND_09_JET,                     35,  74, 10,  95 ), /* 10 */
+	AVI(  2, 18, 240, J, SND_09_JET,                     40,  74, 35, 170 ), /* 11 */
+	AVI(  4, 17, 155, J, SND_09_JET,                     40,  74, 15, 110 ), /* 12 */
+	AVI(  7, 30, 253, J, SND_3D_ANOTHER_JET_OVERHEAD,    40,  74, 50, 300 ), /* 13 */
+	AVI(  4, 18, 210, J, SND_09_JET,                     40,  74, 25, 200 ), /* 14 */
+	AVI(  4, 19, 220, J, SND_09_JET,                     40,  74, 25, 240 ), /* 15 */
+	AVI(  4, 27, 230, J, SND_09_JET,                     40,  74, 40, 260 ), /* 16 */
+	AVI(  3, 25, 225, J, SND_09_JET,                     40,  74, 35, 240 ), /* 17 */
+	AVI(  4, 20, 235, J, SND_09_JET,                     40,  74, 30, 260 ), /* 18 */
+	AVI(  4, 19, 220, J, SND_09_JET,                     40,  74, 25, 210 ), /* 19 */
+	AVI(  4, 18, 170, J, SND_09_JET,                     40,  74, 20, 160 ), /* 20 */
+	AVI(  4, 26, 210, J, SND_09_JET,                     40,  74, 20, 220 ), /* 21 */
+	AVI(  6, 16, 125, P, SND_09_JET,                     50,  74, 10,  80 ), /* 22 */
+	AVI(  2, 17, 145, P, SND_09_JET,                     40,  74, 10,  85 ), /* 23 */
+	AVI( 11, 16, 130, J, SND_09_JET,                     40,  74, 10,  75 ), /* 24 */
+	AVI( 10, 16, 149, J, SND_09_JET,                     40,  74, 10,  85 ), /* 25 */
+	AVI( 15, 17, 170, J, SND_09_JET,                     40,  74, 18,  65 ), /* 26 */
+	AVI( 12, 18, 210, J, SND_09_JET,                     40,  74, 25, 110 ), /* 27 */
+	AVI( 13, 20, 230, J, SND_09_JET,                     40,  74, 60, 180 ), /* 28 */
+	AVI( 14, 21, 220, J, SND_09_JET,                     40,  74, 65, 150 ), /* 29 */
+	AVI( 16, 19, 160, J, SND_09_JET,                     40, 181, 45,  85 ), /* 30 */
+	AVI( 17, 24, 248, J, SND_3D_ANOTHER_JET_OVERHEAD,    40,  74, 80, 400 ), /* 31 */
+	AVI( 18, 80, 251, J, SND_3B_JET_OVERHEAD,            50, 181, 45, 130 ), /* 32 */
+	AVI( 20, 13,  85, P, SND_45_PLANE_CRASHING,          18,  37,  5,  25 ), /* 33 */
+	AVI( 21, 18, 100, P, SND_46_PLANE_ENGINE_SPUTTERING, 20,  37,  9,  60 ), /* 34 */
+	AVI( 22, 25, 140, P, SND_09_JET,                     40,  74, 12,  90 ), /* 35 */
+	AVI( 23, 32, 220, J, SND_3D_ANOTHER_JET_OVERHEAD,    40,  74, 40, 200 ), /* 36 */
+	AVI( 24, 80, 255, J, SND_3B_JET_OVERHEAD,            50, 181, 30, 100 ), /* 37 */
+	AVI(  9, 15,  81, H, SND_09_JET,                     20,  25, 15,  40 ), /* 38 */
+	AVI( 19, 17,  77, H, SND_09_JET,                     20,  40, 20,  55 ), /* 39 */
+	AVI( 25, 15,  80, H, SND_09_JET,                     20,  25, 10,  40 ), /* 40 */
 };
+#undef AVI
 
-/* I hope I got the cargo types right, figuring out which is which for which
- * climate is a bitch */
+/** Writes the properties of a road vehicle into the RoadVehicleInfo struct.
+ * @see RoadVehicleInfo
+ * @param a image_index
+ * @param b base_cost
+ * @param c running_cost
+ * @param d sound effect
+ * @param e max_speed
+ * @param f capacity
+ * @param g cargo_type
+ */
+#define RVI(a, b, c, d, e, f, g) { a, b, c, d, e, f, g }
 const RoadVehicleInfo orig_road_vehicle_info[NUM_ROAD_ENGINES] = {
-	// image_index       sfx                                 max_speed
-	// |    base_cost    |                                   |   capacity
-	// |    |    running_cost                                |   |  cargo_type
-	// |    |    |       |                                   |   |  |
-	{  0, 120,  91, SND_19_BUS_START_PULL_AWAY,            112, 31, CT_PASSENGERS   }, /*  0 */
-	{ 17, 140, 128, SND_1C_TRUCK_START_2,                  176, 35, CT_PASSENGERS   }, /*  1 */
-	{ 17, 150, 178, SND_1B_TRUCK_START,                    224, 37, CT_PASSENGERS   }, /*  2 */
-	{ 34, 160, 240, SND_1B_TRUCK_START,                    255, 40, CT_PASSENGERS   }, /*  3 */
-	{ 51, 120,  91, SND_3C_COMEDY_CAR,                     112, 30, CT_PASSENGERS   }, /*  4 */
-	{ 51, 140, 171, SND_3E_COMEDY_CAR_2,                   192, 35, CT_PASSENGERS   }, /*  5 */
-	{ 51, 160, 240, SND_3C_COMEDY_CAR,                     240, 38, CT_PASSENGERS   }, /*  6 */
-	{  1, 108,  90, SND_19_BUS_START_PULL_AWAY,             96, 20, CT_COAL         }, /*  7 */
-	{ 18, 128, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_COAL         }, /*  8 */
-	{ 35, 138, 240, SND_19_BUS_START_PULL_AWAY,            224, 28, CT_COAL         }, /*  9 */
-	{  2, 115,  90, SND_19_BUS_START_PULL_AWAY,             96, 22, CT_MAIL         }, /* 10 */
-	{ 19, 135, 168, SND_19_BUS_START_PULL_AWAY,            176, 28, CT_MAIL         }, /* 11 */
-	{ 36, 145, 240, SND_19_BUS_START_PULL_AWAY,            224, 30, CT_MAIL         }, /* 12 */
-	{ 57, 115,  90, SND_3E_COMEDY_CAR_2,                    96, 22, CT_MAIL         }, /* 13 */
-	{ 57, 135, 168, SND_3C_COMEDY_CAR,                     176, 28, CT_MAIL         }, /* 14 */
-	{ 57, 145, 240, SND_3E_COMEDY_CAR_2,                   224, 30, CT_MAIL         }, /* 15 */
-	{  3, 110,  90, SND_19_BUS_START_PULL_AWAY,             96, 21, CT_OIL          }, /* 16 */
-	{ 20, 140, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_OIL          }, /* 17 */
-	{ 37, 150, 240, SND_19_BUS_START_PULL_AWAY,            224, 27, CT_OIL          }, /* 18 */
-	{  4, 105,  90, SND_19_BUS_START_PULL_AWAY,             96, 14, CT_LIVESTOCK    }, /* 19 */
-	{ 21, 130, 168, SND_19_BUS_START_PULL_AWAY,            176, 16, CT_LIVESTOCK    }, /* 20 */
-	{ 38, 140, 240, SND_19_BUS_START_PULL_AWAY,            224, 18, CT_LIVESTOCK    }, /* 21 */
-	{  5, 107,  90, SND_19_BUS_START_PULL_AWAY,             96, 14, CT_GOODS        }, /* 22 */
-	{ 22, 130, 168, SND_19_BUS_START_PULL_AWAY,            176, 16, CT_GOODS        }, /* 23 */
-	{ 39, 140, 240, SND_19_BUS_START_PULL_AWAY,            224, 18, CT_GOODS        }, /* 24 */
-	{  6, 114,  90, SND_19_BUS_START_PULL_AWAY,             96, 20, CT_GRAIN        }, /* 25 */
-	{ 23, 133, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_GRAIN        }, /* 26 */
-	{ 40, 143, 240, SND_19_BUS_START_PULL_AWAY,            224, 30, CT_GRAIN        }, /* 27 */
-	{  7, 118,  90, SND_19_BUS_START_PULL_AWAY,             96, 20, CT_WOOD         }, /* 28 */
-	{ 24, 137, 168, SND_19_BUS_START_PULL_AWAY,            176, 22, CT_WOOD         }, /* 29 */
-	{ 41, 147, 240, SND_19_BUS_START_PULL_AWAY,            224, 24, CT_WOOD         }, /* 30 */
-	{  8, 121,  90, SND_19_BUS_START_PULL_AWAY,             96, 22, CT_IRON_ORE     }, /* 31 */
-	{ 25, 140, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_IRON_ORE     }, /* 32 */
-	{ 42, 150, 240, SND_19_BUS_START_PULL_AWAY,            224, 27, CT_IRON_ORE     }, /* 33 */
-	{  9, 112,  90, SND_19_BUS_START_PULL_AWAY,             96, 15, CT_STEEL        }, /* 34 */
-	{ 26, 135, 168, SND_19_BUS_START_PULL_AWAY,            176, 18, CT_STEEL        }, /* 35 */
-	{ 43, 145, 240, SND_19_BUS_START_PULL_AWAY,            224, 20, CT_STEEL        }, /* 36 */
-	{ 10, 145,  90, SND_19_BUS_START_PULL_AWAY,             96, 12, CT_VALUABLES    }, /* 37 */
-	{ 27, 170, 168, SND_19_BUS_START_PULL_AWAY,            176, 15, CT_VALUABLES    }, /* 38 */
-	{ 44, 180, 240, SND_19_BUS_START_PULL_AWAY,            224, 16, CT_VALUABLES    }, /* 39 */
-	{ 11, 112,  90, SND_19_BUS_START_PULL_AWAY,             96, 17, CT_FOOD         }, /* 40 */
-	{ 28, 134, 168, SND_19_BUS_START_PULL_AWAY,            176, 20, CT_FOOD         }, /* 41 */
-	{ 45, 144, 240, SND_19_BUS_START_PULL_AWAY,            224, 22, CT_FOOD         }, /* 42 */
-	{ 12, 112,  90, SND_19_BUS_START_PULL_AWAY,             96, 15, CT_PAPER        }, /* 43 */
-	{ 29, 135, 168, SND_19_BUS_START_PULL_AWAY,            176, 18, CT_PAPER        }, /* 44 */
-	{ 46, 145, 240, SND_19_BUS_START_PULL_AWAY,            224, 20, CT_PAPER        }, /* 45 */
-	{ 13, 121,  90, SND_19_BUS_START_PULL_AWAY,             96, 22, CT_COPPER_ORE   }, /* 46 */
-	{ 30, 140, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_COPPER_ORE   }, /* 47 */
-	{ 47, 150, 240, SND_19_BUS_START_PULL_AWAY,            224, 27, CT_COPPER_ORE   }, /* 48 */
-	{ 14, 111,  90, SND_19_BUS_START_PULL_AWAY,             96, 21, CT_WATER        }, /* 49 */
-	{ 31, 141, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_WATER        }, /* 50 */
-	{ 48, 151, 240, SND_19_BUS_START_PULL_AWAY,            224, 27, CT_WATER        }, /* 51 */
-	{ 15, 118,  90, SND_19_BUS_START_PULL_AWAY,             96, 18, CT_FRUIT        }, /* 52 */
-	{ 32, 148, 168, SND_19_BUS_START_PULL_AWAY,            176, 20, CT_FRUIT        }, /* 53 */
-	{ 49, 158, 240, SND_19_BUS_START_PULL_AWAY,            224, 23, CT_FRUIT        }, /* 54 */
-	{ 16, 117,  90, SND_19_BUS_START_PULL_AWAY,             96, 17, CT_RUBBER       }, /* 55 */
-	{ 33, 147, 168, SND_19_BUS_START_PULL_AWAY,            176, 19, CT_RUBBER       }, /* 56 */
-	{ 50, 157, 240, SND_19_BUS_START_PULL_AWAY,            224, 22, CT_RUBBER       }, /* 57 */
-	{ 52, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17, CT_SUGAR        }, /* 58 */
-	{ 52, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19, CT_SUGAR        }, /* 59 */
-	{ 52, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22, CT_SUGAR        }, /* 60 */
-	{ 53, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17, CT_COLA         }, /* 61 */
-	{ 53, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19, CT_COLA         }, /* 62 */
-	{ 53, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22, CT_COLA         }, /* 63 */
-	{ 54, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17, CT_COTTON_CANDY }, /* 64 */
-	{ 54, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19, CT_COTTON_CANDY }, /* 65 */
-	{ 54, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22, CT_COTTON_CANDY }, /* 66 */
-	{ 55, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17, CT_TOFFEE       }, /* 67 */
-	{ 55, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19, CT_TOFFEE       }, /* 68 */
-	{ 55, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22, CT_TOFFEE       }, /* 69 */
-	{ 56, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17, CT_TOYS         }, /* 70 */
-	{ 56, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19, CT_TOYS         }, /* 71 */
-	{ 56, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22, CT_TOYS         }, /* 72 */
-	{ 58, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17, CT_CANDY        }, /* 73 */
-	{ 58, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19, CT_CANDY        }, /* 74 */
-	{ 58, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22, CT_CANDY        }, /* 75 */
-	{ 59, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17, CT_BATTERIES    }, /* 76 */
-	{ 59, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19, CT_BATTERIES    }, /* 77 */
-	{ 59, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22, CT_BATTERIES    }, /* 78 */
-	{ 60, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17, CT_FIZZY_DRINKS }, /* 79 */
-	{ 60, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19, CT_FIZZY_DRINKS }, /* 80 */
-	{ 60, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22, CT_FIZZY_DRINKS }, /* 81 */
-	{ 61, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17, CT_PLASTIC      }, /* 82 */
-	{ 61, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19, CT_PLASTIC      }, /* 83 */
-	{ 61, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22, CT_PLASTIC      }, /* 84 */
-	{ 62, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17, CT_BUBBLES      }, /* 85 */
-	{ 62, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19, CT_BUBBLES      }, /* 86 */
-	{ 62, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22, CT_BUBBLES      }, /* 87 */
+	//    image_index       sfx                                 max_speed
+	//    |    base_cost    |                                   |   capacity
+	//    |    |    running_cost                                |   |  cargo_type
+	//    |    |    |       |                                   |   |  |
+	RVI(  0, 120,  91, SND_19_BUS_START_PULL_AWAY,            112, 31, CT_PASSENGERS   ), /*  0 */
+	RVI( 17, 140, 128, SND_1C_TRUCK_START_2,                  176, 35, CT_PASSENGERS   ), /*  1 */
+	RVI( 17, 150, 178, SND_1B_TRUCK_START,                    224, 37, CT_PASSENGERS   ), /*  2 */
+	RVI( 34, 160, 240, SND_1B_TRUCK_START,                    255, 40, CT_PASSENGERS   ), /*  3 */
+	RVI( 51, 120,  91, SND_3C_COMEDY_CAR,                     112, 30, CT_PASSENGERS   ), /*  4 */
+	RVI( 51, 140, 171, SND_3E_COMEDY_CAR_2,                   192, 35, CT_PASSENGERS   ), /*  5 */
+	RVI( 51, 160, 240, SND_3C_COMEDY_CAR,                     240, 38, CT_PASSENGERS   ), /*  6 */
+	RVI(  1, 108,  90, SND_19_BUS_START_PULL_AWAY,             96, 20, CT_COAL         ), /*  7 */
+	RVI( 18, 128, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_COAL         ), /*  8 */
+	RVI( 35, 138, 240, SND_19_BUS_START_PULL_AWAY,            224, 28, CT_COAL         ), /*  9 */
+	RVI(  2, 115,  90, SND_19_BUS_START_PULL_AWAY,             96, 22, CT_MAIL         ), /* 10 */
+	RVI( 19, 135, 168, SND_19_BUS_START_PULL_AWAY,            176, 28, CT_MAIL         ), /* 11 */
+	RVI( 36, 145, 240, SND_19_BUS_START_PULL_AWAY,            224, 30, CT_MAIL         ), /* 12 */
+	RVI( 57, 115,  90, SND_3E_COMEDY_CAR_2,                    96, 22, CT_MAIL         ), /* 13 */
+	RVI( 57, 135, 168, SND_3C_COMEDY_CAR,                     176, 28, CT_MAIL         ), /* 14 */
+	RVI( 57, 145, 240, SND_3E_COMEDY_CAR_2,                   224, 30, CT_MAIL         ), /* 15 */
+	RVI(  3, 110,  90, SND_19_BUS_START_PULL_AWAY,             96, 21, CT_OIL          ), /* 16 */
+	RVI( 20, 140, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_OIL          ), /* 17 */
+	RVI( 37, 150, 240, SND_19_BUS_START_PULL_AWAY,            224, 27, CT_OIL          ), /* 18 */
+	RVI(  4, 105,  90, SND_19_BUS_START_PULL_AWAY,             96, 14, CT_LIVESTOCK    ), /* 19 */
+	RVI( 21, 130, 168, SND_19_BUS_START_PULL_AWAY,            176, 16, CT_LIVESTOCK    ), /* 20 */
+	RVI( 38, 140, 240, SND_19_BUS_START_PULL_AWAY,            224, 18, CT_LIVESTOCK    ), /* 21 */
+	RVI(  5, 107,  90, SND_19_BUS_START_PULL_AWAY,             96, 14, CT_GOODS        ), /* 22 */
+	RVI( 22, 130, 168, SND_19_BUS_START_PULL_AWAY,            176, 16, CT_GOODS        ), /* 23 */
+	RVI( 39, 140, 240, SND_19_BUS_START_PULL_AWAY,            224, 18, CT_GOODS        ), /* 24 */
+	RVI(  6, 114,  90, SND_19_BUS_START_PULL_AWAY,             96, 20, CT_GRAIN        ), /* 25 */
+	RVI( 23, 133, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_GRAIN        ), /* 26 */
+	RVI( 40, 143, 240, SND_19_BUS_START_PULL_AWAY,            224, 30, CT_GRAIN        ), /* 27 */
+	RVI(  7, 118,  90, SND_19_BUS_START_PULL_AWAY,             96, 20, CT_WOOD         ), /* 28 */
+	RVI( 24, 137, 168, SND_19_BUS_START_PULL_AWAY,            176, 22, CT_WOOD         ), /* 29 */
+	RVI( 41, 147, 240, SND_19_BUS_START_PULL_AWAY,            224, 24, CT_WOOD         ), /* 30 */
+	RVI(  8, 121,  90, SND_19_BUS_START_PULL_AWAY,             96, 22, CT_IRON_ORE     ), /* 31 */
+	RVI( 25, 140, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_IRON_ORE     ), /* 32 */
+	RVI( 42, 150, 240, SND_19_BUS_START_PULL_AWAY,            224, 27, CT_IRON_ORE     ), /* 33 */
+	RVI(  9, 112,  90, SND_19_BUS_START_PULL_AWAY,             96, 15, CT_STEEL        ), /* 34 */
+	RVI( 26, 135, 168, SND_19_BUS_START_PULL_AWAY,            176, 18, CT_STEEL        ), /* 35 */
+	RVI( 43, 145, 240, SND_19_BUS_START_PULL_AWAY,            224, 20, CT_STEEL        ), /* 36 */
+	RVI( 10, 145,  90, SND_19_BUS_START_PULL_AWAY,             96, 12, CT_VALUABLES    ), /* 37 */
+	RVI( 27, 170, 168, SND_19_BUS_START_PULL_AWAY,            176, 15, CT_VALUABLES    ), /* 38 */
+	RVI( 44, 180, 240, SND_19_BUS_START_PULL_AWAY,            224, 16, CT_VALUABLES    ), /* 39 */
+	RVI( 11, 112,  90, SND_19_BUS_START_PULL_AWAY,             96, 17, CT_FOOD         ), /* 40 */
+	RVI( 28, 134, 168, SND_19_BUS_START_PULL_AWAY,            176, 20, CT_FOOD         ), /* 41 */
+	RVI( 45, 144, 240, SND_19_BUS_START_PULL_AWAY,            224, 22, CT_FOOD         ), /* 42 */
+	RVI( 12, 112,  90, SND_19_BUS_START_PULL_AWAY,             96, 15, CT_PAPER        ), /* 43 */
+	RVI( 29, 135, 168, SND_19_BUS_START_PULL_AWAY,            176, 18, CT_PAPER        ), /* 44 */
+	RVI( 46, 145, 240, SND_19_BUS_START_PULL_AWAY,            224, 20, CT_PAPER        ), /* 45 */
+	RVI( 13, 121,  90, SND_19_BUS_START_PULL_AWAY,             96, 22, CT_COPPER_ORE   ), /* 46 */
+	RVI( 30, 140, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_COPPER_ORE   ), /* 47 */
+	RVI( 47, 150, 240, SND_19_BUS_START_PULL_AWAY,            224, 27, CT_COPPER_ORE   ), /* 48 */
+	RVI( 14, 111,  90, SND_19_BUS_START_PULL_AWAY,             96, 21, CT_WATER        ), /* 49 */
+	RVI( 31, 141, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_WATER        ), /* 50 */
+	RVI( 48, 151, 240, SND_19_BUS_START_PULL_AWAY,            224, 27, CT_WATER        ), /* 51 */
+	RVI( 15, 118,  90, SND_19_BUS_START_PULL_AWAY,             96, 18, CT_FRUIT        ), /* 52 */
+	RVI( 32, 148, 168, SND_19_BUS_START_PULL_AWAY,            176, 20, CT_FRUIT        ), /* 53 */
+	RVI( 49, 158, 240, SND_19_BUS_START_PULL_AWAY,            224, 23, CT_FRUIT        ), /* 54 */
+	RVI( 16, 117,  90, SND_19_BUS_START_PULL_AWAY,             96, 17, CT_RUBBER       ), /* 55 */
+	RVI( 33, 147, 168, SND_19_BUS_START_PULL_AWAY,            176, 19, CT_RUBBER       ), /* 56 */
+	RVI( 50, 157, 240, SND_19_BUS_START_PULL_AWAY,            224, 22, CT_RUBBER       ), /* 57 */
+	RVI( 52, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17, CT_SUGAR        ), /* 58 */
+	RVI( 52, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19, CT_SUGAR        ), /* 59 */
+	RVI( 52, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22, CT_SUGAR        ), /* 60 */
+	RVI( 53, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17, CT_COLA         ), /* 61 */
+	RVI( 53, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19, CT_COLA         ), /* 62 */
+	RVI( 53, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22, CT_COLA         ), /* 63 */
+	RVI( 54, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17, CT_COTTON_CANDY ), /* 64 */
+	RVI( 54, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19, CT_COTTON_CANDY ), /* 65 */
+	RVI( 54, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22, CT_COTTON_CANDY ), /* 66 */
+	RVI( 55, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17, CT_TOFFEE       ), /* 67 */
+	RVI( 55, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19, CT_TOFFEE       ), /* 68 */
+	RVI( 55, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22, CT_TOFFEE       ), /* 69 */
+	RVI( 56, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17, CT_TOYS         ), /* 70 */
+	RVI( 56, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19, CT_TOYS         ), /* 71 */
+	RVI( 56, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22, CT_TOYS         ), /* 72 */
+	RVI( 58, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17, CT_CANDY        ), /* 73 */
+	RVI( 58, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19, CT_CANDY        ), /* 74 */
+	RVI( 58, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22, CT_CANDY        ), /* 75 */
+	RVI( 59, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17, CT_BATTERIES    ), /* 76 */
+	RVI( 59, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19, CT_BATTERIES    ), /* 77 */
+	RVI( 59, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22, CT_BATTERIES    ), /* 78 */
+	RVI( 60, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17, CT_FIZZY_DRINKS ), /* 79 */
+	RVI( 60, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19, CT_FIZZY_DRINKS ), /* 80 */
+	RVI( 60, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22, CT_FIZZY_DRINKS ), /* 81 */
+	RVI( 61, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17, CT_PLASTIC      ), /* 82 */
+	RVI( 61, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19, CT_PLASTIC      ), /* 83 */
+	RVI( 61, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22, CT_PLASTIC      ), /* 84 */
+	RVI( 62, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17, CT_BUBBLES      ), /* 85 */
+	RVI( 62, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19, CT_BUBBLES      ), /* 86 */
+	RVI( 62, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22, CT_BUBBLES      ), /* 87 */
 };
+#undef RVI
 
 #endif /* ENGINES_H */
