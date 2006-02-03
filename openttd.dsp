@@ -280,6 +280,10 @@ SOURCE=.\newgrf_engine.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\newgrf_station.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\npf.c
 # End Source File
 # Begin Source File
@@ -410,10 +414,6 @@ SOURCE=.\sprite.c
 # Begin Source File
 
 SOURCE=.\spritecache.c
-# End Source File
-# Begin Source File
-
-SOURCE=.\station_newgrf.c
 # End Source File
 # Begin Source File
 
@@ -630,6 +630,10 @@ SOURCE=.\newgrf_engine.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\newgrf_station.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\news.h
 # End Source File
 # Begin Source File
@@ -695,10 +699,6 @@ SOURCE=.\sound.h
 # Begin Source File
 
 SOURCE=.\station.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\station_newgrf.h
 # End Source File
 # Begin Source File
 

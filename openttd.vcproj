@@ -276,6 +276,9 @@
 				RelativePath=".\newgrf_engine.c">
 			</File>
 			<File
+				RelativePath=".\newgrf_station.c">
+			</File>
+			<File
 				RelativePath=".\npf.c">
 			</File>
 			<File
@@ -340,9 +343,6 @@
 			</File>
 			<File
 				RelativePath=".\spritecache.c">
-			</File>
-			<File
-				RelativePath=".\station_newgrf.c">
 			</File>
 			<File
 				RelativePath=".\StdAfx.c">
@@ -493,6 +493,9 @@
 				RelativePath=".\newgrf_engine.h">
 			</File>
 			<File
+				RelativePath=".\newgrf_station.h">
+			</File>
+			<File
 				RelativePath=".\news.h">
 			</File>
 			<File
@@ -551,9 +554,6 @@
 			</File>
 			<File
 				RelativePath=".\station.h">
-			</File>
-			<File
-				RelativePath=".\station_newgrf.h">
 			</File>
 			<File
 				RelativePath=".\StdAfx.h">

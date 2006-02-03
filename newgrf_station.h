@@ -1,9 +1,9 @@
 /* $Id$ */
 
-/** @file station_newgrf.h Header file for NewGRF stations */
+/** @file newgrf_station.h Header file for NewGRF stations */
 
-#ifndef STATION_NEWGRF_H
-#define STATION_NEWGRF_H
+#ifndef NEWGRF_STATION_H
+#define NEWGRF_STATION_H
 
 #include "engine.h"
 
@@ -74,4 +74,4 @@ uint GetNumCustomStations(StationClassID sclass);
 void SetCustomStation(StationSpec *spec);
 const StationSpec *GetCustomStation(StationClassID sclass, uint station);
 
-#endif /* STATION_NEWGRF_H */
+#endif /* NEWGRF_STATION_H */

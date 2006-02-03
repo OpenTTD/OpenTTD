@@ -1,12 +1,12 @@
 /* $Id$ */
 
-/** @file station_newgrf.c Functions for dealing with station classes and custom stations. */
+/** @file newgrf_station.c Functions for dealing with station classes and custom stations. */
 
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
 #include "sprite.h"
-#include "station_newgrf.h"
+#include "newgrf_station.h"
 
 static StationClass station_classes[STAT_CLASS_MAX];
 
