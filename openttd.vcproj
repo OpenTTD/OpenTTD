@@ -61,6 +61,8 @@
 				ProgramDatabaseFile=".\Release/openttd.pdb"
 				GenerateMapFile="TRUE"
 				MapFileName=".\Release/openttd.map"
+				MapExports="TRUE"
+				MapLines="TRUE"
 				SubSystem="2"
 				OptimizeReferences="2"
 				OptimizeForWindows98="1"
