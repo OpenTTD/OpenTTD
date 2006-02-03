@@ -698,7 +698,7 @@ static void GfxBlitTileZoomIn(BlitterParams *bp)
 	const byte* ctab;
 
 	if (bp->mode & 1) {
-		src_o += READ_LE_UINT16(src_o + bp->start_y * 2);
+		src_o += ReadLE16Aligned(src_o + bp->start_y * 2);
 
 		do {
 			do {
@@ -741,7 +741,7 @@ static void GfxBlitTileZoomIn(BlitterParams *bp)
 			bp->dst += bp->pitch;
 		} while (--bp->height != 0);
 	} else if (bp->mode & 2) {
-		src_o += READ_LE_UINT16(src_o + bp->start_y * 2);
+		src_o += ReadLE16Aligned(src_o + bp->start_y * 2);
 		do {
 			do {
 				done = src_o[0];
@@ -775,7 +775,7 @@ static void GfxBlitTileZoomIn(BlitterParams *bp)
 			bp->dst += bp->pitch;
 		} while (--bp->height != 0);
 	} else {
-		src_o += READ_LE_UINT16(src_o + bp->start_y * 2);
+		src_o += ReadLE16Aligned(src_o + bp->start_y * 2);
 		do {
 			do {
 				done = src_o[0];
@@ -900,7 +900,7 @@ static void GfxBlitTileZoomMedium(BlitterParams *bp)
 	const byte* ctab;
 
 	if (bp->mode & 1) {
-		src_o += READ_LE_UINT16(src_o + bp->start_y * 2);
+		src_o += ReadLE16Aligned(src_o + bp->start_y * 2);
 		do {
 			do {
 				done = src_o[0];
@@ -949,7 +949,7 @@ static void GfxBlitTileZoomMedium(BlitterParams *bp)
 			} while (!(done & 0x80));
 		} while (--bp->height != 0);
 	} else if (bp->mode & 2) {
-		src_o += READ_LE_UINT16(src_o + bp->start_y * 2);
+		src_o += ReadLE16Aligned(src_o + bp->start_y * 2);
 		do {
 			do {
 				done = src_o[0];
@@ -994,7 +994,7 @@ static void GfxBlitTileZoomMedium(BlitterParams *bp)
 			} while (!(done & 0x80));
 		} while (--bp->height != 0);
 	} else {
-		src_o += READ_LE_UINT16(src_o + bp->start_y * 2);
+		src_o += ReadLE16Aligned(src_o + bp->start_y * 2);
 		do {
 			do {
 				done = src_o[0];
@@ -1105,7 +1105,7 @@ static void GfxBlitTileZoomOut(BlitterParams *bp)
 	const byte* ctab;
 
 	if (bp->mode & 1) {
-		src_o += READ_LE_UINT16(src_o + bp->start_y * 2);
+		src_o += ReadLE16Aligned(src_o + bp->start_y * 2);
 		for (;;) {
 			do {
 				done = src_o[0];
@@ -1174,7 +1174,7 @@ static void GfxBlitTileZoomOut(BlitterParams *bp)
 			if (--bp->height == 0) return;
 		}
 	} else if (bp->mode & 2) {
-		src_o += READ_LE_UINT16(src_o + bp->start_y * 2);
+		src_o += ReadLE16Aligned(src_o + bp->start_y * 2);
 		for (;;) {
 			do {
 				done = src_o[0];
@@ -1239,7 +1239,7 @@ static void GfxBlitTileZoomOut(BlitterParams *bp)
 			if (--bp->height == 0) return;
 		}
 	} else {
-		src_o += READ_LE_UINT16(src_o + bp->start_y * 2);
+		src_o += ReadLE16Aligned(src_o + bp->start_y * 2);
 		for (;;) {
 			do {
 				done = src_o[0];

@@ -142,14 +142,20 @@ static inline void swap_int32(int32 *a, int32 *b) { int32 t = *a; *a = *b; *b = 
 static inline void swap_tile(TileIndex *a, TileIndex *b) { TileIndex t = *a; *a = *b; *b = t; }
 
 
+static inline uint16 ReadLE16Aligned(const void* x)
+{
+	return FROM_LE16(*(const uint16*)x);
+}
 
-#if defined(TTD_LITTLE_ENDIAN)
-#	define READ_LE_UINT16(b) (*(const uint16*)(b))
-#elif defined(TTD_BIG_ENDIAN)
-	static inline uint16 READ_LE_UINT16(const void *b) {
-		return ((const byte*)b)[0] + (((const byte*)b)[1] << 8);
-	}
+static inline uint16 ReadLE16Unaligned(const void* x)
+{
+#ifdef OTTD_ALIGNMENT
+	return ((const byte*)x)[0] | ((const byte*)x)[1] << 8;
+#else
+	return FROM_LE16(*(const uint16*)x);
 #endif
+}
+
 
 /**
  * ROtate x Left/Right by n (must be >= 0)

@@ -194,7 +194,7 @@ static const uint16 * const _legend_table[] = {
 	_legend_industries_candy,
 };
 
-#if defined(TTD_ALIGNMENT_4)
+#if defined(OTTD_ALIGNMENT)
 	static inline void WRITE_PIXELS(Pixel* d, uint32 val)
 	{
 #	if defined(TTD_BIG_ENDIAN)

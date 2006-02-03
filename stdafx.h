@@ -82,8 +82,6 @@
 # define CDECL
 # define NOT_REACHED() assert(0)
 # define GCC_PACK
-# undef TTD_ALIGNMENT_4
-# undef TTD_ALIGNMENT_2
 # include <malloc.h>
 #endif /* __WATCOMC__ */
 
@@ -133,8 +131,6 @@
 #  endif
 # endif /* _MSC_VER < 1300 */
 
-# undef TTD_ALIGNMENT_4
-# undef TTD_ALIGNMENT_2
 # define GCC_PACK
 
 // This is needed to zlib uses the stdcall calling convention on visual studio, also used with libpng (VS6 warning)
@@ -193,10 +189,13 @@ typedef unsigned char byte;
   typedef unsigned __int64 uint64;
 #endif /* __BEOS__ */
 
+#if defined(ARM) || defined(__arm__)
+# define OTTD_ALIGNMENT
+#endif
+
 // Setup alignment and conversion macros
 #if defined(TTD_BIG_ENDIAN)
-# define TTD_ALIGNMENT_2
-# define TTD_ALIGNMENT_4
+#	define OTTD_ALIGNMENT
   static inline uint32 TO_LE32(uint32 x) { return BSWAP32(x); }
   static inline uint16 TO_LE16(uint16 x) { return BSWAP16(x); }
   static inline uint32 FROM_LE32(uint32 x) { return BSWAP32(x); }
