@@ -353,6 +353,7 @@ typedef struct {
 	byte sel_index[2];
 	EngineID sel_engine[2];
 	uint16 count[2];
+	bool wagon_btnstate;	// true means engine is selected
 } replaceveh_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(replaceveh_d));
 

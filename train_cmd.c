@@ -584,6 +584,9 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 			TrainConsistChanged(GetFirstVehicleInChain(v));
 
 			InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+			if (IsLocalPlayer()) {
+				InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Train); // updates the replace Train window
+			}
 		}
 	}
 

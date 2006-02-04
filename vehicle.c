@@ -1742,6 +1742,11 @@ static void MaybeReplaceVehicle(Vehicle *v)
 					continue;
 			}
 
+			if (w->type == VEH_Train && IsTrainWagon(w) && !CanRefitTo(EngineReplacementForPlayer(p, w->engine_type), w->cargo_type)) {
+				// we can't replace this wagon since we can't refit the new one to the right cargo type
+				continue;
+			}
+
 			/* Now replace the vehicle */
 			temp_cost = ReplaceVehicle(&w, flags);
 

@@ -464,7 +464,7 @@ static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, Engine
 
 		if (!EngineHasReplacementForPlayer(p, i) && _player_num_engines[i] == 0 && show_outdated) continue;
 
-		if (rvi->power == 0 && !show_cars)   // disables display of cars (works since they do not have power)
+		if ((rvi->power == 0 && !show_cars) || (rvi->power != 0 && show_cars))  // show wagons or engines (works since wagons do not have power)
 			continue;
 
 		if (*sel == 0) *selected_id = i;
@@ -520,7 +520,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 				const Engine *e = GetEngine(engine_id);
 				const EngineInfo *info = &_engine_info[engine_id];
 
-				if (ENGINE_AVAILABLE && RailVehInfo(engine_id)->power && e->railtype == railtype) {
+				if (ENGINE_AVAILABLE && ((RailVehInfo(engine_id)->power && WP(w, replaceveh_d).wagon_btnstate) || (!RailVehInfo(engine_id)->power && !WP(w, replaceveh_d).wagon_btnstate)) && e->railtype == railtype) {
 					if (_player_num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
 						if (sel[0] == 0) selected_id[0] = engine_id;
 						count++;
@@ -667,9 +667,14 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 			* XXX - DO NOT EVER DO THIS EVER AGAIN! GRRR hacking in wagons as
 			* engines to get more types.. Stays here until we have our own format
 			* then it is exit!!! */
-			train_engine_drawing_loop(&x, &y, &pos, &sel[0], &selected_id[0], railtype, w->vscroll.cap, true, false, true); // True engines
-			train_engine_drawing_loop(&x2, &y2, &pos2, &sel[1], &selected_id[1], railtype, w->vscroll.cap, true, false, false); // True engines
-			train_engine_drawing_loop(&x2, &y2, &pos2, &sel[1], &selected_id[1], railtype, w->vscroll.cap, false, false, false); // Feeble wagons
+			if (WP(w,replaceveh_d).wagon_btnstate) {
+				train_engine_drawing_loop(&x, &y, &pos, &sel[0], &selected_id[0], railtype, w->vscroll.cap, true, false, true); // True engines
+				train_engine_drawing_loop(&x2, &y2, &pos2, &sel[1], &selected_id[1], railtype, w->vscroll.cap, true, false, false); // True engines
+				train_engine_drawing_loop(&x2, &y2, &pos2, &sel[1], &selected_id[1], railtype, w->vscroll.cap, false, false, false); // Feeble wagons
+			} else {
+				train_engine_drawing_loop(&x, &y, &pos, &sel[0], &selected_id[0], railtype, w->vscroll.cap, false, true, true);
+				train_engine_drawing_loop(&x2, &y2, &pos2, &sel[1], &selected_id[1], railtype, w->vscroll.cap, false, true, false);
+			}
 			break;
 		}
 
@@ -888,6 +893,9 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				if (WP(w, replaceveh_d).vehicletype == VEH_Train) {
 					// set on/off for renew_keep_length
 					SetDParam(1, p->renew_keep_length ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
+
+					// set wagon/engine button
+					SetDParam(2, WP(w, replaceveh_d).wagon_btnstate ? STR_ENGINES : STR_WAGONS);
 				}
 
 				DrawWindowWidgets(w);
@@ -919,7 +927,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 						for (i = 0 ; i < 2 ; i++) {
 							if (i > 0) offset = 228;
 							if (selected_id[i] != INVALID_ENGINE) {
-								if (!(RailVehInfo(selected_id[i])->flags & RVI_WAGON)) {
+								if (WP(w, replaceveh_d).wagon_btnstate) {
 									/* it's an engine */
 									DrawTrainEnginePurchaseInfo(2 + offset, 15 + (14 * w->vscroll.cap), selected_id[i]);
 								} else {
@@ -970,6 +978,11 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 			byte click_side = 1;
 
 			switch (e->click.widget) {
+				case 12: {
+						WP(w, replaceveh_d).wagon_btnstate = !(WP(w, replaceveh_d).wagon_btnstate);
+						SetWindowDirty(w);
+						break;
+					}
 				case 14: case 15: { /* Select sorting criteria dropdown menu */
 					ShowDropDownMenu(w, _rail_types_list, _railtype_selected_in_replace_gui, 15, 0, ~GetPlayer(_local_player)->avail_railtypes);
 					break;
@@ -1036,7 +1049,7 @@ static const Widget _replace_rail_vehicle_widgets[] = {
 { WWT_SCROLL2BAR, RESIZE_BOTTOM,    14,   444,   455,    14,   125, STR_NULL,       STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {      WWT_PANEL,     RESIZE_TB,    14,   228,   455,   126,   197, STR_NULL,       STR_NULL},
 // train specific stuff
-{      WWT_PANEL,     RESIZE_TB,    14,     0,   138,   198,   209, STR_NULL,       STR_NULL},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   138,   198,   209, STR_REPLACE_ENGINE_WAGON_SELECT,       STR_REPLACE_ENGINE_WAGON_SELECT_HELP},  // widget 12
 {      WWT_PANEL,     RESIZE_TB,    14,   139,   153,   210,   221, STR_NULL,       STR_NULL},
 {      WWT_PANEL,     RESIZE_TB,    14,   154,   277,   210,   221, STR_NULL,       STR_REPLACE_HELP_RAILTYPE},
 {    WWT_TEXTBTN,     RESIZE_TB,    14,   278,   289,   210,   221, STR_0225,       STR_REPLACE_HELP_RAILTYPE},
@@ -1117,6 +1130,7 @@ void ShowReplaceVehicleWindow(byte vehicletype)
 			w = AllocateWindowDescFront(&_replace_rail_vehicle_desc, vehicletype);
 			w->vscroll.cap  = 8;
 			w->resize.step_height = 14;
+			WP(w, replaceveh_d).wagon_btnstate = true;
 			break;
 		case VEH_Road:
 			w = AllocateWindowDescFront(&_replace_road_vehicle_desc, vehicletype);
