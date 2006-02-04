@@ -821,18 +821,6 @@ void StateGameLoop(void)
 	// dont execute the state loop during pause
 	if (_pause) return;
 
-	// _frame_counter is increased somewhere else when in network-mode
-	//  Sidenote: _frame_counter is ONLY used for _savedump in non-MP-games
-	//    Should that not be deleted? If so, the next 2 lines can also be deleted
-	if (!_networking) _frame_counter++;
-
-	if (_savedump_path[0] && (uint)_frame_counter >= _savedump_first && (uint)(_frame_counter -_savedump_first) % _savedump_freq == 0 ) {
-		char buf[100];
-		sprintf(buf, "%s%.5d.sav", _savedump_path, _frame_counter);
-		SaveOrLoad(buf, SL_SAVE);
-		if ((uint)_frame_counter >= _savedump_last) exit(1);
-	}
-
 	if (_game_mode == GM_EDITOR) {
 		RunTileLoop();
 		CallVehicleTicks();

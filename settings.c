@@ -798,14 +798,6 @@ static const SettingDesc network_settings[] = {
 };
 #endif /* ENABLE_NETWORK */
 
-static const SettingDesc debug_settings[] = {
-	{"savedump_path",		SDT_STRINGBUF | (lengthof(_savedump_path)<<16) | SDT_NOSAVE, NULL, _savedump_path, NULL},
-	{"savedump_first",	SDT_UINT | SDT_NOSAVE,	0,				&_savedump_first, NULL},
-	{"savedump_freq",		SDT_UINT | SDT_NOSAVE,	(void*)1, &_savedump_freq,	NULL},
-	{"savedump_last",		SDT_UINT | SDT_NOSAVE,	0,				&_savedump_last,	NULL},
-	{NULL,							0,											NULL,			NULL,							NULL}
-};
-
 /* The settings showed when opened in the intro-menu. These values also are saved to
  * openttd.cfg, thus _opt_newgame is used here (not _opt which is used ingame with loaded games!) */
 static const SettingDesc gameopt_settings[] = {
@@ -1031,8 +1023,6 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc)
 	proc(ini, patch_settings,		"patches");
 	proc(ini, patch_player_settings,		"patches");
 	proc(ini, currency_settings,"currency");
-
-	proc(ini, debug_settings,		"debug");
 }
 
 // loads all items from a *grpname section into the **list

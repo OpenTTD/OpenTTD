@@ -318,11 +318,6 @@ VARDEF Vehicle *_place_clicked_vehicle;
 
 VARDEF char _ini_videodriver[16], _ini_musicdriver[16], _ini_sounddriver[16];
 
-// debug features
-VARDEF char _savedump_path[64];
-VARDEF uint _savedump_first, _savedump_freq, _savedump_last;
-// end of debug features
-
 // Used for dynamic language support
 typedef struct {
 	int num; // number of languages
