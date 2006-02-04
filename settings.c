@@ -473,25 +473,24 @@ static void make_intlist(char *buf, const void *array, int nelems, int type)
  * @param buf output buffer where the string-representation will be stored
  * @param many the full-domain string of possible values
  * @param id the value of the variable and whose string-representation must be found */
-static void make_oneofmany(char *buf, const char *many, int i)
+static void make_oneofmany(char *buf, const char *many, int id)
 {
-	int orig_i = i;
-	char c;
+	int orig_id = id;
 
-	while (--i >= 0) {
-		do {
-			many++;
-			if (many[-1] == 0) {
-				sprintf(buf, "%d", orig_i);
+	// Look for the id'th element
+	while (--id >= 0) {
+		for (; *many != '|'; many++) {
+			if (*many == '\0') { // not found
+				sprintf(buf, "%d", orig_id);
 				return;
 			}
-		} while (many[-1] != '|');
+		}
+		many++; // pass the |-character
 	}
 
-	// copy until | or 0
-	while ((c=*many++) != 0 && c != '|')
-		*buf++ = c;
-	*buf = 0;
+	// copy string until next item (|) or the end of the list if this is the last one
+	while (*many != '\0' && *many != '|') *buf++ = *many++;
+	*buf = '\0';
 }
 
 /* Convert a MANYofMANY structure to a string representation.
@@ -505,10 +504,11 @@ static void make_manyofmany(char *buf, const char *many, uint32 x)
 	int i = 0;
 	bool init = true;
 
-	do {
+	for (; x != 0; x >>= 1, i++) {
 		start = many;
-		while (*many != 0 && *many != '|') many++;
-		if (x & 1) {
+		while (*many != 0 && *many != '|') many++; // advance to the next element
+
+		if (HASBIT(x, 0)) { // item found, copy it
 			if (!init) *buf++ = '|';
 			init = false;
 			if (start == many) {
@@ -518,9 +518,11 @@ static void make_manyofmany(char *buf, const char *many, uint32 x)
 				buf += many - start;
 			}
 		}
+
 		if (*many == '|') many++;
-	} while (++i, x>>=1);
-	*buf = 0;
+	}
+
+	*buf = '\0';
 }
 
 /* Get the GenericType of a setting. This describes the main type
@@ -572,9 +574,9 @@ static const void *string_to_val(const SettingDesc *desc, const char *str)
 		ShowInfoF("ini: invalid setting value '%s' for '%s'", str, desc->name);
 		break;
 
-	case SDT_STRING:
-	case SDT_STRINGBUF:
-	case SDT_STRINGQUOT:
+	case SDT_STR:
+	case SDT_STRB:
+	case SDT_STRQ:
 	case SDT_INTLIST:
 	case SDT_CHAR:
 		return str;
