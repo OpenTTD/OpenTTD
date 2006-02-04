@@ -286,14 +286,12 @@ static IniItem *ini_getitem(IniGroup *group, const char *name, bool create)
 	uint len = strlen(name);
 
 	for (item = group->item; item; item = item->next)
-		if (!strcmp(item->name, name))
-			return item;
+		if (strcmp(item->name, name) == 0) return item;
 
 	if (!create) return NULL;
 
 	// otherwise make a new one
-	item = ini_item_alloc(group, name, len);
-	return item;
+	return ini_item_alloc(group, name, len);
 }
 
 // save ini file from the "abstract" format.
@@ -328,6 +326,11 @@ static void ini_free(IniFile *ini)
 	pool_free(&ini->pool);
 }
 
+/* Find the index value of a ONEofMANY type in a string seperated by |
+ * @param many full domain of values the ONEofMANY setting can have
+ * @param one the current value of the setting for which a value needs found
+ * @param onelen force calculation of the *one parameter
+ * @return the integer index of the full-list, or -1 if not found */
 static int lookup_oneofmany(const char *many, const char *one, int onelen)
 {
 	const char *s;
@@ -351,6 +354,11 @@ static int lookup_oneofmany(const char *many, const char *one, int onelen)
 	}
 }
 
+/* Find the set-integer value MANYofMANY type in a string
+ * @param many full domain of values the MANYofMANY setting can have
+ * @param str the current string value of the setting, each individual
+ * of seperated by a whitespace\tab or | character
+ * @return the 'fully' set integer, or -1 if a set is not found */
 static uint32 lookup_manyofmany(const char *many, const char *str)
 {
 	const char *s;
@@ -368,13 +376,18 @@ static uint32 lookup_manyofmany(const char *many, const char *str)
 		r = lookup_oneofmany(many, str, s - str);
 		if (r == -1) return (uint32)-1;
 
-		res |= (1 << r);
+		SETBIT(res, r); // value found, set it
 		if (*s == 0) break;
 		str = s + 1;
 	}
 	return res;
 }
 
+/** Parse an integerlist string and set each found value
+ * @param p the string to be parsed. Each element in the list is seperated by a comma
+ * @param items pointer to the integerlist-array that will be filled with values
+ * @param maxitems the maximum number of elements the integerlist-array has
+ * @return returns the number of items found, or -1 on an error */
 static int parse_intlist(const char *p, int *items, int maxitems)
 {
 	int n = 0, v;
@@ -393,59 +406,73 @@ static int parse_intlist(const char *p, int *items, int maxitems)
 	return n;
 }
 
+/* Load parsed string-values into an integer-array (intlist)
+ * @param str the string that contains the values (and will be parsed)
+ * @param array pointer to the integer-arrays that will be filled
+ * @param nelems the number of elements the array holds. Maximum is 64 elements
+ * @param type the type of elements the array holds (eg INT8, UINT16, etc.)
+ * @return return true on success and false on error */
 static bool load_intlist(const char *str, void *array, int nelems, int type)
 {
 	int items[64];
-	int i,nitems;
+	int i, nitems;
 
 	if (str == NULL) {
 		memset(items, 0, sizeof(items));
 		nitems = nelems;
 	} else {
 		nitems = parse_intlist(str, items, lengthof(items));
-		if (nitems != nelems)
-			return false;
+		if (nitems != nelems) return false;
 	}
 
 	switch (type) {
-	case SDT_INT8 >> 4:
-	case SDT_UINT8 >> 4:
+	case SDT_INT8:
+	case SDT_UINT8:
 		for (i = 0; i != nitems; i++) ((byte*)array)[i] = items[i];
 		break;
-	case SDT_INT16 >> 4:
-	case SDT_UINT16 >> 4:
+	case SDT_INT16:
+	case SDT_UINT16:
 		for (i = 0; i != nitems; i++) ((uint16*)array)[i] = items[i];
 		break;
-	case SDT_INT32 >> 4:
-	case SDT_UINT32 >> 4:
+	case SDT_INT32:
+	case SDT_UINT32:
 		for (i = 0; i != nitems; i++) ((uint32*)array)[i] = items[i];
 		break;
-	default:
-		NOT_REACHED();
+	default: NOT_REACHED();
 	}
 
 	return true;
 }
 
-static void make_intlist(char *buf, void *array, int nelems, int type)
+/* Convert an integer-array (intlist) to a string representation. Each value
+ * is seperated by a comma
+ * @param buf output buffer where the string-representation will be stored
+ * @param array pointer to the integer-arrays that is read from
+ * @param nelems the number of elements the array holds.
+ * @param type the type of elements the array holds (eg INT8, UINT16, etc.) */
+static void make_intlist(char *buf, const void *array, int nelems, int type)
 {
 	int i, v = 0;
-	byte *p = (byte*)array;
+	const byte *p = (const byte*)array;
 
 	for (i = 0; i != nelems; i++) {
 		switch (type) {
-		case SDT_INT8 >> 4: v = *(int8*)p; p += 1; break;
-		case SDT_UINT8 >> 4:v = *(byte*)p; p += 1; break;
-		case SDT_INT16 >> 4:v = *(int16*)p; p += 2; break;
-		case SDT_UINT16 >> 4:v = *(uint16*)p; p += 2; break;
-		case SDT_INT32 >> 4:v = *(int32*)p; p += 4; break;
-		case SDT_UINT32 >> 4:v = *(uint32*)p; p += 4; break;
+		case SDT_INT8:   v = *(int8*)p;   p += 1; break;
+		case SDT_UINT8:  v = *(byte*)p;   p += 1; break;
+		case SDT_INT16:  v = *(int16*)p;  p += 2; break;
+		case SDT_UINT16: v = *(uint16*)p; p += 2; break;
+		case SDT_INT32:  v = *(int32*)p;  p += 4; break;
+		case SDT_UINT32: v = *(uint32*)p; p += 4; break;
 		default: NOT_REACHED();
 		}
-		buf += sprintf(buf, i ? ",%d" : "%d", v);
+		buf += sprintf(buf, (i == 0) ? "%d" : ",%d", v);
 	}
 }
 
+/* Convert a ONEofMANY structure to a string representation.
+ * @param buf output buffer where the string-representation will be stored
+ * @param many the full-domain string of possible values
+ * @param id the value of the variable and whose string-representation must be found */
 static void make_oneofmany(char *buf, const char *many, int i)
 {
 	int orig_i = i;
@@ -467,6 +494,11 @@ static void make_oneofmany(char *buf, const char *many, int i)
 	*buf = 0;
 }
 
+/* Convert a MANYofMANY structure to a string representation.
+ * @param buf output buffer where the string-representation will be stored
+ * @param many the full-domain string of possible values
+ * @param x the value of the variable and whose string-representation must
+ *        be found in the bitmasked many string */
 static void make_manyofmany(char *buf, const char *many, uint32 x)
 {
 	const char *start;
@@ -491,32 +523,51 @@ static void make_manyofmany(char *buf, const char *many, uint32 x)
 	*buf = 0;
 }
 
+/* Get the GenericType of a setting. This describes the main type
+ * @param desc pointer to SettingDesc structure
+ * @return return GenericType, see SettingDescType */
+static inline int GetSettingGenericType(const SettingDesc *desc)
+{
+	return desc->flags & 0xFF00; // GB(desc->flags, 8, 8) << 8;
+}
+
+/* Get the NumberType of a setting. This describes the integer type
+ * @param desc pointer to SettingDesc structure
+ * @return return NumberType, see SettingDescType */
+static inline int GetSettingNumberType(const SettingDesc *desc)
+{
+	return desc->flags & 0xF0; // GB(desc->flags, 4, 8); << 4
+}
+
+/** Convert a string representation (external) of a setting to the internal rep.
+ * @param desc SettingDesc struct that holds all information about the variable
+ * @param str input string that will be parsed based on the type of desc
+ * @return return the parsed value of the setting */
 static const void *string_to_val(const SettingDesc *desc, const char *str)
 {
-	unsigned long val;
-	char *end;
-
-	switch (desc->flags & 0xF) {
-	case SDT_INTX:
-		val = strtoul(str, &end, 0);
-		if (*end != 0) ShowInfoF("ini: trailing characters at end of setting '%s'", desc->name);
+	switch (GetSettingGenericType(desc)) {
+	case SDT_NUMX: {
+		char *end;
+		uint32 val = strtoul(str, &end, 0);
+		if (*end != '\0') ShowInfoF("ini: trailing characters at end of setting '%s'", desc->name);
 		return (void*)val;
+	}
 	case SDT_ONEOFMANY: {
-		long r = lookup_oneofmany((const char*)desc->b, str, -1);
+		long r = lookup_oneofmany(desc->many, str, -1);
 		if (r != -1) return (void*)r;
 		ShowInfoF("ini: invalid value '%s' for '%s'", str, desc->name);
 		return 0;
 	}
 	case SDT_MANYOFMANY: {
-		unsigned long r = lookup_manyofmany(desc->b, str);
+		unsigned long r = lookup_manyofmany(desc->many, str);
 		if (r != (unsigned long)-1) return (void*)r;
 		ShowInfoF("ini: invalid value '%s' for '%s'", str, desc->name);
 		return 0;
 	}
 	case SDT_BOOLX:
-		if (!strcmp(str, "true") || !strcmp(str, "on") || !strcmp(str, "1"))
+		if (strcmp(str, "true")  == 0 || strcmp(str, "on")  == 0 || strcmp(str, "1") == 0)
 			return (void*)true;
-		if (!strcmp(str, "false") || !strcmp(str, "off") || !strcmp(str, "0"))
+		if (strcmp(str, "false") == 0 || strcmp(str, "off") == 0 || strcmp(str, "0") == 0)
 			return (void*)false;
 		ShowInfoF("ini: invalid setting value '%s' for '%s'", str, desc->name);
 		break;
@@ -532,17 +583,22 @@ static const void *string_to_val(const SettingDesc *desc, const char *str)
 	return NULL;
 }
 
-static void load_setting_desc(IniFile *ini, const SettingDesc *desc, const void *grpname)
+/** Load values from a group of an IniFile structure into the internal representation
+ * @param ini pointer to IniFile structure that holds administrative information
+ * @param desc pointer to SettingDesc structure whose internally pointed variables will
+ *        be given values
+ * @param grpname the group of the IniFile to search in for the new values */
+static void load_setting_desc(IniFile *ini, const SettingDesc *desc, const char *grpname)
 {
 	IniGroup *group_def = ini_getgroup(ini, grpname, -1), *group;
 	IniItem *item;
 	const void *p;
 	void *ptr;
 
-	for (;desc->name;desc++) {
-		// group override?
+	for (;desc->name != NULL; desc++) {
+		// XXX - wtf is this?? (group override?)
 		const char *s = strchr(desc->name, '.');
-		if (s) {
+		if (s != NULL) {
 			group = ini_getgroup(ini, desc->name, s - desc->name);
 			s++;
 		} else {
@@ -551,45 +607,37 @@ static void load_setting_desc(IniFile *ini, const SettingDesc *desc, const void 
 		}
 
 		item = ini_getitem(group, s, false);
-		if (!item) {
-			p = desc->def;
-		} else {
-			p = string_to_val(desc, item->value);
-		}
+		p = (item == NULL) ? desc->def : string_to_val(desc, item->value);
 
-		// get ptr to array
+		/* get pointer to the variable */
 		ptr = desc->ptr;
 
-		switch (desc->flags & 0xF) {
-		// all these are stored in the same way
-		case SDT_INTX:
+		/* The main type of a variable/setting is in bytes 8-15
+		 * The subtype (what kind of numbers do we have there) is in 0-7 */
+		switch (GetSettingGenericType(desc)) {
+		case SDT_BOOLX: /* All four are various types of (integer) numbers */
+		case SDT_NUMX:
 		case SDT_ONEOFMANY:
 		case SDT_MANYOFMANY:
-		case SDT_BOOLX:
-			switch (desc->flags >> 4 & 7) {
-			case SDT_INT8 >> 4:
-			case SDT_UINT8 >> 4:
-				*(byte*)ptr = (byte)(unsigned long)p;
-				break;
-			case SDT_INT16 >> 4:
-			case SDT_UINT16 >> 4:
-				*(uint16*)ptr = (uint16)(unsigned long)p;
-				break;
-			case SDT_INT32 >> 4:
-			case SDT_UINT32 >> 4:
-				*(uint32*)ptr = (uint32)(unsigned long)p;
-				break;
-			default:
-				NOT_REACHED();
+			switch (GetSettingNumberType(desc)) {
+			case SDT_INT8:
+			case SDT_UINT8:  *(byte*)ptr   = (byte)(unsigned long)p;   break;
+			case SDT_INT16:
+			case SDT_UINT16: *(uint16*)ptr = (uint16)(unsigned long)p; break;
+			case SDT_INT32:
+			case SDT_UINT32: *(uint32*)ptr = (uint32)(unsigned long)p; break;
+			default: NOT_REACHED(); break;
 			}
 			break;
-		case SDT_STRING:
+
+		case SDT_STR:
 			free(*(char**)ptr);
 			*(char**)ptr = strdup((const char*)p);
 			break;
-		case SDT_STRINGBUF:
-		case SDT_STRINGQUOT:
-			if (p) ttd_strlcpy((char*)ptr, p, desc->flags >> 16);
+
+		case SDT_STRB:
+		case SDT_STRQ:
+			if (p != NULL) ttd_strlcpy((char*)ptr, p, GB(desc->flags, 16, 16));
 			break;
 
 		case SDT_CHAR:
@@ -597,17 +645,24 @@ static void load_setting_desc(IniFile *ini, const SettingDesc *desc, const void 
 			break;
 
 		case SDT_INTLIST: {
-			if (!load_intlist(p, ptr, desc->flags >> 16, desc->flags >> 4 & 7))
+			if (!load_intlist(p, ptr, GB(desc->flags, 16, 16), GetSettingNumberType(desc)))
 				ShowInfoF("ini: error in array '%s'", desc->name);
 			break;
 		}
-		default:
-			NOT_REACHED();
+		default: NOT_REACHED(); break;
 		}
 	}
 }
 
-static void save_setting_desc(IniFile *ini, const SettingDesc *desc, const void *grpname)
+/* Save the values of settings to the inifile.
+ * @param ini pointer to IniFile structure
+ * @param desc read-only SettingDesc structure which contains the unmodified,
+ *        loaded values of the configuration file and various information about it
+ * @param grpname holds the name of the group (eg. [network]) where these will be saved
+ * The function works as follows: for each item in the SettingDesc structure we have
+ * a look if the value has changed since we started the game (the original values
+ * are reloaded when saving). If settings indeed have changed, we get these and save them.*/
+static void save_setting_desc(IniFile *ini, const SettingDesc *desc, const char *grpname)
 {
 	IniGroup *group_def = NULL, *group;
 	IniItem *item;
@@ -617,121 +672,114 @@ static void save_setting_desc(IniFile *ini, const SettingDesc *desc, const void 
 	char buf[512]; // setting buffer
 	const char *s;
 
-	for (;desc->name;desc++) {
-		if (desc->flags & SDT_NOSAVE)
-			continue;
+	for (; desc->name != NULL; desc++) {
+		if (desc->flags & SDT_NOSAVE) continue;
 
-		// group override?
+		// XXX - wtf is this?? (group override?)
 		s = strchr(desc->name, '.');
-		if (s) {
+		if (s != NULL) {
 			group = ini_getgroup(ini, desc->name, s - desc->name);
 			s++;
 		} else {
-			if (group_def == NULL)
-				group_def = ini_getgroup(ini, grpname, -1);
+			if (group_def == NULL) group_def = ini_getgroup(ini, grpname, -1);
 			s = desc->name;
 			group = group_def;
 		}
 
 		item = ini_getitem(group, s, true);
 
-		// get ptr to array
+		/* get pointer to the variable */
 		ptr = desc->ptr;
 
 		if (item->value != NULL) {
 			// check if the value is the same as the old value
 			p = string_to_val(desc, item->value);
 
-			switch (desc->flags & 0xF) {
-			case SDT_INTX:
+			/* The main type of a variable/setting is in bytes 8-15
+			* The subtype (what kind of numbers do we have there) is in 0-7 */
+			switch (GetSettingGenericType(desc)) {
+			case SDT_BOOLX:
+			case SDT_NUMX:
 			case SDT_ONEOFMANY:
 			case SDT_MANYOFMANY:
-			case SDT_BOOLX:
-				switch (desc->flags >> 4 & 7) {
-				case SDT_INT8 >> 4:
-				case SDT_UINT8 >> 4:
-					if (*(byte*)ptr == (byte)(unsigned long)p)
-						continue;
+				switch (GetSettingNumberType(desc)) {
+				case SDT_INT8:
+				case SDT_UINT8:
+					if (*(byte*)ptr == (byte)(unsigned long)p) continue;
 					break;
-				case SDT_INT16 >> 4:
-				case SDT_UINT16 >> 4:
-					if (*(uint16*)ptr == (uint16)(unsigned long)p)
-						continue;
+				case SDT_INT16:
+				case SDT_UINT16:
+					if (*(uint16*)ptr == (uint16)(unsigned long)p) continue;
 					break;
-				case SDT_INT32 >> 4:
-				case SDT_UINT32 >> 4:
-					if (*(uint32*)ptr == (uint32)(unsigned long)p)
-						continue;
+				case SDT_INT32:
+				case SDT_UINT32:
+					if (*(uint32*)ptr == (uint32)(unsigned long)p) continue;
 					break;
-				default:
-					NOT_REACHED();
+				default: NOT_REACHED();
 				}
 				break;
-			case SDT_STRING:
-				assert(0);
-				break;
-			case SDT_INTLIST:
-				// assume intlist is always changed.
-				break;
+			case SDT_STR: assert(0); break;
+			default: break; /* Assume the other types are always changed */
 			}
 		}
 
-		switch (desc->flags & 0xF) {
-		case SDT_INTX:
+		/* Value has changed, get the new value and put it into a buffer */
+		switch (GetSettingGenericType(desc)) {
+		case SDT_BOOLX:
+		case SDT_NUMX:
 		case SDT_ONEOFMANY:
 		case SDT_MANYOFMANY:
-		case SDT_BOOLX:
-			switch (desc->flags >> 4 & 7) {
-			case SDT_INT8 >> 4: i = *(int8*)ptr; break;
-			case SDT_UINT8 >> 4:i = *(byte*)ptr; break;
-			case SDT_INT16 >> 4:i = *(int16*)ptr; break;
-			case SDT_UINT16 >> 4:i = *(uint16*)ptr; break;
-			case SDT_INT32 >> 4:i = *(int32*)ptr; break;
-			case SDT_UINT32 >> 4:i = *(uint32*)ptr; break;
-			default:
-				NOT_REACHED();
+			switch (GetSettingNumberType(desc)) {
+			case SDT_INT8:   i = *(int8*)ptr;   break;
+			case SDT_UINT8:  i = *(byte*)ptr;   break;
+			case SDT_INT16:  i = *(int16*)ptr;  break;
+			case SDT_UINT16: i = *(uint16*)ptr; break;
+			case SDT_INT32:  i = *(int32*)ptr;  break;
+			case SDT_UINT32: i = *(uint32*)ptr; break;
+			default: NOT_REACHED();
 			}
-			switch (desc->flags & 0xF) {
-			case SDT_INTX:
+
+			switch (GetSettingGenericType(desc)) {
+			case SDT_BOOLX:
+				strcpy(buf, (i != 0) ? "true" : "false");
+				break;
+			case SDT_NUMX:
 				sprintf(buf, "%u", i);
 				break;
 			case SDT_ONEOFMANY:
-				make_oneofmany(buf, (const char*)desc->b, i);
+				make_oneofmany(buf, desc->many, i);
 				break;
 			case SDT_MANYOFMANY:
-				make_manyofmany(buf, (const char*)desc->b, i);
+				make_manyofmany(buf, desc->many, i);
 				break;
-			case SDT_BOOLX:
-				strcpy(buf, i ? "true" : "false");
-				break;
-			default:
-				NOT_REACHED();
+			default: NOT_REACHED();
 			}
 			break;
-		case SDT_STRINGQUOT:
-			sprintf(buf, "\"%s\"", (char*)ptr);
-			break;
-		case SDT_STRINGBUF:
-			strcpy(buf, (char*)ptr);
-			break;
-		case SDT_STRING:
+
+		case SDT_STR:
 			strcpy(buf, *(char**)ptr);
 			break;
-		case SDT_INTLIST:
-			make_intlist(buf, ptr, desc->flags >> 16, desc->flags >> 4 & 7);
+		case SDT_STRB:
+			strcpy(buf, (char*)ptr);
 			break;
-
+		case SDT_STRQ:
+			sprintf(buf, "\"%s\"", (char*)ptr);
+			break;
 		case SDT_CHAR:
 			sprintf(buf, "\"%c\"", *(char*)ptr);
 			break;
+		case SDT_INTLIST:
+			make_intlist(buf, ptr, GB(desc->flags, 16, 16), GetSettingNumberType(desc));
+			break;
 		}
-		// the value is different, that means we have to write it to the ini
+
+		/* The value is different, that means we have to write it to the ini */
 		item->value = pool_strdup(&ini->pool, buf, strlen(buf));
 	}
 }
 
 //***************************
-// TTD specific INI stuff
+// OTTD specific INI stuff
 //***************************
 
 #ifndef EXTERNAL_PLAYER
