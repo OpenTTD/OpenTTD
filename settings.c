@@ -1059,7 +1059,7 @@ static const SettingDesc currency_settings[] = {
 	{ NULL, 0, NULL, NULL, NULL }
 };
 
-typedef void SettingDescProc(IniFile *ini, const SettingDesc *desc, const void *grpname);
+typedef void SettingDescProc(IniFile *ini, const SettingDesc *desc, const char *grpname);
 
 static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc)
 {
