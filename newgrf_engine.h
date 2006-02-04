@@ -70,4 +70,8 @@ void UnloadWagonOverrides(void);
 void UnloadCustomEngineSprites(void);
 void UnloadCustomEngineNames(void);
 
+void ResetEngineListOrder(void);
+EngineID GetRailVehAtPosition(EngineID pos);
+void AlterRailVehListOrder(EngineID engine, EngineID target);
+
 #endif /* NEWGRF_ENGINE_H */

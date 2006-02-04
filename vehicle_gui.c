@@ -453,11 +453,12 @@ static int CDECL VehicleValueSorter(const void *a, const void *b)
 static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, EngineID *selected_id, RailType railtype,
 	uint8 lines_drawn, bool is_engine, bool show_cars, bool show_outdated)
 {
-	EngineID i;
+	EngineID j;
 	byte colour;
 	const Player *p = GetPlayer(_local_player);
 
-	for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
+	for (j = 0; j < NUM_TRAIN_ENGINES; j++) {
+		EngineID i = GetRailVehAtPosition(j);
 		const Engine *e = GetEngine(i);
 		const RailVehicleInfo *rvi = RailVehInfo(i);
 		const EngineInfo *info = &_engine_info[i];
@@ -467,7 +468,7 @@ static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, Engine
 		if ((rvi->power == 0 && !show_cars) || (rvi->power != 0 && show_cars))  // show wagons or engines (works since wagons do not have power)
 			continue;
 
-		if (*sel == 0) *selected_id = i;
+		if (*sel == 0) *selected_id = j;
 
 
 		colour = *sel == 0 ? 0xC : 0x10;
@@ -513,10 +514,12 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 
 	switch (WP(w,replaceveh_d).vehicletype) {
 		case VEH_Train: {
+			EngineID i;
 			railtype = _railtype_selected_in_replace_gui;
 			w->widget[13].color = _player_colors[_local_player];	// sets the colour of that art thing
 			w->widget[16].color = _player_colors[_local_player];	// sets the colour of that art thing
-			for (engine_id = 0; engine_id < NUM_TRAIN_ENGINES; engine_id++) {
+			for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
+				EngineID engine_id = GetRailVehAtPosition(i);
 				const Engine *e = GetEngine(engine_id);
 				const EngineInfo *info = &_engine_info[engine_id];
 

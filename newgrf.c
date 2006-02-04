@@ -365,6 +365,18 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				rvi[i].engclass = engclass;
 			}
 		} break;
+		case 0x1A: // Alter purchase list sort order.
+			FOR_EACH_OBJECT {
+				EngineID pos = grf_load_byte(&buf);
+
+				if (pos < NUM_TRAIN_ENGINES) {
+					AlterRailVehListOrder(engine + i, pos);
+				} else {
+					grfmsg(GMS_NOTICE, "RailVehicleChangeInfo: Invalid train engine ID %d, ignoring.", pos);
+				}
+			}
+			break;
+
 		case 0x1B: { /* Powered wagons power bonus */
 			FOR_EACH_OBJECT {
 				uint16 wag_power = grf_load_word(&buf);
@@ -431,7 +443,6 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		} break;
 		/* TODO */
 		/* Fall-through for unimplemented one byte long properties. */
-		case 0x1A:	/* Sort order */
 		case 0x1C:	/* Refit cost */
 		case 0x1F:	/* Tractive effort */
 		case 0x20:	/* Air drag */
@@ -2499,6 +2510,7 @@ static void ResetNewGRFData(void)
 	UnloadWagonOverrides();
 	UnloadCustomEngineSprites();
 	UnloadCustomEngineNames();
+	ResetEngineListOrder();
 
 	// Reset price base data
 	ResetPriceBaseMultipliers();

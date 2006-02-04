@@ -591,3 +591,44 @@ StringID GetCustomEngineName(EngineID engine)
 	return STR_SPEC_USERSTRING;
 }
 
+// Functions for changing the order of vehicle purchase lists
+// This is currently only implemented for rail vehicles.
+static EngineID engine_list_order[NUM_TRAIN_ENGINES];
+
+void ResetEngineListOrder(void)
+{
+	EngineID i;
+
+	for (i = 0; i < NUM_TRAIN_ENGINES; i++)
+		engine_list_order[i] = i;
+}
+
+EngineID GetRailVehAtPosition(EngineID pos)
+{
+	return engine_list_order[pos];
+}
+
+void AlterRailVehListOrder(EngineID engine, EngineID target)
+{
+	EngineID i;
+	bool moving = false;
+
+	if (engine == target) return;
+
+	// First, remove our ID from the list.
+	for (i = 0; i < NUM_TRAIN_ENGINES - 1; i++) {
+		if (engine_list_order[i] == engine)
+			moving = true;
+		if (moving)
+			engine_list_order[i] = engine_list_order[i + 1];
+	}
+
+	// Now, insert it again, before the target engine.
+	for (i = NUM_TRAIN_ENGINES - 1; i > 0; i--) {
+		engine_list_order[i] = engine_list_order[i - 1];
+		if (engine_list_order[i] == target) {
+			engine_list_order[i - 1] = engine;
+			break;
+		}
+	}
+}

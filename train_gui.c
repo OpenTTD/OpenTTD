@@ -170,9 +170,10 @@ void CcCloneTrain(bool success, uint tile, uint32 p1, uint32 p2)
 static void engine_drawing_loop(int *x, int *y, int *pos, int *sel,
 	EngineID* selected_id, RailType railtype, byte show_max, bool is_engine)
 {
-	EngineID i;
+	EngineID j;
 
-	for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
+	for (j = 0; j < NUM_TRAIN_ENGINES; j++) {
+		EngineID i = GetRailVehAtPosition(j);
 		const Engine *e = GetEngine(i);
 		const RailVehicleInfo *rvi = RailVehInfo(i);
 
