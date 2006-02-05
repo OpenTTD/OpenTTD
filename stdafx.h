@@ -103,6 +103,12 @@
 #  pragma warning(disable: 4018) // 'expression' : signed/unsigned mismatch
 #  pragma warning(disable: 4305) // 'identifier' : truncation from 'type1' to 'type2'
 # endif /* _MSC_VER < 1300 */
+# if _MSC_VER >= 1400              // MSVC 2005 safety checks
+#  pragma warning(disable: 4996)   // 'strdup' was declared deprecated
+#  define _CRT_SECURE_NO_DEPRECATE // all deprecated 'unsafe string functions
+#  pragma comment(linker, "/NODEFAULTLIB:LIBC.LIB")
+                                   // allow linking to non-recompiled libs
+# endif /* _MSC_VER >= 1400 */
 
 # include <malloc.h> // alloca()
 # define NORETURN __declspec(noreturn)
