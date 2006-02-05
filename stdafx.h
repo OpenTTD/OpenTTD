@@ -201,7 +201,6 @@ typedef unsigned char byte;
 
 // Setup alignment and conversion macros
 #if defined(TTD_BIG_ENDIAN)
-# define OTTD_ALIGNMENT
   static inline uint32 TO_LE32(uint32 x) { return BSWAP32(x); }
   static inline uint16 TO_LE16(uint16 x) { return BSWAP16(x); }
   static inline uint32 FROM_LE32(uint32 x) { return BSWAP32(x); }
