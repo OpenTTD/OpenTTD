@@ -22,6 +22,7 @@
 #include "waypoint.h"
 #include "vehicle_gui.h"
 #include "train.h"
+#include "newgrf_callbacks.h"
 #include "newgrf_engine.h"
 
 static bool TrainCheckIfLineEnds(Vehicle *v);
