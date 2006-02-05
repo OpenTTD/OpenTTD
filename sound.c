@@ -140,7 +140,7 @@ static void StartSound(uint sound, int panning, uint volume)
 	uint left_vol, right_vol;
 
 	if (volume == 0) return;
-	mc = MxAllocateChannel(_mixer);
+	mc = MxAllocateChannel();
 	if (mc == NULL) return;
 	if (!SetBankSource(mc, sound)) return;
 

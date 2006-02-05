@@ -13,7 +13,7 @@
 
 static void CDECL fill_sound_buffer(void *userdata, Uint8 *stream, int len)
 {
-	MxMixSamples(_mixer, stream, len / 4);
+	MxMixSamples(stream, len / 4);
 }
 
 static const char *SdlSoundStart(const char * const *parm)

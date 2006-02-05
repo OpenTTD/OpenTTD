@@ -29,7 +29,7 @@ static void FillHeaders(void)
 
 	for (hdr = _wave_hdr; hdr != endof(_wave_hdr); hdr++) {
 		if (!(hdr->dwFlags & WHDR_INQUEUE)) {
-			MxMixSamples(_mixer, hdr->lpData, hdr->dwBufferLength / 4);
+			MxMixSamples(hdr->lpData, hdr->dwBufferLength / 4);
 			if (waveOutWrite(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR)
 				error("waveOutWrite failed");
 		}

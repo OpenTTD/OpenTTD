@@ -3,7 +3,6 @@
 #ifndef MIXER_H
 #define MIXER_H
 
-typedef struct Mixer Mixer;
 typedef struct MixerChannel MixerChannel;
 
 enum {
@@ -13,12 +12,10 @@ enum {
 //	MX_UNSIGNED = 8,
 };
 
-VARDEF Mixer *_mixer;
-
 bool MxInitialize(uint rate);
-void MxMixSamples(Mixer *mx, void *buffer, uint samples);
+void MxMixSamples(void* buffer, uint samples);
 
-MixerChannel *MxAllocateChannel(Mixer *mx);
+MixerChannel* MxAllocateChannel(void);
 void MxSetChannelRawSrc(MixerChannel *mc, int8 *mem, uint size, uint rate, uint flags);
 void MxSetChannelVolume(MixerChannel *mc, uint left, uint right);
 void MxActivateChannel(MixerChannel*);

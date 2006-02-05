@@ -5,8 +5,6 @@
 #include "mixer.h"
 
 struct MixerChannel {
-	// Mixer
-	Mixer *mx;
 	bool active;
 
 	// pointer to allocated buffer memory
@@ -25,10 +23,8 @@ struct MixerChannel {
 	uint flags;
 };
 
-struct Mixer {
-	uint32 play_rate;
-	MixerChannel channels[8];
-};
+static MixerChannel _channels[8];
+static uint32 _play_rate;
 
 
 static void mix_int8_to_int16(MixerChannel *sc, int16 *buffer, uint samples)
@@ -79,7 +75,7 @@ static void MxCloseChannel(MixerChannel *mc)
 	mc->memory = NULL;
 }
 
-void MxMixSamples(Mixer *mx, void *buffer, uint samples)
+void MxMixSamples(void *buffer, uint samples)
 {
 	MixerChannel *mc;
 
@@ -87,7 +83,7 @@ void MxMixSamples(Mixer *mx, void *buffer, uint samples)
 	memset(buffer, 0, sizeof(int16) * 2 * samples);
 
 	// Mix each channel
-	for (mc = mx->channels; mc != endof(mx->channels); mc++) {
+	for (mc = _channels; mc != endof(_channels); mc++) {
 		if (mc->active) {
 			mix_int8_to_int16(mc, buffer, samples);
 			if (mc->samples_left == 0) MxCloseChannel(mc);
@@ -104,13 +100,12 @@ void MxMixSamples(Mixer *mx, void *buffer, uint samples)
 	#endif
 }
 
-MixerChannel *MxAllocateChannel(Mixer *mx)
+MixerChannel *MxAllocateChannel(void)
 {
 	MixerChannel *mc;
-	for (mc = mx->channels; mc != endof(mx->channels); mc++)
+	for (mc = _channels; mc != endof(_channels); mc++)
 		if (mc->memory == NULL) {
 			mc->active = false;
-			mc->mx = mx;
 			return mc;
 		}
 	return NULL;
@@ -123,7 +118,7 @@ void MxSetChannelRawSrc(MixerChannel *mc, int8 *mem, uint size, uint rate, uint 
 	mc->frac_pos = 0;
 	mc->pos = 0;
 
-	mc->frac_speed = (rate << 16) / mc->mx->play_rate;
+	mc->frac_speed = (rate << 16) / _play_rate;
 
 	// adjust the magnitude to prevent overflow
 	while (size & 0xFFFF0000) {
@@ -131,7 +126,7 @@ void MxSetChannelRawSrc(MixerChannel *mc, int8 *mem, uint size, uint rate, uint 
 		rate = (rate >> 1) + 1;
 	}
 
-	mc->samples_left = size * mc->mx->play_rate / rate;
+	mc->samples_left = size * _play_rate / rate;
 }
 
 void MxSetChannelVolume(MixerChannel *mc, uint left, uint right)
@@ -149,8 +144,6 @@ void MxActivateChannel(MixerChannel* mc)
 
 bool MxInitialize(uint rate)
 {
-	static Mixer mx;
-	_mixer = &mx;
-	mx.play_rate = rate;
+	_play_rate = rate;
 	return true;
 }

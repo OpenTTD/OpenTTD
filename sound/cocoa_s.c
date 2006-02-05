@@ -42,7 +42,7 @@ static AudioUnit _outputAudioUnit;
 /* The CoreAudio callback */
 static OSStatus audioCallback(void *inRefCon, AudioUnitRenderActionFlags inActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, AudioBuffer *ioData)
 {
-	MxMixSamples(_mixer, ioData->mData, ioData->mDataByteSize / 4);
+	MxMixSamples(ioData->mData, ioData->mDataByteSize / 4);
 
 	return noErr;
 }
