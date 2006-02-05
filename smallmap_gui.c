@@ -231,11 +231,7 @@ static const uint16 * const _legend_table[] = {
 #	define WRITE_PIXELS_OR(dst,val)	*(uint32*)(dst) |= (val);
 #endif
 
-#if defined(TTD_BIG_ENDIAN)
-#	define MKCOLOR(x) BSWAP32(x)
-#elif defined(TTD_LITTLE_ENDIAN)
-#	define MKCOLOR(x) (x)
-#endif
+#define MKCOLOR(x) TO_LE32X(x)
 
 /* Height encodings; 16 levels XXX - needs updating for more/finer heights! */
 static const uint32 _map_height_bits[16] = {
