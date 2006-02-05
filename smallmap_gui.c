@@ -10,6 +10,7 @@
 #include "map.h"
 #include "tile.h"
 #include "gui.h"
+#include "tree.h"
 #include "window.h"
 #include "gfx.h"
 #include "viewport.h"
@@ -489,7 +490,7 @@ static inline uint32 GetSmallMapVegetationPixels(TileIndex tile)
 			break;
 
 		case MP_TREES:
-			if ((_m[tile].m2 & 0x30) == 0x20) {
+			if (GetTreeGround(tile) == TR_SNOW_DESERT) {
 				bits = (_opt.landscape == LT_HILLY) ? MKCOLOR(0x98575798) : MKCOLOR(0xC25757C2);
 			} else {
 				bits = MKCOLOR(0x54575754);
