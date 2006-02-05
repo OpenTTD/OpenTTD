@@ -33,4 +33,14 @@ static inline void SetClearGroundDensity(TileIndex t, ClearGround type, uint den
 	_m[t].m5 = 0 << 5 | type << 2 | density;
 }
 
+static inline uint GetFieldType(TileIndex t) { return GB(_m[t].m3, 0, 4); }
+static inline void SetFieldType(TileIndex t, uint f) { SB(_m[t].m3, 0, 4, f); }
+
+/* Is used by tree tiles, too */
+static inline uint GetFenceSE(TileIndex t) { return GB(_m[t].m4, 2, 3); }
+static inline void SetFenceSE(TileIndex t, uint h) { SB(_m[t].m4, 2, 3, h); }
+
+static inline uint GetFenceSW(TileIndex t) { return GB(_m[t].m4, 5, 3); }
+static inline void SetFenceSW(TileIndex t, uint h) { SB(_m[t].m4, 5, 3, h); }
+
 #endif

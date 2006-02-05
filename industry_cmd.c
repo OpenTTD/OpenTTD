@@ -903,23 +903,19 @@ static bool IsBadFarmFieldTile2(TileIndex tile)
 
 static void SetupFarmFieldFence(TileIndex tile, int size, byte type, int direction)
 {
-	byte or, and;
-
 	do {
 		tile = TILE_MASK(tile);
 
 		if (IsTileType(tile, MP_CLEAR) || IsTileType(tile, MP_TREES)) {
+			byte or = type;
 
-			or = type;
 			if (or == 1 && CHANCE16(1, 7)) or = 2;
 
-			or <<= 2;
-			and = (byte)~0x1C;
 			if (direction) {
-				or <<= 3;
-				and = (byte)~0xE0;
+				SetFenceSW(tile, or);
+			} else {
+				SetFenceSE(tile, or);
 			}
-			_m[tile].m4 = (_m[tile].m4 & and) | or;
 		}
 
 		tile += direction ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
@@ -931,7 +927,9 @@ static void PlantFarmField(TileIndex tile)
 	uint size_x, size_y;
 	uint32 r;
 	uint count;
-	int type, type2;
+	uint counter;
+	uint field_type;
+	int type;
 
 	if (_opt.landscape == LT_HILLY) {
 		if (GetTileZ(tile) + 16 >= _opt.snow_line)
@@ -957,19 +955,21 @@ static void PlantFarmField(TileIndex tile)
 
 	/* determine type of field */
 	r = Random();
-	type = ((r & 0xE0) | 0xF);
-	type2 = GB(r, 8, 8) * 9 >> 8;
+	counter = GB(r, 5, 3);
+	field_type = GB(r, 8, 8) * 9 >> 8;
 
 	/* make field */
 	BEGIN_TILE_LOOP(cur_tile, size_x, size_y, tile)
 		cur_tile = TILE_MASK(cur_tile);
 		if (!IsBadFarmFieldTile2(cur_tile)) {
-			ModifyTile(cur_tile,
-				MP_SETTYPE(MP_CLEAR) |
-				MP_MAP2_CLEAR | MP_MAP3LO | MP_MAP3HI_CLEAR | MP_MAPOWNER | MP_MAP5,
-				type2,			/* map3_lo */
-				OWNER_NONE,	/* map_owner */
-				type);			/* map5 */
+			SetTileType(cur_tile, MP_CLEAR);
+			SetTileOwner(cur_tile, OWNER_NONE);
+			SetFieldType(cur_tile, field_type);
+			SetFenceSW(cur_tile, 0);
+			SetFenceSE(cur_tile, 0);
+			SetClearGroundDensity(cur_tile, CL_FIELDS, 3);
+			SetClearCounter(cur_tile, counter);
+			MarkTileDirtyByTile(cur_tile);
 		}
 	END_TILE_LOOP(cur_tile, size_x, size_y, tile)
 

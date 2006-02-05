@@ -482,7 +482,6 @@ void DrawHillyLandTile(const TileInfo *ti)
 
 void DrawClearLandFence(const TileInfo *ti)
 {
-	byte m4 = _m[ti->tile].m4;
 	byte z = ti->z;
 
 	if (ti->tileh & 2) {
@@ -490,12 +489,12 @@ void DrawClearLandFence(const TileInfo *ti)
 		if (ti->tileh == 0x17) z += 8;
 	}
 
-	if (GB(m4, 5, 3) != 0) {
-		DrawGroundSpriteAt(_clear_land_fence_sprites_1[GB(m4, 5, 3) - 1] + _fence_mod_by_tileh[ti->tileh], ti->x, ti->y, z);
+	if (GetFenceSW(ti->tile) != 0) {
+		DrawGroundSpriteAt(_clear_land_fence_sprites_1[GetFenceSW(ti->tile) - 1] + _fence_mod_by_tileh[ti->tileh], ti->x, ti->y, z);
 	}
 
-	if (GB(m4, 2, 3) != 0) {
-		DrawGroundSpriteAt(_clear_land_fence_sprites_1[GB(m4, 2, 3) - 1] + _fence_mod_by_tileh_2[ti->tileh], ti->x, ti->y, z);
+	if (GetFenceSE(ti->tile) != 0) {
+		DrawGroundSpriteAt(_clear_land_fence_sprites_1[GetFenceSE(ti->tile) - 1] + _fence_mod_by_tileh_2[ti->tileh], ti->x, ti->y, z);
 	}
 }
 
@@ -515,7 +514,7 @@ static void DrawTile_Clear(TileInfo *ti)
 			break;
 
 		case CL_FIELDS:
-			DrawGroundSprite(_clear_land_sprites_1[GB(_m[ti->tile].m3, 0, 4)] + _tileh_to_sprite[ti->tileh]);
+			DrawGroundSprite(_clear_land_sprites_1[GetFieldType(ti->tile)] + _tileh_to_sprite[ti->tileh]);
 			break;
 
 		case CL_SNOW:
@@ -559,27 +558,27 @@ void TileLoopClearHelper(TileIndex tile)
 	self = (IsTileType(tile, MP_CLEAR) && IsClearGround(tile, CL_FIELDS));
 
 	neighbour = (IsTileType(TILE_ADDXY(tile, 1, 0), MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, 1, 0), CL_FIELDS));
-	if (GB(_m[tile].m4, 5, 3) == 0) {
+	if (GetFenceSW(tile) == 0) {
 		if (self != neighbour) {
-			SB(_m[tile].m4, 5, 3, 3);
+			SetFenceSW(tile, 3);
 			dirty = tile;
 		}
 	} else {
 		if (self == 0 && neighbour == 0) {
-			SB(_m[tile].m4, 5, 3, 0);
+			SetFenceSW(tile, 0);
 			dirty = tile;
 		}
 	}
 
 	neighbour = (IsTileType(TILE_ADDXY(tile, 0, 1), MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, 0, 1), CL_FIELDS));
-	if (GB(_m[tile].m4, 2, 3) == 0) {
+	if (GetFenceSE(tile) == 0) {
 		if (self != neighbour) {
-			SB(_m[tile].m4, 2, 3, 3);
+			SetFenceSE(tile, 3);
 			dirty = tile;
 		}
 	} else {
 		if (self == 0 && neighbour == 0) {
-			SB(_m[tile].m4, 2, 3, 0);
+			SetFenceSE(tile, 0);
 			dirty = tile;
 		}
 	}
@@ -673,9 +672,9 @@ static void TileLoop_Clear(TileIndex tile)
 				SetClearCounter(tile, 0);
 			}
 
-			field_type = GB(_m[tile].m3, 0, 4);
+			field_type = GetFieldType(tile);
 			field_type = (field_type < 8) ? field_type + 1 : 0;
-			SB(_m[tile].m3, 0, 4, field_type);
+			SetFieldType(tile, field_type);
 			break;
 		}
 
