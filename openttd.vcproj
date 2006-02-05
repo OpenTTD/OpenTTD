@@ -492,6 +492,9 @@
 				RelativePath=".\newgrf.h">
 			</File>
 			<File
+				RelativePath=".\newgrf_callbacks.h">
+			</File>
+			<File
 				RelativePath=".\newgrf_engine.h">
 			</File>
 			<File

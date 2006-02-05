@@ -626,6 +626,10 @@ SOURCE=.\newgrf.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\newgrf_callbacks.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\newgrf_engine.h
 # End Source File
 # Begin Source File
