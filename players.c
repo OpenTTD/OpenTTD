@@ -1017,40 +1017,34 @@ static int CDECL HighScoreSorter(const void *a, const void *b)
 #define LAST_HS_ITEM lengthof(_highscore_table) - 1
 int8 SaveHighScoreValueNetwork(void)
 {
-	Player *p, *player_sort[MAX_PLAYERS];
+	const Player* p;
+	const Player* pl[MAX_PLAYERS];
 	size_t count = 0;
 	int8 player = -1;
 
 	/* Sort all active players with the highest score first */
-	FOR_ALL_PLAYERS(p) {
-		if (p->is_active)
-			player_sort[count++] = p;
-	}
-	qsort(player_sort, count, sizeof(player_sort[0]), HighScoreSorter);
+	FOR_ALL_PLAYERS(p) if (p->is_active) pl[count++] = p;
+	qsort(pl, count, sizeof(pl[0]), HighScoreSorter);
 
 	{
-		HighScore *hs;
-		Player* const *p_cur = &player_sort[0];
-		uint8 i;
+		uint i;
 
 		memset(_highscore_table[LAST_HS_ITEM], 0, sizeof(_highscore_table[0]));
 
 		/* Copy over Top5 companies */
 		for (i = 0; i < lengthof(_highscore_table[LAST_HS_ITEM]) && i < count; i++) {
-			hs = &_highscore_table[LAST_HS_ITEM][i];
-			SetDParam(0, (*p_cur)->president_name_1);
-			SetDParam(1, (*p_cur)->president_name_2);
-			SetDParam(2, (*p_cur)->name_1);
-			SetDParam(3, (*p_cur)->name_2);
+			HighScore* hs = &_highscore_table[LAST_HS_ITEM][i];
+
+			SetDParam(0, pl[i]->president_name_1);
+			SetDParam(1, pl[i]->president_name_2);
+			SetDParam(2, pl[i]->name_1);
+			SetDParam(3, pl[i]->name_2);
 			GetString(hs->company, STR_HIGHSCORE_NAME); // get manager/company name string
-			hs->score = (*p_cur)->old_economy[0].performance_history;
+			hs->score = pl[i]->old_economy[0].performance_history;
 			hs->title = EndGameGetPerformanceTitleFromValue(hs->score);
 
 			// get the ranking of the local player
-			if ((*p_cur)->index == _local_player)
-				player = i;
-
-			p_cur++;
+			if (pl[i]->index == _local_player) player = i;
 		}
 	}
 
@@ -1262,10 +1256,8 @@ static void SaveLoad_PLYR(Player* p)
 	SlObject(&p->cur_economy, _player_economy_desc);
 
 	// Write old economy entries.
-	{
-		PlayerEconomyEntry *pe;
-		for (i = p->num_valid_stat_ent, pe = p->old_economy; i != 0; i--, pe++)
-			SlObject(pe, _player_economy_desc);
+	for (i = 0; i < p->num_valid_stat_ent; i++) {
+		SlObject(&p->old_economy[i], _player_economy_desc);
 	}
 }
 
