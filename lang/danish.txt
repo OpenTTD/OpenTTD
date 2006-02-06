@@ -83,35 +83,35 @@ STR_004B_BATTERY                                                :Batteri
 STR_004C_PLASTIC                                                :Plastik
 STR_004D_FIZZY_DRINK                                            :Sodavand
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} passager
-STR_QUANTITY_COAL                                               :{COMMA} ton kul
-STR_QUANTITY_MAIL                                               :{COMMA} sæk post
+STR_QUANTITY_PASSENGERS                                         :{COMMA} passager{P "" er}
+STR_QUANTITY_COAL                                               :{COMMA} ton{P "" s} kul
+STR_QUANTITY_MAIL                                               :{COMMA} sæk{P "" ke} post
 STR_QUANTITY_OIL                                                :{VOLUME} olie
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} stk. kvæg
-STR_QUANTITY_GOODS                                              :{COMMA} kasse gods
-STR_QUANTITY_GRAIN                                              :{COMMA} ton korn
-STR_QUANTITY_WOOD                                               :{COMMA} ton træ
-STR_QUANTITY_IRON_ORE                                           :{COMMA} ton jernmalm
-STR_QUANTITY_STEEL                                              :{COMMA} ton stål
-STR_QUANTITY_VALUABLES                                          :{COMMA} sæk værdigendstande
-STR_QUANTITY_COPPER_ORE                                         :{COMMA} tons kobbermalm
-STR_QUANTITY_MAIZE                                              :{COMMA} ton majs
-STR_QUANTITY_FRUIT                                              :{COMMA} ton frugt
-STR_QUANTITY_DIAMONDS                                           :{COMMA} sæk diamanter
-STR_QUANTITY_FOOD                                               :{COMMA} ton mad
-STR_QUANTITY_PAPER                                              :{COMMA} ton papir
-STR_QUANTITY_GOLD                                               :{COMMA} sæk guld
+STR_QUANTITY_GOODS                                              :{COMMA} kasse{P "" r} gods
+STR_QUANTITY_GRAIN                                              :{COMMA} ton{P "" s} korn
+STR_QUANTITY_WOOD                                               :{COMMA} ton{P "" s} træ
+STR_QUANTITY_IRON_ORE                                           :{COMMA} ton{P "" s} jernmalm
+STR_QUANTITY_STEEL                                              :{COMMA} ton{P "" s} stål
+STR_QUANTITY_VALUABLES                                          :{COMMA} sæk{P "" ke} værdigendstande
+STR_QUANTITY_COPPER_ORE                                         :{COMMA} ton{P "" s} kobbermalm
+STR_QUANTITY_MAIZE                                              :{COMMA} ton{P "" s} majs
+STR_QUANTITY_FRUIT                                              :{COMMA} ton{P "" s} frugt
+STR_QUANTITY_DIAMONDS                                           :{COMMA} sæk{P "" ke} diamanter
+STR_QUANTITY_FOOD                                               :{COMMA} ton{P "" s} mad
+STR_QUANTITY_PAPER                                              :{COMMA} ton{P "" s} papir
+STR_QUANTITY_GOLD                                               :{COMMA} sæk{P "" ke} guld
 STR_QUANTITY_WATER                                              :{VOLUME} vand
-STR_QUANTITY_WHEAT                                              :{COMMA} ton hvede
+STR_QUANTITY_WHEAT                                              :{COMMA} ton{P "" s} hvede
 STR_QUANTITY_RUBBER                                             :{VOLUME} gummi
-STR_QUANTITY_SUGAR                                              :{COMMA} ton sukker
+STR_QUANTITY_SUGAR                                              :{COMMA} ton{P "" s} sukker
 STR_QUANTITY_TOYS                                               :{COMMA} legetøj
-STR_QUANTITY_SWEETS                                             :{COMMA} sæk slik
+STR_QUANTITY_SWEETS                                             :{COMMA} sæk{P "" ke} slik
 STR_QUANTITY_COLA                                               :{VOLUME} cola
-STR_QUANTITY_CANDYFLOSS                                         :{COMMA} ton candyfloss
-STR_QUANTITY_BUBBLES                                            :{COMMA} boble
+STR_QUANTITY_CANDYFLOSS                                         :{COMMA} ton{P "" s} candyfloss
+STR_QUANTITY_BUBBLES                                            :{COMMA} boble{P "" r}
 STR_QUANTITY_TOFFEE                                             :{COMMA} ton karamel
-STR_QUANTITY_BATTERIES                                          :{COMMA} batteri
+STR_QUANTITY_BATTERIES                                          :{COMMA} batteri{P "" er}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastik
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} sodavand
 STR_ABBREV_NOTHING                                              :
