@@ -1024,7 +1024,7 @@ int8 SaveHighScoreValueNetwork(void)
 
 	/* Sort all active players with the highest score first */
 	FOR_ALL_PLAYERS(p) if (p->is_active) pl[count++] = p;
-	qsort(pl, count, sizeof(pl[0]), HighScoreSorter);
+	qsort((Player*)pl, count, sizeof(pl[0]), HighScoreSorter);
 
 	{
 		uint i;
