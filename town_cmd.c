@@ -77,7 +77,7 @@ typedef struct DrawTownTileStruct {
 
 static void TownDrawHouseLift(const TileInfo *ti)
 {
-	AddChildSpriteScreen(0x5A3, 0xE, 0x3C - GB(_m[ti->tile].m1, 0, 7));
+	AddChildSpriteScreen(SPR_LIFT, 14, 60 - GB(_m[ti->tile].m1, 0, 7));
 }
 
 typedef void TownDrawTileProc(const TileInfo *ti);
@@ -1021,7 +1021,6 @@ static Town *AllocateTown(void)
 int32 CmdBuildTown(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileIndex tile = TileVirtXY(x, y);
-	TileInfo ti;
 	Town *t;
 	uint32 townnameparts;
 
@@ -1035,9 +1034,9 @@ int32 CmdBuildTown(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP);
 
 	// Can only build on clear flat areas.
-	FindLandscapeHeightByTile(&ti, tile);
-	if (ti.type != MP_CLEAR || ti.tileh != 0)
+	if (!IsTileType(tile, MP_CLEAR) || GetTileSlope(tile, NULL) != 0) {
 		return_cmd_error(STR_0239_SITE_UNSUITABLE);
+	}
 
 	// Check distance to all other towns.
 	if (IsCloseToTown(tile, 20))
@@ -1063,7 +1062,6 @@ int32 CmdBuildTown(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 Town *CreateRandomTown(uint attempts)
 {
 	TileIndex tile;
-	TileInfo ti;
 	Town *t;
 	uint32 townnameparts;
 
@@ -1073,9 +1071,7 @@ Town *CreateRandomTown(uint attempts)
 		if (DistanceFromEdge(tile) < 20) continue;
 
 		// Make sure the tile is plain
-		FindLandscapeHeightByTile(&ti, tile);
-		if (ti.type != MP_CLEAR || ti.tileh != 0)
-			continue;
+		if (!IsTileType(tile, MP_CLEAR) || GetTileSlope(tile, NULL) != 0) continue;
 
 		// Check not too close to a town
 		if (IsCloseToTown(tile, 20)) continue;
@@ -1562,16 +1558,16 @@ static void TownActionRoadRebuild(Town *t, int action)
 
 static bool DoBuildStatueOfCompany(TileIndex tile)
 {
-	TileInfo ti;
 	PlayerID old;
 	int32 r;
 
-	FindLandscapeHeightByTile(&ti, tile);
-	if (ti.tileh != 0) return false;
+	if (GetTileSlope(tile, NULL) != 0) return false;
 
-	if (ti.type != MP_HOUSE && ti.type != MP_CLEAR && ti.type != MP_TREES)
+	if (!IsTileType(tile, MP_HOUSE) &&
+			!IsTileType(tile, MP_CLEAR) &&
+			!IsTileType(tile, MP_TREES)) {
 		return false;
-
+	}
 
 	old = _current_player;
 	_current_player = OWNER_NONE;
