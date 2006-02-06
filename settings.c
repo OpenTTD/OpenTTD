@@ -550,7 +550,7 @@ static const void *string_to_val(const SettingDesc *desc, const char *str)
 	switch (GetSettingGenericType(desc)) {
 	case SDT_NUMX: {
 		char *end;
-		uint32 val = strtoul(str, &end, 0);
+		unsigned long val = strtoul(str, &end, 0);
 		if (*end != '\0') ShowInfoF("ini: trailing characters at end of setting '%s'", desc->name);
 		return (void*)val;
 	}
