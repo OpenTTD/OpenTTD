@@ -428,7 +428,7 @@ void EnginesMonthlyLoop(void)
 				CalcEngineReliability(e);
 			}
 
-			if (!(e->flags & ENGINE_AVAILABLE) && (uint16)(_date - min(_date, 365)) >= e->intro_date) {
+			if (!(e->flags & ENGINE_AVAILABLE) && _date >= (e->intro_date + 365)) {
 				// Introduce it to all players
 				NewVehicleAvailable(e);
 			} else if (!(e->flags & (ENGINE_AVAILABLE|ENGINE_INTRODUCING)) && _date >= e->intro_date) {
