@@ -988,16 +988,13 @@ int8 SaveHighScoreValue(const Player *p)
 	for (i = 0; i < lengthof(_highscore_table[0]); i++) {
 		/* You are in the TOP5. Move all values one down and save us there */
 		if (hs[i].score <= score) {
-			char buf[sizeof(hs[i].company)];
-
 			// move all elements one down starting from the replaced one
 			memmove(&hs[i + 1], &hs[i], sizeof(HighScore) * (lengthof(_highscore_table[0]) - i - 1));
 			SetDParam(0, p->president_name_1);
 			SetDParam(1, p->president_name_2);
 			SetDParam(2, p->name_1);
 			SetDParam(3, p->name_2);
-			GetString(buf, STR_HIGHSCORE_NAME); // get manager/company name string
-			ttd_strlcpy(hs[i].company, buf, sizeof(buf));
+			GetString(hs[i].company, STR_HIGHSCORE_NAME); // get manager/company name string
 			hs[i].score = score;
 			hs[i].title = EndGameGetPerformanceTitleFromValue(score);
 			return i;
@@ -1040,16 +1037,12 @@ int8 SaveHighScoreValueNetwork(void)
 
 		/* Copy over Top5 companies */
 		for (i = 0; i < lengthof(_highscore_table[LAST_HS_ITEM]) && i < count; i++) {
-			char buf[sizeof(_highscore_table[0]->company)];
-
 			hs = &_highscore_table[LAST_HS_ITEM][i];
 			SetDParam(0, (*p_cur)->president_name_1);
 			SetDParam(1, (*p_cur)->president_name_2);
 			SetDParam(2, (*p_cur)->name_1);
 			SetDParam(3, (*p_cur)->name_2);
-			GetString(buf, STR_HIGHSCORE_NAME); // get manager/company name string
-
-			ttd_strlcpy(hs->company, buf, sizeof(buf));
+			GetString(hs->company, STR_HIGHSCORE_NAME); // get manager/company name string
 			hs->score = (*p_cur)->old_economy[0].performance_history;
 			hs->title = EndGameGetPerformanceTitleFromValue(hs->score);
 
