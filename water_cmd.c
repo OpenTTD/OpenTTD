@@ -375,20 +375,28 @@ void DrawCanalWater(TileIndex tile)
 	if (!(wa & 8)) DrawGroundSprite(SPR_CANALS_BASE + 60);
 
 	// right corner
-	if ((wa & 3) == 0) DrawGroundSprite(SPR_CANALS_BASE + 57 + 4);
-	else if ((wa & 3) == 3 && !IsWateredTile(TILE_ADDXY(tile, -1, 1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 8);
+	switch (wa & 0x03) {
+		case 0: DrawGroundSprite(SPR_CANALS_BASE + 57 + 4); break;
+		case 3: if (!IsWateredTile(TILE_ADDXY(tile, -1, 1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 8); break;
+	}
 
 	// bottom corner
-	if ((wa & 6) == 0) DrawGroundSprite(SPR_CANALS_BASE + 57 + 5);
-	else if ((wa & 6) == 6 && !IsWateredTile(TILE_ADDXY(tile, 1, 1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 9);
+	switch (wa & 0x06) {
+		case 0: DrawGroundSprite(SPR_CANALS_BASE + 57 + 5); break;
+		case 6: if (!IsWateredTile(TILE_ADDXY(tile, 1, 1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 9); break;
+	}
 
 	// left corner
-	if ((wa & 12) == 0) DrawGroundSprite(SPR_CANALS_BASE + 57 + 6);
-	else if ((wa & 12) == 12 && !IsWateredTile(TILE_ADDXY(tile, 1, -1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 10);
+	switch (wa & 0x0C) {
+		case  0: DrawGroundSprite(SPR_CANALS_BASE + 57 + 6); break;
+		case 12: if (!IsWateredTile(TILE_ADDXY(tile, 1, -1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 10); break;
+	}
 
 	// upper corner
-	if ((wa & 9) == 0) DrawGroundSprite(SPR_CANALS_BASE + 57 + 7);
-	else if ((wa & 9) == 9 && !IsWateredTile(TILE_ADDXY(tile, -1, -1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 11);
+	switch (wa & 0x09) {
+		case 0: DrawGroundSprite(SPR_CANALS_BASE + 57 + 7); break;
+		case 9: if (!IsWateredTile(TILE_ADDXY(tile, -1, -1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 11); break;
+	}
 }
 
 typedef struct LocksDrawTileStruct {
@@ -403,12 +411,10 @@ static void DrawWaterStuff(const TileInfo *ti, const WaterDrawTileStruct *wdts,
 	uint32 palette, uint base
 )
 {
-	uint32 image;
-
 	DrawGroundSprite(wdts++->image);
 
 	for (; wdts->delta_x != 0x80; wdts++) {
-		image =	wdts->image + base;
+		uint32 image = wdts->image + base;
 		if (_display_opt & DO_TRANS_BUILDINGS) {
 			MAKE_TRANSPARENT(image);
 		} else {
@@ -624,7 +630,6 @@ static void FloodVehicle(Vehicle *v)
 // called from tunnelbridge_cmd
 void TileLoop_Water(TileIndex tile)
 {
-	int i;
 	static const TileIndexDiffC _tile_loop_offs_array[][5] = {
 		// tile to mod																shore?				shore?
 		{{-1,  0}, {0, 0}, {0, 1}, {-1,  0}, {-1,  1}},
@@ -635,6 +640,8 @@ void TileLoop_Water(TileIndex tile)
 
 	if (IS_INT_INSIDE(TileX(tile), 1, MapSizeX() - 3 + 1) &&
 			IS_INT_INSIDE(TileY(tile), 1, MapSizeY() - 3 + 1)) {
+		uint i;
+
 		for (i = 0; i != lengthof(_tile_loop_offs_array); i++) {
 			TileLoopWaterHelper(tile, _tile_loop_offs_array[i]);
 		}

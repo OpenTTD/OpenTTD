@@ -347,12 +347,10 @@ static inline TileType GetEffectiveTileType(TileIndex tile)
 	if (t == MP_TUNNELBRIDGE) {
 		t = _m[tile].m5;
 		if ((t & 0x80) == 0) t >>= 1;
-		if ((t & 6) == 0) {
-			t = MP_RAILWAY;
-		} else if ((t & 6) == 2) {
-			t = MP_STREET;
-		} else {
-			t = MP_WATER;
+		switch (t & 0x06) {
+			case 0x00: t = MP_RAILWAY; break;
+			case 0x02: t = MP_STREET;  break;
+			default:   t = MP_WATER;   break;
 		}
 	}
 	return t;
@@ -642,11 +640,9 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 	y = 0;
 
 	for (;;) {
-		uint32 mask;
+		uint32 mask = 0xFFFFFFFF;
 		int reps;
 		int t;
-
-		mask = 0xFFFFFFFF;
 
 		/* distance from left edge */
 		if (x < 0) {
@@ -895,7 +891,7 @@ void ShowSmallMap(void)
 	int x,y;
 
 	w = AllocateWindowDescFront(&_smallmap_desc, 0);
-	if (w) {
+	if (w != NULL) {
 		w->click_state = ((1<<5) << _smallmap_type) | (_smallmap_show_towns << 12);
 		w->resize.width = 350;
 		w->resize.height = 250;
@@ -993,12 +989,10 @@ void ShowExtraViewPortWindow(void)
 	int i = 0;
 
 	// find next free window number for extra viewport
-	while (FindWindowById(WC_EXTRA_VIEW_PORT, i) ) {
-		i++;
-	}
+	while (FindWindowById(WC_EXTRA_VIEW_PORT, i) != NULL) i++;
 
 	w = AllocateWindowDescFront(&_extra_view_port_desc, i);
-	if (w) {
+	if (w != NULL) {
 		int x, y;
 		// the main window with the main view
 		v = FindWindowById(WC_MAIN_WINDOW, 0);

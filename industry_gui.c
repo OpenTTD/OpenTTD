@@ -280,22 +280,22 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 
 	switch (e->event) {
 	case WE_PAINT: {
-		const Industry *i;
-		StringID str;
+		const Industry* i = GetIndustry(w->window_number);
 
-		i = GetIndustry(w->window_number);
 		SetDParam(0, w->window_number);
 		DrawWindowWidgets(w);
 
 		if (i->accepts_cargo[0] != CT_INVALID) {
+			StringID str;
+
 			SetDParam(0, _cargoc.names_s[i->accepts_cargo[0]]);
 			str = STR_4827_REQUIRES;
 			if (i->accepts_cargo[1] != CT_INVALID) {
 				SetDParam(1, _cargoc.names_s[i->accepts_cargo[1]]);
-				str++;
+				str = STR_4828_REQUIRES;
 				if (i->accepts_cargo[2] != CT_INVALID) {
 					SetDParam(2, _cargoc.names_s[i->accepts_cargo[2]]);
-					str++;
+					str = STR_4829_REQUIRES;
 				}
 			}
 			DrawString(2, 107, str, 0);
@@ -442,17 +442,14 @@ static const WindowDesc _industry_view_desc = {
 
 void ShowIndustryViewWindow(int industry)
 {
-	Window *w;
-	Industry *i;
+	Window* w = AllocateWindowDescFront(&_industry_view_desc, industry);
 
-	w = AllocateWindowDescFront(&_industry_view_desc, industry);
-	if (w) {
+	if (w != NULL) {
 		w->flags4 |= WF_DISABLE_VP_SCROLL;
 		WP(w,vp2_d).data_1 = 0;
 		WP(w,vp2_d).data_2 = 0;
 		WP(w,vp2_d).data_3 = 0;
-		i = GetIndustry(w->window_number);
-		AssignWindowViewport(w, 3, 17, 0xFE, 0x56, i->xy + TileDiffXY(1, 1), 1);
+		AssignWindowViewport(w, 3, 17, 0xFE, 0x56, GetIndustry(w->window_number)->xy + TileDiffXY(1, 1), 1);
 	}
 }
 
@@ -550,8 +547,7 @@ static void MakeSortedIndustryList(void)
 		error("Could not allocate memory for the industry-sorting-list");
 
 	FOR_ALL_INDUSTRIES(i) {
-		if (i->xy)
-			_industry_sort[n++] = i->index;
+		if (i->xy != 0) _industry_sort[n++] = i->index;
 	}
 	_num_industry_sort = n;
 	_last_industry_idx = 0xFFFF; // used for "cache"
@@ -568,7 +564,6 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT: {
 		int n;
 		uint p;
-		Industry *i;
 		static const uint16 _indicator_positions[4] = {88, 187, 284, 387};
 
 		if (_industry_sort_dirty) {
@@ -585,7 +580,8 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 		n = 0;
 
 		while (p < _num_industry_sort) {
-			i = GetIndustry(_industry_sort[p]);
+			const Industry* i = GetIndustry(_industry_sort[p]);
+
 			SetDParam(0, i->index);
 			if (i->produced_cargo[0] != CT_INVALID) {
 				SetDParam(1, _cargoc.names_long[i->produced_cargo[0]]);
@@ -638,14 +634,11 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 		case 8: {
 			int y = (e->click.pt.y - 28) / 10;
 			uint16 p;
-			Industry *c;
 
-			if (!IS_INT_INSIDE(y, 0, w->vscroll.cap))
-				return;
+			if (!IS_INT_INSIDE(y, 0, w->vscroll.cap)) return;
 			p = y + w->vscroll.pos;
 			if (p < _num_industry_sort) {
-				c = GetIndustry(_industry_sort[p]);
-				ScrollMainWindowToTile(c->xy);
+				ScrollMainWindowToTile(GetIndustry(_industry_sort[p])->xy);
 			}
 		} break;
 		}
@@ -674,11 +667,9 @@ static const WindowDesc _industry_directory_desc = {
 
 void ShowIndustryDirectory(void)
 {
-	/* Industry List */
-	Window *w;
+	Window* w = AllocateWindowDescFront(&_industry_directory_desc, 0);
 
-	w = AllocateWindowDescFront(&_industry_directory_desc, 0);
-	if (w) {
+	if (w != NULL) {
 		w->vscroll.cap = 16;
 		w->resize.height = w->height - 6 * 10; // minimum 10 items
 		w->resize.step_height = 10;

@@ -100,8 +100,8 @@ void NetworkSend_Packet(Packet *packet, NetworkClientState *cs)
 	packet->pos = 0;
 	packet->next = NULL;
 
-	packet->buffer[0] = packet->size & 0xFF;
-	packet->buffer[1] = packet->size >> 8;
+	packet->buffer[0] = GB(packet->size, 0, 8);
+	packet->buffer[1] = GB(packet->size, 8, 8);
 
 	// Locate last packet buffered for the client
 	p = cs->packet_queue;

@@ -981,18 +981,20 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 			byte click_side = 1;
 
 			switch (e->click.widget) {
-				case 12: {
-						WP(w, replaceveh_d).wagon_btnstate = !(WP(w, replaceveh_d).wagon_btnstate);
-						SetWindowDirty(w);
-						break;
-					}
-				case 14: case 15: { /* Select sorting criteria dropdown menu */
+				case 12:
+					WP(w, replaceveh_d).wagon_btnstate = !(WP(w, replaceveh_d).wagon_btnstate);
+					SetWindowDirty(w);
+					break;
+
+				case 14:
+				case 15: /* Railtype selection dropdown menu */
 					ShowDropDownMenu(w, _rail_types_list, _railtype_selected_in_replace_gui, 15, 0, ~GetPlayer(_local_player)->avail_railtypes);
 					break;
-				}
-				case 17: { /* toggle renew_keep_length */
+
+				case 17: /* toggle renew_keep_length */
 					DoCommandP(0, 5, GetPlayer(_local_player)->renew_keep_length ? 0 : 1, NULL, CMD_REPLACE_VEHICLE);
-				} break;
+					break;
+
 				case 4: { /* Start replacing */
 					EngineID veh_from = WP(w, replaceveh_d).sel_engine[0];
 					EngineID veh_to = WP(w, replaceveh_d).sel_engine[1];
@@ -1012,29 +1014,32 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 					click_scroll_pos = w->vscroll.pos;
 					click_scroll_cap = w->vscroll.cap;
 					click_side = 0;
+					/* FALL THROUGH */
+
 				case 9: {
 					uint i = (e->click.pt.y - 14) / w->resize.step_height;
 					if (i < click_scroll_cap) {
 						WP(w,replaceveh_d).sel_index[click_side] = i + click_scroll_pos;
 						SetWindowDirty(w);
 					}
-				} break;
+					break;
+				}
 			}
+			break;
+		}
 
-		} break;
-
-		case WE_DROPDOWN_SELECT: { /* we have selected a dropdown item in the list */
+		case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
 			_railtype_selected_in_replace_gui = e->dropdown.index;
 			SetWindowDirty(w);
-		} break;
+			break;
 
-		case WE_RESIZE: {
+		case WE_RESIZE:
 			w->vscroll.cap  += e->sizing.diff.y / (int)w->resize.step_height;
 			w->vscroll2.cap += e->sizing.diff.y / (int)w->resize.step_height;
 
 			w->widget[7].unkA = (w->vscroll.cap  << 8) + 1;
 			w->widget[9].unkA = (w->vscroll2.cap << 8) + 1;
-		} break;
+			break;
 	}
 }
 

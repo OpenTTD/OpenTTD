@@ -102,7 +102,7 @@ static void OpenBankFile(const char *filename)
 
 static bool SetBankSource(MixerChannel *mc, uint bank)
 {
-	FileEntry* fe;
+	const FileEntry* fe;
 	int8* mem;
 	uint i;
 

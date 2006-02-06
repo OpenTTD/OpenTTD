@@ -1469,10 +1469,11 @@ static void DrawTile_Track(TileInfo *ti)
 				DrawGroundSprite(image);
 
 				foreach_draw_tile_seq(seq, cust->seq) {
-					uint32 image = seq->image + relocation;
-					DrawSpecialBuilding(image, 0, ti,
-					                    seq->delta_x, seq->delta_y, seq->delta_z,
-					                    seq->width, seq->height, seq->unk);
+					DrawSpecialBuilding(
+						seq->image + relocation, 0, ti,
+						seq->delta_x, seq->delta_y, seq->delta_z,
+						seq->width, seq->height, seq->unk
+					);
 				}
 				return;
 			}

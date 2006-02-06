@@ -66,13 +66,12 @@ int GetRoadVehImage(const Vehicle *v, byte direction)
 
 	if (is_custom_sprite(img)) {
 		image = GetCustomVehicleSprite(v, direction);
-		if (image) return image;
+		if (image != 0) return image;
 		img = orig_road_vehicle_info[v->engine_type - ROAD_ENGINES_INDEX].image_index;
 	}
 
 	image = direction + _roadveh_images[img];
-	if (v->cargo_count >= (v->cargo_cap >> 1))
-		image += _roadveh_full_adder[img];
+	if (v->cargo_count >= v->cargo_cap / 2) image += _roadveh_full_adder[img];
 	return image;
 }
 
@@ -509,12 +508,12 @@ static void RoadVehIsCrashed(Vehicle *v)
 
 static void *EnumCheckRoadVehCrashTrain(Vehicle *v, Vehicle *u)
 {
-	if (v->type != VEH_Train ||
-			myabs(v->z_pos - u->z_pos) > 6 ||
-			myabs(v->x_pos - u->x_pos) > 4 ||
-			myabs(v->y_pos - u->y_pos) > 4)
-				return NULL;
-	return v;
+	return
+		v->type == VEH_Train &&
+		myabs(v->z_pos - u->z_pos) <= 6 &&
+		myabs(v->x_pos - u->x_pos) <= 4 &&
+		myabs(v->y_pos - u->y_pos) <= 4 ?
+			v : NULL;
 }
 
 static void RoadVehCrash(Vehicle *v)
@@ -527,7 +526,7 @@ static void RoadVehCrash(Vehicle *v)
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 
 	pass = 1;
-	if (v->cargo_type == 0) pass += v->cargo_count;
+	if (v->cargo_type == CT_PASSENGERS) pass += v->cargo_count;
 	v->cargo_count = 0;
 
 	SetDParam(0, pass);
@@ -573,13 +572,12 @@ static void HandleBrokenRoadVeh(Vehicle *v)
 
 		if (!(v->vehstatus & VS_HIDDEN)) {
 			Vehicle *u = CreateEffectVehicleRel(v, 4, 4, 5, EV_BREAKDOWN_SMOKE);
-			if (u)
-				u->u.special.unk0 = v->breakdown_delay * 2;
+			if (u != NULL) u->u.special.unk0 = v->breakdown_delay * 2;
 		}
 	}
 
-	if (!(v->tick_counter & 1)) {
-		if (!--v->breakdown_delay) {
+	if ((v->tick_counter & 1) == 0) {
+		if (--v->breakdown_delay == 0) {
 			v->breakdown_ctr = 0;
 			InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 		}
@@ -1643,7 +1641,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 			}
 
 			// best_stop now contains the best stop we found.
-			if (best_stop) {
+			if (best_stop != NULL) {
 				int slot;
 				// Find a free slot in this stop. We know that at least one is free.
 				assert(best_stop->slot[0] == INVALID_SLOT || best_stop->slot[1] == INVALID_SLOT);
@@ -1654,7 +1652,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 				v->u.road.slot_age = -5;
 				v->u.road.slotindex = slot;
 				DEBUG(ms, 1) ("Multistop: Slot %d at 0x%x assigned to vehicle %d (0x%x)", slot, best_stop->xy, v->unitnumber, v->tile);
-			} else if (first_stop) {
+			} else if (first_stop != NULL) {
 				//now we couldn't assign a slot for one reason or another.
 				//so we just go towards the first station
 				DEBUG(ms, 1) ("Multistop: No free slot found for vehicle %d, going to default station", v->unitnumber);

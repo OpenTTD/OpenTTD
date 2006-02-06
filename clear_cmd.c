@@ -637,10 +637,9 @@ static void TileLoop_Clear(TileIndex tile)
 {
 	TileLoopClearHelper(tile);
 
-	if (_opt.landscape == LT_DESERT) {
-		TileLoopClearDesert(tile);
-	} else if (_opt.landscape == LT_HILLY) {
-		TileLoopClearAlps(tile);
+	switch (_opt.landscape) {
+		case LT_DESERT: TileLoopClearDesert(tile); break;
+		case LT_HILLY:  TileLoopClearAlps(tile);   break;
 	}
 
 	switch (GetClearGround(tile)) {

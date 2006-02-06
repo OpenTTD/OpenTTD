@@ -346,14 +346,12 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 					DeleteVehicle(v);
 				} else {
 					v->owner = new_player;
-					if (v->type == VEH_Train && IsFrontEngine(v))
-						v->unitnumber = ++num_train;
-					else if (v->type == VEH_Road)
-						v->unitnumber = ++num_road;
-					else if (v->type == VEH_Ship)
-						v->unitnumber = ++num_ship;
-					else if (v->type == VEH_Aircraft && v->subtype <= 2)
-						v->unitnumber = ++num_aircraft;
+					switch (v->type) {
+						case VEH_Train:    if (IsFrontEngine(v)) v->unitnumber = ++num_train; break;
+						case VEH_Road:     v->unitnumber = ++num_road; break;
+						case VEH_Ship:     v->unitnumber = ++num_ship; break;
+						case VEH_Aircraft: if (v->subtype <= 2) v->unitnumber = ++num_aircraft; break;
+					}
 				}
 			}
 		}
@@ -1190,10 +1188,17 @@ static bool CheckSubsidised(Station *from, Station *to, byte cargo_type)
 			if (DistanceMax(xy, from->xy) > 9) continue;
 
 			/* Check distance from dest */
-			if (cargo_type == CT_PASSENGERS || cargo_type == CT_MAIL || cargo_type == CT_GOODS || cargo_type == CT_FOOD) {
-				xy = GetTown(s->to)->xy;
-			} else {
-				xy = (GetIndustry(s->to))->xy;
+			switch (cargo_type) {
+				case CT_PASSENGERS:
+				case CT_MAIL:
+				case CT_GOODS:
+				case CT_FOOD:
+					xy = GetTown(s->to)->xy;
+					break;
+
+				default:
+					xy = GetIndustry(s->to)->xy;
+					break;
 			}
 			if (DistanceMax(xy, to->xy) > 9) continue;
 
@@ -1256,18 +1261,11 @@ static int32 DeliverGoods(int num_pieces, byte cargo_type, uint16 source, uint16
 
 	// Modify profit if a subsidy is in effect
 	if (subsidised) {
-		if (_opt.diff.subsidy_multiplier < 1) {
-			/* 1.5x */
-			profit += profit >> 1;
-		} else if (_opt.diff.subsidy_multiplier == 1) {
-			/* 2x */
-			profit *= 2;
-		} else if (_opt.diff.subsidy_multiplier == 2) {
-			/* 3x */
-			profit *= 3;
-		} else {
-			/* 4x */
-			profit *= 4;
+		switch (_opt.diff.subsidy_multiplier) {
+			case 0:  profit += profit >> 1;
+			case 1:  profit *= 2;
+			case 2:  profit *= 3;
+			default: profit *= 4;
 		}
 	}
 
@@ -1353,7 +1351,8 @@ int LoadUnloadVehicle(Vehicle *v)
 	old_player = _current_player;
 	_current_player = v->owner;
 
-	st = GetStation(last_visited = v->last_station_visited);
+	last_visited = v->last_station_visited;
+	st = GetStation(last_visited);
 
 	for (; v != NULL; v = v->next) {
 		GoodsEntry* ge;
@@ -1413,12 +1412,14 @@ int LoadUnloadVehicle(Vehicle *v)
 
 		/* update stats */
 		ge->days_since_pickup = 0;
-		t = u->max_speed;
-		if (u->type == VEH_Road) t >>=1;
-		if (u->type == VEH_Train) t = u->u.rail.cached_max_speed;
+		switch (u->type) {
+			case VEH_Train: t = u->u.rail.cached_max_speed; break;
+			case VEH_Road:  t = u->max_speed / 2;           break;
+			default:        t = u->max_speed;               break;
+		}
 
 		// if last speed is 0, we treat that as if no vehicle has ever visited the station.
-		ge->last_speed = t < 255 ? t : 255;
+		ge->last_speed = min(t, 255);
 		ge->last_age = _cur_year - v->build_year;
 
 		// If there's goods waiting at the station, and the vehicle

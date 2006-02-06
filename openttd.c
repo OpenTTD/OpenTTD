@@ -657,7 +657,7 @@ static void StartScenario(void)
 	}
 
 	_opt_ptr = &_opt;
-	memcpy(&_opt_ptr->diff, &_opt_newgame.diff, sizeof(GameDifficulty));
+	memcpy(&_opt_ptr->diff, &_opt_newgame.diff, sizeof(_opt_ptr->diff));
 	_opt.diff_level = _opt_newgame.diff_level;
 
 	// Inititalize data
@@ -731,7 +731,7 @@ void SwitchMode(int new_mode)
 	case SM_NEWGAME: /* New Game --> 'Random game' */
 #ifdef ENABLE_NETWORK
 		if (_network_server) {
-			snprintf(_network_game_info.map_name, NETWORK_NAME_LENGTH, "Random Map");
+			snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "Random Map");
 		}
 #endif /* ENABLE_NETWORK */
 		MakeNewGame();
@@ -740,7 +740,7 @@ void SwitchMode(int new_mode)
 	case SM_START_SCENARIO: /* New Game --> Choose one of the preset scenarios */
 #ifdef ENABLE_NETWORK
 		if (_network_server) {
-			snprintf(_network_game_info.map_name, NETWORK_NAME_LENGTH, "%s (Loaded scenario)", _file_to_saveload.title);
+			snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "%s (Loaded scenario)", _file_to_saveload.title);
 		}
 #endif /* ENABLE_NETWORK */
 		StartScenario();
@@ -757,7 +757,7 @@ void SwitchMode(int new_mode)
 			DoCommandP(0, 0, 0, NULL, CMD_PAUSE); // decrease pause counter (was increased from opening load dialog)
 #ifdef ENABLE_NETWORK
 			if (_network_server) {
-				snprintf(_network_game_info.map_name, NETWORK_NAME_LENGTH, "%s (Loaded game)", _file_to_saveload.title);
+				snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "%s (Loaded game)", _file_to_saveload.title);
 			}
 #endif /* ENABLE_NETWORK */
 		}

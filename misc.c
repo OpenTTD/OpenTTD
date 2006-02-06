@@ -78,7 +78,9 @@ uint InteractiveRandomRange(uint max)
 void SetDate(uint date)
 {
 	YearMonthDay ymd;
-	ConvertDayToYMD(&ymd, _date = date);
+
+	_date = date;
+	ConvertDayToYMD(&ymd, date);
 	_cur_year = ymd.year;
 	_cur_month = ymd.month;
 #ifdef ENABLE_NETWORK
@@ -186,8 +188,6 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 
 void GenerateWorld(int mode, uint size_x, uint size_y)
 {
-	int i;
-
 	// Make sure everything is done via OWNER_NONE
 	_current_player = OWNER_NONE;
 
@@ -223,7 +223,9 @@ void GenerateWorld(int mode, uint size_x, uint size_y)
 
 	// No need to run the tile loop in the scenario editor.
 	if (mode != GW_EMPTY) {
-		for (i = 0x500; i != 0; i--) RunTileLoop();
+		uint i;
+
+		for (i = 0; i < 0x500; i++) RunTileLoop();
 	}
 
 	ResetObjectToPlace();
@@ -410,7 +412,7 @@ typedef struct LandscapePredefVar {
 void InitializeLandscapeVariables(bool only_constants)
 {
 	const LandscapePredefVar *lpd;
-	int i;
+	uint i;
 	StringID str;
 
 	lpd = &_landscape_predef_var[_opt.landscape];
@@ -487,7 +489,8 @@ static const uint16 _autosave_months[] = {
  */
 static void RunVehicleDayProc(uint daytick)
 {
-	uint i, total = _vehicle_pool.total_items;
+	uint total = _vehicle_pool.total_items;
+	uint i;
 
 	for (i = daytick; i < total; i += DAY_TICKS) {
 		Vehicle* v = GetVehicle(i);
@@ -976,13 +979,13 @@ static void Save_CHTS(void)
 
 static void Load_CHTS(void)
 {
-	Cheat* cht = (Cheat*) &_cheats;
+	Cheat* cht = (Cheat*)&_cheats;
+	uint count = SlGetFieldLength() / 2;
+	uint i;
 
-	uint count = SlGetFieldLength()/2;
-	for (; count; count--, cht++)
-	{
-		cht->been_used = (byte)SlReadByte();
-		cht->value = (byte)SlReadByte();
+	for (i = 0; i < count; i++) {
+		cht[i].been_used = SlReadByte();
+		cht[i].value     = SlReadByte();
 	}
 }
 

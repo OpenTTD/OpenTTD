@@ -898,10 +898,11 @@ static void Disaster6_Init(void)
 static void Disaster7_Init(void)
 {
 	int index = GB(Random(), 0, 4);
-	Industry *i;
 	uint m;
 
 	for (m = 0; m < 15; m++) {
+		const Industry* i;
+
 		FOR_ALL_INDUSTRIES(i) {
 			if (i->xy != 0 && i->type == IT_COAL_MINE && --index < 0) {
 				SetDParam(0, i->town->index);

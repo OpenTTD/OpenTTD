@@ -1112,9 +1112,8 @@ static const StringID _road_tile_strings[] = {
 
 static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
 {
-	int i = (_m[tile].m5 >> 4);
-	if (i == 0)
-		i = GB(_m[tile].m4, 4, 3) + 3;
+	int i = GB(_m[tile].m5, 4, 4);
+	if (i == 0) i = GB(_m[tile].m4, 4, 3) + 3;
 	td->str = _road_tile_strings[i - 1];
 	td->owner = GetTileOwner(tile);
 }

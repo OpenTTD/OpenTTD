@@ -1325,7 +1325,7 @@ int32 CmdBuildRoadStop(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	/* Find a station close to us */
 	if (st == NULL) {
 		st = GetClosestStationFromTile(tile, 8, _current_player);
-		if (st != NULL && st->facilities) st = NULL;
+		if (st != NULL && st->facilities != 0) st = NULL;
 	}
 
 	//give us a road stop in the list, and check if something went wrong
@@ -1334,7 +1334,8 @@ int32 CmdBuildRoadStop(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(type ? STR_3008B_TOO_MANY_TRUCK_STOPS : STR_3008A_TOO_MANY_BUS_STOPS);
 	}
 
-	if (st != NULL && GetNumRoadStops(st, RS_BUS) + GetNumRoadStops(st, RS_TRUCK) >= ROAD_STOP_LIMIT) {
+	if (st != NULL &&
+			GetNumRoadStops(st, RS_BUS) + GetNumRoadStops(st, RS_TRUCK) >= ROAD_STOP_LIMIT) {
 		return_cmd_error(type ? STR_3008B_TOO_MANY_TRUCK_STOPS : STR_3008A_TOO_MANY_BUS_STOPS);
 	}
 
@@ -2172,19 +2173,18 @@ static const byte _enter_station_speedtable[12] = {
 
 static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 {
-	StationID station_id;
-	byte dir;
-
 	if (v->type == VEH_Train) {
 		if (IS_BYTE_INSIDE(_m[tile].m5, 0, 8) && IsFrontEngine(v) &&
 				!IsCompatibleTrainStationTile(tile + TileOffsByDir(v->direction >> 1), tile)) {
+			StationID station_id = _m[tile].m2;
 
-			station_id = _m[tile].m2;
 			if ((!(v->current_order.flags & OF_NON_STOP) && !_patches.new_nonstop) ||
 					(v->current_order.type == OT_GOTO_STATION && v->current_order.station == station_id)) {
 				if (!(_patches.new_nonstop && v->current_order.flags & OF_NON_STOP) &&
 						v->current_order.type != OT_LEAVESTATION &&
 						v->last_station_visited != station_id) {
+					byte dir;
+
 					x &= 0xF;
 					y &= 0xF;
 

@@ -3,11 +3,11 @@
 #ifndef TREE_LAND_H
 #define TREE_LAND_H
 
-static const SpriteID _tree_sprites_1[4] = {
-	0x118D,
-	0x11A0,
-	0x11B3,
-	0x11C6,
+static const SpriteID _tree_sprites_1[] = {
+	SPR_FLAT_1_QUART_SNOWY_TILE,
+	SPR_FLAT_2_QUART_SNOWY_TILE,
+	SPR_FLAT_3_QUART_SNOWY_TILE,
+	SPR_FLAT_SNOWY_TILE
 };
 
 static const byte _tree_base_by_landscape[4] = {0, 12, 20, 32};

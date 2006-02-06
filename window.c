@@ -1144,8 +1144,8 @@ static bool HandleScrollbarScrolling(void)
 static bool HandleViewportScroll(void)
 {
 	Window *w;
-	ViewPort *vp;
-	int dx,dy, x, y, sub;
+	int dx;
+	int dy;
 
 	if (!_scrolling_viewport) return true;
 
@@ -1168,17 +1168,18 @@ stop_capt:;
 	}
 
 	if (w->window_class != WC_SMALLMAP) {
-		vp = IsPtInWindowViewport(w, _cursor.pos.x, _cursor.pos.y);
+		ViewPort* vp = IsPtInWindowViewport(w, _cursor.pos.x, _cursor.pos.y);
+
 		if (vp == NULL)
 			goto stop_capt;
 
 		WP(w,vp_d).scrollpos_x += dx << vp->zoom;
 		WP(w,vp_d).scrollpos_y += dy << vp->zoom;
 
-		_cursor.delta.x = _cursor.delta.y = 0;
-		return false;
 	} else {
-		// scroll the smallmap ?
+		int x;
+		int y;
+		int sub;
 		int hx;
 		int hy;
 		int hvx;
@@ -1233,11 +1234,12 @@ stop_capt:;
 		WP(w,smallmap_d).scroll_y = y;
 		WP(w,smallmap_d).subscroll = sub;
 
-		_cursor.delta.x = _cursor.delta.y = 0;
-
 		SetWindowDirty(w);
-		return false;
 	}
+
+	_cursor.delta.x = 0;
+	_cursor.delta.y = 0;
+	return false;
 }
 
 static Window *MaybeBringWindowToFront(Window *w)
@@ -1376,7 +1378,7 @@ static void MouseLoop(int click, int mousewheel)
 			w = FindWindowFromPt(x, y);
 			if (w == NULL || w->flags4 & WF_DISABLE_VP_SCROLL) return;
 			vp = IsPtInWindowViewport(w, x, y);
-			if (vp) {
+			if (vp != NULL) {
 				x -= vp->left;
 				y -= vp->top;
 				//here allows scrolling in both x and y axis
@@ -1662,26 +1664,40 @@ void RelocateAllWindows(int neww, int newh)
 
 		IConsoleResize();
 
-		if (w->window_class == WC_MAIN_TOOLBAR) {
-			top = w->top;
-			left = PositionMainToolbar(w); // changes toolbar orientation
-		} else if (w->window_class == WC_SELECT_GAME || w->window_class == WC_GAME_OPTIONS || w->window_class == WC_NETWORK_WINDOW){
-			top = (newh - w->height) >> 1;
-			left = (neww - w->width) >> 1;
-		} else if (w->window_class == WC_NEWS_WINDOW) {
-			top = newh - w->height;
-			left = (neww - w->width) >> 1;
-		} else if (w->window_class == WC_STATUS_BAR) {
-			top = newh - w->height;
-			left = (neww - w->width) >> 1;
-		} else if (w->window_class == WC_SEND_NETWORK_MSG) {
-			top = (newh - 26); // 26 = height of status bar + height of chat bar
-			left = (neww - w->width) >> 1;
-		} else {
-			left = w->left;
-			if (left + (w->width>>1) >= neww) left = neww - w->width;
-			top = w->top;
-			if (top + (w->height>>1) >= newh) top = newh - w->height;
+		switch (w->window_class) {
+			case WC_MAIN_TOOLBAR:
+				top = w->top;
+				left = PositionMainToolbar(w); // changes toolbar orientation
+				break;
+
+			case WC_SELECT_GAME:
+			case WC_GAME_OPTIONS:
+			case WC_NETWORK_WINDOW:
+				top = (newh - w->height) >> 1;
+				left = (neww - w->width) >> 1;
+				break;
+
+			case WC_NEWS_WINDOW:
+				top = newh - w->height;
+				left = (neww - w->width) >> 1;
+				break;
+
+			case WC_STATUS_BAR:
+				top = newh - w->height;
+				left = (neww - w->width) >> 1;
+				break;
+
+			case WC_SEND_NETWORK_MSG:
+				top = (newh - 26); // 26 = height of status bar + height of chat bar
+				left = (neww - w->width) >> 1;
+				break;
+
+			default:
+				left = w->left;
+				if (left + (w->width >> 1) >= neww) left = neww - w->width;
+				top = w->top;
+				if (top + (w->height >> 1) >= newh) top = newh - w->height;
+				break;
 		}
 
 		if (w->viewport != NULL) {

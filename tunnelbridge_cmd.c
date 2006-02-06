@@ -1466,12 +1466,12 @@ static const byte _tunnel_fractcoord_7[4] = {0x52, 0x85, 0x96, 0x49};
 
 static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y)
 {
-	int z;
 	int dir, vdir;
-	byte fc;
 
 	if (GB(_m[tile].m5, 4, 4) == 0) {
-		z = GetSlopeZ(x, y) - v->z_pos;
+		int z = GetSlopeZ(x, y) - v->z_pos;
+		byte fc;
+
 		if (myabs(z) > 2) return 8;
 
 		if (v->type == VEH_Train) {

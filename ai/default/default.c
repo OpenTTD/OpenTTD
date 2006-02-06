@@ -2778,8 +2778,7 @@ static bool AiEnumFollowRoad(TileIndex tile, AiRoadEnum *a, int track, uint leng
 	if (dist <= a->best_dist) {
 		TileIndex tile2 = TILE_MASK(tile + TileOffsByDir(_dir_by_track[track]));
 
-		if (IsTileType(tile2, MP_STREET) &&
-				(_m[tile2].m5&0xF0) == 0) {
+		if (IsTileType(tile2, MP_STREET) && GB(_m[tile2].m5, 4, 4) == 0) {
 			a->best_dist = dist;
 			a->best_tile = tile;
 			a->best_track = track;

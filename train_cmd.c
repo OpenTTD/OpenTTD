@@ -44,9 +44,7 @@ static void TrainCargoChanged(Vehicle* v)
 
 	for (u = v; u != NULL; u = u->next) {
 		const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
-		uint16 vweight = 0;
-
-		vweight += (_cargoc.weights[u->cargo_type] * u->cargo_count) / 16;
+		uint16 vweight = (_cargoc.weights[u->cargo_type] * u->cargo_count) / 16;
 
 		// Vehicle weight is not added for articulated parts.
 		if (!IsArticulatedPart(u)) {

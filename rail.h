@@ -635,9 +635,9 @@ static inline bool TracksOverlap(TrackBits bits)
   /* We know that there are at least two tracks present. When there are more
    * than 2 tracks, they will surely overlap. When there are two, they will
    * always overlap unless they are lower & upper or right & left. */
-  if ((bits == (TRACK_BIT_UPPER|TRACK_BIT_LOWER)) || (bits == (TRACK_BIT_LEFT | TRACK_BIT_RIGHT)))
-    return false;
-  return true;
+	return
+		bits != (TRACK_BIT_UPPER | TRACK_BIT_LOWER) &&
+		bits != (TRACK_BIT_LEFT  | TRACK_BIT_RIGHT);
 }
 
 void DrawTrainDepotSprite(int x, int y, int image, RailType railtype);

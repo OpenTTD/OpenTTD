@@ -98,7 +98,7 @@ int GetAircraftImage(const Vehicle *v, byte direction)
 	if (is_custom_sprite(spritenum)) {
 		int sprite = GetCustomVehicleSprite(v, direction);
 
-		if (sprite) return sprite;
+		if (sprite != 0) return sprite;
 		spritenum = orig_aircraft_vehicle_info[v->engine_type - AIRCRAFT_ENGINES_INDEX].image_index;
 	}
 	return direction + _aircraft_sprite[spritenum];

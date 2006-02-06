@@ -366,8 +366,7 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			}
 		}
 
-		u = GetFirstVehicleFromSharedList(v);
-		while (u != NULL) {
+		for (u = GetFirstVehicleFromSharedList(v); u != NULL; u = u->next_shared) {
 			/* Increase amount of orders */
 			u->num_orders++;
 
@@ -386,8 +385,6 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			}
 			/* Update any possible open window of the vehicle */
 			InvalidateVehicleOrder(u);
-
-			u = u->next_shared;
 		}
 
 		/* Make sure to rebuild the whole list */
@@ -454,8 +451,7 @@ int32 CmdDeleteOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		order->type = OT_NOTHING;
 		order->next = NULL;
 
-		u = GetFirstVehicleFromSharedList(v);
-		while (u != NULL) {
+		for (u = GetFirstVehicleFromSharedList(v); u != NULL; u = u->next_shared) {
 			u->num_orders--;
 
 			if (sel_ord < u->cur_order_index)
@@ -476,8 +472,6 @@ int32 CmdDeleteOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			/* Update any possible open window of the vehicle */
 			InvalidateVehicleOrder(u);
-
-			u = u->next_shared;
 		}
 
 		RebuildVehicleLists();
@@ -579,14 +573,15 @@ int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		/* Update the windows and full load flags, also for vehicles that share the same order list */
 		{
-			Vehicle *u = GetFirstVehicleFromSharedList(v);
-			while (u != NULL) {
+			Vehicle* u;
+
+			for (u = GetFirstVehicleFromSharedList(v); u != NULL; u = u->next_shared) {
 				/* toggle u->current_order "Full load" flag if it changed */
 				if (sel_ord == u->cur_order_index &&
-						HASBIT(u->current_order.flags, OFB_FULL_LOAD) != HASBIT(order->flags, OFB_FULL_LOAD))
+						HASBIT(u->current_order.flags, OFB_FULL_LOAD) != HASBIT(order->flags, OFB_FULL_LOAD)) {
 					TOGGLEBIT(u->current_order.flags, OFB_FULL_LOAD);
+				}
 				InvalidateVehicleOrder(u);
-				u = u->next_shared;
 			}
 		}
 	}
@@ -632,11 +627,10 @@ int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			/* Is the vehicle already in the shared list? */
 			{
-				Vehicle *u = GetFirstVehicleFromSharedList(src);
-				while (u != NULL) {
-					if (u == dst)
-						return CMD_ERROR;
-					u = u->next_shared;
+				const Vehicle* u;
+
+				for (u = GetFirstVehicleFromSharedList(src); u != NULL; u = u->next_shared) {
+					if (u == dst) return CMD_ERROR;
 				}
 			}
 
