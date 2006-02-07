@@ -93,6 +93,9 @@ void TrainConsistChanged(Vehicle* v)
 		const RailVehicleInfo *rvi_u = RailVehInfo(u->engine_type);
 		uint16 veh_len;
 
+		// Update the v->first cache. This is faster than having to brute force it later.
+		if (u->first == NULL) u->first = v;
+
 		// update the 'first engine'
 		u->u.rail.first_engine = (v == u) ? INVALID_VEHICLE : first_engine;
 
