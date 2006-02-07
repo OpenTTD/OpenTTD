@@ -972,7 +972,7 @@ depend:
 	@true # The include handles this automagically
 
 # Introduce the dependencies
-ifeq ($(findstring $(MAKECMDGOALS), clean info),)
+ifeq ($(findstring $(MAKECMDGOALS), clean info depend mrproper),)
 -include $(DEPS)
 endif
 
