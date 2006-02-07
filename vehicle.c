@@ -2004,19 +2004,41 @@ uint32 VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y)
 
 UnitID GetFreeUnitNumber(byte type)
 {
-	UnitID unit_num = 0;
-	Vehicle *u;
+	UnitID unit, max;
+	const Vehicle *u;
+	static bool *cache = NULL;
+	static UnitID gmax = 0;
 
-restart:
-	unit_num++;
-	FOR_ALL_VEHICLES(u) {
-		if (u->type == type && u->owner == _current_player &&
-		    unit_num == u->unitnumber)
-					goto restart;
+	switch (type) {
+		case VEH_Train:    max = _patches.max_trains; break;
+		case VEH_Road:     max = _patches.max_roadveh; break;
+		case VEH_Ship:     max = _patches.max_ships; break;
+		case VEH_Aircraft: max = _patches.max_aircraft; break;
+		default: assert(0);
 	}
-	return unit_num;
-}
 
+	if (max > gmax) {
+		gmax = max;
+		free(cache);
+		cache = malloc((max + 1) * sizeof(*cache));
+	}
+
+	// Clear the cache
+	memset(cache, 0, (max + 1) * sizeof(*cache));
+
+	// Fill the cache
+	FOR_ALL_VEHICLES(u) {
+		if (u->type == type && u->owner == _current_player && u->unitnumber != 0 && u->unitnumber <= max)
+			cache[u->unitnumber] = true;
+	}
+
+	// Find the first unused unit number
+	for (unit = 1; unit <= max; unit++) {
+		if (!cache[unit]) break;
+	}
+
+	return unit;
+}
 
 // Save and load of vehicles
 const SaveLoad _common_veh_desc[] = {
