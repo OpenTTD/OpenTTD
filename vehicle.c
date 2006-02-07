@@ -218,6 +218,11 @@ void AfterLoadVehicles(void)
 
 	FOR_ALL_VEHICLES(v) {
 		v->first = NULL;
+		if (v->type == VEH_Train && (IsFrontEngine(v) || IsFreeWagon(v)))
+			TrainConsistChanged(v);
+	}
+
+	FOR_ALL_VEHICLES(v) {
 		if (v->type != 0) {
 			switch (v->type) {
 				case VEH_Train: v->cur_image = GetTrainImage(v, v->direction); break;
@@ -234,9 +239,6 @@ void AfterLoadVehicles(void)
 
 			v->left_coord = INVALID_COORD;
 			VehiclePositionChanged(v);
-
-			if (v->type == VEH_Train && (IsFrontEngine(v) || IsFreeWagon(v)))
-				TrainConsistChanged(v);
 		}
 	}
 }
