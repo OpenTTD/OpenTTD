@@ -2014,7 +2014,7 @@ UnitID GetFreeUnitNumber(byte type)
 		case VEH_Road:     max = _patches.max_roadveh; break;
 		case VEH_Ship:     max = _patches.max_ships; break;
 		case VEH_Aircraft: max = _patches.max_aircraft; break;
-		default: assert(0);
+		default: NOT_REACHED();
 	}
 
 	if (max > gmax) {
