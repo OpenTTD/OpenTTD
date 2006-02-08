@@ -504,7 +504,7 @@ Vehicle *GetFirstVehicleInChain(const Vehicle *v)
 	assert(v != NULL);
 
 	if (v->first != NULL) {
-		if (IsFrontEngine(v->first)) return v->first;
+		if (IsFrontEngine(v->first) || IsFreeWagon(v->first)) return v->first;
 
 		DEBUG(misc, 0) ("v->first cache faulty. We shouldn't be here, rebuilding cache!");
 	}
@@ -518,7 +518,7 @@ Vehicle *GetFirstVehicleInChain(const Vehicle *v)
 	while ((u = GetPrevVehicleInChain_bruteforce(v)) != NULL) v = u;
 
 	/* Set the first pointer of all vehicles in that chain to the first wagon */
-	if (IsFrontEngine(v))
+	if (IsFrontEngine(v) || IsFreeWagon(v))
 		for (u = (Vehicle *)v; u != NULL; u = u->next) u->first = (Vehicle *)v;
 
 	return (Vehicle*)v;
