@@ -86,7 +86,7 @@ void TrainConsistChanged(Vehicle* v)
 	assert(IsFrontEngine(v) || IsFreeWagon(v));
 
 	rvi_v = RailVehInfo(v->engine_type);
-	first_engine = IsFrontEngine(v) ? v->engine_type : INVALID_VEHICLE;
+	first_engine = IsFrontEngine(v) ? v->engine_type : INVALID_ENGINE;
 	v->u.rail.cached_total_length = 0;
 
 	for (u = v; u != NULL; u = u->next) {
@@ -97,7 +97,7 @@ void TrainConsistChanged(Vehicle* v)
 		if (u->first == NULL) u->first = v;
 
 		// update the 'first engine'
-		u->u.rail.first_engine = (v == u) ? INVALID_VEHICLE : first_engine;
+		u->u.rail.first_engine = (v == u) ? INVALID_ENGINE : first_engine;
 
 		if (rvi_u->visual_effect != 0) {
 			u->u.rail.cached_vis_effect = rvi_u->visual_effect;

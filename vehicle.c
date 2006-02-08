@@ -1753,7 +1753,7 @@ static void MaybeReplaceVehicle(Vehicle *v)
 			temp_cost = ReplaceVehicle(&w, flags);
 
 			if (flags & DC_EXEC &&
-					(w->type != VEH_Train || w->u.rail.first_engine == INVALID_VEHICLE)) {
+					(w->type != VEH_Train || w->u.rail.first_engine == INVALID_ENGINE)) {
 				/* now we bought a new engine and sold the old one. We need to fix the
 				 * pointers in order to avoid pointing to the old one for trains: these
 				 * pointers should point to the front engine and not the cars
