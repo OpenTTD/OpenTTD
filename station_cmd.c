@@ -2527,9 +2527,8 @@ int32 CmdRenameStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
 {
-	Station *around_ptr[8];
-	StationID around[8];
-	int i;
+	Station* around[8];
+	uint i;
 	uint moved;
 	uint best_rating, best_rating2;
 	Station *st1, *st2;
@@ -2539,8 +2538,7 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
 	int h_prod;
 	int max_rad;
 
-
-	memset(around, 0xff, sizeof(around));
+	for (i = 0; i < lengthof(around); i++) around[i] = NULL;
 
 	if (_patches.modified_catchment) {
 		w_prod = w;
@@ -2557,17 +2555,15 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
 	}
 
 	BEGIN_TILE_LOOP(cur_tile, w, h, tile - TileDiffXY(max_rad, max_rad))
-		StationID st_index;
+		Station* st;
 
 		cur_tile = TILE_MASK(cur_tile);
 		if (!IsTileType(cur_tile, MP_STATION)) continue;
 
-		st_index = _m[cur_tile].m2;
+		st = GetStation(_m[cur_tile].m2);
 
-		for (i = 0; i != 8; i++) {
-			if (around[i] == INVALID_STATION) {
-				Station* st = GetStation(st_index);
-
+		for (i = 0; i != lengthof(around); i++) {
+			if (around[i] == NULL) {
 				if (!IsBuoy(st) &&
 						(st->town->exclusive_counter == 0 || st->town->exclusivity == st->owner) && // check exclusive transport rights
 						st->goods[type].rating != 0 &&
@@ -2604,25 +2600,22 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
 						y_dist = 0;
 					}
 
-					if (x_dist <= rad && y_dist <= rad) {
-						around[i] = st_index;
-						around_ptr[i] = st;
-					}
+					if (x_dist <= rad && y_dist <= rad) around[i] = st;
 				}
 				break;
-			} else if (around[i] == st_index) {
+			} else if (around[i] == st) {
 				break;
 			}
 		}
 	END_TILE_LOOP(cur_tile, w, h, tile - TileDiffXY(max_rad, max_rad))
 
 	/* no stations around at all? */
-	if (around[0] == INVALID_STATION) return 0;
+	if (around[0] == NULL) return 0;
 
-	if (around[1] == INVALID_STATION) {
+	if (around[1] == NULL) {
 		/* only one station around */
-		moved = (amount * around_ptr[0]->goods[type].rating >> 8) + 1;
-		UpdateStationWaiting(around_ptr[0], type, moved);
+		moved = (amount * around[0]->goods[type].rating >> 8) + 1;
+		UpdateStationWaiting(around[0], type, moved);
 		return moved;
 	}
 
@@ -2630,16 +2623,16 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
 	st2 = st1 = NULL;
 	best_rating = best_rating2 = 0;
 
-	for (i = 0; i != 8 && around[i] != INVALID_STATION; i++) {
-		if (around_ptr[i]->goods[type].rating >= best_rating) {
+	for (i = 0; i != lengthof(around) && around[i] != NULL; i++) {
+		if (around[i]->goods[type].rating >= best_rating) {
 			best_rating2 = best_rating;
 			st2 = st1;
 
-			best_rating = around_ptr[i]->goods[type].rating;
-			st1 = around_ptr[i];
-		} else if (around_ptr[i]->goods[type].rating >= best_rating2) {
-			best_rating2 = around_ptr[i]->goods[type].rating;
-			st2 = around_ptr[i];
+			best_rating = around[i]->goods[type].rating;
+			st1 = around[i];
+		} else if (around[i]->goods[type].rating >= best_rating2) {
+			best_rating2 = around[i]->goods[type].rating;
+			st2 = around[i];
 		}
 	}
 
