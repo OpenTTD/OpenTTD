@@ -162,7 +162,7 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 			switch (GetTileType(tile)) {
 				case MP_TREES:
 					// no more space for trees?
-					if (_game_mode != GM_EDITOR && GetTreeCount(tile) != 3) {
+					if (_game_mode != GM_EDITOR && GetTreeCount(tile) == 3) {
 						_error_message = STR_2803_TREE_ALREADY_HERE;
 						continue;
 					}
@@ -215,6 +215,7 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 						SetFenceSW(tile, 0);
 						SetTreeCount(tile, 0);
 						SetTreeGrowth(tile, _game_mode == GM_EDITOR ? 3 : 0);
+						MarkTileDirtyByTile(tile);
 
 						if (_game_mode == GM_EDITOR && IS_INT_INSIDE(treetype, TR_RAINFOREST, TR_CACTUS))
 							SetMapExtraBits(tile, 2);
