@@ -2574,42 +2574,41 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
 						(!_patches.selectgoods || st->goods[type].last_speed > 0) && // if last_speed is 0, no vehicle has been there.
 						((st->facilities & ~FACIL_BUS_STOP)   != 0 || type == CT_PASSENGERS) && // if we have other fac. than a bus stop, or the cargo is passengers
 						((st->facilities & ~FACIL_TRUCK_STOP) != 0 || type != CT_PASSENGERS)) { // if we have other fac. than a cargo bay or the cargo is not passengers
-							int x_dist;
-							int y_dist;
+					int x_dist;
+					int y_dist;
 
-							if (_patches.modified_catchment) {
-								// min and max coordinates of the producer relative
-								const int x_min_prod = 9;
-								const int x_max_prod = 8 + w_prod;
-								const int y_min_prod = 9;
-								const int y_max_prod = 8 + h_prod;
+					if (_patches.modified_catchment) {
+						// min and max coordinates of the producer relative
+						const int x_min_prod = 9;
+						const int x_max_prod = 8 + w_prod;
+						const int y_min_prod = 9;
+						const int y_max_prod = 8 + h_prod;
 
-								rad = FindCatchmentRadius(st);
+						rad = FindCatchmentRadius(st);
 
-								x_dist = min(w_cur - x_min_prod, x_max_prod - w_cur);
-
-								if (w_cur < x_min_prod) {
-									x_dist = x_min_prod - w_cur;
-								} else if (w_cur > x_max_prod) {
-									x_dist = w_cur - x_max_prod;
-								}
-
-								y_dist = min(h_cur - y_min_prod, y_max_prod - h_cur);
-								if (h_cur < y_min_prod) {
-									y_dist = y_min_prod - h_cur;
-								} else if (h_cur > y_max_prod) {
-									y_dist = h_cur - y_max_prod;
-								}
-							} else {
-								x_dist = 0;
-								y_dist = 0;
-							}
-
-							if (x_dist <= rad && y_dist <= rad) {
-								around[i] = st_index;
-								around_ptr[i] = st;
-							}
+						x_dist = min(w_cur - x_min_prod, x_max_prod - w_cur);
+						if (w_cur < x_min_prod) {
+							x_dist = x_min_prod - w_cur;
+						} else if (w_cur > x_max_prod) {
+							x_dist = w_cur - x_max_prod;
 						}
+
+						y_dist = min(h_cur - y_min_prod, y_max_prod - h_cur);
+						if (h_cur < y_min_prod) {
+							y_dist = y_min_prod - h_cur;
+						} else if (h_cur > y_max_prod) {
+							y_dist = h_cur - y_max_prod;
+						}
+					} else {
+						x_dist = 0;
+						y_dist = 0;
+					}
+
+					if (x_dist <= rad && y_dist <= rad) {
+						around[i] = st_index;
+						around_ptr[i] = st;
+					}
+				}
 				break;
 			} else if (around[i] == st_index) {
 				break;
