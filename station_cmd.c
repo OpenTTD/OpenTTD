@@ -2529,18 +2529,14 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
 {
 	Station *around_ptr[8];
 	StationID around[8];
-	StationID st_index;
 	int i;
-	Station *st;
 	uint moved;
 	uint best_rating, best_rating2;
 	Station *st1, *st2;
-	int t;
-	int rad=0;
-	int w_prod=0, h_prod=0; //width and height of the "producer" of the cargo
-	int x_min_prod, x_max_prod;     //min and max coordinates of the producer
-	int y_min_prod, y_max_prod;     //relative
-	int x_dist, y_dist;
+	uint t;
+	int rad = 0;
+	int w_prod; //width and height of the "producer" of the cargo
+	int h_prod;
 	int max_rad;
 
 
@@ -2553,65 +2549,76 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
 		h += 16;
 		max_rad = 8;
 	} else {
- 		w += 8;
- 		h += 8;
+		w_prod = 0;
+		h_prod = 0;
+		w += 8;
+		h += 8;
 		max_rad = 4;
 	}
 
 	BEGIN_TILE_LOOP(cur_tile, w, h, tile - TileDiffXY(max_rad, max_rad))
+		StationID st_index;
+
 		cur_tile = TILE_MASK(cur_tile);
-		if (IsTileType(cur_tile, MP_STATION)) {
-			st_index = _m[cur_tile].m2;
-			for (i = 0; i != 8; i++) {
-				if (around[i] == INVALID_STATION) {
-					st = GetStation(st_index);
-					if (!IsBuoy(st) &&
-							( !st->town->exclusive_counter || (st->town->exclusivity == st->owner) ) && // check exclusive transport rights
-							st->goods[type].rating != 0 &&
-							(!_patches.selectgoods || st->goods[type].last_speed) && // if last_speed is 0, no vehicle has been there.
-							((st->facilities & (byte)~FACIL_BUS_STOP)!=0 || type==CT_PASSENGERS) && // if we have other fac. than a bus stop, or the cargo is passengers
-							((st->facilities & (byte)~FACIL_TRUCK_STOP)!=0 || type!=CT_PASSENGERS)) { // if we have other fac. than a cargo bay or the cargo is not passengers
-								if (_patches.modified_catchment) {
-									rad = FindCatchmentRadius(st);
-									x_min_prod = y_min_prod = 9;
-									x_max_prod = 8 + w_prod;
-									y_max_prod = 8 + h_prod;
+		if (!IsTileType(cur_tile, MP_STATION)) continue;
 
-									x_dist = min(w_cur - x_min_prod, x_max_prod - w_cur);
+		st_index = _m[cur_tile].m2;
 
-									if (w_cur < x_min_prod) {
-										x_dist = x_min_prod - w_cur;
-									} else {        //save cycles
-										if (w_cur > x_max_prod) x_dist = w_cur - x_max_prod;
-									}
+		for (i = 0; i != 8; i++) {
+			if (around[i] == INVALID_STATION) {
+				Station* st = GetStation(st_index);
 
-									y_dist = min(h_cur - y_min_prod, y_max_prod - h_cur);
-									if (h_cur < y_min_prod) {
-										y_dist = y_min_prod - h_cur;
-									} else {
-										if (h_cur > y_max_prod) y_dist = h_cur - y_max_prod;
-									}
+				if (!IsBuoy(st) &&
+						(st->town->exclusive_counter == 0 || st->town->exclusivity == st->owner) && // check exclusive transport rights
+						st->goods[type].rating != 0 &&
+						(!_patches.selectgoods || st->goods[type].last_speed > 0) && // if last_speed is 0, no vehicle has been there.
+						((st->facilities & ~FACIL_BUS_STOP)   != 0 || type == CT_PASSENGERS) && // if we have other fac. than a bus stop, or the cargo is passengers
+						((st->facilities & ~FACIL_TRUCK_STOP) != 0 || type != CT_PASSENGERS)) { // if we have other fac. than a cargo bay or the cargo is not passengers
+							int x_dist;
+							int y_dist;
 
-								} else {
-									x_dist = y_dist = 0;
+							if (_patches.modified_catchment) {
+								// min and max coordinates of the producer relative
+								const int x_min_prod = 9;
+								const int x_max_prod = 8 + w_prod;
+								const int y_min_prod = 9;
+								const int y_max_prod = 8 + h_prod;
+
+								rad = FindCatchmentRadius(st);
+
+								x_dist = min(w_cur - x_min_prod, x_max_prod - w_cur);
+
+								if (w_cur < x_min_prod) {
+									x_dist = x_min_prod - w_cur;
+								} else if (w_cur > x_max_prod) {
+									x_dist = w_cur - x_max_prod;
 								}
 
-								if ( !(x_dist > rad) && !(y_dist > rad) ) {
-
-									around[i] = st_index;
-									around_ptr[i] = st;
+								y_dist = min(h_cur - y_min_prod, y_max_prod - h_cur);
+								if (h_cur < y_min_prod) {
+									y_dist = y_min_prod - h_cur;
+								} else if (h_cur > y_max_prod) {
+									y_dist = h_cur - y_max_prod;
 								}
+							} else {
+								x_dist = 0;
+								y_dist = 0;
 							}
-					break;
-				} else if (around[i] == st_index)
-					break;
+
+							if (x_dist <= rad && y_dist <= rad) {
+								around[i] = st_index;
+								around_ptr[i] = st;
+							}
+						}
+				break;
+			} else if (around[i] == st_index) {
+				break;
 			}
 		}
 	END_TILE_LOOP(cur_tile, w, h, tile - TileDiffXY(max_rad, max_rad))
 
 	/* no stations around at all? */
-	if (around[0] == INVALID_STATION)
-		return 0;
+	if (around[0] == INVALID_STATION) return 0;
 
 	if (around[1] == INVALID_STATION) {
 		/* only one station around */
@@ -2649,13 +2656,14 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount)
 
 	moved = 0;
 	if (t != 0) {
-		moved = (t * best_rating >> 8) + 1;
+		moved = t * best_rating / 256 + 1;
 		amount -= t;
 		UpdateStationWaiting(st1, type, moved);
 	}
 
 	if (amount != 0) {
-		moved += (amount = (amount * best_rating2 >> 8) + 1);
+		amount = amount * best_rating2 / 256 + 1;
+		moved += amount;
 		UpdateStationWaiting(st2, type, amount);
 	}
 
