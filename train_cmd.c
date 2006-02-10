@@ -2274,19 +2274,18 @@ static bool ProcessTrainOrder(Vehicle *v)
 	const Order *order;
 	bool result;
 
-	// These are un-interruptible
-	if (v->current_order.type >= OT_GOTO_DEPOT &&
-			v->current_order.type <= OT_LEAVESTATION) {
-		// Let a depot order in the orderlist interrupt.
-		if (v->current_order.type != OT_GOTO_DEPOT ||
-				!(v->current_order.flags & OF_UNLOAD))
-			return false;
-	}
+	switch (v->current_order.type) {
+		case OT_GOTO_DEPOT:
+			if (!(v->current_order.flags & OF_PART_OF_ORDERS)) return false;
+			if ((v->current_order.flags & OF_SERVICE_IF_NEEDED) &&
+					!VehicleNeedsService(v)) {
+				v->cur_order_index++;
+			}
+			break;
 
-	if (v->current_order.type == OT_GOTO_DEPOT &&
-			(v->current_order.flags & (OF_PART_OF_ORDERS | OF_SERVICE_IF_NEEDED)) ==  (OF_PART_OF_ORDERS | OF_SERVICE_IF_NEEDED) &&
-			!VehicleNeedsService(v)) {
-		v->cur_order_index++;
+		case OT_LOADING:
+		case OT_LEAVESTATION:
+			return false;
 	}
 
 	// check if we've reached the waypoint?

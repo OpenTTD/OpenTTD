@@ -203,22 +203,21 @@ static void ProcessShipOrder(Vehicle *v)
 {
 	const Order *order;
 
-	if (v->current_order.type >= OT_GOTO_DEPOT &&
-			v->current_order.type <= OT_LEAVESTATION) {
-		if (v->current_order.type != OT_GOTO_DEPOT ||
-				!(v->current_order.flags & OF_UNLOAD))
+	switch (v->current_order.type) {
+		case OT_GOTO_DEPOT:
+			if (!(v->current_order.flags & OF_PART_OF_ORDERS)) return;
+			if (v->current_order.flags & OF_SERVICE_IF_NEEDED &&
+					!VehicleNeedsService(v)) {
+				v->cur_order_index++;
+			}
+			break;
+
+		case OT_LOADING:
+		case OT_LEAVESTATION:
 			return;
 	}
 
-	if (v->current_order.type == OT_GOTO_DEPOT &&
-			(v->current_order.flags & (OF_PART_OF_ORDERS | OF_SERVICE_IF_NEEDED)) == (OF_PART_OF_ORDERS | OF_SERVICE_IF_NEEDED) &&
-			!VehicleNeedsService(v)) {
-		v->cur_order_index++;
-	}
-
-
-	if (v->cur_order_index >= v->num_orders)
-		v->cur_order_index = 0;
+	if (v->cur_order_index >= v->num_orders) v->cur_order_index = 0;
 
 	order = GetVehicleOrder(v, v->cur_order_index);
 

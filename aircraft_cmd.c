@@ -1043,19 +1043,17 @@ static void ProcessAircraftOrder(Vehicle *v)
 {
 	const Order *order;
 
-	// OT_GOTO_DEPOT, OT_LOADING
-	if (v->current_order.type == OT_GOTO_DEPOT ||
-			v->current_order.type == OT_LOADING) {
-		if (v->current_order.type != OT_GOTO_DEPOT ||
-				!(v->current_order.flags & OF_UNLOAD))
-			return;
-	}
+	switch (v->current_order.type) {
+		case OT_GOTO_DEPOT:
+			if (!(v->current_order.flags & OF_PART_OF_ORDERS)) return;
+			if (v->current_order.flags & OF_SERVICE_IF_NEEDED &&
+					!VehicleNeedsService(v)) {
+				v->cur_order_index++;
+			}
+			break;
 
-	if (v->current_order.type == OT_GOTO_DEPOT &&
-			(v->current_order.flags & (OF_PART_OF_ORDERS | OF_SERVICE_IF_NEEDED)) == (OF_PART_OF_ORDERS | OF_SERVICE_IF_NEEDED) &&
- 			!VehicleNeedsService(v)) {
-			v->cur_order_index++;
-		}
+		case OT_LOADING: return;
+	}
 
 	if (v->cur_order_index >= v->num_orders) v->cur_order_index = 0;
 
@@ -1067,8 +1065,7 @@ static void ProcessAircraftOrder(Vehicle *v)
 		return;
 	}
 
-	if (order->type == OT_DUMMY && !CheckForValidOrders(v))
-		CrashAirplane(v);
+	if (order->type == OT_DUMMY && !CheckForValidOrders(v)) CrashAirplane(v);
 
 	if (order->type    == v->current_order.type   &&
 			order->flags   == v->current_order.flags  &&
