@@ -587,23 +587,23 @@ static void HandleBrokenRoadVeh(Vehicle *v)
 static void ProcessRoadVehOrder(Vehicle *v)
 {
 	const Order *order;
-	const Station *st;
 
-	if (v->current_order.type >= OT_GOTO_DEPOT && v->current_order.type <= OT_LEAVESTATION) {
-		// Let a depot order in the orderlist interrupt.
-		if (v->current_order.type != OT_GOTO_DEPOT ||
-				!(v->current_order.flags & OF_UNLOAD))
+	switch (v->current_order.type) {
+		case OT_GOTO_DEPOT:
+			// Let a depot order in the orderlist interrupt.
+			if (!(v->current_order.flags & OF_PART_OF_ORDERS)) return;
+			if (v->current_order.flags & OF_SERVICE_IF_NEEDED &&
+					!VehicleNeedsService(v)) {
+				v->cur_order_index++;
+			}
+			break;
+
+		case OT_LOADING:
+		case OT_LEAVESTATION:
 			return;
 	}
 
-	if (v->current_order.type == OT_GOTO_DEPOT &&
-			(v->current_order.flags & (OF_PART_OF_ORDERS | OF_SERVICE_IF_NEEDED)) == (OF_PART_OF_ORDERS | OF_SERVICE_IF_NEEDED) &&
-			!VehicleNeedsService(v)) {
-		v->cur_order_index++;
-	}
-
-	if (v->cur_order_index >= v->num_orders)
-		v->cur_order_index = 0;
+	if (v->cur_order_index >= v->num_orders) v->cur_order_index = 0;
 
 	order = GetVehicleOrder(v, v->cur_order_index);
 
@@ -624,32 +624,25 @@ static void ProcessRoadVehOrder(Vehicle *v)
 	v->dest_tile = 0;
 
 	if (order->type == OT_GOTO_STATION) {
-		if (order->station == v->last_station_visited)
+		const Station* st = GetStation(order->station);
+		uint mindist = 0xFFFFFFFF;
+		const RoadStop* rs;
+
+		if (order->station == v->last_station_visited) {
 			v->last_station_visited = INVALID_STATION;
-		st = GetStation(order->station);
+		}
 
-		{
-			uint mindist = 0xFFFFFFFF;
-			RoadStopType type;
-			RoadStop *rs;
+		rs = GetPrimaryRoadStop(st, v->cargo_type == CT_PASSENGERS ? RS_BUS : RS_TRUCK);
 
-			type = (v->cargo_type == CT_PASSENGERS) ? RS_BUS : RS_TRUCK;
-			rs = GetPrimaryRoadStop(st, type);
+		if (rs == NULL) {
+			// There is no stop left at the station, so don't even TRY to go there
+			v->cur_order_index++;
+			InvalidateVehicleOrder(v);
+			return;
+		}
 
-			if (rs == NULL) {
-				//There is no stop left at the station, so don't even TRY to go there
-				v->cur_order_index++;
-				InvalidateVehicleOrder(v);
-
-				return;
-			}
-
-			for (rs = GetPrimaryRoadStop(st, type); rs != NULL; rs = rs->next) {
-				if (DistanceManhattan(v->tile, rs->xy) < mindist) {
-					v->dest_tile = rs->xy;
-				}
-			}
-
+		for (; rs != NULL; rs = rs->next) {
+			if (DistanceManhattan(v->tile, rs->xy) < mindist) v->dest_tile = rs->xy;
 		}
 	} else if (order->type == OT_GOTO_DEPOT) {
 		v->dest_tile = GetDepot(order->station)->xy;
@@ -660,32 +653,31 @@ static void ProcessRoadVehOrder(Vehicle *v)
 
 static void HandleRoadVehLoading(Vehicle *v)
 {
-	if (v->current_order.type == OT_NOTHING)
-		return;
+	switch (v->current_order.type) {
+		case OT_LOADING: {
+			Order b;
 
-	if (v->current_order.type != OT_DUMMY) {
-		if (v->current_order.type != OT_LOADING)
-			return;
+			if (--v->load_unload_time_rem != 0) return;
 
-		if (--v->load_unload_time_rem)
-			return;
-
-		if (v->current_order.flags & OF_FULL_LOAD && CanFillVehicle(v)) {
-			SET_EXPENSES_TYPE(EXPENSES_ROADVEH_INC);
-			if (LoadUnloadVehicle(v)) {
-				InvalidateWindow(WC_ROADVEH_LIST, v->owner);
-				MarkRoadVehDirty(v);
+			if (v->current_order.flags & OF_FULL_LOAD && CanFillVehicle(v)) {
+				SET_EXPENSES_TYPE(EXPENSES_ROADVEH_INC);
+				if (LoadUnloadVehicle(v)) {
+					InvalidateWindow(WC_ROADVEH_LIST, v->owner);
+					MarkRoadVehDirty(v);
+				}
+				return;
 			}
-			return;
-		}
 
-		{
-			Order b = v->current_order;
+			b = v->current_order;
 			v->current_order.type = OT_LEAVESTATION;
 			v->current_order.flags = 0;
-			if (!(b.flags & OF_NON_STOP))
-				return;
+			if (!(b.flags & OF_NON_STOP)) return;
+			break;
 		}
+
+		case OT_DUMMY: break;
+
+		default: return;
 	}
 
 	v->cur_order_index++;
