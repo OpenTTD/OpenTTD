@@ -40,6 +40,7 @@ typedef struct ShipVehicleInfo {
 	byte running_cost;
 	byte sfx;
 	byte refittable;
+	byte callbackmask;
 } ShipVehicleInfo;
 
 typedef struct AircraftVehicleInfo {
@@ -52,6 +53,7 @@ typedef struct AircraftVehicleInfo {
 	byte max_speed;
 	byte mail_capacity;
 	uint16 passenger_capacity;
+	byte callbackmask;
 } AircraftVehicleInfo;
 
 typedef struct RoadVehicleInfo {
@@ -62,6 +64,7 @@ typedef struct RoadVehicleInfo {
 	byte max_speed;
 	byte capacity;
 	byte cargo_type;
+	byte callbackmask;
 } RoadVehicleInfo;
 
 /** Information about a vehicle

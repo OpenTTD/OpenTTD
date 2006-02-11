@@ -555,6 +555,13 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				_engine_info[ROAD_ENGINES_INDEX + engine + i].refit_mask = refit_mask;
 			}
 		} break;
+
+		case 0x17: // Callback mask
+			FOR_EACH_OBJECT {
+				rvi[i].callbackmask = grf_load_byte(&buf);
+			}
+			break;
+
 		case 0x1D: { /* Cargo classes allowed */
 			FOR_EACH_OBJECT {
 				cargo_allowed[ROAD_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
@@ -565,7 +572,6 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				cargo_disallowed[ROAD_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
 			}
 		} break;
-		case 0x17:      /* Callback */
 		case 0x18:      /* Tractive effort */
 		case 0x19:      /* Air drag */
 		case 0x1A:      /* Refit cost */
@@ -676,6 +682,13 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				_engine_info[SHIP_ENGINES_INDEX + engine + i].refit_mask = refit_mask;
 			}
 		}	break;
+
+		case 0x12: // Callback mask
+			FOR_EACH_OBJECT {
+				svi[i].callbackmask = grf_load_byte(&buf);
+			}
+			break;
+
 		case 0x18: { /* Cargo classes allowed */
 			FOR_EACH_OBJECT {
 				cargo_allowed[SHIP_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
@@ -686,7 +699,6 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				cargo_disallowed[SHIP_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
 			}
 		} break;
-		case 0x12: /* Callback */
 		case 0x13: /* Refit cost */
 		case 0x14: /* Ocean speed fraction */
 		case 0x15: /* Canal speed fraction */
@@ -799,6 +811,13 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 				_engine_info[AIRCRAFT_ENGINES_INDEX + engine + i].refit_mask = refit_mask;
 			}
 		}	break;
+
+		case 0x14: // Callback mask
+			FOR_EACH_OBJECT {
+				avi[i].callbackmask = grf_load_byte(&buf);
+			}
+			break;
+
 		case 0x18: { /* Cargo classes allowed */
 			FOR_EACH_OBJECT {
 				cargo_allowed[AIRCRAFT_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
@@ -809,7 +828,6 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 				cargo_disallowed[AIRCRAFT_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
 			}
 		} break;
-		case 0x14: /* Callback */
 		case 0x15: /* Refit cost */
 		case 0x16: /* Retire vehicle early */
 		case 0x17: /* Miscellaneous flags */
