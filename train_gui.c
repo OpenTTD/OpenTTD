@@ -819,7 +819,7 @@ static void RailVehicleRefitWndProc(Window *w, WindowEvent *e)
 			if (!CmdFailed(cost)) {
 				SetDParam(2, cost);
 				SetDParam(0, _cargoc.names_long[WP(w,refit_d).cargo]);
-				SetDParam(1, _returned_refit_amount);
+				SetDParam(1, _returned_refit_capacity);
 				DrawString(1, 137, STR_9840_NEW_CAPACITY_COST_OF_REFIT, 0);
 			}
 		}

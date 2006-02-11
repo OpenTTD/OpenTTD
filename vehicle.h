@@ -418,7 +418,7 @@ VARDEF VehicleID _new_aircraft_id;
 VARDEF VehicleID _new_ship_id;
 VARDEF VehicleID _new_roadveh_id;
 VARDEF VehicleID _new_vehicle_id;
-VARDEF uint16 _aircraft_refit_capacity;
+VARDEF uint16 _returned_refit_capacity;
 VARDEF byte _cmd_build_rail_veh_score;
 
 #define INVALID_VEHICLE 0xFFFF

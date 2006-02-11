@@ -1728,7 +1728,7 @@ int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		}
 	} while ( (v=v->next) != NULL );
 
-	_returned_refit_amount = num;
+	_returned_refit_capacity = num;
 
 	return cost;
 }

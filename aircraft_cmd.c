@@ -498,7 +498,7 @@ int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			pass /= 4;
 			break;
 	}
-	_aircraft_refit_capacity = pass;
+	_returned_refit_capacity = pass;
 
 	cost = 0;
 	if (IS_HUMAN_PLAYER(v->owner) && new_cid != v->cargo_type) {

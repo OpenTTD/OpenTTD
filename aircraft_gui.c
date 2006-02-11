@@ -249,7 +249,7 @@ static void AircraftRefitWndProc(Window *w, WindowEvent *e)
 			if (!CmdFailed(cost)) {
 				SetDParam(2, cost);
 				SetDParam(0, _cargoc.names_long[WP(w,refit_d).cargo]);
-				SetDParam(1, _aircraft_refit_capacity);
+				SetDParam(1, _returned_refit_capacity);
 				DrawString(1, 147, STR_A041_NEW_CAPACITY_COST_OF_REFIT, 0);
 			}
 		}
