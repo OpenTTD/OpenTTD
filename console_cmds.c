@@ -553,10 +553,29 @@ DEF_CONSOLE_CMD(ConServerInfo)
 
 DEF_CONSOLE_HOOK(ConHookValidateMaxClientsCount) {
 	/* XXX - hardcoded, string limiation -- TrueLight
-	 * XXX - also see network.c:NetworkStartup ~1343 */
+	 * XXX - also see network.c:NetworkStartup ~1356 */
 	if (_network_game_info.clients_max > 10) {
 		_network_game_info.clients_max = 10;
-		IConsoleError("Maximum clients is 10, truncating.");
+		IConsoleError("Maximum clients out of bounds, truncating to limit.");
+	}
+
+	return true;
+}
+
+DEF_CONSOLE_HOOK(ConHookValidateMaxCompaniesCount) {
+	if (_network_game_info.companies_max > MAX_PLAYERS) {
+		_network_game_info.companies_max = MAX_PLAYERS;
+		IConsoleError("Maximum companies out of bounds, truncating to limit.");
+	}
+
+	return true;
+}
+
+DEF_CONSOLE_HOOK(ConHookValidateMaxSpectatorsCount) {
+	/* XXX @see ConHookValidateMaxClientsCount */
+	if (_network_game_info.spectators_max > 10) {
+		_network_game_info.clients_max = 10;
+		IConsoleError("Maximum spectators out of bounds, truncating to limit.");
 	}
 
 	return true;
@@ -1444,8 +1463,10 @@ void IConsoleStdLibRegister(void)
 	IConsoleVarHookAdd("max_clients",            ICONSOLE_HOOK_POST_ACTION, ConHookValidateMaxClientsCount);
 	IConsoleVarRegister("max_companies",         &_network_game_info.companies_max, ICONSOLE_VAR_BYTE, "Control the maximum amount of active companies during runtime. Default value: 8");
 	IConsoleVarHookAdd("max_companies",          ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleVarHookAdd("max_companies",          ICONSOLE_HOOK_POST_ACTION, ConHookValidateMaxCompaniesCount);
 	IConsoleVarRegister("max_spectators",        &_network_game_info.spectators_max, ICONSOLE_VAR_BYTE, "Control the maximum amount of active spectators during runtime. Default value: 9");
 	IConsoleVarHookAdd("max_spectators",         ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleVarHookAdd("max_spectators",         ICONSOLE_HOOK_POST_ACTION, ConHookValidateMaxSpectatorsCount);
 
 	IConsoleVarRegister("max_join_time",         &_network_max_join_time, ICONSOLE_VAR_UINT16, "Set the maximum amount of time (ticks) a client is allowed to join. Default value: 500");
 
