@@ -6,10 +6,11 @@
 
 static void Stack_Clear(Queue* q, bool free_values)
 {
-	uint i;
-	if (free_values)
-		for (i=0;i<q->data.stack.size;i++)
-			free(q->data.stack.elements[i]);
+	if (free_values) {
+		uint i;
+
+		for (i = 0; i < q->data.stack.size; i++) free(q->data.stack.elements[i]);
+	}
 	q->data.stack.size = 0;
 }
 
@@ -17,26 +18,20 @@ static void Stack_Free(Queue* q, bool free_values)
 {
 	q->clear(q, free_values);
 	free(q->data.stack.elements);
-	if (q->freeq)
-		free(q);
+	if (q->freeq) free(q);
 }
 
 static bool Stack_Push(Queue* q, void* item, int priority)
 {
-	if (q->data.stack.size == q->data.stack.max_size)
-		return false;
+	if (q->data.stack.size == q->data.stack.max_size) return false;
 	q->data.stack.elements[q->data.stack.size++] = item;
 	return true;
 }
 
 static void* Stack_Pop(Queue* q)
 {
-	void* result;
-	if (q->data.stack.size == 0)
-		return NULL;
-	result = q->data.stack.elements[--q->data.stack.size];
-
-	return result;
+	if (q->data.stack.size == 0) return NULL;
+	return q->data.stack.elements[--q->data.stack.size];
 }
 
 static bool Stack_Delete(Queue* q, void* item, int priority)
@@ -53,14 +48,15 @@ static Queue* init_stack(Queue* q, uint max_size)
 	q->free = Stack_Free;
 	q->data.stack.max_size = max_size;
 	q->data.stack.size = 0;
-	q->data.stack.elements = malloc(max_size * sizeof(void*));
+	q->data.stack.elements = malloc(max_size * sizeof(*q->data.stack.elements));
 	q->freeq = false;
 	return q;
 }
 
 Queue* new_Stack(uint max_size)
 {
-	Queue* q = malloc(sizeof(Queue));
+	Queue* q = malloc(sizeof(*q));
+
 	init_stack(q, max_size);
 	q->freeq = true;
 	return q;
@@ -72,33 +68,32 @@ Queue* new_Stack(uint max_size)
 
 static void Fifo_Clear(Queue* q, bool free_values)
 {
-	uint head, tail;
 	if (free_values) {
-		head = q->data.fifo.head;
-		tail = q->data.fifo.tail; /* cache for speed */
+		uint head = q->data.fifo.head;
+		uint tail = q->data.fifo.tail; /* cache for speed */
+
 		while (head != tail) {
 			free(q->data.fifo.elements[tail]);
 			tail = (tail + 1) % q->data.fifo.max_size;
 		}
 	}
-	q->data.fifo.head = q->data.fifo.tail = 0;
+	q->data.fifo.head = 0;
+	q->data.fifo.tail = 0;
 }
 
 static void Fifo_Free(Queue* q, bool free_values)
 {
 	q->clear(q, free_values);
 	free(q->data.fifo.elements);
-	if (q->freeq)
-		free(q);
+	if (q->freeq) free(q);
 }
 
 static bool Fifo_Push(Queue* q, void* item, int priority)
 {
 	uint next = (q->data.fifo.head + 1) % q->data.fifo.max_size;
-	if (next == q->data.fifo.tail)
-		return false;
-	q->data.fifo.elements[q->data.fifo.head] = item;
 
+	if (next == q->data.fifo.tail) return false;
+	q->data.fifo.elements[q->data.fifo.head] = item;
 
 	q->data.fifo.head = next;
 	return true;
@@ -107,10 +102,9 @@ static bool Fifo_Push(Queue* q, void* item, int priority)
 static void* Fifo_Pop(Queue* q)
 {
 	void* result;
-	if (q->data.fifo.head == q->data.fifo.tail)
-		return NULL;
-	result = q->data.fifo.elements[q->data.fifo.tail];
 
+	if (q->data.fifo.head == q->data.fifo.tail) return NULL;
+	result = q->data.fifo.elements[q->data.fifo.tail];
 
 	q->data.fifo.tail = (q->data.fifo.tail + 1) % q->data.fifo.max_size;
 	return result;
@@ -131,14 +125,15 @@ static Queue* init_fifo(Queue* q, uint max_size)
 	q->data.fifo.max_size = max_size;
 	q->data.fifo.head = 0;
 	q->data.fifo.tail = 0;
-	q->data.fifo.elements = malloc(max_size * sizeof(void*));
+	q->data.fifo.elements = malloc(max_size * sizeof(*q->data.fifo.elements));
 	q->freeq = false;
 	return q;
 }
 
 Queue* new_Fifo(uint max_size)
 {
-	Queue* q = malloc(sizeof(Queue));
+	Queue* q = malloc(sizeof(*q));
+
 	init_fifo(q, max_size);
 	q->freeq = true;
 	return q;
@@ -153,13 +148,12 @@ static void InsSort_Clear(Queue* q, bool free_values)
 {
 	InsSortNode* node = q->data.inssort.first;
 	InsSortNode* prev;
+
 	while (node != NULL) {
-		if (free_values)
-			free(node->item);
+		if (free_values) free(node->item);
 		prev = node;
 		node = node->next;
 		free(prev);
-
 	}
 	q->data.inssort.first = NULL;
 }
@@ -167,17 +161,18 @@ static void InsSort_Clear(Queue* q, bool free_values)
 static void InsSort_Free(Queue* q, bool free_values)
 {
 	q->clear(q, free_values);
-	if (q->freeq)
-		free(q);
+	if (q->freeq) free(q);
 }
 
 static bool InsSort_Push(Queue* q, void* item, int priority)
 {
-	InsSortNode* newnode = malloc(sizeof(InsSortNode));
+	InsSortNode* newnode = malloc(sizeof(*newnode));
+
 	if (newnode == NULL) return false;
 	newnode->item = item;
 	newnode->priority = priority;
-	if (q->data.inssort.first == NULL || q->data.inssort.first->priority >= priority) {
+	if (q->data.inssort.first == NULL ||
+			q->data.inssort.first->priority >= priority) {
 		newnode->next = q->data.inssort.first;
 		q->data.inssort.first = newnode;
 	} else {
@@ -198,12 +193,11 @@ static void* InsSort_Pop(Queue* q)
 {
 	InsSortNode* node = q->data.inssort.first;
 	void* result;
-	if (node == NULL)
-		return NULL;
+
+	if (node == NULL) return NULL;
 	result = node->item;
 	q->data.inssort.first = q->data.inssort.first->next;
-	if (q->data.inssort.first)
-		assert(q->data.inssort.first->priority >= node->priority);
+	assert(q->data.inssort.first == NULL || q->data.inssort.first->priority >= node->priority);
 	free(node);
 	return result;
 }
@@ -213,7 +207,8 @@ static bool InsSort_Delete(Queue* q, void* item, int priority)
 	return false;
 }
 
-void init_InsSort(Queue* q) {
+void init_InsSort(Queue* q)
+{
 	q->push = InsSort_Push;
 	q->pop = InsSort_Pop;
 	q->del = InsSort_Delete;
@@ -225,7 +220,8 @@ void init_InsSort(Queue* q) {
 
 Queue* new_InsSort(void)
 {
-	Queue* q = malloc(sizeof(Queue));
+	Queue* q = malloc(sizeof(*q));
+
 	init_InsSort(q);
 	q->freeq = true;
 	return q;
@@ -238,33 +234,36 @@ Queue* new_InsSort(void)
  */
 
 #define BINARY_HEAP_BLOCKSIZE (1 << BINARY_HEAP_BLOCKSIZE_BITS)
-#define BINARY_HEAP_BLOCKSIZE_MASK (BINARY_HEAP_BLOCKSIZE-1)
+#define BINARY_HEAP_BLOCKSIZE_MASK (BINARY_HEAP_BLOCKSIZE - 1)
 
 // To make our life easy, we make the next define
 //  Because Binary Heaps works with array from 1 to n,
 //  and C with array from 0 to n-1, and we don't like typing
-//  q->data.binaryheap.elements[i-1] every time, we use this define.
-#define BIN_HEAP_ARR(i) q->data.binaryheap.elements[((i)-1) >> BINARY_HEAP_BLOCKSIZE_BITS][((i)-1) & BINARY_HEAP_BLOCKSIZE_MASK]
+//  q->data.binaryheap.elements[i - 1] every time, we use this define.
+#define BIN_HEAP_ARR(i) q->data.binaryheap.elements[((i) - 1) >> BINARY_HEAP_BLOCKSIZE_BITS][((i) - 1) & BINARY_HEAP_BLOCKSIZE_MASK]
 
 static void BinaryHeap_Clear(Queue* q, bool free_values)
 {
-	/* Free all items if needed and free all but the first blocks of
-	 * memory */
-	uint i,j;
-	for (i=0;i<q->data.binaryheap.blocks;i++) {
+	/* Free all items if needed and free all but the first blocks of memory */
+	uint i;
+	uint j;
+
+	for (i = 0; i < q->data.binaryheap.blocks; i++) {
 		if (q->data.binaryheap.elements[i] == NULL) {
 			/* No more allocated blocks */
 			break;
 		}
 		/* For every allocated block */
-		if (free_values)
-			for (j=0;j<(1<<BINARY_HEAP_BLOCKSIZE_BITS);j++) {
+		if (free_values) {
+			for (j = 0; j < (1 << BINARY_HEAP_BLOCKSIZE_BITS); j++) {
 				/* For every element in the block */
-				if ((q->data.binaryheap.size >> BINARY_HEAP_BLOCKSIZE_BITS) == i
-					&& (q->data.binaryheap.size & BINARY_HEAP_BLOCKSIZE_MASK) == j)
+				if ((q->data.binaryheap.size >> BINARY_HEAP_BLOCKSIZE_BITS) == i &&
+						(q->data.binaryheap.size & BINARY_HEAP_BLOCKSIZE_MASK) == j) {
 					break; /* We're past the last element */
+				}
 				free(q->data.binaryheap.elements[i][j].item);
 			}
+		}
 		if (i != 0) {
 			/* Leave the first block of memory alone */
 			free(q->data.binaryheap.elements[i]);
@@ -278,46 +277,47 @@ static void BinaryHeap_Clear(Queue* q, bool free_values)
 static void BinaryHeap_Free(Queue* q, bool free_values)
 {
 	uint i;
+
 	q->clear(q, free_values);
-	for (i=0;i<q->data.binaryheap.blocks;i++) {
-		if (q->data.binaryheap.elements[i] == NULL)
-			break;
+	for (i = 0; i < q->data.binaryheap.blocks; i++) {
+		if (q->data.binaryheap.elements[i] == NULL) break;
 		free(q->data.binaryheap.elements[i]);
 	}
 	free(q->data.binaryheap.elements);
-	if (q->freeq)
-		free(q);
+	if (q->freeq) free(q);
 }
 
 static bool BinaryHeap_Push(Queue* q, void* item, int priority)
 {
-	#ifdef QUEUE_DEBUG
-			printf("[BinaryHeap] Pushing an element. There are %d elements left\n", q->data.binaryheap.size);
-	#endif
-	if (q->data.binaryheap.size == q->data.binaryheap.max_size)
-		return false;
+#ifdef QUEUE_DEBUG
+	printf("[BinaryHeap] Pushing an element. There are %d elements left\n", q->data.binaryheap.size);
+#endif
+
+	if (q->data.binaryheap.size == q->data.binaryheap.max_size) return false;
 	assert(q->data.binaryheap.size < q->data.binaryheap.max_size);
 
 	if (q->data.binaryheap.elements[q->data.binaryheap.size >> BINARY_HEAP_BLOCKSIZE_BITS] == NULL) {
 		/* The currently allocated blocks are full, allocate a new one */
 		assert((q->data.binaryheap.size & BINARY_HEAP_BLOCKSIZE_MASK) == 0);
-		q->data.binaryheap.elements[q->data.binaryheap.size >> BINARY_HEAP_BLOCKSIZE_BITS] = malloc(BINARY_HEAP_BLOCKSIZE * sizeof(BinaryHeapNode));
+		q->data.binaryheap.elements[q->data.binaryheap.size >> BINARY_HEAP_BLOCKSIZE_BITS] = malloc(BINARY_HEAP_BLOCKSIZE * sizeof(*q->data.binaryheap.elements[0]));
 		q->data.binaryheap.blocks++;
 #ifdef QUEUE_DEBUG
-		printf("[BinaryHeap] Increasing size of elements to %d nodes\n",q->data.binaryheap.blocks *  BINARY_HEAP_BLOCKSIZE);
+		printf("[BinaryHeap] Increasing size of elements to %d nodes\n", q->data.binaryheap.blocks *  BINARY_HEAP_BLOCKSIZE);
 #endif
 	}
 
 	// Add the item at the end of the array
-	BIN_HEAP_ARR(q->data.binaryheap.size+1).priority = priority;
-	BIN_HEAP_ARR(q->data.binaryheap.size+1).item = item;
+	BIN_HEAP_ARR(q->data.binaryheap.size + 1).priority = priority;
+	BIN_HEAP_ARR(q->data.binaryheap.size + 1).item = item;
 	q->data.binaryheap.size++;
 
 	// Now we are going to check where it belongs. As long as the parent is
 	// bigger, we switch with the parent
 	{
-		int i, j;
 		BinaryHeapNode temp;
+		int i;
+		int j;
+
 		i = q->data.binaryheap.size;
 		while (i > 1) {
 			// Get the parent of this object (divide by 2)
@@ -340,13 +340,15 @@ static bool BinaryHeap_Push(Queue* q, void* item, int priority)
 
 static bool BinaryHeap_Delete(Queue* q, void* item, int priority)
 {
-	#ifdef QUEUE_DEBUG
-			printf("[BinaryHeap] Deleting an element. There are %d elements left\n", q->data.binaryheap.size);
-	#endif
 	uint i = 0;
+
+#ifdef QUEUE_DEBUG
+	printf("[BinaryHeap] Deleting an element. There are %d elements left\n", q->data.binaryheap.size);
+#endif
+
 	// First, we try to find the item..
 	do {
-		if (BIN_HEAP_ARR(i+1).item == item) break;
+		if (BIN_HEAP_ARR(i + 1).item == item) break;
 		i++;
 	} while (i < q->data.binaryheap.size);
 	// We did not find the item, so we return false
@@ -354,29 +356,30 @@ static bool BinaryHeap_Delete(Queue* q, void* item, int priority)
 
 	// Now we put the last item over the current item while decreasing the size of the elements
 	q->data.binaryheap.size--;
-	BIN_HEAP_ARR(i+1) = BIN_HEAP_ARR(q->data.binaryheap.size+1);
+	BIN_HEAP_ARR(i + 1) = BIN_HEAP_ARR(q->data.binaryheap.size + 1);
 
 	// Now the only thing we have to do, is resort it..
 	// On place i there is the item to be sorted.. let's start there
 	{
 		uint j;
 		BinaryHeapNode temp;
-		// Because of the fast that Binary Heap uses array from 1 to n, we need to increase
-		//   i with 1
+		/* Because of the fact that Binary Heap uses array from 1 to n, we need to
+		 * increase i by 1
+		 */
 		i++;
 
 		for (;;) {
 			j = i;
 			// Check if we have 2 childs
-			if (2*j+1 <= q->data.binaryheap.size) {
+			if (2 * j + 1 <= q->data.binaryheap.size) {
 				// Is this child smaller than the parent?
-				if (BIN_HEAP_ARR(j).priority >= BIN_HEAP_ARR(2*j).priority) {i = 2*j; }
+				if (BIN_HEAP_ARR(j).priority >= BIN_HEAP_ARR(2 * j).priority) i = 2 * j;
 				// Yes, we _need_ to use i here, not j, because we want to have the smallest child
 				//  This way we get that straight away!
-				if (BIN_HEAP_ARR(i).priority >= BIN_HEAP_ARR(2*j+1).priority) { i = 2*j+1; }
+				if (BIN_HEAP_ARR(i).priority >= BIN_HEAP_ARR(2 * j + 1).priority) i = 2 * j + 1;
 			// Do we have one child?
-			} else if (2*j <= q->data.binaryheap.size) {
-				if (BIN_HEAP_ARR(j).priority >= BIN_HEAP_ARR(2*j).priority) { i = 2*j; }
+			} else if (2 * j <= q->data.binaryheap.size) {
+				if (BIN_HEAP_ARR(j).priority >= BIN_HEAP_ARR(2 * j).priority) i = 2 * j;
 			}
 
 			// One of our childs is smaller than we are, switch
@@ -396,24 +399,25 @@ static bool BinaryHeap_Delete(Queue* q, void* item, int priority)
 
 static void* BinaryHeap_Pop(Queue* q)
 {
-	#ifdef QUEUE_DEBUG
-			printf("[BinaryHeap] Popping an element. There are %d elements left\n", q->data.binaryheap.size);
-	#endif
 	void* result;
-	if (q->data.binaryheap.size == 0)
-		return NULL;
+
+#ifdef QUEUE_DEBUG
+	printf("[BinaryHeap] Popping an element. There are %d elements left\n", q->data.binaryheap.size);
+#endif
+
+	if (q->data.binaryheap.size == 0) return NULL;
 
 	// The best item is always on top, so give that as result
 	result = BIN_HEAP_ARR(1).item;
-	// And now we should get ride of this item...
-	BinaryHeap_Delete(q,BIN_HEAP_ARR(1).item, BIN_HEAP_ARR(1).priority);
+	// And now we should get rid of this item...
+	BinaryHeap_Delete(q, BIN_HEAP_ARR(1).item, BIN_HEAP_ARR(1).priority);
 
 	return result;
 }
 
 void init_BinaryHeap(Queue* q, uint max_size)
 {
-	assert(q);
+	assert(q != NULL);
 	q->push = BinaryHeap_Push;
 	q->pop = BinaryHeap_Pop;
 	q->del = BinaryHeap_Delete;
@@ -423,17 +427,19 @@ void init_BinaryHeap(Queue* q, uint max_size)
 	q->data.binaryheap.size = 0;
 	// We malloc memory in block of BINARY_HEAP_BLOCKSIZE
 	//   It autosizes when it runs out of memory
-	q->data.binaryheap.elements = calloc(1, ((max_size - 1) / BINARY_HEAP_BLOCKSIZE*sizeof(*q->data.binaryheap.elements)) + 1);
-	q->data.binaryheap.elements[0] = malloc(BINARY_HEAP_BLOCKSIZE * sizeof(BinaryHeapNode));
+	q->data.binaryheap.elements = calloc((max_size - 1) / BINARY_HEAP_BLOCKSIZE + 1, sizeof(*q->data.binaryheap.elements));
+	q->data.binaryheap.elements[0] = malloc(BINARY_HEAP_BLOCKSIZE * sizeof(*q->data.binaryheap.elements[0]));
 	q->data.binaryheap.blocks = 1;
 	q->freeq = false;
 #ifdef QUEUE_DEBUG
-		printf("[BinaryHeap] Initial size of elements is %d nodes\n",(1024));
+	printf("[BinaryHeap] Initial size of elements is %d nodes\n", BINARY_HEAP_BLOCKSIZE);
 #endif
 }
 
-Queue* new_BinaryHeap(uint max_size) {
-	Queue* q = malloc(sizeof(Queue));
+Queue* new_BinaryHeap(uint max_size)
+{
+	Queue* q = malloc(sizeof(*q));
+
 	init_BinaryHeap(q, max_size);
 	q->freeq = true;
 	return q;
@@ -446,50 +452,54 @@ Queue* new_BinaryHeap(uint max_size) {
  * Hash
  */
 
-void init_Hash(Hash* h, Hash_HashProc* hash, uint num_buckets) {
+void init_Hash(Hash* h, Hash_HashProc* hash, uint num_buckets)
+{
 	/* Allocate space for the Hash, the buckets and the bucket flags */
 	uint i;
-	assert(h);
-	#ifdef HASH_DEBUG
+
+	assert(h != NULL);
+#ifdef HASH_DEBUG
 	debug("Allocated hash: %p", h);
-	#endif
+#endif
 	h->hash = hash;
 	h->size = 0;
 	h->num_buckets = num_buckets;
-	h->buckets = malloc(num_buckets * (sizeof(HashNode) + sizeof(bool)));
-	#ifdef HASH_DEBUG
+	h->buckets = malloc(num_buckets * (sizeof(*h->buckets) + sizeof(*h->buckets_in_use)));
+#ifdef HASH_DEBUG
 	debug("Buckets = %p", h->buckets);
-	#endif
+#endif
 	h->buckets_in_use = (bool*)(h->buckets + num_buckets);
 	h->freeh = false;
-	for (i=0;i<num_buckets;i++)
-		h->buckets_in_use[i] = false;
+	for (i = 0; i < num_buckets; i++) h->buckets_in_use[i] = false;
 }
 
-Hash* new_Hash(Hash_HashProc* hash, int num_buckets) {
-	Hash* h = malloc(sizeof(Hash));
+Hash* new_Hash(Hash_HashProc* hash, int num_buckets)
+{
+	Hash* h = malloc(sizeof(*h));
+
 	init_Hash(h, hash, num_buckets);
 	h->freeh = true;
 	return h;
 }
 
-void delete_Hash(Hash* h, bool free_values) {
+void delete_Hash(Hash* h, bool free_values)
+{
 	uint i;
+
 	/* Iterate all buckets */
-	for (i=0;i<h->num_buckets;i++)
-	{
+	for (i = 0; i < h->num_buckets; i++) {
 		if (h->buckets_in_use[i]) {
 			HashNode* node;
+
 			/* Free the first value */
-			if (free_values)
-				free(h->buckets[i].value);
+			if (free_values) free(h->buckets[i].value);
 			node = h->buckets[i].next;
 			while (node != NULL) {
 				HashNode* prev = node;
+
 				node = node->next;
 				/* Free the value */
-				if (free_values)
-					free(prev->value);
+				if (free_values) free(prev->value);
 				/* Free the node */
 				free(prev);
 			}
@@ -498,54 +508,59 @@ void delete_Hash(Hash* h, bool free_values) {
 	free(h->buckets);
 	/* No need to free buckets_in_use, it is always allocated in one
 	 * malloc with buckets */
-	#ifdef HASH_DEBUG
+#ifdef HASH_DEBUG
 	debug("Freeing Hash: %p", h);
-	#endif
-	if (h->freeh)
-		free(h);
+#endif
+	if (h->freeh) free(h);
 }
 
 #ifdef HASH_STATS
-static void stat_Hash(Hash* h)
+static void stat_Hash(const Hash* h)
 {
 	uint used_buckets = 0;
 	uint max_collision = 0;
 	uint max_usage = 0;
 	uint usage[200];
 	uint i;
-	uint collision;
-	HashNode* node;
 
-	for (i=0;i<200;i++) usage[i] = 0;
-	for (i=0;i<h->num_buckets;i++) {
-		collision = 0;
+	for (i = 0; i < lengthof(usage); i++) usage[i] = 0;
+	for (i = 0; i < h->num_buckets; i++) {
+		uint collision = 0;
 		if (h->buckets_in_use[i]) {
+			const HashNode* node;
+
 			used_buckets++;
-			node = &h->buckets[i];
-			while (node != NULL) {
-				collision++;
-				node = node->next;
-			}
+			for (node = &h->buckets[i]; node != NULL; node = node->next) collision++;
 			if (collision > max_collision) max_collision = collision;
 		}
-		if (collision > 199) collision = 199;
+		if (collision >= lengthof(usage)) collision = lengthof(usage) - 1;
 		usage[collision]++;
-		if (collision >0 && usage[collision] >= max_usage) max_usage = usage[collision];
+		if (collision > 0 && usage[collision] >= max_usage) {
+			max_usage = usage[collision];
+		}
 	}
-	printf("---\nHash size: %d\nNodes used: %d\nNon empty buckets: %d\nMax collision: %d\n", h->num_buckets, h->size, used_buckets, max_collision);
+	printf(
+		"---\n"
+		"Hash size: %d\n"
+		"Nodes used: %d\n"
+		"Non empty buckets: %d\n"
+		"Max collision: %d\n",
+		h->num_buckets, h->size, used_buckets, max_collision
+	);
 	printf("{ ");
-	for (i=0;i<=max_collision;i++)
-		if (usage[i]) {
+	for (i = 0; i <= max_collision; i++) {
+		if (usage[i] > 0) {
 			printf("%d:%d ", i, usage[i]);
-/*
-			if (i>0){
+#if 0
+			if (i > 0) {
 				uint j;
-				for (j=0;j<(usage[i] * 160 / 800);j++)
-					printf("#");
+
+				for (j = 0; j < usage[i] * 160 / 800; j++) putchar('#');
 			}
 			printf("\n");
-			*/
+#endif
 		}
+	}
 	printf ("}\n");
 }
 #endif
@@ -553,25 +568,25 @@ static void stat_Hash(Hash* h)
 void clear_Hash(Hash* h, bool free_values)
 {
 	uint i;
-	HashNode* node;
+
 #ifdef HASH_STATS
-	if (h->size > 2000)
-		stat_Hash(h);
+	if (h->size > 2000) stat_Hash(h);
 #endif
+
 	/* Iterate all buckets */
-	for (i=0;i<h->num_buckets;i++)
-	{
+	for (i = 0; i < h->num_buckets; i++) {
 		if (h->buckets_in_use[i]) {
+			HashNode* node;
+
 			h->buckets_in_use[i] = false;
 			/* Free the first value */
-			if (free_values)
-				free(h->buckets[i].value);
+			if (free_values) free(h->buckets[i].value);
 			node = h->buckets[i].next;
 			while (node != NULL) {
 				HashNode* prev = node;
+
 				node = node->next;
-				if (free_values)
-					free(prev->value);
+				if (free_values) free(prev->value);
 				free(prev);
 			}
 		}
@@ -586,54 +601,52 @@ void clear_Hash(Hash* h, bool free_values)
  * bucket, or NULL if it is empty. prev can also be NULL, in which case it is
  * not used for output.
  */
-static HashNode* Hash_FindNode(Hash* h, uint key1, uint key2, HashNode** prev_out)
+static HashNode* Hash_FindNode(const Hash* h, uint key1, uint key2, HashNode** prev_out)
 {
 	uint hash = h->hash(key1, key2);
 	HashNode* result = NULL;
-	#ifdef HASH_DEBUG
+
+#ifdef HASH_DEBUG
 	debug("Looking for %u, %u", key1, key2);
-	#endif
+#endif
 	/* Check if the bucket is empty */
 	if (!h->buckets_in_use[hash]) {
-		if (prev_out)
-			*prev_out = NULL;
+		if (prev_out != NULL) *prev_out = NULL;
 		result = NULL;
 	/* Check the first node specially */
 	} else if (h->buckets[hash].key1 == key1 && h->buckets[hash].key2 == key2) {
 		/* Save the value */
 		result = h->buckets + hash;
-		if (prev_out)
-			*prev_out = NULL;
-	#ifdef HASH_DEBUG
+		if (prev_out != NULL) *prev_out = NULL;
+#ifdef HASH_DEBUG
 		debug("Found in first node: %p", result);
-	#endif
+#endif
 	/* Check all other nodes */
 	} else {
 		HashNode* prev = h->buckets + hash;
-		HashNode* node = prev->next;
-		while (node != NULL) {
+		HashNode* node;
+
+		for (node = prev->next; node != NULL; node = node->next) {
 			if (node->key1 == key1 && node->key2 == key2) {
 				/* Found it */
 				result = node;
-	#ifdef HASH_DEBUG
+#ifdef HASH_DEBUG
 				debug("Found in other node: %p", result);
-	#endif
+#endif
 				break;
 			}
 			prev = node;
-			node = node->next;
 		}
-		if (prev_out)
-			*prev_out = prev;
+		if (prev_out != NULL) *prev_out = prev;
 	}
-	#ifdef HASH_DEBUG
-	if (result == NULL)
-		debug("Not found");
-	#endif
+#ifdef HASH_DEBUG
+	if (result == NULL) debug("Not found");
+#endif
 	return result;
 }
 
-void* Hash_Delete(Hash* h, uint key1, uint key2) {
+void* Hash_Delete(Hash* h, uint key1, uint key2)
+{
 	void* result;
 	HashNode* prev; /* Used as output var for below function call */
 	HashNode* node = Hash_FindNode(h, key1, key2, &prev);
@@ -651,9 +664,9 @@ void* Hash_Delete(Hash* h, uint key1, uint key2) {
 			/* Copy the second to the first */
 			*node = *next;
 			/* Free the second */
-		#ifndef NOFREE
+#ifndef NOFREE
 			free(next);
-		#endif
+#endif
 		} else {
 			/* This was the last in this bucket */
 			/* Mark it as empty */
@@ -667,23 +680,24 @@ void* Hash_Delete(Hash* h, uint key1, uint key2) {
 		/* Link previous and next nodes */
 		prev->next = node->next;
 		/* Free the node */
-		#ifndef NOFREE
+#ifndef NOFREE
 		free(node);
-		#endif
+#endif
 	}
-	if (result != NULL)
-		h->size--;
+	if (result != NULL) h->size--;
 	return result;
 }
 
 
-void* Hash_Set(Hash* h, uint key1, uint key2, void* value) {
+void* Hash_Set(Hash* h, uint key1, uint key2, void* value)
+{
 	HashNode* prev;
 	HashNode* node = Hash_FindNode(h, key1, key2, &prev);
-	void* result = NULL;
+
 	if (node != NULL) {
 		/* Found it */
-		result = node->value;
+		void* result = node->value;
+
 		node->value = value;
 		return result;
 	}
@@ -695,7 +709,7 @@ void* Hash_Set(Hash* h, uint key1, uint key2, void* value) {
 		node = h->buckets + hash;
 	} else {
 		/* Add it after prev */
-		node = malloc(sizeof(HashNode));
+		node = malloc(sizeof(*node));
 		prev->next = node;
 	}
 	node->next = NULL;
@@ -706,19 +720,17 @@ void* Hash_Set(Hash* h, uint key1, uint key2, void* value) {
 	return NULL;
 }
 
-void* Hash_Get(Hash* h, uint key1, uint key2) {
+void* Hash_Get(const Hash* h, uint key1, uint key2)
+{
 	HashNode* node = Hash_FindNode(h, key1, key2, NULL);
-	#ifdef HASH_DEBUG
+
+#ifdef HASH_DEBUG
 	debug("Found node: %p", node);
-	#endif
-	if (node == NULL) {
-		/* Node not found */
-		return NULL;
-	} else {
-		return node->value;
-	}
+#endif
+	return (node != NULL) ? node->value : NULL;
 }
 
-uint Hash_Size(Hash* h) {
-    return h->size;
+uint Hash_Size(const Hash* h)
+{
+	return h->size;
 }

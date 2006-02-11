@@ -22,8 +22,9 @@ struct InsSortNode {
 	int priority;
 	InsSortNode* next;
 };
+
 typedef struct BinaryHeapNode BinaryHeapNode;
-	struct BinaryHeapNode {
+struct BinaryHeapNode {
 	void* item;
 	int priority;
 };
@@ -179,7 +180,7 @@ void* Hash_Delete(Hash* h, uint key1, uint key2);
 void* Hash_Set(Hash* h, uint key1, uint key2, void* value);
 /* Gets the value associated with the given key pair, or NULL when it is not
  * present. */
-void* Hash_Get(Hash* h, uint key1, uint key2);
+void* Hash_Get(const Hash* h, uint key1, uint key2);
 
 /* Call these function to create/destroy a hash */
 
@@ -202,6 +203,6 @@ void clear_Hash(Hash* h, bool free_values);
 /*
  * Gets the current size of the Hash
  */
-uint Hash_Size(Hash* h);
+uint Hash_Size(const Hash* h);
 
 #endif /* QUEUE_H */
