@@ -423,7 +423,7 @@ void init_BinaryHeap(Queue* q, uint max_size)
 	q->data.binaryheap.size = 0;
 	// We malloc memory in block of BINARY_HEAP_BLOCKSIZE
 	//   It autosizes when it runs out of memory
-	q->data.binaryheap.elements = calloc(1, ((max_size - 1) / BINARY_HEAP_BLOCKSIZE*sizeof(BinaryHeapNode)) + 1);
+	q->data.binaryheap.elements = calloc(1, ((max_size - 1) / BINARY_HEAP_BLOCKSIZE*sizeof(*q->data.binaryheap.elements)) + 1);
 	q->data.binaryheap.elements[0] = malloc(BINARY_HEAP_BLOCKSIZE * sizeof(BinaryHeapNode));
 	q->data.binaryheap.blocks = 1;
 	q->freeq = false;
