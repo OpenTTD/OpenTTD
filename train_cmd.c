@@ -122,7 +122,7 @@ void TrainConsistChanged(Vehicle* v)
 			CLRBIT(u->u.rail.flags, VRF_POWEREDWAGON);
 			if ((rvi_v->pow_wag_power != 0) && (rvi_u->flags & RVI_WAGON) && UsesWagonOverride(u)) {
 				if (HASBIT(rvi_u->callbackmask, CBM_WAGON_POWER)) {
-					uint16 callback = GetCallBackResult(CBID_WAGON_POWER,  u->engine_type, u);
+					uint16 callback = GetCallBackResult(CBID_TRAIN_WAGON_POWER,  u->engine_type, u);
 
 					if (callback != CALLBACK_FAILED)
 						u->u.rail.cached_vis_effect = callback;
@@ -143,8 +143,8 @@ void TrainConsistChanged(Vehicle* v)
 
 		// check the vehicle length (callback)
 		veh_len = CALLBACK_FAILED;
-		if (HASBIT(rvi_u->callbackmask, CBM_VEH_LENGTH))
-			veh_len = GetCallBackResult(CBID_VEH_LENGTH,  u->engine_type, u);
+		if (HASBIT(rvi_u->callbackmask, CBM_VEHICLE_LENGTH))
+			veh_len = GetCallBackResult(CBID_TRAIN_VEHICLE_LENGTH,  u->engine_type, u);
 		if (veh_len == CALLBACK_FAILED)
 			veh_len = rvi_u->shorten_factor;
 		veh_len = clamp(veh_len, 0, u->next == NULL ? 7 : 5); // the clamp on vehicles not the last in chain is stricter, as too short wagons can break the 'follow next vehicle' code
@@ -435,7 +435,7 @@ static uint CountArticulatedParts(const RailVehicleInfo *rvi, EngineID engine_ty
 	if (!HASBIT(rvi->callbackmask, CBM_ARTIC_ENGINE)) return 0;
 
 	for (i = 1; i < 10; i++) {
-		callback = GetCallBackResult(CBID_ARTIC_ENGINE + (i << 8), engine_type, NULL);
+		callback = GetCallBackResult(CBID_TRAIN_ARTIC_ENGINE + (i << 8), engine_type, NULL);
 		if (callback == CALLBACK_FAILED || callback == 0xFF) break;
 	}
 
@@ -456,7 +456,7 @@ static void AddArticulatedParts(const RailVehicleInfo *rvi, Vehicle **vl)
 		return;
 
 	for (i = 1; i < 10; i++) {
-		callback = GetCallBackResult(CBID_ARTIC_ENGINE + (i << 8), v->engine_type, NULL);
+		callback = GetCallBackResult(CBID_TRAIN_ARTIC_ENGINE + (i << 8), v->engine_type, NULL);
 		if (callback == CALLBACK_FAILED || callback == 0xFF)
 			return;
 
@@ -1692,11 +1692,11 @@ int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
 			uint16 amount = CALLBACK_FAILED;
 
-			if (HASBIT(rvi->callbackmask, CBM_REFIT_CAP)) {
+			if (HASBIT(rvi->callbackmask, CBM_REFIT_CAPACITY)) {
 				/* Check the 'refit capacity' callback */
 				CargoID temp_cid = v->cargo_type;
 				v->cargo_type = new_cid;
-				amount = GetCallBackResult(CBID_REFIT_CAP, v->engine_type, v);
+				amount = GetCallBackResult(CBID_VEHICLE_REFIT_CAPACITY, v->engine_type, v);
 				v->cargo_type = temp_cid;
 			}
 
