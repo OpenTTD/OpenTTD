@@ -574,7 +574,7 @@ DEF_CONSOLE_HOOK(ConHookValidateMaxCompaniesCount) {
 DEF_CONSOLE_HOOK(ConHookValidateMaxSpectatorsCount) {
 	/* XXX @see ConHookValidateMaxClientsCount */
 	if (_network_game_info.spectators_max > 10) {
-		_network_game_info.clients_max = 10;
+		_network_game_info.spectators_max = 10;
 		IConsoleError("Maximum spectators out of bounds, truncating to limit.");
 	}
 
