@@ -100,7 +100,7 @@ typedef struct VehicleAir {
 typedef struct VehicleRoad {
 	byte state;
 	byte frame;
-	uint16 unk2;
+	uint16 blocked_ctr;
 	byte overtaking;
 	byte overtaking_ctr;
 	uint16 crashed_ctr;

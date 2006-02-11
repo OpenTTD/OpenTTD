@@ -2161,7 +2161,7 @@ static const SaveLoad _roadveh_desc[] = {
 	SLE_INCLUDEX(0, INC_VEHICLE_COMMON),
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleRoad,state),					SLE_UINT8),
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleRoad,frame),					SLE_UINT8),
-	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleRoad,unk2),					SLE_UINT16),
+	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleRoad,blocked_ctr),		SLE_UINT16),
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleRoad,overtaking),		SLE_UINT8),
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleRoad,overtaking_ctr),SLE_UINT8),
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleRoad,crashed_ctr),		SLE_UINT16),

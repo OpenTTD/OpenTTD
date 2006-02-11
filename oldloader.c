@@ -1083,7 +1083,7 @@ static const OldChunks vehicle_train_chunk[] = {
 static const OldChunks vehicle_road_chunk[] = {
 	OCL_SVAR(  OC_UINT8, VehicleRoad, state ),
 	OCL_SVAR(  OC_UINT8, VehicleRoad, frame ),
-	OCL_SVAR( OC_UINT16, VehicleRoad, unk2 ),
+	OCL_SVAR( OC_UINT16, VehicleRoad, blocked_ctr ),
 	OCL_SVAR(  OC_UINT8, VehicleRoad, overtaking ),
 	OCL_SVAR(  OC_UINT8, VehicleRoad, overtaking_ctr ),
 	OCL_SVAR( OC_UINT16, VehicleRoad, crashed_ctr ),

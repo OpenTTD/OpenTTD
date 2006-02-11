@@ -741,11 +741,11 @@ static Vehicle *RoadVehFindCloseTo(Vehicle *v, int x, int y, byte dir)
 	//  drive just through it. The ultimate backup-code of TTD.
 	// It can be disabled.
 	if (u == NULL) {
-		v->u.road.unk2 = 0;
+		v->u.road.blocked_ctr = 0;
 		return NULL;
 	}
 
-	if (++v->u.road.unk2 > 1480)
+	if (++v->u.road.blocked_ctr > 1480)
 		return NULL;
 
 	return u;
@@ -1570,7 +1570,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 	if ((++v->day_counter & 7) == 0)
 		DecreaseVehicleValue(v);
 
-	if (v->u.road.unk2 == 0)
+	if (v->u.road.blocked_ctr == 0)
 		CheckVehicleBreakdown(v);
 
 	AgeVehicle(v);
