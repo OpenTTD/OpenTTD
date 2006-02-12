@@ -24,6 +24,10 @@
 /*
  * OpenTTD includes.
  */
+#define  WindowClass OSX_WindowClass
+#include <QuickTime/QuickTime.h>
+#undef   WindowClass
+
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "qtmidi.h"
@@ -32,19 +36,10 @@
  * System includes. We need to workaround with some defines because there's
  * stuff already defined in QuickTime headers.
  */
-#define  bool        OSX_bool
-#define  Rect        OSX_Rect
-#define  Point       OSX_Point
-#define  SL_ERROR    OSX_SL_ERROR
-#define  WindowClass OSX_WindowClass
 #define  OTTD_Random OSX_OTTD_Random
-#include <CoreServices/CoreServices.h>
-#include <QuickTime/QuickTime.h>
 #undef   OTTD_Random
 #undef   WindowClass
 #undef   SL_ERROR
-#undef   Point
-#undef   Rect
 #undef   bool
 
 #include <assert.h>

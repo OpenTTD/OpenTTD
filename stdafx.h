@@ -52,8 +52,15 @@
 # endif
 #endif /* __MORPHOS__ */
 
+#ifdef __APPLE__
+#include "os/macosx/osx_stdafx.h"
+// make endian swapping use Apple's macros to increase speed
+#define BSWAP32(x) Endian32_Swap(x)
+#define BSWAP16(x) Endian16_Swap(x)
+#else
 #define BSWAP32(x) ((((x) >> 24) & 0xFF) | (((x) >> 8) & 0xFF00) | (((x) << 8) & 0xFF0000) | (((x) << 24) & 0xFF000000))
 #define BSWAP16(x) ((x) >> 8 | (x) << 8)
+#endif
 
 // by default we use [] var arrays
 #define VARARRAY_SIZE

@@ -36,9 +36,6 @@ extern void HideMenuBar(void);
 #endif
 
 
-/* Name conflict */
-#define Rect		OTTDRect
-#define Point		OTTDPoint
 /* Defined in ppc/param.h or i386/param.h included from sys/param.h */
 #undef ALIGN
 /* Defined in stdbool.h */
