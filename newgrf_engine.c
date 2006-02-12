@@ -137,6 +137,48 @@ static int MapOldSubType(const Vehicle *v)
 	return 2;
 }
 
+static int VehicleSpecificProperty(const Vehicle *v, byte var) {
+	switch (v->type) {
+		case VEH_Train:
+			switch (var) {
+				case 0x62: return v->u.rail.track;
+				case 0x66: return v->u.rail.railtype;
+				case 0x73: return v->u.rail.cached_veh_length;
+				case 0x74: return v->u.rail.cached_power;
+				case 0x75: return v->u.rail.cached_power & 0xFFFFFF;
+				case 0x76: return v->u.rail.cached_power & 0xFFFF;
+				case 0x77: return v->u.rail.cached_power & 0xFF;
+				case 0x7C: return v->first->index;
+				case 0x7D: return v->first->index & 0xFF;
+			}
+			break;
+
+		case VEH_Road:
+			switch (var) {
+				case 0x62: return v->u.road.state;
+				case 0x64: return v->u.road.blocked_ctr;
+				case 0x65: return v->u.road.blocked_ctr & 0xFF;
+				case 0x66: return v->u.road.overtaking;
+				case 0x67: return v->u.road.overtaking_ctr;
+				case 0x68: return v->u.road.crashed_ctr;
+				case 0x69: return v->u.road.crashed_ctr & 0xFF;
+			}
+			break;
+
+		case VEH_Aircraft:
+			switch (var) {
+				// case 0x62: XXX Need to convert from ottd to ttdp state
+				case 0x63: return v->u.air.targetairport;
+				// case 0x66: XXX
+			}
+			break;
+	}
+
+	DEBUG(grf, 1)("Unhandled vehicle property 0x%x (var 0x%x), type 0x%x", var, var + 0x80, v->type);
+
+	return -1;
+}
+
 typedef SpriteGroup *(*resolve_callback)(const SpriteGroup *spritegroup,
 	const Vehicle *veh, uint16 callback_info, void *resolve_func); /* XXX data pointer used as function pointer */
 
@@ -283,17 +325,14 @@ static const SpriteGroup* ResolveVehicleSpriteGroup(const SpriteGroup *spritegro
 						veh_prop(0x5F, veh->value & 0xFF);
 						veh_prop(0x60, veh->string_id);
 						veh_prop(0x61, veh->string_id & 0xFF);
-						/* 00h..07h=sub image? 40h=in tunnel; actually some kind of status
-						 * aircraft: >=13h when in flight
-						 * train, ship: 80h=in depot
-						 * rv: 0feh=in depot */
-						/* TODO veh_prop(0x62, veh->???); */
 
-						/* TODO: The rest is per-vehicle, I hope no GRF file looks so far.
-						 * But they won't let us have an easy ride so surely *some* GRF
-						 * file does. So someone needs to do this too. --pasky */
-
+						veh_prop(0x72, 0); // XXX Refit cycle currently unsupported
+						veh_prop(0x7A, veh->random_bits);
+						veh_prop(0x7B, veh->waiting_triggers);
 #undef veh_prop
+
+						// Handle vehicle specific properties.
+						default: value = VehicleSpecificProperty(veh, dsg->variable - 0x80); break;
 					}
 				}
 			}
