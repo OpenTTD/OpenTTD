@@ -2004,7 +2004,7 @@ uint32 VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y)
 
 UnitID GetFreeUnitNumber(byte type)
 {
-	UnitID unit, max;
+	UnitID unit, max = 0;
 	const Vehicle *u;
 	static bool *cache = NULL;
 	static UnitID gmax = 0;
