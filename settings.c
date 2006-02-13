@@ -813,6 +813,7 @@ static const SettingDesc misc_settings[] = {
 	{"news_display_opt",	SDT_UINT32,		"0xAAAAAAAA",		&_news_display_opt,		NULL}, // default to all full messages: 10101010101010101010 = 0xAAAAAAAA
 	{"news_ticker_sound", SDT_BOOL,     (void*)true, &_news_ticker_sound,   NULL},
 	{"fullscreen",				SDT_BOOL,			(void*)false, &_fullscreen,					NULL},
+	/* Added the (uint32) cast in the next 3 lines, to suppress a warning on 64bit targets -- TrueLight */
 	{"videodriver",				SDT_STRINGBUF | ((uint32)lengthof(_ini_videodriver)<<16) | SDT_NOSAVE,NULL,			_ini_videodriver,				NULL},
 	{"musicdriver",				SDT_STRINGBUF | ((uint32)lengthof(_ini_musicdriver)<<16) | SDT_NOSAVE,NULL,			_ini_musicdriver,				NULL},
 	{"sounddriver",				SDT_STRINGBUF | ((uint32)lengthof(_ini_sounddriver)<<16) | SDT_NOSAVE,NULL,			_ini_sounddriver,				NULL},
