@@ -538,7 +538,7 @@ void OnTick_Trees(void)
 	uint32 r;
 	TileIndex tile;
 	ClearGround ct;
-	int tree;
+	TreeType tree;
 
 	/* place a tree at a random rainforest spot */
 	if (_opt.landscape == LT_DESERT &&

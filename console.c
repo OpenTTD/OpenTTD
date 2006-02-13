@@ -695,7 +695,7 @@ static void IConsoleAliasExec(const IConsoleAlias* alias, byte tokencount, char*
 {
 	const char *cmdptr;
 	char *aliases[ICON_MAX_ALIAS_LINES], aliasstream[ICON_MAX_STREAMSIZE];
-	int i;
+	uint i;
 	uint a_index, astream_i;
 
 	memset(&aliases, 0, sizeof(aliases));
@@ -758,7 +758,7 @@ static void IConsoleAliasExec(const IConsoleAlias* alias, byte tokencount, char*
 		}
 	}
 
-	for (i = 0; i <= (int)a_index; i++) IConsoleCmdExec(aliases[i]); // execute each alias in turn
+	for (i = 0; i <= a_index; i++) IConsoleCmdExec(aliases[i]); // execute each alias in turn
 }
 
 /**

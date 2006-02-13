@@ -1121,10 +1121,11 @@ int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, b
 		if (transit_days > _cargoc.transit_days_2[cargo]) {
 			transit_days -= _cargoc.transit_days_2[cargo];
 
-			if (f < transit_days)
+			if (f < transit_days) {
 				f = 0;
-			else
+			} else {
 				f -= transit_days;
+			}
 		}
 	}
 	if (f < 31) f = 31;
@@ -1134,19 +1135,23 @@ int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, b
 
 static void DeliverGoodsToIndustry(TileIndex xy, byte cargo_type, int num_pieces)
 {
-	Industry *ind, *best;
-	int t, u;
+	Industry* best = NULL;
+	Industry* ind;
+	uint u;
 
-	/* Check if there's an industry close to the station that accepts
-	 * the cargo */
-	best = NULL;
+	// Check if there's an industry close to the station that accepts the cargo
 	u = _patches.station_spread + 8;
 	FOR_ALL_INDUSTRIES(ind) {
-		if (ind->xy != 0 && (cargo_type == ind->accepts_cargo[0] || cargo_type
-				 == ind->accepts_cargo[1] || cargo_type == ind->accepts_cargo[2]) &&
-				 ind->produced_cargo[0] != CT_INVALID &&
-				 ind->produced_cargo[0] != cargo_type &&
-				 (t = DistanceManhattan(ind->xy, xy)) < 2 * u) {
+		uint t;
+
+		if (ind->xy != 0 && (
+					cargo_type == ind->accepts_cargo[0] ||
+					cargo_type == ind->accepts_cargo[1] ||
+					cargo_type == ind->accepts_cargo[2]
+				) &&
+				ind->produced_cargo[0] != CT_INVALID &&
+				ind->produced_cargo[0] != cargo_type &&
+				(t = DistanceManhattan(ind->xy, xy)) < 2 * u) {
 			u = t;
 			best = ind;
 		}
@@ -1595,7 +1600,7 @@ int32 CmdBuyShareInCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				break;
 			}
 		}
-		InvalidateWindow(WC_COMPANY, (int)p1);
+		InvalidateWindow(WC_COMPANY, p1);
 	}
 	return cost;
 }
@@ -1627,7 +1632,7 @@ int32 CmdSellShareInCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		PlayerID* b = p->share_owners;
 		while (*b != _current_player) b++; /* share owners is guaranteed to contain player */
 		*b = OWNER_SPECTATOR;
-		InvalidateWindow(WC_COMPANY, (int)p1);
+		InvalidateWindow(WC_COMPANY, p1);
 	}
 	return cost;
 }

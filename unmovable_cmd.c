@@ -51,7 +51,7 @@ static int32 DestroyCompanyHQ(TileIndex tile, uint32 flags)
 			DoClearSquare(p->location_of_house + TileDiffXY(1, 0));
 			DoClearSquare(p->location_of_house + TileDiffXY(1, 1));
 			p->location_of_house = 0; // reset HQ position
-			InvalidateWindow(WC_COMPANY, (int)p->index);
+			InvalidateWindow(WC_COMPANY, p->index);
 		}
 
 	// cost of relocating company is 1% of company value
@@ -91,7 +91,7 @@ int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		ModifyTile(tile + TileDiffXY(1, 0), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x82);
 		ModifyTile(tile + TileDiffXY(1, 1), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x83);
 		UpdatePlayerHouse(p, score);
-		InvalidateWindow(WC_COMPANY, (int)p->index);
+		InvalidateWindow(WC_COMPANY, p->index);
 	}
 
 	return cost;
@@ -346,8 +346,8 @@ void GenerateUnmovables(void)
 		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h >= 32) {
 			if (!checkRadioTowerNearby(tile)) continue;
 			SetTileType(tile, MP_UNMOVABLE);
-			_m[tile].m5 = 0;
 			SetTileOwner(tile, OWNER_NONE);
+			_m[tile].m5 = 0;
 			if (--j == 0) break;
 		}
 	} while (--i);
@@ -375,8 +375,8 @@ restart:
 		assert(tile == TILE_MASK(tile));
 
 		SetTileType(tile, MP_UNMOVABLE);
-		_m[tile].m5 = 1;
 		SetTileOwner(tile, OWNER_NONE);
+		_m[tile].m5 = 1;
 	} while (--i);
 }
 

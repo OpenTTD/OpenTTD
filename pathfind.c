@@ -558,12 +558,12 @@ static bool NtpVisit(NewTrackPathFinder *tpf, TileIndex tile, uint dir, uint len
 		uint offs = tpf->hash_tile[hash];
 		do {
 			link = NTP_GET_LINK_PTR(tpf, offs);
-			if (tile == link->tile && (uint)(link->typelength & 0x3) == dir) {
-				if (length >= (uint)(link->typelength >> 2)) return false;
+			if (tile == link->tile && (link->typelength & 0x3U) == dir) {
+				if (length >= link->typelength >> 2) return false;
 				link->typelength = dir | (length << 2);
 				return true;
 			}
-		} while ((offs=link->next) != 0xFFFF);
+		} while ((offs = link->next) != 0xFFFF);
 	}
 
 	/* get here if we need to add a new link to link,
@@ -611,9 +611,9 @@ static bool NtpCheck(NewTrackPathFinder *tpf, TileIndex tile, uint dir, uint len
 	offs = tpf->hash_tile[hash];
 	for (;;) {
 		link = NTP_GET_LINK_PTR(tpf, offs);
-		if (tile == link->tile && (uint)(link->typelength & 0x3) == dir) {
-			assert( (uint)(link->typelength >> 2) <= length);
-			return length == (uint)(link->typelength >> 2);
+		if (tile == link->tile && (link->typelength & 0x3U) == dir) {
+			assert(link->typelength >> 2 <= length);
+			return length == link->typelength >> 2;
 		}
 		offs = link->next;
 		assert(offs != 0xffff);

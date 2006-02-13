@@ -570,7 +570,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, uint mask, int block, Town *t1)
 	int a,b,rcmd;
 	TileIndex tmptile;
 	TileInfo ti;
-	int i;
+	uint i;
 	int j;
 	TileIndex tile = *tile_ptr;
 

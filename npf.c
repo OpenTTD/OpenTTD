@@ -208,25 +208,26 @@ static void NPFMarkTile(TileIndex tile)
 #ifdef NO_DEBUG_MESSAGES
 	return;
 #else
-	if (_debug_npf_level >= 1)
-		switch (GetTileType(tile)) {
-			case MP_RAILWAY:
-				/* DEBUG: mark visited tiles by mowing the grass under them
-				 * ;-) */
-				if (!IsTileDepotType(tile, TRANSPORT_RAIL)) {
-					SB(_m[tile].m2, 0, 4, 0);
-					MarkTileDirtyByTile(tile);
-				}
-				break;
-			case MP_STREET:
-				if (!IsTileDepotType(tile, TRANSPORT_ROAD)) {
-					SB(_m[tile].m4, 4, 3, 0);
-					MarkTileDirtyByTile(tile);
-				}
-				break;
-			default:
-				break;
-		}
+	if (_debug_npf_level < 1) return;
+	switch (GetTileType(tile)) {
+		case MP_RAILWAY:
+			/* DEBUG: mark visited tiles by mowing the grass under them ;-) */
+			if (!IsTileDepotType(tile, TRANSPORT_RAIL)) {
+				SB(_m[tile].m2, 0, 4, 0);
+				MarkTileDirtyByTile(tile);
+			}
+			break;
+
+		case MP_STREET:
+			if (!IsTileDepotType(tile, TRANSPORT_ROAD)) {
+				SB(_m[tile].m4, 4, 3, 0);
+				MarkTileDirtyByTile(tile);
+			}
+			break;
+
+		default:
+			break;
+	}
 #endif
 }
 
@@ -298,7 +299,7 @@ static int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 	TileIndex tile = current->tile;
 	Trackdir trackdir = (Trackdir)current->direction;
 	int32 cost = 0;
-	/* HACK: We create a OpenListNode manualy, so we can call EndNodeCheck */
+	/* HACK: We create a OpenListNode manually, so we can call EndNodeCheck */
 	OpenListNode new_node;
 
 	/* Determine base length */

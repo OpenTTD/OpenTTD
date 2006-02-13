@@ -471,22 +471,22 @@ static int32 DoBuildTunnel(int x, int y, int x2, int y2, uint32 flags, uint exc_
 	/* check if valid, and make sure that (x,y) is smaller than (x2,y2) */
 	direction = 0;
 	if (x == x2) {
-		if (y == y2)
-			return_cmd_error(STR_5008_CANNOT_START_AND_END_ON);
+		if (y == y2) return_cmd_error(STR_5008_CANNOT_START_AND_END_ON);
 		direction++;
 		if (y > y2) {
 			intswap(y,y2);
 			intswap(x,x2);
-			exc_tile|=2;
+			exc_tile |= 2;
 		}
 	} else if (y == y2) {
 		if (x > x2) {
 			intswap(y,y2);
 			intswap(x,x2);
-			exc_tile|=2;
+			exc_tile |= 2;
 		}
-	} else
+	} else {
 		return_cmd_error(STR_500A_START_AND_END_MUST_BE_IN);
+	}
 
 	cost = 0;
 
@@ -829,7 +829,6 @@ clear_it:;
 
 		SetSignalsOnBothDir(tile, direction);
 		SetSignalsOnBothDir(endtile, direction);
-
 	}
 
 	if (direction) {
@@ -845,11 +844,9 @@ static int32 ClearTile_TunnelBridge(TileIndex tile, byte flags)
 
 	if ((m5 & 0xF0) == 0) {
 		if (flags & DC_AUTO) return_cmd_error(STR_5006_MUST_DEMOLISH_TUNNEL_FIRST);
-
 		return DoClearTunnel(tile, flags);
 	} else if (m5 & 0x80) {
 		if (flags & DC_AUTO) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
-
 		return DoClearBridge(tile, flags);
 	}
 
@@ -1023,13 +1020,20 @@ uint GetBridgeFoundation(uint tileh, byte direction)
 {
 	int i;
 	// normal level sloped building (7, 11, 13, 14)
-	if (BRIDGE_FULL_LEVELED_FOUNDATION & (1 << tileh))
-		return tileh;
+	if (BRIDGE_FULL_LEVELED_FOUNDATION & (1 << tileh)) return tileh;
 
 	// inclined sloped building
-	if (	((i=0, tileh == 1) || (i+=2, tileh == 2) || (i+=2, tileh == 4) || (i+=2, tileh == 8)) &&
-				( direction == 0 || (i++, direction == 1)) )
+	if ((
+				(i  = 0, tileh == 1) ||
+				(i += 2, tileh == 2) ||
+				(i += 2, tileh == 4) ||
+				(i += 2, tileh == 8)
+			) && (
+				direction == 0 ||
+				(i++, direction == 1)
+			)) {
 		return i + 15;
+	}
 
 	return 0;
 }
@@ -1132,10 +1136,11 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				// draw land under bridge
 				if (ice) image += 2;
 
-				if (image != 1 || ti->tileh == 0)
+				if (image != 1 || ti->tileh == 0) {
 					DrawGroundSprite(_bridge_land_below[image] + _tileh_to_sprite[ti->tileh]);
-				else
+				} else {
 					DrawGroundSprite(_water_shore_sprites[ti->tileh]);
+				}
 
 				// draw canal water?
 				if (ti->map5 & 8 && ti->z != 0) DrawCanalWater(ti->tile);
@@ -1185,7 +1190,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 
 			// draw roof, the component of the bridge which is logically between the vehicle and the camera
-			if (ti->map5&1) {
+			if (ti->map5 & 1) {
 				x += 12;
 				if (image & SPRITE_MASK) AddSortableSpriteToDraw(image, x,y, 1, 16, 0x28, z);
 			} else {
@@ -1193,10 +1198,10 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				if (image & SPRITE_MASK) AddSortableSpriteToDraw(image, x,y, 16, 1, 0x28, z);
 			}
 
-			if (ti->z + 5 == z ) {
+			if (ti->z + 5 == z) {
 				// draw poles below for small bridges
 				image = b[2];
-				if (image) {
+				if (image != 0) {
 					if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 					DrawGroundSpriteAt(image, x, y, z);
 				}
@@ -1235,10 +1240,10 @@ static uint GetSlopeZ_TunnelBridge(const TileInfo* ti)
 					return z + 8;
 				} else if (!(ti->map5 & 0x20)) { // northern / southern ending
 					// ramp
-					return (z + (x>>1) + 1);
+					return z + (x >> 1) + 1;
 				} else {
 					// ramp in opposite dir
-					return (z + ((x^0xF)>>1));
+					return z + ((x ^ 0xF) >> 1);
 				}
 
 			// bridge middle part
@@ -1351,23 +1356,27 @@ static void AnimateTile_TunnelBridge(TileIndex tile)
 
 static void TileLoop_TunnelBridge(TileIndex tile)
 {
-	if (_opt.landscape == LT_HILLY) {
-		if (GetTileZ(tile) > _opt.snow_line) {
-			if (!(_m[tile].m4 & 0x80)) {
+	switch (_opt.landscape) {
+		case LT_HILLY:
+			if (GetTileZ(tile) > _opt.snow_line) {
+				if (!(_m[tile].m4 & 0x80)) {
+					_m[tile].m4 |= 0x80;
+					MarkTileDirtyByTile(tile);
+				}
+			} else {
+				if (_m[tile].m4 & 0x80) {
+					_m[tile].m4 &= ~0x80;
+					MarkTileDirtyByTile(tile);
+				}
+			}
+			break;
+
+		case LT_DESERT:
+			if (GetMapExtraBits(tile) == 1 && !(_m[tile].m4 & 0x80)) {
 				_m[tile].m4 |= 0x80;
 				MarkTileDirtyByTile(tile);
 			}
-		} else {
-			if (_m[tile].m4 & 0x80) {
-				_m[tile].m4 &= ~0x80;
-				MarkTileDirtyByTile(tile);
-			}
-		}
-	} else if (_opt.landscape == LT_DESERT) {
-		if (GetMapExtraBits(tile) == 1 && !(_m[tile].m4&0x80)) {
-			_m[tile].m4 |= 0x80;
-			MarkTileDirtyByTile(tile);
-		}
+			break;
 	}
 
 	// if it's a bridge with water below, call tileloop_water on it.
@@ -1537,14 +1546,14 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 		if (v->type == VEH_Road || (v->type == VEH_Train && IsFrontEngine(v))) {
 			uint h;
 
-			if (GetTileSlope(tile, &h) != 0)
-				h += 8; // Compensate for possible foundation
+			// Compensate for possible foundation
+			if (GetTileSlope(tile, &h) != 0) h += 8;
 			if (!(_m[tile].m5 & 0x40) || // start/end tile of bridge
 					myabs(h - v->z_pos) > 2) { // high above the ground -> on the bridge
 				/* modify speed of vehicle */
 				uint16 spd = _bridge[GetBridgeType(tile)].speed;
 				if (v->type == VEH_Road) spd *= 2;
-				if (spd < v->cur_speed) v->cur_speed = spd;
+				if (v->cur_speed > spd) v->cur_speed = spd;
 			}
 		}
 	}

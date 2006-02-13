@@ -274,7 +274,6 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 static int32 ClearTile_Water(TileIndex tile, byte flags)
 {
 	byte m5 = _m[tile].m5;
-	uint slope;
 
 	if (m5 <= 1) { // water and shore
 		// Allow building on water? It's ok to build on shores.
@@ -285,25 +284,26 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 		if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
 		// Make sure it's not an edge tile.
-		if (!(IS_INT_INSIDE(TileX(tile), 1, MapMaxX() - 1) &&
-				IS_INT_INSIDE(TileY(tile), 1, MapMaxY() - 1)))
+		if (!IS_INT_INSIDE(TileX(tile), 1, MapMaxX() - 1) ||
+				!IS_INT_INSIDE(TileY(tile), 1, MapMaxY() - 1)) {
 			return_cmd_error(STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP);
+		}
 
 		if (m5 == 0) {
 			if (flags & DC_EXEC) DoClearSquare(tile);
 			return _price.clear_water;
 		} else if (m5 == 1) {
-			slope = GetTileSlope(tile,NULL);
+			uint slope = GetTileSlope(tile,NULL);
+
+			if (flags & DC_EXEC) DoClearSquare(tile);
 			if (slope == 8 || slope == 4 || slope == 2 || slope == 1) {
-				if (flags & DC_EXEC)
-					DoClearSquare(tile);
 				return _price.clear_water;
+			} else {
+				return _price.purchase_land;
 			}
-			if (flags & DC_EXEC)
-				DoClearSquare(tile);
-			return _price.purchase_land;
-		} else
+		} else {
 			return CMD_ERROR;
+		}
 	} else if ((m5 & 0x10) == 0x10) {
 		// shiplift
 

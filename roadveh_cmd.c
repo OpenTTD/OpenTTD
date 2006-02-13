@@ -82,7 +82,7 @@ void DrawRoadVehEngine(int x, int y, EngineID engine, uint32 image_ormod)
 	if (is_custom_sprite(spritenum)) {
 		int sprite = GetCustomVehicleIcon(engine, 6);
 
-		if (sprite) {
+		if (sprite != 0) {
 			DrawSprite(sprite | image_ormod, x, y);
 			return;
 		}
@@ -263,8 +263,7 @@ int32 CmdSellRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 		ClearSlot(v, v->u.road.slot);
 		DeleteVehicle(v);
-		if (IsLocalPlayer())
-			InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Road); // updates the replace Road window
+		if (IsLocalPlayer()) InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Road);
 	}
 
 	return -(int32)v->value;
@@ -310,10 +309,11 @@ static Depot *FindClosestRoadDepot(Vehicle *v)
 		Trackdir trackdir = GetVehicleTrackdir(v);
 
 		ftd = NPFRouteToDepotBreadthFirst(v->tile, trackdir, TRANSPORT_ROAD, v->owner, INVALID_RAILTYPE);
-		if (ftd.best_bird_dist == 0)
+		if (ftd.best_bird_dist == 0) {
 			return GetDepotByTile(ftd.node.tile); /* Target found */
-		else
+		} else {
 			return NULL; /* Target not found */
+		}
 		/* We do not search in two directions here, why should we? We can't reverse right now can we? */
 	} else {
 		RoadFindDepotData rfdd;
@@ -324,8 +324,7 @@ static Depot *FindClosestRoadDepot(Vehicle *v)
 		for (i = 0; i != 4; i++)
 			FollowTrack(tile, 0x2000 | TRANSPORT_ROAD, i, (TPFEnumProc*)EnumRoadSignalFindDepot, NULL, &rfdd);
 
-		if (rfdd.best_length == (uint)-1)
-			return NULL;
+		if (rfdd.best_length == (uint)-1) return NULL;
 
 		return GetDepotByTile(rfdd.tile);
 	}
@@ -455,8 +454,7 @@ static void RoadVehDelete(Vehicle *v)
 	RebuildVehicleLists();
 	InvalidateWindow(WC_COMPANY, v->owner);
 
-	if (IsTileType(v->tile, MP_STATION))
-		ClearCrashedStation(v);
+	if (IsTileType(v->tile, MP_STATION)) ClearCrashedStation(v);
 
 	BeginVehicleMove(v);
 	EndVehicleMove(v);
@@ -471,7 +469,9 @@ static byte SetRoadVehPosition(Vehicle *v, int x, int y)
 
 	// need this hint so it returns the right z coordinate on bridges.
 	_get_z_hint = v->z_pos;
-	new_z = GetSlopeZ(v->x_pos=x, v->y_pos=y);
+	v->x_pos = x;
+	v->y_pos = y;
+	new_z = GetSlopeZ(x, y);
 	_get_z_hint = 0;
 
 	old_z = v->z_pos;
@@ -486,7 +486,7 @@ static void RoadVehSetRandomDirection(Vehicle *v)
 {
 	static const int8 _turn_prob[4] = { -1, 0, 0, 1 };
 	uint32 r = Random();
-	v->direction = (v->direction+_turn_prob[r&3])&7;
+	v->direction = (v->direction + _turn_prob[r & 3]) & 7;
 	BeginVehicleMove(v);
 	UpdateRoadVehDeltaXY(v);
 	v->cur_image = GetRoadVehImage(v, v->direction);
@@ -499,8 +499,7 @@ static void RoadVehIsCrashed(Vehicle *v)
 	if (v->u.road.crashed_ctr == 2) {
 		CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
 	} else if (v->u.road.crashed_ctr <= 45) {
-		if ((v->tick_counter & 7) == 0)
-			RoadVehSetRandomDirection(v);
+		if ((v->tick_counter & 7) == 0) RoadVehSetRandomDirection(v);
 	} else if (v->u.road.crashed_ctr >= 2220) {
 		RoadVehDelete(v);
 	}
@@ -684,7 +683,7 @@ static void HandleRoadVehLoading(Vehicle *v)
 	InvalidateVehicleOrder(v);
 }
 
-static void StartRoadVehSound(Vehicle *v)
+static void StartRoadVehSound(const Vehicle* v)
 {
 	SoundFx s = RoadVehInfo(v->engine_type)->sfx;
 	if (s == SND_19_BUS_START_PULL_AWAY && (v->tick_counter & 3) == 0)
@@ -693,8 +692,9 @@ static void StartRoadVehSound(Vehicle *v)
 }
 
 typedef struct RoadVehFindData {
-	int x,y;
-	Vehicle *veh;
+	int x;
+	int y;
+	const Vehicle* veh;
 	byte dir;
 } RoadVehFindData;
 
@@ -727,8 +727,7 @@ static Vehicle *RoadVehFindCloseTo(Vehicle *v, int x, int y, byte dir)
 	RoadVehFindData rvf;
 	Vehicle *u;
 
-	if (v->u.road.reverse_ctr != 0)
-		return NULL;
+	if (v->u.road.reverse_ctr != 0) return NULL;
 
 	rvf.x = x;
 	rvf.y = y;
@@ -823,23 +822,22 @@ static byte RoadVehGetNewDirection(Vehicle *v, int x, int y)
 	x = x - v->x_pos + 1;
 	y = y - v->y_pos + 1;
 
-	if ((uint)x > 2 || (uint)y > 2)
-		return v->direction;
-	return _roadveh_new_dir[y*4+x];
+	if ((uint)x > 2 || (uint)y > 2) return v->direction;
+	return _roadveh_new_dir[y * 4 + x];
 }
 
 static byte RoadVehGetSlidingDirection(Vehicle *v, int x, int y)
 {
-	byte b = RoadVehGetNewDirection(v,x,y);
+	byte b = RoadVehGetNewDirection(v, x, y);
 	byte d = v->direction;
 	if (b == d) return d;
-	d = (d+1)&7;
-	if (b==d) return d;
-	d = (d-2)&7;
-	if (b==d) return d;
-	if (b==((d-1)&7)) return d;
-	if (b==((d-2)&7)) return d;
-	return (d+2)&7;
+	d = (d + 1) & 7;
+	if (b == d) return d;
+	d = (d - 2) & 7;
+	if (b == d) return d;
+	if (b == ((d - 1) & 7)) return d;
+	if (b == ((d - 2) & 7)) return d;
+	return (d + 2) & 7;
 }
 
 typedef struct OvertakeData {
@@ -850,9 +848,9 @@ typedef struct OvertakeData {
 
 static void *EnumFindVehToOvertake(Vehicle *v, OvertakeData *od)
 {
-	if (v->tile != od->tile || v->type != VEH_Road || v == od->u || v == od->v)
-		return NULL;
-	return v;
+	return
+		v->tile == od->tile && v->type == VEH_Road && v == od->u && v == od->v ?
+			v : NULL;
 }
 
 static bool FindRoadVehToOvertake(OvertakeData *od)
@@ -911,15 +909,13 @@ static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
 
 static void RoadZPosAffectSpeed(Vehicle *v, byte old_z)
 {
-	if (old_z == v->z_pos)
-		return;
+	if (old_z == v->z_pos) return;
 
 	if (old_z < v->z_pos) {
-		v->cur_speed = v->cur_speed * 232 >> 8;
+		v->cur_speed = v->cur_speed * 232 / 256; // slow down by ~10%
 	} else {
 		uint16 spd = v->cur_speed + 2;
-		if (spd <= v->max_speed)
-			v->cur_speed = spd;
+		if (spd <= v->max_speed) v->cur_speed = spd;
 	}
 }
 
@@ -935,7 +931,7 @@ static int PickRandomBit(uint bits)
 
 	num = RandomRange(num);
 
-	for (i = 0; !((bits & 1) && ((int)--num) < 0); bits >>= 1, i++);
+	for (i = 0; !(bits & 1) || (int)--num >= 0; bits >>= 1, i++) {}
 	return i;
 }
 
@@ -973,8 +969,7 @@ static int RoadFindPathToDest(Vehicle *v, TileIndex tile, int enterdir)
 	byte m5;
 
 	{
-		uint32 r;
-		r = GetTileTrackStatus(tile, TRANSPORT_ROAD);
+		uint32 r = GetTileTrackStatus(tile, TRANSPORT_ROAD);
 		signal  = GB(r, 16, 16);
 		bitmask = GB(r,  0, 16);
 	}
@@ -1100,8 +1095,7 @@ do_it:;
 
 found_best_track:;
 
-	if (HASBIT(signal, best_track))
-		return -1;
+	if (HASBIT(signal, best_track)) return -1;
 
 	return best_track;
 }
@@ -1147,8 +1141,7 @@ static void RoadVehController(Vehicle *v)
 
 	// decrease counters
 	v->tick_counter++;
-	if (v->u.road.reverse_ctr != 0)
-		v->u.road.reverse_ctr--;
+	if (v->u.road.reverse_ctr != 0) v->u.road.reverse_ctr--;
 
 	// handle crashed
 	if (v->u.road.crashed_ctr != 0) {
@@ -1277,8 +1270,8 @@ again:
 		x = TileX(tile) * 16 + rdp[0].x;
 		y = TileY(tile) * 16 + rdp[0].y;
 
-		if (RoadVehFindCloseTo(v, x, y, newdir=RoadVehGetSlidingDirection(v, x, y)))
-			return;
+		newdir = RoadVehGetSlidingDirection(v, x, y);
+		if (RoadVehFindCloseTo(v, x, y, newdir)) return;
 
 		r = VehicleEnterTile(v, tile, x, y);
 		if (r & 8) {
@@ -1336,8 +1329,8 @@ again:
 		x = TileX(v->tile) * 16 + rdp[1].x;
 		y = TileY(v->tile) * 16 + rdp[1].y;
 
-		if (RoadVehFindCloseTo(v, x, y, newdir=RoadVehGetSlidingDirection(v, x, y)))
-			return;
+		newdir = RoadVehGetSlidingDirection(v, x, y);
+		if (RoadVehFindCloseTo(v, x, y, newdir)) return;
 
 		r = VehicleEnterTile(v, v->tile, x, y);
 		if (r & 8) {
@@ -1365,8 +1358,7 @@ again:
 	new_dir = RoadVehGetSlidingDirection(v, x, y);
 
 	if (!IS_BYTE_INSIDE(v->u.road.state, 0x20, 0x30) && (u=RoadVehFindCloseTo(v, x, y, new_dir)) != NULL) {
-		if (v->u.road.overtaking == 0)
-			RoadVehCheckOvertake(v, u);
+		if (v->u.road.overtaking == 0) RoadVehCheckOvertake(v, u);
 		return;
 	}
 
@@ -1449,9 +1441,7 @@ again:
 		return;
 	}
 
-	if ((r & 4) == 0) {
-		v->u.road.frame++;
-	}
+	if ((r & 4) == 0) v->u.road.frame++;
 
 	v->cur_image = GetRoadVehImage(v, v->direction);
 	UpdateRoadVehDeltaXY(v);
@@ -1489,7 +1479,8 @@ void RoadVehEnterDepot(Vehicle *v)
 					STR_9016_ROAD_VEHICLE_IS_WAITING,
 					NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),
 					v->index,
-					0);
+					0
+				);
 			}
 		}
 	}
@@ -1500,10 +1491,8 @@ void RoadVehEnterDepot(Vehicle *v)
 
 static void AgeRoadVehCargo(Vehicle *v)
 {
-	if (_age_cargo_skip_counter != 0)
-		return;
-	if (v->cargo_days != 255)
-		v->cargo_days++;
+	if (_age_cargo_skip_counter != 0) return;
+	if (v->cargo_days != 255) v->cargo_days++;
 }
 
 void RoadVeh_Tick(Vehicle *v)
@@ -1516,17 +1505,10 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 {
 	Depot *depot;
 
-	if (_patches.servint_roadveh == 0)
-		return;
-
-	if (!VehicleNeedsService(v))
-		return;
-
-	if (v->vehstatus & VS_STOPPED)
-		return;
-
-	if (_patches.gotodepot && VehicleHasDepotOrders(v))
-		return;
+	if (_patches.servint_roadveh == 0) return;
+	if (!VehicleNeedsService(v)) return;
+	if (v->vehstatus & VS_STOPPED) return;
+	if (_patches.gotodepot && VehicleHasDepotOrders(v)) return;
 
 	// Don't interfere with a depot visit scheduled by the user, or a
 	// depot visit by the order list.
@@ -1534,9 +1516,8 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 			(v->current_order.flags & (OF_HALT_IN_DEPOT | OF_PART_OF_ORDERS)) != 0)
 		return;
 
-	//If we already got a slot at a stop, use that FIRST, and go to a depot later
-	if (v->u.road.slot != NULL)
-		return;
+	// If we already got a slot at a stop, use that FIRST, and go to a depot later
+	if (v->u.road.slot != NULL) return;
 
 	depot = FindClosestRoadDepot(v);
 
@@ -1567,11 +1548,8 @@ void OnNewDay_RoadVeh(Vehicle *v)
 	int32 cost;
 	Station *st;
 
-	if ((++v->day_counter & 7) == 0)
-		DecreaseVehicleValue(v);
-
-	if (v->u.road.blocked_ctr == 0)
-		CheckVehicleBreakdown(v);
+	if ((++v->day_counter & 7) == 0) DecreaseVehicleValue(v);
+	if (v->u.road.blocked_ctr == 0) CheckVehicleBreakdown(v);
 
 	AgeVehicle(v);
 	CheckIfRoadVehNeedsService(v);
@@ -1653,8 +1631,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 		}
 	}
 
-	if (v->vehstatus & VS_STOPPED)
-		return;
+	if (v->vehstatus & VS_STOPPED) return;
 
 	cost = RoadVehInfo(v->engine_type)->running_cost * _price.roadveh_running / 364;
 

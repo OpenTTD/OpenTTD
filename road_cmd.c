@@ -69,16 +69,13 @@ static bool CheckAllowRemoveRoad(TileIndex tile, uint br, bool *edge_road)
 	uint n;
 	*edge_road = true;
 
-	if (_game_mode == GM_EDITOR)
-		return true;
+	if (_game_mode == GM_EDITOR) return true;
 
 	blocks = GetRoadBitsByTile(tile);
-	if (blocks == 0)
-		return true;
+	if (blocks == 0) return true;
 
 	// Only do the special processing for actual players.
-	if (_current_player >= MAX_PLAYERS)
-		return true;
+	if (_current_player >= MAX_PLAYERS) return true;
 
 	// A railway crossing has the road owner in the map3_lo byte.
 	if (IsTileType(tile, MP_STREET) && IsLevelCrossing(tile)) {
@@ -92,8 +89,7 @@ static bool CheckAllowRemoveRoad(TileIndex tile, uint br, bool *edge_road)
 		return owner == OWNER_NONE || CheckOwnership(owner);
 	}
 
-	if (_cheats.magic_bulldozer.value)
-		return true;
+	if (_cheats.magic_bulldozer.value) return true;
 
 	// Get a bitmask of which neighbouring roads has a tile
 	n = 0;
@@ -108,8 +104,7 @@ static bool CheckAllowRemoveRoad(TileIndex tile, uint br, bool *edge_road)
 		Town *t;
 		*edge_road = false;
 		// you can remove all kind of roads with extra dynamite
-		if (_patches.extra_dynamite)
-			return true;
+		if (_patches.extra_dynamite) return true;
 
 		t = ClosestTownFromTile(tile, _patches.dist_local_authority);
 
@@ -164,14 +159,15 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (owner == OWNER_TOWN && _game_mode != GM_EDITOR) {
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) { // index of town is not saved for bridge (no space)
 			t = ClosestTownFromTile(tile, _patches.dist_local_authority);
-		} else
+		} else {
 			t = GetTown(_m[tile].m2);
-	} else
+		}
+	} else {
 		t = NULL;
+	}
 
 	// allow deleting road under bridge
-	if (ti.type != MP_TUNNELBRIDGE && !EnsureNoVehicle(tile))
-		return CMD_ERROR;
+	if (ti.type != MP_TUNNELBRIDGE && !EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	{
 		bool b;
@@ -336,7 +332,7 @@ static uint32 CheckRoadSlope(int tileh, byte *pieces, byte existing)
 		}
 
 		// partly leveled up tile, only if there's no road on that tile
-		if ( !existing && (tileh == 1 || tileh == 2 || tileh == 4 || tileh == 8) ) {
+		if (!existing && (tileh == 1 || tileh == 2 || tileh == 4 || tileh == 8)) {
 			// force full pieces.
 			*pieces |= (*pieces & 0xC) >> 2;
 			*pieces |= (*pieces & 0x3) << 2;
@@ -383,11 +379,13 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	} else if (ti.type == MP_RAILWAY) {
 		byte m5;
 
-		if (IsSteepTileh(ti.tileh)) // very steep tile
-				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+		if (IsSteepTileh(ti.tileh)) { // very steep tile
+			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+		}
 
-		if (!_valid_tileh_slopes_road[2][ti.tileh]) // prevent certain slopes
-				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+		if (!_valid_tileh_slopes_road[2][ti.tileh]) { // prevent certain slopes
+			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+		}
 
 		if (ti.map5 == 2) {
 			if (pieces & 5) goto do_clear;
@@ -395,8 +393,9 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		} else if (ti.map5 == 1) {
 			if (pieces & 10) goto do_clear;
 			m5 = 0x18;
-		} else
+		} else {
 			goto do_clear;
+		}
 
 		if (flags & DC_EXEC) {
 			ModifyTile(tile,
@@ -410,26 +409,25 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		}
 		return _price.build_road * 2;
 	} else if (ti.type == MP_TUNNELBRIDGE) {
-
 		/* check for flat land */
-		if (IsSteepTileh(ti.tileh)) // very steep tile
-				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+		if (IsSteepTileh(ti.tileh)) { // very steep tile
+			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+		}
 
 		/* is this middle part of a bridge? */
-		if ((ti.map5 & 0xC0) != 0xC0)
-				goto do_clear;
+		if ((ti.map5 & 0xC0) != 0xC0) goto do_clear;
 
 		/* only allow roads pertendicular to bridge */
-		if (((pieces & 5U) != 0) == ((ti.map5 & 0x01U) != 0))
-				goto do_clear;
+		if (((pieces & 5U) != 0) == ((ti.map5 & 0x01U) != 0)) goto do_clear;
 
 		/* check if clear land under bridge */
-		if ((ti.map5 & 0xF8) == 0xE8) 			/* road under bridge */
-				return_cmd_error(STR_1007_ALREADY_BUILT);
-		else if ((ti.map5 & 0xE0) == 0xE0) 	/* other transport route under bridge */
-				return_cmd_error(STR_1008_MUST_REMOVE_RAILROAD_TRACK);
-		else if ((ti.map5 & 0xF8) == 0xC8) 	/* water under bridge */
-				return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
+		if ((ti.map5 & 0xF8) == 0xE8) { /* road under bridge */
+			return_cmd_error(STR_1007_ALREADY_BUILT);
+		} else if ((ti.map5 & 0xE0) == 0xE0) { /* other transport route under bridge */
+			return_cmd_error(STR_1008_MUST_REMOVE_RAILROAD_TRACK);
+		} else if ((ti.map5 & 0xF8) == 0xC8) { /* water under bridge */
+			return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
+		}
 
 		/* all checked, can build road now! */
 		cost = _price.build_road * 2;
@@ -587,7 +585,7 @@ int32 CmdRemoveLongRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		TileIndex t = start_tile;
 		start_tile = end_tile;
 		end_tile = t;
-		p2 ^= IS_INT_INSIDE(p2&3, 1, 3) ? 3 : 0;
+		p2 ^= IS_INT_INSIDE(p2 & 3, 1, 3) ? 3 : 0;
 	}
 
 	cost = 0;
@@ -735,17 +733,23 @@ uint GetRoadFoundation(uint tileh, uint bits)
 {
 	int i;
 	// normal level sloped building
-	if ((~_valid_tileh_slopes_road[1][tileh] & bits) == 0)
-		return tileh;
+	if ((~_valid_tileh_slopes_road[1][tileh] & bits) == 0) return tileh;
 
 	// inclined sloped building
-	if ( ((i=0, tileh == 1) || (i+=2, tileh == 2) || (i+=2, tileh == 4) || (i+=2, tileh == 8)) &&
-		((bits == (ROAD_SW | ROAD_NE)) || (i++, bits == (ROAD_NW | ROAD_SE))))
+	if ((
+				(i  = 0, tileh == 1) ||
+				(i += 2, tileh == 2) ||
+				(i += 2, tileh == 4) ||
+				(i += 2, tileh == 8)
+			) && (
+				(     bits == (ROAD_SW | ROAD_NE)) ||
+				(i++, bits == (ROAD_NW | ROAD_SE))
+			)) {
 		return i + 15;
+	}
 
 	// rail crossing
-	if ((bits & 0x10) && _valid_tileh_slopes_road[2][tileh])
-		return tileh;
+	if ((bits & 0x10) && _valid_tileh_slopes_road[2][tileh]) return tileh;
 
 	return 0;
 }
@@ -808,14 +812,12 @@ static void DrawRoadBits(TileInfo *ti, byte road, byte ground_type, bool snow, b
 	}
 
 	// Draw extra details.
-	drts = _road_display_table[ground_type][road];
-	while ((image = drts->image) != 0) {
+	for (drts = _road_display_table[ground_type][road]; drts->image != 0; drts++) {
 		int x = ti->x | drts->subcoord_x;
 		int y = ti->y | drts->subcoord_y;
 		byte z = ti->z;
 		if (ti->tileh != 0) z = GetSlopeZ(x, y);
-		AddSortableSpriteToDraw(image, x, y, 2, 2, 0x10, z);
-		drts++;
+		AddSortableSpriteToDraw(drts->image, x, y, 2, 2, 0x10, z);
 	}
 }
 
@@ -980,22 +982,23 @@ static void TileLoop_Road(TileIndex tile)
 	Town *t;
 	int grp;
 
-	if (_opt.landscape == LT_HILLY) {
-		// Fix snow style if the road is above the snowline
-		if ((_m[tile].m4 & 0x80) != ((GetTileZ(tile) > _opt.snow_line) ? 0x80 : 0x00)) {
-			_m[tile].m4 ^= 0x80;
-			MarkTileDirtyByTile(tile);
-		}
-	} else if (_opt.landscape == LT_DESERT) {
-		// Fix desert style
-		if (GetMapExtraBits(tile) == 1 && !(_m[tile].m4 & 0x80)) {
-			_m[tile].m4 |= 0x80;
-			MarkTileDirtyByTile(tile);
-		}
+	switch (_opt.landscape) {
+		case LT_HILLY:
+			if ((_m[tile].m4 & 0x80) != (GetTileZ(tile) > _opt.snow_line ? 0x80 : 0x00)) {
+				_m[tile].m4 ^= 0x80;
+				MarkTileDirtyByTile(tile);
+			}
+			break;
+
+		case LT_DESERT:
+			if (GetMapExtraBits(tile) == 1 && !(_m[tile].m4 & 0x80)) {
+				_m[tile].m4 |= 0x80;
+				MarkTileDirtyByTile(tile);
+			}
+			break;
 	}
 
-	if (_m[tile].m5 & 0xE0)
-		return;
+	if (_m[tile].m5 & 0xE0) return;
 
 	if (GB(_m[tile].m4, 4, 3) < 6) {
 		t = ClosestTownFromTile(tile, (uint)-1);
@@ -1007,8 +1010,8 @@ static void TileLoop_Road(TileIndex tile)
 			// Show an animation to indicate road work
 			if (t->road_build_months != 0 &&
 					!(DistanceManhattan(t->xy, tile) >= 8 && grp == 0) &&
-					(_m[tile].m5==5 || _m[tile].m5==10)) {
-				if (GetTileSlope(tile, NULL) == 0 && EnsureNoVehicle(tile) && CHANCE16(1,20)) {
+					(_m[tile].m5 == 5 || _m[tile].m5 == 10)) {
+				if (GetTileSlope(tile, NULL) == 0 && EnsureNoVehicle(tile) && CHANCE16(1, 20)) {
 					_m[tile].m4 |= (GB(_m[tile].m4, 4, 3) <=  2 ? 7 : 6) << 4;
 
 					SndPlayTileFx(SND_21_JACKHAMMER, tile);
@@ -1027,8 +1030,7 @@ static void TileLoop_Road(TileIndex tile)
 			const byte *p = (_opt.landscape == LT_CANDY) ? _town_road_types_2[grp] : _town_road_types[grp];
 			byte b = GB(_m[tile].m4, 4, 3);
 
-			if (b == p[0])
-				return;
+			if (b == p[0]) return;
 
 			if (b == p[1]) {
 				b = p[0];

@@ -392,19 +392,11 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT:
-		if (*e->edittext.str) {
-			Industry *i;
-			int val;
-			int line;
+		if (e->edittext.str[0] != '\0') {
+			Industry* i = GetIndustry(w->window_number);
+			int line = WP(w,vp2_d).data_1;
 
-			i = GetIndustry(w->window_number);
-			line = WP(w,vp2_d).data_1;
-			val = atoi(e->edittext.str);
-			if (!IS_INT_INSIDE(val, 32, 2040)) {
-				if (val < 32) val = 32;
-				else val = 2040;
-			}
-			i->production_rate[line] = (byte)(val / 8);
+			i->production_rate[line] = clamp(atoi(e->edittext.str), 32, 2040) / 8;
 			UpdateIndustryProduction(i);
 			SetWindowDirty(w);
 		}

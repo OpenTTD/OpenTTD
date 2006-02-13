@@ -63,7 +63,7 @@ static void GenerateDesertArea(TileIndex end, TileIndex start)
 	_generating_world = false;
 }
 
-/** Scenario editor command that generates desert areas */
+/** Scenario editor command that generates rocky areas */
 static void GenerateRockyArea(TileIndex end, TileIndex start)
 {
 	int size_x, size_y;

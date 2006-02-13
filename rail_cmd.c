@@ -1577,33 +1577,34 @@ typedef struct SetSignalsData {
 
 static bool SetSignalsEnumProc(TileIndex tile, SetSignalsData *ssd, int track, uint length, byte *state)
 {
+	if (!IsTileType(tile, MP_RAILWAY)) return false;
+
 	// the tile has signals?
-	if (IsTileType(tile, MP_RAILWAY)) {
-		if (HasSignalOnTrack(tile, TrackdirToTrack(track))) {
-			if (HasSignalOnTrackdir(tile, ReverseTrackdir(track))) {
-				// yes, add the signal to the list of signals
-				if (ssd->cur != NUM_SSD_ENTRY) {
-					ssd->tile[ssd->cur] = tile; // remember the tile index
-					ssd->bit[ssd->cur] = track; // and the controlling bit number
-					ssd->cur++;
-				}
-
-				// remember if this block has a presignal.
-				ssd->has_presignal |= (_m[tile].m4&1);
+	if (HasSignalOnTrack(tile, TrackdirToTrack(track))) {
+		if (HasSignalOnTrackdir(tile, ReverseTrackdir(track))) {
+			// yes, add the signal to the list of signals
+			if (ssd->cur != NUM_SSD_ENTRY) {
+				ssd->tile[ssd->cur] = tile; // remember the tile index
+				ssd->bit[ssd->cur] = track; // and the controlling bit number
+				ssd->cur++;
 			}
 
-			if (HasSignalOnTrackdir(tile, track) && (_m[tile].m4 & 2)) {
-				// this is an exit signal that points out from the segment
-				ssd->presignal_exits++;
-				if (GetSignalState(tile, track) != SIGNAL_STATE_RED)
-					ssd->presignal_exits_free++;
-			}
-
-			return true;
-		} else if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
-			return true; // don't look further if the tile is a depot
+			// remember if this block has a presignal.
+			ssd->has_presignal |= (_m[tile].m4&1);
 		}
+
+		if (HasSignalOnTrackdir(tile, track) && _m[tile].m4 & 2) {
+			// this is an exit signal that points out from the segment
+			ssd->presignal_exits++;
+			if (GetSignalState(tile, track) != SIGNAL_STATE_RED)
+				ssd->presignal_exits_free++;
+		}
+
+		return true;
+	} else if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
+		return true; // don't look further if the tile is a depot
 	}
+
 	return false;
 }
 
@@ -1806,7 +1807,7 @@ bool UpdateSignalsOnSegment(TileIndex tile, byte direction)
 		direction = ssd.next_dir[ssd.cur_stack];
 	}
 
-	return (bool)result;
+	return result != 0;
 }
 
 void SetSignalsOnBothDir(TileIndex tile, byte track)
@@ -1836,7 +1837,7 @@ static uint GetSlopeZ_Track(const TileInfo* ti)
 				// inclined foundation
 				th = _inclined_tileh[f - 15];
 			}
-		} else if ((ti->map5 & 0xC0) == 0xC0) {
+		} else if ((ti->map5 & RAIL_TILE_TYPE_MASK) == RAIL_TYPE_DEPOT_WAYPOINT) {
 			// depot or waypoint
 			return z + 8;
 		}

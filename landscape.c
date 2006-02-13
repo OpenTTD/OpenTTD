@@ -461,8 +461,8 @@ void ConvertGroundTilesIntoWaterTiles(void)
 	for (tile = 0; tile < MapSize(); ++tile) {
 		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h == 0) {
 			SetTileType(tile, MP_WATER);
-			_m[tile].m5 = 0;
 			SetTileOwner(tile, OWNER_WATER);
+			_m[tile].m5 = 0;
 		}
 	}
 }
@@ -630,37 +630,48 @@ void GenerateLandscape(void)
 	uint flag;
 	uint32 r;
 
-	if (_opt.landscape == LT_HILLY) {
-		for (i = ScaleByMapSize((Random() & 0x7F) + 950); i != 0; --i)
-			GenerateTerrain(2, 0);
+	switch (_opt.landscape) {
+		case LT_HILLY:
+			for (i = ScaleByMapSize((Random() & 0x7F) + 950); i != 0; --i) {
+				GenerateTerrain(2, 0);
+			}
 
-		r = Random();
-		flag = GB(r, 0, 2) | 4;
-		for (i = ScaleByMapSize(GB(r, 16, 7) + 450); i != 0; --i)
-			GenerateTerrain(4, flag);
-	} else if (_opt.landscape == LT_DESERT) {
-		for (i = ScaleByMapSize((Random()&0x7F) + 170); i != 0; --i)
-			GenerateTerrain(0, 0);
+			r = Random();
+			flag = GB(r, 0, 2) | 4;
+			for (i = ScaleByMapSize(GB(r, 16, 7) + 450); i != 0; --i) {
+				GenerateTerrain(4, flag);
+			}
+			break;
 
-		r = Random();
-		flag = GB(r, 0, 2) | 4;
-		for (i = ScaleByMapSize(GB(r, 16, 8) + 1700); i != 0; --i)
-			GenerateTerrain(0, flag);
+		case LT_DESERT:
+			for (i = ScaleByMapSize((Random() & 0x7F) + 170); i != 0; --i) {
+				GenerateTerrain(0, 0);
+			}
 
-		flag ^= 2;
+			r = Random();
+			flag = GB(r, 0, 2) | 4;
+			for (i = ScaleByMapSize(GB(r, 16, 8) + 1700); i != 0; --i) {
+				GenerateTerrain(0, flag);
+			}
 
-		for (i = ScaleByMapSize((Random() & 0x7F) + 410); i != 0; --i)
-			GenerateTerrain(3, flag);
-	} else {
-		i = ScaleByMapSize((Random() & 0x7F) + (3 - _opt.diff.quantity_sea_lakes) * 256 + 100);
-		for (; i != 0; --i)
-			GenerateTerrain(_opt.diff.terrain_type, 0);
+			flag ^= 2;
+
+			for (i = ScaleByMapSize((Random() & 0x7F) + 410); i != 0; --i) {
+				GenerateTerrain(3, flag);
+			}
+			break;
+
+		default:
+			i = ScaleByMapSize((Random() & 0x7F) + (3 - _opt.diff.quantity_sea_lakes) * 256 + 100);
+			for (; i != 0; --i) {
+				GenerateTerrain(_opt.diff.terrain_type, 0);
+			}
+			break;
 	}
 
 	ConvertGroundTilesIntoWaterTiles();
 
-	if (_opt.landscape == LT_DESERT)
-		CreateDesertOrRainForest();
+	if (_opt.landscape == LT_DESERT) CreateDesertOrRainForest();
 }
 
 void OnTick_Town(void);
