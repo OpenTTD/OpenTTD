@@ -609,25 +609,6 @@ static void NormalizeTrainVehInDepot(const Vehicle* u)
 	}
 }
 
-static const byte _railveh_score[] = {
-	1, 4, 7, 19, 20, 30, 31, 19,
-	20, 21, 22, 10, 11, 30, 31, 32,
-	33, 34, 35, 29, 45, 32, 50, 40,
-	41, 51, 52, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 60, 62,
-	63, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 70, 71, 72, 73,
-	74, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0,
-};
-
-
 static int32 EstimateTrainCost(const RailVehicleInfo* rvi)
 {
 	return rvi->base_cost * (_price.build_railvehicle >> 3) >> 5;
@@ -788,7 +769,6 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			}
 		}
 	}
-	_cmd_build_rail_veh_score = _railveh_score[p1];
 
 	return value;
 }

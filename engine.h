@@ -21,6 +21,7 @@ typedef struct RailVehicleInfo {
 	byte engclass; // 0: steam, 1: diesel, 2: electric
 	byte capacity;
 	byte cargo_type;
+	byte ai_rank;
 	byte callbackmask; // see CallbackMask enum
 	uint16 pow_wag_power;
 	byte pow_wag_weight;

@@ -143,8 +143,8 @@ static EngineID AiChooseTrainToBuild(byte railtype, int32 money, byte flag, Tile
 
 		ret = DoCommandByTile(tile, i, 0, 0, CMD_BUILD_RAIL_VEHICLE);
 		if (!CmdFailed(ret) && ret <= money &&
-				_cmd_build_rail_veh_score >= best_veh_score) {
-			best_veh_score = _cmd_build_rail_veh_score;
+				rvi->ai_rank >= best_veh_score) {
+			best_veh_score = rvi->ai_rank;
 			best_veh_index = i;
 		}
 	}
