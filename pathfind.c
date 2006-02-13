@@ -559,7 +559,7 @@ static bool NtpVisit(NewTrackPathFinder *tpf, TileIndex tile, uint dir, uint len
 		do {
 			link = NTP_GET_LINK_PTR(tpf, offs);
 			if (tile == link->tile && (link->typelength & 0x3U) == dir) {
-				if (length >= link->typelength >> 2) return false;
+				if (length >= (uint)(link->typelength >> 2)) return false;
 				link->typelength = dir | (length << 2);
 				return true;
 			}
@@ -612,8 +612,8 @@ static bool NtpCheck(NewTrackPathFinder *tpf, TileIndex tile, uint dir, uint len
 	for (;;) {
 		link = NTP_GET_LINK_PTR(tpf, offs);
 		if (tile == link->tile && (link->typelength & 0x3U) == dir) {
-			assert(link->typelength >> 2 <= length);
-			return length == link->typelength >> 2;
+			assert((uint)(link->typelength >> 2) <= length);
+			return length == (uint)(link->typelength >> 2);
 		}
 		offs = link->next;
 		assert(offs != 0xffff);
