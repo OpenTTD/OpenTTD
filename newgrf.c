@@ -334,13 +334,13 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				rvi[i].base_cost = cfactor;
 			}
 		} break;
-		case 0x18: { /* AI rank */
-			/* TODO: _railveh_score should be merged to _rail_vehicle_info. */
+
+		case 0x18: // AI rank
 			FOR_EACH_OBJECT {
-				grf_load_byte(&buf);
+				rvi[i].ai_rank = grf_load_byte(&buf);
 			}
-			ret = true;
-		} break;
+			break;
+
 		case 0x19: { /* Engine traction type */
 			/* What do the individual numbers mean?
 			 * 0x00 .. 0x07: Steam
