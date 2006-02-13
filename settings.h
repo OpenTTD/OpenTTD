@@ -52,7 +52,7 @@ typedef enum {
 
 typedef struct SettingDesc {
 	const char *name;
-	int flags;
+	uint32 flags;
 	const void *def;
 	void *ptr;
 	const void *many;

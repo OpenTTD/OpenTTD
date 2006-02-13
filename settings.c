@@ -813,9 +813,9 @@ static const SettingDesc misc_settings[] = {
 	{"news_display_opt",	SDT_UINT32,		"0xAAAAAAAA",		&_news_display_opt,		NULL}, // default to all full messages: 10101010101010101010 = 0xAAAAAAAA
 	{"news_ticker_sound", SDT_BOOL,     (void*)true, &_news_ticker_sound,   NULL},
 	{"fullscreen",				SDT_BOOL,			(void*)false, &_fullscreen,					NULL},
-	{"videodriver",				SDT_STRINGBUF | (lengthof(_ini_videodriver)<<16) | SDT_NOSAVE,NULL,			_ini_videodriver,				NULL},
-	{"musicdriver",				SDT_STRINGBUF | (lengthof(_ini_musicdriver)<<16) | SDT_NOSAVE,NULL,			_ini_musicdriver,				NULL},
-	{"sounddriver",				SDT_STRINGBUF | (lengthof(_ini_sounddriver)<<16) | SDT_NOSAVE,NULL,			_ini_sounddriver,				NULL},
+	{"videodriver",				SDT_STRINGBUF | ((uint32)lengthof(_ini_videodriver)<<16) | SDT_NOSAVE,NULL,			_ini_videodriver,				NULL},
+	{"musicdriver",				SDT_STRINGBUF | ((uint32)lengthof(_ini_musicdriver)<<16) | SDT_NOSAVE,NULL,			_ini_musicdriver,				NULL},
+	{"sounddriver",				SDT_STRINGBUF | ((uint32)lengthof(_ini_sounddriver)<<16) | SDT_NOSAVE,NULL,			_ini_sounddriver,				NULL},
 	{"language",					SDT_STRINGBUF | lengthof(_dynlang.curr_file)<<16,							NULL,			_dynlang.curr_file,			NULL},
 	{"resolution",				SDT_UINT16 | SDT_INTLIST | lengthof(_cur_resolution) << 16,		"640,480",_cur_resolution,				NULL},
 	{"screenshot_format", SDT_STRINGBUF | (lengthof(_screenshot_format_name)<<16),			NULL,			_screenshot_format_name,NULL},
