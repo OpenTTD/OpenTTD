@@ -222,38 +222,37 @@ void DrawVehicleProfitButton(const Vehicle *v, int x, int y)
  */
 CargoID DrawVehicleRefitWindow(const Vehicle *v, int sel)
 {
-	uint32 cmask;
+	uint32 cmask = 0;
 	CargoID cid, cargo = CT_INVALID;
 	int y = 25;
-	const Vehicle* u;
-#define show_cargo(ctype) { \
-		byte colour = 16; \
-		if (sel == 0) { \
-			cargo = ctype; \
-			colour = 12; \
-} \
-		sel--; \
-		DrawString(6, y, _cargoc.names_s[ctype], colour); \
-		y += 10; \
-}
+	const Vehicle* u = v;
 
-		/* Check if vehicle has custom refit or normal ones, and get its bitmasked value.
-		 * If its a train, 'or' this with the refit masks of the wagons. Now just 'and'
-		 * it with the bitmask of available cargo on the current landscape, and
-		 * where the bits are set: those are available */
-		cmask = 0;
-		u = v;
-		do {
-			cmask |= _engine_info[u->engine_type].refit_mask;
-			u = u->next;
-		} while (v->type == VEH_Train && u != NULL);
+	/* Check if vehicle has custom refit or normal ones, and get its bitmasked value.
+	 * If its a train, 'or' this with the refit masks of the wagons. Now just 'and'
+	 * it with the bitmask of available cargo on the current landscape, and
+	 * where the bits are set: those are available */
+	do {
+		cmask |= _engine_info[u->engine_type].refit_mask;
+		u = u->next;
+	} while (v->type == VEH_Train && u != NULL);
 
-		/* Check which cargo has been selected from the refit window and draw list */
-		for (cid = 0; cmask != 0; cmask >>= 1, cid++) {
-			if (HASBIT(cmask, 0)) // vehicle is refittable to this cargo
-				show_cargo(_local_cargo_id_ctype[cid]);
+	/* Check which cargo has been selected from the refit window and draw list */
+	for (cid = 0; cmask != 0; cmask >>= 1, cid++) {
+		if (HASBIT(cmask, 0)) {
+			// vehicle is refittable to this cargo
+			byte colour = 16;
+			if (sel == 0) {
+				cargo = _local_cargo_id_ctype[cid];
+				colour = 12;
+			}
+
+			sel--;
+			DrawString(6, y, _cargoc.names_s[_local_cargo_id_ctype[cid]], colour);
+			y += 10;
 		}
-		return cargo;
+	}
+
+	return cargo;
 }
 
 /************ Sorter functions *****************/
