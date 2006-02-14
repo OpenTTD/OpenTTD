@@ -675,22 +675,22 @@ static void StartScenario(void)
 bool SafeSaveOrLoad(const char *filename, int mode, int newgm)
 {
 	byte ogm = _game_mode;
-	int r;
 
 	_game_mode = newgm;
-	r = SaveOrLoad(filename, mode);
-	if (r == SL_REINIT) {
-		switch (ogm) {
-			case GM_MENU:   LoadIntroGame();      break;
-			case GM_EDITOR: MakeNewEditorWorld(); break;
-			default:        MakeNewGame();        break;
-		}
-		return false;
-	} else if (r != SL_OK) {
-		_game_mode = ogm;
-		return false;
-	} else {
-		return true;
+	switch (SaveOrLoad(filename, mode)) {
+		case SL_OK: return true;
+
+		case SL_REINIT:
+			switch (ogm) {
+				case GM_MENU:   LoadIntroGame();      break;
+				case GM_EDITOR: MakeNewEditorWorld(); break;
+				default:        MakeNewGame();        break;
+			}
+			return false;
+
+		default:
+			_game_mode = ogm;
+			return false;
 	}
 }
 
@@ -916,7 +916,6 @@ static void HandleKeyScrolling(void)
 
 void GameLoop(void)
 {
-	int m;
 	ThreadMsg message;
 
 	if ((message = OTTD_PollThreadEvent()) != 0) ProcessSentMessage(message);
@@ -932,23 +931,24 @@ void GameLoop(void)
 	if (_dirkeys) HandleKeyScrolling();
 
 	// make a screenshot?
-	if ((m=_make_screenshot) != 0) {
-		_make_screenshot = 0;
-		switch(m) {
-		case 1: // make small screenshot
-			UndrawMouseCursor();
-			ShowScreenshotResult(MakeScreenshot());
-			break;
-		case 2: // make large screenshot
-			ShowScreenshotResult(MakeWorldScreenshot(-(int)MapMaxX() * TILE_PIXELS, 0, (MapMaxX() + MapMaxY()) * TILE_PIXELS, (MapMaxX() + MapMaxY()) * TILE_PIXELS >> 1, 0));
-			break;
+	if (_make_screenshot != 0) {
+		switch (_make_screenshot) {
+			case 1: // make small screenshot
+				UndrawMouseCursor();
+				ShowScreenshotResult(MakeScreenshot());
+				break;
+
+			case 2: // make large screenshot
+				ShowScreenshotResult(MakeWorldScreenshot(-(int)MapMaxX() * TILE_PIXELS, 0, (MapMaxX() + MapMaxY()) * TILE_PIXELS, (MapMaxX() + MapMaxY()) * TILE_PIXELS >> 1, 0));
+				break;
 		}
+		_make_screenshot = 0;
 	}
 
 	// switch game mode?
-	if ((m=_switch_mode) != SM_NONE) {
+	if (_switch_mode != SM_NONE) {
+		SwitchMode(_switch_mode);
 		_switch_mode = SM_NONE;
-		SwitchMode(m);
 	}
 
 	IncreaseSpriteLRU();
