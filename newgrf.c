@@ -214,13 +214,21 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 	bool ret = false;
 
 	switch (prop) {
-		case 0x05: { /* Track type */
+		case 0x05: // Track type
 			FOR_EACH_OBJECT {
 				uint8 tracktype = grf_load_byte(&buf);
 
-				ei[i].railtype = tracktype;
+				switch (tracktype) {
+					case 0: ei[i].railtype = RAILTYPE_RAIL; break;
+					case 1: ei[i].railtype = RAILTYPE_MONO; break;
+					case 2: ei[i].railtype = RAILTYPE_MAGLEV; break;
+					default:
+						grfmsg(GMS_WARN, "RailVehicleChangeInfo: Invalid track type %d specified, ignoring.", tracktype);
+						break;
+				}
 			}
-		} break;
+			break;
+
 		case 0x08: { /* AI passenger service */
 			/* TODO */
 			FOR_EACH_OBJECT {
