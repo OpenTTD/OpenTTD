@@ -883,176 +883,178 @@ void ShowCompanyLeagueTable(void)
 static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		int val, needed, score, i;
-		byte owner, x;
-		uint16 y=14;
-		int total_score = 0;
-		int color_done, color_notdone;
+		case WE_PAINT: {
+			int val, needed, score, i;
+			byte owner, x;
+			uint16 y=14;
+			int total_score = 0;
+			int color_done, color_notdone;
 
-		// Draw standard stuff
-		DrawWindowWidgets(w);
+			// Draw standard stuff
+			DrawWindowWidgets(w);
 
-		// The player of which we check the detail performance rating
-		owner = FindFirstBit(w->click_state) - 13;
+			// The player of which we check the detail performance rating
+			owner = FindFirstBit(w->click_state) - 13;
 
-		// Paint the player icons
-		for (i=0;i<MAX_PLAYERS;i++) {
-       		if (!GetPlayer(i)->is_active) {
-       			// Check if we have the player as an active player
-       			if (!(w->disabled_state & (1 << (i+13)))) {
-       				// Bah, player gone :(
-                   	w->disabled_state += 1 << (i+13);
-                   	// Is this player selected? If so, select first player (always save? :s)
-                   	if (w->click_state == 1U << (i + 13))
-                   		w->click_state = 1 << 13;
-                   	// We need a repaint
-                   	SetWindowDirty(w);
-                }
-               	continue;
-            }
+			// Paint the player icons
+			for (i=0;i<MAX_PLAYERS;i++) {
+				if (!GetPlayer(i)->is_active) {
+					// Check if we have the player as an active player
+					if (!(w->disabled_state & (1 << (i+13)))) {
+						// Bah, player gone :(
+						w->disabled_state += 1 << (i+13);
+						// Is this player selected? If so, select first player (always save? :s)
+						if (w->click_state == 1U << (i + 13))
+							w->click_state = 1 << 13;
+						// We need a repaint
+						SetWindowDirty(w);
+					}
+				continue;
+				}
 
-			// Check if we have the player marked as inactive
-			if ((w->disabled_state & (1 << (i+13)))) {
-				// New player! Yippie :p
-				w->disabled_state -= 1 << (i+13);
-               	// We need a repaint
-               	SetWindowDirty(w);
-            }
+				// Check if we have the player marked as inactive
+				if ((w->disabled_state & (1 << (i+13)))) {
+					// New player! Yippie :p
+					w->disabled_state -= 1 << (i+13);
+					// We need a repaint
+					SetWindowDirty(w);
+				}
 
-			if (i == owner) x = 1; else x = 0;
-			DrawPlayerIcon(i, i * 37 + 13 + x, 16 + x);
+				if (i == owner) x = 1; else x = 0;
+				DrawPlayerIcon(i, i * 37 + 13 + x, 16 + x);
+			}
+
+			// The colors used to show how the progress is going
+			color_done = _color_list[6].window_color_1b;
+			color_notdone = _color_list[4].window_color_1b;
+
+			// Draw all the score parts
+			for (i=0;i<NUM_SCORE;i++) {
+				y += 20;
+				val = _score_part[owner][i];
+				needed = _score_info[i].needed;
+				score = _score_info[i].score;
+				// SCORE_TOTAL has his own rulez ;)
+				if (i == SCORE_TOTAL) {
+					needed = total_score;
+					score = SCORE_MAX;
+				} else {
+					total_score += score;
+				}
+
+				DrawString(7, y, STR_PERFORMANCE_DETAIL_VEHICLES + i, 0);
+
+				// Draw the score
+				SetDParam(0, score);
+				DrawStringRightAligned(107, y, SET_PERFORMANCE_DETAIL_INT, 0);
+
+				// Calculate the %-bar
+				if (val > needed) x = 50;
+				else if (val == 0) x = 0;
+				else x = ((val * 50) / needed);
+
+				// SCORE_LOAN is inversed
+				if (val < 0 && i == SCORE_LOAN)
+					x = 0;
+
+				// Draw the bar
+				if (x != 0)
+					GfxFillRect(112, y-2, x + 112, y+10, color_done);
+				if (x != 50)
+					GfxFillRect(x + 112, y-2, 50 + 112, y+10, color_notdone);
+
+				// Calculate the %
+				if (val > needed) x = 100;
+				else x = ((val * 100) / needed);
+
+				// SCORE_LOAN is inversed
+				if (val < 0 && i == SCORE_LOAN)
+					x = 0;
+
+				// Draw it
+				SetDParam(0, x);
+				DrawStringCentered(137, y, STR_PERFORMANCE_DETAIL_PERCENT, 0);
+
+				// SCORE_LOAN is inversed
+				if (i == SCORE_LOAN)
+					val = needed - val;
+
+				// Draw the amount we have against what is needed
+				//  For some of them it is in currency format
+				SetDParam(0, val);
+				SetDParam(1, needed);
+				switch (i) {
+					case SCORE_MIN_PROFIT:
+					case SCORE_MIN_INCOME:
+					case SCORE_MAX_INCOME:
+					case SCORE_MONEY:
+					case SCORE_LOAN:
+						DrawString(167, y, STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY, 0);
+						break;
+					default:
+						DrawString(167, y, STR_PERFORMANCE_DETAIL_AMOUNT_INT, 0);
+				}
+			}
+
+			break;
 		}
 
-		// The colors used to show how the progress is going
-		color_done = _color_list[6].window_color_1b;
-		color_notdone = _color_list[4].window_color_1b;
-
-		// Draw all the score parts
-		for (i=0;i<NUM_SCORE;i++) {
-			y += 20;
-    		val = _score_part[owner][i];
-    		needed = _score_info[i].needed;
-    		score = _score_info[i].score;
-    		// SCORE_TOTAL has his own rulez ;)
-    		if (i == SCORE_TOTAL) {
-    			needed = total_score;
-    			score = SCORE_MAX;
-    		} else
-    			total_score += score;
-
-    		DrawString(7, y, STR_PERFORMANCE_DETAIL_VEHICLES + i, 0);
-
-    		// Draw the score
-    		SetDParam(0, score);
-    		DrawStringRightAligned(107, y, SET_PERFORMANCE_DETAIL_INT, 0);
-
-    		// Calculate the %-bar
-    		if (val > needed) x = 50;
-    		else if (val == 0) x = 0;
-    		else x = ((val * 50) / needed);
-
-    		// SCORE_LOAN is inversed
-    		if (val < 0 && i == SCORE_LOAN)
-    			x = 0;
-
-    		// Draw the bar
-    		if (x != 0)
-    			GfxFillRect(112, y-2, x + 112, y+10, color_done);
-    		if (x != 50)
-    			GfxFillRect(x + 112, y-2, 50 + 112, y+10, color_notdone);
-
-   			// Calculate the %
-    		if (val > needed) x = 100;
-    		else x = ((val * 100) / needed);
-
-    		// SCORE_LOAN is inversed
-    		if (val < 0 && i == SCORE_LOAN)
-    			x = 0;
-
-    		// Draw it
-    		SetDParam(0, x);
-    		DrawStringCentered(137, y, STR_PERFORMANCE_DETAIL_PERCENT, 0);
-
-    		// SCORE_LOAN is inversed
-    		if (i == SCORE_LOAN)
-				val = needed - val;
-
-    		// Draw the amount we have against what is needed
-    		//  For some of them it is in currency format
-    		SetDParam(0, val);
-    		SetDParam(1, needed);
-    		switch (i) {
-    			case SCORE_MIN_PROFIT:
-    			case SCORE_MIN_INCOME:
-    			case SCORE_MAX_INCOME:
-    			case SCORE_MONEY:
-    			case SCORE_LOAN:
-    				DrawString(167, y, STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY, 0);
-    				break;
-    			default:
-    				DrawString(167, y, STR_PERFORMANCE_DETAIL_AMOUNT_INT, 0);
+		case WE_CLICK:
+			// Check which button is clicked
+			if (IS_INT_INSIDE(e->click.widget, 13, 21)) {
+				// Is it no on disable?
+				if ((w->disabled_state & (1 << e->click.widget)) == 0) {
+					w->click_state = 1 << e->click.widget;
+					SetWindowDirty(w);
+				}
 			}
-    	}
+			break;
 
-		break;
-	}
+		case WE_CREATE: {
+			int i;
+			Player *p2;
+			w->hidden_state = 0;
+			w->disabled_state = 0;
 
-	case WE_CLICK:
-		// Check which button is clicked
-		if (IS_INT_INSIDE(e->click.widget, 13, 21)) {
-			// Is it no on disable?
-			if ((w->disabled_state & (1 << e->click.widget)) == 0) {
-				w->click_state = 1 << e->click.widget;
-				SetWindowDirty(w);
+			// Hide the player who are not active
+			for (i=0;i<MAX_PLAYERS;i++) {
+				if (!GetPlayer(i)->is_active) {
+					w->disabled_state += 1 << (i+13);
+				}
 			}
-		}
-		break;
+			// Update all player stats with the current data
+			//  (this is because _score_info is not saved to a savegame)
+			FOR_ALL_PLAYERS(p2)
+				if (p2->is_active)
+					UpdateCompanyRatingAndValue(p2, false);
 
-	case WE_CREATE:
-		{
-    		int i;
-    		Player *p2;
-        	w->hidden_state = 0;
-        	w->disabled_state = 0;
+			w->custom[0] = DAY_TICKS;
+			w->custom[1] = 5;
 
-        	// Hide the player who are not active
-        	for (i=0;i<MAX_PLAYERS;i++) {
-        		if (!GetPlayer(i)->is_active) {
-        			w->disabled_state += 1 << (i+13);
-        		}
-        	}
-        	// Update all player stats with the current data
-        	//  (this is because _score_info is not saved to a savegame)
-        	FOR_ALL_PLAYERS(p2)
-        		if (p2->is_active)
-        			UpdateCompanyRatingAndValue(p2, false);
-
-        	w->custom[0] = DAY_TICKS;
-        	w->custom[1] = 5;
-
-        	w->click_state = 1 << 13;
+			w->click_state = 1 << 13;
 
 			SetWindowDirty(w);
-        }
-    	break;
-    case WE_TICK:
-        {
-        	// Update the player score every 5 days
-            if (--w->custom[0] == 0) {
-            	w->custom[0] = DAY_TICKS;
-            	if (--w->custom[1] == 0) {
-            		Player *p2;
-            		w->custom[1] = 5;
-            		FOR_ALL_PLAYERS(p2)
-            			// Skip if player is not active
-            			if (p2->is_active)
-            				UpdateCompanyRatingAndValue(p2, false);
-            		SetWindowDirty(w);
-            	}
-            }
-        }
-        break;
+
+			break;
+		}
+
+		case WE_TICK: {
+			// Update the player score every 5 days
+			if (--w->custom[0] == 0) {
+				w->custom[0] = DAY_TICKS;
+				if (--w->custom[1] == 0) {
+					Player *p2;
+					w->custom[1] = 5;
+					FOR_ALL_PLAYERS(p2)
+						// Skip if player is not active
+						if (p2->is_active)
+							UpdateCompanyRatingAndValue(p2, false);
+					SetWindowDirty(w);
+				}
+			}
+
+			break;
+		}
 	}
 }
 
