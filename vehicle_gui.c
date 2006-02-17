@@ -501,10 +501,10 @@ static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, Engine
 static void SetupScrollStuffForReplaceWindow(Window *w)
 {
 	EngineID selected_id[2] = { INVALID_ENGINE, INVALID_ENGINE };
-	int sel[2];
-	int count = 0;
-	int count2 = 0;
-	const Player *p = GetPlayer(_local_player);
+	const Player* p = GetPlayer(_local_player);
+	uint sel[2];
+	uint count = 0;
+	uint count2 = 0;
 	EngineID i;
 
 	sel[0] = WP(w,replaceveh_d).sel_index[0];
@@ -516,6 +516,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 
 			w->widget[13].color = _player_colors[_local_player];	// sets the colour of that art thing
 			w->widget[16].color = _player_colors[_local_player];	// sets the colour of that art thing
+
 			for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
 				EngineID eid = GetRailVehAtPosition(i);
 				const Engine* e = GetEngine(eid);
@@ -527,14 +528,12 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 						) &&
 						e->railtype == railtype) {
 					if (_player_num_engines[eid] > 0 || EngineHasReplacementForPlayer(p, eid)) {
-						if (sel[0] == 0) selected_id[0] = eid;
+						if (sel[0] == count) selected_id[0] = eid;
 						count++;
-						sel[0]--;
 					}
 					if (HASBIT(e->player_avail, _local_player)) {
-						if (sel[1] == 0) selected_id[1] = eid;
+						if (sel[1] == count2) selected_id[1] = eid;
 						count2++;
-						sel[1]--;
 					}
 				}
 			}
@@ -544,9 +543,8 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 		case VEH_Road: {
 			for (i = ROAD_ENGINES_INDEX; i < ROAD_ENGINES_INDEX + NUM_ROAD_ENGINES; i++) {
 				if (_player_num_engines[i] > 0 || EngineHasReplacementForPlayer(p, i)) {
-					if (sel[0] == 0) selected_id[0] = i;
+					if (sel[0] == count) selected_id[0] = i;
 					count++;
-					sel[0]--;
 				}
 			}
 
@@ -554,12 +552,10 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 				CargoID cargo = RoadVehInfo(selected_id[0])->cargo_type;
 
 				for (i = ROAD_ENGINES_INDEX; i < ROAD_ENGINES_INDEX + NUM_ROAD_ENGINES; i++) {
-					const Engine* e = GetEngine(i);
-
-					if (cargo == RoadVehInfo(i)->cargo_type && HASBIT(e->player_avail, _local_player)) {
+					if (cargo == RoadVehInfo(i)->cargo_type &&
+							HASBIT(GetEngine(i)->player_avail, _local_player)) {
+						if (sel[1] == count2) selected_id[1] = i;
 						count2++;
-						if (sel[1] == 0) selected_id[1] = i;
-						sel[1]--;
 					}
 				}
 			}
@@ -569,9 +565,8 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 		case VEH_Ship: {
 			for (i = SHIP_ENGINES_INDEX; i < SHIP_ENGINES_INDEX + NUM_SHIP_ENGINES; i++) {
 				if (_player_num_engines[i] > 0 || EngineHasReplacementForPlayer(p, i)) {
-					if (sel[0] == 0) selected_id[0] = i;
+					if (sel[0] == count) selected_id[0] = i;
 					count++;
-					sel[0]--;
 				}
 			}
 
@@ -580,14 +575,11 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 				byte refittable = ShipVehInfo(selected_id[0])->refittable;
 
 				for (i = SHIP_ENGINES_INDEX; i < SHIP_ENGINES_INDEX + NUM_SHIP_ENGINES; i++) {
-					const Engine* e = GetEngine(i);
-
-					if (HASBIT(e->player_avail, _local_player) && (
+					if (HASBIT(GetEngine(i)->player_avail, _local_player) && (
 								ShipVehInfo(i)->cargo_type == cargo ||
 								ShipVehInfo(i)->refittable & refittable
 							)) {
-						if (sel[1] == 0) selected_id[1] = i;
-						sel[1]--;
+						if (sel[1] == count2) selected_id[1] = i;
 						count2++;
 					}
 				}
@@ -598,9 +590,8 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 		case VEH_Aircraft: {
 			for (i = AIRCRAFT_ENGINES_INDEX; i < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; i++) {
 				if (_player_num_engines[i] > 0 || EngineHasReplacementForPlayer(p, i)) {
+					if (sel[0] == count) selected_id[0] = i;
 					count++;
-					if (sel[0] == 0) selected_id[0] = i;
-					sel[0]--;
 				}
 			}
 
@@ -608,14 +599,10 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 				byte subtype = AircraftVehInfo(selected_id[0])->subtype;
 
 				for (i = AIRCRAFT_ENGINES_INDEX; i < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; i++) {
-					const Engine* e = GetEngine(i);
-
-					if (HASBIT(e->player_avail, _local_player)) {
-						if (HASBIT(subtype, 0) == HASBIT(AircraftVehInfo(i)->subtype, 0)) {
-							count2++;
-							if (sel[1] == 0) selected_id[1] = i;
-							sel[1]--;
-						}
+					if (HASBIT(GetEngine(i)->player_avail, _local_player) &&
+							HASBIT(subtype, 0) == HASBIT(AircraftVehInfo(i)->subtype, 0)) {
+						if (sel[1] == count2) selected_id[1] = i;
+						count2++;
 					}
 				}
 			}
