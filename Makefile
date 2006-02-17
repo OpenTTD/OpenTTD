@@ -325,6 +325,10 @@ endif
 ifdef PROFILE
   CFLAGS += -pg
   LDFLAGS += -pg
+  ifdef OSX
+  # Shark (Xcode's profiling tool) needs -g to relate CPU usage to line numbers in the source code
+    BASECFLAGS += -g
+  endif
 endif
 
 CDEFS=-DWITH_REV
