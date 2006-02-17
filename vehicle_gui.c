@@ -571,8 +571,9 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 			}
 
 			if (selected_id[0] != INVALID_ENGINE) {
-				byte cargo = ShipVehInfo(selected_id[0])->cargo_type;
-				byte refittable = ShipVehInfo(selected_id[0])->refittable;
+				const ShipVehicleInfo* svi = ShipVehInfo(selected_id[0]);
+				CargoID cargo = svi->cargo_type;
+				byte refittable = svi->refittable;
 
 				for (i = SHIP_ENGINES_INDEX; i < SHIP_ENGINES_INDEX + NUM_SHIP_ENGINES; i++) {
 					if (HASBIT(GetEngine(i)->player_avail, _local_player) && (
