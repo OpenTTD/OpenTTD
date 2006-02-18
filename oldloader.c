@@ -372,7 +372,7 @@ static void FixOldStations(void)
 			st->bus_stops->station = st->index;
 			st->bus_stops->next = NULL;
 			st->bus_stops->prev = NULL;
-			st->bus_stops->slot[0] = st->bus_stops->slot[1] = INVALID_SLOT;
+			st->bus_stops->slot[0] = st->bus_stops->slot[1] = INVALID_VEHICLE;
 		}
 
 		if (st->lorry_tile_obsolete != 0) {
@@ -383,7 +383,7 @@ static void FixOldStations(void)
 			st->truck_stops->station = st->index;
 			st->truck_stops->next = NULL;
 			st->truck_stops->prev = NULL;
-			st->truck_stops->slot[0] = st->truck_stops->slot[1] = INVALID_SLOT;
+			st->truck_stops->slot[0] = st->truck_stops->slot[1] = INVALID_VEHICLE;
 		}
 	}
 }

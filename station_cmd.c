@@ -88,7 +88,7 @@ static void InitializeRoadStop(RoadStop *road_stop, RoadStop *previous, TileInde
 	road_stop->xy = tile;
 	road_stop->used = true;
 	road_stop->status = 3; //stop is free
-	road_stop->slot[0] = road_stop->slot[1] = INVALID_SLOT;
+	road_stop->slot[0] = road_stop->slot[1] = INVALID_VEHICLE;
 	road_stop->next = NULL;
 	road_stop->prev = previous;
 	road_stop->station = index;
@@ -1428,7 +1428,7 @@ static int32 RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 
 		/* Clear all vehicles destined for this station */
 		for (i = 0; i != NUM_SLOTS; i++) {
-			if (cur_stop->slot[i] != INVALID_SLOT) {
+			if (cur_stop->slot[i] != INVALID_VEHICLE) {
 				Vehicle *v = GetVehicle(cur_stop->slot[i]);
 				ClearSlot(v, v->u.road.slot);
 			}
@@ -2301,14 +2301,14 @@ static void CheckOrphanedSlots(const Station *st, RoadStopType rst)
 
 	for (rs = GetPrimaryRoadStop(st, rst); rs != NULL; rs = rs->next) {
 		for (k = 0; k < NUM_SLOTS; k++) {
-			if (rs->slot[k] != INVALID_SLOT) {
+			if (rs->slot[k] != INVALID_VEHICLE) {
 				const Vehicle *v = GetVehicle(rs->slot[k]);
 
 				if (v->type != VEH_Road || v->u.road.slot != rs) {
 					DEBUG(ms, 0) (
 						"Multistop: Orphaned %s slot at 0x%X of station %d (don't panic)",
 						(rst == RS_BUS) ? "bus" : "truck", rs->xy, st->index);
-					rs->slot[k] = INVALID_SLOT;
+					rs->slot[k] = INVALID_VEHICLE;
 				}
 			}
 		}

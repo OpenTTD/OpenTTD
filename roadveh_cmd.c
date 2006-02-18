@@ -231,7 +231,7 @@ void ClearSlot(Vehicle *v, RoadStop *rs)
 	if (rs != NULL) {
 		// check that the slot is indeed assigned to the same vehicle
 		assert(rs->slot[v->u.road.slotindex] == v->index);
-		rs->slot[v->u.road.slotindex] = INVALID_SLOT;
+		rs->slot[v->u.road.slotindex] = INVALID_VEHICLE;
  }
 }
 
@@ -1578,7 +1578,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 			DEBUG(ms, 2) ("Multistop: Attempting to obtain a slot for vehicle %d at station %d (0x%x)", v->unitnumber, st->index, st->xy);
 			for (; rs != NULL; rs = rs->next) {
 				// Only consider those with at least a free slot.
-				if (!(rs->slot[0] == INVALID_SLOT || rs->slot[1] == INVALID_SLOT))
+				if (!(rs->slot[0] == INVALID_VEHICLE || rs->slot[1] == INVALID_VEHICLE))
 					continue;
 
 				// Previously the NPF pathfinder was used here even if NPF is OFF.. WTF?
@@ -1614,8 +1614,8 @@ void OnNewDay_RoadVeh(Vehicle *v)
 			if (best_stop != NULL) {
 				int slot;
 				// Find a free slot in this stop. We know that at least one is free.
-				assert(best_stop->slot[0] == INVALID_SLOT || best_stop->slot[1] == INVALID_SLOT);
-				slot = (best_stop->slot[0] == INVALID_SLOT) ? 0 : 1;
+				assert(best_stop->slot[0] == INVALID_VEHICLE || best_stop->slot[1] == INVALID_VEHICLE);
+				slot = (best_stop->slot[0] == INVALID_VEHICLE) ? 0 : 1;
 				best_stop->slot[slot] = v->index;
 				v->u.road.slot = best_stop;
 				v->dest_tile = best_stop->xy;
