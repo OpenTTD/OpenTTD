@@ -239,8 +239,7 @@ int AiNew_PickVehicle(Player *p)
 			if (!CmdFailed(ret)) break;
 		}
 		// We did not find a vehicle :(
-		if (CmdFailed(ret)) return -1;
-		return i;
+		return CmdFailed(ret) ? -1 : i;
 	}
 }
 

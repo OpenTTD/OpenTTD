@@ -589,12 +589,11 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 			}
 
 			case 11: { /* {INDUSTRY} */
-				Industry *i = GetIndustry(GetInt32(&argv));
+				const Industry* i = GetIndustry(GetInt32(&argv));
 				int32 args[2];
 
 				// industry not valid anymore?
-				if (i->xy == 0)
-					break;
+				if (i->xy == 0) break;
 
 				// First print the town name and the industry type name
 				// The string STR_INDUSTRY_PATTERN controls the formatting
@@ -1048,7 +1047,6 @@ bool ReadLanguagePack(int lang_index)
 
 	ttd_strlcpy(_dynlang.curr_file, _dynlang.ent[lang_index].file, sizeof(_dynlang.curr_file));
 
-
 	_dynlang.curr = lang_index;
 	return true;
 }
@@ -1117,8 +1115,7 @@ void InitializeLanguagePacks(void)
 		error(n == 0 ? "No available language packs" : "Invalid version of language packs");
 
 	dl->num = m;
-	for (i = 0; i != dl->num; i++)
-		dl->dropdown[i] = SPECSTR_LANGUAGE_START + i;
+	for (i = 0; i != dl->num; i++) dl->dropdown[i] = SPECSTR_LANGUAGE_START + i;
 	dl->dropdown[i] = INVALID_STRING_ID;
 
 	for (i = 0; i != dl->num; i++)

@@ -1623,12 +1623,12 @@ int32 CmdBuildAirport(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		{
 			const byte *b = _airport_map5_tiles[p1];
 
-			BEGIN_TILE_LOOP(tile_cur,w,h,tile) {
+			BEGIN_TILE_LOOP(tile_cur, w, h, tile) {
 				ModifyTile(tile_cur,
 					MP_SETTYPE(MP_STATION) | MP_MAPOWNER_CURRENT |
 					MP_MAP2 | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR | MP_MAP5,
 					st->index, *b++);
-			} END_TILE_LOOP(tile_cur,w,h,tile)
+			} END_TILE_LOOP(tile_cur, w, h, tile)
 		}
 
 		UpdateStationVirtCoordDirty(st);
@@ -1655,24 +1655,24 @@ static int32 RemoveAirport(Station *st, uint32 flags)
 
 	cost = w * h * _price.remove_airport;
 
-	{
-BEGIN_TILE_LOOP(tile_cur,w,h,tile)
-		if (!EnsureNoVehicle(tile_cur))
-			return CMD_ERROR;
+	BEGIN_TILE_LOOP(tile_cur, w, h, tile) {
+		if (!EnsureNoVehicle(tile_cur)) return CMD_ERROR;
 
 		if (flags & DC_EXEC) {
 			DeleteAnimatedTile(tile_cur);
 			DoClearSquare(tile_cur);
 		}
-END_TILE_LOOP(tile_cur, w,h,tile)
-	}
+	} END_TILE_LOOP(tile_cur, w,h,tile)
 
 	if (flags & DC_EXEC) {
 		const AirportFTAClass *afc = GetAirport(st->airport_type);
 		uint i;
 
-		for (i = 0; i < afc->nof_depots; ++i)
-			DeleteWindowById(WC_VEHICLE_DEPOT, tile + ToTileIndexDiff(afc->airport_depots[i]));
+		for (i = 0; i < afc->nof_depots; ++i) {
+			DeleteWindowById(
+				WC_VEHICLE_DEPOT, tile + ToTileIndexDiff(afc->airport_depots[i])
+			);
+		}
 
 		st->airport_tile = 0;
 		st->facilities &= ~FACIL_AIRPORT;
@@ -2156,6 +2156,7 @@ static void AnimateTile_Station(TileIndex tile)
 	}
 }
 
+
 static void ClickTile_Station(TileIndex tile)
 {
   // 0x20 - hangar large airport (32)
@@ -2297,7 +2298,7 @@ void DeleteAllPlayerStations(void)
 static void CheckOrphanedSlots(const Station *st, RoadStopType rst)
 {
 	RoadStop *rs;
-	int k;
+	uint k;
 
 	for (rs = GetPrimaryRoadStop(st, rst); rs != NULL; rs = rs->next) {
 		for (k = 0; k < NUM_SLOTS; k++) {
@@ -2934,10 +2935,10 @@ static void Load_STNS(void)
 
 		// this means it's an oldstyle savegame without support for nonuniform stations
 		if (st->train_tile != 0 && st->trainst_h == 0) {
-			int w = GB(st->trainst_w, 4, 4);
-			int h = GB(st->trainst_w, 0, 4);
+			uint w = GB(st->trainst_w, 4, 4);
+			uint h = GB(st->trainst_w, 0, 4);
 
-			if (_m[st->train_tile].m5 & 1) intswap(w, h);
+			if (_m[st->train_tile].m5 & 1) uintswap(w, h);
 			st->trainst_w = w;
 			st->trainst_h = h;
 		}

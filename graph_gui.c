@@ -884,9 +884,9 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_PAINT: {
-			int val, needed, score, i;
+			int i;
 			byte owner, x;
-			uint16 y=14;
+			uint16 y = 14;
 			int total_score = 0;
 			int color_done, color_notdone;
 
@@ -897,15 +897,14 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			owner = FindFirstBit(w->click_state) - 13;
 
 			// Paint the player icons
-			for (i=0;i<MAX_PLAYERS;i++) {
+			for (i = 0; i < MAX_PLAYERS; i++) {
 				if (!GetPlayer(i)->is_active) {
 					// Check if we have the player as an active player
-					if (!(w->disabled_state & (1 << (i+13)))) {
+					if (!(w->disabled_state & (1 << (i + 13)))) {
 						// Bah, player gone :(
-						w->disabled_state += 1 << (i+13);
+						w->disabled_state += 1 << (i + 13);
 						// Is this player selected? If so, select first player (always save? :s)
-						if (w->click_state == 1U << (i + 13))
-							w->click_state = 1 << 13;
+						if (w->click_state == 1U << (i + 13)) w->click_state = 1 << 13;
 						// We need a repaint
 						SetWindowDirty(w);
 					}
@@ -913,14 +912,14 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 				}
 
 				// Check if we have the player marked as inactive
-				if ((w->disabled_state & (1 << (i+13)))) {
+				if (w->disabled_state & (1 << (i + 13))) {
 					// New player! Yippie :p
-					w->disabled_state -= 1 << (i+13);
+					w->disabled_state -= 1 << (i + 13);
 					// We need a repaint
 					SetWindowDirty(w);
 				}
 
-				if (i == owner) x = 1; else x = 0;
+				x = (i == owner) ? 1 : 0;
 				DrawPlayerIcon(i, i * 37 + 13 + x, 16 + x);
 			}
 
@@ -929,11 +928,12 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			color_notdone = _color_list[4].window_color_1b;
 
 			// Draw all the score parts
-			for (i=0;i<NUM_SCORE;i++) {
+			for (i = 0; i < NUM_SCORE; i++) {
+				int val    = _score_part[owner][i];
+				int needed = _score_info[i].needed;
+				int score  = _score_info[i].score;
+
 				y += 20;
-				val = _score_part[owner][i];
-				needed = _score_info[i].needed;
-				score = _score_info[i].score;
 				// SCORE_TOTAL has his own rulez ;)
 				if (i == SCORE_TOTAL) {
 					needed = total_score;
@@ -949,35 +949,33 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 				DrawStringRightAligned(107, y, SET_PERFORMANCE_DETAIL_INT, 0);
 
 				// Calculate the %-bar
-				if (val > needed) x = 50;
-				else if (val == 0) x = 0;
-				else x = ((val * 50) / needed);
+				if (val > needed) {
+					x = 50;
+				} else if (val == 0) {
+					x = 0;
+				} else {
+					x = val * 50 / needed;
+				}
 
 				// SCORE_LOAN is inversed
-				if (val < 0 && i == SCORE_LOAN)
-					x = 0;
+				if (val < 0 && i == SCORE_LOAN) x = 0;
 
 				// Draw the bar
-				if (x != 0)
-					GfxFillRect(112, y-2, x + 112, y+10, color_done);
-				if (x != 50)
-					GfxFillRect(x + 112, y-2, 50 + 112, y+10, color_notdone);
+				if (x !=  0) GfxFillRect(112,     y - 2, 112 + x,  y + 10, color_done);
+				if (x != 50) GfxFillRect(112 + x, y - 2, 112 + 50, y + 10, color_notdone);
 
 				// Calculate the %
-				if (val > needed) x = 100;
-				else x = ((val * 100) / needed);
+				x = (val <= needed) ? val * 100 / needed : 100;
 
 				// SCORE_LOAN is inversed
-				if (val < 0 && i == SCORE_LOAN)
-					x = 0;
+				if (val < 0 && i == SCORE_LOAN) x = 0;
 
 				// Draw it
 				SetDParam(0, x);
 				DrawStringCentered(137, y, STR_PERFORMANCE_DETAIL_PERCENT, 0);
 
 				// SCORE_LOAN is inversed
-				if (i == SCORE_LOAN)
-					val = needed - val;
+				if (i == SCORE_LOAN) val = needed - val;
 
 				// Draw the amount we have against what is needed
 				//  For some of them it is in currency format
@@ -1017,16 +1015,14 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			w->disabled_state = 0;
 
 			// Hide the player who are not active
-			for (i=0;i<MAX_PLAYERS;i++) {
-				if (!GetPlayer(i)->is_active) {
-					w->disabled_state += 1 << (i+13);
-				}
+			for (i = 0; i < MAX_PLAYERS; i++) {
+				if (!GetPlayer(i)->is_active) w->disabled_state += 1 << (i + 13);
 			}
 			// Update all player stats with the current data
 			//  (this is because _score_info is not saved to a savegame)
-			FOR_ALL_PLAYERS(p2)
-				if (p2->is_active)
-					UpdateCompanyRatingAndValue(p2, false);
+			FOR_ALL_PLAYERS(p2) {
+				if (p2->is_active) UpdateCompanyRatingAndValue(p2, false);
+			}
 
 			w->custom[0] = DAY_TICKS;
 			w->custom[1] = 5;
@@ -1044,11 +1040,12 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 				w->custom[0] = DAY_TICKS;
 				if (--w->custom[1] == 0) {
 					Player *p2;
+
 					w->custom[1] = 5;
-					FOR_ALL_PLAYERS(p2)
+					FOR_ALL_PLAYERS(p2) {
 						// Skip if player is not active
-						if (p2->is_active)
-							UpdateCompanyRatingAndValue(p2, false);
+						if (p2->is_active) UpdateCompanyRatingAndValue(p2, false);
+					}
 					SetWindowDirty(w);
 				}
 			}

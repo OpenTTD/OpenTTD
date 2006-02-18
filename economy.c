@@ -157,7 +157,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 /* Count stations */
 	{
 		uint num = 0;
-		Station *st;
+		const Station* st;
 
 		FOR_ALL_STATIONS(st) {
 			if (st->xy != 0 && st->owner == owner) {
@@ -170,7 +170,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 
 /* Generate statistics depending on recent income statistics */
 	{
-		PlayerEconomyEntry *pee;
+		const PlayerEconomyEntry* pee;
 		int numec;
 		int32 min_income;
 		int32 max_income;
@@ -194,7 +194,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 
 /* Generate score depending on amount of transported cargo */
 	{
-		PlayerEconomyEntry *pee;
+		const PlayerEconomyEntry* pee;
 		int numec;
 		uint32 total_delivered;
 
@@ -216,8 +216,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 		uint num = 0;
 		do num += cargo&1; while (cargo>>=1);
 		_score_part[owner][SCORE_CARGO] = num;
-		if (update)
-			p->cargo_types = 0;
+		if (update) p->cargo_types = 0;
 	}
 
 /* Generate score for player money */
@@ -239,13 +238,13 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 		int total_score = 0;
 		int s;
 		score = 0;
-		for (i=0;i<NUM_SCORE;i++) {
+		for (i = 0; i < NUM_SCORE; i++) {
 			// Skip the total
 			if (i == SCORE_TOTAL) continue;
 			// Check the score
 			s = (_score_part[owner][i] >= _score_info[i].needed) ?
 				_score_info[i].score :
-				((_score_part[owner][i] * _score_info[i].score) / _score_info[i].needed);
+				_score_part[owner][i] * _score_info[i].score / _score_info[i].needed;
 			if (s < 0) s = 0;
 			score += s;
 			total_score += _score_info[i].score;
@@ -254,8 +253,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 		_score_part[owner][SCORE_TOTAL] = score;
 
 		// We always want the score scaled to SCORE_MAX (1000)
-		if (total_score != SCORE_MAX)
-			score = score * SCORE_MAX / total_score;
+		if (total_score != SCORE_MAX) score = score * SCORE_MAX / total_score;
 	}
 
 	if (update) {

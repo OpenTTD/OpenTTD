@@ -472,17 +472,12 @@ static void ReadTTDPatchFlags(void)
 	1 vehicle   == 128 bytes */
 	_bump_assert_value = (_old_vehicle_multipler - 1) * 850 * 128;
 
-	_new_ttdpatch_format   = false;
-
 	/* Check if we have a modern TTDPatch savegame (has extra data all around) */
-	if (memcmp(&_old_map3[0x1FFFA], "TTDp", 4) == 0)
-		_new_ttdpatch_format = true;
+	_new_ttdpatch_format = (memcmp(&_old_map3[0x1FFFA], "TTDp", 4) == 0);
 
 	/* Clean the misused places */
-	for (i = 0; i < 17; i++)
-		_old_map3[i] = 0;
-	for (i = 0x1FE00; i < 0x20000; i++)
-		_old_map3[i] = 0;
+	for (i = 0;       i < 17;      i++) _old_map3[i] = 0;
+	for (i = 0x1FE00; i < 0x20000; i++) _old_map3[i] = 0;
 
 	if (_new_ttdpatch_format)
 		DEBUG(oldloader, 1)("[OldLoader] Found TTDPatch game");

@@ -239,8 +239,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x09: { /* Speed */
 			FOR_EACH_OBJECT {
 				uint16 speed = grf_load_word(&buf);
-				if (speed == 0xFFFF)
-					speed = 0;
+				if (speed == 0xFFFF) speed = 0;
 
 				rvi[i].max_speed = speed;
 			}
@@ -249,8 +248,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT {
 				uint16 power = grf_load_word(&buf);
 
-				if (rvi[i].flags & RVI_MULTIHEAD)
-					power /= 2;
+				if (rvi[i].flags & RVI_MULTIHEAD) power /= 2;
 
 				rvi[i].power = power;
 				dewagonize(power, engine + i);
@@ -260,8 +258,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT {
 				uint8 runcostfact = grf_load_byte(&buf);
 
-				if (rvi[i].flags & RVI_MULTIHEAD)
-					runcostfact /= 2;
+				if (rvi[i].flags & RVI_MULTIHEAD) runcostfact /= 2;
 
 				rvi[i].running_cost_base = runcostfact;
 			}
@@ -283,8 +280,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 				/* TTD sprite IDs point to a location in a 16bit array, but we use it
 				 * as an array index, so we need it to be half the original value. */
-				if (spriteid < 0xFD)
-					spriteid >>= 1;
+				if (spriteid < 0xFD) spriteid >>= 1;
 
 				rvi[i].image_index = spriteid;
 			}
@@ -361,14 +357,15 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				uint8 traction = grf_load_byte(&buf);
 				int engclass;
 
-				if (traction <= 0x07)
+				if (traction <= 0x07) {
 					engclass = 0;
-				else if (traction <= 0x27)
+				} else if (traction <= 0x27) {
 					engclass = 1;
-				else if (traction <= 0x41)
+				} else if (traction <= 0x41) {
 					engclass = 2;
-				else
+				} else {
 					break;
+				}
 
 				rvi[i].engclass = engclass;
 			}
@@ -504,11 +501,10 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT {
 				uint8 spriteid = grf_load_byte(&buf);
 
-				if (spriteid == 0xFF)
-					spriteid = 0xFD; // cars have different custom id in the GRF file
+				// cars have different custom id in the GRF file
+				if (spriteid == 0xFF) spriteid = 0xFD;
 
-				if (spriteid < 0xFD)
-					spriteid >>= 1;
+				if (spriteid < 0xFD) spriteid >>= 1;
 
 				rvi[i].image_index = spriteid;
 			}
@@ -614,11 +610,10 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT {
 				uint8 spriteid = grf_load_byte(&buf);
 
-				if (spriteid == 0xFF)
-					spriteid = 0xFD; // ships have different custom id in the GRF file
+				// ships have different custom id in the GRF file
+				if (spriteid == 0xFF) spriteid = 0xFD;
 
-				if (spriteid < 0xFD)
-					spriteid >>= 1;
+				if (spriteid < 0xFD) spriteid >>= 1;
 
 				svi[i].image_index = spriteid;
 			}
@@ -740,11 +735,10 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 			FOR_EACH_OBJECT {
 				uint8 spriteid = grf_load_byte(&buf);
 
-				if (spriteid == 0xFF)
-					spriteid = 0xFD; // ships have different custom id in the GRF file
+				// aircraft have different custom id in the GRF file
+				if (spriteid == 0xFF) spriteid = 0xFD;
 
-				if (spriteid < 0xFD)
-					spriteid >>= 1;
+				if (spriteid < 0xFD) spriteid >>= 1;
 
 				avi[i].image_index = spriteid;
 			}
@@ -1034,9 +1028,11 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 
 					p = 0;
 					layout = malloc(length * number);
-					for (l = 0; l < length; l++)
-						for (p = 0; p < number; p++)
+					for (l = 0; l < length; l++) {
+						for (p = 0; p < number; p++) {
 							layout[l * number + p] = grf_load_byte(&buf);
+						}
+					}
 
 					l--;
 					p--;
@@ -1361,10 +1357,11 @@ static SpriteGroup* NewCallBackResultSpriteGroup(uint16 value)
 
 	// Old style callback results have the highest byte 0xFF so signify it is a callback result
 	// New style ones only have the highest bit set (allows 15-bit results, instead of just 8)
-	if ((value >> 8) == 0xFF)
-		value &= 0xFF;
-	else
+	if ((value >> 8) == 0xFF) {
+		value &= ~0xFF00;
+	} else {
 		value &= ~0x8000;
+	}
 
 	group->g.callback.result = value;
 
@@ -2507,7 +2504,7 @@ static void ResetCustomStations(void)
  */
 static void ResetNewGRFData(void)
 {
-	int i;
+	uint i;
 
 	// Copy/reset original engine info data
 	memcpy(&_engine_info, &orig_engine_info, sizeof(orig_engine_info));
@@ -2520,9 +2517,9 @@ static void ResetNewGRFData(void)
 	// First, free sprite table data
 	for (i = 0; i < MAX_BRIDGES; i++) {
 		if (_bridge[i].sprite_table != NULL) {
-			byte j;
-			for (j = 0; j < 7; j++)
-				free(_bridge[i].sprite_table[j]);
+			uint j;
+
+			for (j = 0; j < 7; j++) free(_bridge[i].sprite_table[j]);
 			free(_bridge[i].sprite_table);
 		}
 	}
@@ -2563,8 +2560,7 @@ static void InitNewGRFFile(const char* filename, int sprite_offset)
 
 	newfile = calloc(1, sizeof(*newfile));
 
-	if (newfile == NULL)
-		error ("Out of memory");
+	if (newfile == NULL) error ("Out of memory");
 
 	newfile->filename = strdup(filename);
 	newfile->sprite_offset = sprite_offset;
@@ -2594,15 +2590,19 @@ static void CalculateRefitMasks(void)
 		if (cargo_allowed[engine] != 0) {
 			// Build up the list of cargo types from the set cargo classes.
 			for (i = 0; i < lengthof(cargo_classes); i++) {
-				if (HASBIT(cargo_allowed[engine], i))
-					mask |= cargo_classes[i];
-				if (HASBIT(cargo_disallowed[engine], i))
-					not_mask |= cargo_classes[i];
+				if (HASBIT(cargo_allowed[engine], i)) mask |= cargo_classes[i];
+				if (HASBIT(cargo_disallowed[engine], i)) not_mask |= cargo_classes[i];
 			}
 		} else {
 			// Don't apply default refit mask to wagons or engines with no capacity
-			if (xor_mask == 0 && !(GetEngine(engine)->type == VEH_Train && (RailVehInfo(engine)->capacity == 0 || RailVehInfo(engine)->flags & RVI_WAGON)))
+			if (xor_mask == 0 && (
+						GetEngine(engine)->type != VEH_Train || (
+							RailVehInfo(engine)->capacity != 0 &&
+							!(RailVehInfo(engine)->flags & RVI_WAGON)
+						)
+					)) {
 				xor_mask = _default_refitmasks[GetEngine(engine)->type - VEH_Train];
+			}
 		}
 		_engine_info[engine].refit_mask = ((mask & ~not_mask) ^ xor_mask) & _landscape_global_cargo_mask[_opt.landscape];
 	}

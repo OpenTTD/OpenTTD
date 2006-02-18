@@ -485,7 +485,7 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 			int dir1 = AiNew_GetRailDirection(parent->path.parent->node.tile, parent->path.node.tile, current->tile);
 			int dir2 = AiNew_GetRailDirection(parent->path.parent->parent->node.tile, parent->path.parent->node.tile, parent->path.node.tile);
 			// First, see if we are on diagonal path, that is better than straight path
-			if (dir1 > 1) { res -= AI_PATHFINDER_DIAGONAL_BONUS; }
+			if (dir1 > 1) res -= AI_PATHFINDER_DIAGONAL_BONUS;
 
 			// First see if they are different
 			if (dir1 != dir2) {

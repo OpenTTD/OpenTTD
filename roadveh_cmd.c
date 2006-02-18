@@ -252,8 +252,11 @@ int32 CmdSellRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
-	if (!IsTileDepotType(v->tile, TRANSPORT_ROAD) || v->u.road.state != 254 || !(v->vehstatus&VS_STOPPED))
+	if (!IsTileDepotType(v->tile, TRANSPORT_ROAD) ||
+			v->u.road.state != 254 ||
+			!(v->vehstatus & VS_STOPPED)) {
 		return_cmd_error(STR_9013_MUST_BE_STOPPED_INSIDE);
+	}
 
 	if (flags & DC_EXEC) {
 		// Invalidate depot
@@ -296,7 +299,7 @@ static bool EnumRoadSignalFindDepot(TileIndex tile, RoadFindDepotData *rfdd, int
 	return false;
 }
 
-static Depot *FindClosestRoadDepot(Vehicle *v)
+static const Depot* FindClosestRoadDepot(const Vehicle* v)
 {
 	TileIndex tile = v->tile;
 	int i;
@@ -321,8 +324,9 @@ static Depot *FindClosestRoadDepot(Vehicle *v)
 		rfdd.best_length = (uint)-1;
 
 		/* search in all directions */
-		for (i = 0; i != 4; i++)
+		for (i = 0; i != 4; i++) {
 			FollowTrack(tile, 0x2000 | TRANSPORT_ROAD, i, (TPFEnumProc*)EnumRoadSignalFindDepot, NULL, &rfdd);
+		}
 
 		if (rfdd.best_length == (uint)-1) return NULL;
 
@@ -534,7 +538,8 @@ static void RoadVehCrash(Vehicle *v)
 			STR_9031_ROAD_VEHICLE_CRASH_DRIVER : STR_9032_ROAD_VEHICLE_CRASH_DIE,
 		NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ACCIDENT, 0),
 		v->index,
-		0);
+		0
+	);
 
 	ModifyStationRatingAround(v->tile, v->owner, -160, 22);
 	SndPlayVehicleFx(SND_12_EXPLOSION, v);
@@ -744,8 +749,7 @@ static Vehicle *RoadVehFindCloseTo(Vehicle *v, int x, int y, byte dir)
 		return NULL;
 	}
 
-	if (++v->u.road.blocked_ctr > 1480)
-		return NULL;
+	if (++v->u.road.blocked_ctr > 1480) return NULL;
 
 	return u;
 }
@@ -778,7 +782,8 @@ static void RoadVehArrivesAt(const Vehicle* v, Station* st)
 				STR_9030_CITIZENS_CELEBRATE_FIRST,
 				flags,
 				v->index,
-				0);
+				0
+			);
 		}
 	}
 }
@@ -857,7 +862,7 @@ static bool FindRoadVehToOvertake(OvertakeData *od)
 {
 	uint32 bits;
 
-	bits = GetTileTrackStatus(od->tile, TRANSPORT_ROAD)&0x3F;
+	bits = GetTileTrackStatus(od->tile, TRANSPORT_ROAD) & 0x3F;
 
 	if (!(od->tilebits & bits) || (bits&0x3C) || (bits & 0x3F3F0000))
 		return true;
@@ -878,11 +883,9 @@ static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
 		return;
 	}
 
-	if (v->direction != u->direction || !(v->direction&1))
-		return;
+	if (v->direction != u->direction || !(v->direction & 1)) return;
 
-	if (v->u.road.state >= 32 || (v->u.road.state&7) > 1 )
-		return;
+	if (v->u.road.state >= 32 || (v->u.road.state & 7) > 1) return;
 
 	tt = GetTileTrackStatus(v->tile, TRANSPORT_ROAD) & 0x3F;
 	if ((tt & 3) == 0) return;
@@ -1049,7 +1052,7 @@ static int RoadFindPathToDest(Vehicle *v, TileIndex tile, int enterdir)
 	} else {
 		if (IsTileType(desttile, MP_STREET)) {
 			m5 = _m[desttile].m5;
-			if ((m5&0xF0) == 0x20)
+			if ((m5 & 0xF0) == 0x20)
 				/* We are heading for a Depot */
 				goto do_it;
 		} else if (IsTileType(desttile, MP_STATION)) {
@@ -1169,16 +1172,16 @@ static void RoadVehController(Vehicle *v)
 
 	if (v->u.road.state == 254) {
 		int dir;
-		const RoadDriveEntry*rdp;
+		const RoadDriveEntry* rdp;
 		byte rd2;
 
 		v->cur_speed = 0;
 
 		dir = GB(_m[v->tile].m5, 0, 2);
-		v->direction = dir*2+1;
+		v->direction = dir * 2 + 1;
 
 		rd2 = _roadveh_data_2[dir];
-		rdp = _road_drive_data[(_opt.road_side<<4) + rd2];
+		rdp = _road_drive_data[(_opt.road_side << 4) + rd2];
 
 		x = TileX(v->tile) * 16 + (rdp[6].x & 0xF);
 		y = TileY(v->tile) * 16 + (rdp[6].y & 0xF);
@@ -1213,8 +1216,9 @@ static void RoadVehController(Vehicle *v)
 			if (v->u.road.state == 0  || v->u.road.state == 1  ||
 					v->u.road.state == 8  || v->u.road.state == 9  ||
 					v->u.road.state == 16 || v->u.road.state == 17 ||
-					v->u.road.state == 24 || v->u.road.state == 25)
+					v->u.road.state == 24 || v->u.road.state == 25) {
 				v->u.road.overtaking = 0;
+			}
 	}
 
 	BeginVehicleMove(v);
@@ -1244,12 +1248,12 @@ static void RoadVehController(Vehicle *v)
 		return;
 	}
 
-	rd = _road_drive_data[(v->u.road.state + (_opt.road_side<<4)) ^ v->u.road.overtaking][v->u.road.frame+1];
+	rd = _road_drive_data[(v->u.road.state + (_opt.road_side << 4)) ^ v->u.road.overtaking][v->u.road.frame + 1];
 
 // switch to another tile
 	if (rd.x & 0x80) {
 		TileIndex tile = v->tile + TileOffsByDir(rd.x & 3);
-		int dir = RoadFindPathToDest(v, tile, rd.x&3);
+		int dir = RoadFindPathToDest(v, tile, rd.x & 3);
 		uint32 r;
 		byte newdir;
 		const RoadDriveEntry *rdp;
@@ -1284,7 +1288,10 @@ again:
 		}
 
 		if (IS_BYTE_INSIDE(v->u.road.state, 0x20, 0x30) && IsTileType(v->tile, MP_STATION)) {
-			if ((dir & 7) >= 6) { v->cur_speed = 0; return; }
+			if ((dir & 7) >= 6) {
+				v->cur_speed = 0;
+				return;
+			}
 			if (IS_BYTE_INSIDE(_m[v->tile].m5, 0x43, 0x4B)) {
 				RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
 				byte *b = &rs->status;
@@ -1312,7 +1319,7 @@ again:
 	}
 
 	if (rd.x & 0x40) {
-		int dir = RoadFindPathToDest(v, v->tile,	rd.x&3);
+		int dir = RoadFindPathToDest(v, v->tile,	rd.x & 3);
 		uint32 r;
 		int tmp;
 		byte newdir;
@@ -1323,7 +1330,7 @@ again:
 			return;
 		}
 
-		tmp = (_opt.road_side<<4) + dir;
+		tmp = (_opt.road_side << 4) + dir;
 		rdp = _road_drive_data[tmp];
 
 		x = TileX(v->tile) * 16 + rdp[1].x;
@@ -1352,12 +1359,13 @@ again:
 		return;
 	}
 
-	x = (v->x_pos&~15)+(rd.x&15);
-	y = (v->y_pos&~15)+(rd.y&15);
+	x = (v->x_pos & ~15) + (rd.x & 15);
+	y = (v->y_pos & ~15) + (rd.y & 15);
 
 	new_dir = RoadVehGetSlidingDirection(v, x, y);
 
-	if (!IS_BYTE_INSIDE(v->u.road.state, 0x20, 0x30) && (u=RoadVehFindCloseTo(v, x, y, new_dir)) != NULL) {
+	if (!IS_BYTE_INSIDE(v->u.road.state, 0x20, 0x30) &&
+			(u = RoadVehFindCloseTo(v, x, y, new_dir)) != NULL) {
 		if (v->u.road.overtaking == 0) RoadVehCheckOvertake(v, u);
 		return;
 	}
@@ -1503,7 +1511,7 @@ void RoadVeh_Tick(Vehicle *v)
 
 static void CheckIfRoadVehNeedsService(Vehicle *v)
 {
-	Depot *depot;
+	const Depot* depot;
 
 	if (_patches.servint_roadveh == 0) return;
 	if (!VehicleNeedsService(v)) return;
@@ -1532,8 +1540,9 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 
 	if (v->current_order.type == OT_GOTO_DEPOT &&
 			v->current_order.flags & OF_NON_STOP &&
-			!CHANCE16(1,20))
+			!CHANCE16(1, 20)) {
 		return;
+	}
 
 	v->current_order.type = OT_GOTO_DEPOT;
 	v->current_order.flags = OF_NON_STOP;
@@ -1578,8 +1587,9 @@ void OnNewDay_RoadVeh(Vehicle *v)
 			DEBUG(ms, 2) ("Multistop: Attempting to obtain a slot for vehicle %d at station %d (0x%x)", v->unitnumber, st->index, st->xy);
 			for (; rs != NULL; rs = rs->next) {
 				// Only consider those with at least a free slot.
-				if (!(rs->slot[0] == INVALID_VEHICLE || rs->slot[1] == INVALID_VEHICLE))
+				if (rs->slot[0] != INVALID_VEHICLE && rs->slot[1] != INVALID_VEHICLE) {
 					continue;
+				}
 
 				// Previously the NPF pathfinder was used here even if NPF is OFF.. WTF?
 				assert(NUM_SLOTS == 2);

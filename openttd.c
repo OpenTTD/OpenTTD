@@ -282,12 +282,13 @@ static void LoadIntroGame(void)
 
 	// Generate a world.
 	sprintf(filename, "%sopntitle.dat",  _path.data_dir);
-	if (SaveOrLoad(filename, SL_LOAD) != SL_OK) {
 #if defined SECOND_DATA_DIR
+	if (SaveOrLoad(filename, SL_LOAD) != SL_OK) {
 		sprintf(filename, "%sopntitle.dat",  _path.second_data_dir);
-		if (SaveOrLoad(filename, SL_LOAD) != SL_OK)
+	}
 #endif
-			GenerateWorld(GW_EMPTY, 64, 64); // if failed loading, make empty world.
+	if (SaveOrLoad(filename, SL_LOAD) != SL_OK) {
+		GenerateWorld(GW_EMPTY, 64, 64); // if failed loading, make empty world.
 	}
 
 	_pause = 0;
