@@ -60,6 +60,7 @@ extern void HideMenuBar(void);
 #include "../os/macosx/splash.h"
 
 #include "cocoa_v.h"
+#include "cocoa_keys.h"
 
 #undef Point
 #undef Rect
