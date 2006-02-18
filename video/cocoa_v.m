@@ -1220,7 +1220,7 @@ static const char* QZ_SetVideoWindowed(uint width, uint height)
  * Fade the display from normal to black
  * Save gamma tables for fade back to normal
  */
-static uint32 QZ_FadeGammaOut(const OTTD_QuartzGammaTable* table)
+static uint32 QZ_FadeGammaOut(OTTD_QuartzGammaTable* table)
 {
 	CGGammaValue redTable[QZ_GAMMA_TABLE_SIZE];
 	CGGammaValue greenTable[QZ_GAMMA_TABLE_SIZE];
