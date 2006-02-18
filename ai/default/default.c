@@ -159,9 +159,10 @@ static EngineID AiChooseRoadVehToBuild(byte cargo, int32 money, TileIndex tile)
 
 	EngineID i = _cargoc.ai_roadveh_start[cargo];
 	EngineID end = i + _cargoc.ai_roadveh_count[cargo];
-	const Engine* e = GetEngine(i);
 
-	do {
+	for (; i != end; i++) {
+		const Engine* e = GetEngine(i);
+
 		if (!HASBIT(e->player_avail, _current_player) || e->reliability < 0x8A3D)
 			continue;
 
@@ -170,7 +171,7 @@ static EngineID AiChooseRoadVehToBuild(byte cargo, int32 money, TileIndex tile)
 			best_veh_cost = ret;
 			best_veh_index = i;
 		}
-	} while (++e, ++i != end);
+	}
 
 	return best_veh_index;
 }
@@ -183,9 +184,10 @@ static EngineID AiChooseAircraftToBuild(int32 money, byte flag)
 
 	EngineID i = AIRCRAFT_ENGINES_INDEX;
 	EngineID end = i + NUM_AIRCRAFT_ENGINES;
-	const Engine* e = GetEngine(i);
 
-	do {
+	for (; i != end; i++) {
+		const Engine* e = GetEngine(i);
+
 		if (!HASBIT(e->player_avail, _current_player) || e->reliability < 0x8A3D)
 			continue;
 
@@ -200,7 +202,7 @@ static EngineID AiChooseAircraftToBuild(int32 money, byte flag)
 			best_veh_cost = ret;
 			best_veh_index = i;
 		}
-	} while (++e, ++i != end);
+	}
 
 	return best_veh_index;
 }
