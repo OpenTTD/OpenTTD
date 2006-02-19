@@ -984,30 +984,36 @@ static void QZ_UpdateWindowPalette(uint start, uint count)
 	_cocoa_video_data.num_dirty_rects = MAX_DIRTY_RECTS;
 }
 
-static inline void QZ_WindowBlitIndexedPixelsToView32(int left, int top, int right, int bottom)
+static inline void QZ_WindowBlitIndexedPixelsToView32(uint left, uint top, uint right, uint bottom)
 {
-	int x, y;
+	const uint32* pal = _cocoa_video_data.palette32;
+	const uint8* src = _cocoa_video_data.pixels;
+	uint32* dst = (uint32*)_cocoa_video_data.realpixels;
+	uint width = _cocoa_video_data.width;
+	uint pitch = _cocoa_video_data.pitch / 4;
+	uint x;
+	uint y;
 
 	for (y = top; y < bottom; y++) {
-		const uint8* src = _cocoa_video_data.pixels + y * _cocoa_video_data.width + left;
-		uint32* trg = (uint32*)_cocoa_video_data.realpixels + y * _cocoa_video_data.pitch / 4 + left;
-
-		for (x = left; x < right; x++, trg++, src++) {
-			*trg = _cocoa_video_data.palette32[*src];
+		for (x = left; x < right; x++) {
+			dst[y * pitch + x] = pal[src[y * width + x]];
 		}
 	}
 }
 
-static inline void QZ_WindowBlitIndexedPixelsToView16(int left, int top, int right, int bottom)
+static inline void QZ_WindowBlitIndexedPixelsToView16(uint left, uint top, uint right, uint bottom)
 {
-	int x, y;
+	const uint16* pal = _cocoa_video_data.palette16;
+	const uint8* src = _cocoa_video_data.pixels;
+	uint16* dst = (uint16*)_cocoa_video_data.realpixels;
+	uint width = _cocoa_video_data.width;
+	uint pitch = _cocoa_video_data.pitch / 2;
+	uint x;
+	uint y;
 
 	for (y = top; y < bottom; y++) {
-		const uint8* src = _cocoa_video_data.pixels + y * _cocoa_video_data.width + left;
-		uint16* trg = (uint16*)_cocoa_video_data.realpixels + y * _cocoa_video_data.pitch / 2 + left;
-
-		for (x = left; x < right; x++, trg++, src++) {
-			*trg = _cocoa_video_data.palette16[*src];
+		for (x = left; x < right; x++) {
+			dst[y * pitch + x] = pal[src[y * width + x]];
 		}
 	}
 }
@@ -1458,16 +1464,21 @@ static void QZ_WaitForVerticalBlank(void)
 
 static void QZ_DrawScreen(void)
 {
+	const uint8* src;
+	uint8* dst;
+	uint height;
+	uint width;
+	uint pitch;
 	uint y;
 
 	QZ_WaitForVerticalBlank();
 
-	for (y = 0; y < _cocoa_video_data.height; y++) {
-		const uint8* src = _cocoa_video_data.pixels + y * _cocoa_video_data.width;
-		uint8* dst = (uint8*)_cocoa_video_data.realpixels + y * _cocoa_video_data.pitch;
-
-		memcpy(dst, src, _cocoa_video_data.width);
-	}
+	src = _cocoa_video_data.pixels;
+	dst = (uint8*)_cocoa_video_data.realpixels;
+	height = _cocoa_video_data.height;
+	width  = _cocoa_video_data.width;
+	pitch  = _cocoa_video_data.pitch;
+	for (y = 0; y < height; y++) memcpy(dst + y * pitch, src + y * width, width);
 }
 
 static int QZ_ListFullscreenModes(OTTDPoint* mode_list, int max_modes)
