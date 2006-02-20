@@ -800,6 +800,11 @@ static const SettingDesc music_settings[] = {
 	{NULL,				0,					NULL,					NULL,																NULL}
 };
 
+/* win32_v.c only settings */
+#ifdef WIN32
+extern bool _force_full_redraw, _double_size;
+extern uint _display_hz, _fullscreen_bpp;
+
 static const SettingDesc win32_settings[] = {
 	{"display_hz",				SDT_UINT, (void*)0,			&_display_hz,					NULL},
 	{"force_full_redraw", SDT_BOOL, (void*)false, &_force_full_redraw,	NULL},
@@ -807,6 +812,7 @@ static const SettingDesc win32_settings[] = {
 	{"double_size",				SDT_BOOL, (void*)false, &_double_size,				NULL},
 	{NULL,								0,				NULL,					NULL,									NULL}
 };
+#endif /* WIN32 */
 
 static const SettingDesc misc_settings[] = {
 	{"display_opt",				SDT_MANYOFMANY | SDT_UINT8, (void*)(DO_SHOW_TOWN_NAMES|DO_SHOW_STATION_NAMES|DO_SHOW_SIGNS|DO_FULL_ANIMATION|DO_FULL_DETAIL|DO_TRANS_BUILDINGS|DO_WAYPOINTS), &_display_opt, "SHOW_TOWN_NAMES|SHOW_STATION_NAMES|SHOW_SIGNS|FULL_ANIMATION|TRANS_BUILDINGS|FULL_DETAIL|WAYPOINTS"},
@@ -1060,7 +1066,9 @@ typedef void SettingDescProc(IniFile *ini, const SettingDesc *desc, const char *
 static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc)
 {
 	proc(ini, misc_settings,		"misc");
+#ifdef WIN32
 	proc(ini, win32_settings,		"win32");
+#endif /* WIN32 */
 #ifdef ENABLE_NETWORK
 	proc(ini, network_settings, "network");
 #endif /* ENABLE_NETWORK */

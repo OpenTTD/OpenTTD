@@ -27,6 +27,11 @@ static struct {
 	bool running;
 } _wnd;
 
+bool _force_full_redraw;
+bool _double_size;
+uint _display_hz;
+uint _fullscreen_bpp;
+
 static void MakePalette(void)
 {
 	LOGPALETTE *pal;

@@ -280,10 +280,6 @@ VARDEF bool _shift_pressed;  // Is Alt pressed?
 VARDEF byte _dirkeys;				// 1=left, 2=up, 4=right, 8=down
 
 VARDEF bool _fullscreen;
-VARDEF bool _double_size;
-VARDEF uint _display_hz;
-VARDEF bool _force_full_redraw;
-VARDEF uint _fullscreen_bpp;
 VARDEF bool _fast_forward;
 VARDEF bool _rightclick_emulate;
 
