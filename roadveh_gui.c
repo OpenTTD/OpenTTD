@@ -65,7 +65,7 @@ void DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number)
 static void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection)
 {
 	int image = GetRoadVehImage(v, 6);
-	uint32 ormod = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner));
+	uint32 ormod = GetVehiclePalette(v);
 	if (v->vehstatus & VS_CRASHED) ormod = PALETTE_CRASH;
 	DrawSprite(image | ormod, x + 14, y + 6);
 
@@ -412,7 +412,7 @@ static void DrawNewRoadVehWindow(Window *w)
 				if (sel==0) selected_id = engine_id;
 				if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
 					DrawString(x+59, y+2, GetCustomEngineName(engine_id), sel==0 ? 0xC : 0x10);
-					DrawRoadVehEngine(x+29, y+6, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
+					DrawRoadVehEngine(x+29, y+6, engine_id, GetEnginePalette(engine_id, _local_player));
 					y += 14;
 				}
 				sel--;
@@ -638,7 +638,7 @@ static void RoadDepotClickVeh(Window *w, int x, int y)
 		if (v != NULL) {
 			WP(w,traindepot_d).sel = v->index;
 			SetWindowDirty(w);
-			SetObjectToPlaceWnd( SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner)) + GetRoadVehImage(v, 6), 4, w);
+			SetObjectToPlaceWnd(GetVehiclePalette(v) | GetRoadVehImage(v, 6), 4, w);
 		}
 		break;
 

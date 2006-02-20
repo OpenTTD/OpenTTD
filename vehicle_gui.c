@@ -486,7 +486,7 @@ static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, Engine
 				colour);
 			// show_outdated is true only for left side, which is where we show old replacements
 			DrawTrainEngine(*x + 29, *y + 6, i, (_player_num_engines[i] == 0 && show_outdated) ?
-				PALETTE_CRASH : SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
+				PALETTE_CRASH : GetEnginePalette(i, _local_player));
 			if ( show_outdated ) {
 				SetDParam(0, _player_num_engines[i]);
 				DrawStringRightAligned(213, *y+5, STR_TINY_BLACK, 0);
@@ -670,7 +670,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 					if (_player_num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
 						if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
 							DrawString(x+59, y+2, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
-							DrawRoadVehEngine(x+29, y+6, engine_id, _player_num_engines[engine_id] > 0 ? SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)) : PALETTE_CRASH);
+							DrawRoadVehEngine(x+29, y+6, engine_id, _player_num_engines[engine_id] > 0 ? GetEnginePalette(engine_id, _local_player) : PALETTE_CRASH);
 							SetDParam(0, _player_num_engines[engine_id]);
 							DrawStringRightAligned(213, y+5, STR_TINY_BLACK, 0);
 							y += 14;
@@ -681,7 +681,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 					if (RoadVehInfo(engine_id)->cargo_type == cargo && HASBIT(e->player_avail, _local_player)) {
 						if (IS_INT_INSIDE(--pos2, -w->vscroll.cap, 0) && RoadVehInfo(engine_id)->cargo_type == cargo) {
 							DrawString(x2+59, y2+2, GetCustomEngineName(engine_id), sel[1]==0 ? 0xC : 0x10);
-							DrawRoadVehEngine(x2+29, y2+6, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
+							DrawRoadVehEngine(x2+29, y2+6, engine_id, GetEnginePalette(engine_id, _local_player));
 							y2 += 14;
 						}
 						sel[1]--;
@@ -705,7 +705,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 					if (_player_num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
 						if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
 							DrawString(x+75, y+7, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
-							DrawShipEngine(x+35, y+10, engine_id, _player_num_engines[engine_id] > 0 ? SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)) : PALETTE_CRASH);
+							DrawShipEngine(x+35, y+10, engine_id, _player_num_engines[engine_id] > 0 ? GetEnginePalette(engine_id, _local_player) : PALETTE_CRASH);
 							SetDParam(0, _player_num_engines[engine_id]);
 							DrawStringRightAligned(213, y+15, STR_TINY_BLACK, 0);
 							y += 24;
@@ -716,7 +716,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 						if (HASBIT(e->player_avail, _local_player) && ( cargo == ShipVehInfo(engine_id)->cargo_type || refittable & ShipVehInfo(engine_id)->refittable)) {
 							if (IS_INT_INSIDE(--pos2, -w->vscroll.cap, 0)) {
 								DrawString(x2+75, y2+7, GetCustomEngineName(engine_id), sel[1]==0 ? 0xC : 0x10);
-								DrawShipEngine(x2+35, y2+10, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
+								DrawShipEngine(x2+35, y2+10, engine_id, GetEnginePalette(engine_id, _local_player));
 								y2 += 24;
 							}
 							sel[1]--;
@@ -739,7 +739,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 						if (sel[0] == 0) selected_id[0] = engine_id;
 						if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
 							DrawString(x+62, y+7, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
-							DrawAircraftEngine(x+29, y+10, engine_id, _player_num_engines[engine_id] > 0 ? SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)) : PALETTE_CRASH);
+							DrawAircraftEngine(x+29, y+10, engine_id, _player_num_engines[engine_id] > 0 ? GetEnginePalette(engine_id, _local_player) : PALETTE_CRASH);
 							SetDParam(0, _player_num_engines[engine_id]);
 							DrawStringRightAligned(213, y+15, STR_TINY_BLACK, 0);
 							y += 24;
@@ -751,7 +751,7 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 						if (sel[1] == 0) selected_id[1] = engine_id;
 						if (IS_INT_INSIDE(--pos2, -w->vscroll.cap, 0)) {
 							DrawString(x2+62, y2+7, GetCustomEngineName(engine_id), sel[1]==0 ? 0xC : 0x10);
-							DrawAircraftEngine(x2+29, y2+10, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
+							DrawAircraftEngine(x2+29, y2+10, engine_id, GetEnginePalette(engine_id, _local_player));
 							y2 += 24;
 						}
 						sel[1]--;

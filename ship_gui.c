@@ -66,7 +66,7 @@ void DrawShipPurchaseInfo(int x, int y, EngineID engine_number)
 static void DrawShipImage(const Vehicle *v, int x, int y, VehicleID selection)
 {
 	int image = GetShipImage(v, 6);
-	uint32 ormod = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner));
+	uint32 ormod = GetVehiclePalette(v);
 	DrawSprite(image | ormod, x + 32, y + 10);
 
 	if (v->index == selection) {
@@ -354,7 +354,7 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 					if (sel==0) selected_id = engine_id;
 					if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
 						DrawString(x+75, y+7, GetCustomEngineName(engine_id), sel==0 ? 0xC : 0x10);
-						DrawShipEngine(x+35, y+10, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
+						DrawShipEngine(x+35, y+10, engine_id, GetEnginePalette(engine_id, _local_player));
 						y += 24;
 					}
 					sel--;
@@ -715,8 +715,7 @@ static void ShipDepotClick(Window *w, int x, int y)
 		if (v != NULL) {
 			WP(w,traindepot_d).sel = v->index;
 			SetWindowDirty(w);
-			SetObjectToPlaceWnd( SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner)) +
-				GetShipImage(v, 6), 4, w);
+			SetObjectToPlaceWnd(GetVehiclePalette(v) | GetShipImage(v, 6), 4, w);
 		}
 		break;
 

@@ -698,7 +698,7 @@ static void DoDrawVehicle(const Vehicle *v)
 	if (v->vehstatus & VS_DISASTER) {
 		MAKE_TRANSPARENT(image);
 	} else if (v->vehstatus & VS_DEFPAL) {
-		image |= (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner));
+		image |= (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
 	}
 
 	AddSortableSpriteToDraw(image, v->x_pos + v->x_offs, v->y_pos + v->y_offs,
@@ -2038,6 +2038,12 @@ UnitID GetFreeUnitNumber(byte type)
 	}
 
 	return unit;
+}
+
+// XXX Temporary stub -- will be expanded
+PalSpriteID GetEngineColourMap(PlayerID player)
+{
+	return SPRITE_PALETTE(PLAYER_SPRITE_COLOR(player));
 }
 
 // Save and load of vehicles

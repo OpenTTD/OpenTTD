@@ -422,6 +422,20 @@ VARDEF uint16 _returned_refit_capacity;
 
 #define INVALID_VEHICLE 0xFFFF
 
+// XXX Temporary interface -- will be expanded
+PalSpriteID GetEngineColourMap(PlayerID player);
+
+static inline PalSpriteID GetEnginePalette(EngineID engine_type, PlayerID player)
+{
+	return GetEngineColourMap(player);
+}
+
+static inline PalSpriteID GetVehiclePalette(const Vehicle *v)
+{
+	return GetEngineColourMap(v->owner);
+}
+
+
 /* A lot of code calls for the invalidation of the status bar, which is widget 5.
  * Best is to have a virtual value for it when it needs to change again */
 #define STATUS_BAR 5

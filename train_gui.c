@@ -186,8 +186,7 @@ static void engine_drawing_loop(int *x, int *y, int *pos, int *sel,
 
 		if (IS_INT_INSIDE(--*pos, -show_max, 0)) {
 			DrawString(*x + 59, *y + 2, GetCustomEngineName(i), *sel == 0 ? 0xC : 0x10);
-			DrawTrainEngine(*x + 29, *y + 6, i,
-				SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
+			DrawTrainEngine(*x + 29, *y + 6, i, GetEnginePalette(i, _local_player));
 			*y += 14;
 		}
 		--*sel;
@@ -360,7 +359,7 @@ static void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, 
 	do {
 		if (--skip < 0) {
 			int image = GetTrainImage(v, 6);
-			uint32 ormod = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner));
+			uint32 ormod = GetVehiclePalette(v);
 			int width = v->u.rail.cached_veh_length;
 
 			if (dx + width <= count) {
@@ -581,7 +580,7 @@ static void TrainDepotClickTrain(Window *w, int x, int y)
 			TrainDepotMoveVehicle(v, sel, gdvp.head);
 		} else if (v != NULL) {
 			WP(w,traindepot_d).sel = v->index;
-			SetObjectToPlaceWnd( SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner)) + GetTrainImage(v, 6), 4, w);
+			SetObjectToPlaceWnd(GetVehiclePalette(v) | GetTrainImage(v, 6), 4, w);
 			SetWindowDirty(w);
 		}
 		break;

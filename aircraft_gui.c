@@ -65,7 +65,7 @@ void DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number)
 static void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection)
 {
 	int image = GetAircraftImage(v, 6);
-	uint32 ormod = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner));
+	uint32 ormod = GetVehiclePalette(v);
 	if (v->vehstatus & VS_CRASHED) ormod = PALETTE_CRASH;
 	DrawSprite(image | ormod, x + 25, y + 10);
 	if (v->subtype == 0) DrawSprite(SPR_ROTOR_STOPPED, x + 25, y + 5);
@@ -126,7 +126,7 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 					if (sel==0) selected_id = engine_id;
 					if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
 						DrawString(x+62, y+7, GetCustomEngineName(engine_id), sel==0 ? 0xC : 0x10);
-						DrawAircraftEngine(x+29, y+10, engine_id, SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player)));
+						DrawAircraftEngine(x+29, y+10, engine_id, GetEnginePalette(engine_id, _local_player));
 						y += 24;
 					}
 					sel--;
@@ -732,7 +732,7 @@ static void AircraftDepotClickAircraft(Window *w, int x, int y)
 		if (v != NULL) {
 			WP(w,traindepot_d).sel = v->index;
 			SetWindowDirty(w);
-			SetObjectToPlaceWnd( SPRITE_PALETTE(PLAYER_SPRITE_COLOR(v->owner)) + GetAircraftImage(v, 6), 4, w);
+			SetObjectToPlaceWnd(GetVehiclePalette(v) | GetAircraftImage(v, 6), 4, w);
 		}
 		break;
 
