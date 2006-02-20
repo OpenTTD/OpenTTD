@@ -96,6 +96,33 @@ static void SlReadFill(void)
 
 static inline uint32 SlGetOffs(void) {return _sl.offs_base - (_sl.bufe - _sl.bufp);}
 
+/** Return the size in bytes of a certain type of normal/atomic variable
+ * as it appears in memory. @see VarTypes
+ * @param conv @VarType type of variable that is used for calculating the size
+ * @return Return the size of this type in bytes */
+static inline byte SlCalcConvMemLen(VarType conv)
+{
+	static const byte conv_mem_size[] = {1, 1, 2, 2, 4, 4, 8, 8, 0};
+	byte length = (conv >> 4) & 0xF;
+	assert(length < lengthof(conv_mem_size));
+	return conv_mem_size[length];
+}
+
+/** Return the size in bytes of a certain type of normal/atomic variable
+ * as it appears in a saved game. @see VarTypes
+ * @param conv @VarType type of variable that is used for calculating the size
+ * @return Return the size of this type in bytes */
+static inline byte SlCalcConvFileLen(VarType conv)
+{
+	static const byte conv_file_size[] = {1, 1, 2, 2, 4, 4, 8, 8, 2};
+	byte length = conv & 0xF;
+	assert(length < lengthof(conv_file_size));
+	return conv_file_size[length];
+}
+
+/* Return the size in bytes of a reference (pointer) */
+static inline size_t SlCalcRefLen(void) {return 2;}
+
 /** Flush the output buffer by writing to disk with the given reader.
  * If the buffer pointer has not yet been set up, set it up now. Usually
  * only called when the buffer is full, or there is no more data to be processed
@@ -128,14 +155,14 @@ static void NORETURN SlError(const char *msg)
  * flush it to its final destination
  * @return return the read byte from file
  */
-static inline int SlReadByteInternal(void)
+static inline byte SlReadByteInternal(void)
 {
 	if (_sl.bufp == _sl.bufe) SlReadFill();
 	return *_sl.bufp++;
 }
 
 /** Wrapper for SlReadByteInternal */
-int SlReadByte(void) {return SlReadByteInternal();}
+byte SlReadByte(void) {return SlReadByteInternal();}
 
 /** Write away a single byte from memory. If the temporary buffer is full,
  * flush it to its destination (file)
@@ -252,10 +279,10 @@ static inline uint SlGetGammaLength(uint i) {
 	return 1 + (i >= (1 << 7)) + (i >= (1 << 14)) + (i >= (1 << 21));
 }
 
-static inline int SlReadSparseIndex(void) {return SlReadSimpleGamma();}
+static inline uint SlReadSparseIndex(void) {return SlReadSimpleGamma();}
 static inline void SlWriteSparseIndex(uint index) {SlWriteSimpleGamma(index);}
 
-static inline int SlReadArrayLength(void) {return SlReadSimpleGamma();}
+static inline uint SlReadArrayLength(void) {return SlReadSimpleGamma();}
 static inline void SlWriteArrayLength(uint length) {SlWriteSimpleGamma(length);}
 
 void SlSetArrayIndex(uint index)
@@ -288,7 +315,7 @@ int SlIterateArray(void)
 		next_offs = SlGetOffs() + length;
 
 		switch (_sl.block_mode) {
-		case CH_SPARSE_ARRAY: index = SlReadSparseIndex(); break;
+		case CH_SPARSE_ARRAY: index = (int)SlReadSparseIndex(); break;
 		case CH_ARRAY:        index = _sl.array_index++; break;
 		default:
 			DEBUG(misc, 0) ("[Sl] SlIterateArray: error");
@@ -306,6 +333,8 @@ int SlIterateArray(void)
  */
 void SlSetLength(size_t length)
 {
+	assert(_sl.save);
+
 	switch (_sl.need_length) {
 	case NL_WANTLENGTH:
 		_sl.need_length = NL_NONE;
@@ -439,25 +468,6 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 	}
 }
 
-/* Length in bytes of the various datatypes in a savefile. These
- * sizes are guaranteed by assert_compiles in stdafx.h */
-static const byte _conv_lengths[] = {1, 1, 2, 2, 4, 4, 8, 8, 2};
-
-/**
- * Return the size in bytes of a certain type of normal/atomic variable
- * @param conv @VarType type of variable that is used for calculating the size
- * @return Return the size of this type in byes
- */
-static inline size_t SlCalcConvLen(VarType conv)
-{
-	return _conv_lengths[conv & 0xF];
-}
-
-/**
- * Return the size in bytes of a reference (pointer)
- */
-static inline size_t SlCalcRefLen(void) {return 2;}
-
 /**
  * Return the size in bytes of a certain type of atomic array
  * @param length The length of the array counted in elements
@@ -465,7 +475,7 @@ static inline size_t SlCalcRefLen(void) {return 2;}
  */
 static inline size_t SlCalcArrayLen(uint length, VarType conv)
 {
-	return _conv_lengths[conv & 0xF] * length;
+	return SlCalcConvFileLen(conv) * length;
 }
 
 /**
@@ -476,39 +486,44 @@ static inline size_t SlCalcArrayLen(uint length, VarType conv)
  */
 void SlArray(void *array, uint length, VarType conv)
 {
-	static const byte conv_mem_size[] = {1, 1, 2, 2, 4, 4, 8, 8, 0};
-
 	// Automatically calculate the length?
 	if (_sl.need_length != NL_NONE) {
 		SlSetLength(SlCalcArrayLen(length, conv));
 		// Determine length only?
-		if (_sl.need_length == NL_CALCLENGTH)
-			return;
+		if (_sl.need_length == NL_CALCLENGTH) return;
 	}
 
 	/* NOTICE - handle some buggy stuff, in really old versions everything was saved
 	 * as a byte-type. So detect this, and adjust array size accordingly */
 	if (!_sl.save && _sl_version == 0) {
-		if (conv == SLE_INT16 || conv == SLE_UINT16 || conv == SLE_STRINGID) {
-			length *= 2; // int16, uint16 and StringID are 2 bytes in size
-			conv = SLE_INT8;
-		} else if (conv == SLE_INT32 || conv == SLE_UINT32) {
-			length *= 4; // int32 and uint32 are 4 bytes in size
+		if (conv == SLE_INT16 || conv == SLE_UINT16 || conv == SLE_STRINGID ||
+			  conv == SLE_INT32 || conv == SLE_UINT32) {
+			length *= SlCalcConvFileLen(conv);
 			conv = SLE_INT8;
 		}
 	}
 
-	/* If the size of elements is 1 byte, no special conversion is needed,
-	 * use specialized copy-to-copy function to speed up things */
+	/* If the size of elements is 1 byte both in file and memory, no special
+	 * conversion is needed, use specialized copy-copy function to speed up things */
 	if (conv == SLE_INT8 || conv == SLE_UINT8) {
 		SlCopyBytes(array, length);
 	} else {
 		byte *a = (byte*)array;
+		byte mem_size = SlCalcConvMemLen(conv);
+
 		for (; length != 0; length --) {
 			SlSaveLoadConv(a, conv);
-			a += conv_mem_size[(conv >> 4) & 0xF]; // get size
+			a += mem_size; // get size
 		}
 	}
+}
+
+/* Are we going to save this object or not? */
+static inline bool SlIsObjectValidInSavegame(const SaveLoad *sld)
+{
+	if (_sl_version < sld->version_from || _sl_version > sld->version_to) return false;
+
+	return true;
 }
 
 /**
@@ -522,19 +537,13 @@ static size_t SlCalcObjLength(const SaveLoad *sld)
 	// Need to determine the length and write a length tag.
 	for (; sld->cmd != SL_END; sld++) {
 		if (sld->cmd < SL_WRITEBYTE) {
-			if (HASBIT(sld->cmd, 2)) {
-				// check if the field is used in the current savegame version
-				if (_sl_version < sld->version_from || _sl_version > sld->version_to)
-					continue;
-			}
+			/* CONDITIONAL saveload types depend on the savegame version */
+			if (!SlIsObjectValidInSavegame(sld)) continue;
 
 			switch (sld->cmd) {
-			case SL_VAR: case SL_CONDVAR: /* Normal Variable */
-				length += SlCalcConvLen(sld->type); break;
-			case SL_REF: case SL_CONDREF:  /* Reference variable */
-				length += SlCalcRefLen(); break;
-			case SL_ARR: case SL_CONDARR: /* Array */
-				length += SlCalcArrayLen(sld->length, sld->type); break;
+			case SL_VAR: length += SlCalcConvFileLen(sld->type); break;
+			case SL_REF: length += SlCalcRefLen(); break;
+			case SL_ARR: length += SlCalcArrayLen(sld->length, sld->type); break;
 			default: NOT_REACHED();
 			}
 		} else if (sld->cmd == SL_WRITEBYTE) {
@@ -557,8 +566,7 @@ void SlObject(void *object, const SaveLoad *sld)
 	// Automatically calculate the length?
 	if (_sl.need_length != NL_NONE) {
 		SlSetLength(SlCalcObjLength(sld));
-		if (_sl.need_length == NL_CALCLENGTH)
-			return;
+		if (_sl.need_length == NL_CALCLENGTH) return;
 	}
 
 	for (; sld->cmd != SL_END; sld++) {
@@ -566,24 +574,18 @@ void SlObject(void *object, const SaveLoad *sld)
 
 		if (sld->cmd < SL_WRITEBYTE) {
 			/* CONDITIONAL saveload types depend on the savegame version */
-			if (HASBIT(sld->cmd, 2)) {
-				// check if the field is of the right version, if not, proceed to next one
-				if (_sl_version < sld->version_from || _sl_version > sld->version_to)
-					continue;
-			}
+			if (!SlIsObjectValidInSavegame(sld)) continue;
 
 			switch (sld->cmd) {
-			case SL_VAR: case SL_CONDVAR: /* Normal variable */
-				SlSaveLoadConv(ptr, sld->type); break;
-			case SL_REF: case SL_CONDREF: /* Reference variable, translate */
+			case SL_VAR: SlSaveLoadConv(ptr, sld->type); break;
+			case SL_REF: /* Reference variable, translate */
 				/// @todo XXX - another artificial limitof 65K elements of pointers?
 				if (_sl.save) { // XXX - read/write pointer as uint16? What is with higher indeces?
 					SlWriteUint16(_sl.ref_to_int_proc(*(void**)ptr, sld->type));
 				} else
 					*(void**)ptr = _sl.int_to_ref_proc(SlReadUint16(), sld->type);
 				break;
-			case SL_ARR: case SL_CONDARR: /* Array */
-				SlArray(ptr, sld->length, sld->type); break;
+			case SL_ARR: SlArray(ptr, sld->length, sld->type); break;
 			default: NOT_REACHED();
 			}
 
@@ -618,7 +620,7 @@ static size_t SlCalcGlobListLength(const SaveLoadGlobVarList *desc)
 	for (; desc->address != NULL; desc++) {
 		// Of course the global variable must exist in the sought savegame version
 		if (_sl_version >= desc->from_version && _sl_version <= desc->to_version)
-			length += SlCalcConvLen(desc->conv);
+			length += SlCalcConvFileLen(desc->conv);
 	}
 	return length;
 }

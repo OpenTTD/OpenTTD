@@ -4,16 +4,16 @@
 #define SAVELOAD_H
 
 typedef enum SaveOrLoadResult {
-	SL_OK = 0, // completed successfully
-	SL_ERROR = 1, // error that was caught before internal structures were modified
+	SL_OK     = 0, // completed successfully
+	SL_ERROR  = 1, // error that was caught before internal structures were modified
 	SL_REINIT = 2, // error that was caught in the middle of updating game state, need to clear it. (can only happen during load)
 } SaveOrLoadResult;
 
 typedef enum SaveOrLoadMode {
-	SL_INVALID = -1,
-	SL_LOAD = 0,
-	SL_SAVE = 1,
-	SL_OLD_LOAD = 2,
+	SL_INVALID  = -1,
+	SL_LOAD     =  0,
+	SL_SAVE     =  1,
+	SL_OLD_LOAD =  2,
 } SaveOrLoadMode;
 
 SaveOrLoadResult SaveOrLoad(const char *filename, int mode);
@@ -51,6 +51,7 @@ typedef enum SLRefType {
 	REF_ENGINE_RENEWS = 6,
 } SLRefType;
 
+#define SL_MAX_VERSION 255
 
 extern uint16 _sl_version;       /// the major savegame version identifier
 extern byte   _sl_minor_version; /// the minor savegame version, DO NOT USE!
@@ -61,17 +62,18 @@ enum {
 };
 
 enum {
-	CH_RIFF = 0,
-	CH_ARRAY = 1,
+	CH_RIFF         = 0,
+	CH_ARRAY        = 1,
 	CH_SPARSE_ARRAY = 2,
-	CH_TYPE_MASK = 3,
-	CH_LAST = 8,
-	CH_AUTO_LENGTH = 16,
-	CH_PRI_0 = 0 << 4,
-	CH_PRI_1 = 1 << 4,
-	CH_PRI_2 = 2 << 4,
-	CH_PRI_3 = 3 << 4,
-	CH_PRI_SHL = 4,
+	CH_TYPE_MASK    = 3,
+	CH_LAST         = 8,
+	CH_AUTO_LENGTH  = 16,
+
+	CH_PRI_0          = 0 << 4,
+	CH_PRI_1          = 1 << 4,
+	CH_PRI_2          = 2 << 4,
+	CH_PRI_3          = 3 << 4,
+	CH_PRI_SHL        = 4,
 	CH_NUM_PRI_LEVELS = 4,
 };
 
@@ -119,9 +121,6 @@ enum SaveLoadTypes {
 	SL_VAR       = 0,
 	SL_REF       = 1,
 	SL_ARR       = 2,
-	SL_CONDVAR   = 0 | (1 << 2), // 4
-	SL_CONDREF   = 1 | (1 << 2), // 5
-	SL_CONDARR   = 2 | (1 << 2), // 6
 	// non-normal save-load types
 	SL_WRITEBYTE = 8,
 	SL_INCLUDE   = 9,
@@ -139,25 +138,32 @@ typedef struct SaveLoad {
 } SaveLoad;
 
 /* Simple variables, references (pointers) and arrays */
-#define SLE_VAR(base, variable, type) {SL_VAR, type, offsetof(base, variable), 0, 0, 0}
-#define SLE_REF(base, variable, type) {SL_REF, type, offsetof(base, variable), 0, 0, 0}
-#define SLE_ARR(base, variable, type, length) {SL_ARR, type, offsetof(base, variable), length, 0, 0}
-/* Conditional variables, references (pointers) and arrays that are only valid for certain savegame versions */
-#define SLE_CONDVAR(base, variable, type, from, to) {SL_CONDVAR, type, offsetof(base, variable), 0, from, to}
-#define SLE_CONDREF(base, variable, type, from, to) {SL_CONDREF, type, offsetof(base, variable), 0, from, to}
-#define SLE_CONDARR(base, variable, type, length, from, to) {SL_CONDARR, type, offsetof(base, variable), length, from, to}
+#define SLE_GENERAL(cmd, base, variable, type, length, from, to) {cmd, type, offsetof(base, variable), length, from, to}
+#define SLE_CONDVAR(base, variable, type, from, to) SLE_GENERAL(SL_VAR, base, variable, type, 0, from, to)
+#define SLE_CONDREF(base, variable, type, from, to) SLE_GENERAL(SL_REF, base, variable, type, 0, from, to)
+#define SLE_CONDARR(base, variable, type, length, from, to) SLE_GENERAL(SL_ARR, base, variable, type, length, from, to)
+#define SLE_CONDSTR(base, variable, type, length, from, to) SLE_GENERAL(SL_STR, base, variable, type, length, from, to)
+
+#define SLE_VAR(base, variable, type) SLE_CONDVAR(base, variable, type, 0, SL_MAX_VERSION)
+#define SLE_REF(base, variable, type) SLE_CONDREF(base, variable, type, 0, SL_MAX_VERSION)
+#define SLE_ARR(base, variable, type, length) SLE_CONDARR(base, variable, type, length, 0, SL_MAX_VERSION)
+#define SLE_STR(base, variable, type, length) SLE_CONDSTR(base, variable, type, length, 0, SL_MAX_VERSION)
+
 /* Translate values ingame to different values in the savegame and vv */
-#define SLE_WRITEBYTE(base, variable, game_value, file_value) {SL_WRITEBYTE, 0, offsetof(base, variable), 0, game_value, file_value}
+#define SLE_WRITEBYTE(base, variable, game_value, file_value) SLE_GENERAL(SL_WRITEBYTE, base, variable, 0, 0, game_value, file_value)
 /* Load common code and put it into each struct (currently only for vehicles */
-#define SLE_INCLUDE(base, variable, include_index) {SL_INCLUDE, 0, offsetof(base, variable), 0, include_index, 0}
+#define SLE_INCLUDE(base, variable, include_index) SLE_GENERAL(SL_INCLUDE, base, variable, 0, 0, include_index, 0)
 
 /* The same as the ones at the top, only the offset is given directly; used for unions */
-#define SLE_VARX(offset, type) {SL_VAR, type, offset, 0, 0, 0}
-#define SLE_REFX(offset, type) {SL_REF, type, offset, 0, 0, 0}
-#define SLE_CONDVARX(offset, type, from, to) {SL_CONDVAR, type, offset, 0, from, to}
-#define SLE_CONDREFX(offset, type, from, to) {SL_CONDREF, type, offset, 0, from, to}
-#define SLE_WRITEBYTEX(offset, something) {SL_WRITEBYTE, 0, offset, 0, something, 0}
-#define SLE_INCLUDEX(offset, type) {SL_INCLUDE, type, offset, 0, 0, 0}
+#define SLE_GENERALX(cmd, offset, type, param1, param2) {cmd, type, (offset), 0, param1, param2}
+#define SLE_CONDVARX(offset, type, from, to) SLE_GENERALX(SL_VAR, offset, type, from, to)
+#define SLE_CONDREFX(offset, type, from, to) SLE_GENERALX(SL_REF, offset, type, from, to)
+
+#define SLE_VARX(offset, type) SLE_CONDVARX(offset, type, 0, SL_MAX_VERSION)
+#define SLE_REFX(offset, type) SLE_CONDREFX(offset, type, 0, SL_MAX_VERSION)
+
+#define SLE_WRITEBYTEX(offset, something) SLE_GENERALX(SL_WRITEBYTE, offset, 0, something, 0)
+#define SLE_INCLUDEX(offset, type) SLE_GENERALX(SL_INCLUDE, offset, type, 0, SL_MAX_VERSION)
 
 /* End marker */
 #define SLE_END() {SL_END, 0, 0, 0, 0, 0}
@@ -182,7 +188,7 @@ void SlArray(void *array, uint length, VarType conv);
 void SlObject(void *object, const SaveLoad *desc);
 void SlAutolength(AutolengthProc *proc, void *arg);
 uint SlGetFieldLength(void);
-int SlReadByte(void);
+byte SlReadByte(void);
 void SlSetLength(size_t length);
 void SlWriteByte(byte b);
 void SlGlobList(const SaveLoadGlobVarList *desc);
