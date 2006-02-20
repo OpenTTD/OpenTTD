@@ -2828,18 +2828,18 @@ static const SaveLoad _roadstop_desc[] = {
 
 static const SaveLoad _station_desc[] = {
 	SLE_CONDVAR(Station, xy,           SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Station, xy,           SLE_UINT32, 6, 255),
+	SLE_CONDVAR(Station, xy,           SLE_UINT32, 6, SL_MAX_VERSION),
 	SLE_CONDVAR(Station, bus_tile_obsolete,    SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
 	SLE_CONDVAR(Station, lorry_tile_obsolete,  SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
 	SLE_CONDVAR(Station, train_tile,   SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Station, train_tile,   SLE_UINT32, 6, 255),
+	SLE_CONDVAR(Station, train_tile,   SLE_UINT32, 6, SL_MAX_VERSION),
 	SLE_CONDVAR(Station, airport_tile, SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Station, airport_tile, SLE_UINT32, 6, 255),
+	SLE_CONDVAR(Station, airport_tile, SLE_UINT32, 6, SL_MAX_VERSION),
 	SLE_CONDVAR(Station, dock_tile,    SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Station, dock_tile,    SLE_UINT32, 6, 255),
+	SLE_CONDVAR(Station, dock_tile,    SLE_UINT32, 6, SL_MAX_VERSION),
 	SLE_REF(Station,town,						REF_TOWN),
 	SLE_VAR(Station,trainst_w,			SLE_UINT8),
-	SLE_CONDVAR(Station,trainst_h,	SLE_UINT8, 2, 255),
+	SLE_CONDVAR(Station,trainst_h,	SLE_UINT8, 2, SL_MAX_VERSION),
 
 	// alpha_order was stored here in savegame format 0 - 3
 	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 1, 0, 3),
@@ -2862,19 +2862,19 @@ static const SaveLoad _station_desc[] = {
 	SLE_CONDVAR(Station,blocked_months_obsolete,	SLE_UINT8, 0, 4),
 
 	SLE_CONDVAR(Station,airport_flags,			SLE_VAR_U32 | SLE_FILE_U16, 0, 2),
-	SLE_CONDVAR(Station,airport_flags,			SLE_UINT32, 3, 255),
+	SLE_CONDVAR(Station,airport_flags,			SLE_UINT32, 3, SL_MAX_VERSION),
 
 	SLE_VAR(Station,last_vehicle,				SLE_UINT16),
 
-	SLE_CONDVAR(Station,class_id,				SLE_UINT8, 3, 255),
-	SLE_CONDVAR(Station,stat_id,				SLE_UINT8, 3, 255),
-	SLE_CONDVAR(Station,build_date,			SLE_UINT16, 3, 255),
+	SLE_CONDVAR(Station,class_id,				SLE_UINT8, 3, SL_MAX_VERSION),
+	SLE_CONDVAR(Station,stat_id,				SLE_UINT8, 3, SL_MAX_VERSION),
+	SLE_CONDVAR(Station,build_date,			SLE_UINT16, 3, SL_MAX_VERSION),
 
-	SLE_CONDREF(Station,bus_stops,					REF_ROADSTOPS, 6, 255),
-	SLE_CONDREF(Station,truck_stops,				REF_ROADSTOPS, 6, 255),
+	SLE_CONDREF(Station,bus_stops,					REF_ROADSTOPS, 6, SL_MAX_VERSION),
+	SLE_CONDREF(Station,truck_stops,				REF_ROADSTOPS, 6, SL_MAX_VERSION),
 
 	// reserve extra space in savegame here. (currently 28 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 32, 2, 255),
+	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 32, 2, SL_MAX_VERSION),
 
 	SLE_END()
 };
@@ -2884,11 +2884,11 @@ static const SaveLoad _goods_desc[] = {
 	SLE_VAR(GoodsEntry,days_since_pickup,	SLE_UINT8),
 	SLE_VAR(GoodsEntry,rating,						SLE_UINT8),
 	SLE_CONDVAR(GoodsEntry,enroute_from,			SLE_FILE_U8 | SLE_VAR_U16, 0, 6),
-	SLE_CONDVAR(GoodsEntry,enroute_from,			SLE_UINT16, 7, 255),
+	SLE_CONDVAR(GoodsEntry,enroute_from,			SLE_UINT16, 7, SL_MAX_VERSION),
 	SLE_VAR(GoodsEntry,enroute_time,			SLE_UINT8),
 	SLE_VAR(GoodsEntry,last_speed,				SLE_UINT8),
 	SLE_VAR(GoodsEntry,last_age,					SLE_UINT8),
-	SLE_CONDVAR(GoodsEntry,feeder_profit,			SLE_INT32, 14, 255),
+	SLE_CONDVAR(GoodsEntry,feeder_profit,			SLE_INT32, 14, SL_MAX_VERSION),
 
 	SLE_END()
 };

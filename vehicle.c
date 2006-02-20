@@ -2053,17 +2053,17 @@ const SaveLoad _common_veh_desc[] = {
 	SLE_REF(Vehicle,next,							REF_VEHICLE_OLD),
 	SLE_VAR(Vehicle,string_id,				SLE_STRINGID),
 	SLE_CONDVAR(Vehicle,unitnumber,				SLE_FILE_U8 | SLE_VAR_U16, 0, 7),
-	SLE_CONDVAR(Vehicle,unitnumber,				SLE_UINT16, 8, 255),
+	SLE_CONDVAR(Vehicle,unitnumber,				SLE_UINT16, 8, SL_MAX_VERSION),
 	SLE_VAR(Vehicle,owner,						SLE_UINT8),
 	SLE_CONDVAR(Vehicle,tile,					SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Vehicle,tile,					SLE_UINT32, 6, 255),
+	SLE_CONDVAR(Vehicle,tile,					SLE_UINT32, 6, SL_MAX_VERSION),
 	SLE_CONDVAR(Vehicle,dest_tile,		SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Vehicle,dest_tile,		SLE_UINT32, 6, 255),
+	SLE_CONDVAR(Vehicle,dest_tile,		SLE_UINT32, 6, SL_MAX_VERSION),
 
 	SLE_CONDVAR(Vehicle,x_pos,				SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Vehicle,x_pos,				SLE_UINT32, 6, 255),
+	SLE_CONDVAR(Vehicle,x_pos,				SLE_UINT32, 6, SL_MAX_VERSION),
 	SLE_CONDVAR(Vehicle,y_pos,				SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Vehicle,y_pos,				SLE_UINT32, 6, 255),
+	SLE_CONDVAR(Vehicle,y_pos,				SLE_UINT32, 6, SL_MAX_VERSION),
 	SLE_VAR(Vehicle,z_pos,						SLE_UINT8),
 	SLE_VAR(Vehicle,direction,				SLE_UINT8),
 
@@ -2084,12 +2084,12 @@ const SaveLoad _common_veh_desc[] = {
 
 	SLE_VAR(Vehicle,vehstatus,				SLE_UINT8),
 	SLE_CONDVAR(Vehicle,last_station_visited, SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
-	SLE_CONDVAR(Vehicle,last_station_visited, SLE_UINT16, 5, 255),
+	SLE_CONDVAR(Vehicle,last_station_visited, SLE_UINT16, 5, SL_MAX_VERSION),
 
 	SLE_VAR(Vehicle,cargo_type,				SLE_UINT8),
 	SLE_VAR(Vehicle,cargo_days,				SLE_UINT8),
 	SLE_CONDVAR(Vehicle,cargo_source,			SLE_FILE_U8 | SLE_VAR_U16, 0, 6),
-	SLE_CONDVAR(Vehicle,cargo_source,			SLE_UINT16, 7, 255),
+	SLE_CONDVAR(Vehicle,cargo_source,			SLE_UINT16, 7, SL_MAX_VERSION),
 	SLE_VAR(Vehicle,cargo_cap,				SLE_UINT16),
 	SLE_VAR(Vehicle,cargo_count,			SLE_UINT16),
 
@@ -2106,9 +2106,9 @@ const SaveLoad _common_veh_desc[] = {
 	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, station), SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
 
 	/* Orders for version 5 and on */
-	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, type),    SLE_UINT8,  5, 255),
-	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, flags),   SLE_UINT8,  5, 255),
-	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, station), SLE_UINT16, 5, 255),
+	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, type),    SLE_UINT8,  5, SL_MAX_VERSION),
+	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, flags),   SLE_UINT8,  5, SL_MAX_VERSION),
+	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, station), SLE_UINT16, 5, SL_MAX_VERSION),
 
 	SLE_REF(Vehicle,orders,						REF_ORDER),
 
@@ -2137,7 +2137,7 @@ const SaveLoad _common_veh_desc[] = {
 	SLE_REF(Vehicle,prev_shared,				REF_VEHICLE),
 
 	// reserve extra space in savegame here. (currently 10 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 10, 2, 255),
+	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 10, 2, SL_MAX_VERSION),
 
 	SLE_END()
 };
@@ -2151,12 +2151,12 @@ static const SaveLoad _train_desc[] = {
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleRail,railtype), SLE_UINT8),
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleRail,track), SLE_UINT8),
 
-	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,flags), SLE_UINT8, 2, 255),
-	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,days_since_order_progr), SLE_UINT16, 2, 255),
+	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,flags), SLE_UINT8, 2, SL_MAX_VERSION),
+	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,days_since_order_progr), SLE_UINT16, 2, SL_MAX_VERSION),
 
 	SLE_CONDARR(NullStruct, null, SLE_FILE_U8 | SLE_VAR_NULL, 2, 2, 19),
 	// reserve extra space in savegame here. (currently 11 bytes)
-	SLE_CONDARR(NullStruct, null, SLE_FILE_U8 | SLE_VAR_NULL, 11, 2, 255),
+	SLE_CONDARR(NullStruct, null, SLE_FILE_U8 | SLE_VAR_NULL, 11, 2, SL_MAX_VERSION),
 
 	SLE_END()
 };
@@ -2172,11 +2172,11 @@ static const SaveLoad _roadveh_desc[] = {
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleRoad,crashed_ctr),		SLE_UINT16),
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleRoad,reverse_ctr),			SLE_UINT8),
 
-	SLE_CONDREFX(offsetof(Vehicle,u)+offsetof(VehicleRoad,slot), REF_ROADSTOPS, 6, 255),
-	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRoad,slotindex), SLE_UINT8, 6, 255),
-	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRoad,slot_age), SLE_UINT8, 6, 255),
+	SLE_CONDREFX(offsetof(Vehicle,u)+offsetof(VehicleRoad,slot), REF_ROADSTOPS, 6, SL_MAX_VERSION),
+	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRoad,slotindex), SLE_UINT8, 6, SL_MAX_VERSION),
+	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRoad,slot_age), SLE_UINT8, 6, SL_MAX_VERSION),
 	// reserve extra space in savegame here. (currently 16 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U64 | SLE_VAR_NULL, 2, 2, 255),
+	SLE_CONDARR(NullStruct,null,SLE_FILE_U64 | SLE_VAR_NULL, 2, 2, SL_MAX_VERSION),
 
 	SLE_END()
 };
@@ -2187,7 +2187,7 @@ static const SaveLoad _ship_desc[] = {
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleShip,state),				SLE_UINT8),
 
 	// reserve extra space in savegame here. (currently 16 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U64 | SLE_VAR_NULL, 2, 2, 255),
+	SLE_CONDARR(NullStruct,null,SLE_FILE_U64 | SLE_VAR_NULL, 2, 2, SL_MAX_VERSION),
 
 	SLE_END()
 };
@@ -2199,14 +2199,14 @@ static const SaveLoad _aircraft_desc[] = {
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleAir,pos),							SLE_UINT8),
 
 	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleAir,targetairport),		SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
-	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleAir,targetairport),		SLE_UINT16, 5, 255),
+	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleAir,targetairport),		SLE_UINT16, 5, SL_MAX_VERSION),
 
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleAir,state),						SLE_UINT8),
 
-	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleAir,previous_pos),			SLE_UINT8, 2, 255),
+	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleAir,previous_pos),			SLE_UINT8, 2, SL_MAX_VERSION),
 
 	// reserve extra space in savegame here. (currently 15 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 15, 2, 255),
+	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 15, 2, SL_MAX_VERSION),
 
 	SLE_END()
 };
@@ -2217,12 +2217,12 @@ static const SaveLoad _special_desc[] = {
 	SLE_VAR(Vehicle,subtype,					SLE_UINT8),
 
 	SLE_CONDVAR(Vehicle,tile,					SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Vehicle,tile,					SLE_UINT32, 6, 255),
+	SLE_CONDVAR(Vehicle,tile,					SLE_UINT32, 6, SL_MAX_VERSION),
 
 	SLE_CONDVAR(Vehicle,x_pos,				SLE_FILE_I16 | SLE_VAR_I32, 0, 5),
-	SLE_CONDVAR(Vehicle,x_pos,				SLE_INT32, 6, 255),
+	SLE_CONDVAR(Vehicle,x_pos,				SLE_INT32, 6, SL_MAX_VERSION),
 	SLE_CONDVAR(Vehicle,y_pos,				SLE_FILE_I16 | SLE_VAR_I32, 0, 5),
-	SLE_CONDVAR(Vehicle,y_pos,				SLE_INT32, 6, 255),
+	SLE_CONDVAR(Vehicle,y_pos,				SLE_INT32, 6, SL_MAX_VERSION),
 	SLE_VAR(Vehicle,z_pos,						SLE_UINT8),
 
 	SLE_VAR(Vehicle,cur_image,				SLE_UINT16),
@@ -2238,7 +2238,7 @@ static const SaveLoad _special_desc[] = {
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleSpecial,unk2),	SLE_UINT8),
 
 	// reserve extra space in savegame here. (currently 16 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U64 | SLE_VAR_NULL, 2, 2, 255),
+	SLE_CONDARR(NullStruct,null,SLE_FILE_U64 | SLE_VAR_NULL, 2, 2, SL_MAX_VERSION),
 
 	SLE_END()
 };
@@ -2250,14 +2250,14 @@ static const SaveLoad _disaster_desc[] = {
 
 	SLE_VAR(Vehicle,subtype,					SLE_UINT8),
 	SLE_CONDVAR(Vehicle,tile,					SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Vehicle,tile,					SLE_UINT32, 6, 255),
+	SLE_CONDVAR(Vehicle,tile,					SLE_UINT32, 6, SL_MAX_VERSION),
 	SLE_CONDVAR(Vehicle,dest_tile,		SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Vehicle,dest_tile,		SLE_UINT32, 6, 255),
+	SLE_CONDVAR(Vehicle,dest_tile,		SLE_UINT32, 6, SL_MAX_VERSION),
 
 	SLE_CONDVAR(Vehicle,x_pos,				SLE_FILE_I16 | SLE_VAR_I32, 0, 5),
-	SLE_CONDVAR(Vehicle,x_pos,				SLE_INT32, 6, 255),
+	SLE_CONDVAR(Vehicle,x_pos,				SLE_INT32, 6, SL_MAX_VERSION),
 	SLE_CONDVAR(Vehicle,y_pos,				SLE_FILE_I16 | SLE_VAR_I32, 0, 5),
-	SLE_CONDVAR(Vehicle,y_pos,				SLE_INT32, 6, 255),
+	SLE_CONDVAR(Vehicle,y_pos,				SLE_INT32, 6, SL_MAX_VERSION),
 	SLE_VAR(Vehicle,z_pos,						SLE_UINT8),
 	SLE_VAR(Vehicle,direction,				SLE_UINT8),
 
@@ -2269,7 +2269,7 @@ static const SaveLoad _disaster_desc[] = {
 	SLE_VAR(Vehicle,owner,						SLE_UINT8),
 	SLE_VAR(Vehicle,vehstatus,				SLE_UINT8),
 	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, station), SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
-	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, station), SLE_UINT16, 5, 255),
+	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, station), SLE_UINT16, 5, SL_MAX_VERSION),
 
 	SLE_VAR(Vehicle,cur_image,				SLE_UINT16),
 	SLE_VAR(Vehicle,age,							SLE_UINT16),
@@ -2280,7 +2280,7 @@ static const SaveLoad _disaster_desc[] = {
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleDisaster,unk2),						SLE_UINT16),
 
 	// reserve extra space in savegame here. (currently 16 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U64 | SLE_VAR_NULL, 2, 2, 255),
+	SLE_CONDARR(NullStruct,null,SLE_FILE_U64 | SLE_VAR_NULL, 2, 2, SL_MAX_VERSION),
 
 	SLE_END()
 };

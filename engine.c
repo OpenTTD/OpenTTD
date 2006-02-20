@@ -681,7 +681,7 @@ static const SaveLoad _engine_desc[] = {
 	SLE_VAR(Engine,player_avail,					SLE_UINT8),
 
 	// reserve extra space in savegame here. (currently 16 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U64 | SLE_VAR_NULL, 2, 2, 255),
+	SLE_CONDARR(NullStruct,null,SLE_FILE_U64 | SLE_VAR_NULL, 2, 2, SL_MAX_VERSION),
 
 	SLE_END()
 };

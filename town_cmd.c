@@ -1962,10 +1962,10 @@ const TileTypeProcs _tile_type_town_procs = {
 // Save and load of towns.
 static const SaveLoad _town_desc[] = {
 	SLE_CONDVAR(Town, xy, SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Town, xy, SLE_UINT32, 6, 255),
+	SLE_CONDVAR(Town, xy, SLE_UINT32, 6, SL_MAX_VERSION),
 
 	SLE_CONDVAR(Town,population,	SLE_FILE_U16 | SLE_VAR_U32, 0, 2),
-	SLE_CONDVAR(Town,population,	SLE_UINT32, 3, 255),
+	SLE_CONDVAR(Town,population,	SLE_UINT32, 3, SL_MAX_VERSION),
 
 
 	SLE_VAR(Town,num_houses,	SLE_UINT16),
@@ -1981,7 +1981,7 @@ static const SaveLoad _town_desc[] = {
 	SLE_VAR(Town,have_ratings,SLE_UINT8),
 	SLE_ARR(Town,ratings,			SLE_INT16, 8),
 	// failed bribe attempts are stored since savegame format 4
-	SLE_CONDARR(Town,unwanted,			SLE_INT8, 8, 4,255),
+	SLE_CONDARR(Town,unwanted,			SLE_INT8, 8, 4,SL_MAX_VERSION),
 
 	SLE_CONDVAR(Town,max_pass,		SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
 	SLE_CONDVAR(Town,max_mail,		SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
@@ -1992,14 +1992,14 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDVAR(Town,new_act_pass,SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
 	SLE_CONDVAR(Town,new_act_mail,SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
 
-	SLE_CONDVAR(Town,max_pass,		SLE_UINT32, 9, 255),
-	SLE_CONDVAR(Town,max_mail,		SLE_UINT32, 9, 255),
-	SLE_CONDVAR(Town,new_max_pass,SLE_UINT32, 9, 255),
-	SLE_CONDVAR(Town,new_max_mail,SLE_UINT32, 9, 255),
-	SLE_CONDVAR(Town,act_pass,		SLE_UINT32, 9, 255),
-	SLE_CONDVAR(Town,act_mail,		SLE_UINT32, 9, 255),
-	SLE_CONDVAR(Town,new_act_pass,SLE_UINT32, 9, 255),
-	SLE_CONDVAR(Town,new_act_mail,SLE_UINT32, 9, 255),
+	SLE_CONDVAR(Town,max_pass,		SLE_UINT32, 9, SL_MAX_VERSION),
+	SLE_CONDVAR(Town,max_mail,		SLE_UINT32, 9, SL_MAX_VERSION),
+	SLE_CONDVAR(Town,new_max_pass,SLE_UINT32, 9, SL_MAX_VERSION),
+	SLE_CONDVAR(Town,new_max_mail,SLE_UINT32, 9, SL_MAX_VERSION),
+	SLE_CONDVAR(Town,act_pass,		SLE_UINT32, 9, SL_MAX_VERSION),
+	SLE_CONDVAR(Town,act_mail,		SLE_UINT32, 9, SL_MAX_VERSION),
+	SLE_CONDVAR(Town,new_act_pass,SLE_UINT32, 9, SL_MAX_VERSION),
+	SLE_CONDVAR(Town,new_act_mail,SLE_UINT32, 9, SL_MAX_VERSION),
 
 	SLE_VAR(Town,pct_pass_transported,SLE_UINT8),
 	SLE_VAR(Town,pct_mail_transported,SLE_UINT8),
@@ -2018,7 +2018,7 @@ static const SaveLoad _town_desc[] = {
 	SLE_VAR(Town,exclusivity,						SLE_UINT8),
 	SLE_VAR(Town,exclusive_counter,			SLE_UINT8),
 	// reserve extra space in savegame here. (currently 30 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 30, 2, 255),
+	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 30, 2, SL_MAX_VERSION),
 
 	SLE_END()
 };
