@@ -536,24 +536,82 @@ static size_t SlCalcObjLength(const SaveLoad *sld)
 
 	// Need to determine the length and write a length tag.
 	for (; sld->cmd != SL_END; sld++) {
-		if (sld->cmd < SL_WRITEBYTE) {
-			/* CONDITIONAL saveload types depend on the savegame version */
-			if (!SlIsObjectValidInSavegame(sld)) continue;
-
-			switch (sld->cmd) {
-			case SL_VAR: length += SlCalcConvFileLen(sld->type); break;
-			case SL_REF: length += SlCalcRefLen(); break;
-			case SL_ARR: length += SlCalcArrayLen(sld->length, sld->type); break;
-			default: NOT_REACHED();
-			}
-		} else if (sld->cmd == SL_WRITEBYTE) {
-			length++; // a byte is logically of size 1
-		} else if (sld->cmd == SL_INCLUDE) {
-			length += SlCalcObjLength(_sl.includes[sld->version_from]);
-		} else
-			assert(sld->cmd == SL_END);
+		length += SlCalcObjMemberLength(sld);
 	}
 	return length;
+}
+
+size_t SlCalcObjMemberLength(const SaveLoad *sld)
+{
+	assert(_sl.save);
+
+	switch (sld->cmd) {
+		case SL_VAR:
+		case SL_REF:
+		case SL_ARR:
+			/* CONDITIONAL saveload types depend on the savegame version */
+			if (!SlIsObjectValidInSavegame(sld)) break;
+
+			switch (sld->cmd) {
+			case SL_VAR: return SlCalcConvFileLen(sld->conv);
+			case SL_REF: return SlCalcRefLen();
+			case SL_ARR: return SlCalcArrayLen(sld->length, sld->conv);
+			default: NOT_REACHED();
+			}
+			break;
+		case SL_WRITEBYTE: return 1; // a byte is logically of size 1
+		case SL_INCLUDE: return SlCalcObjLength(_sl.includes[sld->version_from]);
+		default: NOT_REACHED();
+	}
+	return 0;
+}
+
+bool SlObjectMember(void *ptr, const SaveLoad *sld)
+{
+	VarType conv = GB(sld->conv, 0, 8);
+	switch (sld->cmd) {
+	case SL_VAR:
+	case SL_REF:
+	case SL_ARR:
+		/* CONDITIONAL saveload types depend on the savegame version */
+		if (!SlIsObjectValidInSavegame(sld)) return false;
+
+		switch (sld->cmd) {
+		case SL_VAR: SlSaveLoadConv(ptr, conv); break;
+		case SL_REF: /* Reference variable, translate */
+			/// @todo XXX - another artificial limitof 65K elements of pointers?
+			if (_sl.save) { // XXX - read/write pointer as uint16? What is with higher indeces?
+				SlWriteUint16(_sl.ref_to_int_proc(*(void**)ptr, conv));
+			} else
+				*(void**)ptr = _sl.int_to_ref_proc(SlReadUint16(), conv);
+			break;
+		case SL_ARR: SlArray(ptr, sld->length, conv); break;
+		default: NOT_REACHED();
+		}
+		break;
+
+	/* SL_WRITEBYTE translates a value of a variable to another one upon
+		* saving or loading.
+		* XXX - variable renaming abuse
+		* game_value: the value of the variable ingame is abused by sld->version_from
+		* file_value: the value of the variable in the savegame is abused by sld->version_to */
+	case SL_WRITEBYTE:
+		if (_sl.save) {
+			SlWriteByte(sld->version_to);
+		} else {
+			*(byte*)ptr = sld->version_from;
+		}
+		break;
+
+	/* SL_INCLUDE loads common code for a type
+	 * XXX - variable renaming abuse
+	 * include_index: common code to include from _desc_includes[], abused by sld->version_from */
+	case SL_INCLUDE:
+		SlObject(ptr, _sl.includes[sld->version_from]);
+		break;
+	default: NOT_REACHED();
+	}
+	return true;
 }
 
 /**
@@ -570,76 +628,24 @@ void SlObject(void *object, const SaveLoad *sld)
 	}
 
 	for (; sld->cmd != SL_END; sld++) {
-		void *ptr = (byte*)object + sld->offset;
-
-		if (sld->cmd < SL_WRITEBYTE) {
-			/* CONDITIONAL saveload types depend on the savegame version */
-			if (!SlIsObjectValidInSavegame(sld)) continue;
-
-			switch (sld->cmd) {
-			case SL_VAR: SlSaveLoadConv(ptr, sld->type); break;
-			case SL_REF: /* Reference variable, translate */
-				/// @todo XXX - another artificial limitof 65K elements of pointers?
-				if (_sl.save) { // XXX - read/write pointer as uint16? What is with higher indeces?
-					SlWriteUint16(_sl.ref_to_int_proc(*(void**)ptr, sld->type));
-				} else
-					*(void**)ptr = _sl.int_to_ref_proc(SlReadUint16(), sld->type);
-				break;
-			case SL_ARR: SlArray(ptr, sld->length, sld->type); break;
-			default: NOT_REACHED();
-			}
-
-		/* SL_WRITEBYTE translates a value of a variable to another one upon
-		 * saving or loading.
-		 * XXX - variable renaming abuse
-		 * g_value: the value of the variable ingame is abused by sld->version_from
-		 * f_value: the value of the variable in the savegame is abused by sld->version_to */
-		} else if (sld->cmd == SL_WRITEBYTE) {
-			if (_sl.save) {
-				SlWriteByte(sld->version_to);
-			} else
-				*(byte*)ptr = sld->version_from;
-		/* SL_INCLUDE loads common code for a type
-		 * XXX - variable renaming abuse
-		 * include_index: common code to include from _desc_includes[], abused by sld->version_from */
-		} else if (sld->cmd == SL_INCLUDE) {
-			SlObject(ptr, _sl.includes[sld->version_from]);
-		} else
-			assert(sld->cmd == SL_END);
+		void *ptr = (byte*)object + sld->s.offset;
+		SlObjectMember(ptr, sld);
 	}
-}
-
-/** Calculate the length of global variables
- * @param desc The global variable that we want to know the size of
- * @return Returns the length of the sought global object
- */
-static size_t SlCalcGlobListLength(const SaveLoadGlobVarList *desc)
-{
-	size_t length = 0;
-
-	for (; desc->address != NULL; desc++) {
-		// Of course the global variable must exist in the sought savegame version
-		if (_sl_version >= desc->from_version && _sl_version <= desc->to_version)
-			length += SlCalcConvFileLen(desc->conv);
-	}
-	return length;
 }
 
 /**
  * Save or Load (a list of) global variables
  * @param desc The global variable that is being loaded or saved
  */
-void SlGlobList(const SaveLoadGlobVarList *desc)
+void SlGlobList(const SaveLoadGlobVarList *sldg)
 {
 	if (_sl.need_length != NL_NONE) {
-		SlSetLength(SlCalcGlobListLength(desc));
-		if (_sl.need_length == NL_CALCLENGTH)
-			return;
+		SlSetLength(SlCalcObjLength((const SaveLoad*)sldg));
+		if (_sl.need_length == NL_CALCLENGTH) return;
 	}
 
-	for (; desc->address != NULL; desc++) {
-		if (_sl_version >= desc->from_version && _sl_version <= desc->to_version)
-			SlSaveLoadConv(desc->address, desc->conv);
+	for (; sldg->cmd != SL_END; sldg++) {
+		SlObjectMember(sldg->s.address, (const SaveLoad*)sldg);
 	}
 }
 

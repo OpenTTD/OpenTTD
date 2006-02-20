@@ -23,13 +23,6 @@ void WaitTillSaved(void);
 typedef void ChunkSaveLoadProc(void);
 typedef void AutolengthProc(void *arg);
 
-typedef struct SaveLoadGlobVarList {
-	void *address;
-	byte conv;
-	uint16 from_version;
-	uint16 to_version;
-} SaveLoadGlobVarList;
-
 typedef struct {
 	uint32 id;
 	ChunkSaveLoadProc *save_proc;
@@ -73,45 +66,53 @@ enum {
 	CH_NUM_PRI_LEVELS = 4,
 };
 
-typedef enum VarTypes {
-	SLE_FILE_I8  = 0,
-	SLE_FILE_U8  = 1,
-	SLE_FILE_I16 = 2,
-	SLE_FILE_U16 = 3,
-	SLE_FILE_I32 = 4,
-	SLE_FILE_U32 = 5,
-	SLE_FILE_I64 = 6,
-	SLE_FILE_U64 = 7,
+enum VarTypes {
+	/* 4 bytes allocated a maximum of 16 types for NumberType */
+	SLE_FILE_I8       = 0,
+	SLE_FILE_U8       = 1,
+	SLE_FILE_I16      = 2,
+	SLE_FILE_U16      = 3,
+	SLE_FILE_I32      = 4,
+	SLE_FILE_U32      = 5,
+	SLE_FILE_I64      = 6,
+	SLE_FILE_U64      = 7,
+	SLE_FILE_STRINGID = 8, /// StringID offset into strings-array
+	/* 7 more possible primitives */
 
-	SLE_FILE_STRINGID = 8,
-//	SLE_FILE_IVAR = 8,
-//	SLE_FILE_UVAR = 9,
+	/* 4 bytes allocated a maximum of 16 types for NumberType */
+	SLE_VAR_I8   =  0 << 4,
+	SLE_VAR_U8   =  1 << 4,
+	SLE_VAR_I16  =  2 << 4,
+	SLE_VAR_U16  =  3 << 4,
+	SLE_VAR_I32  =  4 << 4,
+	SLE_VAR_U32  =  5 << 4,
+	SLE_VAR_I64  =  6 << 4,
+	SLE_VAR_U64  =  7 << 4,
+	SLE_VAR_NULL =  8 << 4, /// useful to write zeros in savegame.
+	/* 7 more possible primitives */
 
-	SLE_VAR_I8   = 0 << 4,
-	SLE_VAR_U8   = 1 << 4,
-	SLE_VAR_I16  = 2 << 4,
-	SLE_VAR_U16  = 3 << 4,
-	SLE_VAR_I32  = 4 << 4,
-	SLE_VAR_U32  = 5 << 4,
-	SLE_VAR_I64  = 6 << 4,
-	SLE_VAR_U64  = 7 << 4,
+	/* Shortcut values */
+	SLE_VAR_CHAR = SLE_VAR_I8,
 
-	SLE_VAR_NULL = 8 << 4, // useful to write zeros in savegame.
+	/* Default combinations of variables. As savegames change, so can variables
+	 * and thus it is possible that the saved value and internal size do not
+	 * match and you need to specify custom combo. The defaults are listed here */
+	SLE_INT8        = SLE_FILE_I8  | SLE_VAR_I8,
+	SLE_UINT8       = SLE_FILE_U8  | SLE_VAR_U8,
+	SLE_INT16       = SLE_FILE_I16 | SLE_VAR_I16,
+	SLE_UINT16      = SLE_FILE_U16 | SLE_VAR_U16,
+	SLE_INT32       = SLE_FILE_I32 | SLE_VAR_I32,
+	SLE_UINT32      = SLE_FILE_U32 | SLE_VAR_U32,
+	SLE_INT64       = SLE_FILE_I64 | SLE_VAR_I64,
+	SLE_UINT64      = SLE_FILE_U64 | SLE_VAR_U64,
+	SLE_STRINGID    = SLE_FILE_STRINGID | SLE_VAR_U16,
 
-	SLE_VAR_INT  = SLE_VAR_I32,
-	SLE_VAR_UINT = SLE_VAR_U32,
+	/* Shortcut values */
+	SLE_UINT = SLE_UINT32,
+	SLE_INT  = SLE_INT32,
+};
 
-	SLE_INT8   = SLE_FILE_I8  | SLE_VAR_I8,
-	SLE_UINT8  = SLE_FILE_U8  | SLE_VAR_U8,
-	SLE_INT16  = SLE_FILE_I16 | SLE_VAR_I16,
-	SLE_UINT16 = SLE_FILE_U16 | SLE_VAR_U16,
-	SLE_INT32  = SLE_FILE_I32 | SLE_VAR_I32,
-	SLE_UINT32 = SLE_FILE_U32 | SLE_VAR_U32,
-	SLE_INT64  = SLE_FILE_I64 | SLE_VAR_I64,
-	SLE_UINT64 = SLE_FILE_U64 | SLE_VAR_U64,
-
-	SLE_STRINGID = SLE_FILE_STRINGID | SLE_VAR_U16,
-} VarType;
+typedef uint32 VarType;
 
 enum SaveLoadTypes {
 	SL_VAR       = 0,
@@ -123,18 +124,31 @@ enum SaveLoadTypes {
 	SL_END       = 15
 };
 
+typedef byte SaveLoadType;
+typedef uint16 OffSetType;
+
 /** SaveLoad type struct. Do NOT use this directly but use the SLE_ macros defined just below! */
 typedef struct SaveLoad {
-	byte cmd;             /// the action to take with the saved/loaded type, All types need different action
-	VarType type;         /// type of the variable to be saved, int
-	uint16 offset;        /// offset of this variable in the struct (max offset is 65536)
+	SaveLoadType cmd;     /// the action to take with the saved/loaded type, All types need different action
+	VarType conv;         /// type of the variable to be saved, int
 	uint16 length;        /// (conditional) length of the variable (eg. arrays) (max array size is 65536 elements)
 	uint16 version_from;  /// save/load the variable starting from this savegame version
 	uint16 version_to;    /// save/load the variable until this savegame version
+	/* NOTE: This element either denotes the address of the variable for a global
+	 * variable, or the offset within a struct which is then bound to a variable
+	 * during runtime. Decision on which one to use is controlled by the function
+	 * that is called to save it. address: SlGlobList, offset: SlObject */
+	union {
+		void *address;      /// address of variable
+		OffSetType offset;  /// offset of variable in the struct (max offset is 65536)
+	} s;
 } SaveLoad;
 
+/* Same as SaveLoad but global variables are used (for better readability); */
+typedef SaveLoad SaveLoadGlobVarList;
+
 /* Simple variables, references (pointers) and arrays */
-#define SLE_GENERAL(cmd, base, variable, type, length, from, to) {cmd, type, offsetof(base, variable), length, from, to}
+#define SLE_GENERAL(cmd, base, variable, type, length, from, to) {cmd, type, length, from, to, (void*)offsetof(base, variable)}
 #define SLE_CONDVAR(base, variable, type, from, to) SLE_GENERAL(SL_VAR, base, variable, type, 0, from, to)
 #define SLE_CONDREF(base, variable, type, from, to) SLE_GENERAL(SL_REF, base, variable, type, 0, from, to)
 #define SLE_CONDARR(base, variable, type, length, from, to) SLE_GENERAL(SL_ARR, base, variable, type, length, from, to)
@@ -151,7 +165,7 @@ typedef struct SaveLoad {
 #define SLE_INCLUDE(base, variable, include_index) SLE_GENERAL(SL_INCLUDE, base, variable, 0, 0, include_index, 0)
 
 /* The same as the ones at the top, only the offset is given directly; used for unions */
-#define SLE_GENERALX(cmd, offset, type, param1, param2) {cmd, type, (offset), 0, param1, param2}
+#define SLE_GENERALX(cmd, offset, type, param1, param2) {cmd, type, 0, param1, param2, (void*)(offset)}
 #define SLE_CONDVARX(offset, type, from, to) SLE_GENERALX(SL_VAR, offset, type, from, to)
 #define SLE_CONDREFX(offset, type, from, to) SLE_GENERALX(SL_REF, offset, type, from, to)
 
@@ -162,7 +176,22 @@ typedef struct SaveLoad {
 #define SLE_INCLUDEX(offset, type) SLE_GENERALX(SL_INCLUDE, offset, type, 0, SL_MAX_VERSION)
 
 /* End marker */
-#define SLE_END() {SL_END, 0, 0, 0, 0, 0}
+#define SLE_END() {SL_END, 0, 0, 0, 0, (void*)0}
+
+/* Simple variables, references (pointers) and arrays, but for global variables */
+#define SLEG_GENERAL(cmd, variable, type, length, from, to) {cmd, type, length, from, to, &variable}
+
+#define SLEG_CONDVAR(variable, type, from, to) SLEG_GENERAL(SL_VAR, variable, type, 0, from, to)
+#define SLEG_CONDREF(variable, type, from, to) SLEG_GENERAL(SL_REF, variable, type, 0, from, to)
+#define SLEG_CONDARR(variable, type, length, from, to) SLEG_GENERAL(SL_ARR, variable, type, length, from, to)
+#define SLEG_CONDSTR(variable, type, length, from, to) SLEG_GENERAL(SL_STR, variable, type, length, from, to)
+
+#define SLEG_VAR(variable, type) SLEG_CONDVAR(variable, type, 0, SL_MAX_VERSION)
+#define SLEG_REF(variable, type) SLEG_CONDREF(variable, type, 0, SL_MAX_VERSION)
+#define SLEG_ARR(variable, type) SLEG_CONDARR(variable, type, lengthof(variable), SL_MAX_VERSION)
+#define SLEG_STR(variable, type) SLEG_CONDSTR(variable, type, lengthof(variable), SL_MAX_VERSION)
+
+#define SLEG_END() {SL_END, 0, 0, 0, 0, NULL}
 
 /** Checks if the savegame is below major.minor.
  */
@@ -183,14 +212,19 @@ static inline bool CheckSavegameVersion(uint16 version)
 
 void SlSetArrayIndex(uint index);
 int SlIterateArray(void);
-void SlArray(void *array, uint length, VarType conv);
-void SlObject(void *object, const SaveLoad *desc);
+
 void SlAutolength(AutolengthProc *proc, void *arg);
 uint SlGetFieldLength(void);
-byte SlReadByte(void);
 void SlSetLength(size_t length);
+size_t SlCalcObjMemberLength(const SaveLoad *sld);
+
+byte SlReadByte(void);
 void SlWriteByte(byte b);
-void SlGlobList(const SaveLoadGlobVarList *desc);
+
+void SlGlobList(const SaveLoadGlobVarList *sldg);
+void SlArray(void *array, uint length, VarType conv);
+void SlObject(void *object, const SaveLoad *sld);
+bool SlObjectMember(void *object, const SaveLoad *sld);
 
 void SaveFileStart(void);
 void SaveFileDone(void);

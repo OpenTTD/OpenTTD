@@ -661,7 +661,7 @@ static void Load_NAME(void)
 static const SaveLoad _game_opt_desc[] = {
 	// added a new difficulty option (town attitude) in version 4
 	SLE_CONDARR(GameOptions,diff,						SLE_FILE_I16 | SLE_VAR_I32, 17, 0, 3),
-	SLE_CONDARR(GameOptions,diff,						SLE_FILE_I16 | SLE_VAR_I32, 18, 4, 255),
+	SLE_CONDARR(GameOptions,diff,						SLE_FILE_I16 | SLE_VAR_I32, 18, 4, SL_MAX_VERSION),
 	SLE_VAR(GameOptions,diff_level,			SLE_UINT8),
 	SLE_VAR(GameOptions,currency,				SLE_UINT8),
 	SLE_VAR(GameOptions,kilometers,			SLE_UINT8),
@@ -681,26 +681,26 @@ static void SaveLoad_OPTS(void)
 
 
 static const SaveLoadGlobVarList _date_desc[] = {
-	{&_date, 										SLE_UINT16, 0, 255},
-	{&_date_fract, 							SLE_UINT16, 0, 255},
-	{&_tick_counter, 						SLE_UINT16, 0, 255},
-	{&_vehicle_id_ctr_day, 			SLE_UINT16, 0, 255},
-	{&_age_cargo_skip_counter, 	SLE_UINT8,	0, 255},
-	{&_avail_aircraft, 					SLE_UINT8,	0, 255},
-	{&_cur_tileloop_tile, 			SLE_FILE_U16 | SLE_VAR_U32, 0, 5},
-	{&_cur_tileloop_tile, 			SLE_UINT32, 6, 255},
-	{&_disaster_delay, 					SLE_UINT16, 0, 255},
-	{&_station_tick_ctr, 				SLE_UINT16, 0, 255},
-	{&_random_seeds[0][0], 					SLE_UINT32, 0, 255},
-	{&_random_seeds[0][1], 					SLE_UINT32, 0, 255},
-	{&_cur_town_ctr, 						SLE_FILE_U8 | SLE_VAR_U32,	0, 9},
-	{&_cur_town_ctr,						SLE_UINT32, 10, 255},
-	{&_cur_player_tick_index, 	SLE_FILE_U8 | SLE_VAR_UINT, 0, 255},
-	{&_next_competitor_start, 	SLE_FILE_U16 | SLE_VAR_UINT, 0, 255},
-	{&_trees_tick_ctr, 					SLE_UINT8,	0, 255},
-	{&_pause, 									SLE_UINT8,	4, 255},
-	{&_cur_town_iter, 						SLE_UINT32,	11, 255},
-	{NULL,											0,					0,   0}
+	    SLEG_VAR(_date,                  SLE_UINT16),
+	    SLEG_VAR(_date_fract,            SLE_UINT16),
+	    SLEG_VAR(_tick_counter,          SLE_UINT16),
+	    SLEG_VAR(_vehicle_id_ctr_day,    SLE_UINT16),
+	    SLEG_VAR(_age_cargo_skip_counter,SLE_UINT8),
+	    SLEG_VAR(_avail_aircraft,        SLE_UINT8),
+	SLEG_CONDVAR(_cur_tileloop_tile,     SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLEG_CONDVAR(_cur_tileloop_tile,     SLE_UINT32,                 6, SL_MAX_VERSION),
+	    SLEG_VAR(_disaster_delay,        SLE_UINT16),
+	    SLEG_VAR(_station_tick_ctr,      SLE_UINT16),
+	    SLEG_VAR(_random_seeds[0][0],    SLE_UINT32),
+	    SLEG_VAR(_random_seeds[0][1],    SLE_UINT32),
+	SLEG_CONDVAR(_cur_town_ctr,          SLE_FILE_U8 | SLE_VAR_U32,  0, 9),
+	SLEG_CONDVAR(_cur_town_ctr,          SLE_UINT32,                10, SL_MAX_VERSION),
+	    SLEG_VAR(_cur_player_tick_index, SLE_FILE_U8  | SLE_VAR_U32),
+	    SLEG_VAR(_next_competitor_start, SLE_FILE_U16 | SLE_VAR_U32),
+	    SLEG_VAR(_trees_tick_ctr,        SLE_UINT8),
+	SLEG_CONDVAR(_pause,                 SLE_UINT8,   4, SL_MAX_VERSION),
+	SLEG_CONDVAR(_cur_town_iter,         SLE_UINT32, 11, SL_MAX_VERSION),
+	    SLEG_END()
 };
 
 // Save load date related variables as well as persistent tick counters
@@ -712,12 +712,12 @@ static void SaveLoad_DATE(void)
 
 
 static const SaveLoadGlobVarList _view_desc[] = {
-	{&_saved_scrollpos_x,			SLE_FILE_I16 | SLE_VAR_INT, 0, 5},
-	{&_saved_scrollpos_x,			SLE_INT32, 6, 255},
-	{&_saved_scrollpos_y,			SLE_FILE_I16 | SLE_VAR_INT, 0, 5},
-	{&_saved_scrollpos_y,			SLE_INT32, 6, 255},
-	{&_saved_scrollpos_zoom,	SLE_UINT8,	0, 255},
-	{NULL,										0,					0,   0}
+	SLEG_CONDVAR(_saved_scrollpos_x,   SLE_FILE_I16 | SLE_VAR_I32, 0, 5),
+	SLEG_CONDVAR(_saved_scrollpos_x,   SLE_INT32,                  6, SL_MAX_VERSION),
+	SLEG_CONDVAR(_saved_scrollpos_y,   SLE_FILE_I16 | SLE_VAR_I32, 0, 5),
+	SLEG_CONDVAR(_saved_scrollpos_y,   SLE_INT32,                  6, SL_MAX_VERSION),
+	    SLEG_VAR(_saved_scrollpos_zoom,SLE_UINT8),
+	    SLEG_END()
 };
 
 static void SaveLoad_VIEW(void)
@@ -729,9 +729,9 @@ static uint32 _map_dim_x;
 static uint32 _map_dim_y;
 
 static const SaveLoadGlobVarList _map_dimensions[] = {
-	{&_map_dim_x, SLE_UINT32, 6, 255},
-	{&_map_dim_y, SLE_UINT32, 6, 255},
-	{NULL, 0, 0, 0}
+	SLEG_CONDVAR(_map_dim_x, SLE_UINT32, 6, SL_MAX_VERSION),
+	SLEG_CONDVAR(_map_dim_y, SLE_UINT32, 6, SL_MAX_VERSION),
+	    SLEG_END()
 };
 
 static void Save_MAPS(void)
