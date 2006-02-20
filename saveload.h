@@ -53,10 +53,6 @@ typedef enum SLRefType {
 
 #define SL_MAX_VERSION 255
 
-extern uint16 _sl_version;       /// the major savegame version identifier
-extern byte   _sl_minor_version; /// the minor savegame version, DO NOT USE!
-
-
 enum {
 	INC_VEHICLE_COMMON = 0,
 };
@@ -172,6 +168,8 @@ typedef struct SaveLoad {
  */
 static inline bool CheckSavegameVersionOldStyle(uint16 major, byte minor)
 {
+	extern uint16 _sl_version;
+	extern byte   _sl_minor_version;
 	return (_sl_version < major) || (_sl_version == major && _sl_minor_version < minor);
 }
 
@@ -179,6 +177,7 @@ static inline bool CheckSavegameVersionOldStyle(uint16 major, byte minor)
  */
 static inline bool CheckSavegameVersion(uint16 version)
 {
+	extern uint16 _sl_version;
 	return _sl_version < version;
 }
 
