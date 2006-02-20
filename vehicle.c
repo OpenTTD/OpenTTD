@@ -2131,8 +2131,7 @@ const SaveLoad _common_veh_desc[] = {
 	SLE_REF(Vehicle,prev_shared,				REF_VEHICLE),
 
 	// reserve extra space in savegame here. (currently 10 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 2, 2, 255), /* 2 */
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U32 | SLE_VAR_NULL, 2, 2, 255), /* 8 */
+	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 10, 2, 255),
 
 	SLE_END()
 };
