@@ -794,7 +794,7 @@ static const SettingDesc music_settings[] = {
 	{"effect_vol",SDT_UINT8,	(void*)128,		&msf.effect_vol, NULL},
 	{"custom_1",	SDT_INTLIST | SDT_UINT8 | lengthof(msf.custom_1) << 16, NULL, &msf.custom_1, NULL},
 	{"custom_2",	SDT_INTLIST | SDT_UINT8 | lengthof(msf.custom_2) << 16, NULL, &msf.custom_2, NULL},
-	{"playing",		SDT_BOOL,		(void*)true,	&msf.btn_down, NULL},
+	{"playing",		SDT_BOOL,		(void*)true,	&msf.playing, NULL},
 	{"shuffle",		SDT_BOOL,		(void*)false, &msf.shuffle, NULL},
 	{"extmidi",   SDT_STRINGBUF | (lengthof(msf.extmidi)<<16), EXTERNAL_PLAYER, &msf.extmidi, NULL},
 	{NULL,				0,					NULL,					NULL,																NULL}

@@ -182,9 +182,9 @@ void ResetMusic(void)
 
 void MusicLoop(void)
 {
-	if (!msf.btn_down && _song_is_active) {
+	if (!msf.playing && _song_is_active) {
 		StopMusic();
-	} else if (msf.btn_down && !_song_is_active) {
+	} else if (msf.playing && !_song_is_active) {
 		PlayPlaylistSong();
 	}
 
@@ -405,10 +405,10 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 			SkipToNextSong();
 			break;
 		case 4: // stop playing
-			msf.btn_down = false;
+			msf.playing = false;
 			break;
 		case 5: // start playing
-			msf.btn_down = true;
+			msf.playing = true;
 			break;
 		case 6:{ // volume sliders
 			byte *vol,new_vol;

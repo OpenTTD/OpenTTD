@@ -9,7 +9,7 @@ typedef struct MusicFileSettings {
 	byte effect_vol;
 	byte custom_1[33];
 	byte custom_2[33];
-	bool btn_down;
+	bool playing;
 	bool shuffle;
 	char extmidi[80];
 } MusicFileSettings;
