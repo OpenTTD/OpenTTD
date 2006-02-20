@@ -64,10 +64,8 @@ void DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number)
 
 static void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection)
 {
-	int image = GetAircraftImage(v, 6);
-	uint32 ormod = GetVehiclePalette(v);
-	if (v->vehstatus & VS_CRASHED) ormod = PALETTE_CRASH;
-	DrawSprite(image | ormod, x + 25, y + 10);
+	PalSpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
+	DrawSprite(GetAircraftImage(v, 6) | pal, x + 25, y + 10);
 	if (v->subtype == 0) DrawSprite(SPR_ROTOR_STOPPED, x + 25, y + 5);
 	if (v->index == selection) {
 		DrawFrameRect(x - 1, y - 1, x + 58, y + 21, 0xF, FR_BORDERONLY);

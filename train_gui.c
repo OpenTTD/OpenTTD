@@ -358,14 +358,11 @@ static void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, 
 
 	do {
 		if (--skip < 0) {
-			int image = GetTrainImage(v, 6);
-			uint32 ormod = GetVehiclePalette(v);
 			int width = v->u.rail.cached_veh_length;
 
 			if (dx + width <= count) {
-				if (v->vehstatus & VS_CRASHED)
-					ormod = PALETTE_CRASH;
-				DrawSprite(image | ormod, x + 14 + WagonLengthToPixels(dx), y + 6 + (is_custom_sprite(RailVehInfo(v->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
+				PalSpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
+				DrawSprite(GetTrainImage(v, 6) | pal, x + 14 + WagonLengthToPixels(dx), y + 6 + (is_custom_sprite(RailVehInfo(v->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
 				if (v->index == selection)
 					DrawFrameRect(x - 1 + WagonLengthToPixels(dx), y - 1, x + WagonLengthToPixels(dx + width) - 1, y + 12, 15, FR_BORDERONLY);
 			}

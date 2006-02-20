@@ -64,10 +64,8 @@ void DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number)
 
 static void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection)
 {
-	int image = GetRoadVehImage(v, 6);
-	uint32 ormod = GetVehiclePalette(v);
-	if (v->vehstatus & VS_CRASHED) ormod = PALETTE_CRASH;
-	DrawSprite(image | ormod, x + 14, y + 6);
+	PalSpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
+	DrawSprite(GetRoadVehImage(v, 6) | pal, x + 14, y + 6);
 
 	if (v->index == selection) {
 		DrawFrameRect(x - 1, y - 1, x + 28, y + 12, 15, FR_BORDERONLY);
