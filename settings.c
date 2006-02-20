@@ -1124,8 +1124,10 @@ void LoadFromConfig(void)
 	IniFile *ini = ini_load(_config_file);
 	HandleSettingDescs(ini, load_setting_desc);
 	LoadList(ini, "newgrf", _newgrf_files, lengthof(_newgrf_files));
+#ifdef ENABLE_NETWORK
 	LoadList(ini, "servers", _network_host_list, lengthof(_network_host_list));
 	LoadList(ini, "bans", _network_ban_list, lengthof(_network_ban_list));
+#endif /* ENABLE_NETWORK */
 	ini_free(ini);
 }
 
@@ -1133,8 +1135,10 @@ void SaveToConfig(void)
 {
 	IniFile *ini = ini_load(_config_file);
 	HandleSettingDescs(ini, save_setting_desc);
+#ifdef ENABLE_NETWORK
 	SaveList(ini, "servers", _network_host_list, lengthof(_network_host_list));
 	SaveList(ini, "bans", _network_ban_list, lengthof(_network_ban_list));
+#endif /* ENABLE_NETWORK */
 	ini_save(_config_file, ini);
 	ini_free(ini);
 }

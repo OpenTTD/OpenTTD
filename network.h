@@ -212,13 +212,12 @@ NetworkGameList *NetworkQueryServer(const char* host, unsigned short port, bool 
 
 byte NetworkSpectatorCount(void);
 
+VARDEF char *_network_host_list[10];
+VARDEF char *_network_ban_list[25];
+
 #endif /* ENABLE_NETWORK */
 
 // Those variables must always be registered!
-#define MAX_SAVED_SERVERS 10
-VARDEF char *_network_host_list[MAX_SAVED_SERVERS];
-#define MAX_BANS 25
-VARDEF char *_network_ban_list[MAX_BANS];
 VARDEF bool _networking;
 VARDEF bool _network_available;  // is network mode available?
 VARDEF bool _network_server; // network-server is active
