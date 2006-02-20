@@ -18,7 +18,6 @@ $(MAKE_CONFIG):
 	$(call CONFIG_LINE,\# SUPRESS_LANG_ERRORS: supresses output about missing and mismatched strings)
 	$(call CONFIG_LINE,\# WITH_NETWORK: makes OpenTTD able to play multiplayer using TCP and UDP)
 	$(call CONFIG_LINE,\# DEDICATED: compiles a dedicated server. This one can only host using a CLI, but do not need SDL)
-	$(call CONFIG_LINE,\# MAX_NUM_AUTOSAVES: sets the max number of autosaves the game keeps before overwriting old ones)
 	$(call CONFIG_LINE,STATIC:=$(STATIC))
 	$(call CONFIG_LINE,TRANSLATOR:=$(TRANSLATOR))
 	$(call CONFIG_LINE,DEBUG:=$(DEBUG))
@@ -29,7 +28,6 @@ $(MAKE_CONFIG):
 	$(call CONFIG_LINE,WITH_DIRECTMUSIC:=$(WITH_DIRECTMUSIC))
 	$(call CONFIG_LINE,WITH_NETWORK:=$(WITH_NETWORK))
 	$(call CONFIG_LINE,DEDICATED:=$(DEDICATED))
-	$(call CONFIG_LINE,MAX_NUM_AUTOSAVES:=$(MAX_NUM_AUTOSAVES))
 	$(call CONFIG_LINE,)
 
 	$(call CONFIG_LINE,\# Disable asserts. Leave them on for easier bug finding)
