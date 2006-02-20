@@ -77,19 +77,23 @@ enum VarTypes {
 	SLE_FILE_I64      = 6,
 	SLE_FILE_U64      = 7,
 	SLE_FILE_STRINGID = 8, /// StringID offset into strings-array
-	/* 7 more possible primitives */
+	SLE_FILE_STRING   = 9,
+	/* 6 more possible primitives */
 
 	/* 4 bytes allocated a maximum of 16 types for NumberType */
-	SLE_VAR_I8   =  0 << 4,
-	SLE_VAR_U8   =  1 << 4,
-	SLE_VAR_I16  =  2 << 4,
-	SLE_VAR_U16  =  3 << 4,
-	SLE_VAR_I32  =  4 << 4,
-	SLE_VAR_U32  =  5 << 4,
-	SLE_VAR_I64  =  6 << 4,
-	SLE_VAR_U64  =  7 << 4,
-	SLE_VAR_NULL =  8 << 4, /// useful to write zeros in savegame.
-	/* 7 more possible primitives */
+	SLE_VAR_BL   =  0 << 4,
+	SLE_VAR_I8   =  1 << 4,
+	SLE_VAR_U8   =  2 << 4,
+	SLE_VAR_I16  =  3 << 4,
+	SLE_VAR_U16  =  4 << 4,
+	SLE_VAR_I32  =  5 << 4,
+	SLE_VAR_U32  =  6 << 4,
+	SLE_VAR_I64  =  7 << 4,
+	SLE_VAR_U64  =  8 << 4,
+	SLE_VAR_NULL =  9 << 4, /// useful to write zeros in savegame.
+	SLE_VAR_STRB = 10 << 4, /// normal string (with pre-allocated buffer)
+	SLE_VAR_STRQ = 11 << 4, /// string enclosed in parentheses
+	/* 4 more possible primitives */
 
 	/* Shortcut values */
 	SLE_VAR_CHAR = SLE_VAR_I8,
@@ -97,6 +101,7 @@ enum VarTypes {
 	/* Default combinations of variables. As savegames change, so can variables
 	 * and thus it is possible that the saved value and internal size do not
 	 * match and you need to specify custom combo. The defaults are listed here */
+	SLE_BOOL        = SLE_FILE_I8  | SLE_VAR_BL,
 	SLE_INT8        = SLE_FILE_I8  | SLE_VAR_I8,
 	SLE_UINT8       = SLE_FILE_U8  | SLE_VAR_U8,
 	SLE_INT16       = SLE_FILE_I16 | SLE_VAR_I16,
@@ -105,11 +110,16 @@ enum VarTypes {
 	SLE_UINT32      = SLE_FILE_U32 | SLE_VAR_U32,
 	SLE_INT64       = SLE_FILE_I64 | SLE_VAR_I64,
 	SLE_UINT64      = SLE_FILE_U64 | SLE_VAR_U64,
+	SLE_CHAR        = SLE_FILE_I8  | SLE_VAR_CHAR,
 	SLE_STRINGID    = SLE_FILE_STRINGID | SLE_VAR_U16,
+	SLE_STRINGBUF   = SLE_FILE_STRING   | SLE_VAR_STRB,
+	SLE_STRINGQUOTE = SLE_FILE_STRING   | SLE_VAR_STRQ,
 
 	/* Shortcut values */
 	SLE_UINT = SLE_UINT32,
 	SLE_INT  = SLE_INT32,
+	SLE_STRB = SLE_STRINGBUF,
+	SLE_STRQ = SLE_STRINGQUOTE,
 };
 
 typedef uint32 VarType;
@@ -118,6 +128,7 @@ enum SaveLoadTypes {
 	SL_VAR       = 0,
 	SL_REF       = 1,
 	SL_ARR       = 2,
+	SL_STR       = 3,
 	// non-normal save-load types
 	SL_WRITEBYTE = 8,
 	SL_INCLUDE   = 9,

@@ -102,7 +102,7 @@ static inline uint32 SlGetOffs(void) {return _sl.offs_base - (_sl.bufe - _sl.buf
  * @return Return the size of this type in bytes */
 static inline byte SlCalcConvMemLen(VarType conv)
 {
-	static const byte conv_mem_size[] = {1, 1, 2, 2, 4, 4, 8, 8, 0};
+	static const byte conv_mem_size[] = {1, 1, 1, 2, 2, 4, 4, 8, 8, 0};
 	byte length = (conv >> 4) & 0xF;
 	assert(length < lengthof(conv_mem_size));
 	return conv_mem_size[length];
@@ -413,6 +413,7 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 	if (_sl.save) { /* SAVE values */
 		/* Read a value from the struct. These ARE endian safe. */
 		switch ((conv >> 4) & 0xF) {
+		case SLE_VAR_BL   >> 4:
 		case SLE_VAR_I8   >> 4: x = *(int8*)ptr; break;
 		case SLE_VAR_U8   >> 4: x = *(byte*)ptr; break;
 		case SLE_VAR_I16  >> 4: x = *(int16*)ptr; break;
@@ -454,6 +455,7 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 
 		/* Write The value to the struct. These ARE endian safe. */
 		switch ((conv >> 4) & 0xF) {
+		case SLE_VAR_BL   >> 4:
 		case SLE_VAR_I8   >> 4:  *(int8*)ptr = x; break;
 		case SLE_VAR_U8   >> 4:  *(byte*)ptr = x; break;
 		case SLE_VAR_I16  >> 4: *(int16*)ptr = x; break;
@@ -466,6 +468,27 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 		default: NOT_REACHED();
 		}
 	}
+}
+
+static inline size_t SlCalcStringLen(const char *ptr, uint length)
+{
+	DEBUG(misc, 1) ("[Sl] TODO: save/load real length");
+	return length;//(_sl.save) ? min(strlen(ptr), length - 1) : SlReadArrayLength();
+}
+
+/**
+ * Save/Load a string.
+ * @param ptr the string being manipulated
+ * @param the length of the string (full length)
+ * @param conv must be SLE_FILE_STRING
+ * @todo the full length of the string is saved, even when the buffer
+ * is 512 bytes and only 10 of those are used */
+static void SlString(void *ptr, uint length, VarType conv)
+{
+	uint len = SlCalcStringLen(ptr, length);
+	assert((conv & 0xF) == SLE_FILE_STRING);
+
+	SlCopyBytes(ptr, len);
 }
 
 /**
@@ -549,6 +572,7 @@ size_t SlCalcObjMemberLength(const SaveLoad *sld)
 		case SL_VAR:
 		case SL_REF:
 		case SL_ARR:
+		case SL_STR:
 			/* CONDITIONAL saveload types depend on the savegame version */
 			if (!SlIsObjectValidInSavegame(sld)) break;
 
@@ -556,6 +580,7 @@ size_t SlCalcObjMemberLength(const SaveLoad *sld)
 			case SL_VAR: return SlCalcConvFileLen(sld->conv);
 			case SL_REF: return SlCalcRefLen();
 			case SL_ARR: return SlCalcArrayLen(sld->length, sld->conv);
+			case SL_STR: return SlCalcStringLen(sld->s.address, sld->length);
 			default: NOT_REACHED();
 			}
 			break;
@@ -573,6 +598,7 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 	case SL_VAR:
 	case SL_REF:
 	case SL_ARR:
+	case SL_STR:
 		/* CONDITIONAL saveload types depend on the savegame version */
 		if (!SlIsObjectValidInSavegame(sld)) return false;
 
@@ -586,6 +612,7 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 				*(void**)ptr = _sl.int_to_ref_proc(SlReadUint16(), conv);
 			break;
 		case SL_ARR: SlArray(ptr, sld->length, conv); break;
+		case SL_STR: SlString(ptr, sld->length, conv); break;
 		default: NOT_REACHED();
 		}
 		break;
