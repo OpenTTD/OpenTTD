@@ -307,13 +307,14 @@ int ttd_main(int argc, char* argv[])
 {
 	MyGetOptData mgo;
 	int i;
-	bool network = false;
-	char *network_conn = NULL;
 	const char *optformat;
 	char musicdriver[16], sounddriver[16], videodriver[16];
 	int resolution[2] = {0,0};
 	uint startdate = -1;
-	bool dedicated;
+
+	bool dedicated = false;
+	bool network   = false;
+	char *network_conn = NULL;
 
 	musicdriver[0] = sounddriver[0] = videodriver[0] = 0;
 
@@ -321,7 +322,6 @@ int ttd_main(int argc, char* argv[])
 	_switch_mode = SM_MENU;
 	_switch_mode_errorstr = INVALID_STRING_ID;
 	_dedicated_forks = false;
-	dedicated = false;
 	_config_file = NULL;
 
 	// The last param of the following function means this:
@@ -340,23 +340,17 @@ int ttd_main(int argc, char* argv[])
 		case 'm': ttd_strlcpy(musicdriver, mgo.opt, sizeof(musicdriver)); break;
 		case 's': ttd_strlcpy(sounddriver, mgo.opt, sizeof(sounddriver)); break;
 		case 'v': ttd_strlcpy(videodriver, mgo.opt, sizeof(videodriver)); break;
-		case 'D': {
-				strcpy(musicdriver, "null");
-				strcpy(sounddriver, "null");
-				strcpy(videodriver, "dedicated");
-				dedicated = true;
-			} break;
-		case 'f': {
-				_dedicated_forks = true;
-			}; break;
-		case 'n': {
-				network = true;
-				if (mgo.opt)
-					// Optional, you can give an IP
-					network_conn = mgo.opt;
-				else
-					network_conn = NULL;
-			} break;
+		case 'D':
+			strcpy(musicdriver, "null");
+			strcpy(sounddriver, "null");
+			strcpy(videodriver, "dedicated");
+			dedicated = true;
+			break;
+		case 'f': _dedicated_forks = true; break;
+		case 'n':
+			network = true;
+			network_conn = mgo_opt; // optional IP parameter, NULL if unset
+			break;
 		case 'b': _ai.network_client = true; break;
 		case 'r': ParseResolution(resolution, mgo.opt); break;
 		case 't': startdate = atoi(mgo.opt); break;
@@ -375,12 +369,8 @@ int ttd_main(int argc, char* argv[])
 			} else
 				_switch_mode = SM_NEWGAME;
 			break;
-		case 'G':
-			_random_seeds[0][0] = atoi(mgo.opt);
-			break;
-		case 'c':
-			_config_file = strdup(mgo.opt);
-			break;
+		case 'G': _random_seeds[0][0] = atoi(mgo.opt); break;
+		case 'c': _config_file = strdup(mgo.opt); break;
 		case -2:
 		case 'h':
 			showhelp();
@@ -390,7 +380,7 @@ int ttd_main(int argc, char* argv[])
 
 	if (_ai.network_client && !network) {
 		_ai.network_client = false;
-		DEBUG(ai, 0)("[AI] Can't enable network-AI, because '-n' is not used\n");
+		DEBUG(ai, 0) ("[AI] Can't enable network-AI, because '-n' is not used\n");
 	}
 
 	DeterminePaths();
@@ -441,7 +431,7 @@ int ttd_main(int argc, char* argv[])
 	GfxLoadSprites();
 	LoadStringWidthTable();
 
-	DEBUG(misc, 1) ("Loading drivers...");
+	DEBUG(driver, 1) ("Loading drivers...");
 	LoadDriver(SOUND_DRIVER, _ini_sounddriver);
 	LoadDriver(MUSIC_DRIVER, _ini_musicdriver);
 	LoadDriver(VIDEO_DRIVER, _ini_videodriver); // load video last, to prevent an empty window while sound and music loads
