@@ -1294,11 +1294,10 @@ again:
 			}
 			if (IS_BYTE_INSIDE(_m[v->tile].m5, 0x43, 0x4B)) {
 				RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
-				byte *b = &rs->status;
 
-				//we have reached a loading bay, mark it as used
-				//and clear the usage bit (0x80) of the stop
-				*b = (*b | ((v->u.road.state&2)?2:1)) & ~0x80;
+				// reached a loading bay, mark it as used and clear the usage bit
+				SETBIT(rs->status, v->u.road.state & 2 ? 1 : 0); // occupied bay
+				CLRBIT(rs->status, 7); // usage bit
 			}
 		}
 
@@ -1385,7 +1384,6 @@ again:
 	if (v->u.road.state >= 0x20 &&
 			_road_veh_data_1[v->u.road.state - 0x20 + (_opt.road_side<<4)] == v->u.road.frame) {
 		RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
-		byte *b = &rs->status;
 
 		st = GetStation(_m[v->tile].m2);
 
@@ -1393,7 +1391,7 @@ again:
 				v->current_order.type != OT_GOTO_DEPOT) {
 			Order old_order;
 
-			*b &= ~0x80;
+			CLRBIT(rs->status, 7);
 
 			v->last_station_visited = _m[v->tile].m2;
 
@@ -1419,14 +1417,14 @@ again:
 		}
 
 		if (v->current_order.type != OT_GOTO_DEPOT) {
-			if (*b&0x80) {
+			if (HASBIT(rs->status, 7)) {
 				v->cur_speed = 0;
 				return;
 			}
 			v->current_order.type = OT_NOTHING;
 			v->current_order.flags = 0;
 		}
-		*b |= 0x80;
+		SETBIT(rs->status, 7);
 
 		if (rs == v->u.road.slot) {
 			//we have arrived at the correct station
