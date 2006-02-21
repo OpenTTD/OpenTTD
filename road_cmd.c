@@ -34,13 +34,11 @@ static bool HasTileRoadAt(TileIndex tile, int i)
 	case MP_STREET:
 		b = _m[tile].m5;
 
-		if ((b & 0xF0) == 0) {
-		} else if (IsLevelCrossing(tile)) {
-			b = (b&8)?5:10;
-		} else if ((b & 0xF0) == 0x20) {
-			return (~b & 3) == i;
-		} else {
-			return false;
+		switch (b & 0xF0) {
+			case 0: break; // normal road
+			case 1: b = (b & 8 ? 5 : 10); break; // level crossing
+			case 2: return (~b & 3) == i; // depot
+			default: return false;
 		}
 		break;
 
@@ -177,90 +175,97 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (!b) return CMD_ERROR;
 	}
 
-	if (ti.type == MP_TUNNELBRIDGE) {
-		if (!EnsureNoVehicleZ(tile, TilePixelHeight(tile)))
-			return CMD_ERROR;
+	switch (ti.type) {
+		case MP_TUNNELBRIDGE:
+			if (!EnsureNoVehicleZ(tile, TilePixelHeight(tile))) return CMD_ERROR;
 
-		if ((ti.map5 & 0xE9) == 0xE8) {
-			if (pieces & 10) goto return_error;
-		} else if ((ti.map5 & 0xE9) == 0xE9) {
-			if (pieces & 5) goto return_error;
-		} else
-			goto return_error;
-
-		cost = _price.remove_road * 2;
-
-		if (flags & DC_EXEC) {
-			ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
-			_m[tile].m5 = ti.map5 & 0xC7;
-			SetTileOwner(tile, OWNER_NONE);
-			MarkTileDirtyByTile(tile);
-		}
-		return cost;
-	} else if (ti.type == MP_STREET) {
-		// check if you're allowed to remove the street owned by a town
-		// removal allowance depends on difficulty setting
-		if (!CheckforTownRating(flags, t, ROAD_REMOVE)) return CMD_ERROR;
-
-		// XXX - change cascading ifs to switch when doing rewrite
-		if ((ti.map5 & 0xF0) == 0) { // normal road
-			byte c = pieces, t2;
-
-			if (ti.tileh != 0  && (ti.map5 == 5 || ti.map5 == 10)) {
-				c |= (c & 0xC) >> 2;
-				c |= (c & 0x3) << 2;
-			}
-
-			// limit the bits to delete to the existing bits.
-			if ((c &= ti.map5) == 0) goto return_error;
-
-			// calculate the cost
-			t2 = c;
-			cost = 0;
-			do {
-				if (t2 & 1) cost += _price.remove_road;
-			} while (t2 >>= 1);
-
-			if (flags & DC_EXEC) {
-				ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
-
-				_m[tile].m5 ^= c;
-				if (GB(_m[tile].m5, 0, 4) == 0) {
-					DoClearSquare(tile);
-				} else {
-					MarkTileDirtyByTile(tile);
-				}
-			}
-			return cost;
-		} else if ((ti.map5 & 0xE0) == 0) { // railroad crossing
-			byte c;
-
-			if (!(ti.map5 & 8)) {
-				c = 2;
+			if ((ti.map5 & 0xE9) == 0xE8) {
+				if (pieces & 10) goto return_error;
+			} else if ((ti.map5 & 0xE9) == 0xE9) {
 				if (pieces & 5) goto return_error;
 			} else {
-				c = 1;
-				if (pieces & 10) goto return_error;
+				goto return_error;
 			}
 
 			cost = _price.remove_road * 2;
+
 			if (flags & DC_EXEC) {
 				ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
-
-				ModifyTile(tile,
-					MP_SETTYPE(MP_RAILWAY) |
-					MP_MAP2_CLEAR | MP_MAP3LO | MP_MAP3HI_CLEAR | MP_MAP5,
-					_m[tile].m4 & 0xF, /* map3_lo */
-					c											/* map5 */
-				);
+				_m[tile].m5 = ti.map5 & 0xC7;
+				SetTileOwner(tile, OWNER_NONE);
+				MarkTileDirtyByTile(tile);
 			}
 			return cost;
-		} else
-			goto return_error;
 
-	} else {
+		case MP_STREET:
+			// check if you're allowed to remove the street owned by a town
+			// removal allowance depends on difficulty setting
+			if (!CheckforTownRating(flags, t, ROAD_REMOVE)) return CMD_ERROR;
+
+			switch (GB(ti.map5, 4, 4)) {
+				case 0: { // normal road
+					byte c = pieces, t2;
+
+					if (ti.tileh != 0  && (ti.map5 == 5 || ti.map5 == 10)) {
+						c |= (c & 0xC) >> 2;
+						c |= (c & 0x3) << 2;
+					}
+
+					// limit the bits to delete to the existing bits.
+					if ((c &= ti.map5) == 0) goto return_error;
+
+					// calculate the cost
+					t2 = c;
+					cost = 0;
+					do {
+						if (t2 & 1) cost += _price.remove_road;
+					} while (t2 >>= 1);
+
+					if (flags & DC_EXEC) {
+						ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
+
+						_m[tile].m5 ^= c;
+						if (GB(_m[tile].m5, 0, 4) == 0) {
+							DoClearSquare(tile);
+						} else {
+							MarkTileDirtyByTile(tile);
+						}
+					}
+					return cost;
+				}
+
+				case 1: { // level crossing
+					byte c;
+
+					if (!(ti.map5 & 8)) {
+						c = 2;
+						if (pieces & 5) goto return_error;
+					} else {
+						c = 1;
+						if (pieces & 10) goto return_error;
+					}
+
+					cost = _price.remove_road * 2;
+					if (flags & DC_EXEC) {
+						ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
+
+						ModifyTile(tile,
+							MP_SETTYPE(MP_RAILWAY) |
+							MP_MAP2_CLEAR | MP_MAP3LO | MP_MAP3HI_CLEAR | MP_MAP5,
+							_m[tile].m4 & 0xF, /* map3_lo */
+							c											/* map5 */
+						);
+					}
+					return cost;
+				}
+
+				default: // depot
+					goto return_error;
+			}
+
+		default:
 return_error:;
-		return_cmd_error(INVALID_STRING_ID);
+			return_cmd_error(INVALID_STRING_ID);
 	}
 }
 
@@ -366,82 +371,88 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	// allow building road under bridge
 	if (ti.type != MP_TUNNELBRIDGE && !EnsureNoVehicle(tile)) return CMD_ERROR;
 
-	if (ti.type == MP_STREET) {
-		if (!(ti.map5 & 0xF0)) {
-			if ((pieces & (byte)ti.map5) == pieces)
+	switch (ti.type) {
+		case MP_STREET:
+			if (!(ti.map5 & 0xF0)) {
+				if ((pieces & (byte)ti.map5) == pieces)
+					return_cmd_error(STR_1007_ALREADY_BUILT);
+				existing = ti.map5;
+			} else {
+				if (!(ti.map5 & 0xE0) && pieces != ((ti.map5 & 8) ? 5 : 10))
+					return_cmd_error(STR_1007_ALREADY_BUILT);
+				goto do_clear;
+			}
+			break;
+
+		case MP_RAILWAY: {
+			byte m5;
+
+			if (IsSteepTileh(ti.tileh)) { // very steep tile
+				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+			}
+
+			if (!_valid_tileh_slopes_road[2][ti.tileh]) { // prevent certain slopes
+				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+			}
+
+			if (ti.map5 == 2) {
+				if (pieces & 5) goto do_clear;
+				m5 = 0x10;
+			} else if (ti.map5 == 1) {
+				if (pieces & 10) goto do_clear;
+				m5 = 0x18;
+			} else {
+				goto do_clear;
+			}
+
+			if (flags & DC_EXEC) {
+				ModifyTile(tile,
+					MP_SETTYPE(MP_STREET) |
+					MP_MAP2 | MP_MAP3LO | MP_MAP3HI | MP_MAP5,
+					p2,
+					_current_player, /* map3_lo */
+					_m[tile].m3 & 0xF, /* map3_hi */
+					m5 /* map5 */
+				);
+			}
+			return _price.build_road * 2;
+		}
+
+		case MP_TUNNELBRIDGE:
+			/* check for flat land */
+			if (IsSteepTileh(ti.tileh)) { // very steep tile
+				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+			}
+
+			/* is this middle part of a bridge? */
+			if ((ti.map5 & 0xC0) != 0xC0) goto do_clear;
+
+			/* only allow roads pertendicular to bridge */
+			if (((pieces & 5U) != 0) == ((ti.map5 & 0x01U) != 0)) goto do_clear;
+
+			/* check if clear land under bridge */
+			if ((ti.map5 & 0xF8) == 0xE8) { /* road under bridge */
 				return_cmd_error(STR_1007_ALREADY_BUILT);
-			existing = ti.map5;
-		} else {
-			if (!(ti.map5 & 0xE0) && pieces != ((ti.map5 & 8) ? 5 : 10))
-				return_cmd_error(STR_1007_ALREADY_BUILT);
-			goto do_clear;
-		}
-	} else if (ti.type == MP_RAILWAY) {
-		byte m5;
+			} else if ((ti.map5 & 0xE0) == 0xE0) { /* other transport route under bridge */
+				return_cmd_error(STR_1008_MUST_REMOVE_RAILROAD_TRACK);
+			} else if ((ti.map5 & 0xF8) == 0xC8) { /* water under bridge */
+				return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
+			}
 
-		if (IsSteepTileh(ti.tileh)) { // very steep tile
-			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
-		}
+			/* all checked, can build road now! */
+			cost = _price.build_road * 2;
+			if (flags & DC_EXEC) {
+				ModifyTile(tile,
+					MP_MAPOWNER_CURRENT | MP_MAP5,
+					(ti.map5 & 0xC7) | 0x28 // map5
+				);
+			}
+			return cost;
 
-		if (!_valid_tileh_slopes_road[2][ti.tileh]) { // prevent certain slopes
-			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
-		}
-
-		if (ti.map5 == 2) {
-			if (pieces & 5) goto do_clear;
-			m5 = 0x10;
-		} else if (ti.map5 == 1) {
-			if (pieces & 10) goto do_clear;
-			m5 = 0x18;
-		} else {
-			goto do_clear;
-		}
-
-		if (flags & DC_EXEC) {
-			ModifyTile(tile,
-				MP_SETTYPE(MP_STREET) |
-				MP_MAP2 | MP_MAP3LO | MP_MAP3HI | MP_MAP5,
-				p2,
-				_current_player, /* map3_lo */
-				_m[tile].m3 & 0xF, /* map3_hi */
-				m5 /* map5 */
-			);
-		}
-		return _price.build_road * 2;
-	} else if (ti.type == MP_TUNNELBRIDGE) {
-		/* check for flat land */
-		if (IsSteepTileh(ti.tileh)) { // very steep tile
-			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
-		}
-
-		/* is this middle part of a bridge? */
-		if ((ti.map5 & 0xC0) != 0xC0) goto do_clear;
-
-		/* only allow roads pertendicular to bridge */
-		if (((pieces & 5U) != 0) == ((ti.map5 & 0x01U) != 0)) goto do_clear;
-
-		/* check if clear land under bridge */
-		if ((ti.map5 & 0xF8) == 0xE8) { /* road under bridge */
-			return_cmd_error(STR_1007_ALREADY_BUILT);
-		} else if ((ti.map5 & 0xE0) == 0xE0) { /* other transport route under bridge */
-			return_cmd_error(STR_1008_MUST_REMOVE_RAILROAD_TRACK);
-		} else if ((ti.map5 & 0xF8) == 0xC8) { /* water under bridge */
-			return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
-		}
-
-		/* all checked, can build road now! */
-		cost = _price.build_road * 2;
-		if (flags & DC_EXEC) {
-			ModifyTile(tile,
-				MP_MAPOWNER_CURRENT | MP_MAP5,
-				(ti.map5 & 0xC7) | 0x28 // map5
-			);
-		}
-		return cost;
-	} else {
+		default:
 do_clear:;
-		if (CmdFailed(DoCommandByTile(tile, 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR)))
-			return CMD_ERROR;
+			if (CmdFailed(DoCommandByTile(tile, 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR)))
+				return CMD_ERROR;
 	}
 
 	cost = CheckRoadSlope(ti.tileh, &pieces, existing);
@@ -680,33 +691,41 @@ static int32 RemoveRoadDepot(TileIndex tile, uint32 flags)
 
 static int32 ClearTile_Road(TileIndex tile, byte flags)
 {
-	int32 ret;
 	byte m5 = _m[tile].m5;
 
-	if ( (m5 & 0xF0) == 0) {
-		byte b = m5 & 0xF;
+	switch (GB(_m[tile].m5, 4, 4)) {
+		case 0: { // normal road
+			byte b = m5 & 0xF;
 
-		if (! ((1 << b) & (M(1)|M(2)|M(4)|M(8))) ) {
-			if ((!(flags & DC_AI_BUILDING) || !IsTileOwner(tile, OWNER_TOWN)) && flags & DC_AUTO)
+			if (!((1 << b) & (M(1)|M(2)|M(4)|M(8))) &&
+					(!(flags & DC_AI_BUILDING) || !IsTileOwner(tile, OWNER_TOWN)) &&
+					flags & DC_AUTO) {
 				return_cmd_error(STR_1801_MUST_REMOVE_ROAD_FIRST);
-		}
-		return DoCommandByTile(tile, b, 0, flags, CMD_REMOVE_ROAD);
-	} else if ( (m5 & 0xE0) == 0) {
-		if (flags & DC_AUTO)
-			return_cmd_error(STR_1801_MUST_REMOVE_ROAD_FIRST);
-
-		ret = DoCommandByTile(tile, (m5&8)?5:10, 0, flags, CMD_REMOVE_ROAD);
-		if (CmdFailed(ret)) return CMD_ERROR;
-
-		if (flags & DC_EXEC) {
-			DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+			}
+			return DoCommandByTile(tile, b, 0, flags, CMD_REMOVE_ROAD);
 		}
 
-		return ret;
-	} else {
-		if (flags & DC_AUTO)
-			return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
-		return RemoveRoadDepot(tile,flags);
+		case 1: { // level crossing
+			int32 ret;
+
+			if (flags & DC_AUTO) {
+				return_cmd_error(STR_1801_MUST_REMOVE_ROAD_FIRST);
+			}
+
+			ret = DoCommandByTile(tile, (m5 & 8 ? 5 : 10), 0, flags, CMD_REMOVE_ROAD);
+			if (CmdFailed(ret)) return CMD_ERROR;
+
+			if (flags & DC_EXEC) {
+				DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+			}
+			return ret;
+		}
+
+		default: // depot
+			if (flags & DC_AUTO) {
+				return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
+			}
+			return RemoveRoadDepot(tile, flags);
 	}
 }
 
@@ -825,54 +844,59 @@ static void DrawTile_Road(TileInfo *ti)
 	PalSpriteID image;
 	uint16 m2;
 
-	if ( (ti->map5 & 0xF0) == 0) { // if it is a road the upper 4 bits are 0
-		DrawRoadBits(ti, GB(ti->map5, 0, 4), GB(_m[ti->tile].m4, 4, 3), HASBIT(_m[ti->tile].m4, 7), false);
-	} else if ( (ti->map5 & 0xE0) == 0) { // railroad crossing
-		int f = GetRoadFoundation(ti->tileh, ti->map5 & 0xF);
-		if (f) DrawFoundation(ti, f);
+	switch (GB(ti->map5, 4, 4)) {
+		case 0: // normal road
+			DrawRoadBits(ti, GB(ti->map5, 0, 4), GB(_m[ti->tile].m4, 4, 3), HASBIT(_m[ti->tile].m4, 7), false);
+			break;
 
-		image = GetRailTypeInfo(GB(_m[ti->tile].m4, 0, 4))->base_sprites.crossing;
+		case 1: { // level crossing
+			int f = GetRoadFoundation(ti->tileh, ti->map5 & 0xF);
+			if (f) DrawFoundation(ti, f);
 
-		if (GB(ti->map5, 3, 1) == 0) image++; /* direction */
+			image = GetRailTypeInfo(GB(_m[ti->tile].m4, 0, 4))->base_sprites.crossing;
 
-		if ( (ti->map5 & 4) != 0)
-			image += 2;
+			if (GB(ti->map5, 3, 1) == 0) image++; /* direction */
 
-		if ( _m[ti->tile].m4 & 0x80) {
-			image += 8;
-		} else {
-			m2 = GB(_m[ti->tile].m4, 4, 3);
-			if (m2 == 0) image |= PALETTE_TO_BARE_LAND;
-			if (m2 > 1) image += 4;
+			if ((ti->map5 & 4) != 0) image += 2;
+
+			if ( _m[ti->tile].m4 & 0x80) {
+				image += 8;
+			} else {
+				m2 = GB(_m[ti->tile].m4, 4, 3);
+				if (m2 == 0) image |= PALETTE_TO_BARE_LAND;
+				if (m2 > 1) image += 4;
+			}
+
+			DrawGroundSprite(image);
+			break;
 		}
 
-		DrawGroundSprite(image);
-	} else {
-		uint32 ormod;
-		PlayerID player;
-		const DrawRoadSeqStruct *drss;
+		default: { // depot
+			uint32 ormod;
+			PlayerID player;
+			const DrawRoadSeqStruct* drss;
 
-		if (ti->tileh != 0) { DrawFoundation(ti, ti->tileh); }
+			if (ti->tileh != 0) DrawFoundation(ti, ti->tileh);
 
-		ormod = PALETTE_TO_GREY;	//was this a bug/problem?
-		player = GetTileOwner(ti->tile);
-		if (player < MAX_PLAYERS)
-			ormod = PLAYER_SPRITE_COLOR(player);
+			ormod = PALETTE_TO_GREY;	//was this a bug/problem?
+			player = GetTileOwner(ti->tile);
+			if (player < MAX_PLAYERS) ormod = PLAYER_SPRITE_COLOR(player);
 
-		drss = _road_display_datas[ti->map5 & 0xF];
+			drss = _road_display_datas[ti->map5 & 0xF];
 
-		DrawGroundSprite(drss++->image);
+			DrawGroundSprite(drss++->image);
 
-		for (; drss->image != 0; drss++) {
-			uint32 image = drss->image;
+			for (; drss->image != 0; drss++) {
+				uint32 image = drss->image;
 
-			if (image & PALETTE_MODIFIER_COLOR)
-				image |= ormod;
-			if (_display_opt & DO_TRANS_BUILDINGS) // show transparent depots
-				MAKE_TRANSPARENT(image);
+				if (image & PALETTE_MODIFIER_COLOR) image |= ormod;
+				if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 
-			AddSortableSpriteToDraw(image, ti->x | drss->subcoord_x,
-				ti->y | drss->subcoord_y, drss->width, drss->height, 0x14, ti->z);
+				AddSortableSpriteToDraw(image, ti->x | drss->subcoord_x,
+					ti->y | drss->subcoord_y, drss->width, drss->height, 0x14, ti->z
+				);
+			}
+			break;
 		}
 	}
 }
@@ -908,19 +932,25 @@ static uint GetSlopeZ_Road(const TileInfo* ti)
 
 	// check if it's a foundation
 	if (ti->tileh != 0) {
-		if ((ti->map5 & 0xE0) == 0) { /* road or crossing */
-			uint f = GetRoadFoundation(ti->tileh, ti->map5 & 0x3F);
-			if (f != 0) {
-				if (f < 15) {
-					// leveled foundation
-					return z + 8;
+		switch (GB(ti->map5, 4, 4)) {
+			case 0: // normal road
+			case 1: { // level crossing
+				uint f = GetRoadFoundation(ti->tileh, ti->map5 & 0x3F);
+				if (f != 0) {
+					if (f < 15) {
+						// leveled foundation
+						return z + 8;
+					}
+					// inclined foundation
+					th = _inclined_tileh[f - 15];
 				}
-				// inclined foundation
-				th = _inclined_tileh[f - 15];
+				break;
 			}
-		} else if ((ti->map5 & 0xF0) == 0x20) {
-			// depot
-			return z + 8;
+
+			case 2: // depot
+				return z + 8;
+
+			default: break;
 		}
 		return GetPartialZ(ti->x&0xF, ti->y&0xF, th) + z;
 	}
@@ -931,19 +961,25 @@ static uint GetSlopeTileh_Road(const TileInfo *ti)
 {
 	// check if it's a foundation
 	if (ti->tileh != 0) {
-		if ((ti->map5 & 0xE0) == 0) { /* road or crossing */
-			uint f = GetRoadFoundation(ti->tileh, ti->map5 & 0x3F);
-			if (f != 0) {
-				if (f < 15) {
-					// leveled foundation
-					return 0;
+		switch (GB(ti->map5, 4, 4)) {
+			case 0: // normal road
+			case 1: { // level crossing
+				uint f = GetRoadFoundation(ti->tileh, ti->map5 & 0x3F);
+				if (f != 0) {
+					if (f < 15) {
+						// leveled foundation
+						return 0;
+					}
+					// inclined foundation
+					return _inclined_tileh[f - 15];
 				}
-				// inclined foundation
-				return _inclined_tileh[f - 15];
+				break;
 			}
-		} else if ((ti->map5 & 0xF0) == 0x20) {
-			// depot
-			return 0;
+
+			case 2: // depot
+				return 0;
+
+			default: break;
 		}
 	}
 	return ti->tileh;
@@ -1125,20 +1161,26 @@ static const byte _roadveh_enter_depot_unk0[4] = {
 
 static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 {
-	if (IsLevelCrossing(tile)) {
-		if (v->type == VEH_Train && GB(_m[tile].m5, 2, 1) == 0) {
-			/* train crossing a road */
-			SndPlayVehicleFx(SND_0E_LEVEL_CROSSING, v);
-			SB(_m[tile].m5, 2, 1, 1);
-			MarkTileDirtyByTile(tile);
-		}
-	} else if (GB(_m[tile].m5, 4, 4) == 2) {
-		if (v->type == VEH_Road && v->u.road.frame == 11) {
-			if (_roadveh_enter_depot_unk0[GB(_m[tile].m5, 0, 2)] == v->u.road.state) {
-				RoadVehEnterDepot(v);
-				return 4;
+	switch (GB(_m[tile].m5, 4, 4)) {
+		case 1: // level crossing
+			if (v->type == VEH_Train && GB(_m[tile].m5, 2, 1) == 0) {
+				/* train crossing a road */
+				SndPlayVehicleFx(SND_0E_LEVEL_CROSSING, v);
+				SB(_m[tile].m5, 2, 1, 1);
+				MarkTileDirtyByTile(tile);
 			}
-		}
+			break;
+
+		case 2: // depot
+			if (v->type == VEH_Road && v->u.road.frame == 11) {
+				if (_roadveh_enter_depot_unk0[GB(_m[tile].m5, 0, 2)] == v->u.road.state) {
+					RoadVehEnterDepot(v);
+					return 4;
+				}
+			}
+			break;
+
+		default: break;
 	}
 	return 0;
 }
@@ -1164,15 +1206,21 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 	if (new_player != OWNER_SPECTATOR) {
 		SetTileOwner(tile, new_player);
 	}	else {
-		if (GB(_m[tile].m5, 4, 4) == 0) {
-			SetTileOwner(tile, OWNER_NONE);
-		} else if (IsLevelCrossing(tile)) {
-			_m[tile].m5 = (_m[tile].m5&8) ? 0x5 : 0xA;
-			SetTileOwner(tile, _m[tile].m3);
-			_m[tile].m3 = 0;
-			_m[tile].m4 &= 0x80;
-		} else {
-			DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+		switch (GB(_m[tile].m5, 4, 4)) {
+			case 0: // normal road
+				SetTileOwner(tile, OWNER_NONE);
+				break;
+
+			case 1: // level crossing
+				_m[tile].m5 = (_m[tile].m5&8) ? 0x5 : 0xA;
+				SetTileOwner(tile, _m[tile].m3);
+				_m[tile].m3 = 0;
+				_m[tile].m4 &= 0x80;
+				break;
+
+			default: // depot
+				DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+				break;
 		}
 	}
 }
