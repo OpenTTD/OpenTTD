@@ -34,7 +34,7 @@ static bool HasTileRoadAt(TileIndex tile, int i)
 	case MP_STREET:
 		b = _m[tile].m5;
 
-		switch (b & 0xF0) {
+		switch (GB(b, 4, 4)) {
 			case 0: break; // normal road
 			case 1: b = (b & 8 ? 5 : 10); break; // level crossing
 			case 2: return (~b & 3) == i; // depot
