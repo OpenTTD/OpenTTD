@@ -9,7 +9,7 @@
 #define APSTUDIO_HIDDEN_SYMBOLS
 #include "windows.h"
 #undef APSTUDIO_HIDDEN_SYMBOLS
-#include "afxres.h"
+#include "winres.h"
 
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
