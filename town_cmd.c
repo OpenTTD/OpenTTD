@@ -549,17 +549,18 @@ static bool TerraformTownTile(TileIndex tile, int edges, int dir)
 
 static void LevelTownLand(TileIndex tile)
 {
-	TileInfo ti;
+	uint tileh;
 
 	TILE_ASSERT(tile);
 
 	// Don't terraform if land is plain or if there's a house there.
-	FindLandscapeHeightByTile(&ti, tile);
-	if (ti.tileh == 0 || ti.type == MP_HOUSE) return;
+	if (IsTileType(tile, MP_HOUSE)) return;
+	tileh = GetTileSlope(tile, NULL);
+	if (tileh == 0) return;
 
 	// First try up, then down
-	if (!TerraformTownTile(tile, ~ti.tileh & 0xF, 1)) {
-		TerraformTownTile(tile, ti.tileh & 0xF, 0);
+	if (!TerraformTownTile(tile, ~tileh & 0xF, 1)) {
+		TerraformTownTile(tile, tileh & 0xF, 0);
 	}
 }
 
@@ -569,7 +570,6 @@ static void GrowTownInTile(TileIndex *tile_ptr, uint mask, int block, Town *t1)
 {
 	int a,b,rcmd;
 	TileIndex tmptile;
-	TileInfo ti;
 	uint i;
 	int j;
 	TileIndex tile = *tile_ptr;
@@ -658,21 +658,23 @@ static void GrowTownInTile(TileIndex *tile_ptr, uint mask, int block, Town *t1)
 		rcmd = 1 << i;
 	}
 
-	FindLandscapeHeightByTile(&ti, tile);
-
 	// Return if a water tile
-	if (ti.type == MP_WATER && ti.map5 == 0) return;
+	if (IsTileType(tile, MP_WATER) && _m[tile].m5 == 0) return;
 
 	// Determine direction of slope,
 	//  and build a road if not a special slope.
-	if ((i=0,ti.tileh != 3) &&
-			(i++,ti.tileh != 9) &&
-			(i++,ti.tileh != 12) &&
-			(i++,ti.tileh != 6)) {
+	switch (GetTileSlope(tile, NULL)) {
+		case  3: i = 0; break;
+		case  6: i = 3; break;
+		case  9: i = 1; break;
+		case 12: i = 2; break;
+
+		default:
 build_road_and_exit:
-		if (!CmdFailed(DoCommandByTile(tile, rcmd, t1->index, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD)))
-			_grow_town_result = -1;
-		return;
+			if (!CmdFailed(DoCommandByTile(tile, rcmd, t1->index, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD))) {
+				_grow_town_result = -1;
+			}
+			return;
 	}
 
 	tmptile = tile;
@@ -773,7 +775,6 @@ static bool GrowTown(Town *t)
 {
 	TileIndex tile;
 	const TileIndexDiffC *ptr;
-	TileInfo ti;
 	PlayerID old_player;
 
 	static const TileIndexDiffC _town_coord_mod[] = {
@@ -811,10 +812,9 @@ static bool GrowTown(Town *t)
 	// clearing some land and then building a road there.
 	tile = t->xy;
 	for (ptr = _town_coord_mod; ptr != endof(_town_coord_mod); ++ptr) {
-		FindLandscapeHeightByTile(&ti, tile);
-
 		// Only work with plain land that not already has a house with map5=0
-		if (ti.tileh == 0 && (ti.type != MP_HOUSE || ti.map5 != 0)) {
+		if ((!IsTileType(tile, MP_HOUSE) || _m[tile].m5 != 0) &&
+				GetTileSlope(tile, NULL) == 0) {
 			if (!CmdFailed(DoCommandByTile(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR))) {
 				DoCommandByTile(tile, GenRandomRoadBits(), t->index, DC_EXEC | DC_AUTO, CMD_BUILD_ROAD);
 				_current_player = old_player;

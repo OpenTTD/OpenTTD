@@ -840,10 +840,8 @@ static void AiNew_State_FindDepot(Player *p)
 			// Is the terrain clear?
 			if (IsTileType(tile + TileOffsByDir(j), MP_CLEAR) ||
 					IsTileType(tile + TileOffsByDir(j), MP_TREES)) {
-				TileInfo ti;
-				FindLandscapeHeightByTile(&ti, tile);
 				// If the current tile is on a slope (tileh != 0) then we do not allow this
-				if (ti.tileh != 0) continue;
+				if (GetTileSlope(tile, NULL) != 0) continue;
 				// Check if everything went okay..
 				r = AiNew_Build_Depot(p, tile + TileOffsByDir(j), j ^ 2, 0);
 				if (CmdFailed(r)) continue;

@@ -428,17 +428,17 @@ not_valid_below:;
 static bool DoCheckTunnelInWay(TileIndex tile, uint z, uint dir)
 {
 	TileIndexDiff delta = TileOffsByDir(dir);
-	TileInfo ti;
+	uint height;
 
 	do {
 		tile -= delta;
-		FindLandscapeHeightByTile(&ti, tile);
-	} while (z < ti.z);
+		height = GetTileZ(tile);
+	} while (z < tile);
 
-	if (z == ti.z &&
-			ti.type == MP_TUNNELBRIDGE &&
-			GB(ti.map5, 4, 4) == 0 &&
-			GB(ti.map5, 0, 2) == dir) {
+	if (z == tile &&
+			IsTileType(tile, MP_TUNNELBRIDGE) &&
+			GB(_m[tile].m5, 4, 4) == 0 &&
+			GB(_m[tile].m5, 0, 2) == dir) {
 		_error_message = STR_5003_ANOTHER_TUNNEL_IN_THE_WAY;
 		return false;
 	}

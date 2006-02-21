@@ -1691,27 +1691,29 @@ static int32 RemoveAirport(Station *st, uint32 flags)
  */
 int32 CmdBuildBuoy(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileInfo ti;
+	TileIndex tile = TileVirtXY(x, y);
 	Station *st;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	FindLandscapeHeight(&ti, x, y);
-
-	if (ti.type != MP_WATER || ti.tileh != 0 || ti.map5 != 0 || ti.tile == 0)
+	if (!IsTileType(tile, MP_WATER) ||
+			_m[tile].m5 != 0 ||
+			GetTileSlope(tile, NULL) != 0 ||
+			tile == 0) {
 		return_cmd_error(STR_304B_SITE_UNSUITABLE);
+	}
 
 	st = AllocateStation();
 	if (st == NULL) return CMD_ERROR;
 
-	st->town = ClosestTownFromTile(ti.tile, (uint)-1);
+	st->town = ClosestTownFromTile(tile, (uint)-1);
 	st->sign.width_1 = 0;
 
-	if (!GenerateStationName(st, ti.tile, 4)) return CMD_ERROR;
+	if (!GenerateStationName(st, tile, 4)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		StationInitialize(st, ti.tile);
-		st->dock_tile = ti.tile;
+		StationInitialize(st, tile);
+		st->dock_tile = tile;
 		st->facilities |= FACIL_DOCK;
 		/* Buoys are marked in the Station struct by this flag. Yes, it is this
 		 * braindead.. */
@@ -1720,7 +1722,7 @@ int32 CmdBuildBuoy(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		st->build_date = _date;
 
-		ModifyTile(ti.tile,
+		ModifyTile(tile,
 			MP_SETTYPE(MP_STATION) |
 			MP_MAP2 | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR | MP_MAPOWNER | MP_MAP5,
 			st->index,		/* map2 */
@@ -1805,41 +1807,42 @@ static const byte _dock_h_chk[4] = { 1,2,1,2 };
  */
 int32 CmdBuildDock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileInfo ti;
+	TileIndex tile = TileVirtXY(x, y);
+	TileIndex tile_cur;
 	int direction;
 	int32 cost;
-	TileIndex tile, tile_cur;
 	Station *st;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	FindLandscapeHeight(&ti, x, y);
+	switch (GetTileSlope(tile, NULL)) {
+		case  3: direction = 0; break;
+		case  6: direction = 3; break;
+		case  9: direction = 1; break;
+		case 12: direction = 2; break;
+		default: return_cmd_error(STR_304B_SITE_UNSUITABLE);
+	}
 
-	if ((direction=0,ti.tileh) != 3 &&
-			(direction++,ti.tileh) != 9 &&
-			(direction++,ti.tileh) != 12 &&
-			(direction++,ti.tileh) != 6)
-		return_cmd_error(STR_304B_SITE_UNSUITABLE);
+	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
-	if (!EnsureNoVehicle(ti.tile)) return CMD_ERROR;
-
-	cost = DoCommandByTile(ti.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	cost = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(cost)) return CMD_ERROR;
 
-	tile_cur = (tile=ti.tile) + TileOffsByDir(direction);
+	tile_cur = tile + TileOffsByDir(direction);
 
 	if (!EnsureNoVehicle(tile_cur)) return CMD_ERROR;
 
-	FindLandscapeHeightByTile(&ti, tile_cur);
-	if (ti.tileh != 0 || ti.type != MP_WATER) return_cmd_error(STR_304B_SITE_UNSUITABLE);
+	if (!IsTileType(tile_cur, MP_WATER) || GetTileSlope(tile_cur, NULL) != 0) {
+		return_cmd_error(STR_304B_SITE_UNSUITABLE);
+	}
 
 	cost = DoCommandByTile(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(cost)) return CMD_ERROR;
 
 	tile_cur = tile_cur + TileOffsByDir(direction);
-	FindLandscapeHeightByTile(&ti, tile_cur);
-	if (ti.tileh != 0 || ti.type != MP_WATER)
+	if (!IsTileType(tile_cur, MP_WATER) || GetTileSlope(tile_cur, NULL) != 0) {
 		return_cmd_error(STR_304B_SITE_UNSUITABLE);
+	}
 
 	/* middle */
 	st = GetStationAround(

@@ -620,25 +620,24 @@ int32 CmdRemoveLongRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  */
 int32 CmdBuildRoadDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileInfo ti;
 	int32 cost;
 	Depot *dep;
 	TileIndex tile;
+	uint tileh;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	if (p1 > 3) return CMD_ERROR; // check direction
 
-	FindLandscapeHeight(&ti, x, y);
-
-	tile = ti.tile;
+	tile = TileVirtXY(x, y);
 
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
-	if (ti.tileh != 0 && (
+	tileh = GetTileSlope(tile, NULL);
+	if (tileh != 0 && (
 				!_patches.build_on_slopes ||
-				IsSteepTileh(ti.tileh) ||
-				!CanBuildDepotByTileh(p1, ti.tileh)
+				IsSteepTileh(tileh) ||
+				!CanBuildDepotByTileh(p1, tileh)
 			)) {
 		return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 	}
