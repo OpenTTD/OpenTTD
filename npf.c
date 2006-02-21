@@ -697,11 +697,11 @@ static NPFFoundTargetData NPFRouteInternal(AyStarNode* start1, AyStarNode* start
 	assert(r != AYSTAR_STILL_BUSY);
 
 	if (result.best_bird_dist != 0) {
-		if (target) {
-			DEBUG(misc, 1) ("NPF: Could not find route to 0x%x from 0x%x.", target->dest_coords, start1->tile);
+		if (target != NULL) {
+			DEBUG(npf, 1) ("Could not find route to tile 0x%x from 0x%x.", target->dest_coords, start1->tile);
 		} else {
 			/* Assumption: target == NULL, so we are looking for a depot */
-			DEBUG(misc, 1) ("NPF: Could not find route to a depot from 0x%x.", start1->tile);
+			DEBUG(npf, 1) ("Could not find route to a depot from tile 0x%x.", start1->tile);
 		}
 
 	}
@@ -849,7 +849,7 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, 
 			best_result = result;
 	}
 	if (result.best_bird_dist != 0) {
-		DEBUG(misc, 1) ("NPF: Could not find route to any depot from 0x%x.", tile);
+		DEBUG(npf, 1) ("Could not find route to any depot from tile 0x%x.", tile);
 	}
 	return best_result;
 }
