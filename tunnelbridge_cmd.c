@@ -433,9 +433,9 @@ static bool DoCheckTunnelInWay(TileIndex tile, uint z, uint dir)
 	do {
 		tile -= delta;
 		height = GetTileZ(tile);
-	} while (z < tile);
+	} while (z < height);
 
-	if (z == tile &&
+	if (z == height &&
 			IsTileType(tile, MP_TUNNELBRIDGE) &&
 			GB(_m[tile].m5, 4, 4) == 0 &&
 			GB(_m[tile].m5, 0, 2) == dir) {
