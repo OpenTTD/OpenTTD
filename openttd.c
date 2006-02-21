@@ -349,7 +349,7 @@ int ttd_main(int argc, char* argv[])
 		case 'f': _dedicated_forks = true; break;
 		case 'n':
 			network = true;
-			network_conn = mgo_opt; // optional IP parameter, NULL if unset
+			network_conn = mgo.opt; // optional IP parameter, NULL if unset
 			break;
 		case 'b': _ai.network_client = true; break;
 		case 'r': ParseResolution(resolution, mgo.opt); break;
