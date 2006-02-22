@@ -336,36 +336,34 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		_error_message = STR_5009_LEVEL_LAND_OR_WATER_REQUIRED;
 		if (ti.tileh != 0 && ti.z >= ti_start.z) return CMD_ERROR;
 
-		// Find ship below
-		if (ti.type == MP_WATER && !EnsureNoVehicle(ti.tile)) {
-			_error_message = STR_980E_SHIP_IN_THE_WAY;
-			return CMD_ERROR;
-		}
+		switch (ti.type){
+			case MP_WATER:
+				if (!EnsureNoVehicle(ti.tile)) {
+					_error_message = STR_980E_SHIP_IN_THE_WAY;
+					return CMD_ERROR;
+				}
+				if (ti.map5 > 1) goto not_valid_below;
+				m5 = 0xC8;
+				break;
 
-		if (ti.type == MP_WATER) {
-			if (ti.map5 > 1) goto not_valid_below;
-			m5 = 0xC8;
-		} else if (ti.type == MP_RAILWAY) {
-			if (direction == 0) {
-				if (ti.map5 != 2) goto not_valid_below;
-			} else {
-				if (ti.map5 != 1) goto not_valid_below;
-			}
-			m5 = 0xE0;
-		} else if (ti.type == MP_STREET) {
-			if (direction == 0) {
-				if (ti.map5 != 5) goto not_valid_below;
-			} else {
-				if (ti.map5 != 10) goto not_valid_below;
-			}
-			m5 = 0xE8;
-		} else {
+			case MP_RAILWAY:
+				if (ti.map5 != (direction == 0 ? 2 : 1)) goto not_valid_below;
+				m5 = 0xE0;
+				break;
+
+			case MP_STREET:
+				if (ti.map5 != (direction == 0 ? 5 : 10)) goto not_valid_below;
+				m5 = 0xE8;
+				break;
+
+			default:
 not_valid_below:;
-			/* try and clear the middle landscape */
-			ret = DoCommandByTile(ti.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-			if (CmdFailed(ret)) return CMD_ERROR;
-			cost += ret;
-			m5 = 0xC0;
+				/* try and clear the middle landscape */
+				ret = DoCommandByTile(ti.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+				if (CmdFailed(ret)) return CMD_ERROR;
+				cost += ret;
+				m5 = 0xC0;
+				break;
 		}
 
 		/* do middle part of bridge */
