@@ -519,9 +519,8 @@ int32 CmdBuildTunnel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	} else {
 		ret = DoCommandByTile(end_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 		if (CmdFailed(ret)) return ret;
-		cost += ret;
 	}
-	cost += _price.build_tunnel;
+	cost += _price.build_tunnel + ret;
 
 	if (flags & DC_EXEC) {
 		SetTileType(start_tile, MP_TUNNELBRIDGE);
