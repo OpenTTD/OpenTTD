@@ -454,104 +454,6 @@ bool CheckTunnelInWay(TileIndex tile, int z)
 		DoCheckTunnelInWay(tile,z,3);
 }
 
-static byte _build_tunnel_bh;
-static byte _build_tunnel_railtype;
-
-static int32 DoBuildTunnel(int x, int y, int x2, int y2, uint32 flags, uint exc_tile)
-{
-	TileIndex end_tile;
-	int direction;
-	int32 cost, ret;
-	TileInfo ti;
-	uint z;
-
-	if ((uint)x > MapMaxX() * 16 - 1 || (uint)y > MapMaxY() * 16 - 1)
-		return CMD_ERROR;
-
-	/* check if valid, and make sure that (x,y) is smaller than (x2,y2) */
-	direction = 0;
-	if (x == x2) {
-		if (y == y2) return_cmd_error(STR_5008_CANNOT_START_AND_END_ON);
-		direction++;
-		if (y > y2) {
-			intswap(y,y2);
-			intswap(x,x2);
-			exc_tile |= 2;
-		}
-	} else if (y == y2) {
-		if (x > x2) {
-			intswap(y,y2);
-			intswap(x,x2);
-			exc_tile |= 2;
-		}
-	} else {
-		return_cmd_error(STR_500A_START_AND_END_MUST_BE_IN);
-	}
-
-	cost = 0;
-
-	FindLandscapeHeight(&ti, x2, y2);
-	end_tile = ti.tile;
-	z = ti.z;
-
-	if (exc_tile != 3) {
-		if ((direction ? 9U : 12U) != ti.tileh)
-			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
-		ret = DoCommandByTile(ti.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-		if (CmdFailed(ret)) return CMD_ERROR;
-		cost += ret;
-	}
-	cost += _price.build_tunnel;
-
-	for (;;) {
-		if (direction) y2-=16; else x2-=16;
-
-		if (x2 == x && y2 == y) break;
-
-		FindLandscapeHeight(&ti, x2, y2);
-		if (ti.z <= z) return CMD_ERROR;
-
-		if (!_cheats.crossing_tunnels.value && !CheckTunnelInWay(ti.tile, z))
-			return CMD_ERROR;
-
-		cost += _price.build_tunnel;
-		cost += (cost >> 3);
-
-		if (cost >= 400000000) cost = 400000000;
-	}
-
-	FindLandscapeHeight(&ti, x2, y2);
-	if (ti.z != z) return CMD_ERROR;
-
-	if (exc_tile != 1) {
-		if ((direction ? 6U : 3U) != ti.tileh)
-			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
-
-		ret = DoCommandByTile(ti.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-		if (CmdFailed(ret)) return CMD_ERROR;
-		cost += ret;
-	}
-
-	if (flags & DC_EXEC) {
-		ModifyTile(ti.tile,
-			MP_SETTYPE(MP_TUNNELBRIDGE) |
-			MP_MAP3LO | MP_MAPOWNER_CURRENT | MP_MAP5,
-			_build_tunnel_railtype, /* map3lo */
-			((_build_tunnel_bh << 1) | 2) - direction /* map5 */
-		);
-
-		ModifyTile(end_tile,
-			MP_SETTYPE(MP_TUNNELBRIDGE) |
-			MP_MAP3LO | MP_MAPOWNER_CURRENT | MP_MAP5,
-			_build_tunnel_railtype, /* map3lo */
-			(_build_tunnel_bh << 1) | (direction ? 3:0)/* map5 */
-		);
-
-		UpdateSignalsOnSegment(end_tile, direction?7:1);
-	}
-
-	return cost + _price.build_tunnel;
-}
 
 /** Build Tunnel.
  * @param x,y start tile coord of tunnel
@@ -560,53 +462,82 @@ static int32 DoBuildTunnel(int x, int y, int x2, int y2, uint32 flags, uint exc_
  */
 int32 CmdBuildTunnel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileInfo ti, tiorg;
-	int direction;
-	uint z;
-	static const int8 _build_tunnel_coord_mod[4+1] = { -16, 0, 16, 0, -16 };
-	static const byte _build_tunnel_tileh[4] = {3, 9, 12, 6};
-	TileIndex excavated_tile;
+	TileIndexDiff delta;
+	TileIndex start_tile;
+	TileIndex end_tile;
+	DiagDirection direction;
+	uint start_tileh;
+	uint end_tileh;
+	uint start_z;
+	uint end_z;
+	int32 cost;
+	int32 ret;
 
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
+	_build_tunnel_endtile = 0;
 
 	if (p1 != 0x200 && !ValParamRailtype(p1)) return CMD_ERROR;
 
-	_build_tunnel_railtype = GB(p1, 0, 8);
-	_build_tunnel_bh       = GB(p1, 8, 8);
+	start_tile = TileVirtXY(x, y);
+	start_tileh = GetTileSlope(start_tile, &start_z);
 
-	_build_tunnel_endtile = 0;
-	excavated_tile = 0;
-
-	FindLandscapeHeight(&tiorg, x, y);
-
-	if (!EnsureNoVehicle(tiorg.tile))
-		return CMD_ERROR;
-
-	if (!(direction=0, tiorg.tileh == 12) &&
-			!(direction++, tiorg.tileh ==  6) &&
-			!(direction++, tiorg.tileh ==  3) &&
-			!(direction++, tiorg.tileh ==  9)) {
-		return_cmd_error(STR_500B_SITE_UNSUITABLE_FOR_TUNNEL);
+	switch (start_tileh) {
+		case  3: direction = DIAGDIR_SW; break;
+		case  6: direction = DIAGDIR_SE; break;
+		case  9: direction = DIAGDIR_NW; break;
+		case 12: direction = DIAGDIR_NE; break;
+		default: return_cmd_error(STR_500B_SITE_UNSUITABLE_FOR_TUNNEL);
 	}
 
-	z = tiorg.z;
-	do {
-		x += _build_tunnel_coord_mod[direction];
-		y += _build_tunnel_coord_mod[direction+1];
-		FindLandscapeHeight(&ti, x, y);
-	} while (z != ti.z);
-	_build_tunnel_endtile = ti.tile;
+	ret = DoCommandByTile(start_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	if (CmdFailed(ret)) return ret;
+	cost = _price.build_tunnel + ret;
 
+	delta = TileOffsByDir(direction);
+	end_tile = start_tile;
+	for (;;) {
+		end_tile += delta;
+		end_tileh = GetTileSlope(end_tile, &end_z);
 
-	if (!EnsureNoVehicle(ti.tile)) return CMD_ERROR;
+		if (start_z == end_z) break;
 
-	if (ti.tileh != _build_tunnel_tileh[direction]) {
-		if (CmdFailed(DoCommandByTile(ti.tile, ti.tileh & ~_build_tunnel_tileh[direction], 0, flags, CMD_TERRAFORM_LAND)))
-			return_cmd_error(STR_5005_UNABLE_TO_EXCAVATE_LAND);
-		excavated_tile = 1;
+		if (!_cheats.crossing_tunnels.value && !CheckTunnelInWay(end_tile, start_z)) {
+			return CMD_ERROR;
+		}
+
+		cost += _price.build_tunnel;
+		cost += cost >> 3;
+		if (cost >= 400000000) cost = 400000000;
 	}
 
-	return DoBuildTunnel(x, y, tiorg.x, tiorg.y, flags, excavated_tile);
+	// if the command fails from here on we want the end tile to be highlighted
+	_build_tunnel_endtile = end_tile;
+
+	// slope of end tile must be complementary to the slope of the start tile
+	if (end_tileh != (15 ^ start_tileh)) {
+		ret = DoCommandByTile(end_tile, end_tileh & start_tileh, 0, flags, CMD_TERRAFORM_LAND);
+		if (CmdFailed(ret)) return_cmd_error(STR_5005_UNABLE_TO_EXCAVATE_LAND);
+	} else {
+		ret = DoCommandByTile(end_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+		if (CmdFailed(ret)) return ret;
+		cost += ret;
+	}
+	cost += _price.build_tunnel;
+
+	if (flags & DC_EXEC) {
+		SetTileType(start_tile, MP_TUNNELBRIDGE);
+		SetTileOwner(start_tile, _current_player);
+		_m[start_tile].m3 = GB(p1, 0, 4); // rail type (if any)
+		_m[start_tile].m5 = (GB(p1, 9, 1) << 2) | direction; // transport type and entrance direction
+
+		SetTileType(end_tile, MP_TUNNELBRIDGE);
+		SetTileOwner(end_tile, _current_player);
+		_m[end_tile].m3 = GB(p1, 0, 4); // rail type (if any)
+		_m[end_tile].m5 = (GB(p1, 9, 1) << 2) | (direction ^ 2); // transport type and entrance direction
+
+		if (GB(p1, 9, 1) == 0) UpdateSignalsOnSegment(start_tile, direction << 1);
+	}
+
+	return cost;
 }
 
 TileIndex CheckTunnelBusy(TileIndex tile, uint *length)
