@@ -136,7 +136,6 @@ enum SaveLoadTypes {
 };
 
 typedef byte SaveLoadType;
-typedef uint32 OffSetType;
 
 /** SaveLoad type struct. Do NOT use this directly but use the SLE_ macros defined just below! */
 typedef struct SaveLoad {
@@ -149,17 +148,14 @@ typedef struct SaveLoad {
 	 * variable, or the offset within a struct which is then bound to a variable
 	 * during runtime. Decision on which one to use is controlled by the function
 	 * that is called to save it. address: SlGlobList, offset: SlObject */
-	union {
-		void *address;      /// address of variable
-		OffSetType offset;  /// offset of variable in the struct (max offset is 65536)
-	} s;
+	void *address;      /// address of variable OR offset of variable in the struct (max offset is 65536)
 } SaveLoad;
 
 /* Same as SaveLoad but global variables are used (for better readability); */
 typedef SaveLoad SaveLoadGlobVarList;
 
 /* Simple variables, references (pointers) and arrays */
-#define SLE_GENERAL(cmd, base, variable, type, length, from, to) {cmd, type, length, from, to, {(void*)offsetof(base, variable)}}
+#define SLE_GENERAL(cmd, base, variable, type, length, from, to) {cmd, type, length, from, to, (void*)offsetof(base, variable)}
 #define SLE_CONDVAR(base, variable, type, from, to) SLE_GENERAL(SL_VAR, base, variable, type, 0, from, to)
 #define SLE_CONDREF(base, variable, type, from, to) SLE_GENERAL(SL_REF, base, variable, type, 0, from, to)
 #define SLE_CONDARR(base, variable, type, length, from, to) SLE_GENERAL(SL_ARR, base, variable, type, length, from, to)
@@ -176,7 +172,7 @@ typedef SaveLoad SaveLoadGlobVarList;
 #define SLE_INCLUDE(base, variable, include_index) SLE_GENERAL(SL_INCLUDE, base, variable, 0, 0, include_index, 0)
 
 /* The same as the ones at the top, only the offset is given directly; used for unions */
-#define SLE_GENERALX(cmd, offset, type, param1, param2) {cmd, type, 0, param1, param2, {(void*)(offset)}}
+#define SLE_GENERALX(cmd, offset, type, param1, param2) {cmd, type, 0, param1, param2, (void*)(offset)}
 #define SLE_CONDVARX(offset, type, from, to) SLE_GENERALX(SL_VAR, offset, type, from, to)
 #define SLE_CONDREFX(offset, type, from, to) SLE_GENERALX(SL_REF, offset, type, from, to)
 
@@ -187,10 +183,10 @@ typedef SaveLoad SaveLoadGlobVarList;
 #define SLE_INCLUDEX(offset, type) SLE_GENERALX(SL_INCLUDE, offset, type, 0, SL_MAX_VERSION)
 
 /* End marker */
-#define SLE_END() {SL_END, 0, 0, 0, 0, {(void*)0}}
+#define SLE_END() {SL_END, 0, 0, 0, 0, NULL}
 
 /* Simple variables, references (pointers) and arrays, but for global variables */
-#define SLEG_GENERAL(cmd, variable, type, length, from, to) {cmd, type, length, from, to, {&variable}}
+#define SLEG_GENERAL(cmd, variable, type, length, from, to) {cmd, type, length, from, to, (void*)&variable}
 
 #define SLEG_CONDVAR(variable, type, from, to) SLEG_GENERAL(SL_VAR, variable, type, 0, from, to)
 #define SLEG_CONDREF(variable, type, from, to) SLEG_GENERAL(SL_REF, variable, type, 0, from, to)
@@ -202,7 +198,7 @@ typedef SaveLoad SaveLoadGlobVarList;
 #define SLEG_ARR(variable, type) SLEG_CONDARR(variable, type, lengthof(variable), SL_MAX_VERSION)
 #define SLEG_STR(variable, type) SLEG_CONDSTR(variable, type, lengthof(variable), SL_MAX_VERSION)
 
-#define SLEG_END() {SL_END, 0, 0, 0, 0, {NULL}}
+#define SLEG_END() {SL_END, 0, 0, 0, 0, NULL}
 
 /** Checks if the savegame is below major.minor.
  */

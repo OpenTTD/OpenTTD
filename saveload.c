@@ -580,7 +580,7 @@ size_t SlCalcObjMemberLength(const SaveLoad *sld)
 			case SL_VAR: return SlCalcConvFileLen(sld->conv);
 			case SL_REF: return SlCalcRefLen();
 			case SL_ARR: return SlCalcArrayLen(sld->length, sld->conv);
-			case SL_STR: return SlCalcStringLen(sld->s.address, sld->length);
+			case SL_STR: return SlCalcStringLen(sld->address, sld->length);
 			default: NOT_REACHED();
 			}
 			break;
@@ -655,7 +655,7 @@ void SlObject(void *object, const SaveLoad *sld)
 	}
 
 	for (; sld->cmd != SL_END; sld++) {
-		void *ptr = (byte*)object + sld->s.offset;
+		void *ptr = (byte*)object + (unsigned long)sld->address;
 		SlObjectMember(ptr, sld);
 	}
 }
@@ -672,7 +672,7 @@ void SlGlobList(const SaveLoadGlobVarList *sldg)
 	}
 
 	for (; sldg->cmd != SL_END; sldg++) {
-		SlObjectMember(sldg->s.address, (const SaveLoad*)sldg);
+		SlObjectMember(sldg->address, (const SaveLoad*)sldg);
 	}
 }
 
