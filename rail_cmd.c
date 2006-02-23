@@ -4,6 +4,7 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
+#include "road.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "map.h"
@@ -348,9 +349,9 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 			if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
-			if ((m5 & 0xF0) == 0 && ( // normal road?
-						(track == TRACK_DIAG1 && m5 == 0x05) ||
-						(track == TRACK_DIAG2 && m5 == 0x0A) // correct direction?
+			if (GetRoadType(tile) == ROAD_NORMAL && (
+						(track == TRACK_DIAG1 && m5 == ROAD_Y) ||
+						(track == TRACK_DIAG2 && m5 == ROAD_X) // correct direction?
 					)) {
 				if (flags & DC_EXEC) {
 					_m[tile].m3 = GetTileOwner(tile);

@@ -4,6 +4,7 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
+#include "road.h"
 #include "table/strings.h"
 #include "map.h"
 #include "tile.h"
@@ -288,7 +289,7 @@ static bool EnumRoadSignalFindDepot(TileIndex tile, RoadFindDepotData *rfdd, int
 	tile += TileOffsByDir(_road_pf_directions[track]);
 
 	if (IsTileType(tile, MP_STREET) &&
-			GB(_m[tile].m5, 4, 4) == 2 &&
+			GetRoadType(tile) == ROAD_DEPOT &&
 			IsTileOwner(tile, rfdd->owner)) {
 
 		if (length < rfdd->best_length) {
@@ -978,7 +979,7 @@ static int RoadFindPathToDest(Vehicle *v, TileIndex tile, int enterdir)
 	}
 
 	if (IsTileType(tile, MP_STREET)) {
-		if (GB(_m[tile].m5, 4, 4) == 2 && IsTileOwner(tile, v->owner)) {
+		if (GetRoadType(tile) == ROAD_DEPOT && IsTileOwner(tile, v->owner)) {
 			/* Road depot */
 			bitmask |= _road_veh_fp_ax_or[GB(_m[tile].m5, 0, 2)];
 		}
@@ -1052,9 +1053,7 @@ static int RoadFindPathToDest(Vehicle *v, TileIndex tile, int enterdir)
 	} else {
 		if (IsTileType(desttile, MP_STREET)) {
 			m5 = _m[desttile].m5;
-			if ((m5 & 0xF0) == 0x20)
-				/* We are heading for a Depot */
-				goto do_it;
+			if (GetRoadType(desttile) == ROAD_DEPOT) goto do_it;
 		} else if (IsTileType(desttile, MP_STATION)) {
 			m5 = _m[desttile].m5;
 			if (IS_BYTE_INSIDE(m5, 0x43, 0x4B)) {

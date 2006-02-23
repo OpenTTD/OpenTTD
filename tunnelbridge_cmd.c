@@ -7,6 +7,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "road.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "functions.h"
@@ -352,7 +353,10 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				break;
 
 			case MP_STREET:
-				if (ti.map5 != (direction == 0 ? 5 : 10)) goto not_valid_below;
+				if (GetRoadType(ti.tile) != ROAD_NORMAL ||
+						GetRoadBits(ti.tile) != (direction == 0 ? ROAD_Y : ROAD_X)) {
+					goto not_valid_below;
+				}
 				m5 = 0xE8;
 				break;
 

@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "road.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "functions.h"
@@ -27,17 +28,15 @@ void RoadVehEnterDepot(Vehicle *v);
 
 static bool HasTileRoadAt(TileIndex tile, int i)
 {
-	byte b;
+	RoadBits b;
 
 	switch (GetTileType(tile)) {
 		case MP_STREET:
-			b = _m[tile].m5;
-
-			switch (GB(b, 4, 4)) {
-				case 0: break; // normal road
-				case 1: b = (b & 8 ? 5 : 10); break; // level crossing
-				case 2: return (~b & 3) == i; // depot
-				default: return false;
+			switch (GetRoadType(tile)) {
+				case ROAD_NORMAL:   b = GetRoadBits(tile); break;
+				case ROAD_CROSSING: b = (_m[tile].m5 & 8 ? ROAD_Y : ROAD_X); break;
+				case ROAD_DEPOT:    return (~_m[tile].m5 & 3) == i;
+				default:            return false;
 			}
 			break;
 
@@ -50,7 +49,7 @@ static bool HasTileRoadAt(TileIndex tile, int i)
 			// bail out, if not a bridge middle part with road underneath
 			if ((_m[tile].m5 & 0xF8) != 0xE8) return false;
 			// road direction perpendicular to bridge
-			b = (_m[tile].m5 & 0x01) ? 10 : 5;
+			b = (_m[tile].m5 & 0x01) ? ROAD_X : ROAD_Y;
 
 		default:
 			return false;
@@ -137,12 +136,13 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	/* true if the roadpiece was always removeable,
 	 * false if it was a center piece. Affects town ratings drop */
 	bool edge_road;
-	byte pieces = (byte)p1;
+	RoadBits pieces;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	/* Road pieces are max 4 bitset values (NE, NW, SE, SW) */
-	if (pieces >> 4) return CMD_ERROR;
+	if (p1 >> 4) return CMD_ERROR;
+	pieces = p1;
 
 	FindLandscapeHeight(&ti, x, y);
 	tile = ti.tile;
@@ -179,9 +179,9 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if (!EnsureNoVehicleZ(tile, TilePixelHeight(tile))) return CMD_ERROR;
 
 			if ((ti.map5 & 0xE9) == 0xE8) {
-				if (pieces & 10) goto return_error;
+				if (pieces & ROAD_X) goto return_error;
 			} else if ((ti.map5 & 0xE9) == 0xE9) {
-				if (pieces & 5) goto return_error;
+				if (pieces & ROAD_Y) goto return_error;
 			} else {
 				goto return_error;
 			}
@@ -201,11 +201,11 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			// removal allowance depends on difficulty setting
 			if (!CheckforTownRating(flags, t, ROAD_REMOVE)) return CMD_ERROR;
 
-			switch (GB(ti.map5, 4, 4)) {
-				case 0: { // normal road
+			switch (GetRoadType(ti.tile)) {
+				case ROAD_NORMAL: {
 					byte c = pieces, t2;
 
-					if (ti.tileh != 0  && (ti.map5 == 5 || ti.map5 == 10)) {
+					if (ti.tileh != 0  && (ti.map5 == ROAD_Y || ti.map5 == ROAD_X)) {
 						c |= (c & 0xC) >> 2;
 						c |= (c & 0x3) << 2;
 					}
@@ -233,15 +233,15 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					return cost;
 				}
 
-				case 1: { // level crossing
+				case ROAD_CROSSING: {
 					byte c;
 
 					if (!(ti.map5 & 8)) {
 						c = 2;
-						if (pieces & 5) goto return_error;
+						if (pieces & ROAD_Y) goto return_error;
 					} else {
 						c = 1;
-						if (pieces & 10) goto return_error;
+						if (pieces & ROAD_X) goto return_error;
 					}
 
 					cost = _price.remove_road * 2;
@@ -258,7 +258,8 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					return cost;
 				}
 
-				default: // depot
+				default:
+				case ROAD_DEPOT:
 					goto return_error;
 			}
 
@@ -268,14 +269,6 @@ return_error:;
 	}
 }
 
-
-enum {
-	ROAD_NW = 1, // NW road track
-	ROAD_SW = 2, // SW road track
-	ROAD_SE = 4, // SE road track
-	ROAD_NE = 8, // NE road track
-	ROAD_ALL = (ROAD_NW | ROAD_SW | ROAD_SE | ROAD_NE)
-};
 
 static const byte _valid_tileh_slopes_road[3][15] = {
 	// set of normal ones
@@ -372,21 +365,22 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	switch (ti.type) {
 		case MP_STREET:
-			switch (GB(ti.map5, 4, 4)) {
-				case 0: // normal road
-					if ((pieces & (byte)ti.map5) == pieces) {
+			switch (GetRoadType(ti.tile)) {
+				case ROAD_NORMAL:
+					if ((GetRoadBits(ti.tile) & pieces) == pieces) {
 						return_cmd_error(STR_1007_ALREADY_BUILT);
 					}
 					existing = ti.map5;
 					break;
 
-				case 1: // level crossing
-					if (pieces != (ti.map5 & 8 ? 5 : 10)) {
+				case ROAD_CROSSING:
+					if (pieces != (ti.map5 & 8 ? ROAD_Y : ROAD_X)) { // XXX is this correct?
 						return_cmd_error(STR_1007_ALREADY_BUILT);
 					}
 					goto do_clear;
 
-				default: // depot
+				default:
+				case ROAD_DEPOT:
 					goto do_clear;
 			}
 			break;
@@ -403,10 +397,10 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			}
 
 			if (ti.map5 == 2) {
-				if (pieces & 5) goto do_clear;
+				if (pieces & ROAD_Y) goto do_clear;
 				m5 = 0x10;
 			} else if (ti.map5 == 1) {
-				if (pieces & 10) goto do_clear;
+				if (pieces & ROAD_X) goto do_clear;
 				m5 = 0x18;
 			} else {
 				goto do_clear;
@@ -468,7 +462,7 @@ do_clear:;
 	if (cost && (!_patches.build_on_slopes || _is_old_ai_player))
 		return CMD_ERROR;
 
-	if (ti.type != MP_STREET || (ti.map5 & 0xF0) != 0) {
+	if (ti.type != MP_STREET || GetRoadType(ti.tile) != ROAD_NORMAL) {
 		cost += DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	} else {
 		// Don't put the pieces that already exist
@@ -698,11 +692,9 @@ static int32 RemoveRoadDepot(TileIndex tile, uint32 flags)
 
 static int32 ClearTile_Road(TileIndex tile, byte flags)
 {
-	byte m5 = _m[tile].m5;
-
-	switch (GB(_m[tile].m5, 4, 4)) {
-		case 0: { // normal road
-			byte b = m5 & 0xF;
+	switch (GetRoadType(tile)) {
+		case ROAD_NORMAL: {
+			RoadBits b = GetRoadBits(tile);
 
 			if (!((1 << b) & (M(1)|M(2)|M(4)|M(8))) &&
 					(!(flags & DC_AI_BUILDING) || !IsTileOwner(tile, OWNER_TOWN)) &&
@@ -712,14 +704,12 @@ static int32 ClearTile_Road(TileIndex tile, byte flags)
 			return DoCommandByTile(tile, b, 0, flags, CMD_REMOVE_ROAD);
 		}
 
-		case 1: { // level crossing
+		case ROAD_CROSSING: {
 			int32 ret;
 
-			if (flags & DC_AUTO) {
-				return_cmd_error(STR_1801_MUST_REMOVE_ROAD_FIRST);
-			}
+			if (flags & DC_AUTO) return_cmd_error(STR_1801_MUST_REMOVE_ROAD_FIRST);
 
-			ret = DoCommandByTile(tile, (m5 & 8 ? 5 : 10), 0, flags, CMD_REMOVE_ROAD);
+			ret = DoCommandByTile(tile, (_m[tile].m5 & 8 ? ROAD_Y : ROAD_X), 0, flags, CMD_REMOVE_ROAD);
 			if (CmdFailed(ret)) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
@@ -728,7 +718,8 @@ static int32 ClearTile_Road(TileIndex tile, byte flags)
 			return ret;
 		}
 
-		default: // depot
+		default:
+		case ROAD_DEPOT:
 			if (flags & DC_AUTO) {
 				return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
 			}
@@ -1040,7 +1031,7 @@ static void TileLoop_Road(TileIndex tile)
 			break;
 	}
 
-	if (_m[tile].m5 & 0xE0) return;
+	if (GetRoadType(tile) == ROAD_DEPOT) return;
 
 	if (GB(_m[tile].m4, 4, 3) < 6) {
 		t = ClosestTownFromTile(tile, (uint)-1);
@@ -1052,7 +1043,7 @@ static void TileLoop_Road(TileIndex tile)
 			// Show an animation to indicate road work
 			if (t->road_build_months != 0 &&
 					!(DistanceManhattan(t->xy, tile) >= 8 && grp == 0) &&
-					(_m[tile].m5 == 5 || _m[tile].m5 == 10)) {
+					(_m[tile].m5 == ROAD_Y || _m[tile].m5 == ROAD_X)) {
 				if (GetTileSlope(tile, NULL) == 0 && EnsureNoVehicle(tile) && CHANCE16(1, 20)) {
 					_m[tile].m4 |= (GB(_m[tile].m4, 4, 3) <=  2 ? 7 : 6) << 4;
 
@@ -1106,7 +1097,7 @@ void ShowRoadDepotWindow(TileIndex tile);
 
 static void ClickTile_Road(TileIndex tile)
 {
-	if (GB(_m[tile].m5, 4, 4) == 2) ShowRoadDepotWindow(tile);
+	if (GetRoadType(tile) == ROAD_DEPOT) ShowRoadDepotWindow(tile);
 }
 
 static const byte _road_trackbits[16] = {
@@ -1122,19 +1113,18 @@ static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode)
 
 		case TRANSPORT_ROAD:
 			switch (GB(_m[tile].m5, 4, 4)) {
-				case 0: // normal road
-					if (!_road_special_gettrackstatus && GB(_m[tile].m4, 4, 3) >= 6) {
-						return 0;
-					}
-					return _road_trackbits[GB(_m[tile].m5, 0, 4)] * 0x101;
+				case ROAD_NORMAL:
+					return !_road_special_gettrackstatus && GB(_m[tile].m4, 4, 3) >= 6 ?
+						0 : _road_trackbits[GetRoadBits(tile)] * 0x101;
 
-				case 1: { // level crossing
+				case ROAD_CROSSING: {
 					uint32 r = (_m[tile].m5 & 8 ? 0x202 : 0x101);
 					if (_m[tile].m5 & 4) r *= 0x10001;
 					return r;
 				}
 
-				default: // depot
+				default:
+				case ROAD_DEPOT:
 					break;
 			}
 			break;
@@ -1145,9 +1135,6 @@ static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode)
 }
 
 static const StringID _road_tile_strings[] = {
-	STR_1818_ROAD_RAIL_LEVEL_CROSSING,
-	STR_1817_ROAD_VEHICLE_DEPOT,
-
 	STR_1814_ROAD,
 	STR_1814_ROAD,
 	STR_1814_ROAD,
@@ -1160,10 +1147,12 @@ static const StringID _road_tile_strings[] = {
 
 static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
 {
-	int i = GB(_m[tile].m5, 4, 4);
-	if (i == 0) i = GB(_m[tile].m4, 4, 3) + 3;
-	td->str = _road_tile_strings[i - 1];
 	td->owner = GetTileOwner(tile);
+	switch (GetRoadType(tile)) {
+		case ROAD_CROSSING: td->str = STR_1818_ROAD_RAIL_LEVEL_CROSSING; break;
+		case ROAD_DEPOT: td->str = STR_1817_ROAD_VEHICLE_DEPOT; break;
+		default: td->str = _road_tile_strings[GB(_m[tile].m4, 4, 3)]; break;
+	}
 }
 
 static const byte _roadveh_enter_depot_unk0[4] = {
@@ -1172,8 +1161,8 @@ static const byte _roadveh_enter_depot_unk0[4] = {
 
 static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 {
-	switch (GB(_m[tile].m5, 4, 4)) {
-		case 1: // level crossing
+	switch (GetRoadType(tile)) {
+		case ROAD_CROSSING:
 			if (v->type == VEH_Train && GB(_m[tile].m5, 2, 1) == 0) {
 				/* train crossing a road */
 				SndPlayVehicleFx(SND_0E_LEVEL_CROSSING, v);
@@ -1182,7 +1171,7 @@ static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 			}
 			break;
 
-		case 2: // depot
+		case ROAD_DEPOT:
 			if (v->type == VEH_Road && v->u.road.frame == 11) {
 				if (_roadveh_enter_depot_unk0[GB(_m[tile].m5, 0, 2)] == v->u.road.state) {
 					RoadVehEnterDepot(v);
@@ -1217,19 +1206,20 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 	if (new_player != OWNER_SPECTATOR) {
 		SetTileOwner(tile, new_player);
 	}	else {
-		switch (GB(_m[tile].m5, 4, 4)) {
-			case 0: // normal road
+		switch (GetRoadType(tile)) {
+			case ROAD_NORMAL:
 				SetTileOwner(tile, OWNER_NONE);
 				break;
 
-			case 1: // level crossing
+			case ROAD_CROSSING:
 				_m[tile].m5 = (_m[tile].m5&8) ? 0x5 : 0xA;
 				SetTileOwner(tile, _m[tile].m3);
 				_m[tile].m3 = 0;
 				_m[tile].m4 &= 0x80;
 				break;
 
-			default: // depot
+			default:
+			case ROAD_DEPOT:
 				DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 				break;
 		}
