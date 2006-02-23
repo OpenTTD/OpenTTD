@@ -136,7 +136,7 @@ enum SaveLoadTypes {
 };
 
 typedef byte SaveLoadType;
-typedef uint16 OffSetType;
+typedef uint32 OffSetType;
 
 /** SaveLoad type struct. Do NOT use this directly but use the SLE_ macros defined just below! */
 typedef struct SaveLoad {
