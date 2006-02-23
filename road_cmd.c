@@ -43,9 +43,9 @@ static bool HasTileRoadAt(TileIndex tile, int i)
 		break;
 
 	case MP_STATION:
-		b = _m[tile].m5;
-		if (!IS_BYTE_INSIDE(b, 0x43, 0x43 + 8)) return false;
-		return ((~(b - 0x43) & 3) == i);
+		return
+			IS_BYTE_INSIDE(_m[tile].m5, 0x43, 0x43 + 8) &&
+			(~(_m[tile].m5 - 0x43) & 3) == i;
 
 	case MP_TUNNELBRIDGE:
 		mask = GetRoadBitsByTile(tile);
@@ -373,14 +373,22 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	switch (ti.type) {
 		case MP_STREET:
-			if (!(ti.map5 & 0xF0)) {
-				if ((pieces & (byte)ti.map5) == pieces)
-					return_cmd_error(STR_1007_ALREADY_BUILT);
-				existing = ti.map5;
-			} else {
-				if (!(ti.map5 & 0xE0) && pieces != ((ti.map5 & 8) ? 5 : 10))
-					return_cmd_error(STR_1007_ALREADY_BUILT);
-				goto do_clear;
+			switch (GB(ti.map5, 4, 4)) {
+				case 0: // normal road
+					if ((pieces & (byte)ti.map5) == pieces) {
+						return_cmd_error(STR_1007_ALREADY_BUILT);
+					}
+					existing = ti.map5;
+					break;
+
+				case 1: // level crossing
+					if (pieces != (ti.map5 & 8 ? 5 : 10)) {
+						return_cmd_error(STR_1007_ALREADY_BUILT);
+					}
+					goto do_clear;
+
+				default: // depot
+					goto do_clear;
 			}
 			break;
 
@@ -1108,27 +1116,31 @@ static const byte _road_trackbits[16] = {
 
 static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode)
 {
-	if (mode == TRANSPORT_RAIL) {
-		if (!IsLevelCrossing(tile))
-			return 0;
-		return _m[tile].m5 & 8 ? 0x101 : 0x202;
-	} else if  (mode == TRANSPORT_ROAD) {
-		byte b = _m[tile].m5;
-		if ((b & 0xF0) == 0) {
-			/* Ordinary road */
-			if (!_road_special_gettrackstatus && GB(_m[tile].m4, 4, 3) >= 6)
-				return 0;
-			return _road_trackbits[b&0xF] * 0x101;
-		} else if (IsLevelCrossing(tile)) {
-			/* Crossing */
-			uint32 r = 0x101;
-			if (b&8) r <<= 1;
+	switch (mode) {
+		case TRANSPORT_RAIL:
+			if (!IsLevelCrossing(tile)) return 0;
+			return _m[tile].m5 & 8 ? 0x101 : 0x202;
 
-			if (b&4) {
-				r *= 0x10001;
+		case TRANSPORT_ROAD:
+			switch (GB(_m[tile].m5, 4, 4)) {
+				case 0: // normal road
+					if (!_road_special_gettrackstatus && GB(_m[tile].m4, 4, 3) >= 6) {
+						return 0;
+					}
+					return _road_trackbits[GB(_m[tile].m5, 0, 4)] * 0x101;
+
+				case 1: { // level crossing
+					uint32 r = (_m[tile].m5 & 8 ? 0x202 : 0x101);
+					if (_m[tile].m5 & 4) r *= 0x10001;
+					return r;
+				}
+
+				default: // depot
+					break;
 			}
-			return r;
-		}
+			break;
+
+		default: break;
 	}
 	return 0;
 }
