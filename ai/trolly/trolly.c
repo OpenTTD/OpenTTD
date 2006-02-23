@@ -21,6 +21,7 @@
 #include "../../openttd.h"
 #include "../../debug.h"
 #include "../../functions.h"
+#include "../../road.h"
 #include "../../table/strings.h"
 #include "../../map.h"
 #include "../../tile.h"
@@ -793,8 +794,7 @@ static void AiNew_State_FindDepot(Player *p)
 		tile = p->ainew.path_info.route[i];
 		for (j = 0; j < 4; j++) {
 			if (IsTileType(tile + TileOffsByDir(j), MP_STREET)) {
-				// Its a street, test if it is a depot
-				if (_m[tile + TileOffsByDir(j)].m5 & 0x20) {
+				if (GetRoadType(tile + TileOffsByDir(j)) == ROAD_DEPOT) {
 					// We found a depot, is it ours? (TELL ME!!!)
 					if (IsTileOwner(tile + TileOffsByDir(j), _current_player)) {
 						// Now, is it pointing to the right direction.........
@@ -1100,7 +1100,7 @@ static void AiNew_State_BuildDepot(Player *p)
 	int res = 0;
 	assert(p->ainew.state == AI_STATE_BUILD_DEPOT);
 
-	if (IsTileType(p->ainew.depot_tile, MP_STREET) && _m[p->ainew.depot_tile].m5 & 0x20) {
+	if (IsTileType(p->ainew.depot_tile, MP_STREET) && GetRoadType(p->ainew.depot_tile) == ROAD_DEPOT) {
 		if (IsTileOwner(p->ainew.depot_tile, _current_player)) {
 			// The depot is already builded!
 			p->ainew.state = AI_STATE_BUILD_VEHICLE;

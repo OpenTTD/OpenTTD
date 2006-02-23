@@ -4,6 +4,7 @@
 #include "../../openttd.h"
 #include "../../functions.h"
 #include "../../map.h"
+#include "../../road.h"
 #include "../../tile.h"
 #include "../../player.h"
 #include "../../vehicle.h"
@@ -2506,12 +2507,12 @@ static int32 AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBlockData 
 
 		if (p->mode == 2) {
 			if (IsTileType(c, MP_STREET) &&
-					(_m[c].m5 & 0xF0) == 0 &&
-					(_m[c].m5 & p->attr) != 0) {
+					GetRoadType(c) == ROAD_NORMAL &&
+					(GetRoadBits(c) & p->attr) != 0) {
 				roadflag |= 2;
 
 				// all bits are already built?
-				if ((_m[c].m5 & p->attr) == p->attr) continue;
+				if ((GetRoadBits(c) & p->attr) == p->attr) continue;
 			}
 
 			ret = DoCommandByTile(c, p->attr, 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD);
@@ -2548,7 +2549,7 @@ clear_town_stuff:;
 
 			if (GetTileSlope(c, NULL) != 0) return CMD_ERROR;
 
-			if (!IsTileType(c, MP_STREET) || (_m[c].m5 & 0xF0) != 0) {
+			if (!IsTileType(c, MP_STREET) || GetRoadType(c) != ROAD_NORMAL) {
 				ret = DoCommandByTile(c, 0, 0, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_LANDSCAPE_CLEAR);
 				if (CmdFailed(ret)) return CMD_ERROR;
 			}
@@ -2726,7 +2727,7 @@ static bool AiEnumFollowRoad(TileIndex tile, AiRoadEnum *a, int track, uint leng
 	if (dist <= a->best_dist) {
 		TileIndex tile2 = TILE_MASK(tile + TileOffsByDir(_dir_by_track[track]));
 
-		if (IsTileType(tile2, MP_STREET) && GB(_m[tile2].m5, 4, 4) == 0) {
+		if (IsTileType(tile2, MP_STREET) && GetRoadType(tile2) == ROAD_NORMAL) {
 			a->best_dist = dist;
 			a->best_tile = tile;
 			a->best_track = track;
@@ -3631,7 +3632,7 @@ pos_3:
 
 		if (IsLevelCrossing(tile)) goto is_rail_crossing;
 
-		if ((_m[tile].m5 & 0xF0) == 0x20) { // depot
+		if (GetRoadType(tile) == ROAD_DEPOT) {
 			uint dir;
 
 			// Check if there are any stations around.

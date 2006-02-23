@@ -4,6 +4,7 @@
 #include "openttd.h"
 #include "functions.h"
 #include "strings.h"
+#include "road.h"
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "map.h"
@@ -489,7 +490,7 @@ static bool IsRoadAllowedHere(TileIndex tile, int dir)
 			// No, try to build one in the direction.
 			// if that fails clear the land, and if that fails exit.
 			// This is to make sure that we can build a road here later.
-			if (CmdFailed(DoCommandByTile(tile, (dir&1)?0xA:0x5, 0, DC_AUTO, CMD_BUILD_ROAD)) &&
+			if (CmdFailed(DoCommandByTile(tile, (dir & 1 ? ROAD_X : ROAD_Y), 0, DC_AUTO, CMD_BUILD_ROAD)) &&
 					CmdFailed(DoCommandByTile(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR)))
 				return false;
 		}

@@ -403,7 +403,6 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Track track = (Track)p2;
 	TrackBits trackbit;
 	TileIndex tile;
-	byte m5;
 	int32 cost = _price.remove_rail;
 
 	if (!ValParamTrackOrientation(p2)) return CMD_ERROR;
@@ -442,27 +441,30 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			_m[tile].m5 = _m[tile].m5 & 0xC7;
 			break;
 
-		case MP_STREET:
+		case MP_STREET: {
+			RoadBits bits;
+
 			if (!IsLevelCrossing(tile)) return CMD_ERROR;
 
 			/* This is a crossing, let's check if the direction is correct */
 			if (_m[tile].m5 & 8) {
-				m5 = 5;
 				if (track != TRACK_DIAG1)
 					return CMD_ERROR;
+				bits = ROAD_Y;
 			} else {
-				m5 = 10;
 				if (track != TRACK_DIAG2)
 					return CMD_ERROR;
+				bits = ROAD_X;
 			}
 
 			if (!(flags & DC_EXEC))
 				return _price.remove_rail;
 
-			_m[tile].m5 = m5;
 			SetTileOwner(tile, _m[tile].m3);
 			_m[tile].m2 = 0;
+			_m[tile].m5 = (ROAD_NORMAL << 4) | bits;
 			break;
+		}
 
 		case MP_RAILWAY:
 			if (!IsPlainRailTile(tile))

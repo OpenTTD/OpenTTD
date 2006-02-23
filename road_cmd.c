@@ -1112,7 +1112,7 @@ static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode)
 			return _m[tile].m5 & 8 ? 0x101 : 0x202;
 
 		case TRANSPORT_ROAD:
-			switch (GB(_m[tile].m5, 4, 4)) {
+			switch (GetRoadType(tile)) {
 				case ROAD_NORMAL:
 					return !_road_special_gettrackstatus && GB(_m[tile].m4, 4, 3) >= 6 ?
 						0 : _road_trackbits[GetRoadBits(tile)] * 0x101;

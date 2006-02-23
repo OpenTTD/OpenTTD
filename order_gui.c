@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "road.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "functions.h"
@@ -206,7 +207,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			break;
 
 		case MP_STREET:
-			if ((_m[tile].m5 & 0xF0) == 0x20 && v->type == VEH_Road && IsTileOwner(tile, _local_player)) {
+			if (GetRoadType(tile) == ROAD_DEPOT && v->type == VEH_Road && IsTileOwner(tile, _local_player)) {
 				order.type = OT_GOTO_DEPOT;
 				order.flags = OF_PART_OF_ORDERS;
 				order.station = GetDepotByTile(tile)->index;
