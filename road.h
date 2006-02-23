@@ -20,6 +20,11 @@ static inline RoadBits GetRoadBits(TileIndex tile)
 	return GB(_m[tile].m5, 0, 4);
 }
 
+static inline RoadBits GetCrossingRoadBits(TileIndex tile)
+{
+	return _m[tile].m5 & 8 ? ROAD_Y : ROAD_X;
+}
+
 typedef enum RoadType {
 	ROAD_NORMAL,
 	ROAD_CROSSING,

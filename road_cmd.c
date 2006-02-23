@@ -34,7 +34,7 @@ static bool HasTileRoadAt(TileIndex tile, int i)
 		case MP_STREET:
 			switch (GetRoadType(tile)) {
 				case ROAD_NORMAL:   b = GetRoadBits(tile); break;
-				case ROAD_CROSSING: b = (_m[tile].m5 & 8 ? ROAD_Y : ROAD_X); break;
+				case ROAD_CROSSING: b = GetCrossingRoadBits(tile); break;
 				case ROAD_DEPOT:    return (~_m[tile].m5 & 3) == i;
 				default:            return false;
 			}
@@ -709,7 +709,7 @@ static int32 ClearTile_Road(TileIndex tile, byte flags)
 
 			if (flags & DC_AUTO) return_cmd_error(STR_1801_MUST_REMOVE_ROAD_FIRST);
 
-			ret = DoCommandByTile(tile, (_m[tile].m5 & 8 ? ROAD_Y : ROAD_X), 0, flags, CMD_REMOVE_ROAD);
+			ret = DoCommandByTile(tile, GetCrossingRoadBits(tile), 0, flags, CMD_REMOVE_ROAD);
 			if (CmdFailed(ret)) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
@@ -1212,10 +1212,10 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 				break;
 
 			case ROAD_CROSSING:
-				_m[tile].m5 = (_m[tile].m5&8) ? 0x5 : 0xA;
 				SetTileOwner(tile, _m[tile].m3);
 				_m[tile].m3 = 0;
 				_m[tile].m4 &= 0x80;
+				_m[tile].m5 = GetCrossingRoadBits(tile);
 				break;
 
 			default:
