@@ -48,10 +48,10 @@ static bool HasTileRoadAt(TileIndex tile, int i)
 			(~(_m[tile].m5 - 0x43) & 3) == i;
 
 	case MP_TUNNELBRIDGE:
-		mask = GetRoadBitsByTile(tile);
-		b = 10; if (mask & 1) break;
-		b = 5;  if (mask & 2) break;
-		return false;
+		// bail out, if not a bridge middle part with road underneath
+		if ((_m[tile].m5 & 0xF8) != 0xE8) return false;
+		// road direction perpendicular to bridge
+		b = (_m[tile].m5 & 0x01) ? 10 : 5;
 
 	default:
 		return false;
