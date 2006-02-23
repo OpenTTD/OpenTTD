@@ -27,34 +27,33 @@ void RoadVehEnterDepot(Vehicle *v);
 
 static bool HasTileRoadAt(TileIndex tile, int i)
 {
-	int mask;
 	byte b;
 
 	switch (GetTileType(tile)) {
-	case MP_STREET:
-		b = _m[tile].m5;
+		case MP_STREET:
+			b = _m[tile].m5;
 
-		switch (GB(b, 4, 4)) {
-			case 0: break; // normal road
-			case 1: b = (b & 8 ? 5 : 10); break; // level crossing
-			case 2: return (~b & 3) == i; // depot
-			default: return false;
-		}
-		break;
+			switch (GB(b, 4, 4)) {
+				case 0: break; // normal road
+				case 1: b = (b & 8 ? 5 : 10); break; // level crossing
+				case 2: return (~b & 3) == i; // depot
+				default: return false;
+			}
+			break;
 
-	case MP_STATION:
-		return
-			IS_BYTE_INSIDE(_m[tile].m5, 0x43, 0x43 + 8) &&
-			(~(_m[tile].m5 - 0x43) & 3) == i;
+		case MP_STATION:
+			return
+				IS_BYTE_INSIDE(_m[tile].m5, 0x43, 0x43 + 8) &&
+				(~(_m[tile].m5 - 0x43) & 3) == i;
 
-	case MP_TUNNELBRIDGE:
-		// bail out, if not a bridge middle part with road underneath
-		if ((_m[tile].m5 & 0xF8) != 0xE8) return false;
-		// road direction perpendicular to bridge
-		b = (_m[tile].m5 & 0x01) ? 10 : 5;
+		case MP_TUNNELBRIDGE:
+			// bail out, if not a bridge middle part with road underneath
+			if ((_m[tile].m5 & 0xF8) != 0xE8) return false;
+			// road direction perpendicular to bridge
+			b = (_m[tile].m5 & 0x01) ? 10 : 5;
 
-	default:
-		return false;
+		default:
+			return false;
 	}
 
 	return HASBIT(b, i);
