@@ -882,7 +882,6 @@ static void QZ_SetPortAlphaOpaque(void)
 - (void)appDidHide:(NSNotification*)note
 {
 	_cocoa_video_data.active = false;
-//	DEBUG(driver, 1)("cocoa_v: appDidHide");
 }
 
 
@@ -900,7 +899,6 @@ static void QZ_SetPortAlphaOpaque(void)
 	[ self restoreCachedImage ];
 
 	_cocoa_video_data.active = true;
-//	DEBUG(driver, 1)("cocoa_v: appDidUnhide");
 }
 
 
@@ -932,25 +930,21 @@ static void QZ_SetPortAlphaOpaque(void)
 - (void)windowDidBecomeKey:(NSNotification*)aNotification
 {
 	_cocoa_video_data.active = true;
-//	DEBUG(driver, 1)("cocoa_v: windowDidBecomeKey");
 }
 
 - (void)windowDidResignKey:(NSNotification*)aNotification
 {
 	_cocoa_video_data.active = false;
-//	DEBUG(driver, 1)("cocoa_v: windowDidResignKey");
 }
 
 - (void)windowDidBecomeMain:(NSNotification*)aNotification
 {
 	_cocoa_video_data.active = true;
-//	DEBUG(driver, 1)("cocoa_v: windowDidBecomeMain");
 }
 
 - (void)windowDidResignMain:(NSNotification*)aNotification
 {
 	_cocoa_video_data.active = false;
-//	DEBUG(driver, 1)("cocoa_v: windowDidResignMain");
 }
 
 @end
@@ -1483,9 +1477,7 @@ static void QZ_DrawScreen(void)
 	num_dirty_rects = _cocoa_video_data.num_dirty_rects;
 
 	/* Check if we need to do anything */
-	if (_cocoa_video_data.num_dirty_rects == 0 ) {
-		return;
-	}
+	if (_cocoa_video_data.num_dirty_rects == 0 ) return;
 
 	if (num_dirty_rects >= MAX_DIRTY_RECTS) {
 		num_dirty_rects = 1;
@@ -1807,7 +1799,6 @@ static void QZ_WarpCursor(int x, int y)
 	CGWarpMouseCursorPosition(cgp);
 
 	/* Generate the mouse moved event */
-//	SDL_PrivateMouseMotion(0, 0, x, y);
 }
 
 static void QZ_ShowMouse(void)
@@ -1848,7 +1839,6 @@ static void QZ_HideMouse(void)
 /* Display the in game quit confirmation dialog */
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication*) sender
 {
-//	DEBUG(driver, 1)("cocoa_v: applicationShouldTerminate");
 
 	QZ_AskQuit();
 
