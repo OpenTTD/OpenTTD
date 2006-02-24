@@ -56,4 +56,15 @@ static inline void AddTreeCounter(TileIndex t, int a) { _m[t].m2 += a; }
 static inline uint GetTreeCounter(TileIndex t) { return GB(_m[t].m2, 0, 4); }
 static inline void SetTreeCounter(TileIndex t, uint c) { SB(_m[t].m2, 0, 4, c); }
 
+
+static inline void MakeTree(TileIndex t, TreeType type, uint count, uint growth, TreeGround ground, uint density)
+{
+	SetTileType(t, MP_TREES);
+	SetTileOwner(t, OWNER_NONE);
+	_m[t].m2 = density << 6 | ground << 4 | 0;
+	_m[t].m3 = type;
+	_m[t].m4 = 0 << 5 | 0 << 2;
+	_m[t].m5 = count << 6 | growth;
+}
+
 #endif

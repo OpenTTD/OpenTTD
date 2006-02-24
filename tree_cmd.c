@@ -42,12 +42,7 @@ static void PlaceTree(TileIndex tile, uint32 r)
 	TreeType tree = GetRandomTreeType(tile, GB(r, 24, 8));
 
 	if (tree != TR_INVALID) {
-		SetTileType(tile, MP_TREES);
-		SetTreeType(tile, tree);
-		SetFenceSE(tile, 0);
-		SetFenceSW(tile, 0);
-		SetTreeCount(tile, GB(r, 22, 2));
-		SetTreeGrowth(tile, min(GB(r, 16, 3), 6));
+		MakeTree(tile, tree, GB(r, 22, 2), min(GB(r, 16, 3), 6), TR_GRASS, 0);
 
 		// above snowline?
 		if (_opt.landscape == LT_HILLY && GetTileZ(tile) > _opt.snow_line) {
@@ -189,6 +184,7 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 
 					if (flags & DC_EXEC) {
 						TreeType treetype;
+						uint growth;
 
 						if (_game_mode != GM_EDITOR && _current_player < MAX_PLAYERS) {
 							Town *t = ClosestTownFromTile(tile, _patches.dist_local_authority);
@@ -202,19 +198,12 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 							if (treetype == TR_INVALID) treetype = TR_CACTUS;
 						}
 
+						growth = _game_mode == GM_EDITOR ? 3 : 0;
 						switch (GetClearGround(tile)) {
-							case CL_ROUGH: SetTreeGroundDensity(tile, TR_ROUGH, 0); break;
-							case CL_SNOW:  SetTreeGroundDensity(tile, TR_SNOW_DESERT, GetClearDensity(tile)); break;
-							default:       SetTreeGroundDensity(tile, TR_GRASS, 0); break;
+							case CL_ROUGH: MakeTree(tile, treetype, 0, growth, TR_ROUGH, 0); break;
+							case CL_SNOW:  MakeTree(tile, treetype, 0, growth, TR_SNOW_DESERT, GetClearDensity(tile)); break;
+							default:       MakeTree(tile, treetype, 0, growth, TR_GRASS, 0); break;
 						}
-						SetTreeCounter(tile, 0);
-
-						SetTileType(tile, MP_TREES);
-						SetTreeType(tile, treetype);
-						SetFenceSE(tile, 0);
-						SetFenceSW(tile, 0);
-						SetTreeCount(tile, 0);
-						SetTreeGrowth(tile, _game_mode == GM_EDITOR ? 3 : 0);
 						MarkTileDirtyByTile(tile);
 
 						if (_game_mode == GM_EDITOR && IS_INT_INSIDE(treetype, TR_RAINFOREST, TR_CACTUS))
@@ -484,21 +473,13 @@ static void TileLoop_Trees(TileIndex tile)
 						switch (GetClearGround(tile)) {
 							case CL_GRASS:
 								if (GetClearDensity(tile) != 3) return;
-								SetTreeGroundDensity(tile, TR_GRASS, 0);
+								MakeTree(tile, treetype, 0, 0, TR_GRASS, 0);
 								break;
 
-							case CL_ROUGH: SetTreeGroundDensity(tile, TR_ROUGH, 0); break;
-							case CL_SNOW:  SetTreeGroundDensity(tile, TR_SNOW_DESERT, GetClearDensity(tile)); break;
+							case CL_ROUGH: MakeTree(tile, treetype, 0, 0, TR_ROUGH, 0); break;
+							case CL_SNOW:  MakeTree(tile, treetype, 0, 0, TR_SNOW_DESERT, GetClearDensity(tile)); break;
 							default: return;
 						}
-						SetTreeCounter(tile, 0);
-
-						SetTileType(tile, MP_TREES);
-						SetTreeType(tile, treetype);
-						SetFenceSE(tile, 0);
-						SetFenceSW(tile, 0);
-						SetTreeCount(tile, 0);
-						SetTreeGrowth(tile, 0);
 						break;
 					}
 
@@ -544,12 +525,7 @@ void OnTick_Trees(void)
 			IsTileType(tile, MP_CLEAR) &&
 			(ct = GetClearGround(tile), ct == CL_GRASS || ct == CL_ROUGH) &&
 			(tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TR_INVALID) {
-		SetTileType(tile, MP_TREES);
-		SetTreeGroundDensity(tile, ct == CL_ROUGH ? TR_ROUGH : TR_GRASS, 0);
-		SetTreeCounter(tile, 0);
-		SetTreeType(tile, tree);
-		SetTreeCount(tile, 0);
-		SetTreeGrowth(tile, 0);
+		MakeTree(tile, tree, 0, 0, ct == CL_ROUGH ? TR_ROUGH : TR_GRASS, 0);
 	}
 
 	// byte underflow
@@ -562,15 +538,10 @@ void OnTick_Trees(void)
 			(ct = GetClearGround(tile), ct == CL_GRASS || ct == CL_ROUGH || ct == CL_SNOW) &&
 			(tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TR_INVALID) {
 		switch (ct) {
-			case CL_GRASS: SetTreeGroundDensity(tile, TR_GRASS, 0); break;
-			case CL_ROUGH: SetTreeGroundDensity(tile, TR_ROUGH, 0); break;
-			default:       SetTreeGroundDensity(tile, TR_SNOW_DESERT, GetClearDensity(tile)); break;
+			case CL_GRASS: MakeTree(tile, tree, 0, 0, TR_GRASS, 0); break;
+			case CL_ROUGH: MakeTree(tile, tree, 0, 0, TR_ROUGH, 0); break;
+			default:       MakeTree(tile, tree, 0, 0, TR_SNOW_DESERT, GetClearDensity(tile)); break;
 		}
-		SetTreeCounter(tile, 0);
-		SetTileType(tile, MP_TREES);
-		SetTreeType(tile, tree);
-		SetTreeCount(tile, 0);
-		SetTreeGrowth(tile, 0);
 	}
 }
 
