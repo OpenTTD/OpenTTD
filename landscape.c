@@ -14,6 +14,7 @@
 #include "command.h"
 #include "vehicle.h"
 #include "variables.h"
+#include "void.h"
 
 extern const TileTypeProcs
 	_tile_type_clear_procs,
@@ -447,10 +448,8 @@ void InitializeLandscape(void)
 	}
 
 	// create void tiles at the border
-	for (i = 0; i < MapMaxY(); ++i)
-		SetTileType(i * MapSizeX() + MapMaxX(), MP_VOID);
-	for (i = 0; i < MapSizeX(); ++i)
-		SetTileType(MapSizeX() * MapMaxY() + i, MP_VOID);
+	for (i = 0; i < MapMaxY(); ++i) MakeVoid(i * MapSizeX() + MapMaxX());
+	for (i = 0; i < MapSizeX(); ++i) MakeVoid(MapSizeX() * MapMaxY() + i);
 }
 
 void ConvertGroundTilesIntoWaterTiles(void)

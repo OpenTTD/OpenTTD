@@ -9,6 +9,7 @@
 #include "strings.h"
 #include "map.h"
 #include "tile.h"
+#include "void.h"
 
 #define VARDEF
 #include "openttd.h"
@@ -1059,10 +1060,8 @@ static void UpdateVoidTiles(void)
 {
 	uint i;
 
-	for (i = 0; i < MapMaxY(); ++i)
-		SetTileType(i * MapSizeX() + MapMaxX(), MP_VOID);
-	for (i = 0; i < MapSizeX(); ++i)
-		SetTileType(MapSizeX() * MapMaxY() + i, MP_VOID);
+	for (i = 0; i < MapMaxY(); ++i) MakeVoid(i * MapSizeX() + MapMaxX());
+	for (i = 0; i < MapSizeX(); ++i) MakeVoid(MapSizeX() * MapMaxY() + i);
 }
 
 // since savegame version 6.0 each sign has an "owner", signs without owner (from old games are set to 255)
