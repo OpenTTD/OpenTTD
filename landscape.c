@@ -427,19 +427,20 @@ void RunTileLoop(void)
 
 void InitializeLandscape(void)
 {
-	uint map_size;
-	uint i;
+	uint maxx = MapMaxX();
+	uint maxy = MapMaxY();
+	uint sizex = MapSizeX();
+	uint x;
+	uint y;
 
-
-	map_size = MapSize();
-	for (i = 0; i < map_size; i++) {
-		MakeClear(i, CL_GRASS, 3);
-		_m[i].extra       = 0;
+	for (y = 0; y < maxy; y++) {
+		for (x = 0; x < maxx; x++) {
+			MakeClear(sizex * y + x, CL_GRASS, 3);
+			SetTileHeight(sizex * y + x, 0);
+		}
+		MakeVoid(sizex * y + x);
 	}
-
-	// create void tiles at the border
-	for (i = 0; i < MapMaxY(); ++i) MakeVoid(i * MapSizeX() + MapMaxX());
-	for (i = 0; i < MapSizeX(); ++i) MakeVoid(MapSizeX() * MapMaxY() + i);
+	for (x = 0; x < sizex; x++) MakeVoid(sizex * y + x);
 }
 
 void ConvertGroundTilesIntoWaterTiles(void)
