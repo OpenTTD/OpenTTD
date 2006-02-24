@@ -239,12 +239,7 @@ void DrawFoundation(TileInfo *ti, uint f)
 
 void DoClearSquare(TileIndex tile)
 {
-	SetTileType(tile, MP_CLEAR);
-	SetTileOwner(tile, OWNER_NONE);
-	_m[tile].m2 = 0;
-	_m[tile].m3 = 0;
-	_m[tile].m4 = 0;
-	SetClearGroundDensity(tile, CL_GRASS, _generating_world ? 3 : 0);
+	MakeClear(tile, CL_GRASS, _generating_world ? 3 : 0);
 	MarkTileDirtyByTile(tile);
 }
 
@@ -438,12 +433,7 @@ void InitializeLandscape(void)
 
 	map_size = MapSize();
 	for (i = 0; i < map_size; i++) {
-		_m[i].type_height = MP_CLEAR << 4;
-		_m[i].m1          = OWNER_NONE;
-		_m[i].m2          = 0;
-		_m[i].m3          = 0;
-		_m[i].m4          = 0;
-		_m[i].m5          = 3;
+		MakeClear(i, CL_GRASS, 3);
 		_m[i].extra       = 0;
 	}
 

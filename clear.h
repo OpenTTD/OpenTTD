@@ -4,6 +4,7 @@
 #define CLEAR_H
 
 #include "macros.h"
+#include "tile.h"
 
 /* ground type, m5 bits 2...4
  * valid densities (bits 0...1) in comments after the enum
@@ -42,5 +43,16 @@ static inline void SetFenceSE(TileIndex t, uint h) { SB(_m[t].m4, 2, 3, h); }
 
 static inline uint GetFenceSW(TileIndex t) { return GB(_m[t].m4, 5, 3); }
 static inline void SetFenceSW(TileIndex t, uint h) { SB(_m[t].m4, 5, 3, h); }
+
+
+static inline void MakeClear(TileIndex t, ClearGround g, uint density)
+{
+	SetTileType(t, MP_CLEAR);
+	SetTileOwner(t, OWNER_NONE);
+	_m[t].m2 = 0;
+	_m[t].m3 = 0;
+	_m[t].m4 = 0 << 5 | 0 << 2;
+	_m[t].m5 = 0 << 5 | g << 2 | density;
+}
 
 #endif

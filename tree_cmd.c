@@ -515,12 +515,10 @@ static void TileLoop_Trees(TileIndex tile)
 				SetTreeGrowth(tile, 3);
 			} else {
 				/* just one tree, change type into MP_CLEAR */
-				SetTileType(tile, MP_CLEAR);
-				SetTileOwner(tile, OWNER_NONE);
 				switch (GetTreeGround(tile)) {
-					case TR_GRASS: SetClearGroundDensity(tile, CL_GRASS, 3); break;
-					case TR_ROUGH: SetClearGroundDensity(tile, CL_ROUGH, 3); break;
-					default:       SetClearGroundDensity(tile, CL_SNOW, GetTreeDensity(tile)); break;
+					case TR_GRASS: MakeClear(tile, CL_GRASS, 3); break;
+					case TR_ROUGH: MakeClear(tile, CL_ROUGH, 3); break;
+					default:       MakeClear(tile, CL_SNOW, GetTreeDensity(tile)); break;
 				}
 			}
 			break;
