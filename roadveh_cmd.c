@@ -983,17 +983,12 @@ static int RoadFindPathToDest(Vehicle *v, TileIndex tile, int enterdir)
 			/* Road depot */
 			bitmask |= _road_veh_fp_ax_or[GB(_m[tile].m5, 0, 2)];
 		}
-	} else if (IsTileType(tile, MP_STATION)) {
-		if (IsTileOwner(tile, OWNER_NONE) || IsTileOwner(tile, v->owner)) {
+	} else if (IsTileType(tile, MP_STATION) && IsRoadStationTile(tile)) {
+		if (IsTileOwner(tile, v->owner)) {
 			/* Our station */
-			const Station* st = GetStation(_m[tile].m2);
-			byte val = _m[tile].m5;
-			if (v->cargo_type != CT_PASSENGERS) {
-				if (IS_BYTE_INSIDE(val, 0x43, 0x47) && (_patches.roadveh_queue || st->truck_stops->status&3))
-					bitmask |= _road_veh_fp_ax_or[(val-0x43)&3];
-			} else {
-				if (IS_BYTE_INSIDE(val, 0x47, 0x4B) && (_patches.roadveh_queue || st->bus_stops->status&3))
-					bitmask |= _road_veh_fp_ax_or[(val-0x47)&3];
+			const RoadStop *rs = GetRoadStopByTile(tile, (v->cargo_type == CT_PASSENGERS) ? RS_BUS : RS_TRUCK);
+			if (rs != NULL && (_patches.roadveh_queue || GB(rs->status, 0, 2) != 0)) {
+				bitmask |= _road_veh_fp_ax_or[GetRoadStationDir(tile)];
 			}
 		}
 	}
