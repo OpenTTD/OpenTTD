@@ -405,6 +405,9 @@
 				RelativePath=".\aystar.h">
 			</File>
 			<File
+				RelativePath=".\clear.h">
+			</File>
+			<File
 				RelativePath=".\command.h">
 			</File>
 			<File
@@ -534,6 +537,9 @@
 				RelativePath=".\rail.h">
 			</File>
 			<File
+				RelativePath=".\road.h">
+			</File>
+			<File
 				RelativePath=".\saveload.h">
 			</File>
 			<File
@@ -576,6 +582,9 @@
 				RelativePath=".\town.h">
 			</File>
 			<File
+				RelativePath=".\train.h">
+			</File>
+			<File
 				RelativePath=".\variables.h">
 			</File>
 			<File
@@ -586,6 +595,9 @@
 			</File>
 			<File
 				RelativePath=".\viewport.h">
+			</File>
+			<File
+				RelativePath=".\void.h">
 			</File>
 			<File
 				RelativePath=".\waypoint.h">

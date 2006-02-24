@@ -538,6 +538,10 @@ SOURCE=.\aystar.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\clear.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\command.h
 # End Source File
 # Begin Source File
@@ -682,6 +686,10 @@ SOURCE=.\rail.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\road.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\saveload.h
 # End Source File
 # Begin Source File
@@ -730,6 +738,10 @@ SOURCE=.\town.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\train.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\variables.h
 # End Source File
 # Begin Source File
@@ -743,6 +755,10 @@ SOURCE=.\vehicle_gui.h
 # Begin Source File
 
 SOURCE=.\viewport.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\void.h
 # End Source File
 # Begin Source File
 
