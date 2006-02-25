@@ -1,5 +1,11 @@
 # this file detects what OS and libs the computer have/are running
 
+ifndef CONFIG_VERSION
+CONFIG_VERSION:=0
+endif
+
+ifeq ($(shell expr $(CONFIG_VERSION) \< 9), 1)
+
 # Automatically recognize if building on Win32
 ifdef WINDIR
 ifndef UNIX
@@ -105,4 +111,6 @@ endif
 # cygwin have problems with libpng, so we will just disable it for now until the problem is solved
 ifdef CYGWIN
 WITH_PNG:=
+endif
+
 endif
