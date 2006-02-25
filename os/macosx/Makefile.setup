@@ -54,7 +54,7 @@ ifndef LDFLAGS_PPC
 	LDFLAGS_PPC:= -Wl,-syslibroot,/Developer/SDKs/MacOSX10.2.8.sdk
 endif
 ifndef PPC_CC
-	PPC_CC:=powerpc-apple-darwin8-gcc-4.0.0
+	PPC_CC:=$(shell ls /usr/bin/powerpc-apple-darwin*-gcc* | tail -n 1)
 endif
 ifndef CFLAGS_x86
 	CFLAGS_x86:= -isysroot /Developer/SDKs/MacOSX10.4u.sdk
@@ -63,7 +63,7 @@ ifndef LDFLAGS_x86
 	LDFLAGS_x86:= -Wl,-syslibroot,/Developer/SDKs/MacOSX10.4u.sdk
 endif
 ifndef x86_CC
-	x86_CC:=i686-apple-darwin8-gcc-4.0.0
+	x86_CC:=$(shell ls /usr/bin/i686-apple-darwin*-gcc* | tail -n 1)
 endif
 ifdef WITH_PNG
 	ifndef LIBPNG_PPC_CONFIG
