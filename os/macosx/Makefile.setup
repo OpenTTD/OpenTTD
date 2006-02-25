@@ -11,22 +11,29 @@ endif
 endif
 
 ifdef RELEASE
-ifndef FAT_BINARY
+ifndef UNIVERSAL_BINARY
 $(warning Compiling a release build, that is not a universal binary)
 endif
 endif
 
-ifndef FAT_BINARY
+ifdef TRIPPLE_BINARY
+ifdef DEBUG
+$(error no G5 optimisation is made in debug builds, so tripple binaries aren't possible. Use UNIVERSAL_BINARY instead if you really want a universal debug build)
+endif
+UNIVERSAL_BINARY:=1
+endif
+
+ifndef UNIVERSAL_BINARY
 ifndef JAGUAR
 ifeq ($(shell uname), Darwin)
 # it's a hardware mac, not crosscompiling
-$(Q)$(CC_HOST) os/macosx/G5_detector.c -o os/macosx/G5_detector
+$(shell $(CC_HOST) os/macosx/G5_detector.c -o os/macosx/G5_detector)
 IS_G5:=$(shell os/macosx/G5_detector)
 endif
 endif
 endif
 
-ifdef FAT_BINARY
+ifdef UNIVERSAL_BINARY
 ifndef STATIC
 $(warning Compiling a universal binary, that is not static. Adding static flag)
 STATIC:=1
@@ -86,7 +93,7 @@ ifdef JAGUAR
 	LDFLAGS:= $(LDFLAGS_PPC)
 endif
 
-ifdef FAT_BINARY
+ifdef UNIVERSAL_BINARY
 	# set up config files
 	ifndef SKIP_LIB_TEST
 		ifdef WITH_PNG
@@ -100,21 +107,20 @@ $(error no x86 libpng found)
 			endif
 		endif
 	endif
-
-	ifdef UNIVERSAL_x86_PART
-		LIBPNG-CONFIG:=$(LIBPNG_x86_CONFIG)
-		SDL-CONFIG:=$(SDL_x86_CONFIG)
-		CC_TARGET:=$(x86_CC)
-		# clear the cached list of PPC libs
-		LIBS:=
-		OBJS:=
-		CFLAGS:= $(CFLAGS_x86) -arch i386
-		LDFLAGS:= $(LDFLAGS_x86)
-	else
+	LIBS:=
+	OBJS:=
+	ifdef UNIVERSAL_PPC_PART
 		LIBPNG-CONFIG:=$(LIBPNG_PPC_CONFIG)
 		SDL-CONFIG:=$(SDL_PPC_CONFIG)
 		CC_TARGET:=$(PPC_CC)
 		CFLAGS:= $(CFLAGS_PPC) -arch ppc
 		LDFLAGS:= $(LDFLAGS_PPC)
+	else
+		LIBPNG-CONFIG:=$(LIBPNG_x86_CONFIG)
+		SDL-CONFIG:=$(SDL_x86_CONFIG)
+		CC_TARGET:=$(x86_CC)
+		# clear the cached list of PPC libs
+		CFLAGS:= $(CFLAGS_x86) -arch i386
+		LDFLAGS:= $(LDFLAGS_x86)
 	endif
 endif

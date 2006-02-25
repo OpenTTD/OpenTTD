@@ -2,11 +2,14 @@
 # This makefile is not a standalone makefile, but is called from the general one
 # it contains targets specific to MacOS X
 
-ifdef FAT_BINARY
-FAT_BINARY:=build_universal_binary
+ifdef UNIVERSAL_BINARY
+ifdef TRIPPLE_BINARY
+TRIPPLE_BINARY:=tripple_binary
+endif
+UNIVERSAL_BINARY:=build_universal_binary
 endif
 
-ifdef UNIVERSAL_x86_PART
+ifdef UNIVERSAL_PPC_PART
 # the bundle is build by the PPC compile when making universal binaries
 BUILD_OSX_BUNDLE:=
 else
@@ -18,20 +21,30 @@ endif
 # we make clean and compile the other one. In the end we use lipo to join them together
 # when this is done, we can continue with the targets from the first run, which is build_OSX_bundle
 
-$(FAT_BINARY): $(TTD)
+$(UNIVERSAL_BINARY): $(TTD)
 	$(Q)mkdir -p temp_binary_dir
 	$(Q)cp $(TTD) temp_binary_dir/$(TTD)_a
-	$(Q)rm -rf $(TTD) $(OBJS) # delete all .o files so we can compile for a new endian
-	$(Q)make UNIVERSAL_x86_PART:=1
+	$(Q)rm -rf $(TTD) $(OBJS) # delete all .o files so we can compile for a new CPU
+	$(Q)make UNIVERSAL_PPC_PART:=1
 	$(Q)cp $(TTD) temp_binary_dir/$(TTD)_b
 	@echo '===> Joining the PPC and x86 binaries into one universal one'
+	$(Q)lipo temp_binary_dir/$(TTD)_a temp_binary_dir/$(TTD)_b -create -output $(TTD)
+	$(Q)rm -rf temp_binary_dir
+
+$(TRIPPLE_BINARY): $(UNIVERSAL_BINARY)
+	$(Q)mkdir -p temp_binary_dir
+	$(Q)cp $(TTD) temp_binary_dir/$(TTD)_a
+	$(Q)rm -rf $(TTD) $(OBJS) # delete all .o files so we can compile for a new CPU
+	$(Q)make UNIVERSAL_PPC_PART:=1 IS_G5:=1
+	$(Q)cp $(TTD) temp_binary_dir/$(TTD)_b
+	@echo '===> Joining the Universal and G5 binaries into a tripple binary'
 	$(Q)lipo temp_binary_dir/$(TTD)_a temp_binary_dir/$(TTD)_b -create -output $(TTD)
 	$(Q)rm -rf temp_binary_dir
 
 # build the bundle. OSX wants to keep apps in bundles, so we will give it one
 # the good thing about bundles is that you can keep extra files in them, so we keep lng files and a data dir in it
 
-$(BUILD_OSX_BUNDLE): $(TTD) $(FAT_BINARY)
+$(BUILD_OSX_BUNDLE): $(TTD) $(UNIVERSAL_BINARY) $(TRIPPLE_BINARY)
 	@echo '===> Building application bundle'
 	$(Q)rm -fr "$(OSXAPP)"
 	$(Q)mkdir -p "$(OSXAPP)"/Contents/MacOS
@@ -67,4 +80,4 @@ release: all
 
 $(OSX): $(TTD) $(BUILD_OSX_BUNDLE)
 
-.PHONY: release $(BUILD_OSX_BUNDLE) $(FAT_BINARY)
+.PHONY: release $(BUILD_OSX_BUNDLE) $(UNIVERSAL_BINARY)

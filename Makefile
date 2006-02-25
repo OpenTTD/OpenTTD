@@ -106,7 +106,8 @@
 #
 # Special for crosscompiling there are some commands available:
 #
-# FAT_BINARY: builds a universal binary for OSX. Make sure you got both PPC and x86 libs. Only works with GCC 4 or newer
+# UNIVERSAL_BINARY: builds a universal binary for OSX. Make sure you got both PPC and x86 libs. Only works with GCC 4 or newer
+# TRIPPLE_BINARY: builds a universal binary with the addition of code optimised for G5 (which means a total of 3 binaries in one file)
 #
 # JAGUAR: Crosscompiling for OSX 1.2.8 (codenamed Jaguar). Only works if OSX is defined too. Only works with GCC 4 or newer
 #	This can be changed to any PPC version of OSX by changing the ppc flags in Makefile.config
