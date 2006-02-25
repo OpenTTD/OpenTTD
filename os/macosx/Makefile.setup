@@ -16,6 +16,16 @@ $(warning Compiling a release build, that is not a universal binary)
 endif
 endif
 
+ifndef FAT_BINARY
+ifndef JAGUAR
+ifeq ($(shell uname), Darwin)
+# it's a hardware mac, not crosscompiling
+$(Q)$(CC_HOST) os/macosx/G5_detector.c -o os/macosx/G5_detector
+IS_G5:=$(shell os/macosx/G5_detector)
+endif
+endif
+endif
+
 ifdef FAT_BINARY
 ifndef STATIC
 $(warning Compiling a universal binary, that is not static. Adding static flag)

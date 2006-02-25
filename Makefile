@@ -345,6 +345,9 @@ endif
 ifdef OSX
 # these compilerflags makes the app run as fast as possible without making the app unstable. It works on G3 or newer
 BASECFLAGS += -O3 -funroll-loops -fsched-interblock -falign-loops=16 -falign-jumps=16 -falign-functions=16 -falign-jumps-max-skip=15 -falign-loops-max-skip=15 -mdynamic-no-pic
+ifdef IS_G5
+BASECFLAGS += -mtune=970 -mcpu=970 -mpowerpc-gpopt
+endif
 else
 ifdef MORPHOS
 BASECFLAGS += -I/gg/os-include -O2 -noixemul -fstrict-aliasing -fexpensive-optimizations
