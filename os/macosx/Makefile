@@ -65,7 +65,7 @@ release: all
 	$(Q)mkdir -p "OpenTTD $(RELEASE)"/docs
 	$(Q)mkdir -p "OpenTTD $(RELEASE)"/scenario
 	$(Q)cp -R $(OSXAPP) "OpenTTD $(RELEASE)"/
-	$(Q)cp docs/OSX_where_did_the_package_go.txt "OpenTTD $(RELEASE)"/Where\ did\ the\ package\ go.txt
+	$(Q)cp docs/OSX_install_instructions.txt "OpenTTD $(RELEASE)"/How\ to\ install\ (please\ read).txt
 	$(Q)cp readme.txt "OpenTTD $(RELEASE)"/docs/
 	$(Q)cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD $(RELEASE)"/docs/readme\ if\ crashed\ on\ OSX.txt
 	$(Q)cp docs/console.txt "OpenTTD $(RELEASE)"/docs/
