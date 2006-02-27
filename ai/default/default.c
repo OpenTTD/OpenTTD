@@ -1837,7 +1837,6 @@ typedef struct AiRailFinder {
 	TileIndex cur_best_tile, best_tile;
 	TileIndex bridge_end_tile;
 	Player *player;
-	TileInfo ti;
 } AiRailFinder;
 
 static const byte _ai_table_15[4][8] = {
@@ -1916,26 +1915,29 @@ static bool AiCheckRailPathBetter(AiRailFinder *arf, const byte *p)
 static inline void AiCheckBuildRailBridgeHere(AiRailFinder *arf, TileIndex tile, const byte *p)
 {
 	TileIndex tile_new;
+	uint tileh;
+	uint z;
 	bool flag;
 
 	int dir2 = p[0] & 3;
 
-	FindLandscapeHeightByTile(&arf->ti, tile);
-
-	if (arf->ti.tileh == _dir_table_1[dir2] || (arf->ti.tileh==0 && arf->ti.z!=0)) {
+	tileh = GetTileSlope(tile, &z);
+	if (tileh == _dir_table_1[dir2] || (tileh == 0 && z != 0)) {
 		tile_new = tile;
 		// Allow bridges directly over bottom tiles
-		flag = arf->ti.z == 0;
+		flag = z == 0;
 		for (;;) {
+			TileType type;
+
 			if ((TileIndexDiff)tile_new < -TileOffsByDir(dir2)) return; // Wraping around map, no bridge possible!
 			tile_new = TILE_MASK(tile_new + TileOffsByDir(dir2));
-			FindLandscapeHeightByTile(&arf->ti, tile_new);
-			if (arf->ti.tileh != 0 || arf->ti.type == MP_CLEAR || arf->ti.type == MP_TREES) {
+			type = GetTileType(tile_new);
+
+			if (type == MP_CLEAR || type == MP_TREES || GetTileSlope(tile_new, NULL) != 0) {
 				if (!flag) return;
 				break;
 			}
-			if (arf->ti.type != MP_WATER && arf->ti.type != MP_RAILWAY && arf->ti.type != MP_STREET)
-				return;
+			if (type != MP_WATER && type != MP_RAILWAY && type != MP_STREET) return;
 			flag = true;
 		}
 
@@ -1955,9 +1957,9 @@ static inline void AiCheckBuildRailBridgeHere(AiRailFinder *arf, TileIndex tile,
 
 static inline void AiCheckBuildRailTunnelHere(AiRailFinder *arf, TileIndex tile, const byte *p)
 {
-	FindLandscapeHeightByTile(&arf->ti, tile);
+	uint z;
 
-	if (arf->ti.tileh == _dir_table_2[p[0]&3] && arf->ti.z!=0) {
+	if (GetTileSlope(tile, &z) == _dir_table_2[p[0] & 3] && z != 0) {
 		int32 cost = DoCommandByTile(tile, arf->player->ai.railtype_to_use, 0, DC_AUTO, CMD_BUILD_TUNNEL);
 
 		if (!CmdFailed(cost) && cost <= (arf->player->player_money>>4)) {
@@ -2011,8 +2013,7 @@ static void AiBuildRailRecursive(AiRailFinder *arf, TileIndex tile, int dir)
 	p = _ai_table_15[dir];
 
 	// Try to build a single rail in all directions.
-	FindLandscapeHeightByTile(&arf->ti, tile);
-	if (arf->ti.z == 0) {
+	if (GetTileZ(tile) == 0) {
 		p += 6;
 	} else {
 		do {
@@ -2669,7 +2670,6 @@ typedef struct {
 	TileIndex cur_best_tile, best_tile;
 	TileIndex bridge_end_tile;
 	Player *player;
-	TileInfo ti;
 } AiRoadFinder;
 
 typedef struct AiRoadEnum {
@@ -2790,27 +2790,31 @@ static bool AiBuildRoadHelper(TileIndex tile, int flags, int type)
 static inline void AiCheckBuildRoadBridgeHere(AiRoadFinder *arf, TileIndex tile, const byte *p)
 {
 	TileIndex tile_new;
+	uint tileh;
+	uint z;
 	bool flag;
 
 	int dir2 = p[0] & 3;
 
-	FindLandscapeHeightByTile(&arf->ti, tile);
-	if (arf->ti.tileh == _dir_table_1[dir2] || (arf->ti.tileh==0 && arf->ti.z!=0)) {
+	tileh = GetTileSlope(tile, &z);
+	if (tileh == _dir_table_1[dir2] || (tileh == 0 && z != 0)) {
 		tile_new = tile;
 		// Allow bridges directly over bottom tiles
-		flag = arf->ti.z == 0;
+		flag = z == 0;
 		for (;;) {
+			TileType type;
+
 			if ((TileIndexDiff)tile_new < -TileOffsByDir(dir2)) return; // Wraping around map, no bridge possible!
 			tile_new = TILE_MASK(tile_new + TileOffsByDir(dir2));
-			FindLandscapeHeightByTile(&arf->ti, tile_new);
-			if (arf->ti.tileh != 0 || arf->ti.type == MP_CLEAR || arf->ti.type == MP_TREES) {
+			type = GetTileType(tile_new);
+
+			if (type == MP_CLEAR || type == MP_TREES || GetTileSlope(tile, NULL) != 0) {
 				// Allow a bridge if either we have a tile that's water, rail or street,
 				// or if we found an up tile.
 				if (!flag) return;
 				break;
 			}
-			if (arf->ti.type != MP_WATER && arf->ti.type != MP_RAILWAY && arf->ti.type != MP_STREET)
-				return;
+			if (type != MP_WATER && type != MP_RAILWAY && type != MP_STREET) return;
 			flag = true;
 		}
 
@@ -2828,9 +2832,9 @@ static inline void AiCheckBuildRoadBridgeHere(AiRoadFinder *arf, TileIndex tile,
 
 static inline void AiCheckBuildRoadTunnelHere(AiRoadFinder *arf, TileIndex tile, const byte *p)
 {
-	FindLandscapeHeightByTile(&arf->ti, tile);
+	uint z;
 
-	if (arf->ti.tileh == _dir_table_2[p[0]&3] && arf->ti.z!=0) {
+	if (GetTileSlope(tile, &z) == _dir_table_2[p[0] & 3] && z != 0) {
 		int32 cost = DoCommandByTile(tile, 0x200, 0, DC_AUTO, CMD_BUILD_TUNNEL);
 
 		if (!CmdFailed(cost) && cost <= (arf->player->player_money>>4)) {
@@ -2879,8 +2883,7 @@ static void AiBuildRoadRecursive(AiRoadFinder *arf, TileIndex tile, int dir)
 	p = _ai_table_15[dir];
 
 	// Try to build a single rail in all directions.
-	FindLandscapeHeightByTile(&arf->ti, tile);
-	if (arf->ti.z == 0) {
+	if (GetTileZ(tile) == 0) {
 		p += 6;
 	} else {
 		do {
