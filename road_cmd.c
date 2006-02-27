@@ -1045,7 +1045,7 @@ static void TileLoop_Road(TileIndex tile)
 					!(DistanceManhattan(t->xy, tile) >= 8 && grp == 0) &&
 					(_m[tile].m5 == ROAD_Y || _m[tile].m5 == ROAD_X)) {
 				if (GetTileSlope(tile, NULL) == 0 && EnsureNoVehicle(tile) && CHANCE16(1, 20)) {
-					_m[tile].m4 |= (GB(_m[tile].m4, 4, 3) <=  2 ? 7 : 6) << 4;
+					SB(_m[tile].m4, 4, 3, (GB(_m[tile].m4, 4, 3) <= 1 ? 6 : 7));
 
 					SndPlayTileFx(SND_21_JACKHAMMER, tile);
 					CreateEffectVehicleAbove(
