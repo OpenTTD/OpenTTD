@@ -27,7 +27,7 @@ ifndef UNIVERSAL_BINARY
 ifndef JAGUAR
 ifeq ($(shell uname), Darwin)
 # it's a hardware mac, not crosscompiling
-$(shell $(CC_HOST) os/macosx/G5_detector.c -o os/macosx/G5_detector)
+$(shell $(CC) os/macosx/G5_detector.c -o os/macosx/G5_detector)
 IS_G5:=$(shell os/macosx/G5_detector)
 endif
 endif
