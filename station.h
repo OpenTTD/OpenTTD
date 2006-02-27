@@ -196,7 +196,7 @@ uint GetStationPlatforms(const Station *st, TileIndex tile);
 void StationPickerDrawSprite(int x, int y, RailType railtype, int image);
 
 RoadStop * GetRoadStopByTile(TileIndex tile, RoadStopType type);
-static inline int GetRoadStopType(TileIndex tile)
+static inline RoadStopType GetRoadStopType(TileIndex tile)
 {
 	return (_m[tile].m5 < 0x47) ? RS_TRUCK : RS_BUS;
 }

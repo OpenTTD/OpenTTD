@@ -986,9 +986,12 @@ static int RoadFindPathToDest(Vehicle *v, TileIndex tile, int enterdir)
 	} else if (IsTileType(tile, MP_STATION) && IsRoadStationTile(tile)) {
 		if (IsTileOwner(tile, v->owner)) {
 			/* Our station */
-			const RoadStop *rs = GetRoadStopByTile(tile, (v->cargo_type == CT_PASSENGERS) ? RS_BUS : RS_TRUCK);
-			if (rs != NULL && (_patches.roadveh_queue || GB(rs->status, 0, 2) != 0)) {
-				bitmask |= _road_veh_fp_ax_or[GetRoadStationDir(tile)];
+			RoadStopType rstype = (v->cargo_type == CT_PASSENGERS) ? RS_BUS : RS_TRUCK;
+			if (GetRoadStopType(tile) == rstype) {
+				const RoadStop *rs = GetRoadStopByTile(tile, rstype);
+				if (rs != NULL && (_patches.roadveh_queue || GB(rs->status, 0, 2) != 0)) {
+					bitmask |= _road_veh_fp_ax_or[GetRoadStationDir(tile)];
+				}
 			}
 		}
 	}
