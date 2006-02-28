@@ -382,7 +382,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			break;
 
 		case 0x1D: /* Refit cargo */
-			FOR_EACH_OBJECT _engine_info[engine + i].refit_mask = grf_load_dword(&buf);
+			FOR_EACH_OBJECT ei[i].refit_mask = grf_load_dword(&buf);
 			break;
 
 		case 0x1E: /* Callback */
@@ -414,6 +414,10 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 			break;
 
+		case 0x27: /* Miscellaneous flags */
+			FOR_EACH_OBJECT ei[i].misc_flags = grf_load_byte(&buf);
+			break;
+
 		case 0x28: /* Cargo classes allowed */
 			FOR_EACH_OBJECT cargo_allowed[engine + i] = grf_load_word(&buf);
 			break;
@@ -429,7 +433,6 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x20: /* Air drag */
 		case 0x25: /* User-defined bit mask to set when checking veh. var. 42 */
 		case 0x26: /* Retire vehicle early */
-		case 0x27: /* Miscellaneous flags */
 			/* TODO */
 			FOR_EACH_OBJECT grf_load_byte(&buf);
 			ret = true;
@@ -445,6 +448,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **bufp, int len)
 {
+	EngineInfo *ei = &_engine_info[ROAD_ENGINES_INDEX + engine];
 	RoadVehicleInfo *rvi = &_road_vehicle_info[engine];
 	byte *buf = *bufp;
 	int i;
@@ -513,11 +517,15 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			break;
 
 		case 0x16: /* Cargos available for refitting */
-			FOR_EACH_OBJECT _engine_info[ROAD_ENGINES_INDEX + engine + i].refit_mask = grf_load_dword(&buf);
+			FOR_EACH_OBJECT ei[i].refit_mask = grf_load_dword(&buf);
 			break;
 
 		case 0x17: /* Callback mask */
 			FOR_EACH_OBJECT rvi[i].callbackmask = grf_load_byte(&buf);
+			break;
+
+		case 0x1C: /* Miscellaneous flags */
+			FOR_EACH_OBJECT ei[i].misc_flags = grf_load_byte(&buf);
 			break;
 
 		case 0x1D: /* Cargo classes allowed */
@@ -532,7 +540,6 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x19: /* Air drag */
 		case 0x1A: /* Refit cost */
 		case 0x1B: /* Retire vehicle early */
-		case 0x1C: /* Miscellaneous flags */
 			/* TODO */
 			FOR_EACH_OBJECT grf_load_byte(&buf);
 			ret = true;
@@ -549,6 +556,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **bufp, int len)
 {
+	EngineInfo *ei = &_engine_info[SHIP_ENGINES_INDEX + engine];
 	ShipVehicleInfo *svi = &_ship_vehicle_info[engine];
 	byte *buf = *bufp;
 	int i;
@@ -613,11 +621,15 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			break;
 
 		case 0x11: /* Cargos available for refitting */
-			FOR_EACH_OBJECT _engine_info[SHIP_ENGINES_INDEX + engine + i].refit_mask = grf_load_dword(&buf);
+			FOR_EACH_OBJECT ei[i].refit_mask = grf_load_dword(&buf);
 			break;
 
 		case 0x12: /* Callback mask */
 			FOR_EACH_OBJECT svi[i].callbackmask = grf_load_byte(&buf);
+			break;
+
+		case 0x17: /* Miscellaneous flags */
+			FOR_EACH_OBJECT ei[i].misc_flags = grf_load_byte(&buf);
 			break;
 
 		case 0x18: /* Cargo classes allowed */
@@ -632,7 +644,6 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x14: /* Ocean speed fraction */
 		case 0x15: /* Canal speed fraction */
 		case 0x16: /* Retire vehicle early */
-		case 0x17: /* Miscellaneous flags */
 			/* TODO */
 			FOR_EACH_OBJECT grf_load_byte(&buf);
 			ret = true;
@@ -649,6 +660,7 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte **bufp, int len)
 {
+	EngineInfo *ei = &_engine_info[AIRCRAFT_ENGINES_INDEX + engine];
 	AircraftVehicleInfo *avi = &_aircraft_vehicle_info[engine];
 	byte *buf = *bufp;
 	int i;
@@ -706,11 +718,15 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 			break;
 
 		case 0x13: /* Cargos available for refitting */
-			FOR_EACH_OBJECT _engine_info[AIRCRAFT_ENGINES_INDEX + engine + i].refit_mask = grf_load_dword(&buf);
+			FOR_EACH_OBJECT ei[i].refit_mask = grf_load_dword(&buf);
 			break;
 
 		case 0x14: /* Callback mask */
 			FOR_EACH_OBJECT avi[i].callbackmask = grf_load_byte(&buf);
+			break;
+
+		case 0x17: /* Miscellaneous flags */
+			FOR_EACH_OBJECT ei[i].misc_flags = grf_load_byte(&buf);
 			break;
 
 		case 0x18: /* Cargo classes allowed */
@@ -723,7 +739,6 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 
 		case 0x15: /* Refit cost */
 		case 0x16: /* Retire vehicle early */
-		case 0x17: /* Miscellaneous flags */
 			/* TODO */
 			FOR_EACH_OBJECT grf_load_byte(&buf);
 			ret = true;
