@@ -663,9 +663,15 @@ static void AnimateTile_Industry(TileIndex tile)
 
 static void MakeIndustryTileBiggerCase8(TileIndex tile)
 {
-	TileInfo ti;
-	FindLandscapeHeight(&ti, TileX(tile) * 16, TileY(tile) * 16);
-	CreateEffectVehicle(ti.x + 15, ti.y + 14, ti.z + 59 + (ti.tileh != 0 ? 8 : 0), EV_CHIMNEY_SMOKE);
+	uint tileh;
+	uint x;
+	uint y;
+	uint z;
+
+	tileh = GetTileSlope(tile, &z);
+	x = TileX(tile) * TILE_SIZE;
+	y = TileY(tile) * TILE_SIZE;
+	CreateEffectVehicle(x + 15, y + 14, z + 59 + (tileh != 0 ? 8 : 0), EV_CHIMNEY_SMOKE);
 }
 
 static void MakeIndustryTileBigger(TileIndex tile, byte size)
