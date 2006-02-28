@@ -764,9 +764,6 @@ uint GetRoadFoundation(uint tileh, uint bits)
 		return i + 15;
 	}
 
-	// rail crossing
-	if ((bits & 0x10) && _valid_tileh_slopes_road[2][tileh]) return tileh;
-
 	return 0;
 }
 
@@ -848,8 +845,7 @@ static void DrawTile_Road(TileInfo *ti)
 			break;
 
 		case 1: { // level crossing
-			int f = GetRoadFoundation(ti->tileh, ti->map5 & 0xF);
-			if (f) DrawFoundation(ti, f);
+			if (ti->tileh != 0) DrawFoundation(ti, ti->tileh);
 
 			image = GetRailTypeInfo(GB(_m[ti->tile].m4, 0, 4))->base_sprites.crossing;
 
@@ -931,9 +927,8 @@ static uint GetSlopeZ_Road(const TileInfo* ti)
 	// check if it's a foundation
 	if (ti->tileh != 0) {
 		switch (GB(ti->map5, 4, 4)) {
-			case 0: // normal road
-			case 1: { // level crossing
-				uint f = GetRoadFoundation(ti->tileh, ti->map5 & 0x3F);
+			case 0: { // normal road
+				uint f = GetRoadFoundation(ti->tileh, GB(ti->map5, 0, 4));
 				if (f != 0) {
 					if (f < 15) {
 						// leveled foundation
@@ -945,6 +940,8 @@ static uint GetSlopeZ_Road(const TileInfo* ti)
 				break;
 			}
 
+			// if these are on a slope then there's a level foundation
+			case 1: // level crossing
 			case 2: // depot
 				return z + 8;
 
@@ -960,9 +957,8 @@ static uint GetSlopeTileh_Road(const TileInfo *ti)
 	// check if it's a foundation
 	if (ti->tileh != 0) {
 		switch (GB(ti->map5, 4, 4)) {
-			case 0: // normal road
-			case 1: { // level crossing
-				uint f = GetRoadFoundation(ti->tileh, ti->map5 & 0x3F);
+			case 0: { // normal road
+				uint f = GetRoadFoundation(ti->tileh, GB(ti->map5, 0, 4));
 				if (f != 0) {
 					if (f < 15) {
 						// leveled foundation
@@ -974,6 +970,8 @@ static uint GetSlopeTileh_Road(const TileInfo *ti)
 				break;
 			}
 
+			// if these are on a slope then there's a level foundation
+			case 1: // level crossing
 			case 2: // depot
 				return 0;
 
