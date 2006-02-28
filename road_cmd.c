@@ -224,7 +224,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 						ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
 
 						_m[tile].m5 ^= c;
-						if (GB(_m[tile].m5, 0, 4) == 0) {
+						if (GetRoadBits(tile) == 0) {
 							DoClearSquare(tile);
 						} else {
 							MarkTileDirtyByTile(tile);
@@ -270,33 +270,33 @@ return_error:;
 }
 
 
-static const byte _valid_tileh_slopes_road[3][15] = {
+static const RoadBits _valid_tileh_slopes_road[3][15] = {
 	// set of normal ones
 	{
 		ROAD_ALL, 0, 0,
-		ROAD_SW | ROAD_NE, 0, 0,  // 3, 4, 5
-		ROAD_NW | ROAD_SE, 0, 0,
-		ROAD_NW | ROAD_SE, 0, 0,  // 9, 10, 11
-		ROAD_SW | ROAD_NE, 0, 0
+		ROAD_X,   0, 0,  // 3, 4, 5
+		ROAD_Y,   0, 0,
+		ROAD_Y,   0, 0,  // 9, 10, 11
+		ROAD_X,   0, 0
 	},
 	// allowed road for an evenly raised platform
 	{
 		0,
 		ROAD_SW | ROAD_NW,
 		ROAD_SW | ROAD_SE,
-		ROAD_NW | ROAD_SE | ROAD_SW,
+		ROAD_Y  | ROAD_SW,
 
 		ROAD_SE | ROAD_NE, // 4
 		ROAD_ALL,
-		ROAD_SW | ROAD_NE | ROAD_SE,
+		ROAD_X  | ROAD_SE,
 		ROAD_ALL,
 
 		ROAD_NW | ROAD_NE, // 8
-		ROAD_SW | ROAD_NE | ROAD_NW,
+		ROAD_X  | ROAD_NW,
 		ROAD_ALL,
 		ROAD_ALL,
 
-		ROAD_NW | ROAD_SE | ROAD_NE, // 12
+		ROAD_Y  | ROAD_NE, // 12
 		ROAD_ALL,
 		ROAD_ALL
 	},
@@ -549,7 +549,8 @@ int32 CmdBuildLongRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	tile = start_tile;
 	// Start tile is the small number.
 	for (;;) {
-		uint bits = HASBIT(p2, 2) ? ROAD_SE | ROAD_NW : ROAD_SW | ROAD_NE;
+		RoadBits bits = HASBIT(p2, 2) ? ROAD_Y : ROAD_X;
+
 		if (tile == end_tile && !HASBIT(p2, 1)) bits &= ROAD_NW | ROAD_NE;
 		if (tile == start_tile && HASBIT(p2, 0)) bits &= ROAD_SE | ROAD_SW;
 
@@ -604,12 +605,13 @@ int32 CmdRemoveLongRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	tile = start_tile;
 	// Start tile is the small number.
 	for (;;) {
-		uint bits = HASBIT(p2, 2) ? ROAD_SE | ROAD_NW : ROAD_SW | ROAD_NE;
+		RoadBits bits = HASBIT(p2, 2) ? ROAD_Y : ROAD_X;
+
 		if (tile == end_tile && !HASBIT(p2, 1)) bits &= ROAD_NW | ROAD_NE;
 		if (tile == start_tile && HASBIT(p2, 0)) bits &= ROAD_SE | ROAD_SW;
 
 		// try to remove the halves.
-		if (bits) {
+		if (bits != 0) {
 			ret = DoCommandByTile(tile, bits, 0, flags, CMD_REMOVE_ROAD);
 			if (!CmdFailed(ret)) cost += ret;
 		}
@@ -669,7 +671,7 @@ int32 CmdBuildRoadDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		ModifyTile(tile,
 			MP_SETTYPE(MP_STREET) |
 			MP_MAPOWNER_CURRENT | MP_MAP5,
-			(p1 | 0x20) /* map5 */
+			(ROAD_DEPOT << 4) | p1 /* map5 */
 		);
 
 	}
@@ -745,7 +747,7 @@ typedef struct DrawRoadSeqStruct {
 #include "table/road_land.h"
 
 
-uint GetRoadFoundation(uint tileh, uint bits)
+uint GetRoadFoundation(uint tileh, RoadBits bits)
 {
 	int i;
 	// normal level sloped building
@@ -758,8 +760,8 @@ uint GetRoadFoundation(uint tileh, uint bits)
 				(i += 2, tileh == 4) ||
 				(i += 2, tileh == 8)
 			) && (
-				(     bits == (ROAD_SW | ROAD_NE)) ||
-				(i++, bits == (ROAD_NW | ROAD_SE))
+				(     bits == ROAD_X) ||
+				(i++, bits == ROAD_Y)
 			)) {
 		return i + 15;
 	}
@@ -782,7 +784,7 @@ const byte _road_sloped_sprites[14] = {
  * @param snow Draw snow
  * @param flat Draw foundation
  */
-static void DrawRoadBits(TileInfo *ti, byte road, byte ground_type, bool snow, bool flat)
+static void DrawRoadBits(TileInfo* ti, RoadBits road, byte ground_type, bool snow, bool flat)
 {
 	const DrawRoadTileStruct *drts;
 	PalSpriteID image = 0;
@@ -820,7 +822,7 @@ static void DrawRoadBits(TileInfo *ti, byte road, byte ground_type, bool snow, b
 
 	if (ground_type >= 6) {
 		// Road works
-		DrawGroundSprite(HASBIT(road, 3) ? SPR_EXCAVATION_X : SPR_EXCAVATION_Y);
+		DrawGroundSprite(road & ROAD_X ? SPR_EXCAVATION_X : SPR_EXCAVATION_Y);
 		return;
 	}
 
@@ -839,12 +841,12 @@ static void DrawTile_Road(TileInfo *ti)
 	PalSpriteID image;
 	uint16 m2;
 
-	switch (GB(ti->map5, 4, 4)) {
-		case 0: // normal road
-			DrawRoadBits(ti, GB(ti->map5, 0, 4), GB(_m[ti->tile].m4, 4, 3), HASBIT(_m[ti->tile].m4, 7), false);
+	switch (GetRoadType(ti->tile)) {
+		case ROAD_NORMAL:
+			DrawRoadBits(ti, GetRoadBits(ti->tile), GB(_m[ti->tile].m4, 4, 3), HASBIT(_m[ti->tile].m4, 7), false);
 			break;
 
-		case 1: { // level crossing
+		case ROAD_CROSSING: {
 			if (ti->tileh != 0) DrawFoundation(ti, ti->tileh);
 
 			image = GetRailTypeInfo(GB(_m[ti->tile].m4, 0, 4))->base_sprites.crossing;
@@ -865,7 +867,8 @@ static void DrawTile_Road(TileInfo *ti)
 			break;
 		}
 
-		default: { // depot
+		default:
+		case ROAD_DEPOT: {
 			uint32 ormod;
 			PlayerID player;
 			const DrawRoadSeqStruct* drss;
@@ -926,9 +929,10 @@ static uint GetSlopeZ_Road(const TileInfo* ti)
 
 	// check if it's a foundation
 	if (ti->tileh != 0) {
-		switch (GB(ti->map5, 4, 4)) {
-			case 0: { // normal road
-				uint f = GetRoadFoundation(ti->tileh, GB(ti->map5, 0, 4));
+		switch (GetRoadType(ti->tile)) {
+			case ROAD_NORMAL: {
+				uint f = GetRoadFoundation(ti->tileh, GetRoadBits(ti->tile));
+
 				if (f != 0) {
 					if (f < 15) {
 						// leveled foundation
@@ -941,8 +945,8 @@ static uint GetSlopeZ_Road(const TileInfo* ti)
 			}
 
 			// if these are on a slope then there's a level foundation
-			case 1: // level crossing
-			case 2: // depot
+			case ROAD_DEPOT:
+			case ROAD_CROSSING:
 				return z + 8;
 
 			default: break;
@@ -956,9 +960,10 @@ static uint GetSlopeTileh_Road(const TileInfo *ti)
 {
 	// check if it's a foundation
 	if (ti->tileh != 0) {
-		switch (GB(ti->map5, 4, 4)) {
-			case 0: { // normal road
-				uint f = GetRoadFoundation(ti->tileh, GB(ti->map5, 0, 4));
+		switch (GetRoadType(ti->tile)) {
+			case ROAD_NORMAL: {
+				uint f = GetRoadFoundation(ti->tileh, GetRoadBits(ti->tile));
+
 				if (f != 0) {
 					if (f < 15) {
 						// leveled foundation
@@ -971,8 +976,8 @@ static uint GetSlopeTileh_Road(const TileInfo *ti)
 			}
 
 			// if these are on a slope then there's a level foundation
-			case 1: // level crossing
-			case 2: // depot
+			case ROAD_CROSSING:
+			case ROAD_DEPOT:
 				return 0;
 
 			default: break;
@@ -1213,7 +1218,7 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 				SetTileOwner(tile, _m[tile].m3);
 				_m[tile].m3 = 0;
 				_m[tile].m4 &= 0x80;
-				_m[tile].m5 = GetCrossingRoadBits(tile);
+				_m[tile].m5 = (ROAD_NORMAL << 4) | GetCrossingRoadBits(tile);
 				break;
 
 			default:
