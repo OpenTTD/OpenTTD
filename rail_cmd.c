@@ -354,10 +354,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 						(track == TRACK_DIAG2 && m5 == ROAD_X) // correct direction?
 					)) {
 				if (flags & DC_EXEC) {
-					_m[tile].m3 = GetTileOwner(tile);
-					SetTileOwner(tile, _current_player);
-					_m[tile].m4 = p1;
-					_m[tile].m5 = 0x10 | (track == TRACK_DIAG1 ? 0x08 : 0x00); // level crossing
+					MakeRoadCrossing(tile, GetTileOwner(tile), _current_player, (track == TRACK_DIAG1 ? AXIS_Y : AXIS_X), p1, _m[tile].m2);
 				}
 				break;
 			}
@@ -460,9 +457,7 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if (!(flags & DC_EXEC))
 				return _price.remove_rail;
 
-			SetTileOwner(tile, _m[tile].m3);
-			_m[tile].m2 = 0;
-			_m[tile].m5 = (ROAD_NORMAL << 4) | bits;
+			MakeRoadNormal(tile, _m[tile].m3, bits, 0);
 			break;
 		}
 

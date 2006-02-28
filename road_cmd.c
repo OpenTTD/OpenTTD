@@ -386,7 +386,7 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			break;
 
 		case MP_RAILWAY: {
-			byte m5;
+			Axis roaddir;
 
 			if (IsSteepTileh(ti.tileh)) { // very steep tile
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
@@ -398,23 +398,16 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			if (ti.map5 == 2) {
 				if (pieces & ROAD_Y) goto do_clear;
-				m5 = 0x10;
+				roaddir = AXIS_X;
 			} else if (ti.map5 == 1) {
 				if (pieces & ROAD_X) goto do_clear;
-				m5 = 0x18;
+				roaddir = AXIS_Y;
 			} else {
 				goto do_clear;
 			}
 
 			if (flags & DC_EXEC) {
-				ModifyTile(tile,
-					MP_SETTYPE(MP_STREET) |
-					MP_MAP2 | MP_MAP3LO | MP_MAP3HI | MP_MAP5,
-					p2,
-					_current_player, /* map3_lo */
-					_m[tile].m3 & 0xF, /* map3_hi */
-					m5 /* map5 */
-				);
+				MakeRoadCrossing(tile, _current_player, GetTileOwner(tile), roaddir, GB(_m[tile].m3, 0, 4), p2);
 			}
 			return _price.build_road * 2;
 		}
@@ -479,13 +472,10 @@ do_clear:;
 
 	if (flags & DC_EXEC) {
 		if (ti.type != MP_STREET) {
-			SetTileType(tile, MP_STREET);
-			_m[tile].m5 = 0;
-			_m[tile].m2 = p2;
-			SetTileOwner(tile, _current_player);
+			MakeRoadNormal(tile, _current_player, pieces, p2);
+		} else {
+			_m[tile].m5 |= pieces;
 		}
-
-		_m[tile].m5 |= pieces;
 
 		MarkTileDirtyByTile(tile);
 	}
@@ -668,12 +658,7 @@ int32 CmdBuildRoadDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		dep->xy = tile;
 		dep->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
-		ModifyTile(tile,
-			MP_SETTYPE(MP_STREET) |
-			MP_MAPOWNER_CURRENT | MP_MAP5,
-			(ROAD_DEPOT << 4) | p1 /* map5 */
-		);
-
+		MakeRoadDepot(tile, _current_player, p1);
 	}
 	return cost + _price.build_road_depot;
 }
@@ -1215,10 +1200,7 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 				break;
 
 			case ROAD_CROSSING:
-				SetTileOwner(tile, _m[tile].m3);
-				_m[tile].m3 = 0;
-				_m[tile].m4 &= 0x80;
-				_m[tile].m5 = (ROAD_NORMAL << 4) | GetCrossingRoadBits(tile);
+				MakeRoadNormal(tile, _m[tile].m3, GetCrossingRoadBits(tile), _m[tile].m2);
 				break;
 
 			default:

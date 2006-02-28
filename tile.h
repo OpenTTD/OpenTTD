@@ -44,6 +44,12 @@ typedef enum DiagonalDirections {
 	INVALID_DIAGDIR = 0xFF,
 } DiagDirection;
 
+/* the 2 axis */
+typedef enum Axis {
+	AXIS_X = 0,
+	AXIS_Y = 1
+} Axis;
+
 void SetMapExtraBits(TileIndex tile, byte flags);
 uint GetMapExtraBits(TileIndex tile);
 

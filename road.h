@@ -4,6 +4,8 @@
 #define ROAD_H
 
 #include "macros.h"
+#include "rail.h"
+#include "tile.h"
 
 typedef enum RoadBits {
 	ROAD_NW  = 1,
@@ -34,6 +36,39 @@ typedef enum RoadType {
 static inline RoadType GetRoadType(TileIndex tile)
 {
 	return GB(_m[tile].m5, 4, 4);
+}
+
+
+static inline void MakeRoadNormal(TileIndex t, Owner owner, RoadBits bits, uint town)
+{
+	SetTileType(t, MP_STREET);
+	SetTileOwner(t, owner);
+	_m[t].m2 = town;
+	_m[t].m3 = 0;
+	_m[t].m4 = 0 << 7 | 0 << 4 | 0;
+	_m[t].m5 = ROAD_NORMAL << 4 | bits;
+}
+
+
+static inline void MakeRoadCrossing(TileIndex t, Owner road, Owner rail, Axis roaddir, RailType rt, uint town)
+{
+	SetTileType(t, MP_STREET);
+	SetTileOwner(t, rail);
+	_m[t].m2 = town;
+	_m[t].m3 = road;
+	_m[t].m4 = 0 << 7 | 0 << 4 | rt;
+	_m[t].m5 = ROAD_CROSSING << 4 | roaddir << 3 | 0 << 2;
+}
+
+
+static inline void MakeRoadDepot(TileIndex t, Owner owner, DiagDirection dir)
+{
+	SetTileType(t, MP_STREET);
+	SetTileOwner(t, owner);
+	_m[t].m2 = 0;
+	_m[t].m3 = 0;
+	_m[t].m4 = 0;
+	_m[t].m5 = ROAD_DEPOT << 4 | dir;
 }
 
 #endif
