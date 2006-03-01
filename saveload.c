@@ -1112,6 +1112,7 @@ static void UninitWriteZlib(void)
 
 // these define the chunks
 extern const ChunkHandler _misc_chunk_handlers[];
+extern const ChunkHandler _setting_chunk_handlers[];
 extern const ChunkHandler _player_chunk_handlers[];
 extern const ChunkHandler _engine_chunk_handlers[];
 extern const ChunkHandler _veh_chunk_handlers[];
@@ -1127,6 +1128,7 @@ extern const ChunkHandler _animated_tile_chunk_handlers[];
 
 static const ChunkHandler * const _chunk_handlers[] = {
 	_misc_chunk_handlers,
+	_setting_chunk_handlers,
 	_veh_chunk_handlers,
 	_waypoint_chunk_handlers,
 	_depot_chunk_handlers,

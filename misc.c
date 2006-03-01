@@ -658,28 +658,6 @@ static void Load_NAME(void)
 	}
 }
 
-static const SaveLoad _game_opt_desc[] = {
-	// added a new difficulty option (town attitude) in version 4
-	SLE_CONDARR(GameOptions,diff,						SLE_FILE_I16 | SLE_VAR_I32, 17, 0, 3),
-	SLE_CONDARR(GameOptions,diff,						SLE_FILE_I16 | SLE_VAR_I32, 18, 4, SL_MAX_VERSION),
-	SLE_VAR(GameOptions,diff_level,			SLE_UINT8),
-	SLE_VAR(GameOptions,currency,				SLE_UINT8),
-	SLE_VAR(GameOptions,kilometers,			SLE_UINT8),
-	SLE_VAR(GameOptions,town_name,			SLE_UINT8),
-	SLE_VAR(GameOptions,landscape,			SLE_UINT8),
-	SLE_VAR(GameOptions,snow_line,			SLE_UINT8),
-	SLE_VAR(GameOptions,autosave,				SLE_UINT8),
-	SLE_VAR(GameOptions,road_side,			SLE_UINT8),
-	SLE_END()
-};
-
-// Save load game options
-static void SaveLoad_OPTS(void)
-{
-	SlObject(&_opt, _game_opt_desc);
-}
-
-
 static const SaveLoadGlobVarList _date_desc[] = {
 	    SLEG_VAR(_date,                  SLE_UINT16),
 	    SLEG_VAR(_date_fract,            SLE_UINT16),
@@ -1003,6 +981,5 @@ const ChunkHandler _misc_chunk_handlers[] = {
 	{ 'NAME', Save_NAME, Load_NAME, CH_ARRAY},
 	{ 'DATE', SaveLoad_DATE, SaveLoad_DATE, CH_RIFF},
 	{ 'VIEW', SaveLoad_VIEW, SaveLoad_VIEW, CH_RIFF},
-	{ 'OPTS', SaveLoad_OPTS, SaveLoad_OPTS, CH_RIFF},
 	{ 'CHTS', Save_CHTS, Load_CHTS, CH_RIFF | CH_LAST}
 };

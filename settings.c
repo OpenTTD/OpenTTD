@@ -11,6 +11,7 @@
 #include "variables.h"
 #include "network.h"
 #include "settings.h"
+#include "saveload.h"
 
 typedef struct IniFile IniFile;
 typedef struct IniItem IniItem;
@@ -831,6 +832,28 @@ static const SettingDesc misc_settings[] = {
 	{NULL,								0,						NULL,					NULL,									NULL}
 };
 
+
+static const SaveLoad _game_opt_desc[] = {
+	// added a new difficulty option (town attitude) in version 4
+	SLE_CONDARR(GameOptions,diff,						SLE_FILE_I16 | SLE_VAR_I32, 17, 0, 3),
+	SLE_CONDARR(GameOptions,diff,						SLE_FILE_I16 | SLE_VAR_I32, 18, 4, SL_MAX_VERSION),
+	SLE_VAR(GameOptions,diff_level,			SLE_UINT8),
+	SLE_VAR(GameOptions,currency,				SLE_UINT8),
+	SLE_VAR(GameOptions,kilometers,			SLE_UINT8),
+	SLE_VAR(GameOptions,town_name,			SLE_UINT8),
+	SLE_VAR(GameOptions,landscape,			SLE_UINT8),
+	SLE_VAR(GameOptions,snow_line,			SLE_UINT8),
+	SLE_VAR(GameOptions,autosave,				SLE_UINT8),
+	SLE_VAR(GameOptions,road_side,			SLE_UINT8),
+	SLE_END()
+};
+
+// Save load game options
+static void SaveLoad_OPTS(void)
+{
+	SlObject(&_opt, _game_opt_desc);
+}
+
 #ifdef ENABLE_NETWORK
 static const SettingDesc network_settings[] = {
 	{"sync_freq",				SDT_UINT16 | SDT_NOSAVE,	(void*)100,			&_network_sync_freq,		NULL},
@@ -1165,3 +1188,7 @@ void CheckConfig(void)
 		_patches.pf_maxlength = 4096;
 	}
 }
+
+const ChunkHandler _setting_chunk_handlers[] = {
+	{ 'OPTS', SaveLoad_OPTS, SaveLoad_OPTS, CH_RIFF | CH_LAST}
+};
