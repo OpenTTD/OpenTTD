@@ -2041,9 +2041,19 @@ UnitID GetFreeUnitNumber(byte type)
 }
 
 // XXX Temporary stub -- will be expanded
-PalSpriteID GetEngineColourMap(PlayerID player)
+static PalSpriteID GetEngineColourMap(PlayerID player)
 {
 	return SPRITE_PALETTE(PLAYER_SPRITE_COLOR(player));
+}
+
+PalSpriteID GetEnginePalette(EngineID engine_type, PlayerID player)
+{
+	return GetEngineColourMap(player);
+}
+
+PalSpriteID GetVehiclePalette(const Vehicle *v)
+{
+	return GetEngineColourMap(v->owner);
 }
 
 // Save and load of vehicles

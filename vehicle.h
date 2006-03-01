@@ -422,19 +422,20 @@ VARDEF uint16 _returned_refit_capacity;
 
 #define INVALID_VEHICLE 0xFFFF
 
-// XXX Temporary interface -- will be expanded
-PalSpriteID GetEngineColourMap(PlayerID player);
+/**
+ * Get the colour map for an engine. This used for unbuilt engines in the user interface.
+ * @param engine_type ID of engine
+ * @param player ID of player
+ * @return A ready-to-use palette modifier
+ */
+PalSpriteID GetEnginePalette(EngineID engine_type, PlayerID player);
 
-static inline PalSpriteID GetEnginePalette(EngineID engine_type, PlayerID player)
-{
-	return GetEngineColourMap(player);
-}
-
-static inline PalSpriteID GetVehiclePalette(const Vehicle *v)
-{
-	return GetEngineColourMap(v->owner);
-}
-
+/**
+ * Get the colour map for a vehicle.
+ * @param v Vehicle to get colour map for
+ * @return A ready-to-use palette modifier
+ */
+PalSpriteID GetVehiclePalette(const Vehicle *v);
 
 /* A lot of code calls for the invalidation of the status bar, which is widget 5.
  * Best is to have a virtual value for it when it needs to change again */
