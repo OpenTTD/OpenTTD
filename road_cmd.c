@@ -408,6 +408,7 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			if (flags & DC_EXEC) {
 				MakeRoadCrossing(tile, _current_player, GetTileOwner(tile), roaddir, GB(_m[tile].m3, 0, 4), p2);
+				MarkTileDirtyByTile(tile);
 			}
 			return _price.build_road * 2;
 		}
@@ -659,6 +660,7 @@ int32 CmdBuildRoadDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		dep->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
 		MakeRoadDepot(tile, _current_player, p1);
+		MarkTileDirtyByTile(tile);
 	}
 	return cost + _price.build_road_depot;
 }
