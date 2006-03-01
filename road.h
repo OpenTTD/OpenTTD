@@ -17,6 +17,11 @@ typedef enum RoadBits {
 	ROAD_ALL = ROAD_X  | ROAD_Y
 } RoadBits;
 
+static inline RoadBits ComplementRoadBits(RoadBits r)
+{
+	return ROAD_ALL ^ r;
+}
+
 static inline RoadBits GetRoadBits(TileIndex tile)
 {
 	return GB(_m[tile].m5, 0, 4);
@@ -26,6 +31,12 @@ static inline RoadBits GetCrossingRoadBits(TileIndex tile)
 {
 	return _m[tile].m5 & 8 ? ROAD_Y : ROAD_X;
 }
+
+static inline TrackBits GetCrossingRailBits(TileIndex tile)
+{
+	return _m[tile].m5 & 8 ? TRACK_BIT_X : TRACK_BIT_Y;
+}
+
 
 typedef enum RoadType {
 	ROAD_NORMAL,

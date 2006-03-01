@@ -434,23 +434,15 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			break;
 
 		case MP_STREET: {
-			RoadBits bits;
-
 			if (!IsLevelCrossing(tile)) return CMD_ERROR;
 
 			/* This is a crossing, let's check if the direction is correct */
-			if (_m[tile].m5 & 8) {
-				if (track != TRACK_X) return CMD_ERROR;
-				bits = ROAD_Y;
-			} else {
-				if (track != TRACK_Y) return CMD_ERROR;
-				bits = ROAD_X;
-			}
+			if (GetCrossingRailBits(tile) != trackbit) return CMD_ERROR;
 
 			if (!(flags & DC_EXEC))
 				return _price.remove_rail;
 
-			MakeRoadNormal(tile, _m[tile].m3, bits, 0);
+			MakeRoadNormal(tile, _m[tile].m3, GetCrossingRoadBits(tile), 0);
 			break;
 		}
 

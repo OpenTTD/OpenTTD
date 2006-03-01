@@ -235,21 +235,15 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				}
 
 				case ROAD_CROSSING: {
-					TrackBits track;
-
-					if (!(ti.map5 & 8)) {
-						if (pieces & ROAD_Y) goto return_error;
-						track = TRACK_BIT_Y;
-					} else {
-						if (pieces & ROAD_X) goto return_error;
-						track = TRACK_BIT_X;
+					if (pieces & ComplementRoadBits(GetCrossingRoadBits(tile))) {
+						goto return_error;
 					}
 
 					cost = _price.remove_road * 2;
 					if (flags & DC_EXEC) {
 						ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
 
-						MakeRailNormal(tile, GetTileOwner(tile), track, GB(_m[tile].m4, 0, 4));
+						MakeRailNormal(tile, GetTileOwner(tile), GetCrossingRailBits(tile), GB(_m[tile].m4, 0, 4));
 						MarkTileDirtyByTile(tile);
 					}
 					return cost;
@@ -371,7 +365,7 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					break;
 
 				case ROAD_CROSSING:
-					if (pieces != (ti.map5 & 8 ? ROAD_Y : ROAD_X)) { // XXX is this correct?
+					if (pieces != GetCrossingRoadBits(ti.tile)) { // XXX is this correct?
 						return_cmd_error(STR_1007_ALREADY_BUILT);
 					}
 					goto do_clear;
