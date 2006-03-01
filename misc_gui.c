@@ -1791,10 +1791,8 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 			} else {
 				int32 val;
 
-				DrawFrameRect(x + 20, y + 1, x + 20 + 9, y + 9, 3, clk == i * 2 + 1 ? FR_LOWERED : 0);
-				DrawFrameRect(x + 30, y + 1, x + 30 + 9, y + 9, 3, clk == i * 2 + 2 ? FR_LOWERED : 0);
-				DrawStringCentered(x + 25, y + 1, STR_6819, 0);
-				DrawStringCentered(x + 35, y + 1, STR_681A, 0);
+				/* Draw [<][>] boxes for settings of an integer-type */
+				DrawArrowButtons(x + 20, y, 3, clk - (i * 2), true);
 
 				val = ReadCE(ce);
 

@@ -22,7 +22,6 @@ extern const byte _build_industry_types[4][12];
 extern const byte _industry_type_costs[37];
 
 static void UpdateIndustryProduction(Industry *i);
-extern void DrawArrowButtons(int x, int y, int state);
 
 static void BuildIndustryWndProc(Window *w, WindowEvent *e)
 {
@@ -311,7 +310,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			DrawString(4 + (NEED_ALTERB ? 30 : 0), 127, STR_482B_TRANSPORTED, 0);
 			// Let's put out those buttons..
 			if (NEED_ALTERB)
-				DrawArrowButtons(5, 127, (WP(w,vp2_d).data_2 == 1 ? WP(w,vp2_d).data_3 : 0));
+				DrawArrowButtons(5, 127, 3, (WP(w,vp2_d).data_2 == 1) ? WP(w,vp2_d).data_3 : 0, true);
 
 			if (i->produced_cargo[1] != CT_INVALID) {
 				SetDParam(0, _cargoc.names_long[i->produced_cargo[1]]);
@@ -320,7 +319,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 				DrawString(4 + (NEED_ALTERB ? 30 : 0), 137, STR_482B_TRANSPORTED, 0);
 				// Let's put out those buttons..
 				if (NEED_ALTERB) {
-					DrawArrowButtons(5, 137, (WP(w,vp2_d).data_2 == 2 ? WP(w,vp2_d).data_3 : 0));
+					DrawArrowButtons(5, 137, 3, (WP(w,vp2_d).data_2 == 2) ? WP(w,vp2_d).data_3 : 0, true);
 				}
 			}
 		}
