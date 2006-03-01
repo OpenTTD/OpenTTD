@@ -279,9 +279,36 @@ static byte MakeFinnishTownName(char *buf, uint32 seed)
 	// Select randomly if town name should consists of one or two parts.
 	if (SeedChance(0, 15, seed) >= 10) {
 		strcat(buf, name_finnish_real[SeedChance( 2, lengthof(name_finnish_real), seed)]);
-	} else {
-		strcat(buf, name_finnish_1[SeedChance( 2, lengthof(name_finnish_1), seed)]);
-		strcat(buf, name_finnish_2[SeedChance(10, lengthof(name_finnish_2), seed)]);
+	}
+	// A two-part name by combining one of name_finnish_1 + "la"/"lä"
+	// The reason for not having the contents of name_finnish_{1,2} in the same table is
+	// that the ones in name_finnish_2 are not good for this purpose.
+	else if (SeedChance(0, 15, seed) >= 5) {
+		uint sel = SeedChance( 0, lengthof(name_finnish_1), seed);
+		char *last;
+		strcat(buf, name_finnish_1[sel]);
+		last = &buf[strlen(buf)-1];
+		if (*last == 'i')
+			*last = 'e';
+		if (strstr(buf, "a") || strstr(buf, "o") || strstr(buf, "u") ||
+			strstr(buf, "A") || strstr(buf, "O") || strstr(buf, "U"))
+		{
+			strcat(buf, "la");
+		} else {
+			strcat(buf, "lä");
+		}
+	}
+	// A two-part name by combining one of name_finnish_{1,2} + name_finnish_3.
+	// Why aren't name_finnish_{1,2} just one table? See above.
+	else {
+		uint sel = SeedChance(2,
+			lengthof(name_finnish_1) + lengthof(name_finnish_2), seed);
+		if (sel >= lengthof(name_finnish_1)) {
+			strcat(buf, name_finnish_2[sel-lengthof(name_finnish_1)]);
+		} else {
+			strcat(buf, name_finnish_1[sel]);
+		}
+		strcat(buf, name_finnish_3[SeedChance(10, lengthof(name_finnish_3), seed)]);
 	}
 
 	return 0;

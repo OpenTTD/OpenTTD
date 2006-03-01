@@ -1221,7 +1221,6 @@ static const char *name_finnish_real[] = {
 	"Loviisa",
 	"Kouvola",
 	"Tampere",
-	"Kokkola",
 	"Oulu",
 	"Salo",
 	"Malmi",
@@ -1233,39 +1232,61 @@ static const char *name_finnish_real[] = {
 	"Joensuu",
 	"Imatra",
 	"Tapanila",
-	"Pasila"
+	"Pasila",
+	"Turku",
+	"Kupittaa",
+	"Vaasa",
+	"Pori",
+	"Rauma",
+	"Kolari",
+	"Lieksa"
 };
 
 static const char *name_finnish_1[] = {
 	"Hiekka",
 	"Haapa",
 	"Mylly",
-	"Kivi",
-	"Lappeen",
-	"Lohjan",
-	"Savon",
 	"Sauna",
-	"Keri",
 	"Uusi",
 	"Vanha",
-	"Lapin",
 	"Kesä",
 	"Kuusi",
 	"Pelto",
 	"Tuomi",
-	"Pitäjän",
 	"Terva",
 	"Olki",
 	"Heinä",
-	"Kuusan",
 	"Seinä",
-	"Kemi",
 	"Rova",
-	"Martin",
-	"Koivu"
+	"Koivu",
+	"Kokko",
+	"Mänty",
+	"Pihlaja",
+	"Petäjä",
+	"Kielo",
+	"Kauha",
+	"Viita",
+	"Kivi",
+	"Riihi",
+	"Ääne",
+	"Niini"
 };
 
 static const char *name_finnish_2[] = {
+	"Lappeen",
+	"Lohjan",
+	"Savon",
+	"Lapin",
+	"Pitäjän",
+	"Martin",
+	"Kuusan",
+	"Kemi",
+	"Keri",
+	"Hämeen",
+	"Kangas"
+};
+
+static const char *name_finnish_3[] = {
 	"harju",
 	"linna",
 	"järvi",
@@ -1283,7 +1304,8 @@ static const char *name_finnish_2[] = {
 	"luoto",
 	"hovi",
 	"ranta",
-	"koski"
+	"koski",
+	"salo"
 };
 
 static const char *name_polish_1_m[] = {
