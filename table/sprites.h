@@ -51,7 +51,8 @@ enum Sprites {
 	SPR_CANALS_BASE   = 5382,
 	SPR_SLOPES_BASE   = SPR_CANALS_BASE + 70,
 	SPR_AUTORAIL_BASE = SPR_SLOPES_BASE + 78,
-	SPR_OPENTTD_BASE  = SPR_AUTORAIL_BASE + 55,
+	SPR_2CCMAP_BASE   = SPR_AUTORAIL_BASE + 55,
+	SPR_OPENTTD_BASE  = SPR_2CCMAP_BASE + 256,
 
 	SPR_BLOT = SPR_OPENTTD_BASE + 29, // colored circle (mainly used as vehicle profit marker and for sever compatibility)
 
@@ -1071,7 +1072,7 @@ enum SpriteSetup {
 	TRANSPARENT_BIT = 31,       ///< toggles transparency in the sprite
 	RECOLOR_BIT = 15,           ///< toggles recoloring in the sprite
 	PALETTE_SPRITE_START = 16,  ///< number of the first bit of the sprite containing the recolor palette
-	PALETTE_SPRITE_WIDTH = 11,  ///< number of bits of the sprite containing the recolor palette
+	PALETTE_SPRITE_WIDTH = 14,  ///< number of bits of the sprite containing the recolor palette
 	SPRITE_WIDTH = 14,          ///< number of bits for the sprite number
 };
 

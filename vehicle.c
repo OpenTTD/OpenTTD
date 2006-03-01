@@ -2040,20 +2040,26 @@ UnitID GetFreeUnitNumber(byte type)
 	return unit;
 }
 
-// XXX Temporary stub -- will be expanded
-static PalSpriteID GetEngineColourMap(PlayerID player)
+static PalSpriteID GetEngineColourMap(EngineID engine_type, PlayerID player)
 {
-	return SPRITE_PALETTE(PLAYER_SPRITE_COLOR(player));
+	SpriteID map;
+	byte colour = _player_colors[player];
+
+	/* XXX Magic 0x307 is the first company colour remap sprite */
+	map = HASBIT(_engine_info[engine_type].misc_flags, EF_USES_2CC) ?
+		(SPR_2CCMAP_BASE + colour + colour * 16) : (0x307 + colour);
+
+	return SPRITE_PALETTE(map << PALETTE_SPRITE_START);
 }
 
 PalSpriteID GetEnginePalette(EngineID engine_type, PlayerID player)
 {
-	return GetEngineColourMap(player);
+	return GetEngineColourMap(engine_type, player);
 }
 
 PalSpriteID GetVehiclePalette(const Vehicle *v)
 {
-	return GetEngineColourMap(v->owner);
+	return GetEngineColourMap(v->engine_type, v->owner);
 }
 
 // Save and load of vehicles
