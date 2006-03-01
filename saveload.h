@@ -66,6 +66,12 @@ enum {
 	CH_NUM_PRI_LEVELS = 4,
 };
 
+/** VarTypes is the general bitmasked magic type that tells us
+ * certain characteristics about the variable it refers to. For example
+ * SLE_FILE_* gives the size(type) as it would be in the savegame and
+ * SLE_VAR_* the size(type) as it is in memory during runtime. These are
+ * the first 8 bytes (0-3 SLE_FILE, 4-7 SLE_VAR).
+ * Bytes 8-15 are reserved for various flags as explained below */
 enum VarTypes {
 	/* 4 bytes allocated a maximum of 16 types for NumberType */
 	SLE_FILE_I8       = 0,
@@ -76,9 +82,9 @@ enum VarTypes {
 	SLE_FILE_U32      = 5,
 	SLE_FILE_I64      = 6,
 	SLE_FILE_U64      = 7,
-	SLE_FILE_STRINGID = 8, /// StringID offset into strings-array
+	SLE_FILE_STRINGID = 8, ///< StringID offset into strings-array
 	SLE_FILE_STRING   = 9,
-	/* 6 more possible primitives */
+	/* 6 more possible file-primitives */
 
 	/* 4 bytes allocated a maximum of 16 types for NumberType */
 	SLE_VAR_BL   =  0 << 4,
@@ -90,10 +96,10 @@ enum VarTypes {
 	SLE_VAR_U32  =  6 << 4,
 	SLE_VAR_I64  =  7 << 4,
 	SLE_VAR_U64  =  8 << 4,
-	SLE_VAR_NULL =  9 << 4, /// useful to write zeros in savegame.
-	SLE_VAR_STRB = 10 << 4, /// normal string (with pre-allocated buffer)
-	SLE_VAR_STRQ = 11 << 4, /// string enclosed in parentheses
-	/* 4 more possible primitives */
+	SLE_VAR_NULL =  9 << 4, ///< useful to write zeros in savegame.
+	SLE_VAR_STRB = 10 << 4, ///< normal string (with pre-allocated buffer)
+	SLE_VAR_STRQ = 11 << 4, ///< string enclosed in parentheses
+	/* 4 more possible memory-primitives */
 
 	/* Shortcut values */
 	SLE_VAR_CHAR = SLE_VAR_I8,
@@ -139,16 +145,16 @@ typedef byte SaveLoadType;
 
 /** SaveLoad type struct. Do NOT use this directly but use the SLE_ macros defined just below! */
 typedef struct SaveLoad {
-	SaveLoadType cmd;     /// the action to take with the saved/loaded type, All types need different action
-	VarType conv;         /// type of the variable to be saved, int
-	uint16 length;        /// (conditional) length of the variable (eg. arrays) (max array size is 65536 elements)
-	uint16 version_from;  /// save/load the variable starting from this savegame version
-	uint16 version_to;    /// save/load the variable until this savegame version
+	SaveLoadType cmd;    ///< the action to take with the saved/loaded type, All types need different action
+	VarType conv;        ///< type of the variable to be saved, int
+	uint16 length;       ///< (conditional) length of the variable (eg. arrays) (max array size is 65536 elements)
+	uint16 version_from; ///< save/load the variable starting from this savegame version
+	uint16 version_to;   ///< save/load the variable until this savegame version
 	/* NOTE: This element either denotes the address of the variable for a global
 	 * variable, or the offset within a struct which is then bound to a variable
 	 * during runtime. Decision on which one to use is controlled by the function
 	 * that is called to save it. address: SlGlobList, offset: SlObject */
-	void *address;      /// address of variable OR offset of variable in the struct (max offset is 65536)
+	void *address;       ///< address of variable OR offset of variable in the struct (max offset is 65536)
 } SaveLoad;
 
 /* Same as SaveLoad but global variables are used (for better readability); */
