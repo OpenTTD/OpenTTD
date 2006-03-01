@@ -16,6 +16,7 @@
 #include "depot.h"
 #include "vehicle_gui.h"
 #include "train.h"
+#include "water_map.h"
 
 const SpriteID _water_shore_sprites[15] = {
 	0,
@@ -116,9 +117,10 @@ static int32 RemoveShipDepot(TileIndex tile, uint32 flags)
 		/* Kill the depot */
 		DoDeleteDepot(tile);
 
-		/* Make the tiles water */
-		ModifyTile(tile, MP_SETTYPE(MP_WATER) | MP_MAPOWNER | MP_MAP5 | MP_MAP2_CLEAR | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR, OWNER_WATER, 0);
-		ModifyTile(tile2, MP_SETTYPE(MP_WATER) | MP_MAPOWNER | MP_MAP5 | MP_MAP2_CLEAR | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR, OWNER_WATER, 0);
+		MakeWater(tile);
+		MakeWater(tile2);
+		MarkTileDirtyByTile(tile);
+		MarkTileDirtyByTile(tile2);
 	}
 
 	return _price.remove_ship_depot;
@@ -258,7 +260,8 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 						// change owner to OWNER_WATER and set land under bridge bit to water
 						ModifyTile(tile, MP_MAP5 | MP_MAPOWNER, OWNER_WATER, _m[tile].m5 | 0x08);
 					} else {
-						ModifyTile(tile, MP_SETTYPE(MP_WATER) | MP_MAPOWNER | MP_MAP5 | MP_MAP2_CLEAR | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR, OWNER_WATER, 0);
+						MakeWater(tile);
+						MarkTileDirtyByTile(tile);
 					}
 					// mark the tiles around dirty too
 					MarkTilesAroundDirty(tile);
@@ -532,12 +535,8 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 			case MP_TREES:
 				_current_player = OWNER_WATER;
 				if (!CmdFailed(DoCommandByTile(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
-					ModifyTile(
-						target,
-						MP_SETTYPE(MP_WATER) | MP_MAPOWNER | MP_MAP5 | MP_MAP2_CLEAR |
-							MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR,
-						OWNER_WATER, 1
-					);
+					MakeShore(target);
+					MarkTileDirtyByTile(target);
 				}
 				break;
 
@@ -570,13 +569,8 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 		}
 
 		if (!CmdFailed(DoCommandByTile(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
-			ModifyTile(
-				target,
-				MP_SETTYPE(MP_WATER) | MP_MAPOWNER | MP_MAP5 | MP_MAP2_CLEAR |
-					MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR,
-				OWNER_WATER,
-				0
-			);
+			MakeWater(target);
+			MarkTileDirtyByTile(target);
 		}
 	}
 }

@@ -26,6 +26,7 @@
 #include "sprite.h"
 #include "depot.h"
 #include "train.h"
+#include "water_map.h"
 
 enum {
 	/* Max stations: 64000 (64 * 1000) */
@@ -1777,12 +1778,8 @@ static int32 RemoveBuoy(Station *st, uint32 flags)
 		st->facilities &= ~FACIL_DOCK;
 		st->had_vehicle_of_type &= ~HVOT_BUOY;
 
-		ModifyTile(tile,
-			MP_SETTYPE(MP_WATER) |
-			MP_MAP2_CLEAR | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR | MP_MAPOWNER | MP_MAP5 | MP_MAP2_CLEAR,
-			OWNER_WATER, /* map_owner */
-			0			/* map5 */
-		);
+		MakeWater(tile);
+		MarkTileDirtyByTile(tile);
 
 		UpdateStationVirtCoordDirty(st);
 		DeleteStationIfEmpty(st);
@@ -1926,8 +1923,8 @@ static int32 RemoveDock(Station *st, uint32 flags)
 	if (flags & DC_EXEC) {
 		DoClearSquare(tile1);
 
-		// convert the water tile to water.
-		ModifyTile(tile2, MP_SETTYPE(MP_WATER) | MP_MAPOWNER | MP_MAP5 | MP_MAP2_CLEAR | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR, OWNER_WATER, 0);
+		MakeWater(tile2);
+		MarkTileDirtyByTile(tile2);
 
 		st->dock_tile = 0;
 		st->facilities &= ~FACIL_DOCK;

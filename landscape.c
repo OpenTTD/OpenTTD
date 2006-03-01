@@ -15,6 +15,7 @@
 #include "vehicle.h"
 #include "variables.h"
 #include "void.h"
+#include "water_map.h"
 
 extern const TileTypeProcs
 	_tile_type_clear_procs,
@@ -450,9 +451,7 @@ void ConvertGroundTilesIntoWaterTiles(void)
 
 	for (tile = 0; tile < MapSize(); ++tile) {
 		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h == 0) {
-			SetTileType(tile, MP_WATER);
-			SetTileOwner(tile, OWNER_WATER);
-			_m[tile].m5 = 0;
+			MakeWater(tile);
 		}
 	}
 }
