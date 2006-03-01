@@ -239,10 +239,10 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 					if (!(ti.map5 & 8)) {
 						if (pieces & ROAD_Y) goto return_error;
-						track = TRACK_BIT_DIAG2;
+						track = TRACK_BIT_Y;
 					} else {
 						if (pieces & ROAD_X) goto return_error;
-						track = TRACK_BIT_DIAG1;
+						track = TRACK_BIT_X;
 					}
 
 					cost = _price.remove_road * 2;

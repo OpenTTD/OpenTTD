@@ -1033,7 +1033,7 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		st->build_date = _date;
 
 		tile_delta = direction ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
-		track = direction ? TRACK_DIAG2 : TRACK_DIAG1;
+		track = direction ? TRACK_Y : TRACK_X;
 
 		statspec = (p2 & 0x10) != 0 ? GetCustomStation(STAT_CLASS_DFLT, p2 >> 8) : NULL;
 		layout_ptr = alloca(numtracks * plat_len);
@@ -1149,7 +1149,7 @@ int32 CmdRemoveFromRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32
 
 	// if we reached here, it means we can actually delete it. do that.
 	if (flags & DC_EXEC) {
-		Track track = HASBIT(_m[tile].m5, 0) ? TRACK_DIAG2 : TRACK_DIAG1;
+		Track track = HASBIT(_m[tile].m5, 0) ? TRACK_Y : TRACK_X;
 		DoClearSquare(tile);
 		SetSignalsOnBothDir(tile, track);
 		// now we need to make the "spanned" area of the railway station smaller if we deleted something at the edges.
@@ -1228,7 +1228,7 @@ static int32 RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 				if (!EnsureNoVehicle(tile))
 					return CMD_ERROR;
 				if (flags & DC_EXEC) {
-					Track track = HASBIT(_m[tile].m5, 0) ? TRACK_DIAG2 : TRACK_DIAG1;
+					Track track = HASBIT(_m[tile].m5, 0) ? TRACK_Y : TRACK_X;
 					DoClearSquare(tile);
 					SetSignalsOnBothDir(tile, track);
 				}

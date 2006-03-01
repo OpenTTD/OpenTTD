@@ -67,8 +67,8 @@ enum {
 /** These are used to specify a single track. Can be translated to a trackbit
  * with TrackToTrackbit */
 typedef enum Tracks {
-	TRACK_DIAG1 = 0,
-	TRACK_DIAG2 = 1,
+	TRACK_X     = 0,
+	TRACK_Y     = 1,
 	TRACK_UPPER = 2,
 	TRACK_LOWER = 3,
 	TRACK_LEFT  = 4,
@@ -79,8 +79,8 @@ typedef enum Tracks {
 
 /** These are the bitfield variants of the above */
 typedef enum TrackBits {
-	TRACK_BIT_DIAG1 = 1U,    // 0
-	TRACK_BIT_DIAG2 = 2U,    // 1
+	TRACK_BIT_X     = 1U,    // 0
+	TRACK_BIT_Y     = 2U,    // 1
 	TRACK_BIT_UPPER = 4U,    // 2
 	TRACK_BIT_LOWER = 8U,    // 3
 	TRACK_BIT_LEFT  = 16U,   // 4
@@ -91,16 +91,16 @@ typedef enum TrackBits {
 /** These are a combination of tracks and directions. Values are 0-5 in one
 direction (corresponding to the Track enum) and 8-13 in the other direction. */
 typedef enum Trackdirs {
-	TRACKDIR_DIAG1_NE = 0,
-	TRACKDIR_DIAG2_SE = 1,
+	TRACKDIR_X_NE = 0,
+	TRACKDIR_Y_SE = 1,
 	TRACKDIR_UPPER_E  = 2,
 	TRACKDIR_LOWER_E  = 3,
 	TRACKDIR_LEFT_S   = 4,
 	TRACKDIR_RIGHT_S  = 5,
 	/* Note the two missing values here. This enables trackdir -> track
 	 * conversion by doing (trackdir & 7) */
-	TRACKDIR_DIAG1_SW = 8,
-	TRACKDIR_DIAG2_NW = 9,
+	TRACKDIR_X_SW = 8,
+	TRACKDIR_Y_NW = 9,
 	TRACKDIR_UPPER_W  = 10,
 	TRACKDIR_LOWER_W  = 11,
 	TRACKDIR_LEFT_N   = 12,
@@ -112,15 +112,15 @@ typedef enum Trackdirs {
 /** These are a combination of tracks and directions. Values are 0-5 in one
 direction (corresponding to the Track enum) and 8-13 in the other direction. */
 typedef enum TrackdirBits {
-	TRACKDIR_BIT_DIAG1_NE = 0x1,
-	TRACKDIR_BIT_DIAG2_SE = 0x2,
+	TRACKDIR_BIT_X_NE     = 0x1,
+	TRACKDIR_BIT_Y_SE     = 0x2,
 	TRACKDIR_BIT_UPPER_E  = 0x4,
 	TRACKDIR_BIT_LOWER_E  = 0x8,
 	TRACKDIR_BIT_LEFT_S   = 0x10,
 	TRACKDIR_BIT_RIGHT_S  = 0x20,
 	/* Again, note the two missing values here. This enables trackdir -> track conversion by doing (trackdir & 0xFF) */
-	TRACKDIR_BIT_DIAG1_SW = 0x0100,
-	TRACKDIR_BIT_DIAG2_NW = 0x0200,
+	TRACKDIR_BIT_X_SW     = 0x0100,
+	TRACKDIR_BIT_Y_NW     = 0x0200,
 	TRACKDIR_BIT_UPPER_W  = 0x0400,
 	TRACKDIR_BIT_LOWER_W  = 0x0800,
 	TRACKDIR_BIT_LEFT_N   = 0x1000,
@@ -481,7 +481,7 @@ static inline DiagDirection DirToDiagdir(Direction dir) {
 }
 
 /* Checks if a given Track is diagonal */
-static inline bool IsDiagonalTrack(Track track) { return (track == TRACK_DIAG1) || (track == TRACK_DIAG2); }
+static inline bool IsDiagonalTrack(Track track) { return (track == TRACK_X) || (track == TRACK_Y); }
 
 /* Checks if a given Trackdir is diagonal. */
 static inline bool IsDiagonalTrackdir(Trackdir trackdir) { return IsDiagonalTrack(TrackdirToTrack(trackdir)); }
@@ -586,10 +586,10 @@ static inline TransportType GetCrossingTransportType(TileIndex tile, Track track
 {
 	/* XXX: Nicer way to write this? */
 	switch (track) {
-		/* When map5 bit 3 is set, the road runs in the y direction (DIAG2) */
-		case TRACK_DIAG1:
+		/* When map5 bit 3 is set, the road runs in the y direction */
+		case TRACK_X:
 			return (HASBIT(_m[tile].m5, 3) ? TRANSPORT_RAIL : TRANSPORT_ROAD);
-		case TRACK_DIAG2:
+		case TRACK_Y:
 			return (HASBIT(_m[tile].m5, 3) ? TRANSPORT_ROAD : TRANSPORT_RAIL);
 		default:
 			assert(0);

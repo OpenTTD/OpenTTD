@@ -10,7 +10,7 @@
 
 static inline TrackBits GetRailWaypointBits(TileIndex t)
 {
-	return _m[t].m5 & RAIL_WAYPOINT_TRACK_MASK ? TRACK_BIT_DIAG2 : TRACK_BIT_DIAG1;
+	return _m[t].m5 & RAIL_WAYPOINT_TRACK_MASK ? TRACK_BIT_Y : TRACK_BIT_X;
 }
 
 

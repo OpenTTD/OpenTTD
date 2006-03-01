@@ -623,18 +623,18 @@ static bool NtpCheck(NewTrackPathFinder *tpf, TileIndex tile, uint dir, uint len
 
 static const uint16 _is_upwards_slope[15] = {
 	0, // no tileh
-	(1 << TRACKDIR_DIAG1_SW) | (1 << TRACKDIR_DIAG2_NW), // 1
-	(1 << TRACKDIR_DIAG1_SW) | (1 << TRACKDIR_DIAG2_SE), // 2
-	(1 << TRACKDIR_DIAG1_SW), // 3
-	(1 << TRACKDIR_DIAG1_NE) | (1 << TRACKDIR_DIAG2_SE), // 4
+	(1 << TRACKDIR_X_SW) | (1 << TRACKDIR_Y_NW), // 1
+	(1 << TRACKDIR_X_SW) | (1 << TRACKDIR_Y_SE), // 2
+	(1 << TRACKDIR_X_SW), // 3
+	(1 << TRACKDIR_X_NE) | (1 << TRACKDIR_Y_SE), // 4
 	0, // 5
-	(1 << TRACKDIR_DIAG2_SE), // 6
+	(1 << TRACKDIR_Y_SE), // 6
 	0, // 7
-	(1 << TRACKDIR_DIAG1_NE) | (1 << TRACKDIR_DIAG2_NW), // 8,
-	(1 << TRACKDIR_DIAG2_NW), // 9
+	(1 << TRACKDIR_X_NE) | (1 << TRACKDIR_Y_NW), // 8,
+	(1 << TRACKDIR_Y_NW), // 9
 	0, //10
 	0, //11,
-	(1 << TRACKDIR_DIAG1_NE), //12
+	(1 << TRACKDIR_X_NE), //12
 	0, //13
 	0, //14
 };

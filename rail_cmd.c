@@ -134,22 +134,22 @@ static const byte _valid_tileh_slopes[4][15] = {
 
 // set of normal ones
 {
-	TRACK_BIT_DIAG1|TRACK_BIT_DIAG2|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
+	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
 	TRACK_BIT_RIGHT,
 	TRACK_BIT_UPPER,
-	TRACK_BIT_DIAG1,
+	TRACK_BIT_X,
 
 	TRACK_BIT_LEFT,
 	0,
-	TRACK_BIT_DIAG2,
+	TRACK_BIT_Y,
 	TRACK_BIT_LOWER,
 
 	TRACK_BIT_LOWER,
-	TRACK_BIT_DIAG2,
+	TRACK_BIT_Y,
 	0,
 	TRACK_BIT_LEFT,
 
-	TRACK_BIT_DIAG1,
+	TRACK_BIT_X,
 	TRACK_BIT_UPPER,
 	TRACK_BIT_RIGHT,
 },
@@ -159,21 +159,21 @@ static const byte _valid_tileh_slopes[4][15] = {
 	0,
 	TRACK_BIT_LEFT,
 	TRACK_BIT_LOWER,
-	TRACK_BIT_DIAG2 | TRACK_BIT_LOWER | TRACK_BIT_LEFT,
+	TRACK_BIT_Y | TRACK_BIT_LOWER | TRACK_BIT_LEFT,
 
 	TRACK_BIT_RIGHT,
-	TRACK_BIT_DIAG1|TRACK_BIT_DIAG2|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
-	TRACK_BIT_DIAG1 | TRACK_BIT_LOWER | TRACK_BIT_RIGHT,
-	TRACK_BIT_DIAG1|TRACK_BIT_DIAG2|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
+	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
+	TRACK_BIT_X | TRACK_BIT_LOWER | TRACK_BIT_RIGHT,
+	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
 
 	TRACK_BIT_UPPER,
-	TRACK_BIT_DIAG1 | TRACK_BIT_UPPER | TRACK_BIT_LEFT,
-	TRACK_BIT_DIAG1|TRACK_BIT_DIAG2|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
-	TRACK_BIT_DIAG1|TRACK_BIT_DIAG2|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
+	TRACK_BIT_X | TRACK_BIT_UPPER | TRACK_BIT_LEFT,
+	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
+	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
 
-	TRACK_BIT_DIAG2 | TRACK_BIT_UPPER | TRACK_BIT_RIGHT,
-	TRACK_BIT_DIAG1|TRACK_BIT_DIAG2|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
-	TRACK_BIT_DIAG1|TRACK_BIT_DIAG2|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
+	TRACK_BIT_Y | TRACK_BIT_UPPER | TRACK_BIT_RIGHT,
+	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
+	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
 },
 
 // allowed rail on coast tile
@@ -181,21 +181,21 @@ static const byte _valid_tileh_slopes[4][15] = {
 	0,
 	TRACK_BIT_LEFT,
 	TRACK_BIT_LOWER,
-	TRACK_BIT_DIAG2|TRACK_BIT_LEFT|TRACK_BIT_LOWER,
+	TRACK_BIT_Y|TRACK_BIT_LEFT|TRACK_BIT_LOWER,
 
 	TRACK_BIT_RIGHT,
-	TRACK_BIT_DIAG1|TRACK_BIT_DIAG2|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
-	TRACK_BIT_DIAG1|TRACK_BIT_RIGHT|TRACK_BIT_LOWER,
-	TRACK_BIT_DIAG1|TRACK_BIT_DIAG2|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
+	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
+	TRACK_BIT_X|TRACK_BIT_RIGHT|TRACK_BIT_LOWER,
+	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
 
 	TRACK_BIT_UPPER,
-	TRACK_BIT_DIAG1|TRACK_BIT_LEFT|TRACK_BIT_UPPER,
-	TRACK_BIT_DIAG1|TRACK_BIT_DIAG2|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
-	TRACK_BIT_DIAG1|TRACK_BIT_DIAG2|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
+	TRACK_BIT_X|TRACK_BIT_LEFT|TRACK_BIT_UPPER,
+	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
+	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
 
-	TRACK_BIT_DIAG2|TRACK_BIT_RIGHT|TRACK_BIT_UPPER,
-	TRACK_BIT_DIAG1|TRACK_BIT_DIAG2|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
-	TRACK_BIT_DIAG1|TRACK_BIT_DIAG2|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
+	TRACK_BIT_Y|TRACK_BIT_RIGHT|TRACK_BIT_UPPER,
+	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
+	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
 	},
 
 	// valid railway crossings on slopes
@@ -224,8 +224,8 @@ uint GetRailFoundation(uint tileh, uint bits)
 				(i += 2, tileh == 4) ||
 				(i += 2, tileh == 8)
 			) && (
-				bits == TRACK_BIT_DIAG1 ||
-				(i++, bits == TRACK_BIT_DIAG2)
+				bits == TRACK_BIT_X ||
+				(i++, bits == TRACK_BIT_Y)
 			)) {
 		return i + 15;
 	} else {
@@ -251,7 +251,7 @@ static uint32 CheckRailSlope(uint tileh, TrackBits rail_bits, TrackBits existing
 			return 0;
 
 		if ((~_valid_tileh_slopes[1][tileh] & rail_bits) == 0 || ( // whole tile is leveled up
-					(rail_bits == TRACK_BIT_DIAG1 || rail_bits == TRACK_BIT_DIAG2) &&
+					(rail_bits == TRACK_BIT_X || rail_bits == TRACK_BIT_Y) &&
 					(tileh == 1 || tileh == 2 || tileh == 4 || tileh == 8)
 				)) { // partly up
 			if (existing != 0) {
@@ -296,7 +296,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	switch (GetTileType(tile)) {
 		case MP_TUNNELBRIDGE:
 			if ((m5 & 0xC0) != 0xC0 || // not bridge middle part?
-					(m5 & 0x01 ? TRACK_BIT_DIAG1 : TRACK_BIT_DIAG2) != trackbit) { // wrong direction?
+					(m5 & 0x01 ? TRACK_BIT_X : TRACK_BIT_Y) != trackbit) { // wrong direction?
 				// Get detailed error message
 				return DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			}
@@ -351,16 +351,16 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
 			if (GetRoadType(tile) == ROAD_NORMAL && (
-						(track == TRACK_DIAG1 && m5 == ROAD_Y) ||
-						(track == TRACK_DIAG2 && m5 == ROAD_X) // correct direction?
+						(track == TRACK_X && m5 == ROAD_Y) ||
+						(track == TRACK_Y && m5 == ROAD_X) // correct direction?
 					)) {
 				if (flags & DC_EXEC) {
-					MakeRoadCrossing(tile, GetTileOwner(tile), _current_player, (track == TRACK_DIAG1 ? AXIS_Y : AXIS_X), p1, _m[tile].m2);
+					MakeRoadCrossing(tile, GetTileOwner(tile), _current_player, (track == TRACK_X ? AXIS_Y : AXIS_X), p1, _m[tile].m2);
 				}
 				break;
 			}
 
-			if (IsLevelCrossing(tile) && (m5 & 0x08 ? TRACK_DIAG1 : TRACK_DIAG2) == track)
+			if (IsLevelCrossing(tile) && (m5 & 0x08 ? TRACK_X : TRACK_Y) == track)
 				return_cmd_error(STR_1007_ALREADY_BUILT);
 			/* FALLTHROUGH */
 
@@ -423,7 +423,7 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if ((_m[tile].m5 & 0xF8) != 0xE0)
 				return CMD_ERROR;
 
-			if ((_m[tile].m5 & 1 ? TRACK_BIT_DIAG1 : TRACK_BIT_DIAG2) != trackbit)
+			if ((_m[tile].m5 & 1 ? TRACK_BIT_X : TRACK_BIT_Y) != trackbit)
 				return CMD_ERROR;
 
 			if (!(flags & DC_EXEC))
@@ -440,12 +440,10 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			/* This is a crossing, let's check if the direction is correct */
 			if (_m[tile].m5 & 8) {
-				if (track != TRACK_DIAG1)
-					return CMD_ERROR;
+				if (track != TRACK_X) return CMD_ERROR;
 				bits = ROAD_Y;
 			} else {
-				if (track != TRACK_DIAG2)
-					return CMD_ERROR;
+				if (track != TRACK_Y) return CMD_ERROR;
 				bits = ROAD_X;
 			}
 
@@ -1072,8 +1070,8 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 	switch (GetRailTileType(tile)) {
 		/* XXX: Why the fuck do we remove these thow signals first? */
 		case RAIL_TYPE_SIGNALS:
-			if (HasSignalOnTrack(tile, TRACK_DIAG1)) {
-				ret = DoCommandByTile(tile, TRACK_DIAG1, 0, flags, CMD_REMOVE_SIGNALS);
+			if (HasSignalOnTrack(tile, TRACK_X)) {
+				ret = DoCommandByTile(tile, TRACK_X, 0, flags, CMD_REMOVE_SIGNALS);
 				if (CmdFailed(ret)) return CMD_ERROR;
 				cost += ret;
 			}
@@ -1305,22 +1303,22 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track, bool earth, bool snow, 
 	bool junction = false;
 
 	// Select the sprite to use.
-	(image = rti->base_sprites.track_y, track == TRACK_BIT_DIAG2) ||
-	(image++,                           track == TRACK_BIT_DIAG1) ||
+	(image = rti->base_sprites.track_y, track == TRACK_BIT_Y) ||
+	(image++,                           track == TRACK_BIT_X) ||
 	(image++,                           track == TRACK_BIT_UPPER) ||
 	(image++,                           track == TRACK_BIT_LOWER) ||
 	(image++,                           track == TRACK_BIT_RIGHT) ||
 	(image++,                           track == TRACK_BIT_LEFT) ||
-	(image++,                           track == (TRACK_BIT_DIAG1 | TRACK_BIT_DIAG2)) ||
+	(image++,                           track == (TRACK_BIT_X | TRACK_BIT_Y)) ||
 
 	(image = rti->base_sprites.track_ns, track == (TRACK_BIT_UPPER | TRACK_BIT_LOWER)) ||
 	(image++,                            track == (TRACK_BIT_LEFT | TRACK_BIT_RIGHT)) ||
 
 	(junction = true, false) ||
-	(image = rti->base_sprites.ground, !(track & (TRACK_BIT_RIGHT | TRACK_BIT_UPPER | TRACK_BIT_DIAG1))) ||
-	(image++,                          !(track & (TRACK_BIT_LEFT | TRACK_BIT_LOWER | TRACK_BIT_DIAG1))) ||
-	(image++,                          !(track & (TRACK_BIT_LEFT | TRACK_BIT_UPPER | TRACK_BIT_DIAG2))) ||
-	(image++,                          !(track & (TRACK_BIT_RIGHT | TRACK_BIT_LOWER | TRACK_BIT_DIAG2))) ||
+	(image = rti->base_sprites.ground, !(track & (TRACK_BIT_RIGHT | TRACK_BIT_UPPER | TRACK_BIT_X))) ||
+	(image++,                          !(track & (TRACK_BIT_LEFT | TRACK_BIT_LOWER | TRACK_BIT_X))) ||
+	(image++,                          !(track & (TRACK_BIT_LEFT | TRACK_BIT_UPPER | TRACK_BIT_Y))) ||
+	(image++,                          !(track & (TRACK_BIT_RIGHT | TRACK_BIT_LOWER | TRACK_BIT_Y))) ||
 	(image++, true);
 
 	if (ti->tileh != 0) {
@@ -1351,8 +1349,8 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track, bool earth, bool snow, 
 
 	// Draw track pieces individually for junction tiles
 	if (junction) {
-		if (track & TRACK_BIT_DIAG1) DrawGroundSprite(rti->base_sprites.single_y);
-		if (track & TRACK_BIT_DIAG2) DrawGroundSprite(rti->base_sprites.single_x);
+		if (track & TRACK_BIT_X)     DrawGroundSprite(rti->base_sprites.single_y);
+		if (track & TRACK_BIT_Y)     DrawGroundSprite(rti->base_sprites.single_x);
 		if (track & TRACK_BIT_UPPER) DrawGroundSprite(rti->base_sprites.single_n);
 		if (track & TRACK_BIT_LOWER) DrawGroundSprite(rti->base_sprites.single_s);
 		if (track & TRACK_BIT_LEFT)  DrawGroundSprite(rti->base_sprites.single_w);
@@ -1392,8 +1390,8 @@ static void DrawTile_Track(TileInfo *ti)
 #define ISON_SIGNAL(x) (m23 & (byte)(0x10 << (x)))
 #define MAYBE_DRAW_SIGNAL(x,y,z) if (HAS_SIGNAL(x)) DrawSignalHelper(ti, ISON_SIGNAL(x), ((y-0x4FB) << 4)|(z))
 
-		if (!(m5 & TRACK_BIT_DIAG2)) {
-			if (!(m5 & TRACK_BIT_DIAG1)) {
+		if (!(m5 & TRACK_BIT_Y)) {
+			if (!(m5 & TRACK_BIT_X)) {
 				if (m5 & TRACK_BIT_LEFT) {
 					MAYBE_DRAW_SIGNAL(2, 0x509, 0);
 					MAYBE_DRAW_SIGNAL(3, 0x507, 1);
@@ -1909,8 +1907,8 @@ static void TileLoop_Track(TileIndex tile)
 				PlayerID owner = GetTileOwner(tile);
 
 				if (rail == (TRACK_BIT_LOWER | TRACK_BIT_RIGHT) || (
-							!(rail & (TRACK_BIT_DIAG2 | TRACK_BIT_UPPER | TRACK_BIT_LEFT)) &&
-							(rail & TRACK_BIT_DIAG1)
+							!(rail & (TRACK_BIT_Y | TRACK_BIT_UPPER | TRACK_BIT_LEFT)) &&
+							(rail & TRACK_BIT_X)
 						)) {
 					TileIndex n = tile + TileDiffXY(0, -1);
 
@@ -1923,8 +1921,8 @@ static void TileLoop_Track(TileIndex tile)
 				}
 
 				if (rail == (TRACK_BIT_UPPER | TRACK_BIT_LEFT) || (
-							!(rail & (TRACK_BIT_DIAG2 | TRACK_BIT_LOWER | TRACK_BIT_RIGHT)) &&
-							(rail & TRACK_BIT_DIAG1)
+							!(rail & (TRACK_BIT_Y | TRACK_BIT_LOWER | TRACK_BIT_RIGHT)) &&
+							(rail & TRACK_BIT_X)
 						)) {
 					TileIndex n = tile + TileDiffXY(0, 1);
 
@@ -1938,8 +1936,8 @@ static void TileLoop_Track(TileIndex tile)
 				}
 
 				if (rail == (TRACK_BIT_LOWER | TRACK_BIT_LEFT) || (
-							!(rail & (TRACK_BIT_DIAG1 | TRACK_BIT_UPPER | TRACK_BIT_RIGHT)) &&
-							(rail & TRACK_BIT_DIAG2)
+							!(rail & (TRACK_BIT_X | TRACK_BIT_UPPER | TRACK_BIT_RIGHT)) &&
+							(rail & TRACK_BIT_Y)
 						)) {
 					TileIndex n = tile + TileDiffXY(-1, 0);
 
@@ -1952,8 +1950,8 @@ static void TileLoop_Track(TileIndex tile)
 				}
 
 				if (rail == (TRACK_BIT_UPPER | TRACK_BIT_RIGHT) || (
-							!(rail & (TRACK_BIT_DIAG1 | TRACK_BIT_LOWER | TRACK_BIT_LEFT)) &&
-							(rail & TRACK_BIT_DIAG2)
+							!(rail & (TRACK_BIT_X | TRACK_BIT_LOWER | TRACK_BIT_LEFT)) &&
+							(rail & TRACK_BIT_Y)
 						)) {
 					TileIndex n = tile + TileDiffXY(1, 0);
 
