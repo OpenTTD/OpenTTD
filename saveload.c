@@ -398,6 +398,53 @@ static inline void SlSkipBytes(size_t length)
 /* Get the length of the current object */
 uint SlGetFieldLength(void) {return _sl.obj_len;}
 
+/** Return a signed-long version of the value of a setting
+ * @param ptr pointer to the variable
+ * @param conv type of variable, can be a non-clean
+ * type, eg one with other flags because it is parsed
+ * @return returns the value of the pointer-setting */
+int64 ReadValue(const void *ptr, VarType conv)
+{
+	switch (GetVarMemType(conv)) {
+	case SLE_VAR_BL:  return (*(bool*)ptr == 1);
+	case SLE_VAR_I8:  return *(int8*  )ptr;
+	case SLE_VAR_U8:  return *(byte*  )ptr;
+	case SLE_VAR_I16: return *(int16* )ptr;
+	case SLE_VAR_U16: return *(uint16*)ptr;
+	case SLE_VAR_I32: return *(int32* )ptr;
+	case SLE_VAR_U32: return *(uint32*)ptr;
+	case SLE_VAR_I64: return *(int64* )ptr;
+	case SLE_VAR_U64: return *(uint64*)ptr;
+	case SLE_VAR_NULL:return 0;
+	default: NOT_REACHED();
+	}
+
+	/* useless, but avoids compiler warning this way */
+	return 0;
+}
+
+/** Write the value of a setting
+ * @param ptr pointer to the variable
+ * @param conv type of variable, can be a non-clean type, eg
+ * with other flags. It is parsed upon read
+ * @param var the new value being given to the variable */
+void WriteValue(void *ptr, VarType conv, int64 val)
+{
+	switch (GetVarMemType(conv)) {
+	case SLE_VAR_BL:  *(bool  *)ptr = (val == 1);  break;
+	case SLE_VAR_I8:  *(int8  *)ptr = val; break;
+	case SLE_VAR_U8:  *(byte  *)ptr = val; break;
+	case SLE_VAR_I16: *(int16 *)ptr = val; break;
+	case SLE_VAR_U16: *(uint16*)ptr = val; break;
+	case SLE_VAR_I32: *(int32 *)ptr = val; break;
+	case SLE_VAR_U32: *(uint32*)ptr = val; break;
+	case SLE_VAR_I64: *(int64 *)ptr = val; break;
+	case SLE_VAR_U64: *(uint64*)ptr = val; break;
+	case SLE_VAR_NULL: break;
+	default: NOT_REACHED();
+	}
+}
+
 /**
  * Handle all conversion and typechecking of variables here.
  * In the case of saving, read in the actual value from the struct
@@ -412,61 +459,39 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 
 	if (_sl.save) { /* SAVE values */
 		/* Read a value from the struct. These ARE endian safe. */
-		switch ((conv >> 4) & 0xF) {
-		case SLE_VAR_BL   >> 4:
-		case SLE_VAR_I8   >> 4: x = *(int8*)ptr; break;
-		case SLE_VAR_U8   >> 4: x = *(byte*)ptr; break;
-		case SLE_VAR_I16  >> 4: x = *(int16*)ptr; break;
-		case SLE_VAR_U16  >> 4: x = *(uint16*)ptr; break;
-		case SLE_VAR_I32  >> 4: x = *(int32*)ptr; break;
-		case SLE_VAR_U32  >> 4: x = *(uint32*)ptr; break;
-		case SLE_VAR_I64  >> 4: x = *(int64*)ptr; break;
-		case SLE_VAR_U64  >> 4: x = *(uint64*)ptr; break;
-		case SLE_VAR_NULL >> 4: x = 0; break;
-		default: NOT_REACHED();
-		}
+		x = ReadValue(ptr, conv);
 
-		// Write the value to the file and check if its value is in the desired range
-		switch (conv & 0xF) {
+		/* Write the value to the file and check if its value is in the desired range */
+		switch (GetVarFileType(conv)) {
 		case SLE_FILE_I8: assert(x >= -128 && x <= 127);     SlWriteByte(x);break;
 		case SLE_FILE_U8: assert(x >= 0 && x <= 255);        SlWriteByte(x);break;
 		case SLE_FILE_I16:assert(x >= -32768 && x <= 32767); SlWriteUint16(x);break;
 		case SLE_FILE_STRINGID:
 		case SLE_FILE_U16:assert(x >= 0 && x <= 65535);      SlWriteUint16(x);break;
-		case SLE_FILE_I32: case SLE_FILE_U32:                SlWriteUint32((uint32)x);break;
-		case SLE_FILE_I64: case SLE_FILE_U64:                SlWriteUint64(x);break;
+		case SLE_FILE_I32:
+		case SLE_FILE_U32:                                   SlWriteUint32((uint32)x);break;
+		case SLE_FILE_I64:
+		case SLE_FILE_U64:                                   SlWriteUint64(x);break;
 		default: NOT_REACHED();
 		}
 	} else { /* LOAD values */
 
-		// Read a value from the file
-		switch (conv & 0xF) {
-		case SLE_FILE_I8:  x = (int8)SlReadByte(); break;
-		case SLE_FILE_U8:  x = (byte)SlReadByte(); break;
-		case SLE_FILE_I16: x = (int16)SlReadUint16(); break;
+		/* Read a value from the file */
+		switch (GetVarFileType(conv)) {
+		case SLE_FILE_I8:  x = (int8  )SlReadByte();   break;
+		case SLE_FILE_U8:  x = (byte  )SlReadByte();   break;
+		case SLE_FILE_I16: x = (int16 )SlReadUint16(); break;
 		case SLE_FILE_U16: x = (uint16)SlReadUint16(); break;
-		case SLE_FILE_I32: x = (int32)SlReadUint32(); break;
+		case SLE_FILE_I32: x = (int32 )SlReadUint32(); break;
 		case SLE_FILE_U32: x = (uint32)SlReadUint32(); break;
-		case SLE_FILE_I64: x = (int64)SlReadUint64(); break;
+		case SLE_FILE_I64: x = (int64 )SlReadUint64(); break;
 		case SLE_FILE_U64: x = (uint64)SlReadUint64(); break;
 		case SLE_FILE_STRINGID: x = RemapOldStringID((uint16)SlReadUint16()); break;
 		default: NOT_REACHED();
 		}
 
 		/* Write The value to the struct. These ARE endian safe. */
-		switch ((conv >> 4) & 0xF) {
-		case SLE_VAR_BL   >> 4:
-		case SLE_VAR_I8   >> 4:  *(int8*)ptr = x; break;
-		case SLE_VAR_U8   >> 4:  *(byte*)ptr = x; break;
-		case SLE_VAR_I16  >> 4: *(int16*)ptr = x; break;
-		case SLE_VAR_U16  >> 4: *(uint16*)ptr = x; break;
-		case SLE_VAR_I32  >> 4: *(int32*)ptr = x; break;
-		case SLE_VAR_U32  >> 4: *(uint32*)ptr = x; break;
-		case SLE_VAR_I64  >> 4: *(int64*)ptr = x; break;
-		case SLE_VAR_U64  >> 4: *(uint64*)ptr = x; break;
-		case SLE_VAR_NULL >> 4: break;
-		default: NOT_REACHED();
-		}
+		WriteValue(ptr, conv, x);
 	}
 }
 

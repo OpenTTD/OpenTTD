@@ -217,6 +217,27 @@ static inline bool CheckSavegameVersion(uint16 version)
 	return _sl_version < version;
 }
 
+/* Get the NumberType of a setting. This describes the integer type
+ * as it is represented in memory
+ * @param type VarType holding information about the variable-type
+ * @return return the SLE_VAR_* part of a variable-type description */
+static inline VarType GetVarMemType(VarType type)
+{
+	return type & 0xF0; // GB(type, 4, 8) << 4;
+}
+
+/* Get the FileType of a setting. This describes the integer type
+ * as it is represented in a savegame/file
+ * @param type VarType holding information about the variable-type
+ * @param return the SLE_FILE_* part of a variable-type description */
+static inline VarType GetVarFileType(VarType type)
+{
+	return type & 0xF; // GB(type, 0, 4);
+}
+
+int64 ReadValue(const void *ptr, VarType conv);
+void WriteValue(void *ptr, VarType conv, int64 val);
+
 void SlSetArrayIndex(uint index);
 int SlIterateArray(void);
 
