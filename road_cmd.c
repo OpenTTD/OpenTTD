@@ -261,7 +261,7 @@ return_error:;
 }
 
 
-static const RoadBits _valid_tileh_slopes_road[3][15] = {
+static const RoadBits _valid_tileh_slopes_road[][15] = {
 	// set of normal ones
 	{
 		ROAD_ALL, 0, 0,
@@ -291,14 +291,6 @@ static const RoadBits _valid_tileh_slopes_road[3][15] = {
 		ROAD_ALL,
 		ROAD_ALL
 	},
-	// valid railway crossings on slopes
-	{
-		1, 0, 0, // 0, 1, 2
-		0, 0, 1, // 3, 4, 5
-		0, 1, 0, // 6, 7, 8
-		0, 1, 1, // 9, 10, 11
-		0, 1, 1, // 12, 13, 14
-	}
 };
 
 
@@ -383,9 +375,12 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 			}
 
-			if (!_valid_tileh_slopes_road[2][ti.tileh]) { // prevent certain slopes
+#define M(x) (1 << (x))
+			/* Level crossings may only be built on these slopes */
+			if (!HASBIT(M(14) | M(13) | M(11) | M(10) | M(7) | M(5) | M(0), ti.tileh)) {
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 			}
+#undef M
 
 			if (ti.map5 == 2) {
 				if (pieces & ROAD_Y) goto do_clear;
