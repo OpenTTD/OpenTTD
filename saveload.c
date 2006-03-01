@@ -406,7 +406,7 @@ uint SlGetFieldLength(void) {return _sl.obj_len;}
 int64 ReadValue(const void *ptr, VarType conv)
 {
 	switch (GetVarMemType(conv)) {
-	case SLE_VAR_BL:  return (*(bool*)ptr == 1);
+	case SLE_VAR_BL:  return (*(bool*)ptr != 0);
 	case SLE_VAR_I8:  return *(int8*  )ptr;
 	case SLE_VAR_U8:  return *(byte*  )ptr;
 	case SLE_VAR_I16: return *(int16* )ptr;
@@ -431,7 +431,7 @@ int64 ReadValue(const void *ptr, VarType conv)
 void WriteValue(void *ptr, VarType conv, int64 val)
 {
 	switch (GetVarMemType(conv)) {
-	case SLE_VAR_BL:  *(bool  *)ptr = (val == 1);  break;
+	case SLE_VAR_BL:  *(bool  *)ptr = (val != 0);  break;
 	case SLE_VAR_I8:  *(int8  *)ptr = val; break;
 	case SLE_VAR_U8:  *(byte  *)ptr = val; break;
 	case SLE_VAR_I16: *(int16 *)ptr = val; break;
