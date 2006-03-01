@@ -1682,69 +1682,30 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 
 typedef int32 CheckButtonClick(int32, int32);
 
-typedef enum ce_type {
-	CE_BOOL = 0,
-	CE_UINT8 = 1,
-	CE_INT16 = 2,
-	CE_UINT16 = 3,
-	CE_INT32 = 4,
-	CE_BYTE = 5,
-	CE_CLICK = 6,
-} ce_type;
+enum ce_flags {CE_CLICK = 1 << 0};
+
+typedef byte ce_flags;
 
 typedef struct CheatEntry {
-	ce_type type;    // type of selector
-	byte flags;		// selector flags
-	StringID str; // string with descriptive text
-	void *variable; // pointer to the variable
-	bool *been_used; // has this cheat been used before?
-	CheckButtonClick *click_proc; // procedure
-	int16 min,max; // range for spinbox setting
-	uint16 step;   // step for spinbox
+	VarType type;          // type of selector
+	ce_flags flags;        // selector flags
+	StringID str;          // string with descriptive text
+	void *variable;        // pointer to the variable
+	bool *been_used;       // has this cheat been used before?
+	CheckButtonClick *proc;// procedure
+	int16 min, max;        // range for spinbox setting
 } CheatEntry;
 
-static int32 ReadCE(const CheatEntry* ce)
-{
-	switch (ce->type) {
-		case CE_BOOL:   return *(bool*  )ce->variable;
-		case CE_UINT8:  return *(uint8* )ce->variable;
-		case CE_INT16:  return *(int16* )ce->variable;
-		case CE_UINT16: return *(uint16*)ce->variable;
-		case CE_INT32:  return *(int32* )ce->variable;
-		case CE_BYTE:   return *(byte*  )ce->variable;
-		case CE_CLICK:  return 0;
-		default: NOT_REACHED();
-	}
-
-	/* useless, but avoids compiler warning this way */
-	return 0;
-}
-
-static void WriteCE(const CheatEntry *ce, int32 val)
-{
-	switch (ce->type) {
-		case CE_BOOL:   *(bool*  )ce->variable = (bool  )val; break;
-		case CE_BYTE:   *(byte*  )ce->variable = (byte  )val; break;
-		case CE_UINT8:  *(uint8* )ce->variable = (uint8 )val; break;
-		case CE_INT16:  *(int16* )ce->variable = (int16 )val; break;
-		case CE_UINT16: *(uint16*)ce->variable = (uint16)val; break;
-		case CE_INT32:  *(int32* )ce->variable = val;         break;
-		case CE_CLICK: break;
-		default: NOT_REACHED();
-	}
-}
-
-
 static const CheatEntry _cheats_ui[] = {
-	{CE_CLICK, 0, STR_CHEAT_MONEY, 					&_cheats.money.value, 					&_cheats.money.been_used, 					&ClickMoneyCheat,					0, 0, 0},
-	{CE_UINT8, 0, STR_CHEAT_CHANGE_PLAYER, 	&_local_player, 								&_cheats.switch_player.been_used,		&ClickChangePlayerCheat,	0, 11, 1},
-	{CE_BOOL, 0, STR_CHEAT_EXTRA_DYNAMITE,	&_cheats.magic_bulldozer.value,	&_cheats.magic_bulldozer.been_used, NULL,											0, 0, 0},
-	{CE_BOOL, 0, STR_CHEAT_CROSSINGTUNNELS,	&_cheats.crossing_tunnels.value,&_cheats.crossing_tunnels.been_used,NULL,											0, 0, 0},
-	{CE_BOOL, 0, STR_CHEAT_BUILD_IN_PAUSE,	&_cheats.build_in_pause.value,	&_cheats.build_in_pause.been_used,	NULL,											0, 0, 0},
-	{CE_BOOL, 0, STR_CHEAT_NO_JETCRASH,			&_cheats.no_jetcrash.value,			&_cheats.no_jetcrash.been_used,			NULL,											0, 0, 0},
-	{CE_BOOL, 0, STR_CHEAT_SETUP_PROD,			&_cheats.setup_prod.value,			&_cheats.setup_prod.been_used,			NULL,											0, 0, 0},
-	{CE_UINT8, 0, STR_CHEAT_SWITCH_CLIMATE, &_opt.landscape, 								&_cheats.switch_climate.been_used,	&ClickChangeClimateCheat,-1, 4, 1},
-	{CE_UINT8, 0, STR_CHEAT_CHANGE_DATE,		&_cur_year,											&_cheats.change_date.been_used,			&ClickChangeDateCheat,	 -1, 1, 1},
+	{SLE_BOOL,CE_CLICK, STR_CHEAT_MONEY,          &_cheats.money.value,           &_cheats.money.been_used,           &ClickMoneyCheat,         0,  0},
+	{SLE_UINT8,      0, STR_CHEAT_CHANGE_PLAYER,  &_local_player,                 &_cheats.switch_player.been_used,   &ClickChangePlayerCheat,  0, 11},
+	{SLE_BOOL,       0, STR_CHEAT_EXTRA_DYNAMITE, &_cheats.magic_bulldozer.value, &_cheats.magic_bulldozer.been_used, NULL,                     0,  0},
+	{SLE_BOOL,       0, STR_CHEAT_CROSSINGTUNNELS,&_cheats.crossing_tunnels.value,&_cheats.crossing_tunnels.been_used,NULL,                     0,  0},
+	{SLE_BOOL,       0, STR_CHEAT_BUILD_IN_PAUSE, &_cheats.build_in_pause.value,  &_cheats.build_in_pause.been_used,  NULL,                     0,  0},
+	{SLE_BOOL,       0, STR_CHEAT_NO_JETCRASH,    &_cheats.no_jetcrash.value,     &_cheats.no_jetcrash.been_used,     NULL,                     0,  0},
+	{SLE_BOOL,       0, STR_CHEAT_SETUP_PROD,     &_cheats.setup_prod.value,      &_cheats.setup_prod.been_used,      NULL,                     0,  0},
+	{SLE_UINT8,      0, STR_CHEAT_SWITCH_CLIMATE, &_opt.landscape,                &_cheats.switch_climate.been_used,  &ClickChangeClimateCheat,-1,  4},
+	{SLE_UINT8,      0, STR_CHEAT_CHANGE_DATE,    &_cur_year,                     &_cheats.change_date.been_used,     &ClickChangeDateCheat,   -1,  1},
 };
 
 
@@ -1774,40 +1735,42 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 		y = 45;
 
 		for (i = 0; i != lengthof(_cheats_ui); i++) {
-			const CheatEntry* ce = &_cheats_ui[i];
+			const CheatEntry *ce = &_cheats_ui[i];
 
 			DrawSprite((*ce->been_used) ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, x + 5, y + 2);
 
-			if (ce->type == CE_BOOL) {
-				DrawFrameRect(x + 20, y + 1, x + 30 + 9, y + 9, (*(bool*)ce->variable) ? 6 : 4, (*(bool*)ce->variable) ? FR_LOWERED : 0);
-				SetDParam(0, *(bool*)ce->variable ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
-			}	else if (ce->type == CE_CLICK) {
-				DrawFrameRect(x + 20, y + 1, x + 30 + 9, y + 9, 0, (WP(w,def_d).data_1 == i * 2 + 1) ? FR_LOWERED : 0);
-				if (i == 0) {
-					SetDParam64(0, 10000000);
+			switch (ce->type) {
+			case SLE_BOOL: {
+				bool on = (*(bool*)ce->variable);
+
+				if (ce->flags & CE_CLICK) {
+					DrawFrameRect(x + 20, y + 1, x + 30 + 9, y + 9, 0, (clk - (i * 2) == 1) ? FR_LOWERED : 0);
+					SetDParam(0, (i == 0) ? 10000000 : false);
 				} else {
-					SetDParam(0, false);
+					DrawFrameRect(x + 20, y + 1, x + 30 + 9, y + 9, on ? 6 : 4, on ? FR_LOWERED : 0);
+					SetDParam(0, on ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
 				}
-			} else {
-				int32 val;
+			} break;
+			default: {
+				int32 val = (int32)ReadValue(ce->variable, ce->type);
 
 				/* Draw [<][>] boxes for settings of an integer-type */
 				DrawArrowButtons(x + 20, y, 3, clk - (i * 2), true);
 
-				val = ReadCE(ce);
-
-				// set correct string for switch climate cheat
-				if (ce->str == STR_CHEAT_SWITCH_CLIMATE) val += STR_TEMPERATE_LANDSCAPE;
-
-				SetDParam(0, val);
-
-				// display date for change date cheat
-				if (ce->str == STR_CHEAT_CHANGE_DATE) SetDParam(0, _date);
-
-				// draw colored flag for change player cheat
-				if (ce->str == STR_CHEAT_CHANGE_PLAYER) {
+				switch (ce->str) {
+				/* Display date for change date cheat */
+				case STR_CHEAT_CHANGE_DATE: SetDParam(0, _date); break;
+				/* Draw colored flag for change player cheat */
+				case STR_CHEAT_CHANGE_PLAYER:
+					SetDParam(0, val);
 					DrawPlayerIcon(_current_player, 156, y + 2);
+					break;
+				/* Set correct string for switch climate cheat */
+				case STR_CHEAT_SWITCH_CLIMATE: val += STR_TEMPERATE_LANDSCAPE;
+				/* Fallthrough */
+				default: SetDParam(0, val);
 				}
+			} break;
 			}
 
 			DrawString(50, y + 1, ce->str, 0);
@@ -1820,53 +1783,44 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK: {
 			const CheatEntry *ce;
 			uint btn = (e->click.pt.y - 46) / 12;
-			int32 val, oval;
+			int32 value, oldvalue;
 			uint x = e->click.pt.x;
 
 			// not clicking a button?
 			if (!IS_INT_INSIDE(x, 20, 40) || btn >= lengthof(_cheats_ui)) break;
 
 			ce = &_cheats_ui[btn];
-			oval = val = ReadCE(ce);
+			oldvalue = value = (int32)ReadValue(ce->variable, ce->type);
 
 			*ce->been_used = true;
 
 			switch (ce->type) {
-				case CE_BOOL:	{
-					val ^= 1;
-					if (ce->click_proc != NULL) ce->click_proc(val, 0);
-					break;
+			case SLE_BOOL:
+				if (ce->flags & CE_CLICK) WP(w,def_d).data_1 = btn * 2 + 1;
+				value ^= 1;
+				if (ce->proc != NULL) ce->proc(value, 0);
+				break;
+			default: {
+				/* Add a dynamic step-size to the scroller. In a maximum of
+				 * 50-steps you should be able to get from min to max */
+				uint16 step = ((ce->max - ce->min) / 20);
+				if (step == 0) step = 1;
+
+				/* Increase or decrease the value and clamp it to extremes */
+				value += (x >= 30) ? step : -step;
+				clamp(value, ce->min, ce->max);
+
+				// take whatever the function returns
+				value = ce->proc(value, (x >= 30) ? 1 : -1);
+
+				if (value != oldvalue) {
+					WP(w,def_d).data_1 = btn * 2 + 1 + ((x >= 30) ? 1 : 0);
 				}
-
-				case CE_CLICK:	{
-					ce->click_proc(val, 0);
-					WP(w,def_d).data_1 = btn * 2 + 1;
-					break;
-				}
-
-				default:	{
-					if (x >= 30) {
-						//increase
-						val += ce->step;
-						if (val > ce->max) val = ce->max;
-					} else {
-						// decrease
-						val -= ce->step;
-						if (val < ce->min) val = ce->min;
-					}
-
-					// take whatever the function returns
-					val = ce->click_proc(val, (x >= 30) ? 1 : -1);
-
-					if (val != oval) {
-						WP(w,def_d).data_1 = btn * 2 + 1 + ((x >= 30) ? 1 : 0);
-					}
-					break;
-				}
+			} break;
 			}
 
-			if (val != oval) {
-				WriteCE(ce, val);
+			if (value != oldvalue) {
+				WriteValue(ce->variable, ce->type, (int64)value);
 				SetWindowDirty(w);
 			}
 
