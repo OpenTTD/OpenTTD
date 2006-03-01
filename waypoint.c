@@ -8,6 +8,7 @@
 #include "gfx.h"
 #include "map.h"
 #include "order.h"
+#include "rail_map.h"
 #include "saveload.h"
 #include "station.h"
 #include "tile.h"
@@ -174,15 +175,19 @@ int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	TileIndex tile = TileVirtXY(x, y);
 	Waypoint *wp;
 	uint tileh;
-	uint dir;
+	Axis axis;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	/* if custom gfx are used, make sure it is within bounds */
 	if (p1 >= GetNumCustomStations(STAT_CLASS_WAYP)) return CMD_ERROR;
 
-	if (!IsTileType(tile, MP_RAILWAY) || ((dir = 0, _m[tile].m5 != 1) && (dir = 1, _m[tile].m5 != 2)))
+	if (!IsTileType(tile, MP_RAILWAY) || (
+				(axis = AXIS_X, _m[tile].m5 != TRACK_BIT_DIAG1) &&
+				(axis = AXIS_Y, _m[tile].m5 != TRACK_BIT_DIAG2)
+			)) {
 		return_cmd_error(STR_1005_NO_SUITABLE_RAILROAD_TRACK);
+	}
 
 	if (!CheckTileOwnership(tile))
 		return CMD_ERROR;
@@ -191,7 +196,7 @@ int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	tileh = GetTileSlope(tile, NULL);
 	if (tileh != 0) {
-		if (!_patches.build_on_slopes || IsSteepTileh(tileh) || !(tileh & (0x3 << dir)) || !(tileh & ~(0x3 << dir)))
+		if (!_patches.build_on_slopes || IsSteepTileh(tileh) || !(tileh & (0x3 << axis)) || !(tileh & ~(0x3 << axis)))
 			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 	}
 
@@ -208,7 +213,8 @@ int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		const StationSpec *spec = NULL;
-		ModifyTile(tile, MP_MAP2 | MP_MAP5, wp->index, RAIL_TYPE_WAYPOINT | dir);
+		MakeRailWaypoint(tile, GetTileOwner(tile), axis, GB(_m[tile].m3, 0, 4), wp->index);
+		MarkTileDirtyByTile(tile);
 
 		if (GB(p1, 0, 8) < GetNumCustomStations(STAT_CLASS_WAYP))
 			spec = GetCustomStation(STAT_CLASS_WAYP, GB(p1, 0, 8));
@@ -294,9 +300,8 @@ int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 		RedrawWaypointSign(wp);
 
 		if (justremove) {
-			ModifyTile(tile, MP_MAP2_CLEAR | MP_MAP5, 1<<direction);
-			CLRBIT(_m[tile].m3, 4);
-			_m[tile].m4 = 0;
+			MakeRailNormal(tile, GetTileOwner(tile), GetRailWaypointBits(tile), GB(_m[tile].m3, 0, 4));
+			MarkTileDirtyByTile(tile);
 		} else {
 			DoClearSquare(tile);
 			SetSignalsOnBothDir(tile, direction);

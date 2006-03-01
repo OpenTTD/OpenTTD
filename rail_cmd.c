@@ -4,6 +4,7 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
+#include "rail_map.h"
 #include "road.h"
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -372,13 +373,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if (CmdFailed(ret)) return ret;
 			cost += ret;
 
-			if (flags & DC_EXEC) {
-				SetTileType(tile, MP_RAILWAY);
-				SetTileOwner(tile, _current_player);
-				_m[tile].m2 = 0; // Bare land
-				_m[tile].m3 = p1; // No signals, rail type
-				_m[tile].m5 = trackbit;
-			}
+			if (flags & DC_EXEC) MakeRailNormal(tile, _current_player, trackbit, p1);
 			break;
 	}
 
@@ -681,12 +676,8 @@ int32 CmdBuildTrainDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		if (IsLocalPlayer()) _last_built_train_depot_tile = tile;
 
-		ModifyTile(tile,
-			MP_SETTYPE(MP_RAILWAY) |
-			MP_MAP3LO | MP_MAPOWNER_CURRENT | MP_MAP5,
-			p1, /* map3_lo */
-			p2 | RAIL_TYPE_DEPOT_WAYPOINT /* map5 */
-		);
+		MakeRailDepot(tile, _current_player, p2, p1);
+		MarkTileDirtyByTile(tile);
 
 		d->xy = tile;
 		d->town_index = ClosestTownFromTile(tile, (uint)-1)->index;

@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "rail_map.h"
 #include "road.h"
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -234,26 +235,22 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				}
 
 				case ROAD_CROSSING: {
-					byte c;
+					TrackBits track;
 
 					if (!(ti.map5 & 8)) {
-						c = 2;
 						if (pieces & ROAD_Y) goto return_error;
+						track = TRACK_BIT_DIAG2;
 					} else {
-						c = 1;
 						if (pieces & ROAD_X) goto return_error;
+						track = TRACK_BIT_DIAG1;
 					}
 
 					cost = _price.remove_road * 2;
 					if (flags & DC_EXEC) {
 						ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
 
-						ModifyTile(tile,
-							MP_SETTYPE(MP_RAILWAY) |
-							MP_MAP2_CLEAR | MP_MAP3LO | MP_MAP3HI_CLEAR | MP_MAP5,
-							_m[tile].m4 & 0xF, /* map3_lo */
-							c											/* map5 */
-						);
+						MakeRailNormal(tile, GetTileOwner(tile), track, GB(_m[tile].m4, 0, 4));
+						MarkTileDirtyByTile(tile);
 					}
 					return cost;
 				}
