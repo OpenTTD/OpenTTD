@@ -1188,7 +1188,7 @@ static NetworkServerPacket* const _network_server_packet[] = {
 assert_compile(lengthof(_network_server_packet) == PACKET_END);
 
 
-extern const SettingDesc patch_settings[];
+extern const SettingDesc _patch_settings[];
 
 // This is a TEMPORARY solution to get the patch-settings
 //  to the client. When the patch-settings are saved in the savegame
@@ -1200,25 +1200,25 @@ static void NetworkSendPatchSettings(NetworkClientState* cs)
 	NetworkSend_uint8(p, MAP_PACKET_PATCH);
 	// Now send all the patch-settings in a pretty order..
 
-	item = patch_settings;
+	item = _patch_settings;
 
-	while (item->name != NULL) {
-		switch (item->flags) {
-			case SDT_BOOL:
-			case SDT_INT8:
-			case SDT_UINT8:
-				NetworkSend_uint8(p, *(uint8 *)item->ptr);
+	for (; item->save.cmd != SL_END; item++) {
+		const void *var = ini_get_variable(&item->save, &_patches);
+		switch (GetVarMemType(item->save.conv)) {
+			case SLE_VAR_BL:
+			case SLE_VAR_I8:
+			case SLE_VAR_U8:
+				NetworkSend_uint8(p, *(uint8 *)var);
 				break;
-			case SDT_INT16:
-			case SDT_UINT16:
-				NetworkSend_uint16(p, *(uint16 *)item->ptr);
+			case SLE_VAR_I16:
+			case SLE_VAR_U16:
+				NetworkSend_uint16(p, *(uint16 *)var);
 				break;
-			case SDT_INT32:
-			case SDT_UINT32:
-				NetworkSend_uint32(p, *(uint32 *)item->ptr);
+			case SLE_VAR_I32:
+			case SLE_VAR_U32:
+				NetworkSend_uint32(p, *(uint32 *)var);
 				break;
 		}
-		item++;
 	}
 
 	NetworkSend_Packet(p, cs);

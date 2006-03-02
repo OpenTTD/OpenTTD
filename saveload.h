@@ -230,6 +230,16 @@ static inline bool CheckSavegameVersion(uint16 version)
 	return _sl_version < version;
 }
 
+/** Checks if some version from/to combination falls within the range of the
+ * active savegame version */
+static inline bool SlIsObjectCurrentlyValid(uint16 version_from, uint16 version_to)
+{
+	extern const uint16 SAVEGAME_VERSION;
+	if (SAVEGAME_VERSION < version_from || SAVEGAME_VERSION > version_to) return false;
+
+	return true;
+}
+
 /* Get the NumberType of a setting. This describes the integer type
  * as it is represented in memory
  * @param type VarType holding information about the variable-type

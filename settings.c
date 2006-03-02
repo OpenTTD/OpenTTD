@@ -609,6 +609,8 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
 		const SettingDescBase *sdb = &sd->desc;
 		const SaveLoad        *sld = &sd->save;
 
+		if (!SlIsObjectCurrentlyValid(sld->version_from, sld->version_to)) continue;
+
 		// XXX - wtf is this?? (group override?)
 		s = strchr(sdb->name, '.');
 		if (s != NULL) {
@@ -673,6 +675,7 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
 
 		/* If the setting is not saved to the configuration
 		 * file, just continue with the next setting */
+		if (!SlIsObjectCurrentlyValid(sld->version_from, sld->version_to)) continue;
 		if (sld->conv & SLF_CONFIG_NO) continue;
 
 		// XXX - wtf is this?? (group override?)
@@ -1252,6 +1255,71 @@ void SaveToConfig(void)
 	ini_free(ini);
 }
 
+/** Save and load handler for patches/settings
+ * @param osd SettingDesc struct containing all information
+ * @param object can be either NULL in which case we load global variables or
+ * a pointer to a struct which is getting saved */
+static void LoadSettings(const SettingDesc *osd, void *object)
+{
+	for (; osd->save.cmd != SL_END; osd++) {
+		const SaveLoad *sld = &osd->save;
+		void *ptr = ini_get_variable(sld, object);
+
+		if (!SlObjectMember(ptr, sld)) continue;
+	}
+}
+
+/** Loadhandler for a list of global variables
+ * @note this is actually a stub for LoadSettings with the
+ * object pointer set to NULL */
+static inline void LoadSettingsGlobList(const SettingDescGlobVarList *sdg)
+{
+	LoadSettings((const SettingDesc*)sdg, NULL);
+}
+
+/** Save and load handler for patches/settings
+ * @param osd SettingDesc struct containing all information
+ * @param object can be either NULL in which case we load global variables or
+ * a pointer to a struct which is getting saved */
+static void SaveSettings(const SettingDesc *sd, void *object)
+{
+	/* We need to write the CH_RIFF header, but unfortunately can't call
+	 * SlCalcLength() because we have a different format. So do this manually */
+	const SettingDesc *i;
+	size_t length = 0;
+	for (i = sd; i->save.cmd != SL_END; i++) {
+		length += SlCalcObjMemberLength(&i->save);
+	}
+	SlSetLength(length);
+
+	for (i = sd; i->save.cmd != SL_END; i++) {
+		void *ptr = ini_get_variable(&i->save, object);
+		SlObjectMember(ptr, &i->save);
+	}
+}
+
+/** Savehandler for a list of global variables
+ * @note this is actually a stub for SaveSettings with the
+ * object pointer set to NULL */
+static inline void SaveSettingsGlobList(const SettingDescGlobVarList *sdg)
+{
+	SaveSettings((const SettingDesc*)sdg, NULL);
+}
+
+static void Load_OPTS(void)
+{
+	/* Copy over default setting since some might not get loaded in
+	 * a networking environment. This ensures for example that the local
+	 * autosave-frequency stays when joining a network-server */
+	_opt = _opt_newgame;
+	LoadSettings(_gameopt_settings, &_opt);
+}
+
+static void Save_OPTS(void)
+{
+	SaveSettings(_gameopt_settings, &_opt);
+}
+
 void CheckConfig(void)
 {
 	// fix up news_display_opt from old to new
@@ -1273,5 +1341,5 @@ void CheckConfig(void)
 }
 
 const ChunkHandler _setting_chunk_handlers[] = {
-	{ 'OPTS', SaveLoad_OPTS, SaveLoad_OPTS, CH_RIFF | CH_LAST}
+	{ 'OPTS', Save_OPTS, Load_OPTS, CH_RIFF | CH_LAST}
 };

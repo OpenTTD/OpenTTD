@@ -25,14 +25,11 @@
 #include "town.h"
 #include "player.h"
 #include "saveload.h"
+#include "network.h"
 #include "variables.h"
 #include <setjmp.h>
 
-enum {
-	SAVEGAME_VERSION = 21,
-
-};
-
+const uint16 SAVEGAME_VERSION = 21;
 uint16 _sl_version;       /// the major savegame version identifier
 byte   _sl_minor_version; /// the minor savegame version, DO NOT USE!
 
@@ -381,19 +378,14 @@ static void SlCopyBytes(void *ptr, size_t length)
 	}
 }
 
-#if 0
-/**
- * Read in bytes from the file/data structure but don't do
- * anything with them
- * NOTICE: currently unused
+/** Read in bytes from the file/data structure but don't do
+ * anything with them, discarding them in effect
  * @param length The amount of bytes that is being treated this way
  */
 static inline void SlSkipBytes(size_t length)
 {
-	for (; length != 0; length--)
-		SlReadByte();
+	for (; length != 0; length--) SlReadByte();
 }
-#endif
 
 /* Get the length of the current object */
 uint SlGetFieldLength(void) {return _sl.obj_len;}
@@ -570,8 +562,22 @@ void SlArray(void *array, uint length, VarType conv)
 static inline bool SlIsObjectValidInSavegame(const SaveLoad *sld)
 {
 	if (_sl_version < sld->version_from || _sl_version > sld->version_to) return false;
+	if (sld->conv & SLF_SAVE_NO) return false;
 
 	return true;
+}
+
+/** Are we going to load this variable when loading a savegame or not?
+ * @note If the variable is skipped it is skipped in the savegame
+ * bytestream itself as well, so there is no need to skip it somewhere else */
+static inline bool SlSkipVariableOnLoad(const SaveLoad *sld)
+{
+	if ((sld->conv & SLF_NETWORK_NO) && !_sl.save && _networking && !_network_server) {
+		SlSkipBytes(SlCalcConvMemLen(sld->conv) * sld->length);
+		return true;
+	}
+
+	return false;
 }
 
 /**
@@ -626,6 +632,7 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 	case SL_STR:
 		/* CONDITIONAL saveload types depend on the savegame version */
 		if (!SlIsObjectValidInSavegame(sld)) return false;
+		if (SlSkipVariableOnLoad(sld)) return false;
 
 		switch (sld->cmd) {
 		case SL_VAR: SlSaveLoadConv(ptr, conv); break;

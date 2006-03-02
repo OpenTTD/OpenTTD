@@ -826,7 +826,7 @@ static NetworkClientPacket* const _network_client_packet[] = {
 // If this fails, check the array above with network_data.h
 assert_compile(lengthof(_network_client_packet) == PACKET_END);
 
-extern const SettingDesc patch_settings[];
+extern const SettingDesc _patch_settings[];
 
 // This is a TEMPORARY solution to get the patch-settings
 //  to the client. When the patch-settings are saved in the savegame
@@ -835,25 +835,25 @@ static void NetworkRecvPatchSettings(NetworkClientState* cs, Packet* p)
 {
 	const SettingDesc *item;
 
-	item = patch_settings;
+	item = _patch_settings;
 
-	while (item->name != NULL) {
-		switch (item->flags) {
-			case SDT_BOOL:
-			case SDT_INT8:
-			case SDT_UINT8:
-				*(uint8 *)(item->ptr) = NetworkRecv_uint8(cs, p);
+	for (; item->save.cmd != SL_END; item++) {
+		void *var = ini_get_variable(&item->save, &_patches);
+		switch (GetVarMemType(item->save.conv)) {
+			case SLE_VAR_BL:
+			case SLE_VAR_I8:
+			case SLE_VAR_U8:
+				*(uint8 *)(var) = NetworkRecv_uint8(cs, p);
 				break;
-			case SDT_INT16:
-			case SDT_UINT16:
-				*(uint16 *)(item->ptr) = NetworkRecv_uint16(cs, p);
+			case SLE_VAR_I16:
+			case SLE_VAR_U16:
+				*(uint16 *)(var) = NetworkRecv_uint16(cs, p);
 				break;
-			case SDT_INT32:
-			case SDT_UINT32:
-				*(uint32 *)(item->ptr) = NetworkRecv_uint32(cs, p);
+			case SLE_VAR_I32:
+			case SLE_VAR_U32:
+				*(uint32 *)(var) = NetworkRecv_uint32(cs, p);
 				break;
 		}
-		item++;
 	}
 }
 
