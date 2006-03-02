@@ -118,7 +118,7 @@ RoadStop* GetRoadStopByTile(TileIndex tile, RoadStopType type)
 	return rs;
 }
 
-static uint GetNumRoadStops(const Station* st, RoadStopType type)
+uint GetNumRoadStops(const Station* st, RoadStopType type)
 {
 	uint num = 0;
 	const RoadStop *rs;
@@ -1431,7 +1431,7 @@ static int32 RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 		for (i = 0; i != NUM_SLOTS; i++) {
 			if (cur_stop->slot[i] != INVALID_VEHICLE) {
 				Vehicle *v = GetVehicle(cur_stop->slot[i]);
-				ClearSlot(v, v->u.road.slot);
+				ClearSlot(v);
 			}
 		}
 

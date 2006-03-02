@@ -503,7 +503,7 @@ int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		if (v->type == VEH_Train) v->u.rail.days_since_order_progr = 0;
 
-		if (v->type == VEH_Road) ClearSlot(v, v->u.road.slot);
+		if (v->type == VEH_Road) ClearSlot(v);
 
 		/* NON-stop flag is misused to see if a train is in a station that is
 		 * on his order list or not */

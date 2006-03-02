@@ -29,7 +29,7 @@ typedef enum RoadStopType {
 enum {
 	INVALID_STATION = 0xFFFF,
 	NUM_SLOTS = 2,
-	ROAD_STOP_LIMIT = 8,
+	ROAD_STOP_LIMIT = 16,
 };
 
 typedef uint16 StationID;
@@ -202,8 +202,9 @@ static inline RoadStopType GetRoadStopType(TileIndex tile)
 }
 
 RoadStop * GetPrimaryRoadStop(const Station *st, RoadStopType type);
+uint GetNumRoadStops(const Station* st, RoadStopType type);
 RoadStop * AllocateRoadStop( void );
-void ClearSlot(Vehicle *v, RoadStop *rs);
+void ClearSlot(Vehicle *v);
 
 static inline bool IsTrainStationTile(TileIndex tile)
 {

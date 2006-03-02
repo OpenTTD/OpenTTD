@@ -224,16 +224,18 @@ int32 CmdStartStopRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-void ClearSlot(Vehicle *v, RoadStop *rs)
+void ClearSlot(Vehicle *v)
 {
-	DEBUG(ms, 3) ("Multistop: Clearing slot %d at 0x%x", v->u.road.slotindex, rs->xy);
+	RoadStop *rs = v->u.road.slot;
+	if (v->u.road.slot == NULL) return;
+
 	v->u.road.slot = NULL;
 	v->u.road.slot_age = 0;
-	if (rs != NULL) {
-		// check that the slot is indeed assigned to the same vehicle
-		assert(rs->slot[v->u.road.slotindex] == v->index);
-		rs->slot[v->u.road.slotindex] = INVALID_VEHICLE;
- }
+
+	// check that the slot is indeed assigned to the same vehicle
+	assert(rs->slot[v->u.road.slotindex] == v->index);
+	rs->slot[v->u.road.slotindex] = INVALID_VEHICLE;
+	DEBUG(ms, 3) ("Multistop: Clearing slot %d at 0x%x", v->u.road.slotindex, rs->xy);
 }
 
 /** Sell a road vehicle.
@@ -265,7 +267,7 @@ int32 CmdSellRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		RebuildVehicleLists();
 		InvalidateWindow(WC_COMPANY, v->owner);
 		DeleteWindowById(WC_VEHICLE_VIEW, v->index);
-		ClearSlot(v, v->u.road.slot);
+		ClearSlot(v);
 		DeleteVehicle(v);
 		if (IsLocalPlayer()) InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Road);
 	}
@@ -464,7 +466,7 @@ static void RoadVehDelete(Vehicle *v)
 	BeginVehicleMove(v);
 	EndVehicleMove(v);
 
-	ClearSlot(v, v->u.road.slot);
+	ClearSlot(v);
 	DeleteVehicle(v);
 }
 
@@ -616,6 +618,7 @@ static void ProcessRoadVehOrder(Vehicle *v)
 		v->current_order.type = OT_NOTHING;
 		v->current_order.flags = 0;
 		v->dest_tile = 0;
+		ClearSlot(v);
 		return;
 	}
 
@@ -1100,17 +1103,17 @@ found_best_track:;
 	return best_track;
 }
 
-#if 0
-static uint RoadFindPathToStation(const Vehicle *v, TileIndex tile)
+#if 0 /* Commented out until NPF works properly here */
+static uint RoadFindPathToStop(const Vehicle *v, TileIndex tile)
 {
-  NPFFindStationOrTileData fstd;
-  byte trackdir = GetVehicleTrackdir(v);
+	NPFFindStationOrTileData fstd;
+	byte trackdir = GetVehicleTrackdir(v);
 	assert(trackdir != 0xFF);
 
-  fstd.dest_coords = tile;
-  fstd.station_index = -1;	// indicates that the destination is a tile, not a station
+	fstd.dest_coords = tile;
+	fstd.station_index = -1;	// indicates that the destination is a tile, not a station
 
-  return NPFRouteToStationOrTile(v->tile, trackdir, &fstd, TRANSPORT_ROAD, v->owner, INVALID_RAILTYPE).best_path_dist;
+	return NPFRouteToStationOrTile(v->tile, trackdir, &fstd, TRANSPORT_ROAD, v->owner, INVALID_RAILTYPE).best_path_dist;
 }
 #endif
 
@@ -1420,18 +1423,32 @@ again:
 			}
 			v->current_order.type = OT_NOTHING;
 			v->current_order.flags = 0;
+			ClearSlot(v);
 		}
 		SETBIT(rs->status, 7);
 
 		if (rs == v->u.road.slot) {
 			//we have arrived at the correct station
-			ClearSlot(v, rs);
+			ClearSlot(v);
 		} else if (v->u.road.slot != NULL) {
 			//we have arrived at the wrong station
 			//XXX The question is .. what to do? Actually we shouldn't be here
 			//but I guess we need to clear the slot
- 			DEBUG(ms, 1) ("Multistop: Wrong station, force a slot clearing. Vehicle %d at 0x%x, should go to 0x%x of station %d (%x), destination 0x%x", v->unitnumber, v->tile, v->u.road.slot->xy, st->index, st->xy, v->dest_tile);
-			ClearSlot(v, v->u.road.slot);
+			DEBUG(ms, 0) ("Multistop: Vehicle %d (index %d) arrived at wrong stop.", v->unitnumber, v->index);
+			if (v->tile != v->dest_tile)
+				DEBUG(ms, 0) ("Multistop: -- Current tile 0x%x is not destination tile 0x%x. Route problem", v->tile, v->dest_tile);
+			if (v->dest_tile != v->u.road.slot->xy)
+				DEBUG(ms, 0) ("Multistop: -- Stop tile 0x%x is not destination tile 0x%x. Multistop desync", v->u.road.slot->xy, v->dest_tile);
+			if (v->current_order.type != OT_GOTO_STATION) {
+				DEBUG(ms, 0) ("Multistop: -- Current order type (%d) is not OT_GOTO_STATION.", v->current_order.type);
+			} else {
+				if (v->current_order.station != st->index)
+					DEBUG(ms, 0) ("Multistop: -- Current station %d is not target station in current_order.station (%d).",
+							st->index, v->current_order.station);
+			}
+
+			DEBUG(ms, 0) ("           -- Force a slot clearing.");
+			ClearSlot(v);
 		}
 
 		StartRoadVehSound(v);
@@ -1546,7 +1563,6 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 }
 
-
 void OnNewDay_RoadVeh(Vehicle *v)
 {
 	int32 cost;
@@ -1560,79 +1576,85 @@ void OnNewDay_RoadVeh(Vehicle *v)
 
 	CheckOrders(v->index, OC_INIT);
 
+	//Current slot has expired
+	if ( (v->u.road.slot_age-- == 0) && (v->u.road.slot != NULL)) {
+		DEBUG(ms, 2) ("Multistop: Slot %d expired for vehicle %d (index %d) at stop 0x%x",
+				v->u.road.slotindex, v->unitnumber, v->index, v->u.road.slot->xy);
+		ClearSlot(v);
+	}
+
 	/* update destination */
-	if (v->current_order.type == OT_GOTO_STATION && !(v->vehstatus & VS_CRASHED)) {
+	if (v->current_order.type == OT_GOTO_STATION && v->u.road.slot == NULL && !(v->vehstatus & VS_CRASHED) &&
+			!( (v->vehstatus & (VS_STOPPED | VS_WAIT_FOR_SLOT)) == VS_STOPPED)) {
 		RoadStopType type = (v->cargo_type == CT_PASSENGERS) ? RS_BUS : RS_TRUCK;
+		RoadStop *rs;
+		uint mindist = 0xFFFFFFFF;
+		int i;
+		RoadStop *nearest = NULL;
 
 		st = GetStation(v->current_order.station);
+		rs = GetPrimaryRoadStop(st, type);
 
-		//Current slot has expired
-		if (v->u.road.slot_age++ <= 0 && v->u.road.slot != NULL) {
-			ClearSlot(v, v->u.road.slot);
-		}
+		if (rs != NULL) {
+			if (DistanceManhattan(v->tile, st->xy) < 16) {
+				int new_slot = -1;
 
-		//We do not have a slot, so make one
-		if (v->u.road.slot == NULL) {
-			RoadStop *rs = GetPrimaryRoadStop(st, type);
-			RoadStop *first_stop = rs;
-			RoadStop *best_stop = NULL;
-			uint32 mindist = 12, dist; // 12 is threshold distance.
+				DEBUG(ms, 2) ("Multistop: Attempting to obtain a slot for vehicle %d (index %d) at station %d (0x%x)", v->unitnumber,
+						v->index, st->index, st->xy);
+				/* Now we find the nearest road stop that has a free slot */
+				for (i = 0; rs != NULL; rs = rs->next, i++) {
+					uint dist = 0xFFFFFFFF;
+					bool is_slot_free = false;
+					int k;
+					int last_free = -1;
 
-		//first we need to find out how far our stations are away.
-			DEBUG(ms, 2) ("Multistop: Attempting to obtain a slot for vehicle %d at station %d (0x%x)", v->unitnumber, st->index, st->xy);
-			for (; rs != NULL; rs = rs->next) {
-				// Only consider those with at least a free slot.
-				if (rs->slot[0] != INVALID_VEHICLE && rs->slot[1] != INVALID_VEHICLE) {
-					continue;
+					for (k = 0; k < NUM_SLOTS; k++)
+						if (rs->slot[k] == INVALID_VEHICLE) {
+							is_slot_free = true;
+							last_free = k;
+							dist = DistanceManhattan(v->tile, st->xy);
+							break;
+						}
+
+					if (!is_slot_free) {
+						DEBUG(ms, 4) ("Multistop: ---- stop %d is full", i);
+						continue;
+					}
+
+					DEBUG(ms, 4) ("Multistop: ---- distance to stop %d is %d", i, dist);
+					if (dist < mindist) {
+						nearest = rs;
+						mindist = dist;
+						new_slot = last_free;
+					}
 				}
 
-				// Previously the NPF pathfinder was used here even if NPF is OFF.. WTF?
-				assert(NUM_SLOTS == 2);
-				dist = DistanceManhattan(v->tile, rs->xy);
+				if (nearest != NULL) { /* We have a suitable stop */
+					DEBUG(ms, 3) ("Multistop: -- Slot %d of stop at 0x%x assinged.", new_slot, nearest->xy);
+					nearest->slot[new_slot] = v->index;
 
-				// Check if the station is located BEHIND the vehicle..
-				// In that case, add penalty.
-				switch (v->direction) {
-					case 1: // going north east,x position decreasing
-						if (v->x_pos <= (int32)TileX(rs->xy) * 16 + 15) dist += 6;
-						break;
-					case 3: // Going south east, y position increasing
-						if (v->y_pos >= (int32)TileY(rs->xy) * 16) dist += 6;
-						break;
-					case 5: // Going south west, x position increasing
-						if (v->x_pos >= (int32)TileX(rs->xy) * 16) dist += 6;
-						break;
-					case 7: // Going north west, y position decrasing.
-						if (v->y_pos <= (int32)TileY(rs->xy) * 16 + 15) dist += 6;
-						break;
-				}
+					v->u.road.slot = nearest;
+					v->dest_tile = nearest->xy;
+					v->u.road.slot_age = 14;
+					v->u.road.slotindex = new_slot;
 
-				// Remember the one with the shortest distance
-				if (dist < mindist) {
-					mindist = dist;
-					best_stop = rs;
+					if (v->vehstatus & VS_STOPPED) {
+						DEBUG(ms, 4) ("Multistop: ---- stopped vehicle got a slot. resuming movement");
+						v->vehstatus &= ~(VS_STOPPED | VS_WAIT_FOR_SLOT);
+						InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+					}
+				} else {
+					DEBUG(ms, 2) ("Multistop -- No free slot at station. Waiting");
+					v->vehstatus |= (VS_STOPPED | VS_WAIT_FOR_SLOT);
+					InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 				}
-				DEBUG(ms, 3) ("Multistop: Distance to stop at 0x%x is %d", rs->xy, dist);
+			} else {
+				DEBUG(ms, 5) ("Multistop: --- Distance from station too far. Postponing slotting for vehicle %d (index %d) at station %d, (0x%x)",
+						v->unitnumber, v->index, st->index, st->xy);
 			}
-
-			// best_stop now contains the best stop we found.
-			if (best_stop != NULL) {
-				int slot;
-				// Find a free slot in this stop. We know that at least one is free.
-				assert(best_stop->slot[0] == INVALID_VEHICLE || best_stop->slot[1] == INVALID_VEHICLE);
-				slot = (best_stop->slot[0] == INVALID_VEHICLE) ? 0 : 1;
-				best_stop->slot[slot] = v->index;
-				v->u.road.slot = best_stop;
-				v->dest_tile = best_stop->xy;
-				v->u.road.slot_age = -5;
-				v->u.road.slotindex = slot;
-				DEBUG(ms, 1) ("Multistop: Slot %d at 0x%x assigned to vehicle %d (0x%x)", slot, best_stop->xy, v->unitnumber, v->tile);
-			} else if (first_stop != NULL) {
-				//now we couldn't assign a slot for one reason or another.
-				//so we just go towards the first station
-				DEBUG(ms, 1) ("Multistop: No free slot found for vehicle %d, going to default station", v->unitnumber);
-				v->dest_tile = first_stop->xy;
-			}
+		} else {
+			DEBUG(ms, 4) ("Multistop: No road stop for vehicle %d (index %d) at station %d (0x%x)",
+					v->unitnumber, v->index, st->index, st->xy);
 		}
 	}
 
