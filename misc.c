@@ -191,6 +191,8 @@ void GenerateWorld(int mode, uint size_x, uint size_y)
 	// Make sure everything is done via OWNER_NONE
 	_current_player = OWNER_NONE;
 
+	UpdatePatches();
+
 	_generating_world = true;
 	InitializeGame(mode == GW_RANDOM ? 0 : IG_DATE_RESET, size_x, size_y);
 	SetObjectToPlace(SPR_CURSOR_ZZZ, 0, 0, 0);

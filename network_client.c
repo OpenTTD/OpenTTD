@@ -16,7 +16,6 @@
 #include "command.h"
 #include "gfx.h"
 #include "window.h"
-#include "settings.h"
 #include "console.h"
 #include "variables.h"
 #include "ai/ai.h"
@@ -31,8 +30,6 @@ extern const char _openttd_revision[];
 #define MY_CLIENT DEREF_CLIENT(0)
 
 static uint32 last_ack_frame;
-
-static void NetworkRecvPatchSettings(NetworkClientState* cs, Packet* p);
 
 // **********
 // Sending functions
@@ -504,10 +501,6 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
 	}
 
-	if (maptype == MAP_PACKET_PATCH) {
-		NetworkRecvPatchSettings(MY_CLIENT, p);
-	}
-
 	// Check if this was the last packet
 	if (maptype == MAP_PACKET_END) {
 		fclose(file_pointer);
@@ -825,37 +818,6 @@ static NetworkClientPacket* const _network_client_packet[] = {
 
 // If this fails, check the array above with network_data.h
 assert_compile(lengthof(_network_client_packet) == PACKET_END);
-
-extern const SettingDesc _patch_settings[];
-
-// This is a TEMPORARY solution to get the patch-settings
-//  to the client. When the patch-settings are saved in the savegame
-//  this should be removed!!
-static void NetworkRecvPatchSettings(NetworkClientState* cs, Packet* p)
-{
-	const SettingDesc *item;
-
-	item = _patch_settings;
-
-	for (; item->save.cmd != SL_END; item++) {
-		void *var = ini_get_variable(&item->save, &_patches);
-		switch (GetVarMemType(item->save.conv)) {
-			case SLE_VAR_BL:
-			case SLE_VAR_I8:
-			case SLE_VAR_U8:
-				*(uint8 *)(var) = NetworkRecv_uint8(cs, p);
-				break;
-			case SLE_VAR_I16:
-			case SLE_VAR_U16:
-				*(uint16 *)(var) = NetworkRecv_uint16(cs, p);
-				break;
-			case SLE_VAR_I32:
-			case SLE_VAR_U32:
-				*(uint32 *)(var) = NetworkRecv_uint32(cs, p);
-				break;
-		}
-	}
-}
 
 // Is called after a client is connected to the server
 void NetworkClient_Connected(void)

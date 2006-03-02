@@ -15,6 +15,9 @@
 #include "console.h"
 #include "saveload.h"
 
+/** The patch values that are used for new games and/or modified in config file */
+Patches _patches_newgame;
+
 typedef struct IniFile IniFile;
 typedef struct IniItem IniItem;
 typedef struct IniGroup IniGroup;
@@ -1229,7 +1232,7 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescP
 #endif /* WIN32 */
 
 	proc(ini, _gameopt_settings, "gameopt",  &_opt_newgame);
-	proc(ini, _patch_settings,   "patches",  &_patches);
+	proc(ini, _patch_settings,   "patches",  &_patches_newgame);
 	proc(ini, _currency_settings,"currency", &_custom_currency);
 
 #ifdef ENABLE_NETWORK
@@ -1276,7 +1279,7 @@ int32 CmdChangePatchSetting(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (sd == NULL) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		Patches *patches_ptr = &_patches;
+		Patches *patches_ptr = (_game_mode == GM_MENU) ? &_patches_newgame : &_patches;
 		void *var = ini_get_variable(&sd->save, patches_ptr);
 		Write_ValidateSetting(var, sd, (int32)p2);
 
@@ -1303,6 +1306,11 @@ void SetPatchValue(uint index, const Patches *object, int32 value)
 	if (sd->save.conv & SLF_NETWORK_NO) {
 		void *var = ini_get_variable(&sd->save, object);
 		Write_ValidateSetting(var, sd, value);
+
+		if (_game_mode != GM_MENU) {
+		 void *var2 = ini_get_variable(&sd->save, &_patches_newgame);
+		 Write_ValidateSetting(var2, sd, value);
+		}
 	} else {
 		DoCommandP(0, index, value, NULL, CMD_CHANGE_PATCH_SETTING);
 	}
@@ -1336,7 +1344,7 @@ void IConsoleSetPatchSetting(const char *name, const char *value)
 	}
 
 	sscanf(value, "%d", &val);
-	patches_ptr = &_patches;
+	patches_ptr = (_game_mode == GM_MENU) ? &_patches_newgame : &_patches;
 	ptr = ini_get_variable(&sd->save, patches_ptr);
 
 	SetPatchValue(index, patches_ptr, val);
@@ -1362,7 +1370,7 @@ void IConsoleGetPatchSetting(const char *name)
 		return;
 	}
 
-	ptr = ini_get_variable(&sd->save, &_patches);
+	ptr = ini_get_variable(&sd->save, (_game_mode == GM_MENU) ? &_patches_newgame : &_patches);
 
 	if (sd->desc.cmd == SDT_BOOLX) {
 		snprintf(value, sizeof(value), (*(bool*)ptr == 1) ? "on" : "off");
@@ -1439,6 +1447,20 @@ static void Save_OPTS(void)
 	SaveSettings(_gameopt_settings, &_opt);
 }
 
+static void Load_PATS(void)
+{
+	/* Copy over default setting since some might not get loaded in
+	 * a networking environment. This ensures for example that the local
+	 * signal_side stays when joining a network-server */
+	_patches = _patches_newgame;
+	LoadSettings(_patch_settings, &_patches);
+}
+
+static void Save_PATS(void)
+{
+	SaveSettings(_patch_settings, &_patches);
+}
+
 void CheckConfig(void)
 {
 	// fix up news_display_opt from old to new
@@ -1453,12 +1475,21 @@ void CheckConfig(void)
 
 	// Increase old default values for pf_maxdepth and pf_maxlength
 	// to support big networks.
-	if (_patches.pf_maxdepth == 16 && _patches.pf_maxlength == 512) {
-		_patches.pf_maxdepth = 48;
-		_patches.pf_maxlength = 4096;
+	if (_patches_newgame.pf_maxdepth == 16 && _patches_newgame.pf_maxlength == 512) {
+		_patches_newgame.pf_maxdepth = 48;
+		_patches_newgame.pf_maxlength = 4096;
 	}
 }
 
+void UpdatePatches(void)
+{
+	/* Since old(er) savegames don't have any patches saved, we initialise
+	 * them with the default values just as it was in the old days.
+	 * Also new games need this copying-over */
+	_patches = _patches_newgame; /* backwards compatibility */
+}
+
 const ChunkHandler _setting_chunk_handlers[] = {
-	{ 'OPTS', Save_OPTS, Load_OPTS, CH_RIFF | CH_LAST}
+	{ 'OPTS', Save_OPTS, Load_OPTS, CH_RIFF},
+	{ 'PATS', Save_PATS, Load_PATS, CH_RIFF | CH_LAST},
 };

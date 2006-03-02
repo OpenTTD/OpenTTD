@@ -1312,6 +1312,8 @@ bool AfterLoadGame(void)
 		} END_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0);
 	}
 
+	if (CheckSavegameVersion(22))  UpdatePatches();
+
 	FOR_ALL_PLAYERS(p) p->avail_railtypes = GetPlayerRailtypes(p->index);
 
 	return true;

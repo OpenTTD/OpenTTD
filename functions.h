@@ -227,6 +227,7 @@ void ShowEndGameChart(void);
 TileIndex AdjustTileCoordRandomly(TileIndex a, byte rng);
 
 void AfterLoadTown(void);
+void UpdatePatches(void);
 void GenRandomNewGame(uint32 rnd1, uint32 rnd2);
 void StartScenarioEditor(uint32 rnd1, uint32 rnd2);
 void AskExitGame(void);

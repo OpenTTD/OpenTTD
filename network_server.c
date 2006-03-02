@@ -19,14 +19,11 @@
 #include "saveload.h"
 #include "vehicle.h"
 #include "station.h"
-#include "settings.h"
 #include "variables.h"
 
 // This file handles all the server-commands
 
 static void NetworkHandleCommandQueue(NetworkClientState* cs);
-static void NetworkSendPatchSettings(NetworkClientState* cs);
-
 void NetworkPopulateCompanyInfo(void);
 
 // Is the network enabled?
@@ -322,12 +319,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 			NetworkSend_Packet(p, cs);
 			if (feof(file_pointer)) {
 				// Done reading!
-				Packet *p;
-
-				// XXX - Delete this when patch-settings are saved in-game
-				NetworkSendPatchSettings(cs);
-
-				p = NetworkSend_Init(PACKET_SERVER_MAP);
+				Packet *p = NetworkSend_Init(PACKET_SERVER_MAP);
 				NetworkSend_uint8(p, MAP_PACKET_END);
 				NetworkSend_Packet(p, cs);
 
@@ -1186,43 +1178,6 @@ static NetworkServerPacket* const _network_server_packet[] = {
 
 // If this fails, check the array above with network_data.h
 assert_compile(lengthof(_network_server_packet) == PACKET_END);
-
-
-extern const SettingDesc _patch_settings[];
-
-// This is a TEMPORARY solution to get the patch-settings
-//  to the client. When the patch-settings are saved in the savegame
-//  this should be removed!!
-static void NetworkSendPatchSettings(NetworkClientState* cs)
-{
-	const SettingDesc *item;
-	Packet *p = NetworkSend_Init(PACKET_SERVER_MAP);
-	NetworkSend_uint8(p, MAP_PACKET_PATCH);
-	// Now send all the patch-settings in a pretty order..
-
-	item = _patch_settings;
-
-	for (; item->save.cmd != SL_END; item++) {
-		const void *var = ini_get_variable(&item->save, &_patches);
-		switch (GetVarMemType(item->save.conv)) {
-			case SLE_VAR_BL:
-			case SLE_VAR_I8:
-			case SLE_VAR_U8:
-				NetworkSend_uint8(p, *(uint8 *)var);
-				break;
-			case SLE_VAR_I16:
-			case SLE_VAR_U16:
-				NetworkSend_uint16(p, *(uint16 *)var);
-				break;
-			case SLE_VAR_I32:
-			case SLE_VAR_U32:
-				NetworkSend_uint32(p, *(uint32 *)var);
-				break;
-		}
-	}
-
-	NetworkSend_Packet(p, cs);
-}
 
 // This update the company_info-stuff
 void NetworkPopulateCompanyInfo(void)
