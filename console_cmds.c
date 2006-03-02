@@ -1420,7 +1420,6 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdHookAdd("unpause",          ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 
 	IConsoleCmdRegister("patch",           ConPatch);
-	IConsoleCmdHookAdd("patch",            ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 
 	/*** Networking variables ***/
 	IConsoleVarRegister("net_frame_freq",        &_network_frame_freq, ICONSOLE_VAR_BYTE, "The amount of frames before a command will be (visibly) executed. Default value: 1");
