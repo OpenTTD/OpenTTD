@@ -47,7 +47,7 @@ typedef struct SettingDescBase {
 } SettingDescBase;
 
 typedef struct SettingDesc {
-	SettingDescBase desc;   ///, Settings structure (going to configuration file)
+	SettingDescBase desc;   ///< Settings structure (going to configuration file)
 	SaveLoad save;          ///< Internal structure (going to savegame, parts to config)
 } SettingDesc;
 

@@ -805,20 +805,147 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 // OTTD specific INI stuff
 //***************************
 
+/** Settings-macro usage:
+ * The list might look daunting at first, but is in general easy to understand.
+ * We have two types of list:
+ * 1. SDTG_something
+ * 2. SDT_something
+ * The 'G' stands for global, so this is the one you will use for a SettingDescGlobVarList
+ * section meaning global variables. The other uses a Base/Offset and runtime variable
+ * selection mechanism, known from the saveload convention (it also has global so it
+ * should not be hard).
+ * Of each type there are again two versions, the normal one and one prefixed with 'COND'.
+ * COND means that the setting is only valid in certain savegame versions (since patches
+ * are saved to the savegame, this bookkeeping is necessary.
+ * Now there are a lot of types. Easy ones are:
+ * - VAR:  any number type, 'type' field specifies what number. eg int8 or uint32
+ * - BOOL: a boolean number type
+ * - STR:  a string or character. 'type' field specifies what string. Normal, string, or quoted
+ * A bit more difficult to use are MMANY (meaning ManyOfMany) and OMANY (OneOfMany)
+ * These are actually normal numbers, only bitmasked. In MMANY several bits can be
+ * set, in the other only one.
+ * The most complex type is INTLIST. This is basically an array of numbers. If
+ * the intlist is only valid in certain savegame versions because for example
+ * it has grown in size its length cannot be automatically be calculated so
+ * use SDT(G)_CONDLISTO() meaning Old.
+ * If nothing fits you, you can use the GENERAL macros, but it exposes the internal
+ * structure somewhat so it needs a little looking. There are _NULL() macros as
+ * well, these fill up space so you can add more patches there (in place) and you
+ * DON'T have to increase the savegame version. */
+
+#define NSD_GENERAL(name, def, cmd, guiflags, min, max, many, str, proc)\
+	{name, (const void*)def, cmd, guiflags, min, max, many, str, proc}
+
+/* Macros for various objects to go in the configuration file.
+ * This section is for global variables */
+#define SDTG_GENERAL(name, sdt_cmd, sle_cmd, type, flags, guiflags, var, length, def, min, max, full, str, proc, from, to)\
+{NSD_GENERAL(name, def, sdt_cmd, guiflags, min, max, full, str, proc), SLEG_GENERAL(sle_cmd, var, type | flags, length, from, to)}
+
+#define SDTG_CONDVAR(name, type, flags, guiflags, var, def, min, max, str, proc, from, to)\
+	SDTG_GENERAL(name, SDT_NUMX, SL_VAR, type, flags, guiflags, var, 0, def, min, max, NULL, str, proc, from, to)
+#define SDTG_VAR(name, type, flags, guiflags, var, def, min, max, str, proc)\
+	SDTG_CONDVAR(name, type, flags, guiflags, var, def, min, max, str, proc, 0, SL_MAX_VERSION)
+
+#define SDTG_CONDBOOL(name, flags, guiflags, var, def, str, proc, from, to)\
+	SDTG_GENERAL(name, SDT_BOOLX, SL_VAR, SLE_UINT8, flags, guiflags, var, 0, def, 0, 1, NULL, str, proc, from, to)
+#define SDTG_BOOL(name, flags, guiflags, var, def, str, proc)\
+	SDTG_CONDBOOL(name, flags, guiflags, var, def, str, proc, 0, SL_MAX_VERSION)
+
+#define SDTG_CONDLIST(name, type, length, flags, guiflags, var, def, str, proc, from, to)\
+	SDTG_GENERAL(name, SDT_INTLIST, SL_ARR, type, flags, guiflags, var, length, def, 0, 0, NULL, str, proc, from, to)
+#define SDTG_LIST(name, type, flags, guiflags, var, def, str, proc)\
+	SDTG_GENERAL(name, SDT_INTLIST, SL_ARR, type, flags, guiflags, var, lengthof(var), def, 0, 0, NULL, str, proc, 0, SL_MAX_VERSION)
+
+#define SDTG_CONDSTR(name, type, length, flags, guiflags, var, def, str, proc, from, to)\
+	SDTG_GENERAL(name, SDT_STRING, SL_STR, type, flags, guiflags, var, length, def, 0, 0, NULL, str, proc, from, to)
+#define SDTG_STR(name, type, flags, guiflags, var, def, str, proc)\
+	SDTG_GENERAL(name, SDT_STRING, SL_STR, type, flags, guiflags, var, lengthof(var), def, 0, 0, NULL, str, proc, 0, SL_MAX_VERSION)
+
+#define SDTG_CONDOMANY(name, type, flags, guiflags, var, def, max, full, str, proc, from, to)\
+	SDTG_GENERAL(name, SDT_ONEOFMANY, SL_VAR, type, flags, guiflags, var, 0, def, 0, max, full, str, proc, from, to)
+#define SDTG_OMANY(name, type, flags, guiflags, var, def, max, full, str, proc)\
+	SDTG_CONDOMANY(name, type, flags, guiflags, var, def, max full, str, proc, 0, SL_MAX_VERSION)
+
+#define SDTG_CONDMMANY(name, type, flags, guiflags, var, def, full, str, proc, from, to)\
+	SDTG_GENERAL(name, SDT_MANYOFMANY, SL_VAR, type, flags, guiflags, var, 0, def, 0, 0, full, str, proc, from, to)
+#define SDTG_MMANY(name, type, flags, guiflags, var, def, full, str, proc)\
+	SDTG_CONDMMANY(name, type, flags, guiflags, var, def, full, str, proc, 0, SL_MAX_VERSION)
+
+#define SDTG_END() {{NULL, NULL, 0, 0, 0, 0, NULL, STR_NULL, NULL}, SLEG_END()}
+
+/* Macros for various objects to go in the configuration file.
+ * This section is for structures where their various members are saved */
+#define SDT_GENERAL(name, sdt_cmd, sle_cmd, type, flags, guiflags, base, var, length, def, min, max, full, str, proc, from, to)\
+	{NSD_GENERAL(name, def, sdt_cmd, guiflags, min, max, full, str, proc), SLE_GENERAL(sle_cmd, base, var, type | flags, length, from, to)}
+
+#define SDT_CONDVAR(base, var, type, from, to, flags, guiflags, def, min, max, str, proc)\
+	SDT_GENERAL(#var, SDT_NUMX, SL_VAR, type, flags, guiflags, base, var, 1, def, min, max, NULL, str, proc, from, to)
+#define SDT_VAR(base, var, type, flags, guiflags, def, min, max, str, proc)\
+	SDT_CONDVAR(base, var, type, 0, SL_MAX_VERSION, flags, guiflags, def, min, max, str, proc)
+
+#define SDT_CONDBOOL(base, var, from, to, flags, guiflags, def, str, proc)\
+	SDT_GENERAL(#var, SDT_BOOLX, SL_VAR, SLE_BOOL, flags, guiflags, base, var, 1, def, 0, 1, NULL, str, proc, from, to)
+#define SDT_BOOL(base, var, flags, guiflags, def, str, proc)\
+	SDT_CONDBOOL(base, var, 0, SL_MAX_VERSION, flags, guiflags, def, str, proc)
+
+#define SDT_CONDLIST(base, var, type, from, to, flags, guiflags, def, str, proc)\
+	SDT_GENERAL(#var, SDT_INTLIST, SL_ARR, type, flags, guiflags, base, var, lengthof(((base*)8)->var), def, 0, 0, NULL, str, proc, from, to)
+#define SDT_LIST(base, var, type, flags, guiflags, def, str, proc)\
+	SDT_CONDLIST(base, var, type, 0, SL_MAX_VERSION, flags, guiflags, def, str, proc)
+#define SDT_CONDLISTO(base, var, length, type, from, to, flags, guiflags, def, str, proc)\
+	SDT_GENERAL(#var, SDT_INTLIST, SL_ARR, type, flags, guiflags, base, var, length, def, 0, 0, NULL, str, proc, from, to)
+
+#define SDT_CONDSTR(base, var, type, from, to, flags, guiflags, def, str, proc)\
+	SDT_GENERAL(#var, SDT_STRING, SL_STR, type, flags, guiflags, base, var, lengthof(((base*)8)->var), def, 0, 0, NULL, str, proc, from, to)
+#define SDT_STR(base, var, type, flags, guiflags, def, str, proc)\
+	SDT_CONDSTR(base, var, type, 0, SL_MAX_VERSION, flags, guiflags, def, str, proc)
+#define SDT_CONDSTRO(base, var, length, type, from, to, flags, def, str, proc)\
+	SDT_GENERAL(#var, SDT_STRING, SL_STR, type, flags, 0, base, var, length, def, 0, 0, NULL, str, proc, from, to)
+
+#define SDT_CONDCHR(base, var, from, to, flags, guiflags, def, str, proc)\
+	SDT_GENERAL(#var, SDT_STRING, SL_VAR, SLE_CHAR, flags, guiflags, base, var, 1, def, 0, 0, NULL, str, proc, from, to)
+#define SDT_CHR(base, var, flags, guiflags, def, str, proc)\
+	SDT_CONDCHR(base, var, 0, SL_MAX_VERSION, flags, guiflags, def, str, proc)
+
+#define SDT_CONDOMANY(base, var, type, from, to, flags, guiflags, def, max, full, str, proc)\
+	SDT_GENERAL(#var, SDT_ONEOFMANY, SL_VAR, type, flags, guiflags, base, var, 1, def, 0, max, full, str, proc, from, to)
+#define SDT_OMANY(base, var, type, flags, guiflags, def, max, full, str, proc)\
+	SDT_CONDOMANY(base, var, type, 0, SL_MAX_VERSION, flags, guiflags, def, max, full, str, proc)
+
+#define SDT_CONDMMANY(base, var, type, from, to, flags, guiflags, def, full, str, proc)\
+	SDT_GENERAL(#var, SDT_MANYOFMANY, SL_VAR, type, flags, guiflags, base, var, 1, def, 0, 0, full, str, proc, from, to)
+#define SDT_MMANY(base, var, type, flags, guiflags, def, full, str, proc)\
+	SDT_CONDMMANY(base, var, type, 0, SL_MAX_VERSION, flags, guiflags, def, full, str, proc)
+
+#define SDT_END() {{NULL, NULL, 0, 0, 0, 0, NULL, STR_NULL, NULL}, SLE_END()}
+
+/* Shortcuts for macros below. Logically if we don't save the value
+ * we also don't sync it in a network game */
+#define S SLF_SAVE_NO | SLF_NETWORK_NO
+#define C SLF_CONFIG_NO
+#define N SLF_NETWORK_NO
+
+#define D0 SGF_0ISDISABLED
+#define NC SGF_NOCOMMA
+#define MS SGF_MULTISTRING
+#define NO SGF_NETWORK_ONLY
+#define CR SGF_CURRENCY
+
+#include "table/strings.h"
 #ifndef EXTERNAL_PLAYER
 #define EXTERNAL_PLAYER "timidity"
 #endif
 
-static const SettingDesc music_settings[] = {
-	{"playlist",	SDT_UINT8,	(void*)0,			&msf.playlist, NULL},
-	{"music_vol", SDT_UINT8,	(void*)128,		&msf.music_vol, NULL},
-	{"effect_vol",SDT_UINT8,	(void*)128,		&msf.effect_vol, NULL},
-	{"custom_1",	SDT_INTLIST | SDT_UINT8 | lengthof(msf.custom_1) << 16, NULL, &msf.custom_1, NULL},
-	{"custom_2",	SDT_INTLIST | SDT_UINT8 | lengthof(msf.custom_2) << 16, NULL, &msf.custom_2, NULL},
-	{"playing",		SDT_BOOL,		(void*)true,	&msf.playing, NULL},
-	{"shuffle",		SDT_BOOL,		(void*)false, &msf.shuffle, NULL},
-	{"extmidi",   SDT_STRINGBUF | (lengthof(msf.extmidi)<<16), EXTERNAL_PLAYER, &msf.extmidi, NULL},
-	{NULL,				0,					NULL,					NULL,																NULL}
+static const SettingDesc _music_settings[] = {
+	 SDT_VAR(MusicFileSettings, playlist,  SLE_UINT8, S, 0,   0, 0,   5, STR_NULL, NULL),
+	 SDT_VAR(MusicFileSettings, music_vol, SLE_UINT8, S, 0, 128, 0, 100, STR_NULL, NULL),
+	 SDT_VAR(MusicFileSettings, effect_vol,SLE_UINT8, S, 0, 128, 0, 100, STR_NULL, NULL),
+	SDT_LIST(MusicFileSettings, custom_1,  SLE_UINT8, S, 0, NULL,        STR_NULL, NULL),
+	SDT_LIST(MusicFileSettings, custom_2,  SLE_UINT8, S, 0, NULL,        STR_NULL, NULL),
+	SDT_BOOL(MusicFileSettings, playing,              S, 0, true,        STR_NULL, NULL),
+	SDT_BOOL(MusicFileSettings, shuffle,              S, 0,false,        STR_NULL, NULL),
+	 SDT_STR(MusicFileSettings, extmidi,    SLE_STRB, S, 0, EXTERNAL_PLAYER,STR_NULL, NULL),
+	 SDT_END()
 };
 
 /* win32_v.c only settings */
@@ -826,220 +953,191 @@ static const SettingDesc music_settings[] = {
 extern bool _force_full_redraw, _double_size;
 extern uint _display_hz, _fullscreen_bpp;
 
-static const SettingDesc win32_settings[] = {
-	{"display_hz",				SDT_UINT, (void*)0,			&_display_hz,					NULL},
-	{"force_full_redraw", SDT_BOOL, (void*)false, &_force_full_redraw,	NULL},
-	{"fullscreen_bpp",		SDT_UINT, (void*)8,			&_fullscreen_bpp,			NULL},
-	{"double_size",				SDT_BOOL, (void*)false, &_double_size,				NULL},
-	{NULL,								0,				NULL,					NULL,									NULL}
+extern const SettingDescGlobVarList _win32_settings[] = {
+	 SDTG_VAR("display_hz",     SLE_UINT, S, 0, _display_hz,       0, 0, 120, STR_NULL, NULL),
+	SDTG_BOOL("force_full_redraw",        S, 0, _force_full_redraw,false,     STR_NULL, NULL),
+	 SDTG_VAR("fullscreen_bpp", SLE_UINT, S, 0, _fullscreen_bpp,   8, 8,  32, STR_NULL, NULL),
+	SDTG_BOOL("double_size",              S, 0, _double_size,      false,     STR_NULL, NULL),
+	 SDTG_END()
 };
 #endif /* WIN32 */
 
-static const SettingDesc misc_settings[] = {
-	{"display_opt",				SDT_MANYOFMANY | SDT_UINT8, (void*)(DO_SHOW_TOWN_NAMES|DO_SHOW_STATION_NAMES|DO_SHOW_SIGNS|DO_FULL_ANIMATION|DO_FULL_DETAIL|DO_TRANS_BUILDINGS|DO_WAYPOINTS), &_display_opt, "SHOW_TOWN_NAMES|SHOW_STATION_NAMES|SHOW_SIGNS|FULL_ANIMATION|TRANS_BUILDINGS|FULL_DETAIL|WAYPOINTS"},
-	{"news_display_opt",	SDT_UINT32,		"0xAAAAAAAA",		&_news_display_opt,		NULL}, // default to all full messages: 10101010101010101010 = 0xAAAAAAAA
-	{"news_ticker_sound", SDT_BOOL,     (void*)true, &_news_ticker_sound,   NULL},
-	{"fullscreen",				SDT_BOOL,			(void*)false, &_fullscreen,					NULL},
-	/* Added the (uint32) cast in the next 3 lines, to suppress a warning on 64bit targets -- TrueLight */
-	{"videodriver",				SDT_STRINGBUF | ((uint32)lengthof(_ini_videodriver)<<16) | SDT_NOSAVE,NULL,			_ini_videodriver,				NULL},
-	{"musicdriver",				SDT_STRINGBUF | ((uint32)lengthof(_ini_musicdriver)<<16) | SDT_NOSAVE,NULL,			_ini_musicdriver,				NULL},
-	{"sounddriver",				SDT_STRINGBUF | ((uint32)lengthof(_ini_sounddriver)<<16) | SDT_NOSAVE,NULL,			_ini_sounddriver,				NULL},
-	{"language",					SDT_STRINGBUF | lengthof(_dynlang.curr_file)<<16,							NULL,			_dynlang.curr_file,			NULL},
-	{"resolution",				SDT_UINT16 | SDT_INTLIST | lengthof(_cur_resolution) << 16,		"640,480",_cur_resolution,				NULL},
-	{"screenshot_format", SDT_STRINGBUF | (lengthof(_screenshot_format_name)<<16),			NULL,			_screenshot_format_name,NULL},
-	{"savegame_format",		SDT_STRINGBUF | (lengthof(_savegame_format)<<16),							NULL,			_savegame_format,				NULL},
-	{"rightclick_emulate",SDT_BOOL,			(void*)false, &_rightclick_emulate, NULL},
-	{NULL,								0,						NULL,					NULL,									NULL}
+static const SettingDescGlobVarList _misc_settings[] = {
+	SDTG_MMANY("display_opt",     SLE_UINT8, S, 0, _display_opt,       (DO_SHOW_TOWN_NAMES|DO_SHOW_STATION_NAMES|DO_SHOW_SIGNS|DO_FULL_ANIMATION|DO_FULL_DETAIL|DO_TRANS_BUILDINGS|DO_WAYPOINTS), "SHOW_TOWN_NAMES|SHOW_STATION_NAMES|SHOW_SIGNS|FULL_ANIMATION|TRANS_BUILDINGS|FULL_DETAIL|WAYPOINTS", STR_NULL, NULL),
+	  SDTG_VAR("news_display_opt", SLE_UINT, S, 0, _news_display_opt,0xAAAAAAAA,0,0xAAAAAAAA,STR_NULL, NULL), // default to all full messages: 10101010101010101010 = 0xAAAAAAAA
+	 SDTG_BOOL("news_ticker_sound",          S, 0, _news_ticker_sound,     true,    STR_NULL, NULL),
+	 SDTG_BOOL("fullscreen",                 S, 0, _fullscreen,           false,    STR_NULL, NULL),
+	  SDTG_STR("videodriver",      SLE_STRB,C|S,0, _ini_videodriver,       NULL,    STR_NULL, NULL),
+	  SDTG_STR("musicdriver",      SLE_STRB,C|S,0, _ini_musicdriver,       NULL,    STR_NULL, NULL),
+	  SDTG_STR("sounddriver",      SLE_STRB,C|S,0, _ini_sounddriver,       NULL,    STR_NULL, NULL),
+	  SDTG_STR("language",         SLE_STRB, S, 0, _dynlang.curr_file,     NULL,    STR_NULL, NULL),
+	 SDTG_LIST("resolution",     SLE_UINT16, S, 0, _cur_resolution,   "640,480",    STR_NULL, NULL),
+	  SDTG_STR("screenshot_format",SLE_STRB, S, 0, _screenshot_format_name,NULL,    STR_NULL, NULL),
+	  SDTG_STR("savegame_format",  SLE_STRB, S, 0, _savegame_format,       NULL,    STR_NULL, NULL),
+	 SDTG_BOOL("rightclick_emulate",         S, 0, _rightclick_emulate,   false,    STR_NULL, NULL),
+	  SDTG_END()
 };
-
-
-static const SaveLoad _game_opt_desc[] = {
-	// added a new difficulty option (town attitude) in version 4
-	SLE_CONDARR(GameOptions,diff,						SLE_FILE_I16 | SLE_VAR_I32, 17, 0, 3),
-	SLE_CONDARR(GameOptions,diff,						SLE_FILE_I16 | SLE_VAR_I32, 18, 4, SL_MAX_VERSION),
-	SLE_VAR(GameOptions,diff_level,			SLE_UINT8),
-	SLE_VAR(GameOptions,currency,				SLE_UINT8),
-	SLE_VAR(GameOptions,kilometers,			SLE_UINT8),
-	SLE_VAR(GameOptions,town_name,			SLE_UINT8),
-	SLE_VAR(GameOptions,landscape,			SLE_UINT8),
-	SLE_VAR(GameOptions,snow_line,			SLE_UINT8),
-	SLE_VAR(GameOptions,autosave,				SLE_UINT8),
-	SLE_VAR(GameOptions,road_side,			SLE_UINT8),
-	SLE_END()
-};
-
-// Save load game options
-static void SaveLoad_OPTS(void)
-{
-	SlObject(&_opt, _game_opt_desc);
-}
 
 #ifdef ENABLE_NETWORK
-static const SettingDesc network_settings[] = {
-	{"sync_freq",				SDT_UINT16 | SDT_NOSAVE,	(void*)100,			&_network_sync_freq,		NULL},
-	{"frame_freq",			SDT_UINT8 | SDT_NOSAVE,	(void*)0,			&_network_frame_freq,		NULL},
-	{"max_join_time",		SDT_UINT16,	(void*)500,	&_network_max_join_time,	NULL},
-	{"pause_on_join",		SDT_BOOL, (void*)false, &_network_pause_on_join, NULL},
-	{"server_bind_ip",	SDT_STRINGBUF | (lengthof(_network_server_bind_ip_host) << 16),	"0.0.0.0",	&_network_server_bind_ip_host,	NULL},
-	{"server_port",			SDT_UINT,	(void*)NETWORK_DEFAULT_PORT,	&_network_server_port,	NULL},
-	{"server_advertise",SDT_BOOL, (void*)false, &_network_advertise, NULL},
-	{"lan_internet",		SDT_UINT8, (void*)0, &_network_lan_internet, NULL},
-	{"player_name",			SDT_STRINGBUF | (lengthof(_network_player_name) << 16), NULL, &_network_player_name, NULL},
-	{"server_password",	SDT_STRINGBUF | (lengthof(_network_server_password) << 16), NULL, &_network_server_password, NULL},
-	{"rcon_password",		SDT_STRINGBUF | (lengthof(_network_rcon_password) << 16), NULL, &_network_rcon_password, NULL},
-	{"server_name",			SDT_STRINGBUF | (lengthof(_network_server_name) << 16), NULL, &_network_server_name, NULL},
-	{"connect_to_ip",		SDT_STRINGBUF | (lengthof(_network_default_ip) << 16), NULL, &_network_default_ip, NULL},
-	{"network_id",			SDT_STRINGBUF | (lengthof(_network_unique_id) << 16), NULL, &_network_unique_id, NULL},
-	{"autoclean_companies", SDT_BOOL, (void*)false, &_network_autoclean_companies, NULL},
-	{"autoclean_unprotected", SDT_UINT8, (void*)12, &_network_autoclean_unprotected, NULL},
-	{"autoclean_protected", SDT_UINT8, (void*)36, &_network_autoclean_protected, NULL},
-	{"restart_game_date", SDT_UINT16, (void*)0, &_network_restart_game_date, NULL},
-	{NULL,							0,											NULL,					NULL,										NULL}
+static const SettingDescGlobVarList _network_settings[] = {
+	 SDTG_VAR("sync_freq",           SLE_UINT16,C|S,0, _network_sync_freq,            100, 0,  100,STR_NULL, NULL),
+	 SDTG_VAR("frame_freq",           SLE_UINT8,C|S,0, _network_frame_freq,             0, 0,  100,STR_NULL, NULL),
+	 SDTG_VAR("max_join_time",       SLE_UINT16, S, 0, _network_max_join_time,        500, 0,32000,STR_NULL, NULL),
+	SDTG_BOOL("pause_on_join",                   S, 0, _network_pause_on_join,        false,       STR_NULL, NULL),
+	 SDTG_STR("server_bind_ip",        SLE_STRB, S, 0, _network_server_bind_ip_host,  "0.0.0.0",   STR_NULL, NULL),
+	 SDTG_VAR("server_port",         SLE_UINT16, S, 0, _network_server_port,          NETWORK_DEFAULT_PORT, 0, -1,STR_NULL, NULL),
+	SDTG_BOOL("server_advertise",                S, 0, _network_advertise,            false,       STR_NULL, NULL),
+	SDTG_BOOL("lan_internet",                    S, 0, _network_lan_internet,         false,       STR_NULL, NULL),
+	 SDTG_STR("player_name",           SLE_STRB, S, 0, _network_player_name,          NULL,        STR_NULL, NULL),
+	 SDTG_STR("server_password",       SLE_STRB, S, 0, _network_server_password,      NULL,        STR_NULL, NULL),
+	 SDTG_STR("rcon_password",         SLE_STRB, S, 0, _network_rcon_password,        NULL,        STR_NULL, NULL),
+	 SDTG_STR("server_name",           SLE_STRB, S, 0, _network_server_name,          NULL,        STR_NULL, NULL),
+	 SDTG_STR("connect_to_ip",         SLE_STRB, S, 0, _network_default_ip,           NULL,        STR_NULL, NULL),
+	 SDTG_STR("network_id",            SLE_STRB, S, 0, _network_unique_id,            NULL,        STR_NULL, NULL),
+	SDTG_BOOL("autoclean_companies",             S, 0, _network_autoclean_companies,  false,       STR_NULL, NULL),
+	 SDTG_VAR("autoclean_unprotected",SLE_UINT8, S, 0, _network_autoclean_unprotected,12, 0,  60,  STR_NULL, NULL),
+	 SDTG_VAR("autoclean_protected",  SLE_UINT8, S, 0, _network_autoclean_protected,  36, 0, 180,  STR_NULL, NULL),
+	 SDTG_VAR("restart_game_date",   SLE_UINT16, S, 0, _network_restart_game_date,    MAX_YEAR_BEGIN_REAL, MAX_YEAR_BEGIN_REAL, MAX_YEAR_END_REAL, STR_NULL, NULL),
+	 SDTG_END()
 };
 #endif /* ENABLE_NETWORK */
 
-/* The settings showed when opened in the intro-menu. These values also are saved to
- * openttd.cfg, thus _opt_newgame is used here (not _opt which is used ingame with loaded games!) */
-static const SettingDesc gameopt_settings[] = {
-  {"diff_level",  SDT_UINT8,                  (void*)9, &_opt_newgame.diff_level, NULL},
-  {"diff_custom", SDT_INTLIST | SDT_UINT32 | (sizeof(GameDifficulty)/4) << 16, NULL, &_opt_newgame.diff, NULL},
-  {"currency",    SDT_UINT8 | SDT_ONEOFMANY,  (void*)0, &_opt_newgame.currency,   "GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SEK|custom" },
-  {"distances",   SDT_UINT8 | SDT_ONEOFMANY,  (void*)1, &_opt_newgame.kilometers, "imperial|metric" },
-  {"town_names",  SDT_UINT8 | SDT_ONEOFMANY,  (void*)0, &_opt_newgame.town_name,  "english|french|german|american|latin|silly|swedish|dutch|finnish|polish|slovakish|norwegian|hungarian|austrian|romanian|czech|swiss" },
-  {"landscape",   SDT_UINT8 | SDT_ONEOFMANY,  (void*)0, &_opt_newgame.landscape,  "normal|hilly|desert|candy" },
-  {"autosave",    SDT_UINT8 | SDT_ONEOFMANY,  (void*)1, &_opt_newgame.autosave,   "off|monthly|quarterly|half year|yearly" },
-  {"road_side",   SDT_UINT8 | SDT_ONEOFMANY,  (void*)1, &_opt_newgame.road_side,  "left|right" },
-  {NULL,          0,                          NULL,     NULL,                     NULL}
+static const SettingDesc _gameopt_settings[] = {
+	/* In version 4 a new difficulty setting has been added to the difficulty settings,
+	 * town attitude towards demolishing. Needs special handling because some dimwit thought
+	 * it funny to have the GameDifficulty struct be an array while it is a struct of
+	 * same-sized members
+	 * XXX - To save file-space and since values are never bigger than about 10? only
+	 * save the first 16 bits in the savegame. Question is why the values are still int32
+	 * and why not byte for example? */
+	SDT_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, (SLE_FILE_I16 | SLE_VAR_I32), 0, 0, GameOptions, diff, 17, 0, 0, 0, NULL, STR_NULL, NULL, 0, 3),
+	SDT_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, (SLE_FILE_I16 | SLE_VAR_I32), 0, 0, GameOptions, diff, 18, 0, 0, 0, NULL, STR_NULL, NULL, 4, SL_MAX_VERSION),
+	    SDT_VAR(GameOptions, diff_level,SLE_UINT8, 0, 0, 9,0, 9, STR_NULL, NULL),
+	  SDT_OMANY(GameOptions, currency,  SLE_UINT8, N, 0, 0,  23, "GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SEK|custom", STR_NULL, NULL),
+	  SDT_OMANY(GameOptions, kilometers,SLE_UINT8, N, 0, 1,   1, "imperial|metric", STR_NULL, NULL),
+	  SDT_OMANY(GameOptions, town_name, SLE_UINT8, 0, 0, 0,  16, "english|french|german|american|latin|silly|swedish|dutch|finnish|polish|slovakish|norwegian|hungarian|austrian|romanian|czech|swiss", STR_NULL, NULL),
+	  SDT_OMANY(GameOptions, landscape, SLE_UINT8, 0, 0, 0,   3, "normal|hilly|desert|candy", STR_NULL, NULL),
+	    SDT_VAR(GameOptions, snow_line, SLE_UINT8, 0, 0, 1,0,56, STR_NULL, NULL),
+	  SDT_OMANY(GameOptions, autosave,  SLE_UINT8, N, 0, 1,   4, "off|monthly|quarterly|half year|yearly", STR_NULL, NULL),
+	  SDT_OMANY(GameOptions, road_side, SLE_UINT8, 0, 0, 1,   1, "left|right", STR_NULL, NULL),
+	    SDT_END()
 };
 
-// The player-based settings (are not send over the network)
-// Not everything can just be added to this list. For example, service_interval
-//  can not be done, because every client assigns the service_interval value to the
-//  v->service_interval, meaning that every client assigns his value to the interval.
-//  If the setting was player-based, that would mean that vehicles could deside on
-//  different moments that they are heading back to a service depot, causing desyncs
-//  on a massive scale.
-// Short, you can only add settings that does stuff for the screen, GUI, that kind
-//  of stuff.
-static const SettingDesc patch_player_settings[] = {
-	{"vehicle_speed",				SDT_BOOL,		(void*)true,	&_patches.vehicle_speed,				NULL},
+/* Some patches do not need to be synchronised when playing in multiplayer.
+ * These include for example the GUI settings and will not be saved with the
+ * savegame.
+ * It is also a bit tricky since you would think that service_interval
+ * for example doesn't need to be synched. Every client assigns the service_interval
+ * value to the v->service_interval, meaning that every client assigns his value. If
+ * the setting was player-based, that would mean that vehicles could decide on
+ * different moments that they are heading back to a service depot, causing desyncs
+ * on a massive scale. */
+const SettingDesc _patch_settings[] = {
+	/***************************************************************************/
+	/* User-interface section of the GUI-configure patches window (00 - 12) */
+	SDT_BOOL(Patches, vehicle_speed,                 S, 0,  true,    STR_CONFIG_PATCHES_VEHICLESPEED,          NULL),
+	SDT_BOOL(Patches, status_long_date,              S, 0,  true,    STR_CONFIG_PATCHES_LONGDATE,              NULL),
+	SDT_BOOL(Patches, show_finances,                 S, 0,  true,    STR_CONFIG_PATCHES_SHOWFINANCES,          NULL),
+	SDT_BOOL(Patches, autoscroll,                    S, 0, false,    STR_CONFIG_PATCHES_AUTOSCROLL,            NULL),
+	SDT_BOOL(Patches, reverse_scroll,                S, 0, false,    STR_CONFIG_PATCHES_REVERSE_SCROLLING,     NULL),
+	 SDT_VAR(Patches, errmsg_duration,    SLE_UINT8, S, 0,  5, 0,20, STR_CONFIG_PATCHES_ERRMSG_DURATION,       NULL),
+	 SDT_VAR(Patches, toolbar_pos,        SLE_UINT8, S,MS,  0, 0, 2, STR_CONFIG_PATCHES_TOOLBAR_POS,           NULL),//&v_PositionMainToolbar),
+	 SDT_VAR(Patches, window_snap_radius, SLE_UINT8, S,D0, 10, 1,32, STR_CONFIG_PATCHES_SNAP_RADIUS,           NULL),
+	SDT_BOOL(Patches, invisible_trees,               S, 0, false,    STR_CONFIG_PATCHES_INVISIBLE_TREES,       NULL),//&InvisibleTreesActive),
+	SDT_BOOL(Patches, population_in_label,           S, 0,  true,    STR_CONFIG_PATCHES_POPULATION_IN_LABEL,   NULL),//&PopulationInLabelActive),
+	 SDT_VAR(Patches, map_x,              SLE_UINT8, S, 0,  8, 6,11, STR_CONFIG_PATCHES_MAP_X,                 NULL),
+	 SDT_VAR(Patches, map_y,              SLE_UINT8, S, 0,  8, 6,11, STR_CONFIG_PATCHES_MAP_Y,                 NULL),
+	SDT_BOOL(Patches, link_terraform_toolbar,        S, 0, false,    STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR,NULL),
 
-	{"lost_train_days",			SDT_UINT16, (void*)180,		&_patches.lost_train_days,			NULL},
-	{"train_income_warn",		SDT_BOOL,		(void*)true,	&_patches.train_income_warn,		NULL},
-	{"order_review_system", SDT_UINT8,	(void*)2,			&_patches.order_review_system,	NULL},
+	/***************************************************************************/
+	/* Construction section of the GUI-configure patches window (13 - 18) */
+	SDT_BOOL(Patches, build_on_slopes,               0, 0,  true,    STR_CONFIG_PATCHES_BUILDONSLOPES,       NULL),
+	SDT_BOOL(Patches, extra_dynamite,                0, 0, false,    STR_CONFIG_PATCHES_EXTRADYNAMITE,       NULL),
+	SDT_BOOL(Patches, longbridges,                   0, 0,  true,    STR_CONFIG_PATCHES_LONGBRIDGES,         NULL),
+	SDT_BOOL(Patches, signal_side,                   N, 0,  true,    STR_CONFIG_PATCHES_SIGNALSIDE,          NULL),
+	SDT_BOOL(Patches, always_small_airport,          0, 0, false,    STR_CONFIG_PATCHES_SMALL_AIRPORTS,      NULL),
+	 SDT_VAR(Patches, drag_signals_density,SLE_UINT8,S, 0,  4, 1,20, STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY,NULL),
 
-	{"status_long_date",		SDT_BOOL,		(void*)true,	&_patches.status_long_date,			NULL},
-	{"show_finances",				SDT_BOOL,		(void*)true,	&_patches.show_finances,				NULL},
-	{"autoscroll",					SDT_BOOL,		(void*)false,	&_patches.autoscroll,						NULL},
-	{"reverse_scroll",      SDT_BOOL,   (void*)false, &_patches.reverse_scroll,       NULL},
-	{"errmsg_duration",			SDT_UINT8,	(void*)5,			&_patches.errmsg_duration,			NULL},
-	{"toolbar_pos",					SDT_UINT8,	(void*)0,			&_patches.toolbar_pos,					NULL},
-	{"keep_all_autosave",		SDT_BOOL,		(void*)false, &_patches.keep_all_autosave,		NULL},
-	{"autosave_on_exit",		SDT_BOOL,		(void*)false, &_patches.autosave_on_exit,			NULL},
-	{"max_autosave_num",			SDT_UINT8, (void*)16,		&_patches.max_num_autosaves,			NULL},
+	/***************************************************************************/
+	/* Vehicle section of the GUI-configure patches window (19 - 42) */
+	SDT_BOOL(Patches, realistic_acceleration,        0, 0, false,                STR_CONFIG_PATCHES_REALISTICACCEL,       NULL),
+	SDT_BOOL(Patches, forbid_90_deg,                 0, 0, false,                STR_CONFIG_PATCHES_FORBID_90_DEG,        NULL),
+	SDT_BOOL(Patches, mammoth_trains,                0, 0,  true,                STR_CONFIG_PATCHES_MAMMOTHTRAINS,        NULL),
+	SDT_BOOL(Patches, gotodepot,                     0, 0,  true,                STR_CONFIG_PATCHES_GOTODEPOT,            NULL),
+	SDT_BOOL(Patches, roadveh_queue,                 0, 0,  true,                STR_CONFIG_PATCHES_ROADVEH_QUEUE,        NULL),
+	SDT_BOOL(Patches, new_pathfinding_all,           0, 0, false,                STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL,  NULL),
+	SDT_BOOL(Patches, train_income_warn,             S, 0,  true,                STR_CONFIG_PATCHES_WARN_INCOME_LESS,     NULL),
+	 SDT_VAR(Patches, order_review_system,SLE_UINT8, S,MS,     2,      0,     2, STR_CONFIG_PATCHES_ORDER_REVIEW,         NULL),
+	SDT_BOOL(Patches, never_expire_vehicles,         0, 0, false,                STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES,NULL),
+	 SDT_VAR(Patches, lost_train_days,   SLE_UINT16, S,D0,   180,    180,   720, STR_CONFIG_PATCHES_LOST_TRAIN_DAYS,      NULL),
+	SDT_BOOL(Patches, autorenew,                     S, 0, false,                STR_CONFIG_PATCHES_AUTORENEW_VEHICLE,    NULL),//&EngineRenewUpdate),
+	 SDT_VAR(Patches, autorenew_months,   SLE_INT16, S, 0,     6,    -12,    12, STR_CONFIG_PATCHES_AUTORENEW_MONTHS,     NULL),//&EngineRenewMonthsUpdate),
+	 SDT_VAR(Patches, autorenew_money,     SLE_UINT, S,CR,100000,     0,2000000, STR_CONFIG_PATCHES_AUTORENEW_MONEY,      NULL),//&EngineRenewMoneyUpdate),
+	 SDT_VAR(Patches, max_trains,        SLE_UINT16, 0, 0,   500,     0,   5000, STR_CONFIG_PATCHES_MAX_TRAINS,           NULL),
+	 SDT_VAR(Patches, max_roadveh,       SLE_UINT16, 0, 0,   500,     0,   5000, STR_CONFIG_PATCHES_MAX_ROADVEH,          NULL),
+	 SDT_VAR(Patches, max_aircraft,      SLE_UINT16, 0, 0,   200,     0,   5000, STR_CONFIG_PATCHES_MAX_AIRCRAFT,         NULL),
+	 SDT_VAR(Patches, max_ships,         SLE_UINT16, 0, 0,   300,     0,   5000, STR_CONFIG_PATCHES_MAX_SHIPS,            NULL),
+	SDT_BOOL(Patches, servint_ispercent,             0, 0, false,                STR_CONFIG_PATCHES_SERVINT_ISPERCENT,    NULL),//&CheckInterval),
+	 SDT_VAR(Patches, servint_trains,    SLE_UINT16, 0,D0,   150,     5,    800, STR_CONFIG_PATCHES_SERVINT_TRAINS,       NULL),//&InValidateDetailsWindow),
+	 SDT_VAR(Patches, servint_roadveh,   SLE_UINT16, 0,D0,   150,     5,    800, STR_CONFIG_PATCHES_SERVINT_ROADVEH,      NULL),//&InValidateDetailsWindow),
+	 SDT_VAR(Patches, servint_ships,     SLE_UINT16, 0,D0,   360,     5,    800, STR_CONFIG_PATCHES_SERVINT_AIRCRAFT,     NULL),//&InValidateDetailsWindow),
+	 SDT_VAR(Patches, servint_aircraft,  SLE_UINT16, 0,D0,   100,     5,    800, STR_CONFIG_PATCHES_SERVINT_SHIPS,        NULL),//&InValidateDetailsWindow),
+	SDT_BOOL(Patches, no_servicing_if_no_breakdowns, 0, 0, false,                STR_CONFIG_PATCHES_NOSERVICE,            NULL),
+	SDT_BOOL(Patches, wagon_speed_limits,            0, 0,  true,                STR_CONFIG_PATCHES_WAGONSPEEDLIMITS,     NULL),
 
-	{"bridge_pillars",			SDT_BOOL,		(void*)true,	&_patches.bridge_pillars,				NULL},
-	{"invisible_trees",			SDT_BOOL,		(void*)false, &_patches.invisible_trees,			NULL},
-	{"drag_signals_density",SDT_UINT8,	(void*)4,			&_patches.drag_signals_density, NULL},
+	/***************************************************************************/
+	/* Station section of the GUI-configure patches window (43 - 51) */
+	SDT_BOOL(Patches, join_stations,           0, 0,  true,   STR_CONFIG_PATCHES_JOINSTATIONS,       NULL),
+	SDT_BOOL(Patches, full_load_any,           0, 0,  true,   STR_CONFIG_PATCHES_FULLLOADANY,        NULL),
+	SDT_BOOL(Patches, improved_load,           0, 0, false,   STR_CONFIG_PATCHES_IMPROVEDLOAD,       NULL),
+	SDT_BOOL(Patches, selectgoods,             0, 0,  true,   STR_CONFIG_PATCHES_SELECTGOODS,        NULL),
+	SDT_BOOL(Patches, new_nonstop,             0, 0, false,   STR_CONFIG_PATCHES_NEW_NONSTOP,        NULL),
+	SDT_BOOL(Patches, nonuniform_stations,     0, 0,  true,   STR_CONFIG_PATCHES_NONUNIFORM_STATIONS,NULL),
+	 SDT_VAR(Patches, station_spread,SLE_UINT8,0, 0, 12, 4,64,STR_CONFIG_PATCHES_STATION_SPREAD,     NULL),//&InvalidateStationBuildWindow),
+	SDT_BOOL(Patches, serviceathelipad,        0, 0,  true,   STR_CONFIG_PATCHES_SERVICEATHELIPAD,   NULL),
+	SDT_BOOL(Patches, modified_catchment,      0, 0,  true,   STR_CONFIG_PATCHES_CATCHMENT,          NULL),
 
-	{"window_snap_radius",  SDT_UINT8,  (void*)10,    &_patches.window_snap_radius,   NULL},
+	/***************************************************************************/
+	/* Economy section of the GUI-configure patches window (52 - 62) */
+	SDT_BOOL(Patches, inflation,                  0, 0,  true,            STR_CONFIG_PATCHES_INFLATION,        NULL),
+	SDT_BOOL(Patches, build_rawmaterial_ind,      0, 0, false,            STR_CONFIG_PATCHES_BUILDXTRAIND,     NULL),
+	SDT_BOOL(Patches, multiple_industry_per_town, 0, 0, false,            STR_CONFIG_PATCHES_MULTIPINDTOWN,    NULL),
+	SDT_BOOL(Patches, same_industry_close,        0, 0, false,            STR_CONFIG_PATCHES_SAMEINDCLOSE,     NULL),
+	SDT_BOOL(Patches, bribe,                      0, 0,  true,            STR_CONFIG_PATCHES_BRIBE,            NULL),
+	 SDT_VAR(Patches, snow_line_height,SLE_UINT8, 0, 0,     7,   2,   13, STR_CONFIG_PATCHES_SNOWLINE_HEIGHT,  NULL),
+	 SDT_VAR(Patches, colored_news_date,SLE_UINT, 0,NC,  2000,1900, 2200, STR_CONFIG_PATCHES_COLORED_NEWS_DATE,NULL),
+	 SDT_VAR(Patches, starting_date,    SLE_UINT, 0,NC,  1950, MAX_YEAR_BEGIN_REAL, MAX_YEAR_END_REAL, STR_CONFIG_PATCHES_STARTING_DATE,NULL),
+	 SDT_VAR(Patches, ending_date,      SLE_UINT,0,NC|NO,2051, MAX_YEAR_BEGIN_REAL, MAX_YEAR_END_REAL, STR_CONFIG_PATCHES_ENDING_DATE,  NULL),
+	SDT_BOOL(Patches, smooth_economy,             0, 0,  true,            STR_CONFIG_PATCHES_SMOOTH_ECONOMY,   NULL),
+	SDT_BOOL(Patches, allow_shares,               0, 0,  true,            STR_CONFIG_PATCHES_ALLOW_SHARES,     NULL),
 
-	{"autorenew",						SDT_BOOL,		(void*)false,	&_patches.autorenew,						NULL},
-	{"autorenew_months",		SDT_INT16,	(void*)-6,		&_patches.autorenew_months,			NULL},
-	{"autorenew_money",			SDT_INT32,	(void*)100000,&_patches.autorenew_money,			NULL},
+	/***************************************************************************/
+	/* AI section of the GUI-configure patches window (63 - 68) */
+	SDT_BOOL(Patches, ainew_active,           0, 0, false, STR_CONFIG_PATCHES_AINEW_ACTIVE,      NULL),//&AiNew_PatchActive_Warning),
+	SDT_BOOL(Patches, ai_in_multiplayer,      0, 0, false, STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER, NULL),//&Ai_In_Multiplayer_Warning),
+	SDT_BOOL(Patches, ai_disable_veh_train,   0, 0, false, STR_CONFIG_PATCHES_AI_BUILDS_TRAINS,  NULL),
+	SDT_BOOL(Patches, ai_disable_veh_roadveh, 0, 0, false, STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH, NULL),
+	SDT_BOOL(Patches, ai_disable_veh_aircraft,0, 0, false, STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT,NULL),
+	SDT_BOOL(Patches, ai_disable_veh_ship,    0, 0, false, STR_CONFIG_PATCHES_AI_BUILDS_SHIPS,   NULL),
 
-	{"population_in_label",	SDT_BOOL,		(void*)true,	&_patches.population_in_label,	NULL},
-	{"link_terraform_toolbar",       SDT_BOOL,   (void*)false, &_patches.link_terraform_toolbar,       NULL},
+	/***************************************************************************/
+	/* Patches without any GUI representation (69 - 78) */
+	SDT_BOOL(Patches, keep_all_autosave,              S, 0, false,      STR_NULL, NULL),
+	SDT_BOOL(Patches, autosave_on_exit,               S, 0, false,      STR_NULL, NULL),
+	 SDT_VAR(Patches, max_num_autosaves,   SLE_UINT8, S, 0, 16, 0, 255, STR_NULL, NULL),
+	SDT_BOOL(Patches, bridge_pillars,                 S, 0,  true,      STR_NULL, NULL),
+	 SDT_VAR(Patches, extend_vehicle_life, SLE_UINT8, 0, 0,  0, 0, 100, STR_NULL, NULL),
+	SDT_BOOL(Patches, auto_euro,                      S, 0,  true,      STR_NULL, NULL),
+	 SDT_VAR(Patches, dist_local_authority,SLE_UINT8, 0, 0, 20, 5,  60, STR_NULL, NULL),
+	 SDT_VAR(Patches, wait_oneway_signal,  SLE_UINT8, 0, 0, 15, 2, 100, STR_NULL, NULL),
+	 SDT_VAR(Patches, wait_twoway_signal,  SLE_UINT8, 0, 0, 41, 2, 100, STR_NULL, NULL),
 
-	{NULL,									0,					NULL,					NULL,																						NULL}
-};
-
-// Non-static, needed in network_server.c
-const SettingDesc patch_settings[] = {
-	{"build_on_slopes",			SDT_BOOL,		(void*)true,	&_patches.build_on_slopes,			NULL},
-	{"mammoth_trains",			SDT_BOOL,		(void*)true,	&_patches.mammoth_trains,				NULL},
-	{"join_stations",				SDT_BOOL,		(void*)true,	&_patches.join_stations,				NULL},
-	{"station_spread",			SDT_UINT8,	(void*)12,		&_patches.station_spread,				NULL},
-	{"full_load_any",				SDT_BOOL,		(void*)true,	&_patches.full_load_any,				NULL},
-	{"modified_catchment", 	SDT_BOOL,		(void*)true,	&_patches.modified_catchment,		NULL},
-
-
-	{"inflation",						SDT_BOOL,		(void*)true,	&_patches.inflation,						NULL},
-	{"selectgoods",					SDT_BOOL,		(void*)true,	&_patches.selectgoods,					NULL},
-	{"longbridges",					SDT_BOOL,		(void*)true, &_patches.longbridges,					NULL},
-	{"gotodepot",						SDT_BOOL,		(void*)true,	&_patches.gotodepot,						NULL},
-
-	{"build_rawmaterial_ind",	SDT_BOOL, (void*)false, &_patches.build_rawmaterial_ind,NULL},
-	{"multiple_industry_per_town",SDT_BOOL, (void*)false, &_patches.multiple_industry_per_town, NULL},
-	{"same_industry_close",	SDT_BOOL,		(void*)false, &_patches.same_industry_close,	NULL},
-
-	{"signal_side",					SDT_BOOL,		(void*)true,	&_patches.signal_side,					NULL},
-
-	{"new_nonstop",					SDT_BOOL,		(void*)false,	&_patches.new_nonstop,					NULL},
-	{"roadveh_queue",				SDT_BOOL,		(void*)true,	&_patches.roadveh_queue,				NULL},
-
-	{"snow_line_height",		SDT_UINT8,	(void*)7,			&_patches.snow_line_height,			NULL},
-
-	{"bribe",								SDT_BOOL,		(void*)true,	&_patches.bribe,								NULL},
-
-	{"nonuniform_stations",	SDT_BOOL,		(void*)true,	&_patches.nonuniform_stations,	NULL},
-	{"always_small_airport",SDT_BOOL,		(void*)false,	&_patches.always_small_airport,	NULL},
-	{"realistic_acceleration",SDT_BOOL, (void*)false,	&_patches.realistic_acceleration,	NULL},
-	{"wagon_speed_limits",  SDT_BOOL,   (void*)true,  &_patches.wagon_speed_limits,   NULL},
-	{"forbid_90_deg",				SDT_BOOL, 	(void*)false, &_patches.forbid_90_deg,					NULL},
-	{"improved_load",				SDT_BOOL,		(void*)false,	&_patches.improved_load,				NULL},
-
-	{"max_trains",					SDT_UINT16,	(void*)500,		&_patches.max_trains,						NULL},
-	{"max_roadveh",					SDT_UINT16,	(void*)500,		&_patches.max_roadveh,					NULL},
-	{"max_aircraft",				SDT_UINT16,	(void*)200,		&_patches.max_aircraft,					NULL},
-	{"max_ships",						SDT_UINT16,	(void*)300,		&_patches.max_ships,						NULL},
-
-	{"servint_ispercent",		SDT_BOOL,		(void*)false,	&_patches.servint_ispercent,		NULL},
-	{"servint_trains",			SDT_UINT16, (void*)150,		&_patches.servint_trains,				NULL},
-	{"servint_roadveh",			SDT_UINT16, (void*)150,		&_patches.servint_roadveh,			NULL},
-	{"servint_ships",				SDT_UINT16, (void*)360,		&_patches.servint_ships,				NULL},
-	{"servint_aircraft",		SDT_UINT16, (void*)100,		&_patches.servint_aircraft,			NULL},
-	{"no_servicing_if_no_breakdowns", SDT_BOOL, (void*)0, &_patches.no_servicing_if_no_breakdowns, NULL},
-
-	{"pf_maxlength",				SDT_UINT16, (void*)512,		&_patches.pf_maxlength,					NULL},
-	{"pf_maxdepth",					SDT_UINT8,	(void*)16,		&_patches.pf_maxdepth,					NULL},
-
-
-	{"ai_disable_veh_train",SDT_BOOL,		(void*)false, &_patches.ai_disable_veh_train,	NULL},
-	{"ai_disable_veh_roadveh",SDT_BOOL,	(void*)false, &_patches.ai_disable_veh_roadveh,	NULL},
-	{"ai_disable_veh_aircraft",SDT_BOOL,(void*)false, &_patches.ai_disable_veh_aircraft,NULL},
-	{"ai_disable_veh_ship",	SDT_BOOL,		(void*)false, &_patches.ai_disable_veh_ship,	NULL},
-	{"starting_date",				SDT_UINT32, (void*)1950,	&_patches.starting_date,				NULL},
-	{"ending_date",				  SDT_UINT32, (void*)2051,	&_patches.ending_date,				  NULL},
-
-	{"colored_news_date",		SDT_UINT32, (void*)2000,	&_patches.colored_news_date,		NULL},
-
-	{"extra_dynamite",			SDT_BOOL,		(void*)false, &_patches.extra_dynamite,				NULL},
-
-	{"never_expire_vehicles",SDT_BOOL,	(void*)false, &_patches.never_expire_vehicles,NULL},
-	{"extend_vehicle_life",	SDT_UINT8,	(void*)0,			&_patches.extend_vehicle_life,	NULL},
-
-	{"auto_euro",						SDT_BOOL,		(void*)true,	&_patches.auto_euro,						NULL},
-
-	{"serviceathelipad",		SDT_BOOL,		(void*)true,	&_patches.serviceathelipad,			NULL},
-	{"smooth_economy",			SDT_BOOL,		(void*)true,	&_patches.smooth_economy,				NULL},
-	{"allow_shares",				SDT_BOOL,		(void*)true,	&_patches.allow_shares,					NULL},
-	{"dist_local_authority",SDT_UINT8,	(void*)20,		&_patches.dist_local_authority, NULL},
-
-	{"wait_oneway_signal",	SDT_UINT8,	(void*)15,		&_patches.wait_oneway_signal,		NULL},
-	{"wait_twoway_signal",	SDT_UINT8,	(void*)41,		&_patches.wait_twoway_signal,		NULL},
-
-	{"ainew_active",				SDT_BOOL,		(void*)false, &_patches.ainew_active,					NULL},
-	{"ai_in_multiplayer",		SDT_BOOL,		(void*)false, &_patches.ai_in_multiplayer,		NULL},
-
-	{"map_x", SDT_UINT32, (void*)8, &_patches.map_x, NULL},
-	{"map_y", SDT_UINT32, (void*)8, &_patches.map_y, NULL},
-
-	/* New Path Finding */
-	{"new_pathfinding_all",	SDT_BOOL,		(void*)false, &_patches.new_pathfinding_all,	NULL},
-
+	/***************************************************************************/
+	/* New Pathfinding patch settings (79 - 93) */
+	SDT_VAR(Patches, pf_maxlength,      SLE_UINT16, 0, 0, 4096, 64, 65535, STR_NULL, NULL),
+	SDT_VAR(Patches, pf_maxdepth,        SLE_UINT8, 0, 0,   48,  4,   255, STR_NULL, NULL),
 	/* The maximum number of nodes to search */
-	{"npf_max_search_nodes",   SDT_UINT32, (void*)10000,  &_patches.npf_max_search_nodes,		NULL},
+	SDT_VAR(Patches, npf_max_search_nodes,SLE_UINT, 0, 0,10000,500,100000, STR_NULL, NULL),
 
 	/* When a red signal is encountered, a small detour can be made around
 	* it. This specifically occurs when a track is doubled, in which case
@@ -1056,93 +1154,100 @@ const SettingDesc patch_settings[] = {
 	* penalty will further prevent this.
 	* We give presignal exits (and combo's) a different (larger) penalty, because we really
 	* don't want trains waiting in front of a presignal exit. */
-	{"npf_rail_firstred_penalty",   SDT_UINT32, (void*)(10 * NPF_TILE_LENGTH),  &_patches.npf_rail_firstred_penalty,    NULL},
-	{"npf_rail_firstred_exit_penalty", SDT_UINT32, (void*)(100 * NPF_TILE_LENGTH), &_patches.npf_rail_firstred_exit_penalty, NULL},
+	SDT_VAR(Patches, npf_rail_firstred_penalty,     SLE_UINT, 0, 0, (10 * NPF_TILE_LENGTH), 0, 100000, STR_NULL, NULL),
+	SDT_VAR(Patches, npf_rail_firstred_exit_penalty,SLE_UINT, 0, 0, (100 * NPF_TILE_LENGTH),0, 100000, STR_NULL, NULL),
 	/* This penalty is for when the last signal before the target is red.
 	 * This is useful for train stations, where there are multiple
 	 * platforms to choose from, which lie in different signal blocks.
 	 * Every target in a occupied signal block (ie an occupied platform)
-	 * will get this penalty.
-	 */
-	{"npf_rail_lastred_penalty",    SDT_UINT32, (void*)(10 * NPF_TILE_LENGTH),  &_patches.npf_rail_lastred_penalty,		NULL},
+	 * will get this penalty. */
+	SDT_VAR(Patches, npf_rail_lastred_penalty, SLE_UINT, 0, 0, (10 * NPF_TILE_LENGTH), 0, 100000, STR_NULL, NULL),
 	/* When a train plans a route over a station tile, this penalty is
-	* applied. We want that trains plan a route around a typical, 4x5
-	* station, which means two tiles to the right, and two tiles back to
-	* the left around it, or 5 tiles of station through it. If we assign
-	* a penalty of 1 tile for every station tile passed, the route will
-	* be around it.
-	*/
-	{"npf_rail_station_penalty",    SDT_UINT32, (void*)(1 * NPF_TILE_LENGTH),   &_patches.npf_rail_station_penalty,     NULL},
-	{"npf_rail_slope_penalty",      SDT_UINT32, (void*)(1 * NPF_TILE_LENGTH),   &_patches.npf_rail_slope_penalty,       NULL},
+	 * applied. We want that trains plan a route around a typical, 4x5
+	 * station, which means two tiles to the right, and two tiles back to
+	 * the left around it, or 5 tiles of station through it. If we assign
+	 * a penalty of 1 tile for every station tile passed, the route will
+	 * be around it. */
+	SDT_VAR(Patches, npf_rail_station_penalty, SLE_UINT, 0, 0, (1 * NPF_TILE_LENGTH), 0, 100000, STR_NULL, NULL),
+	SDT_VAR(Patches, npf_rail_slope_penalty,   SLE_UINT, 0, 0, (1 * NPF_TILE_LENGTH), 0, 100000, STR_NULL, NULL),
 	/* This penalty is applied when a train makes a turn. Its value of 1 makes
 	 * sure that it has a minimal impact on the pathfinding, only when two
 	 * paths have equal length it will make a difference */
-	{"npf_rail_curve_penalty",      SDT_UINT32, (void*)(1),                     &_patches.npf_rail_curve_penalty,       NULL},
+	SDT_VAR(Patches, npf_rail_curve_penalty,        SLE_UINT, 0, 0, 1,                      0, 100000, STR_NULL, NULL),
 	/* Ths penalty is applied when a vehicle reverses inside a depot (doesn't
 	 * apply to ships, as they can just come out the other end). XXX: Is this a
 	 * good value? */
-	{"npf_rail_depot_reverse_penalty", SDT_UINT32, (void*)(NPF_TILE_LENGTH * 50), &_patches.npf_rail_depot_reverse_penalty, NULL},
-	{"npf_buoy_penalty",            SDT_UINT32, (void*)(2 * NPF_TILE_LENGTH),   &_patches.npf_buoy_penalty,             NULL},
+	SDT_VAR(Patches, npf_rail_depot_reverse_penalty,SLE_UINT, 0, 0, (NPF_TILE_LENGTH * 50), 0, 100000, STR_NULL, NULL),
+	SDT_VAR(Patches, npf_buoy_penalty,              SLE_UINT, 0, 0, (2 * NPF_TILE_LENGTH),  0, 100000, STR_NULL, NULL),
 	/* This penalty is applied when a ship makes a turn. It is bigger than the
 	 * rail curve penalty, since ships (realisticly) have more trouble with
 	 * making turns */
-	{"npf_water_curve_penalty",     SDT_UINT32, (void*)(NPF_TILE_LENGTH / 4),   &_patches.npf_water_curve_penalty,      NULL},
+	SDT_VAR(Patches, npf_water_curve_penalty,       SLE_UINT, 0, 0, (NPF_TILE_LENGTH / 4),  0, 100000, STR_NULL, NULL),
 	/* This is the penalty for road, same as for rail. */
-	{"npf_road_curve_penalty",      SDT_UINT32, (void*)(1),                     &_patches.npf_road_curve_penalty,       NULL},
+	SDT_VAR(Patches, npf_road_curve_penalty,        SLE_UINT, 0, 0, 1,                      0, 100000, STR_NULL, NULL),
 	/* This is the penalty for level crossings, for both road and rail vehicles */
- 	{"npf_crossing_penalty",        SDT_UINT32, (void*)(3 * NPF_TILE_LENGTH),   &_patches.npf_crossing_penalty,         NULL},
+	SDT_VAR(Patches, npf_crossing_penalty,          SLE_UINT, 0, 0, (3 * NPF_TILE_LENGTH),  0, 100000, STR_NULL, NULL),
 
-	{NULL,                          0,          NULL,                           NULL,                                   NULL}
+	SDT_END()
 };
 
-static const SettingDesc currency_settings[] = {
-	{ "rate",      SDT_UINT16,                                               (void*)1,   &_custom_currency.rate,      NULL },
-	{ "separator", SDT_CHAR,                                                 ".",        &_custom_currency.separator, NULL },
-	{ "to_euro",   SDT_UINT16,                                               (void*)0,   &_custom_currency.to_euro,   NULL },
-	{ "prefix",    SDT_STRINGQUOT | lengthof(_custom_currency.prefix) << 16, NULL,       &_custom_currency.prefix,    NULL },
-	{ "suffix",    SDT_STRINGQUOT | lengthof(_custom_currency.suffix) << 16, " credits", &_custom_currency.suffix,    NULL },
-	{ NULL, 0, NULL, NULL, NULL }
+static const SettingDesc _currency_settings[] = {
+	SDT_VAR(CurrencySpec, rate,    SLE_UINT16, S, 0,  1, 0, 100, STR_NULL, NULL),
+	SDT_CHR(CurrencySpec, separator,           S, 0,        '.', STR_NULL, NULL),
+	SDT_VAR(CurrencySpec, to_euro, SLE_UINT16, S, 0,  0, 0,1000, STR_NULL, NULL),
+	SDT_STR(CurrencySpec, prefix,    SLE_STRQ, S, 0,       NULL, STR_NULL, NULL),
+	SDT_STR(CurrencySpec, suffix,    SLE_STRQ, S, 0, " credits", STR_NULL, NULL),
+	SDT_END()
 };
+
+/* Undefine for the shortcut macros above */
+#undef S
+#undef C
+#undef N
+
+#undef D0
+#undef NC
+#undef MS
+#undef NO
+#undef CR
 
 typedef void SettingDescProc(IniFile *ini, const SettingDesc *desc, const char *grpname, void *object);
 typedef void SettingDescProcList(IniFile *ini, const char *grpname, char **list, uint len);
 
-static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc)
+/* Common handler for saving/loading variables to the configuration file */
+static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescProcList *proc_list)
 {
-	proc(ini, misc_settings,		"misc");
+	proc(ini, (const SettingDesc*)_misc_settings,    "misc",  NULL);
+	proc(ini, (const SettingDesc*)_music_settings,   "music", &msf);
 #ifdef WIN32
-	proc(ini, win32_settings,		"win32");
+	proc(ini, (const SettingDesc*)_win32_settings,   "win32", NULL);
 #endif /* WIN32 */
+
+	proc(ini, _gameopt_settings, "gameopt",  &_opt_newgame);
+	proc(ini, _patch_settings,   "patches",  &_patches);
+	proc(ini, _currency_settings,"currency", &_custom_currency);
+
 #ifdef ENABLE_NETWORK
-	proc(ini, network_settings, "network");
+	proc(ini, (const SettingDesc*)_network_settings, "network", NULL);
+	proc_list(ini, "servers", _network_host_list, lengthof(_network_host_list));
+	proc_list(ini, "bans",    _network_ban_list,  lengthof(_network_ban_list));
 #endif /* ENABLE_NETWORK */
-	proc(ini, music_settings,		"music");
-	proc(ini, gameopt_settings, "gameopt");
-	proc(ini, patch_settings,		"patches");
-	proc(ini, patch_player_settings,		"patches");
-	proc(ini, currency_settings,"currency");
 }
 
+/** Load the values from the configuration files */
 void LoadFromConfig(void)
 {
 	IniFile *ini = ini_load(_config_file);
-	HandleSettingDescs(ini, load_setting_desc);
-	LoadList(ini, "newgrf", _newgrf_files, lengthof(_newgrf_files));
-#ifdef ENABLE_NETWORK
-	LoadList(ini, "servers", _network_host_list, lengthof(_network_host_list));
-	LoadList(ini, "bans", _network_ban_list, lengthof(_network_ban_list));
-#endif /* ENABLE_NETWORK */
+	HandleSettingDescs(ini, ini_load_settings, ini_load_setting_list);
+	ini_load_setting_list(ini, "newgrf", _newgrf_files, lengthof(_newgrf_files));
 	ini_free(ini);
 }
 
+/** Save the values to the configuration file */
 void SaveToConfig(void)
 {
 	IniFile *ini = ini_load(_config_file);
-	HandleSettingDescs(ini, save_setting_desc);
-#ifdef ENABLE_NETWORK
-	SaveList(ini, "servers", _network_host_list, lengthof(_network_host_list));
-	SaveList(ini, "bans", _network_ban_list, lengthof(_network_ban_list));
-#endif /* ENABLE_NETWORK */
+	HandleSettingDescs(ini, ini_save_settings, ini_save_setting_list);
 	ini_save(_config_file, ini);
 	ini_free(ini);
 }
