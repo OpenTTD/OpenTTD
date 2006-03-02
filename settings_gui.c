@@ -19,6 +19,7 @@
 #include "console.h"
 #include "town.h"
 #include "variables.h"
+#include "settings.h"
 
 static uint32 _difficulty_click_a;
 static uint32 _difficulty_click_b;
@@ -647,245 +648,99 @@ static int32 EngineRenewMoneyUpdate(int32 p1)
 
 typedef int32 PatchButtonClick(int32);
 
-typedef struct PatchEntry {
-	byte type;                    // type of selector
-	byte flags;                   // selector flags
-	StringID str;                 // string with descriptive text
-	char console_name[40];        // the name this patch has in console
-	void* variable;               // pointer to the variable
-	int32 min, max;               // range for spinbox setting
-	uint32 step;                  // step for spinbox
-	PatchButtonClick* click_proc; // callback procedure
-} PatchEntry;
+typedef uint PatchEntry;
 
-enum {
-	PE_BOOL			= 0,
-	PE_UINT8		= 1,
-	PE_INT16		= 2,
-	PE_UINT16		= 3,
-	PE_INT32		= 4,
-	PE_CURRENCY	= 5,
-	// selector flags
-	PF_0ISDIS       = 1 << 0, // a value of zero means the feature is disabled
-	PF_NOCOMMA      = 1 << 1, // number without any thousand seperators
-	PF_MULTISTRING  = 1 << 2, // string but only a limited number of options, so don't open editobx
-	PF_PLAYERBASED  = 1 << 3, // This has to match the entries that are in settings.c, patch_player_settings
-	PF_NETWORK_ONLY = 1 << 4, // this setting only applies to network games
-};
-
-static const PatchEntry _patches_ui[] = {
-	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_VEHICLESPEED,		"vehicle_speed",		&_patches.vehicle_speed,						0,  0,  0, NULL},
-	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_LONGDATE,				"long_date",				&_patches.status_long_date,					0,  0,  0, NULL},
-	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_SHOWFINANCES,		"show_finances",		&_patches.show_finances,						0,  0,  0, NULL},
-	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_AUTOSCROLL,			"autoscroll",				&_patches.autoscroll,								0,  0,  0, NULL},
-	{PE_BOOL,   PF_PLAYERBASED, STR_CONFIG_PATCHES_REVERSE_SCROLLING, "reverse_scroll", &_patches.reverse_scroll, 0, 0, 0, NULL },
-
-	{PE_UINT8,	PF_PLAYERBASED, STR_CONFIG_PATCHES_ERRMSG_DURATION,	"errmsg_duration",	&_patches.errmsg_duration,					0, 20,  1, NULL},
-
-	{PE_UINT8,	PF_MULTISTRING | PF_PLAYERBASED, STR_CONFIG_PATCHES_TOOLBAR_POS, "toolbar_pos", &_patches.toolbar_pos,			0,  2,  1, &v_PositionMainToolbar},
-	{PE_UINT8,	PF_0ISDIS | PF_PLAYERBASED, STR_CONFIG_PATCHES_SNAP_RADIUS, "window_snap_radius", &_patches.window_snap_radius,     1, 32,  1, NULL},
-	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_INVISIBLE_TREES,	"invisible_trees", &_patches.invisible_trees,					0,  1,  1, &InvisibleTreesActive},
-	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_POPULATION_IN_LABEL, "population_in_label", &_patches.population_in_label, 0, 1, 1, &PopulationInLabelActive},
-
-	{PE_INT32, 0, STR_CONFIG_PATCHES_MAP_X, "map_x", &_patches.map_x, 6, 11, 1, NULL},
-	{PE_INT32, 0, STR_CONFIG_PATCHES_MAP_Y, "map_y", &_patches.map_y, 6, 11, 1, NULL},
-
-	{PE_BOOL,   PF_PLAYERBASED, STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR, "link_terraform_toolbar", &_patches.link_terraform_toolbar, 0, 1, 1, NULL},
-};
-
-static const PatchEntry _patches_construction[] = {
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_BUILDONSLOPES,		"build_on_slopes",	&_patches.build_on_slopes,					0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_EXTRADYNAMITE,		"extra_dynamite",		&_patches.extra_dynamite,						0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_LONGBRIDGES,			"long_bridges",			&_patches.longbridges,							0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_SIGNALSIDE,				"signal_side",			&_patches.signal_side,							0,  0,  0, NULL},
-
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_SMALL_AIRPORTS,		"always_small_airport", &_patches.always_small_airport,			0,  0,  0, NULL},
-	{PE_UINT8,	PF_PLAYERBASED, STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY, "drag_signals_density", &_patches.drag_signals_density, 1, 20,  1, NULL},
-};
-
+static const PatchEntry _patches_ui[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+static const PatchEntry _patches_construction[] = {13, 14, 15, 16, 17, 18};
+static const PatchEntry _patches_stations[] = {43, 44, 45, 46, 47, 48, 49, 50, 51};
+static const PatchEntry _patches_economy[] = {52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62};
+static const PatchEntry _patches_ai[] = {63, 64, 65, 66, 67, 68};
 static const PatchEntry _patches_vehicles[] = {
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_REALISTICACCEL,		"realistic_acceleration", &_patches.realistic_acceleration,		0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_FORBID_90_DEG,		"forbid_90_deg", 		&_patches.forbid_90_deg,						0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_MAMMOTHTRAINS,		"mammoth_trains", 	&_patches.mammoth_trains,						0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_GOTODEPOT,				"goto_depot", 			&_patches.gotodepot,								0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_ROADVEH_QUEUE,		"roadveh_queue", 		&_patches.roadveh_queue,						0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL, "new_pathfinding_all", &_patches.new_pathfinding_all,		0,  0,  0, NULL},
-
-	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_WARN_INCOME_LESS, "train_income_warn", &_patches.train_income_warn,				0,  0,  0, NULL},
-	{PE_UINT8,	PF_MULTISTRING | PF_PLAYERBASED, STR_CONFIG_PATCHES_ORDER_REVIEW, "order_review_system", &_patches.order_review_system,0,2,  1, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES, "never_expire_vehicles", &_patches.never_expire_vehicles,0,0,0, NULL},
-
-	{PE_UINT16, PF_0ISDIS | PF_PLAYERBASED, STR_CONFIG_PATCHES_LOST_TRAIN_DAYS, "lost_train_days", &_patches.lost_train_days,	180,720, 60, NULL},
-	{PE_BOOL,     PF_PLAYERBASED, STR_CONFIG_PATCHES_AUTORENEW_VEHICLE, "autorenew",        &_patches.autorenew,                   0, 0, 0, &EngineRenewUpdate},
-	{PE_INT16,	  PF_PLAYERBASED, STR_CONFIG_PATCHES_AUTORENEW_MONTHS,  "autorenew_months", &_patches.autorenew_months,         -12, 12, 1, &EngineRenewMonthsUpdate},
-	{PE_CURRENCY, PF_PLAYERBASED, STR_CONFIG_PATCHES_AUTORENEW_MONEY,   "autorenew_money",  &_patches.autorenew_money,  0, 2000000, 100000, &EngineRenewMoneyUpdate},
-
-	{PE_UINT16,	0, STR_CONFIG_PATCHES_MAX_TRAINS,				"max_trains", &_patches.max_trains,								0,5000, 50, NULL},
-	{PE_UINT16,	0, STR_CONFIG_PATCHES_MAX_ROADVEH,			"max_roadveh", &_patches.max_roadveh,							0,5000, 50, NULL},
-	{PE_UINT16,	0, STR_CONFIG_PATCHES_MAX_AIRCRAFT,			"max_aircraft", &_patches.max_aircraft,						0,5000, 50, NULL},
-	{PE_UINT16,	0, STR_CONFIG_PATCHES_MAX_SHIPS,				"max_ships", &_patches.max_ships,									0,5000, 50, NULL},
-
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_SERVINT_ISPERCENT,"servint_isperfect",&_patches.servint_ispercent,				0,  0,  0, &CheckInterval},
-	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_TRAINS,		"servint_trains",   &_patches.servint_trains,		5,800,  5, &InValidateDetailsWindow},
-	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_ROADVEH,	"servint_roadveh",  &_patches.servint_roadveh,	5,800,  5, &InValidateDetailsWindow},
-	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_AIRCRAFT, "servint_aircraft", &_patches.servint_aircraft, 5,800,  5, &InValidateDetailsWindow},
-	{PE_UINT16, PF_0ISDIS, STR_CONFIG_PATCHES_SERVINT_SHIPS,		"servint_ships",    &_patches.servint_ships,		5,800,  5, &InValidateDetailsWindow},
-	{PE_BOOL,   0,         STR_CONFIG_PATCHES_NOSERVICE,        "no_servicing_if_no_breakdowns", &_patches.no_servicing_if_no_breakdowns, 0, 0, 0, NULL},
-	{PE_BOOL,   0, STR_CONFIG_PATCHES_WAGONSPEEDLIMITS, "wagon_speed_limits", &_patches.wagon_speed_limits, 0, 0, 0, NULL},
-};
-
-static const PatchEntry _patches_stations[] = {
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_JOINSTATIONS,			"join_stations", &_patches.join_stations,						0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_FULLLOADANY,			"full_load_any", &_patches.full_load_any,						0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_IMPROVEDLOAD,			"improved_load", &_patches.improved_load,						0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_SELECTGOODS,			"select_goods",  &_patches.selectgoods,							0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_NEW_NONSTOP,			"new_nonstop", &_patches.new_nonstop,							0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_NONUNIFORM_STATIONS, "nonuniform_stations", &_patches.nonuniform_stations,		0,  0,  0, NULL},
-	{PE_UINT8,	0, STR_CONFIG_PATCHES_STATION_SPREAD,		"station_spread", &_patches.station_spread,						4, 64,  1, &InvalidateStationBuildWindow},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_SERVICEATHELIPAD, "service_at_helipad", &_patches.serviceathelipad,					0,  0,  0, NULL},
-	{PE_BOOL, 0, STR_CONFIG_PATCHES_CATCHMENT, "modified_catchment", &_patches.modified_catchment, 0, 0, 0, NULL},
-};
-
-static const PatchEntry _patches_economy[] = {
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_INFLATION,				"inflation", &_patches.inflation,								0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_BUILDXTRAIND,			"build_rawmaterial", &_patches.build_rawmaterial_ind,		0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_MULTIPINDTOWN,		"multiple_industry_per_town", &_patches.multiple_industry_per_town,0, 0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_SAMEINDCLOSE,			"same_industry_close", &_patches.same_industry_close,			0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_BRIBE,						"bribe", &_patches.bribe,										0,  0,  0, NULL},
-	{PE_UINT8,	0, STR_CONFIG_PATCHES_SNOWLINE_HEIGHT,	"snow_line_height", &_patches.snow_line_height,					2, 13,  1, NULL},
-
-	{PE_INT32,	PF_NOCOMMA, STR_CONFIG_PATCHES_COLORED_NEWS_DATE, "colored_new_data", &_patches.colored_news_date, 1900, 2200, 5, NULL},
-	{PE_INT32,	PF_NOCOMMA, STR_CONFIG_PATCHES_STARTING_DATE, "starting_date", &_patches.starting_date,	 MAX_YEAR_BEGIN_REAL, MAX_YEAR_END_REAL, 1, NULL},
-	{PE_INT32,	PF_NOCOMMA | PF_NETWORK_ONLY, STR_CONFIG_PATCHES_ENDING_DATE, "ending_date", &_patches.ending_date,	 MAX_YEAR_BEGIN_REAL, MAX_YEAR_END_REAL, 1, NULL},
-
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_SMOOTH_ECONOMY,		"smooth_economy", &_patches.smooth_economy,						0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_ALLOW_SHARES,			"allow_shares", &_patches.allow_shares,						0,  0,  0, NULL},
-};
-
-static const PatchEntry _patches_ai[] = {
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_AINEW_ACTIVE, "ainew_active", &_patches.ainew_active, 0, 1, 1, &AiNew_PatchActive_Warning},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER, "ai_in_multiplayer", &_patches.ai_in_multiplayer, 0, 1, 1, &Ai_In_Multiplayer_Warning},
-
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_AI_BUILDS_TRAINS, "ai_disable_veh_train", &_patches.ai_disable_veh_train,			0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH,"ai_disable_veh_roadveh",&_patches.ai_disable_veh_roadveh,		0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT,"ai_disable_veh_aircraft",&_patches.ai_disable_veh_aircraft,0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_AI_BUILDS_SHIPS,"ai_disable_veh_ship",&_patches.ai_disable_veh_ship,			0,  0,  0, NULL},
+	19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+	31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42,
 };
 
 typedef struct PatchPage {
 	const PatchEntry *entries;
-	uint num;
+	byte num;
 } PatchPage;
 
 static const PatchPage _patches_page[] = {
-	{_patches_ui,						lengthof(_patches_ui) },
-	{_patches_construction, lengthof(_patches_construction) },
-	{_patches_vehicles,			lengthof(_patches_vehicles) },
-	{_patches_stations,			lengthof(_patches_stations) },
-	{_patches_economy,			lengthof(_patches_economy) },
-	{_patches_ai,						lengthof(_patches_ai) },
+	{_patches_ui,           lengthof(_patches_ui)},
+	{_patches_construction, lengthof(_patches_construction)},
+	{_patches_vehicles,     lengthof(_patches_vehicles)},
+	{_patches_stations,     lengthof(_patches_stations)},
+	{_patches_economy,      lengthof(_patches_economy)},
+	{_patches_ai,           lengthof(_patches_ai)},
 };
 
-
-static int32 ReadPE(const PatchEntry*pe)
-{
-	switch (pe->type) {
-	case PE_BOOL:   return *(bool*)pe->variable;
-	case PE_UINT8:  return *(uint8*)pe->variable;
-	case PE_INT16:  return *(int16*)pe->variable;
-	case PE_UINT16: return *(uint16*)pe->variable;
-	case PE_INT32:  return *(int32*)pe->variable;
-	case PE_CURRENCY:  return (*(int32*)pe->variable) * _currency->rate;
-	default: NOT_REACHED();
-	}
-
-	/* useless, but avoids compiler warning this way */
-	return 0;
-}
-
-static void WritePE(const PatchEntry* p, int32 v)
-{
-	if ((p->flags & PF_0ISDIS) && v <= 0) {
-		switch (p->type) {
-			case PE_BOOL:     *(bool*  )p->variable = false; break;
-			case PE_UINT8:    *(uint8* )p->variable = 0;     break;
-			case PE_INT16:    *(int16* )p->variable = 0;     break;
-			case PE_UINT16:   *(uint16*)p->variable = 0;     break;
-			case PE_CURRENCY: *(int32* )p->variable = 0;     break;
-			case PE_INT32:    *(int32* )p->variable = 0;     break;
-		}
-		return;
-	}
-
-	// "clamp" 'disabled' value to smallest type
-	switch (p->type) {
-		case PE_BOOL:     *(bool*  )p->variable = (v != 0); break;
-		case PE_UINT8:    *(uint8* )p->variable = clamp(v, p->min, p->max); break;
-		case PE_INT16:    *(int16* )p->variable = clamp(v, p->min, p->max); break;
-		case PE_UINT16:   *(uint16*)p->variable = clamp(v, p->min, p->max); break;
-		case PE_CURRENCY: *(int32* )p->variable = clamp(v, p->min, p->max); break;
-		case PE_INT32:    *(int32* )p->variable = clamp(v, p->min, p->max); break;
-		default: NOT_REACHED();
-	}
-}
-
+/** The main patches window. Shows a number of categories on top and
+ * a selection of patches in that category.
+ * Uses WP(w, def_d) macro - data_1, data_2, data_3 */
 static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 {
+	static Patches *patches_ptr;
+
 	switch (e->event) {
+	case WE_CREATE:
+		patches_ptr = &_patches;
+		break;
+
 	case WE_PAINT: {
-		int x,y;
+		int x, y;
 		const PatchEntry *pe;
-		const PatchPage *page;
-		uint clk;
-		int32 val;
+		const PatchPage *page = &_patches_page[WP(w,def_d).data_1];
 		uint i;
 
-		w->click_state = 1 << (WP(w,def_d).data_1 + 4);
-
+		/* Set up selected category */
+		w->click_state = 1 << (WP(w, def_d).data_1 + 4);
 		DrawWindowWidgets(w);
 
-		x = 0;
-		y = 46;
-		clk = WP(w,def_d).data_2;
-		page = &_patches_page[WP(w,def_d).data_1];
+		x = 5;
+		y = 47;
 		for (i = 0, pe = page->entries; i != page->num; i++, pe++) {
-			bool disabled = false;
+			const SettingDesc *sd = GetSettingDescription(*pe);
+			const SettingDescBase *sdb = &sd->desc;
+			const void *var = ini_get_variable(&sd->save, patches_ptr);
 			bool editable = true;
-
-			if ((pe->flags & PF_NETWORK_ONLY) && !_networking)
-				editable = false;
+			bool disabled = false;
 
 			// We do not allow changes of some items when we are a client in a networkgame
-			if (!(pe->flags & PF_PLAYERBASED) && _networking && !_network_server)
-				editable = false;
-			if (pe->type == PE_BOOL) {
-				if (editable)
-					DrawFrameRect(x+5, y+1, x+15+9, y+9, (*(bool*)pe->variable) ? 6 : 4, (*(bool*)pe->variable) ? FR_LOWERED : 0);
-				else
-					DrawFrameRect(x+5, y+1, x+15+9, y+9, (*(bool*)pe->variable) ? 7 : 9, (*(bool*)pe->variable) ? FR_LOWERED : 0);
-				SetDParam(0, *(bool*)pe->variable ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
-			} else {
-				/* Draw [<][>] boxes for settings of an integer-type */
-				DrawArrowButtons(x, y, 3, clk - (i * 2), editable);
+			if (!(sd->save.conv & SLF_NETWORK_NO) && _networking && !_network_server) editable = false;
+			if ((sdb->flags & SGF_NETWORK_ONLY) && !_networking) editable = false;
 
-				val = ReadPE(pe);
-				if (pe->type == PE_CURRENCY) val /= _currency->rate;
-				disabled = ((val == 0) && (pe->flags & PF_0ISDIS));
+			if (sdb->cmd == SDT_BOOLX) {
+				static const _bool_ctabs[4] = {9, 7, 4, 6};
+				/* Draw checkbox for boolean-value either on/off */
+				bool on = (*(bool*)var);
+				byte ctab = !!on + (!!editable * 2);
+				assert(ctab < lengthof(_bool_ctabs));
+
+				DrawFrameRect(x, y, x + 19, y + 8, _bool_ctabs[ctab], on ? FR_LOWERED : 0);
+				SetDParam(0, on ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
+			} else {
+				int32 value;
+
+				/* Draw [<][>] boxes for settings of an integer-type */
+				DrawArrowButtons(x, y, 3, WP(w,def_d).data_2 - (i * 2), editable);
+
+				value = (int32)ReadValue(var, sd->save.conv);
+
+				disabled = (value == 0) && (sdb->flags & SGF_0ISDISABLED);
 				if (disabled) {
 					SetDParam(0, STR_CONFIG_PATCHES_DISABLED);
 				} else {
-					SetDParam(1, val);
-					if (pe->type == PE_CURRENCY)
+					if (sdb->flags & SGF_CURRENCY) {
 						SetDParam(0, STR_CONFIG_PATCHES_CURRENCY);
-					else {
-						if (pe->flags & PF_MULTISTRING)
-							SetDParam(0, pe->str + val + 1);
-						else
-							SetDParam(0, pe->flags & PF_NOCOMMA ? STR_CONFIG_PATCHES_INT32 : STR_7024);
+					} else if (sdb->flags & SGF_MULTISTRING) {
+						SetDParam(0, sdb->str + value + 1);
+					} else {
+						SetDParam(0, (sdb->flags & SGF_NOCOMMA) ? STR_CONFIG_PATCHES_INT32 : STR_7024);
 					}
+					SetDParam(1, value);
 				}
 			}
-			DrawString(30, y+1, (pe->str)+disabled, 0);
+			DrawString(30, y, (sdb->str) + disabled, 0);
 			y += 11;
 		}
 		break;
@@ -894,89 +749,83 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		switch (e->click.widget) {
 		case 3: {
-			int x,y;
-			uint btn;
-			const PatchPage *page;
-			const PatchEntry *pe;
+			const PatchPage *page = &_patches_page[WP(w,def_d).data_1];
+			const SettingDesc *sd;
+			void *var;
+			int32 value;
+			int x, y;
+			byte btn;
 
 			y = e->click.pt.y - 46 - 1;
 			if (y < 0) return;
 
-			btn = y / 11;
-			if (y % 11 > 9) return;
-
-			page = &_patches_page[WP(w,def_d).data_1];
-			if (btn >= page->num) return;
-			pe = &page->entries[btn];
-
 			x = e->click.pt.x - 5;
 			if (x < 0) return;
 
-			if (((pe->flags & PF_NETWORK_ONLY) && !_networking) || // return if action is only active in network
-					(!(pe->flags & PF_PLAYERBASED) && _networking && !_network_server)) // return if only server can change it
-				return;
+			btn = y / 11;
+			if (y % 11 > 9) return;
+			if (btn >= page->num) return;
 
-			if (x < 21) { // clicked on the icon on the left side. Either scroller or bool on/off
-				int32 val = ReadPE(pe), oval = val;
+			sd = GetSettingDescription(page->entries[btn]);
 
-				switch (pe->type) {
-				case PE_BOOL:
-					val ^= 1;
-					break;
-				case PE_UINT8:
-				case PE_INT16:
-				case PE_UINT16:
-				case PE_INT32:
-				case PE_CURRENCY:
+			/* return if action is only active in network, or only settable by server */
+			if ((sd->desc.flags & SGF_NETWORK_ONLY) && !_networking) return;
+			if (!(sd->save.conv & SLF_NETWORK_NO) && _networking && !_network_server) return;
+
+			var = ini_get_variable(&sd->save, patches_ptr);
+			value = (int32)ReadValue(var, sd->save.conv);
+
+			/* clicked on the icon on the left side. Either scroller or bool on/off */
+			if (x < 21) {
+				const SettingDescBase *sdb = &sd->desc;
+				int32 oldvalue = value;
+
+				switch (sdb->cmd) {
+				case SDT_BOOLX: value ^= 1; break;
+				case SDT_NUMX: {
+					/* Add a dynamic step-size to the scroller. In a maximum of
+					 * 50-steps you should be able to get from min to max */
+					uint32 step = ((sdb->max - sdb->min) / 50);
+					if (step == 0) step = 1;
+
 					// don't allow too fast scrolling
 					if ((w->flags4 & WF_TIMEOUT_MASK) > 2 << WF_TIMEOUT_SHL) {
 						_left_button_clicked = false;
 						return;
 					}
 
+					/* Increase or decrease the value and clamp it to extremes */
 					if (x >= 10) {
-						//increase
-						if (pe->flags & PF_0ISDIS && val == 0)
-							val = pe->min;
-						else
-							val += pe->step;
-						if (val > pe->max) val = pe->max;
+						value += step;
+						if (value > sdb->max) value = sdb->max;
 					} else {
-						// decrease
-						if (val <= pe->min && pe->flags & PF_0ISDIS) {
-							val = 0;
-						} else {
-							val -= pe->step;
-							if (val < pe->min) val = pe->min;
-						}
+						value -= step;
+						if (value < sdb->min) value = (sdb->flags & SGF_0ISDISABLED) ? 0 : sdb->min;
 					}
 
-					if (val != oval) {
-						WP(w,def_d).data_2 = btn * 2 + 1 + ((x>=10) ? 1 : 0);
+					/* Set up scroller timeout */
+					if (value != oldvalue) {
+						WP(w,def_d).data_2 = btn * 2 + 1 + ((x >= 10) ? 1 : 0);
 						w->flags4 |= 5 << WF_TIMEOUT_SHL;
 						_left_button_clicked = false;
 					}
-					break;
+				} break;
+				default: NOT_REACHED();
 				}
-				if (val != oval) {
-					// To make patch-changes network-safe
-					if (pe->type == PE_CURRENCY) val /= _currency->rate;
-					// If an item is playerbased, we do not send it over the network (if any)
-					if (pe->flags & PF_PLAYERBASED) {
-						WritePE(pe, val);
-					} else {
-						// Else we do
-						DoCommandP(0, (byte)WP(w,def_d).data_1 + ((byte)btn << 8), val, NULL, CMD_CHANGE_PATCH_SETTING);
-					}
-					SetWindowDirty(w);
 
-					if (pe->click_proc != NULL) // call callback function
-						pe->click_proc(val);
+				if (value != oldvalue) {
+					SetPatchValue(page->entries[btn], patches_ptr, value);
+					SetWindowDirty(w);
+					if (sdb->proc != NULL) sdb->proc((int32)ReadValue(var, sd->save.conv));
 				}
 			} else {
-				if (pe->type != PE_BOOL && !(pe->flags & PF_MULTISTRING)) { // do not open editbox
+				/* only open editbox for types that its sensible for */
+				if (sd->desc.cmd != SDT_BOOLX && !(sd->desc.flags & SGF_MULTISTRING)) {
+					/* Show the correct currency-translated value */
+					if (sd->desc.flags & SGF_CURRENCY) value *= _currency->rate;
+
 					WP(w,def_d).data_3 = btn;
-					SetDParam(0, ReadPE(pe));
+					SetDParam(0, value);
 					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_PATCHES_QUERY_CAPT, 10, 100, WC_GAME_OPTIONS, 0);
 				}
 			}
@@ -997,23 +846,19 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT: {
-		if (*e->edittext.str) {
-			const PatchPage *page = &_patches_page[WP(w,def_d).data_1];
-			const PatchEntry *pe = &page->entries[WP(w,def_d).data_3];
-			int32 val;
-			val = atoi(e->edittext.str);
-			if (pe->type == PE_CURRENCY) val /= _currency->rate;
-			// If an item is playerbased, we do not send it over the network (if any)
-			if (pe->flags & PF_PLAYERBASED) {
-				WritePE(pe, val);
-			} else {
-				// Else we do
-				DoCommandP(0, (byte)WP(w,def_d).data_1 + ((byte)WP(w,def_d).data_3 << 8), val, NULL, CMD_CHANGE_PATCH_SETTING);
-			}
+		if (e->edittext.str != NULL) {
+			const uint index = _patches_page[WP(w,def_d).data_1].entries[WP(w,def_d).data_3];
+			const SettingDesc *sd = GetSettingDescription(index);
+			void *var = ini_get_variable(&sd->save, patches_ptr);
+			int32 value = atoi(e->edittext.str);
+
+			/* Save the correct currency-translated value */
+			if (sd->desc.flags & SGF_CURRENCY) value /= _currency->rate;
+
+			SetPatchValue(index, patches_ptr, value);
 			SetWindowDirty(w);
 
-			if (pe->click_proc != NULL) // call callback function
-				pe->click_proc(*(int32*)pe->variable);
+			if (sd->desc.proc != NULL) sd->desc.proc((int32)ReadValue(var, sd->save.conv));
 		}
 		break;
 	}

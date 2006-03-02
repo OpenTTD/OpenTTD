@@ -1255,6 +1255,34 @@ void SaveToConfig(void)
 	ini_free(ini);
 }
 
+const SettingDesc *GetSettingDescription(uint index)
+{
+	if (index >= lengthof(_patch_settings)) return NULL;
+	return &_patch_settings[index];
+}
+
+/* Top function to save the new value of an element of the Patches struct
+ * @param index offset in the SettingDesc array of the Patches struct which
+ * identifies the patch member we want to change
+ * @param object pointer to a valid patches struct that has its settings change.
+ * This only affects patch-members that are not needed to be the same on all
+ * clients in a network game.
+ * @param value new value of the patch */
+void SetPatchValue(uint index, const Patches *object, int32 value)
+{
+	const SettingDesc *sd = &_patch_settings[index];
+	/* If an item is player-based, we do not send it over the network
+	 * (if any) to change. Also *hack*hack* we update the _newgame version
+	 * of patches because changing a player-based setting in a game also
+	 * changes its defaults. At least that is the convention we have chosen */
+	if (sd->save.conv & SLF_NETWORK_NO) {
+		void *var = ini_get_variable(&sd->save, object);
+		Write_ValidateSetting(var, sd, value);
+	} else {
+		DoCommandP(0, index, value, NULL, CMD_CHANGE_PATCH_SETTING);
+	}
+}
+
 /** Save and load handler for patches/settings
  * @param osd SettingDesc struct containing all information
  * @param object can be either NULL in which case we load global variables or

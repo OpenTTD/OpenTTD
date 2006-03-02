@@ -76,5 +76,7 @@ static inline void *ini_get_variable(const SaveLoad *sld, const void *object)
 
 void IConsoleSetPatchSetting(const char *name, const char *value);
 void IConsoleGetPatchSetting(const char *name);
+const SettingDesc *GetSettingDescription(uint index);
+void SetPatchValue(uint index, const Patches *object, int32 value);
 
 #endif /* SETTINGS_H */
