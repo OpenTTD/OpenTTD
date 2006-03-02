@@ -643,7 +643,7 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
 				case SLE_VAR_STRQ:
 					if (p != NULL) ttd_strlcpy((char*)ptr, p, sld->length);
 					break;
-				case SLE_VAR_CHAR: *(char*)ptr = *(char*)p; break;
+				case SLE_VAR_CHAR: *(char*)ptr = (char)(unsigned long)p; break;
 				default: NOT_REACHED(); break;
 			}
 			break;
