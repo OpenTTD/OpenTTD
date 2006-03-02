@@ -11,6 +11,8 @@
 #include "variables.h"
 #include "network.h"
 #include "settings.h"
+#include "command.h"
+#include "console.h"
 #include "saveload.h"
 
 typedef struct IniFile IniFile;
@@ -1261,6 +1263,29 @@ const SettingDesc *GetSettingDescription(uint index)
 	return &_patch_settings[index];
 }
 
+/** Network-safe changing of patch-settings (server-only).
+ * @param p1 the index of the patch in the SettingDesc array which identifies it
+ * @param p2 the new value for the patch
+ * The new value is properly clamped to its minimum/maximum when setting
+ * @see _patch_settings
+ */
+int32 CmdChangePatchSetting(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+{
+	const SettingDesc *sd = GetSettingDescription(p1);
+
+	if (sd == NULL) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		Patches *patches_ptr = &_patches;
+		void *var = ini_get_variable(&sd->save, patches_ptr);
+		Write_ValidateSetting(var, sd, (int32)p2);
+
+		InvalidateWindow(WC_GAME_OPTIONS, 0);
+	}
+
+	return 0;
+}
+
 /* Top function to save the new value of an element of the Patches struct
  * @param index offset in the SettingDesc array of the Patches struct which
  * identifies the patch member we want to change
@@ -1281,6 +1306,72 @@ void SetPatchValue(uint index, const Patches *object, int32 value)
 	} else {
 		DoCommandP(0, index, value, NULL, CMD_CHANGE_PATCH_SETTING);
 	}
+}
+
+static const SettingDesc *GetPatchFromName(const char *name, uint *i)
+{
+	const SettingDesc *sd;
+
+	for (*i = 0, sd = _patch_settings; sd->save.cmd != SL_END; sd++, *i++) {
+		if (strncmp(sd->desc.name, name, sizeof(sd->desc.name)) == 0) return sd;
+	}
+
+	return NULL;
+}
+
+/* Those 2 functions need to be here, else we have to make some stuff non-static
+ * and besides, it is also better to keep stuff like this at the same place */
+void IConsoleSetPatchSetting(const char *name, const char *value)
+{
+	char newval[20];
+	int val;
+	uint index;
+	const SettingDesc *sd = GetPatchFromName(name, &index);
+	const Patches *patches_ptr;
+	void *ptr;
+
+	if (sd == NULL) {
+		IConsolePrintF(_icolour_warn, "'%s' is an unknown patch setting.", name);
+		return;
+	}
+
+	sscanf(value, "%d", &val);
+	patches_ptr = &_patches;
+	ptr = ini_get_variable(&sd->save, patches_ptr);
+
+	SetPatchValue(index, patches_ptr, val);
+
+	if (sd->desc.cmd == SDT_BOOLX) {
+		snprintf(newval, sizeof(newval), (*(bool*)ptr == 1) ? "on" : "off");
+	} else {
+		snprintf(newval, sizeof(newval), "%d", (int32)ReadValue(ptr, sd->save.conv));
+	}
+
+	IConsolePrintF(_icolour_warn, "'%s' changed to:  %s", name, newval);
+}
+
+void IConsoleGetPatchSetting(const char *name)
+{
+	char value[20];
+	uint index;
+	const SettingDesc *sd = GetPatchFromName(name, &index);
+	const void *ptr;
+
+	if (sd == NULL) {
+		IConsolePrintF(_icolour_warn, "'%s' is an unknown patch setting.", name);
+		return;
+	}
+
+	ptr = ini_get_variable(&sd->save, &_patches);
+
+	if (sd->desc.cmd == SDT_BOOLX) {
+		snprintf(value, sizeof(value), (*(bool*)ptr == 1) ? "on" : "off");
+	} else {
+		snprintf(value, sizeof(value), "%d", (int32)ReadValue(ptr, sd->save.conv));
+	}
+
+	IConsolePrintF(_icolour_warn, "Current value for '%s' is: '%s' (min: %s%d, max: %d)",
+		name, value, (sd->desc.flags & SGF_0ISDISABLED) ? "(0) " : "", sd->desc.min, sd->desc.max);
 }
 
 /** Save and load handler for patches/settings

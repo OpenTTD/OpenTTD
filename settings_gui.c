@@ -16,7 +16,6 @@
 #include "screenshot.h"
 #include "newgrf.h"
 #include "network.h"
-#include "console.h"
 #include "town.h"
 #include "variables.h"
 #include "settings.h"
@@ -867,108 +866,6 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 		DeleteWindowById(WC_QUERY_STRING, 0);
 		break;
 	}
-}
-
-/** Network-safe changing of patch-settings.
- * @param p1 various bitstuffed elements
- * - p1 = (bit 0- 7) - the patches type (page) that is being changed (construction, network, ai)
- * - p2 = (bit 8-15) - the actual patch (entry) being set inside the category
- * @param p2 the new value for the patch
- * @todo check that the new value is a valid one. Awful lot of work, but since only
- * the server is allowed to do this, we trust it on this one :)
- */
-int32 CmdChangePatchSetting(int x, int y, uint32 flags, uint32 p1, uint32 p2)
-{
-	byte pcat = GB(p1, 0, 8);
-	byte pel  = GB(p1, 8, 8);
-
-	if (pcat >= lengthof(_patches_page)) return CMD_ERROR;
-	if (pel >= _patches_page[pcat].num) return CMD_ERROR;
-
-	if (flags & DC_EXEC) {
-		const PatchEntry *pe = &_patches_page[pcat].entries[pel];
-		WritePE(pe, (int32)p2);
-
-		InvalidateWindow(WC_GAME_OPTIONS, 0);
-	}
-
-	return 0;
-}
-
-static const PatchEntry *IConsoleGetPatch(const char *name, uint *page, uint *entry)
-{
-	const PatchPage *pp;
-	const PatchEntry *pe;
-
-	for (*page = 0; *page < lengthof(_patches_page); (*page)++) {
-		pp = &_patches_page[*page];
-		for (*entry = 0; *entry < pp->num; (*entry)++) {
-			pe = &pp->entries[*entry];
-			if (strncmp(pe->console_name, name, sizeof(pe->console_name)) == 0)
-				return pe;
-		}
-	}
-
-	return NULL;
-}
-
-/* Those 2 functions need to be here, else we have to make some stuff non-static
-    and besides, it is also better to keep stuff like this at the same place */
-void IConsoleSetPatchSetting(const char *name, const char *value)
-{
-	const PatchEntry *pe;
-	uint page, entry;
-	int val;
-
-	pe = IConsoleGetPatch(name, &page, &entry);
-
-	if (pe == NULL) {
-		IConsolePrintF(_icolour_warn, "'%s' is an unknown patch setting.", name);
-		return;
-	}
-
-	sscanf(value, "%d", &val);
-
-	if (pe->type == PE_CURRENCY) // currency can be different on each client
-		val /= _currency->rate;
-
-	// If an item is playerbased, we do not send it over the network (if any)
-	if (pe->flags & PF_PLAYERBASED) {
-		WritePE(pe, val);
-	} else // Else we do
-		DoCommandP(0, page + (entry << 8), val, NULL, CMD_CHANGE_PATCH_SETTING);
-
-	{
-		char tval[20];
-		const char *tval2 = value;
-		if (pe->type == PE_BOOL) {
-			snprintf(tval, sizeof(tval), (val == 1) ? "on" : "off");
-			tval2 = tval;
-		}
-
-		IConsolePrintF(_icolour_warn, "'%s' changed to:  %s", name, tval2);
-	}
-}
-
-void IConsoleGetPatchSetting(const char *name)
-{
-	char value[20];
-	uint page, entry;
-	const PatchEntry *pe = IConsoleGetPatch(name, &page, &entry);
-
-	/* We did not find the patch setting */
-	if (pe == NULL) {
-		IConsolePrintF(_icolour_warn, "'%s' is an unknown patch setting.", name);
-		return;
-	}
-
-	if (pe->type == PE_BOOL) {
-		snprintf(value, sizeof(value), (ReadPE(pe) == 1) ? "on" : "off");
-	} else {
-		snprintf(value, sizeof(value), "%d", ReadPE(pe));
-	}
-
-	IConsolePrintF(_icolour_warn, "Current value for '%s' is: '%s'", name, value);
 }
 
 static const Widget _patches_selection_widgets[] = {
