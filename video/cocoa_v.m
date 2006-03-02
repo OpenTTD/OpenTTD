@@ -847,6 +847,10 @@ static void QZ_SetPortAlphaOpaque(void)
 	_cocoa_video_data.realpixels = GetPixBaseAddr(GetPortPixMap(thePort));
 	_cocoa_video_data.pitch      = GetPixRowBytes(GetPortPixMap(thePort));
 
+	if (_cocoa_video_data.realpixels == NULL) {
+		ShowMacErrorDialog("Error: failure to locate screen buffer in the OS");
+	}
+
 	/* _cocoa_video_data.realpixels now points to the window's pixels
 	 * We want it to point to the *view's* pixels
 	 */
@@ -862,7 +866,9 @@ static void QZ_SetPortAlphaOpaque(void)
 	/* Allocate new buffer */
 	free(_cocoa_video_data.pixels);
 	_cocoa_video_data.pixels = (uint8*)malloc(newViewFrame.size.width * newViewFrame.size.height);
-	assert(_cocoa_video_data.pixels != NULL);
+	if (_cocoa_video_data.pixels == NULL) {
+		ShowMacErrorDialog("Error: failed to allocate frame buffer");
+	}
 
 
 	/* Tell the game that the resolution changed */
@@ -1351,6 +1357,10 @@ static const char* QZ_SetVideoFullScreen(int width, int height)
 
 	_cocoa_video_data.realpixels = (uint8*)CGDisplayBaseAddress(_cocoa_video_data.display_id);
 	_cocoa_video_data.pitch  = CGDisplayBytesPerRow(_cocoa_video_data.display_id);
+
+	if (_cocoa_video_data.realpixels == NULL ) {
+		ShowMacErrorDialog("Error: failure to locate screen buffer in the OS for full screen mode");
+	}
 
 	_cocoa_video_data.width = CGDisplayPixelsWide(_cocoa_video_data.display_id);
 	_cocoa_video_data.height = CGDisplayPixelsHigh(_cocoa_video_data.display_id);
