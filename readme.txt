@@ -191,10 +191,10 @@ information below might be of help.
 ---- -------------------
 Here are some translation guidelines which you should follow closely.
 
-    * Please contact the development team before begining the translation
+    * Please contact the development team before beginning the translation
       process! This avoids double work, as someone else may have already
       started translating to the same language.
-    * Translators must use the charater set ISO 8859-15.
+    * Translators must use the character set ISO 8859-15.
       Otherwise, some characters will not display correctly in the game.
     * Currently it is not possible to translate into character sets other than
       Latin.
@@ -240,7 +240,7 @@ That's all! You should now be able to select the language in the game options.
 To see all startup options available to you, start OpenTTD with the
 "./openttd -h" option. This might help you tweak some of the settings.
 
-If the game is acting strange and you feel adventorous you can try the
+If the game is acting strange and you feel adventurous you can try the
 "-d [[<name>]=[<level>]" flag, where the higher levels will give you more
 debugging output. The "name" variable can help you to display only some type of
 debugging messages. This is mostly undocumented so best is to look in the

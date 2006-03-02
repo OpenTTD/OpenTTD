@@ -12,7 +12,7 @@ Of course if you have more knowledge about any of these bugs, have more
 specifics, we welcome you to report them. React to the given bug indicated
 by the number below on http://sourceforge.net/tracker/?group_id=103924&atid=636365
 or http://bugs.openttd.org.
-If the the bug report is closed, it has been fixed, which then can be verified
+If the bug report is closed, it has been fixed, which then can be verified
 in the latest SVN version.
 
 Bugs for 0.4.5
