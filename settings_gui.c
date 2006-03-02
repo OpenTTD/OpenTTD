@@ -711,13 +711,11 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			if ((sdb->flags & SGF_NETWORK_ONLY) && !_networking) editable = false;
 
 			if (sdb->cmd == SDT_BOOLX) {
-				static const _bool_ctabs[4] = {9, 7, 4, 6};
+				static const int _bool_ctabs[2][2] = {{9, 4}, {7, 6}};
 				/* Draw checkbox for boolean-value either on/off */
 				bool on = (*(bool*)var);
-				byte ctab = !!on + (!!editable * 2);
-				assert(ctab < lengthof(_bool_ctabs));
 
-				DrawFrameRect(x, y, x + 19, y + 8, _bool_ctabs[ctab], on ? FR_LOWERED : 0);
+				DrawFrameRect(x, y, x + 19, y + 8, _bool_ctabs[!!on][!!editable], on ? FR_LOWERED : 0);
 				SetDParam(0, on ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
 			} else {
 				int32 value;
