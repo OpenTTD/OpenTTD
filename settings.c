@@ -940,6 +940,105 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 #define CR SGF_CURRENCY
 
 #include "table/strings.h"
+
+/* Begin - Callback Functions for the various settings */
+#include "window.h"
+#include "gui.h"
+#include "town.h"
+#include "gfx.h"
+// virtual PositionMainToolbar function, calls the right one.
+static int32 v_PositionMainToolbar(int32 p1)
+{
+	if (_game_mode != GM_MENU) PositionMainToolbar(NULL);
+	return 0;
+}
+
+static int32 AiNew_PatchActive_Warning(int32 p1)
+{
+	if (p1 == 1) ShowErrorMessage(INVALID_STRING_ID, TEMP_AI_ACTIVATED, 0, 0);
+	return 0;
+}
+
+static int32 Ai_In_Multiplayer_Warning(int32 p1)
+{
+	if (p1 == 1) {
+		ShowErrorMessage(INVALID_STRING_ID, TEMP_AI_MULTIPLAYER, 0, 0);
+		_patches.ainew_active = true;
+	}
+	return 0;
+}
+
+static int32 PopulationInLabelActive(int32 p1)
+{
+	Town* t;
+
+	FOR_ALL_TOWNS(t) {
+		if (t->xy != 0) UpdateTownVirtCoord(t);
+	}
+	return 0;
+}
+
+static int32 InvisibleTreesActive(int32 p1)
+{
+	MarkWholeScreenDirty();
+	return 0;
+}
+
+static int32 InValidateDetailsWindow(int32 p1)
+{
+	InvalidateWindowClasses(WC_VEHICLE_DETAILS);
+	return 0;
+}
+
+static int32 InvalidateStationBuildWindow(int32 p1)
+{
+	InvalidateWindow(WC_BUILD_STATION, 0);
+	return 0;
+}
+
+/* Check service intervals of vehicles, p1 is value of % or day based servicing */
+static int32 CheckInterval(int32 p1)
+{
+	bool warning;
+	const Patches *ptc = (_game_mode == GM_MENU) ? &_patches_newgame : &_patches;
+
+	if (p1) {
+		warning = ( (IS_INT_INSIDE(ptc->servint_trains,   5, 90+1) || ptc->servint_trains   == 0) &&
+								(IS_INT_INSIDE(ptc->servint_roadveh,  5, 90+1) || ptc->servint_roadveh  == 0) &&
+								(IS_INT_INSIDE(ptc->servint_aircraft, 5, 90+1) || ptc->servint_aircraft == 0) &&
+								(IS_INT_INSIDE(ptc->servint_ships,    5, 90+1) || ptc->servint_ships    == 0) );
+	} else {
+		warning = ( (IS_INT_INSIDE(ptc->servint_trains,   30, 800+1) || ptc->servint_trains   == 0) &&
+								(IS_INT_INSIDE(ptc->servint_roadveh,  30, 800+1) || ptc->servint_roadveh  == 0) &&
+								(IS_INT_INSIDE(ptc->servint_aircraft, 30, 800+1) || ptc->servint_aircraft == 0) &&
+								(IS_INT_INSIDE(ptc->servint_ships,    30, 800+1) || ptc->servint_ships    == 0) );
+	}
+
+	if (!warning)
+		ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE, 0, 0);
+
+	return InValidateDetailsWindow(0);
+}
+
+static int32 EngineRenewUpdate(int32 p1)
+{
+	DoCommandP(0, 0, _patches.autorenew, NULL, CMD_REPLACE_VEHICLE);
+	return 0;
+}
+
+static int32 EngineRenewMonthsUpdate(int32 p1)
+{
+	DoCommandP(0, 1, _patches.autorenew_months, NULL, CMD_REPLACE_VEHICLE);
+	return 0;
+}
+
+static int32 EngineRenewMoneyUpdate(int32 p1)
+{
+	DoCommandP(0, 2, _patches.autorenew_money, NULL, CMD_REPLACE_VEHICLE);
+	return 0;
+}
+/* End - Callback Functions */
+
 #ifndef EXTERNAL_PLAYER
 #define EXTERNAL_PLAYER "timidity"
 #endif
@@ -1049,10 +1148,10 @@ const SettingDesc _patch_settings[] = {
 	SDT_BOOL(Patches, autoscroll,                    S, 0, false,    STR_CONFIG_PATCHES_AUTOSCROLL,            NULL),
 	SDT_BOOL(Patches, reverse_scroll,                S, 0, false,    STR_CONFIG_PATCHES_REVERSE_SCROLLING,     NULL),
 	 SDT_VAR(Patches, errmsg_duration,    SLE_UINT8, S, 0,  5, 0,20, STR_CONFIG_PATCHES_ERRMSG_DURATION,       NULL),
-	 SDT_VAR(Patches, toolbar_pos,        SLE_UINT8, S,MS,  0, 0, 2, STR_CONFIG_PATCHES_TOOLBAR_POS,           NULL),//&v_PositionMainToolbar),
+	 SDT_VAR(Patches, toolbar_pos,        SLE_UINT8, S,MS,  0, 0, 2, STR_CONFIG_PATCHES_TOOLBAR_POS,           v_PositionMainToolbar),
 	 SDT_VAR(Patches, window_snap_radius, SLE_UINT8, S,D0, 10, 1,32, STR_CONFIG_PATCHES_SNAP_RADIUS,           NULL),
-	SDT_BOOL(Patches, invisible_trees,               S, 0, false,    STR_CONFIG_PATCHES_INVISIBLE_TREES,       NULL),//&InvisibleTreesActive),
-	SDT_BOOL(Patches, population_in_label,           S, 0,  true,    STR_CONFIG_PATCHES_POPULATION_IN_LABEL,   NULL),//&PopulationInLabelActive),
+	SDT_BOOL(Patches, invisible_trees,               S, 0, false,    STR_CONFIG_PATCHES_INVISIBLE_TREES,       InvisibleTreesActive),
+	SDT_BOOL(Patches, population_in_label,           S, 0,  true,    STR_CONFIG_PATCHES_POPULATION_IN_LABEL,   PopulationInLabelActive),
 	 SDT_VAR(Patches, map_x,              SLE_UINT8, S, 0,  8, 6,11, STR_CONFIG_PATCHES_MAP_X,                 NULL),
 	 SDT_VAR(Patches, map_y,              SLE_UINT8, S, 0,  8, 6,11, STR_CONFIG_PATCHES_MAP_Y,                 NULL),
 	SDT_BOOL(Patches, link_terraform_toolbar,        S, 0, false,    STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR,NULL),
@@ -1078,17 +1177,17 @@ const SettingDesc _patch_settings[] = {
 	 SDT_VAR(Patches, order_review_system,SLE_UINT8, S,MS,     2,      0,     2, STR_CONFIG_PATCHES_ORDER_REVIEW,         NULL),
 	SDT_BOOL(Patches, never_expire_vehicles,         0, 0, false,                STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES,NULL),
 	 SDT_VAR(Patches, lost_train_days,   SLE_UINT16, S,D0,   180,    180,   720, STR_CONFIG_PATCHES_LOST_TRAIN_DAYS,      NULL),
-	SDT_BOOL(Patches, autorenew,                     S, 0, false,                STR_CONFIG_PATCHES_AUTORENEW_VEHICLE,    NULL),//&EngineRenewUpdate),
-	 SDT_VAR(Patches, autorenew_months,   SLE_INT16, S, 0,     6,    -12,    12, STR_CONFIG_PATCHES_AUTORENEW_MONTHS,     NULL),//&EngineRenewMonthsUpdate),
-	 SDT_VAR(Patches, autorenew_money,     SLE_UINT, S,CR,100000,     0,2000000, STR_CONFIG_PATCHES_AUTORENEW_MONEY,      NULL),//&EngineRenewMoneyUpdate),
+	SDT_BOOL(Patches, autorenew,                     S, 0, false,                STR_CONFIG_PATCHES_AUTORENEW_VEHICLE,    EngineRenewUpdate),
+	 SDT_VAR(Patches, autorenew_months,   SLE_INT16, S, 0,     6,    -12,    12, STR_CONFIG_PATCHES_AUTORENEW_MONTHS,     EngineRenewMonthsUpdate),
+	 SDT_VAR(Patches, autorenew_money,     SLE_UINT, S,CR,100000,     0,2000000, STR_CONFIG_PATCHES_AUTORENEW_MONEY,      EngineRenewMoneyUpdate),
 	 SDT_VAR(Patches, max_trains,        SLE_UINT16, 0, 0,   500,     0,   5000, STR_CONFIG_PATCHES_MAX_TRAINS,           NULL),
 	 SDT_VAR(Patches, max_roadveh,       SLE_UINT16, 0, 0,   500,     0,   5000, STR_CONFIG_PATCHES_MAX_ROADVEH,          NULL),
 	 SDT_VAR(Patches, max_aircraft,      SLE_UINT16, 0, 0,   200,     0,   5000, STR_CONFIG_PATCHES_MAX_AIRCRAFT,         NULL),
 	 SDT_VAR(Patches, max_ships,         SLE_UINT16, 0, 0,   300,     0,   5000, STR_CONFIG_PATCHES_MAX_SHIPS,            NULL),
-	SDT_BOOL(Patches, servint_ispercent,             0, 0, false,                STR_CONFIG_PATCHES_SERVINT_ISPERCENT,    NULL),//&CheckInterval),
+	SDT_BOOL(Patches, servint_ispercent,             0, 0, false,                STR_CONFIG_PATCHES_SERVINT_ISPERCENT,    CheckInterval),
 	 SDT_VAR(Patches, servint_trains,    SLE_UINT16, 0,D0,   150,     5,    800, STR_CONFIG_PATCHES_SERVINT_TRAINS,       NULL),//&InValidateDetailsWindow),
-	 SDT_VAR(Patches, servint_roadveh,   SLE_UINT16, 0,D0,   150,     5,    800, STR_CONFIG_PATCHES_SERVINT_ROADVEH,      NULL),//&InValidateDetailsWindow),
-	 SDT_VAR(Patches, servint_ships,     SLE_UINT16, 0,D0,   360,     5,    800, STR_CONFIG_PATCHES_SERVINT_AIRCRAFT,     NULL),//&InValidateDetailsWindow),
+	 SDT_VAR(Patches, servint_roadveh,   SLE_UINT16, 0,D0,   150,     5,    800, STR_CONFIG_PATCHES_SERVINT_ROADVEH,      InValidateDetailsWindow),
+	 SDT_VAR(Patches, servint_ships,     SLE_UINT16, 0,D0,   360,     5,    800, STR_CONFIG_PATCHES_SERVINT_AIRCRAFT,     InValidateDetailsWindow),
 	 SDT_VAR(Patches, servint_aircraft,  SLE_UINT16, 0,D0,   100,     5,    800, STR_CONFIG_PATCHES_SERVINT_SHIPS,        NULL),//&InValidateDetailsWindow),
 	SDT_BOOL(Patches, no_servicing_if_no_breakdowns, 0, 0, false,                STR_CONFIG_PATCHES_NOSERVICE,            NULL),
 	SDT_BOOL(Patches, wagon_speed_limits,            0, 0,  true,                STR_CONFIG_PATCHES_WAGONSPEEDLIMITS,     NULL),
@@ -1101,7 +1200,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_BOOL(Patches, selectgoods,             0, 0,  true,   STR_CONFIG_PATCHES_SELECTGOODS,        NULL),
 	SDT_BOOL(Patches, new_nonstop,             0, 0, false,   STR_CONFIG_PATCHES_NEW_NONSTOP,        NULL),
 	SDT_BOOL(Patches, nonuniform_stations,     0, 0,  true,   STR_CONFIG_PATCHES_NONUNIFORM_STATIONS,NULL),
-	 SDT_VAR(Patches, station_spread,SLE_UINT8,0, 0, 12, 4,64,STR_CONFIG_PATCHES_STATION_SPREAD,     NULL),//&InvalidateStationBuildWindow),
+	 SDT_VAR(Patches, station_spread,SLE_UINT8,0, 0, 12, 4,64,STR_CONFIG_PATCHES_STATION_SPREAD,     InvalidateStationBuildWindow),
 	SDT_BOOL(Patches, serviceathelipad,        0, 0,  true,   STR_CONFIG_PATCHES_SERVICEATHELIPAD,   NULL),
 	SDT_BOOL(Patches, modified_catchment,      0, 0,  true,   STR_CONFIG_PATCHES_CATCHMENT,          NULL),
 
@@ -1121,8 +1220,8 @@ const SettingDesc _patch_settings[] = {
 
 	/***************************************************************************/
 	/* AI section of the GUI-configure patches window (63 - 68) */
-	SDT_BOOL(Patches, ainew_active,           0, 0, false, STR_CONFIG_PATCHES_AINEW_ACTIVE,      NULL),//&AiNew_PatchActive_Warning),
-	SDT_BOOL(Patches, ai_in_multiplayer,      0, 0, false, STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER, NULL),//&Ai_In_Multiplayer_Warning),
+	SDT_BOOL(Patches, ainew_active,           0, 0, false, STR_CONFIG_PATCHES_AINEW_ACTIVE,      AiNew_PatchActive_Warning),
+	SDT_BOOL(Patches, ai_in_multiplayer,      0, 0, false, STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER, Ai_In_Multiplayer_Warning),
 	SDT_BOOL(Patches, ai_disable_veh_train,   0, 0, false, STR_CONFIG_PATCHES_AI_BUILDS_TRAINS,  NULL),
 	SDT_BOOL(Patches, ai_disable_veh_roadveh, 0, 0, false, STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH, NULL),
 	SDT_BOOL(Patches, ai_disable_veh_aircraft,0, 0, false, STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT,NULL),
@@ -1320,7 +1419,7 @@ static const SettingDesc *GetPatchFromName(const char *name, uint *i)
 {
 	const SettingDesc *sd;
 
-	for (*i = 0, sd = _patch_settings; sd->save.cmd != SL_END; sd++, *i++) {
+	for (*i = 0, sd = _patch_settings; sd->save.cmd != SL_END; sd++, (*i)++) {
 		if (strncmp(sd->desc.name, name, sizeof(sd->desc.name)) == 0) return sd;
 	}
 
@@ -1332,7 +1431,7 @@ static const SettingDesc *GetPatchFromName(const char *name, uint *i)
 void IConsoleSetPatchSetting(const char *name, const char *value)
 {
 	char newval[20];
-	int val;
+	int32 val;
 	uint index;
 	const SettingDesc *sd = GetPatchFromName(name, &index);
 	const Patches *patches_ptr;
@@ -1348,11 +1447,14 @@ void IConsoleSetPatchSetting(const char *name, const char *value)
 	ptr = ini_get_variable(&sd->save, patches_ptr);
 
 	SetPatchValue(index, patches_ptr, val);
+	val = ReadValue(ptr, sd->save.conv);
+
+	if (sd->desc.proc != NULL) sd->desc.proc(val);
 
 	if (sd->desc.cmd == SDT_BOOLX) {
-		snprintf(newval, sizeof(newval), (*(bool*)ptr == 1) ? "on" : "off");
+		snprintf(newval, sizeof(newval), (val != 0) ? "on" : "off");
 	} else {
-		snprintf(newval, sizeof(newval), "%d", (int32)ReadValue(ptr, sd->save.conv));
+		snprintf(newval, sizeof(newval), "%d", val);
 	}
 
 	IConsolePrintF(_icolour_warn, "'%s' changed to:  %s", name, newval);
