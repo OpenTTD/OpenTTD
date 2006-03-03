@@ -1111,7 +1111,7 @@ static uint RoadFindPathToStop(const Vehicle *v, TileIndex tile)
 	assert(trackdir != 0xFF);
 
 	fstd.dest_coords = tile;
-	fstd.station_index = -1;	// indicates that the destination is a tile, not a station
+	fstd.station_index = INVALID_STAION; // indicates that the destination is a tile, not a station
 
 	return NPFRouteToStationOrTile(v->tile, trackdir, &fstd, TRANSPORT_ROAD, v->owner, INVALID_RAILTYPE).best_path_dist;
 }

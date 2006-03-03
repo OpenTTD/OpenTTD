@@ -117,7 +117,7 @@ static int32 NPFCalcStationOrTileHeuristic(AyStar* as, AyStarNode* current, Open
 	uint dist;
 
 	// for train-stations, we are going to aim for the closest station tile
-	if (as->user_data[NPF_TYPE] == TRANSPORT_RAIL && fstd->station_index != -1)
+	if (as->user_data[NPF_TYPE] == TRANSPORT_RAIL && fstd->station_index != INVALID_STATION)
 		to = CalcClosestStationTile(fstd->station_index, from);
 
 	if (as->user_data[NPF_TYPE] == TRANSPORT_ROAD) {
@@ -420,7 +420,7 @@ static int32 NPFFindStationOrTile(AyStar* as, OpenListNode *current)
 	/* If GetNeighbours said we could get here, we assume the station type
 	 * is correct */
 	if (
-		(fstd->station_index == -1 && tile == fstd->dest_coords) || /* We've found the tile, or */
+		(fstd->station_index == INVALID_STATION && tile == fstd->dest_coords) || /* We've found the tile, or */
 		(IsTileType(tile, MP_STATION) && _m[tile].m2 == fstd->station_index) /* the station */
 	) {
 		return AYSTAR_FOUND_END_NODE;
@@ -800,7 +800,7 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, 
 		assert(0);
 
 	/* Initialize target */
-	target.station_index = -1; /* We will initialize dest_coords inside the loop below */
+	target.station_index = INVALID_STATION; /* We will initialize dest_coords inside the loop below */
 	_npf_aystar.user_target = &target;
 
 	/* Initialize user_data */
@@ -879,6 +879,6 @@ void NPFFillWithOrderData(NPFFindStationOrTileData* fstd, Vehicle* v)
 		fstd->dest_coords = CalcClosestStationTile(v->current_order.station, v->tile);
 	} else {
 		fstd->dest_coords = v->dest_tile;
-		fstd->station_index = -1;
+		fstd->station_index = INVALID_STATION;
 	}
 }

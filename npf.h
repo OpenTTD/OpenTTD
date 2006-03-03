@@ -5,6 +5,7 @@
 
 #include "openttd.h"
 #include "aystar.h"
+#include "station.h"
 #include "vehicle.h"
 #include "tile.h"
 #include "variables.h"
@@ -31,7 +32,7 @@ enum {
 
 typedef struct NPFFindStationOrTileData { /* Meant to be stored in AyStar.targetdata */
 	TileIndex dest_coords; /* An indication of where the station is, for heuristic purposes, or the target tile */
-	int station_index; /* station index we're heading for, or -1 when we're heading for a tile */
+	StationID station_index; /* station index we're heading for, or INVALID_STATION when we're heading for a tile */
 } NPFFindStationOrTileData;
 
 enum { /* Indices into AyStar.userdata[] */
