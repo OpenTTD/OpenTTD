@@ -557,7 +557,7 @@ static inline SignalType GetSignalType(TileIndex tile, Track track)
 static inline bool HasSemaphores(TileIndex tile, Track track)
 {
 	assert(IsValidTrack(track));
-	return _m[tile].m4 & SIG_SEMAPHORE_MASK;
+	return (_m[tile].m4 & SIG_SEMAPHORE_MASK) != 0;
 }
 
 /**

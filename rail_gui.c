@@ -291,8 +291,8 @@ static void BuildRailClick_Remove(Window *w)
 	SndPlayFx(SND_15_BEEP);
 
 	TOGGLEBIT(w->click_state, 16);
-	_remove_button_clicked = HASBIT(w->click_state, 16) != 0;
-	SetSelectionRed(HASBIT(w->click_state, 16) != 0);
+	_remove_button_clicked = HASBIT(w->click_state, 16);
+	SetSelectionRed(HASBIT(w->click_state, 16));
 
 	// handle station builder
 	if (HASBIT(w->click_state, 16)) {
