@@ -286,8 +286,10 @@ static const byte _road_pf_directions[16] = {
 	2, 3, 3, 2, 3, 0, 255, 255,
 };
 
-static bool EnumRoadSignalFindDepot(TileIndex tile, RoadFindDepotData *rfdd, int track, uint length, byte *state)
+static bool EnumRoadSignalFindDepot(TileIndex tile, void* data, int track, uint length, byte* state)
 {
+	RoadFindDepotData* rfdd = data;
+
 	tile += TileOffsByDir(_road_pf_directions[track]);
 
 	if (IsTileType(tile, MP_STREET) &&
@@ -328,7 +330,7 @@ static const Depot* FindClosestRoadDepot(const Vehicle* v)
 
 		/* search in all directions */
 		for (i = 0; i != 4; i++) {
-			FollowTrack(tile, 0x2000 | TRANSPORT_ROAD, i, (TPFEnumProc*)EnumRoadSignalFindDepot, NULL, &rfdd);
+			FollowTrack(tile, 0x2000 | TRANSPORT_ROAD, i, EnumRoadSignalFindDepot, NULL, &rfdd);
 		}
 
 		if (rfdd.best_length == (uint)-1) return NULL;
@@ -957,8 +959,9 @@ typedef struct {
 	uint mindist;
 } FindRoadToChooseData;
 
-static bool EnumRoadTrackFindDist(TileIndex tile, FindRoadToChooseData *frd, int track, uint length, byte *state)
+static bool EnumRoadTrackFindDist(TileIndex tile, void* data, int track, uint length, byte* state)
 {
+	FindRoadToChooseData* frd = data;
 	uint dist = DistanceManhattan(tile, frd->dest);
 	if (dist <= frd->mindist) {
 		if (dist != frd->mindist || length < frd->maxtracklen) {
@@ -1094,7 +1097,7 @@ do_it:;
 				if (best_track == -1) best_track = i; // in case we don't find the path, just pick a track
 				frd.maxtracklen = (uint)-1;
 				frd.mindist = (uint)-1;
-				FollowTrack(tile, 0x3000 | TRANSPORT_ROAD, _road_pf_directions[i], (TPFEnumProc*)EnumRoadTrackFindDist, NULL, &frd);
+				FollowTrack(tile, 0x3000 | TRANSPORT_ROAD, _road_pf_directions[i], EnumRoadTrackFindDist, NULL, &frd);
 
 				if (frd.mindist < best_dist || (frd.mindist==best_dist && frd.maxtracklen < best_maxlen)) {
 					best_dist = frd.mindist;
