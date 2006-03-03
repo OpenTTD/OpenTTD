@@ -33,14 +33,14 @@ static const uint16 _roadveh_images[63] = {
 };
 
 static const uint16 _roadveh_full_adder[63] = {
-    0,  88,   0,   0,   0,   0,  48,  48,
-   48,  48,   0,   0,  64,  64,   0,  16,
-   16,   0,  88,   0,   0,   0,   0,  48,
-   48,  48,  48,   0,   0,  64,  64,   0,
-   16,  16,   0,  88,   0,   0,   0,   0,
-   48,  48,  48,  48,   0,   0,  64,  64,
-    0,  16,  16,   0,   8,   8,   8,   8,
-    0,   0,   0,   8,   8,   8,   8
+	 0,  88,   0,   0,   0,   0,  48,  48,
+	48,  48,   0,   0,  64,  64,   0,  16,
+	16,   0,  88,   0,   0,   0,   0,  48,
+	48,  48,  48,   0,   0,  64,  64,   0,
+	16,  16,   0,  88,   0,   0,   0,   0,
+	48,  48,  48,  48,   0,   0,  64,  64,
+	 0,  16,  16,   0,   8,   8,   8,   8,
+	 0,   0,   0,   8,   8,   8,   8
 };
 
 
@@ -294,12 +294,10 @@ static bool EnumRoadSignalFindDepot(TileIndex tile, void* data, int track, uint 
 
 	if (IsTileType(tile, MP_STREET) &&
 			GetRoadType(tile) == ROAD_DEPOT &&
-			IsTileOwner(tile, rfdd->owner)) {
-
-		if (length < rfdd->best_length) {
-			rfdd->best_length = length;
-			rfdd->tile = tile;
-		}
+			IsTileOwner(tile, rfdd->owner) &&
+			length < rfdd->best_length) {
+		rfdd->best_length = length;
+		rfdd->tile = tile;
 	}
 	return false;
 }
@@ -401,7 +399,7 @@ int32 CmdTurnRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (v->type != VEH_Road || !CheckOwnership(v->owner)) return CMD_ERROR;
 
-	if (v->vehstatus & (VS_HIDDEN|VS_STOPPED) ||
+	if (v->vehstatus & (VS_HIDDEN | VS_STOPPED) ||
 			v->u.road.crashed_ctr != 0 ||
 			v->breakdown_ctr != 0 ||
 			v->u.road.overtaking != 0 ||
@@ -409,9 +407,7 @@ int32 CmdTurnRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 	}
 
-	if (flags & DC_EXEC) {
-		v->u.road.reverse_ctr = 180;
-	}
+	if (flags & DC_EXEC) v->u.road.reverse_ctr = 180;
 
 	return 0;
 }
@@ -514,8 +510,10 @@ static void RoadVehIsCrashed(Vehicle *v)
 	}
 }
 
-static void *EnumCheckRoadVehCrashTrain(Vehicle *v, Vehicle *u)
+static void* EnumCheckRoadVehCrashTrain(Vehicle* v, void* data)
 {
+	const Vehicle* u = data;
+
 	return
 		v->type == VEH_Train &&
 		myabs(v->z_pos - u->z_pos) <= 6 &&
@@ -560,7 +558,7 @@ static void RoadVehCheckTrainCrash(Vehicle *v)
 
 	if (!IsTileType(tile, MP_STREET) || !IsLevelCrossing(tile)) return;
 
-	if (VehicleFromPos(tile, v, (VehicleFromPosProc*)EnumCheckRoadVehCrashTrain) != NULL)
+	if (VehicleFromPos(tile, v, EnumCheckRoadVehCrashTrain) != NULL)
 		RoadVehCrash(v);
 }
 
@@ -718,28 +716,27 @@ typedef struct RoadVehFindData {
 	byte dir;
 } RoadVehFindData;
 
-static void *EnumCheckRoadVehClose(Vehicle *v, RoadVehFindData *rvf)
+static void* EnumCheckRoadVehClose(Vehicle *v, void* data)
 {
-	static const short _dists[] = {
-		-4, -8, -4, -1, 4, 8, 4, 1,
-		-4, -1, 4, 8, 4, 1, -4, -8,
-	};
+	static const int8 dist_x[] = { -4, -8, -4, -1, 4, 8, 4, 1 };
+	static const int8 dist_y[] = { -4, -1, 4, 8, 4, 1, -4, -8 };
+
+	const RoadVehFindData* rvf = data;
 
 	short x_diff = v->x_pos - rvf->x;
 	short y_diff = v->y_pos - rvf->y;
 
-	if (rvf->veh == v ||
-			v->type != VEH_Road ||
-			v->u.road.state == 254 ||
-			myabs(v->z_pos - rvf->veh->z_pos) > 6 ||
-			v->direction != rvf->dir ||
-			(_dists[v->direction] < 0 && (x_diff <= _dists[v->direction] || x_diff > 0)) ||
-			(_dists[v->direction] > 0 && (x_diff >= _dists[v->direction] || x_diff < 0)) ||
-			(_dists[v->direction+8] < 0 && (y_diff <= _dists[v->direction+8] || y_diff > 0)) ||
-			(_dists[v->direction+8] > 0 && (y_diff >= _dists[v->direction+8] || y_diff < 0)))
-				return NULL;
-
-	return v;
+	return
+		rvf->veh != v &&
+		v->type == VEH_Road &&
+		v->u.road.state != 254 &&
+		myabs(v->z_pos - rvf->veh->z_pos) < 6 &&
+		v->direction == rvf->dir &&
+		(dist_x[v->direction] >= 0 || (x_diff > dist_x[v->direction] && x_diff <= 0)) &&
+		(dist_x[v->direction] <= 0 || (x_diff < dist_x[v->direction] && x_diff >= 0)) &&
+		(dist_y[v->direction] >= 0 || (y_diff > dist_y[v->direction] && y_diff <= 0)) &&
+		(dist_y[v->direction] <= 0 || (y_diff < dist_y[v->direction] && y_diff >= 0)) ?
+			v : NULL;
 }
 
 static Vehicle *RoadVehFindCloseTo(Vehicle *v, int x, int y, byte dir)
@@ -753,7 +750,7 @@ static Vehicle *RoadVehFindCloseTo(Vehicle *v, int x, int y, byte dir)
 	rvf.y = y;
 	rvf.dir = dir;
 	rvf.veh = v;
-	u = VehicleFromPos(TileVirtXY(x, y), &rvf, (VehicleFromPosProc*)EnumCheckRoadVehClose);
+	u = VehicleFromPos(TileVirtXY(x, y), &rvf, EnumCheckRoadVehClose);
 
 	// This code protects a roadvehicle from being blocked for ever
 	//  If more than 1480 / 74 days a road vehicle is blocked, it will
@@ -861,13 +858,16 @@ static byte RoadVehGetSlidingDirection(Vehicle *v, int x, int y)
 }
 
 typedef struct OvertakeData {
-	Vehicle *u, *v;
+	const Vehicle* u;
+	const Vehicle* v;
 	TileIndex tile;
 	byte tilebits;
 } OvertakeData;
 
-static void *EnumFindVehToOvertake(Vehicle *v, OvertakeData *od)
+static void* EnumFindVehToOvertake(Vehicle* v, void* data)
 {
+	const OvertakeData* od = data;
+
 	return
 		v->tile == od->tile && v->type == VEH_Road && v == od->u && v == od->v ?
 			v : NULL;
@@ -879,9 +879,9 @@ static bool FindRoadVehToOvertake(OvertakeData *od)
 
 	bits = GetTileTrackStatus(od->tile, TRANSPORT_ROAD) & 0x3F;
 
-	if (!(od->tilebits & bits) || (bits&0x3C) || (bits & 0x3F3F0000))
+	if (!(od->tilebits & bits) || (bits & 0x3C) || (bits & 0x3F3F0000))
 		return true;
-	return VehicleFromPos(od->tile, od, (VehicleFromPosProc*)EnumFindVehToOvertake) != NULL;
+	return VehicleFromPos(od->tile, od, EnumFindVehToOvertake) != NULL;
 }
 
 static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
@@ -963,6 +963,7 @@ static bool EnumRoadTrackFindDist(TileIndex tile, void* data, int track, uint le
 {
 	FindRoadToChooseData* frd = data;
 	uint dist = DistanceManhattan(tile, frd->dest);
+
 	if (dist <= frd->mindist) {
 		if (dist != frd->mindist || length < frd->maxtracklen) {
 			frd->maxtracklen = length;
@@ -1002,8 +1003,10 @@ static int RoadFindPathToDest(Vehicle *v, TileIndex tile, int enterdir)
 		if (IsTileOwner(tile, v->owner)) {
 			/* Our station */
 			RoadStopType rstype = (v->cargo_type == CT_PASSENGERS) ? RS_BUS : RS_TRUCK;
+
 			if (GetRoadStopType(tile) == rstype) {
 				const RoadStop *rs = GetRoadStopByTile(tile, rstype);
+
 				if (rs != NULL && (_patches.roadveh_queue || GB(rs->status, 0, 2) != 0)) {
 					bitmask |= _road_veh_fp_ax_or[GetRoadStationDir(tile)];
 				}
@@ -1123,7 +1126,7 @@ static uint RoadFindPathToStop(const Vehicle *v, TileIndex tile)
 	assert(trackdir != 0xFF);
 
 	fstd.dest_coords = tile;
-	fstd.station_index = INVALID_STAION; // indicates that the destination is a tile, not a station
+	fstd.station_index = INVALID_STATION; // indicates that the destination is a tile, not a station
 
 	return NPFRouteToStationOrTile(v->tile, trackdir, &fstd, TRANSPORT_ROAD, v->owner, INVALID_RAILTYPE).best_path_dist;
 }
@@ -1146,13 +1149,10 @@ static const byte _roadveh_data_2[4] = { 0,1,8,9 };
 
 static void RoadVehController(Vehicle *v)
 {
-	GetNewVehiclePosResult gp;
 	byte new_dir, old_dir;
 	RoadDriveEntry rd;
 	int x,y;
-	Station *st;
 	uint32 r;
-	Vehicle *u;
 
 	// decrease counters
 	v->tick_counter++;
@@ -1198,7 +1198,7 @@ static void RoadVehController(Vehicle *v)
 		x = TileX(v->tile) * 16 + (rdp[6].x & 0xF);
 		y = TileY(v->tile) * 16 + (rdp[6].y & 0xF);
 
-		if (RoadVehFindCloseTo(v,x,y,v->direction)) return;
+		if (RoadVehFindCloseTo(v, x, y, v->direction) != NULL) return;
 
 		VehicleServiceInDepot(v);
 
@@ -1236,17 +1236,18 @@ static void RoadVehController(Vehicle *v)
 	BeginVehicleMove(v);
 
 	if (v->u.road.state == 255) {
+		GetNewVehiclePosResult gp;
+
 		GetNewVehiclePos(v, &gp);
 
-		if (RoadVehFindCloseTo(v, gp.x, gp.y, v->direction)) {
+		if (RoadVehFindCloseTo(v, gp.x, gp.y, v->direction) != NULL) {
 			v->cur_speed = 0;
 			return;
 		}
 
 		if (IsTileType(gp.new_tile, MP_TUNNELBRIDGE) &&
 				GB(_m[gp.new_tile].m5, 4, 4) == 0 &&
-				(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y)&4)) {
-
+				VehicleEnterTile(v, gp.new_tile, gp.x, gp.y) & 4) {
 			//new_dir = RoadGetNewDirection(v, gp.x, gp.y)
 			v->cur_image = GetRoadVehImage(v, v->direction);
 			UpdateRoadVehDeltaXY(v);
@@ -1287,7 +1288,7 @@ again:
 		y = TileY(tile) * 16 + rdp[0].y;
 
 		newdir = RoadVehGetSlidingDirection(v, x, y);
-		if (RoadVehFindCloseTo(v, x, y, newdir)) return;
+		if (RoadVehFindCloseTo(v, x, y, newdir) != NULL) return;
 
 		r = VehicleEnterTile(v, tile, x, y);
 		if (r & 8) {
@@ -1348,7 +1349,7 @@ again:
 		y = TileY(v->tile) * 16 + rdp[1].y;
 
 		newdir = RoadVehGetSlidingDirection(v, x, y);
-		if (RoadVehFindCloseTo(v, x, y, newdir)) return;
+		if (RoadVehFindCloseTo(v, x, y, newdir) != NULL) return;
 
 		r = VehicleEnterTile(v, v->tile, x, y);
 		if (r & 8) {
@@ -1375,10 +1376,13 @@ again:
 
 	new_dir = RoadVehGetSlidingDirection(v, x, y);
 
-	if (!IS_BYTE_INSIDE(v->u.road.state, 0x20, 0x30) &&
-			(u = RoadVehFindCloseTo(v, x, y, new_dir)) != NULL) {
-		if (v->u.road.overtaking == 0) RoadVehCheckOvertake(v, u);
-		return;
+	if (!IS_BYTE_INSIDE(v->u.road.state, 0x20, 0x30)) {
+		Vehicle* u = RoadVehFindCloseTo(v, x, y, new_dir);
+
+		if (u != NULL) {
+			if (v->u.road.overtaking == 0) RoadVehCheckOvertake(v, u);
+			return;
+		}
 	}
 
 	old_dir = v->direction;
@@ -1396,8 +1400,7 @@ again:
 	if (v->u.road.state >= 0x20 &&
 			_road_veh_data_1[v->u.road.state - 0x20 + (_opt.road_side<<4)] == v->u.road.frame) {
 		RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
-
-		st = GetStation(_m[v->tile].m2);
+		Station* st = GetStation(_m[v->tile].m2);
 
 		if (v->current_order.type != OT_LEAVESTATION &&
 				v->current_order.type != OT_GOTO_DEPOT) {
@@ -1447,10 +1450,12 @@ again:
 			//XXX The question is .. what to do? Actually we shouldn't be here
 			//but I guess we need to clear the slot
 			DEBUG(ms, 0) ("Multistop: Vehicle %d (index %d) arrived at wrong stop.", v->unitnumber, v->index);
-			if (v->tile != v->dest_tile)
+			if (v->tile != v->dest_tile) {
 				DEBUG(ms, 0) ("Multistop: -- Current tile 0x%x is not destination tile 0x%x. Route problem", v->tile, v->dest_tile);
-			if (v->dest_tile != v->u.road.slot->xy)
+			}
+			if (v->dest_tile != v->u.road.slot->xy) {
 				DEBUG(ms, 0) ("Multistop: -- Stop tile 0x%x is not destination tile 0x%x. Multistop desync", v->u.road.slot->xy, v->dest_tile);
+			}
 			if (v->current_order.type != OT_GOTO_STATION) {
 				DEBUG(ms, 0) ("Multistop: -- Current order type (%d) is not OT_GOTO_STATION.", v->current_order.type);
 			} else {
@@ -1589,15 +1594,18 @@ void OnNewDay_RoadVeh(Vehicle *v)
 	CheckOrders(v->index, OC_INIT);
 
 	//Current slot has expired
-	if ( (v->u.road.slot_age-- == 0) && (v->u.road.slot != NULL)) {
+	if (v->u.road.slot_age-- == 0 && v->u.road.slot != NULL) {
 		DEBUG(ms, 2) ("Multistop: Slot %d expired for vehicle %d (index %d) at stop 0x%x",
-				v->u.road.slotindex, v->unitnumber, v->index, v->u.road.slot->xy);
+			v->u.road.slotindex, v->unitnumber, v->index, v->u.road.slot->xy
+		);
 		ClearSlot(v);
 	}
 
 	/* update destination */
-	if (v->current_order.type == OT_GOTO_STATION && v->u.road.slot == NULL && !(v->vehstatus & VS_CRASHED) &&
-			!( (v->vehstatus & (VS_STOPPED | VS_WAIT_FOR_SLOT)) == VS_STOPPED)) {
+	if (v->current_order.type == OT_GOTO_STATION &&
+			v->u.road.slot == NULL &&
+			!(v->vehstatus & VS_CRASHED) &&
+			!((v->vehstatus & (VS_STOPPED | VS_WAIT_FOR_SLOT)) == VS_STOPPED)) {
 		RoadStopType type = (v->cargo_type == CT_PASSENGERS) ? RS_BUS : RS_TRUCK;
 		RoadStop *rs;
 		uint mindist = 0xFFFFFFFF;
