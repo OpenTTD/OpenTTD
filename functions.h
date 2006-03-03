@@ -263,6 +263,5 @@ int ttd_main(int argc, char* argv[]);
 
 void DeterminePaths(void);
 
-void bubblesort(void *base, size_t nmemb, size_t size, int(*compar)(const void *, const void *));
 void CSleep(int milliseconds);
 #endif /* FUNCTIONS_H */
