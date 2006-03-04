@@ -861,7 +861,7 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 {
 	byte n;
 
-	for (n = _oldest_news; _latest_news != INVALID_NEWS && n != _latest_news + 1; n = (n + 1) % MAX_NEWS) {
+	for (n = _oldest_news; _latest_news != INVALID_NEWS && n != (_latest_news + 1) % MAX_NEWS; n = (n + 1) % MAX_NEWS) {
 		const NewsItem* ni = &_news_items[n];
 
 		if (ni->flags & NF_VEHICLE &&
@@ -883,9 +883,10 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 			_total_news--;
 
 			w = FindWindowById(WC_MESSAGE_HISTORY, 0);
-			if (w == NULL) return;
-			SetWindowDirty(w);
-			w->vscroll.count = _total_news;
+			if (w != NULL) {
+				SetWindowDirty(w);
+				w->vscroll.count = _total_news;
+			}
 		}
 	}
 }
