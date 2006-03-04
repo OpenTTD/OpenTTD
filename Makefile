@@ -279,11 +279,6 @@ ifndef WINDRES
 WINDRES = windres
 endif
 
-# Check if we have a new target
-ifdef CC_TARGET
-CC = $(CC_TARGET)
-endif
-
 # Check if CC_HOST is defined. If not, it is CC
 ifndef CC_HOST
 CC_HOST = $(CC)
@@ -292,6 +287,10 @@ ifndef CFLAGS_HOST
 CFLAGS_HOST = $(BASECFLAGS)
 endif
 
+# Check if we have a new target
+ifdef CC_TARGET
+CC = $(CC_TARGET)
+endif
 
 CC_VERSION = $(shell $(CC) -dumpversion | cut -c 1,3)
 
