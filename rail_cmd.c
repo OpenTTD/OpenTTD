@@ -130,7 +130,7 @@ static bool CheckTrackCombination(TileIndex tile, TrackBits to_build, uint flags
 }
 
 
-static const byte _valid_tileh_slopes[4][15] = {
+static const byte _valid_tileh_slopes[][15] = {
 
 // set of normal ones
 {
@@ -197,15 +197,6 @@ static const byte _valid_tileh_slopes[4][15] = {
 	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
 	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
 	},
-
-	// valid railway crossings on slopes
-	{
-		1, 0, 0, // 0, 1, 2
-		0, 0, 1, // 3, 4, 5
-		0, 1, 0, // 6, 7, 8
-		0, 1, 1, // 9, 10, 11
-		0, 1, 1, // 12, 13, 14
-	}
 };
 
 uint GetRailFoundation(uint tileh, uint bits)
@@ -346,8 +337,13 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			break;
 
 		case MP_STREET:
-			if (!_valid_tileh_slopes[3][tileh]) // prevent certain slopes
+#define M(x) (1 << (x))
+			/* Level crossings may only be built on these slopes */
+			if (!HASBIT(M(14) | M(13) | M(11) | M(10) | M(7) | M(5) | M(0), tileh)) {
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+			}
+#undef M
+
 			if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
 			if (GetRoadType(tile) == ROAD_NORMAL && (
