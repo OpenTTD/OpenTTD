@@ -1176,6 +1176,10 @@ int32 CmdStartStopTrain(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (v->type != VEH_Train || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
+		if (v->vehstatus & VS_STOPPED && v->u.rail.track == 0x80) {
+			DeleteVehicleNews(p1, STR_8814_TRAIN_IS_WAITING_IN_DEPOT);
+		}
+
 		v->u.rail.days_since_order_progr = 0;
 		v->vehstatus ^= VS_STOPPED;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);

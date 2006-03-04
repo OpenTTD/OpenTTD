@@ -73,4 +73,11 @@ enum {
 	DNC_BANKRUPCY = 4,
 };
 
+/**
+ * Delete a news item type about a vehicle
+ * if the news item type is INVALID_STRING_ID all news about the vehicle get
+ * deleted
+ */
+void DeleteVehicleNews(VehicleID, StringID news);
+
 #endif /* NEWS_H */

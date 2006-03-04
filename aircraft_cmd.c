@@ -382,6 +382,10 @@ int32 CmdStartStopAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_A017_AIRCRAFT_IS_IN_FLIGHT);
 
 	if (flags & DC_EXEC) {
+		if (v->vehstatus & VS_STOPPED && IsAircraftHangarTile(v->tile)) {
+			DeleteVehicleNews(p1, STR_A014_AIRCRAFT_IS_WAITING_IN);
+		}
+
 		v->vehstatus ^= VS_STOPPED;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);

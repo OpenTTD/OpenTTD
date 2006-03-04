@@ -216,6 +216,10 @@ int32 CmdStartStopRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (v->type != VEH_Road || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
+		if (v->vehstatus & VS_STOPPED && v->u.road.state == 254) {
+			DeleteVehicleNews(p1, STR_9016_ROAD_VEHICLE_IS_WAITING);
+		}
+
 		v->vehstatus ^= VS_STOPPED;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);

@@ -536,6 +536,8 @@ void DeleteVehicle(Vehicle *v)
 	Vehicle *u;
 	bool has_artic_part = false;
 
+	DeleteVehicleNews(v->index, INVALID_STRING_ID);
+
 	do {
 		u = v->next;
 		has_artic_part = EngineHasArticPart(v);

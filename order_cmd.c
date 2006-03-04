@@ -143,6 +143,22 @@ void AssignOrder(Order *order, Order data)
 	order->station = data.station;
 }
 
+
+/**
+ * Delete all news items regarding defective orders about a vehicle
+ * This could kill still valid warnings (for example about void order when just
+ * another order gets added), but assume the player will notice the problems,
+ * when (s)he's changing the orders.
+ */
+static void DeleteOrderWarnings(const Vehicle* v)
+{
+	DeleteVehicleNews(v->index, STR_TRAIN_HAS_TOO_FEW_ORDERS  + (v->type - VEH_Train) * 4);
+	DeleteVehicleNews(v->index, STR_TRAIN_HAS_VOID_ORDER      + (v->type - VEH_Train) * 4);
+	DeleteVehicleNews(v->index, STR_TRAIN_HAS_DUPLICATE_ENTRY + (v->type - VEH_Train) * 4);
+	DeleteVehicleNews(v->index, STR_TRAIN_HAS_INVALID_ENTRY   + (v->type - VEH_Train) * 4);
+}
+
+
 /** Add an order to the orderlist of a vehicle.
  * @param x,y unused
  * @param p1 various bitstuffed elements
@@ -366,7 +382,9 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			}
 		}
 
-		for (u = GetFirstVehicleFromSharedList(v); u != NULL; u = u->next_shared) {
+		u = GetFirstVehicleFromSharedList(v);
+		DeleteOrderWarnings(u);
+		for (; u != NULL; u = u->next_shared) {
 			/* Increase amount of orders */
 			u->num_orders++;
 
@@ -451,7 +469,9 @@ int32 CmdDeleteOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		order->type = OT_NOTHING;
 		order->next = NULL;
 
-		for (u = GetFirstVehicleFromSharedList(v); u != NULL; u = u->next_shared) {
+		u = GetFirstVehicleFromSharedList(v);
+		DeleteOrderWarnings(u);
+		for (; u != NULL; u = u->next_shared) {
 			u->num_orders--;
 
 			if (sel_ord < u->cur_order_index)
@@ -575,7 +595,9 @@ int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		{
 			Vehicle* u;
 
-			for (u = GetFirstVehicleFromSharedList(v); u != NULL; u = u->next_shared) {
+			u = GetFirstVehicleFromSharedList(v);
+			DeleteOrderWarnings(u);
+			for (; u != NULL; u = u->next_shared) {
 				/* toggle u->current_order "Full load" flag if it changed */
 				if (sel_ord == u->cur_order_index &&
 						HASBIT(u->current_order.flags, OFB_FULL_LOAD) != HASBIT(order->flags, OFB_FULL_LOAD)) {
@@ -1005,6 +1027,8 @@ bool VehicleHasDepotOrders(const Vehicle *v)
 void DeleteVehicleOrders(Vehicle *v)
 {
 	Order *order, *cur;
+
+	DeleteOrderWarnings(v);
 
 	/* If we have a shared order-list, don't delete the list, but just
 	    remove our pointer */

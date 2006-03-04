@@ -865,3 +865,37 @@ void ShowMessageOptions(void)
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
 	AllocateWindowDesc(&_message_options_desc);
 }
+
+
+void DeleteVehicleNews(VehicleID vid, StringID news)
+{
+	byte n;
+
+	for (n = _oldest_news; _latest_news != INVALID_NEWS && n != _latest_news + 1; n = (n + 1) % MAX_NEWS) {
+		const NewsItem* ni = &_news_items[n];
+
+		if (ni->flags & NF_VEHICLE &&
+				ni->data_a == vid &&
+				(news == INVALID_STRING_ID || ni->string_id == news)) {
+			Window* w;
+			byte i;
+
+			if (_forced_news  == n) MoveToNexItem();
+			if (_current_news == n) MoveToNexItem();
+
+			// If this is the last news item, invalidate _latest_news
+			if (_latest_news == _oldest_news) _latest_news = INVALID_NEWS;
+
+			for (i = n; i != _oldest_news; i = (i + MAX_NEWS - 1) % MAX_NEWS) {
+				_news_items[i] = _news_items[(i + MAX_NEWS - 1) % MAX_NEWS];
+			}
+			_oldest_news = (_oldest_news + 1) % MAX_NEWS;
+			_total_news--;
+
+			w = FindWindowById(WC_MESSAGE_HISTORY, 0);
+			if (w == NULL) return;
+			SetWindowDirty(w);
+			w->vscroll.count = _total_news;
+		}
+	}
+}

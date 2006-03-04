@@ -951,6 +951,10 @@ int32 CmdStartStopShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (v->type != VEH_Ship || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
+		if (v->vehstatus & VS_STOPPED && v->u.ship.state == 0x80) {
+			DeleteVehicleNews(p1, STR_981C_SHIP_IS_WAITING_IN_DEPOT);
+		}
+
 		v->vehstatus ^= VS_STOPPED;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
