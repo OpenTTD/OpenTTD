@@ -562,7 +562,7 @@ void OnNewDay_Aircraft(Vehicle *v)
 
 	if ((++v->day_counter & 7) == 0) DecreaseVehicleValue(v);
 
-	CheckOrders(v->index, OC_INIT);
+	CheckOrders(v);
 
 	CheckVehicleBreakdown(v);
 	AgeVehicle(v);
@@ -1218,12 +1218,6 @@ static void AircraftEntersTerminal(Vehicle *v)
 	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 }
 
-static bool ValidateAircraftInHangar(uint data_a, uint data_b)
-{
-	const Vehicle* v = GetVehicle(data_a);
-
-	return (IsAircraftHangarTile(v->tile) && (v->vehstatus & VS_STOPPED));
-}
 
 static void AircraftEnterHangar(Vehicle *v)
 {
@@ -1249,12 +1243,12 @@ static void AircraftEnterHangar(Vehicle *v)
 
 			if (v->owner == _local_player) {
 				SetDParam(0, v->unitnumber);
-				AddValidatedNewsItem(
+				AddNewsItem(
 					STR_A014_AIRCRAFT_IS_WAITING_IN,
 					NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),
 					v->index,
-					0,
-					ValidateAircraftInHangar);
+					0
+				);
 			}
 		}
 	}

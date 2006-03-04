@@ -133,7 +133,7 @@ void OnNewDay_Ship(Vehicle *v)
 	AgeVehicle(v);
 	CheckIfShipNeedsService(v);
 
-	CheckOrders(v->index, OC_INIT);
+	CheckOrders(v);
 
 	if (v->vehstatus & VS_STOPPED) return;
 

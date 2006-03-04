@@ -1595,7 +1595,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 	AgeVehicle(v);
 	CheckIfRoadVehNeedsService(v);
 
-	CheckOrders(v->index, OC_INIT);
+	CheckOrders(v);
 
 	//Current slot has expired
 	if (v->u.road.slot_age-- == 0 && v->u.road.slot != NULL) {

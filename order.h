@@ -70,11 +70,6 @@ enum {
 	CO_UNSHARE = 2
 };
 
-/* Modes for the order checker */
-enum {
-	OC_INIT     = 0, //the order checker can initialize a news message
-	OC_VALIDATE = 1, //the order checker validates a news message
-};
 
 /* If you change this, keep in mind that it is saved on 3 places:
     - Load_ORDR, all the global orders
@@ -172,7 +167,7 @@ void RestoreVehicleOrders(const Vehicle* v, const BackuppedOrders* order);
 void DeleteDestinationFromVehicleOrder(Order dest);
 void InvalidateVehicleOrder(const Vehicle *v);
 bool VehicleHasDepotOrders(const Vehicle *v);
-bool CheckOrders(uint data_a, uint data_b);
+void CheckOrders(const Vehicle*);
 void DeleteVehicleOrders(Vehicle *v);
 bool IsOrderListShared(const Vehicle *v);
 void AssignOrder(Order *order, Order data);

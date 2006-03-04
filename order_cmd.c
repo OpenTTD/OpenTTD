@@ -859,22 +859,20 @@ int32 CmdRestoreOrderIndex(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  * Check the orders of a vehicle, to see if there are invalid orders and stuff
  *
  */
-bool CheckOrders(uint data_a, uint data_b)
+void CheckOrders(const Vehicle* v)
 {
-	const Vehicle* v = GetVehicle(data_a);
-
 	/* Does the user wants us to check things? */
-	if (_patches.order_review_system == 0) return false;
+	if (_patches.order_review_system == 0) return;
 
 	/* Do nothing for crashed vehicles */
-	if (v->vehstatus & VS_CRASHED) return false;
+	if (v->vehstatus & VS_CRASHED) return;
 
 	/* Do nothing for stopped vehicles if setting is '1' */
 	if (_patches.order_review_system == 1 && v->vehstatus & VS_STOPPED)
-		return false;
+		return;
 
 	/* do nothing we we're not the first vehicle in a share-chain */
-	if (v->next_shared != NULL) return false;
+	if (v->next_shared != NULL) return;
 
 	/* Only check every 20 days, so that we don't flood the message log */
 	if (v->owner == _local_player && v->day_counter % 20 == 0) {
@@ -885,12 +883,6 @@ bool CheckOrders(uint data_a, uint data_b)
 
 		/* Check the order list */
 		n_st = 0;
-
-		/*if (data_b == OC_INIT) {
-			DEBUG(misc, 3) ("CheckOrder called in mode 0 (initiation mode) for %d", v->index);
-		} else {
-			DEBUG(misc, 3) ("CheckOrder called in mode 1 (validation mode) for %d", v->index);
-		}*/
 
 		FOR_VEHICLE_ORDERS(v, order) {
 			/* Dummy order? */
@@ -920,35 +912,19 @@ bool CheckOrders(uint data_a, uint data_b)
 		if (n_st < 2 && problem_type == -1) problem_type = 0;
 
 		/* We don't have a problem */
-		if (problem_type < 0) {
-			/*if (data_b == OC_INIT) {
-				DEBUG(misc, 3) ("CheckOrder mode 0: no problems found for %d", v->index);
-			} else {
-				DEBUG(misc, 3) ("CheckOrder mode 1: news item surpressed for %d", v->index);
-			}*/
-			return false;
-		}
-
-		/* we have a problem, are we're just in the validation process
-		   so don't display an error message */
-		if (data_b == OC_VALIDATE) {
-			/*DEBUG(misc, 3) ("CheckOrder mode 1: new item validated for %d", v->index);*/
-			return true;
-		}
+		if (problem_type < 0) return;
 
 		message = STR_TRAIN_HAS_TOO_FEW_ORDERS + ((v->type - VEH_Train) << 2) + problem_type;
-		/*DEBUG(misc, 3) ("Checkorder mode 0: Triggered News Item for %d", v->index);*/
+		//DEBUG(misc, 3) ("Triggered News Item for %d", v->index);
 
 		SetDParam(0, v->unitnumber);
-		AddValidatedNewsItem(
+		AddNewsItem(
 			message,
 			NEWS_FLAGS(NM_SMALL, NF_VIEWPORT | NF_VEHICLE, NT_ADVICE, 0),
 			v->index,
-			OC_VALIDATE,	//next time, just validate the orders
-			CheckOrders);
+			0
+		);
 	}
-
-	return true;
 }
 
 /**
