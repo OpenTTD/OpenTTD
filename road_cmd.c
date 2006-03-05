@@ -18,26 +18,17 @@
 #include "sound.h"
 #include "depot.h"
 
-/* When true, GetTrackStatus for roads will treat roads under reconstruction
- * as normal roads instead of impassable. This is used when detecting whether
- * a road can be removed. This is of course ugly, but I don't know a better
- * solution just like that... */
-static bool _road_special_gettrackstatus;
-
 void RoadVehEnterDepot(Vehicle *v);
 
 
-static bool CheckAllowRemoveRoad(TileIndex tile, uint br, bool *edge_road)
+static bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, bool* edge_road)
 {
-	int blocks;
+	RoadBits present;
+	RoadBits n;
 	byte owner;
-	uint n;
 	*edge_road = true;
 
 	if (_game_mode == GM_EDITOR) return true;
-
-	blocks = GetRoadBitsByTile(tile);
-	if (blocks == 0) return true;
 
 	// Only do the special processing for actual players.
 	if (_current_player >= MAX_PLAYERS) return true;
@@ -58,14 +49,15 @@ static bool CheckAllowRemoveRoad(TileIndex tile, uint br, bool *edge_road)
 
 	// Get a bitmask of which neighbouring roads has a tile
 	n = 0;
-	if (blocks & 0x25 && GetAnyRoadBits(TILE_ADDXY(tile,-1, 0)) & ROAD_SW) n |= 8;
-	if (blocks & 0x2A && GetAnyRoadBits(TILE_ADDXY(tile, 0, 1)) & ROAD_NW) n |= 4;
-	if (blocks & 0x19 && GetAnyRoadBits(TILE_ADDXY(tile, 1, 0)) & ROAD_NE) n |= 2;
-	if (blocks & 0x16 && GetAnyRoadBits(TILE_ADDXY(tile, 0,-1)) & ROAD_SE) n |= 1;
+	present = GetAnyRoadBits(tile);
+	if (present & ROAD_NE && GetAnyRoadBits(TILE_ADDXY(tile,-1, 0)) & ROAD_SW) n |= ROAD_NE;
+	if (present & ROAD_SE && GetAnyRoadBits(TILE_ADDXY(tile, 0, 1)) & ROAD_NW) n |= ROAD_SE;
+	if (present & ROAD_SW && GetAnyRoadBits(TILE_ADDXY(tile, 1, 0)) & ROAD_NE) n |= ROAD_SW;
+	if (present & ROAD_NW && GetAnyRoadBits(TILE_ADDXY(tile, 0,-1)) & ROAD_SE) n |= ROAD_NW;
 
 	// If 0 or 1 bits are set in n, or if no bits that match the bits to remove,
 	// then allow it
-	if ((n & (n-1)) != 0 && (n & br) != 0) {
+	if ((n & (n - 1)) != 0 && (n & remove) != 0) {
 		Town *t;
 		*edge_road = false;
 		// you can remove all kind of roads with extra dynamite
@@ -135,13 +127,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	// allow deleting road under bridge
 	if (ti.type != MP_TUNNELBRIDGE && !EnsureNoVehicle(tile)) return CMD_ERROR;
 
-	{
-		bool b;
-		_road_special_gettrackstatus = true;
-		b = CheckAllowRemoveRoad(tile, pieces, &edge_road);
-		_road_special_gettrackstatus = false;
-		if (!b) return CMD_ERROR;
-	}
+	if (!CheckAllowRemoveRoad(tile, pieces, &edge_road)) return CMD_ERROR;
 
 	switch (ti.type) {
 		case MP_TUNNELBRIDGE:
@@ -1058,7 +1044,7 @@ static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode)
 		case TRANSPORT_ROAD:
 			switch (GetRoadType(tile)) {
 				case ROAD_NORMAL:
-					return !_road_special_gettrackstatus && GB(_m[tile].m4, 4, 3) >= 6 ?
+					return GB(_m[tile].m4, 4, 3) >= 6 ?
 						0 : _road_trackbits[GetRoadBits(tile)] * 0x101;
 
 				case ROAD_CROSSING: {
