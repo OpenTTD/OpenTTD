@@ -4,7 +4,7 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
-#include "road.h"
+#include "road_map.h"
 #include "table/strings.h"
 #include "map.h"
 #include "tile.h"

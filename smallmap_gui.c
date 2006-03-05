@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "clear.h"
+#include "clear_map.h"
 #include "functions.h"
 #include "spritecache.h"
 #include "table/strings.h"
@@ -10,7 +10,7 @@
 #include "map.h"
 #include "tile.h"
 #include "gui.h"
-#include "tree.h"
+#include "tree_map.h"
 #include "window.h"
 #include "gfx.h"
 #include "viewport.h"

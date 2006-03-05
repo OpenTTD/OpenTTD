@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "clear.h"
+#include "clear_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "functions.h"

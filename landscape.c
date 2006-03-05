@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "clear.h"
+#include "clear_map.h"
 #include "functions.h"
 #include "map.h"
 #include "player.h"
@@ -14,7 +14,7 @@
 #include "command.h"
 #include "vehicle.h"
 #include "variables.h"
-#include "void.h"
+#include "void_map.h"
 #include "water_map.h"
 
 extern const TileTypeProcs

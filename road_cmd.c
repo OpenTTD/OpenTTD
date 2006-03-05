@@ -3,7 +3,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "rail_map.h"
-#include "road.h"
+#include "road_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "functions.h"

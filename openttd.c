@@ -9,7 +9,7 @@
 #include "strings.h"
 #include "map.h"
 #include "tile.h"
-#include "void.h"
+#include "void_map.h"
 
 #define VARDEF
 #include "openttd.h"
