@@ -537,7 +537,7 @@ static int ChooseShipTrack(Vehicle *v, TileIndex tile, int enterdir, uint tracks
 	if (_patches.new_pathfinding_all) {
 		NPFFindStationOrTileData fstd;
 		NPFFoundTargetData ftd;
-		TileIndex src_tile = TILE_ADD(tile, TileOffsByDir(ReverseDiagdir(enterdir)));
+		TileIndex src_tile = TILE_ADD(tile, TileOffsByDir(ReverseDiagDir(enterdir)));
 		byte trackdir = GetVehicleTrackdir(v);
 		assert (trackdir != 0xFF); /* Check that we are not in a depot */
 
@@ -564,9 +564,9 @@ static int ChooseShipTrack(Vehicle *v, TileIndex tile, int enterdir, uint tracks
 		tot_dist = (uint)-1;
 
 		/* Let's find out how far it would be if we would reverse first */
-		b = GetTileShipTrackStatus(tile2) & _ship_sometracks[ReverseDiagdir(enterdir)] & v->u.ship.state;
+		b = GetTileShipTrackStatus(tile2) & _ship_sometracks[ReverseDiagDir(enterdir)] & v->u.ship.state;
 		if (b != 0) {
-			dist = FindShipTrack(v, tile2, ReverseDiagdir(enterdir), b, tile, &track);
+			dist = FindShipTrack(v, tile2, ReverseDiagDir(enterdir), b, tile, &track);
 			if (dist != (uint)-1)
 				tot_dist = dist + 1;
 		}

@@ -162,11 +162,11 @@ static uint NPFTunnelCost(AyStarNode* current)
 {
 	DiagDirection exitdir = TrackdirToExitdir((Trackdir)current->direction);
 	TileIndex tile = current->tile;
-	if ((DiagDirection)GB(_m[tile].m5, 0, 2) == ReverseDiagdir(exitdir)) {
+	if ((DiagDirection)GB(_m[tile].m5, 0, 2) == ReverseDiagDir(exitdir)) {
 		/* We just popped out if this tunnel, since were
 		 * facing the tunnel exit */
 		FindLengthOfTunnelResult flotr;
-		flotr = FindLengthOfTunnel(tile, ReverseDiagdir(exitdir));
+		flotr = FindLengthOfTunnel(tile, ReverseDiagDir(exitdir));
 		return flotr.length * NPF_TILE_LENGTH;
 		//TODO: Penalty for tunnels?
 	} else {
@@ -543,7 +543,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 			 * otherwise (only for trains, since only with trains you can
 			 * (sometimes) reach tiles after reversing that you couldn't reach
 			 * without reversing. */
-			if (src_trackdir == DiagdirToDiagTrackdir(ReverseDiagdir(exitdir)) && type == TRANSPORT_RAIL) {
+			if (src_trackdir == DiagdirToDiagTrackdir(ReverseDiagDir(exitdir)) && type == TRANSPORT_RAIL) {
 				/* We are headed inwards. We can only reverse here, so we'll not
 				 * consider this direction, but jump ahead to the reverse direction.
 				 * It would be nicer to return one neighbour here (the reverse
@@ -596,7 +596,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 		 * orientation. They are only "inwards", since we are reaching this tile
 		 * from some other tile. This prevents vehicles driving into depots from
 		 * the back */
-		ts = TrackdirToTrackdirBits(DiagdirToDiagTrackdir(ReverseDiagdir(exitdir)));
+		ts = TrackdirToTrackdirBits(DiagdirToDiagTrackdir(ReverseDiagDir(exitdir)));
 	} else {
 		ts = GetTileTrackStatus(dst_tile, type);
 	}

@@ -5,6 +5,7 @@
 #ifndef RAIL_H
 #define RAIL_H
 
+#include "direction.h"
 #include "tile.h"
 
 /*
@@ -464,21 +465,6 @@ static inline TrackdirBits TrackdirCrossesTrackdirs(Trackdir trackdir) {
 	return _track_crosses_trackdirs[TrackdirToTrack(trackdir)];
 }
 
-/**
- * Maps a (4-way) direction to the reverse.
- */
-static inline DiagDirection ReverseDiagdir(DiagDirection diagdir) {
-	extern const DiagDirection _reverse_diagdir[DIAGDIR_END];
-	return _reverse_diagdir[diagdir];
-}
-
-/**
- * Maps a (8-way) direction to a (4-way) DiagDirection
- */
-static inline DiagDirection DirToDiagdir(Direction dir) {
-	assert(dir < DIR_END);
-	return (DiagDirection)(dir >> 1);
-}
 
 /* Checks if a given Track is diagonal */
 static inline bool IsDiagonalTrack(Track track) { return (track == TRACK_X) || (track == TRACK_Y); }
