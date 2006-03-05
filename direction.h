@@ -30,7 +30,7 @@ typedef enum DiagDirection {
 
 static inline DiagDirection ReverseDiagDir(DiagDirection d)
 {
-	return 2 ^ d;
+	return (DiagDirection)(2 ^ d);
 }
 
 
