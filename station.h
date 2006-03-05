@@ -244,7 +244,7 @@ static inline bool IsBuoyTile(TileIndex tile)
 
 /* Get's the direction the station exit points towards. Ie, returns 0 for a
  * station with the exit NE. */
-static inline byte GetRoadStationDir(TileIndex tile)
+static inline DiagDirection GetRoadStationDir(TileIndex tile)
 {
 	assert(IsRoadStationTile(tile));
 	return (_m[tile].m5 - 0x43) & 3;

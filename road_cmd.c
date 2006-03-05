@@ -27,38 +27,6 @@ static bool _road_special_gettrackstatus;
 void RoadVehEnterDepot(Vehicle *v);
 
 
-static bool HasTileRoadAt(TileIndex tile, int i)
-{
-	RoadBits b;
-
-	switch (GetTileType(tile)) {
-		case MP_STREET:
-			switch (GetRoadType(tile)) {
-				case ROAD_NORMAL:   b = GetRoadBits(tile); break;
-				case ROAD_CROSSING: b = GetCrossingRoadBits(tile); break;
-				case ROAD_DEPOT:    return (~_m[tile].m5 & 3) == i;
-				default:            return false;
-			}
-			break;
-
-		case MP_STATION:
-			return
-				IS_BYTE_INSIDE(_m[tile].m5, 0x43, 0x43 + 8) &&
-				(~(_m[tile].m5 - 0x43) & 3) == i;
-
-		case MP_TUNNELBRIDGE:
-			// bail out, if not a bridge middle part with road underneath
-			if ((_m[tile].m5 & 0xF8) != 0xE8) return false;
-			// road direction perpendicular to bridge
-			b = (_m[tile].m5 & 0x01) ? ROAD_X : ROAD_Y;
-
-		default:
-			return false;
-	}
-
-	return HASBIT(b, i);
-}
-
 static bool CheckAllowRemoveRoad(TileIndex tile, uint br, bool *edge_road)
 {
 	int blocks;
@@ -90,10 +58,10 @@ static bool CheckAllowRemoveRoad(TileIndex tile, uint br, bool *edge_road)
 
 	// Get a bitmask of which neighbouring roads has a tile
 	n = 0;
-	if (blocks&0x25 && HasTileRoadAt(TILE_ADDXY(tile,-1, 0), 1)) n |= 8;
-	if (blocks&0x2A && HasTileRoadAt(TILE_ADDXY(tile, 0, 1), 0)) n |= 4;
-	if (blocks&0x19 && HasTileRoadAt(TILE_ADDXY(tile, 1, 0), 3)) n |= 2;
-	if (blocks&0x16 && HasTileRoadAt(TILE_ADDXY(tile, 0,-1), 2)) n |= 1;
+	if (blocks & 0x25 && GetAnyRoadBits(TILE_ADDXY(tile,-1, 0)) & ROAD_SW) n |= 8;
+	if (blocks & 0x2A && GetAnyRoadBits(TILE_ADDXY(tile, 0, 1)) & ROAD_NW) n |= 4;
+	if (blocks & 0x19 && GetAnyRoadBits(TILE_ADDXY(tile, 1, 0)) & ROAD_NE) n |= 2;
+	if (blocks & 0x16 && GetAnyRoadBits(TILE_ADDXY(tile, 0,-1)) & ROAD_SE) n |= 1;
 
 	// If 0 or 1 bits are set in n, or if no bits that match the bits to remove,
 	// then allow it

@@ -44,6 +44,12 @@ typedef enum DiagonalDirections {
 	INVALID_DIAGDIR = 0xFF,
 } DiagDirection;
 
+static inline DiagDirection ReverseDiagDir(DiagDirection d)
+{
+	return 2 ^ d;
+}
+
+
 /* the 2 axis */
 typedef enum Axis {
 	AXIS_X = 0,

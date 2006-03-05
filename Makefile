@@ -672,6 +672,7 @@ SRCS += rail_gui.c
 SRCS += rev.c
 SRCS += road_cmd.c
 SRCS += road_gui.c
+SRCS += road_map.c
 SRCS += roadveh_cmd.c
 SRCS += roadveh_gui.c
 SRCS += saveload.c

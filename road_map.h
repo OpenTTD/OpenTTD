@@ -22,6 +22,12 @@ static inline RoadBits ComplementRoadBits(RoadBits r)
 	return ROAD_ALL ^ r;
 }
 
+static inline RoadBits DiagDirToRoadBits(DiagDirection d)
+{
+	return 1 << (3 ^ d);
+}
+
+
 static inline RoadBits GetRoadBits(TileIndex tile)
 {
 	return GB(_m[tile].m5, 0, 4);
@@ -48,6 +54,17 @@ static inline RoadType GetRoadType(TileIndex tile)
 {
 	return GB(_m[tile].m5, 4, 4);
 }
+
+
+/**
+ * Returns the RoadBits on an arbitrary tile
+ * Special behavior:
+ * - road depots: entrance is treated as road piece
+ * - road tunnels: entrance is treated as road piece
+ * - bridge ramps: treated as straight road
+ * - bridge middle parts: bridge itself is ignored
+ */
+RoadBits GetAnyRoadBits(TileIndex);
 
 
 static inline void MakeRoadNormal(TileIndex t, Owner owner, RoadBits bits, uint town)
