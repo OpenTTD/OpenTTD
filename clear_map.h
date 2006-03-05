@@ -1,7 +1,7 @@
 /* $Id$ */
 
-#ifndef CLEAR_H
-#define CLEAR_H
+#ifndef CLEAR_MAP_H
+#define CLEAR_MAP_H
 
 #include "macros.h"
 #include "tile.h"

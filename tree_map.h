@@ -1,7 +1,7 @@
 /* $Id$ */
 
-#ifndef TREE_H
-#define TREE_H
+#ifndef TREE_MAP_H
+#define TREE_MAP_H
 
 #include "macros.h"
 

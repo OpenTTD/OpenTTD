@@ -1,7 +1,7 @@
 /* $Id$ */
 
-#ifndef ROAD_H
-#define ROAD_H
+#ifndef ROAD_MAP_H
+#define ROAD_MAP_H
 
 #include "macros.h"
 #include "rail.h"
