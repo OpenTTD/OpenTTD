@@ -1755,13 +1755,13 @@ make_red:
 }
 
 
-bool UpdateSignalsOnSegment(TileIndex tile, byte direction)
+bool UpdateSignalsOnSegment(TileIndex tile, Direction dir)
 {
 	SetSignalsData ssd;
 	int result = -1;
+	DiagDirection direction = DirToDiagDir(dir);
 
 	ssd.cur_stack = 0;
-	direction >>= 1;
 
 	for (;;) {
 		// go through one segment and update all signals pointing into that segment.

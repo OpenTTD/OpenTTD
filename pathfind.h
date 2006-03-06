@@ -3,6 +3,8 @@
 #ifndef PATHFIND_H
 #define PATHFIND_H
 
+#include "direction.h"
+
 //#define PF_BENCH // perform simple benchmarks on the train pathfinder (not
 //supported on all archs)
 
@@ -58,7 +60,7 @@ struct TrackPathFinder {
 	TrackPathFinderLink links[0x400]; /* hopefully, this is enough. */
 };
 
-void FollowTrack(TileIndex tile, uint16 flags, byte direction, TPFEnumProc *enum_proc, TPFAfterProc *after_proc, void *data);
+void FollowTrack(TileIndex tile, uint16 flags, DiagDirection direction, TPFEnumProc* enum_proc, TPFAfterProc* after_proc, void* data);
 
 typedef struct {
 	TileIndex tile;
@@ -66,6 +68,6 @@ typedef struct {
 } FindLengthOfTunnelResult;
 FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, uint direction);
 
-void NewTrainPathfind(TileIndex tile, TileIndex dest, byte direction, NTPEnumProc *enum_proc, void *data);
+void NewTrainPathfind(TileIndex tile, TileIndex dest, DiagDirection direction, NTPEnumProc* enum_proc, void* data);
 
 #endif /* PATHFIND_H */

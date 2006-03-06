@@ -784,7 +784,7 @@ static void AiNew_State_FindDepot(Player *p)
 	// But first we walk through the route see if we can find a depot that is ours
 	//  this keeps things nice ;)
 	int g, i, r;
-	uint j;
+	DiagDirection j;
 	TileIndex tile;
 	assert(p->ainew.state == AI_STATE_FIND_DEPOT);
 
@@ -793,20 +793,16 @@ static void AiNew_State_FindDepot(Player *p)
 	for (i=2;i<p->ainew.path_info.route_length-2;i++) {
 		tile = p->ainew.path_info.route[i];
 		for (j = 0; j < 4; j++) {
-			if (IsTileType(tile + TileOffsByDir(j), MP_STREET)) {
-				if (GetRoadType(tile + TileOffsByDir(j)) == ROAD_DEPOT) {
-					// We found a depot, is it ours? (TELL ME!!!)
-					if (IsTileOwner(tile + TileOffsByDir(j), _current_player)) {
-						// Now, is it pointing to the right direction.........
-						if (GB(_m[tile + TileOffsByDir(j)].m5, 0, 2) == (j ^ 2)) {
-							// Yeah!!!
-							p->ainew.depot_tile = tile + TileOffsByDir(j);
-							p->ainew.depot_direction = j ^ 2; // Reverse direction
-							p->ainew.state = AI_STATE_VERIFY_ROUTE;
-							return;
-						}
-					}
-				}
+			TileIndex t = tile + TileOffsByDir(j);
+
+			if (IsTileType(t, MP_STREET) &&
+					GetRoadType(t) == ROAD_DEPOT &&
+					IsTileOwner(t, _current_player) &&
+					GB(_m[t].m5, 0, 2) == ReverseDiagDir(j)) { // right direction?
+				p->ainew.depot_tile = t;
+				p->ainew.depot_direction = ReverseDiagDir(j);
+				p->ainew.state = AI_STATE_VERIFY_ROUTE;
+				return;
 			}
 		}
 	}
@@ -828,27 +824,29 @@ static void AiNew_State_FindDepot(Player *p)
 		tile = p->ainew.path_info.route[i];
 
 		for (j = 0; j < 4; j++) {
+			TileIndex t = tile + TileOffsByDir(j);
+
 			// It may not be placed on the road/rail itself
 			// And because it is not build yet, we can't see it on the tile..
 			// So check the surrounding tiles :)
-			if (tile + TileOffsByDir(j) == p->ainew.path_info.route[i-1] ||
-					tile + TileOffsByDir(j) == p->ainew.path_info.route[i+1])
+			if (t == p->ainew.path_info.route[i - 1] ||
+					t == p->ainew.path_info.route[i + 1]) {
 				continue;
+			}
 			// Not around a bridge?
 			if (p->ainew.path_info.route_extra[i] != 0) continue;
 			if (IsTileType(tile, MP_TUNNELBRIDGE)) continue;
 			// Is the terrain clear?
-			if (IsTileType(tile + TileOffsByDir(j), MP_CLEAR) ||
-					IsTileType(tile + TileOffsByDir(j), MP_TREES)) {
+			if (IsTileType(t, MP_CLEAR) || IsTileType(t, MP_TREES)) {
 				// If the current tile is on a slope (tileh != 0) then we do not allow this
 				if (GetTileSlope(tile, NULL) != 0) continue;
 				// Check if everything went okay..
-				r = AiNew_Build_Depot(p, tile + TileOffsByDir(j), j ^ 2, 0);
+				r = AiNew_Build_Depot(p, t, ReverseDiagDir(j), 0);
 				if (CmdFailed(r)) continue;
 				// Found a spot!
 				p->ainew.new_cost += r;
-				p->ainew.depot_tile = tile + TileOffsByDir(j);
-				p->ainew.depot_direction = j ^ 2; // Reverse direction
+				p->ainew.depot_tile = t;
+				p->ainew.depot_direction = ReverseDiagDir(j); // Reverse direction
 				p->ainew.state = AI_STATE_VERIFY_ROUTE;
 				return;
 			}

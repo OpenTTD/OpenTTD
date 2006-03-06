@@ -3636,7 +3636,7 @@ pos_3:
 		if (IsLevelCrossing(tile)) goto is_rail_crossing;
 
 		if (GetRoadType(tile) == ROAD_DEPOT) {
-			uint dir;
+			DiagDirection dir;
 
 			// Check if there are any stations around.
 			if (IsTileType(tile + TileDiffXY(-1, 0), MP_STATION) &&
@@ -3664,7 +3664,7 @@ pos_3:
 			DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 			DoCommandByTile(
 				TILE_MASK(tile + TileOffsByDir(dir)),
-				8 >> (dir ^ 2),
+				DiagDirToRoadBits(ReverseDiagDir(dir)),
 				0,
 				DC_EXEC,
 				CMD_REMOVE_ROAD);

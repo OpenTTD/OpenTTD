@@ -284,7 +284,7 @@ void VehicleInTheWayErrMsg(const Vehicle* v);
 Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z);
 TileIndex GetVehicleOutOfTunnelTile(const Vehicle *v);
 
-bool UpdateSignalsOnSegment(TileIndex tile, byte direction);
+bool UpdateSignalsOnSegment(TileIndex tile, Direction direction);
 void SetSignalsOnBothDir(TileIndex tile, byte track);
 
 Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y);

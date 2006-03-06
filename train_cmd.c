@@ -522,7 +522,7 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 
 		if (flags & DC_EXEC) {
 			Vehicle *u, *w;
-			uint dir;
+			DiagDirection dir;
 
 			v = vl[0];
 			v->spritenum = rvi->image_index;
@@ -541,7 +541,7 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 
 			dir = GB(_m[tile].m5, 0, 2);
 
-			v->direction = dir * 2 + 1;
+			v->direction = DiagDirToDir(dir);
 			v->tile = tile;
 
 			x = TileX(tile) * TILE_SIZE | _vehicle_initial_x_fract[dir];
@@ -694,13 +694,13 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 		if (flags & DC_EXEC) {
-			uint dir;
+			DiagDirection dir;
 
 			v->unitnumber = unit_num;
 
 			dir = GB(_m[tile].m5, 0, 2);
 
-			v->direction = dir * 2 + 1;
+			v->direction = DiagDirToDir(dir);
 			v->tile = tile;
 			v->owner = _current_player;
 			v->x_pos = (x |= _vehicle_initial_x_fract[dir]);
@@ -1354,7 +1354,7 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return cost;
 }
 
-static void UpdateTrainDeltaXY(Vehicle *v, int direction)
+static void UpdateTrainDeltaXY(Vehicle *v, Direction direction)
 {
 #define MKIT(a,b,c,d) ((a&0xFF)<<24) | ((b&0xFF)<<16) | ((c&0xFF)<<8) | ((d&0xFF)<<0)
 	static const uint32 _delta_xy_table[8] = {
@@ -1744,7 +1744,6 @@ static bool NtpCallbFindDepot(TileIndex tile, TrainFindDepotData *tfdd, int trac
 // crashed!
 static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 {
-	int i;
 	TrainFindDepotData tfdd;
 	TileIndex tile = v->tile;
 
@@ -1782,14 +1781,16 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 		}
 	} else {
 		// search in the forward direction first.
-		i = v->direction >> 1;
-		if (!(v->direction & 1) && v->u.rail.track != _state_dir_table[i]) i = (i - 1) & 3;
+		DiagDirection i;
+
+		i = DirToDiagDir(v->direction);
+		if (!(v->direction & 1) && v->u.rail.track != _state_dir_table[i]) i = (i + 3) & 3;
 		NewTrainPathfind(tile, 0, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
 		if (tfdd.best_length == (uint)-1){
 			tfdd.reverse = true;
 			// search in backwards direction
-			i = (v->direction^4) >> 1;
-			if (!(v->direction & 1) && v->u.rail.track != _state_dir_table[i]) i = (i - 1) & 3;
+			i = ReverseDiagDir(DirToDiagDir(v->direction));
+			if (!(v->direction & 1) && v->u.rail.track != _state_dir_table[i]) i = (i + 3) & 3;
 			NewTrainPathfind(tile, 0, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
 		}
 	}
@@ -2081,7 +2082,7 @@ static unsigned int _declspec(naked) _rdtsc(void)
 
 
 /* choose a track */
-static byte ChooseTrainTrack(Vehicle *v, TileIndex tile, int enterdir, TrackdirBits trackdirbits)
+static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirbits)
 {
 	TrainTrackFollowerData fd;
 	uint best_track;
@@ -2496,7 +2497,7 @@ static const byte _new_vehicle_direction_table[11] = {
 	2, 3, 4,
 };
 
-static int GetNewVehicleDirectionByTile(TileIndex new_tile, TileIndex old_tile)
+static Direction GetNewVehicleDirectionByTile(TileIndex new_tile, TileIndex old_tile)
 {
 	uint offs = (TileY(new_tile) - TileY(old_tile) + 1) * 4 +
 							TileX(new_tile) - TileX(old_tile) + 1;
@@ -2504,7 +2505,7 @@ static int GetNewVehicleDirectionByTile(TileIndex new_tile, TileIndex old_tile)
 	return _new_vehicle_direction_table[offs];
 }
 
-static int GetNewVehicleDirection(const Vehicle *v, int x, int y)
+static Direction GetNewVehicleDirection(const Vehicle *v, int x, int y)
 {
 	uint offs = (y - v->y_pos + 1) * 4 + (x - v->x_pos + 1);
 	assert(offs < 11);
@@ -2620,7 +2621,7 @@ static const byte _otherside_signal_directions[14] = {
 	5, 7, 7, 5, 7, 1,
 };
 
-static void TrainMovedChangeSignals(TileIndex tile, int dir)
+static void TrainMovedChangeSignals(TileIndex tile, DiagDirection dir)
 {
 	if (IsTileType(tile, MP_RAILWAY) && (_m[tile].m5 & 0xC0) == 0x40) {
 		uint i = FindFirstBit2x64((_m[tile].m5 + (_m[tile].m5 << 8)) & _reachable_tracks[dir]);
@@ -2751,7 +2752,10 @@ static void TrainController(Vehicle *v)
 	Vehicle *prev;
 	GetNewVehiclePosResult gp;
 	uint32 r, tracks,ts;
-	int i, enterdir, newdir, dir;
+	int i;
+	DiagDirection enterdir;
+	Direction dir;
+	Direction newdir;
 	byte chosen_dir;
 	byte chosen_track;
 	byte old_z;
@@ -2795,7 +2799,7 @@ static void TrainController(Vehicle *v)
 				byte bits;
 				/* Determine what direction we're entering the new tile from */
 				dir = GetNewVehicleDirectionByTile(gp.new_tile, gp.old_tile);
-				enterdir = dir >> 1;
+				enterdir = DirToDiagDir(dir);
 				assert(enterdir==0 || enterdir==1 || enterdir==2 || enterdir==3);
 
 				/* Get the status of the tracks in the new tile and mask
@@ -2871,7 +2875,7 @@ static void TrainController(Vehicle *v)
 				/* Signals can only change when the first
 				 * (above) or the last vehicle moves. */
 				if (v->next == NULL)
-					TrainMovedChangeSignals(gp.old_tile, (enterdir) ^ 2);
+					TrainMovedChangeSignals(gp.old_tile, ReverseDiagDir(enterdir));
 
 				if (prev == NULL) AffectSpeedByDirChange(v, chosen_dir);
 
@@ -3117,7 +3121,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 	tile = v->tile;
 
 	// tunnel entrance?
-	if (IsTunnelTile(tile) && GB(_m[tile].m5, 0, 2) * 2 + 1 == v->direction)
+	if (IsTunnelTile(tile) && DiagDirToDir(GB(_m[tile].m5, 0, 2)) == v->direction)
 		return true;
 
 	// depot?

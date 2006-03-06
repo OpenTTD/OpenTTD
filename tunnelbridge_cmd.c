@@ -427,7 +427,7 @@ not_valid_below:;
 	return cost;
 }
 
-static bool DoCheckTunnelInWay(TileIndex tile, uint z, uint dir)
+static bool DoCheckTunnelInWay(TileIndex tile, uint z, DiagDirection dir)
 {
 	TileIndexDiff delta = TileOffsByDir(dir);
 	uint height;
@@ -450,10 +450,11 @@ static bool DoCheckTunnelInWay(TileIndex tile, uint z, uint dir)
 
 bool CheckTunnelInWay(TileIndex tile, int z)
 {
-	return DoCheckTunnelInWay(tile,z,0) &&
-		DoCheckTunnelInWay(tile,z,1) &&
-		DoCheckTunnelInWay(tile,z,2) &&
-		DoCheckTunnelInWay(tile,z,3);
+	return
+		DoCheckTunnelInWay(tile, z, DIAGDIR_NE) &&
+		DoCheckTunnelInWay(tile, z, DIAGDIR_SE) &&
+		DoCheckTunnelInWay(tile, z, DIAGDIR_SW) &&
+		DoCheckTunnelInWay(tile, z, DIAGDIR_NW);
 }
 
 
@@ -535,7 +536,7 @@ int32 CmdBuildTunnel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		_m[end_tile].m3 = GB(p1, 0, 4); // rail type (if any)
 		_m[end_tile].m5 = (GB(p1, 9, 1) << 2) | (direction ^ 2); // transport type and entrance direction
 
-		if (GB(p1, 9, 1) == 0) UpdateSignalsOnSegment(start_tile, direction << 1);
+		if (GB(p1, 9, 1) == 0) UpdateSignalsOnSegment(start_tile, DiagDirToDir(direction));
 	}
 
 	return cost;
@@ -545,7 +546,7 @@ TileIndex CheckTunnelBusy(TileIndex tile, uint *length)
 {
 	uint z = GetTileZ(tile);
 	byte m5 = _m[tile].m5;
-	int delta = TileOffsByDir(m5 & 3);
+	TileIndexDiff delta = TileOffsByDir(m5 & 3);
 	uint len = 0;
 	TileIndex starttile = tile;
 	Vehicle *v;
@@ -1407,11 +1408,11 @@ static const byte _tunnel_fractcoord_7[4] = {0x52, 0x85, 0x96, 0x49};
 
 static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y)
 {
-	int dir, vdir;
-
 	if (GB(_m[tile].m5, 4, 4) == 0) {
 		int z = GetSlopeZ(x, y) - v->z_pos;
 		byte fc;
+		DiagDirection dir;
+		DiagDirection vdir;
 
 		if (myabs(z) > 2) return 8;
 
@@ -1419,7 +1420,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 			fc = (x & 0xF) + (y << 4);
 
 			dir = GB(_m[tile].m5, 0, 2);
-			vdir = v->direction >> 1;
+			vdir = DirToDiagDir(v->direction);
 
 			if (v->u.rail.track != 0x40 && dir == vdir) {
 				if (IsFrontEngine(v) && fc == _tunnel_fractcoord_1[dir]) {
@@ -1435,7 +1436,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 				}
 			}
 
-			if (dir == (vdir^2) && fc == _tunnel_fractcoord_3[dir] && z == 0) {
+			if (dir == ReverseDiagDir(vdir) && fc == _tunnel_fractcoord_3[dir] && z == 0) {
 				/* We're at the tunnel exit ?? */
 				v->tile = tile;
 				v->u.rail.track = _exit_tunnel_track[dir];
@@ -1446,7 +1447,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 		} else if (v->type == VEH_Road) {
 			fc = (x & 0xF) + (y << 4);
 			dir = GB(_m[tile].m5, 0, 2);
-			vdir = v->direction >> 1;
+			vdir = DirToDiagDir(v->direction);
 
 			// Enter tunnel?
 			if (v->u.road.state != 0xFF && dir == vdir) {
@@ -1461,7 +1462,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 				}
 			}
 
-			if (dir == (vdir ^ 2) && (
+			if (dir == ReverseDiagDir(vdir) && (
 						/* We're at the tunnel exit ?? */
 						fc == _tunnel_fractcoord_6[dir] ||
 						fc == _tunnel_fractcoord_7[dir]

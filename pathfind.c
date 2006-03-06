@@ -127,7 +127,7 @@ static const byte _otherdir_mask[4] = {
 	0x2A,
 };
 
-static void TPFMode2(TrackPathFinder *tpf, TileIndex tile, int direction)
+static void TPFMode2(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
 {
 	uint bits;
 	int i;
@@ -275,7 +275,7 @@ const byte _ffb_64[128] = {
 48,56,56,58,56,60,60,62,
 };
 
-static void TPFMode1(TrackPathFinder *tpf, TileIndex tile, uint direction)
+static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
 {
 	uint bits;
 	int i;
@@ -343,7 +343,7 @@ static void TPFMode1(TrackPathFinder *tpf, TileIndex tile, uint direction)
 		return;
 
 	tile = tile_org;
-	direction ^= 2;
+	direction = ReverseDiagDir(direction);
 
 	bits = GetTileTrackStatus(tile, tpf->tracktype);
 	bits |= (bits >> 8);
@@ -370,7 +370,7 @@ static void TPFMode1(TrackPathFinder *tpf, TileIndex tile, uint direction)
 	} while (bits != 0);
 }
 
-void FollowTrack(TileIndex tile, uint16 flags, byte direction, TPFEnumProc *enum_proc, TPFAfterProc *after_proc, void *data)
+void FollowTrack(TileIndex tile, uint16 flags, DiagDirection direction, TPFEnumProc *enum_proc, TPFAfterProc *after_proc, void *data)
 {
 	TrackPathFinder tpf;
 
@@ -506,7 +506,7 @@ static inline void HeapifyDown(NewTrackPathFinder *tpf)
 // mark a tile as visited and store the length of the path.
 // if we already had a better path to this tile, return false.
 // otherwise return true.
-static bool NtpVisit(NewTrackPathFinder *tpf, TileIndex tile, uint dir, uint length)
+static bool NtpVisit(NewTrackPathFinder* tpf, TileIndex tile, DiagDirection dir, uint length)
 {
 	uint hash,head;
 	HashLink *link, *new_link;
@@ -671,7 +671,7 @@ static const byte _length_of_track[16] = {
 // Tile is the tile the train is at.
 // direction is the tile the train is moving towards.
 
-static void NTPEnum(NewTrackPathFinder *tpf, TileIndex tile, uint direction)
+static void NTPEnum(NewTrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
 {
 	TrackBits bits, allbits;
 	uint track;
@@ -912,7 +912,7 @@ start_at:
 
 
 // new pathfinder for trains. better and faster.
-void NewTrainPathfind(TileIndex tile, TileIndex dest, byte direction, NTPEnumProc *enum_proc, void *data)
+void NewTrainPathfind(TileIndex tile, TileIndex dest, DiagDirection direction, NTPEnumProc* enum_proc, void* data)
 {
 	NewTrackPathFinder tpf;
 

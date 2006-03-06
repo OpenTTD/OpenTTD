@@ -34,9 +34,15 @@ static inline DiagDirection ReverseDiagDir(DiagDirection d)
 }
 
 
-static inline DiagDirection DirToDiagdir(Direction dir)
+static inline DiagDirection DirToDiagDir(Direction dir)
 {
 	return (DiagDirection)(dir >> 1);
+}
+
+
+static inline Direction DiagDirToDir(DiagDirection dir)
+{
+	return (Direction)(dir * 2 + 1);
 }
 
 

@@ -309,7 +309,6 @@ static bool EnumRoadSignalFindDepot(TileIndex tile, void* data, int track, uint 
 static const Depot* FindClosestRoadDepot(const Vehicle* v)
 {
 	TileIndex tile = v->tile;
-	int i;
 
 	if (v->u.road.state == 255) tile = GetVehicleOutOfTunnelTile(v);
 
@@ -327,6 +326,8 @@ static const Depot* FindClosestRoadDepot(const Vehicle* v)
 		/* We do not search in two directions here, why should we? We can't reverse right now can we? */
 	} else {
 		RoadFindDepotData rfdd;
+		DiagDirection i;
+
 		rfdd.owner = v->owner;
 		rfdd.best_length = (uint)-1;
 
@@ -1187,14 +1188,14 @@ static void RoadVehController(Vehicle *v)
 	if (v->current_order.type == OT_LOADING) return;
 
 	if (v->u.road.state == 254) {
-		int dir;
+		DiagDirection dir;
 		const RoadDriveEntry* rdp;
 		byte rd2;
 
 		v->cur_speed = 0;
 
 		dir = GB(_m[v->tile].m5, 0, 2);
-		v->direction = dir * 2 + 1;
+		v->direction = DiagDirToDir(dir);
 
 		rd2 = _roadveh_data_2[dir];
 		rdp = _road_drive_data[(_opt.road_side << 4) + rd2];
