@@ -68,13 +68,12 @@ static void PlaceRoad_Tunnel(TileIndex tile)
 	DoCommandP(tile, 0x200, 0, CcBuildRoadTunnel, CMD_BUILD_TUNNEL | CMD_AUTO | CMD_MSG(STR_5016_CAN_T_BUILD_TUNNEL_HERE));
 }
 
-static void BuildRoadOutsideStation(TileIndex tile, int direction)
+static void BuildRoadOutsideStation(TileIndex tile, DiagDirection direction)
 {
-	static const byte _roadbits_by_dir[4] = {2,1,8,4};
 	tile += TileOffsByDir(direction);
 	// if there is a roadpiece just outside of the station entrance, build a connecting route
 	if (IsTileType(tile, MP_STREET) && GetRoadType(tile) == ROAD_NORMAL) {
-		DoCommandP(tile, _roadbits_by_dir[direction], 0, NULL, CMD_BUILD_ROAD);
+		DoCommandP(tile, DiagDirToRoadBits(ReverseDiagDir(direction)), 0, NULL, CMD_BUILD_ROAD);
 	}
 }
 
@@ -83,7 +82,7 @@ void CcRoadDepot(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	if (success) {
 		SndPlayTileFx(SND_1F_SPLAT, tile);
 		ResetObjectToPlace();
-		BuildRoadOutsideStation(tile, (int)p1);
+		BuildRoadOutsideStation(tile, p1);
 	}
 }
 
