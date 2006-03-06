@@ -7,6 +7,7 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "window.h"
+#include "gui.h"
 #include "viewport.h"
 #include "gfx.h"
 #include "news.h"
@@ -585,6 +586,7 @@ static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 		int y = 19;
 		byte p, show;
 
+		SetVScrollCount(w, _total_news);
 		DrawWindowWidgets(w);
 
 		if (_total_news == 0) break;
