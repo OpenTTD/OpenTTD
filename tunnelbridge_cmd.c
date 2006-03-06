@@ -13,6 +13,7 @@
 #include "functions.h"
 #include "map.h"
 #include "tile.h"
+#include "tunnel_map.h"
 #include "vehicle.h"
 #include "viewport.h"
 #include "command.h"
@@ -440,7 +441,7 @@ static bool DoCheckTunnelInWay(TileIndex tile, uint z, DiagDirection dir)
 	if (z == height &&
 			IsTileType(tile, MP_TUNNELBRIDGE) &&
 			GB(_m[tile].m5, 4, 4) == 0 &&
-			GB(_m[tile].m5, 0, 2) == dir) {
+			GetTunnelDirection(tile) == dir) {
 		_error_message = STR_5003_ANOTHER_TUNNEL_IN_THE_WAY;
 		return false;
 	}
@@ -526,15 +527,13 @@ int32 CmdBuildTunnel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	cost += _price.build_tunnel + ret;
 
 	if (flags & DC_EXEC) {
-		SetTileType(start_tile, MP_TUNNELBRIDGE);
-		SetTileOwner(start_tile, _current_player);
-		_m[start_tile].m3 = GB(p1, 0, 4); // rail type (if any)
-		_m[start_tile].m5 = (GB(p1, 9, 1) << 2) | direction; // transport type and entrance direction
-
-		SetTileType(end_tile, MP_TUNNELBRIDGE);
-		SetTileOwner(end_tile, _current_player);
-		_m[end_tile].m3 = GB(p1, 0, 4); // rail type (if any)
-		_m[end_tile].m5 = (GB(p1, 9, 1) << 2) | (direction ^ 2); // transport type and entrance direction
+		if (GB(p1, 9, 1) == TRANSPORT_RAIL) {
+			MakeRailTunnel(start_tile, _current_player, direction,                 GB(p1, 0, 4));
+			MakeRailTunnel(end_tile,   _current_player, ReverseDiagDir(direction), GB(p1, 0, 4));
+		} else {
+			MakeRoadTunnel(start_tile, _current_player, direction);
+			MakeRoadTunnel(end_tile,   _current_player, ReverseDiagDir(direction));
+		}
 
 		if (GB(p1, 9, 1) == 0) UpdateSignalsOnSegment(start_tile, DiagDirToDir(direction));
 	}
@@ -545,8 +544,8 @@ int32 CmdBuildTunnel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 TileIndex CheckTunnelBusy(TileIndex tile, uint *length)
 {
 	uint z = GetTileZ(tile);
-	byte m5 = _m[tile].m5;
-	TileIndexDiff delta = TileOffsByDir(m5 & 3);
+	DiagDirection dir = GetTunnelDirection(tile);
+	TileIndexDiff delta = TileOffsByDir(dir);
 	uint len = 0;
 	TileIndex starttile = tile;
 	Vehicle *v;
@@ -557,7 +556,7 @@ TileIndex CheckTunnelBusy(TileIndex tile, uint *length)
 	} while (
 		!IsTileType(tile, MP_TUNNELBRIDGE) ||
 		GB(_m[tile].m5, 4, 4) != 0 ||
-		(_m[tile].m5 ^ 2) != m5 ||
+		ReverseDiagDir(GetTunnelDirection(tile)) != dir ||
 		GetTileZ(tile) != z
 	);
 
@@ -605,8 +604,8 @@ static int32 DoClearTunnel(TileIndex tile, uint32 flags)
 	if (flags & DC_EXEC) {
 		// We first need to request the direction before calling DoClearSquare
 		//  else the direction is always 0.. dah!! ;)
-		byte tile_dir = GB(_m[tile].m5, 0, 2);
-		byte endtile_dir = GB(_m[endtile].m5, 0, 2);
+		DiagDirection tile_dir    = GetTunnelDirection(tile);
+		DiagDirection endtile_dir = GetTunnelDirection(endtile);
 
 		// Adjust the town's player rating. Do this before removing the tile owner info.
 		if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR)
@@ -996,7 +995,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 	// draw tunnel?
 	if ((ti->map5 & 0xF0) == 0) {
-		if (GB(ti->map5, 2, 2) == 0) { /* Rail tunnel? */
+		if (GetTunnelTransportType(ti->tile) == TRANSPORT_RAIL) {
 			image = GetRailTypeInfo(GB(_m[ti->tile].m3, 0, 4))->base_sprites.tunnel;
 		} else {
 			image = SPR_TUNNEL_ENTRY_REAR_ROAD;
@@ -1004,7 +1003,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		if (ice) image += 32;
 
-		image += GB(ti->map5, 0, 2) * 2;
+		image += GetTunnelDirection(ti->tile) * 2;
 		DrawGroundSprite(image);
 
 		AddSortableSpriteToDraw(image+1, ti->x + 15, ti->y + 15, 1, 1, 8, (byte)ti->z);
@@ -1266,8 +1265,8 @@ static const StringID _bridge_tile_str[(MAX_BRIDGES + 3) + (MAX_BRIDGES + 3)] = 
 static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 {
 	if ((_m[tile].m5 & 0x80) == 0) {
-		td->str =
-			(GB(_m[tile].m5, 2, 2) == 0) ? STR_5017_RAILROAD_TUNNEL : STR_5018_ROAD_TUNNEL;
+		td->str = (GetTunnelTransportType(tile) == TRANSPORT_RAIL) ?
+			STR_5017_RAILROAD_TUNNEL : STR_5018_ROAD_TUNNEL;
 	} else {
 		td->str = _bridge_tile_str[GB(_m[tile].m5, 1, 2) << 4 | GB(_m[tile].m2, 4, 4)];
 
@@ -1329,9 +1328,8 @@ static uint32 GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType mode
 
 	if ((m5 & 0xF0) == 0) {
 		/* This is a tunnel */
-		if (GB(m5, 2, 2) == mode) {
-			/* Tranport in the tunnel is compatible */
-			return m5&1 ? 0x202 : 0x101;
+		if (GetTunnelTransportType(tile) == mode) {
+			return DiagDirToAxis(GetTunnelDirection(tile)) == AXIS_X ? 0x101 : 0x202;
 		}
 	} else if (m5 & 0x80) {
 		/* This is a bridge */
@@ -1419,7 +1417,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 		if (v->type == VEH_Train) {
 			fc = (x & 0xF) + (y << 4);
 
-			dir = GB(_m[tile].m5, 0, 2);
+			dir = GetTunnelDirection(tile);
 			vdir = DirToDiagDir(v->direction);
 
 			if (v->u.rail.track != 0x40 && dir == vdir) {
@@ -1446,7 +1444,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 			}
 		} else if (v->type == VEH_Road) {
 			fc = (x & 0xF) + (y << 4);
-			dir = GB(_m[tile].m5, 0, 2);
+			dir = GetTunnelDirection(tile);
 			vdir = DirToDiagDir(v->direction);
 
 			// Enter tunnel?

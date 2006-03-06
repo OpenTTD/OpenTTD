@@ -700,6 +700,7 @@ SRCS += town_gui.c
 SRCS += train_cmd.c
 SRCS += train_gui.c
 SRCS += tree_cmd.c
+SRCS += tunnel_map.c
 SRCS += tunnelbridge_cmd.c
 SRCS += unmovable_cmd.c
 SRCS += vehicle.c

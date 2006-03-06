@@ -8,6 +8,7 @@
 #include "table/strings.h"
 #include "map.h"
 #include "tile.h"
+#include "tunnel_map.h"
 #include "vehicle.h"
 #include "command.h"
 #include "pathfind.h"
@@ -3121,8 +3122,10 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 	tile = v->tile;
 
 	// tunnel entrance?
-	if (IsTunnelTile(tile) && DiagDirToDir(GB(_m[tile].m5, 0, 2)) == v->direction)
+	if (IsTunnelTile(tile) &&
+			DiagDirToDir(GetTunnelDirection(tile)) == v->direction) {
 		return true;
+	}
 
 	// depot?
 	/* XXX -- When enabled, this makes it possible to crash trains of others

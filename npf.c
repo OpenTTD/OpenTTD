@@ -11,6 +11,7 @@
 #include "station.h"
 #include "tile.h"
 #include "depot.h"
+#include "tunnel_map.h"
 
 static AyStar _npf_aystar;
 
@@ -162,7 +163,7 @@ static uint NPFTunnelCost(AyStarNode* current)
 {
 	DiagDirection exitdir = TrackdirToExitdir((Trackdir)current->direction);
 	TileIndex tile = current->tile;
-	if ((DiagDirection)GB(_m[tile].m5, 0, 2) == ReverseDiagDir(exitdir)) {
+	if (GetTunnelDirection(tile) == ReverseDiagDir(exitdir)) {
 		/* We just popped out if this tunnel, since were
 		 * facing the tunnel exit */
 		FindLengthOfTunnelResult flotr;
@@ -519,7 +520,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	/* Find dest tile */
 	if (IsTileType(src_tile, MP_TUNNELBRIDGE) &&
 			GB(_m[src_tile].m5, 4, 4) == 0 &&
-			(DiagDirection)GB(_m[src_tile].m5, 0, 2) == src_exitdir) {
+			GetTunnelDirection(src_tile) == src_exitdir) {
 		/* This is a tunnel. We know this tunnel is our type,
 		 * otherwise we wouldn't have got here. It is also facing us,
 		 * so we should skip it's body */

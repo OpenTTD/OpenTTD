@@ -5,6 +5,7 @@
 #include "functions.h"
 #include "road_map.h"
 #include "station.h"
+#include "tunnel_map.h"
 
 
 RoadBits GetAnyRoadBits(TileIndex tile)
@@ -36,8 +37,8 @@ RoadBits GetAnyRoadBits(TileIndex tile)
 				}
 			} else {
 				// tunnel
-				if (GB(_m[tile].m5, 2, 2) != TRANSPORT_ROAD) return 0; // not a road tunnel
-				return DiagDirToRoadBits(ReverseDiagDir(GB(_m[tile].m5, 0, 2)));
+				if (GetTunnelTransportType(tile) != TRANSPORT_ROAD) return 0;
+				return DiagDirToRoadBits(ReverseDiagDir(GetTunnelDirection(tile)));
 			}
 
 		default: return 0;

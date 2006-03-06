@@ -9,10 +9,10 @@
 #include "table/sprites.h"
 #include "map.h"
 #include "tile.h"
+#include "tunnel_map.h"
 #include "viewport.h"
 #include "town.h"
 #include "command.h"
-#include "pathfind.h"
 #include "gfx.h"
 #include "industry.h"
 #include "station.h"
@@ -624,9 +624,10 @@ static void GrowTownInTile(TileIndex* tile_ptr, RoadBits mask, int block, Town* 
 		int i;
 
 		// Reached a tunnel? Then continue at the other side of it.
-		if (IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5& ~3) == 4) {
-			FindLengthOfTunnelResult flotr = FindLengthOfTunnel(tile, GB(_m[tile].m5, 0, 2));
-			*tile_ptr = flotr.tile;
+		if (IsTileType(tile, MP_TUNNELBRIDGE) &&
+				GB(_m[tile].m5, 4, 4) == 0 &&
+				GetTunnelTransportType(tile) == TRANSPORT_ROAD) {
+			*tile_ptr = GetOtherTunnelEnd(tile);
 			return;
 		}
 

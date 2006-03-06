@@ -52,4 +52,10 @@ typedef enum Axis {
 	AXIS_Y = 1
 } Axis;
 
+
+static inline Axis DiagDirToAxis(DiagDirection d)
+{
+	return (Axis)(d & 1);
+}
+
 #endif

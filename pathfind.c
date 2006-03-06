@@ -8,6 +8,7 @@
 #include "pathfind.h"
 #include "rail.h"
 #include "debug.h"
+#include "tunnel_map.h"
 #include "variables.h"
 
 // remember which tiles we have already visited so we don't visit them again.
@@ -232,8 +233,8 @@ FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, uint direction)
 
 		if (IsTileType(tile, MP_TUNNELBRIDGE) &&
 				GB(_m[tile].m5, 4, 4) == 0 &&               // tunnel entrance/exit
-				// GB(_m[tile].m5, 2, 2) == type &&            // rail/road-tunnel <-- This is not necesary to check, right?
-				(GB(_m[tile].m5, 0, 2) ^ 2) == direction && // entrance towards: 0 = NE, 1 = SE, 2 = SW, 3 = NW
+				// GetTunnelTransportType(tile) == type &&  // rail/road-tunnel <-- This is not necesary to check, right?
+				ReverseDiagDir(GetTunnelDirection(tile)) == direction &&
 				GetSlopeZ(x + 8, y + 8) == z) {
 			break;
 		}
@@ -283,8 +284,8 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 	TileIndex tile_org = tile;
 
 	if (IsTileType(tile, MP_TUNNELBRIDGE) && GB(_m[tile].m5, 4, 4) == 0) {
-		if (GB(_m[tile].m5, 0, 2) != direction ||
-				GB(_m[tile].m5, 2, 2) != tpf->tracktype) {
+		if (GetTunnelDirection(tile) != direction ||
+				GetTunnelTransportType(tile) != tpf->tracktype) {
 			return;
 		}
 		tile = SkipToEndOfTunnel(tpf, tile, direction);
@@ -717,13 +718,14 @@ start_at:
 		//   need to find the exit of the tunnel.
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 			if (GB(_m[tile].m5, 4, 4) == 0 &&
-					GB(_m[tile].m5, 0, 2) != (direction ^ 2)) {
+					GetTunnelDirection(tile) != ReverseDiagDir(direction)) {
 				/* This is a tunnel tile */
 				/* We are not just driving out of the tunnel */
-				if (GB(_m[tile].m5, 0, 2) != direction || GB(_m[tile].m5, 2, 2) != tpf->tracktype)
-					/* We are not driving into the tunnel, or it
-					 * is an invalid tunnel */
+				if (GetTunnelDirection(tile) != direction ||
+						GetTunnelTransportType(tile) != tpf->tracktype) {
+					// We are not driving into the tunnel, or it is an invalid tunnel
 					continue;
+				}
 				flotr = FindLengthOfTunnel(tile, direction);
 				si.cur_length += flotr.length * DIAG_FACTOR;
 				tile = flotr.tile;
