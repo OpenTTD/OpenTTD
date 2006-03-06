@@ -159,7 +159,7 @@ VARDEF uint32 _last_sync_frame; // Used in the server to store the last time a s
 // networking settings
 VARDEF uint32 _network_ip_list[MAX_INTERFACES + 1]; // Network IPs
 
-VARDEF uint _network_server_port;
+VARDEF uint16 _network_server_port;
 /* We use bind_ip and bind_ip_host, where bind_ip_host is the readable form of
     bind_ip_host, and bind_ip the numeric value, because we want a nice number
     in the openttd.cfg, but we wants to use the uint32 internally.. */

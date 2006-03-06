@@ -1092,7 +1092,7 @@ static const SettingDescGlobVarList _network_settings[] = {
 	 SDTG_VAR("max_join_time",       SLE_UINT16, S, 0, _network_max_join_time,        500, 0,32000,STR_NULL, NULL),
 	SDTG_BOOL("pause_on_join",                   S, 0, _network_pause_on_join,        false,       STR_NULL, NULL),
 	 SDTG_STR("server_bind_ip",        SLE_STRB, S, 0, _network_server_bind_ip_host,  "0.0.0.0",   STR_NULL, NULL),
-	 SDTG_VAR("server_port",         SLE_UINT16, S, 0, _network_server_port,          NETWORK_DEFAULT_PORT, 0, -1,STR_NULL, NULL),
+	 SDTG_VAR("server_port",         SLE_UINT16, S, 0, _network_server_port,          NETWORK_DEFAULT_PORT, 0, 65535,STR_NULL, NULL),
 	SDTG_BOOL("server_advertise",                S, 0, _network_advertise,            false,       STR_NULL, NULL),
 	SDTG_BOOL("lan_internet",                    S, 0, _network_lan_internet,         false,       STR_NULL, NULL),
 	 SDTG_STR("player_name",           SLE_STRB, S, 0, _network_player_name,          NULL,        STR_NULL, NULL),
