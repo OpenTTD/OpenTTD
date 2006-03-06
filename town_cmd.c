@@ -461,17 +461,17 @@ void OnTick_Town(void)
 	}
 }
 
-static byte GetTownRoadMask(TileIndex tile)
+static RoadBits GetTownRoadMask(TileIndex tile)
 {
-	byte b = GetRoadBitsByTile(tile);
-	byte r = 0;
+	TrackBits b = GetAnyRoadTrackBits(tile);
+	RoadBits r = 0;
 
-	if (b & 0x01) r |= 10;
-	if (b & 0x02) r |=  5;
-	if (b & 0x04) r |=  9;
-	if (b & 0x08) r |=  6;
-	if (b & 0x10) r |=  3;
-	if (b & 0x20) r |= 12;
+	if (b & TRACK_BIT_X)     r |= ROAD_X;
+	if (b & TRACK_BIT_Y)     r |= ROAD_Y;
+	if (b & TRACK_BIT_UPPER) r |= ROAD_NE | ROAD_NW;
+	if (b & TRACK_BIT_LOWER) r |= ROAD_SE | ROAD_SW;
+	if (b & TRACK_BIT_LEFT)  r |= ROAD_NW | ROAD_SW;
+	if (b & TRACK_BIT_RIGHT) r |= ROAD_NE | ROAD_SE;
 	return r;
 }
 
@@ -486,7 +486,7 @@ static bool IsRoadAllowedHere(TileIndex tile, int dir)
 
 	for (;;) {
 		// Check if there already is a road at this point?
-		if (GetRoadBitsByTile(tile) == 0) {
+		if (GetAnyRoadTrackBits(tile) == 0) {
 			// No, try to build one in the direction.
 			// if that fails clear the land, and if that fails exit.
 			// This is to make sure that we can build a road here later.
@@ -567,17 +567,20 @@ static void LevelTownLand(TileIndex tile)
 
 #define IS_WATER_TILE(t) (IsTileType((t), MP_WATER) && _m[(t)].m5 == 0)
 
-static void GrowTownInTile(TileIndex *tile_ptr, uint mask, int block, Town *t1)
+static void GrowTownInTile(TileIndex* tile_ptr, RoadBits mask, int block, Town* t1)
 {
-	int a,b,rcmd;
+	RoadBits rcmd;
 	TileIndex tmptile;
-	uint i;
+	DiagDirection i;
 	int j;
 	TileIndex tile = *tile_ptr;
 
 	TILE_ASSERT(tile);
 
 	if (mask == 0) {
+		int a;
+		int b;
+
 		// Tile has no road. First reset the status counter
 		// to say that this is the last iteration.
 		_grow_town_result = 0;
@@ -618,6 +621,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, uint mask, int block, Town *t1)
 		_grow_town_result = 0;
 		rcmd = 1 << (block ^ 2);
 	} else {
+		int i;
 
 		// Reached a tunnel? Then continue at the other side of it.
 		if (IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5& ~3) == 4) {
@@ -665,10 +669,10 @@ static void GrowTownInTile(TileIndex *tile_ptr, uint mask, int block, Town *t1)
 	// Determine direction of slope,
 	//  and build a road if not a special slope.
 	switch (GetTileSlope(tile, NULL)) {
-		case  3: i = 0; break;
-		case  6: i = 3; break;
-		case  9: i = 1; break;
-		case 12: i = 2; break;
+		case  3: i = DIAGDIR_NE; break;
+		case  6: i = DIAGDIR_NW; break;
+		case  9: i = DIAGDIR_SE; break;
+		case 12: i = DIAGDIR_SW; break;
 
 		default:
 build_road_and_exit:
@@ -714,7 +718,6 @@ build_road_and_exit:
 // Returns true if a house was built, or no if the build failed.
 static int GrowTownAtRoad(Town *t, TileIndex tile)
 {
-	uint mask;
 	int block = 5; // special case
 
 	TILE_ASSERT(tile);
@@ -724,7 +727,7 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 
 	do {
 		// Get a bitmask of the road blocks on a tile
-		mask = GetTownRoadMask(tile);
+		RoadBits mask = GetTownRoadMask(tile);
 
 		// Try to grow the town from this point
 		GrowTownInTile(&tile,mask,block,t);
@@ -761,7 +764,7 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 // Generate a random road block
 // The probability of a straight road
 // is somewhat higher than a curved.
-static int GenRandomRoadBits(void)
+static RoadBits GenRandomRoadBits(void)
 {
 	uint32 r = Random();
 	uint a = GB(r, 0, 2);
@@ -801,7 +804,7 @@ static bool GrowTown(Town *t)
 	// Find a road that we can base the construction on.
 	tile = t->xy;
 	for (ptr = _town_coord_mod; ptr != endof(_town_coord_mod); ++ptr) {
-		if (GetRoadBitsByTile(tile) != 0) {
+		if (GetAnyRoadTrackBits(tile) != 0) {
 			int r = GrowTownAtRoad(t, tile);
 			_current_player = old_player;
 			return r;

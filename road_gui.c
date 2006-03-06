@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "road_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "functions.h"
@@ -72,7 +73,7 @@ static void BuildRoadOutsideStation(TileIndex tile, int direction)
 	static const byte _roadbits_by_dir[4] = {2,1,8,4};
 	tile += TileOffsByDir(direction);
 	// if there is a roadpiece just outside of the station entrance, build a connecting route
-	if (IsTileType(tile, MP_STREET) && !(_m[tile].m5 & 0x20)) {
+	if (IsTileType(tile, MP_STREET) && GetRoadType(tile) == ROAD_NORMAL) {
 		DoCommandP(tile, _roadbits_by_dir[direction], 0, NULL, CMD_BUILD_ROAD);
 	}
 }

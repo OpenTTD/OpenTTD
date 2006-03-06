@@ -33,6 +33,12 @@ static inline RoadBits GetRoadBits(TileIndex tile)
 	return GB(_m[tile].m5, 0, 4);
 }
 
+static inline void SetRoadBits(TileIndex tile, RoadBits r)
+{
+	SB(_m[tile].m5, 0, 4, r);
+}
+
+
 static inline RoadBits GetCrossingRoadBits(TileIndex tile)
 {
 	return _m[tile].m5 & 8 ? ROAD_Y : ROAD_X;
@@ -65,6 +71,9 @@ static inline RoadType GetRoadType(TileIndex tile)
  * - bridge middle parts: bridge itself is ignored
  */
 RoadBits GetAnyRoadBits(TileIndex);
+
+
+TrackBits GetAnyRoadTrackBits(TileIndex tile);
 
 
 static inline void MakeRoadNormal(TileIndex t, Owner owner, RoadBits bits, uint town)

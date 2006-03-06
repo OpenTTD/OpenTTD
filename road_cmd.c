@@ -73,11 +73,6 @@ static bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, bool* edge_roa
 	return true;
 }
 
-uint GetRoadBitsByTile(TileIndex tile)
-{
-	uint32 r = GetTileTrackStatus(tile, TRANSPORT_ROAD);
-	return (byte)(r | (r >> 8));
-}
 
 /** Delete a piece of road.
  * @param x,y tile coordinates for road construction
@@ -158,30 +153,33 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			switch (GetRoadType(ti.tile)) {
 				case ROAD_NORMAL: {
-					byte c = pieces, t2;
+					RoadBits present = GetRoadBits(ti.tile);
+					RoadBits c = pieces;
 
-					if (ti.tileh != 0  && (ti.map5 == ROAD_Y || ti.map5 == ROAD_X)) {
+					if (ti.tileh != 0  && (present == ROAD_Y || present == ROAD_X)) {
 						c |= (c & 0xC) >> 2;
 						c |= (c & 0x3) << 2;
 					}
 
 					// limit the bits to delete to the existing bits.
-					if ((c &= ti.map5) == 0) goto return_error;
+					c &= present;
+					if (c == 0) goto return_error;
 
 					// calculate the cost
-					t2 = c;
 					cost = 0;
-					do {
-						if (t2 & 1) cost += _price.remove_road;
-					} while (t2 >>= 1);
+					if (c & ROAD_NW) cost += _price.remove_road;
+					if (c & ROAD_SW) cost += _price.remove_road;
+					if (c & ROAD_SE) cost += _price.remove_road;
+					if (c & ROAD_NE) cost += _price.remove_road;
 
 					if (flags & DC_EXEC) {
 						ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
 
-						_m[tile].m5 ^= c;
-						if (GetRoadBits(tile) == 0) {
+						present ^= c;
+						if (present == 0) {
 							DoClearSquare(tile);
 						} else {
+							SetRoadBits(tile, present);
 							MarkTileDirtyByTile(tile);
 						}
 					}
@@ -248,10 +246,10 @@ static const RoadBits _valid_tileh_slopes_road[][15] = {
 };
 
 
-static uint32 CheckRoadSlope(int tileh, byte *pieces, byte existing)
+static uint32 CheckRoadSlope(int tileh, RoadBits* pieces, RoadBits existing)
 {
 	if (!IsSteepTileh(tileh)) {
-		byte road_bits = *pieces | existing;
+		RoadBits road_bits = *pieces | existing;
 
 		// no special foundation
 		if ((~_valid_tileh_slopes_road[0][tileh] & road_bits) == 0) {
@@ -266,11 +264,11 @@ static uint32 CheckRoadSlope(int tileh, byte *pieces, byte existing)
 		}
 
 		// partly leveled up tile, only if there's no road on that tile
-		if (!existing && (tileh == 1 || tileh == 2 || tileh == 4 || tileh == 8)) {
+		if (existing == 0 && (tileh == 1 || tileh == 2 || tileh == 4 || tileh == 8)) {
 			// force full pieces.
 			*pieces |= (*pieces & 0xC) >> 2;
 			*pieces |= (*pieces & 0x3) << 2;
-			return (*pieces == (ROAD_NE|ROAD_SW) || *pieces == (ROAD_SE|ROAD_NW)) ? _price.terraform : CMD_ERROR;
+			return (*pieces == ROAD_X || *pieces == ROAD_Y) ? _price.terraform : CMD_ERROR;
 		}
 	}
 	return CMD_ERROR;
@@ -285,14 +283,16 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileInfo ti;
 	int32 cost;
-	byte pieces = (byte)p1, existing = 0;
+	RoadBits existing = 0;
+	RoadBits pieces;
 	TileIndex tile;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	/* Road pieces are max 4 bitset values (NE, NW, SE, SW) and town can only be non-zero
 	 * if a non-player is building the road */
-	if ((pieces >> 4) || (_current_player < MAX_PLAYERS && p2 != 0) || !IsTownIndex(p2)) return CMD_ERROR;
+	if ((p1 >> 4) || (_current_player < MAX_PLAYERS && p2 != 0) || !IsTownIndex(p2)) return CMD_ERROR;
+	pieces = p1;
 
 	FindLandscapeHeight(&ti, x, y);
 	tile = ti.tile;
@@ -302,16 +302,16 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	switch (ti.type) {
 		case MP_STREET:
-			switch (GetRoadType(ti.tile)) {
+			switch (GetRoadType(tile)) {
 				case ROAD_NORMAL:
-					if ((GetRoadBits(ti.tile) & pieces) == pieces) {
+					existing = GetRoadBits(tile);
+					if ((existing & pieces) == pieces) {
 						return_cmd_error(STR_1007_ALREADY_BUILT);
 					}
-					existing = ti.map5;
 					break;
 
 				case ROAD_CROSSING:
-					if (pieces != GetCrossingRoadBits(ti.tile)) { // XXX is this correct?
+					if (pieces != GetCrossingRoadBits(tile)) { // XXX is this correct?
 						return_cmd_error(STR_1007_ALREADY_BUILT);
 					}
 					goto do_clear;
@@ -363,7 +363,7 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if ((ti.map5 & 0xC0) != 0xC0) goto do_clear;
 
 			/* only allow roads pertendicular to bridge */
-			if (((pieces & 5U) != 0) == ((ti.map5 & 0x01U) != 0)) goto do_clear;
+			if (((pieces & ROAD_Y) != 0) == ((ti.map5 & 0x01U) != 0)) goto do_clear;
 
 			/* check if clear land under bridge */
 			if ((ti.map5 & 0xF8) == 0xE8) { /* road under bridge */
@@ -396,26 +396,23 @@ do_clear:;
 	if (cost && (!_patches.build_on_slopes || _is_old_ai_player))
 		return CMD_ERROR;
 
-	if (ti.type != MP_STREET || GetRoadType(ti.tile) != ROAD_NORMAL) {
-		cost += DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	} else {
+	if (ti.type == MP_STREET && GetRoadType(tile) == ROAD_NORMAL) {
 		// Don't put the pieces that already exist
-		pieces &= ~ti.map5;
+		pieces &= ComplementRoadBits(existing);
+	} else {
+		cost += DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	}
 
-	{
-		byte t = pieces;
-		while (t) {
-			if (t & 1) cost += _price.build_road;
-			t >>= 1;
-		}
-	}
+	if (pieces & ROAD_NW) cost += _price.build_road;
+	if (pieces & ROAD_SW) cost += _price.build_road;
+	if (pieces & ROAD_SE) cost += _price.build_road;
+	if (pieces & ROAD_NE) cost += _price.build_road;
 
 	if (flags & DC_EXEC) {
-		if (ti.type != MP_STREET) {
-			MakeRoadNormal(tile, _current_player, pieces, p2);
+		if (ti.type == MP_STREET) {
+			SetRoadBits(tile, existing | pieces);
 		} else {
-			_m[tile].m5 |= pieces;
+			MakeRoadNormal(tile, _current_player, pieces, p2);
 		}
 
 		MarkTileDirtyByTile(tile);

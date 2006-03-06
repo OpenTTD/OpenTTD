@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "functions.h"
 #include "road_map.h"
 #include "station.h"
 
@@ -41,4 +42,11 @@ RoadBits GetAnyRoadBits(TileIndex tile)
 
 		default: return 0;
 	}
+}
+
+
+TrackBits GetAnyRoadTrackBits(TileIndex tile)
+{
+	uint32 r = GetTileTrackStatus(tile, TRANSPORT_ROAD);
+	return (byte)(r | (r >> 8));
 }

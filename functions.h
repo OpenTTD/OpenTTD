@@ -215,7 +215,6 @@ bool CheckIfAuthorityAllows(TileIndex tile);
 Town *ClosestTownFromTile(TileIndex tile, uint threshold);
 void ChangeTownRating(Town *t, int add, int max);
 
-uint GetRoadBitsByTile(TileIndex tile);
 int GetTownRadiusGroup(const Town *t, TileIndex tile);
 void ShowNetworkChatQueryWindow(byte desttype, byte dest);
 void ShowNetworkGiveMoneyWindow(byte player);
