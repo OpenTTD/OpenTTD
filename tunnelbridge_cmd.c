@@ -428,36 +428,6 @@ not_valid_below:;
 	return cost;
 }
 
-static bool DoCheckTunnelInWay(TileIndex tile, uint z, DiagDirection dir)
-{
-	TileIndexDiff delta = TileOffsByDir(dir);
-	uint height;
-
-	do {
-		tile -= delta;
-		height = GetTileZ(tile);
-	} while (z < height);
-
-	if (z == height &&
-			IsTileType(tile, MP_TUNNELBRIDGE) &&
-			GB(_m[tile].m5, 4, 4) == 0 &&
-			GetTunnelDirection(tile) == dir) {
-		_error_message = STR_5003_ANOTHER_TUNNEL_IN_THE_WAY;
-		return false;
-	}
-
-	return true;
-}
-
-bool CheckTunnelInWay(TileIndex tile, int z)
-{
-	return
-		DoCheckTunnelInWay(tile, z, DIAGDIR_NE) &&
-		DoCheckTunnelInWay(tile, z, DIAGDIR_SE) &&
-		DoCheckTunnelInWay(tile, z, DIAGDIR_SW) &&
-		DoCheckTunnelInWay(tile, z, DIAGDIR_NW);
-}
-
 
 /** Build Tunnel.
  * @param x,y start tile coord of tunnel
@@ -504,8 +474,8 @@ int32 CmdBuildTunnel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		if (start_z == end_z) break;
 
-		if (!_cheats.crossing_tunnels.value && !CheckTunnelInWay(end_tile, start_z)) {
-			return CMD_ERROR;
+		if (!_cheats.crossing_tunnels.value && IsTunnelInWay(end_tile, start_z)) {
+			return_cmd_error(STR_5003_ANOTHER_TUNNEL_IN_THE_WAY);
 		}
 
 		cost += _price.build_tunnel;

@@ -10,6 +10,7 @@
 #include "tile.h"
 #include "viewport.h"
 #include "command.h"
+#include "tunnel_map.h"
 #include "variables.h"
 #include "table/sprites.h"
 
@@ -277,7 +278,7 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			t = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 1));
 			if (t <= z) z = t;
 
-			if (!CheckTunnelInWay(tile, z * 8)) {
+			if (IsTunnelInWay(tile, z * 8)) {
 				return_cmd_error(STR_1002_EXCAVATION_WOULD_DAMAGE);
 			}
 		}
