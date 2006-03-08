@@ -501,9 +501,9 @@ void DrawClearLandFence(const TileInfo *ti)
 
 static void DrawTile_Clear(TileInfo *ti)
 {
-	switch (GB(ti->map5, 2, 3)) {
+	switch (GetClearGround(ti->tile)) {
 		case CL_GRASS:
-			DrawClearLandTile(ti, GB(ti->map5, 0, 2));
+			DrawClearLandTile(ti, GetClearDensity(ti->tile));
 			break;
 
 		case CL_ROUGH:
@@ -519,11 +519,11 @@ static void DrawTile_Clear(TileInfo *ti)
 			break;
 
 		case CL_SNOW:
-			DrawGroundSprite(_clear_land_sprites_2[GB(ti->map5, 0, 2)] + _tileh_to_sprite[ti->tileh]);
+			DrawGroundSprite(_clear_land_sprites_2[GetClearDensity(ti->tile)] + _tileh_to_sprite[ti->tileh]);
 			break;
 
 		case CL_DESERT:
-			DrawGroundSprite(_clear_land_sprites_3[GB(ti->map5, 0, 2)] + _tileh_to_sprite[ti->tileh]);
+			DrawGroundSprite(_clear_land_sprites_3[GetClearDensity(ti->tile)] + _tileh_to_sprite[ti->tileh]);
 			break;
 	}
 
