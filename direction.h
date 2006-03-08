@@ -23,6 +23,32 @@ static inline Direction ReverseDir(Direction d)
 }
 
 
+typedef enum DirDiff {
+	DIRDIFF_SAME    = 0,
+	DIRDIFF_45RIGHT = 1,
+	DIRDIFF_90RIGHT = 2,
+	DIRDIFF_REVERSE = 4,
+	DIRDIFF_90LEFT  = 6,
+	DIRDIFF_45LEFT  = 7
+} DirDiff;
+
+static inline DirDiff DirDifference(Direction d0, Direction d1)
+{
+	return (DirDiff)(d0 + 8 - d1) % 8;
+}
+
+static inline DirDiff ChangeDirDiff(DirDiff d, DirDiff delta)
+{
+	return (DirDiff)((d + delta) % 8);
+}
+
+
+static inline Direction ChangeDir(Direction d, DirDiff delta)
+{
+	return (Direction)((d + delta) % 8);
+}
+
+
 /* Direction commonly used as the direction of entering and leaving tiles, 4-way */
 typedef enum DiagDirection {
 	DIAGDIR_NE  = 0,      /* Northeast, upper right on your monitor */

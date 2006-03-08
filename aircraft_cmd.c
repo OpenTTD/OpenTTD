@@ -764,7 +764,7 @@ static bool AircraftController(Vehicle *v)
 	Station *st;
 	const AirportMovingData *amd;
 	Vehicle *u;
-	byte z,dirdiff,newdir,maxz,curz;
+	byte z,newdir,maxz,curz;
 	GetNewVehiclePosResult gp;
 	uint dist;
 	int x,y;
@@ -853,20 +853,22 @@ static bool AircraftController(Vehicle *v)
 
 	// At final pos?
 	if (dist == 0) {
+		DirDiff dirdiff;
+
 		if (v->cur_speed > 12) v->cur_speed = 12;
 
 		// Change direction smoothly to final direction.
-		dirdiff = amd->direction - v->direction;
+		dirdiff = DirDifference(amd->direction, v->direction);
 		// if distance is 0, and plane points in right direction, no point in calling
 		// UpdateAircraftSpeed(). So do it only afterwards
-		if (dirdiff == 0) {
+		if (dirdiff == DIRDIFF_SAME) {
 			v->cur_speed = 0;
 			return true;
 		}
 
 		if (!UpdateAircraftSpeed(v)) return false;
 
-		v->direction = (v->direction+((dirdiff&7)<5?1:-1)) & 7;
+		v->direction = ChangeDir(v->direction, dirdiff > DIRDIFF_REVERSE ? DIRDIFF_45LEFT : DIRDIFF_45RIGHT);
 		v->cur_speed >>= 1;
 
 		SetAircraftPosition(v, v->x_pos, v->y_pos, v->z_pos);

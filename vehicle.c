@@ -1930,7 +1930,7 @@ static const Direction _new_direction_table[] = {
 Direction GetDirectionTowards(const Vehicle* v, int x, int y)
 {
 	Direction dir;
-	byte dirdiff;
+	DirDiff dirdiff;
 	int i = 0;
 
 	if (y >= v->y_pos) {
@@ -1945,10 +1945,9 @@ Direction GetDirectionTowards(const Vehicle* v, int x, int y)
 
 	dir = v->direction;
 
-	dirdiff = _new_direction_table[i] - dir;
-	if (dirdiff == 0)
-		return dir;
-	return (dir+((dirdiff&7)<5?1:-1)) & 7;
+	dirdiff = DirDifference(_new_direction_table[i], dir);
+	if (dirdiff == DIRDIFF_SAME) return dir;
+	return ChangeDir(dir, dirdiff > DIRDIFF_REVERSE ? DIRDIFF_45LEFT : DIRDIFF_45RIGHT);
 }
 
 Trackdir GetVehicleTrackdir(const Vehicle* v)

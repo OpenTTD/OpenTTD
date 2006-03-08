@@ -2591,14 +2591,16 @@ static const RailtypeSlowdownParams _railtype_slowdown[3] = {
 /* Modify the speed of the vehicle due to a turn */
 static void AffectSpeedByDirChange(Vehicle* v, Direction new_dir)
 {
-	byte diff;
+	DirDiff diff;
 	const RailtypeSlowdownParams *rsp;
 
-	if (_patches.realistic_acceleration || (diff = (v->direction - new_dir) & 7) == 0)
-		return;
+	if (_patches.realistic_acceleration) return;
+
+	diff = DirDifference(v->direction, new_dir);
+	if (diff == DIRDIFF_SAME) return;
 
 	rsp = &_railtype_slowdown[v->u.rail.railtype];
-	v->cur_speed -= ((diff == 1 || diff == 7) ? rsp->small_turn : rsp->large_turn) * v->cur_speed >> 8;
+	v->cur_speed -= (diff == DIRDIFF_45RIGHT || diff == DIRDIFF_45LEFT ? rsp->small_turn : rsp->large_turn) * v->cur_speed >> 8;
 }
 
 /* Modify the speed of the vehicle due to a change in altitude */
@@ -2739,11 +2741,10 @@ static void *CheckVehicleAtSignal(Vehicle *v, void *data)
 {
 	const VehicleAtSignalData* vasd = data;
 
-	if (v->type == VEH_Train && IsFrontEngine(v) &&
-			v->tile == vasd->tile) {
-		byte diff = (v->direction - vasd->direction + 2) & 7;
+	if (v->type == VEH_Train && IsFrontEngine(v) && v->tile == vasd->tile) {
+		DirDiff diff = ChangeDirDiff(DirDifference(v->direction, vasd->direction), DIRDIFF_90RIGHT);
 
-		if (diff == 2 || (v->cur_speed <= 5 && diff <= 4)) return v;
+		if (diff == DIRDIFF_90RIGHT || (v->cur_speed <= 5 && diff <= DIRDIFF_REVERSE)) return v;
 	}
 	return NULL;
 }
