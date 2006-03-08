@@ -62,6 +62,12 @@ static inline RoadType GetRoadType(TileIndex tile)
 }
 
 
+static inline DiagDirection GetRoadDepotDirection(TileIndex tile)
+{
+	return (DiagDirection)GB(_m[tile].m5, 0, 2);
+}
+
+
 /**
  * Returns the RoadBits on an arbitrary tile
  * Special behavior:

@@ -992,7 +992,6 @@ static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir
 	int best_track;
 	uint best_dist, best_maxlen;
 	uint i;
-	byte m5;
 
 	{
 		uint32 r = GetTileTrackStatus(tile, TRANSPORT_ROAD);
@@ -1003,7 +1002,7 @@ static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir
 	if (IsTileType(tile, MP_STREET)) {
 		if (GetRoadType(tile) == ROAD_DEPOT && IsTileOwner(tile, v->owner)) {
 			/* Road depot */
-			bitmask |= _road_veh_fp_ax_or[GB(_m[tile].m5, 0, 2)];
+			bitmask |= _road_veh_fp_ax_or[GetRoadDepotDirection(tile)];
 		}
 	} else if (IsTileType(tile, MP_STATION) && IsRoadStationTile(tile)) {
 		if (IsTileOwner(tile, v->owner)) {
@@ -1073,24 +1072,27 @@ static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir
 			return_track(ftd.best_trackdir);
 		}
 	} else {
+		DiagDirection dir;
+
 		if (IsTileType(desttile, MP_STREET)) {
-			m5 = _m[desttile].m5;
-			if (GetRoadType(desttile) == ROAD_DEPOT) goto do_it;
+			if (GetRoadType(desttile) == ROAD_DEPOT) {
+				dir = GetRoadDepotDirection(desttile);
+				goto do_it;
+			}
 		} else if (IsTileType(desttile, MP_STATION)) {
-			m5 = _m[desttile].m5;
-			if (IS_BYTE_INSIDE(m5, 0x43, 0x4B)) {
+			if (IS_BYTE_INSIDE(_m[desttile].m5, 0x43, 0x4B)) {
 				/* We are heading for a station */
-				m5 -= 0x43;
+				dir = GetRoadStationDir(tile);
 do_it:;
 				/* When we are heading for a depot or station, we just
 				 * pretend we are heading for the tile in front, we'll
 				 * see from there */
-				desttile += TileOffsByDir(m5 & 3);
-				if (desttile == tile && bitmask&_road_pf_table_3[m5&3]) {
+				desttile += TileOffsByDir(dir);
+				if (desttile == tile && bitmask & _road_pf_table_3[dir]) {
 					/* If we are already in front of the
 					 * station/depot and we can get in from here,
 					 * we enter */
-					return_track(FindFirstBit2x64(bitmask&_road_pf_table_3[m5&3]));
+					return_track(FindFirstBit2x64(bitmask & _road_pf_table_3[dir]));
 				}
 			}
 		}
@@ -1196,7 +1198,7 @@ static void RoadVehController(Vehicle *v)
 
 		v->cur_speed = 0;
 
-		dir = GB(_m[v->tile].m5, 0, 2);
+		dir = GetRoadDepotDirection(v->tile);
 		v->direction = DiagDirToDir(dir);
 
 		rd2 = _roadveh_data_2[dir];

@@ -16,7 +16,7 @@ RoadBits GetAnyRoadBits(TileIndex tile)
 				default:
 				case ROAD_NORMAL:   return GetRoadBits(tile);
 				case ROAD_CROSSING: return GetCrossingRoadBits(tile);
-				case ROAD_DEPOT:    return DiagDirToRoadBits(GB(_m[tile].m5, 0, 2));
+				case ROAD_DEPOT:    return DiagDirToRoadBits(GetRoadDepotDirection(tile));
 			}
 
 		case MP_STATION:

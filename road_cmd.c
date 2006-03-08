@@ -803,7 +803,7 @@ static void DrawTile_Road(TileInfo *ti)
 			player = GetTileOwner(ti->tile);
 			if (player < MAX_PLAYERS) ormod = PLAYER_SPRITE_COLOR(player);
 
-			drss = _road_display_datas[ti->map5 & 0xF];
+			drss = _road_display_datas[GetRoadDepotDirection(ti->tile)];
 
 			DrawGroundSprite(drss++->image);
 
@@ -1100,7 +1100,7 @@ static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 
 		case ROAD_DEPOT:
 			if (v->type == VEH_Road && v->u.road.frame == 11) {
-				if (_roadveh_enter_depot_unk0[GB(_m[tile].m5, 0, 2)] == v->u.road.state) {
+				if (_roadveh_enter_depot_unk0[GetRoadDepotDirection(tile)] == v->u.road.state) {
 					RoadVehEnterDepot(v);
 					return 4;
 				}
