@@ -65,6 +65,19 @@ static inline DiagDirection ReverseDiagDir(DiagDirection d)
 }
 
 
+typedef enum DiagDirDiff {
+	DIAGDIRDIFF_SAME    = 0,
+	DIAGDIRDIFF_90RIGHT = 1,
+	DIAGDIRDIFF_REVERSE = 2,
+	DIAGDIRDIFF_90LEFT  = 3
+} DiagDirDiff;
+
+static inline DiagDirection ChangeDiagDir(DiagDirection d, DiagDirDiff delta)
+{
+	return (DiagDirection)((d + delta) % 4);
+}
+
+
 static inline DiagDirection DirToDiagDir(Direction dir)
 {
 	return (DiagDirection)(dir >> 1);
