@@ -239,8 +239,8 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 
 	//first find the curve speed limit
 	for (u = v; u->next != NULL; u = u->next, pos++) {
-		int dir = u->direction;
-		int ndir = u->next->direction;
+		Direction dir = u->direction;
+		Direction ndir = u->next->direction;
 		int i;
 
 		for (i = 0; i < 2; i++) {
@@ -373,7 +373,7 @@ static void UpdateTrainAcceleration(Vehicle* v)
 	v->acceleration = clamp(power / weight * 4, 1, 255);
 }
 
-int GetTrainImage(const Vehicle *v, byte direction)
+int GetTrainImage(const Vehicle* v, Direction direction)
 {
 	int img = v->spritenum;
 	int base;
@@ -1444,8 +1444,8 @@ static void ReverseTrainSwapVeh(Vehicle *v, int l, int r)
 		swap_byte(&a->direction, &b->direction);
 
 		/* toggle direction */
-		if (!(a->u.rail.track & 0x80)) a->direction ^= 4;
-		if (!(b->u.rail.track & 0x80)) b->direction ^= 4;
+		if (!(a->u.rail.track & 0x80)) a->direction = ReverseDir(a->direction);
+		if (!(b->u.rail.track & 0x80)) b->direction = ReverseDir(b->direction);
 
 		/* swap more variables */
 		swap_int32(&a->x_pos, &b->x_pos);
@@ -1462,7 +1462,7 @@ static void ReverseTrainSwapVeh(Vehicle *v, int l, int r)
 		VehicleEnterTile(a, a->tile, a->x_pos, a->y_pos);
 		VehicleEnterTile(b, b->tile, b->x_pos, b->y_pos);
 	} else {
-		if (!(a->u.rail.track & 0x80)) a->direction ^= 4;
+		if (!(a->u.rail.track & 0x80)) a->direction = ReverseDir(a->direction);
 		UpdateVarsAfterSwap(a);
 
 		VehicleEnterTile(a, a->tile, a->x_pos, a->y_pos);
@@ -2492,10 +2492,10 @@ static byte AfterSetTrainPos(Vehicle *v, bool new_tile)
 	return old_z;
 }
 
-static const byte _new_vehicle_direction_table[11] = {
-	0, 7, 6, 0,
-	1, 0, 5, 0,
-	2, 3, 4,
+static const Direction _new_vehicle_direction_table[11] = {
+	DIR_N , DIR_NW, DIR_W , 0,
+	DIR_NE, DIR_N , DIR_SW, 0,
+	DIR_E , DIR_SE, DIR_S
 };
 
 static Direction GetNewVehicleDirectionByTile(TileIndex new_tile, TileIndex old_tile)
@@ -2589,7 +2589,7 @@ static const RailtypeSlowdownParams _railtype_slowdown[3] = {
 };
 
 /* Modify the speed of the vehicle due to a turn */
-static void AffectSpeedByDirChange(Vehicle *v, byte new_dir)
+static void AffectSpeedByDirChange(Vehicle* v, Direction new_dir)
 {
 	byte diff;
 	const RailtypeSlowdownParams *rsp;
@@ -2617,9 +2617,9 @@ static void AffectSpeedByZChange(Vehicle *v, byte old_z)
 	}
 }
 
-static const byte _otherside_signal_directions[14] = {
-	1, 3, 1, 3, 5, 3, 0, 0,
-	5, 7, 7, 5, 7, 1,
+static const Direction _otherside_signal_directions[] = {
+	DIR_NE, DIR_SE, DIR_NE, DIR_SE, DIR_SW, DIR_SE, 0, 0,
+	DIR_SW, DIR_NW, DIR_NW, DIR_SW, DIR_NW, DIR_NE,
 };
 
 static void TrainMovedChangeSignals(TileIndex tile, DiagDirection dir)
@@ -2732,7 +2732,7 @@ static void CheckTrainCollision(Vehicle *v)
 
 typedef struct VehicleAtSignalData {
 	TileIndex tile;
-	byte direction;
+	Direction direction;
 } VehicleAtSignalData;
 
 static void *CheckVehicleAtSignal(Vehicle *v, void *data)
@@ -2757,7 +2757,7 @@ static void TrainController(Vehicle *v)
 	DiagDirection enterdir;
 	Direction dir;
 	Direction newdir;
-	byte chosen_dir;
+	Direction chosen_dir;
 	byte chosen_track;
 	byte old_z;
 
@@ -2938,7 +2938,7 @@ red_light: {
 				TileIndex o_tile = gp.new_tile + TileOffsByDir(enterdir);
 				VehicleAtSignalData vasd;
 				vasd.tile = o_tile;
-				vasd.direction = dir ^ 4;
+				vasd.direction = ReverseDir(dir);
 
 				/* check if a train is waiting on the other side */
 				if (VehicleFromPos(o_tile, &vasd, CheckVehicleAtSignal) == NULL) return;

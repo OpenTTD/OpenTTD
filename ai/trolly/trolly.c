@@ -1024,7 +1024,6 @@ static void AiNew_State_BuildPath(Player *p)
 		// This means we are done building!
 
 		if (p->ainew.tbt == AI_TRUCK && !_patches.roadveh_queue) {
-			static const byte _roadbits_by_dir[4] = {2,1,8,4};
 			// If they not queue, they have to go up and down to try again at a station...
 			// We don't want that, so try building some road left or right of the station
 			int dir1, dir2, dir3;
@@ -1047,7 +1046,7 @@ static void AiNew_State_BuildPath(Player *p)
 					dir3 = p->ainew.to_direction;
 				}
 
-				ret = AI_DoCommand(tile, _roadbits_by_dir[dir1], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+				ret = AI_DoCommand(tile, DiagDirToRoadBits(ReverseDiagDir(dir1)), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 				if (!CmdFailed(ret)) {
 					dir1 = TileOffsByDir(dir1);
 					if (IsTileType(tile + dir1, MP_CLEAR) || IsTileType(tile + dir1, MP_TREES)) {
@@ -1059,7 +1058,7 @@ static void AiNew_State_BuildPath(Player *p)
 					}
 				}
 
-				ret = AI_DoCommand(tile, _roadbits_by_dir[dir2], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+				ret = AI_DoCommand(tile, DiagDirToRoadBits(ReverseDiagDir(dir2)), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 				if (!CmdFailed(ret)) {
 					dir2 = TileOffsByDir(dir2);
 					if (IsTileType(tile + dir2, MP_CLEAR) || IsTileType(tile + dir2, MP_TREES)) {
@@ -1071,7 +1070,7 @@ static void AiNew_State_BuildPath(Player *p)
 					}
 				}
 
-				ret = AI_DoCommand(tile, _roadbits_by_dir[dir3^2], 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
+				ret = AI_DoCommand(tile, DiagDirToRoadBits(dir3), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 				if (!CmdFailed(ret)) {
 					dir3 = TileOffsByDir(dir3);
 					if (IsTileType(tile + dir3, MP_CLEAR) || IsTileType(tile + dir3, MP_TREES)) {

@@ -23,7 +23,7 @@
 
 static RailType _cur_railtype;
 static bool _remove_button_clicked;
-static byte _build_depot_direction;
+static DiagDirection _build_depot_direction;
 static byte _waypoint_count = 1;
 static byte _cur_waypoint_type;
 
@@ -101,7 +101,7 @@ static const uint16 _place_depot_extra[12] = {
 void CcRailDepot(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
-		int dir = p2;
+		DiagDirection dir = p2;
 
 		SndPlayTileFx(SND_20_SPLAT_2, tile);
 		ResetObjectToPlace();
@@ -901,7 +901,7 @@ static void ShowBuildWaypointPicker(void)
 
 void InitializeRailGui(void)
 {
-	_build_depot_direction = 3;
+	_build_depot_direction = DIAGDIR_NW;
 	_railstation.numtracks = 1;
 	_railstation.platlength = 1;
 	_railstation.dragdrop = true;

@@ -210,7 +210,7 @@ static const int8 _get_tunlen_inc[5] = { -16, 0, 16, 0, -16 };
 /* Returns the end tile and the length of a tunnel. The length does not
  * include the starting tile (entry), it does include the end tile (exit).
  */
-FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, uint direction)
+FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, DiagDirection direction)
 {
 	FindLengthOfTunnelResult flotr;
 	int x,y;
@@ -246,7 +246,7 @@ FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, uint direction)
 
 static const uint16 _tpfmode1_and[4] = { 0x1009, 0x16, 0x520, 0x2A00 };
 
-static uint SkipToEndOfTunnel(TrackPathFinder *tpf, TileIndex tile, int direction)
+static uint SkipToEndOfTunnel(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
 {
 	FindLengthOfTunnelResult flotr;
 	TPFSetTileBit(tpf, tile, 14);

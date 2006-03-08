@@ -127,7 +127,7 @@ static int32 RemoveShipDepot(TileIndex tile, uint32 flags)
 }
 
 // build a shiplift
-static int32 DoBuildShiplift(TileIndex tile, int dir, uint32 flags)
+static int32 DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 flags)
 {
 	int32 ret;
 	int delta;
@@ -189,17 +189,18 @@ static void MarkTilesAroundDirty(TileIndex tile)
 int32 CmdBuildLock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileIndex tile = TileVirtXY(x, y);
-	uint tileh;
+	DiagDirection dir;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-	tileh = GetTileSlope(tile, NULL);
 
-	if (tileh == 3 || tileh == 6 || tileh == 9 || tileh == 12) {
-		static const byte _shiplift_dirs[16] = {0, 0, 0, 2, 0, 0, 1, 0, 0, 3, 0, 0, 0};
-		return DoBuildShiplift(tile, _shiplift_dirs[tileh], flags);
+	switch (GetTileSlope(tile, NULL)) {
+		case  3: dir = DIAGDIR_SW; break;
+		case  6: dir = DIAGDIR_SE; break;
+		case  9: dir = DIAGDIR_NW; break;
+		case 12: dir = DIAGDIR_NE; break;
+		default: return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}
-
-	return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+	return DoBuildShiplift(tile, dir, flags);
 }
 
 /** Build a piece of canal.

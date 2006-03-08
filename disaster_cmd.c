@@ -74,7 +74,7 @@ static void DisasterVehicleUpdateImage(Vehicle *v)
 	v->cur_image = img;
 }
 
-static void InitializeDisasterVehicle(Vehicle *v, int x, int y, byte z, byte direction, byte subtype)
+static void InitializeDisasterVehicle(Vehicle* v, int x, int y, byte z, Direction direction, byte subtype)
 {
 	v->type = VEH_Disaster;
 	v->x_pos = x;
@@ -552,7 +552,7 @@ static void DisasterTick_4(Vehicle *v)
 			return;
 		}
 
-		InitializeDisasterVehicle(u, -6*16, v->y_pos, 135, 5, 11);
+		InitializeDisasterVehicle(u, -6 * 16, v->y_pos, 135, DIR_SW, 11);
 		u->u.disaster.unk2 = v->index;
 
 		w = ForceAllocateSpecialVehicle();
@@ -560,7 +560,7 @@ static void DisasterTick_4(Vehicle *v)
 			return;
 
 		u->next = w;
-		InitializeDisasterVehicle(w, -6*16, v->y_pos, 0, 5, 12);
+		InitializeDisasterVehicle(w, -6 * 16, v->y_pos, 0, DIR_SW, 12);
 		w->vehstatus |= VS_DISASTER;
 	} else if (v->current_order.station < 1) {
 
@@ -720,13 +720,13 @@ static void Disaster0_Init(void)
 		}
 	}
 
-	InitializeDisasterVehicle(v, x, 0, 135, 3, 0);
+	InitializeDisasterVehicle(v, x, 0, 135, DIR_SE, 0);
 
 	// Allocate shadow too?
 	u = ForceAllocateSpecialVehicle();
 	if (u != NULL) {
 		v->next = u;
-		InitializeDisasterVehicle(u, x, 0, 0, 3, 1);
+		InitializeDisasterVehicle(u, x, 0, 0, DIR_SE, 1);
 		u->vehstatus |= VS_DISASTER;
 	}
 }
@@ -741,7 +741,7 @@ static void Disaster1_Init(void)
 
 	x = TileX(Random()) * 16 + 8;
 
-	InitializeDisasterVehicle(v, x, 0, 135, 3, 2);
+	InitializeDisasterVehicle(v, x, 0, 135, DIR_SE, 2);
 	v->dest_tile = TileXY(MapSizeX() / 2, MapSizeY() / 2);
 	v->age = 0;
 
@@ -749,7 +749,7 @@ static void Disaster1_Init(void)
 	u = ForceAllocateSpecialVehicle();
 	if (u != NULL) {
 		v->next = u;
-		InitializeDisasterVehicle(u,x,0,0,3,3);
+		InitializeDisasterVehicle(u, x, 0, 0, DIR_SE, 3);
 		u->vehstatus |= VS_DISASTER;
 	}
 }
@@ -780,12 +780,12 @@ static void Disaster2_Init(void)
 	x = (MapSizeX() + 9) * 16 - 1;
 	y = TileY(found->xy) * 16 + 37;
 
-	InitializeDisasterVehicle(v,x,y, 135,1,4);
+	InitializeDisasterVehicle(v, x, y, 135, DIR_NE, 4);
 
 	u = ForceAllocateSpecialVehicle();
 	if (u != NULL) {
 		v->next = u;
-		InitializeDisasterVehicle(u,x,y,0,3,5);
+		InitializeDisasterVehicle(u, x, y, 0, DIR_SE, 5);
 		u->vehstatus |= VS_DISASTER;
 	}
 }
@@ -816,18 +816,18 @@ static void Disaster3_Init(void)
 	x = -16 * 16;
 	y = TileY(found->xy) * 16 + 37;
 
-	InitializeDisasterVehicle(v,x,y, 135,5,6);
+	InitializeDisasterVehicle(v, x, y, 135, DIR_SW, 6);
 
 	u = ForceAllocateSpecialVehicle();
 	if (u != NULL) {
 		v->next = u;
-		InitializeDisasterVehicle(u,x,y,0,5,7);
+		InitializeDisasterVehicle(u, x, y, 0, DIR_SW, 7);
 		u->vehstatus |= VS_DISASTER;
 
 		w = ForceAllocateSpecialVehicle();
 		if (w != NULL) {
 			u->next = w;
-			InitializeDisasterVehicle(w,x,y,140,5,8);
+			InitializeDisasterVehicle(w, x, y, 140, DIR_SW, 8);
 		}
 	}
 }
@@ -842,7 +842,7 @@ static void Disaster4_Init(void)
 	x = TileX(Random()) * 16 + 8;
 
 	y = MapMaxX() * 16 - 1;
-	InitializeDisasterVehicle(v, x, y, 135, 7, 9);
+	InitializeDisasterVehicle(v, x, y, 135, DIR_NW, 9);
 	v->dest_tile = TileXY(MapSizeX() / 2, MapSizeY() / 2);
 	v->age = 0;
 
@@ -850,7 +850,7 @@ static void Disaster4_Init(void)
 	u = ForceAllocateSpecialVehicle();
 	if (u != NULL) {
 		v->next = u;
-		InitializeDisasterVehicle(u,x,y,0,7,10);
+		InitializeDisasterVehicle(u, x, y, 0, DIR_NW, 10);
 		u->vehstatus |= VS_DISASTER;
 	}
 }
@@ -860,7 +860,7 @@ static void Disaster5_Init(void)
 {
 	Vehicle *v = ForceAllocateSpecialVehicle();
 	int x,y;
-	byte dir;
+	Direction dir;
 	uint32 r;
 
 	if (v == NULL) return;
@@ -868,10 +868,14 @@ static void Disaster5_Init(void)
 	r = Random();
 	x = TileX(r) * 16 + 8;
 
-	y = 8;
-	dir = 3;
-	if (r & 0x80000000) { y = MapMaxX() * 16 - 8 - 1; dir = 7; }
-	InitializeDisasterVehicle(v, x, y, 0, dir,13);
+	if (r & 0x80000000) {
+		y = MapMaxX() * 16 - 8 - 1;
+		dir = DIR_NW;
+	} else {
+		y = 8;
+		dir = DIR_SE;
+	}
+	InitializeDisasterVehicle(v, x, y, 0, dir, 13);
 	v->age = 0;
 }
 
@@ -880,7 +884,7 @@ static void Disaster6_Init(void)
 {
 	Vehicle *v = ForceAllocateSpecialVehicle();
 	int x,y;
-	byte dir;
+	Direction dir;
 	uint32 r;
 
 	if (v == NULL) return;
@@ -888,10 +892,14 @@ static void Disaster6_Init(void)
 	r = Random();
 	x = TileX(r) * 16 + 8;
 
-	y = 8;
-	dir = 3;
-	if (r & 0x80000000) { y = MapMaxX() * 16 - 8 - 1; dir = 7; }
-	InitializeDisasterVehicle(v, x, y, 0, dir,14);
+	if (r & 0x80000000) {
+		y = MapMaxX() * 16 - 8 - 1;
+		dir = DIR_NW;
+	} else {
+		y = 8;
+		dir = DIR_SE;
+	}
+	InitializeDisasterVehicle(v, x, y, 0, dir, 14);
 	v->age = 0;
 }
 

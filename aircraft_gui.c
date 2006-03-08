@@ -65,7 +65,7 @@ void DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number)
 static void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection)
 {
 	PalSpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-	DrawSprite(GetAircraftImage(v, 6) | pal, x + 25, y + 10);
+	DrawSprite(GetAircraftImage(v, DIR_W) | pal, x + 25, y + 10);
 	if (v->subtype == 0) DrawSprite(SPR_ROTOR_STOPPED, x + 25, y + 5);
 	if (v->index == selection) {
 		DrawFrameRect(x - 1, y - 1, x + 58, y + 21, 0xF, FR_BORDERONLY);
@@ -730,7 +730,7 @@ static void AircraftDepotClickAircraft(Window *w, int x, int y)
 		if (v != NULL) {
 			WP(w,traindepot_d).sel = v->index;
 			SetWindowDirty(w);
-			SetObjectToPlaceWnd(GetVehiclePalette(v) | GetAircraftImage(v, 6), 4, w);
+			SetObjectToPlaceWnd(GetVehiclePalette(v) | GetAircraftImage(v, DIR_W), 4, w);
 		}
 		break;
 

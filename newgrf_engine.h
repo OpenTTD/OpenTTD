@@ -3,6 +3,8 @@
 #ifndef NEWGRF_ENGINE_H
 #define NEWGRF_ENGINE_H
 
+#include "direction.h"
+
 /** @file newgrf_engine.h
  */
 
@@ -15,7 +17,7 @@ VARDEF const uint32 cargo_classes[16];
 void SetWagonOverrideSprites(EngineID engine, struct SpriteGroup *group, byte *train_id, int trains);
 void SetCustomEngineSprites(EngineID engine, byte cargo, struct SpriteGroup *group);
 // loaded is in percents, overriding_engine 0xffff is none
-int GetCustomEngineSprite(EngineID engine, const Vehicle *v, byte direction);
+int GetCustomEngineSprite(EngineID engine, const Vehicle* v, Direction direction);
 uint16 GetCallBackResult(uint16 callback_info, EngineID engine, const Vehicle *v);
 bool UsesWagonOverride(const Vehicle *v);
 #define GetCustomVehicleSprite(v, direction) GetCustomEngineSprite(v->engine_type, v, direction)

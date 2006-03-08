@@ -60,7 +60,7 @@ static const uint16 _road_pf_table_3[4] = {
 	0x910, 0x1600, 0x2005, 0x2A
 };
 
-int GetRoadVehImage(const Vehicle *v, byte direction)
+int GetRoadVehImage(const Vehicle* v, Direction direction)
 {
 	int img = v->spritenum;
 	int image;
@@ -718,7 +718,7 @@ typedef struct RoadVehFindData {
 	int x;
 	int y;
 	const Vehicle* veh;
-	byte dir;
+	Direction dir;
 } RoadVehFindData;
 
 static void* EnumCheckRoadVehClose(Vehicle *v, void* data)
@@ -744,7 +744,7 @@ static void* EnumCheckRoadVehClose(Vehicle *v, void* data)
 			v : NULL;
 }
 
-static Vehicle *RoadVehFindCloseTo(Vehicle *v, int x, int y, byte dir)
+static Vehicle* RoadVehFindCloseTo(Vehicle* v, int x, int y, Direction dir)
 {
 	RoadVehFindData rvf;
 	Vehicle *u;
@@ -833,12 +833,12 @@ static bool RoadVehAccelerate(Vehicle *v)
 	return (t < v->progress);
 }
 
-static byte RoadVehGetNewDirection(Vehicle *v, int x, int y)
+static Direction RoadVehGetNewDirection(const Vehicle* v, int x, int y)
 {
-	static const byte _roadveh_new_dir[11] = {
-		0, 7, 6, 0,
-		1, 0, 5, 0,
-		2, 3, 4
+	static const Direction _roadveh_new_dir[] = {
+		DIR_N , DIR_NW, DIR_W , 0,
+		DIR_NE, DIR_N , DIR_SW, 0,
+		DIR_E , DIR_SE, DIR_S
 	};
 
 	x = x - v->x_pos + 1;
@@ -848,10 +848,11 @@ static byte RoadVehGetNewDirection(Vehicle *v, int x, int y)
 	return _roadveh_new_dir[y * 4 + x];
 }
 
-static byte RoadVehGetSlidingDirection(Vehicle *v, int x, int y)
+static Direction RoadVehGetSlidingDirection(const Vehicle* v, int x, int y)
 {
-	byte b = RoadVehGetNewDirection(v, x, y);
-	byte d = v->direction;
+	Direction b = RoadVehGetNewDirection(v, x, y);
+	Direction d = v->direction;
+
 	if (b == d) return d;
 	d = (d + 1) & 7;
 	if (b == d) return d;
@@ -980,7 +981,7 @@ static bool EnumRoadTrackFindDist(TileIndex tile, void* data, int track, uint le
 
 // Returns direction to choose
 // or -1 if the direction is currently blocked
-static int RoadFindPathToDest(Vehicle *v, TileIndex tile, int enterdir)
+static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir)
 {
 #define return_track(x) {best_track = x; goto found_best_track; }
 
@@ -1154,7 +1155,8 @@ static const byte _roadveh_data_2[4] = { 0,1,8,9 };
 
 static void RoadVehController(Vehicle *v)
 {
-	byte new_dir, old_dir;
+	Direction new_dir;
+	Direction old_dir;
 	RoadDriveEntry rd;
 	int x,y;
 	uint32 r;
@@ -1273,7 +1275,7 @@ static void RoadVehController(Vehicle *v)
 		TileIndex tile = v->tile + TileOffsByDir(rd.x & 3);
 		int dir = RoadFindPathToDest(v, tile, rd.x & 3);
 		uint32 r;
-		byte newdir;
+		Direction newdir;
 		const RoadDriveEntry *rdp;
 
 		if (dir == -1) {
@@ -1339,7 +1341,7 @@ again:
 		int dir = RoadFindPathToDest(v, v->tile,	rd.x & 3);
 		uint32 r;
 		int tmp;
-		byte newdir;
+		Direction newdir;
 		const RoadDriveEntry *rdp;
 
 		if (dir == -1) {

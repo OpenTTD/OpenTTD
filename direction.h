@@ -17,6 +17,11 @@ typedef enum Direction {
 	INVALID_DIR = 0xFF,
 } Direction;
 
+static inline Direction ReverseDir(Direction d)
+{
+	return (Direction)(4 ^ d);
+}
+
 
 /* Direction commonly used as the direction of entering and leaving tiles, 4-way */
 typedef enum DiagDirection {

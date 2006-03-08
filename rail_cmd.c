@@ -1788,8 +1788,8 @@ bool UpdateSignalsOnSegment(TileIndex tile, Direction dir)
 
 void SetSignalsOnBothDir(TileIndex tile, byte track)
 {
-	static const byte _search_dir_1[6] = {1, 3, 1, 3, 5, 3};
-	static const byte _search_dir_2[6] = {5, 7, 7, 5, 7, 1};
+	static const Direction _search_dir_1[] = { DIR_NE, DIR_SE, DIR_NE, DIR_SE, DIR_SW, DIR_SE };
+	static const Direction _search_dir_2[] = { DIR_SW, DIR_NW, DIR_NW, DIR_SW, DIR_NW, DIR_NE };
 
 	UpdateSignalsOnSegment(tile, _search_dir_1[track]);
 	UpdateSignalsOnSegment(tile, _search_dir_2[track]);
@@ -2069,15 +2069,13 @@ static const byte _deltacoord_leaveoffset[8] = {
 	-1,  0,  1,  0, /* x */
 	 0,  1,  0, -1  /* y */
 };
-static const byte _enter_directions[4] = {5, 7, 1, 3};
-static const byte _leave_directions[4] = {1, 3, 5, 7};
 static const byte _depot_track_mask[4] = {1, 2, 1, 2};
 
 static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 {
 	byte fract_coord;
 	byte fract_coord_leave;
-	int dir;
+	DiagDirection dir;
 	int length;
 
 	// this routine applies only to trains in depot tiles
@@ -2102,11 +2100,11 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 		/* make sure a train is not entering the tile from behind */
 		return 8;
 	} else if (_fractcoords_enter[dir] == fract_coord) {
-		if (_enter_directions[dir] == v->direction) {
+		if (DiagDirToDir(ReverseDiagDir(dir)) == v->direction) {
 			/* enter the depot */
 			v->u.rail.track = 0x80,
 			v->vehstatus |= VS_HIDDEN; /* hide it */
-			v->direction ^= 4;
+			v->direction = ReverseDir(v->direction);
 			if (v->next == NULL)
 				TrainEnterDepot(v, tile);
 			v->tile = tile;
@@ -2114,7 +2112,7 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 			return 4;
 		}
 	} else if (fract_coord_leave == fract_coord) {
-		if (_leave_directions[dir] == v->direction) {
+		if (DiagDirToDir(dir) == v->direction) {
 			/* leave the depot? */
 			if ((v = v->next) != NULL) {
 				v->vehstatus &= ~VS_HIDDEN;

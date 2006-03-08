@@ -44,7 +44,7 @@ void DrawShipEngine(int x, int y, EngineID engine, uint32 image_ormod)
 	DrawSprite((6 + _ship_sprites[spritenum]) | image_ormod, x, y);
 }
 
-int GetShipImage(const Vehicle *v, byte direction)
+int GetShipImage(const Vehicle* v, Direction direction)
 {
 	int spritenum = v->spritenum;
 
@@ -579,10 +579,10 @@ static int ChooseShipTrack(Vehicle *v, TileIndex tile, int enterdir, uint tracks
 	}
 }
 
-static const byte _new_vehicle_direction_table[11] = {
-	0, 7, 6, 0,
-	1, 0, 5, 0,
-	2, 3, 4,
+static const Direction _new_vehicle_direction_table[] = {
+	DIR_N , DIR_NW, DIR_W , 0,
+	DIR_NE, DIR_N , DIR_SW, 0,
+	DIR_E , DIR_SE, DIR_S
 };
 
 static int ShipGetNewDirectionFromTiles(TileIndex new_tile, TileIndex old_tile)
@@ -646,7 +646,9 @@ static void ShipController(Vehicle *v)
 	GetNewVehiclePosResult gp;
 	uint32 r;
 	const byte *b;
-	int dir,track,tracks;
+	Direction dir;
+	int track;
+	int tracks;
 
 	v->tick_counter++;
 
@@ -736,23 +738,24 @@ static void ShipController(Vehicle *v)
 			}
 		}
 	} else {
+		DiagDirection diagdir;
 		// new tile
 		if (TileX(gp.new_tile) >= MapMaxX() || TileY(gp.new_tile) >= MapMaxY())
 			goto reverse_direction;
 
 		dir = ShipGetNewDirectionFromTiles(gp.new_tile, gp.old_tile);
-		assert(dir == 1 || dir == 3 || dir == 5 || dir == 7);
-		dir>>=1;
-		tracks = GetAvailShipTracks(gp.new_tile, dir);
+		assert(dir == DIR_NE || dir == DIR_SE || dir == DIR_SW || dir == DIR_NW);
+		diagdir = DirToDiagDir(dir);
+		tracks = GetAvailShipTracks(gp.new_tile, diagdir);
 		if (tracks == 0)
 			goto reverse_direction;
 
 		// Choose a direction, and continue if we find one
-		track = ChooseShipTrack(v, gp.new_tile, dir, tracks);
+		track = ChooseShipTrack(v, gp.new_tile, diagdir, tracks);
 		if (track < 0)
 			goto reverse_direction;
 
-		b = _ship_subcoord[dir][track];
+		b = _ship_subcoord[diagdir][track];
 
 		gp.x = (gp.x&~0xF) | b[0];
 		gp.y = (gp.y&~0xF) | b[1];
@@ -783,7 +786,7 @@ getout:
 	return;
 
 reverse_direction:
-	dir = v->direction ^ 4;
+	dir = ReverseDir(v->direction);
 	v->direction = dir;
 	goto getout;
 }

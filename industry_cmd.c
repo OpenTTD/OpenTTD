@@ -907,7 +907,7 @@ static bool IsBadFarmFieldTile2(TileIndex tile)
 	}
 }
 
-static void SetupFarmFieldFence(TileIndex tile, int size, byte type, int direction)
+static void SetupFarmFieldFence(TileIndex tile, int size, byte type, Axis direction)
 {
 	do {
 		tile = TILE_MASK(tile);
@@ -917,14 +917,14 @@ static void SetupFarmFieldFence(TileIndex tile, int size, byte type, int directi
 
 			if (or == 1 && CHANCE16(1, 7)) or = 2;
 
-			if (direction) {
-				SetFenceSW(tile, or);
-			} else {
+			if (direction == AXIS_X) {
 				SetFenceSE(tile, or);
+			} else {
+				SetFenceSW(tile, or);
 			}
 		}
 
-		tile += direction ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
+		tile += (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 	} while (--size);
 }
 
@@ -984,10 +984,10 @@ static void PlantFarmField(TileIndex tile)
 		type = _plantfarmfield_type[Random() & 0xF];
 	}
 
-	SetupFarmFieldFence(tile - TileDiffXY(1, 0), size_y, type, 1);
-	SetupFarmFieldFence(tile - TileDiffXY(0, 1), size_x, type, 0);
-	SetupFarmFieldFence(tile + TileDiffXY(size_x - 1, 0), size_y, type, 1);
-	SetupFarmFieldFence(tile + TileDiffXY(0, size_y - 1), size_x, type, 0);
+	SetupFarmFieldFence(tile - TileDiffXY(1, 0), size_y, type, AXIS_Y);
+	SetupFarmFieldFence(tile - TileDiffXY(0, 1), size_x, type, AXIS_X);
+	SetupFarmFieldFence(tile + TileDiffXY(size_x - 1, 0), size_y, type, AXIS_Y);
+	SetupFarmFieldFence(tile + TileDiffXY(0, size_y - 1), size_x, type, AXIS_X);
 }
 
 static void MaybePlantFarmField(const Industry* i)

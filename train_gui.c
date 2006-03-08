@@ -362,7 +362,7 @@ static void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, 
 
 			if (dx + width <= count) {
 				PalSpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-				DrawSprite(GetTrainImage(v, 6) | pal, x + 14 + WagonLengthToPixels(dx), y + 6 + (is_custom_sprite(RailVehInfo(v->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
+				DrawSprite(GetTrainImage(v, DIR_W) | pal, x + 14 + WagonLengthToPixels(dx), y + 6 + (is_custom_sprite(RailVehInfo(v->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
 				if (v->index == selection)
 					DrawFrameRect(x - 1 + WagonLengthToPixels(dx), y - 1, x + WagonLengthToPixels(dx + width) - 1, y + 12, 15, FR_BORDERONLY);
 			}
@@ -577,7 +577,7 @@ static void TrainDepotClickTrain(Window *w, int x, int y)
 			TrainDepotMoveVehicle(v, sel, gdvp.head);
 		} else if (v != NULL) {
 			WP(w,traindepot_d).sel = v->index;
-			SetObjectToPlaceWnd(GetVehiclePalette(v) | GetTrainImage(v, 6), 4, w);
+			SetObjectToPlaceWnd(GetVehiclePalette(v) | GetTrainImage(v, DIR_W), 4, w);
 			SetWindowDirty(w);
 		}
 		break;

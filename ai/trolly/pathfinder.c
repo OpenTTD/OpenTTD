@@ -372,7 +372,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 
 extern uint GetRailFoundation(uint tileh, uint bits);
 extern uint GetRoadFoundation(uint tileh, uint bits);
-extern uint GetBridgeFoundation(uint tileh, byte direction);
+extern uint GetBridgeFoundation(uint tileh, Axis); // XXX function declaration in .c
 enum {
 	BRIDGE_NO_FOUNDATION = 1 << 0 | 1 << 3 | 1 << 6 | 1 << 9 | 1 << 12,
 };

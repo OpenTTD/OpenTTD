@@ -817,7 +817,7 @@ int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invali
 	return cost;
 }
 
-static bool CanExpandRailroadStation(Station *st, uint *fin, int direction)
+static bool CanExpandRailroadStation(Station* st, uint* fin, Axis axis)
 {
 	uint curw = st->trainst_w, curh = st->trainst_h;
 	TileIndex tile = fin[0];
@@ -832,8 +832,8 @@ static bool CanExpandRailroadStation(Station *st, uint *fin, int direction)
 		curh = max(TileY(st->train_tile) + curh, TileY(tile) + h) - y;
 		tile = TileXY(x, y);
 	} else {
-		// check so the direction is the same
-		if ((_m[st->train_tile].m5 & 1) != direction) {
+		// check so the orientation is the same
+		if ((_m[st->train_tile].m5 & 1U) != axis) {
 			_error_message = STR_306D_NONUNIFORM_STATIONS_DISALLOWED;
 			return false;
 		}
@@ -934,7 +934,7 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int32 cost, ret;
 	StationID est;
 	int plat_len, numtracks;
-	int direction;
+	Axis axis;
 	uint finalvalues[3];
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
@@ -946,16 +946,16 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!ValParamRailtype(p2 & 0xF)) return CMD_ERROR;
 
 	/* unpack parameters */
-	direction = p1 & 1;
+	axis = p1 & 1;
 	numtracks = GB(p1,  8, 8);
 	plat_len  = GB(p1, 16, 8);
 	/* w = length, h = num_tracks */
-	if (direction) {
-		h_org = plat_len;
-		w_org = numtracks;
-	} else {
+	if (axis == AXIS_X) {
 		w_org = plat_len;
 		h_org = numtracks;
+	} else {
+		h_org = plat_len;
+		w_org = numtracks;
 	}
 
 	if (h_org > _patches.station_spread || w_org > _patches.station_spread) return CMD_ERROR;
@@ -969,7 +969,7 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	est = INVALID_STATION;
 	// If DC_EXEC is in flag, do not want to pass it to CheckFlatLandBelow, because of a nice bug
 	//  for detail info, see: https://sourceforge.net/tracker/index.php?func=detail&aid=1029064&group_id=103924&atid=636365
-	if (CmdFailed(ret = CheckFlatLandBelow(tile_org, w_org, h_org, flags&~DC_EXEC, 5 << direction, _patches.nonuniform_stations ? &est : NULL))) return CMD_ERROR;
+	if (CmdFailed(ret = CheckFlatLandBelow(tile_org, w_org, h_org, flags&~DC_EXEC, 5 << axis, _patches.nonuniform_stations ? &est : NULL))) return CMD_ERROR;
 	cost = ret + (numtracks * _price.train_station_track + _price.train_station_length) * plat_len;
 
 	// Make sure there are no similar stations around us.
@@ -991,7 +991,7 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			// check if we want to expanding an already existing station?
 			if (_is_old_ai_player || !_patches.join_stations)
 				return_cmd_error(STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD);
-			if (!CanExpandRailroadStation(st, finalvalues, direction))
+			if (!CanExpandRailroadStation(st, finalvalues, axis))
 				return CMD_ERROR;
 		}
 
@@ -1021,7 +1021,7 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		// Now really clear the land below the station
 		// It should never return CMD_ERROR.. but you never know ;)
 		//  (a bit strange function name for it, but it really does clear the land, when DC_EXEC is in flags)
-		if (CmdFailed(CheckFlatLandBelow(tile_org, w_org, h_org, flags, 5 << direction, _patches.nonuniform_stations ? &est : NULL))) return CMD_ERROR;
+		if (CmdFailed(CheckFlatLandBelow(tile_org, w_org, h_org, flags, 5 << axis, _patches.nonuniform_stations ? &est : NULL))) return CMD_ERROR;
 
 		st->train_tile = finalvalues[0];
 		if (!st->facilities) st->xy = finalvalues[0];
@@ -1033,8 +1033,8 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		st->build_date = _date;
 
-		tile_delta = direction ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
-		track = direction ? TRACK_Y : TRACK_X;
+		tile_delta = (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
+		track = (axis == AXIS_X ? TRACK_X : TRACK_Y);
 
 		statspec = (p2 & 0x10) != 0 ? GetCustomStation(STAT_CLASS_DFLT, p2 >> 8) : NULL;
 		layout_ptr = alloca(numtracks * plat_len);
@@ -1051,7 +1051,7 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					station_index, /* map2 parameter */
 					p2 & 0xFF,     /* map3lo parameter */
 					p2 >> 8,       /* map3hi parameter */
-					(*layout_ptr++) + direction   /* map5 parameter */
+					(*layout_ptr++) + axis   /* map5 parameter */
 				);
 
 				tile += tile_delta;
@@ -1172,27 +1172,27 @@ uint GetStationPlatforms(const Station *st, TileIndex tile)
 {
 	TileIndex t;
 	TileIndexDiff delta;
-	int dir;
+	Axis dir;
 	uint len;
 	assert(TileBelongsToRailStation(st, tile));
 
 	len = 0;
 	dir = _m[tile].m5 & 1;
-	delta = dir ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
+	delta = (dir == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 
 	// find starting tile..
 	t = tile;
 	do {
 		t -= delta;
 		len++;
-	} while (TileBelongsToRailStation(st, t) && (_m[t].m5 & 1) == dir);
+	} while (TileBelongsToRailStation(st, t) && (_m[t].m5 & 1U) == dir);
 
 	// find ending tile
 	t = tile;
 	do {
 		t += delta;
 		len++;
-	} while (TileBelongsToRailStation(st, t) && (_m[t].m5 & 1) == dir);
+	} while (TileBelongsToRailStation(st, t) && (_m[t].m5 & 1U) == dir);
 
 	return len - 1;
 }
@@ -1806,17 +1806,17 @@ int32 CmdBuildDock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileIndex tile = TileVirtXY(x, y);
 	TileIndex tile_cur;
-	int direction;
+	DiagDirection direction;
 	int32 cost;
 	Station *st;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	switch (GetTileSlope(tile, NULL)) {
-		case  3: direction = 0; break;
-		case  6: direction = 3; break;
-		case  9: direction = 1; break;
-		case 12: direction = 2; break;
+		case  3: direction = DIAGDIR_NE; break;
+		case  6: direction = DIAGDIR_NW; break;
+		case  9: direction = DIAGDIR_SE; break;
+		case 12: direction = DIAGDIR_SW; break;
 		default: return_cmd_error(STR_304B_SITE_UNSUITABLE);
 	}
 
@@ -1898,7 +1898,8 @@ int32 CmdBuildDock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			MP_MAP2 | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR |
 			MP_MAP5,
 			st->index,
-			(direction&1) + 0x50);
+			DiagDirToAxis(direction) + 0x50
+		);
 
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);

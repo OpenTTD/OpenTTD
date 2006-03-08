@@ -119,7 +119,7 @@ static inline int GetBridgeType(TileIndex tile)
  *	is_start_tile = false		<-- end tile
  *	is_start_tile = true		<-- start tile
  */
-static uint32 CheckBridgeSlope(uint direction, uint tileh, bool is_start_tile)
+static uint32 CheckBridgeSlope(Axis direction, uint tileh, bool is_start_tile)
 {
 	if (IsSteepTileh(tileh)) return CMD_ERROR;
 
@@ -129,7 +129,7 @@ static uint32 CheckBridgeSlope(uint direction, uint tileh, bool is_start_tile)
 				- direction X: tiles 0, 12
 				- direction Y: tiles 0,  9
 		*/
-		if ((direction ? 0x201 : 0x1001) & (1 << tileh)) return 0;
+		if ((direction == AXIS_X ? 0x1001 : 0x201) & (1 << tileh)) return 0;
 
 		// disallow certain start tiles to avoid certain crooked bridges
 		if (tileh == 2) return CMD_ERROR;
@@ -139,7 +139,7 @@ static uint32 CheckBridgeSlope(uint direction, uint tileh, bool is_start_tile)
 				- direction X: tiles 0, 3
 				- direction Y: tiles 0, 6
 		*/
-		if ((direction? 0x41 : 0x9) & (1 << tileh)) return 0;
+		if ((direction == AXIS_X ? 0x9 : 0x41) & (1 << tileh)) return 0;
 
 		// disallow certain end tiles to avoid certain crooked bridges
 		if (tileh == 8) return CMD_ERROR;
@@ -149,8 +149,8 @@ static uint32 CheckBridgeSlope(uint direction, uint tileh, bool is_start_tile)
 	 *	start-tile:	X 2,1 Y 2,4 (2 was disabled before)
 	 *	end-tile:		X 8,4 Y 8,1 (8 was disabled before)
 	 */
-	if ((tileh == 1 && is_start_tile != (bool)direction) ||
-			(tileh == 4 && is_start_tile == (bool)direction)) {
+	if ((tileh == 1 && is_start_tile != (direction != AXIS_X)) ||
+			(tileh == 4 && is_start_tile == (direction != AXIS_X))) {
 		return CMD_ERROR;
 	}
 
@@ -200,7 +200,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	TileInfo ti_start, ti_end, ti; /* OPT: only 2 of those are ever used */
 	uint bridge_len;
 	uint odd_middle_part;
-	uint direction;
+	Axis direction;
 	uint i;
 	int32 cost, terraformcost, ret;
 	bool allow_on_slopes;
@@ -225,17 +225,16 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	sx = TileX(p1) * 16;
 	sy = TileY(p1) * 16;
 
-	direction = 0;
-
 	/* check if valid, and make sure that (x,y) are smaller than (sx,sy) */
 	if (x == sx) {
 		if (y == sy) return_cmd_error(STR_5008_CANNOT_START_AND_END_ON);
-		direction = 1;
+		direction = AXIS_Y;
 		if (y > sy) {
 			intswap(y,sy);
 			intswap(x,sx);
 		}
 	} else if (y == sy) {
+		direction = AXIS_X;
 		if (x > sx) {
 			intswap(y,sy);
 			intswap(x,sx);
@@ -327,10 +326,10 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	odd_middle_part = (bridge_len % 2) ? (bridge_len / 2) : bridge_len;
 
 	for (i = 0; i != bridge_len; i++) {
-		if (direction != 0) {
-			y += 16;
-		} else {
+		if (direction == AXIS_X) {
 			x += 16;
+		} else {
+			y += 16;
 		}
 
 		FindLandscapeHeight(&ti, x, y);
@@ -349,13 +348,15 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				break;
 
 			case MP_RAILWAY:
-				if (ti.map5 != (direction == 0 ? 2 : 1)) goto not_valid_below;
+				if (ti.map5 != (direction == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X)) {
+					goto not_valid_below;
+				}
 				m5 = 0xE0;
 				break;
 
 			case MP_STREET:
 				if (GetRoadType(ti.tile) != ROAD_NORMAL ||
-						GetRoadBits(ti.tile) != (direction == 0 ? ROAD_Y : ROAD_X)) {
+						GetRoadBits(ti.tile) != (direction == AXIS_X ? ROAD_Y : ROAD_X)) {
 					goto not_valid_below;
 				}
 				m5 = 0xE8;
@@ -408,7 +409,7 @@ not_valid_below:;
 		}
 	}
 
-	SetSignalsOnBothDir(ti_start.tile, (direction & 1) ? 1 : 0);
+	SetSignalsOnBothDir(ti_start.tile, direction == AXIS_X ? TRACK_X : TRACK_Y);
 
 	/*	for human player that builds the bridge he gets a selection to choose from bridges (DC_QUERY_COST)
 			It's unnecessary to execute this command every time for every bridge. So it is done only
@@ -546,7 +547,6 @@ static int32 DoClearTunnel(TileIndex tile, uint32 flags)
 	Town *t;
 	TileIndex endtile;
 	uint length;
-	static const byte _updsignals_tunnel_dir[4] = { 5, 7, 1, 3};
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -574,8 +574,7 @@ static int32 DoClearTunnel(TileIndex tile, uint32 flags)
 	if (flags & DC_EXEC) {
 		// We first need to request the direction before calling DoClearSquare
 		//  else the direction is always 0.. dah!! ;)
-		DiagDirection tile_dir    = GetTunnelDirection(tile);
-		DiagDirection endtile_dir = GetTunnelDirection(endtile);
+		DiagDirection dir = GetTunnelDirection(tile);
 
 		// Adjust the town's player rating. Do this before removing the tile owner info.
 		if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR)
@@ -583,22 +582,22 @@ static int32 DoClearTunnel(TileIndex tile, uint32 flags)
 
 		DoClearSquare(tile);
 		DoClearSquare(endtile);
-		UpdateSignalsOnSegment(tile, _updsignals_tunnel_dir[tile_dir]);
-		UpdateSignalsOnSegment(endtile, _updsignals_tunnel_dir[endtile_dir]);
+		UpdateSignalsOnSegment(tile, DiagDirToDir(ReverseDiagDir(dir)));
+		UpdateSignalsOnSegment(endtile, DiagDirToDir(dir));
 	}
 	return _price.clear_tunnel * (length + 1);
 }
 
 static TileIndex FindEdgesOfBridge(TileIndex tile, TileIndex *endtile)
 {
-	int direction = GB(_m[tile].m5, 0, 1);
+	Axis direction = GB(_m[tile].m5, 0, 1);
 	TileIndex start;
 
 	// find start of bridge
 	for (;;) {
 		if (IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5 & 0xE0) == 0x80)
 			break;
-		tile += direction ? TileDiffXY(0, -1) : TileDiffXY(-1, 0);
+		tile += (direction == AXIS_X ? TileDiffXY(-1, 0) : TileDiffXY(0, -1));
 	}
 
 	start = tile;
@@ -607,7 +606,7 @@ static TileIndex FindEdgesOfBridge(TileIndex tile, TileIndex *endtile)
 	for (;;) {
 		if (IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5 & 0xE0) == 0xA0)
 			break;
-		tile += direction ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
+		tile += (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 	}
 
 	*endtile = tile;
@@ -620,7 +619,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 	TileIndex endtile;
 	Vehicle *v;
 	Town *t;
-	int direction;
+	Axis direction;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -672,8 +671,8 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 			Omit tile and endtile, since these are already checked, thus solving the problem
 			of bridges over water, or higher bridges, where z is not increased, eg level bridge
 	*/
-	tile		+= direction ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
-	endtile	-= direction ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
+	tile		+= (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
+	endtile	-= (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 	/* Bridges on slopes might have their Z-value offset..correct this */
 	v = FindVehicleBetween(tile, endtile, TilePixelHeight(tile) + 8 + GetCorrectTileHeight(tile));
 	if (v != NULL) {
@@ -682,9 +681,8 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 	}
 
 	/* Put the tiles back to start/end position */
-	tile		-= direction ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
-	endtile	+= direction ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
-
+	tile		-= (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
+	endtile	+= (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 
 	t = ClosestTownFromTile(tile, (uint)-1); //needed for town rating penalty
 	// check if you're allowed to remove the bridge owned by a town.
@@ -726,17 +724,17 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 clear_it:;
 				DoClearSquare(c);
 			}
-			c += direction ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
+			c += (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 		} while (c <= endtile);
 
-		SetSignalsOnBothDir(tile, direction);
-		SetSignalsOnBothDir(endtile, direction);
+		SetSignalsOnBothDir(tile,    direction == AXIS_X ? TRACK_X : TRACK_Y);
+		SetSignalsOnBothDir(endtile, direction == AXIS_X ? TRACK_X : TRACK_Y);
 	}
 
-	if (direction) {
-		return (TileY(endtile) - TileY(tile) + 1) * _price.clear_bridge;
-	} else {
+	if (direction == AXIS_X) {
 		return (TileX(endtile) - TileX(tile) + 1) * _price.clear_bridge;
+	} else {
+		return (TileY(endtile) - TileY(tile) + 1) * _price.clear_bridge;
 	}
 }
 
@@ -918,7 +916,7 @@ static void DrawBridgePillars(const TileInfo *ti, int x, int y, int z)
 	}
 }
 
-uint GetBridgeFoundation(uint tileh, byte direction)
+uint GetBridgeFoundation(uint tileh, Axis axis)
 {
 	int i;
 	// normal level sloped building (7, 11, 13, 14)
@@ -931,8 +929,8 @@ uint GetBridgeFoundation(uint tileh, byte direction)
 				(i += 2, tileh == 4) ||
 				(i += 2, tileh == 8)
 			) && (
-				direction == 0 ||
-				(i++, direction == 1)
+				      axis == AXIS_X ||
+				(i++, axis == AXIS_Y)
 			)) {
 		return i + 15;
 	}

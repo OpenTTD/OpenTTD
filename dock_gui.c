@@ -18,7 +18,7 @@
 static void ShowBuildDockStationPicker(void);
 static void ShowBuildDocksDepotPicker(void);
 
-static byte _ship_depot_direction;
+static Axis _ship_depot_direction;
 
 void CcBuildDocks(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
@@ -293,7 +293,7 @@ static void ShowBuildDockStationPicker(void)
 
 static void UpdateDocksDirection(void)
 {
-	if (_ship_depot_direction != 0) {
+	if (_ship_depot_direction != AXIS_X) {
 		SetTileSelectSize(1, 2);
 	} else {
 		SetTileSelectSize(2, 1);
@@ -362,5 +362,5 @@ static void ShowBuildDocksDepotPicker(void)
 
 void InitializeDockGui(void)
 {
-	_ship_depot_direction = 0;
+	_ship_depot_direction = AXIS_X;
 }

@@ -388,7 +388,7 @@ static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *
 	return group;
 }
 
-int GetCustomEngineSprite(EngineID engine, const Vehicle *v, byte direction)
+int GetCustomEngineSprite(EngineID engine, const Vehicle* v, Direction direction)
 {
 	const SpriteGroup *group;
 	const RealSpriteGroup *rsg;

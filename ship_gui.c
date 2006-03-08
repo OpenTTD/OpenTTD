@@ -65,7 +65,7 @@ void DrawShipPurchaseInfo(int x, int y, EngineID engine_number)
 
 static void DrawShipImage(const Vehicle *v, int x, int y, VehicleID selection)
 {
-	DrawSprite(GetShipImage(v, 6) | GetVehiclePalette(v), x + 32, y + 10);
+	DrawSprite(GetShipImage(v, DIR_W) | GetVehiclePalette(v), x + 32, y + 10);
 
 	if (v->index == selection) {
 		DrawFrameRect(x - 5, y - 1, x + 67, y + 21, 15, FR_BORDERONLY);
@@ -713,7 +713,7 @@ static void ShipDepotClick(Window *w, int x, int y)
 		if (v != NULL) {
 			WP(w,traindepot_d).sel = v->index;
 			SetWindowDirty(w);
-			SetObjectToPlaceWnd(GetVehiclePalette(v) | GetShipImage(v, 6), 4, w);
+			SetObjectToPlaceWnd(GetVehiclePalette(v) | GetShipImage(v, DIR_W), 4, w);
 		}
 		break;
 

@@ -269,10 +269,10 @@ void ViewportAddVehicles(DrawPixelInfo *dpi);
 void TrainEnterDepot(Vehicle *v, TileIndex tile);
 
 /* train_cmd.h */
-int GetTrainImage(const Vehicle *v, byte direction);
-int GetAircraftImage(const Vehicle *v, byte direction);
-int GetRoadVehImage(const Vehicle *v, byte direction);
-int GetShipImage(const Vehicle *v, byte direction);
+int GetTrainImage(const Vehicle* v, Direction direction);
+int GetAircraftImage(const Vehicle* v, Direction direction);
+int GetRoadVehImage(const Vehicle* v, Direction direction);
+int GetShipImage(const Vehicle* v, Direction direction);
 
 Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicle type);
 Vehicle *CreateEffectVehicleAbove(int x, int y, int z, EffectVehicle type);
@@ -332,7 +332,7 @@ Trackdir GetVehicleTrackdir(const Vehicle* v);
 
 /* returns true if staying in the same tile */
 bool GetNewVehiclePos(const Vehicle *v, GetNewVehiclePosResult *gp);
-byte GetDirectionTowards(const Vehicle *v, int x, int y);
+Direction GetDirectionTowards(const Vehicle* v, int x, int y);
 
 #define BEGIN_ENUM_WAGONS(v) do {
 #define END_ENUM_WAGONS(v) } while ( (v=v->next) != NULL);

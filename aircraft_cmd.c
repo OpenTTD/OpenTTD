@@ -91,7 +91,7 @@ static bool HaveHangarInOrderList(Vehicle *v)
 }
 #endif
 
-int GetAircraftImage(const Vehicle *v, byte direction)
+int GetAircraftImage(const Vehicle* v, Direction direction)
 {
 	int spritenum = v->spritenum;
 

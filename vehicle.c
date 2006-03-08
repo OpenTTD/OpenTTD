@@ -1921,15 +1921,16 @@ bool GetNewVehiclePos(const Vehicle *v, GetNewVehiclePosResult *gp)
 	return gp->old_tile == gp->new_tile;
 }
 
-static const byte _new_direction_table[9] = {
-	0, 7, 6,
-	1, 3, 5,
-	2, 3, 4,
+static const Direction _new_direction_table[] = {
+	DIR_N , DIR_NW, DIR_W ,
+	DIR_NE, DIR_SE, DIR_SW,
+	DIR_E , DIR_SE, DIR_S
 };
 
-byte GetDirectionTowards(const Vehicle *v, int x, int y)
+Direction GetDirectionTowards(const Vehicle* v, int x, int y)
 {
-	byte dirdiff, dir;
+	Direction dir;
+	byte dirdiff;
 	int i = 0;
 
 	if (y >= v->y_pos) {

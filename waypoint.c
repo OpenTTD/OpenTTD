@@ -292,7 +292,7 @@ int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		int direction = _m[tile].m5 & RAIL_WAYPOINT_TRACK_MASK;
+		Axis direction = _m[tile].m5 & RAIL_WAYPOINT_TRACK_MASK;
 
 		wp = GetWaypointByTile(tile);
 
@@ -304,7 +304,7 @@ int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 			MarkTileDirtyByTile(tile);
 		} else {
 			DoClearSquare(tile);
-			SetSignalsOnBothDir(tile, direction);
+			SetSignalsOnBothDir(tile, direction == AXIS_X ? TRACK_X : TRACK_Y);
 		}
 	}
 
