@@ -1082,7 +1082,7 @@ static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir
 		} else if (IsTileType(desttile, MP_STATION)) {
 			if (IS_BYTE_INSIDE(_m[desttile].m5, 0x43, 0x4B)) {
 				/* We are heading for a station */
-				dir = GetRoadStationDir(tile);
+				dir = GetRoadStationDir(desttile);
 do_it:;
 				/* When we are heading for a depot or station, we just
 				 * pretend we are heading for the tile in front, we'll
