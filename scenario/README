@@ -1,0 +1,4 @@
+You can place you scenarios in this dir.
+
+This file is really here to make the Makefile happy, it should be modified to
+properly handle scenarios (or maybe even not at all...).
