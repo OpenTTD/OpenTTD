@@ -308,12 +308,6 @@ static void ClickTile_Unmovable(TileIndex tile)
 	}
 }
 
-static const TileIndexDiffC _tile_add[] = {
-	{ 1,  0},
-	{ 0,  1},
-	{-1,  0},
-	{ 0, -1}
-};
 
 /* checks, if a radio tower is within a 9x9 tile square around tile */
 static bool checkRadioTowerNearby(TileIndex tile)
@@ -332,9 +326,9 @@ void GenerateUnmovables(void)
 {
 	int i,j;
 	TileIndex tile;
-	uint32 r;
-	int dir;
 	uint h;
+	uint maxx;
+	uint maxy;
 
 	if (_opt.landscape == LT_CANDY) return;
 
@@ -356,20 +350,26 @@ void GenerateUnmovables(void)
 
 	/* add lighthouses */
 	i = ScaleByMapSize1D((Random() & 3) + 7);
+	maxx = MapMaxX();
+	maxy = MapMaxY();
 	do {
+		uint32 r;
+		DiagDirection dir;
+
 restart:
 		r = Random();
-		dir = r >> 30;
-		r %= (dir == 0 || dir == 2) ? MapMaxY() : MapMaxX();
-		tile =
-			(dir == 0) ? TileXY(0, r)         : 0 + // left
-			(dir == 1) ? TileXY(r, 0)         : 0 + // top
-			(dir == 2) ? TileXY(MapMaxX(), r) : 0 + // right
-			(dir == 3) ? TileXY(r, MapMaxY()) : 0;  // bottom
+		dir = GB(r, 30, 2);
+		switch (dir) {
+			default:
+			case DIAGDIR_NE: tile = TileXY(maxx,     r % maxy); break;
+			case DIAGDIR_SE: tile = TileXY(r % maxx, 0);        break;
+			case DIAGDIR_SW: tile = TileXY(0,        r % maxy); break;
+			case DIAGDIR_NW: tile = TileXY(r % maxx, maxy);     break;
+		}
 		j = 20;
 		do {
 			if (--j == 0) goto restart;
-			tile = TILE_MASK(tile + ToTileIndexDiff(_tile_add[dir]));
+			tile = TILE_MASK(tile + TileOffsByDir(dir));
 		} while (!(IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h <= 16));
 
 		assert(tile == TILE_MASK(tile));
