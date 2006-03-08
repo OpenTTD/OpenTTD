@@ -545,7 +545,7 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 				// Middle part of bridge with clear land below?
 				if ((_m[target].m5 & 0xF8) == 0xC0) {
 					_m[target].m5 |= 0x08;
-					MarkTileDirtyByTile(tile);
+					MarkTileDirtyByTile(target);
 				}
 				break;
 
