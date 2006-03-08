@@ -854,13 +854,13 @@ static Direction RoadVehGetNewDirection(const Vehicle* v, int x, int y)
 
 static Direction RoadVehGetSlidingDirection(const Vehicle* v, int x, int y)
 {
-	Direction b = RoadVehGetNewDirection(v, x, y);
-	Direction d = v->direction;
+	Direction new = RoadVehGetNewDirection(v, x, y);
+	Direction old = v->direction;
 	DirDiff delta;
 
-	if (b == d) return d;
-	delta = (DirDifference(d, b) > DIRDIFF_REVERSE ? DIRDIFF_45LEFT : DIRDIFF_45RIGHT);
-	return ChangeDir(d, delta);
+	if (new == old) return old;
+	delta = (DirDifference(new, old) > DIRDIFF_REVERSE ? DIRDIFF_45LEFT : DIRDIFF_45RIGHT);
+	return ChangeDir(old, delta);
 }
 
 typedef struct OvertakeData {
