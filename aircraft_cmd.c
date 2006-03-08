@@ -947,9 +947,6 @@ static bool AircraftController(Vehicle *v)
 	return false;
 }
 
-static const int8 _crashed_aircraft_moddir[4] = {
-	-1,0,0,1
-};
 
 static void HandleCrashedAircraft(Vehicle *v)
 {
@@ -973,7 +970,11 @@ static void HandleCrashedAircraft(Vehicle *v)
 
 	if (v->u.air.crashed_counter < 650) {
 		if (CHANCE16R(1,32,r)) {
-			v->direction = (v->direction + _crashed_aircraft_moddir[GB(r, 16, 2)]) & 7;
+			static const DirDiff delta[] = {
+				DIRDIFF_45LEFT, DIRDIFF_SAME, DIRDIFF_SAME, DIRDIFF_45RIGHT
+			};
+
+			v->direction = ChangeDir(v->direction, delta[GB(r, 16, 2)]);
 			SetAircraftPosition(v, v->x_pos, v->y_pos, v->z_pos);
 			r = Random();
 			CreateEffectVehicleRel(v,

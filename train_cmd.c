@@ -3015,12 +3015,15 @@ static void DeleteLastWagon(Vehicle *v)
 
 static void ChangeTrainDirRandomly(Vehicle *v)
 {
-	static const int8 _random_dir_change[4] = { -1, 0, 0, 1 };
+	static const DirDiff delta[] = {
+		DIRDIFF_45LEFT, DIRDIFF_SAME, DIRDIFF_SAME, DIRDIFF_45RIGHT
+	};
 
 	do {
 		//I need to buffer the train direction
-		if (!(v->u.rail.track & 0x40))
-			v->direction = (v->direction + _random_dir_change[GB(Random(), 0, 2)]) & 7;
+		if (!(v->u.rail.track & 0x40)) {
+			v->direction = ChangeDir(v->direction, delta[GB(Random(), 0, 2)]);
+		}
 		if (!(v->vehstatus & VS_HIDDEN)) {
 			BeginVehicleMove(v);
 			UpdateTrainDeltaXY(v, v->direction);

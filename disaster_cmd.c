@@ -665,7 +665,7 @@ static void DisasterTick_5_and_6(Vehicle *v)
 		return;
 	}
 
-	v->direction = (v->direction + (GB(Random(), 0, 1) ? 2 : -2)) & 7;
+	v->direction = ChangeDir(v->direction, GB(Random(), 0, 1) ? DIRDIFF_90RIGHT : DIRDIFF_90LEFT);
 }
 
 

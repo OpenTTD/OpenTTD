@@ -494,9 +494,13 @@ static byte SetRoadVehPosition(Vehicle *v, int x, int y)
 
 static void RoadVehSetRandomDirection(Vehicle *v)
 {
-	static const int8 _turn_prob[4] = { -1, 0, 0, 1 };
+	static const DirDiff delta[] = {
+		DIRDIFF_45LEFT, DIRDIFF_SAME, DIRDIFF_SAME, DIRDIFF_45RIGHT
+	};
+
 	uint32 r = Random();
-	v->direction = (v->direction + _turn_prob[r & 3]) & 7;
+
+	v->direction = ChangeDir(v->direction, delta[r & 3]);
 	BeginVehicleMove(v);
 	UpdateRoadVehDeltaXY(v);
 	v->cur_image = GetRoadVehImage(v, v->direction);
