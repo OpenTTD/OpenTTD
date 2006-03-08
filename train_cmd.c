@@ -2172,7 +2172,7 @@ static bool CheckReverseTrain(Vehicle *v)
 
 	assert(v->u.rail.track);
 
-	i = _search_directions[FIND_FIRST_BIT(v->u.rail.track)][v->direction>>1];
+	i = _search_directions[FIND_FIRST_BIT(v->u.rail.track)][DirToDiagDir(v->direction)];
 
 	if (_patches.new_pathfinding_all) { /* Use a new pathfinding for everything */
 		NPFFindStationOrTileData fstd;

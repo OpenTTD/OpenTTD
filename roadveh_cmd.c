@@ -918,7 +918,7 @@ static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
 	od.tile = v->tile;
 	if (FindRoadVehToOvertake(&od)) return;
 
-	od.tile = v->tile + TileOffsByDir(v->direction >> 1);
+	od.tile = v->tile + TileOffsByDir(DirToDiagDir(v->direction));
 	if (FindRoadVehToOvertake(&od)) return;
 
 	if (od.u->cur_speed == 0 || od.u->vehstatus&VS_STOPPED) {

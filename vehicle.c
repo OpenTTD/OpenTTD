@@ -1960,7 +1960,7 @@ Trackdir GetVehicleTrackdir(const Vehicle* v)
 				return DiagdirToDiagTrackdir(GetDepotDirection(v->tile, TRANSPORT_RAIL)); /* Train in depot */
 
 			if (v->u.rail.track == 0x40) /* train in tunnel, so just use his direction and assume a diagonal track */
-				return DiagdirToDiagTrackdir((v->direction >> 1) & 3);
+				return DiagdirToDiagTrackdir(DirToDiagDir(v->direction));
 
 			return TrackDirectionToTrackdir(FIND_FIRST_BIT(v->u.rail.track),v->direction);
 
@@ -1978,7 +1978,7 @@ Trackdir GetVehicleTrackdir(const Vehicle* v)
 			if (IsRoadStationTile(v->tile)) /* We'll assume the road vehicle is facing outwards */
 				return DiagdirToDiagTrackdir(GetRoadStationDir(v->tile)); /* Road vehicle in a station */
 
-			return DiagdirToDiagTrackdir((v->direction >> 1) & 3);
+			return DiagdirToDiagTrackdir(DirToDiagDir(v->direction));
 
 		/* case VEH_Aircraft: case VEH_Special: case VEH_Disaster: */
 		default: return 0xFF;
