@@ -1,8 +1,46 @@
+openttd (0.4.5+custom) unstable; urgency=low
+
+  * Custom user build.
+
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Thu,  9 Mar 2006 00:04:33 +0100
+
+openttd (0.4.5-1) unstable; urgency=low
+
+  * New upstream release
+  * Bump Standards-Version to 3.6.2
+  * s/timdity/timidity/ in README.Debian.
+  * Use debconf for prompting instead of terminal.
+  * Fix makefile to create icon dir if necessary.
+  * Fix syntax error in manpage.
+
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Wed,  1 Feb 2006 01:56:39 +0100
+
+openttd (0.4.0.1-5) unstable; urgency=low
+
+  * Fixed capitalization of menu item.
+  * Install xpm icon to /usr/share/pixmaps and don't install png icon, since
+    it is not used.
+
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Thu, 22 Sep 2005 10:35:09 +0200
+
+openttd (0.4.0.1-4) unstable; urgency=low
+
+  * Changelog was distributed twice.
+  * Put openttd in contrib.
+
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Mon, 19 Sep 2005 23:49:18 +0200
+
+openttd (0.4.0.1-3) unstable; urgency=low
+
+  * Clarified installing instructions in README.Debian
+
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Thu, 16 Jun 2005 03:51:13 +0200
+
 openttd (0.4.0.1-2) unstable; urgency=low
 
   * Added Suggests: timidity, freepats
 
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Fri, 27 May 2005 02:19:24 +0200
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Thu, 16 Jun 2005 03:34:03 +0200
 
 openttd (0.4.0.1-1) unstable; urgency=low
 

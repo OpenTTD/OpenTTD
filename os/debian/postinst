@@ -5,6 +5,7 @@
 
 set -e
 
+
 # summary of how this script can be called:
 #        * <postinst> `configure' <most-recently-configured-version>
 #        * <old-postinst> `abort-upgrade' <new version>
@@ -17,12 +18,10 @@ set -e
 # the debian-policy package
 #
 
+. /usr/share/debconf/confmodule
+
 case "$1" in
     configure)
-	cat <<EOF
-Before running the game, you should copy the data files from the
-original TTD. See README.Debian for more details.
-EOF
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)

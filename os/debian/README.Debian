@@ -3,12 +3,18 @@ openttd for Debian
 
 To properly play this game, original data files are needed.
 You should copy the data files from the original TTD into the data directory
-(/usr/share/games/openttd/data). You should copy all .grf files there.
+(/usr/share/games/openttd/data). You should copy these files:
+* trg1r.grf
+* trgcr.grf
+* trghr.grf
+* trgir.grf
+* trgtr.grf
+* sample.cat
 
 -Music
-	For in game music (optional), you should copy all files in the data/gm
-	folder of your ttd installation to /usr/share/games/openttd/gm.  You
-	should also install timdity and a soundfont (freepats is packaged in
+	For in game music (optional), you should copy all files in the gm/
+	subdir of your ttd installation to /usr/share/games/openttd/gm.  You
+	should also install timidity and a soundfont (freepats is packaged in
 	debian and works out of the box).
 
 	Don't forget to use -m extmidi if you want music, and if you have

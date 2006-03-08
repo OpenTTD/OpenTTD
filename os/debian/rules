@@ -6,20 +6,9 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
+include /usr/share/dpatch/dpatch.make
 
-#not supported by openttd makefile
-#CFLAGS = -Wall -g
-#
-#ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
-#	CFLAGS += -O0
-#else
-#	CFLAGS += -O2
-#endif
-#ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
-#	INSTALL_PROGRAM += -s
-#endif
-
-configure: configure-stamp
+configure: patch configure-stamp
 configure-stamp:
 	dh_testdir
 	# Add here commands to configure the package.
@@ -28,20 +17,19 @@ configure-stamp:
 
 
 build: build-stamp
-
-build-stamp: configure-stamp 
+build-stamp: configure-stamp
 	dh_testdir
 
 	# Add here commands to compile the package.
 	
 	rm Makefile.config || true
-	$(MAKE) PREFIX=/usr MIDI=/usr/bin/timidity INSTALL=1 BINARY_DIR=games DATA_DIR=share/games/openttd PERSONAL_DIR=.openttd USE_HOMEDIR=1
+	$(MAKE) PREFIX=/usr MIDI=/usr/bin/timidity INSTALL=1 BINARY_DIR=games DATA_DIR=share/games/openttd ICON_DIR=share/pixmaps PERSONAL_DIR=.openttd USE_HOMEDIR=1
 
 	#/usr/bin/docbook-to-man debian/openttd.sgml > openttd.1
 
 	touch build-stamp
 
-clean:
+clean: unpatch
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp configure-stamp
@@ -74,7 +62,7 @@ binary-arch: build install
 	dh_installexamples
 #	dh_install
 	dh_installmenu
-#	dh_installdebconf	
+	dh_installdebconf
 #	dh_installlogrotate
 #	dh_installemacsen
 #	dh_installpam
