@@ -34,7 +34,7 @@ typedef enum DirDiff {
 
 static inline DirDiff DirDifference(Direction d0, Direction d1)
 {
-	return (DirDiff)(d0 + 8 - d1) % 8;
+	return (DirDiff)((d0 + 8 - d1) % 8);
 }
 
 static inline DirDiff ChangeDirDiff(DirDiff d, DirDiff delta)
