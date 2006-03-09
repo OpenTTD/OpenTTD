@@ -44,12 +44,12 @@ typedef struct LoadgameState {
 typedef bool OldChunkProc(LoadgameState *ls, int num);
 
 typedef struct OldChunks {
-	uint32 type;         //! Type of field
-	uint32 amount;       //! Amount of fields
+	uint32 type;         ///< Type of field
+	uint32 amount;       ///< Amount of fields
 
-	void *ptr;           //! Pointer where to save the data (may only be set if offset is 0)
-	uint offset;         //! Offset from basepointer (may only be set if ptr is NULL)
-	OldChunkProc *proc;  //! Pointer to function that is called with OC_CHUNK
+	void *ptr;           ///< Pointer where to save the data (may only be set if offset is 0)
+	uint offset;         ///< Offset from basepointer (may only be set if ptr is NULL)
+	OldChunkProc *proc;  ///< Pointer to function that is called with OC_CHUNK
 } OldChunks;
 
 /* OldChunk-Type */

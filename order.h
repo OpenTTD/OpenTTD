@@ -80,9 +80,9 @@ typedef struct Order {
 	uint8  flags;
 	uint16 station;
 
-	struct Order *next;   //! Pointer to next order. If NULL, end of list
+	struct Order *next;   ///< Pointer to next order. If NULL, end of list
 
-	uint16 index;         //! Index of the order, is not saved or anything, just for reference
+	uint16 index;         ///< Index of the order, is not saved or anything, just for reference
 } Order;
 
 #define MAX_BACKUP_ORDER_COUNT 40

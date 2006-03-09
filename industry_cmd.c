@@ -90,9 +90,9 @@ typedef struct IndustrySpec {
 #include "table/build_industry.h"
 
 typedef enum IndustryType {
-	INDUSTRY_NOT_CLOSABLE,     //! Industry can never close
-	INDUSTRY_PRODUCTION,       //! Industry can close and change of production
-	INDUSTRY_CLOSABLE,         //! Industry can only close (no production change)
+	INDUSTRY_NOT_CLOSABLE,     ///< Industry can never close
+	INDUSTRY_PRODUCTION,       ///< Industry can close and change of production
+	INDUSTRY_CLOSABLE,         ///< Industry can only close (no production change)
 } IndustryType;
 
 

@@ -170,8 +170,8 @@ VARDEF char _network_server_name[NETWORK_NAME_LENGTH];
 VARDEF char _network_server_password[NETWORK_PASSWORD_LENGTH];
 VARDEF char _network_rcon_password[NETWORK_PASSWORD_LENGTH];
 
-VARDEF uint16 _network_max_join_time;             //! Time a client can max take to join
-VARDEF bool _network_pause_on_join;               //! Pause the game when a client tries to join (more chance of succeeding join)
+VARDEF uint16 _network_max_join_time;             ///< Time a client can max take to join
+VARDEF bool _network_pause_on_join;               ///< Pause the game when a client tries to join (more chance of succeeding join)
 
 VARDEF uint16 _redirect_console_to_client;
 

@@ -64,7 +64,7 @@ enum {
 	VEHICLES_POOL_BLOCK_SIZE_BITS = 9,       /* In bits, so (1 << 9) == 512 */
 	VEHICLES_POOL_MAX_BLOCKS      = 125,
 
-	BLOCKS_FOR_SPECIAL_VEHICLES   = 2, //! Blocks needed for special vehicles
+	BLOCKS_FOR_SPECIAL_VEHICLES   = 2, ///< Blocks needed for special vehicles
 };
 
 /**

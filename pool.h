@@ -14,19 +14,19 @@ typedef void MemoryPoolNewBlock(uint start_item);
  *  please try to avoid manual calls!
  */
 struct MemoryPool {
-	const char name[10];        //! Name of the pool (just for debugging)
+	const char name[10];        ///< Name of the pool (just for debugging)
 
-	const uint max_blocks;      //! The max amount of blocks this pool can have
-	const uint block_size_bits; //! The size of each block in bits
-	const uint item_size;       //! How many bytes one block is
+	const uint max_blocks;      ///< The max amount of blocks this pool can have
+	const uint block_size_bits; ///< The size of each block in bits
+	const uint item_size;       ///< How many bytes one block is
 
+	/// Pointer to a function that is called after a new block is added
 	MemoryPoolNewBlock *new_block_proc;
-	//!< Pointer to a function that is called after a new block is added
 
-	uint current_blocks;        //! How many blocks we have in our pool
-	uint total_items;           //! How many items we now have in this pool
+	uint current_blocks;        ///< How many blocks we have in our pool
+	uint total_items;           ///< How many items we now have in this pool
 
-	byte **blocks;              //! An array of blocks (one block hold all the items)
+	byte **blocks;              ///< An array of blocks (one block hold all the items)
 };
 
 /**
