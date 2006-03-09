@@ -506,7 +506,7 @@ int32 CmdBuildTunnel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			MakeRoadTunnel(end_tile,   _current_player, ReverseDiagDir(direction));
 		}
 
-		if (GB(p1, 9, 1) == 0) UpdateSignalsOnSegment(start_tile, DiagDirToDir(direction));
+		if (GB(p1, 9, 1) == 0) UpdateSignalsOnSegment(start_tile, direction);
 	}
 
 	return cost;
@@ -582,8 +582,8 @@ static int32 DoClearTunnel(TileIndex tile, uint32 flags)
 
 		DoClearSquare(tile);
 		DoClearSquare(endtile);
-		UpdateSignalsOnSegment(tile, DiagDirToDir(ReverseDiagDir(dir)));
-		UpdateSignalsOnSegment(endtile, DiagDirToDir(dir));
+		UpdateSignalsOnSegment(tile, ReverseDiagDir(dir));
+		UpdateSignalsOnSegment(endtile, dir);
 	}
 	return _price.clear_tunnel * (length + 1);
 }

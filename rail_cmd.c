@@ -1756,11 +1756,10 @@ make_red:
 }
 
 
-bool UpdateSignalsOnSegment(TileIndex tile, Direction dir)
+bool UpdateSignalsOnSegment(TileIndex tile, DiagDirection direction)
 {
 	SetSignalsData ssd;
 	int result = -1;
-	DiagDirection direction = DirToDiagDir(dir);
 
 	ssd.cur_stack = 0;
 
@@ -1788,8 +1787,12 @@ bool UpdateSignalsOnSegment(TileIndex tile, Direction dir)
 
 void SetSignalsOnBothDir(TileIndex tile, byte track)
 {
-	static const Direction _search_dir_1[] = { DIR_NE, DIR_SE, DIR_NE, DIR_SE, DIR_SW, DIR_SE };
-	static const Direction _search_dir_2[] = { DIR_SW, DIR_NW, DIR_NW, DIR_SW, DIR_NW, DIR_NE };
+	static const DiagDirection _search_dir_1[] = {
+		DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE
+	};
+	static const DiagDirection _search_dir_2[] = {
+		DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE
+	};
 
 	UpdateSignalsOnSegment(tile, _search_dir_1[track]);
 	UpdateSignalsOnSegment(tile, _search_dir_2[track]);

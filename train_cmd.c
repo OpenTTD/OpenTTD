@@ -1964,7 +1964,7 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 
 		v->load_unload_time_rem = 0;
 
-		if (UpdateSignalsOnSegment(v->tile, v->direction)) {
+		if (UpdateSignalsOnSegment(v->tile, DirToDiagDir(v->direction))) {
 			InvalidateWindowClasses(WC_TRAINS_LIST);
 			return true;
 		}
@@ -1983,7 +1983,7 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 	UpdateTrainDeltaXY(v, v->direction);
 	v->cur_image = GetTrainImage(v, v->direction);
 	VehiclePositionChanged(v);
-	UpdateSignalsOnSegment(v->tile, v->direction);
+	UpdateSignalsOnSegment(v->tile, DirToDiagDir(v->direction));
 	UpdateTrainAcceleration(v);
 	InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 
@@ -2623,9 +2623,9 @@ static void AffectSpeedByZChange(Vehicle *v, byte old_z)
 	}
 }
 
-static const Direction _otherside_signal_directions[] = {
-	DIR_NE, DIR_SE, DIR_NE, DIR_SE, DIR_SW, DIR_SE, 0, 0,
-	DIR_SW, DIR_NW, DIR_NW, DIR_SW, DIR_NW, DIR_NE,
+static const DiagDirection _otherside_signal_directions[] = {
+	DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE, 0, 0,
+	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE
 };
 
 static void TrainMovedChangeSignals(TileIndex tile, DiagDirection dir)
