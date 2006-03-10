@@ -197,7 +197,9 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	int bridge_type;
 	byte rail_or_road, railtype, m5;
 	int sx,sy;
-	TileInfo ti_start, ti_end, ti; /* OPT: only 2 of those are ever used */
+	TileInfo ti_start, ti_end;
+	TileIndex tile;
+	TileIndexDiff delta;
 	uint bridge_len;
 	uint odd_middle_part;
 	Axis direction;
@@ -325,38 +327,36 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	// position of middle part of the odd bridge (larger than MAX(i) otherwise)
 	odd_middle_part = (bridge_len % 2) ? (bridge_len / 2) : bridge_len;
 
+	tile = ti_start.tile;
+	delta = (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 	for (i = 0; i != bridge_len; i++) {
-		if (direction == AXIS_X) {
-			x += 16;
-		} else {
-			y += 16;
-		}
+		uint z;
 
-		FindLandscapeHeight(&ti, x, y);
+		tile += delta;
 
 		_error_message = STR_5009_LEVEL_LAND_OR_WATER_REQUIRED;
-		if (ti.tileh != 0 && ti.z >= ti_start.z) return CMD_ERROR;
+		if (GetTileSlope(tile, &z) != 0 && z >= ti_start.z) return CMD_ERROR;
 
-		switch (ti.type){
+		switch (GetTileType(tile)) {
 			case MP_WATER:
-				if (!EnsureNoVehicle(ti.tile)) {
+				if (!EnsureNoVehicle(tile)) {
 					_error_message = STR_980E_SHIP_IN_THE_WAY;
 					return CMD_ERROR;
 				}
-				if (ti.map5 > 1) goto not_valid_below;
+				if (_m[tile].m5 > 1) goto not_valid_below;
 				m5 = 0xC8;
 				break;
 
 			case MP_RAILWAY:
-				if (ti.map5 != (direction == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X)) {
+				if (_m[tile].m5 != (direction == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X)) {
 					goto not_valid_below;
 				}
 				m5 = 0xE0;
 				break;
 
 			case MP_STREET:
-				if (GetRoadType(ti.tile) != ROAD_NORMAL ||
-						GetRoadBits(ti.tile) != (direction == AXIS_X ? ROAD_Y : ROAD_X)) {
+				if (GetRoadType(tile) != ROAD_NORMAL ||
+						GetRoadBits(tile) != (direction == AXIS_X ? ROAD_Y : ROAD_X)) {
 					goto not_valid_below;
 				}
 				m5 = 0xE8;
@@ -365,7 +365,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			default:
 not_valid_below:;
 				/* try and clear the middle landscape */
-				ret = DoCommandByTile(ti.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+				ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 				if (CmdFailed(ret)) return CMD_ERROR;
 				cost += ret;
 				m5 = 0xC0;
@@ -374,8 +374,8 @@ not_valid_below:;
 
 		/* do middle part of bridge */
 		if (flags & DC_EXEC) {
-			_m[ti.tile].m5 = (byte)(m5 | direction | rail_or_road);
-			SetTileType(ti.tile, MP_TUNNELBRIDGE);
+			_m[tile].m5 = (byte)(m5 | direction | rail_or_road);
+			SetTileType(tile, MP_TUNNELBRIDGE);
 
 			//bridges pieces sequence (middle parts)
 			// bridge len 1: 0
@@ -402,10 +402,10 @@ not_valid_below:;
 					m5 = 2 + ((i % 2 == 0) ^ (i > odd_middle_part));
 			}
 
-			_m[ti.tile].m2 = (bridge_type << 4) | m5;
-			SB(_m[ti.tile].m3, 4, 4, railtype);
+			_m[tile].m2 = (bridge_type << 4) | m5;
+			SB(_m[tile].m3, 4, 4, railtype);
 
-			MarkTileDirtyByTile(ti.tile);
+			MarkTileDirtyByTile(tile);
 		}
 	}
 
