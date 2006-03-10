@@ -129,11 +129,11 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if (!EnsureNoVehicleZ(tile, TilePixelHeight(tile))) return CMD_ERROR;
 
 			if ((ti.map5 & 0xE9) == 0xE8) {
-				if (pieces & ROAD_X) goto return_error;
+				if (pieces & ROAD_X) return CMD_ERROR;
 			} else if ((ti.map5 & 0xE9) == 0xE9) {
-				if (pieces & ROAD_Y) goto return_error;
+				if (pieces & ROAD_Y) return CMD_ERROR;
 			} else {
-				goto return_error;
+				return CMD_ERROR;
 			}
 
 			cost = _price.remove_road * 2;
@@ -163,7 +163,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 					// limit the bits to delete to the existing bits.
 					c &= present;
-					if (c == 0) goto return_error;
+					if (c == 0) return CMD_ERROR;
 
 					// calculate the cost
 					cost = 0;
@@ -188,7 +188,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 				case ROAD_CROSSING: {
 					if (pieces & ComplementRoadBits(GetCrossingRoadBits(tile))) {
-						goto return_error;
+						return CMD_ERROR;
 					}
 
 					cost = _price.remove_road * 2;
@@ -203,12 +203,10 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 				default:
 				case ROAD_DEPOT:
-					goto return_error;
+					return CMD_ERROR;
 			}
 
-		default:
-return_error:;
-			return_cmd_error(INVALID_STRING_ID);
+		default: return CMD_ERROR;
 	}
 }
 
