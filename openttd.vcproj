@@ -405,9 +405,6 @@
 				RelativePath=".\aystar.h">
 			</File>
 			<File
-				RelativePath=".\clear.h">
-			</File>
-			<File
 				RelativePath=".\command.h">
 			</File>
 			<File
@@ -537,9 +534,6 @@
 				RelativePath=".\rail.h">
 			</File>
 			<File
-				RelativePath=".\road.h">
-			</File>
-			<File
 				RelativePath=".\saveload.h">
 			</File>
 			<File
@@ -595,9 +589,6 @@
 			</File>
 			<File
 				RelativePath=".\viewport.h">
-			</File>
-			<File
-				RelativePath=".\void.h">
 			</File>
 			<File
 				RelativePath=".\waypoint.h">
@@ -871,6 +862,37 @@
 					RelativePath=".\ai\trolly\trolly.h">
 				</File>
 			</Filter>
+		</Filter>
+		<Filter
+			Name="Map Accessors"
+			Filter="">
+			<File
+				RelativePath=".\clear_map.h">
+			</File>
+			<File
+				RelativePath=".\rail_map.h">
+			</File>
+			<File
+				RelativePath=".\road_map.c">
+			</File>
+			<File
+				RelativePath=".\road_map.h">
+			</File>
+			<File
+				RelativePath=".\tree_map.h">
+			</File>
+			<File
+				RelativePath=".\tunnel_map.c">
+			</File>
+			<File
+				RelativePath=".\tunnel_map.h">
+			</File>
+			<File
+				RelativePath=".\void_map.h">
+			</File>
+			<File
+				RelativePath=".\water_map.h">
+			</File>
 		</Filter>
 		<File
 			RelativePath=".\mainicon.ico">
