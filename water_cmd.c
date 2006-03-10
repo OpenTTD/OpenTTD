@@ -210,7 +210,7 @@ int32 CmdBuildLock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  */
 int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	int32 ret, cost;
+	int32 cost;
 	int size_x, size_y;
 	int sx, sy;
 
@@ -234,7 +234,6 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	cost = 0;
 	BEGIN_TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
-		ret = 0;
 		if (GetTileSlope(tile, NULL) != 0) return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 
 			// can't make water of water!
@@ -246,27 +245,28 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					if (_m[tile].m5 & 0x20) // transport route under bridge
 						return_cmd_error(STR_5800_OBJECT_IN_THE_WAY);
 
-					if (_m[tile].m5 & 0x18) // already water under bridge
+					if (_m[tile].m5 & 0x18) { // already water under bridge
 						return_cmd_error(STR_1007_ALREADY_BUILT);
-				/* no bridge? then try to clear it. */
-				} else
-					ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+					}
 
-				if (CmdFailed(ret)) return CMD_ERROR;
-				cost += ret;
-
-				/* execute modifications */
-				if (flags & DC_EXEC) {
-					if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+					if (flags & DC_EXEC) {
 						// change owner to OWNER_WATER and set land under bridge bit to water
 						ModifyTile(tile, MP_MAP5 | MP_MAPOWNER, OWNER_WATER, _m[tile].m5 | 0x08);
-					} else {
+					}
+				} else {
+					/* no bridge, try to clear it. */
+					int32 ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+
+					if (CmdFailed(ret)) return CMD_ERROR;
+					cost += ret;
+
+					if (flags & DC_EXEC) {
 						MakeWater(tile);
 						MarkTileDirtyByTile(tile);
 					}
-					// mark the tiles around dirty too
-					MarkTilesAroundDirty(tile);
 				}
+
+				if (flags & DC_EXEC) MarkTilesAroundDirty(tile);
 
 				cost += _price.clear_water;
 			}
