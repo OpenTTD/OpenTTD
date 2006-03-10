@@ -1714,8 +1714,11 @@ static void MaybeReplaceVehicle(Vehicle *v)
 	bool stopped = false;
 
 	/* Remember the length in case we need to trim train later on
-	 * If it's not a train, the value is unused */
-	uint16 old_total_length = (v->type == VEH_Train) ? v->u.rail.cached_total_length : -1;
+	 * If it's not a train, the value is unused
+	 * round up to the length of the tiles used for the train instead of the train length instead
+	 * Useful when newGRF uses custom length */
+	uint16 old_total_length = (v->type == VEH_Train) ? ((v->u.rail.cached_total_length + 15 )/ 16)* 16 : -1;
+
 
 	_current_player = v->owner;
 
