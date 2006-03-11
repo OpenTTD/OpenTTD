@@ -11,6 +11,7 @@
 #include "tile.h"
 #include "gui.h"
 #include "tree_map.h"
+#include "tunnel_map.h"
 #include "window.h"
 #include "gfx.h"
 #include "viewport.h"
@@ -345,12 +346,17 @@ static inline TileType GetEffectiveTileType(TileIndex tile)
 	TileType t = GetTileType(tile);
 
 	if (t == MP_TUNNELBRIDGE) {
-		t = _m[tile].m5;
-		if ((t & 0x80) == 0) t >>= 1;
-		switch (t & 0x06) {
-			case 0x00: t = MP_RAILWAY; break;
-			case 0x02: t = MP_STREET;  break;
-			default:   t = MP_WATER;   break;
+		TransportType tt;
+
+		if (_m[tile].m5 & 0x80) {
+			tt = GB(_m[tile].m5, 1, 2);
+		} else {
+			tt = GetTunnelTransportType(tile);
+		}
+		switch (tt) {
+			case TRANSPORT_RAIL: t = MP_RAILWAY; break;
+			case TRANSPORT_ROAD: t = MP_STREET;  break;
+			default:             t = MP_WATER;   break;
 		}
 	}
 	return t;

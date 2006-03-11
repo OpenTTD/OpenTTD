@@ -195,7 +195,9 @@ bool CheckBridge_Stuff(byte bridge_type, uint bridge_len)
 int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	int bridge_type;
-	byte rail_or_road, railtype, m5;
+	byte m5;
+	TransportType transport;
+	RailType railtype;
 	int sx,sy;
 	TileInfo ti_start, ti_end;
 	TileIndex tile;
@@ -211,17 +213,17 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	/* unpack parameters */
 	bridge_type = GB(p2, 0, 8);
-	railtype    = GB(p2, 8, 8);
 
 	if (p1 >= MapSize()) return CMD_ERROR;
 
 	// type of bridge
-	if (HASBIT(railtype, 7)) { // bit 15 of original p2 param
+	if (HASBIT(p2, 15)) {
 		railtype = 0;
-		rail_or_road = 2;
+		transport = TRANSPORT_ROAD;
 	} else {
-		if (!ValParamRailtype(railtype)) return CMD_ERROR;
-		rail_or_road = 0;
+		if (!ValParamRailtype(GB(p2, 8, 8))) return CMD_ERROR;
+		railtype = GB(p2, 8, 8);
+		transport = TRANSPORT_RAIL;
 	}
 
 	sx = TileX(p1) * 16;
@@ -311,7 +313,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			MP_MAP2 | MP_MAP3LO | MP_MAPOWNER_CURRENT | MP_MAP5,
 			(bridge_type << 4), /* map2 */
 			railtype, /* map3_lo */
-			0x80 | direction | rail_or_road /* map5 */
+			0x80 | direction | transport << 1 /* map5 */
 		);
 
 		/* build the end tile */
@@ -320,7 +322,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			MP_MAP2 | MP_MAP3LO | MP_MAPOWNER_CURRENT | MP_MAP5,
 			(bridge_type << 4), /* map2 */
 			railtype, /* map3_lo */
-			0x80 | 0x20 | direction | rail_or_road /* map5 */
+			0x80 | 0x20 | direction | transport << 1 /* map5 */
 		);
 	}
 
@@ -374,7 +376,7 @@ not_valid_below:;
 
 		/* do middle part of bridge */
 		if (flags & DC_EXEC) {
-			_m[tile].m5 = (byte)(m5 | direction | rail_or_road);
+			_m[tile].m5 = (byte)(m5 | direction | transport << 1);
 			SetTileType(tile, MP_TUNNELBRIDGE);
 
 			//bridges pieces sequence (middle parts)
