@@ -508,7 +508,6 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	Trackdir src_trackdir = (Trackdir)current->path.node.direction;
 	TileIndex src_tile = current->path.node.tile;
 	DiagDirection src_exitdir = TrackdirToExitdir(src_trackdir);
-	FindLengthOfTunnelResult flotr;
 	TileIndex dst_tile;
 	int i;
 	TrackdirBits trackdirbits, ts;
@@ -524,8 +523,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 		/* This is a tunnel. We know this tunnel is our type,
 		 * otherwise we wouldn't have got here. It is also facing us,
 		 * so we should skip it's body */
-		flotr = FindLengthOfTunnel(src_tile, src_exitdir);
-		dst_tile = flotr.tile;
+		dst_tile = GetOtherTunnelEnd(src_tile);
 	} else {
 		if (type != TRANSPORT_WATER && (IsRoadStationTile(src_tile) || IsTileDepotType(src_tile, type))){
 			/* This is a road station or a train or road depot. We can enter and exit

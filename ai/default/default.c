@@ -3659,7 +3659,7 @@ pos_3:
 				return;
 			}
 
-			dir = _m[tile].m5 & 3;
+			dir = GetRoadDepotDirection(tile);
 
 			DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 			DoCommandByTile(

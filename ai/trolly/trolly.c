@@ -798,7 +798,7 @@ static void AiNew_State_FindDepot(Player *p)
 			if (IsTileType(t, MP_STREET) &&
 					GetRoadType(t) == ROAD_DEPOT &&
 					IsTileOwner(t, _current_player) &&
-					GB(_m[t].m5, 0, 2) == ReverseDiagDir(j)) { // right direction?
+					GetRoadDepotDirection(t) == ReverseDiagDir(j)) {
 				p->ainew.depot_tile = t;
 				p->ainew.depot_direction = ReverseDiagDir(j);
 				p->ainew.state = AI_STATE_VERIFY_ROUTE;

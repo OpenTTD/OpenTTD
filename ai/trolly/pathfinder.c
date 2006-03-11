@@ -9,6 +9,7 @@
 #include "../../command.h"
 #include "trolly.h"
 #include "../../depot.h"
+#include "../../tunnel_map.h"
 #include "../../variables.h"
 #include "../ai.h"
 
@@ -236,7 +237,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 					// This problem only is valid for tunnels:
 					// When the last tile was not yet a tunnel, check if we enter from the right side..
 					if ((_m[atile].m5 & 0x80) == 0) {
-						if (i != (_m[atile].m5 & 3U)) continue;
+						if (GetTunnelDirection(atile) != i) continue;
 					}
 				}
 			}

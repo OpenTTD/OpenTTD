@@ -8,6 +8,7 @@
 
 #include "direction.h"
 #include "pool.h"
+#include "road_map.h"
 #include "tile.h"
 #include "variables.h"
 
@@ -102,10 +103,8 @@ static inline DiagDirection GetDepotDirection(TileIndex tile, TransportType type
 
 	switch (type)
 	{
-		case TRANSPORT_RAIL:
-		case TRANSPORT_ROAD:
-			/* Rail and road store a diagonal direction in bits 0 and 1 */
-			return (DiagDirection)GB(_m[tile].m5, 0, 2);
+		case TRANSPORT_RAIL: return (DiagDirection)GB(_m[tile].m5, 0, 2);
+		case TRANSPORT_ROAD: return GetRoadDepotDirection(tile);
 		case TRANSPORT_WATER:
 			/* Water is stubborn, it stores the directions in a different order. */
 			switch (GB(_m[tile].m5, 0, 2)) {

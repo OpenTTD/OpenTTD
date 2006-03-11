@@ -1976,7 +1976,7 @@ Trackdir GetVehicleTrackdir(const Vehicle* v)
 
 		case VEH_Road:
 			if (v->u.road.state == 254) /* We'll assume the road vehicle is facing outwards */
-				return DiagdirToDiagTrackdir(GetDepotDirection(v->tile, TRANSPORT_ROAD)); /* Road vehicle in depot */
+				return DiagdirToDiagTrackdir(GetRoadDepotDirection(v->tile));
 
 			if (IsRoadStationTile(v->tile)) /* We'll assume the road vehicle is facing outwards */
 				return DiagdirToDiagTrackdir(GetRoadStationDir(v->tile)); /* Road vehicle in a station */
