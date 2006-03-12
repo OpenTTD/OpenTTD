@@ -1002,9 +1002,6 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			if (!(BRIDGE_NO_FOUNDATION & (1 << ti->tileh))) {	// no foundations for 0, 3, 6, 9, 12
 				int f = GetBridgeFoundation(ti->tileh, ti->map5 & 0x1);	// pass direction
 				if (f) DrawFoundation(ti, f);
-
-				// default sloped sprites..
-				if (ti->tileh != 0) image = SPR_RAIL_TRACK_Y + _track_sloped_sprites[ti->tileh - 1];
 			}
 
 			/* Cope for the direction of the bridge */
