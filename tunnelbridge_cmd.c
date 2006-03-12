@@ -7,6 +7,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "rail_map.h"
 #include "road_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -23,6 +24,7 @@
 #include "variables.h"
 #include "bridge.h"
 #include "train.h"
+#include "water_map.h"
 
 #include "table/bridge_land.h"
 
@@ -691,9 +693,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 	}
 
 	if (flags & DC_EXEC) {
-		byte m5;
-		uint c = tile;
-		uint16 new_data;
+		TileIndex c = tile;
 
 		//checks if the owner is town then decrease town rating by RATING_TUNNEL_BRIDGE_DOWN_STEP until
 		// you have a "Poor" (0) town rating
@@ -701,27 +701,34 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 			ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM);
 
 		do {
-			m5 = _m[c].m5;
-
-			if (m5 & 0x40) {
-				if (m5 & 0x20) {
-					static const uint16 _new_data_table[] = {0x1002, 0x1001, 0x2005, 0x200A, 0, 0, 0, 0};
-					new_data = _new_data_table[((m5 & 0x18) >> 2) | (m5 & 1)];
-				}	else {
-					if (GB(m5, 3, 2) == 0) goto clear_it;
-					new_data = (GetTileSlope(c, NULL) == 0) ? 0x6000 : 0x6001;
-				}
-
-				SetTileType(c, new_data >> 12);
-				_m[c].m5 = (byte)new_data;
-				_m[c].m2 = 0;
-				_m[c].m4 &= 0x0F;
-
-				MarkTileDirtyByTile(c);
-
-			} else {
-clear_it:;
+			if (!(_m[c].m5 & 0x40)) {
+				// bridge ramp
 				DoClearSquare(c);
+			} else {
+				// bridge middle part
+				if (_m[c].m5 & 0x20) {
+					// transport under bridge
+					if (GB(_m[c].m5, 3, 2) == TRANSPORT_RAIL) {
+						MakeRailNormal(c, GetTileOwner(c), _m[c].m5 & 1 ? TRACK_BIT_X : TRACK_BIT_Y, GB(_m[c].m3, 0, 3));
+					} else {
+						MakeRoadNormal(c, GetTileOwner(c), _m[c].m5 & 1 ? ROAD_X : ROAD_Y, 0); // XXX Determine town, missing till now
+					}
+					MarkTileDirtyByTile(c);
+				} else {
+					// clear under bridge
+					if (GB(_m[c].m5, 3, 2) == 0) {
+						// grass under bridge
+						DoClearSquare(c);
+					} else {
+						// water under bridge
+						if (GetTileSlope(c, NULL) == 0) {
+							MakeWater(c);
+						} else {
+							MakeShore(c);
+						}
+						MarkTileDirtyByTile(c);
+					}
+				}
 			}
 			c += (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 		} while (c <= endtile);
