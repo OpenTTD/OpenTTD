@@ -348,10 +348,10 @@ static inline TileType GetEffectiveTileType(TileIndex tile)
 	if (t == MP_TUNNELBRIDGE) {
 		TransportType tt;
 
-		if (_m[tile].m5 & 0x80) {
-			tt = GB(_m[tile].m5, 1, 2);
-		} else {
+		if (IsTunnel(tile)) {
 			tt = GetTunnelTransportType(tile);
+		} else {
+			tt = GB(_m[tile].m5, 1, 2);
 		}
 		switch (tt) {
 			case TRANSPORT_RAIL: t = MP_RAILWAY; break;

@@ -2481,8 +2481,9 @@ static byte AfterSetTrainPos(Vehicle *v, bool new_tile)
 			TileIndex tile = TileVirtXY(v->x_pos, v->y_pos);
 
 			// XXX workaround, whole UP/DOWN detection needs overhaul
-			if (!IsTileType(tile, MP_TUNNELBRIDGE) || (_m[tile].m5 & 0x80) != 0)
+			if (!IsTunnelTile(tile)) {
 				SETBIT(v->u.rail.flags, (new_z > old_z) ? VRF_GOINGUP : VRF_GOINGDOWN);
+			}
 		}
 	}
 

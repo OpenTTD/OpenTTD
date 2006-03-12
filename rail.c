@@ -4,6 +4,7 @@
 #include "openttd.h"
 #include "rail.h"
 #include "station.h"
+#include "tunnel_map.h"
 
 /* XXX: Below 3 tables store duplicate data. Maybe remove some? */
 /* Maps a trackdir to the bit that stores its status in the map arrays, in the
@@ -123,8 +124,9 @@ RailType GetTileRailType(TileIndex tile, Trackdir trackdir)
 				type = _m[tile].m3 & RAILTYPE_MASK;
 			break;
 		case MP_TUNNELBRIDGE:
-			/* railway tunnel */
-			if ((_m[tile].m5 & 0xFC) == 0) type = _m[tile].m3 & RAILTYPE_MASK;
+			if (IsTunnel(tile) && GetTunnelTransportType(tile) == TRANSPORT_RAIL) {
+				return _m[tile].m3 & RAILTYPE_MASK;
+			}
 			/* railway bridge ending */
 			if ((_m[tile].m5 & 0xC6) == 0x80) type = _m[tile].m3 & RAILTYPE_MASK;
 			/* on railway bridge */

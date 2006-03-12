@@ -18,6 +18,7 @@
 #include "player.h"
 #include "sound.h"
 #include "depot.h"
+#include "tunnel_map.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
 
@@ -1254,8 +1255,7 @@ static void RoadVehController(Vehicle *v)
 			return;
 		}
 
-		if (IsTileType(gp.new_tile, MP_TUNNELBRIDGE) &&
-				GB(_m[gp.new_tile].m5, 4, 4) == 0 &&
+		if (IsTunnelTile(gp.new_tile) &&
 				VehicleEnterTile(v, gp.new_tile, gp.x, gp.y) & 4) {
 			//new_dir = RoadGetNewDirection(v, gp.x, gp.y)
 			v->cur_image = GetRoadVehImage(v, v->direction);

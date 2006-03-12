@@ -260,11 +260,11 @@ static int32 NPFRoadPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 	/* Determine base length */
 	switch (GetTileType(tile)) {
 		case MP_TUNNELBRIDGE:
-			if (GB(_m[tile].m5, 4, 4) == 0) {
+			if (IsTunnel(tile)) {
 				cost = NPFTunnelCost(current);
-				break;
+			} else {
+				cost = NPF_TILE_LENGTH;
 			}
-			cost = NPF_TILE_LENGTH;
 			break;
 
 		case MP_STREET:
@@ -306,7 +306,7 @@ static int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 	/* Determine base length */
 	switch (GetTileType(tile)) {
 		case MP_TUNNELBRIDGE:
-			if (GB(_m[tile].m5, 4, 4) == 0) {
+			if (IsTunnel(tile)) {
 				cost = NPFTunnelCost(current);
 				break;
 			}
@@ -483,7 +483,7 @@ static bool VehicleMayEnterTile(Owner owner, TileIndex tile, DiagDirection enter
 			}
 			/* if we were on a railway middle part, we are now at a railway bridge ending */
 #endif
-			if ((_m[tile].m5 & 0xFC) == 0 || /* railway tunnel */
+			if ((IsTunnel(tile) && GetTunnelTransportType(tile) == TRANSPORT_RAIL) ||
 					(_m[tile].m5 & 0xC6) == 0x80 || /* railway bridge ending */
 					((_m[tile].m5 & 0xF8) == 0xE0 && GB(_m[tile].m5, 0, 1) != (enterdir & 0x1))) { /* railway under bridge */
 				return IsTileOwner(tile, owner);
@@ -517,9 +517,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	DEBUG(npf, 4)("Expanding: (%d, %d, %d) [%d]", TileX(src_tile), TileY(src_tile), src_trackdir, src_tile);
 
 	/* Find dest tile */
-	if (IsTileType(src_tile, MP_TUNNELBRIDGE) &&
-			GB(_m[src_tile].m5, 4, 4) == 0 &&
-			GetTunnelDirection(src_tile) == src_exitdir) {
+	if (IsTunnelTile(src_tile) && GetTunnelDirection(src_tile) == src_exitdir) {
 		/* This is a tunnel. We know this tunnel is our type,
 		 * otherwise we wouldn't have got here. It is also facing us,
 		 * so we should skip it's body */
@@ -565,8 +563,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	/* I can't enter a tunnel entry/exit tile from a tile above the tunnel. Note
 	 * that I can enter the tunnel from a tile below the tunnel entrance. This
 	 * solves the problem of vehicles wanting to drive off a tunnel entrance */
-	if (IsTileType(dst_tile, MP_TUNNELBRIDGE) && GB(_m[dst_tile].m5, 4, 4) == 0 &&
-			GetTileZ(dst_tile) < GetTileZ(src_tile)) {
+	if (IsTunnelTile(dst_tile) && GetTileZ(dst_tile) < GetTileZ(src_tile)) {
 		return;
 	}
 

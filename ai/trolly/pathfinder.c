@@ -43,8 +43,7 @@ static bool IsRoad(TileIndex tile)
 		// MP_STREET, but not a road depot?
 		(IsTileType(tile, MP_STREET) && !IsTileDepotType(tile, TRANSPORT_ROAD)) ||
 		(IsTileType(tile, MP_TUNNELBRIDGE) && (
-			// road tunnel?
-			((_m[tile].m5 & 0x80) == 0 && (_m[tile].m5 & 0x4) == 0x4) ||
+			(IsTunnel(tile) && GetTunnelTransportType(tile) == TRANSPORT_ROAD) ||
 			// road bridge?
 			((_m[tile].m5 & 0x80) != 0 && (_m[tile].m5 & 0x2) == 0x2)
 		));
@@ -232,12 +231,10 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 			// If the next step is a bridge, we have to enter it the right way
 			if (!PathFinderInfo->rail_or_road && IsRoad(atile)) {
 				if (IsTileType(atile, MP_TUNNELBRIDGE)) {
-					// An existing bridge... let's test the direction ;)
-					if ((_m[atile].m5 & 1U) != (i & 1)) continue;
-					// This problem only is valid for tunnels:
-					// When the last tile was not yet a tunnel, check if we enter from the right side..
-					if ((_m[atile].m5 & 0x80) == 0) {
+					if (IsTunnel(atile)) {
 						if (GetTunnelDirection(atile) != i) continue;
+					} else {
+						if ((_m[atile].m5 & 1U) != DiagDirToAxis(i)) continue;
 					}
 				}
 			}

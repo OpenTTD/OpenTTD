@@ -1625,7 +1625,7 @@ static bool SignalVehicleCheck(TileIndex tile, uint track)
 	 * is some kind of invisible black hole, and there is some special magic going
 	 * on in there. This 'workaround' can be removed once the maprewrite is done.
 	 */
-	if (IsTileType(tile, MP_TUNNELBRIDGE) && GB(_m[tile].m5, 4, 4) == 0) {
+	if (IsTunnelTile(tile)) {
 		// It is a tunnel we're checking, we need to do some special stuff
 		// because VehicleFromPos will not find the vihicle otherwise
 		TileIndex end = GetOtherTunnelEnd(tile);

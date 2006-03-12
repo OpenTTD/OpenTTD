@@ -7,6 +7,7 @@
 #include "../../road_map.h"
 #include "../../tile.h"
 #include "../../player.h"
+#include "../../tunnel_map.h"
 #include "../../vehicle.h"
 #include "../../engine.h"
 #include "../../command.h"
@@ -2147,7 +2148,7 @@ static bool AiRemoveTileAndGoForward(Player *p)
 	TileIndex tilenew;
 
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-		if (!(_m[tile].m5 & 0x80)) {
+		if (IsTunnel(tile)) {
 			// Clear the tunnel and continue at the other side of it.
 			if (CmdFailed(DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR)))
 				return false;

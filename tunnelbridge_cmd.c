@@ -525,8 +525,7 @@ TileIndex CheckTunnelBusy(TileIndex tile, uint *length)
 		tile += delta;
 		len++;
 	} while (
-		!IsTileType(tile, MP_TUNNELBRIDGE) ||
-		GB(_m[tile].m5, 4, 4) != 0 ||
+		!IsTunnelTile(tile) ||
 		ReverseDiagDir(GetTunnelDirection(tile)) != dir ||
 		GetTileZ(tile) != z
 	);
@@ -742,7 +741,7 @@ static int32 ClearTile_TunnelBridge(TileIndex tile, byte flags)
 {
 	byte m5 = _m[tile].m5;
 
-	if ((m5 & 0xF0) == 0) {
+	if (IsTunnel(tile)) {
 		if (flags & DC_AUTO) return_cmd_error(STR_5006_MUST_DEMOLISH_TUNNEL_FIRST);
 		return DoClearTunnel(tile, flags);
 	} else if (m5 & 0x80) {
@@ -759,8 +758,7 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 	uint length;
 	Vehicle *v;
 
-	if ((_m[tile].m5 & 0xFC) == 0x00) {
-		// railway tunnel
+	if (IsTunnel(tile) && GetTunnelTransportType(tile) == TRANSPORT_RAIL) {
 		if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
 		if (GB(_m[tile].m3, 0, 4) == totype) return CMD_ERROR;
@@ -962,7 +960,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 	bool ice = _m[ti->tile].m4 & 0x80;
 
 	// draw tunnel?
-	if ((ti->map5 & 0xF0) == 0) {
+	if (IsTunnel(ti->tile)) {
 		if (GetTunnelTransportType(ti->tile) == TRANSPORT_RAIL) {
 			image = GetRailTypeInfo(GB(_m[ti->tile].m3, 0, 4))->base_sprites.tunnel;
 		} else {
@@ -1229,7 +1227,7 @@ static const StringID _bridge_tile_str[(MAX_BRIDGES + 3) + (MAX_BRIDGES + 3)] = 
 
 static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 {
-	if ((_m[tile].m5 & 0x80) == 0) {
+	if (IsTunnel(tile)) {
 		td->str = (GetTunnelTransportType(tile) == TRANSPORT_RAIL) ?
 			STR_5017_RAILROAD_TUNNEL : STR_5018_ROAD_TUNNEL;
 	} else {
@@ -1291,8 +1289,7 @@ static uint32 GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType mode
 	uint32 result;
 	byte m5 = _m[tile].m5;
 
-	if ((m5 & 0xF0) == 0) {
-		/* This is a tunnel */
+	if (IsTunnel(tile)) {
 		if (GetTunnelTransportType(tile) == mode) {
 			return DiagDirToAxis(GetTunnelDirection(tile)) == AXIS_X ? 0x101 : 0x202;
 		}
@@ -1371,7 +1368,7 @@ static const byte _tunnel_fractcoord_7[4] = {0x52, 0x85, 0x96, 0x49};
 
 static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y)
 {
-	if (GB(_m[tile].m5, 4, 4) == 0) {
+	if (IsTunnel(tile)) {
 		int z = GetSlopeZ(x, y) - v->z_pos;
 		byte fc;
 		DiagDirection dir;
@@ -1463,9 +1460,7 @@ TileIndex GetVehicleOutOfTunnelTile(const Vehicle *v)
 	byte z = v->z_pos;
 
 	for (tile = v->tile;; tile += delta) {
-		if (IsTileType(tile, MP_TUNNELBRIDGE) && GB(_m[tile].m5, 4, 4) == 0 &&
-				GetTileZ(tile) == z)
-			break;
+		if (IsTunnelTile(tile) && GetTileZ(tile) == z) break;
 	}
 	return tile;
 }

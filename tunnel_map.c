@@ -15,8 +15,7 @@ TileIndex GetOtherTunnelEnd(TileIndex tile)
 	do {
 		tile += delta;
 	} while (
-		!IsTileType(tile, MP_TUNNELBRIDGE) ||
-		GB(_m[tile].m5, 4, 4) != 0 ||
+		!IsTunnelTile(tile) ||
 		GetTunnelDirection(tile) != dir ||
 		GetTileZ(tile) != z
 	);
@@ -37,8 +36,7 @@ static bool IsTunnelInWayDir(TileIndex tile, uint z, DiagDirection dir)
 
 	return
 		z == height &&
-		IsTileType(tile, MP_TUNNELBRIDGE) &&
-		GB(_m[tile].m5, 4, 4) == 0 &&
+		IsTunnelTile(tile) &&
 		GetTunnelDirection(tile) == dir;
 }
 

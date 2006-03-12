@@ -9,6 +9,18 @@
 #include "rail.h"
 
 
+static inline bool IsTunnel(TileIndex t)
+{
+	return !HASBIT(_m[t].m5, 7);
+}
+
+
+static inline bool IsTunnelTile(TileIndex t)
+{
+	return IsTileType(t, MP_TUNNELBRIDGE) && IsTunnel(t);
+}
+
+
 static inline DiagDirection GetTunnelDirection(TileIndex t)
 {
 	return (DiagDirection)GB(_m[t].m5, 0, 2);

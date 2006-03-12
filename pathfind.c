@@ -231,8 +231,7 @@ FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, DiagDirection direct
 
 		tile = TileVirtXY(x, y);
 
-		if (IsTileType(tile, MP_TUNNELBRIDGE) &&
-				GB(_m[tile].m5, 4, 4) == 0 &&               // tunnel entrance/exit
+		if (IsTunnelTile(tile) &&
 				// GetTunnelTransportType(tile) == type &&  // rail/road-tunnel <-- This is not necesary to check, right?
 				ReverseDiagDir(GetTunnelDirection(tile)) == direction &&
 				GetSlopeZ(x + 8, y + 8) == z) {
@@ -283,7 +282,7 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 	RememberData rd;
 	TileIndex tile_org = tile;
 
-	if (IsTileType(tile, MP_TUNNELBRIDGE) && GB(_m[tile].m5, 4, 4) == 0) {
+	if (IsTunnelTile(tile)) {
 		if (GetTunnelDirection(tile) != direction ||
 				GetTunnelTransportType(tile) != tpf->tracktype) {
 			return;
@@ -716,21 +715,18 @@ callback_and_continue:
 start_at:
 		// If the tile is the entry tile of a tunnel, and we're not going out of the tunnel,
 		//   need to find the exit of the tunnel.
-		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-			if (GB(_m[tile].m5, 4, 4) == 0 &&
-					GetTunnelDirection(tile) != ReverseDiagDir(direction)) {
-				/* This is a tunnel tile */
-				/* We are not just driving out of the tunnel */
-				if (GetTunnelDirection(tile) != direction ||
-						GetTunnelTransportType(tile) != tpf->tracktype) {
-					// We are not driving into the tunnel, or it is an invalid tunnel
-					continue;
-				}
-				flotr = FindLengthOfTunnel(tile, direction);
-				si.cur_length += flotr.length * DIAG_FACTOR;
-				tile = flotr.tile;
-				// tile now points to the exit tile of the tunnel
+		if (IsTunnelTile(tile) &&
+				GetTunnelDirection(tile) != ReverseDiagDir(direction)) {
+			/* We are not just driving out of the tunnel */
+			if (GetTunnelDirection(tile) != direction ||
+					GetTunnelTransportType(tile) != tpf->tracktype) {
+				// We are not driving into the tunnel, or it is an invalid tunnel
+				continue;
 			}
+			flotr = FindLengthOfTunnel(tile, direction);
+			si.cur_length += flotr.length * DIAG_FACTOR;
+			tile = flotr.tile;
+			// tile now points to the exit tile of the tunnel
 		}
 
 		// This is a special loop used to go through
