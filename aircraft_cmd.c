@@ -315,12 +315,7 @@ bool IsAircraftHangarTile(TileIndex tile)
 
 bool CheckStoppedInHangar(const Vehicle* v)
 {
-	if (!(v->vehstatus & VS_STOPPED) || !IsAircraftHangarTile(v->tile)) {
-		_error_message = STR_A01B_AIRCRAFT_MUST_BE_STOPPED;
-		return false;
-	}
-
-	return true;
+	return v->vehstatus & VS_STOPPED && IsAircraftHangarTile(v->tile);
 }
 
 
@@ -346,8 +341,8 @@ int32 CmdSellAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner) || !CheckStoppedInHangar(v))
-		return CMD_ERROR;
+	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (!CheckStoppedInHangar(v)) return_cmd_error(STR_A01B_AIRCRAFT_MUST_BE_STOPPED);
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 

@@ -130,6 +130,7 @@ void GenerateTrees(void)
  */
 int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 {
+	StringID msg = INVALID_STRING_ID;
 	int32 cost;
 	int sx, sy, x, y;
 
@@ -158,7 +159,7 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 				case MP_TREES:
 					// no more space for trees?
 					if (_game_mode != GM_EDITOR && GetTreeCount(tile) == 3) {
-						_error_message = STR_2803_TREE_ALREADY_HERE;
+						msg = STR_2803_TREE_ALREADY_HERE;
 						continue;
 					}
 
@@ -172,7 +173,7 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 
 				case MP_CLEAR:
 					if (!IsTileOwner(tile, OWNER_NONE)) {
-						_error_message = STR_2804_SITE_UNSUITABLE;
+						msg = STR_2804_SITE_UNSUITABLE;
 						continue;
 					}
 
@@ -213,13 +214,17 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 					break;
 
 				default:
-					_error_message = STR_2804_SITE_UNSUITABLE;
+					msg = STR_2804_SITE_UNSUITABLE;
 					break;
 			}
 		}
 	}
 
-	return (cost == 0) ? CMD_ERROR : cost;
+	if (cost == 0) {
+		return_cmd_error(msg);
+	} else {
+		return cost;
+	}
 }
 
 typedef struct TreeListEnt {

@@ -764,8 +764,7 @@ int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invali
 		*/
 		if (IsSteepTileh(tileh) ||
 				((_is_old_ai_player || !_patches.build_on_slopes) && tileh != 0)) {
-			_error_message = STR_0007_FLAT_LAND_REQUIRED;
-			return CMD_ERROR;
+			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 		}
 
 		flat_z = z;
@@ -775,8 +774,7 @@ int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invali
 					(invalid_dirs&2 && !(tileh & 6) &&	h_cur == 1) ||
 					(invalid_dirs&4 && !(tileh & 3) && w_cur == 1) ||
 					(invalid_dirs&8 && !(tileh & 9) && (uint)h_cur == h)) {
-				_error_message = STR_0007_FLAT_LAND_REQUIRED;
-				return CMD_ERROR;
+				return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 			}
 			cost += _price.terraform;
 			flat_z += 8;
@@ -787,8 +785,7 @@ int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invali
 			// first tile
 			allowed_z = flat_z;
 		} else if (allowed_z != flat_z) {
-			_error_message = STR_0007_FLAT_LAND_REQUIRED;
-			return CMD_ERROR;
+			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 		}
 
 		// if station is set, then we have special handling to allow building on top of already existing stations.
@@ -796,20 +793,18 @@ int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invali
 		// on exactly that station.
 		if (station != NULL && IsTileType(tile_cur, MP_STATION)) {
 			if (_m[tile_cur].m5 >= 8) {
-				_error_message = ClearTile_Station(tile_cur, DC_AUTO); // get error message
-				return CMD_ERROR;
+				return ClearTile_Station(tile_cur, DC_AUTO); // get error message
 			} else {
 				StationID st = _m[tile_cur].m2;
 				if (*station == INVALID_STATION) {
 					*station = st;
 				} else if (*station != st) {
-					_error_message = STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING;
-					return CMD_ERROR;
+					return_cmd_error(STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING);
 				}
 			}
 		} else {
 			ret = DoCommandByTile(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-			if (CmdFailed(ret)) return CMD_ERROR;
+			if (CmdFailed(ret)) return ret;
 			cost += ret;
 		}
 	END_TILE_LOOP(tile_cur, w, h, tile)
@@ -969,7 +964,8 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	est = INVALID_STATION;
 	// If DC_EXEC is in flag, do not want to pass it to CheckFlatLandBelow, because of a nice bug
 	//  for detail info, see: https://sourceforge.net/tracker/index.php?func=detail&aid=1029064&group_id=103924&atid=636365
-	if (CmdFailed(ret = CheckFlatLandBelow(tile_org, w_org, h_org, flags&~DC_EXEC, 5 << axis, _patches.nonuniform_stations ? &est : NULL))) return CMD_ERROR;
+	ret = CheckFlatLandBelow(tile_org, w_org, h_org, flags & ~DC_EXEC, 5 << axis, _patches.nonuniform_stations ? &est : NULL);
+	if (CmdFailed(ret)) return ret;
 	cost = ret + (numtracks * _price.train_station_track + _price.train_station_length) * plat_len;
 
 	// Make sure there are no similar stations around us.
@@ -1021,7 +1017,8 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		// Now really clear the land below the station
 		// It should never return CMD_ERROR.. but you never know ;)
 		//  (a bit strange function name for it, but it really does clear the land, when DC_EXEC is in flags)
-		if (CmdFailed(CheckFlatLandBelow(tile_org, w_org, h_org, flags, 5 << axis, _patches.nonuniform_stations ? &est : NULL))) return CMD_ERROR;
+		ret = CheckFlatLandBelow(tile_org, w_org, h_org, flags, 5 << axis, _patches.nonuniform_stations ? &est : NULL);
+		if (CmdFailed(ret)) return ret;
 
 		st->train_tile = finalvalues[0];
 		if (!st->facilities) st->xy = finalvalues[0];
@@ -1305,6 +1302,7 @@ int32 CmdBuildRoadStop(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	RoadStop *prev = NULL;
 	TileIndex tile;
 	int32 cost;
+	int32 ret;
 	bool type = !!p2;
 
 	/* Saveguard the parameters */
@@ -1317,8 +1315,9 @@ int32 CmdBuildRoadStop(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile))
 		return CMD_ERROR;
 
-	cost = CheckFlatLandBelow(tile, 1, 1, flags, 1 << p1, NULL);
-	if (CmdFailed(cost)) return CMD_ERROR;
+	ret = CheckFlatLandBelow(tile, 1, 1, flags, 1 << p1, NULL);
+	if (CmdFailed(ret)) return ret;
+	cost = ret;
 
 	st = GetStationAround(tile, 1, 1, -1);
 	if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
@@ -1522,6 +1521,7 @@ int32 CmdBuildAirport(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	Town *t;
 	Station *st;
 	int32 cost;
+	int32 ret;
 	int w, h;
 	bool airport_upgrade = true;
 
@@ -1553,8 +1553,9 @@ int32 CmdBuildAirport(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	w = _airport_size_x[p1];
 	h = _airport_size_y[p1];
 
-	cost = CheckFlatLandBelow(tile, w, h, flags, 0, NULL);
-	if (CmdFailed(cost)) return CMD_ERROR;
+	ret = CheckFlatLandBelow(tile, w, h, flags, 0, NULL);
+	if (CmdFailed(ret)) return ret;
+	cost = ret;
 
 	st = GetStationAround(tile, w, h, -1);
 	if (st == CHECK_STATIONS_ERR) return CMD_ERROR;

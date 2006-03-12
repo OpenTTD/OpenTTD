@@ -282,8 +282,8 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Try and clear the start landscape */
 
-	if (CmdFailed(ret = DoCommandByTile(ti_start.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR)))
-		return CMD_ERROR;
+	ret = DoCommandByTile(ti_start.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	if (CmdFailed(ret)) return ret;
 	cost = ret;
 
 	// true - bridge-start-tile, false - bridge-end-tile
@@ -295,7 +295,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	/* Try and clear the end landscape */
 
 	ret = DoCommandByTile(ti_end.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (CmdFailed(ret)) return CMD_ERROR;
+	if (CmdFailed(ret)) return ret;
 	cost += ret;
 
 	// false - end tile slope check
@@ -336,15 +336,13 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		tile += delta;
 
-		_error_message = STR_5009_LEVEL_LAND_OR_WATER_REQUIRED;
-		if (GetTileSlope(tile, &z) != 0 && z >= ti_start.z) return CMD_ERROR;
+		if (GetTileSlope(tile, &z) != 0 && z >= ti_start.z) {
+			return_cmd_error(STR_5009_LEVEL_LAND_OR_WATER_REQUIRED);
+		}
 
 		switch (GetTileType(tile)) {
 			case MP_WATER:
-				if (!EnsureNoVehicle(tile)) {
-					_error_message = STR_980E_SHIP_IN_THE_WAY;
-					return CMD_ERROR;
-				}
+				if (!EnsureNoVehicle(tile)) return_cmd_error(STR_980E_SHIP_IN_THE_WAY);
 				if (_m[tile].m5 > 1) goto not_valid_below;
 				m5 = 0xC8;
 				break;
@@ -368,7 +366,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 not_valid_below:;
 				/* try and clear the middle landscape */
 				ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-				if (CmdFailed(ret)) return CMD_ERROR;
+				if (CmdFailed(ret)) return ret;
 				cost += ret;
 				m5 = 0xC0;
 				break;

@@ -69,14 +69,16 @@ int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	TileIndex tile = TileVirtXY(x, y);
 	Player *p = GetPlayer(_current_player);
 	int cost;
+	int32 ret;
 
 	SET_EXPENSES_TYPE(EXPENSES_PROPERTY);
 
-	cost = CheckFlatLandBelow(tile, 2, 2, flags, 0, NULL);
-	if (CmdFailed(cost)) return CMD_ERROR;
+	ret = CheckFlatLandBelow(tile, 2, 2, flags, 0, NULL);
+	if (CmdFailed(ret)) return ret;
+	cost = ret;
 
 	if (p->location_of_house != 0) { /* Moving HQ */
-		int32 ret = DestroyCompanyHQ(p->location_of_house, flags);
+		ret = DestroyCompanyHQ(p->location_of_house, flags);
 		if (CmdFailed(ret)) return CMD_ERROR;
 		cost += ret;
 	}

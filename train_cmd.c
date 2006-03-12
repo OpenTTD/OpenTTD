@@ -776,18 +776,14 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 
 /* Check if all the wagons of the given train are in a depot, returns the
- * number of cars (including loco) then. If not, sets the error message to
- * STR_881A_TRAINS_CAN_ONLY_BE_ALTERED and returns -1 */
+ * number of cars (including loco) then. If not it returns -1 */
 int CheckTrainStoppedInDepot(const Vehicle *v)
 {
 	int count;
 	TileIndex tile = v->tile;
 
 	/* check if stopped in a depot */
-	if (!IsTileDepotType(tile, TRANSPORT_RAIL) || v->cur_speed != 0) {
-		_error_message = STR_881A_TRAINS_CAN_ONLY_BE_ALTERED;
-		return -1;
-	}
+	if (!IsTileDepotType(tile, TRANSPORT_RAIL) || v->cur_speed != 0) return -1;
 
 	count = 0;
 	for (; v != NULL; v = v->next) {
@@ -797,7 +793,6 @@ int CheckTrainStoppedInDepot(const Vehicle *v)
 		if (!IsArticulatedPart(v)) count++;
 		if (v->u.rail.track != 0x80 || v->tile != tile ||
 				(IsFrontEngine(v) && !(v->vehstatus & VS_STOPPED))) {
-			_error_message = STR_881A_TRAINS_CAN_ONLY_BE_ALTERED;
 			return -1;
 		}
 	}
@@ -983,7 +978,7 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		// check if all vehicles in the source train are stopped inside a depot.
 		src_len = CheckTrainStoppedInDepot(src_head);
-		if (src_len < 0) return CMD_ERROR;
+		if (src_len < 0) return_cmd_error(STR_881A_TRAINS_CAN_ONLY_BE_ALTERED);
 
 		// check the destination row if the source and destination aren't the same.
 		if (src_head != dst_head) {
@@ -992,7 +987,7 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if (dst_head != NULL) {
 				// check if all vehicles in the dest train are stopped.
 				dst_len = CheckTrainStoppedInDepot(dst_head);
-				if (dst_len < 0) return CMD_ERROR;
+				if (dst_len < 0) return_cmd_error(STR_881A_TRAINS_CAN_ONLY_BE_ALTERED);
 
 				assert(dst_head->tile == src_head->tile);
 			}
@@ -1217,7 +1212,9 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	first = GetFirstVehicleInChain(v);
 
 	// make sure the vehicle is stopped in the depot
-	if (CheckTrainStoppedInDepot(first) < 0) return CMD_ERROR;
+	if (CheckTrainStoppedInDepot(first) < 0) {
+		return_cmd_error(STR_881A_TRAINS_CAN_ONLY_BE_ALTERED);
+	}
 
 	if (IsMultiheaded(v) && !IsTrainEngine(v)) return_cmd_error(STR_REAR_ENGINE_FOLLOW_FRONT_ERROR);
 
@@ -1592,8 +1589,6 @@ static void ReverseTrainDirection(Vehicle *v)
 	v = GetVehicle(p1);
 
 	if (v->type != VEH_Train || !CheckOwnership(v->owner)) return CMD_ERROR;
-
-	_error_message = STR_EMPTY;
 
 //	if (v->u.rail.track & 0x80 || IsTileDepotType(v->tile, TRANSPORT_RAIL))
 //		return CMD_ERROR;

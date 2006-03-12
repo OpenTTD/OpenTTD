@@ -236,43 +236,45 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	BEGIN_TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
 		if (GetTileSlope(tile, NULL) != 0) return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 
-			// can't make water of water!
-			if (IsTileType(tile, MP_WATER)) {
-				_error_message = STR_1007_ALREADY_BUILT;
-			} else {
-				/* is middle piece of a bridge? */
-				if (IsTileType(tile, MP_TUNNELBRIDGE) && _m[tile].m5 & 0x40) { /* build under bridge */
-					if (_m[tile].m5 & 0x20) // transport route under bridge
-						return_cmd_error(STR_5800_OBJECT_IN_THE_WAY);
+		// can't make water of water!
+		if (IsTileType(tile, MP_WATER)) continue;
 
-					if (_m[tile].m5 & 0x18) { // already water under bridge
-						return_cmd_error(STR_1007_ALREADY_BUILT);
-					}
+		/* is middle piece of a bridge? */
+		if (IsTileType(tile, MP_TUNNELBRIDGE) && _m[tile].m5 & 0x40) { /* build under bridge */
+			if (_m[tile].m5 & 0x20) // transport route under bridge
+				return_cmd_error(STR_5800_OBJECT_IN_THE_WAY);
 
-					if (flags & DC_EXEC) {
-						// change owner to OWNER_WATER and set land under bridge bit to water
-						ModifyTile(tile, MP_MAP5 | MP_MAPOWNER, OWNER_WATER, _m[tile].m5 | 0x08);
-					}
-				} else {
-					/* no bridge, try to clear it. */
-					int32 ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-
-					if (CmdFailed(ret)) return CMD_ERROR;
-					cost += ret;
-
-					if (flags & DC_EXEC) {
-						MakeWater(tile);
-						MarkTileDirtyByTile(tile);
-					}
-				}
-
-				if (flags & DC_EXEC) MarkTilesAroundDirty(tile);
-
-				cost += _price.clear_water;
+			if (_m[tile].m5 & 0x18) { // already water under bridge
+				return_cmd_error(STR_1007_ALREADY_BUILT);
 			}
+
+			if (flags & DC_EXEC) {
+				// change owner to OWNER_WATER and set land under bridge bit to water
+				ModifyTile(tile, MP_MAP5 | MP_MAPOWNER, OWNER_WATER, _m[tile].m5 | 0x08);
+			}
+		} else {
+			/* no bridge, try to clear it. */
+			int32 ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+
+			if (CmdFailed(ret)) return ret;
+			cost += ret;
+
+			if (flags & DC_EXEC) {
+				MakeWater(tile);
+				MarkTileDirtyByTile(tile);
+			}
+		}
+
+		if (flags & DC_EXEC) MarkTilesAroundDirty(tile);
+
+		cost += _price.clear_water;
 	} END_TILE_LOOP(tile, size_x, size_y, 0);
 
-	return (cost == 0) ? CMD_ERROR : cost;
+	if (cost == 0) {
+		return_cmd_error(STR_1007_ALREADY_BUILT);
+	} else {
+		return cost;
+	}
 }
 
 static int32 ClearTile_Water(TileIndex tile, byte flags)
