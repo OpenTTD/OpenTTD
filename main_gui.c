@@ -1145,12 +1145,13 @@ static void CommonRaiseLowerBigLand(TileIndex tile, int mode)
 	int sizex, sizey;
 	byte h;
 
-	_error_message_2 = mode ? STR_0808_CAN_T_RAISE_LAND_HERE : STR_0809_CAN_T_LOWER_LAND_HERE;
-
 	_generating_world = true; // used to create green terraformed land
 
 	if (_terraform_size == 1) {
-		DoCommandP(tile, 8, (uint32)mode, CcTerraform, CMD_TERRAFORM_LAND | CMD_AUTO | CMD_MSG(_error_message_2));
+		StringID msg =
+			mode ? STR_0808_CAN_T_RAISE_LAND_HERE : STR_0809_CAN_T_LOWER_LAND_HERE;
+
+		DoCommandP(tile, 8, (uint32)mode, CcTerraform, CMD_TERRAFORM_LAND | CMD_AUTO | CMD_MSG(msg));
 	} else {
 		SndPlayTileFx(SND_1F_SPLAT, tile);
 

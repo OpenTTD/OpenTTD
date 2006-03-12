@@ -269,7 +269,6 @@ VARDEF bool _news_ticker_sound;
 VARDEF byte _game_mode;
 
 VARDEF StringID _error_message;
-VARDEF StringID _error_message_2;
 VARDEF int32 _additional_cash_required;
 
 VARDEF uint32 _decode_parameters[20];

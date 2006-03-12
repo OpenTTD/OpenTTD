@@ -399,6 +399,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	CommandProc *proc;
 	uint32 flags;
 	bool notest;
+	StringID error_part1;
 
 	int x = TileX(tile) * 16;
 	int y = TileY(tile) * 16;
@@ -412,13 +413,13 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	assert(_docommand_recursive == 0);
 
 	_error_message = INVALID_STRING_ID;
-	_error_message_2 = cmd >> 16;
+	error_part1 = GB(cmd, 16, 16);
 	_additional_cash_required = 0;
 
 	/** Spectator has no rights except for the dedicated server which
 	 * is a spectator but is the server, so can do anything */
 	if (_current_player == OWNER_SPECTATOR && !_network_dedicated) {
-		ShowErrorMessage(_error_message, _error_message_2, x, y);
+		ShowErrorMessage(_error_message, error_part1, x, y);
 		_cmd_text = NULL;
 		return false;
 	}
@@ -459,7 +460,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 		res = proc(x, y, flags, p1, p2);
 		if (CmdFailed(res)) {
 			if (res & 0xFFFF) _error_message = res & 0xFFFF;
-			ShowErrorMessage(_error_message, _error_message_2, x, y);
+			ShowErrorMessage(_error_message, error_part1, x, y);
 		} else {
 			ShowEstimatedCostOrIncome(res, x, y);
 		}
@@ -524,7 +525,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 			ShowCostOrIncomeAnimation(x, y, GetSlopeZ(x, y), res2);
 		if (_additional_cash_required) {
 			SetDParam(0, _additional_cash_required);
-			ShowErrorMessage(STR_0003_NOT_ENOUGH_CASH_REQUIRES, _error_message_2, x,y);
+			ShowErrorMessage(STR_0003_NOT_ENOUGH_CASH_REQUIRES, error_part1, x,y);
 			if (res2 == 0) goto callb_err;
 		}
 	}
@@ -537,8 +538,9 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 
 show_error:
 	// show error message if the command fails?
-	if (IsLocalPlayer() && _error_message_2 != 0)
-		ShowErrorMessage(_error_message, _error_message_2, x,y);
+	if (IsLocalPlayer() && error_part1 != 0) {
+		ShowErrorMessage(_error_message, error_part1, x,y);
+	}
 
 callb_err:
 	_docommand_recursive = 0;
