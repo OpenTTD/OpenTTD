@@ -540,7 +540,7 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 
 			v->engine_type = engine;
 
-			dir = GB(_m[tile].m5, 0, 2);
+			dir = GetRailDepotDirection(tile);
 
 			v->direction = DiagDirToDir(dir);
 			v->tile = tile;
@@ -699,7 +699,7 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			v->unitnumber = unit_num;
 
-			dir = GB(_m[tile].m5, 0, 2);
+			dir = GetRailDepotDirection(tile);
 
 			v->direction = DiagDirToDir(dir);
 			v->tile = tile;
@@ -3167,7 +3167,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 		if (x + 4 > 15 &&
 				(!CheckCompatibleRail(v, tile) ||
 				(IsTileDepotType(tile, TRANSPORT_RAIL) &&
-				GetDepotDirection(tile, TRANSPORT_RAIL) == dir))) {
+				GetRailDepotDirection(tile) == dir))) {
 			v->cur_speed = 0;
 			ReverseTrainDirection(v);
 			return false;
@@ -3287,7 +3287,7 @@ static const byte _depot_track_ind[4] = {0,1,0,1};
 
 void TrainEnterDepot(Vehicle *v, TileIndex tile)
 {
-	SetSignalsOnBothDir(tile, _depot_track_ind[GB(_m[tile].m5, 0, 2)]);
+	SetSignalsOnBothDir(tile, _depot_track_ind[GetRailDepotDirection(tile)]);
 
 	if (!IsFrontEngine(v)) v = GetFirstVehicleInChain(v);
 

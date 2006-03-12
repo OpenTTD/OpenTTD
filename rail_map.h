@@ -8,6 +8,12 @@
 #include "waypoint.h"
 
 
+static inline DiagDirection GetRailDepotDirection(TileIndex t)
+{
+	return (DiagDirection)GB(_m[t].m5, 0, 2);
+}
+
+
 static inline TrackBits GetRailWaypointBits(TileIndex t)
 {
 	return _m[t].m5 & RAIL_WAYPOINT_TRACK_MASK ? TRACK_BIT_Y : TRACK_BIT_X;

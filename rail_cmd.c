@@ -1027,7 +1027,7 @@ static int32 RemoveTrainDepot(TileIndex tile, uint32 flags)
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		Track track = TrackdirToTrack(DiagdirToDiagTrackdir(GetDepotDirection(tile, TRANSPORT_RAIL)));
+		Track track = TrackdirToTrack(DiagdirToDiagTrackdir(GetRailDepotDirection(tile)));
 
 		DoDeleteDepot(tile);
 		SetSignalsOnBothDir(tile, track);
@@ -2085,7 +2085,7 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 	if (v->type != VEH_Train || !IsTileDepotType(tile, TRANSPORT_RAIL)) return 0;
 
 	/* depot direction */
-	dir = GetDepotDirection(tile, TRANSPORT_RAIL);
+	dir = GetRailDepotDirection(tile);
 
 	/* calculate the point where the following wagon should be activated */
 	/* this depends on the length of the current vehicle */

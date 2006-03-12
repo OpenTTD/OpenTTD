@@ -1960,7 +1960,7 @@ Trackdir GetVehicleTrackdir(const Vehicle* v)
 	switch (v->type) {
 		case VEH_Train:
 			if (v->u.rail.track == 0x80) /* We'll assume the train is facing outwards */
-				return DiagdirToDiagTrackdir(GetDepotDirection(v->tile, TRANSPORT_RAIL)); /* Train in depot */
+				return DiagdirToDiagTrackdir(GetRailDepotDirection(v->tile)); /* Train in depot */
 
 			if (v->u.rail.track == 0x40) /* train in tunnel, so just use his direction and assume a diagonal track */
 				return DiagdirToDiagTrackdir(DirToDiagDir(v->direction));

@@ -4,6 +4,7 @@
 #include "../../openttd.h"
 #include "../../functions.h"
 #include "../../map.h"
+#include "../../rail_map.h"
 #include "../../road_map.h"
 #include "../../tile.h"
 #include "../../player.h"
@@ -3625,8 +3626,9 @@ pos_3:
 		} else {
 			static const byte _depot_bits[] = {0x19,0x16,0x25,0x2A};
 
-			m5 &= 3;
-			if (GetRailTrackStatus(tile + TileOffsByDir(m5)) & _depot_bits[m5])
+			DiagDirection dir = GetRailDepotDirection(tile);
+
+			if (GetRailTrackStatus(tile + TileOffsByDir(dir)) & _depot_bits[dir])
 				return;
 
 			DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
