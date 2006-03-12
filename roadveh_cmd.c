@@ -82,7 +82,7 @@ void DrawRoadVehEngine(int x, int y, EngineID engine, uint32 image_ormod)
 	int spritenum = RoadVehInfo(engine)->image_index;
 
 	if (is_custom_sprite(spritenum)) {
-		int sprite = GetCustomVehicleIcon(engine, 6);
+		int sprite = GetCustomVehicleIcon(engine, DIR_W);
 
 		if (sprite != 0) {
 			DrawSprite(sprite | image_ormod, x, y);
@@ -286,9 +286,9 @@ typedef struct RoadFindDepotData {
 	byte owner;
 } RoadFindDepotData;
 
-static const byte _road_pf_directions[16] = {
-	0, 1, 0, 1, 2, 1, 255, 255,
-	2, 3, 3, 2, 3, 0, 255, 255,
+static const DiagDirection _road_pf_directions[] = {
+	DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE, 255, 255,
+	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE, 255, 255
 };
 
 static bool EnumRoadSignalFindDepot(TileIndex tile, void* data, int track, uint length, byte* state)

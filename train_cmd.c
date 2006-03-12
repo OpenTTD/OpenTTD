@@ -400,7 +400,7 @@ void DrawTrainEngine(int x, int y, EngineID engine, uint32 image_ormod)
 	uint32 image = 0;
 
 	if (is_custom_sprite(img)) {
-		image = GetCustomVehicleIcon(engine, 6);
+		image = GetCustomVehicleIcon(engine, DIR_W);
 		if (image == 0) {
 			img = orig_rail_vehicle_info[engine].image_index;
 		} else {
@@ -3153,13 +3153,13 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 	y = v->y_pos & 0xF;
 
 	switch (v->direction) {
-		case 0: x = ~x + ~y + 24; break;
-		case 7: x = y;            /* FALLTHROUGH */
-		case 1: x = ~x + 16;      break;
-		case 2: x = ~x + y + 8;   break;
-		case 3: x = y;            break;
-		case 4: x = x + y - 8;    break;
-		case 6: x = ~y + x + 8;   break;
+		case DIR_N : x = ~x + ~y + 24; break;
+		case DIR_NW: x = y;            /* FALLTHROUGH */
+		case DIR_NE: x = ~x + 16;      break;
+		case DIR_E : x = ~x + y + 8;   break;
+		case DIR_SE: x = y;            break;
+		case DIR_S : x = x + y - 8;    break;
+		case DIR_W : x = ~y + x + 8;   break;
 	}
 
 	if (GB(ts, 0, 16) != 0) {

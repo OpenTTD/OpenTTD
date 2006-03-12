@@ -33,7 +33,7 @@ void DrawShipEngine(int x, int y, EngineID engine, uint32 image_ormod)
 	int spritenum = ShipVehInfo(engine)->image_index;
 
 	if (is_custom_sprite(spritenum)) {
-		int sprite = GetCustomVehicleIcon(engine, 6);
+		int sprite = GetCustomVehicleIcon(engine, DIR_W);
 
 		if (sprite != 0) {
 			DrawSprite(sprite | image_ormod, x, y);
