@@ -197,7 +197,6 @@ bool CheckBridge_Stuff(byte bridge_type, uint bridge_len)
 int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	int bridge_type;
-	byte m5;
 	TransportType transport;
 	RailType railtype;
 	int sx,sy;
@@ -334,6 +333,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	tile = ti_start.tile;
 	delta = (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 	for (i = 0; i != bridge_len; i++) {
+		TransportType transport_under;
 		uint z;
 
 		tile += delta;
@@ -346,14 +346,14 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			case MP_WATER:
 				if (!EnsureNoVehicle(tile)) return_cmd_error(STR_980E_SHIP_IN_THE_WAY);
 				if (_m[tile].m5 > 1) goto not_valid_below;
-				m5 = 0xC8;
+				transport_under = TRANSPORT_WATER;
 				break;
 
 			case MP_RAILWAY:
 				if (_m[tile].m5 != (direction == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X)) {
 					goto not_valid_below;
 				}
-				m5 = 0xE0;
+				transport_under = TRANSPORT_RAIL;
 				break;
 
 			case MP_STREET:
@@ -361,7 +361,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 						GetRoadBits(tile) != (direction == AXIS_X ? ROAD_Y : ROAD_X)) {
 					goto not_valid_below;
 				}
-				m5 = 0xE8;
+				transport_under = TRANSPORT_ROAD;
 				break;
 
 			default:
@@ -370,13 +370,14 @@ not_valid_below:;
 				ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 				if (CmdFailed(ret)) return ret;
 				cost += ret;
-				m5 = 0xC0;
+				transport_under = INVALID_TRANSPORT;
 				break;
 		}
 
 		/* do middle part of bridge */
 		if (flags & DC_EXEC) {
-			_m[tile].m5 = (byte)(m5 | direction | transport << 1);
+			uint piece;
+
 			SetTileType(tile, MP_TUNNELBRIDGE);
 
 			//bridges pieces sequence (middle parts)
@@ -392,20 +393,26 @@ not_valid_below:;
 			// for odd bridges: #5 is going in the bridge middle if on even position, #4 on odd (counting from 0)
 
 			if (i == 0) { // first tile
-				m5 = 0;
+				piece = 0;
 			} else if (i == bridge_len - 1) { // last tile
-				m5 = 1;
+				piece = 1;
 			} else if (i == odd_middle_part) { // we are on the middle of odd bridge: #5 on even pos, #4 on odd
-				m5 = 5 - (i % 2);
+				piece = 5 - (i % 2);
 			} else {
 					// generate #2 and #3 in turns [i%2==0], after the middle of odd bridge
 					// this sequence swaps [... XOR (i>odd_middle_part)],
 					// for even bridges XOR does not apply as odd_middle_part==bridge_len
-					m5 = 2 + ((i % 2 == 0) ^ (i > odd_middle_part));
+					piece = 2 + ((i % 2 == 0) ^ (i > odd_middle_part));
 			}
 
-			_m[tile].m2 = (bridge_type << 4) | m5;
+			_m[tile].m2 = (bridge_type << 4) | piece;
 			SB(_m[tile].m3, 4, 4, railtype);
+			switch (transport_under) {
+				case TRANSPORT_RAIL:  _m[tile].m5 = 0xE0 | TRANSPORT_RAIL << 3 | transport << 1 | direction; break; // rail
+				case TRANSPORT_ROAD:  _m[tile].m5 = 0xE0 | TRANSPORT_ROAD << 3 | transport << 1 | direction; break; // road
+				case TRANSPORT_WATER: _m[tile].m5 = 0xC0 |              1 << 3 | transport << 1 | direction; break; // water
+				default:              _m[tile].m5 = 0xC0 |              0 << 3 | transport << 1 | direction; break; // grass
+			}
 
 			MarkTileDirtyByTile(tile);
 		}
