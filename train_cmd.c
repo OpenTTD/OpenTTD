@@ -3282,12 +3282,9 @@ void Train_Tick(Vehicle *v)
 }
 
 
-static const byte _depot_track_ind[4] = {0,1,0,1};
-
-
 void TrainEnterDepot(Vehicle *v, TileIndex tile)
 {
-	SetSignalsOnBothDir(tile, _depot_track_ind[GetRailDepotDirection(tile)]);
+	UpdateSignalsOnSegment(tile, GetRailDepotDirection(tile));
 
 	if (!IsFrontEngine(v)) v = GetFirstVehicleInChain(v);
 

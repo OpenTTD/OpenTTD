@@ -665,7 +665,7 @@ int32 CmdBuildTrainDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		d->xy = tile;
 		d->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
-		SetSignalsOnBothDir(tile, (p2 & 1) ? 2 : 1);
+		UpdateSignalsOnSegment(tile, p2);
 	}
 
 	return cost + _price.build_train_depot;
@@ -1023,10 +1023,10 @@ static int32 RemoveTrainDepot(TileIndex tile, uint32 flags)
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		Track track = TrackdirToTrack(DiagdirToDiagTrackdir(GetRailDepotDirection(tile)));
+		DiagDirection dir = GetRailDepotDirection(tile);
 
 		DoDeleteDepot(tile);
-		SetSignalsOnBothDir(tile, track);
+		UpdateSignalsOnSegment(tile, dir);
 	}
 
 	return _price.remove_train_depot;
