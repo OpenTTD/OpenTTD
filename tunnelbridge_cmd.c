@@ -413,6 +413,7 @@ not_valid_below:;
 
 			_m[tile].m2 = (bridge_type << 4) | piece;
 			SB(_m[tile].m3, 4, 4, railtype);
+			_m[tile].m5 = 0xC0 | transport << 1 | direction;
 			switch (transport_under) {
 				case TRANSPORT_RAIL:  SetRailUnderBridge(tile, owner_under, rail_under); break;
 				case TRANSPORT_ROAD:  SetRoadUnderBridge(tile, owner_under); break;
