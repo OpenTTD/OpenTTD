@@ -643,7 +643,7 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
 				case SLE_VAR_STRQ:
 					if (p != NULL) ttd_strlcpy((char*)ptr, p, sld->length);
 					break;
-				case SLE_VAR_CHAR: *(char*)ptr = (char)(unsigned long)p; break;
+				case SLE_VAR_CHAR: *(char*)ptr = *(char*)p; break;
 				default: NOT_REACHED(); break;
 			}
 			break;
@@ -1300,7 +1300,7 @@ const SettingDesc _patch_settings[] = {
 
 static const SettingDesc _currency_settings[] = {
 	SDT_VAR(CurrencySpec, rate,    SLE_UINT16, S, 0,  1, 0, 100, STR_NULL, NULL),
-	SDT_CHR(CurrencySpec, separator,           S, 0,        '.', STR_NULL, NULL),
+	SDT_CHR(CurrencySpec, separator,           S, 0,        ".", STR_NULL, NULL),
 	SDT_VAR(CurrencySpec, to_euro, SLE_UINT16, S, 0,  0, 0,1000, STR_NULL, NULL),
 	SDT_STR(CurrencySpec, prefix,    SLE_STRQ, S, 0,       NULL, STR_NULL, NULL),
 	SDT_STR(CurrencySpec, suffix,    SLE_STRQ, S, 0, " credits", STR_NULL, NULL),
