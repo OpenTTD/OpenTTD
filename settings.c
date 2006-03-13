@@ -1104,7 +1104,7 @@ static const SettingDescGlobVarList _network_settings[] = {
 	SDTG_BOOL("autoclean_companies",             S, 0, _network_autoclean_companies,  false,       STR_NULL, NULL),
 	 SDTG_VAR("autoclean_unprotected",SLE_UINT8, S, 0, _network_autoclean_unprotected,12, 0,  60,  STR_NULL, NULL),
 	 SDTG_VAR("autoclean_protected",  SLE_UINT8, S, 0, _network_autoclean_protected,  36, 0, 180,  STR_NULL, NULL),
-	 SDTG_VAR("restart_game_date",   SLE_UINT16, S, 0, _network_restart_game_date,    MAX_YEAR_BEGIN_REAL, MAX_YEAR_BEGIN_REAL, MAX_YEAR_END_REAL, STR_NULL, NULL),
+	 SDTG_VAR("restart_game_date",   SLE_UINT16, S,D0, _network_restart_game_date,    0, MAX_YEAR_BEGIN_REAL, MAX_YEAR_END_REAL, STR_NULL, NULL),
 	 SDTG_END()
 };
 #endif /* ENABLE_NETWORK */
