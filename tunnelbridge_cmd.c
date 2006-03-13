@@ -7,6 +7,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "bridge_map.h"
 #include "rail_map.h"
 #include "road_map.h"
 #include "table/sprites.h"
@@ -334,6 +335,8 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	delta = (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 	for (i = 0; i != bridge_len; i++) {
 		TransportType transport_under;
+		Owner owner_under = OWNER_NONE;
+		RailType rail_under = INVALID_RAILTYPE;
 		uint z;
 
 		tile += delta;
@@ -354,6 +357,8 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					goto not_valid_below;
 				}
 				transport_under = TRANSPORT_RAIL;
+				owner_under = GetTileOwner(tile);
+				rail_under = GB(_m[tile].m3, 0, 4);
 				break;
 
 			case MP_STREET:
@@ -362,6 +367,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					goto not_valid_below;
 				}
 				transport_under = TRANSPORT_ROAD;
+				owner_under = GetTileOwner(tile);
 				break;
 
 			default:
@@ -408,10 +414,10 @@ not_valid_below:;
 			_m[tile].m2 = (bridge_type << 4) | piece;
 			SB(_m[tile].m3, 4, 4, railtype);
 			switch (transport_under) {
-				case TRANSPORT_RAIL:  _m[tile].m5 = 0xE0 | TRANSPORT_RAIL << 3 | transport << 1 | direction; break; // rail
-				case TRANSPORT_ROAD:  _m[tile].m5 = 0xE0 | TRANSPORT_ROAD << 3 | transport << 1 | direction; break; // road
-				case TRANSPORT_WATER: _m[tile].m5 = 0xC0 |              1 << 3 | transport << 1 | direction; break; // water
-				default:              _m[tile].m5 = 0xC0 |              0 << 3 | transport << 1 | direction; break; // grass
+				case TRANSPORT_RAIL:  SetRailUnderBridge(tile, owner_under, rail_under); break;
+				case TRANSPORT_ROAD:  SetRoadUnderBridge(tile, owner_under); break;
+				case TRANSPORT_WATER: SetWaterUnderBridge(tile); break;
+				default:              SetClearUnderBridge(tile); break;
 			}
 
 			MarkTileDirtyByTile(tile);
@@ -644,8 +650,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 		cost = (_m[tile].m5 & 8) ? _price.remove_road * 2 : _price.remove_rail;
 
 		if (flags & DC_EXEC) {
-			_m[tile].m5 = _m[tile].m5 & ~0x38;
-			SetTileOwner(tile, OWNER_NONE);
+			SetClearUnderBridge(tile);
 			MarkTileDirtyByTile(tile);
 		}
 		return cost;
@@ -658,8 +663,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 		if (!EnsureNoVehicleZ(tile, TilePixelHeight(tile))) return CMD_ERROR;
 		cost = _price.clear_water;
 		if (flags & DC_EXEC) {
-			_m[tile].m5 = _m[tile].m5 & ~0x38;
-			SetTileOwner(tile, OWNER_NONE);
+			SetClearUnderBridge(tile);
 			MarkTileDirtyByTile(tile);
 		}
 		return cost;
@@ -1355,7 +1359,7 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, PlayerID old_player, Pl
 			// the stuff BELOW the middle part is owned by the deleted player.
 			if (!(_m[tile].m5 & (1 << 4 | 1 << 3))) {
 				// convert railway into grass.
-				_m[tile].m5 &= ~(1 << 5 | 1 << 4 | 1 << 3); // no transport route under bridge anymore..
+				SetClearUnderBridge(tile);
 			} else {
 				// for road, change the owner of the road to local authority
 				SetTileOwner(tile, OWNER_NONE);

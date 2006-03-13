@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "bridge_map.h"
 #include "rail_map.h"
 #include "road_map.h"
 #include "table/sprites.h"
@@ -140,8 +141,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			if (flags & DC_EXEC) {
 				ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
-				_m[tile].m5 = ti.map5 & 0xC7;
-				SetTileOwner(tile, OWNER_NONE);
+				SetClearUnderBridge(tile);
 				MarkTileDirtyByTile(tile);
 			}
 			return cost;
@@ -375,10 +375,8 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			/* all checked, can build road now! */
 			cost = _price.build_road * 2;
 			if (flags & DC_EXEC) {
-				ModifyTile(tile,
-					MP_MAPOWNER_CURRENT | MP_MAP5,
-					(ti.map5 & 0xC7) | 0x28 // map5
-				);
+				SetRoadUnderBridge(tile, _current_player);
+				MarkTileDirtyByTile(tile);
 			}
 			return cost;
 

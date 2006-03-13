@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "bridge_map.h"
 #include "debug.h"
 #include "functions.h"
 #include "rail_map.h"
@@ -299,11 +300,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					if (CmdFailed(ret)) return ret;
 					cost += ret;
 
-					if (flags & DC_EXEC) {
-						SetTileOwner(tile, _current_player);
-						SB(_m[tile].m3, 0, 4, p1);
-						_m[tile].m5 = (m5 & 0xC7) | 0x20; // railroad under bridge
-					}
+					if (flags & DC_EXEC) SetRailUnderBridge(tile, _current_player, p1);
 					break;
 
 				case 0x20: // rail already there
@@ -426,8 +423,7 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if (!(flags & DC_EXEC))
 				return _price.remove_rail;
 
-			SetTileOwner(tile, OWNER_NONE);
-			_m[tile].m5 = _m[tile].m5 & 0xC7;
+			SetClearUnderBridge(tile);
 			break;
 
 		case MP_STREET: {

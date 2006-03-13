@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "bridge_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "functions.h"
@@ -248,10 +249,7 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				return_cmd_error(STR_1007_ALREADY_BUILT);
 			}
 
-			if (flags & DC_EXEC) {
-				// change owner to OWNER_WATER and set land under bridge bit to water
-				ModifyTile(tile, MP_MAP5 | MP_MAPOWNER, OWNER_WATER, _m[tile].m5 | 0x08);
-			}
+			if (flags & DC_EXEC) SetWaterUnderBridge(tile);
 		} else {
 			/* no bridge, try to clear it. */
 			int32 ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
@@ -259,13 +257,13 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if (CmdFailed(ret)) return ret;
 			cost += ret;
 
-			if (flags & DC_EXEC) {
-				MakeWater(tile);
-				MarkTileDirtyByTile(tile);
-			}
+			if (flags & DC_EXEC) MakeWater(tile);
 		}
 
-		if (flags & DC_EXEC) MarkTilesAroundDirty(tile);
+		if (flags & DC_EXEC) {
+			MarkTileDirtyByTile(tile);
+			MarkTilesAroundDirty(tile);
+		}
 
 		cost += _price.clear_water;
 	} END_TILE_LOOP(tile, size_x, size_y, 0);
@@ -546,7 +544,7 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 			case MP_TUNNELBRIDGE:
 				// Middle part of bridge with clear land below?
 				if ((_m[target].m5 & 0xF8) == 0xC0) {
-					_m[target].m5 |= 0x08;
+					SetWaterUnderBridge(target);
 					MarkTileDirtyByTile(target);
 				}
 				break;
@@ -560,7 +558,8 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 			if ((m5 & 0xF8) == 0xC8 || (m5 & 0xF8) == 0xF0) return;
 
 			if ((m5 & 0xC0) == 0xC0) {
-				ModifyTile(target, MP_MAPOWNER | MP_MAP5, OWNER_WATER, (m5 & ~0x38) | 0x8);
+				SetWaterUnderBridge(target);
+				MarkTileDirtyByTile(target);
 				return;
 			}
 		}
