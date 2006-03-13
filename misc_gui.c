@@ -1745,7 +1745,11 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 
 				if (ce->flags & CE_CLICK) {
 					DrawFrameRect(x + 20, y + 1, x + 30 + 9, y + 9, 0, (clk - (i * 2) == 1) ? FR_LOWERED : 0);
-					SetDParam(0, (i == 0) ? 10000000 : false);
+					if (i == 0) { // XXX - hack/hack for first element which is increase money. Told ya it's a mess
+						SetDParam64(0, 10000000);
+					} else {
+						SetDParam(0, false);
+					}
 				} else {
 					DrawFrameRect(x + 20, y + 1, x + 30 + 9, y + 9, on ? 6 : 4, on ? FR_LOWERED : 0);
 					SetDParam(0, on ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
