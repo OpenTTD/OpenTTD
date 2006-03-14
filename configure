@@ -10,6 +10,9 @@ function showhelp() {
 	echo " $0 --your_options"
 	echo ""
 	echo "Params:"
+	echo " --debug            Create debug-release                [no]"
+	echo " --profile          Create profile-release              [no]"
+	echo " --revision         Set the revision of the compilation [detected]"
 	echo " --target-cc        Sets the target-compiler            [\$CC]"
 	echo " --target-cxx       Sets the C++ target-compiler        []"
 	echo " --host-cc          Sets the host-compiler              [\$CC]"
@@ -53,6 +56,18 @@ do
 			exit 0
 			;;
 
+		--debug)
+			PARAM="$PARAM DEBUG=1"
+			;;
+		--profile)
+			PARAM="$PARAM PROFILE=1"
+			;;
+		--revision=*)
+			RELEASE=`awk 'BEGIN { FS="="; $0="'$n'"; print $2;}'`
+			;;
+		--revision)
+			SITEM="RELEASE"
+			;;
 		--target-cc=*)
 			handle "CC_TARGET" $n
 			;;
@@ -220,5 +235,12 @@ make upgradeconf $PARAM
 if ! test -z "$TARGET_CXX"
 then
 	echo "CXX=$TARGET_CXX" >> Makefile.config
+fi
+
+# Same for RELEASE (read: REVISION)
+
+if ! test -z "$RELEASE"
+then
+	echo "RELEASE=$RELEASE" >> Makefile.config
 fi
 
