@@ -217,5 +217,8 @@ make upgradeconf $PARAM
 # Makefile.config currently doesn't support custom CXX, so, we add the line
 #  ourself!
 
-echo "CXX=$TARGET_CXX" >> Makefile.config
+if ! test -z "$TARGET_CXX"
+then
+	echo "CXX=$TARGET_CXX" >> Makefile.config
+fi
 
