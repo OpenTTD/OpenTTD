@@ -974,7 +974,7 @@ depend:
 	@true # The include handles this automagically
 
 # Introduce the dependencies
-ifeq ($(findstring $(MAKECMDGOALS), clean info depend mrproper),)
+ifeq ($(findstring $(MAKECMDGOALS), clean info depend mrproper upgradeconf $(MAKE_CONFIG)),)
 -include $(DEPS)
 endif
 

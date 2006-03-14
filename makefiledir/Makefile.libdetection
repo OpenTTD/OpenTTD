@@ -6,6 +6,8 @@ endif
 
 ifeq ($(shell expr $(CONFIG_VERSION) \< 9), 1)
 
+ifndef BYPASS_OS_DETECT
+
 # Automatically recognize if building on Win32
 ifdef WINDIR
 ifndef UNIX
@@ -54,6 +56,9 @@ ifeq ($(shell uname), SunOS)
 SUNOS:=1
 # SunOS uses UNIX setup too
 UNIX:=1
+endif
+
+# END BYPASS_OS_DETECT
 endif
 
 # FreeBSD uses sdl11 instead of sdl
