@@ -54,6 +54,7 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 {
 	/* We do +/- 6 for the map_xy because 64 is 2^6, but it is the lowest available element */
 	static const StringID mapsizes[] = {STR_64, STR_128, STR_256, STR_512, STR_1024, STR_2048, INVALID_STRING_ID};
+	extern Patches _patches_newgame;
 
 	switch (e->event) {
 	case WE_PAINT:
@@ -62,9 +63,9 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 
 		DrawStringRightAligned(216, 121, STR_MAPSIZE, 0);
-		DrawString(223, 121, mapsizes[_patches.map_x - 6], 0x10);
+		DrawString(223, 121, mapsizes[_patches_newgame.map_x - 6], 0x10);
 		DrawString(270, 121, STR_BY, 0);
-		DrawString(283, 121, mapsizes[_patches.map_y - 6], 0x10);
+		DrawString(283, 121, mapsizes[_patches_newgame.map_y - 6], 0x10);
 		break;
 
 	case WE_CLICK:
@@ -77,10 +78,10 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 			SetNewLandscapeType(e->click.widget - 6);
 			break;
 		case 10: case 11: /* Mapsize X */
-			ShowDropDownMenu(w, mapsizes, _patches.map_x - 6, 11, 0, 0);
+			ShowDropDownMenu(w, mapsizes, _patches_newgame.map_x - 6, 11, 0, 0);
 			break;
 		case 12: case 13: /* Mapsize Y */
-			ShowDropDownMenu(w, mapsizes, _patches.map_y - 6, 13, 0, 0);
+			ShowDropDownMenu(w, mapsizes, _patches_newgame.map_y - 6, 13, 0, 0);
 			break;
 		case 15:
 #ifdef ENABLE_NETWORK
@@ -104,8 +105,11 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 
 	case WE_DROPDOWN_SELECT: /* Mapsize selection */
 		switch (e->dropdown.button) {
-			case 11: _patches.map_x = e->dropdown.index + 6; break;
-			case 13: _patches.map_y = e->dropdown.index + 6; break;
+			/* We need a *hacky* here because generateworld is called with _patches
+			 * but it only gets the new value INSIDE generateworld so not setting it would
+			 * break generating a new game on the run (eg MP) */
+			case 11: _patches.map_x = _patches_newgame.map_x = e->dropdown.index + 6; break;
+			case 13: _patches.map_y = _patches_newgame.map_y = e->dropdown.index + 6; break;
 		}
 		SetWindowDirty(w);
 		break;
