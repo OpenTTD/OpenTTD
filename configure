@@ -1,0 +1,221 @@
+#!/bin/sh
+
+# This 'configure' script is a very easy wrapper around 'make updateconf'
+#  It allows cross-compilers to do their job much more easy.
+
+function showhelp() {
+	echo "Configure for OpenTTD"
+	echo ""
+	echo "Usage:"
+	echo " $0 --your_options"
+	echo ""
+	echo "Params:"
+	echo " --target-cc        Sets the target-compiler            [\$CC]"
+	echo " --target-cxx       Sets the C++ target-compiler        []"
+	echo " --host-cc          Sets the host-compiler              [\$CC]"
+	echo " --os               Sets the OS. Listens to:            [detected]"
+	echo "                       UNIX, OSX, FREEBSD, MORPHOS"
+	echo "                       BEOS, SUNOS, CYGWIN, MINGW"
+	echo " --windres          Sets the windres (Windows)          [windres]"
+	echo " --force-le         Force LE platform                   [no]"
+	echo " --force-be         Force BE platform                   [no]"
+	echo ""
+	echo "Params that can be used with --with or --without"
+	echo "   (e.g.: --without-static disables static (default))"
+	echo " static             Do you want a static build?         [no]"
+	echo " directmusic        Do you want direct-music?           [no]"
+	echo " zlib               Do you want zlib-support?           [yes]"
+	echo " sdl                Do you want SDL-support?            [yes]"
+	echo " png                Do you want PNG-support?            [yes]"
+	echo " cocoa              Do you want cocoa-support? (MacOSX) [no]"
+	echo ""
+	echo "Params used to configure external libs:"
+	echo " --static-zlib-path Set the path to your static zlib    []"
+	echo " --sdl-config       Where is your sdl-config            [sdl-config]"
+	echo " --libpng-config    Where is your libpng-config         [libpng-config]"
+	echo " "
+}
+
+function handle() {
+	PARAM="$PARAM $1=`awk 'BEGIN { FS="="; $0="'$2'"; print $2;}'`"
+}
+
+# The things you can use inside this case:
+#  handle NAME VALUE - Sets the value to give the 'make upgradeconf'
+#                         Value is in form: tag=REAL_VALUE
+#  ITEM="NAME"       - Will set the value as above, only with the next param
+#  SITEM="NAME"      - Will set the var $NAME to the next param
+for n in $*
+do
+	case "$n" in
+		--help | -h)
+			showhelp
+			exit 0
+			;;
+
+		--target-cc=*)
+			handle "CC_TARGET" $n
+			;;
+		--target-cc)
+			ITEM="CCTARGET"
+			;;
+		--target-cxx=*)
+			TARGET_CXX=`awk 'BEGIN { FS="="; $0="'$n'"; print $2;}'`
+			;;
+		--target-cxx)
+			SITEM="TARGET_CXX"
+			;;
+		--host-cc=*)
+			handle CC_HOST $n
+			;;
+		--host-cc)
+			ITEM="CC_HOST"
+			;;
+		--os=*)
+			OS=`awk 'BEGIN { FS="="; $0="'$n'"; print $2;}'`
+			;;
+		--os)
+			SITEM="OS"
+			;;
+		--windres=*)
+			handle WINDRES $n
+			;;
+		--windres)
+			ITEM="WINDRES"
+			;;
+		--force-le)
+			PARAM="$PARAM ENDIAN_FORCE=LE"
+			;;
+		--force-be)
+			PARAM="$PARAM ENDIAN_FORCE=BE"
+			;;
+
+		--with-static)
+			PARAM="$PARAM STATIC=1"
+			;;
+		--without-static)
+			PARAM="$PARAM STATIC="
+			;;
+		--with-directmusic)
+			PARAM="$PARAM WITH_DIRECTMUSIC=1"
+			;;
+		--without-directmusic)
+			PARAM="$PARAM WITH_DIRECTMUSIC="
+			;;
+		--with-zlib)
+			PARAM="$PARAM WITH_ZLIB=1"
+			;;
+		--without-zlib)
+			PARAM="$PARAM WITH_ZLIB="
+			;;
+		--with-sdl)
+			PARAM="$PARAM WITH_SDL=1"
+			;;
+		--without-sdl)
+			PARAM="$PARAM WITH_SDL="
+			;;
+		--with-png)
+			PARAM="$PARAM WITH_PNG=1"
+			;;
+		--without-png)
+			PARAM="$PARAM WITH_PNG="
+			;;
+		--with-cocoa)
+			PARAM="$PARAM WITH_COCOA=1"
+			;;
+		--without-cocoa)
+			PARAM="$PARAM WITH_COCOA="
+			;;
+		--static-zlib-path=*)
+			handle STATIC_ZLIB_PATH $n
+			;;
+		--static-zlib-path)
+			ITEM="STATIC_ZLIB_PATH"
+			;;
+		--sdl-config=*)
+			handle SDL-CONFIG $n
+			;;
+		--sdl-config)
+			ITEM="SDL-CONFIG"
+			;;
+		--libpng-config=*)
+			handle LIBPNG-CONFIG $n
+			;;
+		--lib-png-config)
+			ITEM="LIBPNG-CONFIG"
+			;;
+
+		--*=*)
+			echo -n "Unknown switch "
+			echo `awk 'BEGIN { FS="="; $0="'$n'"; print $1;}'`
+			exit 1
+			;;
+		-*)
+			echo "Unknown switch $n"
+			exit 1
+			;;
+
+		*)
+			if ! test -z "$ITEM"
+			then
+				PARAM="$PARAM $ITEM=$n"
+				ITEM="";
+			elif ! test -z "$SITEM"
+			then
+				export $SITEM=$n
+				SITEM=""
+			else
+				echo "Unknown switch $n"
+				exit 1
+			fi
+			;;
+	esac
+done
+
+if ! test -z "$OS"
+then
+	OS=`echo $OS | tr '[:lower:]' '[:upper:]'`
+	case "$OS" in
+		WIN32)
+			PARAM="$PARAM WIN32=1"
+			;;
+		UNIX)
+			PARAM="$PARAM UNIX=1"
+			;;
+		OSX)
+			PARAM="$PARAM OSX=1 UNIX=1"
+			;;
+		FREEBSD)
+			PARAM="$PARAM FREEBSD=1"
+			;;
+		MORPHOS)
+			PARAM="$PARAM MORPHOS=1 UNIX=1"
+			;;
+		BEOS)
+			PARAM="$PARAM BEOS=1 UNIX=1"
+			;;
+		SUNOS)
+			PARAM="$PARAM SUNOS=1 UNIX=1"
+			;;
+		CYGWIN)
+			PARAM="$PARAM CYGWIN=1 WIN32=1"
+			;;
+		MINGW)
+			PARAM="$PARAM MINGW=1 WIN32=1"
+			;;
+		*)
+			echo "Unknown OS: $OS"
+			exit 1
+			;;
+	esac
+	PARAM="$PARAM BYPASS_OS_DETECT=1"
+fi
+
+rm Makefile.config
+make upgradeconf $PARAM
+
+# Makefile.config currently doesn't support custom CXX, so, we add the line
+#  ourself!
+
+echo "CXX=$TARGET_CXX" >> Makefile.config
+
