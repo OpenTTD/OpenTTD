@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "bridge_map.h"
 #include "functions.h"
 #include "road_map.h"
 #include "station.h"
@@ -33,7 +34,7 @@ RoadBits GetAnyRoadBits(TileIndex tile)
 				} else {
 					// ending
 					if (GB(_m[tile].m5, 1, 2) != TRANSPORT_ROAD) return 0; // not a road bridge
-					return _m[tile].m5 & 1 ? ROAD_Y : ROAD_X;
+					return DiagDirToRoadBits(ReverseDiagDir(GetBridgeRampDirection(tile)));
 				}
 			} else {
 				// tunnel

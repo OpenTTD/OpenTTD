@@ -1019,10 +1019,9 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				if (f) DrawFoundation(ti, f);
 			}
 
-			/* Cope for the direction of the bridge */
-			if (HASBIT(ti->map5, 0)) base_offset++;
+			// HACK Wizardry to convert the bridge ramp direction into a sprite offset
+			base_offset += (6 - GetBridgeRampDirection(ti->tile)) % 4;
 
-			if (ti->map5 & 0x20) base_offset += 2; // which side
 			if (ti->tileh == 0) base_offset += 4; // sloped bridge head
 
 			/* Table number 6 always refers to the bridge heads for any bridge type */

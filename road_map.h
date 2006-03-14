@@ -73,7 +73,7 @@ static inline DiagDirection GetRoadDepotDirection(TileIndex tile)
  * Special behavior:
  * - road depots: entrance is treated as road piece
  * - road tunnels: entrance is treated as road piece
- * - bridge ramps: treated as straight road
+ * - bridge ramps: start of the ramp is treated as road piece
  * - bridge middle parts: bridge itself is ignored
  */
 RoadBits GetAnyRoadBits(TileIndex);

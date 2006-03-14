@@ -3,10 +3,23 @@
 #ifndef BRIDGE_MAP_H
 #define BRIDGE_MAP_H
 
+#include "direction.h"
 #include "macros.h"
 #include "map.h"
 #include "rail.h"
 #include "tile.h"
+
+
+/**
+ * Get the direction pointing onto the bridge
+ */
+static inline DiagDirection GetBridgeRampDirection(TileIndex t)
+{
+	/* Heavy wizardry to convert the X/Y (bit 0) + N/S (bit 5) encoding of
+	 * bridges to a DiagDirection
+	 */
+	return (DiagDirection)((6 - (_m[t].m5 >> 4 & 2) - (_m[t].m5 & 1)) % 4);
+}
 
 
 static inline void SetClearUnderBridge(TileIndex t)

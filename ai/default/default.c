@@ -2,6 +2,7 @@
 
 #include "../../stdafx.h"
 #include "../../openttd.h"
+#include "../../bridge_map.h"
 #include "../../functions.h"
 #include "../../map.h"
 #include "../../rail_map.h"
@@ -2161,7 +2162,7 @@ static bool AiRemoveTileAndGoForward(Player *p)
 
 			// Check if the bridge points in the right direction.
 			// This is not really needed the first place AiRemoveTileAndGoForward is called.
-			if ((_m[tile].m5 & 1) != (p->ai.cur_dir_a & 1)) return false;
+			if (DiagDirToAxis(GetBridgeRampDirection(tile)) != (p->ai.cur_dir_a & 1U)) return false;
 
 			// Find other side of bridge.
 			offs = TileOffsByDir(p->ai.cur_dir_a);
@@ -3673,18 +3674,18 @@ pos_3:
 				CMD_REMOVE_ROAD);
 		}
 	} else if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-		byte b;
-
 		if (!IsTileOwner(tile, _current_player) || (_m[tile].m5 & 0xC6) != 0x80)
 			return;
 
 		m5 = 0;
 
-		b = _m[tile].m5 & 0x21;
-		if (b == 0) goto pos_0;
-		if (b == 1) goto pos_3;
-		if (b == 0x20) goto pos_2;
-		goto pos_1;
+		switch (GetBridgeRampDirection(tile)) {
+			default:
+			case DIAGDIR_NE: goto pos_2;
+			case DIAGDIR_SE: goto pos_3;
+			case DIAGDIR_SW: goto pos_0;
+			case DIAGDIR_NW: goto pos_1;
+		}
 	}
 }
 
