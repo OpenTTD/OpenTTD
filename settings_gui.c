@@ -581,8 +581,6 @@ static const PatchPage _patches_page[] = {
 	{_patches_ai,           lengthof(_patches_ai)},
 };
 
-extern Patches _patches_newgame;
-
 /** The main patches window. Shows a number of categories on top and
  * a selection of patches in that category.
  * Uses WP(w, def_d) macro - data_1, data_2, data_3 */
@@ -591,9 +589,10 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 	static Patches *patches_ptr;
 
 	switch (e->event) {
-	case WE_CREATE:
+	case WE_CREATE: {
+		extern Patches _patches_newgame;
 		patches_ptr = (_game_mode == GM_MENU) ? &_patches_newgame : &_patches;
-		break;
+	} break;
 
 	case WE_PAINT: {
 		int x, y;
