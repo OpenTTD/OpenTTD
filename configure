@@ -57,7 +57,11 @@ do
 			;;
 
 		--debug)
-			PARAM="$PARAM DEBUG=1"
+			DEBUG_SET=1
+			ITEM="DEBUG"
+			;;
+		--debug=*)
+			handle "DEBUG" $n
 			;;
 		--profile)
 			PARAM="$PARAM PROFILE=1"
@@ -226,7 +230,21 @@ then
 	PARAM="$PARAM BYPASS_OS_DETECT=1"
 fi
 
-rm Makefile.config
+if ! test -z "$DEBUG_SET"
+then
+	if test -z "`echo $PARAM | grep "DEBUG="`"
+	then
+		# Someone did --debug, without assigning a value, assume 1
+		PARAM="$PARAM DEBUG=1"
+	fi
+fi
+
+# First remove the Makefile.config, else you can have double entries
+if test -e "Makefile.config"
+then
+	rm -f Makefile.config
+fi
+
 make upgradeconf $PARAM
 
 # Makefile.config currently doesn't support custom CXX, so, we add the line
