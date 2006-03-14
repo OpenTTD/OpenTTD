@@ -219,7 +219,7 @@ then
 			PARAM="$PARAM MINGW=1 WIN32=1"
 			;;
 		*)
-			echo "Unknown OS: $OS"
+			echo "Unknown OS: $TARGET_OS"
 			exit 1
 			;;
 	esac
