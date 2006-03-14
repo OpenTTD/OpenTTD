@@ -87,10 +87,10 @@ do
 			ITEM="CC_HOST"
 			;;
 		--os=*)
-			OS=`awk 'BEGIN { FS="="; $0="'$n'"; print $2;}'`
+			TARGET_OS=`awk 'BEGIN { FS="="; $0="'$n'"; print $2;}'`
 			;;
 		--os)
-			SITEM="OS"
+			SITEM="TARGET_OS"
 			;;
 		--windres=*)
 			handle WINDRES $n
@@ -187,10 +187,10 @@ do
 	esac
 done
 
-if ! test -z "$OS"
+if ! test -z "$TARGET_OS"
 then
-	OS=`echo $OS | tr '[:lower:]' '[:upper:]'`
-	case "$OS" in
+	TARGET_OS=`echo $TARGET_OS | tr '[:lower:]' '[:upper:]'`
+	case "$TARGET_OS" in
 		WIN32)
 			PARAM="$PARAM WIN32=1"
 			;;
