@@ -1033,23 +1033,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			uint z;
 			int x,y;
 
-			image = GB(ti->map5, 3, 2); // type of stuff under bridge (only defined for 0,1)
-			/** @todo So why do we even WASTE that one bit?! (map5, bit 4) */
-			assert(image <= 1);
-
-			if (!(ti->map5 & 0x20)) {
-				// draw land under bridge
-				if (ice) image += 2;
-
-				if (image != 1 || ti->tileh == 0) {
-					DrawGroundSprite(_bridge_land_below[image] + _tileh_to_sprite[ti->tileh]);
-				} else {
-					DrawGroundSprite(_water_shore_sprites[ti->tileh]);
-				}
-
-				// draw canal water?
-				if (ti->map5 & 8 && ti->z != 0) DrawCanalWater(ti->tile);
-			} else {
+			if (IsTransportUnderBridge(ti->tile)) {
 				// draw transport route under bridge
 
 				// draw foundation?
@@ -1058,9 +1042,9 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 					if (f) DrawFoundation(ti, f);
 				}
 
-				if (!(image&1)) {
+				if (GetTransportTypeUnderBridge(ti->tile) == TRANSPORT_RAIL) {
 					const RailtypeInfo *rti = GetRailTypeInfo(GB(_m[ti->tile].m3, 0, 4));
-					// railway
+
 					image = SPR_RAIL_TRACK_Y + (ti->map5 & 1);
 					if (ti->tileh != 0) image = SPR_RAIL_TRACK_Y + _track_sloped_sprites[ti->tileh - 1];
 					image += rti->total_offset;
@@ -1072,6 +1056,18 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 					if (ice) image += 19;
 				}
 				DrawGroundSprite(image);
+			} else {
+				if (IsClearUnderBridge(ti->tile)) {
+					image = (ice ? SPR_FLAT_SNOWY_TILE : SPR_FLAT_GRASS_TILE);
+					DrawGroundSprite(image + _tileh_to_sprite[ti->tileh]);
+				} else {
+					if (ti->tileh == 0) {
+						DrawGroundSprite(SPR_FLAT_WATER_TILE);
+						if (ti->z != 0) DrawCanalWater(ti->tile);
+					} else {
+						DrawGroundSprite(_water_shore_sprites[ti->tileh]);
+					}
+				}
 			}
 
 			/* Cope for the direction of the bridge */

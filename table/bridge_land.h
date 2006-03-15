@@ -26,10 +26,6 @@
   * </ul>
   */
 
-static const SpriteID _bridge_land_below[] = {
-	SPR_FLAT_GRASS_TILE, SPR_FLAT_WATER_TILE, SPR_FLAT_SNOWY_TILE, SPR_FLAT_WATER_TILE
-};
-
 static const PalSpriteID _bridge_sprite_table_2_0[] = {
 	    0x9C3,     0x9C7,     0x9C9,       0x0,     0x9C4,     0x9C8,     0x9CA,       0x0,
 	    0x9C5,     0x9C7,     0x9C9,       0x0,     0x9C6,     0x9C8,     0x9CA,       0x0,

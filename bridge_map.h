@@ -28,6 +28,23 @@ static inline DiagDirection GetBridgeRampDirection(TileIndex t)
 }
 
 
+static inline bool IsClearUnderBridge(TileIndex t)
+{
+	return GB(_m[t].m5, 3, 3) == 0;
+}
+
+
+static inline bool IsTransportUnderBridge(TileIndex t)
+{
+	return HASBIT(_m[t].m5, 5);
+}
+
+static inline TransportType GetTransportTypeUnderBridge(TileIndex t)
+{
+	return (TransportType)GB(_m[t].m5, 3, 2);
+}
+
+
 /**
  * Starting at one bridge end finds the other bridge end
  */
