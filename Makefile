@@ -130,7 +130,7 @@
 
 # Makefile version tag
 # it checks if the version tag in Makefile.config is the same and force update outdated config files
-MAKEFILE_VERSION:=8
+MAKEFILE_VERSION:=9
 
 # CONFIG_WRITER has to be found even for manual configuration
 CONFIG_WRITER=makefiledir/Makefile.config_writer
@@ -346,7 +346,9 @@ ifdef OSX
 # these compilerflags makes the app run as fast as possible without making the app unstable. It works on G3 or newer
 BASECFLAGS += -O3 -funroll-loops -fsched-interblock -falign-loops=16 -falign-jumps=16 -falign-functions=16 -falign-jumps-max-skip=15 -falign-loops-max-skip=15 -mdynamic-no-pic
 ifdef IS_G5
-BASECFLAGS += -mtune=970 -mcpu=970 -mpowerpc-gpopt
+ifndef UNIVERSAL_BINARY
+BASECFLAGS += $(G5_FLAGS)
+endif
 endif
 else
 ifdef MORPHOS
@@ -995,17 +997,21 @@ endif
 	$(Q)$(CC) $(OBJCFLAGS) $(CDEFS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:.deps/%.d=%.o):#' > $@
 
 
+ifndef TRIPPLE_BINARY
+# building tripple binary object files is handled in os/macosx/Makefile
+# TARGET_CPU_FLAGS is used to set target CPUs in OSX universal binaries. It's empty for all other builds
 %.o: %.c $(MAKE_CONFIG)
 	@echo '===> Compiling $<'
-	$(Q)$(CC) $(CFLAGS) $(CDEFS) -c -o $@ $<
+	$(Q)$(CC) $(TARGET_CPU_FLAGS) $(CFLAGS) $(CDEFS) -c -o $@ $<
 
 %.o: %.cpp  $(MAKE_CONFIG)
 	@echo '===> Compiling $<'
-	$(Q)$(CXX) $(CFLAGS) $(CDEFS) -c -o $@ $<
+	$(Q)$(CXX) $(TARGET_CPU_FLAGS) $(CFLAGS) $(CDEFS) -c -o $@ $<
 
 %.o: %.m  $(MAKE_CONFIG)
 	@echo '===> Compiling $<'
-	$(Q)$(CC) $(CFLAGS) $(CDEFS) -c -o $@ $<
+	$(Q)$(CC) $(TARGET_CPU_FLAGS) $(CFLAGS) $(CDEFS) -c -o $@ $<
+endif
 
 %.o: %.rc
 	@echo '===> Compiling resource $<'

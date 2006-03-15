@@ -2,11 +2,29 @@
 # This makefile is not a standalone makefile, but is called from the general one
 # it contains targets specific to MacOS X
 
-ifdef UNIVERSAL_BINARY
 ifdef TRIPPLE_BINARY
-TRIPPLE_BINARY:=tripple_binary
-endif
-UNIVERSAL_BINARY:=build_universal_binary
+# this is to add G5_FLAGS to ppc970 builds only. If the ability to add flags to a single arch only shows up in the future
+# we can get rid of this. Xcode supports arch dependant flags, but we can't do it in the makefile (yet?)
+%.o: %.c $(MAKE_CONFIG)
+	@echo '===> Compiling $<'
+	$(Q)$(CC) $(CFLAGS) $(CDEFS) -arch ppc -c -arch i386 -o $@.uni $<
+	$(Q)$(CC) $(CFLAGS) $(CDEFS) $(G5_FLAGS) -arch ppc970 -c -o $@.ppc970 $<
+	$(Q)lipo -create -output $@ $@.uni $@.ppc970
+	$(Q)rm $@.uni $@.ppc970
+
+%.o: %.cpp  $(MAKE_CONFIG)
+	@echo '===> Compiling $<'
+	$(Q)$(CXX) $(CFLAGS) $(CDEFS) -arch ppc -arch i386 -c -o $@.uni $<
+	$(Q)$(CXX) $(CFLAGS) $(CDEFS) $(G5_FLAGS) -arch ppc970 -c -o $@.ppc970 $<
+	$(Q)lipo -create -output $@ $@.uni $@.ppc970
+	$(Q)rm $@.uni $@.ppc970
+
+%.o: %.m  $(MAKE_CONFIG)
+	@echo '===> Compiling $<'
+	$(Q)$(CC) $(CFLAGS) $(CDEFS) -arch ppc -arch i386 -c -o $@.uni $<
+	$(Q)$(CC) $(CFLAGS) $(CDEFS) -arch ppc970 $(G5_FLAGS) -c -o $@.ppc970 $<
+	$(Q)lipo -create -output $@ $@.uni $@.ppc970
+	$(Q)rm $@.uni $@.ppc970
 endif
 
 ifdef UNIVERSAL_PPC_PART
@@ -15,31 +33,6 @@ BUILD_OSX_BUNDLE:=
 else
 BUILD_OSX_BUNDLE:=build_OSX_bundle
 endif
-
-# building an universal binary
-# since we can only compile for PPC or x86 at any one time, we compile one and then
-# we make clean and compile the other one. In the end we use lipo to join them together
-# when this is done, we can continue with the targets from the first run, which is build_OSX_bundle
-
-$(UNIVERSAL_BINARY): $(TTD)
-	$(Q)mkdir -p temp_binary_dir
-	$(Q)cp $(TTD) temp_binary_dir/$(TTD)_a
-	$(Q)rm -rf $(TTD) $(OBJS) # delete all .o files so we can compile for a new CPU
-	$(Q)make UNIVERSAL_PPC_PART:=1
-	$(Q)cp $(TTD) temp_binary_dir/$(TTD)_b
-	@echo '===> Joining the PPC and x86 binaries into one universal one'
-	$(Q)lipo temp_binary_dir/$(TTD)_a temp_binary_dir/$(TTD)_b -create -output $(TTD)
-	$(Q)rm -rf temp_binary_dir
-
-$(TRIPPLE_BINARY): $(UNIVERSAL_BINARY)
-	$(Q)mkdir -p temp_binary_dir
-	$(Q)cp $(TTD) temp_binary_dir/$(TTD)_a
-	$(Q)rm -rf $(TTD) $(OBJS) # delete all .o files so we can compile for a new CPU
-	$(Q)make UNIVERSAL_PPC_PART:=1 IS_G5:=1
-	$(Q)cp $(TTD) temp_binary_dir/$(TTD)_b
-	@echo '===> Joining the Universal and G5 binaries into a tripple binary'
-	$(Q)lipo temp_binary_dir/$(TTD)_a temp_binary_dir/$(TTD)_b -create -output $(TTD)
-	$(Q)rm -rf temp_binary_dir
 
 # build the bundle. OSX wants to keep apps in bundles, so we will give it one
 # the good thing about bundles is that you can keep extra files in them, so we keep lng files and a data dir in it

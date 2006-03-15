@@ -85,25 +85,13 @@ $(MAKE_CONFIG):
 
 	$(call CONFIG_LINE,\# Universal binary setup)
 	$(call CONFIG_LINE,\# use these settings for building universal binaries. Most systems should work with the default settings)
-	$(call CONFIG_LINE,SDL_PPC_CONFIG:=$(SDL_PPC_CONFIG))
-	$(call CONFIG_LINE,SDL_x86_CONFIG:=$(SDL_x86_CONFIG))
+	$(call CONFIG_LINE,CFLAGS_UNIVERSAL:=$(CFLAGS_UNIVERSAL))
+	$(call CONFIG_LINE,LDFLAGS_UNIVERSAL:=$(LDFLAGS_UNIVERSAL))
 
-	$(call CONFIG_LINE,\# if you got a fat libpng you should not need to change this. It is recommended to get a fat libpng lib)
-	$(call CONFIG_LINE,LIBPNG_PPC_CONFIG:=$(LIBPNG_PPC_CONFIG))
-	$(call CONFIG_LINE,LIBPNG_x86_CONFIG:=$(LIBPNG_x86_CONFIG))
-
-	$(call CONFIG_LINE,\# autodetected SDL lib path, but it is not detected in a reliable way, so verify it. It needs to be the x86 lib)
-	$(call CONFIG_LINE,x86_SDL_LIB:=$(x86_SDL_LIB))
-
-	$(call CONFIG_LINE,\# default values should be good enough for the rest of the universal binary flags, but check them anyway)
-	$(call CONFIG_LINE,SKIP_LIB_TEST:=$(SKIP_LIB_TEST))
-	$(call CONFIG_LINE,PPC_CC:=$(PPC_CC))
-	$(call CONFIG_LINE,CFLAGS_PPC:=$(CFLAGS_PPC))
-	$(call CONFIG_LINE,LDFLAGS_PPC:=$(LDFLAGS_PPC))
-
-	$(call CONFIG_LINE,x86_CC:=$(x86_CC))
-	$(call CONFIG_LINE,CFLAGS_x86:=$(CFLAGS_x86))
-	$(call CONFIG_LINE,LDFLAGS_x86:=$(LDFLAGS_x86))
+	$(call CONFIG_LINE,CFLAGS_JAGUAR:=$(CFLAGS_JAGUAR))
+	$(call CONFIG_LINE,LDFLAGS_JAGUAR:=$(LDFLAGS_JAGUAR))
+	$(call CONFIG_LINE,)
+	$(call CONFIG_LINE,G5_FLAGS:=$(G5_FLAGS))
 	$(call CONFIG_LINE,)
 
 	$(call CONFIG_LINE,\# For cross-compiling)

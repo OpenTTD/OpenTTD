@@ -47,80 +47,34 @@ endif
 endif
 
 # setup flags if none are defined
-ifndef CFLAGS_PPC
-	CFLAGS_PPC:= -isysroot /Developer/SDKs/MacOSX10.2.8.sdk
+ifndef CFLAGS_JAGUAR
+	CFLAGS_JAGUAR:= -isysroot /Developer/SDKs/MacOSX10.2.8.sdk
 endif
-ifndef LDFLAGS_PPC
-	LDFLAGS_PPC:= -Wl,-syslibroot,/Developer/SDKs/MacOSX10.2.8.sdk
+ifndef LDFLAGS_JAGUAR
+	LDFLAGS_JAGUAR:= -Wl,-syslibroot,/Developer/SDKs/MacOSX10.2.8.sdk
 endif
-ifndef PPC_CC
-	PPC_CC:=$(shell ls /usr/bin/powerpc-apple-darwin*-gcc* | tail -n 1)
+
+ifndef CFLAGS_UNIVERSAL
+	CFLAGS_UNIVERSAL:= -isysroot /Developer/SDKs/MacOSX10.4u.sdk
 endif
-ifndef CFLAGS_x86
-	CFLAGS_x86:= -isysroot /Developer/SDKs/MacOSX10.4u.sdk
-endif
-ifndef LDFLAGS_x86
-	LDFLAGS_x86:= -Wl,-syslibroot,/Developer/SDKs/MacOSX10.4u.sdk
-endif
-ifndef x86_CC
-	x86_CC:=$(shell ls /usr/bin/i686-apple-darwin*-gcc* | tail -n 1)
-endif
-ifdef WITH_PNG
-	ifndef LIBPNG_PPC_CONFIG
-		LIBPNG_PPC_CONFIG:=$(LIBPNG-CONFIG)
-	endif
-	ifndef LIBPNG_x86_CONFIG
-		LIBPNG_x86_CONFIG:=$(LIBPNG-CONFIG)
-	endif
-endif
-ifdef WITH_SDL
-	ifndef SDL_PPC_CONFIG
-		SDL_PPC_CONFIG:=$(SDL-CONFIG)
-	endif
-	ifndef SDL_x86_CONFIG
-		SDL_x86_CONFIG:=$(SDL-CONFIG)
-	endif
-	ifndef x86_SDL_LIB
-		x86_SDL_LIB:=$(shell echo "`$(SDL_x86_CONFIG) --prefix`/lib/libSDL-1.2.0.dylib")
-	endif
+ifndef LDFLAGS_UNIVERSAL
+	LDFLAGS_UNIVERSAL:= -Wl,-syslibroot,/Developer/SDKs/MacOSX10.4u.sdk
 endif
 
 ifdef JAGUAR
-	LIBPNG-CONFIG:=$(LIBPNG_PPC_CONFIG)
-	SDL-CONFIG:=$(SDL_PPC_CONFIG)
-	CC_TARGET:=$(PPC_CC)
-	CFLAGS:= $(CFLAGS_PPC) -arch ppc
-	LDFLAGS:= $(LDFLAGS_PPC)
+	CFLAGS:= $(CFLAGS_JAGUAR) -arch ppc
+	LDFLAGS:= $(LDFLAGS_JAGUAR)
+endif
+
+ifndef G5_FLAGS
+G5_FLAGS := -mtune=970 -mcpu=970 -mpowerpc-gpopt
 endif
 
 ifdef UNIVERSAL_BINARY
-	# set up config files
-	ifndef SKIP_LIB_TEST
-		ifdef WITH_PNG
-			TEST:=$(shell lipo -info `$(LIBPNG_PPC_CONFIG) --prefix`/lib/libpng.a | xargs -n 1 | grep "ppc"))
-			ifndef TEST
-$(error no PPC libpng found)
-			endif
-			TEST:=$(shell lipo -info `$(LIBPNG_x86_CONFIG) --prefix`/lib/libpng.a | xargs -n 1 | grep "i386"))
-			ifndef TEST
-$(error no x86 libpng found)
-			endif
-		endif
-	endif
-	LIBS:=
-	OBJS:=
-	ifdef UNIVERSAL_PPC_PART
-		LIBPNG-CONFIG:=$(LIBPNG_PPC_CONFIG)
-		SDL-CONFIG:=$(SDL_PPC_CONFIG)
-		CC_TARGET:=$(PPC_CC)
-		CFLAGS:= $(CFLAGS_PPC) -arch ppc
-		LDFLAGS:= $(LDFLAGS_PPC)
-	else
-		LIBPNG-CONFIG:=$(LIBPNG_x86_CONFIG)
-		SDL-CONFIG:=$(SDL_x86_CONFIG)
-		CC_TARGET:=$(x86_CC)
-		# clear the cached list of PPC libs
-		CFLAGS:= $(CFLAGS_x86) -arch i386
-		LDFLAGS:= $(LDFLAGS_x86)
-	endif
+TARGET_CPU_FLAGS:= -arch ppc -arch i386
+LDFLAGS := $(LDFLAGS_UNIVERSAL) -arch ppc -arch i386
+CFLAGS += $(CFLAGS_UNIVERSAL)
+ifdef TRIPPLE_BINARY
+LDFLAGS += -arch ppc970
+endif
 endif
