@@ -698,45 +698,41 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 	}
 
 	if (flags & DC_EXEC) {
-		TileIndex c = tile;
+		TileIndexDiff delta = (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
+		TileIndex c;
 
 		//checks if the owner is town then decrease town rating by RATING_TUNNEL_BRIDGE_DOWN_STEP until
 		// you have a "Poor" (0) town rating
 		if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR)
 			ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM);
 
-		do {
-			if (!(_m[c].m5 & 0x40)) {
-				// bridge ramp
-				DoClearSquare(c);
+		DoClearSquare(tile);
+		DoClearSquare(endtile);
+		for (c = tile + delta; c != endtile; c += delta) {
+			if (_m[c].m5 & 0x20) {
+				// transport under bridge
+				if (GB(_m[c].m5, 3, 2) == TRANSPORT_RAIL) {
+					MakeRailNormal(c, GetTileOwner(c), _m[c].m5 & 1 ? TRACK_BIT_X : TRACK_BIT_Y, GB(_m[c].m3, 0, 3));
+				} else {
+					MakeRoadNormal(c, GetTileOwner(c), _m[c].m5 & 1 ? ROAD_X : ROAD_Y, 0); // XXX Determine town, missing till now
+				}
+				MarkTileDirtyByTile(c);
 			} else {
-				// bridge middle part
-				if (_m[c].m5 & 0x20) {
-					// transport under bridge
-					if (GB(_m[c].m5, 3, 2) == TRANSPORT_RAIL) {
-						MakeRailNormal(c, GetTileOwner(c), _m[c].m5 & 1 ? TRACK_BIT_X : TRACK_BIT_Y, GB(_m[c].m3, 0, 3));
+				// clear under bridge
+				if (GB(_m[c].m5, 3, 2) == 0) {
+					// grass under bridge
+					DoClearSquare(c);
+				} else {
+					// water under bridge
+					if (GetTileSlope(c, NULL) == 0) {
+						MakeWater(c);
 					} else {
-						MakeRoadNormal(c, GetTileOwner(c), _m[c].m5 & 1 ? ROAD_X : ROAD_Y, 0); // XXX Determine town, missing till now
+						MakeShore(c);
 					}
 					MarkTileDirtyByTile(c);
-				} else {
-					// clear under bridge
-					if (GB(_m[c].m5, 3, 2) == 0) {
-						// grass under bridge
-						DoClearSquare(c);
-					} else {
-						// water under bridge
-						if (GetTileSlope(c, NULL) == 0) {
-							MakeWater(c);
-						} else {
-							MakeShore(c);
-						}
-						MarkTileDirtyByTile(c);
-					}
 				}
 			}
-			c += (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
-		} while (c <= endtile);
+		}
 
 		SetSignalsOnBothDir(tile,    direction == AXIS_X ? TRACK_X : TRACK_Y);
 		SetSignalsOnBothDir(endtile, direction == AXIS_X ? TRACK_X : TRACK_Y);
