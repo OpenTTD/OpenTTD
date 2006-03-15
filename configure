@@ -48,7 +48,7 @@ function handle() {
 #                         Value is in form: tag=REAL_VALUE
 #  ITEM="NAME"       - Will set the value as above, only with the next param
 #  SITEM="NAME"      - Will set the var $NAME to the next param
-for n in $*
+for n in "$@"
 do
 	case "$n" in
 		--help | -h)
