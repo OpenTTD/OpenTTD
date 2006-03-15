@@ -16,7 +16,7 @@ $(warning Compiling a release build, that is not a universal binary)
 endif
 endif
 
-ifdef TRIPPLE_BINARY
+ifdef TRIPLE_BINARY
 ifdef DEBUG
 $(error no G5 optimisation is made in debug builds, so tripple binaries aren't possible. Use UNIVERSAL_BINARY instead if you really want a universal debug build)
 endif
@@ -74,7 +74,7 @@ ifdef UNIVERSAL_BINARY
 TARGET_CPU_FLAGS:= -arch ppc -arch i386
 LDFLAGS := $(LDFLAGS_UNIVERSAL) -arch ppc -arch i386
 CFLAGS += $(CFLAGS_UNIVERSAL)
-ifdef TRIPPLE_BINARY
+ifdef TRIPLE_BINARY
 LDFLAGS += -arch ppc970
 endif
 endif

@@ -107,7 +107,7 @@
 # Special for crosscompiling there are some commands available:
 #
 # UNIVERSAL_BINARY: builds a universal binary for OSX. Make sure you got both PPC and x86 libs. Only works with GCC 4 or newer
-# TRIPPLE_BINARY: builds a universal binary with the addition of code optimised for G5 (which means a total of 3 binaries in one file)
+# TRIPLE_BINARY: builds a universal binary with the addition of code optimised for G5 (which means a total of 3 binaries in one file)
 #
 # JAGUAR: Crosscompiling for OSX 1.2.8 (codenamed Jaguar). Only works if OSX is defined too. Only works with GCC 4 or newer
 #	This can be changed to any PPC version of OSX by changing the ppc flags in Makefile.config
@@ -997,7 +997,7 @@ endif
 	$(Q)$(CC) $(OBJCFLAGS) $(CDEFS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:.deps/%.d=%.o):#' > $@
 
 
-ifndef TRIPPLE_BINARY
+ifndef TRIPLE_BINARY
 # building tripple binary object files is handled in os/macosx/Makefile
 # TARGET_CPU_FLAGS is used to set target CPUs in OSX universal binaries. It's empty for all other builds
 %.o: %.c $(MAKE_CONFIG)

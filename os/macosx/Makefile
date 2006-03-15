@@ -2,7 +2,7 @@
 # This makefile is not a standalone makefile, but is called from the general one
 # it contains targets specific to MacOS X
 
-ifdef TRIPPLE_BINARY
+ifdef TRIPLE_BINARY
 # this is to add G5_FLAGS to ppc970 builds only. If the ability to add flags to a single arch only shows up in the future
 # we can get rid of this. Xcode supports arch dependant flags, but we can't do it in the makefile (yet?)
 %.o: %.c $(MAKE_CONFIG)
@@ -37,7 +37,7 @@ endif
 # build the bundle. OSX wants to keep apps in bundles, so we will give it one
 # the good thing about bundles is that you can keep extra files in them, so we keep lng files and a data dir in it
 
-$(BUILD_OSX_BUNDLE): $(TTD) $(UNIVERSAL_BINARY) $(TRIPPLE_BINARY)
+$(BUILD_OSX_BUNDLE): $(TTD)
 	@echo '===> Building application bundle'
 	$(Q)rm -fr "$(OSXAPP)"
 	$(Q)mkdir -p "$(OSXAPP)"/Contents/MacOS
