@@ -167,6 +167,9 @@
 				RelativePath=".\aystar.c">
 			</File>
 			<File
+				RelativePath=".\bridge_map.c">
+			</File>
+			<File
 				RelativePath=".\callback_table.c">
 			</File>
 			<File

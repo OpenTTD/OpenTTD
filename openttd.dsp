@@ -147,6 +147,10 @@ SOURCE=.\aystar.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\bridge_map.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\command.c
 # End Source File
 # Begin Source File
