@@ -714,7 +714,8 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 				if (GB(_m[c].m5, 3, 2) == TRANSPORT_RAIL) {
 					MakeRailNormal(c, GetTileOwner(c), _m[c].m5 & 1 ? TRACK_BIT_X : TRACK_BIT_Y, GB(_m[c].m3, 0, 3));
 				} else {
-					MakeRoadNormal(c, GetTileOwner(c), _m[c].m5 & 1 ? ROAD_X : ROAD_Y, 0); // XXX Determine town, missing till now
+					uint town = IsTileOwner(c, OWNER_TOWN) ? ClosestTownFromTile(c, (uint)-1)->index : 0;
+					MakeRoadNormal(c, GetTileOwner(c), _m[c].m5 & 1 ? ROAD_X : ROAD_Y, town);
 				}
 				MarkTileDirtyByTile(c);
 			} else {
