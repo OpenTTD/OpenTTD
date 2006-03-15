@@ -1420,7 +1420,7 @@ static const SettingDesc *GetPatchFromName(const char *name, uint *i)
 	const SettingDesc *sd;
 
 	for (*i = 0, sd = _patch_settings; sd->save.cmd != SL_END; sd++, (*i)++) {
-		if (strncmp(sd->desc.name, name, strlen(sd->desc.name)) == 0) return sd;
+		if (strcmp(sd->desc.name, name) == 0) return sd;
 	}
 
 	return NULL;
