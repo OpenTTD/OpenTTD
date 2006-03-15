@@ -612,6 +612,7 @@ SRCS += airport.c
 SRCS += airport_gui.c
 SRCS += aystar.c
 SRCS += bridge_gui.c
+SRCS += bridge_map.c
 SRCS += callback_table.c
 SRCS += clear_cmd.c
 SRCS += command.c

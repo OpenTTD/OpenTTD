@@ -809,7 +809,7 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 		if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
 		// railway bridge
-		tile = FindEdgesOfBridge(tile, &endtile);
+		tile = GetOtherBridgeEnd(tile);
 		// Make sure there's no vehicle on the bridge
 		v = FindVehicleBetween(tile, endtile, z);
 		if (v != NULL) {

@@ -10,6 +10,12 @@
 #include "tile.h"
 
 
+static inline bool IsBridgeRamp(TileIndex t)
+{
+	return !HASBIT(_m[t].m5, 6);
+}
+
+
 /**
  * Get the direction pointing onto the bridge
  */
@@ -20,6 +26,12 @@ static inline DiagDirection GetBridgeRampDirection(TileIndex t)
 	 */
 	return (DiagDirection)((6 - (_m[t].m5 >> 4 & 2) - (_m[t].m5 & 1)) % 4);
 }
+
+
+/**
+ * Starting at one bridge end finds the other bridge end
+ */
+TileIndex GetOtherBridgeEnd(TileIndex);
 
 
 static inline void SetClearUnderBridge(TileIndex t)

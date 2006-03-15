@@ -2146,7 +2146,6 @@ static bool AiRemoveTileAndGoForward(Player *p)
 	int bit;
 	const byte *ptr;
 	TileIndex tile = p->ai.cur_tile_a;
-	int offs;
 	TileIndex tilenew;
 
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
@@ -2164,13 +2163,9 @@ static bool AiRemoveTileAndGoForward(Player *p)
 			// This is not really needed the first place AiRemoveTileAndGoForward is called.
 			if (DiagDirToAxis(GetBridgeRampDirection(tile)) != (p->ai.cur_dir_a & 1U)) return false;
 
-			// Find other side of bridge.
-			offs = TileOffsByDir(p->ai.cur_dir_a);
-			do {
-				tile = TILE_MASK(tile - offs);
-			} while (_m[tile].m5 & 0x40);
+			tile = GetOtherBridgeEnd(tile);
 
-			tilenew = TILE_MASK(tile - offs);
+			tilenew = TILE_MASK(tile - TileOffsByDir(p->ai.cur_dir_a));
 			// And clear the bridge.
 			if (CmdFailed(DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR)))
 				return false;
