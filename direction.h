@@ -102,4 +102,14 @@ static inline Axis DiagDirToAxis(DiagDirection d)
 	return (Axis)(d & 1);
 }
 
+
+/*
+ * Converts an Axis to a DiagDirection
+ * Points always in the positive direction, i.e. S[EW]
+ */
+static inline DiagDirection AxisToDiagDir(Axis a)
+{
+	return (DiagDirection)(2 - a);
+}
+
 #endif

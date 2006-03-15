@@ -309,23 +309,17 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	/* do the drill? */
 	if (flags & DC_EXEC) {
-		/* build the start tile */
-		ModifyTile(ti_start.tile,
-			MP_SETTYPE(MP_TUNNELBRIDGE) |
-			MP_MAP2 | MP_MAP3LO | MP_MAPOWNER_CURRENT | MP_MAP5,
-			(bridge_type << 4), /* map2 */
-			railtype, /* map3_lo */
-			0x80 | direction | transport << 1 /* map5 */
-		);
+		DiagDirection dir = AxisToDiagDir(direction);
 
-		/* build the end tile */
-		ModifyTile(ti_end.tile,
-			MP_SETTYPE(MP_TUNNELBRIDGE) |
-			MP_MAP2 | MP_MAP3LO | MP_MAPOWNER_CURRENT | MP_MAP5,
-			(bridge_type << 4), /* map2 */
-			railtype, /* map3_lo */
-			0x80 | 0x20 | direction | transport << 1 /* map5 */
-		);
+		if (transport == TRANSPORT_RAIL) {
+			MakeRailBridgeRamp(ti_start.tile, _current_player, bridge_type, dir, railtype);
+			MakeRailBridgeRamp(ti_end.tile,   _current_player, bridge_type, ReverseDiagDir(dir), railtype);
+		} else {
+			MakeRoadBridgeRamp(ti_start.tile, _current_player, bridge_type, dir);
+			MakeRoadBridgeRamp(ti_end.tile,   _current_player, bridge_type, ReverseDiagDir(dir));
+		}
+		MarkTileDirtyByTile(ti_start.tile);
+		MarkTileDirtyByTile(ti_end.tile);
 	}
 
 	// position of middle part of the odd bridge (larger than MAX(i) otherwise)
@@ -380,11 +374,8 @@ not_valid_below:;
 				break;
 		}
 
-		/* do middle part of bridge */
 		if (flags & DC_EXEC) {
 			uint piece;
-
-			SetTileType(tile, MP_TUNNELBRIDGE);
 
 			//bridges pieces sequence (middle parts)
 			// bridge len 1: 0
@@ -411,9 +402,11 @@ not_valid_below:;
 					piece = 2 + ((i % 2 == 0) ^ (i > odd_middle_part));
 			}
 
-			_m[tile].m2 = (bridge_type << 4) | piece;
-			SB(_m[tile].m3, 4, 4, railtype);
-			_m[tile].m5 = 0xC0 | transport << 1 | direction;
+			if (transport == TRANSPORT_RAIL) {
+				MakeRailBridgeMiddle(tile, bridge_type, piece, direction, railtype);
+			} else {
+				MakeRoadBridgeMiddle(tile, bridge_type, piece, direction);
+			}
 			switch (transport_under) {
 				case TRANSPORT_RAIL:  SetRailUnderBridge(tile, owner_under, rail_under); break;
 				case TRANSPORT_ROAD:  SetRoadUnderBridge(tile, owner_under); break;
