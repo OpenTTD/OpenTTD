@@ -820,8 +820,12 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 
 		if (GB(_m[tile].m3, 0, 4) == totype) return CMD_ERROR;
 
-		SB(_m[tile].m3, 0, 4, totype);
-		SB(_m[endtile].m3, 0, 4, totype);
+		if (exec) {
+			SB(_m[tile].m3, 0, 4, totype);
+			SB(_m[endtile].m3, 0, 4, totype);
+			MarkTileDirtyByTile(tile);
+			MarkTileDirtyByTile(endtile);
+		}
 		cost = 2 * (_price.build_rail >> 1);
 		delta = TileOffsByDir(GetBridgeRampDirection(tile));
 		for (tile += delta; tile != endtile; tile += delta) {
