@@ -800,7 +800,7 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 		}
 		return _price.build_rail >> 1;
 	} else if ((_m[tile].m5 & 0xC6) == 0x80) {
-		TileIndex starttile;
+		TileIndexDiff delta;
 		int32 cost;
 		uint z = TilePixelHeight(tile);
 
@@ -809,7 +809,7 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 		if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
 		// railway bridge
-		starttile = tile = FindEdgesOfBridge(tile, &endtile);
+		tile = FindEdgesOfBridge(tile, &endtile);
 		// Make sure there's no vehicle on the bridge
 		v = FindVehicleBetween(tile, endtile, z);
 		if (v != NULL) {
@@ -817,25 +817,24 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 			return CMD_ERROR;
 		}
 
-		if (!EnsureNoVehicle(starttile) || !EnsureNoVehicle(endtile)) {
+		if (!EnsureNoVehicle(tile) || !EnsureNoVehicle(endtile)) {
 			_error_message = STR_8803_TRAIN_IN_THE_WAY;
 			return CMD_ERROR;
 		}
 
 		if (GB(_m[tile].m3, 0, 4) == totype) return CMD_ERROR;
-		cost = 0;
-		do {
+
+		SB(_m[tile].m3, 0, 4, totype);
+		SB(_m[endtile].m3, 0, 4, totype);
+		cost = 2 * (_price.build_rail >> 1);
+		delta = TileOffsByDir(GetBridgeRampDirection(tile));
+		for (tile += delta; tile != endtile; tile += delta) {
 			if (exec) {
-				if (tile == starttile || tile == endtile) {
-					SB(_m[tile].m3, 0, 4, totype);
-				} else {
-					SB(_m[tile].m3, 4, 4, totype);
-				}
+				SB(_m[tile].m3, 4, 4, totype);
 				MarkTileDirtyByTile(tile);
 			}
 			cost += _price.build_rail >> 1;
-			tile += GB(_m[tile].m5, 0, 1) ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
-		} while (tile <= endtile);
+		}
 
 		return cost;
 	} else
