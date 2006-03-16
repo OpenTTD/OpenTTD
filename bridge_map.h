@@ -7,7 +7,19 @@
 #include "macros.h"
 #include "map.h"
 #include "rail.h"
+#include "road_map.h"
 #include "tile.h"
+
+
+static inline bool IsBridge(TileIndex t)
+{
+	return HASBIT(_m[t].m5, 7);
+}
+
+static inline bool IsBridgeTile(TileIndex t)
+{
+	return IsTileType(t, MP_TUNNELBRIDGE) && IsBridge(t);
+}
 
 
 static inline bool IsBridgeRamp(TileIndex t)
@@ -61,6 +73,12 @@ static inline Axis GetBridgeAxis(TileIndex t)
 }
 
 
+static inline TransportType GetBridgeTransportType(TileIndex t)
+{
+	return (TransportType)GB(_m[t].m5, 1, 2);
+}
+
+
 static inline bool IsClearUnderBridge(TileIndex t)
 {
 	return GB(_m[t].m5, 3, 3) == 0;
@@ -80,6 +98,16 @@ static inline bool IsTransportUnderBridge(TileIndex t)
 static inline TransportType GetTransportTypeUnderBridge(TileIndex t)
 {
 	return (TransportType)GB(_m[t].m5, 3, 2);
+}
+
+static inline RoadBits GetRoadBitsUnderBridge(TileIndex t)
+{
+	return GetBridgeAxis(t) == AXIS_X ? ROAD_Y : ROAD_X;
+}
+
+static inline TrackBits GetRailBitsUnderBridge(TileIndex t)
+{
+	return GetBridgeAxis(t) == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X;
 }
 
 

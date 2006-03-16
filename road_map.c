@@ -25,15 +25,16 @@ RoadBits GetAnyRoadBits(TileIndex tile)
 			return DiagDirToRoadBits(GetRoadStationDir(tile));
 
 		case MP_TUNNELBRIDGE:
-			if (_m[tile].m5 & 0x80) {
-				// bridge
-				if (_m[tile].m5 & 0x40) {
-					// middle part
-					if ((_m[tile].m5 & 0x38) != 0x28) return 0; // no road under bridge
-					return _m[tile].m5 & 1 ? ROAD_X : ROAD_Y;
+			if (IsBridge(tile)) {
+				if (IsBridgeMiddle(tile)) {
+					if (!IsTransportUnderBridge(tile) ||
+							GetBridgeTransportType(tile) != TRANSPORT_ROAD) {
+						return 0;
+					}
+					return GetRoadBitsUnderBridge(tile);
 				} else {
 					// ending
-					if (GB(_m[tile].m5, 1, 2) != TRANSPORT_ROAD) return 0; // not a road bridge
+					if (GetBridgeTransportType(tile) != TRANSPORT_ROAD) return 0;
 					return DiagDirToRoadBits(ReverseDiagDir(GetBridgeRampDirection(tile)));
 				}
 			} else {

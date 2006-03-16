@@ -129,11 +129,11 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		case MP_TUNNELBRIDGE:
 			if (!EnsureNoVehicleZ(tile, TilePixelHeight(tile))) return CMD_ERROR;
 
-			if ((ti.map5 & 0xE9) == 0xE8) {
-				if (pieces & ROAD_X) return CMD_ERROR;
-			} else if ((ti.map5 & 0xE9) == 0xE9) {
-				if (pieces & ROAD_Y) return CMD_ERROR;
-			} else {
+			if (!IsBridge(tile) ||
+					!IsBridgeMiddle(tile) ||
+					!IsTransportUnderBridge(tile) ||
+					GetTransportTypeUnderBridge(tile) != TRANSPORT_ROAD ||
+					(pieces & ComplementRoadBits(GetRoadBitsUnderBridge(tile))) != 0) {
 				return CMD_ERROR;
 			}
 
@@ -357,19 +357,23 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 			}
 
-			/* is this middle part of a bridge? */
-			if ((ti.map5 & 0xC0) != 0xC0) goto do_clear;
+			if (!IsBridge(tile) || !IsBridgeMiddle(tile)) goto do_clear;
 
 			/* only allow roads pertendicular to bridge */
-			if (((pieces & ROAD_Y) != 0) == ((ti.map5 & 0x01U) != 0)) goto do_clear;
+			if ((pieces & (GetBridgeAxis(tile) == AXIS_X ? ROAD_X : ROAD_Y)) != 0) {
+				goto do_clear;
+			}
 
 			/* check if clear land under bridge */
-			if ((ti.map5 & 0xF8) == 0xE8) { /* road under bridge */
-				return_cmd_error(STR_1007_ALREADY_BUILT);
-			} else if ((ti.map5 & 0xE0) == 0xE0) { /* other transport route under bridge */
-				return_cmd_error(STR_1008_MUST_REMOVE_RAILROAD_TRACK);
-			} else if ((ti.map5 & 0xF8) == 0xC8) { /* water under bridge */
-				return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
+			if (IsTransportUnderBridge(tile)) {
+				switch (GetTransportTypeUnderBridge(tile)) {
+					case TRANSPORT_ROAD: return_cmd_error(STR_1007_ALREADY_BUILT);
+					default: return_cmd_error(STR_1008_MUST_REMOVE_RAILROAD_TRACK);
+				}
+			} else {
+				if (IsWaterUnderBridge(tile)) {
+					return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
+				}
 			}
 
 			/* all checked, can build road now! */

@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "bridge_map.h"
 #include "debug.h"
 #include "functions.h"
 #include "npf.h"
@@ -484,8 +485,10 @@ static bool VehicleMayEnterTile(Owner owner, TileIndex tile, DiagDirection enter
 			/* if we were on a railway middle part, we are now at a railway bridge ending */
 #endif
 			if ((IsTunnel(tile) && GetTunnelTransportType(tile) == TRANSPORT_RAIL) ||
-					(_m[tile].m5 & 0xC6) == 0x80 || /* railway bridge ending */
-					((_m[tile].m5 & 0xF8) == 0xE0 && GB(_m[tile].m5, 0, 1) != (enterdir & 0x1))) { /* railway under bridge */
+					(IsBridge(tile) && (
+						(IsBridgeRamp(tile) && GetBridgeTransportType(tile) == TRANSPORT_RAIL) ||
+						(IsBridgeMiddle(tile) && IsTransportUnderBridge(tile) && GetTransportTypeUnderBridge(tile) == TRANSPORT_RAIL)
+					))) {
 				return IsTileOwner(tile, owner);
 			}
 			break;

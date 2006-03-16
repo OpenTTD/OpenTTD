@@ -241,13 +241,12 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (IsTileType(tile, MP_WATER)) continue;
 
 		/* is middle piece of a bridge? */
-		if (IsTileType(tile, MP_TUNNELBRIDGE) && _m[tile].m5 & 0x40) { /* build under bridge */
-			if (_m[tile].m5 & 0x20) // transport route under bridge
+		if (IsBridgeTile(tile) && IsBridgeMiddle(tile)) {
+			if (IsTransportUnderBridge(tile)) {
 				return_cmd_error(STR_5800_OBJECT_IN_THE_WAY);
-
-			if (_m[tile].m5 & 0x18) { // already water under bridge
-				return_cmd_error(STR_1007_ALREADY_BUILT);
 			}
+
+			if (IsWaterUnderBridge(tile)) return_cmd_error(STR_1007_ALREADY_BUILT);
 
 			if (flags & DC_EXEC) SetWaterUnderBridge(tile);
 		} else {
@@ -354,8 +353,7 @@ static bool IsWateredTile(TileIndex tile)
 			return !(m5 < 75 || (m5 >= 83 && m5 <= 114));
 
 		case MP_TUNNELBRIDGE:
-			// true, if tile is middle part of bridge with water underneath
-			return (m5 & 0xF8) == 0xC8;
+			return IsBridge(tile) && IsBridgeMiddle(tile) && IsWaterUnderBridge(tile);
 
 		default:
 			return false;
@@ -542,8 +540,7 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 				break;
 
 			case MP_TUNNELBRIDGE:
-				// Middle part of bridge with clear land below?
-				if ((_m[target].m5 & 0xF8) == 0xC0) {
+				if (IsBridge(target) && IsBridgeMiddle(target) && IsClearUnderBridge(target)) {
 					SetWaterUnderBridge(target);
 					MarkTileDirtyByTile(target);
 				}
@@ -553,15 +550,14 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 				break;
 		}
 	} else {
-		if (IsTileType(target, MP_TUNNELBRIDGE)) {
-			byte m5 = _m[target].m5;
-			if ((m5 & 0xF8) == 0xC8 || (m5 & 0xF8) == 0xF0) return;
-
-			if ((m5 & 0xC0) == 0xC0) {
-				SetWaterUnderBridge(target);
-				MarkTileDirtyByTile(target);
+		if (IsBridgeTile(target) && IsBridgeMiddle(target)) {
+			if (IsWaterUnderBridge(target) ||
+					(IsTransportUnderBridge(target) && GetTransportTypeUnderBridge(target) == TRANSPORT_WATER)) { // XXX does this happen at all?
 				return;
 			}
+			SetWaterUnderBridge(target);
+			MarkTileDirtyByTile(target);
+			return;
 		}
 
 		_current_player = OWNER_WATER;

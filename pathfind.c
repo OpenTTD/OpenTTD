@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "bridge_map.h"
 #include "functions.h"
 #include "map.h"
 #include "tile.h"
@@ -137,11 +138,18 @@ static void TPFMode2(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 
 	/* XXX: Mode 2 is currently only used for ships, why is this code here? */
 	if (tpf->tracktype == TRANSPORT_RAIL) {
-		if (IsTileType(tile, MP_RAILWAY) || IsTileType(tile, MP_STATION) || IsTileType(tile, MP_TUNNELBRIDGE)) {
-			owner = GetTileOwner(tile);
-			/* Check if we are on the middle of a bridge (has no owner) */
-			if (IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5 & 0xC0) == 0xC0)
-				owner = -1;
+		switch (GetTileType(tile)) {
+			case MP_TUNNELBRIDGE:
+				// bridge middle has no owner
+				if (IsBridge(tile) && IsBridgeMiddle(tile)) break;
+				/* FALLTHROUGH */
+
+			case MP_RAILWAY:
+			case MP_STATION:
+				owner = GetTileOwner(tile);
+				break;
+
+			default: break; // XXX can this occur?
 		}
 	}
 
@@ -152,11 +160,19 @@ static void TPFMode2(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 
 	/* Check in case of rail if the owner is the same */
 	if (tpf->tracktype == TRANSPORT_RAIL) {
-		if (IsTileType(tile, MP_RAILWAY) || IsTileType(tile, MP_STATION) || IsTileType(tile, MP_TUNNELBRIDGE))
-			/* Check if we are on the middle of a bridge (has no owner) */
-			if (!IsTileType(tile, MP_TUNNELBRIDGE) || (_m[tile].m5 & 0xC0) != 0xC0)
-				if (owner != -1 && !IsTileOwner(tile, owner))
-					return;
+		switch (GetTileType(tile)) {
+			case MP_TUNNELBRIDGE:
+				// bridge middle has no owner
+				if (IsBridge(tile) && IsBridgeMiddle(tile)) break;
+				/* FALLTHROUGH */
+
+			case MP_RAILWAY:
+			case MP_STATION:
+				if (owner != -1 && !IsTileOwner(tile, owner)) return;
+				break;
+
+			default: break; // XXX can this occur?
+		}
 	}
 
 	if (++tpf->rd.cur_length > 50)
@@ -296,8 +312,8 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 		if (IsTileType(tile_org, MP_RAILWAY) || IsTileType(tile_org, MP_STATION) || IsTileType(tile_org, MP_TUNNELBRIDGE))
 			if (IsTileType(tile, MP_RAILWAY) || IsTileType(tile, MP_STATION) || IsTileType(tile, MP_TUNNELBRIDGE))
 				/* Check if we are on a bridge (middle parts don't have an owner */
-				if (!IsTileType(tile, MP_TUNNELBRIDGE) || (_m[tile].m5 & 0xC0) != 0xC0)
-					if (!IsTileType(tile_org, MP_TUNNELBRIDGE) || (_m[tile_org].m5 & 0xC0) != 0xC0)
+				if (!IsBridgeTile(tile) || !IsBridgeMiddle(tile))
+					if (!IsBridgeTile(tile_org) || !IsBridgeMiddle(tile_org))
 						if (GetTileOwner(tile_org) != GetTileOwner(tile))
 							return;
 	}

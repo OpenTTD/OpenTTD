@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "bridge_map.h"
 #include "rail.h"
 #include "station.h"
 #include "tunnel_map.h"
@@ -124,18 +125,32 @@ RailType GetTileRailType(TileIndex tile, Trackdir trackdir)
 				type = _m[tile].m3 & RAILTYPE_MASK;
 			break;
 		case MP_TUNNELBRIDGE:
-			if (IsTunnel(tile) && GetTunnelTransportType(tile) == TRANSPORT_RAIL) {
-				return _m[tile].m3 & RAILTYPE_MASK;
+			if (IsTunnel(tile)) {
+				if (GetTunnelTransportType(tile) == TRANSPORT_RAIL) {
+					return _m[tile].m3 & RAILTYPE_MASK;
+				}
+			} else {
+				if (IsBridgeRamp(tile)) {
+					if (GetBridgeTransportType(tile) == TRANSPORT_RAIL) {
+						return _m[tile].m3 & RAILTYPE_MASK;
+					}
+				} else {
+					if (GetBridgeAxis(tile) == DiagDirToAxis(exitdir)) {
+						if (GetBridgeTransportType(tile) == TRANSPORT_RAIL) {
+							/* on the bridge */
+							return (_m[tile].m3 >> 4) & RAILTYPE_MASK;
+						}
+					} else {
+						if (IsTransportUnderBridge(tile) &&
+								GetTransportTypeUnderBridge(tile) == TRANSPORT_RAIL) {
+							/* under the bridge */
+							return _m[tile].m3 & RAILTYPE_MASK;
+						}
+					}
+				}
 			}
-			/* railway bridge ending */
-			if ((_m[tile].m5 & 0xC6) == 0x80) type = _m[tile].m3 & RAILTYPE_MASK;
-			/* on railway bridge */
-			if ((_m[tile].m5 & 0xC6) == 0xC0 && ((DiagDirection)(_m[tile].m5 & 0x1)) == (exitdir & 0x1))
-				type = (_m[tile].m3 >> 4) & RAILTYPE_MASK;
-			/* under bridge (any type) */
-			if ((_m[tile].m5 & 0xF8) == 0xE0 && (_m[tile].m5 & 0x1U) != (exitdir & 0x1))
-				type = _m[tile].m3 & RAILTYPE_MASK;
 			break;
+
 		default:
 			break;
 	}

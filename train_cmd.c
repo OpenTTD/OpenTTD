@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "bridge_map.h"
 #include "debug.h"
 #include "functions.h"
 #include "gui.h"
@@ -2545,7 +2546,7 @@ static bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
 			break;
 
 		case MP_TUNNELBRIDGE:
-			if ((_m[tile].m5 & 0xC0) == 0xC0) { // is bridge middle part?
+			if (IsBridge(tile) && IsBridgeMiddle(tile)) {
 				uint height;
 				uint tileh = GetTileSlope(tile, &height);
 

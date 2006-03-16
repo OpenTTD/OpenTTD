@@ -2,6 +2,7 @@
 
 #include "../../stdafx.h"
 #include "../../openttd.h"
+#include "../../bridge_map.h"
 #include "../../debug.h"
 #include "../../functions.h"
 #include "../../map.h"
@@ -44,8 +45,7 @@ static bool IsRoad(TileIndex tile)
 		(IsTileType(tile, MP_STREET) && !IsTileDepotType(tile, TRANSPORT_ROAD)) ||
 		(IsTileType(tile, MP_TUNNELBRIDGE) && (
 			(IsTunnel(tile) && GetTunnelTransportType(tile) == TRANSPORT_ROAD) ||
-			// road bridge?
-			((_m[tile].m5 & 0x80) != 0 && (_m[tile].m5 & 0x2) == 0x2)
+			(IsBridge(tile) && GetBridgeTransportType(tile) == TRANSPORT_ROAD)
 		));
 }
 
@@ -234,7 +234,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 					if (IsTunnel(atile)) {
 						if (GetTunnelDirection(atile) != i) continue;
 					} else {
-						if ((_m[atile].m5 & 1U) != DiagDirToAxis(i)) continue;
+						if (GetBridgeRampDirection(atile) != i) continue;
 					}
 				}
 			}

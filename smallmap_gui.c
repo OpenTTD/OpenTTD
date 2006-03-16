@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "bridge_map.h"
 #include "clear_map.h"
 #include "functions.h"
 #include "spritecache.h"
@@ -351,7 +352,7 @@ static inline TileType GetEffectiveTileType(TileIndex tile)
 		if (IsTunnel(tile)) {
 			tt = GetTunnelTransportType(tile);
 		} else {
-			tt = GB(_m[tile].m5, 1, 2);
+			tt = GetBridgeTransportType(tile);
 		}
 		switch (tt) {
 			case TRANSPORT_RAIL: t = MP_RAILWAY; break;

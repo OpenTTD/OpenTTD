@@ -288,27 +288,25 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	switch (GetTileType(tile)) {
 		case MP_TUNNELBRIDGE:
-			if ((m5 & 0xC0) != 0xC0 || // not bridge middle part?
-					(m5 & 0x01 ? TRACK_BIT_X : TRACK_BIT_Y) != trackbit) { // wrong direction?
+			if (!IsBridge(tile) ||
+					!IsBridgeMiddle(tile) ||
+					(GetBridgeAxis(tile) == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X) != trackbit) {
 				// Get detailed error message
 				return DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			}
 
-			switch (m5 & 0x38) { // what's under the bridge?
-				case 0x00: // clear land
-					ret = CheckRailSlope(tileh, trackbit, 0, tile);
-					if (CmdFailed(ret)) return ret;
-					cost += ret;
+			if (IsClearUnderBridge(tile)) {
+				ret = CheckRailSlope(tileh, trackbit, 0, tile);
+				if (CmdFailed(ret)) return ret;
+				cost += ret;
 
-					if (flags & DC_EXEC) SetRailUnderBridge(tile, _current_player, p1);
-					break;
-
-				case 0x20: // rail already there
-					return_cmd_error(STR_1007_ALREADY_BUILT);
-
-				default:
-					// Get detailed error message
-					return DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+				if (flags & DC_EXEC) SetRailUnderBridge(tile, _current_player, p1);
+			} else if (IsTransportUnderBridge(tile) &&
+					GetTransportTypeUnderBridge(tile) == TRANSPORT_RAIL) {
+				return_cmd_error(STR_1007_ALREADY_BUILT);
+			} else {
+				// Get detailed error message
+				return DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			}
 			break;
 
@@ -411,14 +409,14 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	switch (GetTileType(tile))
 	{
 		case MP_TUNNELBRIDGE:
-			if (!EnsureNoVehicleZ(tile, TilePixelHeight(tile)))
+			if (!IsBridge(tile) ||
+					!IsBridgeMiddle(tile) ||
+					!IsTransportUnderBridge(tile) ||
+					GetTransportTypeUnderBridge(tile) != TRANSPORT_RAIL ||
+					GetRailBitsUnderBridge(tile) != trackbit ||
+					!EnsureNoVehicleZ(tile, TilePixelHeight(tile))) {
 				return CMD_ERROR;
-
-			if ((_m[tile].m5 & 0xF8) != 0xE0)
-				return CMD_ERROR;
-
-			if ((_m[tile].m5 & 1 ? TRACK_BIT_X : TRACK_BIT_Y) != trackbit)
-				return CMD_ERROR;
+			}
 
 			if (!(flags & DC_EXEC))
 				return _price.remove_rail;

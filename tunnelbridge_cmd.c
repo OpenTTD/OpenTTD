@@ -670,22 +670,18 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 		DoClearSquare(tile);
 		DoClearSquare(endtile);
 		for (c = tile + delta; c != endtile; c += delta) {
-			if (_m[c].m5 & 0x20) {
-				// transport under bridge
-				if (GB(_m[c].m5, 3, 2) == TRANSPORT_RAIL) {
-					MakeRailNormal(c, GetTileOwner(c), _m[c].m5 & 1 ? TRACK_BIT_X : TRACK_BIT_Y, GB(_m[c].m3, 0, 3));
+			if (IsTransportUnderBridge(c)) {
+				if (GetTransportTypeUnderBridge(c) == TRANSPORT_RAIL) {
+					MakeRailNormal(c, GetTileOwner(c), GetRailBitsUnderBridge(c), GB(_m[c].m3, 0, 3));
 				} else {
 					uint town = IsTileOwner(c, OWNER_TOWN) ? ClosestTownFromTile(c, (uint)-1)->index : 0;
-					MakeRoadNormal(c, GetTileOwner(c), _m[c].m5 & 1 ? ROAD_X : ROAD_Y, town);
+					MakeRoadNormal(c, GetTileOwner(c), GetRoadBitsUnderBridge(c), town);
 				}
 				MarkTileDirtyByTile(c);
 			} else {
-				// clear under bridge
-				if (GB(_m[c].m5, 3, 2) == 0) {
-					// grass under bridge
+				if (IsClearUnderBridge(c)) {
 					DoClearSquare(c);
 				} else {
-					// water under bridge
 					if (GetTileSlope(c, NULL) == 0) {
 						MakeWater(c);
 					} else {
@@ -705,12 +701,10 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 
 static int32 ClearTile_TunnelBridge(TileIndex tile, byte flags)
 {
-	byte m5 = _m[tile].m5;
-
 	if (IsTunnel(tile)) {
 		if (flags & DC_AUTO) return_cmd_error(STR_5006_MUST_DEMOLISH_TUNNEL_FIRST);
 		return DoClearTunnel(tile, flags);
-	} else if (m5 & 0x80) {
+	} else if (IsBridge(tile)) { // XXX Is this necessary?
 		if (flags & DC_AUTO) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 		return DoClearBridge(tile, flags);
 	}
@@ -739,8 +733,10 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 			MarkTileDirtyByTile(endtile);
 		}
 		return (length + 1) * (_price.build_rail >> 1);
-	} else if ((_m[tile].m5 & 0xF8) == 0xE0) {
-		// bridge middle part with rail below
+	} else if (IsBridge(tile) &&
+			IsBridgeMiddle(tile) &&
+			IsTransportUnderBridge(tile) &&
+			GetTransportTypeUnderBridge(tile) == TRANSPORT_RAIL) {
 		// only check for train under bridge
 		if (!CheckTileOwnership(tile) || !EnsureNoVehicleZ(tile, TilePixelHeight(tile)))
 			return CMD_ERROR;
@@ -753,7 +749,7 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 			MarkTileDirtyByTile(tile);
 		}
 		return _price.build_rail >> 1;
-	} else if ((_m[tile].m5 & 0xC6) == 0x80) {
+	} else if (IsBridge(tile) && IsBridgeRamp(tile) && GetBridgeTransportType(tile) == TRANSPORT_RAIL) {
 		TileIndexDiff delta;
 		int32 cost;
 		uint z = TilePixelHeight(tile);
@@ -762,7 +758,6 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 
 		if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
-		// railway bridge
 		endtile = GetOtherBridgeEnd(tile);
 		// Make sure there's no vehicle on the bridge
 		v = FindVehicleBetween(tile, endtile, z);
@@ -821,6 +816,7 @@ extern const byte _road_sloped_sprites[14];
 
 static void DrawBridgePillars(const TileInfo *ti, int x, int y, int z)
 {
+	Axis axis = GetBridgeAxis(ti->tile);
 	const PalSpriteID *b;
 	PalSpriteID image;
 	int piece;
@@ -830,7 +826,7 @@ static void DrawBridgePillars(const TileInfo *ti, int x, int y, int z)
 	// Draw first piece
 	// (necessary for cantilever bridges)
 
-	image = b[12 + GB(ti->map5, 0, 1)];
+	image = b[axis == AXIS_X ? 12 : 13];
 	piece = GetBridgePiece(ti->tile);
 
 	if (image != 0 && piece != 0) {
@@ -838,7 +834,7 @@ static void DrawBridgePillars(const TileInfo *ti, int x, int y, int z)
 		DrawGroundSpriteAt(image, x, y, z);
 	}
 
-	image = b[GB(ti->map5, 0, 1) * 6 + piece];
+	image = b[piece + (axis == AXIS_X ? 0 : 6)];
 
 	if (image != 0) {
 		int back_height, front_height, i=z;
@@ -853,7 +849,7 @@ static void DrawBridgePillars(const TileInfo *ti, int x, int y, int z)
 
 		if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 
-		p = _tileh_bits[(image & 1) * 2 + (ti->map5&0x01)];
+		p = _tileh_bits[(image & 1) * 2 + (axis == AXIS_X ? 0 : 1)];
 		front_height = ti->z + ((ti->tileh & p[0])?8:0);
 		back_height = ti->z + ((ti->tileh & p[1])?8:0);
 
@@ -920,7 +916,6 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 	const PalSpriteID *b;
 	bool ice = _m[ti->tile].m4 & 0x80;
 
-	// draw tunnel?
 	if (IsTunnel(ti->tile)) {
 		if (GetTunnelTransportType(ti->tile) == TRANSPORT_RAIL) {
 			image = GetRailTypeInfo(GB(_m[ti->tile].m3, 0, 4))->base_sprites.tunnel;
@@ -934,30 +929,30 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		DrawGroundSprite(image);
 
 		AddSortableSpriteToDraw(image+1, ti->x + 15, ti->y + 15, 1, 1, 8, (byte)ti->z);
-	// draw bridge?
-	} else if (ti->map5 & 0x80) {
-		RailType rt;
+	} else if (IsBridge(ti->tile)) { // XXX is this necessary?
 		int base_offset;
 
-		if (HASBIT(ti->map5, 1)) { /* This is a road bridge */
-			base_offset = 8;
-		} else { /* Rail bridge */
-			if (HASBIT(ti->map5, 6)) { /* The bits we need depend on the fact whether it is a bridge head or not */
-				rt = GB(_m[ti->tile].m3, 4, 3);
-			} else {
+		if (GetBridgeTransportType(ti->tile) == TRANSPORT_RAIL) {
+			RailType rt;
+
+			if (IsBridgeRamp(ti->tile)) {
 				rt = GB(_m[ti->tile].m3, 0, 3);
+			} else {
+				rt = GB(_m[ti->tile].m3, 4, 3);
 			}
 
 			base_offset = GetRailTypeInfo(rt)->bridge_offset;
 			assert(base_offset != 8); /* This one is used for roads */
+		} else {
+			base_offset = 8;
 		}
 
 		/* as the lower 3 bits are used for other stuff, make sure they are clear */
 		assert( (base_offset & 0x07) == 0x00);
 
-		if (!(ti->map5 & 0x40)) {	// bridge ramps
+		if (IsBridgeRamp(ti->tile)) {
 			if (!(BRIDGE_NO_FOUNDATION & (1 << ti->tileh))) {	// no foundations for 0, 3, 6, 9, 12
-				int f = GetBridgeFoundation(ti->tileh, ti->map5 & 0x1);	// pass direction
+				int f = GetBridgeFoundation(ti->tileh, DiagDirToAxis(GetBridgeRampDirection(ti->tile)));
 				if (f) DrawFoundation(ti, f);
 			}
 
@@ -1002,7 +997,6 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 					image += rti->total_offset;
 					if (ice) image += rti->snow_offset;
 				} else {
-					// road
 					if (ti->tileh == 0) {
 						image = (axis == AXIS_X ? SPR_ROAD_Y : SPR_ROAD_X);
 					} else {
@@ -1037,12 +1031,11 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			// draw rail or road component
 			image = b[0];
 			if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
-			AddSortableSpriteToDraw(
-				image, ti->x, ti->y,
-				axis == AXIS_X ? 16 : 11,
-				axis == AXIS_X ? 11 : 16,
-				1, z
-			);
+			if (axis == AXIS_X) {
+				AddSortableSpriteToDraw(image, ti->x, ti->y, 16, 11, 1, z);
+			} else {
+				AddSortableSpriteToDraw(image, ti->x, ti->y, 11, 16, 1, z);
+			}
 
 			x = ti->x;
 			y = ti->y;
@@ -1081,17 +1074,15 @@ static uint GetSlopeZ_TunnelBridge(const TileInfo* ti)
 	uint tileh = ti->tileh;
 
 	// swap directions if Y tunnel/bridge to let the code handle the X case only.
-	if (ti->map5 & 1) uintswap(x,y);
+	if (ti->map5 & 1) uintswap(x,y); // XXX bogus: it could be a tunnel, bridge ramp or bridge middle tile
 
 	// to the side of the tunnel/bridge?
 	if (IS_INT_INSIDE(y, 5, 10+1)) {
-		// tunnel?
-		if ((ti->map5 & 0xF0) == 0) return z;
+		if (IsTunnel(ti->tile)) return z;
 
 		// bridge?
-		if (ti->map5 & 0x80) {
-			// bridge ending?
-			if (!(ti->map5 & 0x40)) {
+		if (IsBridge(ti->tile)) {
+			if (IsBridgeRamp(ti->tile)) {
 				if (BRIDGE_FULL_LEVELED_FOUNDATION & (1 << tileh)) // 7, 11, 13, 14
 					z += 8;
 
@@ -1105,8 +1096,6 @@ static uint GetSlopeZ_TunnelBridge(const TileInfo* ti)
 					// ramp in opposite dir
 					return z + ((x ^ 0xF) >> 1);
 				}
-
-			// bridge middle part
 			} else {
 				// build on slopes?
 				if (tileh != 0) z += 8;
@@ -1119,8 +1108,9 @@ static uint GetSlopeZ_TunnelBridge(const TileInfo* ti)
 
 				// in the shared area, assume that we're below the bridge, cause otherwise the hint would've caught it.
 				// if rail or road below then it means it's possibly build on slope below the bridge.
-				if (ti->map5 & 0x20) {
-					uint f = _bridge_foundations[ti->map5 & 1][tileh];
+				if (IsTransportUnderBridge(ti->tile)) {
+					uint f = _bridge_foundations[GetBridgeAxis(ti->tile)][tileh];
+
 					// make sure that the slope is not inclined foundation
 					if (IS_BYTE_INSIDE(f, 1, 15)) return z;
 
@@ -1132,11 +1122,10 @@ static uint GetSlopeZ_TunnelBridge(const TileInfo* ti)
 			}
 		}
 	} else {
-		// if it's a bridge middle with transport route below, then we need to compensate for build on slopes
-		if ((ti->map5 & (0x80 | 0x40 | 0x20)) == (0x80 | 0x40 | 0x20)) {
+		if (IsBridge(ti->tile) && IsBridgeMiddle(ti->tile) && IsTransportUnderBridge(ti->tile)) {
 			uint f;
 			if (tileh != 0) z += 8;
-			f = _bridge_foundations[ti->map5 & 1][tileh];
+			f = _bridge_foundations[GetBridgeAxis(ti->tile)][tileh];
 			if (IS_BYTE_INSIDE(f, 1, 15)) return z;
 			if (f != 0) tileh = _inclined_tileh[f - 15];
 		}
@@ -1196,7 +1185,7 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 		td->str = (GetTunnelTransportType(tile) == TRANSPORT_RAIL) ?
 			STR_5017_RAILROAD_TUNNEL : STR_5018_ROAD_TUNNEL;
 	} else {
-		td->str = _bridge_tile_str[GB(_m[tile].m5, 1, 2) << 4 | GetBridgeType(tile)];
+		td->str = _bridge_tile_str[GetBridgeTransportType(tile) << 4 | GetBridgeType(tile)];
 
 		// the owner is stored at the end of the bridge
 		if (IsBridgeMiddle(tile)) tile = GetSouthernBridgeEnd(tile);
@@ -1235,8 +1224,9 @@ static void TileLoop_TunnelBridge(TileIndex tile)
 			break;
 	}
 
-	// if it's a bridge with water below, call tileloop_water on it.
-	if ((_m[tile].m5 & 0xF8) == 0xC8) TileLoop_Water(tile);
+	if (IsBridge(tile) && IsBridgeMiddle(tile) && IsWaterUnderBridge(tile)) {
+		TileLoop_Water(tile);
+	}
 }
 
 static void ClickTile_TunnelBridge(TileIndex tile)
@@ -1248,41 +1238,34 @@ static void ClickTile_TunnelBridge(TileIndex tile)
 static uint32 GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType mode)
 {
 	uint32 result;
-	byte m5 = _m[tile].m5;
 
 	if (IsTunnel(tile)) {
 		if (GetTunnelTransportType(tile) == mode) {
 			return DiagDirToAxis(GetTunnelDirection(tile)) == AXIS_X ? 0x101 : 0x202;
 		}
-	} else if (m5 & 0x80) {
+	} else if (IsBridge(tile)) { // XXX is this necessary?
 		/* This is a bridge */
 		result = 0;
-		if (GB(m5, 1, 2) == mode) {
+		if (GetBridgeTransportType(tile) == mode) {
 			/* Transport over the bridge is compatible */
-			result = m5 & 1 ? 0x202 : 0x101;
+			result = (GetBridgeAxis(tile) == AXIS_X ? 0x101 : 0x202);
 		}
-		if (m5 & 0x40) {
+		if (IsBridgeMiddle(tile)) {
 			/* Bridge middle part */
-			if (!(m5 & 0x20)) {
-				/* Clear ground or water underneath */
-				if ((m5 & 0x18) != 8) {
-					/* Clear ground */
+			if (IsTransportUnderBridge(tile)) {
+				if (GetTransportTypeUnderBridge(tile) != mode) return result;
+			} else {
+				if (IsClearUnderBridge(tile)) {
 					return result;
 				} else {
 					if (mode != TRANSPORT_WATER) return result;
-				}
-			} else {
-				/* Transport underneath */
-				if (GB(m5, 3, 2) != mode) {
-					/* Incompatible transport underneath */
-					return result;
 				}
 			}
 			/* If we've not returned yet, there is a compatible
 			 * transport or water beneath, so we can add it to
 			 * result */
 			/* Why is this xor'd ? Can't it just be or'd? */
-			result ^= m5 & 1 ? 0x101 : 0x202;
+			result ^= (GetBridgeAxis(tile) == AXIS_X ? 0x202 : 0x101);
 		}
 		return result;
 	} else {
@@ -1298,13 +1281,11 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, PlayerID old_player, Pl
 	if (new_player != OWNER_SPECTATOR) {
 		SetTileOwner(tile, new_player);
 	}	else {
-		if ((_m[tile].m5 & 0xE0) == 0xE0) {
+		if (IsBridge(tile) && IsBridgeMiddle(tile) && IsTransportUnderBridge(tile)) {
 			// the stuff BELOW the middle part is owned by the deleted player.
-			if (!(_m[tile].m5 & (1 << 4 | 1 << 3))) {
-				// convert railway into grass.
+			if (GetTransportTypeUnderBridge(tile) == TRANSPORT_RAIL) {
 				SetClearUnderBridge(tile);
 			} else {
-				// for road, change the owner of the road to local authority
 				SetTileOwner(tile, OWNER_NONE);
 			}
 		} else {
@@ -1396,13 +1377,13 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 				return 4;
 			}
 		}
-	} else if (_m[tile].m5 & 0x80) {
+	} else if (IsBridge(tile)) { // XXX is this necessary?
 		if (v->type == VEH_Road || (v->type == VEH_Train && IsFrontEngine(v))) {
 			uint h;
 
 			// Compensate for possible foundation
 			if (GetTileSlope(tile, &h) != 0) h += 8;
-			if (!(_m[tile].m5 & 0x40) || // start/end tile of bridge
+			if (IsBridgeRamp(tile) ||
 					myabs(h - v->z_pos) > 2) { // high above the ground -> on the bridge
 				/* modify speed of vehicle */
 				uint16 spd = _bridge[GetBridgeType(tile)].speed;
