@@ -2816,7 +2816,7 @@ static const SaveLoad _roadstop_desc[] = {
 	SLE_VAR(RoadStop,used,         SLE_UINT8),
 	SLE_VAR(RoadStop,status,       SLE_UINT8),
 	/* Index was saved in some versions, but this is not needed */
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U32 | SLE_VAR_NULL, 1, 0, 8),
+	SLE_CONDNULL(4, 0, 8),
 	SLE_VAR(RoadStop,station,      SLE_UINT16),
 	SLE_VAR(RoadStop,type,         SLE_UINT8),
 
@@ -2844,7 +2844,7 @@ static const SaveLoad _station_desc[] = {
 	SLE_CONDVAR(Station,trainst_h,	SLE_UINT8, 2, SL_MAX_VERSION),
 
 	// alpha_order was stored here in savegame format 0 - 3
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 1, 0, 3),
+	SLE_CONDNULL(1, 0, 3),
 
 	SLE_VAR(Station,string_id,			SLE_STRINGID),
 	SLE_VAR(Station,had_vehicle_of_type,SLE_UINT16),
@@ -2875,8 +2875,8 @@ static const SaveLoad _station_desc[] = {
 	SLE_CONDREF(Station,bus_stops,					REF_ROADSTOPS, 6, SL_MAX_VERSION),
 	SLE_CONDREF(Station,truck_stops,				REF_ROADSTOPS, 6, SL_MAX_VERSION),
 
-	// reserve extra space in savegame here. (currently 28 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 32, 2, SL_MAX_VERSION),
+	// reserve extra space in savegame here. (currently 32 bytes)
+	SLE_CONDNULL(32, 2, SL_MAX_VERSION),
 
 	SLE_END()
 };

@@ -1935,7 +1935,7 @@ static const SaveLoad _industry_desc[] = {
 	SLE_VAR(Industry,was_cargo_delivered,SLE_UINT8),
 
 	// reserve extra space in savegame here. (currently 32 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U64 | SLE_VAR_NULL, 4, 2, SL_MAX_VERSION),
+	SLE_CONDNULL(32, 2, SL_MAX_VERSION),
 
 	SLE_END()
 };

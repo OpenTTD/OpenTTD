@@ -179,6 +179,8 @@ typedef SaveLoad SaveLoadGlobVarList;
 #define SLE_ARR(base, variable, type, length) SLE_CONDARR(base, variable, type, length, 0, SL_MAX_VERSION)
 #define SLE_STR(base, variable, type, length) SLE_CONDSTR(base, variable, type, length, 0, SL_MAX_VERSION)
 
+#define SLE_CONDNULL(length, from, to) SLE_CONDARR(NullStruct, null, SLE_FILE_U8 | SLE_VAR_NULL, length, from, to)
+
 /* Translate values ingame to different values in the savegame and vv */
 #define SLE_WRITEBYTE(base, variable, game_value, file_value) SLE_GENERAL(SL_WRITEBYTE, base, variable, 0, 0, game_value, file_value)
 /* Load common code and put it into each struct (currently only for vehicles */
@@ -208,8 +210,10 @@ typedef SaveLoad SaveLoadGlobVarList;
 
 #define SLEG_VAR(variable, type) SLEG_CONDVAR(variable, type, 0, SL_MAX_VERSION)
 #define SLEG_REF(variable, type) SLEG_CONDREF(variable, type, 0, SL_MAX_VERSION)
-#define SLEG_ARR(variable, type) SLEG_CONDARR(variable, type, lengthof(variable), SL_MAX_VERSION)
-#define SLEG_STR(variable, type) SLEG_CONDSTR(variable, type, lengthof(variable), SL_MAX_VERSION)
+#define SLEG_ARR(variable, type) SLEG_CONDARR(variable, type, lengthof(variable), 0, SL_MAX_VERSION)
+#define SLEG_STR(variable, type) SLEG_CONDSTR(variable, type, lengthof(variable), 0, SL_MAX_VERSION)
+
+#define SLEG_CONDNULL(length, from, to) {SL_ARR, SLE_FILE_U8 | SLE_VAR_NULL, length, from, to, (void*)NULL}
 
 #define SLEG_END() {SL_END, 0, 0, 0, 0, NULL}
 

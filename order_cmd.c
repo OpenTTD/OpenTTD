@@ -1100,7 +1100,7 @@ static const SaveLoad _order_desc[] = {
 	SLE_REF(Order,next,					REF_ORDER),
 
 	// reserve extra space in savegame here. (currently 10 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 10, 5, SL_MAX_VERSION),
+	SLE_CONDNULL(10, 5, SL_MAX_VERSION),
 	SLE_END()
 };
 

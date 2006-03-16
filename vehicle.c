@@ -2158,7 +2158,7 @@ const SaveLoad _common_veh_desc[] = {
 	SLE_REF(Vehicle,prev_shared,				REF_VEHICLE),
 
 	// reserve extra space in savegame here. (currently 10 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 10, 2, SL_MAX_VERSION),
+	SLE_CONDNULL(10, 2, SL_MAX_VERSION),
 
 	SLE_END()
 };
@@ -2175,9 +2175,9 @@ static const SaveLoad _train_desc[] = {
 	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,flags), SLE_UINT8, 2, SL_MAX_VERSION),
 	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRail,days_since_order_progr), SLE_UINT16, 2, SL_MAX_VERSION),
 
-	SLE_CONDARR(NullStruct, null, SLE_FILE_U8 | SLE_VAR_NULL, 2, 2, 19),
+	SLE_CONDNULL(2, 2, 19),
 	// reserve extra space in savegame here. (currently 11 bytes)
-	SLE_CONDARR(NullStruct, null, SLE_FILE_U8 | SLE_VAR_NULL, 11, 2, SL_MAX_VERSION),
+	SLE_CONDNULL(11, 2, SL_MAX_VERSION),
 
 	SLE_END()
 };
@@ -2197,7 +2197,7 @@ static const SaveLoad _roadveh_desc[] = {
 	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRoad,slotindex), SLE_UINT8, 6, SL_MAX_VERSION),
 	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRoad,slot_age), SLE_UINT8, 6, SL_MAX_VERSION),
 	// reserve extra space in savegame here. (currently 16 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U64 | SLE_VAR_NULL, 2, 2, SL_MAX_VERSION),
+	SLE_CONDNULL(16, 2, SL_MAX_VERSION),
 
 	SLE_END()
 };
@@ -2208,7 +2208,7 @@ static const SaveLoad _ship_desc[] = {
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleShip,state),				SLE_UINT8),
 
 	// reserve extra space in savegame here. (currently 16 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U64 | SLE_VAR_NULL, 2, 2, SL_MAX_VERSION),
+	SLE_CONDNULL(16, 2, SL_MAX_VERSION),
 
 	SLE_END()
 };
@@ -2227,7 +2227,7 @@ static const SaveLoad _aircraft_desc[] = {
 	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleAir,previous_pos),			SLE_UINT8, 2, SL_MAX_VERSION),
 
 	// reserve extra space in savegame here. (currently 15 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 15, 2, SL_MAX_VERSION),
+	SLE_CONDNULL(15, 2, SL_MAX_VERSION),
 
 	SLE_END()
 };
@@ -2259,7 +2259,7 @@ static const SaveLoad _special_desc[] = {
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleSpecial,unk2),	SLE_UINT8),
 
 	// reserve extra space in savegame here. (currently 16 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U64 | SLE_VAR_NULL, 2, 2, SL_MAX_VERSION),
+	SLE_CONDNULL(16, 2, SL_MAX_VERSION),
 
 	SLE_END()
 };
@@ -2301,7 +2301,7 @@ static const SaveLoad _disaster_desc[] = {
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleDisaster,unk2),						SLE_UINT16),
 
 	// reserve extra space in savegame here. (currently 16 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U64 | SLE_VAR_NULL, 2, 2, SL_MAX_VERSION),
+	SLE_CONDNULL(16, 2, SL_MAX_VERSION),
 
 	SLE_END()
 };

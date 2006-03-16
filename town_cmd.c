@@ -1979,7 +1979,7 @@ static const SaveLoad _town_desc[] = {
 	SLE_VAR(Town,statues,			SLE_UINT8),
 
 	// sort_index_obsolete was stored here in savegame format 0 - 1
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 1, 0, 1),
+	SLE_CONDNULL(1, 0, 1),
 
 	SLE_VAR(Town,have_ratings,SLE_UINT8),
 	SLE_ARR(Town,ratings,			SLE_INT16, 8),
@@ -2021,7 +2021,7 @@ static const SaveLoad _town_desc[] = {
 	SLE_VAR(Town,exclusivity,						SLE_UINT8),
 	SLE_VAR(Town,exclusive_counter,			SLE_UINT8),
 	// reserve extra space in savegame here. (currently 30 bytes)
-	SLE_CONDARR(NullStruct,null,SLE_FILE_U8 | SLE_VAR_NULL, 30, 2, SL_MAX_VERSION),
+	SLE_CONDNULL(30, 2, SL_MAX_VERSION),
 
 	SLE_END()
 };
