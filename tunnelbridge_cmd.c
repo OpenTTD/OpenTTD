@@ -624,14 +624,13 @@ static TileIndex FindEdgesOfBridge(TileIndex tile, TileIndex *endtile)
 
 static int32 DoClearBridge(TileIndex tile, uint32 flags)
 {
+	DiagDirection direction;
+	TileIndexDiff delta;
 	TileIndex endtile;
 	Vehicle *v;
 	Town *t;
-	Axis direction;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-
-	direction = GB(_m[tile].m5, 0, 1);
 
 	if (IsBridgeMiddle(tile)) {
 		if (IsTransportUnderBridge(tile)) {
@@ -677,22 +676,23 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 
 	if (!EnsureNoVehicle(tile) || !EnsureNoVehicle(endtile)) return CMD_ERROR;
 
+	direction = GetBridgeRampDirection(tile);
+	delta = TileOffsByDir(direction);
+
 	/*	Make sure there's no vehicle on the bridge
 			Omit tile and endtile, since these are already checked, thus solving the problem
 			of bridges over water, or higher bridges, where z is not increased, eg level bridge
 	*/
-	tile		+= (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
-	endtile	-= (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 	/* Bridges on slopes might have their Z-value offset..correct this */
-	v = FindVehicleBetween(tile, endtile, TilePixelHeight(tile) + 8 + GetCorrectTileHeight(tile));
+	v = FindVehicleBetween(
+		tile    + delta,
+		endtile - delta,
+		TilePixelHeight(tile) + 8 + GetCorrectTileHeight(tile)
+	);
 	if (v != NULL) {
 		VehicleInTheWayErrMsg(v);
 		return CMD_ERROR;
 	}
-
-	/* Put the tiles back to start/end position */
-	tile		-= (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
-	endtile	+= (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 
 	t = ClosestTownFromTile(tile, (uint)-1); //needed for town rating penalty
 	// check if you're allowed to remove the bridge owned by a town.
@@ -702,7 +702,6 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 	}
 
 	if (flags & DC_EXEC) {
-		TileIndexDiff delta = (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 		TileIndex c;
 
 		//checks if the owner is town then decrease town rating by RATING_TUNNEL_BRIDGE_DOWN_STEP until
@@ -739,15 +738,11 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 			}
 		}
 
-		SetSignalsOnBothDir(tile,    direction == AXIS_X ? TRACK_X : TRACK_Y);
-		SetSignalsOnBothDir(endtile, direction == AXIS_X ? TRACK_X : TRACK_Y);
+		UpdateSignalsOnSegment(tile, ReverseDiagDir(direction));
+		UpdateSignalsOnSegment(endtile, direction);
 	}
 
-	if (direction == AXIS_X) {
-		return (TileX(endtile) - TileX(tile) + 1) * _price.clear_bridge;
-	} else {
-		return (TileY(endtile) - TileY(tile) + 1) * _price.clear_bridge;
-	}
+	return (DistanceManhattan(tile, endtile) + 1) * _price.clear_bridge;
 }
 
 static int32 ClearTile_TunnelBridge(TileIndex tile, byte flags)
