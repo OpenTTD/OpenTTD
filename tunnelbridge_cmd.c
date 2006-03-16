@@ -596,31 +596,6 @@ static int32 DoClearTunnel(TileIndex tile, uint32 flags)
 	return _price.clear_tunnel * (length + 1);
 }
 
-static TileIndex FindEdgesOfBridge(TileIndex tile, TileIndex *endtile)
-{
-	Axis direction = GB(_m[tile].m5, 0, 1);
-	TileIndex start;
-
-	// find start of bridge
-	for (;;) {
-		if (IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5 & 0xE0) == 0x80)
-			break;
-		tile += (direction == AXIS_X ? TileDiffXY(-1, 0) : TileDiffXY(0, -1));
-	}
-
-	start = tile;
-
-	// find end of bridge
-	for (;;) {
-		if (IsTileType(tile, MP_TUNNELBRIDGE) && (_m[tile].m5 & 0xE0) == 0xA0)
-			break;
-		tile += (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
-	}
-
-	*endtile = tile;
-
-	return start;
-}
 
 static int32 DoClearBridge(TileIndex tile, uint32 flags)
 {
@@ -664,15 +639,17 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 			}
 			return _price.clear_water;
 		}
-	}
 
-	tile = FindEdgesOfBridge(tile, &endtile);
+		tile = GetSouthernBridgeEnd(tile);
+	}
 
 	// floods, scenario editor can always destroy bridges
 	if (_current_player != OWNER_WATER && _game_mode != GM_EDITOR && !CheckTileOwnership(tile)) {
 		if (!(_patches.extra_dynamite || _cheats.magic_bulldozer.value) || !IsTileOwner(tile, OWNER_TOWN))
 			return CMD_ERROR;
 	}
+
+	endtile = GetOtherBridgeEnd(tile);
 
 	if (!EnsureNoVehicle(tile) || !EnsureNoVehicle(endtile)) return CMD_ERROR;
 
