@@ -363,6 +363,10 @@ SOURCE=.\rail.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\road_map.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\saveload.c
 # End Source File
 # Begin Source File
@@ -451,6 +455,10 @@ SOURCE=.\thread.c
 # Begin Source File
 
 SOURCE=.\tile.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\tunnel_map.c
 # End Source File
 # Begin Source File
 
