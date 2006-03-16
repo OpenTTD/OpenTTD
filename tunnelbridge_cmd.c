@@ -1004,8 +1004,6 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			int x,y;
 
 			if (IsTransportUnderBridge(ti->tile)) {
-				// draw transport route under bridge
-
 				// draw foundation?
 				if (ti->tileh) {
 					int f = _bridge_foundations[axis][ti->tileh];
@@ -1025,9 +1023,9 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				} else {
 					// road
 					if (ti->tileh == 0) {
-						image = _road_sloped_sprites[ti->tileh - 1] + 0x53F;
-					} else {
 						image = (axis == AXIS_X ? SPR_ROAD_Y : SPR_ROAD_X);
+					} else {
+						image = _road_sloped_sprites[ti->tileh - 1] + 0x53F;
 					}
 					if (ice) image += 19;
 				}
