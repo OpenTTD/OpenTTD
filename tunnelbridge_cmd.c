@@ -633,34 +633,38 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 
 	direction = GB(_m[tile].m5, 0, 1);
 
-	/* delete stuff under the middle part if there's a transport route there..? */
-	if ((_m[tile].m5 & 0xE0) == 0xE0) {
-		int32 cost;
+	if (IsBridgeMiddle(tile)) {
+		if (IsTransportUnderBridge(tile)) {
+			/* delete transport route under the bridge */
+			int32 cost;
 
-		// check if we own the tile below the bridge..
-		if (_current_player != OWNER_WATER && (!CheckTileOwnership(tile) || !EnsureNoVehicleZ(tile, TilePixelHeight(tile))))
-			return CMD_ERROR;
+			// check if we own the tile below the bridge..
+			if (_current_player != OWNER_WATER && (!CheckTileOwnership(tile) || !EnsureNoVehicleZ(tile, TilePixelHeight(tile))))
+				return CMD_ERROR;
 
-		cost = (_m[tile].m5 & 8) ? _price.remove_road * 2 : _price.remove_rail;
+			if (GetTransportTypeUnderBridge(tile) == TRANSPORT_RAIL) {
+				cost = _price.remove_rail;
+			} else {
+				cost = _price.remove_road * 2;
+			}
 
-		if (flags & DC_EXEC) {
-			SetClearUnderBridge(tile);
-			MarkTileDirtyByTile(tile);
+			if (flags & DC_EXEC) {
+				SetClearUnderBridge(tile);
+				MarkTileDirtyByTile(tile);
+			}
+			return cost;
+		} else if (IsWaterUnderBridge(tile) && TilePixelHeight(tile) != 0) {
+			/* delete canal under bridge */
+
+			// check for vehicles under bridge
+			if (!EnsureNoVehicleZ(tile, TilePixelHeight(tile))) return CMD_ERROR;
+
+			if (flags & DC_EXEC) {
+				SetClearUnderBridge(tile);
+				MarkTileDirtyByTile(tile);
+			}
+			return _price.clear_water;
 		}
-		return cost;
-
-	/* delete canal under bridge */
-	} else if ((_m[tile].m5 & 0xC8) == 0xC8 && TilePixelHeight(tile) != 0) {
-		int32 cost;
-
-		// check for vehicles under bridge
-		if (!EnsureNoVehicleZ(tile, TilePixelHeight(tile))) return CMD_ERROR;
-		cost = _price.clear_water;
-		if (flags & DC_EXEC) {
-			SetClearUnderBridge(tile);
-			MarkTileDirtyByTile(tile);
-		}
-		return cost;
 	}
 
 	tile = FindEdgesOfBridge(tile, &endtile);

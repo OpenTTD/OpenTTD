@@ -45,6 +45,11 @@ static inline bool IsClearUnderBridge(TileIndex t)
 	return GB(_m[t].m5, 3, 3) == 0;
 }
 
+static inline bool IsWaterUnderBridge(TileIndex t)
+{
+	return GB(_m[t].m5, 3, 3) == 1;
+}
+
 
 static inline bool IsTransportUnderBridge(TileIndex t)
 {
