@@ -1384,6 +1384,7 @@ int32 CmdChangePatchSetting(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	const SettingDesc *sd = GetSettingDescription(p1);
 
 	if (sd == NULL) return CMD_ERROR;
+	if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		Patches *patches_ptr = (_game_mode == GM_MENU) ? &_patches_newgame : &_patches;
@@ -1428,6 +1429,7 @@ static const SettingDesc *GetPatchFromName(const char *name, uint *i)
 	const SettingDesc *sd;
 
 	for (*i = 0, sd = _patch_settings; sd->save.cmd != SL_END; sd++, (*i)++) {
+		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 		if (strcmp(sd->desc.name, name) == 0) return sd;
 	}
 
