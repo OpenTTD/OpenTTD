@@ -999,6 +999,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			AddSortableSpriteToDraw(image, ti->x, ti->y, 16, 16, 7, ti->z);
 		} else {
 			// bridge middle part.
+			Axis axis = GetBridgeAxis(ti->tile);
 			uint z;
 			int x,y;
 
@@ -1007,21 +1008,27 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 				// draw foundation?
 				if (ti->tileh) {
-					int f = _bridge_foundations[ti->map5&1][ti->tileh];
+					int f = _bridge_foundations[axis][ti->tileh];
 					if (f) DrawFoundation(ti, f);
 				}
 
 				if (GetTransportTypeUnderBridge(ti->tile) == TRANSPORT_RAIL) {
 					const RailtypeInfo *rti = GetRailTypeInfo(GB(_m[ti->tile].m3, 0, 4));
 
-					image = SPR_RAIL_TRACK_Y + (ti->map5 & 1);
-					if (ti->tileh != 0) image = SPR_RAIL_TRACK_Y + _track_sloped_sprites[ti->tileh - 1];
+					if (ti->tileh == 0) {
+						image = (axis == AXIS_X ? SPR_RAIL_TRACK_Y : SPR_RAIL_TRACK_X);
+					} else {
+						image = SPR_RAIL_TRACK_Y + _track_sloped_sprites[ti->tileh - 1];
+					}
 					image += rti->total_offset;
 					if (ice) image += rti->snow_offset;
 				} else {
 					// road
-					image = SPR_ROAD_Y + (ti->map5 & 1);
-					if (ti->tileh != 0) image = _road_sloped_sprites[ti->tileh - 1] + 0x53F;
+					if (ti->tileh == 0) {
+						image = _road_sloped_sprites[ti->tileh - 1] + 0x53F;
+					} else {
+						image = (axis == AXIS_X ? SPR_ROAD_Y : SPR_ROAD_X);
+					}
 					if (ice) image += 19;
 				}
 				DrawGroundSprite(image);
@@ -1039,8 +1046,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				}
 			}
 
-			/* Cope for the direction of the bridge */
-			if (HASBIT(ti->map5, 0)) base_offset += 4;
+			if (axis != AXIS_X) base_offset += 4;
 
 			/*  base_offset needs to be 0 due to the structure of the sprite table see table/bridge_land.h */
 			assert( (base_offset & 0x03) == 0x00);
@@ -1052,7 +1058,12 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			// draw rail or road component
 			image = b[0];
 			if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
-			AddSortableSpriteToDraw(image, ti->x, ti->y, (ti->map5&1)?11:16, (ti->map5&1)?16:11, 1, z);
+			AddSortableSpriteToDraw(
+				image, ti->x, ti->y,
+				axis == AXIS_X ? 16 : 11,
+				axis == AXIS_X ? 11 : 16,
+				1, z
+			);
 
 			x = ti->x;
 			y = ti->y;
@@ -1060,12 +1071,12 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 
 			// draw roof, the component of the bridge which is logically between the vehicle and the camera
-			if (ti->map5 & 1) {
-				x += 12;
-				if (image & SPRITE_MASK) AddSortableSpriteToDraw(image, x,y, 1, 16, 0x28, z);
-			} else {
+			if (axis == AXIS_X) {
 				y += 12;
-				if (image & SPRITE_MASK) AddSortableSpriteToDraw(image, x,y, 16, 1, 0x28, z);
+				if (image & SPRITE_MASK) AddSortableSpriteToDraw(image, x, y, 16, 1, 0x28, z);
+			} else {
+				x += 12;
+				if (image & SPRITE_MASK) AddSortableSpriteToDraw(image, x, y, 1, 16, 0x28, z);
 			}
 
 			if (ti->z + 5 == z) {
