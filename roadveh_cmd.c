@@ -380,6 +380,8 @@ int32 CmdSendRoadVehToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (dep == NULL) return_cmd_error(STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT);
 
 	if (flags & DC_EXEC) {
+		ClearSlot(v);
+		v->vehstatus &= ~VS_WAIT_FOR_SLOT;
 		v->current_order.type = OT_GOTO_DEPOT;
 		v->current_order.flags = OF_NON_STOP | OF_HALT_IN_DEPOT;
 		v->current_order.station = dep->index;
@@ -405,7 +407,7 @@ int32 CmdTurnRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (v->type != VEH_Road || !CheckOwnership(v->owner)) return CMD_ERROR;
 
-	if (v->vehstatus & (VS_HIDDEN | VS_STOPPED) ||
+	if (v->vehstatus & (VS_HIDDEN | VS_STOPPED | VS_WAIT_FOR_SLOT) ||
 			v->u.road.crashed_ctr != 0 ||
 			v->breakdown_ctr != 0 ||
 			v->u.road.overtaking != 0 ||
@@ -538,6 +540,7 @@ static void RoadVehCrash(Vehicle *v)
 
 	v->u.road.crashed_ctr++;
 	v->vehstatus |= VS_CRASHED;
+	ClearSlot(v);
 
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 
@@ -629,6 +632,7 @@ static void ProcessRoadVehOrder(Vehicle *v)
 		v->current_order.flags = 0;
 		v->dest_tile = 0;
 		ClearSlot(v);
+		v->vehstatus &= ~VS_WAIT_FOR_SLOT;
 		return;
 	}
 
@@ -640,6 +644,8 @@ static void ProcessRoadVehOrder(Vehicle *v)
 
 	v->current_order = *order;
 	v->dest_tile = 0;
+	/* We have changed the destination STATION, so resume movement */
+	v->vehstatus &= ~VS_WAIT_FOR_SLOT;
 
 	if (order->type == OT_GOTO_STATION) {
 		const Station* st = GetStation(order->station);
@@ -900,7 +906,7 @@ static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
 	od.u = u;
 
 	if (u->max_speed >= v->max_speed &&
-			!(u->vehstatus & VS_STOPPED) &&
+			!(u->vehstatus & (VS_STOPPED | VS_WAIT_FOR_SLOT)) &&
 			u->cur_speed != 0) {
 		return;
 	}
@@ -922,7 +928,7 @@ static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
 	od.tile = v->tile + TileOffsByDir(DirToDiagDir(v->direction));
 	if (FindRoadVehToOvertake(&od)) return;
 
-	if (od.u->cur_speed == 0 || od.u->vehstatus&VS_STOPPED) {
+	if (od.u->cur_speed == 0 || od.u->vehstatus& (VS_STOPPED | VS_WAIT_FOR_SLOT)) {
 		v->u.road.overtaking_ctr = 0x11;
 		v->u.road.overtaking = 0x10;
 	} else {
@@ -1185,7 +1191,7 @@ static void RoadVehController(Vehicle *v)
 		v->breakdown_ctr--;
 	}
 
-	if (v->vehstatus & VS_STOPPED) return;
+	if (v->vehstatus & (VS_STOPPED | VS_WAIT_FOR_SLOT)) return;
 
 	ProcessRoadVehOrder(v);
 	HandleRoadVehLoading(v);
@@ -1448,6 +1454,7 @@ again:
 			v->current_order.type = OT_NOTHING;
 			v->current_order.flags = 0;
 			ClearSlot(v);
+			v->vehstatus &= ~VS_WAIT_FOR_SLOT;
 		}
 		SETBIT(rs->status, 7);
 
@@ -1553,7 +1560,7 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 
 	if (_patches.servint_roadveh == 0) return;
 	if (!VehicleNeedsService(v)) return;
-	if (v->vehstatus & VS_STOPPED) return;
+	if (v->vehstatus & (VS_STOPPED | VS_WAIT_FOR_SLOT)) return;
 	if (_patches.gotodepot && VehicleHasDepotOrders(v)) return;
 
 	// Don't interfere with a depot visit scheduled by the user, or a
@@ -1610,11 +1617,14 @@ void OnNewDay_RoadVeh(Vehicle *v)
 		ClearSlot(v);
 	}
 
+	if (v->vehstatus & VS_STOPPED) return;
+
 	/* update destination */
 	if (v->current_order.type == OT_GOTO_STATION &&
 			v->u.road.slot == NULL &&
-			!(v->vehstatus & VS_CRASHED) &&
-			!((v->vehstatus & (VS_STOPPED | VS_WAIT_FOR_SLOT)) == VS_STOPPED)) {
+			!IsLevelCrossing(v->tile) &&
+			v->u.road.overtaking == 0 &&
+			!(v->vehstatus & VS_CRASHED)) {
 		RoadStopType type = (v->cargo_type == CT_PASSENGERS) ? RS_BUS : RS_TRUCK;
 		RoadStop *rs;
 		uint mindist = 0xFFFFFFFF;
@@ -1667,14 +1677,14 @@ void OnNewDay_RoadVeh(Vehicle *v)
 					v->u.road.slot_age = 14;
 					v->u.road.slotindex = new_slot;
 
-					if (v->vehstatus & VS_STOPPED) {
+					if (v->vehstatus & VS_WAIT_FOR_SLOT) {
 						DEBUG(ms, 4) ("Multistop: ---- stopped vehicle got a slot. resuming movement");
-						v->vehstatus &= ~(VS_STOPPED | VS_WAIT_FOR_SLOT);
+						v->vehstatus &= ~VS_WAIT_FOR_SLOT;
 						InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 					}
 				} else {
 					DEBUG(ms, 2) ("Multistop -- No free slot at station. Waiting");
-					v->vehstatus |= (VS_STOPPED | VS_WAIT_FOR_SLOT);
+					v->vehstatus |= VS_WAIT_FOR_SLOT;
 					InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 				}
 			} else {
@@ -1686,8 +1696,6 @@ void OnNewDay_RoadVeh(Vehicle *v)
 					v->unitnumber, v->index, st->index, st->xy);
 		}
 	}
-
-	if (v->vehstatus & VS_STOPPED) return;
 
 	cost = RoadVehInfo(v->engine_type)->running_cost * _price.roadveh_running / 364;
 
