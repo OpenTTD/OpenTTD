@@ -1298,7 +1298,7 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, PlayerID old_player, Pl
 	if (new_player != OWNER_SPECTATOR) {
 		SetTileOwner(tile, new_player);
 	}	else {
-		if ((_m[tile].m5 & 0xC0) == 0xC0) {
+		if ((_m[tile].m5 & 0xE0) == 0xE0) {
 			// the stuff BELOW the middle part is owned by the deleted player.
 			if (!(_m[tile].m5 & (1 << 4 | 1 << 3))) {
 				// convert railway into grass.
