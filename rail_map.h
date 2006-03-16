@@ -20,6 +20,22 @@ static inline TrackBits GetRailWaypointBits(TileIndex t)
 }
 
 
+typedef enum SignalVariant {
+	SIG_ELECTRIC  = 0,
+	SIG_SEMAPHORE = 1
+} SignalVariant;
+
+static inline SignalVariant GetSignalVariant(TileIndex t)
+{
+	return (SignalVariant)GB(_m[t].m4, 2, 1);
+}
+
+static inline void SetSignalVariant(TileIndex t, SignalVariant v)
+{
+	SB(_m[t].m4, 2, 1, v);
+}
+
+
 static inline void MakeRailNormal(TileIndex t, Owner o, TrackBits b, RailType r)
 {
 	SetTileType(t, MP_RAILWAY);

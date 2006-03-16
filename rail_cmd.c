@@ -681,13 +681,14 @@ int32 CmdBuildTrainDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 int32 CmdBuildSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileIndex tile = TileVirtXY(x, y);
-	bool semaphore;
+	SignalVariant sigvar;
 	bool pre_signal;
 	Track track = (Track)(p1 & 0x7);
 	int32 cost;
 
 	// Same bit, used in different contexts
-	semaphore = pre_signal = HASBIT(p1, 3);
+	sigvar = HASBIT(p1, 3) ? SIG_SEMAPHORE : SIG_ELECTRIC;
+	pre_signal = HASBIT(p1, 3);
 
 	if (!ValParamTrackOrientation(track) || !IsTileType(tile, MP_RAILWAY) || !EnsureNoVehicle(tile))
 		return CMD_ERROR;
@@ -718,7 +719,7 @@ int32 CmdBuildSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		// build new signals
 		cost = _price.build_signals;
 	} else {
-		if (p2 != 0 && semaphore != HasSemaphores(tile, track)) {
+		if (p2 != 0 && sigvar != GetSignalVariant(tile)) {
 			// convert signals <-> semaphores
 			cost = _price.build_signals + _price.remove_signals;
 		} else {
@@ -733,7 +734,8 @@ int32 CmdBuildSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			_m[tile].m5 |= RAIL_TYPE_SIGNALS; // change into signals
 			_m[tile].m2 |= 0xF0;              // all signals are on
 			_m[tile].m3 &= ~0xF0;          // no signals built by default
-			_m[tile].m4 = semaphore ? SIG_SEMAPHORE_MASK : 0;
+			_m[tile].m4 = 0;
+			SetSignalVariant(tile, sigvar);
 		}
 
 		if (p2 == 0) {
@@ -773,12 +775,7 @@ int32 CmdBuildSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			 * direction of the first signal given as parameter by CmdBuildManySignals */
 			_m[tile].m3 &= ~SignalOnTrack(track);
 			_m[tile].m3 |= p2 & SignalOnTrack(track);
-			// convert between signal<->semaphores when dragging
-			if (semaphore) {
-				SETBIT(_m[tile].m4, 2);
-			} else {
-				CLRBIT(_m[tile].m4, 2);
-			}
+			SetSignalVariant(tile, sigvar);
 		}
 
 		MarkTileDirtyByTile(tile);
@@ -836,7 +833,8 @@ static int32 CmdSignalTrackHelper(int x, int y, uint32 flags, uint32 p1, uint32 
 		signals = _m[tile].m3 & SignalOnTrack(track);
 		if (signals == 0) signals = SignalOnTrack(track); /* Can this actually occur? */
 
-		semaphores = (HasSemaphores(tile, track) ? 8 : 0); // copy signal/semaphores style (independent of CTRL)
+		// copy signal/semaphores style (independent of CTRL)
+		semaphores = (GetSignalVariant(tile) == SIG_ELECTRIC ? 0 : 8);
 	} else // no signals exist, drag a two-way signal stretch
 		signals = SignalOnTrack(track);
 
@@ -914,7 +912,7 @@ int32 CmdRemoveSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (GB(_m[tile].m3, 4, 4) == 0) {
 			SB(_m[tile].m2, 4, 4, 0);
 			SB(_m[tile].m5, 6, 2, RAIL_TYPE_NORMAL >> 6); // XXX >> because the constant is meant for direct application, not use with SB
-			CLRBIT(_m[tile].m4, 2); // remove any possible semaphores
+			SetSignalVariant(tile, SIG_ELECTRIC); // remove any possible semaphores
 		}
 
 		SetSignalsOnBothDir(tile, track);

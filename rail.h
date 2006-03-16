@@ -61,9 +61,6 @@ typedef enum RailTypes {
 	INVALID_RAILTYPE = 0xFF,
 } RailType;
 
-enum {
-	SIG_SEMAPHORE_MASK = 1 << 2,
-};
 
 /** These are used to specify a single track. Can be translated to a trackbit
  * with TrackToTrackbit */
@@ -531,20 +528,6 @@ static inline SignalType GetSignalType(TileIndex tile, Track track)
 	return (SignalType)(_m[tile].m4 & SIGTYPE_MASK);
 }
 
-/**
- * Checks if this tile contains semaphores (returns true) or normal signals
- * (returns false) on the given track. Does not check if there are actually
- * signals on the track, you should use HasSignalsOnTrack() for that.
- *
- * Note that currently, the track argument is not used, since
- * semaphores/electric signals cannot be mixed. This function is trying to be
- * future-compatible, though.
- */
-static inline bool HasSemaphores(TileIndex tile, Track track)
-{
-	assert(IsValidTrack(track));
-	return (_m[tile].m4 & SIG_SEMAPHORE_MASK) != 0;
-}
 
 /**
  * Return the rail type of tile, or INVALID_RAILTYPE if this is no rail tile.
