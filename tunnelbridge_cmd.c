@@ -846,15 +846,7 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 // fast routine for getting the height of a middle bridge tile. 'tile' MUST be a middle bridge tile.
 static uint GetBridgeHeight(const TileInfo *ti)
 {
-	TileIndexDiff delta;
-	TileIndex tile = ti->tile;
-
-	// find the end tile of the bridge.
-	delta = GB(_m[tile].m5, 0, 1) ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
-	do {
-		assert((_m[tile].m5 & 0xC0) == 0xC0);	// bridge and middle part
-		tile += delta;
-	} while (_m[tile].m5 & 0x40);	// while bridge middle parts
+	TileIndex tile = GetSouthernBridgeEnd(ti->tile);
 
 	/* Return the height there (the height of the NORTH CORNER)
 	 * If the end of the bridge is on a tileh 7 (all raised, except north corner),
@@ -1240,12 +1232,8 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 	} else {
 		td->str = _bridge_tile_str[GB(_m[tile].m5, 1, 2) << 4 | GB(_m[tile].m2, 4, 4)];
 
-		/* scan to the end of the bridge, that's where the owner is stored */
-		if (_m[tile].m5 & 0x40) {
-			TileIndexDiff delta = GB(_m[tile].m5, 0, 1) ? TileDiffXY(0, -1) : TileDiffXY(-1, 0);
-
-			do tile += delta; while (_m[tile].m5 & 0x40);
-		}
+		// the owner is stored at the end of the bridge
+		if (IsBridgeMiddle(tile)) tile = GetSouthernBridgeEnd(tile);
 	}
 	td->owner = GetTileOwner(tile);
 }

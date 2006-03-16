@@ -15,6 +15,12 @@ static inline bool IsBridgeRamp(TileIndex t)
 	return !HASBIT(_m[t].m5, 6);
 }
 
+static inline bool IsBridgeMiddle(TileIndex t)
+{
+	return HASBIT(_m[t].m5, 6);
+}
+
+
 
 /**
  * Get the direction pointing onto the bridge
@@ -25,6 +31,12 @@ static inline DiagDirection GetBridgeRampDirection(TileIndex t)
 	 * bridges to a DiagDirection
 	 */
 	return (DiagDirection)((6 - (_m[t].m5 >> 4 & 2) - (_m[t].m5 & 1)) % 4);
+}
+
+
+static inline Axis GetBridgeAxis(TileIndex t)
+{
+	return (Axis)GB(_m[t].m5, 0, 1);
 }
 
 
@@ -43,6 +55,17 @@ static inline TransportType GetTransportTypeUnderBridge(TileIndex t)
 {
 	return (TransportType)GB(_m[t].m5, 3, 2);
 }
+
+
+/**
+ * Finds the end of a bridge in the specified direction starting at a middle tile
+ */
+TileIndex GetBridgeEnd(TileIndex, DiagDirection);
+
+/**
+ * Finds the southern end of a bridge starting at a middle tile
+ */
+TileIndex GetSouthernBridgeEnd(TileIndex t);
 
 
 /**
