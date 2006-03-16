@@ -21,6 +21,27 @@ static inline bool IsBridgeMiddle(TileIndex t)
 }
 
 
+/**
+ * Determines which piece of a bridge is contained in the current tile
+ * @param tile The tile to analyze
+ * @return the piece
+ */
+static inline uint GetBridgePiece(TileIndex tile)
+{
+	return GB(_m[tile].m2, 0, 4);
+}
+
+
+/**
+ * Determines the type of bridge on a tile
+ * @param tile The tile to analyze
+ * @return The bridge type
+ */
+static inline uint GetBridgeType(TileIndex tile)
+{
+	return GB(_m[tile].m2, 4, 4);
+}
+
 
 /**
  * Get the direction pointing onto the bridge

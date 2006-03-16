@@ -97,25 +97,6 @@ static inline const PalSpriteID *GetBridgeSpriteTable(int index, byte table)
 	}
 }
 
-/**
- * Determines which piece of a bridge is contained in the current tile
- * @param tile The tile to analyze
- * @return the piece
- */
-static inline int GetBridgePiece(TileIndex tile)
-{
-	return GB(_m[tile].m2, 0, 4);
-}
-
-/**
- * Determines the type of bridge on a tile
- * @param tile The tile to analyze
- * @return The bridge type
- */
-static inline int GetBridgeType(TileIndex tile)
-{
-	return GB(_m[tile].m2, 4, 4);
-}
 
 /**	check if bridge can be built on slope
  *	direction 0 = X-axis, direction 1 = Y-axis
@@ -1215,7 +1196,7 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 		td->str = (GetTunnelTransportType(tile) == TRANSPORT_RAIL) ?
 			STR_5017_RAILROAD_TUNNEL : STR_5018_ROAD_TUNNEL;
 	} else {
-		td->str = _bridge_tile_str[GB(_m[tile].m5, 1, 2) << 4 | GB(_m[tile].m2, 4, 4)];
+		td->str = _bridge_tile_str[GB(_m[tile].m5, 1, 2) << 4 | GetBridgeType(tile)];
 
 		// the owner is stored at the end of the bridge
 		if (IsBridgeMiddle(tile)) tile = GetSouthernBridgeEnd(tile);
