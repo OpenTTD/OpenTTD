@@ -486,8 +486,15 @@ static bool VehicleMayEnterTile(Owner owner, TileIndex tile, DiagDirection enter
 #endif
 			if ((IsTunnel(tile) && GetTunnelTransportType(tile) == TRANSPORT_RAIL) ||
 					(IsBridge(tile) && (
-						(IsBridgeRamp(tile) && GetBridgeTransportType(tile) == TRANSPORT_RAIL) ||
-						(IsBridgeMiddle(tile) && IsTransportUnderBridge(tile) && GetTransportTypeUnderBridge(tile) == TRANSPORT_RAIL)
+						(
+							IsBridgeRamp(tile) &&
+							GetBridgeTransportType(tile) == TRANSPORT_RAIL
+						) || (
+							IsBridgeMiddle(tile) &&
+							IsTransportUnderBridge(tile) &&
+							GetTransportTypeUnderBridge(tile) == TRANSPORT_RAIL &&
+							GetBridgeAxis(tile) != DiagDirToAxis(enterdir)
+						)
 					))) {
 				return IsTileOwner(tile, owner);
 			}
