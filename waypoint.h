@@ -4,6 +4,7 @@
 #define WAYPOINT_H
 
 #include "pool.h"
+#include "rail_map.h"
 
 struct Waypoint {
 	TileIndex xy;      ///< Tile of waypoint

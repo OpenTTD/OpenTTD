@@ -6,21 +6,12 @@
 #define RAIL_H
 
 #include "direction.h"
+#include "rail_map.h"
 #include "tile.h"
 
 /*
  * Some enums for accesing the map bytes for rail tiles
  */
-
-/** These types are used in the map5 byte for rail tiles. Use GetRailTileType() to
- * get these values */
-typedef enum RailTileTypes {
-	RAIL_TYPE_NORMAL         = 0x0,
-	RAIL_TYPE_SIGNALS        = 0x40,
-	RAIL_TYPE_UNUSED         = 0x80, /* XXX: Maybe this could become waypoints? */
-	RAIL_TYPE_DEPOT_WAYPOINT = 0xC0, /* Is really depots and waypoints... */
-	RAIL_TILE_TYPE_MASK      = 0xC0,
-} RailTileType;
 
 enum { /* DEPRECATED TODO: Rewrite all uses of this */
 	RAIL_TYPE_SPECIAL = 0x80, /* This used to say "If this bit is set, then it's
@@ -34,48 +25,6 @@ enum { /* DEPRECATED TODO: Rewrite all uses of this */
 	 * TRACK_BIT_* */
 };
 
-/** These subtypes are used in the map5 byte when the main rail type is
- * RAIL_TYPE_DEPOT_WAYPOINT */
-typedef enum RailTileSubtypes {
-	RAIL_SUBTYPE_DEPOT    = 0x00,
-	RAIL_SUBTYPE_WAYPOINT = 0x04,
-	RAIL_SUBTYPE_MASK     = 0x3C,
-} RailTileSubtype;
-
-
-typedef enum RailTypes {
-	RAILTYPE_RAIL   = 0,
-	RAILTYPE_MONO   = 1,
-	RAILTYPE_MAGLEV = 2,
-	RAILTYPE_END,
-	RAILTYPE_MASK   = 0x3,
-	INVALID_RAILTYPE = 0xFF,
-} RailType;
-
-
-/** These are used to specify a single track. Can be translated to a trackbit
- * with TrackToTrackbit */
-typedef enum Tracks {
-	TRACK_X     = 0,
-	TRACK_Y     = 1,
-	TRACK_UPPER = 2,
-	TRACK_LOWER = 3,
-	TRACK_LEFT  = 4,
-	TRACK_RIGHT = 5,
-	TRACK_END,
-	INVALID_TRACK = 0xFF,
-} Track;
-
-/** These are the bitfield variants of the above */
-typedef enum TrackBits {
-	TRACK_BIT_X     = 1U,    // 0
-	TRACK_BIT_Y     = 2U,    // 1
-	TRACK_BIT_UPPER = 4U,    // 2
-	TRACK_BIT_LOWER = 8U,    // 3
-	TRACK_BIT_LEFT  = 16U,   // 4
-	TRACK_BIT_RIGHT = 32U,   // 5
-	TRACK_BIT_MASK  = 0x3FU,
-} TrackBits;
 
 /** These are a combination of tracks and directions. Values are 0-5 in one
 direction (corresponding to the Track enum) and 8-13 in the other direction. */
@@ -251,20 +200,6 @@ static inline byte SignalOnTrack(Track track) {
  * Some functions to query rail tiles
  */
 
-/**
- * Returns the RailTileType of a given rail tile. (ie normal, with signals,
- * depot, etc.)
- */
-static inline RailTileType GetRailTileType(TileIndex tile)
-{
-	assert(IsTileType(tile, MP_RAILWAY));
-	return _m[tile].m5 & RAIL_TILE_TYPE_MASK;
-}
-
-/**
- * Returns the rail type of the given rail tile (ie rail, mono, maglev).
- */
-static inline RailType GetRailType(TileIndex tile) { return (RailType)(_m[tile].m3 & RAILTYPE_MASK); }
 
 /**
  * Checks if a rail tile has signals.
