@@ -1302,7 +1302,6 @@ const SettingDesc _patch_settings[] = {
 	/* This is the penalty for level crossings, for both road and rail vehicles */
 	SDT_VAR(Patches, npf_crossing_penalty,          SLE_UINT, 0, 0, (3 * NPF_TILE_LENGTH),  0, 100000, STR_NULL, NULL),
 
-	SDT_CONDNULL(32, 0, SL_MAX_VERSION),
 	SDT_END()
 };
 
@@ -1564,9 +1563,6 @@ static void Load_PATS(void)
 	/* Copy over default setting since some might not get loaded in
 	 * a networking environment. This ensures for example that the local
 	 * signal_side stays when joining a network-server */
-	size_t length = SlGetFieldLength();
-	for (; length != 0; length--) SlReadByte();
-	return;
 	_patches = _patches_newgame;
 	LoadSettings(_patch_settings, &_patches);
 }
