@@ -1192,10 +1192,10 @@ const SettingDesc _patch_settings[] = {
 	 SDT_VAR(Patches, max_aircraft,      SLE_UINT16, 0, 0,   200,     0,   5000, STR_CONFIG_PATCHES_MAX_AIRCRAFT,         NULL),
 	 SDT_VAR(Patches, max_ships,         SLE_UINT16, 0, 0,   300,     0,   5000, STR_CONFIG_PATCHES_MAX_SHIPS,            NULL),
 	SDT_BOOL(Patches, servint_ispercent,             0, 0, false,                STR_CONFIG_PATCHES_SERVINT_ISPERCENT,    CheckInterval),
-	 SDT_VAR(Patches, servint_trains,    SLE_UINT16, 0,D0,   150,     5,    800, STR_CONFIG_PATCHES_SERVINT_TRAINS,       NULL),//&InValidateDetailsWindow),
+	 SDT_VAR(Patches, servint_trains,    SLE_UINT16, 0,D0,   150,     5,    800, STR_CONFIG_PATCHES_SERVINT_TRAINS,       InValidateDetailsWindow),
 	 SDT_VAR(Patches, servint_roadveh,   SLE_UINT16, 0,D0,   150,     5,    800, STR_CONFIG_PATCHES_SERVINT_ROADVEH,      InValidateDetailsWindow),
-	 SDT_VAR(Patches, servint_ships,     SLE_UINT16, 0,D0,   360,     5,    800, STR_CONFIG_PATCHES_SERVINT_AIRCRAFT,     InValidateDetailsWindow),
-	 SDT_VAR(Patches, servint_aircraft,  SLE_UINT16, 0,D0,   100,     5,    800, STR_CONFIG_PATCHES_SERVINT_SHIPS,        NULL),//&InValidateDetailsWindow),
+	 SDT_VAR(Patches, servint_ships,     SLE_UINT16, 0,D0,   360,     5,    800, STR_CONFIG_PATCHES_SERVINT_SHIPS,        InValidateDetailsWindow),
+	 SDT_VAR(Patches, servint_aircraft,  SLE_UINT16, 0,D0,   100,     5,    800, STR_CONFIG_PATCHES_SERVINT_AIRCRAFT,     InValidateDetailsWindow),
 	SDT_BOOL(Patches, no_servicing_if_no_breakdowns, 0, 0, false,                STR_CONFIG_PATCHES_NOSERVICE,            NULL),
 	SDT_BOOL(Patches, wagon_speed_limits,            0, 0,  true,                STR_CONFIG_PATCHES_WAGONSPEEDLIMITS,     NULL),
 
