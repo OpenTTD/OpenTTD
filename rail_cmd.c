@@ -317,7 +317,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			}
 			if (m5 & RAIL_TYPE_SPECIAL ||
 					!IsTileOwner(tile, _current_player) ||
-					GB(_m[tile].m3, 0, 4) != p1) {
+					GetRailType(tile) != p1) {
 				// Get detailed error message
 				return DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			}
@@ -944,7 +944,7 @@ static int32 DoConvertRail(TileIndex tile, uint totype, bool exec)
 
 	// change type.
 	if (exec) {
-		SB(_m[tile].m3, 0, 4, totype);
+		SetRailType(tile, totype);
 		MarkTileDirtyByTile(tile);
 	}
 

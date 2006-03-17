@@ -108,43 +108,39 @@ const Trackdir _reverse_trackdir[] = {
 
 RailType GetTileRailType(TileIndex tile, Trackdir trackdir)
 {
-	RailType type = INVALID_RAILTYPE;
 	DiagDirection exitdir = TrackdirToExitdir(trackdir);
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
-			/* railway track */
-			type = _m[tile].m3 & RAILTYPE_MASK;
-			break;
+			return GetRailType(tile);
+
 		case MP_STREET:
 			/* rail/road crossing */
-			if (IsLevelCrossing(tile))
-				type = _m[tile].m4 & RAILTYPE_MASK;
+			if (IsLevelCrossing(tile)) return GetRailTypeCrossing(tile);
 			break;
+
 		case MP_STATION:
-			if (IsTrainStationTile(tile))
-				type = _m[tile].m3 & RAILTYPE_MASK;
+			if (IsTrainStationTile(tile)) return GetRailType(tile);
 			break;
+
 		case MP_TUNNELBRIDGE:
 			if (IsTunnel(tile)) {
 				if (GetTunnelTransportType(tile) == TRANSPORT_RAIL) {
-					return _m[tile].m3 & RAILTYPE_MASK;
+					return GetRailType(tile);
 				}
 			} else {
 				if (IsBridgeRamp(tile)) {
 					if (GetBridgeTransportType(tile) == TRANSPORT_RAIL) {
-						return _m[tile].m3 & RAILTYPE_MASK;
+						return GetRailType(tile);
 					}
 				} else {
 					if (GetBridgeAxis(tile) == DiagDirToAxis(exitdir)) {
 						if (GetBridgeTransportType(tile) == TRANSPORT_RAIL) {
-							/* on the bridge */
-							return (_m[tile].m3 >> 4) & RAILTYPE_MASK;
+							return GetRailTypeOnBridge(tile);
 						}
 					} else {
 						if (IsTransportUnderBridge(tile) &&
 								GetTransportTypeUnderBridge(tile) == TRANSPORT_RAIL) {
-							/* under the bridge */
-							return _m[tile].m3 & RAILTYPE_MASK;
+							return GetRailType(tile);
 						}
 					}
 				}
@@ -154,5 +150,5 @@ RailType GetTileRailType(TileIndex tile, Trackdir trackdir)
 		default:
 			break;
 	}
-	return type;
+	return INVALID_RAILTYPE;
 }

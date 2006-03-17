@@ -195,7 +195,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					if (flags & DC_EXEC) {
 						ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
 
-						MakeRailNormal(tile, GetTileOwner(tile), GetCrossingRailBits(tile), GB(_m[tile].m4, 0, 4));
+						MakeRailNormal(tile, GetTileOwner(tile), GetCrossingRailBits(tile), GetRailTypeCrossing(tile));
 						MarkTileDirtyByTile(tile);
 					}
 					return cost;
@@ -345,7 +345,7 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			}
 
 			if (flags & DC_EXEC) {
-				MakeRoadCrossing(tile, _current_player, GetTileOwner(tile), roaddir, GB(_m[tile].m3, 0, 4), p2);
+				MakeRoadCrossing(tile, _current_player, GetTileOwner(tile), roaddir, GetRailType(tile), p2);
 				MarkTileDirtyByTile(tile);
 			}
 			return _price.build_road * 2;
@@ -428,12 +428,10 @@ int32 DoConvertStreetRail(TileIndex tile, uint totype, bool exec)
 	// not owned by me?
 	if (!CheckTileOwnership(tile) || !EnsureNoVehicle(tile)) return CMD_ERROR;
 
-	// tile is already of requested type?
-	if (GB(_m[tile].m4, 0, 4) == totype) return CMD_ERROR;
+	if (GetRailTypeCrossing(tile) == totype) return CMD_ERROR;
 
 	if (exec) {
-		// change type.
-		SB(_m[tile].m4, 0, 4, totype);
+		SetRailTypeCrossing(tile, totype);
 		MarkTileDirtyByTile(tile);
 	}
 
@@ -773,7 +771,7 @@ static void DrawTile_Road(TileInfo *ti)
 		case ROAD_CROSSING: {
 			if (ti->tileh != 0) DrawFoundation(ti, ti->tileh);
 
-			image = GetRailTypeInfo(GB(_m[ti->tile].m4, 0, 4))->base_sprites.crossing;
+			image = GetRailTypeInfo(GetRailTypeCrossing(ti->tile))->base_sprites.crossing;
 
 			if (GB(ti->map5, 3, 1) == 0) image++; /* direction */
 

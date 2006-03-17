@@ -333,7 +333,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				}
 				transport_under = TRANSPORT_RAIL;
 				owner_under = GetTileOwner(tile);
-				rail_under = GB(_m[tile].m3, 0, 4);
+				rail_under = GetRailType(tile);
 				break;
 
 			case MP_STREET:
@@ -672,7 +672,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 		for (c = tile + delta; c != endtile; c += delta) {
 			if (IsTransportUnderBridge(c)) {
 				if (GetTransportTypeUnderBridge(c) == TRANSPORT_RAIL) {
-					MakeRailNormal(c, GetTileOwner(c), GetRailBitsUnderBridge(c), GB(_m[c].m3, 0, 3));
+					MakeRailNormal(c, GetTileOwner(c), GetRailBitsUnderBridge(c), GetRailType(tile));
 				} else {
 					uint town = IsTileOwner(c, OWNER_TOWN) ? ClosestTownFromTile(c, (uint)-1)->index : 0;
 					MakeRoadNormal(c, GetTileOwner(c), GetRoadBitsUnderBridge(c), town);
@@ -721,14 +721,14 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 	if (IsTunnel(tile) && GetTunnelTransportType(tile) == TRANSPORT_RAIL) {
 		if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
-		if (GB(_m[tile].m3, 0, 4) == totype) return CMD_ERROR;
+		if (GetRailType(tile) == totype) return CMD_ERROR;
 
 		endtile = CheckTunnelBusy(tile, &length);
 		if (endtile == INVALID_TILE) return CMD_ERROR;
 
 		if (exec) {
-			SB(_m[tile].m3, 0, 4, totype);
-			SB(_m[endtile].m3, 0, 4, totype);
+			SetRailType(tile, totype);
+			SetRailType(endtile, totype);
 			MarkTileDirtyByTile(tile);
 			MarkTileDirtyByTile(endtile);
 		}
@@ -741,11 +741,10 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 		if (!CheckTileOwnership(tile) || !EnsureNoVehicleZ(tile, TilePixelHeight(tile)))
 			return CMD_ERROR;
 
-		// tile is already of requested type?
-		if (GB(_m[tile].m3, 0, 4) == totype) return CMD_ERROR;
-		// change type.
+		if (GetRailType(tile) == totype) return CMD_ERROR;
+
 		if (exec) {
-			SB(_m[tile].m3, 0, 4, totype);
+			SetRailType(tile, totype);
 			MarkTileDirtyByTile(tile);
 		}
 		return _price.build_rail >> 1;
@@ -771,11 +770,11 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 			return CMD_ERROR;
 		}
 
-		if (GB(_m[tile].m3, 0, 4) == totype) return CMD_ERROR;
+		if (GetRailType(tile) == totype) return CMD_ERROR;
 
 		if (exec) {
-			SB(_m[tile].m3, 0, 4, totype);
-			SB(_m[endtile].m3, 0, 4, totype);
+			SetRailType(tile, totype);
+			SetRailType(endtile, totype);
 			MarkTileDirtyByTile(tile);
 			MarkTileDirtyByTile(endtile);
 		}
@@ -783,7 +782,7 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 		delta = TileOffsByDir(GetBridgeRampDirection(tile));
 		for (tile += delta; tile != endtile; tile += delta) {
 			if (exec) {
-				SB(_m[tile].m3, 4, 4, totype);
+				SetRailTypeOnBridge(tile, totype);
 				MarkTileDirtyByTile(tile);
 			}
 			cost += _price.build_rail >> 1;
@@ -918,7 +917,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 	if (IsTunnel(ti->tile)) {
 		if (GetTunnelTransportType(ti->tile) == TRANSPORT_RAIL) {
-			image = GetRailTypeInfo(GB(_m[ti->tile].m3, 0, 4))->base_sprites.tunnel;
+			image = GetRailTypeInfo(GetRailType(ti->tile))->base_sprites.tunnel;
 		} else {
 			image = SPR_TUNNEL_ENTRY_REAR_ROAD;
 		}
@@ -936,9 +935,9 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			RailType rt;
 
 			if (IsBridgeRamp(ti->tile)) {
-				rt = GB(_m[ti->tile].m3, 0, 3);
+				rt = GetRailType(ti->tile);
 			} else {
-				rt = GB(_m[ti->tile].m3, 4, 3);
+				rt = GetRailTypeOnBridge(ti->tile);
 			}
 
 			base_offset = GetRailTypeInfo(rt)->bridge_offset;
@@ -987,7 +986,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				}
 
 				if (GetTransportTypeUnderBridge(ti->tile) == TRANSPORT_RAIL) {
-					const RailtypeInfo *rti = GetRailTypeInfo(GB(_m[ti->tile].m3, 0, 4));
+					const RailtypeInfo* rti = GetRailTypeInfo(GetRailType(ti->tile));
 
 					if (ti->tileh == 0) {
 						image = (axis == AXIS_X ? SPR_RAIL_TRACK_Y : SPR_RAIL_TRACK_X);

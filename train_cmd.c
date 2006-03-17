@@ -2562,7 +2562,7 @@ static bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
 			return
 				IsTileOwner(tile, v->owner) && (
 					!IsFrontEngine(v) ||
-					IsCompatibleRail(v->u.rail.railtype, GB(_m[tile].m4, 0, 4))
+					IsCompatibleRail(v->u.rail.railtype, GetRailTypeCrossing(tile))
 				);
 
 		default:

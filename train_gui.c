@@ -335,7 +335,7 @@ static void ShowBuildTrainWindow(TileIndex tile)
 
 	if (tile != 0) {
 		w->caption_color = GetTileOwner(tile);
-		WP(w,buildtrain_d).railtype = GB(_m[tile].m3, 0, 4);
+		WP(w,buildtrain_d).railtype = GetRailType(tile);
 	} else {
 		w->caption_color = _local_player;
 		WP(w,buildtrain_d).railtype = GetBestRailtype(GetPlayer(_local_player));

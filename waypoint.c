@@ -213,7 +213,7 @@ int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		const StationSpec *spec = NULL;
-		MakeRailWaypoint(tile, GetTileOwner(tile), axis, GB(_m[tile].m3, 0, 4), wp->index);
+		MakeRailWaypoint(tile, GetTileOwner(tile), axis, GetRailType(tile), wp->index);
 		MarkTileDirtyByTile(tile);
 
 		if (GB(p1, 0, 8) < GetNumCustomStations(STAT_CLASS_WAYP))
@@ -300,7 +300,7 @@ int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 		RedrawWaypointSign(wp);
 
 		if (justremove) {
-			MakeRailNormal(tile, GetTileOwner(tile), GetRailWaypointBits(tile), GB(_m[tile].m3, 0, 4));
+			MakeRailNormal(tile, GetTileOwner(tile), GetRailWaypointBits(tile), GetRailType(tile));
 			MarkTileDirtyByTile(tile);
 		} else {
 			DoClearSquare(tile);

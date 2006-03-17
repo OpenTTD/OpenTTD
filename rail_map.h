@@ -36,13 +36,39 @@ typedef enum RailTypes {
 	RAILTYPE_MONO   = 1,
 	RAILTYPE_MAGLEV = 2,
 	RAILTYPE_END,
-	RAILTYPE_MASK   = 0x3,
 	INVALID_RAILTYPE = 0xFF
 } RailType;
 
 static inline RailType GetRailType(TileIndex t)
 {
 	return (RailType)GB(_m[t].m3, 0, 4);
+}
+
+// TODO remove this by moving to the same bits as GetRailType()
+static inline RailType GetRailTypeCrossing(TileIndex t)
+{
+	return (RailType)GB(_m[t].m4, 0, 4);
+}
+
+static inline RailType GetRailTypeOnBridge(TileIndex t)
+{
+	return (RailType)GB(_m[t].m3, 4, 4);
+}
+
+static inline void SetRailType(TileIndex t, RailType r)
+{
+	SB(_m[t].m3, 0, 4, r);
+}
+
+// TODO remove this by moving to the same bits as SetRailType()
+static inline void SetRailTypeCrossing(TileIndex t, RailType r)
+{
+	SB(_m[t].m4, 0, 4, r);
+}
+
+static inline void SetRailTypeOnBridge(TileIndex t, RailType r)
+{
+	SB(_m[t].m3, 4, 4, r);
 }
 
 
