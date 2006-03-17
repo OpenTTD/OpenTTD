@@ -20,6 +20,26 @@ static inline TrackBits GetRailWaypointBits(TileIndex t)
 }
 
 
+typedef enum SignalType {
+	SIGTYPE_NORMAL  = 0, // normal signal
+	SIGTYPE_ENTRY   = 1, // presignal block entry
+	SIGTYPE_EXIT    = 2, // presignal block exit
+	SIGTYPE_COMBO   = 3  // presignal inter-block
+} SignalType;
+
+static inline SignalType GetSignalType(TileIndex t)
+{
+	assert(GetRailTileType(t) == RAIL_TYPE_SIGNALS);
+	return (SignalType)GB(_m[t].m4, 0, 2);
+}
+
+static inline void SetSignalType(TileIndex t, SignalType s)
+{
+	assert(GetRailTileType(t) == RAIL_TYPE_SIGNALS);
+	SB(_m[t].m4, 0, 2, s);
+}
+
+
 typedef enum SignalVariant {
 	SIG_ELECTRIC  = 0,
 	SIG_SEMAPHORE = 1

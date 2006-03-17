@@ -42,15 +42,6 @@ typedef enum RailTileSubtypes {
 	RAIL_SUBTYPE_MASK     = 0x3C,
 } RailTileSubtype;
 
-typedef enum SignalTypes {
-	/* Stored in m4[0..1] for MP_RAILWAY */
-	SIGTYPE_NORMAL  = 0,        // normal signal
-	SIGTYPE_ENTRY   = 1,        // presignal block entry
-	SIGTYPE_EXIT    = 2,        // presignal block exit
-	SIGTYPE_COMBO   = 3,        // presignal inter-block
-	SIGTYPE_END,
-	SIGTYPE_MASK    = 3,
-} SignalType;
 
 typedef enum RailTypes {
 	RAILTYPE_RAIL   = 0,
@@ -512,20 +503,6 @@ static inline SignalState GetSignalState(TileIndex tile, Trackdir trackdir)
 	assert(HasSignalOnTrack(tile, TrackdirToTrack(trackdir)));
 	return _m[tile].m2 & SignalAlongTrackdir(trackdir) ?
 		SIGNAL_STATE_GREEN : SIGNAL_STATE_RED;
-}
-
-/**
- * Gets the type of signal on a given track on a given rail tile with signals.
- *
- * Note that currently, the track argument is not used, since
- * signal types cannot be mixed. This function is trying to be
- * future-compatible, though.
- */
-static inline SignalType GetSignalType(TileIndex tile, Track track)
-{
-	assert(IsValidTrack(track));
-	assert(GetRailTileType(tile) == RAIL_TYPE_SIGNALS);
-	return (SignalType)(_m[tile].m4 & SIGTYPE_MASK);
 }
 
 

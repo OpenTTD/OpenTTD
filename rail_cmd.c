@@ -745,8 +745,9 @@ int32 CmdBuildSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			} else {
 				if (pre_signal) {
 					// cycle between normal -> pre -> exit -> combo -> ...
-					byte type = (GetSignalType(tile, track) + 1) % SIGTYPE_END;
-					SB(_m[tile].m4, 0, 2, type);
+					SignalType type = GetSignalType(tile);
+
+					SetSignalType(tile, type == SIGTYPE_COMBO ? SIGTYPE_NORMAL : type + 1);
 				} else {
 					// cycle between two-way -> one-way -> one-way -> ...
 					/* TODO: Rewrite switch into something more general */
@@ -2035,7 +2036,7 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 				STR_RAILROAD_TRACK_WITH_COMBOSIGNALS
 			};
 
-			td->str = signal_type[GB(_m[tile].m4, 0, 2)];
+			td->str = signal_type[GetSignalType(tile)];
 			break;
 		}
 
