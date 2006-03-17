@@ -1225,8 +1225,9 @@ static Window *PopupClientList(Window *w, int client_no, int x, int y)
 	h = ClientListPopupHeigth();
 
 	// Allocate the popup
-	w = AllocateWindow(x, y, 100, h + 1, ClientListPopupWndProc, WC_TOOLBAR_MENU, _client_list_popup_widgets);
+	w = AllocateWindow(x, y, 150, h + 1, ClientListPopupWndProc, WC_TOOLBAR_MENU, _client_list_popup_widgets);
 	w->widget[0].bottom = w->widget[0].top + h;
+	w->widget[0].right = w->widget[0].left + 150;
 
 	w->flags4 &= ~WF_WHITE_BORDER_MASK;
 	WP(w,menu_d).item_count = 0;
@@ -1257,7 +1258,7 @@ static void ClientListPopupWndProc(Window *w, WindowEvent *e)
 			if (_clientlist_proc[i] == NULL) continue;
 
 			if (sel-- == 0) { // Selected item, highlight it
-				GfxFillRect(1, y, 98, y + CLNWND_ROWSIZE - 1, 0);
+				GfxFillRect(1, y, 150 - 2, y + CLNWND_ROWSIZE - 1, 0);
 				colour = 0xC;
 			} else colour = 0x10;
 
@@ -1328,9 +1329,9 @@ static void ClientListWndProc(Window *w, WindowEvent *e)
 
 			// Filter out spectators
 			if (ci->client_playas > 0 && ci->client_playas <= MAX_PLAYERS)
-				DrawPlayerIcon(ci->client_playas - 1, 44, y + 1);
+				DrawPlayerIcon(ci->client_playas - 1, 64, y + 1);
 
-			DoDrawString(ci->client_name, 61, y, colour);
+			DoDrawString(ci->client_name, 81, y, colour);
 
 			y += CLNWND_ROWSIZE;
 		}
