@@ -1148,7 +1148,7 @@ static const SettingDesc _gameopt_settings[] = {
  * on a massive scale. */
 const SettingDesc _patch_settings[] = {
 	/***************************************************************************/
-	/* User-interface section of the GUI-configure patches window (00 - 12) */
+	/* User-interface section of the GUI-configure patches window */
 	SDT_BOOL(Patches, vehicle_speed,                 S, 0,  true,    STR_CONFIG_PATCHES_VEHICLESPEED,          NULL),
 	SDT_BOOL(Patches, status_long_date,              S, 0,  true,    STR_CONFIG_PATCHES_LONGDATE,              NULL),
 	SDT_BOOL(Patches, show_finances,                 S, 0,  true,    STR_CONFIG_PATCHES_SHOWFINANCES,          NULL),
@@ -1164,7 +1164,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_BOOL(Patches, link_terraform_toolbar,        S, 0, false,    STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR,NULL),
 
 	/***************************************************************************/
-	/* Construction section of the GUI-configure patches window (13 - 18) */
+	/* Construction section of the GUI-configure patches window */
 	SDT_BOOL(Patches, build_on_slopes,               0, 0,  true,    STR_CONFIG_PATCHES_BUILDONSLOPES,       NULL),
 	SDT_BOOL(Patches, extra_dynamite,                0, 0, false,    STR_CONFIG_PATCHES_EXTRADYNAMITE,       NULL),
 	SDT_BOOL(Patches, longbridges,                   0, 0,  true,    STR_CONFIG_PATCHES_LONGBRIDGES,         NULL),
@@ -1173,7 +1173,7 @@ const SettingDesc _patch_settings[] = {
 	 SDT_VAR(Patches, drag_signals_density,SLE_UINT8,S, 0,  4, 1,20, STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY,NULL),
 
 	/***************************************************************************/
-	/* Vehicle section of the GUI-configure patches window (19 - 42) */
+	/* Vehicle section of the GUI-configure patches window */
 	SDT_BOOL(Patches, realistic_acceleration,        0, 0, false,                STR_CONFIG_PATCHES_REALISTICACCEL,       NULL),
 	SDT_BOOL(Patches, forbid_90_deg,                 0, 0, false,                STR_CONFIG_PATCHES_FORBID_90_DEG,        NULL),
 	SDT_BOOL(Patches, mammoth_trains,                0, 0,  true,                STR_CONFIG_PATCHES_MAMMOTHTRAINS,        NULL),
@@ -1200,7 +1200,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_BOOL(Patches, wagon_speed_limits,            0, 0,  true,                STR_CONFIG_PATCHES_WAGONSPEEDLIMITS,     NULL),
 
 	/***************************************************************************/
-	/* Station section of the GUI-configure patches window (43 - 51) */
+	/* Station section of the GUI-configure patches window */
 	SDT_BOOL(Patches, join_stations,           0, 0,  true,   STR_CONFIG_PATCHES_JOINSTATIONS,       NULL),
 	SDT_BOOL(Patches, full_load_any,           0, 0,  true,   STR_CONFIG_PATCHES_FULLLOADANY,        NULL),
 	SDT_BOOL(Patches, improved_load,           0, 0, false,   STR_CONFIG_PATCHES_IMPROVEDLOAD,       NULL),
@@ -1212,7 +1212,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_BOOL(Patches, modified_catchment,      0, 0,  true,   STR_CONFIG_PATCHES_CATCHMENT,          NULL),
 
 	/***************************************************************************/
-	/* Economy section of the GUI-configure patches window (52 - 62) */
+	/* Economy section of the GUI-configure patches window */
 	SDT_BOOL(Patches, inflation,                  0, 0,  true,            STR_CONFIG_PATCHES_INFLATION,        NULL),
 	SDT_BOOL(Patches, build_rawmaterial_ind,      0, 0, false,            STR_CONFIG_PATCHES_BUILDXTRAIND,     NULL),
 	SDT_BOOL(Patches, multiple_industry_per_town, 0, 0, false,            STR_CONFIG_PATCHES_MULTIPINDTOWN,    NULL),
@@ -1226,7 +1226,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_BOOL(Patches, allow_shares,               0, 0,  true,            STR_CONFIG_PATCHES_ALLOW_SHARES,     NULL),
 
 	/***************************************************************************/
-	/* AI section of the GUI-configure patches window (63 - 68) */
+	/* AI section of the GUI-configure patches window */
 	SDT_BOOL(Patches, ainew_active,           0, 0, false, STR_CONFIG_PATCHES_AINEW_ACTIVE,      AiNew_PatchActive_Warning),
 	SDT_BOOL(Patches, ai_in_multiplayer,      0, 0, false, STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER, Ai_In_Multiplayer_Warning),
 	SDT_BOOL(Patches, ai_disable_veh_train,   0, 0, false, STR_CONFIG_PATCHES_AI_BUILDS_TRAINS,  NULL),
@@ -1235,7 +1235,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_BOOL(Patches, ai_disable_veh_ship,    0, 0, false, STR_CONFIG_PATCHES_AI_BUILDS_SHIPS,   NULL),
 
 	/***************************************************************************/
-	/* Patches without any GUI representation (69 - 78) */
+	/* Patches without any GUI representation */
 	SDT_BOOL(Patches, keep_all_autosave,              S, 0, false,      STR_NULL, NULL),
 	SDT_BOOL(Patches, autosave_on_exit,               S, 0, false,      STR_NULL, NULL),
 	 SDT_VAR(Patches, max_num_autosaves,   SLE_UINT8, S, 0, 16, 0, 255, STR_NULL, NULL),
@@ -1247,7 +1247,7 @@ const SettingDesc _patch_settings[] = {
 	 SDT_VAR(Patches, wait_twoway_signal,  SLE_UINT8, 0, 0, 41, 2, 100, STR_NULL, NULL),
 
 	/***************************************************************************/
-	/* New Pathfinding patch settings (79 - 93) */
+	/* New Pathfinding patch settings */
 	SDT_VAR(Patches, pf_maxlength,      SLE_UINT16, 0, 0, 4096, 64, 65535, STR_NULL, NULL),
 	SDT_VAR(Patches, pf_maxdepth,        SLE_UINT8, 0, 0,   48,  4,   255, STR_NULL, NULL),
 	/* The maximum number of nodes to search */
@@ -1366,7 +1366,7 @@ void SaveToConfig(void)
 	ini_free(ini);
 }
 
-const SettingDesc *GetSettingDescription(uint index)
+static const SettingDesc *GetSettingDescription(uint index)
 {
 	if (index >= lengthof(_patch_settings)) return NULL;
 	return &_patch_settings[index];
@@ -1423,7 +1423,7 @@ void SetPatchValue(uint index, const Patches *object, int32 value)
 	}
 }
 
-static const SettingDesc *GetPatchFromName(const char *name, uint *i)
+const SettingDesc *GetPatchFromName(const char *name, uint *i)
 {
 	const SettingDesc *sd;
 

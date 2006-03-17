@@ -555,30 +555,114 @@ void ShowGameDifficulty(void)
 	AllocateWindowDesc(&_game_difficulty_desc);
 }
 
-typedef uint PatchEntry;
-
-static const PatchEntry _patches_ui[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
-static const PatchEntry _patches_construction[] = {13, 14, 15, 16, 17, 18};
-static const PatchEntry _patches_stations[] = {43, 44, 45, 46, 47, 48, 49, 50, 51};
-static const PatchEntry _patches_economy[] = {52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62};
-static const PatchEntry _patches_ai[] = {63, 64, 65, 66, 67, 68};
-static const PatchEntry _patches_vehicles[] = {
-	19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
-	31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42,
+static const char *_patches_ui[] = {
+	"vehicle_speed",
+	"status_long_date",
+	"show_finances",
+	"autoscroll",
+	"reverse_scroll",
+	"errmsg_duration",
+	"toolbar_pos",
+	"window_snap_radius",
+	"invisible_trees",
+	"population_in_label",
+	"map_x",
+	"map_y",
+	"link_terraform_toolbar",
 };
 
+static const char *_patches_construction[] = {
+	"build_on_slopes",
+	"extra_dynamite",
+	"longbridges",
+	"signal_side",
+	"always_small_airport",
+	"drag_signals_density",
+};
+
+static const char *_patches_stations[] = {
+	"join_stations",
+	"full_load_any",
+	"improved_load",
+	"selectgoods",
+	"new_nonstop",
+	"nonuniform_stations",
+	"station_spread",
+	"serviceathelipad",
+	"modified_catchment",
+};
+
+static const char *_patches_economy[] = {
+	"inflation",
+	"build_rawmaterial_ind",
+	"multiple_industry_per_town",
+	"same_industry_close",
+	"bribe",
+	"snow_line_height",
+	"colored_news_date",
+	"starting_date",
+	"ending_date",
+	"smooth_economy",
+	"allow_shares",
+};
+
+static const char *_patches_ai[] = {
+	"ainew_active",
+	"ai_in_multiplayer",
+	"ai_disable_veh_train",
+	"ai_disable_veh_roadveh",
+	"ai_disable_veh_aircraft",
+	"ai_disable_veh_ship",
+};
+
+static const char *_patches_vehicles[] = {
+	"realistic_acceleration",
+	"forbid_90_deg",
+	"mammoth_trains",
+	"gotodepot",
+	"roadveh_queue",
+	"new_pathfinding_all",
+	"train_income_warn",
+	"order_review_system",
+	"never_expire_vehicles",
+	"lost_train_days",
+	"autorenew",
+	"autorenew_months",
+	"autorenew_money",
+	"max_trains",
+	"max_roadveh",
+	"max_aircraft",
+	"max_ships",
+	"servint_ispercent",
+	"servint_trains",
+	"servint_roadveh",
+	"servint_ships",
+	"servint_aircraft",
+	"no_servicing_if_no_breakdowns",
+	"wagon_speed_limits",
+};
+
+typedef struct PatchEntry {
+	const SettingDesc *setting;
+	uint index;
+} PatchEntry;
+
 typedef struct PatchPage {
-	const PatchEntry *entries;
+	const char **names;
+	PatchEntry *entries;
 	byte num;
 } PatchPage;
 
-static const PatchPage _patches_page[] = {
-	{_patches_ui,           lengthof(_patches_ui)},
-	{_patches_construction, lengthof(_patches_construction)},
-	{_patches_vehicles,     lengthof(_patches_vehicles)},
-	{_patches_stations,     lengthof(_patches_stations)},
-	{_patches_economy,      lengthof(_patches_economy)},
-	{_patches_ai,           lengthof(_patches_ai)},
+/* PatchPage holds the categories, the number of elements in each category
+ * and (in NULL) a dynamic array of settings based on the string-representations
+ * of the settings. This way there is no worry about indeces, and such */
+static PatchPage _patches_page[] = {
+	{_patches_ui,           NULL, lengthof(_patches_ui)},
+	{_patches_construction, NULL, lengthof(_patches_construction)},
+	{_patches_vehicles,     NULL, lengthof(_patches_vehicles)},
+	{_patches_stations,     NULL, lengthof(_patches_stations)},
+	{_patches_economy,      NULL, lengthof(_patches_economy)},
+	{_patches_ai,           NULL, lengthof(_patches_ai)},
 };
 
 /** The main patches window. Shows a number of categories on top and
@@ -591,12 +675,32 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_CREATE: {
 		extern Patches _patches_newgame;
+		static bool first_time = true;
+
 		patches_ptr = (_game_mode == GM_MENU) ? &_patches_newgame : &_patches;
+
+		/* Build up the dynamic settings-array only once per OpenTTD session */
+		if (first_time) {
+			PatchPage *page;
+			for (page = &_patches_page[0]; page != endof(_patches_page); page++) {
+				uint i;
+
+				page->entries = malloc(page->num * sizeof(*page->entries));
+				for (i = 0; i != page->num; i++) {
+					uint index;
+					const SettingDesc *sd = GetPatchFromName(page->names[i], &index);
+					assert(sd != NULL);
+
+					page->entries[i].setting = sd;
+					page->entries[i].index = index;
+				}
+			}
+			first_time = false;
+		}
 	} break;
 
 	case WE_PAINT: {
 		int x, y;
-		const PatchEntry *pe;
 		const PatchPage *page = &_patches_page[WP(w,def_d).data_1];
 		uint i;
 
@@ -606,8 +710,8 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 
 		x = 5;
 		y = 47;
-		for (i = 0, pe = page->entries; i != page->num; i++, pe++) {
-			const SettingDesc *sd = GetSettingDescription(*pe);
+		for (i = 0; i != page->num; i++) {
+			const SettingDesc *sd = page->entries[i].setting;
 			const SettingDescBase *sdb = &sd->desc;
 			const void *var = ini_get_variable(&sd->save, patches_ptr);
 			bool editable = true;
@@ -672,7 +776,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			if (y % 11 > 9) return;
 			if (btn >= page->num) return;
 
-			sd = GetSettingDescription(page->entries[btn]);
+			sd = page->entries[btn].setting;
 
 			/* return if action is only active in network, or only settable by server */
 			if ((sd->desc.flags & SGF_NETWORK_ONLY) && !_networking) return;
@@ -720,7 +824,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 				}
 
 				if (value != oldvalue) {
-					SetPatchValue(page->entries[btn], patches_ptr, value);
+					SetPatchValue(page->entries[btn].index, patches_ptr, value);
 					SetWindowDirty(w);
 					if (sdb->proc != NULL) sdb->proc((int32)ReadValue(var, sd->save.conv));
 				}
@@ -753,15 +857,15 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 
 	case WE_ON_EDIT_TEXT: {
 		if (e->edittext.str != NULL) {
-			const uint index = _patches_page[WP(w,def_d).data_1].entries[WP(w,def_d).data_3];
-			const SettingDesc *sd = GetSettingDescription(index);
+			const PatchEntry *pe = &_patches_page[WP(w,def_d).data_1].entries[WP(w,def_d).data_3];
+			const SettingDesc *sd = pe->setting;
 			void *var = ini_get_variable(&sd->save, patches_ptr);
 			int32 value = atoi(e->edittext.str);
 
 			/* Save the correct currency-translated value */
 			if (sd->desc.flags & SGF_CURRENCY) value /= _currency->rate;
 
-			SetPatchValue(index, patches_ptr, value);
+			SetPatchValue(pe->index, patches_ptr, value);
 			SetWindowDirty(w);
 
 			if (sd->desc.proc != NULL) sd->desc.proc((int32)ReadValue(var, sd->save.conv));
