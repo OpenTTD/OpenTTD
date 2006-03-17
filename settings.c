@@ -615,7 +615,6 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
 		const SaveLoad        *sld = &sd->save;
 
 		if (!SlIsObjectCurrentlyValid(sld->version_from, sld->version_to)) continue;
-		if (sd->desc.name == NULL) continue;
 
 		// XXX - wtf is this?? (group override?)
 		s = strchr(sdb->name, '.');
@@ -683,7 +682,6 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
 		 * file, just continue with the next setting */
 		if (!SlIsObjectCurrentlyValid(sld->version_from, sld->version_to)) continue;
 		if (sld->conv & SLF_CONFIG_NO) continue;
-		if (sd->desc.name == NULL) continue;
 
 		// XXX - wtf is this?? (group override?)
 		s = strchr(sdb->name, '.');
@@ -882,7 +880,7 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 	SDTG_CONDMMANY(name, type, flags, guiflags, var, def, full, str, proc, 0, SL_MAX_VERSION)
 
 #define SDTG_CONDNULL(length, from, to)\
-	{{NULL, NULL, 0, 0, 0, 0, NULL, STR_NULL, NULL}, SLEG_CONDNULL(length, from, to)}
+	{{"", NULL, 0, 0, 0, 0, NULL, STR_NULL, NULL}, SLEG_CONDNULL(length, from, to)}
 
 #define SDTG_END() {{NULL, NULL, 0, 0, 0, 0, NULL, STR_NULL, NULL}, SLEG_END()}
 
@@ -931,7 +929,7 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 	SDT_CONDMMANY(base, var, type, 0, SL_MAX_VERSION, flags, guiflags, def, full, str, proc)
 
 #define SDT_CONDNULL(length, from, to)\
-	{{NULL, NULL, 0, 0, 0, 0, NULL, STR_NULL, NULL}, SLE_CONDNULL(length, from, to)}
+	{{"", NULL, 0, 0, 0, 0, NULL, STR_NULL, NULL}, SLE_CONDNULL(length, from, to)}
 
 #define SDT_END() {{NULL, NULL, 0, 0, 0, 0, NULL, STR_NULL, NULL}, SLE_END()}
 
