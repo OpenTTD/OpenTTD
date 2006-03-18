@@ -49,6 +49,8 @@ ULONG __stack = (1024*1024)*2; // maybe not that much is needed actually ;)
 	#endif
 #endif
 
+#include <iconv.h>
+#include <locale.h>
 static char *_fios_path;
 static char *_fios_save_path;
 static char *_fios_scn_path;
@@ -603,4 +605,57 @@ void CSleep(int milliseconds)
 		WaitIO((struct IORequest *)TimerRequest);
 	}
 	#endif // __AMIGA__
+}
+
+bool guessUTF8(void)
+{
+#if defined(__linux__)
+	const char *lang = getenv("LANG");
+	if(lang != NULL && strstr(lang, "UTF-8") != NULL)
+		return true;
+	else
+		return false;
+#elif defined(__APPLE__)
+	return true;
+#else
+	return false;
+#endif
+
+}
+
+/* FYI: This is not thread-safe.
+Assumptions:
+	- the 'from' charset is ISO-8859-15
+	- the 'to' charset is either the same, or UTF-8
+*/
+const char *convert_to_fs_charset(const char *filename)
+{
+	static char statout[1024], statin[1024];
+	static iconv_t convd;
+	static bool alreadyInited;
+	char *outbuf = statout;
+	const char *inbuf = statin;
+	size_t inlen = strlen(filename), outlen = 1023;
+	size_t retval = 0;
+	if(inbuf == NULL)
+		inbuf = statin;
+
+	if(guessUTF8() == false)
+		return filename;
+	setlocale(LC_ALL, "C-UTF-8");
+	strcpy(statout, filename);
+	strcpy(statin, filename);
+	inbuf = strrchr(statin, '/');
+	outbuf = strrchr(statout, '/');
+	if(alreadyInited == false)
+	{
+		convd = iconv_open("UTF-8", "ISO-8859-15");
+		if(convd == (iconv_t)(-1))
+			return filename;
+		alreadyInited = true;
+	}
+	retval = iconv(convd, NULL, NULL, NULL, NULL);
+	inlen = iconv(convd, &inbuf, &inlen, &outbuf, &outlen);
+	// FIX: invalid characters will abort conversion, but they shouldn't occur?
+	return statout;
 }

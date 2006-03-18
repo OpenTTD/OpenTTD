@@ -1314,6 +1314,12 @@ extern bool AfterLoadGame(void);
 extern void BeforeSaveGame(void);
 extern bool LoadOldSaveGame(const char *file);
 
+#ifdef UNIX
+extern const char *convert_to_fs_charset(const char *filename);
+#else
+#define convert_to_fs_charset(str) (str)
+#endif // UNIX
+
 /** Small helper function to close the to be loaded savegame an signal error */
 static inline SaveOrLoadResult AbortSaveLoad(void)
 {
@@ -1418,7 +1424,6 @@ void WaitTillSaved(void)
 	save_thread = NULL;
 }
 
-
 /**
  * Main Save or Load function where the high-level saveload functions are
  * handled. It opens the savegame, selects format and checks versions
@@ -1449,7 +1454,11 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 		return SL_OK;
 	}
 
-	_sl.fh = fopen(filename, (mode == SL_SAVE) ? "wb" : "rb");
+	if(mode == SL_SAVE) {
+		_sl.fh = fopen(convert_to_fs_charset(filename), "wb");
+	} else {
+		_sl.fh = fopen(filename, "rb");
+	}
 	if (_sl.fh == NULL) {
 		DEBUG(misc, 0) ("[Sl] Cannot open savegame for saving/loading.");
 		return SL_ERROR;
