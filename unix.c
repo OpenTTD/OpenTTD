@@ -43,14 +43,13 @@ ULONG __stack = (1024*1024)*2; // maybe not that much is needed actually ;)
 #endif
 
 #if defined(__APPLE__)
+	#include <iconv.h>
+	#include <locale.h>
 	#if defined(WITH_SDL)
 		//the mac implementation needs this file included in the same file as main()
 		#include <SDL.h>
 	#endif
 #endif
-
-#include <iconv.h>
-#include <locale.h>
 static char *_fios_path;
 static char *_fios_save_path;
 static char *_fios_scn_path;
@@ -607,22 +606,7 @@ void CSleep(int milliseconds)
 	#endif // __AMIGA__
 }
 
-bool guessUTF8(void)
-{
-#if defined(__linux__)
-	const char *lang = getenv("LANG");
-	if(lang != NULL && strstr(lang, "UTF-8") != NULL)
-		return true;
-	else
-		return false;
-#elif defined(__APPLE__)
-	return true;
-#else
-	return false;
-#endif
-
-}
-
+#ifdef __APPLE__
 /* FYI: This is not thread-safe.
 Assumptions:
 	- the 'from' charset is ISO-8859-15
@@ -640,8 +624,6 @@ const char *convert_to_fs_charset(const char *filename)
 	if(inbuf == NULL)
 		inbuf = statin;
 
-	if(guessUTF8() == false)
-		return filename;
 	setlocale(LC_ALL, "C-UTF-8");
 	strcpy(statout, filename);
 	strcpy(statin, filename);
@@ -659,3 +641,4 @@ const char *convert_to_fs_charset(const char *filename)
 	// FIX: invalid characters will abort conversion, but they shouldn't occur?
 	return statout;
 }
+#endif

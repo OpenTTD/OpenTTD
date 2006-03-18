@@ -1314,11 +1314,11 @@ extern bool AfterLoadGame(void);
 extern void BeforeSaveGame(void);
 extern bool LoadOldSaveGame(const char *file);
 
-#ifdef UNIX
+#ifdef __APPLE__
 extern const char *convert_to_fs_charset(const char *filename);
 #else
 #define convert_to_fs_charset(str) (str)
-#endif // UNIX
+#endif
 
 /** Small helper function to close the to be loaded savegame an signal error */
 static inline SaveOrLoadResult AbortSaveLoad(void)

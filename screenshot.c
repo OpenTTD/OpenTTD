@@ -12,11 +12,11 @@
 #include "screenshot.h"
 #include "variables.h"
 
-#ifdef UNIX
+#ifdef __APPLE__
 extern const char *convert_to_fs_charset(const char *filename);
 #else
 #define convert_to_fs_charset(str) (str)
-#endif // UNIX
+#endif
 
 char _screenshot_format_name[8];
 uint _num_screenshot_formats;
