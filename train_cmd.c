@@ -26,6 +26,7 @@
 #include "train.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_engine.h"
+#include "direction.h"
 
 static bool TrainCheckIfLineEnds(Vehicle *v);
 static void TrainController(Vehicle *v);
@@ -378,6 +379,8 @@ int GetTrainImage(const Vehicle* v, Direction direction)
 {
 	int img = v->spritenum;
 	int base;
+
+	if (HASBIT(v->u.rail.flags, VRF_REVERSE_DIRECTION)) direction = ReverseDir(direction);
 
 	if (is_custom_sprite(img)) {
 		base = GetCustomVehicleSprite(v, direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(img));
@@ -1579,7 +1582,7 @@ static void ReverseTrainDirection(Vehicle *v)
 /** Reverse train.
  * @param x,y unused
  * @param p1 train to reverse
- * @param p2 unused
+ * @param p2 if true, reverse a unit in a train (needs to be in a depot)
  */
  int32 CmdReverseTrainDirection(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -1591,18 +1594,35 @@ static void ReverseTrainDirection(Vehicle *v)
 
 	if (v->type != VEH_Train || !CheckOwnership(v->owner)) return CMD_ERROR;
 
+	if (p2) {
+		Vehicle *front;
+
+		if (IsMultiheaded(v) || HASBIT(RailVehInfo(v->engine_type)->callbackmask, CBM_ARTIC_ENGINE)) {
+			return_cmd_error(STR_ONLY_TURN_SINGLE_UNIT);
+		}
+
+		front = GetFirstVehicleInChain(v);
+		// make sure the vehicle is stopped in the depot
+		if (CheckTrainStoppedInDepot(front) < 0) {
+			return_cmd_error(STR_881A_TRAINS_CAN_ONLY_BE_ALTERED);
+		}
+	}
 //	if (v->u.rail.track & 0x80 || IsTileDepotType(v->tile, TRANSPORT_RAIL))
 //		return CMD_ERROR;
 
 	if (v->u.rail.crash_anim_pos != 0 || v->breakdown_ctr != 0) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		if (_patches.realistic_acceleration && v->cur_speed != 0) {
-			TOGGLEBIT(v->u.rail.flags, VRF_REVERSING);
+		if (p2) {
+			v->u.rail.flags ^= 1 << VRF_REVERSE_DIRECTION;
 		} else {
-			v->cur_speed = 0;
-			SetLastSpeed(v, 0);
-			ReverseTrainDirection(v);
+			if (_patches.realistic_acceleration && v->cur_speed != 0) {
+				TOGGLEBIT(v->u.rail.flags, VRF_REVERSING);
+			} else {
+				v->cur_speed = 0;
+				SetLastSpeed(v, 0);
+				ReverseTrainDirection(v);
+			}
 		}
 	}
 	return 0;
@@ -1897,6 +1917,11 @@ static void HandleLocomotiveSmokeCloud(const Vehicle* v)
 
 		x = _vehicle_smoke_pos[v->direction] * effect_offset;
 		y = _vehicle_smoke_pos[(v->direction + 2) % 8] * effect_offset;
+
+		if (HASBIT(v->u.rail.flags, VRF_REVERSE_DIRECTION)) {
+			x = -x;
+			y = -y;
+		}
 
 		switch (effect_type) {
 		case 0:

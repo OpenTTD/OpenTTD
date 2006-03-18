@@ -88,6 +88,9 @@ enum {
 
 	// used to store if a wagon is powered or not
 	VRF_POWEREDWAGON = 3,
+
+	// used to reverse the visible direction of the vehicle
+	VRF_REVERSE_DIRECTION = 4,
 };
 
 typedef struct VehicleAir {

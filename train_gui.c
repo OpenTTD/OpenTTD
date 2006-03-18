@@ -724,7 +724,9 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 
 				if (GetVehicleFromTrainDepotWndPt(w, e->dragdrop.pt.x, e->dragdrop.pt.y, &gdvp) == 0 &&
 						sel != INVALID_VEHICLE) {
-					if (gdvp.wagon == NULL || gdvp.wagon->index != sel) {
+					if (gdvp.wagon != NULL && gdvp.wagon->index == sel && _ctrl_pressed) {
+						DoCommandP(GetVehicle(sel)->tile, GetVehicle(sel)->index, true, NULL, CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_9033_CAN_T_MAKE_VEHICLE_TURN));
+					} else if (gdvp.wagon == NULL || gdvp.wagon->index != sel) {
 						TrainDepotMoveVehicle(gdvp.wagon, sel, gdvp.head);
 					} else if (gdvp.head != NULL && IsFrontEngine(gdvp.head)) {
 						ShowTrainViewWindow(gdvp.head);
