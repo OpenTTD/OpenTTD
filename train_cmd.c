@@ -1595,6 +1595,7 @@ static void ReverseTrainDirection(Vehicle *v)
 	if (v->type != VEH_Train || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (p2) {
+		// turn a single unit around
 		Vehicle *front;
 
 		if (IsMultiheaded(v) || HASBIT(RailVehInfo(v->engine_type)->callbackmask, CBM_ARTIC_ENGINE)) {
@@ -1606,16 +1607,15 @@ static void ReverseTrainDirection(Vehicle *v)
 		if (CheckTrainStoppedInDepot(front) < 0) {
 			return_cmd_error(STR_881A_TRAINS_CAN_ONLY_BE_ALTERED);
 		}
-	}
-//	if (v->u.rail.track & 0x80 || IsTileDepotType(v->tile, TRANSPORT_RAIL))
-//		return CMD_ERROR;
 
-	if (v->u.rail.crash_anim_pos != 0 || v->breakdown_ctr != 0) return CMD_ERROR;
-
-	if (flags & DC_EXEC) {
-		if (p2) {
+		if (flags & DC_EXEC) {
 			v->u.rail.flags ^= 1 << VRF_REVERSE_DIRECTION;
-		} else {
+		}
+	} else {
+		//turn the whole train around
+		if (v->u.rail.crash_anim_pos != 0 || v->breakdown_ctr != 0) return CMD_ERROR;
+
+		if (flags & DC_EXEC) {
 			if (_patches.realistic_acceleration && v->cur_speed != 0) {
 				TOGGLEBIT(v->u.rail.flags, VRF_REVERSING);
 			} else {
