@@ -83,37 +83,37 @@ STR_004B_BATTERY                                                :Batería
 STR_004C_PLASTIC                                                :Plástico
 STR_004D_FIZZY_DRINK                                            :Bebida Gaseosa
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} pasaxeiro
-STR_QUANTITY_COAL                                               :{COMMA} ton. de carbón
-STR_QUANTITY_MAIL                                               :{COMMA} saco de correo
+STR_QUANTITY_PASSENGERS                                         :{COMMA} pasaxeiro{P "" s}
+STR_QUANTITY_COAL                                               :{COMMA} ton{P "" s}. de carbón
+STR_QUANTITY_MAIL                                               :{COMMA} saco{P "" s} de correo
 STR_QUANTITY_OIL                                                :{VOLUME} de petróleo
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} item de gando
-STR_QUANTITY_GOODS                                              :{COMMA} caixón de mercadorías
-STR_QUANTITY_GRAIN                                              :{COMMA} ton. de gran
-STR_QUANTITY_WOOD                                               :{COMMA} ton. de madeira
-STR_QUANTITY_IRON_ORE                                           :{COMMA} ton. de hematita
-STR_QUANTITY_STEEL                                              :{COMMA} ton. de aceiro
-STR_QUANTITY_VALUABLES                                          :{COMMA} saco de valores
-STR_QUANTITY_COPPER_ORE                                         :{COMMA} ton. de mineral de cobre
-STR_QUANTITY_MAIZE                                              :{COMMA} ton. de millo
-STR_QUANTITY_FRUIT                                              :{COMMA} ton. de froita
-STR_QUANTITY_DIAMONDS                                           :{COMMA} saco de diamantes
-STR_QUANTITY_FOOD                                               :{COMMA} ton. de comida
-STR_QUANTITY_PAPER                                              :{COMMA} ton. de papel
-STR_QUANTITY_GOLD                                               :{COMMA} saco de ouro
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} item{P "" s} de gando
+STR_QUANTITY_GOODS                                              :{COMMA} caixón{P "" s} de mercadorías
+STR_QUANTITY_GRAIN                                              :{COMMA} ton{P "" s}. de gran
+STR_QUANTITY_WOOD                                               :{COMMA} ton{P "" s}. de madeira
+STR_QUANTITY_IRON_ORE                                           :{COMMA} ton{P "" s}. de hematita
+STR_QUANTITY_STEEL                                              :{COMMA} ton{P "" s}. de aceiro
+STR_QUANTITY_VALUABLES                                          :{COMMA} saco{P "" s} de valores
+STR_QUANTITY_COPPER_ORE                                         :{COMMA} ton{P "" s}. de mineral de cobre
+STR_QUANTITY_MAIZE                                              :{COMMA} ton{P "" s}. de millo
+STR_QUANTITY_FRUIT                                              :{COMMA} ton{P "" s}. de froita
+STR_QUANTITY_DIAMONDS                                           :{COMMA} saco{P "" s} de diamantes
+STR_QUANTITY_FOOD                                               :{COMMA} ton{P "" s}. de comida
+STR_QUANTITY_PAPER                                              :{COMMA} ton{P "" s}. de papel
+STR_QUANTITY_GOLD                                               :{COMMA} saco{P "" s} de ouro
 STR_QUANTITY_WATER                                              :{VOLUME} de auga
-STR_QUANTITY_WHEAT                                              :{COMMA} ton. de trigo
+STR_QUANTITY_WHEAT                                              :{COMMA} ton{P "" s}. de trigo
 STR_QUANTITY_RUBBER                                             :{VOLUME} de caucho
-STR_QUANTITY_SUGAR                                              :{COMMA} ton. de azucre
-STR_QUANTITY_TOYS                                               :{COMMA} xoguete
-STR_QUANTITY_SWEETS                                             :{COMMA} saco de caramelo
+STR_QUANTITY_SUGAR                                              :{COMMA} ton{P "" s}. de azucre
+STR_QUANTITY_TOYS                                               :{COMMA} xoguete{P "" s}
+STR_QUANTITY_SWEETS                                             :{COMMA} saco{P "" s} de caramelo
 STR_QUANTITY_COLA                                               :{VOLUME} de cola
-STR_QUANTITY_CANDYFLOSS                                         :{COMMA} ton. de algodón de azucre
-STR_QUANTITY_BUBBLES                                            :{COMMA} burbulla
-STR_QUANTITY_TOFFEE                                             :{COMMA} ton. de toffee
-STR_QUANTITY_BATTERIES                                          :{COMMA} batería
+STR_QUANTITY_CANDYFLOSS                                         :{COMMA} ton{P "" s}. de algodón de azucre
+STR_QUANTITY_BUBBLES                                            :{COMMA} burbulla{P "" s}
+STR_QUANTITY_TOFFEE                                             :{COMMA} ton{P "" s}. de toffee
+STR_QUANTITY_BATTERIES                                          :{COMMA} batería{P "" s}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} de plástico
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} bebida gaseosa
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} bebida{P "" s} gaseosa{P "" s}
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
 STR_ABBREV_COAL                                                 :{TINYFONT}CL

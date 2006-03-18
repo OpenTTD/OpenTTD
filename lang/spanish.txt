@@ -83,37 +83,37 @@ STR_004B_BATTERY                                                :Pilas
 STR_004C_PLASTIC                                                :Plástico
 STR_004D_FIZZY_DRINK                                            :Refresco
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} pasajero
-STR_QUANTITY_COAL                                               :{COMMA} tonelada de carbón
-STR_QUANTITY_MAIL                                               :{COMMA} saca de correo
+STR_QUANTITY_PASSENGERS                                         :{COMMA} pasajero{P "" s}
+STR_QUANTITY_COAL                                               :{COMMA} tonelada{P "" s} de carbón
+STR_QUANTITY_MAIL                                               :{COMMA} saca{P "" s} de correo
 STR_QUANTITY_OIL                                                :{VOLUME} de petróleo
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} cabeza de ganado
-STR_QUANTITY_GOODS                                              :{COMMA} caja de mercancía
-STR_QUANTITY_GRAIN                                              :{COMMA} tonelada de grano
-STR_QUANTITY_WOOD                                               :{COMMA} tonelada de madera
-STR_QUANTITY_IRON_ORE                                           :{COMMA} tonelada de mineral de hierro
-STR_QUANTITY_STEEL                                              :{COMMA} tonelada de acero
-STR_QUANTITY_VALUABLES                                          :{COMMA} bolsa de objetos de valor
-STR_QUANTITY_COPPER_ORE                                         :{COMMA} tonelada de mineral de cobre
-STR_QUANTITY_MAIZE                                              :{COMMA} tonelada de maíz
-STR_QUANTITY_FRUIT                                              :{COMMA} tonelada de fruta
-STR_QUANTITY_DIAMONDS                                           :{COMMA} bolsa de diamantes
-STR_QUANTITY_FOOD                                               :{COMMA} tonelada de alimento
-STR_QUANTITY_PAPER                                              :{COMMA} tonelada de papel
-STR_QUANTITY_GOLD                                               :{COMMA} bolsa de oro
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} cabeza{P "" s} de ganado
+STR_QUANTITY_GOODS                                              :{COMMA} caja{P "" s} de mercancía{P "" s}
+STR_QUANTITY_GRAIN                                              :{COMMA} tonelada{P "" s} de grano
+STR_QUANTITY_WOOD                                               :{COMMA} tonelada{P "" s} de madera
+STR_QUANTITY_IRON_ORE                                           :{COMMA} tonelada{P "" s} de mineral de hierro
+STR_QUANTITY_STEEL                                              :{COMMA} tonelada{P "" s} de acero
+STR_QUANTITY_VALUABLES                                          :{COMMA} bolsa{P "" s} de objetos de valor
+STR_QUANTITY_COPPER_ORE                                         :{COMMA} tonelada{P "" s} de mineral de cobre
+STR_QUANTITY_MAIZE                                              :{COMMA} tonelada{P "" s} de maíz
+STR_QUANTITY_FRUIT                                              :{COMMA} tonelada{P "" s} de fruta
+STR_QUANTITY_DIAMONDS                                           :{COMMA} bolsa{P "" s} de diamantes
+STR_QUANTITY_FOOD                                               :{COMMA} tonelada{P "" s} de alimento
+STR_QUANTITY_PAPER                                              :{COMMA} tonelada{P "" s} de papel
+STR_QUANTITY_GOLD                                               :{COMMA} bolsa{P "" s} de oro
 STR_QUANTITY_WATER                                              :{VOLUME} de agua
-STR_QUANTITY_WHEAT                                              :{COMMA} tonelada de trigo
+STR_QUANTITY_WHEAT                                              :{COMMA} tonelada{P "" s} de trigo
 STR_QUANTITY_RUBBER                                             :{VOLUME} de caucho
-STR_QUANTITY_SUGAR                                              :{COMMA} tonelada de azucar
-STR_QUANTITY_TOYS                                               :{COMMA} juguete
-STR_QUANTITY_SWEETS                                             :{COMMA} bolsa de dulces
+STR_QUANTITY_SUGAR                                              :{COMMA} tonelada{P "" s} de azucar
+STR_QUANTITY_TOYS                                               :{COMMA} juguete{P "" s}
+STR_QUANTITY_SWEETS                                             :{COMMA} bolsa{P "" s} de dulces
 STR_QUANTITY_COLA                                               :{VOLUME} de cola
-STR_QUANTITY_CANDYFLOSS                                         :{COMMA} tonelada de algodón de azúcar
-STR_QUANTITY_BUBBLES                                            :{COMMA} burbuja
-STR_QUANTITY_TOFFEE                                             :{COMMA} tonelada de caramelo
-STR_QUANTITY_BATTERIES                                          :{COMMA} pila
+STR_QUANTITY_CANDYFLOSS                                         :{COMMA} tonelada{P "" s} de algodón de azúcar
+STR_QUANTITY_BUBBLES                                            :{COMMA} burbuja{P "" s}
+STR_QUANTITY_TOFFEE                                             :{COMMA} tonelada{P "" s} de caramelo{P "" s}
+STR_QUANTITY_BATTERIES                                          :{COMMA} pila{P "" s}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} de plástico
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} refresco
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} refresco{P "" s}
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
 STR_ABBREV_COAL                                                 :{TINYFONT}CL

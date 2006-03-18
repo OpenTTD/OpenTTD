@@ -83,35 +83,35 @@ STR_004B_BATTERY                                                :Batterie
 STR_004C_PLASTIC                                                :Plastica
 STR_004D_FIZZY_DRINK                                            :Bevande Frizzanti
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} passeggero
+STR_QUANTITY_PASSENGERS                                         :{COMMA} passegger{P o i}
 STR_QUANTITY_COAL                                               :{COMMA} ton. di carbone
-STR_QUANTITY_MAIL                                               :{COMMA} sacco postale
+STR_QUANTITY_MAIL                                               :{COMMA} sacc{P o i} postal{P e i}
 STR_QUANTITY_OIL                                                :{VOLUME} di petrolio
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} capo di bestiame
-STR_QUANTITY_GOODS                                              :{COMMA} cassa di beni
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} cap{P o i} di bestiame
+STR_QUANTITY_GOODS                                              :{COMMA} cass{P a e} di beni
 STR_QUANTITY_GRAIN                                              :{COMMA} ton. di grano
 STR_QUANTITY_WOOD                                               :{COMMA} ton. di legna
 STR_QUANTITY_IRON_ORE                                           :{COMMA} ton. di ferro grezzo
 STR_QUANTITY_STEEL                                              :{COMMA} ton. di acciaio
-STR_QUANTITY_VALUABLES                                          :{COMMA} borsa di valori
+STR_QUANTITY_VALUABLES                                          :{COMMA} bors{P a e} di valori
 STR_QUANTITY_COPPER_ORE                                         :{COMMA} ton. di rame grezzo
 STR_QUANTITY_MAIZE                                              :{COMMA} ton. di mais
 STR_QUANTITY_FRUIT                                              :{COMMA} ton. di frutta
-STR_QUANTITY_DIAMONDS                                           :{COMMA} borsa di diamanti
+STR_QUANTITY_DIAMONDS                                           :{COMMA} bors{P a e} di diamanti
 STR_QUANTITY_FOOD                                               :{COMMA} ton. di cibo
 STR_QUANTITY_PAPER                                              :{COMMA} ton. di carta
-STR_QUANTITY_GOLD                                               :{COMMA} borsa d'oro
+STR_QUANTITY_GOLD                                               :{COMMA} bors{P a e} d'oro
 STR_QUANTITY_WATER                                              :{VOLUME} di acqua
 STR_QUANTITY_WHEAT                                              :{COMMA} ton. di frumento
 STR_QUANTITY_RUBBER                                             :{VOLUME} di gomma
 STR_QUANTITY_SUGAR                                              :{COMMA} ton. di zucchero
-STR_QUANTITY_TOYS                                               :{COMMA} giocattolo
-STR_QUANTITY_SWEETS                                             :{COMMA} busta di caramelle
+STR_QUANTITY_TOYS                                               :{COMMA} giocattol{P o i}
+STR_QUANTITY_SWEETS                                             :{COMMA} bust{P a e} di caramelle
 STR_QUANTITY_COLA                                               :{VOLUME} di cola
 STR_QUANTITY_CANDYFLOSS                                         :{COMMA} ton. di cotone candito
-STR_QUANTITY_BUBBLES                                            :{COMMA} bolla
+STR_QUANTITY_BUBBLES                                            :{COMMA} boll{P a e}
 STR_QUANTITY_TOFFEE                                             :{COMMA} ton. di toffee
-STR_QUANTITY_BATTERIES                                          :{COMMA} batteria
+STR_QUANTITY_BATTERIES                                          :{COMMA} batteri{P a e}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} di plastica
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} bibite frizzanti
 STR_ABBREV_NOTHING                                              :

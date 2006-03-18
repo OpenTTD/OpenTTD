@@ -83,37 +83,37 @@ STR_004B_BATTERY                                                :Pila
 STR_004C_PLASTIC                                                :Plàstic
 STR_004D_FIZZY_DRINK                                            :Beguda Gasosa
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} passatger
-STR_QUANTITY_COAL                                               :{COMMA} tona de carbó
-STR_QUANTITY_MAIL                                               :{COMMA} saca de correu
+STR_QUANTITY_PASSENGERS                                         :{COMMA} passatger{P "" s}
+STR_QUANTITY_COAL                                               :{COMMA} ton{P a es} de carbó
+STR_QUANTITY_MAIL                                               :{COMMA} sa{P ca ques} de correu
 STR_QUANTITY_OIL                                                :{VOLUME} de petroli
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} cap de bestiar
-STR_QUANTITY_GOODS                                              :{COMMA} palet de mercaderies
-STR_QUANTITY_GRAIN                                              :{COMMA} tona de gra
-STR_QUANTITY_WOOD                                               :{COMMA} tona de fusta
-STR_QUANTITY_IRON_ORE                                           :{COMMA} tona de mineral de ferro
-STR_QUANTITY_STEEL                                              :{COMMA} tona d'acer
-STR_QUANTITY_VALUABLES                                          :{COMMA} saca de valors
-STR_QUANTITY_COPPER_ORE                                         :{COMMA} tona de mineral de coure
-STR_QUANTITY_MAIZE                                              :{COMMA} tona de blat de moro
-STR_QUANTITY_FRUIT                                              :{COMMA} tona de fruita
-STR_QUANTITY_DIAMONDS                                           :{COMMA} bossa de diamants
-STR_QUANTITY_FOOD                                               :{COMMA} tona de queviures
-STR_QUANTITY_PAPER                                              :{COMMA} tona de paper
-STR_QUANTITY_GOLD                                               :{COMMA} sac d'or
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} cap{P "" s} de bestiar
+STR_QUANTITY_GOODS                                              :{COMMA} palet{P "" s} de mercaderies
+STR_QUANTITY_GRAIN                                              :{COMMA} ton{P a es} de gra
+STR_QUANTITY_WOOD                                               :{COMMA} ton{P a es} de fusta
+STR_QUANTITY_IRON_ORE                                           :{COMMA} ton{P a es} de mineral de ferro
+STR_QUANTITY_STEEL                                              :{COMMA} ton{P a es} d'acer
+STR_QUANTITY_VALUABLES                                          :{COMMA} sa{P ca ques} de valors
+STR_QUANTITY_COPPER_ORE                                         :{COMMA} ton{P a es} de mineral de coure
+STR_QUANTITY_MAIZE                                              :{COMMA} ton{P a es} de blat de moro
+STR_QUANTITY_FRUIT                                              :{COMMA} ton{P a es} de fruita
+STR_QUANTITY_DIAMONDS                                           :{COMMA} boss{P a es} de diamants
+STR_QUANTITY_FOOD                                               :{COMMA} ton{P a es} de queviures
+STR_QUANTITY_PAPER                                              :{COMMA} ton{P a es} de paper
+STR_QUANTITY_GOLD                                               :{COMMA} sa{P ca ques} d'or
 STR_QUANTITY_WATER                                              :{VOLUME} d'aigua
-STR_QUANTITY_WHEAT                                              :{COMMA} tona de blat
+STR_QUANTITY_WHEAT                                              :{COMMA} ton{P a es} de blat
 STR_QUANTITY_RUBBER                                             :{VOLUME} de cautxú
-STR_QUANTITY_SUGAR                                              :{COMMA} tona de sucre
-STR_QUANTITY_TOYS                                               :{COMMA} joguina
-STR_QUANTITY_SWEETS                                             :{COMMA} bossa de dolços
+STR_QUANTITY_SUGAR                                              :{COMMA} ton{P a es} de sucre
+STR_QUANTITY_TOYS                                               :{COMMA} joguin{P a es}
+STR_QUANTITY_SWEETS                                             :{COMMA} boss{P a es} de dolços
 STR_QUANTITY_COLA                                               :{VOLUME} de refrescs
-STR_QUANTITY_CANDYFLOSS                                         :{COMMA} tona de cotó de sucre
-STR_QUANTITY_BUBBLES                                            :{COMMA} bombolla
-STR_QUANTITY_TOFFEE                                             :{COMMA} tona de caramel
-STR_QUANTITY_BATTERIES                                          :{COMMA} pila
+STR_QUANTITY_CANDYFLOSS                                         :{COMMA} ton{P a es} de cotó de sucre
+STR_QUANTITY_BUBBLES                                            :{COMMA} bomboll{P a es}
+STR_QUANTITY_TOFFEE                                             :{COMMA} ton{P a es} de caramel
+STR_QUANTITY_BATTERIES                                          :{COMMA} pil{P a es}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} de plàstic
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} beguda gasosa
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} begud{P a es} gasosa
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
 STR_ABBREV_COAL                                                 :{TINYFONT}CB

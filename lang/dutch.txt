@@ -83,37 +83,37 @@ STR_004B_BATTERY                                                :Batterij
 STR_004C_PLASTIC                                                :Plastic
 STR_004D_FIZZY_DRINK                                            :Frisdrank
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} passagier
+STR_QUANTITY_PASSENGERS                                         :{COMMA} passagier{P "" s}
 STR_QUANTITY_COAL                                               :{COMMA} ton kolen
-STR_QUANTITY_MAIL                                               :{COMMA} zak post
+STR_QUANTITY_MAIL                                               :{COMMA} zak{P "" ken} post
 STR_QUANTITY_OIL                                                :{VOLUME} olie
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} stuk vee
-STR_QUANTITY_GOODS                                              :{COMMA} pallet goederen
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} stuk{P "" s} vee
+STR_QUANTITY_GOODS                                              :{COMMA} pallet{P "" s} goederen
 STR_QUANTITY_GRAIN                                              :{COMMA} ton graan
 STR_QUANTITY_WOOD                                               :{COMMA} ton hout
 STR_QUANTITY_IRON_ORE                                           :{COMMA} ton ijzererts
 STR_QUANTITY_STEEL                                              :{COMMA} ton staal
-STR_QUANTITY_VALUABLES                                          :{COMMA} zak kostbaarheden
+STR_QUANTITY_VALUABLES                                          :{COMMA} zak{P "" ken} kostbaarheden
 STR_QUANTITY_COPPER_ORE                                         :{COMMA} ton kopererts
 STR_QUANTITY_MAIZE                                              :{COMMA} ton maïs
 STR_QUANTITY_FRUIT                                              :{COMMA} ton fruit
-STR_QUANTITY_DIAMONDS                                           :{COMMA} zak diamanten
+STR_QUANTITY_DIAMONDS                                           :{COMMA} zak{P "" ken} diamanten
 STR_QUANTITY_FOOD                                               :{COMMA} ton voedsel
 STR_QUANTITY_PAPER                                              :{COMMA} ton papier
-STR_QUANTITY_GOLD                                               :{COMMA} zak goud
+STR_QUANTITY_GOLD                                               :{COMMA} zak{P "" ken} goud
 STR_QUANTITY_WATER                                              :{VOLUME} water
 STR_QUANTITY_WHEAT                                              :{COMMA} ton tarwe
 STR_QUANTITY_RUBBER                                             :{VOLUME} rubber
 STR_QUANTITY_SUGAR                                              :{COMMA} ton suiker
 STR_QUANTITY_TOYS                                               :{COMMA} speelgoed
-STR_QUANTITY_SWEETS                                             :{COMMA} zak snoep
+STR_QUANTITY_SWEETS                                             :{COMMA} zak{P "" ken} snoep
 STR_QUANTITY_COLA                                               :{VOLUME} cola
 STR_QUANTITY_CANDYFLOSS                                         :{COMMA} ton suikerspinnen
-STR_QUANTITY_BUBBLES                                            :{COMMA} bel
+STR_QUANTITY_BUBBLES                                            :{COMMA} bel{P "" len}
 STR_QUANTITY_TOFFEE                                             :{COMMA} ton toffee
-STR_QUANTITY_BATTERIES                                          :{COMMA} batterij
+STR_QUANTITY_BATTERIES                                          :{COMMA} batterij{P "" en}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastic
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} blikje frisdrank
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} blikje{P "" s} frisdrank
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
 STR_ABBREV_COAL                                                 :{TINYFONT}KL

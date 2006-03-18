@@ -83,37 +83,37 @@ STR_004B_BATTERY                                                :baterii
 STR_004C_PLASTIC                                                :plastic
 STR_004D_FIZZY_DRINK                                            :suc
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} cãlãtor
-STR_QUANTITY_COAL                                               :{COMMA} tonã de cãrbune
-STR_QUANTITY_MAIL                                               :{COMMA} sac cu colete postale
+STR_QUANTITY_PASSENGERS                                         :{COMMA} cãlãtor{P "" i}
+STR_QUANTITY_COAL                                               :{COMMA} ton{P ã e} de cãrbune
+STR_QUANTITY_MAIL                                               :{COMMA} sac{P "" i} cu colete postale
 STR_QUANTITY_OIL                                                :{VOLUME} de petrol
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} animal
-STR_QUANTITY_GOODS                                              :{COMMA} pachet de bunuri
-STR_QUANTITY_GRAIN                                              :{COMMA} tonã de cereale
-STR_QUANTITY_WOOD                                               :{COMMA} tonã de lemne
-STR_QUANTITY_IRON_ORE                                           :{COMMA} tonã de minereu de fier
-STR_QUANTITY_STEEL                                              :{COMMA} tonã de otel
-STR_QUANTITY_VALUABLES                                          :{COMMA} cutie de valori
-STR_QUANTITY_COPPER_ORE                                         :{COMMA} tonã de minereu de cupru
-STR_QUANTITY_MAIZE                                              :{COMMA} tonã de porumb
-STR_QUANTITY_FRUIT                                              :{COMMA} tonã de fructe
-STR_QUANTITY_DIAMONDS                                           :{COMMA} sac cu diamante
-STR_QUANTITY_FOOD                                               :{COMMA} tonã de alimente
-STR_QUANTITY_PAPER                                              :{COMMA} tonã de hârtie
-STR_QUANTITY_GOLD                                               :{COMMA} sac cu aur
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} animal{P "" e}
+STR_QUANTITY_GOODS                                              :{COMMA} pachet{P "" e} de bunuri
+STR_QUANTITY_GRAIN                                              :{COMMA} ton{P ã e} de cereale
+STR_QUANTITY_WOOD                                               :{COMMA} ton{P ã e} de lemne
+STR_QUANTITY_IRON_ORE                                           :{COMMA} ton{P ã e} de minereu de fier
+STR_QUANTITY_STEEL                                              :{COMMA} ton{P ã e} de otel
+STR_QUANTITY_VALUABLES                                          :{COMMA} cuti{P e i} de valori
+STR_QUANTITY_COPPER_ORE                                         :{COMMA} ton{P ã e} de minereu de cupru
+STR_QUANTITY_MAIZE                                              :{COMMA} ton{P ã e} de porumb
+STR_QUANTITY_FRUIT                                              :{COMMA} ton{P ã e} de fructe
+STR_QUANTITY_DIAMONDS                                           :{COMMA} sac{P "" i} cu diamante
+STR_QUANTITY_FOOD                                               :{COMMA} ton{P ã e} de alimente
+STR_QUANTITY_PAPER                                              :{COMMA} ton{P ã e} de hârtie
+STR_QUANTITY_GOLD                                               :{COMMA} sac{P "" i} cu aur
 STR_QUANTITY_WATER                                              :{VOLUME} de apã
-STR_QUANTITY_WHEAT                                              :{COMMA} tonã de grâu
+STR_QUANTITY_WHEAT                                              :{COMMA} ton{P ã e} de grâu
 STR_QUANTITY_RUBBER                                             :{VOLUME} de cauciuc
-STR_QUANTITY_SUGAR                                              :{COMMA} tonã de zahãr
-STR_QUANTITY_TOYS                                               :{COMMA} sac cu jucãrii
-STR_QUANTITY_SWEETS                                             :{COMMA} sac cu bomboane
+STR_QUANTITY_SUGAR                                              :{COMMA} ton{P ã e} de zahãr
+STR_QUANTITY_TOYS                                               :{COMMA} sac{P "" i} cu jucãrii
+STR_QUANTITY_SWEETS                                             :{COMMA} sac{P "" i} cu bomboane
 STR_QUANTITY_COLA                                               :{VOLUME} de cola
-STR_QUANTITY_CANDYFLOSS                                         :{COMMA} tonã de vatã de zahãr
-STR_QUANTITY_BUBBLES                                            :{COMMA} balonas
-STR_QUANTITY_TOFFEE                                             :{COMMA} tonã de caramel
-STR_QUANTITY_BATTERIES                                          :{COMMA} baterie
+STR_QUANTITY_CANDYFLOSS                                         :{COMMA} ton{P ã e} de vatã de zahãr
+STR_QUANTITY_BUBBLES                                            :{COMMA} balonas{P "" e}
+STR_QUANTITY_TOFFEE                                             :{COMMA} ton{P ã e} de caramel
+STR_QUANTITY_BATTERIES                                          :{COMMA} bateri{P e i}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} de plastic
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} bidon cu suc
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} bido{P n ane} cu suc
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}CL
 STR_ABBREV_COAL                                                 :{TINYFONT}CB
