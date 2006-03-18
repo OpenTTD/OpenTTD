@@ -158,7 +158,7 @@ static void BuildRoadClick_Remove(Window *w)
 	SetWindowDirty(w);
 	SndPlayFx(SND_15_BEEP);
 	TOGGLEBIT(w->click_state, 11);
-	SetSelectionRed(HASBIT(w->click_state, 11) != 0);
+	SetSelectionRed(HASBIT(w->click_state, 11));
 }
 
 static void BuildRoadClick_Landscaping(Window *w)

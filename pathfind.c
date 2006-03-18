@@ -388,8 +388,8 @@ void FollowTrack(TileIndex tile, uint16 flags, byte direction, TPFEnumProc *enum
 
 	tpf.var2 = HASBIT(flags, 15) ? 0x43 : 0xFF; /* 0x8000 */
 
-	tpf.disable_tile_hash = HASBIT(flags, 12) != 0;     /* 0x1000 */
-	tpf.hasbit_13 = HASBIT(flags, 13) != 0;		 /* 0x2000 */
+	tpf.disable_tile_hash = HASBIT(flags, 12);  /* 0x1000 */
+	tpf.hasbit_13         = HASBIT(flags, 13);  /* 0x2000 */
 
 
 	tpf.tracktype = (byte)flags;
