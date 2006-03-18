@@ -427,6 +427,7 @@ extern bool CloseConsoleLogIfActive(void);
 
 static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 {
+	extern const char _openttd_revision[];
 	char *output;
 	static bool had_exception;
 
@@ -451,7 +452,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 			time.wHour,
 			time.wMinute,
 			time.wSecond,
-			"???"
+			_openttd_revision
 		);
 	}
 
