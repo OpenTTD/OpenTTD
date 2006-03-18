@@ -20,10 +20,6 @@ set -e
 
 case "$1" in
        purge|remove)
-	cat  <<EOF
-	Don't forget to remove any existing data files from
-	/usr/share/games/openttd!	
-EOF
        	;;
        
        upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)

@@ -1,16 +1,19 @@
 Source: openttd
-Section: games
+Section: contrib/games
 Priority: optional
 Maintainer: Matthijs Kooijman <m.kooijman@student.utwente.nl>
 Build-Depends: debhelper (>= 4.0.0), libsdl-dev, zlib1g-dev, libpng-dev
-Standards-Version: 3.6.0
+Standards-Version: 3.6.2
 
 Package: openttd
 Architecture: any
-Depends: ${shlibs:Depends}
+Depends: ${shlibs:Depends}, debconf
 Suggests: timidity, freepats
-Description: open source clone of the Microprose game "Transport Tycoon Deluxe"
- An enhanced open source clone of the Microprose game "Transport Tycoon Deluxe".
+Description: reimplementation of Transport Tycoon Deluxe with enhancements
+ A reimplementation of the Microprose game "Transport Tycoon Deluxe" with lots
+ of new features and enhancements.
  You require the data files of the original Transport Tycoon Deluxe
  for Windows to play the game. You have to MANUALLY copy them to the
  game data directory! (see README.Debian for details)
+ .
+ Homepage: http://www.openttd.org/
