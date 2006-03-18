@@ -315,7 +315,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 					!EnsureNoVehicle(tile)) {
 				return CMD_ERROR;
 			}
-			if (m5 & RAIL_TYPE_SPECIAL ||
+			if (GetRailTileType(tile) == RAIL_TYPE_DEPOT_WAYPOINT ||
 					!IsTileOwner(tile, _current_player) ||
 					GetRailType(tile) != p1) {
 				// Get detailed error message
@@ -1038,8 +1038,9 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 	m5 = _m[tile].m5;
 
 	if (flags & DC_AUTO) {
-		if (m5 & RAIL_TYPE_SPECIAL)
+		if (GetRailTileType(tile) == RAIL_TYPE_DEPOT_WAYPOINT) {
 			return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
+		}
 
 		if (!IsTileOwner(tile, _current_player))
 			return_cmd_error(STR_1024_AREA_IS_OWNED_BY_ANOTHER);
@@ -1349,7 +1350,7 @@ static void DrawTile_Track(TileInfo *ti)
 	_drawtile_track_palette = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)));
 
 	m5 = (byte)ti->map5;
-	if (!(m5 & RAIL_TYPE_SPECIAL)) {
+	if (GetRailTileType(ti->tile) != RAIL_TYPE_DEPOT_WAYPOINT) {
 		bool earth = (_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK) == RAIL_GROUND_BROWN;
 		bool snow = (_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK) == RAIL_GROUND_ICE_DESERT;
 
@@ -1360,8 +1361,7 @@ static void DrawTile_Track(TileInfo *ti)
 		}
 
 		/* draw signals also? */
-		if (!(ti->map5 & RAIL_TYPE_SIGNALS))
-			return;
+		if (GetRailTileType(ti->tile) != RAIL_TYPE_SIGNALS) return;
 
 		{
 			byte m23;
@@ -1403,12 +1403,6 @@ static void DrawTile_Track(TileInfo *ti)
 		/* draw depots / waypoints */
 		const DrawTrackSeqStruct *drss;
 		byte type = m5 & 0x3F; // 0-3: depots, 4-5: waypoints
-
-		if (!(m5 & (RAIL_TILE_TYPE_MASK&~RAIL_TYPE_SPECIAL)))
-			/* XXX: There used to be "return;" here, but since I could not find out
-			 * why this would ever occur, I put assert(0) here. Let's see if someone
-			 * complains about it. If not, we'll remove this check. (Matthijs). */
-			 assert(0);
 
 		if (ti->tileh != 0) DrawFoundation(ti, ti->tileh);
 
@@ -1855,7 +1849,11 @@ static void TileLoop_Track(TileIndex tile)
 	byte old_ground;
 	byte new_ground;
 
-	old_ground = _m[tile].m5 & RAIL_TYPE_SPECIAL ? GB(_m[tile].m4, 0, 4) : GB(_m[tile].m2, 0, 4);
+	if (GetRailType(tile) == RAIL_TYPE_DEPOT_WAYPOINT) {
+		old_ground = GB(_m[tile].m4, 0, 4);
+	} else {
+		old_ground = GB(_m[tile].m2, 0, 4);
+	}
 
 	switch (_opt.landscape) {
 		case LT_HILLY:
@@ -1874,7 +1872,7 @@ static void TileLoop_Track(TileIndex tile)
 	}
 
 	// Don't continue tile loop for depots
-	if (_m[tile].m5 & RAIL_TYPE_SPECIAL) return;
+	if (GetRailType(tile) == RAIL_TYPE_DEPOT_WAYPOINT) return;
 
 	new_ground = RAIL_GROUND_GREEN;
 
@@ -1956,7 +1954,7 @@ static void TileLoop_Track(TileIndex tile)
 modify_me:;
 	/* tile changed? */
 	if (old_ground != new_ground) {
-		if (_m[tile].m5 & RAIL_TYPE_SPECIAL) {
+		if (GetRailTileType(tile) == RAIL_TYPE_DEPOT_WAYPOINT) {
 			SB(_m[tile].m4, 0, 4, new_ground);
 		} else {
 			SB(_m[tile].m2, 0, 4, new_ground);
@@ -1976,9 +1974,9 @@ static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode)
 
 	m5 = _m[tile].m5;
 
-	if (!(m5 & RAIL_TYPE_SPECIAL)) {
+	if (GetRailType(tile) != RAIL_TYPE_DEPOT_WAYPOINT) {
 		ret = (m5 | (m5 << 8)) & 0x3F3F;
-		if (!(m5 & RAIL_TYPE_SIGNALS)) {
+		if (GetRailType(tile) != RAIL_TYPE_SIGNALS) {
 			if ( (ret & 0xFF) == 3)
 			/* Diagonal crossing? */
 				ret |= 0x40;

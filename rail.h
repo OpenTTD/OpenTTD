@@ -9,22 +9,6 @@
 #include "rail_map.h"
 #include "tile.h"
 
-/*
- * Some enums for accesing the map bytes for rail tiles
- */
-
-enum { /* DEPRECATED TODO: Rewrite all uses of this */
-	RAIL_TYPE_SPECIAL = 0x80, /* This used to say "If this bit is set, then it's
-														 * not a regular track.", but currently, you
-														 * should rather view map5[6..7] as one type,
-														 * containing a value from RailTileTypes above.
-														 * This value is only maintained for backwards
-														 * compatibility */
-
-	/* There used to be RAIL_BIT_* enums here, they moved to (for now) npf.c as
-	 * TRACK_BIT_* */
-};
-
 
 /** These are a combination of tracks and directions. Values are 0-5 in one
 direction (corresponding to the Track enum) and 8-13 in the other direction. */
