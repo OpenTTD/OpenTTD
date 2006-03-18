@@ -314,6 +314,12 @@ static const SpriteID _openttd_grf_indexes[] = {
 	 93,  96, // { | } ~ medium
 	541, 544, // { | } ~ large
 	SPR_HOUSE_ICON, SPR_HOUSE_ICON,
+	585, 585, // § large
+	587, 587, // © large
+	592, 592, // ® large
+	594, 597, // ° ± ² ³ large
+	633, 633, // × large
+	665, 665, // ÷ large
 	END
 };
 
