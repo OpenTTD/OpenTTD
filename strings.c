@@ -499,6 +499,7 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 			break;
 
 		case 0x81: // {STRINL}
+			buff = GetStringWithArgs(buff, ReadLE16Unaligned(str), argv);
 			str += 2;
 			buff = GetStringWithArgs(buff, READ_LE_UINT16(str-2), argv);
 			break;
@@ -1013,7 +1014,7 @@ bool ReadLanguagePack(int lang_index)
 
 #if defined(TTD_BIG_ENDIAN)
 	for (i = 0; i != 32; i++) {
-		lang_pack->offsets[i] = READ_LE_UINT16(&lang_pack->offsets[i]);
+		lang_pack->offsets[i] = ReadLE16Aligned(&lang_pack->offsets[i]);
 	}
 #endif
 
