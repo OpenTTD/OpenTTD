@@ -109,7 +109,8 @@ DEF_CONSOLE_CMD(ConResetSlots)
 	}
 
 	FOR_ALL_ROADSTOPS(rs) {
-		rs->slot[0] = rs->slot[1] = INVALID_VEHICLE;
+		int i;
+		for (i = 0; i < NUM_SLOTS; i++) rs->slot[i] = INVALID_VEHICLE;
 	}
 
 	return true;

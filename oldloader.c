@@ -356,6 +356,7 @@ static void FixOldTowns(void)
 static void FixOldStations(void)
 {
 	Station *st;
+	int i;
 
 	FOR_ALL_STATIONS(st) {
 		/* Check if we need to swap width and height for the station */
@@ -372,7 +373,7 @@ static void FixOldStations(void)
 			st->bus_stops->station = st->index;
 			st->bus_stops->next = NULL;
 			st->bus_stops->prev = NULL;
-			st->bus_stops->slot[0] = st->bus_stops->slot[1] = INVALID_VEHICLE;
+			for (i = 0; i < NUM_SLOTS; i++) st->bus_stops->slot[i] = INVALID_VEHICLE;
 		}
 
 		if (st->lorry_tile_obsolete != 0) {
@@ -383,7 +384,7 @@ static void FixOldStations(void)
 			st->truck_stops->station = st->index;
 			st->truck_stops->next = NULL;
 			st->truck_stops->prev = NULL;
-			st->truck_stops->slot[0] = st->truck_stops->slot[1] = INVALID_VEHICLE;
+			for (i = 0; i < NUM_SLOTS; i++) st->truck_stops->slot[i] = INVALID_VEHICLE;
 		}
 	}
 }

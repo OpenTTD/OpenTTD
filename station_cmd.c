@@ -86,13 +86,15 @@ static void MarkStationDirty(const Station* st)
 
 static void InitializeRoadStop(RoadStop *road_stop, RoadStop *previous, TileIndex tile, StationID index)
 {
+	int i;
 	road_stop->xy = tile;
 	road_stop->used = true;
 	road_stop->status = 3; //stop is free
-	road_stop->slot[0] = road_stop->slot[1] = INVALID_VEHICLE;
 	road_stop->next = NULL;
 	road_stop->prev = previous;
 	road_stop->station = index;
+
+	for (i = 0; i < NUM_SLOTS; i++) road_stop->slot[i] = INVALID_VEHICLE;
 }
 
 RoadStop* GetPrimaryRoadStop(const Station* st, RoadStopType type)
