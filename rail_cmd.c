@@ -1974,9 +1974,9 @@ static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode)
 
 	m5 = _m[tile].m5;
 
-	if (GetRailType(tile) != RAIL_TYPE_DEPOT_WAYPOINT) {
+	if (GetRailTileType(tile) != RAIL_TYPE_DEPOT_WAYPOINT) {
 		ret = (m5 | (m5 << 8)) & 0x3F3F;
-		if (GetRailType(tile) != RAIL_TYPE_SIGNALS) {
+		if (GetRailTileType(tile) != RAIL_TYPE_SIGNALS) {
 			if ( (ret & 0xFF) == 3)
 			/* Diagonal crossing? */
 				ret |= 0x40;
