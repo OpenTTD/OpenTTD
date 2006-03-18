@@ -803,6 +803,8 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 			m5 = _m[c].m5;
 
 			if (m5 & 0x40) {
+				uint town = IsTileOwner(c, OWNER_TOWN) ? ClosestTownFromTile(c, (uint)-1)->index : 0;
+
 				if (m5 & 0x20) {
 					static const uint16 _new_data_table[] = {0x1002, 0x1001, 0x2005, 0x200A, 0, 0, 0, 0};
 					new_data = _new_data_table[((m5 & 0x18) >> 2) | (m5 & 1)];
@@ -813,7 +815,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 
 				SetTileType(c, new_data >> 12);
 				_m[c].m5 = (byte)new_data;
-				_m[c].m2 = 0;
+				_m[c].m2 = town;
 				_m[c].m4 &= 0x0F;
 
 				MarkTileDirtyByTile(c);

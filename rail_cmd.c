@@ -451,7 +451,6 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			_m[tile].m5 = m5;
 			SetTileOwner(tile, _m[tile].m3);
-			_m[tile].m2 = 0;
 			break;
 
 		case MP_RAILWAY:
