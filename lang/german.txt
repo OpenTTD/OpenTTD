@@ -1315,7 +1315,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Trennen
 
 STR_NETWORK_CHAT_QUERY_CAPTION                                  :{WHITE}Gib deine Nachricht ein
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Gib an wieviel Geld du geben möchtest
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Gib an, wieviel Geld du geben möchtest
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server ist geschützt. Gib das Passwort ein
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma ist geschützt! Passwort eingeben
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Teilnehmerliste
@@ -1486,7 +1486,7 @@ STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Bevölkerung: {ORANGE}{COMMA}{BLACK}  Häuser: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Stadt umbenennen
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Die Stadt kann nicht umbenannt werden...
-STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} Die Stadtverwaltung erteilt keine Genehmigung
+STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Die Stadtverwaltung von {TOWN} erteilt keine Genehmigung
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Städtenamen - klicke auf den Namen, um die Stadt anzuzeigen
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Ansicht auf Stadt zentrieren
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Stadt umbenennen
