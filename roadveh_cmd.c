@@ -634,7 +634,8 @@ static void ProcessRoadVehOrder(Vehicle *v)
 		st = GetStation(order->station);
 
 		{
-			uint mindist = 0xFFFFFFFF;
+			TileIndex dest;
+			uint mindist;
 			RoadStopType type;
 			RoadStop *rs;
 
@@ -649,12 +650,17 @@ static void ProcessRoadVehOrder(Vehicle *v)
 				return;
 			}
 
-			for (rs = GetPrimaryRoadStop(st, type); rs != NULL; rs = rs->next) {
-				if (DistanceManhattan(v->tile, rs->xy) < mindist) {
-					v->dest_tile = rs->xy;
+			dest = rs->xy;
+			mindist = DistanceManhattan(v->tile, rs->xy);
+			for (rs = rs->next; rs != NULL; rs = rs->next) {
+				uint dist = DistanceManhattan(v->tile, rs->xy);
+
+				if (dist < mindist) {
+					mindist = dist;
+					dest = rs->xy;
 				}
 			}
-
+			v->dest_tile = dest;
 		}
 	} else if (order->type == OT_GOTO_DEPOT) {
 		v->dest_tile = GetDepot(order->station)->xy;
