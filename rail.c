@@ -55,12 +55,12 @@ const TrackdirBits _track_crosses_trackdirs[] = {
 
 /* Maps a track to all tracks that make 90 deg turns with it. */
 const TrackBits _track_crosses_tracks[] = {
-	TRACK_BIT_Y,                       /* TRACK_X     */
-	TRACK_BIT_X,                       /* TRACK_Y     */
-	TRACK_BIT_LEFT  | TRACK_BIT_RIGHT, /* TRACK_UPPER */
-	TRACK_BIT_LEFT  | TRACK_BIT_RIGHT, /* TRACK_LOWER */
-	TRACK_BIT_UPPER | TRACK_BIT_LOWER, /* TRACK_LEFT  */
-	TRACK_BIT_UPPER | TRACK_BIT_LOWER  /* TRACK_RIGHT */
+	TRACK_BIT_Y,    /* TRACK_X     */
+	TRACK_BIT_X,    /* TRACK_Y     */
+	TRACK_BIT_VERT, /* TRACK_UPPER */
+	TRACK_BIT_VERT, /* TRACK_LOWER */
+	TRACK_BIT_HORZ, /* TRACK_LEFT  */
+	TRACK_BIT_HORZ  /* TRACK_RIGHT */
 };
 
 /* Maps a trackdir to the (4-way) direction the tile is exited when following

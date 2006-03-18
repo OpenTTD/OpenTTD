@@ -122,9 +122,7 @@ static bool CheckTrackCombination(TileIndex tile, TrackBits to_build, uint flags
 	if ((flags & DC_NO_RAIL_OVERLAP) || type == RAIL_TYPE_SIGNALS) {
 		/* If we are not allowed to overlap (flag is on for ai players or we have
 		 * signals on the tile), check that */
-		return
-			future == (TRACK_BIT_UPPER | TRACK_BIT_LOWER) ||
-			future == (TRACK_BIT_LEFT  | TRACK_BIT_RIGHT);
+		return future == TRACK_BIT_HORZ || future == TRACK_BIT_VERT;
 	} else {
 		/* Normally, we may overlap and any combination is valid */
 		return true;
@@ -136,7 +134,7 @@ static const byte _valid_tileh_slopes[][15] = {
 
 // set of normal ones
 {
-	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
+	TRACK_BIT_ALL,
 	TRACK_BIT_RIGHT,
 	TRACK_BIT_UPPER,
 	TRACK_BIT_X,
@@ -164,18 +162,18 @@ static const byte _valid_tileh_slopes[][15] = {
 	TRACK_BIT_Y | TRACK_BIT_LOWER | TRACK_BIT_LEFT,
 
 	TRACK_BIT_RIGHT,
-	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
+	TRACK_BIT_ALL,
 	TRACK_BIT_X | TRACK_BIT_LOWER | TRACK_BIT_RIGHT,
-	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
+	TRACK_BIT_ALL,
 
 	TRACK_BIT_UPPER,
 	TRACK_BIT_X | TRACK_BIT_UPPER | TRACK_BIT_LEFT,
-	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
-	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
+	TRACK_BIT_ALL,
+	TRACK_BIT_ALL,
 
 	TRACK_BIT_Y | TRACK_BIT_UPPER | TRACK_BIT_RIGHT,
-	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
-	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
+	TRACK_BIT_ALL,
+	TRACK_BIT_ALL
 },
 
 // allowed rail on coast tile
@@ -186,18 +184,18 @@ static const byte _valid_tileh_slopes[][15] = {
 	TRACK_BIT_Y|TRACK_BIT_LEFT|TRACK_BIT_LOWER,
 
 	TRACK_BIT_RIGHT,
-	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
+	TRACK_BIT_ALL,
 	TRACK_BIT_X|TRACK_BIT_RIGHT|TRACK_BIT_LOWER,
-	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
+	TRACK_BIT_ALL,
 
 	TRACK_BIT_UPPER,
 	TRACK_BIT_X|TRACK_BIT_LEFT|TRACK_BIT_UPPER,
-	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
-	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
+	TRACK_BIT_ALL,
+	TRACK_BIT_ALL,
 
 	TRACK_BIT_Y|TRACK_BIT_RIGHT|TRACK_BIT_UPPER,
-	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
-	TRACK_BIT_X|TRACK_BIT_Y|TRACK_BIT_UPPER|TRACK_BIT_LOWER|TRACK_BIT_LEFT|TRACK_BIT_RIGHT,
+	TRACK_BIT_ALL,
+	TRACK_BIT_ALL
 	},
 };
 
@@ -707,8 +705,8 @@ int32 CmdBuildSingleSignal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  		/* See if this is a valid track combination for signals, (ie, no overlap) */
  		TrackBits trackbits = GetTrackBits(tile);
 		if (KILL_FIRST_BIT(trackbits) != 0 && /* More than one track present */
-				trackbits != (TRACK_BIT_UPPER | TRACK_BIT_LOWER) && /* Horizontal parallel, non-intersecting tracks */
-				trackbits != (TRACK_BIT_LEFT | TRACK_BIT_RIGHT) /* Vertical parallel, non-intersecting tracks */
+				trackbits != TRACK_BIT_HORZ &&
+				trackbits != TRACK_BIT_VERT
 		)
 			return CMD_ERROR;
 	}
@@ -1292,16 +1290,16 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track, bool earth, bool snow, 
 	(image++,                           track == TRACK_BIT_LOWER) ||
 	(image++,                           track == TRACK_BIT_RIGHT) ||
 	(image++,                           track == TRACK_BIT_LEFT) ||
-	(image++,                           track == (TRACK_BIT_X | TRACK_BIT_Y)) ||
+	(image++,                           track == TRACK_BIT_CROSS) ||
 
-	(image = rti->base_sprites.track_ns, track == (TRACK_BIT_UPPER | TRACK_BIT_LOWER)) ||
-	(image++,                            track == (TRACK_BIT_LEFT | TRACK_BIT_RIGHT)) ||
+	(image = rti->base_sprites.track_ns, track == TRACK_BIT_HORZ) ||
+	(image++,                            track == TRACK_BIT_VERT) ||
 
 	(junction = true, false) ||
-	(image = rti->base_sprites.ground, !(track & (TRACK_BIT_RIGHT | TRACK_BIT_UPPER | TRACK_BIT_X))) ||
-	(image++,                          !(track & (TRACK_BIT_LEFT | TRACK_BIT_LOWER | TRACK_BIT_X))) ||
-	(image++,                          !(track & (TRACK_BIT_LEFT | TRACK_BIT_UPPER | TRACK_BIT_Y))) ||
-	(image++,                          !(track & (TRACK_BIT_RIGHT | TRACK_BIT_LOWER | TRACK_BIT_Y))) ||
+	(image = rti->base_sprites.ground, (track & TRACK_BIT_3WAY_NE) == 0) ||
+	(image++,                          (track & TRACK_BIT_3WAY_SW) == 0) ||
+	(image++,                          (track & TRACK_BIT_3WAY_NW) == 0) ||
+	(image++,                          (track & TRACK_BIT_3WAY_SE) == 0) ||
 	(image++, true);
 
 	if (ti->tileh != 0) {
@@ -1890,7 +1888,7 @@ static void TileLoop_Track(TileIndex tile)
 				PlayerID owner = GetTileOwner(tile);
 
 				if (rail == (TRACK_BIT_LOWER | TRACK_BIT_RIGHT) || (
-							!(rail & (TRACK_BIT_Y | TRACK_BIT_UPPER | TRACK_BIT_LEFT)) &&
+							(rail & TRACK_BIT_3WAY_NW) == 0 &&
 							(rail & TRACK_BIT_X)
 						)) {
 					TileIndex n = tile + TileDiffXY(0, -1);
@@ -1904,7 +1902,7 @@ static void TileLoop_Track(TileIndex tile)
 				}
 
 				if (rail == (TRACK_BIT_UPPER | TRACK_BIT_LEFT) || (
-							!(rail & (TRACK_BIT_Y | TRACK_BIT_LOWER | TRACK_BIT_RIGHT)) &&
+							(rail & TRACK_BIT_3WAY_SE) == 0 &&
 							(rail & TRACK_BIT_X)
 						)) {
 					TileIndex n = tile + TileDiffXY(0, 1);
@@ -1919,7 +1917,7 @@ static void TileLoop_Track(TileIndex tile)
 				}
 
 				if (rail == (TRACK_BIT_LOWER | TRACK_BIT_LEFT) || (
-							!(rail & (TRACK_BIT_X | TRACK_BIT_UPPER | TRACK_BIT_RIGHT)) &&
+							(rail & TRACK_BIT_3WAY_NE) == 0 &&
 							(rail & TRACK_BIT_Y)
 						)) {
 					TileIndex n = tile + TileDiffXY(-1, 0);
@@ -1933,7 +1931,7 @@ static void TileLoop_Track(TileIndex tile)
 				}
 
 				if (rail == (TRACK_BIT_UPPER | TRACK_BIT_RIGHT) || (
-							!(rail & (TRACK_BIT_X | TRACK_BIT_LOWER | TRACK_BIT_LEFT)) &&
+							(rail & TRACK_BIT_3WAY_SE) == 0 &&
 							(rail & TRACK_BIT_Y)
 						)) {
 					TileIndex n = tile + TileDiffXY(1, 0);
