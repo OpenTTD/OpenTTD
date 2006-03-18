@@ -1609,7 +1609,7 @@ static void ReverseTrainDirection(Vehicle *v)
 		}
 
 		if (flags & DC_EXEC) {
-			v->u.rail.flags ^= 1 << VRF_REVERSE_DIRECTION;
+			TOGGLEBIT(v->u.rail.flags, VRF_REVERSE_DIRECTION);
 		}
 	} else {
 		//turn the whole train around
