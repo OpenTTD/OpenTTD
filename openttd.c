@@ -1002,7 +1002,9 @@ static void ConvertTownOwner(void)
 
 	for (tile = 0; tile != MapSize(); tile++) {
 		if (IsTileType(tile, MP_STREET)) {
-			if (IsLevelCrossing(tile) && _m[tile].m3 & 0x80) _m[tile].m3 = OWNER_TOWN;
+			if (IsLevelCrossing(tile) && GetCrossingRoadOwner(tile) & 0x80) {
+				SetCrossingRoadOwner(tile, OWNER_TOWN);
+			}
 
 			if (_m[tile].m1 & 0x80) SetTileOwner(tile, OWNER_TOWN);
 		} else if (IsTileType(tile, MP_TUNNELBRIDGE)) {

@@ -34,9 +34,8 @@ static bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, bool* edge_roa
 	// Only do the special processing for actual players.
 	if (_current_player >= MAX_PLAYERS) return true;
 
-	// A railway crossing has the road owner in the map3_lo byte.
 	if (IsTileType(tile, MP_STREET) && IsLevelCrossing(tile)) {
-		owner = _m[tile].m3;
+		owner = GetCrossingRoadOwner(tile);
 	} else {
 		owner = GetTileOwner(tile);
 	}
@@ -106,9 +105,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!IsTileType(tile, MP_STREET) && !IsTileType(tile, MP_TUNNELBRIDGE)) return CMD_ERROR;
 
-	// owner for railroad crossing is stored somewhere else
-	// XXX - Fix this so for a given tiletype the owner of the type is in the same variable
-	owner = IsLevelCrossing(tile) ? _m[tile].m3 : GetTileOwner(tile);
+	owner = IsLevelCrossing(tile) ? GetCrossingRoadOwner(tile) : GetTileOwner(tile);
 
 	if (owner == OWNER_TOWN && _game_mode != GM_EDITOR) {
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) { // index of town is not saved for bridge (no space)
@@ -1127,9 +1124,8 @@ static void VehicleLeave_Road(Vehicle *v, TileIndex tile, int x, int y)
 
 static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID new_player)
 {
-	// road/rail crossing where the road is owned by the current player?
-	if (old_player == _m[tile].m3 && IsLevelCrossing(tile)) {
-		_m[tile].m3 = (new_player == OWNER_SPECTATOR) ? OWNER_NONE : new_player;
+	if (IsLevelCrossing(tile) && GetCrossingRoadOwner(tile) == old_player) {
+		SetCrossingRoadOwner(tile, new_player == OWNER_SPECTATOR ? OWNER_NONE : new_player);
 	}
 
 	if (!IsTileOwner(tile, old_player)) return;
@@ -1143,7 +1139,7 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 				break;
 
 			case ROAD_CROSSING:
-				MakeRoadNormal(tile, _m[tile].m3, GetCrossingRoadBits(tile), _m[tile].m2);
+				MakeRoadNormal(tile, GetCrossingRoadOwner(tile), GetCrossingRoadBits(tile), _m[tile].m2);
 				break;
 
 			default:

@@ -55,6 +55,18 @@ static inline TrackBits GetCrossingRailBits(TileIndex tile)
 }
 
 
+// TODO swap owner of road and rail
+static inline Owner GetCrossingRoadOwner(TileIndex t)
+{
+	return (Owner)_m[t].m3;
+}
+
+static inline void SetCrossingRoadOwner(TileIndex t, Owner o)
+{
+	_m[t].m3 = o;
+}
+
+
 typedef enum RoadType {
 	ROAD_NORMAL,
 	ROAD_CROSSING,

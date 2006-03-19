@@ -417,7 +417,7 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			}
 
 			if (flags & DC_EXEC) {
-				MakeRoadNormal(tile, _m[tile].m3, GetCrossingRoadBits(tile), _m[tile].m2);
+				MakeRoadNormal(tile, GetCrossingRoadOwner(tile), GetCrossingRoadBits(tile), _m[tile].m2);
 			}
 			break;
 		}
