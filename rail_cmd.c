@@ -1931,7 +1931,7 @@ static void TileLoop_Track(TileIndex tile)
 				}
 
 				if (rail == (TRACK_BIT_UPPER | TRACK_BIT_RIGHT) || (
-							(rail & TRACK_BIT_3WAY_SE) == 0 &&
+							(rail & TRACK_BIT_3WAY_SW) == 0 &&
 							(rail & TRACK_BIT_Y)
 						)) {
 					TileIndex n = tile + TileDiffXY(1, 0);
