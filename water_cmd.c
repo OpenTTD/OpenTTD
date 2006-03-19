@@ -522,7 +522,7 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 				TrackBits tracks;
 				uint slope;
 
-				if (!IsPlainRailTile(tile)) break;
+				if (!IsPlainRailTile(target)) break;
 
 				tracks = GetTrackBits(target);
 				slope = GetTileSlope(target, NULL);
