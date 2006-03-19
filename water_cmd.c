@@ -527,9 +527,9 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 				tracks = GetTrackBits(target);
 				slope = GetTileSlope(target, NULL);
 				if (!(
-							(slope == 1 && tracks == TRACK_BIT_RIGHT) &&
-							(slope == 2 && tracks == TRACK_BIT_UPPER) &&
-							(slope == 4 && tracks == TRACK_BIT_LEFT)  &&
+							(slope == 1 && tracks == TRACK_BIT_RIGHT) ||
+							(slope == 2 && tracks == TRACK_BIT_UPPER) ||
+							(slope == 4 && tracks == TRACK_BIT_LEFT)  ||
 							(slope == 8 && tracks == TRACK_BIT_LOWER)
 						)) {
 					break;
