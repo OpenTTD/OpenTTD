@@ -778,7 +778,7 @@ static void DrawTile_Road(TileInfo *ti)
 
 			image = GetRailTypeInfo(GetRailTypeCrossing(ti->tile))->base_sprites.crossing;
 
-			if (GB(ti->map5, 3, 1) == 0) image++; /* direction */
+			if (GetCrossingRoadAxis(ti->tile) == AXIS_X) image++;
 
 			if ((ti->map5 & 4) != 0) image += 2;
 
@@ -1048,7 +1048,8 @@ static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode)
 						0 : _road_trackbits[GetRoadBits(tile)] * 0x101;
 
 				case ROAD_CROSSING: {
-					uint32 r = (_m[tile].m5 & 8 ? 0x202 : 0x101);
+					uint32 r = (GetCrossingRoadAxis(tile) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y) * 0x101;
+
 					if (_m[tile].m5 & 4) r *= 0x10001;
 					return r;
 				}

@@ -39,14 +39,19 @@ static inline void SetRoadBits(TileIndex tile, RoadBits r)
 }
 
 
+static inline Axis GetCrossingRoadAxis(TileIndex tile)
+{
+	return (Axis)GB(_m[tile].m5, 3, 1);
+}
+
 static inline RoadBits GetCrossingRoadBits(TileIndex tile)
 {
-	return _m[tile].m5 & 8 ? ROAD_Y : ROAD_X;
+	return GetCrossingRoadAxis(tile) == AXIS_X ? ROAD_X : ROAD_Y;
 }
 
 static inline TrackBits GetCrossingRailBits(TileIndex tile)
 {
-	return _m[tile].m5 & 8 ? TRACK_BIT_X : TRACK_BIT_Y;
+	return GetCrossingRoadAxis(tile) == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X;
 }
 
 
