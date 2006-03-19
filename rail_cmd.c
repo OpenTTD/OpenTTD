@@ -393,83 +393,69 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	tile = TileVirtXY(x, y);
 
-	if (!IsTileType(tile, MP_TUNNELBRIDGE) && !IsTileType(tile, MP_STREET) && !IsTileType(tile, MP_RAILWAY))
-		return CMD_ERROR;
-
-	if (_current_player != OWNER_WATER && !CheckTileOwnership(tile))
-		return CMD_ERROR;
-
-	// allow building rail under bridge
-	if (!IsTileType(tile, MP_TUNNELBRIDGE) && !EnsureNoVehicle(tile))
-		return CMD_ERROR;
-
-	switch (GetTileType(tile))
-	{
+	switch (GetTileType(tile)) {
 		case MP_TUNNELBRIDGE:
 			if (!IsBridge(tile) ||
 					!IsBridgeMiddle(tile) ||
 					!IsTransportUnderBridge(tile) ||
 					GetTransportTypeUnderBridge(tile) != TRANSPORT_RAIL ||
 					GetRailBitsUnderBridge(tile) != trackbit ||
+					(_current_player != OWNER_WATER && !CheckTileOwnership(tile)) ||
 					!EnsureNoVehicleZ(tile, TilePixelHeight(tile))) {
 				return CMD_ERROR;
 			}
 
-			if (!(flags & DC_EXEC))
-				return _price.remove_rail;
-
-			SetClearUnderBridge(tile);
+			if (flags & DC_EXEC) SetClearUnderBridge(tile);
 			break;
 
 		case MP_STREET: {
-			if (!IsLevelCrossing(tile)) return CMD_ERROR;
+			if (!IsLevelCrossing(tile) ||
+					GetCrossingRailBits(tile) != trackbit ||
+					(_current_player != OWNER_WATER && !CheckTileOwnership(tile)) ||
+					!EnsureNoVehicle(tile)) {
+				return CMD_ERROR;
+			}
 
-			/* This is a crossing, let's check if the direction is correct */
-			if (GetCrossingRailBits(tile) != trackbit) return CMD_ERROR;
-
-			if (!(flags & DC_EXEC))
-				return _price.remove_rail;
-
-			MakeRoadNormal(tile, _m[tile].m3, GetCrossingRoadBits(tile), _m[tile].m2);
+			if (flags & DC_EXEC) {
+				MakeRoadNormal(tile, _m[tile].m3, GetCrossingRoadBits(tile), _m[tile].m2);
+			}
 			break;
 		}
 
-		case MP_RAILWAY:
-			if (!IsPlainRailTile(tile))
-				return CMD_ERROR;
+		case MP_RAILWAY: {
+			TrackBits present;
 
-			/* See if the track to remove is actually there */
-			if (!(GetTrackBits(tile) & trackbit))
+			if (!IsPlainRailTile(tile) ||
+					(_current_player != OWNER_WATER && !CheckTileOwnership(tile)) ||
+					!EnsureNoVehicle(tile)) {
 				return CMD_ERROR;
+			}
+
+			present = GetTrackBits(tile);
+			if ((present & trackbit) == 0) return CMD_ERROR;
 
 			/* Charge extra to remove signals on the track, if they are there */
 			if (HasSignalOnTrack(tile, track))
 				cost += DoCommand(x, y, track, 0, flags, CMD_REMOVE_SIGNALS);
 
-			if (!(flags & DC_EXEC))
-				return cost;
-
-			/* We remove the trackbit here. */
-			_m[tile].m5 &= ~trackbit;
-
-			if (GetTrackBits(tile)  == 0) {
-				/* The tile has no tracks left, it is no longer a rail tile */
-				DoClearSquare(tile);
-				/* XXX: This is an optimisation, right? Is it really worth the ugly goto? */
-				goto skip_mark_dirty;
+			if (flags & DC_EXEC) {
+				present ^= trackbit;
+				if (present == 0) {
+					DoClearSquare(tile);
+				} else {
+					SetTrackBits(tile, present);
+				}
 			}
 			break;
+		}
 
-		default:
-			assert(0);
+		default: return CMD_ERROR;
 	}
 
-	/* mark_dirty */
-	MarkTileDirtyByTile(tile);
-
-skip_mark_dirty:;
-
-	SetSignalsOnBothDir(tile, track);
+	if (flags & DC_EXEC) {
+		MarkTileDirtyByTile(tile);
+		SetSignalsOnBothDir(tile, track);
+	}
 
 	return cost;
 }

@@ -110,6 +110,11 @@ static inline TrackBits GetTrackBits(TileIndex tile)
 	return (TrackBits)GB(_m[tile].m5, 0, 6);
 }
 
+static inline void SetTrackBits(TileIndex t, TrackBits b)
+{
+	SB(_m[t].m5, 0, 6, b);
+}
+
 
 static inline DiagDirection GetRailDepotDirection(TileIndex t)
 {
