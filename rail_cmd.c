@@ -269,7 +269,6 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileIndex tile;
 	uint tileh;
-	uint m5; /* XXX: Used only as a cache, should probably be removed? */
 	Track track = (Track)p2;
 	TrackBits trackbit;
 	int32 cost = 0;
@@ -279,7 +278,6 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	tile = TileVirtXY(x, y);
 	tileh = GetTileSlope(tile, NULL);
-	m5 = _m[tile].m5;
 	trackbit = TrackToTrackBits(track);
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
@@ -326,7 +324,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			if (flags & DC_EXEC) {
 				_m[tile].m2 &= ~RAIL_MAP2LO_GROUND_MASK; // Bare land
-				_m[tile].m5 = m5 | trackbit;
+				_m[tile].m5 |= trackbit;
 			}
 			break;
 
@@ -341,8 +339,8 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
 			if (GetRoadType(tile) == ROAD_NORMAL && (
-						(track == TRACK_X && m5 == ROAD_Y) ||
-						(track == TRACK_Y && m5 == ROAD_X) // correct direction?
+						(track == TRACK_X && GetRoadBits(tile) == ROAD_Y) ||
+						(track == TRACK_Y && GetRoadBits(tile) == ROAD_X)
 					)) {
 				if (flags & DC_EXEC) {
 					MakeRoadCrossing(tile, GetTileOwner(tile), _current_player, (track == TRACK_X ? AXIS_Y : AXIS_X), p1, _m[tile].m2);

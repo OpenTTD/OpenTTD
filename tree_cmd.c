@@ -286,9 +286,9 @@ static void DrawTile_Trees(TileInfo *ti)
 		uint i;
 
 		/* put the trees to draw in a list */
-		i = (ti->map5 >> 6) + 1;
+		i = GetTreeCount(ti->tile) + 1;
 		do {
-			uint32 image = s[0] + (--i == 0 ? GB(ti->map5, 0, 3) : 3);
+			uint32 image = s[0] + (--i == 0 ? GetTreeGrowth(ti->tile) : 3);
 			if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 			te[i].image = image;
 			te[i].x = d->x;
@@ -302,7 +302,7 @@ static void DrawTile_Trees(TileInfo *ti)
 			byte min = 0xFF;
 			TreeListEnt *tep = NULL;
 
-			i = (ti->map5 >> 6) + 1;
+			i = GetTreeCount(ti->tile) + 1;
 			do {
 				if (te[--i].image != 0 && te[i].x + te[i].y < min) {
 					min = te[i].x + te[i].y;
