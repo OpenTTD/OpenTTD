@@ -334,14 +334,19 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			}
 #undef M
 
-			if (ti.map5 == 2) {
-				if (pieces & ROAD_Y) goto do_clear;
-				roaddir = AXIS_X;
-			} else if (ti.map5 == 1) {
-				if (pieces & ROAD_X) goto do_clear;
-				roaddir = AXIS_Y;
-			} else {
-				goto do_clear;
+			if (GetRailTileType(tile) != RAIL_TYPE_NORMAL) goto do_clear;
+			switch (GetTrackBits(tile)) {
+				case TRACK_BIT_X:
+					if (pieces & ROAD_X) goto do_clear;
+					roaddir = AXIS_Y;
+					break;
+
+				case TRACK_BIT_Y:
+					if (pieces & ROAD_Y) goto do_clear;
+					roaddir = AXIS_X;
+					break;
+
+				default: goto do_clear;
 			}
 
 			if (flags & DC_EXEC) {

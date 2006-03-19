@@ -1746,12 +1746,13 @@ typedef struct TrainFindDepotData {
 
 static bool NtpCallbFindDepot(TileIndex tile, TrainFindDepotData *tfdd, int track, uint length)
 {
-	if (IsTileType(tile, MP_RAILWAY) && IsTileOwner(tile, tfdd->owner)) {
-		if ((_m[tile].m5 & 0xFC) == 0xC0) {
-			tfdd->best_length = length;
-			tfdd->tile = tile;
-			return true;
-		}
+	if (IsTileType(tile, MP_RAILWAY) &&
+			IsTileOwner(tile, tfdd->owner) &&
+			GetRailTileType(tile) == RAIL_TYPE_DEPOT_WAYPOINT &&
+			GetRailTileSubtype(tile) == RAIL_SUBTYPE_DEPOT) {
+		tfdd->best_length = length;
+		tfdd->tile = tile;
+		return true;
 	}
 
 	return false;
@@ -2654,7 +2655,7 @@ static void TrainMovedChangeSignals(TileIndex tile, DiagDirection dir)
 {
 	if (IsTileType(tile, MP_RAILWAY) &&
 			GetRailTileType(tile) == RAIL_TYPE_SIGNALS) {
-		uint i = FindFirstBit2x64((_m[tile].m5 + (_m[tile].m5 << 8)) & _reachable_tracks[dir]);
+		uint i = FindFirstBit2x64(GetTrackBits(tile) * 0x101 & _reachable_tracks[dir]);
 		UpdateSignalsOnSegment(tile, _otherside_signal_directions[i]);
 	}
 }

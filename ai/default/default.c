@@ -2182,7 +2182,7 @@ static bool AiRemoveTileAndGoForward(Player *p)
 
 	// Then remove and signals if there are any.
 	if (IsTileType(tile, MP_RAILWAY) &&
-			(_m[tile].m5&0xC0) == 0x40) {
+			GetRailTileType(tile) == RAIL_TYPE_SIGNALS) {
 		DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_REMOVE_SIGNALS);
 	}
 
@@ -3567,21 +3567,20 @@ static void AiStateRemoveStation(Player *p)
 
 static void AiRemovePlayerRailOrRoad(Player *p, TileIndex tile)
 {
-	byte m5;
+	TrackBits rails;
 
 	if (IsTileType(tile, MP_RAILWAY)) {
 		if (!IsTileOwner(tile, _current_player)) return;
 
-		m5 = _m[tile].m5;
-		if ((m5 & 0xFC) != 0xC0) {
+		if (IsPlainRailTile(tile)) {
 is_rail_crossing:;
-			m5 = GetRailTrackStatus(tile);
+			rails = GetRailTrackStatus(tile);
 
-			if (m5 == 0xC || m5 == 0x30) return;
+			if (rails == TRACK_BIT_HORZ || rails == TRACK_BIT_VERT) return;
 
-			if (m5 & 0x25) {
+			if (rails & TRACK_BIT_3WAY_NE) {
 pos_0:
-				if (!(GetRailTrackStatus(TILE_MASK(tile - TileDiffXY(1, 0))) & 0x19)) {
+				if ((GetRailTrackStatus(TILE_MASK(tile - TileDiffXY(1, 0))) & TRACK_BIT_3WAY_SW) == 0) {
 					p->ai.cur_dir_a = 0;
 					p->ai.cur_tile_a = tile;
 					p->ai.state = AIS_REMOVE_SINGLE_RAIL_TILE;
@@ -3589,9 +3588,9 @@ pos_0:
 				}
 			}
 
-			if (m5 & 0x2A) {
+			if (rails & TRACK_BIT_3WAY_SE) {
 pos_1:
-				if (!(GetRailTrackStatus(TILE_MASK(tile + TileDiffXY(0, 1))) & 0x16)) {
+				if ((GetRailTrackStatus(TILE_MASK(tile + TileDiffXY(0, 1))) & TRACK_BIT_3WAY_NW) == 0) {
 					p->ai.cur_dir_a = 1;
 					p->ai.cur_tile_a = tile;
 					p->ai.state = AIS_REMOVE_SINGLE_RAIL_TILE;
@@ -3599,9 +3598,9 @@ pos_1:
 				}
 			}
 
-			if (m5 & 0x19) {
+			if (rails & TRACK_BIT_3WAY_SW) {
 pos_2:
-				if (!(GetRailTrackStatus(TILE_MASK(tile + TileDiffXY(1, 0))) & 0x25)) {
+				if ((GetRailTrackStatus(TILE_MASK(tile + TileDiffXY(1, 0))) & TRACK_BIT_3WAY_NE) == 0) {
 					p->ai.cur_dir_a = 2;
 					p->ai.cur_tile_a = tile;
 					p->ai.state = AIS_REMOVE_SINGLE_RAIL_TILE;
@@ -3609,9 +3608,9 @@ pos_2:
 				}
 			}
 
-			if (m5 & 0x16) {
+			if (rails & TRACK_BIT_3WAY_NW) {
 pos_3:
-				if (!(GetRailTrackStatus(TILE_MASK(tile - TileDiffXY(0, 1))) & 0x2A)) {
+				if ((GetRailTrackStatus(TILE_MASK(tile - TileDiffXY(0, 1))) & TRACK_BIT_3WAY_SE) == 0) {
 					p->ai.cur_dir_a = 3;
 					p->ai.cur_tile_a = tile;
 					p->ai.state = AIS_REMOVE_SINGLE_RAIL_TILE;
@@ -3675,7 +3674,7 @@ pos_3:
 			return;
 		}
 
-		m5 = 0;
+		rails = 0;
 
 		switch (GetBridgeRampDirection(tile)) {
 			default:

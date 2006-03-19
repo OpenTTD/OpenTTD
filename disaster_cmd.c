@@ -582,8 +582,10 @@ static void DisasterTick_4(Vehicle *v)
 		tile_org = tile = RandomTile();
 		do {
 			if (IsTileType(tile, MP_RAILWAY) &&
-					(_m[tile].m5 & ~3) != 0xC0 && IS_HUMAN_PLAYER(GetTileOwner(tile)))
+					IsPlainRailTile(tile) &&
+					IS_HUMAN_PLAYER(GetTileOwner(tile))) {
 				break;
+			}
 			tile = TILE_MASK(tile+1);
 		} while (tile != tile_org);
 		v->dest_tile = tile;

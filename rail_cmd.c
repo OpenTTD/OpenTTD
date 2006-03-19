@@ -1084,15 +1084,10 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 		}
 
 		case RAIL_TYPE_DEPOT_WAYPOINT:
-			switch (m5 & RAIL_SUBTYPE_MASK) {
-				case RAIL_SUBTYPE_DEPOT:
-					return RemoveTrainDepot(tile, flags);
-
-				case RAIL_SUBTYPE_WAYPOINT:
-					return RemoveTrainWaypoint(tile, flags, false);
-
-				default:
-					return CMD_ERROR;
+			if (GetRailTileSubtype(tile) == RAIL_SUBTYPE_DEPOT) {
+				return RemoveTrainDepot(tile, flags);
+			} else {
+				return RemoveTrainWaypoint(tile, flags, false);
 			}
 
 		default:
@@ -1995,10 +1990,10 @@ static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode)
 		}
 		return ret;
 	} else {
-		if (_m[tile].m5 & 0x40) {
-			return GetRailWaypointBits(tile) * 0x101;
-		} else {
+		if (GetRailTileSubtype(tile) == RAIL_SUBTYPE_DEPOT) {
 			return 0;
+		} else {
+			return GetRailWaypointBits(tile) * 0x101;
 		}
 	}
 }
@@ -2034,7 +2029,7 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 
 		case RAIL_TYPE_DEPOT_WAYPOINT:
 		default:
-			td->str = ((_m[tile].m5 & RAIL_SUBTYPE_MASK) == RAIL_SUBTYPE_DEPOT) ?
+			td->str = (GetRailTileSubtype(tile) == RAIL_SUBTYPE_DEPOT) ?
 				STR_1023_RAILROAD_TRAIN_DEPOT : STR_LANDINFO_WAYPOINT;
 			break;
 	}
