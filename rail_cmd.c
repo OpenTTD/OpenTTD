@@ -174,29 +174,7 @@ static const TrackBits _valid_tileh_slopes[][15] = {
 	TRACK_BIT_Y | TRACK_BIT_UPPER | TRACK_BIT_RIGHT,
 	TRACK_BIT_ALL,
 	TRACK_BIT_ALL
-},
-
-// allowed rail on coast tile
-{
-	0,
-	TRACK_BIT_LEFT,
-	TRACK_BIT_LOWER,
-	TRACK_BIT_Y|TRACK_BIT_LEFT|TRACK_BIT_LOWER,
-
-	TRACK_BIT_RIGHT,
-	TRACK_BIT_ALL,
-	TRACK_BIT_X|TRACK_BIT_RIGHT|TRACK_BIT_LOWER,
-	TRACK_BIT_ALL,
-
-	TRACK_BIT_UPPER,
-	TRACK_BIT_X|TRACK_BIT_LEFT|TRACK_BIT_UPPER,
-	TRACK_BIT_ALL,
-	TRACK_BIT_ALL,
-
-	TRACK_BIT_Y|TRACK_BIT_RIGHT|TRACK_BIT_UPPER,
-	TRACK_BIT_ALL,
-	TRACK_BIT_ALL
-	},
+}
 };
 
 uint GetRailFoundation(uint tileh, TrackBits bits)
@@ -233,7 +211,7 @@ static uint32 CheckRailSlope(uint tileh, TrackBits rail_bits, TrackBits existing
 
 		// don't allow building on the lower side of a coast
 		if (IsTileType(tile, MP_WATER) &&
-				~_valid_tileh_slopes[2][tileh] & rail_bits) {
+				~_valid_tileh_slopes[1][tileh] & rail_bits) {
 			return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
 		}
 
