@@ -1991,7 +1991,7 @@ static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode)
 		return ret;
 	} else {
 		if (GetRailTileSubtype(tile) == RAIL_SUBTYPE_DEPOT) {
-			return 0;
+			return (DiagDirToAxis(GetRailDepotDirection(tile)) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y) * 0x101;
 		} else {
 			return GetRailWaypointBits(tile) * 0x101;
 		}
