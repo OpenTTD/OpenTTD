@@ -213,14 +213,6 @@ static inline bool IsPlainRailTile(TileIndex tile)
 	return rtt == RAIL_TYPE_NORMAL || rtt == RAIL_TYPE_SIGNALS;
 }
 
-/**
- * Returns the tracks present on the given plain rail tile (IsPlainRailTile())
- */
-static inline TrackBits GetTrackBits(TileIndex tile)
-{
-	assert(GetRailTileType(tile) == RAIL_TYPE_NORMAL || GetRailTileType(tile) == RAIL_TYPE_SIGNALS);
-	return (TrackBits)(_m[tile].m5 & TRACK_BIT_MASK);
-}
 
 /**
  * Returns whether the given track is present on the given tile. Tile must be

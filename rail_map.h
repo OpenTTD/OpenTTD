@@ -105,6 +105,11 @@ typedef enum TrackBits {
 	TRACK_BIT_MASK  = 0x3FU
 } TrackBits;
 
+static inline TrackBits GetTrackBits(TileIndex tile)
+{
+	return (TrackBits)GB(_m[tile].m5, 0, 6);
+}
+
 
 static inline DiagDirection GetRailDepotDirection(TileIndex t)
 {

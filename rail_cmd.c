@@ -130,7 +130,7 @@ static bool CheckTrackCombination(TileIndex tile, TrackBits to_build, uint flags
 }
 
 
-static const byte _valid_tileh_slopes[][15] = {
+static const TrackBits _valid_tileh_slopes[][15] = {
 
 // set of normal ones
 {
@@ -199,7 +199,7 @@ static const byte _valid_tileh_slopes[][15] = {
 	},
 };
 
-uint GetRailFoundation(uint tileh, uint bits)
+uint GetRailFoundation(uint tileh, TrackBits bits)
 {
 	int i;
 
@@ -350,8 +350,9 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				break;
 			}
 
-			if (IsLevelCrossing(tile) && (m5 & 0x08 ? TRACK_X : TRACK_Y) == track)
+			if (IsLevelCrossing(tile) && GetCrossingRailBits(tile) == trackbit) {
 				return_cmd_error(STR_1007_ALREADY_BUILT);
+			}
 			/* FALLTHROUGH */
 
 		default:
@@ -1341,18 +1342,17 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track, bool earth, bool snow, 
 
 static void DrawTile_Track(TileInfo *ti)
 {
-	byte m5;
 	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 	PalSpriteID image;
 
 	_drawtile_track_palette = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)));
 
-	m5 = (byte)ti->map5;
 	if (GetRailTileType(ti->tile) != RAIL_TYPE_DEPOT_WAYPOINT) {
+		TrackBits rails = GetTrackBits(ti->tile);
 		bool earth = (_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK) == RAIL_GROUND_BROWN;
 		bool snow = (_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK) == RAIL_GROUND_ICE_DESERT;
 
-		DrawTrackBits(ti, m5 & TRACK_BIT_MASK, earth, snow, false);
+		DrawTrackBits(ti, rails, earth, snow, false);
 
 		if (_display_opt & DO_FULL_DETAIL) {
 			_detailed_track_proc[_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK](ti);
@@ -1370,21 +1370,21 @@ static void DrawTile_Track(TileInfo *ti)
 #define ISON_SIGNAL(x) (m23 & (byte)(0x10 << (x)))
 #define MAYBE_DRAW_SIGNAL(x,y,z) if (HAS_SIGNAL(x)) DrawSignalHelper(ti, ISON_SIGNAL(x), ((y-0x4FB) << 4)|(z))
 
-		if (!(m5 & TRACK_BIT_Y)) {
-			if (!(m5 & TRACK_BIT_X)) {
-				if (m5 & TRACK_BIT_LEFT) {
+		if (!(rails & TRACK_BIT_Y)) {
+			if (!(rails & TRACK_BIT_X)) {
+				if (rails & TRACK_BIT_LEFT) {
 					MAYBE_DRAW_SIGNAL(2, 0x509, 0);
 					MAYBE_DRAW_SIGNAL(3, 0x507, 1);
 				}
-				if (m5 & TRACK_BIT_RIGHT) {
+				if (rails & TRACK_BIT_RIGHT) {
 					MAYBE_DRAW_SIGNAL(0, 0x509, 2);
 					MAYBE_DRAW_SIGNAL(1, 0x507, 3);
 				}
-				if (m5 & TRACK_BIT_UPPER) {
+				if (rails & TRACK_BIT_UPPER) {
 					MAYBE_DRAW_SIGNAL(3, 0x505, 4);
 					MAYBE_DRAW_SIGNAL(2, 0x503, 5);
 				}
-				if (m5 & TRACK_BIT_LOWER) {
+				if (rails & TRACK_BIT_LOWER) {
 					MAYBE_DRAW_SIGNAL(1, 0x505, 6);
 					MAYBE_DRAW_SIGNAL(0, 0x503, 7);
 				}
@@ -1400,7 +1400,7 @@ static void DrawTile_Track(TileInfo *ti)
 	} else {
 		/* draw depots / waypoints */
 		const DrawTrackSeqStruct *drss;
-		byte type = m5 & 0x3F; // 0-3: depots, 4-5: waypoints
+		byte type = ti->map5 & 0x3F; // 0-3: depots, 4-5: waypoints
 
 		if (ti->tileh != 0) DrawFoundation(ti, ti->tileh);
 
@@ -1412,7 +1412,7 @@ static void DrawTile_Track(TileInfo *ti)
 			if (stat != NULL) {
 				DrawTileSeqStruct const *seq;
 				// emulate station tile - open with building
-				const DrawTileSprites *cust = &stat->renderdata[2 + (m5 & 0x1)];
+				const DrawTileSprites *cust = &stat->renderdata[2 + (ti->map5 & 0x1)];
 				uint32 relocation = GetCustomStationRelocation(stat, ComposeWaypointStation(ti->tile), 0);
 
 				/* We don't touch the 0x8000 bit. In all this
@@ -1790,8 +1790,10 @@ static uint GetSlopeZ_Track(const TileInfo* ti)
 
 	// check if it's a foundation
 	if (ti->tileh != 0) {
-		if ((ti->map5 & 0x80) == 0) {
-			uint f = GetRailFoundation(ti->tileh, ti->map5 & 0x3F);
+		if (GetRailTileType(ti->tile) == RAIL_TYPE_DEPOT_WAYPOINT) {
+			return z + 8;
+		} else {
+			uint f = GetRailFoundation(ti->tileh, GetTrackBits(ti->tile));
 
 			if (f != 0) {
 				if (f < 15) {
@@ -1801,9 +1803,6 @@ static uint GetSlopeZ_Track(const TileInfo* ti)
 				// inclined foundation
 				th = _inclined_tileh[f - 15];
 			}
-		} else if ((ti->map5 & RAIL_TILE_TYPE_MASK) == RAIL_TYPE_DEPOT_WAYPOINT) {
-			// depot or waypoint
-			return z + 8;
 		}
 		return GetPartialZ(ti->x & 0xF, ti->y & 0xF, th) + z;
 	}
@@ -1814,8 +1813,10 @@ static uint GetSlopeTileh_Track(const TileInfo *ti)
 {
 	// check if it's a foundation
 	if (ti->tileh != 0) {
-		if ((ti->map5 & 0x80) == 0) {
-			uint f = GetRailFoundation(ti->tileh, ti->map5 & 0x3F);
+		if (GetRailTileType(ti->tile) == RAIL_TYPE_DEPOT_WAYPOINT) {
+			return 0;
+		} else {
+			uint f = GetRailFoundation(ti->tileh, GetTrackBits(ti->tile));
 			if (f != 0) {
 				if (f < 15) {
 					// leveled foundation
@@ -1824,9 +1825,6 @@ static uint GetSlopeTileh_Track(const TileInfo *ti)
 				// inclined foundation
 				return _inclined_tileh[f - 15];
 			}
-		} else if ((ti->map5 & 0xC0) == 0xC0) {
-			// depot or waypoint
-			return 0;
 		}
 	}
 	return ti->tileh;
@@ -1876,7 +1874,7 @@ static void TileLoop_Track(TileIndex tile)
 
 	if (old_ground != RAIL_GROUND_BROWN) { /* wait until bottom is green */
 		/* determine direction of fence */
-		TrackBits rail = _m[tile].m5 & TRACK_BIT_MASK;
+		TrackBits rail = GetTrackBits(tile);
 
 		switch (rail) {
 			case TRACK_BIT_UPPER: new_ground = RAIL_GROUND_FENCE_HORIZ1; break;
@@ -1964,20 +1962,17 @@ modify_me:;
 
 static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode)
 {
-	byte m5, a;
+	byte a;
 	uint16 b;
-	uint32 ret;
 
 	if (mode != TRANSPORT_RAIL) return 0;
 
-	m5 = _m[tile].m5;
-
 	if (GetRailTileType(tile) != RAIL_TYPE_DEPOT_WAYPOINT) {
-		ret = (m5 | (m5 << 8)) & 0x3F3F;
+		TrackBits rails = GetTrackBits(tile);
+		uint32 ret = rails * 0x101;
+
 		if (GetRailTileType(tile) != RAIL_TYPE_SIGNALS) {
-			if ( (ret & 0xFF) == 3)
-			/* Diagonal crossing? */
-				ret |= 0x40;
+			if (rails == TRACK_BIT_CROSS) ret |= 0x40;
 		} else {
 			/* has_signals */
 
@@ -1998,13 +1993,14 @@ static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode)
 			if ((b & 0x20) == 0) ret |= 0x20080000;
 			if ((b & 0x10) == 0) ret |= 0x08200000;
 		}
-	} else if (m5 & 0x40) {
-		static const byte _train_spec_tracks[6] = {1,2,1,2,1,2};
-		m5 = _train_spec_tracks[m5 & 0x3F];
-		ret = (m5 << 8) + m5;
-	} else
-		return 0;
-	return ret;
+		return ret;
+	} else {
+		if (_m[tile].m5 & 0x40) {
+			return GetRailWaypointBits(tile) * 0x101;
+		} else {
+			return 0;
+		}
+	}
 }
 
 static void ClickTile_Track(TileIndex tile)

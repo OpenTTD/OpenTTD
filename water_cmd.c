@@ -519,14 +519,21 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 		// make coast..
 		switch (GetTileType(target)) {
 			case MP_RAILWAY: {
-				uint slope = GetTileSlope(target, NULL);
-				byte tracks = GB(_m[target].m5, 0, 6);
+				TrackBits tracks;
+				uint slope;
+
+				if (!IsPlainRailTile(tile)) break;
+
+				tracks = GetTrackBits(target);
+				slope = GetTileSlope(target, NULL);
 				if (!(
-						(slope == 1 && tracks == 0x20) ||
-						(slope == 2 && tracks == 0x04) ||
-						(slope == 4 && tracks == 0x10) ||
-						(slope == 8 && tracks == 0x08)))
+							(slope == 1 && tracks == TRACK_BIT_RIGHT) &&
+							(slope == 2 && tracks == TRACK_BIT_UPPER) &&
+							(slope == 4 && tracks == TRACK_BIT_LEFT)  &&
+							(slope == 8 && tracks == TRACK_BIT_LOWER)
+						)) {
 					break;
+				}
 			}
 			/* FALLTHROUGH */
 

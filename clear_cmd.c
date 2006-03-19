@@ -96,7 +96,7 @@ static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
 		return r;
 
 	if (IsTileType(tile, MP_RAILWAY)) {
-		static const byte _railway_modes[4] = {8, 0x10, 4, 0x20};
+		static const TrackBits _railway_modes[] = { TRACK_BIT_LOWER, TRACK_BIT_LEFT, TRACK_BIT_UPPER, TRACK_BIT_RIGHT };
 		static const byte _railway_dangslopes[4] = {0xd, 0xe, 7, 0xb};
 		static const byte _railway_dangslopes2[4] = {0x2, 0x1, 0x8, 0x4};
 
@@ -113,7 +113,7 @@ static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
 
 		// If we have a single diagonal track there, the other side of
 		// tile can be terraformed.
-		if ((_m[tile].m5 & ~0x40) == _railway_modes[mode]) {
+		if (IsPlainRailTile(tile) && GetTrackBits(tile) == _railway_modes[mode]) {
 			if (ts->direction == 1) return 0;
 			skip_clear = true;
 		}

@@ -182,9 +182,10 @@ int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	/* if custom gfx are used, make sure it is within bounds */
 	if (p1 >= GetNumCustomStations(STAT_CLASS_WAYP)) return CMD_ERROR;
 
-	if (!IsTileType(tile, MP_RAILWAY) || (
-				(axis = AXIS_X, _m[tile].m5 != TRACK_BIT_X) &&
-				(axis = AXIS_Y, _m[tile].m5 != TRACK_BIT_Y)
+	if (!IsTileType(tile, MP_RAILWAY) ||
+			GetRailTileType(tile) != RAIL_TYPE_NORMAL || (
+				(axis = AXIS_X, GetTrackBits(tile) != TRACK_BIT_X) &&
+				(axis = AXIS_Y, GetTrackBits(tile) != TRACK_BIT_Y)
 			)) {
 		return_cmd_error(STR_1005_NO_SUITABLE_RAILROAD_TRACK);
 	}

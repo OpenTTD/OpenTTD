@@ -782,7 +782,7 @@ start_at:
 			}
 
 			/* Regular rail tile, determine which tracks exist. */
-			allbits = _m[tile].m5 & TRACK_BIT_MASK;
+			allbits = GetTrackBits(tile);
 			/* Which tracks are reachable? */
 			bits = allbits & DiagdirReachesTracks(direction);
 

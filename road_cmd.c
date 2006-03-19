@@ -1034,7 +1034,7 @@ static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode)
 	switch (mode) {
 		case TRANSPORT_RAIL:
 			if (!IsLevelCrossing(tile)) return 0;
-			return _m[tile].m5 & 8 ? 0x101 : 0x202;
+			return GetCrossingRailBits(tile) * 0x101;
 
 		case TRANSPORT_ROAD:
 			switch (GetRoadType(tile)) {

@@ -2652,7 +2652,8 @@ static const DiagDirection _otherside_signal_directions[] = {
 
 static void TrainMovedChangeSignals(TileIndex tile, DiagDirection dir)
 {
-	if (IsTileType(tile, MP_RAILWAY) && (_m[tile].m5 & 0xC0) == 0x40) {
+	if (IsTileType(tile, MP_RAILWAY) &&
+			GetRailTileType(tile) == RAIL_TYPE_SIGNALS) {
 		uint i = FindFirstBit2x64((_m[tile].m5 + (_m[tile].m5 << 8)) & _reachable_tracks[dir]);
 		UpdateSignalsOnSegment(tile, _otherside_signal_directions[i]);
 	}
