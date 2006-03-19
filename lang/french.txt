@@ -1005,7 +1005,7 @@ STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Lors d'
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nombre de trains max. par joueur: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Nombre de véhicules routiers max. par joueur: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Nombre d'aéronefs max. par joueur: {ORANGE}{STRING1
+STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Nombre d'aéronefs max. par joueur: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Nombre de navires max. par joueur: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Désactiver les trains pour l'ordinateur: {ORANGE}{STRING1}
