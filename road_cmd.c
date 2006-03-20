@@ -84,7 +84,6 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	// cost for removing inner/edge -roads
 	static const uint16 road_remove_cost[2] = {50, 18};
 
-	TileInfo ti;
 	int32 cost;
 	TileIndex tile;
 	PlayerID owner;
@@ -100,8 +99,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (p1 >> 4) return CMD_ERROR;
 	pieces = p1;
 
-	FindLandscapeHeight(&ti, x, y);
-	tile = ti.tile;
+	tile = TileVirtXY(x, y);
 
 	if (!IsTileType(tile, MP_STREET) && !IsTileType(tile, MP_TUNNELBRIDGE)) return CMD_ERROR;
 
@@ -117,12 +115,9 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		t = NULL;
 	}
 
-	// allow deleting road under bridge
-	if (ti.type != MP_TUNNELBRIDGE && !EnsureNoVehicle(tile)) return CMD_ERROR;
-
 	if (!CheckAllowRemoveRoad(tile, pieces, &edge_road)) return CMD_ERROR;
 
-	switch (ti.type) {
+	switch (GetTileType(tile)) {
 		case MP_TUNNELBRIDGE:
 			if (!EnsureNoVehicleZ(tile, TilePixelHeight(tile))) return CMD_ERROR;
 
@@ -144,16 +139,19 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			return cost;
 
 		case MP_STREET:
+			if (!EnsureNoVehicle(tile)) return CMD_ERROR;
+
 			// check if you're allowed to remove the street owned by a town
 			// removal allowance depends on difficulty setting
 			if (!CheckforTownRating(flags, t, ROAD_REMOVE)) return CMD_ERROR;
 
-			switch (GetRoadType(ti.tile)) {
+			switch (GetRoadType(tile)) {
 				case ROAD_NORMAL: {
-					RoadBits present = GetRoadBits(ti.tile);
+					RoadBits present = GetRoadBits(tile);
 					RoadBits c = pieces;
 
-					if (ti.tileh != 0  && (present == ROAD_Y || present == ROAD_X)) {
+					if (GetTileSlope(tile, NULL) != 0  &&
+							(present == ROAD_Y || present == ROAD_X)) {
 						c |= (c & 0xC) >> 2;
 						c |= (c & 0x3) << 2;
 					}
