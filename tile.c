@@ -15,6 +15,30 @@ uint GetMapExtraBits(TileIndex tile)
 	return GB(_m[tile].extra, 0, 2);
 }
 
+/** Converts the heights of 4 corners into a tileh, and returns the minimum height of the tile
+  * @param n,w,e,s the four corners
+  * @param h uint pointer to write the height to
+  * @return the tileh
+*/
+uint GetTileh(uint n, uint w, uint e, uint s, uint *h)
+{
+	uint min = n;
+	uint r;
+
+	if (min >= w) min = w;
+	if (min >= e) min = e;
+	if (min >= s) min = s;
+
+	r = 0;
+	if ((n -= min) != 0) r += (--n << 4) + 8;
+	if ((e -= min) != 0) r += (--e << 4) + 4;
+	if ((s -= min) != 0) r += (--s << 4) + 2;
+	if ((w -= min) != 0) r += (--w << 4) + 1;
+
+	if (h != NULL) *h = min * 8;
+
+	return r;
+}
 
 uint GetTileSlope(TileIndex tile, uint *h)
 {
@@ -22,8 +46,6 @@ uint GetTileSlope(TileIndex tile, uint *h)
 	uint b;
 	uint c;
 	uint d;
-	uint min;
-	uint r;
 
 	assert(tile < MapSize());
 
@@ -32,23 +54,12 @@ uint GetTileSlope(TileIndex tile, uint *h)
 		return 0;
 	}
 
-	min = a = TileHeight(tile);
+	a = TileHeight(tile);
 	b = TileHeight(tile + TileDiffXY(1, 0));
-	if (min >= b) min = b;
 	c = TileHeight(tile + TileDiffXY(0, 1));
-	if (min >= c) min = c;
 	d = TileHeight(tile + TileDiffXY(1, 1));
-	if (min >= d) min = d;
 
-	r = 0;
-	if ((a -= min) != 0) r += (--a << 4) + 8;
-	if ((c -= min) != 0) r += (--c << 4) + 4;
-	if ((d -= min) != 0) r += (--d << 4) + 2;
-	if ((b -= min) != 0) r += (--b << 4) + 1;
-
-	if (h != NULL) *h = min * 8;
-
-	return r;
+	return GetTileh(a, b, c, d, h);
 }
 
 uint GetTileZ(TileIndex tile)
