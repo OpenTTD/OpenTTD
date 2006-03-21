@@ -634,7 +634,7 @@ static void DrawTileSelection(const TileInfo *ti)
 #endif
 
 	// Draw a red error square?
-	if (_thd.redsq != INVALID_TILE && _thd.redsq == ti->tile) {
+	if (_thd.redsq != 0 && _thd.redsq == ti->tile) {
 		DrawSelectionSprite(PALETTE_TILE_RED_PULSATING | (SPR_SELECT_TILE + _tileh_to_sprite[ti->tileh]), ti);
 		return;
 	}
@@ -1812,8 +1812,8 @@ void SetRedErrorSquare(TileIndex tile)
 	_thd.redsq = tile;
 
 	if (tile != old) {
-		if (tile != INVALID_TILE) MarkTileDirtyByTile(tile);
-		if (old  != INVALID_TILE) MarkTileDirtyByTile(old);
+		if (tile != 0) MarkTileDirtyByTile(tile);
+		if (old  != 0) MarkTileDirtyByTile(old);
 	}
 }
 
