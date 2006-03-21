@@ -631,7 +631,7 @@ const char *convert_to_fs_charset(const char *filename)
 	outbuf = strrchr(statout, '/');
 	if(alreadyInited == false)
 	{
-		convd = iconv_open("UTF-8", "ISO-8859-15");
+		convd = iconv_open("UTF-8-MAC", "ISO-8859-15");
 		if(convd == (iconv_t)(-1))
 			return filename;
 		alreadyInited = true;
