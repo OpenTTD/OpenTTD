@@ -882,8 +882,8 @@ static const byte _industry_anim_offs_2[] = {
 	77, 76, 75, 74, 73, 72, 71, 70, 69, 68,
 };
 
-static const byte _coal_plant_sparkles_x[] = {11, 11, 14, 13, 18, 15};
-static const byte _coal_plant_sparkles_y[] = {23, 11, 6, 3, 1, 0};
+static const byte _coal_plant_sparks_x[] = {11, 11, 14, 13, 18, 15};
+static const byte _coal_plant_sparks_y[] = {23, 11, 6, 3, 1, 0};
 
 /* next frame in an animation */
 #define N 255

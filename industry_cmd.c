@@ -257,7 +257,7 @@ static const StringID _industry_close_strings[] = {
 };
 
 
-static void IndustryDrawTileProc1(const TileInfo *ti)
+static void IndustryDrawSugarMine(const TileInfo *ti)
 {
 	const DrawIndustrySpec1Struct *d;
 	uint32 image;
@@ -266,19 +266,19 @@ static void IndustryDrawTileProc1(const TileInfo *ti)
 
 	d = &_draw_industry_spec1[_m[ti->tile].m3];
 
-	AddChildSpriteScreen(0x12A7 + d->image_1, d->x, 0);
+	AddChildSpriteScreen(SPR_IT_SUGAR_MINE_SIEVE + d->image_1, d->x, 0);
 
 	image = d->image_2;
-	if (image != 0) AddChildSpriteScreen(0x12B0 + image - 1, 8, 41);
+	if (image != 0) AddChildSpriteScreen(SPR_IT_SUGAR_MINE_CLOUDS + image - 1, 8, 41);
 
 	image = d->image_3;
 	if (image != 0) {
-		AddChildSpriteScreen(0x12AC + image - 1,
+		AddChildSpriteScreen(SPR_IT_SUGAR_MINE_PILE + image - 1,
 			_drawtile_proc1_x[image - 1], _drawtile_proc1_y[image - 1]);
 	}
 }
 
-static void IndustryDrawTileProc2(const TileInfo *ti)
+static void IndustryDrawToffeeQuarry(const TileInfo *ti)
 {
 	int x = 0;
 
@@ -288,46 +288,46 @@ static void IndustryDrawTileProc2(const TileInfo *ti)
 			x = 0;
 	}
 
-	AddChildSpriteScreen(0x129F, 22 - x, 24 + x);
-	AddChildSpriteScreen(0x129E, 6, 0xE);
+	AddChildSpriteScreen(SPR_IT_TOFFEE_QUARRY_SHOVEL, 22 - x, 24 + x);
+	AddChildSpriteScreen(SPR_IT_TOFFEE_QUARRY_TOFFEE, 6, 14);
 }
 
-static void IndustryDrawTileProc3(const TileInfo *ti)
+static void IndustryDrawBubbleGenerator( const TileInfo *ti)
 {
 	if (_m[ti->tile].m1 & 0x80) {
-		AddChildSpriteScreen(0x128B, 5, _industry_anim_offs_2[_m[ti->tile].m3]);
+		AddChildSpriteScreen(SPR_IT_BUBBLE_GENERATOR_BUBBLE, 5, _industry_anim_offs_2[_m[ti->tile].m3]);
 	} else {
-		AddChildSpriteScreen(4746, 3, 67);
+		AddChildSpriteScreen(SPR_IT_BUBBLE_GENERATOR_SPRING, 3, 67);
 	}
 }
 
-static void IndustryDrawTileProc4(const TileInfo *ti)
+static void IndustryDrawToyFactory(const TileInfo *ti)
 {
 	const DrawIndustrySpec4Struct *d;
 
 	d = &_industry_anim_offs_3[_m[ti->tile].m3];
 
 	if (d->image_1 != 0xFF) {
-		AddChildSpriteScreen(0x126F, 0x32 - d->image_1 * 2, 0x60 + d->image_1);
+		AddChildSpriteScreen(SPR_IT_TOY_FACTORY_CLAY, 50 - d->image_1 * 2, 96 + d->image_1);
 	}
 
 	if (d->image_2 != 0xFF) {
-		AddChildSpriteScreen(0x1270, 0x10 - d->image_2 * 2, 100 + d->image_2);
+		AddChildSpriteScreen(SPR_IT_TOY_FACTORY_ROBOT, 16 - d->image_2 * 2, 100 + d->image_2);
 	}
 
-	AddChildSpriteScreen(0x126E, 7, d->image_3);
-	AddChildSpriteScreen(0x126D, 0, 42);
+	AddChildSpriteScreen(SPR_IT_TOY_FACTORY_STAMP, 7, d->image_3);
+	AddChildSpriteScreen(SPR_IT_TOY_FACTORY_STAMP_HOLDER, 0, 42);
 }
 
-static void DrawCoalPlantSparkles(const TileInfo *ti)
+static void IndustryDrawCoalPlantSparks(const TileInfo *ti)
 {
 	int image = _m[ti->tile].m1;
 	if (image & 0x80) {
 		image = GB(image, 2, 5);
 		if (image != 0 && image < 7) {
-			AddChildSpriteScreen(image + 0x806,
-				_coal_plant_sparkles_x[image - 1],
-				_coal_plant_sparkles_y[image - 1]
+			AddChildSpriteScreen(image + SPR_IT_POWER_PLANT_TRANSFORMERS,
+				_coal_plant_sparks_x[image - 1],
+				_coal_plant_sparks_y[image - 1]
 			);
 		}
 	}
@@ -335,11 +335,11 @@ static void DrawCoalPlantSparkles(const TileInfo *ti)
 
 typedef void IndustryDrawTileProc(const TileInfo *ti);
 static IndustryDrawTileProc * const _industry_draw_tile_procs[5] = {
-	IndustryDrawTileProc1,
-	IndustryDrawTileProc2,
-	IndustryDrawTileProc3,
-	IndustryDrawTileProc4,
-	DrawCoalPlantSparkles,
+	IndustryDrawSugarMine,
+	IndustryDrawToffeeQuarry,
+	IndustryDrawBubbleGenerator,
+	IndustryDrawToyFactory,
+	IndustryDrawCoalPlantSparks,
 };
 
 static void DrawTile_Industry(TileInfo *ti)
@@ -364,7 +364,7 @@ static void DrawTile_Industry(TileInfo *ti)
 	/* Add bricks below the industry? */
 	if (ti->tileh & 0xF) {
 		AddSortableSpriteToDraw(SPR_FOUNDATION_BASE + (ti->tileh & 0xF), ti->x, ti->y, 16, 16, 7, z);
-		AddChildSpriteScreen(image, 0x1F, 1);
+		AddChildSpriteScreen(image, 31, 1);
 		z += 8;
 	} else {
 		/* Else draw regular ground */
@@ -661,7 +661,7 @@ static void AnimateTile_Industry(TileIndex tile)
 	}
 }
 
-static void MakeIndustryTileBiggerCase8(TileIndex tile)
+static void CreateIndustryEffectSmoke(TileIndex tile)
 {
 	uint tileh;
 	uint x;
@@ -694,7 +694,7 @@ static void MakeIndustryTileBigger(TileIndex tile, byte size)
 
 	switch (_m[tile].m5) {
 	case 8:
-		MakeIndustryTileBiggerCase8(tile);
+		CreateIndustryEffectSmoke(tile);
 		break;
 
 	case 24:
@@ -716,7 +716,7 @@ static void MakeIndustryTileBigger(TileIndex tile, byte size)
 }
 
 
-static void TileLoopIndustryCase161(TileIndex tile)
+static void TileLoopIndustry_BubbleGenerator(TileIndex tile)
 {
 	int dir;
 	Vehicle *v;
@@ -831,7 +831,7 @@ static void TileLoop_Industry(TileIndex tile)
 		break;
 
 	case 161:
-		TileLoopIndustryCase161(tile);
+		TileLoopIndustry_BubbleGenerator(tile);
 		break;
 
 	case 165:
