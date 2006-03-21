@@ -1325,7 +1325,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 					DeleteWindow(w);
 				} else {
 					// SLD_SAVE_GAME, SLD_SAVE_SCENARIO copy clicked name to editbox
-					ttd_strlcpy(WP(w, querystr_d).text.buf, file->name, WP(w, querystr_d).text.maxlength);
+					ttd_strlcpy(WP(w, querystr_d).text.buf, file->title, WP(w, querystr_d).text.maxlength);
 					UpdateTextBufferSize(&WP(w, querystr_d).text);
 					InvalidateWidget(w, 10);
 				}
@@ -1368,7 +1368,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 			}
 		} else if (HASBIT(w->click_state, 12)) { /* Save button clicked */
 			_switch_mode = SM_SAVE;
-			FiosMakeSavegameName(_file_to_saveload.name, WP(w,querystr_d).text.buf);
+			FiosMakeSavegameName(_file_to_saveload.name, WP(w,querystr_d).text.buf, sizeof(_file_to_saveload.name));
 
 			/* In the editor set up the vehicle engines correctly (date might have changed) */
 			if (_game_mode == GM_EDITOR) StartupEngines();

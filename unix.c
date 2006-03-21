@@ -362,7 +362,7 @@ StringID FiosGetDescText(const char **path, uint32 *tot)
 	return STR_4005_BYTES_FREE;
 }
 
-void FiosMakeSavegameName(char *buf, const char *name)
+void FiosMakeSavegameName(char *buf, const char *name, size_t size)
 {
 	const char* extension;
 	const char* period;
@@ -376,14 +376,14 @@ void FiosMakeSavegameName(char *buf, const char *name)
 	period = strrchr(name, '.');
 	if (period != NULL && strcasecmp(period, extension) == 0) extension = "";
 
-	sprintf(buf, "%s/%s%s", _fios_path, name, extension);
+	snprintf(buf, size, "%s/%s%s", _fios_path, name, extension);
 }
 
 bool FiosDelete(const char *name)
 {
 	char path[512];
 
-	snprintf(path, lengthof(path), "%s/%s", _fios_path, name);
+	FiosMakeSavegameName(path, name, sizeof(path));
 	return unlink(path) == 0;
 }
 

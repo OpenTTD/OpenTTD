@@ -88,7 +88,7 @@ StringID FiosGetDescText(const char **path, uint32 *tot);
 // Delete a name
 bool FiosDelete(const char *name);
 // Make a filename from a name
-void FiosMakeSavegameName(char *buf, const char *name);
+void FiosMakeSavegameName(char *buf, const char *name, size_t size);
 
 int CDECL compare_FiosItems(const void *a, const void *b);
 
