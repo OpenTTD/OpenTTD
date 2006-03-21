@@ -184,12 +184,16 @@ static void DrawTile_Unmovable(TileInfo *ti)
 
 static uint GetSlopeZ_Unmovable(const TileInfo* ti)
 {
-	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh) + ti->z;
+	if (_m[ti->tile].m5 == 3) {
+		return ti->z + GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh);
+	} else {
+		return ti->z + (ti->tileh == 0 ? 0 : 8);
+	}
 }
 
 static uint GetSlopeTileh_Unmovable(const TileInfo *ti)
 {
-	return 0;
+	return _m[ti->tile].m5 == 3 ? ti->tileh : 0;
 }
 
 static int32 ClearTile_Unmovable(TileIndex tile, byte flags)

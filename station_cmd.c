@@ -2032,7 +2032,7 @@ void StationPickerDrawSprite(int x, int y, RailType railtype, int image)
 
 static uint GetSlopeZ_Station(const TileInfo* ti)
 {
-	return (ti->tileh != 0) ? ti->z + 8 : ti->z;
+	return ti->z + (ti->tileh == 0 ? 0 : 8);
 }
 
 static uint GetSlopeTileh_Station(const TileInfo *ti)

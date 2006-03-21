@@ -16,12 +16,12 @@ static void DrawTile_Dummy(TileInfo *ti)
 
 static uint GetSlopeZ_Dummy(const TileInfo* ti)
 {
-	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh) + ti->z;
+	return 0;
 }
 
 static uint GetSlopeTileh_Dummy(const TileInfo* ti)
 {
-	return ti->tileh;
+	return 0;
 }
 
 static int32 ClearTile_Dummy(TileIndex tile, byte flags)

@@ -399,7 +399,7 @@ static void DrawTile_Industry(TileInfo *ti)
 
 static uint GetSlopeZ_Industry(const TileInfo* ti)
 {
-	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh) + ti->z;
+	return ti->z + (ti->tileh == 0 ? 0 : 8);
 }
 
 static uint GetSlopeTileh_Industry(const TileInfo* ti)
