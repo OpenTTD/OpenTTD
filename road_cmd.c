@@ -846,66 +846,35 @@ void DrawRoadDepotSprite(int x, int y, int image)
 
 static uint GetSlopeZ_Road(const TileInfo* ti)
 {
+	uint tileh = ti->tileh;
 	uint z = ti->z;
-	int th = ti->tileh;
 
-	// check if it's a foundation
-	if (ti->tileh != 0) {
-		switch (GetRoadType(ti->tile)) {
-			case ROAD_NORMAL: {
-				uint f = GetRoadFoundation(ti->tileh, GetRoadBits(ti->tile));
+	if (tileh == 0) return z;
+	if (GetRoadType(ti->tile) == ROAD_NORMAL) {
+		uint f = GetRoadFoundation(tileh, GetRoadBits(ti->tile));
 
-				if (f != 0) {
-					if (f < 15) {
-						// leveled foundation
-						return z + 8;
-					}
-					// inclined foundation
-					th = _inclined_tileh[f - 15];
-				}
-				break;
-			}
-
-			// if these are on a slope then there's a level foundation
-			case ROAD_DEPOT:
-			case ROAD_CROSSING:
-				return z + 8;
-
-			default: break;
+		if (f != 0) {
+			if (f < 15) return z + 8; // leveled foundation
+			tileh = _inclined_tileh[f - 15]; // inclined foundation
 		}
-		return GetPartialZ(ti->x&0xF, ti->y&0xF, th) + z;
+		return z + GetPartialZ(ti->x & 0xF, ti->y & 0xF, tileh);
+	} else {
+		return z + 8;
 	}
-	return z; // normal Z if no slope
 }
 
 static uint GetSlopeTileh_Road(const TileInfo *ti)
 {
-	// check if it's a foundation
-	if (ti->tileh != 0) {
-		switch (GetRoadType(ti->tile)) {
-			case ROAD_NORMAL: {
-				uint f = GetRoadFoundation(ti->tileh, GetRoadBits(ti->tile));
+	if (ti->tileh == 0) return ti->tileh;
+	if (GetRoadType(ti->tile) == ROAD_NORMAL) {
+		uint f = GetRoadFoundation(ti->tileh, GetRoadBits(ti->tile));
 
-				if (f != 0) {
-					if (f < 15) {
-						// leveled foundation
-						return 0;
-					}
-					// inclined foundation
-					return _inclined_tileh[f - 15];
-				}
-				break;
-			}
-
-			// if these are on a slope then there's a level foundation
-			case ROAD_CROSSING:
-			case ROAD_DEPOT:
-				return 0;
-
-			default: break;
-		}
+		if (f == 0) return ti->tileh;
+		if (f < 15) return 0; // leveled foundation
+		return _inclined_tileh[f - 15]; // inclined foundation
+	} else {
+		return 0;
 	}
-	return ti->tileh;
 }
 
 static void GetAcceptedCargo_Road(TileIndex tile, AcceptedCargo ac)

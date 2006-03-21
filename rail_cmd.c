@@ -1753,49 +1753,35 @@ void SetSignalsOnBothDir(TileIndex tile, byte track)
 
 static uint GetSlopeZ_Track(const TileInfo* ti)
 {
+	uint tileh = ti->tileh;
 	uint z = ti->z;
-	int th = ti->tileh;
 
-	// check if it's a foundation
-	if (ti->tileh != 0) {
-		if (GetRailTileType(ti->tile) == RAIL_TYPE_DEPOT_WAYPOINT) {
-			return z + 8;
-		} else {
-			uint f = GetRailFoundation(ti->tileh, GetTrackBits(ti->tile));
+	if (tileh == 0) return z;
+	if (GetRailTileType(ti->tile) == RAIL_TYPE_DEPOT_WAYPOINT) {
+		return z + 8;
+	} else {
+		uint f = GetRailFoundation(ti->tileh, GetTrackBits(ti->tile));
 
-			if (f != 0) {
-				if (f < 15) {
-					// leveled foundation
-					return z + 8;
-				}
-				// inclined foundation
-				th = _inclined_tileh[f - 15];
-			}
+		if (f != 0) {
+			if (f < 15) return z + 8; // leveled foundation
+			tileh = _inclined_tileh[f - 15]; // inclined foundation
 		}
-		return GetPartialZ(ti->x & 0xF, ti->y & 0xF, th) + z;
+		return z + GetPartialZ(ti->x & 0xF, ti->y & 0xF, tileh);
 	}
-	return z;
 }
 
 static uint GetSlopeTileh_Track(const TileInfo *ti)
 {
-	// check if it's a foundation
-	if (ti->tileh != 0) {
-		if (GetRailTileType(ti->tile) == RAIL_TYPE_DEPOT_WAYPOINT) {
-			return 0;
-		} else {
-			uint f = GetRailFoundation(ti->tileh, GetTrackBits(ti->tile));
-			if (f != 0) {
-				if (f < 15) {
-					// leveled foundation
-					return 0;
-				}
-				// inclined foundation
-				return _inclined_tileh[f - 15];
-			}
-		}
+	if (ti->tileh == 0) return ti->tileh;
+	if (GetRailTileType(ti->tile) == RAIL_TYPE_DEPOT_WAYPOINT) {
+		return 0;
+	} else {
+		uint f = GetRailFoundation(ti->tileh, GetTrackBits(ti->tile));
+
+		if (f == 0) return ti->tileh;
+		if (f < 15) return 0; // leveled foundation
+		return _inclined_tileh[f - 15]; // inclined foundation
 	}
-	return ti->tileh;
 }
 
 static void GetAcceptedCargo_Track(TileIndex tile, AcceptedCargo ac)
