@@ -1359,13 +1359,14 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		if (HASBIT(w->click_state, 11)) { /* Delete button clicked */
 			if (!FiosDelete(WP(w,querystr_d).text.buf)) {
 				ShowErrorMessage(INVALID_STRING_ID, STR_4008_UNABLE_TO_DELETE_FILE, 0, 0);
+			} else {
+				BuildFileList();
+				/* Reset file name to current date on successfull delete */
+				if (_saveload_mode == SLD_SAVE_GAME) GenerateFileName();
 			}
+
+			UpdateTextBufferSize(&WP(w, querystr_d).text);
 			SetWindowDirty(w);
-			BuildFileList();
-			if (_saveload_mode == SLD_SAVE_GAME) {
-				GenerateFileName(); /* Reset file name to current date */
-				UpdateTextBufferSize(&WP(w, querystr_d).text);
-			}
 		} else if (HASBIT(w->click_state, 12)) { /* Save button clicked */
 			_switch_mode = SM_SAVE;
 			FiosMakeSavegameName(_file_to_saveload.name, WP(w,querystr_d).text.buf, sizeof(_file_to_saveload.name));
