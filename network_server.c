@@ -953,7 +953,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 
 		if (_network_pause_on_join) {
 			DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
-			NetworkServer_HandleChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, "Game unpaused", NETWORK_SERVER_INDEX);
+			NetworkServer_HandleChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, "Game unpaused (client connected)", NETWORK_SERVER_INDEX);
 		}
 	}
 

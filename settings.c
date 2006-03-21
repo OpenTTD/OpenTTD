@@ -1096,7 +1096,7 @@ static const SettingDescGlobVarList _network_settings[] = {
 	 SDTG_VAR("sync_freq",           SLE_UINT16,C|S,0, _network_sync_freq,            100, 0,  100,STR_NULL, NULL),
 	 SDTG_VAR("frame_freq",           SLE_UINT8,C|S,0, _network_frame_freq,             0, 0,  100,STR_NULL, NULL),
 	 SDTG_VAR("max_join_time",       SLE_UINT16, S, 0, _network_max_join_time,        500, 0,32000,STR_NULL, NULL),
-	SDTG_BOOL("pause_on_join",                   S, 0, _network_pause_on_join,        false,       STR_NULL, NULL),
+	SDTG_BOOL("pause_on_join",                   S, 0, _network_pause_on_join,        true,        STR_NULL, NULL),
 	 SDTG_STR("server_bind_ip",        SLE_STRB, S, 0, _network_server_bind_ip_host,  "0.0.0.0",   STR_NULL, NULL),
 	 SDTG_VAR("server_port",         SLE_UINT16, S, 0, _network_server_port,          NETWORK_DEFAULT_PORT, 0, 65535,STR_NULL, NULL),
 	SDTG_BOOL("server_advertise",                S, 0, _network_advertise,            false,       STR_NULL, NULL),
