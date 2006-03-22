@@ -276,6 +276,11 @@ static const SpriteGroup* ResolveVehicleSpriteGroup(const SpriteGroup *spritegro
 						veh_prop(0x17, veh->tick_counter);
 						veh_prop(0x18, veh->max_speed);
 						veh_prop(0x19, veh->max_speed & 0xFF);
+						veh_prop(0x1A, veh->x_pos);
+						veh_prop(0x1B, veh->x_pos & 0xFF);
+						veh_prop(0x1C, veh->y_pos);
+						veh_prop(0x1D, veh->y_pos & 0xFF);
+						veh_prop(0x1E, veh->z_pos);
 						veh_prop(0x1F, veh->direction);
 						veh_prop(0x28, veh->cur_image);
 						veh_prop(0x29, veh->cur_image & 0xFF);
