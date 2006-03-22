@@ -518,7 +518,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	Trackdir src_trackdir = (Trackdir)current->path.node.direction;
 	TileIndex src_tile = current->path.node.tile;
 	DiagDirection src_exitdir = TrackdirToExitdir(src_trackdir);
-	TileIndex dst_tile;
+	TileIndex dst_tile = INVALID_TILE;
 	int i;
 	TrackdirBits trackdirbits, ts;
 	TransportType type = aystar->user_data[NPF_TYPE];
@@ -532,42 +532,46 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 		 * otherwise we wouldn't have got here. It is also facing us,
 		 * so we should skip it's body */
 		dst_tile = GetOtherTunnelEnd(src_tile);
-	} else {
-		if (type != TRANSPORT_WATER && (IsRoadStationTile(src_tile) || IsTileDepotType(src_tile, type))){
-			/* This is a road station or a train or road depot. We can enter and exit
-			 * those from one side only. Trackdirs don't support that (yet), so we'll
-			 * do this here. */
+	} else if (type != TRANSPORT_WATER && (IsRoadStationTile(src_tile) || IsTileDepotType(src_tile, type))) {
+		/* This is a road station or a train or road depot. We can enter and exit
+		 * those from one side only. Trackdirs don't support that (yet), so we'll
+		 * do this here. */
 
-			DiagDirection exitdir;
-			/* Find out the exit direction first */
-			if (IsRoadStationTile(src_tile)) {
-				exitdir = GetRoadStationDir(src_tile);
-			} else { /* Train or road depot. Direction is stored the same for both, in map5 */
-				exitdir = GetDepotDirection(src_tile, type);
-			}
+		DiagDirection exitdir;
+		/* Find out the exit direction first */
+		if (IsRoadStationTile(src_tile)) {
+			exitdir = GetRoadStationDir(src_tile);
+		} else { /* Train or road depot. Direction is stored the same for both, in map5 */
+			exitdir = GetDepotDirection(src_tile, type);
+		}
 
-			/* Let's see if were headed the right way into the depot, and reverse
-			 * otherwise (only for trains, since only with trains you can
-			 * (sometimes) reach tiles after reversing that you couldn't reach
-			 * without reversing. */
-			if (src_trackdir == DiagdirToDiagTrackdir(ReverseDiagDir(exitdir)) && type == TRANSPORT_RAIL) {
-				/* We are headed inwards. We can only reverse here, so we'll not
-				 * consider this direction, but jump ahead to the reverse direction.
-				 * It would be nicer to return one neighbour here (the reverse
-				 * trackdir of the one we are considering now) and then considering
-				 * that one to return the tracks outside of the depot. But, because
-				 * the code layout is cleaner this way, we will just pretend we are
-				 * reversed already */
+		/* Let's see if were headed the right way into the depot */
+		if (src_trackdir == DiagdirToDiagTrackdir(ReverseDiagDir(exitdir))) {
+			/* We are headed inwards. We cannot go through the back of the depot.
+			 * For rail, we can now reverse. Reversing for road vehicles is never
+			 * useful, since you cannot take paths you couldn't take before
+			 * reversing (as with rail). */
+			if (type == TRANSPORT_RAIL) {
+				/* We can only reverse here, so we'll not consider this direction, but
+				 * jump ahead to the reverse direction.  It would be nicer to return
+				 * one neighbour here (the reverse trackdir of the one we are
+				 * considering now) and then considering that one to return the tracks
+				 * outside of the depot. But, because the code layout is cleaner this
+				 * way, we will just pretend we are reversed already */
 				src_trackdir = ReverseTrackdir(src_trackdir);
+				dst_tile = AddTileIndexDiffCWrap(src_tile, TileIndexDiffCByDir(exitdir));
+			} else {
+				dst_tile = INVALID_TILE; /* Road vehicle heading inwards: dead end */
 			}
 		}
+	} else {
 		/* This a normal tile, a bridge, a tunnel exit, etc. */
 		dst_tile = AddTileIndexDiffCWrap(src_tile, TileIndexDiffCByDir(TrackdirToExitdir(src_trackdir)));
-		if (dst_tile == INVALID_TILE) {
-			/* We reached the border of the map */
-			/* TODO Nicer control flow for this */
-			return;
-		}
+	}
+	if (dst_tile == INVALID_TILE) {
+		/* We reached the border of the map */
+		/* TODO Nicer control flow for this */
+		return;
 	}
 
 	/* I can't enter a tunnel entry/exit tile from a tile above the tunnel. Note
