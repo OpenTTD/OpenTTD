@@ -43,6 +43,7 @@ ULONG __stack = (1024*1024)*2; // maybe not that much is needed actually ;)
 #endif
 
 #if defined(__APPLE__)
+	#include <AvailabilityMacros.h>
 	#if defined(WITH_SDL)
 		//the mac implementation needs this file included in the same file as main()
 		#include <SDL.h>
