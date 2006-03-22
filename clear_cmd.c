@@ -260,7 +260,7 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				} else return_cmd_error(STR_5800_OBJECT_IN_THE_WAY);
 			}
 
-			if (direction == -1 && CheckTunnelInWay(tile, min)) return_cmd_error(STR_1002_EXCAVATION_WOULD_DAMAGE);
+			if (direction == -1 && !CheckTunnelInWay(tile, min)) return_cmd_error(STR_1002_EXCAVATION_WOULD_DAMAGE);
 
 			_terraform_err_tile = 0;
 		}
