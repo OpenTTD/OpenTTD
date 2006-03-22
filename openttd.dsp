@@ -42,7 +42,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /Gr /Zp4 /W3 /Zi /Ox /Oa /Ow /Og /Oi /Os /Gf /Gy /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /D "WIN32_EXCEPTION_TRACKER" /D "WIN32_ENABLE_DIRECTMUSIC_SUPPORT" /D "WITH_PNG" /D "WITH_ZLIB" /D "ENABLE_NETWORK" /FAcs /FR /Yu"stdafx.h" /J /FD /c
+# ADD CPP /nologo /Gr /Zp4 /MT /W3 /Zi /Ox /Oa /Ow /Og /Oi /Os /Gf /Gy /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /D "WIN32_EXCEPTION_TRACKER" /D "WIN32_ENABLE_DIRECTMUSIC_SUPPORT" /D "WITH_PNG" /D "WITH_ZLIB" /D "ENABLE_NETWORK" /FAcs /FR /Yu"stdafx.h" /J /FD /c
 # SUBTRACT CPP /WX /Ot
 # ADD BASE RSC /l 0x809 /d "NDEBUG"
 # ADD RSC /l 0x809 /d "NDEBUG"
