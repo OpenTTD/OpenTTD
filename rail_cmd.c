@@ -395,6 +395,7 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	TileIndex tile;
 	byte m5;
 	int32 cost = _price.remove_rail;
+	bool crossing = false;
 
 	if (!ValParamTrackOrientation(p2)) return CMD_ERROR;
 	trackbit = TrackToTrackBits(track);
@@ -453,13 +454,19 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			SetTileOwner(tile, _m[tile].m3);
 			break;
 
-		case MP_RAILWAY:
+		case MP_RAILWAY: {
+			TrackBits present;
+
 			if (!IsPlainRailTile(tile))
 				return CMD_ERROR;
 
 			/* See if the track to remove is actually there */
 			if (!(GetTrackBits(tile) & trackbit))
 				return CMD_ERROR;
+
+			present = GetTrackBits(tile);
+			if ((present & trackbit) == 0) return CMD_ERROR;
+			if (present == (TRACK_BIT_DIAG1 | TRACK_BIT_DIAG2)) crossing = true;
 
 			/* Charge extra to remove signals on the track, if they are there */
 			if (HasSignalOnTrack(tile, track))
@@ -478,13 +485,26 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				goto skip_mark_dirty;
 			}
 			break;
+		}
 
 		default:
 			assert(0);
 	}
 
 	/* mark_dirty */
-	MarkTileDirtyByTile(tile);
+	if (flags & DC_EXEC) {
+		MarkTileDirtyByTile(tile);
+		if (crossing) {
+			/* crossing is set when only TRACK_BIT_X and TRACK_BIT_Y are set. As we
+			 * are removing one of these pieces, we'll need to update signals for
+			 * both directions explicitly, as after the track is removed it won't
+			 * 'connect' with the other piece. */
+			SetSignalsOnBothDir(tile, TRACK_DIAG1);
+			SetSignalsOnBothDir(tile, TRACK_DIAG2);
+		} else {
+			SetSignalsOnBothDir(tile, track);
+		}
+	}
 
 skip_mark_dirty:;
 
