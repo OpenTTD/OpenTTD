@@ -55,16 +55,6 @@ const byte _inclined_tileh[] = {
 };
 
 
-void FindLandscapeHeightByTile(TileInfo *ti, TileIndex tile)
-{
-	assert(tile < MapSize());
-
-	ti->tile = tile;
-	ti->map5 = _m[tile].m5;
-	ti->type = GetTileType(tile);
-	ti->tileh = GetTileSlope(tile, &ti->z);
-}
-
 /* find the landscape height for the coordinates x y */
 void FindLandscapeHeight(TileInfo *ti, uint x, uint y)
 {
@@ -77,10 +67,14 @@ void FindLandscapeHeight(TileInfo *ti, uint x, uint y)
 		ti->tile = 0;
 		ti->map5 = 0;
 		ti->z = 0;
-		return;
-	}
+	} else {
+		TileIndex tile = TileVirtXY(x, y);
 
-	FindLandscapeHeightByTile(ti, TileVirtXY(x, y));
+		ti->tile = tile;
+		ti->type = GetTileType(tile);
+		ti->map5 = _m[tile].m5;
+		ti->tileh = GetTileSlope(tile, &ti->z);
+	}
 }
 
 uint GetPartialZ(int x, int y, int corners)
