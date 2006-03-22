@@ -968,12 +968,7 @@ static void PlantFarmField(TileIndex tile)
 	BEGIN_TILE_LOOP(cur_tile, size_x, size_y, tile)
 		cur_tile = TILE_MASK(cur_tile);
 		if (!IsBadFarmFieldTile2(cur_tile)) {
-			SetTileType(cur_tile, MP_CLEAR);
-			SetTileOwner(cur_tile, OWNER_NONE);
-			SetFieldType(cur_tile, field_type);
-			SetFenceSW(cur_tile, 0);
-			SetFenceSE(cur_tile, 0);
-			SetClearGroundDensity(cur_tile, CL_FIELDS, 3);
+			MakeField(cur_tile, field_type);
 			SetClearCounter(cur_tile, counter);
 			MarkTileDirtyByTile(cur_tile);
 		}
