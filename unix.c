@@ -48,7 +48,6 @@ ULONG __stack = (1024*1024)*2; // maybe not that much is needed actually ;)
 		#include <SDL.h>
 	#endif
 #endif
-
 static char *_fios_path;
 static char *_fios_save_path;
 static char *_fios_scn_path;
@@ -604,3 +603,43 @@ void CSleep(int milliseconds)
 	}
 	#endif // __AMIGA__
 }
+
+#if defined(__APPLE__) && (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_3)
+/* FYI: This is not thread-safe.
+Assumptions:
+	- the 'from' charset is ISO-8859-15
+	- the 'to' charset is either the same, or UTF-8
+NOTE: iconv was added in OSX 10.3. 10.2.x will still have the invalid char issues. There aren't any easy fix for this
+*/
+#include <iconv.h>
+#include <locale.h>
+const char *convert_to_fs_charset(const char *filename)
+{
+	static char statout[1024], statin[1024];
+	static iconv_t convd;
+	static bool alreadyInited;
+	char *outbuf = statout;
+	const char *inbuf = statin;
+	size_t inlen = strlen(filename), outlen = 1023;
+	size_t retval = 0;
+	if(inbuf == NULL)
+		inbuf = statin;
+
+	setlocale(LC_ALL, "C-UTF-8");
+	strcpy(statout, filename);
+	strcpy(statin, filename);
+	inbuf = strrchr(statin, '/');
+	outbuf = strrchr(statout, '/');
+	if(alreadyInited == false)
+	{
+		convd = iconv_open("UTF-8", "ISO-8859-15");
+		if(convd == (iconv_t)(-1))
+			return filename;
+		alreadyInited = true;
+	}
+	retval = iconv(convd, NULL, NULL, NULL, NULL);
+	inlen = iconv(convd, &inbuf, &inlen, &outbuf, &outlen);
+	// FIX: invalid characters will abort conversion, but they shouldn't occur?
+	return statout;
+}
+#endif

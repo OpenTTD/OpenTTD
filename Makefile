@@ -475,6 +475,12 @@ LIBS += $(shell $(LIBPNG-CONFIG)  --L_opts $(PNGCONFIG_FLAGS))
 endif
 endif
 
+ifdef OSX
+ifndef JAGUAR
+LIBS += -liconv
+endif
+endif
+
 # enables/disables assert()
 ifdef DISABLE_ASSERTS
 CFLAGS += -DNDEBUG

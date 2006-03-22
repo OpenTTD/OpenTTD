@@ -11,12 +11,9 @@
 
 #ifdef ENABLE_NETWORK
 
-#ifdef __APPLE__
-#include <AvailabilityMacros.h>
-#if (MAC_OS_X_VERSION_MAX_ALLOWED == MAC_OS_X_VERSION_10_2)
+#if defined(__APPLE__) && (MAC_OS_X_VERSION_MAX_ALLOWED == MAC_OS_X_VERSION_10_2)
 	// OSX 10.2 don't have socklen_t defined, so we will define it here
 	typedef int socklen_t;
-#endif
 #endif
 
 // Windows stuff
