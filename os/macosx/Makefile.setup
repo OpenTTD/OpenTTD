@@ -23,16 +23,6 @@ endif
 UNIVERSAL_BINARY:=1
 endif
 
-ifndef UNIVERSAL_BINARY
-ifndef JAGUAR
-ifeq ($(shell uname), Darwin)
-# it's a hardware mac, not crosscompiling
-$(shell $(CC) os/macosx/G5_detector.c -o os/macosx/G5_detector)
-IS_G5:=$(shell os/macosx/G5_detector)
-endif
-endif
-endif
-
 ifdef UNIVERSAL_BINARY
 ifndef STATIC
 $(warning Compiling a universal binary, that is not static. Adding static flag)
@@ -77,4 +67,20 @@ CFLAGS += $(CFLAGS_UNIVERSAL)
 ifdef TRIPLE_BINARY
 LDFLAGS += -arch ppc970
 endif
+endif
+
+# setting up flags to make a binary, that fits the system it builds on
+ifndef UNIVERSAL_BINARY
+	ifndef JAGUAR
+		ifeq ($(shell uname), Darwin)
+			# it's a hardware mac, not crosscompiling
+			# the next line fails if it got whitespace in front of it
+$(shell $(CC) os/macosx/G5_detector.c -o os/macosx/G5_detector)
+			IS_G5:=$(shell os/macosx/G5_detector)
+			ifeq ($(shell uname -r), 6.8)
+			# OSX 10.2.8 uses Darwin 6.8, so we better set JAGUAR so we avoid the stuff that was added in 10.3 or later
+				JAGUAR:=1
+			endif
+		endif
+	endif
 endif

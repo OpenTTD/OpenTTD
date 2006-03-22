@@ -12,7 +12,7 @@
 #include "screenshot.h"
 #include "variables.h"
 
-#ifdef __APPLE__
+#if defined(__APPLE__) && (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_3)
 extern const char *convert_to_fs_charset(const char *filename);
 #else
 #define convert_to_fs_charset(str) (str)

@@ -43,8 +43,6 @@ ULONG __stack = (1024*1024)*2; // maybe not that much is needed actually ;)
 #endif
 
 #if defined(__APPLE__)
-	#include <iconv.h>
-	#include <locale.h>
 	#if defined(WITH_SDL)
 		//the mac implementation needs this file included in the same file as main()
 		#include <SDL.h>
@@ -606,12 +604,15 @@ void CSleep(int milliseconds)
 	#endif // __AMIGA__
 }
 
-#ifdef __APPLE__
+#if defined(__APPLE__) && (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_3)
 /* FYI: This is not thread-safe.
 Assumptions:
 	- the 'from' charset is ISO-8859-15
 	- the 'to' charset is either the same, or UTF-8
+NOTE: iconv was added in OSX 10.3. 10.2.x will still have the invalid char issues. There aren't any easy fix for this
 */
+#include <iconv.h>
+#include <locale.h>
 const char *convert_to_fs_charset(const char *filename)
 {
 	static char statout[1024], statin[1024];

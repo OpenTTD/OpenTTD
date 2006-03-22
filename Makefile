@@ -486,7 +486,9 @@ endif
 endif
 
 ifdef OSX
+ifndef JAGUAR
 LIBS += -liconv
+endif
 endif
 
 # enables/disables assert()
