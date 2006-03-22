@@ -47,6 +47,7 @@ typedef enum DiagonalDirections {
 void SetMapExtraBits(TileIndex tile, byte flags);
 uint GetMapExtraBits(TileIndex tile);
 
+uint GetTileh(uint n, uint w, uint e, uint s, uint *h);
 uint GetTileSlope(TileIndex tile, uint *h);
 uint GetTileZ(TileIndex tile);
 
