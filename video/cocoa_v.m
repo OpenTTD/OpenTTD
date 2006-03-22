@@ -903,7 +903,6 @@ static void QZ_SetPortAlphaOpaque (void) {
 - (void)appDidHide:(NSNotification*)note
 {
 	_cocoa_video_data.active = false;
-//	DEBUG(driver, 1)("cocoa_v: appDidHide");
 }
 
 
@@ -921,7 +920,6 @@ static void QZ_SetPortAlphaOpaque (void) {
 	[ self restoreCachedImage ];
 
 	_cocoa_video_data.active = true;
-//	DEBUG(driver, 1)("cocoa_v: appDidUnhide");
 }
 
 
@@ -953,25 +951,21 @@ static void QZ_SetPortAlphaOpaque (void) {
 - (void)windowDidBecomeKey:(NSNotification *)aNotification
 {
 	_cocoa_video_data.active = true;
-//	DEBUG(driver, 1)("cocoa_v: windowDidBecomeKey");
 }
 
 - (void)windowDidResignKey:(NSNotification *)aNotification
 {
 	_cocoa_video_data.active = false;
-//	DEBUG(driver, 1)("cocoa_v: windowDidResignKey");
 }
 
 - (void)windowDidBecomeMain:(NSNotification *)aNotification
 {
 	_cocoa_video_data.active = true;
-//	DEBUG(driver, 1)("cocoa_v: windowDidBecomeMain");
 }
 
 - (void)windowDidResignMain:(NSNotification *)aNotification
 {
 	_cocoa_video_data.active = false;
-//	DEBUG(driver, 1)("cocoa_v: windowDidResignMain");
 }
 
 @end
@@ -1507,17 +1501,60 @@ static void QZ_WaitForVerticalBlank(void)
 
 static void QZ_DrawScreen(void)
 {
+	const uint8* src;
+	uint8* dst;
+	uint height;
+	uint width;
+	uint pitch;
 	uint y;
-	uint8 *src, *dst;
 
-	QZ_WaitForVerticalBlank();
+	src = _cocoa_video_data.pixels;
+	dst = (uint8*)_cocoa_video_data.realpixels;
+	width  = _cocoa_video_data.width;
+	pitch  = _cocoa_video_data.pitch;
 
-	for(y = 0; y < _cocoa_video_data.height; y++) {
-		src = _cocoa_video_data.pixels + y * _cocoa_video_data.width;
-		dst = ((uint8 *) _cocoa_video_data.realpixels) + y * _cocoa_video_data.pitch;
+#ifdef __POWERPC__
+	// PPC appears to handle updating of rectangles right
+	{
+		uint num_dirty_rects;
+		uint length_drawn;
+		uint left;
+		uint i;
 
-		memcpy(dst, src, _cocoa_video_data.width);
+		num_dirty_rects = _cocoa_video_data.num_dirty_rects;
+
+		/* Check if we need to do anything */
+		if (num_dirty_rects == 0 ) return;
+
+		if (num_dirty_rects >= MAX_DIRTY_RECTS) {
+			num_dirty_rects = 1;
+			_cocoa_video_data.dirty_rects[0].left = 0;
+			_cocoa_video_data.dirty_rects[0].top = 0;
+			_cocoa_video_data.dirty_rects[0].right = _cocoa_video_data.width;
+			_cocoa_video_data.dirty_rects[0].bottom = _cocoa_video_data.height;
+		}
+
+		QZ_WaitForVerticalBlank();
+		/* Build the region of dirty rectangles */
+		for (i = 0; i < num_dirty_rects; i++) {
+
+			y = _cocoa_video_data.dirty_rects[i].top;
+			left = _cocoa_video_data.dirty_rects[i].left;
+			length_drawn = _cocoa_video_data.dirty_rects[i].right - left + 1;
+			height = _cocoa_video_data.dirty_rects[i].bottom;
+			for (; y <= height; y++) memcpy(dst + y * pitch + left, src + y * width +left, length_drawn);
+		}
+
+		_cocoa_video_data.num_dirty_rects = 0;
 	}
+#else
+	// it appears that Intel based macs didn't like to only update parts of the screen at a time, so they still update everything at each frame
+	// we need to switch to use Quartz exclusively (no QuickDraw commands at all) to fix this
+	// to use Quartz exclusively, we should use 16 or 32 bit graphics since 8 bit coloured graphic support sucks
+	height  = _cocoa_video_data.height;
+	QZ_WaitForVerticalBlank();
+	for (y = 0; y < height; y++) memcpy(dst + y * pitch, src + y * width, width);
+#endif
 }
 
 static int QZ_ListFullscreenModes (OTTDPoint *mode_list, int max_modes) {
@@ -1830,7 +1867,6 @@ static void QZ_WarpCursor (int x, int y) {
 	CGWarpMouseCursorPosition (cgp);
 
 	/* Generate the mouse moved event */
-//	SDL_PrivateMouseMotion (0, 0, x, y);
 }
 
 void QZ_ShowMouse (void) {
@@ -1885,7 +1921,6 @@ void QZ_HideMouse (void) {
 /* Display the in game quit confirmation dialog */
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *) sender
 {
-//	DEBUG(driver, 1)("cocoa_v: applicationShouldTerminate");
 
 	QZ_AskQuit();
 
