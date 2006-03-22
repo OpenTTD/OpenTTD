@@ -1,6 +1,6 @@
 openttd (0.4.5+custom) unstable; urgency=low
 
-  * Custom user build.
+  * Remove old terminal messages and make sure that debconf is always called.
 
  -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Thu,  9 Mar 2006 00:04:33 +0100
 
