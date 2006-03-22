@@ -1283,8 +1283,6 @@ static const byte _industry_map5_bits[] = {
 
 static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable* it, int type, const Town* t)
 {
-	TileInfo ti;
-
 	_error_message = STR_0239_SITE_UNSUITABLE;
 
 	do {
@@ -1295,27 +1293,31 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable*
 			return false;
 		}
 
-		FindLandscapeHeightByTile(&ti, cur_tile);
-
 		if (it->map5 == 0xFF) {
-			if (ti.type != MP_WATER || ti.tileh != 0) return false;
+			if (!IsTileType(cur_tile, MP_WATER) ||
+					GetTileSlope(cur_tile, NULL) != 0) {
+				return false;
+			}
 		} else {
 			if (!EnsureNoVehicle(cur_tile)) return false;
 
 			if (type == IT_OIL_RIG)  {
-				if (ti.type != MP_WATER || ti.map5 != 0) return false;
+				if (!IsTileType(cur_tile, MP_WATER) || _m[cur_tile].m5 != 0) return false;
 			} else {
-				if (ti.type == MP_WATER && ti.map5 == 0) return false;
-				if (IsSteepTileh(ti.tileh))
-					return false;
+				uint tileh;
 
-				if (ti.tileh != 0) {
+				if (IsTileType(cur_tile, MP_WATER) && _m[cur_tile].m5 == 0) return false;
+
+				tileh = GetTileSlope(cur_tile, NULL);
+				if (IsSteepTileh(tileh)) return false;
+
+				if (tileh != 0) {
 					int t;
 					byte bits = _industry_map5_bits[it->map5];
 
 					if (bits & 0x10) return false;
 
-					t = ~ti.tileh;
+					t = ~tileh;
 
 					if (bits & 1 && (t & (1 + 8))) return false;
 					if (bits & 2 && (t & (4 + 8))) return false;
@@ -1324,20 +1326,20 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable*
 				}
 
 				if (type == IT_BANK) {
-					if (ti.type != MP_HOUSE || t->population < 1200) {
+					if (!IsTileType(cur_tile, MP_HOUSE) || t->population < 1200) {
 						_error_message = STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS;
 						return false;
 					}
 				} else if (type == IT_BANK_2) {
-					if (ti.type != MP_HOUSE) {
+					if (!IsTileType(cur_tile, MP_HOUSE)) {
 						_error_message = STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS;
 						return false;
 					}
 				} else if (type == IT_TOY_SHOP) {
 					if (DistanceMax(t->xy, cur_tile) > 9) return false;
-					if (ti.type != MP_HOUSE) goto do_clear;
+					if (!IsTileType(cur_tile, MP_HOUSE)) goto do_clear;
 				} else if (type == IT_WATER_TOWER) {
-					if (ti.type != MP_HOUSE) {
+					if (!IsTileType(cur_tile, MP_HOUSE)) {
 						_error_message = STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS;
 						return false;
 					}
