@@ -651,6 +651,10 @@ static const char *Win32GdiStart(const char * const *parm)
 
 static void Win32GdiStop(void)
 {
+	DeleteObject(_wnd.gdi_palette);
+	DeleteObject(_wnd.dib_sect);
+	DestroyWindow(_wnd.main_wnd);
+
 	if (_wnd.fullscreen) ChangeDisplaySettings(NULL, 0);
 	if (_double_size) {
 		_cur_resolution[0] *= 2;
@@ -658,9 +662,6 @@ static void Win32GdiStop(void)
 	}
 
 	MyShowCursor(true);
-	DeleteObject(_wnd.gdi_palette);
-	DeleteObject(_wnd.dib_sect);
-	DestroyWindow(_wnd.main_wnd);
 }
 
 // simple upscaler by 2
