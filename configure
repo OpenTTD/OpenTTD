@@ -83,7 +83,6 @@ do
 			ITEM="CC_TARGET"
 			;;
 		--target-cxx=*)
-			echo "$n"
 			TARGET_CXX=`awk 'BEGIN { FS="="; $0="'"$n"'"; print $2;}'`
 			;;
 		--target-cxx)
