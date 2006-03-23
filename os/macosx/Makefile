@@ -34,6 +34,10 @@ else
 BUILD_OSX_BUNDLE:=build_OSX_bundle
 endif
 
+ifdef JAGUAR
+JAGUAR_POSTFIX := -jaguar
+endif
+
 # build the bundle. OSX wants to keep apps in bundles, so we will give it one
 # the good thing about bundles is that you can keep extra files in them, so we keep lng files and a data dir in it
 
@@ -54,22 +58,23 @@ $(BUILD_OSX_BUNDLE): $(TTD)
 
 # make the release disk image. Should only be used with releases and is a good and fast way to make sure to remember all the needed files
 release: all
-	$(Q)mkdir -p "OpenTTD $(RELEASE)"
-	$(Q)mkdir -p "OpenTTD $(RELEASE)"/docs
-	$(Q)mkdir -p "OpenTTD $(RELEASE)"/scenario
-	$(Q)cp -R $(OSXAPP) "OpenTTD $(RELEASE)"/
-	$(Q)cp docs/OSX_install_instructions.txt "OpenTTD $(RELEASE)"/How\ to\ install\ (please\ read).txt
-	$(Q)cp readme.txt "OpenTTD $(RELEASE)"/docs/
-	$(Q)cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD $(RELEASE)"/docs/readme\ if\ crashed\ on\ OSX.txt
-	$(Q)cp docs/console.txt "OpenTTD $(RELEASE)"/docs/
-	$(Q)cp COPYING "OpenTTD $(RELEASE)"/docs/
-	$(Q)cp changelog.txt "OpenTTD $(RELEASE)"/docs/
-	$(Q)cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD $(RELEASE)"/docs/
-	$(Q)cp os/macosx/*.webloc "OpenTTD $(RELEASE)"
-	$(Q)cp known-bugs.txt "OpenTTD $(RELEASE)"/known-bugs.txt
-	$(Q)cp scenario/* "OpenTTD $(RELEASE)"/scenario/
-	$(Q)/usr/bin/hdiutil create -ov -format UDZO -srcfolder "OpenTTD $(RELEASE)" openttd-"$(RELEASE)"-osx.dmg
-	$(Q)rm -fr "OpenTTD $(RELEASE)"
+	@echo '===> Building release disk image'
+	$(Q)mkdir -p "OpenTTD $(REV)"
+	$(Q)mkdir -p "OpenTTD $(REV)/docs"
+	$(Q)mkdir -p "OpenTTD $(REV)/scenario"
+	$(Q)cp -R $(OSXAPP) "OpenTTD $(REV)/"
+	$(Q)cp docs/OSX_install_instructions.txt "OpenTTD $(REV)/How to install (please read).txt"
+	$(Q)cp readme.txt "OpenTTD $(REV)/docs/"
+	$(Q)cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD $(REV)/docs/readme if crashed on OSX.txt"
+	$(Q)cp docs/console.txt "OpenTTD $(REV)/docs/"
+	$(Q)cp COPYING "OpenTTD $(REV)/docs/"
+	$(Q)cp changelog.txt "OpenTTD $(REV)/docs/"
+	$(Q)cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD $(REV)/docs/"
+	$(Q)cp os/macosx/*.webloc "OpenTTD $(REV)"
+	$(Q)cp known-bugs.txt "OpenTTD $(REV)/known-bugs.txt"
+	$(Q)cp scenario/* "OpenTTD $(REV)/scenario/"
+	$(Q)/usr/bin/hdiutil create -ov -format UDZO -srcfolder "OpenTTD $(REV)" openttd-"$(REV)"-osx"$(JAGUAR_POSTFIX)".dmg
+	$(Q)rm -fr "OpenTTD $(REV)"
 
 $(OSX): $(TTD) $(BUILD_OSX_BUNDLE)
 
