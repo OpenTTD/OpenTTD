@@ -12,6 +12,7 @@ function showhelp() {
 	echo "Params:"
 	echo " --debug            Create debug-release                [no]"
 	echo " --profile          Create profile-release              [no]"
+	echo " --dedicated        Make a dedicated build              [no]"
 	echo " --revision         Set the revision of the compilation [detected]"
 	echo " --target-cc        Sets the target-compiler            [\$CC]"
 	echo " --target-cxx       Sets the C++ target-compiler        []"
@@ -65,6 +66,9 @@ do
 			;;
 		--profile)
 			PARAM="$PARAM PROFILE=1"
+			;;
+		--dedicated)
+			PARAM="$PARAM DEDICATED=1"
 			;;
 		--revision=*)
 			RELEASE=`awk 'BEGIN { FS="="; $0="'$n'"; print $2;}'`
