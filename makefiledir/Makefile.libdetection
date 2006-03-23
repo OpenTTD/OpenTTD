@@ -121,3 +121,12 @@ WITH_PNG:=
 endif
 
 endif
+
+ifeq ($(shell expr $(CONFIG_VERSION) \< 10), 1)
+# we need to test if iconv is present on the current system
+# even though we test on OSX, the read data is actually not used since it relies on target OS and this flag will be overwritten later
+
+$(shell $(CC) -liconv -o makefiledir/iconv_detector makefiledir/iconv_detector.c 2>/dev/null)
+WITH_ICONV:=$(shell makefiledir/iconv_detector 2>/dev/null)
+$(shell rm makefiledir/iconv_detector 2>/dev/null)
+endif

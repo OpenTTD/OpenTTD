@@ -64,9 +64,11 @@ $(MAKE_CONFIG):
 	$(call CONFIG_LINE,)
 
 	$(call CONFIG_LINE,\# Libs)
+	$(call CONFIG_LINE,\# WITH_ICONV is not used on OSX since the flag is overwritten. It is always used unless the target OS is 10.2.8)
 	$(call CONFIG_LINE,WITH_ZLIB:=$(WITH_ZLIB))
 	$(call CONFIG_LINE,WITH_SDL:=$(WITH_SDL))
 	$(call CONFIG_LINE,WITH_PNG:=$(WITH_PNG))
+	$(call CONFIG_LINE,WITH_ICONV:=$(WITH_ICONV))
 	$(call CONFIG_LINE,STATIC_ZLIB_PATH:=$(STATIC_ZLIB_PATH))
 	$(call CONFIG_LINE,WITH_COCOA:=$(WITH_COCOA))
 	$(call CONFIG_LINE,)
