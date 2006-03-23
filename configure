@@ -41,7 +41,7 @@ function showhelp() {
 }
 
 function handle() {
-	PARAM="$PARAM $1=`awk 'BEGIN { FS="="; $0="'$2'"; print $2;}'`"
+	PARAM="$PARAM \"$1=`awk 'BEGIN { FS="="; $0="'"$2"'"; print $2;}'`\""
 }
 
 # The things you can use inside this case:
@@ -62,7 +62,7 @@ do
 			ITEM="DEBUG"
 			;;
 		--debug=*)
-			handle "DEBUG" $n
+			handle "DEBUG" "$n"
 			;;
 		--profile)
 			PARAM="$PARAM PROFILE=1"
@@ -71,37 +71,38 @@ do
 			PARAM="$PARAM DEDICATED=1"
 			;;
 		--revision=*)
-			RELEASE=`awk 'BEGIN { FS="="; $0="'$n'"; print $2;}'`
+			RELEASE=`awk 'BEGIN { FS="="; $0="'"$n"'"; print $2;}'`
 			;;
 		--revision)
 			SITEM="RELEASE"
 			;;
 		--target-cc=*)
-			handle "CC_TARGET" $n
+			handle "CC_TARGET" "$n"
 			;;
 		--target-cc)
-			ITEM="CCTARGET"
+			ITEM="CC_TARGET"
 			;;
 		--target-cxx=*)
-			TARGET_CXX=`awk 'BEGIN { FS="="; $0="'$n'"; print $2;}'`
+			echo "$n"
+			TARGET_CXX=`awk 'BEGIN { FS="="; $0="'"$n"'"; print $2;}'`
 			;;
 		--target-cxx)
 			SITEM="TARGET_CXX"
 			;;
 		--host-cc=*)
-			handle CC_HOST $n
+			handle CC_HOST "$n"
 			;;
 		--host-cc)
 			ITEM="CC_HOST"
 			;;
 		--os=*)
-			TARGET_OS=`awk 'BEGIN { FS="="; $0="'$n'"; print $2;}'`
+			TARGET_OS=`awk 'BEGIN { FS="="; $0="'"$n"'"; print $2;}'`
 			;;
 		--os)
 			SITEM="TARGET_OS"
 			;;
 		--windres=*)
-			handle WINDRES $n
+			handle WINDRES "$n"
 			;;
 		--windres)
 			ITEM="WINDRES"
@@ -150,19 +151,19 @@ do
 			PARAM="$PARAM WITH_COCOA="
 			;;
 		--static-zlib-path=*)
-			handle STATIC_ZLIB_PATH $n
+			handle STATIC_ZLIB_PATH "$n"
 			;;
 		--static-zlib-path)
 			ITEM="STATIC_ZLIB_PATH"
 			;;
 		--sdl-config=*)
-			handle SDL-CONFIG $n
+			handle SDL-CONFIG "$n"
 			;;
 		--sdl-config)
 			ITEM="SDL-CONFIG"
 			;;
 		--libpng-config=*)
-			handle LIBPNG-CONFIG $n
+			handle LIBPNG-CONFIG "$n"
 			;;
 		--lib-png-config)
 			ITEM="LIBPNG-CONFIG"
@@ -170,7 +171,7 @@ do
 
 		--*=*)
 			echo -n "Unknown switch "
-			echo `awk 'BEGIN { FS="="; $0="'$n'"; print $1;}'`
+			echo `awk 'BEGIN { FS="="; $0="'"$n"'"; print $1;}'`
 			exit 1
 			;;
 		-*)
@@ -181,11 +182,11 @@ do
 		*)
 			if ! test -z "$ITEM"
 			then
-				PARAM="$PARAM $ITEM=$n"
+				PARAM="$PARAM $ITEM=\"$n\""
 				ITEM="";
 			elif ! test -z "$SITEM"
 			then
-				export $SITEM=$n
+				export $SITEM="$n"
 				SITEM=""
 			else
 				echo "Unknown switch $n"
@@ -249,7 +250,9 @@ then
 	rm -f Makefile.config
 fi
 
-make upgradeconf $PARAM
+echo "make upgradeconf $PARAM" > Makefile.run
+. Makefile.run
+rm -f Makefile.run
 
 # Makefile.config currently doesn't support custom CXX, so, we add the line
 #  ourself!
