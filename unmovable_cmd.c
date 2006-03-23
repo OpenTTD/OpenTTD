@@ -15,6 +15,7 @@
 #include "economy.h"
 #include "town.h"
 #include "sprite.h"
+#include "unmovable_map.h"
 #include "variables.h"
 
 /** Destroy a HQ.
@@ -184,7 +185,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 
 static uint GetSlopeZ_Unmovable(const TileInfo* ti)
 {
-	if (_m[ti->tile].m5 == 3) {
+	if (IsOwnedLand(ti->tile)) {
 		return ti->z + GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh);
 	} else {
 		return ti->z + (ti->tileh == 0 ? 0 : 8);
@@ -193,20 +194,19 @@ static uint GetSlopeZ_Unmovable(const TileInfo* ti)
 
 static uint GetSlopeTileh_Unmovable(const TileInfo *ti)
 {
-	return _m[ti->tile].m5 == 3 ? ti->tileh : 0;
+	return IsOwnedLand(ti->tile) ? ti->tileh : 0;
 }
 
 static int32 ClearTile_Unmovable(TileIndex tile, byte flags)
 {
-	byte m5 = _m[tile].m5;
-
-	if (m5 & 0x80) {
+	if (_m[tile].m5 & 0x80) {
 		if (_current_player == OWNER_WATER) return DestroyCompanyHQ(tile, DC_EXEC);
 		return_cmd_error(STR_5804_COMPANY_HEADQUARTERS_IN);
 	}
 
-	if (m5 == 3) // company owned land
+	if (IsOwnedLand(tile)) {
 		return DoCommandByTile(tile, 0, 0, flags, CMD_SELL_LAND_AREA);
+	}
 
 	// checks if you're allowed to remove unmovable things
 	if (_game_mode != GM_EDITOR && _current_player != OWNER_WATER && ((flags & DC_AUTO || !_cheats.magic_bulldozer.value)) )
@@ -245,19 +245,16 @@ static void GetAcceptedCargo_Unmovable(TileIndex tile, AcceptedCargo ac)
 	ac[CT_MAIL] = max(1, level / 2);
 }
 
-static const StringID _unmovable_tile_str[] = {
-	STR_5803_COMPANY_HEADQUARTERS,
-	STR_5801_TRANSMITTER,
-	STR_5802_LIGHTHOUSE,
-	STR_2016_STATUE,
-	STR_5805_COMPANY_OWNED_LAND,
-};
 
 static void GetTileDesc_Unmovable(TileIndex tile, TileDesc *td)
 {
-	int i = _m[tile].m5;
-	if (i & 0x80) i = -1;
-	td->str = _unmovable_tile_str[i + 1];
+	switch (GetUnmovableType(tile)) {
+		case UNMOVABLE_TRANSMITTER: td->str = STR_5801_TRANSMITTER; break;
+		case UNMOVABLE_LIGHTHOUSE:  td->str = STR_5802_LIGHTHOUSE; break;
+		case UNMOVABLE_STATUE:      td->str = STR_2016_STATUE; break;
+		case UNMOVABLE_OWNED_LAND:  td->str = STR_5805_COMPANY_OWNED_LAND; break;
+		default:                    td->str = STR_5803_COMPANY_HEADQUARTERS; break;
+	}
 	td->owner = GetTileOwner(tile);
 }
 
@@ -321,9 +318,7 @@ static bool checkRadioTowerNearby(TileIndex tile)
 	TileIndex tile_s = tile - TileDiffXY(4, 4);
 
 	BEGIN_TILE_LOOP(tile, 9, 9, tile_s)
-		// already a radio tower here?
-		if (IsTileType(tile, MP_UNMOVABLE) && _m[tile].m5 == 0)
-			return false;
+		if (IsTransmitterTile(tile)) return false;
 	END_TILE_LOOP(tile, 9, 9, tile_s)
 	return true;
 }
@@ -345,9 +340,7 @@ void GenerateUnmovables(void)
 		tile = RandomTile();
 		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h >= 32) {
 			if (!checkRadioTowerNearby(tile)) continue;
-			SetTileType(tile, MP_UNMOVABLE);
-			SetTileOwner(tile, OWNER_NONE);
-			_m[tile].m5 = 0;
+			MakeTransmitter(tile);
 			if (--j == 0) break;
 		}
 	} while (--i);
@@ -380,9 +373,7 @@ restart:
 
 		assert(tile == TILE_MASK(tile));
 
-		SetTileType(tile, MP_UNMOVABLE);
-		SetTileOwner(tile, OWNER_NONE);
-		_m[tile].m5 = 1;
+		MakeLighthouse(tile);
 	} while (--i);
 }
 

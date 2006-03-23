@@ -13,6 +13,7 @@
 #include "tunnel_map.h"
 #include "variables.h"
 #include "table/sprites.h"
+#include "unmovable_map.h"
 
 typedef struct TerraformerHeightMod {
 	TileIndex tile;
@@ -379,18 +380,16 @@ int32 CmdPurchaseLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
-	if (IsTileType(tile, MP_UNMOVABLE) && _m[tile].m5 == 3 &&
-			IsTileOwner(tile, _current_player))
+	if (IsOwnedLandTile(tile) && IsTileOwner(tile, _current_player)) {
 		return_cmd_error(STR_5807_YOU_ALREADY_OWN_IT);
+	}
 
 	cost = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(cost)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		ModifyTile(tile,
-			MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5,
-			3 /* map5 */
-			);
+		MakeOwnedLand(tile, _current_player);
+		MarkTileDirtyByTile(tile);
 	}
 
 	return cost + _price.purchase_land * 10;
@@ -435,7 +434,7 @@ int32 CmdSellLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	tile = TileVirtXY(x, y);
 
-	if (!IsTileType(tile, MP_UNMOVABLE) || _m[tile].m5 != 3) return CMD_ERROR;
+	if (!IsOwnedLandTile(tile)) return CMD_ERROR;
 	if (!CheckTileOwnership(tile) && _current_player != OWNER_WATER) return CMD_ERROR;
 
 

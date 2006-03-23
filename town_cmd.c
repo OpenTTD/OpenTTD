@@ -21,6 +21,7 @@
 #include "saveload.h"
 #include "economy.h"
 #include "gui.h"
+#include "unmovable_map.h"
 #include "variables.h"
 
 enum {
@@ -1577,9 +1578,8 @@ static bool DoBuildStatueOfCompany(TileIndex tile)
 
 	if (CmdFailed(r)) return false;
 
-	ModifyTile(tile, MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5,
-		2 /* map5 */
-	);
+	MakeStatue(tile, _current_player);
+	MarkTileDirtyByTile(tile);
 
 	return true;
 }

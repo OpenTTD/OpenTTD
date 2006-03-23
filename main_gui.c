@@ -27,6 +27,7 @@
 #include "waypoint.h"
 #include "variables.h"
 #include "train.h"
+#include "unmovable_map.h"
 
 #include "network_data.h"
 #include "network_client.h"
@@ -1207,7 +1208,8 @@ static void PlaceProc_LightHouse(TileIndex tile)
 		return;
 	}
 
-	ModifyTile(tile, MP_SETTYPE(MP_UNMOVABLE) | MP_MAP5, 1);
+	MakeLighthouse(tile);
+	MarkTileDirtyByTile(tile);
 	SndPlayTileFx(SND_1F_SPLAT, tile);
 }
 
@@ -1217,7 +1219,8 @@ static void PlaceProc_Transmitter(TileIndex tile)
 		return;
 	}
 
-	ModifyTile(tile, MP_SETTYPE(MP_UNMOVABLE) | MP_MAP5, 0);
+	MakeTransmitter(tile);
+	MarkTileDirtyByTile(tile);
 	SndPlayTileFx(SND_1F_SPLAT, tile);
 }
 
