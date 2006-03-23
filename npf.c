@@ -563,6 +563,8 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 			} else {
 				dst_tile = INVALID_TILE; /* Road vehicle heading inwards: dead end */
 			}
+		} else {
+			dst_tile = AddTileIndexDiffCWrap(src_tile, TileIndexDiffCByDir(exitdir));
 		}
 	} else {
 		/* This a normal tile, a bridge, a tunnel exit, etc. */
