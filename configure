@@ -95,6 +95,12 @@ do
 		--host-cc)
 			ITEM="CC_HOST"
 			;;
+		--host-cflags=*)
+			handle CFLAGS_HOST "$n"
+			;;
+		--host-cflags)
+			ITEM="CFLAGS_HOST"
+			;;
 		--os=*)
 			TARGET_OS=`awk 'BEGIN { FS="="; $0="'"$n"'"; print $2;}'`
 			;;
