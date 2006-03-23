@@ -182,7 +182,12 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	TransportType transport;
 	RailType railtype;
 	int sx,sy;
-	TileInfo ti_start, ti_end;
+	TileIndex tile_start;
+	TileIndex tile_end;
+	uint tileh_start;
+	uint tileh_end;
+	uint z_start;
+	uint z_end;
 	TileIndex tile;
 	TileIndexDiff delta;
 	uint bridge_len;
@@ -235,29 +240,27 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!CheckBridge_Stuff(bridge_type, bridge_len)) return_cmd_error(STR_5015_CAN_T_BUILD_BRIDGE_HERE);
 
 	/* retrieve landscape height and ensure it's on land */
-	if ((
-				FindLandscapeHeight(&ti_end, sx, sy),
-				ti_end.type == MP_WATER && ti_end.map5 == 0
-			) || (
-				FindLandscapeHeight(&ti_start, x, y),
-				ti_start.type == MP_WATER && ti_start.map5 == 0
-			)) {
+	tile_start = TileVirtXY(x, y);
+	tile_end = TileVirtXY(sx, sy);
+	if ((IsTileType(tile_start, MP_WATER) && _m[tile_start].m5 == 0) ||
+			(IsTileType(tile_end, MP_WATER) && _m[tile_end].m5 == 0)) {
 		return_cmd_error(STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH);
 	}
 
-	if (BRIDGE_FULL_LEVELED_FOUNDATION & (1 << ti_start.tileh)) {
-		ti_start.z += 8;
-		ti_start.tileh = 0;
+	tileh_start = GetTileSlope(tile_start, &z_start);
+	tileh_end = GetTileSlope(tile_end, &z_end);
+
+	if (BRIDGE_FULL_LEVELED_FOUNDATION & (1 << tileh_start)) {
+		z_start += 8;
+		tileh_start = 0;
 	}
 
-	if (BRIDGE_FULL_LEVELED_FOUNDATION & (1 << ti_end.tileh)) {
-		ti_end.z += 8;
-		ti_end.tileh = 0;
+	if (BRIDGE_FULL_LEVELED_FOUNDATION & (1 << tileh_end)) {
+		z_end += 8;
+		tileh_end = 0;
 	}
 
-	if (ti_start.z != ti_end.z)
-		return_cmd_error(STR_5009_LEVEL_LAND_OR_WATER_REQUIRED);
-
+	if (z_start != z_end) return_cmd_error(STR_5009_LEVEL_LAND_OR_WATER_REQUIRED);
 
 	// Towns are not allowed to use bridges on slopes.
 	allow_on_slopes = (!_is_old_ai_player
@@ -265,24 +268,24 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Try and clear the start landscape */
 
-	ret = DoCommandByTile(ti_start.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	ret = DoCommandByTile(tile_start, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return ret;
 	cost = ret;
 
 	// true - bridge-start-tile, false - bridge-end-tile
-	terraformcost = CheckBridgeSlope(direction, ti_start.tileh, true);
+	terraformcost = CheckBridgeSlope(direction, tileh_start, true);
 	if (CmdFailed(terraformcost) || (terraformcost && !allow_on_slopes))
 		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 	cost += terraformcost;
 
 	/* Try and clear the end landscape */
 
-	ret = DoCommandByTile(ti_end.tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	ret = DoCommandByTile(tile_end, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return ret;
 	cost += ret;
 
 	// false - end tile slope check
-	terraformcost = CheckBridgeSlope(direction, ti_end.tileh, false);
+	terraformcost = CheckBridgeSlope(direction, tileh_end, false);
 	if (CmdFailed(terraformcost) || (terraformcost && !allow_on_slopes))
 		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 	cost += terraformcost;
@@ -293,20 +296,20 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		DiagDirection dir = AxisToDiagDir(direction);
 
 		if (transport == TRANSPORT_RAIL) {
-			MakeRailBridgeRamp(ti_start.tile, _current_player, bridge_type, dir, railtype);
-			MakeRailBridgeRamp(ti_end.tile,   _current_player, bridge_type, ReverseDiagDir(dir), railtype);
+			MakeRailBridgeRamp(tile_start, _current_player, bridge_type, dir, railtype);
+			MakeRailBridgeRamp(tile_end,   _current_player, bridge_type, ReverseDiagDir(dir), railtype);
 		} else {
-			MakeRoadBridgeRamp(ti_start.tile, _current_player, bridge_type, dir);
-			MakeRoadBridgeRamp(ti_end.tile,   _current_player, bridge_type, ReverseDiagDir(dir));
+			MakeRoadBridgeRamp(tile_start, _current_player, bridge_type, dir);
+			MakeRoadBridgeRamp(tile_end,   _current_player, bridge_type, ReverseDiagDir(dir));
 		}
-		MarkTileDirtyByTile(ti_start.tile);
-		MarkTileDirtyByTile(ti_end.tile);
+		MarkTileDirtyByTile(tile_start);
+		MarkTileDirtyByTile(tile_end);
 	}
 
 	// position of middle part of the odd bridge (larger than MAX(i) otherwise)
 	odd_middle_part = (bridge_len % 2) ? (bridge_len / 2) : bridge_len;
 
-	tile = ti_start.tile;
+	tile = tile_start;
 	delta = (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 	for (i = 0; i != bridge_len; i++) {
 		TransportType transport_under;
@@ -316,7 +319,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		tile += delta;
 
-		if (GetTileSlope(tile, &z) != 0 && z >= ti_start.z) {
+		if (GetTileSlope(tile, &z) != 0 && z >= z_start) {
 			return_cmd_error(STR_5009_LEVEL_LAND_OR_WATER_REQUIRED);
 		}
 
@@ -400,7 +403,7 @@ not_valid_below:;
 		}
 	}
 
-	SetSignalsOnBothDir(ti_start.tile, direction == AXIS_X ? TRACK_X : TRACK_Y);
+	SetSignalsOnBothDir(tile_start, direction == AXIS_X ? TRACK_X : TRACK_Y);
 
 	/*	for human player that builds the bridge he gets a selection to choose from bridges (DC_QUERY_COST)
 			It's unnecessary to execute this command every time for every bridge. So it is done only
