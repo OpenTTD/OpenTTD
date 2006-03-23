@@ -107,8 +107,10 @@ endif
 ifdef OSX
 # we prefer to use cocoa drivers rather than SDL drivers
 # if you really want SDL drivers, you can always modify Makefile.config
+ifndef DEDICATED
 WITH_COCOA:=1
 WITH_SDL:=
+endif
 endif
 
 
