@@ -184,9 +184,40 @@ int RedrawScreenDebug(void)
 }
 #endif
 
+/* Windows 95 will not have a WM_MOUSELEAVE message, so define it if
+ * needed. There is no such event as WM_MOUSEENTER, we just made this up :) */
+#define WM_MOUSEENTER WM_USER + 1
+#if !defined(WM_MOUSELEAVE)
+#define WM_MOUSELEAVE 0x02A3
+#endif
+#define TID_POLLMOUSE 1
+#define MOUSE_POLL_DELAY 75
+
+static void CALLBACK TrackMouseTimerProc(HWND hwnd, UINT msg, UINT event, DWORD time)
+{
+	RECT rc;
+	POINT pt;
+
+	/* Get the rectangle of our window and translate it to screen coordinates.
+	 * Compare this with the current screen coordinates of the mouse and if it
+	 * falls outside of the area or our window we have left the window. */
+	GetClientRect(hwnd, &rc);
+	MapWindowPoints(hwnd, HWND_DESKTOP, (LPPOINT)&rc, 2);
+	GetCursorPos(&pt);
+
+	if (!PtInRect(&rc, pt) || (WindowFromPoint(pt) != hwnd)) {
+		KillTimer(hwnd, event);
+		PostMessage(hwnd, WM_MOUSELEAVE, 0, 0L);
+	}
+}
+
 static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg) {
+	case WM_CREATE:
+		SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, (TIMERPROC)TrackMouseTimerProc);
+		break;
+
 	case WM_PAINT: {
 		PAINTSTRUCT ps;
 		HDC dc,dc2;
@@ -259,10 +290,32 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		_right_button_down = false;
 		return 0;
 
+	case WM_MOUSEENTER:
+		printf("enter\n");
+		_cursor.in_window = true;
+		DrawMouseCursor();
+		break;
+
+	case WM_MOUSELEAVE:
+		printf("enter\n");
+		UndrawMouseCursor();
+		_cursor.in_window = false;
+		break;
+
 	case WM_MOUSEMOVE: {
 		int x = (int16)LOWORD(lParam);
 		int y = (int16)HIWORD(lParam);
 		POINT pt;
+
+		/* If the mouse was not in the window and it has moved it means it has
+		 * come into the window, so send a WM_MOUSEENTER message. Also start
+		 * tracking the mouse for exiting the window */
+		if (!_cursor.in_window) {
+			_cursor.in_window = true;
+			SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, (TIMERPROC)TrackMouseTimerProc);
+
+			if (hwnd != GetCapture()) PostMessage(hwnd, WM_MOUSEENTER, 0, 0L);
+		}
 
 		if (_wnd.double_size) {
 			x /= 2;

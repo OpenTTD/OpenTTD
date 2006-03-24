@@ -1654,6 +1654,9 @@ void DrawMouseCursor(void)
 	int w;
 	int h;
 
+	/* Redraw mouse cursor but only when it's inside the window */
+	if (!_cursor.in_window) return;
+
 	// Don't draw the mouse cursor if it's already drawn
 	if (_cursor.visible) {
 		if (!_cursor.dirty) return;

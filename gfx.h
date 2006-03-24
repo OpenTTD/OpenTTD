@@ -21,17 +21,18 @@ struct DrawPixelInfo {
 
 
 typedef struct CursorVars {
-	Point pos, size, offs, delta;
-	Point draw_pos, draw_size;
-	CursorID sprite;
+	Point pos, size, offs, delta; ///< position, size, offset from top-left, and movement
+	Point draw_pos, draw_size;    ///< position and size bounding-box for drawing
+	CursorID sprite; ///< current image of cursor
 
-	int wheel; // mouse wheel movement
-	const CursorID *animate_list, *animate_cur;
-	uint animate_timeout;
+	int wheel;       ///< mouse wheel movement
+	const CursorID *animate_list, *animate_cur; ///< in case of animated cursor, list of frames
+	uint animate_timeout;                       ///< current frame in list of animated cursor
 
-	bool visible;
-	bool dirty;
-	bool fix_at;
+	bool visible;    ///< cursor is visible
+	bool dirty;      ///< the rect occupied by the mouse is dirty (redraw)
+	bool fix_at;     ///< mouse is moving, but cursor is not (used for scrolling)
+	bool in_window;  ///< mouse inside this window, determines drawing logic
 } CursorVars;
 
 
