@@ -1470,7 +1470,7 @@ static void QZ_DrawScreen(void)
 	width  = _cocoa_video_data.width;
 	pitch  = _cocoa_video_data.pitch;
 
-#ifdef __POWERPC__
+#if 1
 	// PPC appears to handle updating of rectangles right
 	{
 		uint num_dirty_rects;
@@ -1497,9 +1497,9 @@ static void QZ_DrawScreen(void)
 
 			y = _cocoa_video_data.dirty_rects[i].top;
 			left = _cocoa_video_data.dirty_rects[i].left;
-			length_drawn = _cocoa_video_data.dirty_rects[i].right - left + 1;
+			length_drawn = _cocoa_video_data.dirty_rects[i].right - left;
 			height = _cocoa_video_data.dirty_rects[i].bottom;
-			for (; y <= height; y++) memcpy(dst + y * pitch + left, src + y * width +left, length_drawn);
+			for (; y < height; y++) memcpy(dst + y * pitch + left, src + y * width +left, length_drawn);
 		}
 
 		_cocoa_video_data.num_dirty_rects = 0;
@@ -1649,8 +1649,8 @@ static void QZ_UpdateVideoModes(void)
 
 	for (i = 0, j = 0; j < lengthof(_resolutions) && i < count; i++) {
 		if (_cocoa_video_data.fullscreen || (
-					(uint)current_modes[i].x <= _cocoa_video_data.device_width &&
-					(uint)current_modes[i].y <= _cocoa_video_data.device_height)
+					(uint)current_modes[i].x < _cocoa_video_data.device_width &&
+					(uint)current_modes[i].y < _cocoa_video_data.device_height)
 				) {
 			_resolutions[j][0] = current_modes[i].x;
 			_resolutions[j][1] = current_modes[i].y;
