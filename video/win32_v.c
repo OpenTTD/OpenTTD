@@ -291,13 +291,11 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		return 0;
 
 	case WM_MOUSEENTER:
-		printf("enter\n");
 		_cursor.in_window = true;
 		DrawMouseCursor();
 		break;
 
 	case WM_MOUSELEAVE:
-		printf("enter\n");
 		UndrawMouseCursor();
 		_cursor.in_window = false;
 		break;
