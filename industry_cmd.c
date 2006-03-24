@@ -263,7 +263,7 @@ static void IndustryDrawSugarMine(const TileInfo *ti)
 	const DrawIndustrySpec1Struct *d;
 	uint32 image;
 
-	if (!(_m[ti->tile].m1 & 0x80)) return;
+	if (!IsIndustryCompleted(ti->tile)) return;
 
 	d = &_draw_industry_spec1[_m[ti->tile].m3];
 
@@ -283,7 +283,7 @@ static void IndustryDrawToffeeQuarry(const TileInfo *ti)
 {
 	int x = 0;
 
-	if (_m[ti->tile].m1 & 0x80) {
+	if (IsIndustryCompleted(ti->tile)) {
 		x = _industry_anim_offs[_m[ti->tile].m3];
 		if ( (byte)x == 0xFF)
 			x = 0;
@@ -295,7 +295,7 @@ static void IndustryDrawToffeeQuarry(const TileInfo *ti)
 
 static void IndustryDrawBubbleGenerator( const TileInfo *ti)
 {
-	if (_m[ti->tile].m1 & 0x80) {
+	if (IsIndustryCompleted(ti->tile)) {
 		AddChildSpriteScreen(SPR_IT_BUBBLE_GENERATOR_BUBBLE, 5, _industry_anim_offs_2[_m[ti->tile].m3]);
 	} else {
 		AddChildSpriteScreen(SPR_IT_BUBBLE_GENERATOR_SPRING, 3, 67);
@@ -322,9 +322,9 @@ static void IndustryDrawToyFactory(const TileInfo *ti)
 
 static void IndustryDrawCoalPlantSparks(const TileInfo *ti)
 {
-	int image = _m[ti->tile].m1;
-	if (image & 0x80) {
-		image = GB(image, 2, 5);
+	if (IsIndustryCompleted(ti->tile)) {
+		uint image = GB(_m[ti->tile].m1, 2, 5);
+
 		if (image != 0 && image < 7) {
 			AddChildSpriteScreen(image + SPR_IT_POWER_PLANT_TRANSFORMERS,
 				_coal_plant_sparks_x[image - 1],
@@ -429,7 +429,7 @@ static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
 
 	td->owner = i->owner;
 	td->str = STR_4802_COAL_MINE + i->type;
-	if ((_m[tile].m1 & 0x80) == 0) {
+	if (!IsIndustryCompleted(tile)) {
 		SetDParamX(td->dparam, 0, td->str);
 		td->str = STR_2058_UNDER_CONSTRUCTION;
 	}
@@ -690,8 +690,7 @@ static void MakeIndustryTileBigger(TileIndex tile, byte size)
 
 	MarkTileDirtyByTile(tile);
 
-	if (!(_m[tile].m1 & 0x80))
-		return;
+	if (!IsIndustryCompleted(tile)) return;
 
 	switch (_m[tile].m5) {
 	case 8:
@@ -745,7 +744,7 @@ static void TileLoop_Industry(TileIndex tile)
 {
 	byte n;
 
-	if (!(_m[tile].m1 & 0x80)) {
+	if (!IsIndustryCompleted(tile)) {
 		MakeIndustryTileBigger(tile, _m[tile].m1);
 		return;
 	}
@@ -1008,7 +1007,7 @@ static void ChopLumberMillTrees(Industry *i)
 	TileIndex tile = i->xy;
 	int a;
 
-	if ((_m[tile].m1 & 0x80) == 0) return;
+	if (!IsIndustryCompleted(tile)) return;
 
 	/* search outwards as a rectangular spiral */
 	for (a = 1; a != 41; a += 2) {

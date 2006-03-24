@@ -16,6 +16,12 @@ static inline Industry* GetIndustryByTile(TileIndex t)
 }
 
 
+static inline bool IsIndustryCompleted(TileIndex tile)
+{
+	return HASBIT(_m[tile].m1, 7);
+}
+
+
 static inline void MakeIndustry(TileIndex t, uint index, uint gfx)
 {
 	SetTileType(t, MP_INDUSTRY);
