@@ -5,6 +5,7 @@
 #include "debug.h"
 #include "functions.h"
 #include "road_map.h"
+#include "station_map.h"
 #include "table/strings.h"
 #include "map.h"
 #include "tile.h"
@@ -1415,7 +1416,7 @@ again:
 	if (v->u.road.state >= 0x20 &&
 			_road_veh_data_1[v->u.road.state - 0x20 + (_opt.road_side<<4)] == v->u.road.frame) {
 		RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
-		Station* st = GetStation(_m[v->tile].m2);
+		Station* st = GetStationByTile(v->tile);
 
 		if (v->current_order.type != OT_LEAVESTATION &&
 				v->current_order.type != OT_GOTO_DEPOT) {
@@ -1423,7 +1424,7 @@ again:
 
 			CLRBIT(rs->status, 7);
 
-			v->last_station_visited = _m[v->tile].m2;
+			v->last_station_visited = GetStationIndex(v->tile);
 
 			RoadVehArrivesAt(v, st);
 

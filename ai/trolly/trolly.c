@@ -22,6 +22,7 @@
 #include "../../debug.h"
 #include "../../functions.h"
 #include "../../road_map.h"
+#include "../../station_map.h"
 #include "../../table/strings.h"
 #include "../../map.h"
 #include "../../tile.h"
@@ -1202,7 +1203,7 @@ static void AiNew_State_GiveOrders(Player *p)
 	idx = 0;
 	order.type = OT_GOTO_STATION;
 	order.flags = 0;
-	order.station = _m[p->ainew.to_tile].m2;
+	order.station = GetStationIndex(p->ainew.to_tile);
 	if (p->ainew.tbt == AI_TRUCK && p->ainew.to_deliver)
 		order.flags |= OF_FULL_LOAD;
 	AI_DoCommand(0, p->ainew.veh_id + (idx << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
@@ -1210,7 +1211,7 @@ static void AiNew_State_GiveOrders(Player *p)
 	idx = 0;
 	order.type = OT_GOTO_STATION;
 	order.flags = 0;
-	order.station = _m[p->ainew.from_tile].m2;
+	order.station = GetStationIndex(p->ainew.from_tile);
 	if (p->ainew.tbt == AI_TRUCK && p->ainew.from_deliver)
 		order.flags |= OF_FULL_LOAD;
 	AI_DoCommand(0, p->ainew.veh_id + (idx << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);

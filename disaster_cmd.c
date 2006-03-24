@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "industry_map.h"
+#include "station_map.h"
 #include "table/strings.h"
 #include "functions.h"
 #include "map.h"
@@ -183,7 +184,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 				v->current_order.station = 1;
 				v->age = 0;
 
-				SetDParam(0, _m[tile].m2);
+				SetDParam(0, GetStationIndex(tile));
 				AddNewsItem(STR_B000_ZEPPELIN_DISASTER_AT,
 					NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ACCIDENT, 0),
 					v->index,
@@ -205,7 +206,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 				IsTileType(tile, MP_STATION) &&
 				IS_BYTE_INSIDE(_m[tile].m5, 8, 0x43) &&
 				IS_HUMAN_PLAYER(GetTileOwner(tile))) {
-			st = GetStation(_m[tile].m2);
+			st = GetStationByTile(tile);
 			CLRBITS(st->airport_flags, RUNWAY_IN_block);
 		}
 
@@ -247,7 +248,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 			IsTileType(tile, MP_STATION) &&
 			IS_BYTE_INSIDE(_m[tile].m5, 8, 0x43) &&
 			IS_HUMAN_PLAYER(GetTileOwner(tile))) {
-		st = GetStation(_m[tile].m2);
+		st = GetStationByTile(tile);
 		SETBITS(st->airport_flags, RUNWAY_IN_block);
 	}
 }

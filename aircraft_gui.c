@@ -4,6 +4,7 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
+#include "station_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "map.h"
@@ -650,7 +651,7 @@ static void DrawAircraftDepotWindow(Window *w)
 	}
 	SetVScrollCount(w, (num + w->hscroll.cap - 1) / w->hscroll.cap);
 
-	SetDParam(0, _m[tile].m2);
+	SetDParam(0, GetStationIndex(tile));
 	DrawWindowWidgets(w);
 
 	x = 2;

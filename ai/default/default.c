@@ -7,6 +7,7 @@
 #include "../../map.h"
 #include "../../rail_map.h"
 #include "../../road_map.h"
+#include "../../station_map.h"
 #include "../../tile.h"
 #include "../../player.h"
 #include "../../tunnel_map.h"
@@ -2313,11 +2314,11 @@ static void AiStateBuildRail(Player *p)
 	p->ai.banned_tile_count = 0;
 }
 
-static int AiGetStationIdByDef(TileIndex tile, int id)
+static StationID AiGetStationIdByDef(TileIndex tile, int id)
 {
 	const AiDefaultBlockData *p = _default_rail_track_data[id]->data;
 	while (p->mode != 1) p++;
-	return _m[TILE_ADD(tile, ToTileIndexDiff(p->tileoffs))].m2;
+	return GetStationIndex(TILE_ADD(tile, ToTileIndexDiff(p->tileoffs)));
 }
 
 static void AiStateBuildRailVeh(Player *p)
@@ -3096,11 +3097,11 @@ static void AiStateBuildRoad(Player *p)
 	p->ai.banned_tile_count = 0;
 }
 
-static int AiGetStationIdFromRoadBlock(TileIndex tile, int id)
+static StationID AiGetStationIdFromRoadBlock(TileIndex tile, int id)
 {
 	const AiDefaultBlockData *p = _road_default_block_data[id]->data;
 	while (p->mode != 1) p++;
-	return _m[TILE_ADD(tile, ToTileIndexDiff(p->tileoffs))].m2;
+	return GetStationIndex(TILE_ADD(tile, ToTileIndexDiff(p->tileoffs)));
 }
 
 static void AiStateBuildRoadVehicles(Player *p)
@@ -3406,11 +3407,11 @@ static void AiStateBuildDefaultAirportBlocks(Player *p)
 	p->ai.state = AIS_BUILD_AIRCRAFT_VEHICLES;
 }
 
-static int AiGetStationIdFromAircraftBlock(TileIndex tile, int id)
+static StationID AiGetStationIdFromAircraftBlock(TileIndex tile, int id)
 {
 	const AiDefaultBlockData *p = _airport_default_block_data[id];
 	while (p->mode != 1) p++;
-	return _m[TILE_ADD(tile, ToTileIndexDiff(p->tileoffs))].m2;
+	return GetStationIndex(TILE_ADD(tile, ToTileIndexDiff(p->tileoffs)));
 }
 
 static void AiStateBuildAircraftVehicles(Player *p)
@@ -3431,7 +3432,7 @@ static void AiStateBuildAircraftVehicles(Player *p)
 
 	/* XXX - Have the AI pick the hangar terminal in an airport. Eg get airport-type
 	 * and offset to the FIRST depot because the AI picks the st->xy tile */
-	tile += ToTileIndexDiff(GetAirport(GetStation(_m[tile].m2)->airport_type)->airport_depots[0]);
+	tile += ToTileIndexDiff(GetAirport(GetStationByTile(tile)->airport_type)->airport_depots[0]);
 	if (CmdFailed(DoCommandByTile(tile, veh, 0, DC_EXEC, CMD_BUILD_AIRCRAFT))) return;
 	loco_id = _new_aircraft_id;
 

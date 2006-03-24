@@ -6,6 +6,7 @@
 #include "debug.h"
 #include "functions.h"
 #include "gui.h"
+#include "station_map.h"
 #include "table/strings.h"
 #include "map.h"
 #include "tile.h"
@@ -196,21 +197,20 @@ enum AccelType {
 static bool TrainShouldStop(const Vehicle* v, TileIndex tile)
 {
 	const Order* o = &v->current_order;
+	StationID sid = GetStationIndex(tile);
 
 	assert(v->type == VEH_Train);
-	assert(IsTileType(v->tile, MP_STATION));
 	//When does a train drive through a station
 	//first we deal with the "new nonstop handling"
-	if (_patches.new_nonstop && o->flags & OF_NON_STOP &&
-			_m[tile].m2 == o->station )
+	if (_patches.new_nonstop && o->flags & OF_NON_STOP && sid == o->station) {
 		return false;
+	}
 
-	if (v->last_station_visited == _m[tile].m2)
-		return false;
+	if (v->last_station_visited == sid) return false;
 
-	if (_m[tile].m2 != o->station &&
-			(o->flags & OF_NON_STOP || _patches.new_nonstop))
+	if (sid != o->station && (o->flags & OF_NON_STOP || _patches.new_nonstop)) {
 		return false;
+	}
 
 	return true;
 }
@@ -2027,8 +2027,11 @@ static bool NtpCallbFindStation(TileIndex tile, TrainTrackFollowerData *ttfd, in
 	if (ttfd->dest_coords == 0) return false;
 
 	// did we reach the final station?
-	if ((ttfd->station_index == INVALID_STATION && tile == ttfd->dest_coords) ||
-			(IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_m[tile].m5, 0, 8) && _m[tile].m2 == ttfd->station_index)) {
+	if ((ttfd->station_index == INVALID_STATION && tile == ttfd->dest_coords) || (
+				IsTileType(tile, MP_STATION) &&
+				IS_BYTE_INSIDE(_m[tile].m5, 0, 8) &&
+				GetStationIndex(tile) == ttfd->station_index
+			)) {
 		/* We do not check for dest_coords if we have a station_index,
 		 * because in that case the dest_coords are just an
 		 * approximation of where the station is */
@@ -2301,7 +2304,7 @@ static bool ProcessTrainOrder(Vehicle *v)
 	if (_patches.new_nonstop &&
 			v->current_order.flags & OF_NON_STOP &&
 			IsTileType(v->tile, MP_STATION) &&
-			v->current_order.station == _m[v->tile].m2) {
+			v->current_order.station == GetStationIndex(v->tile)) {
 		v->cur_order_index++;
 	}
 

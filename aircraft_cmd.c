@@ -4,6 +4,7 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
+#include "station_map.h"
 #include "table/strings.h"
 #include "map.h"
 #include "tile.h"
@@ -239,7 +240,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		 * layout for #th position of depot. Since layout must start with a listing
 		 * of all depots, it is simple */
 		{
-			const Station* st = GetStation(_m[tile].m2);
+			const Station* st = GetStationByTile(tile);
 			const AirportFTAClass* apc = GetAirport(st->airport_type);
 			uint i;
 
@@ -256,7 +257,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		v->u.air.state = HANGAR;
 		v->u.air.previous_pos = v->u.air.pos;
-		v->u.air.targetairport = _m[tile].m2;
+		v->u.air.targetairport = GetStationIndex(tile);
 		v->next = u;
 
 		v->service_interval = _patches.servint_aircraft;

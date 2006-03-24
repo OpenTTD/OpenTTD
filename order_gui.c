@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "road_map.h"
+#include "station_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "functions.h"
@@ -190,7 +191,6 @@ static void DrawOrdersWindow(Window *w)
 static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 {
 	Order order;
-	int st_index;
 
 	// check depot first
 	if (_patches.gotodepot) {
@@ -221,7 +221,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			if (IsAircraftHangarTile(tile) && IsTileOwner(tile, _local_player)) {
 				order.type = OT_GOTO_DEPOT;
 				order.flags = OF_PART_OF_ORDERS;
-				order.station = _m[tile].m2;
+				order.station = GetStationIndex(tile);
 				return order;
 			}
 			break;
@@ -257,7 +257,8 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	}
 
 	if (IsTileType(tile, MP_STATION)) {
-		const Station* st = GetStation(st_index = _m[tile].m2);
+		StationID st_index = GetStationIndex(tile);
+		const Station* st = GetStation(st_index);
 
 		if (st->owner == _current_player || st->owner == OWNER_NONE) {
 			byte facil;

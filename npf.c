@@ -10,6 +10,7 @@
 #include "macros.h"
 #include "pathfind.h"
 #include "station.h"
+#include "station_map.h"
 #include "tile.h"
 #include "depot.h"
 #include "tunnel_map.h"
@@ -423,7 +424,7 @@ static int32 NPFFindStationOrTile(AyStar* as, OpenListNode *current)
 	 * is correct */
 	if (
 		(fstd->station_index == INVALID_STATION && tile == fstd->dest_coords) || /* We've found the tile, or */
-		(IsTileType(tile, MP_STATION) && _m[tile].m2 == fstd->station_index) /* the station */
+		(IsTileType(tile, MP_STATION) && GetStationIndex(tile) == fstd->station_index) /* the station */
 	) {
 		return AYSTAR_FOUND_END_NODE;
 	} else {
