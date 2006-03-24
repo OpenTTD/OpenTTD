@@ -265,6 +265,9 @@ assert_compile(sizeof(uint8)  == 1);
 # define DrawString OTTD_DrawString
 # define Random OTTD_Random
 # define CloseConnection OTTD_CloseConnection
+
+// enable the preprocessor to tell the difference between different OSX versions
+# include <AvailabilityMacros.h>
 #endif /* __APPLE */
 
 #ifdef __AMIGA__

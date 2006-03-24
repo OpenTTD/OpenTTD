@@ -63,7 +63,6 @@ release: all
 	$(Q)cp docs/console.txt "OpenTTD $(REV)/docs/"
 	$(Q)cp COPYING "OpenTTD $(REV)/docs/"
 	$(Q)cp changelog.txt "OpenTTD $(REV)/docs/"
-	$(Q)cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD $(REV)/docs/"
 	$(Q)cp os/macosx/*.webloc "OpenTTD $(REV)"
 	$(Q)cp known-bugs.txt "OpenTTD $(REV)/known-bugs.txt"
 	$(Q)cp scenario/* "OpenTTD $(REV)/scenario/"
