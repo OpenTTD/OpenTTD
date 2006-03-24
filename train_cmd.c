@@ -1482,8 +1482,8 @@ static void DisableTrainCrossing(TileIndex tile)
 	if (IsTileType(tile, MP_STREET) &&
 			IsLevelCrossing(tile) &&
 			VehicleFromPos(tile, &tile, TestTrainOnCrossing) == NULL && // empty?
-			GB(_m[tile].m5, 2, 1) != 0) { // Lights on?
-		SB(_m[tile].m5, 2, 1, 0); // Switch lights off
+			IsCrossingBarred(tile)) {
+		UnbarCrossing(tile);
 		MarkTileDirtyByTile(tile);
 	}
 }
@@ -3206,8 +3206,8 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 		if ((ts &= (ts >> 16)) == 0) {
 			// make a rail/road crossing red
 			if (IsTileType(tile, MP_STREET) && IsLevelCrossing(tile)) {
-				if (GB(_m[tile].m5, 2, 1) == 0) {
-					SB(_m[tile].m5, 2, 1, 1);
+				if (!IsCrossingBarred(tile)) {
+					BarCrossing(tile);
 					SndPlayVehicleFx(SND_0E_LEVEL_CROSSING, v);
 					MarkTileDirtyByTile(tile);
 				}

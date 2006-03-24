@@ -776,7 +776,7 @@ static void DrawTile_Road(TileInfo *ti)
 
 			if (GetCrossingRoadAxis(ti->tile) == AXIS_X) image++;
 
-			if ((ti->map5 & 4) != 0) image += 2;
+			if (IsCrossingBarred(ti->tile)) image += 2;
 
 			if ( _m[ti->tile].m4 & 0x80) {
 				image += 8;
@@ -1059,10 +1059,10 @@ static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 {
 	switch (GetRoadType(tile)) {
 		case ROAD_CROSSING:
-			if (v->type == VEH_Train && GB(_m[tile].m5, 2, 1) == 0) {
+			if (v->type == VEH_Train && !IsCrossingBarred(tile)) {
 				/* train crossing a road */
 				SndPlayVehicleFx(SND_0E_LEVEL_CROSSING, v);
-				SB(_m[tile].m5, 2, 1, 1);
+				BarCrossing(tile);
 				MarkTileDirtyByTile(tile);
 			}
 			break;
@@ -1084,8 +1084,7 @@ static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 static void VehicleLeave_Road(Vehicle *v, TileIndex tile, int x, int y)
 {
 	if (IsLevelCrossing(tile) && v->type == VEH_Train && v->next == NULL) {
-		// Turn off level crossing lights
-		SB(_m[tile].m5, 2, 1, 0);
+		UnbarCrossing(tile);
 		MarkTileDirtyByTile(tile);
 	}
 }

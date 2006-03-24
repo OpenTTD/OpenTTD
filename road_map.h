@@ -66,6 +66,20 @@ static inline void SetCrossingRoadOwner(TileIndex t, Owner o)
 	_m[t].m3 = o;
 }
 
+static inline void UnbarCrossing(TileIndex t)
+{
+	CLRBIT(_m[t].m5, 2);
+}
+
+static inline void BarCrossing(TileIndex t)
+{
+	SETBIT(_m[t].m5, 2);
+}
+
+static inline bool IsCrossingBarred(TileIndex t)
+{
+	return HASBIT(_m[t].m5, 2);
+}
 
 typedef enum RoadType {
 	ROAD_NORMAL,
