@@ -14,3 +14,14 @@ static inline Industry* GetIndustryByTile(TileIndex t)
 {
 	return GetIndustry(GetIndustryIndex(t));
 }
+
+
+static inline void MakeIndustry(TileIndex t, uint index, uint gfx)
+{
+	SetTileType(t, MP_INDUSTRY);
+	_m[t].m1 = 0;
+	_m[t].m2 = index;
+	_m[t].m3 = 0;
+	_m[t].m4 = 0;
+	_m[t].m5 = gfx;
+}

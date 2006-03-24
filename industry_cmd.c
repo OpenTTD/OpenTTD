@@ -1474,10 +1474,8 @@ static void DoCreateNewIndustry(Industry* i, TileIndex tile, int type, const Ind
 
 			DoCommandByTile(cur_tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 
-			SetTileType(cur_tile, MP_INDUSTRY);
-			_m[cur_tile].m5 = it->map5;
-			_m[cur_tile].m2 = i->index;
-			_m[cur_tile].m1 = _generating_world ? 0x1E : 0; /* maturity */
+			MakeIndustry(cur_tile, i->index, it->map5);
+			if (_generating_world) _m[cur_tile].m1 = 0x1E; /* maturity */
 		}
 	} while ((++it)->ti.x != -0x80);
 
