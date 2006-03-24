@@ -352,7 +352,7 @@ static void DrawTile_Industry(TileInfo *ti)
 
 	/* Pointer to industry */
 	ind = GetIndustryByTile(ti->tile);
-	ormod = (ind->color_map + 0x307) << PALETTE_SPRITE_START;
+	ormod = GENERAL_SPRITE_COLOR(ind->color_map);
 
 	/* Retrieve pointer to the draw industry tile struct */
 	dits = &_industry_draw_tile_data[(ti->map5 << 2) | GB(_m[ti->tile].m1, 0, 2)];

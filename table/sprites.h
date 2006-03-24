@@ -700,6 +700,9 @@ enum Sprites {
 	SPR_FLAG_VEH_STOPPED  = 3090,
 	SPR_FLAG_VEH_RUNNING  = 3091,
 
+	SPR_VEH_BUS_SW_VIEW   = 3097,
+	SPR_VEH_BUS_SIDE_VIEW = 3098,
+
 	/* Rotor sprite numbers */
 	SPR_ROTOR_STOPPED   = 3901,
 	SPR_ROTOR_MOVING_1  = 3902,
@@ -1133,6 +1136,10 @@ assert_compile( (1 << RECOLOR_BIT & PALETTE_SPRITE_MASK) == 0 );
 assert_compile( (PALETTE_SPRITE_MASK & SPRITE_MASK) == 0 );
 assert_compile( SPRITE_WIDTH + PALETTE_SPRITE_WIDTH <= 30 );
 
+enum Recoloring {
+	PALETTE_RECOLOR_START       = 0x307,
+};
+
 #define PALETTE_RECOLOR_SPRITE(a) (a << PALETTE_SPRITE_START | PALETTE_MODIFIER_COLOR)
 enum PaletteSprites {
 	//note: these numbers are already the modified once the renderer needs.
@@ -1149,8 +1156,8 @@ enum PaletteSprites {
 	//use this if you add stuff to the value, so that the resulting color
 	//is not a fixed value.
 	//NOTE THAT THE SWITCH 0x8000 is NOT present in _TO_COLORS yet!
-	PALETTE_TO_COLORS           = 0x307 << PALETTE_SPRITE_START,
-	PALETTE_TO_DARK_BLUE        = PALETTE_RECOLOR_SPRITE(0x307),
+	PALETTE_TO_COLORS           = PALETTE_RECOLOR_START << PALETTE_SPRITE_START,
+	PALETTE_TO_DARK_BLUE        = PALETTE_RECOLOR_SPRITE(PALETTE_RECOLOR_START),
 	PALETTE_TO_PALE_GREEN       = PALETTE_RECOLOR_SPRITE(0x308),
 	PALETTE_TO_PINK             = PALETTE_RECOLOR_SPRITE(0x309),
 	PALETTE_TO_YELLOW           = PALETTE_RECOLOR_SPRITE(0x30A),

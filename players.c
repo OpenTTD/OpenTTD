@@ -45,7 +45,7 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 		flag |= 2;
 
 	/* draw the gradient */
-	DrawSprite((color + 0x307) << PALETTE_SPRITE_START | PALETTE_MODIFIER_COLOR | SPR_GRADIENT, x, y);
+	DrawSprite(GENERAL_SPRITE_COLOR(color) | PALETTE_MODIFIER_COLOR | SPR_GRADIENT, x, y);
 
 	/* draw the cheeks */
 	DrawSprite(cheeks_table[flag&3], x, y);
@@ -74,15 +74,15 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 
 		if (!(flag & 2)) {
 			if (!(flag & 1)) {
-				DrawSprite(high+((val1 * 12 >> 4) + (0x32B | PALETTE_MODIFIER_COLOR)), x, y);
+				DrawSprite(high+((val1 * 12 >> 4) + SPRITE_PALETTE(0x32B)), x, y);
 			} else {
 				DrawSprite(high+(val1 + (0x337 | PALETTE_MODIFIER_COLOR)), x, y);
 			}
 		} else {
 			if (!(flag & 1)) {
-				DrawSprite(high+((val1 * 11 >> 4) + (0x39A | PALETTE_MODIFIER_COLOR)), x, y);
+				DrawSprite(high+(val1 + SPRITE_PALETTE(0x337)), x, y);
 			} else {
-				DrawSprite(high+(val1 + (0x3B8 | PALETTE_MODIFIER_COLOR)), x, y);
+				DrawSprite(high+(val1 + SPRITE_PALETTE(0x3B8)), x, y);
 			}
 		}
 	}

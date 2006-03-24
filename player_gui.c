@@ -271,7 +271,7 @@ static void SelectPlayerColorWndProc(Window *w, WindowEvent *e)
 		for (i = 0; i != 16; i++) {
 			if (!(used_colors & 1) && --pos < 0 && pos >= -8) {
 				DrawString(x + 30, y, STR_00D1_DARK_BLUE + i, 2);
-				DrawSprite((i << 16) + 0x3078C1A, x + 14, y + 4);
+				DrawSprite(((GENERAL_SPRITE_COLOR(i) | PALETTE_MODIFIER_COLOR) | SPR_VEH_BUS_SIDE_VIEW), x + 14, y + 4);
 				y += 14;
 			}
 			used_colors >>= 1;
@@ -541,8 +541,8 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		DrawPlayerVehiclesAmount(w->window_number);
 
 		DrawString(110,48, STR_7006_COLOR_SCHEME, 0);
-		// Draw company-colour bus (0xC19)
-		DrawSprite(PLAYER_SPRITE_COLOR(p->index) + (0xC19 | PALETTE_MODIFIER_COLOR), 215, 49);
+		// Draw company-colour bus
+		DrawSprite(PLAYER_SPRITE_COLOR(p->index) + SPRITE_PALETTE(SPR_VEH_BUS_SW_VIEW), 215, 49);
 
 		DrawPlayerFace(p->face, p->player_color, 2, 16);
 
@@ -726,11 +726,11 @@ static void BuyCompanyWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _buy_company_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     5,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     5,    11,   333,     0,    13, STR_00B3_MESSAGE_FROM,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,     5,     0,   333,    14,   136, 0x0,										STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,     5,   148,   207,   117,   128, STR_00C9_NO,						STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,     5,   218,   277,   117,   128, STR_00C8_YES,					STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     5,     0,    10,     0,    13, STR_00C5,              STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,     5,    11,   333,     0,    13, STR_00B3_MESSAGE_FROM, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,     5,     0,   333,    14,   136, 0x0,                   STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,     5,   148,   207,   117,   128, STR_00C9_NO,           STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,     5,   218,   277,   117,   128, STR_00C8_YES,          STR_NULL},
 {   WIDGETS_END},
 };
 

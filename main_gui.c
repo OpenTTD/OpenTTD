@@ -2404,7 +2404,7 @@ void SetupColorsAndInitialWindow(void)
 	int width,height;
 
 	for (i = 0; i != 16; i++) {
-		const byte* b = GetNonSprite(0x307 + i);
+		const byte* b = GetNonSprite(PALETTE_RECOLOR_START + i);
 
 		assert(b);
 		_color_list[i] = *(const ColorList*)(b + 0xC6);

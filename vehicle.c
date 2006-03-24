@@ -2052,7 +2052,7 @@ static PalSpriteID GetEngineColourMap(EngineID engine_type, PlayerID player)
 
 	/* XXX Magic 0x307 is the first company colour remap sprite */
 	map = HASBIT(_engine_info[engine_type].misc_flags, EF_USES_2CC) ?
-		(SPR_2CCMAP_BASE + colour + colour * 16) : (0x307 + colour);
+		(SPR_2CCMAP_BASE + colour + colour * 16) : (PALETTE_RECOLOR_START + colour);
 
 	return SPRITE_PALETTE(map << PALETTE_SPRITE_START);
 }
