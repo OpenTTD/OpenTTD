@@ -130,7 +130,7 @@
 
 # Makefile version tag
 # it checks if the version tag in Makefile.config is the same and force update outdated config files
-MAKEFILE_VERSION:=10
+MAKEFILE_VERSION:=9
 
 # CONFIG_WRITER has to be found even for manual configuration
 CONFIG_WRITER=makefiledir/Makefile.config_writer
@@ -485,9 +485,10 @@ LIBS += $(shell $(LIBPNG-CONFIG)  --L_opts $(PNGCONFIG_FLAGS))
 endif
 endif
 
-ifdef WITH_ICONV
+ifdef OSX
+ifndef JAGUAR
 LIBS += -liconv
-CFLAGS += -DWITH_ICONV
+endif
 endif
 
 # enables/disables assert()

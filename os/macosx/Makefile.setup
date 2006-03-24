@@ -84,10 +84,3 @@ $(shell $(CC) os/macosx/G5_detector.c -o os/macosx/G5_detector)
 		endif
 	endif
 endif
-
-# the OSX port need Apple's modified iconv to use the charset UTF-8-MAC. This was added by default in 10.3, but is not present in earlier versions
-ifdef JAGUAR
-	WITH_ICONV:=
-else
-	WITH_ICONV:=1
-endif
