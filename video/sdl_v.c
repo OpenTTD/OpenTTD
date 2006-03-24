@@ -346,9 +346,11 @@ static int PollEvent(void)
 		break;
 
 	case SDL_ACTIVEEVENT:
-		if (ev.active.gain == 1) // mouse entered the window, enable cursor
+		if (!(ev.active.state & SDL_APPMOUSEFOCUS)) break;
+
+		if (ev.active.gain) { // mouse entered the window, enable cursor
 			_cursor.in_window = true;
-		else if (ev.active.gain == 0) {
+		} else {
 			UndrawMouseCursor(); // mouse left the window, undraw cursor
 			_cursor.in_window = false;
 		}
