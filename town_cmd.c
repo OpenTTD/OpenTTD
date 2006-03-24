@@ -9,6 +9,7 @@
 #include "table/sprites.h"
 #include "map.h"
 #include "tile.h"
+#include "town_map.h"
 #include "tunnel_map.h"
 #include "viewport.h"
 #include "town.h"
@@ -265,7 +266,7 @@ static void MakeSingleHouseBigger(TileIndex tile)
 	_m[tile].m3 = _m[tile].m3 + 0x40;
 
 	if ((_m[tile].m3 & 0xC0) == 0xC0) {
-		ChangePopulation(GetTown(_m[tile].m2), _housetype_population[_m[tile].m4]);
+		ChangePopulation(GetTownByTile(tile), _housetype_population[_m[tile].m4]);
 	}
 	MarkTileDirtyByTile(tile);
 }
@@ -298,7 +299,7 @@ static void TileLoop_Town(TileIndex tile)
 		_m[tile].m5 = (_m[tile].m5 & 0x40) | 0x80;
 	}
 
-	t = GetTown(_m[tile].m2);
+	t = GetTownByTile(tile);
 
 	r = Random();
 
@@ -356,7 +357,7 @@ static int32 ClearTile_Town(TileIndex tile, byte flags)
 
 	rating = _housetype_remove_ratingmod[house];
 	_cleared_town_rating += rating;
-	_cleared_town = t = GetTown(_m[tile].m2);
+	_cleared_town = t = GetTownByTile(tile);
 
 	if (_current_player < MAX_PLAYERS) {
 		if (rating > t->ratings[_current_player] && !(flags & DC_NO_TOWN_RATING) && !_cheats.magic_bulldozer.value) {
@@ -743,7 +744,7 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 
 		if (IsTileType(tile, MP_STREET)) {
 			/* Don't allow building over roads of other cities */
-			if (IsTileOwner(tile, OWNER_TOWN) && GetTown(_m[tile].m2) != t)
+			if (IsTileOwner(tile, OWNER_TOWN) && GetTownByTile(tile) != t)
 				_grow_town_result = -1;
 			else if (_game_mode == GM_EDITOR) {
 				/* If we are in the SE, and this road-piece has no town owner yet, it just found an
@@ -1483,7 +1484,7 @@ void DeleteTown(Town *t)
 	for (tile = 0; tile < MapSize(); ++tile) {
 		switch (GetTileType(tile)) {
 			case MP_HOUSE:
-				if (GetTown(_m[tile].m2) == t)
+				if (GetTownByTile(tile) == t)
 					DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 				break;
 
@@ -1830,7 +1831,7 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 				IsTileType(tile, MP_STREET) &&
 				(IsLevelCrossing(tile) ? GetCrossingRoadOwner(tile) : GetTileOwner(tile)) == OWNER_TOWN
 			))
-		return GetTown(_m[tile].m2);
+		return GetTownByTile(tile);
 
 	FOR_ALL_TOWNS(t) {
 		if (t->xy != 0) {

@@ -11,6 +11,7 @@
 #include "table/strings.h"
 #include "map.h"
 #include "tile.h"
+#include "town_map.h"
 #include "tunnel_map.h"
 #include "vehicle.h"
 #include "viewport.h"
@@ -321,7 +322,7 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 						(track == TRACK_Y && GetRoadBits(tile) == ROAD_X)
 					)) {
 				if (flags & DC_EXEC) {
-					MakeRoadCrossing(tile, GetTileOwner(tile), _current_player, (track == TRACK_X ? AXIS_Y : AXIS_X), p1, _m[tile].m2);
+					MakeRoadCrossing(tile, GetTileOwner(tile), _current_player, (track == TRACK_X ? AXIS_Y : AXIS_X), p1, GetTownIndex(tile));
 				}
 				break;
 			}
@@ -396,7 +397,7 @@ int32 CmdRemoveSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			}
 
 			if (flags & DC_EXEC) {
-				MakeRoadNormal(tile, GetCrossingRoadOwner(tile), GetCrossingRoadBits(tile), _m[tile].m2);
+				MakeRoadNormal(tile, GetCrossingRoadOwner(tile), GetCrossingRoadBits(tile), GetTownIndex(tile));
 			}
 			break;
 		}

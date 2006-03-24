@@ -10,6 +10,7 @@
 #include "functions.h"
 #include "map.h"
 #include "tile.h"
+#include "town_map.h"
 #include "vehicle.h"
 #include "viewport.h"
 #include "command.h"
@@ -109,7 +110,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) { // index of town is not saved for bridge (no space)
 			t = ClosestTownFromTile(tile, _patches.dist_local_authority);
 		} else {
-			t = GetTown(_m[tile].m2);
+			t = GetTownByTile(tile);
 		}
 	} else {
 		t = NULL;
@@ -1106,7 +1107,7 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 				break;
 
 			case ROAD_CROSSING:
-				MakeRoadNormal(tile, GetCrossingRoadOwner(tile), GetCrossingRoadBits(tile), _m[tile].m2);
+				MakeRoadNormal(tile, GetCrossingRoadOwner(tile), GetCrossingRoadBits(tile), GetTownIndex(tile));
 				break;
 
 			default:
