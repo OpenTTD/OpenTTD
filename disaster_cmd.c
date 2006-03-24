@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "industry_map.h"
 #include "table/strings.h"
 #include "functions.h"
 #include "map.h"
@@ -336,7 +337,7 @@ static void DestructIndustry(Industry *i)
 	TileIndex tile;
 
 	for (tile = 0; tile != MapSize(); tile++) {
-		if (IsTileType(tile, MP_INDUSTRY) && _m[tile].m2 == i->index) {
+		if (IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == i->index) {
 			_m[tile].m1 = 0;
 			MarkTileDirtyByTile(tile);
 		}
@@ -393,7 +394,7 @@ static void DisasterTick_2(Vehicle *v)
 	} else if (v->current_order.station == 0) {
 		int x,y;
 		TileIndex tile;
-		int ind;
+		uint ind;
 
 		x = v->x_pos - 15*16;
 		y = v->y_pos;
@@ -405,7 +406,8 @@ static void DisasterTick_2(Vehicle *v)
 		if (!IsTileType(tile, MP_INDUSTRY))
 			return;
 
-		v->dest_tile = ind = _m[tile].m2;
+		ind = GetIndustryIndex(tile);
+		v->dest_tile = ind;
 
 		if (GetIndustry(ind)->type == IT_OIL_REFINERY) {
 			v->current_order.station = 1;
@@ -464,7 +466,7 @@ static void DisasterTick_3(Vehicle *v)
 	} else if (v->current_order.station == 0) {
 		int x,y;
 		TileIndex tile;
-		int ind;
+		uint ind;
 
 		x = v->x_pos - 15*16;
 		y = v->y_pos;
@@ -476,7 +478,8 @@ static void DisasterTick_3(Vehicle *v)
 		if (!IsTileType(tile, MP_INDUSTRY))
 			return;
 
-		v->dest_tile = ind = _m[tile].m2;
+		ind = GetIndustryIndex(tile);
+		v->dest_tile = ind;
 
 		if (GetIndustry(ind)->type == IT_FACTORY) {
 			v->current_order.station = 1;

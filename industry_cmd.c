@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "clear_map.h"
+#include "industry_map.h"
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "functions.h"
@@ -350,7 +351,7 @@ static void DrawTile_Industry(TileInfo *ti)
 	uint32 image, ormod;
 
 	/* Pointer to industry */
-	ind = GetIndustry(_m[ti->tile].m2);
+	ind = GetIndustryByTile(ti->tile);
 	ormod = (ind->color_map + 0x307) << PALETTE_SPRITE_START;
 
 	/* Retrieve pointer to the draw industry tile struct */
@@ -424,7 +425,7 @@ static void GetAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
 
 static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
 {
-	const Industry* i = GetIndustry(_m[tile].m2);
+	const Industry* i = GetIndustryByTile(tile);
 
 	td->owner = i->owner;
 	td->str = STR_4802_COAL_MINE + i->type;
@@ -436,7 +437,7 @@ static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
 
 static int32 ClearTile_Industry(TileIndex tile, byte flags)
 {
-	Industry *i = GetIndustry(_m[tile].m2);
+	Industry* i = GetIndustryByTile(tile);
 
 	/*	* water can destroy industries
 			* in editor you can bulldoze industries
@@ -465,7 +466,7 @@ static const byte _industry_min_cargo[] = {
 
 static void TransportIndustryGoods(TileIndex tile)
 {
-	Industry* i = GetIndustry(_m[tile].m2);
+	Industry* i = GetIndustryByTile(tile);
 	uint cw, am;
 
 	cw = min(i->cargo_waiting[0], 255);
@@ -821,7 +822,7 @@ static void TileLoop_Industry(TileIndex tile)
 
 
 	case 143: {
-			Industry *i = GetIndustry(_m[tile].m2);
+			Industry* i = GetIndustryByTile(tile);
 			if (i->was_cargo_delivered) {
 				i->was_cargo_delivered = false;
 				_m[tile].m4 = 0;
@@ -847,7 +848,7 @@ static void TileLoop_Industry(TileIndex tile)
 
 static void ClickTile_Industry(TileIndex tile)
 {
-	ShowIndustryViewWindow(_m[tile].m2);
+	ShowIndustryViewWindow(GetIndustryIndex(tile));
 }
 
 static uint32 GetTileTrackStatus_Industry(TileIndex tile, TransportType mode)
@@ -857,7 +858,7 @@ static uint32 GetTileTrackStatus_Industry(TileIndex tile, TransportType mode)
 
 static void GetProducedCargo_Industry(TileIndex tile, byte *b)
 {
-	const Industry* i = GetIndustry(_m[tile].m2);
+	const Industry* i = GetIndustryByTile(tile);
 
 	b[0] = i->produced_cargo[0];
 	b[1] = i->produced_cargo[1];
@@ -872,7 +873,7 @@ void DeleteIndustry(Industry *i)
 {
 	BEGIN_TILE_LOOP(tile_cur, i->width, i->height, i->xy);
 		if (IsTileType(tile_cur, MP_INDUSTRY)) {
-			if (_m[tile_cur].m2 == i->index) {
+			if (GetIndustryIndex(tile_cur) == i->index) {
 				DoClearSquare(tile_cur);
 			}
 		} else if (IsTileType(tile_cur, MP_STATION) && _m[tile_cur].m5 == 0x4B) {
