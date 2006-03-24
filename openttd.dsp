@@ -147,10 +147,6 @@ SOURCE=.\aystar.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\bridge_map.c
-# End Source File
-# Begin Source File
-
 SOURCE=.\command.c
 # End Source File
 # Begin Source File
@@ -363,10 +359,6 @@ SOURCE=.\rail.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\road_map.c
-# End Source File
-# Begin Source File
-
 SOURCE=.\saveload.c
 # End Source File
 # Begin Source File
@@ -455,10 +447,6 @@ SOURCE=.\thread.c
 # Begin Source File
 
 SOURCE=.\tile.c
-# End Source File
-# Begin Source File
-
-SOURCE=.\tunnel_map.c
 # End Source File
 # Begin Source File
 
@@ -1143,6 +1131,62 @@ SOURCE=.\network_server.h
 # Begin Source File
 
 SOURCE=.\network_udp.h
+# End Source File
+# End Group
+# Begin Group "Map Accessors"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=.\bridge_map.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\bridge_map.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\clear_map.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\industry_map.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\rail_map.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\road_map.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\road_map.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\station_map.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\town_map.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\tree_map.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\tunnel_map.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\tunnel_map.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\unmovable_map.h
 # End Source File
 # End Group
 # Begin Source File

@@ -167,9 +167,6 @@
 				RelativePath=".\aystar.c">
 			</File>
 			<File
-				RelativePath=".\bridge_map.c">
-			</File>
-			<File
 				RelativePath=".\callback_table.c">
 			</File>
 			<File
@@ -867,7 +864,13 @@
 			Name="Map Accessors"
 			Filter="">
 			<File
+				RelativePath=".\bridge_map.c">
+			</File>
+			<File
 				RelativePath=".\clear_map.h">
+			</File>
+			<File
+				RelativePath=".\industry_map.h">
 			</File>
 			<File
 				RelativePath=".\rail_map.h">
@@ -877,6 +880,12 @@
 			</File>
 			<File
 				RelativePath=".\road_map.h">
+			</File>
+			<File
+				RelativePath=".\station_map.h">
+			</File>
+			<File
+				RelativePath=".\town_map.h">
 			</File>
 			<File
 				RelativePath=".\tree_map.h">
