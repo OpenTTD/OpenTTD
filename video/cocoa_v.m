@@ -1692,10 +1692,10 @@ static void QZ_UnsetVideoMode(void)
 	free(_cocoa_video_data.pixels);
 	_cocoa_video_data.pixels = NULL;
 
-	QZ_ShowMouse();
-
 	/* Signal successful teardown */
 	_cocoa_video_data.isset = false;
+
+	QZ_ShowMouse();
 }
 
 
@@ -1819,6 +1819,11 @@ static void QZ_ShowMouse(void)
 	if (!_cocoa_video_data.cursor_visible) {
 		[ NSCursor unhide ];
 		_cocoa_video_data.cursor_visible = true;
+
+		// Hide the openttd cursor when leaving the window
+		if (_cocoa_video_data.isset)
+			UndrawMouseCursor();
+		_cursor.in_window = false;
 	}
 }
 
@@ -1829,6 +1834,9 @@ static void QZ_HideMouse(void)
 		[ NSCursor hide ];
 #endif
 		_cocoa_video_data.cursor_visible = false;
+
+		// Show the openttd cursor again
+		_cursor.in_window = true;
 	}
 }
 
