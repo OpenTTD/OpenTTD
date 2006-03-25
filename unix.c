@@ -8,15 +8,12 @@
 #include "table/strings.h"
 #include "hal.h"
 #include "variables.h"
-#include "debug.h"
 
 #include <dirent.h>
 #include <unistd.h>
 #include <sys/stat.h>
 #include <time.h>
 #include <signal.h>
-#include <iconv.h>
-#include <errno.h>
 
 #ifdef USE_HOMEDIR
 #include <pwd.h>
@@ -612,6 +609,10 @@ void CSleep(int milliseconds)
 #endif
 
 #ifdef WITH_ICONV
+
+#include <iconv.h>
+#include <errno.h>
+#include "debug.h"
 
 #define INTERNALCODE "ISO-8859-15"
 
