@@ -686,7 +686,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 				fios->type = FIOS_TYPE_DIR;
 				fios->mtime = 0;
 				ttd_strlcpy(fios->name, fd.cFileName, lengthof(fios->name));
-				snprintf(fios->title, lengthof(fios->title), "%s\\ (Directory)", fd.cFileName);
+				snprintf(fios->title, lengthof(fios->title), "%s\\ (Directory)", FS2OTTD(fd.cFileName));
 				str_validate(fios->title);
 			}
 		} while (FindNextFile(h, &fd));
@@ -727,7 +727,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 				ttd_strlcpy(fios->name, fd.cFileName, lengthof(fios->name));
 
 				*t = '\0'; // strip extension
-				ttd_strlcpy(fios->title, fd.cFileName, lengthof(fios->title));
+				ttd_strlcpy(fios->title, FS2OTTD(fd.cFileName), lengthof(fios->title));
 				str_validate(fios->title);
 			} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO) {
 				if (strcasecmp(t, ".ss1") == 0 ||
@@ -802,7 +802,7 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 				fios->type = FIOS_TYPE_DIR;
 				fios->mtime = 0;
 				ttd_strlcpy(fios->name, fd.cFileName, lengthof(fios->name));
-				snprintf(fios->title, lengthof(fios->title), "%s\\ (Directory)", fd.cFileName);
+				snprintf(fios->title, lengthof(fios->title), "%s\\ (Directory)", FS2OTTD(fd.cFileName));
 				str_validate(fios->title);
 			}
 		} while (FindNextFile(h, &fd));
@@ -842,7 +842,7 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 				ttd_strlcpy(fios->name, fd.cFileName, lengthof(fios->name));
 
 				*t = '\0'; // strip extension
-				ttd_strlcpy(fios->title, fd.cFileName, lengthof(fios->title));
+				ttd_strlcpy(fios->title, FS2OTTD(fd.cFileName), lengthof(fios->title));
 				str_validate(fios->title);
 			} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO ||
 					mode == SLD_NEW_GAME) {

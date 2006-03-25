@@ -8,12 +8,15 @@
 #include "table/strings.h"
 #include "hal.h"
 #include "variables.h"
+#include "debug.h"
 
 #include <dirent.h>
 #include <unistd.h>
 #include <sys/stat.h>
 #include <time.h>
 #include <signal.h>
+#include <iconv.h>
+#include <errno.h>
 
 #ifdef USE_HOMEDIR
 #include <pwd.h>
@@ -118,8 +121,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 				fios->type = FIOS_TYPE_DIR;
 				fios->mtime = 0;
 				ttd_strlcpy(fios->name, dirent->d_name, lengthof(fios->name));
-				snprintf(fios->title, lengthof(fios->title),
-					"%s/ (Directory)", dirent->d_name);
+				snprintf(fios->title, lengthof(fios->title), "%s/ (Directory)", FS2OTTD(dirent->d_name));
 				str_validate(fios->title);
 			}
 		}
@@ -162,7 +164,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 				ttd_strlcpy(fios->name, dirent->d_name, lengthof(fios->name));
 
 				*t = '\0'; // strip extension
-				ttd_strlcpy(fios->title, dirent->d_name, lengthof(fios->title));
+				ttd_strlcpy(fios->title, FS2OTTD(dirent->d_name), lengthof(fios->title));
 				str_validate(fios->title);
 			} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO) {
 				if (strcasecmp(t, ".ss1") == 0 ||
@@ -222,7 +224,7 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 				fios->type = FIOS_TYPE_DIR;
 				fios->mtime = 0;
 				ttd_strlcpy(fios->name, dirent->d_name, lengthof(fios->name));
-				snprintf(fios->title, lengthof(fios->title), "%s/ (Directory)", dirent->d_name);
+				snprintf(fios->title, lengthof(fios->title), "%s/ (Directory)", FS2OTTD(dirent->d_name));
 				str_validate(fios->title);
 			}
 		}
@@ -263,7 +265,7 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 				ttd_strlcpy(fios->name, dirent->d_name, lengthof(fios->name));
 
 				*t = '\0'; // strip extension
-				ttd_strlcpy(fios->title, dirent->d_name, lengthof(fios->title));
+				ttd_strlcpy(fios->title, FS2OTTD(dirent->d_name), lengthof(fios->title));
 				str_validate(fios->title);
 			} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO ||
 					mode == SLD_NEW_GAME) {
@@ -604,42 +606,103 @@ void CSleep(int milliseconds)
 	#endif // __AMIGA__
 }
 
+// No proper makefile detection, so just force this for the time being
 #if defined(__APPLE__) && (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_3)
-/* FYI: This is not thread-safe.
-Assumptions:
-	- the 'from' charset is ISO-8859-15
-	- the 'to' charset is either the same, or UTF-8
-NOTE: iconv was added in OSX 10.3. 10.2.x will still have the invalid char issues. There aren't any easy fix for this
-*/
-#include <iconv.h>
-#include <locale.h>
-const char *convert_to_fs_charset(const char *filename)
-{
-	static char statout[1024], statin[1024];
-	static iconv_t convd;
-	static bool alreadyInited;
-	char *outbuf = statout;
-	const char *inbuf = statin;
-	size_t inlen = strlen(filename), outlen = 1023;
-	size_t retval = 0;
-	if(inbuf == NULL)
-		inbuf = statin;
-
-	setlocale(LC_ALL, "C-UTF-8");
-	strcpy(statout, filename);
-	strcpy(statin, filename);
-	inbuf = strrchr(statin, '/');
-	outbuf = strrchr(statout, '/');
-	if(alreadyInited == false)
-	{
-		convd = iconv_open("UTF-8-MAC", "ISO-8859-15");
-		if(convd == (iconv_t)(-1))
-			return filename;
-		alreadyInited = true;
-	}
-	retval = iconv(convd, NULL, NULL, NULL, NULL);
-	inlen = iconv(convd, &inbuf, &inlen, &outbuf, &outlen);
-	// FIX: invalid characters will abort conversion, but they shouldn't occur?
-	return statout;
-}
+# define WITH_ICONV
 #endif
+
+#ifdef WITH_ICONV
+
+#define INTERNALCODE "ISO-8859-15"
+
+/** Try and try to decipher the current locale from environmental
+ * variables. MacOSX is hardcoded, other OS's are dynamic. If no suitable
+ * locale can be found, don't do any conversion "" */
+static const char *GetLocalCode(void)
+{
+#if defined(__APPLE__) && (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_3)
+	return "UTF-8-MAC";
+#else
+	/* Strip locale (eg en_US.UTF-8) to only have UTF-8 */
+	const char *locale = GetCurrentLocale("LC_CTYPE");
+	if (locale != NULL) locale = strchr(locale, '.');
+
+	return (locale == NULL) ? "" : locale + 1;
+#endif
+}
+
+/** FYI: This is not thread-safe.
+ * convert between locales, which from and which to is set in the calling
+ * functions OTTD2FS() and FS2OTTD(). You should NOT use this function directly
+ * NOTE: iconv was added in OSX 10.3. 10.2.x will still have the invalid char
+ * issues. There aren't any easy fix for this */
+static const char *convert_tofrom_fs(iconv_t convd, const char *name)
+{
+	static char buf[1024];
+	/* Work around buggy iconv implementation where inbuf is wrongly typed as
+	 * non-const. Correct implementation is at
+	 * http://www.opengroup.org/onlinepubs/007908799/xsh/iconv.html */
+#if defined (__GLIBC__) || defined (__GNU_LIBRARY__)
+	char *inbuf = (char*)name;
+#else
+	const char *inbuf = name;
+#endif
+
+	char *outbuf  = buf;
+	size_t outlen = sizeof(buf) - 1;
+	size_t inlen  = strlen(name);
+
+	ttd_strlcpy(outbuf, name, sizeof(buf));
+
+	iconv(convd, NULL, NULL, NULL, NULL);
+	if (iconv(convd, &inbuf, &inlen, &outbuf, &outlen) == (size_t)(-1)) {
+		DEBUG(misc, 0) ("[Iconv] Error converting '%s'. Errno %d", name, errno);
+	}
+
+	*outbuf = '\0';
+	// FIX: invalid characters will abort conversion, but they shouldn't occur?
+	return buf;
+}
+
+/** Convert from OpenTTD's encoding to that of the local environment
+ * @param name pointer to a valid string that will be converted
+ * @return pointer to a new stringbuffer that contains the converted string */
+const char *OTTD2FS(const char *name)
+{
+	static iconv_t convd = (iconv_t)(-1);
+
+	if (convd == (iconv_t)(-1)) {
+		const char *env = GetLocalCode();
+		convd = iconv_open(env, INTERNALCODE);
+		if (convd == (iconv_t)(-1)) {
+			DEBUG(misc, 0) ("[iconv] Cannot convert from codeset '%s' to '%s'", INTERNALCODE, env);
+			return name;
+		}
+	}
+
+	return convert_tofrom_fs(convd, name);
+}
+
+/** Convert to OpenTTD's encoding from that of the local environment
+ * @param name pointer to a valid string that will be converted
+ * @return pointer to a new stringbuffer that contains the converted string */
+const char *FS2OTTD(const char *name)
+{
+	static iconv_t convd = (iconv_t)(-1);
+
+	if (convd == (iconv_t)(-1)) {
+		const char *env = GetLocalCode();
+		convd = iconv_open(INTERNALCODE, env);
+		if (convd == (iconv_t)(-1)) {
+			DEBUG(misc, 0) ("[iconv] Cannot convert from codeset '%s' to '%s'", INTERNALCODE, env);
+			return name;
+		}
+	}
+
+	return convert_tofrom_fs(convd, name);
+}
+
+#else
+const char *FS2OTTD(const char *name) {return name;}
+const char *OTTD2FS(const char *name) {return name;}
+#endif /* WITH_ICONV */

@@ -1051,6 +1051,30 @@ bool ReadLanguagePack(int lang_index)
 	return true;
 }
 
+/** Determine the current charset based on the environment
+ * First check some default values, after this one we passed ourselves
+ * and if none exist return the value for $LANG
+ * @param environment variable to check conditionally if default ones are not
+ *        set. Pass NULL if you don't want additional checks.
+ * @return return string containing current charset, or NULL if not-determinable */
+const char *GetCurrentLocale(const char *param)
+{
+	const char *env;
+
+	env = getenv("LANGUAGE");
+	if (env != NULL) return env;
+
+	env = getenv("LC_ALL");
+	if (env != NULL) return env;
+
+	if (param != NULL) {
+		env = getenv(param);
+		if (env != NULL) return env;
+	}
+
+	return getenv("LANG");
+}
+
 // make a list of the available language packs. put the data in _dynlang struct.
 void InitializeLanguagePacks(void)
 {
@@ -1063,24 +1087,11 @@ void InitializeLanguagePacks(void)
 	LanguagePack hdr;
 	FILE *in;
 	char *files[32];
-	uint j;
 
 	char lang[] = "en";
-	static const char* env[] = {
-		"LANGUAGE",
-		"LC_ALL",
-		"LC_MESSAGES",
-		"LANG"
-	};
+	const char *env = GetCurrentLocale("LC_MESSAGES");
 
-	for (j = 0; j < lengthof(env); j++) {
-		const char* envlang = getenv(env[j]);
-		if (envlang != NULL) {
-			snprintf(lang, lengthof(lang), "%.2s", envlang);
-			break;
-		}
-	}
-
+	if (env != NULL) snprintf(lang, lengthof(lang), "%.2s", env);
 	n = GetLanguageList(files, lengthof(files));
 
 	def = -1;

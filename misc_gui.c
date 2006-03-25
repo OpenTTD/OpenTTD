@@ -1357,7 +1357,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		break;
 	case WE_TIMEOUT:
 		if (HASBIT(w->click_state, 11)) { /* Delete button clicked */
-			if (!FiosDelete(WP(w,querystr_d).text.buf)) {
+			if (!FiosDelete(OTTD2FS(WP(w,querystr_d).text.buf))) {
 				ShowErrorMessage(INVALID_STRING_ID, STR_4008_UNABLE_TO_DELETE_FILE, 0, 0);
 			} else {
 				BuildFileList();

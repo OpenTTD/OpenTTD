@@ -250,6 +250,7 @@ void GameSizeChanged(void);
 bool FileExists(const char *filename);
 bool ReadLanguagePack(int index);
 void InitializeLanguagePacks(void);
+const char *GetCurrentLocale(const char *param);
 void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize);
 int GetLanguageList(char **languages, int max);
 

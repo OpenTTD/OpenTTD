@@ -7,16 +7,11 @@
 #include "strings.h"
 #include "table/strings.h"
 #include "gfx.h"
+#include "hal.h"
 #include "viewport.h"
 #include "player.h"
 #include "screenshot.h"
 #include "variables.h"
-
-#if defined(__APPLE__) && (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_3)
-extern const char *convert_to_fs_charset(const char *filename);
-#else
-#define convert_to_fs_charset(str) (str)
-#endif
 
 char _screenshot_format_name[8];
 uint _num_screenshot_formats;
@@ -79,7 +74,7 @@ static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *user
 	if (pixelformat != 8)
 		return false;
 
-	f = fopen(convert_to_fs_charset(name), "wb");
+	f = fopen(OTTD2FS(name), "wb");
 	if (f == NULL) return false;
 
 	// each scanline must be aligned on a 32bit boundary
@@ -183,7 +178,7 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 	if (pixelformat != 8)
 		return false;
 
-	f = fopen(convert_to_fs_charset(name), "wb");
+	f = fopen(OTTD2FS(name), "wb");
 	if (f == NULL) return false;
 
 	png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, (char *)name, png_my_error, png_my_warning);
@@ -294,7 +289,7 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 	if (pixelformat != 8 || w == 0)
 		return false;
 
-	f = fopen(convert_to_fs_charset(name), "wb");
+	f = fopen(OTTD2FS(name), "wb");
 	if (f == NULL) return false;
 
 	memset(&pcx, 0, sizeof(pcx));
