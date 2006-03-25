@@ -675,7 +675,7 @@ const char *OTTD2FS(const char *name)
 		const char *env = GetLocalCode();
 		convd = iconv_open(env, INTERNALCODE);
 		if (convd == (iconv_t)(-1)) {
-			DEBUG(misc, 0) ("[iconv] Cannot convert from codeset '%s' to '%s'", INTERNALCODE, env);
+			DEBUG(misc, 0) ("[iconv] Conversion from codeset '%s' to '%s' unsupported", INTERNALCODE, env);
 			return name;
 		}
 	}
@@ -694,7 +694,7 @@ const char *FS2OTTD(const char *name)
 		const char *env = GetLocalCode();
 		convd = iconv_open(INTERNALCODE, env);
 		if (convd == (iconv_t)(-1)) {
-			DEBUG(misc, 0) ("[iconv] Cannot convert from codeset '%s' to '%s'", INTERNALCODE, env);
+			DEBUG(misc, 0) ("[iconv] Conversion from codeset '%s' to '%s' unsupported", env, INTERNALCODE);
 			return name;
 		}
 	}
