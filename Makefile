@@ -109,7 +109,8 @@
 #
 # Special for crosscompiling there are some commands available:
 #
-# FAT_BINARY: builds a universal binary for OSX. Make sure you got both PPC and x86 libs. Only works with GCC 4 or newer
+# UNIVERSAL_BINARY: builds a universal binary for OSX. Make sure you got both PPC and x86 libs. Only works with GCC 4 or newer
+# TRIPLE_BINARY: builds a universal binary with the addition of code optimised for G5 (which means a total of 3 binaries in one file)
 #
 # JAGUAR: Crosscompiling for OSX 1.2.8 (codenamed Jaguar). Only works if OSX is defined too. Only works with GCC 4 or newer
 #	This can be changed to any PPC version of OSX by changing the ppc flags in Makefile.config
@@ -132,7 +133,7 @@
 
 # Makefile version tag
 # it checks if the version tag in Makefile.config is the same and force update outdated config files
-MAKEFILE_VERSION:=8
+MAKEFILE_VERSION:=9
 
 # CONFIG_WRITER has to be found even for manual configuration
 CONFIG_WRITER=makefiledir/Makefile.config_writer
@@ -340,6 +341,11 @@ endif
 ifdef OSX
 # these compilerflags makes the app run as fast as possible without making the app unstable. It works on G3 or newer
 BASECFLAGS += -O3 -funroll-loops -fsched-interblock -falign-loops=16 -falign-jumps=16 -falign-functions=16 -falign-jumps-max-skip=15 -falign-loops-max-skip=15 -mdynamic-no-pic
+ifdef IS_G5
+ifndef UNIVERSAL_BINARY
+BASECFLAGS += $(G5_FLAGS)
+endif
+endif
 else
 ifdef MORPHOS
 BASECFLAGS += -I/gg/os-include -O2 -noixemul -fstrict-aliasing -fexpensive-optimizations
@@ -994,17 +1000,21 @@ endif
 	$(Q)$(CC) $(OBJCFLAGS) $(CDEFS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:.deps/%.d=%.o):#' > $@
 
 
+ifndef TRIPLE_BINARY
+# building tripple binary object files is handled in os/macosx/Makefile
+# TARGET_CPU_FLAGS is used to set target CPUs in OSX universal binaries. It's empty for all other builds
 %.o: %.c $(MAKE_CONFIG)
 	@echo '===> Compiling $<'
-	$(Q)$(CC) $(CFLAGS) $(CDEFS) -c -o $@ $<
+	$(Q)$(CC) $(TARGET_CPU_FLAGS) $(CFLAGS) $(CDEFS) -c -o $@ $<
 
 %.o: %.cpp  $(MAKE_CONFIG)
 	@echo '===> Compiling $<'
-	$(Q)$(CXX) $(CFLAGS) $(CDEFS) -c -o $@ $<
+	$(Q)$(CXX) $(TARGET_CPU_FLAGS) $(CFLAGS) $(CDEFS) -c -o $@ $<
 
 %.o: %.m  $(MAKE_CONFIG)
 	@echo '===> Compiling $<'
-	$(Q)$(CC) $(CFLAGS) $(CDEFS) -c -o $@ $<
+	$(Q)$(CC) $(TARGET_CPU_FLAGS) $(CFLAGS) $(CDEFS) -c -o $@ $<
+endif
 
 %.o: %.rc
 	@echo '===> Compiling resource $<'
