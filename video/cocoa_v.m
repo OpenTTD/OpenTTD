@@ -1464,54 +1464,41 @@ static void QZ_DrawScreen(void)
 	uint width;
 	uint pitch;
 	uint y;
+	uint num_dirty_rects;
+	uint length_drawn;
+	uint left;
+	uint i;
 
 	src = _cocoa_video_data.pixels;
 	dst = (uint8*)_cocoa_video_data.realpixels;
 	width  = _cocoa_video_data.width;
 	pitch  = _cocoa_video_data.pitch;
+	num_dirty_rects = _cocoa_video_data.num_dirty_rects;
 
-#if 1
-	// PPC appears to handle updating of rectangles right
-	{
-		uint num_dirty_rects;
-		uint length_drawn;
-		uint left;
-		uint i;
+	/* Check if we need to do anything */
+	if (num_dirty_rects == 0 ) return;
 
-		num_dirty_rects = _cocoa_video_data.num_dirty_rects;
-
-		/* Check if we need to do anything */
-		if (num_dirty_rects == 0 ) return;
-
-		if (num_dirty_rects >= MAX_DIRTY_RECTS) {
-			num_dirty_rects = 1;
-			_cocoa_video_data.dirty_rects[0].left = 0;
-			_cocoa_video_data.dirty_rects[0].top = 0;
-			_cocoa_video_data.dirty_rects[0].right = _cocoa_video_data.width;
-			_cocoa_video_data.dirty_rects[0].bottom = _cocoa_video_data.height;
-		}
-
-		QZ_WaitForVerticalBlank();
-		/* Build the region of dirty rectangles */
-		for (i = 0; i < num_dirty_rects; i++) {
-
-			y = _cocoa_video_data.dirty_rects[i].top;
-			left = _cocoa_video_data.dirty_rects[i].left;
-			length_drawn = _cocoa_video_data.dirty_rects[i].right - left;
-			height = _cocoa_video_data.dirty_rects[i].bottom;
-			for (; y < height; y++) memcpy(dst + y * pitch + left, src + y * width +left, length_drawn);
-		}
-
-		_cocoa_video_data.num_dirty_rects = 0;
+	if (num_dirty_rects >= MAX_DIRTY_RECTS) {
+		num_dirty_rects = 1;
+		_cocoa_video_data.dirty_rects[0].left = 0;
+		_cocoa_video_data.dirty_rects[0].top = 0;
+		_cocoa_video_data.dirty_rects[0].right = _cocoa_video_data.width;
+		_cocoa_video_data.dirty_rects[0].bottom = _cocoa_video_data.height;
 	}
-#else
-	// it appears that Intel based macs didn't like to only update parts of the screen at a time, so they still update everything at each frame
-	// we need to switch to use Quartz exclusively (no QuickDraw commands at all) to fix this
-	// to use Quartz exclusively, we should use 16 or 32 bit graphics since 8 bit coloured graphic support sucks
-	height  = _cocoa_video_data.height;
+
 	QZ_WaitForVerticalBlank();
-	for (y = 0; y < height; y++) memcpy(dst + y * pitch, src + y * width, width);
-#endif
+	/* Build the region of dirty rectangles */
+	for (i = 0; i < num_dirty_rects; i++) {
+
+		y = _cocoa_video_data.dirty_rects[i].top;
+		left = _cocoa_video_data.dirty_rects[i].left;
+		length_drawn = _cocoa_video_data.dirty_rects[i].right - left;
+		height = _cocoa_video_data.dirty_rects[i].bottom;
+		for (; y < height; y++) memcpy(dst + y * pitch + left, src + y * width +left, length_drawn);
+	}
+
+	_cocoa_video_data.num_dirty_rects = 0;
+
 }
 
 static int QZ_ListFullscreenModes(OTTDPoint* mode_list, int max_modes)
