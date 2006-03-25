@@ -355,7 +355,7 @@ static void DrawTile_Industry(TileInfo *ti)
 	ormod = GENERAL_SPRITE_COLOR(ind->color_map);
 
 	/* Retrieve pointer to the draw industry tile struct */
-	dits = &_industry_draw_tile_data[(ti->map5 << 2) | GB(_m[ti->tile].m1, 0, 2)];
+	dits = &_industry_draw_tile_data[GetIndustryGfx(ti->tile) << 2 | GB(_m[ti->tile].m1, 0, 2)];
 
 	image = dits->sprite_1;
 	if (image & PALETTE_MODIFIER_COLOR && (image & PALETTE_SPRITE_MASK) == 0)
@@ -410,16 +410,16 @@ static uint GetSlopeTileh_Industry(const TileInfo* ti)
 
 static void GetAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
 {
-	int m5 = _m[tile].m5;
+	uint gfx = GetIndustryGfx(tile);
 	CargoID a;
 
-	a = _industry_map5_accepts_1[m5];
+	a = _industry_map5_accepts_1[gfx];
 	if (a != CT_INVALID) ac[a] = (a == 0) ? 1 : 8;
 
-	a = _industry_map5_accepts_2[m5];
+	a = _industry_map5_accepts_2[gfx];
 	if (a != CT_INVALID) ac[a] = 8;
 
-	a = _industry_map5_accepts_3[m5];
+	a = _industry_map5_accepts_3[gfx];
 	if (a != CT_INVALID) ac[a] = 8;
 }
 
@@ -471,8 +471,6 @@ static void TransportIndustryGoods(TileIndex tile)
 
 	cw = min(i->cargo_waiting[0], 255);
 	if (cw > _industry_min_cargo[i->type]/* && i->produced_cargo[0] != 0xFF*/) {
-		byte m5;
-
 		i->cargo_waiting[0] -= cw;
 
 		/* fluctuating economy? */
@@ -482,10 +480,14 @@ static void TransportIndustryGoods(TileIndex tile)
 
 		am = MoveGoodsToStation(i->xy, i->width, i->height, i->produced_cargo[0], cw);
 		i->last_mo_transported[0] += am;
-		if (am != 0 && (m5 = _industry_produce_map5[_m[tile].m5]) != 0xFF) {
-			_m[tile].m1 = 0x80;
-			_m[tile].m5 = m5;
-			MarkTileDirtyByTile(tile);
+		if (am != 0) {
+			uint newgfx = _industry_produce_map5[GetIndustryGfx(tile)];
+
+			if (newgfx != 0xFF) {
+				_m[tile].m1 = 0x80;
+				SetIndustryGfx(tile, newgfx);
+				MarkTileDirtyByTile(tile);
+			}
 		}
 	}
 
@@ -505,9 +507,9 @@ static void TransportIndustryGoods(TileIndex tile)
 
 static void AnimateTile_Industry(TileIndex tile)
 {
-	byte m,n;
+	byte m;
 
-	switch (_m[tile].m5) {
+	switch (GetIndustryGfx(tile)) {
 	case 174:
 		if ((_tick_counter & 1) == 0) {
 			m = _m[tile].m3 + 1;
@@ -597,10 +599,10 @@ static void AnimateTile_Industry(TileIndex tile)
 	case 148: case 149: case 150: case 151:
 	case 152: case 153: case 154: case 155:
 		if ((_tick_counter & 3) == 0) {
-			m = _m[tile].m5	+ 1;
-			if (m == 155+1) m = 148;
-			_m[tile].m5 = m;
+			uint gfx = GetIndustryGfx(tile);
 
+			gfx = (gfx < 155) ? gfx + 1 : 148;
+			SetIndustryGfx(tile, gfx);
 			MarkTileDirtyByTile(tile);
 		}
 		break;
@@ -608,16 +610,16 @@ static void AnimateTile_Industry(TileIndex tile)
 	case 30: case 31: case 32:
 		if ((_tick_counter & 7) == 0) {
 			bool b = CHANCE16(1,7);
-			m = _m[tile].m1;
-			m = (m & 3) + 1;
-			n = _m[tile].m5;
-			if (m == 4 && (m=0,++n) == 32+1 && (n=30,b)) {
+			uint gfx = GetIndustryGfx(tile);
+
+			m = GB(_m[tile].m1, 0, 2) + 1;
+			if (m == 4 && (m = 0, ++gfx) == 32 + 1 && (gfx = 30, b)) {
 				_m[tile].m1 = 0x83;
-				_m[tile].m5 = 29;
+				SetIndustryGfx(tile, 29);
 				DeleteAnimatedTile(tile);
 			} else {
 				SB(_m[tile].m1, 0, 2, m);
-				_m[tile].m5 = n;
+				SetIndustryGfx(tile, gfx);
 				MarkTileDirtyByTile(tile);
 			}
 		}
@@ -692,13 +694,13 @@ static void MakeIndustryTileBigger(TileIndex tile, byte size)
 
 	if (!IsIndustryCompleted(tile)) return;
 
-	switch (_m[tile].m5) {
+	switch (GetIndustryGfx(tile)) {
 	case 8:
 		CreateIndustryEffectSmoke(tile);
 		break;
 
 	case 24:
-		if (_m[tile + TileDiffXY(0, 1)].m5 == 24) BuildOilRig(tile);
+		if (GetIndustryGfx(tile + TileDiffXY(0, 1)) == 24) BuildOilRig(tile);
 		break;
 
 	case 143:
@@ -742,7 +744,7 @@ static void TileLoopIndustry_BubbleGenerator(TileIndex tile)
 
 static void TileLoop_Industry(TileIndex tile)
 {
-	byte n;
+	uint newgfx;
 
 	if (!IsIndustryCompleted(tile)) {
 		MakeIndustryTileBigger(tile, _m[tile].m1);
@@ -753,18 +755,18 @@ static void TileLoop_Industry(TileIndex tile)
 
 	TransportIndustryGoods(tile);
 
-	n = _industry_map5_animation_next[_m[tile].m5];
-	if (n != 255) {
+	newgfx = _industry_map5_animation_next[GetIndustryGfx(tile)];
+	if (newgfx != 255) {
 		_m[tile].m1 = 0;
-		_m[tile].m5 = n;
+		SetIndustryGfx(tile, newgfx);
 		MarkTileDirtyByTile(tile);
 		return;
 	}
 
-#define SET_AND_ANIMATE(tile, a, b)   { _m[tile].m5 = a; _m[tile].m1 = b; AddAnimatedTile(tile); }
-#define SET_AND_UNANIMATE(tile, a, b) { _m[tile].m5 = a; _m[tile].m1 = b; DeleteAnimatedTile(tile); }
+#define SET_AND_ANIMATE(tile, a, b)   { SetIndustryGfx(tile, a); _m[tile].m1 = b; AddAnimatedTile(tile); }
+#define SET_AND_UNANIMATE(tile, a, b) { SetIndustryGfx(tile, a); _m[tile].m1 = b; DeleteAnimatedTile(tile); }
 
-	switch (_m[tile].m5) {
+	switch (GetIndustryGfx(tile)) {
 	case 0x18: // coast line at oilrigs
 	case 0x19:
 	case 0x1A:

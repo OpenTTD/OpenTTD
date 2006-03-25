@@ -22,6 +22,17 @@ static inline bool IsIndustryCompleted(TileIndex tile)
 }
 
 
+static inline uint GetIndustryGfx(TileIndex t)
+{
+	return _m[t].m5;
+}
+
+static inline void SetIndustryGfx(TileIndex t, uint gfx)
+{
+	_m[t].m5 = gfx;
+}
+
+
 static inline void MakeIndustry(TileIndex t, uint index, uint gfx)
 {
 	SetTileType(t, MP_INDUSTRY);
