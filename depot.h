@@ -15,7 +15,7 @@
 
 struct Depot {
 	TileIndex xy;
-	uint16 town_index;
+	TownID town_index;
 	uint16 index;
 };
 

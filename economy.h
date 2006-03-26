@@ -23,6 +23,7 @@ VARDEF Economy _economy;
 typedef struct Subsidy {
 	CargoID cargo_type;
 	byte age;
+	/* from and to can either be TownID, StationID or IndustryID */
 	uint16 from;
 	uint16 to;
 } Subsidy;

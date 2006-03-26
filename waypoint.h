@@ -10,7 +10,7 @@ struct Waypoint {
 	TileIndex xy;      ///< Tile of waypoint
 	uint16 index;      ///< Index of waypoint
 
-	uint16 town_index; ///< Town associated with the waypoint
+	TownID town_index; ///< Town associated with the waypoint
 	byte town_cn;      ///< The Nth waypoint for this town (consecutive number)
 	StringID string;   ///< If this is zero (i.e. no custom name), town + town_cn is used for naming
 

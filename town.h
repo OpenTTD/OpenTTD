@@ -70,7 +70,7 @@ struct Town {
 	byte road_build_months;
 
 	// Index in town array
-	uint16 index;
+	TownID index;
 
 	// NOSAVE: UpdateTownRadius updates this given the house count.
 	uint16 radius[5];
@@ -80,7 +80,7 @@ uint32 GetWorldPopulation(void);
 
 void UpdateTownVirtCoord(Town *t);
 void InitializeTown(void);
-void ShowTownViewWindow(uint town);
+void ShowTownViewWindow(TownID town);
 void DeleteTown(Town *t);
 void ExpandTown(Town *t);
 Town *CreateRandomTown(uint attempts);
@@ -130,7 +130,7 @@ enum {
 
 bool CheckforTownRating(uint32 flags, Town *t, byte type);
 
-VARDEF uint16 *_town_sort;
+VARDEF TownID *_town_sort;
 
 extern MemoryPool _town_pool;
 
