@@ -617,9 +617,7 @@ static void AiNew_State_FindStation(Player *p)
 							if (AiNew_CheckVehicleStation(p, st)) {
 								// We did found a station that was good enough!
 								new_tile = st->xy;
-								// Cheap way to get the direction of the station...
-								//  Bus stations save it as 0x47 .. 0x4A, so decrease it with 0x47, and tada!
-								direction = _m[st->xy].m5 - 0x47;
+								direction = GetRoadStationDir(st->xy);
 								break;
 							}
 						}

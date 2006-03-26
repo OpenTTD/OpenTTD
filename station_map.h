@@ -111,6 +111,12 @@ static inline bool IsBuoy_(TileIndex t) // XXX _ due to naming conflict
 }
 
 
+static inline bool IsHangarTile(TileIndex t)
+{
+	return IsTileType(t, MP_STATION) && IsHangar(t);
+}
+
+
 static inline Axis GetRailStationAxis(TileIndex t)
 {
 	assert(IsRailwayStation(t));

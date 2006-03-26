@@ -1088,8 +1088,7 @@ static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir
 				goto do_it;
 			}
 		} else if (IsTileType(desttile, MP_STATION)) {
-			if (IS_BYTE_INSIDE(_m[desttile].m5, 0x43, 0x4B)) {
-				/* We are heading for a station */
+			if (IsRoadStop(desttile)) {
 				dir = GetRoadStationDir(desttile);
 do_it:;
 				/* When we are heading for a depot or station, we just
@@ -1321,7 +1320,7 @@ again:
 				v->cur_speed = 0;
 				return;
 			}
-			if (IS_BYTE_INSIDE(_m[v->tile].m5, 0x43, 0x4B)) {
+			if (IsRoadStop(v->tile)) {
 				RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
 
 				// reached a loading bay, mark it as used and clear the usage bit

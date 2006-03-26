@@ -218,7 +218,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 
 		case MP_STATION:
 			if (v->type != VEH_Aircraft) break;
-			if (IsAircraftHangarTile(tile) && IsTileOwner(tile, _local_player)) {
+			if (IsHangar(tile) && IsTileOwner(tile, _local_player)) {
 				order.type = OT_GOTO_DEPOT;
 				order.flags = OF_PART_OF_ORDERS;
 				order.station = GetStationIndex(tile);

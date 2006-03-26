@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "bridge_map.h"
+#include "station_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "functions.h"
@@ -340,17 +341,13 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 // return true if a tile is a water tile.
 static bool IsWateredTile(TileIndex tile)
 {
-	byte m5 = _m[tile].m5;
-
 	switch (GetTileType(tile)) {
 		case MP_WATER:
 			// true, if not coast/riverbank
-			return m5 != 1;
+			return _m[tile].m5 != 1;
 
 		case MP_STATION:
-			// returns true if it is a dock-station
-			// m5 inside values is m5 < 75 all stations, 83 <= m5 <= 114 new airports
-			return !(m5 < 75 || (m5 >= 83 && m5 <= 114));
+			return IsOilRig(tile) || IsDock(tile) || IsBuoy_(tile);
 
 		case MP_TUNNELBRIDGE:
 			return IsBridge(tile) && IsBridgeMiddle(tile) && IsWaterUnderBridge(tile);

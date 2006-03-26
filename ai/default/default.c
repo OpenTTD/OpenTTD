@@ -359,7 +359,7 @@ static void AiHandleReplaceAircraft(Player *p)
 	BackuppedOrders orderbak[1];
 	EngineID veh;
 
-	if (!IsAircraftHangarTile(v->tile) || !(v->vehstatus&VS_STOPPED)) {
+	if (!IsHangarTile(v->tile) || !(v->vehstatus & VS_STOPPED)) {
 		AiHandleGotoDepot(p, CMD_SEND_AIRCRAFT_TO_HANGAR);
 		return;
 	}
@@ -3176,15 +3176,6 @@ static void AiStateDeleteRoadBlocks(Player *p)
 	p->ai.state = AIS_0;
 }
 
-static bool AiCheckIfHangar(Station *st)
-{
-	TileIndex tile = st->airport_tile;
-
-	// HANGAR of airports
-	// 0x20 - hangar large airport (32)
-	// 0x41 - hangar small airport (65)
-	return (_m[tile].m5 == 32 || _m[tile].m5 == 65);
-}
 
 static void AiStateAirportStuff(Player *p)
 {
@@ -3245,7 +3236,7 @@ static void AiStateAirportStuff(Player *p)
 			 * here for now (some of the new airport types would be
 			 * broken because they will probably need different
 			 * tileoff values etc), no matter that
-			 * AiCheckIfHangar() makes no sense. --pasky */
+			 * IsHangarTile() makes no sense. --pasky */
 			if (acc_planes == HELICOPTERS_ONLY) {
 				/* Heliports should have maybe own rulesets but
 				 * OTOH we don't want AI to pick them up when
@@ -3255,7 +3246,7 @@ static void AiStateAirportStuff(Player *p)
 				 * because we have no such rule. */
 				rule = 1;
 			} else {
-				rule = AiCheckIfHangar(st);
+				rule = IsHangarTile(st->airport_tile);
 			}
 
 			aib->cur_building_rule = rule;
@@ -3504,7 +3495,7 @@ static void AiStateSellVeh(Player *p)
 
 			DoCommandByTile(0, v->index, 0, DC_EXEC, CMD_SELL_ROAD_VEH);
 		} else if (v->type == VEH_Aircraft) {
-			if (!IsAircraftHangarTile(v->tile) || !(v->vehstatus & VS_STOPPED)) {
+			if (!IsHangarTile(v->tile) || !(v->vehstatus & VS_STOPPED)) {
 				if (v->current_order.type != OT_GOTO_DEPOT)
 					DoCommandByTile(0, v->index, 0, DC_EXEC, CMD_SEND_AIRCRAFT_TO_HANGAR);
 				goto going_to_depot;

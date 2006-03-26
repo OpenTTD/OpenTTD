@@ -300,7 +300,6 @@ void VehicleEnteredDepotThisTick(Vehicle *v);
 void BeginVehicleMove(Vehicle *v);
 void EndVehicleMove(Vehicle *v);
 
-bool IsAircraftHangarTile(TileIndex tile);
 void ShowAircraftViewWindow(const Vehicle* v);
 
 UnitID GetFreeUnitNumber(byte type);

@@ -179,7 +179,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 
 			if (IsValidTile(tile) &&
 					IsTileType(tile, MP_STATION) &&
-					IS_BYTE_INSIDE(_m[tile].m5, 8, 0x43) &&
+					IsAirport(tile) &&
 					IS_HUMAN_PLAYER(GetTileOwner(tile))) {
 				v->current_order.station = 1;
 				v->age = 0;
@@ -204,7 +204,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 
 		if (IsValidTile(tile) &&
 				IsTileType(tile, MP_STATION) &&
-				IS_BYTE_INSIDE(_m[tile].m5, 8, 0x43) &&
+				IsAirport(tile) &&
 				IS_HUMAN_PLAYER(GetTileOwner(tile))) {
 			st = GetStationByTile(tile);
 			CLRBITS(st->airport_flags, RUNWAY_IN_block);
@@ -246,7 +246,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 	tile = v->tile;/**/
 	if (IsValidTile(tile) &&
 			IsTileType(tile, MP_STATION) &&
-			IS_BYTE_INSIDE(_m[tile].m5, 8, 0x43) &&
+			IsAirport(tile) &&
 			IS_HUMAN_PLAYER(GetTileOwner(tile))) {
 		st = GetStationByTile(tile);
 		SETBITS(st->airport_flags, RUNWAY_IN_block);

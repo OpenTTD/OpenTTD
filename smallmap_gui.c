@@ -6,6 +6,7 @@
 #include "clear_map.h"
 #include "functions.h"
 #include "spritecache.h"
+#include "station_map.h"
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "map.h"
@@ -445,14 +446,15 @@ static inline uint32 GetSmallMapRoutesPixels(TileIndex tile)
 	uint32 bits;
 
 	if (t == MP_STATION) {
-		byte m5 = _m[tile].m5;
-		(bits = MKCOLOR(0x56565656), m5 < 8) ||			//   8 - railroad station (green)
-		(bits = MKCOLOR(0xB8B8B8B8), m5 < 0x43) ||	//  67 - airport (red)
-		(bits = MKCOLOR(0xC2C2C2C2), m5 < 0x47) ||	//  71 - truck loading bay (orange)
-		(bits = MKCOLOR(0xBFBFBFBF), m5 < 0x4B) ||	//  75 - bus station (yellow)
-		(bits = MKCOLOR(0x98989898), m5 < 0x53) ||	//  83 - docks (blue)
-		(bits = MKCOLOR(0xB8B8B8B8), m5 < 0x73) ||	// 115 - airport (red) (new airports)
-		(bits = MKCOLOR(0xFFFFFFFF), true);					// all others
+		switch (GetStationType(tile)) {
+			case STATION_RAIL:    bits = MKCOLOR(0x56565656); break;
+			case STATION_HANGAR:
+			case STATION_AIRPORT: bits = MKCOLOR(0xB8B8B8B8); break;
+			case STATION_TRUCK:   bits = MKCOLOR(0xC2C2C2C2); break;
+			case STATION_BUS:     bits = MKCOLOR(0xBFBFBFBF); break;
+			case STATION_DOCK:    bits = MKCOLOR(0x98989898); break;
+			default:              bits = MKCOLOR(0xFFFFFFFF); break;
+		}
 	} else {
 		// ground color
 		bits = ApplyMask(MKCOLOR(0x54545454), &_smallmap_contours_andor[t]);

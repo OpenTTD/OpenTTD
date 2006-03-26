@@ -150,7 +150,7 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	// to just query the cost, it is not neccessary to have a valid tile (automation/AI)
 	if (flags & DC_QUERY_COST) return value;
 
-	if (!IsAircraftHangarTile(tile) || !IsTileOwner(tile, _current_player)) return CMD_ERROR;
+	if (!IsHangarTile(tile) || !IsTileOwner(tile, _current_player)) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
@@ -305,18 +305,10 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return value;
 }
 
-bool IsAircraftHangarTile(TileIndex tile)
-{
-	// 0x56 - hangar facing other way international airport (86)
-	// 0x20 - hangar large airport (32)
-	// 0x41 - hangar small airport (65)
-	return IsTileType(tile, MP_STATION) &&
-				(_m[tile].m5 == 32 || _m[tile].m5 == 65 || _m[tile].m5 == 86);
-}
 
 bool CheckStoppedInHangar(const Vehicle* v)
 {
-	return v->vehstatus & VS_STOPPED && IsAircraftHangarTile(v->tile);
+	return v->vehstatus & VS_STOPPED && IsHangarTile(v->tile);
 }
 
 
@@ -378,7 +370,7 @@ int32 CmdStartStopAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_A017_AIRCRAFT_IS_IN_FLIGHT);
 
 	if (flags & DC_EXEC) {
-		if (v->vehstatus & VS_STOPPED && IsAircraftHangarTile(v->tile)) {
+		if (v->vehstatus & VS_STOPPED && IsHangarTile(v->tile)) {
 			DeleteVehicleNews(p1, STR_A014_AIRCRAFT_IS_WAITING_IN);
 		}
 

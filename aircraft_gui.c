@@ -502,9 +502,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 		uint32 disabled = 1 << 8;
 		StringID str;
 
-		if (v->vehstatus & VS_STOPPED && IsAircraftHangarTile(v->tile)) {
-			disabled = 0;
-		}
+		if (v->vehstatus & VS_STOPPED && IsHangarTile(v->tile)) disabled = 0;
 
 		if (v->owner != _local_player) disabled |= 1 << 8 | 1 << 7;
 		w->disabled_state = disabled;
@@ -1033,7 +1031,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 			DrawVehicleProfitButton(v, x, y + 13);
 
 			SetDParam(0, v->unitnumber);
-			if (IsAircraftHangarTile(v->tile) && (v->vehstatus & VS_HIDDEN)) {
+			if (IsHangarTile(v->tile) && v->vehstatus & VS_HIDDEN) {
 				str = STR_021F;
 			} else {
 				str = v->age > v->max_age - 366 ? STR_00E3 : STR_00E2;
@@ -1096,7 +1094,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 
 			tile = _last_built_aircraft_depot_tile;
 			do {
-				if (IsAircraftHangarTile(tile) && IsTileOwner(tile, _local_player)) {
+				if (IsHangarTile(tile) && IsTileOwner(tile, _local_player)) {
 					ShowAircraftDepotWindow(tile);
 					ShowBuildAircraftWindow(tile);
 					return;

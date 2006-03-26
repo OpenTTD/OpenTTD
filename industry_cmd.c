@@ -4,6 +4,7 @@
 #include "openttd.h"
 #include "clear_map.h"
 #include "industry_map.h"
+#include "station_map.h"
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "functions.h"
@@ -877,7 +878,7 @@ void DeleteIndustry(Industry *i)
 			if (GetIndustryIndex(tile_cur) == i->index) {
 				DoClearSquare(tile_cur);
 			}
-		} else if (IsTileType(tile_cur, MP_STATION) && _m[tile_cur].m5 == 0x4B) {
+		} else if (IsTileType(tile_cur, MP_STATION) && IsOilRig(tile_cur)) {
 			DeleteOilRig(tile_cur);
 		}
 	END_TILE_LOOP(tile_cur, i->width, i->height, i->xy);
