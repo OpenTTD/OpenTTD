@@ -182,7 +182,7 @@ typedef struct Player {
 	int32 bankrupt_value;
 
 	bool is_active;
-	byte is_ai;
+	bool is_ai;
 	PlayerAI ai;
 	PlayerAiNew ainew;
 

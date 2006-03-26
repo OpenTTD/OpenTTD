@@ -1034,7 +1034,7 @@ static bool LoadOldPlayer(LoadgameState *ls, int num)
 	} else {
 		/* Beside some multiplayer maps (1 on 1), which we don't official support,
 		all other players are an AI.. mark them as such */
-		p->is_ai = 1;
+		p->is_ai = true;
 	}
 
 	/* Sometimes it is better to not ask.. in old scenarios, the money
