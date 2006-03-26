@@ -61,6 +61,7 @@ typedef struct NewsItem NewsItem;
 typedef struct Industry Industry;
 typedef struct DrawPixelInfo DrawPixelInfo;
 typedef uint16 VehicleID;
+typedef uint16 StationID;
 typedef uint16 TownID;
 typedef byte PlayerID;
 typedef byte OrderID;

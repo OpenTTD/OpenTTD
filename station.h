@@ -14,7 +14,7 @@ typedef struct GoodsEntry {
 	uint16 waiting_acceptance;
 	byte days_since_pickup;
 	byte rating;
-	uint16 enroute_from;
+	StationID enroute_from;
 	byte enroute_time;
 	byte last_speed;
 	byte last_age;
@@ -31,8 +31,6 @@ enum {
 	NUM_SLOTS = 2,
 	ROAD_STOP_LIMIT = 16,
 };
-
-typedef uint16 StationID;
 
 typedef struct RoadStop {
 	TileIndex xy;
@@ -150,7 +148,7 @@ static inline uint16 GetStationPoolSize(void)
 	return _station_pool.total_items;
 }
 
-static inline bool IsStationIndex(uint index)
+static inline bool IsStationIndex(StationID index)
 {
 	return index < GetStationPoolSize();
 }

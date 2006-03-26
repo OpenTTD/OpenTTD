@@ -78,7 +78,7 @@ enum {
 typedef struct Order {
 	uint8  type;
 	uint8  flags;
-	uint16 station;
+	StationID station;
 
 	struct Order *next;   ///< Pointer to next order. If NULL, end of list
 

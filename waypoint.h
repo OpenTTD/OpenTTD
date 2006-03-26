@@ -8,7 +8,7 @@
 
 struct Waypoint {
 	TileIndex xy;      ///< Tile of waypoint
-	uint16 index;      ///< Index of waypoint
+	StationID index;   ///< Index of waypoint
 
 	TownID town_index; ///< Town associated with the waypoint
 	byte town_cn;      ///< The Nth waypoint for this town (consecutive number)

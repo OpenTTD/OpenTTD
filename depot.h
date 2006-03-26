@@ -16,7 +16,7 @@
 struct Depot {
 	TileIndex xy;
 	TownID town_index;
-	uint16 index;
+	StationID index;
 };
 
 extern MemoryPool _depot_pool;

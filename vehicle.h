@@ -97,7 +97,7 @@ typedef struct VehicleAir {
 	uint16 crashed_counter;
 	byte pos;
   byte previous_pos;
-	uint16 targetairport;
+	StationID targetairport;
 	byte state;
 } VehicleAir;
 
@@ -176,11 +176,11 @@ struct Vehicle {
 	byte progress;
 
 	byte vehstatus;		// Status
-	uint16 last_station_visited;
+	StationID last_station_visited;
 
 	CargoID cargo_type;	// type of cargo this vehicle is carrying
 	byte cargo_days; // how many days have the pieces been in transit
-	uint16 cargo_source;// source of cargo
+	StationID cargo_source;// source of cargo
 	uint16 cargo_cap;	// total capacity
 	uint16 cargo_count;// how many pieces are used
 

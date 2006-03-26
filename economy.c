@@ -1230,7 +1230,7 @@ static bool CheckSubsidised(Station *from, Station *to, CargoID cargo_type)
 	return false;
 }
 
-static int32 DeliverGoods(int num_pieces, CargoID cargo_type, uint16 source, uint16 dest, byte days_in_transit)
+static int32 DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, StationID dest, byte days_in_transit)
 {
 	bool subsidised;
 	Station *s_from, *s_to;
@@ -1340,7 +1340,7 @@ int LoadUnloadVehicle(Vehicle *v)
 	int unloading_time = 20;
 	Vehicle *u = v;
 	int result = 0;
-	uint16 last_visited;
+	StationID last_visited;
 	Station *st;
 	int t;
 	uint count, cap;
