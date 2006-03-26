@@ -15,22 +15,42 @@ or http://bugs.openttd.org.
 If the bug report is closed, it has been fixed, which then can be verified
 in the latest SVN version.
 
-Bugs for 0.4.5
+Bugs for 0.4.7
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 
--20	Saving files when run from gdb
--45	NORETURN wrongly declared for gcc
--46	Some if, for, switch and while have no space before (
--47	rating calculation and cargo loading priority
--9	[MorphOS] write to NULL when going to device root in filerequester
--8	[MorphOS] game crashes if no TCP/IP stack is loaded
+-80	Medium Crash when switching from windowed to fullscreen
+-78	Low Save vs. Autosave
+-77	Low cocoa video driver got an artifact in fullscreen
+-74	Low message settings
+-73	vehicle selection bug
+-71	Invalid last_vehicle for station (crash)
+-68	wagon replacements
+-66	wagon re-fitting
+-65	short wagons bug
+-63	Initial Volume Level not restored
+-57	(Ship) Pathfinder problem
+-55	Assertion on TrainController (train_cmd.c:2840)
+-52	desync when server saves game (on slow hardware)
+-51	Windows doesn't support CUSTOM_LANG_DIR
+-50	Trains chosing an alternative path when encountering a 1-way presignal instead of waiting
+-47	Low rating calculation and cargo loading priority
+-45	Low NORETURN wrongly declared for gcc
+-20	Low Saving files when run from gdb 2005-12-06 Unconfirmed
+- 9	Low [MorphOS] write to NULL when going to device root in filerequester 2005-11-28 Assigned Christian Rosentreter
 
 ------------------------------------------------------------------------
 URL: http://sourceforge.net/tracker/?atid=636365&group_id=103924&func=browse
 
+-1458368	Ships cannot be sent to depot when loading with NPF on, transfer not working
+-1454591	Street junctions not able to converted
+-1453676	crash in windowed mode when moving mouse back to openttd
+-1436419	Vehicles profits gone negitive.......bug
+-1434000	Error in Transfer-Function
+-1433315	non-existant crash reporting
+-1432871	Wrong signalstate when track over track
+-1427531	Newspapers problem
 -1417453	Makefile and Variables issue
--1415782	crash in string code with openbsd/zaurus
 -1397638	Economics bug?
 -1395628	Trackpad panning/scrolling broken
 -1394799	Dual headed engines disagreement
@@ -40,11 +60,8 @@ URL: http://sourceforge.net/tracker/?atid=636365&group_id=103924&func=browse
 -1389999	Child windows not sticking
 -1389986	Shares problem (nightly 3330)
 -1380497	problems with competitors during multiplayer
--1372772	Train gets lost between two stations
--1366446	different names for patches
 -1362784	Incorrect vehicule profit calcul with inflation on
 -1299162	Music volume too low
--1288024	Strange string on OTTD initial screen
 -1250094	Towns Shrink when center tile is built on
 -1244842	Multiplayer interface bug (0.4.0.1)
 -1212267	station visited twice when servicing
@@ -56,18 +73,17 @@ URL: http://sourceforge.net/tracker/?atid=636365&group_id=103924&func=browse
 -1174829	Waypoint / Orders Bug
 -1168820	Some mouse and keyboard events are lost
 -1167810	Cargo payment after deleting stations (st->xy = 0)
--1157244	Can't save game if name contains german umlauts
 -1116638	"More, but smaller changes" deficiency
 -1106356	re-offered prototypes
 -1085486	Subsidies: Only count when station is in right suburb
 
-Minor Bugs for 0.4.5
+Minor Bugs for 0.4.7
 ------------------------------------------------------------------------
 URL: http://sourceforge.net/tracker/?atid=669662&group_id=103924&func=browse
 
+-1424115	Reversed arrow sign in list view column headers
 -1412033	autoreplace not possible on monorail/maglev trains
 -1412031	fast forward scrolling is also fast forward :)
--1395489	Nightly 3358 Linux Driver warnings
 -1394316	Multistop traffic jam
 -1394231	Autorenew glitch on helicopters
 -1387424	overtake insolvent company is to cheap
@@ -75,7 +91,6 @@ URL: http://sourceforge.net/tracker/?atid=669662&group_id=103924&func=browse
 -1372891	Performance loss with NTP & NPF
 -1342383	Last built rail type not cleared when starting new game
 -1296259	Autosave override for multiplayer games
--1254226	giant screenshot crashes multiplayer
 -1242753	Town population minus 10
 -1236320	Bug in main menu allows moving screen
 -1201284	permanent hilight in a depot
@@ -85,7 +100,6 @@ URL: http://sourceforge.net/tracker/?atid=669662&group_id=103924&func=browse
 -1183253	Incorrect Load vs Loading Sprites
 -1183251	Hangar sprite does not update when refit.
 -1160732	little bug with transparency
--1153937	Game wont run from a start menu shortcut
 -1117731	Editor-StartingDate
 -1114237	Wrong autoreplace hint
 -1108046	game freezes

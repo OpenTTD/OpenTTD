@@ -1,4 +1,4 @@
-openttd (0.4.5+custom) unstable; urgency=low
+openttd (0.4.7-1) unstable; urgency=low
 
   * Remove old terminal messages and make sure that debconf is always called.
 

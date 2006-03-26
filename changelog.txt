@@ -1,3 +1,46 @@
+0.4.7 (2006-03-26)
+------------------------------------------------------------------------
+
+- Feature: [OSX] Add support for triple-binaries (PPC, PPC970, i386) (r4102)
+- Fix: [OSX] crash when going to fullscreen (r4100)
+- Fix: Allow unused wagons to have their first cache set. Fixes faulty cache-warning message and noticably speeds up depot operations (r4094)
+- Fix: [NPF] Trains & busses were unable to find a route when leaving a depot or bus stop. (r4072)
+
+0.4.6 (2006-03-22)
+------------------------------------------------------------------------
+
+- Codechange: [win32] Show the revision in crash.txt and enable the button to show the crash text in the crash-window (r3965)
+- Codechange: Add additional linker information to release builds to help figure out crashes more easily (r3526)
+- Fix: [OSX 10.3 and newer] [ 1157244 ] Can't save game if name contains german umlauts (loading savegames with certain chars still look odd) (r4038)
+- Fix: [OSX] major speedup for PPC fullscreen (r4034)
+- Fix: [Makefile] Make sure the ICON_DIR gets created before copying files there. (r4032)
+- Fix: [win32] Change compiler settings to use the multithreaded CRT. This prevents certain crashes on multi-threaded machines. (r4031)
+- Fix: [ 1453646 NPF ] Road vehicles planning through the back of depots and stations. (r4029)
+- Fix: Use the title of a savegame in the saveload dialog-editbox. (r4018)
+- Fix: Improper resolution written to the configuration file when exiting from fullscreen. (r4017)
+- Fix: When removing rail track from a tile where only X and Y pieces exist, explicitly update signals in both directions. (r4016)
+- Fix: Default the patch-setting 'pause_on_join' to true. (r4015)
+- Fix: Slope and height information returned for some tile types is wrong (r4014)
+- Fix: Fixes a bug introduced by r3228 which allowed steep rail tiles resulting in ... unwanted effects such as display artifacts. (r4012)
+- Fix: Update french translation (r3978)
+- Fix: FS#56 - [Crash] Missing glyph(s) in big-font. Added several missing glyphs for the big font. (r3970)
+- Fix: [ 1439907 ] Increase client list window width so at least most languages fit. (r3969)
+- Fix: Update german and finnish languages. (r3968)
+- Fix: Properly set back the owner of a crossing/road-under bridge after removing it. (r3967)
+- Fix: [autoreplace]: (FS#67) autoreplacing trains now keep their tile length instead of their pixel length. (r3964)
+- Fix: Mark the right tile as dirty. It's just a graphical glitch which happend in r1592. (r3962)
+- Fix: Fix crash when resizing news history window. (r3961)
+- Fix: Correctly implement minimum search, so road vehicles head twoards the closest station, not the last one in the list. (r3960)
+- Fix: [FS#61] The tooltips for raising and lowering land buttons in the scenario editor are interchanged (r3959)
+- Fix: Correctly restore the roadside after roadworks are finished. (r3957)
+- Fix: [Multistop] Check the status of the destination road stop instead of a station's first road stop. This only has effect with road vehicle queuing disabled. (r3956)
+- Fix: validate the setting of max_companies/spectators through the console. (r3955)
+- Fix: Improve game-load times. (r3954)
+- Fix: On loading a game, GetPlayerRailtypes() didn't account for the fact that vehicles are introduced a year after their introduction date. This will also relieve possible (rare) network desyncs. (r3952)
+- Fix: Restore plural forms of cargo types for several languages. (r3951)
+- Fix: [win32] Add directives to allow Visual Studio 2005 compilation. (r3950)
+- Fix: [ 1415782 ] crash in string code with openbsd/zaurus; alignment issues (r3948)
+
 0.4.5 (2006-01-31)
 ------------------------------------------------------------------------
 
