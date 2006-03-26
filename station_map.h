@@ -43,7 +43,8 @@ enum {
 
 typedef enum HangarTiles {
 	HANGAR_TILE_0 = 32,
-	HANGAR_TILE_1 = 65
+	HANGAR_TILE_1 = 65,
+	HANGAR_TILE_2 = 86
 } HangarTiles;
 
 typedef enum StationType {
@@ -66,7 +67,10 @@ static inline bool IsRailwayStation(TileIndex t)
 
 static inline bool IsHangar(TileIndex t)
 {
-	return _m[t].m5 == HANGAR_TILE_0 || _m[t].m5 == HANGAR_TILE_1;
+	return
+		_m[t].m5 == HANGAR_TILE_0 ||
+		_m[t].m5 == HANGAR_TILE_1 ||
+		_m[t].m5 == HANGAR_TILE_2;
 }
 
 static inline bool IsAirport(TileIndex t)
