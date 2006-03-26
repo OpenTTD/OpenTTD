@@ -795,7 +795,7 @@ int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invali
 		// so station points to INVALID_STATION if we can build on any station. or it points to a station if we're only allowed to build
 		// on exactly that station.
 		if (station != NULL && IsTileType(tile_cur, MP_STATION)) {
-			if (_m[tile_cur].m5 >= 8) {
+			if (!IsRailwayStation(tile_cur)) {
 				return ClearTile_Station(tile_cur, DC_AUTO); // get error message
 			} else {
 				StationID st = GetStationIndex(tile_cur);
@@ -831,7 +831,7 @@ static bool CanExpandRailroadStation(Station* st, uint* fin, Axis axis)
 		tile = TileXY(x, y);
 	} else {
 		// check so the orientation is the same
-		if ((_m[st->train_tile].m5 & 1U) != axis) {
+		if (GetRailStationAxis(st->train_tile) != axis) {
 			_error_message = STR_306D_NONUNIFORM_STATIONS_DISALLOWED;
 			return false;
 		}
@@ -1013,7 +1013,6 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		TileIndexDiff tile_delta;
 		byte *layout_ptr;
-		StationID station_index = st->index;
 		const StationSpec *statspec;
 		Track track;
 
@@ -1045,14 +1044,9 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			int w = plat_len;
 			do {
 
-				ModifyTile(tile,
-					MP_SETTYPE(MP_STATION) | MP_MAPOWNER_CURRENT |
-					MP_MAP2 | MP_MAP5 | MP_MAP3LO | MP_MAP3HI,
-					station_index, /* map2 parameter */
-					p2 & 0xFF,     /* map3lo parameter */
-					p2 >> 8,       /* map3hi parameter */
-					(*layout_ptr++) + axis   /* map5 parameter */
-				);
+				MakeRailStation(tile, st->owner, st->index, axis, *layout_ptr++, GB(p2, 0, 4));
+
+				if (HASBIT(p2, 4)) SetCustomStationSprite(tile, GB(p2, 8, 8));
 
 				tile += tile_delta;
 			} while (--w);
@@ -1070,7 +1064,7 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 static bool TileBelongsToRailStation(const Station *st, TileIndex tile)
 {
-	return IsTileType(tile, MP_STATION) && GetStationIndex(tile) == st->index && _m[tile].m5 < 8;
+	return IsTileType(tile, MP_STATION) && GetStationIndex(tile) == st->index && IsRailwayStation(tile);
 }
 
 static void MakeRailwayStationAreaSmaller(Station *st)
@@ -1144,13 +1138,13 @@ int32 CmdRemoveFromRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	// make sure the specified tile belongs to the current player, and that it is a railroad station.
-	if (!IsTileType(tile, MP_STATION) || _m[tile].m5 >= 8 || !_patches.nonuniform_stations) return CMD_ERROR;
+	if (!IsTileType(tile, MP_STATION) || !IsRailwayStation(tile) || !_patches.nonuniform_stations) return CMD_ERROR;
 	st = GetStationByTile(tile);
 	if (_current_player != OWNER_WATER && (!CheckOwnership(st->owner) || !EnsureNoVehicle(tile))) return CMD_ERROR;
 
 	// if we reached here, it means we can actually delete it. do that.
 	if (flags & DC_EXEC) {
-		Track track = HASBIT(_m[tile].m5, 0) ? TRACK_Y : TRACK_X;
+		Track track = GetRailStationTrack(tile);
 		DoClearSquare(tile);
 		SetSignalsOnBothDir(tile, track);
 		// now we need to make the "spanned" area of the railway station smaller if we deleted something at the edges.
@@ -1172,27 +1166,27 @@ uint GetStationPlatforms(const Station *st, TileIndex tile)
 {
 	TileIndex t;
 	TileIndexDiff delta;
-	Axis dir;
+	Axis axis;
 	uint len;
 	assert(TileBelongsToRailStation(st, tile));
 
 	len = 0;
-	dir = _m[tile].m5 & 1;
-	delta = (dir == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
+	axis = GetRailStationAxis(tile);
+	delta = (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 
 	// find starting tile..
 	t = tile;
 	do {
 		t -= delta;
 		len++;
-	} while (TileBelongsToRailStation(st, t) && (_m[t].m5 & 1U) == dir);
+	} while (TileBelongsToRailStation(st, t) && GetRailStationAxis(t) == axis);
 
 	// find ending tile
 	t = tile;
 	do {
 		t += delta;
 		len++;
-	} while (TileBelongsToRailStation(st, t) && (_m[t].m5 & 1U) == dir);
+	} while (TileBelongsToRailStation(st, t) && GetRailStationAxis(t) == axis);
 
 	return len - 1;
 }
@@ -1229,7 +1223,7 @@ static int32 RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 				if (!EnsureNoVehicle(tile))
 					return CMD_ERROR;
 				if (flags & DC_EXEC) {
-					Track track = HASBIT(_m[tile].m5, 0) ? TRACK_Y : TRACK_X;
+					Track track = GetRailStationTrack(tile);
 					DoClearSquare(tile);
 					SetSignalsOnBothDir(tile, track);
 				}
@@ -1258,7 +1252,7 @@ int32 DoConvertStationRail(TileIndex tile, uint totype, bool exec)
 	if (!CheckOwnership(st->owner) || !EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	// tile is not a railroad station?
-	if (_m[tile].m5 >= 8) return CMD_ERROR;
+	if (!IsRailwayStation(tile)) return CMD_ERROR;
 
 	if (GetRailType(tile) == totype) return CMD_ERROR;
 
@@ -1385,14 +1379,7 @@ int32 CmdBuildRoadStop(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		st->build_date = _date;
 
-		ModifyTile(tile,
-			MP_SETTYPE(MP_STATION) | MP_MAPOWNER_CURRENT |
-			MP_MAP2 | MP_MAP5 | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR,
-			st->index,                       /* map2 parameter */
-			/* XXX - Truck stops have 0x43 _m[].m5 value + direction
-			 * XXX - Bus stops have a _map5 value of 0x47 + direction */
-			((type) ? 0x43 : 0x47) + p1 /* map5 parameter */
-		);
+		MakeRoadStop(tile, st->owner, st->index, type, p1);
 
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
@@ -1406,7 +1393,7 @@ static int32 RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 {
 	RoadStop **primary_stop;
 	RoadStop *cur_stop;
-	bool is_truck = _m[tile].m5 < 0x47;
+	bool is_truck = IsTruckStop(tile);
 
 	if (_current_player != OWNER_WATER && !CheckOwnership(st->owner)) {
 		return CMD_ERROR;
@@ -1628,10 +1615,7 @@ int32 CmdBuildAirport(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			const byte *b = _airport_map5_tiles[p1];
 
 			BEGIN_TILE_LOOP(tile_cur, w, h, tile) {
-				ModifyTile(tile_cur,
-					MP_SETTYPE(MP_STATION) | MP_MAPOWNER_CURRENT |
-					MP_MAP2 | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR | MP_MAP5,
-					st->index, *b++);
+				MakeAirport(tile_cur, st->owner, st->index, *b++);
 			} END_TILE_LOOP(tile_cur, w, h, tile)
 		}
 
@@ -1726,13 +1710,7 @@ int32 CmdBuildBuoy(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		st->build_date = _date;
 
-		ModifyTile(tile,
-			MP_SETTYPE(MP_STATION) |
-			MP_MAP2 | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR | MP_MAPOWNER | MP_MAP5,
-			st->index,		/* map2 */
-			OWNER_NONE,		/* map_owner */
-			0x52					/* map5 */
-		);
+		MakeBuoy(tile, st->index);
 
 		UpdateStationVirtCoordDirty(st);
 
@@ -1889,20 +1867,7 @@ int32 CmdBuildDock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		st->build_date = _date;
 
-		ModifyTile(tile,
-			MP_SETTYPE(MP_STATION) | MP_MAPOWNER_CURRENT |
-			MP_MAP2 | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR |
-			MP_MAP5,
-			st->index,
-			direction + 0x4C);
-
-		ModifyTile(tile + TileOffsByDir(direction),
-			MP_SETTYPE(MP_STATION) | MP_MAPOWNER_CURRENT |
-			MP_MAP2 | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR |
-			MP_MAP5,
-			st->index,
-			DiagDirToAxis(direction) + 0x50
-		);
+		MakeDock(tile, st->owner, st->index, direction);
 
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
@@ -1919,7 +1884,7 @@ static int32 RemoveDock(Station *st, uint32 flags)
 	if (!CheckOwnership(st->owner)) return CMD_ERROR;
 
 	tile1 = st->dock_tile;
-	tile2 = tile1 + TileOffsByDir(_m[tile1].m5 - 0x4C);
+	tile2 = tile1 + TileOffsByDir(GetDockDirection(tile1));
 
 	if (!EnsureNoVehicle(tile1)) return CMD_ERROR;
 	if (!EnsureNoVehicle(tile2)) return CMD_ERROR;
@@ -1962,13 +1927,13 @@ static void DrawTile_Station(TileInfo *ti)
 		if (owner < MAX_PLAYERS) image_or_modificator = PLAYER_SPRITE_COLOR(owner);
 	}
 
-	// don't show foundation for docks (docks are between 76 (0x4C) and 81 (0x51))
-	if (ti->tileh != 0 && (ti->map5 < 0x4C || ti->map5 > 0x51))
+	// don't show foundation for docks
+	if (ti->tileh != 0 && !IsDock(ti->tile))
 		DrawFoundation(ti, ti->tileh);
 
-	if (_m[ti->tile].m3 & 0x10) {
+	if (IsCustomStationSprite(ti->tile)) {
 		// look for customization
-		const StationSpec *statspec = GetCustomStation(STAT_CLASS_DFLT, _m[ti->tile].m4);
+		const StationSpec *statspec = GetCustomStation(STAT_CLASS_DFLT, GetCustomStationSprite(ti->tile));
 
 		//debug("Cust-o-mized %p", statspec);
 
@@ -2049,51 +2014,46 @@ static void GetAcceptedCargo_Station(TileIndex tile, AcceptedCargo ac)
 
 static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 {
-	byte m5;
 	StringID str;
 
 	td->owner = GetTileOwner(tile);
 	td->build_date = GetStationByTile(tile)->build_date;
 
-	m5 = _m[tile].m5;
-	(str=STR_305E_RAILROAD_STATION, m5 < 8) ||
-	(str=STR_305F_AIRCRAFT_HANGAR, m5==32 || m5==45) || // hangars
-	(str=STR_3060_AIRPORT, m5 < 0x43 || (m5 >= 83 && m5 <= 114)) ||
-	(str=STR_3061_TRUCK_LOADING_AREA, m5 < 0x47) ||
-	(str=STR_3062_BUS_STATION, m5 < 0x4B) ||
-	(str=STR_4807_OIL_RIG, m5 == 0x4B) ||
-	(str=STR_3063_SHIP_DOCK, m5 != 0x52) ||
-	(str=STR_3069_BUOY, true);
+	switch (GetStationType(tile)) {
+		default: NOT_REACHED();
+		case STATION_RAIL:    str = STR_305E_RAILROAD_STATION; break;
+		case STATION_HANGAR:  str = STR_305F_AIRCRAFT_HANGAR; break;
+		case STATION_AIRPORT: str = STR_3060_AIRPORT; break;
+		case STATION_TRUCK:   str = STR_3061_TRUCK_LOADING_AREA; break;
+		case STATION_BUS:     str = STR_3062_BUS_STATION; break;
+		case STATION_OILRIG:  str = STR_4807_OIL_RIG; break;
+		case STATION_DOCK:    str = STR_3063_SHIP_DOCK; break;
+		case STATION_BUOY:    str = STR_3069_BUOY; break;
+	}
 	td->str = str;
 }
 
 
 static uint32 GetTileTrackStatus_Station(TileIndex tile, TransportType mode)
 {
-	uint i = _m[tile].m5;
-	uint j = 0;
-
 	switch (mode) {
 		case TRANSPORT_RAIL:
-			if (i < 8) {
-				static const byte tile_track_status_rail[] = { 1, 2, 1, 2, 1, 2, 1, 2 };
-				j = tile_track_status_rail[i];
+			if (IsRailwayStation(tile)) {
+				return TrackToTrackBits(GetRailStationTrack(tile)) * 0x101;
 			}
-			j += (j << 8);
 			break;
 
 		case TRANSPORT_WATER:
 			// buoy is coded as a station, it is always on open water
 			// (0x3F, all tracks available)
-			if (i == 0x52) j = 0x3F;
-			j += (j << 8);
+			if (IsBuoy_(tile)) return 0x3F * 0x101;
 			break;
 
 		default:
 			break;
 	}
 
-	return j;
+	return 0;
 }
 
 
@@ -2163,9 +2123,7 @@ static void AnimateTile_Station(TileIndex tile)
 
 static void ClickTile_Station(TileIndex tile)
 {
-  // 0x20 - hangar large airport (32)
-  // 0x41 - hangar small airport (65)
-	if (_m[tile].m5 == 32 || _m[tile].m5 == 65) {
+	if (IsHangar(tile)) {
 		ShowAircraftDepotWindow(tile);
 	} else {
 		ShowStationViewWindow(GetStationIndex(tile));
@@ -2179,7 +2137,7 @@ static const byte _enter_station_speedtable[12] = {
 static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 {
 	if (v->type == VEH_Train) {
-		if (IS_BYTE_INSIDE(_m[tile].m5, 0, 8) && IsFrontEngine(v) &&
+		if (IsRailwayStation(tile) && IsFrontEngine(v) &&
 				!IsCompatibleTrainStationTile(tile + TileOffsByDir(DirToDiagDir(v->direction)), tile)) {
 			StationID station_id = GetStationIndex(tile);
 
@@ -2211,7 +2169,7 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 		}
 	} else if (v->type == VEH_Road) {
 		if (v->u.road.state < 16 && !HASBIT(v->u.road.state, 2) && v->u.road.frame == 0) {
-			if (IS_BYTE_INSIDE(_m[tile].m5, 0x43, 0x4B)) {
+			if (IsRoadStop(tile)) {
 				/* Attempt to allocate a parking bay in a road stop */
 				RoadStop *rs = GetRoadStopByTile(tile, GetRoadStopType(tile));
 
@@ -2684,12 +2642,7 @@ void BuildOilRig(TileIndex tile)
 	st->town = ClosestTownFromTile(tile, (uint)-1);
 	st->sign.width_1 = 0;
 
-	SetTileType(tile, MP_STATION);
-	SetTileOwner(tile, OWNER_NONE);
-	_m[tile].m2 = st->index;
-	_m[tile].m3 = 0;
-	_m[tile].m4 = 0;
-	_m[tile].m5 = 0x4B;
+	MakeOilrig(tile, st->index);
 
 	st->owner = OWNER_NONE;
 	st->airport_flags = 0;
@@ -2753,28 +2706,35 @@ static void ChangeTileOwner_Station(TileIndex tile, PlayerID old_player, PlayerI
 
 static int32 ClearTile_Station(TileIndex tile, byte flags)
 {
-	byte m5 = _m[tile].m5;
 	Station *st;
 
 	if (flags & DC_AUTO) {
-		if (m5 < 8) return_cmd_error(STR_300B_MUST_DEMOLISH_RAILROAD);
-		if (m5 < 0x43 || (m5 >= 83 && m5 <= 114)) return_cmd_error(STR_300E_MUST_DEMOLISH_AIRPORT_FIRST);
-		if (m5 < 0x47) return_cmd_error(STR_3047_MUST_DEMOLISH_TRUCK_STATION);
-		if (m5 < 0x4B) return_cmd_error(STR_3046_MUST_DEMOLISH_BUS_STATION);
-		if (m5 == 0x52) return_cmd_error(STR_306A_BUOY_IN_THE_WAY);
-		if (m5 != 0x4B && m5 < 0x53) return_cmd_error(STR_304D_MUST_DEMOLISH_DOCK_FIRST);
-		SetDParam(0, STR_4807_OIL_RIG);
-		return_cmd_error(STR_4800_IN_THE_WAY);
+		switch (GetStationType(tile)) {
+			case STATION_RAIL:    return_cmd_error(STR_300B_MUST_DEMOLISH_RAILROAD);
+			case STATION_HANGAR:
+			case STATION_AIRPORT: return_cmd_error(STR_300E_MUST_DEMOLISH_AIRPORT_FIRST);
+			case STATION_TRUCK:   return_cmd_error(STR_3047_MUST_DEMOLISH_TRUCK_STATION);
+			case STATION_BUS:     return_cmd_error(STR_3046_MUST_DEMOLISH_BUS_STATION);
+			case STATION_BUOY:    return_cmd_error(STR_306A_BUOY_IN_THE_WAY);
+			case STATION_DOCK:    return_cmd_error(STR_304D_MUST_DEMOLISH_DOCK_FIRST);
+			case STATION_OILRIG:
+				SetDParam(0, STR_4807_OIL_RIG);
+				return_cmd_error(STR_4800_IN_THE_WAY);
+		}
 	}
 
 	st = GetStationByTile(tile);
 
-	if (m5 < 8) return RemoveRailroadStation(st, tile, flags);
-	// original airports < 67, new airports between 83 - 114
-	if (m5 < 0x43 || (m5 >= 83 && m5 <= 114)) return RemoveAirport(st, flags);
-	if (m5 < 0x4B) return RemoveRoadStop(st, flags, tile);
-	if (m5 == 0x52) return RemoveBuoy(st, flags);
-	if (m5 != 0x4B && m5 < 0x53) return RemoveDock(st, flags);
+	switch (GetStationType(tile)) {
+		case STATION_RAIL:    return RemoveRailroadStation(st, tile, flags);
+		case STATION_HANGAR:
+		case STATION_AIRPORT: return RemoveAirport(st, flags);
+		case STATION_TRUCK:
+		case STATION_BUS:     return RemoveRoadStop(st, flags, tile);
+		case STATION_BUOY:    return RemoveBuoy(st, flags);
+		case STATION_DOCK:    return RemoveDock(st, flags);
+		default: break;
+	}
 
 	return CMD_ERROR;
 }
@@ -2943,7 +2903,7 @@ static void Load_STNS(void)
 			uint w = GB(st->trainst_w, 4, 4);
 			uint h = GB(st->trainst_w, 0, 4);
 
-			if (_m[st->train_tile].m5 & 1) uintswap(w, h);
+			if (GetRailStationAxis(st->train_tile) == AXIS_Y) uintswap(w, h);
 			st->trainst_w = w;
 			st->trainst_h = h;
 		}

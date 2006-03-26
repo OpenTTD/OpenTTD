@@ -2029,7 +2029,7 @@ static bool NtpCallbFindStation(TileIndex tile, TrainTrackFollowerData *ttfd, in
 	// did we reach the final station?
 	if ((ttfd->station_index == INVALID_STATION && tile == ttfd->dest_coords) || (
 				IsTileType(tile, MP_STATION) &&
-				IS_BYTE_INSIDE(_m[tile].m5, 0, 8) &&
+				IsRailwayStation(tile) &&
 				GetStationIndex(tile) == ttfd->station_index
 			)) {
 		/* We do not check for dest_coords if we have a station_index,

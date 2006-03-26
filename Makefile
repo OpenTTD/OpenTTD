@@ -697,6 +697,7 @@ SRCS += sprite.c
 SRCS += spritecache.c
 SRCS += station_cmd.c
 SRCS += station_gui.c
+SRCS += station_map.c
 SRCS += string.c
 SRCS += strings.c
 SRCS += subsidy_gui.c
