@@ -882,6 +882,9 @@
 				RelativePath=".\road_map.h">
 			</File>
 			<File
+				RelativePath=".\station_map.c">
+			</File>
+			<File
 				RelativePath=".\station_map.h">
 			</File>
 			<File

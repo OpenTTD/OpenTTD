@@ -1166,6 +1166,10 @@ SOURCE=.\road_map.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\station_map.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\station_map.h
 # End Source File
 # Begin Source File
