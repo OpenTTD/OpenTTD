@@ -1,4 +1,12 @@
-t 0.4.6 (2006-03-22)
+0.4.7 (2006-03-26)
+------------------------------------------------------------------------
+
+- Feature: [OSX] Add support for triple-binaries (PPC, PPC970, i386) (r4102)
+- Fix: [OSX] crash when going to fullscreen (r4100)
+- Fix: Allow unused wagons to have their first cache set. Fixes faulty cache-warning message and noticably speeds up depot operations (r4094)
+- Fix: [NPF] Trains & busses were unable to find a route when leaving a depot or bus stop. (r4072)
+
+0.4.6 (2006-03-22)
 ------------------------------------------------------------------------
 
 - Codechange: [win32] Show the revision in crash.txt and enable the button to show the crash text in the crash-window (r3965)

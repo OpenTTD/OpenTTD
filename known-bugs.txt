@@ -15,7 +15,7 @@ or http://bugs.openttd.org.
 If the bug report is closed, it has been fixed, which then can be verified
 in the latest SVN version.
 
-Bugs for 0.4.6
+Bugs for 0.4.7
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 
@@ -42,10 +42,10 @@ URL: http://bugs.openttd.org
 ------------------------------------------------------------------------
 URL: http://sourceforge.net/tracker/?atid=636365&group_id=103924&func=browse
 
+-1458368	Ships cannot be sent to depot when loading with NPF on, transfer not working
 -1454591	Street junctions not able to converted
 -1453676	crash in windowed mode when moving mouse back to openttd
 -1436419	Vehicles profits gone negitive.......bug
--1438411	Game crash with NPF (r3663)
 -1434000	Error in Transfer-Function
 -1433315	non-existant crash reporting
 -1432871	Wrong signalstate when track over track
@@ -77,7 +77,7 @@ URL: http://sourceforge.net/tracker/?atid=636365&group_id=103924&func=browse
 -1106356	re-offered prototypes
 -1085486	Subsidies: Only count when station is in right suburb
 
-Minor Bugs for 0.4.5.1
+Minor Bugs for 0.4.7
 ------------------------------------------------------------------------
 URL: http://sourceforge.net/tracker/?atid=669662&group_id=103924&func=browse
 
