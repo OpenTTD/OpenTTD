@@ -21,7 +21,7 @@ typedef struct {
 VARDEF Economy _economy;
 
 typedef struct Subsidy {
-	byte cargo_type;
+	CargoID cargo_type;
 	byte age;
 	uint16 from;
 	uint16 to;
@@ -64,7 +64,7 @@ Pair SetupSubsidyDecodeParam(const Subsidy* s, bool mode);
 void DeleteSubsidyWithIndustry(uint16 index);
 void DeleteSubsidyWithStation(uint16 index);
 
-int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, byte cargo_type);
+int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, CargoID cargo_type);
 uint MoveGoodsToStation(TileIndex tile, int w, int h, int type, uint amount);
 
 #endif /* ECONOMY_H */

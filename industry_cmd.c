@@ -82,9 +82,9 @@ typedef struct IndustrySpec {
 	const IndustryTileTable *const *table;
 	byte num_table;
 	byte a,b,c;
-	byte produced_cargo[2];
+	CargoID produced_cargo[2];
 	byte production_rate[2];
-	byte accepts_cargo[3];
+	CargoID accepts_cargo[3];
 	byte check_proc;
 } IndustrySpec;
 
@@ -858,7 +858,7 @@ static uint32 GetTileTrackStatus_Industry(TileIndex tile, TransportType mode)
 	return 0;
 }
 
-static void GetProducedCargo_Industry(TileIndex tile, byte *b)
+static void GetProducedCargo_Industry(TileIndex tile, CargoID *b)
 {
 	const Industry* i = GetIndustryByTile(tile);
 

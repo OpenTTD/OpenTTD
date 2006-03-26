@@ -375,7 +375,7 @@ static const SpriteGroup* ResolveVehicleSpriteGroup(const SpriteGroup *spritegro
 static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *v)
 {
 	const SpriteGroup *group;
-	byte cargo = GC_PURCHASE;
+	CargoID cargo = GC_PURCHASE;
 
 	if (v != NULL) {
 		cargo = _global_cargo_id[_opt.landscape][v->cargo_type];

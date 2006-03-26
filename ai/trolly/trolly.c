@@ -286,7 +286,7 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type)
 
 		// No limits on delevering stations!
 		//  Or for industry that does not give anything yet
-		if (i->produced_cargo[0] == 0xFF || i->total_production[0] == 0) return true;
+		if (i->produced_cargo[0] == CT_INVALID || i->total_production[0] == 0) return true;
 
 		if (i->total_production[0] - i->total_transported[0] < AI_CHECKCITY_NEEDED_CARGO) return false;
 
@@ -312,7 +312,7 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type)
 				//  we want to know if this station gets the same good. If so,
 				//  we want to know its rating. If it is too high, we are not going
 				//  to build there
-				if (i->produced_cargo[0] == 0xFF) continue;
+				if (i->produced_cargo[0] == CT_INVALID) continue;
 				// It does not take this cargo
 				if (!st->goods[i->produced_cargo[0]].last_speed) continue;
 				// Is it around our industry
@@ -464,9 +464,9 @@ static void AiNew_State_LocateRoute(Player *p)
 			int i;
 			// TODO: in max_cargo, also check other cargo (beside [0])
 			// First we check if the from_ic produces cargo that this ic accepts
-			if (GetIndustry(p->ainew.from_ic)->produced_cargo[0] != 0xFF && GetIndustry(p->ainew.from_ic)->total_production[0] != 0) {
+			if (GetIndustry(p->ainew.from_ic)->produced_cargo[0] != CT_INVALID && GetIndustry(p->ainew.from_ic)->total_production[0] != 0) {
 				for (i=0;i<3;i++) {
-					if (GetIndustry(p->ainew.temp)->accepts_cargo[i] == 0xFF) break;
+					if (GetIndustry(p->ainew.temp)->accepts_cargo[i] == CT_INVALID) break;
 					if (GetIndustry(p->ainew.from_ic)->produced_cargo[0] == GetIndustry(p->ainew.temp)->accepts_cargo[i]) {
 						// Found a compatbiel industry
 						max_cargo = GetIndustry(p->ainew.from_ic)->total_production[0] - GetIndustry(p->ainew.from_ic)->total_transported[0];
@@ -477,10 +477,10 @@ static void AiNew_State_LocateRoute(Player *p)
 					}
 				}
 			}
-			if (!found && GetIndustry(p->ainew.temp)->produced_cargo[0] != 0xFF && GetIndustry(p->ainew.temp)->total_production[0] != 0) {
+			if (!found && GetIndustry(p->ainew.temp)->produced_cargo[0] != CT_INVALID && GetIndustry(p->ainew.temp)->total_production[0] != 0) {
 				// If not check if the current ic produces cargo that the from_ic accepts
 				for (i=0;i<3;i++) {
-					if (GetIndustry(p->ainew.from_ic)->accepts_cargo[i] == 0xFF) break;
+					if (GetIndustry(p->ainew.from_ic)->accepts_cargo[i] == CT_INVALID) break;
 					if (GetIndustry(p->ainew.temp)->produced_cargo[0] == GetIndustry(p->ainew.from_ic)->accepts_cargo[i]) {
 						// Found a compatbiel industry
 						found = true;

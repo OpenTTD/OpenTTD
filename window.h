@@ -387,7 +387,7 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(facesel_d));
 
 typedef struct {
 	int sel;
-	byte cargo;
+	CargoID cargo;
 } refit_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(refit_d));
 

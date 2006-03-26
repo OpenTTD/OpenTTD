@@ -693,7 +693,8 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT: {
-		int i, j, x, y;
+		int j, x, y;
+		CargoID i;
 		GraphDrawer gd;
 
 		gd.sel = _legend_cargobits;

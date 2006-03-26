@@ -320,7 +320,7 @@ typedef void GetTileDescProc(TileIndex tile, TileDesc *td);
  * above.
  */
 typedef uint32 GetTileTrackStatusProc(TileIndex tile, TransportType mode);
-typedef void GetProducedCargoProc(TileIndex tile, byte *b);
+typedef void GetProducedCargoProc(TileIndex tile, CargoID *b);
 typedef void ClickTileProc(TileIndex tile);
 typedef void AnimateTileProc(TileIndex tile);
 typedef void TileLoopProc(TileIndex tile);

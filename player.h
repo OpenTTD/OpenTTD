@@ -26,7 +26,7 @@ typedef struct AiBuildRec {
 	byte buildcmd_a;
 	byte buildcmd_b;
 	byte direction;
-	byte cargo;
+	CargoID cargo;
 } AiBuildRec;
 
 typedef struct PlayerAI {
@@ -39,7 +39,7 @@ typedef struct PlayerAI {
 	byte banned_tile_count;
 	byte railtype_to_use;
 
-	byte cargo_type;
+	CargoID cargo_type;
 	byte num_wagons;
 	byte build_kind;
 	byte num_build_rec;
@@ -111,7 +111,7 @@ typedef struct PlayerAiNew {
 
 	// Route stuff
 
-	byte cargo;
+	CargoID cargo;
 	byte tbt; // train/bus/truck 0/1/2 AI_TRAIN/AI_BUS/AI_TRUCK
 	int new_cost;
 

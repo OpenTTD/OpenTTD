@@ -10,10 +10,10 @@ struct Industry {
 	byte width; /* swapped order of w/h with town */
 	byte height;
 	const Town* town;
-	byte produced_cargo[2];
+	CargoID produced_cargo[2];
 	uint16 cargo_waiting[2];
 	byte production_rate[2];
-	byte accepts_cargo[3];
+	CargoID accepts_cargo[3];
 	byte prod_level;
 	uint16 last_mo_production[2];
 	uint16 last_mo_transported[2];

@@ -554,7 +554,7 @@ void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
 
 				gpc = _tile_type_procs[GetTileType(tile)]->get_produced_cargo_proc;
 				if (gpc != NULL) {
-					byte cargos[2] = { CT_INVALID, CT_INVALID };
+					CargoID cargos[2] = { CT_INVALID, CT_INVALID };
 
 					gpc(tile, cargos);
 					if (cargos[0] != CT_INVALID) {

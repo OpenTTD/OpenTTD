@@ -20,7 +20,7 @@ typedef struct RailVehicleInfo {
 	byte running_cost_class;
 	byte engclass; // 0: steam, 1: diesel, 2: electric
 	byte capacity;
-	byte cargo_type;
+	CargoID cargo_type;
 	byte ai_rank;
 	byte callbackmask; // see CallbackMask enum
 	uint16 pow_wag_power;
@@ -36,7 +36,7 @@ typedef struct ShipVehicleInfo {
 	byte image_index;
 	byte base_cost;
 	uint16 max_speed;
-	byte cargo_type;
+	CargoID cargo_type;
 	uint16 capacity;
 	byte running_cost;
 	byte sfx;
@@ -64,7 +64,7 @@ typedef struct RoadVehicleInfo {
 	byte sfx;
 	byte max_speed;
 	byte capacity;
-	byte cargo_type;
+	CargoID cargo_type;
 	byte callbackmask;
 } RoadVehicleInfo;
 

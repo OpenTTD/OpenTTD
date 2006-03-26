@@ -156,7 +156,7 @@ static EngineID AiChooseTrainToBuild(byte railtype, int32 money, byte flag, Tile
 	return best_veh_index;
 }
 
-static EngineID AiChooseRoadVehToBuild(byte cargo, int32 money, TileIndex tile)
+static EngineID AiChooseRoadVehToBuild(CargoID cargo, int32 money, TileIndex tile)
 {
 	EngineID best_veh_index = INVALID_ENGINE;
 	int32 best_veh_cost = 0;
@@ -431,7 +431,7 @@ static void AiStateDoReplaceVehicle(Player *p)
 
 typedef struct FoundRoute {
 	int distance;
-	byte cargo;
+	CargoID cargo;
 	void *from;
 	void *to;
 } FoundRoute;
@@ -451,7 +451,7 @@ static Industry *AiFindRandomIndustry(void)
 static void AiFindSubsidyIndustryRoute(FoundRoute *fr)
 {
 	uint i;
-	byte cargo;
+	CargoID cargo;
 	Subsidy *s;
 	Industry *from, *to_ind;
 	Town *to_tow;
@@ -468,7 +468,7 @@ static void AiFindSubsidyIndustryRoute(FoundRoute *fr)
 
 	// Don't want passengers or mail
 	cargo = s->cargo_type;
-	if (cargo == 0xFF || cargo == CT_PASSENGERS || cargo == CT_MAIL || s->age > 7)
+	if (cargo == CT_INVALID || cargo == CT_PASSENGERS || cargo == CT_MAIL || s->age > 7)
 		return;
 	fr->cargo = cargo;
 
@@ -522,7 +522,7 @@ static void AiFindRandomIndustryRoute(FoundRoute *fr)
 	Industry *i,*i2;
 	Town *t;
 	uint32 r;
-	byte cargo;
+	CargoID cargo;
 
 	// initially error
 	fr->distance = -1;
@@ -535,7 +535,7 @@ static void AiFindRandomIndustryRoute(FoundRoute *fr)
 
 	// pick a random produced cargo
 	cargo = i->produced_cargo[0];
-	if (r & 1 && i->produced_cargo[1] != 0xFF) cargo = i->produced_cargo[1];
+	if (r & 1 && i->produced_cargo[1] != CT_INVALID) cargo = i->produced_cargo[1];
 
 	fr->cargo = cargo;
 

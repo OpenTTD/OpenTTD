@@ -908,7 +908,7 @@ void DeleteSubsidyWithStation(uint16 index)
 
 typedef struct FoundRoute {
 	uint distance;
-	byte cargo;
+	CargoID cargo;
 	void *from;
 	void *to;
 } FoundRoute;
@@ -934,7 +934,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 {
 	Industry *i;
 	int trans, total;
-	byte cargo;
+	CargoID cargo;
 
 	fr->distance = (uint)-1;
 
@@ -1102,9 +1102,9 @@ static void Load_SUBS(void)
 		SlObject(&_subsidies[index], _subsidies_desc);
 }
 
-int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, byte cargo_type)
+int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, CargoID cargo_type)
 {
-	int cargo = cargo_type;
+	CargoID cargo = cargo_type;
 	byte f;
 
 	/* zero the distance if it's the bank and very short transport. */
@@ -1131,7 +1131,7 @@ int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, b
 	return BIGMULSS(dist * f * num_pieces, _cargo_payment_rates[cargo], 21);
 }
 
-static void DeliverGoodsToIndustry(TileIndex xy, byte cargo_type, int num_pieces)
+static void DeliverGoodsToIndustry(TileIndex xy, CargoID cargo_type, int num_pieces)
 {
 	Industry* best = NULL;
 	Industry* ind;
@@ -1162,7 +1162,7 @@ static void DeliverGoodsToIndustry(TileIndex xy, byte cargo_type, int num_pieces
 	}
 }
 
-static bool CheckSubsidised(Station *from, Station *to, byte cargo_type)
+static bool CheckSubsidised(Station *from, Station *to, CargoID cargo_type)
 {
 	Subsidy *s;
 	TileIndex xy;
@@ -1230,7 +1230,7 @@ static bool CheckSubsidised(Station *from, Station *to, byte cargo_type)
 	return false;
 }
 
-static int32 DeliverGoods(int num_pieces, byte cargo_type, uint16 source, uint16 dest, byte days_in_transit)
+static int32 DeliverGoods(int num_pieces, CargoID cargo_type, uint16 source, uint16 dest, byte days_in_transit)
 {
 	bool subsidised;
 	Station *s_from, *s_to;

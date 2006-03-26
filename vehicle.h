@@ -178,7 +178,7 @@ struct Vehicle {
 	byte vehstatus;		// Status
 	uint16 last_station_visited;
 
-	byte cargo_type;	// type of cargo this vehicle is carrying
+	CargoID cargo_type;	// type of cargo this vehicle is carrying
 	byte cargo_days; // how many days have the pieces been in transit
 	uint16 cargo_source;// source of cargo
 	uint16 cargo_cap;	// total capacity
