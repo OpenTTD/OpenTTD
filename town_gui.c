@@ -334,7 +334,7 @@ static const WindowDesc _town_view_scen_desc = {
 	TownViewWndProc
 };
 
-void ShowTownViewWindow(uint town)
+void ShowTownViewWindow(TownID town)
 {
 	Window *w;
 

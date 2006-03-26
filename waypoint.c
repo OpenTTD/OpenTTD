@@ -237,7 +237,7 @@ int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		wp->xy = tile;
 		wp->build_date = _date;
 
-		if (wp->town_index == STR_NULL)
+		if (wp->town_index == 0)
 			MakeDefaultWaypointName(wp);
 
 		UpdateWaypointSign(wp);

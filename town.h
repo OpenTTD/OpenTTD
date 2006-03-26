@@ -26,9 +26,6 @@ struct Town {
 	// Which players have a statue?
 	byte statues;
 
-	// Sort index in listings
-	byte sort_index_obsolete;
-
 	// Player ratings as well as a mask that determines which players have a rating.
 	byte have_ratings;
 	uint8 unwanted[MAX_PLAYERS]; // how many months companies aren't wanted by towns (bribe)
