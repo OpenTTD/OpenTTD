@@ -84,33 +84,33 @@ STR_004C_PLASTIC                                                :Plastic
 STR_004D_FIZZY_DRINK                                            :Fizzy Drink
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} passenger{P "" s}
-STR_QUANTITY_COAL                                               :{COMMA} tonne{P "" s} of coal
+STR_QUANTITY_COAL                                               :{WEIGHT} of coal
 STR_QUANTITY_MAIL                                               :{COMMA} bag{P "" s} of mail
 STR_QUANTITY_OIL                                                :{VOLUME} of oil
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} item{P "" s} of livestock
 STR_QUANTITY_GOODS                                              :{COMMA} crate{P "" s} of goods
-STR_QUANTITY_GRAIN                                              :{COMMA} tonne{P "" s} of grain
-STR_QUANTITY_WOOD                                               :{COMMA} tonne{P "" s} of wood
-STR_QUANTITY_IRON_ORE                                           :{COMMA} tonne{P "" s} of iron ore
-STR_QUANTITY_STEEL                                              :{COMMA} tonne{P "" s} of steel
+STR_QUANTITY_GRAIN                                              :{WEIGHT} of grain
+STR_QUANTITY_WOOD                                               :{WEIGHT} of wood
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} of iron ore
+STR_QUANTITY_STEEL                                              :{WEIGHT} of steel
 STR_QUANTITY_VALUABLES                                          :{COMMA} bag{P "" s} of valuables
-STR_QUANTITY_COPPER_ORE                                         :{COMMA} tonne{P "" s} of copper ore
-STR_QUANTITY_MAIZE                                              :{COMMA} tonne{P "" s} of maize
-STR_QUANTITY_FRUIT                                              :{COMMA} tonne{P "" s} of fruit
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} of copper ore
+STR_QUANTITY_MAIZE                                              :{WEIGHT} of maize
+STR_QUANTITY_FRUIT                                              :{WEIGHT} of fruit
 STR_QUANTITY_DIAMONDS                                           :{COMMA} bag{P "" s} of diamonds
-STR_QUANTITY_FOOD                                               :{COMMA} tonne{P "" s} of food
-STR_QUANTITY_PAPER                                              :{COMMA} tonne{P "" s} of paper
+STR_QUANTITY_FOOD                                               :{WEIGHT} of food
+STR_QUANTITY_PAPER                                              :{WEIGHT} of paper
 STR_QUANTITY_GOLD                                               :{COMMA} bag{P "" s} of gold
 STR_QUANTITY_WATER                                              :{VOLUME} of water
-STR_QUANTITY_WHEAT                                              :{COMMA} tonne{P "" s} of wheat
+STR_QUANTITY_WHEAT                                              :{WEIGHT} of wheat
 STR_QUANTITY_RUBBER                                             :{VOLUME} of rubber
-STR_QUANTITY_SUGAR                                              :{COMMA} tonne{P "" s} of sugar
+STR_QUANTITY_SUGAR                                              :{WEIGHT} of sugar
 STR_QUANTITY_TOYS                                               :{COMMA} toy{P "" s}
 STR_QUANTITY_SWEETS                                             :{COMMA} bag{P "" s} of sweets
 STR_QUANTITY_COLA                                               :{VOLUME} of cola
-STR_QUANTITY_CANDYFLOSS                                         :{COMMA} tonne{P "" s} of candyfloss
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} of candyfloss
 STR_QUANTITY_BUBBLES                                            :{COMMA} bubble{P "" s}
-STR_QUANTITY_TOFFEE                                             :{COMMA} tonne{P "" s} of toffee
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} of toffee
 STR_QUANTITY_BATTERIES                                          :{COMMA} batter{P y ies}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} of plastic
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} fizzy drink{P "" s}
@@ -2482,10 +2482,10 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Make the
 STR_SERVICE_HINT                                                :{BLACK}Skip this order unless a service is needed
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}New {STRING} now available!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Cost: {CURRENCY} Weight: {COMMA}t{}Speed: {VELOCITY}  Power: {COMMA}hp{}Running Cost: {CURRENCY}/yr{}Capacity: {STRING1}
+STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Cost: {CURRENCY} Weight: {WEIGHT_S}{}Speed: {VELOCITY}  Power: {POWER}{}Running Cost: {CURRENCY}/yr{}Capacity: {STRING1}
 STR_885C_BROKEN_DOWN                                            :{RED}Broken down
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Age: {LTBLUE}{STRING2}{BLACK}   Running Cost: {LTBLUE}{CURRENCY}/yr
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Weight: {LTBLUE}{COMMA}t  {BLACK}Power: {LTBLUE}{COMMA}hp{BLACK} Max. speed: {LTBLUE}{VELOCITY}
+STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Weight: {LTBLUE}{WEIGHT_S}  {BLACK}Power: {LTBLUE}{POWER}{BLACK} Max. speed: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit this year: {LTBLUE}{CURRENCY}  (last year: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Reliability: {LTBLUE}{COMMA}%  {BLACK}Breakdowns since last service: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Stopped
@@ -2817,15 +2817,15 @@ STR_MAGLEV_VEHICLES                                             :Maglev Vehicles
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Weight: {GOLD}{COMMA}t
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Speed: {GOLD}{VELOCITY}{BLACK}   Power: {GOLD}{COMMA}hp
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Weight: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Speed: {GOLD}{VELOCITY}{BLACK}   Power: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Speed: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Running Cost: {GOLD}{CURRENCY}/yr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacity: {GOLD}{STRING1} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designed: {GOLD}{NUM}{BLACK} Life: {GOLD}{COMMA} years
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Reliability: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Weight: {GOLD}{COMMA}t  ({COMMA}t)
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Weight: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Speed: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacity: {GOLD}{COMMA} passengers, {COMMA} bags of mail
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Powered Wagons: {GOLD}+{COMMA}hp{BLACK} Weight: {GOLD}+{COMMA}t
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Powered Wagons: {GOLD}+{POWER}{BLACK} Weight: {GOLD}+{WEIGHT_S}
