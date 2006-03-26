@@ -38,16 +38,6 @@ const byte _track_sloped_sprites[14] = {
 
 void ShowTrainDepotWindow(TileIndex tile);
 
-/* Format of rail map5 byte.
- * 00 abcdef  => Normal rail
- * 01 abcdef  => Rail with signals
- * 10 ??????  => Unused
- * 11 ????dd  => Depot
- *
- * abcdef is a bitmask, which contains ones for all present tracks. Below the
- * value for each track is given.
- */
-
 /*         4
  *     ---------
  *    |\       /|
@@ -582,7 +572,7 @@ int32 CmdRemoveRailroadTrack(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 /** Build a train depot
  * @param x,y position of the train depot
  * @param p1 rail type
- * @param p2 depot direction (0 through 3), where 0 is NE, 1 is SE, 2 is SW, 3 is NW
+ * @param p2 entrance direction (DiagDirection)
  *
  * @todo When checking for the tile slope,
  * distingush between "Flat land required" and "land sloped in wrong direction"

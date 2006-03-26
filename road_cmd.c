@@ -553,7 +553,7 @@ int32 CmdRemoveLongRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 /** Build a road depot.
  * @param x,y tile coordinates where the depot will be built
- * @param p1 depot direction (0 through 3), where 0 is NW, 1 is NE, etc.
+ * @param p1 entrance direction (DiagDirection)
  * @param p2 unused
  *
  * @todo When checking for the tile slope,

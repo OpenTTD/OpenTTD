@@ -110,11 +110,10 @@ enum InitializeGameModes {
 
 typedef enum TransportTypes {
 	/* These constants are for now linked to the representation of bridges
-	 * and tunnels, so they can be used by GetTileTrackStatus_TunnelBridge
-	 * to compare against the map5 array. In an ideal world, these
-	 * constants would be used everywhere when accessing tunnels and
-	 * bridges. For now, you should just not change the values for road
-	 * and rail.
+	 * and tunnels, so they can be used by GetTileTrackStatus_TunnelBridge.
+	 * In an ideal world, these constants would be used everywhere when
+	 * accessing tunnels and bridges. For now, you should just not change
+	 * the values for road and rail.
 	 */
 	TRANSPORT_RAIL = 0,
 	TRANSPORT_ROAD = 1,

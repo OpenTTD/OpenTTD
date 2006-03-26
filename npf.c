@@ -542,7 +542,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 		/* Find out the exit direction first */
 		if (IsRoadStationTile(src_tile)) {
 			exitdir = GetRoadStationDir(src_tile);
-		} else { /* Train or road depot. Direction is stored the same for both, in map5 */
+		} else { /* Train or road depot */
 			exitdir = GetDepotDirection(src_tile, type);
 		}
 

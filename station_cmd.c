@@ -1293,7 +1293,7 @@ static void FindRoadStationSpot(bool truck_station, Station* st, RoadStop*** cur
 
 /** Build a bus station
  * @param x,y coordinates to build bus station at
- * @param p1 busstop entrance direction (0 through 3), where 0 is NW, 1 is NE, etc.
+ * @param p1 entrance direction (DiagDirection)
  * @param p2 0 for Bus stops, 1 for truck stops
  */
 int32 CmdBuildRoadStop(int x, int y, uint32 flags, uint32 p1, uint32 p2)

@@ -242,8 +242,9 @@ static inline bool IsBuoyTile(TileIndex tile)
 	return IsTileType(tile, MP_STATION) && _m[tile].m5 == 0x52;
 }
 
-/* Get's the direction the station exit points towards. Ie, returns 0 for a
- * station with the exit NE. */
+/**
+ * Get's the direction the road stop entrance points towards.
+ */
 static inline DiagDirection GetRoadStationDir(TileIndex tile)
 {
 	assert(IsRoadStationTile(tile));
