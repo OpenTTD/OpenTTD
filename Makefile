@@ -670,6 +670,7 @@ SRCS += oldloader.c
 SRCS += openttd.c
 SRCS += order_cmd.c
 SRCS += order_gui.c
+SRCS += os_timer.c
 SRCS += pathfind.c
 SRCS += player_gui.c
 SRCS += players.c

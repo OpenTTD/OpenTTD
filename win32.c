@@ -62,11 +62,6 @@ bool LoadLibraryList(Function proc[], const char* dll)
 }
 
 #ifdef _MSC_VER
-#	ifdef _M_AMD64
-void* _get_save_esp(void);
-uint64 _rdtsc(void);
-#	endif
-
 static const char *_exception_string;
 #endif
 
@@ -594,6 +589,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 static void Win32InitializeExceptions(void)
 {
 #ifdef _M_AMD64
+	extern void *_get_save_esp(void);
 	_safe_esp = _get_save_esp();
 #else
 	_asm {
@@ -603,7 +599,7 @@ static void Win32InitializeExceptions(void)
 
 	SetUnhandledExceptionFilter(ExceptionHandler);
 }
-#endif
+#endif /* _MSC_VER */
 
 static char *_fios_path;
 static char *_fios_save_path;
@@ -1056,17 +1052,6 @@ static int ParseCommandLine(char *line, char **argv, int max_argc)
 
 	return n;
 }
-
-
-#if defined(_MSC_VER) && !defined(_M_AMD64)
-uint64 _declspec(naked) _rdtsc(void)
-{
-	_asm {
-		rdtsc
-		ret
-	}
-}
-#endif
 
 void CreateConsole(void)
 {

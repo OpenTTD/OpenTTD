@@ -299,6 +299,9 @@
 				RelativePath=".\ottdres.rc">
 			</File>
 			<File
+				RelativePath=".\os_timer.c">
+			</File>
+			<File
 				RelativePath=".\pathfind.c">
 			</File>
 			<File

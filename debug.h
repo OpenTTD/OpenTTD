@@ -26,4 +26,27 @@ void CDECL debug(const char *s, ...);
 void SetDebugString(const char *s);
 const char *GetDebugString(void);
 
+/* MSVC of course has to have a different syntax for long long *sigh* */
+#ifdef _MSC_VER
+# define OTTD_PRINTF64 "I64"
+#else
+# define OTTD_PRINTF64 "ll"
+#endif
+
+// Used for profiling
+#define TIC() {\
+	extern uint64 _rdtsc(void);\
+	uint64 _xxx_ = _rdtsc();\
+	static uint64 __sum__ = 0;\
+	static uint32 __i__ = 0;
+
+#define TOC(str, count)\
+	__sum__ += _rdtsc() - _xxx_;\
+	if (++__i__ == count) {\
+		printf("[%s]: %" OTTD_PRINTF64 "u [avg: %.1f]\n", str, __sum__, __sum__/(double)__i__);\
+		__i__ = 0;\
+		__sum__ = 0;\
+	}\
+}
+
 #endif /* DEBUG_H */

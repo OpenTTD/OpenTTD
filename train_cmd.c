@@ -2087,29 +2087,6 @@ static const byte _search_directions[6][4] = {
 };
 
 static const byte _pick_track_table[6] = {1, 3, 2, 2, 0, 0};
-#ifdef PF_BENCHMARK
-#if !defined(_MSC_VER)
-unsigned int _rdtsc()
-{
-	unsigned int high, low;
-
-	__asm__ __volatile__ ("rdtsc" : "=a" (low), "=d" (high));
-	return low;
-}
-#else
-#ifndef _M_AMD64
-static unsigned int _declspec(naked) _rdtsc(void)
-{
-	_asm {
-		rdtsc
-		ret
-	}
-}
-#endif
-#endif
-#endif
-
-
 
 /* choose a track */
 static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirbits)
@@ -2117,8 +2094,7 @@ static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir,
 	TrainTrackFollowerData fd;
 	uint best_track;
 #ifdef PF_BENCHMARK
-	int time = _rdtsc();
-	static float f;
+	TIC()
 #endif
 
 	assert((trackdirbits & ~0x3F) == 0);
@@ -2171,9 +2147,7 @@ static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir,
 	}
 
 #ifdef PF_BENCHMARK
-	time = _rdtsc() - time;
-	f = f * 0.99 + 0.01 * time;
-	printf("PF time = %d %f\n", time, f);
+	TOC("PF time = ", 1)
 #endif
 
 	return best_track;
