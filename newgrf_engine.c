@@ -397,7 +397,7 @@ int GetCustomEngineSprite(EngineID engine, const Vehicle* v, Direction direction
 {
 	const SpriteGroup *group;
 	const RealSpriteGroup *rsg;
-	byte cargo = GC_PURCHASE;
+	CargoID cargo = GC_PURCHASE;
 	byte loaded = 0;
 	bool in_motion = 0;
 	int totalsets, spriteset;
@@ -487,7 +487,7 @@ bool UsesWagonOverride(const Vehicle* v)
 uint16 GetCallBackResult(uint16 callback_info, EngineID engine, const Vehicle *v)
 {
 	const SpriteGroup *group;
-	byte cargo = GC_DEFAULT;
+	CargoID cargo = GC_DEFAULT;
 
 	if (v != NULL)
 		cargo = _global_cargo_id[_opt.landscape][v->cargo_type];

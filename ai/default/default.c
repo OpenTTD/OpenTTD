@@ -2327,7 +2327,7 @@ static void AiStateBuildRailVeh(Player *p)
 	TileIndex tile;
 	EngineID veh;
 	int i;
-	int cargo;
+	CargoID cargo;
 	int32 cost;
 	Vehicle *v;
 	uint loco_id;
