@@ -19,7 +19,7 @@ typedef struct {
 	GameDifficulty diff;
 	byte diff_level;
 	byte currency;
-	bool kilometers;
+	byte units;
 	byte town_name;
 	byte landscape;
 	byte snow_line;

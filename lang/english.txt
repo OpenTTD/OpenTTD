@@ -278,8 +278,6 @@ STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
 
-STR_0139_IMPERIAL_MILES                                         :Imperial (miles)
-STR_013A_METRIC_KILOMETERS                                      :Metric (kilometers)
 STR_013B_OWNED_BY                                               :{WHITE}...owned by {STRING2}
 STR_013C_CARGO                                                  :{BLACK}Cargo
 STR_013D_INFORMATION                                            :{BLACK}Information
@@ -307,6 +305,34 @@ STR_0150_SOMEONE                                                :someone{SKIP}{S
 STR_0151_MAP_OF_WORLD                                           :Map of world
 STR_0152_TOWN_DIRECTORY                                         :Town directory
 STR_0153_SUBSIDIES                                              :Subsidies
+
+STR_UNITS_IMPERIAL                                              :Imperial
+STR_UNITS_METRIC                                                :Metric
+STR_UNITS_SI                                                    :SI
+
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
+STR_UNITS_POWER_METRIC                                          :{COMMA}hp
+STR_UNITS_POWER_SI                                              :{COMMA}kW
+
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P "" s}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonne{P "" s}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P "" s}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litre{P "" s}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Operating profit graph
@@ -760,9 +786,9 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Paste th
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Currency units
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Currency units selection
-STR_02E3_DISTANCE_UNITS                                         :{BLACK}Distance units
+STR_MEASURING_UNITS                                             :{BLACK}Measuring units
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
-STR_02E5_DISTANCE_UNITS_SELECTION                               :{BLACK}Distance units selection
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Measuring units selection
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Road vehicles
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Select side of road for vehicles to drive on

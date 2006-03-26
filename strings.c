@@ -480,6 +480,43 @@ static const char *ParseStringChoice(const char *b, uint form, char *dst, int *d
 	return b + pos;
 }
 
+typedef struct Units {
+	int s_m;           ///< Multiplier for velocity
+	int s_s;           ///< Shift for velocity
+	StringID velocity; ///< String for velocity
+	int p_m;           ///< Multiplier for power
+	int p_s;           ///< Shift for power
+	StringID power;    ///< String for velocity
+	int w_m;           ///< Multiplier for weight
+	int w_s;           ///< Shift for weight
+	StringID s_weight; ///< Short string for weight
+	StringID l_weight; ///< Long string for weight
+	int v_m;           ///< Multiplier for volume
+	int v_s;           ///< Shift for volume
+	StringID s_volume; ///< Short string for volume
+	StringID l_volume; ///< Long string for volume
+} Units;
+
+static const Units units[] = {
+	{ // Imperial (Original)
+		   1,  0, STR_UNITS_VELOCITY_IMPERIAL,
+		   1,  0, STR_UNITS_POWER_IMPERIAL,
+		   1,  0, STR_UNITS_WEIGHT_SHORT_METRIC, STR_UNITS_WEIGHT_LONG_METRIC,
+		1000,  0, STR_UNITS_VOLUME_SHORT_METRIC, STR_UNITS_VOLUME_LONG_METRIC,
+	},
+	{ // Metric
+		1648, 10, STR_UNITS_VELOCITY_METRIC,
+		   1,  0, STR_UNITS_POWER_METRIC,
+		   1,  0, STR_UNITS_WEIGHT_SHORT_METRIC, STR_UNITS_WEIGHT_LONG_METRIC,
+		1000,  0, STR_UNITS_VOLUME_SHORT_METRIC, STR_UNITS_VOLUME_LONG_METRIC,
+	},
+	{ // SI
+		 458, 10, STR_UNITS_VELOCITY_SI,
+		 764, 10, STR_UNITS_POWER_SI,
+		1000,  0, STR_UNITS_WEIGHT_SHORT_SI, STR_UNITS_WEIGHT_LONG_SI,
+		1000,  0, STR_UNITS_VOLUME_SHORT_SI, STR_UNITS_VOLUME_LONG_SI,
+	},
+};
 
 static char *FormatString(char *buff, const char *str, const int32 *argv, uint casei)
 {
@@ -510,16 +547,11 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 			buff = FormatMonthAndYear(buff, GetInt32(&argv));
 			break;
 		case 0x84: {// {VELOCITY}
-			int value = GetInt32(&argv);
-			if (_opt_ptr->kilometers) value = value * 1648 >> 10;
-			buff = FormatCommaNumber(buff, value);
-			if (_opt_ptr->kilometers) {
-				memcpy(buff, " km/h", 5);
-				buff += 5;
-			} else {
-				memcpy(buff, " mph", 4);
-				buff += 4;
-			}
+			int32 args[1];
+			assert(_opt_ptr->units < lengthof(units));
+			args[0] = GetInt32(&argv) * units[_opt_ptr->units].s_m >> units[_opt_ptr->units].s_s;
+			buff = FormatString(buff, GetStringPtr(units[_opt_ptr->units].velocity), args, modifier >> 24);
+			modifier = 0;
 			break;
 		}
 		// 0x85 is used as escape character..
@@ -536,11 +568,31 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 				// 8-bit = cargo type
 				// 16-bit = cargo count
 				StringID cargo_str = _cargo_string_list[_opt_ptr->landscape][GetInt32(&argv)];
-				uint16 multiplier = (cargo_str == STR_LITERS) ? 1000 : 1;
-				// liquid type of cargo is multiplied by 100 to get correct amount
-				buff = FormatCommaNumber(buff, GetInt32(&argv) * multiplier);
-				buff = strecpy(buff, " ", NULL);
-				buff = strecpy(buff, GetStringPtr(cargo_str), NULL);
+				switch (cargo_str) {
+					case STR_TONS: {
+						int32 args[1];
+						assert(_opt_ptr->units < lengthof(units));
+						args[0] = GetInt32(&argv) * units[_opt_ptr->units].w_m >> units[_opt_ptr->units].w_s;
+						buff = FormatString(buff, GetStringPtr(units[_opt_ptr->units].l_weight), args, modifier >> 24);
+						modifier = 0;
+						break;
+					}
+
+					case STR_LITERS: {
+						int32 args[1];
+						assert(_opt_ptr->units < lengthof(units));
+						args[0] = GetInt32(&argv) * units[_opt_ptr->units].v_m >> units[_opt_ptr->units].v_s;
+						buff = FormatString(buff, GetStringPtr(units[_opt_ptr->units].l_volume), args, modifier >> 24);
+						modifier = 0;
+						break;
+					}
+
+					default:
+						buff = FormatCommaNumber(buff, GetInt32(&argv));
+						buff = strecpy(buff, " ", NULL);
+						buff = strecpy(buff, GetStringPtr(cargo_str), NULL);
+						break;
+				}
 			} break;
 			case 4: {/* {CURRCOMPACT64} */
 				// 64 bit compact currency-unit
@@ -605,9 +657,10 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 			}
 
 			case 12: { // {VOLUME}
-				buff = FormatCommaNumber(buff, GetInt32(&argv) * 1000);
-				buff = strecpy(buff, " ", NULL);
-				buff = FormatString(buff, GetStringPtr(STR_LITERS), NULL, modifier >> 24);
+				int32 args[1];
+				assert(_opt_ptr->units < lengthof(units));
+				args[0] = GetInt32(&argv) * units[_opt_ptr->units].v_m >> units[_opt_ptr->units].v_s;
+				buff = FormatString(buff, GetStringPtr(units[_opt_ptr->units].l_volume), args, modifier >> 24);
 				modifier = 0;
 				break;
 			}
@@ -633,6 +686,42 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 				//   16-bit - cargo count
 				StringID cargo_str = _cargoc.names_long[GetInt32(&argv)];
 				buff = GetStringWithArgs(buff, cargo_str, argv++);
+				break;
+			}
+
+			case 16: { // {POWER}
+				int32 args[1];
+				assert(_opt_ptr->units < lengthof(units));
+				args[0] = GetInt32(&argv) * units[_opt_ptr->units].p_m >> units[_opt_ptr->units].p_s;
+				buff = FormatString(buff, GetStringPtr(units[_opt_ptr->units].power), args, modifier >> 24);
+				modifier = 0;
+				break;
+			}
+
+			case 17: { // {VOLUME_S}
+				int32 args[1];
+				assert(_opt_ptr->units < lengthof(units));
+				args[0] = GetInt32(&argv) * units[_opt_ptr->units].v_m >> units[_opt_ptr->units].v_s;
+				buff = FormatString(buff, GetStringPtr(units[_opt_ptr->units].s_volume), args, modifier >> 24);
+				modifier = 0;
+				break;
+			}
+
+			case 18: { // {WEIGHT}
+				int32 args[1];
+				assert(_opt_ptr->units < lengthof(units));
+				args[0] = GetInt32(&argv) * units[_opt_ptr->units].w_m >> units[_opt_ptr->units].w_s;
+				buff = FormatString(buff, GetStringPtr(units[_opt_ptr->units].l_weight), args, modifier >> 24);
+				modifier = 0;
+				break;
+			}
+
+			case 19: { // {WEIGHT_S}
+				int32 args[1];
+				assert(_opt_ptr->units < lengthof(units));
+				args[0] = GetInt32(&argv) * units[_opt_ptr->units].w_m >> units[_opt_ptr->units].w_s;
+				buff = FormatString(buff, GetStringPtr(units[_opt_ptr->units].s_weight), args, modifier >> 24);
+				modifier = 0;
 				break;
 			}
 

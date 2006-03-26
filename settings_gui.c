@@ -24,9 +24,10 @@ static uint32 _difficulty_click_a;
 static uint32 _difficulty_click_b;
 static byte _difficulty_timeout;
 
-static const StringID _distances_dropdown[] = {
-	STR_0139_IMPERIAL_MILES,
-	STR_013A_METRIC_KILOMETERS,
+static const StringID _units_dropdown[] = {
+	STR_UNITS_IMPERIAL,
+	STR_UNITS_METRIC,
+	STR_UNITS_SI,
 	INVALID_STRING_ID
 };
 
@@ -95,7 +96,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 		w->disabled_state = (_vehicle_design_names & 1) ? (++str, 0) : (1 << 21);
 		SetDParam(0, str);
 		SetDParam(1, _currency_string_list[_opt_ptr->currency]);
-		SetDParam(2, _opt_ptr->kilometers + STR_0139_IMPERIAL_MILES);
+		SetDParam(2, STR_UNITS_IMPERIAL + _opt_ptr->units);
 		SetDParam(3, STR_02E9_DRIVE_ON_LEFT + _opt_ptr->road_side);
 		SetDParam(4, STR_TOWNNAME_ORIGINAL_ENGLISH + _opt_ptr->town_name);
 		SetDParam(5, _autosave_dropdown[_opt_ptr->autosave]);
@@ -115,7 +116,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			ShowDropDownMenu(w, _currency_string_list, _opt_ptr->currency, 5, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);
 			return;
 		case 7: case 8: /* Setup distance unit dropdown */
-			ShowDropDownMenu(w, _distances_dropdown, _opt_ptr->kilometers, 8, 0, 0);
+			ShowDropDownMenu(w, _units_dropdown, _opt_ptr->units, 8, 0, 0);
 			return;
 		case 10: case 11: { /* Setup road-side dropdown */
 			int i = 0;
@@ -174,8 +175,8 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			_opt_ptr->currency = e->dropdown.index;
 			MarkWholeScreenDirty();
 			break;
-		case 8: /* Distance units */
-			_opt_ptr->kilometers = e->dropdown.index;
+		case 8: /* Measuring units */
+			_opt_ptr->units = e->dropdown.index;
 			MarkWholeScreenDirty();
 			break;
 		case 11: /* Road side */
@@ -241,9 +242,9 @@ static const Widget _game_options_widgets[] = {
 {      WWT_FRAME,   RESIZE_NONE,    14,    10,   179,    20,    55, STR_02E0_CURRENCY_UNITS,	STR_NULL},
 {          WWT_6,   RESIZE_NONE,    14,    20,   169,    34,    45, STR_02E1,								STR_02E2_CURRENCY_UNITS_SELECTION},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,   158,   168,    35,    44, STR_0225,								STR_02E2_CURRENCY_UNITS_SELECTION},
-{      WWT_FRAME,   RESIZE_NONE,    14,   190,   359,    20,    55, STR_02E3_DISTANCE_UNITS,	STR_NULL},
-{          WWT_6,   RESIZE_NONE,    14,   200,   349,    34,    45, STR_02E4,								STR_02E5_DISTANCE_UNITS_SELECTION},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   338,   348,    35,    44, STR_0225,								STR_02E5_DISTANCE_UNITS_SELECTION},
+{      WWT_FRAME,   RESIZE_NONE,    14,   190,   359,    20,    55, STR_MEASURING_UNITS,		STR_NULL},
+{          WWT_6,   RESIZE_NONE,    14,   200,   349,    34,    45, STR_02E4,								STR_MEASURING_UNITS_SELECTION},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   338,   348,    35,    44, STR_0225,								STR_MEASURING_UNITS_SELECTION},
 {      WWT_FRAME,   RESIZE_NONE,    14,    10,   179,    62,    97, STR_02E6_ROAD_VEHICLES,	STR_NULL},
 {          WWT_6,   RESIZE_NONE,    14,    20,   169,    76,    87, STR_02E7,								STR_02E8_SELECT_SIDE_OF_ROAD_FOR},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,   158,   168,    77,    86, STR_0225,								STR_02E8_SELECT_SIDE_OF_ROAD_FOR},

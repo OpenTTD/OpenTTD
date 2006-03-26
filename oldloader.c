@@ -1495,7 +1495,7 @@ static const OldChunks main_chunk[] = {
 	OCL_VAR ( OC_FILE_U8 | OC_VAR_U16,    1, &_station_tick_ctr ),
 
 	OCL_VAR (  OC_UINT8,    1, &_opt.currency ),
-	OCL_VAR (  OC_UINT8,    1, &_opt.kilometers ),
+	OCL_VAR (  OC_UINT8,    1, &_opt.units ),
 	OCL_VAR ( OC_FILE_U8 | OC_VAR_U32,    1, &_cur_player_tick_index ),
 
 	OCL_NULL( 2 ),               // Date stuff, calculated automatically
