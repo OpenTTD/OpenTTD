@@ -23,7 +23,7 @@ struct Industry {
 	uint16 counter;
 
 	byte type;
-	Owner owner;
+	byte owner;
 	byte color_map;
 	byte last_prod_year;
 	byte was_cargo_delivered;
