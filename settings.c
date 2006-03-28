@@ -583,15 +583,39 @@ static const void *string_to_val(const SettingDescBase *desc, const char *str)
 static void Write_ValidateSetting(void *ptr, const SettingDesc *sd, int32 val)
 {
 	const SettingDescBase *sdb = &sd->desc;
-	int32 min;
 
 	if (sdb->cmd != SDT_BOOLX && sdb->cmd != SDT_NUMX &&
 		  sdb->cmd != SDT_ONEOFMANY && sdb->cmd != SDT_MANYOFMANY) return;
 
-	/* Override the minimum value. No value below sdb->min, except special value 0 */
-	min = ((sdb->flags & SGF_0ISDISABLED) && val <= sdb->min) ? 0 : sdb->min;
 	/* We cannot know the maximum value of a bitset variable, so just have faith */
-	val = (sdb->cmd == SDT_MANYOFMANY) ? val : clamp(val, min, sdb->max);
+	if (sdb->cmd != SDT_MANYOFMANY) {
+		/* We need to take special care of the uint32 type as we receive from the function
+		 * a signed integer. While here also bail out on 64-bit settings as those are not
+		 * supported. Unsigned 8 and 16-bit variables are safe since they fit into a signed
+		 * 32-bit variable
+		 * TODO: Support 64-bit settings/variables */
+		switch (GetVarMemType(sd->save.conv)) {
+			case SLE_VAR_BL:
+			case SLE_VAR_I8:
+			case SLE_VAR_U8:
+			case SLE_VAR_I16:
+			case SLE_VAR_U16:
+			case SLE_VAR_I32: {
+				/* Override the minimum value. No value below sdb->min, except special value 0 */
+				int32 min = ((sdb->flags & SGF_0ISDISABLED) && val <= sdb->min) ? 0 : sdb->min;
+				val = clamp(val, min, sdb->max);
+			} break;
+			case SLE_VAR_U32: {
+				/* Override the minimum value. No value below sdb->min, except special value 0 */
+				uint min = ((sdb->flags & SGF_0ISDISABLED) && (uint)val <= (uint)sdb->min) ? 0 : sdb->min;
+				WriteValue(ptr, SLE_VAR_U32, (int64)clampu(val, min, sdb->max));
+				return;
+			}
+			case SLE_VAR_I64:
+			case SLE_VAR_U64:
+			default: NOT_REACHED(); break;
+		}
+	}
 
 	WriteValue(ptr, sd->save.conv, (int64)val);
 }

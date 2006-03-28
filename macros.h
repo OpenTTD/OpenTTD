@@ -35,6 +35,12 @@ static inline int clamp(int a, int min, int max)
 	return a;
 }
 
+static inline uint clampu(uint a, uint min, uint max)
+{
+	if (a <= min) return min;
+	if (a >= max) return max;
+	return a;
+}
 
 static inline int32 BIGMULSS(int32 a, int32 b, int shift) {
 	return (int32)(((int64)(a) * (int64)(b)) >> (shift));
