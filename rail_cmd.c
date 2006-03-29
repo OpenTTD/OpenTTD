@@ -1300,7 +1300,7 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track, bool earth, bool snow, 
 		if (track & TRACK_BIT_RIGHT) DrawGroundSprite(rti->base_sprites.single_e);
 	}
 
-	if (GB(_m[ti->tile].m3, 0, 4) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
+	if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 
 }
 
@@ -1519,7 +1519,7 @@ static bool SetSignalsEnumProc(TileIndex tile, SetSignalsData *ssd, int track, u
 			}
 
 			// remember if this block has a presignal.
-			ssd->has_presignal |= (_m[tile].m4&1);
+			ssd->has_presignal |= (_m[tile].m4 & 1);
 		}
 
 		if (HasSignalOnTrackdir(tile, track) && _m[tile].m4 & 2) {
