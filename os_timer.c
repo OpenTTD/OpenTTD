@@ -41,8 +41,7 @@ uint64 _rdtsc(void)
 #if defined(__POWERPC__) && !defined(RDTSC_AVAILABLE)
 uint64 _rdtsc(void)
 {
-	uint32 high, low;
-	uint32 high2 = 0;
+	uint32 high = 0, high2 = 0, low;
 	/* PPC does not have rdtsc, so we cheat by reading the two 32-bit time-counters
 	 * it has, 'Move From Time Base (Upper)'. Since these are two reads, in the
 	 * very unlikely event that the lower part overflows to the upper part while we
