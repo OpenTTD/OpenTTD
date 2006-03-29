@@ -14,6 +14,7 @@
 #include "command.h"
 #include "console.h"
 #include "saveload.h"
+#include "npf.h"
 
 /** The patch values that are used for new games and/or modified in config file */
 Patches _patches_newgame;

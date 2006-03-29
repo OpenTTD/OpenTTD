@@ -417,10 +417,6 @@ VARDEF byte _vehicle_design_names;
 /* tunnelbridge */
 #define MAX_BRIDGES 13
 
-/* For new pathfinding. Define here so it is globally available without having
- * to include npf.h */
-#define NPF_TILE_LENGTH 100
-
 /* Forking stuff */
 VARDEF bool _dedicated_forks;
 

@@ -8,7 +8,6 @@
 #include "station.h"
 #include "vehicle.h"
 #include "tile.h"
-#include "variables.h"
 
 //mowing grass
 enum {
@@ -17,6 +16,12 @@ enum {
 	NPF_HASH_SIZE = 1 << NPF_HASH_BITS,
 	NPF_HASH_HALFBITS = NPF_HASH_BITS / 2,
 	NPF_HASH_HALFMASK = (1 << NPF_HASH_HALFBITS) - 1
+};
+
+/* For new pathfinding. Define here so it is globally available without having
+ * to include npf.h */
+enum {
+	NPF_TILE_LENGTH = 100
 };
 
 enum {
