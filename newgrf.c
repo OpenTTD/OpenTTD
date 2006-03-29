@@ -355,6 +355,9 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 					engclass = 0;
 				} else if (traction <= 0x27) {
 					engclass = 1;
+				} else if (traction <= 0x31) {
+					engclass = 2;
+					ei[i].railtype = RAILTYPE_ELECTRIC;
 				} else if (traction <= 0x41) {
 					engclass = 2;
 				} else {
@@ -2309,12 +2312,8 @@ static void InitializeGRFSpecial(void)
 	                   | (1 << 0x18)  /* newrvs */
 	                   | (1 << 0x19)  /* newships */
 	                   | (1 << 0x1A)  /* newplanes */
-	                   | (_patches.signal_side ? (1 << 0x1B) : 0);          /* signalsontrafficside */
-	                   /* Uncomment following if you want to fool the GRF file.
-	                    * Some GRF files will refuse to load without this
-	                    * but you can still squeeze something from them even
-	                    * without the support - i.e. USSet. --pasky */
-			               //| (1 << 0x1C); /* electrifiedrailway */
+	                   | (_patches.signal_side ? (1 << 0x1B) : 0)           /* signalsontrafficside */
+	                   | (1 << 0x1C); /* electrifiedrailway */
 
 	_ttdpatch_flags[2] = (_patches.build_on_slopes ? (1 << 0x0D) : 0)       /* buildonslopes */
 	                   | (_patches.build_on_slopes ? (1 << 0x15) : 0)       /* buildoncoasts */

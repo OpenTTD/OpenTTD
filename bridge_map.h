@@ -127,6 +127,7 @@ TileIndex GetSouthernBridgeEnd(TileIndex t);
  */
 TileIndex GetOtherBridgeEnd(TileIndex);
 
+uint GetBridgeHeight(TileIndex t);
 
 static inline void SetClearUnderBridge(TileIndex t)
 {

@@ -587,7 +587,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	/* check correct rail type (mono, maglev, etc) */
 	if (type == TRANSPORT_RAIL) {
 		RailType dst_type = GetTileRailType(dst_tile, src_trackdir);
-		if (!IsCompatibleRail(aystar->user_data[NPF_RAILTYPE], dst_type))
+		if (!HASBIT(aystar->user_data[NPF_RAILTYPES], dst_type))
 			return;
 	}
 
@@ -661,7 +661,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
  * multiple targets that are spread around, we should perform a breadth first
  * search by specifiying CalcZero as our heuristic.
  */
-static NPFFoundTargetData NPFRouteInternal(AyStarNode* start1, AyStarNode* start2, NPFFindStationOrTileData* target, AyStar_EndNodeCheck target_proc, AyStar_CalculateH heuristic_proc, TransportType type, Owner owner, RailType railtype, uint reverse_penalty)
+static NPFFoundTargetData NPFRouteInternal(AyStarNode* start1, AyStarNode* start2, NPFFindStationOrTileData* target, AyStar_EndNodeCheck target_proc, AyStar_CalculateH heuristic_proc, TransportType type, Owner owner, RailTypeMask railtypes, uint reverse_penalty)
 {
 	int r;
 	NPFFoundTargetData result;
@@ -703,7 +703,7 @@ static NPFFoundTargetData NPFRouteInternal(AyStarNode* start1, AyStarNode* start
 	/* Initialize user_data */
 	_npf_aystar.user_data[NPF_TYPE] = type;
 	_npf_aystar.user_data[NPF_OWNER] = owner;
-	_npf_aystar.user_data[NPF_RAILTYPE] = railtype;
+	_npf_aystar.user_data[NPF_RAILTYPES] = railtypes;
 
 	/* GO! */
 	r = AyStarMain_Main(&_npf_aystar);
@@ -721,7 +721,7 @@ static NPFFoundTargetData NPFRouteInternal(AyStarNode* start1, AyStarNode* start
 	return result;
 }
 
-NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, Trackdir trackdir1, TileIndex tile2, Trackdir trackdir2, NPFFindStationOrTileData* target, TransportType type, Owner owner, RailType railtype)
+NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, Trackdir trackdir1, TileIndex tile2, Trackdir trackdir2, NPFFindStationOrTileData* target, TransportType type, Owner owner, RailTypeMask railtypes)
 {
 	AyStarNode start1;
 	AyStarNode start2;
@@ -735,15 +735,15 @@ NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, Trackdir track
 	start2.direction = trackdir2;
 	start2.user_data[NPF_TRACKDIR_CHOICE] = INVALID_TRACKDIR;
 
-	return NPFRouteInternal(&start1, (IsValidTile(tile2) ? &start2 : NULL), target, NPFFindStationOrTile, NPFCalcStationOrTileHeuristic, type, owner, railtype, 0);
+	return NPFRouteInternal(&start1, (IsValidTile(tile2) ? &start2 : NULL), target, NPFFindStationOrTile, NPFCalcStationOrTileHeuristic, type, owner, railtypes, 0);
 }
 
-NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, NPFFindStationOrTileData* target, TransportType type, Owner owner, RailType railtype)
+NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, NPFFindStationOrTileData* target, TransportType type, Owner owner, RailTypeMask railtypes)
 {
-	return NPFRouteToStationOrTileTwoWay(tile, trackdir, INVALID_TILE, 0, target, type, owner, railtype);
+	return NPFRouteToStationOrTileTwoWay(tile, trackdir, INVALID_TILE, 0, target, type, owner, railtypes);
 }
 
-NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, Trackdir trackdir1, TileIndex tile2, Trackdir trackdir2, TransportType type, Owner owner, RailType railtype, uint reverse_penalty)
+NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, Trackdir trackdir1, TileIndex tile2, Trackdir trackdir2, TransportType type, Owner owner, RailTypeMask railtypes, uint reverse_penalty)
 {
 	AyStarNode start1;
 	AyStarNode start2;
@@ -759,15 +759,15 @@ NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, Trackdir t
 
 	/* perform a breadth first search. Target is NULL,
 	 * since we are just looking for any depot...*/
-	return NPFRouteInternal(&start1, (IsValidTile(tile2) ? &start2 : NULL), NULL, NPFFindDepot, NPFCalcZero, type, owner, railtype, reverse_penalty);
+	return NPFRouteInternal(&start1, (IsValidTile(tile2) ? &start2 : NULL), NULL, NPFFindDepot, NPFCalcZero, type, owner, railtypes, reverse_penalty);
 }
 
-NPFFoundTargetData NPFRouteToDepotBreadthFirst(TileIndex tile, Trackdir trackdir, TransportType type, Owner owner, RailType railtype)
+NPFFoundTargetData NPFRouteToDepotBreadthFirst(TileIndex tile, Trackdir trackdir, TransportType type, Owner owner, RailTypeMask railtypes)
 {
-	return NPFRouteToDepotBreadthFirstTwoWay(tile, trackdir, INVALID_TILE, 0, type, owner, railtype, 0);
+	return NPFRouteToDepotBreadthFirstTwoWay(tile, trackdir, INVALID_TILE, 0, type, owner, railtypes, 0);
 }
 
-NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, TransportType type, Owner owner, RailType railtype)
+NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, TransportType type, Owner owner, RailTypeMask railtypes)
 {
 	/* Okay, what we're gonna do. First, we look at all depots, calculate
 	 * the manhatten distance to get to each depot. We then sort them by

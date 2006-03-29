@@ -209,6 +209,10 @@ SOURCE=.\economy.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\elrail.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\engine.c
 # End Source File
 # Begin Source File

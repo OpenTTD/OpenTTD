@@ -215,6 +215,9 @@
 				RelativePath=".\economy.c">
 			</File>
 			<File
+				RelativePath=".\elrail.c">
+			</File>
+			<File
 				RelativePath=".\engine.c">
 			</File>
 			<File

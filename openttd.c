@@ -1238,6 +1238,75 @@ bool AfterLoadGame(void)
 		}
 	}
 
+	/* Elrails got added in rev 24 */
+	if (CheckSavegameVersion(24)) {
+		Vehicle* v;
+		uint i;
+		TileIndex t;
+		bool make_elrail = false;
+
+		for (i = 0; i < lengthof(_engines); i++) {
+			Engine* e = GetEngine(i);
+			if (e->type == VEH_Train &&
+					(e->railtype != RAILTYPE_RAIL || RailVehInfo(i)->engclass == 2)) {
+				e->railtype++;
+			}
+		}
+
+		FOR_ALL_VEHICLES(v) {
+			if (v->type == VEH_Train) {
+				RailType rt = GetEngine(v->engine_type)->railtype;
+
+				v->u.rail.railtype = rt;
+				if (rt == RAILTYPE_ELECTRIC) make_elrail = true;
+			}
+		}
+
+		/* .. so we convert the entire map from normal to elrail (so maintain "fairness") */
+		for (t = 0; t < MapSize(); t++) {
+			switch (GetTileType(t)) {
+				case MP_RAILWAY:
+					if (GetRailType(t) > RAILTYPE_RAIL || make_elrail) AB(_m[t].m3, 0, 4, 1);
+					break;
+
+				case MP_STREET:
+					if (IsLevelCrossing(t) && (GetRailTypeCrossing(t) > RAILTYPE_RAIL || make_elrail)) AB(_m[t].m4, 0, 4, 1);
+					break;
+
+				case MP_STATION:
+					if (_m[t].m5 < 8 && (GB(_m[t].m3, 0, 4) > RAILTYPE_RAIL || make_elrail)) AB(_m[t].m3, 0, 4, 1);
+					break;
+
+				case MP_TUNNELBRIDGE:
+					if (GB(_m[t].m5, 4, 4) == 0) { // tunnel?
+						if (GB(_m[t].m5, 2, 2) == 0) { // railway tunnel?
+							if (GB(_m[t].m3, 0, 4) > RAILTYPE_RAIL || make_elrail) AB(_m[t].m3, 0, 4, 1);
+						}
+					} else {
+						if (GB(_m[t].m5, 1, 2) == 0) { // railway bridge?
+							if (GB(_m[t].m5, 6, 1) == 0) { // bridge ending?
+								if (GB(_m[t].m3, 0, 4) > RAILTYPE_RAIL || make_elrail) AB(_m[t].m3, 0, 4, 1);
+							} else {
+								if (GB(_m[t].m3, 4, 4) > RAILTYPE_RAIL || make_elrail) AB(_m[t].m3, 4, 4, 1);
+							}
+						}
+						if ((_m[t].m5 & 0xF8) == 0xE0) { // bridge middle part with rails below?
+							if (GB(_m[t].m3, 0, 4) > RAILTYPE_RAIL || make_elrail) AB(_m[t].m3, 0, 4, 1);
+						}
+					}
+					break;
+
+				default:
+					break;
+			}
+		}
+
+		FOR_ALL_VEHICLES(v) {
+			if (v->type == VEH_Train && (IsFrontEngine(v) || IsFreeWagon(v))) TrainConsistChanged(v);
+		}
+
+	}
+
 	/* In version 16.1 of the savegame a player can decide if trains, which get
 	 * replaced, shall keep their old length. In all prior versions, just default
 	 * to false */

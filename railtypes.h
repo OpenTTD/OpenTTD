@@ -40,14 +40,67 @@ const RailtypeInfo _railtypes[] = {
 		/* Offset of snow tiles */
 		SPR_RAIL_SNOW_OFFSET,
 
+		/* Powered railtypes */
+		1 << RAILTYPE_RAIL | 1 << RAILTYPE_ELECTRIC,
+
 		/* Compatible railtypes */
-		(1 << RAILTYPE_RAIL),
+		1 << RAILTYPE_RAIL | 1 << RAILTYPE_ELECTRIC,
 
 		/* main offset */
 		0,
 
 		/* bridge offset */
 		0,
+	},
+
+	/** Electrified railway */
+	{ /* Main Sprites */
+		{ SPR_RAIL_TRACK_Y, SPR_RAIL_TRACK_N_S, SPR_RAIL_TRACK_BASE, SPR_RAIL_SINGLE_Y, SPR_RAIL_SINGLE_X,
+			SPR_RAIL_SINGLE_NORTH, SPR_RAIL_SINGLE_SOUTH, SPR_RAIL_SINGLE_EAST, SPR_RAIL_SINGLE_WEST,
+			SPR_CROSSING_OFF_X_RAIL,
+			SPR_TUNNEL_ENTRY_REAR_RAIL
+		},
+
+		/* GUI sprites */
+		{
+			SPR_BUILD_NS_ELRAIL,
+			SPR_BUILD_X_ELRAIL,
+			SPR_BUILD_EW_ELRAIL,
+			SPR_BUILD_Y_ELRAIL,
+			SPR_OPENTTD_BASE + 0,
+			0x50E,
+			SPR_BUILD_TUNNEL_ELRAIL,
+			SPR_IMG_CONVERT_RAIL
+		},
+
+		{
+			SPR_CURSOR_NS_ELRAIL,
+			SPR_CURSOR_SWNE_ELRAIL,
+			SPR_CURSOR_EW_ELRAIL,
+			SPR_CURSOR_NWSE_ELRAIL,
+			SPR_CURSOR_AUTORAIL,
+			SPR_CURSOR_RAIL_DEPOT,
+			SPR_CURSOR_TUNNEL_ELRAIL,
+			SPR_CURSOR_CONVERT_RAIL
+		},
+
+		/* strings */
+		{ STR_TITLE_ELRAIL_CONSTRUCTION },
+
+		/* Offset of snow tiles */
+		SPR_RAIL_SNOW_OFFSET,
+
+		/* Powered railtypes */
+		1 << RAILTYPE_ELECTRIC,
+
+		/* Compatible railtypes */
+		1 << RAILTYPE_ELECTRIC | 1 << RAILTYPE_RAIL,
+
+		/* main offset */
+		0,
+
+		/* bridge offset */
+		0
 	},
 
 	/** Monorail */
@@ -83,8 +136,11 @@ const RailtypeInfo _railtypes[] = {
 		/* Offset of snow tiles */
 		SPR_MONO_SNOW_OFFSET,
 
+		/* Powered railtypes */
+		1 << RAILTYPE_MONO,
+
 		/* Compatible Railtypes */
-		(1 << RAILTYPE_MONO),
+		1 << RAILTYPE_MONO,
 
 		/* main offset */
 		82,
@@ -126,8 +182,11 @@ const RailtypeInfo _railtypes[] = {
 		/* Offset of snow tiles */
 		SPR_MGLV_SNOW_OFFSET,
 
+		/* Powered railtypes */
+		1 << RAILTYPE_MAGLEV,
+
 		/* Compatible Railtypes */
-		(1 << RAILTYPE_MAGLEV),
+		1 << RAILTYPE_MAGLEV,
 
 		/* main offset */
 		164,

@@ -799,9 +799,9 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 
 
 // fast routine for getting the height of a middle bridge tile. 'tile' MUST be a middle bridge tile.
-static uint GetBridgeHeight(const TileInfo *ti)
+uint GetBridgeHeight(TileIndex t)
 {
-	TileIndex tile = GetSouthernBridgeEnd(ti->tile);
+	TileIndex tile = GetSouthernBridgeEnd(t);
 
 	/* Return the height there (the height of the NORTH CORNER)
 	 * If the end of the bridge is on a tileh 7 (all raised, except north corner),
@@ -930,6 +930,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		image += GetTunnelDirection(ti->tile) * 2;
 		DrawGroundSprite(image);
+		if (GB(_m[ti->tile].m3, 0, 3) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 
 		AddSortableSpriteToDraw(image+1, ti->x + 15, ti->y + 15, 1, 1, 8, (byte)ti->z);
 	} else if (IsBridge(ti->tile)) { // XXX is this necessary?
@@ -972,6 +973,8 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			} else {
 				DrawGroundSprite(SPR_FLAT_SNOWY_TILE + _tileh_to_sprite[ti->tileh]);
 			}
+
+			if (GB(_m[ti->tile].m3, 0, 3) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 
 			// draw ramp
 			if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
@@ -1029,7 +1032,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			// get bridge sprites
 			b = GetBridgeSpriteTable(GetBridgeType(ti->tile), GetBridgePiece(ti->tile)) + base_offset;
 
-			z = GetBridgeHeight(ti) + 5;
+			z = GetBridgeHeight(ti->tile) + 5;
 
 			// draw rail or road component
 			image = b[0];
@@ -1053,6 +1056,8 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				x += 12;
 				if (image & SPRITE_MASK) AddSortableSpriteToDraw(image, x, y, 1, 16, 0x28, z);
 			}
+
+			if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC || GetRailTypeOnBridge(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 
 			if (ti->z + 5 == z) {
 				// draw poles below for small bridges
@@ -1107,7 +1112,7 @@ static uint GetSlopeZ_TunnelBridge(const TileInfo* ti)
 				if (_get_z_hint >= z + 8) return _get_z_hint;
 
 				// actually on the bridge, but not yet in the shared area.
-				if (!IS_INT_INSIDE(x, 5, 10 + 1)) return GetBridgeHeight(ti) + 8;
+				if (!IS_INT_INSIDE(x, 5, 10 + 1)) return GetBridgeHeight(ti->tile) + 8;
 
 				// in the shared area, assume that we're below the bridge, cause otherwise the hint would've caught it.
 				// if rail or road below then it means it's possibly build on slope below the bridge.

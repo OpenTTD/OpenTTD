@@ -401,8 +401,6 @@ typedef struct LandscapePredefVar {
 	byte transit_days_table_1[NUM_CARGO];
 	byte transit_days_table_2[NUM_CARGO];
 
-	byte railwagon_by_cargo[3][NUM_CARGO];
-
 	byte road_veh_by_cargo_start[NUM_CARGO];
 	byte road_veh_by_cargo_count[NUM_CARGO];
 } LandscapePredefVar;
@@ -419,7 +417,6 @@ void InitializeLandscapeVariables(bool only_constants)
 
 	lpd = &_landscape_predef_var[_opt.landscape];
 
-	memcpy(_cargoc.ai_railwagon, lpd->railwagon_by_cargo, sizeof(lpd->railwagon_by_cargo));
 	memcpy(_cargoc.ai_roadveh_start, lpd->road_veh_by_cargo_start,sizeof(lpd->road_veh_by_cargo_start));
 	memcpy(_cargoc.ai_roadveh_count, lpd->road_veh_by_cargo_count,sizeof(lpd->road_veh_by_cargo_count));
 

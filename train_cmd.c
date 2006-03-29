@@ -72,6 +72,46 @@ static void TrainCargoChanged(Vehicle* v)
 }
 
 /**
+ * Recalculates the cached total power of a train. Should be called when the consist is changed
+ * @param v First vehicle of the consist.
+ */
+void TrainPowerChanged(Vehicle* v)
+{
+	const RailVehicleInfo *rvi_v = RailVehInfo(v->engine_type);
+	Vehicle* u;
+	uint32 power = 0;
+
+	for (u = v; u != NULL; u = u->next) {
+		const RailVehicleInfo *rvi_u;
+		bool engine_has_power = true;
+		bool wagon_has_power = true;
+
+		/* Power is not added for articulated parts */
+		if (IsArticulatedPart(u)) continue;
+
+		if (IsBridgeTile(u->tile) && IsBridgeMiddle(u->tile) && DiagDirToAxis(DirToDiagDir(u->direction)) == GetBridgeAxis(u->tile)) {
+			if (!HasPowerOnRail(u->u.rail.railtype, GetRailTypeOnBridge(u->tile))) engine_has_power = false;
+			if (!HasPowerOnRail(v->u.rail.railtype, GetRailTypeOnBridge(u->tile))) wagon_has_power = false;
+		} else {
+			if (!HasPowerOnRail(u->u.rail.railtype, GetRailType(u->tile))) engine_has_power = false;
+			if (!HasPowerOnRail(v->u.rail.railtype, GetRailType(u->tile))) wagon_has_power = false;
+		}
+
+		rvi_u = RailVehInfo(u->engine_type);
+
+		if (engine_has_power) power += rvi_u->power;
+		if (HASBIT(u->u.rail.flags, VRF_POWEREDWAGON) && (wagon_has_power)) {
+			power += rvi_v->pow_wag_power;
+		}
+	}
+
+	if (v->u.rail.cached_power != power) {
+		v->u.rail.cached_power = power;
+		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+	}
+}
+
+/**
  * Recalculates the cached stuff of a train. Should be called each time a vehicle is added
  * to/removed from the chain, and when the game is loaded.
  * Note: this needs to be called too for 'wagon chains' (in the depot, without an engine)
@@ -82,7 +122,6 @@ void TrainConsistChanged(Vehicle* v)
 	const RailVehicleInfo *rvi_v;
 	Vehicle *u;
 	uint16 max_speed = 0xFFFF;
-	uint32 power = 0;
 	EngineID first_engine;
 
 	assert(v->type == VEH_Train);
@@ -92,6 +131,7 @@ void TrainConsistChanged(Vehicle* v)
 	rvi_v = RailVehInfo(v->engine_type);
 	first_engine = IsFrontEngine(v) ? v->engine_type : INVALID_ENGINE;
 	v->u.rail.cached_total_length = 0;
+	v->u.rail.compatible_railtypes = 0;
 
 	for (u = v; u != NULL; u = u->next) {
 		const RailVehicleInfo *rvi_u = RailVehInfo(u->engine_type);
@@ -102,6 +142,7 @@ void TrainConsistChanged(Vehicle* v)
 
 		// update the 'first engine'
 		u->u.rail.first_engine = (v == u) ? INVALID_ENGINE : first_engine;
+		u->u.rail.railtype = GetEngine(u->engine_type)->railtype;
 
 		if (rvi_u->visual_effect != 0) {
 			u->u.rail.cached_vis_effect = rvi_u->visual_effect;
@@ -119,9 +160,6 @@ void TrainConsistChanged(Vehicle* v)
 		}
 
 		if (!IsArticulatedPart(u)) {
-			// power is the sum of the powers of all engines and powered wagons in the consist
-			power += rvi_u->power;
-
 			// check if its a powered wagon
 			CLRBIT(u->u.rail.flags, VRF_POWEREDWAGON);
 			if ((rvi_v->pow_wag_power != 0) && (rvi_u->flags & RVI_WAGON) && UsesWagonOverride(u)) {
@@ -135,8 +173,13 @@ void TrainConsistChanged(Vehicle* v)
 				if (u->u.rail.cached_vis_effect < 0x40) {
 					/* wagon is powered */
 					SETBIT(u->u.rail.flags, VRF_POWEREDWAGON); // cache 'powered' status
-					power += rvi_v->pow_wag_power;
 				}
+			}
+
+			/* Do not count powered wagons for the compatible railtypes, as wagons always
+			   have railtype normal */
+			if (rvi_u->power > 0) {
+				v->u.rail.compatible_railtypes |= GetRailTypeInfo(u->u.rail.railtype)->powered_railtypes;
 			}
 
 			// max speed is the minimum of the speed limits of all vehicles in the consist
@@ -159,7 +202,8 @@ void TrainConsistChanged(Vehicle* v)
 
 	// store consist weight/max speed in cache
 	v->u.rail.cached_max_speed = max_speed;
-	v->u.rail.cached_power = power;
+
+	TrainPowerChanged(v);
 
 	// recalculate cached weights too (we do this *after* the rest, so it is known which wagons are powered and need extra weight added)
 	TrainCargoChanged(v);
@@ -333,6 +377,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 	if (speed > 0) {
 		switch (v->u.rail.railtype) {
 			case RAILTYPE_RAIL:
+			case RAILTYPE_ELECTRIC:
 			case RAILTYPE_MONO:
 				force = power / speed; //[N]
 				force *= 22;
@@ -1468,6 +1513,9 @@ static void ReverseTrainSwapVeh(Vehicle *v, int l, int r)
 
 		VehicleEnterTile(a, a->tile, a->x_pos, a->y_pos);
 	}
+
+	/* Update train's power incase tiles were different rail type */
+	TrainPowerChanged(v);
 }
 
 /* Check if the vehicle is a train and is on the tile we are testing */
@@ -1786,7 +1834,7 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 		Trackdir trackdir_rev = ReverseTrackdir(GetVehicleTrackdir(last));
 
 		assert (trackdir != INVALID_TRACKDIR);
-		ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, last->tile, trackdir_rev, TRANSPORT_RAIL, v->owner, v->u.rail.railtype, NPF_INFINITE_PENALTY);
+		ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, last->tile, trackdir_rev, TRANSPORT_RAIL, v->owner, v->u.rail.compatible_railtypes, NPF_INFINITE_PENALTY);
 		if (ftd.best_bird_dist == 0) {
 			/* Found target */
 			tfdd.tile = ftd.node.tile;
@@ -1805,7 +1853,7 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 		if (!(v->direction & 1) && v->u.rail.track != _state_dir_table[i]) {
 			i = ChangeDiagDir(i, DIAGDIRDIFF_90LEFT);
 		}
-		NewTrainPathfind(tile, 0, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
+		NewTrainPathfind(tile, 0, v->u.rail.compatible_railtypes, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
 		if (tfdd.best_length == (uint)-1){
 			tfdd.reverse = true;
 			// search in backwards direction
@@ -1813,7 +1861,7 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 			if (!(v->direction & 1) && v->u.rail.track != _state_dir_table[i]) {
 				i = ChangeDiagDir(i, DIAGDIRDIFF_90LEFT);
 			}
-			NewTrainPathfind(tile, 0, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
+			NewTrainPathfind(tile, 0, v->u.rail.compatible_railtypes, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
 		}
 	}
 
@@ -1899,7 +1947,7 @@ static void HandleLocomotiveSmokeCloud(const Vehicle* v)
 		// no smoke?
 		if ((RailVehInfo(engtype)->flags & RVI_WAGON && effect_type == 0) ||
 				disable_effect ||
-				GetEngine(engtype)->railtype > RAILTYPE_RAIL ||
+				GetEngine(engtype)->railtype > RAILTYPE_ELECTRIC ||
 				v->vehstatus & VS_HIDDEN ||
 				v->u.rail.track & 0xC0) {
 			continue;
@@ -1961,6 +2009,7 @@ static void TrainPlayLeaveStationSound(const Vehicle* v)
 
 	switch (GetEngine(engtype)->railtype) {
 		case RAILTYPE_RAIL:
+		case RAILTYPE_ELECTRIC:
 			SndPlayVehicleFx(sfx[RailVehInfo(engtype)->engclass], v);
 			break;
 
@@ -2112,7 +2161,7 @@ static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir,
 		trackdir = GetVehicleTrackdir(v);
 		assert(trackdir != 0xff);
 
-		ftd = NPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_RAIL, v->owner, v->u.rail.railtype);
+		ftd = NPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_RAIL, v->owner, v->u.rail.compatible_railtypes);
 
 		if (ftd.best_trackdir == 0xff) {
 			/* We are already at our target. Just do something */
@@ -2136,7 +2185,7 @@ static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir,
 		fd.best_track = 0xFF;
 
 		NewTrainPathfind(tile - TileOffsByDir(enterdir), v->dest_tile,
-			enterdir, (NTPEnumProc*)NtpCallbFindStation, &fd);
+			v->u.rail.compatible_railtypes, enterdir, (NTPEnumProc*)NtpCallbFindStation, &fd);
 
 		if (fd.best_track == 0xff) {
 			// blaha
@@ -2190,7 +2239,7 @@ static bool CheckReverseTrain(Vehicle *v)
 		assert(trackdir != 0xff);
 		assert(trackdir_rev != 0xff);
 
-		ftd = NPFRouteToStationOrTileTwoWay(v->tile, trackdir, last->tile, trackdir_rev, &fstd, TRANSPORT_RAIL, v->owner, v->u.rail.railtype);
+		ftd = NPFRouteToStationOrTileTwoWay(v->tile, trackdir, last->tile, trackdir_rev, &fstd, TRANSPORT_RAIL, v->owner, v->u.rail.compatible_railtypes);
 		if (ftd.best_bird_dist != 0) {
 			/* We didn't find anything, just keep on going straight ahead */
 			reverse_best = false;
@@ -2206,7 +2255,7 @@ static bool CheckReverseTrain(Vehicle *v)
 			fd.best_bird_dist = (uint)-1;
 			fd.best_track_dist = (uint)-1;
 
-			NewTrainPathfind(v->tile, v->dest_tile, reverse ^ i, (NTPEnumProc*)NtpCallbFindStation, &fd);
+			NewTrainPathfind(v->tile, v->dest_tile, v->u.rail.compatible_railtypes, reverse ^ i, (NTPEnumProc*)NtpCallbFindStation, &fd);
 
 			if (best_track != -1) {
 				if (best_bird_dist != 0) {
@@ -2575,7 +2624,7 @@ static bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
 	return
 		IsTileOwner(tile, v->owner) && (
 			!IsFrontEngine(v) ||
-			IsCompatibleRail(v->u.rail.railtype, GetRailType(tile))
+			HASBIT(v->u.rail.compatible_railtypes, GetRailType(tile))
 		);
 }
 
@@ -2585,9 +2634,10 @@ typedef struct {
 	byte z_down; // fraction to remove when moving down
 } RailtypeSlowdownParams;
 
-static const RailtypeSlowdownParams _railtype_slowdown[3] = {
+static const RailtypeSlowdownParams _railtype_slowdown[] = {
 	// normal accel
 	{256/4, 256/2, 256/4, 2}, // normal
+	{256/4, 256/2, 256/4, 2}, // electrified
 	{256/4, 256/2, 256/4, 2}, // monorail
 	{0,     256/2, 256/4, 2}, // maglev
 };
@@ -2873,6 +2923,11 @@ static void TrainController(Vehicle *v)
 
 				if (!(r&0x4)) {
 					v->tile = gp.new_tile;
+
+					if (GetTileRailType(gp.new_tile, chosen_track) != GetTileRailType(gp.old_tile, v->u.rail.track)) {
+						TrainPowerChanged(GetFirstVehicleInChain(v));
+					}
+
 					v->u.rail.track = chosen_track;
 					assert(v->u.rail.track);
 				}

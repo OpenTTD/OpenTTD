@@ -630,6 +630,7 @@ SRCS += dock_gui.c
 SRCS += driver.c
 SRCS += dummy_land.c
 SRCS += economy.c
+SRCS += elrail.c
 SRCS += engine.c
 SRCS += engine_gui.c
 SRCS += fileio.c

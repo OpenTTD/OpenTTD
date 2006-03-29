@@ -1,0 +1,7 @@
+/* $Id */
+
+KNOWN BUGS / PROBLEMS:
+
+Normal and elrail depots look the same. Use 'X' (transparent buildings)
+   to distinguish between them
+Missing curors / icons for construction (currently using the conventional ones)

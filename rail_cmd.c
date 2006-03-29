@@ -896,11 +896,13 @@ int32 CmdRemoveSignalTrack(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	return CmdSignalTrackHelper(x, y, flags, p1, SETBIT(p2, 0));
 }
 
-typedef int32 DoConvertRailProc(TileIndex tile, uint totype, bool exec);
+typedef int32 DoConvertRailProc(TileIndex tile, RailType totype, bool exec);
 
-static int32 DoConvertRail(TileIndex tile, uint totype, bool exec)
+static int32 DoConvertRail(TileIndex tile, RailType totype, bool exec)
 {
-	if (!CheckTileOwnership(tile) || !EnsureNoVehicle(tile)) return CMD_ERROR;
+	if (!CheckTileOwnership(tile)) return CMD_ERROR;
+
+	if (!EnsureNoVehicle(tile) && (!IsCompatibleRail(GetRailType(tile), totype) || IsPlainRailTile(tile))) return CMD_ERROR;
 
 	// tile is already of requested type?
 	if (GetRailType(tile) == totype) return CMD_ERROR;
@@ -1297,6 +1299,9 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track, bool earth, bool snow, 
 		if (track & TRACK_BIT_LEFT)  DrawGroundSprite(rti->base_sprites.single_w);
 		if (track & TRACK_BIT_RIGHT) DrawGroundSprite(rti->base_sprites.single_e);
 	}
+
+	if (GB(_m[ti->tile].m3, 0, 4) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
+
 }
 
 static void DrawTile_Track(TileInfo *ti)
@@ -1388,6 +1393,8 @@ static void DrawTile_Track(TileInfo *ti)
 
 				DrawGroundSprite(image);
 
+				if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
+
 				foreach_draw_tile_seq(seq, cust->seq) {
 					DrawSpecialBuilding(
 						seq->image + relocation, 0, ti,
@@ -1419,6 +1426,8 @@ static void DrawTile_Track(TileInfo *ti)
 		}
 
 		DrawGroundSprite(image);
+
+		if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 
 		for (; drss->image != 0; drss++) {
 			DrawSpecialBuilding(

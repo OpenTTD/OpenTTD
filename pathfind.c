@@ -454,7 +454,8 @@ typedef struct {
 	void *userdata;
 	TileIndex dest;
 
-	byte tracktype;
+	TransportType tracktype;
+	RailTypeMask railtypes;
 	uint maxlength;
 
 	HashLink *new_link;
@@ -791,6 +792,11 @@ start_at:
 			 * bits, not just reachable ones, to prevent infinite loops. */
 			if (bits == 0 || TracksOverlap(allbits)) break;
 
+			if (!HASBIT(tpf->railtypes, GetRailType(tile))) {
+				bits = 0;
+				break;
+			}
+
 			/* If we reach here, the tile has exactly one track, and this
 			 track is reachable => Rail segment continues */
 
@@ -926,14 +932,15 @@ start_at:
 
 
 // new pathfinder for trains. better and faster.
-void NewTrainPathfind(TileIndex tile, TileIndex dest, DiagDirection direction, NTPEnumProc* enum_proc, void* data)
+void NewTrainPathfind(TileIndex tile, TileIndex dest, RailTypeMask railtypes, DiagDirection direction, NTPEnumProc* enum_proc, void* data)
 {
 	NewTrackPathFinder tpf;
 
 	tpf.dest = dest;
 	tpf.userdata = data;
 	tpf.enum_proc = enum_proc;
-	tpf.tracktype = 0;
+	tpf.tracktype = TRANSPORT_RAIL;
+	tpf.railtypes = railtypes;
 	tpf.maxlength = min(_patches.pf_maxlength * 3, 10000);
 	tpf.nstack = 0;
 	tpf.new_link = tpf.links;

@@ -27,11 +27,13 @@
 
 // Rail types
 // R = Conventional railway
+// E = Electrified railway
 // M = Monorail
 // L = MagLev
 #define R 0
-#define M 1
-#define L 2
+#define E 1
+#define M 2
+#define L 3
 // Climates
 // T = Temperate
 // A = Arctic
@@ -65,10 +67,10 @@ const EngineInfo orig_engine_info[] = {
 	MK( 20454,  20,  22,  30, R,   A|S  ), /*  20 Turner Turbo (Diesel) */
 	MK( 16071,  20,  22,  30, R,   A|S  ), /*  21 MJS 1000 (Diesel) */
 	MK( 20820,  20,  20,  25, R, T      ), /*  22 SH '125' (Diesel) */
-	MK( 16437,  20,  23,  30, R, T      ), /*  23 SH '30' (Electric) */
-	MK( 19359,  20,  23,  80, R, T      ), /*  24 SH '40' (Electric) */
-	MK( 23376,  20,  25,  30, R, T      ), /*  25 'T.I.M.' (Electric) */
-	MK( 26298,  20,  25,  50, R, T      ), /*  26 'AsiaStar' (Electric) */
+	MK( 16437,  20,  23,  30, E, T      ), /*  23 SH '30' (Electric) */
+	MK( 19359,  20,  23,  80, E, T      ), /*  24 SH '40' (Electric) */
+	MK( 23376,  20,  25,  30, E, T      ), /*  25 'T.I.M.' (Electric) */
+	MK( 26298,  20,  25,  50, E, T      ), /*  26 'AsiaStar' (Electric) */
 	MW(  1827,  20,  20,  50, R, T|A|S|Y), /*  27 Passenger Carriage */
 	MW(  1827,  20,  20,  50, R, T|A|S|Y), /*  28 Mail Van */
 	MW(  1827,  20,  20,  50, R, T|A    ), /*  29 Coal Truck */
@@ -306,6 +308,7 @@ const EngineInfo orig_engine_info[] = {
 #undef L
 #undef M
 #undef R
+#undef E
 
 /** Writes the properties of a rail vehicle into the RailVehicleInfo struct.
  * @see RailVehicleInfo

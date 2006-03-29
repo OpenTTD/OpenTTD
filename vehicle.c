@@ -218,6 +218,10 @@ void AfterLoadVehicles(void)
 
 	FOR_ALL_VEHICLES(v) {
 		v->first = NULL;
+		if (v->type == VEH_Train) v->u.rail.first_engine = INVALID_ENGINE;
+	}
+
+	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Train && (IsFrontEngine(v) || IsFreeWagon(v)))
 			TrainConsistChanged(v);
 	}

@@ -32,12 +32,15 @@ typedef enum RailTileSubtypes {
 
 
 typedef enum RailTypes {
-	RAILTYPE_RAIL   = 0,
-	RAILTYPE_MONO   = 1,
-	RAILTYPE_MAGLEV = 2,
+	RAILTYPE_RAIL     = 0,
+	RAILTYPE_ELECTRIC = 1,
+	RAILTYPE_MONO     = 2,
+	RAILTYPE_MAGLEV   = 3,
 	RAILTYPE_END,
 	INVALID_RAILTYPE = 0xFF
 } RailType;
+
+typedef byte RailTypeMask;
 
 static inline RailType GetRailType(TileIndex t)
 {

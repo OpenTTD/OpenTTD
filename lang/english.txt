@@ -1443,6 +1443,7 @@ STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}No suita
 STR_1007_ALREADY_BUILT                                          :{WHITE}...already built
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Must remove railway track first
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Railway Construction
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Electrified Railway Construction
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Monorail Construction
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}MagLev Construction
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Select Rail Bridge
@@ -1454,6 +1455,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Can't re
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Can't remove signals from here...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Train Depot Orientation
 STR_1015_RAILROAD_CONSTRUCTION                                  :Railway construction
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Electrified Railway construction
 STR_1016_MONORAIL_CONSTRUCTION                                  :Monorail construction
 STR_1017_MAGLEV_CONSTRUCTION                                    :MagLev construction
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Build railway track
@@ -2410,6 +2412,7 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Train to
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Trains can only be altered when stopped inside a depot
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Train{P "" s}
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}New Rail Vehicles
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}New Electric Rail Vehicles
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}New Monorail Vehicles
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}New Maglev Vehicles
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Build Vehicle
@@ -2810,6 +2813,7 @@ STR_SIGN_LIST_CAPTION                                           :{WHITE}Sign Lis
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Rail Vehicles
+STR_ELRAIL_VEHICLES                                             :Electrified Rail Vehicles
 STR_MONORAIL_VEHICLES                                           :Monorail Vehicles
 STR_MAGLEV_VEHICLES                                             :Maglev Vehicles
 

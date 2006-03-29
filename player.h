@@ -248,6 +248,7 @@ static inline RailType GetBestRailtype(const Player* p)
 {
 	if (HasRailtypeAvail(p, RAILTYPE_MAGLEV)) return RAILTYPE_MAGLEV;
 	if (HasRailtypeAvail(p, RAILTYPE_MONO)) return RAILTYPE_MONO;
+	if (HasRailtypeAvail(p, RAILTYPE_ELECTRIC)) return RAILTYPE_ELECTRIC;
 	return RAILTYPE_RAIL;
 }
 

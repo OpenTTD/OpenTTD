@@ -787,6 +787,7 @@ static void DrawTile_Road(TileInfo *ti)
 			}
 
 			DrawGroundSprite(image);
+			if (GB(_m[ti->tile].m4, 0, 4) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 			break;
 		}
 

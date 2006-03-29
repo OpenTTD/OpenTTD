@@ -68,6 +68,6 @@ typedef struct {
 } FindLengthOfTunnelResult;
 FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, DiagDirection direction);
 
-void NewTrainPathfind(TileIndex tile, TileIndex dest, DiagDirection direction, NTPEnumProc* enum_proc, void* data);
+void NewTrainPathfind(TileIndex tile, TileIndex dest, RailTypeMask railtypes, DiagDirection direction, NTPEnumProc* enum_proc, void* data);
 
 #endif /* PATHFIND_H */

@@ -9,7 +9,6 @@
 #include "rail_map.h"
 #include "tile.h"
 
-
 /** These are a combination of tracks and directions. Values are 0-5 in one
 direction (corresponding to the Track enum) and 8-13 in the other direction. */
 typedef enum Trackdirs {
@@ -110,8 +109,11 @@ typedef struct RailtypeInfo {
 	/** sprite number difference between a piece of track on a snowy ground and the corresponding one on normal ground */
 	SpriteID snow_offset;
 
-	/** bitmask to the OTHER railtypes that can be used by an engine of THIS railtype */
-	byte compatible_railtypes;
+	/** bitmask to the OTHER railtypes on which an engine of THIS railtype generates power */
+	RailTypeMask powered_railtypes;
+
+	/** bitmask to the OTHER railtypes on which an engine of THIS railtype can physically travel */
+	RailTypeMask compatible_railtypes;
 
 	/**
 	 * Offset between the current railtype and normal rail. This means that:<p>
@@ -478,6 +480,11 @@ static inline bool IsCompatibleRail(RailType enginetype, RailType tiletype)
 	return HASBIT(GetRailTypeInfo(enginetype)->compatible_railtypes, tiletype);
 }
 
+static inline bool HasPowerOnRail(RailType enginetype, RailType tiletype)
+{
+	return HASBIT(GetRailTypeInfo(enginetype)->powered_railtypes, tiletype);
+}
+
 /**
  * Checks if the given tracks overlap, ie form a crossing. Basically this
  * means when there is more than one track on the tile, exept when there are
@@ -497,4 +504,13 @@ static inline bool TracksOverlap(TrackBits bits)
 
 void DrawTrainDepotSprite(int x, int y, int image, RailType railtype);
 void DrawDefaultWaypointSprite(int x, int y, RailType railtype);
+
+/**
+ * Draws overhead wires and pylons for electric railways.
+ * @param ti The TileInfo struct of the tile being drawn
+ * @see DrawCatenaryRailway
+ */
+void DrawCatenary(const TileInfo *ti);
+
+uint GetRailFoundation(uint tileh, uint bits);
 #endif /* RAIL_H */

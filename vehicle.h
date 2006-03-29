@@ -72,6 +72,7 @@ typedef struct VehicleRail {
 	byte track;
 	byte force_proceed;
 	byte railtype;
+	RailTypeMask compatible_railtypes;
 
 	byte flags;
 
@@ -307,6 +308,7 @@ UnitID GetFreeUnitNumber(byte type);
 int LoadUnloadVehicle(Vehicle *v);
 
 void TrainConsistChanged(Vehicle *v);
+void TrainPowerChanged(Vehicle *v);
 int32 GetTrainRunningCost(const Vehicle *v);
 
 int CheckTrainStoppedInDepot(const Vehicle *v);

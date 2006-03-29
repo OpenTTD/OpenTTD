@@ -1,0 +1,1091 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.42.2"
+   sodipodi:docbase="/home/vici/openttd/branch/elrail/docs"
+   sodipodi:docname="elrail.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="1.0000000"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.6009318"
+     inkscape:cx="144.00958"
+     inkscape:cy="578.90292"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     showgrid="true"
+     inkscape:window-width="1131"
+     inkscape:window-height="791"
+     inkscape:window-x="1295"
+     inkscape:window-y="46"
+     inkscape:grid-points="false"
+     inkscape:guide-points="false" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:1.0000000;fill:none;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0067960;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+       id="rect1306"
+       width="159.49321"
+       height="159.49657"
+       x="227.17947"
+       y="-24.569920"
+       transform="matrix(0.707107,0.707107,-0.707107,0.707107,0.000000,0.000000)"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_tile.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397" />
+    <rect
+       y="272.36218"
+       x="134.28571"
+       height="100.00000"
+       width="100.00000"
+       id="rect2059"
+       style="opacity:1.0000000;fill:none;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-opacity:1.0000000;stroke-width:0.0000000;stroke-miterlimit:4.0000000;stroke-dasharray:none"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_tile.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397" />
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       x="177.84283"
+       y="159.25369"
+       id="text6598"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_tile.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397"><tspan
+         sodipodi:role="line"
+         id="tspan6600"
+         x="177.84283"
+         y="159.25369"
+         style="font-family:Bitstream Vera Sans;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:12.000000;text-anchor:middle;text-align:center;writing-mode:lr;line-height:125%">N</tspan></text>
+    <path
+       transform="translate(-192.0645,-106.5709)"
+       d="M 213.86573 240.06183 A 4.8679605 4.8679605 0 1 1  204.12981,240.06183 A 4.8679605 4.8679605 0 1 1  213.86573 240.06183 z"
+       sodipodi:ry="4.8679605"
+       sodipodi:rx="4.8679605"
+       sodipodi:cy="240.06183"
+       sodipodi:cx="208.99777"
+       id="use6604"
+       style="opacity:1.0000000;fill:#9fb276;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.29899999;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_tile.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397" />
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-weight:normal;line-height:125.00000%;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       x="27.214844"
+       y="135.69812"
+       id="text6606"
+       sodipodi:linespacing="125.00000%"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_tile.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397"><tspan
+         sodipodi:role="line"
+         id="tspan6608"
+         x="27.214844"
+         y="135.69812"
+         style="font-size:8.0000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;font-family:Bitstream Vera Sans">Pylon Control Point (PCP)</tspan></text>
+    <g
+       id="g6780"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_tile.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397">
+      <path
+         transform="translate(-16.64392,10.04300)"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         sodipodi:ry="2.2717149"
+         sodipodi:rx="2.2717149"
+         sodipodi:cy="189.43504"
+         sodipodi:cx="237.55647"
+         id="path6610"
+         style="opacity:1.0000000;fill:#00ffff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         sodipodi:type="arc" />
+      <path
+         transform="translate(-16.64392,-3.625430)"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         sodipodi:ry="2.2717149"
+         sodipodi:rx="2.2717149"
+         sodipodi:cy="189.43504"
+         sodipodi:cx="237.55647"
+         id="path6612"
+         style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         sodipodi:type="arc" />
+      <path
+         transform="translate(-2.975490,-3.625430)"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         sodipodi:ry="2.2717149"
+         sodipodi:rx="2.2717149"
+         sodipodi:cy="189.43504"
+         sodipodi:cx="237.55647"
+         id="path6614"
+         style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         sodipodi:type="arc" />
+      <path
+         transform="translate(10.69294,-3.625430)"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         sodipodi:ry="2.2717149"
+         sodipodi:rx="2.2717149"
+         sodipodi:cy="189.43504"
+         sodipodi:cx="237.55647"
+         id="path6616"
+         style="opacity:1.0000000;fill:#ff0000;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         sodipodi:type="arc" />
+      <path
+         transform="translate(10.69294,10.04300)"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         sodipodi:ry="2.2717149"
+         sodipodi:rx="2.2717149"
+         sodipodi:cy="189.43504"
+         sodipodi:cx="237.55647"
+         id="path6620"
+         style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         sodipodi:type="arc" />
+      <path
+         transform="translate(10.69294,23.71143)"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         sodipodi:ry="2.2717149"
+         sodipodi:rx="2.2717149"
+         sodipodi:cy="189.43504"
+         sodipodi:cx="237.55647"
+         id="path6622"
+         style="opacity:1.0000000;fill:#00ffff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         sodipodi:type="arc" />
+      <path
+         transform="translate(-2.975490,23.71143)"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         sodipodi:ry="2.2717149"
+         sodipodi:rx="2.2717149"
+         sodipodi:cy="189.43504"
+         sodipodi:cx="237.55647"
+         id="path6624"
+         style="opacity:1.0000000;fill:#00ffff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         sodipodi:type="arc" />
+      <path
+         transform="translate(-16.64392,23.71143)"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         sodipodi:ry="2.2717149"
+         sodipodi:rx="2.2717149"
+         sodipodi:cy="189.43504"
+         sodipodi:cx="237.55647"
+         id="path6626"
+         style="opacity:1.0000000;fill:#ffff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         sodipodi:type="arc" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#9fb276;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.29899999;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6732"
+         sodipodi:cx="208.99777"
+         sodipodi:cy="240.06183"
+         sodipodi:rx="4.8679605"
+         sodipodi:ry="4.8679605"
+         d="M 213.86573 240.06183 A 4.8679605 4.8679605 0 1 1  204.12981,240.06183 A 4.8679605 4.8679605 0 1 1  213.86573 240.06183 z"
+         transform="matrix(0.707107,-0.707107,0.707107,0.707107,-82.95220,177.5124)" />
+    </g>
+    <use
+       x="0.0000000"
+       y="0.0000000"
+       xlink:href="#path6616"
+       id="use6742"
+       transform="translate(-222.0702,-28.15283)"
+       width="744.09448"
+       height="1052.3622"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_tile.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397" />
+    <path
+       transform="translate(-211.3773,-22.11155)"
+       d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+       sodipodi:ry="2.2717149"
+       sodipodi:rx="2.2717149"
+       sodipodi:cy="189.43504"
+       sodipodi:cx="237.55647"
+       id="path6744"
+       style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_tile.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397" />
+    <path
+       transform="translate(-211.3773,-12.44495)"
+       d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+       sodipodi:ry="2.2717149"
+       sodipodi:rx="2.2717149"
+       sodipodi:cy="189.43504"
+       sodipodi:cx="237.55647"
+       id="path6746"
+       style="opacity:1.0000000;fill:#00ffff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_tile.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397" />
+    <path
+       transform="translate(-211.3773,-2.778260)"
+       d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+       sodipodi:ry="2.2717149"
+       sodipodi:rx="2.2717149"
+       sodipodi:cy="189.43504"
+       sodipodi:cx="237.55647"
+       id="path6748"
+       style="opacity:1.0000000;fill:#ffff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_tile.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397" />
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-weight:normal;line-height:125.00000%;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       x="32.279297"
+       y="159.58745"
+       id="text6750"
+       sodipodi:linespacing="125.00000%"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_tile.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397"><tspan
+         sodipodi:role="line"
+         id="tspan6752"
+         x="32.279297"
+         y="159.58745"
+         style="font-size:6.0000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;font-family:Bitstream Vera Sans">not allowed, not owned</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-weight:normal;line-height:125.00000%;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       x="32.279297"
+       y="188.58745"
+       id="text6754"
+       sodipodi:linespacing="125.00000%"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_tile.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397"><tspan
+         sodipodi:role="line"
+         id="tspan6756"
+         x="32.279297"
+         y="188.58745"
+         style="font-size:6.0000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;font-family:Bitstream Vera Sans">not allowed, owned</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-weight:normal;line-height:125.00000%;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       x="32.279297"
+       y="178.92078"
+       id="text6758"
+       sodipodi:linespacing="125.00000%"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_tile.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397"><tspan
+         sodipodi:role="line"
+         id="tspan6760"
+         x="32.279297"
+         y="178.92078"
+         style="font-size:6.0000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;font-family:Bitstream Vera Sans">allowed, owned</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-weight:normal;line-height:125.00000%;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       x="32.279297"
+       y="169.25417"
+       id="text6762"
+       sodipodi:linespacing="125.00000%"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_tile.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397"><tspan
+         sodipodi:role="line"
+         id="tspan6764"
+         x="32.279297"
+         y="169.25417"
+         style="font-size:6.0000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;font-family:Bitstream Vera Sans">allowed, not owned</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-weight:normal;line-height:125.00000%;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       x="27.214844"
+       y="149.62065"
+       id="text6766"
+       sodipodi:linespacing="125.00000%"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_tile.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397"><tspan
+         sodipodi:role="line"
+         id="tspan6768"
+         x="27.214844"
+         y="149.62065"
+         style="font-size:8.0000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;font-family:Bitstream Vera Sans">Pylon Position Point (PPP)</tspan></text>
+    <use
+       x="0.0000000"
+       y="0.0000000"
+       xlink:href="#g6780"
+       id="use6791"
+       transform="matrix(-1.720846e-15,1.000000,-1.000000,-1.720846e-15,433.4807,78.77855)"
+       width="744.09448"
+       height="1052.3622"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_tile.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397" />
+    <g
+       id="g6793"
+       transform="matrix(1.776357e-15,-1.000000,1.000000,1.776357e-15,-78.04526,434.0590)"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_tile.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397">
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#00ffff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6795"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="translate(-16.64392,10.04300)" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6797"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="translate(-16.64392,-3.625430)" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6799"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="translate(-2.975490,-3.625430)" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#ff0000;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6801"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="translate(10.69294,-3.625430)" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6803"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="translate(10.69294,10.04300)" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#00ffff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6805"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="translate(10.69294,23.71143)" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#00ffff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6807"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="translate(-2.975490,23.71143)" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#ffff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6809"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="translate(-16.64392,23.71143)" />
+      <path
+         transform="matrix(0.707107,-0.707107,0.707107,0.707107,-82.95220,177.5124)"
+         d="M 213.86573 240.06183 A 4.8679605 4.8679605 0 1 1  204.12981,240.06183 A 4.8679605 4.8679605 0 1 1  213.86573 240.06183 z"
+         sodipodi:ry="4.8679605"
+         sodipodi:rx="4.8679605"
+         sodipodi:cy="240.06183"
+         sodipodi:cx="208.99777"
+         id="path6811"
+         style="opacity:1.0000000;fill:#9fb276;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.29899999;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         sodipodi:type="arc" />
+    </g>
+    <g
+       id="g6813"
+       transform="matrix(-1.000000,0.000000,0.000000,-1.000000,356.0752,512.3398)"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_tile.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397">
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#00ffff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6815"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="translate(-16.64392,10.04300)" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6817"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="translate(-16.64392,-3.625430)" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6819"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="translate(-2.975490,-3.625430)" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#ff0000;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6821"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="translate(10.69294,-3.625430)" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6823"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="translate(10.69294,10.04300)" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#00ffff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6825"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="translate(10.69294,23.71143)" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#00ffff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6827"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="translate(-2.975490,23.71143)" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#ffff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6829"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="translate(-16.64392,23.71143)" />
+      <path
+         transform="matrix(0.707107,-0.707107,0.707107,0.707107,-82.95220,177.5124)"
+         d="M 213.86573 240.06183 A 4.8679605 4.8679605 0 1 1  204.12981,240.06183 A 4.8679605 4.8679605 0 1 1  213.86573 240.06183 z"
+         sodipodi:ry="4.8679605"
+         sodipodi:rx="4.8679605"
+         sodipodi:cy="240.06183"
+         sodipodi:cx="208.99777"
+         id="path6831"
+         style="opacity:1.0000000;fill:#9fb276;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.29899999;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         sodipodi:type="arc" />
+    </g>
+    <use
+       x="0.0000000"
+       y="0.0000000"
+       xlink:href="#path6616"
+       id="use6841"
+       transform="translate(-225.5836,232.1805)"
+       width="744.09448"
+       height="1052.3622"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_track.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397" />
+    <path
+       transform="translate(-214.8907,238.2218)"
+       d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+       sodipodi:ry="2.2717149"
+       sodipodi:rx="2.2717149"
+       sodipodi:cy="189.43504"
+       sodipodi:cx="237.55647"
+       id="path6843"
+       style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_track.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397" />
+    <path
+       transform="translate(-214.8907,247.8884)"
+       d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+       sodipodi:ry="2.2717149"
+       sodipodi:rx="2.2717149"
+       sodipodi:cy="189.43504"
+       sodipodi:cx="237.55647"
+       id="path6845"
+       style="opacity:1.0000000;fill:#00ffff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_track.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397" />
+    <path
+       transform="translate(-214.8907,257.5551)"
+       d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+       sodipodi:ry="2.2717149"
+       sodipodi:rx="2.2717149"
+       sodipodi:cy="189.43504"
+       sodipodi:cx="237.55647"
+       id="path6847"
+       style="opacity:1.0000000;fill:#ffff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_track.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397" />
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-weight:normal;line-height:125.00000%;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       x="28.765947"
+       y="419.92078"
+       id="text6849"
+       sodipodi:linespacing="125.00000%"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_track.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397"><tspan
+         sodipodi:role="line"
+         id="tspan6851"
+         x="28.765947"
+         y="419.92078"
+         style="font-size:6.0000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;font-family:Bitstream Vera Sans">not allowed, but preferred (end of line marker)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-weight:normal;line-height:125.00000%;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       x="28.765947"
+       y="448.92078"
+       id="text6853"
+       sodipodi:linespacing="125.00000%"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_track.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397"><tspan
+         sodipodi:role="line"
+         id="tspan6855"
+         x="28.765947"
+         y="448.92078"
+         style="font-size:6.0000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;font-family:Bitstream Vera Sans">not allowed</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-weight:normal;line-height:125.00000%;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       x="28.765947"
+       y="439.25409"
+       id="text6857"
+       sodipodi:linespacing="125.00000%"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_track.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397"><tspan
+         sodipodi:role="line"
+         id="tspan6859"
+         x="28.765947"
+         y="439.25409"
+         style="font-size:6.0000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;font-family:Bitstream Vera Sans">preferred, allowed</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-weight:normal;line-height:125.00000%;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       x="28.765947"
+       y="429.58746"
+       id="text6861"
+       sodipodi:linespacing="125.00000%"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_track.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397"><tspan
+         sodipodi:role="line"
+         x="28.765947"
+         y="429.58746"
+         style="font-size:6.0000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;font-family:Bitstream Vera Sans"
+         id="tspan6933">allowed</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-weight:normal;line-height:125.00000%;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       x="23.701494"
+       y="409.95398"
+       id="text6865"
+       sodipodi:linespacing="125.00000%"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_track.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397"><tspan
+         sodipodi:role="line"
+         id="tspan6867"
+         x="23.701494"
+         y="409.95398"
+         style="font-size:8.0000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;font-family:Bitstream Vera Sans">Pylon Position Point (PPP)</tspan></text>
+    <g
+       id="g6989"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_track.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397">
+      <path
+         transform="translate(-103.1355,254.9297)"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         sodipodi:ry="2.2717149"
+         sodipodi:rx="2.2717149"
+         sodipodi:cy="189.43504"
+         sodipodi:cx="237.55647"
+         id="path6871"
+         style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         sodipodi:type="arc" />
+      <path
+         transform="translate(-103.1355,241.2613)"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         sodipodi:ry="2.2717149"
+         sodipodi:rx="2.2717149"
+         sodipodi:cy="189.43504"
+         sodipodi:cx="237.55647"
+         id="path6873"
+         style="opacity:1.0000000;fill:#00ffff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         sodipodi:type="arc" />
+      <path
+         transform="translate(-89.46705,241.2613)"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         sodipodi:ry="2.2717149"
+         sodipodi:rx="2.2717149"
+         sodipodi:cy="189.43504"
+         sodipodi:cx="237.55647"
+         id="path6875"
+         style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         sodipodi:type="arc" />
+      <path
+         transform="translate(-75.79862,241.2613)"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         sodipodi:ry="2.2717149"
+         sodipodi:rx="2.2717149"
+         sodipodi:cy="189.43504"
+         sodipodi:cx="237.55647"
+         id="path6877"
+         style="opacity:1.0000000;fill:#ff0000;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         sodipodi:type="arc" />
+      <path
+         transform="translate(-75.79862,254.9297)"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         sodipodi:ry="2.2717149"
+         sodipodi:rx="2.2717149"
+         sodipodi:cy="189.43504"
+         sodipodi:cx="237.55647"
+         id="path6879"
+         style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         sodipodi:type="arc" />
+      <path
+         transform="translate(-75.79862,268.5982)"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         sodipodi:ry="2.2717149"
+         sodipodi:rx="2.2717149"
+         sodipodi:cy="189.43504"
+         sodipodi:cx="237.55647"
+         id="path6881"
+         style="opacity:1.0000000;fill:#00ffff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         sodipodi:type="arc" />
+      <path
+         transform="translate(-89.46705,268.5982)"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         sodipodi:ry="2.2717149"
+         sodipodi:rx="2.2717149"
+         sodipodi:cy="189.43504"
+         sodipodi:cx="237.55647"
+         id="path6883"
+         style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         sodipodi:type="arc" />
+      <path
+         transform="translate(-103.1355,268.5982)"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         sodipodi:ry="2.2717149"
+         sodipodi:rx="2.2717149"
+         sodipodi:cy="189.43504"
+         sodipodi:cx="237.55647"
+         id="path6885"
+         style="opacity:1.0000000;fill:#ffff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         sodipodi:type="arc" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6891"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="matrix(-1.000000,0.000000,0.000000,-1.000000,286.2275,747.1836)" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#00ffff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6893"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="matrix(-1.000000,0.000000,0.000000,-1.000000,286.2275,760.8520)" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6895"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="matrix(-1.000000,0.000000,0.000000,-1.000000,272.5591,760.8520)" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#ff0000;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6897"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="matrix(-1.000000,0.000000,0.000000,-1.000000,258.8907,760.8520)" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6899"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="matrix(-1.000000,0.000000,0.000000,-1.000000,258.8907,747.1836)" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#00ffff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6901"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="matrix(-1.000000,0.000000,0.000000,-1.000000,258.8907,733.5153)" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6903"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="matrix(-1.000000,0.000000,0.000000,-1.000000,272.5591,733.5153)" />
+      <path
+         sodipodi:type="arc"
+         style="opacity:1.0000000;fill:#ffff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         id="path6905"
+         sodipodi:cx="237.55647"
+         sodipodi:cy="189.43504"
+         sodipodi:rx="2.2717149"
+         sodipodi:ry="2.2717149"
+         d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+         transform="matrix(-1.000000,0.000000,0.000000,-1.000000,286.2275,733.5153)" />
+      <path
+         id="path6931"
+         d="M 35.005290,557.75123 L 148.46835,444.19631"
+         style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+    </g>
+    <g
+       id="g7091"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_track.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397">
+      <path
+         sodipodi:nodetypes="ccc"
+         id="path6935"
+         d="M 143.36688,574.86732 L 185.00000,533.20050 L 241.50000,533.20050"
+         style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0000011px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+      <g
+         id="g7081">
+        <path
+           transform="matrix(-1.000000,0.000000,0.000000,-1.000000,436.0591,722.7997)"
+           d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+           sodipodi:ry="2.2717149"
+           sodipodi:rx="2.2717149"
+           sodipodi:cy="189.43504"
+           sodipodi:cx="237.55647"
+           id="path6973"
+           style="opacity:1.0000000;fill:#ffff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+           sodipodi:type="arc" />
+        <path
+           transform="matrix(-1.000000,0.000000,0.000000,-1.000000,436.0591,736.4681)"
+           d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+           sodipodi:ry="2.2717149"
+           sodipodi:rx="2.2717149"
+           sodipodi:cy="189.43504"
+           sodipodi:cx="237.55647"
+           id="path6975"
+           style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+           sodipodi:type="arc" />
+        <path
+           transform="matrix(-1.000000,0.000000,0.000000,-1.000000,422.3907,736.4681)"
+           d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+           sodipodi:ry="2.2717149"
+           sodipodi:rx="2.2717149"
+           sodipodi:cy="189.43504"
+           sodipodi:cx="237.55647"
+           id="path6977"
+           style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+           sodipodi:type="arc" />
+        <path
+           transform="matrix(-1.000000,0.000000,0.000000,-1.000000,408.7223,736.4681)"
+           d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+           sodipodi:ry="2.2717149"
+           sodipodi:rx="2.2717149"
+           sodipodi:cy="189.43504"
+           sodipodi:cx="237.55647"
+           id="path6979"
+           style="opacity:1.0000000;fill:#ffff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+           sodipodi:type="arc" />
+        <path
+           transform="matrix(-1.000000,0.000000,0.000000,-1.000000,408.7223,722.7997)"
+           d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+           sodipodi:ry="2.2717149"
+           sodipodi:rx="2.2717149"
+           sodipodi:cy="189.43504"
+           sodipodi:cx="237.55647"
+           id="path6981"
+           style="opacity:1.0000000;fill:#ffff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+           sodipodi:type="arc" />
+        <path
+           transform="matrix(-1.000000,0.000000,0.000000,-1.000000,408.7223,709.1314)"
+           d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+           sodipodi:ry="2.2717149"
+           sodipodi:rx="2.2717149"
+           sodipodi:cy="189.43504"
+           sodipodi:cx="237.55647"
+           id="path6983"
+           style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+           sodipodi:type="arc" />
+        <path
+           transform="matrix(-1.000000,0.000000,0.000000,-1.000000,422.3907,709.1314)"
+           d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+           sodipodi:ry="2.2717149"
+           sodipodi:rx="2.2717149"
+           sodipodi:cy="189.43504"
+           sodipodi:cx="237.55647"
+           id="path6985"
+           style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+           sodipodi:type="arc" />
+        <path
+           transform="matrix(-1.000000,0.000000,0.000000,-1.000000,436.0591,709.1314)"
+           d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+           sodipodi:ry="2.2717149"
+           sodipodi:rx="2.2717149"
+           sodipodi:cy="189.43504"
+           sodipodi:cx="237.55647"
+           id="path6987"
+           style="opacity:1.0000000;fill:#ffff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+           sodipodi:type="arc" />
+      </g>
+    </g>
+    <path
+       transform="matrix(-0.707107,0.707107,-0.707107,-0.707107,608.1528,439.3340)"
+       d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+       sodipodi:ry="2.2717149"
+       sodipodi:rx="2.2717149"
+       sodipodi:cy="189.43504"
+       sodipodi:cx="237.55647"
+       id="path7037"
+       style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_track.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397" />
+    <path
+       transform="matrix(-0.707107,0.707107,-0.707107,-0.707107,617.8178,448.9990)"
+       d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+       sodipodi:ry="2.2717149"
+       sodipodi:rx="2.2717149"
+       sodipodi:cy="189.43504"
+       sodipodi:cx="237.55647"
+       id="path7039"
+       style="opacity:1.0000000;fill:#ff00ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_track.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397" />
+    <path
+       transform="matrix(-0.707107,0.707107,-0.707107,-0.707107,608.1528,458.6640)"
+       d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+       sodipodi:ry="2.2717149"
+       sodipodi:rx="2.2717149"
+       sodipodi:cy="189.43504"
+       sodipodi:cx="237.55647"
+       id="path7041"
+       style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_track.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397" />
+    <path
+       transform="matrix(-0.707107,0.707107,-0.707107,-0.707107,598.4878,468.3290)"
+       d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+       sodipodi:ry="2.2717149"
+       sodipodi:rx="2.2717149"
+       sodipodi:cy="189.43504"
+       sodipodi:cx="237.55647"
+       id="path7043"
+       style="opacity:1.0000000;fill:#ffff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_track.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397" />
+    <path
+       transform="matrix(-0.707107,0.707107,-0.707107,-0.707107,588.8228,458.6640)"
+       d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+       sodipodi:ry="2.2717149"
+       sodipodi:rx="2.2717149"
+       sodipodi:cy="189.43504"
+       sodipodi:cx="237.55647"
+       id="path7045"
+       style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_track.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397" />
+    <path
+       transform="matrix(-0.707107,0.707107,-0.707107,-0.707107,579.1578,448.9991)"
+       d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+       sodipodi:ry="2.2717149"
+       sodipodi:rx="2.2717149"
+       sodipodi:cy="189.43504"
+       sodipodi:cx="237.55647"
+       id="path7047"
+       style="opacity:1.0000000;fill:#ff00ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_track.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397" />
+    <path
+       transform="matrix(-0.707107,0.707107,-0.707107,-0.707107,588.8229,439.3341)"
+       d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+       sodipodi:ry="2.2717149"
+       sodipodi:rx="2.2717149"
+       sodipodi:cy="189.43504"
+       sodipodi:cx="237.55647"
+       id="path7049"
+       style="opacity:1.0000000;fill:#0000ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_track.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397" />
+    <path
+       transform="matrix(-0.707107,0.707107,-0.707107,-0.707107,598.4879,429.6690)"
+       d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+       sodipodi:ry="2.2717149"
+       sodipodi:rx="2.2717149"
+       sodipodi:cy="189.43504"
+       sodipodi:cx="237.55647"
+       id="path7051"
+       style="opacity:1.0000000;fill:#ffff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_track.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397" />
+    <path
+       style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0000004px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000"
+       d="M 296.56288,570.12631 L 296.49793,409.60031"
+       id="path7053"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_track.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397" />
+    <path
+       transform="translate(-214.8907,267.2614)"
+       d="M 239.82819 189.43504 A 2.2717149 2.2717149 0 1 1  235.28476,189.43504 A 2.2717149 2.2717149 0 1 1  239.82819 189.43504 z"
+       sodipodi:ry="2.2717149"
+       sodipodi:rx="2.2717149"
+       sodipodi:cy="189.43504"
+       sodipodi:cx="237.55647"
+       id="path7111"
+       style="opacity:1.0000000;fill:#ff00ff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.12500000;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_track.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397" />
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000px;font-style:normal;font-weight:normal;line-height:125.00000%;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       x="28.765947"
+       y="458.93326"
+       id="text7113"
+       sodipodi:linespacing="125.00000%"
+       inkscape:export-filename="/home/vici/openttd/branch/elrail/docs/elrail_track.png"
+       inkscape:export-xdpi="299.91397"
+       inkscape:export-ydpi="299.91397"><tspan
+         sodipodi:role="line"
+         id="tspan7115"
+         x="28.765947"
+         y="458.93326"
+         style="font-size:6.0000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;font-family:Bitstream Vera Sans">preferred, allowed and</tspan><tspan
+         sodipodi:role="line"
+         x="28.765947"
+         y="466.43326"
+         style="font-size:6.0000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;font-family:Bitstream Vera Sans"
+         id="tspan7117">can be ignored to create</tspan><tspan
+         sodipodi:role="line"
+         x="28.765947"
+         y="473.93326"
+         style="font-size:6.0000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;font-family:Bitstream Vera Sans"
+         id="tspan7119">long wires (which span</tspan><tspan
+         sodipodi:role="line"
+         x="28.765947"
+         y="481.43326"
+         style="font-size:6.0000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;font-family:Bitstream Vera Sans"
+         id="tspan7121">2 tiles)</tspan></text>
+  </g>
+</svg>

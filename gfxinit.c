@@ -358,6 +358,9 @@ static void LoadSpriteTables(void)
 	load_index = SPR_AUTORAIL_BASE;
 	load_index += LoadGrfFile("autorail.grf", load_index, i++);
 
+	assert(load_index == SPR_ELRAIL_BASE);
+	load_index += LoadGrfFile("elrailsw.grf", load_index, i++);
+
 	assert(load_index == SPR_2CCMAP_BASE);
 	load_index += LoadGrfFile("2ccmap.grf", load_index, i++);
 

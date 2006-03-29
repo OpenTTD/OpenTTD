@@ -126,7 +126,7 @@ static void AiStateVehLoop(Player *p)
 	p->ai.state_counter = 0;
 }
 
-static EngineID AiChooseTrainToBuild(byte railtype, int32 money, byte flag, TileIndex tile)
+static EngineID AiChooseTrainToBuild(RailType railtype, int32 money, byte flag, TileIndex tile)
 {
 	EngineID best_veh_index = INVALID_ENGINE;
 	byte best_veh_score = 0;
@@ -137,7 +137,7 @@ static EngineID AiChooseTrainToBuild(byte railtype, int32 money, byte flag, Tile
 		const RailVehicleInfo *rvi = RailVehInfo(i);
 		const Engine* e = GetEngine(i);
 
-		if (e->railtype != railtype ||
+		if (!IsCompatibleRail(e->railtype, railtype) ||
 				rvi->flags & RVI_WAGON ||
 				(rvi->flags & RVI_MULTIHEAD && flag & 1) ||
 				!HASBIT(e->player_avail, _current_player) ||
@@ -2321,6 +2321,41 @@ static StationID AiGetStationIdByDef(TileIndex tile, int id)
 	return GetStationIndex(TILE_ADD(tile, ToTileIndexDiff(p->tileoffs)));
 }
 
+static EngineID AiFindBestWagon(CargoID cargo, RailType railtype)
+{
+	EngineID best_veh_index = INVALID_ENGINE;
+	EngineID i;
+	uint16 best_capacity = 0;
+	uint16 best_speed    = 0;
+	uint speed;
+
+	for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
+		const RailVehicleInfo *rvi = RailVehInfo(i);
+		const Engine* e = GetEngine(i);
+
+		if (!IsCompatibleRail(e->railtype, railtype) ||
+				!(rvi->flags & RVI_WAGON) ||
+				!HASBIT(e->player_avail, _current_player)) {
+			continue;
+		}
+
+		if (rvi->cargo_type != cargo) {
+			continue;
+		}
+
+		/* max_speed of 0 indicates no speed limit */
+		speed = rvi->max_speed == 0 ? 0xFFFF : rvi->max_speed;
+
+		if (rvi->capacity >= best_capacity && speed >= best_speed) {
+			best_capacity = rvi->capacity;
+			best_speed    = best_speed;
+			best_veh_index = i;
+		}
+	}
+
+	return best_veh_index;
+}
+
 static void AiStateBuildRailVeh(Player *p)
 {
 	const AiDefaultBlockData *ptr;
@@ -2337,10 +2372,14 @@ static void AiStateBuildRailVeh(Player *p)
 
 	tile = TILE_ADD(p->ai.src.use_tile, ToTileIndexDiff(ptr->tileoffs));
 
+
 	cargo = p->ai.cargo_type;
 	for (i = 0;;) {
 		if (p->ai.wagon_list[i] == INVALID_VEHICLE) {
-			veh = _cargoc.ai_railwagon[p->ai.railtype_to_use][cargo];
+			veh = AiFindBestWagon(cargo, p->ai.railtype_to_use);
+			/* veh will return INVALID_ENGINE if no suitable wagon is available.
+			 * We shall treat this in the same way as having no money */
+			if (veh == INVALID_ENGINE) goto handle_nocash;
 			cost = DoCommandByTile(tile, veh, 0, DC_EXEC, CMD_BUILD_RAIL_VEHICLE);
 			if (CmdFailed(cost)) goto handle_nocash;
 			p->ai.wagon_list[i] = _new_wagon_id;

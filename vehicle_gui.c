@@ -76,6 +76,7 @@ const StringID _vehicle_sort_listing[] = {
 
 static const StringID _rail_types_list[] = {
 	STR_RAIL_VEHICLES,
+	STR_ELRAIL_VEHICLES,
 	STR_MONORAIL_VEHICLES,
 	STR_MAGLEV_VEHICLES,
 	INVALID_STRING_ID
@@ -450,7 +451,7 @@ static int CDECL VehicleValueSorter(const void *a, const void *b)
  *	if used compined with show_cars set to false, it will work as intended. Replace window do it like that
  *  this was a big hack even before show_outdated was added. Stupid newgrf :p										*/
 static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, EngineID *selected_id, RailType railtype,
-	uint8 lines_drawn, bool is_engine, bool show_cars, bool show_outdated)
+	uint8 lines_drawn, bool is_engine, bool show_cars, bool show_outdated, bool show_compatible)
 {
 	EngineID j;
 	byte colour;
@@ -472,7 +473,9 @@ static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, Engine
 
 		colour = *sel == 0 ? 0xC : 0x10;
 		if (!(ENGINE_AVAILABLE && show_outdated && RailVehInfo(i)->power && e->railtype == railtype)) {
-			if (e->railtype != railtype || !(rvi->flags & RVI_WAGON) != is_engine ||
+			if ((!HasPowerOnRail(e->railtype, railtype) && show_compatible)
+				|| (e->railtype != railtype && !show_compatible)
+				|| !(rvi->flags & RVI_WAGON) != is_engine ||
 				!HASBIT(e->player_avail, _local_player))
 				continue;
 		} /*else {
@@ -522,16 +525,15 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 				const Engine* e = GetEngine(eid);
 				const EngineInfo* info = &_engine_info[eid];
 
+				// left window contains compatible engines while right window only contains engines of the selected type
 				if (ENGINE_AVAILABLE && (
 							(RailVehInfo(eid)->power != 0 && WP(w, replaceveh_d).wagon_btnstate) ||
-							(RailVehInfo(eid)->power == 0 && !WP(w, replaceveh_d).wagon_btnstate)
-						) &&
-						e->railtype == railtype) {
-					if (_player_num_engines[eid] > 0 || EngineHasReplacementForPlayer(p, eid)) {
+							(RailVehInfo(eid)->power == 0 && !WP(w, replaceveh_d).wagon_btnstate))) {
+					if (HasPowerOnRail(e->railtype, railtype) && (_player_num_engines[eid] > 0 || EngineHasReplacementForPlayer(p, eid))) {
 						if (sel[0] == count) selected_id[0] = eid;
 						count++;
 					}
-					if (HASBIT(e->player_avail, _local_player)) {
+					if (e->railtype == railtype && HASBIT(e->player_avail, _local_player)) {
 						if (sel[1] == count2) selected_id[1] = eid;
 						count2++;
 					}
@@ -647,12 +649,12 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 			* engines to get more types.. Stays here until we have our own format
 			* then it is exit!!! */
 			if (WP(w,replaceveh_d).wagon_btnstate) {
-				train_engine_drawing_loop(&x, &y, &pos, &sel[0], &selected_id[0], railtype, w->vscroll.cap, true, false, true); // True engines
-				train_engine_drawing_loop(&x2, &y2, &pos2, &sel[1], &selected_id[1], railtype, w->vscroll.cap, true, false, false); // True engines
-				train_engine_drawing_loop(&x2, &y2, &pos2, &sel[1], &selected_id[1], railtype, w->vscroll.cap, false, false, false); // Feeble wagons
+				train_engine_drawing_loop(&x, &y, &pos, &sel[0], &selected_id[0], railtype, w->vscroll.cap, true, false, true, true); // True engines
+				train_engine_drawing_loop(&x2, &y2, &pos2, &sel[1], &selected_id[1], railtype, w->vscroll.cap, true, false, false, false); // True engines
+				train_engine_drawing_loop(&x2, &y2, &pos2, &sel[1], &selected_id[1], railtype, w->vscroll.cap, false, false, false, false); // Feeble wagons
 			} else {
-				train_engine_drawing_loop(&x, &y, &pos, &sel[0], &selected_id[0], railtype, w->vscroll.cap, false, true, true);
-				train_engine_drawing_loop(&x2, &y2, &pos2, &sel[1], &selected_id[1], railtype, w->vscroll.cap, false, true, false);
+				train_engine_drawing_loop(&x, &y, &pos, &sel[0], &selected_id[0], railtype, w->vscroll.cap, false, true, true, true);
+				train_engine_drawing_loop(&x2, &y2, &pos2, &sel[1], &selected_id[1], railtype, w->vscroll.cap, false, true, false, true);
 			}
 			break;
 		}

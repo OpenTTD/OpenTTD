@@ -38,7 +38,7 @@ typedef struct NPFFindStationOrTileData { /* Meant to be stored in AyStar.target
 enum { /* Indices into AyStar.userdata[] */
 	NPF_TYPE = 0, /* Contains a TransportTypes value */
 	NPF_OWNER, /* Contains an Owner value */
-	NPF_RAILTYPE, /* Contains the RailType value of the engine when NPF_TYPE == TRANSPORT_RAIL. Unused otherwise. */
+	NPF_RAILTYPES, /* Contains a bitmask the compatible RailTypes of the engine when NPF_TYPE == TRANSPORT_RAIL. Unused otherwise. */
 };
 
 enum { /* Indices into AyStarNode.userdata[] */
@@ -64,28 +64,28 @@ typedef struct NPFFoundTargetData { /* Meant to be stored in AyStar.userpath */
 /* Will search from the given tile and direction, for a route to the given
  * station for the given transport type. See the declaration of
  * NPFFoundTargetData above for the meaning of the result. */
-NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, NPFFindStationOrTileData* target, TransportType type, Owner owner, RailType railtype);
+NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, NPFFindStationOrTileData* target, TransportType type, Owner owner, RailTypeMask railtypes);
 
 /* Will search as above, but with two start nodes, the second being the
  * reverse. Look at the NPF_FLAG_REVERSE flag in the result node to see which
  * direction was taken (NPFGetBit(result.node, NPF_FLAG_REVERSE)) */
-NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, Trackdir trackdir1, TileIndex tile2, Trackdir trackdir2, NPFFindStationOrTileData* target, TransportType type, Owner owner, RailType railtype);
+NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, Trackdir trackdir1, TileIndex tile2, Trackdir trackdir2, NPFFindStationOrTileData* target, TransportType type, Owner owner, RailTypeMask railtypes);
 
 /* Will search a route to the closest depot. */
 
 /* Search using breadth first. Good for little track choice and inaccurate
  * heuristic, such as railway/road.*/
-NPFFoundTargetData NPFRouteToDepotBreadthFirst(TileIndex tile, Trackdir trackdir, TransportType type, Owner owner, RailType railtype);
+NPFFoundTargetData NPFRouteToDepotBreadthFirst(TileIndex tile, Trackdir trackdir, TransportType type, Owner owner, RailTypeMask railtypes);
 /* Same as above but with two start nodes, the second being the reverse. Call
  * NPFGetBit(result.node, NPF_FLAG_REVERSE) to see from which node the path
  * orginated. All pathfs from the second node will have the given
  * reverse_penalty applied (NPF_TILE_LENGTH is the equivalent of one full
  * tile).
  */
-NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, Trackdir trackdir1, TileIndex tile2, Trackdir trackdir2, TransportType type, Owner owner, RailType railtype, uint reverse_penalty);
+NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, Trackdir trackdir1, TileIndex tile2, Trackdir trackdir2, TransportType type, Owner owner, RailTypeMask railtypes, uint reverse_penalty);
 /* Search by trying each depot in order of Manhattan Distance. Good for lots
  * of choices and accurate heuristics, such as water. */
-NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, TransportType type, Owner owner, RailType railtype);
+NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, TransportType type, Owner owner, RailTypeMask railtypes);
 
 void NPFFillWithOrderData(NPFFindStationOrTileData* fstd, Vehicle* v);
 

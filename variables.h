@@ -345,7 +345,6 @@ typedef struct {
 	SpriteID sprites[NUM_CARGO];
 	byte transit_days_1[NUM_CARGO];
 	byte transit_days_2[NUM_CARGO];
-	byte ai_railwagon[3][NUM_CARGO];
 	byte ai_roadveh_start[NUM_CARGO];
 	byte ai_roadveh_count[NUM_CARGO];
 } CargoConst;
