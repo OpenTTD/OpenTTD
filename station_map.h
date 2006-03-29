@@ -60,6 +60,12 @@ typedef enum StationType {
 
 StationType GetStationType(TileIndex);
 
+static inline RoadStopType GetRoadStopType(TileIndex t)
+{
+	assert(GetStationType(t) == STATION_TRUCK || GetStationType(t) == STATION_BUS);
+	return GetStationType(t) == STATION_TRUCK ? RS_TRUCK : RS_BUS;
+}
+
 static inline bool IsRailwayStation(TileIndex t)
 {
 	return _m[t].m5 < RAILWAY_BASE + RAILWAY_SIZE;
