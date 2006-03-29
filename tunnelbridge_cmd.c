@@ -974,7 +974,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				DrawGroundSprite(SPR_FLAT_SNOWY_TILE + _tileh_to_sprite[ti->tileh]);
 			}
 
-			if (GB(_m[ti->tile].m3, 0, 3) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
+			if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 
 			// draw ramp
 			if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);

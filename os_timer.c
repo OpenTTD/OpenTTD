@@ -8,7 +8,7 @@
 # if defined (_M_AMD64)
 extern uint64 _rdtsc(void);
 #	else
-uint64 _declspec(naked) _rdtsc(void) 
+uint64 _declspec(naked) _rdtsc(void)
 {
 	_asm {
 		rdtsc
