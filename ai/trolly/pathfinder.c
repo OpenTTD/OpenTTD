@@ -11,7 +11,7 @@
 #include "trolly.h"
 #include "../../depot.h"
 #include "../../tunnel_map.h"
-#include "../../variables.h"
+#include "../../bridge.h"
 #include "../ai.h"
 
 #define TEST_STATION_NO_DIR 0xFF

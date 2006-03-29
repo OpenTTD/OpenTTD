@@ -414,9 +414,6 @@ extern const byte _airport_size_y[];
 VARDEF char _screenshot_name[128];
 VARDEF byte _vehicle_design_names;
 
-/* tunnelbridge */
-#define MAX_BRIDGES 13
-
 /* Forking stuff */
 VARDEF bool _dedicated_forks;
 

@@ -22,6 +22,7 @@
 #include "../../airport.h"
 #include "../../depot.h"
 #include "../../variables.h"
+#include "../../bridge.h"
 #include "default.h"
 
 // remove some day perhaps?

@@ -12,6 +12,7 @@
 #include "../../engine.h"
 #include "../../station.h"
 #include "../../variables.h"
+#include "../../bridge.h"
 #include "../ai.h"
 
 // Build HQ

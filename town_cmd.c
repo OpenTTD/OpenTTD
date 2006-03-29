@@ -24,6 +24,7 @@
 #include "gui.h"
 #include "unmovable_map.h"
 #include "variables.h"
+#include "bridge.h"
 
 enum {
 	/* Max towns: 64000 (8 * 8000) */

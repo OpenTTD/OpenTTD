@@ -5,6 +5,10 @@
 #ifndef BRIDGE_H
 #define BRIDGE_H
 
+enum {
+	MAX_BRIDGES = 13
+};
+
 /** Struct containing information about a single bridge type
  */
 typedef struct Bridge {
