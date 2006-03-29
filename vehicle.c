@@ -1552,6 +1552,8 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			if (v->type != VEH_Road) { // road vehicles can't be refitted
 				if (v->cargo_type != w->cargo_type) {
+					// we can't pay for refitting because we can't estimate refitting costs for a vehicle before it's build
+					// if we pay for it anyway, the cost and the estimated cost will not be the same and we will have an assert
 					DoCommand(x, y, w->index, v->cargo_type, flags, CMD_REFIT_VEH(v->type));
 				}
 			}
