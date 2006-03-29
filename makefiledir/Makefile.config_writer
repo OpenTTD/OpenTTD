@@ -83,17 +83,6 @@ $(MAKE_CONFIG):
 	$(call CONFIG_LINE,MINGW:=$(MINGW))
 	$(call CONFIG_LINE,)
 
-	$(call CONFIG_LINE,\# Universal binary setup)
-	$(call CONFIG_LINE,\# use these settings for building universal binaries. Most systems should work with the default settings)
-	$(call CONFIG_LINE,CFLAGS_UNIVERSAL:=$(CFLAGS_UNIVERSAL))
-	$(call CONFIG_LINE,LDFLAGS_UNIVERSAL:=$(LDFLAGS_UNIVERSAL))
-
-	$(call CONFIG_LINE,CFLAGS_JAGUAR:=$(CFLAGS_JAGUAR))
-	$(call CONFIG_LINE,LDFLAGS_JAGUAR:=$(LDFLAGS_JAGUAR))
-	$(call CONFIG_LINE,)
-	$(call CONFIG_LINE,G5_FLAGS:=$(G5_FLAGS))
-	$(call CONFIG_LINE,)
-
 	$(call CONFIG_LINE,\# For cross-compiling)
 	$(call CONFIG_LINE,CC_TARGET:=$(CC_TARGET))
 	$(call CONFIG_LINE,CC_HOST:=$(CC_HOST))

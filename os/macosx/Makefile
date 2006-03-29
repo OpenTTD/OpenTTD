@@ -2,29 +2,79 @@
 # This makefile is not a standalone makefile, but is called from the general one
 # it contains targets specific to MacOS X
 
-ifdef TRIPLE_BINARY
-# this is to add G5_FLAGS to ppc970 builds only. If the ability to add flags to a single arch only shows up in the future
-# we can get rid of this. Xcode supports arch dependant flags, but we can't do it in the makefile (yet?)
-%.o: %.c $(MAKE_CONFIG)
-	@echo '===> Compiling $<'
-	$(Q)$(CC) $(CFLAGS) $(CDEFS) -arch ppc -c -arch i386 -o $@.uni $<
-	$(Q)$(CC) $(CFLAGS) $(CDEFS) $(G5_FLAGS) -arch ppc970 -c -o $@.ppc970 $<
-	$(Q)lipo -create -output $@ $@.uni $@.ppc970
-	$(Q)rm $@.uni $@.ppc970
+ifdef NATIVE_OSX
 
-%.o: %.cpp  $(MAKE_CONFIG)
-	@echo '===> Compiling $<'
-	$(Q)$(CXX) $(CFLAGS) $(CDEFS) -arch ppc -arch i386 -c -o $@.uni $<
-	$(Q)$(CXX) $(CFLAGS) $(CDEFS) $(G5_FLAGS) -arch ppc970 -c -o $@.ppc970 $<
-	$(Q)lipo -create -output $@ $@.uni $@.ppc970
-	$(Q)rm $@.uni $@.ppc970
+DEPS_MAGIC := $(shell mkdir -p $(sort $(dir $(OBJS:%.o=.OSX/%))))
 
-%.o: %.m  $(MAKE_CONFIG)
-	@echo '===> Compiling $<'
-	$(Q)$(CC) $(CFLAGS) $(CDEFS) -arch ppc -arch i386 -c -o $@.uni $<
-	$(Q)$(CC) $(CFLAGS) $(CDEFS) -arch ppc970 $(G5_FLAGS) -c -o $@.ppc970 $<
-	$(Q)lipo -create -output $@ $@.uni $@.ppc970
-	$(Q)rm $@.uni $@.ppc970
+ifdef OTTD_PPC
+OTTD_PPC    :=.OSX/openttd.ppc
+OBJS_ppc    := $(OBJS:%.o=.OSX/%.o.ppc)
+endif
+
+ifdef OTTD_i386
+OTTD_i386   :=.OSX/openttd.i386
+OBJS_i386   := $(OBJS:%.o=.OSX/%.o.i386)
+endif
+
+ifdef OTTD_PPC970
+OTTD_PPC970 :=.OSX/openttd.ppc970
+OBJS_ppc970 := $(OBJS:%.o=.OSX/%.o.ppc970)
+endif
+
+# targets to link OpenTTD
+$(TTD): $(OTTD_PPC) $(OTTD_i386) $(OTTD_PPC970)
+	@echo '===> Linking $@ into a single file'
+	$(Q)lipo -create -output $@ $(OTTD_PPC) $(OTTD_i386) $(OTTD_PPC970)
+
+$(OTTD_PPC): $(MAKE_CONFIG) $(OBJS_ppc)
+	@echo '[PowerPC] Linking $(TTD)'
+	$(Q)$(CC) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS_ppc) $(LIBS) $(LDFLAGS_PPC) -arch ppc -o $@
+
+$(OTTD_i386): $(MAKE_CONFIG) $(OBJS_i386)
+	@echo '[i386] Linking $(TTD)'
+	$(Q)$(CC) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS_i386) $(LIBS) $(LDFLAGS_i386) -arch i386 -o $@
+
+$(OTTD_PPC970): $(MAKE_CONFIG) $(OBJS_ppc970)
+	@echo '[PowerPC G5] Linking $(TTD)'
+	$(Q)$(CC) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS_ppc970) $(LIBS) $(LDFLAGS_PPC) $(G5_FLAGS) -arch ppc970 -o $@
+
+# targets to compile each c, m and cpp file
+.OSX/%.o.ppc: %.c      .deps/%.d
+	@echo '[PowerPC] Compiling $<'
+	$(Q)$(CC) $(CFLAGS) $(CFLAGS_PPC) $(CDEFS) -arch ppc -c -o $@ $<
+
+.OSX/%.o.ppc: %.cpp    .deps/%.d
+	@echo '[PowerPC] Compiling $<'
+	$(Q)$(CPP) $(CFLAGS) $(CFLAGS_PPC) $(CDEFS) -arch ppc -c -o $@ $<
+
+.OSX/%.o.ppc: %.m      .deps/%.d
+	@echo '[PowerPC] Compiling $<'
+	$(Q)$(CC) $(CFLAGS) $(CFLAGS_PPC) $(CDEFS) -arch ppc -c -o $@ $<
+
+.OSX/%.o.i386: %.c     .deps/%.d
+	@echo '[i386] Compiling $<'
+	$(Q)$(CC) $(CFLAGS) $(CFLAGS_i386) $(CDEFS) -arch i386 -c -o $@ $<
+
+.OSX/%.o.i386: %.cpp   .deps/%.d
+	@echo '[i386] Compiling $<'
+	$(Q)$(CPP) $(CFLAGS) $(CFLAGS_i386) $(CDEFS) -arch i386 -c -o $@ $<
+
+.OSX/%.o.i386: %.m     .deps/%.d
+	@echo '[i386] Compiling $<'
+	$(Q)$(CC) $(CFLAGS) $(CFLAGS_i386) $(CDEFS) -arch i386 -c -o $@ $<
+
+.OSX/%.o.ppc970: %.c   .deps/%.d
+	@echo '[PowerPC G5] Compiling $<'
+	$(Q)$(CC) $(CFLAGS) $(CFLAGS_PPC) $(G5_FLAGS) $(CDEFS) -arch ppc970 -c -o $@ $<
+
+.OSX/%.o.ppc970: %.cpp .deps/%.d
+	@echo '[PowerPC G5] Compiling $<'
+	$(Q)$(CPP) $(CFLAGS) $(CFLAGS_PPC) $(G5_FLAGS) $(CDEFS) -arch ppc970 -c -o $@ $<
+
+.OSX/%.o.ppc970: %.m   .deps/%.d
+	@echo '[PowerPC G5] Compiling $<'
+	$(Q)$(CC) $(CFLAGS) $(CFLAGS_PPC) $(G5_FLAGS) $(CDEFS) -arch ppc970 -c -o $@ $<
+
 endif
 
 ifdef JAGUAR
