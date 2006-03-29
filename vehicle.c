@@ -1638,7 +1638,11 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 		/* refit if needed */
 		if (new_v->type != VEH_Road) { // road vehicles can't be refitted
 			if (old_v->cargo_type != new_v->cargo_type && old_v->cargo_cap != 0 && new_v->cargo_cap != 0) {// some train engines do not have cargo capacity
-				DoCommand(0, 0, new_v->index, old_v->cargo_type, DC_EXEC, CMD_REFIT_VEH(new_v->type));
+				// we add the refit cost to cost, so it's added to the cost animation
+				// it's not in the calculation of having enough money to actually do the replace since it's rather hard to do by design, but since
+				// we pay for it, it's nice to make the cost animation include it
+				int32 temp_cost = DoCommand(0, 0, new_v->index, old_v->cargo_type, DC_EXEC, CMD_REFIT_VEH(new_v->type));
+				if (!CmdFailed(temp_cost)) cost += temp_cost;
 			}
 		}
 
