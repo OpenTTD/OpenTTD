@@ -46,7 +46,6 @@
 # WITH_COCOA: Cocoa video driver support
 #
 # Summary of other defines:
-# MANUAL_CONFIG: do not use Makefile.config, config options set manually
 # DEBUG: build in debug mode
 # PROFILE: build in profile mode, disables -s and -fomit-frame-pointer
 # TRANSLATOR: build in translator mode (untranslated strings are prepended by
@@ -134,10 +133,6 @@
 # it checks if the version tag in Makefile.config is the same and force update outdated config files
 MAKEFILE_VERSION:=10
 
-# CONFIG_WRITER has to be found even for manual configuration
-CONFIG_WRITER=makefiledir/Makefile.config_writer
-
-ifndef MANUAL_CONFIG
 # Automatic configuration
 MAKE_CONFIG:=Makefile.config
 MAKEFILE:=Makefile
@@ -148,30 +143,10 @@ CONFIG_WRITER=makefiledir/Makefile.config_writer
 # See target section for how this is built, suppress errors
 # since first time it isn't found but make reads this twice
 -include $(MAKE_CONFIG)
-else
-CONFIG_INCLUDED:=1
-endif
 
-ifndef LIBPNG-CONFIG
-LIBPNG-CONFIG :=libpng-config
-endif
 
 # updates Makefile.config if it's outdated
 ifneq ($(MAKEFILE_VERSION),$(CONFIG_VERSION))
-	ifndef MANUAL_CONFIG	# manual config should not check this
-		UPDATECONFIG:=upgradeconf
-		CONFIG_INCLUDED:=
-	else
-		# this should define SDL-CONFIG for manual configuration
-		ifeq ($(shell uname),FreeBSD)
-			SDL-CONFIG:=sdl11-config
-		else
-			SDL-CONFIG:=sdl-config
-		endif
-	endif
-endif
-
-ifndef SDL-CONFIG
 	UPDATECONFIG:=upgradeconf
 	CONFIG_INCLUDED:=
 endif
@@ -248,6 +223,17 @@ ifdef OSX
 	LDFLAGS+=-framework Cocoa
 endif
 
+ifdef WITH_SDL
+	ifndef SDL-CONFIG
+$(error WITH_SDL can't be used when SDL-CONFIG is not set. Edit Makefile.config to correct this)
+	endif
+endif
+
+ifdef WITH_PNG
+	ifndef LIBPNG-CONFIG
+$(error WITH_PNG can't be used when LIBPNG-CONFIG is not set. Edit Makefile.config to correct this)
+	endif
+endif
 
 ##############################################################################
 #
@@ -431,36 +417,7 @@ endif
 # zlib config
 ifdef WITH_ZLIB
 	CDEFS +=  -DWITH_ZLIB
-	ifdef STATIC
-		ifdef OSX
-# zlib is default on OSX, so everybody have it. No need for static linking
-			LIBS += -lz
-		else
-			ifndef STATIC_ZLIB_PATH
-				ifndef MANUAL_CONFIG
-					# updates Makefile.config with the zlib path
-					UPDATECONFIG:=upgradeconf
-				endif
-				TEMP:=$(shell ls /lib 2>/dev/null | grep "zlib.a")$(shell ls /lib 2>/dev/null | grep "libz.a")
-				ifdef TEMP
-					STATIC_ZLIB_PATH:=/lib/$(TEMP)
-				else
-					TEMP:=$(shell ls /usr/lib 2>/dev/null | grep "zlib.a")$(shell ls /usr/lib 2>/dev/null | grep "libz.a")
-					ifdef TEMP
-						STATIC_ZLIB_PATH:=/usr/lib/$(TEMP)
-					else
-						TEMP:=$(shell ls /usr/local/lib 2>/dev/null | grep "zlib.a")$(shell ls /usr/local/lib 2>/dev/null | grep "libz.a")
-						ifdef TEMP
-							STATIC_ZLIB_PATH:=/usr/local/lib/$(TEMP)
-						endif
-					endif
-				endif
-			endif
-			LIBS += $(STATIC_ZLIB_PATH)
-		endif
-	else
-		LIBS += -lz
-	endif
+	LIBS += -lz
 endif
 
 # libpng config

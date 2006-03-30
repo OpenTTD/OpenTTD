@@ -68,6 +68,9 @@ else
 SDL-CONFIG:=sdl-config
 endif
 
+# set libpng-config to the default value
+LIBPNG-CONFIG :=libpng-config
+
 # Networking, enabled by default
 WITH_NETWORK:=1
 
