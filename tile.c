@@ -3,18 +3,6 @@
 #include "stdafx.h"
 #include "tile.h"
 
-void SetMapExtraBits(TileIndex tile, byte bits)
-{
-	assert(tile < MapSize());
-	SB(_m[tile].extra, 0, 2, bits & 3);
-}
-
-uint GetMapExtraBits(TileIndex tile)
-{
-	assert(tile < MapSize());
-	return GB(_m[tile].extra, 0, 2);
-}
-
 /** Converts the heights of 4 corners into a tileh, and returns the minimum height of the tile
   * @param n,w,e,s the four corners
   * @param h uint pointer to write the height to

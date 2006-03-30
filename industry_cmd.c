@@ -1031,7 +1031,7 @@ static void ChopLumberMillTrees(Industry *i)
 					SndPlayTileFx(SND_38_CHAINSAW, tile);
 
 					DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
-					SetMapExtraBits(tile, 0);
+					SetTropicZone(tile, TROPICZONE_INVALID);
 
 					i->cargo_waiting[0] = min(0xffff, i->cargo_waiting[0] + 45);
 
@@ -1181,7 +1181,7 @@ static bool CheckNewIndustry_Farm(TileIndex tile, int type)
 
 static bool CheckNewIndustry_Plantation(TileIndex tile, int type)
 {
-	if (GetMapExtraBits(tile) == 1) {
+	if (GetTropicZone(tile) == TROPICZONE_DESERT) {
 		_error_message = STR_0239_SITE_UNSUITABLE;
 		return false;
 	}
@@ -1191,7 +1191,7 @@ static bool CheckNewIndustry_Plantation(TileIndex tile, int type)
 
 static bool CheckNewIndustry_Water(TileIndex tile, int type)
 {
-	if (GetMapExtraBits(tile) != 1) {
+	if (GetTropicZone(tile) != TROPICZONE_DESERT) {
 		_error_message = STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT;
 		return false;
 	}
@@ -1201,7 +1201,7 @@ static bool CheckNewIndustry_Water(TileIndex tile, int type)
 
 static bool CheckNewIndustry_Lumbermill(TileIndex tile, int type)
 {
-	if (GetMapExtraBits(tile) != 2) {
+	if (GetTropicZone(tile) != TROPICZONE_RAINFOREST) {
 		_error_message = STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST;
 		return false;
 	}

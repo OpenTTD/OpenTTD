@@ -20,9 +20,11 @@ typedef enum TileTypes {
 	MP_UNMOVABLE,
 } TileType;
 
-
-void SetMapExtraBits(TileIndex tile, byte flags);
-uint GetMapExtraBits(TileIndex tile);
+typedef enum TropicZones {
+	TROPICZONE_INVALID = 0,
+	TROPICZONE_DESERT = 1,
+	TROPICZONE_RAINFOREST = 2,
+} TropicZone;
 
 uint GetTileh(uint n, uint w, uint e, uint s, uint *h);
 uint GetTileSlope(TileIndex tile, uint *h);
@@ -106,4 +108,27 @@ static inline bool IsTileOwner(TileIndex tile, Owner owner)
 	return GetTileOwner(tile) == owner;
 }
 
+/**
+ * Set the tropic zone
+ * @param tile the tile to set the zone of
+ * @param type the new type
+ * @pre assert(tile < MapSize());
+ */
+static inline void SetTropicZone(TileIndex tile, TropicZone type)
+{
+	assert(tile < MapSize());
+	SB(_m[tile].extra, 0, 2, type);
+}
+
+/**
+ * Get the tropic zone
+ * @param tile the tile to get the zone of
+ * @pre assert(tile < MapSize());
+ * @return the zone type
+ */
+static inline TropicZone GetTropicZone(TileIndex tile)
+{
+	assert(tile < MapSize());
+	return (TropicZone)GB(_m[tile].extra, 0, 2);
+}
 #endif /* TILE_H */

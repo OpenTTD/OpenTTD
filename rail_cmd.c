@@ -1814,7 +1814,7 @@ static void TileLoop_Track(TileIndex tile)
 			break;
 
 		case LT_DESERT:
-			if (GetMapExtraBits(tile) == 1) { /* convert into desert? */
+			if (GetTropicZone(tile) == TROPICZONE_DESERT) { /* convert into desert? */
 				new_ground = RAIL_GROUND_ICE_DESERT;
 				goto modify_me;
 			}

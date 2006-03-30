@@ -1762,7 +1762,7 @@ static void UpdateTownGrowRate(Town *t)
  		if (TilePixelHeight(t->xy) >= _opt.snow_line && t->act_food == 0 && t->population > 90)
 			return;
 	} else if (_opt.landscape == LT_DESERT) {
- 		if (GetMapExtraBits(t->xy) == 1 && (t->act_food==0 || t->act_water==0) && t->population > 60)
+ 		if (GetTropicZone(t->xy) == TROPICZONE_DESERT && (t->act_food==0 || t->act_water==0) && t->population > 60)
 			return;
 	}
 

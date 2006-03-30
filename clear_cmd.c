@@ -603,13 +603,13 @@ static void TileLoopClearDesert(TileIndex tile)
 {
 	if (IsClearGround(tile, CL_DESERT)) return;
 
-	if (GetMapExtraBits(tile) == 1) {
+	if (GetTropicZone(tile) == TROPICZONE_DESERT) {
 		SetClearGroundDensity(tile, CL_DESERT, 3);
 	} else {
-		if (GetMapExtraBits(tile + TileDiffXY( 1,  0)) != 1 &&
-				GetMapExtraBits(tile + TileDiffXY(-1,  0)) != 1 &&
-				GetMapExtraBits(tile + TileDiffXY( 0,  1)) != 1 &&
-				GetMapExtraBits(tile + TileDiffXY( 0, -1)) != 1)
+		if (GetTropicZone(tile + TileDiffXY( 1,  0)) != TROPICZONE_DESERT &&
+				GetTropicZone(tile + TileDiffXY(-1,  0)) != TROPICZONE_DESERT &&
+				GetTropicZone(tile + TileDiffXY( 0,  1)) != TROPICZONE_DESERT &&
+				GetTropicZone(tile + TileDiffXY( 0, -1)) != TROPICZONE_DESERT)
 			return;
 		SetClearGroundDensity(tile, CL_DESERT, 1);
 	}

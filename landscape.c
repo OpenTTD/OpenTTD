@@ -590,7 +590,7 @@ static void CreateDesertOrRainForest(void)
 			if (TileHeight(t) >= 4 || IsTileType(t, MP_WATER)) break;
 		}
 		if (data == endof(_make_desert_or_rainforest_data))
-			SetMapExtraBits(tile, 1);
+			SetTropicZone(tile, TROPICZONE_DESERT);
 	}
 
 	for (i = 0; i != 256; i++)
@@ -603,7 +603,7 @@ static void CreateDesertOrRainForest(void)
 			if (IsTileType(t, MP_CLEAR) && IsClearGround(t, CL_DESERT)) break;
 		}
 		if (data == endof(_make_desert_or_rainforest_data))
-			SetMapExtraBits(tile, 2);
+			SetTropicZone(tile, TROPICZONE_RAINFOREST);
 	}
 }
 

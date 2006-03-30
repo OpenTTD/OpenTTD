@@ -26,10 +26,10 @@ static TreeType GetRandomTreeType(TileIndex tile, uint seed)
 			return seed * TR_COUNT_SUB_ARCTIC / 256 + TR_SUB_ARCTIC;
 
 		case LT_DESERT:
-			switch (GetMapExtraBits(tile)) {
-				case 0:  return seed * TR_COUNT_SUB_TROPICAL / 256 + TR_SUB_TROPICAL;
-				case 1:  return (seed > 12) ? TR_INVALID : TR_CACTUS;
-				default: return seed * TR_COUNT_RAINFOREST / 256 + TR_RAINFOREST;
+			switch (GetTropicZone(tile)) {
+				case TROPICZONE_INVALID:       return seed * TR_COUNT_SUB_TROPICAL / 256 + TR_SUB_TROPICAL;
+				case TROPICZONE_DESERT: return (seed > 12) ? TR_INVALID : TR_CACTUS;
+				default:                return seed * TR_COUNT_RAINFOREST / 256 + TR_RAINFOREST;
 			}
 
 		default:
@@ -105,7 +105,7 @@ void PlaceTreesRandomly(void)
 		do {
 			uint32 r = Random();
 			TileIndex tile = RandomTileSeed(r);
-			if (IsTileType(tile, MP_CLEAR) && GetMapExtraBits(tile) == 2) {
+			if (IsTileType(tile, MP_CLEAR) && GetTropicZone(tile) == TROPICZONE_RAINFOREST) {
 				PlaceTree(tile, r);
 			}
 		} while (--i);
@@ -208,7 +208,7 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 						MarkTileDirtyByTile(tile);
 
 						if (_game_mode == GM_EDITOR && IS_INT_INSIDE(treetype, TR_RAINFOREST, TR_CACTUS))
-							SetMapExtraBits(tile, 2);
+							SetTropicZone(tile, TROPICZONE_RAINFOREST);
 					}
 					cost += _price.build_trees;
 					break;
@@ -376,15 +376,15 @@ static void AnimateTile_Trees(TileIndex tile)
 
 static void TileLoopTreesDesert(TileIndex tile)
 {
-	switch (GetMapExtraBits(tile)) {
-		case 1:
+	switch (GetTropicZone(tile)) {
+		case TROPICZONE_DESERT:
 			if (GetTreeGround(tile) != TR_SNOW_DESERT) {
 				SetTreeGroundDensity(tile, TR_SNOW_DESERT, 3);
 				MarkTileDirtyByTile(tile);
 			}
 			break;
 
-		case 2: {
+		case TROPICZONE_RAINFOREST: {
 			static const SoundFx forest_sounds[] = {
 				SND_42_LOON_BIRD,
 				SND_43_LION,
@@ -396,6 +396,8 @@ static void TileLoopTreesDesert(TileIndex tile)
 			if (CHANCE16I(1, 200, r)) SndPlayTileFx(forest_sounds[GB(r, 16, 2)], tile);
 			break;
 		}
+
+		default: break;
 	}
 }
 
@@ -452,7 +454,9 @@ static void TileLoop_Trees(TileIndex tile)
 
 	switch (GetTreeGrowth(tile)) {
 		case 3: /* regular sized tree */
-			if (_opt.landscape == LT_DESERT && GetTreeType(tile) != TR_CACTUS && GetMapExtraBits(tile) == 1) {
+			if (_opt.landscape == LT_DESERT &&
+					GetTreeType(tile) != TR_CACTUS &&
+					GetTropicZone(tile) == TROPICZONE_DESERT) {
 				AddTreeGrowth(tile, 1);
 			} else {
 				switch (GB(Random(), 0, 3)) {
@@ -526,7 +530,7 @@ void OnTick_Trees(void)
 
 	/* place a tree at a random rainforest spot */
 	if (_opt.landscape == LT_DESERT &&
-			(r = Random(), tile = RandomTileSeed(r), GetMapExtraBits(tile) == 2) &&
+			(r = Random(), tile = RandomTileSeed(r), GetTropicZone(tile) == TROPICZONE_RAINFOREST) &&
 			IsTileType(tile, MP_CLEAR) &&
 			(ct = GetClearGround(tile), ct == CL_GRASS || ct == CL_ROUGH) &&
 			(tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TR_INVALID) {

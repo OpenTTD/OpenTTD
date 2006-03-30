@@ -920,7 +920,7 @@ static void TileLoop_Road(TileIndex tile)
 			break;
 
 		case LT_DESERT:
-			if (GetMapExtraBits(tile) == 1 && !(_m[tile].m4 & 0x80)) {
+			if (GetTropicZone(tile) == TROPICZONE_DESERT && !(_m[tile].m4 & 0x80)) {
 				_m[tile].m4 |= 0x80;
 				MarkTileDirtyByTile(tile);
 			}
