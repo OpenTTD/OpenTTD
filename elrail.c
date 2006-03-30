@@ -95,7 +95,7 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 				} else {
 					if (override != NULL && DistanceMax(t, GetOtherBridgeEnd(t)) > 1) *override = 1 << GetBridgeRampDirection(t);
 
-					return GetBridgeAxis(t) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y;
+					return DiagDirToAxis(GetBridgeRampDirection(t)) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y;
 				}
 			}
 		case MP_STREET:
@@ -196,7 +196,10 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 		/* Read the foundataions if they are present, and adjust the tileh */
 		if (IsTileType(neighbour, MP_RAILWAY)) foundation = GetRailFoundation(tileh[TS_NEIGHBOUR], trackconfig[TS_NEIGHBOUR]);
-		if (IsBridgeTile(neighbour) && IsBridgeRamp(neighbour)) foundation = GetBridgeFoundation(tileh[TS_NEIGHBOUR], GetBridgeAxis(neighbour));
+		if (IsBridgeTile(neighbour) && IsBridgeRamp(neighbour)) {
+			foundation = GetBridgeFoundation(tileh[TS_NEIGHBOUR], DiagDirToAxis(GetBridgeRampDirection(neighbour)));
+		}
+
 		if (foundation != 0) {
 			if (foundation < 15) {
 				tileh[TS_NEIGHBOUR] = 0;
