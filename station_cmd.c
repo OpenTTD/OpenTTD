@@ -1684,12 +1684,7 @@ int32 CmdBuildBuoy(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	if (!IsTileType(tile, MP_WATER) ||
-			_m[tile].m5 != 0 ||
-			GetTileSlope(tile, NULL) != 0 ||
-			tile == 0) {
-		return_cmd_error(STR_304B_SITE_UNSUITABLE);
-	}
+	if (!IsClearWaterTile(tile) || tile == 0) return_cmd_error(STR_304B_SITE_UNSUITABLE);
 
 	st = AllocateStation();
 	if (st == NULL) return CMD_ERROR;
