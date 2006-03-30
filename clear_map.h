@@ -18,31 +18,96 @@ typedef enum ClearGround {
 	CL_DESERT = 5  // 1,3
 } ClearGround;
 
-static inline ClearGround GetClearGround(TileIndex t) { return GB(_m[t].m5, 2, 3); }
-static inline bool IsClearGround(TileIndex t, ClearGround ct) { return GetClearGround(t) == ct; }
 
-static inline void AddClearDensity(TileIndex t, int d) { _m[t].m5 += d; }
-static inline uint GetClearDensity(TileIndex t) { return GB(_m[t].m5, 0, 2); }
+static inline ClearGround GetClearGround(TileIndex t)
+{
+	assert(IsTileType(t, MP_CLEAR));
+	return GB(_m[t].m5, 2, 3);
+}
 
-static inline void AddClearCounter(TileIndex t, int c) { _m[t].m5 += c << 5; }
-static inline uint GetClearCounter(TileIndex t) { return GB(_m[t].m5, 5, 3); }
-static inline void SetClearCounter(TileIndex t, uint c) { SB(_m[t].m5, 5, 3, c); }
+static inline bool IsClearGround(TileIndex t, ClearGround ct)
+{
+	return GetClearGround(t) == ct;
+}
+
+
+static inline uint GetClearDensity(TileIndex t)
+{
+	assert(IsTileType(t, MP_CLEAR));
+	return GB(_m[t].m5, 0, 2);
+}
+
+static inline void AddClearDensity(TileIndex t, int d)
+{
+	assert(IsTileType(t, MP_CLEAR)); // XXX incomplete
+	_m[t].m5 += d;
+}
+
+
+static inline uint GetClearCounter(TileIndex t)
+{
+	assert(IsTileType(t, MP_CLEAR));
+	return GB(_m[t].m5, 5, 3);
+}
+
+static inline void AddClearCounter(TileIndex t, int c)
+{
+	assert(IsTileType(t, MP_CLEAR)); // XXX incomplete
+	_m[t].m5 += c << 5;
+}
+
+static inline void SetClearCounter(TileIndex t, uint c)
+{
+	assert(IsTileType(t, MP_CLEAR)); // XXX incomplete
+	SB(_m[t].m5, 5, 3, c);
+}
+
 
 /* Sets type and density in one go, also sets the counter to 0 */
 static inline void SetClearGroundDensity(TileIndex t, ClearGround type, uint density)
 {
+	assert(IsTileType(t, MP_CLEAR)); // XXX incomplete
 	_m[t].m5 = 0 << 5 | type << 2 | density;
 }
 
-static inline uint GetFieldType(TileIndex t) { return GB(_m[t].m3, 0, 4); }
-static inline void SetFieldType(TileIndex t, uint f) { SB(_m[t].m3, 0, 4, f); }
+
+static inline uint GetFieldType(TileIndex t)
+{
+	assert(GetClearGround(t) == CL_FIELDS);
+	return GB(_m[t].m3, 0, 4);
+}
+
+static inline void SetFieldType(TileIndex t, uint f)
+{
+	assert(GetClearGround(t) == CL_FIELDS); // XXX incomplete
+	SB(_m[t].m3, 0, 4, f);
+}
+
 
 /* Is used by tree tiles, too */
-static inline uint GetFenceSE(TileIndex t) { return GB(_m[t].m4, 2, 3); }
-static inline void SetFenceSE(TileIndex t, uint h) { SB(_m[t].m4, 2, 3, h); }
+static inline uint GetFenceSE(TileIndex t)
+{
+	assert(IsTileType(t, MP_CLEAR) || IsTileType(t, MP_TREES));
+	return GB(_m[t].m4, 2, 3);
+}
 
-static inline uint GetFenceSW(TileIndex t) { return GB(_m[t].m4, 5, 3); }
-static inline void SetFenceSW(TileIndex t, uint h) { SB(_m[t].m4, 5, 3, h); }
+static inline void SetFenceSE(TileIndex t, uint h)
+{
+	assert(IsTileType(t, MP_CLEAR) || IsTileType(t, MP_TREES)); // XXX incomplete
+	SB(_m[t].m4, 2, 3, h);
+}
+
+static inline uint GetFenceSW(TileIndex t)
+{
+	assert(IsTileType(t, MP_CLEAR) || IsTileType(t, MP_TREES));
+	return GB(_m[t].m4, 5, 3);
+}
+
+static inline void SetFenceSW(TileIndex t, uint h)
+{
+	assert(IsTileType(t, MP_CLEAR) || IsTileType(t, MP_TREES)); // XXX incomplete
+	SB(_m[t].m4, 5, 3, h);
+}
 
 
 static inline void MakeClear(TileIndex t, ClearGround g, uint density)

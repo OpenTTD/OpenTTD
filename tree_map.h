@@ -31,30 +31,91 @@ typedef enum TreeGround {
 	TR_SNOW_DESERT = 2  // 0-3 for snow, 3 for desert
 } TreeGround;
 
-static inline TreeType GetTreeType(TileIndex t) { return _m[t].m3; }
-static inline void SetTreeType(TileIndex t, TreeType r) { _m[t].m3 = r; }
 
-static inline TreeGround GetTreeGround(TileIndex t) { return GB(_m[t].m2, 4, 2); }
+static inline TreeType GetTreeType(TileIndex t)
+{
+	assert(IsTileType(t, MP_TREES));
+	return _m[t].m3;
+}
 
-static inline uint GetTreeDensity(TileIndex t) { return GB(_m[t].m2, 6, 2); }
+
+static inline TreeGround GetTreeGround(TileIndex t)
+{
+	assert(IsTileType(t, MP_TREES));
+	return GB(_m[t].m2, 4, 2);
+}
+
+
+static inline uint GetTreeDensity(TileIndex t)
+{
+	assert(IsTileType(t, MP_TREES));
+	return GB(_m[t].m2, 6, 2);
+}
+
 
 static inline void SetTreeGroundDensity(TileIndex t, TreeGround g, uint d)
 {
+	assert(IsTileType(t, MP_TREES)); // XXX incomplete
 	SB(_m[t].m2, 4, 2, g);
 	SB(_m[t].m2, 6, 2, d);
 }
 
-static inline void AddTreeCount(TileIndex t, int c) { _m[t].m5 += c << 6; }
-static inline uint GetTreeCount(TileIndex t) { return GB(_m[t].m5, 6, 2); }
-static inline void SetTreeCount(TileIndex t, uint c) { SB(_m[t].m5, 6, 2, c); }
 
-static inline void AddTreeGrowth(TileIndex t, int a) { _m[t].m5 += a; }
-static inline uint GetTreeGrowth(TileIndex t) { return GB(_m[t].m5, 0, 3); }
-static inline void SetTreeGrowth(TileIndex t, uint g) { SB(_m[t].m5, 0, 3, g); }
+static inline uint GetTreeCount(TileIndex t)
+{
+	assert(IsTileType(t, MP_TREES));
+	return GB(_m[t].m5, 6, 2);
+}
 
-static inline void AddTreeCounter(TileIndex t, int a) { _m[t].m2 += a; }
-static inline uint GetTreeCounter(TileIndex t) { return GB(_m[t].m2, 0, 4); }
-static inline void SetTreeCounter(TileIndex t, uint c) { SB(_m[t].m2, 0, 4, c); }
+static inline void AddTreeCount(TileIndex t, int c)
+{
+	assert(IsTileType(t, MP_TREES)); // XXX incomplete
+	_m[t].m5 += c << 6;
+}
+
+static inline void SetTreeCount(TileIndex t, uint c)
+{
+	assert(IsTileType(t, MP_TREES)); // XXX incomplete
+	SB(_m[t].m5, 6, 2, c);
+}
+
+
+static inline uint GetTreeGrowth(TileIndex t)
+{
+	assert(IsTileType(t, MP_TREES));
+	return GB(_m[t].m5, 0, 3);
+}
+
+static inline void AddTreeGrowth(TileIndex t, int a)
+{
+	assert(IsTileType(t, MP_TREES)); // XXX incomplete
+	_m[t].m5 += a;
+}
+
+static inline void SetTreeGrowth(TileIndex t, uint g)
+{
+	assert(IsTileType(t, MP_TREES)); // XXX incomplete
+	SB(_m[t].m5, 0, 3, g);
+}
+
+
+static inline uint GetTreeCounter(TileIndex t)
+{
+	assert(IsTileType(t, MP_TREES));
+	return GB(_m[t].m2, 0, 4);
+}
+
+static inline void AddTreeCounter(TileIndex t, int a)
+{
+	assert(IsTileType(t, MP_TREES)); // XXX incomplete
+	_m[t].m2 += a;
+}
+
+static inline void SetTreeCounter(TileIndex t, uint c)
+{
+	assert(IsTileType(t, MP_TREES)); // XXX incomplete
+	SB(_m[t].m2, 0, 4, c);
+}
 
 
 static inline void MakeTree(TileIndex t, TreeType type, uint count, uint growth, TreeGround ground, uint density)

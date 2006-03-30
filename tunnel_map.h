@@ -11,6 +11,7 @@
 
 static inline bool IsTunnel(TileIndex t)
 {
+	assert(IsTileType(t, MP_TUNNELBRIDGE));
 	return !HASBIT(_m[t].m5, 7);
 }
 
@@ -23,12 +24,14 @@ static inline bool IsTunnelTile(TileIndex t)
 
 static inline DiagDirection GetTunnelDirection(TileIndex t)
 {
+	assert(IsTunnelTile(t));
 	return (DiagDirection)GB(_m[t].m5, 0, 2);
 }
 
 
 static inline TransportType GetTunnelTransportType(TileIndex t)
 {
+	assert(IsTunnelTile(t));
 	return (TransportType)GB(_m[t].m5, 2, 2);
 }
 

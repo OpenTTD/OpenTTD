@@ -28,20 +28,36 @@ static inline RoadBits DiagDirToRoadBits(DiagDirection d)
 }
 
 
-static inline RoadBits GetRoadBits(TileIndex tile)
+typedef enum RoadType {
+	ROAD_NORMAL,
+	ROAD_CROSSING,
+	ROAD_DEPOT
+} RoadType;
+
+static inline RoadType GetRoadType(TileIndex t)
 {
-	return GB(_m[tile].m5, 0, 4);
+	assert(IsTileType(t, MP_STREET));
+	return GB(_m[t].m5, 4, 4);
 }
 
-static inline void SetRoadBits(TileIndex tile, RoadBits r)
+
+static inline RoadBits GetRoadBits(TileIndex t)
 {
-	SB(_m[tile].m5, 0, 4, r);
+	assert(GetRoadType(t) == ROAD_NORMAL);
+	return GB(_m[t].m5, 0, 4);
+}
+
+static inline void SetRoadBits(TileIndex t, RoadBits r)
+{
+	assert(GetRoadType(t) == ROAD_NORMAL); // XXX incomplete
+	SB(_m[t].m5, 0, 4, r);
 }
 
 
-static inline Axis GetCrossingRoadAxis(TileIndex tile)
+static inline Axis GetCrossingRoadAxis(TileIndex t)
 {
-	return (Axis)GB(_m[tile].m5, 3, 1);
+	assert(GetRoadType(t) == ROAD_CROSSING);
+	return (Axis)GB(_m[t].m5, 3, 1);
 }
 
 static inline RoadBits GetCrossingRoadBits(TileIndex tile)
@@ -58,44 +74,39 @@ static inline TrackBits GetCrossingRailBits(TileIndex tile)
 // TODO swap owner of road and rail
 static inline Owner GetCrossingRoadOwner(TileIndex t)
 {
+	assert(GetRoadType(t) == ROAD_CROSSING);
 	return (Owner)_m[t].m3;
 }
 
 static inline void SetCrossingRoadOwner(TileIndex t, Owner o)
 {
+	assert(GetRoadType(t) == ROAD_CROSSING);
 	_m[t].m3 = o;
 }
 
 static inline void UnbarCrossing(TileIndex t)
 {
+	assert(GetRoadType(t) == ROAD_CROSSING);
 	CLRBIT(_m[t].m5, 2);
 }
 
 static inline void BarCrossing(TileIndex t)
 {
+	assert(GetRoadType(t) == ROAD_CROSSING);
 	SETBIT(_m[t].m5, 2);
 }
 
 static inline bool IsCrossingBarred(TileIndex t)
 {
+	assert(GetRoadType(t) == ROAD_CROSSING);
 	return HASBIT(_m[t].m5, 2);
 }
 
-typedef enum RoadType {
-	ROAD_NORMAL,
-	ROAD_CROSSING,
-	ROAD_DEPOT
-} RoadType;
 
-static inline RoadType GetRoadType(TileIndex tile)
+static inline DiagDirection GetRoadDepotDirection(TileIndex t)
 {
-	return GB(_m[tile].m5, 4, 4);
-}
-
-
-static inline DiagDirection GetRoadDepotDirection(TileIndex tile)
-{
-	return (DiagDirection)GB(_m[tile].m5, 0, 2);
+	assert(GetRoadType(t) == ROAD_DEPOT);
+	return (DiagDirection)GB(_m[t].m5, 0, 2);
 }
 
 

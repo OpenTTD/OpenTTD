@@ -10,6 +10,7 @@ typedef enum UnmovableType {
 
 static inline UnmovableType GetUnmovableType(TileIndex t)
 {
+	assert(IsTileType(t, MP_UNMOVABLE));
 	return _m[t].m5;
 }
 
@@ -24,6 +25,7 @@ static inline bool IsTransmitterTile(TileIndex t)
 
 static inline bool IsOwnedLand(TileIndex t)
 {
+	assert(IsTileType(t, MP_UNMOVABLE));
 	return GetUnmovableType(t) == UNMOVABLE_OWNED_LAND;
 }
 

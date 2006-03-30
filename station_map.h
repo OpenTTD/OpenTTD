@@ -9,6 +9,7 @@
 
 static inline StationID GetStationIndex(TileIndex t)
 {
+	assert(IsTileType(t, MP_STATION));
 	return (StationID)_m[t].m2;
 }
 
@@ -68,11 +69,13 @@ static inline RoadStopType GetRoadStopType(TileIndex t)
 
 static inline bool IsRailwayStation(TileIndex t)
 {
+	assert(IsTileType(t, MP_STATION));
 	return _m[t].m5 < RAILWAY_BASE + RAILWAY_SIZE;
 }
 
 static inline bool IsHangar(TileIndex t)
 {
+	assert(IsTileType(t, MP_STATION));
 	return
 		_m[t].m5 == HANGAR_TILE_0 ||
 		_m[t].m5 == HANGAR_TILE_1 ||
@@ -81,6 +84,7 @@ static inline bool IsHangar(TileIndex t)
 
 static inline bool IsAirport(TileIndex t)
 {
+	assert(IsTileType(t, MP_STATION));
 	return
 		IS_INT_INSIDE(_m[t].m5, AIRPORT_BASE, AIRPORT_BASE + AIRPORT_SIZE) ||
 		IS_INT_INSIDE(_m[t].m5, AIRPORT_BASE_EXTENDED, AIRPORT_BASE_EXTENDED + AIRPORT_SIZE_EXTENDED);
@@ -88,11 +92,13 @@ static inline bool IsAirport(TileIndex t)
 
 static inline bool IsTruckStop(TileIndex t)
 {
+	assert(IsTileType(t, MP_STATION));
 	return IS_INT_INSIDE(_m[t].m5, TRUCK_BASE, TRUCK_BASE + TRUCK_SIZE);
 }
 
 static inline bool IsBusStop(TileIndex t)
 {
+	assert(IsTileType(t, MP_STATION));
 	return IS_INT_INSIDE(_m[t].m5, BUS_BASE, BUS_BASE + BUS_SIZE);
 }
 
@@ -103,16 +109,19 @@ static inline bool IsRoadStop(TileIndex t)
 
 static inline bool IsOilRig(TileIndex t)
 {
+	assert(IsTileType(t, MP_STATION));
 	return _m[t].m5 == OILRIG_BASE;
 }
 
 static inline bool IsDock(TileIndex t)
 {
+	assert(IsTileType(t, MP_STATION));
 	return IS_INT_INSIDE(_m[t].m5, DOCK_BASE, DOCK_BASE + DOCK_SIZE_TOTAL);
 }
 
 static inline bool IsBuoy_(TileIndex t) // XXX _ due to naming conflict
 {
+	assert(IsTileType(t, MP_STATION));
 	return _m[t].m5 == BUOY_BASE;
 }
 
@@ -147,17 +156,20 @@ static inline DiagDirection GetDockDirection(TileIndex t)
 
 static inline bool IsCustomStationSprite(TileIndex t)
 {
+	assert(IsTileType(t, MP_STATION));
 	return HASBIT(_m[t].m3, 4);
 }
 
 static inline void SetCustomStationSprite(TileIndex t, byte sprite)
 {
+	assert(IsTileType(t, MP_STATION));
 	SETBIT(_m[t].m3, 4);
 	_m[t].m4 = sprite;
 }
 
 static inline uint GetCustomStationSprite(TileIndex t)
 {
+	assert(IsTileType(t, MP_STATION));
 	return _m[t].m4;
 }
 

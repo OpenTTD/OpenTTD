@@ -5,6 +5,7 @@
 
 static inline uint GetTownIndex(TileIndex t)
 {
+	assert(IsTileType(t, MP_HOUSE) || IsTileType(t, MP_STREET)); // XXX incomplete
 	return _m[t].m2;
 }
 
