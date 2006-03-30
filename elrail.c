@@ -283,7 +283,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 					IsBridgeTile(ti->tile) &&
 					IsBridgeMiddle(ti->tile) &&
 					!(_display_opt & DO_TRANS_BUILDINGS) &&
-					GetBridgeHeight(t) <= TilePixelHeight(t)
+					GetBridgeHeight(ti->tile) <= TilePixelHeight(ti->tile)
 			   ) return;
 
 			assert(PCPconfig != 0); /* We have a pylon on neither end of the wire, that doesn't work (since we have no sprites for that) */
