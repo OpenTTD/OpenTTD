@@ -787,7 +787,7 @@ static void DrawTile_Road(TileInfo *ti)
 			}
 
 			DrawGroundSprite(image);
-			if (GB(_m[ti->tile].m4, 0, 4) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
+			if (GetRailTypeCrossing(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 			break;
 		}
 
@@ -1014,9 +1014,9 @@ static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode)
 						0 : _road_trackbits[GetRoadBits(tile)] * 0x101;
 
 				case ROAD_CROSSING: {
-					uint32 r = (GetCrossingRoadAxis(tile) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y) * 0x101;
+					uint32 r = GetCrossingRailBits(tile) * 0x101;
 
-					if (_m[tile].m5 & 4) r *= 0x10001;
+					if (IsCrossingBarred(tile)) r *= 0x10001;
 					return r;
 				}
 

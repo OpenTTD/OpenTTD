@@ -13,6 +13,7 @@
 
 #define VARDEF
 #include "openttd.h"
+#include "bridge_map.h"
 #include "functions.h"
 #include "mixer.h"
 #include "spritecache.h"
@@ -20,6 +21,8 @@
 #include "gfxinit.h"
 #include "gui.h"
 #include "station.h"
+#include "station_map.h"
+#include "tunnel_map.h"
 #include "vehicle.h"
 #include "viewport.h"
 #include "window.h"
@@ -1274,23 +1277,25 @@ bool AfterLoadGame(void)
 					break;
 
 				case MP_STATION:
-					if (_m[t].m5 < 8 && (GB(_m[t].m3, 0, 4) > RAILTYPE_RAIL || make_elrail)) AB(_m[t].m3, 0, 4, 1);
+					if (IsRailwayStation(t) && (GB(_m[t].m3, 0, 4) > RAILTYPE_RAIL || make_elrail)) AB(_m[t].m3, 0, 4, 1);
 					break;
 
 				case MP_TUNNELBRIDGE:
-					if (GB(_m[t].m5, 4, 4) == 0) { // tunnel?
-						if (GB(_m[t].m5, 2, 2) == 0) { // railway tunnel?
+					if (IsTunnel(t)) {
+						if (GetTunnelTransportType(t) == TRANSPORT_RAIL) {
 							if (GB(_m[t].m3, 0, 4) > RAILTYPE_RAIL || make_elrail) AB(_m[t].m3, 0, 4, 1);
 						}
 					} else {
-						if (GB(_m[t].m5, 1, 2) == 0) { // railway bridge?
-							if (GB(_m[t].m5, 6, 1) == 0) { // bridge ending?
+						if (GetBridgeTransportType(t) == TRANSPORT_RAIL) {
+							if (IsBridgeRamp(t)) {
 								if (GB(_m[t].m3, 0, 4) > RAILTYPE_RAIL || make_elrail) AB(_m[t].m3, 0, 4, 1);
 							} else {
 								if (GB(_m[t].m3, 4, 4) > RAILTYPE_RAIL || make_elrail) AB(_m[t].m3, 4, 4, 1);
 							}
 						}
-						if ((_m[t].m5 & 0xF8) == 0xE0) { // bridge middle part with rails below?
+						if (IsBridgeMiddle(t) &&
+								IsTransportUnderBridge(t) &&
+								GetTransportTypeUnderBridge(t) == TRANSPORT_RAIL) {
 							if (GB(_m[t].m3, 0, 4) > RAILTYPE_RAIL || make_elrail) AB(_m[t].m3, 0, 4, 1);
 						}
 					}

@@ -45,6 +45,7 @@ the pylon would be rectangular to the track). PPPs are represented by the Direct
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "station_map.h"
 #include "tile.h"
 #include "viewport.h"
 #include "functions.h" /* We should REALLY get rid of this goddamn file, as it is butt-ugly */
@@ -83,7 +84,7 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 			if (IsTunnel(t)) {
 				if (GetRailType(t) != RAILTYPE_ELECTRIC) return 0;
 				if (override != NULL) *override = 1 << GetTunnelDirection(t);
-				return (_m[t].m5 & 1) ? TRACK_BIT_Y : TRACK_BIT_X;
+				return DiagDirToAxis(GetTunnelDirection(t)) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y;
 			} else {
 				if (GetRailType(t) != RAILTYPE_ELECTRIC) return 0;
 				if (
@@ -98,11 +99,11 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 				}
 			}
 		case MP_STREET:
-			if ((_m[t].m4 & 0xF) != RAILTYPE_ELECTRIC) return 0;
+			if (GetRailTypeCrossing(t) != RAILTYPE_ELECTRIC) return 0;
 			return GetCrossingRailBits(t);
 		case MP_STATION:
 			if (GetRailType(t) != RAILTYPE_ELECTRIC) return 0;
-			return _m[t].m5 & 1 ? TRACK_BIT_Y : TRACK_BIT_X;
+			return GetRailStationTrack(t);
 		default:
 			return 0;
 	}

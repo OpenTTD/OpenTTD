@@ -1252,14 +1252,14 @@ static uint32 GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType mode
 			return DiagDirToAxis(GetTunnelDirection(tile)) == AXIS_X ? 0x101 : 0x202;
 		}
 	} else if (IsBridge(tile)) { // XXX is this necessary?
-		/* This is a bridge */
-		result = 0;
-		if (GetBridgeTransportType(tile) == mode) {
-			/* Transport over the bridge is compatible */
-			result = (GetBridgeAxis(tile) == AXIS_X ? 0x101 : 0x202);
-		}
-		if (IsBridgeMiddle(tile)) {
-			/* Bridge middle part */
+		if (IsBridgeRamp(tile)) {
+			if (GetBridgeTransportType(tile) != mode) return 0;
+			return (DiagDirToAxis(GetBridgeRampDirection(tile)) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y) * 0x101;
+		} else {
+			result = 0;
+			if (GetBridgeTransportType(tile) == mode) {
+				result = (GetBridgeAxis(tile) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y) * 0x101;
+			}
 			if (IsTransportUnderBridge(tile)) {
 				if (GetTransportTypeUnderBridge(tile) != mode) return result;
 			} else {
