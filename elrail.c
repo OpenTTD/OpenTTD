@@ -76,6 +76,8 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 			switch (GetRailTileType(t)) {
 				case RAIL_TYPE_NORMAL: case RAIL_TYPE_SIGNALS:
 					return GetTrackBits(t);
+				case RAIL_TYPE_DEPOT_WAYPOINT:
+					if (GetRailTileSubtype(t) == RAIL_SUBTYPE_WAYPOINT) return GetRailWaypointBits(t);
 				default:
 					return 0;
 			}
