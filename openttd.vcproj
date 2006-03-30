@@ -774,6 +774,9 @@
 				RelativePath=".\table\clear_land.h">
 			</File>
 			<File
+				RelativePath=".\table\elrail_data.h">
+			</File>
+			<File
 				RelativePath=".\table\engines.h">
 			</File>
 			<File
