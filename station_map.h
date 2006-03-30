@@ -4,8 +4,6 @@
 #define STATION_MAP_H
 
 #include "station.h"
-#include "water_map.h" /* for IsClearWaterTile */
-
 
 static inline StationID GetStationIndex(TileIndex t)
 {
