@@ -103,7 +103,7 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 			return GetCrossingRailBits(t);
 		case MP_STATION:
 			if (GetRailType(t) != RAILTYPE_ELECTRIC) return 0;
-			return GetRailStationTrack(t);
+			return TrackToTrackBits(GetRailStationTrack(t));
 		default:
 			return 0;
 	}
@@ -158,7 +158,6 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	}
 
 	for (i = DIAGDIR_NE; i < DIAGDIR_END; i++) {
-		extern const TileIndexDiffC _tileoffs_by_dir[];
 		TileIndex neighbour = ti->tile + TileOffsByDir(i);
 		uint foundation = 0;
 		int k;
