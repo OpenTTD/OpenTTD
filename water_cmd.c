@@ -41,14 +41,6 @@ const SpriteID _water_shore_sprites[15] = {
 
 static void FloodVehicle(Vehicle *v);
 
-static bool IsClearWaterTile(TileIndex tile)
-{
-	return
-		IsTileType(tile, MP_WATER) &&
-		_m[tile].m5 == 0 &&
-		GetTileSlope(tile, NULL) == 0;
-}
-
 /** Build a ship depot.
  * @param x,y tile coordinates where ship depot is built
  * @param p1 depot direction (0 == X or 1 == Y)
@@ -103,16 +95,17 @@ static int32 RemoveShipDepot(TileIndex tile, uint32 flags)
 {
 	TileIndex tile2;
 
+	if (!IsShipDepot(tile)) return CMD_ERROR;
 	if (!CheckTileOwnership(tile)) return CMD_ERROR;
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
-	tile2 = tile + ((_m[tile].m5 & 2) ? TileDiffXY(0, 1) : TileDiffXY(1, 0));
+	tile2 = GetOtherShipDepotTile(tile);
 
 	if (!EnsureNoVehicle(tile2)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		/* Kill the depot */
-		DoDeleteDepot(tile);
+		/* Kill the depot, which is registered at the northernmost tile. Use that one */
+		DoDeleteDepot(tile2 < tile ? tile2 : tile);
 
 		MakeWater(tile);
 		MakeWater(tile2);
@@ -156,7 +149,7 @@ static int32 DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 flags)
 
 static int32 RemoveShiplift(TileIndex tile, uint32 flags)
 {
-	TileIndexDiff delta = TileOffsByDir(GB(_m[tile].m5, 0, 2));
+	TileIndexDiff delta = TileOffsByDir(GetLockDirection(tile));
 
 	// make sure no vehicle is on the tile.
 	if (!EnsureNoVehicle(tile) || !EnsureNoVehicle(tile + delta) || !EnsureNoVehicle(tile - delta))
@@ -321,14 +314,6 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 	} else {
 		// ship depot
 		if (flags & DC_AUTO) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
-
-		switch (m5) {
-			case 0x80: break;
-			case 0x81: tile -= TileDiffXY(1, 0); break;
-			case 0x82: break;
-			case 0x83: tile -= TileDiffXY(0, 1); break;
-			default:   return CMD_ERROR;
-		}
 
 		return RemoveShipDepot(tile, flags);
 	}
