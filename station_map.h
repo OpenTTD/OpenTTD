@@ -148,7 +148,7 @@ static inline Track GetRailStationTrack(TileIndex t)
 static inline DiagDirection GetDockDirection(TileIndex t)
 {
 	assert(IsTileType(t, MP_STATION));
-	assert(_m[t].m5 > DOCK_BASE_WATER_PART);
+	assert(_m[t].m5 < DOCK_BASE_WATER_PART);
 
 	return (DiagDirection)(_m[t].m5 - DOCK_BASE);
 }
