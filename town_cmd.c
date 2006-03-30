@@ -99,7 +99,7 @@ static void DrawTile_Town(TileInfo *ti)
 	/* Retrieve pointer to the draw town tile struct */
 	{
 		/* this "randomizes" on the (up to) 4 variants of a building */
-		byte gfx   = _m[ti->tile].m4;
+		byte gfx   = GetHouseType(ti->tile);
 		byte stage = GB(_m[ti->tile].m3, 6, 2);
 		uint variant;
 		variant  = ti->x >> 4;
@@ -166,7 +166,7 @@ static void AnimateTile_Town(TileIndex tile)
 	// Not exactly sure when this happens, but probably when a house changes.
 	// Before this was just a return...so it'd leak animated tiles..
 	// That bug seems to have been here since day 1??
-	if (!(_housetype_extra_flags[_m[tile].m4] & 0x20)) {
+	if (!(_housetype_extra_flags[GetHouseType(tile)] & 0x20)) {
 		DeleteAnimatedTile(tile);
 		return;
 	}
@@ -267,14 +267,14 @@ static void MakeSingleHouseBigger(TileIndex tile)
 	_m[tile].m3 = _m[tile].m3 + 0x40;
 
 	if ((_m[tile].m3 & 0xC0) == 0xC0) {
-		ChangePopulation(GetTownByTile(tile), _housetype_population[_m[tile].m4]);
+		ChangePopulation(GetTownByTile(tile), _housetype_population[GetHouseType(tile)]);
 	}
 	MarkTileDirtyByTile(tile);
 }
 
 static void MakeTownHouseBigger(TileIndex tile)
 {
-	uint flags = _house_more_flags[_m[tile].m4];
+	uint flags = _house_more_flags[GetHouseType(tile)];
 	if (flags & 8) MakeSingleHouseBigger(TILE_ADDXY(tile, 0, 0));
 	if (flags & 4) MakeSingleHouseBigger(TILE_ADDXY(tile, 0, 1));
 	if (flags & 2) MakeSingleHouseBigger(TILE_ADDXY(tile, 1, 0));
@@ -292,7 +292,7 @@ static void TileLoop_Town(TileIndex tile)
 		return;
 	}
 
-	house = _m[tile].m4;
+	house = GetHouseType(tile);
 	if (_housetype_extra_flags[house] & 0x20 &&
 			!(_m[tile].m5 & 0x80) &&
 			CHANCE16(1, 2) &&
@@ -353,7 +353,7 @@ static int32 ClearTile_Town(TileIndex tile, byte flags)
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 	if (flags&DC_AUTO && !(flags&DC_AI_BUILDING)) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
 
-	house = _m[tile].m4;
+	house = GetHouseType(tile);
 	cost = _price.remove_house * _housetype_remove_cost[house] >> 8;
 
 	rating = _housetype_remove_ratingmod[house];
@@ -377,7 +377,7 @@ static int32 ClearTile_Town(TileIndex tile, byte flags)
 
 static void GetAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
 {
-	byte type = _m[tile].m4;
+	byte type = GetHouseType(tile);
 
 	ac[CT_PASSENGERS] = _housetype_cargo_passengers[type];
 	ac[CT_MAIL]       = _housetype_cargo_mail[type];
@@ -387,7 +387,7 @@ static void GetAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
 
 static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
 {
-	td->str = _town_tile_names[_m[tile].m4];
+	td->str = _town_tile_names[GetHouseType(tile)];
 	if ((_m[tile].m3 & 0xC0) != 0xC0) {
 		SetDParamX(td->dparam, 0, td->str);
 		td->str = STR_2058_UNDER_CONSTRUCTION;
@@ -1378,7 +1378,7 @@ static void DoClearTownHouseHelper(TileIndex tile)
 
 static void ClearTownHouse(Town *t, TileIndex tile)
 {
-	uint house = _m[tile].m4;
+	uint house = GetHouseType(tile);
 	uint eflags;
 
 	assert(IsTileType(tile, MP_HOUSE));

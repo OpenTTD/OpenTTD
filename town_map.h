@@ -2,6 +2,11 @@
 
 #include "town.h"
 
+static inline int GetHouseType(TileIndex t)
+{
+	assert(IsTileType(t, MP_HOUSE));
+	return _m[t].m4;
+}
 
 static inline uint GetTownIndex(TileIndex t)
 {
