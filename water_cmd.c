@@ -90,15 +90,10 @@ int32 CmdBuildShipDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		_last_built_ship_depot_tile = tile;
 		depot->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
-		ModifyTile(tile,
-			MP_SETTYPE(MP_WATER) | MP_MAPOWNER_CURRENT | MP_MAP5 | MP_MAP2_CLEAR | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR,
-			(0x80 + p1*2)
-		);
-
-		ModifyTile(tile2,
-			MP_SETTYPE(MP_WATER) | MP_MAPOWNER_CURRENT | MP_MAP5 | MP_MAP2_CLEAR | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR,
-			(0x81 + p1*2)
-		);
+		MakeShipDepot(tile,_current_player, DEPOT_NORTH, p1);
+		MakeShipDepot(tile2,_current_player, DEPOT_SOUTH, p1);
+		MarkTileDirtyByTile(tile);
+		MarkTileDirtyByTile(tile2);
 	}
 
 	return cost + _price.build_ship_depot;
@@ -150,9 +145,10 @@ static int32 DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 flags)
 	if (GetTileSlope(tile + delta, NULL)) return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 	if (flags & DC_EXEC) {
-		ModifyTile(tile, MP_SETTYPE(MP_WATER) | MP_MAPOWNER | MP_MAP5 | MP_MAP2_CLEAR | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR, OWNER_WATER, 0x10 + dir);
-		ModifyTile(tile - delta, MP_SETTYPE(MP_WATER) | MP_MAPOWNER | MP_MAP5 | MP_MAP2_CLEAR | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR, OWNER_WATER, 0x14 + dir);
-		ModifyTile(tile + delta, MP_SETTYPE(MP_WATER) | MP_MAPOWNER | MP_MAP5 | MP_MAP2_CLEAR | MP_MAP3LO_CLEAR | MP_MAP3HI_CLEAR, OWNER_WATER, 0x18 + dir);
+		MakeLock(tile, dir);
+		MarkTileDirtyByTile(tile);
+		MarkTileDirtyByTile(tile - delta);
+		MarkTileDirtyByTile(tile + delta);
 	}
 
 	return _price.clear_water * 22 >> 3;
