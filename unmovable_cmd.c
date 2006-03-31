@@ -59,6 +59,35 @@ static int32 DestroyCompanyHQ(TileIndex tile, uint32 flags)
 		return CalculateCompanyValue(p) / 100;
 }
 
+void UpdateCompanyHQ(Player *p, uint score)
+{
+	byte val;
+	TileIndex tile = p->location_of_house;
+
+	if (tile == 0)
+		return;
+
+	(val = 128, score < 170) ||
+	(val+= 4, score < 350) ||
+	(val+= 4, score < 520) ||
+	(val+= 4, score < 720) ||
+	(val+= 4, true);
+
+/* house is already big enough */
+	if (val <= _m[tile].m5)
+		return;
+
+	_m[tile + TileDiffXY(0, 0)].m5 =   val;
+	_m[tile + TileDiffXY(0, 1)].m5 = ++val;
+	_m[tile + TileDiffXY(1, 0)].m5 = ++val;
+	_m[tile + TileDiffXY(1, 1)].m5 = ++val;
+
+	MarkTileDirtyByTile(tile + TileDiffXY(0, 0));
+	MarkTileDirtyByTile(tile + TileDiffXY(0, 1));
+	MarkTileDirtyByTile(tile + TileDiffXY(1, 0));
+	MarkTileDirtyByTile(tile + TileDiffXY(1, 1));
+}
+
 /** Build or relocate the HQ. This depends if the HQ is already built or not
  * @param x,y the coordinates where the HQ will be built or relocated to
  * @param p1 unused
@@ -91,7 +120,7 @@ int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		MakeCompanyHQ(tile, _current_player);
 
-		UpdatePlayerHouse(p, score);
+		UpdateCompanyHQ(p, score);
 		InvalidateWindow(WC_COMPANY, p->index);
 	}
 

@@ -57,8 +57,6 @@ extern const ScoreInfo _score_info[];
 extern int _score_part[MAX_PLAYERS][NUM_SCORE];
 
 int UpdateCompanyRatingAndValue(Player *p, bool update);
-void UpdatePlayerHouse(Player *p, uint score);
-
 
 VARDEF Subsidy _subsidies[MAX_PLAYERS];
 Pair SetupSubsidyDecodeParam(const Subsidy* s, bool mode);

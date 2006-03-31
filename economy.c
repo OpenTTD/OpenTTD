@@ -28,6 +28,7 @@
 #include "ai/ai.h"
 #include "train.h"
 #include "newgrf_engine.h"
+#include "unmovable.h"
 
 // Score info
 const ScoreInfo _score_info[] = {
@@ -44,35 +45,6 @@ const ScoreInfo _score_info[] = {
 };
 
 int _score_part[MAX_PLAYERS][NUM_SCORE];
-
-void UpdatePlayerHouse(Player *p, uint score)
-{
-	byte val;
-	TileIndex tile = p->location_of_house;
-
-	if (tile == 0)
-		return;
-
-	(val = 128, score < 170) ||
-	(val+= 4, score < 350) ||
-	(val+= 4, score < 520) ||
-	(val+= 4, score < 720) ||
-	(val+= 4, true);
-
-/* house is already big enough */
-	if (val <= _m[tile].m5)
-		return;
-
-	_m[tile + TileDiffXY(0, 0)].m5 =   val;
-	_m[tile + TileDiffXY(0, 1)].m5 = ++val;
-	_m[tile + TileDiffXY(1, 0)].m5 = ++val;
-	_m[tile + TileDiffXY(1, 1)].m5 = ++val;
-
-	MarkTileDirtyByTile(tile + TileDiffXY(0, 0));
-	MarkTileDirtyByTile(tile + TileDiffXY(0, 1));
-	MarkTileDirtyByTile(tile + TileDiffXY(1, 0));
-	MarkTileDirtyByTile(tile + TileDiffXY(1, 1));
-}
 
 int64 CalculateCompanyValue(const Player* p)
 {
@@ -258,7 +230,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 
 	if (update) {
     	p->old_economy[0].performance_history = score;
-    	UpdatePlayerHouse(p, score);
+    	UpdateCompanyHQ(p, score);
     	p->old_economy[0].company_value = CalculateCompanyValue(p);
     }
 
