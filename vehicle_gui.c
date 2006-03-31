@@ -233,7 +233,7 @@ CargoID DrawVehicleRefitWindow(const Vehicle *v, int sel)
 	 * it with the bitmask of available cargo on the current landscape, and
 	 * where the bits are set: those are available */
 	do {
-		cmask |= _engine_info[u->engine_type].refit_mask;
+		cmask |= EngInfo(u->engine_type)->refit_mask;
 		u = u->next;
 	} while (v->type == VEH_Train && u != NULL);
 
@@ -461,7 +461,7 @@ static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, Engine
 		EngineID i = GetRailVehAtPosition(j);
 		const Engine *e = GetEngine(i);
 		const RailVehicleInfo *rvi = RailVehInfo(i);
-		const EngineInfo *info = &_engine_info[i];
+		const EngineInfo *info = EngInfo(i);
 
 		if (!EngineHasReplacementForPlayer(p, i) && _player_num_engines[i] == 0 && show_outdated) continue;
 
@@ -523,7 +523,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 			for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
 				EngineID eid = GetRailVehAtPosition(i);
 				const Engine* e = GetEngine(eid);
-				const EngineInfo* info = &_engine_info[eid];
+				const EngineInfo* info = EngInfo(eid);
 
 				// left window contains compatible engines while right window only contains engines of the selected type
 				if (ENGINE_AVAILABLE && (

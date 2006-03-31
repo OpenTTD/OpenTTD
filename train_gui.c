@@ -92,7 +92,7 @@ void DrawTrainEnginePurchaseInfo(int x, int y, EngineID engine_number)
 void DrawTrainWagonPurchaseInfo(int x, int y, EngineID engine_number)
 {
 	const RailVehicleInfo *rvi = RailVehInfo(engine_number);
-	bool refittable = (_engine_info[engine_number].refit_mask != 0);
+	bool refittable = (EngInfo(engine_number)->refit_mask != 0);
 
 	/* Purchase cost */
 	SetDParam(0, (rvi->base_cost * _price.build_railwagon) >> 8);
@@ -910,7 +910,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 
 			/* See if any vehicle can be refitted */
 			for (u = v; u != NULL; u = u->next) {
-				if (_engine_info[u->engine_type].refit_mask != 0 ||
+				if (EngInfo(u->engine_type)->refit_mask != 0 ||
 						(!(RailVehInfo(v->engine_type)->flags & RVI_WAGON) && v->cargo_cap != 0)) {
 					CLRBIT(w->disabled_state, 12);
 					/* We have a refittable carriage, bail out */

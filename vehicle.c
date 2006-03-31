@@ -694,7 +694,7 @@ bool CanFillVehicle(Vehicle *v)
 bool CanRefitTo(EngineID engine_type, CargoID cid_to)
 {
 	CargoID cid = _global_cargo_id[_opt_ptr->landscape][cid_to];
-	return HASBIT(_engine_info[engine_type].refit_mask, cid);
+	return HASBIT(EngInfo(engine_type)->refit_mask, cid);
 }
 
 static void DoDrawVehicle(const Vehicle *v)
@@ -2061,7 +2061,7 @@ static PalSpriteID GetEngineColourMap(EngineID engine_type, PlayerID player)
 	byte colour = _player_colors[player];
 
 	/* XXX Magic 0x307 is the first company colour remap sprite */
-	map = HASBIT(_engine_info[engine_type].misc_flags, EF_USES_2CC) ?
+	map = HASBIT(EngInfo(engine_type)->misc_flags, EF_USES_2CC) ?
 		(SPR_2CCMAP_BASE + colour + colour * 16) : (PALETTE_RECOLOR_START + colour);
 
 	return SPRITE_PALETTE(map << PALETTE_SPRITE_START);

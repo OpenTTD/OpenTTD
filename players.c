@@ -625,7 +625,7 @@ byte GetPlayerRailtypes(PlayerID p)
 
 	for (i = 0; i != TOTAL_NUM_ENGINES; i++) {
 		const Engine* e = GetEngine(i);
-		const EngineInfo *ei = &_engine_info[i];
+		const EngineInfo *ei = EngInfo(i);
 
 		if (e->type == VEH_Train && HASBIT(ei->climates, _opt.landscape) &&
 				(HASBIT(e->player_avail, p) || _date >= (e->intro_date + 365)) &&

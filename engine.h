@@ -219,6 +219,12 @@ extern ShipVehicleInfo _ship_vehicle_info[NUM_SHIP_ENGINES];
 extern AircraftVehicleInfo _aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES];
 extern RoadVehicleInfo _road_vehicle_info[NUM_ROAD_ENGINES];
 
+static inline const EngineInfo *EngInfo(EngineID e)
+{
+	assert(e < lengthof(_engine_info));
+	return &_engine_info[e];
+}
+
 static inline const RailVehicleInfo* RailVehInfo(EngineID e)
 {
 	assert(e < lengthof(_rail_vehicle_info));
