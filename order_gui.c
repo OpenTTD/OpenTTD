@@ -20,6 +20,7 @@
 #include "depot.h"
 #include "waypoint.h"
 #include "train.h"
+#include "water_map.h"
 
 static int OrderGetSel(const Window* w)
 {
@@ -232,13 +233,11 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			if (v->type != VEH_Ship) break;
 			if (IsTileDepotType(tile, TRANSPORT_WATER) &&
 					IsTileOwner(tile, _local_player)) {
-				switch (_m[tile].m5) {
-					case 0x81: tile -= TileDiffXY(1, 0); break;
-					case 0x83: tile -= TileDiffXY(0, 1); break;
-				}
+				TileIndex tile2 = GetOtherShipDepotTile(tile);
+
 				order.type = OT_GOTO_DEPOT;
 				order.flags = OF_PART_OF_ORDERS;
-				order.station = GetDepotByTile(tile)->index;
+				order.station = GetDepotByTile(tile < tile2 ? tile : tile2)->index;
 				return order;
 			}
 
