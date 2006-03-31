@@ -23,6 +23,7 @@
 #include "station.h"
 #include "rail.h"
 #include "train.h"
+#include "station_map.h"
 
 #define INVALID_COORD (-0x8000)
 #define GEN_HASH(x,y) (((x & 0x1F80)>>7) + ((y & 0xFC0)))
@@ -1988,8 +1989,8 @@ Trackdir GetVehicleTrackdir(const Vehicle* v)
 			if (v->u.road.state == 254) /* We'll assume the road vehicle is facing outwards */
 				return DiagdirToDiagTrackdir(GetRoadDepotDirection(v->tile));
 
-			if (IsRoadStationTile(v->tile)) /* We'll assume the road vehicle is facing outwards */
-				return DiagdirToDiagTrackdir(GetRoadStationDir(v->tile)); /* Road vehicle in a station */
+			if (IsRoadStopTile(v->tile)) /* We'll assume the road vehicle is facing outwards */
+				return DiagdirToDiagTrackdir(GetRoadStopDir(v->tile)); /* Road vehicle in a station */
 
 			return DiagdirToDiagTrackdir(DirToDiagDir(v->direction));
 

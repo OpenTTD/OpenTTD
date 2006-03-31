@@ -7,6 +7,7 @@
 #include "road_map.h"
 #include "station.h"
 #include "tunnel_map.h"
+#include "station_map.h"
 
 
 RoadBits GetAnyRoadBits(TileIndex tile)
@@ -21,8 +22,8 @@ RoadBits GetAnyRoadBits(TileIndex tile)
 			}
 
 		case MP_STATION:
-			if (!IsRoadStationTile(tile)) return 0;
-			return DiagDirToRoadBits(GetRoadStationDir(tile));
+			if (!IsRoadStopTile(tile)) return 0;
+			return DiagDirToRoadBits(GetRoadStopDir(tile));
 
 		case MP_TUNNELBRIDGE:
 			if (IsBridge(tile)) {

@@ -105,6 +105,20 @@ static inline bool IsRoadStop(TileIndex t)
 	return IsTruckStop(t) || IsBusStop(t);
 }
 
+static inline bool IsRoadStopTile(TileIndex t)
+{
+	return IsTileType(t, MP_STATION) && IsRoadStop(t);
+}
+
+/**
+ * Gets the direction the road stop entrance points towards.
+ */
+static inline DiagDirection GetRoadStopDir(TileIndex tile)
+{
+	assert(IsRoadStopTile(tile));
+	return (_m[tile].m5 - TRUCK_BASE) & 3;
+}
+
 static inline bool IsOilRig(TileIndex t)
 {
 	assert(IsTileType(t, MP_STATION));

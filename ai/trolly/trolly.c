@@ -617,7 +617,7 @@ static void AiNew_State_FindStation(Player *p)
 							if (AiNew_CheckVehicleStation(p, st)) {
 								// We did found a station that was good enough!
 								new_tile = st->xy;
-								direction = GetRoadStationDir(st->xy);
+								direction = GetRoadStopDir(st->xy);
 								break;
 							}
 						}

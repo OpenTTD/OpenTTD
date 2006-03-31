@@ -459,7 +459,7 @@ static bool VehicleMayEnterTile(Owner owner, TileIndex tile, DiagDirection enter
 	if (IsTileType(tile, MP_RAILWAY) ||           /* Rail tile (also rail depot) */
 			IsTrainStationTile(tile) ||               /* Rail station tile */
 			IsTileDepotType(tile, TRANSPORT_ROAD) ||  /* Road depot tile */
-			IsRoadStationTile(tile) ||                /* Road station tile */
+			IsRoadStopTile(tile) ||                /* Road station tile */
 			IsTileDepotType(tile, TRANSPORT_WATER)) { /* Water depot tile */
 		return IsTileOwner(tile, owner); /* You need to own these tiles entirely to use them */
 	}
@@ -533,15 +533,15 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 		 * otherwise we wouldn't have got here. It is also facing us,
 		 * so we should skip it's body */
 		dst_tile = GetOtherTunnelEnd(src_tile);
-	} else if (type != TRANSPORT_WATER && (IsRoadStationTile(src_tile) || IsTileDepotType(src_tile, type))) {
+	} else if (type != TRANSPORT_WATER && (IsRoadStopTile(src_tile) || IsTileDepotType(src_tile, type))) {
 		/* This is a road station or a train or road depot. We can enter and exit
 		 * those from one side only. Trackdirs don't support that (yet), so we'll
 		 * do this here. */
 
 		DiagDirection exitdir;
 		/* Find out the exit direction first */
-		if (IsRoadStationTile(src_tile)) {
-			exitdir = GetRoadStationDir(src_tile);
+		if (IsRoadStopTile(src_tile)) {
+			exitdir = GetRoadStopDir(src_tile);
 		} else { /* Train or road depot */
 			exitdir = GetDepotDirection(src_tile, type);
 		}
@@ -597,11 +597,11 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	}
 
 	/* Determine available tracks */
-	if (type != TRANSPORT_WATER && (IsRoadStationTile(dst_tile) || IsTileDepotType(dst_tile, type))){
+	if (type != TRANSPORT_WATER && (IsRoadStopTile(dst_tile) || IsTileDepotType(dst_tile, type))){
 		/* Road stations and road and train depots return 0 on GTTS, so we have to do this by hand... */
 		DiagDirection exitdir;
-		if (IsRoadStationTile(dst_tile)) {
-			exitdir = GetRoadStationDir(dst_tile);
+		if (IsRoadStopTile(dst_tile)) {
+			exitdir = GetRoadStopDir(dst_tile);
 		} else { /* Road or train depot */
 			exitdir = GetDepotDirection(dst_tile, type);
 		}

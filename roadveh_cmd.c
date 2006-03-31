@@ -1012,7 +1012,7 @@ static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir
 			/* Road depot */
 			bitmask |= _road_veh_fp_ax_or[GetRoadDepotDirection(tile)];
 		}
-	} else if (IsTileType(tile, MP_STATION) && IsRoadStationTile(tile)) {
+	} else if (IsTileType(tile, MP_STATION) && IsRoadStopTile(tile)) {
 		if (IsTileOwner(tile, v->owner)) {
 			/* Our station */
 			RoadStopType rstype = (v->cargo_type == CT_PASSENGERS) ? RS_BUS : RS_TRUCK;
@@ -1021,7 +1021,7 @@ static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir
 				const RoadStop *rs = GetRoadStopByTile(tile, rstype);
 
 				if (rs != NULL && (_patches.roadveh_queue || GB(rs->status, 0, 2) != 0)) {
-					bitmask |= _road_veh_fp_ax_or[GetRoadStationDir(tile)];
+					bitmask |= _road_veh_fp_ax_or[GetRoadStopDir(tile)];
 				}
 			}
 		}
@@ -1089,7 +1089,7 @@ static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir
 			}
 		} else if (IsTileType(desttile, MP_STATION)) {
 			if (IsRoadStop(desttile)) {
-				dir = GetRoadStationDir(desttile);
+				dir = GetRoadStopDir(desttile);
 do_it:;
 				/* When we are heading for a depot or station, we just
 				 * pretend we are heading for the tile in front, we'll

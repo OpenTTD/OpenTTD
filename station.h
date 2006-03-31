@@ -213,10 +213,6 @@ static inline bool IsCompatibleTrainStationTile(TileIndex tile, TileIndex ref)
 		GB(_m[tile].m5, 0, 1) == GB(_m[ref].m5, 0, 1);   // same direction?
 }
 
-static inline bool IsRoadStationTile(TileIndex tile) {
-	return IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_m[tile].m5, 0x43, 0x4B);
-}
-
 /**
  * Check if a station really exists.
  */
@@ -233,15 +229,6 @@ static inline bool IsBuoy(const Station* st)
 static inline bool IsBuoyTile(TileIndex tile)
 {
 	return IsTileType(tile, MP_STATION) && _m[tile].m5 == 0x52;
-}
-
-/**
- * Get's the direction the road stop entrance points towards.
- */
-static inline DiagDirection GetRoadStationDir(TileIndex tile)
-{
-	assert(IsRoadStationTile(tile));
-	return (_m[tile].m5 - 0x43) & 3;
 }
 
 #endif /* STATION_H */
