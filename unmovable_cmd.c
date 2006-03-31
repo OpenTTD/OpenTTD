@@ -89,10 +89,8 @@ int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		p->location_of_house = tile;
 
-		ModifyTile(tile + TileDiffXY(0, 0), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x80);
-		ModifyTile(tile + TileDiffXY(0, 1), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x81);
-		ModifyTile(tile + TileDiffXY(1, 0), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x82);
-		ModifyTile(tile + TileDiffXY(1, 1), MP_SETTYPE(MP_UNMOVABLE) | MP_MAPOWNER_CURRENT | MP_MAP5, 0x83);
+		MakeCompanyHQ(tile, _current_player);
+
 		UpdatePlayerHouse(p, score);
 		InvalidateWindow(WC_COMPANY, p->index);
 	}

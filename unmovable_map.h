@@ -4,7 +4,11 @@ typedef enum UnmovableType {
 	UNMOVABLE_TRANSMITTER = 0,
 	UNMOVABLE_LIGHTHOUSE  = 1,
 	UNMOVABLE_STATUE      = 2,
-	UNMOVABLE_OWNED_LAND  = 3
+	UNMOVABLE_OWNED_LAND  = 3,
+	UNMOVABLE_HQ_NORTH    = 0x80,
+	UNMOVABLE_HQ_WEST     = 0x81,
+	UNMOVABLE_HQ_EAST     = 0x82,
+	UNMOVABLE_HQ_SOUTH    = 0x83,
 } UnmovableType;
 
 
@@ -65,3 +69,12 @@ static inline void MakeOwnedLand(TileIndex t, Owner o)
 {
 	MakeUnmovable(t, UNMOVABLE_OWNED_LAND, o);
 }
+
+static inline void MakeCompanyHQ(TileIndex t, Owner o)
+{
+	MakeUnmovable(t + TileDiffXY(0, 0), UNMOVABLE_HQ_NORTH, o);
+	MakeUnmovable(t + TileDiffXY(0, 1), UNMOVABLE_HQ_WEST, o);
+	MakeUnmovable(t + TileDiffXY(1, 0), UNMOVABLE_HQ_EAST, o);
+	MakeUnmovable(t + TileDiffXY(1, 1), UNMOVABLE_HQ_SOUTH, o);
+}
+
