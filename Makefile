@@ -224,14 +224,14 @@ ifdef OSX
 endif
 
 ifdef WITH_SDL
-	ifndef SDL-CONFIG
-$(error WITH_SDL can't be used when SDL-CONFIG is not set. Edit Makefile.config to correct this)
+	ifndef SDL_CONFIG
+$(error WITH_SDL can't be used when SDL_CONFIG is not set. Edit Makefile.config to correct this)
 	endif
 endif
 
 ifdef WITH_PNG
-	ifndef LIBPNG-CONFIG
-$(error WITH_PNG can't be used when LIBPNG-CONFIG is not set. Edit Makefile.config to correct this)
+	ifndef LIBPNG_CONFIG
+$(error WITH_PNG can't be used when LIBPNG_CONFIG is not set. Edit Makefile.config to correct this)
 	endif
 endif
 
@@ -406,11 +406,11 @@ endif
 # SDL config
 ifdef WITH_SDL
 CDEFS += -DWITH_SDL
-CFLAGS += $(shell $(SDL-CONFIG) --cflags)
+CFLAGS += $(shell $(SDL_CONFIG) --cflags)
 ifdef STATIC
-LIBS += $(shell $(SDL-CONFIG) --static-libs)
+LIBS += $(shell $(SDL_CONFIG) --static-libs)
 else
-LIBS += $(shell $(SDL-CONFIG) --libs)
+LIBS += $(shell $(SDL_CONFIG) --libs)
 endif
 endif
 
@@ -432,19 +432,19 @@ endif
 # libpng config
 ifdef WITH_PNG
 CDEFS += -DWITH_PNG
-CFLAGS += $(shell $(LIBPNG-CONFIG) --cppflags --I_opts)
+CFLAGS += $(shell $(LIBPNG_CONFIG) --cppflags --I_opts)
 
 # seems like older libpng versions are broken and need this
 PNGCONFIG_FLAGS = --ldflags --libs
 ifdef STATIC
 ifdef OSX
 # Seems like we need a tiny hack for OSX static to work
-LIBS += $(shell $(LIBPNG-CONFIG) --prefix)/lib/libpng.a
+LIBS += $(shell $(LIBPNG_CONFIG) --prefix)/lib/libpng.a
 else
-LIBS += $(shell $(LIBPNG-CONFIG) --static $(PNGCONFIG_FLAGS))
+LIBS += $(shell $(LIBPNG_CONFIG) --static $(PNGCONFIG_FLAGS))
 endif
 else
-LIBS += $(shell $(LIBPNG-CONFIG)  --L_opts $(PNGCONFIG_FLAGS))
+LIBS += $(shell $(LIBPNG_CONFIG)  --L_opts $(PNGCONFIG_FLAGS))
 endif
 endif
 

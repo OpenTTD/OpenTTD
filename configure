@@ -162,16 +162,16 @@ do
 			ITEM="STATIC_ZLIB_PATH"
 			;;
 		--sdl-config=*)
-			handle SDL-CONFIG "$n"
+			handle SDL_CONFIG "$n"
 			;;
 		--sdl-config)
-			ITEM="SDL-CONFIG"
+			ITEM="SDL_CONFIG"
 			;;
 		--libpng-config=*)
-			handle LIBPNG-CONFIG "$n"
+			handle LIBPNG_CONFIG "$n"
 			;;
 		--lib-png-config)
-			ITEM="LIBPNG-CONFIG"
+			ITEM="LIBPNG_CONFIG"
 			;;
 
 		--*=*)

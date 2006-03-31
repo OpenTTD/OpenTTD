@@ -63,22 +63,22 @@ endif
 
 # FreeBSD uses sdl11 instead of sdl
 ifdef FREEBSD
-SDL-CONFIG:=sdl11-config
+SDL_CONFIG:=sdl11-config
 else
-SDL-CONFIG:=sdl-config
+SDL_CONFIG:=sdl-config
 endif
 
 # set libpng-config to the default value
-LIBPNG-CONFIG :=libpng-config
+LIBPNG_CONFIG :=libpng-config
 
 # Networking, enabled by default
 WITH_NETWORK:=1
 
 # Library detections
-WITH_SDL:=$(shell $(SDL-CONFIG) --version 2>/dev/null)
+WITH_SDL:=$(shell $(SDL_CONFIG) --version 2>/dev/null)
 
 # libpng detection
-WITH_PNG:=$(shell $(LIBPNG-CONFIG) --version 2>/dev/null)
+WITH_PNG:=$(shell $(LIBPNG_CONFIG) --version 2>/dev/null)
 
 ifdef WITH_PNG
 	# LibPNG depends on Zlib
