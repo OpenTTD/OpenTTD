@@ -18,3 +18,31 @@ static inline Town* GetTownByTile(TileIndex t)
 {
 	return GetTown(GetTownIndex(t));
 }
+
+static inline void MakeHouseTile(TileIndex t, TownID tid, byte counter, byte stage, byte type)
+{
+	assert(IsTileType(t, MP_CLEAR));
+
+	SetTileType(t, MP_HOUSE);
+	_m[t].m1 = 0;
+	_m[t].m2 = tid;
+	SB(_m[t].m3, 6, 2, stage);
+	_m[t].m4 = type;
+	SB(_m[t].m5, 0, 2, counter);
+
+	MarkTileDirtyByTile(t);
+}
+
+enum {
+	TWO_BY_TWO_BIT = 2, ///< House is two tiles in X and Y directions
+	ONE_BY_TWO_BIT = 1, ///< House is two tiles in Y direction
+	TWO_BY_ONE_BIT = 0, ///< House is two tiles in X direction
+};
+
+static inline void MakeTownHouse(TileIndex t, TownID tid, byte counter, byte stage, byte size, byte type)
+{
+	MakeHouseTile(t, tid, counter, stage, type);
+	if (HASBIT(size, TWO_BY_TWO_BIT) || HASBIT(size, ONE_BY_TWO_BIT)) MakeHouseTile(t + TileDiffXY(0, 1), tid, counter, stage, ++type);
+	if (HASBIT(size, TWO_BY_TWO_BIT) || HASBIT(size, TWO_BY_ONE_BIT)) MakeHouseTile(t + TileDiffXY(1, 0), tid, counter, stage, ++type);
+	if (HASBIT(size, TWO_BY_TWO_BIT)) MakeHouseTile(t + TileDiffXY(1, 1), tid, counter, stage, ++type);
+}

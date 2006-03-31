@@ -1281,73 +1281,22 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 	t->flags12 |= oneof;
 
 	{
-		int m3lo,m5,eflags;
+		byte construction_counter = 0, construction_stage = 0, size_flags;
 
-		// ENDING_2
-		m3lo = 0;
-		m5 = 0;
 		if (_generating_world) {
 			uint32 r = Random();
 
-			// Value for map3lo
-			m3lo = 0xC0;
-			if (GB(r, 0, 8) >= 220) m3lo &= (r>>8);
+			construction_stage = 3; /* House is finished */
+			if (CHANCE16(1, 7)) construction_stage = GB(r, 0, 2);
 
-			if (m3lo == 0xC0)
+			if (construction_stage == 3) {
 				ChangePopulation(t, _housetype_population[house]);
-
-			// Initial value for map5.
-			m5 = GB(r, 16, 6);
+			} else {
+				construction_counter = GB(r, 2, 2);
+			}
 		}
-
-		assert(IsTileType(tile, MP_CLEAR));
-
-		ModifyTile(tile,
-			MP_SETTYPE(MP_HOUSE) | MP_MAP3HI | MP_MAP3LO | MP_MAP2 | MP_MAP5 | MP_MAPOWNER,
-			t->index,
-			m3lo,   /* map3_lo */
-			house,  /* map3_hi */
-			0,     /* map_owner */
-			m5		 /* map5 */
-		);
-
-		eflags = _housetype_extra_flags[house];
-
-		if (eflags&0x18) {
-			assert(IsTileType(tile + TileDiffXY(0, 1), MP_CLEAR));
-			ModifyTile(tile + TileDiffXY(0, 1),
-				MP_SETTYPE(MP_HOUSE) | MP_MAP2 | MP_MAP3LO | MP_MAP3HI | MP_MAP5 | MP_MAPOWNER,
-				t->index,
-				m3lo,			/* map3_lo */
-				++house,	/* map3_hi */
-				0,				/* map_owner */
-				m5				/* map5 */
-			);
-		}
-
-		if (eflags&0x14) {
-			assert(IsTileType(tile + TileDiffXY(1, 0), MP_CLEAR));
-			ModifyTile(tile + TileDiffXY(1, 0),
-				MP_SETTYPE(MP_HOUSE) | MP_MAP2 | MP_MAP3LO | MP_MAP3HI | MP_MAP5 | MP_MAPOWNER,
-				t->index,
-				m3lo,			/* map3_lo */
-				++house,	/* map3_hi */
-				0,				/* map_owner */
-				m5				/* map5 */
-			);
-		}
-
-		if (eflags&0x10) {
-			assert(IsTileType(tile + TileDiffXY(1, 1), MP_CLEAR));
-			ModifyTile(tile + TileDiffXY(1, 1),
-				MP_SETTYPE(MP_HOUSE) | MP_MAP2 | MP_MAP3LO | MP_MAP3HI | MP_MAP5 | MP_MAPOWNER,
-				t->index,
-				m3lo,			/* map3_lo */
-				++house,	/* map3_hi */
-				0,				/* map_owner */
-				m5				/* map5 */
-			);
-		}
+		size_flags = GB(_housetype_extra_flags[house], 2, 3);
+		MakeTownHouse(tile, t->index, construction_counter, construction_stage, size_flags, house);
 	}
 
 	// ENDING
