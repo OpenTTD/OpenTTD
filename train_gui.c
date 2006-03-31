@@ -515,13 +515,10 @@ found_it:
 	if (x < 0 && IsFrontEngine(v)) return (x >= -10) ? -2 : -1;
 
 	// skip vehicles that are scrolled off the left side
-	while (skip--) v = v->next;
+	while (v != NULL && skip--) v = v->next;
 
 	/* find the vehicle in this row that was clicked */
-	while ((x -= WagonLengthToPixels(v->u.rail.cached_veh_length)) >= 0) {
-		v = v->next;
-		if (v == NULL) break;
-	}
+	while (v != NULL && (x -= WagonLengthToPixels(v->u.rail.cached_veh_length)) >= 0) v = v->next;
 
 	// if an articulated part was selected, find its parent
 	while (v != NULL && IsArticulatedPart(v)) v = GetPrevVehicleInChain(v);
