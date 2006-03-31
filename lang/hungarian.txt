@@ -116,33 +116,33 @@ STR_004C_PLASTIC                                                :mûanyag
 STR_004D_FIZZY_DRINK                                            :szénsavas ital
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} utas
-STR_QUANTITY_COAL                                               :{COMMA} tonna szén
+STR_QUANTITY_COAL                                               :{WEIGHT} szén
 STR_QUANTITY_MAIL                                               :{COMMA} csomag levél
 STR_QUANTITY_OIL                                                :{VOLUME} olaj
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} állat
 STR_QUANTITY_GOODS                                              :{COMMA} láda áru
-STR_QUANTITY_GRAIN                                              :{COMMA} tonna búza
-STR_QUANTITY_WOOD                                               :{COMMA} tonna fa
-STR_QUANTITY_IRON_ORE                                           :{COMMA} tonna vasérc
-STR_QUANTITY_STEEL                                              :{COMMA} tonna acél
+STR_QUANTITY_GRAIN                                              :{WEIGHT} búza
+STR_QUANTITY_WOOD                                               :{WEIGHT} fa
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} vasérc
+STR_QUANTITY_STEEL                                              :{WEIGHT} acél
 STR_QUANTITY_VALUABLES                                          :{COMMA} csomag értéktárgy
-STR_QUANTITY_COPPER_ORE                                         :{COMMA} tonna rézérc
-STR_QUANTITY_MAIZE                                              :{COMMA} tonna kukorica
-STR_QUANTITY_FRUIT                                              :{COMMA} tonna gyümölcs
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} rézérc
+STR_QUANTITY_MAIZE                                              :{WEIGHT} kukorica
+STR_QUANTITY_FRUIT                                              :{WEIGHT} gyümölcs
 STR_QUANTITY_DIAMONDS                                           :{COMMA} zsák gyémánt
-STR_QUANTITY_FOOD                                               :{COMMA} tonna étel
-STR_QUANTITY_PAPER                                              :{COMMA} tonna papír
+STR_QUANTITY_FOOD                                               :{WEIGHT} étel
+STR_QUANTITY_PAPER                                              :{WEIGHT} papír
 STR_QUANTITY_GOLD                                               :{COMMA} zsák arany
 STR_QUANTITY_WATER                                              :{VOLUME} víz
-STR_QUANTITY_WHEAT                                              :{COMMA} tonna búza
+STR_QUANTITY_WHEAT                                              :{WEIGHT} búza
 STR_QUANTITY_RUBBER                                             :{VOLUME} gumi
-STR_QUANTITY_SUGAR                                              :{COMMA} tonna cukor
+STR_QUANTITY_SUGAR                                              :{WEIGHT} cukor
 STR_QUANTITY_TOYS                                               :{COMMA} játék
 STR_QUANTITY_SWEETS                                             :{COMMA} zsák cukorka
 STR_QUANTITY_COLA                                               :{VOLUME} kóla
-STR_QUANTITY_CANDYFLOSS                                         :{COMMA} tonna vattacukor
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} vattacukor
 STR_QUANTITY_BUBBLES                                            :{COMMA} buborék
-STR_QUANTITY_TOFFEE                                             :{COMMA} tonna tejkaramella
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} tejkaramella
 STR_QUANTITY_BATTERIES                                          :{COMMA} elem
 STR_QUANTITY_PLASTIC                                            :{VOLUME} mûanyag
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} szénsavas ital

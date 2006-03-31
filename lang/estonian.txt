@@ -84,33 +84,33 @@ STR_004C_PLASTIC                                                :Plastmass
 STR_004D_FIZZY_DRINK                                            :Kihisev jook
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} reisija{P "" t}
-STR_QUANTITY_COAL                                               :{COMMA} tonn{P "" i} kivisütt
+STR_QUANTITY_COAL                                               :{WEIGHT} kivisütt
 STR_QUANTITY_MAIL                                               :{COMMA} postipakk{P "" i}
 STR_QUANTITY_OIL                                                :{VOLUME} naftat
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} loom{P "" a}
 STR_QUANTITY_GOODS                                              :{COMMA} kast{P "" i} kaupa
-STR_QUANTITY_GRAIN                                              :{COMMA} tonn{P "" i} teravilja
-STR_QUANTITY_WOOD                                               :{COMMA} tonn{P "" i} puitu
-STR_QUANTITY_IRON_ORE                                           :{COMMA} tonn{P "" i} rauamaaki
-STR_QUANTITY_STEEL                                              :{COMMA} tonn{P "" i} terast
+STR_QUANTITY_GRAIN                                              :{WEIGHT} teravilja
+STR_QUANTITY_WOOD                                               :{WEIGHT} puitu
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} rauamaaki
+STR_QUANTITY_STEEL                                              :{WEIGHT} terast
 STR_QUANTITY_VALUABLES                                          :{COMMA} kotitäi{P s t} väärisasju
-STR_QUANTITY_COPPER_ORE                                         :{COMMA} tonn{P "" i} vasemaaki
-STR_QUANTITY_MAIZE                                              :{COMMA} tonn{P "" i} maisi
-STR_QUANTITY_FRUIT                                              :{COMMA} tonn{P "" i} puuvilju
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} vasemaaki
+STR_QUANTITY_MAIZE                                              :{WEIGHT} maisi
+STR_QUANTITY_FRUIT                                              :{WEIGHT} puuvilju
 STR_QUANTITY_DIAMONDS                                           :{COMMA} kotitäi{P s t} teemante{P id ""}
-STR_QUANTITY_FOOD                                               :{COMMA} tonn{P "" i} toitu
-STR_QUANTITY_PAPER                                              :{COMMA} tonn{P "" i} paberit
+STR_QUANTITY_FOOD                                               :{WEIGHT} toitu
+STR_QUANTITY_PAPER                                              :{WEIGHT} paberit
 STR_QUANTITY_GOLD                                               :{COMMA} kotitäi{P s t} kulda
 STR_QUANTITY_WATER                                              :{VOLUME} vett
-STR_QUANTITY_WHEAT                                              :{COMMA} tonn{P "" i} nisu
+STR_QUANTITY_WHEAT                                              :{WEIGHT} nisu
 STR_QUANTITY_RUBBER                                             :{VOLUME} Kummi
-STR_QUANTITY_SUGAR                                              :{COMMA} tonn{P "" i} suhkrut
+STR_QUANTITY_SUGAR                                              :{WEIGHT} suhkrut
 STR_QUANTITY_TOYS                                               :{COMMA} mänguas{P i ja}
 STR_QUANTITY_SWEETS                                             :{COMMA} kontitäi{P s t} maiustusi
 STR_QUANTITY_COLA                                               :{VOLUME} koolat
-STR_QUANTITY_CANDYFLOSS                                         :{COMMA} tonn{P "" i} suhkruvatti
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} suhkruvatti
 STR_QUANTITY_BUBBLES                                            :{COMMA} mull{P "" i}
-STR_QUANTITY_TOFFEE                                             :{COMMA} tonn{P "" i} iirist
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} iirist
 STR_QUANTITY_BATTERIES                                          :{COMMA} patarei{P "" d}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastmassi
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} kihisevaid jooke

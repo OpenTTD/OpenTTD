@@ -84,33 +84,33 @@ STR_004C_PLASTIC                                                :Plastik
 STR_004D_FIZZY_DRINK                                            :içecek
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} yolcu
-STR_QUANTITY_COAL                                               :{COMMA} ton kömür
+STR_QUANTITY_COAL                                               :{WEIGHT} kömür
 STR_QUANTITY_MAIL                                               :{COMMA} çanta posta
 STR_QUANTITY_OIL                                                :{VOLUME} petrol
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} tane hayvan
 STR_QUANTITY_GOODS                                              :{COMMA} kasa esya
-STR_QUANTITY_GRAIN                                              :{COMMA} ton tahil
-STR_QUANTITY_WOOD                                               :{COMMA} ton odun
-STR_QUANTITY_IRON_ORE                                           :{COMMA} ton demir
-STR_QUANTITY_STEEL                                              :{COMMA} ton çelik
+STR_QUANTITY_GRAIN                                              :{WEIGHT} tahil
+STR_QUANTITY_WOOD                                               :{WEIGHT} odun
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} demir
+STR_QUANTITY_STEEL                                              :{WEIGHT} çelik
 STR_QUANTITY_VALUABLES                                          :{COMMA} çanta mücevher
-STR_QUANTITY_COPPER_ORE                                         :{COMMA} ton bakir
-STR_QUANTITY_MAIZE                                              :{COMMA} ton misir
-STR_QUANTITY_FRUIT                                              :{COMMA} ton meyve
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} bakir
+STR_QUANTITY_MAIZE                                              :{WEIGHT} misir
+STR_QUANTITY_FRUIT                                              :{WEIGHT} meyve
 STR_QUANTITY_DIAMONDS                                           :{COMMA} canta elmas
-STR_QUANTITY_FOOD                                               :{COMMA} ton yiyecek
-STR_QUANTITY_PAPER                                              :{COMMA} ton kagit
+STR_QUANTITY_FOOD                                               :{WEIGHT} yiyecek
+STR_QUANTITY_PAPER                                              :{WEIGHT} kagit
 STR_QUANTITY_GOLD                                               :{COMMA} çanta altin
 STR_QUANTITY_WATER                                              :{VOLUME} su
-STR_QUANTITY_WHEAT                                              :{COMMA} ton un
+STR_QUANTITY_WHEAT                                              :{WEIGHT} un
 STR_QUANTITY_RUBBER                                             :{VOLUME} lastik
-STR_QUANTITY_SUGAR                                              :{COMMA} ton seker
+STR_QUANTITY_SUGAR                                              :{WEIGHT} seker
 STR_QUANTITY_TOYS                                               :{COMMA} oyuncak
 STR_QUANTITY_SWEETS                                             :{COMMA} canta tatli
 STR_QUANTITY_COLA                                               :{VOLUME} kola
-STR_QUANTITY_CANDYFLOSS                                         :{COMMA} ton pamukhelva
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} pamukhelva
 STR_QUANTITY_BUBBLES                                            :{COMMA} balon
-STR_QUANTITY_TOFFEE                                             :{COMMA} ton bonbon
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} bonbon
 STR_QUANTITY_BATTERIES                                          :{COMMA} pil
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastik
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} içecek

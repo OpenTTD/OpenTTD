@@ -84,33 +84,33 @@ STR_004C_PLASTIC                                                :Plastikk
 STR_004D_FIZZY_DRINK                                            :Brus
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} passasjer{P "" er}
-STR_QUANTITY_COAL                                               :{COMMA} tonn kull
+STR_QUANTITY_COAL                                               :{WEIGHT} kull
 STR_QUANTITY_MAIL                                               :{COMMA} postsekk{P "" er}
 STR_QUANTITY_OIL                                                :{VOLUME} olje
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} enhet{P "" er} buskap
 STR_QUANTITY_GOODS                                              :{COMMA} kasse{P "" r} gods
-STR_QUANTITY_GRAIN                                              :{COMMA} tonn korn
-STR_QUANTITY_WOOD                                               :{COMMA} tonn tømmer
-STR_QUANTITY_IRON_ORE                                           :{COMMA} tonn jernmalm
-STR_QUANTITY_STEEL                                              :{COMMA} tonn stål
+STR_QUANTITY_GRAIN                                              :{WEIGHT} korn
+STR_QUANTITY_WOOD                                               :{WEIGHT} tømmer
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} jernmalm
+STR_QUANTITY_STEEL                                              :{WEIGHT} stål
 STR_QUANTITY_VALUABLES                                          :{COMMA} sekk{P "" er} med verdisaker
-STR_QUANTITY_COPPER_ORE                                         :{COMMA} tonn kobbermalm
-STR_QUANTITY_MAIZE                                              :{COMMA} tonn mais
-STR_QUANTITY_FRUIT                                              :{COMMA} tonn frukt
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} kobbermalm
+STR_QUANTITY_MAIZE                                              :{WEIGHT} mais
+STR_QUANTITY_FRUIT                                              :{WEIGHT} frukt
 STR_QUANTITY_DIAMONDS                                           :{COMMA} sekk{P "" er} med diamanter
-STR_QUANTITY_FOOD                                               :{COMMA} tonn mat
-STR_QUANTITY_PAPER                                              :{COMMA} tonn papir
+STR_QUANTITY_FOOD                                               :{WEIGHT} mat
+STR_QUANTITY_PAPER                                              :{WEIGHT} papir
 STR_QUANTITY_GOLD                                               :{COMMA} sekk{P "" er} med gull
 STR_QUANTITY_WATER                                              :{VOLUME} vann
-STR_QUANTITY_WHEAT                                              :{COMMA} tonn hvete
+STR_QUANTITY_WHEAT                                              :{WEIGHT} hvete
 STR_QUANTITY_RUBBER                                             :{VOLUME} gummi
-STR_QUANTITY_SUGAR                                              :{COMMA} tonn sukker
+STR_QUANTITY_SUGAR                                              :{WEIGHT} sukker
 STR_QUANTITY_TOYS                                               :{COMMA} leke{P "" r}
 STR_QUANTITY_SWEETS                                             :{COMMA} sekk{P "" er} med søtsaker
 STR_QUANTITY_COLA                                               :{VOLUME} cola
-STR_QUANTITY_CANDYFLOSS                                         :{COMMA} tonn sukkerspinn
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} sukkerspinn
 STR_QUANTITY_BUBBLES                                            :{COMMA} boble{P "" r}
-STR_QUANTITY_TOFFEE                                             :{COMMA} tonn karamell
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} karamell
 STR_QUANTITY_BATTERIES                                          :{COMMA} batteri{P "" er}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastikk
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} brus

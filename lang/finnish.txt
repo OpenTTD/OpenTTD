@@ -84,33 +84,33 @@ STR_004C_PLASTIC                                                :Muovi
 STR_004D_FIZZY_DRINK                                            :Sihijuoma
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} matkustaja{P "" a}
-STR_QUANTITY_COAL                                               :{COMMA} tonni{P "" a} kivihiiltä
+STR_QUANTITY_COAL                                               :{WEIGHT} kivihiiltä
 STR_QUANTITY_MAIL                                               :{COMMA} säkki{P "" ä} postia
 STR_QUANTITY_OIL                                                :{VOLUME} öljyä
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} erä{P "" ä} karjaa
 STR_QUANTITY_GOODS                                              :{COMMA} laatikko{P "" a} tavaraa
-STR_QUANTITY_GRAIN                                              :{COMMA} tonni{P "" a} viljaa
-STR_QUANTITY_WOOD                                               :{COMMA} tonni{P "" a} puutavaraa
-STR_QUANTITY_IRON_ORE                                           :{COMMA} tonni{P "" a} rautamalmia
-STR_QUANTITY_STEEL                                              :{COMMA} tonni{P "" a} terästä
+STR_QUANTITY_GRAIN                                              :{WEIGHT} viljaa
+STR_QUANTITY_WOOD                                               :{WEIGHT} puutavaraa
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} rautamalmia
+STR_QUANTITY_STEEL                                              :{WEIGHT} terästä
 STR_QUANTITY_VALUABLES                                          :{COMMA} säkki{P "" ä} arvotavaraa
-STR_QUANTITY_COPPER_ORE                                         :{COMMA} tonni{P "" a} kuparimalmia
-STR_QUANTITY_MAIZE                                              :{COMMA} tonni maissia
-STR_QUANTITY_FRUIT                                              :{COMMA} tonni{P "" a} hedelmiä
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} kuparimalmia
+STR_QUANTITY_MAIZE                                              :{WEIGHT} maissia
+STR_QUANTITY_FRUIT                                              :{WEIGHT} hedelmiä
 STR_QUANTITY_DIAMONDS                                           :{COMMA} säkki{P "" ä} timantteja
-STR_QUANTITY_FOOD                                               :{COMMA} tonni{P "" a} ruokaa
-STR_QUANTITY_PAPER                                              :{COMMA} tonni{P "" a}  paperia
+STR_QUANTITY_FOOD                                               :{WEIGHT} ruokaa
+STR_QUANTITY_PAPER                                              :{WEIGHT} paperia
 STR_QUANTITY_GOLD                                               :{COMMA} säkki{P "" ä} kultaa
 STR_QUANTITY_WATER                                              :{VOLUME} vettä
-STR_QUANTITY_WHEAT                                              :{COMMA} tonni{P "" a} vehnää
+STR_QUANTITY_WHEAT                                              :{WEIGHT} vehnää
 STR_QUANTITY_RUBBER                                             :{VOLUME} kumia
-STR_QUANTITY_SUGAR                                              :{COMMA} tonni{P "" a} sokeria
+STR_QUANTITY_SUGAR                                              :{WEIGHT} sokeria
 STR_QUANTITY_TOYS                                               :{COMMA} lelu{P "" a}
 STR_QUANTITY_SWEETS                                             :{COMMA} säkki{P "" ä} karkkia
 STR_QUANTITY_COLA                                               :{VOLUME} limsaa
-STR_QUANTITY_CANDYFLOSS                                         :{COMMA} tonni{P "" a} hattaraa
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} hattaraa
 STR_QUANTITY_BUBBLES                                            :{COMMA} kupla{P "" a}
-STR_QUANTITY_TOFFEE                                             :{COMMA} tonni{P "" a} toffeeta
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} toffeeta
 STR_QUANTITY_BATTERIES                                          :{COMMA} paristo{P "" a}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} muovia
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} sihijuoma{P "" a}

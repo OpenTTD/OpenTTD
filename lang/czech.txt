@@ -141,33 +141,33 @@ STR_004C_PLASTIC                                                :plastu
 STR_004D_FIZZY_DRINK                                            :limonád
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} cestující{P "" "" ch}
-STR_QUANTITY_COAL                                               :{COMMA} tun{P a y ""} uhlí
+STR_QUANTITY_COAL                                               :{WEIGHT} uhlí
 STR_QUANTITY_MAIL                                               :{COMMA} balík{P "" "y" u} po¨ty
 STR_QUANTITY_OIL                                                :{VOLUME} ropy
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} kus{P "" y u} dobytka
 STR_QUANTITY_GOODS                                              :{COMMA} krabic{P e e ""} zbo¸í
-STR_QUANTITY_GRAIN                                              :{COMMA} tun{P a y ""} zrní
-STR_QUANTITY_WOOD                                               :{COMMA} tun{P a y ""} dreva
-STR_QUANTITY_IRON_ORE                                           :{COMMA} tun{P a y ""} ¸elezné rudy
-STR_QUANTITY_STEEL                                              :{COMMA} tun{P a y ""} oceli
+STR_QUANTITY_GRAIN                                              :{WEIGHT} zrní
+STR_QUANTITY_WOOD                                               :{WEIGHT} dreva
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} ¸elezné rudy
+STR_QUANTITY_STEEL                                              :{WEIGHT} oceli
 STR_QUANTITY_VALUABLES                                          :{COMMA} balík{P "" "y" u} cenin
-STR_QUANTITY_COPPER_ORE                                         :{COMMA} tun{P a y ""} medene rudy
-STR_QUANTITY_MAIZE                                              :{COMMA} tun{P a y ""} kukurice
-STR_QUANTITY_FRUIT                                              :{COMMA} tun{P a y ""} ovoce
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} medene rudy
+STR_QUANTITY_MAIZE                                              :{WEIGHT} kukurice
+STR_QUANTITY_FRUIT                                              :{WEIGHT} ovoce
 STR_QUANTITY_DIAMONDS                                           :{COMMA} pyt{P el le lu} diamantu
-STR_QUANTITY_FOOD                                               :{COMMA} tun{P a y ""} jídla
-STR_QUANTITY_PAPER                                              :{COMMA} tun{P a y ""} papíru
+STR_QUANTITY_FOOD                                               :{WEIGHT} jídla
+STR_QUANTITY_PAPER                                              :{WEIGHT} papíru
 STR_QUANTITY_GOLD                                               :{COMMA} balík{P "" "y" u}
 STR_QUANTITY_WATER                                              :{VOLUME} vody
-STR_QUANTITY_WHEAT                                              :{COMMA} tun{P a y ""} kukurice
+STR_QUANTITY_WHEAT                                              :{WEIGHT} kukurice
 STR_QUANTITY_RUBBER                                             :{VOLUME} kaucuku
-STR_QUANTITY_SUGAR                                              :{COMMA} tun{P a y ""} cukru
+STR_QUANTITY_SUGAR                                              :{WEIGHT} cukru
 STR_QUANTITY_TOYS                                               :{COMMA} hrac{P ka ky ek}
 STR_QUANTITY_SWEETS                                             :{COMMA} pyt{P el le lu} bonbonu
 STR_QUANTITY_COLA                                               :{VOLUME} coly
-STR_QUANTITY_CANDYFLOSS                                         :{COMMA} tun{P a y ""} cukrové vaty
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} cukrové vaty
 STR_QUANTITY_BUBBLES                                            :{COMMA} bublin{P a y ""}
-STR_QUANTITY_TOFFEE                                             :{COMMA} tun{P a y ""} karamelu
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} karamelu
 STR_QUANTITY_BATTERIES                                          :{COMMA} bateri{P e e í}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastu
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} limonád{P a y ""}

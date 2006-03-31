@@ -84,33 +84,33 @@ STR_004C_PLASTIC                                                :Zuvacky
 STR_004D_FIZZY_DRINK                                            :Sumienka
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} cestujuci{P "" "" ch}
-STR_QUANTITY_COAL                                               :{COMMA} ton{P a y ""} uhlia
+STR_QUANTITY_COAL                                               :{WEIGHT} uhlia
 STR_QUANTITY_MAIL                                               :{COMMA} balik{P "" y ov} posty
 STR_QUANTITY_OIL                                                :{VOLUME} ropy
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} kus{P "" y ov} dobytka
 STR_QUANTITY_GOODS                                              :{COMMA} deb{P na ny ien} tovaru
-STR_QUANTITY_GRAIN                                              :{COMMA} ton{P a y ""} obilia
-STR_QUANTITY_WOOD                                               :{COMMA} ton{P a y ""} dreva
-STR_QUANTITY_IRON_ORE                                           :{COMMA} ton{P a y ""} zeleznej rudy
-STR_QUANTITY_STEEL                                              :{COMMA} ton{P a y ""} ocele
+STR_QUANTITY_GRAIN                                              :{WEIGHT} obilia
+STR_QUANTITY_WOOD                                               :{WEIGHT} dreva
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} zeleznej rudy
+STR_QUANTITY_STEEL                                              :{WEIGHT} ocele
 STR_QUANTITY_VALUABLES                                          :{COMMA} vr{P eco ecia iec} cennosti
-STR_QUANTITY_COPPER_ORE                                         :{COMMA} ton{P a y ""} medennej rudy
-STR_QUANTITY_MAIZE                                              :{COMMA} ton{P a y ""} kukurice
-STR_QUANTITY_FRUIT                                              :{COMMA} ton{P a y ""} ovocia
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} medennej rudy
+STR_QUANTITY_MAIZE                                              :{WEIGHT} kukurice
+STR_QUANTITY_FRUIT                                              :{WEIGHT} ovocia
 STR_QUANTITY_DIAMONDS                                           :{COMMA} deb{P na ny ien} diamantov
-STR_QUANTITY_FOOD                                               :{COMMA} ton{P a y ""} jedla
-STR_QUANTITY_PAPER                                              :{COMMA} ton{P a y ""} papiera
+STR_QUANTITY_FOOD                                               :{WEIGHT} jedla
+STR_QUANTITY_PAPER                                              :{WEIGHT} papiera
 STR_QUANTITY_GOLD                                               :{COMMA} deb{P na ny ien} zlata
 STR_QUANTITY_WATER                                              :{VOLUME} voda
-STR_QUANTITY_WHEAT                                              :{COMMA} ton{P a y ""} psenice
+STR_QUANTITY_WHEAT                                              :{WEIGHT} psenice
 STR_QUANTITY_RUBBER                                             :{VOLUME} kaucuk
-STR_QUANTITY_SUGAR                                              :{COMMA} ton{P a y ""} cukru
+STR_QUANTITY_SUGAR                                              :{WEIGHT} cukru
 STR_QUANTITY_TOYS                                               :{COMMA} hrac{P ka ky iek}
 STR_QUANTITY_SWEETS                                             :{COMMA} deb{P na ny ien} cukrikov
 STR_QUANTITY_COLA                                               :{VOLUME} kofola
-STR_QUANTITY_CANDYFLOSS                                         :{COMMA} ton{P a y ""} cukrovej vaty
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} cukrovej vaty
 STR_QUANTITY_BUBBLES                                            :{COMMA} bublin{P a y ""}
-STR_QUANTITY_TOFFEE                                             :{COMMA} ton{P a y ""} karamelu
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} karamelu
 STR_QUANTITY_BATTERIES                                          :{COMMA} bateri{P a e i}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} zuvacka
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} sumien{P ka ky ok}

@@ -84,33 +84,33 @@ STR_004C_PLASTIC                                                :Plastik
 STR_004D_FIZZY_DRINK                                            :Napoje gazowane
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} pasazerow
-STR_QUANTITY_COAL                                               :{COMMA} ton wegla
+STR_QUANTITY_COAL                                               :{WEIGHT} wegla
 STR_QUANTITY_MAIL                                               :{COMMA} paczek poczty
 STR_QUANTITY_OIL                                                :{VOLUME} ropy
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} sztuk zywca
 STR_QUANTITY_GOODS                                              :{COMMA} towarow
-STR_QUANTITY_GRAIN                                              :{COMMA} ton zboza
-STR_QUANTITY_WOOD                                               :{COMMA} ton drewna
-STR_QUANTITY_IRON_ORE                                           :{COMMA} ton rudy zelaza
-STR_QUANTITY_STEEL                                              :{COMMA} ton stali
+STR_QUANTITY_GRAIN                                              :{WEIGHT} zboza
+STR_QUANTITY_WOOD                                               :{WEIGHT} drewna
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} rudy zelaza
+STR_QUANTITY_STEEL                                              :{WEIGHT} stali
 STR_QUANTITY_VALUABLES                                          :{COMMA} kosztownosci
-STR_QUANTITY_COPPER_ORE                                         :{COMMA} ton rudy miedzi
-STR_QUANTITY_MAIZE                                              :{COMMA} ton kukurydzy
-STR_QUANTITY_FRUIT                                              :{COMMA} ton owocow
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} rudy miedzi
+STR_QUANTITY_MAIZE                                              :{WEIGHT} kukurydzy
+STR_QUANTITY_FRUIT                                              :{WEIGHT} owocow
 STR_QUANTITY_DIAMONDS                                           :{COMMA} paczek diamentow
-STR_QUANTITY_FOOD                                               :{COMMA} ton zywnosci
-STR_QUANTITY_PAPER                                              :{COMMA} ton papieru
+STR_QUANTITY_FOOD                                               :{WEIGHT} zywnosci
+STR_QUANTITY_PAPER                                              :{WEIGHT} papieru
 STR_QUANTITY_GOLD                                               :{COMMA} zlota
 STR_QUANTITY_WATER                                              :{VOLUME} wody
-STR_QUANTITY_WHEAT                                              :{COMMA} ton pszenicy
+STR_QUANTITY_WHEAT                                              :{WEIGHT} pszenicy
 STR_QUANTITY_RUBBER                                             :{VOLUME} kauczuku
-STR_QUANTITY_SUGAR                                              :{COMMA} ton cukru
+STR_QUANTITY_SUGAR                                              :{WEIGHT} cukru
 STR_QUANTITY_TOYS                                               :{COMMA} zabawek
 STR_QUANTITY_SWEETS                                             :{COMMA} paczek slodyczy
 STR_QUANTITY_COLA                                               :{VOLUME} coli
-STR_QUANTITY_CANDYFLOSS                                         :{COMMA} ton waty cukrowej
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} waty cukrowej
 STR_QUANTITY_BUBBLES                                            :{COMMA} babelkow
-STR_QUANTITY_TOFFEE                                             :{COMMA} ton tofi
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} tofi
 STR_QUANTITY_BATTERIES                                          :{COMMA} bateri{P a e i}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastiku
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} napoju gazowanego

@@ -85,33 +85,33 @@ STR_004C_PLASTIC                                                :Plastique
 STR_004D_FIZZY_DRINK                                            :Boisson Gazeuse
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} passager{P "" s}
-STR_QUANTITY_COAL                                               :{COMMA} tonne{P "" s} de charbon
+STR_QUANTITY_COAL                                               :{WEIGHT} de charbon
 STR_QUANTITY_MAIL                                               :{COMMA} sac{P "" s} posta{P l ux}
 STR_QUANTITY_OIL                                                :{VOLUME} de pétrole
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} tête{P "" s} de bétail
 STR_QUANTITY_GOODS                                              :{COMMA} caisse{P "" s} de biens
-STR_QUANTITY_GRAIN                                              :{COMMA} tonne{P "" s} de grains
-STR_QUANTITY_WOOD                                               :{COMMA} tonne{P "" s} de bois
-STR_QUANTITY_IRON_ORE                                           :{COMMA} tonne{P "" s} de fer
-STR_QUANTITY_STEEL                                              :{COMMA} tonne{P "" s} d'acier
+STR_QUANTITY_GRAIN                                              :{WEIGHT} de grains
+STR_QUANTITY_WOOD                                               :{WEIGHT} de bois
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} de fer
+STR_QUANTITY_STEEL                                              :{WEIGHT} d'acier
 STR_QUANTITY_VALUABLES                                          :{COMMA} sac{P "" s} d'objets de valeur
-STR_QUANTITY_COPPER_ORE                                         :{COMMA} tonne{P "" s} de cuivre
-STR_QUANTITY_MAIZE                                              :{COMMA} tonne{P "" s} de maïs
-STR_QUANTITY_FRUIT                                              :{COMMA} tonne{P "" s} de fruits
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} de cuivre
+STR_QUANTITY_MAIZE                                              :{WEIGHT} de maïs
+STR_QUANTITY_FRUIT                                              :{WEIGHT} de fruits
 STR_QUANTITY_DIAMONDS                                           :{COMMA} sac{P "" s} de diamants
-STR_QUANTITY_FOOD                                               :{COMMA} tonne{P "" s} de nourriture
-STR_QUANTITY_PAPER                                              :{COMMA} tonne{P "" s} de papier
+STR_QUANTITY_FOOD                                               :{WEIGHT} de nourriture
+STR_QUANTITY_PAPER                                              :{WEIGHT} de papier
 STR_QUANTITY_GOLD                                               :{COMMA} sac{P "" s} d'or
 STR_QUANTITY_WATER                                              :{VOLUME} d'eau
-STR_QUANTITY_WHEAT                                              :{COMMA} tonne{P "" s} de blé
+STR_QUANTITY_WHEAT                                              :{WEIGHT} de blé
 STR_QUANTITY_RUBBER                                             :{VOLUME} de caoutchouc
-STR_QUANTITY_SUGAR                                              :{COMMA} tonne{P "" s} de sucre
+STR_QUANTITY_SUGAR                                              :{WEIGHT} de sucre
 STR_QUANTITY_TOYS                                               :{COMMA} jouet{P "" s}
 STR_QUANTITY_SWEETS                                             :{COMMA} sac{P "" s} de jouets
 STR_QUANTITY_COLA                                               :{VOLUME} de cola
-STR_QUANTITY_CANDYFLOSS                                         :{COMMA} tonne{P "" s} de barbe à papa
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} de barbe à papa
 STR_QUANTITY_BUBBLES                                            :{COMMA} bulle{P "" s}
-STR_QUANTITY_TOFFEE                                             :{COMMA} tonne{P "" s} de caramel
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} de caramel
 STR_QUANTITY_BATTERIES                                          :{COMMA} batterie{P "" s}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} de plastique
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} boisson{P "" s} gazeuse{P "" s}

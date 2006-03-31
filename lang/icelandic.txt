@@ -84,33 +84,33 @@ STR_004C_PLASTIC                                                :Plast
 STR_004D_FIZZY_DRINK                                            :Gosdrykkja
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} farþeg{P i ar}
-STR_QUANTITY_COAL                                               :{COMMA} tonn af kolum
+STR_QUANTITY_COAL                                               :{WEIGHT} af kolum
 STR_QUANTITY_MAIL                                               :{COMMA} pokar af pósti
 STR_QUANTITY_OIL                                                :{VOLUME} af olíu
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} nautgrip{P u i}r
 STR_QUANTITY_GOODS                                              :{COMMA} kass{P i ar} af vörum
-STR_QUANTITY_GRAIN                                              :{COMMA} tonn af korni
-STR_QUANTITY_WOOD                                               :{COMMA} tonn af timbri
-STR_QUANTITY_IRON_ORE                                           :{COMMA} tonn af járngrýti
-STR_QUANTITY_STEEL                                              :{COMMA} tonn af stáli
+STR_QUANTITY_GRAIN                                              :{WEIGHT} af korni
+STR_QUANTITY_WOOD                                               :{WEIGHT} af timbri
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} af járngrýti
+STR_QUANTITY_STEEL                                              :{WEIGHT} af stáli
 STR_QUANTITY_VALUABLES                                          :{COMMA} pok{P i ar} af verðmætum
-STR_QUANTITY_COPPER_ORE                                         :{COMMA} tonn af kopar
-STR_QUANTITY_MAIZE                                              :{COMMA} tonn af maís
-STR_QUANTITY_FRUIT                                              :{COMMA} tonn af ávöxtum
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} af kopar
+STR_QUANTITY_MAIZE                                              :{WEIGHT} af maís
+STR_QUANTITY_FRUIT                                              :{WEIGHT} af ávöxtum
 STR_QUANTITY_DIAMONDS                                           :{COMMA} pok{P i ar} af demöntum
-STR_QUANTITY_FOOD                                               :{COMMA} tonn af matvælum
-STR_QUANTITY_PAPER                                              :{COMMA} tonn af pappír
+STR_QUANTITY_FOOD                                               :{WEIGHT} af matvælum
+STR_QUANTITY_PAPER                                              :{WEIGHT} af pappír
 STR_QUANTITY_GOLD                                               :{COMMA} pok{P i ar} af gulli
 STR_QUANTITY_WATER                                              :{VOLUME} af vatni
-STR_QUANTITY_WHEAT                                              :{COMMA} tonn af hveiti
+STR_QUANTITY_WHEAT                                              :{WEIGHT} af hveiti
 STR_QUANTITY_RUBBER                                             :{VOLUME} af gúmmíi
-STR_QUANTITY_SUGAR                                              :{COMMA} tonn af sykri
+STR_QUANTITY_SUGAR                                              :{WEIGHT} af sykri
 STR_QUANTITY_TOYS                                               :{COMMA} leikf{P a ö}ng
 STR_QUANTITY_SWEETS                                             :{COMMA} pok{P i ar} af sælgæti
 STR_QUANTITY_COLA                                               :{VOLUME} af kóladrykk
-STR_QUANTITY_CANDYFLOSS                                         :{COMMA} tonn af sykurfrauði
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} af sykurfrauði
 STR_QUANTITY_BUBBLES                                            :{COMMA} kúl{P a ur}
-STR_QUANTITY_TOFFEE                                             :{COMMA} tonn af toffý
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} af toffý
 STR_QUANTITY_BATTERIES                                          :{COMMA} rafhl{P aða öður}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} af plasti
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} gosdrykk{P u i}r

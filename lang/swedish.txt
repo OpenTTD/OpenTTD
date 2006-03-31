@@ -84,33 +84,33 @@ STR_004C_PLASTIC                                                :Plast
 STR_004D_FIZZY_DRINK                                            :läsk
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} passagerare
-STR_QUANTITY_COAL                                               :{COMMA} ton kol
+STR_QUANTITY_COAL                                               :{WEIGHT} kol
 STR_QUANTITY_MAIL                                               :{COMMA} postsäck{P "" ar}
 STR_QUANTITY_OIL                                                :{VOLUME} olja
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} boskap
 STR_QUANTITY_GOODS                                              :{COMMA} låd{P a or} gods
-STR_QUANTITY_GRAIN                                              :{COMMA} ton spannmål
-STR_QUANTITY_WOOD                                               :{COMMA} ton timmer
-STR_QUANTITY_IRON_ORE                                           :{COMMA} ton järnmalm
-STR_QUANTITY_STEEL                                              :{COMMA} ton stål
+STR_QUANTITY_GRAIN                                              :{WEIGHT} spannmål
+STR_QUANTITY_WOOD                                               :{WEIGHT} timmer
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} järnmalm
+STR_QUANTITY_STEEL                                              :{WEIGHT} stål
 STR_QUANTITY_VALUABLES                                          :{COMMA} värdesäck{P "" ar}
-STR_QUANTITY_COPPER_ORE                                         :{COMMA} ton kopparmalm
-STR_QUANTITY_MAIZE                                              :{COMMA} ton majs
-STR_QUANTITY_FRUIT                                              :{COMMA} ton frukt
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} kopparmalm
+STR_QUANTITY_MAIZE                                              :{WEIGHT} majs
+STR_QUANTITY_FRUIT                                              :{WEIGHT} frukt
 STR_QUANTITY_DIAMONDS                                           :{COMMA} diamantsäck{P "" ar}
-STR_QUANTITY_FOOD                                               :{COMMA} ton mat
-STR_QUANTITY_PAPER                                              :{COMMA} ton papper
+STR_QUANTITY_FOOD                                               :{WEIGHT} mat
+STR_QUANTITY_PAPER                                              :{WEIGHT} papper
 STR_QUANTITY_GOLD                                               :{COMMA} guldsäck{P "" ar}
 STR_QUANTITY_WATER                                              :{VOLUME} vatten
-STR_QUANTITY_WHEAT                                              :{COMMA} ton vete
+STR_QUANTITY_WHEAT                                              :{WEIGHT} vete
 STR_QUANTITY_RUBBER                                             :{VOLUME} gummi
-STR_QUANTITY_SUGAR                                              :{COMMA} ton socker
+STR_QUANTITY_SUGAR                                              :{WEIGHT} socker
 STR_QUANTITY_TOYS                                               :{COMMA} leksak{P "" er}
 STR_QUANTITY_SWEETS                                             :{COMMA} godispås{P e ar}
 STR_QUANTITY_COLA                                               :{VOLUME} kola
-STR_QUANTITY_CANDYFLOSS                                         :{COMMA} ton spunnet socker
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} spunnet socker
 STR_QUANTITY_BUBBLES                                            :{COMMA} bubbl{P a or}
-STR_QUANTITY_TOFFEE                                             :{COMMA} ton knäck
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} knäck
 STR_QUANTITY_BATTERIES                                          :{COMMA} batteri{P "" er}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plast
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} läsk
