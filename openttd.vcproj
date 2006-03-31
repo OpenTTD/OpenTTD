@@ -299,10 +299,10 @@
 				RelativePath=".\openttd.c">
 			</File>
 			<File
-				RelativePath=".\ottdres.rc">
+				RelativePath=".\os_timer.c">
 			</File>
 			<File
-				RelativePath=".\os_timer.c">
+				RelativePath=".\ottdres.rc">
 			</File>
 			<File
 				RelativePath=".\pathfind.c">
@@ -876,6 +876,9 @@
 				RelativePath=".\bridge_map.c">
 			</File>
 			<File
+				RelativePath=".\bridge_map.h">
+			</File>
+			<File
 				RelativePath=".\clear_map.h">
 			</File>
 			<File
@@ -907,6 +910,9 @@
 			</File>
 			<File
 				RelativePath=".\tunnel_map.h">
+			</File>
+			<File
+				RelativePath=".\unmovable_map.h">
 			</File>
 			<File
 				RelativePath=".\void_map.h">
