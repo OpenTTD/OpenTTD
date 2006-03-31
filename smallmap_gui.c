@@ -4,6 +4,7 @@
 #include "openttd.h"
 #include "bridge_map.h"
 #include "clear_map.h"
+#include "industry_map.h"
 #include "functions.h"
 #include "spritecache.h"
 #include "station_map.h"
@@ -427,7 +428,7 @@ static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile)
 	TileType t = GetEffectiveTileType(tile);
 
 	if (t == MP_INDUSTRY) {
-		byte color = _industry_smallmap_colors[_m[tile].m5];
+		byte color = _industry_smallmap_colors[GetIndustryGfx(tile)];
 		return color + (color << 8) + (color << 16) + (color << 24);
 	}
 
@@ -489,7 +490,7 @@ static inline uint32 GetSmallMapVegetationPixels(TileIndex tile)
 			break;
 
 		case MP_INDUSTRY:
-			bits = IS_BYTE_INSIDE(_m[tile].m5, 0x10, 0x12) ? MKCOLOR(0xD0D0D0D0) : MKCOLOR(0xB5B5B5B5);
+			bits = IS_BYTE_INSIDE(GetIndustryGfx(tile), 0x10, 0x12) ? MKCOLOR(0xD0D0D0D0) : MKCOLOR(0xB5B5B5B5);
 			break;
 
 		case MP_TREES:
