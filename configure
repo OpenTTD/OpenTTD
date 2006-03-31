@@ -31,12 +31,14 @@ function showhelp() {
 	echo " zlib               Do you want zlib-support?           [yes]"
 	echo " sdl                Do you want SDL-support?            [yes]"
 	echo " png                Do you want PNG-support?            [yes]"
+	echo " iconv              Do you want iconv-support?          [no]"
 	echo " cocoa              Do you want cocoa-support? (MacOSX) [no]"
 	echo ""
 	echo "Params used to configure external libs:"
 	echo " --static-zlib-path Set the path to your static zlib    []"
 	echo " --sdl-config       Where is your sdl-config            [sdl-config]"
 	echo " --libpng-config    Where is your libpng-config         [libpng-config]"
+	echo " --with-iconv       Set the path to your iconv headers  []"
 	echo " "
 }
 
@@ -148,6 +150,16 @@ do
 			;;
 		--without-png)
 			PARAM="$PARAM WITH_PNG="
+			;;
+		--with-iconv)
+			PARAM="$PARAM WITH_ICONV=1"
+			;;
+		--with-iconv=*)
+			PARAM="$PARAM WITH_ICONV=1"
+			handle WITH_ICONV_PATH "$n"
+			;;
+		--without-iconv)
+			PARAM="$PARAM WITH_ICONV="
 			;;
 		--with-cocoa)
 			PARAM="$PARAM WITH_COCOA=1"

@@ -603,11 +603,6 @@ void CSleep(int milliseconds)
 	#endif // __AMIGA__
 }
 
-// No proper makefile detection, so just force this for the time being
-#if defined(__APPLE__) && (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_3)
-# define WITH_ICONV
-#endif
-
 #ifdef WITH_ICONV
 
 #include <iconv.h>
@@ -621,7 +616,7 @@ void CSleep(int milliseconds)
  * locale can be found, don't do any conversion "" */
 static const char *GetLocalCode(void)
 {
-#if defined(__APPLE__) && (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_3)
+#if defined(__APPLE__)
 	return "UTF-8-MAC";
 #else
 	/* Strip locale (eg en_US.UTF-8) to only have UTF-8 */

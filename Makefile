@@ -448,10 +448,19 @@ LIBS += $(shell $(LIBPNG_CONFIG)  --L_opts $(PNGCONFIG_FLAGS))
 endif
 endif
 
+# iconv is enabled defaultly on OSX > 10.3
 ifdef OSX
-ifndef JAGUAR
-LIBS += -liconv
+	ifndef JAGUAR
+		WITH_ICONV=1
+		LIBS += -liconv
+	endif
 endif
+
+ifdef WITH_ICONV
+	CDEFS += -DWITH_ICONV
+	ifdef WITH_ICONV_PATH
+		CFLAGS += -I$(WITH_ICONV_PATH)
+	endif
 endif
 
 # enables/disables assert()
