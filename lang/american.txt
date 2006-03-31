@@ -278,8 +278,6 @@ STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
 
-STR_0139_IMPERIAL_MILES                                         :Imperial (miles)
-STR_013A_METRIC_KILOMETERS                                      :Metric (kilometers)
 STR_013B_OWNED_BY                                               :{WHITE}...owned by {STRING}
 STR_013C_CARGO                                                  :{BLACK}Cargo
 STR_013D_INFORMATION                                            :{BLACK}Information
@@ -758,9 +756,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Paste th
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Currency units
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Currency units selection
-STR_02E3_DISTANCE_UNITS                                         :{BLACK}Distance units
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
-STR_02E5_DISTANCE_UNITS_SELECTION                               :{BLACK}Distance units selection
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Road vehicles
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Select side of road for vehicles to drive on

@@ -278,8 +278,6 @@ STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
 
-STR_0139_IMPERIAL_MILES                                         :Engelsk mil (miles)
-STR_013A_METRIC_KILOMETERS                                      :Metrisk (kilometer)
 STR_013B_OWNED_BY                                               :{WHITE}...ägs av {STRING}
 STR_013C_CARGO                                                  :{BLACK}Gods
 STR_013D_INFORMATION                                            :{BLACK}Information
@@ -758,9 +756,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Flytta k
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Valutaenheter
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Välj valutaenhet
-STR_02E3_DISTANCE_UNITS                                         :{BLACK}Måttenheter
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
-STR_02E5_DISTANCE_UNITS_SELECTION                               :{BLACK}Välj måttenhet
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Vägfordon
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Välj sida av vägen som fordonen kör på

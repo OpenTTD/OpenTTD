@@ -343,8 +343,6 @@ STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
 
-STR_0139_IMPERIAL_MILES                                         :Mérföld
-STR_013A_METRIC_KILOMETERS                                      :Kilométer
 STR_013B_OWNED_BY                                               :{WHITE}... {STRING} tulajdona
 STR_013C_CARGO                                                  :{BLACK}Rakomány
 STR_013D_INFORMATION                                            :{BLACK}Információ
@@ -823,9 +821,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}A látkép
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Pénznem
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}A használt pénznem kiválasztása
-STR_02E3_DISTANCE_UNITS                                         :{BLACK}Távolság mértékegysége
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
-STR_02E5_DISTANCE_UNITS_SELECTION                               :{BLACK}A távolságokhoz használt mértékegység kiválasztása
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Közúti jármûvek
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Válaszd ki,az út melyik oldalán haladjanak a közúti jármûvek

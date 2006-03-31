@@ -278,8 +278,6 @@ STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
 
-STR_0139_IMPERIAL_MILES                                         :Miilid
-STR_013A_METRIC_KILOMETERS                                      :Kilomeetrid
 STR_013B_OWNED_BY                                               :{WHITE}...omanik on {STRING}
 STR_013C_CARGO                                                  :{BLACK}Last
 STR_013D_INFORMATION                                            :{BLACK}Informatsioon
@@ -757,9 +755,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Vaatealm
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Rahaühik
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Rahaühiku valimine
-STR_02E3_DISTANCE_UNITS                                         :{BLACK}Pikkusühik
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
-STR_02E5_DISTANCE_UNITS_SELECTION                               :{BLACK}Pikkusühiku valimine
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Maanteesõidukid
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Vali kummal pool teed sõidukid liiguvad

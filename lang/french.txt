@@ -279,8 +279,6 @@ STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
 
-STR_0139_IMPERIAL_MILES                                         :Impérial (miles)
-STR_013A_METRIC_KILOMETERS                                      :Métrique (kilomètres)
 STR_013B_OWNED_BY                                               :{WHITE}...appartient à {STRING}
 STR_013C_CARGO                                                  :{BLACK}Cargaison
 STR_013D_INFORMATION                                            :{BLACK}Information
@@ -761,9 +759,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Colle l'
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Unité monétaire
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Sélectionner l'unité monétaire
-STR_02E3_DISTANCE_UNITS                                         :{BLACK}Système de mesure
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
-STR_02E5_DISTANCE_UNITS_SELECTION                               :{BLACK}Sélectionner l'unité de distance
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Véhicules routiers
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Choisir le sens de conduite routière

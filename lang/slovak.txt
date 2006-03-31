@@ -278,8 +278,6 @@ STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
 
-STR_0139_IMPERIAL_MILES                                         :Imperial (mile)
-STR_013A_METRIC_KILOMETERS                                      :Metric (kilometre)
 STR_013B_OWNED_BY                                               :{WHITE}...vlastnik {STRING}
 STR_013C_CARGO                                                  :{BLACK}Naklad
 STR_013D_INFORMATION                                            :{BLACK}Informacia
@@ -758,9 +756,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Nastavit
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Mena
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Vyber meny
-STR_02E3_DISTANCE_UNITS                                         :{BLACK}Jednotky vzdialenosti
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
-STR_02E5_DISTANCE_UNITS_SELECTION                               :{BLACK}Vyber jednotky vzdialenosti
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Cestne vozidla
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Na ktorej strane jazdia cestne vozidla

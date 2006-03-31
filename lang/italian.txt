@@ -278,8 +278,6 @@ STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
 
-STR_0139_IMPERIAL_MILES                                         :Imperiale (miglia)
-STR_013A_METRIC_KILOMETERS                                      :Metrico (kilometri)
 STR_013B_OWNED_BY                                               :{WHITE}...posseduto da {STRING}
 STR_013C_CARGO                                                  :{BLACK}Carichi
 STR_013D_INFORMATION                                            :{BLACK}Informazioni
@@ -758,9 +756,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Copia la
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Valuta
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Selezione valuta
-STR_02E3_DISTANCE_UNITS                                         :{BLACK}Unità di misura
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
-STR_02E5_DISTANCE_UNITS_SELECTION                               :{BLACK}Selezione unità di misura
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Veicoli stradali con
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Seleziona lato della strada sul quale devono guidare i veicoli stradali
