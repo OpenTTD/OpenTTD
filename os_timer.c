@@ -65,6 +65,6 @@ uint64 _rdtsc(void)
 /* In all other cases we have no support for rdtsc. No major issue,
  * you just won't be able to profile your code with TIC()/TOC() */
 #if !defined(RDTSC_AVAILABLE)
-#warning "OS has no support for rdtsc()"
+#warning "(non-fatal) No support for rdtsc(), you won't be able to profile with TIC/TOC"
 uint64 _rdtsc(void) {return 0;}
 #endif
