@@ -416,8 +416,17 @@ endif
 
 # zlib config
 ifdef WITH_ZLIB
-	CDEFS +=  -DWITH_ZLIB
-	LIBS += -lz
+	CDEFS += -DWITH_ZLIB
+	ifdef STATIC
+		ifdef OSX
+		# OSX links dynamically to zlib, even in static builds since it's always present in the system
+			LIBS += -lz
+		else
+			LIBS += $(STATIC_ZLIB_PATH)
+		endif
+	else
+		LIBS += -lz
+	endif
 endif
 
 # libpng config
