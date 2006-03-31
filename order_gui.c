@@ -191,6 +191,8 @@ static void DrawOrdersWindow(Window *w)
 static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 {
 	Order order;
+	order.next  = NULL;
+	order.index = 0;
 
 	// check depot first
 	if (_patches.gotodepot) {
