@@ -67,20 +67,13 @@ void UpdateCompanyHQ(Player *p, uint score)
 	if (tile == 0)
 		return;
 
-	(val = 128, score < 170) ||
-	(val+= 4, score < 350) ||
-	(val+= 4, score < 520) ||
-	(val+= 4, score < 720) ||
-	(val+= 4, true);
+	(val = 0, score < 170) ||
+	(val++, score < 350) ||
+	(val++, score < 520) ||
+	(val++, score < 720) ||
+	(val++, true);
 
-/* house is already big enough */
-	if (val <= _m[tile].m5)
-		return;
-
-	_m[tile + TileDiffXY(0, 0)].m5 =   val;
-	_m[tile + TileDiffXY(0, 1)].m5 = ++val;
-	_m[tile + TileDiffXY(1, 0)].m5 = ++val;
-	_m[tile + TileDiffXY(1, 1)].m5 = ++val;
+	EnlargeCompanyHQ(tile, val);
 
 	MarkTileDirtyByTile(tile + TileDiffXY(0, 0));
 	MarkTileDirtyByTile(tile + TileDiffXY(0, 1));

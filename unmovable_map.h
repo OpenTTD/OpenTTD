@@ -39,6 +39,17 @@ static inline bool IsOwnedLandTile(TileIndex t)
 }
 
 
+static inline void EnlargeCompanyHQ(TileIndex t, byte size)
+{
+	if (size <= _m[t].m5 - UNMOVABLE_HQ_NORTH) return;
+
+	_m[t + TileDiffXY(0, 0)].m5 = UNMOVABLE_HQ_NORTH + size * 4;
+	_m[t + TileDiffXY(0, 1)].m5 = UNMOVABLE_HQ_WEST  + size * 4;
+	_m[t + TileDiffXY(1, 0)].m5 = UNMOVABLE_HQ_EAST  + size * 4;
+	_m[t + TileDiffXY(1, 1)].m5 = UNMOVABLE_HQ_SOUTH + size * 4;
+}
+
+
 static inline void MakeUnmovable(TileIndex t, UnmovableType u, Owner o)
 {
 	SetTileType(t, MP_UNMOVABLE);
