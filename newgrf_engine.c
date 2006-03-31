@@ -476,18 +476,19 @@ bool UsesWagonOverride(const Vehicle* v)
 }
 
 /**
- * Evaluates a newgrf callback
- * @param callback_info info about which callback to evaluate
- *  (bit 0-7)  = CallBack id of the callback to use, see CallBackId enum
- *  (bit 8-15) = Other info some callbacks need to have, callback specific, see CallBackId enum, not used yet
- * @param engine Engine type of the vehicle to evaluate the callback for
- * @param vehicle The vehicle to evaluate the callback for, NULL if it doesnt exist (yet)
+ * Evaluate a newgrf callback for vehicles
+ * @param callback The callback to evalute
+ * @param param1   First parameter of the callback
+ * @param param2   Second parameter of the callback
+ * @param engine   Engine type of the vehicle to evaluate the callback for
+ * @param vehicle  The vehicle to evaluate the callback for, or NULL if it doesnt exist yet
  * @return The value the callback returned, or CALLBACK_FAILED if it failed
  */
-uint16 GetCallBackResult(uint16 callback_info, EngineID engine, const Vehicle *v)
+uint16 GetVehicleCallback(byte callback, uint32 param1, uint32 param2, EngineID engine, const Vehicle *v)
 {
 	const SpriteGroup *group;
 	CargoID cargo = GC_DEFAULT;
+	uint16 callback_info = callback | (param1 << 8); // XXX Temporary conversion between new and old format.
 
 	if (v != NULL)
 		cargo = _global_cargo_id[_opt.landscape][v->cargo_type];
