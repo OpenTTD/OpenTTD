@@ -2429,10 +2429,10 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Sunni va
 STR_SERVICE_HINT                                                :{BLACK}Jäta see käsk vahele kui just pole vaja teenindust
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Uus {STRING} on nüüd olemas!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Maksumus: {CURRENCY} Kaal: {COMMA}t{}Kiirus: {VELOCITY}  Võimsus: {COMMA}hj{}Kulu: {CURRENCY}/aastas{}Mahutus: {STRING}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Maksumus: {CURRENCY} Kaal: {WEIGHT_S}{}Kiirus: {VELOCITY}  Võimsus: {POWER}{}Kulu: {CURRENCY}/aastas{}Mahutus: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Läks katki
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vanus: {LTBLUE}{STRING}{BLACK}   Kulud: {LTBLUE}{CURRENCY}/aastas
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Kaal: {LTBLUE}{COMMA}t  {BLACK}Energia: {LTBLUE}{COMMA}hj{BLACK} Maks. Kiirus: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Kaal: {LTBLUE}{WEIGHT_S}  {BLACK}Energia: {LTBLUE}{POWER}{BLACK} Maks. Kiirus: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Kasum sel aastal: {LTBLUE}{CURRENCY}  (eelmisel aastal: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Töötamisusaldus: {LTBLUE}{COMMA}%  {BLACK}Katki minekuid eelmisest hooldusest: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Peatatud
@@ -2755,15 +2755,15 @@ STR_MAGLEV_VEHICLES                                             :Maglevi Sõiduki
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Maksuvus: {GOLD}{CURRENCY}{BLACK} Kaal: {GOLD}{COMMA}t
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Kiirus: {GOLD}{VELOCITY}{BLACK}   Võimsus: {GOLD}{COMMA}hp
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Maksuvus: {GOLD}{CURRENCY}{BLACK} Kaal: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Kiirus: {GOLD}{VELOCITY}{BLACK}   Võimsus: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Kiirus: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Hoodluskulud: {GOLD}{CURRENCY}/aasta
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Mahutuvus: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Kujundatud: {GOLD}{NUM}{BLACK} Vanus: {GOLD}{COMMA} aastat
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks. Vastupidavus: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Maksuvus: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Kaal: {GOLD}{COMMA}t  ({COMMA}t)
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Kaal: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Maksumus: {GOLD}{CURRENCY}{BLACK} Kiirus: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Mahutuvusy: {GOLD}{COMMA} reisjat, {COMMA} kotti kirju
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Kiirendavad vagunid: {GOLD}+{COMMA}hp{BLACK} Kaal: {GOLD}+{COMMA}t
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Kiirendavad vagunid: {GOLD}+{POWER}{BLACK} Kaal: {GOLD}+{WEIGHT_S}

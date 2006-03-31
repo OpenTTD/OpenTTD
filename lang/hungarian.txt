@@ -2552,10 +2552,10 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A kijelö
 STR_SERVICE_HINT                                                :{BLACK}Célpont kihagyása, ha javítás szükséges
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Új {STRING} használható!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Ár: {CURRENCY}    Súly: {COMMA}t{}Sebesség: {VELOCITY}    Teljesítmény: {COMMA}le{}Mûködtetési költség: {CURRENCY}/év{}Kapacitás: {STRING}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Ár: {CURRENCY}    Súly: {WEIGHT_S}{}Sebesség: {VELOCITY}    Teljesítmény: {POWER}{}Mûködtetési költség: {CURRENCY}/év{}Kapacitás: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Lerobbant
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Kor: {LTBLUE}{STRING}{BLACK}   Mûködtetési költség: {LTBLUE}{CURRENCY}/év
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Súly: {LTBLUE}{COMMA}t   {BLACK}Teljesítmény: {LTBLUE}{COMMA} le{BLACK}   Végsebesség: {LTBLUE} {VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Súly: {LTBLUE}{WEIGHT_S}   {BLACK}Teljesítmény: {LTBLUE}{POWER}{BLACK}   Végsebesség: {LTBLUE} {VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Idei haszon: {LTBLUE}{CURRENCY}  (tavalyi: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Megbízhatóság: {LTBLUE}{COMMA}%   {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Áll
@@ -2880,15 +2880,15 @@ STR_MAGLEV_VEHICLES                                             :Maglev Vasutak
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Ár: {GOLD}{CURRENCY}{BLACK} Súly: {GOLD}{COMMA}t
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Sebesség: {GOLD}{VELOCITY}{BLACK} Telj.: {GOLD}{COMMA} lóerõ
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Ár: {GOLD}{CURRENCY}{BLACK} Súly: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Sebesség: {GOLD}{VELOCITY}{BLACK} Telj.: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Sebesség: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Üzemeltetés: {GOLD}{CURRENCY}/év
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacitás: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Kifejlesztve: {GOLD}{NUM}{BLACK} Élettartam: {GOLD}{COMMA} év
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. üzemképesség: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Ár: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Súly: {GOLD}{COMMA}t  ({COMMA}t)
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Súly: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Ár: {GOLD}{CURRENCY}{BLACK} Sebesség: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacitás: {GOLD}{COMMA} utas, {COMMA} csomag levél
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Meghajtott vagonok: {GOLD}+{COMMA} lóerõ{BLACK} Súly: {GOLD}+{COMMA}t
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Meghajtott vagonok: {GOLD}+{POWER}{BLACK} Súly: {GOLD}+{WEIGHT_S}

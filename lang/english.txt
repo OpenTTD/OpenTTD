@@ -2485,10 +2485,10 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Make the
 STR_SERVICE_HINT                                                :{BLACK}Skip this order unless a service is needed
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}New {STRING} now available!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Cost: {CURRENCY} Weight: {WEIGHT_S}{}Speed: {VELOCITY}  Power: {POWER}{}Running Cost: {CURRENCY}/yr{}Capacity: {STRING1}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cost: {CURRENCY} Weight: {WEIGHT_S}{}Speed: {VELOCITY}  Power: {POWER}{}Running Cost: {CURRENCY}/yr{}Capacity: {STRING1}
 STR_885C_BROKEN_DOWN                                            :{RED}Broken down
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Age: {LTBLUE}{STRING2}{BLACK}   Running Cost: {LTBLUE}{CURRENCY}/yr
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Weight: {LTBLUE}{WEIGHT_S}  {BLACK}Power: {LTBLUE}{POWER}{BLACK} Max. speed: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Weight: {LTBLUE}{WEIGHT_S}  {BLACK}Power: {LTBLUE}{POWER}{BLACK} Max. speed: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit this year: {LTBLUE}{CURRENCY}  (last year: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Reliability: {LTBLUE}{COMMA}%  {BLACK}Breakdowns since last service: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Stopped

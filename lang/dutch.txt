@@ -2450,10 +2450,10 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Zorg dat
 STR_SERVICE_HINT                                                :{BLACK}Sla deze order over tenzij een reparatie nodig is
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nieuwe {STRING} nu beschikbaar!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Prijs: {CURRENCY} Gewicht: {COMMA}t{}Snelheid: {VELOCITY}  Kracht: {COMMA}pk{}Brandstofprijs: {CURRENCY}/jr{}Capaciteit: {STRING}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Prijs: {CURRENCY} Gewicht: {WEIGHT_S}{}Snelheid: {VELOCITY}  Kracht: {POWER}{}Brandstofprijs: {CURRENCY}/jr{}Capaciteit: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Kapot
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Leeftijd: {LTBLUE}{STRING}{BLACK}   Brandstofkosten: {LTBLUE}{CURRENCY}/jr
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Gewicht: {LTBLUE}{COMMA}t  {BLACK}Kracht: {LTBLUE}{COMMA}pk{BLACK} Max. snelheid: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewicht: {LTBLUE}{WEIGHT_S}  {BLACK}Kracht: {LTBLUE}{POWER}{BLACK} Max. snelheid: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Winst dit jaar: {LTBLUE}{CURRENCY}  (vorig jaar: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Betrouwbaarheid: {LTBLUE}{COMMA}%  {BLACK}Pechgevallen sinds laatste reparatie: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Gestopt
@@ -2778,15 +2778,15 @@ STR_MAGLEV_VEHICLES                                             :Maglev Voertuig
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Gewicht: {GOLD}{COMMA}t
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Snelheid: {GOLD}{VELOCITY}{BLACK}   Kracht: {GOLD}{COMMA}pk
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Gewicht: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Snelheid: {GOLD}{VELOCITY}{BLACK}   Kracht: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Snelheid: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Onderhoudskosten: {GOLD}{CURRENCY}/jr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capaciteit: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Ontworpen: {GOLD}{NUM}{BLACK} Levensduur: {GOLD}{COMMA} jaar
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Betrouwbaarheid: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kosten: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht: {GOLD}{COMMA}t  ({COMMA}t)
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Snelheid: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capaciteit: {GOLD}{COMMA} passagiers, {COMMA} zakken post
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Aangedreven wagons: {GOLD}+{COMMA}pk{BLACK} Gewicht: {GOLD}+{COMMA}t
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Aangedreven wagons: {GOLD}+{POWER}{BLACK} Gewicht: {GOLD}+{WEIGHT_S}

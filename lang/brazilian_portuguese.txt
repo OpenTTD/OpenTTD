@@ -2434,10 +2434,10 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A ordem 
 STR_SERVICE_HINT                                                :{BLACK}Saltar esta ordem a menos que seja necessário manutenção
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Novo {STRING} disponível!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Custo: {CURRENCY} Peso: {COMMA}t{}Velocidade: {VELOCITY}  Potência: {COMMA}hp{}Custo de circulação: {CURRENCY}/ano{}Capacidade: {STRING}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Custo: {CURRENCY} Peso: {WEIGHT_S}{}Velocidade: {VELOCITY}  Potência: {POWER}{}Custo de circulação: {CURRENCY}/ano{}Capacidade: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Avariado
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo de circulação: {LTBLUE}{CURRENCY}/ano
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Peso: {LTBLUE}{COMMA}t  {BLACK}Potência: {LTBLUE}{COMMA}hp{BLACK} Velocidade Máx.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_S}  {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Velocidade Máx.: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Lucros deste ano: {LTBLUE}{CURRENCY}  (último ano: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilidade: {LTBLUE}{COMMA}%  {BLACK}Avarias desde a última manutenção: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Parado
@@ -2761,15 +2761,15 @@ STR_MAGLEV_VEHICLES                                             :Maglevs
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Custo: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{COMMA}t
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocidade: {GOLD}{VELOCITY}{BLACK}   Potência: {GOLD}{COMMA}hp
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Custo: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocidade: {GOLD}{VELOCITY}{BLACK}   Potência: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocidade: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Manutenção: {GOLD}{CURRENCY}/ano
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacidade: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Desenvolvida: {GOLD}{NUM}{BLACK} Vida: {GOLD}{COMMA} anos
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Confiabilidade Max.: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Custo: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{COMMA}t  ({COMMA}t)
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Custo: {GOLD}{CURRENCY}{BLACK} Velocidade: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidade: {GOLD}{COMMA} passageiros, {COMMA} malas de correspondência
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagões energizados: {GOLD}+{COMMA}hp{BLACK} Peso: {GOLD}+{COMMA}t
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagões energizados: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}

@@ -2440,10 +2440,10 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Na oznac
 STR_SERVICE_HINT                                                :{BLACK}Vynechat tento prikaz pokial nieje potrebna oprava
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nove {STRING} je uz dostupne!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Cena: {CURRENCY} Nosnost: {COMMA}t{}Rychlost: {VELOCITY}  Vykon: {COMMA}hp{}Cena prevadzky: {CURRENCY}/rok{}Kapacita: {STRING}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Nosnost: {WEIGHT_S}{}Rychlost: {VELOCITY}  Vykon: {POWER}{}Cena prevadzky: {CURRENCY}/rok{}Kapacita: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Pokazene
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vek: {LTBLUE}{STRING}{BLACK}   Cena prevadzky: {LTBLUE}{CURRENCY}/rok
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Nosnost: {LTBLUE}{COMMA}t  {BLACK}Vykon: {LTBLUE}{COMMA}hp{BLACK} Max. Rychlost: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Nosnost: {LTBLUE}{WEIGHT_S}  {BLACK}Vykon: {LTBLUE}{POWER}{BLACK} Max. Rychlost: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zisk tento rok: {LTBLUE}{CURRENCY}  (predchadzajuci rok: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolahlivost: {LTBLUE}{COMMA}%  {BLACK}Pokazene od posledneho servisu: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Zastavene
@@ -2766,15 +2766,15 @@ STR_MAGLEV_VEHICLES                                             :Lokomotiva pre 
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Hmotnost: {GOLD}{COMMA}t
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rychlost: {GOLD}{VELOCITY}{BLACK}   Vykon: {GOLD}{COMMA}hp
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Hmotnost: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rychlost: {GOLD}{VELOCITY}{BLACK}   Vykon: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Rychlost: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cena prevadzky: {GOLD}{CURRENCY}/yr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacita: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Vyrobene: {GOLD}{NUM}{BLACK} Zivotnost: {GOLD}{COMMA} rokov
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. spolahlivost: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Hmotnost: {GOLD}{COMMA}t  ({COMMA}t)
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Hmotnost: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Rychlost: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacita: {GOLD}{COMMA} cestujucich, {COMMA} balikov posty
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pohanane vagony: {GOLD}+{COMMA}hp{BLACK} Hmotnost: {GOLD}+{COMMA}t
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pohanane vagony: {GOLD}+{POWER}{BLACK} Hmotnost: {GOLD}+{WEIGHT_S}

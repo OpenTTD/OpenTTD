@@ -1174,7 +1174,7 @@ static void DrawTrainDetailsWindow(Window *w)
 	SetDParam(2, v->u.rail.cached_max_speed * 10 >> 4);
 	SetDParam(1, v->u.rail.cached_power);
 	SetDParam(0, v->u.rail.cached_weight);
-	DrawString(x, 25, STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED, 0);
+	DrawString(x, 25, STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED, 0);
 
 	SetDParam(0, v->profit_this_year);
 	SetDParam(1, v->profit_last_year);

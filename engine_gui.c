@@ -141,7 +141,7 @@ static void DrawTrainEngineInfo(EngineID engine, int x, int y, int maxw)
 	} else {
 		SetDParam(5, STR_8838_N_A);
 	}
-	DrawStringMultiCenter(x, y, STR_885B_COST_WEIGHT_T_SPEED_POWER, maxw);
+	DrawStringMultiCenter(x, y, STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER, maxw);
 }
 
 void DrawNewsNewTrainAvail(Window *w)

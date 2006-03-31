@@ -2433,10 +2433,10 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Neyða le
 STR_SERVICE_HINT                                                :{BLACK}Sleppa þessarri skipun nema þörf sé á viðgerð
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Ný {STRING} er nú fáanleg!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Verð: {CURRENCY} Þyngd: {COMMA}tonn{}Hraði: {VELOCITY}  Hestöfl: {COMMA}{}Rekstrarkostnaður: {CURRENCY} á ári{}Burðargeta: {STRING}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Verð: {CURRENCY} Þyngd: {WEIGHT_S}{}Hraði: {VELOCITY}  Hestöfl: {POWER}{}Rekstrarkostnaður: {CURRENCY} á ári{}Burðargeta: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Bilaður
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Aldur: {LTBLUE}{STRING}{BLACK}   Rekstrarkostnaður: {LTBLUE}{CURRENCY} á ári
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Þyngd: {LTBLUE}{COMMA}t  {BLACK}Hestöfl: {LTBLUE}{COMMA}{BLACK} Hámarkshraði: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Þyngd: {LTBLUE}{WEIGHT_S}  {BLACK}Hestöfl: {LTBLUE}{POWER}{BLACK} Hámarkshraði: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Hagnaður á þessu ári: {LTBLUE}{CURRENCY}  (síðasta ár: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA}%  {BLACK}Bilanir frá síðustu viðgerð: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Stöðvaður
@@ -2759,15 +2759,15 @@ STR_MAGLEV_VEHICLES                                             :Segulsvifvagnar
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Þyngd: {GOLD}{COMMA}tonn
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hámarkshraði: {GOLD}{VELOCITY}{BLACK}   Hestöfl: {GOLD}{COMMA}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Þyngd: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hámarkshraði: {GOLD}{VELOCITY}{BLACK}   Hestöfl: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hraði: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Rekstrarkostnaður: {GOLD}{CURRENCY} á ári
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Burðargeta: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Hönnun: {GOLD}{NUM}{BLACK} Endingartími: {GOLD}{COMMA} ár
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Hámarks áreiðanleiki: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Verð: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Þyngd: {GOLD}{COMMA}tonn  ({COMMA}tonn)
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Þyngd: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Hámarkshraði: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Burðargeta: {GOLD}{COMMA} farþegar, {COMMA} pokar af pósti
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Drifvagnar: {GOLD}+{COMMA} hestöfl{BLACK} Þyngd: {GOLD}+{COMMA} tonn
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Drifvagnar: {GOLD}+{POWER}{BLACK} Þyngd: {GOLD}+{WEIGHT_S}
