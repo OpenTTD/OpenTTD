@@ -448,7 +448,7 @@ LIBS += $(shell $(LIBPNG_CONFIG)  --L_opts $(PNGCONFIG_FLAGS))
 endif
 endif
 
-# iconv is enabled defaultly on OSX > 10.3
+# iconv is enabled defaultly on OSX >= 10.3
 ifdef OSX
 	ifndef JAGUAR
 		WITH_ICONV=1
