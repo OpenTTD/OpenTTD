@@ -15,15 +15,13 @@ LIBRARIES REQUIRED FOR END USERS
 
 SDL.DLL (SDL 1.2.7) and FSLib.dll are required to use this program:
 these can be downloaded from the Files section at
-http://sourceforge.net/projects/openttd/ - see "os2-useful.zip".
-(Note that a newer version of SDL is now available at
-ftp://ftp.netlabs.org/pub/sdl/sdl-dev-os2-2004-12-22.zip which may
-help solve some problems).
+http://sourceforge.net/projects/openttd/ - see "os2-useful-v1.1.zip".
+Version 20051222 of SDL or later is required. This can be found at
+http://sdl.netlabs.org/.
 
-Please note that SDL release 2005-03-30 does NOT work with OpenTTD,
-at least in my experience and the experience of a couple of other
-users. If you experience problems with OpenTTD, please try downgrading
-to SDL 2004-12-22.
+Please note that earlier SDL releases will probably NOT work with
+OpenTTD. If you experience problems with OpenTTD, please check
+your SDL and FSLib.dll versions (both must match).
 
 Note that to actually play the game, I have found in my own
 experience that a version of the Scitech Display Drivers or its later
@@ -96,13 +94,12 @@ provided, they are not designed for Watcom (apart from SDL):
   http://www.libpng.org/ - contains an EMX/gcc makefile, ignore this
 
 - SDL for OS/2
-  For 0.3.5, I used ftp://ftp.netlabs.org/pub/sdl/SDL-1.2.7-src-20040908a.zip -
-  take SDL.dll and SDL.lib from the src/ directory. Note that 20041222 is
-  out now, which is recommended for stability updates.
+  ftp://ftp.netlabs.org/pub/sdl/sdl-1.2.7-src-20051222.zip used for
+  0.4.7
 
 If you do not wish to build the libraries yourself, pre-built versions
 can be downloaded from the Files section at
-http://sourceforge.net/projects/openttd/ - see "os2-useful.zip".
+http://sourceforge.net/projects/openttd/ - see "os2-useful-v1.1.zip".
 
 A Note About Subversion Revision Numbers
 ----------------------------------------
