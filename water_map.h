@@ -3,6 +3,13 @@
 #ifndef WATER_MAP_H
 #define WATER_MAP_H
 
+typedef enum WaterTileType {
+	WATER_CLEAR,
+	WATER_COAST,
+	WATER_LOCK,
+	WATER_DEPOT,
+} WaterTileType;
+
 typedef enum DepotPart {
 	DEPOT_NORTH = 0x80,
 	DEPOT_SOUTH = 0x81,
@@ -12,15 +19,28 @@ typedef enum DepotPart {
 typedef enum LockPart {
 	LOCK_MIDDLE = 0x10,
 	LOCK_LOWER  = 0x14,
-	LOCK_UPPER  = 0x18
+	LOCK_UPPER  = 0x18,
+	LOCK_END    = 0x1C
 } LockPart;
 
-static inline bool IsClearWaterTile(TileIndex tile)
+static inline WaterTileType GetWaterTileType(TileIndex t)
 {
-	return
-		IsTileType(tile, MP_WATER) &&
-		_m[tile].m5 == 0 &&
-		GetTileSlope(tile, NULL) == 0;
+	if (_m[t].m5 == 0) return WATER_CLEAR;
+	if (_m[t].m5 == 1) return WATER_COAST;
+	if (IS_INT_INSIDE(_m[t].m5, LOCK_MIDDLE, LOCK_END)) return WATER_LOCK;
+	if (IS_INT_INSIDE(_m[t].m5, DEPOT_NORTH, DEPOT_END)) return WATER_DEPOT;
+
+	assert(0);
+}
+
+static inline bool IsWater(TileIndex t)
+{
+	return GetWaterTileType(t) == WATER_CLEAR;
+}
+
+static inline bool IsClearWaterTile(TileIndex t)
+{
+	return IsTileType(t, MP_WATER) && IsWater(t) && GetTileSlope(t, NULL) == 0;
 }
 
 static inline TileIndex GetOtherShipDepotTile(TileIndex t)

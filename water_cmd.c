@@ -406,28 +406,26 @@ static void DrawWaterStuff(const TileInfo *ti, const WaterDrawTileStruct *wdts,
 
 static void DrawTile_Water(TileInfo *ti)
 {
-	// draw water tile
-	if (ti->map5 == 0) {
-		DrawGroundSprite(SPR_FLAT_WATER_TILE);
-		if (ti->z != 0) DrawCanalWater(ti->tile);
-		return;
-	}
+	switch (GetWaterTileType(ti->tile)) {
+		case WATER_CLEAR:
+			DrawGroundSprite(SPR_FLAT_WATER_TILE);
+			if (ti->z != 0) DrawCanalWater(ti->tile);
+			break;
 
-	// draw shore
-	if (ti->map5 == 1) {
-		assert(ti->tileh < 16);
-		DrawGroundSprite(_water_shore_sprites[ti->tileh]);
-		return;
-	}
+		case WATER_COAST:
+			assert(ti->tileh < 16);
+			DrawGroundSprite(_water_shore_sprites[ti->tileh]);
+			break;
 
-	// draw shiplift
-	if ((ti->map5 & 0xF0) == 0x10) {
-		const WaterDrawTileStruct *t = _shiplift_display_seq[ti->map5 & 0xF];
-		DrawWaterStuff(ti, t, 0, ti->z > t[3].delta_y ? 24 : 0);
-		return;
-	}
+		case WATER_LOCK: {
+			const WaterDrawTileStruct *t = _shiplift_display_seq[ti->map5 & 0xF];
+			DrawWaterStuff(ti, t, 0, ti->z > t[3].delta_y ? 24 : 0);
+		} break;
 
-	DrawWaterStuff(ti, _shipdepot_display_seq[ti->map5 & 0x7F], PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)), 0);
+		case WATER_DEPOT:
+			DrawWaterStuff(ti, _shipdepot_display_seq[ti->map5 & 0x7F], PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)), 0);
+			break;
+	}
 }
 
 void DrawShipDepotSprite(int x, int y, int image)
@@ -460,16 +458,18 @@ static void GetAcceptedCargo_Water(TileIndex tile, AcceptedCargo ac)
 
 static void GetTileDesc_Water(TileIndex tile, TileDesc *td)
 {
-	if (_m[tile].m5 == 0 && TilePixelHeight(tile) == 0) {
-		td->str = STR_3804_WATER;
-	} else if (_m[tile].m5 == 0) {
-		td->str = STR_LANDINFO_CANAL;
-	} else if (_m[tile].m5 == 1) {
-		td->str = STR_3805_COAST_OR_RIVERBANK;
-	} else if ((_m[tile].m5 & 0xF0) == 0x10) {
-		td->str = STR_LANDINFO_LOCK;
-	} else {
-		td->str = STR_3806_SHIP_DEPOT;
+	switch (GetWaterTileType(tile)) {
+		case WATER_CLEAR:
+			if (TilePixelHeight(tile) == 0) {
+				td->str = STR_3804_WATER;
+			} else {
+				td->str = STR_LANDINFO_CANAL;
+			}
+			break;
+		case WATER_COAST: td->str = STR_3805_COAST_OR_RIVERBANK; break;
+		case WATER_LOCK : td->str = STR_LANDINFO_LOCK; break;
+		case WATER_DEPOT: td->str = STR_3806_SHIP_DEPOT; break;
+		default: assert(0); break;
 	}
 
 	td->owner = GetTileOwner(tile);
