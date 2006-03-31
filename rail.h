@@ -512,5 +512,5 @@ void DrawDefaultWaypointSprite(int x, int y, RailType railtype);
  */
 void DrawCatenary(const TileInfo *ti);
 
-uint GetRailFoundation(uint tileh, uint bits);
+uint GetRailFoundation(uint tileh, TrackBits bits);
 #endif /* RAIL_H */

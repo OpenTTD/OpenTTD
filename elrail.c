@@ -123,16 +123,25 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	TrackBits trackconfig[TS_END];
 	bool isflat[TS_END];
 	/* Note that ti->tileh has already been adjusted for Foundations */
-	uint tileh[TS_END] = {ti->tileh, 0};
+	uint tileh[TS_END];
 
 	TLG tlg = GetTLG(ti->tile);
 	byte PCPstatus = 0;
 	byte OverridePCP = 0;
-	byte PPPpreferred[DIAGDIR_END] = {0xFF, 0xFF, 0xFF, 0xFF};
-	byte PPPallowed[DIAGDIR_END] = {AllowedPPPonPCP[0], AllowedPPPonPCP[1], AllowedPPPonPCP[2], AllowedPPPonPCP[3]};
+	byte PPPpreferred[DIAGDIR_END];
+	byte PPPallowed[DIAGDIR_END];
 	byte PPPbuffer[DIAGDIR_END];
 	DiagDirection i;
 	Track t;
+
+	tileh[0] = ti->tileh;
+	tileh[1] = 0;
+
+	PPPpreferred[0] = PPPpreferred[1] = PPPpreferred[2] = PPPpreferred[3] = 0xFF;
+	PPPallowed[0] = AllowedPPPonPCP[0];
+	PPPallowed[1] = AllowedPPPonPCP[1];
+	PPPallowed[2] = AllowedPPPonPCP[2];
+	PPPallowed[3] = AllowedPPPonPCP[3];
 
 	/* Find which rail bits are present, and select the override points.
 	   We don't draw a pylon:
