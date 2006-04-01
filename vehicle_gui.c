@@ -473,7 +473,7 @@ static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, Engine
 
 		colour = *sel == 0 ? 0xC : 0x10;
 		if (!(ENGINE_AVAILABLE && show_outdated && RailVehInfo(i)->power && e->railtype == railtype)) {
-			if ((!HasPowerOnRail(e->railtype, railtype) && show_compatible)
+			if ((!IsCompatibleRail(e->railtype, railtype) && show_compatible)
 				|| (e->railtype != railtype && !show_compatible)
 				|| !(rvi->flags & RVI_WAGON) != is_engine ||
 				!HASBIT(e->player_avail, _local_player))
@@ -529,7 +529,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 				if (ENGINE_AVAILABLE && (
 							(RailVehInfo(eid)->power != 0 && WP(w, replaceveh_d).wagon_btnstate) ||
 							(RailVehInfo(eid)->power == 0 && !WP(w, replaceveh_d).wagon_btnstate))) {
-					if (HasPowerOnRail(e->railtype, railtype) && (_player_num_engines[eid] > 0 || EngineHasReplacementForPlayer(p, eid))) {
+					if (IsCompatibleRail(e->railtype, railtype) && (_player_num_engines[eid] > 0 || EngineHasReplacementForPlayer(p, eid))) {
 						if (sel[0] == count) selected_id[0] = eid;
 						count++;
 					}
@@ -1008,6 +1008,9 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 
 		case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
 			_railtype_selected_in_replace_gui = e->dropdown.index;
+			/* Reset scrollbar positions */
+			w->vscroll.pos  = 0;
+			w->vscroll2.pos = 0;
 			SetWindowDirty(w);
 			break;
 
