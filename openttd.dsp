@@ -339,14 +339,12 @@ SOURCE=.\openttd.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\ottdres.rc
-# End Source File
-# Begin Source File
-
 SOURCE=.\os_timer.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\ottdres.rc
+# End Source File
 # Begin Source File
 
 SOURCE=.\pathfind.c
