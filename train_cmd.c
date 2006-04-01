@@ -723,7 +723,8 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	e = GetEngine(p1);
 
 	/* Check if depot and new engine uses the same kind of tracks */
-	if (!IsCompatibleRail(e->railtype, GetRailType(tile))) return CMD_ERROR;
+	/* We need to see if the engine got power on the tile to avoid eletric engines in non-electric depots */
+	if (!HasPowerOnRail(e->railtype, GetRailType(tile))) return CMD_ERROR;
 
 	if (rvi->flags & RVI_WAGON) return CmdBuildRailWagon(p1, tile, flags);
 
