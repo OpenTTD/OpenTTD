@@ -1012,7 +1012,7 @@ static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode)
 						0 : _road_trackbits[GetRoadBits(tile)] * 0x101;
 
 				case ROAD_CROSSING: {
-					uint32 r = GetCrossingRailBits(tile) * 0x101;
+					uint32 r = (GetCrossingRoadAxis(tile) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y) * 0x101;
 
 					if (IsCrossingBarred(tile)) r *= 0x10001;
 					return r;
