@@ -43,7 +43,6 @@ static const StringID _network_error_strings[] = {
 	STR_NETWORK_ERR_CLIENT_CHEATER,
 	STR_NETWORK_ERR_CLIENT_SERVER_FULL,
 };
-assert_compile(lengthof(_network_error_strings) == NETWORK_ERROR_END);
 
 // **********
 // Sending functions
