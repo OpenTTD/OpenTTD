@@ -221,39 +221,27 @@ continue_here:;
 
 }
 
-static const int8 _get_tunlen_inc[5] = { -16, 0, 16, 0, -16 };
 
 /* Returns the end tile and the length of a tunnel. The length does not
  * include the starting tile (entry), it does include the end tile (exit).
  */
-FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, DiagDirection direction)
+FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, DiagDirection dir)
 {
+	TileIndexDiff delta = TileOffsByDir(dir);
+	uint z = GetTileZ(tile);
 	FindLengthOfTunnelResult flotr;
-	int x,y;
-	byte z;
 
 	flotr.length = 0;
 
-	x = TileX(tile) * 16;
-	y = TileY(tile) * 16;
-
-	z = GetSlopeZ(x+8, y+8);
-
-	for (;;) {
+	dir = ReverseDiagDir(dir);
+	do {
 		flotr.length++;
-
-		x += _get_tunlen_inc[direction];
-		y += _get_tunlen_inc[direction+1];
-
-		tile = TileVirtXY(x, y);
-
-		if (IsTunnelTile(tile) &&
-				// GetTunnelTransportType(tile) == type &&  // rail/road-tunnel <-- This is not necesary to check, right?
-				ReverseDiagDir(GetTunnelDirection(tile)) == direction &&
-				GetSlopeZ(x + 8, y + 8) == z) {
-			break;
-		}
-	}
+		tile += delta;
+	} while(
+		!IsTunnelTile(tile) ||
+		GetTunnelDirection(tile) != dir ||
+		GetTileZ(tile) != z
+	);
 
 	flotr.tile = tile;
 	return flotr;
