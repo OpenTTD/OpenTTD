@@ -353,26 +353,6 @@ typedef struct {
 } TileTypeProcs;
 
 
-
-#define MP_SETTYPE(x) ((x+1) << 8)
-
-enum {
-	MP_MAP2 = 1<<0,
-	MP_MAP3LO = 1<<1,
-	MP_MAP3HI = 1<<2,
-	MP_MAP5 = 1<<3,
-	MP_MAPOWNER_CURRENT = 1<<4,
-	MP_MAPOWNER = 1<<5,
-
-	MP_TYPE_MASK = 0xF << 8,
-
-	MP_MAP2_CLEAR = 1 << 12,
-	MP_MAP3LO_CLEAR = 1 << 13,
-	MP_MAP3HI_CLEAR = 1 << 14,
-
-	MP_NODIRTY = 1<<15,
-};
-
 enum {
 	WC_MAIN_WINDOW = 0x0,
 	WC_MAIN_TOOLBAR = 0x1,

@@ -7,7 +7,6 @@
 void FindLandscapeHeight(TileInfo *ti, uint x, uint y);
 
 void DoClearSquare(TileIndex tile);
-void CDECL ModifyTile(TileIndex tile, uint flags, ...);
 void RunTileLoop(void);
 
 uint GetPartialZ(int x, int y, int corners);

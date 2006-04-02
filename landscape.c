@@ -342,53 +342,6 @@ int32 CmdClearArea(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 }
 
 
-/* utility function used to modify a tile */
-void CDECL ModifyTile(TileIndex tile, uint flags, ...)
-{
-	va_list va;
-	int i;
-
-	va_start(va, flags);
-
-	if ((i = GB(flags, 8, 4)) != 0) {
-		SetTileType(tile, i - 1);
-	}
-
-	if (flags & (MP_MAP2_CLEAR | MP_MAP2)) {
-		int x = 0;
-		if (flags & MP_MAP2) x = va_arg(va, int);
-		_m[tile].m2 = x;
-	}
-
-	if (flags & (MP_MAP3LO_CLEAR | MP_MAP3LO)) {
-		int x = 0;
-		if (flags & MP_MAP3LO) x = va_arg(va, int);
-		_m[tile].m3 = x;
-	}
-
-	if (flags & (MP_MAP3HI_CLEAR | MP_MAP3HI)) {
-		int x = 0;
-		if (flags & MP_MAP3HI) x = va_arg(va, int);
-		_m[tile].m4 = x;
-	}
-
-	if (flags & (MP_MAPOWNER|MP_MAPOWNER_CURRENT)) {
-		PlayerID x = _current_player;
-		if (flags & MP_MAPOWNER) x = va_arg(va, int);
-		_m[tile].m1 = x;
-	}
-
-	if (flags & MP_MAP5) {
-		_m[tile].m5 = va_arg(va, int);
-	}
-
-	va_end(va);
-
-	if (!(flags & MP_NODIRTY))
-		MarkTileDirtyByTile(tile);
-}
-
-
 #define TILELOOP_BITS 4
 #define TILELOOP_SIZE (1 << TILELOOP_BITS)
 #define TILELOOP_ASSERTMASK ((TILELOOP_SIZE-1) + ((TILELOOP_SIZE-1) << MapLogX()))
