@@ -1999,7 +1999,7 @@ static uint GetSlopeZ_Station(const TileInfo* ti)
 	return ti->z + (ti->tileh == 0 ? 0 : 8);
 }
 
-static uint GetSlopeTileh_Station(const TileInfo *ti)
+static uint GetSlopeTileh_Station(TileIndex tile, uint tileh)
 {
 	return 0;
 }

@@ -333,7 +333,7 @@ typedef void ChangeTileOwnerProc(TileIndex tile, PlayerID old_player, PlayerID n
  * other bits that can be set? */
 typedef uint32 VehicleEnterTileProc(Vehicle *v, TileIndex tile, int x, int y);
 typedef void VehicleLeaveTileProc(Vehicle *v, TileIndex tile, int x, int y);
-typedef uint GetSlopeTilehProc(const TileInfo *ti);
+typedef uint GetSlopeTilehProc(TileIndex, uint tileh);
 
 typedef struct {
 	DrawTileProc *draw_tile_proc;

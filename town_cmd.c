@@ -150,7 +150,7 @@ static uint GetSlopeZ_Town(const TileInfo* ti)
 	return ti->z + (ti->tileh == 0 ? 0 : 8);
 }
 
-static uint GetSlopeTileh_Town(const TileInfo *ti)
+static uint GetSlopeTileh_Town(TileIndex tile, uint tileh)
 {
 	return 0;
 }

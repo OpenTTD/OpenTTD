@@ -446,9 +446,9 @@ static uint GetSlopeZ_Water(const TileInfo* ti)
 	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh) + ti->z;
 }
 
-static uint GetSlopeTileh_Water(const TileInfo *ti)
+static uint GetSlopeTileh_Water(TileIndex tile, uint tileh)
 {
-	return ti->tileh;
+	return tileh;
 }
 
 static void GetAcceptedCargo_Water(TileIndex tile, AcceptedCargo ac)

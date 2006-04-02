@@ -19,7 +19,7 @@ static uint GetSlopeZ_Dummy(const TileInfo* ti)
 	return 0;
 }
 
-static uint GetSlopeTileh_Dummy(const TileInfo* ti)
+static uint GetSlopeTileh_Dummy(TileIndex tile, uint tileh)
 {
 	return 0;
 }

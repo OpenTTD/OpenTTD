@@ -404,7 +404,7 @@ static uint GetSlopeZ_Industry(const TileInfo* ti)
 	return ti->z + (ti->tileh == 0 ? 0 : 8);
 }
 
-static uint GetSlopeTileh_Industry(const TileInfo* ti)
+static uint GetSlopeTileh_Industry(TileIndex tile, uint tileh)
 {
 	return 0;
 }

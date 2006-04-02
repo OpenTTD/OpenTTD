@@ -1143,7 +1143,7 @@ static uint GetSlopeZ_TunnelBridge(const TileInfo* ti)
 	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, tileh) + ti->z;
 }
 
-static uint GetSlopeTileh_TunnelBridge(const TileInfo* ti)
+static uint GetSlopeTileh_TunnelBridge(TileIndex tile, uint tileh)
 {
 	// not accurate, but good enough for slope graphics drawing
 	return 0;

@@ -518,9 +518,9 @@ static uint GetSlopeZ_Clear(const TileInfo* ti)
 	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh) + ti->z;
 }
 
-static uint GetSlopeTileh_Clear(const TileInfo *ti)
+static uint GetSlopeTileh_Clear(TileIndex tile, uint tileh)
 {
-	return ti->tileh;
+	return tileh;
 }
 
 static void GetAcceptedCargo_Clear(TileIndex tile, AcceptedCargo ac)

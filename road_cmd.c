@@ -863,13 +863,13 @@ static uint GetSlopeZ_Road(const TileInfo* ti)
 	}
 }
 
-static uint GetSlopeTileh_Road(const TileInfo *ti)
+static uint GetSlopeTileh_Road(TileIndex tile, uint tileh)
 {
-	if (ti->tileh == 0) return ti->tileh;
-	if (GetRoadType(ti->tile) == ROAD_NORMAL) {
-		uint f = GetRoadFoundation(ti->tileh, GetRoadBits(ti->tile));
+	if (tileh == 0) return 0;
+	if (GetRoadType(tile) == ROAD_NORMAL) {
+		uint f = GetRoadFoundation(tileh, GetRoadBits(tile));
 
-		if (f == 0) return ti->tileh;
+		if (f == 0) return tileh;
 		if (f < 15) return 0; // leveled foundation
 		return _inclined_tileh[f - 15]; // inclined foundation
 	} else {

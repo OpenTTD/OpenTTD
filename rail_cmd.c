@@ -1770,15 +1770,15 @@ static uint GetSlopeZ_Track(const TileInfo* ti)
 	}
 }
 
-static uint GetSlopeTileh_Track(const TileInfo *ti)
+static uint GetSlopeTileh_Track(TileIndex tile, uint tileh)
 {
-	if (ti->tileh == 0) return ti->tileh;
-	if (GetRailTileType(ti->tile) == RAIL_TYPE_DEPOT_WAYPOINT) {
+	if (tileh == 0) return 0;
+	if (GetRailTileType(tile) == RAIL_TYPE_DEPOT_WAYPOINT) {
 		return 0;
 	} else {
-		uint f = GetRailFoundation(ti->tileh, GetTrackBits(ti->tile));
+		uint f = GetRailFoundation(tileh, GetTrackBits(tile));
 
-		if (f == 0) return ti->tileh;
+		if (f == 0) return tileh;
 		if (f < 15) return 0; // leveled foundation
 		return _inclined_tileh[f - 15]; // inclined foundation
 	}

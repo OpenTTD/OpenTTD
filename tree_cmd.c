@@ -326,9 +326,9 @@ static uint GetSlopeZ_Trees(const TileInfo* ti)
 	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh) + ti->z;
 }
 
-static uint GetSlopeTileh_Trees(const TileInfo* ti)
+static uint GetSlopeTileh_Trees(TileIndex tile, uint tileh)
 {
-	return ti->tileh;
+	return tileh;
 }
 
 static int32 ClearTile_Trees(TileIndex tile, byte flags)

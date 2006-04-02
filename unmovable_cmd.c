@@ -212,9 +212,9 @@ static uint GetSlopeZ_Unmovable(const TileInfo* ti)
 	}
 }
 
-static uint GetSlopeTileh_Unmovable(const TileInfo *ti)
+static uint GetSlopeTileh_Unmovable(TileIndex tile, uint tileh)
 {
-	return IsOwnedLand(ti->tile) ? ti->tileh : 0;
+	return IsOwnedLand(tile) ? tileh : 0;
 }
 
 static int32 ClearTile_Unmovable(TileIndex tile, byte flags)
