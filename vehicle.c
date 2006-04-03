@@ -23,6 +23,7 @@
 #include "station.h"
 #include "rail.h"
 #include "train.h"
+#include "industry_map.h"
 #include "station_map.h"
 
 #define INVALID_COORD (-0x8000)
@@ -1272,7 +1273,7 @@ static void BubbleTick(Vehicle *v)
 		SndPlayVehicleFx(SND_31_EXTRACT, v);
 
 		tile = TileVirtXY(v->x_pos, v->y_pos);
-		if (IsTileType(tile, MP_INDUSTRY) && _m[tile].m5 == 0xA2) AddAnimatedTile(tile);
+		if (IsTileType(tile, MP_INDUSTRY) && GetIndustryGfx(tile) == 0xA2) AddAnimatedTile(tile);
 	}
 
 	v->engine_type = et;
