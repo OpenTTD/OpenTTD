@@ -26,24 +26,6 @@
 static void NetworkHandleCommandQueue(NetworkClientState* cs);
 void NetworkPopulateCompanyInfo(void);
 
-/* List of possible network errors, used by PACKET_SERVER_ERROR and PACKET_CLIENT_ERROR */
-static const StringID _network_error_strings[] = {
-	STR_NETWORK_ERR_CLIENT_GENERAL,
-	STR_NETWORK_ERR_CLIENT_DESYNC,
-	STR_NETWORK_ERR_CLIENT_SAVEGAME,
-	STR_NETWORK_ERR_CLIENT_CONNECTION_LOST,
-	STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR,
-	STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED,
-	STR_NETWORK_ERR_CLIENT_NOT_EXPECTED,
-	STR_NETWORK_ERR_CLIENT_WRONG_REVISION,
-	STR_NETWORK_ERR_CLIENT_NAME_IN_USE,
-	STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD,
-	STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH,
-	STR_NETWORK_ERR_CLIENT_KICKED,
-	STR_NETWORK_ERR_CLIENT_CHEATER,
-	STR_NETWORK_ERR_CLIENT_SERVER_FULL,
-};
-
 // **********
 // Sending functions
 //   DEF_SERVER_SEND_COMMAND has parameter: NetworkClientState *cs
@@ -162,12 +144,10 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientState *cs, Netwo
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_ERROR);
 
-	if (error >= lengthof(_network_error_strings)) error = 0;
-
 	NetworkSend_uint8(p, error);
 	NetworkSend_Packet(p, cs);
 
-	GetString(str, _network_error_strings[error]);
+	GetNetworkErrorMsg(str, error);
 
 	// Only send when the current client was in game
 	if (cs->status > STATUS_AUTH) {
@@ -901,8 +881,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 	// This packets means a client noticed an error and is reporting this
 	//  to us. Display the error and report it to the other clients
 	NetworkClientState *new_cs;
-	NetworkErrorCode errorno = NetworkRecv_uint8(cs, p);
 	char str[100];
+	NetworkErrorCode errorno = NetworkRecv_uint8(cs, p);
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];
 
 	// The client was never joined.. thank the client for the packet, but ignore it
@@ -913,9 +893,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 
 	NetworkGetClientName(client_name, sizeof(client_name), cs);
 
-	if (errorno >= lengthof(_network_error_strings)) errorno = 0;
-
-	GetString(str, _network_error_strings[errorno]);
+	GetNetworkErrorMsg(str, errorno);
 
 	DEBUG(net, 2)("[NET] %s reported an error and is closing his connection (%s)", client_name, str);
 

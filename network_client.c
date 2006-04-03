@@ -676,15 +676,12 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR_QUIT)
 {
-	int errorno;
 	char str[100];
 	uint16 index;
 	NetworkClientInfo *ci;
 
 	index = NetworkRecv_uint16(MY_CLIENT, p);
-	errorno = NetworkRecv_uint8(MY_CLIENT, p);
-
-	GetString(str, STR_NETWORK_ERR_CLIENT_GENERAL + errorno);
+	GetNetworkErrorMsg(str, NetworkRecv_uint8(MY_CLIENT, p));
 
 	ci = NetworkFindClientInfoFromIndex(index);
 	if (ci != NULL) {
