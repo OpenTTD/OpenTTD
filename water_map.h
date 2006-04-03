@@ -68,6 +68,12 @@ static inline DiagDirection GetLockDirection(TileIndex t)
 	return (DiagDirection)GB(_m[t].m5, 0, 2);
 }
 
+static inline byte GetSection(TileIndex t)
+{
+	assert(GetWaterTileType(t) == WATER_LOCK || GetWaterTileType(t) == WATER_DEPOT);
+	return GB(_m[t].m5, 0, 4);
+}
+
 
 static inline void MakeWater(TileIndex t)
 {

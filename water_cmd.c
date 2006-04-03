@@ -266,56 +266,58 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 static int32 ClearTile_Water(TileIndex tile, byte flags)
 {
-	byte m5 = _m[tile].m5;
+	switch (GetWaterTileType(tile)) {
+		case WATER_CLEAR:
+			if (flags & DC_NO_WATER) return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
 
-	if (m5 <= 1) { // water and shore
-		// Allow building on water? It's ok to build on shores.
-		if (flags & DC_NO_WATER && m5 != 1)
-			return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
+			// Make sure no vehicle is on the tile
+			if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
-		// Make sure no vehicle is on the tile
-		if (!EnsureNoVehicle(tile)) return CMD_ERROR;
+			// Make sure it's not an edge tile.
+			if (!IS_INT_INSIDE(TileX(tile), 1, MapMaxX() - 1) ||
+					!IS_INT_INSIDE(TileY(tile), 1, MapMaxY() - 1)) {
+				return_cmd_error(STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP);
+			}
 
-		// Make sure it's not an edge tile.
-		if (!IS_INT_INSIDE(TileX(tile), 1, MapMaxX() - 1) ||
-				!IS_INT_INSIDE(TileY(tile), 1, MapMaxY() - 1)) {
-			return_cmd_error(STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP);
-		}
-
-		if (m5 == 0) {
 			if (flags & DC_EXEC) DoClearSquare(tile);
 			return _price.clear_water;
-		} else if (m5 == 1) {
-			uint slope = GetTileSlope(tile,NULL);
+		case WATER_COAST:
+			{
+				uint slope = GetTileSlope(tile, NULL);
 
-			if (flags & DC_EXEC) DoClearSquare(tile);
-			if (slope == 8 || slope == 4 || slope == 2 || slope == 1) {
-				return _price.clear_water;
-			} else {
-				return _price.purchase_land;
+				// Make sure no vehicle is on the tile
+				if (!EnsureNoVehicle(tile)) return CMD_ERROR;
+
+				// Make sure it's not an edge tile.
+				if (!IS_INT_INSIDE(TileX(tile), 1, MapMaxX() - 1) ||
+						!IS_INT_INSIDE(TileY(tile), 1, MapMaxY() - 1)) {
+					return_cmd_error(STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP);
+				}
+
+				if (flags & DC_EXEC) DoClearSquare(tile);
+				if (slope == 8 || slope == 4 || slope == 2 || slope == 1) {
+					return _price.clear_water;
+				} else {
+					return _price.purchase_land;
+				}
 			}
-		} else {
-			return CMD_ERROR;
-		}
-	} else if ((m5 & 0x10) == 0x10) {
-		// shiplift
+		case WATER_LOCK:
+			{
+				static const TileIndexDiffC _shiplift_tomiddle_offs[] = {
+					{ 0,  0}, {0,  0}, { 0, 0}, {0,  0}, // middle
+					{-1,  0}, {0,  1}, { 1, 0}, {0, -1}, // lower
+					{ 1,  0}, {0, -1}, {-1, 0}, {0,  1}, // upper
+				};
 
-		static const TileIndexDiffC _shiplift_tomiddle_offs[] = {
-			{ 0,  0}, {0,  0}, { 0, 0}, {0,  0}, // middle
-			{-1,  0}, {0,  1}, { 1, 0}, {0, -1}, // lower
-			{ 1,  0}, {0, -1}, {-1, 0}, {0,  1}, // upper
-		};
+				if (flags & DC_AUTO) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
+				if (_current_player == OWNER_WATER) return CMD_ERROR;
+				// move to the middle tile..
+				return RemoveShiplift(tile + ToTileIndexDiff(_shiplift_tomiddle_offs[GetSection(tile)]), flags);
+			}
+		case WATER_DEPOT:
+			if (flags & DC_AUTO) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
 
-		if (flags & DC_AUTO) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
-		// don't allow water to delete it.
-		if (_current_player == OWNER_WATER) return CMD_ERROR;
-		// move to the middle tile..
-		return RemoveShiplift(tile + ToTileIndexDiff(_shiplift_tomiddle_offs[m5 & 0xF]), flags);
-	} else {
-		// ship depot
-		if (flags & DC_AUTO) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
-
-		return RemoveShipDepot(tile, flags);
+			return RemoveShipDepot(tile, flags);
 	}
 }
 
@@ -417,12 +419,12 @@ static void DrawTile_Water(TileInfo *ti)
 			break;
 
 		case WATER_LOCK: {
-			const WaterDrawTileStruct *t = _shiplift_display_seq[ti->map5 & 0xF];
+			const WaterDrawTileStruct *t = _shiplift_display_seq[GetSection(ti->tile)];
 			DrawWaterStuff(ti, t, 0, ti->z > t[3].delta_y ? 24 : 0);
 		} break;
 
 		case WATER_DEPOT:
-			DrawWaterStuff(ti, _shipdepot_display_seq[ti->map5 & 0x7F], PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)), 0);
+			DrawWaterStuff(ti, _shipdepot_display_seq[GetSection(ti->tile)], PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)), 0);
 			break;
 	}
 }
