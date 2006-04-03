@@ -136,70 +136,64 @@ static void DrawTile_Unmovable(TileInfo *ti)
 {
 	uint32 image, ormod;
 
-	if (!(ti->map5 & 0x80)) {
-		if (ti->map5 == 2) {
+	switch (GetUnmovableType(ti->tile)) {
+		case UNMOVABLE_TRANSMITTER:
+		case UNMOVABLE_LIGHTHOUSE:
+			{
+				const DrawTileUnmovableStruct *dtus;
 
-			// statue
+				if (ti->tileh) DrawFoundation(ti, ti->tileh);
+				DrawClearLandTile(ti, 2);
+
+				dtus = &_draw_tile_unmovable_data[GetUnmovableType(ti->tile)];
+
+				image = dtus->image;
+				if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
+
+				AddSortableSpriteToDraw(image, ti->x | dtus->subcoord_x, ti->y | dtus->subcoord_y,
+					dtus->width, dtus->height, dtus->z_size, ti->z);
+			} break;
+		case UNMOVABLE_STATUE:
 			DrawGroundSprite(SPR_CONCRETE_GROUND);
 
 			image = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
 			image += PALETTE_MODIFIER_COLOR | SPR_STATUE_COMPANY;
-			if (_display_opt & DO_TRANS_BUILDINGS)
-				MAKE_TRANSPARENT(image);
+			if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 			AddSortableSpriteToDraw(image, ti->x, ti->y, 16, 16, 25, ti->z);
-		} else if (ti->map5 == 3) {
-
-			// "owned by" sign
+			break;
+		case UNMOVABLE_OWNED_LAND:
 			DrawClearLandTile(ti, 0);
 
 			AddSortableSpriteToDraw(
 				PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)) + PALETTE_MODIFIER_COLOR + SPR_BOUGHT_LAND,
-				ti->x+8, ti->y+8,
-				1, 1,
-				10,
-				GetSlopeZ(ti->x+8, ti->y+8)
+				ti->x+8, ti->y+8, 1, 1, 10, GetSlopeZ(ti->x+8, ti->y+8)
 			);
-		} else {
-			// lighthouse or transmitter
 
-			const DrawTileUnmovableStruct *dtus;
+			break;
+		default:
+			{
+				const DrawTileSeqStruct *dtss;
+				const DrawTileSprites *t;
 
-			if (ti->tileh) DrawFoundation(ti, ti->tileh);
-			DrawClearLandTile(ti, 2);
+				assert(IsCompanyHQ(ti->tile));
+				if (ti->tileh) DrawFoundation(ti, ti->tileh);
 
-			dtus = &_draw_tile_unmovable_data[ti->map5];
+				ormod = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
 
-			image = dtus->image;
-			if (_display_opt & DO_TRANS_BUILDINGS)
-				MAKE_TRANSPARENT(image);
+				t = &_unmovable_display_datas[GetCompanyHQSection(ti->tile)];
+				DrawGroundSprite(t->ground_sprite | ormod);
 
-			AddSortableSpriteToDraw(image,
-				ti->x | dtus->subcoord_x,
-				ti->y | dtus->subcoord_y,
-				dtus->width, dtus->height,
-				dtus->z_size, ti->z);
-		}
-	} else {
-		const DrawTileSeqStruct *dtss;
-		const DrawTileSprites *t;
-
-		if (ti->tileh) DrawFoundation(ti, ti->tileh);
-
-		ormod = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
-
-		t = &_unmovable_display_datas[ti->map5 & 0x7F];
-		DrawGroundSprite(t->ground_sprite | ormod);
-
-		foreach_draw_tile_seq(dtss, t->seq) {
-			image = dtss->image;
-			if (_display_opt & DO_TRANS_BUILDINGS) {
-				MAKE_TRANSPARENT(image);
-			} else {
-				image |= ormod;
-			}
-			AddSortableSpriteToDraw(image, ti->x + dtss->delta_x, ti->y + dtss->delta_y,
-				dtss->width, dtss->height, dtss->unk, ti->z + dtss->delta_z);
-		}
+				foreach_draw_tile_seq(dtss, t->seq) {
+					image = dtss->image;
+					if (_display_opt & DO_TRANS_BUILDINGS) {
+						MAKE_TRANSPARENT(image);
+					} else {
+						image |= ormod;
+					}
+					AddSortableSpriteToDraw(image, ti->x + dtss->delta_x, ti->y + dtss->delta_y,
+						dtss->width, dtss->height, dtss->unk, ti->z + dtss->delta_z);
+				}
+			} break;
 	}
 }
 
@@ -219,7 +213,7 @@ static uint GetSlopeTileh_Unmovable(TileIndex tile, uint tileh)
 
 static int32 ClearTile_Unmovable(TileIndex tile, byte flags)
 {
-	if (_m[tile].m5 & 0x80) {
+	if (IsCompanyHQ(tile)) {
 		if (_current_player == OWNER_WATER) return DestroyCompanyHQ(tile, DC_EXEC);
 		return_cmd_error(STR_5804_COMPANY_HEADQUARTERS_IN);
 	}
@@ -241,18 +235,14 @@ static int32 ClearTile_Unmovable(TileIndex tile, byte flags)
 
 static void GetAcceptedCargo_Unmovable(TileIndex tile, AcceptedCargo ac)
 {
-	byte m5 = _m[tile].m5;
 	uint level; // HQ level (depends on company performance) in the range 1..5.
 
-	if (!(m5 & 0x80)) {
-		/* not used */
-		return;
-	}
+	if (!IsCompanyHQ(tile)) return;
 
 	/* HQ accepts passenger and mail; but we have to divide the values
 	 * between 4 tiles it occupies! */
 
-	level = (m5 & ~0x80) / 4 + 1;
+	level = GetCompanyHQSize(tile) + 1;
 
 	// Top town building generates 10, so to make HQ interesting, the top
 	// type makes 20.
@@ -285,19 +275,15 @@ static void AnimateTile_Unmovable(TileIndex tile)
 
 static void TileLoop_Unmovable(TileIndex tile)
 {
-	byte m5 = _m[tile].m5;
 	uint level; // HQ level (depends on company performance) in the range 1..5.
 	uint32 r;
 
-	if (!(m5 & 0x80)) {
-		/* not used */
-		return;
-	}
+	if (!IsCompanyHQ(tile)) return;
 
 	/* HQ accepts passenger and mail; but we have to divide the values
 	 * between 4 tiles it occupies! */
 
-	level = GB(m5, 0, 7) / 4 + 1;
+	level = GetCompanyHQSize(tile) + 1;
 	assert(level < 6);
 
 	r = Random();
@@ -326,9 +312,7 @@ static uint32 GetTileTrackStatus_Unmovable(TileIndex tile, TransportType mode)
 
 static void ClickTile_Unmovable(TileIndex tile)
 {
-	if (_m[tile].m5 & 0x80) {
-		ShowPlayerCompany(GetTileOwner(tile));
-	}
+	if (IsCompanyHQ(tile)) ShowPlayerCompany(GetTileOwner(tile));
 }
 
 
@@ -401,7 +385,7 @@ static void ChangeTileOwner_Unmovable(TileIndex tile, PlayerID old_player, Playe
 {
 	if (!IsTileOwner(tile, old_player)) return;
 
-	if (_m[tile].m5 == 3 && new_player != OWNER_SPECTATOR) {
+	if (IsOwnedLand(tile) && new_player != OWNER_SPECTATOR) {
 		SetTileOwner(tile, new_player);
 	} else {
 		DoClearSquare(tile);

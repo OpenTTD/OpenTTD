@@ -1,5 +1,10 @@
 /* $Id$ */
 
+enum {
+	HQ_NUM_TILE = 4,
+	HQ_NUM_SIZE = 5
+};
+
 typedef enum UnmovableType {
 	UNMOVABLE_TRANSMITTER = 0,
 	UNMOVABLE_LIGHTHOUSE  = 1,
@@ -9,7 +14,10 @@ typedef enum UnmovableType {
 	UNMOVABLE_HQ_WEST     = 0x81,
 	UNMOVABLE_HQ_EAST     = 0x82,
 	UNMOVABLE_HQ_SOUTH    = 0x83,
+
+	UNMOVABLE_HQ_END      = UNMOVABLE_HQ_NORTH + HQ_NUM_SIZE * HQ_NUM_TILE
 } UnmovableType;
+
 
 
 static inline UnmovableType GetUnmovableType(TileIndex t)
@@ -36,6 +44,23 @@ static inline bool IsOwnedLand(TileIndex t)
 static inline bool IsOwnedLandTile(TileIndex t)
 {
 	return IsTileType(t, MP_UNMOVABLE) && IsOwnedLand(t);
+}
+
+static inline bool IsCompanyHQ(TileIndex t)
+{
+	return IS_INT_INSIDE(GetUnmovableType(t), UNMOVABLE_HQ_NORTH, UNMOVABLE_HQ_END);
+}
+
+static inline byte GetCompanyHQSize(TileIndex t)
+{
+	assert(IsTileType(t, MP_UNMOVABLE) && IsCompanyHQ(t));
+	return GB(_m[t].m5, 2, 3);
+}
+
+static inline byte GetCompanyHQSection(TileIndex t)
+{
+	assert(IsTileType(t, MP_UNMOVABLE) && IsCompanyHQ(t));
+	return GB(_m[t].m5, 0, 5);
 }
 
 
