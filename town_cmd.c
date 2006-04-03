@@ -23,6 +23,7 @@
 #include "economy.h"
 #include "gui.h"
 #include "unmovable_map.h"
+#include "water_map.h"
 #include "variables.h"
 #include "bridge.h"
 
@@ -545,8 +546,6 @@ static void LevelTownLand(TileIndex tile)
 	}
 }
 
-#define IS_WATER_TILE(t) (IsTileType((t), MP_WATER) && _m[(t)].m5 == 0)
-
 static void GrowTownInTile(TileIndex* tile_ptr, RoadBits mask, int block, Town* t1)
 {
 	RoadBits rcmd;
@@ -621,7 +620,7 @@ static void GrowTownInTile(TileIndex* tile_ptr, RoadBits mask, int block, Town* 
 		tmptile = TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[i]));
 
 		// Don't do it if it reaches to water.
-		if (IS_WATER_TILE(tmptile)) return;
+		if (IsClearWaterTile(tmptile)) return;
 
 		// Build a house at the edge. 60% chance or
 		//  always ok if no road allowed.
@@ -643,7 +642,7 @@ static void GrowTownInTile(TileIndex* tile_ptr, RoadBits mask, int block, Town* 
 	}
 
 	// Return if a water tile
-	if (IsTileType(tile, MP_WATER) && _m[tile].m5 == 0) return;
+	if (IsClearWaterTile(tile)) return;
 
 	// Determine direction of slope,
 	//  and build a road if not a special slope.
@@ -669,7 +668,7 @@ build_road_and_exit:
 		if (++j == 0)
 			goto build_road_and_exit;
 		tmptile = TILE_MASK(tmptile + TileOffsByDir(i));
-	} while (IS_WATER_TILE(tmptile));
+	} while (IsClearWaterTile(tmptile));
 
 	// no water tiles in between?
 	if (j == -10)
@@ -691,8 +690,6 @@ build_road_and_exit:
 		} while (--j != 0);
 	}
 }
-#undef IS_WATER_TILE
-
 
 // Returns true if a house was built, or no if the build failed.
 static int GrowTownAtRoad(Town *t, TileIndex tile)
