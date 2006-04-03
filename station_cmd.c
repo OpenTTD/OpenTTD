@@ -1449,14 +1449,14 @@ static int32 RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 
 // FIXME -- need to move to its corresponding Airport variable
 // Country Airfield (small)
-static const byte _airport_map5_tiles_country[] = {
+static const byte _airport_sections_country[] = {
 	54, 53, 52, 65,
 	58, 57, 56, 55,
 	64, 63, 63, 62
 };
 
 // City Airport (large)
-static const byte _airport_map5_tiles_town[] = {
+static const byte _airport_sections_town[] = {
 	31,  9, 33,  9,  9, 32,
 	27, 36, 29, 34,  8, 10,
 	30, 11, 35, 13, 20, 21,
@@ -1466,7 +1466,7 @@ static const byte _airport_map5_tiles_town[] = {
 };
 
 // Metropolitain Airport (large) - 2 runways
-static const byte _airport_map5_tiles_metropolitan[] = {
+static const byte _airport_sections_metropolitan[] = {
 	 31,  9, 33,  9,  9, 32,
 	 27, 36, 29, 34,  8, 10,
 	 30, 11, 35, 13, 20, 21,
@@ -1476,7 +1476,7 @@ static const byte _airport_map5_tiles_metropolitan[] = {
 };
 
 // International Airport (large) - 2 runways
-static const byte _airport_map5_tiles_international[] = {
+static const byte _airport_sections_international[] = {
   88, 89, 89, 89, 89, 89,  88,
  	51,  8,  8,  8,  8,  8,  32,
 	30,  8, 11, 27, 11,  8,  10,
@@ -1487,16 +1487,16 @@ static const byte _airport_map5_tiles_international[] = {
 };
 
 // Heliport
-static const byte _airport_map5_tiles_heliport[] = {
+static const byte _airport_sections_heliport[] = {
 	66,
 };
 
 static const byte * const _airport_map5_tiles[] = {
-	_airport_map5_tiles_country,				// Country Airfield (small)
-	_airport_map5_tiles_town,						// City Airport (large)
-	_airport_map5_tiles_heliport,				// Heliport
-	_airport_map5_tiles_metropolitan,   // Metropolitain Airport (large)
-	_airport_map5_tiles_international,	// International Airport (xlarge)
+	_airport_sections_country,				// Country Airfield (small)
+	_airport_sections_town,						// City Airport (large)
+	_airport_sections_heliport,				// Heliport
+	_airport_sections_metropolitan,   // Metropolitain Airport (large)
+	_airport_sections_international,	// International Airport (xlarge)
 };
 
 /** Place an Airport.
