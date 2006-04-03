@@ -419,7 +419,7 @@ do_clear:;
 	return cost;
 }
 
-int32 DoConvertStreetRail(TileIndex tile, uint totype, bool exec)
+int32 DoConvertStreetRail(TileIndex tile, RailType totype, bool exec)
 {
 	// not a railroad crossing?
 	if (!IsLevelCrossing(tile)) return CMD_ERROR;

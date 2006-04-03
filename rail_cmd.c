@@ -916,9 +916,9 @@ static int32 DoConvertRail(TileIndex tile, RailType totype, bool exec)
 	return _price.build_rail / 2;
 }
 
-extern int32 DoConvertStationRail(TileIndex tile, uint totype, bool exec);
-extern int32 DoConvertStreetRail(TileIndex tile, uint totype, bool exec);
-extern int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec);
+extern int32 DoConvertStationRail(TileIndex tile, RailType totype, bool exec);
+extern int32 DoConvertStreetRail(TileIndex tile, RailType totype, bool exec);
+extern int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec);
 
 /** Convert one rail type to the other. You can convert normal rail to
  * monorail/maglev easily or vice-versa.

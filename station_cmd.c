@@ -1243,7 +1243,7 @@ static int32 RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 	return cost;
 }
 
-int32 DoConvertStationRail(TileIndex tile, uint totype, bool exec)
+int32 DoConvertStationRail(TileIndex tile, RailType totype, bool exec)
 {
 	const Station* st = GetStationByTile(tile);
 

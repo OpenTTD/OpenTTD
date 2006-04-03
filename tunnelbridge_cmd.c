@@ -716,7 +716,7 @@ static int32 ClearTile_TunnelBridge(TileIndex tile, byte flags)
 	return CMD_ERROR;
 }
 
-int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
+int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 {
 	TileIndex endtile;
 	uint length;
