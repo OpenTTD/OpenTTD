@@ -711,7 +711,7 @@ void DrawStationCoverageAreaText(int sx, int sy, uint mask, int rad) {
 	TileIndex tile = TileVirtXY(_thd.pos.x, _thd.pos.y);
 	AcceptedCargo accepts;
 	if (tile < MapSize()) {
-		GetAcceptanceAroundTiles(accepts, tile, _thd.size.x / 16, _thd.size.y / 16 , rad);
+		GetAcceptanceAroundTiles(accepts, tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE , rad);
 		DrawStationCoverageText(accepts, sx, sy, mask);
 	}
 }

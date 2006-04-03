@@ -367,7 +367,7 @@ static VehicleID _vehicle_position_hash[0x1000];
 void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 {
 	int x,y,x2,y2;
-	Point pt = RemapCoords(TileX(tile) * 16, TileY(tile) * 16, 0);
+	Point pt = RemapCoords(TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE, 0);
 
 	x2 = ((pt.x + 104) & 0x1F80) >> 7;
 	x  = ((pt.x - 174) & 0x1F80) >> 7;

@@ -191,7 +191,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 					0);
 			}
 		}
-		if (v->y_pos >= ((int)MapSizeY() + 9) * 16 - 1)
+		if (v->y_pos >= ((int)MapSizeY() + 9) * TILE_SIZE - 1)
 			DeleteDisasterVeh(v);
 		return;
 	}
@@ -266,9 +266,9 @@ static void DisasterTick_UFO(Vehicle *v)
 
 	if (v->current_order.station == 0) {
 // fly around randomly
-		int x = TileX(v->dest_tile) * 16;
-		int y = TileY(v->dest_tile) * 16;
-		if (abs(x - v->x_pos) + abs(y - v->y_pos) >= 16) {
+		int x = TileX(v->dest_tile) * TILE_SIZE;
+		int y = TileY(v->dest_tile) * TILE_SIZE;
+		if (abs(x - v->x_pos) + abs(y - v->y_pos) >= TILE_SIZE) {
 			v->direction = GetDirectionTowards(v, x, y);
 			GetNewVehiclePos(v, &gp);
 			SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
@@ -299,7 +299,7 @@ static void DisasterTick_UFO(Vehicle *v)
 
 		dist = abs(v->x_pos - u->x_pos) + abs(v->y_pos - u->y_pos);
 
-		if (dist < 16 && !(u->vehstatus&VS_HIDDEN) && u->breakdown_ctr==0) {
+		if (dist < TILE_SIZE && !(u->vehstatus&VS_HIDDEN) && u->breakdown_ctr==0) {
 			u->breakdown_ctr = 3;
 			u->breakdown_delay = 140;
 		}
@@ -308,7 +308,7 @@ static void DisasterTick_UFO(Vehicle *v)
 		GetNewVehiclePos(v, &gp);
 
 		z = v->z_pos;
-		if (dist <= 16 && z > u->z_pos) z--;
+		if (dist <= TILE_SIZE && z > u->z_pos) z--;
 		SetDisasterVehiclePos(v, gp.x, gp.y, z);
 
 		if (z <= u->z_pos && (u->vehstatus&VS_HIDDEN)==0) {
@@ -365,8 +365,8 @@ static void DisasterTick_2(Vehicle *v)
 	if (v->current_order.station == 2) {
 		if (!(v->tick_counter&3)) {
 			Industry *i = GetIndustry(v->dest_tile);
-			int x = TileX(i->xy) * 16;
-			int y = TileY(i->xy) * 16;
+			int x = TileX(i->xy) * TILE_SIZE;
+			int y = TileY(i->xy) * TILE_SIZE;
 			uint32 r = Random();
 
 			CreateEffectVehicleAbove(
@@ -397,10 +397,10 @@ static void DisasterTick_2(Vehicle *v)
 		TileIndex tile;
 		uint ind;
 
-		x = v->x_pos - 15*16;
+		x = v->x_pos - 15 * TILE_SIZE;
 		y = v->y_pos;
 
-		if ( (uint)x > MapMaxX() * 16-1)
+		if ( (uint)x > MapMaxX() * TILE_SIZE - 1)
 			return;
 
 		tile = TileVirtXY(x, y);
@@ -429,7 +429,7 @@ static void DisasterTick_3(Vehicle *v)
 	GetNewVehiclePos(v, &gp);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 
-	if (gp.x > (int)MapSizeX() * 16 + 9*16 - 1) {
+	if (gp.x > (int)MapSizeX() * TILE_SIZE + 9 * TILE_SIZE - 1) {
 		DeleteDisasterVeh(v);
 		return;
 	}
@@ -437,8 +437,8 @@ static void DisasterTick_3(Vehicle *v)
 	if (v->current_order.station == 2) {
 		if (!(v->tick_counter&3)) {
 			Industry *i = GetIndustry(v->dest_tile);
-			int x = TileX(i->xy) * 16;
-			int y = TileY(i->xy) * 16;
+			int x = TileX(i->xy) * TILE_SIZE;
+			int y = TileY(i->xy) * TILE_SIZE;
 			uint32 r = Random();
 
 			CreateEffectVehicleAbove(
@@ -469,10 +469,10 @@ static void DisasterTick_3(Vehicle *v)
 		TileIndex tile;
 		uint ind;
 
-		x = v->x_pos - 15*16;
+		x = v->x_pos - 15 * TILE_SIZE;
 		y = v->y_pos;
 
-		if ( (uint)x > MapMaxX() * 16-1)
+		if ( (uint)x > MapMaxX() * TILE_SIZE - 1)
 			return;
 
 		tile = TileVirtXY(x, y);
@@ -516,8 +516,8 @@ static void DisasterTick_4(Vehicle *v)
 	v->tick_counter++;
 
 	if (v->current_order.station == 1) {
-		int x = TileX(v->dest_tile) * 16 + 8;
-		int y = TileY(v->dest_tile) * 16 + 8;
+		int x = TileX(v->dest_tile) * TILE_SIZE + 8;
+		int y = TileY(v->dest_tile) * TILE_SIZE + 8;
 		if (abs(v->x_pos - x) + abs(v->y_pos - y) >= 8) {
 			v->direction = GetDirectionTowards(v, x, y);
 
@@ -536,7 +536,7 @@ static void DisasterTick_4(Vehicle *v)
 
 		FOR_ALL_VEHICLES(u) {
 			if (u->type == VEH_Train || u->type == VEH_Road) {
-				if (abs(u->x_pos - v->x_pos) + abs(u->y_pos - v->y_pos) <= 12*16) {
+				if (abs(u->x_pos - v->x_pos) + abs(u->y_pos - v->y_pos) <= 12 * TILE_SIZE) {
 					u->breakdown_ctr = 5;
 					u->breakdown_delay = 0xF0;
 				}
@@ -556,7 +556,7 @@ static void DisasterTick_4(Vehicle *v)
 			return;
 		}
 
-		InitializeDisasterVehicle(u, -6 * 16, v->y_pos, 135, DIR_SW, 11);
+		InitializeDisasterVehicle(u, -6 * TILE_SIZE, v->y_pos, 135, DIR_SW, 11);
 		u->u.disaster.unk2 = v->index;
 
 		w = ForceAllocateSpecialVehicle();
@@ -564,13 +564,13 @@ static void DisasterTick_4(Vehicle *v)
 			return;
 
 		u->next = w;
-		InitializeDisasterVehicle(w, -6 * 16, v->y_pos, 0, DIR_SW, 12);
+		InitializeDisasterVehicle(w, -6 * TILE_SIZE, v->y_pos, 0, DIR_SW, 12);
 		w->vehstatus |= VS_DISASTER;
 	} else if (v->current_order.station < 1) {
 
-		int x = TileX(v->dest_tile) * 16;
-		int y = TileY(v->dest_tile) * 16;
-		if (abs(x - v->x_pos) + abs(y - v->y_pos) >= 16) {
+		int x = TileX(v->dest_tile) * TILE_SIZE;
+		int y = TileY(v->dest_tile) * TILE_SIZE;
+		if (abs(x - v->x_pos) + abs(y - v->y_pos) >= TILE_SIZE) {
 			v->direction = GetDirectionTowards(v, x, y);
 			GetNewVehiclePos(v, &gp);
 			SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
@@ -610,14 +610,14 @@ static void DisasterTick_4b(Vehicle *v)
 	GetNewVehiclePos(v, &gp);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 
-	if (gp.x > (int)MapSizeX() * 16 + 9*16 - 1) {
+	if (gp.x > (int)MapSizeX() * TILE_SIZE + 9 * TILE_SIZE - 1) {
 		DeleteDisasterVeh(v);
 		return;
 	}
 
 	if (v->current_order.station == 0) {
 		u = GetVehicle(v->u.disaster.unk2);
-		if (abs(v->x_pos - u->x_pos) > 16)
+		if (abs(v->x_pos - u->x_pos) > TILE_SIZE)
 			return;
 		v->current_order.station = 1;
 
@@ -715,13 +715,13 @@ static void Disaster0_Init(void)
 
 	/* Pick a random place, unless we find
 	    a small airport */
-	x = TileX(Random()) * 16 + 8;
+	x = TileX(Random()) * TILE_SIZE + 8;
 
 	FOR_ALL_STATIONS(st) {
 		if (st->xy && st->airport_tile != 0 &&
 				st->airport_type <= 1 &&
 				IS_HUMAN_PLAYER(st->owner)) {
-			x = (TileX(st->xy) + 2) * 16;
+			x = (TileX(st->xy) + 2) * TILE_SIZE;
 			break;
 		}
 	}
@@ -745,7 +745,7 @@ static void Disaster1_Init(void)
 	if (v == NULL)
 		return;
 
-	x = TileX(Random()) * 16 + 8;
+	x = TileX(Random()) * TILE_SIZE + 8;
 
 	InitializeDisasterVehicle(v, x, 0, 135, DIR_SE, 2);
 	v->dest_tile = TileXY(MapSizeX() / 2, MapSizeY() / 2);
@@ -783,8 +783,8 @@ static void Disaster2_Init(void)
 	if (v == NULL)
 		return;
 
-	x = (MapSizeX() + 9) * 16 - 1;
-	y = TileY(found->xy) * 16 + 37;
+	x = (MapSizeX() + 9) * TILE_SIZE - 1;
+	y = TileY(found->xy) * TILE_SIZE + 37;
 
 	InitializeDisasterVehicle(v, x, y, 135, DIR_NE, 4);
 
@@ -819,8 +819,8 @@ static void Disaster3_Init(void)
 	if (v == NULL)
 		return;
 
-	x = -16 * 16;
-	y = TileY(found->xy) * 16 + 37;
+	x = -16 * TILE_SIZE;
+	y = TileY(found->xy) * TILE_SIZE + 37;
 
 	InitializeDisasterVehicle(v, x, y, 135, DIR_SW, 6);
 
@@ -845,9 +845,9 @@ static void Disaster4_Init(void)
 
 	if (v == NULL) return;
 
-	x = TileX(Random()) * 16 + 8;
+	x = TileX(Random()) * TILE_SIZE + 8;
 
-	y = MapMaxX() * 16 - 1;
+	y = MapMaxX() * TILE_SIZE - 1;
 	InitializeDisasterVehicle(v, x, y, 135, DIR_NW, 9);
 	v->dest_tile = TileXY(MapSizeX() / 2, MapSizeY() / 2);
 	v->age = 0;
@@ -872,10 +872,10 @@ static void Disaster5_Init(void)
 	if (v == NULL) return;
 
 	r = Random();
-	x = TileX(r) * 16 + 8;
+	x = TileX(r) * TILE_SIZE + 8;
 
 	if (r & 0x80000000) {
-		y = MapMaxX() * 16 - 8 - 1;
+		y = MapMaxX() * TILE_SIZE - 8 - 1;
 		dir = DIR_NW;
 	} else {
 		y = 8;
@@ -896,10 +896,10 @@ static void Disaster6_Init(void)
 	if (v == NULL) return;
 
 	r = Random();
-	x = TileX(r) * 16 + 8;
+	x = TileX(r) * TILE_SIZE + 8;
 
 	if (r & 0x80000000) {
-		y = MapMaxX() * 16 - 8 - 1;
+		y = MapMaxX() * TILE_SIZE - 8 - 1;
 		dir = DIR_NW;
 	} else {
 		y = 8;

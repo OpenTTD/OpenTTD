@@ -1448,7 +1448,7 @@ int LoadUnloadVehicle(Vehicle *v)
 
 	if (v->type == VEH_Train) {
 		// Each platform tile is worth 2 rail vehicles.
-		int overhang = v->u.rail.cached_total_length - GetStationPlatforms(st, v->tile) * 16;
+		int overhang = v->u.rail.cached_total_length - GetStationPlatforms(st, v->tile) * TILE_SIZE;
 		if (overhang > 0) {
 			unloading_time <<= 1;
 			unloading_time += (overhang * unloading_time) / 8;

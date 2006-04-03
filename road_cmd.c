@@ -943,8 +943,8 @@ static void TileLoop_Road(TileIndex tile)
 
 					SndPlayTileFx(SND_21_JACKHAMMER, tile);
 					CreateEffectVehicleAbove(
-						TileX(tile) * 16 + 7,
-						TileY(tile) * 16 + 7,
+						TileX(tile) * TILE_SIZE + 7,
+						TileY(tile) * TILE_SIZE + 7,
 						0,
 						EV_BULLDOZER);
 					MarkTileDirtyByTile(tile);

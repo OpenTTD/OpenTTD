@@ -317,7 +317,7 @@ byte GetCommandFlags(uint cmd) {return _command_proc_table[cmd & 0xFF].flags;}
 
 int32 DoCommandByTile(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 {
-	return DoCommand(TileX(tile) * 16, TileY(tile) * 16, p1, p2, flags, procc);
+	return DoCommand(TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE, p1, p2, flags, procc);
 }
 
 
@@ -401,8 +401,8 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	bool notest;
 	StringID error_part1;
 
-	int x = TileX(tile) * 16;
-	int y = TileY(tile) * 16;
+	int x = TileX(tile) * TILE_SIZE;
+	int y = TileY(tile) * TILE_SIZE;
 
 	/* Do not even think about executing out-of-bounds tile-commands */
 	if (tile >= MapSize()) {

@@ -135,8 +135,8 @@ void AssignWindowViewport(Window *w, int x, int y,
 		veh = GetVehicle(WP(w, vp_d).follow_vehicle);
 		pt = MapXYZToViewport(vp, veh->x_pos, veh->y_pos, veh->z_pos);
 	} else {
-		uint x = TileX(follow_flags) * 16;
-		uint y = TileY(follow_flags) * 16;
+		uint x = TileX(follow_flags) * TILE_SIZE;
+		uint y = TileY(follow_flags) * TILE_SIZE;
 
 		WP(w, vp_d).follow_vehicle = INVALID_VEHICLE;
 		pt = MapXYZToViewport(vp, x, y, GetSlopeZ(x, y));
@@ -310,7 +310,7 @@ static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
 	pt.x = a+z;
 	pt.y = b+z;
 
-	if ((uint)pt.x >= MapMaxX() * 16 || (uint)pt.y >= MapMaxY() * 16) {
+	if ((uint)pt.x >= MapMaxX() * TILE_SIZE || (uint)pt.y >= MapMaxY() * TILE_SIZE) {
 		pt.x = pt.y = -1;
 	}
 
@@ -1349,8 +1349,8 @@ void UpdateViewportPosition(Window *w)
 		vx = -x + y * 2;
 		vy =  x + y * 2;
 		// clamp to size of map
-		vx = clamp(vx, 0 * 4, MapMaxX() * 16 * 4);
-		vy = clamp(vy, 0 * 4, MapMaxY() * 16 * 4);
+		vx = clamp(vx, 0 * 4, MapMaxX() * TILE_SIZE * 4);
+		vy = clamp(vy, 0 * 4, MapMaxY() * TILE_SIZE * 4);
 		// Convert map coordinates to viewport coordinates
 		x = (-vx + vy) / 2;
 		y = ( vx + vy) / 4;
@@ -1420,7 +1420,7 @@ void MarkAllViewportsDirty(int left, int top, int right, int bottom)
 
 void MarkTileDirtyByTile(TileIndex tile)
 {
-	Point pt = RemapCoords(TileX(tile) * 16, TileY(tile) * 16, GetTileZ(tile));
+	Point pt = RemapCoords(TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE, GetTileZ(tile));
 	MarkAllViewportsDirty(
 		pt.x - 31,
 		pt.y - 122,
@@ -1434,8 +1434,8 @@ void MarkTileDirty(int x, int y)
 	uint z = 0;
 	Point pt;
 
-	if (IS_INT_INSIDE(x, 0, MapSizeX() * 16) &&
-			IS_INT_INSIDE(y, 0, MapSizeY() * 16))
+	if (IS_INT_INSIDE(x, 0, MapSizeX() * TILE_SIZE) &&
+			IS_INT_INSIDE(y, 0, MapSizeY() * TILE_SIZE))
 		z = GetTileZ(TileVirtXY(x, y));
 	pt = RemapCoords(x, y, z);
 
@@ -1473,9 +1473,9 @@ static void SetSelectionTilesDirty(void)
 		int y_bk = y;
 		do {
 			MarkTileDirty(x, y);
-		} while ( (y+=16) != y_size);
+		} while ( (y += TILE_SIZE) != y_size);
 		y = y_bk;
-	} while ( (x+=16) != x_size);
+	} while ( (x += TILE_SIZE) != x_size);
 }
 
 
@@ -1801,7 +1801,7 @@ bool ScrollMainWindowTo(int x, int y)
 
 bool ScrollMainWindowToTile(TileIndex tile)
 {
-	return ScrollMainWindowTo(TileX(tile) * 16 + 8, TileY(tile) * 16 + 8);
+	return ScrollMainWindowTo(TileX(tile) * TILE_SIZE + 8, TileY(tile) * TILE_SIZE + 8);
 }
 
 void SetRedErrorSquare(TileIndex tile)
@@ -1819,18 +1819,18 @@ void SetRedErrorSquare(TileIndex tile)
 
 void SetTileSelectSize(int w, int h)
 {
-	_thd.new_size.x = w * 16;
-	_thd.new_size.y = h * 16;
+	_thd.new_size.x = w * TILE_SIZE;
+	_thd.new_size.y = h * TILE_SIZE;
 	_thd.new_outersize.x = 0;
 	_thd.new_outersize.y = 0;
 }
 
 void SetTileSelectBigSize(int ox, int oy, int sx, int sy)
 {
-	_thd.offs.x = ox * 16;
-	_thd.offs.y = oy * 16;
-	_thd.new_outersize.x = sx * 16;
-	_thd.new_outersize.y = sy * 16;
+	_thd.offs.x = ox * TILE_SIZE;
+	_thd.offs.y = oy * TILE_SIZE;
+	_thd.new_outersize.x = sx * TILE_SIZE;
+	_thd.new_outersize.y = sy * TILE_SIZE;
 }
 
 /* returns the best autorail highlight type from map coordinates */
@@ -1860,8 +1860,8 @@ void UpdateTileSelection(void)
 			if (y1 >= y2) intswap(y1,y2);
 			_thd.new_pos.x = x1;
 			_thd.new_pos.y = y1;
-			_thd.new_size.x = x2 - x1 + 16;
-			_thd.new_size.y = y2 - y1 + 16;
+			_thd.new_size.x = x2 - x1 + TILE_SIZE;
+			_thd.new_size.y = y2 - y1 + TILE_SIZE;
 			_thd.new_drawstyle = _thd.next_drawstyle;
 		}
 	} else if (_thd.place_mode != VHM_NONE) {
@@ -1908,10 +1908,10 @@ void UpdateTileSelection(void)
 void VpStartPlaceSizing(TileIndex tile, int user)
 {
 	_thd.userdata = user;
-	_thd.selend.x = TileX(tile) * 16;
-	_thd.selstart.x = TileX(tile) * 16;
-	_thd.selend.y = TileY(tile) * 16;
-	_thd.selstart.y = TileY(tile) * 16;
+	_thd.selend.x = TileX(tile) * TILE_SIZE;
+	_thd.selstart.x = TileX(tile) * TILE_SIZE;
+	_thd.selend.y = TileY(tile) * TILE_SIZE;
+	_thd.selstart.y = TileY(tile) * TILE_SIZE;
 	if (_thd.place_mode == VHM_RECT) {
 		_thd.place_mode = VHM_SPECIAL;
 		_thd.next_drawstyle = HT_RECT;
@@ -1932,10 +1932,10 @@ void VpSetPlaceSizingLimit(int limit)
 
 void VpSetPresizeRange(uint from, uint to)
 {
-	_thd.selend.x = TileX(to) * 16;
-	_thd.selend.y = TileY(to) * 16;
-	_thd.selstart.x = TileX(from) * 16;
-	_thd.selstart.y = TileY(from) * 16;
+	_thd.selend.x = TileX(to) * TILE_SIZE;
+	_thd.selend.y = TileY(to) * TILE_SIZE;
+	_thd.selstart.x = TileX(from) * TILE_SIZE;
+	_thd.selstart.y = TileY(from) * TILE_SIZE;
 	_thd.next_drawstyle = HT_RECT;
 }
 

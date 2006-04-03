@@ -623,8 +623,8 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 		}
 	}
 
-	tile_x = WP(w,smallmap_d).scroll_x / 16;
-	tile_y = WP(w,smallmap_d).scroll_y / 16;
+	tile_x = WP(w,smallmap_d).scroll_x / TILE_SIZE;
+	tile_y = WP(w,smallmap_d).scroll_y / TILE_SIZE;
 
 	dx = dpi->left + WP(w,smallmap_d).subscroll;
 	tile_x -= dx / 4;
@@ -701,8 +701,8 @@ skip_column:
 					(v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) == 0) {
 				// Remap into flat coordinates.
 				Point pt = RemapCoords(
-					(v->x_pos - WP(w,smallmap_d).scroll_x) / 16,
-					(v->y_pos - WP(w,smallmap_d).scroll_y) / 16,
+					(v->x_pos - WP(w,smallmap_d).scroll_x) / TILE_SIZE,
+					(v->y_pos - WP(w,smallmap_d).scroll_y) / TILE_SIZE,
 					0);
 				x = pt.x;
 				y = pt.y;
@@ -746,8 +746,8 @@ skip_column:
 			if (t->xy != 0) {
 				// Remap the town coordinate
 				Point pt = RemapCoords(
-					(int)(TileX(t->xy) * 16 - WP(w, smallmap_d).scroll_x) / 16,
-					(int)(TileY(t->xy) * 16 - WP(w, smallmap_d).scroll_y) / 16,
+					(int)(TileX(t->xy) * TILE_SIZE - WP(w, smallmap_d).scroll_x) / TILE_SIZE,
+					(int)(TileY(t->xy) * TILE_SIZE - WP(w, smallmap_d).scroll_y) / TILE_SIZE,
 					0);
 				x = pt.x - WP(w,smallmap_d).subscroll + 3 - (t->sign.width_2 >> 1);
 				y = pt.y;
@@ -776,10 +776,10 @@ skip_column:
 
 		x = vp->virtual_left - pt.x;
 		y = vp->virtual_top - pt.y;
-		x2 = (x + vp->virtual_width) / 16;
-		y2 = (y + vp->virtual_height) / 16;
-		x /= 16;
-		y /= 16;
+		x2 = (x + vp->virtual_width) / TILE_SIZE;
+		y2 = (y + vp->virtual_height) / TILE_SIZE;
+		x /= TILE_SIZE;
+		y /= TILE_SIZE;
 
 		x -= WP(w,smallmap_d).subscroll;
 		x2 -= WP(w,smallmap_d).subscroll;

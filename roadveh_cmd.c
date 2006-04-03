@@ -141,8 +141,8 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		v->owner = _current_player;
 
 		v->tile = tile;
-		x = TileX(tile) * 16 + 8;
-		y = TileY(tile) * 16 + 8;
+		x = TileX(tile) * TILE_SIZE + 8;
+		y = TileY(tile) * TILE_SIZE + 8;
 		v->x_pos = x;
 		v->y_pos = y;
 		v->z_pos = GetSlopeZ(x,y);
@@ -1211,8 +1211,8 @@ static void RoadVehController(Vehicle *v)
 		rd2 = _roadveh_data_2[dir];
 		rdp = _road_drive_data[(_opt.road_side << 4) + rd2];
 
-		x = TileX(v->tile) * 16 + (rdp[6].x & 0xF);
-		y = TileY(v->tile) * 16 + (rdp[6].y & 0xF);
+		x = TileX(v->tile) * TILE_SIZE + (rdp[6].x & 0xF);
+		y = TileY(v->tile) * TILE_SIZE + (rdp[6].y & 0xF);
 
 		if (RoadVehFindCloseTo(v, x, y, v->direction) != NULL) return;
 
@@ -1299,8 +1299,8 @@ again:
 
 		rdp = _road_drive_data[(dir + (_opt.road_side << 4)) ^ v->u.road.overtaking];
 
-		x = TileX(tile) * 16 + rdp[0].x;
-		y = TileY(tile) * 16 + rdp[0].y;
+		x = TileX(tile) * TILE_SIZE + rdp[0].x;
+		y = TileY(tile) * TILE_SIZE + rdp[0].y;
 
 		newdir = RoadVehGetSlidingDirection(v, x, y);
 		if (RoadVehFindCloseTo(v, x, y, newdir) != NULL) return;
@@ -1360,8 +1360,8 @@ again:
 		tmp = (_opt.road_side << 4) + dir;
 		rdp = _road_drive_data[tmp];
 
-		x = TileX(v->tile) * 16 + rdp[1].x;
-		y = TileY(v->tile) * 16 + rdp[1].y;
+		x = TileX(v->tile) * TILE_SIZE + rdp[1].x;
+		y = TileY(v->tile) * TILE_SIZE + rdp[1].y;
 
 		newdir = RoadVehGetSlidingDirection(v, x, y);
 		if (RoadVehFindCloseTo(v, x, y, newdir) != NULL) return;

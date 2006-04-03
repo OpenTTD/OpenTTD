@@ -734,8 +734,8 @@ static void TileLoopIndustry_BubbleGenerator(TileIndex tile)
 	dir = Random() & 3;
 
 	v = CreateEffectVehicleAbove(
-		TileX(tile) * 16 + _tileloop_ind_case_161[dir + 0],
-		TileY(tile) * 16 + _tileloop_ind_case_161[dir + 4],
+		TileX(tile) * TILE_SIZE + _tileloop_ind_case_161[dir + 0],
+		TileY(tile) * TILE_SIZE + _tileloop_ind_case_161[dir + 4],
 		_tileloop_ind_case_161[dir + 8],
 		EV_BUBBLE
 	);
@@ -819,7 +819,7 @@ static void TileLoop_Industry(TileIndex tile)
 		break;
 
 	case 49:
-		CreateEffectVehicleAbove(TileX(tile) * 16 + 6, TileY(tile) * 16 + 6, 43, EV_SMOKE);
+		CreateEffectVehicleAbove(TileX(tile) * TILE_SIZE + 6, TileY(tile) * TILE_SIZE + 6, 43, EV_SMOKE);
 		break;
 
 
@@ -1162,7 +1162,7 @@ static bool CheckNewIndustry_Oil(TileIndex tile, int type)
 	if (_game_mode == GM_EDITOR && _ignore_restrictions) return true;
 	if (_game_mode == GM_EDITOR && type != IT_OIL_RIG)   return true;
 	if ((type != IT_OIL_RIG || TileHeight(tile) == 0) &&
-			DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < 16)   return true;
+			DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < TILE_SIZE)   return true;
 
 	_error_message = STR_483B_CAN_ONLY_BE_POSITIONED;
 	return false;
