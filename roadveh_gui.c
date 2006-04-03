@@ -247,8 +247,6 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 			str = STR_885C_BROKEN_DOWN;
 		} else if (v->vehstatus & VS_STOPPED) {
 			str = STR_8861_STOPPED;
-		} else if (v->vehstatus & VS_WAIT_FOR_SLOT) {
-			str = STR_8864_WAIT_FOR_SLOT;
 		} else {
 			switch (v->current_order.type) {
 			case OT_GOTO_STATION: {

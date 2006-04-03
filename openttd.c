@@ -1391,6 +1391,17 @@ bool AfterLoadGame(void)
 
 	if (CheckSavegameVersion(22))  UpdatePatches();
 
+	if (CheckSavegameVersion(25)) {
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (v->type == VEH_Road) {
+				v->vehstatus &= ~0x40;
+				v->u.road.slot = NULL;
+				v->u.road.slot_age = 0;
+			}
+		}
+	}
+
 	FOR_ALL_PLAYERS(p) p->avail_railtypes = GetPlayerRailtypes(p->index);
 
 	return true;

@@ -28,7 +28,6 @@ typedef enum RoadStopType {
 
 enum {
 	INVALID_STATION = 0xFFFF,
-	NUM_SLOTS = 2,
 	ROAD_STOP_LIMIT = 16,
 };
 
@@ -37,7 +36,7 @@ typedef struct RoadStop {
 	bool used;
 	byte status;
 	uint32 index;
-	VehicleID slot[NUM_SLOTS];
+	byte num_vehicles;
 	StationID station;
 	uint8 type;
 	struct RoadStop *next;

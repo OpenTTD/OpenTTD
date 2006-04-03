@@ -2213,7 +2213,7 @@ static const SaveLoad _roadveh_desc[] = {
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleRoad,reverse_ctr),			SLE_UINT8),
 
 	SLE_CONDREFX(offsetof(Vehicle,u)+offsetof(VehicleRoad,slot), REF_ROADSTOPS, 6, SL_MAX_VERSION),
-	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRoad,slotindex), SLE_UINT8, 6, SL_MAX_VERSION),
+	SLE_CONDNULL(1, 6, SL_MAX_VERSION),
 	SLE_CONDVARX(offsetof(Vehicle,u)+offsetof(VehicleRoad,slot_age), SLE_UINT8, 6, SL_MAX_VERSION),
 	// reserve extra space in savegame here. (currently 16 bytes)
 	SLE_CONDNULL(16, 2, SL_MAX_VERSION),

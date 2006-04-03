@@ -87,15 +87,13 @@ static void MarkStationDirty(const Station* st)
 
 static void InitializeRoadStop(RoadStop *road_stop, RoadStop *previous, TileIndex tile, StationID index)
 {
-	int i;
 	road_stop->xy = tile;
 	road_stop->used = true;
 	road_stop->status = 3; //stop is free
 	road_stop->next = NULL;
 	road_stop->prev = previous;
 	road_stop->station = index;
-
-	for (i = 0; i < NUM_SLOTS; i++) road_stop->slot[i] = INVALID_VEHICLE;
+	road_stop->num_vehicles = 0;
 }
 
 RoadStop* GetPrimaryRoadStop(const Station* st, RoadStopType type)
@@ -1412,16 +1410,7 @@ static int32 RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		uint i;
 		DoClearSquare(tile);
-
-		/* Clear all vehicles destined for this station */
-		for (i = 0; i != NUM_SLOTS; i++) {
-			if (cur_stop->slot[i] != INVALID_VEHICLE) {
-				Vehicle *v = GetVehicle(cur_stop->slot[i]);
-				ClearSlot(v);
-			}
-		}
 
 		cur_stop->used = false;
 		if (cur_stop->prev != NULL) cur_stop->prev->next = cur_stop->next;
@@ -2254,27 +2243,6 @@ void DeleteAllPlayerStations(void)
 	}
 }
 
-static void CheckOrphanedSlots(const Station *st, RoadStopType rst)
-{
-	RoadStop *rs;
-	uint k;
-
-	for (rs = GetPrimaryRoadStop(st, rst); rs != NULL; rs = rs->next) {
-		for (k = 0; k < NUM_SLOTS; k++) {
-			if (rs->slot[k] != INVALID_VEHICLE) {
-				const Vehicle *v = GetVehicle(rs->slot[k]);
-
-				if (v->type != VEH_Road || v->u.road.slot != rs) {
-					DEBUG(ms, 0) (
-						"Multistop: Orphaned %s slot at 0x%X of station %d (don't panic)",
-						(rst == RS_BUS) ? "bus" : "truck", rs->xy, st->index);
-					rs->slot[k] = INVALID_VEHICLE;
-				}
-			}
-		}
-	}
-}
-
 /* this function is called for one station each tick */
 static void StationHandleBigTick(Station *st)
 {
@@ -2282,9 +2250,6 @@ static void StationHandleBigTick(Station *st)
 
 	if (st->facilities == 0 && ++st->delete_ctr >= 8) DeleteStation(st);
 
-	// Here we saveguard against orphaned slots
-	CheckOrphanedSlots(st, RS_BUS);
-	CheckOrphanedSlots(st, RS_TRUCK);
 }
 
 static inline void byte_inc_sat(byte *p) { byte b = *p + 1; if (b != 0) *p = b; }
@@ -2783,7 +2748,8 @@ static const SaveLoad _roadstop_desc[] = {
 	SLE_REF(RoadStop,next,         REF_ROADSTOPS),
 	SLE_REF(RoadStop,prev,         REF_ROADSTOPS),
 
-	SLE_ARR(RoadStop,slot,         SLE_UINT16, NUM_SLOTS),
+	SLE_CONDNULL(4, 0, 24),
+	SLE_CONDVAR(RoadStop, num_vehicles, SLE_UINT8, 25, SL_MAX_VERSION),
 
 	SLE_END()
 };
@@ -2952,6 +2918,7 @@ static void Load_ROADSTOP(void)
 			error("RoadStops: failed loading savegame: too many RoadStops");
 
 		rs = GetRoadStop(index);
+		rs->num_vehicles = 0;
 		SlObject(rs, _roadstop_desc);
 	}
 }

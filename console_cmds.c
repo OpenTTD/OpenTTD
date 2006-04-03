@@ -92,30 +92,6 @@ static void IConsoleHelp(const char *str)
 	IConsolePrintF(_icolour_warn, "- %s", str);
 }
 
-DEF_CONSOLE_CMD(ConResetSlots)
-{
-	Vehicle *v;
-	RoadStop *rs;
-	if (argc == 0) {
-		IConsoleHelp("Resets all slots in the game. For debugging only. Usage: 'clearslots'");
-		return true;
-	}
-
-	FOR_ALL_VEHICLES(v) {
-		if (IsValidVehicle(v)) {
-			if (v->type == VEH_Road)
-				ClearSlot(v);
-		}
-	}
-
-	FOR_ALL_ROADSTOPS(rs) {
-		int i;
-		for (i = 0; i < NUM_SLOTS; i++) rs->slot[i] = INVALID_VEHICLE;
-	}
-
-	return true;
-}
-
 DEF_CONSOLE_CMD(ConStopAllVehicles)
 {
 	Vehicle* v;
@@ -1389,7 +1365,6 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("cd",           ConChangeDirectory);
 	IConsoleCmdRegister("pwd",          ConPrintWorkingDirectory);
 	IConsoleCmdRegister("clear",        ConClearBuffer);
-	IConsoleCmdRegister("clearslots",   ConResetSlots);
 	IConsoleCmdRegister("stopall",      ConStopAllVehicles);
 
 	IConsoleAliasRegister("dir",      "ls");

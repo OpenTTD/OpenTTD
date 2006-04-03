@@ -1,5 +1,6 @@
 /* $Id$ */
 
+#include <limits.h>
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
@@ -164,10 +165,6 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 //	v->u.road.unk2 = 0;
 //	v->u.road.overtaking = 0;
 
-		v->u.road.slot = NULL;
-		v->u.road.slotindex = 0;
-		v->u.road.slot_age = 0;
-
 		v->last_station_visited = INVALID_STATION;
 		v->max_speed = rvi->max_speed;
 		v->engine_type = (byte)p1;
@@ -238,10 +235,10 @@ void ClearSlot(Vehicle *v)
 	v->u.road.slot = NULL;
 	v->u.road.slot_age = 0;
 
-	// check that the slot is indeed assigned to the same vehicle
-	assert(rs->slot[v->u.road.slotindex] == v->index);
-	rs->slot[v->u.road.slotindex] = INVALID_VEHICLE;
-	DEBUG(ms, 3) ("Multistop: Clearing slot %d at 0x%x", v->u.road.slotindex, rs->xy);
+	assert(rs->num_vehicles != 0);
+	rs->num_vehicles--;
+
+	DEBUG(ms, 3) ("Multistop: Clearing slot at 0x%x", rs->xy);
 }
 
 /** Sell a road vehicle.
@@ -382,7 +379,6 @@ int32 CmdSendRoadVehToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		ClearSlot(v);
-		v->vehstatus &= ~VS_WAIT_FOR_SLOT;
 		v->current_order.type = OT_GOTO_DEPOT;
 		v->current_order.flags = OF_NON_STOP | OF_HALT_IN_DEPOT;
 		v->current_order.station = dep->index;
@@ -408,7 +404,7 @@ int32 CmdTurnRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (v->type != VEH_Road || !CheckOwnership(v->owner)) return CMD_ERROR;
 
-	if (v->vehstatus & (VS_HIDDEN | VS_STOPPED | VS_WAIT_FOR_SLOT) ||
+	if (v->vehstatus & (VS_HIDDEN | VS_STOPPED) ||
 			v->u.road.crashed_ctr != 0 ||
 			v->breakdown_ctr != 0 ||
 			v->u.road.overtaking != 0 ||
@@ -633,7 +629,6 @@ static void ProcessRoadVehOrder(Vehicle *v)
 		v->current_order.flags = 0;
 		v->dest_tile = 0;
 		ClearSlot(v);
-		v->vehstatus &= ~VS_WAIT_FOR_SLOT;
 		return;
 	}
 
@@ -645,8 +640,6 @@ static void ProcessRoadVehOrder(Vehicle *v)
 
 	v->current_order = *order;
 	v->dest_tile = 0;
-	/* We have changed the destination STATION, so resume movement */
-	v->vehstatus &= ~VS_WAIT_FOR_SLOT;
 
 	if (order->type == OT_GOTO_STATION) {
 		const Station* st = GetStation(order->station);
@@ -907,7 +900,7 @@ static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
 	od.u = u;
 
 	if (u->max_speed >= v->max_speed &&
-			!(u->vehstatus & (VS_STOPPED | VS_WAIT_FOR_SLOT)) &&
+			!(u->vehstatus & VS_STOPPED) &&
 			u->cur_speed != 0) {
 		return;
 	}
@@ -929,7 +922,7 @@ static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
 	od.tile = v->tile + TileOffsByDir(DirToDiagDir(v->direction));
 	if (FindRoadVehToOvertake(&od)) return;
 
-	if (od.u->cur_speed == 0 || od.u->vehstatus& (VS_STOPPED | VS_WAIT_FOR_SLOT)) {
+	if (od.u->cur_speed == 0 || od.u->vehstatus& VS_STOPPED) {
 		v->u.road.overtaking_ctr = 0x11;
 		v->u.road.overtaking = 0x10;
 	} else {
@@ -1133,7 +1126,6 @@ found_best_track:;
 	return best_track;
 }
 
-#if 0 /* Commented out until NPF works properly here */
 static uint RoadFindPathToStop(const Vehicle *v, TileIndex tile)
 {
 	NPFFindStationOrTileData fstd;
@@ -1145,7 +1137,6 @@ static uint RoadFindPathToStop(const Vehicle *v, TileIndex tile)
 
 	return NPFRouteToStationOrTile(v->tile, trackdir, &fstd, TRANSPORT_ROAD, v->owner, INVALID_RAILTYPE).best_path_dist;
 }
-#endif
 
 typedef struct RoadDriveEntry {
 	byte x,y;
@@ -1191,7 +1182,7 @@ static void RoadVehController(Vehicle *v)
 		v->breakdown_ctr--;
 	}
 
-	if (v->vehstatus & (VS_STOPPED | VS_WAIT_FOR_SLOT)) return;
+	if (v->vehstatus & VS_STOPPED) return;
 
 	ProcessRoadVehOrder(v);
 	HandleRoadVehLoading(v);
@@ -1454,7 +1445,6 @@ again:
 			v->current_order.type = OT_NOTHING;
 			v->current_order.flags = 0;
 			ClearSlot(v);
-			v->vehstatus &= ~VS_WAIT_FOR_SLOT;
 		}
 		SETBIT(rs->status, 7);
 
@@ -1560,7 +1550,7 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 
 	if (_patches.servint_roadveh == 0) return;
 	if (!VehicleNeedsService(v)) return;
-	if (v->vehstatus & (VS_STOPPED | VS_WAIT_FOR_SLOT)) return;
+	if (v->vehstatus & VS_STOPPED) return;
 	if (_patches.gotodepot && VehicleHasDepotOrders(v)) return;
 
 	// Don't interfere with a depot visit scheduled by the user, or a
@@ -1610,82 +1600,57 @@ void OnNewDay_RoadVeh(Vehicle *v)
 	CheckOrders(v);
 
 	//Current slot has expired
-	if (v->u.road.slot_age-- == 0 && v->u.road.slot != NULL) {
-		DEBUG(ms, 2) ("Multistop: Slot %d expired for vehicle %d (index %d) at stop 0x%x",
-			v->u.road.slotindex, v->unitnumber, v->index, v->u.road.slot->xy
-		);
+	if (v->current_order.type == OT_GOTO_STATION && v->u.road.slot_age-- == 0 && v->u.road.slot != NULL) {
+		DEBUG(ms, 2) ("Multistop: Slot expired for vehicle %d (index %d) at stop 0x%x",
+			v->unitnumber, v->index, v->u.road.slot->xy);
 		ClearSlot(v);
 	}
 
 	if (v->vehstatus & VS_STOPPED) return;
 
 	/* update destination */
-	if (v->current_order.type == OT_GOTO_STATION &&
-			v->u.road.slot == NULL &&
-			!IsLevelCrossing(v->tile) &&
-			v->u.road.overtaking == 0 &&
-			!(v->vehstatus & VS_CRASHED)) {
-		RoadStopType type = (v->cargo_type == CT_PASSENGERS) ? RS_BUS : RS_TRUCK;
+	if (v->current_order.type == OT_GOTO_STATION && v->u.road.slot == NULL && !(v->vehstatus & VS_CRASHED)) {
 		RoadStop *rs;
-		uint mindist = 0xFFFFFFFF;
-		int i;
-		RoadStop *nearest = NULL;
+		RoadStop *best = NULL;
 
 		st = GetStation(v->current_order.station);
-		rs = GetPrimaryRoadStop(st, type);
+		rs = GetPrimaryRoadStop(st, v->cargo_type == CT_PASSENGERS ? RS_BUS : RS_TRUCK);
 
 		if (rs != NULL) {
 			if (DistanceManhattan(v->tile, st->xy) < 16) {
-				int new_slot = -1;
+				uint dist, badness;
+				uint minbadness = UINT_MAX;
 
 				DEBUG(ms, 2) ("Multistop: Attempting to obtain a slot for vehicle %d (index %d) at station %d (0x%x)", v->unitnumber,
 						v->index, st->index, st->xy);
 				/* Now we find the nearest road stop that has a free slot */
-				for (i = 0; rs != NULL; rs = rs->next, i++) {
-					uint dist = 0xFFFFFFFF;
-					bool is_slot_free = false;
-					int k;
-					int last_free = -1;
-
-					for (k = 0; k < NUM_SLOTS; k++)
-						if (rs->slot[k] == INVALID_VEHICLE) {
-							is_slot_free = true;
-							last_free = k;
-							dist = DistanceManhattan(v->tile, st->xy);
-							break;
-						}
-
-					if (!is_slot_free) {
-						DEBUG(ms, 4) ("Multistop: ---- stop %d is full", i);
+				for (; rs != NULL; rs = rs->next) {
+					dist = RoadFindPathToStop(v, rs->xy);
+					if (dist == UINT_MAX) {
+						DEBUG(ms, 4) (" ---- stop 0x%x is not reachable, not treating further", rs->xy);
 						continue;
 					}
+					badness = (rs->num_vehicles + 1) * (rs->num_vehicles + 1) + dist / NPF_TILE_LENGTH;
 
-					DEBUG(ms, 4) ("Multistop: ---- distance to stop %d is %d", i, dist);
-					if (dist < mindist) {
-						nearest = rs;
-						mindist = dist;
-						new_slot = last_free;
+					DEBUG(ms, 4) (" ---- stop 0x%x has %d vehicle%s waiting", rs->xy, rs->num_vehicles, rs->num_vehicles == 1 ? "":"s");
+					DEBUG(ms, 4) (" ---- Distance is %u", dist);
+					DEBUG(ms, 4) (" -- Badness %u", badness);
+
+					if (badness < minbadness) {
+						best = rs;
+						minbadness = badness;
 					}
 				}
 
-				if (nearest != NULL) { /* We have a suitable stop */
-					DEBUG(ms, 3) ("Multistop: -- Slot %d of stop at 0x%x assinged.", new_slot, nearest->xy);
-					nearest->slot[new_slot] = v->index;
+				if (best != NULL) {
+					best->num_vehicles++;
+					DEBUG(ms, 3) (" -- Assigned to stop 0x%x", best->xy);
 
-					v->u.road.slot = nearest;
-					v->dest_tile = nearest->xy;
+					v->u.road.slot = best;
+					v->dest_tile = best->xy;
 					v->u.road.slot_age = 14;
-					v->u.road.slotindex = new_slot;
-
-					if (v->vehstatus & VS_WAIT_FOR_SLOT) {
-						DEBUG(ms, 4) ("Multistop: ---- stopped vehicle got a slot. resuming movement");
-						v->vehstatus &= ~VS_WAIT_FOR_SLOT;
-						InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
-					}
 				} else {
-					DEBUG(ms, 2) ("Multistop -- No free slot at station. Waiting");
-					v->vehstatus |= VS_WAIT_FOR_SLOT;
-					InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+					DEBUG(ms, 3) (" -- Could not find a suitable stop");
 				}
 			} else {
 				DEBUG(ms, 5) ("Multistop: --- Distance from station too far. Postponing slotting for vehicle %d (index %d) at station %d, (0x%x)",

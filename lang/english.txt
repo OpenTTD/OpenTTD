@@ -2494,7 +2494,6 @@ STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Reliabil
 STR_8861_STOPPED                                                :{RED}Stopped
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Can't make train pass signal at danger...
 STR_8863_CRASHED                                                :{RED}Crashed!
-STR_8864_WAIT_FOR_SLOT                                          :{YELLOW}Waiting for a free stop
 
 STR_8865_NAME_TRAIN                                             :{WHITE}Name train
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Can't name train...

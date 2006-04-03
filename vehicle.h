@@ -24,7 +24,6 @@ enum VehStatus {
 	VS_TRAIN_SLOWING = 0x10,
 	VS_DISASTER = 0x20,
 	VS_AIRCRAFT_BROKEN = 0x40,
-	VS_WAIT_FOR_SLOT = 0x40,
 	VS_CRASHED = 0x80,
 };
 
@@ -111,7 +110,6 @@ typedef struct VehicleRoad {
 	uint16 crashed_ctr;
 	byte reverse_ctr;
 	struct RoadStop *slot;
-	byte slotindex;
 	byte slot_age;
 } VehicleRoad;
 
