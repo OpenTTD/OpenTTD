@@ -81,7 +81,7 @@ typedef struct DrawTownTileStruct {
 
 static void TownDrawHouseLift(const TileInfo *ti)
 {
-	AddChildSpriteScreen(SPR_LIFT, 14, 60 - GB(_m[ti->tile].m1, 0, 7));
+	AddChildSpriteScreen(SPR_LIFT, 14, 60 - GetLiftPosition(ti->tile));
 }
 
 typedef void TownDrawTileProc(const TileInfo *ti);
@@ -157,8 +157,7 @@ static uint GetSlopeTileh_Town(TileIndex tile, uint tileh)
 
 static void AnimateTile_Town(TileIndex tile)
 {
-	int old;
-	int a,b;
+	int pos, dest;
 
 	if (_tick_counter & 3) return;
 
@@ -171,10 +170,8 @@ static void AnimateTile_Town(TileIndex tile)
 		return;
 	}
 
-	if (!((old = _m[tile].m1) & 0x80)) {
+	if (!IsLiftMoving(tile)) {
 		int i;
-
-		_m[tile].m1 |= 0x80;
 
 		/** Building has 6 floors, number 0 .. 6, where 1 is illegal.
 		 *  This is due to the fact that the first floor is, in the graphics,
@@ -182,21 +179,17 @@ static void AnimateTile_Town(TileIndex tile)
 		 *  Furthermore, there are 6 lift positions from floor N (incl) to floor N + 1 (excl) */
 		do {
 			i = (Random() & 7) - 1;
-		} while (i < 0 || i == 1 || i * 6 == old);
+		} while (i < 0 || i == 1 || i * 6 == GetLiftPosition(tile));
 
-		SB(_m[tile].m5, 0, 6, i);
+		SetLiftDestination(tile, i);
 	}
 
-	a = GB(_m[tile].m1, 0, 7);
-	b = GB(_m[tile].m5, 0, 6) * 6;
-	a += (a < b) ? 1 : -1;
-	SB(_m[tile].m1, 0, 7, a);
+	pos = GetLiftPosition(tile);
+	dest = GetLiftDestination(tile) * 6;
+	pos += (pos < dest) ? 1 : -1;
+	SetLiftPosition(tile, pos);
 
-	if (a == b) {
-		_m[tile].m1 &= 0x7F;
-		_m[tile].m5 &= 0x40;
-		DeleteAnimatedTile(tile);
-	}
+	if (pos == dest) HaltLift(tile);
 
 	MarkTileDirtyByTile(tile);
 }
@@ -259,7 +252,7 @@ static void MakeSingleHouseBigger(TileIndex tile)
 {
 	assert(IsTileType(tile, MP_HOUSE));
 
-	if (_m[tile].m5 & 0x80) return;
+	if (LiftHasDestination(tile)) return;
 
 	AB(_m[tile].m5, 0, 3, 1);
 	if (GB(_m[tile].m5, 0, 3) != 0) return;
@@ -293,12 +286,7 @@ static void TileLoop_Town(TileIndex tile)
 	}
 
 	house = GetHouseType(tile);
-	if (_housetype_extra_flags[house] & 0x20 &&
-			!(_m[tile].m5 & 0x80) &&
-			CHANCE16(1, 2) &&
-			AddAnimatedTile(tile)) {
-		_m[tile].m5 = (_m[tile].m5 & 0x40) | 0x80;
-	}
+	if ((_housetype_extra_flags[house] & 0x20) && !LiftHasDestination(tile) && CHANCE16(1, 2) && AddAnimatedTile(tile)) BeginLiftMovement(tile);
 
 	t = GetTownByTile(tile);
 

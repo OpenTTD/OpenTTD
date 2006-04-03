@@ -1,5 +1,8 @@
 /* $Id$ */
 
+#ifndef TOWN_MAP_H
+#define TOWN_MAP_H
+
 #include "town.h"
 
 static inline int GetHouseType(TileIndex t)
@@ -14,10 +17,56 @@ static inline uint GetTownIndex(TileIndex t)
 	return _m[t].m2;
 }
 
+static inline bool LiftHasDestination(TileIndex t)
+{
+	return HASBIT(_m[t].m5, 7);
+}
+
+static inline void SetLiftDestination(TileIndex t, byte dest)
+{
+	SB(_m[t].m5, 0, 6, dest);
+	SETBIT(_m[t].m1, 7); /* Start moving */
+}
+
+static inline byte GetLiftDestination(TileIndex t)
+{
+	return GB(_m[t].m5, 0, 6);
+}
+
+static inline bool IsLiftMoving(TileIndex t)
+{
+	return HASBIT(_m[t].m1, 7);
+}
+
+static inline void BeginLiftMovement(TileIndex t)
+{
+	SETBIT(_m[t].m5, 7);
+}
+
+static inline void HaltLift(TileIndex t)
+{
+	CLRBIT(_m[t].m1, 7);
+	CLRBIT(_m[t].m5, 7);
+	SB(_m[t].m5, 0, 6, 0);
+
+	DeleteAnimatedTile(t);
+}
+
+static inline byte GetLiftPosition(TileIndex t)
+{
+	return GB(_m[t].m1, 0, 7);
+}
+
+static inline void SetLiftPosition(TileIndex t, byte pos)
+{
+	SB(_m[t].m1, 0, 7, pos);
+}
+
 static inline Town* GetTownByTile(TileIndex t)
 {
 	return GetTown(GetTownIndex(t));
 }
+
 
 static inline void MakeHouseTile(TileIndex t, TownID tid, byte counter, byte stage, byte type)
 {
@@ -46,3 +95,4 @@ static inline void MakeTownHouse(TileIndex t, TownID tid, byte counter, byte sta
 	if (HASBIT(size, TWO_BY_TWO_BIT) || HASBIT(size, TWO_BY_ONE_BIT)) MakeHouseTile(t + TileDiffXY(1, 0), tid, counter, stage, ++type);
 	if (HASBIT(size, TWO_BY_TWO_BIT)) MakeHouseTile(t + TileDiffXY(1, 1), tid, counter, stage, ++type);
 }
+#endif
