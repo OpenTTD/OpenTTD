@@ -28,9 +28,9 @@ static inline WaterTileType GetWaterTileType(TileIndex t)
 	if (_m[t].m5 == 0) return WATER_CLEAR;
 	if (_m[t].m5 == 1) return WATER_COAST;
 	if (IS_INT_INSIDE(_m[t].m5, LOCK_MIDDLE, LOCK_END)) return WATER_LOCK;
-	if (IS_INT_INSIDE(_m[t].m5, DEPOT_NORTH, DEPOT_END)) return WATER_DEPOT;
 
-	assert(0);
+	assert(IS_INT_INSIDE(_m[t].m5, DEPOT_NORTH, DEPOT_END));
+	return WATER_DEPOT;
 }
 
 static inline bool IsWater(TileIndex t)
