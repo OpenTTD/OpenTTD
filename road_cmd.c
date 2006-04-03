@@ -701,22 +701,14 @@ const byte _road_sloped_sprites[14] = {
  * Draw ground sprite and road pieces
  * @param ti TileInfo
  * @param road RoadBits to draw
- * @param ground_type Ground type
- * @param snow Draw snow
- * @param flat Draw foundation
  */
-static void DrawRoadBits(TileInfo* ti, RoadBits road, byte ground_type, bool snow, bool flat)
+static void DrawRoadBits(TileInfo* ti, RoadBits road)
 {
 	const DrawRoadTileStruct *drts;
 	PalSpriteID image = 0;
 
 	if (ti->tileh != 0) {
-		int foundation;
-		if (flat) {
-			foundation = ti->tileh;
-		} else {
-			foundation = GetRoadFoundation(ti->tileh, road);
-		}
+		int foundation = GetRoadFoundation(ti->tileh, road);
 
 		if (foundation != 0) DrawFoundation(ti, foundation);
 
@@ -727,11 +719,11 @@ static void DrawRoadBits(TileInfo* ti, RoadBits road, byte ground_type, bool sno
 
 	if (image == 0) image = _road_tile_sprites_1[road];
 
-	if (ground_type == 0) image |= PALETTE_TO_BARE_LAND;
+	if (GetGroundType(ti->tile) == RGT_BARREN) image |= PALETTE_TO_BARE_LAND;
 
-	if (snow) {
+	if (IsOnSnow(ti->tile)) {
 		image += 19;
-	} else if (ground_type > 1 && ground_type != 6) {
+	} else if (HasPavement(ti->tile)) {
 		// Pavement tiles.
 		image -= 19;
 	}
@@ -741,14 +733,14 @@ static void DrawRoadBits(TileInfo* ti, RoadBits road, byte ground_type, bool sno
 	// Return if full detail is disabled, or we are zoomed fully out.
 	if (!(_display_opt & DO_FULL_DETAIL) || _cur_dpi->zoom == 2) return;
 
-	if (ground_type >= 6) {
+	if (HasRoadWorks(ti->tile)) {
 		// Road works
 		DrawGroundSprite(road & ROAD_X ? SPR_EXCAVATION_X : SPR_EXCAVATION_Y);
 		return;
 	}
 
 	// Draw extra details.
-	for (drts = _road_display_table[ground_type][road]; drts->image != 0; drts++) {
+	for (drts = _road_display_table[GetGroundType(ti->tile)][road]; drts->image != 0; drts++) {
 		int x = ti->x | drts->subcoord_x;
 		int y = ti->y | drts->subcoord_y;
 		byte z = ti->z;
@@ -760,11 +752,10 @@ static void DrawRoadBits(TileInfo* ti, RoadBits road, byte ground_type, bool sno
 static void DrawTile_Road(TileInfo *ti)
 {
 	PalSpriteID image;
-	uint16 m2;
 
 	switch (GetRoadType(ti->tile)) {
 		case ROAD_NORMAL:
-			DrawRoadBits(ti, GetRoadBits(ti->tile), GB(_m[ti->tile].m4, 4, 3), HASBIT(_m[ti->tile].m4, 7), false);
+			DrawRoadBits(ti, GetRoadBits(ti->tile));
 			break;
 
 		case ROAD_CROSSING: {
@@ -776,12 +767,11 @@ static void DrawTile_Road(TileInfo *ti)
 
 			if (IsCrossingBarred(ti->tile)) image += 2;
 
-			if ( _m[ti->tile].m4 & 0x80) {
+			if (IsOnSnow(ti->tile)) {
 				image += 8;
 			} else {
-				m2 = GB(_m[ti->tile].m4, 4, 3);
-				if (m2 == 0) image |= PALETTE_TO_BARE_LAND;
-				if (m2 > 1) image += 4;
+				if (GetGroundType(ti->tile) == RGT_BARREN) image |= PALETTE_TO_BARE_LAND;
+				if (HasPavement(ti->tile)) image += 4;
 			}
 
 			DrawGroundSprite(image);
@@ -887,20 +877,20 @@ static void AnimateTile_Road(TileIndex tile)
 	if (IsLevelCrossing(tile)) MarkTileDirtyByTile(tile);
 }
 
-static const byte _town_road_types[5][2] = {
-	{1,1},
-	{2,2},
-	{2,2},
-	{5,5},
-	{3,2},
+static const RoadGroundType _town_road_types[5][2] = {
+	{RGT_GRASS,RGT_GRASS},
+	{RGT_PAVED,RGT_PAVED},
+	{RGT_PAVED,RGT_PAVED},
+	{RGT_ALLEY,RGT_ALLEY},
+	{RGT_LIGHT,RGT_PAVED},
 };
 
-static const byte _town_road_types_2[5][2] = {
-	{1,1},
-	{2,2},
-	{3,2},
-	{3,2},
-	{3,2},
+static const RoadGroundType _town_road_types_2[5][2] = {
+	{RGT_GRASS,RGT_GRASS},
+	{RGT_PAVED,RGT_PAVED},
+	{RGT_LIGHT,RGT_PAVED},
+	{RGT_LIGHT,RGT_PAVED},
+	{RGT_LIGHT,RGT_PAVED},
 };
 
 
@@ -911,15 +901,15 @@ static void TileLoop_Road(TileIndex tile)
 
 	switch (_opt.landscape) {
 		case LT_HILLY:
-			if ((_m[tile].m4 & 0x80) != (GetTileZ(tile) > _opt.snow_line ? 0x80 : 0x00)) {
-				_m[tile].m4 ^= 0x80;
+			if (IsOnSnow(tile) != (GetTileZ(tile) > _opt.snow_line)) {
+				ToggleSnow(tile);
 				MarkTileDirtyByTile(tile);
 			}
 			break;
 
 		case LT_DESERT:
-			if (GetTropicZone(tile) == TROPICZONE_DESERT && !(_m[tile].m4 & 0x80)) {
-				_m[tile].m4 |= 0x80;
+			if (GetTropicZone(tile) == TROPICZONE_DESERT && !IsOnDesert(tile)) {
+				ToggleDesert(tile);
 				MarkTileDirtyByTile(tile);
 			}
 			break;
@@ -927,7 +917,7 @@ static void TileLoop_Road(TileIndex tile)
 
 	if (GetRoadType(tile) == ROAD_DEPOT) return;
 
-	if (GB(_m[tile].m4, 4, 3) < 6) {
+	if (!HasRoadWorks(tile)) {
 		t = ClosestTownFromTile(tile, (uint)-1);
 
 		grp = 0;
@@ -937,9 +927,9 @@ static void TileLoop_Road(TileIndex tile)
 			// Show an animation to indicate road work
 			if (t->road_build_months != 0 &&
 					!(DistanceManhattan(t->xy, tile) >= 8 && grp == 0) &&
-					(_m[tile].m5 == ROAD_Y || _m[tile].m5 == ROAD_X)) {
+					GetRoadType(tile) == ROAD_NORMAL && (GetRoadBits(tile) == ROAD_X || GetRoadBits(tile) == ROAD_Y)) {
 				if (GetTileSlope(tile, NULL) == 0 && EnsureNoVehicle(tile) && CHANCE16(1, 20)) {
-					SB(_m[tile].m4, 4, 3, (GB(_m[tile].m4, 4, 3) <= 1 ? 6 : 7));
+					StartRoadWorks(tile);
 
 					SndPlayTileFx(SND_21_JACKHAMMER, tile);
 					CreateEffectVehicleAbove(
@@ -954,35 +944,28 @@ static void TileLoop_Road(TileIndex tile)
 		}
 
 		{
-			const byte *p = (_opt.landscape == LT_CANDY) ? _town_road_types_2[grp] : _town_road_types[grp];
-			byte b = GB(_m[tile].m4, 4, 3);
+			/* Adjust road ground type depending on 'grp' (grp is the distance to the center) */
+			const RoadGroundType *target_rgt = (_opt.landscape == LT_CANDY) ? _town_road_types_2[grp] : _town_road_types[grp];
+			RoadGroundType rgt = GetGroundType(tile);
 
-			if (b == p[0]) return;
+			/* We have our desired type, do nothing */
+			if (rgt == target_rgt[0]) return;
 
-			if (b == p[1]) {
-				b = p[0];
-			} else if (b == 0) {
-				b = p[1];
+			/* We have the pre-type of the desired type, switch to the desired type */
+			if (rgt == target_rgt[1]) {
+				rgt = target_rgt[0];
+			/* We have barren land, install the pre-type */
+			} else if (rgt == RGT_BARREN) {
+				rgt = target_rgt[1];
+			/* We're totally off limits, remove any installation and make barren land */
 			} else {
-				b = 0;
+				rgt = RGT_BARREN;
 			}
-			SB(_m[tile].m4, 4, 3, b);
+			SetGroundType(tile, rgt);
 			MarkTileDirtyByTile(tile);
 		}
-	} else {
-		// Handle road work
-		//XXX undocumented
-
-		byte b = _m[tile].m4;
-		//roadworks take place only
-		//keep roadworks running for 16 loops
-		//lower 4 bits of map3_hi store the counter now
-		if ((b & 0xF) != 0xF) {
-			_m[tile].m4 = b + 1;
-			return;
-		}
-		//roadworks finished
-		_m[tile].m4 = (GB(b, 4, 3) == 6 ? 1 : 2) << 4;
+	} else if (IncreaseRoadWorksCounter(tile)) {
+		TerminateRoadWorks(tile);
 		MarkTileDirtyByTile(tile);
 	}
 }
@@ -1008,8 +991,7 @@ static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode)
 		case TRANSPORT_ROAD:
 			switch (GetRoadType(tile)) {
 				case ROAD_NORMAL:
-					return GB(_m[tile].m4, 4, 3) >= 6 ?
-						0 : _road_trackbits[GetRoadBits(tile)] * 0x101;
+					return HasRoadWorks(tile) ?  0 : _road_trackbits[GetRoadBits(tile)] * 0x101;
 
 				case ROAD_CROSSING: {
 					uint32 r = (GetCrossingRoadAxis(tile) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y) * 0x101;
@@ -1046,7 +1028,7 @@ static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
 	switch (GetRoadType(tile)) {
 		case ROAD_CROSSING: td->str = STR_1818_ROAD_RAIL_LEVEL_CROSSING; break;
 		case ROAD_DEPOT: td->str = STR_1817_ROAD_VEHICLE_DEPOT; break;
-		default: td->str = _road_tile_strings[GB(_m[tile].m4, 4, 3)]; break;
+		default: td->str = _road_tile_strings[GetGroundType(tile)]; break;
 	}
 }
 

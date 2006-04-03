@@ -102,6 +102,72 @@ static inline bool IsCrossingBarred(TileIndex t)
 	return HASBIT(_m[t].m5, 2);
 }
 
+#define IsOnDesert IsOnSnow
+static inline bool IsOnSnow(TileIndex t)
+{
+	return HASBIT(_m[t].m4, 7);
+}
+
+#define ToggleDesert ToggleSnow
+static inline void ToggleSnow(TileIndex t)
+{
+	TOGGLEBIT(_m[t].m4, 7);
+}
+
+typedef enum RoadGroundType {
+	RGT_BARREN,
+	RGT_GRASS,
+	RGT_PAVED,
+	RGT_LIGHT,
+	RGT_NOT_IN_USE, /* Has something to do with fund buildings */
+	RGT_ALLEY,
+	RGT_ROADWORK_GRASS,
+	RGT_ROADWORK_PAVED,
+
+	RGT_ROADWORK_OFFSET = RGT_ROADWORK_GRASS - RGT_GRASS
+} RoadGroundType;
+
+static inline RoadGroundType GetGroundType(TileIndex t)
+{
+	return (RoadGroundType)GB(_m[t].m4, 4, 3);
+}
+
+static inline void SetGroundType(TileIndex t, RoadGroundType rgt)
+{
+	SB(_m[t].m4, 4, 3, rgt);
+}
+
+static inline bool HasRoadWorks(TileIndex t)
+{
+	return GetGroundType(t) >= RGT_ROADWORK_GRASS;
+}
+
+static inline bool IncreaseRoadWorksCounter(TileIndex t)
+{
+	AB(_m[t].m4, 0, 4, 1);
+
+	return GB(_m[t].m4, 0, 4) == 15;
+}
+
+static inline void StartRoadWorks(TileIndex t)
+{
+	assert(!HasRoadWorks(t));
+	/* Remove any trees or lamps in case or roadwork */
+	SetGroundType(t, min(GetGroundType(t), RGT_PAVED) + RGT_ROADWORK_OFFSET);
+}
+
+static inline void TerminateRoadWorks(TileIndex t)
+{
+	assert(HasRoadWorks(t));
+	SetGroundType(t, GetGroundType(t) - RGT_ROADWORK_OFFSET);
+	/* Stop the counter */
+	SB(_m[t].m4, 0, 4, 0);
+}
+
+static inline bool HasPavement(TileIndex t)
+{
+	return GetGroundType(t) >= RGT_PAVED && GetGroundType(t) != RGT_ROADWORK_GRASS;
+}
 
 static inline DiagDirection GetRoadDepotDirection(TileIndex t)
 {
