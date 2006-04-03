@@ -277,12 +277,12 @@ static uint32 CheckRoadSlope(int tileh, RoadBits* pieces, RoadBits existing)
  */
 int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileInfo ti;
 	int32 cost = 0;
 	int32 ret;
 	RoadBits existing = 0;
 	RoadBits pieces;
 	TileIndex tile;
+	byte tileh;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -291,10 +291,10 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if ((p1 >> 4) || (_current_player < MAX_PLAYERS && p2 != 0) || !IsTownIndex(p2)) return CMD_ERROR;
 	pieces = p1;
 
-	FindLandscapeHeight(&ti, x, y);
-	tile = ti.tile;
+	tile = TileVirtXY(x, y);
+	tileh = GetTileSlope(tile, NULL);
 
-	switch (ti.type) {
+	switch (GetTileType(tile)) {
 		case MP_STREET:
 			switch (GetRoadType(tile)) {
 				case ROAD_NORMAL:
@@ -320,13 +320,13 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		case MP_RAILWAY: {
 			Axis roaddir;
 
-			if (IsSteepTileh(ti.tileh)) { // very steep tile
+			if (IsSteepTileh(tileh)) { // very steep tile
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 			}
 
 #define M(x) (1 << (x))
 			/* Level crossings may only be built on these slopes */
-			if (!HASBIT(M(14) | M(13) | M(11) | M(10) | M(7) | M(5) | M(0), ti.tileh)) {
+			if (!HASBIT(M(14) | M(13) | M(11) | M(10) | M(7) | M(5) | M(0), tileh)) {
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 			}
 #undef M
@@ -357,7 +357,7 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		case MP_TUNNELBRIDGE:
 			/* check for flat land */
-			if (IsSteepTileh(ti.tileh)) { // very steep tile
+			if (IsSteepTileh(tileh)) { // very steep tile
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 			}
 
@@ -393,14 +393,14 @@ do_clear:;
 			cost += ret;
 	}
 
-	ret = CheckRoadSlope(ti.tileh, &pieces, existing);
+	ret = CheckRoadSlope(tileh, &pieces, existing);
 	if (CmdFailed(ret)) return_cmd_error(STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION);
 	if (ret != 0 && (!_patches.build_on_slopes || _is_old_ai_player)) {
 		return CMD_ERROR;
 	}
 	cost += ret;
 
-	if (ti.type == MP_STREET) {
+	if (IsTileType(tile, MP_STREET)) {
 		// Don't put the pieces that already exist
 		pieces &= ComplementRoadBits(existing);
 	}
@@ -408,7 +408,7 @@ do_clear:;
 	cost += CountRoadBits(pieces) * _price.build_road;
 
 	if (flags & DC_EXEC) {
-		if (ti.type == MP_STREET) {
+		if (IsTileType(tile, MP_STREET)) {
 			SetRoadBits(tile, existing | pieces);
 		} else {
 			MakeRoadNormal(tile, _current_player, pieces, p2);
