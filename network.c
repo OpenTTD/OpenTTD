@@ -40,10 +40,6 @@ struct Library *SocketBase = NULL;
 // The listen socket for the server
 static SOCKET _listensocket;
 
-// Network copy of patches, so the patches of a client are not fucked up
-//  after he joined a server
-static Patches network_tmp_patches;
-
 // The amount of clients connected
 static byte _network_clients_connected = 0;
 // The index counter for new clients (is never decreased)
@@ -651,8 +647,6 @@ static bool NetworkConnect(const char *hostname, int port)
 
 	ShowJoinStatusWindow();
 
-	memcpy(&network_tmp_patches, &_patches, sizeof(_patches));
-
 	return true;
 }
 
@@ -1085,10 +1079,6 @@ void NetworkDisconnect(void)
 		CommandPacket *p = _local_command_queue;
 		_local_command_queue = _local_command_queue->next;
 		free(p);
-	}
-
-	if (_networking && !_network_server) {
-		memcpy(&_patches, &network_tmp_patches, sizeof(_patches));
 	}
 
 	_networking = false;
