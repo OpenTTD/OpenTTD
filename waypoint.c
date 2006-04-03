@@ -66,7 +66,7 @@ static Waypoint* AllocateWaypoint(void)
 /* Update the sign for the waypoint */
 static void UpdateWaypointSign(Waypoint* wp)
 {
-	Point pt = RemapCoords2(TileX(wp->xy) * 16, TileY(wp->xy) * 16);
+	Point pt = RemapCoords2(TileX(wp->xy) * TILE_SIZE, TileY(wp->xy) * TILE_SIZE);
 	SetDParam(0, wp->index);
 	UpdateViewportSignPos(&wp->sign, pt.x, pt.y - 0x20, STR_WAYPOINT_VIEWPORT);
 }

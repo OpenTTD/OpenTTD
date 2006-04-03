@@ -941,7 +941,7 @@ static void PlantFarmField(TileIndex tile)
 	int type;
 
 	if (_opt.landscape == LT_HILLY) {
-		if (GetTileZ(tile) + 16 >= _opt.snow_line)
+		if (GetTileZ(tile) + TILE_HEIGHT * 2 >= _opt.snow_line)
 			return;
 	}
 
@@ -1162,7 +1162,7 @@ static bool CheckNewIndustry_Oil(TileIndex tile, int type)
 	if (_game_mode == GM_EDITOR && _ignore_restrictions) return true;
 	if (_game_mode == GM_EDITOR && type != IT_OIL_RIG)   return true;
 	if ((type != IT_OIL_RIG || TileHeight(tile) == 0) &&
-			DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < TILE_SIZE)   return true;
+			DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < 16)   return true;
 
 	_error_message = STR_483B_CAN_ONLY_BE_POSITIONED;
 	return false;
@@ -1171,7 +1171,7 @@ static bool CheckNewIndustry_Oil(TileIndex tile, int type)
 static bool CheckNewIndustry_Farm(TileIndex tile, int type)
 {
 	if (_opt.landscape == LT_HILLY) {
-		if (GetTileZ(tile) + 16 >= _opt.snow_line) {
+		if (GetTileZ(tile) + TILE_HEIGHT * 2 >= _opt.snow_line) {
 			_error_message = STR_0239_SITE_UNSUITABLE;
 			return false;
 		}

@@ -372,7 +372,7 @@ void ShowRenameWaypointWindow(const Waypoint *wp)
 	/* Are we allowed to change the name of the waypoint? */
 	if (!CheckTileOwnership(wp->xy)) {
 		ShowErrorMessage(_error_message, STR_CANT_CHANGE_WAYPOINT_NAME,
-			TileX(wp->xy) * 16, TileY(wp->xy) * 16);
+			TileX(wp->xy) * TILE_SIZE, TileY(wp->xy) * TILE_SIZE);
 		return;
 	}
 

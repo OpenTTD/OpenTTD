@@ -143,7 +143,8 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	// make sure sx,sy are smaller than ex,ey
 	sx = TileX(p2);
 	sy = TileY(p2);
-	ex /= 16; ey /= 16;
+	ex /= TILE_SIZE;
+	ey /= TILE_SIZE;
 	if (ex < sx) intswap(ex, sx);
 	if (ey < sy) intswap(ey, sy);
 
@@ -405,11 +406,11 @@ static void TileLoopTreesAlps(TileIndex tile)
 {
 	int k = GetTileZ(tile) - _opt.snow_line;
 
-	if (k < -8) {
+	if (k < -TILE_HEIGHT) {
 		if (GetTreeGround(tile) != TR_SNOW_DESERT) return;
 		SetTreeGroundDensity(tile, TR_GRASS, 0);
 	} else {
-		uint density = min((uint)(k + 8) / 8, 3);
+		uint density = min((uint)(k + TILE_HEIGHT) / TILE_HEIGHT, 3);
 
 		if (GetTreeGround(tile) != TR_SNOW_DESERT || GetTreeDensity(tile) != density) {
 			SetTreeGroundDensity(tile, TR_SNOW_DESERT, density);

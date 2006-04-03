@@ -1200,12 +1200,12 @@ stop_capt:;
 		y += (dy >> 1) << 4;
 
 		if (dy & 1) {
-			x += 16;
+			x += TILE_SIZE;
 			sub += 2;
 			if (sub > 3) {
 				sub -= 4;
-				x -= 16;
-				y += 16;
+				x -= TILE_SIZE;
+				y += TILE_SIZE;
 			}
 		}
 
@@ -1217,16 +1217,16 @@ stop_capt:;
 			x = -hvx;
 			sub = 0;
 		}
-		if (x > (int)MapMaxX() * 16 - hvx) {
-			x = MapMaxX() * 16 - hvx;
+		if (x > (int)MapMaxX() * TILE_SIZE - hvx) {
+			x = MapMaxX() * TILE_SIZE - hvx;
 			sub = 0;
 		}
 		if (y < -hvy) {
 			y = -hvy;
 			sub = 0;
 		}
-		if (y > (int)MapMaxY() * 16 - hvy) {
-			y = MapMaxY() * 16 - hvy;
+		if (y > (int)MapMaxY() * TILE_SIZE - hvy) {
+			y = MapMaxY() * TILE_SIZE - hvy;
 			sub = 0;
 		}
 

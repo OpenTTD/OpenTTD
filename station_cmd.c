@@ -468,7 +468,7 @@ static void StationInitialize(Station *st, TileIndex tile)
 // st = Station to update for.
 static void UpdateStationVirtCoord(Station *st)
 {
-	Point pt = RemapCoords2(TileX(st->xy) * 16, TileY(st->xy) * 16);
+	Point pt = RemapCoords2(TileX(st->xy) * TILE_SIZE, TileY(st->xy) * TILE_SIZE);
 
 	pt.y -= 32;
 	if (st->facilities & FACIL_AIRPORT && st->airport_type == AT_OILRIG) pt.y -= 16;

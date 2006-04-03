@@ -413,7 +413,7 @@ static void DrawTile_Water(TileInfo *ti)
 			break;
 
 		case WATER_COAST:
-			assert(ti->tileh < 16);
+			assert(!IsSteepTileh(ti->tileh));
 			DrawGroundSprite(_water_shore_sprites[ti->tileh]);
 			break;
 

@@ -214,8 +214,8 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		transport = TRANSPORT_RAIL;
 	}
 
-	sx = TileX(p1) * 16;
-	sy = TileY(p1) * 16;
+	sx = TileX(p1) * TILE_SIZE;
+	sy = TileY(p1) * TILE_SIZE;
 
 	/* check if valid, and make sure that (x,y) are smaller than (sx,sy) */
 	if (x == sx) {
@@ -236,7 +236,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	/* set and test bridge length, availability */
-	bridge_len = ((sx + sy - x - y) >> 4) - 1;
+	bridge_len = ((sx + sy - x - y) / TILE_SIZE) - 1;
 	if (!CheckBridge_Stuff(bridge_type, bridge_len)) return_cmd_error(STR_5015_CAN_T_BUILD_BRIDGE_HERE);
 
 	/* retrieve landscape height and ensure it's on land */

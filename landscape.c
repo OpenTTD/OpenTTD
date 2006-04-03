@@ -61,7 +61,7 @@ void FindLandscapeHeight(TileInfo *ti, uint x, uint y)
 	ti->x = x;
 	ti->y = y;
 
-	if (x >= MapMaxX() * 16 - 1 || y >= MapMaxY() * 16 - 1) {
+	if (x >= MapMaxX() * TILE_SIZE - 1 || y >= MapMaxY() * TILE_SIZE - 1) {
 		ti->tileh = 0;
 		ti->type = MP_VOID;
 		ti->tile = 0;
@@ -302,16 +302,16 @@ int32 CmdClearArea(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	// make sure sx,sy are smaller than ex,ey
-	sx = TileX(p1) * 16;
-	sy = TileY(p1) * 16;
+	sx = TileX(p1) * TILE_SIZE;
+	sy = TileY(p1) * TILE_SIZE;
 	if (ex < sx) intswap(ex, sx);
 	if (ey < sy) intswap(ey, sy);
 
 	money = GetAvailableMoneyForCommand();
 	cost = 0;
 
-	for (x = sx; x <= ex; x += 16) {
-		for (y = sy; y <= ey; y += 16) {
+	for (x = sx; x <= ex; x += TILE_SIZE) {
+		for (y = sy; y <= ey; y += TILE_SIZE) {
 			ret = DoCommandByTile(TileVirtXY(x, y), 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
 			if (CmdFailed(ret)) continue;
 			cost += ret;

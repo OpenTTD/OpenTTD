@@ -1728,7 +1728,10 @@ static void MaybeReplaceVehicle(Vehicle *v)
 	 * If it's not a train, the value is unused
 	 * round up to the length of the tiles used for the train instead of the train length instead
 	 * Useful when newGRF uses custom length */
-	uint16 old_total_length = (v->type == VEH_Train) ? ((v->u.rail.cached_total_length + 15 )/ 16)* 16 : -1;
+	uint16 old_total_length = (v->type == VEH_Train ?
+		(v->u.rail.cached_total_length + TILE_SIZE - 1) / TILE_SIZE * TILE_SIZE :
+		-1
+	);
 
 
 	_current_player = v->owner;

@@ -577,14 +577,14 @@ static void TileLoopClearAlps(TileIndex tile)
 	/* distance from snow line, in steps of 8 */
 	int k = GetTileZ(tile) - _opt.snow_line;
 
-	if (k < -8) { // well below the snow line
+	if (k < -TILE_HEIGHT) { // well below the snow line
 		if (!IsClearGround(tile, CL_SNOW)) return;
 		if (GetClearDensity(tile) == 0) SetClearGroundDensity(tile, CL_GRASS, 3);
 	} else {
 		if (!IsClearGround(tile, CL_SNOW)) {
 			SetClearGroundDensity(tile, CL_SNOW, 0);
 		} else {
-			uint density = min((uint)(k + 8) / 8, 3);
+			uint density = min((uint)(k + TILE_HEIGHT) / TILE_HEIGHT, 3);
 
 			if (GetClearDensity(tile) < density) {
 				AddClearDensity(tile, 1);
@@ -738,7 +738,7 @@ static void ChangeTileOwner_Clear(TileIndex tile, PlayerID old_player, PlayerID 
 
 void InitializeClearLand(void)
 {
-	_opt.snow_line = _patches.snow_line_height * 8;
+	_opt.snow_line = _patches.snow_line_height * TILE_HEIGHT;
 }
 
 const TileTypeProcs _tile_type_clear_procs = {

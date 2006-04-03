@@ -23,7 +23,7 @@ uint GetTileh(uint n, uint w, uint e, uint s, uint *h)
 	if ((s -= min) != 0) r += (--s << 4) + 2;
 	if ((w -= min) != 0) r += (--w << 4) + 1;
 
-	if (h != NULL) *h = min * 8;
+	if (h != NULL) *h = min * TILE_HEIGHT;
 
 	return r;
 }

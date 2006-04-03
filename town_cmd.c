@@ -228,7 +228,7 @@ void UpdateTownVirtCoord(Town *t)
 	Point pt;
 
 	MarkTownSignDirty(t);
-	pt = RemapCoords2(TileX(t->xy) * 16, TileY(t->xy) * 16);
+	pt = RemapCoords2(TileX(t->xy) * TILE_SIZE, TileY(t->xy) * TILE_SIZE);
 	SetDParam(0, t->index);
 	SetDParam(1, t->population);
 	UpdateViewportSignPos(&t->sign, pt.x, pt.y - 24,
