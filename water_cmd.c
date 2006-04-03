@@ -324,8 +324,7 @@ static bool IsWateredTile(TileIndex tile)
 {
 	switch (GetTileType(tile)) {
 		case MP_WATER:
-			// true, if not coast/riverbank
-			return _m[tile].m5 != 1;
+			return !IsCoast(tile);
 
 		case MP_STATION:
 			return IsOilRig(tile) || IsDock(tile) || IsBuoy_(tile);
@@ -645,47 +644,29 @@ void TileLoop_Water(TileIndex tile)
 	}
 }
 
-
-static const byte _coast_tracks[16] = {0, 32, 4, 0, 16, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0};
-static const byte _shipdepot_tracks[4] = {1,1,2,2};
-static const byte _shiplift_tracks[12] = {1,2,1,2,1,2,1,2,1,2,1,2};
 static uint32 GetTileTrackStatus_Water(TileIndex tile, TransportType mode)
 {
-	uint m5;
-	uint b;
-
+	static const byte coast_tracks[] = {0, 32, 4, 0, 16, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0};
+	static const byte water_tracks_by_axis[] = {1, 2};
 	if (mode != TRANSPORT_WATER) return 0;
 
-	m5 = _m[tile].m5;
-	if (m5 == 0) return 0x3F3F;
-
-	if (m5 == 1) {
-		b = _coast_tracks[GetTileSlope(tile, NULL) & 0xF];
-		return b + (b << 8);
+	switch (GetWaterTileType(tile)) {
+		case WATER_CLEAR: return 0x3F * 0x101; /* We can go everywhere */
+		case WATER_COAST: return coast_tracks[GetTileSlope(tile, NULL) & 0xF] * 0x101;
+		case WATER_LOCK: return water_tracks_by_axis[DiagDirToAxis(GetLockDirection(tile))] * 0x101;
+		case WATER_DEPOT: return water_tracks_by_axis[GetShipDepotAxis(tile)] * 0x101;
+		default: return 0;
 	}
-
-	if ((m5 & 0x10) == 0x10) {
-		//
-		b = _shiplift_tracks[m5 & 0xF];
-		return b + (b << 8);
-	}
-
-	if (!(m5 & 0x80)) return 0;
-
-	b = _shipdepot_tracks[m5 & 0x7F];
-	return b + (b << 8);
 }
 
 extern void ShowShipDepotWindow(TileIndex tile);
 
 static void ClickTile_Water(TileIndex tile)
 {
-	byte m5 = _m[tile].m5 - 0x80;
+	if (GetWaterTileType(tile) == WATER_DEPOT) {
+		TileIndex tile2 = GetOtherShipDepotTile(tile);
 
-	if (IS_BYTE_INSIDE(m5, 0, 3+1)) {
-		if (m5 & 1)
-			tile += (m5 == 1) ? TileDiffXY(-1, 0) : TileDiffXY(0, -1);
-		ShowShipDepotWindow(tile);
+		ShowShipDepotWindow(tile < tile2 ? tile : tile2);
 	}
 }
 

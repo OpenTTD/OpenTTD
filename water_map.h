@@ -38,6 +38,11 @@ static inline bool IsWater(TileIndex t)
 	return GetWaterTileType(t) == WATER_CLEAR;
 }
 
+static inline bool IsCoast(TileIndex t)
+{
+	return GetWaterTileType(t) == WATER_COAST;
+}
+
 static inline bool IsClearWaterTile(TileIndex t)
 {
 	return IsTileType(t, MP_WATER) && IsWater(t) && GetTileSlope(t, NULL) == 0;
@@ -51,6 +56,11 @@ static inline TileIndex GetOtherShipDepotTile(TileIndex t)
 static inline TileIndex IsShipDepot(TileIndex t)
 {
 	return IS_INT_INSIDE(_m[t].m5, DEPOT_NORTH, DEPOT_END);
+}
+
+static inline Axis GetShipDepotAxis(TileIndex t)
+{
+	return (Axis)GB(_m[t].m5, 1, 1);
 }
 
 static inline DiagDirection GetLockDirection(TileIndex t)
