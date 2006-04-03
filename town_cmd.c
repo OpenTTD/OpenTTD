@@ -46,17 +46,6 @@ static void TownPoolNewBlock(uint start_item)
 /* Initialize the town-pool */
 MemoryPool _town_pool = { "Towns", TOWN_POOL_MAX_BLOCKS, TOWN_POOL_BLOCK_SIZE_BITS, sizeof(Town), &TownPoolNewBlock, 0, 0, NULL };
 
-
-/* This is the base "normal" number of towns on the 8x8 map, when
- * one town should get grown per tick. The other numbers of towns
- * are then scaled based on that. */
-#define TOWN_GROWTH_FREQUENCY 23
-
-enum {
-	TOWN_HAS_CHURCH     = 0x02,
-	TOWN_HAS_STADIUM    = 0x04
-};
-
 // Local
 static int _grow_town_result;
 
@@ -100,7 +89,7 @@ static void DrawTile_Town(TileInfo *ti)
 	{
 		/* this "randomizes" on the (up to) 4 variants of a building */
 		byte gfx   = GetHouseType(ti->tile);
-		byte stage = GB(_m[ti->tile].m3, 6, 2);
+		byte stage = GetHouseBuildingStage(ti->tile);
 		uint variant;
 		variant  = ti->x >> 4;
 		variant ^= ti->x >> 6;
@@ -115,7 +104,7 @@ static void DrawTile_Town(TileInfo *ti)
 	/* Add bricks below the house? */
 	if (ti->tileh) {
 		AddSortableSpriteToDraw(SPR_FOUNDATION_BASE + ti->tileh, ti->x, ti->y, 16, 16, 7, z);
-		AddChildSpriteScreen(dcts->sprite_1, 0x1F, 1);
+		AddChildSpriteScreen(dcts->sprite_1, 31, 1);
 		z += 8;
 	} else {
 		/* Else draw regular ground */
@@ -254,12 +243,13 @@ static void MakeSingleHouseBigger(TileIndex tile)
 
 	if (LiftHasDestination(tile)) return;
 
-	AB(_m[tile].m5, 0, 3, 1);
-	if (GB(_m[tile].m5, 0, 3) != 0) return;
+	IncHouseConstructionTick(tile);
+	if (GetHouseConstructionTick(tile) != 0) return;
 
-	_m[tile].m3 = _m[tile].m3 + 0x40;
+	IncHouseBuildingStage(tile);  /*increase construction stage of one more step*/
 
-	if ((_m[tile].m3 & 0xC0) == 0xC0) {
+	if (GetHouseBuildingStage(tile) == TOWN_HOUSE_COMPLETED){
+		/*Now, construction is completed.  Can add population of building to the town*/
 		ChangePopulation(GetTownByTile(tile), _housetype_population[GetHouseType(tile)]);
 	}
 	MarkTileDirtyByTile(tile);
@@ -280,7 +270,8 @@ static void TileLoop_Town(TileIndex tile)
 	Town *t;
 	uint32 r;
 
-	if ((_m[tile].m3 & 0xC0) != 0xC0) {
+	if (GetHouseBuildingStage(tile) != TOWN_HOUSE_COMPLETED) {
+		/*Construction is not completed. See if we can go further in construction*/
 		MakeTownHouseBigger(tile);
 		return;
 	}
@@ -312,7 +303,7 @@ static void TileLoop_Town(TileIndex tile)
 		t->new_act_mail += moved;
 	}
 
-	if (_house_more_flags[house] & 8 && (t->flags12 & 1) && --t->time_until_rebuild == 0) {
+	if (_house_more_flags[house] & 8 && HASBIT(t->flags12, TOWN_IS_FUNDED) && --t->time_until_rebuild == 0) {
 		t->time_until_rebuild = GB(r, 16, 6) + 130;
 
 		_current_player = OWNER_TOWN;
@@ -376,7 +367,7 @@ static void GetAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
 static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
 {
 	td->str = _town_tile_names[GetHouseType(tile)];
-	if ((_m[tile].m3 & 0xC0) != 0xC0) {
+	if (GetHouseBuildingStage(tile) != TOWN_HOUSE_COMPLETED) {
 		SetDParamX(td->dparam, 0, td->str);
 		td->str = STR_2058_UNDER_CONSTRUCTION;
 	}
@@ -414,7 +405,7 @@ static bool GrowTown(Town *t);
 
 static void TownTickHandler(Town *t)
 {
-	if (t->flags12&1) {
+	if (HASBIT(t->flags12, TOWN_IS_FUNDED)) {
 		int i = t->grow_counter - 1;
 		if (i < 0) {
 			if (GrowTown(t)) {
@@ -739,7 +730,7 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 				/* If we are in the SE, and this road-piece has no town owner yet, it just found an
 				*  owner :) (happy happy happy road now) */
 				SetTileOwner(tile, OWNER_TOWN);
-				_m[tile].m2 = t->index;
+				SetTownIndex(tile, t->index);
 			}
 		}
 
@@ -804,8 +795,8 @@ static bool GrowTown(Town *t)
 	// clearing some land and then building a road there.
 	tile = t->xy;
 	for (ptr = _town_coord_mod; ptr != endof(_town_coord_mod); ++ptr) {
-		// Only work with plain land that not already has a house with map5=0
-		if ((!IsTileType(tile, MP_HOUSE) || _m[tile].m5 != 0) &&
+		// Only work with plain land that not already has a house with GetHouseConstructionTick=0
+		if ((!IsTileType(tile, MP_HOUSE) || GetHouseConstructionTick(tile) != 0) &&
 				GetTileSlope(tile, NULL) == 0) {
 			if (!CmdFailed(DoCommandByTile(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR))) {
 				DoCommandByTile(tile, GenRandomRoadBits(), t->index, DC_EXEC | DC_AUTO, CMD_BUILD_ROAD);
@@ -1177,7 +1168,7 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 	int house;
 	uint slope;
 	uint z;
-	uint oneof;
+	uint oneof = 0;
 
 	// Above snow?
 	slope = GetTileSlope(tile, &z);
@@ -1219,18 +1210,18 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 				case HOUSE_SNOW_CHURCH:
 				case HOUSE_TROP_CHURCH:
 				case HOUSE_TOY_CHURCH:
-					oneof = TOWN_HAS_CHURCH;
+					SETBIT(oneof, TOWN_HAS_CHURCH);
 					break;
 				case HOUSE_STADIUM:
 				case HOUSE_MODERN_STADIUM:
-					oneof = TOWN_HAS_STADIUM;
+					SETBIT(oneof, TOWN_HAS_STADIUM);
 					break;
 				default:
 					oneof = 0;
 					break;
 			}
 
-			if (t->flags12 & oneof) continue;
+			if (HASBITS(t->flags12 , oneof)) continue;
 
 			// Make sure there is no slope?
 			if (_housetype_extra_flags[house] & 0x12 && slope) continue;
@@ -1274,10 +1265,10 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 		if (_generating_world) {
 			uint32 r = Random();
 
-			construction_stage = 3; /* House is finished */
+			construction_stage = TOWN_HOUSE_COMPLETED;
 			if (CHANCE16(1, 7)) construction_stage = GB(r, 0, 2);
 
-			if (construction_stage == 3) {
+			if (construction_stage == TOWN_HOUSE_COMPLETED) {
 				ChangePopulation(t, _housetype_population[house]);
 			} else {
 				construction_counter = GB(r, 2, 2);
@@ -1337,9 +1328,8 @@ static void ClearTownHouse(Town *t, TileIndex tile)
 		}
 	}
 
-	// Remove population from the town if the
-	// house is finished.
-	if ((~_m[tile].m3 & 0xC0) == 0) {
+	// Remove population from the town if the house is finished.
+	if (GetHouseBuildingStage(tile) == TOWN_HOUSE_COMPLETED) {
 		ChangePopulation(t, -_housetype_population[house]);
 	}
 
@@ -1352,11 +1342,11 @@ static void ClearTownHouse(Town *t, TileIndex tile)
 		case HOUSE_SNOW_CHURCH:
 		case HOUSE_TROP_CHURCH:
 		case HOUSE_TOY_CHURCH:
-			t->flags12 &= ~TOWN_HAS_CHURCH;
+			CLRBIT(t->flags12, TOWN_HAS_CHURCH);
 			break;
 		case HOUSE_STADIUM:
 		case HOUSE_MODERN_STADIUM:
-			t->flags12 &= ~TOWN_HAS_STADIUM;
+			CLRBIT(t->flags12, TOWN_HAS_STADIUM);
 			break;
 		default:
 			break;
@@ -1475,7 +1465,7 @@ typedef void TownActionProc(Town *t, int action);
 static void TownActionAdvertise(Town *t, int action)
 {
 	static const byte _advertising_amount[3] = {0x40, 0x70, 0xA0};
-	static const byte _advertising_radius[3] = {10,15,20};
+	static const byte _advertising_radius[3] = {10, 15, 20};
 	ModifyStationRatingAround(t->xy, _current_player,
 		_advertising_amount[action],
 		_advertising_radius[action]);
@@ -1559,8 +1549,11 @@ static void TownActionBuildStatue(Town *t, int action)
 
 static void TownActionFundBuildings(Town *t, int action)
 {
+	// Build next tick
 	t->grow_counter = 1;
-	t->flags12 |= 1;
+	// If we were not already growing
+	SETBIT(t->flags12, TOWN_IS_FUNDED);
+	// And grow for 3 months
 	t->fund_buildings_months = 3;
 }
 
@@ -1676,7 +1669,7 @@ static void UpdateTownGrowRate(Town *t)
 		}
 	}
 
-	t->flags12 &= ~1;
+	CLRBIT(t->flags12, TOWN_IS_FUNDED);
 
 	if (t->fund_buildings_months != 0) {
 		static const byte _grow_count_values[6] = {
@@ -1707,7 +1700,7 @@ static void UpdateTownGrowRate(Town *t)
 	if (m <= t->grow_counter)
 		t->grow_counter = m;
 
-	t->flags12 |= 1;
+	SETBIT(t->flags12, TOWN_IS_FUNDED);
 }
 
 static void UpdateTownAmounts(Town *t)

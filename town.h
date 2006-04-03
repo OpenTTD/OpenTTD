@@ -21,6 +21,9 @@ struct Town {
 	ViewportSign sign;
 
 	// Makes sure we don't build certain house types twice.
+	// bit 0 = Building funds received
+	// bit 1 = CHURCH
+	// bit 2 = STADIUM
 	byte flags12;
 
 	// Which players have a statue?
@@ -92,15 +95,15 @@ enum {
 enum {
 	// These refer to the maximums, so Appalling is -1000 to -400
 	// MAXIMUM RATINGS BOUNDARIES
-	RATING_MINIMUM 		= -1000,
-	RATING_APPALLING 	= -400,
-	RATING_VERYPOOR 	= -200,
-	RATING_POOR 			= 0,
-	RATING_MEDIOCRE		= 200,
-	RATING_GOOD				= 400,
-	RATING_VERYGOOD		= 600,
-	RATING_EXCELLENT	= 800,
-	RATING_OUTSTANDING= 1000, 	// OUTSTANDING
+	RATING_MINIMUM     = -1000,
+	RATING_APPALLING   = -400,
+	RATING_VERYPOOR    = -200,
+	RATING_POOR        = 0,
+	RATING_MEDIOCRE    = 200,
+	RATING_GOOD        = 400,
+	RATING_VERYGOOD    = 600,
+	RATING_EXCELLENT   = 800,
+	RATING_OUTSTANDING = 1000,         // OUTSTANDING
 
 	RATING_MAXIMUM = RATING_OUTSTANDING,
 
@@ -122,7 +125,28 @@ enum {
 
 	RATING_BRIBE_UP_STEP = 200,
 	RATING_BRIBE_MAXIMUM = 800,
-	RATING_BRIBE_DOWN_TO = -50 					// XXX SHOULD BE SOMETHING LOWER?
+	RATING_BRIBE_DOWN_TO = -50        // XXX SHOULD BE SOMETHING LOWER?
+};
+
+enum {
+/* This is the base "normal" number of towns on the 8x8 map, when
+ * one town should get grown per tick. The other numbers of towns
+ * are then scaled based on that. */
+	TOWN_GROWTH_FREQUENCY   = 23,
+/* Simple value that indicates the house has reached final stage of construction*/
+	TOWN_HOUSE_COMPLETED =  3,
+};
+
+/* This enum is used in conjonction with town->flags12.
+ * IT simply states what bit is used for.
+ * It is pretty unrealistic (IMHO) to only have one church/stadium
+ * per town, NO MATTER the population of it.
+ * And there are 5 more bits available on flags12...
+ */
+enum {
+	TOWN_IS_FUNDED      = 0,   // Town has received some funds for
+	TOWN_HAS_CHURCH     = 1,   // There can be only one church by town.
+	TOWN_HAS_STADIUM    = 2    // There can be only one stadium by town.
 };
 
 bool CheckforTownRating(uint32 flags, Town *t, byte type);

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file town_map.h Accessors for towns */
+
 #ifndef TOWN_MAP_H
 #define TOWN_MAP_H
 
@@ -11,10 +13,22 @@ static inline int GetHouseType(TileIndex t)
 	return _m[t].m4;
 }
 
-static inline uint GetTownIndex(TileIndex t)
+static inline TownID GetTownIndex(TileIndex t)
 {
 	assert(IsTileType(t, MP_HOUSE) || IsTileType(t, MP_STREET)); // XXX incomplete
 	return _m[t].m2;
+}
+
+/**
+ * Set the town index for a street tile.
+ * @param tile the tile
+ * @param index the index of the town
+ * @pre IsTileType(tile, MP_STREET)
+ */
+static inline void SetTownIndex(TileIndex t, TownID index)
+{
+	assert(IsTileType(t, MP_STREET));
+	_m[t].m2 = index;
 }
 
 static inline bool LiftHasDestination(TileIndex t)
@@ -67,7 +81,6 @@ static inline Town* GetTownByTile(TileIndex t)
 	return GetTown(GetTownIndex(t));
 }
 
-
 static inline void MakeHouseTile(TileIndex t, TownID tid, byte counter, byte stage, byte type)
 {
 	assert(IsTileType(t, MP_CLEAR));
@@ -95,4 +108,87 @@ static inline void MakeTownHouse(TileIndex t, TownID tid, byte counter, byte sta
 	if (HASBIT(size, TWO_BY_TWO_BIT) || HASBIT(size, TWO_BY_ONE_BIT)) MakeHouseTile(t + TileDiffXY(1, 0), tid, counter, stage, ++type);
 	if (HASBIT(size, TWO_BY_TWO_BIT)) MakeHouseTile(t + TileDiffXY(1, 1), tid, counter, stage, ++type);
 }
-#endif
+
+/**
+ * House Construction Scheme.
+ *  Construction counter, for buildings under construction. Incremented on every
+ *  periodic tile processing.
+ *  On wraparound, the stage of building in is increased.
+ *  (Get|Set|Inc)HouseBuildingStage are taking care of the real stages,
+ *  (as the sprite for the next phase of house building)
+ *  (Get|Set|Inc)HouseConstructionTick is simply a tick counter between the
+ *  different stages
+ */
+
+/**
+ * Gets the building stage of a house
+ * @param tile the tile of the house to get the building stage of
+ * @pre IsTileType(t, MP_HOUSE)
+ * @return the building stage of the house
+ */
+static inline byte GetHouseBuildingStage(TileIndex t)
+{
+	assert(IsTileType(t, MP_HOUSE));
+	return GB(_m[t].m3, 6, 2);
+}
+
+/**
+ * Sets the building stage of a house
+ * @param tile the tile of the house to set the building stage of
+ * @param stage the new stage
+ * @pre IsTileType(t, MP_HOUSE)
+ */
+static inline void SetHouseBuildingStage(TileIndex t, byte stage)
+{
+	assert(IsTileType(t, MP_HOUSE));
+	SB(_m[t].m3, 6, 2, stage);
+}
+
+/**
+ * Increments the building stage of a house
+ * @param tile the tile of the house to increment the building stage of
+ * @pre IsTileType(t, MP_HOUSE)
+ */
+static inline void IncHouseBuildingStage( TileIndex t )
+{
+	assert(IsTileType(t, MP_HOUSE));
+	AB(_m[t].m3, 6, 2, 1);
+}
+
+/**
+ * Gets the construction stage of a house
+ * @param tile the tile of the house to get the construction stage of
+ * @pre IsTileType(t, MP_HOUSE)
+ * @return the construction stage of the house
+ */
+static inline byte GetHouseConstructionTick(TileIndex t)
+{
+	assert(IsTileType(t, MP_HOUSE));
+	return GB(_m[t].m5, 0, 3);
+}
+
+/**
+ * Sets the construction stage of a house
+ * @param tile the tile of the house to set the construction stage of
+ * @param stage the new stage
+ * @pre IsTileType(t, MP_HOUSE)
+ */
+static inline void SetHouseConstructionTick(TileIndex t, byte stage)
+{
+	assert(IsTileType(t, MP_HOUSE));
+	SB(_m[t].m5, 0, 3, stage);
+}
+
+/**
+ * Sets the increment stage of a house
+ * @param tile the tile of the house to increment the construction stage of
+ * @pre IsTileType(t, MP_HOUSE)
+ */
+static inline void IncHouseConstructionTick(TileIndex t)
+{
+	assert(IsTileType(t, MP_HOUSE));
+	AB(_m[t].m5, 0, 3, 1);
+}
+
+
+#endif /* TOWN_MAP_H */
