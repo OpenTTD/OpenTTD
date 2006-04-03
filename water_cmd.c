@@ -318,7 +318,10 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 			if (flags & DC_AUTO) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
 
 			return RemoveShipDepot(tile, flags);
+		default: NOT_REACHED();
 	}
+
+	return 0; // useless but silences warning
 }
 
 // return true if a tile is a water tile.
