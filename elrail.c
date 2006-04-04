@@ -309,9 +309,12 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 static void DrawCatenaryOnBridge(const TileInfo *ti)
 {
-	TileIndex start = GetOtherBridgeEnd(GetSouthernBridgeEnd(ti->tile));
-	uint length = GetBridgeLength(GetSouthernBridgeEnd(ti->tile), GetOtherBridgeEnd(GetSouthernBridgeEnd(ti->tile)));
+	TileIndex end = GetSouthernBridgeEnd(ti->tile);
+	TileIndex start = GetOtherBridgeEnd(end);
+
+	uint length = GetBridgeLength(start, end);
 	uint num = DistanceMax(ti->tile, start);
+
 	const SortableSpriteStruct *sss;
 	Axis axis = GetBridgeAxis(ti->tile);
 	TLG tlg = GetTLG(ti->tile);
@@ -319,11 +322,19 @@ static void DrawCatenaryOnBridge(const TileInfo *ti)
 	CatenarySprite offset = axis == AXIS_X ? 0 : WIRE_Y_FLAT_BOTH - WIRE_X_FLAT_BOTH;
 
 	if ((length % 2) && num == length) {
+		/* Draw the "short" wire on the southern end of the bridge
+		 * only needed if the length of the bridge is odd */
 		sss = &CatenarySpriteData[WIRE_X_FLAT_BOTH + offset];
 	} else {
+		/* Draw "long" wires on all other tiles of the bridge (one pylon every two tiles) */
 		sss = &CatenarySpriteData[WIRE_X_FLAT_SW + (num % 2) + offset];
 	}
 
+	AddSortableSpriteToDraw( sss->image, ti->x + sss->x_offset, ti->y + sss->y_offset,
+			sss->x_size, sss->y_size, sss->z_size, GetBridgeHeight(ti->tile) + sss->z_offset + 8);
+
+	/* Finished with wires, draw pylons */
+	/* every other tile needs a pylon on the northern end */
 	if (num % 2) {
 		if (axis == AXIS_X) {
 			AddSortableSpriteToDraw( pylons_bridge[0 + HASBIT(tlg, 0)], ti->x, ti->y + 4 + 8 * HASBIT(tlg, 0), 1, 1, 10, GetBridgeHeight(ti->tile) + 8);
@@ -332,16 +343,14 @@ static void DrawCatenaryOnBridge(const TileInfo *ti)
 		}
 	}
 
-	if (DistanceMax(ti->tile, start) == length) { /* need a pylon here (the southern end) */
+	/* need a pylon on the southern end of the bridge */
+	if (DistanceMax(ti->tile, start) == length) {
 		if (axis == AXIS_X) {
 			AddSortableSpriteToDraw( pylons_bridge[0 + HASBIT(tlg, 0)], ti->x + 16, ti->y + 4 + 8 * HASBIT(tlg, 0), 1, 1, 10, GetBridgeHeight(ti->tile) + 8);
 		} else {
 			AddSortableSpriteToDraw( pylons_bridge[2 + HASBIT(tlg, 1)], ti->x + 4 + 8 * HASBIT(tlg, 1), ti->y + 16, 1, 1, 10, GetBridgeHeight(ti->tile) + 8);
 		}
 	}
-
-	AddSortableSpriteToDraw( sss->image, ti->x + sss->x_offset, ti->y + sss->y_offset,
-			sss->x_size, sss->y_size, sss->z_size, GetBridgeHeight(ti->tile) + sss->z_offset + 8);
 }
 
 void DrawCatenary(const TileInfo *ti)
