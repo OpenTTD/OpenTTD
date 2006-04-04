@@ -76,15 +76,6 @@ static inline bool IsRailwayStationTile(TileIndex t)
 	return IsTileType(t, MP_STATION) && IsRailwayStation(t);
 }
 
-static inline bool IsCompatibleTrainStationTile(TileIndex t1, TileIndex t2)
-{
-	assert(IsRailwayStationTile(t2));
-	return
-		IsRailwayStationTile(t1) &&
-		IsCompatibleRail(GetRailType(t1), GetRailType(t2)) &&
-		GB(_m[t1].m5, 0, 1) == GB(_m[t2].m5, 0, 1);   // same direction?
-}
-
 static inline bool IsHangar(TileIndex t)
 {
 	assert(IsTileType(t, MP_STATION));
@@ -173,6 +164,15 @@ static inline Axis GetRailStationAxis(TileIndex t)
 static inline Track GetRailStationTrack(TileIndex t)
 {
 	return GetRailStationAxis(t) == AXIS_X ? TRACK_X : TRACK_Y;
+}
+
+static inline bool IsCompatibleTrainStationTile(TileIndex t1, TileIndex t2)
+{
+	assert(IsRailwayStationTile(t2));
+	return
+		IsRailwayStationTile(t1) &&
+		IsCompatibleRail(GetRailType(t1), GetRailType(t2)) &&
+		GetRailStationAxis(t1) == GetRailStationAxis(t2);
 }
 
 
