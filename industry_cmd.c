@@ -75,7 +75,7 @@ typedef struct DrawIndustrySpec4Struct {
 
 typedef struct IndustryTileTable {
 	TileIndexDiffC ti;
-	byte map5;
+	byte gfx;
 } IndustryTileTable;
 
 typedef struct IndustrySpec {
@@ -1292,11 +1292,11 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable*
 		TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
 
 		if (!IsValidTile(cur_tile)) {
-			if (it->map5 == 0xff) continue;
+			if (it->gfx == 0xff) continue;
 			return false;
 		}
 
-		if (it->map5 == 0xFF) {
+		if (it->gfx == 0xFF) {
 			if (!IsTileType(cur_tile, MP_WATER) ||
 					GetTileSlope(cur_tile, NULL) != 0) {
 				return false;
@@ -1316,7 +1316,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable*
 
 				if (tileh != 0) {
 					int t;
-					byte bits = _industry_map5_bits[it->map5];
+					byte bits = _industry_map5_bits[it->gfx];
 
 					if (bits & 0x10) return false;
 
@@ -1466,7 +1466,7 @@ static void DoCreateNewIndustry(Industry* i, TileIndex tile, int type, const Ind
 	do {
 		TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
 
-		if (it->map5 != 0xFF) {
+		if (it->gfx != 0xFF) {
 			byte size;
 
 			size = it->ti.x;
@@ -1476,7 +1476,7 @@ static void DoCreateNewIndustry(Industry* i, TileIndex tile, int type, const Ind
 
 			DoCommandByTile(cur_tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 
-			MakeIndustry(cur_tile, i->index, it->map5);
+			MakeIndustry(cur_tile, i->index, it->gfx);
 			if (_generating_world) _m[cur_tile].m1 = 0x1E; /* maturity */
 		}
 	} while ((++it)->ti.x != -0x80);
