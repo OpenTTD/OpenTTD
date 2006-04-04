@@ -281,47 +281,49 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 
 			if (flags & DC_EXEC) DoClearSquare(tile);
 			return _price.clear_water;
-		case WATER_COAST:
-			{
-				uint slope = GetTileSlope(tile, NULL);
 
-				// Make sure no vehicle is on the tile
-				if (!EnsureNoVehicle(tile)) return CMD_ERROR;
+		case WATER_COAST: {
+			uint slope = GetTileSlope(tile, NULL);
 
-				// Make sure it's not an edge tile.
-				if (!IS_INT_INSIDE(TileX(tile), 1, MapMaxX() - 1) ||
-						!IS_INT_INSIDE(TileY(tile), 1, MapMaxY() - 1)) {
-					return_cmd_error(STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP);
-				}
+			// Make sure no vehicle is on the tile
+			if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
-				if (flags & DC_EXEC) DoClearSquare(tile);
-				if (slope == 8 || slope == 4 || slope == 2 || slope == 1) {
-					return _price.clear_water;
-				} else {
-					return _price.purchase_land;
-				}
+			// Make sure it's not an edge tile.
+			if (!IS_INT_INSIDE(TileX(tile), 1, MapMaxX() - 1) ||
+					!IS_INT_INSIDE(TileY(tile), 1, MapMaxY() - 1)) {
+				return_cmd_error(STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP);
 			}
-		case WATER_LOCK:
-			{
-				static const TileIndexDiffC _shiplift_tomiddle_offs[] = {
-					{ 0,  0}, {0,  0}, { 0, 0}, {0,  0}, // middle
-					{-1,  0}, {0,  1}, { 1, 0}, {0, -1}, // lower
-					{ 1,  0}, {0, -1}, {-1, 0}, {0,  1}, // upper
-				};
 
-				if (flags & DC_AUTO) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
-				if (_current_player == OWNER_WATER) return CMD_ERROR;
-				// move to the middle tile..
-				return RemoveShiplift(tile + ToTileIndexDiff(_shiplift_tomiddle_offs[GetSection(tile)]), flags);
+			if (flags & DC_EXEC) DoClearSquare(tile);
+			if (slope == 8 || slope == 4 || slope == 2 || slope == 1) {
+				return _price.clear_water;
+			} else {
+				return _price.purchase_land;
 			}
+		}
+
+		case WATER_LOCK: {
+			static const TileIndexDiffC _shiplift_tomiddle_offs[] = {
+				{ 0,  0}, {0,  0}, { 0, 0}, {0,  0}, // middle
+				{-1,  0}, {0,  1}, { 1, 0}, {0, -1}, // lower
+				{ 1,  0}, {0, -1}, {-1, 0}, {0,  1}, // upper
+			};
+
+			if (flags & DC_AUTO) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
+			if (_current_player == OWNER_WATER) return CMD_ERROR;
+			// move to the middle tile..
+			return RemoveShiplift(tile + ToTileIndexDiff(_shiplift_tomiddle_offs[GetSection(tile)]), flags);
+		}
+
 		case WATER_DEPOT:
 			if (flags & DC_AUTO) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
 
 			return RemoveShipDepot(tile, flags);
-		default: NOT_REACHED();
-	}
 
-	return 0; // useless but silences warning
+		default:
+			NOT_REACHED();
+			return 0;
+	}
 }
 
 // return true if a tile is a water tile.
