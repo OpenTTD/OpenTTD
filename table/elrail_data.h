@@ -279,11 +279,11 @@ static const Direction PPPorder[DIAGDIR_END][TLG_END][DIR_END] = {    /*  X  -  
 	}
 };
 /* Geometric placement of the PCP relative to the tile origin */
-static const char x_pcp_offsets[DIAGDIR_END] = {0,  8, 15, 8};
-static const char y_pcp_offsets[DIAGDIR_END] = {8, 15,  8, 0};
+static const int8 x_pcp_offsets[DIAGDIR_END] = {0,  8, 15, 8};
+static const int8 y_pcp_offsets[DIAGDIR_END] = {8, 15,  8, 0};
 /* Geometric placement of the PPP relative to the PCP*/
-static const char x_ppp_offsets[DIR_END] = {-3, -4, -3,  0, +3, +4, +3,  0};
-static const char y_ppp_offsets[DIR_END] = {-3,  0, +3, +4, +3,  0, -3, -4};
+static const int8 x_ppp_offsets[DIR_END] = {-3, -4, -3,  0, +3, +4, +3,  0};
+static const int8 y_ppp_offsets[DIR_END] = {-3,  0, +3, +4, +3,  0, -3, -4};
 /* The type of pylon to draw at each PPP */
 static const SpriteID pylons_normal[] = {
 	SPR_PYLON_EW_N,
