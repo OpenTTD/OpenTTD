@@ -81,7 +81,7 @@ static inline bool IsCompatibleTrainStationTile(TileIndex t1, TileIndex t2)
 	assert(IsRailwayStationTile(t2));
 	return
 		IsRailwayStationTile(t1) &&
-		GB(_m[t1].m3, 0, 4) == GB(_m[t2].m3, 0, 4) && // same rail type?
+		IsCompatibleRail(GetRailType(t1), GetRailType(t2)) &&
 		GB(_m[t1].m5, 0, 1) == GB(_m[t2].m5, 0, 1);   // same direction?
 }
 
