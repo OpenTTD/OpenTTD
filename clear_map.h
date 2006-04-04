@@ -10,12 +10,12 @@
  * valid densities (bits 0...1) in comments after the enum
  */
 typedef enum ClearGround {
-	CL_GRASS  = 0, // 0-3
-	CL_ROUGH  = 1, // 3
-	CL_ROCKS  = 2, // 3
-	CL_FIELDS = 3, // 3
-	CL_SNOW   = 4, // 0-3
-	CL_DESERT = 5  // 1,3
+	CLEAR_GRASS  = 0, // 0-3
+	CLEAR_ROUGH  = 1, // 3
+	CLEAR_ROCKS  = 2, // 3
+	CLEAR_FIELDS = 3, // 3
+	CLEAR_SNOW   = 4, // 0-3
+	CLEAR_DESERT = 5  // 1,3
 } ClearGround;
 
 
@@ -73,13 +73,13 @@ static inline void SetClearGroundDensity(TileIndex t, ClearGround type, uint den
 
 static inline uint GetFieldType(TileIndex t)
 {
-	assert(GetClearGround(t) == CL_FIELDS);
+	assert(GetClearGround(t) == CLEAR_FIELDS);
 	return GB(_m[t].m3, 0, 4);
 }
 
 static inline void SetFieldType(TileIndex t, uint f)
 {
-	assert(GetClearGround(t) == CL_FIELDS); // XXX incomplete
+	assert(GetClearGround(t) == CLEAR_FIELDS); // XXX incomplete
 	SB(_m[t].m3, 0, 4, f);
 }
 
@@ -128,7 +128,7 @@ static inline void MakeField(TileIndex t, uint field_type)
 	_m[t].m2 = 0;
 	_m[t].m3 = field_type;
 	_m[t].m4 = 0 << 5 | 0 << 2;
-	SetClearGroundDensity(t, CL_FIELDS, 3);
+	SetClearGroundDensity(t, CLEAR_FIELDS, 3);
 }
 
 #endif

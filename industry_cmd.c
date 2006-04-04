@@ -895,7 +895,7 @@ static const byte _plantfarmfield_type[] = {1, 1, 1, 1, 1, 3, 3, 4, 4, 4, 5, 5, 
 static bool IsBadFarmFieldTile(TileIndex tile)
 {
 	switch (GetTileType(tile)) {
-		case MP_CLEAR: return IsClearGround(tile, CL_FIELDS) || IsClearGround(tile, CL_SNOW);
+		case MP_CLEAR: return IsClearGround(tile, CLEAR_FIELDS) || IsClearGround(tile, CLEAR_SNOW);
 		case MP_TREES: return false;
 		default:       return true;
 	}
@@ -904,7 +904,7 @@ static bool IsBadFarmFieldTile(TileIndex tile)
 static bool IsBadFarmFieldTile2(TileIndex tile)
 {
 	switch (GetTileType(tile)) {
-		case MP_CLEAR: return IsClearGround(tile, CL_SNOW);
+		case MP_CLEAR: return IsClearGround(tile, CLEAR_SNOW);
 		case MP_TREES: return false;
 		default:       return true;
 	}

@@ -482,7 +482,7 @@ static inline uint32 GetSmallMapVegetationPixels(TileIndex tile)
 
 	switch (t) {
 		case MP_CLEAR:
-			if (IsClearGround(tile, CL_GRASS) && GetClearDensity(tile) < 3) {
+			if (IsClearGround(tile, CLEAR_GRASS) && GetClearDensity(tile) < 3) {
 				bits = MKCOLOR(0x37373737);
 			} else {
 				bits = _vegetation_clear_bits[GetClearGround(tile)];

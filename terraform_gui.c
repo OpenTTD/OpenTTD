@@ -82,7 +82,7 @@ static void GenerateRockyArea(TileIndex end, TileIndex start)
 
 	BEGIN_TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
 		if (IsTileType(tile, MP_CLEAR) || IsTileType(tile, MP_TREES)) {
-			MakeClear(tile, CL_ROCKS, 3);
+			MakeClear(tile, CLEAR_ROCKS, 3);
 			MarkTileDirtyByTile(tile);
 			success = true;
 		}

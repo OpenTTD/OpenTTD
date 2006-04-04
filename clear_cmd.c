@@ -409,7 +409,7 @@ static int32 ClearTile_Clear(TileIndex tile, byte flags)
 	};
 	int32 price;
 
-	if (IsClearGround(tile, CL_GRASS) && GetClearDensity(tile) == 0) {
+	if (IsClearGround(tile, CLEAR_GRASS) && GetClearDensity(tile) == 0) {
 		price = 0;
 	} else {
 		price = *clear_price_table[GetClearGround(tile)];
@@ -485,27 +485,27 @@ void DrawClearLandFence(const TileInfo *ti)
 static void DrawTile_Clear(TileInfo *ti)
 {
 	switch (GetClearGround(ti->tile)) {
-		case CL_GRASS:
+		case CLEAR_GRASS:
 			DrawClearLandTile(ti, GetClearDensity(ti->tile));
 			break;
 
-		case CL_ROUGH:
+		case CLEAR_ROUGH:
 			DrawHillyLandTile(ti);
 			break;
 
-		case CL_ROCKS:
+		case CLEAR_ROCKS:
 			DrawGroundSprite(SPR_FLAT_ROCKY_LAND_1 + _tileh_to_sprite[ti->tileh]);
 			break;
 
-		case CL_FIELDS:
+		case CLEAR_FIELDS:
 			DrawGroundSprite(_clear_land_sprites_1[GetFieldType(ti->tile)] + _tileh_to_sprite[ti->tileh]);
 			break;
 
-		case CL_SNOW:
+		case CLEAR_SNOW:
 			DrawGroundSprite(_clear_land_sprites_2[GetClearDensity(ti->tile)] + _tileh_to_sprite[ti->tileh]);
 			break;
 
-		case CL_DESERT:
+		case CLEAR_DESERT:
 			DrawGroundSprite(_clear_land_sprites_3[GetClearDensity(ti->tile)] + _tileh_to_sprite[ti->tileh]);
 			break;
 	}
@@ -539,9 +539,9 @@ void TileLoopClearHelper(TileIndex tile)
 	byte neighbour;
 	TileIndex dirty = INVALID_TILE;
 
-	self = (IsTileType(tile, MP_CLEAR) && IsClearGround(tile, CL_FIELDS));
+	self = (IsTileType(tile, MP_CLEAR) && IsClearGround(tile, CLEAR_FIELDS));
 
-	neighbour = (IsTileType(TILE_ADDXY(tile, 1, 0), MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, 1, 0), CL_FIELDS));
+	neighbour = (IsTileType(TILE_ADDXY(tile, 1, 0), MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, 1, 0), CLEAR_FIELDS));
 	if (GetFenceSW(tile) == 0) {
 		if (self != neighbour) {
 			SetFenceSW(tile, 3);
@@ -554,7 +554,7 @@ void TileLoopClearHelper(TileIndex tile)
 		}
 	}
 
-	neighbour = (IsTileType(TILE_ADDXY(tile, 0, 1), MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, 0, 1), CL_FIELDS));
+	neighbour = (IsTileType(TILE_ADDXY(tile, 0, 1), MP_CLEAR) && IsClearGround(TILE_ADDXY(tile, 0, 1), CLEAR_FIELDS));
 	if (GetFenceSE(tile) == 0) {
 		if (self != neighbour) {
 			SetFenceSE(tile, 3);
@@ -578,11 +578,11 @@ static void TileLoopClearAlps(TileIndex tile)
 	int k = GetTileZ(tile) - _opt.snow_line;
 
 	if (k < -TILE_HEIGHT) { // well below the snow line
-		if (!IsClearGround(tile, CL_SNOW)) return;
-		if (GetClearDensity(tile) == 0) SetClearGroundDensity(tile, CL_GRASS, 3);
+		if (!IsClearGround(tile, CLEAR_SNOW)) return;
+		if (GetClearDensity(tile) == 0) SetClearGroundDensity(tile, CLEAR_GRASS, 3);
 	} else {
-		if (!IsClearGround(tile, CL_SNOW)) {
-			SetClearGroundDensity(tile, CL_SNOW, 0);
+		if (!IsClearGround(tile, CLEAR_SNOW)) {
+			SetClearGroundDensity(tile, CLEAR_SNOW, 0);
 		} else {
 			uint density = min((uint)(k + TILE_HEIGHT) / TILE_HEIGHT, 3);
 
@@ -601,17 +601,17 @@ static void TileLoopClearAlps(TileIndex tile)
 
 static void TileLoopClearDesert(TileIndex tile)
 {
-	if (IsClearGround(tile, CL_DESERT)) return;
+	if (IsClearGround(tile, CLEAR_DESERT)) return;
 
 	if (GetTropicZone(tile) == TROPICZONE_DESERT) {
-		SetClearGroundDensity(tile, CL_DESERT, 3);
+		SetClearGroundDensity(tile, CLEAR_DESERT, 3);
 	} else {
 		if (GetTropicZone(tile + TileDiffXY( 1,  0)) != TROPICZONE_DESERT &&
 				GetTropicZone(tile + TileDiffXY(-1,  0)) != TROPICZONE_DESERT &&
 				GetTropicZone(tile + TileDiffXY( 0,  1)) != TROPICZONE_DESERT &&
 				GetTropicZone(tile + TileDiffXY( 0, -1)) != TROPICZONE_DESERT)
 			return;
-		SetClearGroundDensity(tile, CL_DESERT, 1);
+		SetClearGroundDensity(tile, CLEAR_DESERT, 1);
 	}
 
 	MarkTileDirtyByTile(tile);
@@ -627,7 +627,7 @@ static void TileLoop_Clear(TileIndex tile)
 	}
 
 	switch (GetClearGround(tile)) {
-		case CL_GRASS:
+		case CLEAR_GRASS:
 			if (GetClearDensity(tile) == 3) return;
 
 			if (_game_mode != GM_EDITOR) {
@@ -639,11 +639,11 @@ static void TileLoop_Clear(TileIndex tile)
 					AddClearDensity(tile, 1);
 				}
 			} else {
-				SetClearGroundDensity(tile, GB(Random(), 0, 8) > 21 ? CL_GRASS : CL_ROUGH, 3);
+				SetClearGroundDensity(tile, GB(Random(), 0, 8) > 21 ? CLEAR_GRASS : CLEAR_ROUGH, 3);
 			}
 			break;
 
-		case CL_FIELDS: {
+		case CLEAR_FIELDS: {
 			uint field_type;
 
 			if (_game_mode == GM_EDITOR) return;
@@ -677,7 +677,7 @@ void GenerateClearTile(void)
 	i = ScaleByMapSize(GB(Random(), 0, 10) + 0x400);
 	do {
 		tile = RandomTile();
-		if (IsTileType(tile, MP_CLEAR)) SetClearGroundDensity(tile, CL_ROUGH, 3);
+		if (IsTileType(tile, MP_CLEAR)) SetClearGroundDensity(tile, CLEAR_ROUGH, 3);
 	} while (--i);
 
 	/* add grey squares */
@@ -690,7 +690,7 @@ void GenerateClearTile(void)
 			for (;;) {
 				TileIndex tile_new;
 
-				SetClearGroundDensity(tile, CL_ROCKS, 3);
+				SetClearGroundDensity(tile, CLEAR_ROCKS, 3);
 				do {
 					if (--j == 0) goto get_out;
 					tile_new = tile + TileOffsByDir(GB(Random(), 0, 2));
@@ -723,7 +723,7 @@ static const StringID _clear_land_str[] = {
 
 static void GetTileDesc_Clear(TileIndex tile, TileDesc *td)
 {
-	if (IsClearGround(tile, CL_GRASS) && GetClearDensity(tile) == 0) {
+	if (IsClearGround(tile, CLEAR_GRASS) && GetClearDensity(tile) == 0) {
 		td->str = STR_080C_BARE_LAND;
 	} else {
 		td->str = _clear_land_str[GetClearGround(tile)];

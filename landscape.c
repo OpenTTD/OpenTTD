@@ -231,7 +231,7 @@ void DrawFoundation(TileInfo *ti, uint f)
 
 void DoClearSquare(TileIndex tile)
 {
-	MakeClear(tile, CL_GRASS, _generating_world ? 3 : 0);
+	MakeClear(tile, CLEAR_GRASS, _generating_world ? 3 : 0);
 	MarkTileDirtyByTile(tile);
 }
 
@@ -380,7 +380,7 @@ void InitializeLandscape(void)
 
 	for (y = 0; y < maxy; y++) {
 		for (x = 0; x < maxx; x++) {
-			MakeClear(sizex * y + x, CL_GRASS, 3);
+			MakeClear(sizex * y + x, CLEAR_GRASS, 3);
 			SetTileHeight(sizex * y + x, 0);
 		}
 		MakeVoid(sizex * y + x);
@@ -550,7 +550,7 @@ static void CreateDesertOrRainForest(void)
 		for (data = _make_desert_or_rainforest_data;
 				data != endof(_make_desert_or_rainforest_data); ++data) {
 			TileIndex t = TILE_MASK(tile + ToTileIndexDiff(*data));
-			if (IsTileType(t, MP_CLEAR) && IsClearGround(t, CL_DESERT)) break;
+			if (IsTileType(t, MP_CLEAR) && IsClearGround(t, CLEAR_DESERT)) break;
 		}
 		if (data == endof(_make_desert_or_rainforest_data))
 			SetTropicZone(tile, TROPICZONE_RAINFOREST);
