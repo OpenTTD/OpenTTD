@@ -6,29 +6,29 @@
 #include "macros.h"
 
 typedef enum TreeType {
-	TR_INVALID      = -1,
-	TR_TEMPERATE    = 0,
-	TR_SUB_ARCTIC   = 12,
-	TR_RAINFOREST   = 20,
-	TR_CACTUS       = 27,
-	TR_SUB_TROPICAL = 28,
-	TR_TOYLAND      = 32
+	TREE_INVALID      = -1,
+	TREE_TEMPERATE    = 0,
+	TREE_SUB_ARCTIC   = 12,
+	TREE_RAINFOREST   = 20,
+	TREE_CACTUS       = 27,
+	TREE_SUB_TROPICAL = 28,
+	TREE_TOYLAND      = 32
 } TreeType;
 
 enum {
-	TR_COUNT_TEMPERATE    = TR_SUB_ARCTIC   - TR_TEMPERATE,
-	TR_COUNT_SUB_ARCTIC   = TR_RAINFOREST   - TR_SUB_ARCTIC,
-	TR_COUNT_RAINFOREST   = TR_CACTUS       - TR_RAINFOREST,
-	TR_COUNT_SUB_TROPICAL = TR_SUB_TROPICAL - TR_CACTUS,
-	TR_COUNT_TOYLAND      = 9
+	TREE_COUNT_TEMPERATE    = TREE_SUB_ARCTIC   - TREE_TEMPERATE,
+	TREE_COUNT_SUB_ARCTIC   = TREE_RAINFOREST   - TREE_SUB_ARCTIC,
+	TREE_COUNT_RAINFOREST   = TREE_CACTUS       - TREE_RAINFOREST,
+	TREE_COUNT_SUB_TROPICAL = TREE_SUB_TROPICAL - TREE_CACTUS,
+	TREE_COUNT_TOYLAND      = 9
 };
 
 /* ground type, m2 bits 4...5
  * valid densities (bits 6...7) in comments after the enum */
 typedef enum TreeGround {
-	TR_GRASS       = 0, // 0
-	TR_ROUGH       = 1, // 0
-	TR_SNOW_DESERT = 2  // 0-3 for snow, 3 for desert
+	TREE_GROUND_GRASS       = 0, // 0
+	TREE_GROUND_ROUGH       = 1, // 0
+	TREE_GROUND_SNOW_DESERT = 2  // 0-3 for snow, 3 for desert
 } TreeGround;
 
 

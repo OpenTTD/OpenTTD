@@ -20,20 +20,20 @@ static TreeType GetRandomTreeType(TileIndex tile, uint seed)
 {
 	switch (_opt.landscape) {
 		case LT_NORMAL:
-			return seed * TR_COUNT_TEMPERATE / 256 + TR_TEMPERATE;
+			return seed * TREE_COUNT_TEMPERATE / 256 + TREE_TEMPERATE;
 
 		case LT_HILLY:
-			return seed * TR_COUNT_SUB_ARCTIC / 256 + TR_SUB_ARCTIC;
+			return seed * TREE_COUNT_SUB_ARCTIC / 256 + TREE_SUB_ARCTIC;
 
 		case LT_DESERT:
 			switch (GetTropicZone(tile)) {
-				case TROPICZONE_INVALID:       return seed * TR_COUNT_SUB_TROPICAL / 256 + TR_SUB_TROPICAL;
-				case TROPICZONE_DESERT: return (seed > 12) ? TR_INVALID : TR_CACTUS;
-				default:                return seed * TR_COUNT_RAINFOREST / 256 + TR_RAINFOREST;
+				case TROPICZONE_INVALID: return seed * TREE_COUNT_SUB_TROPICAL / 256 + TREE_SUB_TROPICAL;
+				case TROPICZONE_DESERT:  return (seed > 12) ? TREE_INVALID : TREE_CACTUS;
+				default:                 return seed * TREE_COUNT_RAINFOREST / 256 + TREE_RAINFOREST;
 			}
 
 		default:
-			return seed * TR_COUNT_TOYLAND / 256 + TR_TOYLAND;
+			return seed * TREE_COUNT_TOYLAND / 256 + TREE_TOYLAND;
 	}
 }
 
@@ -41,12 +41,12 @@ static void PlaceTree(TileIndex tile, uint32 r)
 {
 	TreeType tree = GetRandomTreeType(tile, GB(r, 24, 8));
 
-	if (tree != TR_INVALID) {
-		MakeTree(tile, tree, GB(r, 22, 2), min(GB(r, 16, 3), 6), TR_GRASS, 0);
+	if (tree != TREE_INVALID) {
+		MakeTree(tile, tree, GB(r, 22, 2), min(GB(r, 16, 3), 6), TREE_GROUND_GRASS, 0);
 
 		// above snowline?
 		if (_opt.landscape == LT_HILLY && GetTileZ(tile) > _opt.snow_line) {
-			SetTreeGroundDensity(tile, TR_SNOW_DESERT, 3);
+			SetTreeGroundDensity(tile, TREE_GROUND_SNOW_DESERT, 3);
 			SetTreeCounter(tile, GB(r, 24, 3));
 		} else {
 			SetTreeGroundDensity(tile, GB(r, 28, 1), 0);
@@ -195,20 +195,20 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 						}
 
 						treetype = p1;
-						if (treetype == TR_INVALID) {
+						if (treetype == TREE_INVALID) {
 							treetype = GetRandomTreeType(tile, GB(Random(), 24, 8));
-							if (treetype == TR_INVALID) treetype = TR_CACTUS;
+							if (treetype == TREE_INVALID) treetype = TREE_CACTUS;
 						}
 
 						growth = _game_mode == GM_EDITOR ? 3 : 0;
 						switch (GetClearGround(tile)) {
-							case CL_ROUGH: MakeTree(tile, treetype, 0, growth, TR_ROUGH, 0); break;
-							case CL_SNOW:  MakeTree(tile, treetype, 0, growth, TR_SNOW_DESERT, GetClearDensity(tile)); break;
-							default:       MakeTree(tile, treetype, 0, growth, TR_GRASS, 0); break;
+							case CL_ROUGH: MakeTree(tile, treetype, 0, growth, TREE_GROUND_ROUGH, 0); break;
+							case CL_SNOW:  MakeTree(tile, treetype, 0, growth, TREE_GROUND_SNOW_DESERT, GetClearDensity(tile)); break;
+							default:       MakeTree(tile, treetype, 0, growth, TREE_GROUND_GRASS, 0); break;
 						}
 						MarkTileDirtyByTile(tile);
 
-						if (_game_mode == GM_EDITOR && IS_INT_INSIDE(treetype, TR_RAINFOREST, TR_CACTUS))
+						if (_game_mode == GM_EDITOR && IS_INT_INSIDE(treetype, TREE_RAINFOREST, TREE_CACTUS))
 							SetTropicZone(tile, TROPICZONE_RAINFOREST);
 					}
 					cost += _price.build_trees;
@@ -240,9 +240,9 @@ static void DrawTile_Trees(TileInfo *ti)
 	byte z;
 
 	switch (GetTreeGround(ti->tile)) {
-		case TR_GRASS: DrawClearLandTile(ti, 3); break;
-		case TR_ROUGH: DrawHillyLandTile(ti); break;
-		default:       DrawGroundSprite(_tree_sprites_1[GetTreeDensity(ti->tile)] + _tileh_to_sprite[ti->tileh]); break;
+		case TREE_GROUND_GRASS: DrawClearLandTile(ti, 3); break;
+		case TREE_GROUND_ROUGH: DrawHillyLandTile(ti); break;
+		default: DrawGroundSprite(_tree_sprites_1[GetTreeDensity(ti->tile)] + _tileh_to_sprite[ti->tileh]); break;
 	}
 
 	DrawClearLandFence(ti);
@@ -270,10 +270,10 @@ static void DrawTile_Trees(TileInfo *ti)
 		index = GB(tmp, 6, 2) + (GetTreeType(ti->tile) << 2);
 
 		/* different tree styles above one of the grounds */
-		if (GetTreeGround(ti->tile) == TR_SNOW_DESERT &&
+		if (GetTreeGround(ti->tile) == TREE_GROUND_SNOW_DESERT &&
 				GetTreeDensity(ti->tile) >= 2 &&
-				IS_INT_INSIDE(index, TR_SUB_ARCTIC << 2, TR_RAINFOREST << 2)) {
-			index += 164 - (TR_SUB_ARCTIC << 2);
+				IS_INT_INSIDE(index, TREE_SUB_ARCTIC << 2, TREE_RAINFOREST << 2)) {
+			index += 164 - (TREE_SUB_ARCTIC << 2);
 		}
 
 		assert(index < lengthof(_tree_layout_sprite));
@@ -343,7 +343,7 @@ static int32 ClearTile_Trees(TileIndex tile, byte flags)
 	}
 
 	num = GetTreeCount(tile) + 1;
-	if (IS_INT_INSIDE(GetTreeType(tile), TR_RAINFOREST, TR_CACTUS)) num *= 4;
+	if (IS_INT_INSIDE(GetTreeType(tile), TREE_RAINFOREST, TREE_CACTUS)) num *= 4;
 
 	if (flags & DC_EXEC) DoClearSquare(tile);
 
@@ -359,9 +359,9 @@ static void GetTileDesc_Trees(TileIndex tile, TileDesc *td)
 {
 	TreeType tt = GetTreeType(tile);
 
-	if (IS_INT_INSIDE(tt, TR_RAINFOREST, TR_CACTUS)) {
+	if (IS_INT_INSIDE(tt, TREE_RAINFOREST, TREE_CACTUS)) {
 		td->str = STR_280F_RAINFOREST;
-	} else if (tt == TR_CACTUS) {
+	} else if (tt == TREE_CACTUS) {
 		td->str = STR_2810_CACTUS_PLANTS;
 	} else {
 		td->str = STR_280E_TREES;
@@ -379,8 +379,8 @@ static void TileLoopTreesDesert(TileIndex tile)
 {
 	switch (GetTropicZone(tile)) {
 		case TROPICZONE_DESERT:
-			if (GetTreeGround(tile) != TR_SNOW_DESERT) {
-				SetTreeGroundDensity(tile, TR_SNOW_DESERT, 3);
+			if (GetTreeGround(tile) != TREE_GROUND_SNOW_DESERT) {
+				SetTreeGroundDensity(tile, TREE_GROUND_SNOW_DESERT, 3);
 				MarkTileDirtyByTile(tile);
 			}
 			break;
@@ -407,13 +407,14 @@ static void TileLoopTreesAlps(TileIndex tile)
 	int k = GetTileZ(tile) - _opt.snow_line;
 
 	if (k < -TILE_HEIGHT) {
-		if (GetTreeGround(tile) != TR_SNOW_DESERT) return;
-		SetTreeGroundDensity(tile, TR_GRASS, 0);
+		if (GetTreeGround(tile) != TREE_GROUND_SNOW_DESERT) return;
+		SetTreeGroundDensity(tile, TREE_GROUND_GRASS, 0);
 	} else {
 		uint density = min((uint)(k + TILE_HEIGHT) / TILE_HEIGHT, 3);
 
-		if (GetTreeGround(tile) != TR_SNOW_DESERT || GetTreeDensity(tile) != density) {
-			SetTreeGroundDensity(tile, TR_SNOW_DESERT, density);
+		if (GetTreeGround(tile) != TREE_GROUND_SNOW_DESERT ||
+				GetTreeDensity(tile) != density) {
+			SetTreeGroundDensity(tile, TREE_GROUND_SNOW_DESERT, density);
 		} else {
 			if (GetTreeDensity(tile) == 3) {
 				uint32 r = Random();
@@ -456,7 +457,7 @@ static void TileLoop_Trees(TileIndex tile)
 	switch (GetTreeGrowth(tile)) {
 		case 3: /* regular sized tree */
 			if (_opt.landscape == LT_DESERT &&
-					GetTreeType(tile) != TR_CACTUS &&
+					GetTreeType(tile) != TREE_CACTUS &&
 					GetTropicZone(tile) == TROPICZONE_DESERT) {
 				AddTreeGrowth(tile, 1);
 			} else {
@@ -483,11 +484,11 @@ static void TileLoop_Trees(TileIndex tile)
 						switch (GetClearGround(tile)) {
 							case CL_GRASS:
 								if (GetClearDensity(tile) != 3) return;
-								MakeTree(tile, treetype, 0, 0, TR_GRASS, 0);
+								MakeTree(tile, treetype, 0, 0, TREE_GROUND_GRASS, 0);
 								break;
 
-							case CL_ROUGH: MakeTree(tile, treetype, 0, 0, TR_ROUGH, 0); break;
-							case CL_SNOW:  MakeTree(tile, treetype, 0, 0, TR_SNOW_DESERT, GetClearDensity(tile)); break;
+							case CL_ROUGH: MakeTree(tile, treetype, 0, 0, TREE_GROUND_ROUGH, 0); break;
+							case CL_SNOW:  MakeTree(tile, treetype, 0, 0, TREE_GROUND_SNOW_DESERT, GetClearDensity(tile)); break;
 							default: return;
 						}
 						break;
@@ -507,9 +508,9 @@ static void TileLoop_Trees(TileIndex tile)
 			} else {
 				/* just one tree, change type into MP_CLEAR */
 				switch (GetTreeGround(tile)) {
-					case TR_GRASS: MakeClear(tile, CL_GRASS, 3); break;
-					case TR_ROUGH: MakeClear(tile, CL_ROUGH, 3); break;
-					default:       MakeClear(tile, CL_SNOW, GetTreeDensity(tile)); break;
+					case TREE_GROUND_GRASS: MakeClear(tile, CL_GRASS, 3); break;
+					case TREE_GROUND_ROUGH: MakeClear(tile, CL_ROUGH, 3); break;
+					default: MakeClear(tile, CL_SNOW, GetTreeDensity(tile)); break;
 				}
 			}
 			break;
@@ -534,8 +535,8 @@ void OnTick_Trees(void)
 			(r = Random(), tile = RandomTileSeed(r), GetTropicZone(tile) == TROPICZONE_RAINFOREST) &&
 			IsTileType(tile, MP_CLEAR) &&
 			(ct = GetClearGround(tile), ct == CL_GRASS || ct == CL_ROUGH) &&
-			(tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TR_INVALID) {
-		MakeTree(tile, tree, 0, 0, ct == CL_ROUGH ? TR_ROUGH : TR_GRASS, 0);
+			(tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TREE_INVALID) {
+		MakeTree(tile, tree, 0, 0, ct == CL_ROUGH ? TREE_GROUND_ROUGH : TREE_GROUND_GRASS, 0);
 	}
 
 	// byte underflow
@@ -546,11 +547,11 @@ void OnTick_Trees(void)
 	tile = TILE_MASK(r);
 	if (IsTileType(tile, MP_CLEAR) &&
 			(ct = GetClearGround(tile), ct == CL_GRASS || ct == CL_ROUGH || ct == CL_SNOW) &&
-			(tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TR_INVALID) {
+			(tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TREE_INVALID) {
 		switch (ct) {
-			case CL_GRASS: MakeTree(tile, tree, 0, 0, TR_GRASS, 0); break;
-			case CL_ROUGH: MakeTree(tile, tree, 0, 0, TR_ROUGH, 0); break;
-			default:       MakeTree(tile, tree, 0, 0, TR_SNOW_DESERT, GetClearDensity(tile)); break;
+			case CL_GRASS: MakeTree(tile, tree, 0, 0, TREE_GROUND_GRASS, 0); break;
+			case CL_ROUGH: MakeTree(tile, tree, 0, 0, TREE_GROUND_ROUGH, 0); break;
+			default: MakeTree(tile, tree, 0, 0, TREE_GROUND_SNOW_DESERT, GetClearDensity(tile)); break;
 		}
 	}
 }

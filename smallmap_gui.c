@@ -494,7 +494,7 @@ static inline uint32 GetSmallMapVegetationPixels(TileIndex tile)
 			break;
 
 		case MP_TREES:
-			if (GetTreeGround(tile) == TR_SNOW_DESERT) {
+			if (GetTreeGround(tile) == TREE_GROUND_SNOW_DESERT) {
 				bits = (_opt.landscape == LT_HILLY) ? MKCOLOR(0x98575798) : MKCOLOR(0xC25757C2);
 			} else {
 				bits = MKCOLOR(0x54575754);
