@@ -71,6 +71,20 @@ static inline bool IsRailwayStation(TileIndex t)
 	return _m[t].m5 < RAILWAY_BASE + RAILWAY_SIZE;
 }
 
+static inline bool IsRailwayStationTile(TileIndex t)
+{
+	return IsTileType(t, MP_STATION) && IsRailwayStation(t);
+}
+
+static inline bool IsCompatibleTrainStationTile(TileIndex t1, TileIndex t2)
+{
+	assert(IsRailwayStationTile(t2));
+	return
+		IsRailwayStationTile(t1) &&
+		GB(_m[t1].m3, 0, 4) == GB(_m[t2].m3, 0, 4) && // same rail type?
+		GB(_m[t1].m5, 0, 1) == GB(_m[t2].m5, 0, 1);   // same direction?
+}
+
 static inline bool IsHangar(TileIndex t)
 {
 	assert(IsTileType(t, MP_STATION));
@@ -135,6 +149,11 @@ static inline bool IsBuoy_(TileIndex t) // XXX _ due to naming conflict
 {
 	assert(IsTileType(t, MP_STATION));
 	return _m[t].m5 == BUOY_BASE;
+}
+
+static inline bool IsBuoyTile(TileIndex t)
+{
+	return IsTileType(t, MP_STATION) && IsBuoy_(t);
 }
 
 

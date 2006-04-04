@@ -198,20 +198,6 @@ uint GetNumRoadStops(const Station* st, RoadStopType type);
 RoadStop * AllocateRoadStop( void );
 void ClearSlot(Vehicle *v);
 
-static inline bool IsTrainStationTile(TileIndex tile)
-{
-	return IsTileType(tile, MP_STATION) && IS_BYTE_INSIDE(_m[tile].m5, 0, 8);
-}
-
-static inline bool IsCompatibleTrainStationTile(TileIndex tile, TileIndex ref)
-{
-	assert(IsTrainStationTile(ref));
-	return
-		IsTrainStationTile(tile) &&
-		GB(_m[tile].m3, 0, 4) == GB(_m[ref].m3, 0, 4) && // same rail type?
-		GB(_m[tile].m5, 0, 1) == GB(_m[ref].m5, 0, 1);   // same direction?
-}
-
 /**
  * Check if a station really exists.
  */
@@ -223,11 +209,6 @@ static inline bool IsValidStation(const Station *st)
 static inline bool IsBuoy(const Station* st)
 {
 	return st->had_vehicle_of_type & HVOT_BUOY; /* XXX: We should really ditch this ugly coding and switch to something sane... */
-}
-
-static inline bool IsBuoyTile(TileIndex tile)
-{
-	return IsTileType(tile, MP_STATION) && _m[tile].m5 == 0x52;
 }
 
 #endif /* STATION_H */

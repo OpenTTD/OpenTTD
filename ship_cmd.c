@@ -9,6 +9,7 @@
 #include "vehicle.h"
 #include "command.h"
 #include "pathfind.h"
+#include "station_map.h"
 #include "station.h"
 #include "news.h"
 #include "engine.h"

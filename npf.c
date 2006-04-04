@@ -457,7 +457,7 @@ static void NPFSaveTargetData(AyStar* as, OpenListNode* current)
 static bool VehicleMayEnterTile(Owner owner, TileIndex tile, DiagDirection enterdir)
 {
 	if (IsTileType(tile, MP_RAILWAY) ||           /* Rail tile (also rail depot) */
-			IsTrainStationTile(tile) ||               /* Rail station tile */
+			IsRailwayStationTile(tile) ||               /* Rail station tile */
 			IsTileDepotType(tile, TRANSPORT_ROAD) ||  /* Road depot tile */
 			IsRoadStopTile(tile) ||                /* Road station tile */
 			IsTileDepotType(tile, TRANSPORT_WATER)) { /* Water depot tile */

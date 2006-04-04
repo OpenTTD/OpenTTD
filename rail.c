@@ -4,7 +4,7 @@
 #include "openttd.h"
 #include "bridge_map.h"
 #include "rail.h"
-#include "station.h"
+#include "station_map.h"
 #include "tunnel_map.h"
 
 /* XXX: Below 3 tables store duplicate data. Maybe remove some? */
@@ -119,7 +119,7 @@ RailType GetTileRailType(TileIndex tile, Trackdir trackdir)
 			break;
 
 		case MP_STATION:
-			if (IsTrainStationTile(tile)) return GetRailType(tile);
+			if (IsRailwayStationTile(tile)) return GetRailType(tile);
 			break;
 
 		case MP_TUNNELBRIDGE:
