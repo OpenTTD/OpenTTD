@@ -270,24 +270,23 @@ uint64 NetworkRecv_uint64(NetworkClientState *cs, Packet *packet)
 }
 
 // Reads a string till it finds a '\0' in the stream
-void NetworkRecv_string(NetworkClientState *cs, Packet *p, char* buffer, size_t size)
+void NetworkRecv_string(NetworkClientState *cs, Packet *p, char *buffer, size_t size)
 {
-	int pos;
+	PacketSize pos;
 	char *bufp = buffer;
 
 	/* Don't allow reading from a closed socket */
-	if (cs->quited)
-		return;
+	if (cs->quited) return;
 
 	pos = p->pos;
 	while (--size > 0 && pos < p->size && (*buffer++ = p->buffer[pos++]) != '\0') {}
-	if (size == 0 || pos == p->size)
-	{
+
+	if (size == 0 || pos == p->size) {
 		*buffer = '\0';
 		// If size was sooner to zero then the string in the stream
 		//  skip till the \0, so the packet can be read out correctly for the rest
-		while (pos < p->size && p->buffer[pos] != '\0') ++pos;
-		++pos;
+		while (pos < p->size && p->buffer[pos] != '\0') pos++;
+		pos++;
 	}
 	p->pos = pos;
 
