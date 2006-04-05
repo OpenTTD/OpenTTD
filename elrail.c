@@ -1,6 +1,6 @@
 /* $Id$ */
 /** @file elrail.c
-  * This file deals with displaying wires and pylons for electric railway systems.
+  This file deals with displaying wires and pylons for electric railways.
 <h2>Basics</h2>
 
 <h3>Tile Types</h3>
@@ -22,21 +22,23 @@ Group 3: Tiles with both an odd X and Y coordnate.
 <h4>Control Points</h4>
 A Pylon Control Point (PCP) is a position where a wire (or rather two)
 is mounted onto a pylon.
-Each NRT does contain 4 PCPs which are mapped to a byte
-variable and are represented by the DiagDirection enum:
+Each NRT does contain 4 PCPs which are bitmapped to a byte
+variable and are represented by the DiagDirection enum
 
-A wire that ends on the PCP has a dark ending, otherwise the end is bright.<p>
+Each track ends on two PCPs and thus requires one pylon on each end. However,
+there is one exception: Straight-and-level tracks only have one pylon every
+other tile.
 
-Now on each edge there are two PCPs: One from each adjacent tile. Both PCPs are merged
-using an OR matrix (i. e. if one tile needs a PCP at the postion in question, both
-tiles get it).
+Now on each edge there are two PCPs: One from each adjacent tile. Both PCPs
+are merged using an OR operation (i. e. if one tile needs a PCP at the postion
+in question, both tiles get it).
 
 <h4>Position Points</h4>
-A Pylon Position Point (PPP) is a position where a pylon is located on the ground.
-Each PCP owns 8 in (45 degree steps) PPPs that are located around it. PPPs are numbered
-0 to 7 with 0 starting north and numbering in clockwise direction. Each track bit has PPPs
-that are impossible (because the pylon would be situated on the track), preferred (because
-the pylon would be rectangular to the track). PPPs are represented by the Direction enum.
+A Pylon Position Point (PPP) is a position where a pylon is located on the
+ground.  Each PCP owns 8 in (45 degree steps) PPPs that are located around
+it. PPPs are represented using the Direction enum. Each track bit has PPPs
+that are impossible (because the pylon would be situated on the track) and
+some that are preferred (because the pylon would be rectangular to the track).
 
 <img src="../../elrail_tile.png">
 <img src="../../elrail_track.png">
