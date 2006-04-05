@@ -221,13 +221,13 @@ int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			spec = GetCustomStation(STAT_CLASS_WAYP, GB(p1, 0, 8));
 
 		if (spec != NULL) {
-			SETBIT(_m[tile].m3, 4);
+			SetCustomWaypointSprite(tile);
 			wp->stat_id = GB(p1, 0, 8);
 			wp->grfid = spec->grfid;
 			wp->localidx = spec->localidx;
 		} else {
 			// Specified custom graphics do not exist, so use default.
-			CLRBIT(_m[tile].m3, 4);
+			ClearCustomWaypointSprite(tile);
 			wp->stat_id = 0;
 			wp->grfid = 0;
 			wp->localidx = 0;
@@ -293,8 +293,6 @@ int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		Axis direction = _m[tile].m5 & RAIL_WAYPOINT_TRACK_MASK;
-
 		wp = GetWaypointByTile(tile);
 
 		wp->deleted = 30; // let it live for this many days before we do the actual deletion.
@@ -305,7 +303,7 @@ int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 			MarkTileDirtyByTile(tile);
 		} else {
 			DoClearSquare(tile);
-			SetSignalsOnBothDir(tile, direction == AXIS_X ? TRACK_X : TRACK_Y);
+			SetSignalsOnBothDir(tile, GetRailWaypointTrack(tile));
 		}
 	}
 
