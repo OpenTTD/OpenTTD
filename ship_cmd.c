@@ -19,6 +19,7 @@
 #include "depot.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
+#include "water_map.h"
 
 static const uint16 _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
 static const byte _ship_sometracks[4] = {0x19, 0x16, 0x25, 0x2A};
@@ -324,20 +325,20 @@ static const TileIndexDiffC _ship_leave_depot_offs[] = {
 static void CheckShipLeaveDepot(Vehicle *v)
 {
 	TileIndex tile;
-	int d;
+	Axis axis;
 	uint m;
 
 	if (v->u.ship.state != 0x80) return;
 
 	tile = v->tile;
-	d = (_m[tile].m5&2) ? 1 : 0;
+	axis = GetShipDepotAxis(tile);
 
 	// Check first side
-	if (_ship_sometracks[d] & GetTileShipTrackStatus(TILE_ADD(tile, ToTileIndexDiff(_ship_leave_depot_offs[d])))) {
-		m = (d==0) ? 0x101 : 0x207;
+	if (_ship_sometracks[axis] & GetTileShipTrackStatus(TILE_ADD(tile, ToTileIndexDiff(_ship_leave_depot_offs[axis])))) {
+		m = (axis == AXIS_X) ? 0x101 : 0x207;
 	// Check second side
-	} else if (_ship_sometracks[d+2] & GetTileShipTrackStatus(TILE_ADD(tile, -2 * ToTileIndexDiff(_ship_leave_depot_offs[d])))) {
-		m = (d==0) ? 0x105 : 0x203;
+	} else if (_ship_sometracks[axis + 2] & GetTileShipTrackStatus(TILE_ADD(tile, -2 * ToTileIndexDiff(_ship_leave_depot_offs[axis])))) {
+		m = (axis == AXIS_X) ? 0x105 : 0x203;
 	} else {
 		return;
 	}
