@@ -115,9 +115,30 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 	}
 }
 
+/** Corrects the tileh for certain tile types. Returns an effective tileh for the track on the tile.
+  * @param tile The tile to analyse
+  * @param *tileh the tileh
+  */
+static void AdjustTileh(TileIndex tile, uint *tileh)
+{
+	if (IsTunnelTile(tile)) *tileh = 0;
+	if (IsBridgeTile(tile) && IsBridgeRamp(tile)) {
+		if (*tileh != 0) {
+			*tileh = 0;
+		} else {
+			switch (GetBridgeRampDirection(tile)) {
+				case DIAGDIR_NE: *tileh = 12; break;
+				case DIAGDIR_SE: *tileh =  6; break;
+				case DIAGDIR_SW: *tileh =  3; break;
+				case DIAGDIR_NW: *tileh =  9; break;
+				default: break;
+			}
+		}
+	}
+}
+
 /** Draws wires and, if required, pylons on a given tile
   * @param ti The Tileinfo to draw the tile for
-  * @todo Currently, each pylon is drawn twice (once for each neighbouring tiles use OwnedPPPonPCP for this)
   */
 static void DrawCatenaryRailway(const TileInfo *ti)
 {
@@ -127,25 +148,15 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	TrackBits trackconfig[TS_END];
 	bool isflat[TS_END];
 	/* Note that ti->tileh has already been adjusted for Foundations */
-	uint tileh[TS_END];
+	uint tileh[TS_END] = {ti->tileh, 0};
 
 	TLG tlg = GetTLG(ti->tile);
 	byte PCPstatus = 0;
 	byte OverridePCP = 0;
 	byte PPPpreferred[DIAGDIR_END];
 	byte PPPallowed[DIAGDIR_END];
-	byte PPPbuffer[DIAGDIR_END];
 	DiagDirection i;
 	Track t;
-
-	tileh[0] = ti->tileh;
-	tileh[1] = 0;
-
-	PPPpreferred[0] = PPPpreferred[1] = PPPpreferred[2] = PPPpreferred[3] = 0xFF;
-	PPPallowed[0] = AllowedPPPonPCP[0];
-	PPPallowed[1] = AllowedPPPonPCP[1];
-	PPPallowed[2] = AllowedPPPonPCP[2];
-	PPPallowed[3] = AllowedPPPonPCP[3];
 
 	/* Find which rail bits are present, and select the override points.
 	   We don't draw a pylon:
@@ -157,20 +168,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	/* If a track bit is present that is not in the main direction, the track is level */
 	isflat[TS_HOME] = trackconfig[TS_HOME] & (TRACK_BIT_UPPER | TRACK_BIT_LOWER | TRACK_BIT_LEFT | TRACK_BIT_RIGHT);
 
-	if (IsTunnelTile(ti->tile)) tileh[TS_HOME] = 0;
-	if (IsBridgeTile(ti->tile) && IsBridgeRamp(ti->tile)) {
-		if (tileh[TS_HOME] != 0) {
-			tileh[TS_HOME] = 0;
-		} else {
-			switch (GetBridgeRampDirection(ti->tile)) {
-				case DIAGDIR_NE: tileh[TS_HOME] = 12; break;
-				case DIAGDIR_SE: tileh[TS_HOME] =  6; break;
-				case DIAGDIR_SW: tileh[TS_HOME] =  3; break;
-				case DIAGDIR_NW: tileh[TS_HOME] =  9; break;
-				default: break;
-			}
-		}
-	}
+	AdjustTileh(ti->tile, &tileh[TS_HOME]);
 
 	for (i = DIAGDIR_NE; i < DIAGDIR_END; i++) {
 		TileIndex neighbour = ti->tile + TileOffsByDir(i);
@@ -183,21 +181,28 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		trackconfig[TS_NEIGHBOUR] = GetRailTrackBitsUniversal(neighbour, NULL);
 		isflat[TS_NEIGHBOUR] = trackconfig[TS_NEIGHBOUR] & (TRACK_BIT_UPPER | TRACK_BIT_LOWER | TRACK_BIT_LEFT | TRACK_BIT_RIGHT);
 
+		PPPpreferred[i] = 0xFF; /* We start with preferring everything (end-of-line in any direction) */
+		PPPallowed[i] = AllowedPPPonPCP[i];
+
 		/* We cycle through all the existing tracks at a PCP and see what
 		   PPPs we want to have, or may not have at all */
-		for (k = 0; k < TRACKS_AT_PCP; k++) {
+		for (k = 0; k < NUM_TRACKS_AT_PCP; k++) {
 			/* Next to us, we have a bridge head, don't worry about that one, if it shows away from us */
-			if (
-					trackorigin[i][k] == TS_NEIGHBOUR &&
-					IsBridgeTile(neighbour) && IsBridgeRamp(neighbour) &&
-					GetBridgeRampDirection(neighbour) == ReverseDiagDir(i)
+			if (TrackSourceTile[i][k] == TS_NEIGHBOUR &&
+			    IsBridgeTile(neighbour) && IsBridgeRamp(neighbour) &&
+			    GetBridgeRampDirection(neighbour) == ReverseDiagDir(i)
 			   ) continue;
 
-			if (HASBIT(trackconfig[trackorigin[i][k]], PPPtracks[i][k])) {
-				DiagDirection PCPpos = (trackorigin[i][k] == 0) ? i : ReverseDiagDir(i);
-				PCPstatus |= 1 << i; /* This PCP is in use */
-				PPPpreferred[i] &= PreferredPPPofTrackBitAtPCP[PPPtracks[i][k]][PCPpos];
-				PPPallowed[i] &= ~DisallowedPPPofTrackBitAtPCP[PPPtracks[i][k]][PCPpos];
+			/* We check whether the track in question (k) is present in the tile
+			   (TrackSourceTile) */
+			if (HASBIT(trackconfig[TrackSourceTile[i][k]], TracksAtPCP[i][k])) {
+				/* track found, if track is in the neighbour tile, adjust the number
+				   of the PCP for preferred/allowed determination*/
+				DiagDirection PCPpos = (TrackSourceTile[i][k] == TS_HOME) ? i : ReverseDiagDir(i);
+				SETBIT(PCPstatus, i); /* This PCP is in use */
+
+				PPPpreferred[i] &= PreferredPPPofTrackAtPCP[TracksAtPCP[i][k]][PCPpos];
+				PPPallowed[i] &= ~DisallowedPPPofTrackAtPCP[TracksAtPCP[i][k]][PCPpos];
 			}
 		}
 
@@ -222,48 +227,26 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 			}
 		}
 
-		/* Convert the real tileh into a pseudo-tileh for the track */
-		if (IsTunnelTile(neighbour)) tileh[TS_NEIGHBOUR] = 0;
-		if (IsBridgeTile(neighbour) && IsBridgeRamp(neighbour)) {
-			if (tileh[TS_NEIGHBOUR] != 0) {
-				tileh[TS_NEIGHBOUR] = 0;
-			} else {
-				switch (GetBridgeRampDirection(neighbour)) {
-					case DIAGDIR_NE: tileh[TS_NEIGHBOUR] = 12; break;
-					case DIAGDIR_SE: tileh[TS_NEIGHBOUR] =  6; break;
-					case DIAGDIR_SW: tileh[TS_NEIGHBOUR] =  3; break;
-					case DIAGDIR_NW: tileh[TS_NEIGHBOUR] =  9; break;
-					default: break;
-				}
-			}
-		}
+		AdjustTileh(neighbour, &tileh[TS_NEIGHBOUR]);
 
 		/* If we have a straight (and level) track, we want a pylon only every 2 tiles
 		   Delete the PCP if this is the case. */
 		/* Level means that the slope is the same, or the track is flat */
 		if (tileh[TS_HOME] == tileh[TS_NEIGHBOUR] || (isflat[TS_HOME] && isflat[TS_NEIGHBOUR])) {
 			for (k = 0; k < NUM_IGNORE_GROUPS; k++)
-				if (PPPpreferred[i] == IgnoredPCP[k][tlg][i]) PCPstatus &= ~(1 << i);
+				if (PPPpreferred[i] == IgnoredPCP[k][tlg][i]) CLRBIT(PCPstatus, i);
 		}
 
-		/* Now decide where we draw our tiles. First try the preferred PPPs, but they may not exist.
+		/* Now decide where we draw our pylons. First try the preferred PPPs, but they may not exist.
 		   In that case, we try the any of the allowed ones. if they don't exist either, don't draw
-		   anything */
-		if (PPPpreferred[i] != 0) {
-			/* Some of the preferred PPPs (the ones in direct extension of the track bit)
-			   have been used as an "end of line" marker. As these are not ALLOWED, this operation
-			   cancles them out */
-			PPPbuffer[i] = PPPpreferred[i] & PPPallowed[i];
-			/* We haven't any buffer yet, so try something else. Fixes 90° curves */
-			if (PPPbuffer[i] == 0) PPPbuffer[i] = PPPallowed[i];
-		} else {
-			PPPbuffer[i] = PPPallowed[i];
-		}
+		   anything. Note that the preferred PPPs still contain the end-of-line markers.
+		   Remove those (simply by ANDing with allowed, since these markers are never allowed) */
+		if ( (PPPallowed[i] & PPPpreferred[i]) != 0) PPPallowed[i] &= PPPpreferred[i];
 
-		if (PPPbuffer[i] != 0 && HASBIT(PCPstatus, i) && !HASBIT(OverridePCP, i)) {
+		if (PPPallowed[i] != 0 && HASBIT(PCPstatus, i) && !HASBIT(OverridePCP, i)) {
 			for (k = 0; k < DIR_END; k++) {
 				byte temp = PPPorder[i][GetTLG(ti->tile)][k];
-				if (HASBIT(PPPbuffer[i], temp)) {
+				if (HASBIT(PPPallowed[i], temp)) {
 					uint x  = ti->x + x_pcp_offsets[i] + x_ppp_offsets[temp];
 					uint y  = ti->y + y_pcp_offsets[i] + y_ppp_offsets[temp];
 

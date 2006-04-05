@@ -26,7 +26,7 @@ typedef enum {
 } TileSource;
 
 enum {
-	TRACKS_AT_PCP = 6
+	NUM_TRACKS_AT_PCP = 6
 };
 
 /** Which PPPs are possible at all on a given PCP */
@@ -62,7 +62,7 @@ static const DiagDirection PCPpositions[TRACK_END][2] = {
   track, plus the point in extension of the track (to mark end-of-track). PCPs
   which are not on either end of the track are fully preferred.
   @see PCPpositions */
-static byte PreferredPPPofTrackBitAtPCP[TRACK_END][DIAGDIR_END] = {
+static byte PreferredPPPofTrackAtPCP[TRACK_END][DIAGDIR_END] = {
 	{    /* X */
 		1 << DIR_NE | 1 << DIR_SE | 1 << DIR_NW, /* NE */
 		PCP_NOT_ON_TRACK,                        /* SE */
@@ -178,7 +178,7 @@ static byte IgnoredPCP[NUM_IGNORE_GROUPS][TLG_END][DIAGDIR_END] = {
 #undef NO_IGNORE
 
 /** Which pylons can definately NOT be built */
-static byte DisallowedPPPofTrackBitAtPCP[TRACK_END][DIAGDIR_END] = {
+static byte DisallowedPPPofTrackAtPCP[TRACK_END][DIAGDIR_END] = {
 	{1 << DIR_SW | 1 << DIR_NE, 0,           1 << DIR_SW | 1 << DIR_NE, 0          }, /* X */
 	{0,           1 << DIR_NW | 1 << DIR_SE, 0,           1 << DIR_NW | 1 << DIR_SE}, /* Y */
 	{1 << DIR_W | 1 << DIR_E,  0,           0,           1 << DIR_W | 1 << DIR_E }, /* UPPER */
@@ -188,16 +188,16 @@ static byte DisallowedPPPofTrackBitAtPCP[TRACK_END][DIAGDIR_END] = {
 };
 
 /* This array stores which track bits can meet at a tile edge */
-static const Track PPPtracks[DIAGDIR_END][TRACKS_AT_PCP] = {
+static const Track TracksAtPCP[DIAGDIR_END][NUM_TRACKS_AT_PCP] = {
 	{TRACK_X, TRACK_X, TRACK_UPPER, TRACK_LOWER, TRACK_LEFT, TRACK_RIGHT},
 	{TRACK_Y, TRACK_Y, TRACK_UPPER, TRACK_LOWER, TRACK_LEFT, TRACK_RIGHT},
 	{TRACK_X, TRACK_X, TRACK_UPPER, TRACK_LOWER, TRACK_LEFT, TRACK_RIGHT},
 	{TRACK_Y, TRACK_Y, TRACK_UPPER, TRACK_LOWER, TRACK_LEFT, TRACK_RIGHT},
 };
 
-/* takes each of the 8 track bits from the array above and
+/* takes each of the 6 track bits from the array above and
    assigns it to the home tile or neighbour tile */
-static const TileSource trackorigin[DIAGDIR_END][TRACKS_AT_PCP] = {
+static const TileSource TrackSourceTile[DIAGDIR_END][NUM_TRACKS_AT_PCP] = {
 	{TS_HOME, TS_NEIGHBOUR, TS_HOME     , TS_NEIGHBOUR, TS_NEIGHBOUR, TS_HOME     },
 	{TS_HOME, TS_NEIGHBOUR, TS_NEIGHBOUR, TS_HOME     , TS_NEIGHBOUR, TS_HOME     },
 	{TS_HOME, TS_NEIGHBOUR, TS_NEIGHBOUR, TS_HOME     , TS_HOME     , TS_NEIGHBOUR},
