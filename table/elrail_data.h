@@ -97,79 +97,80 @@ static byte PreferredPPPofTrackBitAtPCP[TRACK_END][DIAGDIR_END] = {
 };
 #undef PCP_NOT_ON_TRACK
 
+
 #define NUM_IGNORE_GROUPS 3
-#define NO_IGNORE 0xFF
+#define IGNORE_NONE 0xFF
 /** In case we have a staight line, we place pylon only every two tiles,
   so there are certain tiles which we ignore. A straight line is found if
-  we have exactly two preferred points.*/
+  we have exactly two PPPs. */
 static byte IgnoredPCP[NUM_IGNORE_GROUPS][TLG_END][DIAGDIR_END] = {
-	{   /* Ignore group 1 */
+	{   /* Ignore group 1, X and Y tracks */
 		{     /* X even, Y even */
-			1 << DIR_N  | 1 << DIR_S,
+			IGNORE_NONE,
 			1 << DIR_NE | 1 << DIR_SW,
 			1 << DIR_NW | 1 << DIR_SE,
-			1 << DIR_W  | 1 << DIR_E
+			IGNORE_NONE
 		}, { /* X even, Y odd  */
-			0xFF,
-			1 << DIR_E  | 1 << DIR_W,
+			IGNORE_NONE,
+			IGNORE_NONE,
 			1 << DIR_NW | 1 << DIR_SE,
 			1 << DIR_NE | 1 << DIR_SW
 		}, { /* X odd,  Y even */
 			1 << DIR_NW | 1 << DIR_SE,
 			1 << DIR_NE | 1 << DIR_SW,
-			1 << DIR_N  | 1 << DIR_S ,
-			0xFF
+			IGNORE_NONE,
+			IGNORE_NONE
 		}, { /* X odd,  Y odd  */
 			1 << DIR_NW | 1 << DIR_SE,
-			0xFF,
-			0xFF,
+			IGNORE_NONE,
+			IGNORE_NONE,
 			1 << DIR_NE | 1 << DIR_SW
 		}
 	},
-	{   /* Ignore group 2 */
+	{   /* Ignore group 2, LEFT and RIGHT tracks */
 		{
 			1 << DIR_E | 1 << DIR_W,
-			1 << DIR_N | 1 << DIR_S,
-			0xFF,
+			IGNORE_NONE,
+			IGNORE_NONE,
 			1 << DIR_E | 1 << DIR_W
 		}, {
-			0xFF,
-			0xFF,
-			1 << DIR_N | 1 << DIR_S,
-			1 << DIR_N | 1 << DIR_S
-		}, {
-			0xFF,
+			IGNORE_NONE,
 			1 << DIR_E | 1 << DIR_W,
 			1 << DIR_E | 1 << DIR_W,
-			1 << DIR_N | 1 << DIR_S
+			IGNORE_NONE
 		}, {
-			1 << DIR_N | 1 << DIR_S,
-			1 << DIR_N | 1 << DIR_S,
-			0xFF,
+			IGNORE_NONE,
+			1 << DIR_E | 1 << DIR_W,
+			1 << DIR_E | 1 << DIR_W,
+			IGNORE_NONE
+		}, {
+			1 << DIR_E | 1 << DIR_W,
+			IGNORE_NONE,
+			IGNORE_NONE,
 			1 << DIR_E | 1 << DIR_W
 		}
 	},
-	{   /* Ignore group 3 */
+	{   /* Ignore group 3, UPPER and LOWER tracks */
 		{
-			0xFF,
-			0xFF,
-			0xFF,
-			0xFF
+			1 << DIR_N | 1 << DIR_S,
+			1 << DIR_N | 1 << DIR_S,
+			IGNORE_NONE,
+			IGNORE_NONE
 		}, {
-			0xFF,
-			0xFF,
-			1 << DIR_E | 1 << DIR_W,
-			0xFF
+			IGNORE_NONE,
+			IGNORE_NONE,
+			1 << DIR_N | 1 << DIR_S,
+			1 << DIR_N | 1 << DIR_S
 		}, {
-			0xFF,
-			0xFF,
-			0xFF,
-			0xFF
+			IGNORE_NONE,
+			IGNORE_NONE,
+			1 << DIR_N | 1 << DIR_S ,
+			1 << DIR_N | 1 << DIR_S
 		}, {
-			1 << DIR_E | 1 << DIR_W,
-			0xFF,
-			0xFF,
-			0xFF
+			1 << DIR_N | 1 << DIR_S,
+			1 << DIR_N | 1 << DIR_S,
+			IGNORE_NONE,
+			IGNORE_NONE
 		}
 	}
 };
