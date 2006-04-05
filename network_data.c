@@ -273,6 +273,7 @@ uint64 NetworkRecv_uint64(NetworkClientState *cs, Packet *packet)
 void NetworkRecv_string(NetworkClientState *cs, Packet *p, char* buffer, size_t size)
 {
 	int pos;
+	char *bufp = buffer;
 
 	/* Don't allow reading from a closed socket */
 	if (cs->quited)
@@ -289,6 +290,8 @@ void NetworkRecv_string(NetworkClientState *cs, Packet *p, char* buffer, size_t 
 		++pos;
 	}
 	p->pos = pos;
+
+	str_validate(bufp);
 }
 
 // If PacketSize changes of size, you have to change the 2 packet->size
