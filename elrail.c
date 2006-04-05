@@ -179,6 +179,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		   existing foundataions, so we do have to do that manually later on.*/
 		tileh[TS_NEIGHBOUR] = GetTileSlope(neighbour, NULL);
 		trackconfig[TS_NEIGHBOUR] = GetRailTrackBitsUniversal(neighbour, NULL);
+		if (IsTunnelTile(neighbour) && i != GetTunnelDirection(neighbour)) trackconfig[TS_NEIGHBOUR] = 0;
 		isflat[TS_NEIGHBOUR] = trackconfig[TS_NEIGHBOUR] & (TRACK_BIT_UPPER | TRACK_BIT_LOWER | TRACK_BIT_LEFT | TRACK_BIT_RIGHT);
 
 		PPPpreferred[i] = 0xFF; /* We start with preferring everything (end-of-line in any direction) */
