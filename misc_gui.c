@@ -808,8 +808,8 @@ void DeleteTextBufferAll(Textbuf *tb)
 }
 
 /**
- * Insert a character to a textbuffer. If maxlength of the Textbuf is zero,
- * we don't care about the screenlength but only about the physical
+ * Insert a character to a textbuffer. If maxwidth of the Textbuf is zero,
+ * we don't care about the visual-length but only about the physical
  * length of the string
  * @param tb @Textbuf type to be changed
  * @param key Character to be inserted
