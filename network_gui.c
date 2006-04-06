@@ -568,7 +568,7 @@ void ShowNetworkGameWindow(void)
 		w->vscroll.cap = 12;
 
 		querystr->text.caret = true;
-		querystr->text.maxlength = MAX_QUERYSTR_LEN - 1;
+		querystr->text.maxlength = MAX_QUERYSTR_LEN;
 		querystr->text.maxwidth = 120;
 		querystr->text.buf = _edit_str_buf;
 		UpdateTextBufferSize(&querystr->text);
@@ -782,7 +782,7 @@ static void ShowNetworkStartServerWindow(void)
 	w->vscroll.count = _fios_num+1;
 
 	WP(w, network_ql_d).q.text.caret = true;
-	WP(w, network_ql_d).q.text.maxlength = MAX_QUERYSTR_LEN - 1;
+	WP(w, network_ql_d).q.text.maxlength = MAX_QUERYSTR_LEN;
 	WP(w, network_ql_d).q.text.maxwidth = 160;
 	WP(w, network_ql_d).q.text.buf = _edit_str_buf;
 	UpdateTextBufferSize(&WP(w, network_ql_d).q.text);
@@ -1584,7 +1584,7 @@ void ShowChatWindow(StringID str, StringID caption, int maxlen, int maxwidth, Wi
 	WP(w,querystr_d).wnd_class = window_class;
 	WP(w,querystr_d).wnd_num = window_number;
 	WP(w,querystr_d).text.caret = false;
-	WP(w,querystr_d).text.maxlength = maxlen - 1;
+	WP(w,querystr_d).text.maxlength = maxlen;
 	WP(w,querystr_d).text.maxwidth = maxwidth;
 	WP(w,querystr_d).text.buf = _edit_str_buf;
 	UpdateTextBufferSize(&WP(w, querystr_d).text);

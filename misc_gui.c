@@ -808,8 +808,9 @@ void DeleteTextBufferAll(Textbuf *tb)
 }
 
 /**
- * Insert a character to a textbuffer. If maxlength is zero, we don't care about
- * the screenlength but only about the physical length of the string
+ * Insert a character to a textbuffer. If maxlength of the Textbuf is zero,
+ * we don't care about the screenlength but only about the physical
+ * length of the string
  * @param tb @Textbuf type to be changed
  * @param key Character to be inserted
  * @return Return true on successfull change of Textbuf, or false otherwise
@@ -817,7 +818,7 @@ void DeleteTextBufferAll(Textbuf *tb)
 bool InsertTextBufferChar(Textbuf *tb, byte key)
 {
 	const byte charwidth = GetCharacterWidth(key);
-	if (tb->length < tb->maxlength && (tb->maxwidth == 0 || tb->width + charwidth <= tb->maxwidth)) {
+	if (tb->length < (tb->maxlength - 1) && (tb->maxwidth == 0 || tb->width + charwidth <= tb->maxwidth)) {
 		memmove(tb->buf + tb->caretpos + 1, tb->buf + tb->caretpos, (tb->length - tb->caretpos) + 1);
 		tb->buf[tb->caretpos] = key;
 		tb->length++;
@@ -875,12 +876,12 @@ bool MoveTextBufferPos(Textbuf *tb, int navmode)
  */
 void UpdateTextBufferSize(Textbuf *tb)
 {
-	const char* buf;
+	const char *buf;
 
 	tb->length = 0;
 	tb->width = 0;
 
-	for (buf = tb->buf; *buf != '\0' && tb->length <= tb->maxlength; buf++) {
+	for (buf = tb->buf; *buf != '\0' && tb->length < (tb->maxlength - 1); buf++) {
 		tb->length++;
 		tb->width += GetCharacterWidth((byte)*buf);
 	}
@@ -1078,7 +1079,7 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 	WP(w, querystr_d).wnd_class = window_class;
 	WP(w, querystr_d).wnd_num = window_number;
 	WP(w, querystr_d).text.caret = false;
-	WP(w, querystr_d).text.maxlength = realmaxlen - 1;
+	WP(w, querystr_d).text.maxlength = realmaxlen;
 	WP(w, querystr_d).text.maxwidth = maxwidth;
 	WP(w, querystr_d).text.buf = _edit_str_buf;
 	UpdateTextBufferSize(&WP(w, querystr_d).text);
@@ -1464,7 +1465,7 @@ void ShowSaveLoadDialog(int mode)
 	w->resize.height = w->height - 14 * 10; // Minimum of 10 items
 	SETBIT(w->click_state, 7);
 	WP(w,querystr_d).text.caret = false;
-	WP(w,querystr_d).text.maxlength = lengthof(_edit_str_buf) - 1;
+	WP(w,querystr_d).text.maxlength = lengthof(_edit_str_buf);
 	WP(w,querystr_d).text.maxwidth = 240;
 	WP(w,querystr_d).text.buf = _edit_str_buf;
 	UpdateTextBufferSize(&WP(w, querystr_d).text);

@@ -1228,14 +1228,13 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 		data = GlobalLock(cbuf); // clipboard data
 		dataptr = data;
 
-		for (; IsValidAsciiChar(*dataptr) && (tb->length + length) < tb->maxlength - 1 &&
+		for (; IsValidAsciiChar(*dataptr) && (tb->length + length) < (tb->maxlength - 1) &&
 				(tb->maxwidth == 0 || width + tb->width + GetCharacterWidth((byte)*dataptr) <= tb->maxwidth); dataptr++) {
 					width += GetCharacterWidth((byte)*dataptr);
 			length++;
 		}
 
-		if (length == 0)
-			return false;
+		if (length == 0) return false;
 
 		memmove(tb->buf + tb->caretpos + length, tb->buf + tb->caretpos, tb->length - tb->caretpos);
 		memcpy(tb->buf + tb->caretpos, data, length);
@@ -1244,7 +1243,7 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 
 		tb->length += length;
 		tb->caretpos += length;
-		tb->buf[tb->length + 1] = '\0'; // terminating zero
+		tb->buf[tb->length] = '\0'; // terminating zero
 
 		GlobalUnlock(cbuf);
 		CloseClipboard();
