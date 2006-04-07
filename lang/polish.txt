@@ -1309,7 +1309,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Rozlaczony
 
-STR_NETWORK_CHAT_QUERY_CAPTION                                  :{WHITE}Wprowadz tekst do wyslania
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Wprowadz ilosc pieniedzy jaka chcesz przekazac
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serwer jest chroniony. Wprowadz haslo
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma jest chroniona. Wprowadz haslo

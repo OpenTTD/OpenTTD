@@ -1309,7 +1309,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Disconnessione
 
-STR_NETWORK_CHAT_QUERY_CAPTION                                  :{WHITE}Inserisci il messaggio di testo da inviare
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Inserisci l'ammontare di denaro che vuoi donare
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server protetto. Inserisci la password
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Compagnia protetta. Inserisci la password

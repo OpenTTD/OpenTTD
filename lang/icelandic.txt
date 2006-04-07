@@ -1294,7 +1294,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Aftengjast
 
-STR_NETWORK_CHAT_QUERY_CAPTION                                  :{WHITE}Sláðu inn skilaboð til að senda
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Sláðu inn upphæð fjár sem þú villt gefa
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Þjónn er varinn. Sláðu inn lykilorð
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Fyrirtæki er varið. Sláðu inn lykilorð

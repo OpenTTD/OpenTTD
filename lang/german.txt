@@ -1310,7 +1310,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Trennen
 
-STR_NETWORK_CHAT_QUERY_CAPTION                                  :{WHITE}Gib deine Nachricht ein
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Gib an, wieviel Geld du geben möchtest
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server ist geschützt. Gib das Passwort ein
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma ist geschützt! Passwort eingeben

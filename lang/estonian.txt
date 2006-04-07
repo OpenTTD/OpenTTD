@@ -1290,7 +1290,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Katkesta
 
-STR_NETWORK_CHAT_QUERY_CAPTION                                  :{WHITE}Sõnumi kirjutamine saatmiseks teistele mängijatele
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Teisele mängijale saadetava rahasumma sisestamine
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server on kaitstud. Sisesta parool
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Ettevõte on kaitstud. Sisesta parool

@@ -1309,7 +1309,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Frånkopplad
 
-STR_NETWORK_CHAT_QUERY_CAPTION                                  :{WHITE}Ange meddelandet du vill skicka
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Ange beloppet du vill ge
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servern är skyddad. Ange lösenord
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Företaget är skyddat. Ange lösenord

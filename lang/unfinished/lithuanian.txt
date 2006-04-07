@@ -1248,7 +1248,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Atsijungti
 
-STR_NETWORK_CHAT_QUERY_CAPTION                                  :{WHITE}Ivesk teksta kuri nori siusti
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Ivesk pinigu kieki kuri nori duoti
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serveris apsaugotas. Ivesk slaptazodi
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Kompanija apsaugota. Ivesk slaptazodi

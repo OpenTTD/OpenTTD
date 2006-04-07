@@ -1545,7 +1545,7 @@ static const WindowDesc _chat_window_desc = {
 	ChatWindowWndProc
 };
 
-void ShowChatWindow(StringID caption, int maxlen, int maxwidth, WindowClass window_class, WindowNumber window_number)
+void ShowChatWindow(int maxlen, int maxwidth, WindowClass window_class, WindowNumber window_number)
 {
 	Window *w;
 
@@ -1556,7 +1556,7 @@ void ShowChatWindow(StringID caption, int maxlen, int maxwidth, WindowClass wind
 	w = AllocateWindowDesc(&_chat_window_desc);
 
 	w->click_state = 1 << 1;
-	WP(w,querystr_d).caption = caption;
+	WP(w,querystr_d).caption = STR_NULL;
 	WP(w,querystr_d).wnd_class = window_class;
 	WP(w,querystr_d).wnd_num = window_number;
 	WP(w,querystr_d).text.caret = false;

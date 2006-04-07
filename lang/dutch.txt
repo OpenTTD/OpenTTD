@@ -1309,7 +1309,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Verbinding verbroken
 
-STR_NETWORK_CHAT_QUERY_CAPTION                                  :{WHITE}Voer het te versturen bericht in
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Voer het geldbedrag dat je wilt geven in
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server is beveiligd. Voer wachtwoord in.
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Bedrijf is beveiligd. Voer wachtwoord in.

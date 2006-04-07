@@ -1308,7 +1308,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Pura yhteys
 
-STR_NETWORK_CHAT_QUERY_CAPTION                                  :{WHITE}Syötä lähetettävä teksti
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Syötä annettava rahamäärä
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Palvelin on suojattu. Anna salasana
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Yhtiö on suojattu. Anna salasana

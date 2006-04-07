@@ -1293,7 +1293,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Desconnecta
 
-STR_NETWORK_CHAT_QUERY_CAPTION                                  :{WHITE}Entra el text del missatge a enviar
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Entra la quantitat de diners que vols obtenir
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor protegit. Entra la contrasenya
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa protegida. Entra la contrasenya

@@ -1374,7 +1374,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Lebontás
 
-STR_NETWORK_CHAT_QUERY_CAPTION                                  :{WHITE}Írd be az elküldendõ üzenetet
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Írd be mennyi pénzt akarsz adományozni
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}A szerver jelszóval van védve. Írd be
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}A cég jelszóval van védve. Írd be

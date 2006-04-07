@@ -1300,7 +1300,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Odpojit sa
 
-STR_NETWORK_CHAT_QUERY_CAPTION                                  :{WHITE}Napis spravu, ktoru chces poslat
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Napis sumu, ktoru chces poskytnut
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server je chraneny. Napis heslo
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Spolocnost je chranena. Napis heslo

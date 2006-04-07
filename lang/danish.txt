@@ -1307,7 +1307,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Afbryd forbindelse
 
-STR_NETWORK_CHAT_QUERY_CAPTION                                  :{WHITE}Skrive den tekst, som du vil sende
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Skriv det beløb, som du ønsker at give
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serveren er beskyttet. Skriv kodeordet
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Virksomheden er beskyttet. Skriv kodeordet
