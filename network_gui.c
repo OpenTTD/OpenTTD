@@ -1469,13 +1469,10 @@ void ShowJoinStatusWindowAfterJoin(void)
 /* uses querystr_d WP macro */
 static void ChatWindowWndProc(Window *w, WindowEvent *e)
 {
-	static bool closed = false;
-
 	switch (e->event) {
 	case WE_CREATE:
 		SendWindowMessage(WC_NEWS_WINDOW, 0, WE_CREATE, w->height, 0);
 		SETBIT(_no_scroll, SCROLL_CHAT); // do not scroll the game with the arrow-keys
-		closed = false;
 		break;
 
 	case WE_PAINT:
@@ -1495,9 +1492,6 @@ press_ok:;
 				WindowClass wnd_class = WP(w, querystr_d).wnd_class;
 				WindowNumber wnd_num = WP(w, querystr_d).wnd_num;
 				Window *parent;
-
-				// Mask the edit-box as closed, so we don't send out a CANCEL
-				closed = true;
 
 				DeleteWindow(w);
 
@@ -1534,15 +1528,6 @@ press_ok:;
 	case WE_DESTROY:
 		SendWindowMessage(WC_NEWS_WINDOW, 0, WE_DESTROY, 0, 0);
 		CLRBIT(_no_scroll, SCROLL_CHAT);
-		// If the window is not closed yet, it means it still needs to send a CANCEL
-		if (!closed) {
-			Window *parent = FindWindowById(WP(w,querystr_d).wnd_class, WP(w,querystr_d).wnd_num);
-			if (parent != NULL) {
-				WindowEvent e;
-				e.event = WE_ON_EDIT_TEXT_CANCEL;
-				parent->wndproc(parent, &e);
-			}
-		}
 		break;
 	}
 }
