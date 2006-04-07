@@ -25,7 +25,6 @@
 
 #define BGC 5
 #define BTC 15
-#define MAX_QUERYSTR_LEN 64
 
 typedef struct network_d {
 	byte company;            // select company in network lobby
@@ -51,7 +50,8 @@ typedef struct NetworkGameSorting {
 /* Global to remember sorting after window has been closed */
 static NetworkGameSorting _ng_sorting;
 
-static char _edit_str_buf[MAX_QUERYSTR_LEN];
+static char _edit_str_buf[64];
+
 static void ShowNetworkStartServerWindow(void);
 static void ShowNetworkLobbyWindow(NetworkGameList *ngl);
 
@@ -544,7 +544,6 @@ void ShowNetworkGameWindow(void)
 {
 	static bool first = true;
 	Window *w;
-	querystr_d *querystr;
 	DeleteWindowById(WC_NETWORK_WINDOW, 0);
 
 	/* Only show once */
@@ -563,12 +562,13 @@ void ShowNetworkGameWindow(void)
 
 	w = AllocateWindowDesc(&_network_game_window_desc);
 	if (w != NULL) {
-		querystr = &WP(w, network_ql_d).q;
-		ttd_strlcpy(_edit_str_buf, _network_player_name, MAX_QUERYSTR_LEN);
+		querystr_d* querystr = &WP(w, network_ql_d).q;
+
+		ttd_strlcpy(_edit_str_buf, _network_player_name, lengthof(_edit_str_buf));
 		w->vscroll.cap = 12;
 
 		querystr->text.caret = true;
-		querystr->text.maxlength = MAX_QUERYSTR_LEN;
+		querystr->text.maxlength = lengthof(_edit_str_buf);
 		querystr->text.maxwidth = 120;
 		querystr->text.buf = _edit_str_buf;
 		UpdateTextBufferSize(&querystr->text);
@@ -774,7 +774,7 @@ static void ShowNetworkStartServerWindow(void)
 	DeleteWindowById(WC_NETWORK_WINDOW, 0);
 
 	w = AllocateWindowDesc(&_network_start_server_window_desc);
-	ttd_strlcpy(_edit_str_buf, _network_server_name, MAX_QUERYSTR_LEN);
+	ttd_strlcpy(_edit_str_buf, _network_server_name, lengthof(_edit_str_buf));
 
 	_saveload_mode = SLD_NEW_GAME;
 	BuildFileList();
@@ -782,7 +782,7 @@ static void ShowNetworkStartServerWindow(void)
 	w->vscroll.count = _fios_num+1;
 
 	WP(w, network_ql_d).q.text.caret = true;
-	WP(w, network_ql_d).q.text.maxlength = MAX_QUERYSTR_LEN;
+	WP(w, network_ql_d).q.text.maxlength = lengthof(_edit_str_buf);
 	WP(w, network_ql_d).q.text.maxwidth = 160;
 	WP(w, network_ql_d).q.text.buf = _edit_str_buf;
 	UpdateTextBufferSize(&WP(w, network_ql_d).q.text);
