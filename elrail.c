@@ -91,11 +91,12 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 				return DiagDirToAxis(GetTunnelDirection(t)) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y;
 			} else {
 				if (GetRailType(t) != RAILTYPE_ELECTRIC) return 0;
-				if (
-					IsBridgeMiddle(t) &&
-					IsTransportUnderBridge(t) &&
-					GetTransportTypeUnderBridge(t) == TRANSPORT_RAIL) {
-					return GetRailBitsUnderBridge(t);
+				if (IsBridgeMiddle(t)) {
+					if (IsTransportUnderBridge(t) &&
+						GetTransportTypeUnderBridge(t) == TRANSPORT_RAIL) {
+						return GetRailBitsUnderBridge(t);
+					} else
+						return 0;
 				} else {
 					if (override != NULL && DistanceMax(t, GetOtherBridgeEnd(t)) > 1) *override = 1 << GetBridgeRampDirection(t);
 
