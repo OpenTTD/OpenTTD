@@ -332,7 +332,7 @@ void ShowNetworkChatQueryWindow(byte desttype, byte dest)
 {
 	_rename_id = desttype + (dest << 8);
 	_rename_what = 2;
-	ShowChatWindow(STR_EMPTY, STR_NETWORK_CHAT_QUERY_CAPTION, 150, 338, 1, 0);
+	ShowChatWindow(STR_NETWORK_CHAT_QUERY_CAPTION, 150, 338, 1, 0);
 }
 
 void ShowNetworkGiveMoneyWindow(byte player)
