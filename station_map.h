@@ -184,6 +184,25 @@ static inline DiagDirection GetDockDirection(TileIndex t)
 	return (DiagDirection)(_m[t].m5 - DOCK_BASE);
 }
 
+static inline TileIndexDiffC GetDockOffset(TileIndex t)
+{
+	static const TileIndexDiffC buoy_offset = {0, 0};
+	static const TileIndexDiffC oilrig_offset = {2, 0};
+	static const TileIndexDiffC dock_offset[DIAGDIR_END] = {
+		{-2,  0},
+		{ 0,  2},
+		{ 2,  0},
+		{ 0, -2},
+	};
+	assert(IsTileType(t, MP_STATION));
+
+	if (IsBuoy_(t)) return buoy_offset;
+	if (IsOilRig(t)) return oilrig_offset;
+
+	assert(IsDock(t));
+
+	return dock_offset[GetDockDirection(t)];
+}
 
 static inline bool IsCustomStationSprite(TileIndex t)
 {

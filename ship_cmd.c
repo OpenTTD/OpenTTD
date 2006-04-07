@@ -190,17 +190,6 @@ static void PlayShipSound(Vehicle *v)
 	SndPlayVehicleFx(ShipVehInfo(v->engine_type)->sfx, v);
 }
 
-static const TileIndexDiffC _dock_offs[] = {
-	{ 2,  0},
-	{-2,  0},
-	{ 0,  2},
-	{ 2,  0},
-	{ 0, -2},
-	{ 0,  0},
-	{ 0,  0},
-	{ 0,  0}
-};
-
 static void ProcessShipOrder(Vehicle *v)
 {
 	const Order *order;
@@ -245,7 +234,7 @@ static void ProcessShipOrder(Vehicle *v)
 
 		st = GetStation(order->station);
 		if (st->dock_tile != 0) {
-			v->dest_tile = TILE_ADD(st->dock_tile, ToTileIndexDiff(_dock_offs[_m[st->dock_tile].m5-0x4B]));
+			v->dest_tile = TILE_ADD(st->dock_tile, ToTileIndexDiff(GetDockOffset(st->dock_tile)));
 		}
 	} else if (order->type == OT_GOTO_DEPOT) {
 		v->dest_tile = GetDepot(order->station)->xy;
