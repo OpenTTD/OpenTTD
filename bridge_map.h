@@ -148,6 +148,7 @@ static inline void SetClearUnderBridge(TileIndex t)
 	assert(IsBridgeMiddle(t));
 	SetTileOwner(t, OWNER_NONE);
 	SB(_m[t].m5, 3, 3, 0 << 2 | 0);
+	SB(_m[t].m3, 0, 4, 0);
 }
 
 static inline void SetWaterUnderBridge(TileIndex t)
@@ -155,6 +156,7 @@ static inline void SetWaterUnderBridge(TileIndex t)
 	assert(IsBridgeMiddle(t));
 	SetTileOwner(t, OWNER_WATER);
 	SB(_m[t].m5, 3, 3, 0 << 2 | 1);
+	SB(_m[t].m3, 0, 4, 0);
 }
 
 static inline void SetRailUnderBridge(TileIndex t, Owner o, RailType r)
@@ -170,6 +172,7 @@ static inline void SetRoadUnderBridge(TileIndex t, Owner o)
 	assert(IsBridgeMiddle(t));
 	SetTileOwner(t, o);
 	SB(_m[t].m5, 3, 3, 1 << 2 | TRANSPORT_ROAD);
+	SB(_m[t].m3, 0, 4, 0);
 }
 
 
