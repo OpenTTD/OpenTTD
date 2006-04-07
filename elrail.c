@@ -166,7 +166,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	      which have no middle tiles */
 	trackconfig[TS_HOME] = GetRailTrackBitsUniversal(ti->tile, &OverridePCP);
 	/* If a track bit is present that is not in the main direction, the track is level */
-	isflat[TS_HOME] = trackconfig[TS_HOME] & (TRACK_BIT_UPPER | TRACK_BIT_LOWER | TRACK_BIT_LEFT | TRACK_BIT_RIGHT);
+	isflat[TS_HOME] = trackconfig[TS_HOME] & (TRACK_BIT_HORZ | TRACK_BIT_VERT);
 
 	AdjustTileh(ti->tile, &tileh[TS_HOME]);
 
@@ -180,7 +180,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		tileh[TS_NEIGHBOUR] = GetTileSlope(neighbour, NULL);
 		trackconfig[TS_NEIGHBOUR] = GetRailTrackBitsUniversal(neighbour, NULL);
 		if (IsTunnelTile(neighbour) && i != GetTunnelDirection(neighbour)) trackconfig[TS_NEIGHBOUR] = 0;
-		isflat[TS_NEIGHBOUR] = trackconfig[TS_NEIGHBOUR] & (TRACK_BIT_UPPER | TRACK_BIT_LOWER | TRACK_BIT_LEFT | TRACK_BIT_RIGHT);
+		isflat[TS_NEIGHBOUR] = trackconfig[TS_NEIGHBOUR] & (TRACK_BIT_HORZ | TRACK_BIT_VERT);
 
 		PPPpreferred[i] = 0xFF; /* We start with preferring everything (end-of-line in any direction) */
 		PPPallowed[i] = AllowedPPPonPCP[i];
