@@ -95,8 +95,9 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 					if (IsTransportUnderBridge(t) &&
 						GetTransportTypeUnderBridge(t) == TRANSPORT_RAIL) {
 						return GetRailBitsUnderBridge(t);
-					} else
+					} else {
 						return 0;
+					}
 				} else {
 					if (override != NULL && DistanceMax(t, GetOtherBridgeEnd(t)) > 1) *override = 1 << GetBridgeRampDirection(t);
 
