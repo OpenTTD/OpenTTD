@@ -124,7 +124,7 @@ extern const byte _fios_colors[];
 
 /* network gui */
 void ShowNetworkGameWindow(void);
-void ShowChatWindow(int maxlen, WindowClass window_class, WindowNumber window_number);
+void ShowChatWindow(int maxlen);
 
 /* bridge_gui.c */
 void ShowBuildBridgeWindow(uint start, uint end, byte type);

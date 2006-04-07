@@ -1545,7 +1545,7 @@ static const WindowDesc _chat_window_desc = {
 	ChatWindowWndProc
 };
 
-void ShowChatWindow(int maxlen, WindowClass window_class, WindowNumber window_number)
+void ShowChatWindow(int maxlen)
 {
 	Window *w;
 
@@ -1557,8 +1557,8 @@ void ShowChatWindow(int maxlen, WindowClass window_class, WindowNumber window_nu
 
 	w->click_state = 1 << 1;
 	WP(w,querystr_d).caption = STR_NULL;
-	WP(w,querystr_d).wnd_class = window_class;
-	WP(w,querystr_d).wnd_num = window_number;
+	WP(w,querystr_d).wnd_class = WC_MAIN_TOOLBAR;
+	WP(w,querystr_d).wnd_num = 0;
 	WP(w,querystr_d).text.caret = false;
 	WP(w,querystr_d).text.maxlength = maxlen;
 	WP(w,querystr_d).text.maxwidth = w->widget[1].right - w->widget[1].left - 2; // widget[1] is the "text box"
