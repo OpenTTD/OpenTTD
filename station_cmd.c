@@ -1480,7 +1480,7 @@ static const byte _airport_sections_heliport[] = {
 	66,
 };
 
-static const byte * const _airport_map5_tiles[] = {
+static const byte * const _airport_sections[] = {
 	_airport_sections_country,				// Country Airfield (small)
 	_airport_sections_town,						// City Airport (large)
 	_airport_sections_heliport,				// Heliport
@@ -1506,7 +1506,7 @@ int32 CmdBuildAirport(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	/* Check if a valid, buildable airport was chosen for construction */
-	if (p1 > lengthof(_airport_map5_tiles) || !HASBIT(GetValidAirports(), p1)) return CMD_ERROR;
+	if (p1 > lengthof(_airport_sections) || !HASBIT(GetValidAirports(), p1)) return CMD_ERROR;
 
 	tile = TileVirtXY(x, y);
 
@@ -1601,7 +1601,7 @@ int32 CmdBuildAirport(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if (airport_upgrade) UpdateAirplanesOnNewStation(st);
 
 		{
-			const byte *b = _airport_map5_tiles[p1];
+			const byte *b = _airport_sections[p1];
 
 			BEGIN_TILE_LOOP(tile_cur, w, h, tile) {
 				MakeAirport(tile_cur, st->owner, st->index, *b++);
