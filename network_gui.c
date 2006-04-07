@@ -1545,7 +1545,7 @@ static const WindowDesc _chat_window_desc = {
 	ChatWindowWndProc
 };
 
-void ShowChatWindow(int maxlen)
+void ShowChatWindow(void)
 {
 	Window *w;
 
@@ -1560,7 +1560,7 @@ void ShowChatWindow(int maxlen)
 	WP(w,querystr_d).wnd_class = WC_MAIN_TOOLBAR;
 	WP(w,querystr_d).wnd_num = 0;
 	WP(w,querystr_d).text.caret = false;
-	WP(w,querystr_d).text.maxlength = maxlen;
+	WP(w,querystr_d).text.maxlength = lengthof(_edit_str_buf);
 	WP(w,querystr_d).text.maxwidth = w->widget[1].right - w->widget[1].left - 2; // widget[1] is the "text box"
 	WP(w,querystr_d).text.buf = _edit_str_buf;
 	UpdateTextBufferSize(&WP(w, querystr_d).text);
