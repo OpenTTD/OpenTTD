@@ -2749,7 +2749,7 @@ static const SaveLoad _roadstop_desc[] = {
 	SLE_REF(RoadStop,prev,         REF_ROADSTOPS),
 
 	SLE_CONDNULL(4, 0, 24),
-	SLE_CONDVAR(RoadStop, num_vehicles, SLE_UINT8, 25, SL_MAX_VERSION),
+	SLE_CONDNULL(1, 25, 25),
 
 	SLE_END()
 };
@@ -2910,6 +2910,7 @@ static void Save_ROADSTOP(void)
 static void Load_ROADSTOP(void)
 {
 	int index;
+	Vehicle *v;
 
 	while ((index = SlIterateArray()) != -1) {
 		RoadStop *rs;
@@ -2918,8 +2919,11 @@ static void Load_ROADSTOP(void)
 			error("RoadStops: failed loading savegame: too many RoadStops");
 
 		rs = GetRoadStop(index);
-		rs->num_vehicles = 0;
 		SlObject(rs, _roadstop_desc);
+	}
+
+	FOR_ALL_VEHICLES(v) {
+		if (v->type == VEH_Road && v->u.road.slot != NULL) GetRoadStopByTile(v->dest_tile, v->cargo_type == CT_PASSENGERS ? RS_BUS : RS_TRUCK)->num_vehicles++;
 	}
 }
 
