@@ -223,6 +223,12 @@ static inline uint GetCustomStationSprite(TileIndex t)
 	return _m[t].m4;
 }
 
+static inline byte GetStationGfx(TileIndex t)
+{
+	assert(IsTileType(t, MP_STATION));
+	return _m[t].m5;
+}
+
 
 static inline void MakeStation(TileIndex t, Owner o, StationID sid, byte m5)
 {

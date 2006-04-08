@@ -1926,11 +1926,11 @@ static void DrawTile_Station(TileInfo *ti)
 
 			relocation = GetCustomStationRelocation(statspec, st, 0);
 			//debug("Relocation %d", relocation);
-			t = &statspec->renderdata[ti->map5];
+			t = &statspec->renderdata[GetStationGfx(ti->tile)];
 		}
 	}
 
-	if (t == NULL) t = &_station_display_datas[ti->map5];
+	if (t == NULL) t = &_station_display_datas[GetStationGfx(ti->tile)];
 
 	image = t->ground_sprite;
 	if (image & PALETTE_MODIFIER_COLOR) image |= image_or_modificator;
