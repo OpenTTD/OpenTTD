@@ -43,7 +43,7 @@ void DrawTrainEnginePurchaseInfo(int x, int y, EngineID engine_number)
 	y += 10;
 
 	/* Max speed - Engine power */
-	SetDParam(0, rvi->max_speed * 10 >> 4);
+	SetDParam(0, rvi->max_speed);
 	SetDParam(1, rvi->power << multihead);
 	DrawString(x,y, STR_PURCHASE_INFO_SPEED_POWER, 0);
 	y += 10;
@@ -114,7 +114,7 @@ void DrawTrainWagonPurchaseInfo(int x, int y, EngineID engine_number)
 
 	/* Wagon speed limit, displayed if above zero */
 	if (rvi->max_speed > 0 && _patches.wagon_speed_limits) {
-		SetDParam(0, rvi->max_speed * 10 >> 4);
+		SetDParam(0, rvi->max_speed);
 		DrawString(x,y, STR_PURCHASE_INFO_SPEED, 0);
 		y += 10;
 	}
@@ -932,7 +932,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 			if (v->u.rail.last_speed == 0) {
 				str = STR_8861_STOPPED;
 			} else {
-				SetDParam(0, v->u.rail.last_speed * 10 >> 4);
+				SetDParam(0, v->u.rail.last_speed);
 				str = STR_TRAIN_STOPPING + _patches.vehicle_speed;
 			}
 		} else {
@@ -940,14 +940,14 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 			case OT_GOTO_STATION: {
 				str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
 				SetDParam(0, v->current_order.station);
-				SetDParam(1, v->u.rail.last_speed * 10 >> 4);
+				SetDParam(1, v->u.rail.last_speed);
 			} break;
 
 			case OT_GOTO_DEPOT: {
 				Depot *dep = GetDepot(v->current_order.station);
 				SetDParam(0, dep->town_index);
 				str = STR_HEADING_FOR_TRAIN_DEPOT + _patches.vehicle_speed;
-				SetDParam(1, v->u.rail.last_speed * 10 >> 4);
+				SetDParam(1, v->u.rail.last_speed);
 			} break;
 
 			case OT_LOADING:
@@ -958,14 +958,14 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 			case OT_GOTO_WAYPOINT: {
 				SetDParam(0, v->current_order.station);
 				str = STR_HEADING_FOR_WAYPOINT + _patches.vehicle_speed;
-				SetDParam(1, v->u.rail.last_speed * 10 >> 4);
+				SetDParam(1, v->u.rail.last_speed);
 				break;
 			}
 
 			default:
 				if (v->num_orders == 0) {
 					str = STR_NO_ORDERS + _patches.vehicle_speed;
-					SetDParam(0, v->u.rail.last_speed * 10 >> 4);
+					SetDParam(0, v->u.rail.last_speed);
 				} else
 					str = STR_EMPTY;
 				break;
@@ -1171,7 +1171,7 @@ static void DrawTrainDetailsWindow(Window *w)
 	SetDParam(3, GetTrainRunningCost(v) >> 8);
 	DrawString(x, 15, STR_885D_AGE_RUNNING_COST_YR, 0);
 
-	SetDParam(2, v->u.rail.cached_max_speed * 10 >> 4);
+	SetDParam(2, v->u.rail.cached_max_speed);
 	SetDParam(1, v->u.rail.cached_power);
 	SetDParam(0, v->u.rail.cached_weight);
 	DrawString(x, 25, STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED, 0);

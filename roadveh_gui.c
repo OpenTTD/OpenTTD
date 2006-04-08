@@ -34,7 +34,7 @@ void DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number)
 
 	/* Purchase cost - Max speed */
 	SetDParam(0, rvi->base_cost * (_price.roadveh_base>>3)>>5);
-	SetDParam(1, rvi->max_speed * 10 >> 5);
+	SetDParam(1, rvi->max_speed / 2);
 	DrawString(x, y, STR_PURCHASE_INFO_COST_SPEED, 0);
 	y += 10;
 
@@ -101,7 +101,7 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 
 		/* Draw max speed */
 		{
-			SetDParam(0, v->max_speed * 10 >> 5);
+			SetDParam(0, v->max_speed / 2);
 			DrawString(2, 25, STR_900E_MAX_SPEED, 0);
 		}
 
@@ -251,14 +251,14 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 			switch (v->current_order.type) {
 			case OT_GOTO_STATION: {
 				SetDParam(0, v->current_order.station);
-				SetDParam(1, v->cur_speed * 10 >> 5);
+				SetDParam(1, v->cur_speed / 2);
 				str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
 			} break;
 
 			case OT_GOTO_DEPOT: {
 				Depot *depot = GetDepot(v->current_order.station);
 				SetDParam(0, depot->town_index);
-				SetDParam(1, v->cur_speed * 10 >> 5);
+				SetDParam(1, v->cur_speed / 2);
 				str = STR_HEADING_FOR_ROAD_DEPOT + _patches.vehicle_speed;
 			} break;
 
@@ -270,7 +270,7 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 			default:
 				if (v->num_orders == 0) {
 					str = STR_NO_ORDERS + _patches.vehicle_speed;
-					SetDParam(0, v->cur_speed * 10 >> 5);
+					SetDParam(0, v->cur_speed / 2);
 				} else
 					str = STR_EMPTY;
 				break;

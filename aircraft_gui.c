@@ -36,7 +36,7 @@ void DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number)
 
 	/* Purchase cost - Max speed */
 	SetDParam(0, avi->base_cost * (_price.aircraft_base>>3)>>5);
-	SetDParam(1, avi->max_speed * 8);
+	SetDParam(1, avi->max_speed * 128 / 10);
 	DrawString(x, y, STR_PURCHASE_INFO_COST_SPEED, 0);
 	y += 10;
 
@@ -333,7 +333,7 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 
 		/* Draw max speed */
 		{
-			SetDParam(0, v->max_speed * 8);
+			SetDParam(0, v->max_speed * 128 / 10);
 			DrawString(2, 25, STR_A00E_MAX_SPEED, 0);
 		}
 
@@ -520,13 +520,13 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 			switch (v->current_order.type) {
 			case OT_GOTO_STATION: {
 				SetDParam(0, v->current_order.station);
-				SetDParam(1, v->cur_speed * 8);
+				SetDParam(1, v->cur_speed * 128 / 10);
 				str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
 			} break;
 
 			case OT_GOTO_DEPOT: {
 				SetDParam(0, v->current_order.station);
-				SetDParam(1, v->cur_speed * 8);
+				SetDParam(1, v->cur_speed * 128 / 10);
 				str = STR_HEADING_FOR_HANGAR + _patches.vehicle_speed;
 			} break;
 
@@ -537,7 +537,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 			default:
 				if (v->num_orders == 0) {
 					str = STR_NO_ORDERS + _patches.vehicle_speed;
-					SetDParam(0, v->cur_speed * 8);
+					SetDParam(0, v->cur_speed * 128 / 10);
 				} else {
 					str = STR_EMPTY;
 				}
