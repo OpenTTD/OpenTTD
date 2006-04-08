@@ -1410,6 +1410,18 @@ static int32 RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
+		Vehicle* v;
+
+		/* Clear the slot assignment of all vehicles heading for this road stop */
+		if (cur_stop->num_vehicles != 0) {
+			FOR_ALL_VEHICLES(v) {
+				if (v->type == VEH_Road && v->u.road.slot == cur_stop) {
+					ClearSlot(v);
+				}
+			}
+		}
+		assert(cur_stop->num_vehicles == 0);
+
 		DoClearSquare(tile);
 
 		cur_stop->used = false;
