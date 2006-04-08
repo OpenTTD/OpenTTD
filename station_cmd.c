@@ -2934,7 +2934,7 @@ static void Load_ROADSTOP(void)
 	}
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Road && v->u.road.slot != NULL) GetRoadStopByTile(v->dest_tile, v->cargo_type == CT_PASSENGERS ? RS_BUS : RS_TRUCK)->num_vehicles++;
+		if (v->type == VEH_Road && v->u.road.slot != NULL) v->u.road.slot->num_vehicles++;
 	}
 }
 
