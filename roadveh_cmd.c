@@ -1600,7 +1600,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 	CheckOrders(v);
 
 	//Current slot has expired
-	if (v->current_order.type == OT_GOTO_STATION && v->u.road.slot_age-- == 0 && v->u.road.slot != NULL) {
+	if (v->current_order.type == OT_GOTO_STATION && v->u.road.slot != NULL && v->u.road.slot_age-- == 0) {
 		DEBUG(ms, 2) ("Multistop: Slot expired for vehicle %d (index %d) at stop 0x%x",
 			v->unitnumber, v->index, v->u.road.slot->xy);
 		ClearSlot(v);
