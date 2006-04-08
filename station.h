@@ -38,7 +38,6 @@ typedef struct RoadStop {
 	uint32 index;
 	byte num_vehicles;
 	StationID station;
-	uint8 type;
 	struct RoadStop *next;
 	struct RoadStop *prev;
 } RoadStop;

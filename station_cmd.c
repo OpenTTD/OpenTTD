@@ -1370,7 +1370,6 @@ int32 CmdBuildRoadStop(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 		//initialize an empty station
 		InitializeRoadStop(road_stop, prev, tile, st->index);
-		(*currstop)->type = type;
 		if (!st->facilities) st->xy = tile;
 		st->facilities |= (type) ? FACIL_TRUCK_STOP : FACIL_BUS_STOP;
 		st->owner = _current_player;
@@ -2755,7 +2754,7 @@ static const SaveLoad _roadstop_desc[] = {
 	/* Index was saved in some versions, but this is not needed */
 	SLE_CONDNULL(4, 0, 8),
 	SLE_VAR(RoadStop,station,      SLE_UINT16),
-	SLE_VAR(RoadStop,type,         SLE_UINT8),
+	SLE_CONDNULL(1, 0, 25),
 
 	SLE_REF(RoadStop,next,         REF_ROADSTOPS),
 	SLE_REF(RoadStop,prev,         REF_ROADSTOPS),
