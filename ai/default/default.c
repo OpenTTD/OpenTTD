@@ -3394,8 +3394,8 @@ static void AiStateBuildDefaultAirportBlocks(Player *p)
 					!IsTileType(aib->use_tile, MP_STATION)
 					) {
 
-				_m[aib->use_tile].type_height = 0xa1;
-				_m[aib->use_tile].m5 = 0x80;
+				SetTileHeight(aib->use_tile, 1);
+				MakeCompanyHQ(aib->use_tile, _current_player);
 				MarkTileDirtyByTile(aib->use_tile);
 			}
 #endif
