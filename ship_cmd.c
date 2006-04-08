@@ -913,7 +913,7 @@ int32 CmdSellShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
-	if (!IsTileDepotType(v->tile, TRANSPORT_WATER) || v->u.road.state != 0x80 || !(v->vehstatus&VS_STOPPED))
+	if (!IsTileDepotType(v->tile, TRANSPORT_WATER) || v->u.ship.state != 0x80 || !(v->vehstatus&VS_STOPPED))
 		return_cmd_error(STR_980B_SHIP_MUST_BE_STOPPED_IN);
 
 	if (flags & DC_EXEC) {
