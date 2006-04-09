@@ -235,7 +235,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			ret = true;
 			break;
 
-		case 0x09: /* Speed */
+		case 0x09: /* Speed (1 unit is 1 kmh) */
 			FOR_EACH_OBJECT {
 				uint16 speed = grf_load_word(&buf);
 				if (speed == 0xFFFF) speed = 0;
@@ -458,8 +458,8 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 	bool ret = false;
 
 	switch (prop) {
-		case 0x08: /* Speed */
-			FOR_EACH_OBJECT rvi[i].max_speed = grf_load_byte(&buf); // ?? units
+		case 0x08: /* Speed (1 unit is 0.5 kmh) */
+			FOR_EACH_OBJECT rvi[i].max_speed = grf_load_byte(&buf);
 			break;
 
 		case 0x09: /* Running cost factor */
@@ -588,8 +588,8 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT svi[i].base_cost = grf_load_byte(&buf); // ?? is it base_cost?
 			break;
 
-		case 0x0B: /* Speed */
-			FOR_EACH_OBJECT svi[i].max_speed = grf_load_byte(&buf); // ?? units
+		case 0x0B: /* Speed (1 unit is 0.5 kmh) */
+			FOR_EACH_OBJECT svi[i].max_speed = grf_load_byte(&buf);
 			break;
 
 		case 0x0C: /* Cargo type */
@@ -696,8 +696,8 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 			FOR_EACH_OBJECT avi[i].base_cost = grf_load_byte(&buf); // ?? is it base_cost?
 			break;
 
-		case 0x0C: /* Speed */
-			FOR_EACH_OBJECT avi[i].max_speed = grf_load_byte(&buf); // ?? units
+		case 0x0C: /* Speed (1 unit is 8 mph) */
+			FOR_EACH_OBJECT avi[i].max_speed = grf_load_byte(&buf);
 			break;
 
 		case 0x0D: /* Acceleration */
