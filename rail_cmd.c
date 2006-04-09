@@ -2011,7 +2011,6 @@ static const byte _deltacoord_leaveoffset[8] = {
 	-1,  0,  1,  0, /* x */
 	 0,  1,  0, -1  /* y */
 };
-static const byte _depot_track_mask[4] = {1, 2, 1, 2};
 
 static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 {
@@ -2058,8 +2057,7 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 			/* leave the depot? */
 			if ((v = v->next) != NULL) {
 				v->vehstatus &= ~VS_HIDDEN;
-				v->u.rail.track = _depot_track_mask[dir];
-				assert(v->u.rail.track);
+				v->u.rail.track = (DiagDirToAxis(dir) == AXIS_X ? 1 : 2);
 			}
 		}
 	}
