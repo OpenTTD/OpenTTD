@@ -548,6 +548,7 @@ void DeleteVehicle(Vehicle *v)
 		u = v->next;
 		has_artic_part = EngineHasArticPart(v);
 		DeleteName(v->string_id);
+		if (v->type == VEH_Road) ClearSlot(v);
 		v->type = 0;
 		UpdateVehiclePosHash(v, INVALID_COORD, 0);
 		v->next_hash = INVALID_VEHICLE;
