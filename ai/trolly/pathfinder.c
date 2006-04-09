@@ -234,7 +234,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 					if (IsTunnel(atile)) {
 						if (GetTunnelDirection(atile) != i) continue;
 					} else {
-						if (GetBridgeRampDirection(atile) != i) continue;
+						if ((_m[atile].m5 & 1U) != DiagDirToAxis(i)) continue;
 					}
 				}
 			}
