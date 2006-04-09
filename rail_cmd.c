@@ -1799,7 +1799,7 @@ static void TileLoop_Track(TileIndex tile)
 	byte old_ground;
 	byte new_ground;
 
-	if (GetRailType(tile) == RAIL_TYPE_DEPOT_WAYPOINT) {
+	if (GetRailTileType(tile) == RAIL_TYPE_DEPOT_WAYPOINT) {
 		old_ground = GB(_m[tile].m4, 0, 4);
 	} else {
 		old_ground = GB(_m[tile].m2, 0, 4);
@@ -1822,7 +1822,7 @@ static void TileLoop_Track(TileIndex tile)
 	}
 
 	// Don't continue tile loop for depots
-	if (GetRailType(tile) == RAIL_TYPE_DEPOT_WAYPOINT) return;
+	if (GetRailTileType(tile) == RAIL_TYPE_DEPOT_WAYPOINT) return;
 
 	new_ground = RAIL_GROUND_GREEN;
 
