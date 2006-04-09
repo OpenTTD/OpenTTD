@@ -92,7 +92,7 @@ void TrainPowerChanged(Vehicle* v)
 		if (IsBridgeTile(u->tile) && IsBridgeMiddle(u->tile) && DiagDirToAxis(DirToDiagDir(u->direction)) == GetBridgeAxis(u->tile)) {
 			if (!HasPowerOnRail(u->u.rail.railtype, GetRailTypeOnBridge(u->tile))) engine_has_power = false;
 			if (!HasPowerOnRail(v->u.rail.railtype, GetRailTypeOnBridge(u->tile))) wagon_has_power = false;
-		} else if (IsLevelCrossing(u->tile)) {
+		} else if (IsTileType(u->tile, MP_STREET) && IsLevelCrossing(u->tile)) {
 			if (!HasPowerOnRail(u->u.rail.railtype, GetRailTypeCrossing(u->tile)))	engine_has_power = false;
 			if (!HasPowerOnRail(v->u.rail.railtype, GetRailTypeCrossing(u->tile)))	wagon_has_power = false;
 		} else {
