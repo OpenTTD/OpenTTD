@@ -2143,15 +2143,14 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 				if (!(_patches.new_nonstop && v->current_order.flags & OF_NON_STOP) &&
 						v->current_order.type != OT_LEAVESTATION &&
 						v->last_station_visited != station_id) {
-					byte dir;
+					DiagDirection dir = DirToDiagDir(v->direction);
 
 					x &= 0xF;
 					y &= 0xF;
 
-					dir = v->direction & 6;
-					if (dir & 2) intswap(x,y);
+					if (DiagDirToAxis(dir) != AXIS_X) intswap(x, y);
 					if (y == 8) {
-						if (dir != 2 && dir != 4) x = ~x & 0xF;
+						if (dir != DIAGDIR_SE && dir != DIAGDIR_SW) x = ~x & 0xF;
 						if (x == 12) return 2 | (station_id << 8); /* enter station */
 						if (x < 12) {
 							uint16 spd;
