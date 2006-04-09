@@ -450,6 +450,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"VOLUME_S",        EmitEscapedByte, 17, 1, 0},
 	{"WEIGHT",          EmitEscapedByte, 18, 1, 0},
 	{"WEIGHT_S",        EmitEscapedByte, 19, 1, 0},
+	{"FORCE",           EmitEscapedByte, 20, 1, 0},
 
 	{"P", EmitPlural, 0, 0, C_DONTCOUNT},					// plural specifier
 	{"G", EmitGender, 0, 0, C_DONTCOUNT},					// gender specifier

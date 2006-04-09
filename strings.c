@@ -495,26 +495,33 @@ typedef struct Units {
 	int v_s;           ///< Shift for volume
 	StringID s_volume; ///< Short string for volume
 	StringID l_volume; ///< Long string for volume
+	int f_m;           ///< Multiplier for force
+	int f_s;           ///< Shift for force
+	StringID force;    ///< String for force
 } Units;
 
+/* Unit conversions */
 static const Units units[] = {
-	{ // Imperial (Original)
+	{ // Imperial (Original, mph, hp, metric ton, litre, metric ton force)
 		  10,  4, STR_UNITS_VELOCITY_IMPERIAL,
 		   1,  0, STR_UNITS_POWER_IMPERIAL,
 		   1,  0, STR_UNITS_WEIGHT_SHORT_METRIC, STR_UNITS_WEIGHT_LONG_METRIC,
 		1000,  0, STR_UNITS_VOLUME_SHORT_METRIC, STR_UNITS_VOLUME_LONG_METRIC,
+		 835, 13, STR_UNITS_FORCE_METRIC,
 	},
-	{ // Metric
+	{ // Metric (km/h, hp, metric ton, litre, metric ton force)
 		   1,  0, STR_UNITS_VELOCITY_METRIC,
 		   1,  0, STR_UNITS_POWER_METRIC,
 		   1,  0, STR_UNITS_WEIGHT_SHORT_METRIC, STR_UNITS_WEIGHT_LONG_METRIC,
 		1000,  0, STR_UNITS_VOLUME_SHORT_METRIC, STR_UNITS_VOLUME_LONG_METRIC,
+		 835, 13, STR_UNITS_FORCE_METRIC,
 	},
-	{ // SI
+	{ // SI (m/s, kilowatt, kilogram, cubic metres, kilonewton)
 		 284, 10, STR_UNITS_VELOCITY_SI,
 		 764, 10, STR_UNITS_POWER_SI,
 		1000,  0, STR_UNITS_WEIGHT_SHORT_SI, STR_UNITS_WEIGHT_LONG_SI,
 		   1,  0, STR_UNITS_VOLUME_SHORT_SI, STR_UNITS_VOLUME_LONG_SI,
+		   1,  0, STR_UNITS_FORCE_SI,
 	},
 };
 
@@ -721,6 +728,15 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 				assert(_opt_ptr->units < lengthof(units));
 				args[0] = GetInt32(&argv) * units[_opt_ptr->units].w_m >> units[_opt_ptr->units].w_s;
 				buff = FormatString(buff, GetStringPtr(units[_opt_ptr->units].s_weight), args, modifier >> 24);
+				modifier = 0;
+				break;
+			}
+
+			case 20: { // {FORCE}
+				int32 args[1];
+				assert(_opt_ptr->units < lengthof(units));
+				args[0] = GetInt32(&argv) * units[_opt_ptr->units].f_m >> units[_opt_ptr->units].f_s;
+				buff = FormatString(buff, GetStringPtr(units[_opt_ptr->units].force), args, modifier >> 24);
 				modifier = 0;
 				break;
 			}
