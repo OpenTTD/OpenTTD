@@ -218,11 +218,11 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 }
 
 /** Change the side of the road vehicles drive on (server only).
- * @param x,y unused
+ * @param tile unused
  * @param p1 the side of the road; 0 = left side and 1 = right side
  * @param p2 unused
  */
-int32 CmdSetRoadDriveSide(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdSetRoadDriveSide(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	/* Check boundaries and you can only change this if NO vehicles have been built yet,
 	 * except in the intro-menu where of course it's always possible to do so. */

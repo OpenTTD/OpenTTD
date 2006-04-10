@@ -272,27 +272,27 @@ void GetTileDesc(TileIndex tile, TileDesc *td)
 }
 
 /** Clear a piece of landscape
- * @param x,y coordinates of clearance
+ * @param tile tile to clear
  * @param p1 unused
  * @param p2 unused
  */
-int32 CmdLandscapeClear(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdLandscapeClear(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile = TileVirtXY(x, y);
-
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	return _tile_type_procs[GetTileType(tile)]->clear_tile_proc(tile, flags);
 }
 
 /** Clear a big piece of landscape
- * @param x,y end coordinates of area dragging
+ * @param tile end tile of area dragging
  * @param p1 start tile of area dragging
  * @param p2 unused
  */
-int32 CmdClearArea(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdClearArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	int32 cost, ret, money;
+	int ex;
+	int ey;
 	int sx,sy;
 	int x,y;
 	bool success = false;
@@ -302,6 +302,8 @@ int32 CmdClearArea(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	// make sure sx,sy are smaller than ex,ey
+	ex = TileX(tile) * TILE_SIZE;
+	ey = TileY(tile) * TILE_SIZE;
 	sx = TileX(p1) * TILE_SIZE;
 	sy = TileY(p1) * TILE_SIZE;
 	if (ex < sx) intswap(ex, sx);
@@ -312,7 +314,7 @@ int32 CmdClearArea(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 
 	for (x = sx; x <= ex; x += TILE_SIZE) {
 		for (y = sy; y <= ey; y += TILE_SIZE) {
-			ret = DoCommandByTile(TileVirtXY(x, y), 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
+			ret = DoCommand(TileVirtXY(x, y), 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
 			if (CmdFailed(ret)) continue;
 			cost += ret;
 			success = true;
@@ -322,7 +324,7 @@ int32 CmdClearArea(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 					_additional_cash_required = ret;
 					return cost - ret;
 				}
-				DoCommandByTile(TileVirtXY(x, y), 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+				DoCommand(TileVirtXY(x, y), 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 
 				// draw explosion animation...
 				if ((x == sx || x == ex) && (y == sy || y == ey)) {

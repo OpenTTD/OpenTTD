@@ -124,14 +124,16 @@ void GenerateTrees(void)
 }
 
 /** Plant a tree.
- * @param x,y start tile of area-drag of tree plantation
+ * @param tile start tile of area-drag of tree plantation
  * @param p1 tree type, -1 means random.
  * @param p2 end tile of area-drag
  */
-int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	StringID msg = INVALID_STRING_ID;
 	int32 cost;
+	int ex;
+	int ey;
 	int sx, sy, x, y;
 
 	if (p2 >= MapSize()) return CMD_ERROR;
@@ -141,10 +143,10 @@ int32 CmdPlantTree(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 
 	// make sure sx,sy are smaller than ex,ey
+	ex = TileX(tile);
+	ey = TileY(tile);
 	sx = TileX(p2);
 	sy = TileY(p2);
-	ex /= TILE_SIZE;
-	ey /= TILE_SIZE;
 	if (ex < sx) intswap(ex, sx);
 	if (ey < sy) intswap(ey, sy);
 

@@ -15,11 +15,11 @@
 #include "variables.h"
 
 /** Change the player's face.
- * @param x,y unused
+ * @param tile unused
  * @param p1 unused
  * @param p2 face bitmasked
  */
-int32 CmdSetPlayerFace(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdSetPlayerFace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (flags & DC_EXEC) {
 		GetPlayer(_current_player)->face = p2;
@@ -29,11 +29,11 @@ int32 CmdSetPlayerFace(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Change the player's company-colour
- * @param x,y unused
+ * @param tile unused
  * @param p1 unused
  * @param p2 new colour for vehicles, property, etc.
  */
-int32 CmdSetPlayerColor(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdSetPlayerColor(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p, *pp;
 	byte colour;
@@ -58,11 +58,11 @@ int32 CmdSetPlayerColor(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Increase the loan of your company.
- * @param x,y unused
+ * @param tile unused
  * @param p1 unused
  * @param p2 when set, loans the maximum amount in one go (press CTRL)
  */
-int32 CmdIncreaseLoan(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
 
@@ -87,11 +87,11 @@ int32 CmdIncreaseLoan(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Decrease the loan of your company.
- * @param x,y unused
+ * @param tile unused
  * @param p1 unused
  * @param p2 when set, pays back the maximum loan permitting money (press CTRL)
  */
-int32 CmdDecreaseLoan(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdDecreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
 	int32 loan;
@@ -127,11 +127,11 @@ int32 CmdDecreaseLoan(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Change the name of the company.
- * @param x,y unused
+ * @param tile unused
  * @param p1 unused
  * @param p2 unused
  */
-int32 CmdChangeCompanyName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdChangeCompanyName(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	StringID str;
 	Player *p;
@@ -153,11 +153,11 @@ int32 CmdChangeCompanyName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Change the name of the president.
- * @param x,y unused
+ * @param tile unused
  * @param p1 unused
  * @param p2 unused
  */
-int32 CmdChangePresidentName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdChangePresidentName(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	StringID str;
 	Player *p;
@@ -177,7 +177,7 @@ int32 CmdChangePresidentName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 			snprintf(buf, lengthof(buf), "%s Transport", _cmd_text);
 			_cmd_text = buf;
-			DoCommandByTile(0, 0, 0, DC_EXEC, CMD_CHANGE_COMPANY_NAME);
+			DoCommand(0, 0, 0, DC_EXEC, CMD_CHANGE_COMPANY_NAME);
 		}
 		MarkWholeScreenDirty();
 	} else
@@ -190,11 +190,11 @@ int32 CmdChangePresidentName(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  * Increase or decrease the pause counter. If the counter is zero,
  * the game is unpaused. A counter is used instead of a boolean value
  * to have more control over the game when saving/loading, etc.
- * @param x,y unused
+ * @param tile unused
  * @param p1 0 = decrease pause counter; 1 = increase pause counter
  * @param p2 unused
  */
-int32 CmdPause(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdPause(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (flags & DC_EXEC) {
 		_pause += (p1 == 1) ? 1 : -1;
@@ -208,11 +208,11 @@ int32 CmdPause(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 /** Change the financial flow of your company.
  * This is normally only enabled in offline mode, but if there is a debug
  * build, you can cheat (to test).
- * @param x,y unused
+ * @param tile unused
  * @param p1 the amount of money to receive (if negative), or spend (if positive)
  * @param p2 unused
  */
-int32 CmdMoneyCheat(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdMoneyCheat(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 #ifndef _DEBUG
 	if (_networking) return CMD_ERROR;
@@ -225,11 +225,11 @@ int32 CmdMoneyCheat(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  * To prevent abuse	in multiplayer games you can only send money to other
  * players if you have paid off your loan (either explicitely, or implicitely
  * given the fact that you have more money than loan).
- * @param x,y unused
+ * @param tile unused
  * @param p1 the amount of money to transfer; max 20.000.000
  * @param p2 the player to transfer the money to
  */
-int32 CmdGiveMoney(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdGiveMoney(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	const Player *p = GetPlayer(_current_player);
 	int32 amount = min((int32)p1, 20000000);
@@ -256,12 +256,12 @@ int32 CmdGiveMoney(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  * We cannot really check for valid values of p2 (too much work mostly); stored
  * in file 'settings_gui.c' _game_setting_info[]; we'll just trust the server it knows
  * what to do and does this correctly
- * @param x,y unused
+ * @param tile unused
  * @param p1 the difficulty setting being changed. If it is -1, the difficulty level
  *           itself is changed. The new value is inside p2
  * @param p2 new value for a difficulty setting or difficulty level
  */
-int32 CmdChangeDifficultyLevel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdChangeDifficultyLevel(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (p1 != (uint32)-1L && ((int32)p1 >= GAME_DIFFICULTY_NUM || (int32)p1 < 0)) return CMD_ERROR;
 

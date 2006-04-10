@@ -334,11 +334,11 @@ void EnginesDailyLoop(void)
 
 /** Accept an engine prototype. XXX - it is possible that the top-player
  * changes while you are waiting to accept the offer? Then it becomes invalid
- * @param x,y unused
+ * @param tile unused
  * @param p1 engine-prototype offered
  * @param p2 unused
  */
-int32 CmdWantEnginePreview(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdWantEnginePreview(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Engine *e;
 
@@ -445,11 +445,11 @@ void EnginesMonthlyLoop(void)
 }
 
 /** Rename an engine.
- * @param x,y unused
+ * @param tile unused
  * @param p1 engine ID to rename
  * @param p2 unused
  */
-int32 CmdRenameEngine(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdRenameEngine(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	StringID str;
 

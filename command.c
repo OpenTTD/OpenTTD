@@ -13,7 +13,7 @@
 
 const char* _cmd_text = NULL;
 
-#define DEF_COMMAND(yyyy) int32 yyyy(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+#define DEF_COMMAND(yyyy) int32 yyyy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 DEF_COMMAND(CmdBuildRailroadTrack);
 DEF_COMMAND(CmdRemoveRailroadTrack);
@@ -315,21 +315,16 @@ bool IsValidCommand(uint cmd)
 
 byte GetCommandFlags(uint cmd) {return _command_proc_table[cmd & 0xFF].flags;}
 
-int32 DoCommandByTile(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
-{
-	return DoCommand(TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE, p1, p2, flags, procc);
-}
-
 
 static int _docommand_recursive;
 
-int32 DoCommand(int x, int y, uint32 p1, uint32 p2, uint32 flags, uint procc)
+int32 DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 {
 	int32 res;
 	CommandProc *proc;
 
 	/* Do not even think about executing out-of-bounds tile-commands */
-	if (TileVirtXY(x, y) >= MapSize()) {
+	if (tile >= MapSize()) {
 		_cmd_text = NULL;
 		return CMD_ERROR;
 	}
@@ -342,7 +337,7 @@ int32 DoCommand(int x, int y, uint32 p1, uint32 p2, uint32 flags, uint procc)
 
 	// only execute the test call if it's toplevel, or we're not execing.
 	if (_docommand_recursive == 1 || !(flags & DC_EXEC) || (flags & DC_FORCETEST) ) {
-		res = proc(x, y, flags&~DC_EXEC, p1, p2);
+		res = proc(tile, flags & ~DC_EXEC, p1, p2);
 		if (CmdFailed(res)) {
 			if (res & 0xFFFF) _error_message = res & 0xFFFF;
 			goto error;
@@ -362,7 +357,7 @@ int32 DoCommand(int x, int y, uint32 p1, uint32 p2, uint32 flags, uint procc)
 
 	/* Execute the command here. All cost-relevant functions set the expenses type
 	 * themselves with "SET_EXPENSES_TYPE(...);" at the beginning of the function */
-	res = proc(x, y, flags, p1, p2);
+	res = proc(tile, flags, p1, p2);
 	if (CmdFailed(res)) {
 		if (res & 0xFFFF) _error_message = res & 0xFFFF;
 error:
@@ -375,8 +370,8 @@ error:
 	if (--_docommand_recursive == 0) {
 		SubtractMoneyFromPlayer(res);
 		// XXX - Old AI hack which doesn't use DoCommandDP; update last build coord of player
-		if ( (x|y) != 0 && _current_player < MAX_PLAYERS) {
-			GetPlayer(_current_player)->last_build_coordinate = TileVirtXY(x, y);
+		if (tile != 0 && _current_player < MAX_PLAYERS) {
+			GetPlayer(_current_player)->last_build_coordinate = tile;
 		}
 	}
 
@@ -457,7 +452,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	// cost estimation only?
 	if (_shift_pressed && IsLocalPlayer() && !(cmd & (CMD_NETWORK_COMMAND | CMD_SHOW_NO_ERROR))) {
 		// estimate the cost.
-		res = proc(x, y, flags, p1, p2);
+		res = proc(tile, flags, p1, p2);
 		if (CmdFailed(res)) {
 			if (res & 0xFFFF) _error_message = res & 0xFFFF;
 			ShowErrorMessage(_error_message, error_part1, x, y);
@@ -473,7 +468,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 
 	if (!((cmd & CMD_NO_TEST_IF_IN_NETWORK) && _networking)) {
 		// first test if the command can be executed.
-		res = proc(x,y, flags, p1, p2);
+		res = proc(tile, flags, p1, p2);
 		if (CmdFailed(res)) {
 			if (res & 0xFFFF) _error_message = res & 0xFFFF;
 			goto show_error;
@@ -505,7 +500,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	/* Actually try and execute the command. If no cost-type is given
 	 * use the construction one */
 	_yearly_expenses_type = EXPENSES_CONSTRUCTION;
-	res2 = proc(x,y, flags|DC_EXEC, p1, p2);
+	res2 = proc(tile, flags|DC_EXEC, p1, p2);
 
 	// If notest is on, it means the result of the test can be different than
 	//   the real command.. so ignore the test

@@ -96,7 +96,7 @@ int32 AI_DoCommand(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 		tmp_cmdtext = strdup(_cmd_text);
 
 	/* First, do a test-run to see if we can do this */
-	res = DoCommandByTile(tile, p1, p2, flags & ~DC_EXEC, procc);
+	res = DoCommand(tile, p1, p2, flags & ~DC_EXEC, procc);
 	/* The command failed, or you didn't want to execute, or you are quering, return */
 	if ((CmdFailed(res)) || !(flags & DC_EXEC) || (flags & DC_QUERY_COST)) {
 		if (tmp_cmdtext != NULL)

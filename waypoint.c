@@ -163,16 +163,15 @@ void UpdateAllWaypointCustomGraphics(void)
 
 /** Convert existing rail to waypoint. Eg build a waypoint station over
  * piece of rail
- * @param x,y coordinates where waypoint will be built
+ * @param tile tile where waypoint will be built
  * @param p1 graphics for waypoint type, 0 indicates standard graphics
  * @param p2 unused
  *
  * @todo When checking for the tile slope,
  * distingush between "Flat land required" and "land sloped in wrong direction"
  */
-int32 CmdBuildTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile = TileVirtXY(x, y);
 	Waypoint *wp;
 	uint tileh;
 	Axis axis;
@@ -311,23 +310,22 @@ int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 }
 
 /** Delete a waypoint
- * @param x,y coordinates where waypoint is to be deleted
+ * @param tile tile where waypoint is to be deleted
  * @param p1 unused
  * @param p2 unused
  */
-int32 CmdRemoveTrainWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdRemoveTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile = TileVirtXY(x, y);
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 	return RemoveTrainWaypoint(tile, flags, true);
 }
 
 /** Rename a waypoint.
- * @param x,y unused
+ * @param tile unused
  * @param p1 id of waypoint
  * @param p2 unused
  */
-int32 CmdRenameWaypoint(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdRenameWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Waypoint *wp;
 	StringID str;

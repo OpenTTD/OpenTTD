@@ -104,11 +104,11 @@ static SignStruct *AllocateSign(void)
 /** Place a sign at the given coordinates. Ownership of sign has
  * no effect whatsoever except for the colour the sign gets for easy recognition,
  * but everybody is able to rename/remove it.
- * @param x,y coordinates to place sign at
+ * @param tile tile to place sign at
  * @param p1 unused
  * @param p2 unused
  */
-int32 CmdPlaceSign(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	SignStruct *ss;
 
@@ -118,6 +118,9 @@ int32 CmdPlaceSign(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	/* When we execute, really make the sign */
 	if (flags & DC_EXEC) {
+		int x = TileX(tile) * TILE_SIZE;
+		int y = TileY(tile) * TILE_SIZE;
+
 		ss->str = STR_280A_SIGN;
 		ss->x = x;
 		ss->y = y;
@@ -136,11 +139,11 @@ int32 CmdPlaceSign(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 /** Rename a sign. If the new name of the sign is empty, we assume
  * the user wanted to delete it. So delete it. Ownership of signs
  * has no meaning/effect whatsoever except for eyecandy
- * @param x,y unused
+ * @param tile unused
  * @param p1 index of the sign to be renamed/removed
  * @param p2 unused
  */
-int32 CmdRenameSign(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (!IsSignIndex(p1)) return CMD_ERROR;
 

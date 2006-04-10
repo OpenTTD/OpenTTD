@@ -471,8 +471,8 @@ static bool IsRoadAllowedHere(TileIndex tile, int dir)
 			// No, try to build one in the direction.
 			// if that fails clear the land, and if that fails exit.
 			// This is to make sure that we can build a road here later.
-			if (CmdFailed(DoCommandByTile(tile, (dir & 1 ? ROAD_X : ROAD_Y), 0, DC_AUTO, CMD_BUILD_ROAD)) &&
-					CmdFailed(DoCommandByTile(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR)))
+			if (CmdFailed(DoCommand(tile, (dir & 1 ? ROAD_X : ROAD_Y), 0, DC_AUTO, CMD_BUILD_ROAD)) &&
+					CmdFailed(DoCommand(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR)))
 				return false;
 		}
 
@@ -500,10 +500,10 @@ no_slope:
 				int32 res;
 
 				if (CHANCE16I(1, 16, r)) {
-					res = DoCommandByTile(tile, slope, 0, DC_EXEC | DC_AUTO | DC_NO_WATER,
+					res = DoCommand(tile, slope, 0, DC_EXEC | DC_AUTO | DC_NO_WATER,
 					                      CMD_TERRAFORM_LAND);
 				} else {
-					res = DoCommandByTile(tile, slope^0xF, 1, DC_EXEC | DC_AUTO | DC_NO_WATER,
+					res = DoCommand(tile, slope ^ 0xF, 1, DC_EXEC | DC_AUTO | DC_NO_WATER,
 					                      CMD_TERRAFORM_LAND);
 				}
 				if (CmdFailed(res) && CHANCE16I(1, 3, r)) {
@@ -523,9 +523,9 @@ static bool TerraformTownTile(TileIndex tile, int edges, int dir)
 
 	TILE_ASSERT(tile);
 
-	r = DoCommandByTile(tile, edges, dir, DC_AUTO | DC_NO_WATER, CMD_TERRAFORM_LAND);
+	r = DoCommand(tile, edges, dir, DC_AUTO | DC_NO_WATER, CMD_TERRAFORM_LAND);
 	if (CmdFailed(r) || r >= 126 * 16) return false;
-	DoCommandByTile(tile, edges, dir, DC_AUTO | DC_NO_WATER | DC_EXEC, CMD_TERRAFORM_LAND);
+	DoCommand(tile, edges, dir, DC_AUTO | DC_NO_WATER | DC_EXEC, CMD_TERRAFORM_LAND);
 	return true;
 }
 
@@ -654,7 +654,7 @@ static void GrowTownInTile(TileIndex* tile_ptr, RoadBits mask, int block, Town* 
 
 		default:
 build_road_and_exit:
-			if (!CmdFailed(DoCommandByTile(tile, rcmd, t1->index, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD))) {
+			if (!CmdFailed(DoCommand(tile, rcmd, t1->index, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD))) {
 				_grow_town_result = -1;
 			}
 			return;
@@ -681,7 +681,7 @@ build_road_and_exit:
 		do {
 			byte bridge_type = RandomRange(MAX_BRIDGES - 1);
 			if (CheckBridge_Stuff(bridge_type, bridge_len)) {
-				if (!CmdFailed(DoCommandByTile(tile, tmptile, 0x8000 + bridge_type, DC_EXEC | DC_AUTO, CMD_BUILD_BRIDGE)))
+				if (!CmdFailed(DoCommand(tile, tmptile, 0x8000 + bridge_type, DC_EXEC | DC_AUTO, CMD_BUILD_BRIDGE)))
 					_grow_town_result = -1;
 
 				// obviously, if building any bridge would fail, there is no need to try other bridge-types
@@ -795,8 +795,8 @@ static bool GrowTown(Town *t)
 		// Only work with plain land that not already has a house with GetHouseConstructionTick=0
 		if ((!IsTileType(tile, MP_HOUSE) || GetHouseConstructionTick(tile) != 0) &&
 				GetTileSlope(tile, NULL) == 0) {
-			if (!CmdFailed(DoCommandByTile(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR))) {
-				DoCommandByTile(tile, GenRandomRoadBits(), t->index, DC_EXEC | DC_AUTO, CMD_BUILD_ROAD);
+			if (!CmdFailed(DoCommand(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR))) {
+				DoCommand(tile, GenRandomRoadBits(), t->index, DC_EXEC | DC_AUTO, CMD_BUILD_ROAD);
 				_current_player = old_player;
 				return true;
 			}
@@ -994,13 +994,12 @@ static Town *AllocateTown(void)
 /** Create a new town.
  * This obviously only works in the scenario editor. Function not removed
  * as it might be possible in the future to fund your own town :)
- * @param x,y coordinates where town is built
+ * @param tile coordinates where town is built
  * @param p1 unused
  * @param p2 unused
  */
-int32 CmdBuildTown(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile = TileVirtXY(x, y);
 	Town *t;
 	uint32 townnameparts;
 
@@ -1114,7 +1113,7 @@ static bool CheckBuildHouseMode(TileIndex tile, uint tileh, int mode)
 	if (b)
 		return false;
 
-	return !CmdFailed(DoCommandByTile(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR));
+	return !CmdFailed(DoCommand(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR));
 }
 
 int GetTownRadiusGroup(const Town *t, TileIndex tile)
@@ -1151,7 +1150,7 @@ static bool CheckFree2x2Area(TileIndex tile)
 
 		if (GetTileSlope(tile, NULL)) return false;
 
-		if (CmdFailed(DoCommandByTile(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER | DC_FORCETEST, CMD_LANDSCAPE_CLEAR)))
+		if (CmdFailed(DoCommand(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER | DC_FORCETEST, CMD_LANDSCAPE_CLEAR)))
 			return false;
 	}
 
@@ -1286,7 +1285,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 	if (!EnsureNoVehicle(tile)) return false;
 	if (GetTileSlope(tile, NULL) & 0x10) return false;
 
-	r = DoCommandByTile(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR);
+	r = DoCommand(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(r)) return false;
 
 	DoBuildTownHouse(t, tile);
@@ -1358,11 +1357,11 @@ static void ClearTownHouse(Town *t, TileIndex tile)
 }
 
 /** Rename a town (server-only).
- * @param x,y unused
+ * @param tile unused
  * @param p1 town ID to rename
  * @param p2 unused
  */
-int32 CmdRenameTown(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdRenameTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	StringID str;
 	Town *t;
@@ -1410,14 +1409,14 @@ void DeleteTown(Town *t)
 		switch (GetTileType(tile)) {
 			case MP_HOUSE:
 				if (GetTownByTile(tile) == t)
-					DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+					DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 				break;
 
 			case MP_STREET:
 			case MP_TUNNELBRIDGE:
 				if (IsTileOwner(tile, OWNER_TOWN) &&
 						ClosestTownFromTile(tile, (uint)-1) == t)
-					DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+					DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 				break;
 
 			default:
@@ -1499,7 +1498,7 @@ static bool DoBuildStatueOfCompany(TileIndex tile)
 
 	old = _current_player;
 	_current_player = OWNER_NONE;
-	r = DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+	r = DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 	_current_player = old;
 
 	if (CmdFailed(r)) return false;
@@ -1611,11 +1610,11 @@ extern uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t);
 /** Do a town action.
  * This performs an action such as advertising, building a statue, funding buildings,
  * but also bribing the town-council
- * @param x,y unused
+ * @param tile unused
  * @param p1 town to do the action at
  * @param p2 action to perform, @see _town_action_proc for the list of available actions
  */
-int32 CmdDoTownAction(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdDoTownAction(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	int32 cost;
 	Town *t;

@@ -88,7 +88,7 @@ static void ShipRefitWndProc(Window *w, WindowEvent *e)
 		WP(w,refit_d).cargo = DrawVehicleRefitWindow(v, WP(w, refit_d).sel);;
 
 		if (WP(w,refit_d).cargo != CT_INVALID) {
-			int32 cost = DoCommandByTile(v->tile, v->index, WP(w,refit_d).cargo, DC_QUERY_COST, CMD_REFIT_SHIP);
+			int32 cost = DoCommand(v->tile, v->index, WP(w,refit_d).cargo, DC_QUERY_COST, CMD_REFIT_SHIP);
 			if (!CmdFailed(cost)) {
 				SetDParam(2, cost);
 				SetDParam(0, _cargoc.names_long[WP(w,refit_d).cargo]);

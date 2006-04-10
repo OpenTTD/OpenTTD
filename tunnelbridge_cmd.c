@@ -170,17 +170,19 @@ bool CheckBridge_Stuff(byte bridge_type, uint bridge_len)
 }
 
 /** Build a Bridge
- * @param x,y end tile coord
+ * @param end_tile end tile
  * @param p1 packed start tile coords (~ dx)
  * @param p2 various bitstuffed elements
  * - p2 = (bit 0- 7) - bridge type (hi bh)
  * - p2 = (bit 8-..) - rail type. bit15 ((x>>8)&0x80) means road bridge.
  */
-int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	int bridge_type;
 	TransportType transport;
 	RailType railtype;
+	int x;
+	int y;
 	int sx,sy;
 	TileIndex tile_start;
 	TileIndex tile_end;
@@ -214,6 +216,8 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		transport = TRANSPORT_RAIL;
 	}
 
+	x = TileX(end_tile) * TILE_SIZE;
+	y = TileY(end_tile) * TILE_SIZE;
 	sx = TileX(p1) * TILE_SIZE;
 	sy = TileY(p1) * TILE_SIZE;
 
@@ -268,7 +272,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Try and clear the start landscape */
 
-	ret = DoCommandByTile(tile_start, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	ret = DoCommand(tile_start, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return ret;
 	cost = ret;
 
@@ -280,7 +284,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Try and clear the end landscape */
 
-	ret = DoCommandByTile(tile_end, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	ret = DoCommand(tile_end, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return ret;
 	cost += ret;
 
@@ -352,7 +356,7 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			default:
 not_valid_below:;
 				/* try and clear the middle landscape */
-				ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+				ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 				if (CmdFailed(ret)) return ret;
 				cost += ret;
 				transport_under = INVALID_TRANSPORT;
@@ -425,14 +429,13 @@ not_valid_below:;
 
 
 /** Build Tunnel.
- * @param x,y start tile coord of tunnel
+ * @param tile start tile of tunnel
  * @param p1 railtype, 0x200 for road tunnel
  * @param p2 unused
  */
-int32 CmdBuildTunnel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileIndexDiff delta;
-	TileIndex start_tile;
 	TileIndex end_tile;
 	DiagDirection direction;
 	uint start_tileh;
@@ -446,7 +449,6 @@ int32 CmdBuildTunnel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (p1 != 0x200 && !ValParamRailtype(p1)) return CMD_ERROR;
 
-	start_tile = TileVirtXY(x, y);
 	start_tileh = GetTileSlope(start_tile, &start_z);
 
 	switch (start_tileh) {
@@ -457,7 +459,7 @@ int32 CmdBuildTunnel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		default: return_cmd_error(STR_500B_SITE_UNSUITABLE_FOR_TUNNEL);
 	}
 
-	ret = DoCommandByTile(start_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	ret = DoCommand(start_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return ret;
 	cost = _price.build_tunnel + ret;
 
@@ -483,10 +485,10 @@ int32 CmdBuildTunnel(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	// slope of end tile must be complementary to the slope of the start tile
 	if (end_tileh != (15 ^ start_tileh)) {
-		ret = DoCommandByTile(end_tile, end_tileh & start_tileh, 0, flags, CMD_TERRAFORM_LAND);
+		ret = DoCommand(end_tile, end_tileh & start_tileh, 0, flags, CMD_TERRAFORM_LAND);
 		if (CmdFailed(ret)) return_cmd_error(STR_5005_UNABLE_TO_EXCAVATE_LAND);
 	} else {
-		ret = DoCommandByTile(end_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+		ret = DoCommand(end_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 		if (CmdFailed(ret)) return ret;
 	}
 	cost += _price.build_tunnel + ret;
@@ -1297,7 +1299,7 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, PlayerID old_player, Pl
 				SetTileOwner(tile, OWNER_NONE);
 			}
 		} else {
-			DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+			DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 		}
 	}
 }

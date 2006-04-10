@@ -1030,7 +1030,7 @@ static void ChopLumberMillTrees(Industry *i)
 					_industry_sound_tile = tile;
 					SndPlayTileFx(SND_38_CHAINSAW, tile);
 
-					DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+					DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 					SetTropicZone(tile, TROPICZONE_INVALID);
 
 					i->cargo_waiting[0] = min(0xffff, i->cargo_waiting[0] + 45);
@@ -1348,7 +1348,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable*
 					}
 				} else {
 do_clear:
-					if (CmdFailed(DoCommandByTile(cur_tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR)))
+					if (CmdFailed(DoCommand(cur_tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR)))
 						return false;
 				}
 			}
@@ -1474,7 +1474,7 @@ static void DoCreateNewIndustry(Industry* i, TileIndex tile, int type, const Ind
 			size = it->ti.y;
 			if (size > i->height)i->height = size;
 
-			DoCommandByTile(cur_tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+			DoCommand(cur_tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 
 			MakeIndustry(cur_tile, i->index, it->gfx);
 			if (_generating_world) _m[cur_tile].m1 = 0x1E; /* maturity */
@@ -1499,15 +1499,14 @@ static void DoCreateNewIndustry(Industry* i, TileIndex tile, int type, const Ind
 }
 
 /** Build/Fund an industry
- * @param x,y coordinates where industry is built
+ * @param tile tile where industry is built
  * @param p1 industry type @see build_industry.h and @see industry.h
  * @param p2 unused
  */
-int32 CmdBuildIndustry(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	const Town* t;
 	Industry *i;
-	TileIndex tile = TileVirtXY(x, y);
 	int num;
 	const IndustryTileTable * const *itt;
 	const IndustryTileTable *it;

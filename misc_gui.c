@@ -147,7 +147,7 @@ static void Place_LandInfo(TileIndex tile)
 
 	old_money = p->money64;
 	p->money64 = p->player_money = 0x7fffffff;
-	lid.costclear = DoCommandByTile(tile, 0, 0, 0, CMD_LANDSCAPE_CLEAR);
+	lid.costclear = DoCommand(tile, 0, 0, 0, CMD_LANDSCAPE_CLEAR);
 	p->money64 = old_money;
 	UpdatePlayerMoney32(p);
 

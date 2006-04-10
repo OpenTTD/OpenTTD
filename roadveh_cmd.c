@@ -101,16 +101,15 @@ static int32 EstimateRoadVehCost(EngineID engine_type)
 }
 
 /** Build a road vehicle.
- * @param x,y tile coordinates of depot where road vehicle is built
+ * @param tile tile of depot where road vehicle is built
  * @param p1 bus/truck type being built (engine)
  * @param p2 unused
  */
-int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	int32 cost;
 	Vehicle *v;
 	UnitID unit_num;
-	TileIndex tile = TileVirtXY(x, y);
 	Engine *e;
 
 	if (!IsEngineBuildable(p1, VEH_Road)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
@@ -135,6 +134,9 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 	if (flags & DC_EXEC) {
+		int x;
+		int y;
+
 		const RoadVehicleInfo *rvi = RoadVehInfo(p1);
 
 		v->unitnumber = unit_num;
@@ -200,11 +202,11 @@ int32 CmdBuildRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Start/Stop a road vehicle.
- * @param x,y unused
+ * @param tile unused
  * @param p1 road vehicle ID to start/stop
  * @param p2 unused
  */
-int32 CmdStartStopRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdStartStopRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
@@ -242,11 +244,11 @@ void ClearSlot(Vehicle *v)
 }
 
 /** Sell a road vehicle.
- * @param x,y unused
+ * @param tile unused
  * @param p1 vehicle ID to be sold
  * @param p2 unused
  */
-int32 CmdSellRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdSellRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
@@ -342,11 +344,11 @@ static const Depot* FindClosestRoadDepot(const Vehicle* v)
 }
 
 /** Send a road vehicle to the depot.
- * @param x,y unused
+ * @param tile unused
  * @param p1 vehicle ID to send to the depot
  * @param p2 unused
  */
-int32 CmdSendRoadVehToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	const Depot *dep;
@@ -390,11 +392,11 @@ int32 CmdSendRoadVehToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Turn a roadvehicle around.
- * @param x,y unused
+ * @param tile unused
  * @param p1 vehicle ID to turn
  * @param p2 unused
  */
-int32 CmdTurnRoadVeh(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 

@@ -1493,11 +1493,11 @@ void AgeVehicle(Vehicle *v)
 }
 
 /** Clone a vehicle. If it is a train, it will clone all the cars too
-* @param x,y depot where the cloned vehicle is build
+* @param tile tile of the depot where the cloned vehicle is build
 * @param p1 the original vehicle's index
 * @param p2 1 = shared orders, else copied orders
 */
-int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v_front, *v;
 	Vehicle *w_front, *w, *w_rear;
@@ -1544,7 +1544,7 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			continue;
 		}
 
-		cost = DoCommand(x, y, v->engine_type, 1, flags, CMD_BUILD_VEH(v->type));
+		cost = DoCommand(tile, v->engine_type, 1, flags, CMD_BUILD_VEH(v->type));
 
 		if (CmdFailed(cost)) return cost;
 
@@ -1557,18 +1557,18 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				if (v->cargo_type != w->cargo_type) {
 					// we can't pay for refitting because we can't estimate refitting costs for a vehicle before it's build
 					// if we pay for it anyway, the cost and the estimated cost will not be the same and we will have an assert
-					DoCommand(x, y, w->index, v->cargo_type, flags, CMD_REFIT_VEH(v->type));
+					DoCommand(0, w->index, v->cargo_type, flags, CMD_REFIT_VEH(v->type));
 				}
 			}
 
 			if (v->type == VEH_Train && !IsFrontEngine(v)) {
 				// this s a train car
 				// add this unit to the end of the train
-				DoCommand(x, y, (w_rear->index << 16) | w->index, 1, flags, CMD_MOVE_RAIL_VEHICLE);
+				DoCommand(0, (w_rear->index << 16) | w->index, 1, flags, CMD_MOVE_RAIL_VEHICLE);
 			} else {
 				// this is a front engine or not a train. It need orders
 				w_front = w;
-				DoCommand(x, y, (v->index << 16) | w->index, p2 & 1 ? CO_SHARE : CO_COPY, flags, CMD_CLONE_ORDER);
+				DoCommand(0, (v->index << 16) | w->index, p2 & 1 ? CO_SHARE : CO_COPY, flags, CMD_CLONE_ORDER);
 			}
 			w_rear = w;	// trains needs to know the last car in the train, so they can add more in next loop
 		}
@@ -1633,7 +1633,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 	new_engine_type = EngineReplacementForPlayer(p, old_v->engine_type);
 	if (new_engine_type == INVALID_ENGINE) new_engine_type = old_v->engine_type;
 
-	cost = DoCommand(old_v->x_pos, old_v->y_pos, new_engine_type, 1, flags, CMD_BUILD_VEH(old_v->type));
+	cost = DoCommand(old_v->tile, new_engine_type, 1, flags, CMD_BUILD_VEH(old_v->type));
 	if (CmdFailed(cost)) return cost;
 
 	if (flags & DC_EXEC) {
@@ -1646,7 +1646,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 				// we add the refit cost to cost, so it's added to the cost animation
 				// it's not in the calculation of having enough money to actually do the replace since it's rather hard to do by design, but since
 				// we pay for it, it's nice to make the cost animation include it
-				int32 temp_cost = DoCommand(0, 0, new_v->index, old_v->cargo_type, DC_EXEC, CMD_REFIT_VEH(new_v->type));
+				int32 temp_cost = DoCommand(0, new_v->index, old_v->cargo_type, DC_EXEC, CMD_REFIT_VEH(new_v->type));
 				if (!CmdFailed(temp_cost)) cost += temp_cost;
 			}
 		}
@@ -1657,12 +1657,12 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 			 * We add the new engine after the old one instead of replacing it. It will give the same result anyway when we
 			 * sell the old engine in a moment
 			 */
-			DoCommand(0, 0, (GetPrevVehicleInChain(old_v)->index << 16) | new_v->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+			DoCommand(0, (GetPrevVehicleInChain(old_v)->index << 16) | new_v->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 			/* Now we move the old one out of the train */
-			DoCommand(0, 0, (INVALID_VEHICLE << 16) | old_v->index, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+			DoCommand(0, (INVALID_VEHICLE << 16) | old_v->index, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 		} else {
 			// copy/clone the orders
-			DoCommand(0, 0, (old_v->index << 16) | new_v->index, IsOrderListShared(old_v) ? CO_SHARE : CO_COPY, DC_EXEC, CMD_CLONE_ORDER);
+			DoCommand(0, (old_v->index << 16) | new_v->index, IsOrderListShared(old_v) ? CO_SHARE : CO_COPY, DC_EXEC, CMD_CLONE_ORDER);
 			new_v->cur_order_index = old_v->cur_order_index;
 			ChangeVehicleViewWindow(old_v, new_v);
 			new_v->profit_this_year = old_v->profit_this_year;
@@ -1680,7 +1680,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 				}
 
 				if (temp_v != NULL) {
-					DoCommand(0, 0, (new_v->index << 16) | temp_v->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+					DoCommand(0, (new_v->index << 16) | temp_v->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 				}
 			}
 		}
@@ -1696,7 +1696,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 	}
 
 	// sell the engine/ find out how much you get for the old engine
-	cost += DoCommand(0, 0, old_v->index, 0, flags, CMD_SELL_VEH(old_v->type));
+	cost += DoCommand(0, old_v->index, 0, flags, CMD_SELL_VEH(old_v->type));
 
 	if (new_front) {
 		// now we assign the old unitnumber to the new vehicle
@@ -1706,7 +1706,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 	// Transfer the name of the old vehicle.
 	if ((flags & DC_EXEC) && vehicle_name[0] != '\0') {
 		_cmd_text = vehicle_name;
-		DoCommand(0, 0, new_v->index, 0, DC_EXEC, CMD_NAME_VEHICLE);
+		DoCommand(0, new_v->index, 0, DC_EXEC, CMD_NAME_VEHICLE);
 	}
 
 	return cost;
@@ -1836,9 +1836,9 @@ static void MaybeReplaceVehicle(Vehicle *v)
 			}
 			temp = w;
 			w = GetNextVehicle(w);
-			DoCommand(0, 0, (INVALID_VEHICLE << 16) | temp->index, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+			DoCommand(0, (INVALID_VEHICLE << 16) | temp->index, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 			MoveVehicleCargo(v, temp);
-			cost += DoCommand(0, 0, temp->index, 0, flags, CMD_SELL_VEH(temp->type));
+			cost += DoCommand(0, temp->index, 0, flags, CMD_SELL_VEH(temp->type));
 		}
 	}
 
@@ -1850,11 +1850,11 @@ static void MaybeReplaceVehicle(Vehicle *v)
 
 
 /** Give a custom name to your vehicle
- * @param x,y unused
+ * @param tile unused
  * @param p1 vehicle ID to name
  * @param p2 unused
  */
-int32 CmdNameVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdNameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	StringID str;
@@ -1883,11 +1883,11 @@ int32 CmdNameVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 
 /** Change the service interval of a vehicle
- * @param x,y unused
+ * @param tile unused
  * @param p1 vehicle ID that is being service-interval-changed
  * @param p2 new service interval
  */
-int32 CmdChangeServiceInt(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdChangeServiceInt(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle* v;
 	uint16 serv_int = GetServiceIntervalClamped(p2); /* Double check the service interval from the user-input */

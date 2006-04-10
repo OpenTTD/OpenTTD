@@ -160,7 +160,7 @@ static void DeleteOrderWarnings(const Vehicle* v)
 
 
 /** Add an order to the orderlist of a vehicle.
- * @param x,y unused
+ * @param tile unused
  * @param p1 various bitstuffed elements
  * - p1 = (bit  0 - 15) - ID of the vehicle
  * - p1 = (bit 16 - 31) - the selected order (if any). If the last order is given,
@@ -168,7 +168,7 @@ static void DeleteOrderWarnings(const Vehicle* v)
  *                        only the first 8 bits used currently (bit 16 - 23) (max 255)
  * @param p2 packed order to insert
  */
-int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	VehicleID veh   = GB(p1,  0, 16);
@@ -427,11 +427,11 @@ static int32 DecloneOrder(Vehicle *dst, uint32 flags)
 }
 
 /** Delete an order from the orderlist of a vehicle.
- * @param x,y unused
+ * @param tile unused
  * @param p1 the ID of the vehicle
  * @param p2 the order to delete (max 255)
  */
-int32 CmdDeleteOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v, *u;
 	VehicleID veh_id = p1;
@@ -501,11 +501,11 @@ int32 CmdDeleteOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Goto next order of order-list.
- * @param x,y unused
+ * @param tile unused
  * @param p1 The ID of the vehicle which order is skipped
  * @param p2 unused
  */
-int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdSkipOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	VehicleID veh_id = p1;
@@ -542,7 +542,7 @@ int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 
 /** Modify an order in the orderlist of a vehicle.
- * @param x,y unused
+ * @param tile unused
  * @param p1 various bitstuffed elements
  * - p1 = (bit  0 - 15) - ID of the vehicle
  * - p1 = (bit 16 - 31) - the selected order (if any). If the last order is given,
@@ -550,7 +550,7 @@ int32 CmdSkipOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  *                        only the first 8 bits used currently (bit 16 - 23) (max 255)
  * @param p2 mode to change the order to (always set)
  */
-int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	Order *order;
@@ -617,7 +617,7 @@ int32 CmdModifyOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  * - p1 = (bit 16-31) - source vehicle to clone orders from, if any (none for CO_UNSHARE)
  * @param p2 mode of cloning: CO_SHARE, CO_COPY, or CO_UNSHARE
  */
-int32 CmdCloneOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *dst;
 	VehicleID veh_src = GB(p1, 16, 16);
@@ -821,7 +821,7 @@ void RestoreVehicleOrders(const Vehicle* v, const BackuppedOrders* bak)
 }
 
 /** Restore the current order-index of a vehicle and sets service-interval.
- * @param x,y unused
+ * @param tile unused
  * @param p1 the ID of the vehicle
  * @param p2 various bistuffed elements
  * - p2 = (bit  0-15) - current order-index (p2 & 0xFFFF)
@@ -833,7 +833,7 @@ void RestoreVehicleOrders(const Vehicle* v, const BackuppedOrders* bak)
  * If we do want to backup/restore it, just add UnitID uid to BackuppedOrders, and
  * restore it as parameter 'y' (ugly hack I know) for example. "v->unitnumber = y;"
  */
-int32 CmdRestoreOrderIndex(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdRestoreOrderIndex(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	OrderID cur_ord = GB(p2,  0, 16);

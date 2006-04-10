@@ -804,7 +804,7 @@ int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invali
 				}
 			}
 		} else {
-			ret = DoCommandByTile(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+			ret = DoCommand(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			if (CmdFailed(ret)) return ret;
 			cost += ret;
 		}
@@ -912,7 +912,7 @@ static void GetStationLayout(byte *layout, int numtracks, int plat_len, const St
 }
 
 /** Build railroad station
- * @param x,y starting position of station dragging/placement
+ * @param tile_org starting position of station dragging/placement
  * @param p1 various bitstuffed elements
  * - p1 = (bit  0)    - orientation (p1 & 1)
  * - p1 = (bit  8-15) - number of tracks
@@ -922,10 +922,9 @@ static void GetStationLayout(byte *layout, int numtracks, int plat_len, const St
  * - p2 = (bit  4)    - set for custom station (p2 & 0x10)
  * - p2 = (bit  8-..) - custom station id (p2 >> 8)
  */
-int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint32 p2)
 {
 	Station *st;
-	TileIndex tile_org;
 	int w_org, h_org;
 	int32 cost, ret;
 	StationID est;
@@ -934,8 +933,6 @@ int32 CmdBuildRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	uint finalvalues[3];
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-
-	tile_org = TileVirtXY(x, y);
 
 	/* Does the authority allow this? */
 	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile_org)) return CMD_ERROR;
@@ -1124,13 +1121,12 @@ restart:
 
 /** Remove a single tile from a railroad station.
  * This allows for custom-built station with holes and weird layouts
- * @param x,y tile coordinates to remove
+ * @param tile tile of station piece to remove
  * @param p1 unused
  * @param p2 unused
  */
-int32 CmdRemoveFromRailroadStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile = TileVirtXY(x, y);
 	Station *st;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
@@ -1196,7 +1192,7 @@ static int32 RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 
 	/* if there is flooding and non-uniform stations are enabled, remove platforms tile by tile */
 	if (_current_player == OWNER_WATER && _patches.nonuniform_stations)
-		return DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_REMOVE_FROM_RAILROAD_STATION);
+		return DoCommand(tile, 0, 0, DC_EXEC, CMD_REMOVE_FROM_RAILROAD_STATION);
 
 	/* Current player owns the station? */
 	if (_current_player != OWNER_WATER && !CheckOwnership(st->owner))
@@ -1284,17 +1280,16 @@ static void FindRoadStationSpot(bool truck_station, Station* st, RoadStop*** cur
 }
 
 /** Build a bus station
- * @param x,y coordinates to build bus station at
+ * @param tile tile to build bus station at
  * @param p1 entrance direction (DiagDirection)
  * @param p2 0 for Bus stops, 1 for truck stops
  */
-int32 CmdBuildRoadStop(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Station *st;
 	RoadStop *road_stop;
 	RoadStop **currstop;
 	RoadStop *prev = NULL;
-	TileIndex tile;
 	int32 cost;
 	int32 ret;
 	bool type = !!p2;
@@ -1303,8 +1298,6 @@ int32 CmdBuildRoadStop(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (p1 > 3) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-
-	tile = TileVirtXY(x, y);
 
 	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile))
 		return CMD_ERROR;
@@ -1500,13 +1493,12 @@ static const byte * const _airport_sections[] = {
 };
 
 /** Place an Airport.
- * @param x,y tile coordinates where airport will be built
+ * @param tile tile where airport will be built
  * @param p1 airport type, @see airport.h
  * @param p2 unused
  */
-int32 CmdBuildAirport(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile;
 	Town *t;
 	Station *st;
 	int32 cost;
@@ -1518,8 +1510,6 @@ int32 CmdBuildAirport(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Check if a valid, buildable airport was chosen for construction */
 	if (p1 > lengthof(_airport_sections) || !HASBIT(GetValidAirports(), p1)) return CMD_ERROR;
-
-	tile = TileVirtXY(x, y);
 
 	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile))
 		return CMD_ERROR;
@@ -1673,13 +1663,12 @@ static int32 RemoveAirport(Station *st, uint32 flags)
 }
 
 /** Build a buoy.
- * @param x,y tile coordinates of bouy construction
+ * @param tile tile where to place the bouy
  * @param p1 unused
  * @param p2 unused
  */
-int32 CmdBuildBuoy(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile = TileVirtXY(x, y);
 	Station *st;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
@@ -1774,13 +1763,12 @@ static const byte _dock_w_chk[4] = { 2,1,2,1 };
 static const byte _dock_h_chk[4] = { 1,2,1,2 };
 
 /** Build a dock/haven.
- * @param x,y tile coordinates where dock will be built
+ * @param tile tile where dock will be built
  * @param p1 unused
  * @param p2 unused
  */
-int32 CmdBuildDock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile = TileVirtXY(x, y);
 	TileIndex tile_cur;
 	DiagDirection direction;
 	int32 cost;
@@ -1798,7 +1786,7 @@ int32 CmdBuildDock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
-	cost = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	cost = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(cost)) return CMD_ERROR;
 
 	tile_cur = tile + TileOffsByDir(direction);
@@ -1809,7 +1797,7 @@ int32 CmdBuildDock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_304B_SITE_UNSUITABLE);
 	}
 
-	cost = DoCommandByTile(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	cost = DoCommand(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(cost)) return CMD_ERROR;
 
 	tile_cur = tile_cur + TileOffsByDir(direction);
@@ -2427,11 +2415,11 @@ static void UpdateStationWaiting(Station *st, int type, uint amount)
 }
 
 /** Rename a station
- * @param x,y unused
+ * @param tile unused
  * @param p1 station ID that is to be renamed
  * @param p2 unused
  */
-int32 CmdRenameStation(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdRenameStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	StringID str;
 	Station *st;
@@ -2672,7 +2660,7 @@ static void ChangeTileOwner_Station(TileIndex tile, PlayerID old_player, PlayerI
 		_global_station_sort_dirty = true; // transfer ownership of station to another player
 		InvalidateWindowClasses(WC_STATION_LIST);
 	} else {
-		DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+		DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 	}
 }
 

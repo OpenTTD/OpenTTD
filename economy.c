@@ -1531,11 +1531,11 @@ static void DoAcquireCompany(Player *p)
 extern int GetAmountOwnedBy(Player *p, byte owner);
 
 /** Acquire shares in an opposing company.
- * @param x,y unused
+ * @param tile unused
  * @param p1 player to buy the shares from
  * @param p2 unused
  */
-int32 CmdBuyShareInCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
 	int64 cost;
@@ -1576,11 +1576,11 @@ int32 CmdBuyShareInCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Sell shares in an opposing company.
- * @param x,y unused
+ * @param tile unused
  * @param p1 player to sell the shares from
  * @param p2 unused
  */
-int32 CmdSellShareInCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
 	int64 cost;
@@ -1611,11 +1611,11 @@ int32 CmdSellShareInCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  * When a competing company is gone bankrupt you get the chance to purchase
  * that company.
  * @todo currently this only works for AI players
- * @param x,y unused
+ * @param tile unused
  * @param p1 player/company to buy up
  * @param p2 unused
  */
-int32 CmdBuyCompany(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuyCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
 

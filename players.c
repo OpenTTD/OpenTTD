@@ -651,7 +651,7 @@ static void DeletePlayerStuff(PlayerID pi)
 }
 
 /** Change engine renewal parameters
- * @param x,y unused
+ * @param tile unused
  * @param p1 bits 0-3 command
  * - p1 = 0 - change auto renew bool
  * - p1 = 1 - change auto renew months
@@ -676,7 +676,7 @@ static void DeletePlayerStuff(PlayerID pi)
  * if p1 = 5, then
  * - p2 = enable renew_keep_length
  */
-int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdReplaceVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
 	if (!(_current_player < MAX_PLAYERS))
@@ -784,7 +784,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Control the players: add, delete, etc.
- * @param x,y unused
+ * @param tile unused
  * @param p1 various functionality
  * - p1 = 0 - create a new player, Which player (network) it will be is in p2
  * - p1 = 1 - create a new AI player
@@ -802,7 +802,7 @@ int32 CmdReplaceVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  * @arg - network_server.c:838 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)@n
  * @arg - network_client.c:536 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP) from where the map has been received
  */
-int32 CmdPlayerCtrl(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (flags & DC_EXEC) _current_player = OWNER_NONE;
 

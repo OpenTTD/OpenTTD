@@ -82,14 +82,13 @@ void UpdateCompanyHQ(Player *p, uint score)
 }
 
 /** Build or relocate the HQ. This depends if the HQ is already built or not
- * @param x,y the coordinates where the HQ will be built or relocated to
+ * @param tile tile where the HQ will be built or relocated to
  * @param p1 unused
  * @param p2 unused
  */
 extern int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, int *);
-int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuildCompanyHQ(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile = TileVirtXY(x, y);
 	Player *p = GetPlayer(_current_player);
 	int cost;
 	int32 ret;
@@ -219,7 +218,7 @@ static int32 ClearTile_Unmovable(TileIndex tile, byte flags)
 	}
 
 	if (IsOwnedLand(tile)) {
-		return DoCommandByTile(tile, 0, 0, flags, CMD_SELL_LAND_AREA);
+		return DoCommand(tile, 0, 0, flags, CMD_SELL_LAND_AREA);
 	}
 
 	// checks if you're allowed to remove unmovable things

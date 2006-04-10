@@ -169,6 +169,8 @@ enum {
 	CMD_OFFLINE = 0x2, /// the command cannot be executed in a multiplayer game; single-player only
 };
 
+typedef int32 CommandProc(TileIndex tile, uint32 flags, uint32 p1, uint32 p2);
+
 typedef struct Command {
 	CommandProc *proc;
 	byte flags;
@@ -189,8 +191,7 @@ static inline bool CmdFailed(int32 res)
 }
 
 /* command.c */
-int32 DoCommand(int x, int y, uint32 p1, uint32 p2, uint32 flags, uint procc);
-int32 DoCommandByTile(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc);
+int32 DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc);
 
 extern const char* _cmd_text; // Text, which gets sent with a command
 

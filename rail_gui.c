@@ -480,7 +480,7 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 	case WE_PLACE_PRESIZE: {
 		TileIndex tile = e->place.tile;
 
-		DoCommandByTile(tile, 0, 0, DC_AUTO, CMD_BUILD_TUNNEL);
+		DoCommand(tile, 0, 0, DC_AUTO, CMD_BUILD_TUNNEL);
 		VpSetPresizeRange(tile, _build_tunnel_endtile == 0 ? tile : _build_tunnel_endtile);
 	} break;
 

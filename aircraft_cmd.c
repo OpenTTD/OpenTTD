@@ -130,16 +130,15 @@ static int32 EstimateAircraftCost(EngineID engine_type)
 
 
 /** Build an aircraft.
- * @param x,y tile coordinates of depot where aircraft is built
+ * @param tile tile of depot where aircraft is built
  * @param p1 aircraft type being built (engine)
  * @param p2 unused
  */
-int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	int32 value;
 	Vehicle *vl[3], *v, *u, *w;
 	UnitID unit_num;
-	TileIndex tile = TileVirtXY(x, y);
 	const AircraftVehicleInfo *avi;
 	Engine *e;
 
@@ -166,6 +165,9 @@ int32 CmdBuildAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 	if (flags & DC_EXEC) {
+		uint x;
+		uint y;
+
 		v = vl[0];
 		u = vl[1];
 
@@ -322,11 +324,11 @@ static void DoDeleteAircraft(Vehicle *v)
 }
 
 /** Sell an aircraft.
- * @param x,y unused
+ * @param tile unused
  * @param p1 vehicle ID to be sold
  * @param p2 unused
  */
-int32 CmdSellAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdSellAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
@@ -351,11 +353,11 @@ int32 CmdSellAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Start/Stop an aircraft.
- * @param x,y unused
+ * @param tile unused
  * @param p1 aircraft ID to start/stop
  * @param p2 unused
  */
-int32 CmdStartStopAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdStartStopAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
@@ -384,14 +386,14 @@ int32 CmdStartStopAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Send an aircraft to the hangar.
- * @param x,y unused
+ * @param tile unused
  * @param p1 vehicle ID to send to the hangar
  * @param p2 various bitmasked elements
  * - p2 = 0      - aircraft goes to the depot and stays there (user command)
  * - p2 non-zero - aircraft will try to goto a depot, but not stop there (eg forced servicing)
  * - p2 (bit 17) - aircraft will try to goto a depot at the next airport
  */
-int32 CmdSendAircraftToHangar(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
@@ -447,12 +449,12 @@ int32 CmdSendAircraftToHangar(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 
 /** Refits an aircraft to the specified cargo type.
- * @param x,y unused
+ * @param tile unused
  * @param p1 vehicle ID of the aircraft to refit
  * @param p2 various bitstuffed elements
  * - p2 = (bit 0-7) - the new cargo type to refit to
  */
-int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	int pass, mail;

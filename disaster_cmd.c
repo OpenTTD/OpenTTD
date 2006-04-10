@@ -33,7 +33,7 @@ static void DisasterClearSquare(TileIndex tile)
 		case MP_HOUSE: {
 			PlayerID p = _current_player;
 			_current_player = OWNER_NONE;
-			DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+			DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 			_current_player = p;
 			break;
 		}

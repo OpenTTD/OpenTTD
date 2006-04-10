@@ -128,7 +128,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, byte bridge_type)
 
 	// only query bridge building possibility once, result is the same for all bridges!
 	// returns CMD_ERROR on failure, and price on success
-	ret = DoCommandByTile(end, start, (bridge_type << 8), DC_AUTO | DC_QUERY_COST, CMD_BUILD_BRIDGE);
+	ret = DoCommand(end, start, (bridge_type << 8), DC_AUTO | DC_QUERY_COST, CMD_BUILD_BRIDGE);
 
 	if (CmdFailed(ret)) {
 		errmsg = _error_message;

@@ -655,7 +655,7 @@ static void NormalizeTrainVehInDepot(const Vehicle* u)
 		if (v->type == VEH_Train && IsFreeWagon(v) &&
 				v->tile == u->tile &&
 				v->u.rail.track == 0x80) {
-			if (CmdFailed(DoCommandByTile(0, v->index | (u->index << 16), 1, DC_EXEC,
+			if (CmdFailed(DoCommand(0, v->index | (u->index << 16), 1, DC_EXEC,
 					CMD_MOVE_RAIL_VEHICLE)))
 				break;
 		}
@@ -696,18 +696,17 @@ static void AddRearEngineToMultiheadedTrain(Vehicle* v, Vehicle* u, bool buildin
 }
 
 /** Build a railroad vehicle.
- * @param x,y tile coordinates (depot) where rail-vehicle is built
+ * @param tile tile of the depot where rail-vehicle is built
  * @param p1 engine type id
  * @param p2 bit 0 prevents any free cars from being added to the train
  */
-int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	const RailVehicleInfo *rvi;
 	int value;
 	Vehicle *v;
 	UnitID unit_num;
 	Engine *e;
-	TileIndex tile = TileVirtXY(x, y);
 	uint num_vehicles;
 
 	/* Check if the engine-type is valid (for the player) */
@@ -748,17 +747,16 @@ int32 CmdBuildRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 		if (flags & DC_EXEC) {
-			DiagDirection dir;
+			DiagDirection dir = GetRailDepotDirection(tile);
+			int x = TileX(tile) * TILE_SIZE + _vehicle_initial_x_fract[dir];
+			int y = TileY(tile) * TILE_SIZE + _vehicle_initial_y_fract[dir];
 
 			v->unitnumber = unit_num;
-
-			dir = GetRailDepotDirection(tile);
-
 			v->direction = DiagDirToDir(dir);
 			v->tile = tile;
 			v->owner = _current_player;
-			v->x_pos = (x |= _vehicle_initial_x_fract[dir]);
-			v->y_pos = (y |= _vehicle_initial_y_fract[dir]);
+			v->x_pos = x;
+			v->y_pos = y;
 			v->z_pos = GetSlopeZ(x,y);
 			v->z_height = 6;
 			v->u.rail.track = 0x80;
@@ -938,13 +936,13 @@ static void NormaliseTrainConsist(Vehicle *v)
 }
 
 /** Move a rail vehicle around inside the depot.
- * @param x,y unused
+ * @param tile unused
  * @param p1 various bitstuffed elements
  * - p1 (bit  0 - 15) source vehicle index
  * - p1 (bit 16 - 31) what wagon to put the source wagon AFTER, XXX - INVALID_VEHICLE to make a new line
  * @param p2 (bit 0) move all vehicles following the source vehicle
  */
-int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	VehicleID s = GB(p1, 0, 16);
 	VehicleID d = GB(p1, 16, 16);
@@ -1171,7 +1169,7 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		 * To do this, CmdMoveRailVehicle must be called once more
 		 * we can't loop forever here because next time we reach this line we will have a front engine */
 		if (src_head != NULL && !IsFrontEngine(src_head) && IsTrainEngine(src_head)) {
-			CmdMoveRailVehicle(x, y, flags, src_head->index | (INVALID_VEHICLE << 16), 1);
+			CmdMoveRailVehicle(0, flags, src_head->index | (INVALID_VEHICLE << 16), 1);
 			src_head = NULL;	// don't do anything more to this train since the new call will do it
 		}
 
@@ -1210,11 +1208,11 @@ int32 CmdMoveRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Start/Stop a train.
- * @param x,y unused
+ * @param tile unused
  * @param p1 train to start/stop
  * @param p2 unused
  */
-int32 CmdStartStopTrain(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdStartStopTrain(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
@@ -1238,7 +1236,7 @@ int32 CmdStartStopTrain(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Sell a (single) train wagon/engine.
- * @param x,y unused
+ * @param tile unused
  * @param p1 the wagon/engine index
  * @param p2 the selling mode
  * - p2 = 0: only sell the single dragged wagon/engine (and any belonging rear-engines)
@@ -1247,7 +1245,7 @@ int32 CmdStartStopTrain(int x, int y, uint32 flags, uint32 p1, uint32 p2)
  * - p2 = 2: when selling attached locos, rearrange all vehicles after it to separate lines;
  *           all wagons of the same type will go on the same line. Used by the AI currently
  */
-int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v, *tmp, *first;
 	Vehicle *new_f = NULL;
@@ -1355,7 +1353,7 @@ int32 CmdSellRailWagon(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 				if (p2 == 2 && HASBIT(ori_subtype, Train_Front)) {
 					for (v = first; v != NULL; v = tmp) {
 						tmp = GetNextVehicle(v);
-						DoCommandByTile(v->tile, v->index | INVALID_VEHICLE << 16, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+						DoCommand(v->tile, v->index | INVALID_VEHICLE << 16, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 					}
 				}
 			}
@@ -1632,11 +1630,11 @@ static void ReverseTrainDirection(Vehicle *v)
 }
 
 /** Reverse train.
- * @param x,y unused
+ * @param tile unused
  * @param p1 train to reverse
  * @param p2 if true, reverse a unit in a train (needs to be in a depot)
  */
- int32 CmdReverseTrainDirection(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdReverseTrainDirection(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
@@ -1681,11 +1679,11 @@ static void ReverseTrainDirection(Vehicle *v)
 }
 
 /** Force a train through a red signal
- * @param x,y unused
+ * @param tile unused
  * @param p1 train to ignore the red signal
  * @param p2 unused
  */
-int32 CmdForceTrainProceed(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdForceTrainProceed(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
@@ -1701,11 +1699,11 @@ int32 CmdForceTrainProceed(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Refits a train to the specified cargo type.
- * @param x,y unused
+ * @param tile unused
  * @param p1 vehicle ID of the train to refit
  * @param p2 the new cargo type to refit to (p2 & 0xFF)
  */
-int32 CmdRefitRailVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	CargoID new_cid = GB(p2, 0, 8);
 	Vehicle *v;
@@ -1873,11 +1871,11 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 }
 
 /** Send a train to a depot
- * @param x,y unused
+ * @param tile unused
  * @param p1 train to send to the depot
  * @param p2 unused
  */
-int32 CmdSendTrainToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	TrainFindDepotData tfdd;
@@ -1916,7 +1914,7 @@ int32 CmdSendTrainToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		/* If there is no depot in front, reverse automatically */
 		if (tfdd.reverse)
-			DoCommandByTile(v->tile, v->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
+			DoCommand(v->tile, v->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
 	}
 
 	return 0;

@@ -42,13 +42,13 @@ const SpriteID _water_shore_sprites[15] = {
 static void FloodVehicle(Vehicle *v);
 
 /** Build a ship depot.
- * @param x,y tile coordinates where ship depot is built
+ * @param tile tile where ship depot is built
  * @param p1 depot direction (0 == X or 1 == Y)
  * @param p2 unused
  */
-int32 CmdBuildShipDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile, tile2;
+	TileIndex tile2;
 
 	int32 cost, ret;
 	Depot *depot;
@@ -57,7 +57,6 @@ int32 CmdBuildShipDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (p1 > 1) return CMD_ERROR;
 
-	tile = TileVirtXY(x, y);
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	tile2 = tile + (p1 ? TileDiffXY(0, 1) : TileDiffXY(1, 0));
@@ -66,9 +65,9 @@ int32 CmdBuildShipDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsClearWaterTile(tile) || !IsClearWaterTile(tile2))
 		return_cmd_error(STR_3801_MUST_BE_BUILT_ON_WATER);
 
-	ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
-	ret = DoCommandByTile(tile2, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	ret = DoCommand(tile2, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
 
 	// pretend that we're not making land from the water even though we actually are.
@@ -123,17 +122,17 @@ static int32 DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 flags)
 	int delta;
 
 	// middle tile
-	ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
 
 	delta = TileOffsByDir(dir);
 	// lower tile
-	ret = DoCommandByTile(tile - delta, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	ret = DoCommand(tile - delta, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
 	if (GetTileSlope(tile - delta, NULL)) return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 	// upper tile
-	ret = DoCommandByTile(tile + delta, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	ret = DoCommand(tile + delta, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
 	if (GetTileSlope(tile + delta, NULL)) return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
@@ -173,13 +172,12 @@ static void MarkTilesAroundDirty(TileIndex tile)
 }
 
 /** Builds a lock (ship-lift)
- * @param x,y tile coordinates where to place the lock
+ * @param tile tile where to place the lock
  * @param p1 unused
  * @param p2 unused
  */
-int32 CmdBuildLock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuildLock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile = TileVirtXY(x, y);
 	DiagDirection dir;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
@@ -195,23 +193,24 @@ int32 CmdBuildLock(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Build a piece of canal.
- * @param x,y end tile of stretch-dragging
+ * @param tile end tile of stretch-dragging
  * @param p1 start tile of stretch-dragging
  * @param p2 unused
  */
-int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	int32 cost;
 	int size_x, size_y;
+	int x;
+	int y;
 	int sx, sy;
 
 	if (p1 >= MapSize()) return CMD_ERROR;
 
+	x = TileX(tile);
+	y = TileY(tile);
 	sx = TileX(p1);
 	sy = TileY(p1);
-	/* x,y are in pixel-coordinates, transform to tile-coordinates
-	 * to be able to use the BEGIN_TILE_LOOP() macro */
-	x >>= 4; y >>= 4;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -241,7 +240,7 @@ int32 CmdBuildCanal(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			if (flags & DC_EXEC) SetWaterUnderBridge(tile);
 		} else {
 			/* no bridge, try to clear it. */
-			int32 ret = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+			int32 ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 
 			if (CmdFailed(ret)) return ret;
 			cost += ret;
@@ -524,7 +523,7 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 			case MP_CLEAR:
 			case MP_TREES:
 				_current_player = OWNER_WATER;
-				if (!CmdFailed(DoCommandByTile(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
+				if (!CmdFailed(DoCommand(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
 					MakeShore(target);
 					MarkTileDirtyByTile(target);
 				}
@@ -557,7 +556,7 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 			if (v != NULL) FloodVehicle(v);
 		}
 
-		if (!CmdFailed(DoCommandByTile(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
+		if (!CmdFailed(DoCommand(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
 			MakeWater(target);
 			MarkTileDirtyByTile(target);
 		}
@@ -684,7 +683,7 @@ static void ChangeTileOwner_Water(TileIndex tile, PlayerID old_player, PlayerID 
 	if (new_player != OWNER_SPECTATOR) {
 		SetTileOwner(tile, new_player);
 	} else {
-		DoCommandByTile(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+		DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 	}
 }
 

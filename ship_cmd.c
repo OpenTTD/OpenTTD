@@ -809,16 +809,15 @@ void ShipsYearlyLoop(void)
 }
 
 /** Build a ship.
- * @param x,y tile coordinates of depot where ship is built
+ * @param tile tile of depot where ship is built
  * @param p1 ship type being built (engine)
  * @param p2 unused
  */
-int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	int32 value;
 	Vehicle *v;
 	UnitID unit_num;
-	TileIndex tile = TileVirtXY(x, y);
 	Engine *e;
 
 	if (!IsEngineBuildable(p1, VEH_Ship)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
@@ -839,6 +838,9 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 	if (flags & DC_EXEC) {
+		int x;
+		int y;
+
 		const ShipVehicleInfo *svi = ShipVehInfo(p1);
 
 		v->unitnumber = unit_num;
@@ -897,11 +899,11 @@ int32 CmdBuildShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Sell a ship.
- * @param x,y unused
+ * @param tile unused
  * @param p1 vehicle ID to be sold
  * @param p2 unused
  */
-int32 CmdSellShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdSellShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
@@ -930,11 +932,11 @@ int32 CmdSellShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Start/Stop a ship.
- * @param x,y unused
+ * @param tile unused
  * @param p1 ship ID to start/stop
  * @param p2 unused
  */
-int32 CmdStartStopShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdStartStopShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
@@ -959,11 +961,11 @@ int32 CmdStartStopShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Send a ship to the depot.
- * @param x,y unused
+ * @param tile unused
  * @param p1 vehicle ID to send to the depot
  * @param p2 unused
  */
-int32 CmdSendShipToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	const Depot *dep;
@@ -1008,12 +1010,12 @@ int32 CmdSendShipToDepot(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 
 /** Refits a ship to the specified cargo type.
- * @param x,y unused
+ * @param tile unused
  * @param p1 vehicle ID of the ship to refit
  * @param p2 various bitstuffed elements
  * - p2 = (bit 0-7) - the new cargo type to refit to (p2 & 0xFF)
  */
-int32 CmdRefitShip(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	int32 cost;

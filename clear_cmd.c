@@ -96,7 +96,7 @@ static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
 		return r;
 
 	if (!IsTileType(tile, MP_RAILWAY)) {
-		int32 ret = DoCommandByTile(tile, 0,0, ts->flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
+		int32 ret = DoCommand(tile, 0,0, ts->flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
 
 		if (CmdFailed(ret)) {
 			_terraform_err_tile = tile;
@@ -183,14 +183,13 @@ static bool TerraformTileHeight(TerraformerState *ts, TileIndex tile, int height
 }
 
 /** Terraform land
- * @param x,y coordinates to terraform
+ * @param tile tile to terraform
  * @param p1 corners to terraform.
  * @param p2 direction; eg up or down
  */
-int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	TerraformerState ts;
-	TileIndex tile;
 	int direction;
 
 	TerraformerHeightMod modheight_data[576];
@@ -207,8 +206,6 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	ts.cost = 0;
 	ts.modheight = modheight_data;
 	ts.tile_table = tile_table_data;
-
-	tile = TileVirtXY(x, y);
 
 	/* Make an extra check for map-bounds cause we add tiles to the originating tile */
 	if (tile + TileDiffXY(1, 1) >= MapSize()) return CMD_ERROR;
@@ -275,7 +272,7 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			int count;
 			TileIndex *ti = ts.tile_table;
 			for (count = ts.tile_table_count; count != 0; count--, ti++) {
-				DoCommandByTile(*ti, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+				DoCommand(*ti, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			}
 		}
 
@@ -307,16 +304,17 @@ int32 CmdTerraformLand(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 
 /** Levels a selected (rectangle) area of land
- * @param x,y end tile of area-drag
+ * @param tile end tile of area-drag
  * @param p1 start tile of area drag
  * @param p2 unused
  */
-int32 CmdLevelLand(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdLevelLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	int size_x, size_y;
+	int ex;
+	int ey;
 	int sx, sy;
 	uint h, curh;
-	TileIndex tile;
 	int32 ret, cost, money;
 
 	if (p1 >= MapSize()) return CMD_ERROR;
@@ -326,9 +324,9 @@ int32 CmdLevelLand(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	// remember level height
 	h = TileHeight(p1);
 
-	ex >>= 4; ey >>= 4;
-
 	// make sure sx,sy are smaller than ex,ey
+	ex = TileX(tile);
+	ey = TileY(tile);
 	sx = TileX(p1);
 	sy = TileY(p1);
 	if (ex < sx) intswap(ex, sx);
@@ -344,7 +342,7 @@ int32 CmdLevelLand(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 	BEGIN_TILE_LOOP(tile2, size_x, size_y, tile) {
 		curh = TileHeight(tile2);
 		while (curh != h) {
-			ret = DoCommandByTile(tile2, 8, (curh > h) ? 0 : 1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND);
+			ret = DoCommand(tile2, 8, (curh > h) ? 0 : 1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND);
 			if (CmdFailed(ret)) break;
 			cost += ret;
 
@@ -353,7 +351,7 @@ int32 CmdLevelLand(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 					_additional_cash_required = ret;
 					return cost - ret;
 				}
-				DoCommandByTile(tile2, 8, (curh > h) ? 0 : 1, flags, CMD_TERRAFORM_LAND);
+				DoCommand(tile2, 8, (curh > h) ? 0 : 1, flags, CMD_TERRAFORM_LAND);
 			}
 
 			curh += (curh > h) ? -1 : 1;
@@ -365,18 +363,15 @@ int32 CmdLevelLand(int ex, int ey, uint32 flags, uint32 p1, uint32 p2)
 
 /** Purchase a land area. Actually you only purchase one tile, so
  * the name is a bit confusing ;p
- * @param x,y the tile the player is purchasing
+ * @param tile the tile the player is purchasing
  * @param p1 unused
  * @param p2 unused
  */
-int32 CmdPurchaseLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdPurchaseLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile;
 	int32 cost;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-
-	tile = TileVirtXY(x, y);
 
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
@@ -384,7 +379,7 @@ int32 CmdPurchaseLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_5807_YOU_ALREADY_OWN_IT);
 	}
 
-	cost = DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	cost = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(cost)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
@@ -422,17 +417,13 @@ static int32 ClearTile_Clear(TileIndex tile, byte flags)
 
 /** Sell a land area. Actually you only sell one tile, so
  * the name is a bit confusing ;p
- * @param x,y the tile the player is selling
+ * @param tile the tile the player is selling
  * @param p1 unused
  * @param p2 unused
  */
-int32 CmdSellLandArea(int x, int y, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdSellLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	TileIndex tile;
-
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-
-	tile = TileVirtXY(x, y);
 
 	if (!IsOwnedLandTile(tile)) return CMD_ERROR;
 	if (!CheckTileOwnership(tile) && _current_player != OWNER_WATER) return CMD_ERROR;
