@@ -887,7 +887,7 @@ static const byte _coal_plant_sparks_y[] = {23, 11, 6, 3, 1, 0};
 
 /* next frame in an animation */
 #define N 255
-static const byte _industry_map5_animation_next[] = {
+static const byte _industry_section_animation_next[] = {
 N, N, N, N, N, N, N, N,
 N, N, N, N, N, N, N, N,
 N, 16, N, N, N, N, N, N,
@@ -913,7 +913,7 @@ N, N, N, N, N, N, N,
 };
 
 /* animation to start when goods is produced */
-static const byte _industry_produce_map5[] = {
+static const byte _industry_produce_section[] = {
 N, N, N, N, N, N, N, N,
 N, N, N, N, N, N, N, N,
 17, N, N, N, N, N, N, N,

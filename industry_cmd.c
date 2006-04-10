@@ -414,13 +414,13 @@ static void GetAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
 	uint gfx = GetIndustryGfx(tile);
 	CargoID a;
 
-	a = _industry_map5_accepts_1[gfx];
+	a = _industry_section_accepts_1[gfx];
 	if (a != CT_INVALID) ac[a] = (a == 0) ? 1 : 8;
 
-	a = _industry_map5_accepts_2[gfx];
+	a = _industry_section_accepts_2[gfx];
 	if (a != CT_INVALID) ac[a] = 8;
 
-	a = _industry_map5_accepts_3[gfx];
+	a = _industry_section_accepts_3[gfx];
 	if (a != CT_INVALID) ac[a] = 8;
 }
 
@@ -482,7 +482,7 @@ static void TransportIndustryGoods(TileIndex tile)
 		am = MoveGoodsToStation(i->xy, i->width, i->height, i->produced_cargo[0], cw);
 		i->last_mo_transported[0] += am;
 		if (am != 0) {
-			uint newgfx = _industry_produce_map5[GetIndustryGfx(tile)];
+			uint newgfx = _industry_produce_section[GetIndustryGfx(tile)];
 
 			if (newgfx != 0xFF) {
 				_m[tile].m1 = 0x80;
@@ -756,7 +756,7 @@ static void TileLoop_Industry(TileIndex tile)
 
 	TransportIndustryGoods(tile);
 
-	newgfx = _industry_map5_animation_next[GetIndustryGfx(tile)];
+	newgfx = _industry_section_animation_next[GetIndustryGfx(tile)];
 	if (newgfx != 255) {
 		_m[tile].m1 = 0;
 		SetIndustryGfx(tile, newgfx);
@@ -1259,7 +1259,7 @@ static const Town* CheckMultipleIndustryInTown(TileIndex tile, int type)
 	return t;
 }
 
-static const byte _industry_map5_bits[] = {
+static const byte _industry_section_bits[] = {
 	16, 16, 16, 16, 16, 16, 16, 16,
 	16, 16, 16, 16, 16, 16, 16, 16,
 	16, 16, 16, 16, 16, 16, 16, 16,
@@ -1316,7 +1316,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable*
 
 				if (tileh != 0) {
 					int t;
-					byte bits = _industry_map5_bits[it->gfx];
+					byte bits = _industry_section_bits[it->gfx];
 
 					if (bits & 0x10) return false;
 

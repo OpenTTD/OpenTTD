@@ -1226,7 +1226,7 @@ static const byte * const _industry_create_table[4] = {
 
 #define INV CT_INVALID
 
-static const CargoID _industry_map5_accepts_1[] = {
+static const CargoID _industry_section_accepts_1[] = {
 	INV, INV, INV, PAS, INV, INV, INV, INV,
 	PAS, INV, INV, PAS, PAS, PAS, INV, INV,
 	INV, INV, INV, INV, INV, INV, INV, PAS,
@@ -1252,7 +1252,7 @@ static const CargoID _industry_map5_accepts_1[] = {
 };
 
 
-static const CargoID _industry_map5_accepts_2[] = {
+static const CargoID _industry_section_accepts_2[] = {
 	INV, INV, INV, INV, INV, INV, INV, INV,
 	INV, INV, INV, INV, INV, INV, INV, INV,
 	INV, INV, INV, INV, INV, INV, INV, INV,
@@ -1277,7 +1277,7 @@ static const CargoID _industry_map5_accepts_2[] = {
 	INV, INV, INV, INV, INV, INV, INV
 };
 
-static const CargoID _industry_map5_accepts_3[] = {
+static const CargoID _industry_section_accepts_3[] = {
 	INV, INV, INV, INV, INV, INV, INV, INV,
 	COL, INV, INV, INV, INV, WOD, INV, INV,
 	INV, INV, INV, INV, OIL, INV, INV, INV,
