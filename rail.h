@@ -428,13 +428,6 @@ static inline SignalState GetSignalState(TileIndex tile, Trackdir trackdir)
  */
 RailType GetTileRailType(TileIndex tile, Trackdir trackdir);
 
-/**
- * Returns whether the given tile is a level crossing.
- */
-static inline bool IsLevelCrossing(TileIndex tile)
-{
-	return (_m[tile].m5 & 0xF0) == 0x10;
-}
 
 /**
  * Gets the transport type of the given track on the given crossing tile.
