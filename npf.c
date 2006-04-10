@@ -467,8 +467,10 @@ static bool VehicleMayEnterTile(Owner owner, TileIndex tile, DiagDirection enter
 	switch (GetTileType(tile)) {
 		case MP_STREET:
 			/* rail-road crossing : are we looking at the railway part? */
-			if (IsLevelCrossing(tile) && GetCrossingTransportType(tile, TrackdirToTrack(DiagdirToDiagTrackdir(enterdir))) == TRANSPORT_RAIL)
+			if (IsLevelCrossing(tile) &&
+					DiagDirToAxis(enterdir) != GetCrossingRoadAxis(tile)) {
 				return IsTileOwner(tile, owner); /* Railway needs owner check, while the street is public */
+			}
 			break;
 
 		case MP_TUNNELBRIDGE:

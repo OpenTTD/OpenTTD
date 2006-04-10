@@ -430,26 +430,6 @@ RailType GetTileRailType(TileIndex tile, Trackdir trackdir);
 
 
 /**
- * Gets the transport type of the given track on the given crossing tile.
- * @return  The transport type of the given track, either TRANSPORT_ROAD,
- * TRANSPORT_RAIL.
- */
-static inline TransportType GetCrossingTransportType(TileIndex tile, Track track)
-{
-	/* XXX: Nicer way to write this? */
-	switch (track) {
-		/* When map5 bit 3 is set, the road runs in the y direction */
-		case TRACK_X:
-			return (HASBIT(_m[tile].m5, 3) ? TRANSPORT_RAIL : TRANSPORT_ROAD);
-		case TRACK_Y:
-			return (HASBIT(_m[tile].m5, 3) ? TRANSPORT_ROAD : TRANSPORT_RAIL);
-		default:
-			assert(0);
-	}
-	return INVALID_TRANSPORT;
-}
-
-/**
  * Returns a pointer to the Railtype information for a given railtype
  * @param railtype the rail type which the information is requested for
  * @return The pointer to the RailtypeInfo
