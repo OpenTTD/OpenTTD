@@ -91,51 +91,46 @@ typedef struct IndustrySpec {
 #include "table/industry_land.h"
 #include "table/build_industry.h"
 
-typedef enum IndustryType {
-	INDUSTRY_NOT_CLOSABLE,     ///< Industry can never close
-	INDUSTRY_PRODUCTION,       ///< Industry can close and change of production
-	INDUSTRY_CLOSABLE,         ///< Industry can only close (no production change)
-} IndustryType;
 
 
 static const IndustryType _industry_close_mode[37] = {
-	/* COAL_MINE */         INDUSTRY_PRODUCTION,
-	/* POWER_STATION */     INDUSTRY_NOT_CLOSABLE,
-	/* SAWMILL */           INDUSTRY_CLOSABLE,
-	/* FOREST */            INDUSTRY_PRODUCTION,
-	/* OIL_REFINERY */      INDUSTRY_CLOSABLE,
-	/* OIL_RIG */           INDUSTRY_PRODUCTION,
-	/* FACTORY */           INDUSTRY_CLOSABLE,
-	/* PRINTING_WORKS */    INDUSTRY_CLOSABLE,
-	/* STEEL_MILL */        INDUSTRY_CLOSABLE,
-	/* FARM */              INDUSTRY_PRODUCTION,
-	/* COPPER_MINE */       INDUSTRY_PRODUCTION,
-	/* OIL_WELL */          INDUSTRY_PRODUCTION,
-	/* BANK */              INDUSTRY_NOT_CLOSABLE,
-	/* FOOD_PROCESS */      INDUSTRY_CLOSABLE,
-	/* PAPER_MILL */        INDUSTRY_CLOSABLE,
-	/* GOLD_MINE */         INDUSTRY_PRODUCTION,
-	/* BANK_2,  */          INDUSTRY_NOT_CLOSABLE,
-	/* DIAMOND_MINE */      INDUSTRY_PRODUCTION,
-	/* IRON_MINE */         INDUSTRY_PRODUCTION,
-	/* FRUIT_PLANTATION */  INDUSTRY_PRODUCTION,
-	/* RUBBER_PLANTATION */ INDUSTRY_PRODUCTION,
-	/* WATER_SUPPLY */      INDUSTRY_PRODUCTION,
-	/* WATER_TOWER */       INDUSTRY_NOT_CLOSABLE,
-	/* FACTORY_2 */         INDUSTRY_CLOSABLE,
-	/* FARM_2 */            INDUSTRY_PRODUCTION,
-	/* LUMBER_MILL */       INDUSTRY_CLOSABLE,
-	/* COTTON_CANDY */      INDUSTRY_PRODUCTION,
-	/* CANDY_FACTORY */     INDUSTRY_CLOSABLE,
-	/* BATTERY_FARM */      INDUSTRY_PRODUCTION,
-	/* COLA_WELLS */        INDUSTRY_PRODUCTION,
-	/* TOY_SHOP */          INDUSTRY_NOT_CLOSABLE,
-	/* TOY_FACTORY */       INDUSTRY_CLOSABLE,
-	/* PLASTIC_FOUNTAINS */ INDUSTRY_PRODUCTION,
-	/* FIZZY_DRINK_FACTORY */INDUSTRY_CLOSABLE,
-	/* BUBBLE_GENERATOR */  INDUSTRY_PRODUCTION,
-	/* TOFFEE_QUARRY */     INDUSTRY_PRODUCTION,
-	/* SUGAR_MINE */        INDUSTRY_PRODUCTION
+	/* COAL_MINE */          INDUSTRYLIFE_PRODUCTION,
+	/* POWER_STATION */      INDUSTRYLIFE_NOT_CLOSABLE,
+	/* SAWMILL */            INDUSTRYLIFE_CLOSABLE,
+	/* FOREST */             INDUSTRYLIFE_PRODUCTION,
+	/* OIL_REFINERY */       INDUSTRYLIFE_CLOSABLE,
+	/* OIL_RIG */            INDUSTRYLIFE_PRODUCTION,
+	/* FACTORY */            INDUSTRYLIFE_CLOSABLE,
+	/* PRINTING_WORKS */     INDUSTRYLIFE_CLOSABLE,
+	/* STEEL_MILL */         INDUSTRYLIFE_CLOSABLE,
+	/* FARM */               INDUSTRYLIFE_PRODUCTION,
+	/* COPPER_MINE */        INDUSTRYLIFE_PRODUCTION,
+	/* OIL_WELL */           INDUSTRYLIFE_PRODUCTION,
+	/* BANK */               INDUSTRYLIFE_NOT_CLOSABLE,
+	/* FOOD_PROCESS */       INDUSTRYLIFE_CLOSABLE,
+	/* PAPER_MILL */         INDUSTRYLIFE_CLOSABLE,
+	/* GOLD_MINE */          INDUSTRYLIFE_PRODUCTION,
+	/* BANK_2,  */           INDUSTRYLIFE_NOT_CLOSABLE,
+	/* DIAMOND_MINE */       INDUSTRYLIFE_PRODUCTION,
+	/* IRON_MINE */          INDUSTRYLIFE_PRODUCTION,
+	/* FRUIT_PLANTATION */   INDUSTRYLIFE_PRODUCTION,
+	/* RUBBER_PLANTATION */  INDUSTRYLIFE_PRODUCTION,
+	/* WATER_SUPPLY */       INDUSTRYLIFE_PRODUCTION,
+	/* WATER_TOWER */        INDUSTRYLIFE_NOT_CLOSABLE,
+	/* FACTORY_2 */          INDUSTRYLIFE_CLOSABLE,
+	/* FARM_2 */             INDUSTRYLIFE_PRODUCTION,
+	/* LUMBER_MILL */        INDUSTRYLIFE_CLOSABLE,
+	/* COTTON_CANDY */       INDUSTRYLIFE_PRODUCTION,
+	/* CANDY_FACTORY */      INDUSTRYLIFE_CLOSABLE,
+	/* BATTERY_FARM */       INDUSTRYLIFE_PRODUCTION,
+	/* COLA_WELLS */         INDUSTRYLIFE_PRODUCTION,
+	/* TOY_SHOP */           INDUSTRYLIFE_NOT_CLOSABLE,
+	/* TOY_FACTORY */        INDUSTRYLIFE_CLOSABLE,
+	/* PLASTIC_FOUNTAINS */  INDUSTRYLIFE_PRODUCTION,
+	/* FIZZY_DRINK_FACTORY */INDUSTRYLIFE_CLOSABLE,
+	/* BUBBLE_GENERATOR */   INDUSTRYLIFE_PRODUCTION,
+	/* TOFFEE_QUARRY */      INDUSTRYLIFE_PRODUCTION,
+	/* SUGAR_MINE */         INDUSTRYLIFE_PRODUCTION
 };
 
 static const StringID _industry_prod_up_strings[] = {
@@ -1648,16 +1643,17 @@ void GenerateIndustries(void)
 	} while ( (b+=2)[0] != 0);
 }
 
+/* Change industry production or do closure */
 static void ExtChangeIndustryProduction(Industry *i)
 {
 	bool closeit = true;
 	int j;
 
 	switch (_industry_close_mode[i->type]) {
-		case INDUSTRY_NOT_CLOSABLE:
+		case INDUSTRYLIFE_NOT_CLOSABLE:
 			return;
 
-		case INDUSTRY_CLOSABLE:
+		case INDUSTRYLIFE_CLOSABLE:
 			if ((byte)(_cur_year - i->last_prod_year) < 5 || !CHANCE16(1, 180))
 				closeit = false;
 			break;
@@ -1701,6 +1697,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 			break;
 	}
 
+	/* If industry will be closed down, show this */
 	if (closeit) {
 		i->prod_level = 0;
 		SetDParam(0, i->index);
@@ -1799,10 +1796,10 @@ static void ChangeIndustryProduction(Industry *i)
 	int type = i->type;
 
 	switch (_industry_close_mode[type]) {
-		case INDUSTRY_NOT_CLOSABLE:
+		case INDUSTRYLIFE_NOT_CLOSABLE:
 			return;
 
-		case INDUSTRY_PRODUCTION:
+		case INDUSTRYLIFE_PRODUCTION:
 			/* decrease or increase */
 			if (type == IT_OIL_WELL && _opt.landscape == LT_NORMAL)
 				only_decrease = true;
@@ -1844,7 +1841,7 @@ static void ChangeIndustryProduction(Industry *i)
 			}
 			break;
 
-		case INDUSTRY_CLOSABLE:
+		case INDUSTRYLIFE_CLOSABLE:
 			/* maybe close */
 			if ( (byte)(_cur_year - i->last_prod_year) >= 5 && CHANCE16(1,2)) {
 				i->prod_level = 0;

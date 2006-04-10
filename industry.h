@@ -65,6 +65,8 @@ VARDEF int _total_industries; // For the AI: the amount of industries active
 VARDEF uint16 *_industry_sort;
 VARDEF bool _industry_sort_dirty;
 
+typedef uint8 IndustryType;
+
 void DeleteIndustry(Industry *is);
 
 enum {
@@ -106,5 +108,11 @@ enum {
 	IT_TOFFEE_QUARRY = 35,
 	IT_SUGAR_MINE = 36,
 };
+
+typedef enum IndustryLifeTypes {
+	INDUSTRYLIFE_NOT_CLOSABLE,     ///< Industry can never close
+	INDUSTRYLIFE_PRODUCTION,       ///< Industry can close and change of production
+	INDUSTRYLIFE_CLOSABLE,         ///< Industry can only close (no production change)
+} IndustryLifeType;
 
 #endif /* INDUSTRY_H */
