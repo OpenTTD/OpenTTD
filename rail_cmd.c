@@ -435,20 +435,23 @@ int32 CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return cost;
 }
 
-static const struct {
-	int8 xinc[16];
-	int8 yinc[16];
-} _railbit = {{
-//  0   1   2   3   4   5
-	-16,  0,-16,  0, 16,  0,    0,  0,
-	 16,  0,  0, 16,  0,-16,    0,  0,
-},{
-	  0, 16,  0, 16,  0, 16,    0,  0,
-	  0,-16,-16,  0,-16,  0,    0,  0,
-}};
 
-static int32 ValidateAutoDrag(Trackdir *trackdir, int x, int y, int ex, int ey)
+static const TileIndexDiffC _trackdelta[] = {
+	{ -1,  0 }, {  0,  1 }, { -1,  0 }, {  0,  1 }, {  1,  0 }, {  0,  1 },
+	{  0,  0 },
+	{  0,  0 },
+	{  1,  0 }, {  0, -1 }, {  0, -1 }, {  1,  0 }, {  0, -1 }, { -1,  0 },
+	{  0,  0 },
+	{  0,  0 }
+};
+
+
+static int32 ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileIndex end)
 {
+	int x = TileX(start);
+	int y = TileY(start);
+	int ex = TileX(end);
+	int ey = TileY(end);
 	int dx, dy, trdx, trdy;
 
 	if (!ValParamTrackOrientation(*trackdir)) return CMD_ERROR;
@@ -458,12 +461,12 @@ static int32 ValidateAutoDrag(Trackdir *trackdir, int x, int y, int ex, int ey)
 	dy = ey - y;
 
 	// calculate delta x,y for the first direction
-	trdx = _railbit.xinc[*trackdir];
-	trdy = _railbit.yinc[*trackdir];
+	trdx = _trackdelta[*trackdir].x;
+	trdy = _trackdelta[*trackdir].y;
 
 	if (!IsDiagonalTrackdir(*trackdir)) {
-		trdx += _railbit.xinc[*trackdir ^ 1];
-		trdy += _railbit.yinc[*trackdir ^ 1];
+		trdx += _trackdelta[*trackdir ^ 1].x;
+		trdy += _trackdelta[*trackdir ^ 1].y;
 	}
 
 	// validate the direction
@@ -484,8 +487,8 @@ static int32 ValidateAutoDrag(Trackdir *trackdir, int x, int y, int ex, int ey)
 	// (for diagonal tracks, this is already made sure of by above test), but:
 	// for non-diagonal tracks, check if the start and end tile are on 1 line
 	if (!IsDiagonalTrackdir(*trackdir)) {
-		trdx = _railbit.xinc[*trackdir];
-		trdy = _railbit.yinc[*trackdir];
+		trdx = _trackdelta[*trackdir].x;
+		trdy = _trackdelta[*trackdir].y;
 		if (abs(dx) != abs(dy) && abs(dx) + abs(trdy) != abs(dy) + abs(trdx))
 			return CMD_ERROR;
 	}
@@ -503,33 +506,26 @@ static int32 ValidateAutoDrag(Trackdir *trackdir, int x, int y, int ex, int ey)
  */
 static int32 CmdRailTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	int x;
-	int y;
-	int ex, ey;
 	int32 ret, total_cost = 0;
 	Track track = (Track)GB(p2, 4, 3);
 	Trackdir trackdir;
 	byte mode = HASBIT(p2, 7);
 	RailType railtype = (RailType)GB(p2, 0, 4);
+	TileIndex end_tile;
 
 	if (!ValParamRailtype(railtype) || !ValParamTrackOrientation(track)) return CMD_ERROR;
 	if (p1 >= MapSize()) return CMD_ERROR;
+	end_tile = p1;
 	trackdir = TrackToTrackdir(track);
-
-	/* unpack end point */
-	x = TileX(tile) * TILE_SIZE;
-	y = TileY(tile) * TILE_SIZE;
-	ex = TileX(p1) * TILE_SIZE;
-	ey = TileY(p1) * TILE_SIZE;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	if (CmdFailed(ValidateAutoDrag(&trackdir, x, y, ex, ey))) return CMD_ERROR;
+	if (CmdFailed(ValidateAutoDrag(&trackdir, tile, end_tile))) return CMD_ERROR;
 
-	if (flags & DC_EXEC) SndPlayTileFx(SND_20_SPLAT_2, TileVirtXY(x, y));
+	if (flags & DC_EXEC) SndPlayTileFx(SND_20_SPLAT_2, tile);
 
 	for (;;) {
-		ret = DoCommand(TileVirtXY(x, y), railtype, TrackdirToTrack(trackdir), flags, (mode == 0) ? CMD_BUILD_SINGLE_RAIL : CMD_REMOVE_SINGLE_RAIL);
+		ret = DoCommand(tile, railtype, TrackdirToTrack(trackdir), flags, (mode == 0) ? CMD_BUILD_SINGLE_RAIL : CMD_REMOVE_SINGLE_RAIL);
 
 		if (CmdFailed(ret)) {
 			if ((_error_message != STR_1007_ALREADY_BUILT) && (mode == 0))
@@ -537,11 +533,9 @@ static int32 CmdRailTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint32 
 		} else
 			total_cost += ret;
 
-		if (x == ex && y == ey)
-			break;
+		if (tile == end_tile) break;
 
-		x += _railbit.xinc[trackdir];
-		y += _railbit.yinc[trackdir];
+		tile += ToTileIndexDiff(_trackdelta[trackdir]);
 
 		// toggle railbit for the non-diagonal tracks
 		if (!IsDiagonalTrackdir(trackdir)) trackdir ^= 1;
@@ -757,12 +751,10 @@ int32 CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  */
 static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	int x;
-	int y;
-	int ex, ey;
 	int32 ret, total_cost, signal_ctr;
 	byte signals;
 	bool error = true;
+	TileIndex end_tile;
 
 	int mode = p2 & 0x1;
 	Track track = GB(p2, 4, 3);
@@ -771,6 +763,7 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 	byte signal_density = (p2 >> 24);
 
 	if (p1 >= MapSize()) return CMD_ERROR;
+	end_tile = p1;
 	if (signal_density == 0 || signal_density > 20) return CMD_ERROR;
 
 	if (!IsTileType(tile, MP_RAILWAY)) return CMD_ERROR;
@@ -782,13 +775,7 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 	if (!IsDiagonalTrack(track))
 		signal_density *= 2;
 
-	// unpack end tile
-	x = TileX(tile) * TILE_SIZE;
-	y = TileY(tile) * TILE_SIZE;
-	ex = TileX(p1) * TILE_SIZE;
-	ey = TileY(p1) * TILE_SIZE;
-
-	if (CmdFailed(ValidateAutoDrag(&trackdir, x, y, ex, ey))) return CMD_ERROR;
+	if (CmdFailed(ValidateAutoDrag(&trackdir, tile, end_tile))) return CMD_ERROR;
 
 	track = TrackdirToTrack(trackdir); /* trackdir might have changed, keep track in sync */
 
@@ -814,7 +801,7 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 	for (;;) {
 		// only build/remove signals with the specified density
 		if ((signal_ctr % signal_density) == 0 ) {
-			ret = DoCommand(TileVirtXY(x, y), TrackdirToTrack(trackdir) | semaphores, signals, flags, (mode == 1) ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS);
+			ret = DoCommand(tile, TrackdirToTrack(trackdir) | semaphores, signals, flags, (mode == 1) ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS);
 
 			/* Abort placement for any other error than NOT_SUITABLE_TRACK
 			 * This includes vehicles on track, competitor's tracks, etc. */
@@ -826,10 +813,9 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 			}
 		}
 
-		if (ex == x && ey == y) break; // reached end of drag
+		if (tile == end_tile) break;
 
-		x += _railbit.xinc[trackdir];
-		y += _railbit.yinc[trackdir];
+		tile += ToTileIndexDiff(_trackdelta[trackdir]);
 		signal_ctr++;
 
 		// toggle railbit for the non-diagonal tracks (|, -- tracks)
@@ -938,19 +924,19 @@ int32 CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (p1 >= MapSize()) return CMD_ERROR;
 
 	// make sure sx,sy are smaller than ex,ey
-	ex = TileX(tile) * TILE_SIZE;
-	ey = TileY(tile) * TILE_SIZE;
-	sx = TileX(p1) * TILE_SIZE;
-	sy = TileY(p1) * TILE_SIZE;
+	ex = TileX(tile);
+	ey = TileY(tile);
+	sx = TileX(p1);
+	sy = TileY(p1);
 	if (ex < sx) intswap(ex, sx);
 	if (ey < sy) intswap(ey, sy);
 
 	money = GetAvailableMoneyForCommand();
 	cost = 0;
 
-	for (x = sx; x <= ex; x += TILE_SIZE) {
-		for (y = sy; y <= ey; y += TILE_SIZE) {
-			TileIndex tile = TileVirtXY(x, y);
+	for (x = sx; x <= ex; ++x) {
+		for (y = sy; y <= ey; ++y) {
+			TileIndex tile = TileXY(x, y);
 			DoConvertRailProc* proc;
 
 			switch (GetTileType(tile)) {

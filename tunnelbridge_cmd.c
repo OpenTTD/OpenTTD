@@ -216,10 +216,10 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 		transport = TRANSPORT_RAIL;
 	}
 
-	x = TileX(end_tile) * TILE_SIZE;
-	y = TileY(end_tile) * TILE_SIZE;
-	sx = TileX(p1) * TILE_SIZE;
-	sy = TileY(p1) * TILE_SIZE;
+	x = TileX(end_tile);
+	y = TileY(end_tile);
+	sx = TileX(p1);
+	sy = TileY(p1);
 
 	/* check if valid, and make sure that (x,y) are smaller than (sx,sy) */
 	if (x == sx) {
@@ -240,12 +240,12 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	/* set and test bridge length, availability */
-	bridge_len = ((sx + sy - x - y) / TILE_SIZE) - 1;
+	bridge_len = (sx + sy - x - y) - 1;
 	if (!CheckBridge_Stuff(bridge_type, bridge_len)) return_cmd_error(STR_5015_CAN_T_BUILD_BRIDGE_HERE);
 
 	/* retrieve landscape height and ensure it's on land */
-	tile_start = TileVirtXY(x, y);
-	tile_end = TileVirtXY(sx, sy);
+	tile_start = TileXY(x, y);
+	tile_end = TileXY(sx, sy);
 	if ((IsTileType(tile_start, MP_WATER) && _m[tile_start].m5 == 0) ||
 			(IsTileType(tile_end, MP_WATER) && _m[tile_end].m5 == 0)) {
 		return_cmd_error(STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH);

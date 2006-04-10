@@ -302,19 +302,19 @@ int32 CmdClearArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	// make sure sx,sy are smaller than ex,ey
-	ex = TileX(tile) * TILE_SIZE;
-	ey = TileY(tile) * TILE_SIZE;
-	sx = TileX(p1) * TILE_SIZE;
-	sy = TileY(p1) * TILE_SIZE;
+	ex = TileX(tile);
+	ey = TileY(tile);
+	sx = TileX(p1);
+	sy = TileY(p1);
 	if (ex < sx) intswap(ex, sx);
 	if (ey < sy) intswap(ey, sy);
 
 	money = GetAvailableMoneyForCommand();
 	cost = 0;
 
-	for (x = sx; x <= ex; x += TILE_SIZE) {
-		for (y = sy; y <= ey; y += TILE_SIZE) {
-			ret = DoCommand(TileVirtXY(x, y), 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
+	for (x = sx; x <= ex; ++x) {
+		for (y = sy; y <= ey; ++y) {
+			ret = DoCommand(TileXY(x, y), 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
 			if (CmdFailed(ret)) continue;
 			cost += ret;
 			success = true;
@@ -324,12 +324,12 @@ int32 CmdClearArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					_additional_cash_required = ret;
 					return cost - ret;
 				}
-				DoCommand(TileVirtXY(x, y), 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+				DoCommand(TileXY(x, y), 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 
 				// draw explosion animation...
 				if ((x == sx || x == ex) && (y == sy || y == ey)) {
 					// big explosion in each corner, or small explosion for single tiles
-					CreateEffectVehicleAbove(x + 8, y + 8, 2,
+					CreateEffectVehicleAbove(x * TILE_SIZE + 8, y * TILE_SIZE + 8, 2,
 						sy == ey && sx == ex ? EV_EXPLOSION_SMALL : EV_EXPLOSION_LARGE
 					);
 				}
