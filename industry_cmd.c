@@ -75,7 +75,7 @@ typedef struct DrawIndustrySpec4Struct {
 
 typedef struct IndustryTileTable {
 	TileIndexDiffC ti;
-	byte gfx;
+	IndustryGfx gfx;
 } IndustryTileTable;
 
 typedef struct IndustrySpec {
@@ -93,7 +93,7 @@ typedef struct IndustrySpec {
 
 
 
-static const IndustryType _industry_close_mode[37] = {
+static const IndustryType _industry_close_mode[IT_END] = {
 	/* COAL_MINE */          INDUSTRYLIFE_PRODUCTION,
 	/* POWER_STATION */      INDUSTRYLIFE_NOT_CLOSABLE,
 	/* SAWMILL */            INDUSTRYLIFE_CLOSABLE,
@@ -133,7 +133,7 @@ static const IndustryType _industry_close_mode[37] = {
 	/* SUGAR_MINE */         INDUSTRYLIFE_PRODUCTION
 };
 
-static const StringID _industry_prod_up_strings[] = {
+static const StringID _industry_prod_up_strings[IT_END] = {
 	STR_4836_NEW_COAL_SEAM_FOUND_AT,
 	STR_4835_INCREASES_PRODUCTION,
 	STR_4835_INCREASES_PRODUCTION,
@@ -173,7 +173,7 @@ static const StringID _industry_prod_up_strings[] = {
 	STR_4835_INCREASES_PRODUCTION,
 };
 
-static const StringID _industry_prod_down_strings[] = {
+static const StringID _industry_prod_down_strings[IT_END] = {
 	STR_4839_PRODUCTION_DOWN_BY_50,
 	STR_4839_PRODUCTION_DOWN_BY_50,
 	STR_4839_PRODUCTION_DOWN_BY_50,
@@ -213,7 +213,7 @@ static const StringID _industry_prod_down_strings[] = {
 	STR_4839_PRODUCTION_DOWN_BY_50,
 };
 
-static const StringID _industry_close_strings[] = {
+static const StringID _industry_close_strings[IT_END] = {
 	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
 	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
 	STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,
@@ -253,6 +253,31 @@ static const StringID _industry_close_strings[] = {
 	STR_4832_ANNOUNCES_IMMINENT_CLOSURE
 };
 
+/**
+ * Retrieve the type for this industry.  Although it is accessed by a tile,
+ * it will return the general type of industry, and not the sprite index
+ * as would do GetIndustryGfx.
+ * The same information can be accessed by looking at Industry->type
+ * @param tile that is queried
+ * @pre IsTileType(tile, MP_INDUSTRY)
+ * @return general type for this industry, as defined in industry.h
+ **/
+IndustryType GetIndustryType(TileIndex tile)
+{
+	IndustryGfx this_type = GetIndustryGfx(tile);
+	IndustryType iloop;
+
+	assert(IsTileType(tile, MP_INDUSTRY));
+
+	for (iloop = IT_COAL_MINE; iloop < IT_END; iloop += 1) {
+		if IS_INT_INSIDE(this_type, industry_gfx_Solver[iloop].MinGfx,
+				industry_gfx_Solver[iloop].MaxGfx) {
+			return iloop;
+		}
+	}
+
+	return IT_INVALID;  //we have not found equivalent, whatever the reason
+}
 
 static void IndustryDrawSugarMine(const TileInfo *ti)
 {
@@ -393,7 +418,6 @@ static void DrawTile_Industry(TileInfo *ti)
 	}
 }
 
-
 static uint GetSlopeZ_Industry(const TileInfo* ti)
 {
 	return ti->z + (ti->tileh == 0 ? 0 : 8);
@@ -406,7 +430,7 @@ static uint GetSlopeTileh_Industry(TileIndex tile, uint tileh)
 
 static void GetAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
 {
-	uint gfx = GetIndustryGfx(tile);
+	IndustryGfx gfx = GetIndustryGfx(tile);
 	CargoID a;
 
 	a = _industry_section_accepts_1[gfx];
@@ -596,7 +620,7 @@ static void AnimateTile_Industry(TileIndex tile)
 	case 148: case 149: case 150: case 151:
 	case 152: case 153: case 154: case 155:
 		if ((_tick_counter & 3) == 0) {
-			uint gfx = GetIndustryGfx(tile);
+			IndustryGfx gfx = GetIndustryGfx(tile);
 
 			gfx = (gfx < 155) ? gfx + 1 : 148;
 			SetIndustryGfx(tile, gfx);
@@ -607,7 +631,7 @@ static void AnimateTile_Industry(TileIndex tile)
 	case 30: case 31: case 32:
 		if ((_tick_counter & 7) == 0) {
 			bool b = CHANCE16(1,7);
-			uint gfx = GetIndustryGfx(tile);
+			IndustryGfx gfx = GetIndustryGfx(tile);
 
 			m = GB(_m[tile].m1, 0, 2) + 1;
 			if (m == 4 && (m = 0, ++gfx) == 32 + 1 && (gfx = 30, b)) {
@@ -745,7 +769,7 @@ static void TileLoopIndustry_BubbleGenerator(TileIndex tile)
 
 static void TileLoop_Industry(TileIndex tile)
 {
-	uint newgfx;
+	IndustryGfx newgfx;
 
 	if (!IsIndustryCompleted(tile)) {
 		MakeIndustryTileBigger(tile);
@@ -1328,12 +1352,12 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable*
 					if (bits & 8 && (t & (2 + 4))) return false;
 				}
 
-				if (type == IT_BANK) {
+				if (type == IT_BANK_TEMP) {
 					if (!IsTileType(cur_tile, MP_HOUSE) || t->population < 1200) {
 						_error_message = STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS;
 						return false;
 					}
-				} else if (type == IT_BANK_2) {
+				} else if (type == IT_BANK_TROPIC_ARCTIC) {
 					if (!IsTileType(cur_tile, MP_HOUSE)) {
 						_error_message = STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS;
 						return false;
