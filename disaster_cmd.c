@@ -339,7 +339,7 @@ static void DestructIndustry(Industry *i)
 
 	for (tile = 0; tile != MapSize(); tile++) {
 		if (IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == i->index) {
-			_m[tile].m1 = 0;
+			ResetIndustryConstructionStage(tile);
 			MarkTileDirtyByTile(tile);
 		}
 	}

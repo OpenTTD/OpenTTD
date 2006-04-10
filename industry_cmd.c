@@ -356,7 +356,7 @@ static void DrawTile_Industry(TileInfo *ti)
 	ormod = GENERAL_SPRITE_COLOR(ind->color_map);
 
 	/* Retrieve pointer to the draw industry tile struct */
-	dits = &_industry_draw_tile_data[GetIndustryGfx(ti->tile) << 2 | GB(_m[ti->tile].m1, 0, 2)];
+	dits = &_industry_draw_tile_data[GetIndustryGfx(ti->tile) << 2 | GetIndustryConstructionStage(ti->tile)];
 
 	image = dits->sprite_1;
 	if (image & PALETTE_MODIFIER_COLOR && (image & PALETTE_SPRITE_MASK) == 0)
@@ -485,7 +485,8 @@ static void TransportIndustryGoods(TileIndex tile)
 			uint newgfx = _industry_produce_section[GetIndustryGfx(tile)];
 
 			if (newgfx != 0xFF) {
-				_m[tile].m1 = 0x80;
+				ResetIndustryConstructionStage(tile);
+				SetIndustryCompleted(tile, true);
 				SetIndustryGfx(tile, newgfx);
 				MarkTileDirtyByTile(tile);
 			}
@@ -678,18 +679,22 @@ static void CreateIndustryEffectSmoke(TileIndex tile)
 	CreateEffectVehicle(x + 15, y + 14, z + 59 + (tileh != 0 ? 8 : 0), EV_CHIMNEY_SMOKE);
 }
 
-static void MakeIndustryTileBigger(TileIndex tile, byte size)
+static void MakeIndustryTileBigger(TileIndex tile)
 {
-	byte b = (byte)((size + (1<<2)) & (3<<2));
+	byte cnt = GetIndustryConstructionCounter(tile) + 1;
+	byte stage;
 
-	if (b != 0) {
-		_m[tile].m1 = b | (size & 3);
+	if (cnt != 4) {
+		SetIndustryConstructionCounter(tile, cnt);
 		return;
 	}
 
-	size = (size + 1) & 3;
-	if (size == 3) size |= 0x80;
-	_m[tile].m1 = size | b;
+	stage = GetIndustryConstructionStage(tile) + 1;
+	SetIndustryConstructionCounter(tile, 0);
+	SetIndustryConstructionStage(tile, stage);
+	if (stage == 3) {
+		SetIndustryCompleted(tile, true);
+	}
 
 	MarkTileDirtyByTile(tile);
 
@@ -748,7 +753,7 @@ static void TileLoop_Industry(TileIndex tile)
 	uint newgfx;
 
 	if (!IsIndustryCompleted(tile)) {
-		MakeIndustryTileBigger(tile, _m[tile].m1);
+		MakeIndustryTileBigger(tile);
 		return;
 	}
 
@@ -758,7 +763,7 @@ static void TileLoop_Industry(TileIndex tile)
 
 	newgfx = _industry_section_animation_next[GetIndustryGfx(tile)];
 	if (newgfx != 255) {
-		_m[tile].m1 = 0;
+		ResetIndustryConstructionStage(tile);
 		SetIndustryGfx(tile, newgfx);
 		MarkTileDirtyByTile(tile);
 		return;
