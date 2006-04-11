@@ -489,25 +489,58 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 	}
 }
 
+/** Calculate the net length of a string. This is in almost all cases
+ * just strlen(), but if the string is not properly terminated, we'll
+ * resort to the maximum length of the buffer.
+ * @param ptr pointer to the stringbuffer
+ * @param length maximum length of the string (buffer)
+ * @return return the net length of the string */
+static inline size_t SlCalcNetStringLen(const char *ptr, uint length)
+{
+	return minu(strlen(ptr), length - 1);
+}
+
+/** Calculate the gross length of the string that it
+ * will occupy in the savegame. This includes the real length, returned
+ * by SlCalcNetStringLen and the length that the index will occupy.
+ * @param ptr pointer to the stringbuffer
+ * @param length maximum length of the string (buffer size, etc.)
+ * @return return the gross length of the string */
 static inline size_t SlCalcStringLen(const char *ptr, uint length)
 {
-	DEBUG(misc, 1) ("[Sl] TODO: save/load real length");
-	return length;//(_sl.save) ? min(strlen(ptr), length - 1) : SlReadArrayLength();
+	uint len = SlCalcNetStringLen(ptr, length);
+	return len + SlGetArrayLength(len); // also include the length of the index
 }
 
 /**
  * Save/Load a string.
  * @param ptr the string being manipulated
  * @param the length of the string (full length)
- * @param conv must be SLE_FILE_STRING
- * @todo the full length of the string is saved, even when the buffer
- * is 512 bytes and only 10 of those are used */
+ * @param conv must be SLE_FILE_STRING */
 static void SlString(void *ptr, uint length, VarType conv)
 {
-	uint len = SlCalcStringLen(ptr, length);
-	assert((conv & 0xF) == SLE_FILE_STRING);
+	uint len;
+	assert(GetVarFileType(conv) == SLE_FILE_STRING);
 
-	SlCopyBytes(ptr, len);
+	if (_sl.save) {
+		len = SlCalcNetStringLen(ptr, length);
+		SlWriteArrayLength(len);
+		SlCopyBytes(ptr, len);
+		return;
+	}
+
+	len = SlReadArrayLength();
+
+	if (len >= length) {
+		DEBUG(misc, 0) ("[Sl] String length in savegame is bigger than buffer, truncating");
+		SlCopyBytes(ptr, length);
+		SlSkipBytes(len - length);
+		len = length - 1;
+	} else {
+		SlCopyBytes(ptr, len);
+	}
+
+	((char*)ptr)[len] = '\0'; // properly terminate the string
 }
 
 /**
