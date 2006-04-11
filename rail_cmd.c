@@ -1080,21 +1080,25 @@ static const SpriteID _signal_base_sprites[16] = {
 	0x1476,
 };
 
-// used to determine the side of the road for the signal
-static const byte _signal_position[24] = {
-	/* original: left side position */
-	0x58, 0x1E, 0xE1, 0xB9, 0x01, 0xA3, 0x4B, 0xEE, 0x3B, 0xD4, 0x43, 0xBD,
-	/* patch: ride side position */
-	0x1E, 0xAC, 0x64, 0xE1, 0x4A, 0x10, 0xEE, 0xC5, 0xDB, 0x34, 0x4D, 0xB3
-};
-
 static void DrawSignalHelper(const TileInfo *ti, byte condition, uint32 image_and_pos)
 {
 	bool otherside = _opt.road_side & _patches.signal_side;
+	static const Point SignalPositions[2][12] = {
+		{      /* Signals on the left side */
+		/*  LEFT      LEFT      RIGHT     RIGHT     UPPER     UPPER */
+			{ 8,  5}, {14,  1}, { 1, 14}, { 9, 11}, { 1,  0}, { 3, 10},
+		/*  LOWER     LOWER     X         X         Y         Y     */
+			{11,  4}, {14, 14}, {11,  3}, { 4, 13}, { 3,  4}, {11, 13}
+		}, {   /* Signals on the right side */
+		/*  LEFT      LEFT      RIGHT     RIGHT     UPPER     UPPER */
+			{14,  1}, {12, 10}, { 4,  6}, { 1, 14}, {10,  4}, { 0,  1},
+		/*  LOWER     LOWER     X         X         Y         Y     */
+			{14, 14}, { 5, 12}, {11, 13}, { 4,  3}, {13,  4}, { 3, 11}
+		}
+	};
 
-	uint v = _signal_position[(image_and_pos & 0xF) + (otherside ? 12 : 0)];
-	uint x = ti->x | (v&0xF);
-	uint y = ti->y | (v>>4);
+	uint x = ti->x  + SignalPositions[otherside][image_and_pos & 0xF].x;
+	uint y = ti->y  + SignalPositions[otherside][image_and_pos & 0xF].y;
 	uint sprite = _signal_base_sprites[(_m[ti->tile].m4 & 0x7) + (otherside ? 8 : 0)] + (image_and_pos>>4) + ((condition != 0) ? 1 : 0);
 	AddSortableSpriteToDraw(sprite, x, y, 1, 1, 10, GetSlopeZ(x,y));
 }
