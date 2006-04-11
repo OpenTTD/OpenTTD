@@ -1935,7 +1935,7 @@ static void DrawTile_Station(TileInfo *ti)
 	if (image & PALETTE_MODIFIER_COLOR) image |= image_or_modificator;
 
 	// For custom sprites, there's no railtype-based pitching.
-	offset = (image & SPRITE_MASK) < _custom_sprites_base ? rti->total_offset : railtype;
+	offset = (image & SPRITE_MASK) < _custom_sprites_base ? rti->total_offset : GetRailTypeInfo(railtype)->custom_ground_offset;
 	image += offset;
 
 	// station_land array has been increased from 82 elements to 114

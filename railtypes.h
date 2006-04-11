@@ -51,6 +51,9 @@ const RailtypeInfo _railtypes[] = {
 
 		/* bridge offset */
 		0,
+
+		/* custom ground offset */
+		0,
 	},
 
 	/** Electrified railway */
@@ -100,7 +103,10 @@ const RailtypeInfo _railtypes[] = {
 		0,
 
 		/* bridge offset */
-		0
+		0,
+
+		/* custom ground offset */
+		0,
 	},
 
 	/** Monorail */
@@ -147,6 +153,9 @@ const RailtypeInfo _railtypes[] = {
 
 		/* bridge offset */
 		16,
+
+		/* custom ground offset */
+		1,
 	},
 
 	/** Maglev */
@@ -193,5 +202,8 @@ const RailtypeInfo _railtypes[] = {
 
 		/* bridge offset */
 		24,
+
+		/* custom ground offset */
+		2,
 	},
 };

@@ -129,6 +129,11 @@ typedef struct RailtypeInfo {
 	  * Bridge offset
 	  */
 	SpriteID bridge_offset;
+
+	/**
+	 * Offset to add to ground sprite when drawing custom waypoints / stations
+	 */
+	byte custom_ground_offset;
 } RailtypeInfo;
 
 extern const RailtypeInfo _railtypes[RAILTYPE_END];
