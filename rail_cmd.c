@@ -1052,7 +1052,7 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 
 #include "table/track_land.h"
 
-static void DrawSignalHelper(const TileInfo *ti, byte condition, uint32 image_and_pos)
+static void DrawSignalHelper(TileIndex tile, byte condition, uint32 image_and_pos)
 {
 	bool otherside = _opt.road_side & _patches.signal_side;
 	static const Point SignalPositions[2][12] = {
@@ -1081,9 +1081,9 @@ static void DrawSignalHelper(const TileInfo *ti, byte condition, uint32 image_an
 		}
 	};
 
-	uint x = ti->x  + SignalPositions[otherside][image_and_pos & 0xF].x;
-	uint y = ti->y  + SignalPositions[otherside][image_and_pos & 0xF].y;
-	SpriteID sprite = SignalBase[otherside][GetSignalVariant(ti->tile)][GetSignalType(ti->tile)] + (image_and_pos>>4) + ((condition != 0) ? 1 : 0);
+	uint x = TileX(tile) * TILE_SIZE + SignalPositions[otherside][image_and_pos & 0xF].x;
+	uint y = TileY(tile) * TILE_SIZE + SignalPositions[otherside][image_and_pos & 0xF].y;
+	SpriteID sprite = SignalBase[otherside][GetSignalVariant(tile)][GetSignalType(tile)] + (image_and_pos>>4) + ((condition != 0) ? 1 : 0);
 	AddSortableSpriteToDraw(sprite, x, y, 1, 1, 10, GetSlopeZ(x,y));
 }
 
@@ -1309,7 +1309,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 #define HAS_SIGNAL(x) (m23 & (byte)(0x1 << (x)))
 #define ISON_SIGNAL(x) (m23 & (byte)(0x10 << (x)))
-#define MAYBE_DRAW_SIGNAL(x,y,z) if (HAS_SIGNAL(x)) DrawSignalHelper(ti, ISON_SIGNAL(x), ((y-0x4FB) << 4)|(z))
+#define MAYBE_DRAW_SIGNAL(x,y,z) if (HAS_SIGNAL(x)) DrawSignalHelper(ti->tile, ISON_SIGNAL(x), ((y-0x4FB) << 4)|(z))
 
 		if (!(rails & TRACK_BIT_Y)) {
 			if (!(rails & TRACK_BIT_X)) {
