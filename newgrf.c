@@ -1007,7 +1007,7 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 {
 	byte *buf = *bufp;
 	int i;
-	int ret = 0;
+	bool ret = false;
 
 	switch (prop) {
 		case 0x08: /* Year of availability */
@@ -1067,7 +1067,7 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 			break;
 
 		default:
-			ret = 1;
+			ret = true;
 	}
 
 	*bufp = buf;
@@ -1081,7 +1081,7 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 	bool ret = false;
 
 	switch (prop) {
-		case 0x08: { /* Cost base factor */
+		case 0x08: /* Cost base factor */
 			FOR_EACH_OBJECT {
 				byte factor = grf_load_byte(&buf);
 				uint price = gvid + i;
@@ -1092,10 +1092,12 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 					grfmsg(GMS_WARN, "GlobalVarChangeInfo: Price %d out of range, ignoring.", price);
 				}
 			}
-		} break;
+			break;
+
 		default:
 			ret = true;
 	}
+
 	*bufp = buf;
 	return ret;
 }
