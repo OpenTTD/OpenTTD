@@ -762,10 +762,17 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 	int i;
 	int ret = 0;
 
-	/* This is one single huge TODO. It doesn't handle anything more than
-	 * just waypoints for now. */
+	/* Allocate station specs if necessary */
+	if (_cur_grffile->num_stations < stid + numinfo) {
+		_cur_grffile->stations = realloc(_cur_grffile->stations, (stid + numinfo) * sizeof(*_cur_grffile->stations))
+;
 
-	//printf("sci %d %d [0x%02x]\n", stid, numinfo, prop);
+		while (_cur_grffile->num_stations < stid + numinfo) {
+			memset(&_cur_grffile->stations[_cur_grffile->num_stations], 0, sizeof(*_cur_grffile->stations));
+			_cur_grffile->num_stations++;
+		}
+	}
+
 	switch (prop) {
 		case 0x08:
 		{	/* Class ID */
@@ -2357,7 +2364,7 @@ static void ResetCustomStations(void)
 	CargoID c;
 
 	for (file = _first_grffile; file != NULL; file = file->next) {
-		for (i = 0; i < lengthof(file->stations); i++) {
+		for (i = 0; i < file->num_stations; i++) {
 			if (file->stations[i].grfid != file->grfid) continue;
 
 			// TODO: Release renderdata, platforms and layouts
@@ -2368,6 +2375,11 @@ static void ResetCustomStations(void)
 					UnloadSpriteGroup(&file->stations[i].spritegroup[c]);
 			}
 		}
+
+		/* Free and reset the station data */
+		free(file->stations);
+		file->stations = NULL;
+		file->num_stations = 0;
 	}
 }
 

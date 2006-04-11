@@ -34,7 +34,8 @@ struct GRFFile {
 	int spritegroups_count;
 	SpriteGroup **spritegroups;
 
-	StationSpec stations[256];
+	uint num_stations;
+	StationSpec *stations;
 
 	uint32 param[0x80];
 	uint param_end; /// one more than the highest set parameter
