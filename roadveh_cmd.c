@@ -1,7 +1,7 @@
 /* $Id$ */
 
-#include <limits.h>
 #include "stdafx.h"
+#include <limits.h>
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
