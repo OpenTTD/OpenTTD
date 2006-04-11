@@ -27,12 +27,12 @@ typedef struct stationspec {
 	 * Bitmask of number of platforms available for the station.
 	 * 0..6 correpsond to 1..7, while bit 7 corresponds to >7 platforms.
 	 */
-	byte allowed_platforms;
+	byte disallowed_platforms;
 	/**
 	 * Bitmask of platform lengths available for the station.
 	 * 0..6 correpsond to 1..7, while bit 7 corresponds to >7 tiles long.
 	 */
-	byte allowed_lengths;
+	byte disallowed_lengths;
 
 	/** Number of tile layouts.
 	 * A minimum of 8 is required is required for stations.
@@ -43,6 +43,21 @@ typedef struct stationspec {
 	 */
 	int tiles;
 	DrawTileSprites *renderdata; ///< Array of tile layouts.
+
+	/** Cargo threshold for choosing between little and lots of cargo
+	 * @note little/lots are equivalent to the moving/loading states for vehicles
+	 */
+	uint16 cargo_threshold;
+
+	uint32 cargo_triggers; ///< Bitmask of cargo types which cause trigger re-randomizing
+
+	byte callbackmask; ///< Bitmask of callbacks to use, @see newgrf_callbacks.h
+
+	byte flags; ///< Bitmask of flags, bit 0: use different sprite set; bit 1: divide cargo about by station size
+
+	byte pylons;  ///< Bitmask of base tiles (0 - 7) which should contain elrail pylons
+	byte wires;   ///< Bitmask of base tiles (0 - 7) which should contain elrail wires
+	byte blocked; ///< Bitmask of base tiles (0 - 7) which are blocked to trains
 
 	byte lengths;
 	byte *platforms;

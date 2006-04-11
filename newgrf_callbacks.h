@@ -42,6 +42,14 @@ enum VehicleCallbackMask {
 };
 
 /**
+ * Callback masks for stations.
+ */
+enum StationCallbackMask {
+	CBM_STATION_AVAIL = 0, ///< Availability of station in construction window
+	CBM_CUSTOM_LAYOUT = 1, ///< Use callback to select a tile layout to use
+};
+
+/**
  * Result of a failed callback.
  */
 enum {

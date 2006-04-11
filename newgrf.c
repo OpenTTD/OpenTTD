@@ -758,9 +758,10 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 
 static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int len)
 {
+	StationSpec *stat;
 	byte *buf = *bufp;
 	int i;
-	int ret = 0;
+	bool ret = false;
 
 	/* Allocate station specs if necessary */
 	if (_cur_grffile->num_stations < stid + numinfo) {
@@ -773,25 +774,24 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		}
 	}
 
+	stat = &_cur_grffile->stations[stid];
+
 	switch (prop) {
-		case 0x08:
-		{	/* Class ID */
+		case 0x08: /* Class ID */
 			FOR_EACH_OBJECT {
-				StationSpec *stat = &_cur_grffile->stations[stid + i];
 				uint32 classid;
 
-				/* classid, for a change, is always little-endian */
+				/* classid, for a change, is big-endian */
 				classid = *(buf++) << 24;
 				classid |= *(buf++) << 16;
 				classid |= *(buf++) << 8;
 				classid |= *(buf++);
 
-				stat->sclass = AllocateStationClass(classid);
+				stat[i].sclass = AllocateStationClass(classid);
 			}
 			break;
-		}
-		case 0x09:
-		{	/* Define sprite layout */
+
+		case 0x09: /* Define sprite layout */
 			FOR_EACH_OBJECT {
 				StationSpec *stat = &_cur_grffile->stations[stid + i];
 				int t;
@@ -838,9 +838,8 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 				}
 			}
 			break;
-		}
-		case 0x0a:
-		{	/* Copy sprite layout */
+
+		case 0x0A: /* Copy sprite layout */
 			FOR_EACH_OBJECT {
 				StationSpec *stat = &_cur_grffile->stations[stid + i];
 				byte srcid = grf_load_byte(&buf);
@@ -876,36 +875,20 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 				}
 			}
 			break;
-		}
-		case 0x0b:
-		{	/* Callback */
-			/* TODO */
-			FOR_EACH_OBJECT {
-				grf_load_byte(&buf);
-			}
-			ret = 1;
-			break;
-		}
-		case 0x0C:
-		{	/* Platforms number */
-			FOR_EACH_OBJECT {
-				StationSpec *stat = &_cur_grffile->stations[stid + i];
 
-				stat->allowed_platforms = ~grf_load_byte(&buf);
-			}
+		case 0x0B: /* Callback mask */
+			FOR_EACH_OBJECT stat[i].callbackmask = grf_load_byte(&buf);
 			break;
-		}
-		case 0x0D:
-		{	/* Platforms length */
-			FOR_EACH_OBJECT {
-				StationSpec *stat = &_cur_grffile->stations[stid + i];
 
-				stat->allowed_lengths = ~grf_load_byte(&buf);
-			}
+		case 0x0C: /* Disallowed number of platforms */
+			FOR_EACH_OBJECT stat[i].disallowed_platforms = grf_load_byte(&buf);
 			break;
-		}
-		case 0x0e:
-		{	/* Define custom layout */
+
+		case 0x0D: /* Disallowed platform lengths */
+			FOR_EACH_OBJECT stat[i].disallowed_lengths = grf_load_byte(&buf);
+			break;
+
+		case 0x0E: /* Define custom layout */
 			FOR_EACH_OBJECT {
 				StationSpec *stat = &_cur_grffile->stations[stid + i];
 
@@ -957,45 +940,41 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 				}
 			}
 			break;
-		}
-		case 0x0f:
-		{	/* Copy custom layout */
+
+		case 0x0F: /* Copy custom layout */
 			/* TODO */
 			FOR_EACH_OBJECT {
 				grf_load_byte(&buf);
 			}
-			ret = 1;
+			ret = true;
 			break;
-		}
-		case 0x10:
-		{	/* Little/lots cargo threshold */
-			/* TODO */
-			FOR_EACH_OBJECT {
-				grf_load_word(&buf);
-			}
-			ret = 1;
+
+		case 0x10: /* Little/lots cargo threshold */
+			FOR_EACH_OBJECT stat[i].cargo_threshold = grf_load_word(&buf);
 			break;
-		}
-		case 0x11:
-		{	/* Pylon placement */
-			/* TODO; makes sense only for electrified tracks */
-			FOR_EACH_OBJECT {
-				grf_load_word(&buf);
-			}
-			ret = 1;
+
+		case 0x11: /* Pylon placement */
+			FOR_EACH_OBJECT stat[i].pylons = grf_load_byte(&buf);
 			break;
-		}
-		case 0x12:
-		{	/* Cargo types for random triggers */
-			/* TODO */
-			FOR_EACH_OBJECT {
-				grf_load_dword(&buf);
-			}
-			ret = 1;
+
+		case 0x12: /* Cargo types for random triggers */
+			FOR_EACH_OBJECT stat[i].cargo_triggers = grf_load_dword(&buf);
 			break;
-		}
+
+		case 0x13: /* General flags */
+			FOR_EACH_OBJECT stat[i].flags = grf_load_byte(&buf);
+			break;
+
+		case 0x14: /* Overhead wire placement */
+			FOR_EACH_OBJECT stat[i].wires = grf_load_byte(&buf);
+			break;
+
+		case 0x15: /* Blocked tiles */
+			FOR_EACH_OBJECT stat[i].blocked = grf_load_byte(&buf);
+			break;
+
 		default:
-			ret = 1;
+			ret = true;
 			break;
 	}
 
