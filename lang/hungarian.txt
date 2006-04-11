@@ -2,9 +2,7 @@
 ##ownname Magyar
 ##isocode hu
 ##plural 1
-##case t
 
-##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Kilóg a térképrõl
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Túl közel van a térkép széléhez
@@ -371,7 +369,35 @@ STR_0151_MAP_OF_WORLD                                           :Világtérkép
 STR_0152_TOWN_DIRECTORY                                         :Városlista
 STR_0153_SUBSIDIES                                              :Támogatások
 
-############ range for menu	starts
+STR_UNITS_IMPERIAL                                              :Brit
+STR_UNITS_METRIC                                                :Metrikus
+STR_UNITS_SI                                                    :SI
+
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mérföld/óra
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}lóerõ
+STR_UNITS_POWER_METRIC                                          :{COMMA}lóerõ
+STR_UNITS_POWER_SI                                              :{COMMA}kW
+
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonna
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonna
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m?
+
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} köbméter
+
+
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Mûködési nyereség grafikon
 STR_0155_INCOME_GRAPH                                           :Jövedelem grafikon
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Elszállított rakomány grafikon
@@ -380,7 +406,6 @@ STR_0158_COMPANY_VALUE_GRAPH                                    :Vállalat értéke
 STR_0159_CARGO_PAYMENT_RATES                                    :Rakományok szállítási díja
 STR_015A_COMPANY_LEAGUE_TABLE                                   :A cégek helyezése
 STR_PERFORMANCE_DETAIL_MENU                                     :Teljesítményértékelések részletezése
-############ range for menu	ends
 
 STR_015B_OPENTTD                                                :{WHITE}OpenTTD
 STR_015C_SAVE_GAME                                              :Játék mentése
@@ -408,8 +433,9 @@ STR_SORT_BY_AGE                                                 :Életkor
 STR_SORT_BY_RELIABILITY                                         :Megbízhatóság
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Rakomány szerinti összkapacitás
 STR_SORT_BY_MAX_SPEED                                           :Maximum sebesség
+STR_SORT_BY_MODEL                                               :Modell
+STR_SORT_BY_VALUE                                               :Érték
 
-############ range for months starts
 STR_0162_JAN                                                    :jan
 STR_0163_FEB                                                    :feb
 STR_0164_MAR                                                    :már
@@ -422,7 +448,6 @@ STR_016A_SEP                                                    :sze
 STR_016B_OCT                                                    :okt
 STR_016C_NOV                                                    :nov
 STR_016D_DEC                                                    :dec
-############ range for months ends
 
 STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
 STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
@@ -472,10 +497,8 @@ STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Tulajdon
 STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Városnevek ki/be
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Idei nyereség: {CURRENCY} (Tavalyi: {CURRENCY})
 
-############ range for service numbers starts
 STR_AGE                                                         :{COMMA} év ({COMMA})
 STR_AGE_RED                                                     :{RED}{COMMA} év ({COMMA})
-############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :közúti jármû
 STR_019D_AIRCRAFT                                               :repülõgép
@@ -494,7 +517,6 @@ STR_01A9_NONE                                                   :Nincs
 STR_01AA_NAME                                                   :{BLACK}Név
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
-############ range for days	starts
 STR_01AC_1ST                                                    :1.
 STR_01AD_2ND                                                    :2.
 STR_01AE_3RD                                                    :3.
@@ -526,7 +548,6 @@ STR_01C7_28TH                                                   :28.
 STR_01C8_29TH                                                   :29.
 STR_01C9_30TH                                                   :30.
 STR_01CA_31ST                                                   :31.
-############ range for days	ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
@@ -765,7 +786,6 @@ STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Saját ne
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}A jármûvek márkanevének kiválasztása
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}A saját jármû-márkanevek elmentése lemezre
 
-############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Beállítások
 STR_02C4_GAME_OPTIONS                                           :Beállítások
 STR_02C5_DIFFICULTY_SETTINGS                                    :Nehézségi beállítások
@@ -792,16 +812,13 @@ STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SET
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Átlátszó épületek
 STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Állomásnevek keret nélkül
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Állomásnevek keret nélkül
-############ range ends	here
 
-############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Terület-információ
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Átváltás Konzolra
 STR_02D7_SCREENSHOT_CTRL_S                                      :Képmentés (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Óriás képmentés (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Az  'OpenTTD'-rõl
-############ range ends	here
 
 STR_02DB_OFF                                                    :{BLACK}Ki
 STR_02DA_ON                                                     :{BLACK}Be
@@ -821,7 +838,9 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}A látkép
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Pénznem
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}A használt pénznem kiválasztása
+STR_MEASURING_UNITS                                             :{BLACK}Mértékegységek
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Mértékegység választás
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Közúti jármûvek
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Válaszd ki,az út melyik oldalán haladjanak a közúti jármûvek
@@ -856,10 +875,8 @@ STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Szubtróp
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Játékvilág táj kiválasztása
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Gazdasági épület építése
 
-############ range for menu	starts
 STR_INDUSTRY_DIR                                                :Gazdasági épületek listája
 STR_0313_FUND_NEW_INDUSTRY                                      :Új gazdasági épület építése
-############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Új gazdasági épület
 STR_JUST_STRING                                                 :{STRING}
@@ -880,7 +897,6 @@ STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}A 'szép 
 STR_0335_6                                                      :{BLACK}6
 STR_0336_7                                                      :{BLACK}7
 
-############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Angol (Eredeti)
 STR_TOWNNAME_FRENCH                                             :Francia
 STR_TOWNNAME_GERMAN                                             :Német
@@ -899,7 +915,6 @@ STR_TOWNNAME_ROMANIAN                                           :Romániai
 STR_TOWNNAME_CZECH                                              :Cseh
 STR_TOWNNAME_SWISS                                              :Svájci
 STR_TOWNNAME_DANISH                                             :Dán
-############ end of	townname region
 
 STR_CURR_GBP                                                    :Font (£)
 STR_CURR_USD                                                    :Dollár ($)
@@ -1238,7 +1253,6 @@ TEMP_AI_IN_PROGRESS                                             :{WHITE}Üdv, ez 
 TEMP_AI_ACTIVATED                                               :{WHITE}Figyelem: az új MI fejlesztés alatt áll! Jelenleg csak a teherautók és a buszok mûködnek!
 TEMP_AI_MULTIPLAYER                                             :{WHITE}Figyelem: ez a funckió még béta állapotú. A hibajelentéseket küldd légyszi a truelight@openttd.org címre.
 
-############ network gui strings
 
 STR_NETWORK_MULTIPLAYER                                         :{WHITE}Többjátékos
 
@@ -1323,12 +1337,10 @@ STR_NETWORK_START_GAME_TIP                                      :{BLACK}Új hálóz
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Játék betöltése
 STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Korábban elmentett többfelhasználós játék folytatása (gyõzõdj meg, hogy megfelelõ játékosként kapcsolódtál)
 
-############ Leave those lines in this order!!
 STR_NETWORK_LANG_ANY                                            :Bármilyen
 STR_NETWORK_LANG_ENGLISH                                        :Angol
 STR_NETWORK_LANG_GERMAN                                         :Német
 STR_NETWORK_LANG_FRENCH                                         :Francia
-############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Többjátékos játék-lobby
 
@@ -1358,7 +1370,6 @@ STR_NETWORK_PLAYERS                                             :{SILVER}Játékos
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Kapcsolódás...
 
-############ Leave those lines in this order!!
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Kapcsolódás..
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Engedélyezés..
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Várakozás..
@@ -1368,7 +1379,6 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Re
 
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Játékinfó lekérése..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Céginfó lekérése..
-############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} kliensre várunk, hogy befejezze
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kilobájt lett eddig letöltve
 
@@ -1397,7 +1407,6 @@ STR_NETWORK_ERR_KICKED                                          :{WHITE} Ki lett
 STR_NETWORK_ERR_CHEATER                                         :{WHITE} Ez a szerver nem engedi a csalást
 
 STR_NETWORK_ERR_LEFT                                            :elhagyta a játékot
-############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :általános hiba
 STR_NETWORK_ERR_CLIENT_DESYNC                                   :szinkronizálási hiba
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :térkép betöltési hiba
@@ -1412,7 +1421,6 @@ STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :rossz játékos-i
 STR_NETWORK_ERR_CLIENT_KICKED                                   :a szerver kirúgott
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :csalni próbált
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :a szerver megtelt
-############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :belépett a játékba
 STR_NETWORK_GIVE_MONEY                                          :adott egy kis pénzt ({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :{STRING} játékosnak adományoztál ({CURRENCY}) összeget
@@ -1438,13 +1446,11 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privát üzenet
 
 STR_NETWORK_SEND                                                :{BLACK}Elküld
 
-############ end network gui strings
 
 
 STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}ÉK-DNY térképszélesség: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}ÉNY-DK térképszélesség: {ORANGE}{STRING}
 
-##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}{CURRENCY} kiadás
 STR_0801_COST                                                   :{RED}{CURRENCY} kiadás
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}{CURRENCY} bevétel
@@ -1465,7 +1471,6 @@ STR_080E_FIELDS                                                 :Szántóföld
 STR_080F_SNOW_COVERED_LAND                                      :Havas föld
 STR_0810_DESERT                                                 :Sivatag
 
-##id 0x1000
 STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Rossz irányba lejt a föld
 STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Nem lehetséges sínösszetétel
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Az ásás megsértené az alagutat
@@ -1475,6 +1480,7 @@ STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Nincs me
 STR_1007_ALREADY_BUILT                                          :{WHITE}...már van itt
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Elõbb le kell rombolnod a sínt
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Vasútépítés
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektromos-vasút építés
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Egysínû vasút építése
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}MagLev vasút építése
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Válassz egy vasúti hidat
@@ -1486,6 +1492,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Nem szed
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Nem veheted le innen a szemafort...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Jármûtelep helyzete
 STR_1015_RAILROAD_CONSTRUCTION                                  :Vasútépítés
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Elektromos-vasút építés
 STR_1016_MONORAIL_CONSTRUCTION                                  :Egysínû vasút építése
 STR_1017_MAGLEV_CONSTRUCTION                                    :MagLev vasút építése
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Sín lerakása
@@ -1507,7 +1514,6 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Vasúti sin vegy
 
 
 
-##id 0x1800
 STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Rossz irányba lejt a föld
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Elõbb le kell rombolnod az utat
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Útépítés
@@ -1533,7 +1539,6 @@ STR_1816_TREE_LINED_ROAD                                        :Fával szegélyez
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Garázs
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Út/vasút keresztezõdés
 
-##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Városok
 STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
 STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
@@ -1635,7 +1640,6 @@ STR_TOWN                                                        :{TOWN}
 STR_INDUSTRY_FORMAT                                             :{TOWN}i {STRING}
 STR_STATION                                                     :{STATION}
 
-##id 0x2800
 STR_LANDSCAPING                                                 :Tájrendezés
 STR_2800_PLANT_TREES                                            :Faültetés
 STR_2801_PLACE_SIGN                                             :Felirat lerakása
@@ -1654,7 +1658,6 @@ STR_280E_TREES                                                  :Fák
 STR_280F_RAINFOREST                                             :Esõerdõ
 STR_2810_CACTUS_PLANTS                                          :Kaktusz
 
-##id 0x3000
 STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}Vasútállomás beállítása
 STR_3001_AIRPORT_SELECTION                                      :{WHITE}Repülõtér beállítása
 STR_3002_ORIENTATION                                            :{BLACK}Helyzet
@@ -1678,7 +1681,6 @@ STR_3032_RATINGS                                                :{BLACK}Vélemény
 STR_3033_ACCEPTS                                                :{BLACK}Elfogadás
 STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}A szállítás helyi megítélése:
 
-############ range for rating starts
 STR_3035_APPALLING                                              :szörnyû
 STR_3036_VERY_POOR                                              :nagyon rossz
 STR_3037_POOR                                                   :rossz
@@ -1687,7 +1689,6 @@ STR_3039_GOOD                                                   :jó
 STR_303A_VERY_GOOD                                              :nagyon jó
 STR_303B_EXCELLENT                                              :kiváló
 STR_303C_OUTSTANDING                                            :kimagasló
-############ range for rating ends
 
 STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} többé nem fogad el {STRING}
@@ -1738,7 +1739,6 @@ STR_306B_HELIPORT                                               :{BLACK}Helikopt
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...az állomás túl kiterjedt
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...csak egyféle vágánytípusú állomások lehetnek
 
-##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Dokk helyzete
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...csak vízen építhetõ
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Nem építhetsz ide dokkot...
@@ -1748,7 +1748,6 @@ STR_3805_COAST_OR_RIVERBANK                                     :Tenger- vagy fo
 STR_3806_SHIP_DEPOT                                             :Dokk
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...nem építhetõ vízen
 
-##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Játék mentése
 STR_4001_LOAD_GAME                                              :{WHITE}Játék betöltése
 STR_4002_SAVE                                                   :{BLACK}Ment
@@ -1767,7 +1766,6 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Az új já
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Válassz egy pályát (zöld), elõre beállított játékot (kék) vagy véletlenszerû új játékot
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Véletlenszerû új játék
 
-##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}...{STRING} van az útban
 STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :szénbánya
@@ -1845,11 +1843,9 @@ STR_4825_TOFFEE_QUARRY.t                                        :tejkaramella fe
 STR_4826_SUGAR_MINE                                             :cukorbánya
 STR_4826_SUGAR_MINE.t                                           :cukorbányát
 
-############ range for requires	starts
 STR_4827_REQUIRES                                               :{BLACK}Felhasznál: {YELLOW}{STRING}
 STR_4828_REQUIRES                                               :{BLACK}Felhasznál: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Felhasznál: {YELLOW}{STRING}, {STRING}, {STRING}
-############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Múlt havi termelés:
 STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% elszállítva)
@@ -1872,7 +1868,6 @@ STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...csak 
 STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} termelés nõtt! {INDUSTRY} mostantól {COMMA}%-al többet termel!
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} termelés csökkent! {INDUSTRY} mostantól {COMMA}%-al kevesebbet termel!
 
-##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Vonat van az alagútban
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Közúti jármû van az alagútban
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Másik alagút van az útban
@@ -1911,7 +1906,6 @@ STR_5026_CONCRETE_ROAD_BRIDGE                                   :Beton közúti hí
 STR_5027_TUBULAR_RAIL_BRIDGE                                    :Csõ vasúti híd
 STR_5028_TUBULAR_ROAD_BRIDGE                                    :Csõ közúti híd
 
-##id 0x5800
 STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Tárgy van az útban
 STR_5801_TRANSMITTER                                            :Rádióadó
 STR_5802_LIGHTHOUSE                                             :Világítótorony
@@ -1922,9 +1916,6 @@ STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Nem vehe
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...már a tiéd!
 
 
-############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
-############ These strings may never get a new id, or savegames	will break!
-##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Névtelen
 STR_SV_TRAIN_NAME                                               :Vonat {COMMA}
@@ -1966,20 +1957,15 @@ STR_SV_STNAME_LOWER                                             :{STRING}-alsó
 STR_SV_STNAME_HELIPORT                                          :{STRING}i helikopter-leszálló
 STR_SV_STNAME_FOREST                                            :{STRING}i erdõség
 
-############ end of	savegame specific region!
 
-##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Nehézségi szint
 STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Ment
 
-############ range for difficulty levels starts
 STR_6801_EASY                                                   :{BLACK}Könnyû
 STR_6802_MEDIUM                                                 :{BLACK}Közepes
 STR_6803_HARD                                                   :{BLACK}Nehéz
 STR_6804_CUSTOM                                                 :{BLACK}Egyéni
-############ range for difficulty levels ends
 
-############ range for difficulty settings starts
 STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Ellenfelek száma legfeljebb: {ORANGE}{COMMA}
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Ellenfelek kezdésének ideje: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Városok száma: {ORANGE}{STRING}
@@ -1998,7 +1984,6 @@ STR_6813_ECONOMY                                                :{LTBLUE}Gazdasá
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Vonatok fordítása: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Katasztrófák: {ORANGE}{STRING}
 STR_16816_CITY_APPROVAL                                         :{LTBLUE}A városi tanács hozzáállása a területrendezéshez: {ORANGE}{STRING}
-############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Egyiksem
 STR_6816_LOW                                                    :Kevés
@@ -2041,7 +2026,6 @@ STR_6839_PERMISSIVE                                             :Engedékeny
 STR_683A_TOLERANT                                               :Toleráns
 STR_683B_HOSTILE                                                :Ellenséges
 
-##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
 STR_7002_PLAYER                                                 :({COMMA}. játékos)
@@ -2174,7 +2158,6 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} céget felvásárolta {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Ez a cég egyelõre még nem rendelkezik részvényekkel...
 
-##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Gõz)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Dízel)
 STR_8002_PLODDYPHUT_CHOO_CHOO                                   :Cammogó Csi-hu-hu
@@ -2440,7 +2423,6 @@ STR_8105_SHIP                                                   :hajó
 STR_8106_MONORAIL_LOCOMOTIVE                                    :egysínû mozdony
 STR_8107_MAGLEV_LOCOMOTIVE                                      :MagLev mozdony
 
-##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}i jármûtelep
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Az emberek ünnepelnek . . .{}Megérkezett az elsõ vonat {STATION} állomásra!
 STR_8802_DETAILS                                                :{WHITE}{STRING} adatai
@@ -2479,6 +2461,7 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Túl hoss
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Csak a jármûtelepen álló vonatokat lehet megváltoztatni
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} vonatai - {COMMA}
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Új vasúti jármûvek
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Új elektromos vasúti jármûvek
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Új egysínû jármûvek
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Új MagLev jármûvek
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Megvesz
@@ -2574,7 +2557,6 @@ STR_886F_TRANSFER                                               :{BLACK}Elszállí
 STR_TRAIN_STOPPING                                              :{RED}Lassít
 STR_TRAIN_STOPPING_VEL                                          :{RED}Lassít, {VELOCITY}
 
-##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Közúti jármû van az útban
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} közúti jármûvei - {COMMA}
 STR_9002                                                        :{WHITE}{VEHICLE}
@@ -2624,6 +2606,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Közúti baleset!{}A vezetõ meghalt a vonattal való ütközéskor
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Közúti baleset!{}{COMMA} ember meghalt a vonattal való ütközéskor
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Nem fordíthatod vissza a jármûvet...
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Több részbõl álló jármûvet nem lehet megfordítani
 STR_9034_RENAME                                                 :{BLACK}Átnevez
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}A közúti jármû márkanevének megváltoztatása
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Márkanév megváltoztatása
@@ -2631,7 +2614,6 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Nem vált
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Menj a  {TOWN}i garázsba
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Javítsd a jármûvet a {TOWN}i garázsban
 
-##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Kikötõépítés
 STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Kikötõépítés
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Nem építhetsz ide kikötõt...
@@ -2702,7 +2684,6 @@ STR_9842_REFITTABLE                                             :(átalakítható)
 STR_GO_TO_SHIP_DEPOT                                            :Menj a {TOWN}i kikötõbe
 SERVICE_AT_SHIP_DEPOT                                           :Javítás a(z) {TOWN} hajókikötöben
 
-##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Repterek
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Nem építhetsz ide repülõteret...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} hangárja
@@ -2774,7 +2755,6 @@ STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nem alak
 STR_GO_TO_AIRPORT_HANGAR                                        :Menj a {STATION} repülõtér hangárjába
 SERVICE_AT_AIRPORT_HANGAR                                       :Javítás a(z) {STATION} hangárban
 
-##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeppelinbaleset {STATION} közelében!
 STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}'UFO' ütközés pusztított el egy közúti jármûvet!
 STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Olajfinomító robbant fel {TOWN} közelében!
@@ -2793,7 +2773,6 @@ STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCO
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
-############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Jármûvek:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Állomások:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. profit:
@@ -2804,7 +2783,6 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Rakomány
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Pénz:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Kölcsön:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Összesen:
-############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Jármûvek száma. Beleértendõek a közúti jármûvek, a vonatok, hajók és repülõk.
 STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Állomásrészek száma. Minden rész számít (pl. vasútállomás, buszmegálló, repülõtér), még akkor is, ha egy állomáshoz tartoznak is.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}A két évesnél idõsebb vonatok minimális profitja
@@ -2864,18 +2842,22 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Megmutat
 STR_REPLACE_HELP                                                :{BLACK}Ez az opció lehetõve teszi, hogy kiválassz mozdonytípust és lecseréld másfajtára. Ez aztán automatikusan fog megtörténni, amikor a jármû karbantartásra a depóba megy
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon törlés: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Az automata cserénél a szerelvény hosszának a megtartása kocsik lekapcsolásával (elõröl kezdve), ha a csere után a mozdony hosszabb.
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Lecserél: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} KISÉRLETI TULAJDONSÁG {}Váltás a mozdony és a vasúti-kocsi cserélõ ablak között.{}A vagonok cseréje csak akkor történik meg, ha az új vagon átalakítható ugyanolyan típusú teher szállítására. Ez minden vagoncserénél ellenõrzõdik.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}A mozdony így nem építhetõ meg
+
+STR_ENGINES                                                     :Mozdonyok
+STR_WAGONS                                                      :Vagonok
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Feliratok listája ({COMMA} db)
 
-############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Normál Vasutak
+STR_ELRAIL_VEHICLES                                             :Elektromos-vasúti jármûvek
 STR_MONORAIL_VEHICLES                                           :Egysínû Vasutak
 STR_MAGLEV_VEHICLES                                             :Maglev Vasutak
 
-############ End of list of rail types
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
