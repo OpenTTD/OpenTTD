@@ -1,5 +1,5 @@
 ##name French
-##ownname FranÃ§ais
+##ownname Français
 ##isocode fr
 ##plural 2
 ##gender m m2 f
@@ -306,15 +306,6 @@ STR_0150_SOMEONE                                                :quelqu'un{SKIP}
 STR_0151_MAP_OF_WORLD                                           :Carte du monde
 STR_0152_TOWN_DIRECTORY                                         :Annuaire des Villes
 STR_0153_SUBSIDIES                                              :Subventions
-
-
-
-
-
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonne{P "" s}
-
-
-
 
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Profit d'opération
