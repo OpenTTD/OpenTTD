@@ -1050,35 +1050,7 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 	}
 }
 
-
-
 #include "table/track_land.h"
-
-// used for presignals
-static const SpriteID _signal_base_sprites[16] = {
-	0x4FB,
-	0x1323,
-	0x1333,
-	0x1343,
-
-	// semaphores
-	0x1353,
-	0x1363,
-	0x1373,
-	0x1383,
-
-	// mirrored versions
-	0x4FB,
-	0x1323,
-	0x1333,
-	0x1343,
-
-	// semaphores
-	0x1446,
-	0x1456,
-	0x1466,
-	0x1476,
-};
 
 static void DrawSignalHelper(const TileInfo *ti, byte condition, uint32 image_and_pos)
 {
@@ -1097,9 +1069,21 @@ static void DrawSignalHelper(const TileInfo *ti, byte condition, uint32 image_an
 		}
 	};
 
+	static const SpriteID SignalBase[2][2][4] = {
+		{    /* Signals on left side */
+			{  0x4FB, 0x1323, 0x1333, 0x1343}, /* light signals */
+			{ 0x1353, 0x1363, 0x1373, 0x1383}  /* semaphores    */
+		}, { /* Signals on right side */
+			{  0x4FB, 0x1323, 0x1333, 0x1343}, /* light signals */
+			{ 0x1446, 0x1456, 0x1466, 0x1476}  /* semaphores    */
+		/*         |       |       |       |     */
+		/*    normal,  entry,   exit,  combo     */
+		}
+	};
+
 	uint x = ti->x  + SignalPositions[otherside][image_and_pos & 0xF].x;
 	uint y = ti->y  + SignalPositions[otherside][image_and_pos & 0xF].y;
-	uint sprite = _signal_base_sprites[(_m[ti->tile].m4 & 0x7) + (otherside ? 8 : 0)] + (image_and_pos>>4) + ((condition != 0) ? 1 : 0);
+	SpriteID sprite = SignalBase[otherside][GetSignalVariant(ti->tile)][GetSignalType(ti->tile)] + (image_and_pos>>4) + ((condition != 0) ? 1 : 0);
 	AddSortableSpriteToDraw(sprite, x, y, 1, 1, 10, GetSlopeZ(x,y));
 }
 
