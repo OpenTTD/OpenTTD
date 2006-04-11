@@ -19,6 +19,10 @@ typedef enum ClearGround {
 } ClearGround;
 
 
+
+
+
+
 static inline ClearGround GetClearGround(TileIndex t)
 {
 	assert(IsTileType(t, MP_CLEAR));

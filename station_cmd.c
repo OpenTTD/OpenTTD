@@ -28,6 +28,7 @@
 #include "depot.h"
 #include "train.h"
 #include "water_map.h"
+#include "industry_map.h"
 
 enum {
 	/* Max stations: 64000 (64 * 1000) */
@@ -273,25 +274,44 @@ static Station *AllocateStation(void)
 }
 
 
-static int CountMapSquareAround(TileIndex tile, byte type, byte min, byte max)
+/**
+ * Counts the numbers of tiles matching a specific type in the area around
+ * @param tile the center tile of the 'count area'
+ * @param type the type of tile searched for
+ * @param industry when type == MP_INDUSTRY, the type of the industry,
+ *                 in all other cases this parameter is ignored
+ * @result the noumber of matching tiles around
+ */
+static int CountMapSquareAround(TileIndex tile, TileType type, IndustryType industry)
 {
-	static const TileIndexDiffC _count_square_table[] = {
-		{-3, -3}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0},
-		{-6,  1}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0},
-		{-6,  1}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0},
-		{-6,  1}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0},
-		{-6,  1}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0},
-		{-6,  1}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0},
-		{-6,  1}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0}, {1, 0}
-	};
-	const TileIndexDiffC *p;
+	TileIndex cur_tile;
+	int dx, dy;
 	int num = 0;
 
-	for (p = _count_square_table; p != endof(_count_square_table); ++p) {
-		tile = TILE_MASK(tile + ToTileIndexDiff(*p));
+	for (dx = -3; dx <= 3; dx++) {
+		for (dy = -3; dy <= 3; dy++) {
+			cur_tile = tile + TileDiffXY(dx, dy);
 
-		if (IsTileType(tile, type) && _m[tile].m5 >= min && _m[tile].m5 <= max)
-			num++;
+			if (IsTileType(cur_tile, type)) {
+				switch (type) {
+					case MP_INDUSTRY:
+						if (GetIndustryType(cur_tile) == industry)
+							num++;
+						break;
+
+					case MP_WATER:
+						if (!IsWater(cur_tile))
+							break;
+						/* FALL THROUGH WHEN WATER TILE */
+					case MP_TREES:
+						num++;
+						break;
+
+					default:
+						break;
+				}
+			}
+		}
 	}
 
 	return num;
@@ -340,11 +360,11 @@ static bool GenerateStationName(Station *st, TileIndex tile, int flag)
 
 	/* check mine? */
 	if (HASBIT(free_names, M(STR_SV_STNAME_MINES))) {
-		if (CountMapSquareAround(tile, MP_INDUSTRY, 0, 6) >= 2 ||
-				CountMapSquareAround(tile, MP_INDUSTRY, 0x64, 0x73) >= 2 ||
-				CountMapSquareAround(tile, MP_INDUSTRY, 0x2F, 0x33) >= 2 ||
-				CountMapSquareAround(tile, MP_INDUSTRY, 0x48, 0x58) >= 2 ||
-				CountMapSquareAround(tile, MP_INDUSTRY, 0x5B, 0x63) >= 2) {
+		if (CountMapSquareAround(tile, MP_INDUSTRY, IT_COAL_MINE) >= 2 ||
+				CountMapSquareAround(tile, MP_INDUSTRY, IT_IRON_MINE) >= 2 ||
+				CountMapSquareAround(tile, MP_INDUSTRY, IT_COPPER_MINE) >= 2 ||
+				CountMapSquareAround(tile, MP_INDUSTRY, IT_GOLD_MINE) >= 2 ||
+				CountMapSquareAround(tile, MP_INDUSTRY, IT_DIAMOND_MINE) >= 2) {
 			found = M(STR_SV_STNAME_MINES);
 			goto done;
 		}
@@ -362,15 +382,15 @@ static bool GenerateStationName(Station *st, TileIndex tile, int flag)
 	/* Check lakeside */
 	if (HASBIT(free_names, M(STR_SV_STNAME_LAKESIDE)) &&
 			DistanceFromEdge(tile) < 20 &&
-			CountMapSquareAround(tile, MP_WATER, 0, 0) >= 5) {
+			CountMapSquareAround(tile, MP_WATER, 0) >= 5) {
 		found = M(STR_SV_STNAME_LAKESIDE);
 		goto done;
 	}
 
 	/* Check woods */
 	if (HASBIT(free_names, M(STR_SV_STNAME_WOODS)) && (
-				CountMapSquareAround(tile, MP_TREES, 0, 255) >= 8 ||
-				CountMapSquareAround(tile, MP_INDUSTRY, 0x10, 0x11) >= 2)
+				CountMapSquareAround(tile, MP_TREES, 0) >= 8 ||
+				CountMapSquareAround(tile, MP_INDUSTRY, IT_FOREST) >= 2)
 			) {
 		found = _opt.landscape == LT_DESERT ?
 			M(STR_SV_STNAME_FOREST) : M(STR_SV_STNAME_WOODS);
