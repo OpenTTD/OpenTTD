@@ -238,8 +238,7 @@ static inline bool HasTrack(TileIndex tile, Track track)
  * Maps a trackdir to the reverse trackdir.
  */
 static inline Trackdir ReverseTrackdir(Trackdir trackdir) {
-	extern const Trackdir _reverse_trackdir[TRACKDIR_END];
-	return _reverse_trackdir[trackdir];
+	return (Trackdir)(trackdir ^ 8);
 }
 
 /**
