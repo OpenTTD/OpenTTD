@@ -282,6 +282,7 @@ static inline void SlWriteSparseIndex(uint index) {SlWriteSimpleGamma(index);}
 
 static inline uint SlReadArrayLength(void) {return SlReadSimpleGamma();}
 static inline void SlWriteArrayLength(uint length) {SlWriteSimpleGamma(length);}
+static inline uint SlGetArrayLength(uint length) {return SlGetGammaLength(length);}
 
 void SlSetArrayIndex(uint index)
 {
@@ -351,7 +352,7 @@ void SlSetLength(size_t length)
 			SlWriteArrayLength(length + 1);
 			break;
 		case CH_SPARSE_ARRAY:
-			SlWriteArrayLength(length + 1 + SlGetGammaLength(_sl.array_index)); // Also include length of sparse index.
+			SlWriteArrayLength(length + 1 + SlGetArrayLength(_sl.array_index)); // Also include length of sparse index.
 			SlWriteSparseIndex(_sl.array_index);
 			break;
 		default: NOT_REACHED();
