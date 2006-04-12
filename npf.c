@@ -14,6 +14,7 @@
 #include "tile.h"
 #include "depot.h"
 #include "tunnel_map.h"
+#include "network.h"
 
 static AyStar _npf_aystar;
 
@@ -205,13 +206,16 @@ static uint NPFSlopeCost(AyStarNode* current)
 	 * there is only one level of steepness... */
 }
 
-/* Mark tiles by mowing the grass when npf debug level >= 1 */
+/**
+ * Mark tiles by mowing the grass when npf debug level >= 1.
+ * Will not work for multiplayer games, since it can (will) cause desyncs.
+ */
 static void NPFMarkTile(TileIndex tile)
 {
 #ifdef NO_DEBUG_MESSAGES
 	return;
 #else
-	if (_debug_npf_level < 1) return;
+	if (_debug_npf_level < 1 || _networking) return;
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
 			/* DEBUG: mark visited tiles by mowing the grass under them ;-) */
