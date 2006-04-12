@@ -247,10 +247,7 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 	/* retrieve landscape height and ensure it's on land */
 	tile_start = TileXY(x, y);
 	tile_end = TileXY(sx, sy);
-	if ((IsTileType(tile_start, MP_WATER) && _m[tile_start].m5 == 0) ||
-			(IsTileType(tile_end, MP_WATER) && _m[tile_end].m5 == 0)) {
-		return_cmd_error(STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH);
-	}
+	if (IsClearWaterTile(tile_start) || IsClearWaterTile(tile_end)) return_cmd_error(STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH);
 
 	tileh_start = GetTileSlope(tile_start, &z_start);
 	tileh_end = GetTileSlope(tile_end, &z_end);
@@ -331,7 +328,7 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 		switch (GetTileType(tile)) {
 			case MP_WATER:
 				if (!EnsureNoVehicle(tile)) return_cmd_error(STR_980E_SHIP_IN_THE_WAY);
-				if (_m[tile].m5 > 1) goto not_valid_below;
+				if (!(IsWater(tile) || IsCoast(tile))) goto not_valid_below;
 				transport_under = TRANSPORT_WATER;
 				break;
 
