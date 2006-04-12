@@ -129,7 +129,6 @@ typedef struct TileInfo {
 	uint y;
 	uint tileh;
 	uint type;
-	uint map5;
 	TileIndex tile;
 	uint z;
 } TileInfo;

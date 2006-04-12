@@ -65,14 +65,12 @@ void FindLandscapeHeight(TileInfo *ti, uint x, uint y)
 		ti->tileh = 0;
 		ti->type = MP_VOID;
 		ti->tile = 0;
-		ti->map5 = 0;
 		ti->z = 0;
 	} else {
 		TileIndex tile = TileVirtXY(x, y);
 
 		ti->tile = tile;
 		ti->type = GetTileType(tile);
-		ti->map5 = _m[tile].m5;
 		ti->tileh = GetTileSlope(tile, &ti->z);
 	}
 }
