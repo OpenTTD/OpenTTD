@@ -1356,8 +1356,7 @@ static void DrawTile_Track(TileInfo *ti)
 		// adjust ground tile for desert
 		// (don't adjust for arctic depots, because snow in depots looks weird)
 		// type >= 4 means waypoints
-		if ((_m[ti->tile].m4 & RAIL_MAP2LO_GROUND_MASK) == RAIL_GROUND_ICE_DESERT &&
-				(_opt.landscape == LT_DESERT || type >= 4)) {
+		if (IsSnowRailGround(ti->tile) && (_opt.landscape == LT_DESERT || type >= 4)) {
 			if (image != SPR_FLAT_GRASS_TILE) {
 				image += rti->snow_offset; // tile with tracks
 			} else {
