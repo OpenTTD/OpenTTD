@@ -933,7 +933,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		image += GetTunnelDirection(ti->tile) * 2;
 		DrawGroundSprite(image);
-		if (GB(_m[ti->tile].m3, 0, 3) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
+		if (GetRailType(ti->tile)) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 
 		AddSortableSpriteToDraw(image+1, ti->x + 15, ti->y + 15, 1, 1, 8, (byte)ti->z);
 	} else if (IsBridge(ti->tile)) { // XXX is this necessary?
