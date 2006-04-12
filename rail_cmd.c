@@ -1504,7 +1504,7 @@ static bool SetSignalsEnumProc(TileIndex tile, SetSignalsData *ssd, int track, u
 		if (HasSignalOnTrackdir(tile, track) && _m[tile].m4 & 2) {
 			// this is an exit signal that points out from the segment
 			ssd->presignal_exits++;
-			if (GetSignalState(tile, track) != SIGNAL_STATE_RED)
+			if (GetSignalStateByTrackdir(tile, track) != SIGNAL_STATE_RED)
 				ssd->presignal_exits_free++;
 		}
 
@@ -1653,7 +1653,7 @@ static void ChangeSignalStates(SetSignalsData *ssd)
 			// subtract for dual combo signals so they don't count themselves
 			if (_m[tile].m4 & 2 && HasSignalOnTrackdir(tile, ssd->bit[i])) {
 				ex--;
-				if (GetSignalState(tile, ssd->bit[i]) != SIGNAL_STATE_RED) exfree--;
+				if (GetSignalStateByTrackdir(tile, ssd->bit[i]) != SIGNAL_STATE_RED) exfree--;
 			}
 
 			// if we have exits and none are free, make red.

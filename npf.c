@@ -342,7 +342,7 @@ static int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 	/* Check for signals */
 	if (IsTileType(tile, MP_RAILWAY) && HasSignalOnTrackdir(tile, trackdir)) {
 		/* Ordinary track with signals */
-		if (GetSignalState(tile, trackdir) == SIGNAL_STATE_RED) {
+		if (GetSignalStateByTrackdir(tile, trackdir) == SIGNAL_STATE_RED) {
 			/* Signal facing us is red */
 			if (!NPFGetFlag(current, NPF_FLAG_SEEN_SIGNAL)) {
 				/* Penalize the first signal we
