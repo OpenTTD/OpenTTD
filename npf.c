@@ -216,14 +216,14 @@ static void NPFMarkTile(TileIndex tile)
 		case MP_RAILWAY:
 			/* DEBUG: mark visited tiles by mowing the grass under them ;-) */
 			if (!IsTileDepotType(tile, TRANSPORT_RAIL)) {
-				SB(_m[tile].m2, 0, 4, 0);
+				SetRailGroundType(tile, RAIL_GROUND_BARREN);
 				MarkTileDirtyByTile(tile);
 			}
 			break;
 
 		case MP_STREET:
 			if (!IsTileDepotType(tile, TRANSPORT_ROAD)) {
-				SB(_m[tile].m4, 4, 3, 0);
+				SetGroundType(tile, RGT_BARREN);
 				MarkTileDirtyByTile(tile);
 			}
 			break;
@@ -474,19 +474,6 @@ static bool VehicleMayEnterTile(Owner owner, TileIndex tile, DiagDirection enter
 			break;
 
 		case MP_TUNNELBRIDGE:
-#if 0
-/* OPTIMISATION: If we are on the middle of a bridge, we will not do the cpu
- * intensive owner check, instead we will just assume that if the vehicle
- * managed to get on the bridge, it is probably allowed to :-)
- */
-			if ((_m[tile].m5 & 0xC6) == 0xC0 && GB(_m[tile].m5, 0, 1) == (enterdir & 0x1)) {
-				/* on the middle part of a railway bridge: find bridge ending */
-				while (IsTileType(tile, MP_TUNNELBRIDGE) && !((_m[tile].m5 & 0xC6) == 0x80)) {
-					tile += TileOffsByDir(GB(_m[tile].m5, 0, 1));
-				}
-			}
-			/* if we were on a railway middle part, we are now at a railway bridge ending */
-#endif
 			if ((IsTunnel(tile) && GetTunnelTransportType(tile) == TRANSPORT_RAIL) ||
 					(IsBridge(tile) && (
 						(
