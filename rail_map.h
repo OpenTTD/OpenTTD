@@ -202,6 +202,50 @@ static inline void SetSignalVariant(TileIndex t, SignalVariant v)
 }
 
 
+typedef enum RailGroundType {
+	RAIL_MAP2LO_GROUND_MASK = 0xF,
+	RAIL_GROUND_BARREN = 0,
+	RAIL_GROUND_GRASS = 1,
+	RAIL_GROUND_FENCE_NW = 2,
+	RAIL_GROUND_FENCE_SE = 3,
+	RAIL_GROUND_FENCE_SENW = 4,
+	RAIL_GROUND_FENCE_NE = 5,
+	RAIL_GROUND_FENCE_SW = 6,
+	RAIL_GROUND_FENCE_NESW = 7,
+	RAIL_GROUND_FENCE_VERT1 = 8,
+	RAIL_GROUND_FENCE_VERT2 = 9,
+	RAIL_GROUND_FENCE_HORIZ1 = 10,
+	RAIL_GROUND_FENCE_HORIZ2 = 11,
+	RAIL_GROUND_ICE_DESERT = 12,
+} RailGroundType;
+
+static inline void SetRailGroundType(TileIndex t, RailGroundType rgt)
+{
+	if (GetRailTileType(t) == RAIL_TYPE_DEPOT_WAYPOINT) {
+		SB(_m[t].m4, 0, 4, rgt);
+		return;
+	}
+	SB(_m[t].m2, 0, 4, rgt);
+}
+
+static inline RailGroundType GetRailGroundType(TileIndex t)
+{
+	/* TODO Unify this */
+	if (GetRailTileType(t) == RAIL_TYPE_DEPOT_WAYPOINT) return GB(_m[t].m4, 0, 4);
+	return GB(_m[t].m2, 0, 4);
+}
+
+static inline bool IsBarrenRailGround(TileIndex t)
+{
+	return GetRailGroundType(t) == RAIL_GROUND_BARREN;
+}
+
+static inline bool IsSnowRailGround(TileIndex t)
+{
+	return GetRailGroundType(t) == RAIL_GROUND_ICE_DESERT;
+}
+
+
 static inline void MakeRailNormal(TileIndex t, Owner o, TrackBits b, RailType r)
 {
 	SetTileType(t, MP_RAILWAY);

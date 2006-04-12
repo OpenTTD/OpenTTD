@@ -54,24 +54,6 @@ void ShowTrainDepotWindow(TileIndex tile);
  */
 
 
-// Constants for lower part of Map2 byte.
-enum RailMap2Lower4 {
-	RAIL_MAP2LO_GROUND_MASK = 0xF,
-	RAIL_GROUND_BROWN = 0,
-	RAIL_GROUND_GREEN = 1,
-	RAIL_GROUND_FENCE_NW = 2,
-	RAIL_GROUND_FENCE_SE = 3,
-	RAIL_GROUND_FENCE_SENW = 4,
-	RAIL_GROUND_FENCE_NE = 5,
-	RAIL_GROUND_FENCE_SW = 6,
-	RAIL_GROUND_FENCE_NESW = 7,
-	RAIL_GROUND_FENCE_VERT1 = 8,
-	RAIL_GROUND_FENCE_VERT2 = 9,
-	RAIL_GROUND_FENCE_HORIZ1 = 10,
-	RAIL_GROUND_FENCE_HORIZ2 = 11,
-	RAIL_GROUND_ICE_DESERT = 12,
-};
-
 
 /* MAP2 byte:    abcd???? => Signal On? Same coding as map3lo
  * MAP3LO byte:  abcd???? => Signal Exists?
@@ -290,7 +272,7 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			cost += ret;
 
 			if (flags & DC_EXEC) {
-				_m[tile].m2 &= ~RAIL_MAP2LO_GROUND_MASK; // Bare land
+				SetRailGroundType(tile, RAIL_GROUND_BARREN);
 				_m[tile].m5 |= trackbit;
 			}
 			break;
@@ -1197,11 +1179,13 @@ static void DrawSpecialBuilding(
  * @param snow Draw as snow
  * @param flat Always draw foundation
  */
-static void DrawTrackBits(TileInfo* ti, TrackBits track, bool earth, bool snow, bool flat)
+static void DrawTrackBits(TileInfo* ti, TrackBits track, bool flat)
 {
 	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 	PalSpriteID image;
 	bool junction = false;
+	bool earth = IsBarrenRailGround(ti->tile);
+	bool snow = IsSnowRailGround(ti->tile);
 
 	// Select the sprite to use.
 	(image = rti->base_sprites.track_y, track == TRACK_BIT_Y) ||
@@ -1309,14 +1293,10 @@ static void DrawTile_Track(TileInfo *ti)
 
 	if (GetRailTileType(ti->tile) != RAIL_TYPE_DEPOT_WAYPOINT) {
 		TrackBits rails = GetTrackBits(ti->tile);
-		bool earth = (_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK) == RAIL_GROUND_BROWN;
-		bool snow = (_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK) == RAIL_GROUND_ICE_DESERT;
 
-		DrawTrackBits(ti, rails, earth, snow, false);
+		DrawTrackBits(ti, rails, false);
 
-		if (_display_opt & DO_FULL_DETAIL) {
-			_detailed_track_proc[_m[ti->tile].m2 & RAIL_MAP2LO_GROUND_MASK](ti);
-		}
+		if (_display_opt & DO_FULL_DETAIL) _detailed_track_proc[GetRailGroundType(ti->tile)](ti);
 
 		/* draw signals also? */
 		if (GetRailTileType(ti->tile) == RAIL_TYPE_SIGNALS) DrawSignals(ti->tile, rails);
@@ -1756,37 +1736,34 @@ static void AnimateTile_Track(TileIndex tile)
 
 static void TileLoop_Track(TileIndex tile)
 {
-	byte old_ground;
-	byte new_ground;
-
-	if (GetRailTileType(tile) == RAIL_TYPE_DEPOT_WAYPOINT) {
-		old_ground = GB(_m[tile].m4, 0, 4);
-	} else {
-		old_ground = GB(_m[tile].m2, 0, 4);
-	}
+	RailGroundType old_ground = GetRailGroundType(tile);
+	RailGroundType new_ground = old_ground;
 
 	switch (_opt.landscape) {
 		case LT_HILLY:
-			if (GetTileZ(tile) > _opt.snow_line) { /* convert into snow? */
-				new_ground = RAIL_GROUND_ICE_DESERT;
-				goto modify_me;
-			}
+			if (GetTileZ(tile) > _opt.snow_line) new_ground = RAIL_GROUND_ICE_DESERT;
 			break;
 
 		case LT_DESERT:
-			if (GetTropicZone(tile) == TROPICZONE_DESERT) { /* convert into desert? */
-				new_ground = RAIL_GROUND_ICE_DESERT;
-				goto modify_me;
-			}
+			if (GetTropicZone(tile) == TROPICZONE_DESERT) new_ground = RAIL_GROUND_ICE_DESERT;
 			break;
+
+		default:
+			break;
+	}
+
+	if (new_ground != old_ground) {
+		SetRailGroundType(tile, new_ground);
+		MarkTileDirtyByTile(tile);
+		return;
 	}
 
 	// Don't continue tile loop for depots
 	if (GetRailTileType(tile) == RAIL_TYPE_DEPOT_WAYPOINT) return;
 
-	new_ground = RAIL_GROUND_GREEN;
+	new_ground = RAIL_GROUND_GRASS;
 
-	if (old_ground != RAIL_GROUND_BROWN) { /* wait until bottom is green */
+	if (old_ground != RAIL_GROUND_BARREN) { /* wait until bottom is green */
 		/* determine direction of fence */
 		TrackBits rail = GetTrackBits(tile);
 
@@ -1861,14 +1838,8 @@ static void TileLoop_Track(TileIndex tile)
 		}
 	}
 
-modify_me:;
-	/* tile changed? */
 	if (old_ground != new_ground) {
-		if (GetRailTileType(tile) == RAIL_TYPE_DEPOT_WAYPOINT) {
-			SB(_m[tile].m4, 0, 4, new_ground);
-		} else {
-			SB(_m[tile].m2, 0, 4, new_ground);
-		}
+		SetRailGroundType(tile, new_ground);
 		MarkTileDirtyByTile(tile);
 	}
 }
