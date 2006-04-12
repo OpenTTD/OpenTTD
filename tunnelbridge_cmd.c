@@ -84,6 +84,7 @@ enum {
 	BRIDGE_PARTLY_LEVELED_FOUNDATION = 1 << 1 | 1 << 2 | 1 << 4 | 1 << 8,
 	// no foundations (X,Y direction) (tileh's 0, 3, 6, 9, 12)
 	BRIDGE_NO_FOUNDATION = 1 << 0 | 1 << 3 | 1 << 6 | 1 << 9 | 1 << 12,
+	BRIDGE_HORZ_RAMP = (BRIDGE_PARTLY_LEVELED_FOUNDATION | BRIDGE_NO_FOUNDATION) & ~0
 };
 
 static inline const PalSpriteID *GetBridgeSpriteTable(int index, byte table)
@@ -1078,71 +1079,61 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 static uint GetSlopeZ_TunnelBridge(const TileInfo* ti)
 {
+	TileIndex tile = ti->tile;
 	uint z = ti->z;
 	uint x = ti->x & 0xF;
 	uint y = ti->y & 0xF;
 	uint tileh = ti->tileh;
 
-	// swap directions if Y tunnel/bridge to let the code handle the X case only.
-	if (ti->map5 & 1) uintswap(x,y); // XXX bogus: it could be a tunnel, bridge ramp or bridge middle tile
+	if (IsTunnel(tile)) {
+		uint pos = (DiagDirToAxis(GetTunnelDirection(tile)) == AXIS_X ? y : x);
 
-	// to the side of the tunnel/bridge?
-	if (IS_INT_INSIDE(y, 5, 10+1)) {
-		if (IsTunnel(ti->tile)) return z;
-
-		// bridge?
-		if (IsBridge(ti->tile)) {
-			if (IsBridgeRamp(ti->tile)) {
-				if (BRIDGE_FULL_LEVELED_FOUNDATION & (1 << tileh)) // 7, 11, 13, 14
-					z += 8;
-
-				// no ramp for bridge ending
-				if ((BRIDGE_PARTLY_LEVELED_FOUNDATION & (1 << tileh) || BRIDGE_NO_FOUNDATION & (1 << tileh)) && tileh != 0) {
-					return z + 8;
-				} else if (!(ti->map5 & 0x20)) { // northern / southern ending
-					// ramp
-					return z + (x >> 1) + 1;
-				} else {
-					// ramp in opposite dir
-					return z + ((x ^ 0xF) >> 1);
-				}
-			} else {
-				// build on slopes?
-				if (tileh != 0) z += 8;
-
-				// keep the same elevation because we're on the bridge?
-				if (_get_z_hint >= z + 8) return _get_z_hint;
-
-				// actually on the bridge, but not yet in the shared area.
-				if (!IS_INT_INSIDE(x, 5, 10 + 1)) return GetBridgeHeight(ti->tile) + 8;
-
-				// in the shared area, assume that we're below the bridge, cause otherwise the hint would've caught it.
-				// if rail or road below then it means it's possibly build on slope below the bridge.
-				if (IsTransportUnderBridge(ti->tile)) {
-					uint f = _bridge_foundations[GetBridgeAxis(ti->tile)][tileh];
-
-					// make sure that the slope is not inclined foundation
-					if (IS_BYTE_INSIDE(f, 1, 15)) return z;
-
-					// change foundation type? XXX - should be const; accessor function!
-					if (f != 0) tileh = _inclined_tileh[f - 15];
-				}
-
-				// no transport route, fallback to default
-			}
-		}
+		// In the tunnel entrance?
+		if (5 <= pos && pos <= 10) return z;
 	} else {
-		if (IsBridge(ti->tile) && IsBridgeMiddle(ti->tile) && IsTransportUnderBridge(ti->tile)) {
-			uint f;
-			if (tileh != 0) z += 8;
-			f = _bridge_foundations[GetBridgeAxis(ti->tile)][tileh];
-			if (IS_BYTE_INSIDE(f, 1, 15)) return z;
-			if (f != 0) tileh = _inclined_tileh[f - 15];
+		if (IsBridgeRamp(tile)) {
+			DiagDirection dir = GetBridgeRampDirection(tile);
+			uint pos = (DiagDirToAxis(dir) == AXIS_X ? y : x);
+
+			// On the bridge ramp?
+			if (5 <= pos && pos <= 10) {
+				uint delta;
+
+				if (HASBIT(BRIDGE_HORZ_RAMP, tileh)) return z + 8;
+
+				if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh)) z += 8;
+				switch (dir) {
+					default:
+					case DIAGDIR_NE: delta = (15 - x) / 2; break;
+					case DIAGDIR_SE: delta = y / 2; break;
+					case DIAGDIR_SW: delta = x / 2; break;
+					case DIAGDIR_NW: delta = (15 - y) / 2; break;
+				}
+				return z + 1 + delta;
+			} else {
+				uint f = GetBridgeFoundation(tileh, DiagDirToAxis(dir));
+
+				if (f != 0) {
+					if (f < 15) return z + 8;
+					tileh = _inclined_tileh[f - 15];
+				}
+			}
+		} else {
+			// HACK on the bridge?
+			if (_get_z_hint >= z + 8 + (tileh == 0 ? 0 : 8)) return _get_z_hint;
+
+			if (IsTransportUnderBridge(tile)) {
+				uint f = _bridge_foundations[GetBridgeAxis(tile)][tileh];
+
+				if (f != 0) {
+					if (f < 15) return z + 8;
+					tileh = _inclined_tileh[f - 15];
+				}
+			}
 		}
 	}
 
-	// default case
-	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, tileh) + ti->z;
+	return z + GetPartialZ(x, y, tileh);
 }
 
 static uint GetSlopeTileh_TunnelBridge(TileIndex tile, uint tileh)
