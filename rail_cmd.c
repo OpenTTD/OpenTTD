@@ -703,26 +703,7 @@ int32 CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 					SetSignalType(tile, type == SIGTYPE_COMBO ? SIGTYPE_NORMAL : type + 1);
 				} else {
-					// cycle between two-way -> one-way -> one-way -> ...
-					/* TODO: Rewrite switch into something more general */
-					switch (track) {
-						case TRACK_LOWER:
-						case TRACK_RIGHT: {
-							byte signal = (_m[tile].m3 - 0x10) & 0x30;
-							if (signal == 0) signal = 0x30;
-							_m[tile].m3 &= ~0x30;
-							_m[tile].m3 |= signal;
-							break;
-						}
-
-						default: {
-							byte signal = (_m[tile].m3 - 0x40) & 0xC0;
-							if (signal == 0) signal = 0xC0;
-							_m[tile].m3 &= ~0xC0;
-							_m[tile].m3 |= signal;
-							break;
-						}
-					}
+					CycleSignalSide(tile, track);
 				}
 			}
 		} else {

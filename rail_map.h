@@ -174,6 +174,17 @@ static inline bool IsPresignalExit(TileIndex t)
 	return GetSignalType(t) == SIGTYPE_EXIT || GetSignalType(t) == SIGTYPE_COMBO;
 }
 
+static inline void CycleSignalSide(TileIndex t, Track track)
+{
+	byte sig;
+	byte pos = 6;
+	if (track == TRACK_LOWER || track == TRACK_RIGHT) pos = 4;
+
+	sig = GB(_m[t].m3, pos, 2);
+	if (--sig == 0) sig = 3;
+	SB(_m[t].m3, pos, 2, sig);
+}
+
 
 typedef enum SignalVariant {
 	SIG_ELECTRIC  = 0,
