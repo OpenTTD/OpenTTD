@@ -1498,10 +1498,10 @@ static bool SetSignalsEnumProc(TileIndex tile, SetSignalsData *ssd, int track, u
 			}
 
 			// remember if this block has a presignal.
-			ssd->has_presignal |= (_m[tile].m4 & 1);
+			ssd->has_presignal |= IsPresignalEntry(tile);
 		}
 
-		if (HasSignalOnTrackdir(tile, track) && _m[tile].m4 & 2) {
+		if (HasSignalOnTrackdir(tile, track) && IsPresignalExit(tile)) {
 			// this is an exit signal that points out from the segment
 			ssd->presignal_exits++;
 			if (GetSignalStateByTrackdir(tile, track) != SIGNAL_STATE_RED)
@@ -1647,11 +1647,11 @@ static void ChangeSignalStates(SetSignalsData *ssd)
 		uint16 m2 = _m[tile].m2;
 
 		// presignals don't turn green if there is at least one presignal exit and none are free
-		if (_m[tile].m4 & 1) {
+		if (IsPresignalEntry(tile)) {
 			int ex = ssd->presignal_exits, exfree = ssd->presignal_exits_free;
 
 			// subtract for dual combo signals so they don't count themselves
-			if (_m[tile].m4 & 2 && HasSignalOnTrackdir(tile, ssd->bit[i])) {
+			if (IsPresignalExit(tile) && HasSignalOnTrackdir(tile, ssd->bit[i])) {
 				ex--;
 				if (GetSignalStateByTrackdir(tile, ssd->bit[i]) != SIGNAL_STATE_RED) exfree--;
 			}
@@ -1671,7 +1671,7 @@ make_red:
 		}
 
 		/* Update signals on the other side of this exit-combo signal; it changed. */
-		if (_m[tile].m4 & 2) {
+		if (IsPresignalExit(tile)) {
 			if (ssd->cur_stack != NUM_SSD_STACK) {
 				ssd->next_tile[ssd->cur_stack] = tile;
 				ssd->next_dir[ssd->cur_stack] = _dir_from_track[ssd->bit[i]];

@@ -164,6 +164,16 @@ static inline void SetSignalType(TileIndex t, SignalType s)
 	SB(_m[t].m4, 0, 2, s);
 }
 
+static inline bool IsPresignalEntry(TileIndex t)
+{
+	return GetSignalType(t) == SIGTYPE_ENTRY || GetSignalType(t) == SIGTYPE_COMBO;
+}
+
+static inline bool IsPresignalExit(TileIndex t)
+{
+	return GetSignalType(t) == SIGTYPE_EXIT || GetSignalType(t) == SIGTYPE_COMBO;
+}
+
 
 typedef enum SignalVariant {
 	SIG_ELECTRIC  = 0,
