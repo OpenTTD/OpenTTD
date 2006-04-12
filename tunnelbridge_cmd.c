@@ -1123,6 +1123,7 @@ static uint GetSlopeZ_TunnelBridge(const TileInfo* ti)
 				uint f = _bridge_foundations[GetBridgeAxis(tile)][tileh];
 
 				if (f != 0) {
+					if (f == 1) return z;
 					if (f < 15) return z + 8;
 					tileh = _inclined_tileh[f - 15];
 				}
