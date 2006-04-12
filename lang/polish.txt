@@ -306,6 +306,36 @@ STR_0151_MAP_OF_WORLD                                           :Mapa swiata
 STR_0152_TOWN_DIRECTORY                                         :Lista miast
 STR_0153_SUBSIDIES                                              :Subsydia
 
+STR_UNITS_IMPERIAL                                              :Anglosaskie
+STR_UNITS_METRIC                                                :Metryczne
+STR_UNITS_SI                                                    :SI
+
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}KM
+STR_UNITS_POWER_METRIC                                          :{COMMA}KM
+STR_UNITS_POWER_SI                                              :{COMMA}kW
+
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P a y ""}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton{P a y ""}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon{P "" y ow}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P "" y ow}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
+
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Wykres obrotu
 STR_0155_INCOME_GRAPH                                           :Wykres przychodow
@@ -343,6 +373,8 @@ STR_SORT_BY_AGE                                                 :Wiek
 STR_SORT_BY_RELIABILITY                                         :Niezawodnosc
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Calkowita pojemnosc dla typu towaru
 STR_SORT_BY_MAX_SPEED                                           :Predkosc maks.
+STR_SORT_BY_MODEL                                               :Model
+STR_SORT_BY_VALUE                                               :Wartosc
 
 ############ range for months starts
 STR_0162_JAN                                                    :Sty
@@ -1069,7 +1101,7 @@ STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Zmierza
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Zmierza do {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT                                              :Idz przez {WAYPOINT}
-STR_GO_NON_STOP_TO_WAYPOINT                                     :Idz bez przestanku przez {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT                                     :Idz bez zatrzymywania przez {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY                                           :Pkt. kontrolny {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL                                    :Pkt. kontrolny  {TOWN} #{COMMA}
@@ -2762,7 +2794,10 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Wyswietl
 STR_REPLACE_HELP                                                :{BLACK}Ta funkcja pozwala wybrac typ pojazdu i zastapic go innym. Bedzie sie to odbywac w momencie gdy pociag zjedzie do zajezdni
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Usuniecie pojazdu: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Autowymiana zachowuje dlugosc pociagu poprzez usuwanie wagonow (poczawszy od poczatku), jesli wymiana lokomotywy spowoduje wydluzenie pociagu.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotywa nie moze byc zbodowana
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotywa nie moze byc zbudowana
+
+STR_ENGINES                                                     :Lokomotywy
+STR_WAGONS                                                      :Wagon{P "" y ow}
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista tablic - {COMMA} Tablice
@@ -2770,6 +2805,7 @@ STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista ta
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Pojazdy kolejowe
+STR_ELRAIL_VEHICLES                                             :Elektryczne lokomotywy
 STR_MONORAIL_VEHICLES                                           :Pojazdy jednoszyn.
 STR_MAGLEV_VEHICLES                                             :Pojazdy Maglew
 

@@ -307,6 +307,15 @@ STR_0151_MAP_OF_WORLD                                           :Carte du monde
 STR_0152_TOWN_DIRECTORY                                         :Annuaire des Villes
 STR_0153_SUBSIDIES                                              :Subventions
 
+
+
+
+
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonne{P "" s}
+
+
+
+
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Profit d'opération
 STR_0155_INCOME_GRAPH                                           :Revenu
