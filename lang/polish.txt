@@ -2797,7 +2797,7 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Autowymi
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotywa nie moze byc zbudowana
 
 STR_ENGINES                                                     :Lokomotywy
-STR_WAGONS                                                      :Wagon{P "" y ow}
+STR_WAGONS                                                      :Wagonow
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista tablic - {COMMA} Tablice
