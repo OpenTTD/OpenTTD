@@ -65,10 +65,21 @@ static inline RoadStopType GetRoadStopType(TileIndex t)
 	return GetStationType(t) == STATION_TRUCK ? RS_TRUCK : RS_BUS;
 }
 
-static inline bool IsRailwayStation(TileIndex t)
+static inline byte GetStationGfx(TileIndex t)
 {
 	assert(IsTileType(t, MP_STATION));
-	return _m[t].m5 < RAILWAY_BASE + RAILWAY_SIZE;
+	return _m[t].m5;
+}
+
+static inline void SetStationGfx(TileIndex t, byte gfx)
+{
+	assert(IsTileType(t, MP_STATION));
+	_m[t].m5 = gfx;
+}
+
+static inline bool IsRailwayStation(TileIndex t)
+{
+	return GetStationGfx(t) < RAILWAY_BASE + RAILWAY_SIZE;
 }
 
 static inline bool IsRailwayStationTile(TileIndex t)
@@ -78,31 +89,29 @@ static inline bool IsRailwayStationTile(TileIndex t)
 
 static inline bool IsHangar(TileIndex t)
 {
-	assert(IsTileType(t, MP_STATION));
+	byte gfx = GetStationGfx(t);
 	return
-		_m[t].m5 == HANGAR_TILE_0 ||
-		_m[t].m5 == HANGAR_TILE_1 ||
-		_m[t].m5 == HANGAR_TILE_2;
+		gfx == HANGAR_TILE_0 ||
+		gfx == HANGAR_TILE_1 ||
+		gfx == HANGAR_TILE_2;
 }
 
 static inline bool IsAirport(TileIndex t)
 {
-	assert(IsTileType(t, MP_STATION));
+	byte gfx = GetStationGfx(t);
 	return
-		IS_INT_INSIDE(_m[t].m5, AIRPORT_BASE, AIRPORT_BASE + AIRPORT_SIZE) ||
-		IS_INT_INSIDE(_m[t].m5, AIRPORT_BASE_EXTENDED, AIRPORT_BASE_EXTENDED + AIRPORT_SIZE_EXTENDED);
+		IS_INT_INSIDE(gfx, AIRPORT_BASE, AIRPORT_BASE + AIRPORT_SIZE) ||
+		IS_INT_INSIDE(gfx, AIRPORT_BASE_EXTENDED, AIRPORT_BASE_EXTENDED + AIRPORT_SIZE_EXTENDED);
 }
 
 static inline bool IsTruckStop(TileIndex t)
 {
-	assert(IsTileType(t, MP_STATION));
-	return IS_INT_INSIDE(_m[t].m5, TRUCK_BASE, TRUCK_BASE + TRUCK_SIZE);
+	return IS_INT_INSIDE(GetStationGfx(t), TRUCK_BASE, TRUCK_BASE + TRUCK_SIZE);
 }
 
 static inline bool IsBusStop(TileIndex t)
 {
-	assert(IsTileType(t, MP_STATION));
-	return IS_INT_INSIDE(_m[t].m5, BUS_BASE, BUS_BASE + BUS_SIZE);
+	return IS_INT_INSIDE(GetStationGfx(t), BUS_BASE, BUS_BASE + BUS_SIZE);
 }
 
 static inline bool IsRoadStop(TileIndex t)
@@ -118,28 +127,25 @@ static inline bool IsRoadStopTile(TileIndex t)
 /**
  * Gets the direction the road stop entrance points towards.
  */
-static inline DiagDirection GetRoadStopDir(TileIndex tile)
+static inline DiagDirection GetRoadStopDir(TileIndex t)
 {
-	assert(IsRoadStopTile(tile));
-	return (_m[tile].m5 - TRUCK_BASE) & 3;
+	assert(IsRoadStopTile(t));
+	return (GetStationGfx(t) - TRUCK_BASE) & 3;
 }
 
 static inline bool IsOilRig(TileIndex t)
 {
-	assert(IsTileType(t, MP_STATION));
-	return _m[t].m5 == OILRIG_BASE;
+	return GetStationGfx(t) == OILRIG_BASE;
 }
 
 static inline bool IsDock(TileIndex t)
 {
-	assert(IsTileType(t, MP_STATION));
-	return IS_INT_INSIDE(_m[t].m5, DOCK_BASE, DOCK_BASE + DOCK_SIZE_TOTAL);
+	return IS_INT_INSIDE(GetStationGfx(t), DOCK_BASE, DOCK_BASE + DOCK_SIZE_TOTAL);
 }
 
 static inline bool IsBuoy_(TileIndex t) // XXX _ due to naming conflict
 {
-	assert(IsTileType(t, MP_STATION));
-	return _m[t].m5 == BUOY_BASE;
+	return GetStationGfx(t) == BUOY_BASE;
 }
 
 static inline bool IsBuoyTile(TileIndex t)
@@ -156,8 +162,7 @@ static inline bool IsHangarTile(TileIndex t)
 
 static inline Axis GetRailStationAxis(TileIndex t)
 {
-	assert(IsRailwayStation(t));
-	return HASBIT(_m[t].m5, 0) ? AXIS_Y : AXIS_X;
+	return HASBIT(GetStationGfx(t), 0) ? AXIS_Y : AXIS_X;
 }
 
 
@@ -178,10 +183,9 @@ static inline bool IsCompatibleTrainStationTile(TileIndex t1, TileIndex t2)
 
 static inline DiagDirection GetDockDirection(TileIndex t)
 {
-	assert(IsTileType(t, MP_STATION));
-	assert(_m[t].m5 < DOCK_BASE_WATER_PART);
-
-	return (DiagDirection)(_m[t].m5 - DOCK_BASE);
+	byte gfx = GetStationGfx(t);
+	assert(gfx < DOCK_BASE_WATER_PART);
+	return (DiagDirection)(gfx - DOCK_BASE);
 }
 
 static inline TileIndexDiffC GetDockOffset(TileIndex t)
@@ -222,13 +226,6 @@ static inline uint GetCustomStationSprite(TileIndex t)
 	assert(IsTileType(t, MP_STATION));
 	return _m[t].m4;
 }
-
-static inline byte GetStationGfx(TileIndex t)
-{
-	assert(IsTileType(t, MP_STATION));
-	return _m[t].m5;
-}
-
 
 static inline void MakeStation(TileIndex t, Owner o, StationID sid, byte m5)
 {
