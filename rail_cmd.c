@@ -670,7 +670,7 @@ int32 CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			_m[tile].m5 |= RAIL_TYPE_SIGNALS; // change into signals
 			_m[tile].m2 |= 0xF0;              // all signals are on
 			_m[tile].m3 &= ~0xF0;          // no signals built by default
-			_m[tile].m4 = 0;
+			SetSignalType(tile, SIGTYPE_NORMAL);
 			SetSignalVariant(tile, sigvar);
 		}
 
