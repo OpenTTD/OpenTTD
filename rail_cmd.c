@@ -1052,7 +1052,7 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 
 #include "table/track_land.h"
 
-static void DrawSignalHelper(TileIndex tile, byte condition, uint32 image_and_pos)
+static void DrawSingleSignal(TileIndex tile, byte condition, uint32 image_and_pos)
 {
 	bool otherside = _opt.road_side & _patches.signal_side;
 	static const Point SignalPositions[2][12] = {
@@ -1281,6 +1281,44 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track, bool earth, bool snow, 
 
 }
 
+static void DrawSignals(TileIndex tile, TrackBits rails)
+{
+#define HAS_SIGNAL(x) (m23 & (byte)(0x1 << (x)))
+#define ISON_SIGNAL(x) (m23 & (byte)(0x10 << (x)))
+#define MAYBE_DRAW_SIGNAL(x,y,z) if (HAS_SIGNAL(x)) DrawSingleSignal(tile, ISON_SIGNAL(x), ((y-0x4FB) << 4)|(z))
+
+	byte m23;
+
+	m23 = (_m[tile].m3 >> 4) | (_m[tile].m2 & 0xF0);
+
+	if (!(rails & TRACK_BIT_Y)) {
+		if (!(rails & TRACK_BIT_X)) {
+			if (rails & TRACK_BIT_LEFT) {
+				MAYBE_DRAW_SIGNAL(2, 0x509, 0);
+				MAYBE_DRAW_SIGNAL(3, 0x507, 1);
+			}
+			if (rails & TRACK_BIT_RIGHT) {
+				MAYBE_DRAW_SIGNAL(0, 0x509, 2);
+				MAYBE_DRAW_SIGNAL(1, 0x507, 3);
+			}
+			if (rails & TRACK_BIT_UPPER) {
+				MAYBE_DRAW_SIGNAL(3, 0x505, 4);
+				MAYBE_DRAW_SIGNAL(2, 0x503, 5);
+			}
+			if (rails & TRACK_BIT_LOWER) {
+				MAYBE_DRAW_SIGNAL(1, 0x505, 6);
+				MAYBE_DRAW_SIGNAL(0, 0x503, 7);
+			}
+		} else {
+			MAYBE_DRAW_SIGNAL(3, 0x4FB, 8);
+			MAYBE_DRAW_SIGNAL(2, 0x4FD, 9);
+		}
+	} else {
+		MAYBE_DRAW_SIGNAL(3, 0x4FF, 10);
+		MAYBE_DRAW_SIGNAL(2, 0x501, 11);
+	}
+}
+
 static void DrawTile_Track(TileInfo *ti)
 {
 	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
@@ -1300,44 +1338,8 @@ static void DrawTile_Track(TileInfo *ti)
 		}
 
 		/* draw signals also? */
-		if (GetRailTileType(ti->tile) != RAIL_TYPE_SIGNALS) return;
+		if (GetRailTileType(ti->tile) == RAIL_TYPE_SIGNALS) DrawSignals(ti->tile, rails);
 
-		{
-			byte m23;
-
-			m23 = (_m[ti->tile].m3 >> 4) | (_m[ti->tile].m2 & 0xF0);
-
-#define HAS_SIGNAL(x) (m23 & (byte)(0x1 << (x)))
-#define ISON_SIGNAL(x) (m23 & (byte)(0x10 << (x)))
-#define MAYBE_DRAW_SIGNAL(x,y,z) if (HAS_SIGNAL(x)) DrawSignalHelper(ti->tile, ISON_SIGNAL(x), ((y-0x4FB) << 4)|(z))
-
-		if (!(rails & TRACK_BIT_Y)) {
-			if (!(rails & TRACK_BIT_X)) {
-				if (rails & TRACK_BIT_LEFT) {
-					MAYBE_DRAW_SIGNAL(2, 0x509, 0);
-					MAYBE_DRAW_SIGNAL(3, 0x507, 1);
-				}
-				if (rails & TRACK_BIT_RIGHT) {
-					MAYBE_DRAW_SIGNAL(0, 0x509, 2);
-					MAYBE_DRAW_SIGNAL(1, 0x507, 3);
-				}
-				if (rails & TRACK_BIT_UPPER) {
-					MAYBE_DRAW_SIGNAL(3, 0x505, 4);
-					MAYBE_DRAW_SIGNAL(2, 0x503, 5);
-				}
-				if (rails & TRACK_BIT_LOWER) {
-					MAYBE_DRAW_SIGNAL(1, 0x505, 6);
-					MAYBE_DRAW_SIGNAL(0, 0x503, 7);
-				}
-			} else {
-				MAYBE_DRAW_SIGNAL(3, 0x4FB, 8);
-				MAYBE_DRAW_SIGNAL(2, 0x4FD, 9);
-			}
-		} else {
-			MAYBE_DRAW_SIGNAL(3, 0x4FF, 10);
-			MAYBE_DRAW_SIGNAL(2, 0x501, 11);
-		}
-		}
 	} else {
 		/* draw depots / waypoints */
 		const DrawTrackSeqStruct *drss;
