@@ -1308,7 +1308,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 		if (ti->tileh != 0) DrawFoundation(ti, ti->tileh);
 
-		if (IsRailWaypoint(ti->tile) && HASBIT(_m[ti->tile].m3, 4)) {
+		if (IsRailWaypoint(ti->tile) && IsCustomWaypoint(ti->tile)) {
 			// look for customization
 			byte stat_id = GetWaypointByTile(ti->tile)->stat_id;
 			const StationSpec *stat = GetCustomStation(STAT_CLASS_WAYP, stat_id);
