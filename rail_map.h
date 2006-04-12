@@ -144,6 +144,11 @@ static inline void ClearCustomWaypointSprite(TileIndex t)
 	CLRBIT(_m[t].m3, 4);
 }
 
+static inline Axis GetWaypointAxis(TileIndex t)
+{
+	return HASBIT(_m[t].m5, 0) ? AXIS_Y : AXIS_X;
+}
+
 
 typedef enum SignalType {
 	SIGTYPE_NORMAL  = 0, // normal signal

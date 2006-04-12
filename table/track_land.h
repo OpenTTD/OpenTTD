@@ -58,7 +58,9 @@ static const DrawTrackSeqStruct* const _track_depot_layout_table[] = {
 	_track_depot_layout_table_1,
 	_track_depot_layout_table_2,
 	_track_depot_layout_table_3,
+};
 
+static const DrawTrackSeqStruct* const _track_waypoint_layout_table[] = {
 	_track_waypoint_table_0,
 	_track_waypoint_table_1,
 };

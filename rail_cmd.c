@@ -1304,7 +1304,7 @@ static void DrawTile_Track(TileInfo *ti)
 	} else {
 		/* draw depots / waypoints */
 		const DrawTrackSeqStruct *drss;
-		byte type = ti->map5 & 0x3F; // 0-3: depots, 4-5: waypoints
+		bool is_depot = GetRailTileSubtype(ti->tile) == RAIL_SUBTYPE_DEPOT;
 
 		if (ti->tileh != 0) DrawFoundation(ti, ti->tileh);
 
@@ -1316,7 +1316,7 @@ static void DrawTile_Track(TileInfo *ti)
 			if (stat != NULL) {
 				DrawTileSeqStruct const *seq;
 				// emulate station tile - open with building
-				const DrawTileSprites *cust = &stat->renderdata[2 + (ti->map5 & 0x1)];
+				const DrawTileSprites *cust = &stat->renderdata[2 + GetWaypointAxis(ti->tile)];
 				uint32 relocation = GetCustomStationRelocation(stat, ComposeWaypointStation(ti->tile), 0);
 
 				/* We don't touch the 0x8000 bit. In all this
@@ -1346,7 +1346,7 @@ static void DrawTile_Track(TileInfo *ti)
 			}
 		}
 
-		drss = _track_depot_layout_table[type];
+		drss = is_depot ? _track_depot_layout_table[GetRailDepotDirection(ti->tile)] : _track_waypoint_layout_table[GetWaypointAxis(ti->tile)];
 
 		image = drss++->image;
 		/* @note This is kind of an ugly hack, as the PALETTE_MODIFIER_COLOR indicates
@@ -1356,7 +1356,7 @@ static void DrawTile_Track(TileInfo *ti)
 		// adjust ground tile for desert
 		// (don't adjust for arctic depots, because snow in depots looks weird)
 		// type >= 4 means waypoints
-		if (IsSnowRailGround(ti->tile) && (_opt.landscape == LT_DESERT || type >= 4)) {
+		if (IsSnowRailGround(ti->tile) && (_opt.landscape == LT_DESERT || !is_depot)) {
 			if (image != SPR_FLAT_GRASS_TILE) {
 				image += rti->snow_offset; // tile with tracks
 			} else {
@@ -1370,7 +1370,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 		for (; drss->image != 0; drss++) {
 			DrawSpecialBuilding(
-				drss->image, type < 4 ? rti->total_offset : 0, ti,
+				drss->image, is_depot ? rti->total_offset : 0, ti,
 				drss->subcoord_x, drss->subcoord_y, 0,
 				drss->width, drss->height, 0x17
 			);
