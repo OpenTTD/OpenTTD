@@ -78,7 +78,7 @@ static inline void SetIndustryGfx(TileIndex t, IndustryGfx gfx)
 	_m[t].m5 = gfx;
 }
 
-static inline void MakeIndustry(TileIndex t, uint index, uint gfx)
+static inline void MakeIndustry(TileIndex t, uint index, IndustryGfx gfx)
 {
 	SetTileType(t, MP_INDUSTRY);
 	_m[t].m1 = 0;
@@ -169,5 +169,28 @@ static const IndustryTypeSolver industry_gfx_Solver [IT_END] = {
 	{164, 166}, //IT_TOFFEE_QUARRY,
 	{167, 174}  //IT_SUGAR_MINE,
 };
+
+/**
+ * Get the animation loop number
+ * @param tile the tile to get the animation loop number of
+ * @pre IsTileType(tile, MP_INDUSTRY
+ */
+static inline byte GetIndustryAnimationLoop(TileIndex tile)
+{
+	assert(IsTileType(tile, MP_INDUSTRY));
+	return _m[tile].m4;
+}
+
+/**
+ * Set the animation loop number
+ * @param tile the tile to set the animation loop number of
+ * @param count the new animation frame number
+ * @pre IsTileType(tile, MP_INDUSTRY
+ */
+static inline void SetIndustryAnimationLoop(TileIndex tile, byte count)
+{
+	assert(IsTileType(tile, MP_INDUSTRY));
+	_m[tile].m4 = count;
+}
 
 #endif /* INDUSTRY_MAP_H */

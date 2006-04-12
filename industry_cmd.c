@@ -608,9 +608,14 @@ static void AnimateTile_Industry(TileIndex tile)
 				SndPlayTileFx(SND_2A_EXTRACT_AND_POP, tile);
 			}
 
-			if (m >= 50 && (m=0,++_m[tile].m4 >= 8)) {
-				_m[tile].m4 = 0;
-				DeleteAnimatedTile(tile);
+			if (m >= 50) {
+				int n = GetIndustryAnimationLoop(tile) + 1;
+				m = 0;
+				if (n >= 8) {
+					n = 0;
+					DeleteAnimatedTile(tile);
+				}
+				SetIndustryAnimationLoop(tile, n);
 			}
 			_m[tile].m3 = m;
 			MarkTileDirtyByTile(tile);
@@ -732,7 +737,7 @@ static void MakeIndustryTileBigger(TileIndex tile)
 	case 162:
 	case 165:
 		_m[tile].m3 = 0;
-		_m[tile].m4 = 0;
+		SetIndustryAnimationLoop(tile, 0);
 		break;
 
 	case 148: case 149: case 150: case 151:
@@ -851,7 +856,7 @@ static void TileLoop_Industry(TileIndex tile)
 			Industry* i = GetIndustryByTile(tile);
 			if (i->was_cargo_delivered) {
 				i->was_cargo_delivered = false;
-				_m[tile].m4 = 0;
+				SetIndustryAnimationLoop(tile, 0);
 				AddAnimatedTile(tile);
 			}
 		}
@@ -1162,12 +1167,12 @@ void OnTick_Industry(void)
 }
 
 
-static bool CheckNewIndustry_NULL(TileIndex tile, int type)
+static bool CheckNewIndustry_NULL(TileIndex tile, IndustryType type)
 {
 	return true;
 }
 
-static bool CheckNewIndustry_Forest(TileIndex tile, int type)
+static bool CheckNewIndustry_Forest(TileIndex tile, IndustryType type)
 {
 	if (_opt.landscape == LT_HILLY) {
 		if (GetTileZ(tile) < _opt.snow_line + 16U) {
@@ -1181,7 +1186,7 @@ static bool CheckNewIndustry_Forest(TileIndex tile, int type)
 extern bool _ignore_restrictions;
 
 /* Oil Rig and Oil Refinery */
-static bool CheckNewIndustry_Oil(TileIndex tile, int type)
+static bool CheckNewIndustry_Oil(TileIndex tile, IndustryType type)
 {
 	if (_game_mode == GM_EDITOR && _ignore_restrictions) return true;
 	if (_game_mode == GM_EDITOR && type != IT_OIL_RIG)   return true;
@@ -1192,7 +1197,7 @@ static bool CheckNewIndustry_Oil(TileIndex tile, int type)
 	return false;
 }
 
-static bool CheckNewIndustry_Farm(TileIndex tile, int type)
+static bool CheckNewIndustry_Farm(TileIndex tile, IndustryType type)
 {
 	if (_opt.landscape == LT_HILLY) {
 		if (GetTileZ(tile) + TILE_HEIGHT * 2 >= _opt.snow_line) {
@@ -1203,7 +1208,7 @@ static bool CheckNewIndustry_Farm(TileIndex tile, int type)
 	return true;
 }
 
-static bool CheckNewIndustry_Plantation(TileIndex tile, int type)
+static bool CheckNewIndustry_Plantation(TileIndex tile, IndustryType type)
 {
 	if (GetTropicZone(tile) == TROPICZONE_DESERT) {
 		_error_message = STR_0239_SITE_UNSUITABLE;
@@ -1213,7 +1218,7 @@ static bool CheckNewIndustry_Plantation(TileIndex tile, int type)
 	return true;
 }
 
-static bool CheckNewIndustry_Water(TileIndex tile, int type)
+static bool CheckNewIndustry_Water(TileIndex tile, IndustryType type)
 {
 	if (GetTropicZone(tile) != TROPICZONE_DESERT) {
 		_error_message = STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT;
@@ -1223,7 +1228,7 @@ static bool CheckNewIndustry_Water(TileIndex tile, int type)
 	return true;
 }
 
-static bool CheckNewIndustry_Lumbermill(TileIndex tile, int type)
+static bool CheckNewIndustry_Lumbermill(TileIndex tile, IndustryType type)
 {
 	if (GetTropicZone(tile) != TROPICZONE_RAINFOREST) {
 		_error_message = STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST;
@@ -1232,12 +1237,12 @@ static bool CheckNewIndustry_Lumbermill(TileIndex tile, int type)
 	return true;
 }
 
-static bool CheckNewIndustry_BubbleGen(TileIndex tile, int type)
+static bool CheckNewIndustry_BubbleGen(TileIndex tile, IndustryType type)
 {
 	return GetTileZ(tile) <= 32;
 }
 
-typedef bool CheckNewIndustryProc(TileIndex tile, int type);
+typedef bool CheckNewIndustryProc(TileIndex tile, IndustryType type);
 static CheckNewIndustryProc * const _check_new_industry_procs[] = {
 	CheckNewIndustry_NULL,
 	CheckNewIndustry_Forest,
@@ -1591,7 +1596,7 @@ int32 CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 }
 
 
-Industry *CreateNewIndustry(TileIndex tile, int type)
+Industry *CreateNewIndustry(TileIndex tile, IndustryType type)
 {
 	const Town* t;
 	const IndustryTileTable *it;
