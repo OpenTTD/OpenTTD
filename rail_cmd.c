@@ -1781,11 +1781,12 @@ static void TileLoop_Track(TileIndex tile)
 							(rail & TRACK_BIT_X)
 						)) {
 					TileIndex n = tile + TileDiffXY(0, -1);
+					TrackBits nrail = GetTrackBits(n);
 
 					if (!IsTileType(n, MP_RAILWAY) ||
 							!IsTileOwner(n, owner) ||
-							(_m[n].m5 & TRACK_BIT_MASK) == TRACK_BIT_UPPER ||
-							(_m[n].m5 & TRACK_BIT_MASK) == TRACK_BIT_LEFT) {
+							nrail == TRACK_BIT_UPPER ||
+							nrail == TRACK_BIT_LEFT) {
 						new_ground = RAIL_GROUND_FENCE_NW;
 					}
 				}
@@ -1795,11 +1796,12 @@ static void TileLoop_Track(TileIndex tile)
 							(rail & TRACK_BIT_X)
 						)) {
 					TileIndex n = tile + TileDiffXY(0, 1);
+					TrackBits nrail = GetTrackBits(n);
 
 					if (!IsTileType(n, MP_RAILWAY) ||
 							!IsTileOwner(n, owner) ||
-							(_m[n].m5 & TRACK_BIT_MASK) == TRACK_BIT_LOWER ||
-							(_m[n].m5 & TRACK_BIT_MASK) == TRACK_BIT_RIGHT) {
+							nrail == TRACK_BIT_LOWER ||
+							nrail == TRACK_BIT_RIGHT) {
 						new_ground = (new_ground == RAIL_GROUND_FENCE_NW) ?
 							RAIL_GROUND_FENCE_SENW : RAIL_GROUND_FENCE_SE;
 					}
@@ -1810,11 +1812,12 @@ static void TileLoop_Track(TileIndex tile)
 							(rail & TRACK_BIT_Y)
 						)) {
 					TileIndex n = tile + TileDiffXY(-1, 0);
+					TrackBits nrail = GetTrackBits(n);
 
 					if (!IsTileType(n, MP_RAILWAY) ||
 							!IsTileOwner(n, owner) ||
-							(_m[n].m5 & TRACK_BIT_MASK) == TRACK_BIT_UPPER ||
-							(_m[n].m5 & TRACK_BIT_MASK) == TRACK_BIT_RIGHT) {
+							nrail == TRACK_BIT_UPPER ||
+							nrail == TRACK_BIT_RIGHT) {
 						new_ground = RAIL_GROUND_FENCE_NE;
 					}
 				}
@@ -1824,11 +1827,12 @@ static void TileLoop_Track(TileIndex tile)
 							(rail & TRACK_BIT_Y)
 						)) {
 					TileIndex n = tile + TileDiffXY(1, 0);
+					TrackBits nrail = GetTrackBits(n);
 
 					if (!IsTileType(n, MP_RAILWAY) ||
 							!IsTileOwner(n, owner) ||
-							(_m[n].m5 & TRACK_BIT_MASK) == TRACK_BIT_LOWER ||
-							(_m[n].m5 & TRACK_BIT_MASK) == TRACK_BIT_LEFT) {
+							nrail == TRACK_BIT_LOWER ||
+							nrail == TRACK_BIT_LEFT) {
 						new_ground = (new_ground == RAIL_GROUND_FENCE_NE) ?
 							RAIL_GROUND_FENCE_NESW : RAIL_GROUND_FENCE_SW;
 					}
