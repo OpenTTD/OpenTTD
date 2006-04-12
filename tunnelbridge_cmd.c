@@ -811,8 +811,8 @@ uint GetBridgeHeight(TileIndex t)
 
 static const byte _bridge_foundations[2][16] = {
 // 0 1  2  3  4 5 6 7  8 9 10 11 12 13 14 15
-	{1,16,18,3,20,5,0,7,22,0,10,11,12,13,14},
-	{1,15,17,0,19,5,6,7,21,9,10,11, 0,13,14},
+	{0,16,18,3,20,5,0,7,22,0,10,11,12,13,14},
+	{0,15,17,0,19,5,6,7,21,9,10,11, 0,13,14},
 };
 
 extern const byte _road_sloped_sprites[14];
@@ -986,11 +986,9 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			int x,y;
 
 			if (IsTransportUnderBridge(ti->tile)) {
-				// draw foundation?
-				if (ti->tileh) {
-					int f = _bridge_foundations[axis][ti->tileh];
-					if (f) DrawFoundation(ti, f);
-				}
+				uint f = _bridge_foundations[axis][ti->tileh];
+
+				if (f != 0) DrawFoundation(ti, f);
 
 				if (GetTransportTypeUnderBridge(ti->tile) == TRANSPORT_RAIL) {
 					const RailtypeInfo* rti = GetRailTypeInfo(GetRailType(ti->tile));
@@ -1123,7 +1121,6 @@ static uint GetSlopeZ_TunnelBridge(const TileInfo* ti)
 				uint f = _bridge_foundations[GetBridgeAxis(tile)][tileh];
 
 				if (f != 0) {
-					if (f == 1) return z;
 					if (f < 15) return z + 8;
 					tileh = _inclined_tileh[f - 15];
 				}
