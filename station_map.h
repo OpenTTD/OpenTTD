@@ -162,6 +162,7 @@ static inline bool IsHangarTile(TileIndex t)
 
 static inline Axis GetRailStationAxis(TileIndex t)
 {
+	assert(IsRailwayStation(t));
 	return HASBIT(GetStationGfx(t), 0) ? AXIS_Y : AXIS_X;
 }
 
