@@ -412,7 +412,7 @@ void DrawWaypointSprite(int x, int y, int stat_id, RailType railtype)
 	cust = &stat->renderdata[2];
 
 	img = cust->ground_sprite;
-	img += (img < _custom_sprites_base) ? rti->total_offset : GetRailTypeInfo(railtype)->custom_ground_offset;
+	img += (img < _custom_sprites_base) ? rti->total_offset : rti->custom_ground_offset;
 
 	if (img & PALETTE_MODIFIER_COLOR) img = (img & SPRITE_MASK);
 	DrawSprite(img, x, y);

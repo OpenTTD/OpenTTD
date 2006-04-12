@@ -1329,7 +1329,7 @@ static void DrawTile_Track(TileInfo *ti)
 				 * up to the GRF file to decide that. */
 
 				image = cust->ground_sprite;
-				image += (image < _custom_sprites_base) ? rti->total_offset : GetRailTypeInfo(GetRailType(ti->tile))->custom_ground_offset;
+				image += (image < _custom_sprites_base) ? rti->total_offset : rti->custom_ground_offset;
 
 				DrawGroundSprite(image);
 
