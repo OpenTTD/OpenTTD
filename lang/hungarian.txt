@@ -12,7 +12,7 @@ STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nincs el
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
 STR_EMPTY                                                       :
-STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Sima föld szükséges
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Sima talaj szükséges
 STR_0008_WAITING                                                :{BLACK}Várakozik: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{STRING}
 STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW} (elvitelre
@@ -375,7 +375,7 @@ STR_UNITS_IMPERIAL                                              :Brit
 STR_UNITS_METRIC                                                :Metrikus
 STR_UNITS_SI                                                    :SI
 
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mérföld/óra
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mf/h
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
@@ -393,14 +393,14 @@ STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m?
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} köbméter
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10^3 lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} lóerõ
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} 9.81*10³ N
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
@@ -1918,7 +1918,7 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Nem lehe
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Elõbb le kell rombolnod az alagutat
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Elõbb le kell rombolnod a hidat
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Nem kezdõdhet és végzõdhet ugyanott
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Sima föld vagy víz kell, hogy legyen a híd alatt
+STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Sima talaj vagy víz kell, hogy legyen a híd alatt
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}A kezdetének és a végének egy vonalban kell lennie
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Nem alkalmas a hely alagút bejáratának
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

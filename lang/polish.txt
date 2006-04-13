@@ -83,37 +83,37 @@ STR_004B_BATTERY                                                :Baterie
 STR_004C_PLASTIC                                                :Plastik
 STR_004D_FIZZY_DRINK                                            :Napoje gazowane
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} pasazerow
+STR_QUANTITY_PASSENGERS                                         :{COMMA} pasazer{P "" ow ow}
 STR_QUANTITY_COAL                                               :{WEIGHT} wegla
-STR_QUANTITY_MAIL                                               :{COMMA} paczek poczty
+STR_QUANTITY_MAIL                                               :{COMMA} pacz{P ka ki ek} poczty
 STR_QUANTITY_OIL                                                :{VOLUME} ropy
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} sztuk zywca
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} sztuk{P a i ""} zywca
 STR_QUANTITY_GOODS                                              :{COMMA} towarow
 STR_QUANTITY_GRAIN                                              :{WEIGHT} zboza
 STR_QUANTITY_WOOD                                               :{WEIGHT} drewna
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} rudy zelaza
 STR_QUANTITY_STEEL                                              :{WEIGHT} stali
-STR_QUANTITY_VALUABLES                                          :{COMMA} kosztownosci
+STR_QUANTITY_VALUABLES                                          :{COMMA} pacz{P ka ki ek} kosztownosci
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} rudy miedzi
 STR_QUANTITY_MAIZE                                              :{WEIGHT} kukurydzy
 STR_QUANTITY_FRUIT                                              :{WEIGHT} owocow
-STR_QUANTITY_DIAMONDS                                           :{COMMA} paczek diamentow
+STR_QUANTITY_DIAMONDS                                           :{COMMA} pacz{P ka ki ek} diamentow
 STR_QUANTITY_FOOD                                               :{WEIGHT} zywnosci
 STR_QUANTITY_PAPER                                              :{WEIGHT} papieru
-STR_QUANTITY_GOLD                                               :{COMMA} zlota
+STR_QUANTITY_GOLD                                               :{COMMA} pacz{P ka ki ek} zlota
 STR_QUANTITY_WATER                                              :{VOLUME} wody
 STR_QUANTITY_WHEAT                                              :{WEIGHT} pszenicy
 STR_QUANTITY_RUBBER                                             :{VOLUME} kauczuku
 STR_QUANTITY_SUGAR                                              :{WEIGHT} cukru
-STR_QUANTITY_TOYS                                               :{COMMA} zabawek
-STR_QUANTITY_SWEETS                                             :{COMMA} paczek slodyczy
+STR_QUANTITY_TOYS                                               :{COMMA} zabaw{P ka ki ek}
+STR_QUANTITY_SWEETS                                             :{COMMA} pacz{P ka ki ek} slodyczy
 STR_QUANTITY_COLA                                               :{VOLUME} coli
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} waty cukrowej
-STR_QUANTITY_BUBBLES                                            :{COMMA} babelkow
+STR_QUANTITY_BUBBLES                                            :{COMMA} babel{P ek ki kow}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} tofi
 STR_QUANTITY_BATTERIES                                          :{COMMA} bateri{P a e i}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastiku
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} napoju gazowanego
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} napo{P j je i} gazowan{P y e ych}
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
 STR_ABBREV_COAL                                                 :{TINYFONT}CL
@@ -152,12 +152,12 @@ STR_00B0_MAP                                                    :{WHITE}Mapa - {
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Opcje Gry
 STR_00B2_MESSAGE                                                :{YELLOW}Wiadomosc
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Wiadomosc od {STRING}
-STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Niemozna tego zrobic...
+STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Nie mozna tego zrobic...
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Nie mozna wyczyscic terenu...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Prawa Autorskie {COPYRIGHT} 1995 Chris Sawyer, Wszelkie Prawa Zastrzezone
 STR_00B7_VERSION                                                :{BLACK}Wersja OpenTTD {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 Zespol OpenTTD
-STR_TRANSLATED_BY                                               :{BLACK}  Tlumacz(e) - : Tom and PolPot and Spooqy
+STR_TRANSLATED_BY                                               :{BLACK}  Tlumacz(e) - : Tom PolPot Spooqy MeusH
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -757,8 +757,8 @@ STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SET
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Wszystkie detale
 STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Przezroczyste budynki
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Przezroczyste budynki
-STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Transparentne nazwy stacji
-STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transparentne nazwy stacji
+STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Przezroczyste nazwy stacji
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Przezroczyste nazwy stacji
 ############ range ends	here
 
 ############ range for menu	starts
@@ -775,10 +775,10 @@ STR_02DA_ON                                                     :{BLACK}Wla.
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Wyswietl subsydia
 STR_02DD_SUBSIDIES                                              :Subsydia
 STR_02DE_MAP_OF_WORLD                                           :Mapa swiata
-STR_EXTRA_VIEW_PORT                                             :Extra podglad
+STR_EXTRA_VIEW_PORT                                             :Dodatkowy podglad
 STR_SIGN_LIST                                                   :Lista tablic
 STR_02DF_TOWN_DIRECTORY                                         :Lista miast
-STR_TOWN_POPULATION                                             :{BLACK}Swiatowa populacja: {COMMA}
+STR_TOWN_POPULATION                                             :{BLACK}Populacja swiata: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Podglad {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopuj do podgladu
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopiuj obecna pozycje z glownego okna do podgladu
@@ -788,7 +788,9 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Ustawia 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Waluta
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Wybor waluty
+STR_MEASURING_UNITS                                             :{BLACK}Jednostki miar
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Wybor jednostek miar
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Pojazdy drogowe
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Wybierz strone po ktorej maja jezdzic samochody
@@ -851,9 +853,9 @@ STR_0336_7                                                      :{BLACK}7
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Angielskie (Oryginalne)
 STR_TOWNNAME_FRENCH                                             :Francuskie
 STR_TOWNNAME_GERMAN                                             :Niemieckie
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Angielskie (Rozszezone)
+STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Angielskie (Rozszerzone)
 STR_TOWNNAME_LATIN_AMERICAN                                     :Poludniowoamerykanskie
-STR_TOWNNAME_SILLY                                              :Glupie
+STR_TOWNNAME_SILLY                                              :Smieszne
 STR_TOWNNAME_SWEDISH                                            :Szwedzkie
 STR_TOWNNAME_DUTCH                                              :Holenderskie
 STR_TOWNNAME_FINNISH                                            :Finskie
@@ -936,12 +938,12 @@ STR_TONS                                                        :ton
 STR_LITERS                                                      :litrow
 STR_ITEMS                                                       :sztuk
 STR_CRATES                                                      :skrzyn
-STR_RES_OTHER                                                   :Inne
+STR_RES_OTHER                                                   :inna
 STR_NOTHING                                                     :
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nie mozna wspoldzielic polecen...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nie mozna skopiowac listy polecen...
-STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Koniec wspoldz. polecen - -
+STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Koniec wspoldzielonych polecen - -
 
 STR_TRAIN_IS_LOST                                               :{WHITE}Pociag {COMMA} zabladzil.
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Pociag {COMMA} zarobil w zeszlym roku {CURRENCY}
@@ -950,35 +952,35 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
 STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Pociag {COMMA} ma za malo polecen w rozkladzie
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Pociag {COMMA} nie ma polecen
+STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Pociag {COMMA} ma puste polecenie
 STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Pociag {COMMA} ma zduplikowane polecenia
 STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Pociag {COMMA} ma nieodpowiednia stacje w rozkladzie
 STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Samochod {COMMA} ma za malo polecen w rozkladzie
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Samochod {COMMA} nie ma polecen
+STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Samochod {COMMA} ma puste polecenie
 STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Samochod {COMMA} ma zduplikowane polecenia
 STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Samochod {COMMA} ma nieodpowiednia stacje w rozkladzie
 STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Statek {COMMA} ma za malo polecen w rozkladzie
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Statek {COMMA} nie ma polecen
+STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Statek {COMMA} ma puste polecenie
 STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Statek {COMMA} ma zduplikowane polecenia
 STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Statek {COMMA} ma nieodpowiednia stacje w rozkladzie
 STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Samolot {COMMA} ma za malo polecen w rozkladzie
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Samolot {COMMA} nie ma polecen
+STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Samolot {COMMA} ma puste polecenie
 STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Samolot {COMMA} ma zduplikowane polecenia
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Samolot {COMMA} ma nieodpowiednia stacje w rozkladzie
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Blad autoodnowienia pociagu {COMMA} (brak pieniedzy)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Blad autoodnowienia samochodu {COMMA} (brak pieniedzy)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Blad autoodnowienia statku {COMMA} (brak pieniedzy)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Blad autoodnowienia samolotu {COMMA} (brak pieniedzy)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Blad autoodnowienia pociagu {COMMA} (limit funduszy)
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Blad autoodnowienia samochodu {COMMA} (limit funduszy)
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Blad autoodnowienia statku {COMMA} (limit funduszy)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Blad autoodnowienia samolotu {COMMA} (limit funduszy)
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Pociag {COMMA} jest za dlugi po zamianie
 
-STR_CONFIG_PATCHES                                              :{BLACK}Konfiguracja Patcha
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Konfiguracja Patcha
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Konfiguracja Patcha
+STR_CONFIG_PATCHES                                              :{BLACK}Konfiguracja wtyczek
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Konfiguracja wtyczek
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Konfiguracja wtyczek
 
-STR_CONFIG_PATCHES_OFF                                          :Wyl
-STR_CONFIG_PATCHES_ON                                           :Wla
+STR_CONFIG_PATCHES_OFF                                          :wyl.
+STR_CONFIG_PATCHES_ON                                           :wl.
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Pokazuj predkosc pojazdow w pasku statusu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Pozwol budowac na pochylosciach i wybrzezach: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Zezwol na bardziej realistyczny zasieg obejmowania: {ORANGE}{STRING}
@@ -987,45 +989,45 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Pozwol 
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Realistyczne przyspieszenie pociagow: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Zabron pociagom i statkom skretow o 90st: {ORANGE}{STRING} {LTBLUE} (wymaga NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Polacz stacje budowane jedna obok drugiej: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Wyjazd ze stacji gdy jakis towar jest pelny, gdy 'Zaladunek': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Opusc stacje gdy dowolny towar jest pelny, gdy 'Zaladunek': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Uzyj ulepszonego algorytmu zaladunku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflacja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Dostarcz ladunek do stacji tylko jesli jest zapotrzebowanie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Pozwol budowac bardzo dlugie mosty: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Zezwalaj na wysylanie do zajezdni: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Pozwol budowac obiekty produkujace surowce: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Pozwol budowac przedsiebiorstwa produkujace surowce: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Pozwol na wiele podobnych przedsiebiorstw w miescie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Przedsiebiorstwa jednego typu moga byc bud. obok siebie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Zawsze pokazuj date w dlugim formacie w pasku statusu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Pokazuj semafory po stronie jazdy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Pokazuj okno finansow na koniec roku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Kompatybilnosc obslugi NONSTOP z TTDPatch: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Kolejki samochodow (with quantum effects): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Sortowanie samochodow (z efektem quantum): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Przesun okno, kiedy kursor jest przy krawedzi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Pozwol dawac lapowki lokalnym wladzom: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Niejednolite stacje: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nowe szukanie drogi NPF (zastepuje NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nowe szukanie drogi (NPF, zastepuje NTP): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Zawsze zezwalaj budowac male lotniska: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Pociag zagubil sie, jesli nie porusza sie przez: {ORANGE}{STRING} dni
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Pociag zagubil sie jesli nie porusza sie: {ORANGE}niedostepne
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Pociag zagubil sie, jesli nie zarobil nic przez: {ORANGE}{STRING} dni
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Pociag zagubil sie, jesli nie zarobil nic przez: {ORANGE}niedostepne
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Przejrzyj polecenia pojazdow: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nie
-STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :Tak, ale wyklucz zatrzymane
-STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :Wszystkich pojazdow
+STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :tak, ale wyklucz zatrzymane
+STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :wszystkich pojazdow
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Ostrzegaj, jesli pociag przynosi straty: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Pojazdy nigdy sie nie starzeja: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Pojazdy nigdy nie sa wycofywane: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Autoodnowienie pojazdu gdy staje sie stary
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autoodnowienie nastepuje {ORANGE}{STRING}{LTBLUE} miesiecy przed/po maks. wieku
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Min. ilosc pieniedzy potrzebna do autoodnowienia: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Czas trwania komunikatu o bledzie (w sekundach): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Czas trwania komunikatu o bledzie: {ORANGE}{STRING} sekund{P a y ""}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Pokaz populacje miasta w jego nazwie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Niewidoczne drzewa (i przezroczyste budynki): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Wysokosc granicy wiecznych sniegow: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks. wielkosc stacji: {ORANGE}{STRING} {RED}Uwaga: Duze wartosci spowalniaja gre
-STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Serwisuj helikoptery na lotniskach automatycznie: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Przylacz  pasek narzedzi do edycji krajobrazu do paska narzedzi srodkow transportu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatycznie serwisuj helikoptery na ladowiskach: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Przylacz pasek narzedzi edycji krajobrazu do paska narzedzi srodkow transportu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Przewijaj obraz myszka w przeciwnym kierunku: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks. liczba pociagow na gracza: {ORANGE}{STRING}
@@ -1049,18 +1051,18 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Domysln
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Domyslny okres miedzy serwis. dla samolotow: {ORANGE}niedostepne
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Domyslny okres miedzy serwis. dla statkow: {ORANGE}{STRING} dni
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Domyslny okres miedzy serwis. dla statkow: {ORANGE}niedostepne
-STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Serwis niedostepny, jesli uszkodzenia pojazdow wylaczone: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Wylacz serwisowanie jesli awarie pojazdow sa wylaczone: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Wlacz limity predkosci wagonow: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Pojawianie sie kolorowych wiadomosci w: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Data rozpoczecia gry: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Data zakonczenia gry: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Pozwol na lagodna ekonomie (male zmiany)
+STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Pozwol na lagodna ekonomie (wiecej malych zmian)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Pozwol kupowac udzialy w innych firmach
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}W trakcie przeciagania ustaw sygnaly co: {ORANGE}{STRING} kratk{P e i ek}
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Pozycja glownego paska narzedzi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Z lewej strony
-STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centralnie
+STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Wysrodkowane
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Z prawej strony
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Strefa przyciagania okien: {ORANGE}{STRING} pkt
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Strefa przyciagania okien: {ORANGE}niedostepne
@@ -1085,8 +1087,8 @@ STR_SUB_TROPICAL_LANDSCAPE                                      :Krajobraz tropi
 STR_TOYLAND_LANDSCAPE                                           :Krajobraz zabawkowy
 
 STR_CHEATS                                                      :{WHITE}Oszukiwanie
-STR_CHEATS_TIP                                                  :{BLACK}Checkboxy pokazuja czy uzywano juz tego tricku
-STR_CHEATS_WARNING                                              :{BLACK}Uwaga! Wlasnie chcesz zdradzic swoich wspolnikow.{}Wiedz, ze zostanie to zapamietane na wieki!
+STR_CHEATS_TIP                                                  :{BLACK}Checkboxy pokazuja czy uzywano juz tego oszustwa
+STR_CHEATS_WARNING                                              :{BLACK}Uwaga! Wlasnie chcesz zdradzic swoich wspolnikow.{}Miej na uwadze, ze zostanie to zapamietane na wieki!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Zwieksz ilosc pieniedzy o {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Graj jako gracz: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magiczny buldozer (usuwanie przedsiebiorstw, itp.): {ORANGE}{STRING}
@@ -1122,18 +1124,18 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Nie mozn
 
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Budowanie torow uzywajac trybu Autorail
 
-STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...niema zadnego miasta w scenariuszu
+STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...nie ma zadnego miasta w scenariuszu
 
-STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Jestes pewny ze chcesz stworzyc przypadkowy krajobraz?
-STR_MANY_RANDOM_TOWNS                                           :{BLACK}Wiele przypadkowych miast
-STR_RANDOM_TOWNS_TIP                                            :{BLACK}Pokryj mape przypadkowo polozonymi miastami
-STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Wiele przypadkowych obiek. przyemyslowych
-STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Pokryj mape przypadkowo polozonymi przesiebiorstwami
+STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Jestes pewny ze chcesz stworzyc losowy krajobraz?
+STR_MANY_RANDOM_TOWNS                                           :{BLACK}Wiele losowych miast
+STR_RANDOM_TOWNS_TIP                                            :{BLACK}Pokryj mape losowo polozonymi miastami
+STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Wiele losowych obiek. przyemyslowych
+STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Pokryj mape losowo polozonymi przesiebiorstwami
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Nie mozna wygenerowac przesiebiorstw...
 
 STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Zmiana terenu, wywyzszanie/obnizanie ladu, sadzenie drzew, itp.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Krajobraz
-STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Poziom ladu
+STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Wyrownaj teren
 
 
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Drzewa roznych rodzajow
@@ -1193,16 +1195,16 @@ STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUST
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...zbyt blisko innego przedsiebiorstwa
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Przebudowa pociagu do przewozu innego ladunku
+STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Przebudowa pociagu do przewozu innego typu towaru
 STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Przebudowa pociagu
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz typ ladunku jaki ma przewozic pociag
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Przebudowa pociagu do przewozu podswietlonych towarow
+STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Przebuduj pociag do przewozu zaznaczonego typu towaru
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nie mozna przebudowac pociagu...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Okres miedzy serwisowaniami w procentach: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmiana produkcji
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Witamy w nowym AI. Mozesz oczekiwac problemow. Gdy to sie stanie, wykonaj zrzut ekranu i wyslij go na forum. Powodzenia!
-TEMP_AI_ACTIVATED                                               :{WHITE}Ostrzenie: nowe AI jest ciagle w wersji alpha! Obecnie dziala tylko dla samochodow!
+TEMP_AI_IN_PROGRESS                                             :{WHITE}Witamy w nowym AI. Jesli natkniesz sie na problem, wykonaj zrzut ekranu i wyslij go na forum. Powodzenia!
+TEMP_AI_ACTIVATED                                               :{WHITE}Ostrzezenie: nowe AI jest ciagle w wersji alpha! Obecnie dziala tylko dla samochodow!
 TEMP_AI_MULTIPLAYER                                             :{WHITE}Uwaga: Ta funkcja jest ciagle w fazie testow. Prosze zglaszac wszelkie problemy pod adres truelight@openttd.org.
 
 ############ network gui strings
@@ -1230,7 +1232,7 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Wpisz ad
 
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klientow
-STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klientow podlaczonych / klientow maks.
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klientow podlaczonych / maks.{}Firm podlaczonych / maks.
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO O GRZE
 STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Klienci:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
@@ -1254,16 +1256,16 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Rozpoczn
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Nazwa gry:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Nazwa gry bedzie wyswietlana u innych graczy w menu gry wieloosobowej
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Ustaw haslo
-STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Zabezpiecz gre haslem jesli nie chcesz by ktos przlaczyl sie do gry
+STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Zabezpiecz gre haslem jesli nie chcesz by byla publicznie dostepna
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Wybierz mape:
-STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Wybierz mape na ktorej chcesz grac
+STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Na ktorej mapie chcesz grac?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Dopuszczalna ilosc klientow:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Ustaw maksymalna liczbe klientow. Nie wszystkie pola musza byc wypelnione.
 STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
-STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (zaawansowane)
+STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (publiczny)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_0_PLAYERS                                           :0 graczy
 STR_NETWORK_1_PLAYERS                                           :1 gracz
@@ -1283,10 +1285,10 @@ STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maksymal
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Ogranicz serwer do okreslonej ilosci widzow
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Uzywany jezyk w grze:
-STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Inni gracze beda poinformowani jaki jezyk jest uzywany na serwerze.
+STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Inni gracze beda poinformowani jaki jezyk jest uzywany na serwerze
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Rozpocznij gre
-STR_NETWORK_START_GAME_TIP                                      :{BLACK}Uruchom nowa gre sieciowa z przypadkowa mapa lub scenariuszem
+STR_NETWORK_START_GAME_TIP                                      :{BLACK}Uruchom nowa gre sieciowa z losowa mapa lub scenariuszem
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Wczytaj Gre
 STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Przywroc wczesniej zapisana gre wieloosobowa(upewnij sie ze polaczyles sie jako odpowiedni gracz)
 
@@ -1300,7 +1302,7 @@ STR_NETWORK_LANG_FRENCH                                         :Francuski
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Lobby gry wieloosobowej
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Przygotowanie do polaczenia:   {ORANGE}{STRING}
-STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Lista wszystkich firm w grze. Mozesz przylaczyc sie do jednej z nich lub rozpoczac
+STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Lista wszystkich firm w grze. Mozesz przylaczyc sie do jednej z nich lub zalozyc nowa
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nowa firma
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Rozpoczecie dzialanosci nowej firmy
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Gra obserwowana
@@ -1336,7 +1338,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Re
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Uzyskiwanie informacji o grze..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Uzyskiwanie informacji o firmach..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klientow chce sie przylaczyc
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" ow ow} chce sie przylaczyc
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kB dotad pobranych
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Rozlaczony
@@ -1348,17 +1350,17 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Lista kl
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Brak interface'u sieciowego lub skompilowane bez opcji ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Nie mozna znalezc zadnej gry w sieci
-STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Serwer nieodpowiada
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Serwer nie odpowiada
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Blad synchronizacji gry sieciowej.
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Polaczenie utracone w grze sieciowej.
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Nie mozna wczytac zapisanej gry z serwera.
-STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Nie mozna uruchomic serwera.
-STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Nie mozna polaczyc.
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Przekroczony limit czasu dla polaczenia #{NUM}.
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Nie mozna uruchomic serwera
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Nie mozna polaczyc
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Przekroczony limit czasu dla polaczenia #{NUM}
 STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Blad protokolu, polaczenie zostalo przerwane.
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} Wersja gry nie zgadza sie z wersja gry na serwerze.
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Zle haslo.
-STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Serwer jest pelen
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} Wersja gry nie zgadza sie z wersja gry na serwerze
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Zle haslo
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Serwer jest pelny
 STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Masz zabroniony dostep do tego serwera
 STR_NETWORK_ERR_KICKED                                          :{WHITE} Zostales wyrzucony z serwera
 STR_NETWORK_ERR_CHEATER                                         :{WHITE} Ulatwienia sa niedozwolone na tym serwerze
@@ -1373,7 +1375,7 @@ STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :blad protokolu
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :nie autoryzowane
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :odebrany nieznany pakiet
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :zla wersja
-STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :Nazwa juz w uzyciu
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :nazwa juz w uzyciu
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :zle haslo gry
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :bledne id gracza w DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :wyrzucony przez serwer
@@ -1382,7 +1384,7 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :serwer jest pel
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :przylaczyl sie do gry
 STR_NETWORK_GIVE_MONEY                                          :dal Ci troche pieniedzy ({CURRENCY})
-STR_NETWORK_GAVE_MONEY_AWAY                                     :przekazales dla {STRING} troche pieniedzy ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY                                     :przekazales {STRING} troche pieniedzy ({CURRENCY})
 STR_NETWORK_CHAT_COMPANY                                        :[Zespol] {STRING}:
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Zespol] do {STRING}:
 STR_NETWORK_CHAT_CLIENT                                         :[Prywatna] {STRING}:
@@ -1396,7 +1398,7 @@ STR_NETWORK_SERVER                                              :Serwer
 STR_NETWORK_CLIENT                                              :Klient
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(brak)
-STR_NETWORK_CLIENTLIST_KICK                                     :Wyrzucony
+STR_NETWORK_CLIENTLIST_KICK                                     :Wyrzuc
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Przekazanie pieniedzy
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Mow do wszystkich
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Mow do firmy
@@ -1416,8 +1418,8 @@ STR_0800_COST                                                   :{TINYFONT}{RED}
 STR_0801_COST                                                   :{RED}Koszt: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Przychod: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Przychod: {CURRENCY}
-STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Przelew: {CURRENCY}
-STR_FEEDER                                                      :{YELLOW}Przelew: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transfer: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Transfer: {CURRENCY}
 STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Przypuszczalny koszt: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Przypuszczalny koszt: {CURRENCY}
 STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Przypuszczalny przychod: {CURRENCY}
@@ -1442,6 +1444,7 @@ STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Nie ma o
 STR_1007_ALREADY_BUILT                                          :{WHITE}...juz zbudowano
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Najpierw trzeba usunac tory
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Konstrukcja torowiska
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Konstrukcja elektryfikowanych torow
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Konstrukcja szyny trak.
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Konstrukcja szyny MagLev
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Wybierz rodzaj mostu kolejowego
@@ -1453,6 +1456,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Nie mozn
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Nie mozna stad usunac znakow...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orientacja zajezdni
 STR_1015_RAILROAD_CONSTRUCTION                                  :Konstrukcja torowiska
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Konstrukcja elektryfikowanych torow
 STR_1016_MONORAIL_CONSTRUCTION                                  :Konstrukcja szyny trak.
 STR_1017_MAGLEV_CONSTRUCTION                                    :Konstrukcja szyny MagLev
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Budowa torow
@@ -1867,16 +1871,16 @@ STR_SV_STNAME_NORTH                                             :{STRING} Polnoc
 STR_SV_STNAME_SOUTH                                             :{STRING} Poludnie
 STR_SV_STNAME_EAST                                              :{STRING} Wschod
 STR_SV_STNAME_WEST                                              :{STRING} Zachod
-STR_SV_STNAME_CENTRAL                                           :{STRING} Centrum
+STR_SV_STNAME_CENTRAL                                           :{STRING} Glowny
 STR_SV_STNAME_TRANSFER                                          :{STRING} Transfer
-STR_SV_STNAME_HALT                                              :{STRING} Stop
+STR_SV_STNAME_HALT                                              :{STRING} Przedmiescie
 STR_SV_STNAME_VALLEY                                            :{STRING} Dolina
 STR_SV_STNAME_HEIGHTS                                           :{STRING} Wzgorza
 STR_SV_STNAME_WOODS                                             :{STRING} Tartak
 STR_SV_STNAME_LAKESIDE                                          :{STRING} Jezioro
-STR_SV_STNAME_EXCHANGE                                          :{STRING} Gielda
+STR_SV_STNAME_EXCHANGE                                          :{STRING} Wymiana
 STR_SV_STNAME_AIRPORT                                           :{STRING} Lotnisko
-STR_SV_STNAME_OILFIELD                                          :{STRING} Nafta
+STR_SV_STNAME_OILFIELD                                          :{STRING} Pole naftowe
 STR_SV_STNAME_MINES                                             :{STRING} Kopalnia
 STR_SV_STNAME_DOCKS                                             :{STRING} Port
 STR_SV_STNAME_BUOY_1                                            :{STRING} Boja 1
@@ -2087,7 +2091,7 @@ STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Nie mozn
 STR_7072_VIEW_HQ                                                :{BLACK}Zobacz SG
 STR_RELOCATE_HQ                                                 :{BLACK}Przenies SG
 STR_COMPANY_PASSWORD                                            :{BLACK}Haslo
-STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Ochrona haslem twojej firmy zapobiega nieautoryzowanemu przylaczeniu sie.
+STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Ochrona haslem twojej firmy zapobiega nieautoryzowanemu przylaczeniu sie
 STR_SET_COMPANY_PASSWORD                                        :Ustaw haslo firmy
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Swiatowa recesja!{}{}Eksperci finansowi obawiaja sie najgorszego z powodu zastoju!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Koniec recesji!{}{}Zmiana w wymianach daje pewnosc umocnienia fabryk i ekonomii!
@@ -2197,7 +2201,7 @@ STR_8058_WIZZOWOW_ROCKETEER                                     :Wizzowow Rocket
 STR_8059_PASSENGER_CAR                                          :Wagon pasazerski
 STR_805A_MAIL_VAN                                               :Wagon pocztowy
 STR_805B_COAL_CAR                                               :Wagon na wegiel
-STR_805C_OIL_TANKER                                             :Wagon na rope
+STR_805C_OIL_TANKER                                             :Cysterna
 STR_805D_LIVESTOCK_VAN                                          :Wagon na zywiec
 STR_805E_GOODS_VAN                                              :Wagon towarowy
 STR_805F_GRAIN_HOPPER                                           :Wagon na ziarno
@@ -2237,9 +2241,9 @@ STR_8080_PERRY_MAIL_TRUCK                                       :Ciezarowka na P
 STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :Ciezarowka na MightyMover
 STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Ciezarowka na Powernaught
 STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Ciezarowka na Wizzowow
-STR_8084_WITCOMBE_OIL_TANKER                                    :Cysterna do ropy Witcombe
-STR_8085_FOSTER_OIL_TANKER                                      :Cysterna do ropy Foster
-STR_8086_PERRY_OIL_TANKER                                       :Cysterna do ropy Perry
+STR_8084_WITCOMBE_OIL_TANKER                                    :Cysterna Witcombe
+STR_8085_FOSTER_OIL_TANKER                                      :Cysterna Foster
+STR_8086_PERRY_OIL_TANKER                                       :Cysterna Perry
 STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Samochod do zywca Talbott
 STR_8088_UHL_LIVESTOCK_VAN                                      :Samochod do zywca Uhl
 STR_8089_FOSTER_LIVESTOCK_VAN                                   :Samochod do zywca Foster
@@ -2302,7 +2306,7 @@ STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Samochod do bat
 STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Samochod do baterii Wizzowow
 STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :Cysterna na napoje gazowane MightyMover
 STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Cysterna na napoje gazowane Powernaught
-STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Cysterna na napoje gazowane izzowow
+STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Cysterna na napoje gazowane Wizzowow
 STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :Samochod do plastiku MightyMover
 STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Samochod do plastiku Powernaught
 STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Samochod do plastiku Wizzowow
@@ -2313,13 +2317,13 @@ STR_80CC_MPS_OIL_TANKER                                         :Tankowiec MPS
 STR_80CD_CS_INC_OIL_TANKER                                      :Tankowiec CS-Inc.
 STR_80CE_MPS_PASSENGER_FERRY                                    :Prom pasazerski MPS
 STR_80CF_FFP_PASSENGER_FERRY                                    :Prom pasazerski FFP
-STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Poduszkowiec Bakewell 300
+STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Wodolot Bakewell 300
 STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Prom pasazerski Chugger-Chug
-STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Prom pasazerski Shivershake
-STR_80D3_YATE_CARGO_SHIP                                        :Statek towarowy Yate
-STR_80D4_BAKEWELL_CARGO_SHIP                                    :Statek towarowy Bakewell
-STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Statek towarowy Mightymover
-STR_80D6_POWERNAUT_CARGO_SHIP                                   :Statek towarowy Powernaut
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Liniowiec Shivershake
+STR_80D3_YATE_CARGO_SHIP                                        :Drobnicowiec Yate
+STR_80D4_BAKEWELL_CARGO_SHIP                                    :Drobnicowiec Bakewell
+STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Drobnicowiec Mightymover
+STR_80D6_POWERNAUT_CARGO_SHIP                                   :Drobnicowiec Powernaut
 STR_80D7_SAMPSON_U52                                            :Sampson U52
 STR_80D8_COLEMAN_COUNT                                          :Coleman Count
 STR_80D9_FFP_DART                                               :FFP Dart
@@ -2389,13 +2393,13 @@ STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Idz bez przysta
 STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Idz bez przstanku do {STATION} (Przewiez i oproznij)
 STR_8810_GO_NON_STOP_TO_LOAD                                    :Idz bez przystanku do {STATION} (Zaladunek)
 STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Idz bez przystanku do {STATION} (Przewiez i czekaj na pelen zaladunek)
-STR_GO_TO_TRAIN_DEPOT                                           :Idz do {TOWN} zajezdni
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Serwisuj w {TOWN} zajezdni
+STR_GO_TO_TRAIN_DEPOT                                           :Idz do zajezdni w {TOWN}
+STR_SERVICE_AT_TRAIN_DEPOT                                      :Serwisuj w zajezdni {TOWN}
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Idz bez przystankow do  {TOWN} zajezdni
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Idz bez przystankow do serwisu w {TOWN} zajezdni
+STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Idz bez przystankow do serwisu w zajezdni {TOWN}
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Zmierza do {TOWN} zajezdni
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Zmierza do {TOWN} zajezdni, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Zmierza do zajezdni w {TOWN}, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Bledne polecenie)
 
@@ -2409,6 +2413,7 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Pociag z
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Pociag moze byc modyfikowany tylko jak jest zatrzymany w zajezdni
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Pociagi
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nowe pociagi
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nowe lokomotywy elektryczne
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nowe pociagi jednoszynowe
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nowe pociagi Maglev
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Buduj pojazd
@@ -2425,7 +2430,7 @@ STR_8825_NON_STOP                                               :{BLACK}Non-Stop
 STR_8826_GO_TO                                                  :{BLACK}Idz do
 STR_8827_FULL_LOAD                                              :{BLACK}Zaladunek
 STR_8828_UNLOAD                                                 :{BLACK}Rozladunek
-STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Kolejnosc)
+STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Polecenia)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Koniec polecen - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Serwis
@@ -2456,7 +2461,7 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Buduj no
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Przeciagnij tutaj pociag aby go sprzedac
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrowanie glownego okna na pozycji zajezdni
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Lista wyboru pociagow - klik na pojezdzie aby uzyskac inforamcje
-STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Budowa zaznaczonego pojazdu
+STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Zbuduj wybrany pojazd
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Zmiana nazwy typu pociagu
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Obecny stan pociagu - klik tutaj aby zatrzymac ruszyc pociag
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Pokaz polecenia dla pociagu
@@ -2471,14 +2476,14 @@ STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Pokaz sz
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Pokaz szczegoly pociagu
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Pokaz pojemnosc kazdego wagonu
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Pokaz calkowita pojemnosc pociagu, wedlug typu ladunku
-STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Lista polecen - klik na poleceniu aby zaznaczyc
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Lista polecen - klik na poleceniu aby zaznaczyc. CTRL + klik przenosi do stacji
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Pomin obecne polecenie i zacznij nastepne
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Usun podswietlone polecenie
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Zrob z tego polecenia, polecenie 'non-stop'
-STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Wstaw nowe polecenie przed zaznaczonym poleceniem, lub dodaj na koncu
+STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Zrob z tego polecenia 'non-stop'
+STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Wstaw nowe polecenie na koncu listy lub przed zaznaczonym poleceniem
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Spraw aby zaznaczone polecenie zmusilo pojazd do czekania na pelny zaladunek
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Spraw aby zaznaczone polecenie zmusilo pojazd do wyladunku
-STR_SERVICE_HINT                                                :{BLACK}Pomin to polecenie jesli jest wymagany serwis
+STR_SERVICE_HINT                                                :{BLACK}Pomin to polecenie jesli nie jest wymagany serwis
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nowa {STRING} juz dostepna!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Koszt: {CURRENCY} Waga: {WEIGHT_S}{}Predkosc: {VELOCITY}  Moc: {POWER}{}Utrzymanie: {CURRENCY}/rok{}Pojemnosc: {STRING}
@@ -2498,7 +2503,7 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nie mozna odwrocic kierunku jazdy pociagu...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Zmiana nazwy typu pociagu
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nie mozna zmienic nazwy typu pojazdu...
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Spraw by w zaznaczonym poleceniu pojazd byl zmuszony do zrzutu cargo
+STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Spraw by w zaznaczonym poleceniu pojazd byl zmuszony do pozostawienia towaru dla kolejnego pojazdu
 STR_886F_TRANSFER                                               :{BLACK}Przewiez
 
 STR_TRAIN_STOPPING                                              :{RED}Hamowanie
@@ -2524,8 +2529,8 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...musi 
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nie mozna sprzedac samochodu...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nie mozna zatrzymac/ruszyc samochodu...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Samochod {COMMA} czeka w zjezdni
-STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Zmierza do {TOWN} zajezdni sam.
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Zmierza do {TOWN} zajezdni sam., {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Zmierza do zajezdni sam. {TOWN}
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Zmierza do zajezdni sam. {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Nie mozna wyslac samochodu do zajezdni sam...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nie mozna znalezc zajezdni
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Samochody - klik na pojezdzie po wiecej info
@@ -2554,12 +2559,13 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Wypadek samochodowy!{}Kierowca zginal po zderzeniu z pociagiem
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Wypadek samochodowy!{}{COMMA} ofiar po zderzeniu z pociagiem
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Nie mozna zawrocic samochodu...
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Nie mozna obracac pociagow z podwojnymi lokomotywami
 STR_9034_RENAME                                                 :{BLACK}Zmien nazwe
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Zmien nazwe typu samochodu
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Zmien nazwe typu samochodu
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Nie mozna zmienic nazwy typu samochodu...
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Jedz do {TOWN} zajednia sam.
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Serwisuj w {TOWN} zajezdni sam.
+STR_SERVICE_AT_ROADVEH_DEPOT                                    :Serwisuj w zajezdni {TOWN}
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Konstrukcje morskie
@@ -2567,7 +2573,7 @@ STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Konstruk
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Nie mozna tutaj wybudowac portu...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Stocznia
 STR_9804_NEW_SHIPS                                              :{BLACK}Nowe statki
-STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Statki
+STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Stat{P ek ki ow}
 STR_9808_NEW_SHIPS                                              :{WHITE}Nowe statki
 STR_9809_BUILD_SHIP                                             :{BLACK}Budowa statku
 STR_CLONE_SHIP                                                  :{BLACK}Klonuj statek
@@ -2593,16 +2599,16 @@ STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Zmierza
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Statek {COMMA} czeka w stoczni
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Budowa portu
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Budowa stoczni (do budowy i serwisowania statkow)
-STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Statki - klik aby uzyskac informacje o statku
+STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Statki - kliknij aby uzyskac informacje o statku
 STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Budowa nowego statku
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Przeciagnij tu statek aby go sprzedac
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centruj glowne okno na pozycji stoczni
-STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Kliknij na statku aby uzyskac inforamcje
+STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Statki - kliknij aby uzyskac informacje o statku
 STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Budowa nowych statkow (wymaga stoczni)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Lista wyboru statkow - klik na statku aby uzyskac informacje
-STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Budowa zaznaczonego statku
+STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Zbuduj wybrany statek
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Stan obecnego statku - klik aby zatrzymac/ruszyc statek
-STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Pokaz liste polecen dla statku
+STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Pokaz polecenia statku
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centruj glowne okno na pozycji statku
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Wyslij statek do stoczni
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Pokaz szczegoly statku
@@ -2614,21 +2620,21 @@ STR_982F_NAME_SHIP                                              :{BLACK}Nazwa st
 STR_9831_NAME_SHIP                                              :{WHITE}Nazwa statku
 STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Nie mozna zmienic nazwy statku...
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mieszkancy swietuja . . .{}Pierwszy statek przybyl do {STATION}!
-STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Ustaw boje, ktora moze byc uzyta jako dodatkowy pkt. drogi
-STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Nie mozna ustawic tutaj boji...
+STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Ustaw boje, ktora moze byc uzyta jako dodatkowy pkt. kontrolny
+STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Nie mozna ustawic tutaj boi...
 STR_9836_RENAME                                                 :{BLACK}Zmien nazwe
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Zmien nazwe typu statku
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Zmien nazwe typu statku
 STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}Nie mozna zmienic nazwy typu statku...
-STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Przebuduj statek aby przewozil inny rodzaj towaru
+STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Przebudowa statku do przewozu innego typu towaru
 STR_983B_REFIT                                                  :{WHITE}{VEHICLE} (Przebudowa)
 STR_983C_REFIT_SHIP                                             :{BLACK}Przebudowa statku
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz typ ladunku jaki ma przewozic statek
-STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Zmien statek zeby mogl przewozic zaznaczony typ ladunku
+STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Przebuduj statek do przewozu zaznaczonego typu towaru
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wybierz typ ladunku do przewozu:-
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nowa pojemnosc: {GOLD}{STRING}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nie mozna przebudowac statku...
-STR_9842_REFITTABLE                                             :(zm. typu lad.)
+STR_9842_REFITTABLE                                             :(przebudowalny)
 STR_GO_TO_SHIP_DEPOT                                            :Idz do stoczni w {TOWN}
 SERVICE_AT_SHIP_DEPOT                                           :Serwisuj w stoczni w {TOWN}
 
@@ -2653,12 +2659,12 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zysk w t
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Niezawodnosc: {LTBLUE}{COMMA}%  {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Zbudowany: {LTBLUE}{NUM}{BLACK} Wartosc: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nie mozna wyslac samolotu do hangaru...
-STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Zmierza do hangaru w {STATION}
-STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Zmierza do hangaru w {STATION}, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Zmierza do hangaru na {STATION}
+STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Zmierza do hangaru na {STATION}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Samolot  {COMMA} czeka w hangarze
-STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Samolot jest w drodze
+STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Samolot jest na drodze
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nie mozna zatrzymac/ruszyc samolotu
-STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Samolot wlasnie leci
+STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Samolot jest w locie
 STR_A019_CAPACITY                                               :{BLACK}Pojemnosc: {LTBLUE}{STRING}, {STRING}
 STR_A01A_CAPACITY                                               :{BLACK}Pojemnosc: {LTBLUE}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Samolot musi byc zatrzymany w hangarze
@@ -2672,9 +2678,9 @@ STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Budowa n
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Przeciagnij tutaj samolot aby go sprzedac
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centruj glowne okno na pozycji hangaru
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Lista wyboru samolotow - klik na samolocie aby uzyskac informacje
-STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Zbudowa zaznaczonych samolotow
+STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Zbuduj wybrany samolot
 STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Stan obecnego samolotu - klik aby zatrzymac/ruszyc samolot
-STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Pokaz polecenia dla samolotu
+STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Pokaz polecenia samolotu
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centruj glowne okno na pozycji samolotu
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Wyslij samolot do hangaru
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Pokaz szczegoly samolotu
@@ -2685,7 +2691,7 @@ STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Koszt: {
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nazwa samolotu
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Nie mozna zmienic nazwy samolotu...
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Nazwa samolotu
-STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mieszkancy swietuja . . .{}pierwszy samolot przylecial do {STATION}!
+STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mieszkancy swietuja . . .{}Pierwszy samolot przylecial do {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Katastrofa lotnicza!{}{COMMA} ofiar na {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Wypadek lotniczy!{}Samolot rozbil sie z braku paliwa, zginelo {COMMA} osob!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
@@ -2693,11 +2699,11 @@ STR_A037_RENAME                                                 :{BLACK}Zmien na
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Zmien nazwe typu samolotu
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Zmien nazwe typu samolotu
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Nie mozna zmienic nazwy typu samolotu...
-STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Przebudowa samolotu do przewozu innego towaru
+STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Przebudowa samolotu do przewozu innego typu towaru
 STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Przebudowa)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Przebudowa samolotu
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz typ towaru jaki ma przenosic samolot
-STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Przebudowa samolotu do przewozu podswietlonych towarow
+STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Przebuduj samolot do przewozu zaznaczonego typu towaru
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wybierz typ towaru do przewozu:-
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nowa pojemnosc: {GOLD}{STRING}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nie mozna przebudowac samolotu...
@@ -2705,12 +2711,12 @@ STR_GO_TO_AIRPORT_HANGAR                                        :Idz do hangaru 
 SERVICE_AT_AIRPORT_HANGAR                                       :Serwisuj w hangarze na {STATION}
 
 ##id 0xB000
-STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Katastrofa Zeppelina przy {STATION}!
-STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Samochod zniszczony po kolizji z 'UFO'!
+STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Katastrofa Zeppelina na {STATION}!
+STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Samochod zniszczony w kolizji z 'UFO'!
 STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Eksplozja rafineri blisko {TOWN}!
-STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Fabryka zniszczona w niewyjasnionych okolicznosciach w poblizu {TOWN}!
+STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Fabryka zniszczona w podejrzanych okolicznosciach w poblizu {TOWN}!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}'UFO' wyladowalo blisko {TOWN}!
-STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Tapniecie w kopalni zniszczylo tory w poblizu {TOWN}!
+STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Obsuniecie sie ziemii nad kopalnia pozostawilo pas zniszczenia blisko {TOWN}!
 STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Powodz!{}Przynajmniej {COMMA} zaginelo lub utonelo w czasie powodzi!
 
 STR_BRIBE_FAILED                                                :{WHITE}Twoja lapowka zostala
@@ -2738,19 +2744,19 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Calkowic
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Liczba pojazdow. Ujete sa pociagi, samochody, statki i samoloty.
 STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Liczba stacji. Wliczany kazdy element stacji (np. stacja, przystanek, lotnisko) , nawet jesli sa polaczone w jedna stacje.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Minimalny zysk z posrod wszystkich pojazdow ktore maja conajmniej 2 lata.
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Ilosc pieniedzy zarobiona z najmniejszym zyskiem w miesiacu w ostatnich 12 kwartalach
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Ilosc pieniedzy zarobiona z najwiekszym zyskiem w miesiacu w ostatnich 12 kwartalach
-STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Ilosc towaru przewiezniona w poprzednich 4 kwartalach.
-STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Typ towaru przewiezionego w ostatnim kwartale.
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Ilosc pieniedzy zarobiona w miesiacu z najmniejszym zyskiem w ostatnich 12 kwartalach
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Ilosc pieniedzy zarobiona w miesiacu z najwiekszym zyskiem w ostatnich 12 kwartalach
+STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Ilosc towaru przewiezniona w poprzednich 4 kwartalach
+STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Ilosc roznych towarow przewiezionych w ostatnim kwartale
 STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Ilosc pieniedzy w reku
-STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Dokonales najwyzszej pozyczki?
+STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Wielkosc pozyczki wzietej przez firme
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Calkowia liczba pkt z posrod mozliwych
 
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Ustawienia Newgrf
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Zastosuj zmiany
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Ustaw parametry
-STR_NEWGRF_TIP                                                  :{BLACK}Lista plikow Newgrf jakie sa zainstalowane. Kliknij na ustawnienia by zmienic.
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Obecnie nie ma zainstalowanych zadnych plikow newgrf! Prosze sprawdzic instrukcje jak zainstalowac nowe grafiki.
+STR_NEWGRF_TIP                                                  :{BLACK}Lista plikow Newgrf jakie sa zainstalowane. Kliknij na ustawnienia by zmienic
+STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Obecnie nie ma zainstalowanych zadnych plikow newgrf! Prosze sprawdzic instrukcje jak zainstalowac nowe grafiki
 STR_NEWGRF_FILENAME                                             :{BLACK}Nazwa pliku:
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
 
@@ -2760,19 +2766,19 @@ STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separat
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufiks:
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Przejscie na Euro: {ORANGE}{NUM}
-STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Przejscie na Euro: {ORANGE}Nigdy
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Przejscie na Euro: {ORANGE}nigdy
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Podglad: {ORANGE}{CURRENCY}
-STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Zmien wlasny parametr waluty
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Zmien parametr wlasnej waluty
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Pociag(i/ow)
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Samochod(y/ow)
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Samolot(y/ow)
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Statek(i/ow)
+STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Pociag{P "" i ow}
+STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Samochod{P "" y ow}
+STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Samolot{P "" y ow}
+STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Stat{P ek ki kow}
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Pokazuje wszystkie pociagi ktore maja ta stacje w swoim rozkladzie
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Pokazuje wszystkie samochody ktore maja ta stacje w swoim rozkladzie
@@ -2783,7 +2789,7 @@ STR_REPLACE_VEHICLES                                            :{BLACK}Zastap p
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zastap {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Rozpocznij zastepowanie
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Zatrzymaj zastepowanie
-STR_NOT_REPLACING                                               :{BLACK}Brak zastapien
+STR_NOT_REPLACING                                               :{BLACK}Nie zastepowane
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Brak zaznaczonych pojazdow
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Wybierz typ pojazdu jaki chcesz zamienic
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Wybierz typ pojazdu jakim chcesz zastapic pojazd zaznaczony po lewej stronie
@@ -2791,9 +2797,11 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Wcisnij 
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Wcisnij ten klawisz jesli chcesz zastapic pojazd zaznaczony po lewej stronie wybranym pojazdem po prawej stronie
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wybierz dla jakiego typu szyn chcesz zastapic pojazdy
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Wyswietla typ pojazdu na jaki bedzie zastapiony  pojazd zaznaczony po lewej stronie
-STR_REPLACE_HELP                                                :{BLACK}Ta funkcja pozwala wybrac typ pojazdu i zastapic go innym. Bedzie sie to odbywac w momencie gdy pociag zjedzie do zajezdni
+STR_REPLACE_HELP                                                :{BLACK}Ta funkcja pozwala zastapic pojazd innym. Bedzie sie to odbywac w momencie gdy pociag zjedzie do zajezdni
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Usuniecie pojazdu: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Autowymiana zachowuje dlugosc pociagu poprzez usuwanie wagonow (poczawszy od poczatku), jesli wymiana lokomotywy spowoduje wydluzenie pociagu.
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Zastepowanie: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EKSPERYMENTALNE NARZEDZIE {}Przejdz pomiedzy oknami zamiany lokomotyw i wagonow.{}Wymiana wagonu nastapi tylko jesli nowy wagon moze byc przebudowany do przewozenia tego samego towaru co poprzedni. Kazdy wagon pociagu jest sprawdzany podczas procesu zamiany.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotywa nie moze byc zbudowana
 
 STR_ENGINES                                                     :Lokomotywy
@@ -2807,7 +2815,7 @@ STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista ta
 STR_RAIL_VEHICLES                                               :Pojazdy kolejowe
 STR_ELRAIL_VEHICLES                                             :Elektryczne lokomotywy
 STR_MONORAIL_VEHICLES                                           :Pojazdy jednoszyn.
-STR_MAGLEV_VEHICLES                                             :Pojazdy Maglew
+STR_MAGLEV_VEHICLES                                             :Pojazdy Maglev
 
 ############ End of list of rail types
 
@@ -2823,5 +2831,5 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maksymal
 STR_PURCHASE_INFO_COST                                          :{BLACK}Koszt: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Waga: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Koszt: {GOLD}{CURRENCY}{BLACK} Predkosc: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ladownosc: {GOLD}{COMMA} pasazerow, {COMMA} sztuk poczty
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ladownosc: {GOLD}{COMMA} pasazerow, {COMMA} paczek poczty
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moc: {GOLD}+{POWER}{BLACK} Waga: {GOLD}+{WEIGHT_S}
