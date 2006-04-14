@@ -2491,7 +2491,7 @@ static void DecodeSpecialSprite(uint num, uint stage)
 	 * in an earlier stage than associating, so...  We just process actions
 	 * 1 and 2 in stage 1 now, let's hope that won't get us into problems.
 	 * --pasky */
-	uint32 action_mask = (stage == 0) ? 0x0001FF40 : 0x0001FFBF;
+	uint32 action_mask = (stage == 0) ? 0x0001FB40 : 0x0001FFBF;
 	static const SpecialSpriteHandler handlers[] = {
 		/* 0x00 */ VehicleChangeInfo,
 		/* 0x01 */ NewSpriteSet,
