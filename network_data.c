@@ -125,7 +125,7 @@ static NetworkRecvStatus CloseConnection(NetworkClientState *cs)
 	NetworkCloseClient(cs);
 
 	// Clients drop back to the main menu
-	if (!_network_server) {
+	if (!_network_server && _networking) {
 		_switch_mode = SM_MENU;
 		_networking = false;
 		_switch_mode_errorstr = STR_NETWORK_ERR_LOSTCONNECTION;

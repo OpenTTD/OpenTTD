@@ -328,8 +328,12 @@ static void NetworkHandleUDPPacket(Packet* p, struct sockaddr_in* client_addr)
 
 	if (type < PACKET_UDP_END && _network_udp_packet[type] != NULL && !_udp_cs.quited) {
 		_network_udp_packet[type](p, client_addr);
-	}	else {
-		DEBUG(net, 0)("[NET][UDP] Received invalid packet type %d", type);
+	} else {
+		if (!_udp_cs.quited) {
+			DEBUG(net, 0)("[NET][UDP] Received invalid packet type %d", type);
+		} else {
+			DEBUG(net, 0)("[NET][UDP] Received illegal packet");
+		}
 	}
 }
 
