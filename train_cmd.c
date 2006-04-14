@@ -1950,8 +1950,7 @@ static void HandleLocomotiveSmokeCloud(const Vehicle* v)
 		if ((RailVehInfo(engtype)->flags & RVI_WAGON && effect_type == 0) ||
 				disable_effect ||
 				GetEngine(engtype)->railtype > RAILTYPE_ELECTRIC ||
-				v->vehstatus & VS_HIDDEN ||
-				v->u.rail.track & 0xC0) {
+				v->vehstatus & VS_HIDDEN) {
 			continue;
 		}
 
