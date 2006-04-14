@@ -549,14 +549,11 @@ NetworkGameList *NetworkUDPQueryServer(const char* host, unsigned short port)
 	struct sockaddr_in out_addr;
 	Packet *p;
 	NetworkGameList *item;
-	char hostname[NETWORK_HOSTNAME_LENGTH];
 
 	// No UDP-socket yet..
 	if (_udp_client_socket == INVALID_SOCKET)
 		if (!NetworkUDPListen(&_udp_client_socket, 0, 0, true))
 			return NULL;
-
-	ttd_strlcpy(hostname, host, sizeof(hostname));
 
 	out_addr.sin_family = AF_INET;
 	out_addr.sin_port = htons(port);
@@ -565,8 +562,8 @@ NetworkGameList *NetworkUDPQueryServer(const char* host, unsigned short port)
 	// Clear item in gamelist
 	item = NetworkGameListAddItem(inet_addr(inet_ntoa(out_addr.sin_addr)), ntohs(out_addr.sin_port));
 	memset(&item->info, 0, sizeof(item->info));
-	snprintf(item->info.server_name, sizeof(item->info.server_name), "%s", hostname);
-	snprintf(item->info.hostname, sizeof(item->info.hostname), "%s", hostname);
+	ttd_strlcpy(item->info.server_name, host, lengthof(item->info.server_name));
+	ttd_strlcpy(item->info.hostname, host, lengthof(item->info.hostname));
 	item->online = false;
 
 	// Init the packet
