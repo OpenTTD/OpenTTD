@@ -270,8 +270,8 @@ IndustryType GetIndustryType(TileIndex tile)
 	assert(IsTileType(tile, MP_INDUSTRY));
 
 	for (iloop = IT_COAL_MINE; iloop < IT_END; iloop += 1) {
-		if IS_INT_INSIDE(this_type, industry_gfx_Solver[iloop].MinGfx,
-				industry_gfx_Solver[iloop].MaxGfx) {
+		if (IS_BYTE_INSIDE(this_type, industry_gfx_Solver[iloop].MinGfx,
+				industry_gfx_Solver[iloop].MaxGfx)) {
 			return iloop;
 		}
 	}
@@ -531,7 +531,7 @@ static void AnimateTile_Industry(TileIndex tile)
 	byte m;
 
 	switch (GetIndustryGfx(tile)) {
-	case 174:
+	case GFX_SUGAR_MINE_SIEVE:
 		if ((_tick_counter & 1) == 0) {
 			m = _m[tile].m3 + 1;
 
@@ -550,7 +550,7 @@ static void AnimateTile_Industry(TileIndex tile)
 		}
 		break;
 
-	case 165:
+	case GFX_TOFFEE_QUARY:
 		if ((_tick_counter & 3) == 0) {
 			m = _m[tile].m3;
 
@@ -568,7 +568,7 @@ static void AnimateTile_Industry(TileIndex tile)
 		}
 		break;
 
-	case 162:
+	case GFX_BUBBLE_CATCHER:
 		if ((_tick_counter&1) == 0) {
 			m = _m[tile].m3;
 
@@ -583,7 +583,7 @@ static void AnimateTile_Industry(TileIndex tile)
 		break;
 
 	// Sparks on a coal plant
-	case 10:
+	case GFX_POWERPLANT_SPARKS:
 		if ((_tick_counter & 3) == 0) {
 			m = _m[tile].m1;
 			if (GB(m, 2, 5) == 6) {
@@ -596,7 +596,7 @@ static void AnimateTile_Industry(TileIndex tile)
 		}
 		break;
 
-	case 143:
+	case GFX_TOY_FACTORY:
 		if ((_tick_counter & 1) == 0) {
 			m = _m[tile].m3 + 1;
 
@@ -733,9 +733,9 @@ static void MakeIndustryTileBigger(TileIndex tile)
 		if (GetIndustryGfx(tile + TileDiffXY(0, 1)) == 24) BuildOilRig(tile);
 		break;
 
-	case 143:
-	case 162:
-	case 165:
+	case GFX_TOY_FACTORY:
+	case GFX_BUBBLE_CATCHER:
+	case GFX_TOFFEE_QUARY:
 		_m[tile].m3 = 0;
 		SetIndustryAnimationLoop(tile, 0);
 		break;

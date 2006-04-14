@@ -2067,15 +2067,15 @@ static void TileLoop_Station(TileIndex tile)
 	// FIXME -- GetTileTrackStatus_Station -> animated stationtiles
 	// hardcoded.....not good
 	switch (GetStationGfx(tile)) {
-		case 0x27: // large big airport
-		case 0x3A: // flag small airport
-		case 0x5A: // radar international airport
-		case 0x66: // radar metropolitan airport
+		case GFX_RADAR_LARGE_FIRST:
+		case GFX_WINDSACK_FIRST : // for small airport
+		case GFX_RADAR_INTERNATIONAL_FIRST: // radar international airport
+		case GFX_RADAR_METROPOLITAN_FIRST: // radar metropolitan airport
 			AddAnimatedTile(tile);
 			break;
 
-		case 0x4B: // oilrig (station part)
-		case 0x52: // bouy
+		case GFX_OILRIG_BASE: //(station part)
+		case GFX_BUOY_BASE:
 			TileLoop_Water(tile);
 			break;
 
@@ -2086,39 +2086,44 @@ static void TileLoop_Station(TileIndex tile)
 
 static void AnimateTile_Station(TileIndex tile)
 {
-	byte gfx = GetStationGfx(tile);
+	StationGfx gfx = GetStationGfx(tile);
 	//FIXME -- AnimateTile_Station -> not nice code, lots of things double
-  // again hardcoded...was a quick hack
+	// again hardcoded...was a quick hack
 
-  // turning radar / windsack on airport
-	if (gfx >= 39 && gfx <= 50) { // turning radar (39 - 50)
+	// turning radar / windsack on airport
+	if (IS_BYTE_INSIDE(gfx, GFX_RADAR_LARGE_FIRST, GFX_RADAR_LARGE_LAST)) {
 		if (_tick_counter & 3)
 			return;
 
-		if (++gfx == 50+1)
-			gfx = 39;
+		if (++gfx == GFX_RADAR_LARGE_LAST+1)
+			gfx = GFX_RADAR_LARGE_FIRST;
 
 		SetStationGfx(tile, gfx);
 		MarkTileDirtyByTile(tile);
-  //added - begin
-	} else if (gfx >= 90 && gfx <= 113) { // turning radar with ground under it (different fences) (90 - 101 | 102 - 113)
+	//added - begin
+	} else if (IS_BYTE_INSIDE(gfx, GFX_RADAR_INTERNATIONAL_FIRST, GFX_RADAR_METROPOLITAN_LAST)) {
 		if (_tick_counter & 3)
 			return;
 
 		gfx++;
 
-		if (gfx == 101+1) {gfx = 90;}  // radar with fences in south
-		else if (gfx == 113+1) {gfx = 102;} // radar with fences in north
+		if (gfx == GFX_RADAR_INTERNATIONAL_LAST+1) {
+			gfx = GFX_RADAR_INTERNATIONAL_FIRST;
+		}
+		else if (gfx == GFX_RADAR_METROPOLITAN_LAST+1) {
+			gfx = GFX_RADAR_METROPOLITAN_FIRST;
+		}
 
 		SetStationGfx(tile, gfx);
 		MarkTileDirtyByTile(tile);
 	//added - end
-	} else if (gfx >= 0x3A && gfx <= 0x3D) {  // windsack (58 - 61)
+	} else if (IS_BYTE_INSIDE(gfx, GFX_WINDSACK_FIRST, GFX_WINDSACK_LAST)) {
 		if (_tick_counter & 1)
 			return;
 
-		if (++gfx == 0x3D+1)
-			gfx = 0x3A;
+		if (++gfx == GFX_WINDSACK_LAST+1) {
+			gfx = GFX_WINDSACK_FIRST;
+		}
 
 		SetStationGfx(tile, gfx);
 		MarkTileDirtyByTile(tile);

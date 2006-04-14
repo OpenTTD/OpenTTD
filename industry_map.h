@@ -9,7 +9,15 @@
 #include "macros.h"
 #include "tile.h"
 
-typedef uint IndustryGfx;
+typedef byte IndustryGfx;
+
+enum {
+	GFX_POWERPLANT_SPARKS =  10,
+	GFX_BUBBLE_CATCHER    = 162,
+	GFX_TOFFEE_QUARY      = 165,
+	GFX_SUGAR_MINE_SIEVE  = 174,
+	GFX_TOY_FACTORY       = 143
+};
 
 static inline uint GetIndustryIndex(TileIndex t)
 {
