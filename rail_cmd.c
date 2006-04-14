@@ -1407,7 +1407,7 @@ void DrawTrainDepotSprite(int x, int y, int image, RailType railtype)
 
 void DrawDefaultWaypointSprite(int x, int y, RailType railtype)
 {
-	const DrawTrackSeqStruct *dtss = _track_depot_layout_table[4];
+	const DrawTrackSeqStruct *dtss = _track_waypoint_layout_table[0];
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 	uint32 img;
 
