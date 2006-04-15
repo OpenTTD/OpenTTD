@@ -395,11 +395,7 @@ void IConsolePrint(uint16 color_code, const char* string)
 	memmove(&_iconsole_buffer[0], &_iconsole_buffer[1], sizeof(_iconsole_buffer[0]) * ICON_BUFFER);
 	_iconsole_buffer[ICON_BUFFER] = strdup(string);
 
-	{ // filter out unprintable characters
-		char *i;
-		for (i = _iconsole_buffer[ICON_BUFFER]; *i != '\0'; i++)
-			if (!IsValidAsciiChar((byte)*i)) *i = ' ';
-	}
+	str_validate(_iconsole_buffer[ICON_BUFFER]);
 
 	memmove(&_iconsole_cbuffer[0], &_iconsole_cbuffer[1], sizeof(_iconsole_cbuffer[0]) * ICON_BUFFER);
 	_iconsole_cbuffer[ICON_BUFFER] = color_code;
