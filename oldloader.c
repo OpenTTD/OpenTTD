@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "station_map.h"
 #include "table/strings.h"
 #include "functions.h"
 #include "map.h"
@@ -359,7 +360,7 @@ static void FixOldStations(void)
 
 	FOR_ALL_STATIONS(st) {
 		/* Check if we need to swap width and height for the station */
-		if (st->train_tile != 0 && _m[st->train_tile].m5 & 1) {
+		if (st->train_tile != 0 && GetRailStationAxis(st->train_tile) != AXIS_X) {
 			swap_byte(&st->trainst_w, &st->trainst_h);
 		}
 

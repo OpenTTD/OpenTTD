@@ -22,6 +22,7 @@
 #include "gui.h"
 #include "station.h"
 #include "station_map.h"
+#include "town_map.h"
 #include "tunnel_map.h"
 #include "vehicle.h"
 #include "viewport.h"
@@ -1010,9 +1011,9 @@ static void ConvertTownOwner(void)
 				SetCrossingRoadOwner(tile, OWNER_TOWN);
 			}
 
-			if (_m[tile].m1 & 0x80) SetTileOwner(tile, OWNER_TOWN);
+			if (GetTileOwner(tile) & 0x80) SetTileOwner(tile, OWNER_TOWN);
 		} else if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-			if (_m[tile].m1 & 0x80) SetTileOwner(tile, OWNER_TOWN);
+			if (GetTileOwner(tile) & 0x80) SetTileOwner(tile, OWNER_TOWN);
 		}
 	}
 }
@@ -1209,7 +1210,7 @@ bool AfterLoadGame(void)
 					_m[tile].m2 = ClosestTownFromTile(tile,(uint)-1)->index;
 					SetTileType(tile, MP_STREET);
 				} else {
-					_m[tile].m2 = 0;
+					SetTownIndex(tile, 0);
 				}
 			}
 		} END_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0);
@@ -1277,26 +1278,26 @@ bool AfterLoadGame(void)
 					break;
 
 				case MP_STATION:
-					if (IsRailwayStation(t) && (GB(_m[t].m3, 0, 4) > RAILTYPE_RAIL || make_elrail)) AB(_m[t].m3, 0, 4, 1);
+					if (IsRailwayStation(t) && (GetRailType(t) > RAILTYPE_RAIL || make_elrail)) AB(_m[t].m3, 0, 4, 1);
 					break;
 
 				case MP_TUNNELBRIDGE:
 					if (IsTunnel(t)) {
 						if (GetTunnelTransportType(t) == TRANSPORT_RAIL) {
-							if (GB(_m[t].m3, 0, 4) > RAILTYPE_RAIL || make_elrail) AB(_m[t].m3, 0, 4, 1);
+							if (GetRailType(t) > RAILTYPE_RAIL || make_elrail) AB(_m[t].m3, 0, 4, 1);
 						}
 					} else {
 						if (GetBridgeTransportType(t) == TRANSPORT_RAIL) {
 							if (IsBridgeRamp(t)) {
-								if (GB(_m[t].m3, 0, 4) > RAILTYPE_RAIL || make_elrail) AB(_m[t].m3, 0, 4, 1);
+								if (GetRailType(t) > RAILTYPE_RAIL || make_elrail) AB(_m[t].m3, 0, 4, 1);
 							} else {
-								if (GB(_m[t].m3, 4, 4) > RAILTYPE_RAIL || make_elrail) AB(_m[t].m3, 4, 4, 1);
+								if (GetRailTypeOnBridge(t) > RAILTYPE_RAIL || make_elrail) AB(_m[t].m3, 4, 4, 1);
 							}
 						}
 						if (IsBridgeMiddle(t) &&
 								IsTransportUnderBridge(t) &&
 								GetTransportTypeUnderBridge(t) == TRANSPORT_RAIL) {
-							if (GB(_m[t].m3, 0, 4) > RAILTYPE_RAIL || make_elrail) AB(_m[t].m3, 0, 4, 1);
+							if (GetRailType(t) > RAILTYPE_RAIL || make_elrail) AB(_m[t].m3, 0, 4, 1);
 						}
 					}
 					break;
