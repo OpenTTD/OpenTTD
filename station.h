@@ -96,14 +96,14 @@ enum {
 
 enum {
 //	HVOT_PENDING_DELETE = 1<<0, // not needed anymore
-	HVOT_TRAIN = 1<<1,
-	HVOT_BUS = 1 << 2,
-	HVOT_TRUCK = 1 << 3,
+	HVOT_TRAIN    = 1 << 1,
+	HVOT_BUS      = 1 << 2,
+	HVOT_TRUCK    = 1 << 3,
 	HVOT_AIRCRAFT = 1 << 4,
-	HVOT_SHIP = 1 << 5,
+	HVOT_SHIP     = 1 << 5,
 	/* This bit is used to mark stations. No, it does not belong here, but what
 	 * can we do? ;-) */
-	HVOT_BUOY = 1 << 6
+	HVOT_BUOY     = 1 << 6
 };
 
 enum {

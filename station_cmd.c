@@ -1490,8 +1490,8 @@ static const byte _airport_sections_metropolitan[] = {
 
 // International Airport (large) - 2 runways
 static const byte _airport_sections_international[] = {
-  88, 89, 89, 89, 89, 89,  88,
- 	51,  8,  8,  8,  8,  8,  32,
+	88, 89, 89, 89, 89, 89,  88,
+	51,  8,  8,  8,  8,  8,  32,
 	30,  8, 11, 27, 11,  8,  10,
 	32,  8, 11, 27, 11,  8, 114,
 	87,  8, 11, 85, 11,  8, 114,
@@ -1505,11 +1505,11 @@ static const byte _airport_sections_heliport[] = {
 };
 
 static const byte * const _airport_sections[] = {
-	_airport_sections_country,				// Country Airfield (small)
-	_airport_sections_town,						// City Airport (large)
-	_airport_sections_heliport,				// Heliport
+	_airport_sections_country,        // Country Airfield (small)
+	_airport_sections_town,           // City Airport (large)
+	_airport_sections_heliport,       // Heliport
 	_airport_sections_metropolitan,   // Metropolitain Airport (large)
-	_airport_sections_international,	// International Airport (xlarge)
+	_airport_sections_international,  // International Airport (xlarge)
 };
 
 /** Place an Airport.
@@ -2069,8 +2069,8 @@ static void TileLoop_Station(TileIndex tile)
 	switch (GetStationGfx(tile)) {
 		case GFX_RADAR_LARGE_FIRST:
 		case GFX_WINDSACK_FIRST : // for small airport
-		case GFX_RADAR_INTERNATIONAL_FIRST: // radar international airport
-		case GFX_RADAR_METROPOLITAN_FIRST: // radar metropolitan airport
+		case GFX_RADAR_INTERNATIONAL_FIRST:
+		case GFX_RADAR_METROPOLITAN_FIRST:
 			AddAnimatedTile(tile);
 			break;
 
@@ -2743,20 +2743,20 @@ void InitializeStations(void)
 
 
 const TileTypeProcs _tile_type_station_procs = {
-	DrawTile_Station,						/* draw_tile_proc */
-	GetSlopeZ_Station,					/* get_slope_z_proc */
-	ClearTile_Station,					/* clear_tile_proc */
-	GetAcceptedCargo_Station,		/* get_accepted_cargo_proc */
-	GetTileDesc_Station,				/* get_tile_desc_proc */
-	GetTileTrackStatus_Station,	/* get_tile_track_status_proc */
-	ClickTile_Station,					/* click_tile_proc */
-	AnimateTile_Station,				/* animate_tile_proc */
-	TileLoop_Station,						/* tile_loop_clear */
-	ChangeTileOwner_Station,		/* change_tile_owner_clear */
-	NULL,												/* get_produced_cargo_proc */
-	VehicleEnter_Station,				/* vehicle_enter_tile_proc */
-	NULL,												/* vehicle_leave_tile_proc */
-	GetSlopeTileh_Station,			/* get_slope_tileh_proc */
+	DrawTile_Station,           /* draw_tile_proc */
+	GetSlopeZ_Station,          /* get_slope_z_proc */
+	ClearTile_Station,          /* clear_tile_proc */
+	GetAcceptedCargo_Station,   /* get_accepted_cargo_proc */
+	GetTileDesc_Station,        /* get_tile_desc_proc */
+	GetTileTrackStatus_Station, /* get_tile_track_status_proc */
+	ClickTile_Station,          /* click_tile_proc */
+	AnimateTile_Station,        /* animate_tile_proc */
+	TileLoop_Station,           /* tile_loop_clear */
+	ChangeTileOwner_Station,    /* change_tile_owner_clear */
+	NULL,                       /* get_produced_cargo_proc */
+	VehicleEnter_Station,       /* vehicle_enter_tile_proc */
+	NULL,                       /* vehicle_leave_tile_proc */
+	GetSlopeTileh_Station,      /* get_slope_tileh_proc */
 };
 
 static const SaveLoad _roadstop_desc[] = {
@@ -2778,51 +2778,51 @@ static const SaveLoad _roadstop_desc[] = {
 };
 
 static const SaveLoad _station_desc[] = {
-	SLE_CONDVAR(Station, xy,           SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Station, xy,           SLE_UINT32, 6, SL_MAX_VERSION),
-	SLE_CONDVAR(Station, bus_tile_obsolete,    SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Station, lorry_tile_obsolete,  SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Station, train_tile,   SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Station, train_tile,   SLE_UINT32, 6, SL_MAX_VERSION),
-	SLE_CONDVAR(Station, airport_tile, SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Station, airport_tile, SLE_UINT32, 6, SL_MAX_VERSION),
-	SLE_CONDVAR(Station, dock_tile,    SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Station, dock_tile,    SLE_UINT32, 6, SL_MAX_VERSION),
-	SLE_REF(Station,town,						REF_TOWN),
-	SLE_VAR(Station,trainst_w,			SLE_UINT8),
-	SLE_CONDVAR(Station,trainst_h,	SLE_UINT8, 2, SL_MAX_VERSION),
+	SLE_CONDVAR(Station, xy,                  SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(Station, xy,                  SLE_UINT32, 6, SL_MAX_VERSION),
+	SLE_CONDVAR(Station, bus_tile_obsolete,   SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(Station, lorry_tile_obsolete, SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(Station, train_tile,          SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(Station, train_tile,          SLE_UINT32, 6, SL_MAX_VERSION),
+	SLE_CONDVAR(Station, airport_tile,        SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(Station, airport_tile,        SLE_UINT32, 6, SL_MAX_VERSION),
+	SLE_CONDVAR(Station, dock_tile,           SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(Station, dock_tile,           SLE_UINT32, 6, SL_MAX_VERSION),
+	SLE_REF(Station,     town,                REF_TOWN),
+	SLE_VAR(Station,     trainst_w,           SLE_UINT8),
+	SLE_CONDVAR(Station, trainst_h,           SLE_UINT8,  2, SL_MAX_VERSION),
 
 	// alpha_order was stored here in savegame format 0 - 3
 	SLE_CONDNULL(1, 0, 3),
 
-	SLE_VAR(Station,string_id,			SLE_STRINGID),
+	SLE_VAR(Station,string_id,          SLE_STRINGID),
 	SLE_VAR(Station,had_vehicle_of_type,SLE_UINT16),
 
-	SLE_VAR(Station,time_since_load,		SLE_UINT8),
-	SLE_VAR(Station,time_since_unload,	SLE_UINT8),
-	SLE_VAR(Station,delete_ctr,					SLE_UINT8),
-	SLE_VAR(Station,owner,							SLE_UINT8),
-	SLE_VAR(Station,facilities,					SLE_UINT8),
-	SLE_VAR(Station,airport_type,				SLE_UINT8),
+	SLE_VAR(Station,time_since_load,    SLE_UINT8),
+	SLE_VAR(Station,time_since_unload,  SLE_UINT8),
+	SLE_VAR(Station,delete_ctr,         SLE_UINT8),
+	SLE_VAR(Station,owner,              SLE_UINT8),
+	SLE_VAR(Station,facilities,         SLE_UINT8),
+	SLE_VAR(Station,airport_type,       SLE_UINT8),
 
 	// truck/bus_stop_status was stored here in savegame format 0 - 6
-	SLE_CONDVAR(Station,truck_stop_status_obsolete,	SLE_UINT8, 0, 5),
-	SLE_CONDVAR(Station,bus_stop_status_obsolete,		SLE_UINT8, 0, 5),
+	SLE_CONDVAR(Station,truck_stop_status_obsolete, SLE_UINT8, 0, 5),
+	SLE_CONDVAR(Station,bus_stop_status_obsolete,   SLE_UINT8, 0, 5),
 
 	// blocked_months was stored here in savegame format 0 - 4.0
-	SLE_CONDVAR(Station,blocked_months_obsolete,	SLE_UINT8, 0, 4),
+	SLE_CONDVAR(Station,blocked_months_obsolete,    SLE_UINT8, 0, 4),
 
-	SLE_CONDVAR(Station,airport_flags,			SLE_VAR_U32 | SLE_FILE_U16, 0, 2),
-	SLE_CONDVAR(Station,airport_flags,			SLE_UINT32, 3, SL_MAX_VERSION),
+	SLE_CONDVAR(Station,airport_flags,     SLE_VAR_U32 | SLE_FILE_U16, 0, 2),
+	SLE_CONDVAR(Station,airport_flags,     SLE_UINT32, 3, SL_MAX_VERSION),
 
-	SLE_VAR(Station,last_vehicle,				SLE_UINT16),
+	SLE_VAR(Station,last_vehicle,          SLE_UINT16),
 
-	SLE_CONDVAR(Station,class_id,				SLE_UINT8, 3, SL_MAX_VERSION),
-	SLE_CONDVAR(Station,stat_id,				SLE_UINT8, 3, SL_MAX_VERSION),
-	SLE_CONDVAR(Station,build_date,			SLE_UINT16, 3, SL_MAX_VERSION),
+	SLE_CONDVAR(Station,class_id,          SLE_UINT8, 3, SL_MAX_VERSION),
+	SLE_CONDVAR(Station,stat_id,           SLE_UINT8, 3, SL_MAX_VERSION),
+	SLE_CONDVAR(Station,build_date,        SLE_UINT16, 3, SL_MAX_VERSION),
 
-	SLE_CONDREF(Station,bus_stops,					REF_ROADSTOPS, 6, SL_MAX_VERSION),
-	SLE_CONDREF(Station,truck_stops,				REF_ROADSTOPS, 6, SL_MAX_VERSION),
+	SLE_CONDREF(Station,bus_stops,         REF_ROADSTOPS, 6, SL_MAX_VERSION),
+	SLE_CONDREF(Station,truck_stops,       REF_ROADSTOPS, 6, SL_MAX_VERSION),
 
 	// reserve extra space in savegame here. (currently 32 bytes)
 	SLE_CONDNULL(32, 2, SL_MAX_VERSION),
@@ -2831,15 +2831,15 @@ static const SaveLoad _station_desc[] = {
 };
 
 static const SaveLoad _goods_desc[] = {
-	SLE_VAR(GoodsEntry,waiting_acceptance,SLE_UINT16),
-	SLE_VAR(GoodsEntry,days_since_pickup,	SLE_UINT8),
-	SLE_VAR(GoodsEntry,rating,						SLE_UINT8),
-	SLE_CONDVAR(GoodsEntry,enroute_from,			SLE_FILE_U8 | SLE_VAR_U16, 0, 6),
-	SLE_CONDVAR(GoodsEntry,enroute_from,			SLE_UINT16, 7, SL_MAX_VERSION),
-	SLE_VAR(GoodsEntry,enroute_time,			SLE_UINT8),
-	SLE_VAR(GoodsEntry,last_speed,				SLE_UINT8),
-	SLE_VAR(GoodsEntry,last_age,					SLE_UINT8),
-	SLE_CONDVAR(GoodsEntry,feeder_profit,			SLE_INT32, 14, SL_MAX_VERSION),
+	SLE_VAR(GoodsEntry,waiting_acceptance, SLE_UINT16),
+	SLE_VAR(GoodsEntry,days_since_pickup,  SLE_UINT8),
+	SLE_VAR(GoodsEntry,rating,             SLE_UINT8),
+	SLE_CONDVAR(GoodsEntry,enroute_from,   SLE_FILE_U8 | SLE_VAR_U16, 0, 6),
+	SLE_CONDVAR(GoodsEntry,enroute_from,   SLE_UINT16, 7, SL_MAX_VERSION),
+	SLE_VAR(GoodsEntry,enroute_time,       SLE_UINT8),
+	SLE_VAR(GoodsEntry,last_speed,         SLE_UINT8),
+	SLE_VAR(GoodsEntry,last_age,           SLE_UINT8),
+	SLE_CONDVAR(GoodsEntry,feeder_profit,  SLE_INT32, 14, SL_MAX_VERSION),
 
 	SLE_END()
 };
