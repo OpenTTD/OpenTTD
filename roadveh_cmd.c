@@ -568,7 +568,7 @@ static void RoadVehCheckTrainCrash(Vehicle *v)
 
 	tile = v->tile;
 
-	if (!IsTileType(tile, MP_STREET) || !IsLevelCrossing(tile)) return;
+	if (!IsLevelCrossingTile(tile)) return;
 
 	if (VehicleFromPos(tile, v, EnumCheckRoadVehCrashTrain) != NULL)
 		RoadVehCrash(v);

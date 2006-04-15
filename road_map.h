@@ -26,6 +26,10 @@ static inline bool IsLevelCrossing(TileIndex t)
 	return GetRoadType(t) == ROAD_CROSSING;
 }
 
+static inline bool IsLevelCrossingTile(TileIndex t)
+{
+	return IsTileType(t, MP_STREET) && IsLevelCrossing(t);
+}
 
 static inline RoadBits GetRoadBits(TileIndex t)
 {

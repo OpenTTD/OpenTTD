@@ -92,7 +92,7 @@ void TrainPowerChanged(Vehicle* v)
 		if (IsBridgeTile(u->tile) && IsBridgeMiddle(u->tile) && DiagDirToAxis(DirToDiagDir(u->direction)) == GetBridgeAxis(u->tile)) {
 			if (!HasPowerOnRail(u->u.rail.railtype, GetRailTypeOnBridge(u->tile))) engine_has_power = false;
 			if (!HasPowerOnRail(v->u.rail.railtype, GetRailTypeOnBridge(u->tile))) wagon_has_power = false;
-		} else if (IsTileType(u->tile, MP_STREET) && IsLevelCrossing(u->tile)) {
+		} else if (IsLevelCrossingTile(u->tile)) {
 			if (!HasPowerOnRail(u->u.rail.railtype, GetRailTypeCrossing(u->tile)))	engine_has_power = false;
 			if (!HasPowerOnRail(v->u.rail.railtype, GetRailTypeCrossing(u->tile)))	wagon_has_power = false;
 		} else {
@@ -1529,8 +1529,7 @@ static void *TestTrainOnCrossing(Vehicle *v, void *data)
 
 static void DisableTrainCrossing(TileIndex tile)
 {
-	if (IsTileType(tile, MP_STREET) &&
-			IsLevelCrossing(tile) &&
+	if (IsLevelCrossingTile(tile) &&
 			VehicleFromPos(tile, &tile, TestTrainOnCrossing) == NULL && // empty?
 			IsCrossingBarred(tile)) {
 		UnbarCrossing(tile);
@@ -3235,7 +3234,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 		}
 		if ((ts &= (ts >> 16)) == 0) {
 			// make a rail/road crossing red
-			if (IsTileType(tile, MP_STREET) && IsLevelCrossing(tile)) {
+			if (IsLevelCrossingTile(tile)) {
 				if (!IsCrossingBarred(tile)) {
 					BarCrossing(tile);
 					SndPlayVehicleFx(SND_0E_LEVEL_CROSSING, v);

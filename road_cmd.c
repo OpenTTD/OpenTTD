@@ -47,11 +47,8 @@ static bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, bool* edge_roa
 	// Only do the special processing for actual players.
 	if (_current_player >= MAX_PLAYERS) return true;
 
-	if (IsTileType(tile, MP_STREET) && IsLevelCrossing(tile)) {
-		owner = GetCrossingRoadOwner(tile);
-	} else {
-		owner = GetTileOwner(tile);
-	}
+	owner = IsLevelCrossingTile(tile) ? GetCrossingRoadOwner(tile) : GetTileOwner(tile);
+
 	// Only do the special processing if the road is owned
 	// by a town
 	if (owner != OWNER_TOWN) {
@@ -112,7 +109,7 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!IsTileType(tile, MP_STREET) && !IsTileType(tile, MP_TUNNELBRIDGE)) return CMD_ERROR;
 
-	owner = IsLevelCrossing(tile) ? GetCrossingRoadOwner(tile) : GetTileOwner(tile);
+	owner = IsLevelCrossingTile(tile) ? GetCrossingRoadOwner(tile) : GetTileOwner(tile);
 
 	if (owner == OWNER_TOWN && _game_mode != GM_EDITOR) {
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) { // index of town is not saved for bridge (no space)
