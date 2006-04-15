@@ -1014,29 +1014,27 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 				Bridge *bridge = &_bridge[brid + i];
 				byte tableid = grf_load_byte(&buf);
 				byte numtables = grf_load_byte(&buf);
-				byte table, sprite;
 
 				if (bridge->sprite_table == NULL) {
-					/* Allocate memory for sprite table pointers and set to NULL */
-					bridge->sprite_table = malloc(7 * sizeof(*bridge->sprite_table));
-					for (table = 0; table < 7; table++)
-						bridge->sprite_table[table] = NULL;
+					/* Allocate memory for sprite table pointers and zero out */
+					bridge->sprite_table = calloc(7, sizeof(*bridge->sprite_table));
 				}
 
-				for (table = tableid; table < tableid + numtables; table++) {
-					if (table < 7) {
-						if (bridge->sprite_table[table] == NULL) {
-							bridge->sprite_table[table] = malloc(32 * sizeof(**bridge->sprite_table));
-						}
+				for (; numtables-- != 0; tableid++) {
+					byte sprite;
 
-						for (sprite = 0; sprite < 32; sprite++)
-							bridge->sprite_table[table][sprite] = grf_load_dword(&buf);
-					} else {
-						grfmsg(GMS_WARN, "BridgeChangeInfo: Table %d >= 7, skipping.", table);
-						// Skip past invalid data.
-						for (sprite = 0; sprite < 32; sprite++)
-							grf_load_dword(&buf);
+					if (tableid >= 7) { // skip invalid data
+						grfmsg(GMS_WARN, "BridgeChangeInfo: Table %d >= 7, skipping.", tableid);
+						for (sprite = 0; sprite < 32; sprite++) grf_load_dword(&buf);
+						continue;
 					}
+
+					if (bridge->sprite_table[tableid] == NULL) {
+						bridge->sprite_table[tableid] = malloc(32 * sizeof(**bridge->sprite_table));
+					}
+
+					for (sprite = 0; sprite < 32; sprite++)
+						bridge->sprite_table[tableid][sprite] = grf_load_dword(&buf);
 				}
 			}
 			break;
