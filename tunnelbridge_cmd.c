@@ -98,6 +98,7 @@ static inline const PalSpriteID *GetBridgeSpriteTable(int index, byte table)
 	}
 }
 
+static inline byte GetBridgeFlags(int index) { return _bridge[index].flags;}
 
 /**	check if bridge can be built on slope
  *	direction 0 = X-axis, direction 1 = Y-axis
@@ -817,30 +818,13 @@ static const byte _bridge_foundations[2][16] = {
 
 extern const byte _road_sloped_sprites[14];
 
-static void DrawBridgePillars(const TileInfo *ti, int x, int y, int z)
+static void DrawBridgePillars(PalSpriteID image, const TileInfo *ti, int x, int y, int z)
 {
-	Axis axis = GetBridgeAxis(ti->tile);
-	const PalSpriteID *b;
-	PalSpriteID image;
-	int piece;
-
-	b = _bridge_poles_table[GetBridgeType(ti->tile)];
-
-	// Draw first piece
-	// (necessary for cantilever bridges)
-
-	image = b[axis == AXIS_X ? 12 : 13];
-	piece = GetBridgePiece(ti->tile);
-
-	if (image != 0 && piece != 0) {
-		if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
-		DrawGroundSpriteAt(image, x, y, z);
-	}
-
-	image = b[piece + (axis == AXIS_X ? 0 : 6)];
-
 	if (image != 0) {
-		int back_height, front_height, i=z;
+		Axis axis = GetBridgeAxis(ti->tile);
+		bool drawfarpillar = !HASBIT(GetBridgeFlags(GetBridgeType(ti->tile)), 0);
+		int back_height, front_height;
+		int i = z;
 		const byte *p;
 
 		static const byte _tileh_bits[4][8] = {
@@ -862,12 +846,11 @@ static void DrawBridgePillars(const TileInfo *ti, int x, int y, int z)
 		}
 
 		for (; z >= front_height || z >= back_height; z = z - 8) {
-			if (z >= front_height) {
-				// front facing pillar
+			if (z >= front_height) { // front facing pillar
 				AddSortableSpriteToDraw(image, x,y, p[4], p[5], 0x28, z);
 			}
-			if (z >= back_height && z < i - 8) {
-				// back facing pillar
+
+			if (drawfarpillar && z >= back_height && z < i - 8) { // back facing pillar
 				AddSortableSpriteToDraw(image, x - p[6], y - p[7], p[4], p[5], 0x28, z);
 			}
 		}
@@ -1066,7 +1049,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				}
 			} else if (_patches.bridge_pillars) {
 				// draw pillars below for high bridges
-				DrawBridgePillars(ti, x, y, z);
+				DrawBridgePillars(b[2], ti, x, y, z);
 			}
 		}
 	}

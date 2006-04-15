@@ -20,9 +20,6 @@
   * <li>X direction, south end, sloped</li>
   * <li>Y direction, south end, sloped</li></ol>
   * This is repeated 4 times, for rail, road, monorail, maglev</li>
-  * <li>_bridge_sprite_table_n_poles. Defines all the sprites needed for the pylons. The first 6 elements are for each
-  * bridge piece (max 5 currently) in X direction, the next 6 elements are for the bridge pieces in Y direction.
-  * The last two elements are used for cantilever bridges</li>
   * </ul>
   */
 
@@ -38,25 +35,6 @@ static const PalSpriteID _bridge_sprite_table_2_1[] = {
 	0x98E | PALETTE_TO_STRUCT_WHITE, 0x990 | PALETTE_TO_STRUCT_WHITE, 0x98D | PALETTE_TO_STRUCT_WHITE, 0x98F | PALETTE_TO_STRUCT_WHITE, 0x992 | PALETTE_TO_STRUCT_WHITE, 0x994 | PALETTE_TO_STRUCT_WHITE, 0x991 | PALETTE_TO_STRUCT_WHITE, 0x993 | PALETTE_TO_STRUCT_WHITE,
 	0x10E7 | PALETTE_TO_STRUCT_WHITE, 0x10E9 | PALETTE_TO_STRUCT_WHITE, 0x10E6 | PALETTE_TO_STRUCT_WHITE, 0x10E8 | PALETTE_TO_STRUCT_WHITE, 0x10EB | PALETTE_TO_STRUCT_WHITE, 0x10ED | PALETTE_TO_STRUCT_WHITE, 0x10EA | PALETTE_TO_STRUCT_WHITE, 0x10EC | PALETTE_TO_STRUCT_WHITE,
 	0x110F | PALETTE_TO_STRUCT_WHITE, 0x1111 | PALETTE_TO_STRUCT_WHITE, 0x110E | PALETTE_TO_STRUCT_WHITE, 0x1110 | PALETTE_TO_STRUCT_WHITE, 0x1113 | PALETTE_TO_STRUCT_WHITE, 0x1115 | PALETTE_TO_STRUCT_WHITE, 0x1112 | PALETTE_TO_STRUCT_WHITE, 0x1114 | PALETTE_TO_STRUCT_WHITE,
-};
-
-static const PalSpriteID _bridge_sprite_table_2_poles[] = {
-	SPR_PILLARS_BASE + 6 * 3 + 3,
-	SPR_PILLARS_BASE + 6 * 3 + 3,
-	SPR_PILLARS_BASE + 6 * 3 + 3,
-	SPR_PILLARS_BASE + 6 * 3 + 3,
-	SPR_PILLARS_BASE + 6 * 3 + 5,
-	0x0,
-
-	SPR_PILLARS_BASE + 6 * 3 + 0,
-	SPR_PILLARS_BASE + 6 * 3 + 0,
-	SPR_PILLARS_BASE + 6 * 3 + 0,
-	SPR_PILLARS_BASE + 6 * 3 + 0,
-	SPR_PILLARS_BASE + 6 * 3 + 2,
-	0x0,
-
-	0x0,
-	0x0,
 };
 
 static const PalSpriteID _bridge_sprite_table_4_0[] = {
@@ -106,25 +84,6 @@ static const PalSpriteID _bridge_sprite_table_4_6[] = {
 	    0x98E,     0x990,     0x98D,     0x98F,     0x992,     0x994,     0x991,     0x993,
 	   0x10E7,    0x10E9,    0x10E6,    0x10E8,    0x10EB,    0x10ED,    0x10EA,    0x10EC,
 	   0x110F,    0x1111,    0x110E,    0x1110,    0x1113,    0x1115,    0x1112,    0x1114,
-};
-
-static const PalSpriteID _bridge_sprite_table_4_poles[] = {
-	SPR_PILLARS_BASE + 6 * 0 + 3,
-	SPR_PILLARS_BASE + 6 * 0 + 4,
-	SPR_PILLARS_BASE + 6 * 0 + 4,
-	SPR_PILLARS_BASE + 6 * 0 + 3,
-	SPR_PILLARS_BASE + 6 * 0 + 5,
-	0x0,
-
-	SPR_PILLARS_BASE + 6 * 0 + 0,
-	SPR_PILLARS_BASE + 6 * 0 + 1,
-	SPR_PILLARS_BASE + 6 * 0 + 1,
-	SPR_PILLARS_BASE + 6 * 0 + 0,
-	SPR_PILLARS_BASE + 6 * 0 + 2,
-	0x0,
-
-	0x0,
-	0x0,
 };
 
 static const PalSpriteID _bridge_sprite_table_5_0[] = {
@@ -183,25 +142,6 @@ static const PalSpriteID _bridge_sprite_table_5_6[] = {
 	0x0, SPR_PILLARS_BASE + 2,
 };
 
-static const PalSpriteID _bridge_sprite_table_5_poles[] = {
-	SPR_PILLARS_BASE + 6 * 0 + 3 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_YELLOW),
-	SPR_PILLARS_BASE + 6 * 0 + 4 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_YELLOW),
-	SPR_PILLARS_BASE + 6 * 0 + 4 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_YELLOW),
-	SPR_PILLARS_BASE + 6 * 0 + 3 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_YELLOW),
-	SPR_PILLARS_BASE + 6 * 0 + 5 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_YELLOW),
-	0x0,
-
-	SPR_PILLARS_BASE + 6 * 0 + 0 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_YELLOW),
-	SPR_PILLARS_BASE + 6 * 0 + 1 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_YELLOW),
-	SPR_PILLARS_BASE + 6 * 0 + 1 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_YELLOW),
-	SPR_PILLARS_BASE + 6 * 0 + 0 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_YELLOW),
-	SPR_PILLARS_BASE + 6 * 0 + 2 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_YELLOW),
-	0x0,
-
-	0x0,
-	0x0,
-};
-
 static const PalSpriteID _bridge_sprite_table_3_0[] = {
 	0x9A9 | PALETTE_TO_STRUCT_CONCRETE, 0x99F | PALETTE_TO_STRUCT_CONCRETE, 0x9B1 | PALETTE_TO_STRUCT_CONCRETE,       0x0, 0x9A5 | PALETTE_TO_STRUCT_CONCRETE, 0x997 | PALETTE_TO_STRUCT_CONCRETE, 0x9AD | PALETTE_TO_STRUCT_CONCRETE,       0x0,
 	0x99D | PALETTE_TO_STRUCT_CONCRETE, 0x99F | PALETTE_TO_STRUCT_CONCRETE, 0x9B1 | PALETTE_TO_STRUCT_CONCRETE,       0x0, 0x995 | PALETTE_TO_STRUCT_CONCRETE, 0x997 | PALETTE_TO_STRUCT_CONCRETE, 0x9AD | PALETTE_TO_STRUCT_CONCRETE,       0x0,
@@ -252,51 +192,12 @@ static const PalSpriteID _bridge_sprite_table_3_6[] = {
 	0x0, SPR_PILLARS_BASE + 2,
 };
 
-static const PalSpriteID _bridge_sprite_table_3_poles[] = {
-	SPR_PILLARS_BASE + 6 * 0 + 3 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_CONCRETE),
-	SPR_PILLARS_BASE + 6 * 0 + 4 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_CONCRETE),
-	SPR_PILLARS_BASE + 6 * 0 + 4 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_CONCRETE),
-	SPR_PILLARS_BASE + 6 * 0 + 3 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_CONCRETE),
-	SPR_PILLARS_BASE + 6 * 0 + 5 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_CONCRETE),
-	0x0,
-
-	SPR_PILLARS_BASE + 6 * 0 + 0 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_CONCRETE),
-	SPR_PILLARS_BASE + 6 * 0 + 1 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_CONCRETE),
-	SPR_PILLARS_BASE + 6 * 0 + 1 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_CONCRETE),
-	SPR_PILLARS_BASE + 6 * 0 + 0 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_CONCRETE),
-	SPR_PILLARS_BASE + 6 * 0 + 2 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_CONCRETE),
-	0x0,
-
-	0x0,
-	0x0,
-};
-
 static const PalSpriteID _bridge_sprite_table_1_1[] = {
 	    0x986,     0x988,     0x985,     0x987,     0x98A,     0x98C,     0x989,     0x98B,
 	0x98E | PALETTE_TO_STRUCT_RED, 0x990 | PALETTE_TO_STRUCT_RED, 0x98D | PALETTE_TO_STRUCT_RED, 0x98F | PALETTE_TO_STRUCT_RED, 0x992 | PALETTE_TO_STRUCT_RED, 0x994 | PALETTE_TO_STRUCT_RED, 0x991 | PALETTE_TO_STRUCT_RED, 0x993 | PALETTE_TO_STRUCT_RED,
 	0x10E7 | PALETTE_TO_STRUCT_RED, 0x10E9 | PALETTE_TO_STRUCT_RED, 0x10E6 | PALETTE_TO_STRUCT_RED, 0x10E8 | PALETTE_TO_STRUCT_RED, 0x10EB | PALETTE_TO_STRUCT_RED, 0x10ED | PALETTE_TO_STRUCT_RED, 0x10EA | PALETTE_TO_STRUCT_RED, 0x10EC | PALETTE_TO_STRUCT_RED,
 	0x110F | PALETTE_TO_STRUCT_RED, 0x1111 | PALETTE_TO_STRUCT_RED, 0x110E | PALETTE_TO_STRUCT_RED, 0x1110 | PALETTE_TO_STRUCT_RED, 0x1113 | PALETTE_TO_STRUCT_RED, 0x1115 | PALETTE_TO_STRUCT_RED, 0x1112 | PALETTE_TO_STRUCT_RED, 0x1114 | PALETTE_TO_STRUCT_RED,
 };
-
-static const PalSpriteID _bridge_sprite_table_1_poles[] = {
-	SPR_PILLARS_BASE + 6 * 3 + 3,
-	SPR_PILLARS_BASE + 6 * 3 + 4,
-	SPR_PILLARS_BASE + 6 * 3 + 4,
-	SPR_PILLARS_BASE + 6 * 3 + 3,
-	SPR_PILLARS_BASE + 6 * 3 + 5,
-	0x0,
-
-	SPR_PILLARS_BASE + 6 * 3 + 0,
-	SPR_PILLARS_BASE + 6 * 3 + 1,
-	SPR_PILLARS_BASE + 6 * 3 + 1,
-	SPR_PILLARS_BASE + 6 * 3 + 0,
-	SPR_PILLARS_BASE + 6 * 3 + 2,
-	0x0,
-
-	0x0,
-	0x0,
-};
-
 
 static const PalSpriteID _bridge_sprite_table_6_0[] = {
 	    0x9CD,     0x9D9,       0x0,       0x0,     0x9CE,     0x9DA,       0x0,       0x0,
@@ -326,26 +227,6 @@ static const PalSpriteID _bridge_sprite_table_6_3[] = {
 	   0x110F,    0x1111,    0x110E,    0x1110,    0x1113,    0x1115,    0x1112,    0x1114,
 };
 
-static const PalSpriteID _bridge_sprite_table_6_poles[] = {
-	0x0,
-	0x0,
-	0x0,
-	0x0,
-	0x0,
-	0x0,
-
-	0x0,
-	0x0,
-	0x0,
-	0x0,
-	0x0,
-	0x0,
-
-	2526,
-	2528,
-};
-
-
 static const PalSpriteID _bridge_sprite_table_7_0[] = {
 	0x9CD | PALETTE_TO_STRUCT_BROWN, 0x9D9 | PALETTE_TO_STRUCT_BROWN,       0x0,       0x0, 0x9CE | PALETTE_TO_STRUCT_BROWN, 0x9DA | PALETTE_TO_STRUCT_BROWN,       0x0,       0x0,
 	0x9D3 | PALETTE_TO_STRUCT_BROWN, 0x9D9 | PALETTE_TO_STRUCT_BROWN,       0x0,       0x0, 0x9D4 | PALETTE_TO_STRUCT_BROWN, 0x9DA | PALETTE_TO_STRUCT_BROWN,       0x0,       0x0,
@@ -372,25 +253,6 @@ static const PalSpriteID _bridge_sprite_table_7_3[] = {
 	0x98E | PALETTE_TO_STRUCT_BROWN, 0x990 | PALETTE_TO_STRUCT_BROWN, 0x98D | PALETTE_TO_STRUCT_BROWN, 0x98F | PALETTE_TO_STRUCT_BROWN, 0x992 | PALETTE_TO_STRUCT_BROWN, 0x994 | PALETTE_TO_STRUCT_BROWN, 0x991 | PALETTE_TO_STRUCT_BROWN, 0x993 | PALETTE_TO_STRUCT_BROWN,
 	0x10E7 | PALETTE_TO_STRUCT_BROWN, 0x10E9 | PALETTE_TO_STRUCT_BROWN, 0x10E6 | PALETTE_TO_STRUCT_BROWN, 0x10E8 | PALETTE_TO_STRUCT_BROWN, 0x10EB | PALETTE_TO_STRUCT_BROWN, 0x10ED | PALETTE_TO_STRUCT_BROWN, 0x10EA | PALETTE_TO_STRUCT_BROWN, 0x10EC | PALETTE_TO_STRUCT_BROWN,
 	0x110F | PALETTE_TO_STRUCT_BROWN, 0x1111 | PALETTE_TO_STRUCT_BROWN, 0x110E | PALETTE_TO_STRUCT_BROWN, 0x1110 | PALETTE_TO_STRUCT_BROWN, 0x1113 | PALETTE_TO_STRUCT_BROWN, 0x1115 | PALETTE_TO_STRUCT_BROWN, 0x1112 | PALETTE_TO_STRUCT_BROWN, 0x1114 | PALETTE_TO_STRUCT_BROWN,
-};
-
-static const PalSpriteID _bridge_sprite_table_7_poles[] = {
-	0x0,
-	0x0,
-	0x0,
-	0x0,
-	0x0,
-	0x0,
-
-	0x0,
-	0x0,
-	0x0,
-	0x0,
-	0x0,
-	0x0,
-
-	2526,
-	2528,
 };
 
 static const PalSpriteID _bridge_sprite_table_8_0[] = {
@@ -421,25 +283,6 @@ static const PalSpriteID _bridge_sprite_table_8_3[] = {
 	0x110F | PALETTE_TO_STRUCT_RED, 0x1111 | PALETTE_TO_STRUCT_RED, 0x110E | PALETTE_TO_STRUCT_RED, 0x1110 | PALETTE_TO_STRUCT_RED, 0x1113 | PALETTE_TO_STRUCT_RED, 0x1115 | PALETTE_TO_STRUCT_RED, 0x1112 | PALETTE_TO_STRUCT_RED, 0x1114 | PALETTE_TO_STRUCT_RED,
 };
 
-static const PalSpriteID _bridge_sprite_table_8_poles[] = {
-	0x0,
-	0x0,
-	0x0,
-	0x0,
-	0x0,
-	0x0,
-
-	0x0,
-	0x0,
-	0x0,
-	0x0,
-	0x0,
-	0x0,
-
-	2526,
-	2528,
-};
-
 static const PalSpriteID _bridge_sprite_table_0_0[] = {
 	    0x9F2,     0x9F6,     0x9F8,       0x0,     0x9F1,     0x9F5,     0x9F7,       0x0,
 	    0x9F4,     0x9F6,     0x9F8,       0x0,     0x9F3,     0x9F5,     0x9F7,       0x0,
@@ -453,26 +296,6 @@ static const PalSpriteID _bridge_sprite_table_0_1[] = {
 	   0x1105,    0x1104,    0x1107,    0x1106,    0x1101,    0x1100,    0x1102,    0x1103,
 	   0x112D,    0x112C,    0x112F,    0x112E,    0x1129,    0x1128,    0x112A,    0x112B,
 };
-
-static const PalSpriteID _bridge_sprite_table_0_poles[] = {
-	SPR_PILLARS_BASE + 6 * 1 + 3,
-	SPR_PILLARS_BASE + 6 * 1 + 3,
-	SPR_PILLARS_BASE + 6 * 1 + 3,
-	SPR_PILLARS_BASE + 6 * 1 + 3,
-	SPR_PILLARS_BASE + 6 * 1 + 5,
-	0x0,
-
-	SPR_PILLARS_BASE + 6 * 1 + 0,
-	SPR_PILLARS_BASE + 6 * 1 + 0,
-	SPR_PILLARS_BASE + 6 * 1 + 0,
-	SPR_PILLARS_BASE + 6 * 1 + 0,
-	SPR_PILLARS_BASE + 6 * 1 + 2,
-	0x0,
-
-	0x0,
-	0x0,
-};
-
 
 static const PalSpriteID _bridge_sprite_table_1_0[] = {
 	0x9BD | PALETTE_TO_STRUCT_RED, 0x9C1 | PALETTE_TO_STRUCT_RED,     0x9C9,       0x0, 0x9BE | PALETTE_TO_STRUCT_RED, 0x9C2 | PALETTE_TO_STRUCT_RED,     0x9CA,       0x0,
@@ -509,25 +332,6 @@ static const PalSpriteID _bridge_sprite_table_10_2[] = {
 	    0xA1C,     0xA00,     0xA06,       0x0,     0xA1F,     0xA03,     0xA07,       0x0,
 };
 
-static const PalSpriteID _bridge_sprite_table_10_poles[] = {
-	SPR_PILLARS_BASE + 6 * 2 + 3,
-	SPR_PILLARS_BASE + 6 * 2 + 3,
-	SPR_PILLARS_BASE + 6 * 2 + 3,
-	SPR_PILLARS_BASE + 6 * 2 + 3,
-	SPR_PILLARS_BASE + 6 * 2 + 5,
-	0x0,
-
-	SPR_PILLARS_BASE + 6 * 2 + 0,
-	SPR_PILLARS_BASE + 6 * 2 + 0,
-	SPR_PILLARS_BASE + 6 * 2 + 0,
-	SPR_PILLARS_BASE + 6 * 2 + 0,
-	SPR_PILLARS_BASE + 6 * 2 + 2,
-	0x0,
-
-	0x0,
-	0x0,
-};
-
 static const PalSpriteID _bridge_sprite_table_11_0[] = {
     0xA0B | PALETTE_TO_STRUCT_YELLOW,     0xA01 | PALETTE_TO_STRUCT_YELLOW,       0x0,       0x0,     0xA0C | PALETTE_TO_STRUCT_YELLOW,     0xA02 | PALETTE_TO_STRUCT_YELLOW,       0x0,       0x0,
     0xA11 | PALETTE_TO_STRUCT_YELLOW,     0xA01 | PALETTE_TO_STRUCT_YELLOW,       0x0,       0x0,     0xA12 | PALETTE_TO_STRUCT_YELLOW,     0xA02 | PALETTE_TO_STRUCT_YELLOW,       0x0,       0x0,
@@ -549,25 +353,6 @@ static const PalSpriteID _bridge_sprite_table_11_2[] = {
     0xA1C | PALETTE_TO_STRUCT_YELLOW,     0xA00 | PALETTE_TO_STRUCT_YELLOW,     0xA06 | PALETTE_TO_STRUCT_YELLOW,       0x0,     0xA1F | PALETTE_TO_STRUCT_YELLOW,     0xA03 | PALETTE_TO_STRUCT_YELLOW,     0xA07 | PALETTE_TO_STRUCT_YELLOW,       0x0,
 };
 
-static const PalSpriteID _bridge_sprite_table_11_poles[] = {
-	SPR_PILLARS_BASE + 6 * 2 + 3 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_YELLOW),
-	SPR_PILLARS_BASE + 6 * 2 + 3 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_YELLOW),
-	SPR_PILLARS_BASE + 6 * 2 + 3 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_YELLOW),
-	SPR_PILLARS_BASE + 6 * 2 + 3 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_YELLOW),
-	SPR_PILLARS_BASE + 6 * 2 + 5 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_YELLOW),
-	0x0,
-
-	SPR_PILLARS_BASE + 6 * 2 + 0 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_YELLOW),
-	SPR_PILLARS_BASE + 6 * 2 + 0 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_YELLOW),
-	SPR_PILLARS_BASE + 6 * 2 + 0 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_YELLOW),
-	SPR_PILLARS_BASE + 6 * 2 + 0 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_YELLOW),
-	SPR_PILLARS_BASE + 6 * 2 + 2 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_YELLOW),
-	0x0,
-
-	0x0,
-	0x0,
-};
-
 static const PalSpriteID _bridge_sprite_table_12_0[] = {
     0xA0B | PALETTE_TO_STRUCT_GREY,     0xA01 | PALETTE_TO_STRUCT_GREY,       0x0,       0x0,     0xA0C | PALETTE_TO_STRUCT_GREY,     0xA02 | PALETTE_TO_STRUCT_GREY,       0x0,       0x0,
     0xA11 | PALETTE_TO_STRUCT_GREY,     0xA01 | PALETTE_TO_STRUCT_GREY,       0x0,       0x0,     0xA12 | PALETTE_TO_STRUCT_GREY,     0xA02 | PALETTE_TO_STRUCT_GREY,       0x0,       0x0,
@@ -587,25 +372,6 @@ static const PalSpriteID _bridge_sprite_table_12_2[] = {
     0xA10 | PALETTE_TO_STRUCT_GREY,     0xA00 | PALETTE_TO_STRUCT_GREY,     0xA06 | PALETTE_TO_STRUCT_GREY,       0x0,     0xA13 | PALETTE_TO_STRUCT_GREY,     0xA03 | PALETTE_TO_STRUCT_GREY,     0xA07 | PALETTE_TO_STRUCT_GREY,       0x0,
     0xA16 | PALETTE_TO_STRUCT_GREY,     0xA00 | PALETTE_TO_STRUCT_GREY,     0xA06 | PALETTE_TO_STRUCT_GREY,       0x0,     0xA19 | PALETTE_TO_STRUCT_GREY,     0xA03 | PALETTE_TO_STRUCT_GREY,     0xA07 | PALETTE_TO_STRUCT_GREY,       0x0,
     0xA1C | PALETTE_TO_STRUCT_GREY,     0xA00 | PALETTE_TO_STRUCT_GREY,     0xA06 | PALETTE_TO_STRUCT_GREY,       0x0,     0xA1F | PALETTE_TO_STRUCT_GREY,     0xA03 | PALETTE_TO_STRUCT_GREY,     0xA07 | PALETTE_TO_STRUCT_GREY,       0x0,
-};
-
-static const PalSpriteID _bridge_sprite_table_12_poles[] = {
-	SPR_PILLARS_BASE + 6 * 2 + 3 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_GREY),
-	SPR_PILLARS_BASE + 6 * 2 + 3 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_GREY),
-	SPR_PILLARS_BASE + 6 * 2 + 3 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_GREY),
-	SPR_PILLARS_BASE + 6 * 2 + 3 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_GREY),
-	SPR_PILLARS_BASE + 6 * 2 + 5 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_GREY),
-	0x0,
-
-	SPR_PILLARS_BASE + 6 * 2 + 0 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_GREY),
-	SPR_PILLARS_BASE + 6 * 2 + 0 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_GREY),
-	SPR_PILLARS_BASE + 6 * 2 + 0 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_GREY),
-	SPR_PILLARS_BASE + 6 * 2 + 0 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_GREY),
-	SPR_PILLARS_BASE + 6 * 2 + 2 + (PALETTE_MODIFIER_COLOR | PALETTE_TO_STRUCT_GREY),
-	0x0,
-
-	0x0,
-	0x0,
 };
 
 static const uint32 * const _bridge_sprite_table_2[] = {
@@ -752,20 +518,4 @@ static const uint32 * const * const _bridge_sprite_table[MAX_BRIDGES] = {
 	_bridge_sprite_table_10,
 	_bridge_sprite_table_11,
 	_bridge_sprite_table_12
-};
-
-static const uint32 * const _bridge_poles_table[] = {
-	_bridge_sprite_table_0_poles,
-	_bridge_sprite_table_1_poles,
-	_bridge_sprite_table_2_poles,
-	_bridge_sprite_table_3_poles,
-	_bridge_sprite_table_4_poles,
-	_bridge_sprite_table_5_poles,
-	_bridge_sprite_table_6_poles,
-	_bridge_sprite_table_7_poles,
-	_bridge_sprite_table_8_poles,
-	_bridge_sprite_table_2_poles,
-	_bridge_sprite_table_10_poles,
-	_bridge_sprite_table_11_poles,
-	_bridge_sprite_table_12_poles
 };
