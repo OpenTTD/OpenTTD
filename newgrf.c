@@ -38,7 +38,7 @@ static GRFFile *_cur_grffile;
 GRFFile *_first_grffile;
 static int _cur_spriteid;
 static int _cur_stage;
-static int nfo_line;
+static int _nfo_line;
 
 /* 32 * 8 = 256 flags. Apparently TTDPatch uses this many.. */
 static uint32 _ttdpatch_flags[8];
@@ -116,7 +116,7 @@ static void CDECL grfmsg(grfmsg_severity severity, const char *str, ...)
 	va_end(va);
 
 	export_severity = 2 - (severity == GMS_FATAL ? 2 : severity);
-	DEBUG(grf, export_severity) ("[%s:%d][%s] %s", _cur_grffile->filename, nfo_line, severitystr[severity], buf);
+	DEBUG(grf, export_severity) ("[%s:%d][%s] %s", _cur_grffile->filename, _nfo_line, severitystr[severity], buf);
 }
 
 
@@ -1286,7 +1286,7 @@ static void NewSpriteSet(byte *buf, int len)
 
 	for (i = 0; i < num_sets * num_ents; i++) {
 		LoadNextSprite(_cur_spriteid++, _file_index);
-		nfo_line++;
+		_nfo_line++;
 	}
 }
 
@@ -2012,7 +2012,7 @@ static void SpriteReplace(byte *buf, int len)
 
 		for (j = 0; j < num_sprites; j++) {
 			LoadNextSprite(first_sprite + j, _file_index); // XXX
-			nfo_line++;
+			_nfo_line++;
 		}
 	}
 }
@@ -2566,11 +2566,11 @@ static void LoadNewGRFFile(const char* filename, uint file_index, uint stage)
 	}
 
 	_skip_sprites = 0; // XXX
-	nfo_line = 0;
+	_nfo_line = 0;
 
 	while ((num = FioReadWord()) != 0) {
 		byte type = FioReadByte();
-		nfo_line++;
+		_nfo_line++;
 
 		if (type == 0xFF) {
 			if (_skip_sprites == 0) {
