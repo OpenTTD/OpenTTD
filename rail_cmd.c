@@ -1737,25 +1737,30 @@ static void TileLoop_Track(TileIndex tile)
 {
 	RailGroundType old_ground = GetRailGroundType(tile);
 	RailGroundType new_ground = old_ground;
+	bool quick_return = false;
 
 	switch (_opt.landscape) {
 		case LT_HILLY:
-			if (GetTileZ(tile) > _opt.snow_line) new_ground = RAIL_GROUND_ICE_DESERT;
+			if (GetTileZ(tile) > _opt.snow_line) {
+				new_ground = RAIL_GROUND_ICE_DESERT;
+				quick_return = true;
+			}
 			break;
 
 		case LT_DESERT:
-			if (GetTropicZone(tile) == TROPICZONE_DESERT) new_ground = RAIL_GROUND_ICE_DESERT;
-			break;
-
-		default:
+			if (GetTropicZone(tile) == TROPICZONE_DESERT) {
+				new_ground = RAIL_GROUND_ICE_DESERT;
+				quick_return = true;
+			}
 			break;
 	}
 
 	if (new_ground != old_ground) {
 		SetRailGroundType(tile, new_ground);
 		MarkTileDirtyByTile(tile);
-		return;
 	}
+
+	if (quick_return) return;
 
 	// Don't continue tile loop for depots
 	if (GetRailTileType(tile) == RAIL_TYPE_DEPOT_WAYPOINT) return;
