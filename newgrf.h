@@ -6,6 +6,13 @@
 #include "sprite.h"
 #include "station.h"
 
+typedef struct GRFLabel {
+	byte label;
+	uint32 nfo_line;
+	uint32 pos;
+	struct GRFLabel *next;
+} GRFLabel;
+
 typedef struct GRFFile GRFFile;
 struct GRFFile {
 	char *filename;
@@ -39,6 +46,8 @@ struct GRFFile {
 
 	uint32 param[0x80];
 	uint param_end; /// one more than the highest set parameter
+
+	GRFLabel *label; ///< Pointer to the first label. This is a linked list, not an array.
 };
 
 extern GRFFile *_first_grffile;

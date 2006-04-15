@@ -38,7 +38,7 @@ static GRFFile *_cur_grffile;
 GRFFile *_first_grffile;
 static int _cur_spriteid;
 static int _cur_stage;
-static int _nfo_line;
+static uint32 _nfo_line;
 
 /* 32 * 8 = 256 flags. Apparently TTDPatch uses this many.. */
 static uint32 _ttdpatch_flags[8];
@@ -1849,6 +1849,8 @@ static void SkipIf(byte *buf, int len)
 	uint32 param_val = 0;
 	uint32 cond_val = 0;
 	bool result;
+	GRFLabel *label;
+	GRFLabel *choice = NULL;
 
 	check_length(len, 6, "SkipIf");
 	param = buf[1];
@@ -1947,6 +1949,30 @@ static void SkipIf(byte *buf, int len)
 	}
 
 	numsprites = grf_load_byte(&buf);
+
+	/* numsprites can be a GOTO label if it has been defined in the GRF
+	 * file. The jump will always be the first matching label that follows
+	 * the current nfo_line. If no matching label is found, the first matching
+	 * label in the file is used. */
+	for (label = _cur_grffile->label; label != NULL; label = label->next) {
+		if (label->label != numsprites) continue;
+
+		/* Remember a goto before the current line */
+		if (choice == NULL) choice = label;
+		/* If we find a label here, this is definitely good */
+		if (label->nfo_line > _nfo_line) {
+			choice = label;
+			break;
+		}
+	}
+
+	if (choice != NULL) {
+		grfmsg(GMS_NOTICE, "Jumping to label 0x%0X at line %d, test was true.", choice->label, choice->nfo_line);
+		FioSeekTo(choice->pos, SEEK_SET);
+		_nfo_line = choice->nfo_line;
+		return;
+	}
+
 	grfmsg(GMS_NOTICE, "Skipping %d sprites, test was true.", numsprites);
 	_skip_sprites = numsprites;
 	if (_skip_sprites == 0) {
@@ -2065,6 +2091,12 @@ static void GRFComment(byte *buf, int len)
 	/* <0C> [<ignored...>]
 	 *
 	 * V ignored       Anything following the 0C is ignored */
+
+	static char comment[256];
+	if (len == 1) return;
+
+	ttd_strlcpy(comment, buf + 1, minu(sizeof(comment), len));
+	grfmsg(GMS_NOTICE, "GRFComment: %s", comment);
 }
 
 /* Action 0x0D */
@@ -2278,6 +2310,36 @@ static void GRFInhibit(byte *buf, int len)
 	}
 }
 
+static void DefineGotoLabel(byte *buf, int len)
+{
+	/* <10> <label> [<comment>]
+	 *
+	 * B label      The label to define
+	 * V comment    Optional comment - ignored */
+
+	GRFLabel *label;
+
+	check_length(len, 1, "GRFLabel");
+	buf++; len--;
+
+	label = malloc(sizeof(*label));
+	label->label    = grf_load_byte(&buf);
+	label->nfo_line = _nfo_line;
+	label->pos      = FioGetPos();
+	label->next     = NULL;
+
+	/* Set up a linked list of goto targets which we will search in an Action 0x7/0x9 */
+	if (_cur_grffile->label == NULL) {
+		_cur_grffile->label = label;
+	} else {
+		/* Attach the label to the end of the list */
+		GRFLabel *l;
+		for (l = _cur_grffile->label; l->next != NULL; l = l->next);
+		l->next = label;
+	}
+
+	grfmsg(GMS_NOTICE, "DefineGotoLabel: GOTO target with label 0x%X", label->label);
+}
 
 static void InitializeGRFSpecial(void)
 {
@@ -2410,6 +2472,19 @@ static void ResetNewGRFData(void)
 	AddTypeToEngines();
 }
 
+/** Reset all NewGRFData that was used only while processing data */
+static void ClearTemporaryNewGRFData(void)
+{
+	/* Clear the GOTO labels used for GRF processing */
+	GRFLabel *l;
+	for (l = _cur_grffile->label; l != NULL;) {
+		GRFLabel *l2 = l->next;
+		free(l);
+		l = l2;
+	}
+	_cur_grffile->label = NULL;
+}
+
 static void InitNewGRFFile(const char* filename, int sprite_offset)
 {
 	GRFFile *newfile;
@@ -2482,14 +2557,18 @@ static void DecodeSpecialSprite(uint num, uint stage)
 {
 	/* XXX: There is a difference between staged loading in TTDPatch and
 	 * here.  In TTDPatch, for some reason actions 1 and 2 are carried out
-	 * during stage 0, whilst action 3 is carried out during stage 1 (to
+	 * during stage 1, whilst action 3 is carried out during stage 2 (to
 	 * "resolve" cargo IDs... wtf). This is a little problem, because cargo
 	 * IDs are valid only within a given set (action 1) block, and may be
 	 * overwritten after action 3 associates them. But overwriting happens
 	 * in an earlier stage than associating, so...  We just process actions
-	 * 1 and 2 in stage 1 now, let's hope that won't get us into problems.
+	 * 1 and 2 in stage 2 now, let's hope that won't get us into problems.
 	 * --pasky */
-	uint32 action_mask = (stage == 0) ? 0x0001FB40 : 0x0001FFBF;
+	/* We need a pre-stage to set up GOTO labels of Action 0x10 because the grf
+	 * is not in memory and scanning the file every time would be too expensive.
+	 * In other stages we skip action 0x10 since it's already dealt with. */
+	static const uint32 action_mask[] = {0x10000, 0x0000FB40, 0x0000FFBF};
+
 	static const SpecialSpriteHandler handlers[] = {
 		/* 0x00 */ VehicleChangeInfo,
 		/* 0x01 */ NewSpriteSet,
@@ -2507,7 +2586,7 @@ static void DecodeSpecialSprite(uint num, uint stage)
 		/* 0x0D */ ParamSet,
 		/* 0x0E */ GRFInhibit,
 		/* 0x0F */ NULL, // TODO implement
-		/* 0x10 */ NULL  // TODO implement
+		/* 0x10 */ DefineGotoLabel,
 	};
 
 	byte* buf = malloc(num);
@@ -2520,7 +2599,7 @@ static void DecodeSpecialSprite(uint num, uint stage)
 
 	if (action >= lengthof(handlers)) {
 		DEBUG(grf, 7) ("Skipping unknown action 0x%02X", action);
-	} else if (!HASBIT(action_mask, action)) {
+	} else if (!HASBIT(action_mask[stage], action)) {
 		DEBUG(grf, 7) ("Skipping action 0x%02X in stage %d", action, stage);
 	} else if (handlers[action] == NULL) {
 		DEBUG(grf, 7) ("Skipping unsupported Action 0x%02X", action);
@@ -2548,7 +2627,7 @@ static void LoadNewGRFFile(const char* filename, uint file_index, uint stage)
 	if (stage != 0) {
 		_cur_grffile = GetFileByFilename(filename);
 		if (_cur_grffile == NULL) error("File ``%s'' lost in cache.\n", filename);
-		if (!(_cur_grffile->flags & 0x0001)) return;
+		if (stage > 1 && !(_cur_grffile->flags & 0x0001)) return;
 	}
 
 	FioOpenFile(file_index, filename);
@@ -2624,7 +2703,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 	 * in each loading stage, (try to) open each file specified in the config
 	 * and load information from it. */
 	_custom_sprites_base = load_index;
-	for (stage = 0; stage < 2; stage++) {
+	for (stage = 0; stage <= 2; stage++) {
 		uint slot = file_index;
 		uint j;
 
@@ -2637,6 +2716,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 			}
 			if (stage == 0) InitNewGRFFile(_newgrf_files[j], _cur_spriteid);
 			LoadNewGRFFile(_newgrf_files[j], slot++, stage);
+			if (stage == 2) ClearTemporaryNewGRFData();
 			DEBUG(spritecache, 2) ("Currently %i sprites are loaded", load_index);
 		}
 	}
