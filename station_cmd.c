@@ -2091,7 +2091,7 @@ static void AnimateTile_Station(TileIndex tile)
 	// again hardcoded...was a quick hack
 
 	// turning radar / windsack on airport
-	if (IS_BYTE_INSIDE(gfx, GFX_RADAR_LARGE_FIRST, GFX_RADAR_LARGE_LAST)) {
+	if (IS_BYTE_INSIDE(gfx, GFX_RADAR_LARGE_FIRST, GFX_RADAR_LARGE_LAST+1)) {
 		if (_tick_counter & 3)
 			return;
 
@@ -2101,7 +2101,7 @@ static void AnimateTile_Station(TileIndex tile)
 		SetStationGfx(tile, gfx);
 		MarkTileDirtyByTile(tile);
 	//added - begin
-	} else if (IS_BYTE_INSIDE(gfx, GFX_RADAR_INTERNATIONAL_FIRST, GFX_RADAR_METROPOLITAN_LAST)) {
+	} else if (IS_BYTE_INSIDE(gfx, GFX_RADAR_INTERNATIONAL_FIRST, GFX_RADAR_METROPOLITAN_LAST+1)) {
 		if (_tick_counter & 3)
 			return;
 
@@ -2117,7 +2117,7 @@ static void AnimateTile_Station(TileIndex tile)
 		SetStationGfx(tile, gfx);
 		MarkTileDirtyByTile(tile);
 	//added - end
-	} else if (IS_BYTE_INSIDE(gfx, GFX_WINDSACK_FIRST, GFX_WINDSACK_LAST)) {
+	} else if (IS_BYTE_INSIDE(gfx, GFX_WINDSACK_FIRST, GFX_WINDSACK_LAST+1)) {
 		if (_tick_counter & 1)
 			return;
 

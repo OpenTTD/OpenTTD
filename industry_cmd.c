@@ -271,7 +271,7 @@ IndustryType GetIndustryType(TileIndex tile)
 
 	for (iloop = IT_COAL_MINE; iloop < IT_END; iloop += 1) {
 		if (IS_BYTE_INSIDE(this_type, industry_gfx_Solver[iloop].MinGfx,
-				industry_gfx_Solver[iloop].MaxGfx)) {
+				industry_gfx_Solver[iloop].MaxGfx+1)) {
 			return iloop;
 		}
 	}
@@ -633,15 +633,17 @@ static void AnimateTile_Industry(TileIndex tile)
 		}
 		break;
 
-	case 30: case 31: case 32:
+	case GFX_OILWELL_ANIM1:
+	case GFX_OILWELL_ANIM2:
+	case GFX_OILWELL_ANIM3:
 		if ((_tick_counter & 7) == 0) {
 			bool b = CHANCE16(1,7);
 			IndustryGfx gfx = GetIndustryGfx(tile);
 
 			m = GB(_m[tile].m1, 0, 2) + 1;
-			if (m == 4 && (m = 0, ++gfx) == 32 + 1 && (gfx = 30, b)) {
+			if (m == 4 && (m = 0, ++gfx) == GFX_OILWELL_ANIM3 + 1 && (gfx = GFX_OILWELL_ANIM1, b)) {
 				_m[tile].m1 = 0x83;
-				SetIndustryGfx(tile, 29);
+				SetIndustryGfx(tile, GFX_OILWELL_BASE);
 				DeleteAnimatedTile(tile);
 			} else {
 				SB(_m[tile].m1, 0, 2, m);

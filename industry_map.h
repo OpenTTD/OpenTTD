@@ -11,8 +11,18 @@
 
 typedef byte IndustryGfx;
 
+
+/**
+ * The following enums are indices used to know what to draw for this industry tile.
+ * They all are pointing toward array _industry_draw_tile_data, in table/industry_land.h
+ * How to calculate the correct position ? GFXid << 2 | IndustryStage (0 to 3)
+ */
 enum {
 	GFX_POWERPLANT_SPARKS =  10,
+	GFX_OILWELL_BASE      =  29,
+	GFX_OILWELL_ANIM1     =  30,
+	GFX_OILWELL_ANIM2     =  31,
+	GFX_OILWELL_ANIM3     =  32,
 	GFX_BUBBLE_CATCHER    = 162,
 	GFX_TOFFEE_QUARY      = 165,
 	GFX_SUGAR_MINE_SIEVE  = 174,
