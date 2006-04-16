@@ -306,6 +306,24 @@ STR_0151_MAP_OF_WORLD                                           :Wereldkaart
 STR_0152_TOWN_DIRECTORY                                         :Stedenlijst
 STR_0153_SUBSIDIES                                              :Subsidies
 
+
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}pk
+STR_UNITS_POWER_METRIC                                          :{COMMA}pk
+STR_UNITS_POWER_SI                                              :{COMMA}kW
+
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+
+
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter{P "" s}
+
+
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Winstgrafiek
 STR_0155_INCOME_GRAPH                                           :Inkomenstegrafiek
@@ -343,6 +361,8 @@ STR_SORT_BY_AGE                                                 :Leeftijd
 STR_SORT_BY_RELIABILITY                                         :Betrouwbaarheid
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capaciteit per vrachttype
 STR_SORT_BY_MAX_SPEED                                           :Maximale snelheid
+STR_SORT_BY_MODEL                                               :Model
+STR_SORT_BY_VALUE                                               :Waarde
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -756,7 +776,9 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Plak de 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Valuta
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Kies valuta
+STR_MEASURING_UNITS                                             :{BLACK}Meeteenheden
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Selectie meeteenheden
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Voertuigen
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Kies aan welke kant de voertuigen moeten rijden
@@ -2763,6 +2785,8 @@ STR_REPLACE_HELP                                                :{BLACK}Deze opt
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagons verwijderen: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}De te vervangen trein behoudt zijn lengte door wagons weg te halen (startend aan de voorkant), als het vervangen de trein langer zou maken
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomotief kan niet gebouwd worden
+
+STR_ENGINES                                                     :Motoren
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Bordjes lijst - {COMMA} Bordjes

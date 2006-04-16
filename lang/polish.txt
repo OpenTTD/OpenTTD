@@ -1000,7 +1000,7 @@ STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Pozwol 
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Pozwol na wiele podobnych przedsiebiorstw w miescie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Przedsiebiorstwa jednego typu moga byc bud. obok siebie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Zawsze pokazuj date w dlugim formacie w pasku statusu: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Pokazuj semafory po stronie jazdy: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Pokazuj sygnaly po stronie jazdy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Pokazuj okno finansow na koniec roku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Kompatybilnosc obslugi NONSTOP z TTDPatch: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Sortowanie samochodow (z efektem quantum): {ORANGE}{STRING}
@@ -1451,10 +1451,10 @@ STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Konstruk
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Wybierz rodzaj mostu kolejowego
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Nie mozna tutaj wybudowac zajezdni...
 STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Nie mozna tutaj wybudowac stacji...
-STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Nie mona postawic tutaj znakow...
+STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Nie mozna postawic tutaj sygnalow...
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Nie mozna tutaj ulozyc torow...
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Nie mozna stad usunac torow...
-STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Nie mozna stad usunac znakow...
+STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Nie mozna stad usunac sygnalow...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orientacja zajezdni
 STR_1015_RAILROAD_CONSTRUCTION                                  :Konstrukcja torowiska
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Konstrukcja elektryfikowanych torow
@@ -1463,7 +1463,7 @@ STR_1017_MAGLEV_CONSTRUCTION                                    :Konstrukcja szy
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Budowa torow
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Budowa zajezdni (w celu budowy i serwisowania pociagow)
 STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Budowa stacji kolejowej
-STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Budowa znakow kolejowych
+STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Budowa sygnalow
 STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Budowa mostu kolejowego
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Budowa tunelu kolejowego
 STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Przelacz buduj/usun dla torow i semaforow
