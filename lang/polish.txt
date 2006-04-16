@@ -2,6 +2,7 @@
 ##ownname Polski
 ##isocode pl
 ##plural 7
+##case d c b mc n w
 ##gender m f n
 
 ##id 0x0000
@@ -22,32 +23,52 @@ STR_000D_ACCEPTS                                                :{BLACK}Akceptuj
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Pasazerowie
 STR_0010_COAL                                                   :Wegiel
+STR_0010_COAL.d                                                 :wegla
 STR_0011_MAIL                                                   :Poczta
+STR_0011_MAIL.d                                                 :poczty
 STR_0012_OIL                                                    :Ropa
+STR_0012_OIL.d                                                  :ropy
 STR_0013_LIVESTOCK                                              :Zywiec
+STR_0013_LIVESTOCK.d                                            :zywca
 STR_0014_GOODS                                                  :Towary
+STR_0014_GOODS.d                                                :towarow
 STR_0015_GRAIN                                                  :Zboze
+STR_0015_GRAIN.d                                                :zboza
 STR_0016_WOOD                                                   :Drewno
-STR_0017_IRON_ORE                                               :Ruda zelaza
+STR_0016_WOOD.d                                                 :drewna
+STR_0017_IRON_ORE                                               :Ruda Zelaza
 STR_0018_STEEL                                                  :Stal
+STR_0018_STEEL.d                                                :stali
 STR_0019_VALUABLES                                              :Kosztownosci
-STR_001A_COPPER_ORE                                             :Ruda miedzi
+STR_0019_VALUABLES.d                                            :kosztownosci
+STR_001A_COPPER_ORE                                             :Ruda Miedzi
 STR_001B_MAIZE                                                  :Kukurydza
+STR_001B_MAIZE.d                                                :kukurydzy
 STR_001C_FRUIT                                                  :Owoce
+STR_001C_FRUIT.d                                                :owocow
 STR_001D_DIAMONDS                                               :Diamenty
+STR_001D_DIAMONDS.d                                             :diamentow
 STR_001E_FOOD                                                   :Zywnosc
+STR_001E_FOOD.d                                                 :zywnosci
 STR_001F_PAPER                                                  :Papier
 STR_0020_GOLD                                                   :Zloto
+STR_0020_GOLD.d                                                 :zlota
 STR_0021_WATER                                                  :Woda
+STR_0021_WATER.d                                                :wody
 STR_0022_WHEAT                                                  :Pszenica
+STR_0022_WHEAT.d                                                :pszenicy
 STR_0023_RUBBER                                                 :Kauczuk
+STR_0023_RUBBER.d                                               :kauczuku
 STR_0024_SUGAR                                                  :Cukier
+STR_0024_SUGAR.d                                                :cukru
 STR_0025_TOYS                                                   :Zabawki
+STR_0025_TOYS.d                                                 :zabawek
 STR_0026_CANDY                                                  :Slodycze
+STR_0026_CANDY.d                                                :slodyczy
 STR_0027_COLA                                                   :Cola
 STR_0028_COTTON_CANDY                                           :Wata cukrowa
 STR_0029_BUBBLES                                                :Babelki
-STR_002A_TOFFEE                                                 :Tofi
+STR_002A_TOFFEE                                                 :Toffi
 STR_002B_BATTERIES                                              :Baterie
 STR_002C_PLASTIC                                                :Plastik
 STR_002D_FIZZY_DRINKS                                           :Napoje gazowane
@@ -72,17 +93,27 @@ STR_003F_PAPER                                                  :Papier
 STR_0040_GOLD                                                   :Zloto
 STR_0041_WATER                                                  :Woda
 STR_0042_WHEAT                                                  :Pszenica
-STR_0043_RUBBER                                                 :kauczuk
+STR_0043_RUBBER                                                 :Kauczuk
+STR_0043_RUBBER.d                                               :kauczuku
 STR_0044_SUGAR                                                  :Cukier
 STR_0045_TOY                                                    :Zabawki
+STR_0045_TOY.d                                                  :zabawek
 STR_0046_CANDY                                                  :Slodycze
+STR_0046_CANDY.d                                                :slodyczy
 STR_0047_COLA                                                   :Cola
-STR_0048_COTTON_CANDY                                           :Wata cukrowa
+STR_0047_COLA.d                                                 :coli
+STR_0048_COTTON_CANDY                                           :Wata Cukrowa
+STR_0048_COTTON_CANDY.d                                         :waty cukrowej
 STR_0049_BUBBLE                                                 :Babelki
-STR_004A_TOFFEE                                                 :Tofi
+STR_0049_BUBBLE.d                                               :babelkow
+STR_004A_TOFFEE                                                 :Toffi
+STR_004A_TOFFEE.d                                               :toffi
 STR_004B_BATTERY                                                :Baterie
+STR_004B_BATTERY.d                                              :baterii
 STR_004C_PLASTIC                                                :Plastik
-STR_004D_FIZZY_DRINK                                            :Napoje gazowane
+STR_004C_PLASTIC.d                                              :plastiku
+STR_004D_FIZZY_DRINK                                            :Napoje Gazowane
+STR_004D_FIZZY_DRINK.d                                          :napoi gazowanych
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} pasazer{P "" ow ow}
 STR_QUANTITY_COAL                                               :{WEIGHT} wegla
@@ -111,7 +142,7 @@ STR_QUANTITY_SWEETS                                             :{COMMA} pacz{P 
 STR_QUANTITY_COLA                                               :{VOLUME} coli
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} waty cukrowej
 STR_QUANTITY_BUBBLES                                            :{COMMA} babel{P ek ki kow}
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} tofi
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} Toffi
 STR_QUANTITY_BATTERIES                                          :{COMMA} bateri{P a e i}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastiku
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} napo{P j je i} gazowan{P y e ych}
@@ -214,14 +245,23 @@ STR_00F7_SHIPS                                                  :{BLACK}{TINYFON
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Samoloty
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Trasy transportowe
 STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}{G=f}Kopalnia wegla
+STR_00FA_COAL_MINE.d                                            :{BLACK}{TINYFONT}{G=f}Kopalni wegla
 STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}{G=f}Elektrownia
+STR_00FB_POWER_STATION.d                                        :{BLACK}{TINYFONT}{G=f}Elektrowni
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}{G=m}Las
+STR_00FC_FOREST.d                                               :{BLACK}{TINYFONT}{G=m}Lasu
 STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}{G=m}Tartak
+STR_00FD_SAWMILL.d                                              :{BLACK}{TINYFONT}{G=m}Tartaku
 STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}{G=f}Rafineria
+STR_00FE_OIL_REFINERY.d                                         :{BLACK}{TINYFONT}{G=f}Rafinerii
 STR_00FF_FARM                                                   :{BLACK}{TINYFONT}{G=f}Farma
+STR_00FF_FARM.d                                                 :{BLACK}{TINYFONT}{G=f}Farmy
 STR_0100_FACTORY                                                :{BLACK}{TINYFONT}{G=f}Fabryka
+STR_0100_FACTORY.d                                              :{BLACK}{TINYFONT}{G=f}Fabryki
 STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}{G=f}Drukarnia
+STR_0101_PRINTING_WORKS.d                                       :{BLACK}{TINYFONT}{G=f}Drukarnii
 STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}{G=m}Pole naftowe
+STR_0102_OIL_WELLS.d                                            :{BLACK}{TINYFONT}{G=m}Pola naftowego
 STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}{G=f}Kopalnia rudy zelaza
 STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}{G=f}Huta
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}{G=m}Bank
@@ -234,7 +274,7 @@ STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFON
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}{G=f}Plantacja kauczuku
 STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}{G=n}Ujecie wody
 STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}{G=f}Wieza cisnien
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}{G=n}Tartak
+STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}{G=m}Tartak
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}{G=m}Las waty cukrowej
 STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}{G=m}Zaklad cukierniczy
 STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}{G=f}Farma baterii
@@ -244,7 +284,7 @@ STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFON
 STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}{G=f}Fontanny palstiku
 STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}{G=f}Fabryka napojow gazowanych
 STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}{G=m}Generator babelkow
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}{G=f}Kopalnia Tofi
+STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}{G=f}Kopalnia Toffi
 STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}{G=f}Kopalnia cukru
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Stacja kolejowa
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Zaladunek ciezarowek
@@ -614,40 +654,40 @@ STR_023C_EXPAND                                                 :{BLACK}Rozszerz
 STR_023D_RANDOM_TOWN                                            :{BLACK}Dowolne miasto
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Budowanie miasta w losowym miejsu
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Generacja przedsiebiorstw
-STR_0240_COAL_MINE                                              :{BLACK}Kopalnia wegla{G=f}
-STR_0241_POWER_STATION                                          :{BLACK}Elektrownia{G=f}
-STR_0242_SAWMILL                                                :{BLACK}Tartak{G=m}
-STR_0243_FOREST                                                 :{BLACK}Las{G=m}
-STR_0244_OIL_REFINERY                                           :{BLACK}Refineria{G=f}
-STR_0245_OIL_RIG                                                :{BLACK}Platforma wiertnicza{G=f}
-STR_0246_FACTORY                                                :{BLACK}Fabryka{G=f}
-STR_0247_STEEL_MILL                                             :{BLACK}Huta{G=f}
-STR_0248_FARM                                                   :{BLACK}Farma{G=f}
-STR_0249_IRON_ORE_MINE                                          :{BLACK}Kopalnia rudy zelaza{G=f}
-STR_024A_OIL_WELLS                                              :{BLACK}Pole naftowe{G=m}
-STR_024B_BANK                                                   :{BLACK}Bank{G=m}
-STR_024C_PAPER_MILL                                             :{BLACK}Zaklady papiernicze{G=m}
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Przetwornia jedzenia{G=f}
-STR_024E_PRINTING_WORKS                                         :{BLACK}Drukarnia{G=f}
-STR_024F_GOLD_MINE                                              :{BLACK}Kopalnia zlota{G=f}
-STR_0250_LUMBER_MILL                                            :{BLACK}Tartak{G=m}
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Plantacja owocow{G=f}
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Plantatacja kauczuku{G=f}
-STR_0253_WATER_SUPPLY                                           :{BLACK}Ujecie wody
-STR_0254_WATER_TOWER                                            :{BLACK}Wieza cisnien{G=f}
-STR_0255_DIAMOND_MINE                                           :{BLACK}Kopalnia diamentow{G=f}
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}Kopalnia rudy miedzi{G=f}
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Las waty cukrowej{G=m}
-STR_0258_CANDY_FACTORY                                          :{BLACK}Zaklad cukierniczy{G=m}
-STR_0259_BATTERY_FARM                                           :{BLACK}Farma Baterii{G=f}
-STR_025A_COLA_WELLS                                             :{BLACK}Studnie Coli{G=f}
-STR_025B_TOY_SHOP                                               :{BLACK}Sklep z zabawkami{G=m}
-STR_025C_TOY_FACTORY                                            :{BLACK}Fabryka zabawek{G=f}
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Fontanny plastiku{G=f}
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Fabryka napojow gazowanych{G=f}
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Generator babelkow{G=m}
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}Kopalnia tofi{G=f}
-STR_0261_SUGAR_MINE                                             :{BLACK}Kopalnia cukru{G=f}
+STR_0240_COAL_MINE                                              :{BLACK}{G=f}Kopalnia Wegla
+STR_0241_POWER_STATION                                          :{BLACK}{G=f}Elektrownia
+STR_0242_SAWMILL                                                :{BLACK}{G=m}Tartak
+STR_0243_FOREST                                                 :{BLACK}{G=m}Las
+STR_0244_OIL_REFINERY                                           :{BLACK}{G=f}Refineria
+STR_0245_OIL_RIG                                                :{BLACK}{G=f}Platforma Wiertnicza
+STR_0246_FACTORY                                                :{BLACK}{G=f}Fabryka
+STR_0247_STEEL_MILL                                             :{BLACK}{G=f}Huta
+STR_0248_FARM                                                   :{BLACK}{G=f}Farma
+STR_0249_IRON_ORE_MINE                                          :{BLACK}{G=f}Kopalnia Rudy Zelaza
+STR_024A_OIL_WELLS                                              :{BLACK}{G=m}Pole Naftowe
+STR_024B_BANK                                                   :{BLACK}{G=m}Bank
+STR_024C_PAPER_MILL                                             :{BLACK}{G=m}Zaklady Papiernicze
+STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Przetwornia Zywnosci{G=f}
+STR_024E_PRINTING_WORKS                                         :{BLACK}{G=f}Drukarnia
+STR_024F_GOLD_MINE                                              :{BLACK}{G=f}Kopalnia Zlota
+STR_0250_LUMBER_MILL                                            :{BLACK}{G=m}Tartak
+STR_0251_FRUIT_PLANTATION                                       :{BLACK}{G=f}Plantacja owocow
+STR_0252_RUBBER_PLANTATION                                      :{BLACK}{G=f}Plantatacja Kauczuku
+STR_0253_WATER_SUPPLY                                           :{BLACK}{G=n}Ujecie Wody
+STR_0254_WATER_TOWER                                            :{BLACK}{G=f}Wieza Cisnien
+STR_0255_DIAMOND_MINE                                           :{BLACK}{G=f}Kopalnia Diamentow
+STR_0256_COPPER_ORE_MINE                                        :{BLACK}{G=f}Kopalnia Rudy Miedzi
+STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}{G=m}Las Waty Cukrowej
+STR_0258_CANDY_FACTORY                                          :{BLACK}{G=m}Zaklad Cukierniczy
+STR_0259_BATTERY_FARM                                           :{BLACK}{G=f}Farma Baterii
+STR_025A_COLA_WELLS                                             :{BLACK}{G=f}Studnie Coli
+STR_025B_TOY_SHOP                                               :{BLACK}{G=m}Sklep z zabawkami
+STR_025C_TOY_FACTORY                                            :{BLACK}{G=f}Fabryka Zabawek
+STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}{G=f}Fontanny Plastiku
+STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}{G=f}Fabryka Napojow Gazowanych
+STR_025F_BUBBLE_GENERATOR                                       :{BLACK}{G=m}Generator Babelkow
+STR_0260_TOFFEE_QUARRY                                          :{BLACK}{G=f}Kopalnia Toffi
+STR_0261_SUGAR_MINE                                             :{BLACK}{G=f}Kopalnia Cukru
 STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Zbuduj Kopalnie wegla
 STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Zbuduj Elektrownie
 STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Zbuduj Tartak
@@ -661,11 +701,11 @@ STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Zbuduj K
 STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Zbuduj Pole naftowe
 STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Zbuduj Bank (Mozna zbudowac tylko w miastach z populacja wieksza niz 1200)
 STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Zbuduj Zaklady papiernicze
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Zbuduj Przetwornie jedzenia
+STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Zbuduj Przetwornie Zywnosci
 STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Zbuduj Drukarnie
 STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Zbuduj Kopalnie zlota
 STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Zbuduj Bank (Mozna zbudowac tylko w miastach)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Zbuduj Tartak (aby zcinac las deszczowy i wyprodukowac drewno)
+STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Zbuduj Tartak (aby scinac las deszczowy i wyprodukowac drewno)
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Posadz Plantacje owocow
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Posadz Plantacje kauczuku
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Zbuduj Ujecie wody
@@ -681,7 +721,7 @@ STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Zbuduj F
 STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Zbuduj Fontanny plastiku
 STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Zbuduj Fabryke napojow gazowanych
 STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Zbuduj Generator babelkow
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Zbuduj Kopalnie tofi
+STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Zbuduj Kopalnie Toffi
 STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Zbuduj Kopalnie cukru
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Nie mozna wybudowac tutaj: {STRING}...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...najpierw trzeba wybudowac miasto
@@ -1180,13 +1220,13 @@ STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Wybuduj 
 STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Wybuduj kopalnie rudy zelaza
 STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Posadz Plantacje owocow
 STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Posadz plantacje kauczuku
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Zbuduj ujecie wody
+STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Zbuduj Ujecie wody
 STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Posadz las waty cukrowej
 STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Zbuduj farme baterii
 STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Odwiert do coli
 STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Zbuduj fontanny plastiku
 STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Zbuduj generator babelkow
-STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Zbuduj kopalnie toffi
+STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Zbuduj Kopalnie Toffi
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Wybuduj kopalnie cukru
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Przemysl
@@ -1560,7 +1600,7 @@ STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Przyznano subsydia dla {COMPANY}!{}{}Przewoz {STRING} z {STATION} do {STATION} bedzie placony podwojnie przez nastepny rok!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Przyznano subsydia dla {COMPANY}!{}{}Przewoz {STRING} z {STATION} do {STATION} bedzie placony potrojnie przez nastepny rok!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Przyznano subsydia dla {COMPANY}!{}{}Przewoz {STRING} z {STATION} do {STATION} bedzie placony poczwornie przez nastepny rok!
-STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} lokalne wladze nie pozwalaja na budowe nastepnego lotniska w tym miescie
+STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} lokalne wladze nie pozwalaja na budowe kolejnego lotniska w tym miescie
 STR_2036_COTTAGES                                               :Domki
 STR_2037_HOUSES                                                 :Domy
 STR_2038_FLATS                                                  :Mieszkania
@@ -1593,7 +1633,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Ufundowanie nowych budynkow handlowych w miescie.{}  Koszt: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Kup roczna wylacznosc na prawa transportowe w miescie. Lokalne wladze pozwala kozystac tylko ze stacji twojej firmy.{} Koszt: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Daj lapowke lokanym wladzom, powieksz swoja ocene, ryzykujac powazne kary w razie zlapania.{}  Koszt: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Chaos na drogach w {TOWN}!{}{}Program przebudowy drog ufundowany przez {COMPANY} prowadzi do 6 miesiecy meki dla kierowcow!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Chaos na drogach w {TOWN}!{}{}Program przebudowy drog ufundowany przez {COMPANY} przynosi 6 miesiecy meki dla kierowcow!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (w budowie)
@@ -1742,48 +1782,48 @@ STR_4010_GENERATE_RANDOM_NEW_GAME                               :Generacja losow
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} na drodze
 STR_4801                                                        :{WHITE}{INDUSTRY}
-STR_4802_COAL_MINE                                              :Kopalnia wegla
-STR_4803_POWER_STATION                                          :Elektrownia
-STR_4804_SAWMILL                                                :Tartak{G=m}
-STR_4805_FOREST                                                 :Las
-STR_4806_OIL_REFINERY                                           :Rafineria
-STR_4807_OIL_RIG                                                :Platforma wiertnicza
-STR_4808_FACTORY                                                :Fabryka{G=f}
-STR_4809_PRINTING_WORKS                                         :Drukarnia
-STR_480A_STEEL_MILL                                             :Huta{G=f}
-STR_480B_FARM                                                   :Farma
-STR_480C_COPPER_ORE_MINE                                        :Kopalnia rudy miedzi
-STR_480D_OIL_WELLS                                              :Pole naftowe
-STR_480E_BANK                                                   :Bank
-STR_480F_FOOD_PROCESSING_PLANT                                  :Przetwornia jedzenia
-STR_4810_PAPER_MILL                                             :Zaklad papierniczy{G=m}
-STR_4811_GOLD_MINE                                              :Kopalnia zlota
-STR_4812_BANK                                                   :Bank
-STR_4813_DIAMOND_MINE                                           :Kopalnia diamentow
-STR_4814_IRON_ORE_MINE                                          :Kopalnia rudy zelaza
-STR_4815_FRUIT_PLANTATION                                       :Plantacja owocow{G=f}
-STR_4816_RUBBER_PLANTATION                                      :Plantacja kauczuku
-STR_4817_WATER_SUPPLY                                           :Ujecie wody
-STR_4818_WATER_TOWER                                            :Wieza cisnien
-STR_4819_FACTORY                                                :Fabryka{G=f}
-STR_481A_FARM                                                   :Farma
-STR_481B_LUMBER_MILL                                            :Tartak{G=m}
-STR_481C_COTTON_CANDY_FOREST                                    :Las waty cukrowej
-STR_481D_CANDY_FACTORY                                          :Zaklad cukierniczy{G=m}
-STR_481E_BATTERY_FARM                                           :Farma Baterii
-STR_481F_COLA_WELLS                                             :Studnia Coli
-STR_4820_TOY_SHOP                                               :Sklep z zabawkami
-STR_4821_TOY_FACTORY                                            :Fabryka zabawek{G=f}
-STR_4822_PLASTIC_FOUNTAINS                                      :Fontanny plastiku
-STR_4823_FIZZY_DRINK_FACTORY                                    :Fabryka napojow gazowanych{G=f}
-STR_4824_BUBBLE_GENERATOR                                       :Generator babelkow
-STR_4825_TOFFEE_QUARRY                                          :Kopalnia tofi
-STR_4826_SUGAR_MINE                                             :Kopalnia cukru
+STR_4802_COAL_MINE                                              :{G=f}Kopalnia Wegla
+STR_4803_POWER_STATION                                          :{G=f}Elektrownia
+STR_4804_SAWMILL                                                :{G=m}Tartak
+STR_4805_FOREST                                                 :{G=m}Las
+STR_4806_OIL_REFINERY                                           :{G=f}Rafineria
+STR_4807_OIL_RIG                                                :{G=f}Platforma Wiertnicza
+STR_4808_FACTORY                                                :{G=f}Fabryka
+STR_4809_PRINTING_WORKS                                         :{G=f}Drukarnia
+STR_480A_STEEL_MILL                                             :{G=f}Huta
+STR_480B_FARM                                                   :{G=f}Farma
+STR_480C_COPPER_ORE_MINE                                        :{G=f}Kopalnia Rudy Miedzi
+STR_480D_OIL_WELLS                                              :{G=m}Pole Naftowe
+STR_480E_BANK                                                   :{G=m}Bank
+STR_480F_FOOD_PROCESSING_PLANT                                  :{G=f}Przetwornia Zywnosci
+STR_4810_PAPER_MILL                                             :{G=m}Zaklad Papierniczy
+STR_4811_GOLD_MINE                                              :{G=f}Kopalnia Zlota
+STR_4812_BANK                                                   :{G=m}Bank
+STR_4813_DIAMOND_MINE                                           :{G=f}Kopalnia Diamentow
+STR_4814_IRON_ORE_MINE                                          :{G=f}Kopalnia Rudy Zelaza
+STR_4815_FRUIT_PLANTATION                                       :{G=f}Plantacja Owocow
+STR_4816_RUBBER_PLANTATION                                      :{G=f}Plantacja Kauczuku
+STR_4817_WATER_SUPPLY                                           :{G=n}Ujecie Wody
+STR_4818_WATER_TOWER                                            :{G=f}Wieza Cisnien
+STR_4819_FACTORY                                                :{G=f}Fabryka
+STR_481A_FARM                                                   :{G=f}Farma
+STR_481B_LUMBER_MILL                                            :{G=m}Tartak
+STR_481C_COTTON_CANDY_FOREST                                    :{G=m}Las Waty Cukrowej
+STR_481D_CANDY_FACTORY                                          :{G=m}Zaklad Cukierniczy
+STR_481E_BATTERY_FARM                                           :{G=f}Farma Baterii
+STR_481F_COLA_WELLS                                             :{G=f}Studnia Coli
+STR_4820_TOY_SHOP                                               :{G=m}Sklep z Zabawkami
+STR_4821_TOY_FACTORY                                            :{G=f}Fabryka Zabawek
+STR_4822_PLASTIC_FOUNTAINS                                      :{G=f}Fontanny Plastiku
+STR_4823_FIZZY_DRINK_FACTORY                                    :{G=f}Fabryka Napojow Gazowanych
+STR_4824_BUBBLE_GENERATOR                                       :{G=m}Generator Babelkow
+STR_4825_TOFFEE_QUARRY                                          :{G=f}Kopalnia Toffi
+STR_4826_SUGAR_MINE                                             :{G=f}Kopalnia Cukru
 
 ############ range for requires	starts
-STR_4827_REQUIRES                                               :{BLACK}Wymagania: {YELLOW}{STRING}
-STR_4828_REQUIRES                                               :{BLACK}Wymagania: {YELLOW}{STRING}, {STRING}
-STR_4829_REQUIRES                                               :{BLACK}Wymagania: {YELLOW}{STRING}, {STRING}, {STRING}
+STR_4827_REQUIRES                                               :{BLACK}Wymaga: {YELLOW}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}Wymaga: {YELLOW}{STRING}, {STRING}
+STR_4829_REQUIRES                                               :{BLACK}Wymaga: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Wyprodukowano w ostatnim miesiacu:
@@ -1793,25 +1833,25 @@ STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Now{G y a e} {STRING} zostal{G "" a o} posadzony blisko {TOWN}!
 STR_482F_COST                                                   :{BLACK}Koszt: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Nie mozna tutaj wybudowac tego przedsiebiorstwa...
-STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...las moze byc posadzony tylko ponizej lini wiecznego lodu
+STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...las moze byc posadzony tylko ponizej linii sniegu
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} oglasza bliskie zamkniecie!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Problemy z zaopatrz. w {INDUSTRY} oglosza bliskie zamkniecie!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Niedobor drzew w {INDUSTRY} oglosza bliskie zamkniecie!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Problemy z zaopatrzeniem {INDUSTRY} powoduja ogloszenie zamkniecia!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Niedobor drzew powoduje ogloszenie zamkniecia {INDUSTRY}!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} zwieksza produkcje!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Odkryty nowy poklad wegla w {INDUSTRY}!{} Podwojenie produkcji!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Odkryte nowe rezerwy ropy w {INDUSTRY}!{} Podwojenie produkcji!
-STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Unowoczesniono prod. rolna w {INDUSTRY} Podwojenie produkcji!
-STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} produkcja zmniejszona o 50%
-STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Plaga insektow w {INDUSTRY}!{}Produkcja spadla o 50%
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Polepszone metody rolne w {INDUSTRY} spowoduja podwojenie produkcji!
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}produkcja w {INDUSTRY} maleje o 50%
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Plaga insektow w {INDUSTRY}!{}Produkcja maleje o 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...moze byc usytuowane tylko blisko krawedzi mapy
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} produkcja w {INDUSTRY} zwiekszona o {COMMA}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} produkcja w {INDUSTRY} zmniejszona o {COMMA}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Produkcja {STRING.d} w {INDUSTRY} wzrasta o {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Produkcja {STRING.d} w {INDUSTRY} maleje o {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Pociag w tunelu
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Samochod w tunelu
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Inny tunel na drodze
-STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Brak odpwiedniego ladu dla drugiego konca tunelu
+STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Nie mozna wydrazyc drugiego konca tunelu
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Trzeba najpierw zniszczyc tunel
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Trzeba najpierw zniszczyc most
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Nie mozna zaczynac i konczyc w tym samym miejscu
@@ -2156,7 +2196,7 @@ STR_802A_FRUIT_TRUCK                                            :Wagon na owoce
 STR_802B_RUBBER_TRUCK                                           :Wagon na kauczuk
 STR_802C_SUGAR_TRUCK                                            :Wagon na cukier
 STR_802D_COTTON_CANDY_HOPPER                                    :Wagon na wate cukrowa
-STR_802E_TOFFEE_HOPPER                                          :Wagon na tofi
+STR_802E_TOFFEE_HOPPER                                          :Wagon na Toffi
 STR_802F_BUBBLE_VAN                                             :Wagon na babelki
 STR_8030_COLA_TANKER                                            :Cysterna na cole
 STR_8031_CANDY_VAN                                              :Wagon na cukierki
@@ -2186,7 +2226,7 @@ STR_8048_FRUIT_TRUCK                                            :Wagon na owoce
 STR_8049_RUBBER_TRUCK                                           :Wagon na kauczuk
 STR_804A_SUGAR_TRUCK                                            :Wagon na cukier
 STR_804B_COTTON_CANDY_HOPPER                                    :Wagon na wate cukrowa
-STR_804C_TOFFEE_HOPPER                                          :Wagon na toffi
+STR_804C_TOFFEE_HOPPER                                          :Wagon na Toffi
 STR_804D_BUBBLE_VAN                                             :Wagon na babelki
 STR_804E_COLA_TANKER                                            :Cysterna na Cole
 STR_804F_CANDY_VAN                                              :Wagon na cukierki
@@ -2218,7 +2258,7 @@ STR_8068_FRUIT_TRUCK                                            :Wagon na owoce
 STR_8069_RUBBER_TRUCK                                           :Wagon na kauczuk
 STR_806A_SUGAR_TRUCK                                            :Wagon na cukier
 STR_806B_COTTON_CANDY_HOPPER                                    :Wagon na wate cukrowa
-STR_806C_TOFFEE_HOPPER                                          :Wagon na toffi
+STR_806C_TOFFEE_HOPPER                                          :Wagon na Toffi
 STR_806D_BUBBLE_VAN                                             :Wagon na babelki
 STR_806E_COLA_TANKER                                            :Cysterna na Cole
 STR_806F_CANDY_VAN                                              :Wagon na cukierki
@@ -2266,9 +2306,9 @@ STR_8098_KELLING_STEEL_TRUCK                                    :Samochod do sta
 STR_8099_BALOGH_ARMORED_TRUCK                                   :Samochod opancerzony Balogh
 STR_809A_UHL_ARMORED_TRUCK                                      :Samochod opancerzony Uhl
 STR_809B_FOSTER_ARMORED_TRUCK                                   :Samochod opancerzony Foster
-STR_809C_FOSTER_FOOD_VAN                                        :Samochod do zywnosci Foster
-STR_809D_PERRY_FOOD_VAN                                         :Samochod do zywnosci Perry
-STR_809E_CHIPPY_FOOD_VAN                                        :Samochod do zywnosci Chippy
+STR_809C_FOSTER_FOOD_VAN                                        :Samochod na zywnosc Foster
+STR_809D_PERRY_FOOD_VAN                                         :Samochod na zywnosc Perry
+STR_809E_CHIPPY_FOOD_VAN                                        :Samochod na zywnosc Chippy
 STR_809F_UHL_PAPER_TRUCK                                        :Samochod do papieru Uhl
 STR_80A0_BALOGH_PAPER_TRUCK                                     :Samochod do papieru Balogh
 STR_80A1_MPS_PAPER_TRUCK                                        :Samochod do papieru MPS
@@ -2293,9 +2333,9 @@ STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Cysterna na Col
 STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :Samochod do waty cukrowa MightyMover
 STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Samochod do waty cukrowa Powernaught
 STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Samochod do waty cukrowa Wizzowow
-STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :Samochod do toffi MightyMover
-STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Samochod do toffi Powernaught
-STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Samochod do toffi Wizzowow
+STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :Samochod do Toffi MightyMover
+STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Samochod do Toffi Powernaught
+STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Samochod do Toffi Wizzowow
 STR_80BA_MIGHTYMOVER_TOY_VAN                                    :Samochod do zabawek MightyMover
 STR_80BB_POWERNAUGHT_TOY_VAN                                    :Samochod do zabawek Powernaught
 STR_80BC_WIZZOWOW_TOY_VAN                                       :Samochod do zabawek Wizzowow
@@ -2566,7 +2606,7 @@ STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Zmien na
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Zmien nazwe typu samochodu
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Nie mozna zmienic nazwy typu samochodu...
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Jedz do {TOWN} zajednia sam.
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Serwisuj w zajezdni {TOWN}
+STR_SERVICE_AT_ROADVEH_DEPOT                                    :Serwisuj w zajezdni sam. {TOWN}
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Konstrukcje portowe

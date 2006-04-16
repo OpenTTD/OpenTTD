@@ -154,7 +154,7 @@ STR_00B2_MESSAGE                                                :{YELLOW}Bericht
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Bericht van {STRING}
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Kan dit niet uitvoeren....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan gebied niet ontruimen....
-STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Origineel copyright {COPYRIGHT} 1995 Chris Sawyer, Alle rechten voorbehouden
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Originele copyright {COPYRIGHT} 1995 Chris Sawyer, alle rechten voorbehouden
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versie {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 Het OpenTTD team
 STR_TRANSLATED_BY                                               :{BLACK}  Vertaler(s) -
@@ -164,7 +164,7 @@ STR_00C6                                                        :{SILVER}{CROSS}
 STR_00C7_QUIT                                                   :{WHITE}Afsluiten
 STR_00C8_YES                                                    :{BLACK}Ja
 STR_00C9_NO                                                     :{BLACK}Nee
-STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Weet u zeker dat u dit spel wilt verlaten en terug wilt keren naar {STRING}?
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Weet je zeker dat je dit spel wilt verlaten en terug wilt keren naar {STRING}?
 STR_00CB_1                                                      :{BLACK}1
 STR_00CC_2                                                      :{BLACK}2
 STR_00CD_3                                                      :{BLACK}3
@@ -299,15 +299,18 @@ STR_1024                                                        :1024
 STR_2048                                                        :2048
 STR_MAPSIZE                                                     :{BLACK}Mapgrootte:
 STR_BY                                                          :{BLACK}*
-STR_0148_GAME_OPTIONS                                           :{BLACK}Spel Opties
+STR_0148_GAME_OPTIONS                                           :{BLACK}Spelopties
 
 STR_0150_SOMEONE                                                :iemand{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :Wereldkaart
 STR_0152_TOWN_DIRECTORY                                         :Stedenlijst
 STR_0153_SUBSIDIES                                              :Subsidies
 
+STR_UNITS_IMPERIAL                                              :Imperiaal
+STR_UNITS_METRIC                                                :Metrisch
+STR_UNITS_SI                                                    :SI
 
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/u
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}pk
@@ -318,9 +321,13 @@ STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P "" s}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter{P "" s}
 
 
@@ -340,7 +347,7 @@ STR_015C_SAVE_GAME                                              :Spel opslaan
 STR_015D_LOAD_GAME                                              :Spel laden
 STR_015E_QUIT_GAME                                              :Spel stoppen
 STR_015F_QUIT                                                   :Afsluiten
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Weet u zeker dat u dit spel wilt afsluiten?
+STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Weet je zeker dat je dit spel wilt afsluiten?
 STR_0161_QUIT_GAME                                              :{WHITE}Spel stoppen
 STR_SORT_ORDER_TIP                                              :{BLACK}Selecteer sorteerrichting (aflopend/oplopend)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Selecteer sorteringscriteria
@@ -382,7 +389,7 @@ STR_016D_DEC                                                    :Dec
 STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
 STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_0170                                                        :{TINYFONT}{STRING}-
-STR_0171_PAUSE_GAME                                             :{BLACK}Pauseer spel
+STR_0171_PAUSE_GAME                                             :{BLACK}Pauzeer spel
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Spel opslaan, spel stoppen, afsluiten
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Toon lijst met stations van het bedrijf
 STR_0174_DISPLAY_MAP                                            :{BLACK}Toon kaart
@@ -571,7 +578,7 @@ STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Maak scenario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenario editor
-STR_0223_LAND_GENERATION                                        :{WHITE}Landgeneratie
+STR_0223_LAND_GENERATION                                        :{WHITE}Landontwikkeling
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
 STR_0226_RANDOM_LAND                                            :{BLACK}Willekeurig land
@@ -581,7 +588,7 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Verklein
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Genereer willekeurig land
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Verwijder landschap
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Verwijder landschap
-STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Weet u zeker dat u het land wilt verwijderen?
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Weet je zeker dat je het land wilt verwijderen?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landschapproductie
 STR_022F_TOWN_GENERATION                                        :{BLACK}Stadproductie
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industrieproductie
@@ -675,13 +682,13 @@ STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...plaat
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...slechts één per stad toegestaan
 STR_0288_PLANT_TREES                                            :{BLACK}Plant bomen
 STR_0289_PLACE_SIGN                                             :{BLACK}Plaats bord
-STR_028A_RANDOM_TREES                                           :{BLACK}Willekeurige bomen
+STR_028A_RANDOM_TREES                                           :{BLACK}Verspreid willekeurige bomen
 STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Verspreid bomen over de kaart
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Plaats steenachtige gebieden op de kaart
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Plaats vuurtoren
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Plaats radiomast
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definieer woestijn gebied.{}Gebruik CTRL om het te verwijderen
-STR_CREATE_LAKE                                                 :{BLACK}Definieer water gebied.{}Het zal de omgeving overstromen wanneer deze het niveau bereikt
+STR_CREATE_LAKE                                                 :{BLACK}Definieer watergebied.{}Het zal de omgeving overstromen als deze op zeeniveau ligt
 STR_0290_DELETE                                                 :{BLACK}Verwijder
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Verwijder deze hele stad
 STR_0292_SAVE_SCENARIO                                          :Scenario opslaan
@@ -752,9 +759,9 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transp
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Info over blok land
 STR_02D6                                                        :
-STR_CONSOLE_SETTING                                             :Schakel Konsole aan/uit
-STR_02D7_SCREENSHOT_CTRL_S                                      :Schermprint (Ctrl-S)
-STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Grote Schermprint (Ctrl-G)
+STR_CONSOLE_SETTING                                             :Schakel console aan/uit
+STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Grote screenshot (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Over OpenTTD
 ############ range ends	here
 
@@ -764,9 +771,9 @@ STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Toon sub
 STR_02DD_SUBSIDIES                                              :Subsidies
 STR_02DE_MAP_OF_WORLD                                           :Kaart
 STR_EXTRA_VIEW_PORT                                             :Extra kijkvenster
-STR_SIGN_LIST                                                   :Bordjes lijst
+STR_SIGN_LIST                                                   :Bordenlijst
 STR_02DF_TOWN_DIRECTORY                                         :Stedenlijst
-STR_TOWN_POPULATION                                             :{BLACK}Wereld populatie: {COMMA}
+STR_TOWN_POPULATION                                             :{BLACK}Wereldbevolking: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Kijkvenster {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopieer naar kijkvenster
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopieer de lokatie van het algemene scherm naar dit kijkvenster
@@ -825,8 +832,8 @@ STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...kan a
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...kan alleen in woestijngebieden gebouwd worden
 STR_0319_PAUSED                                                 :{YELLOW}* *  GEPAUZEERD  *  *
 
-STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Schermprint succesvol opgeslagen als '{STRING}'
-STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Schermprint mislukt!
+STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Screenshot succesvol opgeslagen als '{STRING}'
+STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Screenshot mislukt!
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Koop land voor toekomstig gebruik
 STR_032F_AUTOSAVE                                               :{RED}AUTOSAVE
@@ -895,7 +902,7 @@ STR_OPTIONS_RES                                                 :{BLACK}Schermre
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}Selecteer de schermresolutie
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Schermprint formaat
+STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Screenshotformaat
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Selecteer het formaat van de schermprint
 
@@ -963,7 +970,7 @@ STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automati
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatisch vernieuwen mislukt bij vliegtuig {COMMA} (onvoldoende geld)
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Trein {COMMA} is te lang na het vervangen
 
-STR_CONFIG_PATCHES                                              :{BLACK}Kies Patches
+STR_CONFIG_PATCHES                                              :{BLACK}Selecteer patches
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Kies welke patches je wilt gebruiken
 STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Kies patches
 
@@ -1000,7 +1007,7 @@ STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Altijd 
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Een trein is verdwaald als er geen voortgang is binnen: {ORANGE}{STRING} dagen
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Een trein is verdwaald wanneer er geen vooruitgang is in: {ORANGE}uit
-STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE} Herzie voertuigorders: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Herzie voertuigorders: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nee
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, maar sluit gestopte voertuigen uit
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :van alle voertuigen
@@ -1015,8 +1022,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Onzicht
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Sneeuwhoogte: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maximale stationsomvang: {ORANGE}{STRING} {RED}Pas op: Hoge waarde vertraagt spel
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopters automatisch repareren op helipads: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Open de landschap werkbalk tegelijk met de trein/weg/water/vliegveld werkbalk: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Als er gescrolld word met de muis, beweeg in tegengesteld richting: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Verbind de landschaptoolbar met de trein/weg/water/vliegveld toolbars: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Omgekeerde scrollrichting: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximaal aantal treinen per speler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximaal aantal wegvoertuigen per speler: {ORANGE}{STRING}
@@ -1048,7 +1055,7 @@ STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Stop sp
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Vloeiende economie inschakelen (meer, kleinere veranderingen)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Sta het kopen van aandelen toe
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Bij slepen, plaats seinen elke: {ORANGE}{STRING} tegel(s)
-STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Positie van hoofd knoppenbalk: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Positie van algemene toolbar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Links
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Midden
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Rechts
@@ -1076,7 +1083,7 @@ STR_TOYLAND_LANDSCAPE                                           :speelgoed lands
 
 STR_CHEATS                                                      :{WHITE}Cheats
 STR_CHEATS_TIP                                                  :{BLACK}Keuzevakjes geven aan of je deze cheat al ooit gebruikt hebt.
-STR_CHEATS_WARNING                                              :{BLACK}Waarschuwing! Je staat op het punt je concurrenten te verraden. Denk eraan dat zo'n schande eeuwig onthouden wordt.
+STR_CHEATS_WARNING                                              :{BLACK}Waarschuwing! Je staat op het punt je concurrenten te verraden. Bedenk dat zo'n schande eeuwig wordt onthouden.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Verhoog geld met {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Spelend als speler: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magische bulldozer (industrieën en andere onverplaatsbare objecten verwijderen): {ORANGE}{STRING}
@@ -1126,8 +1133,8 @@ STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Terreinv
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Landhoogte gelijk maken
 
 
-STR_TREES_RANDOM_TYPE                                           :{BLACK}Bomen van willekeurig type
-STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Plant Bomen van willekeurig type
+STR_TREES_RANDOM_TYPE                                           :{BLACK}Willekeurige bomensoorten
+STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Plant bomen van willekeurig type
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Kan hier geen kanaal bouwen...
 STR_BUILD_CANALS_TIP                                            :{BLACK}Bouw kanaal
@@ -1432,6 +1439,7 @@ STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Geen bru
 STR_1007_ALREADY_BUILT                                          :{WHITE}...reeds gebouwd
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Bestaand spoor moet eerst weggehaald worden
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Spoorwegconstructie
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Geëlectrificeerde spoorwegconstructie
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Monorailconstructie
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}MagLevconstructie
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Kies spoorbrug
@@ -1443,6 +1451,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Kan hier
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Kan hier geen seinen weghalen...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Bouw Treindepot
 STR_1015_RAILROAD_CONSTRUCTION                                  :Spoorwegconstructie
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Geëlectrificeerde spoorwegconstructie
 STR_1016_MONORAIL_CONSTRUCTION                                  :Monorailconstructie
 STR_1017_MAGLEV_CONSTRUCTION                                    :MagLevconstructie
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Plaats spoor
@@ -1480,7 +1489,7 @@ STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Bouw weg
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Bouw wegvoertuigdepot (om voertuigen te bouwen en te repareren)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Bouw bushalte
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Bouw vrachtwagen laadhal
-STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Bouw wegvoertuig
+STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Bouw brug voor wegvoertuigen
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Bouw wegtunnel
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Schakel tussen bouwen en verwijderen voor wegbouw
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Selecteer richting van wegvoertuigdepot
@@ -1504,7 +1513,7 @@ STR_2007_RENAME_TOWN                                            :Hernoem stad
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Kan stad niet hernoemen...
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}De gemeenteraad van {TOWN} staat dit niet toe
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Plaatsnamen - klik op naam om het hoofdbeeld te centreren op de stad
-STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centreer de hoofdbeeld op de lokatie van de stad
+STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centreer het hoofdbeeld op de lokatie van de stad
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Hernoem stad
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passagiers afelopen maand: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Post afgelopen maand: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
@@ -1720,7 +1729,7 @@ STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Lijst va
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Huidige gekozen naam voor opgeslagen spel
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Verwijder het momenteel geselecteerde opgeslagen spel
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Sla het huidige spel op onder de gekozen naam
-STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Selecteer Nieuw Spel Type
+STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Selecteer nieuw speltype
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Selecteer scenario (groen), vooraf ingesteld spel (blauw), or willekeurig nieuw spel
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Genereer willekeurig nieuw spel
 
@@ -1974,7 +1983,7 @@ STR_7009_PRESIDENT_NAME                                         :{BLACK}Naam dir
 STR_700A_COMPANY_NAME                                           :Bedrijfsnaam
 STR_700B_PRESIDENT_S_NAME                                       :Naam van directeur
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Kan bedrijfsnaam niet veranderen...
-STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Kan naam manager niet veranderen...
+STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Kan naam directeur niet veranderen...
 STR_700E_FINANCES                                               :{WHITE}{COMPANY} Financiën {BLACK}{PLAYERNAME}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Uitgaven/inkomsten
 STR_7010                                                        :{WHITE}{NUM}
@@ -1999,9 +2008,9 @@ STR_7022_INCOME_GRAPH                                           :{WHITE}Inkomste
 STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Bedrijfswinst Grafiek
-STR_7026_BANK_BALANCE                                           :{WHITE}Bank Saldo
+STR_7026_BANK_BALANCE                                           :{WHITE}Banksaldo
 STR_7027_LOAN                                                   :{WHITE}Lening
-STR_MAX_LOAN                                                    :{WHITE}Max Lening:  {BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Max lening:  {BLACK}{CURRENCY64}
 STR_7028                                                        :{BLACK}{CURRENCY64}
 STR_7029_BORROW                                                 :{BLACK}Leen {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Betaal {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY} terug
@@ -2013,7 +2022,7 @@ STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Kan geen
 STR_INSUFFICIENT_FUNDS                                          :{WHITE}Kan geen geld weggeven dat van de bank geleend is...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Kies nieuw gezicht voor directeur
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Verander het uiterlijk van de bedrijfsvoertuigen
-STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Verander de naam van de manager
+STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Verander de naam van de directeur
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Verander de bedrijfsnaam
 STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Klik op geselecteerde nieuwe kleurenschema
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Vergroot lening
@@ -2399,6 +2408,7 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Trein te
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Treinen kunnen alleen aangepast worden wanneer ze gestopt zijn binnen een depot
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Treinen
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nieuwe spoorvoertuigen
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nieuwe electrische spoorvoertuigen
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nieuwe monorailvoertuigen
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nieuwe maglevvoertuigen
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Bouw voertuig
@@ -2544,6 +2554,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Wegvoertuig gebotst!{}Bestuurder verongelukt door treinbotsing
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Wegvoertuig gebotst!{}{COMMA} verongelukt door treinbotsing
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Kan voertuig niet omdraaien...
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Kan voertuigen bestaande uit meerdere eenheden niet omdraaien
 STR_9034_RENAME                                                 :{BLACK}Hernoem
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Hernoem wegvoertuigtype
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Hernoem wegvoertuigtype
@@ -2769,7 +2780,7 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Geef all
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Geef alle vliegtuigen weer die dit station in hun opdrachtenlijst hebben
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Geef alle schepen weer die dit station in hun opdrachtenlijst hebben
 
-STR_REPLACE_VEHICLES                                            :{BLACK}Vervang Voertuigen
+STR_REPLACE_VEHICLES                                            :{BLACK}Vervang voertuigen
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vervang {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start het Vervangen
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop het Vervangen
@@ -2781,19 +2792,21 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klik op 
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Klik op deze knop als je de aan de linkerkant geseleteerde locomotief wil vervangen met die aan de rechterkant
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selecteer een railtype waar je locomotieven voor wil selecteren
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dit geeft weer waarmee de aan de linkerkant geselecteerde locomotief mee vervangen wordt
-STR_REPLACE_HELP                                                :{BLACK}Deze optie stelt je in staat om een type locomotief te selecteren en die te vervangen door een andere. Dit zal automatisch gebeuren zodra de voertuigen een depot inrijden
+STR_REPLACE_HELP                                                :{BLACK}Deze optie stelt je in staat om een type voertuig te selecteren en die te vervangen door een andere, zodra de voertuigen een depot inrijden
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagons verwijderen: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}De te vervangen trein behoudt zijn lengte door wagons weg te halen (startend aan de voorkant), als het vervangen de trein langer zou maken
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomotief kan niet gebouwd worden
 
 STR_ENGINES                                                     :Motoren
+STR_WAGONS                                                      :Wagons
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Bordjes lijst - {COMMA} Bordjes
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Bordenlijst - {COMMA} bord{P "" en}
 
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Treinstellen
+STR_ELRAIL_VEHICLES                                             :Electrische spoorvoertuigen
 STR_MONORAIL_VEHICLES                                           :Monorail Voertuigen
 STR_MAGLEV_VEHICLES                                             :Maglev Voertuigen
 
