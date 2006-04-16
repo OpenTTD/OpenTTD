@@ -145,9 +145,8 @@ static void PlaceRail_Station(TileIndex tile)
 		VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED);
 		VpSetPlaceSizingLimit(_patches.station_spread);
 	} else {
-		// TODO: Custom station selector GUI. Now we just try using first custom station
-		// (and fall back to normal stations if it isn't available).
-		DoCommandP(tile, _railstation.orientation | (_railstation.numtracks<<8) | (_railstation.platlength<<16),_cur_railtype|1<<4, CcStation,
+		// TODO: Custom station selector GUI.
+		DoCommandP(tile, _railstation.orientation | (_railstation.numtracks<<8) | (_railstation.platlength<<16),_cur_railtype, CcStation,
 				CMD_BUILD_RAILROAD_STATION | CMD_NO_WATER | CMD_AUTO | CMD_MSG(STR_100F_CAN_T_BUILD_RAILROAD_STATION));
 	}
 }
@@ -598,9 +597,8 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 	h = ey - sy + 1;
 	if (!_railstation.orientation) uintswap(w,h);
 
-	// TODO: Custom station selector GUI. Now we just try using first custom station
-	// (and fall back to normal stations if it isn't available).
-	DoCommandP(TileXY(sx, sy), _railstation.orientation | (w << 8) | (h << 16), _cur_railtype | 1 << 4, CcStation,
+	// TODO: Custom station selector GUI.
+	DoCommandP(TileXY(sx, sy), _railstation.orientation | (w << 8) | (h << 16), _cur_railtype, CcStation,
 		CMD_BUILD_RAILROAD_STATION | CMD_NO_WATER | CMD_AUTO | CMD_MSG(STR_100F_CAN_T_BUILD_RAILROAD_STATION));
 }
 
