@@ -41,7 +41,7 @@ typedef struct stationspec {
 	 * 4-5 = platform with roof, left side
 	 * 6-7 = platform with roof, right side
 	 */
-	int tiles;
+	uint tiles;
 	DrawTileSprites *renderdata; ///< Array of tile layouts.
 
 	/** Cargo threshold for choosing between little and lots of cargo

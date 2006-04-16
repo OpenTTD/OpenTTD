@@ -795,13 +795,13 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		case 0x09: /* Define sprite layout */
 			FOR_EACH_OBJECT {
 				StationSpec *stat = &_cur_grffile->stations[stid + i];
-				int t;
+				uint t;
 
 				stat->tiles = grf_load_extended(&buf);
 				stat->renderdata = calloc(stat->tiles, sizeof(*stat->renderdata));
 				for (t = 0; t < stat->tiles; t++) {
 					DrawTileSprites *dts = &stat->renderdata[t];
-					int seq_count = 0;
+					uint seq_count = 0;
 					PalSpriteID ground_sprite;
 
 					ground_sprite = grf_load_dword(&buf);
@@ -845,7 +845,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 				StationSpec *stat = &_cur_grffile->stations[stid + i];
 				byte srcid = grf_load_byte(&buf);
 				const StationSpec *srcstat = &_cur_grffile->stations[srcid];
-				int t;
+				uint t;
 
 				stat->tiles = srcstat->tiles;
 				stat->renderdata = calloc(stat->tiles, sizeof(*stat->renderdata));
@@ -897,7 +897,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 					byte length = grf_load_byte(&buf);
 					byte number = grf_load_byte(&buf);
 					StationLayout layout;
-					int l, p;
+					uint l, p;
 
 					if (length == 0 || number == 0) break;
 
