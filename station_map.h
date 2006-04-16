@@ -218,20 +218,19 @@ static inline TileIndexDiffC GetDockOffset(TileIndex t)
 	return dock_offset[GetDockDirection(t)];
 }
 
-static inline bool IsCustomStationSprite(TileIndex t)
+static inline bool IsCustomStationSpecIndex(TileIndex t)
 {
 	assert(IsTileType(t, MP_STATION));
-	return HASBIT(_m[t].m3, 4);
+	return _m[t].m4 != 0;
 }
 
-static inline void SetCustomStationSprite(TileIndex t, byte sprite)
+static inline void SetCustomStationSpecIndex(TileIndex t, byte specindex)
 {
 	assert(IsTileType(t, MP_STATION));
-	SETBIT(_m[t].m3, 4);
-	_m[t].m4 = sprite;
+	_m[t].m4 = specindex;
 }
 
-static inline uint GetCustomStationSprite(TileIndex t)
+static inline uint GetCustomStationSpecIndex(TileIndex t)
 {
 	assert(IsTileType(t, MP_STATION));
 	return _m[t].m4;

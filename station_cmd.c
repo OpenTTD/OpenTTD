@@ -1061,7 +1061,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 
 				MakeRailStation(tile, st->owner, st->index, axis, *layout_ptr++, GB(p2, 0, 4));
 
-				if (HASBIT(p2, 4)) SetCustomStationSprite(tile, GB(p2, 8, 8));
+				if (HASBIT(p2, 4)) SetCustomStationSpecIndex(tile, GB(p2, 8, 8));
 
 				tile += tile_delta;
 			} while (--w);
@@ -1934,9 +1934,9 @@ static void DrawTile_Station(TileInfo *ti)
 	if (ti->tileh != 0 && !IsDock(ti->tile))
 		DrawFoundation(ti, ti->tileh);
 
-	if (IsCustomStationSprite(ti->tile)) {
+	if (IsCustomStationSpecIndex(ti->tile)) {
 		// look for customization
-		const StationSpec *statspec = GetCustomStation(STAT_CLASS_DFLT, GetCustomStationSprite(ti->tile));
+		const StationSpec *statspec = GetCustomStation(STAT_CLASS_DFLT, GetCustomStationSpecIndex(ti->tile));
 
 		//debug("Cust-o-mized %p", statspec);
 
