@@ -13,6 +13,7 @@ typedef struct Sprite {
 } Sprite;
 
 const void *GetRawSprite(SpriteID sprite);
+bool SpriteExists(SpriteID sprite);
 
 static inline const Sprite *GetSprite(SpriteID sprite)
 {

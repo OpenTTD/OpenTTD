@@ -71,6 +71,13 @@ static bool ReadSpriteHeaderSkipData(void)
 	return true;
 }
 
+/* Check if the given Sprite ID exists */
+bool SpriteExists(SpriteID id)
+{
+	/* Special case for Sprite ID zero -- its position is also 0... */
+	return _sprite_file_pos[id] != 0 || id == 0;
+}
+
 static void* AllocSprite(size_t);
 
 static void* ReadSprite(SpriteID id)
@@ -80,7 +87,7 @@ static void* ReadSprite(SpriteID id)
 
 	DEBUG(spritecache, 9) ("load sprite %d", id);
 
-	if (_sprite_file_pos[id] == 0 && id != 0) {
+	if (!SpriteExists(id)) {
 		error(
 			"Tried to load non-existing sprite #%d.\n"
 			"Probable cause: Wrong/missing NewGRFs",
