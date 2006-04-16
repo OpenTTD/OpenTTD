@@ -15,6 +15,7 @@
 #include "sprite.h"
 #include "newgrf.h"
 #include "variables.h"
+#include "string.h"
 #include "bridge.h"
 #include "economy.h"
 #include "newgrf_engine.h"
@@ -2319,7 +2320,7 @@ static void DefineGotoLabel(byte *buf, int len)
 
 	GRFLabel *label;
 
-	check_length(len, 1, "GRFLabel");
+	check_length(len, 1, "DefineGotoLabel");
 	buf++; len--;
 
 	label = malloc(sizeof(*label));
