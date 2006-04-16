@@ -935,7 +935,6 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 
 					l--;
 					p--;
-					assert(p >= 0);
 					free(stat->layouts[l][p]);
 					stat->layouts[l][p] = layout;
 				}
@@ -2096,7 +2095,7 @@ static void GRFComment(byte *buf, int len)
 	static char comment[256];
 	if (len == 1) return;
 
-	ttd_strlcpy(comment, buf + 1, minu(sizeof(comment), len));
+	ttd_strlcpy(comment, (char*)(buf + 1), minu(sizeof(comment), len));
 	grfmsg(GMS_NOTICE, "GRFComment: %s", comment);
 }
 
