@@ -1015,9 +1015,9 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 
 #include "table/track_land.h"
 
-static void DrawSingleSignal(TileIndex tile, byte condition, uint32 image_and_pos)
+static void DrawSingleSignal(TileIndex tile, byte condition, uint image, uint pos)
 {
-	bool otherside = _opt.road_side & _patches.signal_side;
+	bool side = _opt.road_side & _patches.signal_side;
 	static const Point SignalPositions[2][12] = {
 		{      /* Signals on the left side */
 		/*  LEFT      LEFT      RIGHT     RIGHT     UPPER     UPPER */
@@ -1044,9 +1044,11 @@ static void DrawSingleSignal(TileIndex tile, byte condition, uint32 image_and_po
 		}
 	};
 
-	uint x = TileX(tile) * TILE_SIZE + SignalPositions[otherside][image_and_pos & 0xF].x;
-	uint y = TileY(tile) * TILE_SIZE + SignalPositions[otherside][image_and_pos & 0xF].y;
-	SpriteID sprite = SignalBase[otherside][GetSignalVariant(tile)][GetSignalType(tile)] + (image_and_pos>>4) + ((condition != 0) ? 1 : 0);
+	uint x = TileX(tile) * TILE_SIZE + SignalPositions[side][pos].x;
+	uint y = TileY(tile) * TILE_SIZE + SignalPositions[side][pos].y;
+
+	SpriteID sprite = SignalBase[side][GetSignalVariant(tile)][GetSignalType(tile)] + image + condition;
+
 	AddSortableSpriteToDraw(sprite, x, y, 1, 1, 10, GetSlopeZ(x,y));
 }
 
@@ -1248,13 +1250,7 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track, bool flat)
 
 static void DrawSignals(TileIndex tile, TrackBits rails)
 {
-#define HAS_SIGNAL(x) (m23 & (byte)(0x1 << (x)))
-#define ISON_SIGNAL(x) (m23 & (byte)(0x10 << (x)))
-#define MAYBE_DRAW_SIGNAL(x,y,z) if (HAS_SIGNAL(x)) DrawSingleSignal(tile, ISON_SIGNAL(x), ((y-0x4FB) << 4)|(z))
-
-	byte m23;
-
-	m23 = (_m[tile].m3 >> 4) | (_m[tile].m2 & 0xF0);
+#define MAYBE_DRAW_SIGNAL(x,y,z) if (IsSignalPresent(tile, x)) DrawSingleSignal(tile, GetSingleSignalState(tile, x), y - 0x4FB, z)
 
 	if (!(rails & TRACK_BIT_Y)) {
 		if (!(rails & TRACK_BIT_X)) {

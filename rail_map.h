@@ -211,6 +211,25 @@ static inline void SetSignalVariant(TileIndex t, SignalVariant v)
 	SB(_m[t].m4, 2, 1, v);
 }
 
+static inline bool IsSignalPresent(TileIndex t, byte signalbit)
+{
+	return HASBIT(_m[t].m3, signalbit + 4);
+}
+
+/** These are states in which a signal can be. Currently these are only two, so
+ * simple boolean logic will do. But do try to compare to this enum instead of
+ * normal boolean evaluation, since that will make future additions easier.
+ */
+typedef enum SignalStates {
+	SIGNAL_STATE_RED = 0,
+	SIGNAL_STATE_GREEN = 1,
+} SignalState;
+
+static inline SignalState GetSingleSignalState(TileIndex t, byte signalbit)
+{
+	return HASBIT(_m[t].m2, signalbit + 4);
+}
+
 
 typedef enum RailGroundType {
 	RAIL_MAP2LO_GROUND_MASK = 0xF,

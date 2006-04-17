@@ -50,15 +50,6 @@ typedef enum TrackdirBits {
 	INVALID_TRACKDIR_BIT  = 0xFFFF,
 } TrackdirBits;
 
-/** These are states in which a signal can be. Currently these are only two, so
- * simple boolean logic will do. But do try to compare to this enum instead of
- * normal boolean evaluation, since that will make future additions easier.
- */
-typedef enum SignalStates {
-	SIGNAL_STATE_RED = 0,
-	SIGNAL_STATE_GREEN = 1,
-} SignalState;
-
 /** This struct contains all the info that is needed to draw and construct tracks.
  */
 typedef struct RailtypeInfo {
