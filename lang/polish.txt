@@ -593,8 +593,8 @@ STR_MESSAGE_HISTORY_MENU                                        :Poprzednie wiad
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Pokaz ostatnia wiadomosc/ogloszenie, pokaz ustawienia wiadomosci
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Opcje wiadomosci
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Typy wiadomosci:-
-STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Przybyl pierwszy pojazd do stacji gracza
-STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Przybyl pierwszy pojazd do stacji przeciwnika
+STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Przybycie pierwszego pojazdu do stacji gracza
+STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Przybycie pierwszego pojazdu do stacji przeciwnika
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Wypadki / kleski
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informacja firmy
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Zmiany ekonomiczne
@@ -749,7 +749,7 @@ STR_029A_PLAY_SCENARIO                                          :{BLACK}Zagraj S
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Jestes pewny ze chcesz opuscic scenariusz?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Wyjscie z edytora
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...mozna zbudowac jedynie w miastach o populacji przynajmniej 1200
-STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Zmien date poczatkawa w tyl o 1 rok
+STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Zmien date poczatkawa do tylu o 1 rok
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Zmien date poczatkawa do przodu o 1 rok
 STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...konce mostu musza znajdowac sie na ladzie
 STR_02A1_SMALL                                                  :{BLACK}Male
@@ -881,7 +881,7 @@ STR_0319_PAUSED                                                 :{YELLOW}* *  PA
 STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Zrzut ekranu zapisany na dysk z powodzeniem {STRING}'
 STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Blad zrzutu ekranu!
 
-STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}nabyj teren do przyszlego uzycia
+STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Nabyj teren do przyszlego uzycia
 STR_032F_AUTOSAVE                                               :{RED}AUTOZAPIS
 STR_SAVING_GAME                                                 :{RED}*  *  ZAPISYWANIE GRY  *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Zapisywanie trwa,{}prosze zaczekac do zakonczenia!
@@ -1594,12 +1594,12 @@ STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Uslugi j
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} z {STATION} do {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, do {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subsydiowanie wygaslo:{}{}{STRING} z {STRING} do {STRING} juz nie bedzie dotowane.
-STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Koniec dotacji:{}{}{STRING} usluga z {STATION} do {STATION} juz nie jest subsydiowana
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Oferta uslugi dotowanej:{}{}Pierwszy przewoz {STRING} z  {STRING} do {STRING} bedzie dotowane przez rok przez lokalne wladze!
-STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Przyznano subsydia dla {COMPANY}!{}{}Przewoz {STRING} z {STATION} do {STATION} bedzie placony 50% wiecej przez nastepny rok!
-STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Przyznano subsydia dla {COMPANY}!{}{}Przewoz {STRING} z {STATION} do {STATION} bedzie placony podwojnie przez nastepny rok!
-STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Przyznano subsydia dla {COMPANY}!{}{}Przewoz {STRING} z {STATION} do {STATION} bedzie placony potrojnie przez nastepny rok!
-STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Przyznano subsydia dla {COMPANY}!{}{}Przewoz {STRING} z {STATION} do {STATION} bedzie placony poczwornie przez nastepny rok!
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Koniec dotacji:{}{}Przewoz {STRING.d} z {STATION} do {STATION} juz nie jest subsydiowany.
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Oferta uslugi dotowanej:{}{}Pierwszy przewoz {STRING.d} z {STRING} do {STRING} bedzie dotowany przez rok przez lokalne wladze!
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Przyznano subsydia dla {COMPANY}!{}{}Przewoz {STRING.d} z {STATION} do {STATION} bedzie oplacany o 50% wiecej przez nastepny rok!
+STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Przyznano subsydia dla {COMPANY}!{}{}Przewoz {STRING.d} z {STATION} do {STATION} bedzie oplacany podwojnie przez nastepny rok!
+STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Przyznano subsydia dla {COMPANY}!{}{}Przewoz {STRING.d} z {STATION} do {STATION} bedzie oplacany potrojnie przez nastepny rok!
+STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Przyznano subsydia dla {COMPANY}!{}{}Przewoz {STRING.d} z {STATION} do {STATION} bedzie oplacany poczwornie przez nastepny rok!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} lokalne wladze nie pozwalaja na budowe kolejnego lotniska w tym miescie
 STR_2036_COTTAGES                                               :Domki
 STR_2037_HOUSES                                                 :Domy
@@ -1614,7 +1614,7 @@ STR_203F_HOUSES                                                 :Domy
 STR_2040_CINEMA                                                 :Kino
 STR_2041_SHOPPING_MALL                                          :Centrum handlowe
 STR_2042_DO_IT                                                  :{BLACK}Wykonaj
-STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}Lista rzeczy do zrobienia w tym miescie - klik dla wiecej detali
+STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}Lista rzeczy do zrobienia w tym miescie - klik po wiecej detali
 STR_2044_CARRY_OUT_THE_HIGHLIGHTED                              :{BLACK}Wykonaj podswietlana dzialalnosc z listy ponizej
 STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Mozliwe dzialanie:
 STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Mala kampania reklamowa

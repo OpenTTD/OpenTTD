@@ -363,6 +363,20 @@ STR_0151_MAP_OF_WORLD                                           :Mapa sveta
 STR_0152_TOWN_DIRECTORY                                         :Seznam mest
 STR_0153_SUBSIDIES                                              :Dotace
 
+STR_UNITS_IMPERIAL                                              :Imperiální (míle)
+STR_UNITS_METRIC                                                :Metrické (kilometry)
+STR_UNITS_SI                                                    :SI (metry)
+
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mil/h
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+
+
+
+
+
+
+
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Graf provozního zisku
 STR_0155_INCOME_GRAPH                                           :Graf prijmu
@@ -813,7 +827,9 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Nastavit
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Jednotky meny
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Vyber jednotek meny
+STR_MEASURING_UNITS                                             :{BLACK}Jednotky vzdálenosti
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Vyber jednotek vzdalenosti
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Silnicni vozidla jezdí
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Vyber strany, na které jezdí silnicni vozidla
@@ -1051,6 +1067,7 @@ STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Vý¨ka s
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Nejvetsi rozsah stanice: {ORANGE}{STRING} {RED}Pozor: Vysoké nastavení zpomalí hru
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Údr¸ba helikoptér na heliportech: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Otevírat li¨tu na úpravy terénu s li¨tami na výstavbu tratí/silnic atd.: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Posouvat pohled opacnym smerem: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vlaku na hrace: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximum silnicnich vozidel na hrace: {ORANGE}{STRING}
@@ -1289,6 +1306,18 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (oznámit)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_0_PLAYERS                                           :0 hracu
+STR_NETWORK_1_PLAYERS                                           :1 hrac
+STR_NETWORK_2_PLAYERS                                           :2 hraci
+STR_NETWORK_3_PLAYERS                                           :3 hraci
+STR_NETWORK_4_PLAYERS                                           :4 hraci
+STR_NETWORK_5_PLAYERS                                           :5 hracu
+STR_NETWORK_6_PLAYERS                                           :6 hracu
+STR_NETWORK_7_PLAYERS                                           :7 hracu
+STR_NETWORK_8_PLAYERS                                           :8 hracu
+STR_NETWORK_9_PLAYERS                                           :9 hracu
+STR_NETWORK_10_PLAYERS                                          :10 hracu
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maximální pocet spolecnosti:
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Jazyk ve hre:
@@ -1387,6 +1416,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :¨patné heslo
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :¨patné id hrace v DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :vyhozen serverem
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :se pokou¨el podvadet
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :na serveru je plno
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :vstoupil do hry
 STR_NETWORK_GIVE_MONEY                                          :ti dal nejake peníze ({CURRENCY})
@@ -2803,6 +2833,7 @@ STR_REPLACE_HELP                                                :{BLACK}Tato mo¸
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odebírání vagonu: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkce automatického vylep¨ování vlaku muze udr¸ovat stejnou délku vlaku odstranovanim vagonu (od zacatku vlaku), pokud by vylep¨ení ma¨iny by vlak prodlou¸ilo.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Stroj nelze postavit
+
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam popisku - {COMMA} popis{P ek ky ku}

@@ -1133,7 +1133,7 @@ STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Terreinv
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Landhoogte gelijk maken
 
 
-STR_TREES_RANDOM_TYPE                                           :{BLACK}Willekeurige bomensoorten
+STR_TREES_RANDOM_TYPE                                           :{BLACK}Willekeurige boomsoorten
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Plant bomen van willekeurig type
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Kan hier geen kanaal bouwen...
@@ -1190,7 +1190,7 @@ STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUST
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...te dicht bij een andere industrie
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Bouw trein om voor een ander ladingntype
+STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Bouw trein om voor een ander ladingtype
 STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Bouw trein om
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Kies type lading om te transporteren
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Bouw trein om voor geselecteerde ladingtype
@@ -2795,6 +2795,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dit geef
 STR_REPLACE_HELP                                                :{BLACK}Deze optie stelt je in staat om een type voertuig te selecteren en die te vervangen door een andere, zodra de voertuigen een depot inrijden
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagons verwijderen: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}De te vervangen trein behoudt zijn lengte door wagons weg te halen (startend aan de voorkant), als het vervangen de trein langer zou maken
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTEEL {}Wissel tussen motor- en wagonvervangvensters.{}Wagonvervanging wordt alleen uitgevoerd als de nieuwe wagon omgebouwd kan worden om hetzelfde ladingtype te dragen als de oude wagon. Dit wordt gecontroleerd voor elke wagon wanneer de daadwerkelijke vervanging plaats vindt.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomotief kan niet gebouwd worden
 
 STR_ENGINES                                                     :Motoren
