@@ -1942,10 +1942,12 @@ static void DrawTile_Station(TileInfo *ti)
 
 		if (statspec != NULL) {
 			const Station* st = GetStationByTile(ti->tile);
+			uint tile = GetStationGfx(ti->tile);
 
 			relocation = GetCustomStationRelocation(statspec, st, 0);
-			//debug("Relocation %d", relocation);
-			t = &statspec->renderdata[GetStationGfx(ti->tile)];
+
+			/* Ensure the chosen tile layout is valid for this custom station */
+			t = &statspec->renderdata[tile < statspec->tiles ? tile : GetRailStationAxis(ti->tile)];
 		}
 	}
 
