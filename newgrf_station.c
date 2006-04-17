@@ -117,6 +117,7 @@ const StationSpec *GetCustomStation(StationClassID sclass, uint station)
 
 static const RealSpriteGroup *ResolveStationSpriteGroup(const SpriteGroup *spg, const Station *st)
 {
+	if (spg == NULL) return NULL;
 	switch (spg->type) {
 		case SGT_REAL:
 			return &spg->g.real;
@@ -183,6 +184,7 @@ static const RealSpriteGroup *ResolveStationSpriteGroup(const SpriteGroup *spg, 
 uint32 GetCustomStationRelocation(const StationSpec *spec, const Station *st, byte ctype)
 {
 	const RealSpriteGroup *rsg = ResolveStationSpriteGroup(spec->spritegroup[ctype], st);
+	if (rsg == NULL) return 0;
 
 	if (rsg->sprites_per_set != 0) {
 		if (rsg->loading_count != 0) return rsg->loading[0]->g.result.result;
