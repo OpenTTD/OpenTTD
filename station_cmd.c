@@ -2817,8 +2817,8 @@ static const SaveLoad _station_desc[] = {
 
 	SLE_VAR(Station,last_vehicle,          SLE_UINT16),
 
-	SLE_CONDVAR(Station,class_id,          SLE_UINT8, 3, SL_MAX_VERSION),
-	SLE_CONDVAR(Station,stat_id,           SLE_UINT8, 3, SL_MAX_VERSION),
+	// Was custom station class and id
+	SLE_CONDNULL(2, 3, 25),
 	SLE_CONDVAR(Station,build_date,        SLE_UINT16, 3, SL_MAX_VERSION),
 
 	SLE_CONDREF(Station,bus_stops,         REF_ROADSTOPS, 6, SL_MAX_VERSION),

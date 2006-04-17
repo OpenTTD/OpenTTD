@@ -374,8 +374,6 @@ Station *ComposeWaypointStation(TileIndex tile)
 	stat.town = GetTown(wp->town_index);
 	stat.string_id = wp->string == STR_NULL ? /* FIXME? */ 0 : wp->string;
 	stat.build_date = wp->build_date;
-	stat.class_id = 6;
-	stat.stat_id = wp->stat_id;
 
 	return &stat;
 }

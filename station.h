@@ -66,8 +66,6 @@ struct Station {
 	// trainstation width/height
 	byte trainst_w, trainst_h;
 
-	byte class_id; // custom graphics station class
-	byte stat_id; // custom graphics station id in the @class_id class
 	uint16 build_date;
 
 	//uint16 airport_flags;
