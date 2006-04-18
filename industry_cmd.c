@@ -1814,7 +1814,7 @@ static void MaybeNewIndustry(uint32 r)
 	SetDParam(0, type + STR_4802_COAL_MINE);
 	SetDParam(1, i->town->index);
 	AddNewsItem(
-		(type != IT_FOREST) ?
+		(type != IT_FOREST && type != IT_FRUIT_PLANTATION && type != IT_RUBBER_PLANTATION && type != IT_COTTON_CANDY) ?
 			STR_482D_NEW_UNDER_CONSTRUCTION : STR_482E_NEW_BEING_PLANTED_NEAR,
 		NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY,0), i->xy, 0
 	);
