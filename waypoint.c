@@ -39,7 +39,7 @@ static void WaypointPoolNewBlock(uint start_item)
 }
 
 /* Initialize the town-pool */
-MemoryPool _waypoint_pool = { "Waypoints", WAYPOINT_POOL_MAX_BLOCKS, WAYPOINT_POOL_BLOCK_SIZE_BITS, sizeof(Waypoint), &WaypointPoolNewBlock, 0, 0, NULL };
+MemoryPool _waypoint_pool = { "Waypoints", WAYPOINT_POOL_MAX_BLOCKS, WAYPOINT_POOL_BLOCK_SIZE_BITS, sizeof(Waypoint), &WaypointPoolNewBlock, NULL, 0, 0, NULL };
 
 /* Create a new waypoint */
 static Waypoint* AllocateWaypoint(void)

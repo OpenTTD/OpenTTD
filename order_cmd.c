@@ -33,7 +33,7 @@ static void OrderPoolNewBlock(uint start_item)
 }
 
 /* Initialize the order-pool */
-MemoryPool _order_pool = { "Orders", ORDER_POOL_MAX_BLOCKS, ORDER_POOL_BLOCK_SIZE_BITS, sizeof(Order), &OrderPoolNewBlock, 0, 0, NULL };
+MemoryPool _order_pool = { "Orders", ORDER_POOL_MAX_BLOCKS, ORDER_POOL_BLOCK_SIZE_BITS, sizeof(Order), &OrderPoolNewBlock, NULL, 0, 0, NULL };
 
 /**
  *

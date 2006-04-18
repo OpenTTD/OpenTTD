@@ -1021,7 +1021,7 @@ typedef struct ThreadedSave {
 } ThreadedSave;
 
 /* A maximum size of of 128K * 500 = 64.000KB savegames */
-static MemoryPool _save_pool = {"Savegame", SAVE_POOL_MAX_BLOCKS, SAVE_POOL_BLOCK_SIZE_BITS, sizeof(byte), NULL, 0, 0, NULL};
+static MemoryPool _save_pool = {"Savegame", SAVE_POOL_MAX_BLOCKS, SAVE_POOL_BLOCK_SIZE_BITS, sizeof(byte), NULL, NULL, 0, 0, NULL};
 static ThreadedSave _ts;
 
 static bool InitMem(void)

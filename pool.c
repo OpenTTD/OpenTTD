@@ -16,8 +16,12 @@ void CleanPool(MemoryPool *pool)
 	DEBUG(misc, 4)("[Pool] (%s) Cleaning pool..", pool->name);
 
 	/* Free all blocks */
-	for (i = 0; i < pool->current_blocks; i++)
+	for (i = 0; i < pool->current_blocks; i++) {
+		if (pool->clean_block_proc != NULL) {
+			pool->clean_block_proc(i * (1 << pool->block_size_bits), (i + 1) * (1 << pool->block_size_bits) - 1);
+		}
 		free(pool->blocks[i]);
+	}
 
 	/* Free the block itself */
 	free(pool->blocks);

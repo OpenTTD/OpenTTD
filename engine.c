@@ -507,7 +507,7 @@ enum {
 	ENGINE_RENEW_POOL_MAX_BLOCKS      = 8000,
 };
 
-MemoryPool _engine_renew_pool = { "EngineRe", ENGINE_RENEW_POOL_MAX_BLOCKS, ENGINE_RENEW_POOL_BLOCK_SIZE_BITS, sizeof(EngineRenew), &EngineRenewPoolNewBlock, 0, 0, NULL };
+MemoryPool _engine_renew_pool = { "EngineRe", ENGINE_RENEW_POOL_MAX_BLOCKS, ENGINE_RENEW_POOL_BLOCK_SIZE_BITS, sizeof(EngineRenew), &EngineRenewPoolNewBlock, NULL, 0, 0, NULL };
 
 static inline uint16 GetEngineRenewPoolSize(void)
 {

@@ -30,7 +30,7 @@ static void SignPoolNewBlock(uint start_item)
 }
 
 /* Initialize the sign-pool */
-MemoryPool _sign_pool = { "Signs", SIGN_POOL_MAX_BLOCKS, SIGN_POOL_BLOCK_SIZE_BITS, sizeof(SignStruct), &SignPoolNewBlock, 0, 0, NULL };
+MemoryPool _sign_pool = { "Signs", SIGN_POOL_MAX_BLOCKS, SIGN_POOL_BLOCK_SIZE_BITS, sizeof(SignStruct), &SignPoolNewBlock, NULL, 0, 0, NULL };
 
 /**
  *

@@ -8,6 +8,8 @@ typedef struct MemoryPool MemoryPool;
 /* The function that is called after a new block is added
      start_item is the first item of the new made block */
 typedef void MemoryPoolNewBlock(uint start_item);
+/* The function that is called before a block is cleaned up */
+typedef void MemoryPoolCleanBlock(uint start_item, uint end_item);
 
 /**
  * Stuff for dynamic vehicles. Use the wrappers to access the MemoryPool
@@ -22,6 +24,8 @@ struct MemoryPool {
 
 	/// Pointer to a function that is called after a new block is added
 	MemoryPoolNewBlock *new_block_proc;
+	/// Pointer to a function that is called to clean a block
+	MemoryPoolCleanBlock *clean_block_proc;
 
 	uint current_blocks;        ///< How many blocks we have in our pool
 	uint total_items;           ///< How many items we now have in this pool

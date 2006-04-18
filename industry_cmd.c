@@ -38,7 +38,7 @@ static void IndustryPoolNewBlock(uint start_item)
 }
 
 /* Initialize the industry-pool */
-MemoryPool _industry_pool = { "Industry", INDUSTRY_POOL_MAX_BLOCKS, INDUSTRY_POOL_BLOCK_SIZE_BITS, sizeof(Industry), &IndustryPoolNewBlock, 0, 0, NULL };
+MemoryPool _industry_pool = { "Industry", INDUSTRY_POOL_MAX_BLOCKS, INDUSTRY_POOL_BLOCK_SIZE_BITS, sizeof(Industry), &IndustryPoolNewBlock, NULL, 0, 0, NULL };
 
 static byte _industry_sound_ctr;
 static TileIndex _industry_sound_tile;

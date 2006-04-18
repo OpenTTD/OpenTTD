@@ -28,7 +28,7 @@ static void DepotPoolNewBlock(uint start_item)
 }
 
 /* Initialize the town-pool */
-MemoryPool _depot_pool = { "Depots", DEPOT_POOL_MAX_BLOCKS, DEPOT_POOL_BLOCK_SIZE_BITS, sizeof(Depot), &DepotPoolNewBlock, 0, 0, NULL };
+MemoryPool _depot_pool = { "Depots", DEPOT_POOL_MAX_BLOCKS, DEPOT_POOL_BLOCK_SIZE_BITS, sizeof(Depot), &DepotPoolNewBlock, NULL, 0, 0, NULL };
 
 
 /**

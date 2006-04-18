@@ -45,7 +45,7 @@ static void TownPoolNewBlock(uint start_item)
 }
 
 /* Initialize the town-pool */
-MemoryPool _town_pool = { "Towns", TOWN_POOL_MAX_BLOCKS, TOWN_POOL_BLOCK_SIZE_BITS, sizeof(Town), &TownPoolNewBlock, 0, 0, NULL };
+MemoryPool _town_pool = { "Towns", TOWN_POOL_MAX_BLOCKS, TOWN_POOL_BLOCK_SIZE_BITS, sizeof(Town), &TownPoolNewBlock, NULL, 0, 0, NULL };
 
 // Local
 static int _grow_town_result;

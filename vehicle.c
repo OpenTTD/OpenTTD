@@ -80,7 +80,7 @@ static void VehiclePoolNewBlock(uint start_item)
 }
 
 /* Initialize the vehicle-pool */
-MemoryPool _vehicle_pool = { "Vehicle", VEHICLES_POOL_MAX_BLOCKS, VEHICLES_POOL_BLOCK_SIZE_BITS, sizeof(Vehicle), &VehiclePoolNewBlock, 0, 0, NULL };
+MemoryPool _vehicle_pool = { "Vehicle", VEHICLES_POOL_MAX_BLOCKS, VEHICLES_POOL_BLOCK_SIZE_BITS, sizeof(Vehicle), &VehiclePoolNewBlock, NULL, 0, 0, NULL };
 
 void VehicleServiceInDepot(Vehicle *v)
 {
