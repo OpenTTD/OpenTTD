@@ -71,7 +71,7 @@ typedef enum {
  * to add this to the address of the object */
 static inline void *ini_get_variable(const SaveLoad *sld, const void *object)
 {
-	return (object == NULL) ? sld->address : (byte*)object + (unsigned long)sld->address;
+	return (object == NULL) ? sld->address : (byte*)object + (ptrdiff_t)sld->address;
 }
 
 void IConsoleSetPatchSetting(const char *name, const char *value);

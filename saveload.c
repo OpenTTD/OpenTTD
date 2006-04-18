@@ -722,7 +722,7 @@ void SlObject(void *object, const SaveLoad *sld)
 	}
 
 	for (; sld->cmd != SL_END; sld++) {
-		void *ptr = (byte*)object + (unsigned long)sld->address;
+		void *ptr = (byte*)object + (ptrdiff_t)sld->address;
 		SlObjectMember(ptr, sld);
 	}
 }
