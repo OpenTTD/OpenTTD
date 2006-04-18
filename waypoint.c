@@ -17,6 +17,7 @@
 #include "variables.h"
 #include "table/sprites.h"
 #include "table/strings.h"
+#include "vehicle.h"
 
 enum {
 	/* Max waypoints: 64000 (8 * 8000) */
