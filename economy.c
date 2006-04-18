@@ -1435,7 +1435,7 @@ int LoadUnloadVehicle(Vehicle *v)
 			v->cargo_source = ge->enroute_from;
 			v->cargo_days = ge->enroute_time;
 			result |= 2;
-			st->last_vehicle = v->index;
+			st->last_vehicle_type = v->type;
 		}
 	}
 

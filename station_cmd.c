@@ -467,7 +467,7 @@ static void StationInitialize(Station *st, TileIndex tile)
 	st->delete_ctr = 0;
 	st->facilities = 0;
 
-	st->last_vehicle = INVALID_VEHICLE;
+	st->last_vehicle_type = VEH_Invalid;
 
 	for (ge = st->goods; ge != endof(st->goods); ge++) {
 		ge->waiting_acceptance = 0;
@@ -2317,8 +2317,7 @@ static void UpdateStationRating(Station *st)
 
 			{
 				byte days = ge->days_since_pickup;
-				if (st->last_vehicle != INVALID_VEHICLE &&
-						GetVehicle(st->last_vehicle)->type == VEH_Ship)
+				if (st->last_vehicle_type == VEH_Ship)
 							days >>= 2;
 				(days > 21) ||
 				(rating += 25, days > 12) ||
@@ -2644,7 +2643,7 @@ void BuildOilRig(TileIndex tile)
 	st->time_since_load = 255;
 	st->time_since_unload = 255;
 	st->delete_ctr = 0;
-	st->last_vehicle = INVALID_VEHICLE;
+	st->last_vehicle_type = VEH_Invalid;
 	st->facilities = FACIL_AIRPORT | FACIL_DOCK;
 	st->build_date = _date;
 
@@ -2817,7 +2816,8 @@ static const SaveLoad _station_desc[] = {
 	SLE_CONDVAR(Station,airport_flags,     SLE_VAR_U32 | SLE_FILE_U16, 0, 2),
 	SLE_CONDVAR(Station,airport_flags,     SLE_UINT32, 3, SL_MAX_VERSION),
 
-	SLE_VAR(Station,last_vehicle,          SLE_UINT16),
+	SLE_CONDNULL(2, 0, 25), /* Ex last-vehicle */
+	SLE_CONDVAR(Station,last_vehicle_type,          SLE_UINT8 , 26, SL_MAX_VERSION),
 
 	// Was custom station class and id
 	SLE_CONDNULL(2, 3, 25),

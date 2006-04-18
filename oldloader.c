@@ -682,7 +682,7 @@ static const OldChunks station_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Station, blocked_months_obsolete ),
 	OCL_NULL( 1 ),         // Unknown
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Station, airport_flags ),
-	OCL_SVAR( OC_UINT16, Station, last_vehicle ),
+	OCL_NULL( 2 ),         // last_vehicle. now last_vehicle_type
 
 	OCL_NULL( 4 ),         // Junk at end of chunk
 

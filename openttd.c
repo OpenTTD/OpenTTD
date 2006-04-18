@@ -1403,6 +1403,13 @@ bool AfterLoadGame(void)
 		}
 	}
 
+	if (CheckSavegameVersion(26)) {
+		Station *st;
+		FOR_ALL_STATIONS(st) {
+			st->last_vehicle_type = VEH_Invalid;
+		}
+	}
+
 	FOR_ALL_PLAYERS(p) p->avail_railtypes = GetPlayerRailtypes(p->index);
 
 	return true;

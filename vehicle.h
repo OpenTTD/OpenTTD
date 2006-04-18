@@ -8,6 +8,7 @@
 #include "rail.h"
 
 enum {
+	VEH_Invalid = 0,
 	VEH_Train = 0x10,
 	VEH_Road = 0x11,
 	VEH_Ship = 0x12,

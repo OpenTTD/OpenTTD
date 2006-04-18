@@ -7,7 +7,6 @@
 #include "pool.h"
 #include "sprite.h"
 #include "tile.h"
-#include "vehicle.h"
 #include "newgrf_station.h"
 
 typedef struct GoodsEntry {
@@ -72,7 +71,7 @@ struct Station {
 	uint32 airport_flags;
 	StationID index;
 
-	VehicleID last_vehicle;
+	byte last_vehicle_type;
 	GoodsEntry goods[NUM_CARGO];
 
 	/* Stuff that is no longer used, but needed for conversion */
