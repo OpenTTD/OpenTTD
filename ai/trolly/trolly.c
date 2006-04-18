@@ -34,6 +34,7 @@
 #include "../../engine.h"
 #include "../../gui.h"
 #include "../../depot.h"
+#include "../../vehicle.h"
 #include "../ai.h"
 
 // This function is called after StartUp. It is the init of an AI

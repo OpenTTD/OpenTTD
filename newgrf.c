@@ -19,6 +19,7 @@
 #include "bridge.h"
 #include "economy.h"
 #include "newgrf_engine.h"
+#include "vehicle.h"
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)
