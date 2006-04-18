@@ -1600,7 +1600,6 @@ static bool AirportMove(Vehicle *v, const AirportFTAClass *Airport)
 {
 	AirportFTA *current;
 	byte prev_pos;
-	bool retval = false;
 
 	// error handling
 	if (v->u.air.pos >= Airport->nofelements) {
@@ -1624,7 +1623,7 @@ static bool AirportMove(Vehicle *v, const AirportFTAClass *Airport)
 		if (AirportSetBlocks(v, current, Airport)) {
 			v->u.air.pos = current->next_position;
 		} // move to next position
-		return retval;
+		return false;
 	}
 
 	// there are more choices to choose from, choose the one that
@@ -1634,7 +1633,7 @@ static bool AirportMove(Vehicle *v, const AirportFTAClass *Airport)
 			if (AirportSetBlocks(v, current, Airport)) {
 				v->u.air.pos = current->next_position;
 			} // move to next position
-			return retval;
+			return false;
 		}
 		current = current->next_in_chain;
 	} while (current != NULL);
