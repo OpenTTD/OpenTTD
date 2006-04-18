@@ -39,7 +39,7 @@ STR_001F_PAPER                                                  :Kagit
 STR_0020_GOLD                                                   :Altin
 STR_0021_WATER                                                  :Su
 STR_0022_WHEAT                                                  :Un
-STR_0023_RUBBER                                                 :Lastik
+STR_0023_RUBBER                                                 :Kauçuk
 STR_0024_SUGAR                                                  :Seker
 STR_0025_TOYS                                                   :Oyuncak
 STR_0026_CANDY                                                  :Tatli
@@ -71,7 +71,7 @@ STR_003F_PAPER                                                  :Kagit
 STR_0040_GOLD                                                   :Altin
 STR_0041_WATER                                                  :Su
 STR_0042_WHEAT                                                  :Un
-STR_0043_RUBBER                                                 :Lastik
+STR_0043_RUBBER                                                 :Kauçuk
 STR_0044_SUGAR                                                  :Seker
 STR_0045_TOY                                                    :Oyuncak
 STR_0046_CANDY                                                  :Tatli
@@ -103,7 +103,7 @@ STR_QUANTITY_PAPER                                              :{WEIGHT} kagit
 STR_QUANTITY_GOLD                                               :{COMMA} çanta altin
 STR_QUANTITY_WATER                                              :{VOLUME} su
 STR_QUANTITY_WHEAT                                              :{WEIGHT} un
-STR_QUANTITY_RUBBER                                             :{VOLUME} lastik
+STR_QUANTITY_RUBBER                                             :{VOLUME} kauçuk
 STR_QUANTITY_SUGAR                                              :{WEIGHT} seker
 STR_QUANTITY_TOYS                                               :{COMMA} oyuncak
 STR_QUANTITY_SWEETS                                             :{COMMA} canta tatli
@@ -135,7 +135,7 @@ STR_ABBREV_PAPER                                                :{TINYFONT}KA
 STR_ABBREV_GOLD                                                 :{TINYFONT}ES
 STR_ABBREV_WATER                                                :{TINYFONT}SU
 STR_ABBREV_WHEAT                                                :{TINYFONT}UN
-STR_ABBREV_RUBBER                                               :{TINYFONT}LA
+STR_ABBREV_RUBBER                                               :{TINYFONT}KA
 STR_ABBREV_SUGAR                                                :{TINYFONT}SK
 STR_ABBREV_TOYS                                                 :{TINYFONT}OY
 STR_ABBREV_SWEETS                                               :{TINYFONT}TA
@@ -230,7 +230,7 @@ STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFON
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Elmas Madeni
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Bakir Madeni
 STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Meyve Agaçlari
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Lastik Agaçlari
+STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Kauçuk Bahçesi
 STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Su Kaynagi
 STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Su Kulesi
 STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Keresteci
@@ -306,6 +306,38 @@ STR_0151_MAP_OF_WORLD                                           :Dünya haritasi
 STR_0152_TOWN_DIRECTORY                                         :Sehir Listesi
 STR_0153_SUBSIDIES                                              :ihaleler
 
+STR_UNITS_IMPERIAL                                              :Amerikan
+STR_UNITS_METRIC                                                :Metrik
+STR_UNITS_SI                                                    :SI
+
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mil/s
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/s
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}bg
+STR_UNITS_POWER_METRIC                                          :{COMMA}bg
+STR_UNITS_POWER_SI                                              :{COMMA}kW
+
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m
+
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litre
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m
+
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10^3 lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} ton
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
+
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Kar grafigi
 STR_0155_INCOME_GRAPH                                           :Gelir grafigi
@@ -343,6 +375,8 @@ STR_SORT_BY_AGE                                                 :Yas
 STR_SORT_BY_RELIABILITY                                         :Güvenilirlik
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Her kargo için toplam kapasite
 STR_SORT_BY_MAX_SPEED                                           :En yüksek hiz
+STR_SORT_BY_MODEL                                               :Model
+STR_SORT_BY_VALUE                                               :Fiyat
 
 ############ range for months starts
 STR_0162_JAN                                                    :Oca
@@ -599,7 +633,7 @@ STR_024E_PRINTING_WORKS                                         :{BLACK}Basimevi
 STR_024F_GOLD_MINE                                              :{BLACK}Altin Madeni
 STR_0250_LUMBER_MILL                                            :{BLACK}Oduncu
 STR_0251_FRUIT_PLANTATION                                       :{BLACK}Mehve Bahçesi
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Lastik Bahçesi
+STR_0252_RUBBER_PLANTATION                                      :{BLACK}Kauçuk Bahçesi
 STR_0253_WATER_SUPPLY                                           :{BLACK}Su Kaynagi
 STR_0254_WATER_TOWER                                            :{BLACK}Su Kulesi
 STR_0255_DIAMOND_MINE                                           :{BLACK}Gümüs Madeni
@@ -634,7 +668,7 @@ STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Altin Ma
 STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Banka Kur (Sadece sehirlerde kurulabilir)
 STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Oduncu Yap (yagmurormanlarindan odun yapar)
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Mehve Bahçesi Aç
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Lasik Bahçesi Aç
+STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Kauçuk Bahçesi Yap
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Su Kaynagi Yap
 STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Su Kulesi Yap (Sadece sehirlere yapilabilir)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Elmas Madeni Yap
@@ -756,7 +790,9 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Bu görün
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Para birimleri
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Para birimi seçimi
+STR_MEASURING_UNITS                                             :{BLACK}Ölçü Birimleri
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Ölçü birimi seçimi
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Karayolu tasitlari
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Trafik akis yönünü seçin
@@ -1144,7 +1180,7 @@ STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Altin Ma
 STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Elmas Madeni Aç
 STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Demir Madeni Aç
 STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Meyve Bahçesi Aç
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Lastik Ormani Kur
+STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Kauçuk Bahçesi Yap
 STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Su Kaynagi islet
 STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Pamukhelvasi Ormani Kur
 STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Pil Çiftligi Kur
@@ -1410,6 +1446,7 @@ STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Uygun ra
 STR_1007_ALREADY_BUILT                                          :{WHITE}...zaten yapildi
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Önce ray kaldirilmali
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Demiryolu Yapimi
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektrikli Ray Yapimi
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Monoray Yapimi
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}MagLev Yapimi
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Tren köprüsü seç
@@ -1421,6 +1458,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Ray kald
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Sinyaller kaldirilamiyor...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Tren Gari Yönü
 STR_1015_RAILROAD_CONSTRUCTION                                  :Demiryolu yapimi
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Elektrikli Ray Yapimi
 STR_1016_MONORAIL_CONSTRUCTION                                  :Monoray yapimi
 STR_1017_MAGLEV_CONSTRUCTION                                    :MagLev yapimi
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Ray yap
@@ -1725,7 +1763,7 @@ STR_4812_BANK                                                   :Bankasi
 STR_4813_DIAMOND_MINE                                           :Elmas Madeni
 STR_4814_IRON_ORE_MINE                                          :Demir Madeni
 STR_4815_FRUIT_PLANTATION                                       :Meyve Bahçesi
-STR_4816_RUBBER_PLANTATION                                      :Lastik Bahçesi
+STR_4816_RUBBER_PLANTATION                                      :Kauçuk Bahçesi
 STR_4817_WATER_SUPPLY                                           :Su Kaynagi
 STR_4818_WATER_TOWER                                            :Su Kulesi
 STR_4819_FACTORY                                                :Fabrikasi
@@ -2116,7 +2154,7 @@ STR_8027_PAPER_TRUCK                                            :Kagit Vagonu
 STR_8028_COPPER_ORE_HOPPER                                      :Bakir Vagonu
 STR_8029_WATER_TANKER                                           :Su Vagonu
 STR_802A_FRUIT_TRUCK                                            :Meyve Vagonu
-STR_802B_RUBBER_TRUCK                                           :Lastik Vagonu
+STR_802B_RUBBER_TRUCK                                           :Kauçuk Vagonu
 STR_802C_SUGAR_TRUCK                                            :Seker Vagonu
 STR_802D_COTTON_CANDY_HOPPER                                    :Pamukhelva Vagonu
 STR_802E_TOFFEE_HOPPER                                          :Bonbon Vagonu
@@ -2146,7 +2184,7 @@ STR_8045_PAPER_TRUCK                                            :Kagit Vagonu
 STR_8046_COPPER_ORE_HOPPER                                      :Bakir Vagonu
 STR_8047_WATER_TANKER                                           :Su Tankeri
 STR_8048_FRUIT_TRUCK                                            :Meyve Vagonu
-STR_8049_RUBBER_TRUCK                                           :Lastik Vagonu
+STR_8049_RUBBER_TRUCK                                           :Kauçuk Vagonu
 STR_804A_SUGAR_TRUCK                                            :Seker Vagonu
 STR_804B_COTTON_CANDY_HOPPER                                    :Pamukhelva Vagonu
 STR_804C_TOFFEE_HOPPER                                          :Bonbon Vagonu
@@ -2178,7 +2216,7 @@ STR_8065_PAPER_TRUCK                                            :Kagit Vagonu
 STR_8066_COPPER_ORE_HOPPER                                      :Bakir Vagonu
 STR_8067_WATER_TANKER                                           :Su Tankeri
 STR_8068_FRUIT_TRUCK                                            :Meyve Vagonu
-STR_8069_RUBBER_TRUCK                                           :Lastik Vagonu
+STR_8069_RUBBER_TRUCK                                           :Kauçuk Vagonu
 STR_806A_SUGAR_TRUCK                                            :Seker Vagonu
 STR_806B_COTTON_CANDY_HOPPER                                    :Pamukhelva Vagonu
 STR_806C_TOFFEE_HOPPER                                          :Bonbon Vagonu
@@ -2244,9 +2282,9 @@ STR_80A7_MPS_WATER_TANKER                                       :MPS Su Tankeri
 STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh Meyve Kamyonu
 STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl Meyve Kamyonu
 STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling Meyve Kamyonu
-STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh Lastik Kamyonu
-STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl Lastik Kamyonu
-STR_80AD_RMT_RUBBER_TRUCK                                       :RMT Lastik Kamyonu
+STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh Kauçuk Kamyonu
+STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl Kauçuk Kamyonu
+STR_80AD_RMT_RUBBER_TRUCK                                       :RMT Kauçuk Kamyonu
 STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :MightyMover Seker Kamyonu
 STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Powernaught Seker Kamyonu
 STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow Seker Kamyonu
@@ -2377,6 +2415,7 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Tren çok
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Sadece garda durdurulmus trenler üzerinde islem yapilabilir
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Tren
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Yeni Tren
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Yeni Elektrikli Trenler
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Yeni Monoray
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Yeni Maglev
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Satin Al
@@ -2522,6 +2561,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Trafik kazasi!{}Trenle çarpisan aracin soförü feci sekilde can verdi
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Trafik kazasi!{}{COMMA} kisi patlamadan kurtulamadi
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Araç döndürülemiyor...
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Birden fazla birimden olusan araçlar çevrilemez
 STR_9034_RENAME                                                 :{BLACK}isim
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Araç türünü yeniden adlandir
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Araç türünü yeniden adlandir
@@ -2762,7 +2802,12 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Soldaki 
 STR_REPLACE_HELP                                                :{BLACK}Tren gara girdiginde seçilen türle degistirilir
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon kaldirma: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Otomatik yenilemede tren boyutunun artmasi gerekiyorsa vagonlari kaldir(en önden baslayarak yeterli sayida vagon silinir).
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Degistiriyor: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} DENEYSEL ÖZELLiK {}Lokomotif ve vagon degisimi pencereleri arasinda geçis yap.{}Vagon degisimi sadece yeni vagon eskisinin tasidigi türde yükü tasiyabiliyorsa yapilir. Degistirme islemi sirasinda tüm vagonlar için bu durum kontrol edilir.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotif alinamaz
+
+STR_ENGINES                                                     :Lokomotifler
+STR_WAGONS                                                      :Vagon
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Tabela Listesi - {COMMA} Tabela
@@ -2770,6 +2815,7 @@ STR_SIGN_LIST_CAPTION                                           :{WHITE}Tabela L
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Demiryolu Araçlari
+STR_ELRAIL_VEHICLES                                             :Elektrikli Trenler
 STR_MONORAIL_VEHICLES                                           :Monoray Araçlari
 STR_MAGLEV_VEHICLES                                             :Maglev Araçlari
 

@@ -306,6 +306,38 @@ STR_0151_MAP_OF_WORLD                                           :Mappa del mondo
 STR_0152_TOWN_DIRECTORY                                         :Elenco Città
 STR_0153_SUBSIDIES                                              :Sussidi
 
+STR_UNITS_IMPERIAL                                              :Imperiale
+STR_UNITS_METRIC                                                :Metrico
+STR_UNITS_SI                                                    :SI
+
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
+STR_UNITS_POWER_METRIC                                          :{COMMA}hp
+STR_UNITS_POWER_SI                                              :{COMMA}kW
+
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonnellat{P a e}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonnellat{P a e}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m?
+
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P e i}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P o i}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m?
+
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10^3 lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} tonnellata-forza
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
+
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Grafico profitto operativo
 STR_0155_INCOME_GRAPH                                           :Grafico degli incassi
@@ -343,6 +375,8 @@ STR_SORT_BY_AGE                                                 :Età
 STR_SORT_BY_RELIABILITY                                         :Affidabilità
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Tot. capacità per tipo di carico
 STR_SORT_BY_MAX_SPEED                                           :Velocità massima
+STR_SORT_BY_MODEL                                               :Modello
+STR_SORT_BY_VALUE                                               :Valore
 
 ############ range for months starts
 STR_0162_JAN                                                    :Gen
@@ -378,7 +412,7 @@ STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostra e
 STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostra lista degli aerei delle società
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Avvicina visuale
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Allontana visuale
-STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Costruisci percorsi ferroviari
+STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Costruisci ferrovie
 STR_0182_BUILD_ROADS                                            :{BLACK}Costruisci strade
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Costruisci moli
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Costruisci aereoporti
@@ -404,7 +438,7 @@ STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Mostra i
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Mostra percorsi di viaggio sulla mappa
 STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Mostra vegetazione sulla mappa
 STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Mostra proprietari dei terreni sulla mappa
-STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Visualizza nomi delle Città sulla mappa (on/off)
+STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Visualizza nomi delle città sulla mappa (on/off)
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Profitto quest'anno: {CURRENCY} (anno scorso: {CURRENCY})
 
 ############ range for service numbers starts
@@ -412,18 +446,18 @@ STR_AGE                                                         :{COMMA} ann{P o
 STR_AGE_RED                                                     :{RED}{COMMA} ann{P o i} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Veicolo Stradale
+STR_019C_ROAD_VEHICLE                                           :Veicolo stradale
 STR_019D_AIRCRAFT                                               :Aereo
 STR_019E_SHIP                                                   :Nave
 STR_019F_TRAIN                                                  :Treno
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} stà diventando vecchio
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} Stà diventando molto vecchio
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} sta diventando vecchio
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} sta diventando molto vecchio
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} è troppo vecchio e necessita di essere rimpiazzato urgentemente
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Info sull'area di terreno
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Costo per ripulirlo: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Costo per ripulirlo: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
-STR_01A7_OWNER                                                  :{BLACK}Prioprietario: {LTBLUE}{STRING}
+STR_01A7_OWNER                                                  :{BLACK}Proprietario: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Autorità locale: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Nessuno
 STR_01AA_NAME                                                   :{BLACK}Nome
@@ -470,7 +504,7 @@ STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Merci ac
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz Jukebox
 STR_01D3_SOUND_MUSIC                                            :Suoni/musica
-STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Mostra finestra Suoni/musica
+STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Mostra finestra suoni/musica
 STR_01D5_ALL                                                    :{TINYFONT}Tutte
 STR_01D6_OLD_STYLE                                              :{TINYFONT}Vecchio Stile
 STR_01D7_NEW_STYLE                                              :{TINYFONT}Nuovo Stile
@@ -551,16 +585,16 @@ STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Crea Scenario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Editor Scenario
-STR_0223_LAND_GENERATION                                        :{WHITE}Genera paesaggio
+STR_0223_LAND_GENERATION                                        :{WHITE}Genera Terreno
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
 STR_0226_RANDOM_LAND                                            :{BLACK}Terreno Casuale
 STR_0227_RESET_LAND                                             :{BLACK}Resetta Terreno
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Aumenta ampiezza del terreno da abbassare/alzare
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Decrementa ampiezza del terreno da abbassare/alzare
-STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Genera territorio a caso
+STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Genera terreno casuale
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Resetta paesaggio
-STR_022C_RESET_LANDSCAPE                                        :{WHITE}Resetta paesaggio
+STR_022C_RESET_LANDSCAPE                                        :{WHITE}Resetta Paesaggio
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Sei sicuro di voler resettare il paesaggio?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generazione paesaggio
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generazione città
@@ -756,7 +790,9 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Copia la
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Valuta
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Selezione valuta
+STR_MEASURING_UNITS                                             :{BLACK}Unità di misura
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Selezione unità di misura
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Veicoli stradali con
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Seleziona lato della strada sul quale devono guidare i veicoli stradali
@@ -1135,22 +1171,22 @@ STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Disabili
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Abilita tutti
 
 STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Costruisci Miniera di Carbone
-STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Posiziona Foresta
+STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Pianta Foresta
 STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Costruisci Piattaforma Petrolifera
 STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Fonda Fattoria
 STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Costruisci Miniera di Rame
 STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Costruisci Pozzo Petrolifero
 STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Costruisci Miniera d'Oro
 STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Costruisci Miniera di Diamanti
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Costruisci Miniera d'Argento
+STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Costruisci Miniera di Ferro
 STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Fonda Piantagione di Frutta
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Fonda Rubber Plantation
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Fonda Water Supply
-STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Pianta Cotton Candy Forest
-STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Fonda Battery Farm
+STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Fonda Piantagione di Gomma
+STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Fonda Sorgente di Acqua
+STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Pianta Foresta di Cotton Candy
+STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Fonda Fabbrica di Batterie
 STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Pozzi di Cola
-STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Fonda Plastic Fountains
-STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Costruisci Bubble Generator
+STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Fonda Fontane di Plastica
+STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Costruisci Generatore di Bolle
 STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Fonda Toffee Quarry
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Costruisci Raffineria di Zucchero
 
@@ -1410,6 +1446,7 @@ STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Tipo di 
 STR_1007_ALREADY_BUILT                                          :{WHITE}...già costruito
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Rimuovere binari prima
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Costruzioni ferroviarie
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Costruzione Ferrovie Elettrificate
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Costruzione monorotaia
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Costruzioni MagLev
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Seleziona ponte ferroviario
@@ -1421,6 +1458,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Non puoi
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Non puoi rimuovere segnali da qui...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orientamento Deposito
 STR_1015_RAILROAD_CONSTRUCTION                                  :Costruzioni ferroviarie
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Costruzione ferrovie elettrificate
 STR_1016_MONORAIL_CONSTRUCTION                                  :Costruzione monorotaia
 STR_1017_MAGLEV_CONSTRUCTION                                    :Costruzioni MagLev
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Costruisci binari
@@ -2377,6 +2415,7 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Treno tr
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Un treno può essere modificato solo quando è fermo nel deposito
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Treni
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nuovo Veicolo Ferroviario
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nuovi Veicoli Ferroviari Elettrici
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nuovo  Veicolo Per Monorotaia
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nuovo Veicolo Per Maglev
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Costruisci Veicolo
@@ -2522,6 +2561,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Veicolo distrutto!{}Il conducente muore in una palla di fuoco dopo la collisione
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Veicolo distrutto!{}{COMMA} morti in una palla di fuoco dopo la collisione col treno
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Non puoi far girare il veicolo...
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Non posso invertire veicoli composti da unità multiple
 STR_9034_RENAME                                                 :{BLACK}Rinomina
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Rinomina tipo di veicolo
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Rinomina tipo di veicolo
@@ -2762,7 +2802,11 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra c
 STR_REPLACE_HELP                                                :{BLACK}Permette di rimpiazzare un locomotere con uno di un'altro tipo, quando il treno entra in un deposito
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Rimuovi vagoni: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Autosostituzione deve mantenere uguale la lunghezza del treno, rimuovendo vagoni (iniziando davanti), se la sostituzione del treno lo farebbe piu lungo.
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Sostituzione: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomotiva non e costruibile
+
+STR_ENGINES                                                     :Motrici
+STR_WAGONS                                                      :Vagoni
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista dei Cartelli - {COMMA} Cartelli
@@ -2770,6 +2814,7 @@ STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Veicoli Ferroviari
+STR_ELRAIL_VEHICLES                                             :Veicoli Ferrovie Elettrificate
 STR_MONORAIL_VEHICLES                                           :Veicoli Monorotaia
 STR_MAGLEV_VEHICLES                                             :Veicoli Maglev
 

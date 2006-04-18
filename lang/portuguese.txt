@@ -306,6 +306,14 @@ STR_0151_MAP_OF_WORLD                                           :Mapa do mundo
 STR_0152_TOWN_DIRECTORY                                         :Lista de cidades
 STR_0153_SUBSIDIES                                              :Subsídios
 
+
+
+
+
+
+
+
+
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Benefícios operativos
 STR_0155_INCOME_GRAPH                                           :Rendimentos
@@ -343,6 +351,8 @@ STR_SORT_BY_AGE                                                 :Idade
 STR_SORT_BY_RELIABILITY                                         :Fiabilidade
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacidade total por tipo de carga
 STR_SORT_BY_MAX_SPEED                                           :Velocidade máxima
+STR_SORT_BY_MODEL                                               :Modelo
+STR_SORT_BY_VALUE                                               :Valor
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -756,7 +766,9 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Colar a 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Unidades monetárias
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Selecção de unidades monetárias
+STR_MEASURING_UNITS                                             :{BLACK}Unidades de medida
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Selecção de unidades de medida
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Veículos de estrada
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Seleccione o lado da estrada por onde os veículos deverão andar
@@ -1233,7 +1245,21 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :Rede Local / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (divulgar)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_0_PLAYERS                                           :0 jogadores
+STR_NETWORK_1_PLAYERS                                           :1 jogador
+STR_NETWORK_2_PLAYERS                                           :2 jogadores
+STR_NETWORK_3_PLAYERS                                           :3 jogadores
+STR_NETWORK_4_PLAYERS                                           :4 jogadores
+STR_NETWORK_5_PLAYERS                                           :5 jogadores
+STR_NETWORK_6_PLAYERS                                           :6 jogadores
+STR_NETWORK_7_PLAYERS                                           :7 jogadores
+STR_NETWORK_8_PLAYERS                                           :8 jogadores
+STR_NETWORK_9_PLAYERS                                           :9 jogadores
+STR_NETWORK_10_PLAYERS                                          :10 jogadores
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Máximo de Companhias:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limitar o servidor a um certo número de Companhias
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Máximo de espectadores:
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma falado:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Outros jogadores ficarão a conhecer o idioma utilizado no servidor.
@@ -1331,6 +1357,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :palavra-chave d
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :id do jogador incorrecta em DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :avisado pelo servidor
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :estava a tentar usar batota
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servidor cheio
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :entrou no jogo
 STR_NETWORK_GIVE_MONEY                                          :deu à sua empresa algum dinheiro ({CURRENCY})
@@ -1394,6 +1421,7 @@ STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Tipo de 
 STR_1007_ALREADY_BUILT                                          :{WHITE}...já construído
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Deverá remover a linha férrea primeiro
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Construir caminhos-de-ferro
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Construção de Via Férrea Electrificada
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Construir monocarril
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Construir MagLev
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Seleccione Ponte Ferroviária
@@ -1405,6 +1433,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Não é po
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Não é possível remover sinais daqui...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orientação do Depósito
 STR_1015_RAILROAD_CONSTRUCTION                                  :Construir caminhos-de-ferro
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Construção de Via Férrea Electrificada
 STR_1016_MONORAIL_CONSTRUCTION                                  :Construir monocarril
 STR_1017_MAGLEV_CONSTRUCTION                                    :Construir MagLev
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Construir linha férrea
@@ -2745,6 +2774,7 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Seleccio
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Exibe o tipo de motor que substituirá o que está seleccionado à esquerda, se algum
 STR_REPLACE_HELP                                                :{BLACK}Permite a substiuição de um tipo de motor por outro, quando comboios do tipo original entram num depósito
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Remover vagões: {ORANGE}{SKIP}{STRING}
+
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de sinais - {COMMA} Sinais
