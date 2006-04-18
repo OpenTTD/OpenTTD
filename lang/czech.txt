@@ -371,11 +371,25 @@ STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mil/h
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA} hp
+STR_UNITS_POWER_METRIC                                          :{COMMA} hp
+STR_UNITS_POWER_SI                                              :{COMMA} kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA} t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tun{P a y ""}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tun{P a y ""}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA} gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} l
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon{P "" y u}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P "" y u}
 
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Graf provozního zisku
@@ -414,6 +428,8 @@ STR_SORT_BY_AGE                                                 :stari
 STR_SORT_BY_RELIABILITY                                         :spolehlivosti
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :celkové kapacity podle druhu nákladu
 STR_SORT_BY_MAX_SPEED                                           :max. rychlosti
+STR_SORT_BY_MODEL                                               :modelu
+STR_SORT_BY_VALUE                                               :hodnoty
 
 ############ range for months starts
 STR_0162_JAN                                                    :led
@@ -1319,6 +1335,8 @@ STR_NETWORK_9_PLAYERS                                           :9 hracu
 STR_NETWORK_10_PLAYERS                                          :10 hracu
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maximální pocet spolecnosti:
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maximální pocet divaku:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Omezit serverem pocet divaku
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Jazyk ve hre:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Aby ostatní hraci vedeli, jakým jazykem se bude ve hre mluvit.
@@ -1479,7 +1497,8 @@ STR_1004_TOO_HIGH                                               :{WHITE}Prilis v
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}´ádné pou¸itelné koleje
 STR_1007_ALREADY_BUILT                                          :{WHITE}... ji¸ vystaveno
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Musí¨ nejprve odstranit koleje
-STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Výstavba kolejí
+STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Výstavba ¸eleznice
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Výstavba elektrifikované ¸eleznice
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Výstavba monorailu
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Výstavba maglevu
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Zvolit zeleznicni most
@@ -1490,7 +1509,8 @@ STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Zde nemo
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Nemohu odsud odstranit koleje...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Nemohu odsud odstranit semafory...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orientace vlakového depa
-STR_1015_RAILROAD_CONSTRUCTION                                  :Výstavba kolejí
+STR_1015_RAILROAD_CONSTRUCTION                                  :Výstavba ¸eleznice
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Výstavba elektrifikované ¸eleznice
 STR_1016_MONORAIL_CONSTRUCTION                                  :Výstavba monorailu
 STR_1017_MAGLEV_CONSTRUCTION                                    :Výstavba maglevu
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Polo¸it koleje
@@ -2447,6 +2467,7 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Prilis d
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Vlaky lze menit, jen kdy¸ stojí uvnitr depa
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} vlak{P "" y u}
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nové lokomotivy a vagony
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nové elektrické lokomotivy a vagony
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nové lokomotivy a vagony pro monorail
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nové lokomotivy a vagony pro maglev
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Koupit vuz
@@ -2832,8 +2853,11 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Tady je 
 STR_REPLACE_HELP                                                :{BLACK}Tato mo¸nost hry ti umoznuje vybrat typ lokomotivy, který nechá vymenit za jiný. To se bude automaticky provadet, kdy¸ lokomotiva zajede do depa.
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odebírání vagonu: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkce automatického vylep¨ování vlaku muze udr¸ovat stejnou délku vlaku odstranovanim vagonu (od zacatku vlaku), pokud by vylep¨ení ma¨iny by vlak prodlou¸ilo.
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vymenovani: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Stroj nelze postavit
 
+STR_ENGINES                                                     :lokomotivy
+STR_WAGONS                                                      :vagony
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam popisku - {COMMA} popis{P ek ky ku}
@@ -2841,6 +2865,7 @@ STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam p
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Zeleznicni lokomotivy
+STR_ELRAIL_VEHICLES                                             :Elektrické lokomotivy
 STR_MONORAIL_VEHICLES                                           :Lokomotivy pro monorail
 STR_MAGLEV_VEHICLES                                             :Lokomotivy pro maglev
 

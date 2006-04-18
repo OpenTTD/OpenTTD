@@ -303,7 +303,7 @@ STR_0148_GAME_OPTIONS                                           :{BLACK}Opzioni 
 
 STR_0150_SOMEONE                                                :qualcuno{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :Mappa del mondo
-STR_0152_TOWN_DIRECTORY                                         :Elenco Città
+STR_0152_TOWN_DIRECTORY                                         :Elenco città
 STR_0153_SUBSIDIES                                              :Sussidi
 
 STR_UNITS_IMPERIAL                                              :Imperiale
@@ -342,14 +342,14 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Grafico profitto operativo
 STR_0155_INCOME_GRAPH                                           :Grafico degli incassi
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Grafico merce consegnata
-STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Grafico prestazioni
+STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Grafico storico prestazioni
 STR_0158_COMPANY_VALUE_GRAPH                                    :Grafico valore società
 STR_0159_CARGO_PAYMENT_RATES                                    :Grafico % pagamento merce
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Classifica società
 STR_PERFORMANCE_DETAIL_MENU                                     :Dettagli prestazionali
 ############ range for menu	ends
 
-STR_015B_OPENTTD                                                :{WHITE}OpenTTD
+STR_015B_OPENTTD                                                :{WHITE}Informazioni su OpenTTD
 STR_015C_SAVE_GAME                                              :Salva partita
 STR_015D_LOAD_GAME                                              :Carica partita
 STR_015E_QUIT_GAME                                              :Abbandona partita
@@ -401,11 +401,11 @@ STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Salva pa
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostra elenco delle stazioni delle società
 STR_0174_DISPLAY_MAP                                            :{BLACK}Mostra mappa
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Mostra mappa, elenco Città
-STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Mostra elenco Città
+STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Mostra elenco città
 STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Mostra info finanziarie delle società
 STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Mostra info generali sulle società
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Mostra grafici
-STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Mostra Classifica della società
+STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Mostra classifica della società
 STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostra elenco dei treni delle società
 STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostra elenco dei veicoli stradali delle società
 STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostra elenco delle navi delle società
@@ -417,7 +417,7 @@ STR_0182_BUILD_ROADS                                            :{BLACK}Costruis
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Costruisci moli
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Costruisci aereoporti
 STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Pianta alberi, posiziona cartelli ecc...
-STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Varie
+STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Informazioni area terreno
 STR_0187_OPTIONS                                                :{BLACK}Opzioni
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
@@ -551,11 +551,11 @@ STR_01FF                                                        :{TINYFONT}{BLAC
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Ultimi messaggi/nuovi rapporti
 STR_0201_MESSAGE_SETTINGS                                       :Impostazioni messaggi
 STR_MESSAGE_HISTORY_MENU                                        :Cronologia messaggi
-STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Mostra ultimo messaggio/rapporto, mostra Impostazione messaggi
+STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Mostra ultimo messaggio/rapporto, mostra impostazione messaggi
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Impostazione messaggi
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Tipi di messaggio:-
-STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrivo primo veicolo a stazioni del giocatore
-STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrivo primo veicolo a stazioni della concorrenza
+STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrivo del primo veicolo alle stazioni del giocatore
+STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrivo del primo veicolo alle stazioni della concorrenza
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Incidenti / disastri
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informazioni sulle società
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Cambiamenti economici
@@ -579,8 +579,8 @@ STR_0218_MOGUL                                                  :Mogul
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Magnate del secolo
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYERNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} raggiunge lo stato '{STRING}'!
-STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} di {COMPANY} raggiunge lo stato '{STRING}'!
+STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} raggiunge lo status di '{STRING}'!
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} di {COMPANY} raggiunge lo status di '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Crea Scenario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
@@ -605,7 +605,7 @@ STR_0234_NEW_TOWN                                               :{BLACK}Nuova Ci
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Costruisci nuova città
 STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Non puoi costruire una città qui...
 STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...troppo vicino al bordo della mappa
-STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...troppo vicino a un'altra città
+STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...troppo vicino ad un'altra città
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...sito inadatto
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...troppe città
 STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Non puoi costruire nessuna città
@@ -617,7 +617,7 @@ STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Costruis
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Generazione Industrie
 STR_0240_COAL_MINE                                              :{BLACK}Miniera di Carbone
 STR_0241_POWER_STATION                                          :{BLACK}Centrale Elettrica
-STR_0242_SAWMILL                                                :{BLACK}Falegnameria
+STR_0242_SAWMILL                                                :{BLACK}Segheria
 STR_0243_FOREST                                                 :{BLACK}Foresta
 STR_0244_OIL_REFINERY                                           :{BLACK}Raffineria
 STR_0245_OIL_RIG                                                :{BLACK}Piattaforma Petrolifera
@@ -629,11 +629,11 @@ STR_024A_OIL_WELLS                                              :{BLACK}Pozzi pe
 STR_024B_BANK                                                   :{BLACK}Banca
 STR_024C_PAPER_MILL                                             :{BLACK}Cartiera
 STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Azienda Alimentare
-STR_024E_PRINTING_WORKS                                         :{BLACK}Casa Editrice
+STR_024E_PRINTING_WORKS                                         :{BLACK}Tipografia
 STR_024F_GOLD_MINE                                              :{BLACK}Miniera d'Oro
 STR_0250_LUMBER_MILL                                            :{BLACK}Segheria
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Piantaggione di Frutta
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Piantaggione di Gomma
+STR_0251_FRUIT_PLANTATION                                       :{BLACK}Piantagione di Frutta
+STR_0252_RUBBER_PLANTATION                                      :{BLACK}Piantagione di Gomma
 STR_0253_WATER_SUPPLY                                           :{BLACK}Falda Acquifera
 STR_0254_WATER_TOWER                                            :{BLACK}Cisterna d'Acqua
 STR_0255_DIAMOND_MINE                                           :{BLACK}Miniera di Diamanti
@@ -651,7 +651,7 @@ STR_0260_TOFFEE_QUARRY                                          :{BLACK}Estratto
 STR_0261_SUGAR_MINE                                             :{BLACK}Miniera di Zucchero
 STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Costruisci Miniera di Carbone
 STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Costruisci Centrale Elettrica
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Costruisci Falegnameria
+STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Costruisci Segheria
 STR_0265_PLANT_FOREST                                           :{BLACK}Pianta Foresta
 STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Costruisci Raffineria
 STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Costruisci Piattaforma Petrolifera (può essere costruita soltanto vicino al bordo della mappa)
@@ -663,19 +663,19 @@ STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Costruis
 STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Costruisci Banca (può essere costruita solo in città con una popolazione maggiori di 1200)
 STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Costruisci Cartiera
 STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Costruisci Azienda Alimentare
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Costruisci Casa Editrice
+STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Costruisci Tipografia
 STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Costruisci Miniera d'Oro
 STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Costruisci Banca (può essere costruita solo nelle città)
 STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Costruisci Segheria (per tagliare la foresta pluviale e produrre legna)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Pianta Piantaggione di Frutta
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Pianta Piantaggione di Gomma
+STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Pianta Piantagione di Frutta
+STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Pianta Piantagione di Gomma
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Costruisci Falda Acquifera
 STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Costruisci Cisterna d'Acqua (può essere costruita solo nelle città)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Costruisci Miniera di Diamanti
 STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Costruisci Miniera di Rame Grezzo
 STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Costruisci Foresta di Cotone Candito
 STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Costruisci Fabbrica di Caramelle
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Costruisci Fattoria delle batterie
+STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Costruisci Fattoria delle Batterie
 STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Costruisci Pozzi di Cola
 STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Costruisci Negozio di Giocattoli
 STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Costruisci Fabbrica di Giocattoli
@@ -687,19 +687,19 @@ STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Costruis
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Non puoi costruire {STRING} qui...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...devi costruire prima una città
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...ammessa solo una per città
-STR_0288_PLANT_TREES                                            :{BLACK}Pianta Alberi
+STR_0288_PLANT_TREES                                            :{BLACK}Pianta alberi
 STR_0289_PLACE_SIGN                                             :{BLACK}Posiziona cartello
 STR_028A_RANDOM_TREES                                           :{BLACK}Alberi Casuali
 STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Pianta alberi casualmente nel paesaggio
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Piazza terreno roccioso nel paesaggio
-STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Piazza Faro
-STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Piazza Trasmettitore
+STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Piazza faro
+STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Piazza trasmettitore
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definisce area desertica.{}Clicca premendo CTRL per rimuoverla
 STR_CREATE_LAKE                                                 :{BLACK}Definisce area d'acqua.{}Si espande se definita a livello del mare
 STR_0290_DELETE                                                 :{BLACK}Elimina
-STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Elimina questa città completamente
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Elimina completamente questa città
 STR_0292_SAVE_SCENARIO                                          :Salva scenario
-STR_0293_LOAD_SCENARIO                                          :CArica scenario
+STR_0293_LOAD_SCENARIO                                          :Carica scenario
 STR_0294_QUIT_EDITOR                                            :Esci dall'editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Esci
@@ -712,7 +712,7 @@ STR_029C_QUIT_EDITOR                                            :{WHITE}Esci dal
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...può essere costruita solo in città con una popolazione di almeno 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Sposta la data d'inizio indietro di un'anno
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Sposta la data d'inizio avanti di un'anno
-STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...gli estremi del ponte devono toccare entrambi la terra
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...gli estremi del ponte devono toccare entrambi il terreno
 STR_02A1_SMALL                                                  :{BLACK}Piccola
 STR_02A2_MEDIUM                                                 :{BLACK}Media
 STR_02A3_LARGE                                                  :{BLACK}Grande
@@ -725,7 +725,7 @@ STR_OFF                                                         :No
 STR_SUMMARY                                                     :Sommario
 STR_FULL                                                        :Completo
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Elenco Città
+STR_02BB_TOWN_DIRECTORY                                         :Elenco città
 STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Nomi veicoli
 STR_02BD                                                        :{BLACK}{STRING}
 STR_02BE_DEFAULT                                                :Predefiniti
@@ -735,10 +735,10 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Selezion
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Salva  nomi personalizzati dei veicoli
 
 ############ range for menu	starts
-STR_02C3_GAME_OPTIONS                                           :Opzioni
-STR_02C4_GAME_OPTIONS                                           :Opzioni di gioco
-STR_02C5_DIFFICULTY_SETTINGS                                    :Scelta difficoltà
-STR_02C6_DIFFICULTY_SETTINGS                                    :Scelta difficoltà
+STR_02C3_GAME_OPTIONS                                           :Opzioni gioco
+STR_02C4_GAME_OPTIONS                                           :Opzioni gioco
+STR_02C5_DIFFICULTY_SETTINGS                                    :Impostazioni difficoltà
+STR_02C6_DIFFICULTY_SETTINGS                                    :Impostazioni difficoltà
 STR_02C7_CONFIG_PATCHES                                         :Configura patch
 STR_02C8_CONFIG_PATCHES                                         :Configura patch
 STR_NEWGRF_SETTINGS                                             :Impostazioni Newgrf
@@ -767,19 +767,19 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Nomi s
 STR_02D5_LAND_BLOCK_INFO                                        :Informazioni sull'area
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Linea di comando
-STR_02D7_SCREENSHOT_CTRL_S                                      :ScreenShot (Ctrl-S)
-STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :ScreenShot Gigante (Ctrl-G)
+STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Screenshot Gigante (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Info su 'OpenTTD'
 ############ range ends	here
 
-STR_02DB_OFF                                                    :{BLACK}No
-STR_02DA_ON                                                     :{BLACK}Si
+STR_02DB_OFF                                                    :{BLACK}Off
+STR_02DA_ON                                                     :{BLACK}On
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Mostra sussidi
 STR_02DD_SUBSIDIES                                              :Sussidi
 STR_02DE_MAP_OF_WORLD                                           :Mappa del mondo
 STR_EXTRA_VIEW_PORT                                             :Mini visuale extra
 STR_SIGN_LIST                                                   :Lista cartelli
-STR_02DF_TOWN_DIRECTORY                                         :Elenco Città
+STR_02DF_TOWN_DIRECTORY                                         :Elenco città
 STR_TOWN_POPULATION                                             :{BLACK}Popolazione mondiale: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Mini visuale {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copia nella mini visuale
@@ -798,7 +798,7 @@ STR_02E7                                                        :{BLACK}{SKIP}{S
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Seleziona lato della strada sul quale devono guidare i veicoli stradali
 STR_02E9_DRIVE_ON_LEFT                                          :Guida a sinistra
 STR_02EA_DRIVE_ON_RIGHT                                         :Guida a destra
-STR_02EB_TOWN_NAMES                                             :{BLACK}Nomi Città
+STR_02EB_TOWN_NAMES                                             :{BLACK}Nomi città
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Seleziona il tipo di stile per i nomi delle città
 
@@ -809,7 +809,7 @@ STR_02F7_OFF                                                    :No
 STR_02F8_EVERY_3_MONTHS                                         :Ogni 3 mesi
 STR_02F9_EVERY_6_MONTHS                                         :Ogni 6 mesi
 STR_02FA_EVERY_12_MONTHS                                        :Ogni 12 mesi
-STR_02FB_START_A_NEW_GAME                                       :{BLACK}Inizia nuovo gioco
+STR_02FB_START_A_NEW_GAME                                       :{BLACK}Inizia un nuovo gioco
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Carica un gioco salvato
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Crea uno scenario personalizzato
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Seleziona giocatore singolo
@@ -839,7 +839,7 @@ STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...può e
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...può essere costruito solo in aree desertiche
 STR_0319_PAUSED                                                 :{YELLOW}* *  IN PAUSA  *  *
 
-STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Screenshot salvato correttamente in '{STRING}'
+STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Screenshot salvato con successo come '{STRING}'
 STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Screenshot non riuscito!
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Compra terreno per usi futuri
@@ -1444,10 +1444,10 @@ STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Già al l
 STR_1004_TOO_HIGH                                               :{WHITE}Troppo alto
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Tipo di binari non adatti
 STR_1007_ALREADY_BUILT                                          :{WHITE}...già costruito
-STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Rimuovere binari prima
-STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Costruzioni ferroviarie
+STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Rimuovere i binari prima
+STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Costruzione Ferrovie
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Costruzione Ferrovie Elettrificate
-STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Costruzione monorotaia
+STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Costruzione Monorotaia
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Costruzioni MagLev
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Seleziona ponte ferroviario
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Non puoi costruire deposito qui...

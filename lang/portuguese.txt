@@ -306,12 +306,22 @@ STR_0151_MAP_OF_WORLD                                           :Mapa do mundo
 STR_0152_TOWN_DIRECTORY                                         :Lista de cidades
 STR_0153_SUBSIDIES                                              :Subsídios
 
+STR_UNITS_IMPERIAL                                              :Anglo-Saxónico
+STR_UNITS_METRIC                                                :Métrico
+STR_UNITS_SI                                                    :Sistema Internacional
 
 
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonelada{P ""s}
 
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gal{P "ão" "ões}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litro{P "" s}
 
 
 ############ range for menu	starts
