@@ -1954,8 +1954,10 @@ static void HandleLocomotiveSmokeCloud(const Vehicle* v)
 		}
 
 		// No smoke in depots or tunnels
-		if (IsTileDepotType(v->tile, TRANSPORT_RAIL) || IsTunnelTile(v->tile))
-			continue;
+		if (IsTileDepotType(v->tile, TRANSPORT_RAIL) || IsTunnelTile(v->tile)) continue;
+
+		// No sparks for electric vehicles on nonelectrified tracks
+		if (!HasPowerOnRail(v->u.rail.railtype, GetTileRailType(v->tile, GetVehicleTrackdir(v)))) continue;
 
 		if (effect_type == 0) {
 			// Use default effect type for engine class.
