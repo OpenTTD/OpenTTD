@@ -1759,6 +1759,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 			} break;
 			default: {
 				int32 val = (int32)ReadValue(ce->variable, ce->type);
+				char buf[512];
 
 				/* Draw [<][>] boxes for settings of an integer-type */
 				DrawArrowButtons(x + 20, y, 3, clk - (i * 2), true);
@@ -1769,7 +1770,8 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 				/* Draw colored flag for change player cheat */
 				case STR_CHEAT_CHANGE_PLAYER:
 					SetDParam(0, val);
-					DrawPlayerIcon(_current_player, 156, y + 2);
+					GetString(buf, STR_CHEAT_CHANGE_PLAYER);
+					DrawPlayerIcon(_current_player, 60 + GetStringWidth(buf), y + 2);
 					break;
 				/* Set correct string for switch climate cheat */
 				case STR_CHEAT_SWITCH_CLIMATE: val += STR_TEMPERATE_LANDSCAPE;
