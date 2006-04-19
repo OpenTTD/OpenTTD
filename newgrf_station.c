@@ -7,6 +7,7 @@
 #include "debug.h"
 #include "sprite.h"
 #include "station.h"
+#include "station_map.h"
 #include "newgrf_station.h"
 
 static StationClass station_classes[STAT_CLASS_MAX];
@@ -67,6 +68,17 @@ StationClassID AllocateStationClass(uint32 class)
 
 	DEBUG(grf, 2)("StationClassAllocate: Already allocated %d classes, using default.", STAT_CLASS_MAX);
 	return STAT_CLASS_DFLT;
+}
+
+/**
+ * Get the number of station classes in use.
+ * @return Number of station classes.
+ */
+uint GetNumStationClasses(void)
+{
+	uint i;
+	for (i = 0; i < STAT_CLASS_MAX && station_classes[i].id != 0; i++);
+	return i;
 }
 
 /**
@@ -197,4 +209,95 @@ uint32 GetCustomStationRelocation(const StationSpec *spec, const Station *st, by
 	 * so it's probably kinda "default offset". Try to use it as
 	 * emergency measure. */
 	return 0;
+}
+
+
+/**
+ * Allocate a StationSpec to a Station. This is called once per build operation.
+ * @param spec StationSpec to allocate.
+ * @param st Station to allocate it to.
+ * @param exec Whether to actually allocate the spec.
+ * @return Index within the Station's spec list, or -1 if the allocation failed.
+ */
+int AllocateSpecToStation(const StationSpec *spec, Station *st, bool exec)
+{
+	uint i;
+
+	if (spec == NULL) return 0;
+
+	/* Check if this spec has already been allocated */
+	for (i = 1; i < st->num_specs && i < 256; i++) {
+		if (st->speclist[i].spec == spec) return i;
+	}
+
+	for (i = 1; i < st->num_specs && i < 256; i++) {
+		if (st->speclist[i].spec == NULL && st->speclist[i].grfid == 0) break;
+	}
+
+	if (i < 256) {
+		if (exec) {
+			if (i >= st->num_specs) {
+				st->num_specs = i + 1;
+				st->speclist = realloc(st->speclist, st->num_specs * sizeof(*st->speclist));
+
+				if (st->num_specs == 2) {
+					/* Initial allocation */
+					st->speclist[0].spec     = NULL;
+					st->speclist[0].grfid    = 0;
+					st->speclist[0].localidx = 0;
+				}
+			}
+
+			st->speclist[i].spec     = spec;
+			st->speclist[i].grfid    = spec->grfid;
+			st->speclist[i].localidx = spec->localidx;
+		}
+		return i;
+	}
+
+	return -1;
+}
+
+
+/** Deallocate a StationSpec from a Station. Called when removing a single station tile.
+ * @param st Station to work with.
+ * @param specindex Index of the custom station within the Station's spec list.
+ * @return Indicates whether the StationSpec was deallocated.
+ */
+bool DeallocateSpecFromStation(Station *st, byte specindex)
+{
+	bool freeable = true;
+
+	/* specindex of 0 (default) is never freeable */
+	if (specindex == 0) return false;
+
+	/* Check all tiles over the station to check if the specindex is still in use */
+	BEGIN_TILE_LOOP(tile, st->trainst_w, st->trainst_h, st->train_tile) {
+		if (IsTileType(tile, MP_STATION) && GetStationIndex(tile) == st->index && IsRailwayStation(tile) && GetCustomStationSpecIndex(tile) == specindex) {
+			freeable = false;
+			break;
+		}
+	} END_TILE_LOOP(tile, st->trainst_w, st->trainst_h, st->train_tile)
+
+	if (freeable) {
+		/* This specindex is no longer in use, so deallocate it */
+		st->speclist[specindex].spec     = NULL;
+		st->speclist[specindex].grfid    = 0;
+		st->speclist[specindex].localidx = 0;
+
+		/* If this was the highest spec index, reallocate */
+		if (specindex == st->num_specs - 1) {
+			for (; st->speclist[st->num_specs - 1].grfid == 0 && st->num_specs > 1; st->num_specs--);
+
+			if (st->num_specs > 1) {
+				st->speclist = realloc(st->speclist, st->num_specs * sizeof(*st->speclist));
+			} else {
+				free(st->speclist);
+				st->num_specs = 0;
+				st->speclist  = NULL;
+			}
+		}
+	}
+
+	return freeable;
 }

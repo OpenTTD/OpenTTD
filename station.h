@@ -41,6 +41,12 @@ typedef struct RoadStop {
 	struct RoadStop *prev;
 } RoadStop;
 
+typedef struct StationSpecList {
+	const StationSpec *spec;
+	uint32 grfid;      /// GRF ID of this custom station
+	uint8  localidx;   /// Station ID within GRF of station
+} StationSpecList;
+
 struct Station {
 	TileIndex xy;
 	RoadStop *bus_stops;
@@ -64,6 +70,10 @@ struct Station {
 
 	// trainstation width/height
 	byte trainst_w, trainst_h;
+
+	/** List of custom stations (StationSpecs) allocated to the station */
+	uint num_specs;
+	StationSpecList *speclist;
 
 	uint16 build_date;
 

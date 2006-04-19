@@ -84,6 +84,7 @@ typedef struct stationclass {
 void ResetStationClasses(void);
 StationClassID AllocateStationClass(uint32 class);
 void SetStationClassName(StationClassID sclass, const char *name);
+uint GetNumStationClasses(void);
 uint GetNumCustomStations(StationClassID sclass);
 
 void SetCustomStation(StationSpec *spec);
@@ -93,5 +94,11 @@ const StationSpec *GetCustomStation(StationClassID sclass, uint station);
  * NULL if ctype is set - that means we are in a build dialog). The station
  * structure is used for variational sprite groups. */
 uint32 GetCustomStationRelocation(const StationSpec *spec, const Station *st, byte ctype);
+
+/* Allocate a StationSpec to a Station. This is called once per build operation. */
+int AllocateSpecToStation(const StationSpec *spec, Station *st, bool exec);
+
+/* Deallocate a StationSpec from a Station. Called when removing a single station tile. */
+bool DeallocateSpecFromStation(Station *st, byte specindex);
 
 #endif /* NEWGRF_STATION_H */

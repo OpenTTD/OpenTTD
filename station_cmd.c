@@ -50,6 +50,17 @@ static void StationPoolNewBlock(uint start_item)
 	FOR_ALL_STATIONS_FROM(st, start_item) st->index = start_item++;
 }
 
+static void StationPoolCleanBlock(uint start_item, uint end_item)
+{
+	uint i;
+
+	for (i = start_item; i <= end_item; i++) {
+		Station *st = GetStation(i);
+		free(st->speclist);
+		st->speclist = NULL;
+	}
+}
+
 /**
  * Called if a new block is added to the roadstop-pool
  */
@@ -61,7 +72,7 @@ static void RoadStopPoolNewBlock(uint start_item)
 }
 
 /* Initialize the station-pool and roadstop-pool */
-MemoryPool _station_pool = { "Stations", STATION_POOL_MAX_BLOCKS, STATION_POOL_BLOCK_SIZE_BITS, sizeof(Station), &StationPoolNewBlock, NULL, 0, 0, NULL };
+MemoryPool _station_pool = { "Stations", STATION_POOL_MAX_BLOCKS, STATION_POOL_BLOCK_SIZE_BITS, sizeof(Station), &StationPoolNewBlock, &StationPoolCleanBlock, 0, 0, NULL };
 MemoryPool _roadstop_pool = { "RoadStop", ROADSTOP_POOL_MAX_BLOCKS, ROADSTOP_POOL_BLOCK_SIZE_BITS, sizeof(RoadStop), &RoadStopPoolNewBlock, NULL, 0, 0, NULL };
 
 
@@ -939,8 +950,8 @@ static void GetStationLayout(byte *layout, int numtracks, int plat_len, const St
  * - p1 = (bit 16-23) - platform length
  * @param p2 various bitstuffed elements
  * - p2 = (bit  0- 3) - railtype (p2 & 0xF)
- * - p2 = (bit  4)    - set for custom station (p2 & 0x10)
- * - p2 = (bit  8-..) - custom station id (p2 >> 8)
+ * - p2 = (bit  8-15) - custom station class
+ * - p2 = (bit 16-23) - custom station id
  */
 int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -951,6 +962,8 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 	int plat_len, numtracks;
 	Axis axis;
 	uint finalvalues[3];
+	const StationSpec *statspec;
+	int specindex;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -1025,10 +1038,17 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 		if (flags & DC_EXEC) StationInitialize(st, tile_org);
 	}
 
+	/* Check if the given station class is valid */
+	if (GB(p2, 8, 8) >= STAT_CLASS_MAX) return CMD_ERROR;
+
+	/* Check if we can allocate a custom stationspec to this station */
+	statspec = GetCustomStation(GB(p2, 8, 8), GB(p2, 16, 8));
+	specindex = AllocateSpecToStation(statspec, st, flags & DC_EXEC);
+	if (specindex == -1) return CMD_ERROR;
+
 	if (flags & DC_EXEC) {
 		TileIndexDiff tile_delta;
 		byte *layout_ptr;
-		const StationSpec *statspec;
 		Track track;
 
 		// Now really clear the land below the station
@@ -1050,7 +1070,6 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 		tile_delta = (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 		track = (axis == AXIS_X ? TRACK_X : TRACK_Y);
 
-		statspec = (p2 & 0x10) != 0 ? GetCustomStation(STAT_CLASS_DFLT, p2 >> 8) : NULL;
 		layout_ptr = alloca(numtracks * plat_len);
 		GetStationLayout(layout_ptr, numtracks, plat_len, statspec);
 
@@ -1060,8 +1079,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 			do {
 
 				MakeRailStation(tile, st->owner, st->index, axis, *layout_ptr++, GB(p2, 0, 4));
-
-				if (HASBIT(p2, 4)) SetCustomStationSpecIndex(tile, GB(p2, 8, 8));
+				SetCustomStationSpecIndex(tile, specindex);
 
 				tile += tile_delta;
 			} while (--w);
@@ -1158,9 +1176,13 @@ int32 CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1, uint
 
 	// if we reached here, it means we can actually delete it. do that.
 	if (flags & DC_EXEC) {
+		uint specindex = GetCustomStationSpecIndex(tile);
 		Track track = GetRailStationTrack(tile);
 		DoClearSquare(tile);
 		SetSignalsOnBothDir(tile, track);
+
+		DeallocateSpecFromStation(st, specindex);
+
 		// now we need to make the "spanned" area of the railway station smaller if we deleted something at the edges.
 		// we also need to adjust train_tile.
 		MakeRailwayStationAreaSmaller(st);
@@ -1251,6 +1273,10 @@ static int32 RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 	if (flags & DC_EXEC) {
 		st->train_tile = 0;
 		st->facilities &= ~FACIL_TRAIN;
+
+		free(st->speclist);
+		st->num_specs = 0;
+		st->speclist  = NULL;
 
 		UpdateStationVirtCoordDirty(st);
 		DeleteStationIfEmpty(st);
@@ -1936,12 +1962,12 @@ static void DrawTile_Station(TileInfo *ti)
 
 	if (IsCustomStationSpecIndex(ti->tile)) {
 		// look for customization
-		const StationSpec *statspec = GetCustomStation(STAT_CLASS_DFLT, GetCustomStationSpecIndex(ti->tile));
+		const Station *st = GetStationByTile(ti->tile);
+		const StationSpec *statspec = st->speclist[GetCustomStationSpecIndex(ti->tile)].spec;
 
 		//debug("Cust-o-mized %p", statspec);
 
 		if (statspec != NULL) {
-			const Station* st = GetStationByTile(ti->tile);
 			uint tile = GetStationGfx(ti->tile);
 
 			relocation = GetCustomStationRelocation(statspec, st, 0);
