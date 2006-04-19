@@ -2076,8 +2076,10 @@ static void GRFError(byte *buf, int len)
 	msgid = buf[3];
 
 	// Undocumented TTDPatch feature.
-	if ((severity & 0x80) == 0 && _cur_stage == 0)
+	if ((severity & 0x80) == 0 && _cur_stage < 2) {
+		DEBUG(grf, 7) ("Skipping non-fatal GRFError in stage 1");
 		return;
+	}
 	severity &= 0x7F;
 
 	if (msgid == 0xFF) {
