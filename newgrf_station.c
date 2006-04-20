@@ -6,6 +6,7 @@
 #include "openttd.h"
 #include "debug.h"
 #include "sprite.h"
+#include "table/strings.h"
 #include "station.h"
 #include "station_map.h"
 #include "newgrf_station.h"
@@ -22,10 +23,7 @@ void ResetStationClasses(void)
 	StationClassID i;
 	for (i = 0; i < STAT_CLASS_MAX; i++) {
 		station_classes[i].id = 0;
-
-		free(station_classes[i].name);
-		station_classes[i].name = NULL;
-
+		station_classes[i].name = STR_EMPTY;
 		station_classes[i].stations = 0;
 
 		free(station_classes[i].spec);
@@ -34,13 +32,13 @@ void ResetStationClasses(void)
 
 	// Set up initial data
 	station_classes[0].id = 'DFLT';
-	station_classes[0].name = strdup("Default");
+	station_classes[0].name = STR_STAT_CLASS_DFLT;
 	station_classes[0].stations = 1;
 	station_classes[0].spec = malloc(sizeof(*station_classes[0].spec));
 	station_classes[0].spec[0] = NULL;
 
 	station_classes[1].id = 'WAYP';
-	station_classes[1].name = strdup("Waypoints");
+	station_classes[1].name = STR_STAT_CLASS_WAYP;
 	station_classes[1].stations = 1;
 	station_classes[1].spec = malloc(sizeof(*station_classes[1].spec));
 	station_classes[1].spec[0] = NULL;

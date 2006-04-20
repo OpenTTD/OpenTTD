@@ -22,6 +22,7 @@ typedef struct stationspec {
 	int localidx; ///< Index within GRF file of station.
 
 	StationClassID sclass; ///< The class to which this spec belongs.
+	StringID name; ///< Name of this station.
 
 	/**
 	 * Bitmask of number of platforms available for the station.
@@ -76,14 +77,13 @@ typedef struct stationspec {
  */
 typedef struct stationclass {
 	uint32 id;          ///< ID of this class, e.g. 'DFLT', 'WAYP', etc.
-	char *name;         ///< Name of this class.
+	StringID name;      ///< Name of this class.
 	uint stations;      ///< Number of stations in this class.
 	StationSpec **spec; ///< Array of station specifications.
 } StationClass;
 
 void ResetStationClasses(void);
 StationClassID AllocateStationClass(uint32 class);
-void SetStationClassName(StationClassID sclass, const char *name);
 uint GetNumStationClasses(void);
 uint GetNumCustomStations(StationClassID sclass);
 

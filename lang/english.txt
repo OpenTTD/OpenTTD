@@ -1711,6 +1711,9 @@ STR_306B_HELIPORT                                               :{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...station too spread out
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...nonuniform stations disabled
 
+STR_STAT_CLASS_DFLT                                             :Default station
+STR_STAT_CLASS_WAYP                                             :Waypoints
+
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Ship Depot Orientation
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...must be built on water
