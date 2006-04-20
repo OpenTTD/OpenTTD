@@ -406,7 +406,7 @@ static int parse_intlist(const char *p, int *items, int maxitems)
 		p = end;
 		items[n++] = v;
 		if (*p == '\0') break;
-		if (*p != ',') return -1;
+		if (*p != ',' && *p != ' ') return -1;
 		p++;
 	}
 
