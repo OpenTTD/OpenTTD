@@ -1480,15 +1480,6 @@ static void NewSpriteGroup(byte *buf, int len)
 	if (_cur_grffile->first_spriteset == 0)
 		_cur_grffile->first_spriteset = _cur_grffile->spriteset_start;
 
-	if (numloaded > 16) {
-		grfmsg(GMS_WARN, "NewSpriteGroup: More than 16 sprites in group %x, skipping the rest.", setid);
-		numloaded = 16;
-	}
-	if (numloading > 16) {
-		grfmsg(GMS_WARN, "NewSpriteGroup: More than 16 sprites in group %x, skipping the rest.", setid);
-		numloading = 16;
-	}
-
 	group = calloc(1, sizeof(*group));
 	group->type = SGT_REAL;
 	rg = &group->g.real;
@@ -1496,6 +1487,9 @@ static void NewSpriteGroup(byte *buf, int len)
 	rg->sprites_per_set = _cur_grffile->spriteset_numents;
 	rg->loaded_count  = numloaded;
 	rg->loading_count = numloading;
+
+	rg->loaded  = calloc(rg->loaded_count,  sizeof(*rg->loaded));
+	rg->loading = calloc(rg->loading_count, sizeof(*rg->loading));
 
 	DEBUG(grf, 6) ("NewSpriteGroup: New SpriteGroup 0x%02hhx, %u views, %u loaded, %u loading, sprites %u - %u",
 			setid, rg->sprites_per_set, rg->loaded_count, rg->loading_count,

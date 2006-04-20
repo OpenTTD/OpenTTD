@@ -132,6 +132,8 @@ void UnloadSpriteGroup(SpriteGroup **group_ptr)
 			for (i = 0; i < rsg->loaded_count; i++) {
 				if (rsg->loaded[i] != NULL) UnloadSpriteGroup(&rsg->loaded[i]);
 			}
+			free(group->g.real.loaded);
+			free(group->g.real.loading);
 			free(group);
 			return;
 		}

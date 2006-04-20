@@ -32,8 +32,6 @@ typedef struct DrawTileSprites {
 typedef struct SpriteGroup SpriteGroup;
 
 typedef struct RealSpriteGroup {
-	// XXX: Would anyone ever need more than 16 spritesets? Maybe we should
-	// use even less, now we take whole 8kb for custom sprites table, oh my!
 	byte sprites_per_set; // means number of directions - 4 or 8
 
 	// Loaded = in motion, loading = not moving
@@ -43,10 +41,10 @@ typedef struct RealSpriteGroup {
 	// with small amount of cargo whilst loading is for stations with a lot
 	// of da stuff.
 
-	byte loaded_count;
-	SpriteGroup *loaded[16]; // sprite ids
-	byte loading_count;
-	SpriteGroup *loading[16]; // sprite ids
+	byte loaded_count;     ///< Number of loaded groups
+	SpriteGroup **loaded;  ///< List of loaded groups (can be SpriteIDs or Callback results)
+	byte loading_count;    ///< Number of loading groups
+	SpriteGroup **loading; ///< List of loading groups (can be SpriteIDs or Callback results)
 } RealSpriteGroup;
 
 /* Shared by deterministic and random groups. */
