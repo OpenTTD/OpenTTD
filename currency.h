@@ -20,7 +20,8 @@ extern CurrencySpec _currency_specs[];
 extern const StringID _currency_string_list[];
 
 // XXX small hack, but makes the rest of the code a bit nicer to read
-#define _custom_currency (_currency_specs[23])
+#define CUSTOM_CURRENCY_ID 23
+#define _custom_currency (_currency_specs[CUSTOM_CURRENCY_ID])
 #define _currency ((const CurrencySpec*)&_currency_specs[_opt_ptr->currency])
 
 uint GetMaskOfAllowedCurrencies(void);

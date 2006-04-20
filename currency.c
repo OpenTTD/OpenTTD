@@ -84,7 +84,7 @@ uint GetMaskOfAllowedCurrencies(void)
 		if (to_euro == CF_ISEURO && _cur_year < 2000 - MAX_YEAR_BEGIN_REAL) continue;
 		mask |= (1 << i);
 	}
-	mask |= (1 << 23); // always allow custom currency
+	mask |= (1 << CUSTOM_CURRENCY_ID); // always allow custom currency
 	return mask;
 }
 

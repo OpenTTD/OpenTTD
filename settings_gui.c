@@ -171,8 +171,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 		case 5: /* Currency */
-			if (e->dropdown.index == 23)
-				ShowCustCurrency();
+			if (e->dropdown.index == CUSTOM_CURRENCY_ID) ShowCustCurrency();
 			_opt_ptr->currency = e->dropdown.index;
 			MarkWholeScreenDirty();
 			break;
