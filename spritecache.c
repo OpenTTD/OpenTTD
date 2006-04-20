@@ -149,6 +149,10 @@ bool LoadNextSprite(int load_index, byte file_index)
 
 	if (!ReadSpriteHeaderSkipData()) return false;
 
+	if (load_index >= MAX_SPRITES) {
+		error("Tried to load too many sprites (#%d; max %d)", load_index, MAX_SPRITES);
+	}
+
 	_sprite_file_pos[load_index] = file_pos;
 
 	_sprite_ptr[load_index] = NULL;
