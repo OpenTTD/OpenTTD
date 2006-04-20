@@ -185,15 +185,15 @@ static IniFile *ini_load(const char *filename)
 	while (fgets(buffer, sizeof(buffer), in)) {
 
 		// trim whitespace from the left side
-		for (s = buffer; s[0] == ' ' || s[0] == '\t'; s++);
+		for (s = buffer; *s == ' ' || *s == '\t'; s++);
 
 		// trim whitespace from right side.
 		e = s + strlen(s);
 		while (e > s && ((c=e[-1]) == '\n' || c == '\r' || c == ' ' || c == '\t')) e--;
-		*e = 0;
+		*e = '\0';
 
 		// skip comments and empty lines
-		if (*s == '#' || *s == 0) {
+		if (*s == '#' || *s == '\0') {
 			uint ns = comment_size + (e - s + 1);
 			uint a = comment_alloc;
 			uint pos;
@@ -224,7 +224,7 @@ static IniFile *ini_load(const char *filename)
 			}
 		} else if (group) {
 			// find end of keyname
-			for (t=s; *t != 0 && *t != '=' && *t != '\t' && *t != ' '; t++) {}
+			for (t = s; *t != '\0' && *t != '=' && *t != '\t' && *t != ' '; t++);
 
 			// it's an item in an existing group
 			item = ini_item_alloc(group, s, t-s);
@@ -247,8 +247,8 @@ static IniFile *ini_load(const char *filename)
 			if (*t == '\"') t++;
 			// remove ending quotation marks
 			e = t + strlen(t);
-			if (e > t && e[-1] =='\"') e--;
-			*e = 0;
+			if (e > t && e[-1] == '\"') e--;
+			*e = '\0';
 
 			item->value = pool_strdup(&ini->pool, t, e - t);
 		} else {
@@ -405,7 +405,7 @@ static int parse_intlist(const char *p, int *items, int maxitems)
 		if (p == end || n == maxitems) return -1;
 		p = end;
 		items[n++] = v;
-		if (*p == 0) break;
+		if (*p == '\0') break;
 		if (*p != ',') return -1;
 		p++;
 	}
