@@ -21,6 +21,8 @@
 #include "newgrf_engine.h"
 #include "vehicle.h"
 
+#include "newgrf_spritegroup.h"
+
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)
  * Changes by Florian octo Forster are (c) by the OpenTTD development team.
@@ -1215,7 +1217,7 @@ static void VehicleChangeInfo(byte *buf, int len)
  */
 static SpriteGroup* NewCallBackResultSpriteGroup(uint16 value)
 {
-	SpriteGroup *group = calloc(1, sizeof(*group));
+	SpriteGroup *group = AllocateSpriteGroup();
 
 	group->type = SGT_CALLBACK;
 
@@ -1240,7 +1242,7 @@ static SpriteGroup* NewCallBackResultSpriteGroup(uint16 value)
  */
 static SpriteGroup* NewResultSpriteGroup(uint16 value, byte sprites)
 {
-	SpriteGroup *group = calloc(1, sizeof(*group));
+	SpriteGroup *group = AllocateSpriteGroup();
 	group->type = SGT_RESULT;
 	group->g.result.result = value;
 	group->g.result.sprites = sprites;
@@ -1348,7 +1350,7 @@ static void NewSpriteGroup(byte *buf, int len)
 		buf += 4; len -= 4;
 		check_length(len, 6, "NewSpriteGroup 0x81/0x82");
 
-		group = calloc(1, sizeof(*group));
+		group = AllocateSpriteGroup();
 		group->type = SGT_DETERMINISTIC;
 		dg = &group->g.determ;
 
@@ -1379,13 +1381,11 @@ static void NewSpriteGroup(byte *buf, int len)
 			groupid = grf_load_word(&buf);
 			if (HASBIT(groupid, 15)) {
 				dg->ranges[i].group = NewCallBackResultSpriteGroup(groupid);
-				dg->ranges[i].group->ref_count++;
 			} else if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
 				grfmsg(GMS_WARN, "NewSpriteGroup(%02x:0x%x): Groupid %04x does not exist, leaving empty.", setid, numloaded, groupid);
 				dg->ranges[i].group = NULL;
 			} else {
 				dg->ranges[i].group = _cur_grffile->spritegroups[groupid];
-				dg->ranges[i].group->ref_count++;
 			}
 
 			dg->ranges[i].low = grf_load_byte(&buf);
@@ -1395,19 +1395,14 @@ static void NewSpriteGroup(byte *buf, int len)
 		groupid = grf_load_word(&buf);
 		if (HASBIT(groupid, 15)) {
 			dg->default_group = NewCallBackResultSpriteGroup(groupid);
-			dg->default_group->ref_count++;
 		} else if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
 			grfmsg(GMS_WARN, "NewSpriteGroup(%02x:0x%x): Groupid %04x does not exist, leaving empty.", setid, numloaded, groupid);
 			dg->default_group = NULL;
 		} else {
 			dg->default_group = _cur_grffile->spritegroups[groupid];
-		dg->default_group->ref_count++;
 		}
 
-		if (_cur_grffile->spritegroups[setid] != NULL)
-			UnloadSpriteGroup(&_cur_grffile->spritegroups[setid]);
 		_cur_grffile->spritegroups[setid] = group;
-		group->ref_count++;
 		return;
 
 	} else if (numloaded == 0x80 || numloaded == 0x83) {
@@ -1421,7 +1416,7 @@ static void NewSpriteGroup(byte *buf, int len)
 		len -= 4;
 		check_length(len, 6, "NewSpriteGroup 0x80/0x83");
 
-		group = calloc(1, sizeof(*group));
+		group = AllocateSpriteGroup();
 		group->type = SGT_RANDOMIZED;
 		rg = &group->g.random;
 
@@ -1444,20 +1439,15 @@ static void NewSpriteGroup(byte *buf, int len)
 
 			if (HASBIT(groupid, 15)) {
 				rg->groups[i] = NewCallBackResultSpriteGroup(groupid);
-				rg->groups[i]->ref_count++;
 			} else if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
 				grfmsg(GMS_WARN, "NewSpriteGroup(%02x:0x%x): Groupid %04x does not exist, leaving empty.", setid, numloaded, groupid);
 				rg->groups[i] = NULL;
 			} else {
 				rg->groups[i] = _cur_grffile->spritegroups[groupid];
-				rg->groups[i]->ref_count++;
 			}
 		}
 
-		if (_cur_grffile->spritegroups[setid] != NULL)
-			UnloadSpriteGroup(&_cur_grffile->spritegroups[setid]);
 		_cur_grffile->spritegroups[setid] = group;
-		group->ref_count++;
 		return;
 	}
 
@@ -1480,7 +1470,7 @@ static void NewSpriteGroup(byte *buf, int len)
 	if (_cur_grffile->first_spriteset == 0)
 		_cur_grffile->first_spriteset = _cur_grffile->spriteset_start;
 
-	group = calloc(1, sizeof(*group));
+	group = AllocateSpriteGroup();
 	group->type = SGT_REAL;
 	rg = &group->g.real;
 
@@ -1503,7 +1493,6 @@ static void NewSpriteGroup(byte *buf, int len)
 		} else {
 			rg->loaded[i] = NewResultSpriteGroup(_cur_grffile->spriteset_start + spriteset_id * _cur_grffile->spriteset_numents, rg->sprites_per_set);
 		}
-		rg->loaded[i]->ref_count++;
 		DEBUG(grf, 8) ("NewSpriteGroup: + rg->loaded[%i]  = %u (subset %u)", i, rg->loaded[i]->g.result.result, spriteset_id);
 	}
 
@@ -1514,14 +1503,10 @@ static void NewSpriteGroup(byte *buf, int len)
 		} else {
 			rg->loading[i] = NewResultSpriteGroup(_cur_grffile->spriteset_start + spriteset_id * _cur_grffile->spriteset_numents, rg->sprites_per_set);
 		}
-		rg->loading[i]->ref_count++;
 		DEBUG(grf, 8) ("NewSpriteGroup: + rg->loading[%i] = %u (subset %u)", i, rg->loading[i]->g.result.result, spriteset_id);
 	}
 
-	if (_cur_grffile->spritegroups[setid] != NULL)
-		UnloadSpriteGroup(&_cur_grffile->spritegroups[setid]);
 	_cur_grffile->spritegroups[setid] = group;
-	group->ref_count++;
 }
 
 /* Action 0x03 */
@@ -1593,7 +1578,6 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 				}
 
 				stat->spritegroup[1] = _cur_grffile->spritegroups[groupid];
-				stat->spritegroup[1]->ref_count++;
 			}
 		}
 
@@ -1612,7 +1596,6 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 				StationSpec *stat = &_cur_grffile->stations[stid];
 
 				stat->spritegroup[0] = _cur_grffile->spritegroups[groupid];
-				stat->spritegroup[0]->ref_count++;
 				stat->grfid = _cur_grffile->grfid;
 				stat->localidx = stid;
 				SetCustomStation(stat);
@@ -2372,46 +2355,16 @@ static void InitializeGRFSpecial(void)
 	                   | (1 << 0x10); /* autoreplace */
 }
 
-/**
- * Unload unused sprite groups from the specified GRF file.
- * Called after loading each GRF file.
- * @param file GRF file
- */
-static void ReleaseSpriteGroups(GRFFile *file)
-{
-	int i;
-
-	// Bail out if no spritegroups were defined.
-	if (file->spritegroups == NULL)
-		return;
-
-	DEBUG(grf, 6)("ReleaseSpriteGroups: Releasing for `%s'.", file->filename);
-	for (i = 0; i < file->spritegroups_count; i++) {
-		if (file->spritegroups[i] != NULL)
-			UnloadSpriteGroup(&file->spritegroups[i]);
-	}
-	free(file->spritegroups);
-	file->spritegroups = NULL;
-	file->spritegroups_count = 0;
-}
-
 static void ResetCustomStations(void)
 {
 	GRFFile *file;
 	uint i;
-	CargoID c;
 
 	for (file = _first_grffile; file != NULL; file = file->next) {
 		for (i = 0; i < file->num_stations; i++) {
 			if (file->stations[i].grfid != file->grfid) continue;
 
 			// TODO: Release renderdata, platforms and layouts
-
-			// Release this stations sprite groups.
-			for (c = 0; c < NUM_GLOBAL_CID; c++) {
-				if (file->stations[i].spritegroup[c] != NULL)
-					UnloadSpriteGroup(&file->stations[i].spritegroup[c]);
-			}
 		}
 
 		/* Free and reset the station data */
@@ -2467,6 +2420,8 @@ static void ResetNewGRFData(void)
 
 	// Add engine type to engine data. This is needed for the refit precalculation.
 	AddTypeToEngines();
+
+	InitializeSpriteGroupPool();
 }
 
 /** Reset all NewGRFData that was used only while processing data */
@@ -2480,6 +2435,11 @@ static void ClearTemporaryNewGRFData(void)
 		l = l2;
 	}
 	_cur_grffile->label = NULL;
+
+	/* Clear the list of spritegroups */
+	free(_cur_grffile->spritegroups);
+	_cur_grffile->spritegroups = NULL;
+	_cur_grffile->spritegroups_count = 0;
 }
 
 static void InitNewGRFFile(const char* filename, int sprite_offset)
@@ -2680,11 +2640,6 @@ static void LoadNewGRFFile(const char* filename, uint file_index, uint stage)
 
 		if (_skip_sprites > 0) _skip_sprites--;
 	}
-
-	// Release our sprite group references.
-	// Any groups that are referenced elsewhere will be cleaned up later.
-	// This removes groups that aren't used. (Perhaps skipped?)
-	ReleaseSpriteGroups(_cur_grffile);
 }
 
 

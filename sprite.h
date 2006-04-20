@@ -118,6 +118,7 @@ typedef struct ResultSpriteGroup {
 } ResultSpriteGroup;
 
 typedef enum SpriteGroupType {
+	SGT_INVALID,
 	SGT_REAL,
 	SGT_DETERMINISTIC,
 	SGT_RANDOMIZED,
@@ -127,7 +128,6 @@ typedef enum SpriteGroupType {
 
 struct SpriteGroup {
 	SpriteGroupType type;
-	byte ref_count;
 
 	union {
 		RealSpriteGroup real;
@@ -159,7 +159,5 @@ SpriteGroup *EvalRandomizedSpriteGroup(const RandomizedSpriteGroup *rsg, byte ra
  * of random bits to be reseeded, or zero if there were no triggers matched
  * (then they are |ed to @waiting_triggers instead). */
 byte RandomizedSpriteGroupTriggeredBits(const RandomizedSpriteGroup *rsg, byte triggers, byte *waiting_triggers);
-
-void UnloadSpriteGroup(SpriteGroup **group_ptr);
 
 #endif /* SPRITE_H */

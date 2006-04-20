@@ -44,7 +44,6 @@ void SetWagonOverrideSprites(EngineID engine, SpriteGroup *group, byte *train_id
 	 * to prevent leaks. But first we need to refcount the SpriteGroup.
 	 * --pasky */
 	wo->group = group;
-	group->ref_count++;
 	wo->trains = trains;
 	wo->train_id = malloc(trains);
 	memcpy(wo->train_id, train_id, trains);
@@ -86,7 +85,7 @@ void UnloadWagonOverrides(void)
 		wos = &_engine_wagon_overrides[engine];
 		for (i = 0; i < wos->overrides_count; i++) {
 			wo = &wos->overrides[i];
-			UnloadSpriteGroup(&wo->group);
+			wo->group = NULL;
 			free(wo->train_id);
 		}
 		free(wos->overrides);
@@ -104,11 +103,9 @@ static SpriteGroup *engine_custom_sprites[TOTAL_NUM_ENGINES][NUM_GLOBAL_CID];
 void SetCustomEngineSprites(EngineID engine, byte cargo, SpriteGroup *group)
 {
 	if (engine_custom_sprites[engine][cargo] != NULL) {
-		DEBUG(grf, 6)("SetCustomEngineSprites: engine `%d' cargo `%d' already has group -- removing.", engine, cargo);
-		UnloadSpriteGroup(&engine_custom_sprites[engine][cargo]);
+		DEBUG(grf, 6)("SetCustomEngineSprites: engine `%d' cargo `%d' already has group -- replacing.", engine, cargo);
 	}
 	engine_custom_sprites[engine][cargo] = group;
-	group->ref_count++;
 }
 
 /**
@@ -121,10 +118,7 @@ void UnloadCustomEngineSprites(void)
 
 	for (engine = 0; engine < TOTAL_NUM_ENGINES; engine++) {
 		for (cargo = 0; cargo < NUM_GLOBAL_CID; cargo++) {
-			if (engine_custom_sprites[engine][cargo] != NULL) {
-				DEBUG(grf, 6)("UnloadCustomEngineSprites: Unloading group for engine `%d' cargo `%d'.", engine, cargo);
-				UnloadSpriteGroup(&engine_custom_sprites[engine][cargo]);
-			}
+			engine_custom_sprites[engine][cargo] = NULL;
 		}
 	}
 }
