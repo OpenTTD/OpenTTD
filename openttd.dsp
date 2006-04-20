@@ -284,6 +284,10 @@ SOURCE=.\newgrf_engine.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\newgrf_spritegroup.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\newgrf_station.c
 # End Source File
 # Begin Source File
@@ -643,6 +647,10 @@ SOURCE=.\newgrf_callbacks.h
 # Begin Source File
 
 SOURCE=.\newgrf_engine.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\newgrf_spritegroup.h
 # End Source File
 # Begin Source File
 
