@@ -233,12 +233,6 @@ static IniFile *ini_load(const char *filename)
 				comment_size = 0;
 			}
 
-			// for list items, the name and value are the same:
-			if (group->type == IGT_LIST) {
-				item->value = item->name;
-				continue;
-			}
-
 			// find start of parameter
 			while (*t == '=' || *t == ' ' || *t == '\t') t++;
 
@@ -315,11 +309,14 @@ static bool ini_save(const char *filename, IniFile *ini)
 		if (group->comment) fputs(group->comment, f);
 		fprintf(f, "[%s]\n", group->name);
 		for (item = group->item; item != NULL; item = item->next) {
-			if (item->comment) fputs(item->comment, f);
-			if (group->type == IGT_LIST)
-				fprintf(f, "%s\n", item->value ? item->value : "");
-			else
-				fprintf(f, "%s = %s\n", item->name, item->value ? item->value : "");
+			assert(item->value != NULL);
+			if (item->comment != NULL) fputs(item->comment, f);
+
+			//*Don't give an equal sign to list items that don't have a parameter */
+			if (group->type == IGT_LIST && *item->value == '\0') {
+				fprintf(f, "%s\n", item->name);
+			} else
+				fprintf(f, "%s = %s\n", item->name, item->value);
 		}
 	}
 	if (ini->comment) fputs(ini->comment, f);
