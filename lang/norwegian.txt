@@ -306,6 +306,33 @@ STR_0151_MAP_OF_WORLD                                           :Verdenskart
 STR_0152_TOWN_DIRECTORY                                         :Bykatalog
 STR_0153_SUBSIDIES                                              :Subsidier
 
+STR_UNITS_METRIC                                                :Metrisk
+STR_UNITS_SI                                                    :SI
+
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mpt
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/t
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hk
+STR_UNITS_POWER_METRIC                                          :{COMMA}hk
+STR_UNITS_POWER_SI                                              :{COMMA}kW
+
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonn{P "" s}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonn{P "" s}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m?
+
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter{P "" s}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m?
+
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
+
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Fortjenestegraf
 STR_0155_INCOME_GRAPH                                           :Inntektsgraf
@@ -343,6 +370,8 @@ STR_SORT_BY_AGE                                                 :Alder
 STR_SORT_BY_RELIABILITY                                         :Pålitelighet
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Total kapasitet per varetype
 STR_SORT_BY_MAX_SPEED                                           :Maksimal fart
+STR_SORT_BY_MODEL                                               :Modell
+STR_SORT_BY_VALUE                                               :Verdi
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -732,6 +761,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Gjenno
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Informasjon om felt.
 STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :Toggle Console
 STR_02D7_SCREENSHOT_CTRL_S                                      :Skjermdump (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Stor skjermdump (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Om 'OpenTTD'
@@ -859,6 +889,7 @@ STR_CURR_ROL                                                    :Rumensk Leu (Le
 STR_CURR_RUR                                                    :Russisk Rubel (rur)
 STR_CURR_SEK                                                    :Söta Brors Krona (SEK)
 
+STR_CURR_CUSTOM                                                 :Custom...
 
 STR_OPTIONS_LANG                                                :{BLACK}Språk
 STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1231,7 +1262,21 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internett
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internett (annonsér)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_0_PLAYERS                                           :0 Spillere
+STR_NETWORK_1_PLAYERS                                           :1 spiller
+STR_NETWORK_2_PLAYERS                                           :2 spillere
+STR_NETWORK_3_PLAYERS                                           :3 spillere
+STR_NETWORK_4_PLAYERS                                           :4 spillere
+STR_NETWORK_5_PLAYERS                                           :5 spillere
+STR_NETWORK_6_PLAYERS                                           :6 spillere
+STR_NETWORK_7_PLAYERS                                           :7 spillere
+STR_NETWORK_8_PLAYERS                                           :8 spillere
+STR_NETWORK_9_PLAYERS                                           :9 spillere
+STR_NETWORK_10_PLAYERS                                          :10 spillere
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maks bedrifter:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Begrens serveren til et bestemt antall bedrifter
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Begrens serveren til et bestemt antall seere
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Språk snakket på tjeneren:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Andre spiller skal kunne vite hvilket språk man snakker på denne tjeneren.
@@ -1329,6 +1374,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :feil passord ti
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :feil spiller-id i DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :sparket ut av tjeneren
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :prøvde å jukse
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :serveren er full
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :har blitt med i spillet
 STR_NETWORK_GIVE_MONEY                                          :gav deg penger ({CURRENCY})
@@ -2742,6 +2788,9 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Velg jer
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dette viser hvilket lokomotiv som overtar for det valgte lokomotivet på venstresiden
 STR_REPLACE_HELP                                                :{BLACK}Dette verktøyet lar deg bytte ut en type lokomotiv med en annen. Dette blir gjort neste gang lokomotivet er innom et depot.
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vognfjerning: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Erstatter: {ORANGE}{SKIP}{SKIP}{STRING}
+
+STR_WAGONS                                                      :Vogner
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltliste - {COMMA} Skilt

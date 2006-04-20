@@ -85,6 +85,7 @@ STR_002D_FIZZY_DRINKS                                           :Napoje gazowane
 STR_002D_FIZZY_DRINKS.d                                         :napoi gazowanych
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :Pasazerowie
+STR_002F_PASSENGER.d                                            :pasazerow
 STR_0030_COAL                                                   :Wegiel
 STR_0031_MAIL                                                   :Poczta
 STR_0032_OIL                                                    :Ropa
@@ -386,6 +387,8 @@ STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon{P
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P "" y ow}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10^3 lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} kilonewtony
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
@@ -648,7 +651,7 @@ STR_022C_RESET_LANDSCAPE                                        :{WHITE}Resetuj 
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Jestes pewien ze chcesz zrestetowac krajobraz?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generacja krajobrazu
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generacja miast
-STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generacja fabryk
+STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generacja przedsiebiorstw
 STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Konstrukcja drog
 STR_0233_TOWN_GENERATION                                        :{WHITE}Generacja miast
 STR_0234_NEW_TOWN                                               :{BLACK}Nowe miasto
@@ -912,11 +915,11 @@ STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Wybierz 
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Ufunduj budowe nowego przedsieb.
 
 ############ range for menu	starts
-STR_INDUSTRY_DIR                                                :Katalog fabryk
+STR_INDUSTRY_DIR                                                :Katalog przedsiebiorstw
 STR_0313_FUND_NEW_INDUSTRY                                      :Ufunduj nowe przedsieb.
 ############ range ends here
 
-STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Ufunduj nowego przedsieb.
+STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Ufunduj nowe przedsieb.
 STR_JUST_STRING                                                 :{STRING}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...moze byc wybudowane tylko w miescie
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...moze byc wybudowane tylko w lasach deszczowych
@@ -1275,8 +1278,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Zbuduj K
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Wybuduj kopalnie cukru
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Przemysl
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}% przetransportowano)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% przetransportowano)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} (przetransportowano {COMMA}%)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} (przetransportowano {COMMA}%/{COMMA}%)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...zbyt blisko innego przedsiebiorstwa
@@ -1526,7 +1529,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Niemozli
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Wykop zniszczylby tunel
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Juz na poziome morza
 STR_1004_TOO_HIGH                                               :{WHITE}Zbyt wysoko
-STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Nie ma odpowiedniego rodz. torow
+STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Nieodpowiednie tory
 STR_1007_ALREADY_BUILT                                          :{WHITE}...juz zbudowano
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Najpierw trzeba usunac tory
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Konstrukcja torowiska
@@ -1774,7 +1777,7 @@ STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Nazwa st
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Wybierz wielkosc/typ lotniska
 STR_3059_SMALL                                                  :{BLACK}Male
 STR_305A_LARGE                                                  :{BLACK}Duze
-STR_305AA_LARGE                                                 :{BLACK}Lotnisko metropoli
+STR_305AA_LARGE                                                 :{BLACK}Lotnisko metropolii
 STR_305AB_LARGE                                                 :{BLACK}Lotnisko miedzynarodowe
 STR_305B_SIZE                                                   :{BLACK}Rozmiar
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
@@ -1791,7 +1794,7 @@ STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Podswiet
 STR_3068_DOCK                                                   :{WHITE}Port
 STR_3069_BUOY                                                   :Boja
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boja na drodze
-STR_306B_HELIPORT                                               :{BLACK}Lotnisko
+STR_306B_HELIPORT                                               :{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stacja zbyt rozlegla
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...niejednorodne stacje niedostepne
 
@@ -2001,7 +2004,7 @@ STR_SV_STNAME_HEIGHTS                                           :{STRING} Wzgorz
 STR_SV_STNAME_WOODS                                             :{STRING} Las
 STR_SV_STNAME_LAKESIDE                                          :{STRING} Jezioro
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Wymiana
-STR_SV_STNAME_AIRPORT                                           :{STRING} Lotnisko
+STR_SV_STNAME_AIRPORT                                           :Lotnisko {STRING}
 STR_SV_STNAME_OILFIELD                                          :{STRING} Pole naftowe
 STR_SV_STNAME_MINES                                             :{STRING} Kopalnia
 STR_SV_STNAME_DOCKS                                             :{STRING} Port
@@ -2870,7 +2873,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Pozyczka
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Calkowicie:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Liczba pojazdow. Ujete sa pociagi, samochody, statki i samoloty.
-STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Liczba stacji. Wliczany kazdy element stacji (np. stacja, przystanek, lotnisko) , nawet jesli sa polaczone w jedna stacje.
+STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Liczba stacji. Wliczany kazdy element stacji (np. stacja, przystanek, lotnisko) , nawet jesli sa polaczone w jedna stacje
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Minimalny zysk z posrod wszystkich pojazdow ktore maja conajmniej 2 lata.
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Ilosc pieniedzy zarobiona w miesiacu z najmniejszym zyskiem w ostatnich 12 kwartalach
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Ilosc pieniedzy zarobiona w miesiacu z najwiekszym zyskiem w ostatnich 12 kwartalach

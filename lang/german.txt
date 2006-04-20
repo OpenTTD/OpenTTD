@@ -307,9 +307,9 @@ STR_0151_MAP_OF_WORLD                                           :Weltkarte
 STR_0152_TOWN_DIRECTORY                                         :Städteverzeichnis
 STR_0153_SUBSIDIES                                              :Subventionen
 
-STR_UNITS_IMPERIAL                                              :Meilen
+STR_UNITS_IMPERIAL                                              :US-Maße
 STR_UNITS_METRIC                                                :metrisch
-STR_UNITS_SI                                                    :SI
+STR_UNITS_SI                                                    :SI-Basiseinheiten
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
@@ -329,12 +329,14 @@ STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m?
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} Gallone{P "" n}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} Liter{P "" ""}
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} Gallonen{P "" s}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} Liter{P "" s}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m?
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10^3 lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} t Zugkraft
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
@@ -374,7 +376,7 @@ STR_SORT_BY_AGE                                                 :Alter
 STR_SORT_BY_RELIABILITY                                         :Zuverlässigkeit
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Gesamtkapazität pro Fracht
 STR_SORT_BY_MAX_SPEED                                           :Höchstgeschwindigkeit
-STR_SORT_BY_MODEL                                               :Model
+STR_SORT_BY_MODEL                                               :Bauart
 STR_SORT_BY_VALUE                                               :Wert
 
 ############ range for months starts
@@ -789,7 +791,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Kopieren
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Währung
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Währung auswählen
-STR_MEASURING_UNITS                                             :{BLACK}Maßeinheiten
+STR_MEASURING_UNITS                                             :{BLACK}Längenmaß
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Auswahl der Maßeinheiten
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Fahrzeuge
@@ -1445,7 +1447,7 @@ STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Keine ge
 STR_1007_ALREADY_BUILT                                          :{WHITE}...ist bereits gebaut
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Gleise müssen erst entfernt werden
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Gleis- / Bahnhofsbau
-STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Oberleitungsbau
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Bau elektrifizierter Strecken
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Einschienbahnbau
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Magnetschwebebahnbau
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Eisenbahnbrücke auswählen
@@ -1457,7 +1459,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Gleise k
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Kann die Signale hier nicht entfernen...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Zugdepotausrichtung
 STR_1015_RAILROAD_CONSTRUCTION                                  :Eisenbahnbau
-STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Oberleitungsbau
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Bau elektrifizierter Strecken
 STR_1016_MONORAIL_CONSTRUCTION                                  :Einschienbahnbau
 STR_1017_MAGLEV_CONSTRUCTION                                    :Magnetschwebebahnbau
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Gleise legen
@@ -2367,13 +2369,13 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Tricario Hubsch
 STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Hubschrauber
 STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Hubschrauber
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Nachricht vom Fahrzeughersteller
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Wir haben gerade ein(e) neue(s) {STRING} erstellt - sind Sie daran interessiert, das Fahrzeug ein Jahr lang exklusiv zu testen, so dass wir die Funktionen testen können, bevor es allgemein zur Verfügung gestellt wird?
-STR_8102_RAILROAD_LOCOMOTIVE                                    :Lokomotive
-STR_8103_ROAD_VEHICLE                                           :Fahrzeug
-STR_8104_AIRCRAFT                                               :Flugzeug
-STR_8105_SHIP                                                   :Schiff
-STR_8106_MONORAIL_LOCOMOTIVE                                    :Einschienbahn
-STR_8107_MAGLEV_LOCOMOTIVE                                      :Magnetschwebebahn
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Wir haben gerade ein{G en e ""} neue{G n "" s} {STRING} erstellt - sind Sie daran interessiert, das Fahrzeug ein Jahr lang exklusiv zu testen, so dass wir die Funktionen testen können, bevor es allgemein zur Verfügung gestellt wird?
+STR_8102_RAILROAD_LOCOMOTIVE                                    :{G=w}Lokomotive
+STR_8103_ROAD_VEHICLE                                           :{G=n}Fahrzeug
+STR_8104_AIRCRAFT                                               :{G=n}Flugzeug
+STR_8105_SHIP                                                   :{G=n}Schiff
+STR_8106_MONORAIL_LOCOMOTIVE                                    :{G=w}Einschienbahn
+STR_8107_MAGLEV_LOCOMOTIVE                                      :{G=w}Magnetschwebebahn
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Zugdepot
@@ -2414,7 +2416,7 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Zug zu l
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Züge können nur verändert werden, wenn sie im Depot halten
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Z{P ug üge}
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Neues Schienenfahrzeug
-STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Neue E-Loks
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}neue E-Loks und Waggons
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Neue Einschienbahnzüge
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Neue Magnetzüge
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Fahrzeug bauen
@@ -2637,7 +2639,7 @@ STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Neue Kap
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kann das Schiff nicht umrüsten...
 STR_9842_REFITTABLE                                             :(umrüstbar)
 STR_GO_TO_SHIP_DEPOT                                            :Fahre zu {TOWN} Schiffswerft
-SERVICE_AT_SHIP_DEPOT                                           :Wartung bei {TOWN} Schiffswerft
+SERVICE_AT_SHIP_DEPOT                                           :Wartung in der {TOWN} Schiffswerft
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Flughäfen
@@ -2709,7 +2711,7 @@ STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wähle Fra
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Neue Kapazität: {GOLD}{STRING}{}{BLACK}Kosten der Umrüstung: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kann das Flugzeug nicht umrüsten...
 STR_GO_TO_AIRPORT_HANGAR                                        :Fliege zu {STATION} Hangar
-SERVICE_AT_AIRPORT_HANGAR                                       :Wartung bei {STATION} Hangar
+SERVICE_AT_AIRPORT_HANGAR                                       :Wartung im {STATION} Hangar
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeppelinabsturz bei {STATION}!
@@ -2802,10 +2804,10 @@ STR_REPLACE_HELP                                                :{BLACK}Dieses F
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Waggon-Entfernung: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Zwinge das automatische Ersetzen die Länge eines Zuges beizubehalten, indem (vorne beginnend) Waggons entfernt werden, falls das Ersetzen der Lokomotive den Zug verlängern würde.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Ersetze: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTELLES FEATURE {}Zwischen Lok- und Wagenersetzungsfenster wechseln.{}Der Wagen wird nur gewechselt, wenn der neue Wagen die gleiche Fracht transportieren kann wie der alte.Dieses wird einzeln geprüft, wenn der Wagen ersetzt wird.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTELLE FUNKTION {}Umschalter für Lok- oder Waggonersetzung{}Waggons werden nur ersetzt, wenn der neue Waggon den selben Warentyp transportieren kann wie der alte. Dies wird beim Ersetzen eines jeden Waggons einzeln geprüft.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotive ist nicht baubar
 
-STR_ENGINES                                                     :Loks
+STR_ENGINES                                                     :Maschinen
 STR_WAGONS                                                      :Wagen
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
@@ -2814,7 +2816,7 @@ STR_SIGN_LIST_CAPTION                                           :{WHITE}Schilder
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Eisenbahn
-STR_ELRAIL_VEHICLES                                             :E-Loks
+STR_ELRAIL_VEHICLES                                             :E-Loks und Waggons
 STR_MONORAIL_VEHICLES                                           :Einschienbahn
 STR_MAGLEV_VEHICLES                                             :Magnetschwebebahn
 
