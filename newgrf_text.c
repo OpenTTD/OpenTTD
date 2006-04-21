@@ -67,10 +67,10 @@ typedef enum grf_extended_languages {
 } grf_language;
 
 
-typedef struct iso_grf{
+typedef struct iso_grf {
 	char code[6];
 	byte grfLangID;
-}iso_grf;
+} iso_grf;
 
 /**
  * ISO code VS NewGrf langID conversion array.
@@ -123,11 +123,29 @@ static byte _currentLangID = GRFLX_ENGLISH;  //by default, english is used.
  */
 StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, const char *text_to_add)
 {
+	GRFText *newtext;
 	uint id;
 
-	GRFText *newtext = calloc(1, sizeof(*newtext));
+	/* When working with the old language scheme (bit 6 of langid is clear) and
+	 * English or American is among the set bits, simply add it as English in
+	 * the new scheme, i.e. as langid = 1.
+	 * If English is set, it is pretty safe to assume the translations are not
+	 * actually translated.
+	 */
+	if (!HASBIT(langid_to_add, 6)) {
+		if (HASBITS(langid_to_add, GRFLB_AMERICAN | GRFLB_ENGLISH)) {
+			langid_to_add = GRFLX_ENGLISH;
+		} else {
+			StringID ret = STR_EMPTY;
+			if (langid_to_add & GRFLB_GERMAN)  ret = AddGRFString(grfid, stringid, 1 << 6 | GRFLX_GERMAN,  text_to_add);
+			if (langid_to_add & GRFLB_FRENCH)  ret = AddGRFString(grfid, stringid, 1 << 6 | GRFLX_FRENCH,  text_to_add);
+			if (langid_to_add & GRFLB_SPANISH) ret = AddGRFString(grfid, stringid, 1 << 6 | GRFLX_SPANISH, text_to_add);
+			return ret;
+		}
+	}
 
-	newtext->langid = langid_to_add;
+	newtext = calloc(1, sizeof(*newtext));
+	newtext->langid = GB(langid_to_add, 0, 6);
 	newtext->text   = strdup(text_to_add);
 	newtext->next   = NULL;
 
@@ -142,24 +160,8 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, const c
 	/* Too many strings allocated, return empty */
 	if (id == lengthof(_grf_text)) return STR_EMPTY;
 
-	/* Raise the number of strings added*/
+	/* If we didn't find our stringid and grfid in the list, allocate a new id */
 	if (id == _num_grf_texts) _num_grf_texts++;
-
-	/* When working with old scheme (BIT 6 of langid is clear) and
-	 * English or american is among the set bits, simply add it as
-	 * english on new scheme, as langid = 1.
-	 * If there are more langid, we simply don't need them
-	 */
-	if (!HASBIT(6,langid_to_add)) {
-		if (HASBITS( GRFLB_AMERICAN | GRFLB_ENGLISH, langid_to_add)) {
-			newtext->langid = langid_to_add = GRFLX_ENGLISH;
-		} else {
-			/* If old scheme and not english nor american, scanning will
-			 * have to be done. At this stage, only 3 are remaining:
-			 * german,french and spanish : 0x04=2,0x08=3,0x10=4
-			 */
-		}
-	}
 
 	if (_grf_text[id].textholder == NULL) {
 		_grf_text[id].grfid      = grfid;
@@ -171,7 +173,7 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, const c
 		textptr->next = newtext;
 	}
 
-	debug("Added %x: grfid %x string %x lang %x string %s", id, grfid, stringid, langid_to_add, newtext->text);
+	DEBUG(grf, 2)("Added %x: grfid %x string %x lang %x string %s", id, grfid, stringid, newtext->langid, newtext->text);
 
 	return (GRFTAB << TABSIZE) + id;
 }
