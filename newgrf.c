@@ -20,6 +20,7 @@
 #include "economy.h"
 #include "newgrf_engine.h"
 #include "vehicle.h"
+#include "newgrf_text.h"
 
 #include "newgrf_spritegroup.h"
 
@@ -57,6 +58,7 @@ typedef enum grfspec_feature {
 	GSF_CANAL,
 	GSF_BRIDGE,
 	GSF_TOWNHOUSE,
+	GSF_INDUSTRIES,
 	GSF_GLOBALVAR,
 } grfspec_feature;
 
@@ -1704,18 +1706,26 @@ static void VehicleNewName(byte *buf, int len)
 {
 	/* <04> <veh-type> <language-id> <num-veh> <offset> <data...>
 	 *
-	 * B veh-type      see action 0
-	 * B language-id   language ID with bit 7 cleared (see below)
+	 * B veh-type      see action 0 (as 00..07, + 0A
+	 *                 But IF veh-type = 48, then generic text
+	 * B language-id   If bit 6 is set, This is the extended language scheme,
+	                   with up to 64 language.
+	                   Otherwise, it is a mapping where set bits have meaning
+	                   0 = american, 1 = english, 2 = german, 3 = french, 4 = spanish
+	                   Bit 7 set means this is a generic text, not a vehicle one (or else)
 	 * B num-veh       number of vehicles which are getting a new name
 	 * B/W offset      number of the first vehicle that gets a new name
+	 *                 Byte : ID of vehicle to change
+	 *                 Word : ID of string to change/add
 	 * S data          new texts, each of them zero-terminated, after
 	 *                 which the next name begins. */
 	/* TODO: No support for changing non-vehicle text. Perhaps we shouldn't
 	 * implement it at all, but it could be useful for some "modpacks"
 	 * (completely new scenarios changing all graphics and logically also
 	 * factory names etc). We should then also support all languages (by
-	 * name), not only the original four ones. --pasky */
-	/* TODO: Support for custom station class/type names. */
+	 * name), not only the original four ones. --pasky
+	 * TODO: Support for custom station class/type names.
+	 * All of the above are coming.  In Time.  Some sooner than others :)*/
 
 	uint8 feature;
 	uint8 lang;
@@ -1731,36 +1741,70 @@ static void VehicleNewName(byte *buf, int len)
 	num      = grf_load_byte(&buf);
 	id       = (lang & 0x80) ? grf_load_word(&buf) : grf_load_byte(&buf);
 
-	if (feature > 3) {
-		DEBUG(grf, 7) ("VehicleNewName: Unsupported feature %d, skipping", feature);
-		return;
+	if (feature < GSF_AIRCRAFT+1) {
+		id += _vehshifts[feature];
 	}
-
-	id      += _vehshifts[feature];
 	endid    = id + num;
 
 	DEBUG(grf, 6) ("VehicleNewName: About to rename engines %d..%d (feature %d) in language 0x%x.",
 	               id, endid, feature, lang);
 
-	if (lang & 0x80) {
-		grfmsg(GMS_WARN, "VehicleNewName: No support for changing in-game texts. Skipping.");
-		return;
-	}
-
-	if (!(lang & 3)) {
-		/* XXX: If non-English name, silently skip it. */
-		DEBUG(grf, 7) ("VehicleNewName: Skipping non-English name.");
-		return;
-	}
-
-	name = (const char*)buf;
+	name = (const char*)buf; /*transfer read value*/
 	len -= (lang & 0x80) ? 6 : 5;
 	for (; id < endid && len > 0; id++) {
 		size_t ofs = strlen(name) + 1;
 
 		if (ofs < 128) {
 			DEBUG(grf, 8) ("VehicleNewName: %d <- %s", id, name);
-			SetCustomEngineName(id, name);
+
+			switch (feature) {
+				case GSF_TRAIN:
+				case GSF_ROAD:
+				case GSF_SHIP:
+				case GSF_AIRCRAFT:
+						SetCustomEngineName(id, name);
+						/*SetCustomEngineName(id, AddGRFString(_cur_grffile->grfid, id, lang, name));*/
+					break;
+
+#if 0
+				case GSF_STATION:
+					switch (GB(id, 8, 8)) {
+						case 0xC4: { /* Station class name */
+							StationClassID sclass = _cur_grffile->stations[GB(id, 0, 8)].sclass;
+							SetStationClassName(sclass, AddGRFString(_cur_grffile->grfid, id, lang, name));
+							break;
+						}
+
+						case 0xC5:   /* Station name */
+							_cur_grffile->stations[GB(id, 0, 8)].name = AddGRFString(_cur_grffile->grfid, id, lang, name);
+							break;
+
+						default:
+							DEBUG(grf, 7) ("VehicleNewName: Unsupported ID (%x)", id);
+							break;
+					}
+					break;
+
+				case GSF_CANAL :
+				case GSF_BRIDGE :
+				case GSF_TOWNHOUSE :
+					AddGRFString(_cur_spriteid, id, lang, name);
+					switch (GB(id, 8,8)) {
+						case 0xC9: /* House name */
+						default:
+							DEBUG(grf, 7) ("VehicleNewName: Unsupported ID (%x)", id);
+					}
+					break;
+
+				case GSF_INDUSTRIES :
+				case 0x48 :   /* for generic strings */
+					AddGRFString(_cur_spriteid, id, lang, name);
+					break;
+				default :
+					DEBUG(grf,7) ("VehicleNewName: Unsupported feature (%x)", feature);
+					break;
+#endif
+			}
 		} else {
 			DEBUG(grf, 7) ("VehicleNewName: Too long a name (%d)", ofs);
 		}
@@ -2381,6 +2425,8 @@ static void ResetCustomStations(void)
 static void ResetNewGRFData(void)
 {
 	uint i;
+
+	CleanUpStrings();
 
 	// Copy/reset original engine info data
 	memcpy(&_engine_info, &orig_engine_info, sizeof(orig_engine_info));

@@ -292,6 +292,10 @@ SOURCE=.\newgrf_station.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\newgrf_text.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\npf.c
 # End Source File
 # Begin Source File
@@ -655,6 +659,10 @@ SOURCE=.\newgrf_spritegroup.h
 # Begin Source File
 
 SOURCE=.\newgrf_station.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\newgrf_text.h
 # End Source File
 # Begin Source File
 

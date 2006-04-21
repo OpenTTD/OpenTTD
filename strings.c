@@ -16,6 +16,7 @@
 #include "waypoint.h"
 #include "industry.h"
 #include "variables.h"
+#include "newgrf_text.h"
 
 char _userstring[128];
 
@@ -177,6 +178,15 @@ char *GetStringWithArgs(char *buffr, uint string, const int32 *argv)
 		// User defined name
 		case 15:
 			return GetName(index, buffr);
+
+		case 28:
+			return GetGRFString(buffr, index);
+
+		case 29:
+			return GetGRFString(buffr, index + 0x800);
+
+		case 30:
+			return GetGRFString(buffr, index + 0x1000);
 
 		case 31:
 			// dynamic strings. These are NOT to be passed through the formatter,
@@ -1153,6 +1163,7 @@ bool ReadLanguagePack(int lang_index)
 	ttd_strlcpy(_dynlang.curr_file, _dynlang.ent[lang_index].file, sizeof(_dynlang.curr_file));
 
 	_dynlang.curr = lang_index;
+	SetCurrentGrfLangID(_langpack->isocode);
 	return true;
 }
 

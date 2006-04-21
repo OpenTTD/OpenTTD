@@ -638,6 +638,7 @@ SRCS += newgrf.c
 SRCS += newgrf_engine.c
 SRCS += newgrf_spritegroup.c
 SRCS += newgrf_station.c
+SRCS += newgrf_text.c
 SRCS += news_gui.c
 SRCS += npf.c
 SRCS += oldloader.c

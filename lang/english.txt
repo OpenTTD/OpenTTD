@@ -1711,6 +1711,7 @@ STR_306B_HELIPORT                                               :{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...station too spread out
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...nonuniform stations disabled
 
+STR_UNDEFINED                                                   :(undefined string)
 STR_STAT_CLASS_DFLT                                             :Default station
 STR_STAT_CLASS_WAYP                                             :Waypoints
 

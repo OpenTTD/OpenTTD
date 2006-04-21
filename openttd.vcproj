@@ -284,6 +284,9 @@
 				RelativePath=".\newgrf_station.c">
 			</File>
 			<File
+				RelativePath=".\newgrf_text.c">
+			</File>
+			<File
 				RelativePath=".\npf.c">
 			</File>
 			<File
@@ -508,6 +511,9 @@
 			</File>
 			<File
 				RelativePath=".\newgrf_station.h">
+			</File>
+			<File
+				RelativePath=".\newgrf_text.h">
 			</File>
 			<File
 				RelativePath=".\news.h">
