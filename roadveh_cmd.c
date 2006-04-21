@@ -1110,7 +1110,7 @@ do_it:;
 				if (best_track == -1) best_track = i; // in case we don't find the path, just pick a track
 				frd.maxtracklen = (uint)-1;
 				frd.mindist = (uint)-1;
-				FollowTrack(tile, 0x3000 | TRANSPORT_ROAD, _road_pf_directions[i], EnumRoadTrackFindDist, NULL, &frd);
+				FollowTrack(tile, 0x2000 | TRANSPORT_ROAD, _road_pf_directions[i], EnumRoadTrackFindDist, NULL, &frd);
 
 				if (frd.mindist < best_dist || (frd.mindist==best_dist && frd.maxtracklen < best_maxlen)) {
 					best_dist = frd.mindist;
