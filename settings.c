@@ -800,7 +800,7 @@ static void ini_load_setting_list(IniFile *ini, const char *grpname, char **list
 	item = group->item;
 	for (i = 0; i != len; i++) {
 		if (item == NULL) break;
-		list[i] = strdup(item->value);
+		list[i] = strdup(item->name);
 		item = item->next;
 	}
 }
