@@ -1762,8 +1762,7 @@ static void VehicleNewName(byte *buf, int len)
 				case GSF_ROAD:
 				case GSF_SHIP:
 				case GSF_AIRCRAFT:
-						SetCustomEngineName(id, name);
-						/*SetCustomEngineName(id, AddGRFString(_cur_grffile->grfid, id, lang, name));*/
+					SetCustomEngineName(id, AddGRFString(_cur_grffile->grfid, id, lang, name));
 					break;
 
 #if 0

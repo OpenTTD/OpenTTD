@@ -607,28 +607,24 @@ void TriggerVehicle(Vehicle *veh, VehicleTrigger trigger)
 	DoTriggerVehicle(veh, trigger, 0, true);
 }
 
-static char *_engine_custom_names[TOTAL_NUM_ENGINES];
+StringID _engine_custom_names[TOTAL_NUM_ENGINES];
 
-void SetCustomEngineName(EngineID engine, const char *name)
+void SetCustomEngineName(EngineID engine, StringID name)
 {
-	_engine_custom_names[engine] = strdup(name);
+	_engine_custom_names[engine] = name;
 }
 
 void UnloadCustomEngineNames(void)
 {
-	char **i;
-	for (i = _engine_custom_names; i != endof(_engine_custom_names); i++) {
-		free(*i);
-		*i = NULL;
+	EngineID i;
+	for (i = 0; i < TOTAL_NUM_ENGINES; i++) {
+		_engine_custom_names[i] = 0;
 	}
 }
 
 StringID GetCustomEngineName(EngineID engine)
 {
-	if (!_engine_custom_names[engine])
-		return _engine_name_strings[engine];
-	ttd_strlcpy(_userstring, _engine_custom_names[engine], lengthof(_userstring));
-	return STR_SPEC_USERSTRING;
+	return _engine_custom_names[engine] == 0 ? _engine_name_strings[engine] : _engine_custom_names[engine];
 }
 
 // Functions for changing the order of vehicle purchase lists
