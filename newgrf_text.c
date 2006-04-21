@@ -236,15 +236,24 @@ void SetCurrentGrfLangID( const char *iso_name )
 
 /**
  * House cleaning.
- * TODO : Have to be written.
+ * Remove all strings and reset the text counter.
  */
 void CleanUpStrings(void)
 {
 	uint id;
 
-	GRFText *text_to_clear;
-
 	for (id = 0; id < _num_grf_texts; id++) {
-		text_to_clear = _grf_text[id].textholder;
+		GRFText *grftext = _grf_text[id].textholder;
+		while (grftext != NULL) {
+			GRFText *grftext2 = grftext->next;
+			free(grftext->text);
+			free(grftext);
+			grftext = grftext2;
+		}
+		_grf_text[id].grfid      = 0;
+		_grf_text[id].stringid   = 0;
+		_grf_text[id].textholder = NULL;
 	}
+
+	_num_grf_texts = 0;
 }
