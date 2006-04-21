@@ -102,6 +102,7 @@ static SpriteGroup *engine_custom_sprites[TOTAL_NUM_ENGINES][NUM_GLOBAL_CID];
 
 void SetCustomEngineSprites(EngineID engine, byte cargo, SpriteGroup *group)
 {
+	assert(engine < TOTAL_NUM_ENGINES);
 	if (engine_custom_sprites[engine][cargo] != NULL) {
 		DEBUG(grf, 6)("SetCustomEngineSprites: engine `%d' cargo `%d' already has group -- replacing.", engine, cargo);
 	}
@@ -610,6 +611,7 @@ StringID _engine_custom_names[TOTAL_NUM_ENGINES];
 
 void SetCustomEngineName(EngineID engine, StringID name)
 {
+	assert(engine < lengthof(_engine_custom_names));
 	_engine_custom_names[engine] = name;
 }
 
