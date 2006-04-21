@@ -481,11 +481,10 @@ bool UsesWagonOverride(const Vehicle* v)
 uint16 GetVehicleCallback(byte callback, uint32 param1, uint32 param2, EngineID engine, const Vehicle *v)
 {
 	const SpriteGroup *group;
-	CargoID cargo = GC_DEFAULT;
+	CargoID cargo;
 	uint16 callback_info = callback | (param1 << 8); // XXX Temporary conversion between new and old format.
 
-	if (v != NULL)
-		cargo = _global_cargo_id[_opt.landscape][v->cargo_type];
+	cargo = (v == NULL) ? GC_PURCHASE : _global_cargo_id[_opt.landscape][v->cargo_type];
 
 	group = engine_custom_sprites[engine][cargo];
 
@@ -497,7 +496,7 @@ uint16 GetVehicleCallback(byte callback, uint32 param1, uint32 param2, EngineID 
 
 	group = ResolveVehicleSpriteGroup(group, v, callback_info, (resolve_callback) ResolveVehicleSpriteGroup);
 
-	if (group == NULL && cargo != GC_DEFAULT) {
+	if ((group == NULL || group->type != SGT_CALLBACK) && cargo != GC_DEFAULT) {
 		// This group is empty but perhaps there'll be a default one.
 		group = ResolveVehicleSpriteGroup(engine_custom_sprites[engine][GC_DEFAULT], v, callback_info,
 		                                (resolve_callback) ResolveVehicleSpriteGroup);
