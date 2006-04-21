@@ -1317,6 +1317,16 @@ int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 						new_f->current_order = first->current_order;
 						new_f->cur_order_index = first->cur_order_index;
 						new_f->orders = first->orders;
+						if (first->prev_shared != NULL) {
+							first->prev_shared->next_shared = new_f;
+							new_f->prev_shared = first->prev_shared;
+						}
+
+						if (first->next_shared != NULL) {
+							first->next_shared->prev_shared = new_f;
+							new_f->next_shared = first->next_shared;
+						}
+
 						new_f->num_orders = first->num_orders;
 						first->orders = NULL; // XXX - to not to delete the orders */
 						if (IsLocalPlayer()) ShowTrainViewWindow(new_f);
