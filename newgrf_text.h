@@ -6,8 +6,6 @@
  * Header of Action 04 "universal holder" structure and functions
  */
 
-#define MAX_LANG 28
-
 /**
  * Element of the linked list.
  * Each of those elements represent the string,

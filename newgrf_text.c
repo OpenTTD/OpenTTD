@@ -44,7 +44,7 @@ typedef enum grf_extended_languages {
 	GRFLX_RUSSIAN     = 0x07,
 	GRFLX_CZECH       = 0x15,
 	GRFLX_SLOVAK      = 0x16,
-	GRFLX_DEUTCH      = 0x1F,
+	GRFLX_DUTCH       = 0x1F,
 	GRFLX_CATALAN     = 0x22,
 	GRFLX_HUNGARIAN   = 0x24,
 	GRFLX_ITALIAN     = 0x27,
@@ -54,7 +54,7 @@ typedef enum grf_extended_languages {
 	GRFLX_LITHUANIAN  = 0x2B,
 	GRFLX_SLOVENIAN   = 0x2C,
 	GRFLX_DANISH      = 0x2D,
-	GRFLX_SEWDISH     = 0x2E,
+	GRFLX_SWEDISH     = 0x2E,
 	GRFLX_NORWEGIAN   = 0x2F,
 	GRFLX_POLISH      = 0x30,
 	GRFLX_GALICIAN    = 0x31,
@@ -62,7 +62,7 @@ typedef enum grf_extended_languages {
 	GRFLX_ESTONIAN    = 0x34,
 	GRFLX_FINNISH     = 0x35,
 	GRFLX_PORTUGUESE  = 0x36,
-	GRFLX_BRAZIZILAN  = 0x37,
+	GRFLX_BRAZILIAN   = 0x37,
 	GRFLX_TURKISH     = 0x3E,
 } grf_language;
 
@@ -80,7 +80,7 @@ typedef struct iso_grf {
  * 2-its shift part is used to know what is the shift to
  *   watch for when inserting new strings, hence analysing newgrf langid
  */
-const iso_grf iso_codes[MAX_LANG] = {
+const iso_grf iso_codes[] = {
 	{"en_US", GRFLX_AMERICAN},
 	{"en_GB", GRFLX_ENGLISH},
 	{"de",    GRFLX_GERMAN},
@@ -89,7 +89,7 @@ const iso_grf iso_codes[MAX_LANG] = {
 	{"cs",    GRFLX_CZECH},
 	{"ca",    GRFLX_CATALAN},
 	{"da",    GRFLX_DANISH},
-	{"nl",    GRFLX_DEUTCH},
+	{"nl",    GRFLX_DUTCH},
 	{"et",    GRFLX_ESTONIAN},
 	{"fi",    GRFLX_FINNISH},
 	{"fy",    GRFLX_FRISIAN},
@@ -102,11 +102,12 @@ const iso_grf iso_codes[MAX_LANG] = {
 	{"nb",    GRFLX_NORWEGIAN},
 	{"pl",    GRFLX_POLISH},
 	{"pt",    GRFLX_PORTUGUESE},
+	{"pt_BR", GRFLX_BRAZILIAN},
 	{"ro",    GRFLX_ROMANIAN},
 	{"ru",    GRFLX_RUSSIAN},
 	{"sk",    GRFLX_SLOVAK},
 	{"sl",    GRFLX_SLOVENIAN},
-	{"sv",    GRFLX_SEWDISH},
+	{"sv",    GRFLX_SWEDISH},
 	{"tr",    GRFLX_TURKISH},
 	{"gen",   GRFLB_GENERIC}   //this is not iso code, but there has to be something...
 };
@@ -221,15 +222,17 @@ char *GetGRFString(char *buff, uint16 stringid)
  * from strings.c:ReadLanguagePack
  * @param iso code of current selection
  */
-void SetCurrentGrfLangID( const char *iso_name )
+void SetCurrentGrfLangID(const char *iso_name)
 {
 	byte ret,i;
 
-	ret = GRFLX_ENGLISH;  //by default, english (not american) will be used
+	/* Use English by default, if we can't match up the iso_code. */
+	ret = GRFLX_ENGLISH;
 
-	for (i=0; i < MAX_LANG+1; i++) {
-		if (strcmp(iso_codes[i].code, iso_name)==0){  //we have a match?
-			ret = i;                                  //we'll use this one then.
+	for (i=0; i < lengthof(iso_codes); i++) {
+		if (strcmp(iso_codes[i].code, iso_name) == 0) {
+			/* We found a match, so let's use it. */
+			ret = i;
 			break;
 		}
 	}
