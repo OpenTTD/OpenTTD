@@ -546,44 +546,6 @@ void *AddStringToDraw(int x, int y, StringID string, uint32 params_1, uint32 par
 	return ss;
 }
 
-
-#ifdef DEBUG_HILIGHT_MARKED_TILES
-
-static void DrawHighlighedTile(const TileInfo *ti)
-{
-	if (_m[ti->tile].extra & 0x80) {
-		DrawSelectionSprite(PALETTE_TILE_RED_PULSATING | (SPR_SELECT_TILE + _tileh_to_sprite[ti->tileh]), ti);
-	}
-}
-
-int _debug_marked_tiles, _debug_red_tiles;
-
-// Helper functions that allow you mark a tile as red.
-void DebugMarkTile(TileIndex tile) {
-	_debug_marked_tiles++;
-	if (_m[tile].extra & 0x80)
-		return;
-	_debug_red_tiles++;
-	MarkTileDirtyByTile(tile);
-	_m[tile].extra = (_m[tile].extra & ~0xE0) | 0x80;
-}
-
-void DebugClearMarkedTiles()
-{
-	uint size = MapSize(), i;
-	for (i = 0; i != size; i++) {
-		if (_m[i].extra & 0x80) {
-			_m[i].extra &= ~0x80;
-			MarkTileDirtyByTile(i);
-		}
-	}
-	_debug_red_tiles = 0;
-	_debug_red_tiles = 0;
-}
-
-
-#endif
-
 static void DrawSelectionSprite(uint32 image, const TileInfo *ti)
 {
 	if (_added_tile_sprite && !(_thd.drawstyle & HT_LINE)) { // draw on real ground
@@ -628,10 +590,6 @@ static const int _AutorailType[6][2] = {
 static void DrawTileSelection(const TileInfo *ti)
 {
 	uint32 image;
-
-#ifdef DEBUG_HILIGHT_MARKED_TILES
-	DrawHighlighedTile(ti);
-#endif
 
 	// Draw a red error square?
 	if (_thd.redsq != 0 && _thd.redsq == ti->tile) {

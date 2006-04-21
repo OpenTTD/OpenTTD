@@ -3388,17 +3388,6 @@ static void AiStateBuildDefaultAirportBlocks(Player *p)
 			// check if the aircraft stuff can be built there.
 			rule = AiFindBestDefaultAirportBlock(aib->use_tile, aib->cargo, p->ai.build_kind, &cost);
 
-#if 0
-			if (!IsTileType(aib->use_tile, MP_STREET) &&
-					!IsTileType(aib->use_tile, MP_RAILWAY) &&
-					!IsTileType(aib->use_tile, MP_STATION)
-					) {
-
-				SetTileHeight(aib->use_tile, 1);
-				MakeCompanyHQ(aib->use_tile, _current_player);
-				MarkTileDirtyByTile(aib->use_tile);
-			}
-#endif
 //			SetRedErrorSquare(aib->use_tile);
 
 			if (rule == -1) {
