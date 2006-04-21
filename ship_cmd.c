@@ -707,7 +707,7 @@ static void ShipController(Vehicle *v)
 							st = GetStation(v->current_order.station);
 							if (st->facilities & FACIL_DOCK) { /* ugly, ugly workaround for problem with ships able to drop off cargo at wrong stations */
 								v->current_order.type = OT_LOADING;
-								v->current_order.flags &= OF_FULL_LOAD | OF_UNLOAD;
+								v->current_order.flags &= OF_FULL_LOAD | OF_UNLOAD | OF_TRANSFER;
 								v->current_order.flags |= OF_NON_STOP;
 								ShipArrivesAt(v, st);
 
