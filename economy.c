@@ -1110,7 +1110,10 @@ static void DeliverGoodsToIndustry(TileIndex xy, CargoID cargo_type, int num_pie
 	uint u;
 
 	// Check if there's an industry close to the station that accepts the cargo
-	u = _patches.station_spread + 8;
+	// XXX - Think of something better to
+	//       1) Only deliver to industries which are withing the catchment radius
+	//       2) Distribute between industries if more then one is present
+	u = (_patches.station_spread + 8) * 2;
 	FOR_ALL_INDUSTRIES(ind) {
 		uint t;
 
@@ -1121,7 +1124,7 @@ static void DeliverGoodsToIndustry(TileIndex xy, CargoID cargo_type, int num_pie
 				) &&
 				ind->produced_cargo[0] != CT_INVALID &&
 				ind->produced_cargo[0] != cargo_type &&
-				(t = DistanceManhattan(ind->xy, xy)) < 2 * u) {
+				(t = DistanceManhattan(ind->xy, xy)) < u) {
 			u = t;
 			best = ind;
 		}
