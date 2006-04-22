@@ -58,8 +58,11 @@ typedef enum grfspec_feature {
 	GSF_CANAL,
 	GSF_BRIDGE,
 	GSF_TOWNHOUSE,
-	GSF_INDUSTRIES,
 	GSF_GLOBALVAR,
+	GSF_INDUSTRYTILES,
+	GSF_INDUSTRIES,
+	GSF_CARGOS,
+	GSF_SOUNDFX,
 } grfspec_feature;
 
 
