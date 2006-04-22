@@ -3,8 +3,8 @@
 #ifndef STDAFX_H
 #define STDAFX_H
 
-#include <stddef.h>
 #include <stdio.h>
+#include <stddef.h>
 #include <string.h>
 #include <stdlib.h>
 
