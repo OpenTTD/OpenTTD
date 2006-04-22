@@ -101,7 +101,7 @@ static inline uint32 SlGetOffs(void) {return _sl.offs_base - (_sl.bufe - _sl.buf
 static inline byte SlCalcConvMemLen(VarType conv)
 {
 	static const byte conv_mem_size[] = {1, 1, 1, 2, 2, 4, 4, 8, 8, 0};
-	byte length = (conv >> 4) & 0xF;
+	byte length = GB(conv, 4, 4);
 	assert(length < lengthof(conv_mem_size));
 	return conv_mem_size[length];
 }
@@ -113,7 +113,7 @@ static inline byte SlCalcConvMemLen(VarType conv)
 static inline byte SlCalcConvFileLen(VarType conv)
 {
 	static const byte conv_file_size[] = {1, 1, 2, 2, 4, 4, 8, 8, 2};
-	byte length = conv & 0xF;
+	byte length = GB(conv, 0, 4);
 	assert(length < lengthof(conv_file_size));
 	return conv_file_size[length];
 }

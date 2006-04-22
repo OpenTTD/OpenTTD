@@ -250,7 +250,7 @@ static inline bool SlIsObjectCurrentlyValid(uint16 version_from, uint16 version_
  * @return return the SLE_VAR_* part of a variable-type description */
 static inline VarType GetVarMemType(VarType type)
 {
-	return type & 0xF0; // GB(type, 4, 8) << 4;
+	return type & 0xF0; // GB(type, 4, 4) << 4;
 }
 
 /* Get the FileType of a setting. This describes the integer type
