@@ -41,6 +41,7 @@ extern int _traininfo_vehicle_pitch;
 
 static GRFFile *_cur_grffile;
 GRFFile *_first_grffile;
+GRFConfig *_first_grfconfig;
 static int _cur_spriteid;
 static int _cur_stage;
 static uint32 _nfo_line;
@@ -2492,11 +2493,11 @@ static void ClearTemporaryNewGRFData(void)
 	_cur_grffile->spritegroups_count = 0;
 }
 
-static void InitNewGRFFile(const char* filename, int sprite_offset)
+static void InitNewGRFFile(const GRFConfig *config, int sprite_offset)
 {
 	GRFFile *newfile;
 
-	newfile = GetFileByFilename(filename);
+	newfile = GetFileByFilename(config->filename);
 	if (newfile != NULL) {
 		/* We already loaded it once. */
 		newfile->sprite_offset = sprite_offset;
@@ -2508,8 +2509,13 @@ static void InitNewGRFFile(const char* filename, int sprite_offset)
 
 	if (newfile == NULL) error ("Out of memory");
 
-	newfile->filename = strdup(filename);
+	newfile->filename = strdup(config->filename);
 	newfile->sprite_offset = sprite_offset;
+
+	/* Copy the initial parameter list */
+	assert(lengthof(newfile->param) == lengthof(config->param) && lengthof(config->param) == 0x80);
+	newfile->param_end = config->num_params;
+	memcpy(newfile->param, config->param, 0x80 * sizeof(newfile->param[0]));
 
 	if (_first_grffile == NULL) {
 		_cur_grffile = newfile;
@@ -2707,17 +2713,18 @@ void LoadNewGRF(uint load_index, uint file_index)
 	_custom_sprites_base = load_index;
 	for (stage = 0; stage <= 2; stage++) {
 		uint slot = file_index;
-		uint j;
+		GRFConfig *c;
 
 		_cur_stage = stage;
 		_cur_spriteid = load_index;
-		for (j = 0; j != lengthof(_newgrf_files) && _newgrf_files[j] != NULL; j++) {
-			if (!FiosCheckFileExists(_newgrf_files[j])) {
+		for (c = _first_grfconfig; c != NULL; c = c->next) {
+			if (!FiosCheckFileExists(c->filename)) {
 				// TODO: usrerror()
-				error("NewGRF file missing: %s", _newgrf_files[j]);
+				error("NewGRF file missing: %s", c->filename);
 			}
-			if (stage == 0) InitNewGRFFile(_newgrf_files[j], _cur_spriteid);
-			LoadNewGRFFile(_newgrf_files[j], slot++, stage);
+
+			if (stage == 0) InitNewGRFFile(c, _cur_spriteid);
+			LoadNewGRFFile(c->filename, slot++, stage);
 			if (stage == 2) ClearTemporaryNewGRFData();
 			DEBUG(spritecache, 2) ("Currently %i sprites are loaded", load_index);
 		}

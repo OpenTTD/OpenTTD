@@ -13,14 +13,13 @@ typedef struct GRFLabel {
 	struct GRFLabel *next;
 } GRFLabel;
 
-typedef struct GRFFile GRFFile;
-struct GRFFile {
+typedef struct GRFFile {
 	char *filename;
 	uint32 grfid;
 	uint16 flags;
 	uint16 sprite_offset;
 	SpriteID first_spriteset; ///< Holds the first spriteset's sprite offset.
-	GRFFile *next;
+	struct GRFFile *next;
 
 	/* A sprite group contains all sprites of a given vehicle (or multiple
 	 * vehicles) when carrying given cargo. It consists of several sprite
@@ -48,10 +47,19 @@ struct GRFFile {
 	uint param_end; /// one more than the highest set parameter
 
 	GRFLabel *label; ///< Pointer to the first label. This is a linked list, not an array.
-};
+} GRFFile;
 
 extern GRFFile *_first_grffile;
 
+typedef struct GRFConfig {
+	const char *filename;
+	uint32 param[0x80];
+	byte num_params;
+
+	struct GRFConfig *next;
+} GRFConfig;
+
+extern GRFConfig *_first_grfconfig;
 
 void LoadNewGRF(uint load_index, uint file_index);
 

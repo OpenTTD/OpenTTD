@@ -34,6 +34,7 @@
 #include "console.h"
 #include "saveload.h"
 #include "npf.h"
+#include "newgrf.h"
 
 /** The patch values that are used for new games and/or modified in config file */
 Patches _patches_newgame;
@@ -42,6 +43,10 @@ typedef struct IniFile IniFile;
 typedef struct IniItem IniItem;
 typedef struct IniGroup IniGroup;
 typedef struct SettingsMemoryPool SettingsMemoryPool;
+
+typedef const char *SettingListCallbackProc(const IniItem *item, uint index);
+typedef void SettingDescProc(IniFile *ini, const SettingDesc *desc, const char *grpname, void *object);
+typedef void SettingDescProcList(IniFile *ini, const char *grpname, char **list, uint len, SettingListCallbackProc proc);
 
 static void pool_init(SettingsMemoryPool **pool);
 static void *pool_alloc(SettingsMemoryPool **pool, uint size);
@@ -817,20 +822,25 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
  * file that will be parsed
  * @param list pointer to an string(pointer) array that will store the parsed
  * entries of the given section
- * @param len the maximum number of items available for the above list */
-static void ini_load_setting_list(IniFile *ini, const char *grpname, char **list, uint len)
+ * @param len the maximum number of items available for the above list
+ * @param proc callback function that can override how the values are stored
+ * inside the list */
+static void ini_load_setting_list(IniFile *ini, const char *grpname, char **list, uint len, SettingListCallbackProc proc)
 {
 	IniGroup *group = ini_getgroup(ini, grpname, -1);
 	IniItem *item;
-	uint i;
+	const char *entry;
+	uint i, j;
 
 	if (group == NULL) return;
 
-	item = group->item;
-	for (i = 0; i != len; i++) {
-		if (item == NULL) break;
-		list[i] = strdup(item->name);
-		item = item->next;
+	for (i = j = 0, item = group->item; item != NULL; item = item->next) {
+		entry = (proc != NULL) ? proc(item, i++) : item->name;
+
+		if (entry == NULL || list == NULL) continue;
+
+		if (j == len) break;
+		list[j++] = strdup(entry);
 	}
 }
 
@@ -843,26 +853,30 @@ static void ini_load_setting_list(IniFile *ini, const char *grpname, char **list
  * source to be saved into the relevant ini section
  * @param len the maximum number of items available for the above list
  * @param proc callback function that can will provide the source data if defined */
-static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list, uint len)
+static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list, uint len, SettingListCallbackProc proc)
 {
 	IniGroup *group = ini_getgroup(ini, grpname, -1);
 	IniItem *item = NULL;
+	const char *entry;
 	uint i;
 	bool first = true;
 
+	if (proc == NULL && list == NULL) return;
 	if (group == NULL) return;
 	group->item = NULL;
 
 	for (i = 0; i != len; i++) {
-		if (list[i] == NULL || list[i][0] == '\0') continue;
+		entry = (proc != NULL) ? proc(NULL, i) : list[i];
+
+		if (entry == NULL || *entry == '\0') continue;
 
 		if (first) { // add first item to the head of the group
-			item = ini_item_alloc(group, list[i], strlen(list[i]));
+			item = ini_item_alloc(group, entry, strlen(entry));
 			item->value = item->name;
 			group->item = item;
 			first = false;
 		} else { // all other items are attached to the previous one
-			item->next = ini_item_alloc(group, list[i], strlen(list[i]));
+			item->next = ini_item_alloc(group, entry, strlen(entry));
 			item = item->next;
 			item->value = item->name;
 		}
@@ -1385,8 +1399,33 @@ static const SettingDesc _currency_settings[] = {
 #undef NO
 #undef CR
 
-typedef void SettingDescProc(IniFile *ini, const SettingDesc *desc, const char *grpname, void *object);
-typedef void SettingDescProcList(IniFile *ini, const char *grpname, char **list, uint len);
+const char *GRFProcessParams(const IniItem *item, uint index)
+{
+	GRFConfig *c;
+
+	/* Saving newgrf stuff to configuration, not done since it is kept the same */
+	if (item == NULL) return NULL;
+
+	/* Loading newgrf stuff from configuration file */
+	c = calloc(1, sizeof(*c));
+	c->filename = strdup(item->name);
+	c->num_params = parse_intlist(item->value, (int*)c->param, lengthof(c->param));
+	if (c->num_params == (byte)-1) {
+		ShowInfoF("ini: error in array '%s'", item->name);
+		c->num_params = 0;
+	}
+
+	if (_first_grfconfig == NULL) {
+		_first_grfconfig = c;
+	} else {
+		GRFConfig *c2;
+		/* Attach the label to the end of the list */
+		for (c2 = _first_grfconfig; c2->next != NULL; c2 = c2->next);
+		c2->next = c;
+	}
+
+	return c->filename;
+}
 
 /* Common handler for saving/loading variables to the configuration file */
 static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescProcList *proc_list)
@@ -1403,8 +1442,8 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescP
 
 #ifdef ENABLE_NETWORK
 	proc(ini, (const SettingDesc*)_network_settings, "network", NULL);
-	proc_list(ini, "servers", _network_host_list, lengthof(_network_host_list));
-	proc_list(ini, "bans",    _network_ban_list,  lengthof(_network_ban_list));
+	proc_list(ini, "servers", _network_host_list, lengthof(_network_host_list), NULL);
+	proc_list(ini, "bans",    _network_ban_list,  lengthof(_network_ban_list), NULL);
 #endif /* ENABLE_NETWORK */
 }
 
@@ -1413,7 +1452,7 @@ void LoadFromConfig(void)
 {
 	IniFile *ini = ini_load(_config_file);
 	HandleSettingDescs(ini, ini_load_settings, ini_load_setting_list);
-	ini_load_setting_list(ini, "newgrf", _newgrf_files, lengthof(_newgrf_files));
+	ini_load_setting_list(ini, "newgrf", NULL, 0, GRFProcessParams);
 	ini_free(ini);
 }
 
