@@ -1412,7 +1412,10 @@ const char *GRFProcessParams(const IniItem *item, uint index)
 
 	if (*item->value != '\0') {
 		c->num_params = parse_intlist(item->value, (int*)c->param, lengthof(c->param));
-		if (c->num_params == (byte)-1) ShowInfoF("ini: error in array '%s'", item->name);
+		if (c->num_params == (byte)-1) {
+			ShowInfoF("ini: error in array '%s'", item->name);
+			c->num_params = 0;
+		}
 	}
 
 	if (_first_grfconfig == NULL) {
