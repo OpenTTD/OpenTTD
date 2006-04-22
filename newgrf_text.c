@@ -174,7 +174,7 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, const c
 		textptr->next = newtext;
 	}
 
-	DEBUG(grf, 2)("Added %x: grfid %x string %x lang %x string %s", id, grfid, stringid, newtext->langid, newtext->text);
+	DEBUG(grf, 2)("Added 0x%X: grfid 0x%X string 0x%X lang 0x%X string %s", id, grfid, stringid, newtext->langid, newtext->text);
 
 	return (GRFTAB << TABSIZE) + id;
 }

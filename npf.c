@@ -152,7 +152,7 @@ static void NPFFillTrackdirChoice(AyStarNode* current, OpenListNode* parent)
 		/* This is a first order decision, so we'd better save the
 		 * direction we chose */
 		current->user_data[NPF_TRACKDIR_CHOICE] = trackdir;
-		DEBUG(npf, 6)("Saving trackdir: %#x", trackdir);
+		DEBUG(npf, 6)("Saving trackdir: 0x%X", trackdir);
 	} else {
 		/* We've already made the decision, so just save our parent's decision */
 		current->user_data[NPF_TRACKDIR_CHOICE] = parent->path.node.user_data[NPF_TRACKDIR_CHOICE];
@@ -608,13 +608,13 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	}
 	trackdirbits = ts & TRACKDIR_BIT_MASK; /* Filter out signal status and the unused bits */
 
-	DEBUG(npf, 4)("Next node: (%d, %d) [%d], possible trackdirs: %#x", TileX(dst_tile), TileY(dst_tile), dst_tile, trackdirbits);
+	DEBUG(npf, 4)("Next node: (%d, %d) [%d], possible trackdirs: 0x%X", TileX(dst_tile), TileY(dst_tile), dst_tile, trackdirbits);
 	/* Select only trackdirs we can reach from our current trackdir */
 	trackdirbits &= TrackdirReachesTrackdirs(src_trackdir);
 	if (_patches.forbid_90_deg && (type == TRANSPORT_RAIL || type == TRANSPORT_WATER)) /* Filter out trackdirs that would make 90 deg turns for trains */
 		trackdirbits &= ~TrackdirCrossesTrackdirs(src_trackdir);
 
-	DEBUG(npf,6)("After filtering: (%d, %d), possible trackdirs: %#x", TileX(dst_tile), TileY(dst_tile), trackdirbits);
+	DEBUG(npf,6)("After filtering: (%d, %d), possible trackdirs: 0x%X", TileX(dst_tile), TileY(dst_tile), trackdirbits);
 
 	i = 0;
 	/* Enumerate possible track */
@@ -622,7 +622,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 		Trackdir dst_trackdir;
 		dst_trackdir =  FindFirstBit2x64(trackdirbits);
 		trackdirbits = KillFirstBit2x64(trackdirbits);
-		DEBUG(npf, 5)("Expanded into trackdir: %d, remaining trackdirs: %#x", dst_trackdir, trackdirbits);
+		DEBUG(npf, 5)("Expanded into trackdir: %d, remaining trackdirs: 0x%X", dst_trackdir, trackdirbits);
 
 		/* Check for oneway signal against us */
 		if (IsTileType(dst_tile, MP_RAILWAY) && GetRailTileType(dst_tile) == RAIL_TYPE_SIGNALS) {
@@ -704,10 +704,10 @@ static NPFFoundTargetData NPFRouteInternal(AyStarNode* start1, AyStarNode* start
 
 	if (result.best_bird_dist != 0) {
 		if (target != NULL) {
-			DEBUG(npf, 1) ("Could not find route to tile 0x%x from 0x%x.", target->dest_coords, start1->tile);
+			DEBUG(npf, 1) ("Could not find route to tile 0x%X from 0x%X.", target->dest_coords, start1->tile);
 		} else {
 			/* Assumption: target == NULL, so we are looking for a depot */
-			DEBUG(npf, 1) ("Could not find route to a depot from tile 0x%x.", start1->tile);
+			DEBUG(npf, 1) ("Could not find route to a depot from tile 0x%X.", start1->tile);
 		}
 
 	}
@@ -855,7 +855,7 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, 
 			best_result = result;
 	}
 	if (result.best_bird_dist != 0) {
-		DEBUG(npf, 1) ("Could not find route to any depot from tile 0x%x.", tile);
+		DEBUG(npf, 1) ("Could not find route to any depot from tile 0x%X.", tile);
 	}
 	return best_result;
 }

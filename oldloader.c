@@ -211,7 +211,7 @@ static bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 						break;
 
 					case OC_ASSERT:
-						DEBUG(oldloader, 4)("[OldLoader] Assert point: %x / %x", ls->total_read, chunk->offset + _bump_assert_value);
+						DEBUG(oldloader, 4)("[OldLoader] Assert point: 0x%X / 0x%X", ls->total_read, chunk->offset + _bump_assert_value);
 						if (ls->total_read != chunk->offset + _bump_assert_value) ls->failed = true;
 					default: break;
 				}

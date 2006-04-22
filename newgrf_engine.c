@@ -169,7 +169,7 @@ static int VehicleSpecificProperty(const Vehicle *v, byte var) {
 			break;
 	}
 
-	DEBUG(grf, 1)("Unhandled vehicle property 0x%x (var 0x%x), type 0x%x", var, var + 0x80, v->type);
+	DEBUG(grf, 1)("Unhandled vehicle property 0x%02X (var 0x%02X), type 0x%02X", var, var + 0x80, v->type);
 
 	return -1;
 }
