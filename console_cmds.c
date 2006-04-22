@@ -1322,6 +1322,7 @@ static void IConsoleDebugLibRegister(void)
 
 	IConsoleVarRegister("con_developer",    &_stdlib_con_developer, ICONSOLE_VAR_BOOLEAN, "Enable/disable console debugging information (internal)");
 	IConsoleCmdRegister("resettile",        ConResetTile);
+	IConsoleCmdRegister("stopall",          ConStopAllVehicles);
 	IConsoleAliasRegister("dbg_echo",       "echo %A; echo %B");
 	IConsoleAliasRegister("dbg_echo2",      "echo %!");
 }
@@ -1365,7 +1366,6 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("cd",           ConChangeDirectory);
 	IConsoleCmdRegister("pwd",          ConPrintWorkingDirectory);
 	IConsoleCmdRegister("clear",        ConClearBuffer);
-	IConsoleCmdRegister("stopall",      ConStopAllVehicles);
 
 	IConsoleAliasRegister("dir",      "ls");
 	IConsoleAliasRegister("del",      "rm %+");
@@ -1379,7 +1379,6 @@ void IConsoleStdLibRegister(void)
 	/* networking variables and functions */
 #ifdef ENABLE_NETWORK
 	/* Network hooks; only active in network */
-	IConsoleCmdHookAdd ("stopall",      ICONSOLE_HOOK_ACCESS, ConHookNoNetwork);
 	IConsoleCmdHookAdd ("resetengines", ICONSOLE_HOOK_ACCESS, ConHookNoNetwork);
 
 	/*** Networking commands ***/
