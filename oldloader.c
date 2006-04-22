@@ -166,16 +166,13 @@ static bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 		ptr = chunk->ptr;
 
 		for (i = 0; i < chunk->amount; i++) {
-			if (ls->failed)
-				return false;
+			if (ls->failed) return false;
 
 			/* Handle simple types */
 			if ((chunk->type & 0xFF) != 0) {
 				switch (chunk->type & 0xFF) {
-					case OC_NULL:
-						/* Just read the byte and forget about it */
-						ReadByte(ls);
-						break;
+					/* Just read the byte and forget about it */
+					case OC_NULL: ReadByte(ls); break;
 
 					case OC_CHUNK:
 						/* Call function, with 'i' as parameter to tell which item we
@@ -185,11 +182,7 @@ static bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 
 					case OC_ASSERT:
 						DEBUG(oldloader, 4)("[OldLoader] Assert point: %x / %x", ls->total_read, chunk->offset + _bump_assert_value);
-						if (ls->total_read != chunk->offset + _bump_assert_value) {
-							ls->failed = true;
-						}
-						break;
-
+						if (ls->total_read != chunk->offset + _bump_assert_value) ls->failed = true;
 				}
 			} else {
 				uint32 res = 0;
@@ -395,7 +388,7 @@ static void FixOldVehicles(void)
 	Vehicle* v;
 
 	FOR_ALL_VEHICLES(v) {
-		Vehicle* u;
+		Vehicle *u;
 
 		if (v->type == 0) continue;
 
@@ -445,7 +438,7 @@ extern TileIndex _animated_tile_list[256];
 extern char _name_array[512][32];
 extern uint16 _custom_sprites_base;
 
-static byte   _old_vehicle_multipler;
+static byte   _old_vehicle_multiplier;
 static uint8  _old_map3[OLD_MAP_SIZE * 2];
 static bool   _new_ttdpatch_format;
 static uint32 _old_town_index;
@@ -461,17 +454,17 @@ static void ReadTTDPatchFlags(void)
 	_read_ttdpatch_flags = true;
 
 	/* TTDPatch misuses _old_map3 for flags.. read them! */
-	_old_vehicle_multipler = _old_map3[0];
+	_old_vehicle_multiplier = _old_map3[0];
 	/* Somehow.... there was an error in some savegames, so 0 becomes 1
 	and 1 becomes 2. The rest of the values are okay */
-	if (_old_vehicle_multipler < 2) _old_vehicle_multipler++;
+	if (_old_vehicle_multiplier < 2) _old_vehicle_multiplier++;
 
 	/* TTDPatch incraeses the Vehicle-part in the middle of the game,
 	so if the multipler is anything else but 1, the assert fails..
 	bump the assert value so it doesn't!
 	(1 multipler == 850 vehicles
 	1 vehicle   == 128 bytes */
-	_bump_assert_value = (_old_vehicle_multipler - 1) * 850 * 128;
+	_bump_assert_value = (_old_vehicle_multiplier - 1) * 850 * 128;
 
 	/* Check if we have a modern TTDPatch savegame (has extra data all around) */
 	_new_ttdpatch_format = (memcmp(&_old_map3[0x1FFFA], "TTDp", 4) == 0);
@@ -483,7 +476,7 @@ static void ReadTTDPatchFlags(void)
 	if (_new_ttdpatch_format)
 		DEBUG(oldloader, 1)("[OldLoader] Found TTDPatch game");
 
-	DEBUG(oldloader, 1)("[OldLoader] Vehicle-multipler is set to %d (%d vehicles)", _old_vehicle_multipler, _old_vehicle_multipler * 850);
+	DEBUG(oldloader, 1)("[OldLoader] Vehicle-multiplier is set to %d (%d vehicles)", _old_vehicle_multiplier, _old_vehicle_multiplier * 850);
 }
 
 static const OldChunks town_chunk[] = {
@@ -552,13 +545,13 @@ static const OldChunks order_chunk[] = {
 	OCL_VAR ( OC_UINT16,   1, &_old_order ),
 	OCL_END()
 };
+
 static bool LoadOldOrder(LoadgameState *ls, int num)
 {
 	if (!AddBlockIfNeeded(&_order_pool, num))
 		error("Orders: failed loading savegame: too many orders");
 
-	if (!LoadChunk(ls, NULL, order_chunk))
-		return false;
+	if (!LoadChunk(ls, NULL, order_chunk)) return false;
 
 	AssignOrder(GetOrder(num), UnpackOldOrder(_old_order));
 
@@ -576,13 +569,13 @@ static const OldChunks depot_chunk[] = {
 	OCL_VAR ( OC_UINT32,   1, &_old_town_index ),
 	OCL_END()
 };
+
 static bool LoadOldDepot(LoadgameState *ls, int num)
 {
 	if (!AddBlockIfNeeded(&_depot_pool, num))
 		error("Depots: failed loading savegame: too many depots");
 
-	if (!LoadChunk(ls, GetDepot(num), depot_chunk))
-		return false;
+	if (!LoadChunk(ls, GetDepot(num), depot_chunk)) return false;
 
 	if (GetDepot(num)->xy != 0) {
 		GetDepot(num)->town_index = REMAP_TOWN_IDX(_old_town_index);
@@ -598,10 +591,10 @@ static const OldChunks price_chunk[] = {
 	OCL_VAR ( OC_UINT16,   1, &_old_price_frac ),
 	OCL_END()
 };
+
 static bool LoadOldPrice(LoadgameState *ls, int num)
 {
-	if (!LoadChunk(ls, NULL, price_chunk))
-		return false;
+	if (!LoadChunk(ls, NULL, price_chunk)) return false;
 
 	/* We use a struct to store the prices, but they are ints in a row..
 	so just access the struct as an array of int32's */
@@ -618,10 +611,10 @@ static const OldChunks cargo_payment_rate_chunk[] = {
 	OCL_NULL( 2 ),         // Junk
 	OCL_END()
 };
+
 static bool LoadOldCargoPaymentRate(LoadgameState *ls, int num)
 {
-	if (!LoadChunk(ls, NULL, cargo_payment_rate_chunk))
-		return false;
+	if (!LoadChunk(ls, NULL, cargo_payment_rate_chunk)) return false;
 
 	_cargo_payment_rates[num] = -_old_price;
 	_cargo_payment_rates_frac[num] = _old_price_frac;
@@ -643,6 +636,7 @@ static const OldChunks goods_chunk[] = {
 
 	OCL_END()
 };
+
 static bool LoadOldGood(LoadgameState *ls, int num)
 {
 	Station *st = GetStation(_current_station_id);
@@ -761,6 +755,7 @@ static const OldChunks industry_chunk[] = {
 
 	OCL_END()
 };
+
 static bool LoadOldIndustry(LoadgameState *ls, int num)
 {
 	Industry *i;
@@ -769,8 +764,7 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 		error("Industries: failed loading savegame: too many industries");
 
 	i = GetIndustry(num);
-	if (!LoadChunk(ls, i, industry_chunk))
-		return false;
+	if (!LoadChunk(ls, i, industry_chunk)) return false;
 
 	if (i->xy != 0) {
 		i->town = GetTown(REMAP_TOWN_IDX(_old_town_index));
@@ -787,14 +781,14 @@ static const OldChunks player_yearly_chunk[] = {
 	OCL_VAR(  OC_INT32,   1, &_old_yearly ),
 	OCL_END()
 };
+
 static bool OldPlayerYearly(LoadgameState *ls, int num)
 {
 	int i;
 	Player *p = GetPlayer(_current_player_id);
 
 	for (i = 0; i < 13; i++) {
-		if (!LoadChunk(ls, NULL, player_yearly_chunk))
-			return false;
+		if (!LoadChunk(ls, NULL, player_yearly_chunk)) return false;
 
 		p->yearly_expenses[num][i] = _old_yearly;
 	}
@@ -811,21 +805,20 @@ static const OldChunks player_economy_chunk[] = {
 
 	OCL_END()
 };
+
 static bool OldPlayerEconomy(LoadgameState *ls, int num)
 {
 	int i;
 	Player *p = GetPlayer(_current_player_id);
 
-	if (!LoadChunk(ls, &p->cur_economy, player_economy_chunk))
-		return false;
+	if (!LoadChunk(ls, &p->cur_economy, player_economy_chunk)) return false;
 
 	/* Don't ask, but the number in TTD(Patch) are inversed to OpenTTD */
 	p->cur_economy.income   = -p->cur_economy.income;
 	p->cur_economy.expenses = -p->cur_economy.expenses;
 
 	for (i = 0; i < 24; i++) {
-		if (!LoadChunk(ls, &p->old_economy[i], player_economy_chunk))
-			return false;
+		if (!LoadChunk(ls, &p->old_economy[i], player_economy_chunk)) return false;
 
 		p->old_economy[i].income   = -p->old_economy[i].income;
 		p->old_economy[i].expenses = -p->old_economy[i].expenses;
@@ -850,6 +843,7 @@ static const OldChunks player_ai_build_rec_chunk[] = {
 
 	OCL_END()
 };
+
 static bool OldLoadAIBuildRec(LoadgameState *ls, int num)
 {
 	Player *p = GetPlayer(_current_player_id);
@@ -965,6 +959,7 @@ static const OldChunks player_ai_chunk[] = {
 
 	OCL_END()
 };
+
 static bool OldPlayerAI(LoadgameState *ls, int num)
 {
 	Player *p = GetPlayer(_current_player_id);
@@ -1020,8 +1015,7 @@ static bool LoadOldPlayer(LoadgameState *ls, int num)
 
 	_current_player_id = num;
 
-	if (!LoadChunk(ls, p, player_chunk))
-		return false;
+	if (!LoadChunk(ls, p, player_chunk)) return false;
 
 	p->name_1 = RemapOldStringID(_old_string_id);
 	p->president_name_1 = RemapOldStringID(_old_string_id_2);
@@ -1076,6 +1070,7 @@ static const OldChunks vehicle_train_chunk[] = {
 
 	OCL_END()
 };
+
 static const OldChunks vehicle_road_chunk[] = {
 	OCL_SVAR(  OC_UINT8, VehicleRoad, state ),
 	OCL_SVAR(  OC_UINT8, VehicleRoad, frame ),
@@ -1089,6 +1084,7 @@ static const OldChunks vehicle_road_chunk[] = {
 
 	OCL_END()
 };
+
 static const OldChunks vehicle_ship_chunk[] = {
 	OCL_SVAR(  OC_UINT8, VehicleShip, state ),
 
@@ -1096,6 +1092,7 @@ static const OldChunks vehicle_ship_chunk[] = {
 
 	OCL_END()
 };
+
 static const OldChunks vehicle_air_chunk[] = {
 	OCL_SVAR(  OC_UINT8, VehicleAir, pos ),
 	OCL_SVAR(  OC_FILE_U8 | OC_VAR_U16, VehicleAir, targetairport ),
@@ -1106,6 +1103,7 @@ static const OldChunks vehicle_air_chunk[] = {
 
 	OCL_END()
 };
+
 static const OldChunks vehicle_special_chunk[] = {
 	OCL_SVAR( OC_UINT16, VehicleSpecial, unk0 ),
 	OCL_SVAR(  OC_UINT8, VehicleSpecial, unk2 ),
@@ -1114,6 +1112,7 @@ static const OldChunks vehicle_special_chunk[] = {
 
 	OCL_END()
 };
+
 static const OldChunks vehicle_disaster_chunk[] = {
 	OCL_SVAR( OC_UINT16, VehicleDisaster, image_override ),
 	OCL_SVAR( OC_UINT16, VehicleDisaster, unk2 ),
@@ -1122,11 +1121,13 @@ static const OldChunks vehicle_disaster_chunk[] = {
 
 	OCL_END()
 };
+
 static const OldChunks vehicle_empty_chunk[] = {
 	OCL_NULL( 10 ), // Junk
 
 	OCL_END()
 };
+
 static bool LoadOldVehicleUnion(LoadgameState *ls, int num)
 {
 	Vehicle *v = GetVehicle(_current_vehicle_id);
@@ -1233,6 +1234,7 @@ static const OldChunks vehicle_chunk[] = {
 
 	OCL_END()
 };
+
 static bool LoadOldVehicle(LoadgameState *ls, int num)
 {
 	uint i;
@@ -1240,17 +1242,16 @@ static bool LoadOldVehicle(LoadgameState *ls, int num)
 	/* Read the TTDPatch flags, because we need some info from it */
 	ReadTTDPatchFlags();
 
-	for (i = 0; i < _old_vehicle_multipler; i++) {
+	for (i = 0; i < _old_vehicle_multiplier; i++) {
 		Vehicle *v;
 
-		_current_vehicle_id = num * _old_vehicle_multipler + i;
+		_current_vehicle_id = num * _old_vehicle_multiplier + i;
 
 		if (!AddBlockIfNeeded(&_vehicle_pool, _current_vehicle_id))
 			error("Vehicles: failed loading savegame: too many vehicles");
 
 		v = GetVehicle(_current_vehicle_id);
-		if (!LoadChunk(ls, v, vehicle_chunk))
-			return false;
+		if (!LoadChunk(ls, v, vehicle_chunk)) return false;
 
 		/* This should be consistent, else we have a big problem... */
 		if (v->index != _current_vehicle_id) {
@@ -1279,8 +1280,7 @@ static bool LoadOldVehicle(LoadgameState *ls, int num)
 		v->string_id = RemapOldStringID(_old_string_id);
 
 		/* Vehicle-subtype is different in TTD(Patch) */
-		if (v->type == VEH_Special)
-			v->subtype = v->subtype >> 1;
+		if (v->type == VEH_Special) v->subtype = v->subtype >> 1;
 	}
 
 	return true;
@@ -1296,6 +1296,7 @@ static const OldChunks sign_chunk[] = {
 
 	OCL_END()
 };
+
 static bool LoadOldSign(LoadgameState *ls, int num)
 {
 	if (!AddBlockIfNeeded(&_sign_pool, num))
@@ -1327,6 +1328,7 @@ static const OldChunks engine_chunk[] = {
 
 	OCL_END()
 };
+
 static bool LoadOldEngine(LoadgameState *ls, int num)
 {
 	if (!LoadChunk(ls, GetEngine(num), engine_chunk)) return false;
@@ -1346,7 +1348,8 @@ static const OldChunks subsidy_chunk[] = {
 
 	OCL_END()
 };
-static bool LoadOldSubsidy(LoadgameState *ls, int num)
+
+static inline bool LoadOldSubsidy(LoadgameState *ls, int num)
 {
 	return LoadChunk(ls, &_subsidies[num], subsidy_chunk);
 }
@@ -1371,7 +1374,8 @@ static const OldChunks game_difficulty_chunk[] = {
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, disasters ),
 	OCL_END()
 };
-static bool LoadOldGameDifficulty(LoadgameState *ls, int num)
+
+static inline bool LoadOldGameDifficulty(LoadgameState *ls, int num)
 {
 	return LoadChunk(ls, &_opt.diff, game_difficulty_chunk);
 }
@@ -1401,6 +1405,7 @@ static bool LoadOldMapPart1(LoadgameState *ls, int num)
 
 	return !ls->failed;
 }
+
 static bool LoadOldMapPart2(LoadgameState *ls, int num)
 {
 	uint i;
@@ -1414,7 +1419,6 @@ static bool LoadOldMapPart2(LoadgameState *ls, int num)
 
 	return !ls->failed;
 }
-
 
 static uint32 _old_cur_town_ctr;
 static const OldChunks main_chunk[] = {
@@ -1532,6 +1536,7 @@ static const OldChunks main_chunk[] = {
 
 	OCL_END()
 };
+
 static bool LoadOldMain(LoadgameState *ls)
 {
 	int i;
@@ -1617,17 +1622,13 @@ bool LoadOldSaveGame(const char *file)
 
 void GetOldSaveGameName(char *title, const char *file)
 {
-	FILE *f;
-
-	f = fopen(file, "rb");
+	FILE *f = fopen(file, "rb");
 	title[0] = 0;
 	title[48] = 0;
 
-	if (f == NULL)
-		return;
+	if (f == NULL) return;
 
-	if (fread(title, 1, 48, f) != 48)
-		snprintf(title, 48, "Corrupt file");
+	if (fread(title, 1, 48, f) != 48) snprintf(title, 48, "Corrupt file");
 
 	fclose(f);
 }
