@@ -134,46 +134,13 @@ static void TPFMode2(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 	uint bits;
 	int i;
 	RememberData rd;
-	int owner = -1;
 
-	/* XXX: Mode 2 is currently only used for ships, why is this code here? */
-	if (tpf->tracktype == TRANSPORT_RAIL) {
-		switch (GetTileType(tile)) {
-			case MP_TUNNELBRIDGE:
-				// bridge middle has no owner
-				if (IsBridge(tile) && IsBridgeMiddle(tile)) break;
-				/* FALLTHROUGH */
-
-			case MP_RAILWAY:
-			case MP_STATION:
-				owner = GetTileOwner(tile);
-				break;
-
-			default: break; // XXX can this occur?
-		}
-	}
+	assert(tpf->tracktype == TRANSPORT_WATER);
 
 	// This addition will sometimes overflow by a single tile.
 	// The use of TILE_MASK here makes sure that we still point at a valid
 	// tile, and then this tile will be in the sentinel row/col, so GetTileTrackStatus will fail.
 	tile = TILE_MASK(tile + TileOffsByDir(direction));
-
-	/* Check in case of rail if the owner is the same */
-	if (tpf->tracktype == TRANSPORT_RAIL) {
-		switch (GetTileType(tile)) {
-			case MP_TUNNELBRIDGE:
-				// bridge middle has no owner
-				if (IsBridge(tile) && IsBridgeMiddle(tile)) break;
-				/* FALLTHROUGH */
-
-			case MP_RAILWAY:
-			case MP_STATION:
-				if (owner != -1 && !IsTileOwner(tile, owner)) return;
-				break;
-
-			default: break; // XXX can this occur?
-		}
-	}
 
 	if (++tpf->rd.cur_length > 50)
 		return;
