@@ -394,10 +394,6 @@ uint ConvertIntDate(uint date)
 }
 
 
-
-
-
-
 // Calculate constants that depend on the landscape type.
 void InitializeLandscapeVariables(bool only_constants)
 {
