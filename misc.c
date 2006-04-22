@@ -19,6 +19,7 @@
 #include "vehicle_gui.h"
 #include "variables.h"
 #include "ai/ai.h"
+#include "table/landscape_const.h"
 
 extern void StartupEconomy(void);
 
@@ -392,30 +393,19 @@ uint ConvertIntDate(uint date)
 	return ConvertYMDToDay(year, month, day);
 }
 
-typedef struct LandscapePredefVar {
-	StringID names[NUM_CARGO];
-	byte weights[NUM_CARGO];
-	StringID sprites[NUM_CARGO];
 
-	uint16 initial_cargo_payment[NUM_CARGO];
-	byte transit_days_table_1[NUM_CARGO];
-	byte transit_days_table_2[NUM_CARGO];
 
-	byte road_veh_by_cargo_start[NUM_CARGO];
-	byte road_veh_by_cargo_count[NUM_CARGO];
-} LandscapePredefVar;
 
-#include "table/landscape_const.h"
 
 
 // Calculate constants that depend on the landscape type.
 void InitializeLandscapeVariables(bool only_constants)
 {
-	const LandscapePredefVar *lpd;
+	const CargoTypesValues *lpd;
 	uint i;
 	StringID str;
 
-	lpd = &_landscape_predef_var[_opt.landscape];
+	lpd = &_cargo_types_base_values[_opt.landscape];
 
 	memcpy(_cargoc.ai_roadveh_start, lpd->road_veh_by_cargo_start,sizeof(lpd->road_veh_by_cargo_start));
 	memcpy(_cargoc.ai_roadveh_count, lpd->road_veh_by_cargo_count,sizeof(lpd->road_veh_by_cargo_count));

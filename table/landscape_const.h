@@ -1,6 +1,21 @@
 /* $Id$ */
 
-static const LandscapePredefVar _landscape_predef_var[4] = {
+typedef struct CargoTypesValues {
+	StringID names[NUM_CARGO];
+	StringID units_volume[NUM_CARGO];
+	byte weights[NUM_CARGO];
+	SpriteID sprites[NUM_CARGO];
+
+	uint16 initial_cargo_payment[NUM_CARGO];
+	byte transit_days_table_1[NUM_CARGO];
+	byte transit_days_table_2[NUM_CARGO];
+
+	byte road_veh_by_cargo_start[NUM_CARGO];
+	byte road_veh_by_cargo_count[NUM_CARGO];
+} CargoTypesValues;
+
+
+static const CargoTypesValues _cargo_types_base_values[4] = {
 	{
 		/* normal names */
 		{
@@ -17,6 +32,22 @@ static const LandscapePredefVar _landscape_predef_var[4] = {
 			STR_0019_VALUABLES,
 			STR_000E,
 		},
+
+		{ /* normal units of volume */
+			STR_PASSENGERS,
+			STR_TONS,
+			STR_BAGS,
+			STR_LITERS,
+			STR_ITEMS,
+			STR_CRATES,
+			STR_TONS,
+			STR_TONS,
+			STR_TONS,
+			STR_TONS,
+			STR_BAGS,
+			STR_RES_OTHER
+		},
+
 		/* normal weights */
 		{
 			1, 16, 4, 16, 3, 8, 16, 16, 16, 16, 2, 0,
@@ -63,6 +94,22 @@ static const LandscapePredefVar _landscape_predef_var[4] = {
 			STR_0020_GOLD,
 			STR_001E_FOOD,
 		},
+
+		{ /* hilly units of volume */
+			STR_PASSENGERS,
+			STR_TONS,
+			STR_BAGS,
+			STR_LITERS,
+			STR_ITEMS,
+			STR_CRATES,
+			STR_TONS,
+			STR_TONS,
+			STR_RES_OTHER,
+			STR_TONS,
+			STR_BAGS,
+			STR_TONS
+		},
+
 		/* hilly weights */
 		{
 			1, 16, 4, 16, 3, 8, 16, 16, 0, 16, 8, 16
@@ -93,7 +140,6 @@ static const LandscapePredefVar _landscape_predef_var[4] = {
 		{7, 3, 6, 3, 3, 3, 3, 3, 3, 3, 3, 3},
 	},
 
-
 	{
 		/* desert names */
 		{
@@ -110,6 +156,22 @@ static const LandscapePredefVar _landscape_predef_var[4] = {
 			STR_001D_DIAMONDS,
 			STR_001E_FOOD
 		},
+
+		{ /* desert units of volume */
+			STR_PASSENGERS,
+			STR_LITERS,
+			STR_BAGS,
+			STR_LITERS,
+			STR_TONS,
+			STR_CRATES,
+			STR_TONS,
+			STR_TONS,
+			STR_TONS,
+			STR_LITERS,
+			STR_BAGS,
+			STR_TONS
+		},
+
 		/* desert weights */
 		{
 			1, 16, 4, 16, 16, 8, 16, 16, 16, 16, 2, 16,
@@ -156,6 +218,22 @@ static const LandscapePredefVar _landscape_predef_var[4] = {
 			STR_002C_PLASTIC,
 			STR_002D_FIZZY_DRINKS,
 		},
+
+		{ /* candy unitrs of volume */
+			STR_PASSENGERS,
+			STR_TONS,
+			STR_BAGS,
+			STR_NOTHING,
+			STR_NOTHING,
+			STR_TONS,
+			STR_TONS,
+			STR_LITERS,
+			STR_TONS,
+			STR_NOTHING,
+			STR_LITERS,
+			STR_NOTHING
+		},
+
 		/* candy weights */
 		{
 			1, 16, 4, 2, 4, 5, 16, 16, 16, 1, 16, 2
