@@ -567,7 +567,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_INFO)
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 {
-	char name[NETWORK_NAME_LENGTH];
+	char name[NETWORK_CLIENT_NAME_LENGTH];
 	char unique_id[NETWORK_NAME_LENGTH];
 	NetworkClientInfo *ci;
 	byte playas;
@@ -612,7 +612,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	}
 
 	// We need a valid name.. make it Player
-	if (name[0] == '\0') snprintf(name, sizeof(name), "Player");
+	if (*name == '\0') ttd_strlcpy(name, "Player", sizeof(name));
 
 	if (!NetworkFindName(name)) { // Change name if duplicate
 		// We could not create a name for this player
@@ -622,8 +622,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 
 	ci = DEREF_CLIENT_INFO(cs);
 
-	snprintf(ci->client_name, sizeof(ci->client_name), "%s", name);
-	snprintf(ci->unique_id, sizeof(ci->unique_id), "%s", unique_id);
+	ttd_strlcpy(ci->client_name, name, sizeof(ci->client_name));
+	ttd_strlcpy(ci->unique_id, unique_id, sizeof(ci->unique_id));
 	ci->client_playas = playas;
 	ci->client_lang = client_lang;
 
@@ -1389,7 +1389,7 @@ bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH])
 	byte number = 0;
 	char original_name[NETWORK_CLIENT_NAME_LENGTH];
 
-	// We use NETWORK_NAME_LENGTH in here, because new_name is really a pointer
+	// We use NETWORK_CLIENT_NAME_LENGTH in here, because new_name is really a pointer
 	ttd_strlcpy(original_name, new_name, NETWORK_CLIENT_NAME_LENGTH);
 
 	while (!found_name) {

@@ -92,11 +92,11 @@ NetworkClientState *NetworkFindClientStateFromIndex(uint16 client_index)
 //  if the user did not send it yet, Client #<no> is used.
 void NetworkGetClientName(char *client_name, size_t size, const NetworkClientState *cs)
 {
-	NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
-	if (ci->client_name[0] == '\0')
-		snprintf(client_name, size, "Client #%d", cs->index);
+	const NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
+	if (*ci->client_name == '\0')
+		snprintf(client_name, size, "Client #%4d", cs->index);
 	else
-		snprintf(client_name, size, "%s", ci->client_name);
+		ttd_strlcpy(client_name, ci->client_name, size);
 }
 
 byte NetworkSpectatorCount(void)
@@ -545,7 +545,7 @@ void NetworkCloseClient(NetworkClientState *cs)
 		// We did not receive a leave message from this client...
 		NetworkErrorCode errorno = NETWORK_ERROR_CONNECTION_LOST;
 		char str[100];
-		char client_name[NETWORK_NAME_LENGTH];
+		char client_name[NETWORK_CLIENT_NAME_LENGTH];
 		NetworkClientState *new_cs;
 
 		NetworkGetClientName(client_name, sizeof(client_name), cs);

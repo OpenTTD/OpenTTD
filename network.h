@@ -145,7 +145,7 @@ VARDEF NetworkGameInfo _network_game_info;
 VARDEF NetworkPlayerInfo _network_player_info[MAX_PLAYERS];
 VARDEF NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
 
-VARDEF char _network_player_name[NETWORK_NAME_LENGTH];
+VARDEF char _network_player_name[NETWORK_CLIENT_NAME_LENGTH];
 VARDEF char _network_default_ip[NETWORK_HOSTNAME_LENGTH];
 
 VARDEF uint16 _network_own_client_index;
