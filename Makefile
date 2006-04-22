@@ -809,7 +809,7 @@ ifndef NATIVE_OSX
 # OSX links in os/macosx/Makefile to handle universal binaries better
 $(TTD): $(OBJS) $(MAKE_CONFIG)
 	@echo '===> Linking $@'
-	$(Q)$(CC) $(LDFLAGS) -lefence $(TTDLDFLAGS) $(OBJS) $(LIBS) -o $@
+	$(Q)$(CC) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS) $(LIBS) -o $@
 endif
 
 $(STRGEN): strgen/strgen.c endian_host.h
