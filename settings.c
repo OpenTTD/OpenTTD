@@ -1,5 +1,24 @@
 /* $Id$ */
 
+/** @file
+ * All actions handling saving and loading of the settings/configuration goes on in this file.
+ * The file consists of four parts:
+ * <ol>
+ * <li>Parsing the configuration file (openttd.cfg). This is achieved with the ini_ functions which
+ *     handle various types, such as normal 'key = value' pairs, lists and value combinations of
+ *     lists, strings, integers, 'bit'-masks and element selections.
+ * <li>Defining the data structures that go into the configuration. These include for example
+ *     the _patches struct, but also network-settings, banlists, newgrf, etc. There are a lot
+ *     of helper macros available for the various types, and also saving/loading of these settings
+ *     in a savegame is handled inside these structures.
+ * <li>Handle reading and writing to the setting-structures from inside the game either from
+ *     the console for example or through the gui with CMD_ functions.
+ * <li>Handle saving/loading of the PATS chunk inside the savegame.
+ * </ol>
+ * @see SettingDesc
+ * @see SaveLoad
+ */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "currency.h"
@@ -251,7 +270,7 @@ static IniFile *ini_load(const char *filename)
 		}
 	}
 
-	if (comment_size) {
+	if (comment_size > 0) {
 		ini->comment = pool_strdup(&ini->pool, comment, comment_size);
 		comment_size = 0;
 	}
@@ -330,7 +349,7 @@ static void ini_free(IniFile *ini)
 	pool_free(&ini->pool);
 }
 
-/* Find the index value of a ONEofMANY type in a string seperated by |
+/** Find the index value of a ONEofMANY type in a string seperated by |
  * @param many full domain of values the ONEofMANY setting can have
  * @param one the current value of the setting for which a value needs found
  * @param onelen force calculation of the *one parameter
@@ -358,7 +377,7 @@ static int lookup_oneofmany(const char *many, const char *one, int onelen)
 	}
 }
 
-/* Find the set-integer value MANYofMANY type in a string
+/** Find the set-integer value MANYofMANY type in a string
  * @param many full domain of values the MANYofMANY setting can have
  * @param str the current string value of the setting, each individual
  * of seperated by a whitespace\tab or | character
@@ -388,7 +407,8 @@ static uint32 lookup_manyofmany(const char *many, const char *str)
 }
 
 /** Parse an integerlist string and set each found value
- * @param p the string to be parsed. Each element in the list is seperated by a comma
+ * @param p the string to be parsed. Each element in the list is seperated by a
+ * comma or a space character
  * @param items pointer to the integerlist-array that will be filled with values
  * @param maxitems the maximum number of elements the integerlist-array has
  * @return returns the number of items found, or -1 on an error */
@@ -410,7 +430,7 @@ static int parse_intlist(const char *p, int *items, int maxitems)
 	return n;
 }
 
-/* Load parsed string-values into an integer-array (intlist)
+/** Load parsed string-values into an integer-array (intlist)
  * @param str the string that contains the values (and will be parsed)
  * @param array pointer to the integer-arrays that will be filled
  * @param nelems the number of elements the array holds. Maximum is 64 elements
@@ -449,8 +469,8 @@ static bool load_intlist(const char *str, void *array, int nelems, VarType type)
 	return true;
 }
 
-/* Convert an integer-array (intlist) to a string representation. Each value
- * is seperated by a comma
+/** Convert an integer-array (intlist) to a string representation. Each value
+ * is seperated by a comma or a space character
  * @param buf output buffer where the string-representation will be stored
  * @param array pointer to the integer-arrays that is read from
  * @param nelems the number of elements the array holds.
@@ -475,7 +495,7 @@ static void make_intlist(char *buf, const void *array, int nelems, VarType type)
 	}
 }
 
-/* Convert a ONEofMANY structure to a string representation.
+/** Convert a ONEofMANY structure to a string representation.
  * @param buf output buffer where the string-representation will be stored
  * @param many the full-domain string of possible values
  * @param id the value of the variable and whose string-representation must be found */
@@ -499,7 +519,7 @@ static void make_oneofmany(char *buf, const char *many, int id)
 	*buf = '\0';
 }
 
-/* Convert a MANYofMANY structure to a string representation.
+/** Convert a MANYofMANY structure to a string representation.
  * @param buf output buffer where the string-representation will be stored
  * @param many the full-domain string of possible values
  * @param x the value of the variable and whose string-representation must
@@ -620,7 +640,7 @@ static void Write_ValidateSetting(void *ptr, const SettingDesc *sd, int32 val)
 
 /** Load values from a group of an IniFile structure into the internal representation
  * @param ini pointer to IniFile structure that holds administrative information
- * @param desc pointer to SettingDesc structure whose internally pointed variables will
+ * @param sd pointer to SettingDesc structure whose internally pointed variables will
  *        be given values
  * @param grpname the group of the IniFile to search in for the new values */
 static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *grpname, void *object)
@@ -680,9 +700,9 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
 	}
 }
 
-/* Save the values of settings to the inifile.
+/** Save the values of settings to the inifile.
  * @param ini pointer to IniFile structure
- * @param desc read-only SettingDesc structure which contains the unmodified,
+ * @param sd read-only SettingDesc structure which contains the unmodified,
  *        loaded values of the configuration file and various information about it
  * @param grpname holds the name of the group (eg. [network]) where these will be saved
  * The function works as follows: for each item in the SettingDesc structure we have
@@ -788,7 +808,16 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
 	}
 }
 
-// loads all items from a *grpname section into the **list
+/** Loads all items from a 'grpname' section into a list
+ * The list parameter can be a NULL pointer, in this case nothing will be
+ * saved and a callback function should be defined that will take over the
+ * list-handling and store the data itself somewhere.
+ * @param IniFile handle to the ini file with the source data
+ * @param grpname character string identifying the section-header of the ini
+ * file that will be parsed
+ * @param list pointer to an string(pointer) array that will store the parsed
+ * entries of the given section
+ * @param len the maximum number of items available for the above list */
 static void ini_load_setting_list(IniFile *ini, const char *grpname, char **list, uint len)
 {
 	IniGroup *group = ini_getgroup(ini, grpname, -1);
@@ -805,6 +834,15 @@ static void ini_load_setting_list(IniFile *ini, const char *grpname, char **list
 	}
 }
 
+/** Saves all items from a list into the 'grpname' section
+ * The list parameter can be a NULL pointer, in this case a callback function
+ * should be defined that will provide the source data to be saved.
+ * @param IniFile handle to the ini file where the destination data is saved
+ * @param grpname character string identifying the section-header of the ini file
+ * @param list pointer to an string(pointer) array that will be used as the
+ * source to be saved into the relevant ini section
+ * @param len the maximum number of items available for the above list
+ * @param proc callback function that can will provide the source data if defined */
 static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list, uint len)
 {
 	IniGroup *group = ini_getgroup(ini, grpname, -1);
@@ -1418,7 +1456,7 @@ int32 CmdChangePatchSetting(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-/* Top function to save the new value of an element of the Patches struct
+/** Top function to save the new value of an element of the Patches struct
  * @param index offset in the SettingDesc array of the Patches struct which
  * identifies the patch member we want to change
  * @param object pointer to a valid patches struct that has its settings change.
