@@ -42,38 +42,30 @@ typedef struct LoadgameState {
 	bool failed;
 } LoadgameState;
 
-typedef bool OldChunkProc(LoadgameState *ls, int num);
-
-typedef struct OldChunks {
-	uint32 type;         ///< Type of field
-	uint32 amount;       ///< Amount of fields
-
-	void *ptr;           ///< Pointer where to save the data (may only be set if offset is 0)
-	uint offset;         ///< Offset from basepointer (may only be set if ptr is NULL)
-	OldChunkProc *proc;  ///< Pointer to function that is called with OC_CHUNK
-} OldChunks;
-
 /* OldChunk-Type */
-enum {
-	OC_END       = 0,
-	OC_NULL      = 1 << 0,
-	OC_CHUNK     = 1 << 1,
-	OC_ASSERT    = 1 << 2,
+typedef enum OldChunkTypes {
+	OC_SIMPLE    = 0,
+	OC_NULL      = 1,
+	OC_CHUNK     = 2,
+	OC_ASSERT    = 3,
+	/* 8 bytes allocated (256 max) */
 
-	OC_VAR_I8    = 1 << 9,
-	OC_VAR_U8    = 1 << 10,
-	OC_VAR_I16   = 1 << 11,
-	OC_VAR_U16   = 1 << 12,
-	OC_VAR_I32   = 1 << 13,
-	OC_VAR_U32   = 1 << 14,
-	OC_VAR_I64   = 1 << 15,
+	OC_VAR_I8    = 1 << 8,
+	OC_VAR_U8    = 2 << 8,
+	OC_VAR_I16   = 3 << 8,
+	OC_VAR_U16   = 4 << 8,
+	OC_VAR_I32   = 5 << 8,
+	OC_VAR_U32   = 6 << 8,
+	OC_VAR_I64   = 7 << 8,
+	/* 8 bytes allocated (256 max) */
 
-	OC_FILE_I8   = 1 << 17,
-	OC_FILE_U8   = 1 << 18,
-	OC_FILE_I16  = 1 << 19,
-	OC_FILE_U16  = 1 << 20,
-	OC_FILE_I32  = 1 << 21,
-	OC_FILE_U32  = 1 << 22,
+	OC_FILE_I8   = 1 << 16,
+	OC_FILE_U8   = 2 << 16,
+	OC_FILE_I16  = 3 << 16,
+	OC_FILE_U16  = 4 << 16,
+	OC_FILE_I32  = 5 << 16,
+	OC_FILE_U32  = 6 << 16,
+	/* 8 bytes allocated (256 max) */
 
 	OC_INT8      = OC_VAR_I8   | OC_FILE_I8,
 	OC_UINT8     = OC_VAR_U8   | OC_FILE_U8,
@@ -82,13 +74,39 @@ enum {
 	OC_INT32     = OC_VAR_I32  | OC_FILE_I32,
 	OC_UINT32    = OC_VAR_U32  | OC_FILE_U32,
 
-	OC_TILE      = OC_VAR_U32  | OC_FILE_U16
-};
+	OC_TILE      = OC_VAR_U32  | OC_FILE_U16,
+
+	OC_END       = 0 ///< End of the whole chunk, all 32bits set to zero
+} OldChunkType;
+
+typedef bool OldChunkProc(LoadgameState *ls, int num);
+
+typedef struct OldChunks {
+	OldChunkType type;   ///< Type of field
+	uint32 amount;       ///< Amount of fields
+
+	void *ptr;           ///< Pointer where to save the data (may only be set if offset is 0)
+	uint offset;         ///< Offset from basepointer (may only be set if ptr is NULL)
+	OldChunkProc *proc;  ///< Pointer to function that is called with OC_CHUNK
+} OldChunks;
+
 /* If it fails, check lines above.. */
 assert_compile(sizeof(TileIndex) == 4);
 
 static uint32 _bump_assert_value;
 static bool   _read_ttdpatch_flags;
+
+static OldChunkType GetOldChunkType(OldChunkType type)     {return GB(type, 0, 8);}
+static OldChunkType GetOldChunkVarType(OldChunkType type)  {return GB(type, 8, 8) << 8;}
+static OldChunkType GetOldChunkFileType(OldChunkType type) {return GB(type, 16, 8) << 16;}
+
+static inline byte CalcOldVarLen(OldChunkType type)
+{
+	static const byte type_mem_size[] = {0, 1, 1, 2, 2, 4, 4, 8};
+	byte length = GB(type, 8, 8);
+	assert(length != 0 && length < lengthof(type_mem_size));
+	return type_mem_size[length];
+}
 
 /**
  *
@@ -150,6 +168,18 @@ static byte ReadByte(LoadgameState *ls)
 	return ls->decoding ? ls->decode_char : ReadByteFromFile(ls);
 }
 
+static inline uint16 ReadUint16(LoadgameState *ls)
+{
+	byte x = ReadByte(ls);
+	return x | ReadByte(ls) << 8;
+}
+
+static inline uint32 ReadUint32(LoadgameState *ls)
+{
+	uint16 x = ReadUint16(ls);
+	return x | ReadUint16(ls) << 16;
+}
+
 /**
  *
  * Loads a chunk from the old savegame
@@ -169,8 +199,8 @@ static bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 			if (ls->failed) return false;
 
 			/* Handle simple types */
-			if ((chunk->type & 0xFF) != 0) {
-				switch (chunk->type & 0xFF) {
+			if (GetOldChunkType(chunk->type) != 0) {
+				switch (GetOldChunkType(chunk->type)) {
 					/* Just read the byte and forget about it */
 					case OC_NULL: ReadByte(ls); break;
 
@@ -187,112 +217,37 @@ static bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 			} else {
 				uint32 res = 0;
 
-				/* Reading from the file: bit 16 to 23 have the FILE */
-				switch (GB(chunk->type, 16, 8) << 16) {
-					case OC_FILE_I8:
-						res = ReadByte(ls);
-						res = (int8)res;
-						break;
-
-					case OC_FILE_U8:
-						res = ReadByte(ls);
-						break;
-
-					case OC_FILE_U16:
-						res =  ReadByte(ls);
-						res += ReadByte(ls) << 8;
-						break;
-
-					case OC_FILE_I16:
-						res =  ReadByte(ls);
-						res += ReadByte(ls) << 8;
-						res = (int16)res;
-						break;
-
-					case OC_FILE_U32:
-						res =  ReadByte(ls);
-						res += ReadByte(ls) << 8;
-						res += ReadByte(ls) << 16;
-						res += ReadByte(ls) << 24;
-						break;
-
-					case OC_FILE_I32:
-						res =  ReadByte(ls);
-						res += ReadByte(ls) << 8;
-						res += ReadByte(ls) << 16;
-						res += ReadByte(ls) << 24;
-						res = (int32)res;
-						break;
+				/* Reading from the file: bits 16 to 23 have the FILE type */
+				switch (GetOldChunkFileType(chunk->type)) {
+					case OC_FILE_I8:  res = (int8)ReadByte(ls); break;
+					case OC_FILE_U8:  res = ReadByte(ls); break;
+					case OC_FILE_I16: res = (int16)ReadUint16(ls); break;
+					case OC_FILE_U16: res = ReadUint16(ls); break;
+					case OC_FILE_I32: res = (int32)ReadUint32(ls); break;
+					case OC_FILE_U32: res = ReadUint32(ls); break;
+					default: NOT_REACHED();
 				}
 
 				/* Sanity check */
 				assert(base_ptr != NULL || chunk->ptr != NULL);
 
-				/* Writing to the var: bit 8 till 15 have the VAR */
-				switch (GB(chunk->type, 8, 8) << 8) {
-					case OC_VAR_I8:
-						/* Write the data */
-						if (chunk->ptr != NULL) {
-							*(int8 *)ptr = res & 0xFF;
-							ptr++;
-						} else
-							*(int8 *)(base_ptr + chunk->offset) = res & 0xFF;
-							break;
+				/* Writing to the var: bits 8 to 15 have the VAR type */
+				if (chunk->ptr == NULL) ptr = base_ptr + chunk->offset;
 
-					case OC_VAR_U8:
-						/* Write the data */
-						if (chunk->ptr != NULL) {
-							*(uint8 *)ptr = res & 0xFF;
-							ptr++;
-						} else
-							*(uint8 *)(base_ptr + chunk->offset) = res & 0xFF;
-							break;
-
-					case OC_VAR_U16:
-						/* Write the data */
-						if (chunk->ptr != NULL) {
-							*(uint16 *)ptr = res & 0xFFFF;
-							ptr += 2;
-						} else
-							*(uint16 *)(base_ptr + chunk->offset) = res & 0xFFFF;
-							break;
-
-					case OC_VAR_I16:
-						/* Write the data */
-						if (chunk->ptr != NULL) {
-							*(int16 *)ptr = res & 0xFFFF;
-							ptr += 2;
-						} else
-							*(int16 *)(base_ptr + chunk->offset) = res & 0xFFFF;
-							break;
-
-					case OC_VAR_U32:
-						/* Write the data */
-						if (chunk->ptr != NULL) {
-							*(uint32 *)ptr = res;
-							ptr += 4;
-						} else
-							*(uint32 *)(base_ptr + chunk->offset) = res;
-							break;
-
-					case OC_VAR_I32:
-						/* Write the data */
-						if (chunk->ptr != NULL) {
-							*(int32 *)ptr = res;
-							ptr += 4;
-						} else
-							*(int32 *)(base_ptr + chunk->offset) = res;
-							break;
-
-					case OC_VAR_I64:
-						/* Write the data */
-						if (chunk->ptr != NULL) {
-							*(int64 *)ptr = res;
-							ptr += 8;
-						} else
-							*(int64 *)(base_ptr + chunk->offset) = res;
-							break;
+				/* Write the data */
+				switch (GetOldChunkVarType(chunk->type)) {
+					case OC_VAR_I8: *(int8  *)ptr = GB(res, 0, 8); break;
+					case OC_VAR_U8: *(uint8 *)ptr = GB(res, 0, 8); break;
+					case OC_VAR_I16:*(int16 *)ptr = GB(res, 0, 16); break;
+					case OC_VAR_U16:*(uint16*)ptr = GB(res, 0, 16); break;
+					case OC_VAR_I32:*(int32 *)ptr = res; break;
+					case OC_VAR_U32:*(uint32*)ptr = res; break;
+					case OC_VAR_I64:*(int64 *)ptr = res; break;
+					default: NOT_REACHED();
 				}
+
+				/* Increase pointer base for arrays when looping */
+				if (chunk->amount > 1 && chunk->ptr != NULL) ptr += CalcOldVarLen(chunk->type);
 			}
 		}
 
