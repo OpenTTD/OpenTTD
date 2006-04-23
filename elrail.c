@@ -121,18 +121,18 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
   * @param tile The tile to analyse
   * @param *tileh the tileh
   */
-static void AdjustTileh(TileIndex tile, uint *tileh)
+static void AdjustTileh(TileIndex tile, Slope* tileh)
 {
-	if (IsTunnelTile(tile)) *tileh = 0;
+	if (IsTunnelTile(tile)) *tileh = SLOPE_FLAT;
 	if (IsBridgeTile(tile) && IsBridgeRamp(tile)) {
-		if (*tileh != 0) {
-			*tileh = 0;
+		if (*tileh != SLOPE_FLAT) {
+			*tileh = SLOPE_FLAT;
 		} else {
 			switch (GetBridgeRampDirection(tile)) {
-				case DIAGDIR_NE: *tileh = 12; break;
-				case DIAGDIR_SE: *tileh =  6; break;
-				case DIAGDIR_SW: *tileh =  3; break;
-				case DIAGDIR_NW: *tileh =  9; break;
+				case DIAGDIR_NE: *tileh = SLOPE_NE; break;
+				case DIAGDIR_SE: *tileh = SLOPE_SE; break;
+				case DIAGDIR_SW: *tileh = SLOPE_SW; break;
+				case DIAGDIR_NW: *tileh = SLOPE_NW; break;
 				default: break;
 			}
 		}
@@ -150,7 +150,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	TrackBits trackconfig[TS_END];
 	bool isflat[TS_END];
 	/* Note that ti->tileh has already been adjusted for Foundations */
-	uint tileh[TS_END] = {ti->tileh, 0};
+	Slope tileh[TS_END] = { ti->tileh, SLOPE_FLAT };
 
 	TLG tlg = GetTLG(ti->tile);
 	byte PCPstatus = 0;
@@ -214,7 +214,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		PPPallowed[i] *= HASBIT(PCPstatus, i);
 
 		/* Station on a non-flat tile means foundation. add one height level and adjust tileh */
-		if (IsTileType(neighbour, MP_STATION) && tileh[TS_NEIGHBOUR] != 0) tileh[TS_NEIGHBOUR] = 0;
+		if (IsTileType(neighbour, MP_STATION) && tileh[TS_NEIGHBOUR] != SLOPE_FLAT) tileh[TS_NEIGHBOUR] = SLOPE_FLAT;
 
 		/* Read the foundataions if they are present, and adjust the tileh */
 		if (IsTileType(neighbour, MP_RAILWAY)) foundation = GetRailFoundation(tileh[TS_NEIGHBOUR], trackconfig[TS_NEIGHBOUR]);
@@ -224,7 +224,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 		if (foundation != 0) {
 			if (foundation < 15) {
-				tileh[TS_NEIGHBOUR] = 0;
+				tileh[TS_NEIGHBOUR] = SLOPE_FLAT;
 			} else {
 				tileh[TS_NEIGHBOUR] = _inclined_tileh[foundation - 15];
 			}
@@ -286,7 +286,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 			   ) return;
 
 			assert(PCPconfig != 0); /* We have a pylon on neither end of the wire, that doesn't work (since we have no sprites for that) */
-			assert(!IsSteepTileh(tileh[TS_HOME]));
+			assert(!IsSteepSlope(tileh[TS_HOME]));
 			sss = &CatenarySpriteData[Wires[tileh_selector][t][PCPconfig]];
 
 			AddSortableSpriteToDraw( sss->image, ti->x + sss->x_offset, ti->y + sss->y_offset,

@@ -8,27 +8,27 @@
   * @param h uint pointer to write the height to
   * @return the tileh
 */
-uint GetTileh(uint n, uint w, uint e, uint s, uint *h)
+Slope GetTileh(uint n, uint w, uint e, uint s, uint *h)
 {
 	uint min = n;
-	uint r;
+	Slope r;
 
 	if (min >= w) min = w;
 	if (min >= e) min = e;
 	if (min >= s) min = s;
 
-	r = 0;
-	if ((n -= min) != 0) r += (--n << 4) + 8;
-	if ((e -= min) != 0) r += (--e << 4) + 4;
-	if ((s -= min) != 0) r += (--s << 4) + 2;
-	if ((w -= min) != 0) r += (--w << 4) + 1;
+	r = SLOPE_FLAT;
+	if ((n -= min) != 0) r += (--n << 4) + SLOPE_N;
+	if ((e -= min) != 0) r += (--e << 4) + SLOPE_E;
+	if ((s -= min) != 0) r += (--s << 4) + SLOPE_S;
+	if ((w -= min) != 0) r += (--w << 4) + SLOPE_W;
 
 	if (h != NULL) *h = min * TILE_HEIGHT;
 
 	return r;
 }
 
-uint GetTileSlope(TileIndex tile, uint *h)
+Slope GetTileSlope(TileIndex tile, uint *h)
 {
 	uint a;
 	uint b;

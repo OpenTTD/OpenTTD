@@ -174,7 +174,7 @@ void UpdateAllWaypointCustomGraphics(void)
 int32 CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Waypoint *wp;
-	uint tileh;
+	Slope tileh;
 	Axis axis;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
@@ -196,8 +196,8 @@ int32 CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	tileh = GetTileSlope(tile, NULL);
-	if (tileh != 0) {
-		if (!_patches.build_on_slopes || IsSteepTileh(tileh) || !(tileh & (0x3 << axis)) || !(tileh & ~(0x3 << axis)))
+	if (tileh != SLOPE_FLAT) {
+		if (!_patches.build_on_slopes || IsSteepSlope(tileh) || !(tileh & (0x3 << axis)) || !(tileh & ~(0x3 << axis)))
 			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 	}
 

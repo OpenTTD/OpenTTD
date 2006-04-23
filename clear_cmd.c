@@ -252,7 +252,7 @@ int32 CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			r = GetTileh(a, b, c, d, &min);
 
 			if (IsTileType(tile, MP_RAILWAY)) {
-				if (IsSteepTileh(r)) return_cmd_error(STR_1008_MUST_REMOVE_RAILROAD_TRACK);
+				if (IsSteepSlope(r)) return_cmd_error(STR_1008_MUST_REMOVE_RAILROAD_TRACK);
 
 				if (IsPlainRailTile(tile)) {
 					extern const TrackBits _valid_tileh_slopes[2][15];
@@ -448,7 +448,7 @@ void DrawClearLandTile(const TileInfo *ti, byte set)
 
 void DrawHillyLandTile(const TileInfo *ti)
 {
-	if (ti->tileh != 0) {
+	if (ti->tileh != SLOPE_FLAT) {
 		DrawGroundSprite(SPR_FLAT_ROUGH_LAND + _tileh_to_sprite[ti->tileh]);
 	} else {
 		DrawGroundSprite(_landscape_clear_sprites[GB(ti->x ^ ti->y, 4, 3)]);
@@ -459,9 +459,9 @@ void DrawClearLandFence(const TileInfo *ti)
 {
 	byte z = ti->z;
 
-	if (ti->tileh & 2) {
+	if (ti->tileh & SLOPE_S) {
 		z += 8;
-		if (ti->tileh == 0x17) z += 8;
+		if (ti->tileh == SLOPE_STEEP_S) z += 8;
 	}
 
 	if (GetFenceSW(ti->tile) != 0) {
@@ -509,7 +509,7 @@ static uint GetSlopeZ_Clear(const TileInfo* ti)
 	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh) + ti->z;
 }
 
-static uint GetSlopeTileh_Clear(TileIndex tile, uint tileh)
+static Slope GetSlopeTileh_Clear(TileIndex tile, Slope tileh)
 {
 	return tileh;
 }

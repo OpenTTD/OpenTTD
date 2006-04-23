@@ -103,7 +103,7 @@ static void DrawTile_Town(TileInfo *ti)
 	z = ti->z;
 
 	/* Add bricks below the house? */
-	if (ti->tileh) {
+	if (ti->tileh != SLOPE_FLAT) {
 		AddSortableSpriteToDraw(SPR_FOUNDATION_BASE + ti->tileh, ti->x, ti->y, 16, 16, 7, z);
 		AddChildSpriteScreen(dcts->sprite_1, 31, 1);
 		z += 8;
@@ -137,12 +137,12 @@ static void DrawTile_Town(TileInfo *ti)
 
 static uint GetSlopeZ_Town(const TileInfo* ti)
 {
-	return ti->z + (ti->tileh == 0 ? 0 : 8);
+	return ti->z + (ti->tileh == SLOPE_FLAT ? 0 : 8);
 }
 
-static uint GetSlopeTileh_Town(TileIndex tile, uint tileh)
+static Slope GetSlopeTileh_Town(TileIndex tile, Slope tileh)
 {
-	return 0;
+	return SLOPE_FLAT;
 }
 
 static void AnimateTile_Town(TileIndex tile)
@@ -458,8 +458,8 @@ static RoadBits GetTownRoadMask(TileIndex tile)
 
 static bool IsRoadAllowedHere(TileIndex tile, int dir)
 {
-	uint k;
-	uint slope;
+	Slope k;
+	Slope slope;
 
 	// If this assertion fails, it might be because the world contains
 	//  land at the edges. This is not ok.
@@ -477,7 +477,7 @@ static bool IsRoadAllowedHere(TileIndex tile, int dir)
 		}
 
 		slope = GetTileSlope(tile, NULL);
-		if (slope == 0) {
+		if (slope == SLOPE_FLAT) {
 no_slope:
 			// Tile has no slope
 			// Disallow the road if any neighboring tile has a road.
@@ -493,7 +493,8 @@ no_slope:
 
 		// If the tile is not a slope in the right direction, then
 		// maybe terraform some.
-		if ((k = (dir&1)?0xC:0x9) != slope && (k^0xF) != slope) {
+		k = (dir & 1) ? SLOPE_NE : SLOPE_NW;
+		if (k != slope && ComplementSlope(k) != slope) {
 			uint32 r = Random();
 
 			if (CHANCE16I(1, 8, r) && !_generating_world) {
@@ -503,7 +504,7 @@ no_slope:
 					res = DoCommand(tile, slope, 0, DC_EXEC | DC_AUTO | DC_NO_WATER,
 					                      CMD_TERRAFORM_LAND);
 				} else {
-					res = DoCommand(tile, slope ^ 0xF, 1, DC_EXEC | DC_AUTO | DC_NO_WATER,
+					res = DoCommand(tile, ComplementSlope(slope), 1, DC_EXEC | DC_AUTO | DC_NO_WATER,
 					                      CMD_TERRAFORM_LAND);
 				}
 				if (CmdFailed(res) && CHANCE16I(1, 3, r)) {
@@ -531,14 +532,14 @@ static bool TerraformTownTile(TileIndex tile, int edges, int dir)
 
 static void LevelTownLand(TileIndex tile)
 {
-	uint tileh;
+	Slope tileh;
 
 	TILE_ASSERT(tile);
 
 	// Don't terraform if land is plain or if there's a house there.
 	if (IsTileType(tile, MP_HOUSE)) return;
 	tileh = GetTileSlope(tile, NULL);
-	if (tileh == 0) return;
+	if (tileh == SLOPE_FLAT) return;
 
 	// First try up, then down
 	if (!TerraformTownTile(tile, ~tileh & 0xF, 1)) {
@@ -647,10 +648,10 @@ static void GrowTownInTile(TileIndex* tile_ptr, RoadBits mask, int block, Town* 
 	// Determine direction of slope,
 	//  and build a road if not a special slope.
 	switch (GetTileSlope(tile, NULL)) {
-		case  3: i = DIAGDIR_NE; break;
-		case  6: i = DIAGDIR_NW; break;
-		case  9: i = DIAGDIR_SE; break;
-		case 12: i = DIAGDIR_SW; break;
+		case SLOPE_SW: i = DIAGDIR_NE; break;
+		case SLOPE_SE: i = DIAGDIR_NW; break;
+		case SLOPE_NW: i = DIAGDIR_SE; break;
+		case SLOPE_NE: i = DIAGDIR_SW; break;
 
 		default:
 build_road_and_exit:
@@ -794,7 +795,7 @@ static bool GrowTown(Town *t)
 	for (ptr = _town_coord_mod; ptr != endof(_town_coord_mod); ++ptr) {
 		// Only work with plain land that not already has a house with GetHouseConstructionTick=0
 		if ((!IsTileType(tile, MP_HOUSE) || GetHouseConstructionTick(tile) != 0) &&
-				GetTileSlope(tile, NULL) == 0) {
+				GetTileSlope(tile, NULL) == SLOPE_FLAT) {
 			if (!CmdFailed(DoCommand(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR))) {
 				DoCommand(tile, GenRandomRoadBits(), t->index, DC_EXEC | DC_AUTO, CMD_BUILD_ROAD);
 				_current_player = old_player;
@@ -1013,7 +1014,7 @@ int32 CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP);
 
 	// Can only build on clear flat areas.
-	if (!IsTileType(tile, MP_CLEAR) || GetTileSlope(tile, NULL) != 0) {
+	if (!IsTileType(tile, MP_CLEAR) || GetTileSlope(tile, NULL) != SLOPE_FLAT) {
 		return_cmd_error(STR_0239_SITE_UNSUITABLE);
 	}
 
@@ -1050,7 +1051,7 @@ Town *CreateRandomTown(uint attempts)
 		if (DistanceFromEdge(tile) < 20) continue;
 
 		// Make sure the tile is plain
-		if (!IsTileType(tile, MP_CLEAR) || GetTileSlope(tile, NULL) != 0) continue;
+		if (!IsTileType(tile, MP_CLEAR) || GetTileSlope(tile, NULL) != SLOPE_FLAT) continue;
 
 		// Check not too close to a town
 		if (IsCloseToTown(tile, 20)) continue;
@@ -1093,10 +1094,10 @@ bool GenerateTowns(void)
 	return true;
 }
 
-static bool CheckBuildHouseMode(TileIndex tile, uint tileh, int mode)
+static bool CheckBuildHouseMode(TileIndex tile, Slope tileh, int mode)
 {
 	int b;
-	uint slope;
+	Slope slope;
 
 	static const byte _masks[8] = {
 		0xC,0x3,0x9,0x6,
@@ -1104,12 +1105,11 @@ static bool CheckBuildHouseMode(TileIndex tile, uint tileh, int mode)
 	};
 
 	slope = GetTileSlope(tile, NULL);
-	if (slope & 0x10)
-		return false;
+	if (IsSteepSlope(slope)) return false;
 
 	b = 0;
-	if ((slope & 0xF && ~slope & _masks[mode])) b = ~b;
-	if ((tileh & 0xF && ~tileh & _masks[mode+4])) b = ~b;
+	if ((slope != SLOPE_FLAT && ~slope & _masks[mode])) b = ~b;
+	if ((tileh != SLOPE_FLAT && ~tileh & _masks[mode+4])) b = ~b;
 	if (b)
 		return false;
 
@@ -1148,7 +1148,7 @@ static bool CheckFree2x2Area(TileIndex tile)
 	for (i = 0; i != 4; i++) {
 		tile += ToTileIndexDiff(_tile_add[i]);
 
-		if (GetTileSlope(tile, NULL)) return false;
+		if (GetTileSlope(tile, NULL) != SLOPE_FLAT) return false;
 
 		if (CmdFailed(DoCommand(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER | DC_FORCETEST, CMD_LANDSCAPE_CLEAR)))
 			return false;
@@ -1162,7 +1162,7 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 	int i;
 	uint bitmask;
 	int house;
-	uint slope;
+	Slope slope;
 	uint z;
 	uint oneof = 0;
 
@@ -1220,7 +1220,7 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 			if (HASBITS(t->flags12 , oneof)) continue;
 
 			// Make sure there is no slope?
-			if (_housetype_extra_flags[house] & 0x12 && slope) continue;
+			if (_housetype_extra_flags[house] & 0x12 && slope != SLOPE_FLAT) continue;
 
 			if (_housetype_extra_flags[house] & 0x10) {
 				if (CheckFree2x2Area(tile) ||
@@ -1283,7 +1283,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 
 	// make sure it's possible
 	if (!EnsureNoVehicle(tile)) return false;
-	if (GetTileSlope(tile, NULL) & 0x10) return false;
+	if (IsSteepSlope(GetTileSlope(tile, NULL))) return false;
 
 	r = DoCommand(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(r)) return false;
@@ -1488,7 +1488,7 @@ static bool DoBuildStatueOfCompany(TileIndex tile)
 	PlayerID old;
 	int32 r;
 
-	if (GetTileSlope(tile, NULL) != 0) return false;
+	if (GetTileSlope(tile, NULL) != SLOPE_FLAT) return false;
 
 	if (!IsTileType(tile, MP_HOUSE) &&
 			!IsTileType(tile, MP_CLEAR) &&

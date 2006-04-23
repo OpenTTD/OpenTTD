@@ -48,6 +48,7 @@ typedef struct YearMonthDay {
 #define MAX_YEAR_END 170
 
 #include "map.h"
+#include "slope.h"
 
 // Forward declarations of structs.
 typedef struct Vehicle Vehicle;
@@ -127,7 +128,7 @@ typedef enum TransportTypes {
 typedef struct TileInfo {
 	uint x;
 	uint y;
-	uint tileh;
+	Slope tileh;
 	uint type;
 	TileIndex tile;
 	uint z;
@@ -331,7 +332,7 @@ typedef void ChangeTileOwnerProc(TileIndex tile, PlayerID old_player, PlayerID n
  * other bits that can be set? */
 typedef uint32 VehicleEnterTileProc(Vehicle *v, TileIndex tile, int x, int y);
 typedef void VehicleLeaveTileProc(Vehicle *v, TileIndex tile, int x, int y);
-typedef uint GetSlopeTilehProc(TileIndex, uint tileh);
+typedef Slope GetSlopeTilehProc(TileIndex, Slope tileh);
 
 typedef struct {
 	DrawTileProc *draw_tile_proc;

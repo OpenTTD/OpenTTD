@@ -9,7 +9,7 @@ void FindLandscapeHeight(TileInfo *ti, uint x, uint y);
 void DoClearSquare(TileIndex tile);
 void RunTileLoop(void);
 
-uint GetPartialZ(int x, int y, int corners);
+uint GetPartialZ(int x, int y, Slope corners);
 uint GetSlopeZ(int x, int y);
 uint32 GetTileTrackStatus(TileIndex tile, TransportType mode);
 void GetAcceptedCargo(TileIndex tile, AcceptedCargo ac);

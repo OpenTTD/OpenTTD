@@ -384,8 +384,8 @@ static void DrawTile_Industry(TileInfo *ti)
 
 	z = ti->z;
 	/* Add bricks below the industry? */
-	if (ti->tileh & 0xF) {
-		AddSortableSpriteToDraw(SPR_FOUNDATION_BASE + (ti->tileh & 0xF), ti->x, ti->y, 16, 16, 7, z);
+	if (ti->tileh != SLOPE_FLAT) {
+		AddSortableSpriteToDraw(SPR_FOUNDATION_BASE + ti->tileh, ti->x, ti->y, 16, 16, 7, z);
 		AddChildSpriteScreen(image, 31, 1);
 		z += 8;
 	} else {
@@ -420,12 +420,12 @@ static void DrawTile_Industry(TileInfo *ti)
 
 static uint GetSlopeZ_Industry(const TileInfo* ti)
 {
-	return ti->z + (ti->tileh == 0 ? 0 : 8);
+	return ti->z + (ti->tileh == SLOPE_FLAT ? 0 : 8);
 }
 
-static uint GetSlopeTileh_Industry(TileIndex tile, uint tileh)
+static Slope GetSlopeTileh_Industry(TileIndex tile, Slope tileh)
 {
-	return 0;
+	return SLOPE_FLAT;
 }
 
 static void GetAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
@@ -694,7 +694,7 @@ static void AnimateTile_Industry(TileIndex tile)
 
 static void CreateIndustryEffectSmoke(TileIndex tile)
 {
-	uint tileh;
+	Slope tileh;
 	uint x;
 	uint y;
 	uint z;
@@ -702,7 +702,7 @@ static void CreateIndustryEffectSmoke(TileIndex tile)
 	tileh = GetTileSlope(tile, &z);
 	x = TileX(tile) * TILE_SIZE;
 	y = TileY(tile) * TILE_SIZE;
-	CreateEffectVehicle(x + 15, y + 14, z + 59 + (tileh != 0 ? 8 : 0), EV_CHIMNEY_SMOKE);
+	CreateEffectVehicle(x + 15, y + 14, z + 59 + (tileh != SLOPE_FLAT ? 8 : 0), EV_CHIMNEY_SMOKE);
 }
 
 static void MakeIndustryTileBigger(TileIndex tile)
@@ -1329,7 +1329,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable*
 
 		if (it->gfx == 0xFF) {
 			if (!IsTileType(cur_tile, MP_WATER) ||
-					GetTileSlope(cur_tile, NULL) != 0) {
+					GetTileSlope(cur_tile, NULL) != SLOPE_FLAT) {
 				return false;
 			}
 		} else {
@@ -1338,25 +1338,25 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable*
 			if (type == IT_OIL_RIG)  {
 				if (!IsTileType(cur_tile, MP_WATER) || _m[cur_tile].m5 != 0) return false;
 			} else {
-				uint tileh;
+				Slope tileh;
 
 				if (IsTileType(cur_tile, MP_WATER) && _m[cur_tile].m5 == 0) return false;
 
 				tileh = GetTileSlope(cur_tile, NULL);
-				if (IsSteepTileh(tileh)) return false;
+				if (IsSteepSlope(tileh)) return false;
 
-				if (tileh != 0) {
-					int t;
+				if (tileh != SLOPE_FLAT) {
+					Slope t;
 					byte bits = _industry_section_bits[it->gfx];
 
 					if (bits & 0x10) return false;
 
-					t = ~tileh;
+					t = ComplementSlope(tileh);
 
-					if (bits & 1 && (t & (1 + 8))) return false;
-					if (bits & 2 && (t & (4 + 8))) return false;
-					if (bits & 4 && (t & (1 + 2))) return false;
-					if (bits & 8 && (t & (2 + 4))) return false;
+					if (bits & 1 && (t & SLOPE_NW)) return false;
+					if (bits & 2 && (t & SLOPE_NE)) return false;
+					if (bits & 4 && (t & SLOPE_SW)) return false;
+					if (bits & 8 && (t & SLOPE_SE)) return false;
 				}
 
 				if (type == IT_BANK_TEMP) {

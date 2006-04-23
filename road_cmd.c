@@ -154,7 +154,7 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					RoadBits present = GetRoadBits(tile);
 					RoadBits c = pieces;
 
-					if (GetTileSlope(tile, NULL) != 0  &&
+					if (GetTileSlope(tile, NULL) != SLOPE_FLAT &&
 							(present == ROAD_Y || present == ROAD_X)) {
 						c |= (c & 0xC) >> 2;
 						c |= (c & 0x3) << 2;
@@ -235,17 +235,17 @@ static const RoadBits _valid_tileh_slopes_road[][15] = {
 };
 
 
-static uint32 CheckRoadSlope(int tileh, RoadBits* pieces, RoadBits existing)
+static uint32 CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existing)
 {
 	RoadBits road_bits;
 
-	if (IsSteepTileh(tileh)) return CMD_ERROR;
+	if (IsSteepSlope(tileh)) return CMD_ERROR;
 	road_bits = *pieces | existing;
 
 	// no special foundation
 	if ((~_valid_tileh_slopes_road[0][tileh] & road_bits) == 0) {
 		// force that all bits are set when we have slopes
-		if (tileh != 0) *pieces |= _valid_tileh_slopes_road[0][tileh];
+		if (tileh != SLOPE_FLAT) *pieces |= _valid_tileh_slopes_road[0][tileh];
 		return 0; // no extra cost
 	}
 
@@ -255,7 +255,7 @@ static uint32 CheckRoadSlope(int tileh, RoadBits* pieces, RoadBits existing)
 	}
 
 	// partly leveled up tile, only if there's no road on that tile
-	if (existing == 0 && (tileh == 1 || tileh == 2 || tileh == 4 || tileh == 8)) {
+	if (existing == 0 && (tileh == SLOPE_W || tileh == SLOPE_S || tileh == SLOPE_E || tileh == SLOPE_N)) {
 		// force full pieces.
 		*pieces |= (*pieces & 0xC) >> 2;
 		*pieces |= (*pieces & 0x3) << 2;
@@ -275,7 +275,7 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	int32 ret;
 	RoadBits existing = 0;
 	RoadBits pieces;
-	byte tileh;
+	Slope tileh;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -312,13 +312,13 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		case MP_RAILWAY: {
 			Axis roaddir;
 
-			if (IsSteepTileh(tileh)) { // very steep tile
+			if (IsSteepSlope(tileh)) {
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 			}
 
 #define M(x) (1 << (x))
 			/* Level crossings may only be built on these slopes */
-			if (!HASBIT(M(14) | M(13) | M(11) | M(10) | M(7) | M(5) | M(0), tileh)) {
+			if (!HASBIT(M(SLOPE_SEN) | M(SLOPE_ENW) | M(SLOPE_NWS) | M(SLOPE_NS) | M(SLOPE_WSE) | M(SLOPE_EW) | M(SLOPE_FLAT), tileh)) {
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 			}
 #undef M
@@ -349,7 +349,7 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		case MP_TUNNELBRIDGE:
 			/* check for flat land */
-			if (IsSteepTileh(tileh)) { // very steep tile
+			if (IsSteepSlope(tileh)) {
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 			}
 
@@ -551,7 +551,7 @@ int32 CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	int32 cost;
 	Depot *dep;
-	uint tileh;
+	Slope tileh;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -560,9 +560,9 @@ int32 CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	tileh = GetTileSlope(tile, NULL);
-	if (tileh != 0 && (
+	if (tileh != SLOPE_FLAT && (
 				!_patches.build_on_slopes ||
-				IsSteepTileh(tileh) ||
+				IsSteepSlope(tileh) ||
 				!CanBuildDepotByTileh(p1, tileh)
 			)) {
 		return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
@@ -655,7 +655,7 @@ typedef struct DrawRoadSeqStruct {
 #include "table/road_land.h"
 
 
-uint GetRoadFoundation(uint tileh, RoadBits bits)
+uint GetRoadFoundation(Slope tileh, RoadBits bits)
 {
 	int i;
 	// normal level sloped building
@@ -663,10 +663,10 @@ uint GetRoadFoundation(uint tileh, RoadBits bits)
 
 	// inclined sloped building
 	if ((
-				(i  = 0, tileh == 1) ||
-				(i += 2, tileh == 2) ||
-				(i += 2, tileh == 4) ||
-				(i += 2, tileh == 8)
+				(i  = 0, tileh == SLOPE_W) ||
+				(i += 2, tileh == SLOPE_S) ||
+				(i += 2, tileh == SLOPE_E) ||
+				(i += 2, tileh == SLOPE_N)
 			) && (
 				(     bits == ROAD_X) ||
 				(i++, bits == ROAD_Y)
@@ -694,14 +694,14 @@ static void DrawRoadBits(TileInfo* ti, RoadBits road)
 	const DrawRoadTileStruct *drts;
 	PalSpriteID image = 0;
 
-	if (ti->tileh != 0) {
+	if (ti->tileh != SLOPE_FLAT) {
 		int foundation = GetRoadFoundation(ti->tileh, road);
 
 		if (foundation != 0) DrawFoundation(ti, foundation);
 
 		// DrawFoundation() modifies ti.
 		// Default sloped sprites..
-		if (ti->tileh != 0) image = _road_sloped_sprites[ti->tileh - 1] + 0x53F;
+		if (ti->tileh != SLOPE_FLAT) image = _road_sloped_sprites[ti->tileh - 1] + 0x53F;
 	}
 
 	if (image == 0) image = _road_tile_sprites_1[road];
@@ -731,7 +731,7 @@ static void DrawRoadBits(TileInfo* ti, RoadBits road)
 		int x = ti->x | drts->subcoord_x;
 		int y = ti->y | drts->subcoord_y;
 		byte z = ti->z;
-		if (ti->tileh != 0) z = GetSlopeZ(x, y);
+		if (ti->tileh != SLOPE_FLAT) z = GetSlopeZ(x, y);
 		AddSortableSpriteToDraw(drts->image, x, y, 2, 2, 0x10, z);
 	}
 }
@@ -746,7 +746,7 @@ static void DrawTile_Road(TileInfo *ti)
 			break;
 
 		case ROAD_CROSSING: {
-			if (ti->tileh != 0) DrawFoundation(ti, ti->tileh);
+			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
 
 			image = GetRailTypeInfo(GetRailTypeCrossing(ti->tile))->base_sprites.crossing;
 
@@ -772,7 +772,7 @@ static void DrawTile_Road(TileInfo *ti)
 			PlayerID player;
 			const DrawRoadSeqStruct* drss;
 
-			if (ti->tileh != 0) DrawFoundation(ti, ti->tileh);
+			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
 
 			ormod = PALETTE_TO_GREY;	//was this a bug/problem?
 			player = GetTileOwner(ti->tile);
@@ -823,10 +823,10 @@ void DrawRoadDepotSprite(int x, int y, int image)
 
 static uint GetSlopeZ_Road(const TileInfo* ti)
 {
-	uint tileh = ti->tileh;
+	Slope tileh = ti->tileh;
 	uint z = ti->z;
 
-	if (tileh == 0) return z;
+	if (tileh == SLOPE_FLAT) return z;
 	if (GetRoadType(ti->tile) == ROAD_NORMAL) {
 		uint f = GetRoadFoundation(tileh, GetRoadBits(ti->tile));
 
@@ -840,17 +840,17 @@ static uint GetSlopeZ_Road(const TileInfo* ti)
 	}
 }
 
-static uint GetSlopeTileh_Road(TileIndex tile, uint tileh)
+static Slope GetSlopeTileh_Road(TileIndex tile, Slope tileh)
 {
-	if (tileh == 0) return 0;
+	if (tileh == SLOPE_FLAT) return SLOPE_FLAT;
 	if (GetRoadType(tile) == ROAD_NORMAL) {
 		uint f = GetRoadFoundation(tileh, GetRoadBits(tile));
 
 		if (f == 0) return tileh;
-		if (f < 15) return 0; // leveled foundation
+		if (f < 15) return SLOPE_FLAT; // leveled foundation
 		return _inclined_tileh[f - 15]; // inclined foundation
 	} else {
-		return 0;
+		return SLOPE_FLAT;
 	}
 }
 
@@ -915,7 +915,7 @@ static void TileLoop_Road(TileIndex tile)
 			if (t->road_build_months != 0 &&
 					!(DistanceManhattan(t->xy, tile) >= 8 && grp == 0) &&
 					GetRoadType(tile) == ROAD_NORMAL && (GetRoadBits(tile) == ROAD_X || GetRoadBits(tile) == ROAD_Y)) {
-				if (GetTileSlope(tile, NULL) == 0 && EnsureNoVehicle(tile) && CHANCE16(1, 20)) {
+				if (GetTileSlope(tile, NULL) == SLOPE_FLAT && EnsureNoVehicle(tile) && CHANCE16(1, 20)) {
 					StartRoadWorks(tile);
 
 					SndPlayTileFx(SND_21_JACKHAMMER, tile);

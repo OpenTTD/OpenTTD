@@ -135,7 +135,7 @@ static inline DiagDirection GetDepotDirection(TileIndex tile, TransportType type
       03 (exit towards NW) we need either bit 0 or 4 set in tileh: 0x4C >> 3 = 1001<p>
       So ((0x4C >> p2) & tileh) determines whether the depot can be built on the current tileh
 */
-static inline bool CanBuildDepotByTileh(uint32 direction, uint tileh)
+static inline bool CanBuildDepotByTileh(uint32 direction, Slope tileh)
 {
 	return (0x4C >> direction) & tileh;
 }

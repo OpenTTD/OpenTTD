@@ -250,10 +250,9 @@ static void DrawTile_Trees(TileInfo *ti)
 	DrawClearLandFence(ti);
 
 	z = ti->z;
-	if (ti->tileh != 0) {
+	if (ti->tileh != SLOPE_FLAT) {
 		z += 4;
-		if (IsSteepTileh(ti->tileh))
-			z += 4;
+		if (IsSteepSlope(ti->tileh)) z += 4;
 	}
 
 	{
@@ -329,7 +328,7 @@ static uint GetSlopeZ_Trees(const TileInfo* ti)
 	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh) + ti->z;
 }
 
-static uint GetSlopeTileh_Trees(TileIndex tile, uint tileh)
+static Slope GetSlopeTileh_Trees(TileIndex tile, Slope tileh)
 {
 	return tileh;
 }

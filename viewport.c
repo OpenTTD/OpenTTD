@@ -610,9 +610,9 @@ static void DrawTileSelection(const TileInfo *ti)
 		} else if (_thd.drawstyle & HT_POINT) {
 			// Figure out the Z coordinate for the single dot.
 			byte z = ti->z;
-			if (ti->tileh & 8) {
+			if (ti->tileh & SLOPE_N) {
 				z += 8;
-				if (!(ti->tileh & 2) && (IsSteepTileh(ti->tileh))) z += 8;
+				if (ti->tileh == SLOPE_STEEP_N) z += 8;
 			}
 			DrawGroundSpriteAt(_cur_dpi->zoom != 2 ? SPR_DOT : SPR_DOT_SMALL, ti->x, ti->y, z);
 		} else if (_thd.drawstyle & HT_RAIL /*&& _thd.place_mode == VHM_RAIL*/) {

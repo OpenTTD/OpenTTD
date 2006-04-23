@@ -5,6 +5,7 @@
 
 #include "macros.h"
 #include "map.h"
+#include "slope.h"
 
 typedef enum TileTypes {
 	MP_CLEAR,
@@ -26,11 +27,11 @@ typedef enum TropicZones {
 	TROPICZONE_RAINFOREST = 2,
 } TropicZone;
 
-uint GetTileh(uint n, uint w, uint e, uint s, uint *h);
-uint GetTileSlope(TileIndex tile, uint *h);
+Slope GetTileh(uint n, uint w, uint e, uint s, uint *h);
+Slope GetTileSlope(TileIndex tile, uint *h);
 uint GetTileZ(TileIndex tile);
 
-static inline bool CorrectZ(uint tileh)
+static inline bool CorrectZ(Slope tileh)
 {
 	/* tile height must be corrected if the north corner is not raised, but
 	 * any other corner is. These are the cases 1 till 7 */
@@ -41,11 +42,6 @@ static inline uint TileHeight(TileIndex tile)
 {
 	assert(tile < MapSize());
 	return GB(_m[tile].type_height, 0, 4);
-}
-
-static inline bool IsSteepTileh(uint tileh)
-{
-	return (tileh & 0x10);
 }
 
 static inline void SetTileHeight(TileIndex tile, uint height)

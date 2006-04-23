@@ -141,7 +141,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 			{
 				const DrawTileUnmovableStruct *dtus;
 
-				if (ti->tileh) DrawFoundation(ti, ti->tileh);
+				if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
 				DrawClearLandTile(ti, 2);
 
 				dtus = &_draw_tile_unmovable_data[GetUnmovableType(ti->tile)];
@@ -175,7 +175,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 				const DrawTileSprites *t;
 
 				assert(IsCompanyHQ(ti->tile));
-				if (ti->tileh) DrawFoundation(ti, ti->tileh);
+				if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
 
 				ormod = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
 
@@ -201,13 +201,13 @@ static uint GetSlopeZ_Unmovable(const TileInfo* ti)
 	if (IsOwnedLand(ti->tile)) {
 		return ti->z + GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh);
 	} else {
-		return ti->z + (ti->tileh == 0 ? 0 : 8);
+		return ti->z + (ti->tileh == SLOPE_FLAT ? 0 : 8);
 	}
 }
 
-static uint GetSlopeTileh_Unmovable(TileIndex tile, uint tileh)
+static Slope GetSlopeTileh_Unmovable(TileIndex tile, Slope tileh)
 {
-	return IsOwnedLand(tile) ? tileh : 0;
+	return IsOwnedLand(tile) ? tileh : SLOPE_FLAT;
 }
 
 static int32 ClearTile_Unmovable(TileIndex tile, byte flags)
@@ -341,7 +341,7 @@ void GenerateUnmovables(void)
 	j = ScaleByMapSize(40); // maximum number of radio towers on the map
 	do {
 		tile = RandomTile();
-		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h >= 32) {
+		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h >= 32) {
 			if (!checkRadioTowerNearby(tile)) continue;
 			MakeTransmitter(tile);
 			if (--j == 0) break;
@@ -372,7 +372,7 @@ restart:
 		do {
 			if (--j == 0) goto restart;
 			tile = TILE_MASK(tile + TileOffsByDir(dir));
-		} while (!(IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h <= TILE_HEIGHT * 2));
+		} while (!(IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h <= TILE_HEIGHT * 2));
 
 		assert(tile == TILE_MASK(tile));
 

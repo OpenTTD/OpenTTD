@@ -77,15 +77,17 @@ int CalcBridgeLenCostFactor(int x)
 	}
 }
 
+#define M(x) (1 << (x))
 enum {
-	// foundation, whole tile is leveled up (tileh's 7, 11, 13, 14) --> 3 corners raised
-	BRIDGE_FULL_LEVELED_FOUNDATION = 1 << 7 | 1 << 11 | 1 << 13 | 1 << 14,
-	// foundation, tile is partly leveled up (tileh's 1, 2, 4, 8) --> 1 corner raised
-	BRIDGE_PARTLY_LEVELED_FOUNDATION = 1 << 1 | 1 << 2 | 1 << 4 | 1 << 8,
-	// no foundations (X,Y direction) (tileh's 0, 3, 6, 9, 12)
-	BRIDGE_NO_FOUNDATION = 1 << 0 | 1 << 3 | 1 << 6 | 1 << 9 | 1 << 12,
-	BRIDGE_HORZ_RAMP = (BRIDGE_PARTLY_LEVELED_FOUNDATION | BRIDGE_NO_FOUNDATION) & ~(1 << 0)
+	// foundation, whole tile is leveled up --> 3 corners raised
+	BRIDGE_FULL_LEVELED_FOUNDATION = M(SLOPE_WSE) | M(SLOPE_NWS) | M(SLOPE_ENW) | M(SLOPE_SEN),
+	// foundation, tile is partly leveled up --> 1 corner raised
+	BRIDGE_PARTLY_LEVELED_FOUNDATION = M(SLOPE_W) | M(SLOPE_S) | M(SLOPE_E) | M(SLOPE_N),
+	// no foundations (X,Y direction)
+	BRIDGE_NO_FOUNDATION = M(SLOPE_FLAT) | M(SLOPE_SW) | M(SLOPE_SE) | M(SLOPE_NW) | M(SLOPE_NE),
+	BRIDGE_HORZ_RAMP = (BRIDGE_PARTLY_LEVELED_FOUNDATION | BRIDGE_NO_FOUNDATION) & ~M(SLOPE_FLAT)
 };
+#undef M
 
 static inline const PalSpriteID *GetBridgeSpriteTable(int index, byte table)
 {
@@ -105,43 +107,41 @@ static inline byte GetBridgeFlags(int index) { return _bridge[index].flags;}
  *	is_start_tile = false		<-- end tile
  *	is_start_tile = true		<-- start tile
  */
-static uint32 CheckBridgeSlope(Axis direction, uint tileh, bool is_start_tile)
+static uint32 CheckBridgeSlope(Axis direction, Slope tileh, bool is_start_tile)
 {
-	if (IsSteepTileh(tileh)) return CMD_ERROR;
+	if (IsSteepSlope(tileh)) return CMD_ERROR;
 
 	if (is_start_tile) {
 		/* check slope at start tile
 				- no extra cost
-				- direction X: tiles 0, 12
-				- direction Y: tiles 0,  9
 		*/
-		if ((direction == AXIS_X ? 0x1001 : 0x201) & (1 << tileh)) return 0;
+#define M(x) (1 << (x))
+		if (HASBIT(M(SLOPE_FLAT) | (direction == AXIS_X ? M(SLOPE_NE) : M(SLOPE_NW)), tileh)) return 0;
 
 		// disallow certain start tiles to avoid certain crooked bridges
-		if (tileh == 2) return CMD_ERROR;
+		if (tileh == SLOPE_S) return CMD_ERROR;
 	} else {
 		/*	check slope at end tile
 				- no extra cost
-				- direction X: tiles 0, 3
-				- direction Y: tiles 0, 6
 		*/
-		if ((direction == AXIS_X ? 0x9 : 0x41) & (1 << tileh)) return 0;
+		if (HASBIT(M(SLOPE_FLAT) | (direction == AXIS_X ? M(SLOPE_SW) : M(SLOPE_SE)), tileh)) return 0;
+#undef M
 
 		// disallow certain end tiles to avoid certain crooked bridges
-		if (tileh == 8) return CMD_ERROR;
+		if (tileh == SLOPE_N) return CMD_ERROR;
 	}
 
 	/*	disallow common start/end tiles to avoid certain crooked bridges e.g.
 	 *	start-tile:	X 2,1 Y 2,4 (2 was disabled before)
 	 *	end-tile:		X 8,4 Y 8,1 (8 was disabled before)
 	 */
-	if ((tileh == 1 && is_start_tile != (direction != AXIS_X)) ||
-			(tileh == 4 && is_start_tile == (direction != AXIS_X))) {
+	if ((tileh == SLOPE_W && is_start_tile != (direction != AXIS_X)) ||
+			(tileh == SLOPE_E && is_start_tile == (direction != AXIS_X))) {
 		return CMD_ERROR;
 	}
 
 	// slope foundations
-	if (BRIDGE_FULL_LEVELED_FOUNDATION & (1 << tileh) || BRIDGE_PARTLY_LEVELED_FOUNDATION & (1 << tileh))
+	if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION | BRIDGE_PARTLY_LEVELED_FOUNDATION, tileh))
 		return _price.terraform;
 
 	return CMD_ERROR;
@@ -188,8 +188,8 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 	int sx,sy;
 	TileIndex tile_start;
 	TileIndex tile_end;
-	uint tileh_start;
-	uint tileh_end;
+	Slope tileh_start;
+	Slope tileh_end;
 	uint z_start;
 	uint z_end;
 	TileIndex tile;
@@ -253,14 +253,14 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 	tileh_start = GetTileSlope(tile_start, &z_start);
 	tileh_end = GetTileSlope(tile_end, &z_end);
 
-	if (BRIDGE_FULL_LEVELED_FOUNDATION & (1 << tileh_start)) {
+	if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh_start)) {
 		z_start += 8;
-		tileh_start = 0;
+		tileh_start = SLOPE_FLAT;
 	}
 
-	if (BRIDGE_FULL_LEVELED_FOUNDATION & (1 << tileh_end)) {
+	if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh_end)) {
 		z_end += 8;
-		tileh_end = 0;
+		tileh_end = SLOPE_FLAT;
 	}
 
 	if (z_start != z_end) return_cmd_error(STR_5009_LEVEL_LAND_OR_WATER_REQUIRED);
@@ -322,7 +322,7 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 
 		tile += delta;
 
-		if (GetTileSlope(tile, &z) != 0 && z >= z_start) {
+		if (GetTileSlope(tile, &z) != SLOPE_FLAT && z >= z_start) {
 			return_cmd_error(STR_5009_LEVEL_LAND_OR_WATER_REQUIRED);
 		}
 
@@ -437,8 +437,8 @@ int32 CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
 	TileIndexDiff delta;
 	TileIndex end_tile;
 	DiagDirection direction;
-	uint start_tileh;
-	uint end_tileh;
+	Slope start_tileh;
+	Slope end_tileh;
 	uint start_z;
 	uint end_z;
 	int32 cost;
@@ -451,10 +451,10 @@ int32 CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
 	start_tileh = GetTileSlope(start_tile, &start_z);
 
 	switch (start_tileh) {
-		case  3: direction = DIAGDIR_SW; break;
-		case  6: direction = DIAGDIR_SE; break;
-		case  9: direction = DIAGDIR_NW; break;
-		case 12: direction = DIAGDIR_NE; break;
+		case SLOPE_SW: direction = DIAGDIR_SW; break;
+		case SLOPE_SE: direction = DIAGDIR_SE; break;
+		case SLOPE_NW: direction = DIAGDIR_NW; break;
+		case SLOPE_NE: direction = DIAGDIR_NE; break;
 		default: return_cmd_error(STR_500B_SITE_UNSUITABLE_FOR_TUNNEL);
 	}
 
@@ -483,7 +483,7 @@ int32 CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
 	_build_tunnel_endtile = end_tile;
 
 	// slope of end tile must be complementary to the slope of the start tile
-	if (end_tileh != (15 ^ start_tileh)) {
+	if (end_tileh != ComplementSlope(start_tileh)) {
 		ret = DoCommand(end_tile, end_tileh & start_tileh, 0, flags, CMD_TERRAFORM_LAND);
 		if (CmdFailed(ret)) return_cmd_error(STR_5005_UNABLE_TO_EXCAVATE_LAND);
 	} else {
@@ -687,7 +687,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 				if (IsClearUnderBridge(c)) {
 					DoClearSquare(c);
 				} else {
-					if (GetTileSlope(c, NULL) == 0) {
+					if (GetTileSlope(c, NULL) == SLOPE_FLAT) {
 						MakeWater(c);
 					} else {
 						MakeShore(c);
@@ -805,9 +805,9 @@ uint GetBridgeHeight(TileIndex t)
 	TileIndex tile = GetSouthernBridgeEnd(t);
 
 	/* Return the height there (the height of the NORTH CORNER)
-	 * If the end of the bridge is on a tileh 7 (all raised, except north corner),
+	 * If the end of the bridge is on a tile with all corners except the north corner raised,
 	 * the z coordinate is 1 height level too low. Compensate for that */
-	return TilePixelHeight(tile) + (GetTileSlope(tile, NULL) == 7 ? 8 : 0);
+	return TilePixelHeight(tile) + (GetTileSlope(tile, NULL) == SLOPE_WSE ? 8 : 0);
 }
 
 static const byte _bridge_foundations[2][16] = {
@@ -840,7 +840,7 @@ static void DrawBridgePillars(PalSpriteID image, const TileInfo *ti, int x, int 
 		front_height = ti->z + ((ti->tileh & p[0])?8:0);
 		back_height = ti->z + ((ti->tileh & p[1])?8:0);
 
-		if (IsSteepTileh(ti->tileh)) {
+		if (IsSteepSlope(ti->tileh)) {
 			if (!(ti->tileh & p[2])) front_height += 8;
 			if (!(ti->tileh & p[3])) back_height += 8;
 		}
@@ -857,18 +857,17 @@ static void DrawBridgePillars(PalSpriteID image, const TileInfo *ti, int x, int 
 	}
 }
 
-uint GetBridgeFoundation(uint tileh, Axis axis)
+uint GetBridgeFoundation(Slope tileh, Axis axis)
 {
 	int i;
-	// normal level sloped building (7, 11, 13, 14)
-	if (BRIDGE_FULL_LEVELED_FOUNDATION & (1 << tileh)) return tileh;
+	if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh)) return tileh;
 
 	// inclined sloped building
 	if ((
-				(i  = 0, tileh == 1) ||
-				(i += 2, tileh == 2) ||
-				(i += 2, tileh == 4) ||
-				(i += 2, tileh == 8)
+				(i  = 0, tileh == SLOPE_W) ||
+				(i += 2, tileh == SLOPE_S) ||
+				(i += 2, tileh == SLOPE_E) ||
+				(i += 2, tileh == SLOPE_N)
 			) && (
 				      axis == AXIS_X ||
 				(i++, axis == AXIS_Y)
@@ -938,7 +937,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		assert( (base_offset & 0x07) == 0x00);
 
 		if (IsBridgeRamp(ti->tile)) {
-			if (!(BRIDGE_NO_FOUNDATION & (1 << ti->tileh))) {	// no foundations for 0, 3, 6, 9, 12
+			if (!HASBIT(BRIDGE_NO_FOUNDATION, ti->tileh)) {
 				int f = GetBridgeFoundation(ti->tileh, DiagDirToAxis(GetBridgeRampDirection(ti->tile)));
 				if (f) DrawFoundation(ti, f);
 			}
@@ -946,7 +945,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			// HACK Wizardry to convert the bridge ramp direction into a sprite offset
 			base_offset += (6 - GetBridgeRampDirection(ti->tile)) % 4;
 
-			if (ti->tileh == 0) base_offset += 4; // sloped bridge head
+			if (ti->tileh == SLOPE_FLAT) base_offset += 4; // sloped bridge head
 
 			/* Table number 6 always refers to the bridge heads for any bridge type */
 			image = GetBridgeSpriteTable(GetBridgeType(ti->tile), 6)[base_offset];
@@ -976,7 +975,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				if (GetTransportTypeUnderBridge(ti->tile) == TRANSPORT_RAIL) {
 					const RailtypeInfo* rti = GetRailTypeInfo(GetRailType(ti->tile));
 
-					if (ti->tileh == 0) {
+					if (ti->tileh == SLOPE_FLAT) {
 						image = (axis == AXIS_X ? SPR_RAIL_TRACK_Y : SPR_RAIL_TRACK_X);
 					} else {
 						image = SPR_RAIL_TRACK_Y + _track_sloped_sprites[ti->tileh - 1];
@@ -984,7 +983,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 					image += rti->total_offset;
 					if (ice) image += rti->snow_offset;
 				} else {
-					if (ti->tileh == 0) {
+					if (ti->tileh == SLOPE_FLAT) {
 						image = (axis == AXIS_X ? SPR_ROAD_Y : SPR_ROAD_X);
 					} else {
 						image = _road_sloped_sprites[ti->tileh - 1] + 0x53F;
@@ -997,7 +996,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 					image = (ice ? SPR_FLAT_SNOWY_TILE : SPR_FLAT_GRASS_TILE);
 					DrawGroundSprite(image + _tileh_to_sprite[ti->tileh]);
 				} else {
-					if (ti->tileh == 0) {
+					if (ti->tileh == SLOPE_FLAT) {
 						DrawGroundSprite(SPR_FLAT_WATER_TILE);
 						if (ti->z != 0) DrawCanalWater(ti->tile);
 					} else {
@@ -1061,7 +1060,7 @@ static uint GetSlopeZ_TunnelBridge(const TileInfo* ti)
 	uint z = ti->z;
 	uint x = ti->x & 0xF;
 	uint y = ti->y & 0xF;
-	uint tileh = ti->tileh;
+	Slope tileh = ti->tileh;
 
 	if (IsTunnel(tile)) {
 		uint pos = (DiagDirToAxis(GetTunnelDirection(tile)) == AXIS_X ? y : x);
@@ -1098,7 +1097,7 @@ static uint GetSlopeZ_TunnelBridge(const TileInfo* ti)
 			}
 		} else {
 			// HACK on the bridge?
-			if (_get_z_hint >= z + 8 + (tileh == 0 ? 0 : 8)) return _get_z_hint;
+			if (_get_z_hint >= z + 8 + (tileh == SLOPE_FLAT ? 0 : 8)) return _get_z_hint;
 
 			if (IsTransportUnderBridge(tile)) {
 				uint f = _bridge_foundations[GetBridgeAxis(tile)][tileh];
@@ -1114,10 +1113,10 @@ static uint GetSlopeZ_TunnelBridge(const TileInfo* ti)
 	return z + GetPartialZ(x, y, tileh);
 }
 
-static uint GetSlopeTileh_TunnelBridge(TileIndex tile, uint tileh)
+static Slope GetSlopeTileh_TunnelBridge(TileIndex tile, Slope tileh)
 {
 	// not accurate, but good enough for slope graphics drawing
-	return 0;
+	return SLOPE_FLAT;
 }
 
 
@@ -1361,7 +1360,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 			uint h;
 
 			// Compensate for possible foundation
-			if (GetTileSlope(tile, &h) != 0) h += 8;
+			if (GetTileSlope(tile, &h) != SLOPE_FLAT) h += 8;
 			if (IsBridgeRamp(tile) ||
 					myabs(h - v->z_pos) > 2) { // high above the ground -> on the bridge
 				/* modify speed of vehicle */

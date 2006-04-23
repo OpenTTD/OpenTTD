@@ -19,9 +19,9 @@ static uint GetSlopeZ_Dummy(const TileInfo* ti)
 	return 0;
 }
 
-static uint GetSlopeTileh_Dummy(TileIndex tile, uint tileh)
+static Slope GetSlopeTileh_Dummy(TileIndex tile, Slope tileh)
 {
-	return 0;
+	return SLOPE_FLAT;
 }
 
 static int32 ClearTile_Dummy(TileIndex tile, byte flags)

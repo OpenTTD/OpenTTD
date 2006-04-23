@@ -137,10 +137,9 @@ static void *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 	return v;
 }
 
-static inline uint Correct_Z(uint tileh)
+static inline uint Correct_Z(Slope tileh)
 {
 	// needs z correction for slope-type graphics that have the NORTHERN tile lowered
-	// 1, 2, 3, 4, 5, 6 and 7
 	return CorrectZ(tileh) ? 8 : 0;
 }
 

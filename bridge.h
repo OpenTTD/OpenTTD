@@ -26,6 +26,6 @@ typedef struct Bridge {
 extern const Bridge orig_bridge[MAX_BRIDGES];
 extern Bridge _bridge[MAX_BRIDGES];
 
-uint GetBridgeFoundation(uint tileh, Axis axis);
+uint GetBridgeFoundation(Slope tileh, Axis axis);
 
 #endif /* BRIDGE_H */

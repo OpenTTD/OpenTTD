@@ -51,7 +51,7 @@ const byte _tileh_to_sprite[32] = {
 };
 
 const byte _inclined_tileh[] = {
-	3, 9, 3, 6, 12, 6, 12, 9
+	SLOPE_SW, SLOPE_NW, SLOPE_SW, SLOPE_SE, SLOPE_NE, SLOPE_SE, SLOPE_NE, SLOPE_NW
 };
 
 
@@ -62,7 +62,7 @@ void FindLandscapeHeight(TileInfo *ti, uint x, uint y)
 	ti->y = y;
 
 	if (x >= MapMaxX() * TILE_SIZE - 1 || y >= MapMaxY() * TILE_SIZE - 1) {
-		ti->tileh = 0;
+		ti->tileh = SLOPE_FLAT;
 		ti->type = MP_VOID;
 		ti->tile = 0;
 		ti->z = 0;
@@ -75,96 +75,98 @@ void FindLandscapeHeight(TileInfo *ti, uint x, uint y)
 	}
 }
 
-uint GetPartialZ(int x, int y, int corners)
+uint GetPartialZ(int x, int y, Slope corners)
 {
 	int z = 0;
 
 	switch (corners) {
-	case 1:
+	case SLOPE_W:
 		if (x - y >= 0)
 			z = (x - y) >> 1;
 		break;
 
-	case 2:
+	case SLOPE_S:
 		y^=0xF;
 		if ( (x - y) >= 0)
 			z = (x - y) >> 1;
 		break;
 
-	case 3:
+	case SLOPE_SW:
 		z = (x>>1) + 1;
 		break;
 
-	case 4:
+	case SLOPE_E:
 		if (y - x >= 0)
 			z = (y - x) >> 1;
 		break;
 
-	case 5:
-	case 10:
-	case 15:
+	case SLOPE_EW:
+	case SLOPE_NS:
+	case SLOPE_ELEVATED:
 		z = 4;
 		break;
 
-	case 6:
+	case SLOPE_SE:
 		z = (y>>1) + 1;
 		break;
 
-	case 7:
+	case SLOPE_WSE:
 		z = 8;
 		y^=0xF;
 		if (x - y < 0)
 			z += (x - y) >> 1;
 		break;
 
-	case 8:
+	case SLOPE_N:
 		y ^= 0xF;
 		if (y - x >= 0)
 			z = (y - x) >> 1;
 		break;
 
-	case 9:
+	case SLOPE_NW:
 		z = (y^0xF)>>1;
 		break;
 
-	case 11:
+	case SLOPE_NWS:
 		z = 8;
 		if (x - y < 0)
 			z += (x - y) >> 1;
 		break;
 
-	case 12:
+	case SLOPE_NE:
 		z = (x^0xF)>>1;
 		break;
 
-	case 13:
+	case SLOPE_ENW:
 		z = 8;
 		y ^= 0xF;
 		if (y - x < 0)
 			z += (y - x) >> 1;
 		break;
 
-	case 14:
+	case SLOPE_SEN:
 		z = 8;
 		if (y - x < 0)
 			z += (y - x) >> 1;
 		break;
 
-	case 23:
+	case SLOPE_STEEP_S:
 		z = 1 + ((x+y)>>1);
 		break;
 
-	case 27:
+	case SLOPE_STEEP_W:
 		z = 1 + ((x+(y^0xF))>>1);
 		break;
 
-	case 29:
+	case SLOPE_STEEP_N:
 		z = 1 + (((x^0xF)+(y^0xF))>>1);
 		break;
 
-	case 30:
+	case SLOPE_STEEP_E:
 		z = 1 + (((x^0xF)+(y^0xF))>>1);
 		break;
+
+		default: break;
 	}
 
 	return z;
@@ -184,16 +186,16 @@ uint GetSlopeZ(int x, int y)
 static bool HasFoundation(TileIndex tile, bool direction)
 {
 	bool south, other; // southern corner and east/west corner
-	uint tileh = GetTileSlope(tile, NULL);
-	uint slope = _tile_type_procs[GetTileType(tile)]->get_slope_tileh_proc(tile, tileh);
+	Slope tileh = GetTileSlope(tile, NULL);
+	Slope slope = _tile_type_procs[GetTileType(tile)]->get_slope_tileh_proc(tile, tileh);
 
-	if (slope == 0 && slope != tileh) tileh = 15;
-	south = (tileh & 2) != (slope & 2);
+	if (slope == SLOPE_FLAT && slope != tileh) tileh = SLOPE_ELEVATED;
+	south = (tileh & SLOPE_S) != (slope & SLOPE_S);
 
 	if (direction) {
-		other = (tileh & 4) != (slope & 4);
+		other = (tileh & SLOPE_E) != (slope & SLOPE_E);
 	} else {
-		other = (tileh & 1) != (slope & 1);
+		other = (tileh & SLOPE_W) != (slope & SLOPE_W);
 	}
 	return south || other;
 }
@@ -211,16 +213,19 @@ void DrawFoundation(TileInfo *ti, uint f)
 
 		AddSortableSpriteToDraw(f - 1 + sprite_base, ti->x, ti->y, 16, 16, 7, ti->z);
 		ti->z += 8;
-		ti->tileh = 0;
+		ti->tileh = SLOPE_FLAT;
 		OffsetGroundSprite(31, 1);
 	} else {
 		// inclined foundation
 		sprite_base += 14;
 
+#define M(x) (1 << (x))
 		AddSortableSpriteToDraw(
-			HASBIT((1<<1) | (1<<2) | (1<<4) | (1<<8), ti->tileh) ? sprite_base + (f - 15) : SPR_FOUNDATION_BASE + ti->tileh,
+			HASBIT(M(SLOPE_W) | M(SLOPE_S) | M(SLOPE_E) | M(SLOPE_N), ti->tileh) ?
+				sprite_base + (f - 15) : SPR_FOUNDATION_BASE + ti->tileh,
 			ti->x, ti->y, 1, 1, 1, ti->z
 		);
+#undef M
 
 		ti->tileh = _inclined_tileh[f - 15];
 		OffsetGroundSprite(31, 9);
@@ -394,7 +399,7 @@ void ConvertGroundTilesIntoWaterTiles(void)
 	uint h;
 
 	for (tile = 0; tile < MapSize(); ++tile) {
-		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == 0 && h == 0) {
+		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h == 0) {
 			MakeWater(tile);
 		}
 	}

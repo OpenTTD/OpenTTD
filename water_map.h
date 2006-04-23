@@ -45,7 +45,7 @@ static inline bool IsCoast(TileIndex t)
 
 static inline bool IsClearWaterTile(TileIndex t)
 {
-	return IsTileType(t, MP_WATER) && IsWater(t) && GetTileSlope(t, NULL) == 0;
+	return IsTileType(t, MP_WATER) && IsWater(t) && GetTileSlope(t, NULL) == SLOPE_FLAT;
 }
 
 static inline TileIndex GetOtherShipDepotTile(TileIndex t)

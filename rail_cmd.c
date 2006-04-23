@@ -150,7 +150,7 @@ const TrackBits _valid_tileh_slopes[2][15] = {
 }
 };
 
-uint GetRailFoundation(uint tileh, TrackBits bits)
+uint GetRailFoundation(Slope tileh, TrackBits bits)
 {
 	int i;
 
@@ -161,10 +161,10 @@ uint GetRailFoundation(uint tileh, TrackBits bits)
 		return tileh;
 
 	if ((
-				(i  = 0, tileh == 1) ||
-				(i += 2, tileh == 2) ||
-				(i += 2, tileh == 4) ||
-				(i += 2, tileh == 8)
+				(i  = 0, tileh == SLOPE_W) ||
+				(i += 2, tileh == SLOPE_S) ||
+				(i += 2, tileh == SLOPE_E) ||
+				(i += 2, tileh == SLOPE_N)
 			) && (
 				bits == TRACK_BIT_X ||
 				(i++, bits == TRACK_BIT_Y)
@@ -176,10 +176,10 @@ uint GetRailFoundation(uint tileh, TrackBits bits)
 }
 
 
-static uint32 CheckRailSlope(uint tileh, TrackBits rail_bits, TrackBits existing, TileIndex tile)
+static uint32 CheckRailSlope(Slope tileh, TrackBits rail_bits, TrackBits existing, TileIndex tile)
 {
 	// never allow building on top of steep tiles
-	if (!IsSteepTileh(tileh)) {
+	if (!IsSteepSlope(tileh)) {
 		rail_bits |= existing;
 
 		// don't allow building on the lower side of a coast
@@ -194,7 +194,7 @@ static uint32 CheckRailSlope(uint tileh, TrackBits rail_bits, TrackBits existing
 
 		if ((~_valid_tileh_slopes[1][tileh] & rail_bits) == 0 || ( // whole tile is leveled up
 					(rail_bits == TRACK_BIT_X || rail_bits == TRACK_BIT_Y) &&
-					(tileh == 1 || tileh == 2 || tileh == 4 || tileh == 8)
+					(tileh == SLOPE_W || tileh == SLOPE_S || tileh == SLOPE_E || tileh == SLOPE_N)
 				)) { // partly up
 			if (existing != 0) {
 				return 0;
@@ -218,7 +218,7 @@ static inline bool ValParamTrackOrientation(Track track) {return IsValidTrack(tr
  */
 int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	uint tileh;
+	Slope tileh;
 	Track track = (Track)p2;
 	TrackBits trackbit;
 	int32 cost = 0;
@@ -280,7 +280,7 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		case MP_STREET:
 #define M(x) (1 << (x))
 			/* Level crossings may only be built on these slopes */
-			if (!HASBIT(M(14) | M(13) | M(11) | M(10) | M(7) | M(5) | M(0), tileh)) {
+			if (!HASBIT(M(SLOPE_SEN) | M(SLOPE_ENW) | M(SLOPE_NWS) | M(SLOPE_NS) | M(SLOPE_WSE) | M(SLOPE_EW) | M(SLOPE_FLAT), tileh)) {
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 			}
 #undef M
@@ -556,7 +556,7 @@ int32 CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Depot *d;
 	int32 cost, ret;
-	uint tileh;
+	Slope tileh;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -575,10 +575,10 @@ int32 CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	*/
 
-	if (tileh != 0 && (
+	if (tileh != SLOPE_FLAT && (
 				_is_old_ai_player ||
 				!_patches.build_on_slopes ||
-				IsSteepTileh(tileh) ||
+				IsSteepSlope(tileh) ||
 				!CanBuildDepotByTileh(p2, tileh)
 			)) {
 		return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
@@ -1058,7 +1058,7 @@ static uint32 _drawtile_track_palette;
 static void DrawTrackFence_NW(const TileInfo *ti)
 {
 	uint32 image = 0x515;
-	if (ti->tileh != 0) image = (ti->tileh & 2) ? 0x519 : 0x51B;
+	if (ti->tileh != SLOPE_FLAT) image = (ti->tileh & SLOPE_S) ? 0x519 : 0x51B;
 	AddSortableSpriteToDraw(image | _drawtile_track_palette,
 		ti->x, ti->y + 1, 16, 1, 4, ti->z);
 }
@@ -1066,7 +1066,7 @@ static void DrawTrackFence_NW(const TileInfo *ti)
 static void DrawTrackFence_SE(const TileInfo *ti)
 {
 	uint32 image = 0x515;
-	if (ti->tileh != 0) image = (ti->tileh & 2) ? 0x519 : 0x51B;
+	if (ti->tileh != SLOPE_FLAT) image = (ti->tileh & SLOPE_S) ? 0x519 : 0x51B;
 	AddSortableSpriteToDraw(image | _drawtile_track_palette,
 		ti->x, ti->y + 15, 16, 1, 4, ti->z);
 }
@@ -1080,7 +1080,7 @@ static void DrawTrackFence_NW_SE(const TileInfo *ti)
 static void DrawTrackFence_NE(const TileInfo *ti)
 {
 	uint32 image = 0x516;
-	if (ti->tileh != 0) image = (ti->tileh & 2) ? 0x51A : 0x51C;
+	if (ti->tileh != SLOPE_FLAT) image = (ti->tileh & SLOPE_S) ? 0x51A : 0x51C;
 	AddSortableSpriteToDraw(image | _drawtile_track_palette,
 		ti->x + 1, ti->y, 1, 16, 4, ti->z);
 }
@@ -1088,7 +1088,7 @@ static void DrawTrackFence_NE(const TileInfo *ti)
 static void DrawTrackFence_SW(const TileInfo *ti)
 {
 	uint32 image = 0x516;
-	if (ti->tileh != 0) image = (ti->tileh & 2) ? 0x51A : 0x51C;
+	if (ti->tileh != SLOPE_FLAT) image = (ti->tileh & SLOPE_S) ? 0x51A : 0x51C;
 	AddSortableSpriteToDraw(image | _drawtile_track_palette,
 		ti->x + 15, ti->y, 1, 16, 4, ti->z);
 }
@@ -1102,7 +1102,7 @@ static void DrawTrackFence_NE_SW(const TileInfo *ti)
 static void DrawTrackFence_NS_1(const TileInfo *ti)
 {
 	int z = ti->z;
-	if (ti->tileh & 1) z += 8;
+	if (ti->tileh & SLOPE_W) z += 8;
 	AddSortableSpriteToDraw(0x517 | _drawtile_track_palette,
 		ti->x + 8, ti->y + 8, 1, 1, 4, z);
 }
@@ -1110,7 +1110,7 @@ static void DrawTrackFence_NS_1(const TileInfo *ti)
 static void DrawTrackFence_NS_2(const TileInfo *ti)
 {
 	int z = ti->z;
-	if (ti->tileh & 4) z += 8;
+	if (ti->tileh & SLOPE_E) z += 8;
 	AddSortableSpriteToDraw(0x517 | _drawtile_track_palette,
 		ti->x + 8, ti->y + 8, 1, 1, 4, z);
 }
@@ -1118,7 +1118,7 @@ static void DrawTrackFence_NS_2(const TileInfo *ti)
 static void DrawTrackFence_WE_1(const TileInfo *ti)
 {
 	int z = ti->z;
-	if (ti->tileh & 8) z += 8;
+	if (ti->tileh & SLOPE_N) z += 8;
 	AddSortableSpriteToDraw(0x518 | _drawtile_track_palette,
 		ti->x + 8, ti->y + 8, 1, 1, 4, z);
 }
@@ -1126,7 +1126,7 @@ static void DrawTrackFence_WE_1(const TileInfo *ti)
 static void DrawTrackFence_WE_2(const TileInfo *ti)
 {
 	int z = ti->z;
-	if (ti->tileh & 2) z += 8;
+	if (ti->tileh & SLOPE_S) z += 8;
 	AddSortableSpriteToDraw(0x518 | _drawtile_track_palette,
 		ti->x + 8, ti->y + 8, 1, 1, 4, z);
 }
@@ -1208,7 +1208,7 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track, bool flat)
 	(image++,                          (track & TRACK_BIT_3WAY_SE) == 0) ||
 	(image++, true);
 
-	if (ti->tileh != 0) {
+	if (ti->tileh != SLOPE_FLAT) {
 		int foundation;
 
 		if (flat) {
@@ -1222,7 +1222,7 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track, bool flat)
 
 		// DrawFoundation() modifies ti.
 		// Default sloped sprites..
-		if (ti->tileh != 0)
+		if (ti->tileh != SLOPE_FLAT)
 			image = _track_sloped_sprites[ti->tileh - 1] + rti->base_sprites.track_y;
 	}
 
@@ -1302,7 +1302,7 @@ static void DrawTile_Track(TileInfo *ti)
 		const DrawTrackSeqStruct *drss;
 		bool is_depot = GetRailTileSubtype(ti->tile) == RAIL_SUBTYPE_DEPOT;
 
-		if (ti->tileh != 0) DrawFoundation(ti, ti->tileh);
+		if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
 
 		if (IsRailWaypoint(ti->tile) && IsCustomWaypoint(ti->tile)) {
 			// look for customization
@@ -1688,10 +1688,10 @@ void SetSignalsOnBothDir(TileIndex tile, byte track)
 
 static uint GetSlopeZ_Track(const TileInfo* ti)
 {
-	uint tileh = ti->tileh;
+	Slope tileh = ti->tileh;
 	uint z = ti->z;
 
-	if (tileh == 0) return z;
+	if (tileh == SLOPE_FLAT) return z;
 	if (GetRailTileType(ti->tile) == RAIL_TYPE_DEPOT_WAYPOINT) {
 		return z + 8;
 	} else {
@@ -1705,16 +1705,16 @@ static uint GetSlopeZ_Track(const TileInfo* ti)
 	}
 }
 
-static uint GetSlopeTileh_Track(TileIndex tile, uint tileh)
+static Slope GetSlopeTileh_Track(TileIndex tile, Slope tileh)
 {
-	if (tileh == 0) return 0;
+	if (tileh == SLOPE_FLAT) return SLOPE_FLAT;
 	if (GetRailTileType(tile) == RAIL_TYPE_DEPOT_WAYPOINT) {
-		return 0;
+		return SLOPE_FLAT;
 	} else {
 		uint f = GetRailFoundation(tileh, GetTrackBits(tile));
 
 		if (f == 0) return tileh;
-		if (f < 15) return 0; // leveled foundation
+		if (f < 15) return SLOPE_FLAT; // leveled foundation
 		return _inclined_tileh[f - 15]; // inclined foundation
 	}
 }

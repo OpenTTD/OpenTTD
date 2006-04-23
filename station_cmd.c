@@ -776,7 +776,7 @@ int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invali
 {
 	int32 cost = 0, ret;
 
-	uint tileh;
+	Slope tileh;
 	uint z;
 	int allowed_z = -1;
 	int flat_z;
@@ -794,18 +794,18 @@ int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invali
 				-OR-
 				b) the build_on_slopes switch is disabled
 		*/
-		if (IsSteepTileh(tileh) ||
-				((_is_old_ai_player || !_patches.build_on_slopes) && tileh != 0)) {
+		if (IsSteepSlope(tileh) ||
+				((_is_old_ai_player || !_patches.build_on_slopes) && tileh != SLOPE_FLAT)) {
 			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 		}
 
 		flat_z = z;
-		if (tileh) {
+		if (tileh != SLOPE_FLAT) {
 			// need to check so the entrance to the station is not pointing at a slope.
-			if ((invalid_dirs&1 && !(tileh & 0xC) && (uint)w_cur == w) ||
-					(invalid_dirs&2 && !(tileh & 6) &&	h_cur == 1) ||
-					(invalid_dirs&4 && !(tileh & 3) && w_cur == 1) ||
-					(invalid_dirs&8 && !(tileh & 9) && (uint)h_cur == h)) {
+			if ((invalid_dirs&1 && !(tileh & SLOPE_NE) && (uint)w_cur == w) ||
+					(invalid_dirs&2 && !(tileh & SLOPE_SE) &&	h_cur == 1) ||
+					(invalid_dirs&4 && !(tileh & SLOPE_SW) && w_cur == 1) ||
+					(invalid_dirs&8 && !(tileh & SLOPE_NW) && (uint)h_cur == h)) {
 				return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 			}
 			cost += _price.terraform;
@@ -1823,10 +1823,10 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	switch (GetTileSlope(tile, NULL)) {
-		case  3: direction = DIAGDIR_NE; break;
-		case  6: direction = DIAGDIR_NW; break;
-		case  9: direction = DIAGDIR_SE; break;
-		case 12: direction = DIAGDIR_SW; break;
+		case SLOPE_SW: direction = DIAGDIR_NE; break;
+		case SLOPE_SE: direction = DIAGDIR_NW; break;
+		case SLOPE_NW: direction = DIAGDIR_SE; break;
+		case SLOPE_NE: direction = DIAGDIR_SW; break;
 		default: return_cmd_error(STR_304B_SITE_UNSUITABLE);
 	}
 
@@ -1839,7 +1839,7 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!EnsureNoVehicle(tile_cur)) return CMD_ERROR;
 
-	if (!IsTileType(tile_cur, MP_WATER) || GetTileSlope(tile_cur, NULL) != 0) {
+	if (!IsTileType(tile_cur, MP_WATER) || GetTileSlope(tile_cur, NULL) != SLOPE_FLAT) {
 		return_cmd_error(STR_304B_SITE_UNSUITABLE);
 	}
 
@@ -1847,7 +1847,7 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (CmdFailed(cost)) return CMD_ERROR;
 
 	tile_cur = tile_cur + TileOffsByDir(direction);
-	if (!IsTileType(tile_cur, MP_WATER) || GetTileSlope(tile_cur, NULL) != 0) {
+	if (!IsTileType(tile_cur, MP_WATER) || GetTileSlope(tile_cur, NULL) != SLOPE_FLAT) {
 		return_cmd_error(STR_304B_SITE_UNSUITABLE);
 	}
 
@@ -1957,7 +1957,7 @@ static void DrawTile_Station(TileInfo *ti)
 	}
 
 	// don't show foundation for docks
-	if (ti->tileh != 0 && !IsDock(ti->tile))
+	if (ti->tileh != SLOPE_FLAT && !IsDock(ti->tile))
 		DrawFoundation(ti, ti->tileh);
 
 	if (IsCustomStationSpecIndex(ti->tile)) {
@@ -2032,12 +2032,12 @@ void StationPickerDrawSprite(int x, int y, RailType railtype, int image)
 
 static uint GetSlopeZ_Station(const TileInfo* ti)
 {
-	return ti->z + (ti->tileh == 0 ? 0 : 8);
+	return ti->z + (ti->tileh == SLOPE_FLAT ? 0 : 8);
 }
 
-static uint GetSlopeTileh_Station(TileIndex tile, uint tileh)
+static Slope GetSlopeTileh_Station(TileIndex tile, Slope tileh)
 {
-	return 0;
+	return SLOPE_FLAT;
 }
 
 static void GetAcceptedCargo_Station(TileIndex tile, AcceptedCargo ac)

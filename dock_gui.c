@@ -173,10 +173,11 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 
 		tile_from = tile_to = e->place.tile;
 		switch (GetTileSlope(tile_from, NULL)) {
-			case  3: tile_to += TileDiffXY(-1,  0); break;
-			case  6: tile_to += TileDiffXY( 0, -1); break;
-			case  9: tile_to += TileDiffXY( 0,  1); break;
-			case 12: tile_to += TileDiffXY( 1,  0); break;
+			case SLOPE_SW: tile_to += TileDiffXY(-1,  0); break;
+			case SLOPE_SE: tile_to += TileDiffXY( 0, -1); break;
+			case SLOPE_NW: tile_to += TileDiffXY( 0,  1); break;
+			case SLOPE_NE: tile_to += TileDiffXY( 1,  0); break;
+			default: break;
 		}
 		VpSetPresizeRange(tile_from, tile_to);
 	} break;

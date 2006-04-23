@@ -129,12 +129,16 @@ static int32 DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 flags)
 	// lower tile
 	ret = DoCommand(tile - delta, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
-	if (GetTileSlope(tile - delta, NULL)) return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+	if (GetTileSlope(tile - delta, NULL) != SLOPE_FLAT) {
+		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+	}
 
 	// upper tile
 	ret = DoCommand(tile + delta, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
-	if (GetTileSlope(tile + delta, NULL)) return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+	if (GetTileSlope(tile + delta, NULL) != SLOPE_FLAT) {
+		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+	}
 
 	if (flags & DC_EXEC) {
 		MakeLock(tile, dir);
@@ -183,10 +187,10 @@ int32 CmdBuildLock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	switch (GetTileSlope(tile, NULL)) {
-		case  3: dir = DIAGDIR_SW; break;
-		case  6: dir = DIAGDIR_SE; break;
-		case  9: dir = DIAGDIR_NW; break;
-		case 12: dir = DIAGDIR_NE; break;
+		case SLOPE_SW: dir = DIAGDIR_SW; break;
+		case SLOPE_SE: dir = DIAGDIR_SE; break;
+		case SLOPE_NW: dir = DIAGDIR_NW; break;
+		case SLOPE_NE: dir = DIAGDIR_NE; break;
 		default: return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}
 	return DoBuildShiplift(tile, dir, flags);
@@ -224,7 +228,9 @@ int32 CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	cost = 0;
 	BEGIN_TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
-		if (GetTileSlope(tile, NULL) != 0) return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
+		if (GetTileSlope(tile, NULL) != SLOPE_FLAT) {
+			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
+		}
 
 		// can't make water of water!
 		if (IsTileType(tile, MP_WATER)) continue;
@@ -282,7 +288,7 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 			return _price.clear_water;
 
 		case WATER_COAST: {
-			uint slope = GetTileSlope(tile, NULL);
+			Slope slope = GetTileSlope(tile, NULL);
 
 			// Make sure no vehicle is on the tile
 			if (!EnsureNoVehicle(tile)) return CMD_ERROR;
@@ -294,7 +300,7 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 			}
 
 			if (flags & DC_EXEC) DoClearSquare(tile);
-			if (slope == 8 || slope == 4 || slope == 2 || slope == 1) {
+			if (slope == SLOPE_N || slope == SLOPE_E || slope == SLOPE_S || slope == SLOPE_W) {
 				return _price.clear_water;
 			} else {
 				return _price.purchase_land;
@@ -418,7 +424,7 @@ static void DrawTile_Water(TileInfo *ti)
 			break;
 
 		case WATER_COAST:
-			assert(!IsSteepTileh(ti->tileh));
+			assert(!IsSteepSlope(ti->tileh));
 			DrawGroundSprite(_water_shore_sprites[ti->tileh]);
 			break;
 
@@ -451,7 +457,7 @@ static uint GetSlopeZ_Water(const TileInfo* ti)
 	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh) + ti->z;
 }
 
-static uint GetSlopeTileh_Water(TileIndex tile, uint tileh)
+static Slope GetSlopeTileh_Water(TileIndex tile, Slope tileh)
 {
 	return tileh;
 }
@@ -503,17 +509,17 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 		switch (GetTileType(target)) {
 			case MP_RAILWAY: {
 				TrackBits tracks;
-				uint slope;
+				Slope slope;
 
 				if (!IsPlainRailTile(target)) break;
 
 				tracks = GetTrackBits(target);
 				slope = GetTileSlope(target, NULL);
 				if (!(
-							(slope == 1 && tracks == TRACK_BIT_RIGHT) ||
-							(slope == 2 && tracks == TRACK_BIT_UPPER) ||
-							(slope == 4 && tracks == TRACK_BIT_LEFT)  ||
-							(slope == 8 && tracks == TRACK_BIT_LOWER)
+							(slope == SLOPE_W && tracks == TRACK_BIT_RIGHT) ||
+							(slope == SLOPE_S && tracks == TRACK_BIT_UPPER) ||
+							(slope == SLOPE_E && tracks == TRACK_BIT_LEFT)  ||
+							(slope == SLOPE_N && tracks == TRACK_BIT_LOWER)
 						)) {
 					break;
 				}
