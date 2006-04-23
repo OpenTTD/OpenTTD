@@ -119,6 +119,49 @@ static GRFTextEntry _grf_text[(1 << TABSIZE) * 3];
 static byte _currentLangID = GRFLX_ENGLISH;  //by default, english is used.
 
 
+static void TranslateTTDPatchCodes(char *str)
+{
+	char *c;
+
+	for (c = str; *c != '\0'; c++) {
+		switch ((byte)*c) {
+			case 0x01: c++; break;
+			case 0x0D: *c = 10; break;
+			case 0x0E: *c = 8; break;
+			case 0x0F: *c = 9; break;
+			case 0x1F: *c = 2; c += 2; break;
+			case 0x7B:
+			case 0x7C:
+			case 0x7D:
+			case 0x7E: *c = 0x8E; break;
+			case 0x81: c += 2; break;
+			case 0x85: *c = 0x86; break;
+			case 0x88: *c = 15; break;
+			case 0x89: *c = 16; break;
+			case 0x8A: *c = 17; break;
+			case 0x8B: *c = 18; break;
+			case 0x8C: *c = 19; break;
+			case 0x8D: *c = 20; break;
+			case 0x8E: *c = 21; break;
+			case 0x8F: *c = 22; break;
+			case 0x90: *c = 23; break;
+			case 0x91: *c = 24; break;
+			case 0x92: *c = 25; break;
+			case 0x93: *c = 26; break;
+			case 0x94: *c = 27; break;
+			case 0x95: *c = 28; break;
+			case 0x96: *c = 29; break;
+			case 0x97: *c = 30; break;
+			case 0x98: *c = 31; break;
+			default:
+				/* Validate any unhandled character */
+				if (!IsValidAsciiChar(*c)) *c = '?';
+				break;
+		}
+	}
+}
+
+
 /**
  * Add the new read string into our structure.
  */
@@ -150,7 +193,7 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 	newtext->text   = strdup(text_to_add);
 	newtext->next   = NULL;
 
-	str_validate(newtext->text);
+	TranslateTTDPatchCodes(newtext->text);
 
 	for (id = 0; id < _num_grf_texts; id++) {
 		if (_grf_text[id].grfid == grfid && _grf_text[id].stringid == stringid) {
