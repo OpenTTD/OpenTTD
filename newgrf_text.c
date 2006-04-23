@@ -64,6 +64,7 @@ typedef enum grf_extended_languages {
 	GRFLX_PORTUGUESE  = 0x36,
 	GRFLX_BRAZILIAN   = 0x37,
 	GRFLX_TURKISH     = 0x3E,
+	GRFLX_UNSPECIFIED = 0x7F,
 } grf_language;
 
 
@@ -119,28 +120,27 @@ static byte _currentLangID = GRFLX_ENGLISH;  //by default, english is used.
 
 
 /**
- * Add the new read stirng into our structure.
- * TODO : ajust the old scheme to the new one for german,french and spanish
+ * Add the new read string into our structure.
  */
-StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, const char *text_to_add)
+StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool new_scheme, const char *text_to_add)
 {
 	GRFText *newtext;
 	uint id;
 
-	/* When working with the old language scheme (bit 6 of langid is clear) and
+	/* When working with the old language scheme (grf_version is less than 7) and
 	 * English or American is among the set bits, simply add it as English in
 	 * the new scheme, i.e. as langid = 1.
 	 * If English is set, it is pretty safe to assume the translations are not
 	 * actually translated.
 	 */
-	if (!HASBIT(langid_to_add, 6)) {
+	if (!new_scheme) {
 		if (HASBITS(langid_to_add, GRFLB_AMERICAN | GRFLB_ENGLISH)) {
 			langid_to_add = GRFLX_ENGLISH;
 		} else {
 			StringID ret = STR_EMPTY;
-			if (langid_to_add & GRFLB_GERMAN)  ret = AddGRFString(grfid, stringid, 1 << 6 | GRFLX_GERMAN,  text_to_add);
-			if (langid_to_add & GRFLB_FRENCH)  ret = AddGRFString(grfid, stringid, 1 << 6 | GRFLX_FRENCH,  text_to_add);
-			if (langid_to_add & GRFLB_SPANISH) ret = AddGRFString(grfid, stringid, 1 << 6 | GRFLX_SPANISH, text_to_add);
+			if (langid_to_add & GRFLB_GERMAN)  ret = AddGRFString(grfid, stringid, 1 << 6 | GRFLX_GERMAN,  true, text_to_add);
+			if (langid_to_add & GRFLB_FRENCH)  ret = AddGRFString(grfid, stringid, 1 << 6 | GRFLX_FRENCH,  true, text_to_add);
+			if (langid_to_add & GRFLB_SPANISH) ret = AddGRFString(grfid, stringid, 1 << 6 | GRFLX_SPANISH, true, text_to_add);
 			return ret;
 		}
 	}

@@ -1725,6 +1725,7 @@ static void VehicleNewName(byte *buf, int len)
 	uint16 id;
 	uint16 endid;
 	const char* name;
+	bool new_scheme = _cur_grffile->grf_version < 7;
 
 	check_length(len, 6, "VehicleNewName");
 	buf++;
@@ -1754,7 +1755,7 @@ static void VehicleNewName(byte *buf, int len)
 				case GSF_ROAD:
 				case GSF_SHIP:
 				case GSF_AIRCRAFT: {
-					StringID string = AddGRFString(_cur_grffile->grfid, id, lang, name);
+					StringID string = AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name);
 					if (id < TOTAL_NUM_ENGINES) SetCustomEngineName(id, string);
 					break;
 				}
