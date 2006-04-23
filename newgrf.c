@@ -2017,6 +2017,7 @@ static void SkipIf(byte *buf, int len)
 	}
 }
 
+/* Action 0x08 */
 static void GRFInfo(byte *buf, int len)
 {
 	/* <08> <version> <grf-id> <name> <info>
@@ -2039,12 +2040,14 @@ static void GRFInfo(byte *buf, int len)
 	info = name + strlen(name) + 1;
 
 	_cur_grffile->grfid = grfid;
+	_cur_grffile->grf_version = version;
 	_cur_grffile->flags |= 0x0001; /* set active flag */
 
 	DEBUG(grf, 1) ("[%s] Loaded GRFv%d set %08lx - %s:\n%s",
 	               _cur_grffile->filename, version, grfid, name, info);
 }
 
+/* Action 0x0A */
 static void SpriteReplace(byte *buf, int len)
 {
 	/* <0A> <num-sets> <set1> [<set2> ...]

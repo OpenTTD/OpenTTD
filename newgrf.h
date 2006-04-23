@@ -19,6 +19,7 @@ typedef struct GRFFile {
 	uint16 flags;
 	uint16 sprite_offset;
 	SpriteID first_spriteset; ///< Holds the first spriteset's sprite offset.
+	byte grf_version;
 	struct GRFFile *next;
 
 	/* A sprite group contains all sprites of a given vehicle (or multiple
