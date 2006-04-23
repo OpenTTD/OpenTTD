@@ -92,28 +92,6 @@ static void IConsoleHelp(const char *str)
 	IConsolePrintF(_icolour_warn, "- %s", str);
 }
 
-DEF_CONSOLE_CMD(ConStopAllVehicles)
-{
-	Vehicle* v;
-	if (argc == 0) {
-		IConsoleHelp("Stops all vehicles in the game. For debugging only! Use at your own risk... Usage: 'stopall'");
-		return true;
-	}
-
-	FOR_ALL_VEHICLES(v) {
-		if (IsValidVehicle(v)) {
-			/* Code ripped from CmdStartStopTrain. Can't call it, because of
-			 * ownership problems, so we'll duplicate some code, for now */
-			if (v->type == VEH_Train)
-				v->u.rail.days_since_order_progr = 0;
-			v->vehstatus |= VS_STOPPED;
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
-			InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-		}
-	}
-	return true;
-}
-
 DEF_CONSOLE_CMD(ConResetEngines)
 {
 	if (argc == 0) {
@@ -143,6 +121,28 @@ DEF_CONSOLE_CMD(ConResetTile)
 	}
 
 	return false;
+}
+
+DEF_CONSOLE_CMD(ConStopAllVehicles)
+{
+	Vehicle* v;
+	if (argc == 0) {
+		IConsoleHelp("Stops all vehicles in the game. For debugging only! Use at your own risk... Usage: 'stopall'");
+		return true;
+	}
+
+	FOR_ALL_VEHICLES(v) {
+		if (IsValidVehicle(v)) {
+			/* Code ripped from CmdStartStopTrain. Can't call it, because of
+			 * ownership problems, so we'll duplicate some code, for now */
+			if (v->type == VEH_Train)
+				v->u.rail.days_since_order_progr = 0;
+			v->vehstatus |= VS_STOPPED;
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+			InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+		}
+	}
+	return true;
 }
 #endif /* _DEBUG */
 
