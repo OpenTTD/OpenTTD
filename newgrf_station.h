@@ -84,6 +84,10 @@ typedef struct stationclass {
 
 void ResetStationClasses(void);
 StationClassID AllocateStationClass(uint32 class);
+void SetStationClassName(StationClassID sclass, StringID name);
+StringID GetStationClassName(StationClassID sclass);
+StringID *BuildStationClassDropdown(void);
+
 uint GetNumStationClasses(void);
 uint GetNumCustomStations(StationClassID sclass);
 

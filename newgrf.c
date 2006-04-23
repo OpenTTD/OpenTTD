@@ -1716,7 +1716,6 @@ static void VehicleNewName(byte *buf, int len)
 	 * (completely new scenarios changing all graphics and logically also
 	 * factory names etc). We should then also support all languages (by
 	 * name), not only the original four ones. --pasky
-	 * TODO: Support for custom station class/type names.
 	 * All of the above are coming.  In Time.  Some sooner than others :)*/
 
 	uint8 feature;
@@ -1760,17 +1759,22 @@ static void VehicleNewName(byte *buf, int len)
 					break;
 				}
 
-#if 0
-				case GSF_STATION:
+				case GSF_STATION: {
+					byte station = GB(id, 0, 8);
+					if (station >= _cur_grffile->num_stations) {
+						grfmsg(GMS_WARN, "VehicleNewName: Attempt to name undefined station 0x%X, ignoring.", station);
+						break;
+					}
+
 					switch (GB(id, 8, 8)) {
 						case 0xC4: { /* Station class name */
-							StationClassID sclass = _cur_grffile->stations[GB(id, 0, 8)].sclass;
-							SetStationClassName(sclass, AddGRFString(_cur_grffile->grfid, id, lang, name));
+							StationClassID sclass = _cur_grffile->stations[station].sclass;
+							SetStationClassName(sclass, AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name));
 							break;
 						}
 
 						case 0xC5:   /* Station name */
-							_cur_grffile->stations[GB(id, 0, 8)].name = AddGRFString(_cur_grffile->grfid, id, lang, name);
+							_cur_grffile->stations[station].name = AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name);
 							break;
 
 						default:
@@ -1778,7 +1782,9 @@ static void VehicleNewName(byte *buf, int len)
 							break;
 					}
 					break;
+				}
 
+#if 0
 				case GSF_CANAL :
 				case GSF_BRIDGE :
 				case GSF_TOWNHOUSE :
