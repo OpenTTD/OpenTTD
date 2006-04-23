@@ -504,7 +504,7 @@ no_slope:
 					res = DoCommand(tile, slope, 0, DC_EXEC | DC_AUTO | DC_NO_WATER,
 					                      CMD_TERRAFORM_LAND);
 				} else {
-					res = DoCommand(tile, ComplementSlope(slope), 1, DC_EXEC | DC_AUTO | DC_NO_WATER,
+					res = DoCommand(tile, slope ^ 0xF, 1, DC_EXEC | DC_AUTO | DC_NO_WATER,
 					                      CMD_TERRAFORM_LAND);
 				}
 				if (CmdFailed(res) && CHANCE16I(1, 3, r)) {
