@@ -838,8 +838,8 @@ static void AiNew_State_FindDepot(Player *p)
 			if (IsTileType(tile, MP_TUNNELBRIDGE)) continue;
 			// Is the terrain clear?
 			if (IsTileType(t, MP_CLEAR) || IsTileType(t, MP_TREES)) {
-				// If the current tile is on a slope (tileh != 0) then we do not allow this
-				if (GetTileSlope(tile, NULL) != 0) continue;
+				// If the current tile is on a slope then we do not allow this
+				if (GetTileSlope(tile, NULL) != SLOPE_FLAT) continue;
 				// Check if everything went okay..
 				r = AiNew_Build_Depot(p, t, ReverseDiagDir(j), 0);
 				if (CmdFailed(r)) continue;

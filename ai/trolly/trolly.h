@@ -245,7 +245,7 @@ void clean_AyStar_AiPathFinder(AyStar *aystar, Ai_PathFinderInfo *PathFinderInfo
 // ai_shared.c
 int AiNew_GetRailDirection(TileIndex tile_a, TileIndex tile_b, TileIndex tile_c);
 int AiNew_GetRoadDirection(TileIndex tile_a, TileIndex tile_b, TileIndex tile_c);
-int AiNew_GetDirection(TileIndex tile_a, TileIndex tile_b);
+DiagDirection AiNew_GetDirection(TileIndex tile_a, TileIndex tile_b);
 bool AiNew_SetSpecialVehicleFlag(Player *p, Vehicle *v, uint flag);
 uint AiNew_GetSpecialVehicleFlag(Player *p, Vehicle *v);
 

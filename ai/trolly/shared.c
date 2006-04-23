@@ -79,12 +79,12 @@ int AiNew_GetRoadDirection(TileIndex tile_a, TileIndex tile_b, TileIndex tile_c)
 }
 
 // Get's the direction between 2 tiles seen from tile_a
-int AiNew_GetDirection(TileIndex tile_a, TileIndex tile_b)
+DiagDirection AiNew_GetDirection(TileIndex tile_a, TileIndex tile_b)
 {
-	if (TileY(tile_a) < TileY(tile_b)) return 1;
-	if (TileY(tile_a) > TileY(tile_b)) return 3;
-	if (TileX(tile_a) < TileX(tile_b)) return 2;
-	return 0;
+	if (TileY(tile_a) < TileY(tile_b)) return DIAGDIR_SE;
+	if (TileY(tile_a) > TileY(tile_b)) return DIAGDIR_NW;
+	if (TileX(tile_a) < TileX(tile_b)) return DIAGDIR_SW;
+	return DIAGDIR_NE;
 }
 
 // This functions looks up if this vehicle is special for this AI

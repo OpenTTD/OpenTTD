@@ -1603,7 +1603,7 @@ clear_town_stuff:;
 			}
 		} else if (p->mode == 3) {
 			//Clear stuff and then build single rail.
-			if (GetTileSlope(c,NULL) != 0)
+			if (GetTileSlope(c, NULL) != SLOPE_FLAT)
 				return CMD_ERROR;
 			ret = DoCommand(c, 0, 0, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_LANDSCAPE_CLEAR);
 			if (CmdFailed(ret)) return CMD_ERROR;
@@ -1675,7 +1675,7 @@ static void AiDoTerraformLand(TileIndex tile, int dir, int unk, int mode)
 {
 	PlayerID old_player;
 	uint32 r;
-	uint slope;
+	Slope slope;
 	uint h;
 
 	old_player = _current_player;
@@ -1698,7 +1698,7 @@ static void AiDoTerraformLand(TileIndex tile, int dir, int unk, int mode)
 
 	slope = GetTileSlope(tile, &h);
 
-	if (slope != 0) {
+	if (slope != SLOPE_FLAT) {
 		if (mode > 0 || (mode == 0 && !(r & 0xC))) {
 			// Terraform up
 			DoCommand(tile, _terraform_up_flags[slope - 1], 1,
@@ -1920,14 +1920,14 @@ static bool AiCheckRailPathBetter(AiRailFinder *arf, const byte *p)
 static inline void AiCheckBuildRailBridgeHere(AiRailFinder *arf, TileIndex tile, const byte *p)
 {
 	TileIndex tile_new;
-	uint tileh;
+	Slope tileh;
 	uint z;
 	bool flag;
 
 	int dir2 = p[0] & 3;
 
 	tileh = GetTileSlope(tile, &z);
-	if (tileh == _dir_table_1[dir2] || (tileh == 0 && z != 0)) {
+	if (tileh == _dir_table_1[dir2] || (tileh == SLOPE_FLAT && z != 0)) {
 		tile_new = tile;
 		// Allow bridges directly over bottom tiles
 		flag = z == 0;
@@ -1938,7 +1938,7 @@ static inline void AiCheckBuildRailBridgeHere(AiRailFinder *arf, TileIndex tile,
 			tile_new = TILE_MASK(tile_new + TileOffsByDir(dir2));
 			type = GetTileType(tile_new);
 
-			if (type == MP_CLEAR || type == MP_TREES || GetTileSlope(tile_new, NULL) != 0) {
+			if (type == MP_CLEAR || type == MP_TREES || GetTileSlope(tile_new, NULL) != SLOPE_FLAT) {
 				if (!flag) return;
 				break;
 			}
@@ -2586,7 +2586,7 @@ clear_town_stuff:;
 		} else if (p->mode == 3) {
 			if (flag & DC_EXEC) continue;
 
-			if (GetTileSlope(c, NULL) != 0) return CMD_ERROR;
+			if (GetTileSlope(c, NULL) != SLOPE_FLAT) return CMD_ERROR;
 
 			if (!IsTileType(c, MP_STREET) || GetRoadType(c) != ROAD_NORMAL) {
 				ret = DoCommand(c, 0, 0, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_LANDSCAPE_CLEAR);
@@ -2828,14 +2828,14 @@ static bool AiBuildRoadHelper(TileIndex tile, int flags, int type)
 static inline void AiCheckBuildRoadBridgeHere(AiRoadFinder *arf, TileIndex tile, const byte *p)
 {
 	TileIndex tile_new;
-	uint tileh;
+	Slope tileh;
 	uint z;
 	bool flag;
 
 	int dir2 = p[0] & 3;
 
 	tileh = GetTileSlope(tile, &z);
-	if (tileh == _dir_table_1[dir2] || (tileh == 0 && z != 0)) {
+	if (tileh == _dir_table_1[dir2] || (tileh == SLOPE_FLAT && z != 0)) {
 		tile_new = tile;
 		// Allow bridges directly over bottom tiles
 		flag = z == 0;
@@ -2846,7 +2846,7 @@ static inline void AiCheckBuildRoadBridgeHere(AiRoadFinder *arf, TileIndex tile,
 			tile_new = TILE_MASK(tile_new + TileOffsByDir(dir2));
 			type = GetTileType(tile_new);
 
-			if (type == MP_CLEAR || type == MP_TREES || GetTileSlope(tile, NULL) != 0) {
+			if (type == MP_CLEAR || type == MP_TREES || GetTileSlope(tile, NULL) != SLOPE_FLAT) {
 				// Allow a bridge if either we have a tile that's water, rail or street,
 				// or if we found an up tile.
 				if (!flag) return;

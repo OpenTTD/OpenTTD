@@ -314,17 +314,15 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 	// Next step, check for bridges and tunnels
 	if (current->path.parent != NULL && current->path.node.user_data[0] == 0) {
 		// First we get the dir from this tile and his parent
-		int dir = AiNew_GetDirection(current->path.parent->node.tile, current->path.node.tile);
+		DiagDirection dir = AiNew_GetDirection(current->path.parent->node.tile, current->path.node.tile);
 		// It means we can only walk with the track, so the bridge has to be in the same direction
 		TileIndex tile = current->path.node.tile;
 		TileIndex new_tile = tile;
-		uint tileh;
-
-		tileh = GetTileSlope(tile, NULL);
+		Slope tileh = GetTileSlope(tile, NULL);
 
 		// Bridges can only be build on land that is not flat
 		//  And if there is a road or rail blocking
-		if (tileh != 0 ||
+		if (tileh != SLOPE_FLAT ||
 				(PathFinderInfo->rail_or_road && IsTileType(tile + TileOffsByDir(dir), MP_STREET)) ||
 				(!PathFinderInfo->rail_or_road && IsTileType(tile + TileOffsByDir(dir), MP_RAILWAY))) {
 			for (;;) {
@@ -349,16 +347,16 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 		}
 
 		// Next, check for tunnels!
-		// Tunnels can only be build with tileh of 3, 6, 9 or 12, depending on the direction
+		// Tunnels can only be built on slopes corresponding to the direction
 		//  For now, we check both sides for this tile.. terraforming gives fuzzy result
-		if ((dir == 0 && tileh == 12) ||
-				(dir == 1 && tileh == 6) ||
-				(dir == 2 && tileh == 3) ||
-				(dir == 3 && tileh == 9)) {
+		if ((dir == DIAGDIR_NE && tileh == SLOPE_NE) ||
+				(dir == DIAGDIR_SE && tileh == SLOPE_SE) ||
+				(dir == DIAGDIR_SW && tileh == SLOPE_SW) ||
+				(dir == DIAGDIR_NW && tileh == SLOPE_NW)) {
 			// Now simply check if a tunnel can be build
 			ret = AI_DoCommand(tile, (PathFinderInfo->rail_or_road?0:0x200), 0, DC_AUTO, CMD_BUILD_TUNNEL);
 			tileh = GetTileSlope(_build_tunnel_endtile, NULL);
-			if (!CmdFailed(ret) && (tileh == 3 || tileh == 6 || tileh == 9 || tileh == 12)) {
+			if (!CmdFailed(ret) && (tileh == SLOPE_SW || tileh == SLOPE_SE || tileh == SLOPE_NW || tileh == SLOPE_NE)) {
 				aystar->neighbours[aystar->num_neighbours].tile = _build_tunnel_endtile;
 				aystar->neighbours[aystar->num_neighbours].user_data[0] = AI_PATHFINDER_FLAG_TUNNEL + (dir << 8);
 				aystar->neighbours[aystar->num_neighbours++].direction = 0;
@@ -368,9 +366,9 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 }
 
 
-extern uint GetRailFoundation(uint tileh, TrackBits bits);
-extern uint GetRoadFoundation(uint tileh, uint bits);
-extern uint GetBridgeFoundation(uint tileh, Axis); // XXX function declaration in .c
+extern uint GetRailFoundation(Slope tileh, TrackBits bits); // XXX function declaration in .c
+extern uint GetRoadFoundation(Slope tileh, uint bits); // XXX function declaration in .c
+extern uint GetBridgeFoundation(Slope tileh, Axis); // XXX function declaration in .c
 enum {
 	BRIDGE_NO_FOUNDATION = 1 << 0 | 1 << 3 | 1 << 6 | 1 << 9 | 1 << 12,
 };
@@ -380,8 +378,8 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 {
 	Ai_PathFinderInfo *PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;
 	int r, res = 0;
-	uint tileh = GetTileSlope(current->tile, NULL);
-	uint parent_tileh = GetTileSlope(parent->path.node.tile, NULL);
+	Slope tileh = GetTileSlope(current->tile, NULL);
+	Slope parent_tileh = GetTileSlope(parent->path.node.tile, NULL);
 
 	// Check if we hit the end-tile
 	if (TILES_BETWEEN(current->tile, PathFinderInfo->end_tile_tl, PathFinderInfo->end_tile_br)) {
@@ -411,13 +409,13 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 	//  when there is a flat land all around, they are more expensive to build, and
 	//  especially they essentially block the ability to connect or cross the road
 	//  from one side.
-	if (parent_tileh != 0 && parent->path.parent != NULL) {
+	if (parent_tileh != SLOPE_FLAT && parent->path.parent != NULL) {
 		// Skip if the tile was from a bridge or tunnel
 		if (parent->path.node.user_data[0] == 0 && current->user_data[0] == 0) {
 			if (PathFinderInfo->rail_or_road) {
 				r = GetRailFoundation(parent_tileh, 1 << AiNew_GetRailDirection(parent->path.parent->node.tile, parent->path.node.tile, current->tile));
 				// Maybe is BRIDGE_NO_FOUNDATION a bit strange here, but it contains just the right information..
-				if (r >= 15 || (r == 0 && (BRIDGE_NO_FOUNDATION & (1 << tileh)))) {
+				if (r >= 15 || (r == 0 && HASBIT(BRIDGE_NO_FOUNDATION, tileh))) {
 					res += AI_PATHFINDER_TILE_GOES_UP_PENALTY;
 				} else {
 					res += AI_PATHFINDER_FOUNDATION_PENALTY;
@@ -448,17 +446,17 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 		res += AI_PATHFINDER_BRIDGE_PENALTY * GetBridgeLength(current->tile, parent->path.node.tile);
 		// Check if we are going up or down, first for the starting point
 		// In user_data[0] is at the 8th bit the direction
-		if (!(BRIDGE_NO_FOUNDATION & (1 << parent_tileh))) {
+		if (!HASBIT(BRIDGE_NO_FOUNDATION, parent_tileh)) {
 			if (GetBridgeFoundation(parent_tileh, (current->user_data[0] >> 8) & 1) < 15)
 				res += AI_PATHFINDER_BRIDGE_GOES_UP_PENALTY;
 		}
 		// Second for the end point
-		if (!(BRIDGE_NO_FOUNDATION & (1 << tileh))) {
+		if (!HASBIT(BRIDGE_NO_FOUNDATION, tileh)) {
 			if (GetBridgeFoundation(tileh, (current->user_data[0] >> 8) & 1) < 15)
 				res += AI_PATHFINDER_BRIDGE_GOES_UP_PENALTY;
 		}
-		if (parent_tileh == 0) res += AI_PATHFINDER_BRIDGE_GOES_UP_PENALTY;
-		if (tileh == 0) res += AI_PATHFINDER_BRIDGE_GOES_UP_PENALTY;
+		if (parent_tileh == SLOPE_FLAT) res += AI_PATHFINDER_BRIDGE_GOES_UP_PENALTY;
+		if (tileh == SLOPE_FLAT) res += AI_PATHFINDER_BRIDGE_GOES_UP_PENALTY;
 	}
 
 	//  To prevent the AI from taking the fastest way in tiles, but not the fastest way
