@@ -1197,7 +1197,6 @@ int CDECL snprintf(char *str, size_t size, const char *format, ...)
 }
 
 #ifdef _MSC_VER
-#if _MSC_VER < 1400 /* Already defined in VS 2005 */
 int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap)
 {
 	int ret;
@@ -1205,7 +1204,6 @@ int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap)
 	if (ret < 0) str[size - 1] = '\0';
 	return ret;
 }
-#endif
 #endif
 
 /**
