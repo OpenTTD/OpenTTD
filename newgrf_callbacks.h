@@ -24,6 +24,10 @@ enum CallbackID {
 	CBID_VEHICLE_REFIT_CAPACITY     = 0x15,
 
 	CBID_TRAIN_ARTIC_ENGINE         = 0x16,
+
+	/* This callback is called from vehicle purchase lists. It returns a value to be
+	 * used as a custom string ID in the 0xD000 range. */
+	CBID_VEHICLE_ADDITIONAL_TEXT    = 0x23,
 };
 
 /**

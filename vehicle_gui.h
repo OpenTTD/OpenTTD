@@ -62,6 +62,7 @@ void DrawShipPurchaseInfo(int x, int y, EngineID engine_number);
 
 void ChangeVehicleViewWindow(const Vehicle *from_v, const Vehicle *to_v);
 
+int ShowAdditionalText(int x, int y, int w, EngineID engine_number);
 
 
 #endif /* VEHICLE_GUI_H */

@@ -19,7 +19,9 @@
 #include "vehicle_gui.h"
 #include "viewport.h"
 #include "train.h"
+#include "newgrf_callbacks.h"
 #include "newgrf_engine.h"
+#include "newgrf_text.h"
 
 Sorting _sorting;
 
@@ -254,6 +256,16 @@ CargoID DrawVehicleRefitWindow(const Vehicle *v, int sel)
 	}
 
 	return cargo;
+}
+
+/* Display additional text from NewGRF in the purchase information window */
+int ShowAdditionalText(int x, int y, int w, EngineID engine)
+{
+	uint16 callback = GetVehicleCallback(CBID_VEHICLE_ADDITIONAL_TEXT, 0, 0, engine, NULL);
+	if (callback == CALLBACK_FAILED) return 0;
+
+	DrawStringTruncated(x, y, GetGRFStringID(GetEngineGRFID(engine), 0xD000 + callback), 16, w);
+	return 10;
 }
 
 /************ Sorter functions *****************/
