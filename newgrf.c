@@ -865,7 +865,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 					int seq_count = 0;
 
 					dts->ground_sprite = sdts->ground_sprite;
-					if (!dts->ground_sprite) {
+					if (dts->ground_sprite == 0) {
 						static const DrawTileSeqStruct empty = {0x80, 0, 0, 0, 0, 0, 0};
 						dts->seq = &empty;
 						continue;
@@ -1452,7 +1452,7 @@ static void NewSpriteGroup(byte *buf, int len)
 			byte num_loading = grf_load_byte(&buf);
 			uint i;
 
-			if (!_cur_grffile->spriteset_start) {
+			if (_cur_grffile->spriteset_start == 0) {
 				grfmsg(GMS_ERROR, "NewSpriteGroup: No sprite set to work on! Skipping.");
 				return;
 			}
@@ -1611,7 +1611,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 	// 03 00 01 19 01 00 00 00 00 - this is missing one 00 at the end,
 	// what should we exactly do with that? --pasky
 
-	if (!_cur_grffile->spriteset_start || !_cur_grffile->spritegroups) {
+	if (_cur_grffile->spriteset_start == 0 || _cur_grffile->spritegroups == 0) {
 		grfmsg(GMS_WARN, "VehicleMapSpriteGroup: No sprite set to work on! Skipping.");
 		return;
 	}
