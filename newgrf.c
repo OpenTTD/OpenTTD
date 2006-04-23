@@ -1333,6 +1333,14 @@ static void NewSpriteGroup(byte *buf, int len)
 			_cur_grffile->spritegroups[_cur_grffile->spritegroups_count] = NULL;
 	}
 
+	if (feature != _cur_grffile->spriteset_feature) {
+		grfmsg(GMS_WARN, "NewSpriteGroup: sprite set feature 0x%02X does not match action feature 0x%02X, skipping.",
+				_cur_grffile->spriteset_feature, feature);
+		/* Clear this group's reference */
+		_cur_grffile->spritegroups[setid] = NULL;
+		return;
+	}
+
 	switch (type) {
 		/* Deterministic Sprite Group */
 		case 0x81: // Self scope, byte
@@ -1447,11 +1455,6 @@ static void NewSpriteGroup(byte *buf, int len)
 			if (!_cur_grffile->spriteset_start) {
 				grfmsg(GMS_ERROR, "NewSpriteGroup: No sprite set to work on! Skipping.");
 				return;
-			}
-
-			if (_cur_grffile->spriteset_feature != feature) {
-				grfmsg(GMS_ERROR, "NewSpriteGroup: Group feature 0x%02X doesn't match set feature 0x%X! Playing it risky and trying to use it anyway.", feature, _cur_grffile->spriteset_feature);
-				// return; // XXX: we can't because of MB's newstats.grf --pasky
 			}
 
 			if (_cur_grffile->first_spriteset == 0)
