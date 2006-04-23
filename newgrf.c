@@ -38,6 +38,7 @@ uint16 _custom_sprites_base;
 static int _skip_sprites; // XXX
 static uint _file_index; // XXX
 extern int _traininfo_vehicle_pitch;
+SpriteID _signal_base = 0;
 
 static GRFFile *_cur_grffile;
 GRFFile *_first_grffile;
@@ -1823,8 +1824,27 @@ static void GraphicsNew(byte *buf, int len)
 	type = grf_load_byte(&buf);
 	num  = grf_load_extended(&buf);
 
-	grfmsg(GMS_NOTICE, "GraphicsNew: Custom graphics (type 0x%02X) sprite block of length %d (unimplemented, ignoring).\n",
-	       type, num);
+	switch (type) {
+		case 0x04: /* Signal graphics */
+			if (num != 112 && num != 240) {
+				grfmsg(GMS_WARN, "GraphicsNews: Signal graphics sprite count must be 112 or 240, skipping.");
+				return;
+			}
+			_signal_base = _cur_spriteid;
+			break;
+
+		default:
+			grfmsg(GMS_NOTICE, "GraphicsNew: Custom graphics (type 0x%02X) sprite block of length %u (unimplemented, ignoring).\n",
+					type, num);
+			return;
+	}
+
+	grfmsg(GMS_NOTICE, "GraphicsNew: Loading %u sprites of type 0x%02X at SpriteID 0x%04X", num, type, _cur_spriteid);
+
+	for (; num > 0; num--) {
+		LoadNextSprite(_cur_spriteid++, _file_index);
+		_nfo_line++;
+	}
 }
 
 /* Action 0x06 */

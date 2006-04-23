@@ -26,6 +26,7 @@
 #include "waypoint.h"
 #include "rail.h"
 #include "railtypes.h" // include table for railtypes
+#include "newgrf.h"
 
 extern uint16 _custom_sprites_base;
 
@@ -1047,7 +1048,16 @@ static void DrawSingleSignal(TileIndex tile, byte condition, uint image, uint po
 	uint x = TileX(tile) * TILE_SIZE + SignalPositions[side][pos].x;
 	uint y = TileY(tile) * TILE_SIZE + SignalPositions[side][pos].y;
 
-	SpriteID sprite = SignalBase[side][GetSignalVariant(tile)][GetSignalType(tile)] + image + condition;
+	SpriteID sprite;
+
+	/* _signal_base is set by our NewGRF Action 5 loader. If it is 0 then we
+	 * just draw the standard signals, else we get the offset from _signal_base
+	 * and draw that sprite. All the signal sprites are loaded sequentially. */
+	if (_signal_base == 0 || (GetSignalType(tile) == 0 && GetSignalVariant(tile) == SIG_ELECTRIC)) {
+		sprite = SignalBase[side][GetSignalVariant(tile)][GetSignalType(tile)] + image + condition;
+	} else {
+		sprite = _signal_base + (GetSignalType(tile) - 1) * 16 + GetSignalVariant(tile) * 64 + image + condition;
+	}
 
 	AddSortableSpriteToDraw(sprite, x, y, 1, 1, 10, GetSlopeZ(x,y));
 }
