@@ -1724,7 +1724,7 @@ static void VehicleNewName(byte *buf, int len)
 	uint16 id;
 	uint16 endid;
 	const char* name;
-	bool new_scheme = _cur_grffile->grf_version < 7;
+	bool new_scheme = _cur_grffile->grf_version >= 7;
 
 	check_length(len, 6, "VehicleNewName");
 	buf++;
