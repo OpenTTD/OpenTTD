@@ -1478,7 +1478,6 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Vía del tren co
 
 
 ##id 0x1800
-STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Tierra inclinada en dirección errónea para carretera
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Ha de retirar carretera primero
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Construcción de carretera
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Elige puente de carretera

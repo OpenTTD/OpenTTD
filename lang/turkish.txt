@@ -1481,7 +1481,6 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :ön+çikis-sinyal
 
 
 ##id 0x1800
-STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Arazi yol yapimi için uygun egimli degil
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Önce yol silinmeli
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Yol Yapimi
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Köprü Seç

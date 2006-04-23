@@ -1427,7 +1427,6 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Cale feratã cu 
 
 
 ##id 0x1800
-STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Terenul are o înclinatie nepotrivitã pentru o sosea
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Mai întâi trebuie demolatã soseaua
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Constructii rutiere
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Alege pod rutier

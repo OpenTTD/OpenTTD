@@ -1426,7 +1426,6 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Vía de tren amb
 
 
 ##id 0x1800
-STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Terreny inclinat en direcció incorrecta per la carretera
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}S'ha de treure la carretera primer
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Construcció de Carreteres
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Selecciona Pont per Carretera

@@ -1546,7 +1546,6 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Vasúti sin vegy
 
 
 ##id 0x1800
-STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Rossz irányba lejt a föld
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Elõbb le kell rombolnod az utat
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Útépítés
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Közúti híd építése

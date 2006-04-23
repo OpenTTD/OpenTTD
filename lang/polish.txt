@@ -1568,7 +1568,6 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Tory kolejowe z
 
 
 ##id 0x1800
-STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Teren pochylony w zla strone
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Trzeba usunac najpierw droge
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Tworzenie drog
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Wybierz most drogowy

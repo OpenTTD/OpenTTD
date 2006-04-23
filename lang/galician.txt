@@ -1412,7 +1412,6 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Via de ferrocar
 
 
 ##id 0x1800
-STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Terreo inclinado na direccion incorrecta para a estrada
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Debes elimina-la estrada primeiro
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Construcción de Estradas
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Selecciona a Ponte

@@ -1481,7 +1481,6 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Railway track w
 
 
 ##id 0x1800
-STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Land sloped in wrong direction for road
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Must remove road first
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Road Construction
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Select Road Bridge

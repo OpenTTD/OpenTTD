@@ -1427,7 +1427,6 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Lestarteinn með
 
 
 ##id 0x1800
-STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Land hallar í ranga átt fyrir vegagerð
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Verður að fjarlægja veg fyrst
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Vegagerð
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Veldu vegabrú

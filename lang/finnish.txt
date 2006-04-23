@@ -1442,7 +1442,6 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Rautatie yhdist
 
 
 ##id 0x1800
-STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Maa viett‰‰ v‰‰r‰‰n suuntaan.
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Tie pit‰‰ siirt‰‰ ensin.
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Tien rakentaminen
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Valitse maantiesilta

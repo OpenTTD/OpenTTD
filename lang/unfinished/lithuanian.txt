@@ -1379,7 +1379,6 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Gelezinkelio be
 
 
 ##id 0x1800
-STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Langelio nuolydis blogos krypties
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Pirmiausia pasalink kelia
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Kelio tiesimas
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Pasirink tilto tipa

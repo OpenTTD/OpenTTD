@@ -1455,7 +1455,6 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Rails avec des 
 
 
 ##id 0x1800
-STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Terrain en pente dans la mauvaise direction pour des routes
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Doit d'abord retirer la route
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Construction routière
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Choisir Pont Routier

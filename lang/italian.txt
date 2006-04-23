@@ -1481,7 +1481,6 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Binario ferrovi
 
 
 ##id 0x1800
-STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Terreno inclinato nella direzione errata
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Devi rimuovere la strada prima
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Costruzione Strade
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Seleziona ponte stradale

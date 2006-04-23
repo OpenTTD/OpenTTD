@@ -1434,7 +1434,6 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Zeleznicne kola
 
 
 ##id 0x1800
-STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Teren ma nevhodny sklon pre stavbu cesty
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Cesta musi byt najskor odstranena
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Vystavba cesty
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Vyber cestny most

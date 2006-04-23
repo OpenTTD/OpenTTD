@@ -386,7 +386,7 @@ do_clear:;
 	}
 
 	ret = CheckRoadSlope(tileh, &pieces, existing);
-	if (CmdFailed(ret)) return_cmd_error(STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION);
+	if (CmdFailed(ret)) return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 	if (ret != 0 && (!_patches.build_on_slopes || _is_old_ai_player)) {
 		return CMD_ERROR;
 	}

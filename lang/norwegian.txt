@@ -1471,7 +1471,6 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Jernbanespor me
 
 
 ##id 0x1800
-STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Feltet heller feil vei for veibygging
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Må fjerne vei først
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Bygg vei
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Velg brotype

@@ -1482,7 +1482,6 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Gleis mit kombi
 
 
 ##id 0x1800
-STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Das Land neigt sich in die falsche Richtung
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Straße muss erst entfernt werden
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Straßenbau
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Brücke wählen
