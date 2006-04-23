@@ -82,6 +82,10 @@ void DrawTrainEnginePurchaseInfo(int x, int y, EngineID engine_number)
 	SetDParam(0, e->reliability * 100 >> 16);
 	DrawString(x,y, STR_PURCHASE_INFO_RELIABILITY, 0);
 	y += 10;
+
+	/* Additional text from NewGRF */
+	// XXX 227 will become a calculated width...
+	y += ShowAdditionalText(x, y, 227, engine_number);
 }
 
 /**
@@ -118,6 +122,9 @@ void DrawTrainWagonPurchaseInfo(int x, int y, EngineID engine_number)
 		DrawString(x,y, STR_PURCHASE_INFO_SPEED, 0);
 		y += 10;
 	}
+
+	/* Additional text from NewGRF */
+	y += ShowAdditionalText(x, y, 227, engine_number);
 }
 
 void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
