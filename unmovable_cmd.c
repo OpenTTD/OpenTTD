@@ -165,7 +165,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 
 			AddSortableSpriteToDraw(
 				PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)) + PALETTE_MODIFIER_COLOR + SPR_BOUGHT_LAND,
-				ti->x+8, ti->y+8, 1, 1, 10, GetSlopeZ(ti->x+8, ti->y+8)
+				ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 10, GetSlopeZ(ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2)
 			);
 
 			break;
@@ -201,7 +201,7 @@ static uint GetSlopeZ_Unmovable(const TileInfo* ti)
 	if (IsOwnedLand(ti->tile)) {
 		return ti->z + GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh);
 	} else {
-		return ti->z + (ti->tileh == SLOPE_FLAT ? 0 : 8);
+		return ti->z + (ti->tileh == SLOPE_FLAT ? 0 : TILE_HEIGHT);
 	}
 }
 
@@ -341,7 +341,7 @@ void GenerateUnmovables(void)
 	j = ScaleByMapSize(40); // maximum number of radio towers on the map
 	do {
 		tile = RandomTile();
-		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h >= 32) {
+		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h >= TILE_HEIGHT * 4) {
 			if (!checkRadioTowerNearby(tile)) continue;
 			MakeTransmitter(tile);
 			if (--j == 0) break;

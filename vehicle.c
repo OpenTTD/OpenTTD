@@ -131,7 +131,7 @@ static void *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 	const TileInfo *ti = data;
 
 	if (v->tile != ti->tile || v->type == VEH_Disaster) return NULL;
-	if (!IS_INT_INSIDE(ti->z - v->z_pos, 0, 8 + 1)) return NULL;
+	if (!IS_INT_INSIDE(ti->z - v->z_pos, 0, TILE_HEIGHT + 1)) return NULL;
 
 	VehicleInTheWayErrMsg(v);
 	return v;
@@ -140,7 +140,7 @@ static void *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 static inline uint Correct_Z(Slope tileh)
 {
 	// needs z correction for slope-type graphics that have the NORTHERN tile lowered
-	return CorrectZ(tileh) ? 8 : 0;
+	return CorrectZ(tileh) ? TILE_HEIGHT : 0;
 }
 
 uint GetCorrectTileHeight(TileIndex tile)

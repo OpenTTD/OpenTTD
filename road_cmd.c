@@ -831,12 +831,12 @@ static uint GetSlopeZ_Road(const TileInfo* ti)
 		uint f = GetRoadFoundation(tileh, GetRoadBits(ti->tile));
 
 		if (f != 0) {
-			if (f < 15) return z + 8; // leveled foundation
+			if (f < 15) return z + TILE_HEIGHT; // leveled foundation
 			tileh = _inclined_tileh[f - 15]; // inclined foundation
 		}
 		return z + GetPartialZ(ti->x & 0xF, ti->y & 0xF, tileh);
 	} else {
-		return z + 8;
+		return z + TILE_HEIGHT;
 	}
 }
 

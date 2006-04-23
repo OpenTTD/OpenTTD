@@ -847,8 +847,8 @@ int32 CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		v->owner = _current_player;
 		v->tile = tile;
-		x = TileX(tile) * TILE_SIZE + 8;
-		y = TileY(tile) * TILE_SIZE + 8;
+		x = TileX(tile) * TILE_SIZE + TILE_SIZE / 2;
+		y = TileY(tile) * TILE_SIZE + TILE_SIZE / 2;
 		v->x_pos = x;
 		v->y_pos = y;
 		v->z_pos = GetSlopeZ(x,y);

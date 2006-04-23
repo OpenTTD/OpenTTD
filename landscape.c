@@ -212,7 +212,7 @@ void DrawFoundation(TileInfo *ti, uint f)
 		if (sprite_base < SPR_SLOPES_BASE) sprite_base = SPR_FOUNDATION_BASE + 1; // use original slope sprites
 
 		AddSortableSpriteToDraw(f - 1 + sprite_base, ti->x, ti->y, 16, 16, 7, ti->z);
-		ti->z += 8;
+		ti->z += TILE_HEIGHT;
 		ti->tileh = SLOPE_FLAT;
 		OffsetGroundSprite(31, 1);
 	} else {
@@ -332,7 +332,7 @@ int32 CmdClearArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				// draw explosion animation...
 				if ((x == sx || x == ex) && (y == sy || y == ey)) {
 					// big explosion in each corner, or small explosion for single tiles
-					CreateEffectVehicleAbove(x * TILE_SIZE + 8, y * TILE_SIZE + 8, 2,
+					CreateEffectVehicleAbove(x * TILE_SIZE + TILE_SIZE / 2, y * TILE_SIZE + TILE_SIZE / 2, 2,
 						sy == ey && sx == ex ? EV_EXPLOSION_SMALL : EV_EXPLOSION_LARGE
 					);
 				}

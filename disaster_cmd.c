@@ -516,8 +516,8 @@ static void DisasterTick_4(Vehicle *v)
 	v->tick_counter++;
 
 	if (v->current_order.station == 1) {
-		int x = TileX(v->dest_tile) * TILE_SIZE + 8;
-		int y = TileY(v->dest_tile) * TILE_SIZE + 8;
+		int x = TileX(v->dest_tile) * TILE_SIZE + TILE_SIZE / 2;
+		int y = TileY(v->dest_tile) * TILE_SIZE + TILE_SIZE / 2;
 		if (abs(v->x_pos - x) + abs(v->y_pos - y) >= 8) {
 			v->direction = GetDirectionTowards(v, x, y);
 
@@ -715,7 +715,7 @@ static void Disaster0_Init(void)
 
 	/* Pick a random place, unless we find
 	    a small airport */
-	x = TileX(Random()) * TILE_SIZE + 8;
+	x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
 
 	FOR_ALL_STATIONS(st) {
 		if (st->xy && st->airport_tile != 0 &&
@@ -745,7 +745,7 @@ static void Disaster1_Init(void)
 	if (v == NULL)
 		return;
 
-	x = TileX(Random()) * TILE_SIZE + 8;
+	x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
 
 	InitializeDisasterVehicle(v, x, 0, 135, DIR_SE, 2);
 	v->dest_tile = TileXY(MapSizeX() / 2, MapSizeY() / 2);
@@ -845,7 +845,7 @@ static void Disaster4_Init(void)
 
 	if (v == NULL) return;
 
-	x = TileX(Random()) * TILE_SIZE + 8;
+	x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
 
 	y = MapMaxX() * TILE_SIZE - 1;
 	InitializeDisasterVehicle(v, x, y, 135, DIR_NW, 9);
@@ -872,13 +872,13 @@ static void Disaster5_Init(void)
 	if (v == NULL) return;
 
 	r = Random();
-	x = TileX(r) * TILE_SIZE + 8;
+	x = TileX(r) * TILE_SIZE + TILE_SIZE / 2;
 
 	if (r & 0x80000000) {
-		y = MapMaxX() * TILE_SIZE - 8 - 1;
+		y = MapMaxX() * TILE_SIZE - TILE_SIZE / 2 - 1;
 		dir = DIR_NW;
 	} else {
-		y = 8;
+		y = TILE_SIZE / 2;
 		dir = DIR_SE;
 	}
 	InitializeDisasterVehicle(v, x, y, 0, dir, 13);
@@ -896,13 +896,13 @@ static void Disaster6_Init(void)
 	if (v == NULL) return;
 
 	r = Random();
-	x = TileX(r) * TILE_SIZE + 8;
+	x = TileX(r) * TILE_SIZE + TILE_SIZE / 2;
 
 	if (r & 0x80000000) {
-		y = MapMaxX() * TILE_SIZE - 8 - 1;
+		y = MapMaxX() * TILE_SIZE - TILE_SIZE / 2 - 1;
 		dir = DIR_NW;
 	} else {
-		y = 8;
+		y = TILE_SIZE / 2;
 		dir = DIR_SE;
 	}
 	InitializeDisasterVehicle(v, x, y, 0, dir, 14);

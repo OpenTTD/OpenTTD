@@ -387,7 +387,7 @@ static void DrawTile_Industry(TileInfo *ti)
 	if (ti->tileh != SLOPE_FLAT) {
 		AddSortableSpriteToDraw(SPR_FOUNDATION_BASE + ti->tileh, ti->x, ti->y, 16, 16, 7, z);
 		AddChildSpriteScreen(image, 31, 1);
-		z += 8;
+		z += TILE_HEIGHT;
 	} else {
 		/* Else draw regular ground */
 		DrawGroundSprite(image);
@@ -420,7 +420,7 @@ static void DrawTile_Industry(TileInfo *ti)
 
 static uint GetSlopeZ_Industry(const TileInfo* ti)
 {
-	return ti->z + (ti->tileh == SLOPE_FLAT ? 0 : 8);
+	return ti->z + (ti->tileh == SLOPE_FLAT ? 0 : TILE_HEIGHT);
 }
 
 static Slope GetSlopeTileh_Industry(TileIndex tile, Slope tileh)
@@ -702,7 +702,7 @@ static void CreateIndustryEffectSmoke(TileIndex tile)
 	tileh = GetTileSlope(tile, &z);
 	x = TileX(tile) * TILE_SIZE;
 	y = TileY(tile) * TILE_SIZE;
-	CreateEffectVehicle(x + 15, y + 14, z + 59 + (tileh != SLOPE_FLAT ? 8 : 0), EV_CHIMNEY_SMOKE);
+	CreateEffectVehicle(x + 15, y + 14, z + 59 + (tileh != SLOPE_FLAT ? TILE_HEIGHT : 0), EV_CHIMNEY_SMOKE);
 }
 
 static void MakeIndustryTileBigger(TileIndex tile)
@@ -1177,7 +1177,7 @@ static bool CheckNewIndustry_NULL(TileIndex tile, IndustryType type)
 static bool CheckNewIndustry_Forest(TileIndex tile, IndustryType type)
 {
 	if (_opt.landscape == LT_HILLY) {
-		if (GetTileZ(tile) < _opt.snow_line + 16U) {
+		if (GetTileZ(tile) < _opt.snow_line + TILE_HEIGHT * 2U) {
 			_error_message = STR_4831_FOREST_CAN_ONLY_BE_PLANTED;
 			return false;
 		}
@@ -1241,7 +1241,7 @@ static bool CheckNewIndustry_Lumbermill(TileIndex tile, IndustryType type)
 
 static bool CheckNewIndustry_BubbleGen(TileIndex tile, IndustryType type)
 {
-	return GetTileZ(tile) <= 32;
+	return GetTileZ(tile) <= TILE_HEIGHT * 4;
 }
 
 typedef bool CheckNewIndustryProc(TileIndex tile, IndustryType type);

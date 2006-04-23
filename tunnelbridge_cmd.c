@@ -254,12 +254,12 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 	tileh_end = GetTileSlope(tile_end, &z_end);
 
 	if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh_start)) {
-		z_start += 8;
+		z_start += TILE_HEIGHT;
 		tileh_start = SLOPE_FLAT;
 	}
 
 	if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh_end)) {
-		z_end += 8;
+		z_end += TILE_HEIGHT;
 		tileh_end = SLOPE_FLAT;
 	}
 
@@ -650,7 +650,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 	v = FindVehicleBetween(
 		tile    + delta,
 		endtile - delta,
-		TilePixelHeight(tile) + 8 + GetCorrectTileHeight(tile)
+		TilePixelHeight(tile) + TILE_HEIGHT + GetCorrectTileHeight(tile)
 	);
 	if (v != NULL) {
 		VehicleInTheWayErrMsg(v);
@@ -758,7 +758,7 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 		int32 cost;
 		uint z = TilePixelHeight(tile);
 
-		z += 8;
+		z += TILE_HEIGHT;
 
 		if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
@@ -807,7 +807,7 @@ uint GetBridgeHeight(TileIndex t)
 	/* Return the height there (the height of the NORTH CORNER)
 	 * If the end of the bridge is on a tile with all corners except the north corner raised,
 	 * the z coordinate is 1 height level too low. Compensate for that */
-	return TilePixelHeight(tile) + (GetTileSlope(tile, NULL) == SLOPE_WSE ? 8 : 0);
+	return TilePixelHeight(tile) + (GetTileSlope(tile, NULL) == SLOPE_WSE ? TILE_HEIGHT : 0);
 }
 
 static const byte _bridge_foundations[2][16] = {
@@ -837,20 +837,20 @@ static void DrawBridgePillars(PalSpriteID image, const TileInfo *ti, int x, int 
 		if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 
 		p = _tileh_bits[(image & 1) * 2 + (axis == AXIS_X ? 0 : 1)];
-		front_height = ti->z + ((ti->tileh & p[0])?8:0);
-		back_height = ti->z + ((ti->tileh & p[1])?8:0);
+		front_height = ti->z + (ti->tileh & p[0] ? TILE_HEIGHT : 0);
+		back_height  = ti->z + (ti->tileh & p[1] ? TILE_HEIGHT : 0);
 
 		if (IsSteepSlope(ti->tileh)) {
-			if (!(ti->tileh & p[2])) front_height += 8;
-			if (!(ti->tileh & p[3])) back_height += 8;
+			if (!(ti->tileh & p[2])) front_height += TILE_HEIGHT;
+			if (!(ti->tileh & p[3])) back_height  += TILE_HEIGHT;
 		}
 
-		for (; z >= front_height || z >= back_height; z = z - 8) {
+		for (; z >= front_height || z >= back_height; z -= TILE_HEIGHT) {
 			if (z >= front_height) { // front facing pillar
 				AddSortableSpriteToDraw(image, x,y, p[4], p[5], 0x28, z);
 			}
 
-			if (drawfarpillar && z >= back_height && z < i - 8) { // back facing pillar
+			if (drawfarpillar && z >= back_height && z < i - TILE_HEIGHT) { // back facing pillar
 				AddSortableSpriteToDraw(image, x - p[6], y - p[7], p[4], p[5], 0x28, z);
 			}
 		}
@@ -914,7 +914,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		DrawGroundSprite(image);
 		if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 
-		AddSortableSpriteToDraw(image+1, ti->x + 15, ti->y + 15, 1, 1, 8, (byte)ti->z);
+		AddSortableSpriteToDraw(image+1, ti->x + TILE_SIZE - 1, ti->y + TILE_SIZE - 1, 1, 1, 8, (byte)ti->z);
 	} else if (IsBridge(ti->tile)) { // XXX is this necessary?
 		int base_offset;
 
@@ -1076,34 +1076,34 @@ static uint GetSlopeZ_TunnelBridge(const TileInfo* ti)
 			if (5 <= pos && pos <= 10) {
 				uint delta;
 
-				if (HASBIT(BRIDGE_HORZ_RAMP, tileh)) return z + 8;
+				if (HASBIT(BRIDGE_HORZ_RAMP, tileh)) return z + TILE_HEIGHT;
 
-				if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh)) z += 8;
+				if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh)) z += TILE_HEIGHT;
 				switch (dir) {
 					default:
-					case DIAGDIR_NE: delta = (15 - x) / 2; break;
+					case DIAGDIR_NE: delta = (TILE_SIZE - 1 - x) / 2; break;
 					case DIAGDIR_SE: delta = y / 2; break;
 					case DIAGDIR_SW: delta = x / 2; break;
-					case DIAGDIR_NW: delta = (15 - y) / 2; break;
+					case DIAGDIR_NW: delta = (TILE_SIZE - 1 - y) / 2; break;
 				}
 				return z + 1 + delta;
 			} else {
 				uint f = GetBridgeFoundation(tileh, DiagDirToAxis(dir));
 
 				if (f != 0) {
-					if (f < 15) return z + 8;
+					if (f < 15) return z + TILE_HEIGHT;
 					tileh = _inclined_tileh[f - 15];
 				}
 			}
 		} else {
 			// HACK on the bridge?
-			if (_get_z_hint >= z + 8 + (tileh == SLOPE_FLAT ? 0 : 8)) return _get_z_hint;
+			if (_get_z_hint >= z + TILE_HEIGHT + (tileh == SLOPE_FLAT ? 0 : TILE_HEIGHT)) return _get_z_hint;
 
 			if (IsTransportUnderBridge(tile)) {
 				uint f = _bridge_foundations[GetBridgeAxis(tile)][tileh];
 
 				if (f != 0) {
-					if (f < 15) return z + 8;
+					if (f < 15) return z + TILE_HEIGHT;
 					tileh = _inclined_tileh[f - 15];
 				}
 			}
@@ -1360,7 +1360,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 			uint h;
 
 			// Compensate for possible foundation
-			if (GetTileSlope(tile, &h) != SLOPE_FLAT) h += 8;
+			if (GetTileSlope(tile, &h) != SLOPE_FLAT) h += TILE_HEIGHT;
 			if (IsBridgeRamp(tile) ||
 					myabs(h - v->z_pos) > 2) { // high above the ground -> on the bridge
 				/* modify speed of vehicle */

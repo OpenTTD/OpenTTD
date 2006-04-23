@@ -2615,7 +2615,7 @@ static bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
 				Slope tileh = GetTileSlope(tile, &height);
 
 				// correct Z position of a train going under a bridge on slopes
-				if (CorrectZ(tileh)) height += 8;
+				if (CorrectZ(tileh)) height += TILE_HEIGHT;
 
 				if (v->z_pos != height) return true; // train is going over bridge
 			}
@@ -3236,7 +3236,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 
 	if (GB(ts, 0, 16) != 0) {
 		/* If we approach a rail-piece which we can't enter, or the back of a depot, don't enter it! */
-		if (x + 4 > 15 &&
+		if (x + 4 >= TILE_SIZE &&
 				(!CheckCompatibleRail(v, tile) ||
 				(IsTileDepotType(tile, TRANSPORT_RAIL) &&
 				GetRailDepotDirection(tile) == dir))) {
@@ -3255,7 +3255,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 			}
 			return true;
 		}
-	} else if (x + 4 > 15) {
+	} else if (x + 4 >= TILE_SIZE) {
 		v->cur_speed = 0;
 		ReverseTrainDirection(v);
 		return false;

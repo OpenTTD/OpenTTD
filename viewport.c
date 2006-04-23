@@ -611,8 +611,8 @@ static void DrawTileSelection(const TileInfo *ti)
 			// Figure out the Z coordinate for the single dot.
 			byte z = ti->z;
 			if (ti->tileh & SLOPE_N) {
-				z += 8;
-				if (ti->tileh == SLOPE_STEEP_N) z += 8;
+				z += TILE_HEIGHT;
+				if (ti->tileh == SLOPE_STEEP_N) z += TILE_HEIGHT;
 			}
 			DrawGroundSpriteAt(_cur_dpi->zoom != 2 ? SPR_DOT : SPR_DOT_SMALL, ti->x, ti->y, z);
 		} else if (_thd.drawstyle & HT_RAIL /*&& _thd.place_mode == VHM_RAIL*/) {
@@ -1759,7 +1759,7 @@ bool ScrollMainWindowTo(int x, int y)
 
 bool ScrollMainWindowToTile(TileIndex tile)
 {
-	return ScrollMainWindowTo(TileX(tile) * TILE_SIZE + 8, TileY(tile) * TILE_SIZE + 8);
+	return ScrollMainWindowTo(TileX(tile) * TILE_SIZE + TILE_SIZE / 2, TileY(tile) * TILE_SIZE + TILE_SIZE / 2);
 }
 
 void SetRedErrorSquare(TileIndex tile)

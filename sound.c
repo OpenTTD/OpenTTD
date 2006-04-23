@@ -207,9 +207,9 @@ static void SndPlayScreenCoordFx(SoundFx sound, int x, int y)
 
 void SndPlayTileFx(SoundFx sound, TileIndex tile)
 {
-	/* emits sound from center (+ 8) of the tile */
-	int x = TileX(tile) * TILE_SIZE + 8;
-	int y = TileY(tile) * TILE_SIZE + 8;
+	/* emits sound from center of the tile */
+	int x = TileX(tile) * TILE_SIZE + TILE_SIZE / 2;
+	int y = TileY(tile) * TILE_SIZE + TILE_SIZE / 2;
 	Point pt = RemapCoords(x, y, GetSlopeZ(x, y));
 	SndPlayScreenCoordFx(sound, pt.x, pt.y);
 }

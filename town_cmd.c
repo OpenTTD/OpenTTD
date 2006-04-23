@@ -106,7 +106,7 @@ static void DrawTile_Town(TileInfo *ti)
 	if (ti->tileh != SLOPE_FLAT) {
 		AddSortableSpriteToDraw(SPR_FOUNDATION_BASE + ti->tileh, ti->x, ti->y, 16, 16, 7, z);
 		AddChildSpriteScreen(dcts->sprite_1, 31, 1);
-		z += 8;
+		z += TILE_HEIGHT;
 	} else {
 		/* Else draw regular ground */
 		DrawGroundSprite(dcts->sprite_1);
@@ -137,7 +137,7 @@ static void DrawTile_Town(TileInfo *ti)
 
 static uint GetSlopeZ_Town(const TileInfo* ti)
 {
-	return ti->z + (ti->tileh == SLOPE_FLAT ? 0 : 8);
+	return ti->z + (ti->tileh == SLOPE_FLAT ? 0 : TILE_HEIGHT);
 }
 
 static Slope GetSlopeTileh_Town(TileIndex tile, Slope tileh)

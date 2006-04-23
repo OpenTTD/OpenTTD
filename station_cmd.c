@@ -809,7 +809,7 @@ int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invali
 				return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 			}
 			cost += _price.terraform;
-			flat_z += 8;
+			flat_z += TILE_HEIGHT;
 		}
 
 		// get corresponding flat level and make sure that all parts of the station have the same level.
@@ -2032,7 +2032,7 @@ void StationPickerDrawSprite(int x, int y, RailType railtype, int image)
 
 static uint GetSlopeZ_Station(const TileInfo* ti)
 {
-	return ti->z + (ti->tileh == SLOPE_FLAT ? 0 : 8);
+	return ti->z + (ti->tileh == SLOPE_FLAT ? 0 : TILE_HEIGHT);
 }
 
 static Slope GetSlopeTileh_Station(TileIndex tile, Slope tileh)
@@ -2190,8 +2190,8 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 					y &= 0xF;
 
 					if (DiagDirToAxis(dir) != AXIS_X) intswap(x, y);
-					if (y == 8) {
-						if (dir != DIAGDIR_SE && dir != DIAGDIR_SW) x = ~x & 0xF;
+					if (y == TILE_SIZE / 2) {
+						if (dir != DIAGDIR_SE && dir != DIAGDIR_SW) x = TILE_SIZE - 1 - x;
 						if (x == 12) return 2 | (station_id << 8); /* enter station */
 						if (x < 12) {
 							uint16 spd;

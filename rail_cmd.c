@@ -1078,7 +1078,7 @@ static void DrawTrackFence_SE(const TileInfo *ti)
 	uint32 image = 0x515;
 	if (ti->tileh != SLOPE_FLAT) image = (ti->tileh & SLOPE_S) ? 0x519 : 0x51B;
 	AddSortableSpriteToDraw(image | _drawtile_track_palette,
-		ti->x, ti->y + 15, 16, 1, 4, ti->z);
+		ti->x, ti->y + TILE_SIZE - 1, 16, 1, 4, ti->z);
 }
 
 static void DrawTrackFence_NW_SE(const TileInfo *ti)
@@ -1100,7 +1100,7 @@ static void DrawTrackFence_SW(const TileInfo *ti)
 	uint32 image = 0x516;
 	if (ti->tileh != SLOPE_FLAT) image = (ti->tileh & SLOPE_S) ? 0x51A : 0x51C;
 	AddSortableSpriteToDraw(image | _drawtile_track_palette,
-		ti->x + 15, ti->y, 1, 16, 4, ti->z);
+		ti->x + TILE_SIZE - 1, ti->y, 1, 16, 4, ti->z);
 }
 
 static void DrawTrackFence_NE_SW(const TileInfo *ti)
@@ -1112,33 +1112,33 @@ static void DrawTrackFence_NE_SW(const TileInfo *ti)
 static void DrawTrackFence_NS_1(const TileInfo *ti)
 {
 	int z = ti->z;
-	if (ti->tileh & SLOPE_W) z += 8;
+	if (ti->tileh & SLOPE_W) z += TILE_HEIGHT;
 	AddSortableSpriteToDraw(0x517 | _drawtile_track_palette,
-		ti->x + 8, ti->y + 8, 1, 1, 4, z);
+		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
 
 static void DrawTrackFence_NS_2(const TileInfo *ti)
 {
 	int z = ti->z;
-	if (ti->tileh & SLOPE_E) z += 8;
+	if (ti->tileh & SLOPE_E) z += TILE_HEIGHT;
 	AddSortableSpriteToDraw(0x517 | _drawtile_track_palette,
-		ti->x + 8, ti->y + 8, 1, 1, 4, z);
+		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
 
 static void DrawTrackFence_WE_1(const TileInfo *ti)
 {
 	int z = ti->z;
-	if (ti->tileh & SLOPE_N) z += 8;
+	if (ti->tileh & SLOPE_N) z += TILE_HEIGHT;
 	AddSortableSpriteToDraw(0x518 | _drawtile_track_palette,
-		ti->x + 8, ti->y + 8, 1, 1, 4, z);
+		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
 
 static void DrawTrackFence_WE_2(const TileInfo *ti)
 {
 	int z = ti->z;
-	if (ti->tileh & SLOPE_S) z += 8;
+	if (ti->tileh & SLOPE_S) z += TILE_HEIGHT;
 	AddSortableSpriteToDraw(0x518 | _drawtile_track_palette,
-		ti->x + 8, ti->y + 8, 1, 1, 4, z);
+		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
 
 static void DetTrackDrawProc_Null(const TileInfo *ti)
@@ -1703,12 +1703,12 @@ static uint GetSlopeZ_Track(const TileInfo* ti)
 
 	if (tileh == SLOPE_FLAT) return z;
 	if (GetRailTileType(ti->tile) == RAIL_TYPE_DEPOT_WAYPOINT) {
-		return z + 8;
+		return z + TILE_HEIGHT;
 	} else {
 		uint f = GetRailFoundation(ti->tileh, GetTrackBits(ti->tile));
 
 		if (f != 0) {
-			if (f < 15) return z + 8; // leveled foundation
+			if (f < 15) return z + TILE_HEIGHT; // leveled foundation
 			tileh = _inclined_tileh[f - 15]; // inclined foundation
 		}
 		return z + GetPartialZ(ti->x & 0xF, ti->y & 0xF, tileh);

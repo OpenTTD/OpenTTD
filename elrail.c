@@ -290,7 +290,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 			sss = &CatenarySpriteData[Wires[tileh_selector][t][PCPconfig]];
 
 			AddSortableSpriteToDraw( sss->image, ti->x + sss->x_offset, ti->y + sss->y_offset,
-				sss->x_size, sss->y_size, sss->z_size, GetSlopeZ(ti->x + min(sss->x_offset, 15), ti->y + min(sss->y_offset, 15)) + sss->z_offset);
+				sss->x_size, sss->y_size, sss->z_size, GetSlopeZ(ti->x + min(sss->x_offset, TILE_SIZE - 1), ti->y + min(sss->y_offset, TILE_SIZE - 1)) + sss->z_offset);
 		}
 	}
 }
@@ -325,18 +325,18 @@ static void DrawCatenaryOnBridge(const TileInfo *ti)
 	/* every other tile needs a pylon on the northern end */
 	if (num % 2) {
 		if (axis == AXIS_X) {
-			AddSortableSpriteToDraw( pylons_bridge[0 + HASBIT(tlg, 0)], ti->x, ti->y + 4 + 8 * HASBIT(tlg, 0), 1, 1, 10, GetBridgeHeight(ti->tile) + 8);
+			AddSortableSpriteToDraw( pylons_bridge[0 + HASBIT(tlg, 0)], ti->x, ti->y + 4 + 8 * HASBIT(tlg, 0), 1, 1, 10, GetBridgeHeight(ti->tile) + TILE_HEIGHT);
 		} else {
-			AddSortableSpriteToDraw( pylons_bridge[2 + HASBIT(tlg, 1)], ti->x + 4 + 8 * HASBIT(tlg, 1), ti->y, 1, 1, 10, GetBridgeHeight(ti->tile) + 8);
+			AddSortableSpriteToDraw( pylons_bridge[2 + HASBIT(tlg, 1)], ti->x + 4 + 8 * HASBIT(tlg, 1), ti->y, 1, 1, 10, GetBridgeHeight(ti->tile) + TILE_HEIGHT);
 		}
 	}
 
 	/* need a pylon on the southern end of the bridge */
 	if (DistanceMax(ti->tile, start) == length) {
 		if (axis == AXIS_X) {
-			AddSortableSpriteToDraw( pylons_bridge[0 + HASBIT(tlg, 0)], ti->x + 16, ti->y + 4 + 8 * HASBIT(tlg, 0), 1, 1, 10, GetBridgeHeight(ti->tile) + 8);
+			AddSortableSpriteToDraw( pylons_bridge[0 + HASBIT(tlg, 0)], ti->x + 16, ti->y + 4 + 8 * HASBIT(tlg, 0), 1, 1, 10, GetBridgeHeight(ti->tile) + TILE_HEIGHT);
 		} else {
-			AddSortableSpriteToDraw( pylons_bridge[2 + HASBIT(tlg, 1)], ti->x + 4 + 8 * HASBIT(tlg, 1), ti->y + 16, 1, 1, 10, GetBridgeHeight(ti->tile) + 8);
+			AddSortableSpriteToDraw( pylons_bridge[2 + HASBIT(tlg, 1)], ti->x + 4 + 8 * HASBIT(tlg, 1), ti->y + 16, 1, 1, 10, GetBridgeHeight(ti->tile) + TILE_HEIGHT);
 		}
 	}
 }

@@ -460,8 +460,8 @@ void DrawClearLandFence(const TileInfo *ti)
 	byte z = ti->z;
 
 	if (ti->tileh & SLOPE_S) {
-		z += 8;
-		if (ti->tileh == SLOPE_STEEP_S) z += 8;
+		z += TILE_HEIGHT;
+		if (ti->tileh == SLOPE_STEEP_S) z += TILE_HEIGHT;
 	}
 
 	if (GetFenceSW(ti->tile) != 0) {
