@@ -18,6 +18,10 @@ void SetWagonOverrideSprites(EngineID engine, struct SpriteGroup *group, byte *t
 void SetCustomEngineSprites(EngineID engine, byte cargo, struct SpriteGroup *group);
 // loaded is in percents, overriding_engine 0xffff is none
 int GetCustomEngineSprite(EngineID engine, const Vehicle* v, Direction direction);
+
+void SetEngineGRF(EngineID engine, uint32 grfid);
+uint32 GetEngineGRFID(EngineID engine);
+
 uint16 GetVehicleCallback(byte callback, uint32 param1, uint32 param2, EngineID engine, const Vehicle *v);
 bool UsesWagonOverride(const Vehicle *v);
 #define GetCustomVehicleSprite(v, direction) GetCustomEngineSprite(v->engine_type, v, direction)

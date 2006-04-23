@@ -99,6 +99,7 @@ void UnloadWagonOverrides(void)
 // may appear in future - however it's more convenient to store it like this in
 // memory. --pasky)
 static SpriteGroup *engine_custom_sprites[TOTAL_NUM_ENGINES][NUM_GLOBAL_CID];
+static uint32 _engine_grf[TOTAL_NUM_ENGINES];
 
 void SetCustomEngineSprites(EngineID engine, byte cargo, SpriteGroup *group)
 {
@@ -121,8 +122,22 @@ void UnloadCustomEngineSprites(void)
 		for (cargo = 0; cargo < NUM_GLOBAL_CID; cargo++) {
 			engine_custom_sprites[engine][cargo] = NULL;
 		}
+		_engine_grf[engine] = 0;
 	}
 }
+
+void SetEngineGRF(EngineID engine, uint32 grfid)
+{
+	assert(engine < TOTAL_NUM_ENGINES);
+	_engine_grf[engine] = grfid;
+}
+
+uint32 GetEngineGRFID(EngineID engine)
+{
+	assert(engine < TOTAL_NUM_ENGINES);
+	return _engine_grf[engine];
+}
+
 
 static int MapOldSubType(const Vehicle *v)
 {
