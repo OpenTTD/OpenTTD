@@ -1710,6 +1710,7 @@ STR_306B_HELIPORT                                               :{BLACK}Eliporto
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stazione troppo estesa
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...stazioni non uniformi disabilitate
 
+
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientamento Deposito Navale
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...deve essere costruito sull'acqua
@@ -2802,6 +2803,7 @@ STR_REPLACE_HELP                                                :{BLACK}Permette
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Rimuovi vagoni: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Autosostituzione deve mantenere uguale la lunghezza del treno, rimuovendo vagoni (iniziando davanti), se la sostituzione del treno lo farebbe piu lungo.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Sostituzione: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} FEATURE SPERIMENTALE {}Scambia tra loro le finestre di sostituizione locomotive e vagoni. {}La sostituizione del vagone avverrà solo se il nuovo vagone può essere convertito nello stesso tipo di merce del  vecchio vagone. Questo controllo viene fatto per ogni vagone sostituito.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomotiva non e costruibile
 
 STR_ENGINES                                                     :Motrici

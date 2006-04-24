@@ -1710,6 +1710,10 @@ STR_306B_HELIPORT                                               :{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...istasyon çok yayilmis
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...özel istasyon ayari kapali
 
+STR_UNDEFINED                                                   :(tanimlanmamis sözcük)
+STR_STAT_CLASS_DFLT                                             :Varsayilan istasyon
+STR_STAT_CLASS_WAYP                                             :Yerimleri
+
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Tershane Yönü
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...suya yapilmali

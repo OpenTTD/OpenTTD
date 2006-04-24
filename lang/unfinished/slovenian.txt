@@ -84,32 +84,32 @@ STR_004C_PLASTIC                                                :Plastika
 STR_004D_FIZZY_DRINK                                            :Gazirana pijaca
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} potnikov
-STR_QUANTITY_COAL                                               :{COMMA} ton premoga
+STR_QUANTITY_COAL                                               :{WEIGHT} ton premoga
 STR_QUANTITY_MAIL                                               :{COMMA} vrec poste
 STR_QUANTITY_OIL                                                :{VOLUME} nafte
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} glav zivine
 STR_QUANTITY_GOODS                                              :{COMMA} gajb tovora
-STR_QUANTITY_GRAIN                                              :{COMMA} ton zita
-STR_QUANTITY_IRON_ORE                                           :{COMMA} ton zelezove rude
-STR_QUANTITY_STEEL                                              :{COMMA} ton jekla
+STR_QUANTITY_GRAIN                                              :{WEIGHT} ton zita
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} ton zelezove rude
+STR_QUANTITY_STEEL                                              :{WEIGHT} ton jekla
 STR_QUANTITY_VALUABLES                                          :{COMMA} vrec dragocenosti
-STR_QUANTITY_COPPER_ORE                                         :{COMMA} ton bakrove rude
-STR_QUANTITY_MAIZE                                              :{COMMA} ton koruze
-STR_QUANTITY_FRUIT                                              :{COMMA} ton sadja
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} ton bakrove rude
+STR_QUANTITY_MAIZE                                              :{WEIGHT} ton koruze
+STR_QUANTITY_FRUIT                                              :{WEIGHT} ton sadja
 STR_QUANTITY_DIAMONDS                                           :{COMMA} vrec diamantov
-STR_QUANTITY_FOOD                                               :{COMMA} ton hrane
-STR_QUANTITY_PAPER                                              :{COMMA} ton papirja
+STR_QUANTITY_FOOD                                               :{WEIGHT} ton hrane
+STR_QUANTITY_PAPER                                              :{WEIGHT} ton papirja
 STR_QUANTITY_GOLD                                               :{COMMA} vrec zlata
 STR_QUANTITY_WATER                                              :{VOLUME} vode
 STR_QUANTITY_WHEAT                                              :{COMMA} ton psenice
 STR_QUANTITY_RUBBER                                             :{VOLUME} gume
-STR_QUANTITY_SUGAR                                              :{COMMA} ton sladkorja
+STR_QUANTITY_SUGAR                                              :{WEIGHT} ton sladkorja
 STR_QUANTITY_TOYS                                               :{COMMA} igrac
 STR_QUANTITY_SWEETS                                             :{COMMA} vrec bombonov
 STR_QUANTITY_COLA                                               :{VOLUME} cockte
-STR_QUANTITY_CANDYFLOSS                                         :{COMMA} ton sladkorne pene
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} ton sladkorne pene
 STR_QUANTITY_BUBBLES                                            :{COMMA} balonckov
-STR_QUANTITY_TOFFEE                                             :{COMMA} ton karamele
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} ton karamele
 STR_QUANTITY_BATTERIES                                          :{COMMA} baterij
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastike
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} gaziranih pijac
@@ -665,7 +665,46 @@ STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Zgradi v
 STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Zgradi tovarno gaziranih pijac
 STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Zgradi generator mehurckov
 STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Zgradi jamo karamele
+STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Zgradi rudnik sladkorja
+STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Tukaj nemores zgraditi {STRING}...
+STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...najprej moras zgraditi mesto
+STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...samo en/a dovoljen na mesto
+STR_0288_PLANT_TREES                                            :{BLACK}Posadi drevesa
+STR_0289_PLACE_SIGN                                             :{BLACK}Postavi znak
+STR_028A_RANDOM_TREES                                           :{BLACK}Nakljucna drevesa
+STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Posadi drevesa nakljucno po pokrajini
+STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Posuj kamnita obmocja po pokrajini
+STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Postavi svetilnik
+STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Postavi oddajnik
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definiraj puscavna obmocja.{}Pritisni in drzi CTRL za odstranitev
+STR_0290_DELETE                                                 :{BLACK}Zbrisi
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Popolnoma zbrisi tole mesto
+STR_0292_SAVE_SCENARIO                                          :Shrani scenarij
+STR_0293_LOAD_SCENARIO                                          :Nalozi scenarij
+STR_0294_QUIT_EDITOR                                            :Zapusti urejevalnik
+STR_0296_QUIT                                                   :Izhod
+STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Shrani scenarij, nalozi scenarij, zapusti urejevalnik scenarijev, izhod
+STR_0298_LOAD_SCENARIO                                          :{WHITE}Nalozi scenarij
+STR_0299_SAVE_SCENARIO                                          :{WHITE}Shrani scenarij
+STR_029A_PLAY_SCENARIO                                          :{BLACK}Igraj scenarij
+STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Ali si preprican da zelis zapustiti ta scenarij ?
+STR_029C_QUIT_EDITOR                                            :{WHITE}Zapusti urejevalnik
+STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...samo v mestih s populacijo vecjo od 1200 prebivalcev
+STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Premakni zacetno leto za 1 leto naprej
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...konca mostu morata biti na terenu
+STR_02A1_SMALL                                                  :{BLACK}Majhno
+STR_02A2_MEDIUM                                                 :{BLACK}Srednje
+STR_02A3_LARGE                                                  :{BLACK}Veliko
+STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Izberi velikost mesta
+STR_02A5_TOWN_SIZE                                              :{YELLOW}Velikost mesta:
 
+STR_02B6                                                        :{STRING}  -  {STRING5}
+STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Pokazi zadnje sporocilo ali novico
+STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
+STR_02BB_TOWN_DIRECTORY                                         :Direktorij mest
+STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Dizajnerska imena vozil
+STR_02BD                                                        :{BLACK}{STRING}
+STR_02BE_DEFAULT                                                :Privzeto
 
 ############ range for menu	starts
 STR_WAYPOINTS_DISPLAYED                                         :{CHECKMARK}{SETX 12}Smerokazi prikazani
@@ -890,6 +929,7 @@ STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}
 
 ############ range for rating starts
 ############ range for rating ends
+
 
 
 ##id 0x3800

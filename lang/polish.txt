@@ -426,7 +426,7 @@ STR_SORT_BY_PROFIT_LAST_YEAR                                    :Zysk w ostatnim
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Zysk w tym roku
 STR_SORT_BY_AGE                                                 :Wiek
 STR_SORT_BY_RELIABILITY                                         :Niezawodnosc
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Calkowita pojemnosc dla typu towaru
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Calkowita pojemnosc typu towaru
 STR_SORT_BY_MAX_SPEED                                           :Predkosc maks.
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Wartosc
@@ -507,7 +507,7 @@ STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING}
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} jest bardzo stary
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} jest bardzo stary i natychmiast wymaga wymiany
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informacja o terenie
-STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Koszt czyszczenia: {LTBLUE}N/A
+STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Koszt czyszczenia: {LTBLUE}N/D
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Koszt czyszczenia: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :Brak
 STR_01A7_OWNER                                                  :{BLACK}Wlasciciel: {LTBLUE}{STRING}
@@ -983,7 +983,7 @@ STR_CURR_ROL                                                    :Lewy rumunskie 
 STR_CURR_RUR                                                    :Ruble (RUR)
 STR_CURR_SEK                                                    :Korony szweckie (SEK)
 
-STR_CURR_CUSTOM                                                 :Wlasne...
+STR_CURR_CUSTOM                                                 :Wlasna...
 
 STR_OPTIONS_LANG                                                :{BLACK}Jezyk
 STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1479,7 +1479,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Zespol] do {ST
 STR_NETWORK_CHAT_CLIENT                                         :[Prywatna] {STRING}:
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Prywatna] do {STRING}:
 STR_NETWORK_CHAT_ALL                                            :[Wszyscy] {STRING}:
-STR_NETWORK_NAME_CHANGE                                         :zmienil swoja nazwe na
+STR_NETWORK_NAME_CHANGE                                         :zmienil/-a swoja nazwe na
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Serwer zamknal sesje
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Restart serwera...{}Prosze czekac...
 
@@ -1676,9 +1676,9 @@ STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}
 STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Rozpocznij srednia kampanie reklamowa, aby zachecic wiecej pasazerow i fabryk do twoich uslug transportowych.{}  Koszt: {CURRENCY}
 STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Rozpocznij duza kampanie reklamowa, aby zachecic wiecej pasazerow i fabryk do twoich uslug transportowych.{}  Koszt: {CURRENCY}
 STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Ufunduj remont sieci drog. Powoduje zaklocenia w ruchu ulicznym do 6 miesiecy.{}  Koszt: {CURRENCY}
-STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Wybuduj statue dla uczczenia swojej firmy.{} Koszt: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Wybuduj pomnij dla uczczenia Twojej firmy.{} Koszt: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Ufundowanie nowych budynkow handlowych w miescie.{}  Koszt: {CURRENCY}
-STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Kup roczna wylacznosc na prawa transportowe w miescie. Lokalne wladze pozwala kozystac tylko ze stacji twojej firmy.{} Koszt: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Kup roczna wylacznosc na prawa transportowe w miescie. Lokalne wladze pozwala kozystac tylko ze stacji Twojej firmy.{} Koszt: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Daj lapowke lokanym wladzom, powieksz swoja ocene, ryzykujac powazne kary w razie zlapania.{}  Koszt: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Chaos na drogach w {TOWN}!{}{}Program przebudowy drog ufundowany przez {COMPANY} przynosi 6 miesiecy meki dla kierowcow!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
@@ -1793,9 +1793,10 @@ STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Podswiet
 STR_3068_DOCK                                                   :{WHITE}Port
 STR_3069_BUOY                                                   :Boja
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boja na drodze
-STR_306B_HELIPORT                                               :{BLACK}Heliport
+STR_306B_HELIPORT                                               :{BLACK}Ladowisko
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stacja zbyt rozlegla
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...niejednorodne stacje niedostepne
+
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientacja stoczni
@@ -2021,7 +2022,7 @@ STR_SV_STNAME_SIDINGS                                           :{STRING} Boczni
 STR_SV_STNAME_BRANCH                                            :{STRING} Rozjazd
 STR_SV_STNAME_UPPER                                             :{STRING} Gorny
 STR_SV_STNAME_LOWER                                             :{STRING} Dolny
-STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
+STR_SV_STNAME_HELIPORT                                          :{STRING} Ladowisko
 STR_SV_STNAME_FOREST                                            :{STRING} Las
 
 ############ end of	savegame specific region!
@@ -2215,7 +2216,7 @@ STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Nie mozn
 STR_7072_VIEW_HQ                                                :{BLACK}Zobacz SG
 STR_RELOCATE_HQ                                                 :{BLACK}Przenies SG
 STR_COMPANY_PASSWORD                                            :{BLACK}Haslo
-STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Ochrona haslem twojej firmy zapobiega nieautoryzowanemu przylaczeniu sie
+STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Ochrona haslem Twojej firmy zapobiega nieautoryzowanemu przylaczeniu sie
 STR_SET_COMPANY_PASSWORD                                        :Ustaw haslo firmy
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Swiatowa recesja!{}{}Eksperci finansowi obawiaja sie najgorszego z powodu zastoju!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Koniec recesji!{}{}Zmiana w wymianach daje pewnosc umocnienia fabryk i ekonomii!
@@ -2287,7 +2288,7 @@ STR_8032_TOY_VAN                                                :Wagon na zabawk
 STR_8033_BATTERY_TRUCK                                          :Wagon na baterie
 STR_8034_FIZZY_DRINK_TRUCK                                      :Wagon na napoje gazowane
 STR_8035_PLASTIC_TRUCK                                          :Wagon na plastik
-STR_8036_X2001_ELECTRIC                                         :'X2001' (Electric)
+STR_8036_X2001_ELECTRIC                                         :'X2001' (Elektrowoz)
 STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (Elektrowoz)
 STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
 STR_8039_PASSENGER_CAR                                          :Wagon pasazerski
@@ -2578,7 +2579,7 @@ STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Nie mozn
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nie mozna zmodyfikowac tego polecenia...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nie mozna ruszyc pojazdem...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Tylna lokomotywa zawsze porusza sie razem z przednia
-STR_8838_N_A                                                    :N/A{SKIP}
+STR_8838_N_A                                                    :N/D{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Nie mozna sprzedac lokomotywy...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Nie mozna znalezc drogi do zajezdni.
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Nie mozna zatrzymac/ruszyc pociagiem...
@@ -2629,7 +2630,7 @@ STR_8863_CRASHED                                                :{RED}Wypadek!
 STR_8865_NAME_TRAIN                                             :{WHITE}Nazwa pociagu
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Nie mozna zmienic nazwy pociagu...
 STR_8867_NAME_TRAIN                                             :{BLACK}Nazwa pociagu
-STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Wypadek kolejowy!{}{COMMA} ofiar w kolizji
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Wypadek kolejowy!{}{COMMA} ofiar{G a y ""} w kolizji
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nie mozna odwrocic kierunku jazdy pociagu...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Zmiana nazwy typu pociagu
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nie mozna zmienic nazwy typu pojazdu...
@@ -2687,7 +2688,7 @@ STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Nazwij s
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mieszkancy swietuja . . .{}Pierwszy autobus przybyl do {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mieszkancy swietuja . . .{}Pierwsza ciezarowka przybyla do {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Wypadek samochodowy!{}Kierowca zginal po zderzeniu z pociagiem
-STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Wypadek samochodowy!{}{COMMA} ofiar po zderzeniu z pociagiem
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Wypadek samochodowy!{}{COMMA} ofiar{G a y ""} zderzenia z pociagiem
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Nie mozna zawrocic samochodu...
 STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Nie mozna obracac pociagow z podwojnymi lokomotywami
 STR_9034_RENAME                                                 :{BLACK}Zmien nazwe
@@ -2822,7 +2823,7 @@ STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nazwa sa
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Nie mozna zmienic nazwy samolotu...
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Nazwa samolotu
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mieszkancy swietuja . . .{}Pierwszy samolot przylecial do {STATION}!
-STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Katastrofa lotnicza!{}{COMMA} ofiar na {STATION}
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Katastrofa lotnicza!{}{COMMA} ofiar{G a y ""} na {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Wypadek lotniczy!{}Samolot rozbil sie z braku paliwa, zginelo {COMMA} osob!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Zmien nazwe

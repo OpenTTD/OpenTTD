@@ -1607,7 +1607,7 @@ STR_202C_FROM_TO                                                :{ORANGE}{STRING
 STR_202D_UNTIL                                                  :{YELLOW}, do {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Nabídka dotace prepravy vypr¨ela:{}{}Dotace dopravy {STRING.news} z {STRING} do {STRING} nebude dále nabízena.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Ukonceni dotovaní dopravy:{}{}Dotace pro {STRING} z {STATION} do {STATION} ji¸ nebude dále poskytována.
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Nabídka dotace:{}{}Doprava {STRING} z {STRING} do {STRING} bude jeden rok dotovana místní správou!
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Nabídka dotace:{}{}Doprava {STRING} z {STRING} do {STRING} bude jeden rok dotována místní správou!
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace pridelena spolecnosti {COMPANY}.{}{}Doprava {STRING.news} z {STATION} do {STATION} bude po jeden rok vyná¨et 150 % normální ceny.
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace pridelena spolecnosti {COMPANY}.{}{}Doprava {STRING.news} z {STATION} do {STATION} bude po jeden rok vyná¨et dvojnásobek normální ceny!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace pridelena spolecnosti {COMPANY}.{}{}Doprava {STRING.news} z {STATION} do {STATION} bude po jeden rok vyná¨et trojnásobek normální ceny!
@@ -1761,6 +1761,7 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}... bójk
 STR_306B_HELIPORT                                               :{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}... stanice je prilis rozlo¸itá
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}... nejednolité stanice nejsou povoleny
+
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientace lodního depa

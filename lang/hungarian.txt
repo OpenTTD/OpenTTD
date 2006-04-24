@@ -1775,6 +1775,9 @@ STR_306B_HELIPORT                                               :{BLACK}Helikopt
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...az állomás túl kiterjedt
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...csak egyféle vágánytípusú állomások lehetnek
 
+STR_STAT_CLASS_DFLT                                             :Alapértelmezett állomás
+STR_STAT_CLASS_WAYP                                             :Útipontok
+
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Dokk helyzete
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...csak vízen építhetõ

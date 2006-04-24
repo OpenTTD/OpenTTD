@@ -310,19 +310,33 @@ STR_UNITS_IMPERIAL                                              :Anglo-Saxónico
 STR_UNITS_METRIC                                                :Métrico
 STR_UNITS_SI                                                    :Sistema Internacional
 
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}cv
+STR_UNITS_POWER_METRIC                                          :{COMMA}cv
+STR_UNITS_POWER_SI                                              :{COMMA}kW
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonelada{P "" s}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonelada{P ""s}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m?
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gal{P "ão" "ões}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litro{P "" s}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m?
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10^3 lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} ton force
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Benefícios operativos
@@ -1270,6 +1284,7 @@ STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Máximo d
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limitar o servidor a um certo número de Companhias
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Máximo de espectadores:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limitar o servidor a um determinado número de espectadores
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma falado:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Outros jogadores ficarão a conhecer o idioma utilizado no servidor.
@@ -1694,6 +1709,7 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...bóia 
 STR_306B_HELIPORT                                               :{BLACK}Heliporto
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...estação muito extensa
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...estações não-uniformes desactivadas
+
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientação do Depósito
@@ -2399,6 +2415,7 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Comboio 
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Os comboios só podem ser alterados quando parados num depósito
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Comboios
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Novos Veículos Ferroviários
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Novos combóios para carris electrificados
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Novos Veículos Monocarril
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Novos Veículos Maglev
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Construir Veículo
@@ -2544,6 +2561,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Acidente de Veículo de Estrada!{}Condutor morre na explosão após a colisão com um comboio
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Acidente de Veículo de Estrada!{}{COMMA} morrem na explosão após a colisão com um comboio
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Não é possível fazer o veículo dar a volta...
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Não é possível virar combóios compostos por unidades múltiplas
 STR_9034_RENAME                                                 :{BLACK}Renomear
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Renomear tipo de veículo de estrada
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Renomear tipo de veículo de estrada
@@ -2783,7 +2801,13 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Seleccio
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Exibe o tipo de motor que substituirá o que está seleccionado à esquerda, se algum
 STR_REPLACE_HELP                                                :{BLACK}Permite a substiuição de um tipo de motor por outro, quando comboios do tipo original entram num depósito
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Remover vagões: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Forçar a substituição automática a manter o comprimento do combóio, removendo vagões (do início), nas situações em que a substituição da locomotiva resultar num combóio maior.
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Substituindo: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} FUNCIONALIDADE EXPERIMENTAL{}Alternar entre a janela de substituição de locomotivas e a janela de substituição de vagões.{}A substituição de vagões só ocorrerá se o novo vagão puder ser reconvertido para o mesmo tipo de carga que o vagão antigo. Esta verificação ocorre para cada vagão, durante a substituição.
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomotiva não pode ser construída
 
+STR_ENGINES                                                     :Locomotivas
+STR_WAGONS                                                      :Vagões
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de sinais - {COMMA} Sinais
@@ -2791,6 +2815,7 @@ STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Comboios
+STR_ELRAIL_VEHICLES                                             :Combóios para carris electrificados
 STR_MONORAIL_VEHICLES                                           :Monocarris
 STR_MAGLEV_VEHICLES                                             :Maglevs
 
