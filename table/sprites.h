@@ -912,6 +912,35 @@ enum Sprites {
 	SPR_IT_TOY_FACTORY_ROBOT        = 4720,
 	SPR_IT_POWER_PLANT_TRANSFORMERS = 2054,
 
+	/*small icons of cargo available in station waiting*/
+	SPR_CARGO_PASSENGER             = 4297,
+	SPR_CARGO_COAL                  = 4298,
+	SPR_CARGO_MAIL                  = 4299,
+	SPR_CARGO_OIL                   = 4300,
+	SPR_CARGO_LIVESTOCK             = 4301,
+	SPR_CARGO_GOODS                 = 4302,
+	SPR_CARGO_GRAIN                 = 4303,
+	SPR_CARGO_WOOD                  = 4304,
+	SPR_CARGO_IRON_ORE              = 4305,
+	SPR_CARGO_STEEL                 = 4306,
+	SPR_CARGO_VALUES_GOLD           = 4307,  /*shared between temperate and arctic*/
+	SPR_CARGO_FRUIT                 = 4308,
+	SPR_CARGO_COPPER_ORE            = 4309,
+	SPR_CARGO_WATERCOLA             = 4310,  /*shared between desert and toyland*/
+	SPR_CARGO_DIAMONDS              = 4311,
+	SPR_CARGO_FOOD                  = 4312,
+	SPR_CARGO_PAPER                 = 4313,
+	SPR_CARGO_RUBBER                = 4314,
+	SPR_CARGO_CANDY                 = 4315,
+	SPR_CARGO_SUGAR                 = 4316,
+	SPR_CARGO_TOYS                  = 4317,
+	SPR_CARGO_COTTONCANDY           = 4318,
+	SPR_CARGO_FIZZYDRINK            = 4319,
+	SPR_CARGO_TOFFEE                = 4320,
+	SPR_CARGO_BUBBLES               = 4321,
+	SPR_CARGO_PLASTIC               = 4322,
+	SPR_CARGO_BATTERIES             = 4323,
+
 	/* Effect vehicles */
 	SPR_BULLDOZER_NE = 1416,
 	SPR_BULLDOZER_SE = 1417,

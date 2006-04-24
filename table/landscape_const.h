@@ -1,5 +1,7 @@
 /* $Id$ */
 
+#include "sprites.h"
+
 typedef struct CargoTypesValues {
 	StringID names[NUM_CARGO];
 	StringID units_volume[NUM_CARGO];
@@ -55,7 +57,9 @@ static const CargoTypesValues _cargo_types_base_values[4] = {
 
 		/* normal sprites */
 		{
-			0x10C9, 0x10CA, 0x10CB, 0x10CC, 0x10CD, 0x10CE, 0x10CF, 0x10D0, 0x10D1, 0x10D2, 0x10D3,
+			SPR_CARGO_PASSENGER,      SPR_CARGO_COAL,  SPR_CARGO_MAIL, SPR_CARGO_OIL,      SPR_CARGO_LIVESTOCK,
+			SPR_CARGO_GOODS,          SPR_CARGO_GRAIN, SPR_CARGO_WOOD, SPR_CARGO_IRON_ORE, SPR_CARGO_STEEL,
+			SPR_CARGO_VALUES_GOLD,    SPR_ASCII_SPACE
 		},
 
 		/* normal initial cargo payment */
@@ -117,7 +121,9 @@ static const CargoTypesValues _cargo_types_base_values[4] = {
 
 		/* hilly sprites */
 		{
-			0x10C9, 0x10CA, 0x10CB, 0x10CC, 0x10CD, 0x10CE, 0x10CF, 0x10D0, 0x2, 0x10D9, 0x10D3, 0x10D8
+			SPR_CARGO_PASSENGER,   SPR_CARGO_COAL,  SPR_CARGO_MAIL, SPR_CARGO_OIL,   SPR_CARGO_LIVESTOCK,
+			SPR_CARGO_GOODS,       SPR_CARGO_GRAIN, SPR_CARGO_WOOD, SPR_ASCII_SPACE, SPR_CARGO_PAPER,
+			SPR_CARGO_VALUES_GOLD, SPR_CARGO_FOOD
 		},
 
 		/* hilly initial cargo payment */
@@ -179,7 +185,9 @@ static const CargoTypesValues _cargo_types_base_values[4] = {
 
 		/* desert sprites */
 		{
-			0x10C9, 0x10DA, 0x10CB, 0x10CC, 0x10D4, 0x10CE, 0x10CF, 0x10D0, 0x10D5, 0x10D6, 0x10D7, 0x10D8
+			SPR_CARGO_PASSENGER, SPR_CARGO_RUBBER, SPR_CARGO_MAIL, SPR_CARGO_OIL,        SPR_CARGO_FRUIT,
+			SPR_CARGO_GOODS,     SPR_CARGO_GRAIN,  SPR_CARGO_WOOD, SPR_CARGO_COPPER_ORE, SPR_CARGO_WATERCOLA,
+			SPR_CARGO_DIAMONDS,  SPR_CARGO_FOOD
 		},
 
 		/* desert initial cargo payment */
@@ -241,7 +249,9 @@ static const CargoTypesValues _cargo_types_base_values[4] = {
 
 		/* candy sprites */
 		{
-			0x10C9, 0x10DC, 0x10CB, 0x10DD, 0x10E3, 0x10DB, 0x10E0, 0x10D6, 0x10DE, 0x10E1, 0x10E2, 0x10DF
+			SPR_CARGO_PASSENGER, SPR_CARGO_SUGAR,  SPR_CARGO_MAIL,      SPR_CARGO_TOYS,        SPR_CARGO_BATTERIES,
+			SPR_CARGO_CANDY,     SPR_CARGO_TOFFEE, SPR_CARGO_WATERCOLA, SPR_CARGO_COTTONCANDY, SPR_CARGO_BUBBLES,
+			SPR_CARGO_PLASTIC,   SPR_CARGO_FIZZYDRINK
 		},
 
 		/* candy initial cargo payment */
