@@ -1,5 +1,15 @@
 /* $Id$ */
 
+typedef struct DrawTileUnmovableStruct {
+	uint16 image;
+	byte subcoord_x;
+	byte subcoord_y;
+	byte width;
+	byte height;
+	byte z_size;
+	byte unused;
+} DrawTileUnmovableStruct;
+
 #define TILE_SEQ_END() { 0x80, 0, 0, 0, 0, 0, 0 }
 
 static const DrawTileUnmovableStruct _draw_tile_unmovable_data[] = {

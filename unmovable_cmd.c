@@ -17,6 +17,7 @@
 #include "sprite.h"
 #include "unmovable_map.h"
 #include "variables.h"
+#include "table/unmovable_land.h"
 
 /** Destroy a HQ.
  * During normal gameplay you can only implicitely destroy a HQ when you are
@@ -118,18 +119,6 @@ int32 CmdBuildCompanyHQ(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	return cost;
 }
-
-typedef struct DrawTileUnmovableStruct {
-	uint16 image;
-	byte subcoord_x;
-	byte subcoord_y;
-	byte width;
-	byte height;
-	byte z_size;
-	byte unused;
-} DrawTileUnmovableStruct;
-
-#include "table/unmovable_land.h"
 
 static void DrawTile_Unmovable(TileInfo *ti)
 {

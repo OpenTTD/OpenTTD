@@ -1,8 +1,21 @@
 /* $Id$ */
 
+typedef struct DrawIndustrySpec1Struct {
+	byte x;
+	byte image_1;
+	byte image_2;
+	byte image_3;
+} DrawIndustrySpec1Struct;
+
+typedef struct DrawIndustrySpec4Struct {
+	byte image_1;
+	byte image_2;
+	byte image_3;
+} DrawIndustrySpec4Struct;
+
 #define M(s1, s2, sx, sy, w, h, dz, p) { s1, s2, sx, sy, w - 1, h - 1, dz, p }
 
-static const DrawIndustryTileStruct _industry_draw_tile_data[700] = {
+static const DrawBuildingsTileStruct _industry_draw_tile_data[700] = {
 	M(     0xf54,      0x7db,  7,  0,  9,  9,  10, 0),
 	M(     0xf54,      0x7dc,  7,  0,  9,  9,  30, 0),
 	M(     0xf54,      0x7dd,  7,  0,  9,  9,  30, 0),

@@ -1,5 +1,21 @@
 /* $Id$ */
 
+
+typedef struct IndustryTileTable {
+	TileIndexDiffC ti;
+	IndustryGfx gfx;
+} IndustryTileTable;
+
+typedef struct IndustrySpec {
+	const IndustryTileTable *const *table;
+	byte num_table;
+	byte a,b,c;
+	CargoID produced_cargo[2];
+	byte production_rate[2];
+	CargoID accepts_cargo[3];
+	byte check_proc;
+} IndustrySpec;
+
 #define MK(x,y, m) {{x, y}, m}
 
 #define MKEND {{-0x80, 0}, 0}

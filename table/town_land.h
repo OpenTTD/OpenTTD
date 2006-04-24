@@ -28,7 +28,7 @@ enum {
   */
 #define M(s1, s2, sx, sy, w, h, dz, p) {s1, s2, sx, sy, w - 1, h - 1, dz, p}
 
-static const DrawTownTileStruct _town_draw_tile_data[] = {
+static const DrawBuildingsTileStruct _town_draw_tile_data[] = {
 	M( 0xf54,  0x58d,  0,  0, 14, 14,   8, 0),
 	M( 0xf54,  0x58e,  0,  0, 14, 14,  60, 0),
 	M( 0xf54,  0x58f,  0,  0, 14, 14,  60, 0),

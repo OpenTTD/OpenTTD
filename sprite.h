@@ -22,6 +22,21 @@ typedef struct DrawTileSprites {
 	const DrawTileSeqStruct* seq;
 } DrawTileSprites;
 
+/**
+ * This structure is the same for both Industries and Houses.
+ * Buildings here reference a general type of construction
+ */
+typedef struct DrawBuildingsTileStruct {
+	SpriteID ground;
+	SpriteID building;
+	byte subtile_x:4;
+	byte subtile_y:4;
+	byte width:4;
+	byte height:4;
+	byte dz;
+	byte draw_proc;  /* this allows to specify a special drawing procedure.*/
+} DrawBuildingsTileStruct;
+
 // Iterate through all DrawTileSeqStructs in DrawTileSprites.
 #define foreach_draw_tile_seq(idx, list) for (idx = list; ((byte) idx->delta_x) != 0x80; idx++)
 

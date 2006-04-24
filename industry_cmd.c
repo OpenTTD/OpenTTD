@@ -20,6 +20,8 @@
 #include "economy.h"
 #include "sound.h"
 #include "variables.h"
+#include "table/industry_land.h"
+#include "table/build_industry.h"
 
 enum {
 	/* Max industries: 64000 (8 * 8000) */
@@ -46,52 +48,6 @@ static TileIndex _industry_sound_tile;
 void ShowIndustryViewWindow(int industry);
 void BuildOilRig(TileIndex tile);
 void DeleteOilRig(TileIndex tile);
-
-typedef struct DrawIndustryTileStruct {
-	uint32 sprite_1;
-	uint32 sprite_2;
-
-	byte subtile_x:4;
-	byte subtile_y:4;
-	byte width:4;
-	byte height:4;
-	byte dz;
-	byte proc;
-} DrawIndustryTileStruct;
-
-
-typedef struct DrawIndustrySpec1Struct {
-	byte x;
-	byte image_1;
-	byte image_2;
-	byte image_3;
-} DrawIndustrySpec1Struct;
-
-typedef struct DrawIndustrySpec4Struct {
-	byte image_1;
-	byte image_2;
-	byte image_3;
-} DrawIndustrySpec4Struct;
-
-typedef struct IndustryTileTable {
-	TileIndexDiffC ti;
-	IndustryGfx gfx;
-} IndustryTileTable;
-
-typedef struct IndustrySpec {
-	const IndustryTileTable *const *table;
-	byte num_table;
-	byte a,b,c;
-	CargoID produced_cargo[2];
-	byte production_rate[2];
-	CargoID accepts_cargo[3];
-	byte check_proc;
-} IndustrySpec;
-
-#include "table/industry_land.h"
-#include "table/build_industry.h"
-
-
 
 static const IndustryType _industry_close_mode[IT_END] = {
 	/* COAL_MINE */          INDUSTRYLIFE_PRODUCTION,
@@ -367,7 +323,7 @@ static IndustryDrawTileProc * const _industry_draw_tile_procs[5] = {
 static void DrawTile_Industry(TileInfo *ti)
 {
 	const Industry* ind;
-	const DrawIndustryTileStruct *dits;
+	const DrawBuildingsTileStruct *dits;
 	byte z;
 	uint32 image, ormod;
 
@@ -378,7 +334,7 @@ static void DrawTile_Industry(TileInfo *ti)
 	/* Retrieve pointer to the draw industry tile struct */
 	dits = &_industry_draw_tile_data[GetIndustryGfx(ti->tile) << 2 | GetIndustryConstructionStage(ti->tile)];
 
-	image = dits->sprite_1;
+	image = dits->ground;
 	if (image & PALETTE_MODIFIER_COLOR && (image & PALETTE_SPRITE_MASK) == 0)
 		image |= ormod;
 
@@ -394,7 +350,7 @@ static void DrawTile_Industry(TileInfo *ti)
 	}
 
 	/* Add industry on top of the ground? */
-	image = dits->sprite_2;
+	image = dits->building;
 	if (image != 0) {
 		if (image & PALETTE_MODIFIER_COLOR && (image & PALETTE_SPRITE_MASK) == 0)
 			image |= ormod;
@@ -413,7 +369,7 @@ static void DrawTile_Industry(TileInfo *ti)
 	}
 
 	{
-		int proc = dits->proc - 1;
+		int proc = dits->draw_proc - 1;
 		if (proc >= 0) _industry_draw_tile_procs[proc](ti);
 	}
 }

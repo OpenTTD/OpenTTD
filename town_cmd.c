@@ -26,6 +26,7 @@
 #include "water_map.h"
 #include "variables.h"
 #include "bridge.h"
+#include "table/town_land.h"
 
 enum {
 	/* Max towns: 64000 (8 * 8000) */
@@ -54,21 +55,6 @@ static bool BuildTownHouse(Town *t, TileIndex tile);
 static void ClearTownHouse(Town *t, TileIndex tile);
 static void DoBuildTownHouse(Town *t, TileIndex tile);
 
-typedef struct DrawTownTileStruct {
-	SpriteID sprite_1;
-	SpriteID sprite_2;
-
-	byte subtile_x:4;
-	byte subtile_y:4;
-	byte width:4;
-	byte height:4;
-	byte dz;
-	byte proc;
-} DrawTownTileStruct;
-
-#include "table/town_land.h"
-
-
 static void TownDrawHouseLift(const TileInfo *ti)
 {
 	AddChildSpriteScreen(SPR_LIFT, 14, 60 - GetLiftPosition(ti->tile));
@@ -82,22 +68,20 @@ static TownDrawTileProc * const _town_draw_tile_procs[1] = {
 
 static void DrawTile_Town(TileInfo *ti)
 {
-	const DrawTownTileStruct *dcts;
+	const DrawBuildingsTileStruct *dcts;
 	byte z;
 	uint32 image;
 
 	/* Retrieve pointer to the draw town tile struct */
 	{
 		/* this "randomizes" on the (up to) 4 variants of a building */
-		byte gfx   = GetHouseType(ti->tile);
-		byte stage = GetHouseBuildingStage(ti->tile);
 		uint variant;
 		variant  = ti->x >> 4;
 		variant ^= ti->x >> 6;
 		variant ^= ti->y >> 4;
 		variant -= ti->y >> 6;
 		variant &= 3;
-		dcts = &_town_draw_tile_data[gfx << 4 | variant << 2 | stage];
+		dcts = &_town_draw_tile_data[GetHouseType(ti->tile) << 4 | variant << 2 | GetHouseBuildingStage(ti->tile)];
 	}
 
 	z = ti->z;
@@ -105,15 +89,15 @@ static void DrawTile_Town(TileInfo *ti)
 	/* Add bricks below the house? */
 	if (ti->tileh != SLOPE_FLAT) {
 		AddSortableSpriteToDraw(SPR_FOUNDATION_BASE + ti->tileh, ti->x, ti->y, 16, 16, 7, z);
-		AddChildSpriteScreen(dcts->sprite_1, 31, 1);
+		AddChildSpriteScreen(dcts->ground, 31, 1);
 		z += TILE_HEIGHT;
 	} else {
 		/* Else draw regular ground */
-		DrawGroundSprite(dcts->sprite_1);
+		DrawGroundSprite(dcts->ground);
 	}
 
 	/* Add a house on top of the ground? */
-	image = dcts->sprite_2;
+	image = dcts->building;
 	if (image != 0) {
 		if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 
@@ -129,7 +113,7 @@ static void DrawTile_Town(TileInfo *ti)
 	}
 
 	{
-		int proc = dcts->proc - 1;
+		int proc = dcts->draw_proc - 1;
 
 		if (proc >= 0) _town_draw_tile_procs[proc](ti);
 	}
