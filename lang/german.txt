@@ -1,4 +1,4 @@
-##name German
+##
 ##ownname Deutsch
 ##isocode de
 ##plural 0
@@ -2419,7 +2419,7 @@ STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Züge kön
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Z{P ug üge}
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Neues Schienenfahrzeug
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}neue E-Loks und Waggons
-STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Neue Einschienenbahnz ge
+STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Neue Einschienenbahnzüge
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Neue Magnetzüge
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Fahrzeug bauen
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Fahrzeug duplizieren
