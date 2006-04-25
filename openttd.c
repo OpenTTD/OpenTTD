@@ -1082,6 +1082,13 @@ static void UpdateSignOwner(void)
 extern void UpdateOldAircraft( void );
 extern void UpdateOilRig( void );
 
+
+static inline RailType UpdateRailType(RailType rt, RailType min)
+{
+	return rt >= min ? (RailType)(rt + 1): rt;
+}
+
+
 bool AfterLoadGame(void)
 {
 	Window *w;
@@ -1247,7 +1254,7 @@ bool AfterLoadGame(void)
 		Vehicle* v;
 		uint i;
 		TileIndex t;
-		bool make_elrail = false;
+		RailType min_rail = RAILTYPE_ELECTRIC;
 
 		for (i = 0; i < lengthof(_engines); i++) {
 			Engine* e = GetEngine(i);
@@ -1262,7 +1269,7 @@ bool AfterLoadGame(void)
 				RailType rt = GetEngine(v->engine_type)->railtype;
 
 				v->u.rail.railtype = rt;
-				if (rt == RAILTYPE_ELECTRIC) make_elrail = true;
+				if (rt == RAILTYPE_ELECTRIC) min_rail = RAILTYPE_RAIL;
 			}
 		}
 
@@ -1270,34 +1277,38 @@ bool AfterLoadGame(void)
 		for (t = 0; t < MapSize(); t++) {
 			switch (GetTileType(t)) {
 				case MP_RAILWAY:
-					if (GetRailType(t) > RAILTYPE_RAIL || make_elrail) AB(_m[t].m3, 0, 4, 1);
+					SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
 					break;
 
 				case MP_STREET:
-					if (IsLevelCrossing(t) && (GetRailTypeCrossing(t) > RAILTYPE_RAIL || make_elrail)) AB(_m[t].m4, 0, 4, 1);
+					if (IsLevelCrossing(t)) {
+						SetRailTypeCrossing(t, UpdateRailType(GetRailTypeCrossing(t), min_rail));
+					}
 					break;
 
 				case MP_STATION:
-					if (IsRailwayStation(t) && (GetRailType(t) > RAILTYPE_RAIL || make_elrail)) AB(_m[t].m3, 0, 4, 1);
+					if (IsRailwayStation(t))  {
+						SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
+					}
 					break;
 
 				case MP_TUNNELBRIDGE:
 					if (IsTunnel(t)) {
 						if (GetTunnelTransportType(t) == TRANSPORT_RAIL) {
-							if (GetRailType(t) > RAILTYPE_RAIL || make_elrail) AB(_m[t].m3, 0, 4, 1);
+							SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
 						}
 					} else {
 						if (GetBridgeTransportType(t) == TRANSPORT_RAIL) {
 							if (IsBridgeRamp(t)) {
-								if (GetRailType(t) > RAILTYPE_RAIL || make_elrail) AB(_m[t].m3, 0, 4, 1);
+								SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
 							} else {
-								if (GetRailTypeOnBridge(t) > RAILTYPE_RAIL || make_elrail) AB(_m[t].m3, 4, 4, 1);
+								SetRailTypeOnBridge(t, UpdateRailType(GetRailTypeOnBridge(t), min_rail));
 							}
 						}
 						if (IsBridgeMiddle(t) &&
 								IsTransportUnderBridge(t) &&
 								GetTransportTypeUnderBridge(t) == TRANSPORT_RAIL) {
-							if (GetRailType(t) > RAILTYPE_RAIL || make_elrail) AB(_m[t].m3, 0, 4, 1);
+							SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
 						}
 					}
 					break;
