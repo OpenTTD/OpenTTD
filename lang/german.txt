@@ -1,4 +1,4 @@
-##
+##name German
 ##ownname Deutsch
 ##isocode de
 ##plural 0
