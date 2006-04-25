@@ -1240,10 +1240,10 @@ static int32 DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, 
 	// Modify profit if a subsidy is in effect
 	if (subsidised) {
 		switch (_opt.diff.subsidy_multiplier) {
-			case 0:  profit += profit >> 1;
-			case 1:  profit *= 2;
-			case 2:  profit *= 3;
-			default: profit *= 4;
+			case 0:  profit += profit >> 1; break;
+			case 1:  profit *= 2; break;
+			case 2:  profit *= 3; break;
+			default: profit *= 4; break;
 		}
 	}
 
