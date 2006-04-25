@@ -745,6 +745,5 @@ const TileTypeProcs _tile_type_clear_procs = {
 	ChangeTileOwner_Clear,		/* change_tile_owner_clear */
 	NULL,											/* get_produced_cargo_proc */
 	NULL,											/* vehicle_enter_tile_proc */
-	NULL,											/* vehicle_leave_tile_proc */
 	GetSlopeTileh_Clear,			/* get_slope_tileh_proc */
 };

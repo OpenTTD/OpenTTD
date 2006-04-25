@@ -2931,6 +2931,11 @@ static void TrainController(Vehicle *v)
 					goto invalid_rail;
 				}
 
+				if (IsLevelCrossingTile(v->tile) && v->next == NULL) {
+					UnbarCrossing(v->tile);
+					MarkTileDirtyByTile(v->tile);
+				}
+
 				if (IsFrontEngine(v)) v->load_unload_time_rem = 0;
 
 				if (!(r&0x4)) {

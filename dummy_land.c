@@ -79,6 +79,5 @@ const TileTypeProcs _tile_type_dummy_procs = {
 	ChangeTileOwner_Dummy,		/* change_tile_owner_clear */
 	NULL,											/* get_produced_cargo_proc */
 	NULL,											/* vehicle_enter_tile_proc */
-	NULL,											/* vehicle_leave_tile_proc */
 	GetSlopeTileh_Dummy,			/* get_slope_tileh_proc */
 };

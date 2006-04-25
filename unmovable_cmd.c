@@ -393,6 +393,5 @@ const TileTypeProcs _tile_type_unmovable_procs = {
 	ChangeTileOwner_Unmovable,      /* change_tile_owner_clear */
 	NULL,                           /* get_produced_cargo_proc */
 	NULL,                           /* vehicle_enter_tile_proc */
-	NULL,                           /* vehicle_leave_tile_proc */
 	GetSlopeTileh_Unmovable,        /* get_slope_tileh_proc */
 };

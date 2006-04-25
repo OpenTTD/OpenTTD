@@ -1398,6 +1398,5 @@ const TileTypeProcs _tile_type_tunnelbridge_procs = {
 	ChangeTileOwner_TunnelBridge,		/* change_tile_owner_clear */
 	NULL,														/* get_produced_cargo_proc */
 	VehicleEnter_TunnelBridge,			/* vehicle_enter_tile_proc */
-	NULL,														/* vehicle_leave_tile_proc */
 	GetSlopeTileh_TunnelBridge,			/* get_slope_tileh_proc */
 };

@@ -1049,13 +1049,6 @@ static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 	return 0;
 }
 
-static void VehicleLeave_Road(Vehicle *v, TileIndex tile, int x, int y)
-{
-	if (IsLevelCrossing(tile) && v->type == VEH_Train && v->next == NULL) {
-		UnbarCrossing(tile);
-		MarkTileDirtyByTile(tile);
-	}
-}
 
 static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID new_player)
 {
@@ -1103,6 +1096,5 @@ const TileTypeProcs _tile_type_road_procs = {
 	ChangeTileOwner_Road,			/* change_tile_owner_clear */
 	NULL,											/* get_produced_cargo_proc */
 	VehicleEnter_Road,				/* vehicle_enter_tile_proc */
-	VehicleLeave_Road,				/* vehicle_leave_tile_proc */
 	GetSlopeTileh_Road,				/* get_slope_tileh_proc */
 };

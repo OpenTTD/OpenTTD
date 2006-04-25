@@ -591,6 +591,5 @@ const TileTypeProcs _tile_type_trees_procs = {
 	ChangeTileOwner_Trees,		/* change_tile_owner_clear */
 	NULL,											/* get_produced_cargo_proc */
 	NULL,											/* vehicle_enter_tile_proc */
-	NULL,											/* vehicle_leave_tile_proc */
 	GetSlopeTileh_Trees,			/* get_slope_tileh_proc */
 };

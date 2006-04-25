@@ -2028,6 +2028,5 @@ const TileTypeProcs _tile_type_rail_procs = {
 	ChangeTileOwner_Track,		/* change_tile_owner_clear */
 	NULL,											/* get_produced_cargo_proc */
 	VehicleEnter_Track,				/* vehicle_enter_tile_proc */
-	NULL,											/* vehicle_leave_tile_proc */
 	GetSlopeTileh_Track,			/* get_slope_tileh_proc */
 };

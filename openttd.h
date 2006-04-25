@@ -331,7 +331,6 @@ typedef void ChangeTileOwnerProc(TileIndex tile, PlayerID old_player, PlayerID n
  * bit 0x8 set, the vehicle could not and did not enter the tile. Are there
  * other bits that can be set? */
 typedef uint32 VehicleEnterTileProc(Vehicle *v, TileIndex tile, int x, int y);
-typedef void VehicleLeaveTileProc(Vehicle *v, TileIndex tile, int x, int y);
 typedef Slope GetSlopeTilehProc(TileIndex, Slope tileh);
 
 typedef struct {
@@ -347,7 +346,6 @@ typedef struct {
 	ChangeTileOwnerProc *change_tile_owner_proc;
 	GetProducedCargoProc *get_produced_cargo_proc;
 	VehicleEnterTileProc *vehicle_enter_tile_proc;
-	VehicleLeaveTileProc *vehicle_leave_tile_proc;
 	GetSlopeTilehProc *get_slope_tileh_proc;
 } TileTypeProcs;
 

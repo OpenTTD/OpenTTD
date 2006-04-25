@@ -716,6 +716,5 @@ const TileTypeProcs _tile_type_water_procs = {
 	ChangeTileOwner_Water,		/* change_tile_owner_clear */
 	NULL,											/* get_produced_cargo_proc */
 	VehicleEnter_Water,				/* vehicle_enter_tile_proc */
-	NULL,											/* vehicle_leave_tile_proc */
 	GetSlopeTileh_Water,			/* get_slope_tileh_proc */
 };

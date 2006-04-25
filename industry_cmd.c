@@ -1891,7 +1891,6 @@ const TileTypeProcs _tile_type_industry_procs = {
 	ChangeTileOwner_Industry,		/* change_tile_owner_proc */
 	GetProducedCargo_Industry,  /* get_produced_cargo_proc */
 	NULL,												/* vehicle_enter_tile_proc */
-	NULL,												/* vehicle_leave_tile_proc */
 	GetSlopeTileh_Industry,			/* get_slope_tileh_proc */
 };
 
