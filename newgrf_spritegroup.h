@@ -6,9 +6,10 @@
 
 typedef struct SpriteGroup SpriteGroup;
 
-typedef struct RealSpriteGroup {
-	byte sprites_per_set; // means number of directions - 4 or 8
 
+/* 'Real' sprite groups contain a list of other result or callback sprite
+ * groups. */
+typedef struct RealSpriteGroup {
 	// Loaded = in motion, loading = not moving
 	// Each group contains several spritesets, for various loading stages
 
@@ -16,53 +17,81 @@ typedef struct RealSpriteGroup {
 	// with small amount of cargo whilst loading is for stations with a lot
 	// of da stuff.
 
-	byte loaded_count;     ///< Number of loaded groups
+	byte num_loaded;       ///< Number of loaded groups
+	byte num_loading;      ///< Number of loading groups
 	SpriteGroup **loaded;  ///< List of loaded groups (can be SpriteIDs or Callback results)
-	byte loading_count;    ///< Number of loading groups
 	SpriteGroup **loading; ///< List of loading groups (can be SpriteIDs or Callback results)
 } RealSpriteGroup;
 
 /* Shared by deterministic and random groups. */
-typedef enum VarSpriteGroupScope {
+typedef enum VarSpriteGroupScopes {
 	VSG_SCOPE_SELF,
 	// Engine of consists for vehicles, city for stations.
 	VSG_SCOPE_PARENT,
 } VarSpriteGroupScope;
 
-typedef struct DeterministicSpriteGroupRanges DeterministicSpriteGroupRanges;
+typedef enum DeterministicSpriteGroupSizes {
+	DSG_SIZE_BYTE,
+	DSG_SIZE_WORD,
+	DSG_SIZE_DWORD,
+} DeterministicSpriteGroupSize;
 
-typedef enum DeterministicSpriteGroupOperation {
-	DSG_OP_NONE,
-	DSG_OP_DIV,
-	DSG_OP_MOD,
-} DeterministicSpriteGroupOperation;
+typedef enum DeterministicSpriteGroupAdjustTypes {
+	DSGA_TYPE_NONE,
+	DSGA_TYPE_DIV,
+	DSGA_TYPE_MOD,
+} DeterministicSpriteGroupAdjustType;
 
-typedef struct DeterministicSpriteGroupRange DeterministicSpriteGroupRange;
+typedef enum DeterministicSpriteGroupAdjustOperations {
+	DSGA_OP_ADD,  // a + b
+	DSGA_OP_SUB,  // a - b
+	DSGA_OP_SMIN, // (signed) min(a, b)
+	DSGA_OP_SMAX, // (signed) max(a, b)
+	DSGA_OP_UMIN, // (unsigned) min(a, b)
+	DSGA_OP_UMAX, // (unsigned) max(a, b)
+	DSGA_OP_SDIV, // (signed) a / b
+	DSGA_OP_SMOD, // (signed) a % b
+	DSGA_OP_UDIV, // (unsigned) a / b
+	DSGA_OP_UMOD, // (unsigned) a & b
+	DSGA_OP_MUL,  // a * b
+	DSGA_OP_AND,  // a & b
+	DSGA_OP_OR,   // a | b
+	DSGA_OP_XOR,  // a ^ b
+} DeterministicSpriteGroupAdjustOperation;
 
-typedef struct DeterministicSpriteGroup {
-	// Take this variable:
-	VarSpriteGroupScope var_scope;
+
+typedef struct DeterministicSpriteGroupAdjust {
+	DeterministicSpriteGroupAdjustOperation operation;
+	DeterministicSpriteGroupAdjustType type;
 	byte variable;
 	byte parameter; ///< Used for variables between 0x60 and 0x7F inclusive.
-
-	// Do this with it:
 	byte shift_num;
-	byte and_mask;
+	uint32 and_mask;
+	uint32 add_val;
+	uint32 divmod_val;
+} DeterministicSpriteGroupAdjust;
 
-	// Then do this with it:
-	DeterministicSpriteGroupOperation operation;
-	byte add_val;
-	byte divmod_val;
 
-	// And apply it to this:
+typedef struct DeterministicSpriteGroupRange {
+	SpriteGroup *group;
+	uint32 low;
+	uint32 high;
+} DeterministicSpriteGroupRange;
+
+
+typedef struct DeterministicSpriteGroup {
+	VarSpriteGroupScope var_scope;
+	DeterministicSpriteGroupSize size;
+	byte num_adjusts;
 	byte num_ranges;
+	DeterministicSpriteGroupAdjust *adjusts;
 	DeterministicSpriteGroupRange *ranges; // Dynamically allocated
 
 	// Dynamically allocated, this is the sole owner
 	SpriteGroup *default_group;
 } DeterministicSpriteGroup;
 
-typedef enum RandomizedSpriteGroupCompareMode {
+typedef enum RandomizedSpriteGroupCompareModes {
 	RSG_CMP_ANY,
 	RSG_CMP_ALL,
 } RandomizedSpriteGroupCompareMode;
@@ -83,15 +112,22 @@ typedef struct RandomizedSpriteGroup {
 	SpriteGroup **groups;
 } RandomizedSpriteGroup;
 
+
+/* This contains a callback result. A failed callback has a value of
+ * CALLBACK_FAILED */
 typedef struct CallbackResultSpriteGroup {
 	uint16 result;
 } CallbackResultSpriteGroup;
 
+
+/* A result sprite group returns the first SpriteID and the number of
+ * sprites in the set */
 typedef struct ResultSpriteGroup {
-	uint16 result;
-	byte sprites;
+	SpriteID sprite;
+	byte num_sprites;
 } ResultSpriteGroup;
 
+/* List of different sprite group types */
 typedef enum SpriteGroupType {
 	SGT_INVALID,
 	SGT_REAL,
@@ -101,6 +137,7 @@ typedef enum SpriteGroupType {
 	SGT_RESULT,
 } SpriteGroupType;
 
+/* Common wrapper for all the different sprite group types */
 struct SpriteGroup {
 	SpriteGroupType type;
 
@@ -111,12 +148,6 @@ struct SpriteGroup {
 		CallbackResultSpriteGroup callback;
 		ResultSpriteGroup result;
 	} g;
-};
-
-struct DeterministicSpriteGroupRange {
-	SpriteGroup *group;
-	byte low;
-	byte high;
 };
 
 

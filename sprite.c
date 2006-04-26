@@ -11,27 +11,27 @@ SpriteGroup *EvalDeterministicSpriteGroup(const DeterministicSpriteGroup *dsg, i
 {
 	int i;
 
-	value >>= dsg->shift_num; // This should bring us to the byte range.
-	value &= dsg->and_mask;
+	value >>= dsg->adjusts[0].shift_num; // This should bring us to the byte range.
+	value &= dsg->adjusts[0].and_mask;
 
-	if (dsg->operation != DSG_OP_NONE)
-		value += (signed char) dsg->add_val;
+	if (dsg->adjusts[0].operation != DSGA_TYPE_NONE)
+		value += (signed char) dsg->adjusts[0].add_val;
 
-	switch (dsg->operation) {
-		case DSG_OP_DIV:
-			value /= (signed char) dsg->divmod_val;
+	switch (dsg->adjusts[0].type) {
+		case DSGA_TYPE_DIV:
+			value /= (signed char) dsg->adjusts[0].divmod_val;
 			break;
-		case DSG_OP_MOD:
-			value %= (signed char) dsg->divmod_val;
+		case DSGA_TYPE_MOD:
+			value %= (signed char) dsg->adjusts[0].divmod_val;
 			break;
-		case DSG_OP_NONE:
+		case DSGA_TYPE_NONE:
 			break;
 	}
 
 	for (i = 0; i < dsg->num_ranges; i++) {
 		DeterministicSpriteGroupRange *range = &dsg->ranges[i];
 
-		if (range->low <= value && value <= range->high)
+		if (range->low <= (uint32)value && (uint32)value <= range->high)
 			return range->group;
 	}
 

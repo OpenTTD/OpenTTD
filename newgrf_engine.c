@@ -208,16 +208,18 @@ static const SpriteGroup* ResolveVehicleSpriteGroup(const SpriteGroup *spritegro
 			const DeterministicSpriteGroup *dsg = &spritegroup->g.determ;
 			const SpriteGroup *target;
 			int value = -1;
+			// XXX Temporary support
+			byte variable = dsg->adjusts[0].variable;
 
-			//debug("[%p] Having fun resolving variable %x", veh, dsg->variable);
-			if (dsg->variable == 0x0C) {
+			//debug("[%p] Having fun resolving variable %x", veh, variable);
+			if (variable == 0x0C) {
 				/* Callback ID */
 				value = callback_info & 0xFF;
-			} else if (dsg->variable == 0x10) {
+			} else if (variable == 0x10) {
 				value = (callback_info >> 8) & 0xFF;
-			} else if ((dsg->variable >> 6) == 0) {
+			} else if ((variable >> 6) == 0) {
 				/* General property */
-				value = GetDeterministicSpriteValue(dsg->variable);
+				value = GetDeterministicSpriteValue(variable);
 			} else {
 				/* Vehicle-specific property. */
 
@@ -240,18 +242,18 @@ static const SpriteGroup* ResolveVehicleSpriteGroup(const SpriteGroup *spritegro
 						veh = GetFirstVehicleInChain(veh);
 				}
 
-				if (dsg->variable == 0x40 || dsg->variable == 0x41) {
+				if (variable == 0x40 || variable == 0x41) {
 					if (veh->type == VEH_Train) {
 						const Vehicle *u = GetFirstVehicleInChain(veh);
 						byte chain_before = 0, chain_after = 0;
 
 						while (u != veh) {
 							chain_before++;
-							if (dsg->variable == 0x41 && u->engine_type != veh->engine_type)
+							if (variable == 0x41 && u->engine_type != veh->engine_type)
 								chain_before = 0;
 							u = u->next;
 						}
-						while (u->next != NULL && (dsg->variable == 0x40 || u->next->engine_type == veh->engine_type)) {
+						while (u->next != NULL && (variable == 0x40 || u->next->engine_type == veh->engine_type)) {
 							chain_after++;
 							u = u->next;
 						};
@@ -265,7 +267,7 @@ static const SpriteGroup* ResolveVehicleSpriteGroup(const SpriteGroup *spritegro
 				} else {
 					// TTDPatch runs on little-endian arch;
 					// Variable is 0x80 + offset in TTD's vehicle structure
-					switch (dsg->variable - 0x80) {
+					switch (variable - 0x80) {
 #define veh_prop(id_, value_) case (id_): value = (value_); break
 						veh_prop(0x00, veh->type);
 						veh_prop(0x01, MapOldSubType(veh));
@@ -347,7 +349,7 @@ static const SpriteGroup* ResolveVehicleSpriteGroup(const SpriteGroup *spritegro
 #undef veh_prop
 
 						// Handle vehicle specific properties.
-						default: value = VehicleSpecificProperty(veh, dsg->variable - 0x80); break;
+						default: value = VehicleSpecificProperty(veh, variable - 0x80); break;
 					}
 				}
 			}
@@ -411,7 +413,6 @@ int GetCustomEngineSprite(EngineID engine, const Vehicle* v, Direction direction
 	byte loaded = 0;
 	bool in_motion = 0;
 	int totalsets, spriteset;
-	int r;
 
 	if (v != NULL) {
 		int capacity = v->cargo_cap;
@@ -444,16 +445,11 @@ int GetCustomEngineSprite(EngineID engine, const Vehicle* v, Direction direction
 	assert(group->type == SGT_REAL);
 	rsg = &group->g.real;
 
-	if (!rsg->sprites_per_set) {
-		// This group is empty. This function users should therefore
-		// look up the sprite number in _engine_original_sprites.
-		return 0;
-	}
+	// This group is empty. This function users should therefore
+	// look up the sprite number in _engine_original_sprites.
+	if (rsg->num_loaded == 0 || rsg->num_loading == 0) return 0;
 
-	assert(rsg->sprites_per_set <= 8);
-	direction %= rsg->sprites_per_set;
-
-	totalsets = in_motion ? rsg->loaded_count : rsg->loading_count;
+	totalsets = in_motion ? rsg->num_loaded : rsg->num_loading;
 
 	// My aim here is to make it possible to visually determine absolutely
 	// empty and totally full vehicles. --pasky
@@ -470,8 +466,10 @@ int GetCustomEngineSprite(EngineID engine, const Vehicle* v, Direction direction
 			spriteset--;
 	}
 
-	r = (in_motion ? rsg->loaded[spriteset]->g.result.result : rsg->loading[spriteset]->g.result.result) + direction;
-	return r;
+	group = in_motion ? rsg->loaded[spriteset] : rsg->loading[spriteset];
+	if (group->type != SGT_RESULT) return 0;
+
+	return group->g.result.sprite + (direction % group->g.result.num_sprites);
 }
 
 /**

@@ -169,10 +169,11 @@ static const RealSpriteGroup *ResolveStationSpriteGroup(const SpriteGroup *spg, 
 			const DeterministicSpriteGroup *dsg = &spg->g.determ;
 			SpriteGroup *target;
 			int value = -1;
+			byte variable = dsg->adjusts[0].variable;
 
-			if ((dsg->variable >> 6) == 0) {
+			if ((variable >> 6) == 0) {
 				/* General property */
-				value = GetDeterministicSpriteValue(dsg->variable);
+				value = GetDeterministicSpriteValue(variable);
 			} else {
 				if (st == NULL) {
 					/* We are in a build dialog of something,
@@ -192,7 +193,7 @@ static const RealSpriteGroup *ResolveStationSpriteGroup(const SpriteGroup *spg, 
 					/* TODO: Town structure. */
 
 				} else /* VSG_SELF */ {
-					if (dsg->variable == 0x40 || dsg->variable == 0x41) {
+					if (variable == 0x40 || variable == 0x41) {
 						/* FIXME: This is ad hoc only
 						 * for waypoints. */
 						value = 0x01010000;
@@ -200,7 +201,7 @@ static const RealSpriteGroup *ResolveStationSpriteGroup(const SpriteGroup *spg, 
 						/* TODO: Only small fraction done. */
 						// TTDPatch runs on little-endian arch;
 						// Variable is 0x70 + offset in the TTD's station structure
-						switch (dsg->variable - 0x70) {
+						switch (variable - 0x70) {
 							case 0x80: value = st->facilities;             break;
 							case 0x81: value = st->airport_type;           break;
 							case 0x82: value = st->truck_stops->status;    break;
@@ -229,10 +230,8 @@ uint32 GetCustomStationRelocation(const StationSpec *spec, const Station *st, by
 	const RealSpriteGroup *rsg = ResolveStationSpriteGroup(spec->spritegroup[ctype], st);
 	if (rsg == NULL) return 0;
 
-	if (rsg->sprites_per_set != 0) {
-		if (rsg->loading_count != 0) return rsg->loading[0]->g.result.result;
-		if (rsg->loaded_count != 0) return rsg->loaded[0]->g.result.result;
-	}
+	if (rsg->num_loading != 0) return rsg->loading[0]->g.result.sprite;
+	if (rsg->num_loaded  != 0) return rsg->loaded[0]->g.result.sprite;
 
 	DEBUG(grf, 6)("Custom station 0x%08x::0x%02x has no sprites associated.",
 		spec->grfid, spec->localidx);

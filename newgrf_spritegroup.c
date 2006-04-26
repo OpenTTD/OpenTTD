@@ -29,6 +29,7 @@ static void SpriteGroupPoolCleanBlock(uint start_item, uint end_item)
 				break;
 
 			case SGT_DETERMINISTIC:
+				free(group->g.determ.adjusts);
 				free(group->g.determ.ranges);
 				break;
 
