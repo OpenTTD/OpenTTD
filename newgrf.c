@@ -1319,6 +1319,11 @@ static SpriteGroup* CreateGroupFromGroupID(byte setid, byte type, uint16 spritei
 {
 	if (HASBIT(spriteid, 15)) return NewCallBackResultSpriteGroup(spriteid);
 
+	if (spriteid >= _cur_grffile->spriteset_numsets) {
+		grfmsg(GMS_WARN, "NewSpriteGroup(0x%02X:0x%02X): Sprite set %u invalid, max %u", setid, type, spriteid, _cur_grffile->spriteset_numsets);
+		return NULL;
+	}
+
 	/* Check if the sprite is within range. This can fail if the Action 0x01
 	 * is skipped, as TTDPatch mandates that Action 0x02s must be processed.
 	 * We don't have that rule, but must live by the Patch... */
