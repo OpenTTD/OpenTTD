@@ -1704,6 +1704,7 @@ STR_306B_HELIPORT                                               :{BLACK}Helipoor
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...station te verspreid
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...niet uniforme stations uit
 
+STR_UNDEFINED                                                   :(ongedefinieerde string)
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Bouw scheepswerf

@@ -1336,6 +1336,7 @@ STR_NETWORK_8_PLAYERS                                           :8 hracu
 STR_NETWORK_9_PLAYERS                                           :9 hracu
 STR_NETWORK_10_PLAYERS                                          :10 hracu
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maximální pocet spolecnosti:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Omezit serverem pocet spolecnosti
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maximální pocet divaku:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Omezit serverem pocet divaku
@@ -1609,7 +1610,7 @@ STR_202C_FROM_TO                                                :{ORANGE}{STRING
 STR_202D_UNTIL                                                  :{YELLOW}, do {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Nabídka dotace prepravy vypr¨ela:{}{}Dotace dopravy {STRING.news} z {STRING} do {STRING} nebude dále nabízena.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Ukonceni dotovaní dopravy:{}{}Dotace pro {STRING} z {STATION} do {STATION} ji¸ nebude dále poskytována.
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Nabídka dotace:{}{}Doprava {STRING} z {STRING} do {STRING} bude jeden rok dotovana místní správou!
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Nabídka dotace:{}{}Doprava {STRING} z {STRING} do {STRING} bude jeden rok dotována místní správou!
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace pridelena spolecnosti {COMPANY}.{}{}Doprava {STRING.news} z {STATION} do {STATION} bude po jeden rok vyná¨et 150 % normální ceny.
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace pridelena spolecnosti {COMPANY}.{}{}Doprava {STRING.news} z {STATION} do {STATION} bude po jeden rok vyná¨et dvojnásobek normální ceny!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace pridelena spolecnosti {COMPANY}.{}{}Doprava {STRING.news} z {STATION} do {STATION} bude po jeden rok vyná¨et trojnásobek normální ceny!
@@ -1764,6 +1765,9 @@ STR_306B_HELIPORT                                               :{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}... stanice je prilis rozlo¸itá
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}... nejednolité stanice nejsou povoleny
 
+STR_UNDEFINED                                                   :(nedefinovaný retezec)
+STR_STAT_CLASS_DFLT                                             :Výchozí stanice
+STR_STAT_CLASS_WAYP                                             :Kontrolní body
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientace lodního depa
@@ -2856,6 +2860,7 @@ STR_REPLACE_HELP                                                :{BLACK}Tato mo¸
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odebírání vagonu: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkce automatického vylep¨ování vlaku muze udr¸ovat stejnou délku vlaku odstranovanim vagonu (od zacatku vlaku), pokud by vylep¨ení ma¨iny by vlak prodlou¸ilo.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vymenovani: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTÁLNÍ VLASTNOST {}Prepne mezi okny na vymenu lokomotiv a vagonu.{}Vagon se vymeni, jen kdy¸ nový je vagon schopen vozit stejnou komoditu, jako ten starý. Toto se overuje pro ka¸dý vagon.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Stroj nelze postavit
 
 STR_ENGINES                                                     :lokomotivy

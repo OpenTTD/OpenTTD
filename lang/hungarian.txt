@@ -1775,6 +1775,7 @@ STR_306B_HELIPORT                                               :{BLACK}Helikopt
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...az állomás túl kiterjedt
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...csak egyféle vágánytípusú állomások lehetnek
 
+STR_UNDEFINED                                                   :(nem definiált string)
 STR_STAT_CLASS_DFLT                                             :Alap?elmezett ?om?
 STR_STAT_CLASS_WAYP                                             :?ipontok
 

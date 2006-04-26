@@ -1284,7 +1284,7 @@ STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Máximo d
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limitar o servidor a um certo número de Companhias
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Máximo de espectadores:
-STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limitar o servidor a um determinado número de espectadores
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limitar o servidor a um certo número de espectadores
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma falado:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Outros jogadores ficarão a conhecer o idioma utilizado no servidor.
@@ -2802,9 +2802,9 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Exibe o 
 STR_REPLACE_HELP                                                :{BLACK}Permite a substiuição de um tipo de motor por outro, quando comboios do tipo original entram num depósito
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Remover vagões: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Forçar a substituição automática a manter o comprimento do combóio, removendo vagões (do início), nas situações em que a substituição da locomotiva resultar num combóio maior.
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Substituindo: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Trocando: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} FUNCIONALIDADE EXPERIMENTAL{}Alternar entre a janela de substituição de locomotivas e a janela de substituição de vagões.{}A substituição de vagões só ocorrerá se o novo vagão puder ser reconvertido para o mesmo tipo de carga que o vagão antigo. Esta verificação ocorre para cada vagão, durante a substituição.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomotiva não pode ser construída
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomotiva não construível
 
 STR_ENGINES                                                     :Locomotivas
 STR_WAGONS                                                      :Vagões

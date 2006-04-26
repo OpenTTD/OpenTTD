@@ -1710,6 +1710,9 @@ STR_306B_HELIPORT                                               :{BLACK}Eliporto
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stazione troppo estesa
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...stazioni non uniformi disabilitate
 
+STR_UNDEFINED                                                   :(stringa non definita)
+STR_STAT_CLASS_DFLT                                             :Stazione predefinita
+STR_STAT_CLASS_WAYP                                             :Waypoint
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientamento Deposito Navale
