@@ -235,6 +235,19 @@ IndustryType GetIndustryType(TileIndex tile)
 	return IT_INVALID;  //we have not found equivalent, whatever the reason
 }
 
+/**
+ * Accessor for array _industry_specs.
+ * This will ensure at once : proper access and
+ * not allowing modifications of it.
+ * @param thistype of industry (which is the index in _industry_spec)
+ * @pre thistype < IT_END
+ **/
+static const IndustrySpec *GetIndustrySpecification(IndustryType thistype)
+{
+	assert(thistype < IT_END);
+	return &_industry_specs[thistype];
+}
+
 static void IndustryDrawSugarMine(const TileInfo *ti)
 {
 	const DrawIndustrySpec1Struct *d;
@@ -322,7 +335,7 @@ static IndustryDrawTileProc * const _industry_draw_tile_procs[5] = {
 
 static void DrawTile_Industry(TileInfo *ti)
 {
-	const Industry* ind;
+	const Industry *ind;
 	const DrawBuildingsTileStruct *dits;
 	byte z;
 	uint32 image, ormod;
@@ -374,7 +387,7 @@ static void DrawTile_Industry(TileInfo *ti)
 	}
 }
 
-static uint GetSlopeZ_Industry(const TileInfo* ti)
+static uint GetSlopeZ_Industry(const TileInfo *ti)
 {
 	return ti->z + (ti->tileh == SLOPE_FLAT ? 0 : TILE_HEIGHT);
 }
@@ -401,7 +414,7 @@ static void GetAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
 
 static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
 {
-	const Industry* i = GetIndustryByTile(tile);
+	const Industry *i = GetIndustryByTile(tile);
 
 	td->owner = i->owner;
 	td->str = STR_4802_COAL_MINE + i->type;
@@ -413,7 +426,7 @@ static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
 
 static int32 ClearTile_Industry(TileIndex tile, byte flags)
 {
-	Industry* i = GetIndustryByTile(tile);
+	Industry *i = GetIndustryByTile(tile);
 
 	/*	* water can destroy industries
 			* in editor you can bulldoze industries
@@ -442,7 +455,7 @@ static const byte _industry_min_cargo[] = {
 
 static void TransportIndustryGoods(TileIndex tile)
 {
-	Industry* i = GetIndustryByTile(tile);
+	Industry *i = GetIndustryByTile(tile);
 	uint cw, am;
 
 	cw = min(i->cargo_waiting[0], 255);
@@ -811,7 +824,7 @@ static void TileLoop_Industry(TileIndex tile)
 
 
 	case 143: {
-			Industry* i = GetIndustryByTile(tile);
+			Industry *i = GetIndustryByTile(tile);
 			if (i->was_cargo_delivered) {
 				i->was_cargo_delivered = false;
 				SetIndustryAnimationLoop(tile, 0);
@@ -847,7 +860,7 @@ static uint32 GetTileTrackStatus_Industry(TileIndex tile, TransportType mode)
 
 static void GetProducedCargo_Industry(TileIndex tile, CargoID *b)
 {
-	const Industry* i = GetIndustryByTile(tile);
+	const Industry *i = GetIndustryByTile(tile);
 
 	b[0] = i->produced_cargo[0];
 	b[1] = i->produced_cargo[1];
@@ -975,7 +988,7 @@ static void PlantFarmField(TileIndex tile)
 	SetupFarmFieldFence(tile + TileDiffXY(0, size_y - 1), size_x, type, AXIS_X);
 }
 
-static void MaybePlantFarmField(const Industry* i)
+static void MaybePlantFarmField(const Industry *i)
 {
 	if (CHANCE16(1, 8)) {
 		int x = i->width  / 2 + Random() % 31 - 16;
@@ -1225,10 +1238,10 @@ static bool CheckSuitableIndustryPos(TileIndex tile)
 	return true;
 }
 
-static const Town* CheckMultipleIndustryInTown(TileIndex tile, int type)
+static const Town *CheckMultipleIndustryInTown(TileIndex tile, int type)
 {
-	const Town* t;
-	const Industry* i;
+	const Town *t;
+	const Industry *i;
 
 	t = ClosestTownFromTile(tile, (uint)-1);
 
@@ -1271,7 +1284,7 @@ static const byte _industry_section_bits[] = {
 	16, 16, 16, 16, 16, 16, 16,
 };
 
-static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable* it, int type, const Town* t)
+static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable *it, int type, const Town *t)
 {
 	_error_message = STR_0239_SITE_UNSUITABLE;
 
@@ -1347,8 +1360,8 @@ do_clear:
 
 static bool CheckIfTooCloseToIndustry(TileIndex tile, int type)
 {
-	const IndustrySpec* spec = &_industry_spec[type];
-	const Industry* i;
+	const IndustrySpec *spec = GetIndustrySpecification(type);
+	const Industry *i;
 
 	// accepting industries won't be close, not even with patch
 	if (_patches.same_industry_close && spec->accepts_cargo[0] == CT_INVALID)
@@ -1400,17 +1413,15 @@ static Industry *AllocateIndustry(void)
 	return AddBlockToPool(&_industry_pool) ? AllocateIndustry() : NULL;
 }
 
-static void DoCreateNewIndustry(Industry* i, TileIndex tile, int type, const IndustryTileTable* it, const Town* t, byte owner)
+static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const IndustryTileTable *it, const Town *t, byte owner)
 {
-	const IndustrySpec *spec;
+	const IndustrySpec *spec = GetIndustrySpecification(type);
 	uint32 r;
 	int j;
 
 	i->xy = tile;
 	i->width = i->height = 0;
 	i->type = type;
-
-	spec = &_industry_spec[type];
 
 	i->produced_cargo[0] = spec->produced_cargo[0];
 	i->produced_cargo[1] = spec->produced_cargo[1];
@@ -1492,7 +1503,7 @@ static void DoCreateNewIndustry(Industry* i, TileIndex tile, int type, const Ind
  */
 int32 CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	const Town* t;
+	const Town *t;
 	Industry *i;
 	int num;
 	const IndustryTileTable * const *itt;
@@ -1506,7 +1517,7 @@ int32 CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* Check if the to-be built/founded industry is available for this climate.
 	 * Unfortunately we have no easy way of checking, except for looping the table */
 	{
-		const byte* i;
+		const byte *i;
 		bool found = false;
 
 		for (i = &_build_industry_types[_opt_ptr->landscape][0]; i != endof(_build_industry_types[_opt_ptr->landscape]); i++) {
@@ -1518,7 +1529,7 @@ int32 CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (!found) return CMD_ERROR;
 	}
 
-	spec = &_industry_spec[p1];
+	spec = GetIndustrySpecification(p1);
 	/* If the patch for raw-material industries is not on, you cannot build raw-material industries.
 	 * Raw material industries are industries that do not accept cargo (at least for now)
 	 * Exclude the lumber mill (only "raw" industry that can be built) */
@@ -1556,7 +1567,7 @@ int32 CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 Industry *CreateNewIndustry(TileIndex tile, IndustryType type)
 {
-	const Town* t;
+	const Town *t;
 	const IndustryTileTable *it;
 	Industry *i;
 
@@ -1564,7 +1575,7 @@ Industry *CreateNewIndustry(TileIndex tile, IndustryType type)
 
 	if (!CheckSuitableIndustryPos(tile)) return NULL;
 
-	spec = &_industry_spec[type];
+	spec =  GetIndustrySpecification(type);
 
 	if (!_check_new_industry_procs[spec->check_proc](tile, type)) return NULL;
 
@@ -1666,7 +1677,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 				percent = new * 100 / old - 100;
 				i->production_rate[j] = new;
 
-				if (new >= _industry_spec[i->type].production_rate[j] / 4)
+				if (new >= GetIndustrySpecification(i->type)->production_rate[j] / 4)
 					closeit = false;
 
 				mag = abs(percent);

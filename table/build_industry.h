@@ -1081,7 +1081,7 @@ static const IndustryTileTable * const _tile_table_sugar_mine[] = {
 
 #define MK(tbl, a,b,c, p1,p2, r1,r2, a1,a2,a3, proc) {tbl,lengthof(tbl),a,b,c,{p1,p2},{r1,r2},{a1,a2,a3},proc}
 
-static const IndustrySpec _industry_spec[37] = {
+static const IndustrySpec _industry_specs[IT_END] = {
 /*        name                    not close to   produce prodrate  accepts     checkproc */
 	MK(_tile_table_coal_mine,         1,255,255,    1,255,  15, 0,  255,255,255,  0),
 	MK(_tile_table_power_station,     0,255,255,  255,255,   0, 0,    1,255,255,  0),
@@ -1123,7 +1123,7 @@ static const IndustrySpec _industry_spec[37] = {
 };
 #undef MK
 
-const	byte _industry_type_costs[37] = {
+const byte _industry_type_costs[IT_END] = {
 	210, 30,   28, 200,  31, 240,  26,  26,  27, 250, 205, 220, 193,  26,
 	28,  208,  19, 213, 220, 225, 218, 199,  14,  26, 250, 17,  195,  26,
 	187, 193,  17,  20, 192,  22, 203, 213, 210
