@@ -89,126 +89,6 @@ static const IndustryType _industry_close_mode[IT_END] = {
 	/* SUGAR_MINE */         INDUSTRYLIFE_PRODUCTION
 };
 
-static const StringID _industry_prod_up_strings[IT_END] = {
-	STR_4836_NEW_COAL_SEAM_FOUND_AT,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4837_NEW_OIL_RESERVES_FOUND,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4838_IMPROVED_FARMING_METHODS,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4837_NEW_OIL_RESERVES_FOUND,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4838_IMPROVED_FARMING_METHODS,
-	STR_4838_IMPROVED_FARMING_METHODS,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4838_IMPROVED_FARMING_METHODS,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4838_IMPROVED_FARMING_METHODS,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4838_IMPROVED_FARMING_METHODS,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4835_INCREASES_PRODUCTION,
-	STR_4835_INCREASES_PRODUCTION,
-};
-
-static const StringID _industry_prod_down_strings[IT_END] = {
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_483A_INSECT_INFESTATION_CAUSES,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_483A_INSECT_INFESTATION_CAUSES,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_483A_INSECT_INFESTATION_CAUSES,
-	STR_483A_INSECT_INFESTATION_CAUSES,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_483A_INSECT_INFESTATION_CAUSES,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_483A_INSECT_INFESTATION_CAUSES,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-	STR_4839_PRODUCTION_DOWN_BY_50,
-};
-
-static const StringID _industry_close_strings[IT_END] = {
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
-	STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
-	STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
-	STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,
-	STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,
-	STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
-	STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,
-	STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
-	STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
-	STR_4834_LACK_OF_NEARBY_TREES_CAUSES,
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
-	STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
-	STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,
-	STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
-	STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE,
-	STR_4832_ANNOUNCES_IMMINENT_CLOSURE
-};
-
 /**
  * Retrieve the type for this industry.  Although it is accessed by a tile,
  * it will return the general type of industry, and not the sprite index
@@ -239,10 +119,10 @@ IndustryType GetIndustryType(TileIndex tile)
  * Accessor for array _industry_specs.
  * This will ensure at once : proper access and
  * not allowing modifications of it.
- * @param thistype of industry (which is the index in _industry_spec)
+ * @param thistype of industry (which is the index in _industry_specs)
  * @pre thistype < IT_END
  **/
-static const IndustrySpec *GetIndustrySpecification(IndustryType thistype)
+static const IndustrySpec *GetIndustrySpec(IndustryType thistype)
 {
 	assert(thistype < IT_END);
 	return &_industry_specs[thistype];
@@ -447,11 +327,11 @@ static int32 ClearTile_Industry(TileIndex tile, byte flags)
 static void TransportIndustryGoods(TileIndex tile)
 {
 	Industry *i = GetIndustryByTile(tile);
-	const IndustrySpec *spec = GetIndustrySpecification(i->type);
+	const IndustrySpec *indspec = GetIndustrySpec(i->type);
 	uint cw, am;
 
 	cw = min(i->cargo_waiting[0], 255);
-	if (cw > spec->minimal_cargo/* && i->produced_cargo[0] != 0xFF*/) {
+	if (cw > indspec->minimal_cargo/* && i->produced_cargo[0] != 0xFF*/) {
 		i->cargo_waiting[0] -= cw;
 
 		/* fluctuating economy? */
@@ -474,7 +354,7 @@ static void TransportIndustryGoods(TileIndex tile)
 	}
 
 	cw = min(i->cargo_waiting[1], 255);
-	if (cw > spec->minimal_cargo) {
+	if (cw > indspec->minimal_cargo) {
 		i->cargo_waiting[1] -= cw;
 
 		if (_economy.fluct <= 0) cw = (cw + 1) / 2;
@@ -1352,19 +1232,19 @@ do_clear:
 
 static bool CheckIfTooCloseToIndustry(TileIndex tile, int type)
 {
-	const IndustrySpec *spec = GetIndustrySpecification(type);
+	const IndustrySpec *indspec = GetIndustrySpec(type);
 	const Industry *i;
 
 	// accepting industries won't be close, not even with patch
-	if (_patches.same_industry_close && spec->accepts_cargo[0] == CT_INVALID)
+	if (_patches.same_industry_close && indspec->accepts_cargo[0] == CT_INVALID)
 		return true;
 
 	FOR_ALL_INDUSTRIES(i) {
 		// check if an industry that accepts the same goods is nearby
 		if (i->xy != 0 &&
 				DistanceMax(tile, i->xy) <= 14 &&
-				spec->accepts_cargo[0] != CT_INVALID &&
-				spec->accepts_cargo[0] == i->accepts_cargo[0] && (
+				indspec->accepts_cargo[0] != CT_INVALID &&
+				indspec->accepts_cargo[0] == i->accepts_cargo[0] && (
 					_game_mode != GM_EDITOR ||
 					!_patches.same_industry_close ||
 					!_patches.multiple_industry_per_town
@@ -1375,7 +1255,7 @@ static bool CheckIfTooCloseToIndustry(TileIndex tile, int type)
 
 		// check "not close to" field.
 		if (i->xy != 0 &&
-				(i->type == spec->conflicting[0] || i->type == spec->conflicting[1] || i->type == spec->conflicting[2]) &&
+				(i->type == indspec->conflicting[0] || i->type == indspec->conflicting[1] || i->type == indspec->conflicting[2]) &&
 				DistanceMax(tile, i->xy) <= 14) {
 			_error_message = STR_INDUSTRY_TOO_CLOSE;
 			return false;
@@ -1407,7 +1287,7 @@ static Industry *AllocateIndustry(void)
 
 static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const IndustryTileTable *it, const Town *t, byte owner)
 {
-	const IndustrySpec *spec = GetIndustrySpecification(type);
+	const IndustrySpec *indspec = GetIndustrySpec(type);
 	uint32 r;
 	int j;
 
@@ -1415,13 +1295,13 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->width = i->height = 0;
 	i->type = type;
 
-	i->produced_cargo[0] = spec->produced_cargo[0];
-	i->produced_cargo[1] = spec->produced_cargo[1];
-	i->accepts_cargo[0] = spec->accepts_cargo[0];
-	i->accepts_cargo[1] = spec->accepts_cargo[1];
-	i->accepts_cargo[2] = spec->accepts_cargo[2];
-	i->production_rate[0] = spec->production_rate[0];
-	i->production_rate[1] = spec->production_rate[1];
+	i->produced_cargo[0] = indspec->produced_cargo[0];
+	i->produced_cargo[1] = indspec->produced_cargo[1];
+	i->accepts_cargo[0] = indspec->accepts_cargo[0];
+	i->accepts_cargo[1] = indspec->accepts_cargo[1];
+	i->accepts_cargo[2] = indspec->accepts_cargo[2];
+	i->production_rate[0] = indspec->production_rate[0];
+	i->production_rate[1] = indspec->production_rate[1];
 
 	if (_patches.smooth_economy) {
 		i->production_rate[0] = min((RandomRange(256) + 128) * i->production_rate[0] >> 8 , 255);
@@ -1500,7 +1380,7 @@ int32 CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	int num;
 	const IndustryTileTable * const *itt;
 	const IndustryTileTable *it;
-	const IndustrySpec *spec;
+	const IndustrySpec *indspec;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 
@@ -1521,25 +1401,25 @@ int32 CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (!found) return CMD_ERROR;
 	}
 
-	spec = GetIndustrySpecification(p1);
+	indspec = GetIndustrySpec(p1);
 	/* If the patch for raw-material industries is not on, you cannot build raw-material industries.
 	 * Raw material industries are industries that do not accept cargo (at least for now)
 	 * Exclude the lumber mill (only "raw" industry that can be built) */
 	if (!_patches.build_rawmaterial_ind &&
-			spec->accepts_cargo[0] == CT_INVALID &&
-			spec->accepts_cargo[1] == CT_INVALID &&
-			spec->accepts_cargo[2] == CT_INVALID &&
+			indspec->accepts_cargo[0] == CT_INVALID &&
+			indspec->accepts_cargo[1] == CT_INVALID &&
+			indspec->accepts_cargo[2] == CT_INVALID &&
 			p1 != IT_LUMBER_MILL) {
 		return CMD_ERROR;
 	}
 
-	if (!_check_new_industry_procs[spec->check_proc](tile, p1)) return CMD_ERROR;
+	if (!_check_new_industry_procs[indspec->check_proc](tile, p1)) return CMD_ERROR;
 
 	t = CheckMultipleIndustryInTown(tile, p1);
 	if (t == NULL) return CMD_ERROR;
 
-	num = spec->num_table;
-	itt = spec->table;
+	num = indspec->num_table;
+	itt = indspec->table;
 
 	do {
 		if (--num < 0) return_cmd_error(STR_0239_SITE_UNSUITABLE);
@@ -1563,19 +1443,19 @@ Industry *CreateNewIndustry(TileIndex tile, IndustryType type)
 	const IndustryTileTable *it;
 	Industry *i;
 
-	const IndustrySpec *spec;
+	const IndustrySpec *indspec;
 
 	if (!CheckSuitableIndustryPos(tile)) return NULL;
 
-	spec =  GetIndustrySpecification(type);
+	indspec =  GetIndustrySpec(type);
 
-	if (!_check_new_industry_procs[spec->check_proc](tile, type)) return NULL;
+	if (!_check_new_industry_procs[indspec->check_proc](tile, type)) return NULL;
 
 	t = CheckMultipleIndustryInTown(tile, type);
 	if (t == NULL) return NULL;
 
 	/* pick a random layout */
-	it = spec->table[RandomRange(spec->num_table)];
+	it = indspec->table[RandomRange(indspec->num_table)];
 
 	if (!CheckIfIndustryTilesAreFree(tile, it, type, t)) return NULL;
 	if (!CheckIfTooCloseToIndustry(tile, type)) return NULL;
@@ -1589,13 +1469,14 @@ Industry *CreateNewIndustry(TileIndex tile, IndustryType type)
 }
 
 static const byte _numof_industry_table[4][12] = {
-	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	{0, 1, 1, 1, 2, 2, 3, 3, 4, 4, 5},
-	{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
-	{0, 2, 3, 4, 6, 7, 8, 9, 10, 10, 10},
+	// difficulty settings for number of industries
+	{0, 0, 0, 0, 0, 0, 0, 0,  0,  0,  0},   //none
+	{0, 1, 1, 1, 2, 2, 3, 3,  4,  4,  5},   //low
+	{0, 1, 2, 3, 4, 5, 6, 7,  8,  9, 10},   //normal
+	{0, 2, 3, 4, 6, 7, 8, 9, 10, 10, 10},   //high
 };
 
-static void PlaceInitialIndustry(byte type, int amount)
+static void PlaceInitialIndustry(IndustryType type, int amount)
 {
 	int num = _numof_industry_table[_opt.diff.number_industries][amount];
 
@@ -1638,6 +1519,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 {
 	bool closeit = true;
 	int j;
+	const IndustrySpec *indspec = GetIndustrySpec(i->type);
 
 	switch (_industry_close_mode[i->type]) {
 		case INDUSTRYLIFE_NOT_CLOSABLE:
@@ -1669,7 +1551,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 				percent = new * 100 / old - 100;
 				i->production_rate[j] = new;
 
-				if (new >= GetIndustrySpecification(i->type)->production_rate[j] / 4)
+				if (new >= indspec->production_rate[j] / 4)
 					closeit = false;
 
 				mag = abs(percent);
@@ -1692,7 +1574,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 		i->prod_level = 0;
 		SetDParam(0, i->index);
 		AddNewsItem(
-			_industry_close_strings[i->type],
+			indspec->closure_text,
 			NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_TILE, NT_ECONOMY, 0),
 			i->xy + TileDiffXY(1, 1), 0
 		);
@@ -1784,6 +1666,7 @@ static void ChangeIndustryProduction(Industry *i)
 	bool only_decrease = false;
 	StringID str = STR_NULL;
 	int type = i->type;
+	const IndustrySpec *indspec = GetIndustrySpec(type);
 
 	switch (_industry_close_mode[type]) {
 		case INDUSTRYLIFE_NOT_CLOSABLE:
@@ -1813,19 +1696,19 @@ static void ChangeIndustryProduction(Industry *i)
 							b = 0xFF;
 						i->production_rate[1] = b;
 
-						str = _industry_prod_up_strings[type];
+						str = indspec->production_up_text;
 					}
 				} else {
 					/* Decrease production */
 					if (i->prod_level == 4) {
 						i->prod_level = 0;
-						str = _industry_close_strings[type];
+						str = indspec->closure_text;
 					} else {
 						i->prod_level >>= 1;
 						i->production_rate[0] = (i->production_rate[0] + 1) >> 1;
 						i->production_rate[1] = (i->production_rate[1] + 1) >> 1;
 
-						str = _industry_prod_down_strings[type];
+						str = indspec->production_down_text;
 					}
 				}
 			}
@@ -1835,7 +1718,7 @@ static void ChangeIndustryProduction(Industry *i)
 			/* maybe close */
 			if ( (byte)(_cur_year - i->last_prod_year) >= 5 && CHANCE16(1,2)) {
 				i->prod_level = 0;
-				str = _industry_close_strings[type];
+				str = indspec->closure_text;
 			}
 			break;
 	}
