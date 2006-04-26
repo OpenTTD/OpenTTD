@@ -9,10 +9,11 @@ typedef struct IndustryTileTable {
 typedef struct IndustrySpec {
 	const IndustryTileTable *const *table;
 	byte num_table;
-	byte a,b,c;
+	IndustryType conflicting[3];
 	CargoID produced_cargo[2];
 	byte production_rate[2];
 	CargoID accepts_cargo[3];
+	byte minimal_cargo;
 	byte check_proc;
 } IndustrySpec;
 
@@ -1079,51 +1080,65 @@ static const IndustryTileTable * const _tile_table_sugar_mine[] = {
 #undef MK
 #undef MKEND
 
-#define MK(tbl, a,b,c, p1,p2, r1,r2, a1,a2,a3, proc) {tbl,lengthof(tbl),a,b,c,{p1,p2},{r1,r2},{a1,a2,a3},proc}
+/* Procedures that can be run to check whether an industry may
+ * build at location the given to the procedure */
+typedef enum CheckProcs {
+	CHECK_NOTHING    = 0,
+	CHECK_FOREST     = 1,
+	CHECK_OIL        = 2,
+	CHECK_FARM       = 3,
+	CHECK_PLANTATION = 4,
+	CHECK_WATER      = 5,
+	CHECK_LUMBERMILL = 6,
+	CHECK_BUBBLEGEN  = 7,
+	CHECK_END,
+} CheckProc;
 
-static const IndustrySpec _industry_specs[IT_END] = {
-/*        name                    not close to   produce prodrate  accepts     checkproc */
-	MK(_tile_table_coal_mine,         1,255,255,    1,255,  15, 0,  255,255,255,  0),
-	MK(_tile_table_power_station,     0,255,255,  255,255,   0, 0,    1,255,255,  0),
-	MK(_tile_table_sawmill,           3,255,255,    5,255,   0, 0,    7,255,255,  0),
-	MK(_tile_table_forest,            2, 14,255,    7,255,  13, 0,  255,255,255,  1),
-	MK(_tile_table_oil_refinery,      5,255,255,    5,255,   0, 0,    3,255,255,  2),
-	MK(_tile_table_oil_rig,           4,255,255,    3,  0,  15, 2,  255,255,255,  2),
-	MK(_tile_table_factory,           9,  8,255,    5,255,   0, 0,    4,  6,  9,  0),
-	MK(_tile_table_printing_works,   14,255,255,    5,255,   0, 0,    9,255,255,  0),
-	MK(_tile_table_steel_mill,       18,  6,255,    9,255,   0, 0,    8,255,255,  0),
-	MK(_tile_table_farm,              6, 13,255,    6,  4,  10,10,  255,255,255,  3),
-	MK(_tile_table_copper_mine,      23,255,255,    8,255,  10, 0,  255,255,255,  0),
-	MK(_tile_table_oil_well,          4,255,255,    3,255,  12, 0,  255,255,255,  0),
-	MK(_tile_table_bank,             12,255,255,   10,255,   6, 0,   10,255,255,  0),
-	MK(_tile_table_food_process,      9, 19, 24,   11,255,   0, 0,    4,  6,255,  0),
-	MK(_tile_table_paper_mill,        3,  7,255,    9,255,   0, 0,    7,255,255,  0),
-	MK(_tile_table_gold_mine,        16,255,255,   10,255,   7, 0,  255,255,255,  0),
-	MK(_tile_table_bank2,            15, 17,255,  255,255,   0, 0,   10,255,255,  0),
-	MK(_tile_table_diamond_mine,     16,255,255,   10,255,   7, 0,  255,255,255,  0),
-	MK(_tile_table_iron_mine,         8,255,255,    8,255,  10, 0,  255,255,255,  0),
-	MK(_tile_table_fruit_plantation, 13,255,255,    4,255,  10, 0,  255,255,255,  4),
-	MK(_tile_table_rubber_plantation,23,255,255,    1,255,  10, 0,  255,255,255,  4),
-	MK(_tile_table_water_supply,     22,255,255,    9,255,  12, 0,  255,255,255,  5),
-	MK(_tile_table_water_tower,      21,255,255,  255,255,   0, 0,    9,255,255,  5),
-	MK(_tile_table_factory2,         10, 20, 25,    5,255,   0, 0,    1,  8,  7,  4),
-	MK(_tile_table_farm2,            13,255,255,    6,255,  11, 0,  255,255,255,  4),
-	MK(_tile_table_lumber_mill,      23,255,255,    7,255,   0, 0,  255,255,255,  6),
-	MK(_tile_table_cotton_candy,     27,255,255,    8,255,  13, 0,  255,255,255,  0),
-	MK(_tile_table_candy_factory,    26, 35, 36,    5,255,   0, 0,    1,  6,  8,  0),
-	MK(_tile_table_battery_farm,     31,255,255,    4,255,  11, 0,  255,255,255,  0),
-	MK(_tile_table_cola_wells,       33,255,255,    7,255,  12, 0,  255,255,255,  0),
-	MK(_tile_table_toy_shop,         31,255,255,  255,255,   0, 0,    3,255,255,  0),
-	MK(_tile_table_toy_factory,      30, 28, 32,    3,255,   0, 0,   10,  4,255,  0),
-	MK(_tile_table_plastic_fountain, 31,255,255,   10,255,  14, 0,  255,255,255,  0),
-	MK(_tile_table_fizzy_drink,      29, 34,255,   11,255,   0, 0,    7,  9,255,  0),
-	MK(_tile_table_bubble_generator, 33,255,255,    9,255,  13, 0,  255,255,255,  7),
-	MK(_tile_table_toffee_quarry,    27,255,255,    6,255,  10, 0,  255,255,255,  0),
-	MK(_tile_table_sugar_mine,       27,255,255,    1,255,  11, 0,  255,255,255,  0),
+#define MK(tbl, a,b,c, p1,p2, r1,r2, a1,a2,a3, m1, proc) {tbl,lengthof(tbl),{a,b,c},{p1,p2},{r1,r2},{a1,a2,a3},m1,proc}
+
+static const IndustrySpec _industry_specs[] = {
+/*        name                    not close to   produce prodrate  accepts       min checkproc */
+  	MK(_tile_table_coal_mine,         1,255,255,    1,255,  15, 0,  255,255,255,  5, CHECK_NOTHING),
+	MK(_tile_table_power_station,     0,255,255,  255,255,   0, 0,    1,255,255,  5, CHECK_NOTHING),
+	MK(_tile_table_sawmill,           3,255,255,    5,255,   0, 0,    7,255,255,  5, CHECK_NOTHING),
+	MK(_tile_table_forest,            2, 14,255,    7,255,  13, 0,  255,255,255, 30, CHECK_FOREST),
+	MK(_tile_table_oil_refinery,      5,255,255,    5,255,   0, 0,    3,255,255,  5, CHECK_OIL),
+	MK(_tile_table_oil_rig,           4,255,255,    3,  0,  15, 2,  255,255,255,  5, CHECK_OIL),
+	MK(_tile_table_factory,           9,  8,255,    5,255,   0, 0,    4,  6,  9,  5, CHECK_NOTHING),
+	MK(_tile_table_printing_works,   14,255,255,    5,255,   0, 0,    9,255,255,  5, CHECK_NOTHING),
+	MK(_tile_table_steel_mill,       18,  6,255,    9,255,   0, 0,    8,255,255,  5, CHECK_NOTHING),
+	MK(_tile_table_farm,              6, 13,255,    6,  4,  10,10,  255,255,255,  5, CHECK_FARM),
+	MK(_tile_table_copper_mine,      23,255,255,    8,255,  10, 0,  255,255,255,  5, CHECK_NOTHING),
+	MK(_tile_table_oil_well,          4,255,255,    3,255,  12, 0,  255,255,255,  5, CHECK_NOTHING),
+	MK(_tile_table_bank,             12,255,255,   10,255,   6, 0,   10,255,255,  2, CHECK_NOTHING),
+	MK(_tile_table_food_process,      9, 19, 24,   11,255,   0, 0,    4,  6,255,  5, CHECK_NOTHING),
+	MK(_tile_table_paper_mill,        3,  7,255,    9,255,   0, 0,    7,255,255,  5, CHECK_NOTHING),
+	MK(_tile_table_gold_mine,        16,255,255,   10,255,   7, 0,  255,255,255,  5, CHECK_NOTHING),
+	MK(_tile_table_bank2,            15, 17,255,  255,255,   0, 0,   10,255,255,  5, CHECK_NOTHING),
+	MK(_tile_table_diamond_mine,     16,255,255,   10,255,   7, 0,  255,255,255,  5, CHECK_NOTHING),
+	MK(_tile_table_iron_mine,         8,255,255,    8,255,  10, 0,  255,255,255,  5, CHECK_NOTHING),
+	MK(_tile_table_fruit_plantation, 13,255,255,    4,255,  10, 0,  255,255,255, 15, CHECK_PLANTATION),
+	MK(_tile_table_rubber_plantation,23,255,255,    1,255,  10, 0,  255,255,255, 15, CHECK_PLANTATION),
+	MK(_tile_table_water_supply,     22,255,255,    9,255,  12, 0,  255,255,255,  5, CHECK_WATER),
+	MK(_tile_table_water_tower,      21,255,255,  255,255,   0, 0,    9,255,255,  5, CHECK_WATER),
+	MK(_tile_table_factory2,         10, 20, 25,    5,255,   0, 0,    1,  8,  7,  5, CHECK_PLANTATION),
+	MK(_tile_table_farm2,            13,255,255,    6,255,  11, 0,  255,255,255,  5, CHECK_PLANTATION),
+	MK(_tile_table_lumber_mill,      23,255,255,    7,255,   0, 0,  255,255,255,  5, CHECK_LUMBERMILL),
+	MK(_tile_table_cotton_candy,     27,255,255,    8,255,  13, 0,  255,255,255, 30, CHECK_NOTHING),
+	MK(_tile_table_candy_factory,    26, 35, 36,    5,255,   0, 0,    1,  6,  8,  5, CHECK_NOTHING),
+	MK(_tile_table_battery_farm,     31,255,255,    4,255,  11, 0,  255,255,255, 30, CHECK_NOTHING),
+	MK(_tile_table_cola_wells,       33,255,255,    7,255,  12, 0,  255,255,255,  5, CHECK_NOTHING),
+	MK(_tile_table_toy_shop,         31,255,255,  255,255,   0, 0,    3,255,255,  5, CHECK_NOTHING),
+	MK(_tile_table_toy_factory,      30, 28, 32,    3,255,   0, 0,   10,  4,255,  5, CHECK_NOTHING),
+	MK(_tile_table_plastic_fountain, 31,255,255,   10,255,  14, 0,  255,255,255,  5, CHECK_NOTHING),
+	MK(_tile_table_fizzy_drink,      29, 34,255,   11,255,   0, 0,    7,  9,255,  5, CHECK_NOTHING),
+	MK(_tile_table_bubble_generator, 33,255,255,    9,255,  13, 0,  255,255,255,  5, CHECK_BUBBLEGEN),
+	MK(_tile_table_toffee_quarry,    27,255,255,    6,255,  10, 0,  255,255,255,  5, CHECK_NOTHING),
+	MK(_tile_table_sugar_mine,       27,255,255,    1,255,  11, 0,  255,255,255,  5, CHECK_NOTHING),
 };
 #undef MK
 
-const byte _industry_type_costs[IT_END] = {
+const byte _industry_type_costs[] = {
 	210, 30,   28, 200,  31, 240,  26,  26,  27, 250, 205, 220, 193,  26,
 	28,  208,  19, 213, 220, 225, 218, 199,  14,  26, 250, 17,  195,  26,
 	187, 193,  17,  20, 192,  22, 203, 213, 210

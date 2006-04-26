@@ -444,22 +444,14 @@ static int32 ClearTile_Industry(TileIndex tile, byte flags)
 	return 0;
 }
 
-
-static const byte _industry_min_cargo[] = {
-	5, 5, 5, 30, 5, 5, 5, 5,
-	5, 5, 5, 5, 2, 5, 5, 5,
-	5, 5, 5, 15, 15, 5, 5, 5,
-	5, 5, 30, 5, 30, 5, 5, 5,
-	5, 5, 5, 5, 5,
-};
-
 static void TransportIndustryGoods(TileIndex tile)
 {
 	Industry *i = GetIndustryByTile(tile);
+	const IndustrySpec *spec = GetIndustrySpecification(i->type);
 	uint cw, am;
 
 	cw = min(i->cargo_waiting[0], 255);
-	if (cw > _industry_min_cargo[i->type]/* && i->produced_cargo[0] != 0xFF*/) {
+	if (cw > spec->minimal_cargo/* && i->produced_cargo[0] != 0xFF*/) {
 		i->cargo_waiting[0] -= cw;
 
 		/* fluctuating economy? */
@@ -482,7 +474,7 @@ static void TransportIndustryGoods(TileIndex tile)
 	}
 
 	cw = min(i->cargo_waiting[1], 255);
-	if (cw > _industry_min_cargo[i->type]) {
+	if (cw > spec->minimal_cargo) {
 		i->cargo_waiting[1] -= cw;
 
 		if (_economy.fluct <= 0) cw = (cw + 1) / 2;
@@ -1214,7 +1206,7 @@ static bool CheckNewIndustry_BubbleGen(TileIndex tile, IndustryType type)
 }
 
 typedef bool CheckNewIndustryProc(TileIndex tile, IndustryType type);
-static CheckNewIndustryProc * const _check_new_industry_procs[] = {
+static CheckNewIndustryProc * const _check_new_industry_procs[CHECK_END] = {
 	CheckNewIndustry_NULL,
 	CheckNewIndustry_Forest,
 	CheckNewIndustry_Oil,
@@ -1383,7 +1375,7 @@ static bool CheckIfTooCloseToIndustry(TileIndex tile, int type)
 
 		// check "not close to" field.
 		if (i->xy != 0 &&
-				(i->type == spec->a || i->type == spec->b || i->type == spec->c) &&
+				(i->type == spec->conflicting[0] || i->type == spec->conflicting[1] || i->type == spec->conflicting[2]) &&
 				DistanceMax(tile, i->xy) <= 14) {
 			_error_message = STR_INDUSTRY_TOO_CLOSE;
 			return false;
