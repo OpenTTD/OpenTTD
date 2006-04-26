@@ -1300,6 +1300,39 @@ static void NewSpriteSet(byte *buf, int len)
 	}
 }
 
+/* Helper function to either create a callback or link to a previously
+ * defined spritegroup. */
+static SpriteGroup* GetGroupFromGroupID(byte setid, byte type, uint16 groupid)
+{
+	if (HASBIT(groupid, 15)) return NewCallBackResultSpriteGroup(groupid);
+
+	if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
+		grfmsg(GMS_WARN, "NewSpriteGroup(0x%02X:0x%02X): Groupid 0x%04X does not exist, leaving empty.", setid, type, groupid);
+		return NULL;
+	}
+
+	return _cur_grffile->spritegroups[groupid];
+}
+
+/* Helper function to either create a callback or a result sprite group. */
+static SpriteGroup* CreateGroupFromGroupID(byte setid, byte type, uint16 spriteid, uint16 num_sprites)
+{
+	if (HASBIT(spriteid, 15)) return NewCallBackResultSpriteGroup(spriteid);
+
+	/* Check if the sprite is within range. This can fail if the Action 0x01
+	 * is skipped, as TTDPatch mandates that Action 0x02s must be processed.
+	 * We don't have that rule, but must live by the Patch... */
+	if (_cur_grffile->spriteset_start + spriteid * num_sprites + num_sprites > _cur_spriteid) {
+		grfmsg(GMS_WARN, "NewSpriteGroup(0x%02X:0x%02X): Real Sprite IDs 0x%04X - 0x%04X do not (all) exist (max 0x%04X), leaving empty.",
+				setid, type,
+				_cur_grffile->spriteset_start + spriteid * num_sprites,
+				_cur_grffile->spriteset_start + spriteid * num_sprites + num_sprites - 1, _cur_spriteid - 1);
+		return NULL;
+	}
+
+	return NewResultSpriteGroup(_cur_grffile->spriteset_start + spriteid * num_sprites, num_sprites);
+}
+
 /* Action 0x02 */
 static void NewSpriteGroup(byte *buf, int len)
 {
@@ -1348,7 +1381,6 @@ static void NewSpriteGroup(byte *buf, int len)
 		case 0x82: // Parent scope, byte
 		{
 			DeterministicSpriteGroup *dg;
-			uint16 groupid;
 			int i;
 
 			check_length(bufend - buf, 6, "NewSpriteGroup 0x81/0x82");
@@ -1377,30 +1409,12 @@ static void NewSpriteGroup(byte *buf, int len)
 			dg->num_ranges = grf_load_byte(&buf);
 			dg->ranges = calloc(dg->num_ranges, sizeof(*dg->ranges));
 			for (i = 0; i < dg->num_ranges; i++) {
-				groupid = grf_load_word(&buf);
-				if (HASBIT(groupid, 15)) {
-					dg->ranges[i].group = NewCallBackResultSpriteGroup(groupid);
-				} else if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
-					grfmsg(GMS_WARN, "NewSpriteGroup(0x%02X:0x%02X): Groupid 0x%04X does not exist, leaving empty.", setid, type, groupid);
-					dg->ranges[i].group = NULL;
-				} else {
-					dg->ranges[i].group = _cur_grffile->spritegroups[groupid];
-				}
-
+				dg->ranges[i].group = GetGroupFromGroupID(setid, type, grf_load_word(&buf));
 				dg->ranges[i].low = grf_load_byte(&buf);
 				dg->ranges[i].high = grf_load_byte(&buf);
 			}
 
-			groupid = grf_load_word(&buf);
-			if (HASBIT(groupid, 15)) {
-				dg->default_group = NewCallBackResultSpriteGroup(groupid);
-			} else if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
-				grfmsg(GMS_WARN, "NewSpriteGroup(0x%02X:0x%02X): Groupid 0x%04X does not exist, leaving empty.", setid, type, groupid);
-				dg->default_group = NULL;
-			} else {
-				dg->default_group = _cur_grffile->spritegroups[groupid];
-			}
-
+			dg->default_group = GetGroupFromGroupID(setid, type, grf_load_word(&buf));
 			break;
 		}
 
@@ -1431,16 +1445,7 @@ static void NewSpriteGroup(byte *buf, int len)
 
 			rg->groups = calloc(rg->num_groups, sizeof(*rg->groups));
 			for (i = 0; i < rg->num_groups; i++) {
-				uint16 groupid = grf_load_word(&buf);
-
-				if (HASBIT(groupid, 15)) {
-					rg->groups[i] = NewCallBackResultSpriteGroup(groupid);
-				} else if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
-					grfmsg(GMS_WARN, "NewSpriteGroup(0x%02X:0x%02X): Groupid 0x%04X does not exist, leaving empty.", setid, type, groupid);
-					rg->groups[i] = NULL;
-				} else {
-					rg->groups[i] = _cur_grffile->spritegroups[groupid];
-				}
+				rg->groups[i] = GetGroupFromGroupID(setid, type, grf_load_word(&buf));
 			}
 
 			break;
@@ -1479,21 +1484,13 @@ static void NewSpriteGroup(byte *buf, int len)
 
 			for (i = 0; i < num_loaded; i++) {
 				uint16 spriteset_id = grf_load_word(&buf);
-				if (HASBIT(spriteset_id, 15)) {
-					rg->loaded[i] = NewCallBackResultSpriteGroup(spriteset_id);
-				} else {
-					rg->loaded[i] = NewResultSpriteGroup(_cur_grffile->spriteset_start + spriteset_id * _cur_grffile->spriteset_numents, rg->sprites_per_set);
-				}
+				rg->loaded[i] = CreateGroupFromGroupID(setid, type, spriteset_id, rg->sprites_per_set);
 				DEBUG(grf, 8) ("NewSpriteGroup: + rg->loaded[%i]  = %u (subset %u)", i, rg->loaded[i]->g.result.result, spriteset_id);
 			}
 
 			for (i = 0; i < num_loading; i++) {
 				uint16 spriteset_id = grf_load_word(&buf);
-				if (HASBIT(spriteset_id, 15)) {
-					rg->loading[i] = NewCallBackResultSpriteGroup(spriteset_id);
-				} else {
-					rg->loading[i] = NewResultSpriteGroup(_cur_grffile->spriteset_start + spriteset_id * _cur_grffile->spriteset_numents, rg->sprites_per_set);
-				}
+				rg->loading[i] = CreateGroupFromGroupID(setid, type, spriteset_id, rg->sprites_per_set);
 				DEBUG(grf, 8) ("NewSpriteGroup: + rg->loading[%i] = %u (subset %u)", i, rg->loading[i]->g.result.result, spriteset_id);
 			}
 
