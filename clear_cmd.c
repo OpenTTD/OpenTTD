@@ -197,7 +197,6 @@ int32 CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	_error_message = INVALID_STRING_ID;
 	_terraform_err_tile = 0;
 
 	ts.direction = direction = p2 ? 1 : -1;

@@ -511,8 +511,8 @@ static int32 CmdRailTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint32 
 		ret = DoCommand(tile, railtype, TrackdirToTrack(trackdir), flags, (mode == 0) ? CMD_BUILD_SINGLE_RAIL : CMD_REMOVE_SINGLE_RAIL);
 
 		if (CmdFailed(ret)) {
-			if ((_error_message != STR_1007_ALREADY_BUILT) && (mode == 0))
-				break;
+			if ((_error_message != STR_1007_ALREADY_BUILT) && (mode == 0)) break;
+			_error_message = INVALID_STRING_ID;
 		} else
 			total_cost += ret;
 
@@ -771,6 +771,7 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 			 * This includes vehicles on track, competitor's tracks, etc. */
 			if (CmdFailed(ret)) {
 				if (_error_message != STR_1005_NO_SUITABLE_RAILROAD_TRACK && mode != 1) return CMD_ERROR;
+				_error_message = INVALID_STRING_ID;
 			} else {
 				error = false;
 				total_cost += ret;
