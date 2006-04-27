@@ -388,7 +388,7 @@ do_clear:;
 	ret = CheckRoadSlope(tileh, &pieces, existing);
 	/* Return an error if we need to build a foundation (ret != 0) but the
 	 * current patch-setting is turned off (or stupid AI@work) */
-	if (CmdFailed(ret) || ret != 0 && (!_patches.build_on_slopes || _is_old_ai_player))
+	if (CmdFailed(ret) || (ret != 0 && (!_patches.build_on_slopes || _is_old_ai_player)))
 		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 	cost += ret;
