@@ -1452,7 +1452,8 @@ void CcBuildTown(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void PlaceProc_Town(TileIndex tile)
 {
-	DoCommandP(tile, 0, 0, CcBuildTown, CMD_BUILD_TOWN | CMD_MSG(STR_0236_CAN_T_BUILD_TOWN_HERE));
+	Window *w = FindWindowById(WC_SCEN_TOWN_GEN, 0);
+	DoCommandP(tile, 1 + FIND_FIRST_BIT(w->click_state >> 7), 0, CcBuildTown, CMD_BUILD_TOWN | CMD_MSG(STR_0236_CAN_T_BUILD_TOWN_HERE));
 }
 
 
@@ -1474,9 +1475,12 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT:
-		w->click_state = (w->click_state & ~(1<<7 | 1<<8 | 1<<9) ) | (1 << (_new_town_size + 7));
 		DrawWindowWidgets(w);
 		DrawStringCentered(80, 56, STR_02A5_TOWN_SIZE, 0);
+		break;
+
+	case WE_CREATE:
+		w->click_state = 1 << 8; /* medium town size selected */
 		break;
 
 	case WE_CLICK:
@@ -1489,7 +1493,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 
 			HandleButtonClick(w, 5);
 			_generating_world = true;
-			t = CreateRandomTown(20);
+			t = CreateRandomTown(20, 1 + FIND_FIRST_BIT(w->click_state >> 7));
 			_generating_world = false;
 
 			if (t == NULL) {
@@ -1504,18 +1508,13 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 			HandleButtonClick(w, 6);
 
 			_generating_world = true;
-			_game_mode = GM_NORMAL; // little hack to avoid towns of the same size
-			if (!GenerateTowns()) {
-				ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
-			}
+			if (!GenerateTowns()) ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
 			_generating_world = false;
-
-			_game_mode = GM_EDITOR;
 			break;
 		}
 
 		case 7: case 8: case 9:
-			_new_town_size = e->click.widget - 7;
+			w->click_state = 1 << e->click.widget;
 			SetWindowDirty(w);
 			break;
 		}
@@ -1528,7 +1527,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 		_place_proc(e->place.tile);
 		break;
 	case WE_ABORT_PLACE_OBJ:
-		w->click_state = 0;
+		w->click_state &= (1 << 7 | 1 << 8 | 1 << 9);
 		SetWindowDirty(w);
 		break;
 	}

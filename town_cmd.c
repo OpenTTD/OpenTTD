@@ -887,7 +887,7 @@ void UpdateTownMaxPass(Town *t)
 	t->max_mail = t->population >> 4;
 }
 
-static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts)
+static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, uint size_mode)
 {
 	int x, i;
 
@@ -935,9 +935,11 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts)
 	UpdateTownVirtCoord(t);
 	_town_sort_dirty = true;
 
-	x = (Random() & 0xF) + 8;
-	if (_game_mode == GM_EDITOR)
-		x = _new_town_size * 16 + 3;
+	if (size_mode == 0) {
+		x = (Random() & 0xF) + 8;
+	} else {
+		x = (size_mode - 1) * 16 + 3;
+	}
 
 	t->num_houses += x;
 	UpdateTownRadius(t);
@@ -980,7 +982,7 @@ static Town *AllocateTown(void)
  * This obviously only works in the scenario editor. Function not removed
  * as it might be possible in the future to fund your own town :)
  * @param tile coordinates where town is built
- * @param p1 unused
+ * @param p1 size of the town (1 = small, 2 = medium, 3 = large)
  * @param p2 unused
  */
 int32 CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
@@ -1017,13 +1019,13 @@ int32 CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	// Create the town
 	if (flags & DC_EXEC) {
 		_generating_world = true;
-		DoCreateTown(t, tile, townnameparts);
+		DoCreateTown(t, tile, townnameparts, p1);
 		_generating_world = false;
 	}
 	return 0;
 }
 
-Town *CreateRandomTown(uint attempts)
+Town *CreateRandomTown(uint attempts, uint size_mode)
 {
 	TileIndex tile;
 	Town *t;
@@ -1047,7 +1049,7 @@ Town *CreateRandomTown(uint attempts)
 		t = AllocateTown();
 		if (t == NULL) break;
 
-		DoCreateTown(t, tile, townnameparts);
+		DoCreateTown(t, tile, townnameparts, size_mode);
 		return t;
 	} while (--attempts);
 	return NULL;
@@ -1061,17 +1063,17 @@ bool GenerateTowns(void)
 	uint n = ScaleByMapSize(_num_initial_towns[_opt.diff.number_towns] + (Random() & 7));
 
 	do {
-		if (CreateRandomTown(20) != NULL) 	//try 20 times for the first loop
+		if (CreateRandomTown(20, 0) != NULL) 	//try 20 times to create a random-sized town for the first loop.
 			num++;
 	} while (--n);
 
 	// give it a last try, but now more aggressive
-	if (num == 0 && CreateRandomTown(10000) == NULL) {
+	if (num == 0 && CreateRandomTown(10000, 0) == NULL) {
 		Town *t;
 		FOR_ALL_TOWNS(t) { if (IsValidTown(t)) {num = 1; break;}}
 
 		//XXX can we handle that more gracefully?
-		if (num == 0) error("Could not generate any town");
+		if (num == 0 && _game_mode != GM_EDITOR) error("Could not generate any town");
 		return false;
 	}
 

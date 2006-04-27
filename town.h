@@ -83,7 +83,7 @@ void InitializeTown(void);
 void ShowTownViewWindow(TownID town);
 void DeleteTown(Town *t);
 void ExpandTown(Town *t);
-Town *CreateRandomTown(uint attempts);
+Town *CreateRandomTown(uint attempts, uint size_mode);
 
 enum {
 	ROAD_REMOVE = 0,
