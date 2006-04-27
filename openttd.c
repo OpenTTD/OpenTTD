@@ -442,6 +442,9 @@ int ttd_main(int argc, char* argv[])
 	LoadDriver(VIDEO_DRIVER, _ini_videodriver); // load video last, to prevent an empty window while sound and music loads
 	_savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;
 
+	// restore saved music volume
+	_music_driver->set_volume(msf.music_vol);
+
 #ifdef ENABLE_NETWORK
 	// initialize network-core
 	NetworkStartUp();
