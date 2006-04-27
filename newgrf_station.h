@@ -91,16 +91,16 @@ StringID *BuildStationClassDropdown(void);
 uint GetNumStationClasses(void);
 uint GetNumCustomStations(StationClassID sclass);
 
-void SetCustomStation(StationSpec *spec);
-const StationSpec *GetCustomStation(StationClassID sclass, uint station);
+void SetCustomStationSpec(StationSpec *statspec);
+const StationSpec *GetCustomStationSpec(StationClassID sclass, uint station);
 
 /* Get sprite offset for a given custom station and station structure (may be
  * NULL if ctype is set - that means we are in a build dialog). The station
  * structure is used for variational sprite groups. */
-uint32 GetCustomStationRelocation(const StationSpec *spec, const Station *st, byte ctype);
+uint32 GetCustomStationRelocation(const StationSpec *statspec, const Station *st, byte ctype);
 
 /* Allocate a StationSpec to a Station. This is called once per build operation. */
-int AllocateSpecToStation(const StationSpec *spec, Station *st, bool exec);
+int AllocateSpecToStation(const StationSpec *statspec, Station *st, bool exec);
 
 /* Deallocate a StationSpec from a Station. Called when removing a single station tile. */
 bool DeallocateSpecFromStation(Station *st, byte specindex);

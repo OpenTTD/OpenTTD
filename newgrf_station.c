@@ -127,18 +127,18 @@ uint GetNumCustomStations(StationClassID sclass)
  * Tie a station spec to its station class.
  * @param spec The station spec.
  */
-void SetCustomStation(StationSpec *spec)
+void SetCustomStationSpec(StationSpec *statspec)
 {
 	StationClass *station_class;
 	int i;
 
-	assert(spec->sclass < STAT_CLASS_MAX);
-	station_class = &station_classes[spec->sclass];
+	assert(statspec->sclass < STAT_CLASS_MAX);
+	station_class = &station_classes[statspec->sclass];
 
 	i = station_class->stations++;
 	station_class->spec = realloc(station_class->spec, station_class->stations * sizeof(*station_class->spec));
 
-	station_class->spec[i] = spec;
+	station_class->spec[i] = statspec;
 }
 
 /**
@@ -147,7 +147,7 @@ void SetCustomStation(StationSpec *spec)
  * @param station The station index with the class.
  * @return The station spec.
  */
-const StationSpec *GetCustomStation(StationClassID sclass, uint station)
+const StationSpec *GetCustomStationSpec(StationClassID sclass, uint station)
 {
 	assert(sclass < STAT_CLASS_MAX);
 	if (station < station_classes[sclass].stations)
@@ -225,16 +225,16 @@ static const RealSpriteGroup *ResolveStationSpriteGroup(const SpriteGroup *spg, 
 	}
 }
 
-uint32 GetCustomStationRelocation(const StationSpec *spec, const Station *st, byte ctype)
+uint32 GetCustomStationRelocation(const StationSpec *statspec, const Station *st, byte ctype)
 {
-	const RealSpriteGroup *rsg = ResolveStationSpriteGroup(spec->spritegroup[ctype], st);
+	const RealSpriteGroup *rsg = ResolveStationSpriteGroup(statspec->spritegroup[ctype], st);
 	if (rsg == NULL) return 0;
 
 	if (rsg->num_loading != 0) return rsg->loading[0]->g.result.sprite;
 	if (rsg->num_loaded  != 0) return rsg->loaded[0]->g.result.sprite;
 
 	DEBUG(grf, 6)("Custom station 0x%08x::0x%02x has no sprites associated.",
-		spec->grfid, spec->localidx);
+		statspec->grfid, statspec->localidx);
 	/* This is what gets subscribed of dtss->image in newgrf.c,
 	 * so it's probably kinda "default offset". Try to use it as
 	 * emergency measure. */
@@ -249,15 +249,15 @@ uint32 GetCustomStationRelocation(const StationSpec *spec, const Station *st, by
  * @param exec Whether to actually allocate the spec.
  * @return Index within the Station's spec list, or -1 if the allocation failed.
  */
-int AllocateSpecToStation(const StationSpec *spec, Station *st, bool exec)
+int AllocateSpecToStation(const StationSpec *statspec, Station *st, bool exec)
 {
 	uint i;
 
-	if (spec == NULL) return 0;
+	if (statspec == NULL) return 0;
 
 	/* Check if this spec has already been allocated */
 	for (i = 1; i < st->num_specs && i < 256; i++) {
-		if (st->speclist[i].spec == spec) return i;
+		if (st->speclist[i].spec == statspec) return i;
 	}
 
 	for (i = 1; i < st->num_specs && i < 256; i++) {
@@ -278,9 +278,9 @@ int AllocateSpecToStation(const StationSpec *spec, Station *st, bool exec)
 				}
 			}
 
-			st->speclist[i].spec     = spec;
-			st->speclist[i].grfid    = spec->grfid;
-			st->speclist[i].localidx = spec->localidx;
+			st->speclist[i].spec     = statspec;
+			st->speclist[i].grfid    = statspec->grfid;
+			st->speclist[i].localidx = statspec->localidx;
 		}
 		return i;
 	}

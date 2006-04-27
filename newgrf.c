@@ -780,7 +780,7 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 
 static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int len)
 {
-	StationSpec *stat;
+	StationSpec *statspec;
 	byte *buf = *bufp;
 	int i;
 	bool ret = false;
@@ -796,7 +796,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		}
 	}
 
-	stat = &_cur_grffile->stations[stid];
+	statspec = &_cur_grffile->stations[stid];
 
 	switch (prop) {
 		case 0x08: /* Class ID */
@@ -809,19 +809,19 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 				classid |= *(buf++) << 8;
 				classid |= *(buf++);
 
-				stat[i].sclass = AllocateStationClass(classid);
+				statspec[i].sclass = AllocateStationClass(classid);
 			}
 			break;
 
 		case 0x09: /* Define sprite layout */
 			FOR_EACH_OBJECT {
-				StationSpec *stat = &_cur_grffile->stations[stid + i];
+				StationSpec *statspec = &_cur_grffile->stations[stid + i];
 				uint t;
 
-				stat->tiles = grf_load_extended(&buf);
-				stat->renderdata = calloc(stat->tiles, sizeof(*stat->renderdata));
-				for (t = 0; t < stat->tiles; t++) {
-					DrawTileSprites *dts = &stat->renderdata[t];
+				statspec->tiles = grf_load_extended(&buf);
+				statspec->renderdata = calloc(statspec->tiles, sizeof(*statspec->renderdata));
+				for (t = 0; t < statspec->tiles; t++) {
+					DrawTileSprites *dts = &statspec->renderdata[t];
 					uint seq_count = 0;
 					PalSpriteID ground_sprite;
 
@@ -863,16 +863,16 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 
 		case 0x0A: /* Copy sprite layout */
 			FOR_EACH_OBJECT {
-				StationSpec *stat = &_cur_grffile->stations[stid + i];
+				StationSpec *statspec = &_cur_grffile->stations[stid + i];
 				byte srcid = grf_load_byte(&buf);
-				const StationSpec *srcstat = &_cur_grffile->stations[srcid];
+				const StationSpec *srcstatspec = &_cur_grffile->stations[srcid];
 				uint t;
 
-				stat->tiles = srcstat->tiles;
-				stat->renderdata = calloc(stat->tiles, sizeof(*stat->renderdata));
-				for (t = 0; t < stat->tiles; t++) {
-					DrawTileSprites *dts = &stat->renderdata[t];
-					const DrawTileSprites *sdts = &srcstat->renderdata[t];
+				statspec->tiles = srcstatspec->tiles;
+				statspec->renderdata = calloc(statspec->tiles, sizeof(*statspec->renderdata));
+				for (t = 0; t < statspec->tiles; t++) {
+					DrawTileSprites *dts = &statspec->renderdata[t];
+					const DrawTileSprites *sdts = &srcstatspec->renderdata[t];
 					DrawTileSeqStruct const *sdtss = sdts->seq;
 					int seq_count = 0;
 
@@ -899,20 +899,20 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 			break;
 
 		case 0x0B: /* Callback mask */
-			FOR_EACH_OBJECT stat[i].callbackmask = grf_load_byte(&buf);
+			FOR_EACH_OBJECT statspec[i].callbackmask = grf_load_byte(&buf);
 			break;
 
 		case 0x0C: /* Disallowed number of platforms */
-			FOR_EACH_OBJECT stat[i].disallowed_platforms = grf_load_byte(&buf);
+			FOR_EACH_OBJECT statspec[i].disallowed_platforms = grf_load_byte(&buf);
 			break;
 
 		case 0x0D: /* Disallowed platform lengths */
-			FOR_EACH_OBJECT stat[i].disallowed_lengths = grf_load_byte(&buf);
+			FOR_EACH_OBJECT statspec[i].disallowed_lengths = grf_load_byte(&buf);
 			break;
 
 		case 0x0E: /* Define custom layout */
 			FOR_EACH_OBJECT {
-				StationSpec *stat = &_cur_grffile->stations[stid + i];
+				StationSpec *statspec = &_cur_grffile->stations[stid + i];
 
 				while (buf < *bufp + len) {
 					byte length = grf_load_byte(&buf);
@@ -923,27 +923,27 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 					if (length == 0 || number == 0) break;
 
 					//debug("l %d > %d ?", length, stat->lengths);
-					if (length > stat->lengths) {
-						stat->platforms = realloc(stat->platforms, length);
-						memset(stat->platforms + stat->lengths, 0, length - stat->lengths);
+					if (length > statspec->lengths) {
+						statspec->platforms = realloc(statspec->platforms, length);
+						memset(statspec->platforms + statspec->lengths, 0, length - statspec->lengths);
 
-						stat->layouts = realloc(stat->layouts, length * sizeof(*stat->layouts));
-						memset(stat->layouts + stat->lengths, 0,
-						       (length - stat->lengths) * sizeof(*stat->layouts));
+						statspec->layouts = realloc(statspec->layouts, length * sizeof(*statspec->layouts));
+						memset(statspec->layouts + statspec->lengths, 0,
+						       (length - statspec->lengths) * sizeof(*statspec->layouts));
 
-						stat->lengths = length;
+						statspec->lengths = length;
 					}
 					l = length - 1; // index is zero-based
 
 					//debug("p %d > %d ?", number, stat->platforms[l]);
-					if (number > stat->platforms[l]) {
-						stat->layouts[l] = realloc(stat->layouts[l],
-						                               number * sizeof(**stat->layouts));
+					if (number > statspec->platforms[l]) {
+						statspec->layouts[l] = realloc(statspec->layouts[l],
+						                               number * sizeof(**statspec->layouts));
 						// We expect NULL being 0 here, but C99 guarantees that.
-						memset(stat->layouts[l] + stat->platforms[l], 0,
-						       (number - stat->platforms[l]) * sizeof(**stat->layouts));
+						memset(statspec->layouts[l] + statspec->platforms[l], 0,
+						       (number - statspec->platforms[l]) * sizeof(**statspec->layouts));
 
-						stat->platforms[l] = number;
+						statspec->platforms[l] = number;
 					}
 
 					p = 0;
@@ -956,8 +956,8 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 
 					l--;
 					p--;
-					free(stat->layouts[l][p]);
-					stat->layouts[l][p] = layout;
+					free(statspec->layouts[l][p]);
+					statspec->layouts[l][p] = layout;
 				}
 			}
 			break;
@@ -971,27 +971,27 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 			break;
 
 		case 0x10: /* Little/lots cargo threshold */
-			FOR_EACH_OBJECT stat[i].cargo_threshold = grf_load_word(&buf);
+			FOR_EACH_OBJECT statspec[i].cargo_threshold = grf_load_word(&buf);
 			break;
 
 		case 0x11: /* Pylon placement */
-			FOR_EACH_OBJECT stat[i].pylons = grf_load_byte(&buf);
+			FOR_EACH_OBJECT statspec[i].pylons = grf_load_byte(&buf);
 			break;
 
 		case 0x12: /* Cargo types for random triggers */
-			FOR_EACH_OBJECT stat[i].cargo_triggers = grf_load_dword(&buf);
+			FOR_EACH_OBJECT statspec[i].cargo_triggers = grf_load_dword(&buf);
 			break;
 
 		case 0x13: /* General flags */
-			FOR_EACH_OBJECT stat[i].flags = grf_load_byte(&buf);
+			FOR_EACH_OBJECT statspec[i].flags = grf_load_byte(&buf);
 			break;
 
 		case 0x14: /* Overhead wire placement */
-			FOR_EACH_OBJECT stat[i].wires = grf_load_byte(&buf);
+			FOR_EACH_OBJECT statspec[i].wires = grf_load_byte(&buf);
 			break;
 
 		case 0x15: /* Blocked tiles */
-			FOR_EACH_OBJECT stat[i].blocked = grf_load_byte(&buf);
+			FOR_EACH_OBJECT statspec[i].blocked = grf_load_byte(&buf);
 			break;
 
 		default:
@@ -1612,7 +1612,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 
 		for (i = 0; i < idcount; i++) {
 			uint8 stid = buf[3 + i];
-			StationSpec *stat = &_cur_grffile->stations[stid];
+			StationSpec *statspec = &_cur_grffile->stations[stid];
 			byte *bp = &buf[4 + idcount];
 
 			for (c = 0; c < cidcount; c++) {
@@ -1630,7 +1630,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 					continue;
 				}
 
-				stat->spritegroup[1] = _cur_grffile->spritegroups[groupid];
+				statspec->spritegroup[1] = _cur_grffile->spritegroups[groupid];
 			}
 		}
 
@@ -1646,12 +1646,12 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 
 			for (i = 0; i < idcount; i++) {
 				uint8 stid = buf[3 + i];
-				StationSpec *stat = &_cur_grffile->stations[stid];
+				StationSpec *statspec = &_cur_grffile->stations[stid];
 
-				stat->spritegroup[0] = _cur_grffile->spritegroups[groupid];
-				stat->grfid = _cur_grffile->grfid;
-				stat->localidx = stid;
-				SetCustomStation(stat);
+				statspec->spritegroup[0] = _cur_grffile->spritegroups[groupid];
+				statspec->grfid = _cur_grffile->grfid;
+				statspec->localidx = stid;
+				SetCustomStationSpec(statspec);
 			}
 		}
 		return;

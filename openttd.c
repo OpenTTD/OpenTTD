@@ -1342,15 +1342,15 @@ bool AfterLoadGame(void)
 
 		FOR_ALL_WAYPOINTS(wp) {
 			if (wp->xy != 0 && wp->deleted == 0) {
-				const StationSpec *spec = NULL;
+				const StationSpec *statspec = NULL;
 
 				if (HASBIT(_m[wp->xy].m3, 4))
-					spec = GetCustomStation(STAT_CLASS_WAYP, _m[wp->xy].m4 + 1);
+					statspec = GetCustomStationSpec(STAT_CLASS_WAYP, _m[wp->xy].m4 + 1);
 
-				if (spec != NULL) {
+				if (statspec != NULL) {
 					wp->stat_id = _m[wp->xy].m4 + 1;
-					wp->grfid = spec->grfid;
-					wp->localidx = spec->localidx;
+					wp->grfid = statspec->grfid;
+					wp->localidx = statspec->localidx;
 				} else {
 					// No custom graphics set, so set to default.
 					wp->stat_id = 0;

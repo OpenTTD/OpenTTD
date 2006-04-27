@@ -153,8 +153,8 @@ void UpdateAllWaypointCustomGraphics(void)
 		if (wp->grfid == 0) continue;
 
 		for (i = 0; i < GetNumCustomStations(STAT_CLASS_WAYP); i++) {
-			const StationSpec *spec = GetCustomStation(STAT_CLASS_WAYP, i);
-			if (spec != NULL && spec->grfid == wp->grfid && spec->localidx == wp->localidx) {
+			const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, i);
+			if (statspec != NULL && statspec->grfid == wp->grfid && statspec->localidx == wp->localidx) {
 				wp->stat_id = i;
 				break;
 			}
@@ -213,18 +213,18 @@ int32 CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (flags & DC_EXEC) {
-		const StationSpec *spec = NULL;
+		const StationSpec *statspec = NULL;
 		MakeRailWaypoint(tile, GetTileOwner(tile), axis, GetRailType(tile), wp->index);
 		MarkTileDirtyByTile(tile);
 
 		if (GB(p1, 0, 8) < GetNumCustomStations(STAT_CLASS_WAYP))
-			spec = GetCustomStation(STAT_CLASS_WAYP, GB(p1, 0, 8));
+			statspec = GetCustomStationSpec(STAT_CLASS_WAYP, GB(p1, 0, 8));
 
-		if (spec != NULL) {
+		if (statspec != NULL) {
 			SetCustomWaypointSprite(tile);
 			wp->stat_id = GB(p1, 0, 8);
-			wp->grfid = spec->grfid;
-			wp->localidx = spec->localidx;
+			wp->grfid = statspec->grfid;
+			wp->localidx = statspec->localidx;
 		} else {
 			// Specified custom graphics do not exist, so use default.
 			ClearCustomWaypointSprite(tile);
@@ -385,7 +385,7 @@ extern uint16 _custom_sprites_base;
 /* Draw a waypoint */
 void DrawWaypointSprite(int x, int y, int stat_id, RailType railtype)
 {
-	const StationSpec *stat;
+	const StationSpec *statspec;
 	uint32 relocation;
 	const DrawTileSprites *cust;
 	DrawTileSeqStruct const *seq;
@@ -397,18 +397,18 @@ void DrawWaypointSprite(int x, int y, int stat_id, RailType railtype)
 	x += 33;
 	y += 17;
 
-	stat = GetCustomStation(STAT_CLASS_WAYP, stat_id);
-	if (stat == NULL) {
+	statspec = GetCustomStationSpec(STAT_CLASS_WAYP, stat_id);
+	if (statspec == NULL) {
 		// stat is NULL for default waypoints and when waypoint graphics are
 		// not loaded.
 		DrawDefaultWaypointSprite(x, y, railtype);
 		return;
 	}
 
-	relocation = GetCustomStationRelocation(stat, NULL, 1);
+	relocation = GetCustomStationRelocation(statspec, NULL, 1);
 	// emulate station tile - open with building
 	// add 1 to get the other direction
-	cust = &stat->renderdata[2];
+	cust = &statspec->renderdata[2];
 
 	img = cust->ground_sprite;
 	img += (img < _custom_sprites_base) ? rti->total_offset : rti->custom_ground_offset;

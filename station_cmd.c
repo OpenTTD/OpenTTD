@@ -918,13 +918,13 @@ static inline byte *CreateMulti(byte *layout, int n, byte b)
 	return layout;
 }
 
-static void GetStationLayout(byte *layout, int numtracks, int plat_len, const StationSpec *spec)
+static void GetStationLayout(byte *layout, int numtracks, int plat_len, const StationSpec *statspec)
 {
-	if (spec != NULL && spec->lengths >= plat_len &&
-			spec->platforms[plat_len - 1] >= numtracks &&
-			spec->layouts[plat_len - 1][numtracks - 1]) {
+	if (statspec != NULL && statspec->lengths >= plat_len &&
+			statspec->platforms[plat_len - 1] >= numtracks &&
+			statspec->layouts[plat_len - 1][numtracks - 1]) {
 		/* Custom layout defined, follow it. */
-		memcpy(layout, spec->layouts[plat_len - 1][numtracks - 1],
+		memcpy(layout, statspec->layouts[plat_len - 1][numtracks - 1],
 			plat_len * numtracks);
 		return;
 	}
@@ -1042,7 +1042,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 	if (GB(p2, 8, 8) >= STAT_CLASS_MAX) return CMD_ERROR;
 
 	/* Check if we can allocate a custom stationspec to this station */
-	statspec = GetCustomStation(GB(p2, 8, 8), GB(p2, 16, 8));
+	statspec = GetCustomStationSpec(GB(p2, 8, 8), GB(p2, 16, 8));
 	specindex = AllocateSpecToStation(statspec, st, flags & DC_EXEC);
 	if (specindex == -1) return CMD_ERROR;
 
