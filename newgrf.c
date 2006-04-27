@@ -1412,10 +1412,10 @@ static void NewSpriteGroup(byte *buf, int len)
 			group->g.determ.var_scope = HASBIT(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
 
 			switch (GB(type, 2, 2)) {
+				default: NOT_REACHED();
 				case 0: group->g.determ.size = DSG_SIZE_BYTE;  varsize = 1; break;
 				case 1: group->g.determ.size = DSG_SIZE_WORD;  varsize = 2; break;
 				case 2: group->g.determ.size = DSG_SIZE_DWORD; varsize = 4; break;
-				default: NOT_REACHED(); break;
 			}
 
 			check_length(bufend - buf, 2 + (varsize * 3) + 2, "NewSpriteGroup (Deterministic) (2)");
