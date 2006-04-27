@@ -546,7 +546,7 @@ static const SpriteGroup *TriggerVehicleSpriteGroup(const SpriteGroup *spritegro
 	return ResolveVehicleSpriteGroup(spritegroup, veh, callback_info, resolve_func);
 }
 
-static void DoTriggerVehicle(Vehicle *veh, VehicleTrigger trigger, byte base_random_bits, bool first)
+static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_random_bits, bool first)
 {
 	const SpriteGroup *group;
 	const RealSpriteGroup *rsg;
@@ -554,12 +554,12 @@ static void DoTriggerVehicle(Vehicle *veh, VehicleTrigger trigger, byte base_ran
 
 	_vsg_random_triggers = trigger;
 	_vsg_bits_to_reseed = 0;
-	group = TriggerVehicleSpriteGroup(GetVehicleSpriteGroup(veh->engine_type, veh), veh, 0,
+	group = TriggerVehicleSpriteGroup(GetVehicleSpriteGroup(v->engine_type, v), v, 0,
 	                                  (resolve_callback) TriggerVehicleSpriteGroup);
 
-	if (group == NULL && veh->cargo_type != GC_DEFAULT) {
+	if (group == NULL && v->cargo_type != GC_DEFAULT) {
 		// This group turned out to be empty but perhaps there'll be a default one.
-		group = TriggerVehicleSpriteGroup(engine_custom_sprites[veh->engine_type][GC_DEFAULT], veh, 0,
+		group = TriggerVehicleSpriteGroup(engine_custom_sprites[v->engine_type][GC_DEFAULT], v, 0,
 		                                  (resolve_callback) TriggerVehicleSpriteGroup);
 	}
 
@@ -570,8 +570,8 @@ static void DoTriggerVehicle(Vehicle *veh, VehicleTrigger trigger, byte base_ran
 	rsg = &group->g.real;
 
 	new_random_bits = Random();
-	veh->random_bits &= ~_vsg_bits_to_reseed;
-	veh->random_bits |= (first ? new_random_bits : base_random_bits) & _vsg_bits_to_reseed;
+	v->random_bits &= ~_vsg_bits_to_reseed;
+	v->random_bits |= (first ? new_random_bits : base_random_bits) & _vsg_bits_to_reseed;
 
 	switch (trigger) {
 		case VEHICLE_TRIGGER_NEW_CARGO:
@@ -583,41 +583,41 @@ static void DoTriggerVehicle(Vehicle *veh, VehicleTrigger trigger, byte base_ran
 			 * i.e.), so we give them all the NEW_CARGO triggered
 			 * vehicle's portion of random bits. */
 			assert(first);
-			DoTriggerVehicle(GetFirstVehicleInChain(veh), VEHICLE_TRIGGER_ANY_NEW_CARGO, new_random_bits, false);
+			DoTriggerVehicle(GetFirstVehicleInChain(v), VEHICLE_TRIGGER_ANY_NEW_CARGO, new_random_bits, false);
 			break;
+
 		case VEHICLE_TRIGGER_DEPOT:
 			/* We now trigger the next vehicle in chain recursively.
 			 * The random bits portions may be different for each
 			 * vehicle in chain. */
-			if (veh->next != NULL)
-				DoTriggerVehicle(veh->next, trigger, 0, true);
+			if (v->next != NULL) DoTriggerVehicle(v->next, trigger, 0, true);
 			break;
+
 		case VEHICLE_TRIGGER_EMPTY:
 			/* We now trigger the next vehicle in chain
 			 * recursively.  The random bits portions must be same
 			 * for each vehicle in chain, so we give them all
 			 * first chained vehicle's portion of random bits. */
-			if (veh->next != NULL)
-				DoTriggerVehicle(veh->next, trigger, first ? new_random_bits : base_random_bits, false);
+			if (v->next != NULL) DoTriggerVehicle(v->next, trigger, first ? new_random_bits : base_random_bits, false);
 			break;
+
 		case VEHICLE_TRIGGER_ANY_NEW_CARGO:
 			/* Now pass the trigger recursively to the next vehicle
 			 * in chain. */
 			assert(!first);
-			if (veh->next != NULL)
-				DoTriggerVehicle(veh->next, VEHICLE_TRIGGER_ANY_NEW_CARGO, base_random_bits, false);
+			if (v->next != NULL) DoTriggerVehicle(v->next, VEHICLE_TRIGGER_ANY_NEW_CARGO, base_random_bits, false);
 			break;
 	}
 }
 
-void TriggerVehicle(Vehicle *veh, VehicleTrigger trigger)
+void TriggerVehicle(Vehicle *v, VehicleTrigger trigger)
 {
 	if (trigger == VEHICLE_TRIGGER_DEPOT) {
 		// store that the vehicle entered a depot this tick
-		VehicleEnteredDepotThisTick(veh);
+		VehicleEnteredDepotThisTick(v);
 	}
 
-	DoTriggerVehicle(veh, trigger, 0, true);
+	DoTriggerVehicle(v, trigger, 0, true);
 }
 
 StringID _engine_custom_names[TOTAL_NUM_ENGINES];
