@@ -80,7 +80,7 @@ static const SpriteGroup *ResolveReal(const SpriteGroup *group, ResolverObject *
 
 	assert((in_motion && set < group->g.real.num_loaded) || (!in_motion && set < group->g.real.num_loading));
 
-	return Resolve(in_motion ? group->g.real.loaded[set] : group->g.real.loading[set], object);
+	return in_motion ? group->g.real.loaded[set] : group->g.real.loading[set];
 }
 
 
