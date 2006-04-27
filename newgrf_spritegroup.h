@@ -154,4 +154,39 @@ struct SpriteGroup {
 SpriteGroup *AllocateSpriteGroup(void);
 void InitializeSpriteGroupPool(void);
 
+
+typedef struct ResolverObject {
+	byte callback;
+	uint32 callback_param1;
+	uint32 callback_param2;
+
+	byte trigger;
+	uint32 last_value;
+	uint32 reseed;
+	VarSpriteGroupScope scope;
+
+	union {
+		struct {
+			const struct Vehicle *self;
+			const struct Vehicle *parent;
+		} vehicle;
+		struct {
+			TileIndex tile;
+			const struct Station *st;
+			const struct StationSpec *statspec;
+		} station;
+	};
+
+	uint32 (*GetRandomBits)(const struct ResolverObject*);
+	uint32 (*GetTriggers)(const struct ResolverObject*);
+	void (*SetTriggers)(const struct ResolverObject*, int);
+	uint32 (*GetVariable)(const struct ResolverObject*, byte, byte);
+	uint32 (*ResolveReal)(const struct ResolverObject*, uint, uint, bool*);
+} ResolverObject;
+
+
+/* Base sprite group resolver */
+const SpriteGroup *Resolve(const SpriteGroup *group, ResolverObject *object);
+
+
 #endif /* NEWGRF_SPRITEGROUP_H */
