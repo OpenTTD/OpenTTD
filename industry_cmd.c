@@ -122,7 +122,7 @@ IndustryType GetIndustryType(TileIndex tile)
  * @param thistype of industry (which is the index in _industry_specs)
  * @pre thistype < IT_END
  **/
-static const IndustrySpec *GetIndustrySpec(IndustryType thistype)
+const IndustrySpec *GetIndustrySpec(IndustryType thistype)
 {
 	assert(thistype < IT_END);
 	return &_industry_specs[thistype];
@@ -1433,7 +1433,7 @@ int32 CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) DoCreateNewIndustry(i, tile, p1, it, t, OWNER_NONE);
 
-	return (_price.build_industry >> 5) * _industry_type_costs[p1];
+	return (_price.build_industry >> 5) * indspec->cost_multiplier;
 }
 
 

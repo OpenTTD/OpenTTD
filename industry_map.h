@@ -9,7 +9,6 @@
 #include "macros.h"
 #include "tile.h"
 
-typedef byte IndustryGfx;
 
 
 /**

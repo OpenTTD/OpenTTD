@@ -5,6 +5,9 @@
 
 #include "pool.h"
 
+typedef byte IndustryGfx;
+typedef uint8 IndustryType;
+
 struct Industry {
 	TileIndex xy;
 	byte width; /* swapped order of w/h with town */
@@ -30,6 +33,37 @@ struct Industry {
 
 	uint16 index;
 };
+
+typedef struct IndustryTileTable {
+	TileIndexDiffC ti;
+	IndustryGfx gfx;
+} IndustryTileTable;
+
+typedef struct IndustrySpec {
+	/** Tables with the 'layout' of different composition of GFXes */
+	const IndustryTileTable *const *table;
+	/** Number of elements in the table */
+	byte num_table;
+	/** Base cost multiplier*/
+	byte cost_multiplier;
+	/** Industries this industry cannot be close to */
+	IndustryType conflicting[3];
+	/** index to a procedure to check for conflicting circumstances */
+	byte check_proc;
+
+	CargoID produced_cargo[2];
+	byte production_rate[2];
+	/** The minimum amount of cargo transported to the stations; if the
+	 * waiting cargo is less than this number, no cargo is moved to it*/
+	byte minimal_cargo;
+	CargoID accepts_cargo[3];
+
+	StringID closure_text;
+	StringID production_up_text;
+	StringID production_down_text;
+} IndustrySpec;
+
+const IndustrySpec *GetIndustrySpec(IndustryType thistype);
 
 extern MemoryPool _industry_pool;
 
@@ -65,7 +99,6 @@ VARDEF int _total_industries; // For the AI: the amount of industries active
 VARDEF uint16 *_industry_sort;
 VARDEF bool _industry_sort_dirty;
 
-typedef uint8 IndustryType;
 
 void DeleteIndustry(Industry *is);
 

@@ -1,32 +1,6 @@
 /* $Id$ */
 
 
-typedef struct IndustryTileTable {
-	TileIndexDiffC ti;
-	IndustryGfx gfx;
-} IndustryTileTable;
-
-typedef struct IndustrySpec {
-	/** Tables with the 'layout' of different composition of GFXes */
-	const IndustryTileTable *const *table;
-	/** Number of elements in the table */
-	byte num_table;
-	/** Industries this industry cannot be close to */
-	IndustryType conflicting[3];
-	/** index to a procedure to check for conflicting circumstances */
-	byte check_proc;
-
-	CargoID produced_cargo[2];
-	byte production_rate[2];
-	/** The minimum amount of cargo transported to the stations; if the
-	 * waiting cargo is less than this number, no cargo is moved to it*/
-	byte minimal_cargo;
-	CargoID accepts_cargo[3];
-
-	StringID closure_text;
-	StringID production_up_text;
-	StringID production_down_text;
-} IndustrySpec;
 
 #define MK(x,y, m) {{x, y}, m}
 
@@ -1105,246 +1079,240 @@ typedef enum CheckProcs {
 	CHECK_END,
 } CheckProc;
 
-#define MK(tbl, c1, c2, c3, proc, p1, r1, p2, r2, m, a1, a2, a3, s1, s2, s3) \
-	{tbl, lengthof(tbl), {c1, c2, c3}, proc, {p1, p2}, {r1, r2}, m,            \
+#define MK(tbl, d, c1, c2, c3, proc, p1, r1, p2, r2, m, a1, a2, a3, s1, s2, s3) \
+	{tbl, lengthof(tbl), d, {c1, c2, c3}, proc, {p1, p2}, {r1, r2}, m,            \
 	 {a1, a2, a3},  s1, s2, s3}
 
 static const IndustrySpec _industry_specs[] = {
 	/* Format:
-	   tile table
-	   cannot be close to these industries (3 times)           check proc
-	   (produced cargo + rate) (twice)       minimum cargo moved to station
+	   tile table                              cost multiplier
+	   cannot be close to these industries (3 times)             check proc
+	   (produced cargo + rate) (twice)         minimum cargo moved to station
 	   3 accepted cargo
-	   messages : Closure                    production up                      production down   */
-	MK(_tile_table_coal_mine,
-	   IT_POWER_STATION,  IT_INVALID,        IT_INVALID,       CHECK_NOTHING,
-	   CT_COAL,       15, CT_INVALID,     0, 5,
-	   CT_INVALID,        CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4836_NEW_COAL_SEAM_FOUND_AT,   STR_4839_PRODUCTION_DOWN_BY_50),
+	   messages : Closure                      production up                      production down   */
+	MK(_tile_table_coal_mine,                  210,
+	   IT_POWER_STATION,  IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
+	   CT_COAL,       15, CT_INVALID,       0, 5,
+	   CT_INVALID,        CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4836_NEW_COAL_SEAM_FOUND_AT,   STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_power_station,
-	   IT_COAL_MINE,      IT_INVALID,        IT_INVALID,       CHECK_NOTHING,
-	   CT_INVALID,     0, CT_INVALID,     0, 5,
-	   CT_COAL,           CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_power_station,              30,
+	   IT_COAL_MINE,      IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
+	   CT_INVALID,     0, CT_INVALID,       0, 5,
+	   CT_COAL,           CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_sawmill,
-	   IT_FOREST,         IT_INVALID,        IT_INVALID,       CHECK_NOTHING,
-	   CT_GOODS,       0, CT_INVALID,     0, 5,
-	   CT_WOOD,           CT_INVALID,        CT_INVALID,
-	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_sawmill,                    28,
+	   IT_FOREST,         IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
+	   CT_GOODS,       0, CT_INVALID,       0, 5,
+	   CT_WOOD,           CT_INVALID,          CT_INVALID,
+	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_forest,
-	   IT_SAWMILL,        IT_PAPER_MILL,     IT_INVALID,       CHECK_FOREST,
-	   CT_WOOD,       13, CT_INVALID,     0, 30,
-	   CT_INVALID,        CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4835_INCREASES_PRODUCTION,     STR_483A_INSECT_INFESTATION_CAUSES),
+	MK(_tile_table_forest,                     200,
+	   IT_SAWMILL,        IT_PAPER_MILL,       IT_INVALID,       CHECK_FOREST,
+	   CT_WOOD,       13, CT_INVALID,       0, 30,
+	   CT_INVALID,        CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_483A_INSECT_INFESTATION_CAUSES),
 
-	MK(_tile_table_oil_refinery,
-	   IT_OIL_RIG,        IT_INVALID,        IT_INVALID,       CHECK_OIL,
-	   CT_GOODS,       0, CT_INVALID,     0, 5,
-	   CT_OIL,            CT_INVALID,        CT_INVALID,
-	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_oil_refinery,               31,
+	   IT_OIL_RIG,        IT_INVALID,          IT_INVALID,       CHECK_OIL,
+	   CT_GOODS,       0, CT_INVALID,       0, 5,
+	   CT_OIL,            CT_INVALID,          CT_INVALID,
+	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_oil_rig,
-	   IT_OIL_REFINERY,   IT_INVALID,        IT_INVALID,       CHECK_OIL,
-	   CT_OIL,        15, CT_PASSENGERS,  2, 5,
-	   CT_INVALID,        CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4837_NEW_OIL_RESERVES_FOUND,   STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_oil_rig,                    240,
+	   IT_OIL_REFINERY,   IT_INVALID,          IT_INVALID,       CHECK_OIL,
+	   CT_OIL,        15, CT_PASSENGERS,    2, 5,
+	   CT_INVALID,        CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4837_NEW_OIL_RESERVES_FOUND,   STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_factory,
-	   IT_FARM,           IT_STEEL_MILL,     IT_INVALID,       CHECK_NOTHING,
-	   CT_GOODS,       0, CT_INVALID,     0, 5,
-	   CT_LIVESTOCK,      CT_GRAIN,          CT_STEEL,
-	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_factory,                    26,
+	   IT_FARM,           IT_STEEL_MILL,       IT_INVALID,       CHECK_NOTHING,
+	   CT_GOODS,       0, CT_INVALID,       0, 5,
+	   CT_LIVESTOCK,      CT_GRAIN,            CT_STEEL,
+	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_printing_works,
-	   IT_PAPER_MILL,     IT_INVALID,        IT_INVALID,       CHECK_NOTHING,
-	   CT_GOODS,       0, CT_INVALID,     0, 5,
-	   CT_PAPER,          CT_INVALID,        CT_INVALID,
-	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_printing_works,             26,
+	   IT_PAPER_MILL,     IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
+	   CT_GOODS,       0, CT_INVALID,       0, 5,
+	   CT_PAPER,          CT_INVALID,          CT_INVALID,
+	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_steel_mill,
-	   IT_IRON_MINE,      IT_FACTORY,        IT_INVALID,       CHECK_NOTHING,
-	   CT_STEEL,       0, CT_INVALID,     0, 5,
-	   CT_IRON_ORE,       CT_INVALID,        CT_INVALID,
-	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_steel_mill,                 27,
+	   IT_IRON_MINE,      IT_FACTORY,          IT_INVALID,       CHECK_NOTHING,
+	   CT_STEEL,       0, CT_INVALID,       0, 5,
+	   CT_IRON_ORE,       CT_INVALID,          CT_INVALID,
+	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_farm,
-	   IT_FACTORY,        IT_FOOD_PROCESS,   IT_INVALID,       CHECK_FARM,
-	   CT_GRAIN,      10, CT_LIVESTOCK,  10, 5,
-	   CT_INVALID,        CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4838_IMPROVED_FARMING_METHODS, STR_483A_INSECT_INFESTATION_CAUSES),
+	MK(_tile_table_farm,                       250,
+	   IT_FACTORY,        IT_FOOD_PROCESS,     IT_INVALID,       CHECK_FARM,
+	   CT_GRAIN,      10, CT_LIVESTOCK,    10, 5,
+	   CT_INVALID,        CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4838_IMPROVED_FARMING_METHODS, STR_483A_INSECT_INFESTATION_CAUSES),
 
-	MK(_tile_table_copper_mine,
-	   IT_FACTORY_2,      IT_INVALID,        IT_INVALID,       CHECK_NOTHING,
-	   CT_COPPER_ORE, 10, CT_INVALID,     0, 5,
-	   CT_INVALID,        CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_copper_mine,                205,
+	   IT_FACTORY_2,      IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
+	   CT_COPPER_ORE, 10, CT_INVALID,       0, 5,
+	   CT_INVALID,        CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_oil_well,
-	   IT_OIL_REFINERY,   IT_INVALID,        IT_INVALID,       CHECK_NOTHING,
-	   CT_OIL,        12, CT_INVALID,     0, 5,
-	   CT_INVALID,        CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4837_NEW_OIL_RESERVES_FOUND,   STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_oil_well,                   220,
+	   IT_OIL_REFINERY,   IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
+	   CT_OIL,        12, CT_INVALID,       0, 5,
+	   CT_INVALID,        CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4837_NEW_OIL_RESERVES_FOUND,   STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_bank,
-	   IT_BANK_TEMP,      IT_INVALID,        IT_INVALID,       CHECK_NOTHING,
-	   CT_VALUABLES,   6, CT_INVALID,      0, 5,
-	   CT_VALUABLES,      CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_bank,                       193,
+	   IT_BANK_TEMP,      IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
+	   CT_VALUABLES,   6, CT_INVALID,       0, 5,
+	   CT_VALUABLES,      CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_food_process,
-	   IT_FRUIT_PLANTATION, IT_FARM,         IT_FARM_2,        CHECK_NOTHING,
-	   CT_FOOD,        0, CT_INVALID,     0, 5,
-	   CT_FRUIT,          CT_MAIZE,          CT_INVALID,
-	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_food_process,               26,
+	   IT_FRUIT_PLANTATION, IT_FARM,           IT_FARM_2,        CHECK_NOTHING,
+	   CT_FOOD,        0, CT_INVALID,       0, 5,
+	   CT_FRUIT,          CT_MAIZE,            CT_INVALID,
+	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_paper_mill,
-	   IT_FOREST,         IT_PRINTING_WORKS, IT_INVALID,       CHECK_NOTHING,
-	   CT_PAPER,       0, CT_INVALID,     0, 5,
-	   CT_WOOD,           CT_INVALID,        CT_INVALID,
-	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_paper_mill,                 28,
+	   IT_FOREST,         IT_PRINTING_WORKS,   IT_INVALID,       CHECK_NOTHING,
+	   CT_PAPER,       0, CT_INVALID,       0, 5,
+	   CT_WOOD,           CT_INVALID,          CT_INVALID,
+	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_gold_mine,
-	   IT_BANK_TROPIC_ARCTIC, IT_INVALID,    IT_INVALID,       CHECK_NOTHING,
-	   CT_GOLD,        7, CT_INVALID,     0, 5,
-	   CT_INVALID,        CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_gold_mine,                  208,
+	   IT_BANK_TROPIC_ARCTIC, IT_INVALID,      IT_INVALID,       CHECK_NOTHING,
+	   CT_GOLD,        7, CT_INVALID,       0, 5,
+	   CT_INVALID,        CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_bank2,
-	   IT_GOLD_MINE,      IT_DIAMOND_MINE,   IT_INVALID,       CHECK_NOTHING,
-	   CT_INVALID,     0, CT_INVALID,     0, 5,
-	   CT_GOLD,           CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_bank2,                      19,
+	   IT_GOLD_MINE,      IT_DIAMOND_MINE,     IT_INVALID,       CHECK_NOTHING,
+	   CT_INVALID,     0, CT_INVALID,       0, 5,
+	   CT_GOLD,           CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_diamond_mine,
-	   IT_BANK_TROPIC_ARCTIC, IT_INVALID,    IT_INVALID,       CHECK_NOTHING,
-	   CT_DIAMONDS,    7, CT_INVALID,     0, 5,
-	   CT_INVALID,        CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_diamond_mine,               213,
+	   IT_BANK_TROPIC_ARCTIC, IT_INVALID,      IT_INVALID,       CHECK_NOTHING,
+	   CT_DIAMONDS,    7, CT_INVALID,       0, 5,
+	   CT_INVALID,        CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_iron_mine,
-	   IT_STEEL_MILL,     IT_INVALID,        IT_INVALID,       CHECK_NOTHING,
-	   CT_IRON_ORE,   10, CT_INVALID,     0, 5,
-	   CT_INVALID,        CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_iron_mine,                  220,
+	   IT_STEEL_MILL,     IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
+	   CT_IRON_ORE,   10, CT_INVALID,       0, 5,
+	   CT_INVALID,        CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_fruit_plantation,
-	   IT_FOOD_PROCESS,   IT_INVALID,        IT_INVALID,       CHECK_PLANTATION,
-	   CT_FRUIT,      10, CT_INVALID,     0, 15,
-	   CT_INVALID,        CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4838_IMPROVED_FARMING_METHODS, STR_483A_INSECT_INFESTATION_CAUSES),
+	MK(_tile_table_fruit_plantation,           225,
+	   IT_FOOD_PROCESS,   IT_INVALID,          IT_INVALID,       CHECK_PLANTATION,
+	   CT_FRUIT,      10, CT_INVALID,       0, 15,
+	   CT_INVALID,        CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4838_IMPROVED_FARMING_METHODS, STR_483A_INSECT_INFESTATION_CAUSES),
 
-	MK(_tile_table_rubber_plantation,
-	   IT_FACTORY_2,      IT_INVALID,        IT_INVALID,       CHECK_PLANTATION,
-	   CT_RUBBER,     10, CT_INVALID,     0, 15,
-	   CT_INVALID,        CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4838_IMPROVED_FARMING_METHODS, STR_483A_INSECT_INFESTATION_CAUSES),
+	MK(_tile_table_rubber_plantation,          218,
+	   IT_FACTORY_2,      IT_INVALID,          IT_INVALID,       CHECK_PLANTATION,
+	   CT_RUBBER,     10, CT_INVALID,       0, 15,
+	   CT_INVALID,        CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4838_IMPROVED_FARMING_METHODS, STR_483A_INSECT_INFESTATION_CAUSES),
 
-	MK(_tile_table_water_supply,
-	   IT_WATER_TOWER,    IT_INVALID,        IT_INVALID,       CHECK_WATER,
-	   CT_WATER,      12, CT_INVALID,     0, 5,
-	   CT_INVALID,        CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_water_supply,               199,
+	   IT_WATER_TOWER,    IT_INVALID,          IT_INVALID,       CHECK_WATER,
+	   CT_WATER,      12, CT_INVALID,       0, 5,
+	   CT_INVALID,        CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_water_tower,
-	   IT_WATER_SUPPLY,   IT_INVALID,        IT_INVALID,       CHECK_WATER,
-	   CT_INVALID,     0, CT_INVALID,     0, 5,
-	   CT_WATER,          CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_water_tower,                14,
+	   IT_WATER_SUPPLY,   IT_INVALID,          IT_INVALID,       CHECK_WATER,
+	   CT_INVALID,     0, CT_INVALID,       0, 5,
+	   CT_WATER,          CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_factory2,
-	   IT_RUBBER_PLANTATION, IT_COPPER_MINE, IT_LUMBER_MILL,   CHECK_PLANTATION,
-	   CT_GOODS,       0, CT_INVALID,     0, 5,
-	   CT_RUBBER,         CT_COPPER_ORE,     CT_WOOD,
-	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_factory2,                   26,
+	   IT_RUBBER_PLANTATION, IT_COPPER_MINE,   IT_LUMBER_MILL,   CHECK_PLANTATION,
+	   CT_GOODS,       0, CT_INVALID,       0, 5,
+	   CT_RUBBER,         CT_COPPER_ORE,       CT_WOOD,
+	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_farm2,
-	   IT_FOOD_PROCESS,   IT_INVALID,        IT_INVALID,       CHECK_PLANTATION,
-	   CT_MAIZE,      11, CT_INVALID,     0, 5,
-	   CT_INVALID,        CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4838_IMPROVED_FARMING_METHODS, STR_483A_INSECT_INFESTATION_CAUSES),
+	MK(_tile_table_farm2,                      250,
+	   IT_FOOD_PROCESS,   IT_INVALID,          IT_INVALID,       CHECK_PLANTATION,
+	   CT_MAIZE,      11, CT_INVALID,       0, 5,
+	   CT_INVALID,        CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4838_IMPROVED_FARMING_METHODS, STR_483A_INSECT_INFESTATION_CAUSES),
 
-	MK(_tile_table_lumber_mill,
-	   IT_FACTORY_2,      IT_INVALID,        IT_INVALID,       CHECK_LUMBERMILL,
-	   CT_WOOD,        0, CT_INVALID,     0, 5,
-	   CT_INVALID,        CT_INVALID,        CT_INVALID,
-	   STR_4834_LACK_OF_NEARBY_TREES_CAUSES, STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_lumber_mill,                17,
+	   IT_FACTORY_2,      IT_INVALID,          IT_INVALID,       CHECK_LUMBERMILL,
+	   CT_WOOD,        0, CT_INVALID,       0, 5,
+	   CT_INVALID,        CT_INVALID,          CT_INVALID,
+	   STR_4834_LACK_OF_NEARBY_TREES_CAUSES,   STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_cotton_candy,
-	   IT_CANDY_FACTORY,  IT_INVALID,        IT_INVALID,       CHECK_NOTHING,
-	   CT_COTTON_CANDY, 13, CT_INVALID,   0, 30,
-	   CT_INVALID,        CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4838_IMPROVED_FARMING_METHODS, STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_cotton_candy,               195,
+	   IT_CANDY_FACTORY,  IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
+	   CT_COTTON_CANDY, 13, CT_INVALID,    0, 30,
+	   CT_INVALID,        CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4838_IMPROVED_FARMING_METHODS, STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_candy_factory,
-	   IT_COTTON_CANDY,   IT_TOFFEE_QUARRY,  IT_SUGAR_MINE,    CHECK_NOTHING,
-	   CT_CANDY,       0, CT_INVALID,     0, 5,
-	   CT_SUGAR,          CT_TOFFEE,         CT_COTTON_CANDY,
-	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_candy_factory,              26,
+	   IT_COTTON_CANDY,   IT_TOFFEE_QUARRY,    IT_SUGAR_MINE,    CHECK_NOTHING,
+	   CT_CANDY,       0, CT_INVALID,       0, 5,
+	   CT_SUGAR,          CT_TOFFEE,           CT_COTTON_CANDY,
+	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_battery_farm,
-	   IT_TOY_FACTORY,    IT_INVALID,        IT_INVALID,       CHECK_NOTHING,
-	   CT_BATTERIES,  11, CT_INVALID,     0, 30,
-	   CT_INVALID,        CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4838_IMPROVED_FARMING_METHODS, STR_483A_INSECT_INFESTATION_CAUSES),
+	MK(_tile_table_battery_farm,               187,
+	   IT_TOY_FACTORY,    IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
+	   CT_BATTERIES,  11, CT_INVALID,      0, 30,
+	   CT_INVALID,        CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4838_IMPROVED_FARMING_METHODS, STR_483A_INSECT_INFESTATION_CAUSES),
 
-	MK(_tile_table_cola_wells,
-	   IT_FIZZY_DRINK_FACTORY, IT_INVALID,   IT_INVALID,       CHECK_NOTHING,
-	   CT_COLA,       12, CT_INVALID,     0, 5,
-	   CT_INVALID,        CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_cola_wells,                 193,
+	   IT_FIZZY_DRINK_FACTORY, IT_INVALID,     IT_INVALID,       CHECK_NOTHING,
+	   CT_COLA,       12, CT_INVALID,       0, 5,
+	   CT_INVALID,        CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_toy_shop,
-	   IT_TOY_FACTORY,    IT_INVALID,        IT_INVALID,       CHECK_NOTHING,
-	   CT_INVALID,     0, CT_INVALID,     0, 5,
-	   CT_TOYS,           CT_INVALID,        CT_INVALID,
-	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_toy_shop,                   17,
+	   IT_TOY_FACTORY,    IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
+	   CT_INVALID,     0, CT_INVALID,       0, 5,
+	   CT_TOYS,           CT_INVALID,          CT_INVALID,
+	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_toy_factory,
-	   IT_PLASTIC_FOUNTAINS, IT_BATTERY_FARM, IT_TOY_SHOP,     CHECK_NOTHING,
-	   CT_TOYS,        0, CT_INVALID,     0, 5,
-	   CT_PLASTIC,        CT_BATTERIES,      CT_INVALID,
-	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_toy_factory,                20,
+	   IT_PLASTIC_FOUNTAINS, IT_BATTERY_FARM,  IT_TOY_SHOP,     CHECK_NOTHING,
+	   CT_TOYS,        0, CT_INVALID,       0, 5,
+	   CT_PLASTIC,        CT_BATTERIES,        CT_INVALID,
+	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_plastic_fountain,
-	   IT_TOY_FACTORY,    IT_INVALID,        IT_INVALID,       CHECK_NOTHING,
-	   CT_PLASTIC,    14, CT_INVALID,     0, 5,
-	   CT_INVALID,        CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_plastic_fountain,           192,
+	   IT_TOY_FACTORY,    IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
+	   CT_PLASTIC,    14, CT_INVALID,       0, 5,
+	   CT_INVALID,        CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_fizzy_drink,
+	MK(_tile_table_fizzy_drink,                22,
 	   IT_COLA_WELLS,     IT_BUBBLE_GENERATOR, IT_INVALID,     CHECK_NOTHING,
-	   CT_FIZZY_DRINKS, 0, CT_INVALID,    0, 5,
-	   CT_COLA,           CT_BUBBLES,        CT_INVALID,
-	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	   CT_FIZZY_DRINKS, 0, CT_INVALID,      0, 5,
+	   CT_COLA,           CT_BUBBLES,          CT_INVALID,
+	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_bubble_generator,
-	   IT_FIZZY_DRINK_FACTORY, IT_INVALID,   IT_INVALID,       CHECK_BUBBLEGEN,
-	   CT_BUBBLES,    13, CT_INVALID,     0, 5,
-	   CT_INVALID,        CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_bubble_generator,           203,
+	   IT_FIZZY_DRINK_FACTORY, IT_INVALID,     IT_INVALID,       CHECK_BUBBLEGEN,
+	   CT_BUBBLES,    13, CT_INVALID,       0, 5,
+	   CT_INVALID,        CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_toffee_quarry,
-	   IT_CANDY_FACTORY,  IT_INVALID,        IT_INVALID,       CHECK_NOTHING,
-	   CT_TOFFEE,     10, CT_INVALID,     0, 5,
-	   CT_INVALID,        CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_toffee_quarry,              213,
+	   IT_CANDY_FACTORY,  IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
+	   CT_TOFFEE,     10, CT_INVALID,       0, 5,
+	   CT_INVALID,        CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MK(_tile_table_sugar_mine,
-	   IT_CANDY_FACTORY,  IT_INVALID,        IT_INVALID,       CHECK_NOTHING,
-	   CT_SUGAR,      11, CT_INVALID,     0, 5,
-	   CT_INVALID,        CT_INVALID,        CT_INVALID,
-	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,  STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
+	MK(_tile_table_sugar_mine,                 210,
+	   IT_CANDY_FACTORY,  IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
+	   CT_SUGAR,      11, CT_INVALID,       0, 5,
+	   CT_INVALID,        CT_INVALID,          CT_INVALID,
+	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 };
 #undef MK
-
-const byte _industry_type_costs[] = {
-	210,  30,  28, 200,  31, 240,  26,  26,  27, 250, 205, 220, 193,  26,
-	 28, 208,  19, 213, 220, 225, 218, 199,  14,  26, 250,  17, 195,  26,
-	187, 193,  17,  20, 192,  22, 203, 213, 210
-};
 
 const byte _build_industry_types[4][12] = {
 	{  1,  2,  4,  6,  8,  0,  3,  5,  9, 11, 18 },
