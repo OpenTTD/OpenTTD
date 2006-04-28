@@ -2,16 +2,16 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "variables.h"
 #include "debug.h"
 #include "functions.h"
-#include "string.h"
-#include "strings.h"
 #include "engine.h"
+#include "train.h"
+#include "player.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_engine.h"
-#include "sprite.h"
-#include "variables.h"
-#include "train.h"
+#include "newgrf_station.h"
+#include "newgrf_spritegroup.h"
 
 // TODO: We don't support cargo-specific wagon overrides. Pretty exotic... ;-) --pasky
 
@@ -147,10 +147,171 @@ static int MapOldSubType(const Vehicle *v)
 	return 2;
 }
 
-static int VehicleSpecificProperty(const Vehicle *v, byte var) {
+
+/* Vehicle Resolver Functions */
+static inline const Vehicle *GRV(const ResolverObject *object)
+{
+	return object->scope == VSG_SCOPE_SELF ? object->vehicle.self : object->vehicle.parent;
+}
+
+
+static uint32 VehicleGetRandomBits(const ResolverObject *object)
+{
+	return GRV(object) == NULL ? 0 : GRV(object)->random_bits;
+}
+
+
+static uint32 VehicleGetTriggers(const ResolverObject *object)
+{
+	return GRV(object) == NULL ? 0 : GRV(object)->waiting_triggers;
+}
+
+
+static void VehicleSetTriggers(const ResolverObject *object, int triggers)
+{
+	/* Evil cast to get around const-ness. This used to be achieved by an
+	 * innocent looking function pointer cast... Currently I cannot see a
+	 * way of avoiding this without removing consts deep within gui code.
+	 */
+	Vehicle *v = (Vehicle*)GRV(object);
+
+	/* This function must only be called when processing triggers -- any
+	 * other time is an error. */
+	assert(object->trigger != 0);
+
+	if (v != NULL) v->waiting_triggers = triggers;
+}
+
+
+static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, byte parameter)
+{
+	const Vehicle *v = GRV(object);
+
+	if (v == NULL) {
+		/* Vehicle does not exist, so we're in a purchase list */
+		switch (variable) {
+			case 0x43: return _current_player; /* Owner information */
+			case 0x46: return 0;               /* Motion counter */
+			case 0xC4: return _cur_year;       /* Build year */
+			case 0xDA: return INVALID_VEHICLE; /* Next vehicle */
+			default:   return -1;
+		}
+	}
+
+	/* Calculated vehicle parameters */
+	switch (variable) {
+		case 0x40: /* Get length of consist */
+		case 0x41: /* Get length of same consecutive wagons */
+			if (v->type != VEH_Train) return 1;
+
+			{
+				const Vehicle* u;
+				byte chain_before = 0;
+				byte chain_after  = 0;
+
+				for (u = GetFirstVehicleInChain(v); u != v; u = u->next) {
+					chain_before++;
+					if (variable == 0x41 && u->engine_type != v->engine_type) chain_before = 0;
+				}
+
+				while (u->next != NULL && (variable == 0x40 || u->next->engine_type == v->engine_type)) {
+					chain_after++;
+					u = u->next;
+				}
+
+				return chain_before | chain_after << 8 | (chain_before + chain_after) << 16;
+			}
+
+		case 0x43: /* Player information */
+			return v->owner;
+
+		case 0x46: /* Motion counter */
+			return 0;
+	}
+
+	/* General vehicle properties */
+	switch (variable - 0x80) {
+		case 0x00: return v->type;
+		case 0x01: return MapOldSubType(v);
+		case 0x04: return v->index;
+		case 0x05: return v->index & 0xFF;
+		case 0x0A: return PackOrder(&v->current_order);
+		case 0x0B: return PackOrder(&v->current_order) & 0xFF;
+		case 0x0C: return v->num_orders;
+		case 0x0D: return v->cur_order_index;
+		case 0x10: return v->load_unload_time_rem;
+		case 0x11: return v->load_unload_time_rem & 0xFF;
+		case 0x12: return v->date_of_last_service;
+		case 0x13: return v->date_of_last_service & 0xFF;
+		case 0x14: return v->service_interval;
+		case 0x15: return v->service_interval & 0xFF;
+		case 0x16: return v->last_station_visited;
+		case 0x17: return v->tick_counter;
+		case 0x18: return v->max_speed;
+		case 0x19: return v->max_speed & 0xFF;
+		case 0x1A: return v->x_pos;
+		case 0x1B: return v->x_pos & 0xFF;
+		case 0x1C: return v->y_pos;
+		case 0x1D: return v->y_pos & 0xFF;
+		case 0x1E: return v->z_pos;
+		case 0x1F: return v->direction;
+		case 0x28: return v->cur_image;
+		case 0x29: return v->cur_image & 0xFF;
+		case 0x32: return v->vehstatus;
+		case 0x33: return v->vehstatus;
+		case 0x34: return v->cur_speed;
+		case 0x35: return v->cur_speed & 0xFF;
+		case 0x36: return v->subspeed;
+		case 0x37: return v->acceleration;
+		case 0x39: return v->cargo_type;
+		case 0x3A: return v->cargo_cap;
+		case 0x3B: return v->cargo_cap & 0xFF;
+		case 0x3C: return v->cargo_count;
+		case 0x3D: return v->cargo_count & 0xFF;
+		case 0x3E: return v->cargo_source;
+		case 0x3F: return v->cargo_days;
+		case 0x40: return v->age;
+		case 0x41: return v->age & 0xFF;
+		case 0x42: return v->max_age;
+		case 0x43: return v->max_age & 0xFF;
+		case 0x44: return v->build_year;
+		case 0x45: return v->unitnumber;
+		case 0x46: return v->engine_type;
+		case 0x47: return v->engine_type & 0xFF;
+		case 0x48: return v->spritenum;
+		case 0x49: return v->day_counter;
+		case 0x4A: return v->breakdowns_since_last_service;
+		case 0x4B: return v->breakdown_ctr;
+		case 0x4C: return v->breakdown_delay;
+		case 0x4D: return v->breakdown_chance;
+		case 0x4E: return v->reliability;
+		case 0x4F: return v->reliability & 0xFF;
+		case 0x50: return v->reliability_spd_dec;
+		case 0x51: return v->reliability_spd_dec & 0xFF;
+		case 0x52: return v->profit_this_year;
+		case 0x53: return v->profit_this_year & 0xFFFFFF;
+		case 0x54: return v->profit_this_year & 0xFFFF;
+		case 0x55: return v->profit_this_year & 0xFF;
+		case 0x56: return v->profit_last_year;
+		case 0x57: return v->profit_last_year & 0xFF;
+		case 0x58: return v->profit_last_year;
+		case 0x59: return v->profit_last_year & 0xFF;
+		case 0x5A: return v->next == NULL ? INVALID_VEHICLE : v->next->index;
+		case 0x5C: return v->value;
+		case 0x5D: return v->value & 0xFFFFFF;
+		case 0x5E: return v->value & 0xFFFF;
+		case 0x5F: return v->value & 0xFF;
+		case 0x60: return v->string_id;
+		case 0x61: return v->string_id & 0xFF;
+		case 0x72: return 0; // XXX Refit cycle
+		case 0x7A: return v->random_bits;
+		case 0x7B: return v->waiting_triggers;
+	}
+
+	/* Vehicle specific properties */
 	switch (v->type) {
 		case VEH_Train:
-			switch (var) {
+			switch (variable - 0x80) {
 				case 0x62: return v->u.rail.track;
 				case 0x66: return v->u.rail.railtype;
 				case 0x73: return v->u.rail.cached_veh_length;
@@ -164,7 +325,7 @@ static int VehicleSpecificProperty(const Vehicle *v, byte var) {
 			break;
 
 		case VEH_Road:
-			switch (var) {
+			switch (variable - 0x80) {
 				case 0x62: return v->u.road.state;
 				case 0x64: return v->u.road.blocked_ctr;
 				case 0x65: return v->u.road.blocked_ctr & 0xFF;
@@ -176,7 +337,7 @@ static int VehicleSpecificProperty(const Vehicle *v, byte var) {
 			break;
 
 		case VEH_Aircraft:
-			switch (var) {
+			switch (variable - 0x80) {
 				// case 0x62: XXX Need to convert from ottd to ttdp state
 				case 0x63: return v->u.air.targetairport;
 				// case 0x66: XXX
@@ -184,210 +345,70 @@ static int VehicleSpecificProperty(const Vehicle *v, byte var) {
 			break;
 	}
 
-	DEBUG(grf, 1)("Unhandled vehicle property 0x%02X (var 0x%02X), type 0x%02X", var, var + 0x80, v->type);
+	DEBUG(grf, 1)("Unhandled vehicle property 0x%X, type 0x%X", variable, v->type);
 
 	return -1;
 }
 
-typedef SpriteGroup *(*resolve_callback)(const SpriteGroup *spritegroup,
-	const Vehicle *veh, uint16 callback_info, void *resolve_func); /* XXX data pointer used as function pointer */
 
-static const SpriteGroup* ResolveVehicleSpriteGroup(const SpriteGroup *spritegroup,
-	const Vehicle *veh, uint16 callback_info, resolve_callback resolve_func)
+static uint32 VehicleResolveReal(const ResolverObject *object, uint num_loaded, uint num_loading, bool *in_motion)
 {
-	if (spritegroup == NULL)
-		return NULL;
+	const Vehicle *v = object->vehicle.self;
+	uint totalsets;
+	uint set;
 
-	//debug("spgt %d", spritegroup->type);
-	switch (spritegroup->type) {
-		case SGT_REAL:
-		case SGT_CALLBACK:
-			return spritegroup;
-
-		case SGT_DETERMINISTIC: {
-			const DeterministicSpriteGroup *dsg = &spritegroup->g.determ;
-			const SpriteGroup *target;
-			int value = -1;
-			// XXX Temporary support
-			byte variable = dsg->adjusts[0].variable;
-
-			//debug("[%p] Having fun resolving variable %x", veh, variable);
-			if (variable == 0x0C) {
-				/* Callback ID */
-				value = callback_info & 0xFF;
-			} else if (variable == 0x10) {
-				value = (callback_info >> 8) & 0xFF;
-			} else if ((variable >> 6) == 0) {
-				/* General property */
-				value = GetDeterministicSpriteValue(variable);
-			} else {
-				/* Vehicle-specific property. */
-
-				if (veh == NULL) {
-					/* We are in a purchase list of something,
-					 * and we are checking for something undefined.
-					 * That means we should get the first target
-					 * (NOT the default one). */
-					if (dsg->num_ranges > 0) {
-						target = dsg->ranges[0].group;
-					} else {
-						target = dsg->default_group;
-					}
-					return resolve_func(target, NULL, callback_info, resolve_func);
-				}
-
-				if (dsg->var_scope == VSG_SCOPE_PARENT) {
-					/* First engine in the vehicle chain */
-					if (veh->type == VEH_Train)
-						veh = GetFirstVehicleInChain(veh);
-				}
-
-				if (variable == 0x40 || variable == 0x41) {
-					if (veh->type == VEH_Train) {
-						const Vehicle *u = GetFirstVehicleInChain(veh);
-						byte chain_before = 0, chain_after = 0;
-
-						while (u != veh) {
-							chain_before++;
-							if (variable == 0x41 && u->engine_type != veh->engine_type)
-								chain_before = 0;
-							u = u->next;
-						}
-						while (u->next != NULL && (variable == 0x40 || u->next->engine_type == veh->engine_type)) {
-							chain_after++;
-							u = u->next;
-						};
-
-						value = chain_before | chain_after << 8
-						        | (chain_before + chain_after) << 16;
-					} else {
-						value = 1; /* 1 vehicle in the chain */
-					}
-
-				} else {
-					// TTDPatch runs on little-endian arch;
-					// Variable is 0x80 + offset in TTD's vehicle structure
-					switch (variable - 0x80) {
-#define veh_prop(id_, value_) case (id_): value = (value_); break
-						veh_prop(0x00, veh->type);
-						veh_prop(0x01, MapOldSubType(veh));
-						veh_prop(0x04, veh->index);
-						veh_prop(0x05, veh->index & 0xFF);
-						/* XXX? Is THIS right? */
-						veh_prop(0x0A, PackOrder(&veh->current_order));
-						veh_prop(0x0B, PackOrder(&veh->current_order) & 0xff);
-						veh_prop(0x0C, veh->num_orders);
-						veh_prop(0x0D, veh->cur_order_index);
-						veh_prop(0x10, veh->load_unload_time_rem);
-						veh_prop(0x11, veh->load_unload_time_rem & 0xFF);
-						veh_prop(0x12, veh->date_of_last_service);
-						veh_prop(0x13, veh->date_of_last_service & 0xFF);
-						veh_prop(0x14, veh->service_interval);
-						veh_prop(0x15, veh->service_interval & 0xFF);
-						veh_prop(0x16, veh->last_station_visited);
-						veh_prop(0x17, veh->tick_counter);
-						veh_prop(0x18, veh->max_speed);
-						veh_prop(0x19, veh->max_speed & 0xFF);
-						veh_prop(0x1A, veh->x_pos);
-						veh_prop(0x1B, veh->x_pos & 0xFF);
-						veh_prop(0x1C, veh->y_pos);
-						veh_prop(0x1D, veh->y_pos & 0xFF);
-						veh_prop(0x1E, veh->z_pos);
-						veh_prop(0x1F, veh->direction);
-						veh_prop(0x28, veh->cur_image);
-						veh_prop(0x29, veh->cur_image & 0xFF);
-						veh_prop(0x32, veh->vehstatus);
-						veh_prop(0x33, veh->vehstatus);
-						veh_prop(0x34, veh->cur_speed);
-						veh_prop(0x35, veh->cur_speed & 0xFF);
-						veh_prop(0x36, veh->subspeed);
-						veh_prop(0x37, veh->acceleration);
-						veh_prop(0x39, veh->cargo_type);
-						veh_prop(0x3A, veh->cargo_cap);
-						veh_prop(0x3B, veh->cargo_cap & 0xFF);
-						veh_prop(0x3C, veh->cargo_count);
-						veh_prop(0x3D, veh->cargo_count & 0xFF);
-						veh_prop(0x3E, veh->cargo_source); // Probably useless; so what
-						veh_prop(0x3F, veh->cargo_days);
-						veh_prop(0x40, veh->age);
-						veh_prop(0x41, veh->age & 0xFF);
-						veh_prop(0x42, veh->max_age);
-						veh_prop(0x43, veh->max_age & 0xFF);
-						veh_prop(0x44, veh->build_year);
-						veh_prop(0x45, veh->unitnumber);
-						veh_prop(0x46, veh->engine_type);
-						veh_prop(0x47, veh->engine_type & 0xFF);
-						veh_prop(0x48, veh->spritenum);
-						veh_prop(0x49, veh->day_counter);
-						veh_prop(0x4A, veh->breakdowns_since_last_service);
-						veh_prop(0x4B, veh->breakdown_ctr);
-						veh_prop(0x4C, veh->breakdown_delay);
-						veh_prop(0x4D, veh->breakdown_chance);
-						veh_prop(0x4E, veh->reliability);
-						veh_prop(0x4F, veh->reliability & 0xFF);
-						veh_prop(0x50, veh->reliability_spd_dec);
-						veh_prop(0x51, veh->reliability_spd_dec & 0xFF);
-						veh_prop(0x52, veh->profit_this_year);
-						veh_prop(0x53, veh->profit_this_year & 0xFFFFFF);
-						veh_prop(0x54, veh->profit_this_year & 0xFFFF);
-						veh_prop(0x55, veh->profit_this_year & 0xFF);
-						veh_prop(0x56, veh->profit_last_year);
-						veh_prop(0x57, veh->profit_last_year & 0xFF);
-						veh_prop(0x58, veh->profit_last_year);
-						veh_prop(0x59, veh->profit_last_year & 0xFF);
-						veh_prop(0x5A, veh->next == NULL ? INVALID_VEHICLE : veh->next->index);
-						veh_prop(0x5C, veh->value);
-						veh_prop(0x5D, veh->value & 0xFFFFFF);
-						veh_prop(0x5E, veh->value & 0xFFFF);
-						veh_prop(0x5F, veh->value & 0xFF);
-						veh_prop(0x60, veh->string_id);
-						veh_prop(0x61, veh->string_id & 0xFF);
-
-						veh_prop(0x72, 0); // XXX Refit cycle currently unsupported
-						veh_prop(0x7A, veh->random_bits);
-						veh_prop(0x7B, veh->waiting_triggers);
-#undef veh_prop
-
-						// Handle vehicle specific properties.
-						default: value = VehicleSpecificProperty(veh, variable - 0x80); break;
-					}
-				}
-			}
-
-			target = value != -1 ? EvalDeterministicSpriteGroup(dsg, value) : dsg->default_group;
-			//debug("Resolved variable %x: %d, %p", dsg->variable, value, callback);
-			return resolve_func(target, veh, callback_info, resolve_func);
-		}
-
-		case SGT_RANDOMIZED: {
-			const RandomizedSpriteGroup *rsg = &spritegroup->g.random;
-
-			if (veh == NULL) {
-				/* Purchase list of something. Show the first one. */
-				assert(rsg->num_groups > 0);
-				//debug("going for %p: %d", rsg->groups[0], rsg->groups[0].type);
-				return resolve_func(rsg->groups[0], NULL, callback_info, resolve_func);
-			}
-
-			if (rsg->var_scope == VSG_SCOPE_PARENT) {
-				/* First engine in the vehicle chain */
-				if (veh->type == VEH_Train)
-					veh = GetFirstVehicleInChain(veh);
-			}
-
-			return resolve_func(EvalRandomizedSpriteGroup(rsg, veh->random_bits), veh, callback_info, resolve_func);
-		}
-
-		default:
-			error("I don't know how to handle such a spritegroup %d!", spritegroup->type);
-			return NULL;
+	if (v == NULL) {
+		*in_motion = false;
+		return 0;
 	}
+
+	if (v->type == VEH_Train) {
+		*in_motion = GetFirstVehicleInChain(v)->current_order.type != OT_LOADING;
+	} else {
+		*in_motion = v->current_order.type != OT_LOADING;
+	}
+
+	totalsets = in_motion ? num_loaded : num_loading;
+
+	if (v->cargo_count == v->cargo_cap || totalsets == 1) {
+		set = totalsets - 1;
+	} else if (v->cargo_count == 0 || totalsets == 2) {
+		set = 0;
+	} else {
+		set = v->cargo_count * (totalsets - 2) / max(1, v->cargo_cap) + 1;
+	}
+
+	return set;
 }
 
-static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *v)
+
+static inline void NewVehicleResolver(ResolverObject *res, const Vehicle *v)
+{
+	res->GetRandomBits = &VehicleGetRandomBits;
+	res->GetTriggers   = &VehicleGetTriggers;
+	res->SetTriggers   = &VehicleSetTriggers;
+	res->GetVariable   = &VehicleGetVariable;
+	res->ResolveReal   = &VehicleResolveReal;
+
+	res->vehicle.self   = v;
+	res->vehicle.parent = (v != NULL && v->type == VEH_Train) ? GetFirstVehicleInChain(v) : NULL;
+
+	res->callback        = 0;
+	res->callback_param1 = 0;
+	res->callback_param2 = 0;
+	res->last_value      = 0;
+	res->trigger         = 0;
+	res->reseed          = 0;
+}
+
+
+SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction direction)
 {
 	const SpriteGroup *group;
+	ResolverObject object;
 	CargoID cargo = GC_PURCHASE;
+
+	NewVehicleResolver(&object, v);
 
 	if (v != NULL) {
 		cargo = _global_cargo_id[_opt.landscape][v->cargo_type];
@@ -402,75 +423,18 @@ static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *
 		if (overset != NULL) group = overset;
 	}
 
-	return group;
-}
+	group = Resolve(group, &object);
 
-SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle* v, Direction direction)
-{
-	const SpriteGroup *group;
-	const RealSpriteGroup *rsg;
-	CargoID cargo = GC_PURCHASE;
-	byte loaded = 0;
-	bool in_motion = 0;
-	int totalsets, spriteset;
-
-	if (v != NULL) {
-		int capacity = v->cargo_cap;
-
-		cargo = _global_cargo_id[_opt.landscape][v->cargo_type];
-		assert(cargo != GC_INVALID);
-
-		if (capacity == 0) capacity = 1;
-		loaded = (v->cargo_count * 100) / capacity;
-
-		if (v->type == VEH_Train) {
-			in_motion = GetFirstVehicleInChain(v)->current_order.type != OT_LOADING;
-		} else {
-			in_motion = v->current_order.type != OT_LOADING;
-		}
-	}
-
-	group = GetVehicleSpriteGroup(engine, v);
-	group = ResolveVehicleSpriteGroup(group, v, 0, (resolve_callback) ResolveVehicleSpriteGroup);
-
-	if (group == NULL && cargo != GC_DEFAULT) {
+	if ((group == NULL || group->type != SGT_RESULT) && cargo != GC_DEFAULT) {
 		// This group is empty but perhaps there'll be a default one.
-		group = ResolveVehicleSpriteGroup(engine_custom_sprites[engine][GC_DEFAULT], v, 0,
-		                                (resolve_callback) ResolveVehicleSpriteGroup);
+		group = Resolve(engine_custom_sprites[engine][GC_DEFAULT], &object);
 	}
 
-	if (group == NULL)
-		return 0;
-
-	assert(group->type == SGT_REAL);
-	rsg = &group->g.real;
-
-	// This group is empty. This function users should therefore
-	// look up the sprite number in _engine_original_sprites.
-	if (rsg->num_loaded == 0 || rsg->num_loading == 0) return 0;
-
-	totalsets = in_motion ? rsg->num_loaded : rsg->num_loading;
-
-	// My aim here is to make it possible to visually determine absolutely
-	// empty and totally full vehicles. --pasky
-	if (loaded == 100 || totalsets == 1) { // full
-		spriteset = totalsets - 1;
-	} else if (loaded == 0 || totalsets == 2) { // empty
-		spriteset = 0;
-	} else { // something inbetween
-		spriteset = loaded * (totalsets - 2) / 100 + 1;
-		// correct possible rounding errors
-		if (!spriteset)
-			spriteset = 1;
-		else if (spriteset == totalsets - 1)
-			spriteset--;
-	}
-
-	group = in_motion ? rsg->loaded[spriteset] : rsg->loading[spriteset];
-	if (group->type != SGT_RESULT) return 0;
+	if (group == NULL || group->type != SGT_RESULT) return 0;
 
 	return group->g.result.sprite + (direction % group->g.result.num_sprites);
 }
+
 
 /**
  * Check if a wagon is currently using a wagon override
@@ -495,8 +459,14 @@ bool UsesWagonOverride(const Vehicle* v)
 uint16 GetVehicleCallback(byte callback, uint32 param1, uint32 param2, EngineID engine, const Vehicle *v)
 {
 	const SpriteGroup *group;
+	ResolverObject object;
 	CargoID cargo;
-	uint16 callback_info = callback | (param1 << 8); // XXX Temporary conversion between new and old format.
+
+	NewVehicleResolver(&object, v);
+
+	object.callback        = callback;
+	object.callback_param1 = param1;
+	object.callback_param2 = param2;
 
 	cargo = (v == NULL) ? GC_PURCHASE : _global_cargo_id[_opt.landscape][v->cargo_type];
 
@@ -508,12 +478,11 @@ uint16 GetVehicleCallback(byte callback, uint32 param1, uint32 param2, EngineID 
 		if (overset != NULL) group = overset;
 	}
 
-	group = ResolveVehicleSpriteGroup(group, v, callback_info, (resolve_callback) ResolveVehicleSpriteGroup);
+	group = Resolve(group, &object);
 
 	if ((group == NULL || group->type != SGT_CALLBACK) && cargo != GC_DEFAULT) {
 		// This group is empty but perhaps there'll be a default one.
-		group = ResolveVehicleSpriteGroup(engine_custom_sprites[engine][GC_DEFAULT], v, callback_info,
-		                                (resolve_callback) ResolveVehicleSpriteGroup);
+		group = Resolve(engine_custom_sprites[engine][GC_DEFAULT], &object);
 	}
 
 	if (group == NULL || group->type != SGT_CALLBACK)
@@ -523,55 +492,40 @@ uint16 GetVehicleCallback(byte callback, uint32 param1, uint32 param2, EngineID 
 }
 
 
-
-// Global variables are evil, yes, but we would end up with horribly overblown
-// calling convention otherwise and this should be 100% reentrant.
-static byte _vsg_random_triggers;
-static byte _vsg_bits_to_reseed;
-
-static const SpriteGroup *TriggerVehicleSpriteGroup(const SpriteGroup *spritegroup,
-	Vehicle *veh, uint16 callback_info, resolve_callback resolve_func)
-{
-	if (spritegroup == NULL)
-		return NULL;
-
-	if (spritegroup->type == SGT_RANDOMIZED) {
-		_vsg_bits_to_reseed |= RandomizedSpriteGroupTriggeredBits(
-			&spritegroup->g.random,
-			_vsg_random_triggers,
-			&veh->waiting_triggers
-		);
-	}
-
-	return ResolveVehicleSpriteGroup(spritegroup, veh, callback_info, resolve_func);
-}
-
 static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_random_bits, bool first)
 {
 	const SpriteGroup *group;
-	const RealSpriteGroup *rsg;
+	ResolverObject object;
+	CargoID cargo;
 	byte new_random_bits;
 
-	_vsg_random_triggers = trigger;
-	_vsg_bits_to_reseed = 0;
-	group = TriggerVehicleSpriteGroup(GetVehicleSpriteGroup(v->engine_type, v), v, 0,
-	                                  (resolve_callback) TriggerVehicleSpriteGroup);
+	/* We can't trigger a non-existent vehicle... */
+	assert(v != NULL);
 
-	if (group == NULL && v->cargo_type != GC_DEFAULT) {
-		// This group turned out to be empty but perhaps there'll be a default one.
-		group = TriggerVehicleSpriteGroup(engine_custom_sprites[v->engine_type][GC_DEFAULT], v, 0,
-		                                  (resolve_callback) TriggerVehicleSpriteGroup);
+	NewVehicleResolver(&object, v);
+
+	object.trigger = trigger;
+
+	cargo = _global_cargo_id[_opt.landscape][v->cargo_type];
+	group = engine_custom_sprites[v->engine_type][cargo];
+
+	if (v->type == VEH_Train) {
+		const SpriteGroup *overset = GetWagonOverrideSpriteSet(v->engine_type, v->u.rail.first_engine);
+		if (overset != NULL) group = overset;
 	}
 
-	if (group == NULL)
-		return;
+	group = Resolve(group, &object);
+	if (group == NULL && v->cargo_type != GC_DEFAULT) {
+		// This group is empty but perhaps there'll be a default one.
+		group = Resolve(engine_custom_sprites[v->engine_type][GC_DEFAULT], &object);
+	}
 
-	assert(group->type == SGT_REAL);
-	rsg = &group->g.real;
+	/* Really return? */
+	if (group == NULL) return;
 
 	new_random_bits = Random();
-	v->random_bits &= ~_vsg_bits_to_reseed;
-	v->random_bits |= (first ? new_random_bits : base_random_bits) & _vsg_bits_to_reseed;
+	v->random_bits &= ~object.reseed;
+	v->random_bits |= (first ? new_random_bits : base_random_bits) & object.reseed;
 
 	switch (trigger) {
 		case VEHICLE_TRIGGER_NEW_CARGO:

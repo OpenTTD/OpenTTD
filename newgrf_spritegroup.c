@@ -71,7 +71,7 @@ void InitializeSpriteGroupPool(void)
 }
 
 
-static const SpriteGroup *ResolveReal(const SpriteGroup *group, ResolverObject *object)
+static inline const SpriteGroup *ResolveReal(const SpriteGroup *group, ResolverObject *object)
 {
 	bool in_motion;
 	uint set;
@@ -84,7 +84,7 @@ static const SpriteGroup *ResolveReal(const SpriteGroup *group, ResolverObject *
 }
 
 
-static uint32 GetVariable(const ResolverObject *object, byte variable, byte parameter)
+static inline uint32 GetVariable(const ResolverObject *object, byte variable, byte parameter)
 {
 	/* Return common variables */
 	switch (variable) {
@@ -112,7 +112,7 @@ static uint32 GetVariable(const ResolverObject *object, byte variable, byte para
 /* Evaluate an adjustment for a variable of the given size. This is a bit of
  * an unwieldy macro, but it saves triplicating the code. */
 #define BUILD_EVAL_ADJUST(size, usize) \
-static size EvalAdjust_ ## size(const DeterministicSpriteGroupAdjust *adjust, size last_value, size value) \
+static inline size EvalAdjust_ ## size(const DeterministicSpriteGroupAdjust *adjust, size last_value, size value) \
 { \
 	value >>= adjust->shift_num; \
 	value  &= adjust->and_mask; \
@@ -150,7 +150,7 @@ BUILD_EVAL_ADJUST(int16, uint16)
 BUILD_EVAL_ADJUST(int32, uint32)
 
 
-static const SpriteGroup *ResolveVariable(const SpriteGroup *group, ResolverObject *object)
+static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, ResolverObject *object)
 {
 	static SpriteGroup nvarzero;
 	const SpriteGroup *target;
@@ -196,7 +196,7 @@ static const SpriteGroup *ResolveVariable(const SpriteGroup *group, ResolverObje
 }
 
 
-static const SpriteGroup *ResolveRandom(const SpriteGroup *group, ResolverObject *object)
+static inline const SpriteGroup *ResolveRandom(const SpriteGroup *group, ResolverObject *object)
 {
 	byte mask;
 	byte index;
