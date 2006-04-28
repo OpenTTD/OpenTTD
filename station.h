@@ -84,6 +84,9 @@ struct Station {
 	byte last_vehicle_type;
 	GoodsEntry goods[NUM_CARGO];
 
+	uint16 random_bits;
+	byte waiting_triggers;
+
 	/* Stuff that is no longer used, but needed for conversion */
 	TileIndex bus_tile_obsolete;
 	TileIndex lorry_tile_obsolete;

@@ -490,6 +490,9 @@ static void StationInitialize(Station *st, TileIndex tile)
 		ge->feeder_profit = 0;
 	}
 
+	st->random_bits = Random();
+	st->waiting_triggers = 0;
+
 	_global_station_sort_dirty = true; // build a new station
 }
 
@@ -2850,6 +2853,10 @@ static const SaveLoad _station_desc[] = {
 
 	SLE_CONDREF(Station,bus_stops,         REF_ROADSTOPS, 6, SL_MAX_VERSION),
 	SLE_CONDREF(Station,truck_stops,       REF_ROADSTOPS, 6, SL_MAX_VERSION),
+
+	/* Used by newstations for graphic variations */
+	SLE_CONDVAR(Station,random_bits,       SLE_UINT16, 27, SL_MAX_VERSION),
+	SLE_CONDVAR(Station,waiting_triggers,  SLE_UINT8,  27, SL_MAX_VERSION),
 
 	// reserve extra space in savegame here. (currently 32 bytes)
 	SLE_CONDNULL(32, 2, SL_MAX_VERSION),
