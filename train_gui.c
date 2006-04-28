@@ -109,10 +109,14 @@ void DrawTrainWagonPurchaseInfo(int x, int y, EngineID engine_number)
 	DrawString(x, y, STR_PURCHASE_INFO_WEIGHT_CWEIGHT, 0);
 	y += 10;
 
-	/* Cargo type + capacity */
-	SetDParam(0, _cargoc.names_long[rvi->cargo_type]);
-	SetDParam(1, rvi->capacity);
-	SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
+	/* Cargo type + capacity, or N/A */
+	SetDParam(0, STR_8838_N_A);
+	SetDParam(2, STR_EMPTY);
+	if (rvi->capacity != 0) {
+		SetDParam(0, _cargoc.names_long[rvi->cargo_type]);
+		SetDParam(1, rvi->capacity);
+		SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
+	}
 	DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, 0);
 	y += 10;
 
