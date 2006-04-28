@@ -11,6 +11,7 @@
 #include "station.h"
 #include "tile.h"
 #include "depot.h"
+#include "network.h"
 
 static AyStar _npf_aystar;
 
@@ -201,31 +202,34 @@ static uint NPFSlopeCost(AyStarNode* current)
 	 * there is only one level of steepness... */
 }
 
-/* Mark tiles by mowing the grass when npf debug level >= 1 */
+/**
+ * Mark tiles by mowing the grass when npf debug level >= 1.
+ * Will not work for multiplayer games, since it can (will) cause desyncs.
+ */
 static void NPFMarkTile(TileIndex tile)
 {
 #ifdef NO_DEBUG_MESSAGES
 	return;
 #else
-	if (_debug_npf_level >= 1)
-		switch(GetTileType(tile)) {
-			case MP_RAILWAY:
-				/* DEBUG: mark visited tiles by mowing the grass under them
-				 * ;-) */
-				if (!IsTileDepotType(tile, TRANSPORT_RAIL)) {
-					SB(_m[tile].m2, 0, 4, 0);
-					MarkTileDirtyByTile(tile);
-				}
-				break;
-			case MP_STREET:
-				if (!IsTileDepotType(tile, TRANSPORT_ROAD)) {
-					SB(_m[tile].m4, 4, 3, 0);
-					MarkTileDirtyByTile(tile);
-				}
-				break;
-			default:
-				break;
-		}
+	if (_debug_npf_level < 1 || _networking) return;
+	switch(GetTileType(tile)) {
+		case MP_RAILWAY:
+			/* DEBUG: mark visited tiles by mowing the grass under them
+			 * ;-) */
+			if (!IsTileDepotType(tile, TRANSPORT_RAIL)) {
+				SB(_m[tile].m2, 0, 4, 0);
+				MarkTileDirtyByTile(tile);
+			}
+			break;
+		case MP_STREET:
+			if (!IsTileDepotType(tile, TRANSPORT_ROAD)) {
+				SB(_m[tile].m4, 4, 3, 0);
+				MarkTileDirtyByTile(tile);
+			}
+			break;
+		default:
+			break;
+	}
 #endif
 }
 
