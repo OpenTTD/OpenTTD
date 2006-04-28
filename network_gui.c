@@ -51,7 +51,7 @@ typedef struct NetworkGameSorting {
 /* Global to remember sorting after window has been closed */
 static NetworkGameSorting _ng_sorting;
 
-static char _edit_str_buf[MAX_QUERYSTR_LEN*2];
+static char _edit_str_buf[MAX_QUERYSTR_LEN];
 static void ShowNetworkStartServerWindow(void);
 static void ShowNetworkLobbyWindow(NetworkGameList *ngl);
 
@@ -1463,19 +1463,13 @@ void ShowJoinStatusWindowAfterJoin(void)
 }
 
 
-
-#define MAX_QUERYSTR_LEN 64
-
 /* uses querystr_d WP macro */
 static void ChatWindowWndProc(Window *w, WindowEvent *e)
 {
-	static bool closed = false;
-
 	switch (e->event) {
 	case WE_CREATE:
 		SendWindowMessage(WC_NEWS_WINDOW, 0, WE_CREATE, w->height, 0);
 		SETBIT(_no_scroll, SCROLL_CHAT); // do not scroll the game with the arrow-keys
-		closed = false;
 		break;
 
 	case WE_PAINT:
@@ -1488,16 +1482,13 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 		case 3: DeleteWindow(w); break; // Cancel
 		case 2: // Send
 press_ok:;
-			if (strcmp(WP(w, querystr_d).text.buf, WP(w, querystr_d).text.buf + MAX_QUERYSTR_LEN) == 0) {
+			if (WP(w, querystr_d).text.buf[0] == '\0') {
 				DeleteWindow(w);
 			} else {
 				char *buf = WP(w, querystr_d).text.buf;
 				WindowClass wnd_class = WP(w, querystr_d).wnd_class;
 				WindowNumber wnd_num = WP(w, querystr_d).wnd_num;
 				Window *parent;
-
-				// Mask the edit-box as closed, so we don't send out a CANCEL
-				closed = true;
 
 				DeleteWindow(w);
 
@@ -1534,15 +1525,6 @@ press_ok:;
 	case WE_DESTROY:
 		SendWindowMessage(WC_NEWS_WINDOW, 0, WE_DESTROY, 0, 0);
 		CLRBIT(_no_scroll, SCROLL_CHAT);
-		// If the window is not closed yet, it means it still needs to send a CANCEL
-		if (!closed) {
-			Window *parent = FindWindowById(WP(w,querystr_d).wnd_class, WP(w,querystr_d).wnd_num);
-			if (parent != NULL) {
-				WindowEvent e;
-				e.event = WE_ON_EDIT_TEXT_CANCEL;
-				parent->wndproc(parent, &e);
-			}
-		}
 		break;
 	}
 }
@@ -1563,29 +1545,23 @@ static const WindowDesc _chat_window_desc = {
 	ChatWindowWndProc
 };
 
-void ShowChatWindow(StringID str, StringID caption, int maxlen, int maxwidth, WindowClass window_class, WindowNumber window_number)
+void ShowChatWindow(void)
 {
 	Window *w;
 
-#define _orig_edit_str_buf (_edit_str_buf+MAX_QUERYSTR_LEN)
-
 	DeleteWindowById(WC_SEND_NETWORK_MSG, 0);
 
-	GetString(_orig_edit_str_buf, str);
-
-	_orig_edit_str_buf[maxlen] = '\0';
-
-	memcpy(_edit_str_buf, _orig_edit_str_buf, MAX_QUERYSTR_LEN);
+	_edit_str_buf[0] = '\0';
 
 	w = AllocateWindowDesc(&_chat_window_desc);
 
 	w->click_state = 1 << 1;
-	WP(w,querystr_d).caption = caption;
-	WP(w,querystr_d).wnd_class = window_class;
-	WP(w,querystr_d).wnd_num = window_number;
+	WP(w,querystr_d).caption = STR_NULL;
+	WP(w,querystr_d).wnd_class = WC_MAIN_TOOLBAR;
+	WP(w,querystr_d).wnd_num = 0;
 	WP(w,querystr_d).text.caret = false;
-	WP(w,querystr_d).text.maxlength = maxlen - 1;
-	WP(w,querystr_d).text.maxwidth = maxwidth;
+	WP(w,querystr_d).text.maxlength = lengthof(_edit_str_buf);
+	WP(w,querystr_d).text.maxwidth = w->widget[1].right - w->widget[1].left - 2; // widget[1] is the "text box"
 	WP(w,querystr_d).text.buf = _edit_str_buf;
 	UpdateTextBufferSize(&WP(w, querystr_d).text);
 }
