@@ -301,7 +301,7 @@ static int CountMapSquareAround(TileIndex tile, TileType type, IndustryType indu
 
 	for (dx = -3; dx <= 3; dx++) {
 		for (dy = -3; dy <= 3; dy++) {
-			cur_tile = tile + TileDiffXY(dx, dy);
+			cur_tile = TILE_MASK(tile + TileDiffXY(dx, dy));
 
 			if (IsTileType(cur_tile, type)) {
 				switch (type) {
