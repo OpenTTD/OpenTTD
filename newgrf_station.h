@@ -17,7 +17,7 @@ typedef enum {
  * where index is computed as (x * platforms) + platform. */
 typedef byte *StationLayout;
 
-typedef struct stationspec {
+typedef struct StationSpec {
 	uint32 grfid; ///< ID of GRF file station belongs to.
 	int localidx; ///< Index within GRF file of station.
 
@@ -75,7 +75,7 @@ typedef struct stationspec {
 /**
  * Struct containing information relating to station classes.
  */
-typedef struct stationclass {
+typedef struct StationClass {
 	uint32 id;          ///< ID of this class, e.g. 'DFLT', 'WAYP', etc.
 	StringID name;      ///< Name of this class.
 	uint stations;      ///< Number of stations in this class.
