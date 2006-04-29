@@ -1307,15 +1307,31 @@ int32 DoConvertStationRail(TileIndex tile, RailType totype, bool exec)
 	return _price.build_rail >> 1;
 }
 
-static void FindRoadStationSpot(bool truck_station, Station* st, RoadStop*** currstop, RoadStop** prev)
+/** Heavy wizardry used to add a roadstop to a station.
+  * To understand the function, lets first look at what is passed around,
+  * especially the last two parameters. CmdBuildRoadStop allocates a road
+  * stop and needs to put that stop into the linked list of road stops.
+  * It (CmdBuildRoadStop) has a **currstop pointer which points to element
+  * in the linked list of stops (each element in this list being a pointer
+  * in itself, hence the double pointer). We (FindRoadStopSpot) need to
+  * modify this pointer (**currstop) thus we need to pass by reference,
+  * obtaining a triple pointer (***currstop). When finished, **currstop
+  * in CmdBuildRoadStop will contain the address of the pointer which will
+  * then point into the global roadstop array. *prev (in CmdBuildRoadStop)
+  * is the pointer tino the global roadstop array which has *currstop in
+  * its ->next element.
+  * @param[in] truck_station Determines whether a stop is RS_BUS or RS_TRUCK
+  * @param[in] station The station to do the whole procedure for
+  * @param[out] currstop See the detailed function description
+  * @param prev See the detailed function description
+  */
+static void FindRoadStopSpot(bool truck_station, Station* st, RoadStop*** currstop, RoadStop** prev)
 {
-	RoadStop **primary_stop;
-
-	primary_stop = (truck_station) ? &st->truck_stops : &st->bus_stops;
+	RoadStop **primary_stop = (truck_station) ? &st->truck_stops : &st->bus_stops;
+	assert(*prev == NULL);
 
 	if (*primary_stop == NULL) {
-		//we have no station of the type yet, so write a "primary station"
-		//(the one at st->foo_stops)
+		//we have no roadstop of the type yet, so write a "primary stop"
 		*currstop = primary_stop;
 	} else {
 		//there are stops already, so append to the end of the list
@@ -1328,8 +1344,8 @@ static void FindRoadStationSpot(bool truck_station, Station* st, RoadStop*** cur
 	}
 }
 
-/** Build a bus station
- * @param tile tile to build bus station at
+/** Build a bus or truck stop
+ * @param tile tile to build the stop at
  * @param p1 entrance direction (DiagDirection)
  * @param p2 0 for Bus stops, 1 for truck stops
  */
@@ -1382,7 +1398,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		if (!CheckStationSpreadOut(st, tile, 1, 1)) return CMD_ERROR;
 
-		FindRoadStationSpot(type, st, &currstop, &prev);
+		FindRoadStopSpot(type, st, &currstop, &prev);
 	} else {
 		Town *t;
 
@@ -1391,7 +1407,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		st->town = t = ClosestTownFromTile(tile, (uint)-1);
 
-		FindRoadStationSpot(type, st, &currstop, &prev);
+		FindRoadStopSpot(type, st, &currstop, &prev);
 
 		if (_current_player < MAX_PLAYERS && flags & DC_EXEC) {
 			SETBIT(t->have_ratings, _current_player);
