@@ -112,7 +112,7 @@ static inline uint32 GetVariable(const ResolverObject *object, byte variable, by
 /* Evaluate an adjustment for a variable of the given size. This is a bit of
  * an unwieldy macro, but it saves triplicating the code. */
 #define BUILD_EVAL_ADJUST(size, usize) \
-static inline size EvalAdjust_ ## size(const DeterministicSpriteGroupAdjust *adjust, size last_value, size value) \
+static inline size EvalAdjust_ ## size(const DeterministicSpriteGroupAdjust *adjust, size last_value, uint value) \
 { \
 	value >>= adjust->shift_num; \
 	value  &= adjust->and_mask; \
@@ -124,6 +124,9 @@ static inline size EvalAdjust_ ## size(const DeterministicSpriteGroupAdjust *adj
 		case DSGA_TYPE_MOD:  value %= (size)adjust->divmod_val; break; \
 		case DSGA_TYPE_NONE: break; \
 	} \
+\
+	/* Get our value to the correct range */ \
+	value = (size)value; \
 \
 	switch (adjust->operation) { \
 		case DSGA_OP_ADD:  return last_value + value; \
