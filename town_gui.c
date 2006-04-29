@@ -29,7 +29,7 @@ static const Widget _town_authority_widgets[] = {
 };
 
 extern const byte _town_action_costs[8];
-extern void DrawPlayerIcon(int p, int x, int y);
+extern void DrawPlayerIcon(PlayerID pid, int x, int y);
 
 /** Get a list of available actions to do at a town.
  * @param *nump if not NULL add put the number of available actions in it

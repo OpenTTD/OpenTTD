@@ -27,7 +27,7 @@
 #define BTC 15
 
 typedef struct network_d {
-	byte company;            // select company in network lobby
+	PlayerID company;        // select company in network lobby
 	byte field;              // select text-field in start-server and game-listing
 	NetworkGameList *server; // selected server in lobby and game-listing
 	FiosItem *map;           // selected map in start-server
@@ -1004,7 +1004,7 @@ static void ShowNetworkLobbyWindow(NetworkGameList *ngl)
 //  and also makes able to give money to them, kick them (if server)
 //  and stuff like that.
 
-extern void DrawPlayerIcon(int p, int x, int y);
+extern void DrawPlayerIcon(PlayerID pid, int x, int y);
 
 // Every action must be of this form
 typedef void ClientList_Action_Proc(byte client_no);

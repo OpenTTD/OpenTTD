@@ -11,7 +11,7 @@
 /**
  * Dequeues commands put in the queue via AI_PutCommandInQueue.
  */
-static void AI_DequeueCommands(byte player)
+static void AI_DequeueCommands(PlayerID player)
 {
 	AICommand *com, *entry_com;
 

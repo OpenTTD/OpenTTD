@@ -327,7 +327,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 {
 	NetworkClientInfo *ci;
 	uint16 index = NetworkRecv_uint16(MY_CLIENT, p);
-	byte playas = NetworkRecv_uint8(MY_CLIENT, p);
+	PlayerID playas = NetworkRecv_uint8(MY_CLIENT, p);
 	char name[NETWORK_NAME_LENGTH];
 	char unique_id[NETWORK_NAME_LENGTH];
 

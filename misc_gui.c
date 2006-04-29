@@ -1719,7 +1719,7 @@ static const Widget _cheat_widgets[] = {
 {   WIDGETS_END},
 };
 
-extern void DrawPlayerIcon(int p, int x, int y);
+extern void DrawPlayerIcon(PlayerID pid, int x, int y);
 
 static void CheatsWndProc(Window *w, WindowEvent *e)
 {
