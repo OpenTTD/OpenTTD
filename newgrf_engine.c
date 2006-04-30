@@ -18,7 +18,7 @@
 typedef struct WagonOverride {
 	byte *train_id;
 	int trains;
-	SpriteGroup *group;
+	const SpriteGroup *group;
 } WagonOverride;
 
 typedef struct WagonOverrides {
@@ -28,8 +28,7 @@ typedef struct WagonOverrides {
 
 static WagonOverrides _engine_wagon_overrides[TOTAL_NUM_ENGINES];
 
-void SetWagonOverrideSprites(EngineID engine, SpriteGroup *group, byte *train_id,
-	int trains)
+void SetWagonOverrideSprites(EngineID engine, const SpriteGroup *group, byte *train_id, int trains)
 {
 	WagonOverrides *wos;
 	WagonOverride *wo;
@@ -98,10 +97,10 @@ void UnloadWagonOverrides(void)
 // (It isn't and shouldn't be like this in the GRF files since new cargo types
 // may appear in future - however it's more convenient to store it like this in
 // memory. --pasky)
-static SpriteGroup *engine_custom_sprites[TOTAL_NUM_ENGINES][NUM_GLOBAL_CID];
+static const SpriteGroup *engine_custom_sprites[TOTAL_NUM_ENGINES][NUM_GLOBAL_CID];
 static uint32 _engine_grf[TOTAL_NUM_ENGINES];
 
-void SetCustomEngineSprites(EngineID engine, byte cargo, SpriteGroup *group)
+void SetCustomEngineSprites(EngineID engine, byte cargo, const SpriteGroup *group)
 {
 	assert(engine < TOTAL_NUM_ENGINES);
 	if (engine_custom_sprites[engine][cargo] != NULL) {
