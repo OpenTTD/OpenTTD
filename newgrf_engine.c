@@ -125,6 +125,32 @@ void UnloadCustomEngineSprites(void)
 	}
 }
 
+static const SpriteGroup *heli_rotor_custom_sprites[NUM_AIRCRAFT_ENGINES];
+
+/** Load a rotor override sprite group for an aircraft */
+void SetRotorOverrideSprites(EngineID engine, const SpriteGroup *group)
+{
+	assert(engine >= AIRCRAFT_ENGINES_INDEX);
+	assert(engine < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES);
+
+	if (heli_rotor_custom_sprites[engine - AIRCRAFT_ENGINES_INDEX] != NULL) {
+		DEBUG(grf, 6)("SetRotorOverrideSprites: engine `%d' already has group -- replacing.", engine);
+	}
+	heli_rotor_custom_sprites[engine - AIRCRAFT_ENGINES_INDEX] = group;
+}
+
+/** Unload all rotor override sprite groups */
+void UnloadRotorOverrideSprites(void)
+{
+	EngineID engine;
+
+	/* Starting at AIRCRAFT_ENGINES_INDEX may seem pointless, but it means
+	 * the context of EngineID is correct */
+	for (engine = AIRCRAFT_ENGINES_INDEX; engine < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; engine++) {
+		heli_rotor_custom_sprites[engine - AIRCRAFT_ENGINES_INDEX] = NULL;
+	}
+}
+
 void SetEngineGRF(EngineID engine, uint32 grfid)
 {
 	assert(engine < TOTAL_NUM_ENGINES);
@@ -432,6 +458,30 @@ SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction dire
 	if (group == NULL || group->type != SGT_RESULT) return 0;
 
 	return group->g.result.sprite + (direction % group->g.result.num_sprites);
+}
+
+
+SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle *v)
+{
+	const SpriteGroup *group;
+	ResolverObject object;
+
+	assert(engine >= AIRCRAFT_ENGINES_INDEX);
+	assert(engine < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES);
+
+	/* Only valid for helicopters */
+	assert((AircraftVehInfo(engine)->subtype & 1) == 0);
+
+	NewVehicleResolver(&object, v);
+
+	group = heli_rotor_custom_sprites[engine - AIRCRAFT_ENGINES_INDEX];
+	group = Resolve(group, &object);
+
+	if (group == NULL || group->type != SGT_RESULT) return 0;
+
+	if (v == NULL) return group->g.result.sprite;
+
+	return group->g.result.sprite + v->next->next->u.air.state;
 }
 
 

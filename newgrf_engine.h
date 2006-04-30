@@ -16,7 +16,11 @@ VARDEF const uint32 cargo_classes[16];
 
 void SetWagonOverrideSprites(EngineID engine, const struct SpriteGroup *group, byte *train_id, int trains);
 void SetCustomEngineSprites(EngineID engine, byte cargo, const struct SpriteGroup *group);
+void SetRotorOverrideSprites(EngineID engine, const struct SpriteGroup *group);
 SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle* v, Direction direction);
+SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle* v);
+#define GetCustomRotorSprite(v) GetRotorOverrideSprite(v->engine_type, v)
+#define GetCustomRotorIcon(et) GetRotorOverrideSprite(et, NULL)
 
 void SetEngineGRF(EngineID engine, uint32 grfid);
 uint32 GetEngineGRFID(EngineID engine);
@@ -41,6 +45,7 @@ void SetCustomEngineName(EngineID engine, StringID name);
 StringID GetCustomEngineName(EngineID engine);
 
 void UnloadWagonOverrides(void);
+void UnloadRotorOverrideSprites(void);
 void UnloadCustomEngineSprites(void);
 void UnloadCustomEngineNames(void);
 

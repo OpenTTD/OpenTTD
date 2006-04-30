@@ -1742,8 +1742,14 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 			}
 
 			if (wagover) {
-				// TODO: No multiple cargo types per vehicle yet. --pasky
-				SetWagonOverrideSprites(engine, _cur_grffile->spritegroups[groupid], last_engines, last_engines_count);
+				/* If the ID for this action 3 is the same as the vehicle ID,
+				 * this indicates we have a helicopter rotor override. */
+				if (feature == GSF_AIRCRAFT && engine == last_engines[i]) {
+					SetRotorOverrideSprites(engine, _cur_grffile->spritegroups[groupid]);
+				} else {
+					// TODO: No multiple cargo types per vehicle yet. --pasky
+					SetWagonOverrideSprites(engine, _cur_grffile->spritegroups[groupid], last_engines, last_engines_count);
+				}
 			} else {
 				SetCustomEngineSprites(engine, GC_DEFAULT, _cur_grffile->spritegroups[groupid]);
 				last_engines[i] = engine;
@@ -2534,6 +2540,7 @@ static void ResetNewGRFData(void)
 
 	// Unload sprite group data
 	UnloadWagonOverrides();
+	UnloadRotorOverrideSprites();
 	UnloadCustomEngineSprites();
 	UnloadCustomEngineNames();
 	ResetEngineListOrder();
