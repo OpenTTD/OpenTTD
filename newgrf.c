@@ -1426,7 +1426,7 @@ static void NewSpriteGroup(byte *buf, int len)
 				DeterministicSpriteGroupAdjust *adjust;
 
 				if (group->g.determ.num_adjusts > 0) {
-					check_length(bufend - buf, 2 + (varsize * 3) + 3, "NewSpriteGroup (Deterministic) (3)");
+					check_length(bufend - buf, 2 + varsize + 3, "NewSpriteGroup (Deterministic) (3)");
 				}
 
 				group->g.determ.num_adjusts++;
