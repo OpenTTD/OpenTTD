@@ -3,13 +3,6 @@
 #ifndef AIRPORT_MOVEMENT_H
 #define AIRPORT_MOVEMENT_H
 
-#include "stdafx.h"
-
-typedef struct AirportMovingData {
-	int x,y;
-	byte flag;
-	byte direction;
-} AirportMovingData;
 
 // state machine input struct (from external file, etc.)
 // Finite sTate mAchine --> FTA
@@ -20,75 +13,6 @@ typedef struct AirportFTAbuildup {
 	byte next_in_chain;					// next position from this position
 } AirportFTAbuildup;
 
-enum {
-	AMED_NOSPDCLAMP	= 1<<0,
-	AMED_TAKEOFF		= 1<<1,
-	AMED_SLOWTURN		= 1<<2,
-	AMED_LAND				= 1<<3,
-	AMED_EXACTPOS		= 1<<4,
-	AMED_BRAKE			= 1<<5,
-	AMED_HELI_RAISE	= 1<<6,
-	AMED_HELI_LOWER	= 1<<7,
-};
-
-enum {MAX_ELEMENTS = 255};
-enum {MAX_HEADINGS = 18};
-
-///////////////////////////////////////////////////////////////////////
-///////***********Movement States on Airports********************//////
-// headings target
-enum {
-	TO_ALL = 0,
-	HANGAR = 1,
-	TERM1 = 2,
-	TERM2 = 3,
-	TERM3 = 4,
-	TERM4 = 5,
-	TERM5 = 6,
-	TERM6 = 7,
-	HELIPAD1 = 8,
-	HELIPAD2 = 9,
-	TAKEOFF = 10,
-	STARTTAKEOFF = 11,
-	ENDTAKEOFF = 12,
-	HELITAKEOFF = 13,
-	FLYING = 14,
-	LANDING = 15,
-	ENDLANDING = 16,
-	HELILANDING = 17,
-	HELIENDLANDING = 18
-};
-
-///////////////////////////////////////////////////////////////////////
-///////**********Movement Blocks on Airports*********************//////
-// blocks (eg_airport_flags)
-enum {
-	TERM1_block								= 1 << 0,
-	TERM2_block								= 1 << 1,
-	TERM3_block								= 1 << 2,
-	TERM4_block								= 1 << 3,
-	TERM5_block								= 1 << 4,
-	TERM6_block								= 1 << 5,
-	HELIPAD1_block						= 1 << 6,
-	HELIPAD2_block						= 1 << 7,
-	RUNWAY_IN_OUT_block				= 1 << 8,
-	RUNWAY_IN_block						= 1 << 8,
-	AIRPORT_BUSY_block				= 1 << 8,
-	RUNWAY_OUT_block					= 1 << 9,
-	TAXIWAY_BUSY_block				= 1 << 10,
-	OUT_WAY_block							= 1 << 11,
-	IN_WAY_block							= 1 << 12,
-	AIRPORT_ENTRANCE_block		= 1 << 13,
-	TERM_GROUP1_block					= 1 << 14,
-	TERM_GROUP2_block					= 1 << 15,
-	HANGAR2_AREA_block				= 1 << 16,
-	TERM_GROUP2_ENTER1_block	= 1 << 17,
-	TERM_GROUP2_ENTER2_block	= 1 << 18,
-	TERM_GROUP2_EXIT1_block		= 1 << 19,
-	TERM_GROUP2_EXIT2_block		= 1 << 20,
-	PRE_HELIPAD_block					= 1 << 21,
-	NOTHING_block							= 1 << 30
-};
 
 ///////////////////////////////////////////////////////////////////////
 /////*********Movement Positions on Airports********************///////

@@ -16,7 +16,7 @@
 #include "town.h"
 #include "industry.h"
 #include "player.h"
-#include "airport_movement.h"
+#include "airport.h"
 #include "sound.h"
 #include "variables.h"
 #include "table/sprites.h"

@@ -772,8 +772,7 @@ static bool AircraftController(Vehicle *v)
 	}
 
 	// get airport moving data
-	assert(v->u.air.pos < GetAirport(st->airport_type)->nofelements);
-	amd = &_airport_moving_datas[st->airport_type][v->u.air.pos];
+	amd = GetAirportMovingData(st->airport_type, v->u.air.pos);
 
 	// Helicopter raise
 	if (amd->flag & AMED_HELI_RAISE) {

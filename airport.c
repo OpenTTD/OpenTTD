@@ -7,6 +7,7 @@
 #include "airport.h"
 #include "macros.h"
 #include "variables.h"
+#include "airport_movement.h"
 
 static AirportFTAClass* CountryAirport;
 static AirportFTAClass* CityAirport;
@@ -369,6 +370,13 @@ const AirportFTAClass* GetAirport(const byte airport_type)
 			assert(airport_type <= AT_INTERNATIONAL);
 	}
 	return Airport;
+}
+
+const AirportMovingData *GetAirportMovingData(byte airport_type, byte position)
+{
+	assert(airport_type < lengthof(_airport_moving_datas));
+	assert(position < GetAirport(airport_type)->nofelements);
+	return &_airport_moving_datas[airport_type][position];
 }
 
 uint32 GetValidAirports(void)
