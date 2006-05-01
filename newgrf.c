@@ -149,12 +149,8 @@ static inline byte grf_load_byte(byte **buf)
 
 static uint16 grf_load_word(byte **buf)
 {
-	uint16 val;
-	byte *p = *buf;
-	val = p[0];
-	val |= p[1] << 8;
-	*buf = p + 2;
-	return val;
+	uint16 val = grf_load_byte(buf);
+	return val | (grf_load_byte(buf) << 8);
 }
 
 static uint16 grf_load_extended(byte** buf)
@@ -167,14 +163,8 @@ static uint16 grf_load_extended(byte** buf)
 
 static uint32 grf_load_dword(byte **buf)
 {
-	uint32 val;
-	byte *p = *buf;
-	val = p[0];
-	val |= p[1] << 8;
-	val |= p[2] << 16;
-	val |= p[3] << 24;
-	*buf = p + 4;
-	return val;
+	uint32 val = grf_load_word(buf);
+	return val | (grf_load_word(buf) << 16);
 }
 
 static uint32 grf_load_var(byte size, byte **buf)
@@ -802,14 +792,8 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 	switch (prop) {
 		case 0x08: /* Class ID */
 			FOR_EACH_OBJECT {
-				uint32 classid;
-
-				/* classid, for a change, is big-endian */
-				classid = *(buf++) << 24;
-				classid |= *(buf++) << 16;
-				classid |= *(buf++) << 8;
-				classid |= *(buf++);
-
+				/* Swap classid because we read it in BE meaning WAYP or DFLT */
+				uint32 classid = BSWAP32(grf_load_dword(&buf));
 				statspec[i].sclass = AllocateStationClass(classid);
 			}
 			break;
@@ -2134,19 +2118,19 @@ static void GRFInfo(byte *buf, int len)
 	const char *name;
 	const char *info;
 
-	check_length(len, 8, "GRFInfo");
-	version = buf[1];
-	/* this is de facto big endian - grf_load_dword() unsuitable */
-	grfid = buf[2] << 24 | buf[3] << 16 | buf[4] << 8 | buf[5];
-	name = (const char*)(buf + 6);
+	check_length(len, 8, "GRFInfo"); buf++;
+	version = grf_load_byte(buf);
+	grfid = grf_load_dword(&buf);
+	name = (const char*)buf;
 	info = name + strlen(name) + 1;
 
 	_cur_grffile->grfid = grfid;
 	_cur_grffile->grf_version = version;
 	_cur_grffile->flags |= 0x0001; /* set active flag */
 
+	/* Do swap the GRFID for displaying purposes since people expect that */
 	DEBUG(grf, 1) ("[%s] Loaded GRFv%d set %08lx - %s:\n%s",
-	               _cur_grffile->filename, version, grfid, name, info);
+	               _cur_grffile->filename, version, BSWAP32(grfid), name, info);
 }
 
 /* Action 0x0A */
