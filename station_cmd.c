@@ -1360,7 +1360,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	bool type = !!p2;
 
 	/* Saveguard the parameters */
-	if (p1 > 3) return CMD_ERROR;
+	if (!IsValidDiagDirection(p1)) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 

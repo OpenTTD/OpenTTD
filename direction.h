@@ -93,7 +93,8 @@ static inline Direction DiagDirToDir(DiagDirection dir)
 /* the 2 axis */
 typedef enum Axis {
 	AXIS_X = 0,
-	AXIS_Y = 1
+	AXIS_Y = 1,
+	AXIS_END
 } Axis;
 
 
@@ -110,6 +111,21 @@ static inline Axis DiagDirToAxis(DiagDirection d)
 static inline DiagDirection AxisToDiagDir(Axis a)
 {
 	return (DiagDirection)(2 - a);
+}
+
+static inline bool IsValidDiagDirection(DiagDirection d)
+{
+	return d < DIAGDIR_END;
+}
+
+static inline bool IsValidDirection(DiagDirection d)
+{
+	return d < DIR_END;
+}
+
+static inline bool IsValidAxis(DiagDirection d)
+{
+	return d < AXIS_END;
 }
 
 #endif
