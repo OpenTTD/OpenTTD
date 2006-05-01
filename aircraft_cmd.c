@@ -42,6 +42,14 @@ static const SpriteID _aircraft_sprite[] = {
 	0x0EBD, 0x0EC5
 };
 
+/* Helicopter rotor animation states */
+enum HelicopterRotorStates {
+	HRS_ROTOR_STOPPED,
+	HRS_ROTOR_MOVING_1,
+	HRS_ROTOR_MOVING_2,
+	HRS_ROTOR_MOVING_3,
+};
+
 /* Find the nearest hangar to v
  * INVALID_STATION is returned, if the player does not have any suitable
  * airports (like helipads only)
@@ -105,6 +113,22 @@ int GetAircraftImage(const Vehicle* v, Direction direction)
 	return direction + _aircraft_sprite[spritenum];
 }
 
+SpriteID GetRotorImage(const Vehicle *v)
+{
+	const Vehicle *w;
+
+	assert((v->subtype & 1) == 0);
+
+	w = v->next->next;
+	if (is_custom_sprite(v->spritenum)) {
+		SpriteID spritenum = GetCustomRotorSprite(v);
+		if (spritenum != 0) return spritenum;
+	}
+
+	/* Return standard rotor sprites if there are no custom sprites for this helicopter */
+	return SPR_ROTOR_STOPPED + w->u.air.state;
+}
+
 void DrawAircraftEngine(int x, int y, EngineID engine, uint32 image_ormod)
 {
 	int spritenum = AircraftVehInfo(engine)->image_index;
@@ -119,7 +143,9 @@ void DrawAircraftEngine(int x, int y, EngineID engine, uint32 image_ormod)
 	DrawSprite(sprite | image_ormod, x, y);
 
 	if ((AircraftVehInfo(engine)->subtype & 1) == 0) {
-		DrawSprite(SPR_ROTOR_STOPPED, x, y - 5);
+		SpriteID rotor_sprite = GetCustomRotorIcon(engine);
+		if (rotor_sprite == 0) rotor_sprite = SPR_ROTOR_STOPPED;
+		DrawSprite(rotor_sprite, x, y - 5);
 	}
 }
 
@@ -291,9 +317,12 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			w->sprite_width = w->sprite_height = 2;
 			w->z_height = 1;
 			w->vehstatus = VS_HIDDEN | VS_UNCLICKABLE;
+			w->spritenum = 0xFF;
 			w->subtype = 6;
 			w->cur_image = SPR_ROTOR_STOPPED;
 			w->random_bits = VehicleRandomBits();
+			/* Use rotor's air.state to store the rotor animation frame */
+			w->u.air.state = HRS_ROTOR_STOPPED;
 			VehiclePositionChanged(w);
 		}
 
@@ -598,7 +627,7 @@ static void HelicopterTickHandler(Vehicle *v)
 {
 	Vehicle *u;
 	int tick,spd;
-	uint16 img;
+	SpriteID img;
 
 	u = v->next->next;
 
@@ -609,7 +638,7 @@ static void HelicopterTickHandler(Vehicle *v)
 	if (v->current_order.type == OT_LOADING || (v->vehstatus & VS_STOPPED)) {
 		if (u->cur_speed != 0) {
 			u->cur_speed++;
-			if (u->cur_speed >= 0x80 && u->cur_image == SPR_ROTOR_MOVING_3) {
+			if (u->cur_speed >= 0x80 && u->u.air.state == HRS_ROTOR_MOVING_3) {
 				u->cur_speed = 0;
 			}
 		}
@@ -625,12 +654,14 @@ static void HelicopterTickHandler(Vehicle *v)
 	spd = u->cur_speed >> 4;
 
 	if (spd == 0) {
-		img = SPR_ROTOR_STOPPED;
+		u->u.air.state = HRS_ROTOR_STOPPED;
+		img = GetRotorImage(v);
 		if (u->cur_image == img) return;
 	} else if (tick >= spd) {
 		u->tick_counter = 0;
-		img = u->cur_image + 1;
-		if (img > SPR_ROTOR_MOVING_3) img = SPR_ROTOR_MOVING_1;
+		u->u.air.state++;
+		if (u->u.air.state > HRS_ROTOR_MOVING_3) u->u.air.state = HRS_ROTOR_MOVING_1;
+		img = GetRotorImage(v);
 	} else {
 		return;
 	}
@@ -652,6 +683,7 @@ static void SetAircraftPosition(Vehicle *v, int x, int y, int z)
 	v->z_pos = z;
 
 	v->cur_image = GetAircraftImage(v, v->direction);
+	if (v->subtype == 0) v->next->next->cur_image = GetRotorImage(v);
 
 	BeginVehicleMove(v);
 	VehiclePositionChanged(v);
