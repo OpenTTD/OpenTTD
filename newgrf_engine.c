@@ -391,6 +391,15 @@ static byte MapAircraftMovementAction(const Vehicle *v)
 }
 
 
+/* TTDP airport types. Used to map our types to TTDPatch's */
+enum {
+	ATP_TTDP_SMALL,
+	ATP_TTDP_LARGE,
+	ATP_TTDP_HELIPORT,
+	ATP_TTDP_OILRIG,
+};
+
+
 /* Vehicle Resolver Functions */
 static inline const Vehicle *GRV(const ResolverObject *object)
 {
@@ -467,6 +476,27 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 		case 0x43: /* Player information */
 			return v->owner;
+
+		case 0x44: /* Aircraft information */
+			if (v->type != VEH_Aircraft) return -1;
+
+			{
+				const Vehicle *w = v->next;
+				uint16 altitude = v->z_pos - w->z_pos; /* Aircraft height - shadow height */
+				byte airporttype;
+
+				switch (GetStation(v->u.air.targetairport)->airport_type) {
+					case AT_SMALL: airporttype = ATP_TTDP_SMALL; break;
+					case AT_METROPOLITAN:
+					case AT_INTERNATIONAL:
+					case AT_LARGE: airporttype = ATP_TTDP_LARGE; break;
+					case AT_HELIPORT: airporttype = ATP_TTDP_HELIPORT; break;
+					case AT_OILRIG: airporttype = ATP_TTDP_OILRIG; break;
+					default: airporttype = ATP_TTDP_LARGE; break;
+				}
+
+				return (altitude << 8) | airporttype;
+			}
 
 		case 0x46: /* Motion counter */
 			return 0;
