@@ -416,7 +416,7 @@ static inline void NewVehicleResolver(ResolverObject *res, const Vehicle *v)
 	res->ResolveReal   = &VehicleResolveReal;
 
 	res->vehicle.self   = v;
-	res->vehicle.parent = (v != NULL && v->type == VEH_Train) ? GetFirstVehicleInChain(v) : NULL;
+	res->vehicle.parent = (v != NULL && v->type == VEH_Train) ? GetFirstVehicleInChain(v) : v;
 
 	res->callback        = 0;
 	res->callback_param1 = 0;
