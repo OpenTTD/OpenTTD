@@ -8,6 +8,8 @@
 #include "engine.h"
 #include "train.h"
 #include "player.h"
+#include "station.h"
+#include "airport.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_engine.h"
 #include "newgrf_station.h"
@@ -170,6 +172,222 @@ static int MapOldSubType(const Vehicle *v)
 	if (IsTrainEngine(v)) return 0;
 	if (IsFreeWagon(v)) return 4;
 	return 2;
+}
+
+
+/* TTDP style aircraft movement states for GRF Action 2 Var 0xE2 */
+enum {
+	AMS_TTDP_HANGER,
+	AMS_TTDP_TO_HANGER,
+	AMS_TTDP_TO_PAD1,
+	AMS_TTDP_TO_PAD2,
+	AMS_TTDP_TO_PAD3,
+	AMS_TTDP_TO_ENTRY_2_AND_3,
+	AMS_TTDP_TO_ENTRY_2_AND_3_AND_H,
+	AMS_TTDP_TO_JUNCTION,
+	AMS_TTDP_LEAVE_RUNWAY,
+	AMS_TTDP_TO_INWAY,
+	AMS_TTDP_TO_RUNWAY,
+	AMS_TTDP_TO_OUTWAY,
+	AMS_TTDP_WAITING,
+	AMS_TTDP_TAKEOFF,
+	AMS_TTDP_TO_TAKEOFF,
+	AMS_TTDP_CLIMBING,
+	AMS_TTDP_FLIGHT_APPROACH,
+	AMS_TTDP_UNUSED_0x11,
+	AMS_TTDP_FLIGHT_TO_TOWER,
+	AMS_TTDP_UNUSED_0x13,
+	AMS_TTDP_FLIGHT_FINAL,
+	AMS_TTDP_FLIGHT_DESCENT,
+	AMS_TTDP_BRAKING,
+	AMS_TTDP_HELI_TAKEOFF_AIRPOPT,
+	AMS_TTDP_HELI_TO_TAKEOFF_AIRPOPT,
+	AMS_TTDP_HELI_LAND_AIRPOPT,
+	AMS_TTDP_HELI_TAKEOFF_HELIPORT,
+	AMS_TTDP_HELI_TO_TAKEOFF_HELIPORT,
+	AMS_TTDP_HELI_LAND_HELIPORT,
+};
+
+
+/**
+ * Map OTTD aircraft movement states to TTDPatch style movement states
+ * (VarAction 2 Variable 0xE2)
+ */
+static byte MapAircraftMovementState(const Vehicle *v)
+{
+	const Station *st = GetStation(v->u.air.targetairport);
+	byte amdflag = GetAirportMovingData(st->airport_type, v->u.air.pos)->flag;
+
+	switch (v->u.air.state) {
+		case HANGAR:
+			/* The international airport is a special case as helicopters can land in
+			 * front of the hanger. Helicopters also change their air.state to
+			 * AMED_HELI_LOWER some time before actually descending. */
+
+			/* This condition only occurs for helicopters, during descent,
+			 * to a landing by the hanger of an international airport. */
+			if (amdflag & AMED_HELI_LOWER) return AMS_TTDP_HELI_LAND_AIRPOPT;
+
+			/* This condition only occurs for helicopters, before starting descent,
+			 * to a landing by the hanger of an international airport. */
+			if (amdflag & AMED_SLOWTURN) return AMS_TTDP_FLIGHT_TO_TOWER;
+
+			// The final two conditions apply to helicopters or aircraft.
+			/* Has reached hanger? */
+			if (amdflag & AMED_EXACTPOS) return AMS_TTDP_HANGER;
+
+			// Still moving towards hanger.
+			return AMS_TTDP_TO_HANGER;
+
+		case TERM1:
+			if (amdflag & AMED_EXACTPOS) return AMS_TTDP_TO_PAD1;
+			return AMS_TTDP_TO_JUNCTION;
+
+		case TERM2:
+			if (amdflag & AMED_EXACTPOS) return AMS_TTDP_TO_PAD2;
+			return AMS_TTDP_TO_ENTRY_2_AND_3_AND_H;
+
+		case TERM3:
+		case TERM4:
+		case TERM5:
+		case TERM6:
+			/* TTDPatch only has 3 terminals, so treat these states the same */
+			if (amdflag & AMED_EXACTPOS) return AMS_TTDP_TO_PAD3;
+			return AMS_TTDP_TO_ENTRY_2_AND_3_AND_H;
+
+		case HELIPAD1:
+		case HELIPAD2: // Will only occur for helicopters.
+			if (amdflag & AMED_HELI_LOWER) return AMS_TTDP_HELI_LAND_AIRPOPT; // Descending.
+			if (amdflag & AMED_SLOWTURN)   return AMS_TTDP_FLIGHT_TO_TOWER;   // Still hasn't started descent.
+			return AMS_TTDP_TO_JUNCTION; // On the ground.
+
+		case TAKEOFF: // Moving to takeoff position.
+			return AMS_TTDP_TO_OUTWAY;
+
+		case STARTTAKEOFF: // Accelerating down runway.
+			return AMS_TTDP_TAKEOFF;
+
+		case ENDTAKEOFF: // Ascent
+			return AMS_TTDP_CLIMBING;
+
+		case HELITAKEOFF: // Helicopter is moving to take off position.
+			switch (st->airport_type) {
+				case AT_SMALL:
+				case AT_LARGE:
+				case AT_METROPOLITAN:
+				case AT_INTERNATIONAL:
+					if (amdflag & AMED_HELI_RAISE) return AMS_TTDP_HELI_TAKEOFF_AIRPOPT;
+					return AMS_TTDP_TO_JUNCTION;
+
+				case AT_HELIPORT:
+				case AT_OILRIG:
+					return AMS_TTDP_HELI_TAKEOFF_HELIPORT;
+
+				default:
+					return AMS_TTDP_HELI_TAKEOFF_AIRPOPT;
+			}
+
+		case FLYING:
+			return AMS_TTDP_FLIGHT_TO_TOWER;
+
+		case LANDING: // Descent
+			return AMS_TTDP_FLIGHT_DESCENT;
+
+		case ENDLANDING: // On the runway braking
+			if (amdflag & AMED_BRAKE) return AMS_TTDP_BRAKING;
+			// Landed - moving off runway
+			return AMS_TTDP_TO_INWAY;
+
+		case HELILANDING:
+		case HELIENDLANDING: // Helicoptor is decending.
+			if (amdflag & AMED_HELI_LOWER) {
+				switch (st->airport_type) {
+					case AT_HELIPORT:
+					case AT_OILRIG:
+						return AMS_TTDP_HELI_LAND_HELIPORT;
+
+					default:
+						return AMS_TTDP_HELI_LAND_AIRPOPT;
+				}
+			}
+			return AMS_TTDP_FLIGHT_TO_TOWER;
+
+		default:
+			return AMS_TTDP_HANGER;
+	}
+}
+
+
+/* TTDP style aircraft movement action for GRF Action 2 Var 0xE6 */
+enum {
+	AMA_TTDP_IN_HANGER,
+	AMA_TTDP_ON_PAD1,
+	AMA_TTDP_ON_PAD2,
+	AMA_TTDP_ON_PAD3,
+	AMA_TTDP_HANGER_TO_PAD1,
+	AMA_TTDP_HANGER_TO_PAD2,
+	AMA_TTDP_HANGER_TO_PAD3,
+	AMA_TTDP_LANDING_TO_PAD1,
+	AMA_TTDP_LANDING_TO_PAD2,
+	AMA_TTDP_LANDING_TO_PAD3,
+	AMA_TTDP_PAD1_TO_HANGER,
+	AMA_TTDP_PAD2_TO_HANGER,
+	AMA_TTDP_PAD3_TO_HANGER,
+	AMA_TTDP_PAD1_TO_TAKEOFF,
+	AMA_TTDP_PAD2_TO_TAKEOFF,
+	AMA_TTDP_PAD3_TO_TAKEOFF,
+	AMA_TTDP_HANGER_TO_TAKOFF,
+	AMA_TTDP_LANDING_TO_HANGER,
+	AMA_TTDP_IN_FLIGHT,
+};
+
+
+/**
+ * Map OTTD aircraft movement states to TTDPatch style movement actions
+ * (VarAction 2 Variable 0xE6)
+ * This is not fully supported yet but it's enough for Planeset.
+ */
+static byte MapAircraftMovementAction(const Vehicle *v)
+{
+	switch (v->u.air.state) {
+		case HANGAR:
+			return (v->cur_speed > 0) ? AMA_TTDP_LANDING_TO_HANGER : AMA_TTDP_IN_HANGER;
+
+		case TERM1:
+		case HELIPAD1:
+			return (v->current_order.type == OT_LOADING) ? AMA_TTDP_ON_PAD1 : AMA_TTDP_LANDING_TO_PAD1;
+
+		case TERM2:
+		case HELIPAD2:
+			return (v->current_order.type == OT_LOADING) ? AMA_TTDP_ON_PAD2 : AMA_TTDP_LANDING_TO_PAD2;
+
+		case TERM3:
+		case TERM4:
+		case TERM5:
+		case TERM6:
+			return (v->current_order.type == OT_LOADING) ? AMA_TTDP_ON_PAD3 : AMA_TTDP_LANDING_TO_PAD3;
+
+		case TAKEOFF:      // Moving to takeoff position
+		case STARTTAKEOFF: // Accelerating down runway
+		case ENDTAKEOFF:   // Ascent
+		case HELITAKEOFF:
+			// TODO Need to find which terminal (or hanger) we've come from. How?
+			return AMA_TTDP_PAD1_TO_TAKEOFF;
+
+		case FLYING:
+			return AMA_TTDP_IN_FLIGHT;
+
+		case LANDING:    // Descent
+		case ENDLANDING: // On the runway braking
+		case HELILANDING:
+		case HELIENDLANDING:
+			// TODO Need to check terminal we're landing to. Is it known yet?
+			return (v->current_order.type == OT_GOTO_DEPOT) ?
+				AMA_TTDP_LANDING_TO_HANGER : AMA_TTDP_LANDING_TO_PAD1;
+
+		default:
+			return AMA_TTDP_IN_HANGER;
+	}
 }
 
 
@@ -363,9 +581,9 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 		case VEH_Aircraft:
 			switch (variable - 0x80) {
-				// case 0x62: XXX Need to convert from ottd to ttdp state
-				case 0x63: return v->u.air.targetairport;
-				// case 0x66: XXX
+				case 0x62: return MapAircraftMovementState(v);  // Current movement state
+				case 0x63: return v->u.air.targetairport;       // Airport to which the action refers
+				case 0x66: return MapAircraftMovementAction(v); // Current movement action
 			}
 			break;
 	}
