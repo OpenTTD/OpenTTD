@@ -1915,6 +1915,22 @@ static void GraphicsNew(byte *buf, int len)
 			replace = SPR_ELRAIL_BASE + 3;
 			break;
 
+		case 0x06: /* Foundations */
+			if (num != 74) {
+				grfmsg(GMS_WARN, "GraphicsNews: Foundation graphics sprite count must be 74, skipping.");
+				return;
+			}
+			replace = SPR_SLOPES_BASE;
+			break;
+
+		case 0x08: /* Canal graphics */
+			if (num != 65) {
+				grfmsg(GMS_WARN, "GraphicsNews: Canal graphics sprite count must be 65, skipping.");
+				return;
+			}
+			replace = SPR_CANALS_BASE + 5;
+			break;
+
 		default:
 			grfmsg(GMS_NOTICE, "GraphicsNew: Custom graphics (type 0x%02X) sprite block of length %u (unimplemented, ignoring).\n",
 					type, num);
