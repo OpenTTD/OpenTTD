@@ -2119,7 +2119,7 @@ static void GRFInfo(byte *buf, int len)
 	const char *info;
 
 	check_length(len, 8, "GRFInfo"); buf++;
-	version = grf_load_byte(buf);
+	version = grf_load_byte(&buf);
 	grfid = grf_load_dword(&buf);
 	name = (const char*)buf;
 	info = name + strlen(name) + 1;
