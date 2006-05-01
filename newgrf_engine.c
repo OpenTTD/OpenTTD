@@ -729,7 +729,7 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle *v)
 
 	if (v == NULL) return group->g.result.sprite;
 
-	return group->g.result.sprite + v->next->next->u.air.state;
+	return group->g.result.sprite + (v->next->next->u.air.state % group->g.result.num_sprites);
 }
 
 
