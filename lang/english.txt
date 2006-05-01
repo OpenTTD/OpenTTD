@@ -870,6 +870,7 @@ STR_TOWNNAME_ROMANIAN                                           :Romanian
 STR_TOWNNAME_CZECH                                              :Czech
 STR_TOWNNAME_SWISS                                              :Swiss
 STR_TOWNNAME_DANISH                                             :Danish
+STR_TOWNNAME_TURKISH                                            :Turkish
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pounds (£)

@@ -620,6 +620,34 @@ static byte MakeDanishTownName(char *buf, uint32 seed)
 	return 0;
 }
 
+static byte MakeTurkishTownName(char *buf, uint32 seed)
+{
+	uint i;
+
+	// null terminates the string for strcat
+	strcpy(buf, "");
+
+	if ((i = SeedModChance(0, 5, seed)) == 0) {
+		strcat(buf, name_turkish_prefix[SeedModChance( 2, lengthof(name_turkish_prefix), seed)]);
+
+		// middle segment
+		strcat(buf, name_turkish_middle[SeedModChance( 4, lengthof(name_turkish_middle), seed)]);
+
+		// optional suffix
+		if (SeedModChance(0, 7, seed) == 0) {
+			strcat(buf, name_turkish_suffix[SeedModChance( 10, lengthof(name_turkish_suffix), seed)]);
+		}
+	} else {
+		if (i == 1 || i == 2) {
+			strcat(buf, name_turkish_prefix[SeedModChance( 2, lengthof(name_turkish_prefix), seed)]);
+			strcat(buf, name_turkish_suffix[SeedModChance( 4, lengthof(name_turkish_suffix), seed)]);
+		} else {
+			strcat(buf, name_turkish_real[SeedModChance( 4, lengthof(name_turkish_real), seed)]);
+		}
+	}
+	return 0;
+}
+
 TownNameGenerator * const _town_name_generators[] =
 {
 	MakeEnglishOriginalTownName,
@@ -640,6 +668,7 @@ TownNameGenerator * const _town_name_generators[] =
 	MakeCzechTownName,
 	MakeSwissTownName,
 	MakeDanishTownName,
+	MakeTurkishTownName,
 };
 
 // DO WE NEED THIS ANY MORE?
