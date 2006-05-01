@@ -21,6 +21,7 @@
 #include "newgrf_engine.h"
 #include "vehicle.h"
 #include "newgrf_text.h"
+#include "table/sprites.h"
 
 #include "newgrf_spritegroup.h"
 
@@ -1890,6 +1891,7 @@ static void GraphicsNew(byte *buf, int len)
 
 	uint8 type;
 	uint16 num;
+	SpriteID replace = 0;
 
 	check_length(len, 2, "GraphicsNew");
 	buf++;
@@ -1905,16 +1907,28 @@ static void GraphicsNew(byte *buf, int len)
 			_signal_base = _cur_spriteid;
 			break;
 
+		case 0x05: /* Catenary graphics */
+			if (num != 48) {
+				grfmsg(GMS_WARN, "GraphicsNews: Catenary graphics sprite count must be 48, skipping.");
+				return;
+			}
+			replace = SPR_ELRAIL_BASE + 3;
+			break;
+
 		default:
 			grfmsg(GMS_NOTICE, "GraphicsNew: Custom graphics (type 0x%02X) sprite block of length %u (unimplemented, ignoring).\n",
 					type, num);
 			return;
 	}
 
-	grfmsg(GMS_NOTICE, "GraphicsNew: Loading %u sprites of type 0x%02X at SpriteID 0x%04X", num, type, _cur_spriteid);
+	if (replace == 0) {
+		grfmsg(GMS_NOTICE, "GraphicsNew: Loading %u sprites of type 0x%02X at SpriteID 0x%04X", num, type, _cur_spriteid);
+	} else {
+		grfmsg(GMS_NOTICE, "GraphicsNew: Replacing %u sprites of type 0x%02X at SpriteID 0x%04X", num, type, replace);
+	}
 
 	for (; num > 0; num--) {
-		LoadNextSprite(_cur_spriteid++, _file_index);
+		LoadNextSprite(replace == 0 ? _cur_spriteid++ : replace++, _file_index);
 		_nfo_line++;
 	}
 }
