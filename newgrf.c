@@ -1998,7 +1998,7 @@ static void SkipIf(byte *buf, int len)
 			uint major    = 2;
 			uint minor    = 0;
 			uint revision = 10; // special case: 2.0.1 is 2.0.10
-			uint build    = 49;
+			uint build    = 73;
 			param_val = (major << 24) | (minor << 20) | (revision << 16) | (build * 10);
 			break;
 		}
