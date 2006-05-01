@@ -43,7 +43,7 @@ SpriteID _signal_base = 0;
 static GRFFile *_cur_grffile;
 GRFFile *_first_grffile;
 GRFConfig *_first_grfconfig;
-static int _cur_spriteid;
+static SpriteID _cur_spriteid;
 static int _cur_stage;
 static uint32 _nfo_line;
 

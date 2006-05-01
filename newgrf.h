@@ -33,7 +33,7 @@ typedef struct GRFFile {
 	 * half-filled wagon etc.  Each spriteset contains eight sprites (one
 	 * per direction) or four sprites if the vehicle is symmetric. */
 
-	int spriteset_start;
+	SpriteID spriteset_start;
 	int spriteset_numsets;
 	int spriteset_numents;
 	int spriteset_feature;
