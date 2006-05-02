@@ -2165,6 +2165,7 @@ static void SpriteReplace(byte *buf, int len)
 	}
 }
 
+/* Action 0x0B */
 static void GRFError(byte *buf, int len)
 {
 	/* <0B> <severity> <language-id> <message-id> [<message...> 00] [<data...>] 00 [<parnum>]
@@ -2210,6 +2211,7 @@ static void GRFError(byte *buf, int len)
 	}
 }
 
+/* Action 0x0C */
 static void GRFComment(byte *buf, int len)
 {
 	/* <0C> [<ignored...>]
@@ -2407,6 +2409,7 @@ static void ParamSet(byte *buf, int len)
 	}
 }
 
+/* Action 0x0E */
 static void GRFInhibit(byte *buf, int len)
 {
 	/* <0E> <num> <grfids...>
@@ -2434,6 +2437,7 @@ static void GRFInhibit(byte *buf, int len)
 	}
 }
 
+/* Action 0x10 */
 static void DefineGotoLabel(byte *buf, int len)
 {
 	/* <10> <label> [<comment>]
